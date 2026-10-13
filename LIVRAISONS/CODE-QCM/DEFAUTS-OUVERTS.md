@@ -2,6 +2,25 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Contrôle de la conscience n°12 — 13/10 10:15, sur la reprise 3 (`f95030b`, md5 `011ae89f…`)
+
+**Verdict : ça ne va pas ; rien n'est mis en ligne, la 7.7.2 reste.** L'app se reconstruit à l'identique (`build.py` : md5 `011ae89f…`, celui de VERDICT.md). Les contrôles de la conscience passent : 32 vérifications, 0 échec, 109 s. K11 est corrigé pour la décision de Paul de 07:22 : il vérifie que rien ne part seul, puis clique « ▶️ Commencer la correction ». C'était une faute de la conscience, pas de l'app. Mais les défauts de l'heure de VERDICT.md (09:58) restent ouverts, et la conscience a vu sur les captures de R8 l'alerte « Donner raison à Julien : Milan → 1 point ». Sonde B de la conscience (10:10, par le geste) : sur le chemin normal, B paraît à la 2e moitié, que Paul clique « Clore » dès sa réponse ou que le temps finisse ; le B perdu de R8 vient donc d'un autre chemin (réouverture, temps changés), cause non mesurée.
+
+## Reprise 4 du 13/10 — seulement si Paul vous relance (séance à 13:00)
+
+Vous corrigez, **dans cet ordre**, chaque correction poussée dès qu'elle passe `build.py` et votre essai ; **tout est poussé à 11:20 au plus tard**. Rien d'autre. Captures : `banc/relecteurs/R8/cap/`.
+
+1. [→ QCM-1, QCM-2] L'alerte de la co-évaluation : chaque bouton « Donner raison à … » donne la note que la feuille vaut vraiment. « Donner raison à Julien : Milan → 1 point » doit dire 0 point, puisque la bonne réponse est Rome. Jamais un bouton à choix vide (« Donner raison à Léa : → 1 point ») avant que l'élève ait dit ce qu'il a écrit (R8 `cap/31-console-alerte.png`, `cap/32-console-alerte-complete.png`).
+2. [→ QCM-1, QCM-2] B pour chaque élève qui a répondu, aussi dans une question rouverte pour un élève ou pour tous, et aux temps changés (R8 : Léa au 2e tour, Tom rouvert seul, `cap/18-t2-tom-fin.png`, `cap/30-console-alerte.png`). Le chemin normal marche (sonde de la conscience) : ne le cassez pas.
+3. [→ QCM-1] « 🔓 Rouvrir pour tous » : la question ne revient qu'à ceux qui n'ont pas répondu, une fois ; jamais un 2e tour pour ceux qui avaient répondu ; la garde ne liste pas les élèves jamais entrés (R8 `cap/19-console-rouvrir-tous.png`, `cap/23-console-apres-ecarts.png`).
+4. [→ QCM-1, QCM-2] Une question écartée n'est plus nulle part : ni au bilan de l'élève (pas de « faux → 0 point », pas de « Q2 ✗ »), ni dans « c'est laquelle ? » de la co-évaluation, ni à « 0 % » au téléphone, ni dans les pastilles de la correction (R8 `cap/33-t1-bilan.png`, `cap/30-t1-coeval.png`, `cap/25-tel-attest2.png`, `cap/28-t1-revele.png`).
+5. [→ QCM-1, QCM-2] « ⚠️ Séance interrompue détectée » : l'heure de la coupure, pas celle du lancement (`sorties/2026-10-13_0940/reprise2.txt`, R8 `cap/21-console-recharge.png`).
+6. [→ QCM-2] Le 1er tour quand la réponse est courte : l'élève a ses choix pendant tout son temps ; un « +30 » cliqué au 1er tour profite au 1er tour (R8 `cap/11-t1-q1.png`, `cap/12-t1-q1-repondu.png`, `cap/13-console-q1.png`).
+7. [→ QCM-2] Le téléphone : le bandeau suit les temps changés ; un élève sans réponse ou jamais entré n'y porte pas « ✗ », il est dit comme sur la console (R8 `cap/13-tel-q1.png`, `cap/17-tel-apres-tom.png`).
+8. [→ QCM-2] Les écarts de `x610-1-b-julien`, `c-deplacer` et `t-deplace` (section de QCM-4 de 09:51, plus bas), puis l'alerte de Michel sur l'évaluation de 3e (`x610-8`, `x610-9`), si elle est un défaut.
+9. [→ QCM-3] La suite de ta mission de la reprise 3 (point 8, plus bas), dans tes seuls fichiers ; tout poussé à 11:20.
+10. [→ QCM-4] De 11:20 à 11:40 : assemble, passe tout, dont les contrôles de la conscience corrigés (32 vérifications, md5 dans `AUDITS/CONTROLES-QCM-APP/EMPREINTES.md5` sur `main`). Rejoue toi-même par le geste les points 1 à 7. Lance un relecteur neuf sur l'heure, avec une réouverture pour un élève et pour tous, une question écartée, une alerte et des temps changés. Pousse `VERDICT.md` **à 11:40**. Dans `banc.js`, le compte de B tolère un ou deux B manquants par tour (`bDits >= repondus - 1`, ou `- 2` à Q1) : plus de tolérance ; chaque B manquant échoue, avec le nom de l'élève. La conscience contrôle à 11:45 ; mise en ligne à 12:00 si ça va.
+
 ## Reprise 3 du 13/10 — Paul (09:03) : « Si, ils continuent. » La séance est décalée à 13:00 ; le contrôle de la conscience est à 10:00
 
 Vous continuez, d'une traite, dans cet ordre, chaque correction poussée dès qu'elle passe `build.py` et votre essai ; **tout est poussé à 09:40 au plus tard**. De 09:40 à 09:58, QCM-4 assemble, passe tout, rejoue par le geste les points 1 à 5, lance un relecteur neuf sur l'heure seule, et pousse `VERDICT.md` **à 09:58**.

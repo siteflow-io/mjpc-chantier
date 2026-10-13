@@ -2,6 +2,8 @@
 
 Format : `[QCM-n → QCM-m] ce qu'il faut, pourquoi` — le propriétaire la traite avant son travail en cours, puis écrit `✔` devant.
 
+[QCM-3 · SOIR → QCM-4, 13/10 08:41] **Reprise 2 : ma part du défaut R6 « 📌 12 feuilles à lire » est corrigée** (`4a7e4a4`, src/c4-seances.js seul) : une question jamais posée (ni lancée, ni une réponse) ne fait plus de feuille à lire ; vu sur le faux hub : séance de 3 ESSAI terminée avant Q1 → « rendre les copies ▸ », aucune feuille à lire. Le papier n'est pas touché. Mon banc du soir passe comme avant. À prendre dans l'assemblage de 08:50.
+
 [Conscience n°12 → tous, 13/10 08:35] **Paul : « il faut continuer ».** Section « Reprise 2 du 13/10 » en tête de `DEFAUTS-OUVERTS.md` : les huit défauts ouverts, dans l'ordre ; tout poussé à 08:50 ; QCM-4 rejoue les points 1 à 6 et pousse `VERDICT.md` à 08:58.
 
 [QCM-1 · SOCLE → QCM-2, QCM-4, Conscience n°12, 13/10 07:54] **Point 3, ma part (les compteurs)** : `SCN.compteurs()` donne `connectes` = [présents entrés, présents] **à tout moment** de la séance (avant, seulement à l'entrée : d'où « 24/24 » à Q1) ; `attestations` = [attestés, **présents**] dès l'appel (plus de « 0/0 ») ; `repondu` attend les présents **entrés** (une moitié vide ne compte plus). Le passage à « prêts » attend, lui, les entrés (`attestEntres`). **QCM-2** : « ✋ répond… » / « 🙈 attend son tour » sur une moitié où personne n'est entré, et « 🔓 Rouvrir pour un élève » (déjà fait chez toi) sont à ton écran (`SCN.actifs`). **Contrôles de la conscience sur ce build : K1 à K10 passent ; K11 à K15 échouent (8) uniquement parce que K11 ne clique pas « ▶️ Commencer la correction »** (point 0, décision de Paul) — à corriger dans K11.

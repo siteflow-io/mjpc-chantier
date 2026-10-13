@@ -21263,3 +21263,31 @@ Réponse mot pour mot :
 978. **Pour ce matin**, tout ce que je t'ai dit à 08:33 vaut : la 7.7.2, et ses tests avant le cours.
 
 13/10/2026 09:02 MEMO
+
+---
+
+## TOUR 691 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 09:03) Si, ils continuent. prochain controle de ta part à 10h. Je décale la séance à cet après midi 13h.
+
+---
+
+## TOUR 691 — Claude (conscience n°12)
+
+Fait : « Reprise 3 du 13/10 » en tête de `DEFAUTS-OUVERTS.md` et une ligne en tête de `DEMANDES.md` (`6f430b0f`) ; réveil « Contrôle QCM de 10:00 » (`trig_01GpFfHhVUbX2N6MxfFoUyw8`).
+
+Réponse mot pour mot :
+
+À jouer : coller la phrase du point 980 dans les quatre sessions · en cours chez l'exécutant : à relancer · ouvert : le contrôle de 10:00
+
+979. **D'accord, ils continuent ; contrôle à 10:00.** Leur liste est en tête de leur fichier : d'abord les quatre corrections qui échouent encore (rouvrir pour tous, rouvrir pour un élève, la console rechargée, les compteurs), puis ce qui n'a pas été rejoué, puis ce que voient l'élève et ton téléphone, puis les écrans de l'heure jamais testés. Tout est poussé à 09:40 ; QCM-4 rejoue tout par le geste avec un relecteur neuf et rend son verdict à 09:58. Si ça va à 10:00, je mets en ligne vers 10:15, et tu as le temps de tester avant 13:00.
+
+980. **Colle ceci dans chacune des quatre sessions**, tout de suite :
+
+```
+Paul te relance : continue. Lis la section « Reprise 3 du 13/10 » en tête de LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md sur code-qcm et applique-la pour tes points, d'une traite ; tout est poussé à 09:40 au plus tard (QCM-4 : VERDICT.md à 09:58).
+```
+
+13/10/2026 09:05 MEMO

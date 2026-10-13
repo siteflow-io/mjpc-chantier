@@ -402,18 +402,21 @@ var SCN = (function(){
     var ec = S.ecartees(sid), nbQ = ev ? ev.questions.length - ec.length : 0, inscrits = S.eleves(sid).length;
     var o = {presents:pres.length, absents:S.absents(sid).length, inscrits:inscrits, nbQ:nbQ};
     if(!s) return o;
+    // (13/10) « CONNECTÉS » : les présents entrés sur une tablette, à tout moment de la séance
+    var act = S.actifs(k, sid), entres = pres.filter(function(x){ return S.tabletteDe(x, sid) && (((s.entres || {})[x])); });
+    o.connectes = [entres.length, pres.length];
     if(qi != null && ["reflexion", "reponse", "close", "b", "passage", "rouvert", "pause"].indexOf(e.ph) >= 0){
       var rep = S.repondu(qi, k, sid), pc = S.premierCote(qi, sid);
-      var attendu = (e.ph === "reponse" || e.ph === "passage" || e.ph === "b") && e.tour === 1 ? pres.filter(function(x){ return S.cote(x, sid) === pc || S.seul(x, sid); }).length : pres.length;
+      // ceux qui peuvent répondre : les présents entrés (une moitié vide ne répond pas)
+      var attendu = (e.ph === "reponse" || e.ph === "passage" || e.ph === "b") && e.tour === 1 ? act.filter(function(x){ return S.cote(x, sid) === pc || S.seul(x, sid); }).length : act.length;
       o.repondu = [e.ph === "reflexion" ? 0 : rep.length, attendu];
       o.justes = [rep.filter(function(x){ return S.justeTablette(x, qi, sid); }).length, rep.length];
       o.question = [qi + 1 - ec.filter(function(x){ return x < qi; }).length, nbQ];
     }
-    var act = S.actifs(k, sid);
-    if(e.ph === "entree" || e.ph === "pret"){
-      var entres = pres.filter(function(x){ return S.tabletteDe(x, sid) && (((s.entres || {})[x])); });
+    if(e.ph === "appel" || e.ph === "entree" || e.ph === "pret"){
       var finis = entres.filter(function(x){ var a = S.attestDe(1, x, sid); return a && a.fini; });
-      o.connectes = [entres.length, pres.length]; o.attestations = [finis.length, entres.length]; o.repondu = [0, pres.length];
+      // « ATTESTATIONS » sur les présents (24 attendus, même si 4 seulement sont entrés) ; le moteur, lui, attend les entrés (attestEntres)
+      o.attestations = [finis.length, pres.length]; o.attestEntres = [finis.length, entres.length]; o.repondu = [0, act.length];
       o.pasEntres = pres.filter(function(x){ return entres.indexOf(x) < 0; });
       o.attestEnCours = {}; pres.forEach(function(x){ var a = S.attestDe(1, x, sid); if(entres.indexOf(x) >= 0 && !(a && a.fini)) o.attestEnCours[x] = a ? a.lignes || 0 : 0; });
     }
@@ -956,7 +959,7 @@ var MOTEUR = (function(){
   };
   // l'entrée finie : quand tous les présents ont fini l'attestation, la console passe à « prêts »
   M.entree = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "entree") return; var c = SCN.compteurs(null, sid);
-    if(c.attestations && c.attestations[1] > 0 && c.attestations[0] === c.attestations[1]) poserDeroule(sid, {ph:"pret", reprise:e.reprise || null}); };
+    if(c.attestEntres && c.attestEntres[1] > 0 && c.attestEntres[0] === c.attestEntres[1]) poserDeroule(sid, {ph:"pret", reprise:e.reprise || null}); };
   // la console, le téléphone et le tableau mènent ; une tablette relaie seulement les temps comptés (M.relais), jamais l'entrée ; la correction, comme tout moment de la classe, commence au geste de Paul (13/10)
   M.demarrer = function(relais){ if(M.actif) return; M.actif = true; M.relais = !!relais;
     setInterval(function(){ try { M.tic(); if(!M.relais) M.entree(); } catch(e){ console.error(e); } }, relais ? 500 : 250); };

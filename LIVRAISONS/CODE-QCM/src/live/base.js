@@ -288,7 +288,9 @@ var SCN = (function(){
     // sur papier : l'ordre des erreurs de la grille (papier/<slug>/<qi>) ; sur tablettes : les réponses des tablettes
     var taux = {}; if(S.papier(sid)){ qs.forEach(function(i){ var g = pres.map(function(x){ return ((s.papier || {})[x] || {})[i]; }).filter(function(v){ return v != null; });
         taux[i] = g.length ? g.filter(function(v){ return v === "j" || v === true || v === 1; }).length / g.length : 1; }); }
-    else qs.forEach(function(i){ var rep = pres.filter(function(x){ return S.reponse(x, i, sid); }); taux[i] = rep.length ? rep.filter(function(x){ return S.justeTablette(x, i, sid); }).length / rep.length : 1; });
+    // le taux de justes sur les présents entrés (une question sans réponse est à 0, la plus ratée), sinon sur ceux qui ont répondu
+    else { var act = S.actifs(null, sid); qs.forEach(function(i){ var rep = pres.filter(function(x){ return S.reponse(x, i, sid); }), n = Math.max(rep.length, act.length);
+      taux[i] = n ? rep.filter(function(x){ return S.justeTablette(x, i, sid); }).length / n : 1; }); }
     return qs.sort(function(a, b){ return taux[a] - taux[b] || a - b; }); };
   S.corrigeesAu = function(k, sid){ var s = S.sess(sid); return liste(s && s.revelees).map(Number); };
 
@@ -767,7 +769,8 @@ var ACT = (function(){
     maj[cheminS(id, "etat")] = "terminee"; maj[cheminS(id, "finLe")] = now;
     if(!s.evalSnapshot && s.evalId !== "demo"){ var ev = SCN.evalParId(s.evalId); if(ev) maj[cheminS(id, "evalSnapshot")] = construireSnapshot(ev); }
     maj["/sessionActive/" + s.classeSlug] = null;
-    return poserDeroule(id, {ph:"fin"}).then(function(){ return ecrireQCM(maj, "terminer"); }); };
+    // la fin d'abord (etat, sessionActive), puis la phase : une console perdue entre les deux laisse une séance terminée, jamais une séance active
+    return ecrireQCM(maj, "terminer").then(function(){ return poserDeroule(id, {ph:"fin"}); }); };
   A.rouvrirSeance = function(id){ var s = SCN.sess(id); if(!s) return Promise.resolve(); var maj = {}; maj[cheminS(id, "etat")] = "en_cours"; if(s.copies && s.copies.rendues) maj[cheminS(id, "copies/masquees")] = true;
     return ecrireQCM(maj, "rouvrirSeance").then(function(){ return A.lancerSeance(s.classeSlug, s.evalId, {reprise:id}); }); };
   // le soir : une feuille lue (« Que dit la feuille ? ») ; rendre, masquer les copies

@@ -390,8 +390,10 @@ function compCourt(c){ var l = libOff(c); return (typeof COMP_COURT !== "undefin
 function seanceParam(){ return paramHash("seance"); }
 // les feuilles qu'aucune lecture n'a corrigées (un présent parti avant la correction, un voisin qui n'a pas lu) : la question reste « ? »
 // et l'élève sans note ; elles restent à lire, et « Rendre les copies » attend (« chaque présent a eu la lecture de sa feuille »)
-function sansLectureV(se){ var l = [], hors = se.ecartees.concat(se.annulees);
-  se.presents.forEach(function(e){ var r = resultatV(se, e.slug); if(r) r.st.forEach(function(s, i){ if(s === "n" && hors.indexOf(i) < 0) l.push({p:e.slug, q:i}); }); });
+function sansLectureV(se){ var l = [], hors = se.ecartees.concat(se.annulees), S = se.S, papier = !S || (S.lancee || {}).mode === "papier";
+  // une question jamais posée (séance terminée avant elle : ni lancée, ni une réponse) n'a pas de feuille à lire (relecteur neuf R6)
+  var posee = function(i){ return papier || (S.questionsLancees || {})[i] != null || (S.reponses || {})[i] != null; };
+  se.presents.forEach(function(e){ var r = resultatV(se, e.slug); if(r) r.st.forEach(function(s, i){ if(s === "n" && hors.indexOf(i) < 0 && posee(i)) l.push({p:e.slug, q:i}); }); });
   return l; }
 function restentV(se){ var nl = aLireV(se).filter(function(x){ return !x.lue; }), deja = {}; nl.forEach(function(x){ deja[x.p + "|" + x.q] = 1; });
   return nl.length + sansLectureV(se).filter(function(x){ return !deja[x.p + "|" + x.q]; }).length; }

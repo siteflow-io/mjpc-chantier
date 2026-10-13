@@ -21514,3 +21514,38 @@ Message à coller dans les quatre sessions :
 1008. Ce que je ne sais pas : si ce sera bon à 12:10. Si la fin de l'heure montre un défaut, il n'y aura plus le temps de le corriger, et ce sera la 7.7.2. Et 35 minutes de tests avant le cours, c'est serré. C'est toi qui décides si on s'arrête là.
 
 13/10/2026 11:38 MEMO
+
+---
+
+## TOUR 697 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 12:05) Je viens de voir ton message. Refais le message pour les exec
+
+---
+
+## TOUR 697 — Claude (conscience n°12)
+
+Mesuré : aucun commit sur `code-qcm` depuis `f848040f` (11:37). Fait : la reprise 5 recalée (`58b15b8a`) ; le réveil de 12:06 avait déjà sonné (`trig_019STYb78joeh7gqh4RTBbXF`, supprimé après coup), remplacé par un réveil à 12:31 (`trig_01N5ReGKJ3zWtz79Xew4hfL1`).
+
+Réponse mot pour mot :
+
+**À jouer :** rien de neuf, la 7.7.2 reste en ligne · **en cours chez l'exécutant :** rien, personne n'a travaillé depuis 11:28 · **ouvert :** la reprise 5, dès que tu as collé le message
+
+1009. Les heures de 11:38 sont passées, je les ai recalées. La reprise 5 est la même, sauf que QCM-3 ne rejoue plus le soir : il l'a déjà fait à 11:10.
+
+Colle ceci dans les quatre sessions, tout de suite :
+
+« Reprise 5 du 13/10 : lis la section « Reprise 5 du 13/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) et fais ta part tout de suite ; tout est poussé à 12:22, VERDICT.md à 12:30. »
+
+1010. Le calendrier :
+- 12:22 : tout est poussé ;
+- 12:30 : verdict de QCM-4 ;
+- 12:35 : mon contrôle ;
+- 12:40 : mise en ligne, si ça va ;
+- de 12:40 à 12:55 : tes tests.
+
+1011. Il te restera environ 15 minutes de tests avant le cours. Si à 12:35 quelque chose ne va pas, rien n'est mis en ligne et tu fais cours avec la 7.7.2, qui ne bouge pas d'ici là.
+
+13/10/2026 12:07 MEMO

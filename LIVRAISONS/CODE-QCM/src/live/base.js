@@ -265,8 +265,12 @@ var SCN = (function(){
   S.lecture = function(x, qi, sid){ var s = S.sess(sid), l = ((((s && s.lectures) || {})[qi]) || {})[x]; if(!l) return null;
     return Object.assign({}, l, {choix:l.choix === "aucun" ? "aucun" : (Array.isArray(l.choix) ? l.choix : Object.values(l.choix || {})).map(Number)}); };
   S.doitDireB = function(x, sid){ var e = S.etat(sid); if(!e || !x || e.qi == null) return false; var c = S.cote(x, sid);
-    if(e.ph === "b") return (c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid)) && !S.ditB(x, e.qi, sid) && !!S.reponse(x, e.qi, sid);
+    if(e.ph === "b"){ var r = S.reponse(x, e.qi, sid); if(e.rouvert === "tous" && !(r && r.rouverte)) return false;
+      return (c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid)) && !S.ditB(x, e.qi, sid) && !!r; }
     var b = e.bPour; return !!(b && Number(b.qi) === e.qi && (b.cote === c || S.seul(x, sid)) && LIVE.maintenant() < b.jusqua && !S.ditB(x, e.qi, sid) && S.reponse(x, e.qi, sid)); };
+  // (13/10) l'élève est-il de la question en cours ? une réouverture « pour tous » n'est que pour ceux qui n'avaient pas répondu, « pour un élève » que pour lui
+  S.concerne = function(x, sid){ var e = S.etat(sid); if(!e || e.qi == null) return false; if(e.ph === "rouvert") return e.pour === x;
+    if(e.rouvert === "tous"){ var r = S.reponse(x, e.qi, sid); return !r || !!r.rouverte; } return true; };
   S.estimationDe = function(x, sid){ var s = S.sess(sid); return ((s && s.autoevals) || {})[x] || null; };
   S.coevalDe = function(x, sid){ var s = S.sess(sid); return ((s && s.coeval) || {})[x] || null; };
   S.attestDe = function(n, x, sid){ var s = S.sess(sid); return ((((s && s.attest) || {})[n]) || {})[x] || null; };
@@ -700,7 +704,10 @@ var ACT = (function(){
   // rouvrir une question close : une seule fois par question
   A.rouvrirTous = function(qi){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = "tous";
-    return poserDeroule(id, {ph:"passage", qi:qi, tour:1, cote:SCN.coteDuTour(qi, 1), duree:D().decompte, rouvert:"tous"}, plus); };
+    // seuls ceux qui n'ont pas répondu la retrouvent : on commence au premier tour où l'un d'eux a la main (le 2e si ceux du 1er ont tous répondu)
+    var manque = function(tour){ var c = SCN.coteDuTour(qi, tour); return SCN.actifs().some(function(x){ return !SCN.reponse(x, qi) && (SCN.seul(x) ? tour === 1 : SCN.cote(x) === c); }); };
+    var tour = manque(1) ? 1 : manque(2) ? 2 : 0; if(!tour) return Promise.resolve();
+    return poserDeroule(id, {ph:"passage", qi:qi, tour:tour, cote:SCN.coteDuTour(qi, tour), duree:D().decompte, rouvert:"tous"}, plus); };
   A.rouvrirPour = function(qi, x){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = x; plus["reouverts/" + x] = true;
     return poserDeroule(id, {ph:"rouvert", qi:qi, tour:SCN.cote(x) === SCN.premierCote(qi) ? 1 : 2, cote:SCN.cote(x), duree:SCN.tempsDe(qi).reponse, pour:x}, plus); };
@@ -926,7 +933,7 @@ var MOTEUR = (function(){
     if(e.ph === "passage") return {ph:"reponse", qi:e.qi, tour:e.tour, cote:e.cote, duree:t.reponse, rouvert:e.rouvert || null};
     if(e.ph === "reponse") return {ph:"b", qi:e.qi, tour:e.tour, cote:e.cote, duree:D.b, rouvert:e.rouvert || null};
     if(e.ph === "b" && e.tour === 1){
-      var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = SCN.presents(null, sid).some(function(x){ return SCN.seul(x, sid) ? !SCN.reponse(x, e.qi, sid) : SCN.cote(x, sid) === autre; });
+      var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = SCN.presents(null, sid).some(function(x){ return SCN.seul(x, sid) ? !SCN.reponse(x, e.qi, sid) : SCN.cote(x, sid) === autre && (e.rouvert !== "tous" || !SCN.reponse(x, e.qi, sid)); });
       if(quelquun) return {ph:"passage", qi:e.qi, tour:2, cote:autre, duree:D.decompte, rouvert:e.rouvert || null};
       return {ph:"close", qi:e.qi};
     }

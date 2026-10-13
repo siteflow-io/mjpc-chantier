@@ -21421,3 +21421,44 @@ Réponse mot pour mot :
 La réponse aux exécutants : https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEMANDES.md
 
 13/10/2026 10:45 MEMO
+
+---
+
+## TOUR 695 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 10:47) Arrête de me mettre de l'anglais je ne comprends rien. Par ailleurs il faut accélèrer. On a 3 exécutants qui ne font rien il faut les utiliser pour accélérer la livraison finale
+
+---
+
+## TOUR 695 — Claude (conscience n°12)
+
+Mesuré : mes réponses finales des tours 693 et 694, écrites après le dernier outil, étaient en anglais ; les messages envoyés à Paul pendant les tours étaient en français. Sur `code-qcm`, QCM-2 a poussé `bc6db814` (10:47) : il n'a pas encore remis la trouvée et attend le mot de Paul ; `banc-reprise4` 24/24. Les relecteurs déjà faits vont de R1 à R8 (R8 sur le port 8686). Fait : la « Reprise 4 bis » en tête de DEFAUTS-OUVERTS.md (`52be213e`) ; le réveil de 11:20 supprimé (`trig_011Z1jxAKHQDSGNubVzL8tmR`), remplacé par un réveil à 11:31 (`trig_01WzcEofqcpg3u3PCNy7sXPW`).
+
+Réponse mot pour mot :
+
+**À jouer :** rien de neuf, la 7.7.2 reste en ligne · **en cours chez l'exécutant :** QCM-2 et QCM-4 ; QCM-1 et QCM-3 sont à relancer (point 1001) · **ouvert :** la reprise 4 bis
+
+998. Pardon pour l'anglais : mes deux derniers messages de fin étaient en anglais. C'est fini, tout sera en français.
+
+999. Pour accélérer, les quatre travaillent en même temps :
+- QCM-2 remet tout de suite la règle de la trouvée. C'est ta règle, déjà décidée, je ne te redemande rien. Ensuite, il lance un relecteur neuf sur le téléphone et le tableau ;
+- QCM-1 lance un relecteur neuf sur l'heure, de l'appel à la fin des questions : réouvertures, temps changés, console rechargée ;
+- QCM-3 lance un relecteur neuf sur la fin de l'heure (question écartée, alerte avec et sans trouvée, bilan), puis sur le soir de cette séance ;
+- pendant ce temps, QCM-4 assemble l'app et passe tous les bancs ;
+- chaque défaut trouvé est corrigé aussitôt par celui à qui il revient.
+
+1000. Le nouveau calendrier, un quart d'heure plus tôt :
+- 11:22 : tout est poussé ;
+- 11:30 : verdict de QCM-4 ;
+- 11:35 : mon contrôle ;
+- 11:45 : mise en ligne, si ça va ;
+- de 11:45 à 12:45 : tes tests.
+
+1001. À coller maintenant dans chacune des quatre sessions. QCM-1 et QCM-3 sont arrêtés et doivent être relancés ; QCM-2 et QCM-4 tournent, mais doivent le lire tout de suite :
+« Reprise 4 bis (Paul, 10:47 : accélérer) : lis la section « Reprise 4 bis » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) et fais ta part tout de suite ; tout est poussé à 11:22, VERDICT.md à 11:30. »
+
+1002. Ce que je ne sais pas : ce que les trois relecteurs vont trouver. Si un défaut ne peut pas être corrigé avant 11:22, on ne met pas en ligne, et tu fais cours à 13:00 avec la 7.7.2.
+
+13/10/2026 10:50 MEMO

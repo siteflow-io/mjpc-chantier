@@ -297,7 +297,11 @@ function feuillePapierV(se, qi, slug){ var p = (se.S.papier || {})[slug]; if(!p)
   var c = p.choix[qi] != null ? p.choix[qi] : (Array.isArray(p.choix) ? null : p.choix[String(qi)]); return c == null ? null : (c === "aucun" ? "aucun" : v3Liste(c).map(Number)); }
 function aLireV(se){
   // les lignes « à lire » se calculent de ce que chacun a dit et de ce que le voisin a lu (SCN.aLireSeance) ; aLire/<id> n'en garde que l'état
-  if(SCN.LIVE && typeof SCN.aLireSeance === "function"){ try { var L = SCN.aLireSeance(se.id); if(Array.isArray(L) && (L.length || se.nouvelle)) return L.map(function(x){ return {id:x.id, p:x.p || x.eleveSlug, q:+(x.q != null ? x.q : x.qi), sorte:x.sorte, txt:x.txt || "", lue:!!x.lue, corrigee:!!(x.corrigee || x.corrige), nom:x.nom || nomEleveV(se, x.p || x.eleveSlug)}; }); } catch(e){} }
+  if(SCN.LIVE && typeof SCN.aLireSeance === "function"){ try { var L = SCN.aLireSeance(se.id);
+    // une feuille que Paul a lue lui-même (« Que dit la feuille ? », par:"prof") est tranchée : les lignes d'avant sa lecture restent
+    // (lues, « Corrigé d'après sa feuille ») ; celles que sa lecture ferait naître (« … ; <voisin> y a lu <ce que Paul a lu> ») n'existent pas
+    if(Array.isArray(L)){ var St = se.S.aLire || {}, Lc = se.S.lectures || {}; L = L.filter(function(x){ var p = x.p || x.eleveSlug, q = x.q != null ? x.q : x.qi, l = (Lc[q] || {})[p]; return !(l && l.par === "prof" && !St[x.id]); }); }
+    if(Array.isArray(L) && (L.length || se.nouvelle)) return L.map(function(x){ return {id:x.id, p:x.p || x.eleveSlug, q:+(x.q != null ? x.q : x.qi), sorte:x.sorte, txt:x.txt || "", lue:!!x.lue, corrigee:!!(x.corrigee || x.corrige), nom:x.nom || nomEleveV(se, x.p || x.eleveSlug)}; }); } catch(e){} }
   var A = se.S.aLire || {}; return Object.keys(A).map(function(id){ var x = A[id] || {}; return {id:id, p:x.eleveSlug, q:+x.qi, sorte:x.sorte || "b", txt:x.txt || "", lue:!!x.lue, corrigee:!!x.corrige, nom:nomEleveV(se, x.eleveSlug)}; })
   .filter(function(x){ return x.p != null && !isNaN(x.q); }).sort(function(a, b){ return a.q - b.q || a.nom.localeCompare(b.nom, "fr"); }); }
 function resultatLocalV(se, slug){

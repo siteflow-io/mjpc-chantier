@@ -21617,3 +21617,36 @@ Réponse mot pour mot :
 Bon cours.
 
 13/10/2026 12:33 MEMO
+
+---
+
+## TOUR 700 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 12:35) Il faut terminer coûte que coûte. Message pour les exécutants
+
+---
+
+## TOUR 700 — Claude (conscience n°12)
+
+Fait : la « Reprise 6 du 13/10 » en tête de DEFAUTS-OUVERTS.md, et l'arrêt de 12:33 annoté comme remplacé (`573508dc`). Un seul propriétaire par défaut : QCM-2 pour les deux, parce que `c3-corr.js` et `c3-pilot.js` sont ses fichiers (COMMUN §1). Réveil à 13:01 (`trig_01QBxttMqngHQbAYUXk95ffj`) ; il ne met rien en ligne pendant le cours de Paul.
+
+Réponse mot pour mot :
+
+**À jouer :** la 7.7.2 pour ton cours de 13:00, elle ne bouge pas · **en cours chez l'exécutant :** rien tant que tu n'as pas collé le message · **ouvert :** la reprise 6
+
+1017. Colle ceci dans les quatre sessions, tout de suite :
+
+« Reprise 6 du 13/10 (Paul, 12:35 : terminer coûte que coûte) : lis la section « Reprise 6 du 13/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) et fais ta part tout de suite ; tout est poussé à 12:50, VERDICT.md à 13:00. »
+
+1018. Qui fait quoi :
+- QCM-2 corrige les deux défauts : la note fausse annoncée après « Donner raison », et le compte « ont répondu » au 1er tour ;
+- QCM-1 l'aide s'il le demande, rien d'autre ;
+- QCM-3 rejoue la note annoncée par le geste, avec et sans trouvée ;
+- QCM-4 rejoue tout et tranche à 13:00 ;
+- je contrôle à 13:05.
+
+1019. Pendant ton cours, je ne mets rien en ligne, même si tout passe à 13:05. Si le fichier changeait en pleine séance, une tablette qui recharge tomberait sur la nouvelle app au milieu de la 7.7.2. Si tout passe, je mets en ligne à la fin de ton cours. Dis-moi à quelle heure il finit, ou dis-moi « mets en ligne » quand tu veux.
+
+13/10/2026 12:37 MEMO

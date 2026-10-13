@@ -21784,3 +21784,60 @@ Réponse mot pour mot :
 1033. C'est fini : l'app est en ligne avant 13:30, et je viens de revérifier que le fichier en ligne est bien celui-là.
 
 13/10/2026 13:31 MEMO
+
+---
+
+## TOUR 705 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 14:18) ok ça m'a l'air pas mal. Il ne faudrait pas que le rattachement à un chapitre soit bloquant. En effet, vu que je construis aussi mjpc, je n'ai pas encore tous mes chapitres prêts. Je devrais avoir une option "sans chapitre pour l'instant" et un message permanent qui me rappelle qu'il faudra rattacher l'éval plus tard. Enfin, le mode démo apprendre le déroulé ne peut pas être ouvert, j'ai essayé de faire une copie mais la copie passe en "à compléter". Il faut que le mode démo soit canonique, et donc ait des compétences, un "sans chapitre" autorisé, et quoi d'autre?
+
+---
+
+## TOUR 705 — Claude (conscience n°12)
+
+Mesuré dans `code-qcm` à `9a51ddb1` (le code en ligne), `src/c3-evals.js` (la version en direct, en « V ») et `src/c3-soir.js` :
+- `manquesV` exige le chapitre, les deux temps, les compétences et `verifie` ;
+- `chapitresConnus` donne `3e-ch1`, plus les chapitres qui ont une fiche dans `site/<niveau>/chapitres`, plus ceux qu'utilise déjà une évaluation ;
+- en changeant de chapitre, l'éditeur filtre en silence les compétences que le nouveau chapitre ne permet pas ;
+- la ligne de la démo n'a que « Imprimer » et « Dupliquer », et `dupliquerEval` écrit bien au hub ;
+- `S.DEMO` a `competences:[]` et pas de `verifie` ;
+- `remettreDemo` n'écrit la démo que si elle manque ;
+- `verifie` est « la courte phrase à l'infinitif du bilan de l'élève » (l. 387).
+
+Lu au hub, sans rien écrire : `qcm/evaluations` compte la démo, 7 évaluations de Paul, toutes sans chapitre, temps, compétences ni `verifie`, et la copie de la démo faite par Paul (`eval_1791891406205`) ; `qcm/settings/niveaux` donne facile 10, standard 15, approfondi 20, expert 30 (le chrono de l'ancienne app). La copie locale de la lecture est mise à la corbeille du scratchpad.
+
+Réponse mot pour mot :
+
+**À jouer :** la nouvelle app, en ligne depuis 13:26 · **en cours chez l'exécutant :** rien, ils sont arrêtés · **ouvert :** tes réponses aux propositions 1037 à 1046
+
+1034. J'ai mesuré dans le code en ligne. Le chapitre se choisit dans une liste qui ne contient que trois sortes de chapitres : ceux qui ont déjà une fiche au hub, ceux qui ont déjà une évaluation, et le chapitre 1 de 3e de la maquette. Un chapitre pas encore prêt n'y figure pas. Et sans chapitre, l'évaluation reste « à compléter » et ne peut pas être lancée.
+
+1035. J'ai aussi lu le hub, sans rien y écrire. Tes 7 évaluations sont toutes « à compléter » dans la nouvelle app : il leur manque le chapitre, les deux temps de chaque question, les compétences et « ce que vérifie la question ». C'est parce qu'elles viennent de l'ancienne app. Telles quelles, aucune ne peut être lancée.
+
+1036. Dans la liste, la démo n'a que deux boutons, « 🖨️ Imprimer » et « 📋 Dupliquer » : pas de bouton pour l'ouvrir. Sa copie n'a ni chapitre, ni compétences, ni « ce que vérifie la question », d'où « à compléter ». Ta copie de ce midi est bien enregistrée au hub.
+
+1037. Proposition : ajouter « Sans chapitre pour l'instant » dans le choix du chapitre. L'évaluation est alors prête si le reste est complet, et elle se lance.
+
+1038. Proposition : sans chapitre, l'éditeur propose les 28 compétences, comme il le fait déjà pour un chapitre qui n'a pas encore de fiche.
+
+1039. Proposition : un bandeau permanent en tête de « 📝 Évaluations », par exemple « ⚠️ 3 évaluations sans chapitre : à rattacher quand leur chapitre sera prêt », avec la même mention sur la ligne de chacune. Le bandeau disparaît quand plus aucune évaluation n'est sans chapitre.
+
+1040. Proposition : au moment du rattachement, aucune compétence n'est retirée sans te prévenir. Aujourd'hui, l'éditeur retire sans rien dire les compétences que le chapitre ne permet pas. L'app te les montrera, et tu choisiras.
+
+1041. Pour que la démo soit complète, il lui faut aussi « ce que vérifie chaque question ». C'est la phrase du bilan de l'élève, donc une phrase vue par les élèves : je te propose « reconnaître la capitale d'un pays » (Q1), « reconnaître des capitales européennes » (Q2) et « expliquer pourquoi l'araignée n'est pas un insecte » (Q3). À valider ou à corriger.
+
+1042. Pour les compétences de la démo, je te propose celles de l'évaluation d'essai, sur ses trois questions : « Se servir de sa culture pour comprendre les textes et les œuvres » et « Vérifier que l'on a bien compris ce qu'on lit ». Une compétence doit porter sur au moins 3 questions, et la démo en a justement 3.
+
+1043. Proposition : un bouton « 👁️ Ouvrir » sur la ligne de la démo, qui ouvre l'éditeur sans pouvoir rien changer, puisque la démo est permanente. Sa copie s'ouvre et se modifie normalement, et elle est « ✅ Prête à lancer » dès sa création.
+
+1044. La démo enregistrée au hub doit se mettre à jour quand son contenu change. Aujourd'hui, l'app ne la réécrit que si elle a disparu : celle du hub resterait donc sans compétences.
+
+1045. Je ne sais pas encore où une évaluation sans chapitre apparaît, le soir, dans « Résultats par niveau ». Je le mesure avant d'écrire la reprise.
+
+1046. Pour tes 7 évaluations, ton ancienne app avait déjà un temps par difficulté, dans ses réglages au hub : facile 10 s, standard 15 s, approfondi 20 s, expert 30 s. Je te propose que la nouvelle app prenne ces temps quand une question n'a pas les siens. Il ne te resterait à compléter que les compétences et « ce que vérifie la question ». Dis-moi pour quel temps : la réflexion, la réponse, ou les deux.
+
+Si tu valides, j'écris la reprise et les exécutants tournent jusqu'à la mise en ligne.
+
+13/10/2026 14:31 MEMO

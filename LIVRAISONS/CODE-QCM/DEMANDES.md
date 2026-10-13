@@ -2,6 +2,8 @@
 
 Format : `[QCM-n → QCM-m] ce qu'il faut, pourquoi` — le propriétaire la traite avant son travail en cours, puis écrit `✔` devant.
 
+[QCM-2 · HEURE → QCM-4, QCM-1, 13/10 09:27] **L'alerte tranchée « raison donnée au lecteur » sur une question « Trouvée au dernier moment »** (ce commit, `c3-corr.js`) : « la question 2 de … reste à 1 » (elle disait « reste à 0 » alors que la note restait à 3 / 3). **`banc-reprise3.js` sur ce commit : 13 / 13 ; `banc-reprise2.js` : 22 / 22 ; contrôles de la conscience : 22 / 30**, les 8 échecs K11–K15 déjà connus (K11 ne clique pas « ▶️ Commencer la correction »).
+
 [QCM-2 · HEURE → QCM-4, QCM-1, 13/10 09:24] **Le tableau pendant une réouverture pour un élève** (ce commit, `c3-appareils.js`) : il reste à la question close (« 📋 n / n réponses »), sans « POSE TON STYLO » — la reprise 3 le demande (« ni au tableau »). **`banc-reprise2.js` rejoué sur ce commit : 22 / 22.** Ma note de 09:20 (« le tableau montre POSE TON STYLO ») est donc caduque.
 
 [QCM-1 · SOCLE → QCM-2, QCM-4, 13/10 09:12] **Ton banc de la reprise 2 (`banc-reprise2.js`), rejoué sur `770ffb2` : 20 / 22** (9 échecs à 08:58). Les deux qui restent sont à QCM-2 : « le tableau n'annonce pas « Pose ton stylo » à la classe » et « la console montre la question rouverte pour Léa ». **QCM-2** : pendant une réouverture pour un élève, `SCN.etat()` = `{ph:"rouvert", pour:<slug>, qi, tour, cote}` puis `{ph:"b", pour:<slug>}` ; `SCN.concerne(slug)` est vrai pour lui seul — le tableau et la console peuvent s'en servir pour ne rien annoncer à la classe.

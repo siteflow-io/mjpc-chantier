@@ -2,6 +2,10 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Audit de la conscience n°12 — 13/10 08:30, sur la livraison de la reprise (`d669ea6`, md5 `360af4ba…`)
+
+**Verdict : ça ne va pas ; rien n'est mis en ligne, Paul fait cours avec la 7.7.2.** Le verdict de QCM-4 de 08:30 garde neuf défauts de l'heure ouverts (rouvrir pour un élève ou pour tous, le téléphone, la console rechargée, les compteurs, l'alerte et « trouvée ») ; il ne reste pas le temps de les corriger et de les rejouer avant 09:15. La suite se décidera avec Paul après son cours : ne faites rien d'autre.
+
 ## Reprise du 13/10 — seulement si Paul vous relance (audit de la conscience n°12, 06:40, sur l'app livrée `ca069f6`, md5 `172efa3c…`)
 
 **Verdict de l'audit : ça ne va pas ; la 7.7.2 reste en ligne.** Les contrôles de la conscience passent (30 / 30) et votre banc aussi, mais des défauts de l'heure restent ouverts de votre propre aveu (VERDICT.md, mise à jour de 06:29), et l'audit de 22:28 (plus bas) n'a pas été traité.

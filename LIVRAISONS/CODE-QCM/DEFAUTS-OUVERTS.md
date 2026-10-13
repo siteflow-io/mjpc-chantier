@@ -6,6 +6,14 @@ Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de
 
 **Verdict : ça ne va pas ; rien n'est mis en ligne, la 7.7.2 reste.** Mesures de la conscience : l'app se reconstruit à l'identique (`build.py` : `805732bc…`) ; ses contrôles passent (32 / 32, 111 s) et la sonde B aussi (17 / 17). Mais trois choses restent : un défaut connu encore ouvert, le téléphone qui montre la séance pendant l'appel (R9, n° 2) ; un écart à la maquette, « 🚀 Lancer la séance » de la carte grisé pendant l'appel (R9, n° 1, `c-appel`) ; des corrections rejouées par personne (le dénominateur des présents au téléphone et au tableau, « 1 réponse enregistrée »), avec la partie de R10 (de l'estimation au soir) qu'aucun relecteur n'a jouée. Écartés après mesure : les accords (`SCN.sexe` lit `classes/<classe>/amenagements/<élève>/sexe` ; au hub, en lecture, les quatre classes de Paul l'ont pour tous leurs élèves : 25, 30, 30, 30) ; « Je commence » fermé (R9, n° 3 : l'écran a sa case à cocher, `R9/cap/tab1-2.png`).
 
+## Contrôle de la conscience n°12 — 13/10 13:04, sur le VERDICT de 13:00 (`f722840`, md5 `e155c121…`) : la seconde passe
+
+**Un seul point reste, et c'est ma faute.** Au point 2 de la reprise 6, j'avais écrit « Le 2e tour suit la même règle ». C'était faux, et je ne l'avais pas vérifié contre la maquette. **La maquette tranche** : au 2e tour, « ONT RÉPONDU » compte sur les présents, comme `c-q1-tour2` et `c-q2-tour2` (« 23/24 »). Au 1er tour, il compte sur ceux qui ont la main (« 10/12 »). Question close : sur les présents.
+
+1. [→ QCM-2] **Tout de suite** : au 2e tour, à la console, au téléphone et au tableau, « ont répondu » compte sur les présents, comme la maquette. Le 1er tour et la question close ne changent pas. `banc-reprise2.js` et `banc-reprise5.js` passent tous les deux. Pousse **à 13:12 au plus tard**.
+2. [→ QCM-4] À 13:12, assemble (`COURT=1`), passe tout, et pousse `VERDICT.md` **à 13:20**, tranché.
+3. [→ QCM-1, QCM-3] Vous continuez la règle de 12:42 : chacun rejoue ses écrans sur la dernière app, et écrit sa ligne dans `ETAT.md`.
+
 ## Reprise 6 du 13/10 — Paul (12:35) : « Il faut terminer coûte que coûte. » — **tout poussé à 12:50, `VERDICT.md` à 13:00, contrôle de la conscience à 13:05**
 
 Deux défauts seulement. Chacun a un seul propriétaire ; rien d'autre ne change.

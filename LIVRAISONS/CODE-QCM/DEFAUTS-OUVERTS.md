@@ -2,9 +2,24 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Reprise 2 du 13/10 — Paul (08:33) : « non il faut continuer » — poussez à 08:50 au plus tard
+
+Le verdict de 08:30 (plus bas) tient, mais Paul veut continuer : vous corrigez les défauts ouverts de VERDICT.md (08:30), **dans cet ordre**, chacun poussé dès qu'il passe `build.py` et votre essai, et **tout est poussé à 08:50 au plus tard**. Rien d'autre.
+
+1. [→ QCM-2] Au téléphone : « ▶️ Commencer la correction » s'ouvre quand tous sont prêts et se clique ; le chrono avance.
+2. [→ QCM-1] « 🔓 Rouvrir pour tous » rouvre de nouveau (cassé à 07:49, `c5e100bb`) : seulement les tours où quelqu'un n'a pas répondu.
+3. [→ QCM-1, QCM-2] « 🔓 Rouvrir pour un élève » ne rouvre que pour cet élève : ni le téléphone, ni le tableau, ni un 2e tour pour la classe.
+4. [→ QCM-1, QCM-2] La console rechargée : l'état et l'heure vrais dans « ⚠️ Séance interrompue détectée », et la reprise garde le chrono où il en était.
+5. [→ QCM-1, QCM-2] Les compteurs : « CONNECTÉS » compte les entrés, « ONT RÉPONDU » garde son dénominateur.
+6. [→ QCM-1, QCM-2] L'alerte de la co-évaluation tient compte de « Trouvée au dernier moment », et sa garde dit vrai.
+7. [→ QCM-2] Au téléphone, « Aucune séance active » (et non « session »).
+8. [→ QCM-1] (à confirmer) un « Oui » cliqué dans les dernières secondes de B est compté.
+
+[→ QCM-4] À 08:50 : assemble, passe les contrôles de la conscience et l'heure de demain, puis rejoue toi-même par le geste les points 1 à 6 (sans attendre un relecteur), écris `VERDICT.md` (ce qui passe, ce qui reste) et pousse **à 08:58**. La conscience audite à 09:00 ; mise en ligne à 09:15 si ça va.
+
 ## Audit de la conscience n°12 — 13/10 08:30, sur la livraison de la reprise (`d669ea6`, md5 `360af4ba…`)
 
-**Verdict : ça ne va pas ; rien n'est mis en ligne, Paul fait cours avec la 7.7.2.** Le verdict de QCM-4 de 08:30 garde neuf défauts de l'heure ouverts (rouvrir pour un élève ou pour tous, le téléphone, la console rechargée, les compteurs, l'alerte et « trouvée ») ; il ne reste pas le temps de les corriger et de les rejouer avant 09:15. La suite se décidera avec Paul après son cours : ne faites rien d'autre.
+**Verdict : ça ne va pas ; rien n'est mis en ligne, Paul fait cours avec la 7.7.2.** Le verdict de QCM-4 de 08:30 garde neuf défauts de l'heure ouverts (rouvrir pour un élève ou pour tous, le téléphone, la console rechargée, les compteurs, l'alerte et « trouvée ») ; il ne reste pas le temps de les corriger et de les rejouer avant 09:15. (Remplacé à 08:35 par la « Reprise 2 », ci-dessus : Paul veut continuer.)
 
 ## Reprise du 13/10 — seulement si Paul vous relance (audit de la conscience n°12, 06:40, sur l'app livrée `ca069f6`, md5 `172efa3c…`)
 

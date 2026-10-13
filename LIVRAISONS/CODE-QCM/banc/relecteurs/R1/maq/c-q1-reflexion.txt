@@ -1,0 +1,167 @@
+📝 Évaluation QCMMODE PROF
+🔴
+1 séance en cours
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+🎯 Évaluation d'essai — 3 questions — 3 ESSAI
+🕙 Fin de l'heure : 10:57
+🚫 Départ d'un élève
+↩️ Retour d'un élève
+🔓 Rouvrir pour un élève
+⏸️ Finir à une autre heure
+🛑 Terminer la séance
+24/24
+CONNECTÉS
+0/24
+ONT RÉPONDU
+—
+JUSTES
+1/3
+QUESTION
+🧠 Phase RÉFLEXION en cours
+🧠 RÉFLEXION
+14s
+EN COURS
+s
++5
++10
++30
+✋ RÉPONSE
+15s
+par tour
+s
++5
++10
++30
+🏁 Fin prévue 10:26
+QUESTION 1 / 3 — 1 BONNE RÉPONSE
+Quelle est la capitale de l'Italie ?
+✓ Bonne réponse : Rome
+Difficulté : Facile
+c4-culture-01
+c4-lire-01
+✋ Autoriser la réponse
+⏸️ Pause
+🔄 Relancer chrono
+🔮 À VENIR — Q 2 / 3
+I
+Lesquelles sont des capitales européennes ?
+Difficulté Standard · réflexion 30 s · réponse 20 s par tour · 2 bonnes réponses
+📱 Tablettesi
+📱 Tablette 1
+👁
+ABRIAL Julien
+✍️ écrit
+DUVERNAY Michel
+✍️ écrit
+📱 Tablette 2
+👁
+BAUDRY Léa
+✍️ écrit
+CARRÉ Tom
+✍️ écrit
+📱 Tablette 3
+👁
+ESNAULT Inès
+✍️ écrit
+FOUCHER Hugo
+✍️ écrit
+📱 Tablette 4
+👁
+GALLOIS Manon
+✍️ écrit
+HÉBRARD Nathan
+✍️ écrit
+📱 Tablette 5
+👁
+ISAMBERT Chloé
+✍️ écrit
+JOUBERT Louis
+✍️ écrit
+📱 Tablette 6
+👁
+LACOMBE Emma
+✍️ écrit
+MAILLARD Noah
+✍️ écrit
+📱 Tablette 7
+👁
+NOGARET Zoé
+✍️ écrit
+OLLIVIER Sacha
+✍️ écrit
+📱 Tablette 8
+👁
+PERRAUD Jade
+✍️ écrit
+QUINTON Enzo
+✍️ écrit
+📱 Tablette 9
+👁
+RAMBAUD Lina
+✍️ écrit
+SABATIER Malo
+✍️ écrit
+📱 Tablette 10
+👁
+TESSIER Anna
+✍️ écrit
+VALLÉE Rayan
+✍️ écrit
+📱 Tablette 11
+👁
+WEBER Clara
+✍️ écrit
+BRUNEAU Camille
+✍️ écrit
+📱 Tablette 12
+👁
+CHEVALLIER Théo
+✍️ écrit
+ZELLER Lou
+✍️ écrit
+✍️ écrit : la réponse, sur sa feuille, pendant la réflexion
+📋 Toutes les questionsi
+Q1
+Facile
+Quelle est la capitale de l'Italie ?
+Milan
+Naples
+Rome ✓
+Venise
+Réflexion 20 s · Réponse 15 s par tour
+Q2
+Standard
+Lesquelles sont des capitales européennes ?
+Madrid ✓
+Genève
+Berlin ✓
+Sydney
+🧠
+s
+✋
+s
+❌ Écarter
+Q3
+Facile
+Combien de pattes a une araignée ?
+6
+8 ✓
+10
+4
+🧠
+s
+✋
+s
+❌ Écarter
+⚙

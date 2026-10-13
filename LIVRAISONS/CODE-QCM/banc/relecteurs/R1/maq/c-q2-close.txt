@@ -1,0 +1,168 @@
+📝 Évaluation QCMMODE PROF
+🔴
+1 séance en cours
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+🎯 Évaluation d'essai — 3 questions — 3 ESSAI
+🕙 Fin de l'heure : 10:57
+🚫 Départ d'un élève
+↩️ Retour d'un élève
+🔓 Rouvrir pour un élève
+⏸️ Finir à une autre heure
+🛑 Terminer la séance
+24/24
+CONNECTÉS
+23/24
+ONT RÉPONDU
+9/23
+JUSTES
+2/3
+QUESTION
+⏸️ Question close — passe à la suivante
+🧠 RÉFLEXION
+30s
+pour cette question
+s
++5
++10
++30
+✋ RÉPONSE
+20s
+par tour
+s
++5
++10
++30
+🏁 Fin prévue 10:26
+QUESTION 2 / 3 — 2 BONNES RÉPONSES
+Lesquelles sont des capitales européennes ?
+✓ Bonnes réponses : Madrid / Berlin
+Difficulté : Standard
+c4-culture-01
+c4-lire-01
+▶️ Lancer Q3
+🔓 Rouvrir pour tous
+🔮 À VENIR — Q 3 / 3
+I
+Combien de pattes a une araignée ?
+Difficulté Facile · réflexion 20 s · réponse 15 s par tour · 1 bonne réponse
+📱 Tablettesi
+📱 Tablette 1
+👁
+ABRIAL Julien
+juste
+DUVERNAY Michel
+une en trop
+📱 Tablette 2
+👁
+BAUDRY Léa
+juste
+CARRÉ Tom
+une sur deux
+📱 Tablette 3
+👁
+ESNAULT Inès
+juste
+FOUCHER Hugo
+une en trop
+📱 Tablette 4
+👁
+GALLOIS Manon
+juste
+HÉBRARD Nathan
+une sur deux
+📱 Tablette 5
+👁
+ISAMBERT Chloé
+juste
+JOUBERT Louis
+une sur deux
+📱 Tablette 6
+👁
+LACOMBE Emma
+juste
+MAILLARD Noah
+faux
+📱 Tablette 7
+👁
+NOGARET Zoé
+juste
+OLLIVIER Sacha
+une sur deux
+📱 Tablette 8
+👁
+PERRAUD Jade
+une en trop
+QUINTON Enzo
+une sur deux
+📱 Tablette 9
+👁
+RAMBAUD Lina
+juste
+SABATIER Malo
+faux
+📱 Tablette 10
+👁
+TESSIER Anna
+une sur deux
+VALLÉE Rayan
+une en trop
+📱 Tablette 11
+👁
+WEBER Clara
+juste
+BRUNEAU Camille
+une sur deux
+📱 Tablette 12
+👁
+CHEVALLIER Théo
+⏳ pas de réponse
+ZELLER Lou
+une en trop
+juste
+toutes les bonnes + une en trop
+une bonne sur deux
+faux
+pas de réponse
+📋 Toutes les questionsi
+Q1
+Facile
+Quelle est la capitale de l'Italie ?
+Milan
+Naples
+Rome ✓
+Venise
+Réflexion 20 s · Réponse 15 s par tour — 21/24 justes
+⚠️ Annuler
+Q2
+Standard
+Lesquelles sont des capitales européennes ?
+Madrid ✓
+Genève
+Berlin ✓
+Sydney
+Réflexion 30 s · Réponse 20 s par tour — 9/23 justes
+⚠️ Annuler
+Q3
+Facile
+Combien de pattes a une araignée ?
+6
+8 ✓
+10
+4
+🧠
+s
+✋
+s
+❌ Écarter
+⚙

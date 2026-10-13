@@ -2,6 +2,20 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Relecteur neuf R1 (l'heure, de l'appel à la fin des questions) — 13/10 05:25, sur l'app de 05:00 — `banc/relecteurs/R1/trouvailles.md` et `cap/`
+
+Séance de 3 ESSAI, quatre élèves entrés sur deux tablettes (les vingt autres présents ne sont jamais entrés), clics parfois trop tardifs : des cas que mon banc ne joue pas. Écartées : l'accord au masculin (le faux hub des relecteurs n'avait pas le sexe des élèves) ; la séance visible au téléphone pendant l'appel (elle existe dès l'appel). Défauts :
+
+[QCM-4 → QCM-1] **« 🔓 Rouvrir pour tous » rejoue le 1er tour pour ceux qui ont déjà répondu.** Q3 close, Julien et Théo ont répondu au 1er tour, Léa et Michel non ; « 🔓 Rouvrir pour tous », la garde dit « Seuls ceux qui n'ont pas répondu la retrouvent ». Attendu (`c-rouvrir-tous`) : seules les moitiés de Léa et de Michel s'ouvrent. Vu : « Pose ton stylo, Julien… À toi dans 3 secondes », environ 15 s de moitiés voilées, la question B reposée à Julien et à Théo, puis seulement le tour de Léa et de Michel. Captures `45-q3bis-*.png`.
+
+[QCM-4 → QCM-1, QCM-2] **Un élève rouvert : pas de question B, et la console ne le montre pas.** Q2 close, « 🔓 Rouvrir pour Théo ». Attendu (`t-rouvrir-un`, puis B comme après chaque réponse) : Théo répond, puis « regarde ta feuille : dit-elle la même chose que ton clic ? » ; la console montre la question rouverte pour lui. Vu : après son clic, « ⏳ Attends la prochaine question… » sans B (`36-theo-b-*.png`) ; pendant ce temps, la console reste sur « ⏸️ Question close — passe à la suivante », Théo « ⏳ pas de réponse », tandis que le téléphone affiche « Phase : réponse — Q 2/3 · 2e tour » et le tableau « 🖊️ POSE TON STYLO · 2e tour » pour toute la classe (`34-console-theo-rouvert.png`, `34-tel-…`, `34-tableau-…`). Au téléphone, la fiche de Théo, qui a répondu, propose encore « 🔁 Rouvrir Q2 pour cet élève » (`38-tel-clic-theo.png`).
+
+[QCM-4 → QCM-2] **B demandé à un élève qui n'a rien cliqué ; et pas à l'autre dans le même cas.** Q1, 2e tour, temps fini, Léa et Michel n'ont rien cliqué. Attendu (`t-q1-b-michel`) : B seulement après un clic. Vu : Léa : « ⏱️ Temps fini : ton clic est enregistré. … dit-elle la même chose que ton clic ? » (`22-q1t2-0-0.png`) ; Michel : directement « ⏳ Attends la prochaine question… » (`22-q1t2-1-0.png`).
+
+[QCM-4 → QCM-1, QCM-2] **Les compteurs quand une partie de la classe n'est pas entrée.** Séance lancée, 24 présents, 4 entrés. Attendu (`c-pret`, `c-q1-reflexion`) : « CONNECTÉS » compte les entrés, « ATTESTATIONS » sur les présents. Vu : « 0/0 ATTESTATIONS » au lancement (`05-console-seance-lancee.png`) ; à « ▶️ Lancer Q1 », « 4/24 CONNECTÉS » devient « 24/24 CONNECTÉS » (`18-console-q1-reflexion.png`) ; les tablettes où personne n'est entré affichent « ✋ répond… » / « 🙈 attend son tour » comme les autres (`20-console-q1-tour1.png`), et « 🔓 Rouvrir pour un élève » liste leurs vingt élèves jamais entrés (`33-console-rouvrir-un.png`).
+
+[QCM-4 → QCM-1, QCM-2] **« ⚠️ Séance interrompue détectée » annonce un état faux.** Console rechargée à Q3 close. Attendu (`c-interrompue`) : l'état réel et l'heure de la coupure. Vu : « État : question 3, 1er tour (moitiés de gauche) ; 10 réponses enregistrées » et « Dernière déconnexion : … 03:02 » (l'heure du lancement) ; après « 🔄 Reprendre la séance », la console retrouve bien la question close (`42-console-reouverte.png`, `43-console-reprise-q3-close.png`).
+
 ## Relecteur neuf R2 (l'heure, de l'estimation au bilan) — 13/10 05:15, sur l'app de 05:00 (md5 `1fed29e0…`) — `banc/relecteurs/R2/trouvailles.md` et ses captures
 
 Séance de 3 ESSAI à quatre élèves (21 absents), deux tablettes ; à Q1, personne n'a répondu à temps (aucun clic). Ce que mon banc ne joue pas (il fait toujours répondre tout le monde) : **ce sont des défauts à corriger avant 06:30 si possible**.

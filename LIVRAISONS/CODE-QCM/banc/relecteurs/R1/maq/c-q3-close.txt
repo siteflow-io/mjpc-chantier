@@ -1,0 +1,162 @@
+📝 Évaluation QCMMODE PROF
+🔴
+1 séance en cours
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+🎯 Évaluation d'essai — 3 questions — 3 ESSAI
+🕙 Fin de l'heure : 10:57
+🚫 Départ d'un élève
+↩️ Retour d'un élève
+🔓 Rouvrir pour un élève
+⏸️ Finir à une autre heure
+🛑 Terminer la séance
+24/24
+CONNECTÉS
+24/24
+ONT RÉPONDU
+14/24
+JUSTES
+3/3
+QUESTION
+✅ Dernière question close — lance l'autoévaluation
+🧠 RÉFLEXION
+20s
+pour cette question
+s
++5
++10
++30
+✋ RÉPONSE
+15s
+par tour
+s
++5
++10
++30
+🏁 Fin prévue 10:27
+QUESTION 3 / 3 — 1 BONNE RÉPONSE
+Combien de pattes a une araignée ?
+✓ Bonne réponse : 8
+Difficulté : Facile
+c4-culture-01
+c4-lire-01
+📊 Lancer l'autoévaluation
+🔓 Rouvrir pour tous
+📱 Tablettesi
+📱 Tablette 1
+👁
+ABRIAL Julien
+faux
+DUVERNAY Michel
+faux
+📱 Tablette 2
+👁
+BAUDRY Léa
+juste
+CARRÉ Tom
+juste
+📱 Tablette 3
+👁
+ESNAULT Inès
+juste
+FOUCHER Hugo
+juste
+📱 Tablette 4
+👁
+GALLOIS Manon
+faux
+HÉBRARD Nathan
+juste
+📱 Tablette 5
+👁
+ISAMBERT Chloé
+juste
+JOUBERT Louis
+juste
+📱 Tablette 6
+👁
+LACOMBE Emma
+juste
+MAILLARD Noah
+faux
+📱 Tablette 7
+👁
+NOGARET Zoé
+juste
+OLLIVIER Sacha
+faux
+📱 Tablette 8
+👁
+PERRAUD Jade
+juste
+QUINTON Enzo
+faux
+📱 Tablette 9
+👁
+RAMBAUD Lina
+juste
+SABATIER Malo
+juste
+📱 Tablette 10
+👁
+TESSIER Anna
+faux
+VALLÉE Rayan
+faux
+📱 Tablette 11
+👁
+WEBER Clara
+juste
+BRUNEAU Camille
+faux
+📱 Tablette 12
+👁
+CHEVALLIER Théo
+juste
+ZELLER Lou
+faux
+juste
+toutes les bonnes + une en trop
+une bonne sur deux
+faux
+voilé : attend son tour
+répond (cadre vert)
+📋 Toutes les questionsi
+Q1
+Facile
+Quelle est la capitale de l'Italie ?
+Milan
+Naples
+Rome ✓
+Venise
+Réflexion 20 s · Réponse 15 s par tour — 21/24 justes
+⚠️ Annuler
+Q2
+Standard
+Lesquelles sont des capitales européennes ?
+Madrid ✓
+Genève
+Berlin ✓
+Sydney
+Réflexion 30 s · Réponse 20 s par tour — 9/24 justes
+⚠️ Annuler
+Q3
+Facile
+Combien de pattes a une araignée ?
+6
+8 ✓
+10
+4
+Réflexion 20 s · Réponse 15 s par tour — 14/24 justes
+⚠️ Annuler
+⚙

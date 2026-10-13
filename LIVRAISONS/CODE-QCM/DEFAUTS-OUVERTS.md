@@ -2,6 +2,18 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Contrôle de la conscience n°12 — 13/10 11:37, sur la reprise 4 bis (`c5a818c`, md5 `805732bc…`)
+
+**Verdict : ça ne va pas ; rien n'est mis en ligne, la 7.7.2 reste.** Mesures de la conscience : l'app se reconstruit à l'identique (`build.py` : `805732bc…`) ; ses contrôles passent (32 / 32, 111 s) et la sonde B aussi (17 / 17). Mais trois choses restent : un défaut connu encore ouvert, le téléphone qui montre la séance pendant l'appel (R9, n° 2) ; un écart à la maquette, « 🚀 Lancer la séance » de la carte grisé pendant l'appel (R9, n° 1, `c-appel`) ; des corrections rejouées par personne (le dénominateur des présents au téléphone et au tableau, « 1 réponse enregistrée »), avec la partie de R10 (de l'estimation au soir) qu'aucun relecteur n'a jouée. Écartés après mesure : les accords (`SCN.sexe` lit `classes/<classe>/amenagements/<élève>/sexe` ; au hub, en lecture, les quatre classes de Paul l'ont pour tous leurs élèves : 25, 30, 30, 30) ; « Je commence » fermé (R9, n° 3 : l'écran a sa case à cocher, `R9/cap/tab1-2.png`).
+
+## Reprise 5 du 13/10 — seulement si Paul vous relance : **tout poussé à 11:55, `VERDICT.md` à 12:05, contrôle à 12:10, mise en ligne à 12:15**
+
+1. [→ QCM-1] Pendant l'appel, la séance n'existe pour personne d'autre que la console : le téléphone dit « Aucune séance active » (ou ce que montre la maquette à ce moment) tant que Paul n'a pas cliqué « 🚀 Lancer la séance » dans la fenêtre de l'appel (R9 n° 2, `R9/cap/t1.png`). Si l'écran du téléphone doit changer, c'est QCM-2, sur ta demande.
+2. [→ QCM-1] « 🚀 Lancer la séance » de la carte, pendant l'appel : comme `c-appel` (`c3-gestes.js`, l. 251 environ) (R9 n° 1, `R9/cap/c2-appel.png`).
+3. [→ QCM-3] Joue toi-même, par le geste, sur l'app de 11:22, ce que R10 n'a pas joué : l'estimation, la seconde attestation, « ▶️ Commencer la correction », « 💡 Révéler », une alerte avec et sans trouvée, chaque bouton de l'alerte, le bilan, « 🛑 Terminer », puis le soir de cette séance. Compare chaque écran à sa scène. Chaque écart va à son propriétaire, tout de suite.
+4. [→ QCM-2] Corrige ce que QCM-3 t'envoie. Sinon, rejoue par le geste le dénominateur des présents au téléphone et au tableau (R9 n° 4 et 12, R11) et « 1 réponse enregistrée » (R9 n° 13).
+5. [→ QCM-4] À 11:55, assemble (`COURT=1`), rejoue par le geste les points 1, 2 et 4, rassemble ce que QCM-3 a trouvé et ce que c'est devenu, et pousse `VERDICT.md` à 12:05. Le verdict est tranché : soit ça va, soit ça ne va pas. Un défaut ouvert, un écart à la maquette non rendu par une raison de données, ou un point non rejoué, c'est « ça ne va pas ».
+
 ## Reprise 4 bis — accélérer (Paul, 10:47 : « il faut accélérer. On a 3 exécutants qui ne font rien il faut les utiliser pour accélérer la livraison finale »)
 
 Les quatre travaillent en même temps. **Tout est poussé à 11:22 ; `VERDICT.md` à 11:30 ; contrôle de la conscience à 11:35 ; mise en ligne à 11:45 si ça va.** Les relecteurs neufs suivent `banc/relecteurs/CONSIGNE.md` (même texte, mêmes interdits, la décision de Paul de 07:22 donnée), chacun sur son faux hub et son port, sur l'app assemblée après la correction de QCM-2 (point 1 ci-dessous), 12 minutes au plus.

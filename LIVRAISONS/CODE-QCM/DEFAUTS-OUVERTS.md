@@ -2,6 +2,10 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Assemblage n°5 — 13/10 04:00, `code-qcm` à `6e10d47`, app md5 `1fed29e0…` — sorties : `sorties/2026-10-13_0401/`
+
+**Aucun échec, aucun défaut ouvert** : contrôles de la conscience 30 / 30 ; banc commun 208 / 208 ; gestes rares 47 / 47 ; l'heure de demain 107 / 107. Fidélité : 120 scènes atteintes sur 157, 49 sans écart. Prochaine étape : le banc final de 05:30, les relecteurs neufs, le verdict.
+
 ## Assemblage n°4 — 13/10 02:00, `code-qcm` à `9a22d2e`, app md5 `1fed29e0…` — sorties : `sorties/2026-10-13_0200/`
 
 **Aucun échec, aucun défaut ouvert** : contrôles de la conscience 30 / 30 ; banc commun 208 / 208 ; gestes rares 47 / 47 ; l'heure de demain 107 / 107. Fidélité : 120 scènes atteintes sur 157, 49 sans écart. À 05:00, plus rien de nouveau (COMMUN §2) : l'assemblage de 04:00, puis le banc final de 05:30.

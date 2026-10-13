@@ -1,0 +1,64 @@
+Les gestes rares de l'heure (QCM-4 · BANC) — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-13T02:05:08.361Z
+Durée : 121 s (2 min 1 s) · vérifications : 47 · échecs : 0
+
+
+── B.1 La démo, lancée avec la classe : rien ne compte (2 s)
+  ok     [QCM-2 · HEURE] la démo se choisit au lancement
+  ok     [QCM-2 · HEURE] « 🎓 Lancer la démo »
+  ok     [QCM-1 · SOCLE] la séance de la démo est lancée (evalId = demo)
+  ok     [QCM-2 · HEURE] la démo : « 🎓 Évaluation d'entraînement : elle ne compte pas. » (t-demo-q)
+  ok     [QCM-1 · SOCLE] la démo reste dans la base après sa séance
+
+── B.2 L'entrée qui se trompe : un code pas enregistré, la mauvaise tablette, le binôme (18 s)
+  ok     [QCM-1 · SOCLE] les places de Julien et de Théo dans la base
+  ok     [QCM-1 · SOCLE] un code pas encore enregistré : « lève la main » (t-login-inconnu)
+  ok     [QCM-2 · HEURE] Julien entré : l'autre moitié nomme son binôme, « Ton binôme : BAUDRY Léa » (t-binome)
+  ok     [QCM-2 · HEURE] l'autre moitié : « Pas là ? Choisir un autre élève »
+  ok     [QCM-2 · HEURE] Tom à la tablette de Théo : « Tu es avec Camille : laisse cette tablette à quelqu'un d'autre et rejoins Camille. » (t-rejoins)
+  ok     [QCM-2 · HEURE] les quatre entrés se voient sur la console
+  ok     [QCM-2 · HEURE] Julien a tout coché : « Je commence » s'ouvre (t-attest-2)
+
+── B.3 Pendant Q1 : « 👁 », du temps ajouté, « 🔴 1 séance en cours », le départ et le retour, la garde de « 🛑 Terminer » (52 s)
+  ok     [QCM-2 · HEURE] « 👁 » : les deux moitiés d'une tablette, en direct (c-voir-tablette)
+  ok     [QCM-1 · SOCLE] le temps ajouté dans la base (temps/<qi>/{reflexion, reponse})
+  ok     [QCM-2 · HEURE] « 🚫 Départ d'un élève »
+  ok     [QCM-1 · SOCLE] Lou partie : partis/zeller_lou (ms)
+  ok     [QCM-2 · HEURE] « ↩️ Retour d'un élève » s'ouvre quand un élève est parti
+  ok     [QCM-1 · SOCLE] Lou revenue : la clé partis/zeller_lou retirée
+  ok     [QCM-2 · HEURE] la garde de « 🛑 Terminer » : « Annuler » garde la séance (c-terminer)
+  ok     [QCM-1 · SOCLE] une tablette rechargée en pleine question revient à Julien et à son binôme, sans retaper les codes
+  ok     [QCM-1 · SOCLE] … et au moment présent : l'énoncé de Q1
+  ok     [QCM-1 · SOCLE] le téléphone rechargé revient à la séance, Q1
+
+── B.4 « ❌ Écarter » la question 3, la tablette compte sans elle, « ↩️ Remettre » (82 s)
+  ok     [QCM-2 · HEURE] la garde : « ❌ Écarter la question 3 » (c-ecarter)
+  ok     [QCM-1 · SOCLE] la base : ecartees = [2]
+  ok     [QCM-2 · HEURE] « ❌ Écartée — pas posée », « ↩️ Remettre » (c-ecartee)
+  ok     [QCM-2 · HEURE] les tablettes comptent sans elle : « Question 2 / 2 » (t-q2-ecartee)
+  ok     [QCM-2 · HEURE] « ↩️ Remettre » la question 3
+  ok     [QCM-1 · SOCLE] la base : la question 3 remise (ecartees sans 2)
+
+── B.5 « ⚠️ Annuler » la question 2 ; « 🔓 Rouvrir pour tous » (96 s)
+  ok     [QCM-2 · HEURE] la garde : « ⚠️ Annuler la question 2 » (c-annuler)
+  ok     [QCM-1 · SOCLE] la base : annulees = [1]
+  ok     [QCM-2 · HEURE] « ⚠️ Annulée — posée, puis annulée » (c-annulee)
+
+── B.6 « ⏸️ Finir à une autre heure », puis « ▶️ Reprendre » ; la console perdue (99 s)
+  ok     [QCM-2 · HEURE] « ⏸️ Finir à une autre heure »
+  ok     [QCM-1 · SOCLE] la séance garde son état exact, en pause (etat.ph = pause)
+  ok     [QCM-2 · HEURE] « ▶️ Reprendre la séance du … — question … » (c-reprendre)
+  ok     [QCM-1 · SOCLE] reprise : l'appel s'ouvre d'abord (deroule.ph = appel)
+  ok     [QCM-1 · SOCLE] après l'appel, la séance reprend où elle était : Q2 close (deroule.ph = close, qi = 1)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q3 » après la reprise
+  ok     [QCM-1 · SOCLE] Q3 lancée (deroule.qi = 2)
+  ok     [QCM-2 · HEURE] la console perdue : une nouvelle console retrouve la séance (c-interrompue)
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir » une séance terminée : la garde (c-rouvrir-seance)
+
+── B.7 Aucune erreur de page, aucune boîte système (120 s)
+  ok     [QCM-1 · SOCLE] page « console » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-demo » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-1 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-2 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « telephone » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-camille » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « console-2 » sans erreur ni boîte système

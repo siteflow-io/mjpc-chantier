@@ -21709,3 +21709,32 @@ Réponse mot pour mot :
 1024. Comme tu les as relancés avant que je l'écrive, ils la trouveront à leur prochaine lecture des défauts.
 
 13/10/2026 12:44 MEMO
+
+---
+
+## TOUR 703 — le réveil programmé (pas Paul)
+
+> (13/10, 13:02) [Message programmé par la conscience n°12 (12:38, après les messages de Paul de 12:35 et 12:38) — il n'est pas de Paul ; arrivé à 13:02.] Il est 13:01 : contrôle de la reprise 6 du code du QCM. (La marche à suivre complète est dans le message programmé « Contrôle QCM reprise 6 (13:01) », trig_01P2n6npw9Bhwpv7UZnWTqNd.)
+
+---
+
+## TOUR 703 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `8d5319ad`. QCM-4 a rendu son VERDICT de 13:00 à 12:57 (`b1242fa9`) : app `f722840`, md5 `e155c121d34265440a47eb0c148a5d07`, que `build.py` redonne à l'identique ; contrôles 32/32 ; banc 211/211 ; reprises 3, 4 et 5 : 14/14, 27/27, 9/9 ; `banc-reprise2` 21/22 (le 2e tour sur 12, la maquette « 23/24 »). QCM-3 a rejoué par le geste la garde tranchée, qui dit la note du bilan (`f527874d`, `f7228408`). Dans ETAT.md, seule la ligne de QCM-4 est écrite. Fait : la seconde passe en tête de DEFAUTS-OUVERTS.md (`4e61b441`) ; mes contrôles et la sonde B lancés sur l'app de 12:50 ; un réveil à 13:21 (`trig_01DkJDtRQERUTvPXdzKNzE6N`).
+
+Réponse mot pour mot :
+
+**À jouer :** rien pour l'instant · **en cours chez l'exécutant :** QCM-2 corrige le dernier point ; les trois autres rejouent leurs écrans · **ouvert :** le second verdict, à 13:20
+
+1025. Le verdict de 13:00 dit non, pour un seul point : au 2e tour, le compte « ont répondu » est fait sur les 12 élèves qui ont la main, alors que la maquette compte sur les 24 présents. Tout le reste passe, y compris les deux défauts de la reprise 6.
+
+1026. Ce point vient de moi : dans la reprise 6, j'avais écrit que le 2e tour suivait la même règle que le 1er, sans le vérifier dans la maquette. QCM-2 a fait ce que j'avais écrit. C'est corrigé dans la consigne : la maquette décide.
+
+1027. La seconde passe :
+- 13:12 : QCM-2 a poussé sa correction ;
+- 13:20 : verdict de QCM-4 ;
+- 13:22 : mon contrôle ;
+- au plus tard 13:30 : mise en ligne, si ça va.
+Je passe dès maintenant mes contrôles sur l'app de 12:50, pour gagner du temps à 13:22.
+
+13/10/2026 13:04 MEMO

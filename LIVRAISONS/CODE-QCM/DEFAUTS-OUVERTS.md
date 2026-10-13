@@ -2,6 +2,10 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Assemblage n°4 — 13/10 02:00, `code-qcm` à `9a22d2e`, app md5 `1fed29e0…` — sorties : `sorties/2026-10-13_0200/`
+
+**Aucun échec, aucun défaut ouvert** : contrôles de la conscience 30 / 30 ; banc commun 208 / 208 ; gestes rares 47 / 47 ; l'heure de demain 107 / 107. Fidélité : 120 scènes atteintes sur 157, 49 sans écart. À 05:00, plus rien de nouveau (COMMUN §2) : l'assemblage de 04:00, puis le banc final de 05:30.
+
 ## Assemblage n°3 — 13/10 00:00, `code-qcm` à `05ddad0`, app md5 `c6dd982f…` (la même qu'à 22:00) — sorties : `sorties/2026-10-13_0001/`
 
 **Aucun échec** : contrôles de la conscience 30 / 30 ; banc commun 206 / 206 ; gestes rares 47 / 47 (dont la tablette et le téléphone rechargés en pleine question) ; l'heure de demain 107 / 107. Fidélité : 120 scènes atteintes sur 157, 46 sans écart ; ce qui reste est relu scène par scène (données du faux hub, moments du relevé). Le défaut « ✋ répond… » (assemblage n°1) est mis en attente : le banc relève la console quand les 12 moitiés ont déjà répondu, alors que dans `c-q1-tour1` Jade et Anna répondent encore ; relevé corrigé à 00:15 : la tuile dit bien « ✋ répond… » ; rayé. **Plus aucun défaut ouvert.**

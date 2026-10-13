@@ -22012,3 +22012,27 @@ Réponse mot pour mot :
 1069. En classe, la règle reste la même : un élève qui a cliqué sa réponse mais n'a pas dit « Oui » ou « Non » dans ses 5 secondes part dans cette liste. Je ne sais pas combien d'élèves le rateront en vrai.
 
 13/10/2026 15:43 MEMO
+
+---
+
+## TOUR 711 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 15:44) Attends pourquoi tes messages commencent toujours par à jouer et répètent deux fois la même chose?
+
+---
+
+## TOUR 711 — Claude (conscience n°12)
+
+Mesuré : depuis le résumé, chaque tour envoyait la réponse par SendUserMessage pendant le tour, puis la réécrivait en réponse finale ; Paul recevait donc deux fois le même contenu. L'en-tête « À jouer : … » venait de la préférence du 12/10, appliquée à tous les messages au lieu des seuls envois de maquette ou de livraison. Désormais : un seul message par réponse, la réponse finale.
+
+Réponse mot pour mot :
+
+1070. « À jouer » vient de ta règle du 12/10 : « à chaque maquette ou livraison envoyée, prévenir Paul de ce qu'il joue ». Je l'ai mise en tête de tous mes messages, même quand il n'y avait rien de nouveau à jouer. Désormais, je ne la mets que lorsque je t'envoie une version à jouer (une mise en ligne, une maquette), si ça te va.
+
+1071. La répétition, c'est ma faute : je t'envoyais le message pendant que je travaillais, puis je le réécrivais à la fin. Tu recevais donc les deux. À partir de maintenant, tu n'en reçois qu'un par réponse.
+
+1072. Rien d'autre ne change : la reprise 7 attend toujours que tu colles le message du point 1060.
+
+13/10/2026 15:45 MEMO

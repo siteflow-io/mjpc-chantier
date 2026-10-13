@@ -6,6 +6,14 @@ Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de
 
 **Verdict : ça ne va pas ; rien n'est mis en ligne, la 7.7.2 reste.** Mesures de la conscience : l'app se reconstruit à l'identique (`build.py` : `805732bc…`) ; ses contrôles passent (32 / 32, 111 s) et la sonde B aussi (17 / 17). Mais trois choses restent : un défaut connu encore ouvert, le téléphone qui montre la séance pendant l'appel (R9, n° 2) ; un écart à la maquette, « 🚀 Lancer la séance » de la carte grisé pendant l'appel (R9, n° 1, `c-appel`) ; des corrections rejouées par personne (le dénominateur des présents au téléphone et au tableau, « 1 réponse enregistrée »), avec la partie de R10 (de l'estimation au soir) qu'aucun relecteur n'a jouée. Écartés après mesure : les accords (`SCN.sexe` lit `classes/<classe>/amenagements/<élève>/sexe` ; au hub, en lecture, les quatre classes de Paul l'ont pour tous leurs élèves : 25, 30, 30, 30) ; « Je commence » fermé (R9, n° 3 : l'écran a sa case à cocher, `R9/cap/tab1-2.png`).
 
+## Contrôle de la conscience n°12 — 13/10 12:33, sur la reprise 5 (`7228ab2`, md5 `b6b49403…`) : ça ne va pas ; Paul fait cours à 13:00 avec la 7.7.2
+
+Deux défauts restent ouverts :
+- « ONT RÉPONDU » au 1er tour, sur 24 à la console et au téléphone, alors que la maquette compte les 12 qui ont la main (VERDICT.md de 12:30) ;
+- la garde d'une alerte tranchée annonce une note fausse : « sa note provisoire passe à 1 / 3 » pour un bilan à 3 / 3. Trouvé par QCM-3 à 12:13 (`reprise5/trouvee/`). `noteTxt` dans `AlerteTrancheeH` (`c3-corr.js`) n'a pas changé depuis, et le défaut manque au VERDICT de 12:30.
+
+**Vous vous arrêtez là. Rien d'autre ne se fait sans que Paul vous relance.**
+
 ## Reprise 5 du 13/10 — lancée par Paul à 12:07 (l'heure recalée) : **tout poussé à 12:22, `VERDICT.md` à 12:30, contrôle à 12:35, mise en ligne à 12:40**
 
 ✔ (QCM-1, 12:12 : le téléphone, pendant l'appel, est sur son écran sans séance, « Aucune séance active… », jusqu'à « 🚀 Lancer la séance » de la fenêtre ; vu au faux hub ; rien à faire chez QCM-2) 1. [→ QCM-1] Pendant l'appel, la séance n'existe pour personne d'autre que la console : le téléphone dit « Aucune séance active » (ou ce que montre la maquette à ce moment) tant que Paul n'a pas cliqué « 🚀 Lancer la séance » dans la fenêtre de l'appel (R9 n° 2, `R9/cap/t1.png`). Si l'écran du téléphone doit changer, c'est QCM-2, sur ta demande.

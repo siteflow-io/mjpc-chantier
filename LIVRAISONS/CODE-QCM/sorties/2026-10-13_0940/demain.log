@@ -97,3 +97,32 @@
   ok     [QCM-1 · SOCLE] ordreCorr : les 11 questions, de la plus ratée à la mieux réussie
   ok     [QCM-2 · HEURE] correction de Q11 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
   ok     [QCM-2 · HEURE] correction de Q6 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q8 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q9 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q10 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q2 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q3 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q4 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q5 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q7 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-2 · HEURE] correction de Q1 : toutes les feuilles lues, « 💡 Révéler » s'ouvre
+  ok     [QCM-1 · SOCLE] « Trouvée au dernier moment » : Lina à Q2, Paul à Q1, et personne d'autre
+── D.5 La co-évaluation, le bilan des 5  (624 s)
+  ok     [QCM-2 · HEURE] « 🤝 Ouvrir la co-évaluation, puis leur bilan »
+  ok     [QCM-2 · HEURE] tous ont répondu (l'élève seul n'a pas de co-évaluation) : « 🏁 Afficher leur bilan aux élèves » s'ouvre
+  ok     [QCM-2 · HEURE] le bilan de chacun des 5 dit sa note sur les 11 questions (la note, c'est la feuille ; une seule « Trouvée au dernier moment »)
+  ok     [QCM-1 · SOCLE] la séance de 4e terminée (etat = terminee, plus active)
+── D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF  (630 s)
+  ok     [QCM-3 · SOIR] Résultats : la séance de 4e, sous 4 ESSAI
+  ok     [QCM-3 · SOIR] le tableau de la séance : les 5 présents
+  ok     [QCM-3 · SOIR] Iris, absente, est dite absente
+  ok     [QCM-3 · SOIR] les feuilles lues : « rendre les copies ▸ »
+  ok     [QCM-3 · SOIR] copies rendues (copies.rendues)
+  ok     [QCM-3 · SOIR] le PDF « notes et compétences » s'ouvre (11 questions)
+── D.7 Aucune erreur de page, aucune boîte système  (640 s)
+  ok     [QCM-1 · SOCLE] page « console » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4e-2 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4e-1 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4e-3 » sans erreur ni boîte système
+
+Durée 640 s · 109 vérifications · 0 échecs

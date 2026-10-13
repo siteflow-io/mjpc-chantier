@@ -16,3 +16,57 @@ evaluation-qcm.staging.html 1971555 octets, md5 011ae89f91f62cc5796aa32d3fe8d4aa
   Durée : 99 s · vérifications : 30 · échecs : 8
     ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
   échecs : 8
+
+── reprise2
+  Reprise 2, points 1 à 5, par le geste (QCM-4 · BANC) — durée 131 s
+  vérifications : 22 · échecs : 1
+
+── reprise3
+  Reprise 3, point 5, par le geste (QCM-4 · BANC) — durée 163 s
+  vérifications : 13 · échecs : 0
+
+── jamais
+  Les scènes jamais atteintes (QCM-4 · BANC) — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-13T07:46:50.412Z
+  Durée : 304 s (5 min 4 s) · vérifications : 47 · échecs : 12 · scènes relevées : x610-1-b-julien, x610-2-b-michel, x610-6-coeval-laquelle, x610-7-coeval-ecrit, x610-8-console-alerte, x610-9-telephone-alerte, t-un-eleve
+
+── banc commun (373 s, code 0)
+  Durée : 372 s (6 min 12 s) · vérifications : 211 · échecs : 0 · scènes relevées : 97
+
+── les gestes rares (134 s, code 0)
+  Durée : 133 s (2 min 13 s) · vérifications : 47 · échecs : 0
+
+── l'heure de demain (640 s, code 0)
+  Durée : 640 s (10 min 40 s) · vérifications : 109 · échecs : 0
+
+── fidélité à la maquette
+  Scènes atteintes par le geste : 127 / 157 (hors MJPC) · fidèles (aucun écart non nommé) : 51 · avec écarts : 76 · écarts nommés dans ecarts-maquette.json : 123
+
+── synthèse (synthese.txt)
+  Synthèse de l'assemblage 2026-10-13_0940
+  
+  Contrôles de la conscience : Durée : 99 s · vérifications : 30 · échecs : 8
+    ÉCHEC  K11 · la correction commence par la question 2, la plus ratée (Q2 : 1 juste sur 2 ; Q1 : 2 sur 2) — ? | ?
+    ÉCHEC  K12 · « 💡 Révéler » s'ouvre quand les deux feuilles sont lues — absent
+    ÉCHEC  K12 · après « Révéler », les deux moitiés montrent la bonne réponse
+    ÉCHEC  K12 · Julien, feuille fausse et tablette juste à Q2 : « Trouvée au dernier moment » — ✨
+    ÉCHEC  K13 · « 🏁 Afficher leur bilan aux élèves » se clique quand la co-évaluation est finie
+    ÉCHEC  K14 · le bilan de Julien dit 3 / 3 (Q1 et Q3 justes sur sa feuille, Q2 trouvée au dernier moment) — ✨ 💡 🎲 🔥 3 ESSAI · ABRIAL JULIEN 📊 Mes évaluations 📝 Correction ⏳ La correction s'ouvrira
+    ÉCHEC  K14 · le bilan de son voisin dit 1 / 3 (seule Q1 juste sur sa feuille) — ✨ 💡 🎲 🔥 3 ESSAI · BAUDRY LÉA 📊 Mes évaluations 📝 Correction ⏳ La correction s'ouvrira dans un instant.
+    ÉCHEC  K15 · la base garde les lectures, la question « trouvée » et le bilan affiché (contrat, COMMUN §3.1) — {"sess_1791877209785":{"classeSlug":"3 ESSAI","evalId":"essai","date":1791877209785,"phase
+  
+  ■ l'heure : 291 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 94 ok, 0 échecs
+      QCM-2 · HEURE : 195 ok, 0 échecs
+      QCM-3 · SOIR : 2 ok, 0 échecs
+  ■ le soir : 38 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 3 ok, 0 échecs
+      QCM-3 · SOIR : 35 ok, 0 échecs
+  ■ le reste : 16 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 1 ok, 0 échecs
+      QCM-3 · SOIR : 15 ok, 0 échecs
+  ■ toutes les pages : 22 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 22 ok, 0 échecs
+  
+  Fidélité : 127 scènes atteintes, 51 fidèles ; écarts non nommés : QCM-3 · SOIR 73 dans 17 scènes ; QCM-2 · HEURE 521 dans 59 scènes ; non atteintes : 30
+
+Durée totale de l'assemblage : 747 s

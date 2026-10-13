@@ -9,9 +9,10 @@
 | Épreuve, sur l'app de 09:40 | Sortie | Résultat |
 | --- | --- | --- |
 | Contrôles de la conscience (non modifiés) | `controles.txt` | 22 / 30, 99 s ; les 8 échecs (K11 à K15) : K11 ne clique pas « ▶️ Commencer la correction », que la décision de Paul rend nécessaire |
+| Fidélité à la maquette v9 (avec les écrans jamais atteints) | `fidelite.txt` | 127 scènes atteintes sur 157 (120 à 08:00), 51 sans écart |
 | Banc commun (la séance du scénario, 12 tablettes, de l'appel au bilan, la correction au clic de Paul ; le soir ; le reste) | `banc.txt` | **211 / 211**, 6 min 12 s |
 | Gestes rares | `branches.txt` | **47 / 47**, 2 min 13 s |
-| L'heure de demain | `demain.txt` | en cours à 09:52 (10 min) ; ajouté dès sa fin |
+| L'heure de demain | `demain.txt` | **109 / 109**, 10 min 40 s |
 | Reprise 3, points 1 à 4 rejoués par le geste (`banc-reprise2.js`) | `reprise2.txt`, `captures-reprise2/` | **21 / 22** : « Rouvrir pour tous » rouvre pour ceux qui n'ont pas répondu ; « Rouvrir pour un élève » n'annonce rien à la classe ni au téléphone ni au tableau ; « CONNECTÉS » compte les entrés, « ONT RÉPONDU » garde son dénominateur ; l'état vrai de la séance interrompue, la reprise garde le chrono ; au téléphone « ▶️ Commencer la correction » et le chrono. **Échoue : l'heure de la coupure** (celle du lancement) |
 | Reprise 3, point 5 rejoué par le geste (`banc-reprise3.js`) | `reprise3.txt`, `captures-reprise3/` | **13 / 13** : l'alerte sur une question « Trouvée au dernier moment » part de la note réelle (→ 1 point des deux côtés), sa garde dit vrai, le bilan 3 / 3 ; le « Oui » de B cliqué dans les 2,5 dernières secondes est compté ; « Aucune séance active » au téléphone |
 | Reprise 3, point 7 : les écrans jamais atteints (`banc-jamais.js`) | `jamais.txt`, `captures-jamais/` | atteints : `t-un-eleve`, `x610-1-b-julien`, `x610-2-b-michel`, `x610-6`, `x610-7` (et, aux essais, `c-deplacer`, `t-deplace`, `t-corr-seul`) ; écarts envoyés à QCM-2 ; **non atteints** : `x610-8`, `x610-9`, `x610-autonomie-*` (l'alerte de Michel sur l'évaluation de 3e n'apparaît pas : défaut probable, à confirmer) ; le script dépasse son plafond de 5 min |

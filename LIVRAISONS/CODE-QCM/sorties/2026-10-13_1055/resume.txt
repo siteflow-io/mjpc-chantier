@@ -1,0 +1,68 @@
+Assemblage QCM-4 · BANC — 13/10/2026 10:55 (heure de Paris) — code-qcm 3458d28
+
+── build.py
+evaluation-qcm.staging.html 1974788 octets, md5 3f25ee05c2014edad9522ec093483ca6
+  code de sortie : 0
+  app : 3f25ee05c2014edad9522ec093483ca6  evaluation-qcm.staging.html  2018539 octets
+
+── empreintes des contrôles de la conscience (la version de main, extraite telle quelle : /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/sorties/2026-10-13_1055/.controles-main/AUDITS/CONTROLES-QCM-APP)
+  controles-app.js: OK
+  attendus/evaluation-essai.json: OK
+  attendus/taxonomie-competences.json: OK
+
+── contrôles de la conscience (112 s, code 0)
+  Contrôles de la conscience n°12 pour l'app — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-13T08:57:29.272Z
+  md5 de controles-app.js : 1f1ac0d8ca288d796d98b115bd461484
+  Durée : 109 s · vérifications : 32 · échecs : 0
+    ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  échecs : 0
+
+── reprise2
+  Reprise 2, points 1 à 5, par le geste (QCM-4 · BANC) — durée 133 s
+  vérifications : 22 · échecs : 0
+
+── reprise3
+  Reprise 3, point 5, par le geste (QCM-4 · BANC) — durée 163 s
+  vérifications : 13 · échecs : 0
+
+── reprise4
+  Reprise 4, points 1 à 7, par le geste (QCM-4 · BANC) — durée 229 s
+  vérifications : 24 · échecs : 0
+
+── jamais
+  Les scènes jamais atteintes (QCM-4 · BANC) — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-13T09:02:34.956Z
+  Durée : 305 s (5 min 5 s) · vérifications : 47 · échecs : 12 · scènes relevées : x610-1-b-julien, x610-2-b-michel, x610-6-coeval-laquelle, x610-7-coeval-ecrit, x610-8-console-alerte, x610-9-telephone-alerte, t-un-eleve
+
+── banc commun (369 s, code 0)
+  Durée : 368 s (6 min 8 s) · vérifications : 211 · échecs : 0 · scènes relevées : 97
+
+── les gestes rares (131 s, code 0)
+  Durée : 131 s (2 min 11 s) · vérifications : 47 · échecs : 0
+
+── l'heure de demain (637 s, code 0)
+  Durée : 636 s (10 min 36 s) · vérifications : 109 · échecs : 0
+
+── fidélité à la maquette
+  Scènes atteintes par le geste : 126 / 157 (hors MJPC) · fidèles (aucun écart non nommé) : 51 · avec écarts : 75 · écarts nommés dans ecarts-maquette.json : 123
+
+── synthèse (synthese.txt)
+  Synthèse de l'assemblage 2026-10-13_1055
+  
+  Contrôles de la conscience : Durée : 109 s · vérifications : 32 · échecs : 0
+  
+  ■ l'heure : 291 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 94 ok, 0 échecs
+      QCM-2 · HEURE : 195 ok, 0 échecs
+      QCM-3 · SOIR : 2 ok, 0 échecs
+  ■ le soir : 38 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 3 ok, 0 échecs
+      QCM-3 · SOIR : 35 ok, 0 échecs
+  ■ le reste : 16 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 1 ok, 0 échecs
+      QCM-3 · SOIR : 15 ok, 0 échecs
+  ■ toutes les pages : 22 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 22 ok, 0 échecs
+  
+  Fidélité : 126 scènes atteintes, 51 fidèles ; écarts non nommés : QCM-3 · SOIR 73 dans 17 scènes ; QCM-2 · HEURE 503 dans 58 scènes ; non atteintes : 31
+
+Durée totale de l'assemblage : 753 s

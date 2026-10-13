@@ -21971,3 +21971,44 @@ Réponse mot pour mot :
 1063. Je l'ai ajouté à la reprise 7, en point 6 : en mode test, les tablettes simulées, en petit comme « 🔍 en grand », prennent le même dessin que la vraie tablette, à chaque moment de la séance. Le calendrier ne bouge pas : tout est poussé à 16:15, le verdict tombe à 16:30, et la mise en ligne se fait à 16:45 si tout va. Le message à coller reste celui du point 1060.
 
 13/10/2026 15:40 MEMO
+
+---
+
+## TOUR 710 — Paul
+
+Texte de Paul (15:40). Les 62 lignes portent sur les élèves fictifs de la classe de test et sont résumées ici :
+
+> enfin, voilà le bilan d'une séance pour moi.... 📌 À lire sur les feuilles, ce soir (62)
+> [suivent 62 lignes : 45 « … : n'a pas dit si sa feuille disait son clic », 15 « … — Q2 : aucun de ces choix », 4 « … : a dit que sa feuille ne disait pas son clic, … ; … y a lu … ». Ce sont les élèves fictifs de la classe de test du mode test, et non des élèves réels : le texte entier est dans le message de Paul de 15:40.]
+
+---
+
+## TOUR 710 — Claude (conscience n°12)
+
+Mesuré dans le code en ligne :
+- `tousRepondent` (`maquette620.js`) ne fait dire B que si `SCN.doitDireB(x)` est vrai au moment du clic, ou dans la phase `b` pour le côté du tour ;
+- il ne fait répondre que `SCN.cote(x) === d.cote` ;
+- à la lecture, il lit `r ? r.choix : "aucun"` ;
+- il tire B « non » avec une probabilité de 15 % (`Math.random() < 0.85`) ;
+- `S.aLireSeance` (`live/base.js` l. 372-397) écrit « aucun de ces choix » si la lecture vaut « aucun », « n'a pas dit… » si B manque, et « a dit que sa feuille ne disait pas son clic » si B vaut « non » alors que la lecture égale le clic ;
+- `DUREES_DEFAUT.b` vaut 5 s.
+
+Fait : la reprise 7, point 7 (`b24abb24`).
+
+Réponse mot pour mot :
+
+**À jouer :** la nouvelle app en ligne, telle quelle · **en cours chez l'exécutant :** rien, la reprise 7 n'est pas encore collée · **ouvert :** la reprise 7 (point 1068)
+
+1064. Mesuré dans le code : les 62 lignes viennent de la classe simulée du mode test, qui ne se comporte pas comme une vraie classe. Les règles du soir, elles, font ce que le cadrage a décidé.
+
+1065. 45 lignes disent « n'a pas dit si sa feuille disait son clic ». Après sa réponse, l'élève a 5 secondes pour cliquer « Oui, la même chose » ou « Non, autre chose ». En mode test, les élèves simulés ne le font que si tu cliques « 🎲 Tous les élèves répondent » pendant ces 5 secondes.
+
+1066. 15 lignes disent « Q2 : aucun de ces choix ». « 🎲 » ne fait répondre que la moitié dont c'est le tour au moment où tu cliques. À la lecture, le voisin simulé a donc lu « aucun de ces choix » pour chaque élève resté sans réponse.
+
+1067. 4 lignes disent « a dit que sa feuille ne disait pas son clic ». « 🎲 » fait dire « Non » au hasard à 15 % des élèves, alors que leur voisin lit sur leur feuille la même chose que leur clic : la simulation se contredit toute seule.
+
+1068. Je l'ai ajouté à la reprise 7, en point 7. En mode test, chaque élève simulé dit « Oui » ou « Non » tout seul, au bon moment, d'après sa feuille. Le voisin lit ce que dit cette feuille. Et « 🎲 » fait répondre chaque élève à son tour, aux deux tours. La liste du soir d'un mode test ne contiendra alors que ce que tu as fait exprès, par exemple une feuille tapée autrement que le clic. Le calendrier ne bouge pas, et le message à coller reste celui du point 1060.
+
+1069. En classe, la règle reste la même : un élève qui a cliqué sa réponse mais n'a pas dit « Oui » ou « Non » dans ses 5 secondes part dans cette liste. Je ne sais pas combien d'élèves le rateront en vrai.
+
+13/10/2026 15:43 MEMO

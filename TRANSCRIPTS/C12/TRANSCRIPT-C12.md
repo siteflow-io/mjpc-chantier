@@ -22342,3 +22342,35 @@ Réponse, mot pour mot :
 1135. Le voisin ne lit la feuille que plus tard, à la correction. Dans les lignes du soir (1110 à 1114), « Léa y a lu » vient de ce moment-là, pas de la question de 1105.
 
 13/10/2026 18:40 MEMO
+
+---
+
+## TOUR 719 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (20:02) D'accord. Et si le voisin ne lit plus la feuille à la correction et que c'est l'élève lui même ? Ça donnerait quoi?
+
+---
+
+## TOUR 719 — Claude (conscience n°12)
+
+Relu au cadrage : 475 (Paul, le réflexe du clic), 486 à 489 (A et B), 610 (Paul : « ceintures et bretelles. B […] Et A en plus: comme ça, la pression se déplace. On devient garant de sa recopie »), 495 à 500 (dont l'élève seul, 500), 584 (pas de tirage, Paul lit les feuilles lui-même sur les premières évaluations). Code : `EcrLectureSeulH` (`c3-tablettes.js` l. 404-415, « Qu'as-tu écrit sur ta feuille ? »), la consigne d'autonomie de `LignesAttest2` (`etape3.js`). Le blocage de 488 pour l'élève seul n'est pas vérifié dans le code : pas affirmé. Rien n'est écrit dans l'app.
+
+Réponse, mot pour mot :
+
+1136. Ce serait revenir sur ta décision du 09/10 (610, « ceintures et bretelles »). Tu avais gardé la lecture par le voisin pour la raison que tu avais donnée en 475 : un élève stressé ou scrupuleux reclique, à la correction, ce qu'il avait cliqué, sans regarder sa feuille. Et tu avais ajouté : « la pression se déplace. On devient garant de sa recopie ».
+
+1137. À l'écran, ce serait celui qui existe déjà pour un élève seul sur sa tablette : « Qu'as-tu écrit sur ta feuille ? », et l'élève clique lui-même les choix qui disent la même chose que sa feuille.
+
+1138. La question de 1105 ferait alors presque tout le travail. Quand l'élève dit « Oui », il a déjà dit que sa feuille dit sa réponse de la tablette : à la correction, il n'y aurait plus rien à lire pour cette question. Il ne lirait que pour « Non » et pour « pas dit ».
+
+1139. Ce que tu gagnerais : plus d'échange de feuilles, plus d'écriture de l'autre à déchiffrer, plus de co-évaluation (« Michel a-t-il bien lu ta feuille ? »), plus de désaccords à régler en classe, et une correction plus courte.
+
+1140. Ce que tu perdrais : personne d'autre que l'élève ne regarde sa feuille. Un « Oui » faux ne se voit plus, ni en classe ni le soir. Ta liste du soir serait presque vide, mais seulement parce que plus rien ne peut se contredire. Pour vérifier, il ne resterait qu'à lire toi-même toutes les feuilles, comme tu l'as prévu pour les premières évaluations (584).
+
+1141. Le point d'autonomie ne porterait plus que sur « tu as dit la vérité » : la partie « tu lis avec soin la feuille de ton voisin » disparaît.
+
+1142. Mon avis : garder le voisin. C'est lui qui rend un « Oui » faux visible, donc c'est lui qui rend ta liste du soir fiable. Ce qui te fait perdre du temps le soir, ce sont les phrases illisibles, et c'est ce que règlent 1129 à 1131.
+
+13/10/2026 20:04 MEMO

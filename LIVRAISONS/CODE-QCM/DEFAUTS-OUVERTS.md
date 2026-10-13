@@ -2,6 +2,14 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Relecteur neuf R3 (le soir et le reste) — 13/10 05:35, sur l'app de 05:00 — `banc/relecteurs/R3/trouvailles.md` et ses captures
+
+Écartées : l'évaluation d'essai sans « Créée le … » (le fichier du faux hub n'a pas de date de création) ; l'accord au masculin (pas de sexe au faux hub des relecteurs). Défauts :
+
+[QCM-4 → QCM-3] **« Que dit la feuille ? » : la correction de Paul est attribuée au voisin, et la feuille reste « à lire ».** Soir, fiche de DUVERNAY Michel, Q3 (Tom avait lu « 10 »), « La feuille dit autre chose », coché « 8 », « Valider ». Attendu (`c-que-dit-la-feuille`, `c-fiche`) : « Corrigé d'après sa feuille : 8 », la ligne à lire tranchée. Vu : « Corrigé d'après sa feuille : 8 », puis « ⚠️ a dit que sa feuille disait son clic, 10 ; Tom y a lu 8 » (c'est Paul qui a lu 8 ; Tom avait lu 10), et le tableau garde « 1 feuille à lire ». Captures `a21-michel-apres.png`, `a22-resultats-lues.png`.
+
+[QCM-4 → QCM-1] (à confirmer : la console du relecteur s'est fermée pendant le geste) **Une séance terminée reste « en cours », avec « ⚠️ Séance interrompue détectée ».** « 🛑 Terminer la séance » sur le bilan de classe, la page de la console perdue pendant le geste. Rouverte : Données → Résultats montre la séance « ✅ terminée », et Pilotage montre en même temps « 🔴 1 séance en cours », « ⚠️ Séance interrompue détectée » (« question 1, 1er tour ; 11 réponses enregistrées », « 🔄 Reprendre la séance ») et « 🛑 Terminer la séance » pour cette même séance. Attendu : une séance terminée n'est plus active ni interrompue (`c-terminer`, `t-fin`). Captures `a15-bilan.png`, `a16-reprise.png`, `a23-seances-lues.png`.
+
 ## Relecteur neuf R1 (l'heure, de l'appel à la fin des questions) — 13/10 05:25, sur l'app de 05:00 — `banc/relecteurs/R1/trouvailles.md` et `cap/`
 
 Séance de 3 ESSAI, quatre élèves entrés sur deux tablettes (les vingt autres présents ne sont jamais entrés), clics parfois trop tardifs : des cas que mon banc ne joue pas. Écartées : l'accord au masculin (le faux hub des relecteurs n'avait pas le sexe des élèves) ; la séance visible au téléphone pendant l'appel (elle existe dès l'appel). Défauts :

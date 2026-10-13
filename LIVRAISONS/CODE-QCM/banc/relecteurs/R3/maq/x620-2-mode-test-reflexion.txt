@@ -1,0 +1,637 @@
+🧪 Évaluation QCMMODE TEST
+📥 Exporter snapshot test
+📱 QR pilotage
+🗑️ Sortir et purger
+🔬 Éprouver les mécanismes livrés
+
+Ces boutons appellent les fonctions réelles de l'application, pas des copies.
+
+🔒 Clôturer (chemin réel)✏️ Modifier l'éval après coup⚖️ Vérifier que les notes n'ont pas bougé⏱️ Faire expirer le chrono🔄 Relire l'état
+Séance : en_cours · énoncé non conservé
+🎬 Préparer un cas
+🎬 Le cas ambigu🎬 Un faux « Oui »🎬 Rien de dit à la fin du temps🎬 Un lecteur qui clique « aucun » partout🎬 Deux élèves d'accord pour mentir🎬 Trouvée au dernier moment🎬 Une tablette en panne🎬 Un départ en cours de séance
+🎓 Entrer comme un élève
+
+Exemple — AUDEBERT Élise · code 1000
+
+👋 Ouvrir le portail élève
+▸ Voir tous les codes du bac à sable
+Environnement de test isolé.
+🎯 Panneau prof
+i
+🎯 🎓 Démo — apprendre le déroulé — _test_evaluation-qcm
+🕙 Fin de l'heure : 17:55
+🚫 Départ d'un élève
+↩️ Retour d'un élève
+🔓 Rouvrir pour un élève
+⏸️ Finir à une autre heure
+🛑 Terminer la séance
+30/30
+CONNECTÉS
+0/30
+ONT RÉPONDU
+—
+JUSTES
+3/3
+QUESTION
+🧠 Phase RÉFLEXION en cours
+🧠 RÉFLEXION
+18s
+EN COURS
+s
++5
++10
++30
+✋ RÉPONSE
+20s
+par tour
+s
++5
++10
++30
+🏁 Fin prévue 17:19
+QUESTION 3 / 3 — 1 BONNE RÉPONSE
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✓ Bonne réponse : Parce qu'elle a huit pattes
+Difficulté : Standard
+✋ Autoriser la réponse
+⏸️ Pause
+🔄 Relancer chrono
+📱 Tablettesi
+📱 Tablette 1
+👁
+AUDEBERT Élise
+✍️ écrit
+AUGEREAU Gatien
+✍️ écrit
+📱 Tablette 2
+👁
+BOIVIN Eden
+✍️ écrit
+BOURREAU Céleste
+✍️ écrit
+📱 Tablette 3
+👁
+BRESSIN Titouan
+✍️ écrit
+CALDEIRA Tiago
+✍️ écrit
+📱 Tablette 4
+👁
+CESBRON Lili
+✍️ écrit
+CHALUMEAU Jules
+✍️ écrit
+📱 Tablette 5
+👁
+CHAN Aymeric
+✍️ écrit
+CHARRIER Line
+✍️ écrit
+📱 Tablette 6
+👁
+CHOLET Pierre
+✍️ écrit
+CHOUTEAU Baptistine
+✍️ écrit
+📱 Tablette 7
+👁
+DELACROIX Romain
+✍️ écrit
+DESBOIS Auriane
+✍️ écrit
+📱 Tablette 8
+👁
+DESLIN Lucas
+✍️ écrit
+DITTIERE Romane
+✍️ écrit
+📱 Tablette 9
+👁
+HEINRICH Clovis
+✍️ écrit
+JAMIN Noé
+✍️ écrit
+📱 Tablette 10
+👁
+JUIN Angèle
+✍️ écrit
+KOCK Elisa
+✍️ écrit
+📱 Tablette 11
+👁
+LAURY Maël
+✍️ écrit
+PAGEOT Elie
+✍️ écrit
+📱 Tablette 12
+👁
+PINET Charlotte
+✍️ écrit
+POULAIN Zélia
+✍️ écrit
+📱 Tablette 13
+👁
+REVET Lucas
+✍️ écrit
+ROLLAND Gabriel
+✍️ écrit
+📱 Tablette 14
+👁
+ROULLEAU Candice
+✍️ écrit
+TENNEGUIN Arthur
+✍️ écrit
+📱 Tablette 15
+👁
+XAVIER Capucine
+✍️ écrit
+VINET Émile
+✍️ écrit
+juste
+toutes les bonnes + une en trop
+une bonne sur deux
+faux
+voilé : attend son tour
+répond (cadre vert)
+📋 Toutes les questionsi
+Q1
+Facile
+Quelle est la capitale de l'Italie ?
+Milan
+Naples
+Rome ✓
+Venise
+Réflexion 20 s · Réponse 15 s par tour — 24/30 justes
+⚠️ Annuler
+Q2
+Standard
+Lesquelles sont des capitales européennes ?
+Madrid ✓
+Genève
+Berlin ✓
+Sydney
+Réflexion 30 s · Réponse 20 s par tour — 17/30 justes
+⚠️ Annuler
+Q3
+Standard
+Pourquoi l'araignée n'est-elle pas un insecte ?
+Parce qu'elle a six pattes
+Parce qu'elle a huit pattes ✓
+Parce qu'elle tisse une toile
+Parce qu'elle est trop grande
+Réflexion 30 s · Réponse 20 s par tour
+👥 Tablettes simulées
+i
+🎲 Tous les élèves répondent
+📱 Tablette 1 · AUDEBERT Élise · AUGEREAU Gatien
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · AUDEBERT ÉLISE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · AUGEREAU GATIEN
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille d'Élise
+📝 Feuille de Gatien
+📱 Tablette 2 · BOIVIN Eden · BOURREAU Céleste
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · BOIVIN EDEN
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · BOURREAU CÉLESTE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille d'Eden
+📝 Feuille de Céleste
+📱 Tablette 3 · BRESSIN Titouan · CALDEIRA Tiago
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · BRESSIN TITOUAN
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · CALDEIRA TIAGO
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Titouan
+📝 Feuille de Tiago
+📱 Tablette 4 · CESBRON Lili · CHALUMEAU Jules
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · CESBRON LILI
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · CHALUMEAU JULES
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Lili
+📝 Feuille de Jules
+📱 Tablette 5 · CHAN Aymeric · CHARRIER Line
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · CHAN AYMERIC
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · CHARRIER LINE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille d'Aymeric
+📝 Feuille de Line
+📱 Tablette 6 · CHOLET Pierre · CHOUTEAU Baptistine
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · CHOLET PIERRE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · CHOUTEAU BAPTISTINE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Pierre
+📝 Feuille de Baptistine
+📱 Tablette 7 · DELACROIX Romain · DESBOIS Auriane
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · DELACROIX ROMAIN
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · DESBOIS AURIANE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Romain
+📝 Feuille d'Auriane
+📱 Tablette 8 · DESLIN Lucas · DITTIERE Romane
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · DESLIN LUCAS
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · DITTIERE ROMANE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Lucas
+📝 Feuille de Romane
+📱 Tablette 9 · HEINRICH Clovis · JAMIN Noé
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · HEINRICH CLOVIS
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · JAMIN NOÉ
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Clovis
+📝 Feuille de Noé
+📱 Tablette 10 · JUIN Angèle · KOCK Elisa
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · JUIN ANGÈLE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · KOCK ELISA
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille d'Angèle
+📝 Feuille d'Elisa
+📱 Tablette 11 · LAURY Maël · PAGEOT Elie
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · LAURY MAËL
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · PAGEOT ELIE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Maël
+📝 Feuille d'Elie
+📱 Tablette 12 · PINET Charlotte · POULAIN Zélia
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · PINET CHARLOTTE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · POULAIN ZÉLIA
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Charlotte
+📝 Feuille de Zélia
+📱 Tablette 13 · REVET Lucas · ROLLAND Gabriel
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · REVET LUCAS
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · ROLLAND GABRIEL
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Lucas
+📝 Feuille de Gabriel
+📱 Tablette 14 · ROULLEAU Candice · TENNEGUIN Arthur
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · ROULLEAU CANDICE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · TENNEGUIN ARTHUR
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Candice
+📝 Feuille d'Arthur
+📱 Tablette 15 · XAVIER Capucine · VINET Émile
+🔍 Jouer en grand
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · XAVIER CAPUCINE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+✨
+💡
+🎲
+🔥
+_TEST_EVALUATION-QCM · VINET ÉMILE
+🎓 Démo — apprendre le déroulé
+QUESTION 3 / 3
+Standard
+1 pt
+Pourquoi l'araignée n'est-elle pas un insecte ?
+✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE
+TEMPS DE RÉFLEXION
+18
+📝 Feuille de Capucine
+📝 Feuille d'Émile
+⚙

@@ -1,0 +1,68 @@
+📝 Évaluation QCMMODE PROF
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+👥 Classes et élèvesi
+Ouvrir la console MJPC →
+🤖 Le prompt de création d'évali
+🤖 Prompt IA
+✏️ Modifier le prompt
+⏱️ Les durées de la séancei
+Installation et consignes
+min
+Estimation et seconde attestation
+min
+Correction, par question
+min
+Co-évaluation et bilan
+min
+Passage de la tablette, avant chaque tour
+s
+« Ta feuille dit-elle la même chose que ton clic ? »
+s
+Entre deux questions
+s
+💾 Enregistrer
+🎚️ Les niveaux de maîtrise et la notei
+Note sur :
+🟢
+de
+à
+🔵
+de
+à moins de
+🟠
+de
+à moins de
+🔴
+de
+à moins de
+💾 Enregistrer
+💬 Ce que lisent les élèvesi
+
+Éditeur des messages élève. Ces phrases s'affichent sur les tablettes de tes élèves. Modifie-les librement : un champ laissé vide revient au texte d'origine.
+
+Avant le lancement de l'évaluation
+
+Vu par l'élève qui ouvre l'application alors qu'aucune évaluation n'est lancée pour sa classe.
+
+Avant la correction
+
+Vu quand la phase de réponse est close et que la correction n'est pas encore lancée.
+
+À la fin de l'évaluation
+
+Vu quand tu as terminé la séance. Ce texte s'affiche quel que soit le résultat : il parle du travail fait, jamais de la réussite.
+
+ℹ️ Versioni
+
+Évaluations QCM — version de la livraison · socle MJPC-CORE
+
+⚙

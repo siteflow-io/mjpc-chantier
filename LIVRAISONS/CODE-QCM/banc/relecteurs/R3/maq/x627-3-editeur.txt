@@ -1,0 +1,241 @@
+📝 Évaluation QCMMODE PROF
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+📝 Évaluationsi
+Trier par
+date
+titre
+chapitre
+classe
+🤖 Prompt IA
+➕ Nouvelle évaluation
+
+Prépare ici tes évaluations : rédaction, relecture, impression. Le lancement en classe se fait dans « Pilotage classe ».
+
+🎓 Démo — apprendre le déroulé🔒 Permanente
+📚 tous les niveaux
+🎯 Tout ou rien
+3 questions
+18 minutes
+✅ Prête à lancer
+🖨️ Imprimer
+📋 Dupliquer
+▸ 6e · vide pour l'instant
+▸ 5e · vide pour l'instant
+▸ 4e · vide pour l'instant
+▾ 3e · 1 évaluation
+Évaluation d'essai — 3 questions
+📚 3e · Ch. 1 — Poésie et peinture au XIXe siècle
+🎯 Tout ou rien
+3 questions
+🧩 2 compétences
+Créée le 06/10/2026
+✅ Prête à lancer
+pas encore passée
+✏️ Modifier
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+▾ Sans chapitre · 7 évaluations
+3e- éval 1 Analyse logique - Construire une phrase complexe
+📚 chapitre : —
+🎯 Tout ou rien
+11 questions
+Créée le 07/10/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+4e- Chapitre 1 - Paris à la barre et analyse logique ·
+📚 chapitre : —
+🎯 Tout ou rien
+21 questions
+Créée le 07/10/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)
+📚 chapitre : —
+🎯 Tout ou rien
+10 questions
+Créée le 05/08/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+passée par 3 ESSAI le 24/09
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+Les Misérables — évaluation 2
+📚 chapitre : —
+🎯 Tout ou rien
+13 questions
+Créée le 18/06/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+Les Misérables — évaluation d'entraînement
+📚 chapitre : —
+🎯 Tout ou rien
+13 questions
+Créée le 17/06/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+Évaluation — Les pronoms relatifs : la liste (5e)
+📚 chapitre : —
+🎯 Tout ou rien
+10 questions
+Créée le 28/05/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+QCM — Le jambon-beurre
+📚 chapitre : —
+🎯 Tout ou rien
+10 questions
+Créée le 08/05/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+passée par 3 ESSAI le 15/09
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+✕
+✏️ Compléter l'évaluation
+📝 3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)
+JSON de l'évaluation
+🔍 Vérifier le format
+10 questions · 10 points
+📚 Chapitrei
+— à choisir —
+3e · Chapitre 1 — Poésie et peinture au XIXe siècle
+📊 Mode de scoringi
+🎯 Tout ou rien
+1 point si la réponse est exacte ; sinon 0
+✨ Partiel
+Une part du point par bonne case ; autant de retiré par mauvaise (plancher 0)
+🧩 Les compétences de cette évaluation — chacune porte sur au moins 3 questionsi
+Choisis d'abord le chapitre : il donne les compétences permises.
+▾ Q1
+↑
+↓
+🗑
+Difficulté :
+Facile
+Standard
+Approfondi
+Expert
+🎯 Ce qu'elle vérifie, pour le bilan de l'élève :i
+🧠 Réflexion
+s
+✋ Réponse
+s par tour
+🧩 Compétences (1 ou 2) :
+aucune
++ ajouter ▾
+Question bonus : elle compte dans les points gagnés, pas dans le total
+📏 Longueur assumée : sa moitié défile seule, la page ne bouge pas
+✕
+✕
+✕
+✕
+➕ Ajouter un choix
+💡 Explication (affichée aux élèves lors de la correction)i
+▾ Q2
+RÉPONSES MULTIPLES
+↑
+↓
+🗑
+Difficulté :
+Facile
+Standard
+Approfondi
+Expert
+🎯 Ce qu'elle vérifie, pour le bilan de l'élève :i
+🧠 Réflexion
+s
+✋ Réponse
+s par tour
+🧩 Compétences (1 ou 2) :
+aucune
++ ajouter ▾
+Question bonus : elle compte dans les points gagnés, pas dans le total
+📏 Longueur assumée : sa moitié défile seule, la page ne bouge pas
+✕
+✕
+✕
+✕
+✕
+➕ Ajouter un choix
+💡 Explication (affichée aux élèves lors de la correction)i
+▸ Q3
+Quel registre exprime les sentiments personnels du poète au moyen de rythmes et d'images ?
+↑
+↓
+🗑
+▸ Q4
+Dans le vers « Souvent, pour s'amuser, les hommes d'équipage », quelle figure sonore entend-on ?
+↑
+↓
+🗑
+▸ Q5
+Dans le vers « Le navire glissant sur les gouffres amers », le e final de « navire » se prononce-t-il, et pourquoi ?
+↑
+↓
+🗑
+▸ Q6
+« La mer, ce grand miroir, brille de mille feux » : quelle figure de style rapproche ici la mer et le miroir ?
+↑
+↓
+🗑
+▸ Q7
+RÉPONSES MULTIPLES
+Pourquoi dit-on que Baudelaire est un poète inclassable ?
+↑
+↓
+🗑
+▸ Q8
+RÉPONSES MULTIPLES
+Quelles sont les dispositions régulières des rimes dans la poésie classique ?
+↑
+↓
+🗑
+▸ Q9
+Dans les vers « Laissent piteusement leurs grandes ailes blanches / Comme des avirons traîner à côté d'eux », la phrase continue d'un vers à l'autre. Comment s'appelle ce procédé ?
+↑
+↓
+🗑
+▸ Q10
+RÉPONSES MULTIPLES
+BONUS — Un poème de Baudelaire ne comporte ni vers ni rimes. Quel est le type de ce poème, et que montre-t-il sur les règles de la poésie ?
+↑
+↓
+🗑
+➕ Ajouter une question
+💾 Enregistrer l'évaluation
+⚠️ Il reste à compléter : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie.
+⚙

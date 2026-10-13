@@ -1,0 +1,88 @@
+📝 Évaluation QCMMODE PROF
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📊 Résultats
+💾 Sauvegarde
+👤 DUVERNAY Michel — 1 / 3 · 6,7 / 20 · 🟠 Maîtrise fragilei
+✕ Fermer
+QUESTION
+SA FEUILLE, LUE PAR JULIEN
+SA TABLETTE
+CE QU'IL A DIT
+BONNE RÉPONSE
+POINTS
+Q1
+Quelle est la capitale de l'Italie ?
+🧩 c4-culture-01 · c4-lire-01
+corrigée en classe : raison donnée à Michel (Rome)
+Venise
+Venise
+Non, autre chose
+Rome
+1 pt
+La feuille dit autre chose
+Q2
+Lesquelles sont des capitales européennes ?
+🧩 c4-culture-01 · c4-lire-01
+Madrid, Genève, Berlin
+Madrid, Genève, Berlin
+Oui, la même chose
+Madrid, Berlin
+0 pt
+La feuille dit autre chose
+Q3
+Combien de pattes a une araignée ?
+🧩 c4-culture-01 · c4-lire-01
+⚠️ aucun de ces choix
+aucun de ces choix
+10
+Non, autre chose
+8
+0 pt
+✔ Marquer lue
+La feuille dit autre chose
+🧩 Ses compétences
+c4-culture-01
+Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle
+Q1 ✓ · Q2 ✗ · Q3 ∅ → 1/3
+🟠 Maîtrise fragile
+c4-lire-01
+Contrôler sa compréhension, devenir un lecteur autonome
+Q1 ✓ · Q2 ✗ · Q3 ∅ → 1/3
+🟠 Maîtrise fragile
+tr-personne-03
+Être autonome et responsable
+le point d'autonomie
+🔴 Maîtrise insuffisante
+tr-methodes-02
+S'impliquer dans les activités en classe et dans son travail personnel
+le point d'autonomie
+🔴 Maîtrise insuffisante
+⛔ Point d'autonomie retiré le 10/10 à 19:12.
+↩️ Rendre
+📝 Bilan général
+i
+Pré-rempli par l'app
+↻ Regénérer
+✓ Valider le bilan
+Que dit la feuille ?
+DUVERNAY Michel — Q3 · Combien de pattes a une araignée ?
+Julien a lu « aucun de ces choix ». Clique sur ce que dit sa feuille.
+6
+8
+bonne réponse
+10
+4
+Sa feuille ne dit aucun de ces choix
+lu par Julien
+Annuler
+Valider
+⚙

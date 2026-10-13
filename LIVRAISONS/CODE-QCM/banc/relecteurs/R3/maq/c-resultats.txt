@@ -1,0 +1,147 @@
+📝 Évaluation QCMMODE PROF
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📊 Résultats
+💾 Sauvegarde
+📊 Évaluation d'essai — 3 questions — 3 ESSAI
+📄 PDF notes et compétences
+📥 Export CSV
+← Retour
+
+08/10/2026 10:02 · 24 présents, 1 absent (YVON Adam) · questions écartées ou annulées : aucune · 7 feuilles à lire
+
+Élève ▴	Q1	Q2	Q3	Note	Sur 20	Maîtrise de la note	🧩 c4-culture-01
+Mobiliser des références culturelles… · Q1, Q2, Q3
+	🧩 c4-lire-01
+Contrôler sa compréhension… · Q1, Q2, Q3
+	🤝 Autonomie	À lire sur la feuille
+ABRIAL Julien	✓	✓	✗	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✓ · Q3 ✗
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✓ · Q3 ✗
+	🟢 Très bonne maîtrise	
+BAUDRY Léa	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise	
+BRUNEAU Camille	✓	✓	✗	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✓ · Q3 ✗
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✓ · Q3 ✗
+	🟢 Très bonne maîtrise	
+CARRÉ Tom	✗	✗	✓	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+Q1 ✗ · Q2 ✗ · Q3 ✓
+	🟠 Maîtrise fragile
+Q1 ✗ · Q2 ✗ · Q3 ✓
+	🟢 Très bonne maîtrise	Q1 : n'a pas dit si sa feuille disait son clic
+CHEVALLIER Théo	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🟢 Très bonne maîtrise	
+DUVERNAY Michel	✓	✗	∅	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+Q1 ✓ · Q2 ✗ · Q3 ∅
+	🟠 Maîtrise fragile
+Q1 ✓ · Q2 ✗ · Q3 ∅
+	🟢 Très bonne maîtrise	Q3 : aucun de ces choix
+ESNAULT Inès	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise	
+FOUCHER Hugo	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	⛔ retiré le 08/10 à 10:23	
+GALLOIS Manon	✓	✓	✗	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✓ · Q3 ✗
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✓ · Q3 ✗
+	🟢 Très bonne maîtrise	
+HÉBRARD Nathan	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🟢 Très bonne maîtrise	
+ISAMBERT Chloé	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise	
+JOUBERT Louis	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🟢 Très bonne maîtrise	
+LACOMBE Emma	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise	
+MAILLARD Noah	✓	✗	✗	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+Q1 ✓ · Q2 ✗ · Q3 ✗
+	🟠 Maîtrise fragile
+Q1 ✓ · Q2 ✗ · Q3 ✗
+	🟢 Très bonne maîtrise	Q3 : 🤔 pense qu'Emma a peut-être mal lu sa feuille
+NOGARET Zoé	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise	
+OLLIVIER Sacha	✗	✗	✗	0/3	0	🔴 Maîtrise insuffisante	🔴 Maîtrise insuffisante
+Q1 ✗ · Q2 ✗ · Q3 ✗
+	🔴 Maîtrise insuffisante
+Q1 ✗ · Q2 ✗ · Q3 ✗
+	🟢 Très bonne maîtrise	
+PERRAUD Jade	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🟢 Très bonne maîtrise	Q2 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille
+QUINTON Enzo	∅	✗	✗	0/3	0	🔴 Maîtrise insuffisante	🔴 Maîtrise insuffisante
+Q1 ∅ · Q2 ✗ · Q3 ✗
+	🔴 Maîtrise insuffisante
+Q1 ∅ · Q2 ✗ · Q3 ✗
+	🟢 Très bonne maîtrise	Q1 : aucun de ces choix
+RAMBAUD Lina	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise	
+SABATIER Malo	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🟢 Très bonne maîtrise	
+TESSIER Anna	✓	✗	✗	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+Q1 ✓ · Q2 ✗ · Q3 ✗
+	🟠 Maîtrise fragile
+Q1 ✓ · Q2 ✗ · Q3 ✗
+	🟢 Très bonne maîtrise	Q2 : a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Madrid et Genève
+VALLÉE Rayan	✓	✗	✗	1/3	6,7	🟠 Maîtrise fragile	🟠 Maîtrise fragile
+Q1 ✓ · Q2 ✗ · Q3 ✗
+	🟠 Maîtrise fragile
+Q1 ✓ · Q2 ✗ · Q3 ✗
+	🟢 Très bonne maîtrise	
+WEBER Clara	✓	✓	✓	3/3	20	🟢 Très bonne maîtrise	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise
+Q1 ✓ · Q2 ✓ · Q3 ✓
+	🟢 Très bonne maîtrise	
+ZELLER Lou	✓	✗	✓	2/3	13,3	🔵 Maîtrise satisfaisante	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🔵 Maîtrise satisfaisante
+Q1 ✓ · Q2 ✗ · Q3 ✓
+	🟢 Très bonne maîtrise	Q3 : a dit que sa feuille disait son clic, 6 ; Théo y a lu 8
+✓ juste d'après la feuille · ✓ orange : Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⛔ : point d'autonomie retiré · ⚠️ Annulée ou ❌ Écartée : la question garde sa marque en tête de colonne
+⚙

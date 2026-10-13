@@ -1,0 +1,143 @@
+📝 Évaluation QCMMODE PROF
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+📝 Évaluationsi
+Trier par
+date
+titre
+chapitre
+classe
+🤖 Prompt IA
+➕ Nouvelle évaluation
+
+Prépare ici tes évaluations : rédaction, relecture, impression. Le lancement en classe se fait dans « Pilotage classe ».
+
+🎓 Démo — apprendre le déroulé🔒 Permanente
+📚 tous les niveaux
+🎯 Tout ou rien
+3 questions
+18 minutes
+✅ Prête à lancer
+🖨️ Imprimer
+📋 Dupliquer
+▸ 6e · vide pour l'instant
+▸ 5e · vide pour l'instant
+▸ 4e · vide pour l'instant
+▾ 3e · 1 évaluation
+Évaluation d'essai — 3 questions
+📚 3e · Ch. 1 — Poésie et peinture au XIXe siècle
+🎯 Tout ou rien
+3 questions
+🧩 2 compétences
+Créée le 06/10/2026
+✅ Prête à lancer
+pas encore passée
+✏️ Modifier
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+▾ Sans chapitre · 7 évaluations
+3e- éval 1 Analyse logique - Construire une phrase complexe
+📚 chapitre : —
+🎯 Tout ou rien
+11 questions
+Créée le 07/10/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+4e- Chapitre 1 - Paris à la barre et analyse logique ·
+📚 chapitre : —
+🎯 Tout ou rien
+21 questions
+Créée le 07/10/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)
+📚 chapitre : —
+🎯 Tout ou rien
+10 questions
+Créée le 05/08/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+passée par 3 ESSAI le 24/09
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+Les Misérables — évaluation 2
+📚 chapitre : —
+🎯 Tout ou rien
+13 questions
+Créée le 18/06/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+Les Misérables — évaluation d'entraînement
+📚 chapitre : —
+🎯 Tout ou rien
+13 questions
+Créée le 17/06/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+Évaluation — Les pronoms relatifs : la liste (5e)
+📚 chapitre : —
+🎯 Tout ou rien
+10 questions
+Créée le 28/05/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+pas encore passée
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+QCM — Le jambon-beurre
+📚 chapitre : —
+🎯 Tout ou rien
+10 questions
+Créée le 08/05/2026
+⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie
+passée par 3 ESSAI le 15/09
+✏️ Compléter
+🖨️ Imprimer
+📋 Dupliquer
+🗑️
+✕
+➕ Nouvelle évaluation
+Coller le JSON de l'évaluationi
+🔍 Vérifier le format
+✨ Démarrer à blanc
+❌ Rien n'est enregistré : 7 choses à corriger dans le JSON.
+Question 4 : il manque le temps de réponse (« reponse »).
+Question 5 : il manque ce qu'elle vérifie (« verifie »), la courte phrase à l'infinitif du bilan de l'élève.
+Question 7 : 60 px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choix, sauf si je te dis que j'assume la longueur.
+Question 7 : la compétence « c4-oral-01 » n'est pas une compétence du chapitre (3e · Ch. 1 — Poésie et peinture au XIXe siècle).
+Question 9 : 3 compétences ; une question en a une ou deux.
+La compétence « c4-culture-02 » n'est évaluée que par 2 questions (Q3, Q8) : il en faut au moins 3.
+La séance durerait 49 min : 4 min de plus que les 45 minutes utiles.
+📋 Copier les erreurs pour l'instance de création d'éval
+✅ Le reste est bon : chapitre « 3e · Ch. 1 — Poésie et peinture au XIXe siècle », mode tout ou rien, 12 questions, 4 compétences du chapitre ; la question 11 porte « longueur assumée » : elle passe, et sa moitié défilera seule.
+💾 Enregistrer l'évaluation
+⚙

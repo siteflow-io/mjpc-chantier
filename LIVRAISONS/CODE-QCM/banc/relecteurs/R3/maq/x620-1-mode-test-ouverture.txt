@@ -1,0 +1,214 @@
+🧪 Évaluation QCMMODE TEST
+📥 Exporter snapshot test
+📱 QR pilotage
+🗑️ Sortir et purger
+🔬 Éprouver les mécanismes livrés
+
+Ces boutons appellent les fonctions réelles de l'application, pas des copies.
+
+🔒 Clôturer (chemin réel)✏️ Modifier l'éval après coup⚖️ Vérifier que les notes n'ont pas bougé⏱️ Faire expirer le chrono🔄 Relire l'état
+Séance : pas encore lancée · énoncé non conservé
+🎬 Préparer un cas
+🎬 Le cas ambigu🎬 Un faux « Oui »🎬 Rien de dit à la fin du temps🎬 Un lecteur qui clique « aucun » partout🎬 Deux élèves d'accord pour mentir🎬 Trouvée au dernier moment🎬 Une tablette en panne🎬 Un départ en cours de séance
+🎓 Entrer comme un élève
+
+Exemple — AUDEBERT Élise · code 1000
+
+👋 Ouvrir le portail élève
+▸ Voir tous les codes du bac à sable
+Environnement de test isolé.
+🎯 Panneau prof
+i
+🎯 Lancer une nouvelle séancei
+Classei
+🧪 _test_evaluation-qcm (30 élèves)
+Évaluationi
+🎓 Démo — apprendre le déroulé (3 questions)
+⏱️ Durée estimée : 17 mini
+✅ Ça tient dans les 45 minutes utiles.
+🚀 Lancer la séance
+📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédenti
+📱 Tablette 1
+⠿AUDEBERT Élise
+⠿AUGEREAU Gatien
+📱 Tablette 2
+⠿BOIVIN Eden
+⠿BOURREAU Céleste
+📱 Tablette 3
+⠿BRESSIN Titouan
+⠿CALDEIRA Tiago
+📱 Tablette 4
+⠿CESBRON Lili
+⠿CHALUMEAU Jules
+📱 Tablette 5
+⠿CHAN Aymeric
+⠿CHARRIER Line
+📱 Tablette 6
+⠿CHOLET Pierre
+⠿CHOUTEAU Baptistine
+📱 Tablette 7
+⠿DELACROIX Romain
+⠿DESBOIS Auriane
+📱 Tablette 8
+⠿DESLIN Lucas
+⠿DITTIERE Romane
+📱 Tablette 9
+⠿HEINRICH Clovis
+⠿JAMIN Noé
+📱 Tablette 10
+⠿JUIN Angèle
+⠿KOCK Elisa
+📱 Tablette 11
+⠿LAURY Maël
+⠿PAGEOT Elie
+📱 Tablette 12
+⠿PINET Charlotte
+⠿POULAIN Zélia
+📱 Tablette 13
+⠿REVET Lucas
+⠿ROLLAND Gabriel
+📱 Tablette 14
+⠿ROULLEAU Candice
+⠿TENNEGUIN Arthur
+📱 Tablette 15
+⠿XAVIER Capucine
+⠿VINET Émile
+👥 Tablettes simulées
+i
+🎲 Tous les élèves répondent
+📱 Tablette 1 · AUDEBERT Élise · AUGEREAU Gatien
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 2 · BOIVIN Eden · BOURREAU Céleste
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 3 · BRESSIN Titouan · CALDEIRA Tiago
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 4 · CESBRON Lili · CHALUMEAU Jules
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 5 · CHAN Aymeric · CHARRIER Line
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 6 · CHOLET Pierre · CHOUTEAU Baptistine
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 7 · DELACROIX Romain · DESBOIS Auriane
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 8 · DESLIN Lucas · DITTIERE Romane
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 9 · HEINRICH Clovis · JAMIN Noé
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 10 · JUIN Angèle · KOCK Elisa
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 11 · LAURY Maël · PAGEOT Elie
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 12 · PINET Charlotte · POULAIN Zélia
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 13 · REVET Lucas · ROLLAND Gabriel
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 14 · ROULLEAU Candice · TENNEGUIN Arthur
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+📱 Tablette 15 · XAVIER Capucine · VINET Émile
+🔍 Jouer en grand
+⭐
+🎯
+✨
+🎲
+Combien êtes-vous sur cette tablette ?
+👤 1 élève
+👥 2 élèves
+⚙

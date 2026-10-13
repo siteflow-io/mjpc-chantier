@@ -1,11 +1,17 @@
 # Trouvailles R10 — l'heure, de l'estimation au bilan, puis le soir
 
-Aucune trouvaille établie : dans les 12 minutes, je ne suis pas arrivé jusqu'à ma partie (question écartée, estimation, correction, co-évaluation, bilan, Terminer, Données → Résultats).
+Script : s4.js (pages gardées ouvertes du début à la fin), journal : log4.txt, captures : cap/s4-*.png.
 
-Ce que j'ai vu, sans écart relevé :
-- Console, « Lancer une nouvelle séance » (cap/s1-console.png) : classe 3 ESSAI (25 élèves), l'évaluation se choisit dans une liste déroulante, binômes proposés sur 13 tablettes (la tablette 13 a « seul », ZELLER Lou, « moitié libre »), durée estimée 17 min.
-- Console, « 🚀 Lancer la séance » → « 📋 Check-in : qui est absent aujourd'hui ? » (cap/s2-appel.png) : 25 boutons « ✓ NOM », plus « Tout le monde présent », « Annuler » et « 🚀 Lancer la séance ». Pas comparé à la scène c-appel.
+1. Tableau (`?view=board`), question close Q2/2 — aucun geste, ZELLER Lou marquée absente à l'appel. La console compte 24 élèves (« 0/24 CONNECTÉS »), mais le tableau affiche « 👥 Classe (25) » avec « Lou ZELLER » dans la liste. Maquette : scène du tableau pendant la séance non vérifiée faute de temps. Captures : cap/s4-bd*.png. À confirmer : la maquette garde peut-être les absents sur le tableau.
 
-Nombre de trouvailles : 0.
+Observé et conforme (pas une trouvaille) :
+- Console, « ❌ Écarter » sur Q3 après la clôture de Q1. Une confirmation s'ouvre avec « Annuler » et « ❌ Écarter la question 3 ». Après confirmation, l'écran passe à « 1/2 QUESTION », « 🔮 À venir — Q 2 / 2 », et dans la liste « Q3 … ❌ Écartée — pas posée » avec « ↩️ Remettre ». C'est la même chose que la maquette c-ecarter → c-ecartee (1/3 → 1/2). Captures : cap/s4-ecarter.png, cap/s4-ecartee.png.
+- Téléphone, après la dernière question close : il affiche « Phase : question close — Q 2/2 » et « 📊 Lancer l'autoévaluation », comme la console, sans recharger. Capture : cap/s4-ph*.png.
 
-Ce que je n'ai pas pu jouer, et pourquoi : tout le périmètre R10. La lecture de la maquette et la découverte de l'interface ont pris tout le temps. Mon 3e script était bloqué : il cliquait l'option de la liste déroulante avec getByText, au lieu de selectOption. Je n'ai donc pas lancé la séance (absent ZELLER Lou), pas fait entrer d'élèves sur les tablettes, et pas joué la question écartée (c-ecarter/c-ecartee), l'estimation (c-estim), la seconde attestation (c-attest2), « ▶️ Commencer la correction », la correction et « 💡 Révéler » (c-corr-q2-avant/apres), les alertes de co-évaluation avec et sans question trouvée au dernier moment et leurs boutons (c-coeval-*), le bilan (c-bilan), « 🛑 Terminer » (c-terminer), et le soir (c-resultats, c-fiche, c-feuille). Je n'ai pas non plus regardé le téléphone ni le tableau en cours de séance. La lecture de la maquette s'est arrêtée à c-ecarter et c-ecartee : sur c-ecartee, le compteur de questions passe de « 1/3 » à « 1/2 » et le « Fin prévue » de 10:26 à 10:24.
+Nombre de trouvailles : 1 (à confirmer).
+
+Ce que je n'ai pas pu jouer, et pourquoi :
+- Aucun élève n'est entré sur les tablettes. Sur le pavé « 👋 Identifie-toi » (mode 2 élèves), mon script a tapé les codes 2101/2108 et 2115/2122 puis « Entrer → », mais la tablette est restée sur le pavé avec « Renseigne ton prénom et ton nom. ». La console affiche donc « 0/24 CONNECTÉS » et « 0/0 justes » sur toutes les questions. Je ne sais pas si l'écran attendait un autre geste ou si c'est un défaut : non tranché, faute de temps. Captures : cap/s4-tab0-in.png, cap/s4-tab1-in.png.
+- Ensuite, tout mon périmètre est resté non joué. Mon script attendait un bouton d'estimation après la dernière question ; la console proposait « 📊 Lancer l'autoévaluation », que je n'ai pas cliqué. Je n'ai donc joué ni l'estimation (c-estim), ni la seconde attestation (c-attest2), ni « ▶️ Commencer la correction », ni la correction et « 💡 Révéler » (c-corr-*). Pas joué non plus : « Trouvée au dernier moment », les deux alertes de co-évaluation et leurs boutons (c-coeval-*), le bilan (c-bilan), « 🛑 Terminer » (c-terminer), et le soir (Données → Résultats c-resultats, fiche c-fiche, « Que dit la feuille ? » c-feuille). Raison : la limite de temps (11:11).
+- Note de lecture : la console affiche « Fin de l'heure : 9:55 » alors qu'il était environ 11:06 à Paris. Le navigateur de test est sans doute à l'heure UTC ; je ne le compte pas comme trouvaille.
+- La séance de 3 ESSAI est restée ouverte sur le hub, bloquée à « Lancer l'autoévaluation ». À la fermeture du navigateur, elle passe sans doute en « interrompue » (c'est ce que montrait ma relance précédente).

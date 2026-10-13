@@ -73,7 +73,7 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     for (const p of tabs) await p.evaluate(() => { const i = ELV.ici(); [i.g, i.d].filter(Boolean).forEach(x => ELV.estimer("bleu", x)); });
     await prof.evaluate(() => ACT.lancerCorrection());
     for (const p of tabs) await p.evaluate(() => { const i = ELV.ici(); [i.g, i.d].filter(Boolean).forEach(x => ELV.commencer(x, 2)); });
-    await pause(1000);
+    await pause(1000); await prof.evaluate(() => ACT.lancerCorrection()); await pause(300);
     const oc = await prof.evaluate(() => SCN.ordreCorr());
     verif(oc.length === 11, "l'ordre de la correction : les 11 questions", oc);
     for (let i = 0; i < 11; i++) {

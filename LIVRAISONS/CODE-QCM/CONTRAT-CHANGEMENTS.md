@@ -49,3 +49,11 @@ Pour les écrans : `SCN.doitDireB(slug)` dit si la moitié de cet élève doit m
 Et `ACT.trancher(alerte, null)` défait une décision (la lecture revient à `alertes/<id>/lu`) ; décisions : `{decision:"feuille"|"auteur", choix, eleve}` (la lecture devient `choix`, `par:"prof"`), `"lecteur"`, `"soir"` (une ligne « à lire », sorte `co` : « pense qu'<NOM Prénom> a mal lu sa feuille ; à relire ») ; `ACT.questionPrecedente()`.
 
 **Amendé à 18:46** : « ✋ Autoriser la réponse » garde le passage. Sa bulle : « Coupe la réflexion : « POSE TON STYLO » sur les deux moitiés, puis le 1er tour » ; c'est l'écran t-q1-passage1 (« Pose ton stylo, Julien. Tu es prêt ? À toi dans 3 secondes », la moitié voilée avec son stylo), puis le tour. Le contrôle K6 de la conscience, qui clique un choix 0,8 s après ce geste, échoue donc à sa première vérification (le choix n'est cliquable qu'au bout des 3 s du passage) : écart connu, choisi pour la fidélité à la maquette ; la suite des contrôles n'en dépend pas.
+
+## C7 — Aucun moment de la classe ne commence seul (QCM-1, 13/10 07:45 ; décision de Paul, 07:22)
+
+« Non c'est moi qui lance la correction. Jamais de sessions de groupe lancées automatiquement. » Vérifié, moment par moment, dans `src/live/base.js` :
+
+- **La correction** : la seconde attestation cochée par tous laisse la séance en `att2` ; « ▶️ Commencer la correction » s'ouvre, Paul le clique : `ACT.lancerCorrection()` (en `att2`) lit la 1re question de l'ordre. Le moteur ne le fait plus (`M.att2` retiré).
+- **Au geste de Paul seulement** (aucun code ne les déclenche ailleurs) : le lancement et l'appel, chaque question (`ACT.lancerQuestion`), l'estimation (`ACT.lancerEstimation`), la seconde attestation (`ACT.lancerCorrection`), chaque révélation et la question suivante (`ACT.reveler`, `ACT.questionSuivante`), la co-évaluation (après la dernière question corrigée, par « Question suivante »), le bilan (`ACT.afficherBilan`), la fin (`ACT.terminer`). Aucun geste d'élève (`ELV`) ne change la phase de la classe.
+- **Seuls passent d'eux-mêmes** les temps comptés à l'intérieur d'une question (Paul, 08/10, cadrage 584 : « Pour le passage automatique c'est normal ») : réflexion → passage → tour → B → 2e tour → close (`MOTEUR.tic`) ; et l'entrée → « prêts » (`M.entree`), qui ne lance rien : elle ouvre « ▶️ Lancer Q1 », que Paul clique.

@@ -164,8 +164,10 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(oc[0] === 1, "l'ordre de la correction se fixe : Q2 d'abord (la plus ratée)", oc);
     await prof.evaluate(l => Promise.all(l.map(x => ELV.commencer(x, 2))), presents);
     await pause(1000);
+    verif(base("sessions/" + sid + "/deroule/ph") === "att2", "toutes les secondes attestations : la correction attend le geste de Paul, « ▶️ Commencer la correction » (décision du 13/10)", base("sessions/" + sid + "/deroule"));
+    await prof.evaluate(() => ACT.lancerCorrection()); await pause(300);
     d = base("sessions/" + sid + "/deroule");
-    verif(d.ph === "lecture" && d.qi === 1, "toutes les secondes attestations : la lecture de Q2 commence d'elle-même (c-attest2)", d);
+    verif(d.ph === "lecture" && d.qi === 1, "« ▶️ Commencer la correction » : la lecture de Q2 commence", d);
     // Q2 lue : la feuille de Julien dit Genève (faux) ; celle de Léa, Genève (faux)
     await tab.evaluate(() => { ELV.lire(1, [1], "abrial_julien"); ELV.lire(1, [1], "baudry_lea"); });
     const lu = base("sessions/" + sid + "/lectures/1/abrial_julien");

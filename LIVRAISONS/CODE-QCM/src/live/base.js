@@ -710,8 +710,8 @@ var ACT = (function(){
     maj[cheminS(id, "presence_history/" + x + "/h_" + now)] = {ts:now, etat:"present"}; return ecrireQCM(maj, "retour"); };
   // l'estimation, puis la seconde attestation, puis la correction (dans l'ordre fixé ici : de la plus ratée à la mieux réussie)
   A.lancerEstimation = function(){ var id = sid(); return id ? poserDeroule(id, {ph:"estim"}) : Promise.resolve(); };
-  // « 📝 Lancer la correction » (après l'estimation) ouvre la seconde attestation ; la lecture commence d'elle-même quand tous l'ont cochée (MOTEUR) ;
-  // appelé en seconde attestation (« ▶️ Commencer la correction », ouvert à ce moment), il la lit tout de suite
+  // « 📝 Lancer la correction » (après l'estimation) ouvre la seconde attestation ; en seconde attestation, « ▶️ Commencer la correction » (c-attest2 :
+  // fermé tant qu'un présent n'a pas coché, puis ouvert) : c'est Paul qui le clique (décision du 13/10, 07:22), et la lecture de la 1re question commence
   A.lancerCorrection = function(){ var id = sid(); if(!id) return Promise.resolve(); var e = SCN.etat(id) || {};
     if(e.ph === "att2") return A.lireQuestion(null);
     var plus = {ordreCorr:SCN.ordreCorr()}; return poserDeroule(id, {ph:"att2"}, plus); };
@@ -949,12 +949,8 @@ var MOTEUR = (function(){
   // l'entrée finie : quand tous les présents ont fini l'attestation, la console passe à « prêts »
   M.entree = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "entree") return; var c = SCN.compteurs(null, sid);
     if(c.attestations && c.attestations[1] > 0 && c.attestations[0] === c.attestations[1]) poserDeroule(sid, {ph:"pret", reprise:e.reprise || null}); };
-  // la seconde attestation cochée par tous : la lecture de la première question commence d'elle-même (c-attest2 : « La correction commence quand
-  // tous les présents l'ont cochée en entier, comme au début » ; la scène suivante est déjà la lecture)
-  M.att2 = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "att2") return; var c = SCN.compteurs(null, sid);
-    if(c.prets && c.prets[1] > 0 && c.prets[0] === c.prets[1]) ACT.lireQuestion(null); };
-  // la console, le téléphone et le tableau mènent ; une tablette relaie seulement les temps comptés (M.relais), jamais l'entrée ni la correction
+  // la console, le téléphone et le tableau mènent ; une tablette relaie seulement les temps comptés (M.relais), jamais l'entrée ; la correction, comme tout moment de la classe, commence au geste de Paul (13/10)
   M.demarrer = function(relais){ if(M.actif) return; M.actif = true; M.relais = !!relais;
-    setInterval(function(){ try { M.tic(); if(!M.relais){ M.entree(); M.att2(); } } catch(e){ console.error(e); } }, relais ? 500 : 250); };
+    setInterval(function(){ try { M.tic(); if(!M.relais) M.entree(); } catch(e){ console.error(e); } }, relais ? 500 : 250); };
   return M;
 })();

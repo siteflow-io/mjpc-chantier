@@ -4035,7 +4035,7 @@ var SCN = (function(){
     if(qi != null && ["reflexion", "reponse", "close", "b", "passage", "rouvert", "pause"].indexOf(e.ph) >= 0){
       var rep = S.repondu(qi, k, sid), pc = S.premierCote(qi, sid);
       // ceux qui peuvent répondre : les présents entrés (une moitié vide ne répond pas)
-      var attendu = act.length;   // (13/10) le même dénominateur d'un tour à l'autre : les présents entrés
+      var attendu = pres.length;   // (13/10) le même dénominateur d'un tour à l'autre : les présents (la maquette, c-q1-reflexion : « … /24 »)
       o.repondu = [e.ph === "reflexion" ? 0 : rep.length, attendu];
       o.justes = [rep.filter(function(x){ return S.justeTablette(x, qi, sid); }).length, rep.length];
       o.question = [qi + 1 - ec.filter(function(x){ return x < qi; }).length, nbQ];
@@ -4043,7 +4043,7 @@ var SCN = (function(){
     if(e.ph === "appel" || e.ph === "entree" || e.ph === "pret"){
       var finis = entres.filter(function(x){ var a = S.attestDe(1, x, sid); return a && a.fini; });
       // « ATTESTATIONS » sur les présents (24 attendus, même si 4 seulement sont entrés) ; le moteur, lui, attend les entrés (attestEntres)
-      o.attestations = [finis.length, pres.length]; o.attestEntres = [finis.length, entres.length]; o.repondu = [0, act.length];
+      o.attestations = [finis.length, pres.length]; o.attestEntres = [finis.length, entres.length]; o.repondu = [0, pres.length];
       o.pasEntres = pres.filter(function(x){ return entres.indexOf(x) < 0; });
       o.attestEnCours = {}; pres.forEach(function(x){ var a = S.attestDe(1, x, sid); if(entres.indexOf(x) >= 0 && !(a && a.fini)) o.attestEnCours[x] = a ? a.lignes || 0 : 0; });
     }
@@ -13252,7 +13252,7 @@ function Interrompue(){
       h("div", {style:{padding:"1rem 1.2rem", fontSize:".9rem", color:"var(--noir)"}},
         h("div", {style:{marginBottom:".4rem"}}, "📅 Démarrée le " + se.date + " à " + se.heure),
         h("div", {style:{marginBottom:".4rem"}}, "🔌 Dernière déconnexion : " + m.date + " à " + m.deconnexion),
-        h("div", {style:{marginBottom:".8rem"}}, "📝 État : question " + (m.qi + 1) + ", " + (["reponse", "passage", "b", "rouvert"].indexOf(m.ph) >= 0 ? (m.tour === 1 ? "1er" : "2e") + " tour (moitiés de " + cote + ")" : m.ph === "reflexion" ? "en réflexion" : m.ph === "close" ? "close" : m.ph === "lecture" || m.ph === "revele" ? "en correction" : "en attente") + " ; " + c.reponses + " réponses enregistrées")),
+        h("div", {style:{marginBottom:".8rem"}}, "📝 État : question " + (m.qi + 1) + ", " + (["reponse", "passage", "b", "rouvert"].indexOf(m.ph) >= 0 ? (m.tour === 1 ? "1er" : "2e") + " tour (moitiés de " + cote + ")" : m.ph === "reflexion" ? "en réflexion" : m.ph === "close" ? "close" : m.ph === "lecture" || m.ph === "revele" ? "en correction" : "en attente") + " ; " + c.reponses + (c.reponses > 1 ? " réponses enregistrées" : " réponse enregistrée"))),
       h("div", {className:"checkin-actions rangee-une"},
         h("button", {className:"btn btn-rouge btn-sm", "data-va":"c-terminer", title:"Clôt la séance, après une confirmation : l'archive s'écrit avec les notes telles qu'elles sont."}, "🛑 Terminer définitivement"),
         h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-reprendre", title:"Met la séance en pause, telle qu'elle est, pour la reprendre à une heure suivante."}, "⏸️ Finir à une autre heure"),
@@ -14055,6 +14055,9 @@ function MoitieH(p, cote, autreP){
   if(ph === "reflexion") return EcrReflexion(e, qi, reste);
   // (t-rouvrir-un) une question rouverte pour un seul élève : lui seul répond puis dit B ; son voisin voit le voile, les autres attendent
   if(m.pour && m.pour !== "tous" && ["passage", "reponse", "b"].indexOf(ph) >= 0 && m.pour !== p) return m.pour === vSlug ? Voile(v, false, e) : EcrAttente(e);
+  // (R9, QCM-4 11:13) « Rouvrir pour tous » : seuls ceux qui n'avaient pas répondu la retrouvent ; qui avait répondu (et dit B) attend, sans « Pose ton stylo » ni B
+  var etR = typeof SCN.etat === "function" ? (SCN.etat() || {}) : {};
+  if((m.rouvert || etR.rouvert) === "tous" && qi != null && ["passage", "reponse", "b", "close"].indexOf(ph) >= 0 && typeof SCN.concerne === "function" && !SCN.concerne(p)) return EcrAttente(e);
   // (contrat C6) le geste de Paul a coupé l'attente : la moitié qui vient de répondre dit B pendant que la suite commence
   if(typeof SCN.doitDireB === "function" && SCN.doitDireB(p)){ var bp = m.bPour || {}; return EcrDeclareH(e, bp.qi != null ? bp.qi : qi, bp.reste != null ? bp.reste : reste); }
   if(ph === "passage") return cote === actif ? EcrPassage(e, qi, reste) : (v && !seul ? Voile(v, true, e) : EcrAttente(e));

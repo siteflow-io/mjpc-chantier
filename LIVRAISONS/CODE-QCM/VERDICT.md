@@ -1,4 +1,50 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 3 du 13/10/2026, 09:58
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 4 bis du 13/10/2026, 11:30
+
+*La reprise 4 bis (`DEFAUTS-OUVERTS.md`, Paul 10:47 : accélérer). App livrée : `evaluation-qcm.staging.html`, md5 **`805732bcff4ec2fedd7d2831123037f8`**, assemblée par `build.py` sur `code-qcm` à `c5a818c` (tout ce qui était poussé à 11:22). Sorties : `sorties/2026-10-13_1055/` (l'assemblage complet, sur `3458d28`, la trouvée remise) et `sorties/2026-10-13_1122/` (le réassemblage de 11:22). Les verdicts précédents, plus bas, restent pour mémoire.*
+
+## En une phrase
+
+**Sur l'app de 11:22, tout ce que jouent le banc et les jeux par le geste passe, sans un échec : les contrôles corrigés de la conscience (32 / 32), le banc commun avec B exigé de chacun (211 / 211), et les points des reprises 2, 3 et 4 (22 / 22, 13 / 13, 26 / 26), dont les deux cas de l'alerte, B pour chacun dans les réouvertures, la question écartée nulle part et « Rouvrir pour tous » réservé à ceux qui n'ont pas répondu. Mais les trois relecteurs neufs n'ont couvert qu'une partie de l'heure (R9 jusqu'aux réouvertures, R11 la seule Q1, R10 rien : son automate n'a fait entrer personne), et plusieurs corrections faites sur leurs trouvailles n'ont été rejouées par aucun relecteur : je ne peux pas dire que l'heure va sans réserve.** Aucun défaut établi n'est ouvert à 11:30 dans ce que le banc et les relecteurs ont joué ; les réserves sont dans le tableau ci-dessous.
+
+## Ce qui le prouve
+
+| Épreuve | 10:55 (`3458d28`, md5 `3f25ee05…`) | 11:22 (`c5a818c`) |
+| --- | --- | --- |
+| Contrôles de la conscience **corrigés** (ceux de `main`, md5 `1f1ac0d8…` dans `EMPREINTES.md5`, extraits tels quels) | **32 / 32**, 109 s | **32 / 32**, 118 s |
+| Banc commun (la séance du scénario, 12 tablettes ; **B sans tolérance** : chaque élève qui a répondu doit voir B ; la correction au clic de Paul ; le soir ; le reste) | **211 / 211**, 6 min 8 s | **211 / 211**, 6 min 4 s |
+| Gestes rares | **47 / 47**, 2 min 11 s | (non rejoué) |
+| L'heure de demain (4e, 11 questions) | **109 / 109**, 10 min 36 s | (non rejoué) |
+| `banc-reprise2.js` : compteurs, chrono et « Commencer la correction » au téléphone, rouvrir pour un élève, pour tous, la console rechargée | **22 / 22** | **22 / 22** |
+| `banc-reprise3.js` : l'alerte sur une question **trouvée au dernier moment** (→ 1 point des deux côtés, la règle de Paul), sa garde, le bilan ; le « Oui » tardif de B ; « séance » au téléphone | **13 / 13** | **13 / 13** |
+| `banc-reprise4.js` : l'alerte **sans** trouvée (« juste → 1 point », « faux → 0 point »), aucun bouton à choix vide ; B pour chacun (1er et 2e tour, rouvert seul, rouvert « pour tous ») ; « Rouvrir pour tous » seulement pour ceux sans réponse, la garde sans les jamais entrés ; la question écartée nulle part (téléphone, correction, « c'est laquelle ? », bilan) ; l'heure de la coupure ; « +5 » au 1er tour pour le 1er tour ; le bandeau du téléphone ; pas de « ✗ » pour les sans-réponse | **24 / 24** | **26 / 26** (avec, depuis 11:09, « Rouvrir pour tous » après une réouverture pour un élève : ni « Pose ton stylo » ni B à ceux qui avaient répondu) |
+| Fidélité à la maquette v9 | 126 scènes atteintes sur 157, 51 sans écart | — |
+| Les écrans jamais atteints (`banc-jamais.js`) | 7 relevés ; l'alerte de Michel sur l'évaluation de 3e n'apparaît pas (selon QCM-2 : la donnée du banc ; à reprendre dans le banc) ; plafond de 5 min | — |
+| Durée de l'assemblage complet | 12 min 33 s | 6 min 9 s (court : contrôles, banc commun, reprises, fidélité) |
+
+## Les relecteurs neufs R9, R10, R11 (lancés par QCM-1, QCM-3, QCM-2 à 10:55–11:00) et ce que leurs trouvailles sont devenues
+
+| Trouvaille | Relecteur | Devenue | Vu par |
+| --- | --- | --- | --- |
+| « ONT RÉPONDU » sur les entrés, au téléphone et au tableau (« 0 / 2 », « 2 / 2 » quand une tablette n'a pas répondu) | R9, R11 | corrigé selon QCM-1 (11:00, le dénominateur = les présents) | `banc-reprise2.js` (le dénominateur gardé d'un tour à l'autre) ; **le dénominateur des présents au téléphone et au tableau n'est rejoué par personne** |
+| « 1 réponses enregistrées » | R9 | corrigé (QCM-1, 11:08) | non rejoué |
+| « Rouvrir pour tous » : « Pose ton stylo » et B à qui avait répondu | R9, et `banc-reprise4.js` à 11:13 (Léa) | corrigé (QCM-2, `c5a818c`) | **`banc-reprise4.js` à 11:22 : passe** — rayé |
+| « Rouvrir pour un élève » : console, téléphone, tableau restent à « Question close » | R9 | **pas un défaut** : c'est la maquette (`c-rouvrir-un`, « ⏸️ Question close »), demandé par la reprise 3 | `banc-reprise2.js` |
+| Julien rouvert seul : B pas vu ; Léa : clic non compté après « +30 » | R9 (à confirmer) | non reproduits | `banc-reprise4.js` : B vu par l'élève rouvert seul, et par celui rouvert « pour tous » |
+| Le téléphone montre la séance pendant l'appel | R9 | **ouvert** (QCM-2), non bloquant pour l'heure (le téléphone ne lance rien seul) | — |
+| « Je commence » fermé, rien à cocher (attestation) | R9 | à comparer à `t-attest-1` ; le banc commun coche ligne par ligne et passe | banc commun |
+| Accords au masculin (« pour qu'il réponde » pour Léa) | R9, R11 | écarté : le faux hub des relecteurs n'a pas le sexe des élèves ; avec lui, le banc commun voit les accords justes | banc commun |
+| L'entrée « Identifie-toi » refusée | R10, R11 | **pas un défaut** : leur automate ne tapait que le code (il faut prénom, nom, code) ; R4, R5, R8 et le banc entrent | banc commun |
+| Le tableau liste Adam, absent | R9 | **pas un défaut** (la maquette le liste) | — |
+| R10 : l'estimation, la correction, l'alerte, le bilan, le soir | R10 | **non joués par un relecteur** | joués par le banc commun (211 / 211), `banc-reprise3.js` et `banc-reprise4.js` |
+
+## Tranché par QCM-4 à la capture (demandé par R9)
+
+- « 🚀 Lancer la séance » de la carte, grisé derrière la fenêtre de l'appel (`R9/cap/c2-appel.png`) : celui de la fenêtre est ouvert et lance la séance. La maquette (`c-appel`) a les deux ouverts : **écart à la maquette**, sans effet pour Paul (le geste est dans la fenêtre) ; je ne le change pas en défaut bloquant, la décision du comportement est à Paul.
+- Le tableau qui liste Adam, absent, dans « 👥 Classe (25) » : **pas un défaut**, la maquette `b-reponse` le liste aussi.
+
+---
+
+# Verdict de 09:58 (pour mémoire)
 
 *La reprise 3 (`DEFAUTS-OUVERTS.md`, « Reprise 3 du 13/10 », Paul 09:03, séance à 13:00). App livrée : `evaluation-qcm.staging.html`, md5 **`011ae89f91f62cc5796aa32d3fe8d4aa`**, assemblée par `build.py` sur `code-qcm` à `f95030b` (tout ce qui a été poussé jusqu'à 09:40). Sorties : `sorties/2026-10-13_0940/`. Les verdicts de 08:58 et de 08:30, plus bas, restent pour mémoire.*
 

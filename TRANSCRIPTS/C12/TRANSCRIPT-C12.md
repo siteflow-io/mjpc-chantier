@@ -21065,3 +21065,33 @@ Réponse mot pour mot :
 952. **J'ai déjà vérifié ce qui ne dépend pas de leurs corrections** : l'app livrée parle à ta vraie base, la même que la 7.7.2, sans rien du banc dedans ; le portail l'ouvre par les mêmes adresses. Le retour à la 7.7.2 est noté.
 
 13/10/2026 07:28 MEMO
+
+---
+
+## TOUR 684 — le réveil programmé (pas Paul)
+
+> (13/10, 08:28) [Message programmé par la conscience n°12 sur l'ordre de Paul (13/10 07:22) — il n'est pas de Paul ; lancé à la main à 08:28 (« run by hand »).] Il est 08:30 : audit de la reprise du code du QCM, mise en ligne avant 09:15. (La marche à suivre complète est dans le message programmé « Audit QCM de 08:30 », trig_01WqJ8iSBxsXxAYN6qZfCnWZ.)
+
+---
+
+## TOUR 684 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `e99c709c` (08:14), 12 commits depuis `e2b95c7b` ; `VERDICT.md` de QCM-4 réécrit à 08:30 (app `d669ea6`, md5 `360af4ba…`) : l'heure « ne va pas telle quelle », neuf défauts ouverts (relecteurs R4, R5, R6), la décision de Paul tenue, bancs 211/211, 47/47, 109/109 ; la 7.7.2 lit un JSON du nouveau format en ne gardant que titre, mode lu mais jamais enregistré (dette 205), énoncé, choix, bonnes, niveau, explication. Rien poussé en production ; une ligne de verdict en tête de `DEFAUTS-OUVERTS.md`.
+
+Réponse mot pour mot :
+
+À jouer : la 7.7.2, déjà en ligne · en cours chez l'exécutant : personne (QCM-4 a livré à 08:14) · ouvert : rien de ton côté pour ce matin
+
+953. **Verdict de 08:30 : ça ne va pas.** Rien n'est mis en ligne : tu fais cours avec la 7.7.2.
+
+954. **Pourquoi** : leur propre verdict de 08:30 le dit, et leurs relecteurs neufs l'ont vu ce matin, sur des gestes que tu feras. Au téléphone, « ▶️ Commencer la correction » reste fermé même quand tous sont prêts, et le chrono ne bouge pas. « Rouvrir pour un élève » rouvre la question pour toute la classe. « Rouvrir pour tous » ne rouvre plus rien : la correction de 07:49 l'a cassé. Une console rechargée annonce un état faux et remet le chrono de réflexion au début. Les compteurs sont faux quand des élèves n'entrent pas. Leur dernier tour de corrections a pris 50 minutes et en a cassé un autre : il ne reste pas le temps d'en faire un et de le rejouer avant 09:15.
+
+955. **Ce qui est acquis** : ta décision est tenue, la correction n'attend que ton clic et rien d'autre ne part seul ; le chemin de l'heure tel que la maquette le joue passe en entier sur tous les appareils (211 vérifications sur 211 ; l'heure de ta 4e, 109 sur 109).
+
+956. **Pour ce matin avec la 7.7.2** : c'est l'ancien déroulé, un élève par tablette. Si ton évaluation est un JSON fait avec le nouveau prompt, la 7.7.2 l'accepte au collage (« Créer une évaluation »), mais ne garde que l'énoncé, les choix, les bonnes réponses, la difficulté et l'explication : elle ignore les temps par question, les compétences et le mode partiel (le temps vient des réglages de difficulté). L'évaluation de 21 questions est toujours au hub.
+
+957. **Tes tests de la 7.7.2 avant le cours** : ouvre https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=prof&v=772 ; la version dit 7.7.2 dans Réglages ; le téléphone, par le QR, garde la séance après la première réponse ; à la correction, chaque tablette dit « Tu avais juste » ou « Tu avais faux » et marque la bonne réponse.
+
+958. **Après ton cours**, je te proposerai la suite pour la nouvelle app. Rien ne se fait sans ton mot.
+
+13/10/2026 08:33 MEMO

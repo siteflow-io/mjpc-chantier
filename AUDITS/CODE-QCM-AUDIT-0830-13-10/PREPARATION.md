@@ -15,3 +15,7 @@
 3. Journal, dettes (198 et 210 restent réglées ; les défauts encore ouverts, s'il y en a, sont des dettes : alors pas de mise en ligne), `docs/MJPC6-OU-TROUVER-QUOI.md`.
 4. `git push origin HEAD:main` ; bit à bit au dépôt et en ligne (`curl` de https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html).
 5. Pour Paul : l'adresse https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=prof&v=800 et ses tests geste par geste.
+
+## Verdict de 08:30 : ça ne va pas — la mise en ligne n'a pas lieu
+
+La livraison de la reprise (`d669ea6`, md5 `360af4ba39ad028143c258ad3b42c408`, VERDICT.md de QCM-4 à 08:14) garde neuf défauts de l'heure ouverts, vus par les relecteurs neufs R4 à R6 : « Rouvrir pour un élève » rouvre pour toute la classe ; « Rouvrir pour tous » ne rouvre plus rien ; au téléphone, « ▶️ Commencer la correction » reste fermé et le chrono ne bouge pas ; la console rechargée ; les compteurs ; l'alerte de la co-évaluation et « Trouvée au dernier moment ». La décision de Paul (la correction sur son clic) est tenue. Rien n'est poussé en production : la 7.7.2 (md5 `3aaf7499…`) reste en ligne.

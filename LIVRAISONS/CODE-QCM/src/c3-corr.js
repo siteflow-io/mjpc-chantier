@@ -198,7 +198,7 @@ function BilanClasse(){
         h("h3", null, "💡 Questions remarquables", InfoI("La question la plus ratée et la mieux réussie, d'après la feuille : à reprendre en classe.")),
         h("div", {className:"bilan-classe-insights"},
           h("div", {className:"bilan-classe-insight insight-attention"}, h("div", {className:"bilan-classe-insight-titre"}, "🔴 La plus ratée — Q" + (rate + 1) + " (" + taux[rate] + " % de réussite)"), h("div", {className:"bilan-classe-insight-enonce"}, EV.questions[rate].enonce)),
-          h("div", {className:"bilan-classe-insight insight-felicitations"}, h("div", {className:"bilan-classe-insight-titre"}, "🟢 La mieux réussie — Q" + (reussie + 1) + " (" + taux[reussie] + " % de réussite)"), h("div", {className:"bilan-classe-insight-enonce"}, EV.questions[reussie].enonce)))),
+          reussie !== rate && taux[reussie] !== taux[rate] && h("div", {className:"bilan-classe-insight insight-felicitations"}, h("div", {className:"bilan-classe-insight-titre"}, "🟢 La mieux réussie — Q" + (reussie + 1) + " (" + taux[reussie] + " % de réussite)"), h("div", {className:"bilan-classe-insight-enonce"}, EV.questions[reussie].enonce)))),
       h("div", null,
         h("div", {className:"alire", style:{marginTop:".4rem"}}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
           lire.map(function(x, i){ return h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); })))),
@@ -410,12 +410,12 @@ function AlerteTrancheeH(a){
   var d = decisionDe(a), q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), pA = prenomH(A), pL = prenomH(L), n = calc(A), lu = a.lu != null ? a.lu : (LU[A] || [])[a.qi];
   var noteTxt = function(passe){ return "sa note provisoire " + (passe ? "passe" : "reste") + " à " + n.n + " / " + n.total + "."; };
   var t;
-  if(d.decision === "lecteur") t = ["✅ Alerte tranchée : raison donnée à " + pL, "La lecture " + deNom(pL) + ", " + txtChoix(q, lu) + ", est gardée : la question " + (a.qi + 1) + " de " + nA + " reste à " + (n.pts[a.qi] != null ? n.pts[a.qi] : ptsDe(q, lu)) + " ; " + noteTxt(false)];
-  else if(d.decision === "soir") t = ["📌 La question " + (a.qi + 1) + " de " + nA + " est à relire ce soir", "L'alerte se ferme : la question t'attend ce soir dans Résultats, « ⚠️ À relire » ; " + noteTxt(false)];
+  if(d.decision === "lecteur") t = ["✅ Alerte tranchée : raison donnée à " + pL, "La lecture " + deNom(pL) + ", " + txtChoix(q, lu) + ", est gardée : la question " + (a.qi + 1) + (/^[AEIOUYÉÈÊÂÎÔ]/i.test(nA) ? " d'" : " de ") + nA + " reste à " + (n.pts[a.qi] != null ? n.pts[a.qi] : ptsDe(q, lu)) + " ; " + noteTxt(false)];
+  else if(d.decision === "soir") t = ["📌 La question " + (a.qi + 1) + (/^[AEIOUYÉÈÊÂÎÔ]/i.test(nA) ? " d'" : " de ") + nA + " est à relire ce soir", "L'alerte se ferme : la question t'attend ce soir dans Résultats, « ⚠️ À relire » ; " + noteTxt(false)];
   else {
     var c = d.decision === "feuille" ? (d.choix || d.feuille) : (a.ecrit != null ? a.ecrit : (SCN.coevalDe(A) || {}).ecrit), p1 = ptsDe(q, c), p0 = ptsDe(q, lu);
     var tete = d.decision === "feuille" ? "✅ Alerte tranchée : la feuille " + deNom(pA) + " dit " + txtChoix(q, c) : "✅ Alerte tranchée : raison donnée à " + pA;
-    t = [tete, "La question " + (a.qi + 1) + " de " + nA + (p1 !== p0 ? " passe à " + p1 + " point, « Corrigé d'après ta feuille » dans son bilan : " + noteTxt(true) : " reste à " + p1 + " ; " + noteTxt(false))];
+    t = [tete, "La question " + (a.qi + 1) + (/^[AEIOUYÉÈÊÂÎÔ]/i.test(nA) ? " d'" : " de ") + nA + (p1 !== p0 ? " passe à " + p1 + " point, « Corrigé d'après ta feuille » dans son bilan : " + noteTxt(true) : " reste à " + p1 + " ; " + noteTxt(false))];
   }
   return h("div", {key:a.id, className:"alerte-co tranchee"}, h("div", {className:"al-corps"}, h("div", {className:"al-t"}, t[0]), h("div", {className:"al-l"}, t[1])),
     h("div", {className:"al-actions"}, h("button", Object.assign({className:"btn btn-ghost btn-sm", title:"Rouvre l'alerte, telle qu'elle était : rien n'est appliqué."}, marqueH("ALD:" + a.id, function(){ agir("trancher", [a.id, null]); })), "↩️ Défaire")));
@@ -454,7 +454,7 @@ function PilotCoevalH(){
         att.length > 0 && h("div", {className:"manquent"},
           h("div", {className:"tt"}, "« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les " + pres + " présents ont répondu. Il en manque " + att.length + " :"),
           h("div", {className:"noms"}, att.map(nomDe).join(" · "))),
-        h("div", {className:"co-compte"}, h("div", null, "✅ ", h("strong", null, String(nOk)), " pensent : bien lu"), h("div", null, "🤔 ", h("strong", null, String(nPeut)), nPeut === 1 ? " pense : peut-être mal lu (à relire ce soir)" : " pensent : peut-être mal lu (à relire ce soir)"), h("div", null, "❌ ", h("strong", null, String(nMal)), tranche && alertes.length ? " pense : mal lu (tranché)" : " pense : mal lu (alerte, en haut)")),
+        h("div", {className:"co-compte"}, h("div", null, "✅ ", h("strong", null, String(nOk)), " pensent : bien lu"), h("div", null, "🤔 ", h("strong", null, String(nPeut)), nPeut === 1 ? " pense : peut-être mal lu (à relire ce soir)" : " pensent : peut-être mal lu (à relire ce soir)"), h("div", null, "❌ ", h("strong", null, String(nMal)), (nMal > 1 ? " pensent" : " pense") + (tranche && alertes.length ? " : mal lu (tranché)" : " : mal lu (alerte, en haut)"))),
         h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
           lire.map(function(x, i){ return h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); }))),
       h("div", {className:"suivi-box"},
@@ -546,7 +546,7 @@ function BilanClasseH(){
         h("h3", null, "💡 Questions remarquables", InfoI("La question la plus ratée et la mieux réussie, d'après la feuille : à reprendre en classe.")),
         rate != null && h("div", {className:"bilan-classe-insights"},
           h("div", {className:"bilan-classe-insight insight-attention"}, h("div", {className:"bilan-classe-insight-titre"}, "🔴 La plus ratée — Q" + (rate + 1) + " (" + taux[rate] + " % de réussite)"), h("div", {className:"bilan-classe-insight-enonce"}, EV.questions[rate].enonce)),
-          h("div", {className:"bilan-classe-insight insight-felicitations"}, h("div", {className:"bilan-classe-insight-titre"}, "🟢 La mieux réussie — Q" + (reussie + 1) + " (" + taux[reussie] + " % de réussite)"), h("div", {className:"bilan-classe-insight-enonce"}, EV.questions[reussie].enonce)))),
+          reussie !== rate && taux[reussie] !== taux[rate] && h("div", {className:"bilan-classe-insight insight-felicitations"}, h("div", {className:"bilan-classe-insight-titre"}, "🟢 La mieux réussie — Q" + (reussie + 1) + " (" + taux[reussie] + " % de réussite)"), h("div", {className:"bilan-classe-insight-enonce"}, EV.questions[reussie].enonce)))),
       h("div", null,
         h("div", {className:"alire", style:{marginTop:".4rem"}}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
           lire.map(function(x, i){ return h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); })))),

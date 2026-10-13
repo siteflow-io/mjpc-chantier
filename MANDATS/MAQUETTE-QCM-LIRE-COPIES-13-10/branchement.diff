@@ -1,5 +1,5 @@
---- /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/codewt/LIVRAISONS/CODE-QCM/src/c4-seances.js	2026-10-13 09:01:27.657013790 +0200
-+++ src/c4-seances.js	2026-10-13 16:00:10.287346677 +0200
+--- a/LIVRAISONS/CODE-QCM/src/c4-seances.js
++++ b/LIVRAISONS/CODE-QCM/src/c4-seances.js
 @@ -505,6 +505,7 @@
      TitreCarte("📊 " + ev.titre + " — " + se.classe, [
        h("button", {key:0, className:"btn btn-primary btn-sm", disabled:!rendues, "data-local":rendues ? "1" : null, onClick:rendues ? function(){ ouvrirPdfV(se.id); } : null, title:rendues ? "Ouvre l'impression du navigateur, « Enregistrer au format PDF » : une ligne par élève, la note, le niveau de chaque compétence, le commentaire." : "Fermé tant que les copies ne sont pas rendues : les notes ne sont définitives qu'à ce moment-là."}, "📄 PDF notes et compétences"),
@@ -8,8 +8,8 @@
        h("button", {key:2, className:"btn btn-ghost btn-sm", "data-va":"c-seances", title:"Revient à la liste des séances."}, "← Retour")]),
      exporte && h("div", {className:"fen-note"}, "📥 " + exporte + " téléchargé."),
      h("p", {style:{fontSize:".85rem", color:"var(--gris)", marginTop:".2rem"}}, se.date + " " + se.heure + " · " + presentsTexteV(se) + (se.papier ? " · sur papier" : "") + " · questions écartées ou annulées : " + ecartTexteV(se) + " · ",
---- /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/codewt/LIVRAISONS/CODE-QCM/build.py	2026-10-12 18:48:49.937256648 +0200
-+++ build.py	2026-10-13 16:00:10.288006995 +0200
+--- a/LIVRAISONS/CODE-QCM/build.py
++++ b/LIVRAISONS/CODE-QCM/build.py
 @@ -22,7 +22,7 @@
  EXTRA_JS = json.load(open(os.path.join(S, "ordre_js.json"))) if os.path.exists(os.path.join(S, "ordre_js.json")) else []
  JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js"] + (["mjpc.js"] if MAQUETTE else ["live/sans-mjpc.js"]) + ["complement1.js", "complement2.js",

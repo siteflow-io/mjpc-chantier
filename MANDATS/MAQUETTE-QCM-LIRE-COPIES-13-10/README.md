@@ -1,25 +1,41 @@
-# Maquette « 📄 Lire les copies » — le soir, une copie après l'autre (conscience n°12, 13/10/2026)
+# Maquette « 📄 Lire les copies » — le soir, copie par copie, dans l'ordre de ton tas (conscience n°12, 13/10/2026)
 
-Paul, 15:55 : « Ta proposition 1076 et 77 sont les meilleures: du séquentiel effectivement, et 1077, oui, l'app pose des questions, auxquelles je réponds par oui ou non, c'est la meilleure solution. ça donnerait quoi en capture? » Il ajoute que les « n'a pas dit » restent, parce qu'ils peuvent cacher un litige.
+## Version 2 (tour 714, après Paul 16:08)
+
+Paul, 16:08 : « si j'ai un tas qui n'est pas rangé dans l'ordre alpha, je veux pouvoir taper directement les initiales de l'élève suivant dans le tas, à la fin de la copie précédente, et ainsi de suite. Et évidemment, "lire les copies", ce ne sont que les questions qui ont besoin d'être lues par moi, pas l'ensemble! enfin, il faudrait que je sache ce que j'écris moi sur la copie de l'élève, à chaque question à vérifier. »
+
+Ce qui change par rapport à la version 1 (rangée dans `v1/`) :
+- **Le tas, dans son ordre.** Plus d'ordre alphabétique imposé. Paul prend la copie du dessus et tape ses initiales, comme à la fin d'une copie dans `correction_dictee.html` : même règle de recherche (`matchEleveInitials` : les deux initiales, nom puis prénom ou prénom puis nom, puis le début ou un morceau du nom ou du prénom, sans accents), le même texte « tape ses initiales (DM pour Dupont Marie), puis Entrée », jusqu'à 6 propositions, Entrée ouvre la première. Chaque proposition dit « n questions à lire », « ✔ lue » ou « rien à lire ».
+- **Seulement les questions à lire.** Une copie sans rien à lire dit « Rien à lire sur cette copie : mets-la de côté. », et le champ des initiales vient tout de suite. Une copie à lire ne montre que ses questions à lire. En tête : « 📌 Encore n copies à lire, m questions en tout · les autres copies n'ont rien à lire ».
+- **Ce que Paul écrit sur la copie.** Après chaque réponse, une phrase :
+  - la copie dit ce que le voisin a lu (« ✅ Oui »), ou dit autre chose sans que la réponse devienne juste ou fausse : « ✍️ Sur la copie : rien à changer. » ;
+  - le voisin avait lu une bonne réponse, la copie en dit une fausse : « ✍️ Sur la copie : barre le V vert, et écris en vert la bonne réponse : « … ». » ;
+  - le voisin avait lu une réponse fausse, la copie dit la bonne : « ✍️ Sur la copie : barre la correction en rouge, et mets un V vert. » ;
+  - et si la note change : « ✍️ Et la note : a → b. ».
+  - **Hypothèse non vérifiée** : en classe, le voisin met un V vert quand ce qu'il lit est juste, et barre en rouge puis écrit la bonne réponse en vert sinon. Si ce n'est pas ce qu'écrivent les élèves, seules ces trois phrases changent (`aEcrireL`).
+
+Ce qui ne change pas : « ✅ Oui » fait ce que fait « ✔ Marquer lue » (`marquerLueV`) ; « ✏️ Autre chose », puis le choix (ou « Aucun de ces choix »), puis « ✔ Valider », fait ce que fait « Que dit la feuille ? » (`feuilleDitV`) : la lecture devient celle de Paul, celle du voisin est gardée (« avant ») et reste visible dans la fiche, la note se recalcule, le bilan de l'élève dit « Corrigé d'après ta feuille », la ligne passe à « corrigée d'après la copie ».
 
 ## Ce qu'est cette maquette (PROTOCOLE-MAQUETTE §00)
 
-Elle est écrite dans le code réel de l'app en ligne (`code-qcm` à `e0bfc349`, l'app de 13:12). Elle y ajoute un fichier, `lire-copies.js`, et deux lignes de branchement (`branchement.diff`) : le bouton « 📄 Lire les copies (n) » dans le tableau de la séance, et le fichier dans `build.py`. Elle passe par les lectures et les gestes qui existent déjà :
-- « ✅ Oui » fait ce que fait « ✔ Marquer lue » (`marquerLueV`) ;
-- « ✏️ Autre chose », puis « ✔ Valider », fait ce que fait « Que dit la feuille ? » (`feuilleDitV`) : la note se recalcule, et le bilan dit « Corrigé d'après ta feuille ».
+Elle est écrite dans le code réel de l'app en ligne (`code-qcm` à `a5a69308`, dont les sources de l'app sont celles de la 8.0.0). Elle y ajoute un fichier, `lire-copies.js`, et deux lignes de branchement (`branchement.diff`) : le bouton « 📄 Lire les copies (n) » dans le tableau de la séance, et le fichier dans `build.py`.
 
-Elle est jouée sur le faux hub, avec la séance que le banc commun de QCM-4 a jouée de bout en bout à 09:40 (`sorties/2026-10-13_0940/base-finale.json`, la classe fictive 3 ESSAI, 24 présents). Cette séance est remise à son état du soir : aucune ligne lue, et les lectures du voisin sont rétablies (`base-faux-hub-soir.json`). Elle donne 9 lignes à lire, sur 8 copies.
+Elle est jouée sur le faux hub, avec la séance que le banc commun de QCM-4 a jouée de bout en bout à 09:40 (`sorties/2026-10-13_0940/base-finale.json`, la classe fictive 3 ESSAI, 24 présents), remise à son état du soir : aucune ligne lue, les lectures du voisin rétablies (`base-faux-hub-soir.json`). Recompté par le geste au tour 714 : **8 lignes à lire, une sur chacune de 8 copies** ; les 16 autres copies n'ont rien à lire. (Le README de la v1 disait 9 lignes : c'était faux.)
 
-## Ce que fait l'écran
+## Captures (1536 × 864, l'écran de Paul), version 2
 
-- Les copies qui ont une ligne à lire viennent dans l'ordre alphabétique de la pile, avec « Copie n sur N » et une barre.
-- Pour chaque ligne, l'app pose une question : « La copie dit-elle « … » ? », c'est-à-dire ce que le voisin a lu, ou « La copie ne dit-elle aucun des choix ? ». Deux boutons : « ✅ Oui » et « ✏️ Autre chose ».
-- Sous chaque question, une ligne grise : qui a lu, le clic sur la tablette, ce que l'élève a dit, et sa remarque de co-évaluation.
-- Quand toutes les lignes d'une copie sont réglées, la copie suivante vient seule.
-- À la fin : « ✅ Les N copies sont lues », puis « 📤 Rendre les copies ».
+Rejouées par `capture.js`, par le geste : Données → Résultats → « 📊 Ouvrir » → « 📄 Lire les copies (8) ». Aucune erreur de page.
 
-## Captures (1536 × 864, l'écran de Paul)
+| Capture | Ce qu'on voit |
+| --- | --- |
+| `captures/1-debut.png` | « Prends la première copie de ton tas et tape ses initiales » |
+| `captures/2-initiales-ab.png` | « ab » : ABRIAL Julien et SABATIER Malo, « rien à lire » |
+| `captures/3-rien-a-lire.png` | ABRIAL Julien : « Rien à lire sur cette copie : mets-la de côté. » |
+| `captures/4-carre-tom.png` | « ct », Entrée : CARRÉ Tom, Question 1, « La copie dit-elle « Venise » ? » |
+| `captures/5-autre-chose-rome.png` | « ✏️ Autre chose », puis Rome |
+| `captures/6-sur-la-copie.png` | après « ✔ Valider » : « barre la correction en rouge, et mets un V vert », « Et la note : 1 / 3 → 2 / 3 » |
+| `captures/7-oui-rien-a-changer.png` | « pj », Entrée : PERRAUD Jade, « ✅ Oui » : « Sur la copie : rien à changer. » |
 
-`captures/1-tableau-seance.png` (le bouton), `2-copie-1.png`, `3-copie-1-autre-chose.png`, `4-copie-2.png` (après quatre « Oui », la cinquième copie). Elles sont rejouées par `capture.js`, par le geste : Données → Résultats → « 📊 Ouvrir » → « 📄 Lire les copies (8) ». Aucune erreur de page.
+Rejouer : `APP_FILE=<app assemblée> BANC=<faux hub, avec node_modules> BASE=base-faux-hub-soir.json TAXO=<taxonomie des compétences> CAP=<dossier> node capture.js`.
 
-App assemblée : md5 `70b11f1b735f5adb5f51a1c15c461435`. Elle n'est pas en ligne, et rien n'est poussé sur `code-qcm`.
+App assemblée : md5 `83a70dd34f59befc750eaca53a5c9171`. Elle n'est pas en ligne, et rien n'est poussé sur `code-qcm`.

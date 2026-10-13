@@ -707,8 +707,11 @@ var ACT = (function(){
   A.rouvrirTous = function(qi){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = "tous";
     // seuls ceux qui n'ont pas répondu la retrouvent : on commence au premier tour où l'un d'eux a la main (le 2e si ceux du 1er ont tous répondu)
-    var manque = function(tour){ var c = SCN.coteDuTour(qi, tour); return SCN.actifs().some(function(x){ return !SCN.reponse(x, qi) && (SCN.seul(x) ? tour === 1 : SCN.cote(x) === c); }); };
-    var tour = manque(1) ? 1 : manque(2) ? 2 : 0; if(!tour) return Promise.resolve();
+    qi = Number(qi);
+    var manque = function(tour, l){ var c = SCN.coteDuTour(qi, tour); return l.some(function(x){ return !SCN.reponse(x, qi) && (SCN.seul(x) ? tour === 1 : SCN.cote(x) === c); }); };
+    // d'abord les présents entrés, sinon tous les présents ; jamais rien de moins qu'avant : à défaut, la réouverture part du 1er tour
+    var act = SCN.actifs(), pres = SCN.presents();
+    var tour = manque(1, act) ? 1 : manque(2, act) ? 2 : manque(1, pres) ? 1 : manque(2, pres) ? 2 : 1;
     return poserDeroule(id, {ph:"passage", qi:qi, tour:tour, cote:SCN.coteDuTour(qi, tour), duree:D().decompte, rouvert:"tous"}, plus); };
   A.rouvrirPour = function(qi, x){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = x; plus["reouverts/" + x] = true;

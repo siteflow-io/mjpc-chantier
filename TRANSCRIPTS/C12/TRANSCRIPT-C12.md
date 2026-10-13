@@ -21131,3 +21131,27 @@ Paul te relance : continue. Lis la section « Reprise 2 du 13/10 » en tête de 
 961. **Le temps est très court** : 15 minutes de corrections, alors que le dernier tour en a pris 50. Je ne sais pas si ça tiendra ; le contrôle de 09:00 le dira, tranché.
 
 13/10/2026 08:35 MEMO
+
+---
+
+## TOUR 686 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 08:39) on est d'accord que "Complément 4 maquette QCM MJPC" ne fait plus rien?
+
+---
+
+## TOUR 686 — Claude (conscience n°12)
+
+Mesuré : `maquette-qcm` à `3b4b99c3` (12/10 23:36) : `92b19c7d` « Complément 4 : livraison de la v9 — banc final 25 282 vérifications, zéro défaut ; captures ; README » ; `sorties/banc-final-v9.txt` présent ; README « Complément 4 — fait » ; `maquette-qcm-v9.html` md5 `64828367…` ; depuis `6fa8a9fe`, seule `src/c3-bulles.js` a changé, et la ligne est déjà dans `LIVRAISONS/CODE-QCM/src/c3-bulles.js` de `code-qcm`.
+
+Réponse mot pour mot :
+
+À jouer : coller la phrase du point 960 dans les quatre sessions du code, si ce n'est pas fait · en cours chez l'exécutant : les quatre du code (reprise 2) · ouvert : le contrôle de 09:00
+
+962. **Oui, d'accord : « Complément 4 maquette QCM MJPC » ne fait plus rien.** Il a livré la v9 hier à 23:36 (son banc final : 25 282 vérifications, zéro défaut ; le README « Complément 4 — fait ») et s'est arrêté, comme son mandat le dit. Rien de lui depuis.
+
+963. **Rien de lui ne manque aux quatre du code** : la seule ligne de code qu'il a changée après 15:58 (l'infobulle de « 1 pense ») est déjà dans leur app. Tu peux fermer sa session.
+
+13/10/2026 08:40 MEMO

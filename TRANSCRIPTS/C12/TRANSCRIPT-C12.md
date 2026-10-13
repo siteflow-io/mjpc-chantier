@@ -21738,3 +21738,49 @@ Réponse mot pour mot :
 Je passe dès maintenant mes contrôles sur l'app de 12:50, pour gagner du temps à 13:22.
 
 13/10/2026 13:04 MEMO
+
+---
+
+## TOUR 704 — le réveil programmé (pas Paul)
+
+> (13/10, 13:23) [Message programmé par la conscience n°12 (13:04, après le verdict de 13:00) — il n'est pas de Paul ; arrivé à 13:23.] Il est 13:21 : contrôle de la seconde passe de la reprise 6. (La marche à suivre complète est dans le message programmé « Contrôle QCM seconde passe (13:21) », trig_01DkJDtRQERUTvPXdzKNzE6N.)
+
+---
+
+## TOUR 704 — Claude (conscience n°12)
+
+Mesuré : QCM-2 `42e2d974` (13:08, « ont répondu » au 2e tour sur les présents) ; VERDICT de QCM-4 de 13:20 (`ff8014b7`, 13:18) : « ça va », app md5 `9a5f581453edbf5f7778d4fffb2f8fdd`, que `build.py` redonne à l'identique. Mes contrôles : 32/32 en 110 s. Sonde B : 17/17 en 97 s. Mise en ligne : `t673/mise-en-ligne.py`, puis la production `2c93c3c` poussée à 13:25:54 ; en ligne bit à bit à 13:26:43 (la 7.7.2 jusqu'à 13:26:33) ; `index.html` inchangé (`ac792b28…`). Dette n°12 · 213 (`cbe8e86`). `AUDITS/CODE-QCM-AUDIT-1321-13-10/` (`3c5bf088`). QCM-4 `23f667c0` (13:29) : gestes rares 47/47, heure de demain 109/109 sur l'app de 13:12. « EN LIGNE » écrit en tête de DEFAUTS-OUVERTS.md (`9a51ddb1`) ; fichier revérifié en ligne à 13:31.
+
+Réponse mot pour mot :
+
+**À jouer :** la nouvelle app, en ligne depuis 13:26 (le fichier en ligne est identique à celui contrôlé) · **en cours chez l'exécutant :** QCM-4 finit de rejouer les gestes rares et l'heure de demain sur cette app, vers 13:30 · **ouvert :** ces deux résultats, que je te donne dès qu'ils tombent
+
+1028. C'est en ligne. Le verdict de QCM-4 de 13:20 dit « ça va ». Mon contrôle aussi : l'app se reconstruit à l'identique, mes contrôles passent (32 sur 32) et ma vérification de B aussi (17 sur 17). Le portail n'a pas changé : il ouvre la nouvelle app comme avant.
+
+1029. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=prof&v=800
+
+1030. Tes tests, dans l'ordre :
+- ouvre l'adresse : la console s'ouvre, avec Pilotage, Données et Réglages ;
+- Pilotage : choisis la classe et l'évaluation, clique « 🚀 Lancer la séance » ; dans la fenêtre de l'appel, coche un absent, puis clique « 🚀 Lancer la séance » ;
+- sur une tablette, ouvre le portail élève : « Combien êtes-vous sur cette tablette ? », « 👥 2 élèves » ; chacun tape son code, son prénom et son nom, puis clique « Entrer » : ta console le montre sans recharger ;
+- sur la tablette, chacun coche sa case puis clique « Je commence » ;
+- « ▶️ Lancer Q1 » : la question arrive sur la tablette, au tableau et sur le téléphone ; les tours passent seuls ; après sa réponse, chacun a « dit-elle la même chose que ton clic ? » ;
+- après la dernière question : « 📊 Lancer l'autoévaluation » ; « ▶️ Commencer la correction » ne s'ouvre que quand tous sont prêts, et rien ne part sans ton clic ;
+- « 💡 Révéler », la co-évaluation, « 🏁 Afficher leur bilan aux élèves » : le bilan de l'élève donne sa note, sans code de compétence ;
+- « 🛑 Terminer la séance » : les tablettes reviennent à « Combien êtes-vous sur cette tablette ? ».
+
+1031. Si un geste ne va pas, dis-moi lequel : je le fais corriger, ou je remets l'ancienne version en une minute. Les exécutants continuent jusqu'à ce que j'écrive « en ligne » pour eux ; je l'écris après les deux résultats de 13:30.
+
+13/10/2026 13:28 MEMO
+
+---
+
+(Second envoi du même tour, 13:31.)
+
+**À jouer :** la nouvelle app, en ligne depuis 13:26 · **en cours chez l'exécutant :** rien, j'ai écrit « en ligne » et ils s'arrêtent · **ouvert :** tes tests du point 1030
+
+1032. Les deux derniers résultats sont tombés à 13:29, sur l'app en ligne : les gestes rares passent (47 sur 47) et l'heure de 4e à 11 questions aussi (109 sur 109). Aucun défaut connu.
+
+1033. C'est fini : l'app est en ligne avant 13:30, et je viens de revérifier que le fichier en ligne est bien celui-là.
+
+13/10/2026 13:31 MEMO

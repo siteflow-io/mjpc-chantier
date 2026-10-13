@@ -172,7 +172,10 @@ function etatPilot(k){
   if(enDirect() && c.connectes) stats = [[fr2(c.connectes), "connectés"]].concat(stats.slice(1));
   // (reprise 4, point 6) pendant le passage (« Tu es prêt ? À toi dans 3 secondes »), le tour n'a pas commencé : le chrono de la réponse compte le passage et le tour entier
   var chrono = enDirect() && ph === "passage" && qi != null ? (m.reste || 0) + SCN.tempsDe(qi).reponse : m.reste;
-  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:chrono, stats:stats, passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
+  // (reprise 4, point 8, c-deplacer) deux élèves échangés pendant la séance, pas encore sur leur nouvelle moitié : le sous-titre des tablettes le dit
+  var dep = enDirect() ? actifsH(k).filter(aDeplacerH) : [];
+  var sousT = dep.length === 2 ? nomDe(dep[0]) + " et " + nomDe(dep[1]) + " échangés : leurs réponses déjà données les suivent" : undefined;
+  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:chrono, sousTitre:sousT, stats:stats, passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
     etat:etatQuestionH({qi:qi, tour:m.tour, fini:phase === "attente", reflexion:phase === "reflexion"}), legende:leg, nbQ:c.nbQ};
 }
 // (déplacer, 72) l'élève échangé ou déplacé pendant la séance, entré avant et pas encore sur sa nouvelle moitié : il retape son code

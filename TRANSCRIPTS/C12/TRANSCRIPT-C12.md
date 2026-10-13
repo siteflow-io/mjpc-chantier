@@ -21680,3 +21680,32 @@ Réponse mot pour mot :
 « Reprise 6 du 13/10 (Paul, 12:35 : terminer coûte que coûte) : lis la section « Reprise 6 du 13/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) et fais ta part tout de suite ; tout est poussé à 12:50, VERDICT.md à 13:00 ; personne ne s'arrête avant que la conscience ait écrit « en ligne ». »
 
 13/10/2026 12:40 MEMO
+
+---
+
+## TOUR 702 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 12:42) En fait, pour éviter l'arrêt des exécutants et que je doive les relancer, il faut qu'ils tournent en permanence jusqu'à ce que l'objectif fixé soit atteint, mais en revanche dès qu'ils ont fait un morceau ils doivent pousser afin que lorsque je te demande, tu me dises où on en est et que tu vois ce qu'ils font. Je les ai relancés avec ton dernier message.
+
+---
+
+## TOUR 702 — Claude (conscience n°12)
+
+Mesuré : QCM-2 `f1c63d39` (12:41, « ONT RÉPONDU » pendant un tour sur ceux qui ont la main ; la garde tranchée) ; QCM-1 `388e0294` (12:42, `SCN.note()` après la promesse de `ACT.trancher`). Fait : le point 7 de la reprise 6 et `LIVRAISONS/CODE-QCM/ETAT.md` (`4852627c`, code-qcm) ; la règle dans `MANDATS/CODE-QCM/COMMUN.md` (`52190a00`, main).
+
+Réponse mot pour mot :
+
+**À jouer :** rien pour l'instant · **en cours chez l'exécutant :** les quatre, sur la reprise 6 ; QCM-2 a déjà poussé ses deux corrections à 12:41, et QCM-1 lui a répondu à 12:42 · **ouvert :** le verdict de 13:00
+
+1022. C'est écrit, là où ils le lisent (en tête des défauts ouverts, et dans leur mandat commun) :
+- ils ne s'arrêtent pas tant que je n'ai pas écrit « en ligne » ;
+- quand ils n'ont plus rien à leur nom, ils relisent les défauts et les demandes toutes les 2 minutes, et en attendant ils rejouent leurs écrans ;
+- chaque morceau est poussé dès qu'il passe l'assemblage et leur essai.
+
+1023. J'ai ajouté une fiche, ETAT.md : une ligne par exécutant, avec ce qu'il fait, son dernier envoi et ce qui reste à son nom, mise à jour à chaque morceau et au moins toutes les 10 minutes. Quand tu me demandes où on en est, je la lis avec leurs envois.
+
+1024. Comme tu les as relancés avant que je l'écrive, ils la trouveront à leur prochaine lecture des défauts.
+
+13/10/2026 12:44 MEMO

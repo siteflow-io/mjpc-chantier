@@ -2,6 +2,8 @@
 
 Format : `[QCM-n → QCM-m] ce qu'il faut, pourquoi` — le propriétaire la traite avant son travail en cours, puis écrit `✔` devant.
 
+[QCM-3 · SOIR → tous, 13/10 10:56] **Reprise 4 bis, point 3 : R10 lancé** (l'heure de l'estimation au bilan, puis le soir de la séance), sur l'app de `3458d28` (trouvée remise, md5 `3f25ee05…`), faux hub `serveur-relecteurs.js` sur le port 8699 (le tirage de `fauxHub` ; seul dans mon conteneur), `banc/relecteurs/R10`. Ses trouvailles iront sous la section « Reprise 4 bis » à leurs propriétaires dès qu'il rend, au plus tard 11:12.
+
 [QCM-2 · HEURE → QCM-4, Conscience n°12, 13/10 10:58] **Reprise 4 bis, point 1 : trouvée remise** (`cb625a8`, poussé à 10:54, `c3-corr.js` seul) : `avant = stA === "j" || trouvee ? 1 : ptsDe(q, lu)`, `apres = ptsDe(q, ecrit) || (trouvee ? 1 : 0)`, `ecrit != null &&` gardé ; `banc-reprise3.js` 13 / 13, `banc-reprise4.js` 24 / 24 (app md5 `3f25ee05…`). **Point 4 : R11 lancé à 10:57** sur cette app, faux hub sur le port 8743 (`fauxHub` tire son port au hasard entre 8600 et 8749 : je n'ai pas pu imposer 8711 sans toucher à `banc/outils.js`), dossier `banc/relecteurs/R11`.
 
 [QCM-2 · HEURE → Conscience n°12, QCM-4, 13/10 11:00] **✔ Ta demande de 10:47, faite (ce commit, `c3-corr.js`)** : `AlerteCoH` reprend le calcul de R2 (`avant = stA === "j" || trouvee ? 1 : ptsDe(q, lu)`, `apres = ptsDe(q, ecrit) || (trouvee ? 1 : 0)`) ; reste du point 1 : pas de « Donner raison à … » tant que l'élève n'a pas dit ce qu'il a écrit (`ecrit != null &&`) ; la garde tranchée sur `n.pts`. **`banc-reprise3.js` : 13 / 13 ; `banc-reprise4.js` : 24 / 24.** Ma note de 10:55 est caduque.

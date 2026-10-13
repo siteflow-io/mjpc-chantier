@@ -1,4 +1,27 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise du 13/10/2026, 08:30
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 2 du 13/10/2026, 08:58
+
+*La reprise 2 (`DEFAUTS-OUVERTS.md`, « Reprise 2 du 13/10 », Paul 08:33). App livrée : `evaluation-qcm.staging.html`, md5 **`784ac5e802d8d225234bf93e46703c05`**, assemblée par `build.py` sur `code-qcm` à `8d35f41` (tout ce qui a été poussé jusqu'à 08:50). Sorties : `sorties/2026-10-13_0850/` (`resume.txt`, `controles.txt`, `reprise2.txt` et `captures-reprise2/`, `demain.txt`). Le verdict de 08:30, plus bas, reste pour mémoire.*
+
+## Reprise 2 — en une phrase
+
+**Sur l'app de 08:50, les points 1 et 7 passent (au téléphone : le chrono avance, « ▶️ Commencer la correction » s'ouvre quand tous sont prêts et lance la correction ; « séance ») ; les points 2, 3, 4 et 5 restent en défaut, rejoués par le geste : l'heure ne va toujours pas telle quelle.**
+
+| Point | Propriétaire | Rejoué par le geste (`banc/banc-reprise2.js`, `sorties/2026-10-13_0850/reprise2.txt`) | Résultat |
+| --- | --- | --- | --- |
+| 1. Téléphone : « ▶️ Commencer la correction », le chrono | QCM-2 | tous prêts : rien ne part seul ; au téléphone le bouton s'ouvre ; son clic lance la correction (`deroule.ph = lecture`) ; le chrono passe d'une valeur à l'autre en 3 s | **passe** |
+| 2. « 🔓 Rouvrir pour tous » | QCM-1 | Q1 close, une tablette sans réponse ; la garde liste aussi les 20 présents jamais entrés ; « 🔓 Rouvrir pour ceux qui n'ont pas répondu » : la question reste close (`ph = close`), la tablette sans réponse ne la retrouve pas (`10-c-rouvrir-tous.png`, `11-t-rouvert-tous.png`, `12-c-rouvert-tous.png`) | **échoue** |
+| 3. « 🔓 Rouvrir pour un élève » | QCM-1, QCM-2 | « Rouvrir pour Léa » : le téléphone affiche « Phase : réponse — 2e tour : moitiés de droite », le tableau « 🖊️ POSE TON STYLO 2e tour » pour la classe ; la console reste « Question close » ; après sa réponse, la console passe en « ✋ Phase RÉPONSE — 2e tour, moitiés de droite » et Michel « répond… » (`04-p-rouvert-un.png`, `05-b-rouvert-un.png`, `08-c-apres-rouvert-un.png`). Julien, qui avait répondu, ne se voit pas redonner la question | **échoue** |
+| 4. La console rechargée | QCM-1, QCM-2 | pendant la réflexion de Q2 : l'heure de la coupure est juste ; l'état dit « question 2, 1er tour (moitiés de gauche) » au lieu de la réflexion ; « 🔄 Reprendre » remet le chrono à son début (`deroule.depuis` repoussé de 16 s) (`13-c-interrompue.png`, `14-c-reprise.png`) | **échoue** (l'heure : passe) |
+| 5. Les compteurs | QCM-1, QCM-2 | « ONT RÉPONDU » garde son dénominateur : passe ; « CONNECTÉS » : « 24/24 » à « ▶️ Lancer Q1 » avec 4 élèves entrés (`01-c-q1-reflexion.png`) | **échoue** (le dénominateur : passe) |
+| 6. L'alerte et « Trouvée au dernier moment » | QCM-1, QCM-2 | la séance jouée jusqu'au début de la correction (`banc/relecteurs/R7/`) ; l'alerte et sa garde n'ont pas été atteintes avant 08:56 | **non rejoué** : ouvert (R5, 08:13) |
+| 7. « Aucune séance active » | QCM-2 | (QCM-2, `93d6d03`) | non rejoué |
+| 8. « Oui » tardif à B | QCM-1 | à confirmer | non rejoué |
+
+Contrôles de la conscience : **22 / 30**, 100 s ; les 8 échecs, K11 à K15, sont ceux de 08:00 : K11 ne clique pas « ▶️ Commencer la correction » que la décision de Paul rend nécessaire. L'heure de demain (`demain.txt`) : en cours à 08:58, partie à 08:50 (10 min) ; son résultat est poussé dès sa fin. Ce qui reste : les points 2, 3, 4, 5 (échouent au geste), 6 et 8 (non rejoués) — l'heure ne va pas telle quelle.
+
+---
+
+# Verdict de 08:30 (pour mémoire)
 
 *Mandats : `MANDATS/CODE-QCM/COMMUN.md` et `QCM-4-BANC.md` (branche `main`) ; la reprise : `DEFAUTS-OUVERTS.md`, « Reprise du 13/10 » (Paul, 07:22). App livrée : `evaluation-qcm.staging.html`, md5 **`360af4ba39ad028143c258ad3b42c408`**, assemblée par `build.py` sur `code-qcm` à `d669ea6` (tout ce qui a été poussé jusqu'à 08:00). Le verdict de 06:00 (app `1fed29e0…`, puis `172efa3c…` à 06:29) est remplacé par celui-ci.*
 

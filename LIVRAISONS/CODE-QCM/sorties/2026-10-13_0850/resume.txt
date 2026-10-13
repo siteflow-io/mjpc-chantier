@@ -1,0 +1,6 @@
+Assemblage court (reprise 2) QCM-4 · BANC — 13/10/2026 08:50 — code-qcm 8d35f41
+build.py : code 0
+app : 784ac5e802d8d225234bf93e46703c05
+  controles-app.js: OK
+  attendus/evaluation-essai.json: OK
+  attendus/taxonomie-competences.json: OK

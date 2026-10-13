@@ -4032,7 +4032,7 @@ var SCN = (function(){
     if(qi != null && ["reflexion", "reponse", "close", "b", "passage", "rouvert", "pause"].indexOf(e.ph) >= 0){
       var rep = S.repondu(qi, k, sid), pc = S.premierCote(qi, sid);
       // ceux qui peuvent répondre : les présents entrés (une moitié vide ne répond pas)
-      var attendu = (e.ph === "reponse" || e.ph === "passage" || e.ph === "b") && e.tour === 1 ? act.filter(function(x){ return S.cote(x, sid) === pc || S.seul(x, sid); }).length : act.length;
+      var attendu = act.length;   // (13/10) le même dénominateur d'un tour à l'autre : les présents entrés
       o.repondu = [e.ph === "reflexion" ? 0 : rep.length, attendu];
       o.justes = [rep.filter(function(x){ return S.justeTablette(x, qi, sid); }).length, rep.length];
       o.question = [qi + 1 - ec.filter(function(x){ return x < qi; }).length, nbQ];
@@ -4331,8 +4331,11 @@ var ACT = (function(){
   A.rouvrirTous = function(qi){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = "tous";
     // seuls ceux qui n'ont pas répondu la retrouvent : on commence au premier tour où l'un d'eux a la main (le 2e si ceux du 1er ont tous répondu)
-    var manque = function(tour){ var c = SCN.coteDuTour(qi, tour); return SCN.actifs().some(function(x){ return !SCN.reponse(x, qi) && (SCN.seul(x) ? tour === 1 : SCN.cote(x) === c); }); };
-    var tour = manque(1) ? 1 : manque(2) ? 2 : 0; if(!tour) return Promise.resolve();
+    qi = Number(qi);
+    var manque = function(tour, l){ var c = SCN.coteDuTour(qi, tour); return l.some(function(x){ return !SCN.reponse(x, qi) && (SCN.seul(x) ? tour === 1 : SCN.cote(x) === c); }); };
+    // d'abord les présents entrés, sinon tous les présents ; jamais rien de moins qu'avant : à défaut, la réouverture part du 1er tour
+    var act = SCN.actifs(), pres = SCN.presents();
+    var tour = manque(1, act) ? 1 : manque(2, act) ? 2 : manque(1, pres) ? 1 : manque(2, pres) ? 2 : 1;
     return poserDeroule(id, {ph:"passage", qi:qi, tour:tour, cote:SCN.coteDuTour(qi, tour), duree:D().decompte, rouvert:"tous"}, plus); };
   A.rouvrirPour = function(qi, x){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = x; plus["reouverts/" + x] = true;
@@ -4558,6 +4561,7 @@ var MOTEUR = (function(){
     if(e.ph === "reflexion") return {ph:"passage", qi:e.qi, tour:1, cote:SCN.coteDuTour(e.qi, 1, sid), duree:D.decompte, rouvert:e.rouvert || null};
     if(e.ph === "passage") return {ph:"reponse", qi:e.qi, tour:e.tour, cote:e.cote, duree:t.reponse, rouvert:e.rouvert || null};
     if(e.ph === "reponse") return {ph:"b", qi:e.qi, tour:e.tour, cote:e.cote, duree:D.b, rouvert:e.rouvert || null};
+    if(e.ph === "b" && e.pour) return {ph:"close", qi:e.qi};   // le B d'un élève rouvert seul : jamais un 2e tour pour la classe
     if(e.ph === "b" && e.tour === 1){
       var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = SCN.presents(null, sid).some(function(x){ return SCN.seul(x, sid) ? !SCN.reponse(x, e.qi, sid) : SCN.cote(x, sid) === autre && (e.rouvert !== "tous" || !SCN.reponse(x, e.qi, sid)); });
       if(quelquun) return {ph:"passage", qi:e.qi, tour:2, cote:autre, duree:D.decompte, rouvert:e.rouvert || null};
@@ -9425,7 +9429,8 @@ function EcrDeclare3(e, chrono){
 function TelChrono(p){
   var s = useState(p.reste), v = s[0], setV = s[1];
   useEffect(function(){ function f(){ setV(p.total); } document.addEventListener("maquette-relancer", f); return function(){ document.removeEventListener("maquette-relancer", f); }; });
-  return h("div", {className:"tel-chrono"}, v + "s");
+  // (QCM-2) en direct, le temps qui reste, à chaque seconde (la séance le compte)
+  return h("div", {className:"tel-chrono"}, (enDirect() ? (p.reste || 0) : v) + "s");
 }
 
 /* ── Les gestes de l'étape 3 : où mène chaque bouton, et son infobulle pour Paul ── */
@@ -11438,7 +11443,8 @@ function ptsDe(q, c){ return c && c !== "aucun" && memesChoixH(c, q.bonnes) ? 1 
 function AlerteCoH(a){
   var q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), nL = nomDe(L), pA = prenomH(A), pL = prenomH(L);
   var lu = (LU[A] || [])[a.qi], ecrit = a.ecrit != null ? a.ecrit : ((SCN.coevalDe(A) || {}).ecrit), clic = (TABL[A] || [])[a.qi] || [], dit = (DIT_B[A] || [])[a.qi];
-  var avant = ptsDe(q, lu), apres = ptsDe(q, ecrit), ret = [A, L].filter(function(p){ return SCN.autonomie(p, MO()).retire; });
+  // (R2) la note réelle : « Trouvée au dernier moment » vaut déjà 1 point, et le garde si la feuille reste fausse
+  var stA = calc(A).st[a.qi], trouvee = stA === "t", avant = stA === "j" || trouvee ? 1 : ptsDe(q, lu), apres = ptsDe(q, ecrit) || (trouvee ? 1 : 0), ret = [A, L].filter(function(p){ return SCN.autonomie(p, MO()).retire; });
   var sens = null;
   if(dit === "non" && memesChoixH(clic, lu)) sens = "👉 Pendant la question, avant de connaître la réponse, " + pA + " avait cliqué " + txtChoix(q, clic) + " et dit que sa feuille ne disait pas " + txtChoix(q, clic) + " : ça va dans son sens.";
   else if(dit === "oui" && memesChoixH(clic, ecrit)) sens = "👉 Pendant la question, avant de connaître la réponse, " + pA + " avait cliqué " + txtChoix(q, clic) + " et dit que sa feuille disait la même chose : ça va dans son sens.";
@@ -14189,7 +14195,9 @@ function TelEtapeH(){
   return TelCadre([
     TelBandeau(estim ? "Phase autoévaluation — " + (compte ? compte[0] + " / " + compte[1] : "") + " élèves" : "✍️ Seconde attestation — " + (compte ? compte[0] + " / " + compte[1] : "") + " prêts", null),
     h("div", {key:"a", className:"tel-actions"}, estim ? h("button", Object.assign({className:"tel-btn tb-or tb-large", title:"Ferme l'estimation et ouvre, sur chaque moitié, la seconde attestation, avant la première question à corriger."}, geste(null, "lancerCorrection")), "📝 Lancer la correction")
-      : h("button", {className:"tel-btn tb-primary tb-large ferme", disabled:true, title:"S'ouvre quand les " + c.presents + " présents ont coché toutes les lignes de la seconde attestation. Il en manque " + manquent.length + "."}, "🔒 ▶️ Commencer la correction")),
+      // (décision de Paul, 13/10) la correction commence à son clic : fermé tant qu'il en manque, ouvert ensuite
+      : manquent.length > 0 || !enDirect() ? h("button", {className:"tel-btn tb-primary tb-large ferme", disabled:true, title:"S'ouvre quand les " + c.presents + " présents ont coché toutes les lignes de la seconde attestation. Il en manque " + manquent.length + "."}, "🔒 ▶️ Commencer la correction")
+      : h("button", Object.assign({className:"tel-btn tb-primary tb-large", title:"Commence la correction, par la question la plus ratée sur les tablettes."}, geste(null, "lancerCorrection")), "▶️ Commencer la correction")),
     manquent.length > 0 && h("div", {key:"m", className:"tel-manquent"}, h("strong", null, "Pas encore : "), manquent.map(nomDe).join(" · ")),
     h("div", {key:"st"}, TelStats(null, toutesQ())),
     h("div", {key:"t"}, h(TelTerminer))]);
@@ -15305,8 +15313,10 @@ function compCourt(c){ var l = libOff(c); return (typeof COMP_COURT !== "undefin
 function seanceParam(){ return paramHash("seance"); }
 // les feuilles qu'aucune lecture n'a corrigées (un présent parti avant la correction, un voisin qui n'a pas lu) : la question reste « ? »
 // et l'élève sans note ; elles restent à lire, et « Rendre les copies » attend (« chaque présent a eu la lecture de sa feuille »)
-function sansLectureV(se){ var l = [], hors = se.ecartees.concat(se.annulees);
-  se.presents.forEach(function(e){ var r = resultatV(se, e.slug); if(r) r.st.forEach(function(s, i){ if(s === "n" && hors.indexOf(i) < 0) l.push({p:e.slug, q:i}); }); });
+function sansLectureV(se){ var l = [], hors = se.ecartees.concat(se.annulees), S = se.S, papier = !S || (S.lancee || {}).mode === "papier";
+  // une question jamais posée (séance terminée avant elle : ni lancée, ni une réponse) n'a pas de feuille à lire (relecteur neuf R6)
+  var posee = function(i){ return papier || (S.questionsLancees || {})[i] != null || (S.reponses || {})[i] != null; };
+  se.presents.forEach(function(e){ var r = resultatV(se, e.slug); if(r) r.st.forEach(function(s, i){ if(s === "n" && hors.indexOf(i) < 0 && posee(i)) l.push({p:e.slug, q:i}); }); });
   return l; }
 function restentV(se){ var nl = aLireV(se).filter(function(x){ return !x.lue; }), deja = {}; nl.forEach(function(x){ deja[x.p + "|" + x.q] = 1; });
   return nl.length + sansLectureV(se).filter(function(x){ return !deja[x.p + "|" + x.q]; }).length; }
@@ -16726,7 +16736,7 @@ function TelephoneSansSeance(){
   return h("div", {style:{padding:"2rem", color:"#fff", textAlign:"center", minHeight:"100vh"}},
     h("div", {style:{fontSize:"3rem", marginBottom:"1rem"}}, "📱"),
     h("h2", {style:{marginBottom:".5rem"}}, "Pilotage mobile"),
-    h("p", {style:{opacity:.9}}, "Aucune session active. Lance une session depuis l'ordinateur."));
+    h("p", {style:{opacity:.9}}, "Aucune séance active. Lance une séance depuis l'ordinateur."));
 }
 /* Le téléphone scanné : il écrit qcm/qrScans/<nonce>, et la fenêtre du QR se ferme sur la console (la 7.7.1, VuePhone, l. 5374 à 5380) */
 (function(){ try { var qr = LIVE.params().get("qr"); if(qr && LIVE.appareil() === "telephone" && db) db.ref(DB_ROOT + "/qrScans/" + qr).set(firebase.database.ServerValue.TIMESTAMP); } catch(e){ console.error(e); } })();

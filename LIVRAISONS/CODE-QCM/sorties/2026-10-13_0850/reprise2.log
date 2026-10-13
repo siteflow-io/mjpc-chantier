@@ -1,0 +1,57 @@
+── 5. Les compteurs, 4 élèves entrés sur 24 présents  (31 s)
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] à « ▶️ Lancer Q1 », « CONNECTÉS » compte les 4 entrés (4/24), pas 24/24 — 24/24 CONNECTÉS
+── 1. Le chrono du téléphone avance  (33 s)
+  ok     [QCM-2 · HEURE] au téléphone, le chrono avance (deux lectures à 3 s d'écart)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] « ONT RÉPONDU » garde son dénominateur d'un tour à l'autre
+  ok     [QCM-1 · SOCLE] Q1 close
+── 3. « 🔓 Rouvrir pour un élève » : pour lui seul  (46 s)
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour un élève »
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour Léa »
+  ÉCHEC  [QCM-2 · HEURE] le téléphone n'annonce pas un tour à la classe (pas de « ⏭️ Tour suivant », pas de « moitiés de … ») — 3 ESSAI 🕙 Fin 7:45 Évaluation d'essai Phase : réponse — Q 1/32e tour : moitiés de droite 13s 🧠 Réflexion 20 s +5 +10 +30 ✋ Réponse 15 s +5 +10 +30 🏁 Fin prévue 7:02 Q1 · Facile · réflexion 20 s · r
+  ÉCHEC  [QCM-2 · HEURE] le tableau n'annonce pas « Pose ton stylo » à la classe — 3 ESSAI FACILE Question 1 / 3 Quelle est la capitale de l'Italie ? 🖊️ POSE TON STYLO. 13s 2e tour Temps de réponse 👥 Classe (25) Julien ABRIAL Léa BAUDRY Camille BRUNEAU Tom CARRÉ Théo CHEVALLIER Mi
+  ÉCHEC  [QCM-2 · HEURE] la console montre la question rouverte pour Léa — 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🎯 Évaluatio
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] après sa réponse, pas de 2e tour pour la classe (la console) — {"qi":0,"tour":2,"cote":"d","duree":5,"pour":"baudry_lea","ph":"b","depuis":1791874266589} · 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mo
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Julien, qui avait répondu, ne se voit pas redonner la question
+── 2. « 🔓 Rouvrir pour tous » : ceux qui n'ont pas répondu  (64 s)
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour tous »
+  ÉCHEC  [QCM-1 · SOCLE] la question est rouverte (deroule.ph n'est plus close) — {"qi":0,"ph":"close","depuis":1791874271627}
+  ÉCHEC  [QCM-1 · SOCLE] la tablette 2 (sans réponse) retrouve la question — 0
+  ok     [QCM-1 · SOCLE] Julien, qui avait répondu, ne la retrouve pas
+── 4. La console rechargée pendant la réflexion de Q2  (84 s)
+  ok     [QCM-2 · HEURE] « ⚠️ Séance interrompue détectée »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] l'état vrai : question 2, en réflexion — État : question 2, 1er tour (moitiés de gauche) ; 2 réponses enregistrées
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] l'heure vraie de la coupure (06:51)
+  ÉCHEC  [QCM-1 · SOCLE] la reprise garde le chrono où il en était (deroule.depuis inchangé) — {"qi":1,"duree":30,"ph":"reflexion","depuis":1791874288833} → {"qi":1,"duree":30,"ph":"reflexion","depuis":1791874304506}
+── 1. « ▶️ Commencer la correction » au téléphone  (102 s)
+  ok     [QCM-1 · SOCLE] tous prêts : la correction n'a pas commencé seule
+  ok     [QCM-2 · HEURE] au téléphone, « ▶️ Commencer la correction » s'ouvre quand tous sont prêts
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] le clic du téléphone lance la correction (deroule.ph = lecture)
+vérifications : 22 · échecs : 9
+── 5. Les compteurs, 4 élèves entrés sur 24 présents
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] à « ▶️ Lancer Q1 », « CONNECTÉS » compte les 4 entrés (4/24), pas 24/24 — vu : 24/24 CONNECTÉS
+── 1. Le chrono du téléphone avance
+  ok     [QCM-2 · HEURE] au téléphone, le chrono avance (deux lectures à 3 s d'écart)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] « ONT RÉPONDU » garde son dénominateur d'un tour à l'autre
+  ok     [QCM-1 · SOCLE] Q1 close
+── 3. « 🔓 Rouvrir pour un élève » : pour lui seul
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour un élève »
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour Léa »
+  ÉCHEC  [QCM-2 · HEURE] le téléphone n'annonce pas un tour à la classe (pas de « ⏭️ Tour suivant », pas de « moitiés de … ») — vu : 3 ESSAI 🕙 Fin 7:45 Évaluation d'essai Phase : réponse — Q 1/32e tour : moitiés de droite 13s 🧠 Réflexion 20 s +5 +10 +30 ✋ Réponse 15 s +5 +10 +30 🏁 Fin prévue 7:02 Q1 · Facile · réflexion 20 s · réponse 15 s par tour Quelle est la capitale de l'Italie ? ✓ Bonne réponse : Rome Suiv. Q2 : Lesquell
+  ÉCHEC  [QCM-2 · HEURE] le tableau n'annonce pas « Pose ton stylo » à la classe — vu : 3 ESSAI FACILE Question 1 / 3 Quelle est la capitale de l'Italie ? 🖊️ POSE TON STYLO. 13s 2e tour Temps de réponse 👥 Classe (25) Julien ABRIAL Léa BAUDRY Camille BRUNEAU Tom CARRÉ Théo CHEVALLIER Michel DUVERNAY Inès ESNAULT Hugo FOUCHER Manon GALLOIS Nathan HÉBRARD Chloé ISAMBERT Louis JOUBERT Em
+  ÉCHEC  [QCM-2 · HEURE] la console montre la question rouverte pour Léa — vu : 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🎯 Évaluation d'essai — 3 ESSAI 🕙 Fin de l'heure : 7:45 🚫 Départ d'un élève ↩️ Retour d'un élève 🔓 Rouvrir po
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] après sa réponse, pas de 2e tour pour la classe (la console) — vu : {"qi":0,"tour":2,"cote":"d","duree":5,"pour":"baudry_lea","ph":"b","depuis":1791874266589} · 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🎯 Évaluatio
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Julien, qui avait répondu, ne se voit pas redonner la question
+── 2. « 🔓 Rouvrir pour tous » : ceux qui n'ont pas répondu
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour tous »
+  ÉCHEC  [QCM-1 · SOCLE] la question est rouverte (deroule.ph n'est plus close) — vu : {"qi":0,"ph":"close","depuis":1791874271627}
+  ÉCHEC  [QCM-1 · SOCLE] la tablette 2 (sans réponse) retrouve la question — vu : 0
+  ok     [QCM-1 · SOCLE] Julien, qui avait répondu, ne la retrouve pas
+── 4. La console rechargée pendant la réflexion de Q2
+  ok     [QCM-2 · HEURE] « ⚠️ Séance interrompue détectée »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] l'état vrai : question 2, en réflexion — vu : État : question 2, 1er tour (moitiés de gauche) ; 2 réponses enregistrées
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] l'heure vraie de la coupure (06:51)
+  ÉCHEC  [QCM-1 · SOCLE] la reprise garde le chrono où il en était (deroule.depuis inchangé) — vu : {"qi":1,"duree":30,"ph":"reflexion","depuis":1791874288833} → {"qi":1,"duree":30,"ph":"reflexion","depuis":1791874304506}
+── 1. « ▶️ Commencer la correction » au téléphone
+  ok     [QCM-1 · SOCLE] tous prêts : la correction n'a pas commencé seule
+  ok     [QCM-2 · HEURE] au téléphone, « ▶️ Commencer la correction » s'ouvre quand tous sont prêts
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] le clic du téléphone lance la correction (deroule.ph = lecture)

@@ -21237,3 +21237,29 @@ Réponse mot pour mot :
 974. **Pour qu'il la lise**, colle-lui : « Lis MANDATS/NOTE-POUR-C13-MAQUETTE-REELLE.md sur le sas et applique-la. »
 
 13/10/2026 08:54 MEMO
+
+---
+
+## TOUR 690 — le réveil programmé (pas Paul)
+
+> (13/10, 09:01) [Message programmé par la conscience n°12 sur l'ordre de Paul (13/10 08:33) — il n'est pas de Paul ; reçu à 09:01.] Il est 09:00 : contrôle de la reprise 2 du code du QCM, mise en ligne à 09:15 au plus tard si ça va. (La marche à suivre complète est dans le message programmé « Contrôle QCM de 09:00 », trig_01EAo37SAtCx6G1roJKDeF8R.)
+
+---
+
+## TOUR 690 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `a0338160` (09:00), 17 commits depuis `f246cecc` ; VERDICT.md de QCM-4 (reprise 2, 08:58) : app `8d35f41`, md5 `784ac5e8…` ; point 1 passe, points 2 à 5 échouent au geste (`banc/banc-reprise2.js`), 6 et 8 non rejoués, 7 non rejoué ; l'heure de demain 109/109. Rien poussé en production ; une ligne de verdict en tête de `DEFAUTS-OUVERTS.md`.
+
+Réponse mot pour mot :
+
+À jouer : la 7.7.2, déjà en ligne · en cours chez l'exécutant : personne (QCM-4 a rendu son verdict à 08:58) · ouvert : la suite après ton cours
+
+975. **Verdict de 09:02 : ça ne va pas.** Rien n'est mis en ligne : tu fais cours avec la 7.7.2.
+
+976. **Pourquoi** : QCM-4 a rejoué chaque correction par le geste ; son verdict de 08:58 en garde quatre en échec sur six : « Rouvrir pour tous » ne rouvre toujours rien ; « Rouvrir pour un élève » est encore faux ; la console rechargée annonce encore un état faux ; les compteurs restent faux. L'alerte de la co-évaluation n'a pas été rejouée.
+
+977. **Ce qui a marché** : au téléphone, le chrono avance et « ▶️ Commencer la correction » s'ouvre quand tous sont prêts, et lance la correction ; l'heure de ta 4e passe en entier (109 sur 109).
+
+978. **Pour ce matin**, tout ce que je t'ai dit à 08:33 vaut : la 7.7.2, et ses tests avant le cours.
+
+13/10/2026 09:02 MEMO

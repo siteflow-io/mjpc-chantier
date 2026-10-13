@@ -7,6 +7,7 @@ Paul, 16:42 : « et oui, le mot, et d'ailleurs LES mots: fais un relevé de la t
 - **Les écrans** : les 169 écrans de la maquette v9 (`LIVRAISONS/CODE-QCM/banc/reference/maquette-v9.json` sur `code-qcm`, le relevé de QCM-4 : le texte, les boutons et les infobulles de chaque écran ; la 8.0.0 est le code de cette maquette), et les 26 écrans de l'app 8.0.0 relevés par QCM-4 pendant l'assemblage de 13:12 (`LIVRAISONS/CODE-QCM/sorties/2026-10-13_1312/releves-branches.json`).
 - **Les côtés** : « console » = la console et le téléphone (ce que Paul voit) ; « élèves » = la tablette, l'écran de l'élève et la vue tableau (ce que la classe voit).
 - **Le compte** : le nombre d'écrans où le mot paraît au moins une fois, sans accents ni majuscules. Un même texte répété d'écran en écran (une infobulle de la barre du haut) compte une fois par écran.
+- **Les évaluations** : les énoncés, les choix et les titres des évaluations sont à l'écran, donc dans le compte. Quelques exemples en viennent (« tranchées », « je la relis chaque soir », « 3e- éval 1 ») : ce sont tes mots, pas ceux de l'app.
 - **Ce qui n'y est pas** : les écrans que ni la maquette ni le relevé de l'app n'atteignent. Je ne sais pas s'il y en a qui emploient d'autres mots.
 - **Rejouer** : `python3 table.py && python3 gen.py` dans ce dossier (le chemin `W` de `corpus.py` pointe vers une copie de `code-qcm`).
 
@@ -88,7 +89,7 @@ Paul, 16:42 : « et oui, le mot, et d'ailleurs LES mots: fais un relevé de la t
 | contrôle | 1 | 0 | « Contrôle : 25 élèves · 24 notes · 1 absent · 24 commentaires. » (`x632-pdf`, console) |
 | devoir | 1 | 0 | « … Une ligne par élève, dans l'ordre alphabétique. « Note » : la note sur 20 du devoir. Chaque colonne de compétence : le niveau de maîtrise de l'élève, en … » (`x632-pdf`, console) |
 
-**Proposition** : 1124 : « évaluation » partout, jamais « éval » ; « séance » pour une passation avec une classe.
+**Proposition** : 1124 : « évaluation » dans toutes les phrases de l'app, jamais « éval » (les titres de tes évaluations restent les tiens) ; « séance » pour une passation avec une classe.
 
 ## Les moments
 

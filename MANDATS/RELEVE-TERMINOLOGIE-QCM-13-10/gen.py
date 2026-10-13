@@ -16,7 +16,7 @@ P = {
  "Le soir": "1122 : « à lire » partout (« ⚠️ À relire » et « 📌 Je relis ce soir » disent le même geste que « 📌 À lire sur les feuilles, ce soir »).",
  "Le désaccord": "1123 : « désaccord » des deux côtés (l'élève le lit déjà : « ☝️ Un désaccord, c'est sérieux »), et « réglé » au lieu de « tranché ».",
  "L'engagement avant": "1124 : « les consignes » sur la console ; l'élève lit « Avant de commencer » et « Avant la correction », jamais « attestation » (0 écran côté élèves).",
- "Ce qu'on fait passer": "1124 : « évaluation » partout, jamais « éval » ; « séance » pour une passation avec une classe.",
+ "Ce qu'on fait passer": "1124 : « évaluation » dans toutes les phrases de l'app, jamais « éval » (les titres de tes évaluations restent les tiens) ; « séance » pour une passation avec une classe.",
 }
 OK = {"La tablette partagée": "Rien à changer : « moitié » n'est jamais vu par l'élève.",
       "Les moments": "Rien à changer ; « recopie » n'est vu nulle part.",
@@ -31,6 +31,7 @@ L = ["# Relevé de la terminologie du QCM — conscience n°12, 13/10/2026 (tour
  "- **Les écrans** : les 169 écrans de la maquette v9 (`LIVRAISONS/CODE-QCM/banc/reference/maquette-v9.json` sur `code-qcm`, le relevé de QCM-4 : le texte, les boutons et les infobulles de chaque écran ; la 8.0.0 est le code de cette maquette), et les 26 écrans de l'app 8.0.0 relevés par QCM-4 pendant l'assemblage de 13:12 (`LIVRAISONS/CODE-QCM/sorties/2026-10-13_1312/releves-branches.json`).",
  "- **Les côtés** : « console » = la console et le téléphone (ce que Paul voit) ; « élèves » = la tablette, l'écran de l'élève et la vue tableau (ce que la classe voit).",
  "- **Le compte** : le nombre d'écrans où le mot paraît au moins une fois, sans accents ni majuscules. Un même texte répété d'écran en écran (une infobulle de la barre du haut) compte une fois par écran.",
+ "- **Les évaluations** : les énoncés, les choix et les titres des évaluations sont à l'écran, donc dans le compte. Quelques exemples en viennent (« tranchées », « je la relis chaque soir », « 3e- éval 1 ») : ce sont tes mots, pas ceux de l'app.",
  "- **Ce qui n'y est pas** : les écrans que ni la maquette ni le relevé de l'app n'atteignent. Je ne sais pas s'il y en a qui emploient d'autres mots.",
  "- **Rejouer** : `python3 table.py && python3 gen.py` dans ce dossier (le chemin `W` de `corpus.py` pointe vers une copie de `code-qcm`).", ""]
 for c in T:

@@ -22210,3 +22210,61 @@ Réponse, mot pour mot :
 1108. Dans ma réponse de 16:18, j'ai mis des puces dans 1090 et 1093. C'est contraire à ta règle, et je ne le referai pas.
 
 13/10/2026 16:21 MEMO
+
+---
+
+## TOUR 716 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (16:42) C'est mieux, mais du coup quand les réponses sont longues, tu vois bien que ça marche moins bien qu'avec ton exemple facile de nom de ville. Pour 1105: Tom tu as répondu Venise sur la tablette: avais-tu bien écrit Venise sur ta copie? ". et oui, le mot, et d'ailleurs LES mots: fais un relevé de la terminologie.
+
+---
+
+## TOUR 716 — Claude (conscience n°12)
+
+(Entre les tours 715 et 716, le réveil de 16:31 : aucun exécutant n'a travaillé depuis 13:32, `code-qcm` à `a5a69308` ; rien de contrôlé ; une ligne à Paul, 16:32.)
+
+Mesuré : la longueur des 403 choix des 7 évaluations du hub (`banchub/evals_now.json`, copie du 12/10) ; au cadrage, 391 et 135 (l'élève rédige sa réponse en entier, choix cachés), 151, 247 et 248 (l'élève corrige sa propre feuille : « V vert dans la marge » ou « Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté »), 442 (écarter et annuler) ; dans le code, `EcrRevele` (`etape3.js` l. 127-155 : la consigne suit la lecture du voisin). Relevé : `MANDATS/RELEVE-TERMINOLOGIE-QCM-13-10/` (`corpus.py`, `releve.py`, `table.py`, `gen.py`), sur les 169 écrans de `banc/reference/maquette-v9.json` et les 26 de `sorties/2026-10-13_1312/releves-branches.json`, compté par écran et par côté ; « toucher » vérifié emploi par emploi (jamais le geste). Rien n'est écrit dans l'app.
+
+Réponse, mot pour mot :
+
+1109. Tu as raison. Mesuré sur tes 7 évaluations du hub (copiées le 12/10) : 403 choix ; la moitié font plus de 27 caractères, 175 plus de 30, et le plus long 137. Et 46 questions sur 88 ont plusieurs bonnes réponses. Une réponse dans la phrase ne tient donc pas.
+
+1110. Ma proposition pour ta console : la phrase ne contient plus les réponses. Elles viennent dessous, en entier, chacune sur sa ligne, et une seule fois quand c'est la même. Par exemple : « Tom n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. », puis dessous « Tablette et lecture de Léa : « Un équilibre entre pain croustillant, beurre régulier et jambon de qualité » ».
+
+1111. 1098 devient : « Tom n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. »
+
+1112. 1099 devient : « Théo dit avoir bien écrit sa réponse sur sa feuille ; Lou y a lu autre chose. », puis « Tablette : « Madrid » » et « Lu par Lou : « Sydney » ».
+
+1113. 1100 devient : « Théo dit avoir écrit autre chose sur sa feuille ; Lou y a lu sa réponse. », puis « Tablette et lecture de Lou : « Madrid » ».
+
+1114. 1101, 1102 et 1103 ne changent pas, sauf ce que Noah dit avoir écrit (1102), qui passe aussi sur sa ligne.
+
+1115. 1105 : je prends ta phrase, avec deux retouches, à ta décision. « Feuille » au lieu de « copie » (voir 1119). Et « cela » au lieu de répéter la réponse, qui peut faire deux lignes : « Tom, tu as répondu Venise sur la tablette : avais-tu bien écrit cela sur ta feuille ? ». Les boutons restent « Oui, la même chose » et « Non, autre chose ».
+
+1116. Avant de commencer, l'élève lit aussi « À la fin du temps, dis si ta feuille dit la même chose que ton clic. » Je propose, dans tes mots : « À la fin du temps, dis si tu avais bien écrit sur ta feuille ce que tu as répondu sur la tablette. »
+
+1117. Je corrige 1094, après mesure au cadrage (151, 247, 248) et dans le code : ce n'est pas le voisin, c'est l'élève qui corrige sa propre feuille, d'après sa tablette, et sa tablette suit la lecture du voisin. Les phrases du soir deviennent donc « Rien à changer sur la feuille. » ; quand la lecture était juste et la feuille fausse, l'élève a mis un V vert à côté d'une réponse fausse : « Barre le V vert, barre sa réponse en rouge et écris la bonne réponse en vert à côté. » ; quand la lecture était fausse et la feuille juste, il a barré une réponse juste : « Sa réponse barrée était juste : mets un V vert dans la marge. »
+
+1118. Le relevé est fait sur les 169 écrans de la maquette v9, dont la 8.0.0 est le code, et sur 26 écrans de l'app : textes, boutons et infobulles, côté console et côté élèves. Les tableaux sont dans le fichier ; ce qui ne va pas est de 1119 à 1124.
+
+1119. Le papier : l'élève lit « feuille » sur 37 écrans. Sur ta console, « copie » a trois sens : ce que tu rends (« Rendre les copies »), le double d'une évaluation (« Créer une copie modifiable »), et le papier dans ma maquette. Je propose « feuille » pour le papier, partout ; « copie » seulement dans « Rendre les copies » ; « dupliquer » pour l'évaluation, comme son bouton. Ma maquette devient « 📄 Lire les feuilles ».
+
+1120. Le mot « clic » est sur 83 écrans de ta console et 9 côté élèves. Je propose qu'il disparaisse : on dit « sa réponse sur la tablette », et le geste reste « cliquer ».
+
+1121. « Voisin » et « binôme » désignent la même personne, même côté élèves (« Ton binôme : DUVERNAY Michel », « Temps pour lire la feuille du voisin »). Je propose « binôme » pour la paire, et le prénom ou « ton voisin » pour la personne.
+
+1122. Le soir, « à lire » et « à relire » disent le même geste (« 📌 À lire sur les feuilles, ce soir », « ⚠️ À relire », « 📌 Je relis ce soir ») : je propose « à lire » partout.
+
+1123. L'élève « signale un désaccord », et ta console dit « alerte », puis « tranchée ». Je propose « désaccord » des deux côtés, et « réglé » au lieu de « tranché ».
+
+1124. Aucun écran élève ne dit « attestation » : la règle tient. Mais 25 écrans de ta console le disent, pour ce que l'élève lit comme « Avant de commencer » et « Avant la correction ». Je propose « les consignes ». Et dans les phrases de l'app, « éval » devient « évaluation ».
+
+1125. Ce qui va : « écarter » et « annuler » sont deux gestes différents (442) ; « 1er tour », « 2e tour » et « rouvrir » ont chacun un seul sens ; l'élève ne voit jamais « moitié », « touche », « recopie » ni « sanction ».
+
+1126. Tu valides, point par point ? Ce que tu valides va dans la reprise 7, qui n'est pas lancée.
+
+Le relevé : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/RELEVE-TERMINOLOGIE-QCM-13-10/README.md
+
+13/10/2026 16:52 MEMO

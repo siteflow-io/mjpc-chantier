@@ -22143,27 +22143,29 @@ Mesuré : `matchEleveInitials` et le champ de fin de copie de `correction_dictee
 
 Réponse, mot pour mot :
 
-1090. « ✏️ Autre chose » ouvre les choix de la question, avec « Aucun de ces choix ». Tu cliques ce que dit la copie, puis « ✔ Valider » ; « Annuler » revient en arrière sans rien changer. Après « Valider » :
+1090. « ✏️ Autre chose » ouvre les choix de la question, avec « Aucun de ces choix ». Tu cliques ce que dit la copie, puis « ✔ Valider ». « Annuler » revient en arrière sans rien changer. Après « Valider » :
 - ce que tu as cliqué devient la lecture de la copie, et la note se recalcule ;
 - le bilan de l'élève dit « Corrigé d'après ta feuille » ;
 - la lecture du voisin n'est pas effacée : la fiche de l'élève la montre encore ;
 - le point d'autonomie du voisin ne change pas tout seul.
 
-1091. Le tas dans son ordre : c'est fait comme dans correction_dictee. Tu prends la copie du dessus, tu tapes ses initiales (« ct » pour CARRÉ Tom), puis Entrée. À la fin de chaque copie, le champ revient : « Copie suivante de ton tas — tape ses initiales ». La recherche est celle de correction_dictee : les deux initiales dans un sens ou dans l'autre, ou le début du nom ou du prénom. Chaque nom proposé dit « 1 question à lire », « ✔ lue » ou « rien à lire ».
+1091. Le tas dans son ordre, c'est fait comme dans correction_dictee. Tu prends la copie du dessus, tu tapes ses initiales (« ct » pour CARRÉ Tom), puis Entrée. À la fin de chaque copie, le champ revient : « Copie suivante de ton tas — tape ses initiales ». La recherche marche comme dans correction_dictee : les deux initiales dans un sens ou dans l'autre, ou le début du nom ou du prénom. À côté de chaque nom proposé, tu vois « 1 question à lire », « ✔ lue » ou « rien à lire ».
 
-1092. Seulement les questions à lire : oui. Sur la séance du banc (24 copies), 8 copies ont une question à lire, les 16 autres rien. Une copie sans rien à lire affiche « Rien à lire sur cette copie : mets-la de côté. », et le champ de la suivante vient aussitôt. Une copie à lire ne montre que sa question à lire. Je corrige 1084 : c'est 8 questions, pas 9.
+1092. Seulement les questions à lire : oui. Sur la séance du banc (24 copies), 8 copies ont une question à lire et les 16 autres n'ont rien. Une copie sans rien à lire affiche « Rien à lire sur cette copie : mets-la de côté. », et le champ pour la suivante vient aussitôt. Une copie à lire ne montre que sa question à lire. Je corrige aussi 1084 : il y a 8 questions à lire, pas 9.
 
-1093. Ce que tu écris sur la copie : après chaque réponse, l'app te le dit en gros.
+1093. Ce que tu écris sur la copie : après chaque réponse, l'app te l'affiche en gros.
 - La copie dit ce que le voisin a lu : « ✍️ Sur la copie : rien à changer. »
 - Le voisin a lu une réponse fausse, la copie dit la bonne : « barre la correction en rouge, et mets un V vert. »
 - Le voisin a lu la bonne réponse, la copie en dit une fausse : « barre le V vert, et écris en vert la bonne réponse : « Rome ». »
 - Si la note change : « ✍️ Et la note : 1 / 3 → 2 / 3. »
 
-1094. Pour ces phrases, j'ai supposé qu'en classe, le voisin met un V vert quand c'est juste, et sinon barre en rouge et écrit la bonne réponse. Je ne sais pas si c'est ce qu'ils font. Dis-moi ce qu'ils écrivent vraiment sur la copie : seules ces trois phrases changeront.
+1094. Pour ces phrases, j'ai supposé qu'en classe, le voisin met un V vert quand c'est juste, et sinon barre en rouge et écrit la bonne réponse. Je ne sais pas si c'est ce qu'ils font. Dis-moi ce qu'ils écrivent vraiment sur la copie : il n'y aura que ces trois phrases à changer.
 
-1095. Tu valides ? Si oui, je l'ajoute à la reprise 7, qui n'est pas encore lancée. J'attends aussi ton oui ou ton non sur 1082 (le chrono de lecture fige à 0) et 1083 (la tablette ne demande plus la classe).
+1095. Tu valides ? Si oui, je l'ajoute à la reprise 7, qui n'est pas encore lancée. J'attends aussi ton oui ou ton non sur 1082 (le chrono de lecture se fige à 0) et sur 1083 (la tablette ne demande plus la classe).
 
-La maquette, avec les captures : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
+Les captures sont dans les six fichiers envoyés : 2-initiales-ab à 7-oui-rien-a-changer. Rien n'est en ligne, et rien n'est donné aux exécutants.
+
+La maquette : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
 
 13/10/2026 16:18 MEMO
 
@@ -22183,27 +22185,27 @@ Mesuré dans les sources de la 8.0.0 (`code-qcm` à `a5a69308`) : les textes des
 
 Réponse, mot pour mot :
 
-1096. Mesuré dans le code : toutes ces lignes sont écrites au même endroit. Elles donnent « 📌 À lire sur les feuilles, ce soir » sur ta console, et la colonne « À lire sur la feuille » du tableau de la séance. Pendant l'heure, les infobulles des cartes des tablettes ont le même défaut. Partout, elles disent « son clic » au lieu de dire la réponse.
+1096. J'ai regardé dans le code : toutes ces phrases sont écrites au même endroit. C'est de là que viennent la liste « 📌 À lire sur les feuilles, ce soir » de ta console et la colonne « À lire sur la feuille » du tableau de la séance. Pendant l'heure, les infobulles des cartes des tablettes ont le même défaut. Partout, ces phrases disent « son clic » au lieu de dire la réponse.
 
 1097. Ma proposition : chaque ligne dit les réponses en clair, et qui a fait quoi. Il y a six cas, de 1098 à 1103.
 
 1098. L'élève n'a pas répondu : « Tom a cliqué Venise. Il n'a pas dit si sa feuille dit Venise. Léa y a lu Venise. »
 
-1099. L'élève a dit « la même chose », le voisin a lu autre chose : « Théo a cliqué Madrid, et dit que sa feuille dit Madrid. Lou y a lu Sydney. »
+1099. L'élève a dit « la même chose », mais le voisin a lu autre chose : « Théo a cliqué Madrid, et dit que sa feuille dit Madrid. Lou y a lu Sydney. »
 
-1100. L'élève a dit « autre chose », le voisin a lu la même chose : « Théo a cliqué Madrid, et dit que sa feuille dit autre chose. Lou y a lu Madrid. »
+1100. L'élève a dit « autre chose », mais le voisin a lu la même chose : « Théo a cliqué Madrid, et dit que sa feuille dit autre chose. Lou y a lu Madrid. »
 
 1101. Le voisin n'a lu aucun choix : « Lou n'a lu aucun des choix sur la feuille de Michel. »
 
-1102. La co-évaluation, « peut-être » : « Noah pense que Lou a peut-être mal lu sa feuille. Il dit avoir écrit Rome. »
+1102. À la co-évaluation, l'élève a répondu « peut-être » : « Noah pense que Lou a peut-être mal lu sa feuille. Il dit avoir écrit Rome. »
 
 1103. L'alerte que tu as gardée pour le soir : « Noah pense que Lou a mal lu sa feuille. »
 
 1104. Les infobulles des cartes suivent la même règle, par exemple « Tom a cliqué Venise, et dit que sa feuille dit Venise. » Dans ma maquette, la ligne grise disparaît : la même phrase la remplace.
 
-1105. Côté élève, « Tom, regarde ta feuille : dit-elle la même chose que ton clic ? » est ta phrase, et je n'y touche pas. Si tu veux la rendre concrète aussi, ce pourrait être « Tom, tu as cliqué Venise : ta feuille dit-elle Venise ? ». C'est toi qui décides.
+1105. Côté élève, « Tom, regarde ta feuille : dit-elle la même chose que ton clic ? » est ta phrase, et je n'y touche pas. Si tu veux la rendre concrète elle aussi, ce pourrait être « Tom, tu as cliqué Venise : ta feuille dit-elle Venise ? ». C'est toi qui décides.
 
-1106. Le mot : ta console dit « feuille », ma maquette de ce soir dit « copie ». Il faut un seul mot : je propose « feuille » partout, maquette comprise (« 📄 Lire les feuilles », « La feuille dit-elle « Venise » ? »).
+1106. Le mot : ta console dit « feuille », ma maquette dit « copie ». Il faut un seul mot partout. Je propose « feuille », maquette comprise (« 📄 Lire les feuilles », « La feuille dit-elle « Venise » ? »).
 
 1107. Tu valides ? Si oui, ces phrases vont dans la reprise 7, avec la maquette.
 
@@ -22223,15 +22225,21 @@ Texte de Paul, mot pour mot :
 
 ## TOUR 716 — Claude (conscience n°12)
 
-(Entre les tours 715 et 716, le réveil de 16:31 : aucun exécutant n'a travaillé depuis 13:32, `code-qcm` à `a5a69308` ; rien de contrôlé ; une ligne à Paul, 16:32.)
+(Entre les tours 715 et 716, le réveil de 16:31 : aucun exécutant n'a travaillé depuis 13:32, `code-qcm` à `a5a69308` ; rien de contrôlé. Envoyé à Paul, mot pour mot :
+
+> Je n'ai rien contrôlé à 16:31 : aucun exécutant n'a travaillé depuis 13:32, et la reprise 7 n'est pas lancée.
+>
+> 13/10/2026 16:32 MEMO
+
+)
 
 Mesuré : la longueur des 403 choix des 7 évaluations du hub (`banchub/evals_now.json`, copie du 12/10) ; au cadrage, 391 et 135 (l'élève rédige sa réponse en entier, choix cachés), 151, 247 et 248 (l'élève corrige sa propre feuille : « V vert dans la marge » ou « Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté »), 442 (écarter et annuler) ; dans le code, `EcrRevele` (`etape3.js` l. 127-155 : la consigne suit la lecture du voisin). Relevé : `MANDATS/RELEVE-TERMINOLOGIE-QCM-13-10/` (`corpus.py`, `releve.py`, `table.py`, `gen.py`), sur les 169 écrans de `banc/reference/maquette-v9.json` et les 26 de `sorties/2026-10-13_1312/releves-branches.json`, compté par écran et par côté ; « toucher » vérifié emploi par emploi (jamais le geste). Rien n'est écrit dans l'app.
 
 Réponse, mot pour mot :
 
-1109. Tu as raison. Mesuré sur tes 7 évaluations du hub (copiées le 12/10) : 403 choix ; la moitié font plus de 27 caractères, 175 plus de 30, et le plus long 137. Et 46 questions sur 88 ont plusieurs bonnes réponses. Une réponse dans la phrase ne tient donc pas.
+1109. Tu as raison. J'ai mesuré sur tes 7 évaluations du hub (copiées le 12/10) : 403 choix. La moitié font plus de 27 caractères, 175 plus de 30, et le plus long 137. Et 46 questions sur 88 ont plusieurs bonnes réponses. Mettre la réponse dans la phrase ne tient donc pas.
 
-1110. Ma proposition pour ta console : la phrase ne contient plus les réponses. Elles viennent dessous, en entier, chacune sur sa ligne, et une seule fois quand c'est la même. Par exemple : « Tom n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. », puis dessous « Tablette et lecture de Léa : « Un équilibre entre pain croustillant, beurre régulier et jambon de qualité » ».
+1110. Ma proposition pour ta console : la phrase ne contient plus les réponses. Elles viennent dessous, en entier, chacune sur sa ligne, et une seule fois quand c'est la même. Par exemple, « Tom n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. », puis dessous « Tablette et lecture de Léa : « Un équilibre entre pain croustillant, beurre régulier et jambon de qualité » ».
 
 1111. 1098 devient : « Tom n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. »
 
@@ -22239,17 +22247,24 @@ Réponse, mot pour mot :
 
 1113. 1100 devient : « Théo dit avoir écrit autre chose sur sa feuille ; Lou y a lu sa réponse. », puis « Tablette et lecture de Lou : « Madrid » ».
 
-1114. 1101, 1102 et 1103 ne changent pas, sauf ce que Noah dit avoir écrit (1102), qui passe aussi sur sa ligne.
+1114. 1101, 1102 et 1103 ne changent pas. Seul ce que Noah dit avoir écrit (1102) passe sur sa propre ligne.
 
-1115. 1105 : je prends ta phrase, avec deux retouches, à ta décision. « Feuille » au lieu de « copie » (voir 1119). Et « cela » au lieu de répéter la réponse, qui peut faire deux lignes : « Tom, tu as répondu Venise sur la tablette : avais-tu bien écrit cela sur ta feuille ? ». Les boutons restent « Oui, la même chose » et « Non, autre chose ».
+1115. 1105 : je prends ta phrase, avec deux retouches que je te laisse décider. « Feuille » au lieu de « copie » (voir 1119). Et « cela » au lieu de répéter la réponse, qui peut faire deux lignes : « Tom, tu as répondu Venise sur la tablette : avais-tu bien écrit cela sur ta feuille ? ». Les boutons restent « Oui, la même chose » et « Non, autre chose ».
 
 1116. Avant de commencer, l'élève lit aussi « À la fin du temps, dis si ta feuille dit la même chose que ton clic. » Je propose, dans tes mots : « À la fin du temps, dis si tu avais bien écrit sur ta feuille ce que tu as répondu sur la tablette. »
 
-1117. Je corrige 1094, après mesure au cadrage (151, 247, 248) et dans le code : ce n'est pas le voisin, c'est l'élève qui corrige sa propre feuille, d'après sa tablette, et sa tablette suit la lecture du voisin. Les phrases du soir deviennent donc « Rien à changer sur la feuille. » ; quand la lecture était juste et la feuille fausse, l'élève a mis un V vert à côté d'une réponse fausse : « Barre le V vert, barre sa réponse en rouge et écris la bonne réponse en vert à côté. » ; quand la lecture était fausse et la feuille juste, il a barré une réponse juste : « Sa réponse barrée était juste : mets un V vert dans la marge. »
+1117. Je corrige 1094 : j'ai vérifié au cadrage (151, 247, 248) et dans le code. Ce n'est pas le voisin qui corrige la feuille, c'est l'élève lui-même, d'après sa tablette, et la tablette suit la lecture du voisin. Les phrases du soir deviennent donc :
+- quand la feuille dit ce que le voisin a lu : « Rien à changer sur la feuille. » ;
+- quand la lecture était juste et la feuille fausse, l'élève a mis un V vert à côté d'une réponse fausse : « Barre le V vert, barre sa réponse en rouge et écris la bonne réponse en vert à côté. » ;
+- quand la lecture était fausse et la feuille juste, il a barré une réponse juste : « Sa réponse barrée était juste : mets un V vert dans la marge. »
 
-1118. Le relevé est fait sur les 169 écrans de la maquette v9, dont la 8.0.0 est le code, et sur 26 écrans de l'app : textes, boutons et infobulles, côté console et côté élèves. Les tableaux sont dans le fichier ; ce qui ne va pas est de 1119 à 1124.
+1118. J'ai fait le relevé sur les 169 écrans de la maquette v9 (la 8.0.0 est son code) et sur 26 écrans de l'app : textes, boutons et infobulles, côté console et côté élèves. Les tableaux sont dans le fichier. Ce qui ne va pas est de 1119 à 1124.
 
-1119. Le papier : l'élève lit « feuille » sur 37 écrans. Sur ta console, « copie » a trois sens : ce que tu rends (« Rendre les copies »), le double d'une évaluation (« Créer une copie modifiable »), et le papier dans ma maquette. Je propose « feuille » pour le papier, partout ; « copie » seulement dans « Rendre les copies » ; « dupliquer » pour l'évaluation, comme son bouton. Ma maquette devient « 📄 Lire les feuilles ».
+1119. Le papier : l'élève lit « feuille » sur 37 écrans. Sur ta console, « copie » a trois sens : ce que tu rends (« Rendre les copies »), le double d'une évaluation (« Créer une copie modifiable »), et le papier dans ma maquette. Je propose :
+- « feuille » pour le papier, partout ;
+- « copie » seulement dans « Rendre les copies » ;
+- « dupliquer » pour l'évaluation, comme son bouton ;
+- ma maquette devient « 📄 Lire les feuilles ».
 
 1120. Le mot « clic » est sur 83 écrans de ta console et 9 côté élèves. Je propose qu'il disparaisse : on dit « sa réponse sur la tablette », et le geste reste « cliquer ».
 
@@ -22259,12 +22274,49 @@ Réponse, mot pour mot :
 
 1123. L'élève « signale un désaccord », et ta console dit « alerte », puis « tranchée ». Je propose « désaccord » des deux côtés, et « réglé » au lieu de « tranché ».
 
-1124. Aucun écran élève ne dit « attestation » : la règle tient. Mais 25 écrans de ta console le disent, pour ce que l'élève lit comme « Avant de commencer » et « Avant la correction ». Je propose « les consignes ». Et dans les phrases de l'app, « éval » devient « évaluation ».
+1124. Aucun écran élève ne dit « attestation » : la règle est tenue. Mais 25 écrans de ta console le disent, pour ce que l'élève lit comme « Avant de commencer » et « Avant la correction ». Je propose « les consignes ». Et dans les phrases de l'app, « éval » devient « évaluation ».
 
-1125. Ce qui va : « écarter » et « annuler » sont deux gestes différents (442) ; « 1er tour », « 2e tour » et « rouvrir » ont chacun un seul sens ; l'élève ne voit jamais « moitié », « touche », « recopie » ni « sanction ».
+1125. Ce qui va :
+- « écarter » et « annuler » sont deux gestes différents (442) ;
+- « 1er tour », « 2e tour » et « rouvrir » ont chacun un seul sens ;
+- l'élève ne voit jamais « moitié », « touche », « recopie » ni « sanction ».
 
 1126. Tu valides, point par point ? Ce que tu valides va dans la reprise 7, qui n'est pas lancée.
 
 Le relevé : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/RELEVE-TERMINOLOGIE-QCM-13-10/README.md
 
 13/10/2026 16:52 MEMO
+
+---
+
+## TOUR 717 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (18:35) Attends attends stop. Tu remets tout en cause là. La seule chose que je veux, c'est d'avoir une app qui me parle précisément de ce que l'élève a fait, et que l'élève comprenne ce qu'on attend de lui dans le flux de la séance, et que le soir, je n'ai pas à réfléchir mais simplement répondre par des oui ou des non.
+
+---
+
+## TOUR 717 — Claude (conscience n°12)
+
+Faute d'enregistrement corrigée à ce tour : aux tours 714, 715 et 716, la réponse envoyée à Paul avait été reformulée après l'écriture de `reponse_N.md`, et le transcript gardait le texte d'avant. Les trois réponses sont remplacées ici et au cadrage par le texte envoyé, mot pour mot, avec la ligne de 16:32. Désormais, le texte envoyé est celui du fichier.
+
+Rien n'est écrit dans l'app ni sur `code-qcm`.
+
+Réponse, mot pour mot :
+
+1127. Compris, j'arrête. Je retire 1115, 1116 et 1118 à 1125 : le relevé reste au sas comme une mesure, mais rien n'en sort.
+
+1128. Ce qui reste sert tes trois buts, et rien d'autre.
+
+1129. Que l'app te dise précisément ce que l'élève a fait : les lignes « à lire » disent ce qu'il a répondu sur la tablette, ce que son voisin a lu sur sa feuille, et ce qu'il a dit lui-même (1110 à 1114).
+
+1130. Que l'élève comprenne ce qu'on attend de lui, au moment où on le lui demande : ta phrase de 1105, mot pour mot, « Tom, tu as répondu Venise sur la tablette : avais-tu bien écrit Venise sur ta copie ? ».
+
+1131. Que le soir, tu n'aies qu'à répondre oui ou non : la maquette de 16:18 (« La copie dit-elle « … » ? », « ✅ Oui » ou « ✏️ Autre chose »), avec ce que tu écris sur la copie, corrigé en 1117.
+
+1132. Tu valides 1129 à 1131 pour la reprise 7 ?
+
+1133. J'ai encore mis des puces dans ma réponse de 16:52, après avoir écrit en 1108 que je ne le referais pas. Je n'en mets plus.
+
+13/10/2026 18:37 MEMO

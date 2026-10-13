@@ -22374,3 +22374,31 @@ Réponse, mot pour mot :
 1142. Mon avis : garder le voisin. C'est lui qui rend un « Oui » faux visible, donc c'est lui qui rend ta liste du soir fiable. Ce qui te fait perdre du temps le soir, ce sont les phrases illisibles, et c'est ce que règlent 1129 à 1131.
 
 13/10/2026 20:04 MEMO
+
+---
+
+## TOUR 720 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (20:06) Ok. Quels autres moyens sont faisables pour contrôler encore mieux, décourager toute tentative de triche, et me gagner encore plus de temps?
+
+---
+
+## TOUR 720 — Claude (conscience n°12)
+
+Relu : cadrage 39 et 323 (les binômes d'après le QCM précédent), 495 et 496 (le voile), 584 (pas de tirage). Code : `retirerAutonomieSoirV` et la fenêtre « ⛔ Retirer le point d'autonomie à … ? » (`c4-seances.js` l. 137-140, 542, 628-637), `A.retirerAutonomie` (`live/base.js` l. 758). Faisabilité de 1144 et 1145 : les deux s'écrivent dans `lire-copies.js` avec des gestes et des données qui existent ; rien n'est écrit. Pas proposé : un tirage au hasard (écarté en 584), rien de payant, pas d'IA.
+
+Réponse, mot pour mot :
+
+1143. Déjà en place, et ça tient : le voile pendant le tour de l'autre, les binômes refaits d'après le QCM précédent (323), la question de 1105, la lecture par le voisin avant la bonne réponse, la co-évaluation, « Trouvée au dernier moment » une seule fois par évaluation, et ta lecture du soir. Ce qui manque, ce n'est pas un contrôle de plus : c'est que chaque faute trouvée ait sa conséquence, sans effort pour toi.
+
+1144. Le soir, la conséquence en un clic. Quand tu réponds « ✏️ Autre chose », l'app sait qui s'est trompé. Si c'est l'élève, elle te demande : « Tom avait dit avoir bien écrit Venise. Retirer son point d'autonomie ? », avec « Oui » et « Non ». Si c'est le voisin : « Léa avait lu Venise. Retirer son point d'autonomie ? ». Aujourd'hui, rien ne bouge tout seul (1090) : il faut ouvrir la fiche de l'élève et cliquer « ⛔ Retirer le point d'autonomie ». C'est faisable, puisque ce geste existe déjà.
+
+1145. Moins de copies en main. En haut de « Lire les copies », l'app te donne la liste des copies à sortir du tas, par exemple « Sors du tas : CARRÉ Tom, CHEVALLIER Théo… (8) ». Tu sors ces 8 copies, et tu ne tapes les initiales que pour elles. Les 16 autres ne passent plus entre tes mains.
+
+1146. En classe, sans rien dans l'app : à « POSE TON STYLO », le stylo de la réflexion se range, et seuls le vert et le rouge restent sur la table jusqu'à la fin de la correction. Celui qui ressort son stylo pour compléter sa feuille après avoir vu les choix se fait voir. C'est une règle de classe : à toi de dire si tu la veux, et avec quels mots.
+
+1147. Tu veux lesquels ? 1144 et 1145 se font dans la maquette « Lire les copies », avant la reprise 7.
+
+13/10/2026 20:07 MEMO

@@ -6,13 +6,23 @@ Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de
 
 **Verdict : ça ne va pas ; rien n'est mis en ligne, la 7.7.2 reste.** Mesures de la conscience : l'app se reconstruit à l'identique (`build.py` : `805732bc…`) ; ses contrôles passent (32 / 32, 111 s) et la sonde B aussi (17 / 17). Mais trois choses restent : un défaut connu encore ouvert, le téléphone qui montre la séance pendant l'appel (R9, n° 2) ; un écart à la maquette, « 🚀 Lancer la séance » de la carte grisé pendant l'appel (R9, n° 1, `c-appel`) ; des corrections rejouées par personne (le dénominateur des présents au téléphone et au tableau, « 1 réponse enregistrée »), avec la partie de R10 (de l'estimation au soir) qu'aucun relecteur n'a jouée. Écartés après mesure : les accords (`SCN.sexe` lit `classes/<classe>/amenagements/<élève>/sexe` ; au hub, en lecture, les quatre classes de Paul l'ont pour tous leurs élèves : 25, 30, 30, 30) ; « Je commence » fermé (R9, n° 3 : l'écran a sa case à cocher, `R9/cap/tab1-2.png`).
 
+## Reprise 6 du 13/10 — Paul (12:35) : « Il faut terminer coûte que coûte. » — **tout poussé à 12:50, `VERDICT.md` à 13:00, contrôle de la conscience à 13:05**
+
+Deux défauts seulement. Chacun a un seul propriétaire ; rien d'autre ne change.
+
+1. [→ QCM-2] **La garde d'une alerte tranchée annonce une note fausse** : « sa note provisoire passe à 1 / 3 » pour un bilan à 3 / 3 (QCM-3, 12:13, `banc/relecteurs/R10/reprise5/trouvee/`). `noteTxt` dans `AlerteTrancheeH` (`c3-corr.js`) doit donner la même note que le bilan de l'élève au même moment, c'est-à-dire la note du socle après la décision (`SCN.note()`), et pas un calcul à part. Ça vaut pour chaque décision : « Donner raison » à l'un ou à l'autre, « la feuille dit autre chose », « je relis ce soir », avec et sans trouvée. Si le socle doit donner autre chose, demande-le à QCM-1 dans DEMANDES, en une ligne.
+2. [→ QCM-2] **« ONT RÉPONDU » au 1er tour**, à la console et au téléphone : sur ceux qui ont la main (la maquette : « 10/12 » à `c-q1-tour1` et `p-reponse`), puis sur les présents quand la question est close. Comme le tableau, que tu as corrigé à 12:20 (`7228ab2`). Le 2e tour suit la même règle.
+3. [→ QCM-1] Tu réponds tout de suite à ce que QCM-2 te demande. Rien d'autre.
+4. [→ QCM-3] Dès que QCM-2 a poussé le point 1, rejoue par le geste ton jeu `reprise5/trouvee` et une alerte sans trouvée. Chaque garde doit dire la note du bilan. Écris le résultat dans DEMANDES à 12:58 au plus tard.
+5. [→ QCM-4] À 12:50, assemble (`COURT=1`) et passe les contrôles de la conscience, le banc commun et les reprises 2 à 5. Ajoute à `banc-reprise5.js` la garde de l'alerte tranchée, avec et sans trouvée : la note annoncée doit être celle du bilan. Pousse `VERDICT.md` **à 13:00**, tranché : soit ça va, soit ça ne va pas ; un seul défaut ouvert ou un point non rejoué, c'est « ça ne va pas ».
+
 ## Contrôle de la conscience n°12 — 13/10 12:33, sur la reprise 5 (`7228ab2`, md5 `b6b49403…`) : ça ne va pas ; Paul fait cours à 13:00 avec la 7.7.2
 
 Deux défauts restent ouverts :
 - « ONT RÉPONDU » au 1er tour, sur 24 à la console et au téléphone, alors que la maquette compte les 12 qui ont la main (VERDICT.md de 12:30) ;
 - la garde d'une alerte tranchée annonce une note fausse : « sa note provisoire passe à 1 / 3 » pour un bilan à 3 / 3. Trouvé par QCM-3 à 12:13 (`reprise5/trouvee/`). `noteTxt` dans `AlerteTrancheeH` (`c3-corr.js`) n'a pas changé depuis, et le défaut manque au VERDICT de 12:30.
 
-**Vous vous arrêtez là. Rien d'autre ne se fait sans que Paul vous relance.**
+*(Remplacé à 12:37 par la reprise 6, ci-dessus : Paul relance.)*
 
 ## Reprise 5 du 13/10 — lancée par Paul à 12:07 (l'heure recalée) : **tout poussé à 12:22, `VERDICT.md` à 12:30, contrôle à 12:35, mise en ligne à 12:40**
 

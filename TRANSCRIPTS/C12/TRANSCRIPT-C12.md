@@ -21650,3 +21650,33 @@ Réponse mot pour mot :
 1019. Pendant ton cours, je ne mets rien en ligne, même si tout passe à 13:05. Si le fichier changeait en pleine séance, une tablette qui recharge tomberait sur la nouvelle app au milieu de la 7.7.2. Si tout passe, je mets en ligne à la fin de ton cours. Dis-moi à quelle heure il finit, ou dis-moi « mets en ligne » quand tu veux.
 
 13/10/2026 12:37 MEMO
+
+---
+
+## TOUR 701 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 12:38) Non arrête avec la 772 et mon cours. Je veux que ce soit fait, point. 13h30 dernier délai.
+
+---
+
+## TOUR 701 — Claude (conscience n°12)
+
+Fait : le point 6 de la reprise 6, avec la seconde passe et le délai de 13:30 (`4e832d55`) ; le réveil de 13:01 remplacé (`trig_01QBxttMqngHQbAYUXk95ffj` supprimé, `trig_01P2n6npw9Bhwpv7UZnWTqNd` créé) : il met en ligne dès que tout passe ; le script de mise en ligne, préparé au scratchpad (`t673/mise-en-ligne.py`), qui écrit l'app et les trois docs de suivi sans pousser.
+
+Réponse mot pour mot :
+
+**À jouer :** rien pour l'instant · **en cours chez l'exécutant :** la reprise 6, dès que tu as collé le message · **ouvert :** l'app en ligne à 13:30 au plus tard
+
+1020. Compris. L'app est en ligne à 13:30 au plus tard, dès que tout passe :
+- 12:50 : tout est poussé ;
+- 13:00 : verdict de QCM-4 ;
+- 13:05 : mon contrôle, et mise en ligne tout de suite si ça va ;
+- s'il reste un défaut à 13:05, il est corrigé tout de suite : tout poussé à 13:12, second verdict à 13:20, mise en ligne à 13:30 au plus tard.
+
+1021. Personne ne s'arrête tant que je n'ai pas écrit « en ligne ». Si tu n'as pas encore collé le message, voici le même :
+
+« Reprise 6 du 13/10 (Paul, 12:35 : terminer coûte que coûte) : lis la section « Reprise 6 du 13/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) et fais ta part tout de suite ; tout est poussé à 12:50, VERDICT.md à 13:00 ; personne ne s'arrête avant que la conscience ait écrit « en ligne ». »
+
+13/10/2026 12:40 MEMO

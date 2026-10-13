@@ -22036,3 +22036,35 @@ Réponse mot pour mot :
 1072. Rien d'autre ne change : la reprise 7 attend toujours que tu colles le message du point 1060.
 
 13/10/2026 15:45 MEMO
+
+---
+
+## TOUR 712 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 15:47) Le bouton tous les élèves répondent en même temps doit aussi remplir les champs de ce qu'il y a écrit sur la copie de l'élève. En effet, si ces champs sont remplis, le reste est logique. Par ailleurs, même si c'est moi qui ait validé les termes, ça me fait un contenu de vérification illisible: c'est plus déstabilisant qu'autre chose et surtout ça me fait perdre du temps alors que le but de tout ça est d'en gagner. On discute là, le but est de me conseiller afin d'atteindre cet objectif : gain de temps le soir
+
+---
+
+## TOUR 712 — Claude (conscience n°12)
+
+Relu au cadrage : 497 (B sert à trouver les feuilles à relire ; quatre cas « ⚠️ À relire », dont « Julien n'a rien dit », proposés par la conscience), 362 et 476-477 (« aucun de ces choix » vaut 0 ; seule la lecture du soir peut faire monter la note), 530 (le texte des lignes). Fait : le point 7 de la reprise 7 complété (`a5a69308`). Le conseil sur la liste du soir est une proposition : rien n'est écrit pour les exécutants.
+
+Réponse mot pour mot :
+
+1073. C'est ajouté au point 7 de la reprise 7 : « 🎲 Tous les élèves répondent » remplit aussi le champ « 📝 Feuille » de chaque élève, avec ce qu'il a cliqué, sauf si tu l'as déjà rempli. Pour tester un cas, tu changes un champ.
+
+1074. Mon conseil pour le soir : la liste ne garde que ce qui peut changer une note. Sur tes 62 lignes, il en resterait 19. Les 4 contradictions restent : l'élève dit « Non », mais son voisin lit son clic, ou l'inverse. Les 15 « aucun de ces choix » restent aussi : ta lecture ne peut qu'y faire monter la note.
+
+1075. Les 45 « n'a pas dit » sortiraient de la liste. Sans « Oui » ni « Non », il n'y a rien à confronter, et la note vient déjà de la lecture du voisin, comme pour toutes les questions où rien ne cloche. C'est moi qui avais proposé de les y mettre (497) : je n'avais pas mesuré ce que ça te coûterait le soir.
+
+1076. Une ligne par copie, dans l'ordre alphabétique de ta pile, par exemple « AUDEBERT Élise — Q1, Q2 ». Tu prends chaque copie une seule fois.
+
+1077. Chaque question te dit ce que tu cherches sur la copie, et se règle d'un clic. Par exemple « Q1 : la copie dit-elle Rome ? », avec « Oui » et « Autre chose ». « Oui » ferme la ligne. « Autre chose » ouvre les choix, comme « La feuille dit autre chose », et la note se recalcule. Plus de phrase à déchiffrer.
+
+1078. En tête de la liste, un compte : « 7 copies à regarder ». Si beaucoup d'élèves n'ont dit ni « Oui » ni « Non », un seul chiffre le montre, par exemple « Q2 : 12 élèves n'ont rien dit ». Ce n'est pas une copie à lire : c'est le signe que leurs 5 secondes sont trop courtes.
+
+1079. Dis-moi ce que tu gardes. Je l'écris pour les exécutants seulement après.
+
+13/10/2026 15:49 MEMO

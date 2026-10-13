@@ -21187,3 +21187,29 @@ Réponse mot pour mot :
 969. **Ce qui les éviterait**, pour après ton cours : un banc qui joue une vraie classe (absents, retards, élèves qui ne répondent pas, consoles rechargées), écrit avant le code ; un seul propriétaire par geste ; mes défauts traités en premier. Je te le propose en un mandat après ton cours.
 
 13/10/2026 08:43 MEMO
+
+---
+
+## TOUR 688 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 08:47) En fait la base de tout c'est la maquette. Une maquette doit TOUJOURS reproduire EXACTEMENT l'existant REEL, JAMAIS JAMAIS être une démo bananière. Inscris ça en règle pour l'ensemble des futurs chantiers. Par exemple, déroulé.html, je ne sais pas s'il n'y a pas une dérive en ce sens justement.
+
+---
+
+## TOUR 688 — Claude (conscience n°12)
+
+Fait : §00 en tête de `PROTOCOLE-MAQUETTE.md` (production, `d4b7f3b`), journal ; la ligne « Maquettes » des préférences de Paul mise à jour (mémoire). Mesuré : la maquette du déroulé p8-5g (606 Ko, branche `deroule/p8-5g`) ne contient ni `sesOuvrirTableau`, ni `edtOuvrir`, ni `mjpcEcrireRest`, ni `FIREBASE_BASE` (le site : 3, 2, 4 occurrences des deux premiers et du moteur), seulement `AT_DR_B64`.
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code (reprise 2) · ouvert : le contrôle de 09:00 ; le déroulé (point 972)
+
+970. **C'est inscrit, pour tous les chantiers** : en tête du protocole maquette, une règle qui prime sur tout le reste, avec tes mots. Une maquette est le fichier réel du site, servi sur une copie de la base ; la nouveauté s'écrit dans ce code ; jamais de scénario écrit d'avance, jamais d'écran redessiné à côté ; validée, elle est le code qu'on met en ligne. Les passages du protocole qui disaient autre chose sont remplacés. https://github.com/siteflow-io/monsieurjaipascompris/blob/main/PROTOCOLE-MAQUETTE.md
+
+971. **Le protocole lui-même portait la dérive** : depuis le 15/09, il disait « un fichier HTML autonome, sans réseau », et le mandat « branche ce que la maquette simule ». La règle du 03/10 laissait une porte : « une reproduction fidèle de l'écran voisin ». Ces trois passages sont remplacés.
+
+972. **Le déroulé : oui, la même dérive, mesurée.** Sa maquette (`maquette-pilotage-ordi-v9c15p8-manipulable.html`, livraison p8-5g, 606 Ko) est une page à part : elle n'a pas le code du site (ni l'ouverture du tableau, ni l'emploi du temps, ni les écritures), seulement le moteur du récit, repris tel quel. Le site, lui, fait 1,8 Mo. C'est le chantier de C13 : la règle s'applique à lui dès maintenant ; dis-moi si je lui écris une note pour qu'il s'aligne.
+
+13/10/2026 08:50 MEMO

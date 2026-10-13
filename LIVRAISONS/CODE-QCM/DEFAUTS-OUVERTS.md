@@ -15,6 +15,7 @@ Deux défauts seulement. Chacun a un seul propriétaire ; rien d'autre ne change
 3. [→ QCM-1] Tu réponds tout de suite à ce que QCM-2 te demande. Rien d'autre.
 4. [→ QCM-3] Dès que QCM-2 a poussé le point 1, rejoue par le geste ton jeu `reprise5/trouvee` et une alerte sans trouvée. Chaque garde doit dire la note du bilan. Écris le résultat dans DEMANDES à 12:58 au plus tard.
 5. [→ QCM-4] À 12:50, assemble (`COURT=1`) et passe les contrôles de la conscience, le banc commun et les reprises 2 à 5. Ajoute à `banc-reprise5.js` la garde de l'alerte tranchée, avec et sans trouvée : la note annoncée doit être celle du bilan. Pousse `VERDICT.md` **à 13:00**, tranché : soit ça va, soit ça ne va pas ; un seul défaut ouvert ou un point non rejoué, c'est « ça ne va pas ».
+6. [→ tous] **Paul, 12:38 : « Je veux que ce soit fait, point. 13h30 dernier délai. »** L'app est en ligne à 13:30 au plus tard. Si le VERDICT de 13:00 dit « ça ne va pas », chaque propriétaire corrige aussitôt ce qui reste et pousse à 13:12. QCM-4 réassemble, rejoue ce qui a changé et pousse un second `VERDICT.md` à 13:20. La conscience contrôle à 13:22 et met en ligne au plus tard à 13:30 si ça va. Personne ne s'arrête avant que la conscience ait écrit « en ligne » ici.
 
 ## Contrôle de la conscience n°12 — 13/10 12:33, sur la reprise 5 (`7228ab2`, md5 `b6b49403…`) : ça ne va pas ; Paul fait cours à 13:00 avec la 7.7.2
 

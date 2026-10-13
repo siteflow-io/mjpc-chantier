@@ -1,4 +1,25 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 5 du 13/10/2026, 12:30
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 6 du 13/10/2026, 13:00
+
+*La reprise 6 (Paul 12:35). App : `evaluation-qcm.staging.html`, md5 **`e155c121d34265440a47eb0c148a5d07`**, `code-qcm` à `f722840` (tout ce qui était poussé à 12:50). Sorties : `sorties/2026-10-13_1250/`.*
+
+## Verdict : **ça ne va pas** — un seul point, un écart à la maquette.
+
+| Épreuve | Résultat |
+| --- | --- |
+| Contrôles de la conscience (ceux de `main`) | **32 / 32** |
+| Banc commun (B exigé de chacun) | **211 / 211** |
+| `banc-reprise3.js` : l'alerte **avec** trouvée, et (nouveau) **la garde de l'alerte tranchée annonce la note du bilan** | **14 / 14** |
+| `banc-reprise4.js` : l'alerte **sans** trouvée, et (nouveau) **la garde annonce la note du bilan** ; B pour chacun ; « Rouvrir pour tous » ; la question écartée ; les temps changés | **27 / 27** |
+| `banc-reprise5.js` : l'appel (téléphone sans séance, les deux « 🚀 Lancer la séance ») ; « ont répondu » au 1er tour sur ceux qui ont la main (« 1 / 12 ») à la console, au téléphone, au tableau ; question close sur les présents (« 1 / 24 ») au téléphone et à la console ; « 1 réponse enregistrée » | **9 / 9** |
+| `banc-reprise2.js` : compteurs, réouvertures, la console rechargée | **21 / 22** : **au 2e tour, « ONT RÉPONDU » compte sur 12** (ceux qui ont la main) ; la maquette (`c-q1-tour2`, `c-q2-tour2`) dit « 23/24 », sur les présents |
+
+Le point qui reste : le dénominateur du 2e tour. Le point 2 de la reprise 6 demande « le 2e tour suit la même règle » que le 1er ; la maquette dit l'inverse. Je suis la maquette, et je le mets à la conscience (`DEFAUTS-OUVERTS.md`, « QCM-4, 12:57 »). Le contrôle de `banc-reprise2.js` qui exigeait « le même dénominateur d'un tour à l'autre » (écrit à 08:40 d'après R4) était lui-même faux contre la maquette (« 0/24 » en réflexion, « 10/12 » au 1er tour) : il attend maintenant « / 24 » au 2e tour.
+
+Limite : la garde est vérifiée pour deux décisions (raison au lecteur avec trouvée, raison à l'élève sans trouvée) ; QCM-3 a rejoué « la feuille dit autre chose » (`f722840`) ; « je relis ce soir » n'est rejoué par personne.
+
+---
+
+# Verdict de 12:30 (pour mémoire)
 
 *La reprise 5 (`DEFAUTS-OUVERTS.md`, Paul 12:07). App : `evaluation-qcm.staging.html`, md5 **`b6b494034114f7b3e6db32920b8d752f`**, assemblée par `build.py` sur `code-qcm` à `7228ab2` (tout ce qui était poussé à 12:22). Sorties : `sorties/2026-10-13_1222/`. Les verdicts précédents, plus bas, restent pour mémoire.*
 

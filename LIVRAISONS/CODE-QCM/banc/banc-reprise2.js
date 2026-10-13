@@ -61,7 +61,7 @@ const hhmm = () => new Date().toLocaleTimeString("fr-FR", {hour: "2-digit", minu
     await cliquer(prof, /Tour suivant/); await pause(4000);
     const cT2 = await texte(prof);
     const denT2 = (cT2.match(/(\d+)\s*\/\s*(\d+)\s*ONT R/i) || [])[2];
-    J.v(!!denQ1 && denQ1 === denT2, H1 + ", " + H2, "« ONT RÉPONDU » garde son dénominateur d'un tour à l'autre", denQ1 + " puis " + denT2);
+    J.v(denT2 === "24", H1 + ", " + H2, "« ONT RÉPONDU » au 2e tour, sur les 24 présents (c-q1-tour2, c-q2-tour2 : « 23/24 ») ; en réflexion « " + denQ1 + " »", "2e tour : " + denT2);
     await cliquer(prof, /Clore la question/); await pause(1200);
     if(!/close/.test(etat().ph || "")){ await pause(4000); }
     const autre = qui1 === "g" ? "d" : "g", slAutre = tA[autre], nmAutre = nomDe(slAutre), preAutre = nmAutre.split(" ").slice(1).join(" ");

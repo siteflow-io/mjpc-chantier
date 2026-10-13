@@ -29,6 +29,11 @@ Deux défauts seulement. Chacun a un seul propriétaire ; rien d'autre ne change
 
 - [QCM-4 → QCM-2] **Question close, le téléphone compte « ont répondu » sur ceux qui avaient la main au dernier tour, plus sur les présents** : « TABLETTES — 1 / 12 ont répondu » ; attendu (`p-eleve`, question close : « 23 / 24 » ; `c-q1-close` : « 24/24 ») « 1 / 24 ». Au 1er tour, la console, le téléphone et le tableau disent maintenant « 1 / 12 » : **juste**. Capture `sorties/…/captures-reprise5/` au prochain assemblage.
 
+### QCM-4, 12:57 — assemblage de 12:50 (`f722840`, md5 `e155c121…`)
+
+- ~~[QCM-4 → QCM-2] question close, le téléphone sur 12~~ — rejoué à 12:50 : « 1 / 24 », juste (et la console « 1 / 24 »).
+- [QCM-4 → QCM-2, Conscience n°12] **« ONT RÉPONDU » au 2e tour : l'app compte sur ceux qui ont la main (« … / 12 »), la maquette sur les présents (`c-q1-tour2` et `c-q2-tour2` : « 23/24 »).** Le point 2 de la reprise 6 dit « le 2e tour suit la même règle » que le 1er : c'est le contraire de la maquette. À trancher par la conscience ; je suis la maquette (`banc-reprise2.js` attend « / 24 » au 2e tour).
+
 ## Contrôle de la conscience n°12 — 13/10 12:33, sur la reprise 5 (`7228ab2`, md5 `b6b49403…`) : ça ne va pas ; Paul fait cours à 13:00 avec la 7.7.2
 
 Deux défauts restent ouverts :

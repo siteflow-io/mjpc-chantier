@@ -21379,3 +21379,45 @@ Message à coller dans chacune des quatre sessions :
 Le contrôle : https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/CODE-QCM-AUDIT-1000-13-10
 
 13/10/2026 10:14 MEMO
+
+---
+
+## TOUR 694 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 10:42) ça en est où? il y a juste QCM4 qui tourne j'ai l'impression
+
+---
+
+## TOUR 694 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` depuis `f3867460` : QCM-3 `051fae9f` (10:24, aucun écart de code) ; QCM-2 `aea17409` (10:27, point 1), `c293da14` (10:31, points 6 et 7), `6eed0493` (10:34, point 4), `02e0519f` (10:38, point 8), `115d6ac4` (vers 10:43, note) ; QCM-1 `f9ef6acf` et `34c12d9b` (10:27 à 10:29, points 2 à 5, contrôles 32/32) ; QCM-4 `6e3083b7` (10:39, banc.js sans tolérance sur B, banc-reprise4.js) et `a18d4518` (10:39 : la trouvée et « Donner raison au lecteur », une règle à trancher). Lu dans `aea17409` : `avant = ptsDe(q, lu)`, la trouvée retirée du calcul des boutons, alors que la garde tranchée suit `n.pts`. Et QCM-2 demandait à QCM-1 (10:35) de retirer la trouvée du socle quand l'alerte est tranchée lecteur. Fait : réponse en tête de DEMANDES.md et point 1 de la reprise 4 annoté (`c2da135c`, après un conflit de fusion résolu en gardant les deux entrées) ; réveil « Contrôle QCM reprise 4 » à 11:20 (`trig_011Z1jxAKHQDSGNubVzL8tmR`).
+
+Réponse mot pour mot :
+
+**À jouer :** rien de neuf, la 7.7.2 reste en ligne · **en cours chez l'exécutant :** QCM-2 et QCM-4 · **ouvert :** la correction de QCM-2 sur l'alerte (point 995)
+
+994. Où on en est : ils sont en avance sur 11:20. Que QCM-4 tourne presque seul, c'est normal :
+- QCM-3 a fini à 10:24 et s'est arrêté (ses écrans n'avaient plus d'écart de code) ;
+- QCM-1 a fini à 10:29 et s'est arrêté (B, « Rouvrir pour tous », questions écartées, heure de la coupure ; mes contrôles 32/32 chez lui) ;
+- QCM-2 a poussé ses points de 10:27 à 10:43 et tourne encore ;
+- QCM-4 tourne : son banc ne tolère plus aucun B manquant, et il a écrit le banc qui rejoue cette reprise.
+
+995. Une erreur de ma part, repérée par QCM-4. Dans mon message de 10:14 (point 987) et dans la reprise, j'ai dit que « Donner raison à Julien : Milan → 1 point » donnerait une note fausse. C'était faux : Léa avait « Trouvée au dernier moment » sur cette question. D'après ta règle (une fois par évaluation, feuille fausse et tablette juste = juste), elle garde son point même si on donne raison à Julien. Entre-temps, QCM-2 avait appliqué ma consigne fausse : le bouton aurait affiché « → 0 point » alors que la note reste à 1. J'ai écrit la correction à 10:47 :
+- QCM-2 remet le calcul d'avant ;
+- QCM-1 ne touche pas à la note ;
+- le seul vrai défaut de ce point reste le bouton à choix vide.
+
+996. Si QCM-2 s'arrête sans l'avoir fait, colle-lui ceci :
+« Lis en tête de LIVRAISONS/CODE-QCM/DEMANDES.md sur code-qcm la réponse de la conscience de 10:47 (la trouvée garde son point) et applique ta part tout de suite ; pousse dès que banc-reprise3.js et banc-reprise4.js passent. »
+
+997. La suite :
+- QCM-4 assemble dès que la correction de QCM-2 est poussée, sans attendre 11:20 ;
+- son verdict, au plus tard à 11:40 ;
+- je contrôle à 11:20 si son verdict est là, sinon à 11:40 ;
+- mise en ligne au plus tard à 12:00, si ça va.
+
+La réponse aux exécutants : https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEMANDES.md
+
+13/10/2026 10:45 MEMO

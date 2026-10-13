@@ -174,6 +174,8 @@ function telPastille(p, qi, mode){
     var s = calc(p).st[qi];
     return s === "j" ? {t:"✓", cls:"tp-juste"} : s === "t" ? {t:"✓", cls:"tp-trouvee"} : {t:"✗", cls:"tp-faux"};
   }
+  // (reprise 4, point 7) en direct, un élève sans réponse (ou jamais entré) n'est pas « ✗ » : il est dit comme sur la console, « ⏳ »
+  if(enDirect() && qi != null && !SCN.reponse(p, qi)) return {t:"⏳", cls:"tp-rouge"};
   var c = (RT[p] || "")[qi];
   return c === "J" ? {t:"✓", cls:"tp-juste"} : c === "Y" ? {t:"✓+", cls:"tp-jaune"} : c === "O" ? {t:"½", cls:"tp-orange"} : {t:"✗", cls:"tp-faux"};
 }

@@ -453,6 +453,8 @@ function TelBandeau(phase, droite){
 }
 function TelQ(qi, bonnes){
   var q = EV.questions[qi];
+  // (reprise 4, point 7) en direct, le bandeau suit les temps changés de la séance
+  if(typeof enDirect === "function" && enDirect()){ var tq = SCN.tempsDe(qi); q = Object.assign({}, q, {reflexion:tq.reflexion, reponse:tq.reponse}); }
   return h("div", {className:"tel-q"},
     h("div", {className:"n"}, "Q" + (qi+1) + " · " + NIV[q.niveau].label + " · réflexion " + q.reflexion + " s · réponse " + q.reponse + " s par tour"),
     h("div", {className:"e"}, q.enonce),

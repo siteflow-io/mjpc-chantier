@@ -168,7 +168,9 @@ function etatPilot(k){
   // (QCM-2) en direct, « connectés » : les présents entrés sur une tablette (SCN.compteurs().connectes), pas tous les présents
   var stats = statsQ();
   if(enDirect() && c.connectes) stats = [[fr2(c.connectes), "connectés"]].concat(stats.slice(1));
-  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:m.reste, stats:stats, passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
+  // (reprise 4, point 6) pendant le passage (« Tu es prêt ? À toi dans 3 secondes »), le tour n'a pas commencé : le chrono de la réponse compte le passage et le tour entier
+  var chrono = enDirect() && ph === "passage" && qi != null ? (m.reste || 0) + SCN.tempsDe(qi).reponse : m.reste;
+  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:chrono, stats:stats, passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
     etat:etatQuestionH({qi:qi, tour:m.tour, fini:phase === "attente", reflexion:phase === "reflexion"}), legende:leg, nbQ:c.nbQ};
 }
 // (déplacer, 72) l'élève échangé ou déplacé pendant la séance, entré avant et pas encore sur sa nouvelle moitié : il retape son code

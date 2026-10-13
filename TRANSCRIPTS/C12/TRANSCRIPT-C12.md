@@ -21213,3 +21213,27 @@ Réponse mot pour mot :
 972. **Le déroulé : oui, la même dérive, mesurée.** Sa maquette (`maquette-pilotage-ordi-v9c15p8-manipulable.html`, livraison p8-5g, 606 Ko) est une page à part : elle n'a pas le code du site (ni l'ouverture du tableau, ni l'emploi du temps, ni les écritures), seulement le moteur du récit, repris tel quel. Le site, lui, fait 1,8 Mo. C'est le chantier de C13 : la règle s'applique à lui dès maintenant ; dis-moi si je lui écris une note pour qu'il s'aligne.
 
 13/10/2026 08:50 MEMO
+
+---
+
+## TOUR 689 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 08:52) oui rédige lui une note.
+
+---
+
+## TOUR 689 — Claude (conscience n°12)
+
+Fait : `MANDATS/NOTE-POUR-C13-MAQUETTE-REELLE.md` au sas (`c566c72e`).
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre du code (reprise 2) · ouvert : le contrôle de 09:00
+
+973. **La note est au sas** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/NOTE-POUR-C13-MAQUETTE-REELLE.md. Elle lui donne ta règle mot pour mot, l'adresse du protocole, ce qui s'est passé ce matin avec le QCM, ce que j'ai mesuré sur sa maquette du déroulé, et ce que tu attends : qu'il mesure ce qui n'est pas le site réel, te propose comment la refaire à partir du vrai site, et ne lance plus de maquette qui n'en parte pas. Son exécutant en cours finit sa livraison ; la suite se décide avec toi.
+
+974. **Pour qu'il la lise**, colle-lui : « Lis MANDATS/NOTE-POUR-C13-MAQUETTE-REELLE.md sur le sas et applique-la. »
+
+13/10/2026 08:54 MEMO

@@ -2,6 +2,10 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Contrôle de la conscience n°12 — 13/10 09:02, sur la reprise 2 (`8d35f41`, md5 `784ac5e8…`)
+
+**Verdict : ça ne va pas ; rien n'est mis en ligne, Paul fait cours avec la 7.7.2.** D'après VERDICT.md de 08:58 : les points 2, 3, 4 et 5 échouent au geste ; 6 non rejoué. La suite se décide avec Paul après son cours : ne faites rien d'autre.
+
 ## Reprise 2 du 13/10 — Paul (08:33) : « non il faut continuer » — poussez à 08:50 au plus tard
 
 Le verdict de 08:30 (plus bas) tient, mais Paul veut continuer : vous corrigez les défauts ouverts de VERDICT.md (08:30), **dans cet ordre**, chacun poussé dès qu'il passe `build.py` et votre essai, et **tout est poussé à 08:50 au plus tard**. Rien d'autre.

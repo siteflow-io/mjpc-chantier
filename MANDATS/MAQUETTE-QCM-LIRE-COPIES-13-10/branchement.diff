@@ -1,0 +1,21 @@
+--- /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/codewt/LIVRAISONS/CODE-QCM/src/c4-seances.js	2026-10-13 09:01:27.657013790 +0200
++++ src/c4-seances.js	2026-10-13 16:00:10.287346677 +0200
+@@ -505,6 +505,7 @@
+     TitreCarte("📊 " + ev.titre + " — " + se.classe, [
+       h("button", {key:0, className:"btn btn-primary btn-sm", disabled:!rendues, "data-local":rendues ? "1" : null, onClick:rendues ? function(){ ouvrirPdfV(se.id); } : null, title:rendues ? "Ouvre l'impression du navigateur, « Enregistrer au format PDF » : une ligne par élève, la note, le niveau de chaque compétence, le commentaire." : "Fermé tant que les copies ne sont pas rendues : les notes ne sont définitives qu'à ce moment-là."}, "📄 PDF notes et compétences"),
+       h("button", {key:1, className:"btn btn-or btn-sm", "data-local":"1", title:"Télécharge le tableau en CSV, pour un tableur.", onClick:function(){ setExporte(csvV(se, lignes, comps)); }}, "📥 Export CSV"),
++      (function(){ var nc = {}; lire.forEach(function(x){ if(!x.lue) nc[x.p] = 1; }); var n = Object.keys(nc).length; return n ? h("button", {key:3, className:"btn btn-primary btn-sm", "data-va":"c-lire-copies" + sq, title:"Ouvre les copies à lire, une après l'autre, dans l'ordre alphabétique : pour chaque question, l'app te demande ce que dit la copie, et tu réponds oui ou non."}, "📄 Lire les copies (" + n + ")") : null; })(),
+       h("button", {key:2, className:"btn btn-ghost btn-sm", "data-va":"c-seances", title:"Revient à la liste des séances."}, "← Retour")]),
+     exporte && h("div", {className:"fen-note"}, "📥 " + exporte + " téléchargé."),
+     h("p", {style:{fontSize:".85rem", color:"var(--gris)", marginTop:".2rem"}}, se.date + " " + se.heure + " · " + presentsTexteV(se) + (se.papier ? " · sur papier" : "") + " · questions écartées ou annulées : " + ecartTexteV(se) + " · ",
+--- /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/codewt/LIVRAISONS/CODE-QCM/build.py	2026-10-12 18:48:49.937256648 +0200
++++ build.py	2026-10-13 16:00:10.288006995 +0200
+@@ -22,7 +22,7 @@
+ EXTRA_JS = json.load(open(os.path.join(S, "ordre_js.json"))) if os.path.exists(os.path.join(S, "ordre_js.json")) else []
+ JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js"] + (["mjpc.js"] if MAQUETTE else ["live/sans-mjpc.js"]) + ["complement1.js", "complement2.js",
+        "c3-base.js", "c3-pilot.js", "c3-corr.js", "c3-appareils.js", "c3-soir.js", "c3-evals.js", "c3-scenes.js", "c3-objets.js", "c3-tablettes.js", "c3-telephone.js", "c3-x610.js", "c3-feuille.js", "c3-textes.js", "c3-gestes.js",
+-       "c4-seances.js", "c3-bulles.js"]
++       "c4-seances.js", "lire-copies.js", "c3-bulles.js"]
+ # les écrans branchés : la table des pages et des gestes (src/live/), puis le socle qui rend
+ JS += [j for j in ["live/pages.js", "live/gestes.js"] if os.path.exists(os.path.join(S, j))] + ["socle.js"]
+ if MAQUETTE: JS = [j for j in JS if not j.startswith("live/")]

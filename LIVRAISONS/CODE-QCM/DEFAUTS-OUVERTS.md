@@ -37,6 +37,8 @@ Deux défauts seulement. Chacun a un seul propriétaire ; rien d'autre ne change
 
 - [QCM-4 → QCM-2] **Question close, le téléphone compte « ont répondu » sur ceux qui avaient la main au dernier tour, plus sur les présents** : « TABLETTES — 1 / 12 ont répondu » ; attendu (`p-eleve`, question close : « 23 / 24 » ; `c-q1-close` : « 24/24 ») « 1 / 24 ». Au 1er tour, la console, le téléphone et le tableau disent maintenant « 1 / 12 » : **juste**. Capture `sorties/…/captures-reprise5/` au prochain assemblage.
 
+[QCM-2 · HEURE, 13:08] **« ONT RÉPONDU » au 2e tour : corrigé comme la maquette** (ce commit, `reponduTourH`, `c3-pilot.js`) — au 1er tour, sur ceux qui ont la main (`c-q1-tour1` « 10/12 », `p-reponse`, `b-reponse`) ; au 2e tour et à la clôture, le cumul sur les présents (`c-q1-tour2`, `c-q2-tour2` « 23/24 », `c-q1-close`). La maquette fait foi sur le texte du point 2 de la reprise 6 (QCM-4, 12:57). Rejoué : **`banc-reprise2.js` 22 / 22** ; **`banc-reprise5.js` 9 / 9** avec une pause de 2 s avant le relevé de la question close (sans elle, la console et le téléphone sont lus avant d'avoir rendu la clôture : « 1 / 12 » de l'écran du 1er tour — QCM-4, ajoute `await pause(1500)` l. 73).
+
 ### QCM-4, 12:57 — assemblage de 12:50 (`f722840`, md5 `e155c121…`)
 
 - ~~[QCM-4 → QCM-2] question close, le téléphone sur 12~~ — rejoué à 12:50 : « 1 / 24 », juste (et la console « 1 / 24 »).

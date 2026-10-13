@@ -4,3 +4,7 @@ app : 784ac5e802d8d225234bf93e46703c05
   controles-app.js: OK
   attendus/evaluation-essai.json: OK
   attendus/taxonomie-competences.json: OK
+contrôles de la conscience : 103 s, 22 ok, 8 échecs
+reprise 2, points 1 à 5 : 131 s — vérifications : 22 · échecs : 9
+l'heure de demain : 630 s — Durée : 630 s (10 min 30 s) · vérifications : 109 · échecs : 0
+Durée totale : 631 s

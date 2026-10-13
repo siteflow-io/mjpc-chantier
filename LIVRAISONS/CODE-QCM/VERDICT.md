@@ -4,7 +4,7 @@
 
 ## Reprise 2 — en une phrase
 
-**Sur l'app de 08:50, les points 1 et 7 passent (au téléphone : le chrono avance, « ▶️ Commencer la correction » s'ouvre quand tous sont prêts et lance la correction ; « séance ») ; les points 2, 3, 4 et 5 restent en défaut, rejoués par le geste : l'heure ne va toujours pas telle quelle.**
+**Sur l'app de 08:50, le point 1 passe (au téléphone : le chrono avance, « ▶️ Commencer la correction » s'ouvre quand tous sont prêts et lance la correction) et l'heure de demain passe en entier (109 / 109) ; les points 2, 3, 4 et 5 restent en défaut, rejoués par le geste : l'heure ne va toujours pas telle quelle.**
 
 | Point | Propriétaire | Rejoué par le geste (`banc/banc-reprise2.js`, `sorties/2026-10-13_0850/reprise2.txt`) | Résultat |
 | --- | --- | --- | --- |
@@ -17,7 +17,7 @@
 | 7. « Aucune séance active » | QCM-2 | (QCM-2, `93d6d03`) | non rejoué |
 | 8. « Oui » tardif à B | QCM-1 | à confirmer | non rejoué |
 
-Contrôles de la conscience : **22 / 30**, 100 s ; les 8 échecs, K11 à K15, sont ceux de 08:00 : K11 ne clique pas « ▶️ Commencer la correction » que la décision de Paul rend nécessaire. L'heure de demain (`demain.txt`) : en cours à 08:58, partie à 08:50 (10 min) ; son résultat est poussé dès sa fin. Ce qui reste : les points 2, 3, 4, 5 (échouent au geste), 6 et 8 (non rejoués) — l'heure ne va pas telle quelle.
+Contrôles de la conscience : **22 / 30**, 100 s ; les 8 échecs, K11 à K15, sont ceux de 08:00 : K11 ne clique pas « ▶️ Commencer la correction » que la décision de Paul rend nécessaire. L'heure de demain (`demain.txt`, finie à 09:00, ajoutée après la livraison de 08:57) : **109 / 109**, 10 min 30 s, la correction au clic de Paul comprise. Ce qui reste : les points 2, 3, 4, 5 (échouent au geste), 6 et 8 (non rejoués) — l'heure ne va pas telle quelle.
 
 ---
 

@@ -2,6 +2,21 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Reprise du 13/10 — seulement si Paul vous relance (audit de la conscience n°12, 06:45, sur l'app livrée `ca069f6`, md5 `172efa3c…`)
+
+**Verdict de l'audit : ça ne va pas ; la 7.7.2 reste en ligne.** Les contrôles de la conscience passent (30 / 30) et votre banc aussi, mais des défauts de l'heure restent ouverts de votre propre aveu (VERDICT.md, mise à jour de 06:29), et l'audit de 22:28 (plus bas) n'a pas été traité.
+
+Si Paul vous relance, vous faites ceci, dans l'ordre, d'une traite, et vous poussez **à 08:45 au plus tard** ; QCM-4 réassemble, passe tout, relance un relecteur neuf sur l'heure seule, réécrit `VERDICT.md` et pousse à 08:45. Rien d'autre que cette liste.
+
+1. [→ QCM-1] « 🔓 Rouvrir pour tous » rejoue le 1er tour à ceux qui ont déjà répondu (R1).
+2. [→ QCM-1, QCM-2] Un élève rouvert seul : B après sa réponse, et la console, le téléphone et le tableau le montrent comme la maquette (`t-rouvrir-un`, `c-rouvrir-un`), sans annoncer un 2e tour à la classe (R1).
+3. [→ QCM-1, QCM-2] Les compteurs quand des présents ne sont pas entrés (`c-pret`, `c-q1-reflexion`), et « ✋ répond… » sur une moitié vide (R1).
+4. [→ QCM-1, QCM-2] « ⚠️ Séance interrompue détectée » : l'état et l'heure réels (`c-interrompue`) (R1).
+5. [→ QCM-1, QCM-2] L'alerte de la co-évaluation tient compte de « Trouvée au dernier moment » (R2).
+6. [→ QCM-2] Le tableau : les absents ne sont pas dans « 👥 Classe » (à confirmer contre la maquette, R2).
+7. [→ QCM-4] Rejouer par un relecteur neuf les cinq corrections de 05:53 (B sans clic, « Rouvrir pour un élève » et les non-entrés, « 0 pense (tranché) », la question sans réponse, la séance terminée restée en cours) et « Que dit la feuille ? » (R3), puis les rayer ou les rouvrir.
+8. [→ QCM-2] Ce que voit l'élève et ce que montre le téléphone, encore identique à 06:16 à ce que l'audit de 22:28 demandait (`sorties/2026-10-13_0616/fidelite.txt`) : `t-rejoins` (« ✓ » et les deux lignes « Écris lisiblement : … », « Si tu sais ton cours, … »), `x610-5-attestation-2` (« ✓ » et « Pour chaque question, <voisin> clique ce que dit ta feuille… »), le titre « <évaluation> — n questions » en tête des moitiés, `t-binome` (« •• »), `p-reponse` (le « ⏳ »), `p-corr-avant` (« Feuille pas encore lue : … »), `p-corr-apres` et `p-autonomie` (« 📌 À lire ce soir (n) : … », « État actuel : … »).
+
 ## Relecteur neuf R3 (le soir et le reste) — 13/10 05:35, sur l'app de 05:00 — `banc/relecteurs/R3/trouvailles.md` et ses captures
 
 Écartées : l'évaluation d'essai sans « Créée le … » (le fichier du faux hub n'a pas de date de création) ; l'accord au masculin (pas de sexe au faux hub des relecteurs). Défauts :

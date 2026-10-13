@@ -340,6 +340,9 @@ function MoitieH(p, cote, autreP){
   if(ph === "reflexion") return EcrReflexion(e, qi, reste);
   // (t-rouvrir-un) une question rouverte pour un seul élève : lui seul répond puis dit B ; son voisin voit le voile, les autres attendent
   if(m.pour && m.pour !== "tous" && ["passage", "reponse", "b"].indexOf(ph) >= 0 && m.pour !== p) return m.pour === vSlug ? Voile(v, false, e) : EcrAttente(e);
+  // (R9, QCM-4 11:13) « Rouvrir pour tous » : seuls ceux qui n'avaient pas répondu la retrouvent ; qui avait répondu (et dit B) attend, sans « Pose ton stylo » ni B
+  var etR = typeof SCN.etat === "function" ? (SCN.etat() || {}) : {};
+  if((m.rouvert || etR.rouvert) === "tous" && qi != null && ["passage", "reponse", "b", "close"].indexOf(ph) >= 0 && typeof SCN.concerne === "function" && !SCN.concerne(p)) return EcrAttente(e);
   // (contrat C6) le geste de Paul a coupé l'attente : la moitié qui vient de répondre dit B pendant que la suite commence
   if(typeof SCN.doitDireB === "function" && SCN.doitDireB(p)){ var bp = m.bPour || {}; return EcrDeclareH(e, bp.qi != null ? bp.qi : qi, bp.reste != null ? bp.reste : reste); }
   if(ph === "passage") return cote === actif ? EcrPassage(e, qi, reste) : (v && !seul ? Voile(v, true, e) : EcrAttente(e));

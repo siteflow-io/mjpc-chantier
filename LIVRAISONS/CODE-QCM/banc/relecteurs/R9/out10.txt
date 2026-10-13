@@ -1,0 +1,96 @@
+JC fermé;JC fermé;
+TEL après 5s:null
+CONSOLE:
+2/24
+CONNECTÉS
+0/24
+ATTESTATIONS
+0/2
+ONT RÉPONDU
+—
+JUSTES
+—
+QUESTION
+⏳ En attente — clique sur « ▶️ Lancer Q1 »
+🧠 RÉFLEXION
+20s
+pour cette question
+s
++5
++10
++30
+✋ RÉPONSE
+5s
+par tour
+s
++5
++10
++30
+🏁 Fin prévue 9:11
+▶️ Lancer Q1
+
+TEL:3 ESSAI
+🕙 Fin 9:51
+Évaluation d'essai — 3 questions
+Phase : en attente
+Suiv. Q1 : Quelle est la capitale de l'Italie ?
+🚀 Lancer Q1
+Q1
+—
+Q2
+—
+Q3
+—
+TABLETTES — 0 / 2 ont répondu · clic sur un nom pour agir
+T1
+ABRIAL Julien
+⏳
+BAUDRY Léa
+⏳
+T2
+BRUNEAU Camille
+⏳
+CARRÉ Tom
+⏳
+T3
+CHEVALLIER Théo
+⏳
+DUVERNAY Michel
+⏳
+T4
+ESNAULT Inès
+⏳
+FOUCHER Hugo
+⏳
+T5
+GALLOIS Manon
+⏳
+HÉBRARD Nathan
+⏳
+T6
+ISAMBERT Chloé
+⏳
+J
+BOARD:3 ESSAI
+Évaluation d'essai — 3 questions
+📋 Préparation… La première question va arriver.
+TAB1:✨
+💡
+🎲
+🔥
+3 ESSAI · ABRIAL JULIEN
+📊 Mes évaluations
+Évaluation d'essai — 3 questions
+Avant de commencer, Julien
+Pour chaque question, écris ta réponse sur ta feuille, avec les mots du cours. Plusieurs réponses : une par ligne.
+Je commence
+✨
+💡
+🎲
+🔥
+3 ESSAI · BAUDRY LÉA
+📊 Mes évaluations
+Évaluation d'essai — 3 questions
+Avant de commencer, Léa
+Pour chaque question, écris ta réponse sur ta feuil
+BT:📊 Mes évaluations | [x]Je commence | 📊 Mes évaluations | [x]Je commence

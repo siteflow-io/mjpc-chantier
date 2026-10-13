@@ -1,0 +1,119 @@
+✨
+💡
+👋 Identifie-toi
+Renseigne ton prénom et ton nom.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+⌫
+0
+✓
+Entrer →
+✨
+💡
+👋 Identifie-toi
+Renseigne ton prénom et ton nom.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+⌫
+0
+✓
+Entrer →
+BT:1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | ⌫ | 0 | ✓ | Entrer → | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | ⌫ | 0 | ✓ | Entrer →
+CONSOLE:📝 Évaluation QCMMODE PROF
+🔴
+1 séance en cours
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+🎯 Évaluation d'essai — 3 questions — 3 ESSAI
+🕙 Fin de l'heure : 9:51
+🚫 Départ d'un élève
+↩️ Retour d'un élève
+🔓 Rouvrir pour un élève
+⏸️ Finir à une autre heure
+🛑 Terminer la séance
+0/24
+CONNECTÉS
+0/24
+ATTESTATIONS
+0/24
+ONT RÉPONDU
+—
+JUSTES
+—
+QUESTION
+⏳ En attente — clique sur « ▶️ Lancer Q1 »
+🧠 RÉFLEXION
+20s
+pour cette question
+s
++5
++10
++30
+✋ RÉPONSE
+15s
+par tour
+s
++5
++10
++30
+🏁 Fin prévue 9:09
+▶️ Lanc📱 Tablette 1
+👁
+ABRIAL Julien
+pas encore entré
+BAUDRY Léa
+pas encore entré
+📱 Tablette 2
+👁
+BRUNEAU Camille
+pas encore entré
+CARRÉ Tom
+pas encore entré
+📱 Tablette 3
+👁
+CHEVALLIER Théo
+pas encore ent
+TEL:BLETTES — 0 / 24 ont répondu · clic sur un nom pour agir
+T1
+ABRIAL Julien
+⏳
+BAUDRY Léa
+⏳
+T2
+BRUNEAU Camille
+⏳
+CARRÉ Tom
+⏳
+T3
+CHEVALLIER Théo
+⏳
+DUVERNAY Michel
+⏳
+T4
+ESNAULT Inès
+⏳
+F

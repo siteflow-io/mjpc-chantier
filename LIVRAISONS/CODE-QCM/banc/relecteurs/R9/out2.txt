@@ -1,0 +1,200 @@
+📝 Évaluation QCMMODE PROF
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+🎯 Lancer une nouvelle séancei
+Classei
+3 ESSAI (25 élèves)
+Évaluationi
+🎓 Démo — apprendre le déroulé (3 questions)
+Évaluation d'essai — 3 questions
+Modei
+📱 Sur tablettes
+📄 Séance sur papier
+⏱️ Durée estimée : 17 mini
+✅ Ça tient dans les 45 minutes utiles.
+🚀 Lancer la séance
+📱 Binômes proposés — d'après les exclusions, puis le QCM précédenti
+📱 Tablette 1
+⠿ABRIAL Julien
+⠿BAUDRY Léa
+📱 Tablette 2
+⠿BRUNEAU Camille
+⠿CARRÉ Tom
+📱 Tablette 3
+⠿CHEVALLIER Théo
+⠿DUVERNAY Michel
+📱 Tablette 4
+⠿ESNAULT Inès
+⠿FOUCHER Hugo
+📱 Tablette 5
+⠿GALLOIS Manon
+⠿HÉBRARD Nathan
+📱 Tablette 6
+⠿ISAMBERT Chloé
+⠿JOUBERT Louis
+📱 Tablette 7
+⠿LACOMBE Emma
+⠿MAILLARD Noah
+📱 Tablette 8
+⠿NOGARET Zoé
+⠿OLLIVIER Sacha
+📱 Tablette 9
+⠿PERRAUD Jade
+⠿QUINTON Enzo
+📱 Tablette 10
+⠿RAMBAUD Lina
+⠿SABATIER Malo
+📱 Tablette 11
+⠿TESSIER Anna
+⠿VALLÉE Rayan
+📱 Tablette 12
+⠿WEBER Clara
+⠿YVON Adam
+📱 Tablette 13
+seul
+⠿ZELLER Lou
+moitié libre
+📚 Séances précédentes — 3 ESSAIi
+📋 Check-in : qui est absent aujourd'hui ?
+i
+3 ESSAI — 25 élèves
+✓
+ABRIAL Julien
+✓
+BAUDRY Léa
+✓
+BRUNEAU Camille
+✓
+CARRÉ Tom
+✓
+CHEVALLIER Théo
+✓
+DUVERNAY Michel
+✓
+ESNAULT Inès
+✓
+FOUCHER Hugo
+✓
+GALLOIS Manon
+✓
+HÉBRARD Nathan
+✓
+ISAMBERT Chloé
+✓
+JOUBERT Louis
+✓
+LACOMBE Emma
+✓
+MAILLARD Noah
+✓
+NOGARET Zoé
+✓
+OLLIVIER Sacha
+✓
+PERRAUD Jade
+✓
+QUINTON Enzo
+✓
+RAMBAUD Lina
+✓
+SABATIER Malo
+✓
+TESSIER Anna
+✓
+VALLÉE Rayan
+✓
+WEBER Clara
+✓
+YVON Adam
+✓
+ZELLER Lou
+🚫 0 absent sur 25Tout le monde présent
+📱 ZELLER Lou reste seul : tablette 13.
+🕙 Fin de l'heure :
+i
+Annuler
+🚀 Lancer la séance
+BT:📖 Mode d'emploi | 📺 Ouvrir vue tableau | 📱 QR pilotage | 🧪 Mode test i | ← Retour | Pilotage | Données | Réglages | ? | 📝 Évaluations | 🎯 Pilotage classe | 📱 Sur tablettes | 📄 Séance sur papier | [x]🚀 Lancer la séance | ✓ ABRIAL Julien | ✓ BAUDRY Léa | ✓ BRUNEAU Camille | ✓ CARRÉ Tom | ✓ CHEVALLIER Théo | ✓ DUVERNAY Michel | ✓ ESNAULT Inès | ✓ FOUCHER Hugo | ✓ GALLOIS Manon | ✓ HÉBRARD Nathan | ✓ ISAMBERT Chloé | ✓ JOUBERT Louis | ✓ LACOMBE Emma | ✓ MAILLARD Noah | ✓ NOGARET Zoé | ✓ OLLIVIER Sacha | ✓ PERRAUD Jade | ✓ QUINTON Enzo | ✓ RAMBAUD Lina | ✓ SABATIER Malo | ✓ TESSIER Anna | ✓ VALLÉE Rayan | ✓ WEBER Clara | ✓ YVON Adam | ✓ ZELLER Lou | Tout le monde présent | Annuler | 🚀 Lancer la séance
+TEL:3 ESSAI
+🕙 Fin 9:51
+Évaluation d'essai — 3 questions
+Phase : en attente
+Suiv. Q1 : Quelle est la capitale de l'Italie ?
+🚀 Lancer Q1
+Q1
+—
+Q2
+—
+Q3
+—
+TABLETTES — 0 / 25 ont répondu · clic sur un nom pour agir
+T1
+ABRIAL Julien
+⏳
+BAUDRY Léa
+⏳
+T2
+BRUNEAU Camille
+⏳
+CARRÉ Tom
+⏳
+T3
+CHEVALLIER Théo
+⏳
+DUVERNAY Michel
+⏳
+T4
+ESNAULT Inès
+⏳
+FOUCHER Hugo
+⏳
+T5
+GALLOIS Manon
+⏳
+HÉBRARD Nathan
+⏳
+T6
+ISAMBERT Chloé
+⏳
+JOUBERT Louis
+⏳
+T7
+LACOMBE Emma
+⏳
+MAILLARD Noah
+⏳
+T8
+NOGARET Zoé
+⏳
+OLLIVIER Sacha
+⏳
+T9
+PERRAUD Jade
+⏳
+QUINTON Enzo
+⏳
+T10
+RAMBAUD Lina
+⏳
+SABATIER Malo
+⏳
+T11
+TESSIER Anna
+⏳
+VALLÉE Rayan
+⏳
+T12
+WEBER Clar
+BOARD:3 ESSAI
+Évaluation d'essai — 3 questions
+📋 Préparation… La première question va arriver.

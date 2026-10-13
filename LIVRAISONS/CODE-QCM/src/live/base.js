@@ -411,7 +411,7 @@ var SCN = (function(){
     if(qi != null && ["reflexion", "reponse", "close", "b", "passage", "rouvert", "pause"].indexOf(e.ph) >= 0){
       var rep = S.repondu(qi, k, sid), pc = S.premierCote(qi, sid);
       // ceux qui peuvent répondre : les présents entrés (une moitié vide ne répond pas)
-      var attendu = act.length;   // (13/10) le même dénominateur d'un tour à l'autre : les présents entrés
+      var attendu = pres.length;   // (13/10) le même dénominateur d'un tour à l'autre : les présents (la maquette, c-q1-reflexion : « … /24 »)
       o.repondu = [e.ph === "reflexion" ? 0 : rep.length, attendu];
       o.justes = [rep.filter(function(x){ return S.justeTablette(x, qi, sid); }).length, rep.length];
       o.question = [qi + 1 - ec.filter(function(x){ return x < qi; }).length, nbQ];
@@ -419,7 +419,7 @@ var SCN = (function(){
     if(e.ph === "appel" || e.ph === "entree" || e.ph === "pret"){
       var finis = entres.filter(function(x){ var a = S.attestDe(1, x, sid); return a && a.fini; });
       // « ATTESTATIONS » sur les présents (24 attendus, même si 4 seulement sont entrés) ; le moteur, lui, attend les entrés (attestEntres)
-      o.attestations = [finis.length, pres.length]; o.attestEntres = [finis.length, entres.length]; o.repondu = [0, act.length];
+      o.attestations = [finis.length, pres.length]; o.attestEntres = [finis.length, entres.length]; o.repondu = [0, pres.length];
       o.pasEntres = pres.filter(function(x){ return entres.indexOf(x) < 0; });
       o.attestEnCours = {}; pres.forEach(function(x){ var a = S.attestDe(1, x, sid); if(entres.indexOf(x) >= 0 && !(a && a.fini)) o.attestEnCours[x] = a ? a.lignes || 0 : 0; });
     }

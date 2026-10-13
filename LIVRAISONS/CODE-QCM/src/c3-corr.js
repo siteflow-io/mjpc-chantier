@@ -408,7 +408,7 @@ function AlerteTrancheeH(a){
   var d = decisionDe(a), q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), pA = prenomH(A), pL = prenomH(L), n = calc(A), lu = a.lu != null ? a.lu : (LU[A] || [])[a.qi];
   var noteTxt = function(passe){ return "sa note provisoire " + (passe ? "passe" : "reste") + " à " + n.n + " / " + n.total + "."; };
   var t;
-  if(d.decision === "lecteur") t = ["✅ Alerte tranchée : raison donnée à " + pL, "La lecture " + deNom(pL) + ", " + txtChoix(q, lu) + ", est gardée : la question " + (a.qi + 1) + " de " + nA + " reste à " + ptsDe(q, lu) + " ; " + noteTxt(false)];
+  if(d.decision === "lecteur") t = ["✅ Alerte tranchée : raison donnée à " + pL, "La lecture " + deNom(pL) + ", " + txtChoix(q, lu) + ", est gardée : la question " + (a.qi + 1) + " de " + nA + " reste à " + (n.st[a.qi] === "t" ? 1 : ptsDe(q, lu)) + " ; " + noteTxt(false)];
   else if(d.decision === "soir") t = ["📌 La question " + (a.qi + 1) + " de " + nA + " est à relire ce soir", "L'alerte se ferme : la question t'attend ce soir dans Résultats, « ⚠️ À relire » ; " + noteTxt(false)];
   else {
     var c = d.decision === "feuille" ? (d.choix || d.feuille) : (a.ecrit != null ? a.ecrit : (SCN.coevalDe(A) || {}).ecrit), p1 = ptsDe(q, c), p0 = ptsDe(q, lu);

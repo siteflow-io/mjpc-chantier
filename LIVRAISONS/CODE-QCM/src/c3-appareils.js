@@ -30,6 +30,8 @@ function Board(){
   var k = MO(), m = momH(), c = SCN.compteurs(k), ev = SCN.evalDu(k);
   // (QCM-2) en pause, le tableau reste sur le temps gelé
   if(m.ph === "pause" && m.pause) m = Object.assign({}, m, {ph:m.pause.ph});
+  // (QCM-2) une question rouverte pour un seul élève : rien n'est annoncé à la classe, le tableau reste à la question close
+  if(enDirect() && m.pour && m.pour !== "tous" && ["rouvert", "b", "passage", "reponse"].indexOf(m.ph) >= 0) m = Object.assign({}, m, {ph:"close"});
   var enSeance = m.seance && m.seance !== "TEST" && m.ph !== "hors" && m.ph !== "soir" && m.ph !== "fin" && m.ph !== "grille";
   if(!enSeance) return h("div", {className:"board-attente"},
     h("div", {className:"board-titre"}, "📺 Vue tableau"),

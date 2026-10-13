@@ -338,6 +338,8 @@ function MoitieH(p, cote, autreP){
     return a1.fini ? EcrPret(e) : h(AttestCoches, {key:"a1" + p, e:e, lignes:LignesAttest(e, e.voisin), n0:a1.lignes, attest:1, fini:a1.fini, titre:"Avant de commencer, " + e.prenom, bouton:"Je commence", titrePage:EV.titre, pret:function(){ return EcrPret(e); }});
   }
   if(ph === "reflexion") return EcrReflexion(e, qi, reste);
+  // (t-rouvrir-un) une question rouverte pour un seul élève : lui seul répond puis dit B ; son voisin voit le voile, les autres attendent
+  if(m.pour && m.pour !== "tous" && ["passage", "reponse", "b"].indexOf(ph) >= 0 && m.pour !== p) return m.pour === vSlug ? Voile(v, false, e) : EcrAttente(e);
   // (contrat C6) le geste de Paul a coupé l'attente : la moitié qui vient de répondre dit B pendant que la suite commence
   if(typeof SCN.doitDireB === "function" && SCN.doitDireB(p)){ var bp = m.bPour || {}; return EcrDeclareH(e, bp.qi != null ? bp.qi : qi, bp.reste != null ? bp.reste : reste); }
   if(ph === "passage") return cote === actif ? EcrPassage(e, qi, reste) : (v && !seul ? Voile(v, true, e) : EcrAttente(e));

@@ -21155,3 +21155,35 @@ Réponse mot pour mot :
 963. **Rien de lui ne manque aux quatre du code** : la seule ligne de code qu'il a changée après 15:58 (l'infobulle de « 1 pense ») est déjà dans leur app. Tu peux fermer sa session.
 
 13/10/2026 08:40 MEMO
+
+---
+
+## TOUR 687 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 08:40) les bugs qui arrivent chez les exécutants, c'est à cause de quoi?
+
+---
+
+## TOUR 687 — Claude (conscience n°12)
+
+Mesuré : les défauts des relecteurs R1 à R6 sont tous dans des cas que le banc ne joue pas (VERDICT.md de QCM-4) ; « Rouvrir pour tous » cassé par `c5e100bb` (07:49) ; aucun commit des exécutants sur `code-qcm` entre 08:14 et 08:40.
+
+Réponse mot pour mot :
+
+À jouer : coller la phrase du point 960 si ce n'est pas fait (rien de leur part depuis 08:14) · en cours chez l'exécutant : la reprise 2 · ouvert : le contrôle de 09:00
+
+964. **La cause principale : la maquette n'a jamais été branchée sur une vraie séance.** Elle joue une seule histoire écrite d'avance : Julien et Michel, 3 questions, tout le monde entre et répond. Cette nuit, les exécutants ont dû écrire toute la vraie séance, et ce que la maquette ne joue pas n'avait aucun modèle : un élève qui n'entre pas, une console rechargée, rouvrir pour un seul, un clic au dernier moment. Tous les défauts trouvés ce matin sont là. C'est la faute de mon mandat de la maquette (point 856).
+
+965. **Leurs bancs ne jouent que cette même histoire.** Ils passent à 211 sur 211, alors que des relecteurs qui jouent une vraie classe trouvent des défauts en 15 minutes. Mes contrôles aussi : 30 sur 30, sur le même chemin. Et 37 écrans de la maquette n'ont jamais été joués.
+
+966. **À quatre sur les mêmes écrans, une correction de l'un casse le travail d'un autre.** Ce matin, la correction de « Rouvrir pour un élève » (07:49) a cassé « Rouvrir pour tous ».
+
+967. **Le temps** : une nuit pour tout réécrire, puis des corrections en 50 minutes, sans tout rejouer.
+
+968. **La liste des défauts était tenue par QCM-4 seul** : il a décidé que les différences avec la maquette n'en étaient pas, et mon audit de 22:28 n'a pas été traité de la nuit. S'y ajoutent mes deux contrôles faux d'hier soir, qui ont fait perdre du temps à QCM-2.
+
+969. **Ce qui les éviterait**, pour après ton cours : un banc qui joue une vraie classe (absents, retards, élèves qui ne répondent pas, consoles rechargées), écrit avant le code ; un seul propriétaire par geste ; mes défauts traités en premier. Je te le propose en un mandat après ton cours.
+
+13/10/2026 08:43 MEMO

@@ -1,0 +1,101 @@
+📝 Évaluation QCMMODE PROF
+🔴
+1 séance en cours
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+📝 Correction — Évaluation d'essai — 3 questions — 3 ESSAIi
+🚫 Départ d'un élève
+⏸️ Finir à une autre heure
+🛑 Terminer la séance
+✍️ Seconde attestation — 19 / 24 prêts
+🔒 ▶️ Commencer la correction
+La correction commence quand les 24 présents ont coché la seconde attestation. Il en manque 5 :
+DUVERNAY Michel · CARRÉ Tom · OLLIVIER Sacha · ZELLER Lou · CHEVALLIER Théo
+La correction commence par Q2, la plus ratée sur les tablettes (9 / 24 justes).
+✍️ La seconde attestationi
+19 / 24 prêts
+📱 Tablette 1
+👁
+ABRIAL Julien
+✓ prêt · 10:20
+DUVERNAY Michel
+attestation 4/5
+📱 Tablette 2
+👁
+BAUDRY Léa
+✓ prêt · 10:21
+CARRÉ Tom
+attestation 3/5
+📱 Tablette 3
+👁
+ESNAULT Inès
+✓ prêt · 10:20
+FOUCHER Hugo
+✓ prêt · 10:20
+📱 Tablette 4
+👁
+GALLOIS Manon
+✓ prêt · 10:21
+HÉBRARD Nathan
+✓ prêt · 10:20
+📱 Tablette 5
+👁
+ISAMBERT Chloé
+✓ prêt · 10:21
+JOUBERT Louis
+✓ prêt · 10:21
+📱 Tablette 6
+👁
+LACOMBE Emma
+✓ prêt · 10:20
+MAILLARD Noah
+✓ prêt · 10:20
+📱 Tablette 7
+👁
+NOGARET Zoé
+✓ prêt · 10:21
+OLLIVIER Sacha
+attestation 4/5
+📱 Tablette 8
+👁
+PERRAUD Jade
+✓ prêt · 10:20
+QUINTON Enzo
+✓ prêt · 10:20
+📱 Tablette 9
+👁
+RAMBAUD Lina
+✓ prêt · 10:20
+SABATIER Malo
+✓ prêt · 10:20
+📱 Tablette 10
+👁
+TESSIER Anna
+✓ prêt · 10:20
+VALLÉE Rayan
+✓ prêt · 10:21
+📱 Tablette 11
+👁
+WEBER Clara
+✓ prêt · 10:21
+BRUNEAU Camille
+✓ prêt · 10:21
+📱 Tablette 12
+👁
+CHEVALLIER Théo
+attestation 4/5
+ZELLER Lou
+attestation 2/5
+✓ prêt : les 5 lignes cochées
+attestation en cours : lignes cochées sur 5
+⚙

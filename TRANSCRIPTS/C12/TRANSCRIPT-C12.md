@@ -21291,3 +21291,31 @@ Paul te relance : continue. Lis la section « Reprise 3 du 13/10 » en tête de 
 ```
 
 13/10/2026 09:05 MEMO
+
+---
+
+## TOUR 692 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 09:09) QCM3 est arrêté il me dit qu'il n'a rien à faire. on ne peut pas lui donner une mission en attendant?
+
+---
+
+## TOUR 692 — Claude (conscience n°12)
+
+Mesuré : à 06:16, 17 écrans de QCM-3 avec des écarts (74), dont `c-que-dit-la-feuille` (31). Fait : le point 8 de la reprise 3 (`771bd4e9`).
+
+Réponse mot pour mot :
+
+À jouer : coller la phrase du point 982 à QCM-3 · en cours chez l'exécutant : QCM-1, QCM-2, QCM-4 (reprise 3) · ouvert : le contrôle de 10:00
+
+981. **Oui : sa mission est écrite** (point 8 de la reprise 3), dans ses seuls écrans, sans toucher à ceux de l'heure. D'abord ses 17 écrans du soir et du reste qui diffèrent encore de la maquette, en commençant par « Que dit la feuille ? » et « Mes évaluations » de l'élève ; puis ses écrans que personne n'a jamais joués : la séance sur papier, le rattrapage, le mode test. Il pousse tout à 09:40, pour le contrôle de 10:00.
+
+982. **Colle-lui ceci** :
+
+```
+Paul te donne une mission. Lis le point 8 de la section « Reprise 3 du 13/10 » en tête de LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md sur code-qcm et applique-le, d'une traite ; tout est poussé à 09:40 au plus tard.
+```
+
+13/10/2026 09:11 MEMO

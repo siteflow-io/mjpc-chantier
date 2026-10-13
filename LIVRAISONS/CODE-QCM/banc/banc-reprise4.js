@@ -93,7 +93,13 @@ const hhmm = () => new Date().toLocaleTimeString("fr-FR", {hour: "2-digit", minu
     await capt(t1, "t1-rouvert-tous"); await capt(t2, "t2-rouvert-tous");
     J.v(rouvert, H1, "« Rouvrir pour tous » : " + pre(slR2) + " retrouve la question");
     if(rouvert) await cliquer(t2, /^Rome$/, r2);
-    for(let k = 0; k < 100 && etat().ph !== "close"; k++){ await guetterB(); for(const [p, c, sl] of M) if(sl !== slR2 && await ouverts(p, c, 0)) autresOuverts.push(pre(sl)); await pause(500); }
+    const stylo = new Set(), bEnTrop = new Set();
+    for(let k = 0; k < 100 && etat().ph !== "close"; k++){ await guetterB();
+      for(const [p, c, sl] of M){ if(sl === slR2) continue; if(await ouverts(p, c, 0)) autresOuverts.push(pre(sl));
+        const z = await zoneTexte(p, c); if(new RegExp("Pose ton stylo, " + esc(pre(sl)) + "|" + esc(pre(sl)) + ", pose ton stylo", "i").test(z)) stylo.add(pre(sl)); if(/la même chose que ton clic/.test(z)) bEnTrop.add(pre(sl)); }
+      await pause(500); }
+    J.v(stylo.size === 0, H2, "pendant « Rouvrir pour tous », aucun élève qui avait répondu (dont " + pre(sl2) + ", rouvert seul juste avant) ne lit « Pose ton stylo »", [...stylo].join(", "));
+    J.v(bEnTrop.size === 0, H12, "pendant « Rouvrir pour tous », pas de nouvelle question B à ceux qui avaient déjà répondu", [...bEnTrop].join(", "));
     await guetterB();
     if(etat().ph !== "close"){ await cliquer(prof, /Clore la question/); await pause(1000); }
     J.v(autresOuverts.length === 0, H1, "la question ne revient qu'à celui qui n'avait pas répondu : pas de tour pour les autres", [...new Set(autresOuverts)].join(", "));

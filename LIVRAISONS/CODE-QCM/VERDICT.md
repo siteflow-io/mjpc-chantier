@@ -1,4 +1,26 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 4 bis du 13/10/2026, 11:30
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 5 du 13/10/2026, 12:30
+
+*La reprise 5 (`DEFAUTS-OUVERTS.md`, Paul 12:07). App : `evaluation-qcm.staging.html`, md5 **`b6b494034114f7b3e6db32920b8d752f`**, assemblée par `build.py` sur `code-qcm` à `7228ab2` (tout ce qui était poussé à 12:22). Sorties : `sorties/2026-10-13_1222/`. Les verdicts précédents, plus bas, restent pour mémoire.*
+
+## Verdict : **ça ne va pas.**
+
+Le chemin de l'heure passe (contrôles de la conscience 32 / 32, banc commun 211 / 211, `banc-reprise3.js` 13 / 13, `banc-reprise4.js` 26 / 26), mais à 12:28 il reste des écarts à la maquette ouverts, joués par le geste, et un point non rejoué :
+
+| Point de la reprise 5 | Rejoué par le geste (`banc-reprise5.js`, `sorties/2026-10-13_1222/reprise5.txt`, `captures-reprise5/`) | Résultat |
+| --- | --- | --- |
+| 1. Pendant l'appel, le téléphone sans séance | « Aucune séance active » pendant l'appel ; la séance paraît au clic de « 🚀 Lancer la séance » de la fenêtre | **passe** |
+| 2. « 🚀 Lancer la séance » de la carte pendant l'appel (`c-appel`) | les deux boutons ouverts | **passe** |
+| 4. Le dénominateur de « ont répondu » | maquette : `c-q1-tour1` « 10/12 », `p-reponse` « 10 / 12 », `b-reponse` « 10 / 12 » au 1er tour (ceux qui ont la main), puis « 23/24 », « 24/24 » (les présents). Tableau au 1er tour : **juste** (QCM-2, `7228ab2`) ; téléphone question close « 1 / 24 » : **juste** ; **console au 1er tour « 1 / 24 » (attendu « 1 / 12 ») et téléphone au 1er tour « 1 / 24 » (attendu « 1 / 12 ») : écarts ouverts** | **échoue** (2 / 8 en échec) |
+| 4. « 1 réponse enregistrée » | au singulier | **passe** |
+| `banc-reprise2.js` (compteurs, réouvertures, console rechargée) | **non rejoué à 12:22** : le script s'est arrêté sur une erreur (`reprise2.log`) ; il passait 22 / 22 à 11:22 | non rejoué |
+
+Ce que QCM-3 a trouvé en jouant ce que R10 n'avait pas joué (point 3, `DEFAUTS-OUVERTS.md`, « QCM-3, point 3 (12:10) ») : « ❌ 2 pense : mal lu (tranché) » au lieu de « pensent » (à QCM-2) ; **non rejoué par moi à 12:28**, son état à 12:30 n'est pas vérifié.
+
+Défauts ouverts, par propriétaire : **QCM-1, QCM-2** : « ONT RÉPONDU » à la console au 1er tour sur les présents au lieu de ceux qui ont la main ; **QCM-2** : le téléphone au 1er tour, de même ; « 2 pense » (à vérifier).
+
+---
+
+# Verdict de 11:30 (pour mémoire)
 
 *La reprise 4 bis (`DEFAUTS-OUVERTS.md`, Paul 10:47 : accélérer). App livrée : `evaluation-qcm.staging.html`, md5 **`805732bcff4ec2fedd7d2831123037f8`**, assemblée par `build.py` sur `code-qcm` à `c5a818c` (tout ce qui était poussé à 11:22). Sorties : `sorties/2026-10-13_1055/` (l'assemblage complet, sur `3458d28`, la trouvée remise) et `sorties/2026-10-13_1122/` (le réassemblage de 11:22). Les verdicts précédents, plus bas, restent pour mémoire.*
 

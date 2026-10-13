@@ -1,0 +1,1414 @@
+{
+ "atteintes": 97,
+ "fideles": 47,
+ "parScene": {
+  "c-evals": {
+   "id": "c-evals",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-eval-corbeille": {
+   "id": "c-eval-corbeille",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "De quoi parle cette fenêtre : #e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #) · # questions."
+   ],
+   "texteManquant": [
+    "#e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance #) · # questions"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-collage": {
+   "id": "c-collage",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ferme sans rien enregistrer."
+   ],
+   "texteManquant": [
+    "Question # : # px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choix, sauf si je te dis que j'assume la longueur.",
+    "Question # : la compétence « c#-oral-# » n'est pas une compétence du chapitre (#e · Ch. # — Poésie et peinture au XIXe siècle).",
+    "Question # : # compétences ; une question en a une ou deux.",
+    "La compétence « c#-culture-# » n'est évaluée que par # questions (Q#, Q#) : il en faut au moins #.",
+    "La séance durerait # min : # min de plus que les # minutes utiles.",
+    "✅ Le reste est bon : chapitre « #e · Ch. # — Poésie et peinture au XIXe siècle », mode tout ou rien, # questions, # compétences du chapitre ; la question # porte « longueur assumée » : elle passe, et sa moitié défilera seule."
+   ],
+   "ecarts": 7,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "x627-3-editeur": {
+   "id": "x627-3-editeur",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-feuille": {
+   "id": "c-feuille",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-accueil": {
+   "id": "c-accueil",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-lancer": {
+   "id": "c-lancer",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne.",
+    "Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes."
+   ],
+   "texteManquant": [],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-appel": {
+   "id": "c-appel",
+   "appareil": "console",
+   "gestesManquants": [
+    "🚫«élève»"
+   ],
+   "gestesEnTrop": [
+    "🚀 Lancer la séance·"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne.",
+    "Marqué absent : clique pour le remettre présent.",
+    "Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes."
+   ],
+   "texteManquant": [
+    "🚫",
+    "📱 «élève» (binôme d'«élève») et «élève» (seule) sont mis ensemble : tablette #."
+   ],
+   "ecarts": 8,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-combien": {
+   "id": "t-combien",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-login": {
+   "id": "t-login",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-attest-1": {
+   "id": "t-attest-1",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-pret": {
+   "id": "t-pret",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-pret": {
+   "id": "c-pret",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "«élève» a coché # lignes de l'attestation sur #.",
+    "«élève» n'est pas encore entrée sur sa moitié de tablette."
+   ],
+   "texteManquant": [
+    "attestation «date»",
+    "pas encore entrée"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-reflexion": {
+   "id": "t-q1-reflexion",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q1-reflexion": {
+   "id": "c-q1-reflexion",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-passage1": {
+   "id": "t-q1-passage1",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-tour1": {
+   "id": "t-q1-tour1",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q1-tour1": {
+   "id": "c-q1-tour1",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-reponse": {
+   "id": "p-reponse",
+   "appareil": "telephone",
+   "gestesManquants": [
+    "«élève»⏳"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "⏳"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-qr": {
+   "id": "c-qr",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "«élève» répond en ce moment, pendant son tour.",
+    "Ferme cette fenêtre sans rien changer (Échap)."
+   ],
+   "texteManquant": [
+    "✋ répond…"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "b-reponse": {
+   "id": "b-reponse",
+   "appareil": "tableau",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-tour2": {
+   "id": "t-q1-tour2",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-b-michel": {
+   "id": "t-q1-b-michel",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q1-tour2": {
+   "id": "c-q1-tour2",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q1-attente": {
+   "id": "t-q1-attente",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "Naples",
+    "Rome",
+    "Venise",
+    "Milan",
+    "Oui, la même chose",
+    "Non, autre chose"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "⏳ Attends la prochaine question…"
+   ],
+   "ecarts": 7,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q1-close": {
+   "id": "c-q1-close",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il vaut pour chaque tour, et pour la lecture à la correction."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q2-reflexion": {
+   "id": "t-q2-reflexion",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q2-tour1": {
+   "id": "t-q2-tour1",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q2-tour2": {
+   "id": "t-q2-tour2",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q2-tour2": {
+   "id": "c-q2-tour2",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q2-close": {
+   "id": "c-q2-close",
+   "appareil": "console",
+   "gestesManquants": [
+    "▶️ Lancer Q#",
+    "🔓 Rouvrir pour tous"
+   ],
+   "gestesEnTrop": [
+    "🔒 Clore la question",
+    "⏸️ Pause",
+    "🔄 Relancer chrono"
+   ],
+   "fermesDifferents": [
+    "🔓 Rouvrir pour un élève (ouvert dans la maquette)",
+    "+# (fermé dans la maquette)"
+   ],
+   "bullesManquantes": [
+    "Rouvre la question close pour un élève qui n'a pas répondu, une seule fois par question, avec le temps de réponse de la question. Son voisin porte le voile ordinaire.",
+    "La phase de la séance en ce moment : ⏸️ Question close — passe à la suivante.",
+    "Il vaut pour chaque tour, et pour la lecture à la correction.",
+    "Le temps de réponse d'un tour : # secondes.",
+    "Ce temps vaut pour chacun des deux tours.",
+    "Les deux tours de cette question sont finis : son temps de réponse ne se change plus.",
+    "Lance la question # : la réflexion commence sur toutes les tablettes, l'énoncé sans les choix.",
+    "Rouvre la question close pour ceux qui n'ont pas répondu, une seule fois par question : les deux tours reprennent pour eux seuls. Une réponse donnée est définitive. Il ne rouvre que pour ceux qui n'ont pas répondu, une fois par question.",
+    "«élève» n'a pas la bonne réponse à cette question, pour le moment.",
+    "«élève» n'a encore rien coché à cette question.",
+    "Sur les tuiles, cette couleur veut dire : pas de réponse.",
+    "Annule cette question déjà posée (mal formulée, par exemple) : ses réponses restent gardées, mais elle sort du total de la note et des compétences. Une confirmation d'abord ; « ↩️ Remettre » la défait. les élèves liront : « Question # · annulée : elle ne compte pas. » Dans ta console et tes résultats, elle garde sa marque « ⚠️ Annulée — posée, puis annulée ».",
+    "Question close — «date» justes."
+   ],
+   "texteManquant": [
+    "⏸️ Question close — passe à la suivante",
+    "par tour",
+    "▶️ Lancer Q#",
+    "🔓 Rouvrir pour tous",
+    "⏳ pas de réponse",
+    "pas de réponse"
+   ],
+   "ecarts": 26,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-rouvrir-un": {
+   "id": "c-rouvrir-un",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il vaut pour chaque tour, et pour la lecture à la correction.",
+    "Rouvre la question close pour ceux qui n'ont pas répondu, une seule fois par question : les deux tours reprennent pour eux seuls. Une réponse donnée est définitive. Il ne rouvre que pour ceux qui n'ont pas répondu, une fois par question.",
+    "Rouvre la question # pour «élève» seul, avec son temps de réponse ; «élève» porte le voile pendant son tour. Une seule fois. Une seule fois par question, avec le temps de réponse de la question."
+   ],
+   "texteManquant": [],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-rouvrir-un": {
+   "id": "t-rouvrir-un",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-eleve": {
+   "id": "p-eleve",
+   "appareil": "telephone",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q3-tour1": {
+   "id": "t-q3-tour1",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-q3-tour2": {
+   "id": "t-q3-tour2",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-q3-close": {
+   "id": "c-q3-close",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il vaut pour chaque tour, et pour la lecture à la correction."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-terminer": {
+   "id": "c-terminer",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? ». Les questions pas encore corrigées n'ont pas de lecture : tu fixes ces notes d'après les feuilles, dans Données → Résultats.",
+    "«élève» répond en ce moment, pendant son tour.",
+    "Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves. Les questions pas encore corrigées n'ont pas de lecture : tu fixes ces notes d'après les feuilles, dans Données → Résultats."
+   ],
+   "texteManquant": [
+    "✋ répond…"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-mode-emploi": {
+   "id": "c-mode-emploi",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne.",
+    "Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes."
+   ],
+   "texteManquant": [],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-estim": {
+   "id": "t-estim",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-estim": {
+   "id": "c-estim",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Pas encore : «élève», «élève», «élève»."
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "x610-5-attestation-2": {
+   "id": "x610-5-attestation-2",
+   "appareil": "tablette",
+   "gestesManquants": [
+    "✓"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "✓",
+    "Pour chaque question, «élève» clique ce que dit ta feuille. Toi, tu cliques ce que dit la feuille de «élève»."
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-attest2": {
+   "id": "c-attest2",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Les élèves qui n'ont pas encore fini : «élève», «élève», «élève», «élève», «élève».",
+    "«élève» a coché toutes les lignes de l'attestation, à «heure»."
+   ],
+   "texteManquant": [
+    "«élève» · «élève» · «élève» · «élève» · «élève»",
+    "✓ prêt · «heure»"
+   ],
+   "ecarts": 4,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q2-lecture": {
+   "id": "t-corr-q2-lecture",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q2-avant": {
+   "id": "c-corr-q2-avant",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Les élèves qui n'ont pas encore fini : «élève», «élève», «élève», «élève», «élève», «élève».",
+    "La feuille d'«élève» est lue par son voisin.",
+    "La feuille de «élève» est lue par son voisin."
+   ],
+   "texteManquant": [
+    "«élève» · «élève» · «élève» · «élève» · «élève» · CHEVALLIER Théoi",
+    "📄 feuille lue"
+   ],
+   "ecarts": 5,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-corr-avant": {
+   "id": "p-corr-avant",
+   "appareil": "telephone",
+   "gestesManquants": [
+    "«élève»📄"
+   ],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Feuille pas encore lue : «élève» · «élève» · «élève» · «élève» · «élève» · CHEVALLIER Théoi",
+    "📄"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "b-recopie": {
+   "id": "b-recopie",
+   "appareil": "tableau",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q2-lu": {
+   "id": "c-corr-q2-lu",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q2-apres": {
+   "id": "c-corr-q2-apres",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-corr-apres": {
+   "id": "p-corr-apres",
+   "appareil": "telephone",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "📌 À lire ce soir (#) : «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "b-correction": {
+   "id": "b-correction",
+   "appareil": "tableau",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q2-apres": {
+   "id": "t-corr-q2-apres",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q3-lecture": {
+   "id": "t-corr-q3-lecture",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q3-apres": {
+   "id": "c-corr-q3-apres",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q3-apres": {
+   "id": "t-corr-q3-apres",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q1-lecture": {
+   "id": "t-corr-q1-lecture",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-corr-q1-apres": {
+   "id": "t-corr-q1-apres",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-corr-q1-apres": {
+   "id": "c-corr-q1-apres",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 1,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie": {
+   "id": "c-autonomie",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'autonomie passent en Maîtrise insuffisante. Le retirer met ses deux compétences d'autonomie en Maîtrise insuffisante ; sa note ne bouge pas, puisque la note, c'est la feuille. Il ne le voit pas en direct : il le lit dans son bilan et dans « Mes évaluations »."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-garde": {
+   "id": "c-autonomie-garde",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-retiree": {
+   "id": "c-autonomie-retiree",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève",
+    "⛔ Point d'autonomie retiré le «date» à «heure». Ses deux compétences d'autonomie sont en Maîtrise insuffisante ; sa note ne bouge pas."
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "p-autonomie": {
+   "id": "p-autonomie",
+   "appareil": "telephone",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "«élève»⛔✗",
+    "↩️ Rendre"
+   ],
+   "fermesDifferents": [
+    "⛔ Retirer le point d'autonomie (ouvert dans la maquette)"
+   ],
+   "bullesManquantes": [
+    "Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'autonomie passent en Maîtrise insuffisante."
+   ],
+   "texteManquant": [
+    "📌 À lire ce soir (#) : «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève",
+    "État actuel : Q# fausse d'après sa feuille · point d'autonomie gardé."
+   ],
+   "ecarts": 6,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-coeval": {
+   "id": "t-coeval",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-coeval-ecrit": {
+   "id": "t-coeval-ecrit",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-coeval-attente": {
+   "id": "c-coeval-attente",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-coeval-feuille": {
+   "id": "c-coeval-feuille",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-michel": {
+   "id": "c-autonomie-michel",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut.",
+    "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-julien": {
+   "id": "c-autonomie-julien",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut.",
+    "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-autonomie-deux": {
+   "id": "c-autonomie-deux",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut.",
+    "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défait, en direct ou le soir, dans sa fiche."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-coeval-tranche": {
+   "id": "c-coeval-tranche",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Celui qui pense que son voisin a mal lu : son alerte est tranchée."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-bilan": {
+   "id": "t-bilan",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-bilan-imprime": {
+   "id": "t-bilan-imprime",
+   "appareil": "eleve",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "📊 Mes évaluations",
+    "📄 Imprimer / Exporter mon bilan"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "Évaluation d'essai — # questions · «date»"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-bilan": {
+   "id": "c-bilan",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "«élève» : point d'autonomie retiré le «date» à «heure» ; ses deux compétences d'autonomie sont en Maîtrise insuffisante."
+   ],
+   "texteManquant": [
+    "«élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève",
+    "⛔ retiré le «date» à «heure»"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "t-fin": {
+   "id": "t-fin",
+   "appareil": "tablette",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-2 · HEURE"
+  },
+  "c-papier-lancer": {
+   "id": "c-papier-lancer",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Les exclusions de MJPC que les binômes proposés respectent.",
+    "La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne.",
+    "Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes."
+   ],
+   "texteManquant": [],
+   "ecarts": 3,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-seances": {
+   "id": "c-seances",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-resultats": {
+   "id": "c-resultats",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ce qui est à lire sur la feuille de «élève» : Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève."
+   ],
+   "texteManquant": [
+    "🟢 Très bonne maîtrise Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-fiche": {
+   "id": "c-fiche",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-fiche-garde": {
+   "id": "c-fiche-garde",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-fiche-retire": {
+   "id": "c-fiche-retire",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-que-dit-la-feuille": {
+   "id": "c-que-dit-la-feuille",
+   "appareil": "console",
+   "gestesManquants": [
+    "↩️ Rendre",
+    "#bonne réponse",
+    "Sa feuille ne dit aucun de ces choixlu par «élève»"
+   ],
+   "gestesEnTrop": [
+    "⛔ Retirer le point d'autonomie",
+    "#bonne réponse · lu par «élève»",
+    "Sa feuille ne dit aucun de ces choix"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La fiche de «élève», le soir : sa feuille lue, sa tablette, ce qu'il a dit, son point d'autonomie.",
+    "Ce que le voisin a lu sur sa feuille, à la correction : Venise.",
+    "Ce que l'élève a cliqué sur la tablette : Venise.",
+    "Ce que le voisin a lu sur sa feuille, à la correction : Madrid, Genève, Berlin.",
+    "Ce que le voisin a lu sur sa feuille, à la correction : aucun de ces choix.",
+    "Le niveau de cette compétence : Maîtrise fragile, d'après ses questions.",
+    "Le niveau de cette compétence : Maîtrise insuffisante, d'après ses questions.",
+    "Le point d'autonomie de l'élève est retiré ; « ↩️ Rendre » à côté le lui rend.",
+    "Rend son point d'autonomie à «élève» : ses deux compétences d'autonomie repassent en Très bonne maîtrise.",
+    "Ce que ferait « Valider », à lire avant de choisir : « «élève» a lu « aucun de ces choix » ».",
+    "Pour chaque question : ce que «élève» a lu sur sa feuille à la correction, ce qu'il a cliqué sur la tablette, ce qu'il a dit à la fin de son temps de réponse, « Oui, la même chose » ou « Non, autre chose ». « La feuille dit autre chose » corrige une question d'après sa feuille."
+   ],
+   "texteManquant": [
+    "👤 «élève» — # / # · # / # · 🟠 Maîtrise fragilei",
+    "CE QU'IL A DIT",
+    "corrigée en classe : raison donnée à «élève» (Rome)",
+    "Venise",
+    "⚠️ aucun de ces choix",
+    "aucun de ces choix",
+    "Q# ✓ · Q# ✗ · Q# ∅ → «date»",
+    "🟠 Maîtrise fragile",
+    "🔴 Maîtrise insuffisante",
+    "⛔ Point d'autonomie retiré le «date» à «heure».",
+    "↩️ Rendre",
+    "«élève» a lu « aucun de ces choix ». Clique sur ce que dit sa feuille.",
+    "bonne réponse",
+    "lu par «élève»"
+   ],
+   "ecarts": 31,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-seances-lues": {
+   "id": "c-seances-lues",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic : le tableau de la séance."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-rendre": {
+   "id": "c-rendre",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic : le tableau de la séance."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-copies-rendues": {
+   "id": "c-copies-rendues",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic : le tableau de la séance."
+   ],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-resultats-rendues": {
+   "id": "c-resultats-rendues",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Ce qui est à lire sur la feuille de «élève» : Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève · ✔ lue."
+   ],
+   "texteManquant": [
+    "🟢 Très bonne maîtrise Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Madrid et Genève · ✔ lue"
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "x632-pdf": {
+   "id": "x632-pdf",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Notes et compétences"
+   ],
+   "texteManquant": [
+    "«élève» : parti après la question # ; sa note et ses compétences portent sur les # questions où il était là, et il n'a pas fait son estimation."
+   ],
+   "ecarts": 2,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-corbeille": {
+   "id": "c-corbeille",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "📤 Rendre les copies"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic : le tableau de la séance."
+   ],
+   "texteManquant": [],
+   "ecarts": 2,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-sauvegarde": {
+   "id": "c-sauvegarde",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La sorte d'élément mis à la corbeille : évaluation.",
+    "Ce qui est à la corbeille : « Brouillon — Les figures de style (# questions) ».",
+    "Quand cet élément est parti à la corbeille : le «date» à «heure».",
+    "Remet cet élément à sa place, tel qu'il était."
+   ],
+   "texteManquant": [],
+   "ecarts": 4,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-importer": {
+   "id": "c-importer",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La sorte d'élément mis à la corbeille : évaluation.",
+    "Ce qui est à la corbeille : « Brouillon — Les figures de style (# questions) ».",
+    "Quand cet élément est parti à la corbeille : le «date» à «heure».",
+    "Remet cet élément à sa place, tel qu'il était."
+   ],
+   "texteManquant": [],
+   "ecarts": 4,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-purger": {
+   "id": "c-purger",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [
+    "La sorte d'élément mis à la corbeille : évaluation.",
+    "Ce qui est à la corbeille : « Brouillon — Les figures de style (# questions) ».",
+    "Quand cet élément est parti à la corbeille : le «date» à «heure».",
+    "Remet cet élément à sa place, tel qu'il était."
+   ],
+   "texteManquant": [],
+   "ecarts": 4,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "e-mes-evals": {
+   "id": "e-mes-evals",
+   "appareil": "eleve",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "#e- éval # Analyse logique - Construire une phrase complexe",
+    "QCM — Le jambon-beurre",
+    "«date» · # / # · # / # · 🔵 Maîtrise satisfaisante"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "e-mes-evals-rendue": {
+   "id": "e-mes-evals-rendue",
+   "appareil": "eleve",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [
+    "#e- éval # Analyse logique - Construire une phrase complexe",
+    "«date» · # / # · # / # · 🔵 Maîtrise satisfaisante",
+    "QCM — Le jambon-beurre"
+   ],
+   "ecarts": 3,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "e-bilan-lou": {
+   "id": "e-bilan-lou",
+   "appareil": "eleve",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-reglages": {
+   "id": "c-reglages",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-reglages-prompt": {
+   "id": "c-reglages-prompt",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [
+    "#e · Chapitre # — Poésie et peinture au XIXe siècle"
+   ],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 1,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "c-reglages-prompt-modifier": {
+   "id": "c-reglages-prompt-modifier",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  },
+  "x620-1-mode-test-ouverture": {
+   "id": "x620-1-mode-test-ouverture",
+   "appareil": "console",
+   "gestesManquants": [],
+   "gestesEnTrop": [],
+   "fermesDifferents": [],
+   "bullesManquantes": [],
+   "texteManquant": [],
+   "ecarts": 0,
+   "proprio": "QCM-3 · SOIR"
+  }
+ },
+ "nonAtteintes": [
+  "c-echange-refuse",
+  "c-demo-lancer",
+  "c-demo-faite",
+  "t-un-eleve",
+  "t-login-inconnu",
+  "t-binome",
+  "t-rejoins",
+  "t-attest-2",
+  "t-demo-q",
+  "c-voir-tablette",
+  "c-fin-prevue",
+  "t-q1-passage2",
+  "c-ecarter",
+  "c-ecartee",
+  "t-q2-ecartee",
+  "c-annuler",
+  "c-annulee",
+  "c-rouvrir-tous",
+  "x610-1-b-julien",
+  "x610-2-b-michel",
+  "c-depart",
+  "c-parti",
+  "c-retour",
+  "c-deplacer",
+  "t-deplace",
+  "c-finir-autre-heure",
+  "c-reprendre",
+  "c-rouvrir-seance",
+  "c-sessions",
+  "c-interrompue",
+  "t-attest-corr-fait",
+  "x610-3-a-correction",
+  "t-corr-seul",
+  "t-coeval-daccord",
+  "c-coeval-retire-michel",
+  "c-coeval-retire-julien",
+  "c-coeval-retire-deux",
+  "x610-6-coeval-laquelle",
+  "x610-7-coeval-ecrit",
+  "x610-8-console-alerte",
+  "x610-feuille",
+  "x610-autonomie-michel",
+  "x610-autonomie-julien",
+  "x610-autonomie-deux",
+  "x610-tranche",
+  "x610-9-telephone-alerte",
+  "t-bilan-annulee",
+  "t-bilan-non-atteinte",
+  "c-papier-seance",
+  "e-papier-enonces",
+  "c-papier-grille",
+  "c-papier-reprendre",
+  "t-papier-estim",
+  "t-papier-attest",
+  "c-papier-correction",
+  "t-papier-correction",
+  "c-rattrapage",
+  "x620-2-mode-test-reflexion",
+  "x620-3-mode-test-en-grand",
+  "t-annexe"
+ ]
+}

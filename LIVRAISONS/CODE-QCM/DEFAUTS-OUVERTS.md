@@ -22,6 +22,13 @@ Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de
 
 [QCM-3 → QCM-2] (à confirmer) **Le bilan classe donne la même question pour « 🔴 La plus ratée » et « 🟢 La mieux réussie »** : « 🔴 La plus ratée — Q1 (67 % de réussite) » et « 🟢 La mieux réussie — Q1 (67 % de réussite) », quand les trois questions ont le même taux (`c3-corr.js` l. 549 environ). La maquette (`c-bilan`) n'a pas d'égalité ; deux cadres qui se contredisent. Capture `reprise5/c-bilan.png`.
 
+### QCM-4, 12:11 — `banc/banc-reprise5.js` (points 1, 2, 4 par le geste) sur l'app de 11:22 (md5 `805732bc…`) : 3 / 8
+
+- [QCM-4 → QCM-1] **Point 2 : pendant l'appel, « 🚀 Lancer la séance » de la carte est fermé** ; `c-appel` a les deux ouverts. Vu : `[{carte: fermé}, {fenêtre: ouvert}]`.
+- [QCM-4 → QCM-1, QCM-2] **Point 1 : pendant l'appel, le téléphone montre la séance** (« Phase : en attente », « 🚀 Lancer Q1 », « TABLETTES — 0 / 25 ») au lieu de « Aucune séance active ».
+- [QCM-4 → QCM-1, QCM-2] **Point 4 : au 1er tour, « ont répondu » compte sur les 24 présents, la maquette sur les 12 qui ont la main.** La maquette : `c-pret` et `c-q1-reflexion` « 0/24 », **`c-q1-tour1` « 10/12 », `p-reponse` « TABLETTES — 10 / 12 », `b-reponse` « ✋ 10 / 12 »**, puis `c-q1-tour2` « 23/24 », `c-q1-close` « 24/24 » (le cumul des deux tours, sur les présents). Vu au 1er tour, une réponse : console « 1 / 24 », téléphone « 1 / 24 », tableau « 1 / 24 » ; question close, téléphone « 1 / 24 » : juste. Le dénominateur « les présents, le même aux deux tours » (QCM-1, 11:00) est juste au 2e tour et à la clôture, pas au 1er.
+- Passent : « 1 réponse enregistrée » au singulier ; le téléphone montre la séance une fois lancée ; le téléphone question close (« 1 / 24 »).
+
 ## Reprise 4 bis — accélérer (Paul, 10:47 : « il faut accélérer. On a 3 exécutants qui ne font rien il faut les utiliser pour accélérer la livraison finale »)
 
 Les quatre travaillent en même temps. **Tout est poussé à 11:22 ; `VERDICT.md` à 11:30 ; contrôle de la conscience à 11:35 ; mise en ligne à 11:45 si ça va.** Les relecteurs neufs suivent `banc/relecteurs/CONSIGNE.md` (même texte, mêmes interdits, la décision de Paul de 07:22 donnée), chacun sur son faux hub et son port, sur l'app assemblée après la correction de QCM-2 (point 1 ci-dessous), 12 minutes au plus.

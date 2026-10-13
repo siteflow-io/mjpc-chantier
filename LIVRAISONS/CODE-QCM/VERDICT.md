@@ -17,7 +17,7 @@ Les deux défauts de la reprise 6 et le point de 13:00 sont corrigés, et rejou�
 
 Rejoué par QCM-3 (DEMANDES, `fa42147`, `f722840`) : la garde pour « la feuille dit autre chose » et « je relis ce soir » dit la note du bilan.
 
-Les gestes rares et l'heure de demain ont passé sur l'app de 10:55 (47 / 47, 109 / 109) ; ils sont relancés sur l'app de 13:12 à 13:19, et leur résultat est ajouté ici dès la fin (vers 13:30).
+Sur la même app (md5 `9a5f5814…`), relancés à 13:19 et finis à 13:29 : **les gestes rares 47 / 47** (1 min 55 s), **l'heure de demain 109 / 109** (10 min 25 s) (`sorties/2026-10-13_1312/branches.txt`, `demain.txt`).
 
 ---
 

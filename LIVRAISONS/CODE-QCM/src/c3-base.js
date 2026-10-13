@@ -56,7 +56,7 @@ function niveauComp(r, c){ var x = r.comp[c]; return x ? maitriseDe(x.n * 20 / x
 function fr2(a){ return a ? a[0] + "/" + a[1] : "—"; }
 function statsQ(){
   var c = SCN.compteurs(MO());
-  return [[c.presents + "/" + c.presents, "connectés"], [c.repondu ? fr2(c.repondu) : "0/" + c.presents, "ont répondu"],
+  return [[c.connectes ? fr2(c.connectes) : c.presents + "/" + c.presents, "connectés"], [c.repondu ? fr2(c.repondu) : "0/" + c.presents, "ont répondu"],
     [c.justes && c.justes[1] ? fr2(c.justes) : "—", "justes"], [c.question ? fr2(c.question) : "—", "question"]];
 }
 // la moitié d'un élève pendant une question, au moment de la scène

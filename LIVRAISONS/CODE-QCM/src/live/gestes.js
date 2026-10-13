@@ -63,7 +63,7 @@ var GESTES = (function(){
     [/^🛑 Terminer$/, "fenetre", function(el){ return ACT.terminer(paramDe(el, "seance") || null).then(function(){ navRemettre(); }); }],
     [/^⏸️ Finir à une autre heure$/, "fenetre", function(){ return apres(ACT.confirmerReprise().then(function(){ return ACT.finirAutreHeure(); })); }],
     [/^🔓 Rouvrir la séance$/, "fenetre", function(el){ return apres(ACT.rouvrirSeance(paramDe(el, "seance"))); }],
-    [/^🔄 Reprendre la séance$/, "fenetre", function(){ return apres(ACT.recommencer()); }],
+    [/^🔄 Reprendre la séance$/, "fenetre", function(){ return apres(ACT.confirmerReprise()); }],   // (13/10) le chrono reste où il en était
     [/^▶️ Reprendre la séance du/, null, function(el){ var id = paramDe(el, "seance") || (SCN.seancesAvant().filter(function(s){ return s.enPause; })[0] || {}).id; return id ? apres(ACT.lancerSeance(null, null, {reprise:id})) : null; }],
     [/^⛔ Retirer le point d'autonomie$/, "fenetre", function(el){ var x = eleveDuGeste(el); return x ? apres(ACT.retirerAutonomie(x, SCN.etat() && ["fin"].indexOf(SCN.etat().ph) < 0 && SCN.sid() === seance(el) ? "heure" : "soir", seance(el))) : null; }],
     [/^↩️ Rendre$/, null, function(el){ var x = eleveDuGeste(el); return x ? ACT.rendreAutonomie(x, seance(el)) : null; }],

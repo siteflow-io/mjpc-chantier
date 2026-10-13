@@ -200,9 +200,14 @@ async function taper(p, moitie, placeholder, valeur) {
           const c = [...h.querySelectorAll("input[type=checkbox], [role=checkbox]")].find(x => !x.checked && x.getAttribute("aria-checked") !== "true" && x.getBoundingClientRect().width > 0); if (!c) return false; c.click(); return true; }, i); if (!fait) break; await pause(250); }
       await cliquer(tab, /Je commence|J'ai compris|Je suis prêt/, i);
     }
-    await pause(1200);
+    // Paul, 13/10 07:22 : « Non c'est moi qui lance la correction. Jamais de sessions de groupe lancées automatiquement. » (K11 corrigé à 10:05, tour 693)
+    await pause(3000);
     m = await moities(tab);
-    verif(11, m.length === 2 && m.every(x => /QUESTION 2/i.test(x)), "la correction commence par la question 2, la plus ratée (Q2 : 1 juste sur 2 ; Q1 : 2 sur 2)", m.map(x => (x.match(/QUESTION \d/i) || ["?"])[0]).join(" | "));
+    verif(11, !m.some(x => /QUESTION 2/i.test(x)), "les deux élèves prêts, la correction ne commence pas seule (3 s d'attente)", m.map(x => (x.match(/QUESTION \d/i) || ["—"])[0]).join(" | "));
+    verif(11, (await fermeOuvert(prof, /Commencer la correction/)) === "ouvert", "« ▶️ Commencer la correction » est ouvert quand les deux élèves sont prêts", await fermeOuvert(prof, /Commencer la correction/));
+    await cliquer(prof, /Commencer la correction/); await pause(1200);
+    m = await moities(tab);
+    verif(11, m.length === 2 && m.every(x => /QUESTION 2/i.test(x)), "au clic, la correction commence par la question 2, la plus ratée (Q2 : 1 juste sur 2 ; Q1 : 2 sur 2)", m.map(x => (x.match(/QUESTION \d/i) || ["?"])[0]).join(" | "));
 
     // K12 — « 💡 Révéler » reste fermé tant qu'un présent n'a pas eu sa feuille lue ; la lecture se clique dans la moitié du propriétaire de la feuille
     verif(12, (await fermeOuvert(prof, /Révéler/)) !== "ouvert", "« 💡 Révéler » fermé avant toute lecture", await fermeOuvert(prof, /Révéler/));

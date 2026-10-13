@@ -21872,3 +21872,35 @@ Réponse mot pour mot :
 La mesure : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-800-OEIL-13-10/README.md
 
 13/10/2026 14:31 MEMO
+
+---
+
+## TOUR 707 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 14:34) autre chose: j'ai mis des compétences au hasard dans ma copie de mon éval démo, et du coup dans les résultats une vraie classe a un mauvais niveau de compétences, vu le test que je viens de faire. Or, ces niveaux de compétences vont au hub il me semble. Mesure, et proposes une solution.
+
+---
+
+## TOUR 707 — Claude (conscience n°12)
+
+Mesuré dans le code en ligne (`code-qcm`, `src/`) : l'app n'écrit au hub que sous `qcm/sessions`, `qcm/sessionActive`, `qcm/evaluations`, `qcm/settings`, `qcm/textes`, `qcm/presence`, `qcm/qrScans`, `classes`, `codes` et `corbeille` ; aucun niveau de compétence n'y est écrit. Les résultats viennent de `seancesV()`, qui garde les séances terminées et écarte la démo (`seanceDemo`) et les classes de test (`seanceTest`). La corbeille d'une séance se fait par `CorbeilleSeanceC` puis `mettreACorbeille("Séance", …)` (`c4-seances.js`).
+
+Lu au hub, sans rien écrire, et sans garder aucune donnée d'élève : `qcm/sessions` compte 7 séances. `sess_1791894139272` : classe `4_hugo`, eval `eval_1791891406205` (la copie de la démo, 2 questions, 1 compétence chacune, sans chapitre), `questionsLancees` une seule, pas de `reponses`, `etat` « terminee », `finLe` 14:31. Aucune autre séance des 4_hugo. Les copies locales des lectures sont mises à la corbeille du scratchpad.
+
+Réponse mot pour mot :
+
+**À jouer :** la nouvelle app en ligne, telle quelle · **en cours chez l'exécutant :** la reprise 7, si tu l'as collée · **ouvert :** ta séance de test de 14:22 (point 1054)
+
+1051. J'ai mesuré dans le code en ligne et au hub, sans rien y écrire. Les niveaux de compétences ne sont écrits nulle part au hub. Le hub garde la séance elle-même : qui était là, qui a répondu quoi, et une copie figée de l'évaluation avec ses compétences. L'app recalcule les niveaux à chaque fois qu'elle affiche les résultats ou le PDF pour École Directe.
+
+1052. Ta séance de 14:22 avec les 4e Hugo est bien au hub. Elle porte sur ta copie de la démo (2 questions, une compétence chacune) et s'est terminée à 14:31, avec une seule question lancée et aucune réponse. L'app la compte comme une vraie séance de la classe : chaque élève y a 0, d'où les mauvais niveaux. C'est la seule séance du QCM des 4e Hugo.
+
+1053. Deux sortes de séances ne comptent jamais : celles de la démo elle-même, et celles d'une classe de test. Une copie de la démo est une évaluation ordinaire, donc ses séances comptent.
+
+1054. Pour cette séance, la solution est un geste qui existe déjà, et que le banc de QCM-4 joue : dans Données, la liste des séances, « 🗑️ » sur cette séance, puis « 🗑️ Mettre à la corbeille ». Elle sort des résultats, les niveaux des 4e Hugo disparaissent, et elle reste un an dans « 💾 Sauvegarde → 🗑️ Corbeille », restaurable. Tu cliques toi-même, ou tu me dis « mets-la à la corbeille » et je le fais au hub, après une copie au sas.
+
+1055. Pour la suite, le bouton « 🚀 Lancer » de la démo, qui est dans la reprise 7, règle le problème : tes essais avec une vraie classe passeront par la démo, qui ne compte jamais. Je te propose en plus une règle simple : une séance terminée où aucun élève n'a répondu ne compte pas. Tu veux que je l'ajoute à la reprise 7 ?
+
+13/10/2026 14:41 MEMO

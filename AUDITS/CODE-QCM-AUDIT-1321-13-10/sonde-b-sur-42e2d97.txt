@@ -1,0 +1,22 @@
+Sonde B — scratchpad/t673/app-1312.html — 2026-10-13T11:25:09.065Z
+Durée : 97 s · vérifications : 17 · échecs : 0
+  ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  ok     K2 · la tablette demande « Combien êtes-vous sur cette tablette ? »
+  ok     K2 · « 👥 2 élèves » partage la tablette en deux moitiés, chacune « 👋 Identifie-toi »
+  ok     K3 · Julien entré sur la tablette se voit sur ta console sans rechargement
+  ok     K3 · BAUDRY Léa, entré dans l'autre moitié, se voit sur ta console
+  ok     K3 · un code faux : « Ce code ne correspond pas. Vérifie tes 4 chiffres. »
+  ok     K4 · les deux attestations faites, ta console le montre
+  ok     K5 · « ▶️ Lancer Q1 » : l'énoncé de la question 1 sur les deux moitiés
+  ok     K5 · le tableau montre la question 1, sans rechargement
+  ok     K5 · le téléphone montre la question 1, sans rechargement
+  ok     K6 · au 1er tour, une moitié peut cliquer un choix de la question 1
+  ok     K6 · la réponse cliquée sur la tablette se voit sur ta console sans rechargement (« n / N ont répondu » augmente)
+  ok     K6 · le champ où tu tapais garde sa valeur et le curseur pendant que la tablette répond
+  info   Q1 : 1re moitié = 0, 2e moitié = 1 ; B de la 1re moitié pendant le 2e tour : 0 s
+  ok     K20 · Q1, « Clore » cliqué dès que la 2e moitié a répondu : B paraît à la 2e moitié
+  ok     K20 · Q1 : B a paru à la 1re moitié
+  info   console après Q1 : undefined
+  info   Q2 : 1re moitié = 1 ; 2e tour ouvert seul après 27 s (moitié 0)
+  ok     K21 · Q2, sans « Clore » : B paraît à la 2e moitié à la fin de son temps
+  ok     K21 · Q2 : B de la 1re moitié (info) : -1 s

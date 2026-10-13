@@ -265,11 +265,11 @@ var SCN = (function(){
   S.lecture = function(x, qi, sid){ var s = S.sess(sid), l = ((((s && s.lectures) || {})[qi]) || {})[x]; if(!l) return null;
     return Object.assign({}, l, {choix:l.choix === "aucun" ? "aucun" : (Array.isArray(l.choix) ? l.choix : Object.values(l.choix || {})).map(Number)}); };
   S.doitDireB = function(x, sid){ var e = S.etat(sid); if(!e || !x || e.qi == null) return false; var c = S.cote(x, sid);
-    if(e.ph === "b"){ var r = S.reponse(x, e.qi, sid); if(e.rouvert === "tous" && !(r && r.rouverte)) return false;
+    if(e.ph === "b"){ var r = S.reponse(x, e.qi, sid); if(e.pour) return x === e.pour && !!r && !S.ditB(x, e.qi, sid); if(e.rouvert === "tous" && !(r && r.rouverte)) return false;
       return (c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid)) && !S.ditB(x, e.qi, sid) && !!r; }
     var b = e.bPour; return !!(b && Number(b.qi) === e.qi && (b.cote === c || S.seul(x, sid)) && LIVE.maintenant() < b.jusqua && !S.ditB(x, e.qi, sid) && S.reponse(x, e.qi, sid)); };
   // (13/10) l'élève est-il de la question en cours ? une réouverture « pour tous » n'est que pour ceux qui n'avaient pas répondu, « pour un élève » que pour lui
-  S.concerne = function(x, sid){ var e = S.etat(sid); if(!e || e.qi == null) return false; if(e.ph === "rouvert") return e.pour === x;
+  S.concerne = function(x, sid){ var e = S.etat(sid); if(!e || e.qi == null) return false; if(e.ph === "rouvert" || e.pour) return e.pour === x;
     if(e.rouvert === "tous"){ var r = S.reponse(x, e.qi, sid); return !r || !!r.rouverte; } return true; };
   S.estimationDe = function(x, sid){ var s = S.sess(sid); return ((s && s.autoevals) || {})[x] || null; };
   S.coevalDe = function(x, sid){ var s = S.sess(sid); return ((s && s.coeval) || {})[x] || null; };
@@ -382,8 +382,7 @@ var SCN = (function(){
         if(lu && lu.choix === "aucun"){ ajouter(x, qi, "aucun", "aucun de ces choix"); return; }
         if(!rep) return;
         var memes = lu && !(lu.choix === "aucun") && juste(lu.choix, {bonnes:rep.choix});
-        // une réponse donnée à une question rouverte n'a pas eu de B à dire (la maquette : « À lire ce soir (1) : TESSIER Anna… », pas Théo)
-        if(!b){ if(!rep.rouverte) ajouter(x, qi, "b", "n'a pas dit si sa feuille disait son clic"); }
+        if(!b) ajouter(x, qi, "b", "n'a pas dit si sa feuille disait son clic");
         else if(b === "oui" && lu && !memes) ajouter(x, qi, "b", "a dit que sa feuille disait son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
         else if(b === "non" && lu && memes) ajouter(x, qi, "b", "a dit que sa feuille ne disait pas son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
       });
@@ -937,6 +936,8 @@ var MOTEUR = (function(){
       if(quelquun) return {ph:"passage", qi:e.qi, tour:2, cote:autre, duree:D.decompte, rouvert:e.rouvert || null};
       return {ph:"close", qi:e.qi};
     }
+    // (13/10) un élève rouvert seul dit B après sa réponse, comme après chaque réponse ; puis la question se clôt
+    if(e.ph === "rouvert" && e.pour && SCN.reponse(e.pour, e.qi, sid)) return {ph:"b", qi:e.qi, tour:e.tour, cote:e.cote, duree:D.b, pour:e.pour, rouvert:e.rouvert || null};
     if(e.ph === "b" || e.ph === "rouvert") return {ph:"close", qi:e.qi};
     return null;
   }

@@ -22320,3 +22320,25 @@ Réponse, mot pour mot :
 1133. J'ai encore mis des puces dans ma réponse de 16:52, après avoir écrit en 1108 que je ne le referais pas. Je n'en mets plus.
 
 13/10/2026 18:37 MEMO
+
+---
+
+## TOUR 718 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (18:40) Je reviens sur l'auto vérification élève. La phrase de 1105, QUI LIT la copie à ce moment là ? C'est l'élève ou son voisin???
+
+---
+
+## TOUR 718 — Claude (conscience n°12)
+
+Mesuré : cadrage, 495 (« Sa moitié montre son clic et demande « Julien, regarde ta feuille : dit-elle la même chose que ton clic ? » […] Il a 5 secondes […]. Le voile de Michel reste en place pendant ces 5 secondes ») ; code, `EcrDeclareH` (`c3-tablettes.js`, la question sur la moitié de l'élève, son clic figé). Rien n'est écrit dans l'app.
+
+Réponse, mot pour mot :
+
+1134. C'est l'élève lui-même, sur sa propre feuille. Je l'ai vérifié au cadrage (495) et dans le code : à la fin de son temps de réponse, sa réponse sur la tablette est figée, et sa moitié lui pose la question pendant 5 secondes. Pendant ces 5 secondes, la moitié de son voisin reste voilée : personne d'autre ne lit sa feuille à ce moment-là.
+
+1135. Le voisin ne lit la feuille que plus tard, à la correction. Dans les lignes du soir (1110 à 1114), « Léa y a lu » vient de ce moment-là, pas de la question de 1105.
+
+13/10/2026 18:40 MEMO

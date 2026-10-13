@@ -206,13 +206,17 @@ function TelephoneSansSeance(){
 /* La séance interrompue (la 7.7.1 : AppProf, l. 6851 à 6887) : la console pose lastDisconnect quand elle se déconnecte ; à son ouverture,
    une séance active dont la dernière déconnexion n'a pas été reprise (lastDisconnect > repriseConfirmee) ouvre « ⚠️ Séance interrompue
    détectée » (c-interrompue), une seule fois par ouverture de la console : une coupure du réseau en cours d'heure ne l'ouvre pas. */
-var INTERROMPUE = {vues:{}, posee:null};
+var INTERROMPUE = {vues:{}, posee:null, coupure:{}, pouls:null};
 LIVE.abonner(function(){
   if(LIVE.appareil() !== "console" || !LIVE.pret || !db) return;
   PAGES.choisirSeance();
   var sid = SCN.sid(), s = SCN.sess(sid); if(!sid || !s || s.etat === "terminee") return;
   if(INTERROMPUE.posee !== sid){ INTERROMPUE.posee = sid; try { db.ref(DB_ROOT + "/sessions/" + sid + "/lastDisconnect").onDisconnect().set(firebase.database.ServerValue.TIMESTAMP); } catch(e){ console.error(e); } }
   if(INTERROMPUE.vues[sid]) return; INTERROMPUE.vues[sid] = true;
+  // (13/10) l'heure de la coupure : le dernier signe de vie de la console perdue (consoleVue, posé toutes les 20 s), lu avant que celle-ci écrive le sien
+  var coupure = Math.max(s.lastDisconnect || 0, s.consoleVue || 0); INTERROMPUE.coupure[sid] = coupure;
+  if(!INTERROMPUE.pouls){ var battre = function(){ var id = SCN.sid(); if(id && SCN.sess(id) && SCN.sess(id).etat !== "terminee") try { db.ref(DB_ROOT + "/sessions/" + id + "/consoleVue").set(LIVE.maintenant()); } catch(x){} };
+    INTERROMPUE.pouls = setInterval(battre, 20000); setTimeout(battre, 1500); }
   var e = SCN.etat(sid) || {};
-  if(s.lastDisconnect && s.lastDisconnect > (s.repriseConfirmee || 0) && ["pause", "fin", "appel"].indexOf(e.ph) < 0 && !e.autreHeure) navOuvrir("c-interrompue");
+  if(s.lastDisconnect && coupure > (s.repriseConfirmee || 0) && ["pause", "fin", "appel"].indexOf(e.ph) < 0 && !e.autreHeure) navOuvrir("c-interrompue");
 });

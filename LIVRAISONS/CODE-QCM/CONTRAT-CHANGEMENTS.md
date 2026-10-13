@@ -57,3 +57,9 @@ Et `ACT.trancher(alerte, null)` défait une décision (la lecture revient à `al
 - **La correction** : la seconde attestation cochée par tous laisse la séance en `att2` ; « ▶️ Commencer la correction » s'ouvre, Paul le clique : `ACT.lancerCorrection()` (en `att2`) lit la 1re question de l'ordre. Le moteur ne le fait plus (`M.att2` retiré).
 - **Au geste de Paul seulement** (aucun code ne les déclenche ailleurs) : le lancement et l'appel, chaque question (`ACT.lancerQuestion`), l'estimation (`ACT.lancerEstimation`), la seconde attestation (`ACT.lancerCorrection`), chaque révélation et la question suivante (`ACT.reveler`, `ACT.questionSuivante`), la co-évaluation (après la dernière question corrigée, par « Question suivante »), le bilan (`ACT.afficherBilan`), la fin (`ACT.terminer`). Aucun geste d'élève (`ELV`) ne change la phase de la classe.
 - **Seuls passent d'eux-mêmes** les temps comptés à l'intérieur d'une question (Paul, 08/10, cadrage 584 : « Pour le passage automatique c'est normal ») : réflexion → passage → tour → B → 2e tour → close (`MOTEUR.tic`) ; et l'entrée → « prêts » (`M.entree`), qui ne lance rien : elle ouvre « ▶️ Lancer Q1 », que Paul clique.
+
+## C8 — `sessions/<sid>/consoleVue` (QCM-1, 13/10 10:27)
+
+La console pose `consoleVue` (ms, l'horloge du serveur) toutes les 20 s pendant une séance active. Une console rouverte le lit avant de poser le sien : « ⚠️ Séance interrompue détectée » dit « Dernière déconnexion » = max(`lastDisconnect`, `consoleVue`), l'heure du dernier signe de vie de la console perdue (et non une déconnexion plus ancienne, celle du lancement). Rien d'autre ne le lit.
+
+Et `SCN.note(x).st[qi] = "e"` pour une question écartée (`pts` null) : elle n'est ni juste ni fausse ; les écrans ne la montrent pas.

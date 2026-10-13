@@ -21319,3 +21319,63 @@ Paul te donne une mission. Lis le point 8 de la section « Reprise 3 du 13/10 »
 ```
 
 13/10/2026 09:11 MEMO
+
+---
+
+## TOUR 693 — le réveil programmé (pas Paul)
+
+> (13/10, 10:01) [Message programmé par la conscience n°12 sur l'ordre de Paul (13/10 09:03 : « prochain controle de ta part à 10h ») — il n'est pas de Paul ; arrivé à 10:01.] Il est 10:00 : contrôle de la reprise 3 du code du QCM ; la séance de Paul est à 13:00. (La marche à suivre complète est dans le message programmé « Contrôle QCM de 10:00 », trig_01GpFfHhVUbX2N6MxfFoUyw8.)
+
+---
+
+## TOUR 693 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `9363fbf2` (09:52), aucun code changé depuis `f95030b6` ; `build.py` redonne l'app livrée, md5 `011ae89f91f62cc5796aa32d3fe8d4aa`, 1 971 555 o (VERDICT.md de QCM-4, 09:58 : « L'heure ne va pas telle quelle »). Mes contrôles : K11 corrigé pour la décision de Paul de 07:22 (md5 `1f1ac0d8…`), 32 vérifications, 0 échec, 109 s. Captures de R8 regardées : l'alerte « Donner raison à Julien : Milan → 1 point » (cap/32), « À lire ce soir » pour Léa et Tom (cap/30), le bilan avec les questions écartées « faux → 0 point » (cap/33), la console après les écarts (cap/23 ; les codes `c4-…` sur la console sont ceux de l'existant, `banc-maquette/existant/textes-console.json`). Sonde B par le geste (96 s) : B paraît à la 2e moitié quand « Clore » est cliqué dès sa réponse (Q1) et à la fin du temps (Q2) ; 2e tour ouvert seul après 27 s. Le banc de QCM-4 tolère un ou deux B manquants par tour (`banc.js` l. 237). Fait : `AUDITS/CODE-QCM-AUDIT-1000-13-10/` et `AUDITS/CONTROLES-QCM-APP` (`73d23769`) ; « Contrôle de 10:15 » et « Reprise 4 du 13/10 — seulement si Paul vous relance » en tête de DEFAUTS-OUVERTS.md (`f3867460`). Rien n'est poussé en production.
+
+Réponse mot pour mot :
+
+**À jouer :** rien de neuf, la 7.7.2 reste en ligne · **en cours chez l'exécutant :** rien, les quatre ont fini à 09:58 · **ouvert :** ta réponse : ils continuent ou non ?
+
+983. Le contrôle de 10:00 dit non. Rien n'est mis en ligne, et tu fais cours à 13:00 avec la 7.7.2.
+
+984. Ce qui marche, mesuré par moi :
+- l'app de 09:40 se reconstruit à l'identique (md5 011ae89f…, le même que dans le verdict de QCM-4) ;
+- mes contrôles passent : 32 vérifications, 0 échec ;
+- les bancs de QCM-4 passent : 211/211, 47/47, et 109/109 pour le banc qui joue ton heure de cours ;
+- ta décision est respectée : la correction attend ton clic.
+
+985. Une faute de ma part. Depuis 08:00, mon contrôle K11 attendait encore que la correction démarre toute seule, comme dans la maquette, alors que tu l'as interdit à 07:22. Il échouait donc sur toutes les livraisons, et je ne l'avais pas corrigé. C'est fait à 10:05 : il vérifie que rien ne démarre seul, puis il clique « ▶️ Commencer la correction ».
+
+986. Pourquoi c'est non : il reste des défauts connus dans des gestes que tu feras en classe, et on ne met jamais en ligne avec un défaut connu.
+
+987. Quand un élève conteste la lecture de sa feuille, la console te propose « Donner raison à Julien : Milan → 1 point », alors que la bonne réponse est Rome. Ce clic donnerait une note fausse. Je l'ai vu sur la capture du relecteur R8, la nouvelle relecture faite à 09:41.
+
+988. Après une question rouverte, des élèves n'ont jamais eu la question « ta feuille dit-elle la même chose que ton clic ? ». Ils finissent dans « À lire ce soir ». Dans une question normale, cette question arrive bien : je l'ai vérifié par le geste, quand tu cliques « Clore » dès la dernière réponse et quand le temps s'écoule jusqu'au bout.
+
+989. « 🔓 Rouvrir pour tous » relance un 2e tour aussi pour ceux qui avaient déjà répondu.
+
+990. Une question écartée revient quand même :
+- dans le bilan de l'élève, en « faux → 0 point » (la note, elle, est juste) ;
+- dans la co-évaluation ;
+- à « 0 % » sur le téléphone.
+
+991. Défauts plus petits :
+- « Séance interrompue » donne une heure de coupure fausse ;
+- le téléphone n'affiche pas les temps que tu as changés, et met « ✗ » aux élèves qui n'ont pas répondu ;
+- avec une réponse très courte au 1er tour (5 s), l'élève ne voit pas ses choix.
+
+992. Si tu veux qu'ils continuent, tout est prêt : la reprise 4 reprend ces défauts dans l'ordre ci-dessus. Calendrier :
+- 11:20 : tout est poussé ;
+- 11:40 : verdict de QCM-4 ;
+- 11:45 : mon contrôle ;
+- 12:00 : mise en ligne, si ça va ;
+- de 12:05 à 12:45 : tes tests.
+
+Message à coller dans chacune des quatre sessions :
+« Reprise 4 du 13/10 : lis la section « Reprise 4 du 13/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), et fais ta part, dans l'ordre. Tout est poussé à 11:20 ; QCM-4 pousse VERDICT.md à 11:40. »
+
+993. Ce que je ne sais pas : si ce sera bon à 12:00. À chaque reprise, ce qui était demandé a été corrigé, puis un relecteur neuf a trouvé d'autres défauts en jouant autrement. Si tu dis non, on s'arrête là : tu fais cours avec la 7.7.2, et on reprend après le cours.
+
+Le contrôle : https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/CODE-QCM-AUDIT-1000-13-10
+
+13/10/2026 10:14 MEMO

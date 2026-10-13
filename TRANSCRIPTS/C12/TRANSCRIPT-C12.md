@@ -22402,3 +22402,41 @@ Réponse, mot pour mot :
 1147. Tu veux lesquels ? 1144 et 1145 se font dans la maquette « Lire les copies », avant la reprise 7.
 
 13/10/2026 20:07 MEMO
+
+---
+
+## TOUR 721 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (20:23) 1144 oui. 1146. Oui. Stylo réflexion : bleu ou noir. Stylo correction : vert unique et trousse rangée.
+
+---
+
+## TOUR 721 — Claude (conscience n°12)
+
+Maquette v3 : `lire-copies.js` (« Sors du tas », `fautesL` calculé avant toute écriture, « ⛔ Oui » = `retirerAutonomieSoirV`, `aEcrireL` d'après 1117 sans rouge), dans la même copie de `code-qcm` à `a5a69308` (sources de la 8.0.0) ; assemblée md5 `e1999769…` ; jouée par le geste (`capture3.js`) sur le faux hub avec la séance du soir : « ct » CARRÉ Tom, « Autre chose », Rome, « Valider » → « Léa avait lu « Venise ». Retirer son point d'autonomie ? », « ⛔ Oui » → `autonomie/baudry_lea` = {retire, quand : soir} lu dans la base ; « chev » CHEVALLIER Théo, « ✅ Oui » → « Théo avait dit avoir bien écrit « Madrid » », « Non » → la base inchangée ; aucune erreur de page ; les 6 captures regardées, 5 envoyées. Au sas : `MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/` (v2 dans `v2/`). Mesuré : la consigne « Barre ta réponse en rouge… » sur 5 écrans élèves (relevé du tour 716). Rien sur `code-qcm` ni en production.
+
+Réponse, mot pour mot :
+
+1148. Noté : 1144 et 1146. Tu n'as pas commenté 1145 ; comme tu ne commentes que ce que tu veux préciser, je l'ai pris comme acquis. Dis-moi si ce n'est pas le cas.
+
+1149. 1144 et 1145 sont dans la maquette « Lire les copies », version 3, écrite dans le vrai code et jouée sur le faux hub ; les captures sont dans les fichiers envoyés. En haut, « 📤 Sors du tas » donne les 8 noms, et la liste raccourcit à chaque copie lue.
+
+1150. Une précision sur 1144 : la question vient aussi après « ✅ Oui ». Théo avait dit avoir bien écrit « Madrid » ; Lou a lu « Sydney », et tu confirmes que la copie dit « Sydney » : c'est Théo qui s'est trompé. Après « ⛔ Oui », le point est retiré dans la base, comme depuis sa fiche ; après « Non », rien ne change.
+
+1151. Je corrige 1146 : le stylo bleu ou noir ne peut pas se ranger à chaque « POSE TON STYLO », puisque la question suivante en a besoin. Il se range avec la trousse au début de la correction, et seul le vert reste.
+
+1152. Ce que 1146 ne ferme pas : pendant la réflexion de la question suivante, l'élève a son stylo en main et peut compléter une réponse déjà donnée. Ni l'app ni le voisin ne peuvent le voir ; seule ta surveillance le peut.
+
+1153. Pour l'élève, il faut tes mots à deux endroits. D'abord, une ligne dans « Avant la correction », ma proposition : « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. »
+
+1154. Ensuite, quand sa réponse est fausse, la tablette dit aujourd'hui « Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté. » (5 écrans). Avec le vert seul, je propose : « Barre ta réponse et écris la bonne réponse en entier en vert à côté. »
+
+1155. Le soir, tes phrases ne parlent plus de rouge (captures 2 et 3) : « sa réponse barrée était juste ; mets un V vert dans la marge », ou « barre le V vert, barre sa réponse et écris la bonne réponse à côté ».
+
+1156. Rien n'est en ligne, et rien n'est donné aux exécutants. Dis-moi pour 1153 et 1154 ; tout part ensuite dans la reprise 7.
+
+La maquette : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
+
+13/10/2026 20:28 MEMO

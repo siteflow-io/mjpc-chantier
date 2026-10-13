@@ -1,5 +1,15 @@
 # Maquette « 📄 Lire les copies » — le soir, copie par copie, dans l'ordre de ton tas (conscience n°12, 13/10/2026)
 
+## Version 3 (tour 721, après Paul 20:23 : « 1144 oui. 1146. Oui. »)
+
+Ce qui change par rapport à la version 2 (rangée dans `v2/`) :
+- **1145, « Sors du tas »** : en haut, la liste des copies qui ont encore une question à lire (« 📤 Sors du tas : CARRÉ Tom, CHEVALLIER Théo, … (8) »). Elle raccourcit à chaque copie lue. Paul ne prend en main que ces copies-là.
+- **1144, la conséquence en un clic** : après chaque réponse (« ✅ Oui » comme « ✏️ Autre chose »), l'app compare ce que dit la copie à ce que l'élève avait dit (la question de la fin du temps) et à ce que le voisin avait lu, avant d'écrire quoi que ce soit (`fautesL`). Pour chaque faute : « Tom avait dit avoir bien écrit « … ». Retirer son point d'autonomie ? » (ou « … avait dit avoir écrit autre chose que « … » »), ou « Léa avait lu « … ». Retirer son point d'autonomie ? », avec « ⛔ Oui » et « Non ». « ⛔ Oui » fait le geste du soir de la fiche (`retirerAutonomieSoirV` : `autonomie/<élève>` = retiré, « soir ») ; « Non » ne change rien. Un élève dont le point est déjà retiré n'est pas redemandé. L'élève qui n'a rien dit n'a rien affirmé : pas de question pour lui.
+- **1117, ce que Paul écrit sur la copie**, sans rouge (1146 : l'élève corrige au vert seul) : « rien à changer » ; « barre le V vert, barre sa réponse et écris la bonne réponse à côté : « … » » ; « sa réponse barrée était juste ; mets un V vert dans la marge ».
+- **Limite de la maquette** : le « Non » de 1144 n'est pas écrit dans la base ; si Paul quitte l'écran avant de répondre, la question ne revient pas. Le code devra garder la réponse (par exemple dans `aLire/<id>`).
+
+Captures v3 (rejouées par `capture.js`, par le geste, aucune erreur de page) : `captures/1-sors-du-tas.png`, `2-tom-lea-a-mal-lu.png` (« Autre chose », Rome : Léa avait lu Venise), `3-lea-retire.png` (« ⛔ Oui » : retiré, vérifié dans la base), `4-theo.png`, `5-theo-avait-dit.png` (« ✅ Oui » : la copie dit Sydney, Théo avait dit avoir bien écrit Madrid), `6-theo-garde.png` (« Non »). App assemblée : md5 `e199976992716df9c17b23e0438e31e3`.
+
 ## Version 2 (tour 714, après Paul 16:08)
 
 Paul, 16:08 : « si j'ai un tas qui n'est pas rangé dans l'ordre alpha, je veux pouvoir taper directement les initiales de l'élève suivant dans le tas, à la fin de la copie précédente, et ainsi de suite. Et évidemment, "lire les copies", ce ne sont que les questions qui ont besoin d'être lues par moi, pas l'ensemble! enfin, il faudrait que je sache ce que j'écris moi sur la copie de l'élève, à chaque question à vérifier. »
@@ -22,19 +32,19 @@ Elle est écrite dans le code réel de l'app en ligne (`code-qcm` à `a5a69308`,
 
 Elle est jouée sur le faux hub, avec la séance que le banc commun de QCM-4 a jouée de bout en bout à 09:40 (`sorties/2026-10-13_0940/base-finale.json`, la classe fictive 3 ESSAI, 24 présents), remise à son état du soir : aucune ligne lue, les lectures du voisin rétablies (`base-faux-hub-soir.json`). Recompté par le geste au tour 714 : **8 lignes à lire, une sur chacune de 8 copies** ; les 16 autres copies n'ont rien à lire. (Le README de la v1 disait 9 lignes : c'était faux.)
 
-## Captures (1536 × 864, l'écran de Paul), version 2
+## Captures (1536 × 864, l'écran de Paul), version 2 (dans `v2/captures/`)
 
-Rejouées par `capture.js`, par le geste : Données → Résultats → « 📊 Ouvrir » → « 📄 Lire les copies (8) ». Aucune erreur de page.
+Rejouées par `v2/capture.js`, par le geste : Données → Résultats → « 📊 Ouvrir » → « 📄 Lire les copies (8) ». Aucune erreur de page.
 
 | Capture | Ce qu'on voit |
 | --- | --- |
-| `captures/1-debut.png` | « Prends la première copie de ton tas et tape ses initiales » |
-| `captures/2-initiales-ab.png` | « ab » : ABRIAL Julien et SABATIER Malo, « rien à lire » |
-| `captures/3-rien-a-lire.png` | ABRIAL Julien : « Rien à lire sur cette copie : mets-la de côté. » |
-| `captures/4-carre-tom.png` | « ct », Entrée : CARRÉ Tom, Question 1, « La copie dit-elle « Venise » ? » |
-| `captures/5-autre-chose-rome.png` | « ✏️ Autre chose », puis Rome |
-| `captures/6-sur-la-copie.png` | après « ✔ Valider » : « barre la correction en rouge, et mets un V vert », « Et la note : 1 / 3 → 2 / 3 » |
-| `captures/7-oui-rien-a-changer.png` | « pj », Entrée : PERRAUD Jade, « ✅ Oui » : « Sur la copie : rien à changer. » |
+| `v2/captures/1-debut.png` | « Prends la première copie de ton tas et tape ses initiales » |
+| `v2/captures/2-initiales-ab.png` | « ab » : ABRIAL Julien et SABATIER Malo, « rien à lire » |
+| `v2/captures/3-rien-a-lire.png` | ABRIAL Julien : « Rien à lire sur cette copie : mets-la de côté. » |
+| `v2/captures/4-carre-tom.png` | « ct », Entrée : CARRÉ Tom, Question 1, « La copie dit-elle « Venise » ? » |
+| `v2/captures/5-autre-chose-rome.png` | « ✏️ Autre chose », puis Rome |
+| `v2/captures/6-sur-la-copie.png` | après « ✔ Valider » : « barre la correction en rouge, et mets un V vert », « Et la note : 1 / 3 → 2 / 3 » |
+| `v2/captures/7-oui-rien-a-changer.png` | « pj », Entrée : PERRAUD Jade, « ✅ Oui » : « Sur la copie : rien à changer. » |
 
 Rejouer : `APP_FILE=<app assemblée> BANC=<faux hub, avec node_modules> BASE=base-faux-hub-soir.json TAXO=<taxonomie des compétences> CAP=<dossier> node capture.js`.
 

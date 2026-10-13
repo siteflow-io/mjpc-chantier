@@ -30,7 +30,7 @@ if [ -f "${1:-$L/evaluation-qcm.staging.html}" ]; then
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-demain.js" "$O" > "$O/demain.log" 2>&1; echo $? > "$O/.rd"; date +%s > "$O/.td" ) &
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-branches.js" "$O" > "$O/branches.log" 2>&1; echo $? > "$O/.rr"; date +%s > "$O/.tr" ) &
   # les reprises du 13/10, par le geste (points rejoués), et les écrans jamais atteints, s'ils existent
-  for x in reprise2 reprise3 jamais; do [ -f "$L/banc/banc-$x.js" ] && ( APP_FILE="$APP" BANC="$BANC" timeout 900 node "$L/banc/banc-$x.js" "$O" > "$O/$x.log" 2>&1 ) & done
+  for x in reprise2 reprise3 jamais; do [ -f "$L/banc/banc-$x.js" ] && ( APP_FILE="$APP" BANC="$BANC" timeout 480 node "$L/banc/banc-$x.js" "$O" > "$O/$x.log" 2>&1 ) & done
   wait
   for x in reprise2 reprise3 jamais; do [ -f "$O/$x.txt" ] && { echo; echo "── $x"; sed -n '1,2p' "$O/$x.txt" | sed 's/^/  /'; } >> "$O/resume.txt"; done
   { echo; echo "── banc commun ($(( $(cat "$O/.tb") - a )) s, code $(cat "$O/.rb"))"; sed -n '2p' "$O/banc.txt" 2>/dev/null | sed 's/^/  /';

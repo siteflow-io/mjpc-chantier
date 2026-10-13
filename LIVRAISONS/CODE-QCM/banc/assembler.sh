@@ -31,10 +31,13 @@ if [ -f "${1:-$L/evaluation-qcm.staging.html}" ]; then
   # le banc commun et l'heure de demain, en même temps (deux navigateurs)
   a=$(date +%s)
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc.js" "$O" > "$O/banc.log" 2>&1; echo $? > "$O/.rb"; date +%s > "$O/.tb" ) &
+  # COURT=1 (le réassemblage de 11:22, reprise 4 bis) : sans l'heure de demain ni les gestes rares, passés à l'assemblage précédent
+  if [ -z "$COURT" ]; then
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-demain.js" "$O" > "$O/demain.log" 2>&1; echo $? > "$O/.rd"; date +%s > "$O/.td" ) &
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-branches.js" "$O" > "$O/branches.log" 2>&1; echo $? > "$O/.rr"; date +%s > "$O/.tr" ) &
+  else echo 0 > "$O/.rd"; echo 0 > "$O/.rr"; date +%s > "$O/.td"; date +%s > "$O/.tr"; fi
   # les reprises du 13/10, par le geste (points rejoués), et les écrans jamais atteints, s'ils existent
-  for x in reprise2 reprise3 reprise4 jamais; do [ -f "$L/banc/banc-$x.js" ] && ( APP_FILE="$APP" BANC="$BANC" timeout 480 node "$L/banc/banc-$x.js" "$O" > "$O/$x.log" 2>&1 ) & done
+  for x in reprise2 reprise3 reprise4 jamais; do [ -n "$COURT" ] && [ "$x" = jamais ] && continue; [ -f "$L/banc/banc-$x.js" ] && ( APP_FILE="$APP" BANC="$BANC" timeout 480 node "$L/banc/banc-$x.js" "$O" > "$O/$x.log" 2>&1 ) & done
   wait
   for x in reprise2 reprise3 reprise4 jamais; do [ -f "$O/$x.txt" ] && { echo; echo "── $x"; sed -n '1,2p' "$O/$x.txt" | sed 's/^/  /'; } >> "$O/resume.txt"; done
   { echo; echo "── banc commun ($(( $(cat "$O/.tb") - a )) s, code $(cat "$O/.rb"))"; sed -n '2p' "$O/banc.txt" 2>/dev/null | sed 's/^/  /';

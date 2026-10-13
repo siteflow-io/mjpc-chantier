@@ -21555,3 +21555,37 @@ Colle ceci dans les quatre sessions, tout de suite :
 ## (entre les tours 697 et 698) — le réveil programmé de 12:06 (pas Paul), arrivé à 12:08
 
 Le réveil « Contrôle QCM reprise 5 » (`trig_019STYb78joeh7gqh4RTBbXF`) a sonné à 12:07, avant d'avoir pu être supprimé. Il est remplacé par la reprise recalée du tour 697 et par le réveil de 12:31 (`trig_01N5ReGKJ3zWtz79Xew4hfL1`). Rien n'est fait, et Paul ne reçoit aucun message : il avait écrit à 12:05, et je lui avais répondu à 12:07.
+
+---
+
+## TOUR 698 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 12:13) Ça avance bien quand même ?
+
+---
+
+## TOUR 698 — Claude (conscience n°12)
+
+Mesuré : sur `code-qcm` depuis `58b15b8a` : QCM-3 `052cd9f2` (12:10, de l'estimation à « Terminer » par le geste, trois écarts pour QCM-2) et `8e4bd28f` (12:13, la garde « passe à 1 / 3 » pour un bilan à 3 / 3) ; QCM-4 `30eae2d3` et `808ebb7a` (12:11, banc-reprise5.js : 3/8 sur l'app de 11:22) ; QCM-1 `9d5968cf` (12:12, points 1 et 2, contrôles 32/32) ; QCM-2 `bf27f704` (12:12, point 4). Rien n'est fait de plus : ce tour ne fait que dire où on en est.
+
+Réponse mot pour mot :
+
+**À jouer :** rien de neuf, la 7.7.2 reste en ligne · **en cours chez l'exécutant :** les quatre · **ouvert :** les corrections de QCM-2, à pousser avant 12:22
+
+1012. Oui, ça avance, et dans les temps :
+- QCM-1 a corrigé à 12:12 le téléphone pendant l'appel et le bouton « 🚀 Lancer la séance » ;
+- QCM-2 a corrigé à 12:12 le compte « ont répondu » sur le téléphone, au tableau et sur la console ;
+- QCM-4 a écrit le banc qui rejoue ces corrections par le geste ;
+- QCM-3 a joué lui-même la fin de l'heure, de l'estimation à « 🛑 Terminer » : les gestes sont ceux de la maquette.
+
+1013. QCM-3 a trouvé quatre défauts, tous pour QCM-2, à corriger avant 12:22 :
+- après « Donner raison à Léa », la console annonce « sa note provisoire passe à 1 / 3 », alors que son bilan dit 3 / 3. C'est une note fausse affichée : si ce n'est pas corrigé, on ne met pas en ligne ;
+- « 2 pense » au lieu de « 2 pensent » ;
+- « la question 1 de ABRIAL Julien » au lieu de « d'ABRIAL Julien » ;
+- quand toutes les questions ont le même taux, le bilan de la classe donne la même question comme « la plus ratée » et « la mieux réussie ».
+
+Mon contrôle reste à 12:31.
+
+13/10/2026 12:14 MEMO

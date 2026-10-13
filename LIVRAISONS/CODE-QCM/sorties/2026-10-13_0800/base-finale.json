@@ -1,0 +1,4340 @@
+{
+ "evaluations": {
+  "eval_1778247436064": {
+   "createdAt": 1778247436064,
+   "questions": {
+    "0": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "Pain de mie, crème et jambon cru",
+      "1": "Baguette, beurre et jambon blanc",
+      "2": "Brioche, fromage et jambon blanc",
+      "3": "Baguette, mayonnaise et jambon sec"
+     },
+     "enonce": "Quels sont les trois éléments principaux d’un jambon-beurre classique ?",
+     "niveau": "facile"
+    },
+    "1": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "Le pain pita",
+      "1": "Le pain complet sucré",
+      "2": "La baguette",
+      "3": "La focaccia"
+     },
+     "enonce": "Quel type de pain est le plus associé au jambon-beurre traditionnel ?",
+     "niveau": "facile"
+    },
+    "2": {
+     "bonnes": {
+      "0": 3
+     },
+     "choix": {
+      "0": "Le jambon cru",
+      "1": "Le jambon fumé sec",
+      "2": "Le jambon pané",
+      "3": "Le jambon blanc"
+     },
+     "enonce": "Quel jambon est généralement utilisé dans un jambon-beurre français classique ?",
+     "niveau": "facile"
+    },
+    "3": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "Il remplace totalement le pain",
+      "1": "Il apporte du fondant et lie les saveurs",
+      "2": "Il rend le jambon croustillant",
+      "3": "Il transforme le sandwich en dessert"
+     },
+     "enonce": "Quel rôle joue principalement le beurre dans un jambon-beurre ?",
+     "niveau": "standard"
+    },
+    "4": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "Parce qu’il vient d’une recette officielle imposée par l’État",
+      "1": "Parce qu’il contient toujours une sauce chaude obligatoire",
+      "2": "Parce qu’il associe des produits simples de la tradition boulangère française",
+      "3": "Parce qu’il se prépare uniquement dans les restaurants gastronomiques"
+     },
+     "enonce": "Pourquoi le jambon-beurre est-il souvent considéré comme un sandwich emblématique en France ?",
+     "niveau": "standard"
+    },
+    "5": {
+     "bonnes": {
+      "0": 3
+     },
+     "choix": {
+      "0": "Une accumulation maximale de sauces, d’épices et de garnitures",
+      "1": "Une absence complète de matière grasse et de sel",
+      "2": "Une cuisson longue du sandwich avant le service",
+      "3": "Un équilibre entre pain croustillant, beurre régulier et jambon de qualité"
+     },
+     "enonce": "Quelle caractéristique distingue le mieux un bon jambon-beurre ?",
+     "niveau": "approfondi"
+    },
+    "6": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "Le beurre",
+      "1": "La baguette",
+      "2": "Le jambon",
+      "3": "Le sel"
+     },
+     "enonce": "Dans une analyse nutritionnelle simple, quel élément du jambon-beurre apporte principalement des glucides ?",
+     "niveau": "standard"
+    },
+    "7": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "La baguette",
+      "1": "Le jambon blanc",
+      "2": "Le beurre",
+      "3": "La croûte du pain"
+     },
+     "enonce": "Dans une analyse nutritionnelle simple, quel élément du jambon-beurre apporte principalement des lipides ?",
+     "niveau": "standard"
+    },
+    "8": {
+     "bonnes": {
+      "0": 3
+     },
+     "choix": {
+      "0": "Le laisser au soleil pour ramollir le beurre",
+      "1": "Le congeler systématiquement après assemblage",
+      "2": "Le garder plusieurs jours à température ambiante",
+      "3": "Le maintenir au frais si la consommation n’est pas immédiate"
+     },
+     "enonce": "Quelle précaution est la plus pertinente pour conserver un jambon-beurre avant consommation ?",
+     "niveau": "standard"
+    },
+    "9": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "Couper la baguette dans le sens de la longueur",
+      "1": "Ajouter du fromage, des cornichons ou de la salade",
+      "2": "Étaler le beurre sur une face du pain",
+      "3": "Utiliser du jambon blanc en tranches fines"
+     },
+     "enonce": "Quelle modification transforme le plus nettement un jambon-beurre en variante plutôt qu’en version classique ?",
+     "niveau": "approfondi"
+    }
+   },
+   "titre": "QCM — Le jambon-beurre",
+   "updatedAt": 1778247436064
+  },
+  "eval_1779946950077": {
+   "createdAt": 1779946950077,
+   "questions": {
+    "0": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "3",
+      "1": "4",
+      "2": "5",
+      "3": "6"
+     },
+     "enonce": "Combien de pronoms relatifs simples comporte la liste à connaître ?",
+     "niveau": "expert"
+    },
+    "1": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "ou",
+      "1": "où",
+      "2": "que",
+      "3": "dont"
+     },
+     "enonce": "Quel pronom relatif simple s'écrit avec un accent grave ?",
+     "niveau": "expert"
+    },
+    "2": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "qui",
+      "1": "que",
+      "2": "dont",
+      "3": "où"
+     },
+     "enonce": "Quel pronom relatif simple remplace un complément introduit par la préposition « de » ?",
+     "explication": "Il répond à la question \"de qui ou de quoi\". Ex: La personne dont je parle est gentille. De qui je parle? De la personne.",
+     "niveau": "expert"
+    },
+    "3": {
+     "bonnes": {
+      "0": 0
+     },
+     "choix": {
+      "0": "lequel",
+      "1": "laquelle",
+      "2": "lesquels",
+      "3": "auquel"
+     },
+     "enonce": "Quel est le pronom relatif composé au masculin singulier, formé à partir de l'article et de « quel » ?",
+     "niveau": "expert"
+    },
+    "4": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "duquel",
+      "1": "auquel",
+      "2": "auxquels",
+      "3": "à laquelle"
+     },
+     "enonce": "Quelle est la forme contractée de « à » + « lequel » ?",
+     "niveau": "expert"
+    },
+    "5": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "auquel",
+      "1": "duquel",
+      "2": "desquels",
+      "3": "de laquelle"
+     },
+     "enonce": "Quelle est la forme contractée de « de » + « lequel » ?",
+     "niveau": "expert"
+    },
+    "6": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "laquelle",
+      "1": "lesquels",
+      "2": "lesquelles",
+      "3": "desquelles"
+     },
+     "enonce": "Quel est le pronom relatif composé au féminin pluriel ?",
+     "niveau": "expert"
+    },
+    "7": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "que",
+      "1": "qui",
+      "2": "dont",
+      "3": "où"
+     },
+     "enonce": "Quel pronom relatif simple s'emploie le plus souvent comme sujet du verbe de la relative ?",
+     "niveau": "expert"
+    },
+    "8": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "auquel",
+      "1": "auxquels",
+      "2": "desquels",
+      "3": "auxquelles"
+     },
+     "enonce": "Quelle est la forme contractée de « à » + « lesquels » ?",
+     "niveau": "expert"
+    },
+    "9": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "qui",
+      "1": "que",
+      "2": "quoi",
+      "3": "dont"
+     },
+     "enonce": "Quel pronom relatif simple s'emploie après une préposition pour renvoyer à une chose, comme dans « ce à ___ je pense » ?",
+     "niveau": "expert"
+    }
+   },
+   "titre": "Évaluation — Les pronoms relatifs : la liste (5e)",
+   "updatedAt": 1779946950077
+  },
+  "eval_1781670681003": {
+   "createdAt": 1781670681003,
+   "questions": {
+    "0": {
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "choix": {
+      "0": "Jean Valjean",
+      "1": "D'Artagnan",
+      "2": "Cosette",
+      "3": "Edmond Dantès"
+     },
+     "enonce": "Quels personnages appartiennent au roman Les Misérables? Cite au moins trois noms. ",
+     "explication": "Ne pas oublier Gavroche. Tu as lu le livre. ",
+     "niveau": "facile"
+    },
+    "1": {
+     "bonnes": {
+      "0": 2,
+      "1": 3
+     },
+     "choix": {
+      "0": "Le pain de la table",
+      "1": "Une bourse de pièces d'or",
+      "2": "L'argenterie de la maison, c'est-à-dire les couverts en argent.",
+      "3": "Les chandeliers d'argent"
+     },
+     "enonce": "Quels objets l'évêque Myriel laisse-t-il à Jean Valjean lors de son passage chez lui ?",
+     "niveau": "facile"
+    },
+    "2": {
+     "bonnes": {
+      "0": 1,
+      "1": 3
+     },
+     "choix": {
+      "0": "Il devient roi",
+      "1": "Il vole un pain",
+      "2": "Il part en voyage à l'étranger",
+      "3": "Il est envoyé au bagne"
+     },
+     "enonce": "Quelles épreuves Jean Valjean subit-il au début du roman ?",
+     "niveau": "facile"
+    },
+    "3": {
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "choix": {
+      "0": "Il est condamné à cinq ans au départ",
+      "1": "Il a commis un meurtre",
+      "2": "Chaque tentative d'évasion alourdit sa peine",
+      "3": "Il a demandé lui-même à rester"
+     },
+     "enonce": "Pourquoi la peine de Jean Valjean s'allonge-t-elle jusqu'à dix-neuf ans de bagne ?",
+     "niveau": "standard"
+    },
+    "4": {
+     "bonnes": {
+      "0": 2,
+      "1": 3
+     },
+     "choix": {
+      "0": "Il est gardien de prison",
+      "1": "Il est l'avocat de Valjean",
+      "2": "Il est inspecteur de police",
+      "3": "Il poursuit Valjean au nom de la loi"
+     },
+     "enonce": "Quel est le métier de Javert et quel rôle joue-t-il face à Jean Valjean ?",
+     "niveau": "standard"
+    },
+    "5": {
+     "bonnes": {
+      "0": 1,
+      "1": 3
+     },
+     "choix": {
+      "0": "C'est une scène comique et joyeuse",
+      "1": "Les Thénardier l'envoient chercher de l'eau",
+      "2": "Elle part rejoindre des amis",
+      "3": "Parce qu'Hugo met en scène une jeune enfant seule dans le froid et le noir"
+     },
+     "enonce": "Pourquoi la scène où Cosette est envoyée seule la nuit est-elle pathétique ?",
+     "niveau": "standard"
+    },
+    "6": {
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "choix": {
+      "0": "L'auteur lui-même",
+      "1": "Le narrateur de l'histoire",
+      "2": "Le lecteur est son destinataire",
+      "3": "Un personnage du roman"
+     },
+     "enonce": "Dans une préface, qui prend la parole et à qui s'adresse-t-il ?",
+     "niveau": "approfondi"
+    },
+    "7": {
+     "bonnes": {
+      "0": 2,
+      "1": 3
+     },
+     "choix": {
+      "0": "Qu'il veut que Valjean travaille pour lui",
+      "1": "Qu'il a payé une rançon pour le libérer",
+      "2": "Qu'il attend de lui qu'il devienne un honnête homme",
+      "3": "Que son geste l'engage à changer de vie"
+     },
+     "enonce": "Que veut dire l'évêque Myriel lorsqu'il affirme avoir « acheté l'âme » de Jean Valjean ?",
+     "niveau": "approfondi"
+    },
+    "8": {
+     "bonnes": {
+      "0": 1,
+      "1": 3
+     },
+     "choix": {
+      "0": "Montrer qu'il connaît l'histoire de France",
+      "1": "Justifier l'utilité de son livre",
+      "2": "Faire la liste de ses romans précédents",
+      "3": "Appeler à changer la société"
+     },
+     "enonce": "Quelles intentions Hugo poursuit-il en énumérant les « trois problèmes du siècle » dans sa préface ?",
+     "niveau": "approfondi"
+    },
+    "9": {
+     "bonnes": {
+      "0": 2,
+      "1": 3
+     },
+     "choix": {
+      "0": "Il tourne leurs malheurs en dérision",
+      "1": "Il reste totalement neutre et distant",
+      "2": "Il insiste sur la solitude des victimes",
+      "3": "Il montre leur faiblesse face à un monde hostile"
+     },
+     "enonce": "Par quels procédés Hugo cherche-t-il à émouvoir le lecteur dans les scènes de misère ?",
+     "niveau": "approfondi"
+    },
+    "10": {
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "choix": {
+      "0": "La loi qui punit face à la bonté qui pardonne",
+      "1": "L'Église contre l'État",
+      "2": "La rigueur de la justice face à la charité",
+      "3": "La richesse contre la pauvreté"
+     },
+     "enonce": "À travers Javert et l'évêque Myriel, quelle opposition Victor Hugo met-il en scène ?",
+     "niveau": "expert"
+    },
+    "11": {
+     "bonnes": {
+      "0": 1,
+      "1": 3
+     },
+     "choix": {
+      "0": "Que les prisons étaient mal surveillées",
+      "1": "Que la peine est démesurée par rapport à la faute",
+      "2": "Que Valjean était un criminel dangereux",
+      "3": "Que la justice punit la misère plus qu'elle ne la comprend"
+     },
+     "enonce": "Que cherche surtout à faire comprendre Hugo en montrant Valjean au bagne dix-neuf ans pour un pain volé ?",
+     "niveau": "expert"
+    },
+    "12": {
+     "bonnes": {
+      "0": 2,
+      "1": 3
+     },
+     "choix": {
+      "0": "Il se contente de distraire par l'aventure",
+      "1": "Il défend surtout les intérêts des puissants",
+      "2": "Il dénonce l'injustice sociale de son époque",
+      "3": "Il invite le lecteur à la compassion et à la réforme"
+     },
+     "enonce": "Pourquoi peut-on dire que Les Misérables est un roman engagé qui défend les plus faibles ?",
+     "niveau": "expert"
+    }
+   },
+   "titre": "Les Misérables — évaluation d'entraînement",
+   "updatedAt": 1781849779701
+  },
+  "eval_1781760503989": {
+   "createdAt": 1781760503989,
+   "questions": {
+    "0": {
+     "bonnes": {
+      "0": 0,
+      "1": 2,
+      "2": 4,
+      "3": 6,
+      "4": 7
+     },
+     "choix": {
+      "0": "Jean Valjean",
+      "1": "D'Artagnan",
+      "2": "Cosette",
+      "3": "Quasimodo",
+      "4": "Gavroche",
+      "5": "Edmond Dantès",
+      "6": "Fantine",
+      "7": "Javert"
+     },
+     "enonce": "Quels personnages appartiennent au roman Les Misérables ?",
+     "explication": "Valjean, Cosette, Gavroche, Fantine et Javert sont des personnages des Misérables. D'Artagnan vient des Trois Mousquetaires et Edmond Dantès du Comte de Monte-Cristo ; Quasimodo est bien un héros de Victor Hugo, mais dans Notre-Dame de Paris.",
+     "niveau": "facile"
+    },
+    "1": {
+     "bonnes": {
+      "0": 2,
+      "1": 4
+     },
+     "choix": {
+      "0": "Le pain de la table",
+      "1": "Une bourse de pièces d'or",
+      "2": "Les couverts en argent",
+      "3": "Une lettre de recommandation",
+      "4": "Les chandeliers d'argent"
+     },
+     "enonce": "Quels objets l'évêque Myriel laisse-t-il à Jean Valjean lors de son passage chez lui ?",
+     "explication": "L'évêque déclare avoir donné les couverts en argent, puis ajoute les chandeliers d'argent en disant qu'il « achète l'âme » de Valjean. Le pain, la bourse et la lettre n'apparaissent pas dans la scène.",
+     "niveau": "facile"
+    },
+    "2": {
+     "bonnes": {
+      "0": 0,
+      "1": 2,
+      "2": 4,
+      "3": 5
+     },
+     "choix": {
+      "0": "Il vole un pain pour nourrir les enfants de sa sœur",
+      "1": "Il hérite d'une fortune",
+      "2": "Il est envoyé au bagne",
+      "3": "Il part vivre à l'étranger",
+      "4": "Il perd son nom, réduit à un numéro",
+      "5": "À sa sortie, un passeport jaune le fait chasser partout"
+     },
+     "enonce": "Au début du roman, par quelles épreuves Jean Valjean passe-t-il ?",
+     "explication": "Poussé par la misère, Valjean vole un pain, est envoyé au bagne, y perd son nom (un simple matricule), puis, libéré, son passeport jaune le fait rejeter partout. Il n'hérite de rien et ne part pas à l'étranger.",
+     "niveau": "facile"
+    },
+    "3": {
+     "bonnes": {
+      "0": 0,
+      "1": 2,
+      "2": 4
+     },
+     "choix": {
+      "0": "Il est d'abord condamné à cinq ans de bagne",
+      "1": "Il a commis un meurtre pendant sa détention",
+      "2": "Ses tentatives d'évasion allongent sa peine",
+      "3": "Il a demandé lui-même à rester au bagne",
+      "4": "Il y passe finalement dix-neuf ans"
+     },
+     "enonce": "Comment la peine de bagne de Jean Valjean évolue-t-elle, de sa condamnation à sa sortie ?",
+     "explication": "Valjean est d'abord condamné à cinq ans ; ses tentatives d'évasion allongent la peine, si bien qu'il passe dix-neuf ans au bagne. Il n'a ni tué, ni demandé à rester.",
+     "niveau": "standard"
+    },
+    "4": {
+     "bonnes": {
+      "0": 2,
+      "1": 3,
+      "2": 4
+     },
+     "choix": {
+      "0": "Avocat de Valjean",
+      "1": "Gardien de prison",
+      "2": "Inspecteur de police",
+      "3": "Il poursuit Valjean au nom de la loi",
+      "4": "Il fait arrêter Fantine sans pitié",
+      "5": "Il finit par pardonner à Valjean"
+     },
+     "enonce": "Quel est le métier de Javert et quel rôle joue-t-il face à Jean Valjean ?",
+     "explication": "Javert est inspecteur de police : il fait appliquer la loi sans exception. Il traque Valjean et n'épargne personne, pas même Fantine, qu'il fait arrêter malgré sa misère.",
+     "niveau": "standard"
+    },
+    "5": {
+     "bonnes": {
+      "0": 1,
+      "1": 3,
+      "2": 4
+     },
+     "choix": {
+      "0": "La scène est comique et joyeuse",
+      "1": "Une enfant sans défense est seule dans le froid et le noir",
+      "2": "Cosette part gaiement retrouver des amis",
+      "3": "Hugo insiste sur sa petitesse et son épuisement",
+      "4": "Sa peur et ses sanglots émeuvent le lecteur"
+     },
+     "enonce": "Pourquoi la scène où Cosette est envoyée seule la nuit est-elle pathétique ?",
+     "explication": "Le registre pathétique cherche à émouvoir : une enfant seule, petite et terrorisée dans la nuit suscite la pitié du lecteur. La scène n'a rien de joyeux.",
+     "niveau": "standard"
+    },
+    "6": {
+     "bonnes": {
+      "0": 1,
+      "1": 3
+     },
+     "choix": {
+      "0": "Un personnage du roman",
+      "1": "L'auteur lui-même, Victor Hugo",
+      "2": "Un narrateur inventé qui raconte l'histoire",
+      "3": "Il s'adresse directement au lecteur",
+      "4": "Il s'adresse à un autre écrivain"
+     },
+     "enonce": "Dans une préface, qui prend la parole et à qui s'adresse-t-il ?",
+     "explication": "Dans une préface, l'auteur parle en son nom (le « je », le présent) et s'adresse au lecteur. Ce n'est ni un narrateur ni un personnage du roman.",
+     "niveau": "approfondi"
+    },
+    "7": {
+     "bonnes": {
+      "0": 1,
+      "1": 3
+     },
+     "choix": {
+      "0": "Qu'il veut que Valjean travaille pour lui",
+      "1": "Qu'il offre à Valjean une seconde chance de devenir honnête",
+      "2": "Qu'il a payé une rançon pour le libérer",
+      "3": "Que ce don engage Valjean à changer de vie",
+      "4": "Qu'il a seulement récupéré son argenterie"
+     },
+     "enonce": "Que veut dire l'évêque Myriel lorsqu'il affirme avoir « acheté l'âme » de Jean Valjean ?",
+     "explication": "C'est une image religieuse : par son don, Myriel rachète Valjean pour le bien et l'engage à devenir honnête. Il ne s'agit ni d'un travail ni d'une rançon.",
+     "niveau": "approfondi"
+    },
+    "8": {
+     "bonnes": {
+      "0": 1,
+      "1": 3,
+      "2": 4
+     },
+     "choix": {
+      "0": "Montrer qu'il connaît l'histoire de France",
+      "1": "Justifier l'utilité de son livre",
+      "2": "Énumérer ses romans précédents",
+      "3": "Appeler à changer la société",
+      "4": "Montrer que la misère frappe l'homme, la femme et l'enfant"
+     },
+     "enonce": "Quelles intentions Hugo poursuit-il en énumérant les « trois problèmes du siècle » dans sa préface ?",
+     "explication": "Hugo justifie l'utilité de son livre et appelle à réformer une société où la misère détruit l'homme (le prolétariat), la femme (la faim) et l'enfant (la nuit).",
+     "niveau": "approfondi"
+    },
+    "9": {
+     "bonnes": {
+      "0": 2,
+      "1": 3,
+      "2": 4
+     },
+     "choix": {
+      "0": "Il tourne leurs malheurs en dérision",
+      "1": "Il reste neutre et distant",
+      "2": "Il insiste sur la solitude des victimes",
+      "3": "Il montre leur faiblesse face à un monde hostile",
+      "4": "Il s'attarde sur des détails du corps (mains gelées, sanglots)",
+      "5": "Il multiplie les scènes d'action"
+     },
+     "enonce": "Par quels procédés d'écriture (les moyens qu'il choisit pour écrire) Hugo cherche-t-il à émouvoir le lecteur dans les scènes de misère ?",
+     "explication": "Le registre pathétique consiste à insister sur la solitude, la faiblesse et les détails du corps qui souffre pour provoquer la pitié. Hugo ne se moque jamais de ses personnages.",
+     "niveau": "approfondi"
+    },
+    "10": {
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "choix": {
+      "0": "La loi qui punit, face à la bonté qui pardonne",
+      "1": "L'Église contre l'État",
+      "2": "La règle, face à l'humanité",
+      "3": "La richesse contre la pauvreté",
+      "4": "La ville contre la campagne"
+     },
+     "enonce": "À travers Javert et l'évêque Myriel, quelle opposition Victor Hugo met-il en scène ?",
+     "explication": "Javert incarne la loi rigide qui punit, Myriel la charité qui pardonne. C'est l'opposition centrale du chapitre : choisir entre la règle et l'humanité.",
+     "niveau": "expert"
+    },
+    "11": {
+     "bonnes": {
+      "0": 1,
+      "1": 3
+     },
+     "choix": {
+      "0": "Que les prisons étaient mal surveillées",
+      "1": "Que la peine est démesurée par rapport à la faute",
+      "2": "Que Valjean était un criminel dangereux",
+      "3": "Que la justice punit la misère au lieu de la comprendre",
+      "4": "Que Valjean aimait l'aventure de l'évasion"
+     },
+     "enonce": "Que cherche surtout à faire comprendre Hugo en montrant Valjean au bagne dix-neuf ans pour un pain volé ?",
+     "explication": "Hugo dénonce la disproportion : un pain volé par faim conduit à dix-neuf ans de bagne. La loi écrase la misère au lieu de chercher à la comprendre.",
+     "niveau": "expert"
+    },
+    "12": {
+     "bonnes": {
+      "0": 2,
+      "1": 3,
+      "2": 4
+     },
+     "choix": {
+      "0": "Il cherche seulement à distraire par l'aventure",
+      "1": "Il défend surtout les intérêts des puissants",
+      "2": "Il dénonce l'injustice sociale de son époque",
+      "3": "Il invite le lecteur à la compassion et à la réforme",
+      "4": "Il prend la défense des misérables : Valjean, Fantine, Cosette",
+      "5": "Il reste neutre face à la misère"
+     },
+     "enonce": "Pourquoi peut-on dire que Les Misérables est un roman engagé qui défend les plus faibles ?",
+     "explication": "Un roman engagé prend parti : Hugo dénonce l'injustice, défend les plus faibles (Valjean, Fantine, Cosette) et invite le lecteur à la compassion et à la réforme de la société.",
+     "niveau": "expert"
+    }
+   },
+   "titre": "Les Misérables — évaluation 2",
+   "updatedAt": 1781760562528
+  },
+  "eval_1785934338415": {
+   "createdAt": 1785934338415,
+   "questions": {
+    "0": {
+     "bonnes": {
+      "0": 0
+     },
+     "choix": {
+      "0": "Le romantisme",
+      "1": "Le classicisme",
+      "2": "Le Parnasse",
+      "3": "Le symbolisme"
+     },
+     "enonce": "Quel mouvement du XIXe siècle met en avant les sentiments personnels et la nature sauvage ?",
+     "explication": "Le romantisme met en avant les sentiments du poète et les paysages qui les reflètent, comme dans les tableaux étudiés en début de chapitre.",
+     "niveau": "facile"
+    },
+    "1": {
+     "bonnes": {
+      "0": 0,
+      "1": 1,
+      "2": 3
+     },
+     "choix": {
+      "0": "Deux quatrains",
+      "1": "Deux tercets",
+      "2": "Trois quintils",
+      "3": "D'alexandrins",
+      "4": "De vers libres"
+     },
+     "enonce": "De quoi un sonnet classique est-il composé ?",
+     "explication": "Le sonnet classique compte deux quatrains puis deux tercets, écrits en alexandrins (vers de 12 syllabes). Le vers libre, lui, ne suit aucune règle fixe.",
+     "niveau": "standard"
+    },
+    "2": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "Le registre tragique",
+      "1": "Le registre lyrique",
+      "2": "Le registre comique",
+      "3": "Le registre satirique"
+     },
+     "enonce": "Quel registre exprime les sentiments personnels du poète au moyen de rythmes et d'images ?",
+     "explication": "Le registre lyrique vient du mot « lyre », l'instrument qui accompagnait autrefois la poésie chantée. Il communique au lecteur l'émotion de l'auteur.",
+     "niveau": "standard"
+    },
+    "3": {
+     "bonnes": {
+      "0": 3
+     },
+     "choix": {
+      "0": "Une anaphore",
+      "1": "Une assonance en [a]",
+      "2": "Une allitération en [m]",
+      "3": "Une allitération en [s]"
+     },
+     "enonce": "Dans le vers « Souvent, pour s'amuser, les hommes d'équipage », quelle figure sonore entend-on ?",
+     "explication": "Le son [s] revient dans « souvent », « s'amuser » et « équipage » : c'est une allitération, la répétition d'un son de consonne. L'assonance répète un son de voyelle.",
+     "niveau": "approfondi"
+    },
+    "4": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "Non, car il est en fin de vers",
+      "1": "Oui, car le mot suivant commence par une voyelle",
+      "2": "Oui, car le mot suivant commence par une consonne",
+      "3": "Non, car le mot suivant commence par une consonne"
+     },
+     "enonce": "Dans le vers « Le navire glissant sur les gouffres amers », le e final de « navire » se prononce-t-il, et pourquoi ?",
+     "explication": "En milieu de vers, le e compte comme une syllabe quand le mot suivant commence par une consonne : na-vi-re-glis-sant. C'est ce qui donne les 12 syllabes de l'alexandrin.",
+     "niveau": "approfondi"
+    },
+    "5": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "Une comparaison",
+      "1": "Une personnification",
+      "2": "Une métaphore",
+      "3": "Une périphrase"
+     },
+     "enonce": "« La mer, ce grand miroir, brille de mille feux » : quelle figure de style rapproche ici la mer et le miroir ?",
+     "explication": "La mer est rapprochée du miroir sans outil de comparaison (« comme », « tel que ») : c'est une métaphore. Avec un outil, ce serait une comparaison.",
+     "niveau": "approfondi"
+    },
+    "6": {
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "choix": {
+      "0": "Il emprunte au romantisme et au Parnasse sans appartenir à un seul mouvement",
+      "1": "Il refuse d'écrire des sonnets",
+      "2": "Il écrit aussi bien en vers réguliers qu'en poèmes en prose",
+      "3": "Il n'écrit que des vers libres"
+     },
+     "enonce": "Pourquoi dit-on que Baudelaire est un poète inclassable ?",
+     "explication": "Baudelaire hérite des règles (il écrit des sonnets) et s'en libère (il invente le poème en prose) : il traverse les mouvements sans se laisser enfermer dans un seul.",
+     "niveau": "approfondi"
+    },
+    "7": {
+     "bonnes": {
+      "0": 1,
+      "1": 2,
+      "2": 4
+     },
+     "choix": {
+      "0": "Rimes parallèles",
+      "1": "Rimes croisées",
+      "2": "Rimes plates",
+      "3": "Rimes circulaires",
+      "4": "Rimes embrassées"
+     },
+     "enonce": "Quelles sont les dispositions régulières des rimes dans la poésie classique ?",
+     "explication": "Les trois dispositions régulières sont les rimes plates (AABB), croisées (ABAB) et embrassées (ABBA). « Parallèles » et « circulaires » n'existent pas.",
+     "niveau": "standard"
+    },
+    "8": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "Une césure",
+      "1": "Un enjambement",
+      "2": "Une assonance",
+      "3": "Une gradation"
+     },
+     "enonce": "Dans les vers « Laissent piteusement leurs grandes ailes blanches / Comme des avirons traîner à côté d'eux », la phrase continue d'un vers à l'autre. Comment s'appelle ce procédé ?",
+     "explication": "Quand une phrase commencée dans un vers se termine dans le suivant, c'est un enjambement. La césure, elle, est la pause au milieu de l'alexandrin.",
+     "niveau": "approfondi"
+    },
+    "9": {
+     "bonnes": {
+      "0": 1,
+      "1": 3
+     },
+     "choix": {
+      "0": "C'est un sonnet irrégulier",
+      "1": "C'est un poème en prose",
+      "2": "Ce texte n'est pas de la poésie",
+      "3": "La poésie peut exister sans les règles de la versification"
+     },
+     "enonce": "BONUS — Un poème de Baudelaire ne comporte ni vers ni rimes. Quel est le type de ce poème, et que montre-t-il sur les règles de la poésie ?",
+     "explication": "Sans vers ni rimes, la poésie reste possible : rythme, images et sonorités suffisent. C'est le poème en prose, la grande liberté prise par Baudelaire avec les règles classiques.",
+     "niveau": "expert"
+    }
+   },
+   "titre": "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)",
+   "updatedAt": 1791380813808,
+   "version": 1
+  },
+  "eval_1791380799497": {
+   "createdAt": 1791380799497,
+   "questions": {
+    "0": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "Accuser quelqu'un devant un tribunal",
+      "1": "Se présenter devant un tribunal",
+      "2": "Défendre quelqu'un devant un tribunal",
+      "3": "Juger quelqu'un devant un tribunal"
+     },
+     "enonce": "Que veut dire « comparaître » ?",
+     "explication": "Comparaître, c'est se présenter devant un tribunal. Au début du chapitre, Paris est citée à comparaître.",
+     "niveau": "facile"
+    },
+    "1": {
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "choix": {
+      "0": "Un juré",
+      "1": "La barre",
+      "2": "Un avocat",
+      "3": "Un dossier d'instruction",
+      "4": "Une plaidoirie",
+      "5": "Une accusation"
+     },
+     "enonce": "Quels mots du procès désignent des personnes ?",
+     "explication": "L'avocat parle pour accuser ou pour défendre ; le juré écoute, note et vote. La barre est un endroit, la plaidoirie un discours, le dossier d'instruction ce qu'on a réuni avant le procès.",
+     "niveau": "standard"
+    },
+    "2": {
+     "bonnes": {
+      "0": 3
+     },
+     "choix": {
+      "0": "Une preuve qui est fausse",
+      "1": "Une preuve qui accuse",
+      "2": "Une preuve qui est oubliée",
+      "3": "Une preuve qui défend"
+     },
+     "enonce": "Qu'est-ce qu'une preuve « à décharge » ?",
+     "explication": "À charge, la preuve accuse ; à décharge, elle défend.",
+     "niveau": "standard"
+    },
+    "3": {
+     "bonnes": {
+      "0": 1,
+      "1": 3,
+      "2": 4
+     },
+     "choix": {
+      "0": "Paris coûte-t-elle trop cher à ses habitants ?",
+      "1": "Paris abandonne-t-elle ses habitants les plus pauvres ?",
+      "2": "Paris est-elle trop grande pour être gouvernée ?",
+      "3": "Paris cache-t-elle sa misère derrière ses lumières ?",
+      "4": "Paris détruit-elle ce qu'elle a de plus beau ?",
+      "5": "Paris oublie-t-elle les écrivains qui l'ont aimée ?"
+     },
+     "enonce": "Quelles sont les trois accusations portées contre Paris dans notre procès ?",
+     "explication": "Ce sont les trois questions sur lesquelles la classe votera à la fin du procès.",
+     "niveau": "standard"
+    },
+    "4": {
+     "bonnes": {
+      "0": 2,
+      "1": 3
+     },
+     "choix": {
+      "0": "Des pauvres restés au centre",
+      "1": "Des quartiers anciens conservés",
+      "2": "La lumière (L'éclairage au gaz)",
+      "3": "De grandes avenues larges et droites",
+      "4": "Des ruelles plus étroites"
+     },
+     "enonce": "Qu'est-ce que Paris a gagné avec les grands travaux du XIXe siècle ? deux choses.",
+     "explication": "Avec les grands travaux, Paris s'éclaire au gaz et s'ouvre de grandes avenues larges et droites : elle devient la « Ville Lumière ».",
+     "niveau": "approfondi"
+    },
+    "5": {
+     "bonnes": {
+      "0": 3,
+      "1": 4
+     },
+     "choix": {
+      "0": "Ses grandes avenues, rétrécies",
+      "1": "Sa cathédrale, rasée",
+      "2": "Son éclairage, supprimé",
+      "3": "Des quartiers entiers, démolis",
+      "4": "Ses habitants les plus pauvres, chassés du centre"
+     },
+     "enonce": "Qu'est-ce que Paris a perdu avec les grands travaux du XIXe siècle ?",
+     "explication": "Des quartiers entiers ont été démolis et les plus pauvres ont été chassés loin du centre. L'éclairage et les grandes avenues, au contraire, sont ce que Paris a gagné.",
+     "niveau": "approfondi"
+    },
+    "6": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "Victor Hugo",
+      "1": "Guy de Maupassant",
+      "2": "Le baron Haussmann",
+      "3": "Émile Zola"
+     },
+     "enonce": "Qui fait démolir des quartiers entiers de Paris, à partir de 1853, pour ouvrir de grandes avenues ?",
+     "explication": "C'est le baron Haussmann. Hugo, Zola et Maupassant sont des écrivains qui ont écrit sur cette ville.",
+     "niveau": "facile"
+    },
+    "7": {
+     "bonnes": {
+      "0": 0
+     },
+     "choix": {
+      "0": "Une comparaison",
+      "1": "Un oxymore",
+      "2": "Une métaphore",
+      "3": "Une personnification"
+     },
+     "enonce": "Quelle figure de style trouve-t-on dans « La grande rose flamboie comme un œil de cyclope » ?",
+     "explication": "Le mot-outil « comme » est là : c'est une comparaison. Sans lui, ce serait une métaphore.",
+     "niveau": "standard"
+    },
+    "8": {
+     "bonnes": {
+      "0": 1,
+      "1": 4
+     },
+     "choix": {
+      "0": "Une métaphore",
+      "1": "Une personnification",
+      "2": "Une hyperbole",
+      "3": "Un oxymore",
+      "4": "Une accumulation"
+     },
+     "enonce": "Quelles figures de style trouve-t-on dans « Il y avait des guivres qui avaient l'air de rire, des gargouilles qu'on croyait entendre japper, des salamandres qui soufflaient dans le feu, des tarasques qui éternuaient dans la fumée » ?",
+     "explication": "Les monstres sont énumérés les uns après les autres : c'est une accumulation. Des sculptures de pierre qui rient : on leur donne un geste humain, c'est une personnification.",
+     "niveau": "approfondi"
+    },
+    "9": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "Une métaphore",
+      "1": "Une hyperbole",
+      "2": "Un oxymore",
+      "3": "Une comparaison"
+     },
+     "enonce": "Quelle figure de style trouve-t-on dans « cette pluie ardente » ?",
+     "explication": "La pluie et l'ardeur, l'eau et le feu, deux contraires sont réunis dans le même groupe de mots : c'est un oxymore.",
+     "niveau": "standard"
+    },
+    "10": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "Une hyperbole",
+      "1": "Une métaphore",
+      "2": "Une comparaison",
+      "3": "Une accumulation"
+     },
+     "enonce": "Quelle figure de style trouve-t-on dans « deux gouttières en gueules de monstres » ?",
+     "explication": "Les gouttières sont rapprochées des gueules de monstres sans mot-outil : c'est une métaphore.",
+     "niveau": "standard"
+    },
+    "11": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "« Perdu » est ici un adjectif invariable",
+      "1": "Avec être, le participe ne s'accorde jamais",
+      "2": "Avec avoir, le complément est placé après le verbe",
+      "3": "« Beaucoup » est un nom masculin singulier"
+     },
+     "enonce": "Dans « Beaucoup avaient perdu leur logement », pourquoi le participe passé « perdu » ne s'accorde-t-il pas ?",
+     "explication": "Avec l'auxiliaire avoir, quand le complément est placé après le verbe, le participe passé ne s'accorde pas. C'était l'un des deux pièges de la dictée.",
+     "niveau": "approfondi"
+    },
+    "12": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "Une",
+      "1": "Deux",
+      "2": "Trois",
+      "3": "Quatre"
+     },
+     "enonce": "Une phrase contient trois verbes conjugués. Combien a-t-elle de propositions ?",
+     "explication": "Autant de propositions que de verbes conjugués : trois verbes conjugués, trois propositions.",
+     "niveau": "facile"
+    },
+    "13": {
+     "bonnes": {
+      "0": 0,
+      "1": 3
+     },
+     "choix": {
+      "0": "Les crochets de la proposition principale",
+      "1": "Le rond autour des mots subordonnants",
+      "2": "Les crochets des propositions subordonnées",
+      "3": "Le cadre autour de l'antécédent",
+      "4": "Le trait sous les verbes conjugués",
+      "5": ""
+     },
+     "enonce": "Dans la méthode d'analyse logique, qu'est-ce qui se repère en vert (geste) ?",
+     "explication": "En vert : les crochets de la P.P et les cadres de l'antécédent et du verbe complété. Les crochets des P.S sont rouges, les verbes conjugués soulignés en noir, les mots subordonnants entourés en bleu.",
+     "niveau": "approfondi"
+    },
+    "14": {
+     "bonnes": {
+      "0": 0
+     },
+     "choix": {
+      "0": "Souligner les verbes conjugués en noir",
+      "1": "Encadrer les antécédents en vert",
+      "2": "Entourer les mots subordonnants en bleu",
+      "3": "Mettre les propositions entre crochets"
+     },
+     "enonce": "Quelle est l'étape 1 de la méthode d'analyse logique ?",
+     "explication": "Étape 1 : les verbes conjugués, soulignés en noir. On sait alors combien la phrase a de propositions.",
+     "niveau": "facile"
+    },
+    "15": {
+     "bonnes": {
+      "0": 1,
+      "1": 3,
+      "2": 5
+     },
+     "choix": {
+      "0": "Une PSCc : « que je lis »",
+      "1": "Un DPP : « Le livre »",
+      "2": "Une P.I : toute la phrase",
+      "3": "Une FPP : « est passionnant »",
+      "4": "Une PSR : « je lis est passionnant »",
+      "5": "Une PSR : « que je lis »"
+     },
+     "enonce": "Quelles propositions trouve-t-on dans « Le livre que je lis est passionnant » ?",
+     "explication": "Deux verbes conjugués, deux propositions. La relative « que je lis » se glisse entre le sujet et le verbe : elle coupe la principale en deux, le début (DPP) et la fin (FPP).",
+     "niveau": "approfondi"
+    },
+    "16": {
+     "bonnes": {
+      "0": 3
+     },
+     "choix": {
+      "0": "Qui est-ce qui est fatigué?",
+      "1": "Où est-ce qu'il travaille ?",
+      "2": "Comment est-ce qu'il travaille ?",
+      "3": "Qui est-ce qui travaille ?"
+     },
+     "enonce": "Dans « L'homme qui travaille est fatigué », quelle question pose-t-on pour trouver l'antécédent de « qui » ?",
+     "explication": "Pour « qui », on pose « Qui est-ce qui » suivi du verbe de la relative, jamais de question en dehors de la relative. La réponse, l'homme, est l'antécédent, toujours en dehors de la relative.",
+     "niveau": "standard"
+    },
+    "17": {
+     "bonnes": {
+      "0": 0,
+      "1": 1,
+      "2": 4
+     },
+     "choix": {
+      "0": "Un nom",
+      "1": "Un pronom",
+      "2": "Une conjonction de subordination",
+      "3": "Un verbe conjugué",
+      "4": "Un groupe nominal",
+      "5": "Un adjectif"
+     },
+     "enonce": "Qu'est-ce qui peut être un antécédent ?",
+     "explication": "L'antécédent est un nom, un pronom ou un groupe nominal : la relative complète un nom.",
+     "niveau": "standard"
+    },
+    "18": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "Pour une PSR, de l'antécédent vers le pronom relatif",
+      "1": "Pour une PSCc, de « que » vers le verbe complété",
+      "2": "Pour une PSR, du pronom relatif vers l'antécédent",
+      "3": "Pour une P.I, du verbe conjugué vers le sujet"
+     },
+     "enonce": "À l'étape 4, dans quel sens vont les flèches ?",
+     "explication": "Pour une relative, la flèche part du pronom relatif et va vers l'antécédent. Pour une complétive, elle part du verbe complété, là où l'on pose la question, et va vers « que » (on verra cette partie après les vacances).",
+     "niveau": "approfondi"
+    },
+    "19": {
+     "bonnes": {
+      "0": 2,
+      "1": 3,
+      "2": 5
+     },
+     "choix": {
+      "0": "L'antécédent de « que » est « je »",
+      "1": "La subordonnée est une PSR",
+      "2": "« Que » est une conjonction de subordination",
+      "3": "Le verbe complété est « crois »",
+      "4": "« Que » est un pronom relatif",
+      "5": "La subordonnée est une PSCc"
+     },
+     "enonce": "Dans « Je crois que tu as raison », que peut-on dire de « que » et de la subordonnée ?",
+     "explication": "« Qu'est-ce que tu as ? » n'a pas de réponse avant « que » : pas d'antécédent. « Que » est une conjonction de subordination. « Je crois quoi ? » — que tu as raison : la subordonnée complète « crois », c'est une PSCc.",
+     "niveau": "expert"
+    },
+    "20": {
+     "bonnes": {
+      "0": 0,
+      "1": 1,
+      "2": 3
+     },
+     "choix": {
+      "0": "Son antécédent est « un immense atelier de putréfaction »",
+      "1": "C'est un pronom relatif",
+      "2": "Il introduit une PSCc",
+      "3": "Il introduit une PSR",
+      "4": "Son antécédent est « Paris »",
+      "5": "C'est une conjonction de subordination"
+     },
+     "enonce": "BONUS — Dans « Paris, c'est un immense atelier de putréfaction, où la misère, la peste et les maladies travaillent de concert », que peut-on dire de « où » ?",
+     "explication": "« Où est-ce que la misère et la peste travaillent ? » — dans un immense atelier de putréfaction : c'est l'antécédent, un groupe nominal juste avant « où ». « Où » est un pronom relatif, il introduit une PSR. C'est la phrase de Victor Considérant, la preuve à charge de la séance 1.",
+     "niveau": "expert"
+    }
+   },
+   "titre": "4e- Chapitre 1 - Paris à la barre et analyse logique ·",
+   "updatedAt": 1791380799497,
+   "version": 1
+  },
+  "eval_1791393134857": {
+   "createdAt": 1791393134857,
+   "questions": {
+    "0": {
+     "bonnes": {
+      "0": 3
+     },
+     "choix": {
+      "0": "Quand l'antécédent est dans une relative",
+      "1": "Quand l'antécédent est en fin de phrase",
+      "2": "Quand l'antécédent est un complément",
+      "3": "Quand l'antécédent est le sujet du verbe dans la PP"
+     },
+     "enonce": "Quand est-ce qu'une Proposition Principale se coupe en deux, en DPP et en FPP ?",
+     "explication": "Si l'antécédent est le sujet, la relative vient juste derrière lui : la principale se coupe en deux. S'il est un complément, la relative vient après et la principale reste entière.",
+     "niveau": "standard"
+    },
+    "1": {
+     "bonnes": {
+      "0": 2,
+      "1": 3,
+      "2": 5
+     },
+     "choix": {
+      "0": "Un adjectif",
+      "1": "Un Verbe Conjugué",
+      "2": "Un groupe nominal",
+      "3": "Un pronom",
+      "4": "Une Conjonction De Coordination",
+      "5": "Un nom"
+     },
+     "enonce": "Qu'est-ce qui peut être un antécédent ?",
+     "explication": "L'antécédent est un nom, un pronom ou un groupe nominal : la relative le complète.",
+     "niveau": "standard"
+    },
+    "2": {
+     "bonnes": {
+      "0": 1,
+      "1": 2,
+      "2": 4
+     },
+     "choix": {
+      "0": "Je pose la question sur la Proposition Principale",
+      "1": "Ma question dépend du Pronom Relatif employé",
+      "2": "Je pose la question sur la relative, avec son Verbe Conjugué",
+      "3": "Je prends toujours le nom le plus proche du Pronom Relatif",
+      "4": "La réponse est l'antécédent, toujours écrit avant le Pronom Relatif, et la flèche va de droite à gauche, du Pronom Relatif à l'antécédent",
+      "5": "La réponse est toujours écrite après le Pronom Relatif"
+     },
+     "enonce": "Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?",
+     "explication": "On pose la question sur la relative, et la question dépend du Pronom Relatif. La réponse est l'antécédent, toujours avant : la flèche part du Pronom Relatif et va de la droite vers la gauche.",
+     "niveau": "approfondi"
+    },
+    "3": {
+     "bonnes": {
+      "0": 0,
+      "1": 1,
+      "2": 3
+     },
+     "choix": {
+      "0": "Je le mets dans le crochet de la seconde relative",
+      "1": "Je l'entoure en bleu et je l'étiquette CDC",
+      "2": "Je le laisse dans la Proposition Principale",
+      "3": "Je vérifie que les deux subordonnées sont de même nature",
+      "4": "Je le mets dans le crochet de la première relative",
+      "5": "Je l'étiquette MS/PR"
+     },
+     "enonce": "Deux relatives sont coordonnées par « et ». Que fais-tu de « et » quand tu les écris et les repères ?",
+     "explication": "« Et » est une Conjonction De Coordination : il relie deux subordonnées de même nature. Il entre dans le crochet de la seconde, parce que c'est lui qui l'introduit ; laissé dehors, il tombe dans la principale, ce qui est faux.",
+     "niveau": "approfondi"
+    },
+    "4": {
+     "bonnes": {
+      "0": 0
+     },
+     "choix": {
+      "0": "Non. Elle reste entière, tes relatives viennent après elle",
+      "1": "Oui. Elle est coupée en deux par la PSR 2",
+      "2": "Oui. Elle se place entre tes deux relatives",
+      "3": "Oui. Elle est coupée en deux par la PSR 1"
+     },
+     "enonce": "Sur ta copie, écris une phrase P.P + PSR 1 + PSR 2. Thème : un lieu sur le front, en 1914. Est-ce que ta Proposition Principale subit des modifications ?",
+     "explication": "L'architecture écrit P.P, et non DPP et FPP : la principale reste entière, son antécédent est un complément et tes relatives viennent après elle. Ta PSR 2 peut porter sur le même antécédent ou sur un mot de la PSR 1.",
+     "niveau": "standard"
+    },
+    "5": {
+     "bonnes": {
+      "0": 1,
+      "1": 3,
+      "2": 5
+     },
+     "choix": {
+      "0": "Quatre Verbes Conjugués",
+      "1": "Trois Verbes Conjugués",
+      "2": "Une virgule avant la Proposition Indépendante",
+      "3": "Deux points avant la Proposition Indépendante",
+      "4": "Une relative accrochée à la Proposition Indépendante",
+      "5": "Une relative entre le DPP et la FPP"
+     },
+     "enonce": "Sur ta copie, écris une phrase DPP + PSR + FPP : P.I sur un camarade dans les tranchées. Que contient ta phrase ?",
+     "explication": "Trois propositions, donc trois Verbes Conjugués. La relative se glisse entre le DPP et la FPP : elle coupe la principale. Les deux points annoncent la Proposition Indépendante, qui ne reçoit aucune relative.",
+     "niveau": "approfondi"
+    },
+    "6": {
+     "bonnes": {
+      "0": 0,
+      "1": 2,
+      "2": 4
+     },
+     "choix": {
+      "0": "Deux points entre la P.I et la P.P",
+      "1": "Une relative accrochée à la P.I",
+      "2": "Une relative accrochée à la P.P",
+      "3": "Deux Propositions Principales",
+      "4": "Trois Verbes Conjugués",
+      "5": "Quatre Verbes Conjugués"
+     },
+     "enonce": "Sur ta copie, écris une phrase P.I : P.P + PSR sur une information censurée sur le front, que tu ne mettras jamais dans une lettre. Que contient ta phrase ?",
+     "explication": "Trois propositions : une indépendante, une principale et sa relative. Si la relative s'accrochait à la première proposition, celle-ci deviendrait une principale : elle s'accroche donc à la P.P.",
+     "niveau": "expert"
+    },
+    "7": {
+     "bonnes": {
+      "0": 0,
+      "1": 3,
+      "2": 4
+     },
+     "choix": {
+      "0": "Un Pronom Relatif accordé avec son antécédent",
+      "1": "Un Pronom Relatif accordé avec le sujet de la relative",
+      "2": "Une Proposition Principale entière",
+      "3": "Deux Verbes Conjugués",
+      "4": "Un Pronom Relatif composé, comme auquel ou duquel",
+      "5": "Trois Verbes Conjugués"
+     },
+     "enonce": "Sur ta copie, écris une phrase DPP + PSR + FPP sur ce que tu penses de la suite de la guerre, avec un Pronom Relatif composé. Que contient ta phrase ?",
+     "explication": "Deux propositions : la principale coupée et sa relative. Le Pronom Relatif composé s'accorde avec son antécédent : c'est l'accord qui montre à quel mot la relative se relie.",
+     "niveau": "approfondi"
+    },
+    "8": {
+     "bonnes": {
+      "0": 2
+     },
+     "choix": {
+      "0": "Une virgule",
+      "1": "Un point",
+      "2": "Un point-virgule",
+      "3": "Deux points"
+     },
+     "enonce": "Sur ta copie, écris une phrase P.P + PSR ; P.I sur le paysage au matin. Quel signe sépare ta Proposition Principale de ta Proposition Indépendante ?",
+     "explication": "Le point-virgule, signe de ponctuation de corps de phrase, a le rôle d'un point : ce qui vient après repart à zéro. C'est une proposition qui tient toute seule, une P.I.",
+     "niveau": "standard"
+    },
+    "9": {
+     "bonnes": {
+      "0": 1
+     },
+     "choix": {
+      "0": "Deux",
+      "1": "Trois",
+      "2": "Quatre",
+      "3": "Cinq"
+     },
+     "enonce": "Sur ta copie, écris une phrase P.I , P.P + PSR sur le bruit, puis sur la lettre que tu écris. Combien de Verbes Conjugués compte ta phrase ?",
+     "explication": "Une indépendante, une principale et sa relative : trois propositions, trois Verbes Conjugués.",
+     "niveau": "facile"
+    },
+    "10": {
+     "bonnes": {
+      "0": 3
+     },
+     "choix": {
+      "0": "P.P + PSR 1 + PSR 2 : P.I",
+      "1": "DPP + PSR 1 + FPP : P.P 2 + PSR 2",
+      "2": "DPP + PSR 1 + PSR 2 + FPP : P.P 2",
+      "3": "DPP + PSR 1 + PSR 2 + FPP : P.I"
+     },
+     "enonce": "Quelle est l'architecture de « La lettre que ma mère m'a envoyée et dont je connais chaque mot dort dans ma poche : je la relis chaque soir » ?",
+     "explication": "Quatre Verbes Conjugués : a envoyée, connais, dort, relis. « La lettre » est le sujet : les deux relatives, coordonnées par « et », coupent la principale ; les deux points annoncent une indépendante.",
+     "niveau": "expert"
+    }
+   },
+   "titre": "3e- éval 1 Analyse logique - Construire une phrase complexe",
+   "updatedAt": 1791393134857,
+   "version": 1
+  },
+  "essai": {
+   "titre": "Évaluation d'essai — 3 questions",
+   "chapitre": "3e-ch1",
+   "mode": "strict",
+   "questions": {
+    "0": {
+     "enonce": "Quelle est la capitale de l'Italie ?",
+     "choix": {
+      "0": "Milan",
+      "1": "Naples",
+      "2": "Rome",
+      "3": "Venise"
+     },
+     "bonnes": {
+      "0": 2
+     },
+     "niveau": "facile",
+     "reflexion": 20,
+     "reponse": 15,
+     "competences": {
+      "0": "c4-culture-01",
+      "1": "c4-lire-01"
+     },
+     "verifie": "nommer la capitale de l'Italie",
+     "explication": "Rome est la capitale de l'Italie depuis 1871.",
+     "bonus": false,
+     "longueurAssumee": false
+    },
+    "1": {
+     "enonce": "Lesquelles sont des capitales européennes ?",
+     "choix": {
+      "0": "Madrid",
+      "1": "Genève",
+      "2": "Berlin",
+      "3": "Sydney"
+     },
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "niveau": "standard",
+     "reflexion": 30,
+     "reponse": 20,
+     "competences": {
+      "0": "c4-culture-01",
+      "1": "c4-lire-01"
+     },
+     "verifie": "reconnaître des capitales européennes",
+     "explication": "Madrid (Espagne) et Berlin (Allemagne) sont des capitales. Genève n'est pas la capitale de la Suisse (c'est Berne), et Sydney est en Australie.",
+     "bonus": false,
+     "longueurAssumee": false
+    },
+    "2": {
+     "enonce": "Combien de pattes a une araignée ?",
+     "choix": {
+      "0": "6",
+      "1": "8",
+      "2": "10",
+      "3": "4"
+     },
+     "bonnes": {
+      "0": 1
+     },
+     "niveau": "facile",
+     "reflexion": 20,
+     "reponse": 15,
+     "competences": {
+      "0": "c4-culture-01",
+      "1": "c4-lire-01"
+     },
+     "verifie": "dire combien de pattes a une araignée",
+     "explication": "Une araignée a 8 pattes : ce n'est pas un insecte (les insectes en ont 6).",
+     "bonus": false,
+     "longueurAssumee": false
+    }
+   }
+  },
+  "demo": {
+   "titre": "🎓 Démo — apprendre le déroulé",
+   "mode": "strict",
+   "demo": true,
+   "questions": {
+    "0": {
+     "enonce": "Quelle est la capitale de l'Italie ?",
+     "choix": {
+      "0": "Milan",
+      "1": "Naples",
+      "2": "Rome",
+      "3": "Venise"
+     },
+     "bonnes": {
+      "0": 2
+     },
+     "niveau": "facile",
+     "reflexion": 20,
+     "reponse": 15
+    },
+    "1": {
+     "enonce": "Lesquelles sont des capitales européennes ?",
+     "choix": {
+      "0": "Madrid",
+      "1": "Genève",
+      "2": "Berlin",
+      "3": "Sydney"
+     },
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "niveau": "standard",
+     "reflexion": 30,
+     "reponse": 20
+    },
+    "2": {
+     "enonce": "Pourquoi l'araignée n'est-elle pas un insecte ?",
+     "choix": {
+      "0": "Parce qu'elle a six pattes",
+      "1": "Parce qu'elle a huit pattes",
+      "2": "Parce qu'elle tisse une toile",
+      "3": "Parce qu'elle est trop grande"
+     },
+     "bonnes": {
+      "0": 1
+     },
+     "niveau": "standard",
+     "reflexion": 30,
+     "reponse": 20
+    }
+   }
+  },
+  "_test_evaluation-qcm": {
+   "titre": "🎓 Démo — apprendre le déroulé",
+   "mode": "strict",
+   "createdAt": 0,
+   "questions": {
+    "0": {
+     "enonce": "Quelle est la capitale de l'Italie ?",
+     "choix": {
+      "0": "Milan",
+      "1": "Naples",
+      "2": "Rome",
+      "3": "Venise"
+     },
+     "bonnes": {
+      "0": 2
+     },
+     "niveau": "facile",
+     "reflexion": 20,
+     "reponse": 15,
+     "competences": {
+      "0": "c4-lire-01"
+     },
+     "verifie": "retrouver la réponse du cours"
+    },
+    "1": {
+     "enonce": "Lesquelles sont des capitales européennes ?",
+     "choix": {
+      "0": "Madrid",
+      "1": "Genève",
+      "2": "Berlin",
+      "3": "Sydney"
+     },
+     "bonnes": {
+      "0": 0,
+      "1": 2
+     },
+     "niveau": "standard",
+     "reflexion": 30,
+     "reponse": 20,
+     "competences": {
+      "0": "c4-lire-01"
+     },
+     "verifie": "retrouver la réponse du cours"
+    },
+    "2": {
+     "enonce": "Pourquoi l'araignée n'est-elle pas un insecte ?",
+     "choix": {
+      "0": "Parce qu'elle a six pattes",
+      "1": "Parce qu'elle a huit pattes",
+      "2": "Parce qu'elle tisse une toile",
+      "3": "Parce qu'elle est trop grande"
+     },
+     "bonnes": {
+      "0": 1
+     },
+     "niveau": "standard",
+     "reflexion": 30,
+     "reponse": 20,
+     "competences": {
+      "0": "c4-lire-01"
+     },
+     "verifie": "retrouver la réponse du cours"
+    }
+   },
+   "test": true,
+   "chapitre": "3e-ch1"
+  }
+ },
+ "settings": {
+  "niveaux": {
+   "0": {
+    "chrono": 10,
+    "id": "facile"
+   },
+   "1": {
+    "chrono": 15,
+    "id": "standard"
+   },
+   "2": {
+    "chrono": 20,
+    "id": "approfondi"
+   },
+   "3": {
+    "chrono": 30,
+    "id": "expert"
+   }
+  }
+ },
+ "sessions": {
+  "sess_ch1": {
+   "evalId": "eval_1785934338415",
+   "classe": "3 ESSAI",
+   "classeSlug": "3 ESSAI",
+   "date": 1790237040000,
+   "phase": "finie",
+   "qIdx": 9,
+   "etat": "terminee",
+   "absents": {
+    "0": "zeller_lou",
+    "1": "yvon_adam",
+    "2": "chevallier_theo"
+   },
+   "papier": {
+    "abrial_julien": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 0,
+       "1": 2
+      },
+      "7": {
+       "0": 1,
+       "1": 2,
+       "2": 4
+      },
+      "8": {
+       "0": 1
+      },
+      "9": {
+       "0": 1,
+       "1": 3
+      }
+     }
+    },
+    "duvernay_michel": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 0,
+       "1": 2
+      },
+      "7": {
+       "0": 1,
+       "1": 2,
+       "2": 4
+      },
+      "8": {
+       "0": 1
+      },
+      "9": {
+       "0": 1,
+       "1": 3
+      }
+     }
+    },
+    "baudry_lea": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 0,
+       "1": 2
+      },
+      "7": {
+       "0": 1,
+       "1": 2,
+       "2": 4
+      },
+      "8": {
+       "0": 1
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "carre_tom": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 0,
+       "1": 2
+      },
+      "7": {
+       "0": 1,
+       "1": 2,
+       "2": 4
+      },
+      "8": {
+       "0": 1
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "esnault_ines": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 0,
+       "1": 2
+      },
+      "7": {
+       "0": 1,
+       "1": 2,
+       "2": 4
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "foucher_hugo": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 0,
+       "1": 2
+      },
+      "7": {
+       "0": 1,
+       "1": 2,
+       "2": 4
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "gallois_manon": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 0,
+       "1": 2
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "hebrard_nathan": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 0,
+       "1": 2
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "isambert_chloe": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "joubert_louis": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 2
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "lacombe_emma": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "maillard_noah": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 2
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "nogaret_zoe": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "ollivier_sacha": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 3
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "perraud_jade": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 0
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "quinton_enzo": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 1
+      },
+      "3": {
+       "0": 0
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "rambaud_lina": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 0
+      },
+      "3": {
+       "0": 0
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "sabatier_malo": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1,
+       "2": 3
+      },
+      "2": {
+       "0": 0
+      },
+      "3": {
+       "0": 0
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "tessier_anna": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 2
+      },
+      "2": {
+       "0": 0
+      },
+      "3": {
+       "0": 0
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "vallee_rayan": {
+     "choix": {
+      "0": {
+       "0": 0
+      },
+      "1": {
+       "0": 2
+      },
+      "2": {
+       "0": 0
+      },
+      "3": {
+       "0": 0
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "weber_clara": {
+     "choix": {
+      "0": {
+       "0": 1
+      },
+      "1": {
+       "0": 2
+      },
+      "2": {
+       "0": 0
+      },
+      "3": {
+       "0": 0
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    },
+    "bruneau_camille": {
+     "choix": {
+      "0": {
+       "0": 1
+      },
+      "1": {
+       "0": 2
+      },
+      "2": {
+       "0": 0
+      },
+      "3": {
+       "0": 0
+      },
+      "4": {
+       "0": 0
+      },
+      "5": {
+       "0": 0
+      },
+      "6": {
+       "0": 1
+      },
+      "7": {
+       "0": 0
+      },
+      "8": {
+       "0": 0
+      },
+      "9": {
+       "0": 0
+      }
+     }
+    }
+   },
+   "copies": {
+    "rendues": 1790437200000,
+    "masquees": false
+   }
+  },
+  "sess_1791871312147": {
+   "classeSlug": "3 ESSAI",
+   "evalId": "essai",
+   "date": 1791871312147,
+   "phase": "finie",
+   "etat": "terminee",
+   "lancee": {
+    "date": 1791871312147,
+    "heure": "06:01",
+    "fin": "6:56",
+    "mode": "tablettes",
+    "demo": false,
+    "rattrapage": false
+   },
+   "places": {
+    "1": {
+     "g": "abrial_julien",
+     "d": "duvernay_michel"
+    },
+    "2": {
+     "g": "baudry_lea",
+     "d": "carre_tom"
+    },
+    "3": {
+     "g": "esnault_ines",
+     "d": "foucher_hugo"
+    },
+    "4": {
+     "g": "gallois_manon",
+     "d": "hebrard_nathan"
+    },
+    "5": {
+     "g": "isambert_chloe",
+     "d": "joubert_louis"
+    },
+    "6": {
+     "g": "lacombe_emma",
+     "d": "maillard_noah"
+    },
+    "7": {
+     "g": "nogaret_zoe",
+     "d": "ollivier_sacha"
+    },
+    "8": {
+     "g": "perraud_jade",
+     "d": "quinton_enzo"
+    },
+    "9": {
+     "g": "rambaud_lina",
+     "d": "sabatier_malo"
+    },
+    "10": {
+     "g": "tessier_anna",
+     "d": "vallee_rayan"
+    },
+    "11": {
+     "g": "bruneau_camille",
+     "d": "weber_clara"
+    },
+    "12": {
+     "g": "chevallier_theo",
+     "d": "zeller_lou"
+    }
+   },
+   "deroule": {
+    "ph": "fin",
+    "depuis": 1791871597796
+   },
+   "evalSnapshot": {
+    "titre": "Évaluation d'essai — 3 questions",
+    "mode": "strict",
+    "version": 1,
+    "questions": {
+     "0": {
+      "enonce": "Quelle est la capitale de l'Italie ?",
+      "choix": {
+       "0": "Milan",
+       "1": "Naples",
+       "2": "Rome",
+       "3": "Venise"
+      },
+      "bonnes": {
+       "0": 2
+      },
+      "niveau": "facile",
+      "reflexion": 20,
+      "reponse": 15,
+      "competences": {
+       "0": "c4-culture-01",
+       "1": "c4-lire-01"
+      },
+      "verifie": "nommer la capitale de l'Italie",
+      "explication": "Rome est la capitale de l'Italie depuis 1871.",
+      "bonus": false,
+      "longueurAssumee": false
+     },
+     "1": {
+      "enonce": "Lesquelles sont des capitales européennes ?",
+      "choix": {
+       "0": "Madrid",
+       "1": "Genève",
+       "2": "Berlin",
+       "3": "Sydney"
+      },
+      "bonnes": {
+       "0": 0,
+       "1": 2
+      },
+      "niveau": "standard",
+      "reflexion": 30,
+      "reponse": 20,
+      "competences": {
+       "0": "c4-culture-01",
+       "1": "c4-lire-01"
+      },
+      "verifie": "reconnaître des capitales européennes",
+      "explication": "Madrid (Espagne) et Berlin (Allemagne) sont des capitales. Genève n'est pas la capitale de la Suisse (c'est Berne), et Sydney est en Australie.",
+      "bonus": false,
+      "longueurAssumee": false
+     },
+     "2": {
+      "enonce": "Combien de pattes a une araignée ?",
+      "choix": {
+       "0": "6",
+       "1": "8",
+       "2": "10",
+       "3": "4"
+      },
+      "bonnes": {
+       "0": 1
+      },
+      "niveau": "facile",
+      "reflexion": 20,
+      "reponse": 15,
+      "competences": {
+       "0": "c4-culture-01",
+       "1": "c4-lire-01"
+      },
+      "verifie": "dire combien de pattes a une araignée",
+      "explication": "Une araignée a 8 pattes : ce n'est pas un insecte (les insectes en ont 6).",
+      "bonus": false,
+      "longueurAssumee": false
+     }
+    },
+    "figeLe": 1791871312147
+   },
+   "absents": {
+    "0": "yvon_adam"
+   },
+   "presence_history": {
+    "yvon_adam": {
+     "h_1791871313614": {
+      "ts": 1791871313614,
+      "etat": "absent"
+     }
+    }
+   },
+   "phaseStart": 1791871597796,
+   "entres": {
+    "nogaret_zoe": 1791871332727,
+    "tessier_anna": 1791871332994,
+    "baudry_lea": 1791871333118,
+    "esnault_ines": 1791871333584,
+    "perraud_jade": 1791871333843,
+    "isambert_chloe": 1791871334112,
+    "ollivier_sacha": 1791871334171,
+    "rambaud_lina": 1791871334534,
+    "gallois_manon": 1791871334578,
+    "abrial_julien": 1791871334928,
+    "lacombe_emma": 1791871335149,
+    "carre_tom": 1791871335252,
+    "vallee_rayan": 1791871335368,
+    "bruneau_camille": 1791871335421,
+    "foucher_hugo": 1791871335861,
+    "quinton_enzo": 1791871335958,
+    "joubert_louis": 1791871336109,
+    "sabatier_malo": 1791871336200,
+    "hebrard_nathan": 1791871336308,
+    "maillard_noah": 1791871336460,
+    "duvernay_michel": 1791871336550,
+    "chevallier_theo": 1791871336795,
+    "weber_clara": 1791871336933,
+    "zeller_lou": 1791871337707
+   },
+   "attest": {
+    "1": {
+     "abrial_julien": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871341873
+     },
+     "duvernay_michel": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871346963
+     },
+     "gallois_manon": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871343708
+     },
+     "esnault_ines": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871343785
+     },
+     "bruneau_camille": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871343580
+     },
+     "perraud_jade": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871343602
+     },
+     "tessier_anna": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871343682
+     },
+     "nogaret_zoe": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871343571
+     },
+     "baudry_lea": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871343521
+     },
+     "isambert_chloe": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871343786
+     },
+     "lacombe_emma": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871344224
+     },
+     "rambaud_lina": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871343902
+     },
+     "chevallier_theo": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871346176
+     },
+     "ollivier_sacha": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871349145
+     },
+     "weber_clara": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871349113
+     },
+     "carre_tom": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871348689
+     },
+     "quinton_enzo": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871348916
+     },
+     "hebrard_nathan": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871348998
+     },
+     "joubert_louis": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871349250
+     },
+     "vallee_rayan": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871348851
+     },
+     "sabatier_malo": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871348918
+     },
+     "foucher_hugo": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871349409
+     },
+     "maillard_noah": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871349546
+     },
+     "zeller_lou": {
+      "lignes": 8,
+      "fini": true,
+      "ms": 1791871350649
+     }
+    },
+    "2": {
+     "bruneau_camille": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871547731
+     },
+     "lacombe_emma": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871548300
+     },
+     "gallois_manon": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871548191
+     },
+     "perraud_jade": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871548006
+     },
+     "isambert_chloe": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871547590
+     },
+     "baudry_lea": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871547975
+     },
+     "rambaud_lina": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871547855
+     },
+     "abrial_julien": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871547741
+     },
+     "tessier_anna": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871547983
+     },
+     "esnault_ines": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871547974
+     },
+     "nogaret_zoe": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871548092
+     },
+     "chevallier_theo": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871548985
+     },
+     "joubert_louis": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871550992
+     },
+     "duvernay_michel": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871550951
+     },
+     "sabatier_malo": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871551481
+     },
+     "weber_clara": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871551144
+     },
+     "carre_tom": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871551333
+     },
+     "foucher_hugo": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871551443
+     },
+     "ollivier_sacha": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871551626
+     },
+     "maillard_noah": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871551920
+     },
+     "hebrard_nathan": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871551695
+     },
+     "quinton_enzo": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871551785
+     },
+     "vallee_rayan": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871551444
+     },
+     "zeller_lou": {
+      "lignes": 5,
+      "fini": true,
+      "ms": 1791871552386
+     }
+    }
+   },
+   "qIdx": 0,
+   "premier": {
+    "0": "g",
+    "1": "d",
+    "2": "g"
+   },
+   "questionsLancees": {
+    "0": 1791871352279,
+    "1": 1791871405497,
+    "2": 1791871491555
+   },
+   "temps": {
+    "2": {
+     "reponse": 15
+    }
+   },
+   "reponses": {
+    "0": {
+     "gallois_manon": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871376410,
+      "ms": 1791871376410,
+      "tour": 1
+     },
+     "esnault_ines": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871376409,
+      "ms": 1791871376409,
+      "tour": 1
+     },
+     "nogaret_zoe": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871376596,
+      "ms": 1791871376596,
+      "tour": 1
+     },
+     "baudry_lea": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871376589,
+      "ms": 1791871376589,
+      "tour": 1
+     },
+     "isambert_chloe": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871376624,
+      "ms": 1791871376624,
+      "tour": 1
+     },
+     "rambaud_lina": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871376652,
+      "ms": 1791871376652,
+      "tour": 1
+     },
+     "abrial_julien": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871376714,
+      "ms": 1791871376714,
+      "tour": 1
+     },
+     "bruneau_camille": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871376688,
+      "ms": 1791871376688,
+      "tour": 1
+     },
+     "lacombe_emma": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871376723,
+      "ms": 1791871376723,
+      "tour": 1
+     },
+     "chevallier_theo": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871377061,
+      "ms": 1791871377061,
+      "tour": 1
+     },
+     "perraud_jade": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871379130,
+      "ms": 1791871379130,
+      "tour": 1
+     },
+     "tessier_anna": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871379132,
+      "ms": 1791871379132,
+      "tour": 1
+     },
+     "duvernay_michel": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871388855,
+      "ms": 1791871388855,
+      "tour": 2
+     },
+     "ollivier_sacha": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871388912,
+      "ms": 1791871388912,
+      "tour": 2
+     },
+     "hebrard_nathan": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871388981,
+      "ms": 1791871388981,
+      "tour": 2
+     },
+     "carre_tom": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871388983,
+      "ms": 1791871388983,
+      "tour": 2
+     },
+     "joubert_louis": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871388986,
+      "ms": 1791871388986,
+      "tour": 2
+     },
+     "maillard_noah": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871389048,
+      "ms": 1791871389048,
+      "tour": 2
+     },
+     "weber_clara": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871389077,
+      "ms": 1791871389077,
+      "tour": 2
+     },
+     "sabatier_malo": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871389236,
+      "ms": 1791871389236,
+      "tour": 2
+     },
+     "foucher_hugo": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871389191,
+      "ms": 1791871389191,
+      "tour": 2
+     },
+     "vallee_rayan": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871389191,
+      "ms": 1791871389191,
+      "tour": 2
+     },
+     "quinton_enzo": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871389271,
+      "ms": 1791871389271,
+      "tour": 2
+     },
+     "zeller_lou": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871391442,
+      "ms": 1791871391442,
+      "tour": 2
+     }
+    },
+    "1": {
+     "carre_tom": {
+      "choix": {
+       "0": 0
+      },
+      "ts": 1791871410953,
+      "ms": 1791871410953,
+      "tour": 1
+     },
+     "joubert_louis": {
+      "choix": {
+       "0": 0
+      },
+      "ts": 1791871410979,
+      "ms": 1791871410979,
+      "tour": 1
+     },
+     "hebrard_nathan": {
+      "choix": {
+       "0": 0
+      },
+      "ts": 1791871410968,
+      "ms": 1791871410968,
+      "tour": 1
+     },
+     "maillard_noah": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871410964,
+      "ms": 1791871410964,
+      "tour": 1
+     },
+     "sabatier_malo": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871410973,
+      "ms": 1791871410973,
+      "tour": 1
+     },
+     "vallee_rayan": {
+      "choix": {
+       "0": 0,
+       "1": 1,
+       "2": 2
+      },
+      "ts": 1791871412359,
+      "ms": 1791871412359,
+      "tour": 1
+     },
+     "ollivier_sacha": {
+      "choix": {
+       "0": 0
+      },
+      "ts": 1791871411064,
+      "ms": 1791871411064,
+      "tour": 1
+     },
+     "quinton_enzo": {
+      "choix": {
+       "0": 0
+      },
+      "ts": 1791871411203,
+      "ms": 1791871411203,
+      "tour": 1
+     },
+     "duvernay_michel": {
+      "choix": {
+       "0": 0,
+       "1": 1,
+       "2": 2
+      },
+      "ts": 1791871412255,
+      "ms": 1791871412255,
+      "tour": 1
+     },
+     "weber_clara": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "ts": 1791871411618,
+      "ms": 1791871411618,
+      "tour": 1
+     },
+     "foucher_hugo": {
+      "choix": {
+       "0": 0,
+       "1": 1,
+       "2": 2
+      },
+      "ts": 1791871412487,
+      "ms": 1791871412487,
+      "tour": 1
+     },
+     "zeller_lou": {
+      "choix": {
+       "0": 0,
+       "1": 1,
+       "2": 2
+      },
+      "ts": 1791871412709,
+      "ms": 1791871412709,
+      "tour": 1
+     },
+     "bruneau_camille": {
+      "choix": {
+       "0": 0
+      },
+      "ts": 1791871438805,
+      "ms": 1791871438805,
+      "tour": 2
+     },
+     "baudry_lea": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "ts": 1791871439457,
+      "ms": 1791871439457,
+      "tour": 2
+     },
+     "gallois_manon": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "ts": 1791871439281,
+      "ms": 1791871439281,
+      "tour": 2
+     },
+     "lacombe_emma": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "ts": 1791871439265,
+      "ms": 1791871439265,
+      "tour": 2
+     },
+     "tessier_anna": {
+      "choix": {
+       "0": 0
+      },
+      "ts": 1791871438839,
+      "ms": 1791871438839,
+      "tour": 2
+     },
+     "abrial_julien": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "ts": 1791871439173,
+      "ms": 1791871439173,
+      "tour": 2
+     },
+     "rambaud_lina": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "ts": 1791871439547,
+      "ms": 1791871439547,
+      "tour": 2
+     },
+     "isambert_chloe": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "ts": 1791871439635,
+      "ms": 1791871439635,
+      "tour": 2
+     },
+     "perraud_jade": {
+      "choix": {
+       "0": 0,
+       "1": 1,
+       "2": 2
+      },
+      "ts": 1791871439841,
+      "ms": 1791871439841,
+      "tour": 2
+     },
+     "nogaret_zoe": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "ts": 1791871439431,
+      "ms": 1791871439431,
+      "tour": 2
+     },
+     "esnault_ines": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "ts": 1791871439430,
+      "ms": 1791871439430,
+      "tour": 2
+     },
+     "chevallier_theo": {
+      "choix": {
+       "0": 0
+      },
+      "ts": 1791871466611,
+      "ms": 1791871466611,
+      "tour": 2,
+      "rouverte": true
+     }
+    },
+    "2": {
+     "baudry_lea": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871496633,
+      "ms": 1791871496633,
+      "tour": 1
+     },
+     "esnault_ines": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871496639,
+      "ms": 1791871496639,
+      "tour": 1
+     },
+     "lacombe_emma": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871496645,
+      "ms": 1791871496645,
+      "tour": 1
+     },
+     "nogaret_zoe": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871496658,
+      "ms": 1791871496658,
+      "tour": 1
+     },
+     "abrial_julien": {
+      "choix": {
+       "0": 0
+      },
+      "ts": 1791871496658,
+      "ms": 1791871496658,
+      "tour": 1
+     },
+     "gallois_manon": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871496662,
+      "ms": 1791871496662,
+      "tour": 1
+     },
+     "bruneau_camille": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871496671,
+      "ms": 1791871496671,
+      "tour": 1
+     },
+     "perraud_jade": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871496902,
+      "ms": 1791871496902,
+      "tour": 1
+     },
+     "rambaud_lina": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871496931,
+      "ms": 1791871496931,
+      "tour": 1
+     },
+     "isambert_chloe": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871497095,
+      "ms": 1791871497095,
+      "tour": 1
+     },
+     "chevallier_theo": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871497086,
+      "ms": 1791871497086,
+      "tour": 1
+     },
+     "tessier_anna": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871497221,
+      "ms": 1791871497221,
+      "tour": 1
+     },
+     "carre_tom": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871519798,
+      "ms": 1791871519798,
+      "tour": 2
+     },
+     "quinton_enzo": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871519845,
+      "ms": 1791871519845,
+      "tour": 2
+     },
+     "foucher_hugo": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871519822,
+      "ms": 1791871519822,
+      "tour": 2
+     },
+     "maillard_noah": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871519835,
+      "ms": 1791871519835,
+      "tour": 2
+     },
+     "duvernay_michel": {
+      "choix": {
+       "0": 2
+      },
+      "ts": 1791871519890,
+      "ms": 1791871519890,
+      "tour": 2
+     },
+     "sabatier_malo": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871519880,
+      "ms": 1791871519880,
+      "tour": 2
+     },
+     "hebrard_nathan": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871519934,
+      "ms": 1791871519934,
+      "tour": 2
+     },
+     "ollivier_sacha": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871519951,
+      "ms": 1791871519951,
+      "tour": 2
+     },
+     "joubert_louis": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871519930,
+      "ms": 1791871519930,
+      "tour": 2
+     },
+     "vallee_rayan": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871519932,
+      "ms": 1791871519932,
+      "tour": 2
+     },
+     "weber_clara": {
+      "choix": {
+       "0": 1
+      },
+      "ts": 1791871519928,
+      "ms": 1791871519928,
+      "tour": 2
+     },
+     "zeller_lou": {
+      "choix": {
+       "0": 3
+      },
+      "ts": 1791871520310,
+      "ms": 1791871520310,
+      "tour": 2
+     }
+    }
+   },
+   "b": {
+    "0": {
+     "esnault_ines": "oui",
+     "baudry_lea": "oui",
+     "tessier_anna": "oui",
+     "abrial_julien": "oui",
+     "lacombe_emma": "oui",
+     "gallois_manon": "oui",
+     "isambert_chloe": "oui",
+     "rambaud_lina": "oui",
+     "perraud_jade": "oui",
+     "nogaret_zoe": "oui",
+     "bruneau_camille": "oui",
+     "chevallier_theo": "oui",
+     "vallee_rayan": "oui",
+     "hebrard_nathan": "oui",
+     "ollivier_sacha": "oui",
+     "foucher_hugo": "oui",
+     "quinton_enzo": "non",
+     "maillard_noah": "oui",
+     "weber_clara": "oui",
+     "joubert_louis": "oui",
+     "sabatier_malo": "oui",
+     "zeller_lou": "oui",
+     "duvernay_michel": "non"
+    },
+    "1": {
+     "quinton_enzo": "non",
+     "carre_tom": "non",
+     "vallee_rayan": "non",
+     "sabatier_malo": "oui",
+     "maillard_noah": "oui",
+     "foucher_hugo": "non",
+     "weber_clara": "oui",
+     "duvernay_michel": "oui",
+     "hebrard_nathan": "non",
+     "ollivier_sacha": "non",
+     "joubert_louis": "non",
+     "zeller_lou": "non",
+     "isambert_chloe": "oui",
+     "lacombe_emma": "oui",
+     "gallois_manon": "oui",
+     "baudry_lea": "oui",
+     "nogaret_zoe": "non",
+     "abrial_julien": "non",
+     "esnault_ines": "oui",
+     "perraud_jade": "non",
+     "tessier_anna": "oui",
+     "bruneau_camille": "non",
+     "rambaud_lina": "oui",
+     "chevallier_theo": "oui"
+    },
+    "2": {
+     "gallois_manon": "oui",
+     "nogaret_zoe": "oui",
+     "bruneau_camille": "oui",
+     "esnault_ines": "oui",
+     "baudry_lea": "oui",
+     "abrial_julien": "oui",
+     "isambert_chloe": "oui",
+     "rambaud_lina": "oui",
+     "perraud_jade": "oui",
+     "tessier_anna": "oui",
+     "lacombe_emma": "oui",
+     "chevallier_theo": "non",
+     "duvernay_michel": "non",
+     "sabatier_malo": "oui",
+     "ollivier_sacha": "oui",
+     "hebrard_nathan": "oui",
+     "quinton_enzo": "oui",
+     "foucher_hugo": "oui",
+     "joubert_louis": "oui",
+     "weber_clara": "oui",
+     "maillard_noah": "oui",
+     "carre_tom": "oui",
+     "zeller_lou": "oui",
+     "vallee_rayan": "oui"
+    }
+   },
+   "rouverts": {
+    "1": "chevallier_theo"
+   },
+   "autoevals": {
+    "abrial_julien": "bleu",
+    "gallois_manon": "vert",
+    "isambert_chloe": "bleu",
+    "esnault_ines": "vert",
+    "duvernay_michel": "vert",
+    "baudry_lea": "vert",
+    "bruneau_camille": "bleu",
+    "tessier_anna": "rouge",
+    "rambaud_lina": "vert",
+    "lacombe_emma": "vert",
+    "chevallier_theo": "bleu",
+    "nogaret_zoe": "bleu",
+    "weber_clara": "vert",
+    "hebrard_nathan": "bleu",
+    "zeller_lou": "bleu",
+    "foucher_hugo": "bleu",
+    "vallee_rayan": "bleu",
+    "maillard_noah": "orange",
+    "carre_tom": "orange",
+    "joubert_louis": "bleu",
+    "sabatier_malo": "orange",
+    "ollivier_sacha": "orange"
+   },
+   "ordreCorr": {
+    "0": 1,
+    "1": 2,
+    "2": 0
+   },
+   "lectures": {
+    "0": {
+     "baudry_lea": {
+      "choix": {
+       "0": 2
+      },
+      "par": "carre_tom",
+      "ms": 1791871574624
+     },
+     "perraud_jade": {
+      "choix": {
+       "0": 2
+      },
+      "par": "quinton_enzo",
+      "ms": 1791871574625
+     },
+     "esnault_ines": {
+      "choix": {
+       "0": 2
+      },
+      "par": "foucher_hugo",
+      "ms": 1791871574678
+     },
+     "nogaret_zoe": {
+      "choix": {
+       "0": 2
+      },
+      "par": "ollivier_sacha",
+      "ms": 1791871574738
+     },
+     "tessier_anna": {
+      "choix": {
+       "0": 2
+      },
+      "par": "vallee_rayan",
+      "ms": 1791871574776
+     },
+     "rambaud_lina": {
+      "choix": {
+       "0": 2
+      },
+      "par": "sabatier_malo",
+      "ms": 1791871574820
+     },
+     "lacombe_emma": {
+      "choix": {
+       "0": 2
+      },
+      "par": "maillard_noah",
+      "ms": 1791871574837
+     },
+     "bruneau_camille": {
+      "choix": {
+       "0": 2
+      },
+      "par": "weber_clara",
+      "ms": 1791871574815
+     },
+     "abrial_julien": {
+      "choix": {
+       "0": 2
+      },
+      "par": "duvernay_michel",
+      "ms": 1791871574834
+     },
+     "chevallier_theo": {
+      "choix": {
+       "0": 2
+      },
+      "par": "zeller_lou",
+      "ms": 1791871574919
+     },
+     "gallois_manon": {
+      "choix": {
+       "0": 2
+      },
+      "par": "hebrard_nathan",
+      "ms": 1791871574927
+     },
+     "isambert_chloe": {
+      "choix": {
+       "0": 2
+      },
+      "par": "joubert_louis",
+      "ms": 1791871574955
+     },
+     "foucher_hugo": {
+      "choix": {
+       "0": 2
+      },
+      "par": "esnault_ines",
+      "ms": 1791871575194
+     },
+     "quinton_enzo": {
+      "choix": "aucun",
+      "par": "perraud_jade",
+      "ms": 1791871575330
+     },
+     "sabatier_malo": {
+      "choix": {
+       "0": 2
+      },
+      "par": "rambaud_lina",
+      "ms": 1791871575329
+     },
+     "ollivier_sacha": {
+      "choix": {
+       "0": 3
+      },
+      "par": "nogaret_zoe",
+      "ms": 1791871575327
+     },
+     "carre_tom": {
+      "choix": {
+       "0": 3
+      },
+      "par": "baudry_lea",
+      "ms": 1791871575489
+     },
+     "duvernay_michel": {
+      "choix": {
+       "0": 2
+      },
+      "par": "prof",
+      "ms": 1791871590517
+     },
+     "zeller_lou": {
+      "choix": {
+       "0": 2
+      },
+      "par": "chevallier_theo",
+      "ms": 1791871575606
+     },
+     "weber_clara": {
+      "choix": {
+       "0": 2
+      },
+      "par": "bruneau_camille",
+      "ms": 1791871575648
+     },
+     "joubert_louis": {
+      "choix": {
+       "0": 2
+      },
+      "par": "isambert_chloe",
+      "ms": 1791871575682
+     },
+     "maillard_noah": {
+      "choix": {
+       "0": 2
+      },
+      "par": "lacombe_emma",
+      "ms": 1791871575734
+     },
+     "hebrard_nathan": {
+      "choix": {
+       "0": 2
+      },
+      "par": "gallois_manon",
+      "ms": 1791871575757
+     },
+     "vallee_rayan": {
+      "choix": {
+       "0": 2
+      },
+      "par": "tessier_anna",
+      "ms": 1791871575890
+     }
+    },
+    "1": {
+     "gallois_manon": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "par": "hebrard_nathan",
+      "ms": 1791871559416
+     },
+     "abrial_julien": {
+      "choix": {
+       "0": 0
+      },
+      "par": "duvernay_michel",
+      "ms": 1791871558423
+     },
+     "bruneau_camille": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "par": "weber_clara",
+      "ms": 1791871559526
+     },
+     "nogaret_zoe": {
+      "choix": {
+       "0": 3
+      },
+      "par": "ollivier_sacha",
+      "ms": 1791871558456
+     },
+     "chevallier_theo": {
+      "choix": {
+       "0": 3
+      },
+      "par": "zeller_lou",
+      "ms": 1791871558474
+     },
+     "baudry_lea": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "par": "carre_tom",
+      "ms": 1791871559549
+     },
+     "lacombe_emma": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "par": "maillard_noah",
+      "ms": 1791871559747
+     },
+     "tessier_anna": {
+      "choix": {
+       "0": 3
+      },
+      "par": "vallee_rayan",
+      "ms": 1791871558624
+     },
+     "esnault_ines": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "par": "foucher_hugo",
+      "ms": 1791871559561
+     },
+     "isambert_chloe": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "par": "joubert_louis",
+      "ms": 1791871559551
+     },
+     "perraud_jade": {
+      "choix": {
+       "0": 3
+      },
+      "par": "quinton_enzo",
+      "ms": 1791871559021
+     },
+     "rambaud_lina": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "par": "sabatier_malo",
+      "ms": 1791871560022
+     },
+     "vallee_rayan": {
+      "choix": {
+       "0": 3
+      },
+      "par": "tessier_anna",
+      "ms": 1791871559237
+     },
+     "ollivier_sacha": {
+      "choix": {
+       "0": 3
+      },
+      "par": "nogaret_zoe",
+      "ms": 1791871559401
+     },
+     "quinton_enzo": {
+      "choix": {
+       "0": 3
+      },
+      "par": "perraud_jade",
+      "ms": 1791871559576
+     },
+     "duvernay_michel": {
+      "choix": {
+       "0": 0,
+       "1": 1,
+       "2": 2
+      },
+      "par": "abrial_julien",
+      "ms": 1791871560516
+     },
+     "weber_clara": {
+      "choix": {
+       "0": 0,
+       "1": 2
+      },
+      "par": "bruneau_camille",
+      "ms": 1791871560171
+     },
+     "joubert_louis": {
+      "choix": {
+       "0": 3
+      },
+      "par": "isambert_chloe",
+      "ms": 1791871559933
+     },
+     "hebrard_nathan": {
+      "choix": {
+       "0": 3
+      },
+      "par": "gallois_manon",
+      "ms": 1791871560070
+     },
+     "zeller_lou": {
+      "choix": {
+       "0": 3
+      },
+      "par": "chevallier_theo",
+      "ms": 1791871560167
+     },
+     "carre_tom": {
+      "choix": {
+       "0": 3
+      },
+      "par": "baudry_lea",
+      "ms": 1791871560179
+     },
+     "foucher_hugo": {
+      "choix": {
+       "0": 3
+      },
+      "par": "esnault_ines",
+      "ms": 1791871560188
+     },
+     "maillard_noah": {
+      "choix": {
+       "0": 3
+      },
+      "par": "lacombe_emma",
+      "ms": 1791871560330
+     },
+     "sabatier_malo": {
+      "choix": {
+       "0": 3
+      },
+      "par": "rambaud_lina",
+      "ms": 1791871560438
+     }
+    },
+    "2": {
+     "esnault_ines": {
+      "choix": {
+       "0": 1
+      },
+      "par": "foucher_hugo",
+      "ms": 1791871569287
+     },
+     "perraud_jade": {
+      "choix": {
+       "0": 1
+      },
+      "par": "quinton_enzo",
+      "ms": 1791871569287
+     },
+     "nogaret_zoe": {
+      "choix": {
+       "0": 1
+      },
+      "par": "ollivier_sacha",
+      "ms": 1791871569381
+     },
+     "isambert_chloe": {
+      "choix": {
+       "0": 1
+      },
+      "par": "joubert_louis",
+      "ms": 1791871569398
+     },
+     "abrial_julien": {
+      "choix": {
+       "0": 0
+      },
+      "par": "duvernay_michel",
+      "ms": 1791871569413
+     },
+     "gallois_manon": {
+      "choix": {
+       "0": 3
+      },
+      "par": "hebrard_nathan",
+      "ms": 1791871569413
+     },
+     "baudry_lea": {
+      "choix": {
+       "0": 1
+      },
+      "par": "carre_tom",
+      "ms": 1791871569418
+     },
+     "tessier_anna": {
+      "choix": {
+       "0": 3
+      },
+      "par": "vallee_rayan",
+      "ms": 1791871569426
+     },
+     "lacombe_emma": {
+      "choix": {
+       "0": 1
+      },
+      "par": "maillard_noah",
+      "ms": 1791871569459
+     },
+     "rambaud_lina": {
+      "choix": {
+       "0": 1
+      },
+      "par": "sabatier_malo",
+      "ms": 1791871569472
+     },
+     "bruneau_camille": {
+      "choix": {
+       "0": 3
+      },
+      "par": "weber_clara",
+      "ms": 1791871569547
+     },
+     "chevallier_theo": {
+      "choix": {
+       "0": 3
+      },
+      "par": "zeller_lou",
+      "ms": 1791871569650
+     },
+     "quinton_enzo": {
+      "choix": {
+       "0": 3
+      },
+      "par": "perraud_jade",
+      "ms": 1791871569685
+     },
+     "foucher_hugo": {
+      "choix": {
+       "0": 1
+      },
+      "par": "esnault_ines",
+      "ms": 1791871569693
+     },
+     "joubert_louis": {
+      "choix": {
+       "0": 1
+      },
+      "par": "isambert_chloe",
+      "ms": 1791871569789
+     },
+     "ollivier_sacha": {
+      "choix": {
+       "0": 3
+      },
+      "par": "nogaret_zoe",
+      "ms": 1791871569820
+     },
+     "duvernay_michel": {
+      "choix": "aucun",
+      "par": "abrial_julien",
+      "ms": 1791871569875
+     },
+     "vallee_rayan": {
+      "choix": {
+       "0": 3
+      },
+      "par": "tessier_anna",
+      "ms": 1791871569890
+     },
+     "maillard_noah": {
+      "choix": {
+       "0": 3
+      },
+      "par": "lacombe_emma",
+      "ms": 1791871569915
+     },
+     "carre_tom": {
+      "choix": {
+       "0": 1
+      },
+      "par": "baudry_lea",
+      "ms": 1791871569920
+     },
+     "hebrard_nathan": {
+      "choix": {
+       "0": 1
+      },
+      "par": "gallois_manon",
+      "ms": 1791871569993
+     },
+     "sabatier_malo": {
+      "choix": {
+       "0": 1
+      },
+      "par": "rambaud_lina",
+      "ms": 1791871570005
+     },
+     "weber_clara": {
+      "choix": {
+       "0": 1
+      },
+      "par": "bruneau_camille",
+      "ms": 1791871570028
+     },
+     "zeller_lou": {
+      "choix": {
+       "0": 0
+      },
+      "par": "prof",
+      "ms": 1791871616852,
+      "avant": {
+       "choix": {
+        "0": 1
+       },
+       "par": "chevallier_theo"
+      }
+     }
+    }
+   },
+   "revelees": {
+    "0": 1,
+    "1": 2,
+    "2": 0
+   },
+   "trouvee": {
+    "abrial_julien": 1,
+    "nogaret_zoe": 1,
+    "chevallier_theo": 2
+   },
+   "aLire": {
+    "chevallier_theo_1_b": {
+     "eleveSlug": "chevallier_theo",
+     "qi": 1,
+     "sorte": "b",
+     "txt": "a dit que sa feuille disait son clic, Madrid ; Lou y a lu Sydney",
+     "lue": true,
+     "corrige": false
+    },
+    "tessier_anna_1_b": {
+     "eleveSlug": "tessier_anna",
+     "qi": 1,
+     "sorte": "b",
+     "txt": "a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Sydney",
+     "lue": true,
+     "corrige": false
+    },
+    "duvernay_michel_2_aucun": {
+     "eleveSlug": "duvernay_michel",
+     "qi": 2,
+     "sorte": "aucun",
+     "txt": "aucun de ces choix",
+     "lue": true,
+     "corrige": false
+    },
+    "zeller_lou_2_b": {
+     "eleveSlug": "zeller_lou",
+     "qi": 2,
+     "sorte": "b",
+     "txt": "a dit que sa feuille disait son clic, 4 ; Théo y a lu 8",
+     "lue": true,
+     "corrige": true
+    },
+    "carre_tom_0_b": {
+     "eleveSlug": "carre_tom",
+     "qi": 0,
+     "sorte": "b",
+     "txt": "n'a pas dit si sa feuille disait son clic",
+     "lue": true,
+     "corrige": false
+    },
+    "duvernay_michel_0_b": {
+     "eleveSlug": "duvernay_michel",
+     "qi": 0,
+     "sorte": "b",
+     "txt": "a dit que sa feuille ne disait pas son clic, Venise ; Julien y a lu Venise",
+     "lue": false,
+     "corrige": false
+    },
+    "quinton_enzo_0_aucun": {
+     "eleveSlug": "quinton_enzo",
+     "qi": 0,
+     "sorte": "aucun",
+     "txt": "aucun de ces choix",
+     "lue": true,
+     "corrige": false
+    },
+    "perraud_jade_1_co": {
+     "eleveSlug": "perraud_jade",
+     "qi": 1,
+     "sorte": "co",
+     "txt": "🤔 pense qu'Enzo a peut-être mal lu sa feuille",
+     "lue": true,
+     "corrige": false
+    },
+    "maillard_noah_2_co": {
+     "eleveSlug": "maillard_noah",
+     "qi": 2,
+     "sorte": "co",
+     "txt": "🤔 pense qu'Emma a peut-être mal lu sa feuille",
+     "lue": true,
+     "corrige": false
+    }
+   },
+   "autonomie": {
+    "foucher_hugo": {
+     "retire": true,
+     "ms": 1791871565535,
+     "quand": "heure"
+    },
+    "duvernay_michel": {
+     "retire": true,
+     "ms": 1791871604332,
+     "quand": "soir"
+    }
+   },
+   "coeval": {
+    "esnault_ines": {
+     "statut": "ok",
+     "ms": 1791871580397
+    },
+    "gallois_manon": {
+     "statut": "ok",
+     "ms": 1791871580406
+    },
+    "baudry_lea": {
+     "statut": "ok",
+     "ms": 1791871580410
+    },
+    "abrial_julien": {
+     "statut": "ok",
+     "ms": 1791871580412
+    },
+    "lacombe_emma": {
+     "statut": "ok",
+     "ms": 1791871580409
+    },
+    "tessier_anna": {
+     "statut": "ok",
+     "ms": 1791871580508
+    },
+    "bruneau_camille": {
+     "statut": "ok",
+     "ms": 1791871580625
+    },
+    "nogaret_zoe": {
+     "statut": "ok",
+     "ms": 1791871580675
+    },
+    "rambaud_lina": {
+     "statut": "ok",
+     "ms": 1791871580633
+    },
+    "isambert_chloe": {
+     "statut": "ok",
+     "ms": 1791871580842
+    },
+    "foucher_hugo": {
+     "statut": "ok",
+     "ms": 1791871580980
+    },
+    "chevallier_theo": {
+     "statut": "ok",
+     "ms": 1791871580912
+    },
+    "hebrard_nathan": {
+     "statut": "ok",
+     "ms": 1791871581180
+    },
+    "weber_clara": {
+     "statut": "ok",
+     "ms": 1791871581270
+    },
+    "sabatier_malo": {
+     "statut": "ok",
+     "ms": 1791871581275
+    },
+    "joubert_louis": {
+     "statut": "ok",
+     "ms": 1791871581473
+    },
+    "perraud_jade": {
+     "statut": "peut",
+     "qi": 1,
+     "ms": 1791871581620
+    },
+    "maillard_noah": {
+     "statut": "peut",
+     "qi": 2,
+     "ms": 1791871581923
+    },
+    "duvernay_michel": {
+     "statut": "mal",
+     "qi": 0,
+     "ecrit": {
+      "0": 2
+     },
+     "ms": 1791871583255
+    },
+    "quinton_enzo": {
+     "statut": "ok",
+     "ms": 1791871582355
+    },
+    "carre_tom": {
+     "statut": "ok",
+     "ms": 1791871591505
+    },
+    "ollivier_sacha": {
+     "statut": "ok",
+     "ms": 1791871591508
+    },
+    "vallee_rayan": {
+     "statut": "ok",
+     "ms": 1791871591680
+    },
+    "zeller_lou": {
+     "statut": "ok",
+     "ms": 1791871591806
+    }
+   },
+   "alertes": {
+    "a_duvernay_michel_0": {
+     "qi": 0,
+     "eleves": {
+      "0": "duvernay_michel",
+      "1": "abrial_julien"
+     },
+     "ms": 1791871583255,
+     "ecrit": {
+      "0": 2
+     },
+     "lu": {
+      "0": 3
+     },
+     "tranche": {
+      "decision": "auteur",
+      "choix": {
+       "0": 2
+      },
+      "eleve": "duvernay_michel",
+      "ms": 1791871590517
+     }
+    }
+   },
+   "bilanAffiche": 1791871593093,
+   "finLe": 1791871597551,
+   "copies": {
+    "rendues": 1791871632870,
+    "masquees": true
+   },
+   "lastDisconnect": 1791871312162
+  }
+ }
+}

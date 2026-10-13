@@ -3889,8 +3889,12 @@ var SCN = (function(){
   S.lecture = function(x, qi, sid){ var s = S.sess(sid), l = ((((s && s.lectures) || {})[qi]) || {})[x]; if(!l) return null;
     return Object.assign({}, l, {choix:l.choix === "aucun" ? "aucun" : (Array.isArray(l.choix) ? l.choix : Object.values(l.choix || {})).map(Number)}); };
   S.doitDireB = function(x, sid){ var e = S.etat(sid); if(!e || !x || e.qi == null) return false; var c = S.cote(x, sid);
-    if(e.ph === "b") return (c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid)) && !S.ditB(x, e.qi, sid) && !!S.reponse(x, e.qi, sid);
+    if(e.ph === "b"){ var r = S.reponse(x, e.qi, sid); if(e.pour) return x === e.pour && !!r && !S.ditB(x, e.qi, sid); if(e.rouvert === "tous" && !(r && r.rouverte)) return false;
+      return (c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid)) && !S.ditB(x, e.qi, sid) && !!r; }
     var b = e.bPour; return !!(b && Number(b.qi) === e.qi && (b.cote === c || S.seul(x, sid)) && LIVE.maintenant() < b.jusqua && !S.ditB(x, e.qi, sid) && S.reponse(x, e.qi, sid)); };
+  // (13/10) l'élève est-il de la question en cours ? une réouverture « pour tous » n'est que pour ceux qui n'avaient pas répondu, « pour un élève » que pour lui
+  S.concerne = function(x, sid){ var e = S.etat(sid); if(!e || e.qi == null) return false; if(e.ph === "rouvert" || e.pour) return e.pour === x;
+    if(e.rouvert === "tous"){ var r = S.reponse(x, e.qi, sid); return !r || !!r.rouverte; } return true; };
   S.estimationDe = function(x, sid){ var s = S.sess(sid); return ((s && s.autoevals) || {})[x] || null; };
   S.coevalDe = function(x, sid){ var s = S.sess(sid); return ((s && s.coeval) || {})[x] || null; };
   S.attestDe = function(n, x, sid){ var s = S.sess(sid); return ((((s && s.attest) || {})[n]) || {})[x] || null; };
@@ -4002,8 +4006,7 @@ var SCN = (function(){
         if(lu && lu.choix === "aucun"){ ajouter(x, qi, "aucun", "aucun de ces choix"); return; }
         if(!rep) return;
         var memes = lu && !(lu.choix === "aucun") && juste(lu.choix, {bonnes:rep.choix});
-        // une réponse donnée à une question rouverte n'a pas eu de B à dire (la maquette : « À lire ce soir (1) : TESSIER Anna… », pas Théo)
-        if(!b){ if(!rep.rouverte) ajouter(x, qi, "b", "n'a pas dit si sa feuille disait son clic"); }
+        if(!b) ajouter(x, qi, "b", "n'a pas dit si sa feuille disait son clic");
         else if(b === "oui" && lu && !memes) ajouter(x, qi, "b", "a dit que sa feuille disait son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
         else if(b === "non" && lu && memes) ajouter(x, qi, "b", "a dit que sa feuille ne disait pas son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
       });
@@ -4023,18 +4026,21 @@ var SCN = (function(){
     var ec = S.ecartees(sid), nbQ = ev ? ev.questions.length - ec.length : 0, inscrits = S.eleves(sid).length;
     var o = {presents:pres.length, absents:S.absents(sid).length, inscrits:inscrits, nbQ:nbQ};
     if(!s) return o;
+    // (13/10) « CONNECTÉS » : les présents entrés sur une tablette, à tout moment de la séance
+    var act = S.actifs(k, sid), entres = pres.filter(function(x){ return S.tabletteDe(x, sid) && (((s.entres || {})[x])); });
+    o.connectes = [entres.length, pres.length];
     if(qi != null && ["reflexion", "reponse", "close", "b", "passage", "rouvert", "pause"].indexOf(e.ph) >= 0){
       var rep = S.repondu(qi, k, sid), pc = S.premierCote(qi, sid);
-      var attendu = (e.ph === "reponse" || e.ph === "passage" || e.ph === "b") && e.tour === 1 ? pres.filter(function(x){ return S.cote(x, sid) === pc || S.seul(x, sid); }).length : pres.length;
+      // ceux qui peuvent répondre : les présents entrés (une moitié vide ne répond pas)
+      var attendu = (e.ph === "reponse" || e.ph === "passage" || e.ph === "b") && e.tour === 1 ? act.filter(function(x){ return S.cote(x, sid) === pc || S.seul(x, sid); }).length : act.length;
       o.repondu = [e.ph === "reflexion" ? 0 : rep.length, attendu];
       o.justes = [rep.filter(function(x){ return S.justeTablette(x, qi, sid); }).length, rep.length];
       o.question = [qi + 1 - ec.filter(function(x){ return x < qi; }).length, nbQ];
     }
-    var act = S.actifs(k, sid);
-    if(e.ph === "entree" || e.ph === "pret"){
-      var entres = pres.filter(function(x){ return S.tabletteDe(x, sid) && (((s.entres || {})[x])); });
+    if(e.ph === "appel" || e.ph === "entree" || e.ph === "pret"){
       var finis = entres.filter(function(x){ var a = S.attestDe(1, x, sid); return a && a.fini; });
-      o.connectes = [entres.length, pres.length]; o.attestations = [finis.length, entres.length]; o.repondu = [0, pres.length];
+      // « ATTESTATIONS » sur les présents (24 attendus, même si 4 seulement sont entrés) ; le moteur, lui, attend les entrés (attestEntres)
+      o.attestations = [finis.length, pres.length]; o.attestEntres = [finis.length, entres.length]; o.repondu = [0, act.length];
       o.pasEntres = pres.filter(function(x){ return entres.indexOf(x) < 0; });
       o.attestEnCours = {}; pres.forEach(function(x){ var a = S.attestDe(1, x, sid); if(entres.indexOf(x) >= 0 && !(a && a.fini)) o.attestEnCours[x] = a ? a.lignes || 0 : 0; });
     }
@@ -4324,7 +4330,10 @@ var ACT = (function(){
   // rouvrir une question close : une seule fois par question
   A.rouvrirTous = function(qi){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = "tous";
-    return poserDeroule(id, {ph:"passage", qi:qi, tour:1, cote:SCN.coteDuTour(qi, 1), duree:D().decompte, rouvert:"tous"}, plus); };
+    // seuls ceux qui n'ont pas répondu la retrouvent : on commence au premier tour où l'un d'eux a la main (le 2e si ceux du 1er ont tous répondu)
+    var manque = function(tour){ var c = SCN.coteDuTour(qi, tour); return SCN.actifs().some(function(x){ return !SCN.reponse(x, qi) && (SCN.seul(x) ? tour === 1 : SCN.cote(x) === c); }); };
+    var tour = manque(1) ? 1 : manque(2) ? 2 : 0; if(!tour) return Promise.resolve();
+    return poserDeroule(id, {ph:"passage", qi:qi, tour:tour, cote:SCN.coteDuTour(qi, tour), duree:D().decompte, rouvert:"tous"}, plus); };
   A.rouvrirPour = function(qi, x){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = x; plus["reouverts/" + x] = true;
     return poserDeroule(id, {ph:"rouvert", qi:qi, tour:SCN.cote(x) === SCN.premierCote(qi) ? 1 : 2, cote:SCN.cote(x), duree:SCN.tempsDe(qi).reponse, pour:x}, plus); };
@@ -4334,8 +4343,8 @@ var ACT = (function(){
     maj[cheminS(id, "presence_history/" + x + "/h_" + now)] = {ts:now, etat:"present"}; return ecrireQCM(maj, "retour"); };
   // l'estimation, puis la seconde attestation, puis la correction (dans l'ordre fixé ici : de la plus ratée à la mieux réussie)
   A.lancerEstimation = function(){ var id = sid(); return id ? poserDeroule(id, {ph:"estim"}) : Promise.resolve(); };
-  // « 📝 Lancer la correction » (après l'estimation) ouvre la seconde attestation ; la lecture commence d'elle-même quand tous l'ont cochée (MOTEUR) ;
-  // appelé en seconde attestation (« ▶️ Commencer la correction », ouvert à ce moment), il la lit tout de suite
+  // « 📝 Lancer la correction » (après l'estimation) ouvre la seconde attestation ; en seconde attestation, « ▶️ Commencer la correction » (c-attest2 :
+  // fermé tant qu'un présent n'a pas coché, puis ouvert) : c'est Paul qui le clique (décision du 13/10, 07:22), et la lecture de la 1re question commence
   A.lancerCorrection = function(){ var id = sid(); if(!id) return Promise.resolve(); var e = SCN.etat(id) || {};
     if(e.ph === "att2") return A.lireQuestion(null);
     var plus = {ordreCorr:SCN.ordreCorr()}; return poserDeroule(id, {ph:"att2"}, plus); };
@@ -4550,10 +4559,12 @@ var MOTEUR = (function(){
     if(e.ph === "passage") return {ph:"reponse", qi:e.qi, tour:e.tour, cote:e.cote, duree:t.reponse, rouvert:e.rouvert || null};
     if(e.ph === "reponse") return {ph:"b", qi:e.qi, tour:e.tour, cote:e.cote, duree:D.b, rouvert:e.rouvert || null};
     if(e.ph === "b" && e.tour === 1){
-      var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = SCN.presents(null, sid).some(function(x){ return SCN.seul(x, sid) ? !SCN.reponse(x, e.qi, sid) : SCN.cote(x, sid) === autre; });
+      var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = SCN.presents(null, sid).some(function(x){ return SCN.seul(x, sid) ? !SCN.reponse(x, e.qi, sid) : SCN.cote(x, sid) === autre && (e.rouvert !== "tous" || !SCN.reponse(x, e.qi, sid)); });
       if(quelquun) return {ph:"passage", qi:e.qi, tour:2, cote:autre, duree:D.decompte, rouvert:e.rouvert || null};
       return {ph:"close", qi:e.qi};
     }
+    // (13/10) un élève rouvert seul dit B après sa réponse, comme après chaque réponse ; puis la question se clôt
+    if(e.ph === "rouvert" && e.pour && SCN.reponse(e.pour, e.qi, sid)) return {ph:"b", qi:e.qi, tour:e.tour, cote:e.cote, duree:D.b, pour:e.pour, rouvert:e.rouvert || null};
     if(e.ph === "b" || e.ph === "rouvert") return {ph:"close", qi:e.qi};
     return null;
   }
@@ -4572,14 +4583,10 @@ var MOTEUR = (function(){
   };
   // l'entrée finie : quand tous les présents ont fini l'attestation, la console passe à « prêts »
   M.entree = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "entree") return; var c = SCN.compteurs(null, sid);
-    if(c.attestations && c.attestations[1] > 0 && c.attestations[0] === c.attestations[1]) poserDeroule(sid, {ph:"pret", reprise:e.reprise || null}); };
-  // la seconde attestation cochée par tous : la lecture de la première question commence d'elle-même (c-attest2 : « La correction commence quand
-  // tous les présents l'ont cochée en entier, comme au début » ; la scène suivante est déjà la lecture)
-  M.att2 = function(){ var sid = SCN.sid(), e = SCN.etat(sid); if(!sid || !e || e.ph !== "att2") return; var c = SCN.compteurs(null, sid);
-    if(c.prets && c.prets[1] > 0 && c.prets[0] === c.prets[1]) ACT.lireQuestion(null); };
-  // la console, le téléphone et le tableau mènent ; une tablette relaie seulement les temps comptés (M.relais), jamais l'entrée ni la correction
+    if(c.attestEntres && c.attestEntres[1] > 0 && c.attestEntres[0] === c.attestEntres[1]) poserDeroule(sid, {ph:"pret", reprise:e.reprise || null}); };
+  // la console, le téléphone et le tableau mènent ; une tablette relaie seulement les temps comptés (M.relais), jamais l'entrée ; la correction, comme tout moment de la classe, commence au geste de Paul (13/10)
   M.demarrer = function(relais){ if(M.actif) return; M.actif = true; M.relais = !!relais;
-    setInterval(function(){ try { M.tic(); if(!M.relais){ M.entree(); M.att2(); } } catch(e){ console.error(e); } }, relais ? 500 : 250); };
+    setInterval(function(){ try { M.tic(); if(!M.relais) M.entree(); } catch(e){ console.error(e); } }, relais ? 500 : 250); };
   return M;
 })();
 
@@ -10803,8 +10810,11 @@ function deplaceH(p){ if(!aDeplacerH(p)) return null; var t = SCN.tabletteDe(p);
 // la moitié d'un élève pendant une question (c3-base.js, etatQuestion), d'après le moment complété : en direct, ceux qui répondent encore
 function etatQuestionH(s){
   var m = momH(), nonRep = s.nonRep || m.nonRep || [], sansRep = m.sansRep || [], partis = m.partis || {};
+  var act = enDirect() ? actifsH() : null;   // les présents entrés sur une tablette
   return function(p, cote){
     if(partis[p]) return {cls:"m-parti", st:"🚪 parti à " + partis[p]};
+    // un présent jamais entré sur sa moitié : ni « répond », ni « attend son tour » (c-pret : « pas encore entré »)
+    if(act && act.indexOf(p) < 0) return {cls:"m-connexion", st:"pas encore " + (sexeH(p) === "F" ? "entrée" : "entré")};
     var dp = deplaceH(p); if(dp) return dp;
     if(s.reflexion) return {cls:"m-ecrit", st:"✍️ écrit"};
     if(s.fini) return sansRep.indexOf(p) >= 0 ? {cls:"m-pasrep", st:"⏳ pas de réponse"} : couleur(p, s.qi, false);

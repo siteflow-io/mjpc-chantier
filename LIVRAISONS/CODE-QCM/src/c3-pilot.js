@@ -29,6 +29,8 @@ function tablettesH(){
 function nbQH(){ return EV.questions.length; }
 // les élèves qui comptent dans les attentes de la séance : les présents entrés sur une tablette (SCN.actifs, QCM-1) ; dans la maquette, les présents
 function actifsH(k){ k = k || MO(); return enDirect() && typeof SCN.actifs === "function" ? SCN.actifs(k) : SCN.presents(k); }
+// (reprise 4, point 4) en direct, une question écartée n'est plus nulle part : ni au bilan, ni à la co-évaluation, ni au téléphone, ni dans les pastilles
+function horsQH(i){ if(!enDirect()) return false; var m = momH(); return (m.ecartees || []).map(Number).indexOf(Number(i)) >= 0; }
 function toutesQ(){ return EV.questions.map(function(q, i){ return i; }); }
 function memesChoixH(a, b){ if(a === "aucun" || b === "aucun") return a === b; a = (a || []).slice().sort(); b = (b || []).slice().sort(); return a.length === b.length && a.every(function(x, i){ return x === b[i]; }); }
 // la réponse d'un élève (SCN.reponse) ou sa lecture (SCN.lecture) : la liste de ses choix, « aucun », ou null
@@ -168,7 +170,12 @@ function etatPilot(k){
   // (QCM-2) en direct, « connectés » : les présents entrés sur une tablette (SCN.compteurs().connectes), pas tous les présents
   var stats = statsQ();
   if(enDirect() && c.connectes) stats = [[fr2(c.connectes), "connectés"]].concat(stats.slice(1));
-  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:m.reste, stats:stats, passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
+  // (reprise 4, point 6) pendant le passage (« Tu es prêt ? À toi dans 3 secondes »), le tour n'a pas commencé : le chrono de la réponse compte le passage et le tour entier
+  var chrono = enDirect() && ph === "passage" && qi != null ? (m.reste || 0) + SCN.tempsDe(qi).reponse : m.reste;
+  // (reprise 4, point 8, c-deplacer) deux élèves échangés pendant la séance, pas encore sur leur nouvelle moitié : le sous-titre des tablettes le dit
+  var dep = enDirect() ? actifsH(k).filter(aDeplacerH) : [];
+  var sousT = dep.length === 2 ? nomDe(dep[0]) + " et " + nomDe(dep[1]) + " échangés : leurs réponses déjà données les suivent" : undefined;
+  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:chrono, sousTitre:sousT, stats:stats, passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
     etat:etatQuestionH({qi:qi, tour:m.tour, fini:phase === "attente", reflexion:phase === "reflexion"}), legende:leg, nbQ:c.nbQ};
 }
 // (déplacer, 72) l'élève échangé ou déplacé pendant la séance, entré avant et pas encore sur sa nouvelle moitié : il retape son code

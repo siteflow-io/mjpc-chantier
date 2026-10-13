@@ -231,7 +231,7 @@ function EcrBilan(e, opts){
   var corrigees = (r.corrigees || []).slice();
   // (QCM-2) en direct, une alerte tranchée pendant l'heure (la lecture devient celle de Paul, par:"prof") : « Corrigé d'après ta feuille. »
   if(enDirect()) EV.questions.forEach(function(q, i){ var l = SCN.lecture(cleE(e), i); if(l && l.par === "prof" && corrigees.indexOf(i) < 0) corrigees.push(i); });
-  var compQ = function(cp){ return compQuestions(cp).filter(function(i){ return i !== an; }).map(function(i, j){ return h(F, {key:i}, j ? " · " : "", "Q" + (i+1) + " ", st[i] === "t" ? h("span", {className:"v-orange"}, "✓") : st[i] === "j" ? "✓" : "✗"); }); };
+  var compQ = function(cp){ return compQuestions(cp).filter(function(i){ return i !== an && !horsQH(i); }).map(function(i, j){ return h(F, {key:i}, j ? " · " : "", "Q" + (i+1) + " ", st[i] === "t" ? h("span", {className:"v-orange"}, "✓") : st[i] === "j" ? "✓" : "✗"); }); };
   var autoOk = !SCN.autonomie(cleE(e), k).retire;
   return Page(badgeDe(e), "🎯 Bilan personnel", h("div", {className:"bilan-c"},
     // la version imprimable de son bilan s'ouvre à part, pour l'élève de cette moitié (l'infobulle de la 7.7.1 : « Ouvre une version imprimable… »)
@@ -247,6 +247,7 @@ function EcrBilan(e, opts){
     h("div", {className:"bilan-bloc"}, h("h3", null, "Question par question"),
       h("div", {className:"recap"}, EV.questions.map(function(q, i){
         var s = st[i];
+        if(horsQH(i)) return null;
         if(i === an) return h("div", {key:i, className:"recap-l annulee"}, h("span", null, "Question " + (i+1) + " · annulée : elle ne compte pas."));
         return h("div", {key:i, className:"recap-l " + (s === "j" || s === "t" ? "j" : "f")},
           h("span", null, "Question " + (i+1) + " · ",
@@ -369,8 +370,8 @@ function ptsDe(q, c){ return c && c !== "aucun" && memesChoixH(c, q.bonnes) ? 1 
 function AlerteCoH(a){
   var q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), nL = nomDe(L), pA = prenomH(A), pL = prenomH(L);
   var lu = (LU[A] || [])[a.qi], ecrit = a.ecrit != null ? a.ecrit : ((SCN.coevalDe(A) || {}).ecrit), clic = (TABL[A] || [])[a.qi] || [], dit = (DIT_B[A] || [])[a.qi];
-  // (R2) la note réelle : « Trouvée au dernier moment » vaut déjà 1 point, et le garde si la feuille reste fausse
-  var stA = calc(A).st[a.qi], trouvee = stA === "t", avant = stA === "j" || trouvee ? 1 : ptsDe(q, lu), apres = ptsDe(q, ecrit) || (trouvee ? 1 : 0), ret = [A, L].filter(function(p){ return SCN.autonomie(p, MO()).retire; });
+  // (reprise 4) chaque bouton donne la note que la feuille vaut vraiment : Milan, quand la bonne réponse est Rome, vaut 0 point
+  var avant = ptsDe(q, lu), apres = ptsDe(q, ecrit), ret = [A, L].filter(function(p){ return SCN.autonomie(p, MO()).retire; });
   var sens = null;
   if(dit === "non" && memesChoixH(clic, lu)) sens = "👉 Pendant la question, avant de connaître la réponse, " + pA + " avait cliqué " + txtChoix(q, clic) + " et dit que sa feuille ne disait pas " + txtChoix(q, clic) + " : ça va dans son sens.";
   else if(dit === "oui" && memesChoixH(clic, ecrit)) sens = "👉 Pendant la question, avant de connaître la réponse, " + pA + " avait cliqué " + txtChoix(q, clic) + " et dit que sa feuille disait la même chose : ça va dans son sens.";
@@ -387,7 +388,8 @@ function AlerteCoH(a){
   ];
   var B = function(t, v, dec, ti){ return h("button", Object.assign({key:t, className:"btn btn-" + v, title:ti}, marqueH("AL:" + a.id + ":" + dec, function(){ if(dec === "feuille") ouvrirFen("coevalFeuille", a); else agir("trancher", [a.id, dec === "auteur" ? {decision:"auteur", choix:ecrit, eleve:A} : dec]); })), t); };
   var boutons = [
-    B("Donner raison à " + pA + " : " + txtChoix(q, ecrit) + " → " + apres + " point", "vert", "auteur", "Applique ce que " + pA + " dit avoir écrit" + (ecrit != null ? ", " + txtChoix(q, ecrit) : "") + " : sa question " + (a.qi + 1) + " passe à " + apres + " point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre."),
+    // (reprise 4) jamais un bouton à choix vide : « Donner raison à … » attend que l'élève ait dit ce qu'il a écrit
+    ecrit != null && B("Donner raison à " + pA + " : " + txtChoix(q, ecrit) + " → " + apres + " point", "vert", "auteur", "Applique ce que " + pA + " dit avoir écrit" + (ecrit != null ? ", " + txtChoix(q, ecrit) : "") + " : sa question " + (a.qi + 1) + " passe à " + apres + " point, et sa note se recalcule. L'alerte se ferme ; « ↩️ Défaire » la rouvre."),
     B("Donner raison à " + pL + " : " + txtChoix(q, lu) + " → " + avant + " point", "turquoise", "lecteur", "Garde la lecture " + deNom(pL) + ", " + txtChoix(q, lu) + " : rien ne change. L'alerte se ferme."),
     B("La feuille dit autre chose : je clique ce qu'elle dit", "primary", "feuille", "Ouvre les choix de la question " + (a.qi + 1) + " : tu cliques ce que dit la feuille " + deNom(pA) + ", et sa note se recalcule."),
     B("📌 Je relis ce soir la question " + (a.qi + 1), "or", "soir", "La question " + (a.qi + 1) + " " + deNom(pA) + " passe « ⚠️ À relire » : elle t'attend ce soir dans Résultats. L'alerte se ferme.")
@@ -408,7 +410,7 @@ function AlerteTrancheeH(a){
   var d = decisionDe(a), q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), pA = prenomH(A), pL = prenomH(L), n = calc(A), lu = a.lu != null ? a.lu : (LU[A] || [])[a.qi];
   var noteTxt = function(passe){ return "sa note provisoire " + (passe ? "passe" : "reste") + " à " + n.n + " / " + n.total + "."; };
   var t;
-  if(d.decision === "lecteur") t = ["✅ Alerte tranchée : raison donnée à " + pL, "La lecture " + deNom(pL) + ", " + txtChoix(q, lu) + ", est gardée : la question " + (a.qi + 1) + " de " + nA + " reste à " + (n.st[a.qi] === "t" ? 1 : ptsDe(q, lu)) + " ; " + noteTxt(false)];
+  if(d.decision === "lecteur") t = ["✅ Alerte tranchée : raison donnée à " + pL, "La lecture " + deNom(pL) + ", " + txtChoix(q, lu) + ", est gardée : la question " + (a.qi + 1) + " de " + nA + " reste à " + (n.pts[a.qi] != null ? n.pts[a.qi] : ptsDe(q, lu)) + " ; " + noteTxt(false)];
   else if(d.decision === "soir") t = ["📌 La question " + (a.qi + 1) + " de " + nA + " est à relire ce soir", "L'alerte se ferme : la question t'attend ce soir dans Résultats, « ⚠️ À relire » ; " + noteTxt(false)];
   else {
     var c = d.decision === "feuille" ? (d.choix || d.feuille) : (a.ecrit != null ? a.ecrit : (SCN.coevalDe(A) || {}).ecrit), p1 = ptsDe(q, c), p0 = ptsDe(q, lu);

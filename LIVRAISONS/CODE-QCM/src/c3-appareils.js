@@ -103,6 +103,7 @@ function TelBandeau(phase, droite){
 function TelStats(courante, connues){
   var k = MO();
   return h("div", {className:"tel-stats", title:"Aperçu de la classe par question. Vert = >75% bonnes, Bleu = >50%, Orange = >25%, Rouge = <25%. Les rouges sortiront en premier à la correction."}, EV.questions.map(function(q, i){
+    if(horsQH(i)) return null;
     var connu = connues.indexOf(i) >= 0, b = bilanQ(i, k), tx = b.repondu ? Math.round(b.justes * 100 / b.repondu) : 0;
     var c = i === courante && !connu ? "cur" : !connu ? "vide" : tx >= 75 ? "v" : tx >= 50 ? "b" : tx >= 25 ? "o" : "r";
     return h("div", {key:i, className:"tel-st " + c, title:"Q" + (i+1) + (connu || b.repondu ? " — " + b.justes + "/" + b.repondu + " bonnes (" + tx + "%)" : " — pas de réponse")}, h("div", null, "Q" + (i+1)), h("div", {style:{fontSize:".62rem", opacity:.9}}, connu ? tx + " %" : (i === courante ? "en cours" : "—")));
@@ -174,6 +175,8 @@ function telPastille(p, qi, mode){
     var s = calc(p).st[qi];
     return s === "j" ? {t:"✓", cls:"tp-juste"} : s === "t" ? {t:"✓", cls:"tp-trouvee"} : {t:"✗", cls:"tp-faux"};
   }
+  // (reprise 4, point 7) en direct, un élève sans réponse (ou jamais entré) n'est pas « ✗ » : il est dit comme sur la console, « ⏳ »
+  if(enDirect() && qi != null && !SCN.reponse(p, qi)) return {t:"⏳", cls:"tp-rouge"};
   var c = (RT[p] || "")[qi];
   return c === "J" ? {t:"✓", cls:"tp-juste"} : c === "Y" ? {t:"✓+", cls:"tp-jaune"} : c === "O" ? {t:"½", cls:"tp-orange"} : {t:"✗", cls:"tp-faux"};
 }

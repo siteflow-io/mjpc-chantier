@@ -267,7 +267,9 @@ var SCN = (function(){
   S.doitDireB = function(x, sid){ var e = S.etat(sid); if(!e || !x || e.qi == null) return false; var c = S.cote(x, sid);
     if(e.ph === "b"){ var r = S.reponse(x, e.qi, sid); if(e.pour) return x === e.pour && !!r && !S.ditB(x, e.qi, sid); if(e.rouvert === "tous" && !(r && r.rouverte === "tous")) return false;
       return (c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid)) && !S.ditB(x, e.qi, sid) && !!r; }
-    var b = e.bPour; return !!(b && Number(b.qi) === e.qi && (b.cote === c || S.seul(x, sid)) && LIVE.maintenant() < b.jusqua && !S.ditB(x, e.qi, sid) && S.reponse(x, e.qi, sid)); };
+    var b = e.bPour; if(!(b && Number(b.qi) === e.qi && LIVE.maintenant() < b.jusqua && !S.ditB(x, e.qi, sid))) return false; var rb = S.reponse(x, e.qi, sid); if(!rb) return false;
+    if(b.pour) return x === b.pour; if(b.rouvert === "tous" && rb.rouverte !== "tous") return false;
+    return b.cote === c || S.seul(x, sid); };
   // (13/10) l'élève est-il de la question en cours ? une réouverture « pour tous » n'est que pour ceux qui n'avaient pas répondu, « pour un élève » que pour lui
   S.concerne = function(x, sid){ var e = S.etat(sid); if(!e || e.qi == null) return false; if(e.ph === "rouvert" || e.pour) return e.pour === x;
     if(e.rouvert === "tous"){ var r = S.reponse(x, e.qi, sid); return !r || r.rouverte === "tous"; } return true; };
@@ -331,6 +333,7 @@ var SCN = (function(){
     var an = S.annulees(sid), ec = S.ecartees(sid), corr = S.corrigeesAu(k, sid), lanc = S.lancees(sid);
     var papier = s.lancee && s.lancee.mode === "papier", tr = papier ? null : S.trouveeCalculee(x, sid), st = [], pts = [];
     ev.questions.forEach(function(q, qi){
+      if(ec.indexOf(qi) >= 0){ st.push("e"); pts.push(null); return; }   // (13/10) une question écartée n'est nulle part : ni juste, ni fausse
       var rep = S.reponse(x, qi, sid);
       if(!rep && lanc[qi] && S.partiA(x, lanc[qi], sid)){ st.push("x"); pts.push(null); return; }
       if(papier){ var g = ((s.papier || {})[x] || {})[qi]; if(g == null){ st.push("n"); pts.push(null); } else { st.push(g === "j" || g === true || g === 1 ? "j" : "f"); pts.push(st[st.length - 1] === "j" ? 1 : 0); } return; }
@@ -442,7 +445,7 @@ var SCN = (function(){
     // une séance reprise à une autre heure, avant « ▶️ Reprendre » : la phase gelée qui recommencera ({ph, qi, tour})
     if(e.reprise && e.ph !== "pause") m.reprise = {ph:e.reprise.ph, qi:e.reprise.qi, tour:e.reprise.tour};
     if(e.ph === "reponse" || e.ph === "rouvert") m.nonRep = S.presents(k, sid).filter(function(x){ return S.aLaMain(x, sid) && !S.reponse(x, e.qi, sid); });
-    if(e.ph === "close") m.sansRep = S.presents(k, sid).filter(function(x){ return !S.reponse(x, e.qi, sid); });
+    if(e.ph === "close") m.sansRep = S.actifs(k, sid).filter(function(x){ return !S.reponse(x, e.qi, sid); });   // (13/10) les entrés seulement : un jamais entré ne peut pas répondre
     // la moitié qui dit encore B pendant que la suite a commencé (un geste de Paul a coupé l'attente) : {cote, qi, tour, reste}
     if(e.bPour && Number(e.bPour.qi) === e.qi && LIVE.maintenant() < e.bPour.jusqua) m.bPour = {cote:e.bPour.cote, qi:Number(e.bPour.qi), tour:e.bPour.tour, reste:Math.ceil((e.bPour.jusqua - LIVE.maintenant()) / 1000)};
     if(e.ph === "entree" || e.ph === "pret"){ m.pasEntres = c.pasEntres; m.attestEnCours = c.attestEnCours; }
@@ -661,22 +664,24 @@ var ACT = (function(){
      « les seconds sont figés et disent… ; la question est close »). La suite commence tout de suite ; la moitié qui vient de répondre dit B
      pendant ce temps, jusqu'à la fin de son temps de B (deroule.bPour = {cote, qi, tour, jusqua}). Au bout du temps, sans geste, la séance
      enchaîne comme les moments de la maquette : B, puis le passage. */
-  function bPour(x){ return {cote:x.cote || SCN.coteDuTour(x.qi, x.tour || 1), qi:x.qi, tour:x.tour || 1, jusqua:LIVE.maintenant() + D().b * 1000}; }
+  function bPour(x){ return {cote:x.cote || SCN.coteDuTour(x.qi, x.tour || 1), qi:x.qi, tour:x.tour || 1, jusqua:LIVE.maintenant() + D().b * 1000, pour:x.pour || null, rouvert:x.rouvert || null}; }
   // « ✋ Autoriser la réponse » : « Coupe la réflexion : « POSE TON STYLO » sur les deux moitiés, puis le 1er tour » — le passage (t-q1-passage1), puis le tour
   A.autoriserReponse = function(){ var x = e(), id = sid(); if(!id || x.ph !== "reflexion") return Promise.resolve();
     return poserDeroule(id, {ph:"passage", qi:x.qi, tour:1, cote:SCN.coteDuTour(x.qi, 1), duree:D().decompte}); };
   A.tourSuivant = function(){ var x = e(), id = sid(); if(!id) return Promise.resolve();
     if((x.ph === "reponse" || x.ph === "passage" || x.ph === "b") && x.tour === 1){
-      var autre = SCN.coteDuTour(x.qi, 2), quelquun = SCN.presents().some(function(y){ return SCN.seul(y) ? !SCN.reponse(y, x.qi) : SCN.cote(y) === autre; });
+      var autre = SCN.coteDuTour(x.qi, 2), quelquun = (x.rouvert === "tous" ? SCN.actifs() : SCN.presents()).some(function(y){ return SCN.seul(y) ? !SCN.reponse(y, x.qi) : SCN.cote(y) === autre && (x.rouvert !== "tous" || !SCN.reponse(y, x.qi)); });
       var b = x.ph === "b" ? Object.assign(bPour(x), {jusqua:(x.depuis || 0) + (x.duree || 0) * 1000}) : bPour(x);
       if(!quelquun) return poserDeroule(id, {ph:"close", qi:x.qi, bPour:b});
-      return poserDeroule(id, {ph:"reponse", qi:x.qi, tour:2, cote:autre, duree:SCN.tempsDe(x.qi).reponse, bPour:b});
+      return poserDeroule(id, {ph:"reponse", qi:x.qi, tour:2, cote:autre, duree:SCN.tempsDe(x.qi).reponse, bPour:b, rouvert:x.rouvert || null});
     }
     return Promise.resolve(); };
   A.cloreQuestion = function(){ var x = e(), id = sid(); if(!id) return Promise.resolve();
     if((x.ph === "reponse" || x.ph === "passage") && x.tour === 2) return poserDeroule(id, {ph:"close", qi:x.qi, bPour:bPour(x)});
     if(x.ph === "b") return poserDeroule(id, {ph:"close", qi:x.qi, bPour:Object.assign(bPour(x), {jusqua:(x.depuis || 0) + (x.duree || 0) * 1000})});
-    if(x.ph === "rouvert" || x.ph === "reponse" || x.ph === "passage" || x.ph === "reflexion") return poserDeroule(id, {ph:"close", qi:x.qi});
+    // (13/10) clore pendant un tour ou une réouverture : ceux qui viennent de répondre disent B pendant ce temps (B pour chaque élève qui a répondu)
+    if(x.ph === "rouvert" || x.ph === "reponse") return poserDeroule(id, {ph:"close", qi:x.qi, bPour:bPour(x)});
+    if(x.ph === "passage" || x.ph === "reflexion") return poserDeroule(id, {ph:"close", qi:x.qi});
     return Promise.resolve(); };
   // le temps tapé en direct vaut pour toute la question ; le temps en cours suit
   A.ajouterTemps = function(sorte, s, qi){
@@ -709,9 +714,9 @@ var ACT = (function(){
     // seuls ceux qui n'ont pas répondu la retrouvent : on commence au premier tour où l'un d'eux a la main (le 2e si ceux du 1er ont tous répondu)
     qi = Number(qi);
     var manque = function(tour, l){ var c = SCN.coteDuTour(qi, tour); return l.some(function(x){ return !SCN.reponse(x, qi) && (SCN.seul(x) ? tour === 1 : SCN.cote(x) === c); }); };
-    // d'abord les présents entrés, sinon tous les présents ; jamais rien de moins qu'avant : à défaut, la réouverture part du 1er tour
+    // les présents entrés qui n'ont pas répondu (un jamais entré ne peut pas répondre)
     var act = SCN.actifs(), pres = SCN.presents();
-    var tour = manque(1, act) ? 1 : manque(2, act) ? 2 : manque(1, pres) ? 1 : manque(2, pres) ? 2 : 1;
+    var tour = manque(1, act) ? 1 : manque(2, act) ? 2 : 0; if(!tour) return Promise.resolve();   // (13/10) personne d'entré sans réponse : rien à rouvrir
     return poserDeroule(id, {ph:"passage", qi:qi, tour:tour, cote:SCN.coteDuTour(qi, tour), duree:D().decompte, rouvert:"tous"}, plus); };
   A.rouvrirPour = function(qi, x){ var id = sid(), s = SCN.sess(), r0 = (s.rouverts || {})[qi]; if(!id || r0 === "tous" || r0 === x) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = x; plus["reouverts/" + x] = true;
@@ -939,7 +944,7 @@ var MOTEUR = (function(){
     if(e.ph === "reponse") return {ph:"b", qi:e.qi, tour:e.tour, cote:e.cote, duree:D.b, rouvert:e.rouvert || null};
     if(e.ph === "b" && e.pour) return {ph:"close", qi:e.qi};   // le B d'un élève rouvert seul : jamais un 2e tour pour la classe
     if(e.ph === "b" && e.tour === 1){
-      var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = SCN.presents(null, sid).some(function(x){ return SCN.seul(x, sid) ? !SCN.reponse(x, e.qi, sid) : SCN.cote(x, sid) === autre && (e.rouvert !== "tous" || !SCN.reponse(x, e.qi, sid)); });
+      var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = (e.rouvert === "tous" ? SCN.actifs(null, sid) : SCN.presents(null, sid)).some(function(x){ return SCN.seul(x, sid) ? !SCN.reponse(x, e.qi, sid) : SCN.cote(x, sid) === autre && (e.rouvert !== "tous" || !SCN.reponse(x, e.qi, sid)); });
       if(quelquun) return {ph:"passage", qi:e.qi, tour:2, cote:autre, duree:D.decompte, rouvert:e.rouvert || null};
       return {ph:"close", qi:e.qi};
     }

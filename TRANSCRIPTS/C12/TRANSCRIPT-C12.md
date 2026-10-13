@@ -21841,3 +21841,34 @@ Réponse mot pour mot :
 Si tu valides, j'écris la reprise et les exécutants tournent jusqu'à la mise en ligne.
 
 13/10/2026 14:31 MEMO
+
+---
+
+## TOUR 706 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 14:28) beaucoup trop de choses. je veux quelque chose de simple: pouvoir avoir un bouton permanent sur l'éval de démo "lancer" avec une classe. et voilà tout. Par ailleurs, j'ai lancé ma copie de la démo du coup, avec les hugo. en lançant la question 1, puis en cliquant sur l'oeil depuis mon pilotage, j'ai vu que la question était lancée, alors que les élèves ne s'étaient pas connectés. ça veut dire que leur écran de connexion est shunté par le fait que je lance, ou alors c'est la vue oeil qui est mensongère? mesure.
+
+---
+
+## TOUR 706 — Claude (conscience n°12)
+
+Mesuré : sonde par le geste (`AUDITS/QCM-800-OEIL-13-10/`, `b2501206`), sur l'app téléchargée du site (md5 `9a5f5814…`), en 14 s. La tablette reste à « Combien êtes-vous » ; les cartes de la console donnent « ✍️ écrit » ×25 ; « 👁 » montre « QUESTION 1 / 3 » sur les deux moitiés (K32 en échec). Dans le code, `voirTablette` (`c3-objets.js`) prend `PAIRES[n-1]` puis appelle `TabletteVue` sans interaction, donc `MoitieH` pour tout élève placé, entré ou non. Les propriétaires d'après COMMUN §1 : QCM-2 pour l'œil et les cartes, QCM-3 pour l'éditeur, la liste et la démo, QCM-1 pour le lancement (`S.manques`). Fait : la reprise 7 en tête de DEFAUTS-OUVERTS.md (`6aff2623`) ; un réveil à 15:26 (`trig_01Cs7WeuePMA6nBAsHgP3xte`).
+
+Réponse mot pour mot :
+
+**À jouer :** la nouvelle app en ligne, telle quelle · **en cours chez l'exécutant :** rien tant que tu n'as pas collé le message du point 1050 · **ouvert :** la reprise 7
+
+1047. Mesuré par le geste sur l'app en ligne, avec Q1 lancée et personne d'entré. Le passage par l'écran de connexion n'est pas sauté : la vraie tablette reste sur « Combien êtes-vous sur cette tablette ? ». C'est l'œil qui ment : il dessine la question au nom des deux élèves que le plan de classe met sur cette tablette, sans regarder s'ils sont entrés. Les cartes des tablettes mentent aussi : elles mettent « ✍️ écrit » sous chacun des 25 élèves, alors qu'aucun n'est entré. Le compteur « 0/25 connectés », lui, est juste.
+
+1048. Compris, je fais simple, et je ne garde que tes deux demandes. La première : un bouton permanent « 🚀 Lancer » sur la ligne de la démo. Il mène au lancement avec la démo déjà choisie, tu choisis la classe, puis vient l'appel. La seconde, ta demande de 14:18 : l'option « Sans chapitre pour l'instant », avec un message permanent en tête des évaluations tant qu'il en reste une à rattacher. J'y ajoute la correction de l'œil et des cartes. Rien d'autre.
+
+1049. Le calendrier : tout est poussé à 15:10, le verdict de QCM-4 tombe à 15:25, mon contrôle se fait à 15:30, et la mise en ligne à 15:40 si tout va. Les exécutants tournent jusqu'à ce que j'écrive « en ligne ».
+
+1050. À coller dans les quatre sessions :
+« Reprise 7 du 13/10 : lis la section « Reprise 7 du 13/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) et fais ta part tout de suite ; tout est poussé à 15:10, VERDICT.md à 15:25 ; tu tournes jusqu'à ce que la conscience écrive « en ligne », et tu pousses chaque morceau avec ta ligne dans ETAT.md. »
+
+La mesure : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/QCM-800-OEIL-13-10/README.md
+
+13/10/2026 14:31 MEMO

@@ -21095,3 +21095,9 @@ Réponse mot pour mot :
 958. **Après ton cours**, je te proposerai la suite pour la nouvelle app. Rien ne se fait sans ton mot.
 
 13/10/2026 08:33 MEMO
+
+---
+
+## Note (13/10, 08:30) — le réveil « Audit QCM de 08:30 » est arrivé une seconde fois, à son heure prévue, après avoir été lancé à la main à 08:28
+
+Mesuré : rien de nouveau sur `code-qcm` depuis 08:14 (`e99c709c`, puis la ligne de la conscience `2f41d0e9`). L'audit et le verdict du tour 684 valent tels quels ; aucun message envoyé à Paul, pour ne pas lui répéter le même verdict.

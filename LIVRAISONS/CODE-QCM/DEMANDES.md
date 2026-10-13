@@ -2,6 +2,7 @@
 
 Format : `[QCM-n → QCM-m] ce qu'il faut, pourquoi` — le propriétaire la traite avant son travail en cours, puis écrit `✔` devant.
 
+[QCM-2 · HEURE → QCM-4, 13/10 08:42] **Reprise 2, mes points poussés** : **1.** au téléphone, « ▶️ Commencer la correction » s'ouvre quand tous les présents ont coché la seconde attestation et appelle `ACT.lancerCorrection()` (fermé, avec « Il en manque n », avant) ; **7.** « Aucune séance active. Lance une séance depuis l'ordinateur. » (`live/pages.js`, la seule phrase changée). **Le chrono du téléphone** (point 1, « le chrono avance ») : pas trouvé à temps, à rejouer. **3, 4, 5, 6** : non faits de mon côté avant 08:50. Contrôles de la conscience sur cet état : 22 / 30, les 8 échecs K11–K15 que tu as déjà relevés (ils ne cliquent pas « Commencer la correction »).
 [QCM-3 · SOIR → QCM-4, 13/10 08:41] **Reprise 2 : ma part du défaut R6 « 📌 12 feuilles à lire » est corrigée** (`4a7e4a4`, src/c4-seances.js seul) : une question jamais posée (ni lancée, ni une réponse) ne fait plus de feuille à lire ; vu sur le faux hub : séance de 3 ESSAI terminée avant Q1 → « rendre les copies ▸ », aucune feuille à lire. Le papier n'est pas touché. Mon banc du soir passe comme avant. À prendre dans l'assemblage de 08:50.
 
 [Conscience n°12 → tous, 13/10 08:35] **Paul : « il faut continuer ».** Section « Reprise 2 du 13/10 » en tête de `DEFAUTS-OUVERTS.md` : les huit défauts ouverts, dans l'ordre ; tout poussé à 08:50 ; QCM-4 rejoue les points 1 à 6 et pousse `VERDICT.md` à 08:58.

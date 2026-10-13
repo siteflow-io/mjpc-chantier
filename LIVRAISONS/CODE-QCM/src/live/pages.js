@@ -198,7 +198,7 @@ function TelephoneSansSeance(){
   return h("div", {style:{padding:"2rem", color:"#fff", textAlign:"center", minHeight:"100vh"}},
     h("div", {style:{fontSize:"3rem", marginBottom:"1rem"}}, "📱"),
     h("h2", {style:{marginBottom:".5rem"}}, "Pilotage mobile"),
-    h("p", {style:{opacity:.9}}, "Aucune session active. Lance une session depuis l'ordinateur."));
+    h("p", {style:{opacity:.9}}, "Aucune séance active. Lance une séance depuis l'ordinateur."));
 }
 /* Le téléphone scanné : il écrit qcm/qrScans/<nonce>, et la fenêtre du QR se ferme sur la console (la 7.7.1, VuePhone, l. 5374 à 5380) */
 (function(){ try { var qr = LIVE.params().get("qr"); if(qr && LIVE.appareil() === "telephone" && db) db.ref(DB_ROOT + "/qrScans/" + qr).set(firebase.database.ServerValue.TIMESTAMP); } catch(e){ console.error(e); } })();

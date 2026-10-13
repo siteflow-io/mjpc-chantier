@@ -91,7 +91,9 @@ function TelEtapeH(){
   return TelCadre([
     TelBandeau(estim ? "Phase autoévaluation — " + (compte ? compte[0] + " / " + compte[1] : "") + " élèves" : "✍️ Seconde attestation — " + (compte ? compte[0] + " / " + compte[1] : "") + " prêts", null),
     h("div", {key:"a", className:"tel-actions"}, estim ? h("button", Object.assign({className:"tel-btn tb-or tb-large", title:"Ferme l'estimation et ouvre, sur chaque moitié, la seconde attestation, avant la première question à corriger."}, geste(null, "lancerCorrection")), "📝 Lancer la correction")
-      : h("button", {className:"tel-btn tb-primary tb-large ferme", disabled:true, title:"S'ouvre quand les " + c.presents + " présents ont coché toutes les lignes de la seconde attestation. Il en manque " + manquent.length + "."}, "🔒 ▶️ Commencer la correction")),
+      // (décision de Paul, 13/10) la correction commence à son clic : fermé tant qu'il en manque, ouvert ensuite
+      : manquent.length > 0 || !enDirect() ? h("button", {className:"tel-btn tb-primary tb-large ferme", disabled:true, title:"S'ouvre quand les " + c.presents + " présents ont coché toutes les lignes de la seconde attestation. Il en manque " + manquent.length + "."}, "🔒 ▶️ Commencer la correction")
+      : h("button", Object.assign({className:"tel-btn tb-primary tb-large", title:"Commence la correction, par la question la plus ratée sur les tablettes."}, geste(null, "lancerCorrection")), "▶️ Commencer la correction")),
     manquent.length > 0 && h("div", {key:"m", className:"tel-manquent"}, h("strong", null, "Pas encore : "), manquent.map(nomDe).join(" · ")),
     h("div", {key:"st"}, TelStats(null, toutesQ())),
     h("div", {key:"t"}, h(TelTerminer))]);

@@ -21904,3 +21904,34 @@ Réponse mot pour mot :
 1055. Pour la suite, le bouton « 🚀 Lancer » de la démo, qui est dans la reprise 7, règle le problème : tes essais avec une vraie classe passeront par la démo, qui ne compte jamais. Je te propose en plus une règle simple : une séance terminée où aucun élève n'a répondu ne compte pas. Tu veux que je l'ajoute à la reprise 7 ?
 
 13/10/2026 14:41 MEMO
+
+---
+
+## TOUR 708 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 15:27) ok autre chose: lancer une nouvelle séance. il faut que je puisse mettre l'heure de fin de séance avant de lancer (le "fin de l'heure" doit être avant le check in). et de ce fait, le message "ça tient dans les 45 minutes utiles" doit aussi s'adapter: si il voit que la séance est lancée trop en retard, il doit alerter. mais ça doit être avant le lancement de la séance. sinon, on commence la séance en pensant que ça va le faire, alors que non.
+
+---
+
+## TOUR 708 — Claude (conscience n°12)
+
+Mesuré : aucun commit sur `code-qcm` depuis `6aff2623` ; dans ETAT.md, les quatre sont arrêtés depuis 13:32. Le réveil de 15:26 avait sonné à 15:28 (`trig_01Cs7WeuePMA6nBAsHgP3xte`, supprimé après coup). Dans le code en ligne : le champ « 🕙 Fin de l'heure » est dans la fenêtre « 📋 Check-in » (`etape2.js`) ; `live/gestes.js` l. 33 prend l'heure à l'appel (`ACT.appelFini`) ; `S.finHeure` vaut `lancee.fin`, sinon le lancement + 55 min ; `texteDureeV` (`c4-seances.js` l. 1044) dit « ✅ Ça tient dans les 45 minutes utiles » ou « ⚠️ n min de plus » ; la carte de lancement ne montre pas la durée pour la démo ; « 🎓 Démo » figure dans la liste des évaluations du lancement, avec « 🎓 Lancer la démo ». Fait : la reprise 7, point 5, et le recalage (`e0bfc349`) ; un réveil à 16:31 (`trig_01NPD2kYGM7tKmGVEN5MspHt`).
+
+Réponse mot pour mot :
+
+**À jouer :** la nouvelle app en ligne, telle quelle · **en cours chez l'exécutant :** rien. Le message de la reprise 7 n'a pas été collé : personne n'a travaillé depuis 13:33 · **ouvert :** la reprise 7 (point 1060), la séance de test des 4e Hugo (1054), ta réponse au point 1055
+
+1056. Mesuré dans le code en ligne. Aujourd'hui, « 🕙 Fin de l'heure » se tape dans la fenêtre de l'appel, donc après le premier clic sur « 🚀 Lancer la séance ». Par défaut, c'est le lancement plus 55 minutes. Le message sous « ⏱️ Durée estimée » compare la durée à 45 minutes fixes, quelle que soit l'heure : il dit « ✅ Ça tient dans les 45 minutes utiles » même si la séance commence en retard.
+
+1057. Ce que j'ai écrit pour les exécutants. Dans « 🎯 Lancer une nouvelle séance », un champ « 🕙 Fin de l'heure » est placé avant « 🚀 Lancer la séance ». Il vaut par défaut maintenant plus 55 minutes, et il quitte la fenêtre de l'appel.
+
+1058. Le message compare la durée estimée au temps qui reste jusqu'à la fin de l'heure. Il se recalcule quand tu changes l'heure, et chaque minute. Il dit soit « ✅ Ça tient : 41 min, il en reste 48 avant la fin de l'heure », soit « ⚠️ Ça ne tient pas : la séance demande 41 min, il n'en reste que 32 avant la fin de l'heure (9 min de trop) ». Il alerte sans bloquer, avant le lancement, et il s'affiche aussi pour la démo. Si ces phrases ne te vont pas, corrige-les.
+
+1059. En passant, j'ai mesuré que la démo se lance déjà avec une classe depuis le pilotage. Dans « 🎯 Lancer une nouvelle séance », choisis « 🎓 Démo — apprendre le déroulé » dans la liste des évaluations, puis clique « 🎓 Lancer la démo ». Le bouton « 🚀 Lancer » que tu as demandé sur la ligne de la démo reste dans la reprise.
+
+1060. La reprise 7 a maintenant quatre points : l'œil vrai, « 🚀 Lancer » sur la démo, « Sans chapitre pour l'instant », et la fin de l'heure avant l'appel. Calendrier : tout est poussé à 16:15, le verdict tombe à 16:30, je contrôle à 16:35, et la mise en ligne se fait à 16:45 si tout va. À coller dans les quatre sessions :
+« Reprise 7 du 13/10 : lis la section « Reprise 7 du 13/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) et fais ta part tout de suite ; tout est poussé à 16:15, VERDICT.md à 16:30 ; tu tournes jusqu'à ce que la conscience écrive « en ligne », et tu pousses chaque morceau avec ta ligne dans ETAT.md. »
+
+13/10/2026 15:33 MEMO

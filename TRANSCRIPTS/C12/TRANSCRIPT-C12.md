@@ -21001,3 +21001,39 @@ Réponse mot pour mot :
 942. **Tout est écrit en tête de leur liste de défauts** : ils le traitent cette nuit, l'élève et le téléphone d'abord. Mon réveil de 06:35 reste : j'auditerai ce qui a changé. Le compte rendu : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/CODE-QCM-AUDIT-22H-12-10/README.md
 
 12/10/2026 22:31 MEMO
+
+---
+
+## TOUR 682 — le réveil programmé (pas Paul)
+
+> (13/10, 06:36) [Message programmé par la conscience n°12 sur l'ordre de Paul (12/10 19:17, « oui 921 ») — il n'est pas de Paul ; reçu le 13/10 à 06:36.] Il est 06:35 le 13/10 : audit de la livraison finale du code du QCM (06:30). (La marche à suivre complète est dans le message programmé « Audit QCM de 06:35 », trig_018zdkXYaz1ZFYeYsZwmqi33.)
+
+---
+
+## TOUR 682 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `d8d47f9e` (06:29), 36 commits depuis `596b6ef2` ; `VERDICT.md` de QCM-4 (06:00, mis à jour 06:29 : l'heure et le soir « ne vont pas tels quels », 6 défauts de l'heure ouverts de l'aveu de QCM-1 et QCM-2, 6 corrections de 05:53 non rejouées) ; l'app livrée reconstruite par `build.py` : md5 identique `172efa3c…` ; mes contrôles dessus : 30/30 ; la fidélité de 06:16 : 120 atteints, 49 sans écart, 71 avec écarts non nommés, 37 jamais atteints ; les écarts élève et téléphone demandés à 22:28 identiques à 06:16 ; aucune réponse à la section de l'audit dans `DEFAUTS-OUVERTS.md`. Écrit : la reprise jusqu'à 08:45 en tête de `DEFAUTS-OUVERTS.md` (`ed546c10`), le compte rendu au sas. Rien poussé en production.
+
+Réponse mot pour mot :
+
+À jouer : rien de neuf : la 7.7.2 est en ligne · en cours chez l'exécutant : personne (les quatre se sont arrêtés à 06:30, comme prévu) · ouvert : ton choix (point 947) ; ta réponse au point 941
+
+943. **Verdict de 06:40 : ça ne va pas.** Je ne mets rien en ligne ; la 7.7.2 reste, celle d'hier avec ses deux pannes réparées.
+
+944. **Ce qui va** : mes contrôles passent sur l'app livrée, 30 sur 30 ; leur banc entier passe sans un échec, dont l'heure de ta 4e jouée en entier (11 questions, 107 vérifications sur 107).
+
+945. **Ce qui ne va pas, d'abord** : six défauts de l'heure sont encore ouverts, et ils le disent eux-mêmes. « Rouvrir pour tous » refait le 1er tour à ceux qui ont déjà répondu. Un élève rouvert seul n'a pas la question B, et ta console reste sur « Question close ». Les compteurs sont faux si un présent n'entre pas sur sa tablette. Si ta console se recharge, « Séance interrompue » annonce un état faux. L'alerte de la co-évaluation ignore « Trouvée au dernier moment ». Le tableau liste les absents. Rouvrir, un élève qui n'entre pas, une console rechargée : ce sont des gestes probables ce matin.
+
+946. **Ensuite** : six corrections faites à 05:53 que personne n'a encore vérifiées ; et ce que j'avais demandé hier soir n'a pas été traité : les mêmes différences avec la maquette sur les tablettes et ton téléphone qu'à 22:00, et 37 écrans de la maquette jamais testés.
+
+947. **Deux choix, à toi.** Soit tu fais cours avec la 7.7.2, et tu n'as rien à faire. Soit tu relances les quatre maintenant, jusqu'à 08:45 : ils corrigent ces défauts et ce que j'avais demandé pour les tablettes et le téléphone ; j'audite de 08:45 à 09:30 ; mise en ligne avant 10:00 si ça va, sinon la 7.7.2. Même dans ce cas, tous les écrans ne seront pas identiques à la maquette à 10:00.
+
+948. **Pour le second choix**, colle ceci dans chacune des quatre sessions, puis dis-moi « b » : je me programme pour 08:45.
+
+```
+Paul te relance jusqu'à 08:45. Lis la section « Reprise du 13/10 » en tête de LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md sur code-qcm, applique-la à la lettre pour tes points, d'une traite, et pousse à 08:45 au plus tard.
+```
+
+Le compte rendu : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/CODE-QCM-AUDIT-0630-13-10/README.md
+
+13/10/2026 06:43 MEMO

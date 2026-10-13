@@ -22126,3 +22126,43 @@ Dis-moi pour 1082 et 1083 ; la capture suit.
 La maquette, avec ses captures : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
 
 13/10/2026 16:03 MEMO
+
+---
+
+## TOUR 714 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (16:08) ok et si je clique sur le "autre chose?" que se passe-t-il? Enfin, regarde correction dictée, notamment la navigation dans les noms prénoms d'élève. si j'ai un tas qui n'est pas rangé dans l'ordre alpha, je veux pouvoir taper directement les initiales de l'élève suivant dans le tas, à la fin de la copie précédente, et ainsi de suite. Et évidemment, "lire les copies", ce ne sont que les questions qui ont besoin d'être lues par moi, pas l'ensemble! enfin, il faudrait que je sache ce que j'écris moi sur la copie de l'élève, à chaque question à vérifier. tu vois?
+
+---
+
+## TOUR 714 — Claude (conscience n°12)
+
+Mesuré : `matchEleveInitials` et le champ de fin de copie de `correction_dictee.html` (l. 494-509, 5158, 5205-5220), sans priorité aux initiales exactes ; `feuilleDitV` (`c4-seances.js` l. 552-559 : la lecture devient celle de Paul, celle du voisin est gardée en « avant », les lignes passent à lue et corrigée). Les sources de l'app n'ont pas bougé de `42e2d974` à `a5a69308` (tête de `code-qcm`, aucun exécutant n'a poussé). Maquette version 2 : `lire-copies.js` réécrit, assemblée md5 `83a70dd3…`, jouée par le geste (`capture.js`) sur le faux hub avec la séance du banc remise à l'état du soir ; aucune erreur de page ; les 7 captures regardées, 6 envoyées. Recompté par `aLireV` dans la page : 8 lignes à lire, une sur chacune de 8 copies (la v1 disait 9 : faux). Au sas : `MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/` (`8629ffb7`), la v1 dans `v1/`. Rien sur `code-qcm` ni en production.
+
+Réponse, mot pour mot :
+
+1090. « ✏️ Autre chose » ouvre les choix de la question, avec « Aucun de ces choix ». Tu cliques ce que dit la copie, puis « ✔ Valider » ; « Annuler » revient en arrière sans rien changer. Après « Valider » :
+- ce que tu as cliqué devient la lecture de la copie, et la note se recalcule ;
+- le bilan de l'élève dit « Corrigé d'après ta feuille » ;
+- la lecture du voisin n'est pas effacée : la fiche de l'élève la montre encore ;
+- le point d'autonomie du voisin ne change pas tout seul.
+
+1091. Le tas dans son ordre : c'est fait comme dans correction_dictee. Tu prends la copie du dessus, tu tapes ses initiales (« ct » pour CARRÉ Tom), puis Entrée. À la fin de chaque copie, le champ revient : « Copie suivante de ton tas — tape ses initiales ». La recherche est celle de correction_dictee : les deux initiales dans un sens ou dans l'autre, ou le début du nom ou du prénom. Chaque nom proposé dit « 1 question à lire », « ✔ lue » ou « rien à lire ».
+
+1092. Seulement les questions à lire : oui. Sur la séance du banc (24 copies), 8 copies ont une question à lire, les 16 autres rien. Une copie sans rien à lire affiche « Rien à lire sur cette copie : mets-la de côté. », et le champ de la suivante vient aussitôt. Une copie à lire ne montre que sa question à lire. Je corrige 1084 : c'est 8 questions, pas 9.
+
+1093. Ce que tu écris sur la copie : après chaque réponse, l'app te le dit en gros.
+- La copie dit ce que le voisin a lu : « ✍️ Sur la copie : rien à changer. »
+- Le voisin a lu une réponse fausse, la copie dit la bonne : « barre la correction en rouge, et mets un V vert. »
+- Le voisin a lu la bonne réponse, la copie en dit une fausse : « barre le V vert, et écris en vert la bonne réponse : « Rome ». »
+- Si la note change : « ✍️ Et la note : 1 / 3 → 2 / 3. »
+
+1094. Pour ces phrases, j'ai supposé qu'en classe, le voisin met un V vert quand c'est juste, et sinon barre en rouge et écrit la bonne réponse. Je ne sais pas si c'est ce qu'ils font. Dis-moi ce qu'ils écrivent vraiment sur la copie : seules ces trois phrases changeront.
+
+1095. Tu valides ? Si oui, je l'ajoute à la reprise 7, qui n'est pas encore lancée. J'attends aussi ton oui ou ton non sur 1082 (le chrono de lecture fige à 0) et 1083 (la tablette ne demande plus la classe).
+
+La maquette, avec les captures : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
+
+13/10/2026 16:18 MEMO

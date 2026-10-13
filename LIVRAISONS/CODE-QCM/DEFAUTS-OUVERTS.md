@@ -2,9 +2,21 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Reprise 3 du 13/10 — Paul (09:03) : « Si, ils continuent. » La séance est décalée à 13:00 ; le contrôle de la conscience est à 10:00
+
+Vous continuez, d'une traite, dans cet ordre, chaque correction poussée dès qu'elle passe `build.py` et votre essai ; **tout est poussé à 09:40 au plus tard**. De 09:40 à 09:58, QCM-4 assemble, passe tout, rejoue par le geste les points 1 à 5, lance un relecteur neuf sur l'heure seule, et pousse `VERDICT.md` **à 09:58**.
+
+1. [→ QCM-1] « 🔓 Rouvrir pour tous » : la question se rouvre vraiment pour ceux qui n'ont pas répondu, et leur tablette la retrouve (échec au geste à 08:58, `sorties/2026-10-13_0850/reprise2.txt`, captures 10 à 12).
+2. [→ QCM-1, QCM-2] « 🔓 Rouvrir pour un élève » : pour lui seul, avec son B, sans rien annoncer à la classe ni au téléphone ni au tableau (échec à 08:58).
+3. [→ QCM-1, QCM-2] La console rechargée : l'état et l'heure vrais dans « ⚠️ Séance interrompue détectée », et la reprise garde le chrono où il en était (échec à 08:58).
+4. [→ QCM-1, QCM-2] Les compteurs : « CONNECTÉS » compte les entrés, « ONT RÉPONDU » garde son dénominateur (échec à 08:58).
+5. [→ QCM-4] Rejouer par le geste l'alerte de la co-évaluation avec « Trouvée au dernier moment », le « Oui » de B cliqué dans les dernières secondes, et « Aucune séance active » au téléphone (non rejoués à 08:58).
+6. [→ QCM-2] Ce que voit l'élève et ce que montre le téléphone, demandé à 22:28 et encore identique à 06:16 (« Reprise du 13/10 », point 8) : les lignes et le « ✓ » des attestations, le titre « <évaluation> — n questions », le « ⏳ » et les listes du téléphone.
+7. [→ QCM-4] Les écrans de l'heure jamais atteints (audit de 22:28) : `x610-1-b-julien`, `x610-2-b-michel`, `t-un-eleve`, `t-corr-seul`, `c-deplacer`, `t-deplace`, `x610-6` à `x610-9`, `x610-autonomie-*`, atteints par le geste ; chaque écart trouvé va à son propriétaire.
+
 ## Contrôle de la conscience n°12 — 13/10 09:02, sur la reprise 2 (`8d35f41`, md5 `784ac5e8…`)
 
-**Verdict : ça ne va pas ; rien n'est mis en ligne, Paul fait cours avec la 7.7.2.** D'après VERDICT.md de 08:58 : les points 2, 3, 4 et 5 échouent au geste ; 6 non rejoué. La suite se décide avec Paul après son cours : ne faites rien d'autre.
+**Verdict : ça ne va pas ; rien n'est mis en ligne, Paul fait cours avec la 7.7.2.** D'après VERDICT.md de 08:58 : les points 2, 3, 4 et 5 échouent au geste ; 6 non rejoué. (Remplacé à 09:05 par la « Reprise 3 », ci-dessus : Paul veut continuer.)
 
 ## Reprise 2 du 13/10 — Paul (08:33) : « non il faut continuer » — poussez à 08:50 au plus tard
 

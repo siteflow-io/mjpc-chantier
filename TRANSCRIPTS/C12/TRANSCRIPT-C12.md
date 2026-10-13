@@ -21037,3 +21037,31 @@ Paul te relance jusqu'à 08:45. Lis la section « Reprise du 13/10 » en tête d
 Le compte rendu : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/CODE-QCM-AUDIT-0630-13-10/README.md
 
 13/10/2026 06:43 MEMO
+
+---
+
+## TOUR 683 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 07:22) Non c'est moi qui lance la correction. Jamais de sessions de groupe lancées automatiquement. Je relance les exécutants, les défauts doivent être corrigés et l'App en ligne à 9h15 dernier délai.
+
+---
+
+## TOUR 683 — Claude (conscience n°12)
+
+Mesuré : dans `src/live/base.js` de `code-qcm`, `M.att2` lance la lecture seule quand tous ont coché la seconde attestation ; `M.entree` ne fait que passer à « prêts ». Écrit : le point 0 de la reprise (la décision de Paul) et l'heure de 08:30 en tête de `DEFAUTS-OUVERTS.md`, une ligne en tête de `DEMANDES.md` (`e2b95c7b`) ; réveil « Audit QCM de 08:30 » (`trig_01WqJ8iSBxsXxAYN6qZfCnWZ`) ; la préparation de la mise en ligne au sas (`AUDITS/CODE-QCM-AUDIT-0830-13-10/PREPARATION.md` : le SDK Firebase réel, `mjpc-hub`, `DB_ROOT = "qcm"`, aucune adresse du faux hub, les liens du portail, le point de retour de la 7.7.2, blob `07f11ffcc65e`).
+
+Réponse mot pour mot :
+
+À jouer : rien · en cours chez l'exécutant : les quatre, relancés par toi · ouvert : rien de ton côté
+
+949. **Ta décision est écrite pour les quatre** : c'est toi qui lances la correction, et aucun moment de groupe ne démarre seul. « ▶️ Commencer la correction » reste fermé tant que tous n'ont pas coché, puis s'ouvre, et c'est toi qui cliques. QCM-1 vérifie qu'aucun autre moment de l'heure pour toute la classe ne démarre sans ton geste. Les temps comptés à l'intérieur d'une question restent comme ils sont (tu l'avais dit le 08/10).
+
+950. **Pour tenir 9:15, j'ai avancé leur heure** : ils poussent à 08:30 au plus tard, au lieu de 08:45, avec un relecteur neuf sur l'heure. C'est écrit dans le fichier qu'ils relisent, et ça prime sur la phrase que tu leur as collée.
+
+951. **Un réveil est programmé à 08:30** : mon audit jusqu'à 09:00, un verdict tranché, puis la mise en ligne avant 09:15 si ça va. Sinon, la 7.7.2 reste, et je te le dis avant 09:00.
+
+952. **J'ai déjà vérifié ce qui ne dépend pas de leurs corrections** : l'app livrée parle à ta vraie base, la même que la 7.7.2, sans rien du banc dedans ; le portail l'ouvre par les mêmes adresses. Le retour à la 7.7.2 est noté.
+
+13/10/2026 07:28 MEMO

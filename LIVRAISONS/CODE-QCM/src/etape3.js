@@ -860,7 +860,8 @@ function EcrDeclare3(e, chrono){
 function TelChrono(p){
   var s = useState(p.reste), v = s[0], setV = s[1];
   useEffect(function(){ function f(){ setV(p.total); } document.addEventListener("maquette-relancer", f); return function(){ document.removeEventListener("maquette-relancer", f); }; });
-  return h("div", {className:"tel-chrono"}, v + "s");
+  // (QCM-2) en direct, le temps qui reste, à chaque seconde (la séance le compte)
+  return h("div", {className:"tel-chrono"}, (enDirect() ? (p.reste || 0) : v) + "s");
 }
 
 /* ── Les gestes de l'étape 3 : où mène chaque bouton, et son infobulle pour Paul ── */

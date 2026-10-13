@@ -1,0 +1,15 @@
+const R=require("./relecteur-outils.js");const info=JSON.parse(require("fs").readFileSync("info.json"));
+const btns=async p=>(await p.locator("button:visible").allInnerTexts()).map(s=>s.trim().replace(/\s+/g," ")).filter(Boolean).join(" | ");
+const txt=async p=>(await p.evaluate(()=>document.body.innerText)).replace(/\n\s*\n/g,"\n");
+(async()=>{const nav=await require("/opt/node22/lib/node_modules/playwright").chromium.launch({executablePath:"/opt/pw-browsers/chromium"});
+const c=await R.ouvrir(nav,info,"?mode=prof",1536,864);await c.waitForTimeout(800);
+await c.getByText("Évaluation d'essai — 3 questions").first().click();
+await c.getByRole("button",{name:/Lancer la séance/}).click();await c.waitForTimeout(500);
+await c.getByRole("button",{name:"✓ ZELLER Lou"}).click();
+await c.getByRole("button",{name:/Lancer la séance/}).last().click();await c.waitForTimeout(1000);
+console.log("C",await btns(c));await c.screenshot({path:"cap/s3-console.png"});
+const t1=await R.ouvrir(nav,info,"?mode=eleve",1280,800);await t1.waitForTimeout(1000);
+console.log("T1",await btns(t1));console.log((await txt(t1)).slice(0,500));await t1.screenshot({path:"cap/s3-tab1.png"});
+const ph=await R.ouvrir(nav,info,"?mode=prof&view=phone",390,844);await ph.waitForTimeout(800);console.log("PH",(await txt(ph)).slice(0,400));await ph.screenshot({path:"cap/s3-phone.png"});
+console.log("ERR",c.__erreurs,t1.__erreurs,ph.__erreurs);
+await nav.close();})();

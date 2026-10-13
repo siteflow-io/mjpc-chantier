@@ -76,7 +76,8 @@ const hhmm = () => new Date().toLocaleTimeString("fr-FR", {hour: "2-digit", minu
     await capt(tel, "p-rouvert-un"); await capt(tab, "b-rouvert-un"); await capt(prof, "c-rouvert-un"); await capt(t1, "t-rouvert-un");
     J.v(!/Tour suivant/.test(telR) && !/moitiés de (gauche|droite)/i.test(telR), H2, "le téléphone n'annonce pas un tour à la classe (pas de « ⏭️ Tour suivant », pas de « moitiés de … »)", telR.slice(0, 300));
     J.v(!/POSE TON STYLO|Pose ton stylo/i.test(tabR), H2, "le tableau n'annonce pas « Pose ton stylo » à la classe", tabR.slice(0, 300));
-    J.v(new RegExp(O.esc(preAutre)).test(profR) && !/Question close — passe à la suivante/.test(profR), H2, "la console montre la question rouverte pour " + preAutre, profR.slice(0, 300));
+    // c-rouvrir-un : la console reste à « ⏸️ Question close — passe à la suivante » ; rien n'ouvre une phase de réponse pour la classe
+    J.v(!/Phase RÉPONSE/i.test(profR), H2, "la console n'ouvre pas de « Phase RÉPONSE » pour la classe (c-rouvrir-un : « ⏸️ Question close »)", profR.slice(0, 300));
     await pause(3000); await repondre(t1, autre, 0); await pause(6000);
     // B pour lui seul, puis close
     const zb = await zoneTexte(t1, autre);

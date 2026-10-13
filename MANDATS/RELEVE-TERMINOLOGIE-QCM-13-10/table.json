@@ -1,0 +1,987 @@
+[
+ {
+  "concept": "Le papier de l'élève",
+  "rows": [
+   {
+    "variante": "feuille",
+    "paul": 94,
+    "eleves": 37,
+    "exP": [
+     "c-evals",
+     "Montre la feuille des énoncés de la démo, à imprimer.",
+     "bulle",
+     "Montre la feuille des énoncés de la démo, à imprimer."
+    ],
+    "exL": [
+     "t-binome",
+     "Pour chaque question, écris ta réponse sur ta feuille, avec les mots du cours. Plusieurs réponses : une par ligne.",
+     "texte",
+     "Pour chaque question, écris ta réponse sur ta feuille, avec les mots du cours. Plusieurs réponses : une par ligne."
+    ]
+   },
+   {
+    "variante": "copie",
+    "paul": 40,
+    "eleves": 5,
+    "exP": [
+     "c-evals",
+     "Créer une copie modifiable. Pratique pour adapter une éval à un autre niveau ou faire des ",
+     "bulle",
+     "Créer une copie modifiable. Pratique pour adapter une éval à un autre niveau ou faire des variantes."
+    ],
+    "exL": [
+     "t-bilan",
+     "Elle peut encore changer, jusqu'à ce que ta copie te soit rendue : ta feuille, tes clics pendant les questions et tes clics ",
+     "texte",
+     "Elle peut encore changer, jusqu'à ce que ta copie te soit rendue : ta feuille, tes clics pendant les questions et tes clics à la correction sont comparés. Quelle que soit ta correction, c'est ce que tu as écrit lors de l'évaluation qui correspondra à ta note définitive."
+    ]
+   },
+   {
+    "variante": "papier",
+    "paul": 22,
+    "eleves": 0,
+    "exP": [
+     "c-lancer",
+     "📄 Séance sur papier",
+     "texte",
+     "📄 Séance sur papier"
+    ],
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "Ce que l'élève fait sur la tablette",
+  "rows": [
+   {
+    "variante": "clic (nom)",
+    "paul": 83,
+    "eleves": 9,
+    "exP": [
+     "x627-3-editeur",
+     "Bonne réponse : un clic la décoche.",
+     "bulle",
+     "Bonne réponse : un clic la décoche."
+    ],
+    "exL": [
+     "t-attest-2",
+     "À la fin du temps, dis si ta feuille dit la même chose que ton clic.",
+     "texte",
+     "À la fin du temps, dis si ta feuille dit la même chose que ton clic."
+    ]
+   },
+   {
+    "variante": "réponse (ta, sa, leur)",
+    "paul": 8,
+    "eleves": 28,
+    "exP": [
+     "c-q1-reflexion",
+     "Les élèves voient l'énoncé et rédigent leur réponse au stylo. Les choix sont masqués. Quand tu juges qu'ils ont assez r",
+     "bulle",
+     "Les élèves voient l'énoncé et rédigent leur réponse au stylo. Les choix sont masqués. Quand tu juges qu'ils ont assez réfléchi, clique sur 'Autoriser la réponse'."
+    ],
+    "exL": [
+     "t-binome",
+     "Pour chaque question, écris ta réponse sur ta feuille, avec les mots du cours. Plusieurs réponses : une par ",
+     "texte",
+     "Pour chaque question, écris ta réponse sur ta feuille, avec les mots du cours. Plusieurs réponses : une par ligne."
+    ]
+   },
+   {
+    "variante": "choix (nom)",
+    "paul": 0,
+    "eleves": 0,
+    "exP": null,
+    "exL": null
+   },
+   {
+    "variante": "cliquer",
+    "paul": 44,
+    "eleves": 15,
+    "exP": [
+     "c-appel",
+     "Clique pour le marquer absent aujourd'hui.",
+     "bulle",
+     "Clique pour le marquer absent aujourd'hui."
+    ],
+    "exL": [
+     "t-attest-1",
+     "Quand « POSE TON STYLO » s'affiche, pose ton stylo et clique ta réponse. Quand c'est le tour de Michel, ne regarde pas.",
+     "texte",
+     "Quand « POSE TON STYLO » s'affiche, pose ton stylo et clique ta réponse. Quand c'est le tour de Michel, ne regarde pas."
+    ]
+   },
+   {
+    "variante": "toucher",
+    "paul": 115,
+    "eleves": 0,
+    "exP": [
+     "c-evals",
+     "ur la classe de test et la démo ; tout est effacé à la sortie, sauf la démo. Ne touche à aucune vraie classe.",
+     "bulle",
+     "Ouvre le mode test : la même chose que le réel, sur la classe de test et la démo ; tout est effacé à la sortie, sauf la démo. Ne touche à aucune vraie classe."
+    ],
+    "exL": null
+   },
+   {
+    "variante": "répondre",
+    "paul": 79,
+    "eleves": 15,
+    "exP": [
+     "c-lancer",
+     "La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, s",
+     "bulle",
+     "La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, sur les tablettes."
+    ],
+    "exL": [
+     "t-q1-passage1",
+     "Michel, laisse la tablette à Julien pour qu'il réponde sans que tu regardes.",
+     "texte",
+     "Michel, laisse la tablette à Julien pour qu'il réponde sans que tu regardes."
+    ]
+   }
+  ]
+ },
+ {
+  "concept": "Ce que fait le voisin",
+  "rows": [
+   {
+    "variante": "lire / lecture",
+    "paul": 115,
+    "eleves": 17,
+    "exP": [
+     "c-eval-corbeille",
+     "Ce que ferait « 🗑️ Mettre à la corbeille », à lire avant de choisir : « Elle part dans la corbeille du site, gardée un… ».",
+     "bulle",
+     "Ce que ferait « 🗑️ Mettre à la corbeille », à lire avant de choisir : « Elle part dans la corbeille du site, gardée un… »."
+    ],
+    "exL": [
+     "t-pret",
+     "Tu as lu et compris les consignes le 08/10/2026 à 10:04.",
+     "texte",
+     "Tu as lu et compris les consignes le 08/10/2026 à 10:04."
+    ]
+   },
+   {
+    "variante": "relire / relecture",
+    "paul": 33,
+    "eleves": 2,
+    "exP": [
+     "c-evals",
+     "Prépare ici tes évaluations : rédaction, relecture, impression. Le lancement en classe se fait dans « Pilotage classe ».",
+     "texte",
+     "Prépare ici tes évaluations : rédaction, relecture, impression. Le lancement en classe se fait dans « Pilotage classe »."
+    ],
+    "exL": [
+     "x610-6-coeval-laquelle",
+     " que ma mère m'a envoyée et dont je connais chaque mot dort dans ma poche : je la relis chaque soir » ?",
+     "texte",
+     "Question 11 · Quelle est l'architecture de « La lettre que ma mère m'a envoyée et dont je connais chaque mot dort dans ma poche : je la relis chaque soir » ?"
+    ]
+   },
+   {
+    "variante": "vérifier",
+    "paul": 16,
+    "eleves": 11,
+    "exP": [
+     "c-evals",
+     "tre, les deux temps de chaque question, les compétences et ce que chaque question vérifie",
+     "texte",
+     "⚠️ À compléter avant de la lancer : le chapitre, les deux temps de chaque question, les compétences et ce que chaque question vérifie"
+    ],
+    "exL": [
+     "t-coeval",
+     "cord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.",
+     "texte",
+     "☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille."
+    ]
+   }
+  ]
+ },
+ {
+  "concept": "Celui qui lit",
+  "rows": [
+   {
+    "variante": "voisin",
+    "paul": 59,
+    "eleves": 5,
+    "exP": [
+     "c-q1-tour1",
+     "DUVERNAY Michel attend son tour : sa moitié est voilée pendant que son voisin répond.",
+     "bulle",
+     "DUVERNAY Michel attend son tour : sa moitié est voilée pendant que son voisin répond."
+    ],
+    "exL": [
+     "t-corr-q2-lecture",
+     "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN",
+     "texte",
+     "📄 TEMPS POUR LIRE LA FEUILLE DU VOISIN"
+    ]
+   },
+   {
+    "variante": "binôme",
+    "paul": 90,
+    "eleves": 3,
+    "exP": [
+     "c-evals",
+     "Lancer une séance, puis la piloter : la classe, l'évaluation, les binômes, l'appel.",
+     "bulle",
+     "Lancer une séance, puis la piloter : la classe, l'évaluation, les binômes, l'appel."
+    ],
+    "exL": [
+     "t-binome",
+     "Ton binôme : DUVERNAY Michel",
+     "texte",
+     "Ton binôme : DUVERNAY Michel"
+    ]
+   },
+   {
+    "variante": "camarade",
+    "paul": 2,
+    "eleves": 1,
+    "exP": [
+     "m-classe-exclusions",
+     "Les camarades avec qui Julien n'est jamais sur une tablette : au plus 3. Un clic ouv",
+     "bulle",
+     "Les camarades avec qui Julien n'est jamais sur une tablette : au plus 3. Un clic ouvre la liste à cocher. Elle vaut dans les deux sens, et pour toutes les apps qui partagent une tablette (le QCM, la correction de dictée…). Aucun écran d'élève ne la montre."
+    ],
+    "exL": [
+     "x610-6-coeval-laquelle",
+     "Question 6 · écris une phrase DPP + PSR + FPP : P.I sur un camarade dans les tranchées. Que contient ta phrase ?",
+     "texte",
+     "Question 6 · écris une phrase DPP + PSR + FPP : P.I sur un camarade dans les tranchées. Que contient ta phrase ?"
+    ]
+   },
+   {
+    "variante": "lecteur",
+    "paul": 12,
+    "eleves": 0,
+    "exP": [
+     "c-bilan",
+     "Contrôler sa compréhension, devenir un lecteur autonome · Q1, Q2, Q3",
+     "texte",
+     "Contrôler sa compréhension, devenir un lecteur autonome · Q1, Q2, Q3"
+    ],
+    "exL": null
+   },
+   {
+    "variante": "partenaire",
+    "paul": 0,
+    "eleves": 0,
+    "exP": null,
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "Ce que l'élève dit de sa feuille",
+  "rows": [
+   {
+    "variante": "« dire si sa feuille… »",
+    "paul": 58,
+    "eleves": 2,
+    "exP": [
+     "c-lancer",
+     " réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose que son clic, puis 15 s) ; estimation et sec",
+     "bulle",
+     "Installation et consignes 5 min ; questions 4 min 23 s (pour chacune : la réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose que son clic, puis 15 s) ; estimation et seconde attestation 3 min ; correction 3 min (1 min par question) ; co-évaluation et bilan 2 min."
+    ],
+    "exL": [
+     "t-attest-2",
+     "À la fin du temps, dis si ta feuille dit la même chose que ton clic.",
+     "texte",
+     "À la fin du temps, dis si ta feuille dit la même chose que ton clic."
+    ]
+   },
+   {
+    "variante": "« la même chose que son clic »",
+    "paul": 40,
+    "eleves": 5,
+    "exP": [
+     "c-lancer",
+     "tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose que son clic, puis 15 s) ; estimation et seconde attestation 3 min",
+     "bulle",
+     "Installation et consignes 5 min ; questions 4 min 23 s (pour chacune : la réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose que son clic, puis 15 s) ; estimation et seconde attestation 3 min ; correction 3 min (1 min par question) ; co-évaluation et bilan 2 min."
+    ],
+    "exL": [
+     "t-attest-2",
+     "À la fin du temps, dis si ta feuille dit la même chose que ton clic.",
+     "texte",
+     "À la fin du temps, dis si ta feuille dit la même chose que ton clic."
+    ]
+   },
+   {
+    "variante": "« disait son clic »",
+    "paul": 28,
+    "eleves": 0,
+    "exP": [
+     "c-corr-q2-apres",
+     "TESSIER Anna — Q2 : a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Madrid et Genève",
+     "texte",
+     "TESSIER Anna — Q2 : a dit que sa feuille disait son clic, Madrid ; Rayan y a lu Madrid et Genève"
+    ],
+    "exL": null
+   },
+   {
+    "variante": "déclarer",
+    "paul": 0,
+    "eleves": 0,
+    "exP": null,
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "La tablette partagée",
+  "rows": [
+   {
+    "variante": "moitié",
+    "paul": 92,
+    "eleves": 0,
+    "exP": [
+     "c-collage",
+     "ompétences du chapitre ; la question 11 porte « longueur assumée » : elle passe, et sa moitié défilera seule.",
+     "texte",
+     "✅ Le reste est bon : chapitre « 3e · Ch. 1 — Poésie et peinture au XIXe siècle », mode tout ou rien, 12 questions, 4 compétences du chapitre ; la question 11 porte « longueur assumée » : elle passe, et sa moitié défilera seule."
+    ],
+    "exL": null
+   },
+   {
+    "variante": "tablette",
+    "paul": 117,
+    "eleves": 20,
+    "exP": [
+     "c-evals",
+     "Le mode test : une classe de test de 30 élèves et ses 15 tablettes simulées, pour éprouver le déroulé sans toucher tes vraies classes. À ",
+     "bulle",
+     "Le mode test : une classe de test de 30 élèves et ses 15 tablettes simulées, pour éprouver le déroulé sans toucher tes vraies classes. À la sortie, tout est effacé, sauf la démo."
+    ],
+    "exL": [
+     "t-combien",
+     "Combien êtes-vous sur cette tablette ?",
+     "texte",
+     "Combien êtes-vous sur cette tablette ?"
+    ]
+   },
+   {
+    "variante": "place",
+    "paul": 25,
+    "eleves": 0,
+    "exP": [
+     "c-lancer",
+     " tablette 1, moitié de gauche ; glisse son nom sur un autre pour échanger leurs places.",
+     "bulle",
+     "ABRIAL Julien : tablette 1, moitié de gauche ; glisse son nom sur un autre pour échanger leurs places."
+    ],
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "Ce qu'on fait passer",
+  "rows": [
+   {
+    "variante": "évaluation",
+    "paul": 118,
+    "eleves": 56,
+    "exP": [
+     "c-evals",
+     "📝 Évaluation QCMMODE PROF",
+     "texte",
+     "📝 Évaluation QCMMODE PROF"
+    ],
+    "exL": [
+     "t-binome",
+     "📊 Mes évaluations",
+     "texte",
+     "📊 Mes évaluations"
+    ]
+   },
+   {
+    "variante": "éval",
+    "paul": 25,
+    "eleves": 5,
+    "exP": [
+     "c-evals",
+     "3e- éval 1 Analyse logique - Construire une phrase complexe",
+     "texte",
+     "3e- éval 1 Analyse logique - Construire une phrase complexe"
+    ],
+    "exL": [
+     "x610-1-b-julien",
+     "3e- éval 1 Analyse logique - Construire une phrase complexe",
+     "texte",
+     "3e- éval 1 Analyse logique - Construire une phrase complexe"
+    ]
+   },
+   {
+    "variante": "QCM",
+    "paul": 119,
+    "eleves": 2,
+    "exP": [
+     "c-evals",
+     "QCM — Le jambon-beurre",
+     "texte",
+     "QCM — Le jambon-beurre"
+    ],
+    "exL": [
+     "e-mes-evals",
+     "QCM — Le jambon-beurre",
+     "texte",
+     "QCM — Le jambon-beurre"
+    ]
+   },
+   {
+    "variante": "séance",
+    "paul": 116,
+    "eleves": 2,
+    "exP": [
+     "c-evals",
+     "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)",
+     "texte",
+     "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)"
+    ],
+    "exL": [
+     "e-mes-evals",
+     "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)",
+     "texte",
+     "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)"
+    ]
+   },
+   {
+    "variante": "interro",
+    "paul": 22,
+    "eleves": 2,
+    "exP": [
+     "c-evals",
+     "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)",
+     "texte",
+     "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)"
+    ],
+    "exL": [
+     "e-mes-evals",
+     "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)",
+     "texte",
+     "3e Chapitre 1 — Poésie et peinture au XIXème siècle · Interro de cours (séance 3)"
+    ]
+   },
+   {
+    "variante": "contrôle",
+    "paul": 1,
+    "eleves": 0,
+    "exP": [
+     "x632-pdf",
+     "Contrôle : 25 élèves · 24 notes · 1 absent · 24 commentaires.",
+     "texte",
+     "Contrôle : 25 élèves · 24 notes · 1 absent · 24 commentaires."
+    ],
+    "exL": null
+   },
+   {
+    "variante": "devoir",
+    "paul": 1,
+    "eleves": 0,
+    "exP": [
+     "x632-pdf",
+     "cte. Une ligne par élève, dans l'ordre alphabétique. « Note » : la note sur 20 du devoir. Chaque colonne de compétence : le niveau de maîtrise de l'élève, en to",
+     "texte",
+     "Pour École Directe. Une ligne par élève, dans l'ordre alphabétique. « Note » : la note sur 20 du devoir. Chaque colonne de compétence : le niveau de maîtrise de l'élève, en toutes lettres, parmi quatre : Très bonne maîtrise, Maîtrise satisfaisante, Maîtrise fragile, Maîtrise insuffisante. « Commentaire », sur la ligne sous l'élève : son commentaire pour ce devoir, à entrer tel quel dans la zone commentaire ; « — » : pas de commentaire. « Absent » : ni note, ni niveau, ni commentaire. Le cadre « À savoir », sous le tableau, ne s'entre pas."
+    ],
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "Les moments",
+  "rows": [
+   {
+    "variante": "réflexion",
+    "paul": 61,
+    "eleves": 6,
+    "exP": [
+     "x627-3-editeur",
+     "🧠 Réflexion",
+     "texte",
+     "🧠 Réflexion"
+    ],
+    "exL": [
+     "t-demo-q",
+     "TEMPS DE RÉFLEXION",
+     "texte",
+     "TEMPS DE RÉFLEXION"
+    ]
+   },
+   {
+    "variante": "réponse (le moment)",
+    "paul": 79,
+    "eleves": 14,
+    "exP": [
+     "c-collage",
+     "Question 4 : il manque le temps de réponse (« reponse »).",
+     "texte",
+     "Question 4 : il manque le temps de réponse (« reponse »)."
+    ],
+    "exL": [
+     "t-q1-tour1",
+     "TEMPS DE RÉPONSE",
+     "texte",
+     "TEMPS DE RÉPONSE"
+    ]
+   },
+   {
+    "variante": "correction",
+    "paul": 117,
+    "eleves": 29,
+    "exP": [
+     "c-evals",
+     "Les réglages, en cartes, comme dans la correction de dictée : le prompt, les durées de la séance, les niveaux de maîtri",
+     "bulle",
+     "Les réglages, en cartes, comme dans la correction de dictée : le prompt, les durées de la séance, les niveaux de maîtrise, les textes."
+    ],
+    "exL": [
+     "t-rejoins",
+     "Écris lisiblement : Tom lira ta feuille à la correction.",
+     "texte",
+     "Écris lisiblement : Tom lira ta feuille à la correction."
+    ]
+   },
+   {
+    "variante": "co-évaluation",
+    "paul": 72,
+    "eleves": 0,
+    "exP": [
+     "c-lancer",
+     "timation et seconde attestation 3 min ; correction 3 min (1 min par question) ; co-évaluation et bilan 2 min.",
+     "bulle",
+     "Installation et consignes 5 min ; questions 4 min 23 s (pour chacune : la réflexion, puis deux tours de 3 s de décompte, de réponse et de 5 s où l'élève dit si sa feuille dit la même chose que son clic, puis 15 s) ; estimation et seconde attestation 3 min ; correction 3 min (1 min par question) ; co-évaluation et bilan 2 min."
+    ],
+    "exL": null
+   },
+   {
+    "variante": "bilan",
+    "paul": 88,
+    "eleves": 8,
+    "exP": [
+     "c-collage",
+     "5 : il manque ce qu'elle vérifie (« verifie »), la courte phrase à l'infinitif du bilan de l'élève.",
+     "texte",
+     "Question 5 : il manque ce qu'elle vérifie (« verifie »), la courte phrase à l'infinitif du bilan de l'élève."
+    ],
+    "exL": [
+     "t-coeval-ecrit",
+     "⏳ Attends ton bilan…",
+     "texte",
+     "⏳ Attends ton bilan…"
+    ]
+   },
+   {
+    "variante": "révéler",
+    "paul": 15,
+    "eleves": 5,
+    "exP": [
+     "x627-3-editeur",
+     "L'explication que l'élève lit après la révélation, sous la bonne réponse.",
+     "bulle",
+     "L'explication que l'élève lit après la révélation, sous la bonne réponse."
+    ],
+    "exL": [
+     "t-corr-q2-lecture",
+     "👀 Écoute le prof — la correction sera révélée.",
+     "texte",
+     "👀 Écoute le prof — la correction sera révélée."
+    ]
+   },
+   {
+    "variante": "recopie",
+    "paul": 0,
+    "eleves": 0,
+    "exP": null,
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "Ce qu'on tire d'une question",
+  "rows": [
+   {
+    "variante": "écarter",
+    "paul": 45,
+    "eleves": 0,
+    "exP": [
+     "c-pret",
+     "❌ Écarter",
+     "texte",
+     "❌ Écarter"
+    ],
+    "exL": null
+   },
+   {
+    "variante": "annuler (une question)",
+    "paul": 4,
+    "eleves": 0,
+    "exP": [
+     "c-annuler",
+     "⚠️ Annuler la question 2 ?",
+     "texte",
+     "⚠️ Annuler la question 2 ?"
+    ],
+    "exL": null
+   },
+   {
+    "variante": "neutraliser",
+    "paul": 0,
+    "eleves": 0,
+    "exP": null,
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "Redonner du temps",
+  "rows": [
+   {
+    "variante": "rouvrir",
+    "paul": 69,
+    "eleves": 0,
+    "exP": [
+     "c-lancer",
+     "🔓 Rouvrir",
+     "texte",
+     "🔓 Rouvrir"
+    ],
+    "exL": null
+   },
+   {
+    "variante": "1er / 2e tour",
+    "paul": 30,
+    "eleves": 1,
+    "exP": [
+     "c-q1-reflexion",
+     "Coupe la réflexion : « POSE TON STYLO » sur les deux moitiés, puis le 1er tour. Sert quand tous ont fini d'écrire avant la fin du temps.",
+     "bulle",
+     "Coupe la réflexion : « POSE TON STYLO » sur les deux moitiés, puis le 1er tour. Sert quand tous ont fini d'écrire avant la fin du temps."
+    ],
+    "exL": [
+     "b-reponse",
+     "1er tour",
+     "texte",
+     "1er tour"
+    ]
+   },
+   {
+    "variante": "tour suivant",
+    "paul": 21,
+    "eleves": 0,
+    "exP": [
+     "c-q1-tour1",
+     "⏭️ Tour suivant",
+     "texte",
+     "⏭️ Tour suivant"
+    ],
+    "exL": null
+   },
+   {
+    "variante": "relancer",
+    "paul": 26,
+    "eleves": 0,
+    "exP": [
+     "c-q1-reflexion",
+     "🔄 Relancer chrono",
+     "texte",
+     "🔄 Relancer chrono"
+    ],
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "L'engagement avant",
+  "rows": [
+   {
+    "variante": "attestation",
+    "paul": 25,
+    "eleves": 0,
+    "exP": [
+     "c-lancer",
+     "s, l'heure de fin se règle, puis la séance s'ouvre et les tablettes passent à l'attestation. Les binômes restent ceux de la grille.",
+     "bulle",
+     "Ouvre l'appel : tu coches les absents, l'heure de fin se règle, puis la séance s'ouvre et les tablettes passent à l'attestation. Les binômes restent ceux de la grille."
+    ],
+    "exL": null
+   },
+   {
+    "variante": "« je m'engage »",
+    "paul": 0,
+    "eleves": 0,
+    "exP": null,
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "Le désaccord",
+  "rows": [
+   {
+    "variante": "alerte",
+    "paul": 17,
+    "eleves": 0,
+    "exP": [
+     "c-mode-emploi",
+     "ation : chacun dit s'il pense que son voisin a bien lu sa feuille ; un désaccord t'alerte aussitôt.",
+     "texte",
+     "Après l'estimation et la seconde attestation, chaque question, de la plus ratée à la mieux réussie : chacun lit la feuille de son voisin et clique ce qu'elle dit, avant la révélation (« 🔒 Révéler » attend tous les présents). Tu commentes après la révélation, jamais avant. Puis la co-évaluation : chacun dit s'il pense que son voisin a bien lu sa feuille ; un désaccord t'alerte aussitôt."
+    ],
+    "exL": null
+   },
+   {
+    "variante": "désaccord",
+    "paul": 1,
+    "eleves": 5,
+    "exP": [
+     "c-mode-emploi",
+     " la co-évaluation : chacun dit s'il pense que son voisin a bien lu sa feuille ; un désaccord t'alerte aussitôt.",
+     "texte",
+     "Après l'estimation et la seconde attestation, chaque question, de la plus ratée à la mieux réussie : chacun lit la feuille de son voisin et clique ce qu'elle dit, avant la révélation (« 🔒 Révéler » attend tous les présents). Tu commentes après la révélation, jamais avant. Puis la co-évaluation : chacun dit s'il pense que son voisin a bien lu sa feuille ; un désaccord t'alerte aussitôt."
+    ],
+    "exL": [
+     "t-coeval",
+     "☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sû",
+     "texte",
+     "☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille."
+    ]
+   },
+   {
+    "variante": "trancher",
+    "paul": 22,
+    "eleves": 1,
+    "exP": [
+     "c-coeval-attente",
+     "alerte : à trancher",
+     "texte",
+     "alerte : à trancher"
+    ],
+    "exL": [
+     "x610-6-coeval-laquelle",
+     "Question 6 · écris une phrase DPP + PSR + FPP : P.I sur un camarade dans les tranchées. Que contient ta phrase ?",
+     "texte",
+     "Question 6 · écris une phrase DPP + PSR + FPP : P.I sur un camarade dans les tranchées. Que contient ta phrase ?"
+    ]
+   },
+   {
+    "variante": "signaler",
+    "paul": 4,
+    "eleves": 5,
+    "exP": [
+     "c-fiche",
+     "Tu as lu sa feuille et elle dit bien ce qui est compté : le signalement passe à « lu ».",
+     "bulle",
+     "Tu as lu sa feuille et elle dit bien ce qui est compté : le signalement passe à « lu »."
+    ],
+    "exL": [
+     "t-coeval",
+     "☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille.",
+     "texte",
+     "☝️ Un désaccord, c'est sérieux : tu n'en signales qu'un, celui dont tu es le plus sûr. Il se vérifie sur ta feuille."
+    ]
+   },
+   {
+    "variante": "litige",
+    "paul": 0,
+    "eleves": 0,
+    "exP": null,
+    "exL": null
+   },
+   {
+    "variante": "contester",
+    "paul": 1,
+    "eleves": 0,
+    "exP": [
+     "c-mode-emploi",
+     "Données → Résultats : les notes, les compétences, les feuilles à lire (lecture contestée, « aucun de ces choix », « Non » au clic). « Que dit la feuille ? » c",
+     "texte",
+     "Données → Résultats : les notes, les compétences, les feuilles à lire (lecture contestée, « aucun de ces choix », « Non » au clic). « Que dit la feuille ? » corrige une question ou fixe une note. Le bilan général de chaque élève est pré-rempli : modifie-le, valide-le. Puis « rendre les copies », et le PDF « notes et compétences » pour École Directe."
+    ],
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "Le soir",
+  "rows": [
+   {
+    "variante": "à lire",
+    "paul": 63,
+    "eleves": 0,
+    "exP": [
+     "c-eval-corbeille",
+     "Ce que ferait « 🗑️ Mettre à la corbeille », à lire avant de choisir : « Elle part dans la corbeille du site, gardée un… ",
+     "bulle",
+     "Ce que ferait « 🗑️ Mettre à la corbeille », à lire avant de choisir : « Elle part dans la corbeille du site, gardée un… »."
+    ],
+    "exL": null
+   },
+   {
+    "variante": "à relire",
+    "paul": 24,
+    "eleves": 0,
+    "exP": [
+     "c-corr-q2-apres",
+     "⚠️ À relire",
+     "texte",
+     "⚠️ À relire"
+    ],
+    "exL": null
+   },
+   {
+    "variante": "à vérifier",
+    "paul": 0,
+    "eleves": 0,
+    "exP": null,
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "La note",
+  "rows": [
+   {
+    "variante": "note",
+    "paul": 120,
+    "eleves": 8,
+    "exP": [
+     "c-evals",
+     "La démo ne compte jamais : ni note, ni compétence. Elle revient d'elle-même après toute purge.",
+     "bulle",
+     "La démo ne compte jamais : ni note, ni compétence. Elle revient d'elle-même après toute purge."
+    ],
+    "exL": [
+     "t-attest-2",
+     "Ta note, c'est ta feuille. Chaque question vaut 1 point.",
+     "texte",
+     "Ta note, c'est ta feuille. Chaque question vaut 1 point."
+    ]
+   },
+   {
+    "variante": "point(s)",
+    "paul": 51,
+    "eleves": 32,
+    "exP": [
+     "c-evals",
+     "tre la feuille des énoncés seuls de « Évaluation d'essai — 3 questions », avec les points, à imprimer pour la classe.",
+     "bulle",
+     "Montre la feuille des énoncés seuls de « Évaluation d'essai — 3 questions », avec les points, à imprimer pour la classe."
+    ],
+    "exL": [
+     "t-attest-2",
+     "Ta note, c'est ta feuille. Chaque question vaut 1 point.",
+     "texte",
+     "Ta note, c'est ta feuille. Chaque question vaut 1 point."
+    ]
+   },
+   {
+    "variante": "score",
+    "paul": 1,
+    "eleves": 0,
+    "exP": [
+     "c-q3-close",
+     "Lance la phase d'autoévaluation : les élèves estiment leur score avant la correction.",
+     "bulle",
+     "Lance la phase d'autoévaluation : les élèves estiment leur score avant la correction."
+    ],
+    "exL": null
+   },
+   {
+    "variante": "résultat(s)",
+    "paul": 106,
+    "eleves": 3,
+    "exP": [
+     "c-evals",
+     "Les données : les résultats des séances, la sauvegarde et la corbeille.",
+     "bulle",
+     "Les données : les résultats des séances, la sauvegarde et la corbeille."
+    ],
+    "exL": [
+     "t-bilan",
+     "🔵 et tu en as effectivement obtenu 2 sur 3. Ton estimation correspond à ton vrai résultat.",
+     "texte",
+     "Tu pensais avoir 2 bonnes réponses 🔵 et tu en as effectivement obtenu 2 sur 3. Ton estimation correspond à ton vrai résultat."
+    ]
+   }
+  ]
+ },
+ {
+  "concept": "Donner les résultats",
+  "rows": [
+   {
+    "variante": "rendre (les copies)",
+    "paul": 45,
+    "eleves": 5,
+    "exP": [
+     "c-collage",
+     "Colle le JSON que l'instance de création d'éval t'a rendu : l'app le vérifie avant de l'enregistrer.",
+     "bulle",
+     "Colle le JSON que l'instance de création d'éval t'a rendu : l'app le vérifie avant de l'enregistrer."
+    ],
+    "exL": [
+     "t-bilan",
+     "Elle peut encore changer, jusqu'à ce que ta copie te soit rendue : ta feuille, tes clics pendant les questions et tes clics à la correctio",
+     "texte",
+     "Elle peut encore changer, jusqu'à ce que ta copie te soit rendue : ta feuille, tes clics pendant les questions et tes clics à la correction sont comparés. Quelle que soit ta correction, c'est ce que tu as écrit lors de l'évaluation qui correspondra à ta note définitive."
+    ]
+   },
+   {
+    "variante": "publier",
+    "paul": 6,
+    "eleves": 0,
+    "exP": [
+     "c-seances",
+     "publiée",
+     "texte",
+     "publiée"
+    ],
+    "exL": null
+   },
+   {
+    "variante": "masquer",
+    "paul": 21,
+    "eleves": 0,
+    "exP": [
+     "c-lancer",
+     "9, là où elle s'était terminée, après une confirmation. Ses copies rendues sont masquées jusqu'au prochain « Rendre les copies ».",
+     "bulle",
+     "Rouvre la séance du 24/09, là où elle s'était terminée, après une confirmation. Ses copies rendues sont masquées jusqu'au prochain « Rendre les copies »."
+    ],
+    "exL": null
+   }
+  ]
+ },
+ {
+  "concept": "Le professeur, vu par l'élève",
+  "rows": [
+   {
+    "variante": "professeur / prof",
+    "paul": 119,
+    "eleves": 5,
+    "exP": [
+     "c-evals",
+     "📝 Évaluation QCMMODE PROF",
+     "texte",
+     "📝 Évaluation QCMMODE PROF"
+    ],
+    "exL": [
+     "t-corr-q2-lecture",
+     "👀 Écoute le prof — la correction sera révélée.",
+     "texte",
+     "👀 Écoute le prof — la correction sera révélée."
+    ]
+   },
+   {
+    "variante": "M. Meney",
+    "paul": 0,
+    "eleves": 0,
+    "exP": null,
+    "exL": null
+   }
+  ]
+ }
+]

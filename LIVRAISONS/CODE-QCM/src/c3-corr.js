@@ -370,8 +370,8 @@ function ptsDe(q, c){ return c && c !== "aucun" && memesChoixH(c, q.bonnes) ? 1 
 function AlerteCoH(a){
   var q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), nL = nomDe(L), pA = prenomH(A), pL = prenomH(L);
   var lu = (LU[A] || [])[a.qi], ecrit = a.ecrit != null ? a.ecrit : ((SCN.coevalDe(A) || {}).ecrit), clic = (TABL[A] || [])[a.qi] || [], dit = (DIT_B[A] || [])[a.qi];
-  // (reprise 4) chaque bouton donne la note que la feuille vaut vraiment : Milan, quand la bonne réponse est Rome, vaut 0 point
-  var avant = ptsDe(q, lu), apres = ptsDe(q, ecrit), ret = [A, L].filter(function(p){ return SCN.autonomie(p, MO()).retire; });
+  // (R2, Conscience n°12 10:47) la note réelle : « Trouvée au dernier moment » vaut déjà 1 point, et le garde si la feuille reste fausse
+  var stA = calc(A).st[a.qi], trouvee = stA === "t", avant = stA === "j" || trouvee ? 1 : ptsDe(q, lu), apres = ptsDe(q, ecrit) || (trouvee ? 1 : 0), ret = [A, L].filter(function(p){ return SCN.autonomie(p, MO()).retire; });
   var sens = null;
   if(dit === "non" && memesChoixH(clic, lu)) sens = "👉 Pendant la question, avant de connaître la réponse, " + pA + " avait cliqué " + txtChoix(q, clic) + " et dit que sa feuille ne disait pas " + txtChoix(q, clic) + " : ça va dans son sens.";
   else if(dit === "oui" && memesChoixH(clic, ecrit)) sens = "👉 Pendant la question, avant de connaître la réponse, " + pA + " avait cliqué " + txtChoix(q, clic) + " et dit que sa feuille disait la même chose : ça va dans son sens.";

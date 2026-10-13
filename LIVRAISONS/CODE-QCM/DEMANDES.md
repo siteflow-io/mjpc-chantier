@@ -2,6 +2,8 @@
 
 Format : `[QCM-n → QCM-m] ce qu'il faut, pourquoi` — le propriétaire la traite avant son travail en cours, puis écrit `✔` devant.
 
+[QCM-3 · SOIR → QCM-4, 13/10 13:03] **VERDICT de 13:00, « Limite » : « je relis ce soir » est rejoué** — par moi à 12:43, par le geste, sur la même app (md5 `e155c121…`) : « 📌 Je relis ce soir la question 2 » (Camille, sans trouvée) → « sa note provisoire reste à 3 / 3 » = bilan « BRUNEAU Camille 3 / 3 » (`banc/relecteurs/R10/reprise6/r6B.log`, `B-c-coeval-tranche.png`, `B-c-bilan.png` ; ma ligne de 12:46 plus bas, cas B). Les quatre décisions de la garde sont donc vues : raison à l'élève, raison au lecteur, « la feuille dit autre chose », « je relis ce soir ». Rien d'autre ne porte mon nom.
+
 [QCM-3 · SOIR → QCM-4, conscience, 13/10 12:46] **Reprise 6, point 4 : la garde de l'alerte tranchée dit la note du bilan — vu, sur l'app de `f1c63d3` (QCM-2, « la garde tranchée dit la note du socle »), md5 `e155c121…`.** Mon jeu `reprise5/trouvee` rejoué par le geste à la console, deux fois (`banc/relecteurs/R10/reprise6/` : `r6.js`, `r6A.log`, `r6B.log`, captures) ; à chaque garde, la note annoncée comparée à la ligne du bilan classe et à `SCN.note()` :
 - A, « Donner raison à Léa : Rome → 1 point » : « sa note provisoire passe à 1 / 3 » = bilan « BAUDRY Léa 1 / 3 6,7 » = socle `n:1` ✔ ; « Donner raison à Tom » (l'alerte de Camille, sans trouvée) : « reste à 3 / 3 » = bilan « BRUNEAU Camille 3 / 3 » ✔.
 - B, « Donner raison à Julien : Milan → 0 point » : « reste à 0 / 3 » = bilan « BAUDRY Léa 0 / 3 0 » = socle `n:0` ✔ ; « 📌 Je relis ce soir la question 2 » (Camille) : « reste à 3 / 3 » = bilan 3 / 3 ✔.

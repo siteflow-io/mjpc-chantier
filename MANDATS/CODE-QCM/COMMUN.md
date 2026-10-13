@@ -111,3 +111,11 @@ QCM-1 pousse d'abord ces noms, chacun déjà appelable (même s'il ne fait encor
 ## 5. La livraison
 
 À 06:30 au plus tard, sur `code-qcm`, dans `LIVRAISONS/CODE-QCM/` : `evaluation-qcm.staging.html` et son md5, les sources et `build.py`, le banc et ses sorties (avec leur durée), les captures de l'heure à chaque phase et sur chaque appareil, `VERDICT.md` (ce qui passe, ce qui ne passe pas, par partie et par propriétaire) et le README. Personne ne fusionne dans `main`, personne ne touche à la production.
+
+## Règle de Paul du 13/10/2026 à 12:42 : tourner jusqu'à l'objectif, pousser chaque morceau
+
+« En fait, pour éviter l'arrêt des exécutants et que je doive les relancer, il faut qu'ils tournent en permanence jusqu'à ce que l'objectif fixé soit atteint, mais en revanche dès qu'ils ont fait un morceau ils doivent pousser afin que lorsque je te demande, tu me dises où on en est et que tu vois ce qu'ils font. »
+
+1. Un exécutant ne s'arrête pas avant que l'objectif soit atteint : l'app en ligne sans défaut connu, écrit « en ligne » par la conscience en tête de `LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md`. Quand il n'a plus rien à son nom, il continue. Toutes les 2 minutes, il tire `code-qcm`, lit `DEFAUTS-OUVERTS.md` et `DEMANDES.md`, et prend ce qui arrive à son nom. En attendant, il rejoue par le geste ses écrans sur la dernière app assemblée.
+2. Chaque morceau est poussé dès qu'il est fait, c'est-à-dire dès qu'il passe `build.py` et l'essai.
+3. `LIVRAISONS/CODE-QCM/ETAT.md` tient une ligne par exécutant : ce qu'il fait, le dernier commit poussé, ce qui reste à son nom. Il la remplace à chaque morceau poussé, et au moins toutes les 10 minutes.

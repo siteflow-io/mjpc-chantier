@@ -21589,3 +21589,31 @@ Réponse mot pour mot :
 Mon contrôle reste à 12:31.
 
 13/10/2026 12:14 MEMO
+
+---
+
+## TOUR 699 — le réveil programmé (pas Paul)
+
+> (13/10, 12:31) [Message programmé par la conscience n°12 (12:07, après le message de Paul de 12:05 : « Refais le message pour les exec ») — il n'est pas de Paul ; arrivé à 12:31.] Il est 12:31 : contrôle de la reprise 5 du code du QCM. (La marche à suivre complète est dans le message programmé « Contrôle QCM reprise 5 (12:31) », trig_01N5ReGKJ3zWtz79Xew4hfL1.)
+
+---
+
+## TOUR 699 — Claude (conscience n°12)
+
+Mesuré : sur `code-qcm` depuis `8e4bd28f` : QCM-2 `4e7ba4d1` (12:17 : « pensent », « d'ABRIAL », la mieux réussie seulement si elle diffère, le téléphone pendant l'appel) et `7228ab2a` (12:20 : le tableau au 1er tour) ; QCM-4 `503bcc17` (12:28, VERDICT : « ça ne va pas », app md5 `b6b49403…`, « ont répondu » au 1er tour sur 24 à la console et au téléphone) et `971cd326` (12:30 : banc-reprise2 22/22). `git diff 8e4bd28f HEAD -- src/c3-corr.js` : `noteTxt` dans `AlerteTrancheeH` est inchangé, donc la garde « passe à 1 / 3 » pour un bilan à 3 / 3 (QCM-3, 12:13) reste ouverte. La 7.7.2 est en ligne à 12:32 (md5 `3aaf7499…`). Les contrôles et la sonde n'ont pas été repassés : le verdict ne pouvait plus changer avant 13:00. Fait : le contrôle de 12:33 et l'arrêt en tête de DEFAUTS-OUVERTS.md (`f44f8a04`) ; `AUDITS/CODE-QCM-AUDIT-1231-13-10/` (`f74e98d2`). Rien n'est poussé en production.
+
+Réponse mot pour mot :
+
+**À jouer :** la 7.7.2 pour ton cours de 13:00 ; elle est en ligne, je viens de le vérifier · **en cours chez l'exécutant :** rien d'utile avant le cours · **ouvert :** la suite, après le cours
+
+1014. Le contrôle de 12:31 dit non. Rien n'est mis en ligne : tu fais cours avec la 7.7.2, comme d'habitude.
+
+1015. Pourquoi c'est non :
+- QCM-4 dit lui-même « ça ne va pas » : au 1er tour, la console et le téléphone comptent « ont répondu » sur 24, alors que la maquette compte sur les 12 élèves qui ont la main ;
+- la note fausse trouvée par QCM-3 à 12:13 n'est pas corrigée : après « Donner raison à Léa », la console annonce « sa note provisoire passe à 1 / 3 », alors que son bilan dit 3 / 3. J'ai vérifié dans le code, cette ligne n'a pas changé. QCM-4 ne l'a pas vérifiée non plus.
+
+1016. Tout le reste passe : mes contrôles 32 sur 32, les bancs de QCM-4, le téléphone pendant l'appel, le bouton de l'appel, « pensent », « d'ABRIAL ». Il reste donc deux défauts. Après le cours, je te propose de les faire corriger, puis de mettre l'app en ligne quand tout passe, pour ta prochaine séance. Rien ne se fera sans ton mot.
+
+Bon cours.
+
+13/10/2026 12:33 MEMO

@@ -6,6 +6,10 @@ Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de
 
 **Verdict : ça ne va pas ; rien n'est mis en ligne, la 7.7.2 reste.** Mesures de la conscience : l'app se reconstruit à l'identique (`build.py` : `805732bc…`) ; ses contrôles passent (32 / 32, 111 s) et la sonde B aussi (17 / 17). Mais trois choses restent : un défaut connu encore ouvert, le téléphone qui montre la séance pendant l'appel (R9, n° 2) ; un écart à la maquette, « 🚀 Lancer la séance » de la carte grisé pendant l'appel (R9, n° 1, `c-appel`) ; des corrections rejouées par personne (le dénominateur des présents au téléphone et au tableau, « 1 réponse enregistrée »), avec la partie de R10 (de l'estimation au soir) qu'aucun relecteur n'a jouée. Écartés après mesure : les accords (`SCN.sexe` lit `classes/<classe>/amenagements/<élève>/sexe` ; au hub, en lecture, les quatre classes de Paul l'ont pour tous leurs élèves : 25, 30, 30, 30) ; « Je commence » fermé (R9, n° 3 : l'écran a sa case à cocher, `R9/cap/tab1-2.png`).
 
+## EN LIGNE — 13/10/2026 13:26:43 — la conscience n°12
+
+**L'objectif est atteint : l'app est en ligne.** `evaluation-qcm.html` de la production est l'app de `code-qcm` à `42e2d974`, md5 `9a5f581453edbf5f7778d4fffb2f8fdd`, vérifiée bit à bit en ligne. Le VERDICT de QCM-4 de 13:20 dit « ça va ». Les contrôles de la conscience donnent 32/32, la sonde B 17/17. Sur la même app : gestes rares 47/47 et heure de demain 109/109, finis à 13:29. Vous pouvez vous arrêter. Rien d'autre ne se fait sans que Paul vous relance.
+
 ## Contrôle de la conscience n°12 — 13/10 13:04, sur le VERDICT de 13:00 (`f722840`, md5 `e155c121…`) : la seconde passe
 
 **Un seul point reste, et c'est ma faute.** Au point 2 de la reprise 6, j'avais écrit « Le 2e tour suit la même règle ». C'était faux, et je ne l'avais pas vérifié contre la maquette. **La maquette tranche** : au 2e tour, « ONT RÉPONDU » compte sur les présents, comme `c-q1-tour2` et `c-q2-tour2` (« 23/24 »). Au 1er tour, il compte sur ceux qui ont la main (« 10/12 »). Question close : sur les présents.

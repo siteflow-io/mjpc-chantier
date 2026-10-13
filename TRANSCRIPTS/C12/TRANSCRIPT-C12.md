@@ -21549,3 +21549,9 @@ Colle ceci dans les quatre sessions, tout de suite :
 1011. Il te restera environ 15 minutes de tests avant le cours. Si à 12:35 quelque chose ne va pas, rien n'est mis en ligne et tu fais cours avec la 7.7.2, qui ne bouge pas d'ici là.
 
 13/10/2026 12:07 MEMO
+
+---
+
+## (entre les tours 697 et 698) — le réveil programmé de 12:06 (pas Paul), arrivé à 12:08
+
+Le réveil « Contrôle QCM reprise 5 » (`trig_019STYb78joeh7gqh4RTBbXF`) a sonné à 12:07, avant d'avoir pu être supprimé. Il est remplacé par la reprise recalée du tour 697 et par le réveil de 12:31 (`trig_01N5ReGKJ3zWtz79Xew4hfL1`). Rien n'est fait, et Paul ne reçoit aucun message : il avait écrit à 12:05, et je lui avais répondu à 12:07.

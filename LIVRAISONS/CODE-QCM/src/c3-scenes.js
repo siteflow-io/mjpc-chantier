@@ -101,7 +101,8 @@ function ScRouvrirSeance(){
 function Interrompue(){
   // (QCM-1) la séance réelle : sa date, sa dernière déconnexion (lastDisconnect, la 7.7.1), la question et le tour où elle en était, ses réponses
   var k = MO(), m = MOM(), se = SCN.seance(m.seance) || {date:"", heure:""}, s = SCN.sess() || {}, c = SCN.compteurs(k), cote = m.qi != null && m.tour ? (coteDuTour(m.qi, m.tour) === "g" ? "gauche" : "droite") : "gauche";
-  var dec = s.lastDisconnect ? {date:SCN.dateFr(s.lastDisconnect), heure:SCN.heureFr(s.lastDisconnect)} : {date:m.date, heure:m.heure};
+  var cp = (typeof INTERROMPUE !== "undefined" && INTERROMPUE.coupure[SCN.sid()]) || s.lastDisconnect;
+  var dec = cp ? {date:SCN.dateFr(cp), heure:SCN.heureFr(cp)} : {date:m.date, heure:m.heure};
   m = Object.assign({}, m, {date:dec.date, deconnexion:dec.heure, qi:m.qi == null ? 0 : m.qi, tour:m.tour || 1});
   c = Object.assign({}, c, {reponses:Object.keys(s.reponses || {}).reduce(function(a, q){ return a + Object.keys((s.reponses || {})[q] || {}).length; }, 0)});
   var modal = h("div", {className:"checkin-overlay", "data-echap":"c-lancer"},

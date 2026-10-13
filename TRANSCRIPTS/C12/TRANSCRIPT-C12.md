@@ -22166,3 +22166,47 @@ Réponse, mot pour mot :
 La maquette, avec les captures : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
 
 13/10/2026 16:18 MEMO
+
+---
+
+## TOUR 715 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (16:19) en fait, c'est surtout sur les phrases du style "que sa feuille disait son clic". C'est très abstrait, et compliqué à comprendre, quand bien même c'est moi qui ait cadré cette terminologie.
+
+---
+
+## TOUR 715 — Claude (conscience n°12)
+
+Mesuré dans les sources de la 8.0.0 (`code-qcm` à `a5a69308`) : les textes des lignes « à lire » sont écrits par `S.aLireSeance` (`live/base.js` l. 368-399 : « n'a pas dit si sa feuille disait son clic », « a dit que sa feuille disait son clic, … ; … y a lu … », « a dit que sa feuille ne disait pas son clic, … », « aucun de ces choix », « pense que … a mal lu sa feuille ; à relire », « 🤔 pense que … a peut-être mal lu sa feuille ; il dit avoir écrit : … ») ; la liste « 📌 À lire sur les feuilles, ce soir » (`c3-corr.js`) et la colonne du tableau de la séance (`aLireV`, `c4-seances.js` l. 298-304) les lisent tous deux ; les infobulles des cartes (`c3-bulles.js` l. 34, 49-51) ; la question B côté élève (`c3-tablettes.js` l. 386). Les captures de la v1 montraient déjà la colonne. Rien n'est écrit dans l'app.
+
+Réponse, mot pour mot :
+
+1096. Mesuré dans le code : toutes ces lignes sont écrites au même endroit. Elles donnent « 📌 À lire sur les feuilles, ce soir » sur ta console, et la colonne « À lire sur la feuille » du tableau de la séance. Pendant l'heure, les infobulles des cartes des tablettes ont le même défaut. Partout, elles disent « son clic » au lieu de dire la réponse.
+
+1097. Ma proposition : chaque ligne dit les réponses en clair, et qui a fait quoi. Il y a six cas, de 1098 à 1103.
+
+1098. L'élève n'a pas répondu : « Tom a cliqué Venise. Il n'a pas dit si sa feuille dit Venise. Léa y a lu Venise. »
+
+1099. L'élève a dit « la même chose », le voisin a lu autre chose : « Théo a cliqué Madrid, et dit que sa feuille dit Madrid. Lou y a lu Sydney. »
+
+1100. L'élève a dit « autre chose », le voisin a lu la même chose : « Théo a cliqué Madrid, et dit que sa feuille dit autre chose. Lou y a lu Madrid. »
+
+1101. Le voisin n'a lu aucun choix : « Lou n'a lu aucun des choix sur la feuille de Michel. »
+
+1102. La co-évaluation, « peut-être » : « Noah pense que Lou a peut-être mal lu sa feuille. Il dit avoir écrit Rome. »
+
+1103. L'alerte que tu as gardée pour le soir : « Noah pense que Lou a mal lu sa feuille. »
+
+1104. Les infobulles des cartes suivent la même règle, par exemple « Tom a cliqué Venise, et dit que sa feuille dit Venise. » Dans ma maquette, la ligne grise disparaît : la même phrase la remplace.
+
+1105. Côté élève, « Tom, regarde ta feuille : dit-elle la même chose que ton clic ? » est ta phrase, et je n'y touche pas. Si tu veux la rendre concrète aussi, ce pourrait être « Tom, tu as cliqué Venise : ta feuille dit-elle Venise ? ». C'est toi qui décides.
+
+1106. Le mot : ta console dit « feuille », ma maquette de ce soir dit « copie ». Il faut un seul mot : je propose « feuille » partout, maquette comprise (« 📄 Lire les feuilles », « La feuille dit-elle « Venise » ? »).
+
+1107. Tu valides ? Si oui, ces phrases vont dans la reprise 7, avec la maquette.
+
+1108. Dans ma réponse de 16:18, j'ai mis des puces dans 1090 et 1093. C'est contraire à ta règle, et je ne le referai pas.
+
+13/10/2026 16:21 MEMO

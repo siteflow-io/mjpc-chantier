@@ -408,7 +408,7 @@ var SCN = (function(){
     if(qi != null && ["reflexion", "reponse", "close", "b", "passage", "rouvert", "pause"].indexOf(e.ph) >= 0){
       var rep = S.repondu(qi, k, sid), pc = S.premierCote(qi, sid);
       // ceux qui peuvent répondre : les présents entrés (une moitié vide ne répond pas)
-      var attendu = (e.ph === "reponse" || e.ph === "passage" || e.ph === "b") && e.tour === 1 ? act.filter(function(x){ return S.cote(x, sid) === pc || S.seul(x, sid); }).length : act.length;
+      var attendu = act.length;   // (13/10) le même dénominateur d'un tour à l'autre : les présents entrés
       o.repondu = [e.ph === "reflexion" ? 0 : rep.length, attendu];
       o.justes = [rep.filter(function(x){ return S.justeTablette(x, qi, sid); }).length, rep.length];
       o.question = [qi + 1 - ec.filter(function(x){ return x < qi; }).length, nbQ];

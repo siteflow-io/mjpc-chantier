@@ -1,0 +1,12 @@
+let c=P.console; let r="";
+await c.getByRole("button",{name:"▶️ Lancer Q2"}).click(); await c.waitForTimeout(3000);
+r+="avant fermeture: "+(await txt(c)).match(/RÉFLEXION\n\d+s/)+" | tel "+((await txt(P.tel)).match(/Phase.*\n\d+s/));
+await c.close(); await P.tab.waitForTimeout(4000);
+r+="\nconsole fermée — tel: "+(await txt(P.tel)).slice(40,160).replace(/\n/g," ")+" | board: "+(await txt(P.tab)).slice(0,160).replace(/\n/g," ")+" | tab1: "+(await txt(P.t1)).replace(/\n/g," ").slice(80,260);
+c = P.console = await R.ouvrir(nav, info, "?mode=prof", 1536, 864); await c.waitForTimeout(1500);
+await cap(c,"c14-interrompue"); await cap(P.tel,"t14"); await cap(P.tab,"b14");
+r+="\nREOUVERT:"+(await txt(c)).slice(0,1200).replace(/\n/g," ")+"\nBT:"+(await btns(c)).slice(0,600);
+const m=P.m; await m.setViewportSize({width:1536,height:864}); await m.goto("file:///home/user/mjpc-chantier/MANDATS/MAQUETTE-QCM-COMPLETE/maquette-qcm-v9.html#scene=c-interrompue"); await m.waitForTimeout(800); await cap(m,"m-interrompue");
+const mt=await txt(m); const j=mt.indexOf("interrompue");
+r+="\nMAQ:"+mt.slice(j-100,j+700).replace(/\n/g," ")+"\nMBT:"+(await btns(m)).slice(0,500);
+return r;

@@ -1,0 +1,120 @@
+CON:
+4/24
+CONNECTÉS
+0/4
+ONT RÉPONDU
+—
+JUSTES
+1/3
+QUESTION
+⏸️ Question close — passe à la suivante
+🧠 RÉFLEXION
+20s
+pour cette question
+s
++5
++10
++30
+✋ RÉPONSE
+35s
+par tour
+s
++5
++10
++30
+🏁 Fin prévue 9:14
+QUESTION 1 / 3 — 1 BONNE RÉPONSE
+Quelle est la capitale de l'Italie ?
+✓ Bonne réponse : Rome
+Difficulté : Facile
+c4-culture-01
+c4-lire-01
+▶️ Lancer Q2
+🔓 Rouvrir pour tous
+🔮 À VENIR — Q 2 / 3
+I
+Lesquelles sont des capitales eu
+TAB1:✨
+💡
+3 ESSAI · ABRIAL JULIEN
+📊 Mes évaluations
+Évaluation d'essai — 3 questions
+QUESTION 1 / 3
+Facile
+1 pt
+Quelle est la capitale de l'Italie ?
+🖊️
+Julien, pose ton stylo. Sélectionne maintenant ta réponse.
+TEMPS DE RÉPONSE
+32
+Milan
+Naples
+Rome
+Venise
+💡 Clique sur le ou les choix qui correspondent à ta réponse.
+🙈
+Léa, laisse la tablette à Julien pour qu'il réponde sans que tu regardes.
+BT:📊 Mes évaluations | Milan | Naples | Rome | Venise
+TEL:3 ESSAI
+🕙 Fin 9:51
+Évaluation d'essai — 3 questions
+Phase : question close — Q 1/3
+Q1 · Facile · réflexion 20 s · réponse 35 s par tour
+Quelle est la capitale de l'Italie ?
+✓ Bonne réponse : Rome
+Suiv. Q2 : Lesquelles sont des capitales européennes ?
+🚀 Lancer Q2
+🔓 Rouvrir Q1
+Q1
+0 %
+Q2
+—
+Q3
+—
+TABLETTES — 0 / 4 ont répondu · clic sur un nom pour a
+BOARD:3 ESSAI
+FACILE
+Question 1 / 3
+📋 0 / 4 réponses
+📋 Question close
+Les réponses sont enregistrées — la suite arrive.
+👥 Classe (25)
+Julien
+ABRIAL
+Léa
+BAUDRY
+Camille
+BRUNEAU
+Tom
+CARRÉ
+Théo
+CHEVALLIER
+Michel
+DUVERNAY
+Inès
+ESNAULT
+Hugo
+FOUCHER
+Manon
+GALL
+MAQ t-rouvrir-un:✨
+💡
+3 ESSAI · CHEVALLIER THÉO
+📊 Mes évaluations
+Évaluation d'essai — 3 questions
+QUESTION 2 / 3
+Standard
+1 pt
+Lesquelles sont des capitales européennes ?
+🖊️
+Théo, pose ton stylo. Sélectionne maintenant ta réponse.
+TEMPS DE RÉPONSE
+14
+Genève
+Madrid
+Sydney
+Berlin
+💡 Clique sur le ou les choix qui correspondent à ta réponse.
+🙈
+Lou, laisse la tablette à Théo pour qu'il réponde sans que tu regardes.
+⚙

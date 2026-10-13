@@ -1,0 +1,47 @@
+APP:a une araignée ?
+6
+8 ✓
+10
+4
+🧠
+s
+✋
+s
+❌ Écarter
+🔓 Rouvrir pour un élève — Q1
+i
+Seuls les élèves sans réponse à la question 1 sont listés.
+ABRIAL Julien
+tablette 1, moitié de gauche · avec BAUDRY Léa
+🔓 Rouvrir pour Julien
+BAUDRY Léa
+tablette 1, moitié de droite · avec ABRIAL Julien
+🔓 Rouvrir pour Léa
+BRUNEAU Camille
+tablette 2, moitié de gauche · avec CARRÉ Tom
+🔓 Rouvrir pour Camille
+CARRÉ Tom
+tablette 2, moitié de droite · avec BRUNEAU Camille
+🔓 Rouvrir pour Tom
+Annuler
+BT:ve | [x]↩️ Retour d'un élève | 🔓 Rouvrir pour un élève | ⏸️ Finir à une autre heure | 🛑 Terminer la séance | [x]+5 | [x]+10 | [x]+30 | [x]+5 | [x]+10 | [x]+30 | ▶️ Lancer Q2 | 🔓 Rouvrir pour tous | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | ⚠️ Annuler | ❌ Écarter | ❌ Écarter | 🔓 Rouvrir pour Julien | 🔓 Rouvrir pour Léa | 🔓 Rouvrir pour Camille | 🔓 Rouvrir pour Tom | Annuler
+
+MAQ:a une araignée ?
+6
+8 ✓
+10
+4
+🧠
+s
+✋
+s
+❌ Écarter
+🔓 Rouvrir pour un élève — Q2
+i
+Seuls les élèves sans réponse à la question 2 sont listés.
+CHEVALLIER Théo
+tablette 12, moitié de gauche · avec ZELLER Lou
+🔓 Rouvrir pour Théo
+Annuler
+⚙
+MBT:ages | ? | 📝 Évaluations | 🎯 Pilotage classe | 🚫 Départ d'un élève | [x]↩️ Retour d'un élève | 🔓 Rouvrir pour un élève | ⏸️ Finir à une autre heure | 🛑 Terminer la séance | [x]+5 | [x]+10 | [x]+30 | [x]+5 | [x]+10 | [x]+30 | ▶️ Lancer Q3 | 🔓 Rouvrir pour tous | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | ⚠️ Annuler | ⚠️ Annuler | ❌ Écarter | 🔓 Rouvrir pour Théo | Annuler | ⚙

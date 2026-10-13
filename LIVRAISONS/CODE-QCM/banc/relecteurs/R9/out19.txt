@@ -1,0 +1,2 @@
+AVANT:QUESTION ✋ Phase RÉPONSE — 2e tourmoitiés de droite 🧠 RÉFLEXION 20s pour cette question s +5 +10 +30 ✋ RÉPONSE 8s 2e tour · EN COURS s +5 +10 +30 🏁 Fin prévue 9:15 QUESTION 1 / 3 — 1 BONNE RÉPONSE Q
+BT:élève | [x]↩️ Retour d'un élève | [x]🔓 Rouvrir pour un élève | ⏸️ Finir à une autre heure | 🛑 Terminer la séance | [x]+5 | [x]+10 | [x]+30 | +5 | +10 | +30 | 🔒 Clore la question | ⏸️ Pause | 🔄 Relancer chrono | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | 👁 | ❌ Écarter | ❌ Écarter

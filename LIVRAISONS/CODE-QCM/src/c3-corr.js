@@ -407,7 +407,7 @@ function AlerteCoH(a){
 // ce que dit la phrase d'état d'une alerte tranchée : la décision prise, et la note qui en sort
 function AlerteTrancheeH(a){
   // la lecture d'avant la décision : celle que l'alerte garde (alertes/<id>/lu) ; LU porte déjà la décision
-  var d = decisionDe(a), q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), pA = prenomH(A), pL = prenomH(L), n = calc(A), lu = a.lu != null ? a.lu : (LU[A] || [])[a.qi];
+  var d = decisionDe(a), q = EV.questions[a.qi], A = a.auteur, L = a.lecteur, nA = nomDe(A), pA = prenomH(A), pL = prenomH(L), n = (enDirect() && typeof SCN.note === "function" && SCN.note(A)) || calc(A), lu = a.lu != null ? a.lu : (LU[A] || [])[a.qi];
   var noteTxt = function(passe){ return "sa note provisoire " + (passe ? "passe" : "reste") + " à " + n.n + " / " + n.total + "."; };
   var t;
   if(d.decision === "lecteur") t = ["✅ Alerte tranchée : raison donnée à " + pL, "La lecture " + deNom(pL) + ", " + txtChoix(q, lu) + ", est gardée : la question " + (a.qi + 1) + (/^[AEIOUYÉÈÊÂÎÔ]/i.test(nA) ? " d'" : " de ") + nA + " reste à " + (n.pts[a.qi] != null ? n.pts[a.qi] : ptsDe(q, lu)) + " ; " + noteTxt(false)];

@@ -173,6 +173,8 @@ function etatPilot(k){
   // (QCM-2) en direct, « connectés » : les présents entrés sur une tablette (SCN.compteurs().connectes), pas tous les présents
   var stats = statsQ();
   if(enDirect() && c.connectes) stats = [[fr2(c.connectes), "connectés"]].concat(stats.slice(1));
+  // (reprise 6, c-q1-tour1) « ONT RÉPONDU » pendant un tour : sur ceux qui ont la main ; la question close : sur les présents
+  if(enDirect() && stats[1] && /ont répondu/.test(stats[1][1])){ var rt = reponduTourH(c); stats = stats.slice(); stats[1] = [rt[0] + "/" + rt[1], stats[1][1]]; }
   // (reprise 4, point 6) pendant le passage (« Tu es prêt ? À toi dans 3 secondes »), le tour n'a pas commencé : le chrono de la réponse compte le passage et le tour entier
   var chrono = enDirect() && ph === "passage" && qi != null ? (m.reste || 0) + SCN.tempsDe(qi).reponse : m.reste;
   // (reprise 4, point 8, c-deplacer) deux élèves échangés pendant la séance, pas encore sur leur nouvelle moitié : le sous-titre des tablettes le dit

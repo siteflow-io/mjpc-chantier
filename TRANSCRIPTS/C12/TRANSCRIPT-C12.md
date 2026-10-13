@@ -21935,3 +21935,39 @@ Réponse mot pour mot :
 « Reprise 7 du 13/10 : lis la section « Reprise 7 du 13/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) et fais ta part tout de suite ; tout est poussé à 16:15, VERDICT.md à 16:30 ; tu tournes jusqu'à ce que la conscience écrive « en ligne », et tu pousses chaque morceau avec ta ligne dans ETAT.md. »
 
 13/10/2026 15:33 MEMO
+
+---
+
+## (entre les tours 708 et 709) — le réveil programmé de 15:26 (pas Paul), arrivé à 15:34
+
+C'est le réveil de 15:26 (`trig_01Cs7WeuePMA6nBAsHgP3xte`), remplacé au tour 708. Personne n'avait travaillé : rien n'est fait, et seule une ligne est écrite à Paul.
+
+---
+
+## TOUR 709 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (13/10, 15:37) pour la coévaluation en mode test, les tablettes simulées montrent attends la prochaine question, alors que l'oeil des tablettes montre bien la coévaluation
+
+---
+
+## TOUR 709 — Claude (conscience n°12)
+
+Mesuré dans `code-qcm` à `e0bfc349`, le code en ligne :
+- `TablettesSimuleesV` puis `contenuTablette` (`maquette620.js`, fichier de QCM-3) appellent `MOITIES.ecran` (`live/pages.js` l. 171-194), qui traite appel, entree, pret, reflexion, passage, reponse, rouvert, b, close, estim, att2, lecture, revele et fin, mais pas `coeval` ni `bilan` ; pour ces deux phases, il retombe sur `EcrAttente`, « ⏳ Attends la prochaine question… » (`maquette.js` l. 204) ;
+- la vraie tablette passe par `EcranTablette`, puis `TabletteC`, puis `TabletteVue(…, true)` ; « 👁 » passe par `voirTablette`, puis `TabletteVue` ; les deux finissent par `MoitieH` (`c3-tablettes.js`), qui traite `coeval` (l. 362) et `bilan` (l. 363).
+
+Fait : la reprise 7, point 6 (`4b68759e`).
+
+Réponse mot pour mot :
+
+**À jouer :** la nouvelle app en ligne, telle quelle · **en cours chez l'exécutant :** rien, la reprise 7 n'est pas encore collée · **ouvert :** la reprise 7 (point 1063)
+
+1061. Mesuré dans le code en ligne. En mode test, les tablettes simulées sont dessinées par un premier jet qui ne connaît ni la co-évaluation ni le bilan : pour ces deux moments, il affiche « ⏳ Attends la prochaine question… ». L'œil, lui, passe par le dessin de la vraie tablette, et c'est pour ça qu'il montre bien la co-évaluation.
+
+1062. En classe, les vraies tablettes ne sont pas touchées : elles passent par le même dessin que l'œil, et les bancs y jouent la co-évaluation et le bilan. Le défaut ne concerne que le mode test, mais il touche aussi le bilan, pas seulement la co-évaluation.
+
+1063. Je l'ai ajouté à la reprise 7, en point 6 : en mode test, les tablettes simulées, en petit comme « 🔍 en grand », prennent le même dessin que la vraie tablette, à chaque moment de la séance. Le calendrier ne bouge pas : tout est poussé à 16:15, le verdict tombe à 16:30, et la mise en ligne se fait à 16:45 si tout va. Le message à coller reste celui du point 1060.
+
+13/10/2026 15:40 MEMO

@@ -110,11 +110,11 @@ function Interrompue(){
       h("div", {style:{padding:"1rem 1.2rem", fontSize:".9rem", color:"var(--noir)"}},
         h("div", {style:{marginBottom:".4rem"}}, "📅 Démarrée le " + se.date + " à " + se.heure),
         h("div", {style:{marginBottom:".4rem"}}, "🔌 Dernière déconnexion : " + m.date + " à " + m.deconnexion),
-        h("div", {style:{marginBottom:".8rem"}}, "📝 État : question " + (m.qi + 1) + ", " + (m.tour === 1 ? "1er" : "2e") + " tour (moitiés de " + cote + ") ; " + c.reponses + " réponses enregistrées")),
+        h("div", {style:{marginBottom:".8rem"}}, "📝 État : question " + (m.qi + 1) + ", " + (["reponse", "passage", "b", "rouvert"].indexOf(m.ph) >= 0 ? (m.tour === 1 ? "1er" : "2e") + " tour (moitiés de " + cote + ")" : m.ph === "reflexion" ? "en réflexion" : m.ph === "close" ? "close" : m.ph === "lecture" || m.ph === "revele" ? "en correction" : "en attente") + " ; " + c.reponses + " réponses enregistrées")),
       h("div", {className:"checkin-actions rangee-une"},
         h("button", {className:"btn btn-rouge btn-sm", "data-va":"c-terminer", title:"Clôt la séance, après une confirmation : l'archive s'écrit avec les notes telles qu'elles sont."}, "🛑 Terminer définitivement"),
         h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-reprendre", title:"Met la séance en pause, telle qu'elle est, pour la reprendre à une heure suivante."}, "⏸️ Finir à une autre heure"),
-        h("button", {className:"btn btn-primary btn-sm", "data-va":"c-q2-tour2", title:"Reprend tout de suite : le tour en cours recommence au début, voile compris."}, "🔄 Reprendre la séance"))));
+        h("button", {className:"btn btn-primary btn-sm", "data-va":"c-q2-tour2", title:"Reprend tout de suite, là où elle en était : le chrono continue."}, "🔄 Reprendre la séance"))));
   return h(F, null, Lancement(false), modal);
 }
 

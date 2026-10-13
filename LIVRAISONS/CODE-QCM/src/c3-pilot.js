@@ -154,6 +154,8 @@ function etatPilot(k){
   var m = k === MO() ? momH() : (SCN.moment(k) || {}), c = SCN.compteurs(k);
   // (QCM-2) en direct, une séance en pause reste sur son temps : la réflexion, ou le tour de réponse
   var ph = m.ph === "pause" ? ((m.pause && m.pause.ph) || (m.tour ? "reponse" : "reflexion")) : m.ph;
+  // (c-rouvrir-un) une question rouverte pour un seul élève : la console reste à la question close
+  if(enDirect() && m.pour && m.pour !== "tous" && ["rouvert", "b", "passage", "reponse"].indexOf(ph) >= 0) ph = "close";
   var phase = ({pret:"idle", avant:"idle", appel:"idle", entree:"idle", reflexion:"reflexion", passage:"reponse", reponse:"reponse", b:"reponse", close:"attente", rouvert:"attente", panne:"reponse"})[ph] || "idle";
   var qi = m.qi == null ? null : m.qi;
   var passees = toutesQ().filter(function(q){ return qi != null && (q < qi || (q === qi && phase === "attente")); });
@@ -163,7 +165,10 @@ function etatPilot(k){
   if(m.partis && Object.keys(m.partis).length) leg = leg.concat([["#E2E8F0", "🚪 parti : ne bloque plus"]]);
   // (relecteur n°68) pendant la réflexion, la tuile dit « ✍️ écrit » ; la légende dit le reste
   if(phase === "reflexion") leg = [["#E0F2FE", "✍️ écrit : la réponse, sur sa feuille, pendant la réflexion"]];
-  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:m.reste, stats:statsQ(), passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
+  // (QCM-2) en direct, « connectés » : les présents entrés sur une tablette (SCN.compteurs().connectes), pas tous les présents
+  var stats = statsQ();
+  if(enDirect() && c.connectes) stats = [[fr2(c.connectes), "connectés"]].concat(stats.slice(1));
+  return {k:k, phase:phase, qi:qi, tour:m.tour, chrono:m.reste, stats:stats, passees:passees, ecartees:obj(m.ecartees), annulees:obj(m.annulees), pause:m.ph === "pause" || !!m.paused,
     etat:etatQuestionH({qi:qi, tour:m.tour, fini:phase === "attente", reflexion:phase === "reflexion"}), legende:leg, nbQ:c.nbQ};
 }
 // (déplacer, 72) l'élève échangé ou déplacé pendant la séance, entré avant et pas encore sur sa nouvelle moitié : il retape son code

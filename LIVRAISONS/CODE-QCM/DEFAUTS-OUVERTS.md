@@ -14,6 +14,11 @@ Vous continuez, d'une traite, dans cet ordre, chaque correction poussée dès qu
 6. [→ QCM-2] Ce que voit l'élève et ce que montre le téléphone, demandé à 22:28 et encore identique à 06:16 (« Reprise du 13/10 », point 8) : les lignes et le « ✓ » des attestations, le titre « <évaluation> — n questions », le « ⏳ » et les listes du téléphone.
 7. [→ QCM-4] Les écrans de l'heure jamais atteints (audit de 22:28) : `x610-1-b-julien`, `x610-2-b-michel`, `t-un-eleve`, `t-corr-seul`, `c-deplacer`, `t-deplace`, `x610-6` à `x610-9`, `x610-autonomie-*`, atteints par le geste ; chaque écart trouvé va à son propriétaire.
 
+8. [→ QCM-3] **Ta mission jusqu'à 09:40** (Paul, 09:09 : « on ne peut pas lui donner une mission en attendant ? »), dans tes seuls fichiers (COMMUN §1), sans toucher à ceux de l'heure :
+   - tes 17 écrans qui ont encore des écarts avec la maquette (`sorties/2026-10-13_0616/fidelite.txt`, 74 écarts) : d'abord `c-que-dit-la-feuille` (31), puis ceux de l'élève, `e-mes-evals` et `e-mes-evals-rendue`, puis les autres ; chaque écart corrigé, ou, s'il vient seulement des données du faux hub, signalé à QCM-4 dans `DEMANDES.md` pour qu'il le nomme avec sa raison ;
+   - tes écrans jamais atteints par le geste : la séance sur papier (`c-papier-seance`, `e-papier-enonces`, `c-papier-grille`, `c-papier-reprendre`, `c-papier-correction`), le rattrapage (`c-rattrapage`), le mode test (`x620-2-mode-test-reflexion`, `x620-3-mode-test-en-grand`) : tu les joues toi-même par le geste sur le faux hub, contre la scène de la maquette, et tu corriges ce qui diffère ; ce qui revient à QCM-2 (les tablettes du papier) va dans `DEMANDES.md`.
+   Chaque correction poussée dès qu'elle passe `build.py` et ton essai ; à 09:40, tu as tout poussé et tu t'arrêtes.
+
 ## Contrôle de la conscience n°12 — 13/10 09:02, sur la reprise 2 (`8d35f41`, md5 `784ac5e8…`)
 
 **Verdict : ça ne va pas ; rien n'est mis en ligne, Paul fait cours avec la 7.7.2.** D'après VERDICT.md de 08:58 : les points 2, 3, 4 et 5 échouent au geste ; 6 non rejoué. (Remplacé à 09:05 par la « Reprise 3 », ci-dessus : Paul veut continuer.)

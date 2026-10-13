@@ -36,7 +36,7 @@ COMMUN §3, plus `../../CONTRAT-CHANGEMENTS.md` : **C1** l'état de la séance e
 - **Les attentes** (attestations, estimation, lecture, co-évaluation, « 🏁 ») ne comptent que les présents **entrés** sur une tablette (`SCN.actifs`).
 - **La reprise** d'une séance finie à une autre heure : l'appel, l'entrée, « prêt », puis `ACT.reprendre()` relance la phase gelée au début.
 - **La séance sur papier** : après l'appel, la séance sur papier ; la reprise : l'appel, l'estimation, la seconde attestation, la correction d'après la grille (sans lecture, sans « Trouvée au dernier moment »).
-- **La séance interrompue** (la console perdue, `lastDisconnect` de la 7.7.1) : la console rouverte ouvre « ⚠️ Séance interrompue détectée » ; « 🔄 Reprendre la séance » fait recommencer le tour au début.
+- **La séance interrompue** (la console perdue, `lastDisconnect` de la 7.7.1) : la console rouverte ouvre « ⚠️ Séance interrompue détectée » ; « 🔄 Reprendre la séance » confirme la reprise : le chrono reste où il en était (13/10).
 - **« À lire sur les feuilles »** s'écrit dans la base dès qu'une ligne naît (`aLire/<id>`) ; **la présence** de la 7.7.1 (`qcm/presence/<classe>/<élève>`) est tenue par chaque tablette.
 - **Les niveaux de maîtrise** suivent les tranches des Réglages (`qcm/settings/maitrise`) ; sans réglage, celles de la maquette (15, 10, 5).
 - **La question bonus** compte dans les points gagnés, pas dans le total ; la note ne dépasse pas 20.

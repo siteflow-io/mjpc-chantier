@@ -175,7 +175,7 @@ var SCN = (function(){
   S.aLaMain = function(x, sid){ var e = S.etat(sid); if(!e || e.qi == null) return false;
     if(e.ph === "rouvert") return e.pour === x;
     if(e.ph !== "reponse") return false;
-    if(e.rouvert === "tous" && S.reponse(x, e.qi, sid) && !S.reponse(x, e.qi, sid).rouverte) return false;
+    if(e.rouvert === "tous" && S.reponse(x, e.qi, sid) && S.reponse(x, e.qi, sid).rouverte !== "tous") return false;
     // seul : un seul tour par question (scenario.js, dureeEstimee), au premier des deux, quel que soit son côté ; sa réponse donnée, il ne l'a plus au suivant
     if(S.seul(x, sid)){ var r = S.reponse(x, e.qi, sid); return !r || !!r.rouverte || (r.tour || 1) === (e.tour || 1); }
     return S.cote(x, sid) === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)); };
@@ -265,12 +265,12 @@ var SCN = (function(){
   S.lecture = function(x, qi, sid){ var s = S.sess(sid), l = ((((s && s.lectures) || {})[qi]) || {})[x]; if(!l) return null;
     return Object.assign({}, l, {choix:l.choix === "aucun" ? "aucun" : (Array.isArray(l.choix) ? l.choix : Object.values(l.choix || {})).map(Number)}); };
   S.doitDireB = function(x, sid){ var e = S.etat(sid); if(!e || !x || e.qi == null) return false; var c = S.cote(x, sid);
-    if(e.ph === "b"){ var r = S.reponse(x, e.qi, sid); if(e.pour) return x === e.pour && !!r && !S.ditB(x, e.qi, sid); if(e.rouvert === "tous" && !(r && r.rouverte)) return false;
+    if(e.ph === "b"){ var r = S.reponse(x, e.qi, sid); if(e.pour) return x === e.pour && !!r && !S.ditB(x, e.qi, sid); if(e.rouvert === "tous" && !(r && r.rouverte === "tous")) return false;
       return (c === (e.cote || S.coteDuTour(e.qi, e.tour || 1, sid)) || S.seul(x, sid)) && !S.ditB(x, e.qi, sid) && !!r; }
     var b = e.bPour; return !!(b && Number(b.qi) === e.qi && (b.cote === c || S.seul(x, sid)) && LIVE.maintenant() < b.jusqua && !S.ditB(x, e.qi, sid) && S.reponse(x, e.qi, sid)); };
   // (13/10) l'élève est-il de la question en cours ? une réouverture « pour tous » n'est que pour ceux qui n'avaient pas répondu, « pour un élève » que pour lui
   S.concerne = function(x, sid){ var e = S.etat(sid); if(!e || e.qi == null) return false; if(e.ph === "rouvert" || e.pour) return e.pour === x;
-    if(e.rouvert === "tous"){ var r = S.reponse(x, e.qi, sid); return !r || !!r.rouverte; } return true; };
+    if(e.rouvert === "tous"){ var r = S.reponse(x, e.qi, sid); return !r || r.rouverte === "tous"; } return true; };
   S.estimationDe = function(x, sid){ var s = S.sess(sid); return ((s && s.autoevals) || {})[x] || null; };
   S.coevalDe = function(x, sid){ var s = S.sess(sid); return ((s && s.coeval) || {})[x] || null; };
   S.attestDe = function(n, x, sid){ var s = S.sess(sid); return ((((s && s.attest) || {})[n]) || {})[x] || null; };
@@ -704,7 +704,7 @@ var ACT = (function(){
   A.annuler = function(qi){ return sid() ? liste("annulees", qi, true) : Promise.resolve(); };
   A.remettre = function(qi){ if(!sid()) return Promise.resolve(); return Promise.all([liste("ecartees", qi, false), liste("annulees", qi, false)]); };
   // rouvrir une question close : une seule fois par question
-  A.rouvrirTous = function(qi){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
+  A.rouvrirTous = function(qi){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi]) === "tous") return Promise.resolve();   // une réouverture pour un élève ne l'empêche pas
     var plus = {}; plus["rouverts/" + qi] = "tous";
     // seuls ceux qui n'ont pas répondu la retrouvent : on commence au premier tour où l'un d'eux a la main (le 2e si ceux du 1er ont tous répondu)
     qi = Number(qi);
@@ -713,7 +713,7 @@ var ACT = (function(){
     var act = SCN.actifs(), pres = SCN.presents();
     var tour = manque(1, act) ? 1 : manque(2, act) ? 2 : manque(1, pres) ? 1 : manque(2, pres) ? 2 : 1;
     return poserDeroule(id, {ph:"passage", qi:qi, tour:tour, cote:SCN.coteDuTour(qi, tour), duree:D().decompte, rouvert:"tous"}, plus); };
-  A.rouvrirPour = function(qi, x){ var id = sid(), s = SCN.sess(); if(!id || ((s.rouverts || {})[qi])) return Promise.resolve();
+  A.rouvrirPour = function(qi, x){ var id = sid(), s = SCN.sess(), r0 = (s.rouverts || {})[qi]; if(!id || r0 === "tous" || r0 === x) return Promise.resolve();
     var plus = {}; plus["rouverts/" + qi] = x; plus["reouverts/" + x] = true;
     return poserDeroule(id, {ph:"rouvert", qi:qi, tour:SCN.cote(x) === SCN.premierCote(qi) ? 1 : 2, cote:SCN.cote(x), duree:SCN.tempsDe(qi).reponse, pour:x}, plus); };
   A.depart = function(x){ var id = sid(); if(!id) return Promise.resolve(); var maj = {}, now = LIVE.maintenant(); maj[cheminS(id, "partis/" + x)] = now;
@@ -905,9 +905,9 @@ var ELV = (function(){
   E.repondre = function(qi, choix, x){ x = qui(x); var id = sid(); if(!x || !id) return Promise.resolve(); var e = SCN.etat() || {};
     var ouvert = e.qi === qi && SCN.aLaMain(x) && (SCN.reste(e) == null || SCN.reste(e) > 0);
     if(!ouvert) return Promise.resolve({ok:false});
-    if(e.rouvert === "tous" && SCN.reponse(x, qi) && !SCN.reponse(x, qi).rouverte) return Promise.resolve({ok:false});
+    if(e.rouvert === "tous" && SCN.reponse(x, qi) && SCN.reponse(x, qi).rouverte !== "tous") return Promise.resolve({ok:false});
     if(!choix || !choix.length) return w("reponses/" + qi + "/" + x, null, "repondre (vide)");
-    return w("reponses/" + qi + "/" + x, {choix:choix.slice().map(Number).sort(function(a, b){ return a - b; }), ts:LIVE.maintenant(), ms:LIVE.maintenant(), tour:e.tour || 1, rouverte:e.ph === "rouvert" || !!e.rouvert || null}, "repondre"); };
+    return w("reponses/" + qi + "/" + x, {choix:choix.slice().map(Number).sort(function(a, b){ return a - b; }), ts:LIVE.maintenant(), ms:LIVE.maintenant(), tour:e.tour || 1, rouverte:e.ph === "rouvert" ? "un" : e.rouvert ? String(e.rouvert) : null}, "repondre"); };
   E.direB = function(qi, ouiNon, x){ x = qui(x); return x ? w("b/" + qi + "/" + x, ouiNon, "direB") : Promise.resolve(); };
   // la moitié de cet élève doit-elle dire B maintenant ? (la phase b de son tour, ou la suite déjà commencée par un geste de Paul : bPour)
   E.doitDireB = function(x){ return SCN.doitDireB(qui(x)); };

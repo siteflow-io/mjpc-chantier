@@ -172,8 +172,11 @@ function deplaceH(p){ if(!aDeplacerH(p)) return null; var t = SCN.tabletteDe(p);
 // la moitié d'un élève pendant une question (c3-base.js, etatQuestion), d'après le moment complété : en direct, ceux qui répondent encore
 function etatQuestionH(s){
   var m = momH(), nonRep = s.nonRep || m.nonRep || [], sansRep = m.sansRep || [], partis = m.partis || {};
+  var act = enDirect() ? actifsH() : null;   // les présents entrés sur une tablette
   return function(p, cote){
     if(partis[p]) return {cls:"m-parti", st:"🚪 parti à " + partis[p]};
+    // un présent jamais entré sur sa moitié : ni « répond », ni « attend son tour » (c-pret : « pas encore entré »)
+    if(act && act.indexOf(p) < 0) return {cls:"m-connexion", st:"pas encore " + (sexeH(p) === "F" ? "entrée" : "entré")};
     var dp = deplaceH(p); if(dp) return dp;
     if(s.reflexion) return {cls:"m-ecrit", st:"✍️ écrit"};
     if(s.fini) return sansRep.indexOf(p) >= 0 ? {cls:"m-pasrep", st:"⏳ pas de réponse"} : couleur(p, s.qi, false);

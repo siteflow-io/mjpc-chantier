@@ -970,7 +970,7 @@ function PapierSeanceVC(){
   var se = seancePapierV(); if(!se) return h("div", {className:"card"}, h("p", null, "Chargement…"));
   var ev = se.ev, sq = "&seance=" + encodeURIComponent(se.id);
   return h("div", {className:"card"},
-    TitreCarte(h(F, null, "📄 Séance sur papier — " + ev.titre + " — " + ev.questions.length + " questions — " + se.classe, InfoI("Sur papier, chacun répond seul sur sa feuille, avec les énoncés imprimés, sans tablette. Tu ramasses les feuilles ; la séance se met en pause sans être finie. Le soir, tu remplis la grille ; à l'heure suivante, l'estimation, la seconde attestation et la correction se font sur les tablettes.")),
+    TitreCarte(h(F, null, "📄 Séance sur papier — " + ev.titre + " — " + se.classe, InfoI("Sur papier, chacun répond seul sur sa feuille, avec les énoncés imprimés, sans tablette. Tu ramasses les feuilles ; la séance se met en pause sans être finie. Le soir, tu remplis la grille ; à l'heure suivante, l'estimation, la seconde attestation et la correction se font sur les tablettes.")),
       [h("button", {key:1, className:"btn btn-rouge btn-sm", "data-va":"c-terminer" + sq}, "🛑 Terminer la séance")]),
     h("div", {className:"pilot-status reflexion"}, "📄 Séance sur papier en cours — " + presentsTexteV(se), InfoIB("📄 Séance sur papier en cours", "Les élèves ont les énoncés seuls, sans les choix, et répondent sur leur feuille, seuls.")),
     h("div", {className:"papier-grid"},
@@ -1011,7 +1011,7 @@ function PapierGrilleVC(){
   useEffect(function(){ if(!se) return; var u = {}; se.presents.forEach(function(e){ se.ev.questions.forEach(function(q, i){ if(caseGrille(se, e.slug, i) == null) u["papier/" + e.slug + "/" + i] = "f"; }); }); if(Object.keys(u).length) v3Update(v3Q("sessions/" + se.id), u); }, [se ? se.id : null]);
   if(!se) return h("div", {className:"card"}, h("p", null, "Chargement…"));
   return h("div", {className:"card"},
-    TitreCarte("📄 " + se.ev.titre + " — " + se.ev.questions.length + " questions — " + se.classe + " — sur papier", [
+    TitreCarte("📄 " + se.ev.titre + " — " + se.classe + " — sur papier", [
       h("button", {key:0, className:"btn btn-primary btn-sm", "data-va":"c-lancer", title:"Ta grille est remplie : la séance se reprend à l'heure suivante, pour la correction sur les tablettes."}, "💾 Grille remplie"),
       h("button", {key:2, className:"btn btn-ghost btn-sm", "data-va":"c-seances", title:"Revient à la liste des séances ; la grille est gardée telle quelle."}, "← Retour")]),
     h("p", {style:{fontSize:".85rem", color:"var(--gris)", marginTop:".2rem"}}, se.date + " " + se.heure + " · sur papier · " + presentsTexteV(se)),
@@ -1032,7 +1032,7 @@ function RattrapageVC(){
     h("div", {className:"lancer-grid"},
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI("Les classes de la console MJPC.")), h("select", {value:"c", readOnly:true, title:"La classe de la séance."}, h("option", {value:"c"}, cl.libelle + " (" + cl.eleves.length + " élèves)"))),
-        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("L'évaluation déjà passée par la classe : « 🔁 » la marque comme rattrapage.")), h("select", {value:"e", readOnly:true, title:"L'évaluation de la séance."}, h("option", {value:"e"}, "🔁 " + ev.titre + " — " + ev.questions.length + " questions"))),
+        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("L'évaluation déjà passée par la classe : « 🔁 » la marque comme rattrapage.")), h("select", {value:"e", readOnly:true, title:"L'évaluation de la séance."}, h("option", {value:"e"}, "🔁 " + ev.titre))),
         h("div", {className:"rattrapage-box"}, h("strong", null, "🔁 Rattrapage."), " " + cl.libelle + " a déjà passé cette évaluation le " + se0.date.slice(0, 5) + ".", InfoIB("🔁 Rattrapage", "Cette séance ne servira jamais de « QCM précédent » pour les binômes. Un élève déjà noté garde la note de sa première séance.")),
         h("div", {className:"duree-box"}, texteDureeV(ev, true)),
         h("button", {className:"btn btn-primary", disabled:!seuls.length, title:seuls.length ? "Ouvre l'appel du rattrapage : seuls les élèves pas encore notés sont proposés." : "Tous les élèves de la classe sont déjà notés à cette évaluation."}, "🚀 Lancer le rattrapage")),

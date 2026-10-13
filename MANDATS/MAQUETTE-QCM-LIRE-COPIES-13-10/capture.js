@@ -1,4 +1,4 @@
-// Captures de la maquette « 📄 Lire les copies », version 3 (conscience n°12, 13/10, après Paul 20:23 : 1144 et 1145) : par le geste, sur le faux hub
+// Captures de la maquette « 📄 Lire les copies », version 4 (conscience n°12, 13/10, après Paul 20:36) : par le geste, sur le faux hub
 const path = require("path"), fs = require("fs");
 const { chromium } = require("/opt/node22/lib/node_modules/playwright");
 const BANC = process.env.BANC, CAP = process.env.CAP;
@@ -21,14 +21,17 @@ const pause = ms => new Promise(r => setTimeout(r, ms));
   const txt = async () => (await p.evaluate(() => (document.querySelector("[data-lire-copies]") || document.body).innerText)).replace(/\n/g, " ⏎ ");
   const etat = async () => p.evaluate(() => { const se = seanceV("sess_1791877316846"); return JSON.stringify(se.S.autonomie || {}); });
   await clic(/^Données$/); await clic(/Résultats/); await clic(/📊 Ouvrir/);
-  console.log("Lire", await clic(/Lire les copies/)); await shot("1-sors-du-tas"); console.log("1 :", (await txt()).slice(0, 420));
-  await initiales("ct"); await p.keyboard.press("Enter"); await pause(900); console.log("Tom :", (await txt()).slice(0, 200));
+  console.log("Lire", await clic(/Lire les copies/)); await shot("1-debut"); console.log("1 :", (await txt()).slice(0, 300));
+  await initiales("ct"); await p.keyboard.press("Enter"); await pause(900); await shot("2-carre-tom"); console.log("2 :", (await txt()).slice(0, 700));
   console.log("Autre chose", await clic(/Autre chose/)); console.log("Rome", await clic(/^Rome$/));
-  console.log("Valider", await clic(/Valider/)); await pause(1200); await shot("2-tom-lea-a-mal-lu"); console.log("2 :", (await txt()).slice(0, 900));
-  console.log("Oui retirer", await clic(/^⛔ Oui$/)); await pause(1200); await shot("3-lea-retire"); console.log("3 :", (await txt()).slice(0, 700)); console.log("autonomie :", await etat());
-  await initiales("chev"); await p.keyboard.press("Enter"); await pause(900); await shot("4-theo"); console.log("4 :", (await txt()).slice(0, 500));
-  console.log("Oui", await clic(/^✅ Oui$/)); await pause(1200); await shot("5-theo-avait-dit"); console.log("5 :", (await txt()).slice(0, 800));
-  console.log("Non", await clic(/^Non$/)); await pause(1000); await shot("6-theo-garde"); console.log("6 :", (await txt()).slice(0, 700)); console.log("autonomie :", await etat());
+  console.log("Valider", await clic(/Valider/)); await pause(1200); await shot("3-tom-corrige"); console.log("3 :", (await txt()).slice(0, 1100));
+  console.log("Oui retirer", await clic(/^⛔ Oui$/)); await pause(1200); await shot("4-lea-retire"); console.log("4 :", (await txt()).slice(0, 1100)); console.log("autonomie :", await etat());
+  console.log("Rendre", await clic(/^↩️ Rendre$/)); await pause(1200); await shot("5-lea-rendu"); console.log("5 :", (await txt()).slice(0, 1100)); console.log("autonomie :", await etat());
+  await initiales("chev"); await p.keyboard.press("Enter"); await pause(900);
+  console.log("Oui", await clic(/^✅ Oui$/)); await pause(1200); await shot("6-theo-avait-dit"); console.log("6 :", (await txt()).slice(0, 1000));
+  console.log("Non", await clic(/^Non$/)); await pause(1000);
+  await initiales("dm"); await p.keyboard.press("Enter"); await pause(900); await shot("7-michel-retire-en-classe"); console.log("7 :", (await txt()).slice(0, 900));
+  console.log("Rendre Michel", await clic(/^↩️ Rendre$/)); await pause(1200); await shot("8-michel-rendu"); console.log("8 :", (await txt()).slice(0, 900)); console.log("autonomie :", await etat());
   console.log("erreurs :", err.slice(0, 3));
   await navig.close(); await srv.close();
 })();

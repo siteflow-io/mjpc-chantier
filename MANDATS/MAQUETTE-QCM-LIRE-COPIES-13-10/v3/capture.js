@@ -1,0 +1,34 @@
+// Captures de la maquette « 📄 Lire les copies », version 3 (conscience n°12, 13/10, après Paul 20:23 : 1144 et 1145) : par le geste, sur le faux hub
+const path = require("path"), fs = require("fs");
+const { chromium } = require("/opt/node22/lib/node_modules/playwright");
+const BANC = process.env.BANC, CAP = process.env.CAP;
+const { startServer, installRoutes } = require(path.join(BANC, "server.js"));
+const { buildTree } = require(path.join(BANC, "tree.js"));
+const pause = ms => new Promise(r => setTimeout(r, ms));
+(async () => {
+  const B = buildTree();
+  B.tree.qcm = Object.assign({}, B.tree.qcm, JSON.parse(fs.readFileSync(process.env.BASE)));
+  B.tree.taxonomie = Object.assign({}, B.tree.taxonomie, {competences: JSON.parse(fs.readFileSync(process.env.TAXO))});
+  const PORT = 8940 + Math.floor(Math.random() * 50);
+  const srv = await startServer(B.tree, PORT, () => {});
+  const navig = await chromium.launch({executablePath: "/opt/pw-browsers/chromium"});
+  const ctx = await navig.newContext({viewport: {width: 1536, height: 864}}); await installRoutes(ctx, {...srv, port: PORT}, null);
+  const p = await ctx.newPage(); const err = []; p.on("pageerror", e => err.push(e.message));
+  await p.goto("http://localhost:" + PORT + "/evaluation-qcm.html?mode=prof"); await pause(2500);
+  const clic = async (re) => { const ok = await p.evaluate(([s, f]) => { const r = new RegExp(s, f); const b = [...document.querySelectorAll("button, a, [role=button], [data-va], .lire-prop")].filter(e => e.getBoundingClientRect().width > 0 && !e.disabled && r.test((e.textContent || "").trim())).sort((a, b) => a.textContent.length - b.textContent.length)[0]; if (!b) return false; document.querySelectorAll("[data-c]").forEach(x => x.removeAttribute("data-c")); b.setAttribute("data-c", "1"); return true; }, [re.source, re.flags]); if (ok) { await p.click("[data-c='1']"); await pause(1000); } return ok; };
+  const initiales = async (t) => { await p.click("[data-initiales='1']"); await p.keyboard.type(t, {delay: 60}); await pause(500); };
+  const shot = async (n) => p.screenshot({path: CAP + "/" + n + ".png"});
+  const txt = async () => (await p.evaluate(() => (document.querySelector("[data-lire-copies]") || document.body).innerText)).replace(/\n/g, " ⏎ ");
+  const etat = async () => p.evaluate(() => { const se = seanceV("sess_1791877316846"); return JSON.stringify(se.S.autonomie || {}); });
+  await clic(/^Données$/); await clic(/Résultats/); await clic(/📊 Ouvrir/);
+  console.log("Lire", await clic(/Lire les copies/)); await shot("1-sors-du-tas"); console.log("1 :", (await txt()).slice(0, 420));
+  await initiales("ct"); await p.keyboard.press("Enter"); await pause(900); console.log("Tom :", (await txt()).slice(0, 200));
+  console.log("Autre chose", await clic(/Autre chose/)); console.log("Rome", await clic(/^Rome$/));
+  console.log("Valider", await clic(/Valider/)); await pause(1200); await shot("2-tom-lea-a-mal-lu"); console.log("2 :", (await txt()).slice(0, 900));
+  console.log("Oui retirer", await clic(/^⛔ Oui$/)); await pause(1200); await shot("3-lea-retire"); console.log("3 :", (await txt()).slice(0, 700)); console.log("autonomie :", await etat());
+  await initiales("chev"); await p.keyboard.press("Enter"); await pause(900); await shot("4-theo"); console.log("4 :", (await txt()).slice(0, 500));
+  console.log("Oui", await clic(/^✅ Oui$/)); await pause(1200); await shot("5-theo-avait-dit"); console.log("5 :", (await txt()).slice(0, 800));
+  console.log("Non", await clic(/^Non$/)); await pause(1000); await shot("6-theo-garde"); console.log("6 :", (await txt()).slice(0, 700)); console.log("autonomie :", await etat());
+  console.log("erreurs :", err.slice(0, 3));
+  await navig.close(); await srv.close();
+})();

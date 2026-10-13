@@ -1,11 +1,12 @@
-/* ════════ Maquette de la conscience n°12, 13/10/2026, version 3 (Paul, 15:55, 16:08 et 20:23 : 1144 et 1145) ════════
+/* ════════ Maquette de la conscience n°12, 13/10/2026, version 4 (Paul, 15:55, 16:08, 20:23 et 20:36) ════════
    « 📄 Lire les copies » : le soir, Paul prend les copies dans l'ordre de son tas, tape les initiales de chacune (comme la fin de copie
    de correction_dictee, « DM pour Dupont Marie »), et l'app ne lui pose que les questions qui ont besoin de sa lecture, une par une,
    « Oui » ou « Autre chose » ; après chaque réponse, elle lui dit ce qu'il écrit sur la copie. Écrit dans le code réel de l'app
    (PROTOCOLE-MAQUETTE §00), sur ses lectures et ses gestes : « ✅ Oui » = « ✔ Marquer lue » (marquerLueV) ;
    « ✏️ Autre chose » puis « ✔ Valider » = « Que dit la feuille ? » (feuilleDitV).
-   v3 : « Sors du tas » (1145) ; après chaque réponse, la faute trouvée et « Retirer son point d'autonomie ? » (1144,
-   le geste du soir de la fiche, retirerAutonomieSoirV) ; ce que Paul écrit sur la copie d'après 1117 (l'élève corrige sa feuille au vert seul). */
+   v4 : après chaque réponse, la faute trouvée et « Retirer son point d'autonomie ? » (1144, retirerAutonomieSoirV) ; le point
+   se rend aussi (rendreAutonomieV, le « ↩️ Rendre » de la fiche) ; la note calculée en direct, question par question, et ce qui a
+   changé ce soir ; ce que Paul écrit sur la copie d'après 1117 (l'élève corrige sa feuille au vert seul). Plus de « Sors du tas » (Paul, 20:36). */
 function LireCopiesVue(){ return Console("donnees", "results", h(LireCopiesV), false); }
 function LireCopiesV(){ return h(LireCopiesC, {key:seanceParam() || "-"}); }
 function sansAccentL(s){ return String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase(); }
@@ -45,6 +46,36 @@ function fautesL(se, x, sel){
   if(lu && lec && lec !== x.p && !memeLectureL(sel, lu)) F.push({qui:lec, texte:prenomEleveV(se, lec) + " avait lu « " + choixTexteV(q, lu) + " »."});
   return F.filter(function(f){ return !autonomieV(se, f.qui).retire; });
 }
+// le point de départ de la relecture (à l'ouverture de l'écran) : les notes et les points d'autonomie, pour montrer ce qui change
+var LC_DEPART = {};
+function departL(se){
+  if(LC_DEPART[se.id]) return LC_DEPART[se.id];
+  var d = {notes:{}, auto:{}};
+  se.presents.forEach(function(e){ var r = resultatV(se, e.slug); d.notes[e.slug] = r ? {n:r.n, total:r.total, sur20:r.sur20, pts:(r.pts || []).slice()} : null; d.auto[e.slug] = autonomieV(se, e.slug).retire; });
+  return (LC_DEPART[se.id] = d);
+}
+function ptsL(x){ return x == null ? "—" : fr1(x) + (x >= 2 ? " points" : " point"); }
+// la note de la copie, en direct : chaque question, ce qui a bougé depuis l'ouverture, et le total (sur l'échelle et sur 20)
+function NoteDirecteL(p){
+  var se = p.se, slug = p.slug, r = resultatV(se, slug), d = departL(se).notes[slug], ev = se.ev;
+  if(!r) return null;
+  var bouge = d && (d.n !== r.n);
+  return h("div", {"data-note-directe":slug, title:"La note de la copie, recalculée à chaque réponse : les points de chaque question, et ce qui a changé depuis que tu as ouvert « Lire les copies ».", style:{minWidth:250, padding:".6rem .8rem", borderRadius:10, background:"#F8F6FF", border:"1px solid #DDD6FE", fontSize:".92rem"}},
+    h("div", {style:{fontWeight:800, marginBottom:".3rem"}}, "🧮 La note, en direct"),
+    ev.questions.map(function(q, i){ var a = d ? d.pts[i] : null, b = r.pts ? r.pts[i] : null, ch = a != null && b != null && a !== b;
+      return h("div", {key:i, style:{fontWeight:ch ? 800 : 400, color:ch ? (b > a ? "#15803D" : "#B91C1C") : "inherit"}},
+        "Question " + (i + 1) + " : " + (b == null ? "écartée" : ch ? fr1(a) + " → " + ptsL(b) + " (" + (b > a ? "+" : "−") + fr1(Math.abs(b - a)) + ")" : ptsL(b))); }),
+    h("div", {style:{fontWeight:900, marginTop:".35rem", fontSize:"1.02rem"}}, "✍️ Note : " + (bouge ? fr1(d.n) + " / " + d.total + " → " : "") + fr1(r.n) + " / " + r.total + " · " + (bouge ? fr1(d.sur20) + " → " : "") + fr1(r.sur20) + " / 20"));
+}
+// le point d'autonomie d'un élève, et le geste qui le change dans les deux sens
+function AutonomieL(p){
+  var se = p.se, slug = p.slug, au = autonomieV(se, slug), pre = prenomEleveV(se, slug);
+  return h("div", {"data-autonomie":slug, style:{display:"flex", alignItems:"center", gap:".6rem", flexWrap:"wrap", marginTop:p.marge || 0}},
+    h("span", {style:{fontWeight:700, color:au.retire ? "#B91C1C" : "#15803D"}}, au.retire ? "⛔ Point d'autonomie de " + pre + " retiré " + au.quand + "." : "🤝 " + pre + " a son point d'autonomie."),
+    au.retire
+      ? h("button", {className:"btn btn-vert btn-sm", "data-local":"1", title:"Rend son point d'autonomie à " + pre + " : ses deux compétences d'autonomie repassent en Très bonne maîtrise.", onClick:function(){ rendreAutonomieV(se, slug); }}, "↩️ Rendre")
+      : h("button", {className:"btn btn-ghost btn-sm", "data-local":"1", title:"Retire son point d'autonomie à " + pre + " : ses deux compétences d'autonomie passent en Maîtrise insuffisante. « ↩️ Rendre » le défait.", onClick:function(){ retirerAutonomieSoirV(se, slug); }}, "⛔ Retirer"));
+}
 function LireCopiesC(){
   useV3();
   var s1 = useState(null), cur = s1[0], setCur = s1[1], s2 = useState(null), ouvert = s2[0], setOuvert = s2[1], s3 = useState([]), sel = s3[0], setSel = s3[1];
@@ -62,11 +93,11 @@ function LireCopiesC(){
   function repondu(x, avantJ, apresJ, avantNote, fautes){ var o = Object.assign({}, faits); o[x.id] = {ecrire:aEcrireL(ev.questions[x.q], avantJ, apresJ), avantNote:avantNote, fautes:fautes || [], dec:{}}; setFaits(o); setOuvert(null); setSel([]); }
   function decide(x, f, retirer){ var go = retirer ? retirerAutonomieSoirV(se, f.qui) : Promise.resolve(); go.then(function(){ var o = Object.assign({}, faits), g = Object.assign({}, o[x.id]); g.dec = Object.assign({}, g.dec); g.dec[f.qui] = retirer ? "retire" : "garde"; o[x.id] = g; setFaits(o); }); }
   var titre = TitreCarte("📄 Lire les copies — " + ev.titre + " — " + se.classe, [h("button", {key:1, className:"btn btn-ghost btn-sm", "data-va":"c-resultats" + sq, title:"Revient au tableau de la séance. Ce que tu as déjà répondu reste enregistré."}, "← Tableau de la séance")]);
+  var dep = departL(se), chg = [];
+  se.presents.forEach(function(e){ var d = dep.notes[e.slug], r = resultatV(se, e.slug); if(d && r && d.n !== r.n) chg.push(e.nom + " " + fr1(d.n) + " / " + d.total + " → " + fr1(r.n) + " / " + r.total + " (" + (r.n > d.n ? "+" : "−") + fr1(Math.abs(r.n - d.n)) + ")");
+    var a = autonomieV(se, e.slug).retire; if(a !== dep.auto[e.slug]) chg.push((a ? "⛔ " : "↩️ ") + e.nom + " : point d'autonomie " + (a ? "retiré" : "rendu")); });
+  var soir = chg.length ? h("div", {"data-ce-soir":"1", title:"Tout ce que ta relecture a changé depuis que tu as ouvert « Lire les copies » : les notes, et les points d'autonomie retirés ou rendus.", style:{margin:"-.5rem 0 1rem", padding:".6rem .8rem", borderRadius:10, background:"#F1F5F9", fontWeight:700, lineHeight:1.5}}, "🧮 Ce soir : " + chg.join(" · ")) : null;
   var compte = h("div", {style:{fontWeight:800, margin:".2rem 0 1rem"}}, aLireN ? "📌 Encore " + aLireN + " copie" + (aLireN > 1 ? "s" : "") + " à lire, " + nQ + " question" + (nQ > 1 ? "s" : "") + " en tout · les autres copies n'ont rien à lire" : "✅ Toutes les copies sont lues.");
-  // 1145 : les copies à sortir du tas, celles qui ont encore une question à lire ; la liste raccourcit à chaque copie lue
-  var aSortir = eleves.filter(function(e){ return e.lignes.some(function(x){ return !x.lue; }); });
-  var sors = aSortir.length ? h("div", {"data-sors":"1", title:"Les copies qui ont encore une question à lire. Les autres restent dans le tas.", style:{margin:"-.5rem 0 1rem", padding:".6rem .8rem", borderRadius:10, background:"#EEE8FF", fontWeight:700, lineHeight:1.5}},
-    "📤 Sors du tas : " + aSortir.map(function(e){ return e.nom; }).join(", ") + " (" + aSortir.length + ")") : null;
   // le champ des initiales : au début, et à la fin de chaque copie
   var champ = h("div", {style:{maxWidth:420, marginTop:c ? "1rem" : 0}},
     h("div", {style:{fontSize:".9rem", color:"var(--gris)", marginBottom:4}}, c ? "Copie suivante de ton tas — tape ses initiales (DM pour Dupont Marie), puis Entrée :" : "Prends la première copie de ton tas et tape ses initiales (DM pour Dupont Marie), puis Entrée :"),
@@ -78,12 +109,13 @@ function LireCopiesC(){
         style:{padding:"5px 10px", marginTop:3, borderRadius:6, cursor:"pointer", background:ii === 0 ? "#EEE8FF" : "transparent", fontWeight:ii === 0 ? 800 : 500, display:"flex", justifyContent:"space-between", gap:8}},
         h("span", null, e.nom), h("span", {style:{fontSize:".8rem", color:n ? "#9A3412" : "var(--gris)"}}, n ? n + " question" + (n > 1 ? "s" : "") + " à lire" : e.lignes.length ? "✔ lue" : "rien à lire")); }),
     rech.trim() && !props.length && h("div", {style:{fontSize:".85rem", color:"var(--gris)", marginTop:4}}, "Aucun élève ne correspond."));
-  if(!c) return h("div", {className:"card", "data-lire-copies":se.id}, titre, compte, sors, champ);
+  if(!c) return h("div", {className:"card", "data-lire-copies":se.id}, titre, compte, soir, champ);
   var restent = c.lignes.filter(function(x){ return !x.lue; }).length;
-  return h("div", {className:"card", "data-lire-copies":se.id}, titre, compte, sors,
+  return h("div", {className:"card", "data-lire-copies":se.id}, titre, compte, soir,
     h("div", {style:{border:"3px solid var(--violet)", borderRadius:"14px", padding:"1rem 1.2rem", background:"#FBFAFF"}},
       h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"baseline", gap:".8rem", flexWrap:"wrap"}},
-        h("div", {style:{fontSize:"1.6rem", fontWeight:900}}, "📄 " + c.nom), h("div", {style:{fontWeight:800}}, "Note : " + noteDe(c.p))),
+        h("div", null, h("div", {style:{fontSize:"1.6rem", fontWeight:900}}, "📄 " + c.nom), h(AutonomieL, {se:se, slug:c.p, marge:".3rem"})),
+        h(NoteDirecteL, {se:se, slug:c.p})),
       !c.lignes.length ? h("div", {style:{fontSize:"1.15rem", fontWeight:800, color:"#15803D", marginTop:".6rem"}}, "Rien à lire sur cette copie : mets-la de côté.")
       : c.lignes.map(function(x){
         var qq = ev.questions[x.q], qs = questionDuSoirV(se, x), ici = ouvert === x.id, f = faits[x.id];
@@ -91,15 +123,13 @@ function LireCopiesC(){
           h("div", {style:{fontSize:".9rem", color:"var(--gris)", marginBottom:".2rem"}}, h("strong", null, "Question " + (x.q + 1)), " · " + qq.enonce),
           x.lue ? h("div", null, h("div", {style:{fontWeight:800, color:"#15803D"}}, "✔ " + (x.corrigee ? "corrigée d'après la copie" : "lue")),
               f && h("div", {style:{fontSize:"1.1rem", fontWeight:900, marginTop:".3rem"}}, f.ecrire),
-              f && f.avantNote !== noteDe(c.p) && h("div", {style:{fontWeight:800, marginTop:".2rem"}}, "✍️ Et la note : " + f.avantNote + " → " + noteDe(c.p) + "."),
-              f && (f.fautes || []).map(function(fa){ var d = (f.dec || {})[fa.qui], pre = prenomEleveV(se, fa.qui);
-                return h("div", {key:fa.qui, "data-faute":fa.qui, style:{marginTop:".5rem", padding:".6rem .8rem", borderRadius:10, background:d === "retire" ? "#FDECEC" : d === "garde" ? "#F1F5F9" : "#FFF4E5", border:"2px solid " + (d === "retire" ? "#DC2626" : d === "garde" ? "#CBD5E1" : "#F59E0B")}},
-                  d === "retire" ? h("div", {style:{fontWeight:800}}, "⛔ Point d'autonomie retiré à " + pre + ".")
-                  : d === "garde" ? h("div", {style:{fontWeight:700}}, pre + " garde son point d'autonomie.")
+              f && (f.fautes || []).map(function(fa){ var d = (f.dec || {})[fa.qui];
+                return h("div", {key:fa.qui, "data-faute":fa.qui, style:{marginTop:".5rem", padding:".6rem .8rem", borderRadius:10, background:d ? "#F8FAFC" : "#FFF4E5", border:"2px solid " + (d ? "#CBD5E1" : "#F59E0B")}},
+                  d ? h(AutonomieL, {se:se, slug:fa.qui})
                   : h(F, null, h("div", {style:{fontWeight:800, fontSize:"1.05rem"}}, fa.texte + " Retirer son point d'autonomie ?"),
                     h("div", {style:{display:"flex", gap:".6rem", marginTop:".4rem"}},
-                      h("button", {className:"btn btn-rouge", "data-local":"1", title:"Retire le point d'autonomie de " + pre + " : ses deux compétences d'autonomie passent en Maîtrise insuffisante. « ↩️ Rendre », dans sa fiche, le défait.", onClick:function(){ decide(x, fa, true); }}, "⛔ Oui"),
-                      h("button", {className:"btn btn-ghost", "data-local":"1", title:pre + " garde son point d'autonomie : rien n'est changé.", onClick:function(){ decide(x, fa, false); }}, "Non")))); }))
+                      h("button", {className:"btn btn-rouge", "data-local":"1", title:"Retire le point d'autonomie de " + prenomEleveV(se, fa.qui) + " : ses deux compétences d'autonomie passent en Maîtrise insuffisante. « ↩️ Rendre » le défait.", onClick:function(){ decide(x, fa, true); }}, "⛔ Oui"),
+                      h("button", {className:"btn btn-ghost", "data-local":"1", title:prenomEleveV(se, fa.qui) + " garde son point d'autonomie : rien n'est changé.", onClick:function(){ decide(x, fa, false); }}, "Non")))); }))
           : h(F, null,
             h("div", {style:{fontSize:"1.25rem", fontWeight:900, margin:".2rem 0 .5rem"}}, qs.texte),
             !ici && h("div", {style:{display:"flex", gap:".6rem", flexWrap:"wrap"}},

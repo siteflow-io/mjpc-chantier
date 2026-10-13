@@ -1,5 +1,16 @@
 # Maquette « 📄 Lire les copies » — le soir, copie par copie, dans l'ordre de ton tas (conscience n°12, 13/10/2026)
 
+## Version 4 (tour 722, après Paul 20:36 : « Non je ne veux pas 1145. Et je veux pouvoir remettre un point d'autonomie si besoin. […] Enfin je veux voir les points retirés et ajoutés, le calcul de la note en direct quand je fais ma relecture le soir »)
+
+Ce qui change par rapport à la version 3 (rangée dans `v3/`) :
+- **Plus de « Sors du tas »** (1145 refusé).
+- **Le point d'autonomie, dans les deux sens** : sous le nom de la copie, « 🤝 Tom a son point d'autonomie. » avec « ⛔ Retirer », ou « ⛔ Point d'autonomie de Michel retiré le 13/10 à 09:46. » avec « ↩️ Rendre » (`AutonomieL` : `retirerAutonomieSoirV` et `rendreAutonomieV`, les gestes de la fiche). Après la question de 1144, la case de la faute montre l'état du point dans la base, avec le même bouton : un point retiré au voisin se rend là.
+- **La note en direct** (`NoteDirecteL`), à droite de la copie : les points de chaque question, « Question 1 : 0 → 1 point (+1) » (vert quand ça monte, rouge quand ça baisse), puis « ✍️ Note : 1 / 3 → 2 / 3 · 6,7 → 13,3 / 20 ». Elle se recalcule à chaque réponse, d'après la base.
+- **« 🧮 Ce soir »**, en haut : tout ce que la relecture a changé depuis l'ouverture de l'écran (les notes, les points d'autonomie retirés ou rendus).
+- **Limite de la maquette** : le point de départ de « Ce soir » et des flèches est pris à l'ouverture de l'écran (`LC_DEPART`) ; il repart de zéro si la page est rechargée. Le code devra le garder dans la base. Le « Non » de 1144 n'est toujours pas écrit dans la base.
+
+Captures v4 (rejouées par `capture.js`, par le geste, aucune erreur de page) : `captures/1-debut.png`, `2-carre-tom.png`, `3-tom-corrige.png` (Rome : la note en direct, la question sur Léa), `4-lea-retire.png`, `5-lea-rendu.png` (« ↩️ Rendre » : la base sans `autonomie/baudry_lea`), `6-theo-avait-dit.png` (« ✅ Oui » : la question sur Théo), `7-michel-retire-en-classe.png`, `8-michel-rendu.png` (la base sans `autonomie/duvernay_michel`). App assemblée : md5 `9e76f2a6b14db4fed846758781564a4b`.
+
 ## Version 3 (tour 721, après Paul 20:23 : « 1144 oui. 1146. Oui. »)
 
 Ce qui change par rapport à la version 2 (rangée dans `v2/`) :
@@ -8,7 +19,7 @@ Ce qui change par rapport à la version 2 (rangée dans `v2/`) :
 - **1117, ce que Paul écrit sur la copie**, sans rouge (1146 : l'élève corrige au vert seul) : « rien à changer » ; « barre le V vert, barre sa réponse et écris la bonne réponse à côté : « … » » ; « sa réponse barrée était juste ; mets un V vert dans la marge ».
 - **Limite de la maquette** : le « Non » de 1144 n'est pas écrit dans la base ; si Paul quitte l'écran avant de répondre, la question ne revient pas. Le code devra garder la réponse (par exemple dans `aLire/<id>`).
 
-Captures v3 (rejouées par `capture.js`, par le geste, aucune erreur de page) : `captures/1-sors-du-tas.png`, `2-tom-lea-a-mal-lu.png` (« Autre chose », Rome : Léa avait lu Venise), `3-lea-retire.png` (« ⛔ Oui » : retiré, vérifié dans la base), `4-theo.png`, `5-theo-avait-dit.png` (« ✅ Oui » : la copie dit Sydney, Théo avait dit avoir bien écrit Madrid), `6-theo-garde.png` (« Non »). App assemblée : md5 `e199976992716df9c17b23e0438e31e3`.
+Captures v3 (dans `v3/`, rejouées par `v3/capture.js`, par le geste, aucune erreur de page) : `v3/captures/1-sors-du-tas.png`, `2-tom-lea-a-mal-lu.png` (« Autre chose », Rome : Léa avait lu Venise), `3-lea-retire.png` (« ⛔ Oui » : retiré, vérifié dans la base), `4-theo.png`, `5-theo-avait-dit.png` (« ✅ Oui » : la copie dit Sydney, Théo avait dit avoir bien écrit Madrid), `6-theo-garde.png` (« Non »). App assemblée : md5 `e199976992716df9c17b23e0438e31e3`.
 
 ## Version 2 (tour 714, après Paul 16:08)
 

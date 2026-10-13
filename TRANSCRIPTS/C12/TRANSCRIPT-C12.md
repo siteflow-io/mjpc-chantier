@@ -22440,3 +22440,35 @@ Réponse, mot pour mot :
 La maquette : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
 
 13/10/2026 20:28 MEMO
+
+---
+
+## TOUR 722 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (20:36) Non je ne veux pas 1145. Et je veux pouvoir remettre un point d'autonomie si besoin. pas compris ta précision sur 1144. Enfin je veux voir les points retirés et ajoutés, le calcul de la note en direct quand je fais ma relecture le soir
+
+---
+
+## TOUR 722 — Claude (conscience n°12)
+
+Maquette v4 : `lire-copies.js` sans « Sors du tas » ; `AutonomieL` (« ⛔ Retirer » = `retirerAutonomieSoirV`, « ↩️ Rendre » = `rendreAutonomieV`, les gestes de la fiche, `c4-seances.js` l. 100, 543-544) ; `NoteDirecteL` (`resultatV` : `pts`, `n`, `total`, `sur20`, comparés au départ `LC_DEPART`) ; « 🧮 Ce soir ». Assemblée md5 `9e76f2a6…` ; jouée par le geste (`capture4.js`) : Tom « Autre chose », Rome, « Valider » → « Question 1 : 0 → 1 point (+1) », « 1 / 3 → 2 / 3 · 6,7 → 13,3 / 20 » ; « ⛔ Oui » puis « ↩️ Rendre » pour Léa → `autonomie/baudry_lea` écrit puis effacé, lu dans la base ; Théo « ✅ Oui » → la question de 1144 ; Michel « ↩️ Rendre » → `autonomie/duvernay_michel` effacé ; aucune erreur de page ; captures 3, 4, 7 regardées avant envoi, les 8 lues en texte. Au sas : `MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/` (v3 dans `v3/`). Rien sur `code-qcm` ni en production.
+
+Réponse, mot pour mot :
+
+1157. Noté : pas de 1145. Je l'ai retiré de la maquette, qui passe en version 4 ; les captures sont dans les fichiers envoyés.
+
+1158. Remettre un point d'autonomie : sous le nom de chaque copie, l'app dit si l'élève a son point (« 🤝 Tom a son point d'autonomie. », avec « ⛔ Retirer ») ou non (« ⛔ Point d'autonomie de Michel retiré le 13/10 à 09:46. », avec « ↩️ Rendre »). C'est le geste de la fiche, dans les deux sens, y compris pour un point retiré en classe (captures 7 et 8). Quand c'est le voisin qui a mal lu, le même bouton reste dans la case de sa faute (captures 4 et 5).
+
+1159. 1144, redit simplement. À la fin de son temps de réponse, Théo a dit : oui, j'ai bien écrit Madrid. À la correction, Lou a lu « Sydney » sur sa feuille. Le soir, l'app te demande : « La copie dit-elle « Sydney » ? ». Tu réponds « ✅ Oui ». Donc Théo n'avait pas écrit Madrid : il a dit faux, et l'app te demande s'il faut lui retirer son point (capture 6). La question peut donc venir après « Oui », pas seulement après « Autre chose ».
+
+1160. La note en direct : à droite de chaque copie, « 🧮 La note, en direct » donne les points de chaque question et ce qui bouge, par exemple « Question 1 : 0 → 1 point (+1) », en vert quand ça monte, en rouge quand ça baisse. Dessous : « ✍️ Note : 1 / 3 → 2 / 3 · 6,7 → 13,3 / 20 ». En haut de l'écran, « 🧮 Ce soir » garde tout ce que ta relecture a changé : les notes, et les points d'autonomie retirés ou rendus.
+
+1161. Une limite de la maquette, que le code devra lever : « Ce soir » repart de zéro si tu recharges la page. Le code gardera ce point de départ dans la base.
+
+1162. Tu valides la version 4 ? J'attends aussi tes mots pour 1153 et 1154. Rien n'est en ligne, et rien n'est donné aux exécutants.
+
+La maquette : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
+
+13/10/2026 20:40 MEMO

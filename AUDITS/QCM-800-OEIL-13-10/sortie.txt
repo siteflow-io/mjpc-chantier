@@ -1,0 +1,9 @@
+Sonde œil — scratchpad/t705/app-en-ligne.html — 2026-10-13T12:29:30.707Z
+Durée : 14 s · vérifications : 4 · échecs : 1
+  ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  info   la vraie tablette, personne d'entré, Q1 lancée : ⭐ ⏎ 🎯 ⏎ ✨ ⏎ 💡 ⏎ 🎲 ⏎ Combien êtes-vous sur cette tablette ? ⏎ 👤 1 élève ⏎ 👥 2 élèves
+  ok     K30 · la vraie tablette reste à l'entrée tant que personne n'est entré (Q1 lancée)
+  info   la console, carte des tablettes : Tablette 1 ⏎ 👁 ⏎ ABRIAL Julien ⏎ ✍️ écrit ⏎ BAUDRY Léa ⏎ ✍️ écrit ⏎ 📱 Tablette 2 ⏎ 👁 ⏎ BRUNEAU Camille ⏎ ✍️ écrit ⏎ CARRÉ Tom ⏎ ✍️ écrit ⏎ 📱 Tablette 3 ⏎ 👁 ⏎ CHEVALLIER Théo ⏎ ✍️ écrit ⏎ DUVERNAY Michel ⏎ ✍️ écrit ⏎ 📱 Tablette 4 ⏎ 👁 ⏎ ESNAULT Inès ⏎ ✍️ écrit ⏎ FO
+  info   « 👁 » de la tablette 1 : ✨ ⏎ 💡 ⏎ 🎲 ⏎ 🔥 ⏎ 3 ESSAI · ABRIAL JULIEN ⏎ Évaluation d'essai ⏎ QUESTION 1 / 3 ⏎ Facile ⏎ 1 pt ⏎ Quelle est la capitale de l'Italie ? ⏎ ✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE ⏎ TEMPS DE RÉFLEXION ⏎ 16 ⏎ ✨ ⏎ 💡 ⏎ 🎲 ⏎ 🔥 ⏎ 3 ESSAI · BAUDRY LÉA ⏎ Évaluation d'essai ⏎ QUESTION 1 / 3 ⏎ Facile ⏎ 1 pt ⏎ Quelle est la capitale de l'Italie ? ⏎ ✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE ⏎ TEMPS
+  ok     K31 · le bouton « 👁 » d'une tablette existe et s'ouvre
+  ÉCHEC  K32 · « 👁 » montre ce que montre la vraie tablette (pas la question, puisque personne n'est entré) — ✨ ⏎ 💡 ⏎ 🎲 ⏎ 🔥 ⏎ 3 ESSAI · ABRIAL JULIEN ⏎ Évaluation d'essai ⏎ QUESTION 1 / 3 ⏎ Facile ⏎ 1 pt ⏎ Quelle est la capitale de l'Italie ? ⏎ ✍️ RÉDIGE TA RÉPONSE EN ENTIER SUR TA FEUILLE ⏎ TEMPS DE RÉFLEXION ⏎ 16 ⏎ ✨ ⏎ 💡 ⏎ 🎲 ⏎ 🔥 ⏎ 3 ESSAI · BAUDRY LÉA ⏎ Évaluation d'essai ⏎ QUESTION 1 / 3 ⏎ Facile ⏎

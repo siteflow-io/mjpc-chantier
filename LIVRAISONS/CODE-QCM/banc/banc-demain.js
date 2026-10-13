@@ -122,10 +122,12 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
     J.v(await cliquer(prof, /Lancer la correction/), H2, "« 📝 Lancer la correction »"); await pause(600);
     await Promise.all(TABS.map(async t => { for(const [cote] of cotes(t)){ await cocherTout(tabs[t.n], cote); await cliquer(tabs[t.n], /^Je commence la correction$/, cote); } }));
     await pause(600);
+    for(let k = 0; k < 15 && etat().ph !== "lecture"; k++) await pause(200);
+    // décision de Paul, 13/10 07:22 : c'est lui qui lance la correction
+    J.v(etat().ph !== "lecture", H1, "tous ont coché la seconde attestation : la correction ne commence pas seule (décision de Paul, 07:22)", JSON.stringify(etat()));
+    J.v(await cliquer(prof, /Commencer la correction/), H2, "Paul clique « ▶️ Commencer la correction », ouvert");
     for(let k = 0; k < 20 && etat().ph !== "lecture"; k++) await pause(200);
-    if(etat().ph !== "lecture") await cliquer(prof, /Commencer la correction/);
-    await pause(600);
-    J.v(etat().ph === "lecture", H1, "tous ont coché la seconde attestation : la correction commence (c-attest2)", JSON.stringify(etat()));
+    J.v(etat().ph === "lecture", H1, "après son clic, la correction commence (c-attest2)", JSON.stringify(etat()));
     const oc = sess().s.ordreCorr; const ordre = Array.isArray(oc) ? oc : oc ? Object.values(oc) : [];
     J.v(ordre.length === NQ && new Set(ordre).size === NQ, H1, "ordreCorr : les 11 questions, de la plus ratée à la mieux réussie", JSON.stringify(oc));
     for(let k = 0; k < NQ; k++){

@@ -296,9 +296,11 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await pause(800);
     const at2 = (sess().s.attest || {})[2] || (sess().s.attest || {})["2"] || {};
     J.v(Object.keys(at2).length >= 24, H1, "les 24 secondes attestations dans la base (attest/2)", Object.keys(at2).length);
-    // c-attest2 : « La correction commence quand tous les présents l'ont cochée en entier, comme au début » (l'infobulle de la maquette) ; sinon le bouton
-    if(!(await attendreBase(() => etat().ph === "lecture", 3000))) await cliquer(prof, /Commencer la correction/);
-    J.v(await attendreBase(() => etat().ph === "lecture", 4000), H1, "tous ont coché la seconde attestation : la correction commence (deroule.ph = lecture), comme le dit c-attest2", JSON.stringify(etat()));
+    // décision de Paul, 13/10 07:22 (DEFAUTS-OUVERTS, reprise, point 0) : « c'est moi qui lance la correction. Jamais de sessions de groupe lancées automatiquement. »
+    J.v(!(await attendreBase(() => etat().ph === "lecture", 3000)), H1, "tous ont coché la seconde attestation : la correction ne commence pas seule (décision de Paul, 07:22)", JSON.stringify(etat()));
+    J.v(await etatBouton(prof, /Commencer la correction/) === "ouvert", H2, "tous ont coché : « ▶️ Commencer la correction » s'ouvre sur la console", await etatBouton(prof, /Commencer la correction/));
+    J.v(await cliquer(prof, /Commencer la correction/), H2, "Paul clique « ▶️ Commencer la correction »");
+    J.v(await attendreBase(() => etat().ph === "lecture", 4000), H1, "après son clic, et seulement alors, la correction commence (deroule.ph = lecture)", JSON.stringify(etat()));
     await pause(900);
     const oc = sess().s.ordreCorr;
     J.v(JSON.stringify(oc) === JSON.stringify([1, 2, 0]) || JSON.stringify(oc) === JSON.stringify({0: 1, 1: 2, 2: 0}), H1, "l'ordre de la correction, de la plus ratée à la mieux réussie : Q2, Q3, Q1 (ordreCorr)", JSON.stringify(oc));

@@ -1,0 +1,2 @@
+const s=await P.c.$$("select");for(const x of s){const o=await x.$$eval("option",os=>os.map(o=>o.value+"="+o.textContent));if(o.join().includes("essai")){const v=o.find(t=>t.includes("Évaluation d'essai")).split("=")[0];await x.selectOption(v);}}
+await P.c.waitForTimeout(500);await clic(P.c,"🚀 Lancer la séance");await P.c.waitForTimeout(800);await cap(P.c,"01-apres-lancer");return (await txt(P.c)).slice(0,2500)+"\nBTN: "+await btns(P.c);

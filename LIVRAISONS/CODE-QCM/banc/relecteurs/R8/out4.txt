@@ -1,0 +1,173 @@
+Check-in : qui est absent aujourd'hui ?
+i
+3 ESSAI — 25 élèves
+✓
+ABRIAL Julien
+✓
+BAUDRY Léa
+✓
+BRUNEAU Camille
+✓
+CARRÉ Tom
+✓
+CHEVALLIER Théo
+✓
+DUVERNAY Michel
+🚫
+ESNAULT Inès
+🚫
+FOUCHER Hugo
+🚫
+GALLOIS Manon
+🚫
+HÉBRARD Nathan
+🚫
+ISAMBERT Chloé
+🚫
+JOUBERT Louis
+🚫
+LACOMBE Emma
+🚫
+MAILLARD Noah
+🚫
+NOGARET Zoé
+🚫
+OLLIVIER Sacha
+🚫
+PERRAUD Jade
+🚫
+QUINTON Enzo
+🚫
+RAMBAUD Lina
+🚫
+SABATIER Malo
+🚫
+TESSIER Anna
+🚫
+VALLÉE Rayan
+🚫
+WEBER Clara
+🚫
+YVON Adam
+🚫
+ZELLER Lou
+🚫 19 absents sur 25Tout le monde présent
+🕙 Fin de l'heure :
+i
+Annuler
+🚀 Lancer la séance
+=====
+📝 Évaluation QCMMODE PROF
+🔴
+1 séance en cours
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+🎯 Évaluation d'essai — 3 questions — 3 ESSAI
+🕙 Fin de l'heure : 8:36
+🚫 Départ d'un élève
+↩️ Retour d'un élève
+🔓 Rouvrir pour un élève
+⏸️ Finir à une autre heure
+🛑 Terminer la séance
+0/6
+CONNECTÉS
+0/6
+ATTESTATIONS
+0/6
+ONT RÉPONDU
+—
+JUSTES
+—
+QUESTION
+⏳ En attente — clique sur « ▶️ Lancer Q1 »
+🧠 RÉFLEXION
+20s
+pour cette question
+s
++5
++10
++30
+✋ RÉPONSE
+15s
+par tour
+s
++5
++10
++30
+🏁 Fin prévue 7:55
+▶️ Lancer Q1
+🔮 À VENIR — Q 1 / 3
+I
+Quelle est la capitale de l'Italie ?
+Difficulté Facile · réflexion 20 s · réponse 15 s par tour · 1 bonne réponse
+📱 Tablettesi
+📱 Tablette 1
+👁
+ABRIAL Julien
+pas encore entré
+BAUDRY Léa
+pas encore entré
+📱 Tablette 2
+👁
+BRUNEAU Camille
+pas encore entré
+CARRÉ Tom
+pas encore entré
+📱 Tablette 3
+👁
+CHEVALLIER Théo
+pas encore entré
+DUVERNAY Michel
+pas encore entré
+✓ prêt : toutes les lignes cochées
+attestation en cours : lignes cochées sur 8
+pas encore entré
+📋 Toutes les questionsi
+Q1
+Facile
+Quelle est la capitale de l'Italie ?
+Milan
+Naples
+Rome ✓
+Venise
+🧠
+s
+✋
+s
+❌ Écarter
+Q2
+Standard
+Lesquelles sont des capitales européennes ?
+Madrid ✓
+Genève
+Berlin ✓
+Sydney
+🧠
+s
+✋
+s
+❌ Écarter
+Q3
+Facile
+Combien de pattes a une araignée ?
+6
+8 ✓
+10
+4
+🧠
+s
+✋
+s
+❌ Écarter
+BTN: 🔴 1 séance en cours | 📖 Mode d'emploi | 📺 Ouvrir vue tableau | 📱 QR pilotage | 🧪 Mode test i | ← Retour | Pilotage | Données | Réglages | ? | 📝 Évaluations | 🎯 Pilotage classe | 🚫 Départ d'un élève | [x]↩️ Retour d'un élève | [x]🔓 Rouvrir pour un élève | ⏸️ Finir à une autre heure | 🛑 Terminer la séance | +5 | +10 | +30 | +5 | +10 | +30 | ▶️ Lancer Q1 | 👁 | 👁 | 👁 | ❌ Écarter | ❌ Écarter | ❌ Écarter
+ERR 

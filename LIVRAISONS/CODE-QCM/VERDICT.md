@@ -1,4 +1,38 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 2 du 13/10/2026, 08:58
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 3 du 13/10/2026, 09:58
+
+*La reprise 3 (`DEFAUTS-OUVERTS.md`, « Reprise 3 du 13/10 », Paul 09:03, séance à 13:00). App livrée : `evaluation-qcm.staging.html`, md5 **`011ae89f91f62cc5796aa32d3fe8d4aa`**, assemblée par `build.py` sur `code-qcm` à `f95030b` (tout ce qui a été poussé jusqu'à 09:40). Sorties : `sorties/2026-10-13_0940/`. Les verdicts de 08:58 et de 08:30, plus bas, restent pour mémoire.*
+
+## Reprise 3 — en une phrase
+
+**Les défauts que la reprise 3 demandait de corriger passent au geste, sauf l'heure de la coupure ; mais le relecteur neuf de 09:41 (R8), en jouant autrement (Q2 et Q3 écartées, temps raccourcis, B au 2e tour), trouve de nouveaux défauts de l'heure qui toucheront la séance de 13:00 : pas de B après une réponse au 2e tour ou après une réouverture, « Rouvrir pour tous » qui rejoue un 2e tour entier, une alerte qui compte juste une réponse fausse, des questions écartées comptées fausses au bilan. L'heure ne va pas telle quelle.**
+
+| Épreuve, sur l'app de 09:40 | Sortie | Résultat |
+| --- | --- | --- |
+| Contrôles de la conscience (non modifiés) | `controles.txt` | 22 / 30, 99 s ; les 8 échecs (K11 à K15) : K11 ne clique pas « ▶️ Commencer la correction », que la décision de Paul rend nécessaire |
+| Banc commun (la séance du scénario, 12 tablettes, de l'appel au bilan, la correction au clic de Paul ; le soir ; le reste) | `banc.txt` | **211 / 211**, 6 min 12 s |
+| Gestes rares | `branches.txt` | **47 / 47**, 2 min 13 s |
+| L'heure de demain | `demain.txt` | en cours à 09:52 (10 min) ; ajouté dès sa fin |
+| Reprise 3, points 1 à 4 rejoués par le geste (`banc-reprise2.js`) | `reprise2.txt`, `captures-reprise2/` | **21 / 22** : « Rouvrir pour tous » rouvre pour ceux qui n'ont pas répondu ; « Rouvrir pour un élève » n'annonce rien à la classe ni au téléphone ni au tableau ; « CONNECTÉS » compte les entrés, « ONT RÉPONDU » garde son dénominateur ; l'état vrai de la séance interrompue, la reprise garde le chrono ; au téléphone « ▶️ Commencer la correction » et le chrono. **Échoue : l'heure de la coupure** (celle du lancement) |
+| Reprise 3, point 5 rejoué par le geste (`banc-reprise3.js`) | `reprise3.txt`, `captures-reprise3/` | **13 / 13** : l'alerte sur une question « Trouvée au dernier moment » part de la note réelle (→ 1 point des deux côtés), sa garde dit vrai, le bilan 3 / 3 ; le « Oui » de B cliqué dans les 2,5 dernières secondes est compté ; « Aucune séance active » au téléphone |
+| Reprise 3, point 7 : les écrans jamais atteints (`banc-jamais.js`) | `jamais.txt`, `captures-jamais/` | atteints : `t-un-eleve`, `x610-1-b-julien`, `x610-2-b-michel`, `x610-6`, `x610-7` (et, aux essais, `c-deplacer`, `t-deplace`, `t-corr-seul`) ; écarts envoyés à QCM-2 ; **non atteints** : `x610-8`, `x610-9`, `x610-autonomie-*` (l'alerte de Michel sur l'évaluation de 3e n'apparaît pas : défaut probable, à confirmer) ; le script dépasse son plafond de 5 min |
+| Relecteur neuf R8 (l'heure seule, 10 min, sur l'app de 09:40) | `banc/relecteurs/R8/trouvailles.md`, `cap/` | 16 trouvailles, 9 situations justes (dont : la correction ne part qu'au clic de Paul, la reprise garde le chrono, « Rouvrir pour un élève » liste les seuls entrés sans réponse, « Terminer ») |
+
+### Défauts ouverts de l'heure à 09:58 (détail et captures : `DEFAUTS-OUVERTS.md`, section « Reprise 3 — QCM-4, 09:51 »)
+
+| Propriétaire | Défaut |
+| --- | --- |
+| QCM-1, QCM-2 | pas de B après une réponse au 2e tour ni après une réouverture pour un élève ; ils sont mis « à lire ce soir : n'a pas dit » (R8) |
+| QCM-1 | « Rouvrir pour tous » rejoue un 2e tour entier à ceux qui avaient répondu ; la garde liste les jamais entrés (R8) |
+| QCM-1, QCM-2 | l'alerte compte juste une réponse fausse (« Milan → 1 point ») ; « → 1 point » à choix vide (R8) |
+| QCM-1, QCM-2 | les questions écartées reviennent : « faux → 0 point » au bilan, proposées en co-évaluation, « 0 % » au téléphone (R8) |
+| QCM-1, QCM-2 | « Séance interrompue » : l'heure de la coupure est celle du lancement (geste et R8) |
+| QCM-2 | le passage du 1er tour avec une réponse courte ; « +30 » qui passe au 2e tour (R8) |
+| QCM-2 | téléphone : les temps changés ne s'affichent pas, « ✗ » pour les sans-réponse (R8) |
+| QCM-2 | `x610-1-b-julien`, `c-deplacer`, `t-deplace` : écarts avec la maquette ; l'alerte sur l'évaluation de 3e à confirmer |
+
+---
+
+# Verdict de 08:58 (pour mémoire)
 
 *La reprise 2 (`DEFAUTS-OUVERTS.md`, « Reprise 2 du 13/10 », Paul 08:33). App livrée : `evaluation-qcm.staging.html`, md5 **`784ac5e802d8d225234bf93e46703c05`**, assemblée par `build.py` sur `code-qcm` à `8d35f41` (tout ce qui a été poussé jusqu'à 08:50). Sorties : `sorties/2026-10-13_0850/` (`resume.txt`, `controles.txt`, `reprise2.txt` et `captures-reprise2/`, `demain.txt`). Le verdict de 08:30, plus bas, reste pour mémoire.*
 

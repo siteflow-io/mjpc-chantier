@@ -1,0 +1,2 @@
+global.pad=async(p,droite,code,fin="Entrer")=>{for(const ch of [...code,fin]){const bs=p.locator("button:visible",{hasText:new RegExp("^\\s*"+ch)});const n=await bs.count();for(let i=0;i<n;i++){const bb=await bs.nth(i).boundingBox();if(bb&&((bb.x>640)===droite)){await bs.nth(i).click();break;}}await p.waitForTimeout(60);}await p.waitForTimeout(900);};
+await pad(P.t1,true,"2108");await cap(P.t1,"06-t1-lea");return (await txt(P.t1)).slice(0,1200)+"\nBTN "+await btns(P.t1);

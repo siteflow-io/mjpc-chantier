@@ -1,0 +1,115 @@
+{
+ "adresse": "http://localhost:8686/evaluation-qcm.html",
+ "port": 8686,
+ "pages": {
+  "console": "?mode=prof",
+  "tablette": "?mode=eleve",
+  "telephone": "?mode=prof&view=phone",
+  "tableau": "?mode=prof&view=board"
+ },
+ "routage": "require('/home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/relecteur-outils.js').ouvrir(navigateur, info, '?mode=prof', 1536, 864)",
+ "classe": "3 ESSAI",
+ "eleves": [
+  {
+   "nom": "ABRIAL Julien",
+   "code": "2101"
+  },
+  {
+   "nom": "BAUDRY Léa",
+   "code": "2108"
+  },
+  {
+   "nom": "CARRÉ Tom",
+   "code": "2115"
+  },
+  {
+   "nom": "DUVERNAY Michel",
+   "code": "2122"
+  },
+  {
+   "nom": "ESNAULT Inès",
+   "code": "2129"
+  },
+  {
+   "nom": "FOUCHER Hugo",
+   "code": "2136"
+  },
+  {
+   "nom": "GALLOIS Manon",
+   "code": "2143"
+  },
+  {
+   "nom": "HÉBRARD Nathan",
+   "code": "2150"
+  },
+  {
+   "nom": "ISAMBERT Chloé",
+   "code": "2157"
+  },
+  {
+   "nom": "JOUBERT Louis",
+   "code": "2164"
+  },
+  {
+   "nom": "LACOMBE Emma",
+   "code": "2171"
+  },
+  {
+   "nom": "MAILLARD Noah",
+   "code": "2178"
+  },
+  {
+   "nom": "NOGARET Zoé",
+   "code": "2185"
+  },
+  {
+   "nom": "OLLIVIER Sacha",
+   "code": "2192"
+  },
+  {
+   "nom": "PERRAUD Jade",
+   "code": "2199"
+  },
+  {
+   "nom": "QUINTON Enzo",
+   "code": "2206"
+  },
+  {
+   "nom": "RAMBAUD Lina",
+   "code": "2213"
+  },
+  {
+   "nom": "SABATIER Malo",
+   "code": "2220"
+  },
+  {
+   "nom": "TESSIER Anna",
+   "code": "2227"
+  },
+  {
+   "nom": "VALLÉE Rayan",
+   "code": "2234"
+  },
+  {
+   "nom": "WEBER Clara",
+   "code": "2241"
+  },
+  {
+   "nom": "YVON Adam",
+   "code": "2248"
+  },
+  {
+   "nom": "ZELLER Lou",
+   "code": "2255"
+  },
+  {
+   "nom": "BRUNEAU Camille",
+   "code": "2262"
+  },
+  {
+   "nom": "CHEVALLIER Théo",
+   "code": "2269"
+  }
+ ],
+ "rest": 9686
+}

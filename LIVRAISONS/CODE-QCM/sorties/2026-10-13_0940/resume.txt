@@ -1,0 +1,18 @@
+Assemblage QCM-4 · BANC — 13/10/2026 09:40 (heure de Paris) — code-qcm f95030b
+
+── build.py
+evaluation-qcm.staging.html 1971555 octets, md5 011ae89f91f62cc5796aa32d3fe8d4aa
+  code de sortie : 0
+  app : 011ae89f91f62cc5796aa32d3fe8d4aa  evaluation-qcm.staging.html  2015242 octets
+
+── empreintes des contrôles de la conscience
+  controles-app.js: OK
+  attendus/evaluation-essai.json: OK
+  attendus/taxonomie-competences.json: OK
+
+── contrôles de la conscience (103 s, code 1)
+  Contrôles de la conscience n°12 pour l'app — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-13T07:41:45.139Z
+  md5 de controles-app.js : cf0cd37d77c45568dfe94730c4f39000
+  Durée : 99 s · vérifications : 30 · échecs : 8
+    ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  échecs : 8

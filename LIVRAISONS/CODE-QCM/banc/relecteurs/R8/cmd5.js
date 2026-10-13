@@ -1,0 +1,2 @@
+P.t1=await R.ouvrir(nav,info,"?mode=eleve",1280,800);P.t2=await R.ouvrir(nav,info,"?mode=eleve",1280,800);P.ph=await R.ouvrir(nav,info,"?mode=prof&view=phone",390,844);P.b=await R.ouvrir(nav,info,"?mode=prof&view=board",1536,864);
+return (await txt(P.t1)).slice(0,800)+"\nBTN "+await btns(P.t1)+"\nINP "+JSON.stringify(await P.t1.$$eval("input,select",is=>is.map(i=>i.tagName+i.type+i.placeholder)));

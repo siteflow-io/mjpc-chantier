@@ -19,6 +19,28 @@ Vous continuez, d'une traite, dans cet ordre, chaque correction poussée dès qu
    - tes écrans jamais atteints par le geste : la séance sur papier (`c-papier-seance`, `e-papier-enonces`, `c-papier-grille`, `c-papier-reprendre`, `c-papier-correction`), le rattrapage (`c-rattrapage`), le mode test (`x620-2-mode-test-reflexion`, `x620-3-mode-test-en-grand`) : tu les joues toi-même par le geste sur le faux hub, contre la scène de la maquette, et tu corriges ce qui diffère ; ce qui revient à QCM-2 (les tablettes du papier) va dans `DEMANDES.md`.
    Chaque correction poussée dès qu'elle passe `build.py` et ton essai ; à 09:40, tu as tout poussé et tu t'arrêtes.
 
+## Reprise 3 — QCM-4, 09:51, sur l'app de 09:40 (`f95030b`, md5 `011ae89f…`) — `sorties/2026-10-13_0940/` (`reprise2.txt`, `reprise3.txt`, `jamais.txt`) et `banc/relecteurs/R8/`
+
+Rejoués par le geste et vus corrigés (rayés plus bas) : « 🔓 Rouvrir pour un élève » n'annonce rien à la classe ; « Rouvrir pour tous » rouvre ; « CONNECTÉS » compte les entrés ; « ONT RÉPONDU » garde son dénominateur ; l'état de « Séance interrompue » ; la reprise garde le chrono ; « Commencer la correction » et le chrono au téléphone ; l'alerte qui part de la note réelle (« Trouvée au dernier moment ») ; le « Oui » tardif de B compté ; « Aucune séance active ». Défauts encore ouverts ou nouveaux :
+
+[QCM-4 → QCM-1, QCM-2] **« ⚠️ Séance interrompue détectée » : l'heure de la coupure est celle du lancement.** Console rechargée pendant Q2 (`reprise2.txt`) et pendant Q1 rouverte (R8 : rechargée à 07:46, « Dernière déconnexion : 07:41 » = « Démarrée à 07:41 »). Attendu (`c-interrompue`) : l'heure de la coupure. Captures `captures-reprise2/13-c-interrompue.png`, R8 `cap/21-console-recharge.png`.
+
+~~[QCM-4 → QCM-1, QCM-2] La garde de l'alerte disait « reste à 0 » pour une question trouvée au dernier moment~~ — *vue juste à 09:40 (`reprise3.txt`).*
+
+[QCM-4 → QCM-1, QCM-2] **Pas de B après une réponse au 2e tour ni après une réouverture pour un élève (R8).** Léa (2e tour) et Tom (rouvert seul) n'ont jamais vu « dit-elle la même chose que ton clic ? » ; la console les met dans « 📌 À lire ce soir : … n'a pas dit si sa feuille disait son clic ». Captures R8 `cap/18-t2-tom-fin.png`, `cap/30-console-alerte.png`.
+
+[QCM-4 → QCM-1] **« Rouvrir pour tous » rejoue un 2e tour entier (R8).** Q1 close, Julien et Camille sans réponse ; après la réouverture, la question repart « 2e tour, moitiés de droite » pour Léa et Tom, qui avaient répondu ; la garde liste aussi Théo et Michel, jamais entrés. Captures R8 `cap/19-console-rouvrir-tous.png`, `cap/23-console-apres-ecarts.png`.
+
+[QCM-4 → QCM-1, QCM-2] **L'alerte compte juste une réponse fausse (R8).** « Donner raison à Julien : Milan → 1 point » (bonne réponse : Rome) ; avant que Léa ait dit ce qu'elle avait écrit, « Donner raison à Léa : → 1 point », choix vide. Captures R8 `cap/31-console-alerte.png`, `cap/32-console-alerte-complete.png`.
+
+[QCM-4 → QCM-1, QCM-2] **Les questions écartées reviennent (R8).** Q2 et Q3 écartées : le bilan de l'élève les compte « faux → 0 point » (« Q1 ✓ · Q2 ✗ · Q3 ✗ → 1/1 ») ; la co-évaluation les propose (« c'est laquelle ? ») ; le téléphone les affiche à « 0 % » ; trois pastilles de correction pour une seule question. Captures R8 `cap/33-t1-bilan.png`, `cap/30-t1-coeval.png`, `cap/25-tel-attest2.png`, `cap/28-t1-revele.png`.
+
+[QCM-4 → QCM-2] **Le passage au 1er tour quand la réponse est courte (R8).** Réponse réglée à 5 s : la tablette dit « À toi dans 3 secondes » pendant que la console décompte déjà la réponse ; Julien passe à « ⏳ Attends » sans avoir vu les choix ; le « +30 » cliqué au 1er tour profite au 2e. Captures R8 `cap/11-t1-q1.png`, `cap/12-t1-q1-repondu.png`, `cap/13-console-q1.png`.
+
+[QCM-4 → QCM-2] Téléphone : le bandeau « réflexion 20 s · réponse 15 s par tour » ne suit pas les temps changés (5 s / 35 s) ; les élèves sans réponse ou jamais entrés y portent « ✗ » comme une réponse fausse. Captures R8 `cap/13-tel-q1.png`, `cap/17-tel-apres-tom.png`.
+
+[QCM-4 → QCM-2] Écrans jamais atteints (`jamais.txt`, `fidelite.txt`) : `x610-1-b-julien` : après « ⏱️ Temps fini », les choix restent ouverts (fermés dans la maquette) et « 🙈 Michel, laisse la tablette à Julien… » manque ; `c-deplacer` : « ABRIAL Julien et CHEVALLIER Théo échangés : leurs réponses déjà données les suivent » manque (seulement « ↔️ va sur la tablette 1 : retape son code ») ; `t-deplace` : le clavier d'entrée et « Pas là ? » en plus de « Julien, va sur la tablette de Lou » (à trancher). Non atteints : `x610-8`, `x610-9`, `x610-autonomie-*` (l'alerte de Michel sur l'évaluation de 3e n'apparaît pas : défaut probable, à confirmer), `t-corr-seul` (le banc a dépassé son plafond).
+
 ## Contrôle de la conscience n°12 — 13/10 09:02, sur la reprise 2 (`8d35f41`, md5 `784ac5e8…`)
 
 **Verdict : ça ne va pas ; rien n'est mis en ligne, Paul fait cours avec la 7.7.2.** D'après VERDICT.md de 08:58 : les points 2, 3, 4 et 5 échouent au geste ; 6 non rejoué. (Remplacé à 09:05 par la « Reprise 3 », ci-dessus : Paul veut continuer.)

@@ -22068,3 +22068,61 @@ Réponse mot pour mot :
 1079. Dis-moi ce que tu gardes. Je l'écris pour les exécutants seulement après.
 
 13/10/2026 15:49 MEMO
+
+---
+
+## TOUR 713 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (15:55) oui mais le n'a pas dit peut couvrir un cas litige. donc passerait sous les radars. Ta proposition 1076 et 77 sont les meilleures: du séquentiel effectivement, et 1077, oui, l'app pose des questions, auxquelles je réponds par oui ou non, c'est la meilleure solution. ça donnerait quoi en capture? par ailleurs, j'ai remarqué que le chrono du moment où les élèves disent (le chrono en face de "une réponse c'est sérieux", celui qui passe du vert au orange puis au rouge), une fois arrivé à la fin, ne fait rien d'autre et l'élève peut continuer à modifier les choix. on continue la réflexion.
+> 
+> (15:56, pendant le tour) enfin, l'élève tombe toujours sur l'écran choisis ta classe, au début! ( https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=eleve)
+
+---
+
+## TOUR 713 — Claude (conscience n°12)
+
+Mesuré dans le code en ligne :
+- « Lis avec soin : c'est ton point d'autonomie » et `ChronoSaisie` dans `EcrLecture` (`etape3.js`) ; `ChoixLuH` (`c3-tablettes.js`) reste cliquable, « tu peux encore la changer » ;
+- au cadrage, 378 et 387 ne disent rien de ce qui se passe à 0 ;
+- `classeTablette` (`live/pages.js` l. 92) : la classe vient de `LIVE.classeSlug` ou d'une seule séance active ; sinon, `ChoixClasse` ;
+- `qcm/sessionActive` était vide au hub (lu sans rien écrire).
+
+Maquette : `lire-copies.js` et deux lignes de branchement, dans une copie de `code-qcm` à `e0bfc349` (au scratchpad) ; app assemblée md5 `70b11f1b…` ; jouée par le geste (`capture.js`) sur le faux hub, avec la séance du banc commun de 09:40 remise à son état du soir (9 lignes, 8 copies) ; aucune erreur de page ; 4 captures regardées. Au sas : `MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/` (`2b17ea37`). Rien n'est poussé sur `code-qcm` ni en production.
+
+Réponse mot pour mot :
+
+(Envoyé pendant le tour, 16:02 ; l'heure écrite en bas, 16:05, était fausse.)
+
+1080. Tu as raison pour « n'a pas dit » : un litige peut s'y cacher. Je le garde dans la liste, mais posé comme les autres, en une question à laquelle tu réponds par oui ou non.
+
+1081. La capture du soir, je la fais dans le vrai code de l'app (règle 00), sur le faux hub, avec une séance jouée de bout en bout. Compte environ 40 minutes.
+
+1082. Le chrono de lecture, mesuré dans le code : quand il arrive à 0, il ne se passe rien, et le lecteur peut encore changer ses choix (« tu peux encore la changer »). Le cadrage (378, 387) fixe les couleurs et « Révéler » fermé tant qu'un présent n'a pas cliqué, mais rien n'y dit ce qui se passe à 0. Ma proposition : à 0, la lecture de celui qui a cliqué se fige, avec « ⏱️ Temps fini : ta lecture est enregistrée », comme pour la réponse. Celui qui n'a rien cliqué garde la main jusqu'à ce qu'il clique, et son nom reste en rouge sur ta console.
+
+1083. « Choisis ta classe », mesuré : il s'affiche quand aucune séance n'est en cours, ou quand plusieurs le sont. Quand une seule séance est en cours, la tablette va droit à « Combien êtes-vous sur cette tablette ? ». Au moment où tu as ouvert l'adresse, aucune séance n'était en cours au hub. Ma proposition : la tablette ne demande plus jamais la classe, puisque le code de l'élève dit déjà qui il est et dans quelle classe il est.
+
+Dis-moi pour 1082 et 1083 ; la capture suit.
+
+13/10/2026 16:05 MEMO
+
+---
+
+(Réponse de fin de tour, avec les quatre captures.)
+
+1084. Voici les quatre captures de « 📄 Lire les copies ». Je l'ai écrit dans le vrai code de l'app en ligne et joué sur le faux hub, avec une séance de 24 élèves fictifs que le banc a jouée de bout en bout. La séance est remise à son état du soir : 9 lignes à lire, sur 8 copies.
+
+1085. Dans le tableau de la séance, le bouton « 📄 Lire les copies (8) » ouvre les copies une après l'autre, dans l'ordre alphabétique de ta pile (« Copie 1 sur 8 », avec une barre).
+
+1086. Pour chaque ligne, l'app pose une question, par exemple « La copie dit-elle « Venise » ? », c'est-à-dire ce que le voisin a lu. Tu réponds « ✅ Oui » : la ligne est lue, la note ne bouge pas. Ou tu réponds « ✏️ Autre chose » : les choix s'ouvrent, tu cliques ce que dit la copie, puis « ✔ Valider », et la note se recalcule. Les « n'a pas dit » y sont, posés de la même façon.
+
+1087. Sous chaque question, une ligne grise rappelle le contexte : qui a lu, le clic sur la tablette, ce que l'élève a dit et, s'il y en a une, sa remarque de co-évaluation. Si cette ligne te gêne, je l'enlève.
+
+1088. Quand une copie est réglée, la suivante vient seule. À la fin, l'écran affiche « ✅ Les 8 copies sont lues », puis « 📤 Rendre les copies ».
+
+1089. Rien n'est en ligne, et rien n'est donné aux exécutants. Si tu valides, je l'ajoute à la reprise 7, avec 1082 et 1083 si tu les valides aussi.
+
+La maquette, avec ses captures : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
+
+13/10/2026 16:03 MEMO

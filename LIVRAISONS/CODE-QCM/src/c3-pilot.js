@@ -29,6 +29,8 @@ function tablettesH(){
 function nbQH(){ return EV.questions.length; }
 // les élèves qui comptent dans les attentes de la séance : les présents entrés sur une tablette (SCN.actifs, QCM-1) ; dans la maquette, les présents
 function actifsH(k){ k = k || MO(); return enDirect() && typeof SCN.actifs === "function" ? SCN.actifs(k) : SCN.presents(k); }
+// (reprise 4, point 4) en direct, une question écartée n'est plus nulle part : ni au bilan, ni à la co-évaluation, ni au téléphone, ni dans les pastilles
+function horsQH(i){ if(!enDirect()) return false; var m = momH(); return (m.ecartees || []).map(Number).indexOf(Number(i)) >= 0; }
 function toutesQ(){ return EV.questions.map(function(q, i){ return i; }); }
 function memesChoixH(a, b){ if(a === "aucun" || b === "aucun") return a === b; a = (a || []).slice().sort(); b = (b || []).slice().sort(); return a.length === b.length && a.every(function(x, i){ return x === b[i]; }); }
 // la réponse d'un élève (SCN.reponse) ou sa lecture (SCN.lecture) : la liste de ses choix, « aucun », ou null

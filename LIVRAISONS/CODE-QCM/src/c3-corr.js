@@ -231,7 +231,7 @@ function EcrBilan(e, opts){
   var corrigees = (r.corrigees || []).slice();
   // (QCM-2) en direct, une alerte tranchée pendant l'heure (la lecture devient celle de Paul, par:"prof") : « Corrigé d'après ta feuille. »
   if(enDirect()) EV.questions.forEach(function(q, i){ var l = SCN.lecture(cleE(e), i); if(l && l.par === "prof" && corrigees.indexOf(i) < 0) corrigees.push(i); });
-  var compQ = function(cp){ return compQuestions(cp).filter(function(i){ return i !== an; }).map(function(i, j){ return h(F, {key:i}, j ? " · " : "", "Q" + (i+1) + " ", st[i] === "t" ? h("span", {className:"v-orange"}, "✓") : st[i] === "j" ? "✓" : "✗"); }); };
+  var compQ = function(cp){ return compQuestions(cp).filter(function(i){ return i !== an && !horsQH(i); }).map(function(i, j){ return h(F, {key:i}, j ? " · " : "", "Q" + (i+1) + " ", st[i] === "t" ? h("span", {className:"v-orange"}, "✓") : st[i] === "j" ? "✓" : "✗"); }); };
   var autoOk = !SCN.autonomie(cleE(e), k).retire;
   return Page(badgeDe(e), "🎯 Bilan personnel", h("div", {className:"bilan-c"},
     // la version imprimable de son bilan s'ouvre à part, pour l'élève de cette moitié (l'infobulle de la 7.7.1 : « Ouvre une version imprimable… »)
@@ -247,6 +247,7 @@ function EcrBilan(e, opts){
     h("div", {className:"bilan-bloc"}, h("h3", null, "Question par question"),
       h("div", {className:"recap"}, EV.questions.map(function(q, i){
         var s = st[i];
+        if(horsQH(i)) return null;
         if(i === an) return h("div", {key:i, className:"recap-l annulee"}, h("span", null, "Question " + (i+1) + " · annulée : elle ne compte pas."));
         return h("div", {key:i, className:"recap-l " + (s === "j" || s === "t" ? "j" : "f")},
           h("span", null, "Question " + (i+1) + " · ",

@@ -177,7 +177,7 @@ function TelReponse(){
         : h("button", {className:"tel-btn tb-vert tb-large", disabled:true, title:"Le scénario de la maquette ne joue pas la suite de cette question sur le téléphone."}, lib),
       h("div", {className:"g2"}, h(BoutonPauseH, {tel:true}), h("button", Object.assign({className:"tel-btn tb-ghost tb-small", title:BULLES["🔄 Chrono"]}, clic("TEL:chrono", relancerChrono)), "🔄 Chrono"))),
     h("div", {key:"st"}, TelStats(qi, toutesQ().filter(function(x){ return x < qi; }))),
-    h("div", {key:"l"}, TelListe("TABLETTES — " + (c.repondu ? c.repondu[0] + " / " + c.repondu[1] : "0 / " + c.presents) + " ont répondu · clic sur un nom pour agir", modeDe)),
+    h("div", {key:"l"}, TelListe("TABLETTES — " + (c.repondu ? reponduTourH(c)[0] + " / " + reponduTourH(c)[1] : "0 / " + c.presents) + " ont répondu · clic sur un nom pour agir", modeDe)),
     h("div", {key:"lg"}, TelLegende(["✓ juste", "✓+ une en trop", "½ une sur deux", "✗ faux", "🙈 attend son tour", "⏳ répond"])),
     h("div", {key:"t"}, h(TelTerminer))]);
 }

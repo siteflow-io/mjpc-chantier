@@ -75,6 +75,8 @@ function TelClose(){
 function telDuMoment(){
   var m = momH(), ph = m.ph === "pause" && m.pause ? m.pause.ph : m.ph;
   if(m.seance === "S3E") return TelCoeval3();
+  // (c-rouvrir-un) une question rouverte pour un seul élève : la classe reste à la question close (rien n'est annoncé)
+  if(enDirect() && m.pour && m.pour !== "tous" && ["rouvert", "b", "passage", "reponse"].indexOf(ph) >= 0) return TelClose();
   if(ph === "reponse" || ph === "passage" || ph === "b" || ph === "reflexion" || ph === "rouvert") return TelReponse();
   if(ph === "lecture") return TelCorrAvant();
   if(enDirect() && ph === "coeval") return TelCoevalH();

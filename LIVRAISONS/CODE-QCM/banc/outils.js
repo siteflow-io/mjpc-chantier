@@ -43,7 +43,8 @@ async function fauxHub(extra){
   B.tree.qcm.evaluations = Object.assign({}, B.tree.qcm.evaluations, {essai: JSON.parse(fs.readFileSync(path.join(att, "evaluation-essai.json")))});
   B.tree.taxonomie = Object.assign({}, B.tree.taxonomie, {competences: JSON.parse(fs.readFileSync(path.join(att, "taxonomie-competences.json")))});
   if(extra) extra(B);
-  const port = 8600 + Math.floor(Math.random() * 150);
+  // un port libre, donné par le système (au hasard dans 8600–8750, deux bancs lancés ensemble tombaient parfois sur le même : EADDRINUSE)
+  const port = await new Promise(r => { const t = require("net").createServer(); t.listen(0, () => { const p = t.address().port; t.close(() => r(p)); }); });
   const srv = await startServer(B.tree, port, () => {});
   srv.port = port;
   // le journal des phases : chaque écriture de deroule (contrat C1), horodatée depuis le départ

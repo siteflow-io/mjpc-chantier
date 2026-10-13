@@ -166,9 +166,13 @@ const hhmm = () => new Date().toLocaleTimeString("fr-FR", {hour: "2-digit", minu
     J.v(bon(al), H12, "l'alerte, à la console : « Donner raison à " + pre(X) + " : 8 → 1 point », « Donner raison à " + pre(V) + " : 6 → 0 point » (la note que la feuille vaut)", lignes(al));
     J.v(bon(alT), H2, "l'alerte, au téléphone, de même", lignes(alT));
     await cliquer(prof, new RegExp("Donner raison à " + esc(pre(X)))); await pause(500);
+    const gX = await texte(prof); await capt(prof, "c-garde");
     await cliquer(prof, new RegExp("^(Donner raison à " + esc(pre(X)) + "|Confirmer|Oui)")); await pause(800);
     await cliquer(prof, /Afficher leur bilan aux élèves/); await pause(1500);
     const bx = await zoneTexte(t1, cX); await capt(t1, "t1-bilan");
+    // reprise 6, point 5 : la note que la garde annonce est celle du bilan
+    const nG = (gX.match(/note provisoire[^\d\n]*(\d+) ?\/ ?(\d+)/i) || []).slice(1).join(" / "), nB = (bx.match(/note provisoire[^\d\n]*(\d+) ?\/ ?(\d+)/i) || []).slice(1).join(" / ");
+    J.v(!!nG && nG === nB, H12, "la garde de l'alerte tranchée (sans trouvée) annonce la note du bilan", "garde : « " + nG + " », bilan : « " + nB + " »");
     J.v(!/Question 2\b/.test(bx) && !/Q2 ?✗/.test(bx), H12, "le bilan de " + pre(X) + " ne compte pas la question écartée (ni « Question 2 », ni « Q2 ✗ »)", bx.slice(0, 300));
     J.v(/2 ?\/ ?2/.test(bx), H1, "le bilan de " + pre(X) + " : 2 / 2 (Q1 juste ; Q3 : raison donnée)", (bx.match(/\d+ ?\/ ?\d+/g) || []).join(", "));
   } catch(e){ J.v(false, "QCM-4 · BANC", "le jeu s'est interrompu : " + e.message); }

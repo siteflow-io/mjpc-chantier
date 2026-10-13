@@ -9,7 +9,7 @@ const { pause, slug, esc, texte, zoneTexte, cliquer, etatBouton, choisir, taper,
 const SORTIE = path.resolve(process.argv[2] || path.join(__dirname, "..", "sorties", "reprise3-" + Date.now()));
 fs.mkdirSync(path.join(SORTIE, "captures-reprise3"), {recursive: true});
 const J = new O.Journal();
-const H1 = "QCM-1 · SOCLE", H2 = "QCM-2 · HEURE";
+const H1 = "QCM-1 · SOCLE", H2 = "QCM-2 · HEURE", H12 = H1 + ", " + H2;
 const EV = JSON.parse(fs.readFileSync(path.join(O.RACINE, "AUDITS", "CONTROLES-QCM-APP", "attendus", "evaluation-essai.json")));
 let n = 0; const capt = async (p, id) => photo(p, path.join(SORTIE, "captures-reprise3", String(++n).padStart(2, "0") + "-" + id + ".png"));
 // les réponses : Q1 Rome ; Q2 Madrid et Berlin ; Q3 8 — tout le monde juste à la tablette
@@ -117,6 +117,9 @@ const JUSTE = [["Rome"], ["Madrid", "Berlin"], ["8"]];
     const bj = await zoneTexte(t1, cJ); await capt(t1, "t-bilan-julien");
     J.v(/Question 2[^\n]*(Trouvée au dernier moment|1 point)/.test(bj) || /Trouvée au dernier moment → 1 point/.test(bj), H1, "le bilan de Julien : Q2, 1 point", bj.slice(0, 300));
     J.v(/3 ?\/ ?3/.test(bj), H1, "le bilan de Julien : 3 / 3 (Q1, Q3 justes ; Q2 trouvée au dernier moment)", (bj.match(/\d+ ?\/ ?3/) || [""])[0]);
+    // reprise 6, point 5 : la note que la garde annonce est celle du bilan
+    const nG = (g.match(/note provisoire[^\d\n]*(\d+) ?\/ ?(\d+)/i) || []).slice(1).join(" / "), nB = (bj.match(/note provisoire[^\d\n]*(\d+) ?\/ ?(\d+)/i) || []).slice(1).join(" / ");
+    J.v(!!nG && nG === nB, H12, "la garde de l'alerte tranchée (avec trouvée) annonce la note du bilan", "garde : « " + nG + " », bilan : « " + nB + " »");
 
     J.section("« 🛑 Terminer » : le téléphone dit « séance »");
     await cliquer(prof, /Terminer la séance/); await pause(400); await cliquer(prof, /^🛑 Terminer la séance$|Terminer la séance/); await pause(2000);

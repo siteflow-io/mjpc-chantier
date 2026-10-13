@@ -1,27 +1,57 @@
-node:events:497
-      throw er; // Unhandled 'error' event
-      ^
-
-Error: listen EADDRINUSE: address already in use 0.0.0.0:8656
-    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
-    at listenInCluster (node:net:1997:12)
-    at Server.listen (node:net:2102:7)
-    at /home/user/mjpc-chantier/AUDITS/QCM-MODE-TEST-09-10/banc/server.js:114:42
-    at new Promise (<anonymous>)
-    at startServer (/home/user/mjpc-chantier/AUDITS/QCM-MODE-TEST-09-10/banc/server.js:114:10)
-    at Object.fauxHub (/home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/outils.js:47:21)
-    at /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/banc-reprise2.js:18:34
-    at Object.<anonymous> (/home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/banc-reprise2.js:139:3)
-    at Module._compile (node:internal/modules/cjs/loader:1706:14)
-Emitted 'error' event on WebSocketServer instance at:
-    at Server.emit (node:events:519:28)
-    at emitErrorNT (node:net:1976:8)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
-  code: 'EADDRINUSE',
-  errno: -98,
-  syscall: 'listen',
-  address: '0.0.0.0',
-  port: 8656
-}
-
-Node.js v22.22.0
+── 5. Les compteurs, 4 élèves entrés sur 24 présents  (27 s)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] à « ▶️ Lancer Q1 », « CONNECTÉS » compte les 4 entrés (4/24), pas 24/24
+── 1. Le chrono du téléphone avance  (29 s)
+  ok     [QCM-2 · HEURE] au téléphone, le chrono avance (deux lectures à 3 s d'écart)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] « ONT RÉPONDU » garde son dénominateur d'un tour à l'autre
+  ok     [QCM-1 · SOCLE] Q1 close
+── 3. « 🔓 Rouvrir pour un élève » : pour lui seul  (42 s)
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour un élève »
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour Léa »
+  ok     [QCM-2 · HEURE] le téléphone n'annonce pas un tour à la classe (pas de « ⏭️ Tour suivant », pas de « moitiés de … »)
+  ok     [QCM-2 · HEURE] le tableau n'annonce pas « Pose ton stylo » à la classe
+  ok     [QCM-2 · HEURE] la console n'ouvre pas de « Phase RÉPONSE » pour la classe (c-rouvrir-un : « ⏸️ Question close »)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] après sa réponse, pas de 2e tour pour la classe (la console)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Julien, qui avait répondu, ne se voit pas redonner la question
+── 2. « 🔓 Rouvrir pour tous » : ceux qui n'ont pas répondu  (60 s)
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour tous »
+  ok     [QCM-1 · SOCLE] la question est rouverte (deroule.ph n'est plus close)
+  ok     [QCM-1 · SOCLE] la tablette 2 (sans réponse) retrouve la question
+  ok     [QCM-1 · SOCLE] Julien, qui avait répondu, ne la retrouve pas
+── 4. La console rechargée pendant la réflexion de Q2  (70 s)
+  ok     [QCM-2 · HEURE] « ⚠️ Séance interrompue détectée »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] l'état vrai : question 2, en réflexion
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] l'heure vraie de la coupure (10:30)
+  ok     [QCM-1 · SOCLE] la reprise garde le chrono où il en était (deroule.depuis inchangé)
+── 1. « ▶️ Commencer la correction » au téléphone  (88 s)
+  ok     [QCM-1 · SOCLE] tous prêts : la correction n'a pas commencé seule
+  ok     [QCM-2 · HEURE] au téléphone, « ▶️ Commencer la correction » s'ouvre quand tous sont prêts
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] le clic du téléphone lance la correction (deroule.ph = lecture)
+vérifications : 22 · échecs : 0
+── 5. Les compteurs, 4 élèves entrés sur 24 présents
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] à « ▶️ Lancer Q1 », « CONNECTÉS » compte les 4 entrés (4/24), pas 24/24
+── 1. Le chrono du téléphone avance
+  ok     [QCM-2 · HEURE] au téléphone, le chrono avance (deux lectures à 3 s d'écart)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] « ONT RÉPONDU » garde son dénominateur d'un tour à l'autre
+  ok     [QCM-1 · SOCLE] Q1 close
+── 3. « 🔓 Rouvrir pour un élève » : pour lui seul
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour un élève »
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour Léa »
+  ok     [QCM-2 · HEURE] le téléphone n'annonce pas un tour à la classe (pas de « ⏭️ Tour suivant », pas de « moitiés de … »)
+  ok     [QCM-2 · HEURE] le tableau n'annonce pas « Pose ton stylo » à la classe
+  ok     [QCM-2 · HEURE] la console n'ouvre pas de « Phase RÉPONSE » pour la classe (c-rouvrir-un : « ⏸️ Question close »)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] après sa réponse, pas de 2e tour pour la classe (la console)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Julien, qui avait répondu, ne se voit pas redonner la question
+── 2. « 🔓 Rouvrir pour tous » : ceux qui n'ont pas répondu
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour tous »
+  ok     [QCM-1 · SOCLE] la question est rouverte (deroule.ph n'est plus close)
+  ok     [QCM-1 · SOCLE] la tablette 2 (sans réponse) retrouve la question
+  ok     [QCM-1 · SOCLE] Julien, qui avait répondu, ne la retrouve pas
+── 4. La console rechargée pendant la réflexion de Q2
+  ok     [QCM-2 · HEURE] « ⚠️ Séance interrompue détectée »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] l'état vrai : question 2, en réflexion
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] l'heure vraie de la coupure (10:30)
+  ok     [QCM-1 · SOCLE] la reprise garde le chrono où il en était (deroule.depuis inchangé)
+── 1. « ▶️ Commencer la correction » au téléphone
+  ok     [QCM-1 · SOCLE] tous prêts : la correction n'a pas commencé seule
+  ok     [QCM-2 · HEURE] au téléphone, « ▶️ Commencer la correction » s'ouvre quand tous sont prêts
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] le clic du téléphone lance la correction (deroule.ph = lecture)

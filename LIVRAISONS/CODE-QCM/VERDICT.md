@@ -4,7 +4,7 @@
 
 ## Verdict : **ça ne va pas.**
 
-Le chemin de l'heure passe (contrôles de la conscience 32 / 32, banc commun 211 / 211, `banc-reprise3.js` 13 / 13, `banc-reprise4.js` 26 / 26), mais à 12:28 il reste des écarts à la maquette ouverts, joués par le geste, et un point non rejoué :
+Le chemin de l'heure passe (contrôles de la conscience 32 / 32, banc commun 211 / 211, `banc-reprise3.js` 13 / 13, `banc-reprise4.js` 26 / 26), mais à 12:28 il reste des écarts à la maquette ouverts, joués par le geste :
 
 | Point de la reprise 5 | Rejoué par le geste (`banc-reprise5.js`, `sorties/2026-10-13_1222/reprise5.txt`, `captures-reprise5/`) | Résultat |
 | --- | --- | --- |
@@ -12,7 +12,7 @@ Le chemin de l'heure passe (contrôles de la conscience 32 / 32, banc commun 211
 | 2. « 🚀 Lancer la séance » de la carte pendant l'appel (`c-appel`) | les deux boutons ouverts | **passe** |
 | 4. Le dénominateur de « ont répondu » | maquette : `c-q1-tour1` « 10/12 », `p-reponse` « 10 / 12 », `b-reponse` « 10 / 12 » au 1er tour (ceux qui ont la main), puis « 23/24 », « 24/24 » (les présents). Tableau au 1er tour : **juste** (QCM-2, `7228ab2`) ; téléphone question close « 1 / 24 » : **juste** ; **console au 1er tour « 1 / 24 » (attendu « 1 / 12 ») et téléphone au 1er tour « 1 / 24 » (attendu « 1 / 12 ») : écarts ouverts** | **échoue** (2 / 8 en échec) |
 | 4. « 1 réponse enregistrée » | au singulier | **passe** |
-| `banc-reprise2.js` (compteurs, réouvertures, console rechargée) | **non rejoué à 12:22** : le script s'est arrêté sur une erreur (`reprise2.log`) ; il passait 22 / 22 à 11:22 | non rejoué |
+| `banc-reprise2.js` (compteurs, réouvertures, console rechargée) | à 12:22, arrêté au démarrage (son faux hub et un autre ont pris le même port : un défaut du banc) ; **rejoué seul à 12:30, après la livraison du verdict, sur la même app (md5 `b6b49403…`) : 22 / 22** | passe (ajouté à 12:31) |
 
 Ce que QCM-3 a trouvé en jouant ce que R10 n'avait pas joué (point 3, `DEFAUTS-OUVERTS.md`, « QCM-3, point 3 (12:10) ») : « ❌ 2 pense : mal lu (tranché) » au lieu de « pensent » (à QCM-2) ; **non rejoué par moi à 12:28**, son état à 12:30 n'est pas vérifié.
 

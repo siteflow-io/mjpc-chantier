@@ -50,7 +50,7 @@ function Board(){
     h("span", {className:"board-classe-mini"}, CLASSE),
     h("span", {className:"board-niveau-pastille", style:{background:NIV[q.niveau].color}}, NIV[q.niveau].label),
     h("span", {className:"board-q-count"}, correction ? "Correction — Q" + (qi + 1) + " / " + c.nbQ : "Question " + c.question[0] + " / " + c.question[1]),
-    (m.ph === "reponse" || m.ph === "b" || m.ph === "passage") && h("span", {className:"board-progress"}, "✋ " + c.repondu[0] + " / " + c.repondu[1] + " ont répondu"),
+    (m.ph === "reponse" || m.ph === "b" || m.ph === "passage") && h("span", {className:"board-progress"}, "✋ " + reponduTourH(c)[0] + " / " + reponduTourH(c)[1] + " ont répondu"),
     m.ph === "lecture" && h("span", {className:"board-progress"}, "✍️ " + c.lus[0] + " / " + c.lus[1] + " ont répondu"),
     m.ph === "close" && h("span", {className:"board-progress"}, "📋 " + c.repondu[0] + " / " + c.repondu[1] + " réponses"));
   var corps;

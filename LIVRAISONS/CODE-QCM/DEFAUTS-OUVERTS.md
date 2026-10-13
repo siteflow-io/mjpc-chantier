@@ -28,6 +28,8 @@ Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de
 
 [QCM-2 · HEURE, 12:16] **Corrigé (ce commit ; `banc-reprise4.js` 26 / 26)** : « ❌ 2 **pensent** : mal lu (tranché) » (`c3-corr.js`, l'accord suit le nombre) ; « la question 1 **d'**ABRIAL Julien » (l'élision dans les phrases de l'alerte tranchée) ; le bilan classe : « 🟢 La mieux réussie » n'est plus dit quand toutes les questions ont le même taux (elle serait la plus ratée) ; **point 1, ma part** : pendant l'appel (`ph === "appel"`), le téléphone montre « Aucune séance active. Lance une séance depuis l'ordinateur. » (`c3-telephone.js`). **À confirmer, non changé** : l'alerte passée « 📌 Je relis ce soir » comptée dans « ❌ … (tranché) » — c'est une alerte (❌) tranchée « soir », pas un « 🤔 » de l'élève ; je la laisse dans ❌.
 
+[QCM-2 · HEURE, 12:21] **`banc-reprise5.js` (QCM-4)** : avec le commit de 12:17, points 1 et 2 et « 1 réponse enregistrée » passent. **Ce commit** : le tableau, pendant un tour, compte « ✋ n / m ont répondu » sur les moitiés qui ont la main (`reponduTourH`, `c3-pilot.js` ; vu « ✋ 1 / 12 », b-reponse). **Ouvert à 12:22** : le téléphone pendant un tour reste « TABLETTES — 1 / 24 » (p-reponse attend « 1 / 12 ») — ma correction faisait aussi passer « question close » à « 1 / 12 », je l'ai retirée faute de temps pour trouver pourquoi ; la console « 1 / 24 ONT RÉPONDU » au 1er tour (c-q1-tour1 : « 1 / 12 ») : compteur de QCM-1 (`SCN.compteurs().repondu`).
+
 ### QCM-4, 12:11 — `banc/banc-reprise5.js` (points 1, 2, 4 par le geste) sur l'app de 11:22 (md5 `805732bc…`) : 3 / 8
 
 - [QCM-4 → QCM-1] **Point 2 : pendant l'appel, « 🚀 Lancer la séance » de la carte est fermé** ; `c-appel` a les deux ouverts. Vu : `[{carte: fermé}, {fenêtre: ouvert}]`.

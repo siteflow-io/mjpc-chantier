@@ -63,7 +63,8 @@ var PAGES = (function(){
     if(app === "telephone"){
       if(NAV.ecran) return {id:NAV.ecran, cle:JSON.stringify(NAV.params)};
       // sans séance active : l'écran de la 7.7.1 (VuePhone), mot pour mot ; la maquette n'en a pas
-      if(LIVE.pret && !SCN.sid()) return {id:"p-sans-seance", vue:"telephone", render:TelephoneSansSeance, cle:"telephone-sans"};
+      // (13/10) pendant l'appel, la séance n'existe que pour la console : le téléphone l'attend, comme sans séance
+      if(LIVE.pret && (!SCN.sid() || (SCN.etat() || {}).ph === "appel")) return {id:"p-sans-seance", vue:"telephone", render:TelephoneSansSeance, cle:"telephone-sans"};
       if(fn("EcranTelephone")) return {id:P.telephone(), vue:"telephone", render:function(){ return fn("EcranTelephone")(); }, cle:"telephone"};
       return {id:P.telephone()};
     }

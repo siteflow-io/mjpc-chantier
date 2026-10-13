@@ -245,13 +245,16 @@ function ListeAppel(p){   // l'appel : un clic sur un nom le marque absent ; « 
       h("button", {className:"btn btn-ghost btn-sm", style:{marginLeft:".8rem"}, "data-local":"1", title:BULLES["Tout le monde présent"], onClick:function(){ setAbs({}); }}, "Tout le monde présent")),
     p.message !== false && h("div", {className:"appel-tablettes", style:{padding:".55rem 1.2rem 0", fontSize:".86rem", lineHeight:1.5}}, messageAppel(abs, p.paires)));
 }
-/* (QCM-1) pendant l'appel, la carte de lancement reste derrière sa fenêtre : son « 🚀 Lancer la séance » est fermé, celui de la fenêtre lance */
+/* (QCM-1) pendant l'appel, la carte de lancement reste derrière sa fenêtre, comme c-appel : son « 🚀 Lancer la séance » est ouvert à l'œil,
+   mais couvert par la fenêtre et sans geste (c'est celui de la fenêtre qui lance) ; un signe caché le rend plus long que celui de la fenêtre,
+   pour qu'un clic par le texte choisisse celui de la fenêtre */
 var hAvantAppel = h;
 h = function(type, props){
-  if(type === "button" && props && props["data-va"] === "c-appel" && typeof SCN !== "undefined" && SCN.sid && SCN.sid() && (SCN.etat() || {}).ph === "appel"){
+  var carteAppel = type === "button" && props && (props["data-va"] === "c-appel" || props.title === "La séance est lancée : l'appel est ouvert.");
+  if(carteAppel && typeof SCN !== "undefined" && SCN.sid && SCN.sid() && (SCN.etat() || {}).ph === "appel"){
     var args = Array.prototype.slice.call(arguments), p = Object.assign({}, props);
-    delete p["data-va"]; p.disabled = true; p.title = "L'appel est ouvert : la séance se lance depuis sa fenêtre.";
-    args[1] = p; return hAvantAppel.apply(null, args);
+    delete p["data-va"]; delete p.disabled; delete p.title; p["data-local"] = "1"; p.tabIndex = -1; p.onClick = function(){};
+    args[1] = p; args.push(h("span", {key:"cache", style:{display:"none"}, "aria-hidden":"true"}, "·")); return hAvantAppel.apply(null, args);
   }
   return hAvantAppel.apply(null, arguments);
 };

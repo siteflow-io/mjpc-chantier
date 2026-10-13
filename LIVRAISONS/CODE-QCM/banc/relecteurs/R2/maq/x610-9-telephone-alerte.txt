@@ -1,0 +1,95 @@
+3 ESSAI
+🕙 Fin 16:02
+3e- éval 1 Analyse logique - Construire une phrase complexe
+Phase : co-évaluation de la lecture19 / 23 ont répondu
+❌ DUVERNAY Michel pense qu'ABRIAL Julien a mal lu sa feuille à la question 3
+Q3 · Comment trouves-tu l'antécédent d'un Pronom Relatif, et dans quel sens va la flèche à l'étape 4?
+A Je pose la question sur la Proposition Principale
+B ✓ Ma question dépend du Pronom Relatif employé
+C ✓ Je pose la question sur la relative, avec son Verbe Conjugué
+D Je prends toujours le nom le plus proche du Pronom Relatif
+E ✓ La réponse est l'antécédent, toujours écrit avant le Pronom Relatif, et la flèche va de droite à gauche, du Pronom Relatif à l'antécédent
+F La réponse est toujours écrite après le Pronom Relatif
+Qui, et quand	La feuille de Michel dit	Point
+Michel, pendant la question, avant la réponse : il a cliqué C, E et dit « Oui, la même chose »	C, E	0
+Julien, à la correction, avant la réponse	E	0
+Michel, après la correction : il connaissait la réponse	B, C, E	1
+Bonne réponse	B, C, E	
+⚠️ Les deux ne peuvent pas être vrais : regarde la feuille de Michel.
+👉 Avant de connaître la réponse, Michel disait C, E : ni ce que Julien a lu, ni ce que Michel dit maintenant.
+Appelle-les à la fin de l'heure, la feuille de Michel en main.
+Donner raison à Michel : B, C, E → 1 point
+Donner raison à Julien : E → 0 point
+La feuille dit autre chose : je clique ce qu'elle dit
+📌 Je relis ce soir la question 3
+⛔ à Michel
+⛔ à Julien
+⛔ aux deux
+⛔ : retirer le point d'autonomie.
+🔒 🏁 Afficher leur bilan — il en manque 4
+Pas encore répondu : CARRÉ Tom · OLLIVIER Sacha · VALLÉE Rayan · ZELLER Lou
+📌 À lire ce soir (4) : PERRAUD Jade — Q9 : 🤔 pense qu'Enzo a peut-être mal lu sa feuille ; elle dit avoir écrit : un point-virgule · QUINTON Enzo — Q1 : aucun de ces choix · TESSIER Anna — Q2 : a dit que sa feuille disait son clic, un nom et un pronom ; Rayan y a lu : un nom · CARRÉ Tom — Q7 : n'a pas dit si sa feuille disait son clic
+TABLETTES — ce que chacun pense de la lecture de sa feuille
+T1
+ABRIAL Julien
+✅
+DUVERNAY Michel
+❌ Q3
+T2
+BAUDRY Léa
+✅
+CARRÉ Tom
+⏳
+T3
+ESNAULT Inès
+✅
+FOUCHER Hugo
+✅
+T4
+GALLOIS Manon
+✅
+HÉBRARD Nathan
+✅
+T5
+ISAMBERT Chloé
+✅
+JOUBERT Louis
+✅
+T6
+LACOMBE Emma
+✅
+MAILLARD Noah
+🚪
+T7
+NOGARET Zoé
+✅
+OLLIVIER Sacha
+⏳
+T8
+PERRAUD Jade
+🤔 Q9
+QUINTON Enzo
+✅
+T9
+RAMBAUD Lina
+✅
+SABATIER Malo
+✅
+T10
+TESSIER Anna
+✅
+VALLÉE Rayan
+⏳
+T11
+WEBER Clara
+✅
+BRUNEAU Camille
+✅
+T12
+CHEVALLIER Théo
+✅
+ZELLER Lou
+⏳
+✅ bien lu · 🤔 peut-être mal lu : ce soir · ❌ mal lu : alerte · ⏳ pas encore
+🛑 Terminer la séance
+⚙

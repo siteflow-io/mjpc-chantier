@@ -2,6 +2,20 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Relecteur neuf R2 (l'heure, de l'estimation au bilan) — 13/10 05:15, sur l'app de 05:00 (md5 `1fed29e0…`) — `banc/relecteurs/R2/trouvailles.md` et ses captures
+
+Séance de 3 ESSAI à quatre élèves (21 absents), deux tablettes ; à Q1, personne n'a répondu à temps (aucun clic). Ce que mon banc ne joue pas (il fait toujours répondre tout le monde) : **ce sont des défauts à corriger avant 06:30 si possible**.
+
+[QCM-4 → QCM-1] **Une question à laquelle personne n'a répondu passe en dernier dans l'ordre de la correction, au lieu d'être la plus ratée.** Q1 sans aucune réponse (0 juste sur 4 présents), Q2 2 / 4, Q3 3 / 4 ; « 📝 Lancer la correction ». Attendu (`c-attest2`, `c-corr-q2-avant` : « La correction commence par … la plus ratée sur les tablettes ») : Q1 d'abord (0 / 4), puis Q2, puis Q3. Vu : `ordreCorr` = Q2, Q3, Q1 et la phrase « La correction commence par Q2, la plus ratée sur les tablettes (2 / 4 justes) ». À la révélation de Q1 (`c-corr-q1-apres`), « 0 / 0 justes sur la tablette (0 %) » : le dénominateur doit être celui des présents (« 0 / 4 »), comme pour Q2 (« 2 / 4 »). Captures `24-c-attest2.png`, `31-c-q1-revele.png`.
+
+[QCM-4 → QCM-1, QCM-2] **L'alerte de la co-évaluation ignore « Trouvée au dernier moment ».** Q2 : Tom, feuille lue fausse par Camille, tablette juste → « ✓ Trouvée au dernier moment » (1 point, affiché à la console). Co-évaluation : Tom clique ❌ « Camille a mal lu ma feuille à la question 2 ». Attendu (`c-coeval-attente`, la règle de note) : l'alerte part de la note réelle (1 point, trouvée au dernier moment) ; donner raison à Tom garde 1 point (sa feuille juste remplace la trouvée, qui redevient disponible), donner raison à Camille garde la trouvée. Vu, à la console et au téléphone : « Si Tom a raison, sa question 2 passe de 0 à 1 point » et « Donner raison à Camille : Berlin → 0 point ». Captures `37-c-alerte.png`, `38-ph-alerte.png`, `29-c-revele.png`.
+
+[QCM-4 → QCM-2] **Co-évaluation à peine ouverte : « ❌ 0 pense : mal lu (tranché) ».** Console, « 🤝 Ouvrir la co-évaluation », personne n'a encore répondu. Attendu (`c-coeval-attente`) : la ligne « ❌ … pense : mal lu (alerte, en haut) » quand une alerte existe ; rien de « tranché » tant qu'aucune alerte n'a été tranchée. Vu : « ❌ 0 pense : mal lu (tranché) ». Capture `35-c-coeval.png`.
+
+[QCM-4 → QCM-2] (à confirmer) **Le tableau liste les absents dans « 👥 Classe (25) ».** Tableau, de l'estimation à la correction, 21 élèves marqués absents à l'appel. Vu : « 👥 Classe (25) » les liste tous, sans distinction. La maquette (`b-recopie`, `b-correction`) n'a pas d'absent dans ces scènes ; la 7.7.1 ne montre que les présents. Captures `22-b-estim.png`, `27-b-recopie.png`.
+
+*(Écartée : l'accord au masculin pour Léa et Camille — le faux hub des relecteurs n'avait pas le sexe des élèves ; avec lui, mon banc voit les accords justes.)*
+
 ## Assemblage n°5 — 13/10 04:00, `code-qcm` à `6e10d47`, app md5 `1fed29e0…` — sorties : `sorties/2026-10-13_0401/`
 
 **Aucun échec, aucun défaut ouvert** : contrôles de la conscience 30 / 30 ; banc commun 208 / 208 ; gestes rares 47 / 47 ; l'heure de demain 107 / 107. Fidélité : 120 scènes atteintes sur 157, 49 sans écart. Prochaine étape : le banc final de 05:30, les relecteurs neufs, le verdict.

@@ -26,8 +26,10 @@ echo "── empreintes des contrôles de la conscience (la version de main, ext
 } > "$O/resume.txt"
 if [ -f "${1:-$L/evaluation-qcm.staging.html}" ]; then
   APP=${1:-$L/evaluation-qcm.staging.html}
-  a=$(date +%s); APP_FILE="$APP" BANC="$BANC" timeout 900 node "$CTL/controles-app.js" "$O/controles.txt" > "$O/controles.log" 2>&1; rc=$?; b=$(date +%s)
-  { echo; echo "── contrôles de la conscience ($((b-a)) s, code $rc)"; sed -n '1,4p' "$O/controles.txt" 2>/dev/null | sed 's/^/  /'; grep -c "ÉCHEC" "$O/controles.txt" 2>/dev/null | sed 's/^/  échecs : /'; } >> "$O/resume.txt"
+  controles(){ a=$(date +%s); APP_FILE="$APP" BANC="$BANC" timeout 900 node "$CTL/controles-app.js" "$O/controles.txt" > "$O/controles.log" 2>&1; rc=$?; b=$(date +%s)
+  { echo; echo "── contrôles de la conscience ($((b-a)) s, code $rc)"; sed -n '1,4p' "$O/controles.txt" 2>/dev/null | sed 's/^/  /'; grep -c "ÉCHEC" "$O/controles.txt" 2>/dev/null | sed 's/^/  échecs : /'; } > "$O/.ctl"; }
+  # COURT=1 : les contrôles en même temps que les bancs ; sinon, avant
+  if [ -n "$COURT" ]; then controles & else controles; fi
   # le banc commun et l'heure de demain, en même temps (deux navigateurs)
   a=$(date +%s)
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc.js" "$O" > "$O/banc.log" 2>&1; echo $? > "$O/.rb"; date +%s > "$O/.tb" ) &
@@ -43,6 +45,7 @@ if [ -f "${1:-$L/evaluation-qcm.staging.html}" ]; then
   { echo; echo "── banc commun ($(( $(cat "$O/.tb") - a )) s, code $(cat "$O/.rb"))"; sed -n '2p' "$O/banc.txt" 2>/dev/null | sed 's/^/  /';
     echo; echo "── les gestes rares ($(( $(cat "$O/.tr") - a )) s, code $(cat "$O/.rr"))"; sed -n '2p' "$O/branches.txt" 2>/dev/null | sed 's/^/  /';
     echo; echo "── l'heure de demain ($(( $(cat "$O/.td") - a )) s, code $(cat "$O/.rd"))"; sed -n '2p' "$O/demain.txt" 2>/dev/null | sed 's/^/  /'; } >> "$O/resume.txt"
+  cat "$O/.ctl" >> "$O/resume.txt" 2>/dev/null; rm -f "$O/.ctl"
   rm -f "$O"/.r? "$O"/.t?; rm -rf "$O/.controles-main"
   if [ -f "$O/releves-app.json" ]; then node "$L/banc/fidelite.js" "$O" > "$O/fidelite.log" 2>&1
     { echo; echo "── fidélité à la maquette"; sed -n '2p' "$O/fidelite.txt" | sed 's/^/  /'; } >> "$O/resume.txt"; fi

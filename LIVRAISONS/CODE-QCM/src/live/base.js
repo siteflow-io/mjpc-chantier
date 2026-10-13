@@ -408,7 +408,7 @@ var SCN = (function(){
     if(qi != null && ["reflexion", "reponse", "close", "b", "passage", "rouvert", "pause"].indexOf(e.ph) >= 0){
       var rep = S.repondu(qi, k, sid), pc = S.premierCote(qi, sid);
       // ceux qui peuvent répondre : les présents entrés (une moitié vide ne répond pas)
-      var attendu = (e.ph === "reponse" || e.ph === "passage" || e.ph === "b") && e.tour === 1 ? act.filter(function(x){ return S.cote(x, sid) === pc || S.seul(x, sid); }).length : act.length;
+      var attendu = act.length;   // (13/10) le même dénominateur d'un tour à l'autre : les présents entrés
       o.repondu = [e.ph === "reflexion" ? 0 : rep.length, attendu];
       o.justes = [rep.filter(function(x){ return S.justeTablette(x, qi, sid); }).length, rep.length];
       o.question = [qi + 1 - ec.filter(function(x){ return x < qi; }).length, nbQ];
@@ -937,6 +937,7 @@ var MOTEUR = (function(){
     if(e.ph === "reflexion") return {ph:"passage", qi:e.qi, tour:1, cote:SCN.coteDuTour(e.qi, 1, sid), duree:D.decompte, rouvert:e.rouvert || null};
     if(e.ph === "passage") return {ph:"reponse", qi:e.qi, tour:e.tour, cote:e.cote, duree:t.reponse, rouvert:e.rouvert || null};
     if(e.ph === "reponse") return {ph:"b", qi:e.qi, tour:e.tour, cote:e.cote, duree:D.b, rouvert:e.rouvert || null};
+    if(e.ph === "b" && e.pour) return {ph:"close", qi:e.qi};   // le B d'un élève rouvert seul : jamais un 2e tour pour la classe
     if(e.ph === "b" && e.tour === 1){
       var autre = SCN.coteDuTour(e.qi, 2, sid), quelquun = SCN.presents(null, sid).some(function(x){ return SCN.seul(x, sid) ? !SCN.reponse(x, e.qi, sid) : SCN.cote(x, sid) === autre && (e.rouvert !== "tous" || !SCN.reponse(x, e.qi, sid)); });
       if(quelquun) return {ph:"passage", qi:e.qi, tour:2, cote:autre, duree:D.decompte, rouvert:e.rouvert || null};

@@ -3912,7 +3912,9 @@ var SCN = (function(){
     // sur papier : l'ordre des erreurs de la grille (papier/<slug>/<qi>) ; sur tablettes : les réponses des tablettes
     var taux = {}; if(S.papier(sid)){ qs.forEach(function(i){ var g = pres.map(function(x){ return ((s.papier || {})[x] || {})[i]; }).filter(function(v){ return v != null; });
         taux[i] = g.length ? g.filter(function(v){ return v === "j" || v === true || v === 1; }).length / g.length : 1; }); }
-    else qs.forEach(function(i){ var rep = pres.filter(function(x){ return S.reponse(x, i, sid); }); taux[i] = rep.length ? rep.filter(function(x){ return S.justeTablette(x, i, sid); }).length / rep.length : 1; });
+    // le taux de justes sur les présents entrés (une question sans réponse est à 0, la plus ratée), sinon sur ceux qui ont répondu
+    else { var act = S.actifs(null, sid); qs.forEach(function(i){ var rep = pres.filter(function(x){ return S.reponse(x, i, sid); }), n = Math.max(rep.length, act.length);
+      taux[i] = n ? rep.filter(function(x){ return S.justeTablette(x, i, sid); }).length / n : 1; }); }
     return qs.sort(function(a, b){ return taux[a] - taux[b] || a - b; }); };
   S.corrigeesAu = function(k, sid){ var s = S.sess(sid); return liste(s && s.revelees).map(Number); };
 
@@ -4391,7 +4393,8 @@ var ACT = (function(){
     maj[cheminS(id, "etat")] = "terminee"; maj[cheminS(id, "finLe")] = now;
     if(!s.evalSnapshot && s.evalId !== "demo"){ var ev = SCN.evalParId(s.evalId); if(ev) maj[cheminS(id, "evalSnapshot")] = construireSnapshot(ev); }
     maj["/sessionActive/" + s.classeSlug] = null;
-    return poserDeroule(id, {ph:"fin"}).then(function(){ return ecrireQCM(maj, "terminer"); }); };
+    // la fin d'abord (etat, sessionActive), puis la phase : une console perdue entre les deux laisse une séance terminée, jamais une séance active
+    return ecrireQCM(maj, "terminer").then(function(){ return poserDeroule(id, {ph:"fin"}); }); };
   A.rouvrirSeance = function(id){ var s = SCN.sess(id); if(!s) return Promise.resolve(); var maj = {}; maj[cheminS(id, "etat")] = "en_cours"; if(s.copies && s.copies.rendues) maj[cheminS(id, "copies/masquees")] = true;
     return ecrireQCM(maj, "rouvrirSeance").then(function(){ return A.lancerSeance(s.classeSlug, s.evalId, {reprise:id}); }); };
   // le soir : une feuille lue (« Que dit la feuille ? ») ; rendre, masquer les copies
@@ -11507,7 +11510,7 @@ function PilotCoevalH(){
         att.length > 0 && h("div", {className:"manquent"},
           h("div", {className:"tt"}, "« 🏁 Afficher leur bilan aux élèves » s'ouvre quand les " + pres + " présents ont répondu. Il en manque " + att.length + " :"),
           h("div", {className:"noms"}, att.map(nomDe).join(" · "))),
-        h("div", {className:"co-compte"}, h("div", null, "✅ ", h("strong", null, String(nOk)), " pensent : bien lu"), h("div", null, "🤔 ", h("strong", null, String(nPeut)), nPeut === 1 ? " pense : peut-être mal lu (à relire ce soir)" : " pensent : peut-être mal lu (à relire ce soir)"), h("div", null, "❌ ", h("strong", null, String(nMal)), tranche ? " pense : mal lu (tranché)" : " pense : mal lu (alerte, en haut)")),
+        h("div", {className:"co-compte"}, h("div", null, "✅ ", h("strong", null, String(nOk)), " pensent : bien lu"), h("div", null, "🤔 ", h("strong", null, String(nPeut)), nPeut === 1 ? " pense : peut-être mal lu (à relire ce soir)" : " pensent : peut-être mal lu (à relire ce soir)"), h("div", null, "❌ ", h("strong", null, String(nMal)), tranche && alertes.length ? " pense : mal lu (tranché)" : " pense : mal lu (alerte, en haut)")),
         h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
           lire.map(function(x, i){ return h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); }))),
       h("div", {className:"suivi-box"},
@@ -13617,7 +13620,7 @@ var FENETRES_H = {
     return Fenetre(fond, "🔓 Rouvrir la question " + (qi + 1) + " pour tous ?", "Seuls ceux qui n'ont pas répondu la retrouvent, une seule fois.",
       h(F, null, h("p", null, "Ici : ", sans.map(function(p, i){ var t = SCN.tabletteDe(p); return h(F, {key:p}, i ? ", " : "", h("strong", null, nomDe(p)), t ? " (tablette " + t.n + ")" : ""); }), ".")),
       [annulerH(), boutonH("ok", "btn btn-primary", "🔓 Rouvrir pour ceux qui n'ont pas répondu", fait("rouvrirTous", [qi]), "Rouvre la question " + (qi + 1) + " pour ceux qui n'ont pas répondu" + (sans.length ? " : ici, " + listeFr(sans.map(prenomH)) : "") + ". Une seule fois.")], null); },
-  rouvrirUn:function(qi, fond){ var sans = momH().sansRep || [];
+  rouvrirUn:function(qi, fond){ var act = actifsH(MO()), sans = (momH().sansRep || []).filter(function(p){ return act.indexOf(p) >= 0; });
     return h(F, null, fond, h("div", {className:"checkin-overlay"},
       h("div", {className:"checkin-modal", style:{maxWidth:"560px"}},
         h("div", {className:"checkin-header"}, h("h3", null, "🔓 Rouvrir pour un élève — Q" + (qi + 1), InfoI("Rouvre la question close pour un seul élève, une seule fois : il répond pendant que la classe attend.")), h("div", {className:"checkin-sub"}, "Seuls les élèves sans réponse à la question " + (qi + 1) + " sont listés.")),
@@ -14009,7 +14012,8 @@ function MoitieH(p, cote, autreP){
   if(typeof SCN.doitDireB === "function" && SCN.doitDireB(p)){ var bp = m.bPour || {}; return EcrDeclareH(e, bp.qi != null ? bp.qi : qi, bp.reste != null ? bp.reste : reste); }
   if(ph === "passage") return cote === actif ? EcrPassage(e, qi, reste) : (v && !seul ? Voile(v, true, e) : EcrAttente(e));
   if(ph === "reponse") return main ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : voile();
-  if(ph === "b") return cote === actif && !seul || seul && SCN.ditB(p, qi) ? EcrDeclareH(e, qi, reste) : voile();
+  // B seulement à qui a cliqué (t-q1-b-michel) ; sans clic, l'attente
+  if(ph === "b") return (cote === actif && !seul || seul && SCN.ditB(p, qi)) && SCN.reponse(p, qi) ? EcrDeclareH(e, qi, reste) : cote === actif || seul ? EcrAttente(e) : voile();
   if(ph === "rouvert") return m.pour === p ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : m.pour && m.pour === vSlug && !seul ? Voile(v, false, e) : EcrAttente(e);
   if(ph === "estim") return EcrEstim(e, ESTIM[p] || null);
   if(ph === "att2"){
@@ -14224,7 +14228,7 @@ function TelFicheEleve(p){
       h("button", Object.assign({key:"p", className:"tel-btn tb-ghost", disabled:!!fait, title:"Marque " + pr + " comme parti" + (il === "elle" ? "e" : "") + " : " + il + " ne bloque plus la classe."}, clic("TFE:parti:" + el, function(){ faire("🚪 " + nomDe(el) + " est parti" + (il === "elle" ? "e" : "") + " à " + hhmm(m.heure) + " : " + il + " ne bloque plus la classe.", "depart", [el]); })), "🚫 Marquer comme parti en cours de séance")]
     : [
       // (QCM-2) avant la première question, rien à rouvrir : la fiche garde « Marquer comme parti »
-      qi != null && h("button", Object.assign({key:"r", className:"tel-btn tb-turq", disabled:sans.indexOf(el) < 0 || !!fait || m.ph !== "close", title:sans.indexOf(el) < 0 ? pr + " a répondu à cette question : il n'y a rien à rouvrir." : "Rouvre la question pour " + pr + " seul" + (il === "elle" ? "e" : "") + ", une seule fois."},
+      qi != null && h("button", Object.assign({key:"r", className:"tel-btn tb-turq", disabled:sans.indexOf(el) < 0 || !!fait || m.ph !== "close" || !!((SCN.sess() || {}).rouverts || {})[qi], title:sans.indexOf(el) < 0 ? pr + " a répondu à cette question : il n'y a rien à rouvrir." : "Rouvre la question pour " + pr + " seul" + (il === "elle" ? "e" : "") + ", une seule fois."},
         clic("TFE:rouvrir:" + el, function(){ faire("🔁 Question " + (qi + 1) + " rouverte pour " + nomDe(el) + ", une seule fois.", "rouvrirPour", [qi, el]); })), "🔁 Rouvrir Q" + (qi + 1) + " pour cet élève uniquement (une seule fois)"),
       h("button", Object.assign({key:"p", className:"tel-btn tb-rouge", disabled:!!fait, title:"Marque " + pr + " comme parti" + (il === "elle" ? "e" : "") + " : " + il + " ne bloque plus la classe."}, clic("TFE:parti:" + el, function(){ faire("🚪 " + nomDe(el) + " est parti" + (il === "elle" ? "e" : "") + " à " + hhmm(m.heure) + " : " + il + " ne bloque plus la classe.", "depart", [el]); })), "🚫 Marquer comme parti en cours de séance")];
   return h(TelFeuille, {titre:nomDe(el), sous:placeDe(el), fermer:fermer, enfants:h(F, null, boutons, (qi != null || fait) && h("div", {className:"tel-etat"}, etat))});
@@ -15198,7 +15202,11 @@ function feuillePapierV(se, qi, slug){ var p = (se.S.papier || {})[slug]; if(!p)
   var c = p.choix[qi] != null ? p.choix[qi] : (Array.isArray(p.choix) ? null : p.choix[String(qi)]); return c == null ? null : (c === "aucun" ? "aucun" : v3Liste(c).map(Number)); }
 function aLireV(se){
   // les lignes « à lire » se calculent de ce que chacun a dit et de ce que le voisin a lu (SCN.aLireSeance) ; aLire/<id> n'en garde que l'état
-  if(SCN.LIVE && typeof SCN.aLireSeance === "function"){ try { var L = SCN.aLireSeance(se.id); if(Array.isArray(L) && (L.length || se.nouvelle)) return L.map(function(x){ return {id:x.id, p:x.p || x.eleveSlug, q:+(x.q != null ? x.q : x.qi), sorte:x.sorte, txt:x.txt || "", lue:!!x.lue, corrigee:!!(x.corrigee || x.corrige), nom:x.nom || nomEleveV(se, x.p || x.eleveSlug)}; }); } catch(e){} }
+  if(SCN.LIVE && typeof SCN.aLireSeance === "function"){ try { var L = SCN.aLireSeance(se.id);
+    // une feuille que Paul a lue lui-même (« Que dit la feuille ? », par:"prof") est tranchée : les lignes d'avant sa lecture restent
+    // (lues, « Corrigé d'après sa feuille ») ; celles que sa lecture ferait naître (« … ; <voisin> y a lu <ce que Paul a lu> ») n'existent pas
+    if(Array.isArray(L)){ var St = se.S.aLire || {}, Lc = se.S.lectures || {}; L = L.filter(function(x){ var p = x.p || x.eleveSlug, q = x.q != null ? x.q : x.qi, l = (Lc[q] || {})[p]; return !(l && l.par === "prof" && !St[x.id]); }); }
+    if(Array.isArray(L) && (L.length || se.nouvelle)) return L.map(function(x){ return {id:x.id, p:x.p || x.eleveSlug, q:+(x.q != null ? x.q : x.qi), sorte:x.sorte, txt:x.txt || "", lue:!!x.lue, corrigee:!!(x.corrigee || x.corrige), nom:x.nom || nomEleveV(se, x.p || x.eleveSlug)}; }); } catch(e){} }
   var A = se.S.aLire || {}; return Object.keys(A).map(function(id){ var x = A[id] || {}; return {id:id, p:x.eleveSlug, q:+x.qi, sorte:x.sorte || "b", txt:x.txt || "", lue:!!x.lue, corrigee:!!x.corrige, nom:nomEleveV(se, x.eleveSlug)}; })
   .filter(function(x){ return x.p != null && !isNaN(x.q); }).sort(function(a, b){ return a.q - b.q || a.nom.localeCompare(b.nom, "fr"); }); }
 function resultatLocalV(se, slug){

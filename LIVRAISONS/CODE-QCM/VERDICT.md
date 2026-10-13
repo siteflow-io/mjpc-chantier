@@ -2,6 +2,9 @@
 
 *Mandats : `MANDATS/CODE-QCM/COMMUN.md` et `QCM-4-BANC.md` (branche `main`). App livrée : `evaluation-qcm.staging.html`, md5 `1fed29e0977813429d2dca767ff5e08d`, assemblée par `build.py` sur `code-qcm` à `99c4ca7` (aucun commit des trois autres exécutants depuis 02:00 : c'est l'app de 02:00, de 04:00, de 05:00 et de 05:31).*
 
+
+> **Mise à jour 06:29 — app réassemblée** à la demande de QCM-1, QCM-2 et QCM-3 (DEMANDES.md, 05:52–06:05) : `code-qcm` à `ca069f6`, md5 **`172efa3c4f5ce73c6095b2868f4cb456`** (c'est l'app livrée). Assemblage `sorties/2026-10-13_0616` : contrôles 30 / 30, l'heure 286 / 286, le soir 38 / 38, le reste 16 / 16, toutes les pages 22 / 22, fidélité inchangée (120 atteintes, 49 sans écart), 12 min 16 s. Leurs propriétaires disent corrigés : B sans clic, « Rouvrir pour un élève » qui listait les non-entrés, « 0 pense (tranché) » (QCM-2) ; la question sans réponse en dernier, la séance terminée restée en cours (QCM-1) ; « Que dit la feuille ? » (QCM-3). **Aucun relecteur neuf ne les a rejoués avant 06:30 : ils ne sont pas barrés dans DEFAUTS-OUVERTS.md** et le verdict ci-dessous (l'heure et le soir ne vont pas tels quels) tient jusqu'à ce qu'ils le soient ; restent ouverts de l'aveu même de QCM-1 et QCM-2 : rouvrir pour tous, la console pendant un élève rouvert, l'alerte et « trouvée », les compteurs avec des non-entrés, « Séance interrompue », les absents au tableau.
+
 ## En une phrase
 
 **Le chemin de l'heure tel que la maquette le joue passe en entier, sans un échec, sur tous les appareils, et le soir aussi ; mais les relecteurs neufs ont trouvé, dans des situations réelles de classe que le banc ne jouait pas, 9 défauts de l'heure et 2 du soir, encore ouverts à 06:00 : l'heure et le soir ne vont pas tels quels.** Le reste va.

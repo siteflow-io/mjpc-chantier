@@ -9,6 +9,7 @@ const REF = JSON.parse(fs.readFileSync(path.join(__dirname, "reference", "maquet
 // les relevés du banc commun, puis ceux des gestes rares (banc-branches.js) pour les scènes que le premier n'atteint pas
 const APP = JSON.parse(fs.readFileSync(path.join(SORTIE, "releves-app.json")));
 if(fs.existsSync(path.join(SORTIE, "releves-branches.json"))){ const br = JSON.parse(fs.readFileSync(path.join(SORTIE, "releves-branches.json"))); for(const k of Object.keys(br)) if(!APP[k]) APP[k] = br[k]; }
+if(fs.existsSync(path.join(SORTIE, "releves-jamais.json"))){ const jm = JSON.parse(fs.readFileSync(path.join(SORTIE, "releves-jamais.json"))); for(const k of Object.keys(jm)) if(!APP[k]) APP[k] = jm[k]; }
 const ECARTS = JSON.parse(fs.readFileSync(path.join(__dirname, "ecarts-maquette.json")));
 const NOMS = ["ABRIAL Julien", "BAUDRY Léa", "CARRÉ Tom", "DUVERNAY Michel", "ESNAULT Inès", "FOUCHER Hugo", "GALLOIS Manon", "HÉBRARD Nathan", "ISAMBERT Chloé", "JOUBERT Louis", "LACOMBE Emma", "MAILLARD Noah", "NOGARET Zoé", "OLLIVIER Sacha", "PERRAUD Jade", "QUINTON Enzo", "RAMBAUD Lina", "SABATIER Malo", "TESSIER Anna", "VALLÉE Rayan", "WEBER Clara", "YVON Adam", "ZELLER Lou", "BRUNEAU Camille", "CHEVALLIER Théo"];
 const PRENOMS = NOMS.map(n => n.split(" ").slice(1).join(" ")).sort((a, b) => b.length - a.length);

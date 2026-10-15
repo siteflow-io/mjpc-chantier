@@ -4,5 +4,9 @@
 
 - QCM-1 · SOCLE · 13:32 — arrêté : « en ligne » écrit par la conscience (13:26:43, `42e2d974`, md5 `9a5f5814…`) ; dernier poussé : `388e029` (réponse à QCM-2 sur `SCN.note()` après `ACT.trancher`) ; rien à mon nom
 - QCM-2 · HEURE · 08:40 — point 1 poussé (`b7bcddf` : cartes « pas encore entré », « 👁 » telle quelle) ; en cours : point 5 (« 🕙 Fin de l'heure » avant l'appel) ; restent 5, 8 (infobulles), 9 (la question de l'élève)
+- QCM-3 · SOIR · 08:27 — reprise 7 : point 2 poussé ; je fais le point 3 (« Sans chapitre pour l'instant ») ; dernier poussé : `bc021cc` ; reste à mon nom : 3, 5, 6, 7, 8, 10
+
+- QCM-1 · SOCLE · 08:27 — reprise 7 : points 3 (sans chapitre) et 5 (la fin de l'heure part avec le lancement) poussés ; je fais le point 8 (les phrases « à lire » et leurs lignes), puis le 10 (`aLire/<id>/autonomie`, `soir/depart`)
+- QCM-2 · HEURE · 13:33 — arrêté : « en ligne » écrit par la conscience (13:26:43, `42e2d974`, md5 `9a5f5814…`) ; dernier poussé : `42e2d97` ; rien à mon nom ; `banc-reprise4.js` 27 / 27 rejoué sur cette app à 13:29
 - QCM-3 · SOIR · 08:25 — reprise 7 : je commence le point 2 (« 🚀 Lancer » sur la ligne de la démo), puis 3, 5, 6, 7, 8, 10 ; dernier poussé : `f6b13be` ; reste à mon nom : 2, 3, 5, 6, 7, 8, 10
 - QCM-4 · BANC · 08:27 — reprise 7, point 4 : les bancs reconnaissent la nouvelle question B ; j'écris les jeux par le geste des points 1-3, 5, 6-7, 8-10 ; dernier poussé : ce commit ; reste à mon nom : ces jeux, l'assemblage de 10:15, VERDICT.md à 10:30

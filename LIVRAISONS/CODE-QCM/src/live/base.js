@@ -210,7 +210,7 @@ var SCN = (function(){
         competences:Array.isArray(q.competences) ? q.competences : Object.values(q.competences || {})}); });
     var comps = []; qs.forEach(function(q){ q.competences.forEach(function(c){ if(comps.indexOf(c) < 0) comps.push(c); }); });
     return Object.assign({}, e, {id:id, titre:e.titre || "Évaluation", mode:e.mode || null, chapitre:e.chapitre || null, chap:e.chapitre ? S.chapitreLib(e.chapitre) : null,
-      niveau:S.niveauDuChapitre(e.chapitre) || e.niveau || null, cree:e.createdAt ? dateFr(e.createdAt) : null, competences:comps, questions:qs, demo:id === "demo" || !!e.demo});
+      niveau:S.niveauDuChapitre(e.chapitre) || e.niveau || null, cree:e.createdAt ? dateFr(e.createdAt) : null, competences:comps, questions:qs, demo:id === "demo" || !!e.demo, sansChapitre:!e.chapitre && !!e.sansChapitre});
   }
   S.versMaquette = versMaquette;
   S.evals = function(){
@@ -226,7 +226,8 @@ var SCN = (function(){
   S.evalDeSeance = function(id){ var s = S.sess(id); if(!s) return null; if(s.evalSnapshot) return versMaquette(s.evalId, Object.assign({}, S.evalParId(s.evalId) || {}, s.evalSnapshot)); return S.evalParId(s.evalId); };
   S.evalDu = function(){ return S.ev() || S.DEMO; };
   // ce qu'il manque pour lancer (cadrage 741) : le chapitre, et pour chaque question ses deux temps et ses compétences
-  S.manques = function(ev){ var m = []; if(!ev) return ["l'évaluation"]; if(!ev.chapitre && !ev.demo) m.push("le chapitre");
+  // (15/10, Paul) « Sans chapitre pour l'instant » (sansChapitre: true) est un choix : le chapitre ne manque plus, la séance se lance
+  S.manques = function(ev){ var m = []; if(!ev) return ["l'évaluation"]; if(!ev.chapitre && !ev.demo && !ev.sansChapitre) m.push("le chapitre");
     (ev.questions || []).forEach(function(q, i){ if(!ev.demo && (!q.reflexion || !q.reponse)) m.push("les temps de la question " + (i + 1)); if(!ev.demo && !(q.competences || []).length) m.push("les compétences de la question " + (i + 1)); });
     return m; };
 
@@ -603,7 +604,9 @@ var ACT = (function(){
     // une paire nomme ses élèves par leur slug ou par « NOM Prénom » : la base garde le slug
     paires.forEach(function(p, i){ var a = p[0] ? sanMJPC(p[0]) : null, b = p[1] ? sanMJPC(p[1]) : null;
       places[i + 1] = {g:a || b || null, d:a ? b : null}; if(!a || !b) places[i + 1].seul = true; });
-    var ev = SCN.evalParId(evalId), fin = o.fin || SCN.hm(SCN.sec(SCN.heureFr(now)) + 55 * 60);
+    // (15/10, Paul) « 🕙 Fin de l'heure » se règle avant l'appel, sur la carte de lancement (LANCEMENT_H.fin, « HH:MM ») : il part avec la séance
+    var finCarte = typeof LANCEMENT_H !== "undefined" && LANCEMENT_H && /^\d{1,2}:\d{2}$/.test(String(LANCEMENT_H.fin || "")) ? String(LANCEMENT_H.fin) : null;
+    var ev = SCN.evalParId(evalId), fin = o.fin || finCarte || SCN.hm(SCN.sec(SCN.heureFr(now)) + 55 * 60);
     var sess = {classeSlug:classe, evalId:evalId, date:now, phase:"idle", qIdx:null, etat:"en_cours",
       lancee:{date:now, heure:SCN.heureFr(now), fin:fin, mode:o.mode || "tablettes", demo:evalId === "demo", rattrapage:!!o.rattrapage, eleves:o.eleves || null},
       places:places, deroule:{ph:"appel", depuis:now}};

@@ -63,3 +63,9 @@ Et `ACT.trancher(alerte, null)` défait une décision (la lecture revient à `al
 La console pose `consoleVue` (ms, l'horloge du serveur) toutes les 20 s pendant une séance active. Une console rouverte le lit avant de poser le sien : « ⚠️ Séance interrompue détectée » dit « Dernière déconnexion » = max(`lastDisconnect`, `consoleVue`), l'heure du dernier signe de vie de la console perdue (et non une déconnexion plus ancienne, celle du lancement). Rien d'autre ne le lit.
 
 Et `SCN.note(x).st[qi] = "e"` pour une question écartée (`pts` null) : elle n'est ni juste ni fausse ; les écrans ne la montrent pas.
+
+## C9 — « 📄 Lire les copies » et les lignes « à lire » (QCM-1, 15/10 08:29 ; reprise 7, points 8 et 10)
+
+- `sessions/<sid>/aLire/<id>` garde aussi `lignes` (les lignes sous la phrase, en texte) ; `txt` est la phrase entière (« Tom n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. »). `SCN.aLireSeance()` rend en plus `prenom`, `lignes`, et les données `tablette`, `lecture`, `lecteur`, `ecrit` (listes d'indices, ou « aucun »).
+- `sessions/<sid>/aLire/<id>/autonomie/<élève>` = `"garde"` ou `"retire"` : la réponse de Paul à « Retirer son point d'autonomie ? » après une faute (`ACT.autonomieLecture(sid, id, élève, valeur)`, lu par `SCN.autonomieLecture(sid, id, élève)`) ; la question ne revient pas. Le retrait lui-même reste `ACT.retirerAutonomie` (`autonomie/<élève>`).
+- `sessions/<sid>/soir/depart` = `{notes:{<slug>:{n, total, sur20, pts}}, auto:{<slug>:bool}, ms}` : le point de départ de « 🧮 Ce soir » et des flèches, posé une seule fois à la première ouverture de « Lire les copies » (`ACT.departSoir(sid, d)`, lu par `SCN.departSoir(sid)`) ; il tient après un rechargement.

@@ -369,36 +369,51 @@ var SCN = (function(){
   /* ── « À lire sur les feuilles » : les lignes, d'après ce que chacun a dit et ce que le voisin a lu ── */
   function choixTexte(q, c){ if(c === "aucun") return "aucun de ces choix"; return (c || []).map(function(i){ return q.choix[i]; }).join(" et "); }
   function queNom(n){ return (/^[AEIOUYÉÈÊÀÂÎÔÛaeiouyéèêàâîôû]/.test(n) ? "qu'" : "que ") + n; }
+  /* (15/10, Paul : « une app qui me parle précisément de ce que l'élève a fait ») chaque ligne « à lire » : une phrase sans les réponses (txt),
+     puis ses lignes (lignes), les réponses en entier, chacune sur sa ligne, une seule fois quand c'est la même ; à côté, les données
+     (tablette, lecture, lecteur, ecrit : des listes d'indices, ou « aucun ») */
+  function guillemets(q, c){ if(c === "aucun") return "aucun de ces choix"; var t = (c || []).map(function(i){ return "« " + q.choix[i] + " »"; });
+    return t.length <= 1 ? (t[0] || "") : t.slice(0, -1).join(", ") + " et " + t[t.length - 1]; }
+  function deNomP(n){ return (/^[AEIOUYÉÈÊÀÂÎÔÛHaeiouyéèêàâîôûh]/.test(n) ? "d'" : "de ") + n; }
   S.aLireSeance = function(id, k){
     var s = S.sess(id); if(!s) return [];
     var ev = S.evalDeSeance(id); if(!ev) return [];
     var stock = s.aLire || {}, l = [], corr = S.corrigeesAu(k, id), tr = s.alertes || {};
-    function ajouter(x, qi, sorte, txt){ var cl = x + "_" + qi + "_" + sorte, st = stock[cl] || {};
+    function ajouter(x, qi, sorte, txt, lignes, data){ var cl = x + "_" + qi + "_" + sorte, st = stock[cl] || {};
       // une alerte tranchée la feuille en main ferme sa ligne
       var tranchee = Object.keys(tr).some(function(a){ var al = tr[a]; return al && Number(al.qi) === qi && (al.eleves || []).indexOf(x) >= 0 && al.tranche && al.tranche.decision === "feuille"; });
       if(tranchee && sorte !== "co") return;
-      l.push({id:cl, p:x, eleveSlug:x, q:qi, qi:qi, sorte:sorte, txt:txt, nom:S.nomDe(x), lue:!!st.lue, corrigee:!!st.corrige}); }
+      l.push(Object.assign({id:cl, p:x, eleveSlug:x, q:qi, qi:qi, sorte:sorte, txt:txt, lignes:lignes || [], nom:S.nomDe(x), prenom:S.pre(x), lue:!!st.lue, corrigee:!!st.corrige,
+        tablette:null, lecture:null, lecteur:null, ecrit:null}, data || {})); }
     S.eleves(id).forEach(function(x){
       if(S.absents(id).indexOf(x) >= 0) return;
+      var P = S.pre(x), il = S.sexe(x) === "F" ? "elle" : "il";
       corr.forEach(function(qi){
         // le lecteur nommé est le voisin qui a lu la feuille (une lecture corrigée par Paul ou par la feuille garde le nom du voisin)
-        var q = ev.questions[qi], rep = S.reponse(x, qi, id), lu = S.lecture(x, qi, id), b = S.ditB(x, qi, id), lec = lu && lu.par && NOMS[lu.par] ? lu.par : S.voisinDe(x, id), v = lec ? S.pre(lec) : "son voisin";
-        if(lu && lu.choix === "aucun"){ ajouter(x, qi, "aucun", "aucun de ces choix"); return; }
+        var q = ev.questions[qi], rep = S.reponse(x, qi, id), lu = S.lecture(x, qi, id), b = S.ditB(x, qi, id), lec = lu && lu.par && NOMS[lu.par] ? lu.par : S.voisinDe(x, id), V = lec ? S.pre(lec) : "son voisin";
+        if(lu && lu.choix === "aucun"){ ajouter(x, qi, "aucun", V + " n'a lu aucun des choix sur la feuille " + deNomP(P) + ".", [], {lecture:"aucun", lecteur:lec || null, tablette:rep ? rep.choix : null}); return; }
         if(!rep) return;
-        var memes = lu && !(lu.choix === "aucun") && juste(lu.choix, {bonnes:rep.choix});
-        if(!b) ajouter(x, qi, "b", "n'a pas dit si sa feuille disait son clic");
-        else if(b === "oui" && lu && !memes) ajouter(x, qi, "b", "a dit que sa feuille disait son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
-        else if(b === "non" && lu && memes) ajouter(x, qi, "b", "a dit que sa feuille ne disait pas son clic, " + choixTexte(q, rep.choix) + " ; " + v + " y a lu " + choixTexte(q, lu.choix));
+        var memes = lu && !(lu.choix === "aucun") && juste(lu.choix, {bonnes:rep.choix}), T = guillemets(q, rep.choix);
+        var lignesTL = lu ? (memes ? ["Tablette et lecture " + deNomP(V) + " : " + T] : ["Tablette : " + T, "Lu par " + V + " : " + guillemets(q, lu.choix)]) : ["Tablette : " + T];
+        var data = {tablette:rep.choix, lecture:lu ? lu.choix : null, lecteur:lu ? lec || null : null};
+        if(!b) ajouter(x, qi, "b", P + " n'a pas dit " + (il === "il" ? "s'il" : "si elle") + " avait bien écrit sa réponse sur sa feuille.", lignesTL, data);
+        else if(b === "oui" && lu && !memes) ajouter(x, qi, "b", P + " dit avoir bien écrit sa réponse sur sa feuille ; " + V + " y a lu autre chose.", lignesTL, data);
+        else if(b === "non" && lu && memes) ajouter(x, qi, "b", P + " dit avoir écrit autre chose sur sa feuille ; " + V + " y a lu sa réponse.", lignesTL, data);
       });
       // une alerte que Paul relit le soir (« 📌 Je relis ce soir la question n ») : « ⚠️ À relire »
       Object.keys(tr).forEach(function(aid){ var al = tr[aid]; if(al && al.tranche && al.tranche.decision === "soir" && (al.eleves || [])[0] === x){ var lv = (al.eleves || [])[1] || S.voisinDe(x, id);
-        ajouter(x, Number(al.qi), "co", "pense " + queNom(S.nomDe(lv)) + " a mal lu sa feuille ; à relire"); } });
+        ajouter(x, Number(al.qi), "co", P + " pense " + queNom(lv ? S.pre(lv) : "son voisin") + " a mal lu sa feuille.", [], {lecteur:lv || null, ecrit:al.ecrit || null}); } });
       var co = S.coevalDe(x, id);
-      if(co && co.statut === "peut" && co.qi != null){ var vo = S.voisinDe(x, id); ajouter(x, Number(co.qi), "co", "🤔 pense " + queNom(S.pre(vo)) + " a peut-être mal lu sa feuille" + (co.ecrit ? " ; " + (S.sexe(x) === "F" ? "elle" : "il") + " dit avoir écrit : " + choixTexte(ev.questions[co.qi], co.ecrit) : "")); }
+      if(co && co.statut === "peut" && co.qi != null){ var vo = S.voisinDe(x, id), qc = ev.questions[co.qi];
+        ajouter(x, Number(co.qi), "co", P + " pense " + queNom(vo ? S.pre(vo) : "son voisin") + " a peut-être mal lu sa feuille.", co.ecrit ? [P + " dit avoir écrit : " + guillemets(qc, co.ecrit)] : [], {lecteur:vo || null, ecrit:co.ecrit || null}); }
     });
     return l;
   };
   S.aLire = function(k){ return S.aLireSeance(S.sid(), k); };
+  // (15/10) « 📄 Lire les copies » : le point de départ du soir (soir/depart : {notes, auto}, posé à la première ouverture) ; la décision sur le point
+  // d'autonomie après une faute (aLire/<id>/autonomie/<élève> = « garde » ou « retire »)
+  S.departSoir = function(sid){ var s = S.sess(sid); return (s && s.soir && s.soir.depart) || null; };
+  S.autonomieLecture = function(sid, ligne, x){ var s = S.sess(sid), a = s && s.aLire && s.aLire[ligne]; return (a && a.autonomie && a.autonomie[x]) || null; };
 
   /* ── Les comptes de la console ── */
   S.compteurs = function(k, sid){
@@ -755,9 +770,14 @@ var ACT = (function(){
   A.syncALire = function(sidX){ var id = sidX || sid(); if(!id) return Promise.resolve(); var s = SCN.sess(id); if(!s) return Promise.resolve();
     var stock = s.aLire || {}, maj = {}, n = 0;
     SCN.aLireSeance(id).forEach(function(l){ var st = stock[l.id];
-      if(!st) { maj[cheminS(id, "aLire/" + l.id)] = {eleveSlug:l.eleveSlug, qi:l.qi, sorte:l.sorte, txt:l.txt, lue:false, corrige:false}; n++; }
-      else if(st.txt !== l.txt && !st.lue){ maj[cheminS(id, "aLire/" + l.id + "/txt")] = l.txt; n++; } });
+      if(!st) { maj[cheminS(id, "aLire/" + l.id)] = {eleveSlug:l.eleveSlug, qi:l.qi, sorte:l.sorte, txt:l.txt, lignes:l.lignes || [], lue:false, corrige:false}; n++; }
+      else if((st.txt !== l.txt || JSON.stringify(SCN.liste(st.lignes)) !== JSON.stringify(l.lignes || [])) && !st.lue){ maj[cheminS(id, "aLire/" + l.id + "/txt")] = l.txt; maj[cheminS(id, "aLire/" + l.id + "/lignes")] = l.lignes || []; n++; } });
     return n ? ecrireQCM(maj, "aLire") : Promise.resolve(); };
+  // (15/10) « 📄 Lire les copies » : le point de départ, une seule fois (la première ouverture) ; puis chaque « Non » ou « ⛔ Oui » de la faute
+  A.departSoir = function(sidX, d){ var id = sidX || sid(); if(!id || !d || SCN.departSoir(id)) return Promise.resolve(SCN.departSoir(id)); var maj = {};
+    maj[cheminS(id, "soir/depart")] = Object.assign({}, d, {ms:LIVE.maintenant()}); return ecrireQCM(maj, "departSoir").then(function(){ return SCN.departSoir(id); }); };
+  A.autonomieLecture = function(sidX, ligne, x, valeur){ var id = sidX || sid(); if(!id || !ligne || !x || ["garde", "retire"].indexOf(valeur) < 0) return Promise.resolve(); var maj = {};
+    maj[cheminS(id, "aLire/" + ligne + "/autonomie/" + x)] = valeur; return ecrireQCM(maj, "autonomieLecture"); };
   A.retirerAutonomie = function(x, quand, sidX){ var id = sidX || sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, "autonomie/" + x)] = {retire:true, ms:LIVE.maintenant(), quand:quand || "heure"}; return ecrireQCM(maj, "retirerAutonomie"); };
   A.rendreAutonomie = function(x, sidX){ var id = sidX || sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, "autonomie/" + x)] = null; return ecrireQCM(maj, "rendreAutonomie"); };
   A.ouvrirCoeval = function(){ var id = sid(); return id ? poserDeroule(id, {ph:"coeval"}) : Promise.resolve(); };

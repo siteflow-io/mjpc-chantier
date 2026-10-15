@@ -22,7 +22,7 @@ JS = ["live/mjpc-core.js", "live/base.js", "scenario.js", "maquette.js", "maquet
 EXTRA_JS = json.load(open(os.path.join(S, "ordre_js.json"))) if os.path.exists(os.path.join(S, "ordre_js.json")) else []
 JS += EXTRA_JS + ["gestes.js", "etape2.js", "etape3.js", "etape4.js"] + (["mjpc.js"] if MAQUETTE else ["live/sans-mjpc.js"]) + ["complement1.js", "complement2.js",
        "c3-base.js", "c3-pilot.js", "c3-corr.js", "c3-appareils.js", "c3-soir.js", "c3-evals.js", "c3-scenes.js", "c3-objets.js", "c3-tablettes.js", "c3-telephone.js", "c3-x610.js", "c3-feuille.js", "c3-textes.js", "c3-gestes.js",
-       "c4-seances.js", "c3-bulles.js"]
+       "c4-seances.js"] + (["lire-copies.js"] if os.path.exists(os.path.join(S, "lire-copies.js")) else []) + ["c3-bulles.js"]   # (15/10) « 📄 Lire les copies », posé par QCM-3
 # les écrans branchés : la table des pages et des gestes (src/live/), puis le socle qui rend
 JS += [j for j in ["live/pages.js", "live/gestes.js"] if os.path.exists(os.path.join(S, j))] + ["socle.js"]
 if MAQUETTE: JS = [j for j in JS if not j.startswith("live/")]

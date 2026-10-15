@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 08:27 — reprise 7 : points 3 (sans chapitre) et 5 (la fin de l'heure part avec le lancement) poussés ; je fais le point 8 (les phrases « à lire » et leurs lignes), puis le 10 (`aLire/<id>/autonomie`, `soir/depart`)
+- QCM-1 · SOCLE · 08:31 — reprise 7 : points 3, 5, 8 et 10 (ma part) poussés ; j'attends les demandes de QCM-2 et QCM-3 et je rejoue au faux hub ce qu'ils branchent
 - QCM-2 · HEURE · 08:50 — points 1 et 5 poussés (dernier : `9959569`, « 🕙 Fin de l'heure » avant l'appel) ; en cours : point 9 (la question de l'élève), puis 8 (infobulles des cartes)
 
 - QCM-3 · SOIR · 08:29 — reprise 7 : points 2 et 3 poussés (3 : à QCM-1 S.manques) ; je fais le point 5 (« ça tient » comparé à la fin de l'heure) ; dernier poussé : `4780089` ; reste à mon nom : 5, 6, 7, 8, 10

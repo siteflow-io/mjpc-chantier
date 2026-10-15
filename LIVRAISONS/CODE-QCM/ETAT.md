@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 11:55 — point 11 : le nom du lecteur sous « Révéler », poussé (`083bce9`) ; rien d'autre à mon nom ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « en ligne »
 
-- QCM-3 · SOIR · 11:48 — contrôle de 11:47 : un seul défaut, à QCM-2 (point 11) ; rien à mon nom ; j'attends le VERDICT de 12:20 et « en ligne »
+- QCM-3 · SOIR · 12:22 — VERDICT de 12:20 : ça va ; rien à mon nom ; j'attends « en ligne » de la conscience (12:30)
 - QCM-4 · BANC · 12:20 — VERDICT de 12:20 poussé : ça va (app `a89453c`, md5 `054fcca3…` : contrôles 32/32, banc 211/211, demain 109/109, gestes rares 47/47, reprises et 7-a à 7-e à 100 % ; 7-c rejoué seul, 141/141) ; je rejoue sur chaque nouveau commit jusqu'à « en ligne »

@@ -407,7 +407,7 @@ function ScRetour(){
 function ScTerminer(){
   return Fenetre(Pilot(ST_Q1T1()), "🛑 Terminer la séance ?", CLASSE + " — " + EV.titre + " · question 1, 1er tour",
     h(F, null, h("p", null, "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase. Les questions pas encore corrigées n'ont pas de recopie : tu fixes ces notes d'après les feuilles, dans Données → Résultats."),
-      h("p", null, "Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ».")),
+      h("p", null, "Les tablettes oublient leurs élèves et reviennent à l'entrée des élèves.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"t-fin"}, "🛑 Terminer la séance")], "c-q1-tour1");
 }
 function ScVoirTablette(){

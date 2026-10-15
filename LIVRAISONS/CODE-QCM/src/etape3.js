@@ -19,6 +19,8 @@ function marque(s){ return s === "j" ? "✓" : s === "t" ? "⛔" : s === "a" ? "
 function LignesAttest2(e, v){
   return [
     "Maintenant, la correction. Montre ta feuille à " + v.prenom + ".",
+    // (reprise 7, point 14, Paul 15/10 09:19) la ligne du stylo vert, mot pour mot
+    "Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert.",
     "Pour chaque question, " + v.prenom + " clique ce que dit ta feuille. Toi, tu cliques ce que dit la feuille de " + v.prenom + ".",
     "Lis avec soin, et clique ce que tu lis.",
     "À la fin, " + v.prenom + " dira si tu as bien lu sa feuille.",
@@ -31,6 +33,7 @@ function Attest2(e, n){ var v = autreDe(e); return h(AttestCoches, {e:e, lignes:
 function LignesAttest2Papier(){
   return [
     "Maintenant, la correction.",
+    "Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert.",
     [h("strong", {key:"b"}, "✅ Bravo ! "), "Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse."],
     [h("strong", {key:"f"}, "❌ Tu avais faux. "), "Barre ta réponse et écris la bonne réponse en entier en vert à côté."],
     "Pendant la correction, deux compétences sont évaluées : « " + AUTO[0] + " » et « " + AUTO[1] + " ».",

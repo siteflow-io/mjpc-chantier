@@ -213,7 +213,7 @@ var FENETRES_H = {
   terminer:function(arg, fond){ var m = momH();
     return Fenetre(fond, "🛑 Terminer la séance ?", CLASSE + " — " + EV.titre + " · " + ouH(m),
       h(F, null, h("p", null, "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase."),
-        h("p", null, "Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ».")),
+        h("p", null, "Les tablettes oublient leurs élèves et reviennent à l'entrée des élèves.")),
       [annulerH(), boutonH("ok", "btn btn-rouge", "🛑 Terminer la séance", fait("terminer"), "Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves.")], null); },
   depart:function(arg, fond){
     var noms = SCN.presents(MO()).map(function(p){ return {p:p, n:nomDe(p)}; }).sort(function(a, b){ return a.n.localeCompare(b.n, "fr"); });
@@ -277,7 +277,7 @@ var FENETRES_H = {
        boutonH("ok", "btn btn-rouge", "⛔ Retirer le point d'autonomie", function(){ ps.forEach(function(p){ agir("retirerAutonomie", [p, "heure"]); }); if(ps.length === 1 && FEN_H.depuis === "eleve") ouvrirFen("eleve", ps[0]); else fermerFen(); }, "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait.")], null); }
 };
 
-// (reprise 7, point 1) « 👁 » montre la tablette telle qu'elle est : personne d'entré, « Combien êtes-vous sur cette tablette ? » ;
+// (reprise 7, points 1 et 13) « 👁 » montre la tablette telle qu'elle est : personne d'entré, l'entrée des élèves ;
 // une moitié dont l'élève n'est pas entré, son écran d'entrée ; sinon, l'écran de la phase (TabletteVue)
 function TabletteTelleQuelleH(g, d){ return h(VueTabletteH, {g:g, d:d}); }
 // dessinée comme sur la tablette elle-même (« 📊 Mes évaluations » sur chaque moitié entrée, Page) : l'appareil est « tablette »
@@ -290,7 +290,7 @@ function VueTabletteH(p){
 }
 function tabletteTelleQuelle(g, d){
   var eg = g && entreH(g), ed = d && entreH(d);
-  if(!eg && !ed) return EcrCombien();
+  if(!eg && !ed) return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, EcrLogin({champ:"code"})));
   if((!g || eg) && (!d || ed)) return TabletteVue(g, d);
   var moitie = function(p, cote, autre){ return !p ? Page(null, null, h("div", {className:"etat-attente"}, "moitié libre")) : entreH(p) ? MoitieH(p, cote, autre) : EcrLogin({champ:"code"}); };
   return Tablette(moitie(g, "g", d), moitie(d, "d", g));

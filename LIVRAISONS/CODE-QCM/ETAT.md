@@ -6,4 +6,4 @@
 - QCM-2 · HEURE · 09:20 — l'écran de B tient (`bf2e36b`, qcm2.css) ; en cours : l'heure de demain rejouée sur cette app ; points 1, 5, 8, 9, 11, 12 poussés ; 13 fait au socle
 
 - QCM-3 · SOIR · 09:12 — la 4e passe la garde (ma mesure + l'écran de B de QCM-2), rayé par QCM-4 ; je suis DEFAUTS/DEMANDES toutes les 2 min ; reste à mon nom : rien
-- QCM-4 · BANC · 09:25 — reprise 7, point 13 complété : mes bancs entrent par la nouvelle entrée (et l'ancienne) ; le jeu 11-13 complété (session de professeur, autre heure, binôme absent puis présent, fin de séance) en cours ; une répétition de l'assemblage tourne ; reste à mon nom : l'assemblage complet à 10:45, VERDICT.md à 11:00
+- QCM-4 · BANC · 09:35 — seconde répétition (09:18) lue : contrôles 32/32, gestes rares 47/47, reprises 2-4 et 7-a, 7-d passent ; banc-reprise5 corrigé (10/10) ; en cours : le banc commun et l'heure de demain sur a211424 (à 09:18, deux B manquants au 1er tour de Q2 et Q3, la trouvée de Lina absente : à confirmer) ; reste : l'assemblage complet à 10:30, le court à 10:45, VERDICT.md à 11:00

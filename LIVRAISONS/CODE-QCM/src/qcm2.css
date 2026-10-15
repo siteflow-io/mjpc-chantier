@@ -8,3 +8,9 @@ input.codebox.codebox-h::placeholder{color:transparent}
 .tablette .moitie{overflow-y:auto}
 /* déplacer (72) : « …, va sur la tablette de … » au-dessus de l'entrée de celui qui prend la place */
 .moitie-quittee{min-height:100vh;background:inherit}.moitie-quittee>.eleve-page{min-height:0}.moitie-quittee>.eleve-page:first-child{padding-bottom:0}.moitie-quittee>.eleve-page+.eleve-page{padding-top:.5rem}.moitie-quittee>.eleve-page+.eleve-page .deco{display:none}
+
+/* (reprise 7, point 9) l'écran de B porte la question de Paul, qui redit la réponse cliquée : ses choix figés se serrent
+   et la question se fait un peu plus petite, pour que l'écran tienne dans la demi-tablette (garde du cadrage 464, pxDeTrop) */
+.fige + .eleve-choix.fige-choix { gap:.2rem; }
+.fige + .eleve-choix.fige-choix .eleve-choix-btn { padding:.2rem .5rem; font-size:.78rem; min-height:0; line-height:1.2; margin:0; }
+.eleve-q-zone .decl-b-titre { font-size:.85rem; line-height:1.25; }

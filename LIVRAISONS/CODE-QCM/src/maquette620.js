@@ -335,6 +335,8 @@ function contenuTablette(se, t){
   if(d.ph === "appel" || !d.ph) return EcrCombien();
   // reprise 7, point 6 (Paul, 13/10 15:37) : le dessin de la vraie tablette (TabletteVue, MoitieH de c3-tablettes.js), à chaque phase
   // (la co-évaluation, le bilan), en petit comme en grand ; ses gestes passent par ELV pour l'élève de la moitié
+  // dessinée comme « 👁 » et la tablette elle-même (VueTabletteH, QCM-2 : « 📊 Mes évaluations » en tête de chaque moitié entrée)
+  if(typeof VueTabletteH === "function" && t.d) return h(VueTabletteH, {g:t.g, d:t.d});
   if(typeof TabletteVue === "function" && typeof MoitieH === "function")
     return t.d ? TabletteVue(t.g, t.d, false) : h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, MoitieH(t.g, "g", null)));
   var g = t.g ? MOITIES.ecran(eleveDe(t.g), "g") : null, dd = t.d ? MOITIES.ecran(eleveDe(t.d), "d") : null;
@@ -445,6 +447,8 @@ function ModeTestVC(){
 window.addEventListener("click", function(ev){
   var el = ev.target && ev.target.closest ? ev.target.closest("[data-sim-tab] .moitie button, [data-sim-tab] .moitie .eleve-choix-btn, [data-sim-tab] .moitie .case-b, [data-sim-tab] .moitie .co-lb") : null;
   if(!el || el.disabled || typeof ELV === "undefined") return;
+  // (reprise 7, point 6) les moitiés dessinées par la vraie tablette ont leurs propres gestes (data-h2, onClick) : un clic n'agit qu'une fois
+  if(typeof TabletteVue === "function" && typeof MoitieH === "function") return;
   var cadre = el.closest("[data-sim-tab]"), m = el.closest(".moitie"), x = cadre.getAttribute(m.classList.contains("d") ? "data-d" : "data-g"); if(!x) return;
   var d = testDeroule(), ph = d.ph, qi = d.qi, zone = m;
   function indexChoix(){ var ev2 = testSession() && testSession().ev; if(!ev2 || qi == null) return -1; var t = (el.textContent || "").replace(/\s+/g, " ").trim(); return ev2.questions[qi].choix.map(function(c){ return String(c).replace(/\s+/g, " ").trim(); }).indexOf(t); }

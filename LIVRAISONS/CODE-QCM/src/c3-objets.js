@@ -221,10 +221,13 @@ var FENETRES_H = {
       h(F, null, h("div", {className:"depart-grille"}, noms.map(function(x){ var f = sexeH(x.p) === "F";
         return h("div", {key:x.p, className:"depart-l"}, h("span", null, x.n), boutonH("p", "btn btn-ghost btn-sm", "🚫 Parti", fait("depart", [x.p]), "Marque " + x.n + " comme parti" + (f ? "e" : "") + " en cours de séance : " + (f ? "elle" : "il") + " ne bloque plus la classe, ses questions manquées sortent de son total.")); }))),
       [annulerH()], null, 760); },
-  retour:function(arg, fond){ var partis = momH().partis || {};
-    return Fenetre(fond, "↩️ Retour d'un élève", "Les élèves partis pendant cette séance",
-      Object.keys(partis).map(function(p){ var t = SCN.tabletteDe(p) || {n:"?"}, v = SCN.voisinDe(p);
+  retour:function(arg, fond){ var partis = momH().partis || {}, absents = absentsRevenusH();
+    return Fenetre(fond, "↩️ Retour d'un élève", "Les élèves partis pendant cette séance" + (absents.length ? ", et les absents de l'appel" : ""),
+      h(F, null, Object.keys(partis).map(function(p){ var t = SCN.tabletteDe(p) || {n:"?"}, v = SCN.voisinDe(p);
         return h("div", {key:p, className:"depart-l"}, h("span", null, nomDe(p) + " — parti à " + partis[p] + " · tablette " + t.n + (v ? ", avec " + nomDe(v) : "")), boutonH("r", "btn btn-ghost btn-sm", "↩️ Revenu", fait("retour", [p]))); }),
+        // (reprise 7, point 13) un absent de l'appel arrivé en retard : « ↩️ Revenu » le marque présent (ACT.marquerPresent) ; il prend la moitié libre de son binôme
+        absents.map(function(p){ var v = SCN.voisinDe(p);
+          return h("div", {key:"a" + p, className:"depart-l"}, h("span", null, nomDe(p) + " — absent à l'appel" + (v ? ", binôme de " + nomDe(v) : "")), boutonH("r", "btn btn-ghost btn-sm", "↩️ Revenu", fait("marquerPresent", [p]), "Marque " + prenomH(p) + " présent" + (sexeH(p) === "F" ? "e" : "") + " : la moitié libre de son binôme s'ouvre pour " + (sexeH(p) === "F" ? "elle" : "lui") + ".")); })),
       [annulerH()], null); },
   rouvrirTous:function(qi, fond){ var sans = momH().sansRep || [];
     return Fenetre(fond, "🔓 Rouvrir la question " + (qi + 1) + " pour tous ?", "Seuls ceux qui n'ont pas répondu la retrouvent, une seule fois.",
@@ -295,3 +298,6 @@ function tabletteTelleQuelle(g, d){
   var moitie = function(p, cote, autre){ return !p ? Page(null, null, h("div", {className:"etat-attente"}, "moitié libre")) : entreH(p) ? MoitieH(p, cote, autre) : EcrLogin({champ:"code"}); };
   return Tablette(moitie(g, "g", d), moitie(d, "d", g));
 }
+
+// les absents de l'appel qu'on peut encore marquer présents (ACT.marquerPresent, QCM-1) : en direct, pendant la séance
+function absentsRevenusH(){ if(!enDirect() || typeof ACT.marquerPresent !== "function") return []; var s = (typeof SCN.sess === "function" && SCN.sess()) || {}; if(!s.lancee) return []; return (SCN.absents() || []).slice(); }

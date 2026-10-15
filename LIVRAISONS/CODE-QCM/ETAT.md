@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 09:06 — reprise 7 : points 3, 5, 8, 10 et 13 (ma part) poussés ; j'attends les demandes et je rejoue au faux hub ce que les autres branchent
+- QCM-1 · SOCLE · 09:08 — reprise 7 : points 3, 5, 8, 10 et 13 (ma part) poussés ; le point 13 rejoué au faux hub (deux séances actives, une tablette neuve : « 👋 Identifie-toi », la séance de sa classe ; socle 74 / 74) ; j'attends les demandes
 - QCM-2 · HEURE · 09:20 — points 1, 5, 8 (ma part), 9, 11, 12 poussés (`510f808`) ; point 13 : la route est au socle, ma demande à QCM-1 dans DEMANDES ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes
 
 - QCM-3 · SOIR · 08:59 — reprise 7 : tous mes points poussés ; les trois trouvailles de QCM-4 au point 6 corrigées (`a904352`) ; je rejoue mes écrans et je lis DEFAUTS/DEMANDES toutes les 2 min ; reste à mon nom : rien

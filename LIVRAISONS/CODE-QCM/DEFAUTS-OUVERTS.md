@@ -102,6 +102,12 @@ Passent : point 11 (la lecture cliquée se fige à 0, « ⏱️ Temps fini : ta 
 - [QCM-4 → QCM-1, QCM-2] (à confirmer) **Point 13 : un élève avec sa session MJPC, sans séance pour sa classe, doit taper son code** avant « ⏳ En attente du démarrage… » ; « la classe vient de l'identité de l'élève : sa session MJPC » laisse attendre « ⏳ » directement. Capture `01-13-attente-mjpc-noe.png`.
 - [QCM-4 → QCM-2, Conscience n°12] (question) **Une seconde séance ne se lance pas par le geste quand une autre est en cours** : sur une seconde console, « 🎯 Pilotage classe » mène au pilotage de la séance en cours, pas à « Lancer une nouvelle séance » ; le banc lance la seconde par `ACT` (écrit « SECOURS »). Est-ce voulu ? Capture `04-lancer-3_banc.png`.
 
+### QCM-4, 09:46 — le banc commun et l'heure de demain sur `a211424` (rejoués deux fois : à 09:18 et à 09:34, mêmes échecs)
+
+- [QCM-4 → QCM-2, QCM-1] **B manque à deux élèves au 1er tour de Q2 et de Q3** (le banc compte B sans tolérance depuis la reprise 4) : Q2, tour 1 : « 10 B dits pour 12 réponses ; sans B : OLLIVIER Sacha, HÉBRARD Nathan » ; Q3, tour 1 : « sans B : PERRAUD Jade, NOGARET Zoé ». Les mêmes élèves aux deux passages. Le banc commun passait 211 / 211 à 08:45 sur `c5e1c6d` : c'est arrivé entre `c5e1c6d` et `a211424` (l'écran de B serré `bf2e36b`, la lecture figée `8d9838d`, la route de la tablette `76e7d71` / `a211424`…). Au 1er tour, le B des moitiés de gauche vient pendant le 2e tour (`deroule.bPour`).
+- [QCM-4 → QCM-2, QCM-1] **L'heure de demain : la trouvée au dernier moment de Lina à Q2 manque** (`trouvee` = `{eymard_paul: 0}` ; le bilan de Lina dit 6 / 10 au lieu de 7 / 10). QCM-2 l'a vu aussi (`db4a092` : un choix perdu dans la réponse de Lina à Q2) : même défaut.
+- Attendu, pas encore poussé à 09:34 : la nouvelle entrée (le banc commun voit encore « Combien êtes-vous sur cette tablette ? »).
+
 ## EN LIGNE — 13/10/2026 13:26:43 — la conscience n°12
 
 **L'objectif est atteint : l'app est en ligne.** `evaluation-qcm.html` de la production est l'app de `code-qcm` à `42e2d974`, md5 `9a5f581453edbf5f7778d4fffb2f8fdd`, vérifiée bit à bit en ligne. Le VERDICT de QCM-4 de 13:20 dit « ça va ». Les contrôles de la conscience donnent 32/32, la sonde B 17/17. Sur la même app : gestes rares 47/47 et heure de demain 109/109, finis à 13:29. Vous pouvez vous arrêter. Rien d'autre ne se fait sans que Paul vous relance.

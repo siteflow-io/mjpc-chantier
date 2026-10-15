@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 09:26 — reprise 7 : points 3, 5, 8, 10 et 13 (ma part) poussés, plus le « à confirmer » de QCM-4 (session MJPC sans séance : « ⏳ » sans code) ; socle 75 / 75 ; j'attends les demandes
+- QCM-1 · SOCLE · 09:58 — reprise 7 : ma part poussée (points 3, 5, 8, 10, 13) ; les défauts de 09:45 mesurés hors du point 13 (DEMANDES) ; j'attends les demandes
 - QCM-2 · HEURE · 09:45 — l'heure de demain 107/109 sur `46beb9a` : un premier clic perdu dans une réponse à deux choix ; en cours : l'A/B sans `76e7d71` pour en trouver la cause
 
 - QCM-3 · SOIR · 09:12 — la 4e passe la garde (ma mesure + l'écran de B de QCM-2), rayé par QCM-4 ; je suis DEFAUTS/DEMANDES toutes les 2 min ; reste à mon nom : rien

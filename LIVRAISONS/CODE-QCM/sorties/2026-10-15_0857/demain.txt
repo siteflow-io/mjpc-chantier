@@ -1,0 +1,148 @@
+L'heure de demain (QCM-4 · BANC) — 4 ESSAI, l'évaluation de 4e collée, 11 questions — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-15T07:04:54.283Z
+Durée : 350 s (5 min 50 s) · vérifications : 109 · échecs : 77
+
+
+── D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert (8 s)
+  ok     [QCM-3 · SOIR] « ➕ Nouvelle évaluation » : le JSON se colle
+  ÉCHEC  [QCM-3 · SOIR] l'évaluation collée est dans la base : 11 questions, chapitre 4e-ch1, ses compétences et ses temps — vu : absente
+  SECOURS l'évaluation de 4e posée dans la base par le banc (qcm/evaluations/banc4e), le collage n'ayant rien écrit, pour jouer l'heure
+  ÉCHEC  [QCM-2 · HEURE] Pilotage classe : 4 ESSAI se choisit — vu : 
+  ÉCHEC  [QCM-2 · HEURE] l'évaluation de 4e se choisit — vu : 
+  ÉCHEC  [QCM-2 · HEURE] « 🚀 Lancer la séance » ouvert : l'évaluation est complète (chapitre sans fiche au hub, cadrage 741) — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] « ⏱️ Durée estimée » pour 11 questions — vu : 📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date ti
+  SECOURS la séance de 4e lancée par ACT.lancerSeance + ACT.appelFini (le geste n'a rien lancé), pour éprouver la suite
+  ok     [QCM-1 · SOCLE] la séance de 4e est lancée (sessionActive/4 ESSAI)
+  ok     [QCM-1 · SOCLE] 5 présents : trois tablettes, deux partagées et une pour un élève seul
+
+── D.2 L'entrée et la première attestation (24 s)
+  ok     [QCM-1 · SOCLE] les 5 présents entrés et attestés (attest/1)
+
+── D.3 Question 1 / 11 (52 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q1 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q1 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 1 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q1, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q1, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q1 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 2 / 11 (79 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q2 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q2 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 2 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q2, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q2, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q2 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 3 / 11 (102 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q3 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q3 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 3 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q3, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q3, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q3 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 4 / 11 (125 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q4 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q4 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 4 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q4, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q4, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q4 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 5 / 11 (149 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q5 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q5 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 5 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q5, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q5, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q5 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 6 / 11 (172 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q6 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q6 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 6 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q6, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q6, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q6 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 7 / 11 (195 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q7 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q7 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 7 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q7, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q7, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q7 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 8 / 11 (218 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q8 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q8 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 8 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q8, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q8, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q8 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 9 / 11 (241 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q9 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q9 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 9 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q9, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q9, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q9 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 10 / 11 (264 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q10 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q10 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 10 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q10, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q10, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q10 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+
+── D.3 Question 11 / 11 (287 s)
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q11 » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] Q11 sur la tablette 1 — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ÉCHEC  [QCM-2 · HEURE] la tablette compte « Question 11 / 11 » — vu : ✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons
+  ok     [QCM-2 · HEURE] Q11, tour 1 : B se dit, son temps fini
+  ok     [QCM-2 · HEURE] Q11, tour 2 : B se dit, son temps fini
+  ÉCHEC  [QCM-2 · HEURE] Q11 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul) — vu : {"1":0,"2":0}
+  ÉCHEC  [QCM-1 · SOCLE] les réponses des 11 questions dans la base — vu : 0
+  ok     [QCM-2 · HEURE] l'élève seul répond au 1er tour, puis il attend : ses choix ne se rouvrent pas au 2e tour (cadrage, point 27)
+
+── D.4 L'estimation, la seconde attestation, la correction des 11 (310 s)
+  ÉCHEC  [QCM-2 · HEURE] « 📊 Lancer l'autoévaluation » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] « 📝 Lancer la correction » — vu : 
+  ok     [QCM-1 · SOCLE] tous ont coché la seconde attestation : la correction ne commence pas seule (décision de Paul, 07:22)
+  ÉCHEC  [QCM-2 · HEURE] Paul clique « ▶️ Commencer la correction », ouvert — vu : 
+  ÉCHEC  [QCM-1 · SOCLE] après son clic, la correction commence (c-attest2) — vu : {"ph":"pret","depuis":1792047593804}
+  ÉCHEC  [QCM-1 · SOCLE] ordreCorr : les 11 questions, de la plus ratée à la mieux réussie — vu : 
+  ÉCHEC  [QCM-2 · HEURE] correction de Q1 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q2 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q3 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q4 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q5 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q6 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q7 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q8 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q9 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q10 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] correction de Q11 : toutes les feuilles lues, « 💡 Révéler » s'ouvre — vu : absent
+  ÉCHEC  [QCM-1 · SOCLE] « Trouvée au dernier moment » : Lina à Q2, Paul à Q1, et personne d'autre — vu : {}
+
+── D.5 La co-évaluation, le bilan des 5 (338 s)
+  ÉCHEC  [QCM-2 · HEURE] « 🤝 Ouvrir la co-évaluation, puis leur bilan » — vu : 
+  ÉCHEC  [QCM-2 · HEURE] tous ont répondu (l'élève seul n'a pas de co-évaluation) : « 🏁 Afficher leur bilan aux élèves » s'ouvre — vu : absent
+  ÉCHEC  [QCM-2 · HEURE] le bilan de chacun des 5 dit sa note sur les 11 questions (la note, c'est la feuille ; une seule « Trouvée au dernier moment ») — vu : ARNOUX Maël attendu 10 / 10, vu « 15/10 » ; BESSON Lina attendu 7 / 10, vu « 15/10 » ; CAMUS Yanis attendu 0 / 10, vu « 15/10 » ; DELORME Rose attendu 5 / 10, vu « 15/10 » ; EYMARD Paul attendu 5 / 10, vu « 15/10 »
+  ÉCHEC  [QCM-1 · SOCLE] la séance de 4e terminée (etat = terminee, plus active) — vu : "en_cours"
+
+── D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF (342 s)
+  ÉCHEC  [QCM-3 · SOIR] Résultats : la séance de 4e, sous 4 ESSAI — vu : 📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date titre chapitre classe 🤖 Prompt IA ➕ Nouvelle évaluation Prépare ici tes évaluations : rédaction, rel
+  ÉCHEC  [QCM-3 · SOIR] le tableau de la séance : les 5 présents — vu : 📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date titre chapitre classe 🤖 Prompt IA ➕ Nouvelle évaluation Prépare ici tes évaluations : rédaction, rel
+  ÉCHEC  [QCM-3 · SOIR] Iris, absente, est dite absente — vu : 📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date titre chapitre classe 🤖 Prompt IA ➕ Nouvelle évaluation Prépare ici tes évaluations : rédaction, rel
+  ÉCHEC  [QCM-3 · SOIR] les feuilles lues : « rendre les copies ▸ » — vu : 📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date titre chapitre classe 🤖 Prompt IA ➕ Nouvelle évaluation Prépare ici tes évaluations : rédaction, rel
+  ÉCHEC  [QCM-3 · SOIR] copies rendues (copies.rendues) — vu : 
+  ÉCHEC  [QCM-3 · SOIR] le PDF « notes et compétences » s'ouvre (11 questions) — vu : 
+
+── D.7 Aucune erreur de page, aucune boîte système (350 s)
+  ok     [QCM-1 · SOCLE] page « console » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4e-1 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4e-2 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4e-3 » sans erreur ni boîte système

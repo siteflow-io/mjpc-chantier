@@ -1,0 +1,812 @@
+{
+ "duree": 350,
+ "journal": [
+  {
+   "section": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "t": 8
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "« ➕ Nouvelle évaluation » : le JSON se colle"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": false,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "l'évaluation collée est dans la base : 11 questions, chapitre 4e-ch1, ses compétences et ses temps",
+   "vu": "absente"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "secours": "l'évaluation de 4e posée dans la base par le banc (qcm/evaluations/banc4e), le collage n'ayant rien écrit, pour jouer l'heure"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Pilotage classe : 4 ESSAI se choisit",
+   "vu": ""
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'évaluation de 4e se choisit",
+   "vu": ""
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🚀 Lancer la séance » ouvert : l'évaluation est complète (chapitre sans fiche au hub, cadrage 741)",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ⏱️ Durée estimée » pour 11 questions",
+   "vu": "📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date ti"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "secours": "la séance de 4e lancée par ACT.lancerSeance + ACT.appelFini (le geste n'a rien lancé), pour éprouver la suite"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la séance de 4e est lancée (sessionActive/4 ESSAI)"
+  },
+  {
+   "partie": "D.1 Le JSON de l'évaluation de 4e collé, « Lancer » ouvert",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "5 présents : trois tablettes, deux partagées et une pour un élève seul"
+  },
+  {
+   "section": "D.2 L'entrée et la première attestation",
+   "t": 24
+  },
+  {
+   "partie": "D.2 L'entrée et la première attestation",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les 5 présents entrés et attestés (attest/1)"
+  },
+  {
+   "section": "D.3 Question 1 / 11",
+   "t": 52
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q1 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 1 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 1 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q1 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 2 / 11",
+   "t": 79
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q2 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 2 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 2 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q2 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 3 / 11",
+   "t": 102
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q3 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 3 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 3 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q3 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 4 / 11",
+   "t": 125
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q4 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q4 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 4 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q4, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q4, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 4 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q4 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 5 / 11",
+   "t": 149
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q5 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q5 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 5 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q5, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q5, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 5 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q5 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 6 / 11",
+   "t": 172
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q6 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q6 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 6 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q6, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q6, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 6 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q6 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 7 / 11",
+   "t": 195
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q7 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q7 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 7 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q7, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q7, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 7 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q7 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 8 / 11",
+   "t": 218
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q8 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q8 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 8 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q8, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q8, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 8 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q8 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 9 / 11",
+   "t": 241
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q9 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q9 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 9 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q9, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q9, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 9 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q9 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 10 / 11",
+   "t": 264
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q10 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q10 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 10 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q10, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q10, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 10 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q10 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "section": "D.3 Question 11 / 11",
+   "t": 287
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« ▶️ Lancer Q11 »",
+   "vu": ""
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q11 sur la tablette 1",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "la tablette compte « Question 11 / 11 »",
+   "vu": "✨ 💡 🎲 🔥 4 ESSAI · ARNOUX MAËL 📊 Mes évaluations 4e- Chapitre 1 - Paris à la barre et analyse logique ⏳ En attente du démarrage… Tu as lu et compris les cons"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q11, tour 1 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q11, tour 2 : B se dit, son temps fini"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Q11 : les 5 présents répondent, chacun à son tour (les deux moitiés, et l'élève seul)",
+   "vu": "{\"1\":0,\"2\":0}"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": false,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "les réponses des 11 questions dans la base",
+   "vu": "0"
+  },
+  {
+   "partie": "D.3 Question 11 / 11",
+   "ok": true,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "l'élève seul répond au 1er tour, puis il attend : ses choix ne se rouvrent pas au 2e tour (cadrage, point 27)"
+  },
+  {
+   "section": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "t": 310
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 📊 Lancer l'autoévaluation »",
+   "vu": ""
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 📝 Lancer la correction »",
+   "vu": ""
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "tous ont coché la seconde attestation : la correction ne commence pas seule (décision de Paul, 07:22)"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "Paul clique « ▶️ Commencer la correction », ouvert",
+   "vu": ""
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "après son clic, la correction commence (c-attest2)",
+   "vu": "{\"ph\":\"pret\",\"depuis\":1792047593804}"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "ordreCorr : les 11 questions, de la plus ratée à la mieux réussie",
+   "vu": ""
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q1 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q2 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q3 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q4 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q5 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q6 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q7 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q8 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q9 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q10 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "correction de Q11 : toutes les feuilles lues, « 💡 Révéler » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.4 L'estimation, la seconde attestation, la correction des 11",
+   "ok": false,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "« Trouvée au dernier moment » : Lina à Q2, Paul à Q1, et personne d'autre",
+   "vu": "{}"
+  },
+  {
+   "section": "D.5 La co-évaluation, le bilan des 5",
+   "t": 338
+  },
+  {
+   "partie": "D.5 La co-évaluation, le bilan des 5",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "« 🤝 Ouvrir la co-évaluation, puis leur bilan »",
+   "vu": ""
+  },
+  {
+   "partie": "D.5 La co-évaluation, le bilan des 5",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "tous ont répondu (l'élève seul n'a pas de co-évaluation) : « 🏁 Afficher leur bilan aux élèves » s'ouvre",
+   "vu": "absent"
+  },
+  {
+   "partie": "D.5 La co-évaluation, le bilan des 5",
+   "ok": false,
+   "proprio": "QCM-2 · HEURE",
+   "quoi": "le bilan de chacun des 5 dit sa note sur les 11 questions (la note, c'est la feuille ; une seule « Trouvée au dernier moment »)",
+   "vu": "ARNOUX Maël attendu 10 / 10, vu « 15/10 » ; BESSON Lina attendu 7 / 10, vu « 15/10 » ; CAMUS Yanis attendu 0 / 10, vu « 15/10 » ; DELORME Rose attendu 5 / 10, vu « 15/10 » ; EYMARD Paul attendu 5 / 10, vu « 15/10 »"
+  },
+  {
+   "partie": "D.5 La co-évaluation, le bilan des 5",
+   "ok": false,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "la séance de 4e terminée (etat = terminee, plus active)",
+   "vu": "\"en_cours\""
+  },
+  {
+   "section": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "t": 342
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": false,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Résultats : la séance de 4e, sous 4 ESSAI",
+   "vu": "📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date titre chapitre classe 🤖 Prompt IA ➕ Nouvelle évaluation Prépare ici tes évaluations : rédaction, rel"
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": false,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le tableau de la séance : les 5 présents",
+   "vu": "📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date titre chapitre classe 🤖 Prompt IA ➕ Nouvelle évaluation Prépare ici tes évaluations : rédaction, rel"
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": false,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "Iris, absente, est dite absente",
+   "vu": "📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date titre chapitre classe 🤖 Prompt IA ➕ Nouvelle évaluation Prépare ici tes évaluations : rédaction, rel"
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": false,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "les feuilles lues : « rendre les copies ▸ »",
+   "vu": "📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 📝 Évaluationsi Trier par date titre chapitre classe 🤖 Prompt IA ➕ Nouvelle évaluation Prépare ici tes évaluations : rédaction, rel"
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": false,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "copies rendues (copies.rendues)",
+   "vu": ""
+  },
+  {
+   "partie": "D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF",
+   "ok": false,
+   "proprio": "QCM-3 · SOIR",
+   "quoi": "le PDF « notes et compétences » s'ouvre (11 questions)",
+   "vu": ""
+  },
+  {
+   "section": "D.7 Aucune erreur de page, aucune boîte système",
+   "t": 350
+  },
+  {
+   "partie": "D.7 Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « console » sans erreur ni boîte système"
+  },
+  {
+   "partie": "D.7 Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-4e-1 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "D.7 Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-4e-2 » sans erreur ni boîte système"
+  },
+  {
+   "partie": "D.7 Aucune erreur de page, aucune boîte système",
+   "ok": true,
+   "proprio": "QCM-1 · SOCLE",
+   "quoi": "page « tablette-4e-3 » sans erreur ni boîte système"
+  }
+ ]
+}

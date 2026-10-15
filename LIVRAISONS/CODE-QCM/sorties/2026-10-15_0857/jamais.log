@@ -1,0 +1,54 @@
+── J.4 L'évaluation de 3e : Julien et Michel, Théo et Lou (Adam absent)  (6 s)
+  ok     [QCM-2 · HEURE] l'évaluation se choisit au lancement : Analyse logique - Construire une phrase complexe
+  ok     [QCM-1 · SOCLE] la séance est lancée (sessionActive)
+  ok     [QCM-1 · SOCLE] les places dans la base
+  ok     [QCM-1 · SOCLE] Julien et Michel sur la même tablette
+  ok     [QCM-2 · HEURE] scène « x610-1-b-julien » atteinte par le geste et relevée
+  ok     [QCM-2 · HEURE] scène « x610-2-b-michel » atteinte par le geste et relevée
+── J.5 L'évaluation de 3e : la correction des 11 questions  (230 s)
+  ok     [QCM-2 · HEURE] « 📊 Lancer l'autoévaluation »
+  ok     [QCM-2 · HEURE] « 📝 Lancer la correction »
+  ok     [QCM-2 · HEURE] Paul clique « ▶️ Commencer la correction »
+  ok     [QCM-1 · SOCLE] la correction commence (deroule.ph = lecture)
+── J.6 La co-évaluation : Michel « ❌ » à la question 3 ; l'alerte sur la console et le téléphone ; les gardes « ⛔ »  (275 s)
+  ok     [QCM-2 · HEURE] « 🤝 Ouvrir la co-évaluation, puis leur bilan »
+  ok     [QCM-2 · HEURE] scène « x610-6-coeval-laquelle » atteinte par le geste et relevée
+  ok     [QCM-2 · HEURE] scène « x610-7-coeval-ecrit » atteinte par le geste et relevée
+  ÉCHEC  [QCM-2 · HEURE] x610-8 : l'alerte « ❌ DUVERNAY Michel pense qu'ABRIAL Julien a mal lu sa feuille à la question 3 » sur la console — 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🤝 Co-évalua
+  ÉCHEC  [QCM-2 · HEURE] x610-9 : l'alerte au téléphone — 3 ESSAI 🕙 Fin 7:54 3e- éval 1 Analyse logique - Construire une phrase complexe Phase : co-évaluation de la lecture4 / 4 ont répondu 🏁 Afficher leur bilan aux élèves 📌 À lire ce soir (23) : ABRIAL J
+  ÉCHEC  [QCM-2 · HEURE] scène « x610-autonomie-michel » atteinte par le geste et relevée — 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🤝 Co-évalua
+  ÉCHEC  [QCM-2 · HEURE] scène « x610-autonomie-julien » atteinte par le geste et relevée — 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🤝 Co-évalua
+  ÉCHEC  [QCM-2 · HEURE] scène « x610-autonomie-deux » atteinte par le geste et relevée — 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🤝 Co-évalua
+  ok     [QCM-1 · SOCLE] les gardes annulées n'ont retiré aucun point d'autonomie
+  ok     [QCM-1 · SOCLE] la séance terminée (sessionActive vidée)
+── J.1 L'évaluation d'essai, cinq élèves : Adam seul sur sa tablette  (293 s)
+  ok     [QCM-2 · HEURE] l'évaluation se choisit au lancement : Évaluation d'essai
+  ok     [QCM-1 · SOCLE] la séance est lancée (sessionActive)
+  ok     [QCM-1 · SOCLE] les places dans la base
+  ok     [QCM-2 · HEURE] scène « t-un-eleve » atteinte par le geste et relevée
+  ok     [QCM-1 · SOCLE] Julien, Théo et Adam ont leur tablette ; Adam seul
+  ÉCHEC  [banc] le banc des scènes jamais atteintes s'est arrêté — Error: plafond de 5 minutes atteint at tropLong (/home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/banc-jamais.js:27:60) at question (/home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/banc-jamais.js:8
+── J.7 Les scènes jamais atteintes avant ce banc  (324 s)
+  ok     [QCM-2 · HEURE] bilan : « t-un-eleve » atteinte et relevée
+  ÉCHEC  [QCM-2 · HEURE] bilan : « t-corr-seul » pas atteinte — pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « c-deplacer » pas atteinte — pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « t-deplace » pas atteinte — pas atteinte
+  ok     [QCM-2 · HEURE] bilan : « x610-1-b-julien » atteinte et relevée
+  ok     [QCM-2 · HEURE] bilan : « x610-2-b-michel » atteinte et relevée
+  ok     [QCM-2 · HEURE] bilan : « x610-6-coeval-laquelle » atteinte et relevée
+  ok     [QCM-2 · HEURE] bilan : « x610-7-coeval-ecrit » atteinte et relevée
+  ok     [QCM-2 · HEURE] bilan : « x610-8-console-alerte » atteinte et relevée
+  ok     [QCM-2 · HEURE] bilan : « x610-9-telephone-alerte » atteinte et relevée
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-autonomie-michel » pas atteinte — pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-autonomie-julien » pas atteinte — pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-autonomie-deux » pas atteinte — pas atteinte
+  ok     [QCM-1 · SOCLE] page « console » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « telephone » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-1-856 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-2-112 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-mjpc » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-1-366 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-2-760 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-3-721 » sans erreur ni boîte système
+
+Durée 324 s · 47 vérifications · 12 échecs

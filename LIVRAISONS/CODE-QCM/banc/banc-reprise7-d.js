@@ -436,7 +436,12 @@ async function entrerPaire(p, g, d, codeDe, quoi){
     // Paul marque X présent : ce que propose la console
     let fait = "";
     if(await cliquer(prof, /Retour d'un élève/)){ await pause(500);
-      if(await cliquer(prof, new RegExp(esc(nomDe(X)) + "|^" + esc(pre(X))))){ await pause(400); await cliquer(prof, /^(Confirmer|Oui|↩️ .*revient|Revenir|Valider)/); fait = "« ↩️ Retour d'un élève », " + nomDe(X); }
+      // « ↩️ Revenu » sur la ligne de l'élève (QCM-2, 6d7c287 : la fenêtre liste aussi les absents de l'appel)
+      const rev = await prof.evaluate(nm => { const b = [...document.querySelectorAll("button")].filter(x => /Revenu/.test(x.textContent) && x.getBoundingClientRect().width > 0);
+        const ligne = y => { let a = y; while(a.parentElement && [...a.parentElement.querySelectorAll("button")].filter(z => /Revenu/.test(z.textContent)).length === 1) a = a.parentElement; return a; };
+        const x = b.find(y => ligne(y).textContent.includes(nm)) || null; if(!x) return false; x.setAttribute("data-banc", "revenu"); return true; }, nomDe(X));
+      if(rev){ await prof.click("[data-banc='revenu']").catch(() => {}); await pause(700); fait = "« ↩️ Retour d'un élève », « ↩️ Revenu » pour " + nomDe(X); }
+      else if(await cliquer(prof, new RegExp(esc(nomDe(X)) + "|^" + esc(pre(X))))){ await pause(400); await cliquer(prof, /^(Confirmer|Oui|↩️ .*revient|Revenir|Valider)/); fait = "« ↩️ Retour d'un élève », " + nomDe(X); }
       else { const fr = await capt(prof, "13c-retour-fenetre"); note("« ↩️ Retour d'un élève » ne propose pas " + nomDe(X) + " (" + fr + ")"); await prof.keyboard.press("Escape").catch(() => {}); await cliquer(prof, /^(Fermer|Annuler|✕)/); } }
     const libre = async () => (await cliquer(prof, /^moitié libre$/)) || (await prof.getByText("moitié libre", {exact: true}).first().click({timeout: 1500}).then(() => true).catch(() => false));
     if(!fait && await libre()){ await pause(500);

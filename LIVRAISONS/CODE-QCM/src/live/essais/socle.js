@@ -258,6 +258,15 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     await p2.evaluate(() => ACT.appelFini(["yvon_adam"])); await pause(500);
     const badge2 = await p2.evaluate(() => (document.body.innerText.match(/\d+ séances? en cours/) || [""])[0]);
     verif(badge2 === "2 séances en cours", "au pilotage : « 🔴 2 séances en cours »", badge2);
+    // (15/10, point 13) deux séances actives, une tablette neuve : jamais « Choisis ta classe » ; l'élève de 3 ESSAI seule prend la séance de sa classe
+    const neuveT = await ouvrir("?mode=eleve");
+    await neuveT.evaluate(() => { try { localStorage.removeItem("qcm_tablette"); localStorage.removeItem("mjpc_eleve"); } catch(e){} ELV.oublier(); LIVE.classeSlug = null; LIVE.sid = null; LIVE.changer(); }); await pause(300);
+    const tn0 = (await neuveT.evaluate(() => document.body.innerText)).replace(/\s+/g, " ");
+    const seule = B.eleves.find(e => !["ABRIAL Julien", "BAUDRY Léa", "CARRÉ Tom"].includes(e.nomComplet)) || B.eleves[0], nps = seule.nomComplet.split(" ");
+    const rn = await neuveT.evaluate(a => ELV.entrer("g", a[0], a[1], a[2]), [seule.code, nps.slice(1).join(" "), nps[0]]); await pause(400);
+    const vn = await neuveT.evaluate(() => ({classe: LIVE.classeSlug, sid: SCN.sid()}));
+    verif(!/Choisis ta classe/.test(tn0) && /Identifie-toi/.test(tn0) && rn.ok && vn.classe === "3 ESSAI" && vn.sid === neuve, "deux séances actives, une tablette neuve : « 👋 Identifie-toi », jamais « Choisis ta classe » ; l'élève prend la séance de sa classe", {tn0: tn0.slice(0, 100), rn, vn, eleve: seule.nomComplet});
+    await neuveT.close();
     await p2.evaluate(v => ACT.terminer(v), vieille); await pause(300);
     verif(!base("sessionActive/3 ANCIENNE") && base("sessionActive/3 ESSAI") === neuve, "« 🛑 Terminer » la séance d'hier, depuis la liste : celle de ce matin continue", base("sessionActive"));
     await p2.evaluate(v => ACT.terminer(v), neuve); await pause(200);

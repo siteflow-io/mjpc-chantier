@@ -693,6 +693,9 @@ refaire("c-rouvrir-un", function(){ return RouvrirUn(); });
    puis le QCM précédent : SCN.binomesProposes), modifiables à la souris ; « 🚀 Lancer la séance » écrit la séance avec cette grille,
    puis l'appel s'ouvre (la séance en phase « appel ») ; son « 🚀 Lancer la séance » ferme l'appel, avec les absents et l'heure de fin. */
 var LANCEMENT_H = {cle:null, paires:null, fin:null};
+// (reprise 7, point 5) « 🕙 Fin de l'heure », réglée avant l'appel : par défaut maintenant + 55 min ; elle part avec le lancement (lancee.fin)
+function finParDefautH(){ return SCN.hm(SCN.sec(SCN.heureFr(LIVE.maintenant())) + 55 * 60); }
+function finLancementH(){ var f = String(LANCEMENT_H.fin == null ? "" : LANCEMENT_H.fin).trim(); return /^\d{1,2}:\d{2}$/.test(f) ? f : finParDefautH(); }
 function classeLancement(){ var cl = LIVE.d.classes || {}, l = SCN.classes(); var c = (typeof LANCEMENT !== "undefined" && LANCEMENT.classe && cl[LANCEMENT.classe]) ? LANCEMENT.classe : (LIVE.classeSlug && cl[LIVE.classeSlug] ? LIVE.classeSlug : l[0]); if(typeof LANCEMENT !== "undefined") LANCEMENT.classe = c; return c; }
 // les évaluations prêtes : celles que l'éditeur (QCM-3, manquesV) dit complètes, sinon la règle du socle (SCN.manques)
 function evalsPretes(){ return SCN.evals().filter(function(e){ return !(typeof manquesV === "function" ? manquesV(e) : SCN.manques(e)).length; }); }
@@ -723,7 +726,7 @@ function LancementH(appel, opts){
   var excl = classe ? exclusionsRespectees(classe) : [];
   CLASSE = classe || CLASSE;
   function lancer(){ if(!classe || !ev) return; LIVE.classeSlug = classe;
-    var r = ACT.lancerSeance(classe, ev.id, papier ? {paires:LANCEMENT_H.paires, mode:"papier"} : {paires:LANCEMENT_H.paires}); if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); }
+    var r = ACT.lancerSeance(classe, ev.id, papier ? {paires:LANCEMENT_H.paires, mode:"papier", fin:finLancementH()} : {paires:LANCEMENT_H.paires, fin:finLancementH()}); LANCEMENT_H.fin = null; if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); }
   var carte = h("div", {className:"card"},
     h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Choisis la classe et l'évaluation : la durée se compte tout de suite, et les binômes sont proposés. « 🚀 Lancer la séance » ouvre l'appel.")),
     h("div", {className:"lancer-grid"},
@@ -739,9 +742,13 @@ function LancementH(appel, opts){
           h("div", {className:"mode-seance"},
             h("button", {className:"btn btn-sm " + (papier ? "btn-ghost" : "btn-primary"), "data-va":"c-lancer", "aria-pressed":!papier, title:"La séance sur tablettes, deux élèves par tablette."}, "📱 Sur tablettes"),
             h("button", {className:"btn btn-sm " + (papier ? "btn-primary" : "btn-ghost"), "data-va":"c-papier-lancer", "aria-pressed":papier, title:"La séance sur papier : chacun répond seul sur sa feuille, sans tablette ; l'estimation se fait à la reprise, sur les tablettes."}, "📄 Séance sur papier"))),
+        !appel && ev && h("div", {className:"field"}, h("label", null, "🕙 Fin de l'heure", InfoI("Par défaut maintenant + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure.")),
+          h("input", {value:LANCEMENT_H.fin == null ? finParDefautH() : LANCEMENT_H.fin, title:"L'heure de la fin de l'heure, avant de lancer : la durée de la séance se compare au temps qui reste jusque-là.",
+            onChange:function(e){ LANCEMENT_H.fin = e.target.value; LIVE.changer(); }, style:{width:"80px", padding:".3rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}})),
         !demo && !papier && ev && h("div", {className:"duree-box"}, texteDuree(ev)),
         !ev ? h("button", {className:"btn btn-primary", disabled:true, title:"Aucune évaluation n'est prête à lancer : complète-la dans « 📝 Évaluations » (son chapitre, et pour chaque question ses deux temps et ses compétences)."}, "🚀 Lancer la séance")
-          : demo ? h("button", {className:"btn btn-primary"}, "🎓 Lancer la démo")
+          : demo ? (appel ? h("button", {className:"btn btn-primary", disabled:true, title:"La séance est lancée : l'appel est ouvert."}, "🎓 Lancer la démo")
+            : h("button", Object.assign({className:"btn btn-primary"}, marqueH("LANCER-DEMO:" + classe, function(){ if(!classe) return; LIVE.classeSlug = classe; var r = ACT.lancerSeance(classe, "demo", {fin:finLancementH()}); LANCEMENT_H.fin = null; if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); })), "🎓 Lancer la démo"))
           // pendant l'appel, la séance est lancée : le bouton de la carte, sous la fenêtre de l'appel, est fermé
           : appel ? h("button", {className:"btn btn-primary", disabled:true, title:"La séance est lancée : l'appel est ouvert."}, papier ? "📄 Lancer la séance sur papier" : "🚀 Lancer la séance")
           : papier ? h("button", Object.assign({className:"btn btn-primary", title:"Ouvre l'appel, puis la séance sur papier : les énoncés à imprimer, et « ⏸️ Feuilles ramassées »."}, marqueH("LANCER-PAPIER:" + classe + ":" + ev.id, lancer)), "📄 Lancer la séance sur papier")
@@ -758,19 +765,13 @@ function LancementH(appel, opts){
 }
 // l'appel (« 📋 Check-in : qui est absent aujourd'hui ? ») : ses absents, l'heure de fin ; « 🚀 Lancer la séance » ferme l'appel
 function AppelH(p){
-  var s = useState(SCN.finHeure() || ""), fin = s[0], setFin = s[1];
   var classe = SCN.roster(SCN.classe() || p.classe), absents = SCN.absents().map(SCN.nomDe);
   return h("div", {className:"checkin-overlay", "data-echap":"c-lancer"},
     h("div", {className:"checkin-modal", style:{maxWidth:"640px"}},
       h("div", {className:"checkin-header"}, h("h3", null, "📋 Check-in : qui est absent aujourd'hui ?", InfoI("Clique un nom pour le marquer absent. Son binôme est mis avec un élève resté seul, sans jamais créer de paire exclue.")), h("div", {className:"checkin-sub"}, CLASSE + " — " + classe.length + " élève" + (classe.length > 1 ? "s" : ""))),
       h(ListeAppel, {classe:classe, absents:absents, paires:SCN.paires()}),
-      h("div", {style:{padding:".55rem 1.2rem", borderTop:"1px solid var(--bordure)", fontSize:".86rem", lineHeight:1.5}},
-        h("div", {style:{display:"flex", alignItems:"center", gap:".5rem", marginTop:".35rem"}}, h("span", {style:{whiteSpace:"nowrap"}}, "🕙 Fin de l'heure :"),
-          h("input", {value:fin, onChange:function(e){ setFin(e.target.value); }, title:"L'heure de fin de la séance : lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure.", style:{width:"70px", padding:".2rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}}),
-          InfoIB("🕙 Fin de l'heure", "Lancement + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure."))),
       h("div", {className:"checkin-actions"}, h("button", {className:"btn btn-ghost"}, "Annuler"),
-        h("button", Object.assign({className:"btn btn-primary"}, marqueH("APPEL:fini", function(){ var f = /^\d{1,2}:\d{2}$/.test(String(fin).trim()) ? String(fin).trim() : null;
-          var r = ACT.appelFini((typeof APPEL !== "undefined" && APPEL.absents) || SCN.absents(), f); if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); })), "🚀 Lancer la séance"))));
+        h("button", Object.assign({className:"btn btn-primary"}, marqueH("APPEL:fini", function(){ var r = ACT.appelFini((typeof APPEL !== "undefined" && APPEL.absents) || SCN.absents(), null); if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); })), "🚀 Lancer la séance"))));
 }
 // la séance de la classe finie à une autre heure : « ▶️ Reprendre la séance du … » (la même carte que la maquette)
 function CarteRepriseH(se){

@@ -1,4 +1,29 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 7 du 15/10/2026, 11:00
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 7, 11:40
+
+*Après le contrôle de la conscience de 11:05. App : `evaluation-qcm.staging.html`, md5 **`9194384daab9d02d40d32d3314a90df5`**, `code-qcm` à `263633b` (tout ce qui était poussé à 11:30). Sorties : `sorties/2026-10-15_1130/`.*
+
+## Verdict : **ça va.**
+
+Tout ce que la reprise 7 demande, rejoué par le geste sur cette app, passe ; les défauts du verdict de 11:00 sont corrigés et rejoués.
+
+| Épreuve, sur l'app de 11:30 (md5 `9194384d…`) | Résultat |
+| --- | --- |
+| Contrôles de la conscience, ceux de `main` refaits pour la nouvelle entrée (md5 `b7d6b6ef…`, `EMPREINTES.md5` vérifié) | **32 / 32** |
+| Banc commun (B exigé de chacun ; l'entrée unique « 👋 Identifie-toi » ; la tablette revient à l'entrée) | **211 / 211** |
+| L'heure de demain (l'évaluation de 4e collée, 11 questions), sur la même app (md5 `9194384d…`), à 11:13 | **109 / 109** |
+| Gestes rares (dont « ↩️ Revenu »), sur la même app, à 11:13 | **47 / 47** |
+| Reprises 2, 3 (avec le point 14), 4, 5 | **22 / 22, 15 / 15, 27 / 27, 10 / 10** |
+| Reprise 7-a : points 1, 2, 3, 5 | **40 / 40** |
+| Reprise 7-b : points 6, 7 (mode test) | **83 / 83** |
+| Reprise 7-c : points 8, 9, 10 (le soir, « Lire les copies », la question de l'élève, les lignes à lire ; la fiche avec toutes ses lignes) | **141 / 141** |
+| Reprise 7-d : points 11, 12, 13 (la lecture figée à 0 ; aucun rouge ; deux classes, la session MJPC, la session de professeur, une autre heure, le binôme, l'absent marqué présent par « ↩️ Revenu », la fin de la séance) | **86 / 86** |
+| Reprise 7-e : points 12 et 14 sur papier (lancée sur papier, « ⏸️ Feuilles ramassées », reprise, « Avant la correction ») | **9 / 9** |
+
+Deux questions posées par QCM-4 restent sans réponse écrite, et le contrôle de 11:05 ne les a pas retenues parmi ce qui reste : le nom en rouge à la lecture (celui de l'élève dont la feuille n'est pas lue, plutôt que celui du lecteur) ; une seconde séance qui ne se lance pas par le geste d'une seconde console quand une autre est en cours (le banc la lance par `ACT`). Je ne les compte pas comme défauts.
+
+---
+
+# Verdict de 11:00 (pour mémoire)
 
 *La reprise 7 (`DEFAUTS-OUVERTS.md`, « Reprise 7 du 13/10, complétée le 15/10 », points 1 à 14 ; point 4 pour QCM-4). App : `evaluation-qcm.staging.html`, md5 **`23609a66c416aaf1ae87b04ea02ed35e`**, `code-qcm` à `0aae9af` (tout ce qui était poussé à 10:45). Sorties : `sorties/2026-10-15_1045/` (et l'assemblage complet de 10:30, `sorties/2026-10-15_1030/`).*
 

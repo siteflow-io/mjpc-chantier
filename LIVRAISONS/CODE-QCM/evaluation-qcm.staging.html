@@ -6939,7 +6939,10 @@ function contenuTablette(se, t){
   // reprise 7, point 6 (Paul, 13/10 15:37) : le dessin de la vraie tablette (TabletteVue, MoitieH de c3-tablettes.js), à chaque phase
   // (la co-évaluation, le bilan), en petit comme en grand ; ses gestes passent par ELV pour l'élève de la moitié
   // dessinée comme « 👁 » et la tablette elle-même (VueTabletteH, QCM-2 : « 📊 Mes évaluations » en tête de chaque moitié entrée)
-  if(typeof VueTabletteH === "function" && t.d) return h(VueTabletteH, {g:t.g, d:t.d});
+  // une réponse, un B, une lecture écrits par la classe simulée (et non par un clic dans la moitié) : la moitié se redessine à neuf,
+  // comme « 👁 », au lieu de garder ce qu'elle tenait (QCM-4, 10:57 : le 2e tour de Q1)
+  var cle = JSON.stringify([d.ph, d.qi, d.tour, d.cote, [t.g, t.d].map(function(x){ return x ? [SCN.reponse(x, d.qi), SCN.ditB(x, d.qi), SCN.lecture(x, d.qi), (se.S.coeval || {})[x] || null] : null; })]);
+  if(typeof VueTabletteH === "function" && t.d) return h(VueTabletteH, {key:cle, g:t.g, d:t.d});
   if(typeof TabletteVue === "function" && typeof MoitieH === "function")
     return t.d ? TabletteVue(t.g, t.d, false) : h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, MoitieH(t.g, "g", null)));
   var g = t.g ? MOITIES.ecran(eleveDe(t.g), "g") : null, dd = t.d ? MOITIES.ecran(eleveDe(t.d), "d") : null;
@@ -13810,10 +13813,10 @@ var FENETRES_H = {
   retour:function(arg, fond){ var partis = momH().partis || {}, absents = absentsRevenusH();
     return Fenetre(fond, "↩️ Retour d'un élève", "Les élèves partis pendant cette séance" + (absents.length ? ", et les absents de l'appel" : ""),
       h(F, null, Object.keys(partis).map(function(p){ var t = SCN.tabletteDe(p) || {n:"?"}, v = SCN.voisinDe(p);
-        return h("div", {key:p, className:"depart-l"}, h("span", null, nomDe(p) + " — parti à " + partis[p] + " · tablette " + t.n + (v ? ", avec " + nomDe(v) : "")), boutonH("r", "btn btn-ghost btn-sm", "↩️ Revenu", fait("retour", [p]))); }),
+        return h("div", {key:p, className:"depart-l"}, h("span", null, nomDe(p) + " — parti à " + partis[p] + " · tablette " + t.n + (v ? ", avec " + nomDe(v) : "")), boutonH("r" + p, "btn btn-ghost btn-sm", "↩️ Revenu", fait("retour", [p]))); }),
         // (reprise 7, point 13) un absent de l'appel arrivé en retard : « ↩️ Revenu » le marque présent (ACT.marquerPresent) ; il prend la moitié libre de son binôme
         absents.map(function(p){ var v = SCN.voisinDe(p);
-          return h("div", {key:"a" + p, className:"depart-l"}, h("span", null, nomDe(p) + " — absent à l'appel" + (v ? ", binôme de " + nomDe(v) : "")), boutonH("r", "btn btn-ghost btn-sm", "↩️ Revenu", fait("marquerPresent", [p]), "Marque " + prenomH(p) + " présent" + (sexeH(p) === "F" ? "e" : "") + " : la moitié libre de son binôme s'ouvre pour " + (sexeH(p) === "F" ? "elle" : "lui") + ".")); })),
+          return h("div", {key:"a" + p, className:"depart-l"}, h("span", null, nomDe(p) + " — absent à l'appel" + (v ? ", binôme de " + nomDe(v) : "")), boutonH("ra" + p, "btn btn-ghost btn-sm", "↩️ Revenu", fait("marquerPresent", [p]), "Marque " + prenomH(p) + " présent" + (sexeH(p) === "F" ? "e" : "") + " : la moitié libre de son binôme s'ouvre pour " + (sexeH(p) === "F" ? "elle" : "lui") + ".")); })),
       [annulerH()], null); },
   rouvrirTous:function(qi, fond){ var sans = momH().sansRep || [];
     return Fenetre(fond, "🔓 Rouvrir la question " + (qi + 1) + " pour tous ?", "Seuls ceux qui n'ont pas répondu la retrouvent, une seule fois.",
@@ -15727,14 +15730,15 @@ function FicheV(p){
       var luV = brute.avant ? (brute.avant.choix === "aucun" ? "aucun" : v3Liste(brute.avant.choix).map(Number)) : tr && tr.lu && l && l.par === "prof" ? (tr.lu === "aucun" ? "aucun" : v3Liste(tr.lu).map(Number)) : null;
       var lu = luV || (l ? l.choix : (se.nouvelle ? null : feuillePapierV(se, qi, slug))), t = tabletteV(se, qi, slug), tc = t ? t.choix : null;
       var luJ = lu && lu !== "aucun" && memesChoixV(lu, q.bonnes), tJ = tc && memesChoixV(tc, q.bonnes);
-      var fl = lire.filter(function(x){ return x.q === qi; })[0], dit = (b[qi] || {})[slug];
+      var fls = lire.filter(function(x){ return x.q === qi; }), fl = fls[0], dit = (b[qi] || {})[slug];
       var corr = (r.corrigees || []).indexOf(qi) >= 0;
       return h("div", {key:qi, className:"fiche-q fiche-q-b"},
         h("span", {className:"num"}, "Q" + (qi+1)),
         h("span", null, q.enonce, (q.competences || []).length > 0 && h("div", {className:"fiche-comp"}, "🧩 " + q.competences.join(" · ")),
           tr && tr.decision === "auteur" ? h("div", null, h("span", {className:"flag ok"}, "corrigée en classe : raison donnée à " + pre + " (" + choixTexteV(q, l ? l.choix : tr.choix) + ")"))
             : corr && h("div", null, h("span", {className:"flag ok"}, l && l.par === "prof" ? "Corrigé d'après sa feuille : " + choixTexteV(q, l.choix) : "Corrigé d'après sa feuille")),
-          fl && fl.txt && h("div", null, h("span", {className:"flag" + (fl.lue ? " ok" : "")}, (fl.lue ? "✔ lue · " : "⚠️ ") + fl.txt), (fl.lignes || []).map(function(l, i){ return h("div", {key:i, className:"alire-l"}, l); }))),
+          // toutes les lignes « à lire » de la question, chacune avec ses réponses dessous (une question en a parfois deux)
+          fls.filter(function(x){ return x.txt; }).map(function(x, k){ return h("div", {key:"al" + k}, h("span", {className:"flag" + (x.lue ? " ok" : "")}, (x.lue ? "✔ lue · " : "⚠️ ") + x.txt), (x.lignes || []).map(function(l, i){ return h("div", {key:i, className:"alire-l"}, l); })); })),
         h("span", {className:"val " + (luJ ? "j" : "f")}, lu ? choixTexteV(q, lu) : "—"),
         h("span", {className:"val " + (tJ ? "j" : "f")}, tc ? choixTexteV(q, tc) : "—"),
         h("span", {className:"val"}, dit === "oui" ? "Oui, la même chose" : dit === "non" ? "Non, autre chose" : "rien dit"),

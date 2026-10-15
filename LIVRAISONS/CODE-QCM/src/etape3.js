@@ -32,7 +32,7 @@ function LignesAttest2Papier(){
   return [
     "Maintenant, la correction.",
     [h("strong", {key:"b"}, "✅ Bravo ! "), "Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse."],
-    [h("strong", {key:"f"}, "❌ Tu avais faux. "), "Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté."],
+    [h("strong", {key:"f"}, "❌ Tu avais faux. "), "Barre ta réponse et écris la bonne réponse en entier en vert à côté."],
     "Pendant la correction, deux compétences sont évaluées : « " + AUTO[0] + " » et « " + AUTO[1] + " ».",
     ["Tu les atteins si tu fais ce travail avec soin", ". ", "Sinon, ces deux compétences ne sont pas atteintes."]   // 447, mot pour mot
   ];
@@ -151,7 +151,7 @@ function EcrRevele(e, qi, opts){
       trouvee && h("div", {className:"tablette-ligne"}, "Sur la tablette, tu avais cliqué sur : " + tab.map(function(i){ return q.choix[i]; }).join(", ")),
       h("div", {className:"correction-consigne " + (juste ? "juste" : "faux")}, juste
         ? h(F, null, h("strong", null, "✅ Bravo ! "), "Sur ta feuille, mets simplement un ", h("span", {className:"stylo-vert"}, "V vert"), " dans la marge à côté de ta réponse.")
-        : h(F, null, h("span", {className:"stylo-rouge"}, "Barre ta réponse en rouge"), " et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
+        : h(F, null, "Barre ta réponse et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
       h("div", {className:"correction-explication"}, h("div", {className:"correction-explication-titre"}, "💡 Explication"), h("div", {className:"correction-explication-texte"}, q.explication)))));
 }
 

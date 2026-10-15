@@ -297,7 +297,7 @@ function EcrCorr(e, qi, etape, chrono){   // etape : "vide" | "dit" | "revele"
       trouvee && h("div", {className:"tablette-ligne"}, P("Sur la tablette, tu avais cliqué sur : " + tab.map(function(i){ return q.choix[i]; }).join(", "))),
       h("div", {className:"correction-consigne " + (juste ? "juste" : "faux")}, juste
         ? h(F, null, h("strong", null, "✅ Bravo ! "), "Sur ta feuille, mets simplement un ", h("span", {className:"stylo-vert"}, "V vert"), " dans la marge à côté de ta réponse.")
-        : h(F, null, h("span", {className:"stylo-rouge"}, "Barre ta réponse en rouge"), " et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
+        : h(F, null, "Barre ta réponse et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
       h("div", {className:"correction-explication"}, h("div", {className:"correction-explication-titre"}, "💡 Explication"), h("div", {className:"correction-explication-texte"}, q.explication)));
   }
   return Page(badgeDe(e), "📝 Correction", h(F, null,

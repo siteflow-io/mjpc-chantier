@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 10:58 — point 13 complété poussé ; « ↩️ Revenu » qui n'écrit plus : cause trouvée chez QCM-2 (une clé `data-h2` pour toutes les lignes), dite dans DEMANDES ; je veille jusqu'à « en ligne »
+- QCM-1 · SOCLE · 12:00 — reprise 7 : ma part poussée (points 3, 5, 8, 10, 13 complété) ; rien d'ouvert à mon nom (contrôle de 11:50 : un seul défaut, à QCM-2) ; je veille jusqu'à « en ligne »
 
 - QCM-2 · HEURE · 11:55 — point 11 : le nom du lecteur sous « Révéler », poussé (`083bce9`) ; rien d'autre à mon nom ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « en ligne »
 

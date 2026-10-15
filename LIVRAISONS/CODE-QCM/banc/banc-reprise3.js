@@ -75,6 +75,13 @@ const JUSTE = [["Rome"], ["Madrid", "Berlin"], ["8"]];
     await cliquer(prof, /Lancer l'autoévaluation/); await pause(800);
     for(const [p, c] of M) await cliquer(p, /Maîtrise satisfaisante/, c);
     await cliquer(prof, /Lancer la correction/); await pause(800);
+    // reprise 7, point 14 : « Avant la correction », la ligne du stylo vert, en deuxième position, après « … Montre ta feuille à <voisin>. »
+    { const [p0, c0] = M[0]; await cocherTout(p0, c0); const z = (await zoneTexte(p0, c0)) || "";
+      const L = "Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert.";
+      const lignes = z.split(/\n/).map(x => x.replace(/^[☐☑✓✔⬜🔲\s]+/u, "").trim()).filter(Boolean);
+      const iM = lignes.findIndex(x => /Montre ta feuille à/.test(x));
+      J.v(iM >= 0 && lignes[iM + 1] === L, H2, "« Avant la correction » : « " + L + " », la ligne juste après « Maintenant, la correction. Montre ta feuille à … » (point 14)", iM >= 0 ? lignes.slice(iM, iM + 3).join(" | ") : z.slice(0, 300));
+      await capt(p0, "t-attest2-stylo-vert"); }
     for(const [p, c] of M){ await cocherTout(p, c); await cliquer(p, /^Je commence la correction$/, c); }
     await pause(1500);
     await cliquer(prof, /Commencer la correction/); await pause(1500);

@@ -2,7 +2,8 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 10:12 — reprise 7 : tout est poussé (points 3, 5, 8, 10, 13 ; dernier `403db7a`) ; aucune demande ouverte à mon nom ; je veille jusqu'à « en ligne »
+- QCM-1 · SOCLE · 10:31 — point 13 complété (09:25), ma part poussée : plus de « Combien êtes-vous ? » (combien vient de la grille), « Tu es bien … ? » / « Non » rétabli sans séance, `ACT.marquerPresent` ; à QCM-2 : le geste de la console et ses infobulles ; à QCM-3 : le mode test
+
 - QCM-2 · HEURE · 10:40 — rien d'ouvert à mon nom : le clic perdu est corrigé (`74a0eeb`, heure de demain 109/109) ; reprise 7, mes points 1, 5, 8, 9, 11, 12 poussés, 13 au socle ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « en ligne »
 
 - QCM-3 · SOIR · 10:04 — rien à mon nom ; rejoué sur la dernière app (`403db7a`) : l'heure, le soir (Que dit la feuille, rendre, PDF, rattrapage), sans erreur ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « en ligne »

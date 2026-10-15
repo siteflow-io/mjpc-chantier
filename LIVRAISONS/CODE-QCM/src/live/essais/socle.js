@@ -224,7 +224,7 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(base("sessions/" + sid + "/etat") === "terminee" && !base("sessionActive/3 ESSAI"), "🛑 Terminer : etat « terminee », plus de séance active");
     await pause(800);
     verif(await tab.evaluate(() => !ELV.ici().g), "la séance terminée : la tablette oublie ses élèves", await tab.evaluate(() => ELV.ici()));
-    verif(/Combien êtes-vous sur cette tablette/.test(await tab.evaluate(() => document.body.innerText)), "la séance terminée : la tablette revient à « Combien êtes-vous ? » (t-fin)", (await tab.evaluate(() => document.body.innerText)).slice(0, 200));
+    verif((t => /Identifie-toi|Tu es bien/.test(t) && !/Combien êtes-vous/.test(t))(await tab.evaluate(() => document.body.innerText)), "la séance terminée : la tablette revient à l'entrée des élèves, sans « Combien êtes-vous ? » (point 13)", (await tab.evaluate(() => document.body.innerText)).slice(0, 200));
     // le soir : rendre les copies, Mes évaluations
     await prof.evaluate(s => ACT.rendreCopies(s), sid);
     const me = await prof.evaluate(() => SCN.mesEvaluations("abrial_julien", null, "3 ESSAI"));
@@ -241,12 +241,15 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const sm = await rac.evaluate(() => ELV.sessionMJPC());
     const r3 = await rac.evaluate(() => ELV.entrerSansCode("g", "carre_tom")), r4 = await rac.evaluate(() => ELV.entrerSansCode("d", "baudry_lea"));
     verif(sm && sm.slug === "carre_tom" && sm.prenom === "Tom" && r3.ok && !r4.ok, "le raccourci MJPC : « Tu es bien Tom ? », il entre sans code ; un autre élève, non", {sm, r3, r4});
-    // (15/10, point 13) sa session MJPC, sans séance pour sa classe : pas de code à taper, « ⏳ En attente du démarrage… » à son nom
-    const mjp = await ouvrir("?mode=eleve");
-    await mjp.evaluate(() => { localStorage.setItem("mjpc_eleve", JSON.stringify({display:"CARRÉ Tom", classe:"3 ESSAI", ts:Date.now()})); LIVE.classeSlug = null; LIVE.changer(); }); await pause(600);
-    const vm = await mjp.evaluate(() => ({t: document.body.innerText.replace(/\s+/g, " "), g: ELV.cotes.g, classe: LIVE.classeSlug, sid: SCN.sid()}));
-    verif(!vm.sid && vm.g === "carre_tom" && vm.classe === "3 ESSAI" && /En attente du démarrage/.test(vm.t) && /CARR/i.test(vm.t) && !/Identifie-toi|Choisis ta classe/.test(vm.t), "sa session MJPC, sans séance : pas de code, « ⏳ En attente du démarrage… » à son nom, dans sa classe", {vm: Object.assign({}, vm, {t: vm.t.slice(0, 160)})});
-    await mjp.close();
+    // (15/10, point 13 complété) sa session MJPC, sans séance : « Tu es bien Tom ? » ; « Oui » : « ⏳ En attente du démarrage… » à son nom ; « Non » : « 👋 Identifie-toi »
+    const mjp = await ouvrir("?mode=eleve"), mjn = await ouvrir("?mode=eleve"), txt = async p => (await p.evaluate(() => document.body.innerText)).replace(/\s+/g, " ");
+    for (const p of [mjp, mjn]) await p.evaluate(() => { localStorage.setItem("mjpc_eleve", JSON.stringify({display:"CARRÉ Tom", classe:"3 ESSAI", ts:Date.now()})); LIVE.classeSlug = null; LIVE.changer(); });
+    await pause(500); const q0 = await txt(mjp);
+    await mjp.getByRole("button", {name: "Oui", exact: true}).click(); await mjn.getByRole("button", {name: "Non", exact: true}).click(); await pause(600);
+    const vm = await mjp.evaluate(() => ({g: ELV.cotes.g, classe: LIVE.classeSlug, sid: SCN.sid()})), t1 = await txt(mjp), tn = await txt(mjn);
+    verif(/Tu es bien Tom \?/.test(q0) && !vm.sid && vm.g === "carre_tom" && vm.classe === "3 ESSAI" && /En attente du démarrage/.test(t1) && /CARR/i.test(t1) && /Identifie-toi/.test(tn) && !/Combien êtes-vous|Choisis ta classe/.test(q0 + t1 + tn),
+      "sa session MJPC, sans séance : « Tu es bien Tom ? » ; « Oui » : « ⏳ En attente du démarrage… » à son nom ; « Non » : « 👋 Identifie-toi »", {q0: q0.slice(0, 80), vm, t1: t1.slice(0, 120), tn: tn.slice(0, 80)});
+    await mjp.close(); await mjn.close();
     // chez lui, sans séance : l'élève entre par son code sur une demi-tablette, puis voit sa moitié avec « 📊 Mes évaluations »
     const maison = await ouvrir("?mode=eleve");
     // (15/10, point 13) la tablette ne demande jamais la classe : « 👋 Identifie-toi », l'élève est cherché dans toutes les classes
@@ -273,6 +276,20 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const vn = await neuveT.evaluate(() => ({classe: LIVE.classeSlug, sid: SCN.sid()}));
     verif(!/Choisis ta classe/.test(tn0) && /Identifie-toi/.test(tn0) && rn.ok && vn.classe === "3 ESSAI" && vn.sid === neuve, "deux séances actives, une tablette neuve : « 👋 Identifie-toi », jamais « Choisis ta classe » ; l'élève prend la séance de sa classe", {tn0: tn0.slice(0, 100), rn, vn, eleve: seule.nomComplet});
     await neuveT.close();
+    // (point 13 complété) le binôme absent à l'appel : l'élève est seul (une moitié) ; Paul le marque présent (ACT.marquerPresent) : l'autre moitié s'ouvre pour lui
+    // l'état que l'appel laisse quand un binôme manque : sur une tablette, la moitié de droite absente, celle de gauche seule (appelFini)
+    const seulP = await p2.evaluate(() => { const p = SCN.places().filter(t => t.g && t.d)[0]; if(!p) return null; const id = SCN.sid(), m = {};
+      m["/sessions/" + id + "/places/" + p.n] = {g: p.g, d: null, seul: true}; m["/sessions/" + id + "/absents"] = SCN.absents().concat([p.d]);
+      return ecrireQCM(m, "essai : un binôme absent").then(() => ({n: p.n, x: p.g, absent: p.d, nom: SCN.nomDe(p.g)})); }); await pause(300);
+    const tS = await ouvrir("?mode=eleve"); await tS.evaluate(() => ELV.choisirClasse("3 ESSAI")); await pause(400);   // le faux hub a les mêmes élèves en 3 ANCIENNE
+    const ns = seulP ? seulP.nom.split(" ") : [];
+    const rs = seulP ? await tS.evaluate(a => ELV.entrer("g", a[0], a[1], a[2]), [code(seulP.nom), ns.slice(1).join(" "), ns[0]]) : null; await pause(400);
+    const av = await tS.evaluate(() => ELV.ici().combien);
+    const rp = await p2.evaluate(x => ACT.marquerPresent(x), seulP && seulP.absent); await pause(600);
+    const ap = await tS.evaluate(() => ({combien: ELV.ici().combien, voisin: SCN.voisinDe(ELV.cotes.g || ELV.cotes.d), absents: SCN.absents(), t: document.body.innerText.replace(/\s+/g, " ")}));
+    verif(seulP && rs && rs.ok && av === 1 && rp.ok && ap.combien === 2 && ap.voisin === seulP.absent && ap.absents.indexOf(seulP.absent) < 0 && !/Combien êtes-vous/.test(ap.t),
+      "le binôme absent à l'appel : l'élève est seul ; Paul le marque présent (ACT.marquerPresent) : il quitte les absents, l'autre moitié s'ouvre pour lui", {seulP, rs, av, rp, ap: Object.assign({}, ap, {t: ap.t.slice(0, 200)})});
+    await tS.close();
     await p2.evaluate(v => ACT.terminer(v), vieille); await pause(300);
     verif(!base("sessionActive/3 ANCIENNE") && base("sessionActive/3 ESSAI") === neuve, "« 🛑 Terminer » la séance d'hier, depuis la liste : celle de ce matin continue", base("sessionActive"));
     await p2.evaluate(v => ACT.terminer(v), neuve); await pause(200);

@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 10:55 — rien d'ouvert à mon nom (dernier code `448e9d1` ; banc commun 210/211, l'échec restant est l'attente de « Combien êtes-vous ? » au banc, retiré par le point 13 ; heure de demain 109/109) ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « en ligne »
 
 - QCM-3 · SOIR · 10:35 — point 13, ma part (mode test) poussé (`4be878d`) ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « en ligne » ; reste à mon nom : rien
-- QCM-4 · BANC · 10:20 — banc-reprise7-d complété (point 13 complété : 62/79, 15 attendent la nouvelle entrée, 2 écarts à QCM-1 et QCM-2) ; ouverts à QCM-2 : B manquant au 1er tour de Q2 et Q3, le clic perdu (la trouvée de Lina) ; reste à mon nom : l'assemblage complet à 10:30, le court à 10:45, VERDICT.md à 11:00
+- QCM-4 · BANC · 10:57 — VERDICT de 11:00 poussé : ça ne va pas (« ↩️ Revenu » à QCM-2 et QCM-1 ; la fiche et le mode test à QCM-3 ; K2 à la conscience ; banc-reprise5 à rejouer) ; maintenant : je rejoue banc-reprise5 seul, puis mes bancs sur chaque correction, jusqu'à « en ligne »

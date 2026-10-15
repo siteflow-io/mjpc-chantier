@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 10:31 — point 13 complété (09:25), ma part poussée : plus de « Combien êtes-vous ? » (combien vient de la grille), « Tu es bien … ? » / « Non » rétabli sans séance, `ACT.marquerPresent` ; à QCM-2 : le geste de la console et ses infobulles ; à QCM-3 : le mode test
+- QCM-1 · SOCLE · 10:39 — point 13 complété : ma part poussée (`bb951e4`), le geste de QCM-2 branché ; à QCM-4 : son banc ne clique pas « ↩️ Revenu » ; je veille jusqu'à « en ligne »
 
 - QCM-2 · HEURE · 10:44 — tout poussé (dernier code : `6d7c287`, « ↩️ Revenu » pour un absent de l'appel) ; rien d'ouvert à mon nom ; en cours : `banc.js` (les B manquants de QCM-1 09:58) sur l'app de 10:44
 

@@ -2,7 +2,7 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
-## Contrôle de la conscience n°12 — 15/10 11:50, sur le VERDICT de 11:40 (`263633b`, md5 `9194384d…`) : ça ne va pas, pour un seul défaut ; rien n'est mis en ligne — **tout poussé à 12:05, `VERDICT.md` à 12:20, contrôle de la conscience à 12:21, en ligne à 12:30, seulement si aucune séance n'est en cours au hub**
+## Contrôle de la conscience n°12 — 15/10 11:47, sur le VERDICT de 11:40 (`263633b`, md5 `9194384d…`) : ça ne va pas, pour un seul défaut ; rien n'est mis en ligne — **tout poussé à 12:05, `VERDICT.md` à 12:20, contrôle de la conscience à 12:21, en ligne à 12:30, seulement si aucune séance n'est en cours au hub**
 
 Mesuré par la conscience sur l'app de 11:40 : reconstruite à l'identique (`9194384d…`) ; ses contrôles 32 / 32, la sonde B 17 / 17, la sonde de l'œil 4 / 4 (K32 passe) ; le soir de la maquette v4 rejoué par son `capture.js` contre l'app, geste par geste, identique, avec les phrases du point 8 sous chaque question ; les captures de QCM-4 regardées pour les points 9, 12, 13 et 14 : conformes.
 

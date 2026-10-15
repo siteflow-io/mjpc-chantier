@@ -320,8 +320,10 @@ async function entrerPaire(p, g, d, codeDe, quoi){
             for(const e of els) out.push({nm, t: e.textContent.replace(/\s+/g, " ").slice(0, 80), couleur: getComputedStyle(e).color, rouge: rouge(e), cls: cls(e)}); }
           return out; }, [nomDe(lecteurX), pre(lecteurX), nomDe(slX), pre(slX)]).catch(() => []);
         const rL = coul.filter(x => (x.nm === nomDe(lecteurX) || x.nm === pre(lecteurX)) && (x.rouge || x.cls)), rF = coul.filter(x => (x.nm === nomDe(slX) || x.nm === pre(slX)) && (x.rouge || x.cls));
-        J.v(rL.length > 0 || rF.length > 0, H2, "à 0, sur la console, la lecture manquante reste en rouge : le nom de " + pre(lecteurX) + " (le lecteur qui n'a rien cliqué) ou celui de " + pre(slX) + " (sa feuille pas lue) (style calculé, ou une classe d'alerte)", "(" + fC + ") " + JSON.stringify(coul.slice(0, 4)));
-        if(!rL.length && rF.length) note("à trancher (QCM-2) : en rouge sur la console, c'est " + nomDe(slX) + " (la feuille pas lue, « " + rF[0].cls + " »), pas " + nomDe(lecteurX) + ", le lecteur qui n'a rien cliqué (" + fC + ")");
+        // contrôle de la conscience de 11:50 : le nom en rouge est celui du lecteur qui n'a rien cliqué, et « Il en manque 1 : <lecteur> »
+        const tC = await texte(prof), manque = (tC.match(/Il en manque\s*\d+\s*:\s*[^\n«»]*/) || [""])[0];
+        J.v(rL.length > 0, H2, "à 0, sur la console, le nom de " + pre(lecteurX) + " (le lecteur qui n'a rien cliqué) est en rouge (style calculé, ou une classe d'alerte)", "(" + fC + ") " + JSON.stringify(coul.slice(0, 4)));
+        J.v(new RegExp("Il en manque\\s*1\\s*:\\s*" + esc(nomDe(lecteurX))).test(tC), H2, "sous « 💡 Révéler » : « Il en manque 1 : " + nomDe(lecteurX) + " » (le lecteur, pas " + nomDe(slX) + ", dont la feuille n'est pas lue)", manque || tC.slice(0, 200));
         // puis il clique : sa lecture est dans la base
         for(const x of choixDe(qi, slX)) await cliquer(pX, new RegExp("^" + esc(x) + "$"), cX, {apres: 300});
         await pause(800);

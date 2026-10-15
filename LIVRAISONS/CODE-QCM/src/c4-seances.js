@@ -295,14 +295,19 @@ function tabletteV(se, qi, slug){ var r = ((se.S.reponses || {})[qi] || {})[slug
 function feuillePapierV(se, qi, slug){ var p = (se.S.papier || {})[slug]; if(!p) return null;
   if(!p.choix){ var g = p[qi]; if(g == null) return null; var q = se.ev.questions[qi]; return g === "j" || g === true || g === 1 ? q.bonnes.slice() : g === "a" ? "aucun" : [q.choix.map(function(c, i){ return i; }).filter(function(i){ return q.bonnes.indexOf(i) < 0; })[0]]; }
   var c = p.choix[qi] != null ? p.choix[qi] : (Array.isArray(p.choix) ? null : p.choix[String(qi)]); return c == null ? null : (c === "aucun" ? "aucun" : v3Liste(c).map(Number)); }
+/* reprise 7, point 8 (Paul, 13/10 16:19, 16:42) : une ligne « à lire » dit ce que l'élève a fait ; la phrase, puis ses réponses dessous,
+   en entier, chacune sur sa ligne (SCN.aLireSeance : txt, lignes) */
+function ligneALireH(x, avant, apres){ return h("div", {className:"alire-x", "data-alire":x.id || ""}, h("div", {className:"alire-p"}, (avant || "") + x.txt + (apres || "")),
+  (x.lignes || []).map(function(l, i){ return h("div", {key:i, className:"alire-l"}, l); })); }
+function texteALireV(x){ return x.txt + ((x.lignes || []).length ? " — " + x.lignes.join(" ; ") : ""); }
 function aLireV(se){
   // les lignes « à lire » se calculent de ce que chacun a dit et de ce que le voisin a lu (SCN.aLireSeance) ; aLire/<id> n'en garde que l'état
   if(SCN.LIVE && typeof SCN.aLireSeance === "function"){ try { var L = SCN.aLireSeance(se.id);
     // une feuille que Paul a lue lui-même (« Que dit la feuille ? », par:"prof") est tranchée : les lignes d'avant sa lecture restent
     // (lues, « Corrigé d'après sa feuille ») ; celles que sa lecture ferait naître (« … ; <voisin> y a lu <ce que Paul a lu> ») n'existent pas
     if(Array.isArray(L)){ var St = se.S.aLire || {}, Lc = se.S.lectures || {}; L = L.filter(function(x){ var p = x.p || x.eleveSlug, q = x.q != null ? x.q : x.qi, l = (Lc[q] || {})[p]; return !(l && l.par === "prof" && !St[x.id]); }); }
-    if(Array.isArray(L) && (L.length || se.nouvelle)) return L.map(function(x){ return {id:x.id, p:x.p || x.eleveSlug, q:+(x.q != null ? x.q : x.qi), sorte:x.sorte, txt:x.txt || "", lue:!!x.lue, corrigee:!!(x.corrigee || x.corrige), nom:x.nom || nomEleveV(se, x.p || x.eleveSlug)}; }); } catch(e){} }
-  var A = se.S.aLire || {}; return Object.keys(A).map(function(id){ var x = A[id] || {}; return {id:id, p:x.eleveSlug, q:+x.qi, sorte:x.sorte || "b", txt:x.txt || "", lue:!!x.lue, corrigee:!!x.corrige, nom:nomEleveV(se, x.eleveSlug)}; })
+    if(Array.isArray(L) && (L.length || se.nouvelle)) return L.map(function(x){ return {id:x.id, p:x.p || x.eleveSlug, q:+(x.q != null ? x.q : x.qi), sorte:x.sorte, txt:x.txt || "", lignes:v3Liste(x.lignes).map(String), lue:!!x.lue, corrigee:!!(x.corrigee || x.corrige), nom:x.nom || nomEleveV(se, x.p || x.eleveSlug), brut:x}; }); } catch(e){} }
+  var A = se.S.aLire || {}; return Object.keys(A).map(function(id){ var x = A[id] || {}; return {id:id, p:x.eleveSlug, q:+x.qi, sorte:x.sorte || "b", txt:x.txt || "", lignes:v3Liste(x.lignes).map(String), lue:!!x.lue, corrigee:!!x.corrige, nom:nomEleveV(se, x.eleveSlug), brut:x}; })
   .filter(function(x){ return x.p != null && !isNaN(x.q); }).sort(function(a, b){ return a.q - b.q || a.nom.localeCompare(b.nom, "fr"); }); }
 function resultatLocalV(se, slug){
   var ev = se.ev, S = se.S, mode = ev.mode, revelees = v3Liste(S.revelees).map(Number), partiAt = (S.partis || {})[slug];
@@ -485,7 +490,7 @@ function csvV(se, lignes, comps){
   var lire = aLireV(se);
   lignes.forEach(function(l){ var r = l.r, mt = maitriseV(r.sur20);
     t.push([l.nom].concat(r.st.map(function(x){ return (MARQUE_RES[x] || ["", ""])[1]; }), [r.complet ? r.n + "/" + r.total : "—", r.complet ? fr1(r.sur20) : "—", mt.lib],
-      comps.map(function(c){ return niveauComp(r, c).lib; }), [autonomieV(se, l.p).retire ? "retiré" : "Très bonne maîtrise", lire.filter(function(x){ return x.p === l.p; }).map(function(x){ return "Q" + (x.q + 1) + " : " + x.txt; }).join(" · ")])); });
+      comps.map(function(c){ return niveauComp(r, c).lib; }), [autonomieV(se, l.p).retire ? "retiré" : "Très bonne maîtrise", lire.filter(function(x){ return x.p === l.p; }).map(function(x){ return "Q" + (x.q + 1) + " : " + texteALireV(x); }).join(" · ")])); });
   var csv = "﻿" + t.map(function(r){ return r.map(function(c){ c = String(c == null ? "" : c); return /[;"\n]/.test(c) ? '"' + c.replace(/"/g, '""') + '"' : c; }).join(";"); }).join("\n");
   var nom = "resultats-" + String(se.classe).replace(/\s+/g, "-") + "-" + se.date.replace(/\//g, "-") + ".csv";
   try { var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8"})); a.download = nom; document.body.appendChild(a); a.click(); a.remove(); } catch(e){}
@@ -530,7 +535,7 @@ function ResultatsC(){
           comps.map(function(c){ return h("td", {key:c, className:"comp-cell"}, PillCompEv(l.r, c, ev)); }),
           !comps.length && h("td", {key:"sans", className:"comp-cell"}, "—"),
           h("td", {className:"comp-cell"}, au.retire ? h("span", {className:"maitrise-pill mt-rouge"}, "⛔ retiré " + au.quand) : h("span", {className:"maitrise-pill mt-vert"}, maitriseV(20).em + " " + maitriseV(20).lib)),
-          h("td", {className:"alire-cell" + (fl.length ? "" : " vide")}, fl.map(function(x){ return "Q" + (x.q+1) + " : " + x.txt + (x.corrigee ? " · Corrigé d'après sa feuille" : "") + (x.lue ? " · ✔ lue" : ""); }).join(" · ")));
+          h("td", {className:"alire-cell" + (fl.length ? "" : " vide")}, fl.map(function(x, i){ return h("div", {key:i}, ligneALireH(x, "Q" + (x.q+1) + " : ", (x.corrigee ? " · Corrigé d'après sa feuille" : "") + (x.lue ? " · ✔ lue" : ""))); })));
       })))),
     h("div", {className:"legende-res"}, "✓ juste d'après la feuille · ✓ orange : Trouvée au dernier moment · ✗ faux · ∅ « aucun de ces choix » · ⛔ : point d'autonomie retiré · ⚠️ Annulée ou ❌ Écartée : la question garde sa marque en tête de colonne"));
 }
@@ -582,7 +587,7 @@ function FicheV(p){
         h("span", null, q.enonce, (q.competences || []).length > 0 && h("div", {className:"fiche-comp"}, "🧩 " + q.competences.join(" · ")),
           tr && tr.decision === "auteur" ? h("div", null, h("span", {className:"flag ok"}, "corrigée en classe : raison donnée à " + pre + " (" + choixTexteV(q, l ? l.choix : tr.choix) + ")"))
             : corr && h("div", null, h("span", {className:"flag ok"}, l && l.par === "prof" ? "Corrigé d'après sa feuille : " + choixTexteV(q, l.choix) : "Corrigé d'après sa feuille")),
-          fl && fl.txt && h("div", null, h("span", {className:"flag" + (fl.lue ? " ok" : "")}, (fl.lue ? "✔ lue · " : "⚠️ ") + fl.txt))),
+          fl && fl.txt && h("div", null, h("span", {className:"flag" + (fl.lue ? " ok" : "")}, (fl.lue ? "✔ lue · " : "⚠️ ") + fl.txt), (fl.lignes || []).map(function(l, i){ return h("div", {key:i, className:"alire-l"}, l); }))),
         h("span", {className:"val " + (luJ ? "j" : "f")}, lu ? choixTexteV(q, lu) : "—"),
         h("span", {className:"val " + (tJ ? "j" : "f")}, tc ? choixTexteV(q, tc) : "—"),
         h("span", {className:"val"}, dit === "oui" ? "Oui, la même chose" : dit === "non" ? "Non, autre chose" : "rien dit"),

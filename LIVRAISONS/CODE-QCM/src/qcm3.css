@@ -11,3 +11,5 @@
 /* « 📊 Mes évaluations » : le nom de l'élève sous le titre, une fois (e-mes-evals) ; le bilan ouvert n'a que « ← Mes évaluations » (e-bilan-lou) */
 .eleve-card > p + .mes-evals-liste > .mes-evals-nom{display:none}
 .eleve-card:has(.mes-evals-bilan) > .eleve-tete > .mes-evals,.eleve-card:has(.mes-evals-bilan) > h1{display:none}
+/* reprise 7, point 8 : la phrase « à lire », puis ses réponses dessous, chacune sur sa ligne */
+.alire-x{margin:.15rem 0}.alire-x .alire-p{font-weight:600}.alire-l{padding-left:1.1em;font-size:.92em;opacity:.9;white-space:normal;overflow-wrap:anywhere}

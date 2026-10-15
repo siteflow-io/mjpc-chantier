@@ -22618,3 +22618,29 @@ Ma proposition, une seule règle pour toutes les apps : l'élève est identifié
 8. La numérotation, telle que je la comprends : un point garde son numéro jusqu'au bout, et quand j'y reviens, je reprends ce numéro. Je ne donne un numéro neuf qu'à un sujet neuf, comme celui-ci. Je ne regrouperai plus d'anciens points sous un nouveau numéro, comme je l'avais fait en 1166. Les numéros 1 à 7 restent donc ceux de ce message, et le prochain sujet neuf sera le 9.
 
 15/10/2026 08:59 MEMO
+
+---
+
+## TOUR 727 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (15/10, 09:19) 4. Faux!! en arrivant par mjpc, moi en tant que prof (accès code perso, puis upside down avec ctrl espace) je tombais aussi sur l'écran choisis ta classe quand j'ouvrais l'app dans l'onglet mjpc du niveau. C'est toujours le cas d'ailleurs. ok pour ta proposition, en vérifiant bien qu'aucun télescopage n'est possible. 5. ok ça marche. C'est ce que j'avais dit depuis le début. En gros l'élève a interdiction d'avoir un stylo autre que vert pendant la correction. 8. oui.
+
+---
+
+## TOUR 727 — Claude (conscience n°12)
+
+Mesuré : dans `index.html`, « Voir comme un élève » (`basculerVue`, `_lireVueEnvers`, l. 5325-5346) garde l'identité de professeur (`mjpc_eleve` avec `is_prof:true`) ; la 7.7.2 (`AppEleve`, le shunt) et la 8.0.0 (`ELV.sessionMJPC`) écartent une session de professeur, d'où « Choisis ta classe ». Mes contrôles (`controles-app.js` l. 88-110), la sonde B (l. 88-110) et la sonde de l'œil (l. 89-95) passent par « Combien êtes-vous » : à refaire par moi avant le contrôle. Écrit : la reprise 7, point 13 complété et point 14, recalée (`46e83245` sur `code-qcm`) ; le contrôle programmé déplacé à 11:01, avec la réfection de mes contrôles (`trig_01HC8DdAejaT9zNK55JEuUEY`). Les exécutants : points 1 à 12 et une première version du 13 poussés (`banc-reprise7-d.js` 44/44 à 09:18).
+
+Réponse, mot pour mot :
+
+4. Tu as raison, ma mesure était fausse : je n'avais regardé que la session d'un élève. Avec ta session de professeur, en « Voir comme un élève », l'app ne trouve pas d'élève dans la session MJPC, et la 7.7.2 comme la 8.0.0 montrent alors « Choisis ta classe ». Ta proposition est validée, et j'ai cherché les télescopages. Ta session de professeur : la tablette demandera le code, comme sans MJPC, et jamais la liste de tes classes ; tu entres donc avec le code d'un élève de ta classe de test. Une tablette du collège qui garde la session d'un élève de l'heure d'avant : « Tu es bien Julien ? », puis « Non », mène au code. Un binôme absent : l'élève est seul, sans question ; s'il arrive après l'appel et que tu le marques présent, l'autre moitié s'ouvre pour lui. Un élève assis à une autre tablette que la sienne : l'app lui dit déjà « va sur la tablette 12 ». À la fin de la séance, la tablette revient à l'entrée, et les infobulles de ta console le diront. Le mode test et « 🎓 Mode élève » suivent la même entrée. Aucune phrase nouvelle pour l'élève : seulement les écrans qui existent. Mes propres contrôles passent par « Combien êtes-vous » : je les refais moi-même avant de contrôler (voir 9). Tout est dans la reprise 7, au point 13 complété.
+
+5. Noté : la ligne est retenue, en deuxième position d'« Avant la correction », et dans la variante papier. C'est dans la reprise 7, en point 14.
+
+8. Noté.
+
+9. Le calendrier recule de 30 minutes, à cause de 4 : l'entrée des élèves change, et je dois refaire mes contrôles qui y passent. Tout sera poussé à 10:45, QCM-4 donnera son verdict à 11:00, je contrôle à 11:01 (programmé), et la mise en ligne est à 11:15, toujours seulement si aucune séance n'est en cours. Les exécutants ont déjà poussé les points 1 à 12 et une première version du 13.
+
+15/10/2026 09:24 MEMO

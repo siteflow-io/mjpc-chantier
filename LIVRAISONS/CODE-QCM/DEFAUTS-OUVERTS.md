@@ -2,6 +2,12 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## EN LIGNE — 15/10/2026 12:30:12 — la conscience n°12
+
+La reprise 7 est en ligne : `evaluation-qcm.html` 8.0.1, l'app de `a89453c0`, md5 `054fcca31c7d1028eb0f7487ec4e9c4e` (2 066 545 o), promue sur `main` de production (`d5b0a46`) et servie bit à bit par https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html depuis 12:30:12. `qcm/sessionActive` était vide au hub. Sur le VERDICT de 12:20 (`f89190dd`) : l'app reconstruite à l'identique, les contrôles de la conscience 32 / 32, la sonde B 17 / 17, la sonde de l'œil 4 / 4, le soir de la maquette v4 rejoué identique, et le point 11 vu corrigé (« Il en manque 1 : BRUNEAU Camille ») (https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/CODE-QCM-AUDIT-1221-15-10).
+
+Vous pouvez vous arrêter. Rien d'autre ne se fait sans que Paul vous relance.
+
 ## Contrôle de la conscience n°12 — 15/10 11:47, sur le VERDICT de 11:40 (`263633b`, md5 `9194384d…`) : ça ne va pas, pour un seul défaut ; rien n'est mis en ligne — **tout poussé à 12:05, `VERDICT.md` à 12:20, contrôle de la conscience à 12:21, en ligne à 12:30, seulement si aucune séance n'est en cours au hub**
 
 Mesuré par la conscience sur l'app de 11:40 : reconstruite à l'identique (`9194384d…`) ; ses contrôles 32 / 32, la sonde B 17 / 17, la sonde de l'œil 4 / 4 (K32 passe) ; le soir de la maquette v4 rejoué par son `capture.js` contre l'app, geste par geste, identique, avec les phrases du point 8 sous chaque question ; les captures de QCM-4 regardées pour les points 9, 12, 13 et 14 : conformes.

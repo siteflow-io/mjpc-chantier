@@ -68,8 +68,9 @@ const den = (t, re) => { const m = t.match(re); return m ? m[1] + " / " + m[2] :
     J.v(c1 === attendu1, H12, "console, 1er tour : « " + attendu1 + " ONT RÉPONDU » (c-q1-tour1 : sur les " + nTab + " moitiés qui ont la main)", c1);
     J.v(p1 === attendu1, H2, "téléphone, 1er tour : « TABLETTES — " + attendu1 + " ont répondu » (p-reponse)", p1);
     J.v(b1 === attendu1, H2, "tableau, 1er tour : « ✋ " + attendu1 + " ont répondu » (b-reponse)", b1);
-    await cliquer(prof, /Clore la question/); await pause(1200);
-    for(let k = 0; k < 20 && etat().ph !== "close"; k++){ await pause(500); if(k === 10) await cliquer(prof, /Clore la question/); }
+    // jusqu'à la question close : « ⏭️ Tour suivant », puis « 🔒 Clore la question » quand la console l'offre (pas au 1er tour)
+    for(let k = 0; k < 120 && etat().ph !== "close"; k++){ if(!(await cliquer(prof, /Clore la question/))) await cliquer(prof, /Tour suivant/); await pause(500); }
+    J.v(etat().ph === "close", "QCM-4 · BANC", "la question 1 est close avant le relevé", JSON.stringify(etat()));
     const p2 = den(await texte(tel), /TABLETTES\s*—\s*(\d+)\s*\/\s*(\d+)/); await capt(tel, "p-close");
     const c2 = den(await texte(prof), /(\d+)\s*\/\s*(\d+)\s*ONT RÉPONDU/i); await capt(prof, "c-close");
     J.v(c2 === "1 / 24", H12, "console, question close : « 1 / 24 ONT RÉPONDU » (c-q1-close : « 24/24 », sur les présents)", c2);

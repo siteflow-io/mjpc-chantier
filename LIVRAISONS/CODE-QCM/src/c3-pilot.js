@@ -28,7 +28,12 @@ function tablettesH(){
 }
 function nbQH(){ return EV.questions.length; }
 // les élèves qui comptent dans les attentes de la séance : les présents entrés sur une tablette (SCN.actifs, QCM-1) ; dans la maquette, les présents
-function actifsH(k){ k = k || MO(); return enDirect() && typeof SCN.actifs === "function" ? SCN.actifs(k) : SCN.presents(k); }
+function actifsH(k){ k = k || MO();
+  // (reprise 7, point 1) une séance de la 8.x (« lancee ») sans « entres » : personne n'est encore entré (SCN.actifs y rend tous les présents, pour la 7.7.1)
+  if(enDirect()){ var s = (typeof SCN.sess === "function" && SCN.sess()) || {}; if(s.lancee && !s.entres) return []; }
+  return enDirect() && typeof SCN.actifs === "function" ? SCN.actifs(k) : SCN.presents(k); }
+// l'élève est-il entré sur sa moitié ? (hors direct, ou une séance de la 7.7.1 : oui)
+function entreH(p){ if(!enDirect() || !p) return true; var s = (typeof SCN.sess === "function" && SCN.sess()) || {}; return !s.lancee || !!(s.entres || {})[p]; }
 // (reprise 4, point 4) en direct, une question écartée n'est plus nulle part : ni au bilan, ni à la co-évaluation, ni au téléphone, ni dans les pastilles
 function horsQH(i){ if(!enDirect()) return false; var m = momH(); return (m.ecartees || []).map(Number).indexOf(Number(i)) >= 0; }
 // (reprise 5, c-q1-tour1, p-reponse, b-reponse) pendant le 1er tour (au 2e, c-q1-tour2 : le cumul sur les présents), « ont répondu » compte sur les moitiés qui ont la main ; sinon sur les présents

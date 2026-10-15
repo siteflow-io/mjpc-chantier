@@ -258,7 +258,7 @@ var FENETRES_H = {
       [boutonH("a", "btn btn-ghost", "Annuler", fermerFen, "Ne change rien : la séance continue."), boutonH("ok", "btn btn-or", "⏸️ Finir à une autre heure", fait("finirAutreHeure"), "Met la séance en pause, telle qu'elle est, jusqu'à une heure suivante.")], null); },
   voirTablette:function(n, fond){ var pa = PAIRES[n - 1] || [null, null], m = momH();
     return Fenetre(fond, "📱 Tablette " + n + " · " + [pa[0], pa[1]].filter(Boolean).map(affH).join(" · ") + " — en direct", "Ce que montrent ses deux moitiés, maintenant : " + ouH(m) + ".",
-      h("div", {className:"voir-tab fige-choix"}, h("div", {className:"voir-tab-in", style:{pointerEvents:"none"}, "aria-hidden":true}, TabletteVue(pa[0], pa[1]))),
+      h("div", {className:"voir-tab fige-choix"}, h("div", {className:"voir-tab-in", style:{pointerEvents:"none"}, "aria-hidden":true}, TabletteTelleQuelleH(pa[0], pa[1]))),
       [boutonH("f", "btn btn-ghost", "✕ Fermer", fermerFen)], null, 900); },
   // la fiche d'un élève (un clic sur son nom) : son point d'autonomie, son départ
   eleve:function(p, fond){ var k = MO(), au = SCN.autonomie(p, k), il = sexeH(p) === "F" ? "Elle" : "Il";
@@ -276,3 +276,13 @@ var FENETRES_H = {
       [boutonH("a", "btn btn-ghost", "Annuler", fermerFen, "Ne retire rien."),
        boutonH("ok", "btn btn-rouge", "⛔ Retirer le point d'autonomie", function(){ ps.forEach(function(p){ agir("retirerAutonomie", [p, "heure"]); }); if(ps.length === 1 && FEN_H.depuis === "eleve") ouvrirFen("eleve", ps[0]); else fermerFen(); }, "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait.")], null); }
 };
+
+// (reprise 7, point 1) « 👁 » montre la tablette telle qu'elle est : personne d'entré, « Combien êtes-vous sur cette tablette ? » ;
+// une moitié dont l'élève n'est pas entré, son écran d'entrée ; sinon, l'écran de la phase (TabletteVue)
+function TabletteTelleQuelleH(g, d){
+  var eg = g && entreH(g), ed = d && entreH(d);
+  if(!eg && !ed) return EcrCombien();
+  if((!g || eg) && (!d || ed)) return TabletteVue(g, d);
+  var moitie = function(p, cote, autre){ return !p ? Page(null, null, h("div", {className:"etat-attente"}, "moitié libre")) : entreH(p) ? MoitieH(p, cote, autre) : EcrLogin({champ:"code"}); };
+  return Tablette(moitie(g, "g", d), moitie(d, "d", g));
+}

@@ -112,6 +112,9 @@ function TabletteLive(){
      « 📊 Mes évaluations » ; au lancement d'une séance, la tablette l'oublie et revient à « Combien êtes-vous sur cette tablette ? » */
   if(!SCN.sid()){
     var ici = ELV.cotes.g || ELV.cotes.d;
+    // (15/10, point 13) l'élève a sa session MJPC sur l'appareil : il est entré par elle (ELV.entrerSansCode), sans code, et attend
+    var mj = !ici && ELV.sessionMJPC ? ELV.sessionMJPC() : null;
+    if(mj){ if(ELV.mjpcEntre !== mj.slug){ ELV.mjpcEntre = mj.slug; setTimeout(function(){ ELV.entrerSansCode("g", mj.slug); }, 0); } ici = mj.slug; }
     if(!ici) return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, h(LoginLive, {cote:"g", key:"lg-hors"})));
     var e0 = eleveDe(ici);
     return h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, Page(badgeDe(e0), null, h("div", {className:"etat-attente"}, "⏳ En attente du démarrage…"))));

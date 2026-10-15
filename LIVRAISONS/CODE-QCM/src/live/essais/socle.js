@@ -241,6 +241,12 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const sm = await rac.evaluate(() => ELV.sessionMJPC());
     const r3 = await rac.evaluate(() => ELV.entrerSansCode("g", "carre_tom")), r4 = await rac.evaluate(() => ELV.entrerSansCode("d", "baudry_lea"));
     verif(sm && sm.slug === "carre_tom" && sm.prenom === "Tom" && r3.ok && !r4.ok, "le raccourci MJPC : « Tu es bien Tom ? », il entre sans code ; un autre élève, non", {sm, r3, r4});
+    // (15/10, point 13) sa session MJPC, sans séance pour sa classe : pas de code à taper, « ⏳ En attente du démarrage… » à son nom
+    const mjp = await ouvrir("?mode=eleve");
+    await mjp.evaluate(() => { localStorage.setItem("mjpc_eleve", JSON.stringify({display:"CARRÉ Tom", classe:"3 ESSAI", ts:Date.now()})); LIVE.classeSlug = null; LIVE.changer(); }); await pause(600);
+    const vm = await mjp.evaluate(() => ({t: document.body.innerText.replace(/\s+/g, " "), g: ELV.cotes.g, classe: LIVE.classeSlug, sid: SCN.sid()}));
+    verif(!vm.sid && vm.g === "carre_tom" && vm.classe === "3 ESSAI" && /En attente du démarrage/.test(vm.t) && /CARR/i.test(vm.t) && !/Identifie-toi|Choisis ta classe/.test(vm.t), "sa session MJPC, sans séance : pas de code, « ⏳ En attente du démarrage… » à son nom, dans sa classe", {vm: Object.assign({}, vm, {t: vm.t.slice(0, 160)})});
+    await mjp.close();
     // chez lui, sans séance : l'élève entre par son code sur une demi-tablette, puis voit sa moitié avec « 📊 Mes évaluations »
     const maison = await ouvrir("?mode=eleve");
     // (15/10, point 13) la tablette ne demande jamais la classe : « 👋 Identifie-toi », l'élève est cherché dans toutes les classes

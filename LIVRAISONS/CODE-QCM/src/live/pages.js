@@ -83,7 +83,7 @@ var PAGES = (function(){
 })();
 
 /* ══════════════════════ La tablette réelle : deux moitiés, chacune à son élève ══════════════════════
-   L'entrée (la classe, « Combien êtes-vous sur cette tablette ? », « 👋 Identifie-toi » par le code) est celle de la maquette,
+   L'entrée (« Combien êtes-vous sur cette tablette ? », « 👋 Identifie-toi » par le code) est celle de la maquette,
    vérifiée contre l'empreinte de /codes (ELV.entrer). Ensuite, chaque moitié montre l'écran de son élève au moment réel :
    MOITIES.ecran(e, cote) (src/live/pages.js, à compléter par les écrans de l'heure : QCM-2). */
 function eleveDe(x, sansVoisin){ if(!x) return null; var n = SCN.nomDe(x), e = {cle:x, slug:x, nom:n, prenom:SCN.pre(x), sexe:SCN.sexe(x) || "M"};
@@ -91,6 +91,8 @@ function eleveDe(x, sansVoisin){ if(!x) return null; var n = SCN.nomDe(x), e = {
   return e; }
 function classeTablette(){
   if(LIVE.classeSlug && (LIVE.d.classes || {})[LIVE.classeSlug]) return LIVE.classeSlug;
+  // (15/10) la classe de la session MJPC de l'appareil (lireSessionMJPC, vérifiée par validerEleveMJPC)
+  var m = typeof ELV !== "undefined" && ELV.classeMJPC ? ELV.classeMJPC() : null; if(m){ LIVE.classeSlug = m; return m; }
   var a = LIVE.d.sessionActive || {}, cl = Object.keys(a).filter(function(c){ return c.charAt(0) !== "_"; });
   if(cl.length === 1){ LIVE.classeSlug = cl[0]; return cl[0]; }
   return null;
@@ -100,7 +102,9 @@ function TabletteLive(){
   var classe = classeTablette();
   // la séance de la classe s'est terminée : la tablette oublie ses élèves et revient à « Combien êtes-vous ? »
   if(ELV.tab && ELV.sid && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.fin = !SCN.sid(); ELV.sid = SCN.sid(); }
-  if(!classe) return h(ChoixClasse);
+  /* (15/10, reprise 7 point 13 : « 🎓 Choisis ta classe » n'apparaît plus jamais) la classe inconnue : l'élève s'identifie, il est cherché
+     dans toutes les classes (ELV.entrer), et la tablette prend sa classe ; sans séance pour elle, « ⏳ En attente du démarrage… » */
+  if(!classe) return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, h(LoginLive, {cote:"g", key:"lg-classe"})));
   // t-fin : la séance finie, « Combien êtes-vous ? » (puis, sans séance, l'entrée par le code)
   if(ELV.fin && !SCN.sid()) return EcrCombienLive();
   if(SCN.sid()) ELV.fin = false;
@@ -117,15 +121,6 @@ function TabletteLive(){
   if(ELV.n === 1){ var x1 = ELV.cotes.g; return h("div", {className:"tablette seule" + (x1 ? "" : " seule-login")}, h("div", {className:"moitie g"}, x1 ? MOITIES.ecran(eleveDe(x1), "g") : h(LoginLive, {cote:"g", key:"lg"}))); }
   var g = ELV.cotes.g, d = ELV.cotes.d;
   return Tablette(g ? MOITIES.ecran(eleveDe(g), "g") : h(LoginLive, {cote:"g", key:"lg"}), d ? MOITIES.ecran(eleveDe(d), "d") : h(LoginLive, {cote:"d", key:"ld"}));
-}
-// la classe : celle de la séance active ; s'il y en a plusieurs, l'élève la choisit (la 7.7.1 : « 🎓 Choisis ta classe »)
-function ChoixClasse(){
-  var a = LIVE.d.sessionActive || {}, cl = Object.keys(a).filter(function(c){ return c.charAt(0) !== "_"; });
-  var liste = cl.length ? cl : SCN.classes();
-  return h("div", {className:"eleve-page"}, DECO.map(function(e, i){ return h("span", {key:i, className:"deco"}, e); }),
-    h("div", {className:"eleve-card"}, h("h1", null, "🎓 Choisis ta classe"),
-      liste.length === 0 ? h("p", {style:{color:"var(--gris)"}}, "Aucune classe disponible.")
-        : h("div", {className:"eleves-grid"}, liste.map(function(c){ return h("button", {key:c, className:"eleve-btn", "data-local":"1", onClick:function(){ ELV.choisirClasse(c); }}, ((LIVE.d.classes || {})[c] || {}).libelle || c); }))));
 }
 function EcrCombienLive(){
   return Page(null, "Combien êtes-vous sur cette tablette ?",

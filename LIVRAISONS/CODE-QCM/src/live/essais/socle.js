@@ -237,16 +237,18 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(mt.avant.join() === "vert,orange" && mt.apres.join() === "bleu,vert", "les tranches de maîtrise des Réglages : 15 / 20 est 🔵 quand 🟢 commence à 16 (sans réglage : 🟢)", mt);
     // le raccourci MJPC : un élève connecté au site sur cet appareil (mjpc_eleve) est reconnu, et entre sans code (« Tu es bien … ? »)
     const rac = await ouvrir("?mode=eleve");
-    await rac.evaluate(() => { localStorage.setItem("mjpc_eleve", JSON.stringify({display:"CARRÉ Tom", classe:"3 ESSAI", ts:Date.now()})); ELV.choisirClasse("3 ESSAI"); }); await pause(200);
+    await rac.evaluate(() => { localStorage.setItem("mjpc_eleve", JSON.stringify({display:"CARRÉ Tom", classe:"3 ESSAI", ts:Date.now()})); LIVE.classeSlug = null; }); await pause(200);
     const sm = await rac.evaluate(() => ELV.sessionMJPC());
     const r3 = await rac.evaluate(() => ELV.entrerSansCode("g", "carre_tom")), r4 = await rac.evaluate(() => ELV.entrerSansCode("d", "baudry_lea"));
     verif(sm && sm.slug === "carre_tom" && sm.prenom === "Tom" && r3.ok && !r4.ok, "le raccourci MJPC : « Tu es bien Tom ? », il entre sans code ; un autre élève, non", {sm, r3, r4});
     // chez lui, sans séance : l'élève entre par son code sur une demi-tablette, puis voit sa moitié avec « 📊 Mes évaluations »
     const maison = await ouvrir("?mode=eleve");
-    await maison.evaluate(() => ELV.choisirClasse("3 ESSAI")); await pause(300);
+    // (15/10, point 13) la tablette ne demande jamais la classe : « 👋 Identifie-toi », l'élève est cherché dans toutes les classes
+    await maison.evaluate(() => { try { localStorage.removeItem("mjpc_eleve"); } catch(e){} LIVE.classeSlug = null; LIVE.changer(); }); await pause(300);
+    const tm0 = (await maison.evaluate(() => document.body.innerText)).replace(/\s+/g, " ");
     const r2 = await maison.evaluate(c => ELV.entrer("g", c, "julien", "abrial"), code("ABRIAL Julien")); await pause(500);
-    const tm = (await maison.evaluate(() => document.body.innerText)).replace(/\s+/g, " ");
-    verif(r2.ok && /Mes évaluations/.test(tm) && /ABRIAL JULIEN|ABRIAL Julien/i.test(tm), "chez lui, sans séance : son code, puis sa moitié avec « 📊 Mes évaluations »", {r2, tm: tm.slice(0, 200)});
+    const tm = (await maison.evaluate(() => document.body.innerText)).replace(/\s+/g, " "), cl2 = await maison.evaluate(() => LIVE.classeSlug);
+    verif(!/Choisis ta classe/.test(tm0) && /Identifie-toi/.test(tm0) && /^3 (ESSAI|ANCIENNE)$/.test(cl2) && r2.ok && /Mes évaluations/.test(tm) && /ABRIAL JULIEN|ABRIAL Julien/i.test(tm), "chez lui, sans séance : jamais « Choisis ta classe » ; son code, la tablette prend sa classe, puis sa moitié avec « 📊 Mes évaluations »", {r2, cl2, tm0: tm0.slice(0, 120), tm: tm.slice(0, 200)});
     // deux séances actives (celle d'hier restée ouverte, celle de ce matin) : la console pilote la plus récente ; le badge dit « 2 séances en cours »
     const vieille = await prof.evaluate(() => ACT.lancerSeance("3 ANCIENNE", "essai", {})); await pause(50);
     const neuve = await prof.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {})); await pause(500);

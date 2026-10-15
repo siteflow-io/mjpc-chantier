@@ -869,12 +869,20 @@ var ELV = (function(){
   // « Combien êtes-vous sur cette tablette ? »
   E.combien = function(n){ E.n = n; E.fin = false; garder(); };
   // l'entrée : le code, vérifié contre l'empreinte de /codes (la 7.7.1 : mjpcEntreeCode, mjpcVerifierCode), le prénom et le nom
+  /* (15/10, reprise 7 point 13) la tablette ne demande jamais la classe : elle vient de l'élève. Tant que personne n'est sur la tablette,
+     l'élève est cherché dans sa classe connue, puis dans toutes les classes (la 7.7.2) ; trouvé ailleurs, la tablette prend sa classe et la
+     séance de sa classe (sans séance pour sa classe : « ⏳ En attente du démarrage… »). Son binôme est cherché dans la même classe. */
+  function prendreClasse(c){ if(!c || c === LIVE.classeSlug) return; LIVE.classeSlug = c; LIVE.sid = null; }
+  function seulSurTablette(){ return !E.cotes.g && !E.cotes.d; }
   E.entrer = function(cote, code, prenom, nom){
     var classe = LIVE.classeSlug || SCN.classe();
-    var roster = SCN.roster(classe), cible = sanMJPC(String(prenom || "").trim() + " " + String(nom || "").trim()), inv = sanMJPC(String(nom || "").trim() + " " + String(prenom || "").trim());
+    var cible = sanMJPC(String(prenom || "").trim() + " " + String(nom || "").trim()), inv = sanMJPC(String(nom || "").trim() + " " + String(prenom || "").trim());
     if(!String(prenom || "").trim() || !String(nom || "").trim()) return Promise.resolve({ok:false, err:"Renseigne ton prénom et ton nom."});
     if(!String(code || "").trim()) return Promise.resolve({ok:false, err:"Entre ton code personnel (4 chiffres)."});
-    var trouve = roster.filter(function(n){ return sanMJPC(n) === cible || sanMJPC(n) === inv; })[0];
+    function chercher(c){ return c ? SCN.roster(c).filter(function(n){ return sanMJPC(n) === cible || sanMJPC(n) === inv; })[0] : null; }
+    var trouve = chercher(classe), classeX = classe;
+    var actives = LIVE.d.sessionActive || {}, ordre = SCN.classes().filter(function(c){ return actives[c]; }).concat(SCN.classes().filter(function(c){ return !actives[c]; }));
+    if(!trouve && seulSurTablette()) ordre.some(function(c){ var t = chercher(c); if(t){ trouve = t; classeX = c; } return !!t; });
     if(!trouve) return Promise.resolve({ok:false, err:"Élève introuvable dans la classe. Vérifie l'orthographe."});
     var x = sanMJPC(trouve);
     return LIVE.lireCodes().then(function(codes){
@@ -884,6 +892,7 @@ var ELV = (function(){
       var verif = typeof mjpcVerifierCode === "function" ? mjpcVerifierCode(entree, String(code).trim()) : Promise.resolve({ok:false, voie:"indisponible"});
       return verif.then(function(r){
         if(!r.ok) return {ok:false, err:(typeof mjpcMessageRefusEleve === "function" && mjpcMessageRefusEleve(r.voie)) || "Ce code ne correspond pas. Vérifie tes 4 chiffres."};
+        prendreClasse(classeX);
         return placer(cote, x);
       });
     });
@@ -892,12 +901,16 @@ var ELV = (function(){
      à taper ; « 👤 1 élève » demande « Tu es bien Julien ? » (t-un-eleve), « Oui » l'entre. ELV.sessionMJPC() → {slug, nom, prenom} ou null. */
   E.sessionMJPC = function(){
     var s = null; try { s = typeof lireSessionMJPC === "function" ? lireSessionMJPC() : null; } catch(e){}
-    if(!s || s.is_prof) return null; var classe = LIVE.classeSlug || SCN.classe(); if(!classe) return null;
-    var cible = sanMJPC(s.nom || ""), roster = SCN.roster(classe);
+    // (15/10) la classe est celle de la session MJPC, vérifiée contre /classes (validerEleveMJPC), et non plus celle de la tablette
+    if(!s || s.is_prof) return null; var v = typeof validerEleveMJPC === "function" ? validerEleveMJPC(s, LIVE.d.classes) : null; if(!v) return null;
+    var classe = v.classe, cible = sanMJPC(v.nom || s.nom || ""), roster = SCN.roster(classe);
     var n = roster.filter(function(r){ return sanMJPC(r) === cible || sanMJPC(r.split(" ").reverse().join(" ")) === cible; })[0];
-    return n ? {slug:sanMJPC(n), nom:n, prenom:SCN.pre(sanMJPC(n))} : null;
+    return n ? {slug:sanMJPC(n), nom:n, prenom:SCN.pre(sanMJPC(n)), classe:classe} : null;
   };
-  E.entrerSansCode = function(cote, x){ var m = E.sessionMJPC(); if(!m || m.slug !== x) return Promise.resolve({ok:false, err:"Entre ton code personnel (4 chiffres)."}); return placer(cote, x); };
+  E.classeMJPC = function(){ var m = E.sessionMJPC(); return m ? m.classe : null; };
+  E.entrerSansCode = function(cote, x){ var m = E.sessionMJPC(); if(!m || m.slug !== x) return Promise.resolve({ok:false, err:"Entre ton code personnel (4 chiffres)."});
+    if(m.classe !== LIVE.classeSlug){ if(!seulSurTablette()) return Promise.resolve({ok:false, err:"Élève introuvable dans la classe. Vérifie l'orthographe."}); prendreClasse(m.classe); }
+    return placer(cote, x); };
   // l'élève de cette moitié a-t-il été placé sur une autre tablette (la fin de l'appel, « ↔️ » de Paul) ? → le numéro de sa tablette (t-deplace :
   // « Julien, va sur la tablette 12 »), sinon null
   E.ailleurs = function(cote){ var x = E.cotes[cote]; if(!x || !E.tab) return null; var t = SCN.tabletteDe(x); return t && t.n !== E.tab ? t.n : null; };

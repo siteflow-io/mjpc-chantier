@@ -83,27 +83,30 @@ async function taper(p, moitie, placeholder, valeur) {
     const actives = srv.store.get("qcm/sessionActive") || {};
     verif(1, Object.keys(actives).length > 0, "« 🚀 Lancer la séance » écrit une séance active dans la base", JSON.stringify(actives).slice(0, 200));
 
-    // K2 — la tablette, ouverte sans rechargement après le lancement, demande combien d'élèves elle porte
+    // K2 — la tablette, ouverte sans rechargement après le lancement (reprise 7, point 13, Paul 15/10 09:19) : ni la classe ni « Combien êtes-vous » ;
+    // sans session MJPC, « 👋 Identifie-toi » ; l'élève entré, l'autre moitié est son binôme de la grille (« Ton binôme : … »), qui tape son code
     const tab = await ouvrir("?mode=eleve", 1280, 800);
-    verif(2, await attendre(tab, /Combien êtes-vous sur cette tablette/, 10000), "la tablette demande « Combien êtes-vous sur cette tablette ? »", (await texte(tab)).slice(0, 200));
-    await cliquer(tab, /2 élèves/);
-    let m = await moities(tab);
-    verif(2, m.length === 2 && m.every(x => /Identifie-toi/.test(x)), "« 👥 2 élèves » partage la tablette en deux moitiés, chacune « 👋 Identifie-toi »", m.map(x => x.slice(0, 60)).join(" | "));
+    const vuEntree = await attendre(tab, /Identifie-toi/, 10000);
+    const tE = await texte(tab);
+    verif(2, vuEntree && !/Combien êtes-vous|Choisis ta classe/.test(tE), "la tablette ouvre « 👋 Identifie-toi », sans demander la classe ni « Combien êtes-vous »", tE.slice(0, 200));
 
-    // K3 — l'entrée par le vrai code (son empreinte est au hub), au clavier de l'app ; le binôme vient de la console
+    // K3 — l'entrée par le vrai code (son empreinte est au hub), au clavier de l'app ; le binôme vient de la grille de la console
     await taper(tab, 0, "code", codeDe("ABRIAL Julien")); await taper(tab, 0, "Prénom", "julien"); await taper(tab, 0, "Nom", "abrial");
     await cliquer(tab, /Entrer/, 0);
     const vuJ = await attendre(prof, /ABRIAL Julien/, 10000);
     verif(3, vuJ, "Julien entré sur la tablette se voit sur ta console sans rechargement");
-    const tProf = await texte(prof);
-    const voisin = (["DUVERNAY Michel", "BAUDRY Léa"].find(n => new RegExp("ABRIAL Julien[\\s\\S]{0,80}" + n + "|" + n + "[\\s\\S]{0,80}ABRIAL Julien").test(tProf))) || "DUVERNAY Michel";
-    const [nomV, ...prV] = voisin.split(" ");
-    await taper(tab, 1, "code", codeDe(voisin)); await taper(tab, 1, "Prénom", prV.join(" ").toLowerCase()); await taper(tab, 1, "Nom", nomV.toLowerCase());
-    await cliquer(tab, /Entrer/, 1);
-    verif(3, await attendre(prof, new RegExp(voisin), 10000), voisin + ", entré dans l'autre moitié, se voit sur ta console");
+    await attendre(tab, /Ton binôme :/, 10000);
+    let m = await moities(tab);
+    const iB = m.findIndex(x => /Ton binôme :/.test(x));
+    const voisin = (((m[iB] || "").match(/Ton binôme : ([^\n]+)/) || [])[1] || "").trim();
+    verif(2, m.length === 2 && iB >= 0 && !!voisin && !/Combien êtes-vous|Choisis ta classe/.test(m.join(" ")), "Julien entré, l'autre moitié est son binôme : « Ton binôme : " + voisin + " », sans « Combien êtes-vous »", m.map(x => x.slice(0, 60)).join(" | "));
+    await taper(tab, iB, "", codeDe(voisin));
+    await cliquer(tab, /^Entrer/, iB);
+    let deux = false; for (let k = 0; k < 20 && !deux; k++) { await pause(500); const mm = await moities(tab); deux = mm.length === 2 && mm.every(x => /Avant de commencer/.test(x)); }
+    verif(3, deux, voisin + ", entré par son code dans l'autre moitié : les deux moitiés sont à « Avant de commencer »", (await moities(tab)).map(x => x.slice(0, 60)).join(" | "));
     // un code faux ne fait pas entrer (la maquette : « Ce code ne correspond pas. Vérifie tes 4 chiffres. »)
     const tab2 = await ouvrir("?mode=eleve", 1280, 800);
-    await attendre(tab2, /Combien êtes-vous/, 8000); await cliquer(tab2, /1 élève/);
+    await attendre(tab2, /Identifie-toi/, 8000);
     await pause(500);
     await taper(tab2, 0, "code", "9999").catch(() => {});
     const un = await texte(tab2);

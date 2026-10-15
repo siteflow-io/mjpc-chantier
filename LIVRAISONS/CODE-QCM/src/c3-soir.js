@@ -432,7 +432,8 @@ function evalVue(id, b){
       verifie:q.verifie || "", explication:q.explication || "", bonus:!!q.bonus, assumee:!!q.longueurAssumee}; });
   var comps = []; qs.forEach(function(q){ q.competences.forEach(function(c){ if(comps.indexOf(c) < 0) comps.push(c); }); });
   return {id:id, titre:b.titre || "", mode:b.mode || "strict", chapitre:ch ? ch.id : null, chap:ch ? ch.court : null, niveau:ch ? ch.niveau : null,
-    cree:dateFr(b.createdAt), createdAt:b.createdAt || 0, version:b.version || 1, competences:comps, questions:qs, demo:id === "demo" || !!b.demo, brut:b};
+    cree:dateFr(b.createdAt), createdAt:b.createdAt || 0, version:b.version || 1, competences:comps, questions:qs, demo:id === "demo" || !!b.demo, brut:b,
+    sansChapitre:!ch && !!b.sansChapitre};
 }
 function evalsV(){ var E = v3Evals(); return Object.keys(E).filter(function(k){ return E[k] && k !== "demo" && !E[k].demo && !E[k].test; }).map(function(k){ return evalVue(k, E[k]); }); }
 function evalV(id){ if(!id) return null; var b = v3Evals()[id]; if(b) return evalVue(id, b); if(id === "demo") return demoV(); return null; }
@@ -442,7 +443,8 @@ function demoBrute(){ var d = SCN.DEMO && SCN.DEMO.questions ? SCN.DEMO : DEMO; 
 function remettreDemo(){ if(!v3db() || !v3Pret(v3Q("evaluations")) || v3Evals().demo) return; v3Set(v3Q("evaluations/demo"), demoBrute()); }
 // l'évaluation au format de la base (le JSON du prompt), depuis la forme des écrans
 function evalBrute(e, ancienne){
-  var o = {titre:e.titre, chapitre:e.chapitre || null, mode:e.mode || "strict", questions:e.questions.map(function(q){
+  // « Sans chapitre pour l'instant » (reprise 7, point 3) : un choix enregistré, distinct de « — à choisir — »
+  var o = {titre:e.titre, chapitre:e.chapitre || null, sansChapitre:!e.chapitre && e.sansChapitre ? true : null, mode:e.mode || "strict", questions:e.questions.map(function(q){
     var x = {enonce:q.enonce, choix:q.choix, bonnes:q.bonnes, niveau:q.niveau};
     if(q.reflexion != null) x.reflexion = q.reflexion; if(q.reponse != null) x.reponse = q.reponse;
     if((q.competences || []).length) x.competences = q.competences; if(q.verifie) x.verifie = q.verifie; if(q.explication) x.explication = q.explication;

@@ -35,9 +35,25 @@ function SessionsPrecedentesM(){
 function SessionsPrecedentesRatt(){ return SessionsPrecedentes(); }
 
 /* ── La durée estimée, au lancement : la somme des temps de Réglages et de ceux des questions ── */
+// reprise 7, point 5 (Paul, 13/10 15:27) : la durée se compare au temps qui reste jusqu'à « 🕙 Fin de l'heure » (finLancementH, QCM-2),
+// recalculée à chaque changement du champ et chaque minute ; elle alerte et ne bloque pas
+function resteAvantFinV(){
+  var fin = typeof finLancementH === "function" ? finLancementH() : null, m = /^(\d{1,2}):(\d{2})$/.exec(String(fin || "").trim()); if(!m) return null;
+  var now = typeof LIVE !== "undefined" && LIVE.maintenant ? LIVE.maintenant() : Date.now(), f = new Date(now); f.setHours(+m[1], +m[2], 0, 0);
+  return Math.max(0, Math.round((f.getTime() - now) / 60000));
+}
+function tientTexteV(d){
+  var r = resteAvantFinV();
+  if(r == null) return d <= 45 ? "✅ Ça tient dans les 45 minutes utiles." : "⚠️ " + (d - 45) + " min de plus que les 45 minutes utiles.";
+  return d <= r ? "✅ Ça tient : " + d + " min, il en reste " + r + " avant la fin de l'heure."
+    : "⚠️ Ça ne tient pas : la séance demande " + d + " min, il n'en reste que " + r + " avant la fin de l'heure (" + (d - r) + " min de trop).";
+}
+function TientV(p){ var s = useState(0), maj = s[1];
+  useEffect(function(){ var t = setInterval(function(){ maj(function(x){ return x + 1; }); }, 20000); return function(){ clearInterval(t); }; }, []);
+  return h("span", {"data-tient":"1"}, tientTexteV(p.d)); }
 function texteDuree(ev, seul){
   var d = SCN.dureeEstimee(ev, seul), D = SCN.DUREES, mn = function(s){ var m = Math.floor(s / 60), r = Math.round(s % 60); return m + " min" + (r ? " " + r + " s" : ""); };
-  return h(F, null, "⏱️ ", h("strong", null, "Durée estimée : " + d.min + " min"), InfoIB("⏱️ Durée estimée", "Installation et consignes " + mn(D.installation) + " ; questions " + mn(d.questions) + " (pour chacune : la réflexion, puis " + (seul ? "un tour de " : "deux tours de ") + D.decompte + " s de décompte, de réponse et de " + D.b + " s où l'élève dit si sa feuille dit la même chose que son clic, puis " + D.entre + " s) ; estimation et seconde attestation " + mn(D.estimAttest) + " ; correction " + mn(d.correction) + " (" + mn(D.correctionParQ) + " par question)" + (seul ? "" : " ; co-évaluation et bilan " + mn(D.coevalBilan)) + "."), h("br"), d.min <= 45 ? "✅ Ça tient dans les 45 minutes utiles." : "⚠️ " + (d.min - 45) + " min de plus que les 45 minutes utiles.");
+  return h(F, null, "⏱️ ", h("strong", null, "Durée estimée : " + d.min + " min"), InfoIB("⏱️ Durée estimée", "Installation et consignes " + mn(D.installation) + " ; questions " + mn(d.questions) + " (pour chacune : la réflexion, puis " + (seul ? "un tour de " : "deux tours de ") + D.decompte + " s de décompte, de réponse et de " + D.b + " s où l'élève dit si sa feuille dit la même chose que son clic, puis " + D.entre + " s) ; estimation et seconde attestation " + mn(D.estimAttest) + " ; correction " + mn(d.correction) + " (" + mn(D.correctionParQ) + " par question)" + (seul ? "" : " ; co-évaluation et bilan " + mn(D.coevalBilan)) + "."), h("br"), h(TientV, {d:d.min}));
 }
 
 /* ── La carte de la séance à reprendre (« ⏸️ Finir à une autre heure », la séance sur papier) ── */

@@ -1,0 +1,35 @@
+Contrôles de la conscience n°12 pour l'app — /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/t730/app-054fcca3.html — 2026-10-15T10:24:37.084Z
+md5 de controles-app.js : b7d6b6ef09344c657ee7d350fb9b9b4b
+Durée : 110 s · vérifications : 32 · échecs : 0
+  ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  ok     K2 · la tablette ouvre « 👋 Identifie-toi », sans demander la classe ni « Combien êtes-vous »
+  ok     K3 · Julien entré sur la tablette se voit sur ta console sans rechargement
+  ok     K2 · Julien entré, l'autre moitié est son binôme : « Ton binôme : BAUDRY Léa », sans « Combien êtes-vous »
+  ok     K3 · BAUDRY Léa, entré par son code dans l'autre moitié : les deux moitiés sont à « Avant de commencer »
+  ok     K3 · un code faux : « Ce code ne correspond pas. Vérifie tes 4 chiffres. »
+  ok     K4 · les deux attestations faites, ta console le montre
+  ok     K5 · « ▶️ Lancer Q1 » : l'énoncé de la question 1 sur les deux moitiés
+  ok     K5 · le tableau montre la question 1, sans rechargement
+  ok     K5 · le téléphone montre la question 1, sans rechargement
+  ok     K6 · au 1er tour, une moitié peut cliquer un choix de la question 1
+  ok     K6 · la réponse cliquée sur la tablette se voit sur ta console sans rechargement (« n / N ont répondu » augmente)
+  ok     K6 · le champ où tu tapais garde sa valeur et le curseur pendant que la tablette répond
+  ok     K7 · « ⏭️ Tour suivant » : l'autre moitié répond à son tour
+  ok     K7 · « 🔒 Clore la question » est là, et se clique
+  ok     K8 · les réponses des deux élèves sont dans la base, sous la séance
+  ok     K10 · question 2 : les deux tours joués, puis close
+  ok     K10 · question 3 : les deux tours joués, puis close
+  ok     K11 · les deux élèves prêts, la correction ne commence pas seule (3 s d'attente)
+  ok     K11 · « ▶️ Commencer la correction » est ouvert quand les deux élèves sont prêts
+  ok     K11 · au clic, la correction commence par la question 2, la plus ratée (Q2 : 1 juste sur 2 ; Q1 : 2 sur 2)
+  ok     K12 · « 💡 Révéler » fermé avant toute lecture
+  ok     K12 · « 💡 Révéler » s'ouvre quand les deux feuilles sont lues
+  ok     K12 · après « Révéler », les deux moitiés montrent la bonne réponse
+  ok     K12 · Julien, feuille fausse et tablette juste à Q2 : « Trouvée au dernier moment »
+  ok     K12 · son voisin, faux sur la feuille et sur la tablette : pas de « Trouvée au dernier moment »
+  ok     K13 · « 🏁 Afficher leur bilan aux élèves » se clique quand la co-évaluation est finie
+  ok     K14 · le bilan de Julien dit 3 / 3 (Q1 et Q3 justes sur sa feuille, Q2 trouvée au dernier moment)
+  ok     K14 · le bilan de son voisin dit 1 / 3 (seule Q1 juste sur sa feuille)
+  ok     K14 · le bilan de l'élève ne montre aucun code de compétence (ses libellés élève)
+  ok     K15 · la base garde les lectures, la question « trouvée » et le bilan affiché (contrat, COMMUN §3.1)
+  ok     K9 · aucune erreur de page ni boîte système dans les cinq pages

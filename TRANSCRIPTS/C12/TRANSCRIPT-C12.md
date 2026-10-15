@@ -22668,3 +22668,21 @@ Envoyé à Paul, mot pour mot :
 9. Contrôle de 11:41 : ça ne va pas, pour un seul défaut ; rien n'est mis en ligne, la 8.0.0 reste. Tout le reste passe, y compris tout le soir de « Lire les copies », rejoué geste par geste, et mes contrôles (32 sur 32). Le défaut : à la lecture, sous « Révéler », ta console écrit « Il en manque 1 : CARRÉ Tom », alors que c'est Camille qui n'a pas lu la feuille de Tom ; le nom doit être celui du lecteur. Nouveau calendrier : tout poussé à 12:05, verdict à 12:20, mon contrôle à 12:21, en ligne à 12:30 si aucune séance n'est en cours.
 
 15/10/2026 11:48 MEMO
+
+---
+
+## TOUR 730 — réveil programmé de 12:21 (pas Paul)
+
+Le contrôle programmé (`trig_01QhPnp32Hp9bNzpZd7Aj6eq`). Lu : le VERDICT de QCM-4 de 12:20, « ça va » (`f89190dd`, app de `a89453c0`, md5 `054fcca3…`). Mesuré : la reconstruction à l'identique ; mes contrôles 32/32, la sonde B 17/17, la sonde de l'œil 4/4 ; le soir de la maquette v4 rejoué contre l'app, identique à 11:41 ; la capture de QCM-4 du point 11 (`sorties/2026-10-15_1205/captures-reprise7-d/10-11-a0-console.png`) : « Il en manque 1 : BRUNEAU Camille » ; `qcm/sessionActive` vide au hub, relu juste avant la mise en ligne. Fait : la production, `evaluation-qcm.html` 8.0.1 avec le point de retour vers la 8.0.0 (blob `1d88a05aa268`), le journal, OÙ-TROUVER-QUOI et la dette n°12 · 214 (`d5b0a46`, poussé à 12:28) ; servie bit à bit par GitHub Pages à 12:30:12 ; « EN LIGNE » en tête de `DEFAUTS-OUVERTS.md` sur `code-qcm` (`a3dad3e3`) ; `AUDITS/CODE-QCM-AUDIT-1221-15-10/` au sas. L'en-tête de `correction_dictee.html` lu (l. 7 à 27) : signalé, pas modifié.
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.1, en ligne depuis 12:30 (le fichier en ligne est identique à celui contrôlé) · **en cours chez l'exécutant :** rien, j'ai écrit « en ligne » et ils s'arrêtent · **ouvert :** tes tests, à la fin
+
+9. C'est en ligne depuis 12:30. Le verdict de QCM-4 de 12:20 dit « ça va », et mon contrôle de 12:21 aussi : l'app se reconstruit à l'identique, mes contrôles passent (32 sur 32), mes deux sondes aussi, et tout le soir de « Lire les copies », rejoué geste par geste, donne les mêmes écrans. Le défaut de 11:41 est corrigé : sous « Révéler », le nom en rouge est celui du lecteur, Camille. Aucune séance n'était en cours au hub. Si un geste ne va pas, je remets la 8.0.0 en une minute. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=prof&v=801
+
+10. Hors de cette app, je te le signale sans y toucher : l'en-tête de correction_dictee.html (sa partie 1, ce qui reste à coder) dit encore de faire l'entrée des élèves « exactement comme dans evaluation-qcm.html », avec « Combien êtes-vous sur cette tablette ? », puis l'autre moitié qui nomme son binôme. Ce n'est plus la règle depuis ce matin : l'élève est identifié une fois, par MJPC ou par son code, et son binôme vient de la grille. Je l'ai noté dans les dettes, pour le jour où cette app sera reprise.
+
+Tes tests (point 9), dans l'ordre. Dans « 📝 Évaluations », clique « 🚀 Lancer » sur la ligne de la démo, règle « 🕙 Fin de l'heure » et lis le message « Ça tient » ou « Ça ne tient pas », puis lance avec une classe. Sur une tablette ouverte depuis MJPC avec la session d'un élève, tu dois voir « Tu es bien … ? », puis « Ton binôme : … » et son code, jamais « Choisis ta classe » ni « Combien êtes-vous » ; avec ta session de professeur, en « Voir comme un élève », tu arrives sur « 👋 Identifie-toi ». À la fin du temps d'une question, l'élève lit « …, tu as répondu … sur la tablette : avais-tu bien écrit … sur ta copie ? ». Dans « Avant la correction », la deuxième ligne est celle du stylo vert, et la consigne ne parle plus de rouge. À la lecture, laisse le chrono arriver à 0 : la lecture se fige, et le nom en rouge sur ta console est celui du lecteur qui n'a rien cliqué. Après la séance, dans le tableau de la séance, clique « 📄 Lire les copies », tape les initiales d'une copie, réponds « ✅ Oui » ou « ✏️ Autre chose », regarde la note bouger à droite, puis « ⛔ Retirer » et « ↩️ Rendre » un point d'autonomie.
+
+15/10/2026 12:32 MEMO

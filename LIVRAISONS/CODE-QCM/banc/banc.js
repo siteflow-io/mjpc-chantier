@@ -417,7 +417,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     await cliquer(prof, /^🛑 Terminer|^Terminer$|Oui, terminer|Terminer la séance/); await pause(1200);
     const fini = srv.store.get("qcm/sessions/" + sid) || {};
     J.v(!!sid && !Object.keys(srv.store.get("qcm/sessionActive") || {}).length && fini.etat === "terminee", H1, "la séance terminée : plus de séance active, etat = « terminee » (la 7.7.1), deroule.ph = fin", JSON.stringify({active: srv.store.get("qcm/sessionActive"), etat: fini.etat, deroule: fini.deroule}));
-    J.v(await attendre(tabJM, /Combien êtes-vous/, 6000), H2, "la tablette revient à « Combien êtes-vous ? » (t-fin)", (await texte(tabJM)).slice(0, 160));
+    J.v(await attendre(tabJM, /Identifie-toi/, 6000) && !/Combien êtes-vous/.test(await texte(tabJM)), H2, "la tablette revient à l'entrée des élèves, « 👋 Identifie-toi » (t-fin ; reprise 7, point 13 : plus de « Combien êtes-vous ? »)", (await texte(tabJM)).slice(0, 160));
     await scene("t-fin", tabJM, "tablette");
     for(const p of Object.values(tabs)) await p.context().close().catch(() => {});
   } catch(e){ J.v(false, "banc", "l'heure s'est arrêtée", e.stack); }

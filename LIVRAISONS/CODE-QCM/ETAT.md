@@ -6,4 +6,4 @@
 - QCM-2 · HEURE · 09:20 — reprise 7, mes points poussés (1, 5, 8 ma part, 9) et les retouches de QCM-4 (la démo, « 👁 » ; dernier code : `975883d`, banc-reprise7-a 40/40) ; rien d'ouvert à mon nom ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « en ligne »
 
 - QCM-3 · SOIR · 08:43 — reprise 7 : points 2, 3, 5, 6, 7, 8 poussés ; je fais le point 10 (« 📄 Lire les copies », la maquette v4) ; dernier poussé : `e42fd20` ; reste à mon nom : 10
-- QCM-4 · BANC · 08:30 — reprise 7, point 4 : trois jeux par le geste en cours d'écriture (points 1-3 et 5 ; 6-7 en mode test ; 8-10 le soir et la question de l'élève), essayés sur chaque nouveau commit ; dernier poussé : l'assemblage qui les joue ; reste à mon nom : ces jeux, l'assemblage complet de 10:15, VERDICT.md à 10:30
+- QCM-4 · BANC · 08:42 — reprise 7, point 4 : banc-reprise7-a (points 1, 2, 3, 5) poussé, 39/40 puis l'écart de la démo corrigé par QCM-2 ; banc commun 211/211 avec la nouvelle question B (`c5e1c6d`) ; en cours : les jeux 6-7 (mode test) et 8-10 (le soir) ; reste à mon nom : ces deux jeux, l'assemblage complet de 10:15, VERDICT.md à 10:30

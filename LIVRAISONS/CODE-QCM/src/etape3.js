@@ -75,7 +75,7 @@ function EcrLecture(e, qi, dit, chrono){
       h("div", {className:"decl-consigne"}, "Clique sur le ou les choix qui disent la même chose que sa feuille. Les mots ne sont pas forcément les mêmes."),
       h("div", {className:"lecture-l"}, h("div", {className:"soin"}, "Lis avec soin : c'est ton point d'autonomie."), chrono != null && ChronoSaisie(chrono, q.reponse)),
       // (QCM-2) en direct, le voisin clique, et chaque clic s'enregistre (ELV.lire)
-      enDirect() ? h(ChoixLuH, {key:"lu" + cleE(e) + qi, eleve:cleE(e), qi:qi, ordre:ordre, q:q, long:long, aucunTxt:"Sa feuille ne dit aucun de ces choix"}) : h(F, null,
+      enDirect() ? h(ChoixLuH, {key:"lu" + cleE(e) + qi, eleve:cleE(e), qi:qi, ordre:ordre, q:q, long:long, aucunTxt:"Sa feuille ne dit aucun de ces choix", fige:chrono != null && chrono <= 0}) : h(F, null,
       h("div", {className:"eleve-choix" + (long ? " long" : "")},
         ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (dit && luArr.indexOf(i) >= 0 ? " selected" : "")}, h("span", null, q.choix[i])); }),
         h("button", {className:"eleve-choix-btn aucun" + (dit && lu === "aucun" ? " selected" : "")}, "Sa feuille ne dit aucun de ces choix")),

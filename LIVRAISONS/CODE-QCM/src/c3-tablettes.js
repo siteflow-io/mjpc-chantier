@@ -357,7 +357,7 @@ function MoitieH(p, cote, autreP){
   }
   // sur papier (t-papier-correction) : pas de lecture du voisin ; la réponse quand Paul révèle
   if(papierH() && (ph === "lecture" || ph === "revele")) return ph === "revele" ? EcrRevele(e, qi, {papier:true}) : EcrAttente(e);
-  if(ph === "lecture") return v && !seul ? EcrLecture(e, qi, !!SCN.lecture(p, qi), reste) : EcrLectureSeulH(e, qi, reste);
+  if(ph === "lecture"){ var rl = m.reste == null ? null : reste; return v && !seul ? EcrLecture(e, qi, !!SCN.lecture(p, qi), rl) : EcrLectureSeulH(e, qi, rl); }
   if(ph === "revele") return EcrRevele(e, qi);
   if(ph === "coeval") return v && !seul ? CoevalH(e) : Page(badgeDe(e), "📝 Correction", h("div", {className:"co-attente"}, "⏳ Attends ton bilan…"));
   if(ph === "bilan") return EcrBilan(e);
@@ -388,9 +388,15 @@ function EcrDeclareH(e, qi, chrono){
     h("div", {className:"decl-b-chrono"}, "⏱️ " + chrono + " s")));
 }
 // la lecture d'une feuille : le voisin clique, dans la moitié du propriétaire, ce que dit sa feuille ; chaque clic s'enregistre
-function ChoixLuH(p){   // p : eleve (le propriétaire de la feuille), qi, ordre, q, long, aucunTxt
+function ChoixLuH(p){   // p : eleve (le propriétaire de la feuille), qi, ordre, q, long, aucunTxt, fige
   var lu = (LU[p.eleve] || [])[p.qi], init = lu === "aucun" ? "aucun" : (lu || []).slice();
   var s = useState(init), sel = s[0], set = s[1];
+  // (reprise 7, point 11) le chrono de lecture à 0 : une lecture déjà cliquée se fige, comme la réponse ; sans clic, la main reste jusqu'au premier clic
+  if(p.fige && (lu === "aucun" || (lu && lu.length))) return h(F, null,
+    h("div", {className:"fige"}, "⏱️ Temps fini : ta lecture est enregistrée."),
+    h("div", {className:"eleve-choix fige-choix" + (p.long ? " long" : "")},
+      p.ordre.map(function(i){ return h("button", {key:i, className:"eleve-choix-btn" + (lu !== "aucun" && lu.indexOf(i) >= 0 ? " selected" : ""), disabled:true}, h("span", null, p.q.choix[i])); }),
+      h("button", {className:"eleve-choix-btn aucun" + (lu === "aucun" ? " selected" : ""), disabled:true}, p.aucunTxt)));
   function changer(n){ set(n); agirE("lire", p.qi, n === "aucun" || n.length ? n : null, p.eleve); }
   function basculer(i){ var a = sel === "aucun" ? [] : sel; changer(a.indexOf(i) >= 0 ? a.filter(function(x){ return x !== i; }) : a.concat([i])); }
   var dit = sel === "aucun" || sel.length > 0;
@@ -410,7 +416,7 @@ function EcrLectureSeulH(e, qi, reste){
       h("div", {className:"decl-titre"}, "Qu'as-tu écrit sur ta feuille ?"),
       h("div", {className:"decl-consigne"}, "Clique sur le ou les choix qui disent la même chose que ta feuille. Les mots ne sont pas forcément les mêmes : c'est à toi de faire le rapprochement."),
       ChronoSaisie(reste, tempsDe(qi).reponse, true),
-      h(ChoixLuH, {key:"lu" + p + qi, eleve:p, qi:qi, ordre:ORD[qi][p], q:q, aucunTxt:"Ma feuille ne dit aucun de ces choix"}),
+      h(ChoixLuH, {key:"lu" + p + qi, eleve:p, qi:qi, ordre:ORD[qi][p], q:q, aucunTxt:"Ma feuille ne dit aucun de ces choix", fige:reste != null && reste <= 0}),
       EcouteProf())));
 }
 // la co-évaluation de la moitié : ce que l'élève a déjà dit, et chaque choix enregistré

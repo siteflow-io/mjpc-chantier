@@ -100,6 +100,11 @@ function badgeDe(e){ return CLASSE + " · " + e.nom; }
 function Tablette(g, d){ return h("div", {className:"tablette"}, h("div", {className:"moitie g"}, g), h("div", {className:"moitie d"}, d)); }
 /* Le voile (431) : on nomme toujours l'élève ; « qu'il » ou « qu'elle », d'après le sexe déclaré dans MJPC (443).
    Au passage de la tablette (stylo), la moitié voilée dit d'abord « Michel, pose ton stylo. » */
+// (reprise 7, point 9, Paul 13/10 16:42) la question de l'élève à la fin de son temps de réponse, mot pour mot :
+// « Tom, tu as répondu Venise sur la tablette : avais-tu bien écrit Venise sur ta copie ? » ; plusieurs choix : « Madrid et Genève »
+function choixEnMotsH(q, sel){ var t = (sel || []).map(function(i){ return q.choix[i]; }).filter(function(x){ return x != null; });
+  return t.length > 1 ? t.slice(0, -1).join(", ") + " et " + t[t.length - 1] : (t[0] || ""); }
+function questionBH(prenom, q, sel){ var c = choixEnMotsH(q, sel); return prenom + ", tu as répondu " + c + " sur la tablette : avais-tu bien écrit " + c + " sur ta copie ?"; }
 function Voile(autre, stylo, moi){
   moi = moi || autreDe(autre);
   return h("div", {className:"voile"},

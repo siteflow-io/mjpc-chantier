@@ -610,7 +610,7 @@ function EcrDeclareDemo(e, qi, ordre, sel, chrono){
       var moi = sel.indexOf(i) >= 0;
       return h("button", {key:i, className:"eleve-choix-btn" + (moi ? " selected" : ""), disabled:true}, h("span", null, q.choix[i]));
     })),
-    h("div", {className:"decl-b-titre"}, e.prenom + ", regarde ta feuille : dit-elle la même chose que ton clic ?"),
+    h("div", {className:"decl-b-titre"}, questionBH(e.prenom, q, sel)),
     h("div", {className:"decl-b-btns"}, h("button", {className:"decl-b-btn", title:"Élise dit que sa feuille dit la même chose que son clic."}, "Oui, la même chose"), h("button", {className:"decl-b-btn", title:"Élise dit que sa feuille dit autre chose que son clic."}, "Non, autre chose")),
     h("div", {className:"decl-b-chrono"}, "⏱️ " + chrono + " s")));
 }

@@ -383,7 +383,7 @@ function EcrDeclareH(e, qi, chrono){
       var moi = sel.indexOf(i) >= 0;
       return h("button", {key:i, className:"eleve-choix-btn" + (moi ? " selected" : ""), disabled:true}, h("span", null, q.choix[i]));
     })),
-    h("div", {className:"decl-b-titre"}, e.prenom + ", regarde ta feuille : dit-elle la même chose que ton clic ?"),
+    h("div", {className:"decl-b-titre"}, questionBH(e.prenom, q, sel)),
     h("div", {className:"decl-b-btns"}, b("oui", "Oui, la même chose"), b("non", "Non, autre chose")),
     h("div", {className:"decl-b-chrono"}, "⏱️ " + chrono + " s")));
 }

@@ -44,7 +44,7 @@ function HautModeTest(phase){
         return h("button", {key:i, className:"btn btn-ghost btn-sm", style:{marginRight:".4rem", marginBottom:".4rem"}}, Pz(t)); }))),
     h("div", {className:"test-info"},
       h("strong", null, "🎓 Entrer comme un élève"),
-      h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Ouvre l'application élève telle qu'elle est : ", Pz("« Combien êtes-vous sur cette tablette ? », puis code, prénom et nom, puis le code du binôme"), ". Exemple — ", h("strong", null, "AUDEBERT Élise"), " · code ", h("strong", null, "1000")),
+      h("p", {style:{margin:".4rem 0", fontSize:".88rem"}}, "Ouvre l'application élève telle qu'elle est : ", Pz("« 👋 Identifie-toi » : code, prénom et nom, puis le binôme"), ". Exemple — ", h("strong", null, "AUDEBERT Élise"), " · code ", h("strong", null, "1000")),
       h("button", {className:"btn btn-ghost btn-sm"}, "👋 Ouvrir le portail élève"),
       h("div", {style:{fontSize:".85rem", marginTop:".4rem"}}, "▸ Voir tous les codes du bac à sable")),
     h("div", {className:"test-info"},
@@ -330,9 +330,11 @@ function CodesTest(){ var s = useState(false), o = s[0], set = s[1];
     o && h("div", {className:"codes-test"}, TEST_NOMS.map(function(n, i){ return h("div", {key:n}, n + " · " + testCode(i)); }))); }
 // une tablette simulée : ses deux vraies moitiés ; ses clics passent par ELV, pour l'élève de la moitié
 function contenuTablette(se, t){
-  if(!se || !t) return EcrCombien();
+  // (reprise 7, point 13) la tablette ne demande plus « Combien êtes-vous ? » : avant l'entrée, son écran d'entrée (« 👋 Identifie-toi »)
+  function entree(){ return typeof LoginLive === "function" ? h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, h(LoginLive, {key:"lg", cote:"g"}))) : EcrCombien(); }
+  if(!se || !t) return entree();
   var d = deroule(se.S) || {};
-  if(d.ph === "appel" || !d.ph) return EcrCombien();
+  if(d.ph === "appel" || !d.ph) return entree();
   // reprise 7, point 6 (Paul, 13/10 15:37) : le dessin de la vraie tablette (TabletteVue, MoitieH de c3-tablettes.js), à chaque phase
   // (la co-évaluation, le bilan), en petit comme en grand ; ses gestes passent par ELV pour l'élève de la moitié
   // dessinée comme « 👁 » et la tablette elle-même (VueTabletteH, QCM-2 : « 📊 Mes évaluations » en tête de chaque moitié entrée)

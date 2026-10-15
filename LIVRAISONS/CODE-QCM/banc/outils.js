@@ -202,6 +202,7 @@ async function entrerTablette(p, eleves, codeDe){
 // unique, reprise 7 point 13), l'écran entier ; un binôme ne tape que son code (« tape ton code à 4 chiffres »), les autres champs manquent
 async function entrer1(p, cote, nom, code){
   const [N, ...P] = nom.split(" "); let z = cote;
+  await attendre(p, /Combien êtes-vous|Identifie-toi|tape ton code|Tu es bien|élèves|Code/, 25000);   // sous la charge, l'entrée peut tarder
   if(!(await taper(p, z, "code", code))){ z = null; if(!(await taper(p, null, "code", code))) return false; }
   await taper(p, z, "prenom", P.join(" ").toLowerCase()); await taper(p, z, "nom", N.toLowerCase());
   if(!(await cliquer(p, /Entrer/, z)) && z) await cliquer(p, /Entrer/);

@@ -22582,3 +22582,39 @@ Réponse, mot pour mot :
 7. (= 1168) Ma faute d'enregistrement, déjà corrigée. Le prochain point sera le 8.
 
 15/10/2026 08:44 MEMO
+
+---
+
+## TOUR 726 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (15/10, 08:52) 1. déjà fait. 2. Non, c'est dans le profil longitudinal sur mjpc que se prennent ce genre de décisions: si une éval ne compte pas, c'est moi qui la clique ainsi dans le profil longitudinal (va ajouter ça au cadrage du profil longitudinal du coup). Ce n'est jaamais dans les apps elles-mêmes. 3. oui. 4. oui évidemment! C'est une rupture de contrat d'ailleurs, avec les autres apps. Va vérifier. D'ailleurs à ce sujet, un élève qui se connectait avant par mjpc pouvait se connecter directemnet.  le nouvel écran "combien sur la tablette?" lui fait choisir  combien il est sur la tablette, et en plus le fait se reconnecter. Or, à l'avenir quand les élèves se serviront des apps, ils passeront par mjpc, soit pour la séance elle même, soit pour la correction ou la revue des résultats après. Je veux une mesure de ce qui existait, de ce que tu proposes, et quelque chose de simple et de pérenne. En tout cas, nulle part dans mjpc on ne demande à l'élève de choisir sa classe PARMI celles que j'ai moi en français, dans la mesure où l'élève est forcément identifié par ses ids. 5. tu as syntéthisé, je ne me souviens plus concrètement. réexplique avec détails. 6. oui c'est bon. L'élève n'écrit qu'en vert tout au long de la correction. Jamais de rouge. 7? . Enfin sur la numérotation: on ne recrée jamais de nouveau numéro pour un ancien numéro. chaque numéro a son suivi, tu comprends? sinon on explose le plafond et on arrive à 1000 très rapidement, sauf que ce n'est plus pratique au clavier. récapitule.
+
+---
+
+## TOUR 726 — Claude (conscience n°12)
+
+Mesuré : au hub, en lecture, `qcm/sessions/sess_1791894139272` vide et `corbeille/qcm-seance-1791897838942` (« 🎓 Démo — apprendre le déroulé (copie) — 4 HUGO — 13/10/2026 14:22 », ts 13/10 15:23) ; la 8.0.0 n'a aucun écran « compte / ne compte pas » de séance (seulement les questions annulées ou écartées, la démo) ; la 7.7.2 (blob du commit `40f1810`, md5 `3aaf7499…`) : le shunt MJPC dans `AppEleve` (« L'élève connecté au site n'a donc ni classe à choisir ni code à ressaisir »), « 🎓 Choisis ta classe » seulement sans session ; les sept autres apps (correction_dictee, dictee_universelle, reecriture, reecriture_bb4e, analyse_logique, worktrack, applause_meter) lisent `mjpc_eleve` (`lireSessionMJPC`) et n'ont aucun écran de choix de classe ; la 8.0.0 : `classeTablette` puis `ChoixClasse` (`live/pages.js` l. 92-128), `EcrCombienLive`, le raccourci MJPC seulement par « 👤 1 élève » (`ELV.sessionMJPC`, `live/base.js` l. 891-898, qui exige la classe déjà connue) ; l'en-tête de `correction_dictee.html` (§1, Paul 10/10) prévoit « Combien êtes-vous » dans toutes les apps ; les lignes de `LignesAttest2` (`etape3.js` l. 19-26). Écrit : la doctrine en production (`docs/MJPC6-2-DOCTRINE.md`, E3 et U, `4b7721b`) ; la reprise 7, points 11 à 13, sur `code-qcm` (`a56335c3`) ; les exécutants tournent depuis 08:25.
+
+Réponse, mot pour mot :
+
+1. Vérifié au hub, en lecture : ta séance de test est bien dans la corbeille depuis le 13/10 à 15:23.
+
+2. Noté : c'est toi qui décides, dans le profil longitudinal de MJPC, ce qui ne compte pas, et jamais une app. Je l'ai ajouté au cadrage du profil longitudinal, dans la doctrine (E3). Ta décision met aussi à jour une décision du 18/07 (U), qui prévoyait un écran « compter / ne pas compter » à la fin de chaque séance, dans l'app : je l'ai noté à cet endroit. J'ai vérifié que la 8.0.0 n'a pas d'écran de ce genre : il n'y a rien à retirer de l'app.
+
+3. Noté : c'est dans la reprise 7, en point 11, chez les exécutants.
+
+4. Noté : la classe ne sera plus jamais demandée, c'est dans la reprise 7, en point 13. Tu as raison sur le contrat, je l'ai mesuré. Dans la 7.7.2, l'élève venu de MJPC entrait directement : l'app lisait sa session MJPC, qui porte son nom et sa classe, et il n'avait ni classe à choisir ni code à taper. « Choisis ta classe » ne paraissait que si l'on ouvrait l'app sans passer par MJPC. Les sept autres apps lisent la même session, et je n'y ai trouvé aucun écran qui demande la classe. La 8.0.0, elle, demande la classe dès qu'il n'y a pas exactement une séance en cours, puis « Combien êtes-vous sur cette tablette ? ». Elle ne se sert de la session MJPC que si l'élève clique « 👤 1 élève » (« Tu es bien Julien ? ») ; avec « 👥 2 élèves », chacun retape son code, son prénom et son nom.
+
+Ma proposition, une seule règle pour toutes les apps : l'élève est identifié une fois, par MJPC, et l'app en déduit tout le reste. Julien ouvre le QCM depuis MJPC et voit un seul écran, « Tu es bien Julien ? », avec un clic sur « Oui ». Je garde ce clic parce qu'une tablette du collège peut avoir gardé la session d'un élève de l'heure d'avant. La séance de sa classe le place sur sa moitié, et l'autre moitié dit « Ton binôme : Léa. Léa, tape ton code à 4 chiffres. », comme aujourd'hui. Si Léa est absente à l'appel, Julien est seul, sans question. « Combien êtes-vous » disparaît, puisque la grille des binômes et l'appel savent déjà qui partage la tablette. Sans MJPC, le premier élève tape son code, son prénom et son nom, et la suite est la même. Pour la correction ou la revue des résultats, c'est pareil : MJPC dit qui il est, et il n'a rien à retaper. Cela change ton cadrage du 10/10, qui mettait « Combien êtes-vous » dans toutes les apps (l'en-tête de correction_dictee le dit encore). Tu valides ?
+
+5. Je réexplique. À la correction, avant la première question, chaque élève voit sur sa moitié l'écran « Avant la correction, Michel ». Les lignes y apparaissent une par une : il coche chacune pour voir la suivante, puis il clique « Je commence la correction ». Aujourd'hui, il y a cinq lignes : « Maintenant, la correction. Montre ta feuille à Julien. » ; « Pour chaque question, Julien clique ce que dit ta feuille. Toi, tu cliques ce que dit la feuille de Julien. » ; « Lis avec soin, et clique ce que tu lis. » ; « À la fin, Julien dira si tu as bien lu sa feuille. » ; puis la ligne des deux compétences d'autonomie. Avec ta règle (le bleu ou le noir pour la réflexion, le vert seul pour la correction, la trousse rangée), je propose d'ajouter une ligne en deuxième position, juste après « Montre ta feuille à Julien. » : « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. » Il la coche avant de continuer : c'est le moment où il range sa trousse. Pour une séance sur papier seul, l'écran a sa variante, où la même ligne viendrait juste après « Maintenant, la correction. ». Cette phrase, ou la tienne ?
+
+6. Noté : la phrase est retenue, et l'élève ne voit plus jamais de rouge dans ce qu'il doit écrire. C'est dans la reprise 7, en point 12.
+
+7. Ce n'était pas une question. Mes réponses de 20:07, 20:28, 20:40 et 08:21 n'avaient pas été recopiées dans le transcript telles que tu les as reçues ; je l'ai corrigé. Ce point est clos.
+
+8. La numérotation, telle que je la comprends : un point garde son numéro jusqu'au bout, et quand j'y reviens, je reprends ce numéro. Je ne donne un numéro neuf qu'à un sujet neuf, comme celui-ci. Je ne regrouperai plus d'anciens points sous un nouveau numéro, comme je l'avais fait en 1166. Les numéros 1 à 7 restent donc ceux de ce message, et le prochain sujet neuf sera le 9.
+
+15/10/2026 08:59 MEMO

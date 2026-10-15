@@ -14,3 +14,7 @@ input.codebox.codebox-h::placeholder{color:transparent}
 .fige + .eleve-choix.fige-choix { gap:.2rem; }
 .fige + .eleve-choix.fige-choix .eleve-choix-btn { padding:.2rem .5rem; font-size:.78rem; min-height:0; line-height:1.2; margin:0; }
 .eleve-q-zone .decl-b-titre { font-size:.85rem; line-height:1.25; }
+
+/* (heure de demain, 15/10) sur une moitié de tablette, un choix ne se soulève pas au survol : le soulèvement (qcm.css, translateY(-2px))
+   faisait osciller le bouton sous un pointeur resté sur son bord, et le clic suivant n'aboutissait pas ; la bordure violette reste */
+.moitie .eleve-choix-btn:hover:not(:disabled){ transform:none; }

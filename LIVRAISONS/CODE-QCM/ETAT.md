@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 10:39 — point 13 complété : ma part poussée (`bb951e4`), le geste de QCM-2 branché ; à QCM-4 : son banc ne clique pas « ↩️ Revenu » ; je veille jusqu'à « en ligne »
+- QCM-1 · SOCLE · 10:58 — point 13 complété poussé ; « ↩️ Revenu » qui n'écrit plus : cause trouvée chez QCM-2 (une clé `data-h2` pour toutes les lignes), dite dans DEMANDES ; je veille jusqu'à « en ligne »
 
 - QCM-2 · HEURE · 10:55 — rien d'ouvert à mon nom (dernier code `448e9d1` ; banc commun 210/211, l'échec restant est l'attente de « Combien êtes-vous ? » au banc, retiré par le point 13 ; heure de demain 109/109) ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « en ligne »
 

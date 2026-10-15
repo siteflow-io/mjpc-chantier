@@ -22472,3 +22472,33 @@ Réponse, mot pour mot :
 La maquette : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
 
 13/10/2026 20:40 MEMO
+
+---
+
+## TOUR 723 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (15/10, 08:17) messages pour les exécutants?
+
+---
+
+## TOUR 723 — Claude (conscience n°12)
+
+Mesuré : `code-qcm` à `a5a69308` (rien depuis le 13/10, 15:49), les quatre lignes d'`ETAT.md` arrêtées le 13/10 vers 13:32 ; la production à `cbe8e86`, `evaluation-qcm.html` md5 `9a5f5814…` (la 8.0.0). Mes contrôles cliquent « Oui, la même chose » (l. 179), que le point 9 garde ; des bancs de QCM-4 reconnaissent la question de l'élève à son ancien texte (`banc-reprise2.js` l. 84, `banc-reprise3.js` l. 58-59) : dit dans le point 4. Écrit : la reprise 7 complétée dans `DEFAUTS-OUVERTS.md` (`66470677` sur `code-qcm`) ; un contrôle programmé le 15/10 à 10:31 (`trig_01HC8DdAejaT9zNK55JEuUEY`), qui ne fait rien si personne n'a travaillé.
+
+Réponse, mot pour mot :
+
+1163. Le message, le même pour les quatre sessions :
+
+« Reprise 7, complétée le 15/10 : lis la section « Reprise 7 du 13/10, complétée le 15/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), et fais ta part, dans l'ordre. Tu tournes jusqu'à ce que la conscience écrive « en ligne » en tête de ce fichier, et tu pousses chaque morceau dès qu'il est fait, avec ta ligne dans ETAT.md. Tout est poussé à 10:15 ; QCM-4 pousse VERDICT.md à 10:30. »
+
+1164. Ce qu'il y a dedans : les points 1 à 7 du 13/10, puis trois points nouveaux. Le 8 : les lignes « à lire » disent en clair ce que l'élève a fait, les réponses sur leur propre ligne (1110 à 1114). Le 9 : ta phrase de l'élève, mot pour mot (1105). Le 10 : « Lire les copies », le code de la maquette v4, avec le point d'autonomie retiré ou rendu en un clic, et la note en direct. Tu n'as pas commenté la v4 : je la prends comme validée.
+
+1165. Calendrier : tout poussé à 10:15, verdict de QCM-4 à 10:30, mon contrôle à 10:31 (je l'ai programmé), en ligne à 10:45. Je ne mets en ligne que si aucune séance n'est en cours au hub à ce moment-là.
+
+1166. Ce qui n'y est pas, parce que j'attends ta réponse : 1153 et 1154 (tes mots pour le stylo vert), 1082 (le chrono de lecture figé à 0), 1083 (la tablette ne demande plus la classe), 1054 et 1055 (la corbeille de ta séance de test, et la règle « une séance sans aucune réponse ne compte pas »). Ce que tu réponds part chez les exécutants pendant qu'ils tournent.
+
+1167. Depuis le 13/10 au soir, personne n'a travaillé : la 8.0.0 est toujours en ligne.
+
+15/10/2026 08:21 MEMO

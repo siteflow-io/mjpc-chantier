@@ -22391,15 +22391,24 @@ Relu : cadrage 39 et 323 (les binômes d'après le QCM précédent), 495 et 496 
 
 Réponse, mot pour mot :
 
-1143. Déjà en place, et ça tient : le voile pendant le tour de l'autre, les binômes refaits d'après le QCM précédent (323), la question de 1105, la lecture par le voisin avant la bonne réponse, la co-évaluation, « Trouvée au dernier moment » une seule fois par évaluation, et ta lecture du soir. Ce qui manque, ce n'est pas un contrôle de plus : c'est que chaque faute trouvée ait sa conséquence, sans effort pour toi.
+1143. Ce qui est déjà en place tient :
+- le voile pendant le tour de l'autre ;
+- les binômes refaits d'après le QCM précédent (323) ;
+- la question de 1105 ;
+- la lecture par le voisin avant la bonne réponse ;
+- la co-évaluation ;
+- « Trouvée au dernier moment », une seule fois par évaluation ;
+- ta lecture du soir.
+
+Il ne manque pas un contrôle de plus. Il manque que chaque faute trouvée ait sa conséquence, sans effort pour toi.
 
 1144. Le soir, la conséquence en un clic. Quand tu réponds « ✏️ Autre chose », l'app sait qui s'est trompé. Si c'est l'élève, elle te demande : « Tom avait dit avoir bien écrit Venise. Retirer son point d'autonomie ? », avec « Oui » et « Non ». Si c'est le voisin : « Léa avait lu Venise. Retirer son point d'autonomie ? ». Aujourd'hui, rien ne bouge tout seul (1090) : il faut ouvrir la fiche de l'élève et cliquer « ⛔ Retirer le point d'autonomie ». C'est faisable, puisque ce geste existe déjà.
 
-1145. Moins de copies en main. En haut de « Lire les copies », l'app te donne la liste des copies à sortir du tas, par exemple « Sors du tas : CARRÉ Tom, CHEVALLIER Théo… (8) ». Tu sors ces 8 copies, et tu ne tapes les initiales que pour elles. Les 16 autres ne passent plus entre tes mains.
+1145. Moins de copies en main. En haut de « Lire les copies », l'app te donne la liste des copies à sortir du tas, par exemple « Sors du tas : CARRÉ Tom, CHEVALLIER Théo… (8) ». Tu sors ces 8 copies et tu ne tapes les initiales que pour elles. Les 16 autres ne passent plus entre tes mains.
 
-1146. En classe, sans rien dans l'app : à « POSE TON STYLO », le stylo de la réflexion se range, et seuls le vert et le rouge restent sur la table jusqu'à la fin de la correction. Celui qui ressort son stylo pour compléter sa feuille après avoir vu les choix se fait voir. C'est une règle de classe : à toi de dire si tu la veux, et avec quels mots.
+1146. En classe, sans rien dans l'app : à « POSE TON STYLO », l'élève range le stylo de la réflexion, et seuls le vert et le rouge restent sur la table jusqu'à la fin de la correction. Celui qui ressort son stylo pour compléter sa feuille après avoir vu les choix se fait voir. C'est une règle de classe : à toi de dire si tu la veux, et avec quels mots.
 
-1147. Tu veux lesquels ? 1144 et 1145 se font dans la maquette « Lire les copies », avant la reprise 7.
+1147. Tu veux lesquels ? 1144 et 1145 s'ajoutent à la maquette « Lire les copies », avant la reprise 7.
 
 13/10/2026 20:07 MEMO
 
@@ -22419,23 +22428,23 @@ Maquette v3 : `lire-copies.js` (« Sors du tas », `fautesL` calculé avant tout
 
 Réponse, mot pour mot :
 
-1148. Noté : 1144 et 1146. Tu n'as pas commenté 1145 ; comme tu ne commentes que ce que tu veux préciser, je l'ai pris comme acquis. Dis-moi si ce n'est pas le cas.
+1148. Noté pour 1144 et 1146. Tu n'as pas commenté 1145 : comme tu ne commentes que ce que tu veux préciser, je l'ai pris comme acquis. Dis-moi si ce n'est pas le cas.
 
-1149. 1144 et 1145 sont dans la maquette « Lire les copies », version 3, écrite dans le vrai code et jouée sur le faux hub ; les captures sont dans les fichiers envoyés. En haut, « 📤 Sors du tas » donne les 8 noms, et la liste raccourcit à chaque copie lue.
+1149. J'ai ajouté 1144 et 1145 à la maquette « Lire les copies », version 3, écrite dans le vrai code de l'app et jouée sur le faux hub ; les captures sont dans les fichiers envoyés. En haut de l'écran, « 📤 Sors du tas » donne les 8 noms, et la liste raccourcit à chaque copie lue.
 
-1150. Une précision sur 1144 : la question vient aussi après « ✅ Oui ». Théo avait dit avoir bien écrit « Madrid » ; Lou a lu « Sydney », et tu confirmes que la copie dit « Sydney » : c'est Théo qui s'est trompé. Après « ⛔ Oui », le point est retiré dans la base, comme depuis sa fiche ; après « Non », rien ne change.
+1150. Une précision sur 1144 : la question vient aussi après « ✅ Oui ». Théo avait dit avoir bien écrit « Madrid ». Lou a lu « Sydney », et tu confirmes que la copie dit « Sydney » : c'est donc Théo qui s'est trompé. Après « ⛔ Oui », le point est retiré dans la base, comme depuis sa fiche ; après « Non », rien ne change.
 
-1151. Je corrige 1146 : le stylo bleu ou noir ne peut pas se ranger à chaque « POSE TON STYLO », puisque la question suivante en a besoin. Il se range avec la trousse au début de la correction, et seul le vert reste.
+1151. Je corrige 1146 : le stylo bleu ou noir ne peut pas se ranger à chaque « POSE TON STYLO », puisque la question suivante en a besoin. L'élève le range avec sa trousse au début de la correction, et seul le vert reste.
 
 1152. Ce que 1146 ne ferme pas : pendant la réflexion de la question suivante, l'élève a son stylo en main et peut compléter une réponse déjà donnée. Ni l'app ni le voisin ne peuvent le voir ; seule ta surveillance le peut.
 
-1153. Pour l'élève, il faut tes mots à deux endroits. D'abord, une ligne dans « Avant la correction », ma proposition : « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. »
+1153. Il faut tes mots à deux endroits côté élève. D'abord, une ligne à ajouter dans « Avant la correction ». Ma proposition : « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. »
 
 1154. Ensuite, quand sa réponse est fausse, la tablette dit aujourd'hui « Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté. » (5 écrans). Avec le vert seul, je propose : « Barre ta réponse et écris la bonne réponse en entier en vert à côté. »
 
 1155. Le soir, tes phrases ne parlent plus de rouge (captures 2 et 3) : « sa réponse barrée était juste ; mets un V vert dans la marge », ou « barre le V vert, barre sa réponse et écris la bonne réponse à côté ».
 
-1156. Rien n'est en ligne, et rien n'est donné aux exécutants. Dis-moi pour 1153 et 1154 ; tout part ensuite dans la reprise 7.
+1156. Rien n'est en ligne, et rien n'est donné aux exécutants. Dis-moi ce que tu retiens pour 1153 et 1154 ; tout part ensuite dans la reprise 7.
 
 La maquette : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MAQUETTE-QCM-LIRE-COPIES-13-10/README.md
 
@@ -22457,13 +22466,13 @@ Maquette v4 : `lire-copies.js` sans « Sors du tas » ; `AutonomieL` (« ⛔ Ret
 
 Réponse, mot pour mot :
 
-1157. Noté : pas de 1145. Je l'ai retiré de la maquette, qui passe en version 4 ; les captures sont dans les fichiers envoyés.
+1157. Noté : pas de 1145. Je l'ai retiré de la maquette, qui passe en version 4. Les captures sont dans les fichiers envoyés.
 
-1158. Remettre un point d'autonomie : sous le nom de chaque copie, l'app dit si l'élève a son point (« 🤝 Tom a son point d'autonomie. », avec « ⛔ Retirer ») ou non (« ⛔ Point d'autonomie de Michel retiré le 13/10 à 09:46. », avec « ↩️ Rendre »). C'est le geste de la fiche, dans les deux sens, y compris pour un point retiré en classe (captures 7 et 8). Quand c'est le voisin qui a mal lu, le même bouton reste dans la case de sa faute (captures 4 et 5).
+1158. Remettre un point d'autonomie : sous le nom de chaque copie, l'app dit si l'élève a son point (« 🤝 Tom a son point d'autonomie. », avec un bouton « ⛔ Retirer ») ou s'il l'a perdu (« ⛔ Point d'autonomie de Michel retiré le 13/10 à 09:46. », avec un bouton « ↩️ Rendre »). C'est le même bouton que dans la fiche de l'élève, et il marche dans les deux sens, y compris pour un point retiré en classe (captures 7 et 8). Quand c'est le voisin qui a mal lu, le même bouton reste dans la case de sa faute (captures 4 et 5).
 
-1159. 1144, redit simplement. À la fin de son temps de réponse, Théo a dit : oui, j'ai bien écrit Madrid. À la correction, Lou a lu « Sydney » sur sa feuille. Le soir, l'app te demande : « La copie dit-elle « Sydney » ? ». Tu réponds « ✅ Oui ». Donc Théo n'avait pas écrit Madrid : il a dit faux, et l'app te demande s'il faut lui retirer son point (capture 6). La question peut donc venir après « Oui », pas seulement après « Autre chose ».
+1159. 1144, redit simplement. À la fin de son temps de réponse, Théo a dit : « oui, j'ai bien écrit Madrid ». À la correction, Lou a lu « Sydney » sur sa feuille. Le soir, l'app te demande : « La copie dit-elle « Sydney » ? ». Tu réponds « ✅ Oui ». Donc Théo n'avait pas écrit Madrid : il a dit faux, et l'app te demande s'il faut lui retirer son point (capture 6). La question peut donc venir après un « Oui », pas seulement après « Autre chose ».
 
-1160. La note en direct : à droite de chaque copie, « 🧮 La note, en direct » donne les points de chaque question et ce qui bouge, par exemple « Question 1 : 0 → 1 point (+1) », en vert quand ça monte, en rouge quand ça baisse. Dessous : « ✍️ Note : 1 / 3 → 2 / 3 · 6,7 → 13,3 / 20 ». En haut de l'écran, « 🧮 Ce soir » garde tout ce que ta relecture a changé : les notes, et les points d'autonomie retirés ou rendus.
+1160. La note en direct : à droite de chaque copie, l'encadré « 🧮 La note, en direct » donne les points de chaque question et ce qui bouge, par exemple « Question 1 : 0 → 1 point (+1) », en vert quand ça monte et en rouge quand ça baisse. Dessous : « ✍️ Note : 1 / 3 → 2 / 3 · 6,7 → 13,3 / 20 ». En haut de l'écran, « 🧮 Ce soir » liste tout ce que ta relecture a changé : les notes, et les points d'autonomie retirés ou rendus.
 
 1161. Une limite de la maquette, que le code devra lever : « Ce soir » repart de zéro si tu recharges la page. Le code gardera ce point de départ dans la base.
 
@@ -22489,16 +22498,55 @@ Mesuré : `code-qcm` à `a5a69308` (rien depuis le 13/10, 15:49), les quatre lig
 
 Réponse, mot pour mot :
 
-1163. Le message, le même pour les quatre sessions :
+1163. Voici le message à coller, le même dans les quatre sessions :
 
 « Reprise 7, complétée le 15/10 : lis la section « Reprise 7 du 13/10, complétée le 15/10 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), et fais ta part, dans l'ordre. Tu tournes jusqu'à ce que la conscience écrive « en ligne » en tête de ce fichier, et tu pousses chaque morceau dès qu'il est fait, avec ta ligne dans ETAT.md. Tout est poussé à 10:15 ; QCM-4 pousse VERDICT.md à 10:30. »
 
-1164. Ce qu'il y a dedans : les points 1 à 7 du 13/10, puis trois points nouveaux. Le 8 : les lignes « à lire » disent en clair ce que l'élève a fait, les réponses sur leur propre ligne (1110 à 1114). Le 9 : ta phrase de l'élève, mot pour mot (1105). Le 10 : « Lire les copies », le code de la maquette v4, avec le point d'autonomie retiré ou rendu en un clic, et la note en direct. Tu n'as pas commenté la v4 : je la prends comme validée.
+1164. La reprise reprend les points 1 à 7 du 13/10 et en ajoute trois. Le 8 : les lignes « à lire » disent en clair ce que l'élève a fait, avec chaque réponse sur sa propre ligne (1110 à 1114). Le 9 : ta phrase pour l'élève, mot pour mot (1105). Le 10 : « Lire les copies », le code de la maquette v4, avec le point d'autonomie retiré ou rendu en un clic et la note en direct. Tu n'as pas commenté la v4 : je la prends comme validée.
 
-1165. Calendrier : tout poussé à 10:15, verdict de QCM-4 à 10:30, mon contrôle à 10:31 (je l'ai programmé), en ligne à 10:45. Je ne mets en ligne que si aucune séance n'est en cours au hub à ce moment-là.
+1165. Calendrier : tout est poussé à 10:15, QCM-4 donne son verdict à 10:30, je contrôle à 10:31 (je l'ai programmé) et la mise en ligne est à 10:45. Je ne mets en ligne que si aucune séance n'est en cours au hub à ce moment-là.
 
-1166. Ce qui n'y est pas, parce que j'attends ta réponse : 1153 et 1154 (tes mots pour le stylo vert), 1082 (le chrono de lecture figé à 0), 1083 (la tablette ne demande plus la classe), 1054 et 1055 (la corbeille de ta séance de test, et la règle « une séance sans aucune réponse ne compte pas »). Ce que tu réponds part chez les exécutants pendant qu'ils tournent.
+1166. J'attends ta réponse sur six points, que j'ai laissés hors de la reprise :
+- 1153 et 1154 : tes mots pour le stylo vert ;
+- 1082 : le chrono de lecture figé à 0 ;
+- 1083 : la tablette ne demande plus la classe ;
+- 1054 : la corbeille de ta séance de test ;
+- 1055 : la règle « une séance sans aucune réponse ne compte pas ».
 
-1167. Depuis le 13/10 au soir, personne n'a travaillé : la 8.0.0 est toujours en ligne.
+Ce que tu réponds part chez les exécutants pendant qu'ils tournent.
+
+1167. Depuis le 13/10 au soir, personne n'a travaillé : c'est toujours la 8.0.0 qui est en ligne.
 
 15/10/2026 08:21 MEMO
+
+---
+
+## TOUR 724 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (15/10, 08:25) repose les questions précisément
+
+---
+
+## TOUR 724 — Claude (conscience n°12)
+
+Relu au transcript : 1052 à 1055 (tour 711), 1082 et 1083 (tour 713), 1151, 1153 et 1154 (tour 721, tels qu'envoyés). Faute d'enregistrement corrigée à ce tour : aux tours 720 à 723, le texte envoyé avait été reformulé après l'écriture de `reponse_N.md` (puces dans 1143 et 1166) ; les quatre réponses sont remplacées ici et au cadrage par le texte envoyé, mot pour mot. Rien n'est écrit dans l'app ni sur `code-qcm`.
+
+Réponse, mot pour mot :
+
+1054. Ta séance de test du 13/10 à 14:22 avec les 4e Hugo, sur ta copie de la démo, compte comme une vraie séance : chaque élève y a 0, d'où les mauvais niveaux de compétences. Un geste existe déjà pour la retirer : dans Données, la liste des séances, « 🗑️ » sur cette séance, puis « 🗑️ Mettre à la corbeille ». Elle sort des résultats, les niveaux des 4e Hugo disparaissent, et elle reste un an dans « 💾 Sauvegarde → 🗑️ Corbeille », restaurable. Ma question : tu la mets à la corbeille toi-même, ou tu me dis « mets-la à la corbeille » et je le fais au hub, après une copie au sas ?
+
+1055. Pour la suite, je te propose une règle : une séance terminée où aucun élève n'a répondu ne compte pas. Ma question : je l'ajoute à la reprise 7, oui ou non ?
+
+1082. À la correction, quand le chrono de lecture arrive à 0, il ne se passe rien, et le lecteur peut encore changer ses choix. Ma proposition : à 0, la lecture de celui qui a cliqué se fige, avec « ⏱️ Temps fini : ta lecture est enregistrée », comme pour la réponse ; celui qui n'a rien cliqué garde la main jusqu'à ce qu'il clique, et son nom reste en rouge sur ta console. Ma question : oui ou non ?
+
+1083. La tablette affiche « Choisis ta classe » quand aucune séance n'est en cours, ou quand plusieurs le sont. Ma proposition : la tablette ne demande plus jamais la classe, puisque le code de l'élève dit déjà qui il est et dans quelle classe il est. Ma question : oui ou non ?
+
+1153. Avec ta règle du stylo (1146 et 1151), l'élève range sa trousse et son stylo bleu ou noir au début de la correction. Il faut le lui dire par une ligne de plus dans « Avant la correction ». Ma proposition : « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. » Ma question : cette phrase, ou la tienne ?
+
+1154. Quand sa réponse est fausse, la tablette dit aujourd'hui : « Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté. » (5 écrans). Avec le vert seul, ma proposition : « Barre ta réponse et écris la bonne réponse en entier en vert à côté. » Ma question : cette phrase, ou la tienne ?
+
+1168. Une faute de ma part : mes réponses de 20:07, 20:28, 20:40 et 08:21 ont été reformulées au moment de l'envoi, et deux avaient des puces, malgré 1133. Je les ai remises au transcript telles que tu les as reçues.
+
+15/10/2026 08:26 MEMO

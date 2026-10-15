@@ -1,0 +1,153 @@
+Reprise 7, points 8, 9, 10, par le geste (QCM-4 · BANC) — durée 284 s · app md5 23609a66c416aaf1ae87b04ea02ed35e
+vérifications : 139 · échecs : 2
+── A1. Le tableau de la séance et la fiche, avant « Lire les copies » : les lignes du point 8 (le soir de la maquette)
+  ok     [QCM-4 · BANC] Données → Résultats → « 📊 Ouvrir » : le tableau de la séance 3 ESSAI
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau, Tom, Q1 : « Tom n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau, Tom, Q1 : sous la phrase, « Tablette et lecture de Léa : « Venise » »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau, Tom, Q1 : « « Venise » » 1 fois sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau, Théo, Q2 : « Théo dit avoir bien écrit sa réponse sur sa feuille ; Lou y a lu autre chose. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau, Théo, Q2 : sous la phrase, « Tablette : « Madrid » », « Lu par Lou : « Sydney » »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau, Michel, Q3 : « Julien n'a lu aucun des choix sur la feuille de Michel. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau, Michel, Q3 : sous la phrase, aucune ligne
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau, Michel, Q3 : « Tablette » absent sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau, Noah, Q3 : « Noah pense qu'Emma a peut-être mal lu sa feuille. »
+  ok     [QCM-3 · SOIR] le bouton « 📄 Lire les copies (n) » dans le tableau de la séance
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] fiche de Théo : « Théo dit avoir bien écrit sa réponse sur sa feuille ; Lou y a lu autre chose. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] fiche de Théo : sous la phrase, « Tablette : « Madrid » », « Lu par Lou : « Sydney » »
+── A2. « 📄 Lire les copies » : Tom (CT), « ✏️ Autre chose », Rome
+  ok     [QCM-3 · SOIR] « Lire les copies » : « Prends la première copie de ton tas et tape ses initiales »
+  ok     [QCM-1 · SOCLE] à la première ouverture, le point de départ s'enregistre (sessions/<id>/soir/depart)
+  ok     [QCM-3 · SOIR] « aj », Entrée : ABRIAL Julien, « Rien à lire sur cette copie : mets-la de côté. »
+  ok     [QCM-3 · SOIR] « ct », Entrée : CARRÉ Tom, « La copie dit-elle « Venise » ? »
+  ok     [QCM-3 · SOIR] sous le nom : « 🤝 Tom a son point d'autonomie. » et « ⛔ Retirer »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Lire les copies, Tom, Q1 (la ligne grise) : « Tom n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Lire les copies, Tom, Q1 (la ligne grise) : sous la phrase, « Tablette et lecture de Léa : « Venise » »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Lire les copies, Tom : plus l'ancienne phrase « n'a pas dit si sa feuille disait son clic »
+  ok     [QCM-3 · SOIR] « ✏️ Autre chose »
+  ok     [QCM-3 · SOIR] « Rome »
+  ok     [QCM-3 · SOIR] « ✔ Valider »
+  ok     [QCM-3 · SOIR] la note en direct : « Question 1 : 0 → 1 point (+1) »
+  ok     [QCM-3 · SOIR] « ✍️ Note : 1 / 3 → 2 / 3 · 6,7 → 13,3 / 20 »
+  ok     [QCM-3 · SOIR] ce que Paul écrit : « sa réponse barrée était juste ; mets un V vert dans la marge »
+  ok     [QCM-3 · SOIR] la question sur Léa : « Léa avait lu « Venise ». Retirer son point d'autonomie ? »
+  ok     [QCM-3 · SOIR] « 🧮 Ce soir » : Tom 1 / 3 → 2 / 3
+── A3. « ⛔ Oui » (Léa), puis « ↩️ Rendre » : lus dans la base
+  ok     [QCM-3 · SOIR] « ⛔ Oui »
+  ok     [QCM-1 · SOCLE] base : autonomie/baudry_lea retiré, « soir »
+  ok     [QCM-1 · SOCLE] base : aLire/carre_tom_0_b/autonomie/baudry_lea = "retire"
+  ok     [QCM-3 · SOIR] « 🧮 Ce soir » : Léa, point d'autonomie retiré
+  ok     [QCM-3 · SOIR] « ↩️ Rendre » dans la case de la faute de Léa
+  ok     [QCM-1 · SOCLE] base : après « ↩️ Rendre », plus de autonomie/baudry_lea retiré
+── A4. Théo (CHEV), « ✅ Oui » : la question sur Théo, puis « Non »
+  ok     [QCM-3 · SOIR] « chev », Entrée : CHEVALLIER Théo
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Lire les copies, Théo, Q2 (la ligne grise) : « Théo dit avoir bien écrit sa réponse sur sa feuille ; Lou y a lu autre chose. »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Lire les copies, Théo, Q2 (la ligne grise) : sous la phrase, « Tablette : « Madrid » », « Lu par Lou : « Sydney » »
+  ok     [QCM-3 · SOIR] « ✅ Oui »
+  ok     [QCM-3 · SOIR] la question sur Théo : « Théo avait dit avoir bien écrit « Madrid ». Retirer son point d'autonomie ? »
+  ok     [QCM-3 · SOIR] « Non »
+  ok     [QCM-1 · SOCLE] base : aLire/chevallier_theo_1_b/autonomie/chevallier_theo = "garde"
+── A5. Un rechargement : « 🧮 Ce soir » et le « Non » tiennent
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] après le rechargement, « 🧮 Ce soir » garde Tom 1 / 3 → 2 / 3
+  ok     [QCM-1 · SOCLE] le point de départ (soir/depart) n'a pas bougé au rechargement
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] après le rechargement, la question sur Théo (« Non ») ne revient pas
+── A6. Michel (DM) : « ↩️ Rendre » son point retiré en classe
+  ok     [QCM-3 · SOIR] sous le nom : « ⛔ Point d'autonomie de Michel retiré … » et « ↩️ Rendre »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Lire les copies, Michel, Q3 (la ligne grise) : « Julien n'a lu aucun des choix sur la feuille de Michel. »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Lire les copies, Michel, Q3 (la ligne grise) : sous la phrase, aucune ligne
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Lire les copies, Michel, Q3 (la ligne grise) : « Tablette » absent sous la phrase
+  ok     [QCM-3 · SOIR] « ↩️ Rendre »
+  ok     [QCM-1 · SOCLE] base : plus de autonomie/duvernay_michel retiré
+  ok     [QCM-3 · SOIR] « 🧮 Ce soir » : Michel, point d'autonomie rendu
+  ok     [QCM-3 · SOIR] pas de « Sors du tas », à aucun moment
+  ok     [QCM-3 · SOIR] aucune erreur de page (le soir)
+── B0. Le faux hub : une évaluation dont un choix fait 93 caractères, et Q2 à deux bonnes réponses ; 3 ESSAI, deux tablettes
+  ok     [QCM-4 · BANC] l'évaluation « Reprise 7 — réponses longues » se choisit au lancement
+── B1. Q1 à Q3 : la question de l'élève à la fin de son temps de réponse (point 9)
+  ok     [QCM-2 · HEURE] Q1, Julien : « Julien, tu as répondu Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir sur la tablette : avais-tu bien écrit Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir sur ta copie ? »
+  ok     [QCM-2 · HEURE] Q1, Julien : les boutons « Oui, la même chose » et « Non, autre chose »
+  ok     [QCM-2 · HEURE] Q1, Julien : plus « dit-elle la même chose que ton clic »
+  ok     [QCM-2 · HEURE] Q1, Léa : « Léa, tu as répondu Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir sur la tablette : avais-tu bien écrit Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir sur ta copie ? »
+  ok     [QCM-2 · HEURE] Q1, Léa : les boutons « Oui, la même chose » et « Non, autre chose »
+  ok     [QCM-2 · HEURE] Q1, Léa : plus « dit-elle la même chose que ton clic »
+  ok     [QCM-2 · HEURE] Q1, Camille : « Camille, tu as répondu Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir sur la tablette : avais-tu bien écrit Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir sur ta copie ? »
+  ok     [QCM-2 · HEURE] Q1, Camille : les boutons « Oui, la même chose » et « Non, autre chose »
+  ok     [QCM-2 · HEURE] Q1, Camille : plus « dit-elle la même chose que ton clic »
+  ok     [QCM-2 · HEURE] Q1, Tom : « Tom, tu as répondu Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir sur la tablette : avais-tu bien écrit Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir sur ta copie ? »
+  ok     [QCM-2 · HEURE] Q1, Tom : les boutons « Oui, la même chose » et « Non, autre chose »
+  ok     [QCM-2 · HEURE] Q1, Tom : plus « dit-elle la même chose que ton clic »
+  ok     [QCM-2 · HEURE] Q2, Julien : « Julien, tu as répondu Madrid et Berlin sur la tablette : avais-tu bien écrit Madrid et Berlin sur ta copie ? »
+  ok     [QCM-2 · HEURE] Q2, Julien : les boutons « Oui, la même chose » et « Non, autre chose »
+  ok     [QCM-2 · HEURE] Q2, Julien : plus « dit-elle la même chose que ton clic »
+  ok     [QCM-2 · HEURE] Q2, Léa : « Léa, tu as répondu Madrid et Berlin sur la tablette : avais-tu bien écrit Madrid et Berlin sur ta copie ? »
+  ok     [QCM-2 · HEURE] Q2, Léa : les boutons « Oui, la même chose » et « Non, autre chose »
+  ok     [QCM-2 · HEURE] Q2, Léa : plus « dit-elle la même chose que ton clic »
+  ok     [QCM-2 · HEURE] Q2, Camille : « Camille, tu as répondu Madrid et Berlin sur la tablette : avais-tu bien écrit Madrid et Berlin sur ta copie ? »
+  ok     [QCM-2 · HEURE] Q2, Camille : les boutons « Oui, la même chose » et « Non, autre chose »
+  ok     [QCM-2 · HEURE] Q2, Camille : plus « dit-elle la même chose que ton clic »
+  ok     [QCM-2 · HEURE] Q2, Tom : « Tom, tu as répondu Madrid et Berlin sur la tablette : avais-tu bien écrit Madrid et Berlin sur ta copie ? »
+  ok     [QCM-2 · HEURE] Q2, Tom : les boutons « Oui, la même chose » et « Non, autre chose »
+  ok     [QCM-2 · HEURE] Q2, Tom : plus « dit-elle la même chose que ton clic »
+  ok     [QCM-4 · BANC] la base a ce que le banc a fait dire : Julien rien à Q1, Léa « Non » à Q2, Camille « Oui » à Q1
+── B2. L'estimation, la correction : Léa lit sa réponse sur la feuille de Julien (Q1), Tom lit L1 chez Camille (Q1), Julien lit Madrid et Berlin chez Léa (Q2), Camille ne lit aucun choix chez Tom (Q2)
+  ok     [QCM-4 · BANC] la correction commence (ordreCorr)
+  ok     [QCM-4 · BANC] la base a les lectures du banc (Q2 de Tom : aucun ; Q1 de Camille : L1)
+── B3. La co-évaluation : Julien 🤔 Q1 (écrit L1), Camille ❌ Q1 (écrit L0), gardée pour le soir
+  ok     [QCM-4 · BANC] Julien : « 🤔 … peut-être mal lu »
+  ok     [QCM-4 · BANC] Julien : « Qu'avais-tu écrit sur ta feuille ? », L1
+  ok     [QCM-4 · BANC] Camille : « ❌ Je pense que Tom a mal lu »
+  ok     [QCM-4 · BANC] la base a la co-évaluation du banc (Julien peut, écrit L1 ; Camille mal)
+  ok     [QCM-4 · BANC] « 📌 Je relis ce soir la question 1 »
+── B4. La console : « 📌 À lire sur les feuilles, ce soir », une ligne de chaque sorte (point 8)
+  ok     [QCM-3 · SOIR] la console montre « 📌 À lire sur les feuilles, ce soir (n) »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (n'a rien dit) : « Julien n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (n'a rien dit) : sous la phrase, « Tablette et lecture de Léa : « Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir » »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (n'a rien dit) : « Parce que la partie éclairée par le Soleil que nou… » 1 fois sous la phrase
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (n'a rien dit) : « Tablette : » absent sous la phrase
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (a dit Oui, le voisin a lu autre chose) : « Camille dit avoir bien écrit sa réponse sur sa feuille ; Tom y a lu autre chose. »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (a dit Oui, le voisin a lu autre chose) : sous la phrase, « Tablette : « Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir » », « Lu par Tom : « Parce que l'ombre de la Terre recouvre chaque soir une partie différente de la Lune » »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (a dit Oui, le voisin a lu autre chose) : « Parce que la partie éclairée par le Soleil que nou… » 1 fois sous la phrase
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (a dit Oui, le voisin a lu autre chose) : « Parce que l'ombre de la Terre recouvre chaque soir… » 1 fois sous la phrase
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (a dit Non, le voisin a lu sa réponse) : « Léa dit avoir écrit autre chose sur sa feuille ; Julien y a lu sa réponse. »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (a dit Non, le voisin a lu sa réponse) : sous la phrase, « Tablette et lecture de Julien : « Madrid » et « Berlin » »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (a dit Non, le voisin a lu sa réponse) : « « Madrid » » 1 fois sous la phrase
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (le voisin n'a lu aucun choix) : « Camille n'a lu aucun des choix sur la feuille de Tom. »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (le voisin n'a lu aucun choix) : sous la phrase, aucune ligne
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (le voisin n'a lu aucun choix) : « Tablette » absent sous la phrase
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (co-évaluation « peut-être ») : « Julien pense que Léa a peut-être mal lu sa feuille. »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (co-évaluation « peut-être ») : sous la phrase, « Julien dit avoir écrit : « Parce que l'ombre de la Terre recouvre chaque soir une partie différente de la Lune » »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (co-évaluation « peut-être ») : « Parce que l'ombre de la Terre recouvre chaque soir… » 1 fois sous la phrase
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (l'alerte gardée pour le soir) : « Camille pense que Tom a mal lu sa feuille. »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (l'alerte gardée pour le soir) : sous la phrase, aucune ligne
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (l'alerte gardée pour le soir) : « Tablette » absent sous la phrase
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console (l'alerte gardée pour le soir) : « dit avoir écrit » absent sous la phrase
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] console : plus les anciennes phrases « … disait son clic »
+── B5. Le soir : le tableau de la séance et la fiche de l'élève
+  ok     [QCM-4 · BANC] Données → Résultats → « 📊 Ouvrir » de la séance « Reprise 7 — réponses longues »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (n'a rien dit) : « Julien n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (n'a rien dit) : sous la phrase, « Tablette et lecture de Léa : « Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir » »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (n'a rien dit) : « Parce que la partie éclairée par le Soleil que nou… » 1 fois sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (n'a rien dit) : « Tablette : » absent sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (a dit Oui, le voisin a lu autre chose) : « Camille dit avoir bien écrit sa réponse sur sa feuille ; Tom y a lu autre chose. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (a dit Oui, le voisin a lu autre chose) : sous la phrase, « Tablette : « Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir » », « Lu par Tom : « Parce que l'ombre de la Terre recouvre chaque soir une partie différente de la Lune » »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (a dit Oui, le voisin a lu autre chose) : « Parce que la partie éclairée par le Soleil que nou… » 1 fois sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (a dit Oui, le voisin a lu autre chose) : « Parce que l'ombre de la Terre recouvre chaque soir… » 1 fois sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (a dit Non, le voisin a lu sa réponse) : « Léa dit avoir écrit autre chose sur sa feuille ; Julien y a lu sa réponse. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (a dit Non, le voisin a lu sa réponse) : sous la phrase, « Tablette et lecture de Julien : « Madrid » et « Berlin » »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (a dit Non, le voisin a lu sa réponse) : « « Madrid » » 1 fois sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (le voisin n'a lu aucun choix) : « Camille n'a lu aucun des choix sur la feuille de Tom. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (le voisin n'a lu aucun choix) : sous la phrase, aucune ligne
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (le voisin n'a lu aucun choix) : « Tablette » absent sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (co-évaluation « peut-être ») : « Julien pense que Léa a peut-être mal lu sa feuille. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (co-évaluation « peut-être ») : sous la phrase, « Julien dit avoir écrit : « Parce que l'ombre de la Terre recouvre chaque soir une partie différente de la Lune » »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (co-évaluation « peut-être ») : « Parce que l'ombre de la Terre recouvre chaque soir… » 1 fois sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (l'alerte gardée pour le soir) : « Camille pense que Tom a mal lu sa feuille. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (l'alerte gardée pour le soir) : sous la phrase, aucune ligne
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (l'alerte gardée pour le soir) : « Tablette » absent sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] tableau de la séance (l'alerte gardée pour le soir) : « dit avoir écrit » absent sous la phrase
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] fiche de Julien (n'a rien dit) : « Julien n'a pas dit s'il avait bien écrit sa réponse sur sa feuille. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] fiche de Julien (n'a rien dit) : sous la phrase, « Tablette et lecture de Léa : « Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir » »
+  ÉCHEC  [QCM-3 · SOIR, QCM-1 · SOCLE] fiche de Julien (co-évaluation « peut-être ») : « Julien pense que Léa a peut-être mal lu sa feuille. » — vu : (introuvable ; début : 📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📊 Résultats 💾 Sauvegarde 👤 ABRIAL Julien — 3 / 3 · 20 / 20 · 🟢 Très bonne maîtrisei ✕ Fermer QUESTION SA FEUILLE,)
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] fiche de Camille (a dit Oui, le voisin a lu autre chose) : « Camille dit avoir bien écrit sa réponse sur sa feuille ; Tom y a lu autre chose. »
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] fiche de Camille (a dit Oui, le voisin a lu autre chose) : sous la phrase, « Tablette : « Parce que la partie éclairée par le Soleil que nous voyons depuis la Terre change chaque soir » », « Lu par Tom : « Parce que l'ombre de la Terre recouvre chaque soir une partie différente de la Lune » »
+  ÉCHEC  [QCM-3 · SOIR, QCM-1 · SOCLE] fiche de Camille (l'alerte gardée pour le soir) : « Camille pense que Tom a mal lu sa feuille. » — vu : (introuvable ; début : 📝 Évaluation QCMMODE PROF 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📊 Résultats 💾 Sauvegarde 👤 BRUNEAU Camille — 3 / 3 · 20 / 20 · 🟢 Très bonne maîtrisei ✕ Fermer QUESTION SA FEUILL)
+  ok     [QCM-3 · SOIR] aucune erreur de page (la console de la séance)

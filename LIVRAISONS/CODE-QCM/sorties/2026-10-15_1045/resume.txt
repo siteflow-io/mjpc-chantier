@@ -1,0 +1,87 @@
+Assemblage QCM-4 · BANC — 15/10/2026 10:45 (heure de Paris) — code-qcm 0aae9af
+
+── build.py
+evaluation-qcm.staging.html 2020730 octets, md5 23609a66c416aaf1ae87b04ea02ed35e
+  code de sortie : 0
+  app : 23609a66c416aaf1ae87b04ea02ed35e  evaluation-qcm.staging.html  2065347 octets
+
+── empreintes des contrôles de la conscience (la version de main, extraite telle quelle : /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/sorties/2026-10-15_1045/.controles-main/AUDITS/CONTROLES-QCM-APP)
+  controles-app.js: OK
+  attendus/evaluation-essai.json: OK
+  attendus/taxonomie-competences.json: OK
+
+── reprise2
+  Reprise 2, points 1 à 5, par le geste (QCM-4 · BANC) — durée 159 s
+  vérifications : 22 · échecs : 0
+
+── reprise3
+  Reprise 3, point 5, par le geste (QCM-4 · BANC) — durée 189 s
+  vérifications : 15 · échecs : 0
+
+── reprise4
+  Reprise 4, points 1 à 7, par le geste (QCM-4 · BANC) — durée 249 s
+  vérifications : 27 · échecs : 0
+
+── reprise5
+  Reprise 5, points 1, 2 et 4, par le geste (QCM-4 · BANC) — durée 83 s
+  vérifications : 10 · échecs : 6
+
+── reprise7-a
+  Reprise 7, points 1, 2, 3 et 5, par le geste (QCM-4 · BANC) — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — durée 99 s
+  vérifications : 40 · échecs : 0
+
+── reprise7-b
+  Reprise 7, points 6 et 7, par le geste en mode test (QCM-4 · BANC) — durée 358 s
+  vérifications : 85 · échecs : 2
+
+── reprise7-c
+  Reprise 7, points 8, 9, 10, par le geste (QCM-4 · BANC) — durée 284 s · app md5 23609a66c416aaf1ae87b04ea02ed35e
+  vérifications : 139 · échecs : 2
+
+── reprise7-d
+  Reprise 7, points 11, 12, 13, par le geste (QCM-4 · BANC) — durée 291 s · app md5 23609a66c416aaf1ae87b04ea02ed35e
+  vérifications : 84 · échecs : 1
+
+── banc commun (401 s, code 0)
+  Durée : 399 s (6 min 39 s) · vérifications : 211 · échecs : 0 · scènes relevées : 97
+
+── les gestes rares (174 s, code 1)
+  Durée : 173 s (2 min 53 s) · vérifications : 47 · échecs : 1
+
+── l'heure de demain (654 s, code 0)
+  Durée : 653 s (10 min 53 s) · vérifications : 109 · échecs : 0
+
+── contrôles de la conscience (162 s, code 1)
+  Contrôles de la conscience n°12 pour l'app — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-15T08:47:44.115Z
+  md5 de controles-app.js : 1f1ac0d8ca288d796d98b115bd461484
+  Durée : 156 s · vérifications : 32 · échecs : 2
+    ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  échecs : 2
+
+── fidélité à la maquette
+  Scènes atteintes par le geste : 119 / 157 (hors MJPC) · fidèles (aucun écart non nommé) : 29 · avec écarts : 90 · écarts nommés dans ecarts-maquette.json : 123
+
+── synthèse (synthese.txt)
+  Synthèse de l'assemblage 2026-10-15_1045
+  
+  Contrôles de la conscience : Durée : 156 s · vérifications : 32 · échecs : 2
+    ÉCHEC  K2 · la tablette demande « Combien êtes-vous sur cette tablette ? » — ✨
+    ÉCHEC  K2 · « 👥 2 élèves » partage la tablette en deux moitiés, chacune « 👋 Identifie-toi » — ✨
+  
+  ■ l'heure : 290 vérifications passent, 1 échouent
+      QCM-1 · SOCLE : 93 ok, 1 échecs
+      QCM-1 · SOCLE, QCM-2 · HEURE : 1 ok, 0 échecs
+      QCM-2 · HEURE : 194 ok, 0 échecs
+      QCM-3 · SOIR : 2 ok, 0 échecs
+  ■ le soir : 38 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 3 ok, 0 échecs
+      QCM-3 · SOIR : 35 ok, 0 échecs
+  ■ le reste : 16 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 1 ok, 0 échecs
+      QCM-3 · SOIR : 15 ok, 0 échecs
+  ■ toutes les pages : 22 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 22 ok, 0 échecs
+  
+  Fidélité : 119 scènes atteintes, 29 fidèles ; écarts non nommés : QCM-3 · SOIR 109 dans 23 scènes ; QCM-2 · HEURE 554 dans 67 scènes ; non atteintes : 38
+
+Durée totale de l'assemblage : 658 s

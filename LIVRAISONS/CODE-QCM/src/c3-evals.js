@@ -253,9 +253,13 @@ function fermer3(defaut){ if(typeof NAV !== "undefined" && NAV.pile && NAV.pile.
    Une évaluation est complète quand elle a son chapitre, et chaque question ses deux temps, ses compétences et ce qu'elle vérifie :
    sinon « Lancer » reste fermé (COMMUN §3.1). Le collage vérifie tout ce que le prompt demande, avant d'enregistrer. */
 function chapEv(e){ return e.chapitre ? chapitreVue(e.chapitre) : null; }
+// « Sans chapitre pour l'instant » (Paul, 13/10 14:18) : le chapitre ne manque plus, l'éditeur propose les 28 compétences, et un message rappelle de la rattacher
+function sansChapV(e){ return !!e && !e.chapitre && !!(e.sansChapitre || (e.brut && e.brut.sansChapitre)); }
+var SANS_CHAP = "sans-chapitre";
+function chapSansV(){ return {id:null, niveau:null, numero:null, titre:"", fiche:false, majeures:[], mineures:[], comps:toutesCompetences(), libelle:"Sans chapitre pour l'instant", court:"sans chapitre pour l'instant"}; }
 function manquesV(e){
   var l = [];
-  if(!chapEv(e)) l.push("le chapitre");
+  if(!chapEv(e) && !sansChapV(e)) l.push("le chapitre");
   if(!e.questions.length || e.questions.some(function(q){ return q.reflexion == null || q.reponse == null; })) l.push("les deux temps de chaque question");
   if(!e.questions.length || e.questions.some(function(q){ return !(q.competences || []).length; })) l.push("les compétences");
   if(!e.questions.length || e.questions.some(function(q){ return !q.verifie; })) l.push("ce que chaque question vérifie");
@@ -293,13 +297,14 @@ function CarteEvaluationsV(){
       h("div", null,
         h("div", {className:"eval-titre"}, e.titre),
         h("div", {className:"eval-meta"},
-          h("span", null, "📚 " + (e.chap || "chapitre : —")),
+          h("span", null, "📚 " + (e.chap || (sansChapV(e) ? "sans chapitre pour l'instant" : "chapitre : —"))),
           h("span", null, e.mode === "partiel" ? "✨ Partiel" : "🎯 Tout ou rien"),
           h("span", null, e.questions.length + " questions"),
           comps.length > 0 && h("span", null, "🧩 " + comps.length + " compétence" + (comps.length > 1 ? "s" : "")),
           e.cree && h("span", null, "Créée le " + e.cree)),
         pret ? h("div", {className:"eval-etat ok"}, "✅ Prête à lancer")
              : h("div", {className:"eval-etat manque"}, "⚠️ À compléter avant de la lancer : " + listeFr(manques)),
+        sansChapV(e) && h("div", {className:"eval-etat manque", "data-sans-chapitre":"1", title:"Elle se lance sans chapitre ; ouvre l'éditeur pour la rattacher à son chapitre."}, "⚠️ Sans chapitre pour l'instant : pense à la rattacher plus tard."),
         h("div", {className:"eval-passee"}, passees.length ? passees.map(function(x){ return "passée par " + x.classe + " le " + x.date; }).join(" · ") : "pas encore passée")),
       h("div", {className:"eval-actions"},
         h("button", {className:"btn btn-sm " + (pret ? "btn-ghost" : "btn-primary"), "data-va":"x627-3-editeur" + obj, title:pret ? "Ouvre l'éditeur sur « " + e.titre + " » : énoncés, choix, temps, compétences, ce que chaque question vérifie. Une évaluation déjà passée garde ses notes." : "Ouvre l'éditeur sur « " + e.titre + " », pour compléter ce qui manque avant de pouvoir la lancer : " + listeFr(manques) + "."}, pret ? "✏️ Modifier" : "✏️ Compléter"),
@@ -331,6 +336,8 @@ function CarteEvaluationsV(){
         h("button", {className:"btn btn-or btn-sm", "data-va":"c-reglages-prompt", title:"Ouvre le prompt de création d'éval, à copier dans l'instance qui écrit le JSON."}, "🤖 Prompt IA"),
         h("button", {className:"btn btn-primary btn-sm", "data-va":"c-collage", title:"Colle le JSON d'une nouvelle évaluation : l'app le vérifie avant de l'enregistrer."}, "➕ Nouvelle évaluation"))),
     h("p", {style:{opacity:.8, margin:".4rem 0 0"}}, "Prépare ici tes évaluations : rédaction, relecture, impression. Le lancement en classe se fait dans « Pilotage classe »."),
+    (function(){ var n = liste.filter(sansChapV).length; return n > 0 && h("div", {className:"fen-note", "data-sans-chapitre-tete":"1", style:{marginTop:".5rem", background:"#FFF4E0", border:"2px solid #F5A623", borderRadius:"10px", padding:".6rem .9rem", fontWeight:700}, title:"Les évaluations « Sans chapitre pour l'instant » se lancent ; ce message reste tant qu'une n'est pas rattachée à son chapitre."},
+      "⚠️ " + n + " évaluation" + (n > 1 ? "s" : "") + " sans chapitre pour l'instant : pense à les rattacher plus tard."); })(),
     h("div", {className:"eval-row demo-eval", "data-eval":"demo"},
       h("div", null,
         h("div", {className:"eval-titre"}, demo.titre, h("span", {className:"perm-chip"}, "🔒 Permanente")),
@@ -510,7 +517,7 @@ function EditeurVC(p){
   var s6 = useState(null), json = s6[0], setJson = s6[1], s7 = useState(false), envoi = s7[0], setEnvoi = s7[1];
   function changer(f){ var e = copieEval(ev); f(e); setEv(e); setModifs(modifs + 1); setJson(null); }
   function maj(i, f){ changer(function(e){ f(e.questions[i]); }); }
-  var ch = chapEv(ev), manques = manquesV(ev), bonus = ev.questions.filter(function(q){ return q.bonus; }).length, total = ev.questions.length - bonus;
+  var ch = chapEv(ev) || (sansChapV(ev) ? chapSansV() : null), manques = manquesV(ev), bonus = ev.questions.filter(function(q){ return q.bonus; }).length, total = ev.questions.length - bonus;
   var comps = competencesDe(ev), chapitres = chapitresConnus(ev.chapitre);
   useEffect(function(){
     function echap(e){ if(e.key === "Escape" && !window.SOMMAIRE_OUVERT){ e.stopImmediatePropagation(); if(modifs > 0) setGarde(true); else fermer3("c-evals"); } }
@@ -536,9 +543,9 @@ function EditeurVC(p){
         h("textarea", {className:"preview-titre-input", rows:2, value:ev.titre, placeholder:"Titre de l'évaluation", title:"Le titre de l'évaluation.", onChange:function(e){ var v = e.target.value; changer(function(x){ x.titre = v; }); }}),
         h("span", {className:"preview-titre-meta"}, ev.questions.length + " question" + (ev.questions.length > 1 ? "s" : "") + " · " + total + " point" + (total > 1 ? "s" : "") + (bonus ? " + " + bonus + " bonus" : ""))),
       h("div", {className:"ed-chap"}, h("span", {className:"ed-lbl"}, "📚 Chapitre", InfoI("Le chapitre donne le niveau et les compétences permises : une compétence hors du chapitre est refusée.")),
-        h("select", {value:ch ? ch.id : "", title:"Le chapitre de l'évaluation : il donne son niveau et les compétences permises.", onChange:function(e){ var c = chapitreVue(e.target.value);
-          changer(function(x){ x.chapitre = c ? c.id : null; x.chap = c ? c.court : null; x.niveau = c ? c.niveau : null; if(c) x.questions.forEach(function(q){ q.competences = (q.competences || []).filter(function(cc){ return c.comps.indexOf(cc) >= 0; }); }); }); }},
-          h("option", {value:""}, "— à choisir —"), chapitres.map(function(c){ return h("option", {key:c.id, value:c.id}, c.libelle); }))),
+        h("select", {value:ch ? (ch.id || SANS_CHAP) : "", title:"Le chapitre de l'évaluation : il donne son niveau et les compétences permises. « Sans chapitre pour l'instant » la laisse lancer, avec les 28 compétences ; un message te rappelle de la rattacher plus tard.", onChange:function(e){ var v = e.target.value, c = chapitreVue(v);
+          changer(function(x){ x.chapitre = c ? c.id : null; x.chap = c ? c.court : null; x.niveau = c ? c.niveau : null; x.sansChapitre = v === SANS_CHAP; if(c) x.questions.forEach(function(q){ q.competences = (q.competences || []).filter(function(cc){ return c.comps.indexOf(cc) >= 0; }); }); }); }},
+          h("option", {value:""}, "— à choisir —"), h("option", {value:SANS_CHAP}, "Sans chapitre pour l'instant"), chapitres.map(function(c){ return h("option", {key:c.id, value:c.id}, c.libelle); }))),
       h("div", {className:"preview-mode-row", style:{marginBottom:".8rem", padding:".7rem .9rem", background:"#FFF9E6", border:"2px solid #FFD23F", borderRadius:"10px"}},
         h("div", {style:{fontWeight:900, fontSize:".9rem", color:"#8B6914", marginBottom:".4rem"}}, "📊 Mode de scoring", InfoI("Tout ou rien : 1 point si la réponse est exacte. Partiel : une part du point par bonne case, autant de retiré par mauvaise, plancher 0.")),
         h("div", {style:{display:"flex", gap:".5rem", flexWrap:"wrap"}},

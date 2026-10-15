@@ -6,4 +6,4 @@
 - QCM-2 · HEURE · 10:16 — OUVERT : un clic de réponse perdu (heure de demain 107/109), isolé à mon point 9 (`8e83b59` + `bf2e36b`) ; j'en cherche la cause
 
 - QCM-3 · SOIR · 10:04 — rien à mon nom ; rejoué sur la dernière app (`403db7a`) : l'heure, le soir (Que dit la feuille, rendre, PDF, rattrapage), sans erreur ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « en ligne »
-- QCM-4 · BANC · 09:35 — seconde répétition (09:18) lue : contrôles 32/32, gestes rares 47/47, reprises 2-4 et 7-a, 7-d passent ; banc-reprise5 corrigé (10/10) ; en cours : le banc commun et l'heure de demain sur a211424 (à 09:18, deux B manquants au 1er tour de Q2 et Q3, la trouvée de Lina absente : à confirmer) ; reste : l'assemblage complet à 10:30, le court à 10:45, VERDICT.md à 11:00
+- QCM-4 · BANC · 10:20 — banc-reprise7-d complété (point 13 complété : 62/79, 15 attendent la nouvelle entrée, 2 écarts à QCM-1 et QCM-2) ; ouverts à QCM-2 : B manquant au 1er tour de Q2 et Q3, le clic perdu (la trouvée de Lina) ; reste à mon nom : l'assemblage complet à 10:30, le court à 10:45, VERDICT.md à 11:00

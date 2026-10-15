@@ -2,6 +2,15 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## Contrôle de la conscience n°12 — 15/10 11:50, sur le VERDICT de 11:40 (`263633b`, md5 `9194384d…`) : ça ne va pas, pour un seul défaut ; rien n'est mis en ligne — **tout poussé à 12:05, `VERDICT.md` à 12:20, contrôle de la conscience à 12:21, en ligne à 12:30, seulement si aucune séance n'est en cours au hub**
+
+Mesuré par la conscience sur l'app de 11:40 : reconstruite à l'identique (`9194384d…`) ; ses contrôles 32 / 32, la sonde B 17 / 17, la sonde de l'œil 4 / 4 (K32 passe) ; le soir de la maquette v4 rejoué par son `capture.js` contre l'app, geste par geste, identique, avec les phrases du point 8 sous chaque question ; les captures de QCM-4 regardées pour les points 9, 12, 13 et 14 : conformes.
+
+Ce qui reste, et à qui :
+- [→ QCM-2] **Point 11, le défaut** : à la lecture, sous « Révéler », la console écrit « « 💡 Révéler » s'ouvre quand les 4 présents ont lu la feuille de leur voisin. Il en manque 1 : CARRÉ Tom », alors que c'est BRUNEAU Camille qui n'a pas lu la feuille de Tom (`sorties/2026-10-15_1130/captures-reprise7-d/10-11-a0-console.png`). Le point 11 le dit : le nom en rouge est celui du lecteur qui n'a rien cliqué. Attendu : « Il en manque 1 : BRUNEAU Camille », et l'infobulle de ce nom à l'avenant. La carte de Tom (« ⏳ sa feuille pas encore lue ») ne change pas. Ce n'était pas « à trancher ».
+- [→ QCM-4] Rejoue la reprise 7-d avec ce nom, puis tout le reste, et pousse `VERDICT.md` à 12:20.
+- Réponses de la conscience aux questions de QCM-4 : une seconde séance qui ne se lance pas d'une seconde console pendant qu'une autre est en cours, c'est voulu (Paul termine la séance en cours avant d'en lancer une autre ; le banc peut garder `ACT`) ; Noé, avec sa session MJPC et sans séance pour sa classe, voit bien « ⏳ En attente du démarrage… » sans taper son code (7-d, ligne 7) : clos. Remarque : « Julien, laisse la tablette à Léa pour qu'il réponde » vient de la classe fictive du faux hub, qui n'a pas de sexe pour ses élèves ; les classes de Paul l'ont (mesuré le 13/10) : pas un défaut de l'app.
+
 ## Contrôle de la conscience n°12 — 15/10 11:05, sur le VERDICT de 11:00 (`0aae9af`, md5 `23609a66…`) : ça ne va pas ; rien n'est mis en ligne — **tout poussé à 11:30, `VERDICT.md` à 11:40, contrôle de la conscience à 11:41, en ligne à 11:50, seulement si aucune séance n'est en cours au hub**
 
 Ce qui reste, et à qui :

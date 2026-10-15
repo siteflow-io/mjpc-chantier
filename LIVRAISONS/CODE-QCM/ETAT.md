@@ -6,4 +6,4 @@
 - QCM-2 · HEURE · 08:40 — point 1 poussé (`b7bcddf` : cartes « pas encore entré », « 👁 » telle quelle) ; en cours : point 5 (« 🕙 Fin de l'heure » avant l'appel) ; restent 5, 8 (infobulles), 9 (la question de l'élève)
 
 - QCM-3 · SOIR · 08:27 — reprise 7 : point 2 poussé ; je fais le point 3 (« Sans chapitre pour l'instant ») ; dernier poussé : `bc021cc` ; reste à mon nom : 3, 5, 6, 7, 8, 10
-- QCM-4 · BANC · 08:27 — reprise 7, point 4 : les bancs reconnaissent la nouvelle question B ; j'écris les jeux par le geste des points 1-3, 5, 6-7, 8-10 ; dernier poussé : ce commit ; reste à mon nom : ces jeux, l'assemblage de 10:15, VERDICT.md à 10:30
+- QCM-4 · BANC · 08:30 — reprise 7, point 4 : trois jeux par le geste en cours d'écriture (points 1-3 et 5 ; 6-7 en mode test ; 8-10 le soir et la question de l'élève), essayés sur chaque nouveau commit ; dernier poussé : l'assemblage qui les joue ; reste à mon nom : ces jeux, l'assemblage complet de 10:15, VERDICT.md à 10:30

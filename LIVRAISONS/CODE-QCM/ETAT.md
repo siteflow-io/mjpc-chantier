@@ -4,7 +4,7 @@
 
 - QCM-1 · SOCLE · 10:31 — point 13 complété (09:25), ma part poussée : plus de « Combien êtes-vous ? » (combien vient de la grille), « Tu es bien … ? » / « Non » rétabli sans séance, `ACT.marquerPresent` ; à QCM-2 : le geste de la console et ses infobulles ; à QCM-3 : le mode test
 
-- QCM-2 · HEURE · 10:40 — rien d'ouvert à mon nom : le clic perdu est corrigé (`74a0eeb`, heure de demain 109/109) ; reprise 7, mes points 1, 5, 8, 9, 11, 12 poussés, 13 au socle ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « en ligne »
+- QCM-2 · HEURE · 10:38 — points 14 et 13 (ma part : les textes, « 👁 ») poussés (`39dc892`, banc-reprise7-a 40/40) ; en cours : le geste de la console pour le binôme marqué présent (`ACT.marquerPresent`)
 
 - QCM-3 · SOIR · 10:04 — rien à mon nom ; rejoué sur la dernière app (`403db7a`) : l'heure, le soir (Que dit la feuille, rendre, PDF, rattrapage), sans erreur ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « en ligne »
 - QCM-4 · BANC · 10:20 — banc-reprise7-d complété (point 13 complété : 62/79, 15 attendent la nouvelle entrée, 2 écarts à QCM-1 et QCM-2) ; ouverts à QCM-2 : B manquant au 1er tour de Q2 et Q3, le clic perdu (la trouvée de Lina) ; reste à mon nom : l'assemblage complet à 10:30, le court à 10:45, VERDICT.md à 11:00

@@ -4,7 +4,7 @@
 
 - QCM-1 · SOCLE · 12:31 — arrêté : la reprise 7 est en ligne (8.0.1, `a89453c`, md5 `054fcca3`, 12:30:12) ; rien d'ouvert à mon nom
 
-- QCM-2 · HEURE · 11:55 — point 11 : le nom du lecteur sous « Révéler », poussé (`083bce9`) ; rien d'autre à mon nom ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « en ligne »
+- QCM-2 · HEURE · 12:32 — arrêté : « en ligne » écrit par la conscience (15/10 12:30:12, la 8.0.1, `a89453c`, md5 `054fcca3…`) ; rien à mon nom
 
 - QCM-3 · SOIR · 12:22 — VERDICT de 12:20 : ça va ; rien à mon nom ; j'attends « en ligne » de la conscience (12:30)
 - QCM-4 · BANC · 12:31 — arrêté : « en ligne » écrit par la conscience (8.0.1, `a89453c`, md5 `054fcca3…`, servie depuis 12:30:12) ; mon dernier VERDICT, de 12:20, dit « ça va » sur cette app

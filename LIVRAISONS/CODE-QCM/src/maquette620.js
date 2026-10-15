@@ -306,6 +306,10 @@ function contenuTablette(se, t){
   if(!se || !t) return EcrCombien();
   var d = deroule(se.S) || {};
   if(d.ph === "appel" || !d.ph) return EcrCombien();
+  // reprise 7, point 6 (Paul, 13/10 15:37) : le dessin de la vraie tablette (TabletteVue, MoitieH de c3-tablettes.js), à chaque phase
+  // (la co-évaluation, le bilan), en petit comme en grand ; ses gestes passent par ELV pour l'élève de la moitié
+  if(typeof TabletteVue === "function" && typeof MoitieH === "function")
+    return t.d ? TabletteVue(t.g, t.d, false) : h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, MoitieH(t.g, "g", null)));
   var g = t.g ? MOITIES.ecran(eleveDe(t.g), "g") : null, dd = t.d ? MOITIES.ecran(eleveDe(t.d), "d") : null;
   return t.d ? Tablette(g, dd) : h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, g));
 }

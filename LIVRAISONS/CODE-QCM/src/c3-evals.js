@@ -474,9 +474,13 @@ function resteMesure(q, ecran, titre){
   // en direct, la note d'un élève se lit dans la séance : l'écran de lecture, dessiné hors séance pour la mesure, reçoit une note d'essai
   window.calc = function(){ return {st:["j", "j", "j"], pts:[1, 1, 1], n:3, total:3, complet:true, sur20:20, comp:{}, flags:[]}; };
   // la moitié telle qu'une tablette la montre, avec son en-tête (« 📊 Mes évaluations ») et le titre de l'évaluation : comme la scène étalon
-  window.SCENE_COURANTE = "t-annexe"; EV = ev; ORD = [{J:ordre, M:ordre}, {J:ordre, M:ordre}, {J:ordre, M:ordre}]; LU = {J:[ordre, ordre, ordre], M:[ordre, ordre, ordre]}; TABL = {J:[ordre, ordre, ordre], M:[ordre, ordre, ordre]};
+  // l'écran de B (reprise 7, point 9) redit le clic de l'élève, deux fois : on le mesure avec le clic attendu, ses bonnes réponses
+  // (et non tous les choix de la question, qu'aucun élève ne clique ensemble)
+  var clic = (q.bonnes || []).map(Number).filter(function(i){ return i >= 0 && i < n; }); if(!clic.length) clic = [0];
+  var tb = ecran === "b" ? clic : ordre;
+  window.SCENE_COURANTE = "t-annexe"; EV = ev; ORD = [{J:ordre, M:ordre}, {J:ordre, M:ordre}, {J:ordre, M:ordre}]; LU = {J:[ordre, ordre, ordre], M:[ordre, ordre, ordre]}; TABL = {J:[tb, tb, tb], M:[tb, tb, tb]};
   try {
-    var el = ecran === "reponse" ? EcrReponse(J, 2, ordre, ordre, 2, ev) : ecran === "b" ? EcrDeclareFlux(J, 2, ordre, 4) : EcrLecture(J, 2, true, 3);
+    var el = ecran === "reponse" ? EcrReponse(J, 2, ordre, ordre, 2, ev) : ecran === "b" ? EcrDeclareFlux(J, 2, clic, 4) : EcrLecture(J, 2, true, 3);
     ReactDOM.unmountComponentAtNode(root); ReactDOM.render(Tablette(el, el), root);
   } finally { EV = sv.EV; ORD = sv.ORD; LU = sv.LU; TABL = sv.TABL; window.SCENE_COURANTE = sv.sc; window.calc = sv.calc; }
   var m = d.querySelector(".moitie"), c = m && m.querySelector(".eleve-card");

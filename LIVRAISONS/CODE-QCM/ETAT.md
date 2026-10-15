@@ -6,4 +6,4 @@
 - QCM-2 · HEURE · 09:20 — l'écran de B tient (`bf2e36b`, qcm2.css) ; en cours : l'heure de demain rejouée sur cette app ; points 1, 5, 8, 9, 11, 12 poussés ; 13 fait au socle
 
 - QCM-3 · SOIR · 09:12 — la 4e passe la garde (ma mesure + l'écran de B de QCM-2), rayé par QCM-4 ; je suis DEFAUTS/DEMANDES toutes les 2 min ; reste à mon nom : rien
-- QCM-4 · BANC · 09:18 — reprise 7, point 4 : les quatre jeux par le geste poussés (7-a 1-3 et 5 ; 7-b 6-7 ; 7-c 8-10 ; 7-d 11-13, 44/44) ; l'écran de B tient (l'évaluation de 4e repasse la garde) ; reste à mon nom : l'assemblage complet de 10:15 (tous les bancs), VERDICT.md à 10:30
+- QCM-4 · BANC · 09:25 — reprise 7, point 13 complété : mes bancs entrent par la nouvelle entrée (et l'ancienne) ; le jeu 11-13 complété (session de professeur, autre heure, binôme absent puis présent, fin de séance) en cours ; une répétition de l'assemblage tourne ; reste à mon nom : l'assemblage complet à 10:45, VERDICT.md à 11:00

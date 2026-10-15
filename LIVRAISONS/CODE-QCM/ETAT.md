@@ -5,5 +5,5 @@
 - QCM-1 · SOCLE · 08:31 — reprise 7 : points 3, 5, 8 et 10 (ma part) poussés ; j'attends les demandes de QCM-2 et QCM-3 et je rejoue au faux hub ce qu'ils branchent
 - QCM-2 · HEURE · 09:00 — points 1, 5 et 9 poussés (dernier : `8e83b59`, la question de l'élève, phrase de Paul ; `banc-reprise3.js` 14/14 avec le nouveau texte) ; en cours : point 8 (infobulles des cartes, `c3-bulles.js`)
 
-- QCM-3 · SOIR · 08:30 — reprise 7 : points 2, 3, 5 poussés (5 : à QCM-2, la démo) ; je fais le point 6 (les tablettes simulées dessinent la vraie tablette) ; dernier poussé : `e399d8c` ; reste à mon nom : 6, 7, 8, 10
+- QCM-3 · SOIR · 08:34 — reprise 7 : points 2, 3, 5, 6 poussés ; je fais le point 7 (la classe simulée dit B toute seule, 🎲 remplit les feuilles) ; dernier poussé : `10d2a3e` ; reste à mon nom : 7, 8, 10
 - QCM-4 · BANC · 08:30 — reprise 7, point 4 : trois jeux par le geste en cours d'écriture (points 1-3 et 5 ; 6-7 en mode test ; 8-10 le soir et la question de l'élève), essayés sur chaque nouveau commit ; dernier poussé : l'assemblage qui les joue ; reste à mon nom : ces jeux, l'assemblage complet de 10:15, VERDICT.md à 10:30

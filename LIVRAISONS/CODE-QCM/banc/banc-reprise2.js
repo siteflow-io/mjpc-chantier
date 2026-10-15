@@ -81,7 +81,7 @@ const hhmm = () => new Date().toLocaleTimeString("fr-FR", {hour: "2-digit", minu
     await pause(3000); await repondre(t1, autre, 0); await pause(6000);
     // B pour lui seul, puis close
     const zb = await zoneTexte(t1, autre);
-    if(/dit-elle la même chose que ton clic/.test(zb)) await cliquer(t1, /Oui|la même chose/, autre);
+    if(/dit-elle la même chose que ton clic|avais-tu bien écrit .* sur ta copie/.test(zb)) await cliquer(t1, /Oui|la même chose/, autre);
     await pause(4000);
     const profA = await texte(prof), zq = await zoneTexte(t1, qui1);
     await capt(prof, "c-apres-rouvert-un"); await capt(t1, "t-apres-rouvert-un");

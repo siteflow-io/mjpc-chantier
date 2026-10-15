@@ -47,7 +47,7 @@ const hhmm = () => new Date().toLocaleTimeString("fr-FR", {hour: "2-digit", minu
     await pause(800);
     // B : qui l'a vu, qui l'a dit
     const vuB = new Set();
-    const guetterB = async () => { for(const [p, c, sl] of M){ if(vuB.has(sl)) continue; const z = await zoneTexte(p, c); if(/la même chose que ton clic/.test(z)){ vuB.add(sl); await cliquer(p, /Oui, la même chose/, c); } } };
+    const guetterB = async () => { for(const [p, c, sl] of M){ if(vuB.has(sl)) continue; const z = await zoneTexte(p, c); if(/la même chose que ton clic|avais-tu bien écrit .* sur ta copie/.test(z)){ vuB.add(sl); await cliquer(p, /Oui, la même chose/, c); } } };
 
     J.section("Q1 : « +5 » au 1er tour ; à chaque tour, un élève répond, l'autre non");
     await cliquer(prof, /Lancer Q1\b/); await pause(800);
@@ -96,7 +96,7 @@ const hhmm = () => new Date().toLocaleTimeString("fr-FR", {hour: "2-digit", minu
     const stylo = new Set(), bEnTrop = new Set();
     for(let k = 0; k < 100 && etat().ph !== "close"; k++){ await guetterB();
       for(const [p, c, sl] of M){ if(sl === slR2) continue; if(await ouverts(p, c, 0)) autresOuverts.push(pre(sl));
-        const z = await zoneTexte(p, c); if(new RegExp("Pose ton stylo, " + esc(pre(sl)) + "|" + esc(pre(sl)) + ", pose ton stylo", "i").test(z)) stylo.add(pre(sl)); if(/la même chose que ton clic/.test(z)) bEnTrop.add(pre(sl)); }
+        const z = await zoneTexte(p, c); if(new RegExp("Pose ton stylo, " + esc(pre(sl)) + "|" + esc(pre(sl)) + ", pose ton stylo", "i").test(z)) stylo.add(pre(sl)); if(/la même chose que ton clic|avais-tu bien écrit .* sur ta copie/.test(z)) bEnTrop.add(pre(sl)); }
       await pause(500); }
     J.v(stylo.size === 0, H2, "pendant « Rouvrir pour tous », aucun élève qui avait répondu (dont " + pre(sl2) + ", rouvert seul juste avant) ne lit « Pose ton stylo »", [...stylo].join(", "));
     J.v(bEnTrop.size === 0, H12, "pendant « Rouvrir pour tous », pas de nouvelle question B à ceux qui avaient déjà répondu", [...bEnTrop].join(", "));

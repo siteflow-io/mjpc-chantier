@@ -55,8 +55,8 @@ const JUSTE = [["Rome"], ["Madrid", "Berlin"], ["8"]];
         for(const [p, c, sl] of M){
           const z = await zoneTexte(p, c);
           const cle = qi + ":" + (etat().tour || 1) + ":" + sl;
-          if(!fait.has(cle) && !/la même chose que ton clic/.test(z) && (await O.choixOuverts(p, c, EV.questions[qi].choix)).length){ for(const x of JUSTE[qi]) await cliquer(p, new RegExp("^" + esc(x) + "$"), c); fait.add(cle); }
-          if(/la même chose que ton clic/.test(z)){
+          if(!fait.has(cle) && !/la même chose que ton clic|avais-tu bien écrit .* sur ta copie/.test(z) && (await O.choixOuverts(p, c, EV.questions[qi].choix)).length){ for(const x of JUSTE[qi]) await cliquer(p, new RegExp("^" + esc(x) + "$"), c); fait.add(cle); }
+          if(/la même chose que ton clic|avais-tu bien écrit .* sur ta copie/.test(z)){
             if(qi === 0 && sl === slY){ const e = etat(); const reste = (e.depuis || 0) + (e.duree || 0) * 1000 - Date.now();
               if(!bTardif && e.ph === "b" && reste < 2500 && reste > 300){ await cliquer(p, /Oui, la même chose/, c); bTardif = true; } }
             else await cliquer(p, /Oui, la même chose/, c);

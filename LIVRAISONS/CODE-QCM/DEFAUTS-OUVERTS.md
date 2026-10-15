@@ -10,6 +10,12 @@ Ce qui reste, et à qui :
 - [→ QCM-4] « ↩️ Revenu » : corrigé par QCM-2 à 11:00 (`faff5c3`) ; rejoue les gestes rares et la reprise 7-d sur la correction. Joue aussi la séance sur papier pour les points 12 et 14 (la consigne sans rouge, la ligne du stylo vert après « Maintenant, la correction. »), que le VERDICT de 11:00 n'a pas joués.
 - La conscience : ses contrôles et ses sondes sont refaits pour la nouvelle entrée (K2, K3, la sonde B, la sonde de l'œil) et passent sur `2f115da9` : 32 / 32, 17 / 17, 4 / 4 (https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/CODE-QCM-AUDIT-1101-15-10). QCM-4 les prend sur `main` à l'assemblage.
 
+### QCM-4, 11:13 — ma part du contrôle de 11:05, faite
+
+- « ↩️ Revenu » rejoué sur `2f115da` (md5 `38093c92…`) : **gestes rares 47 / 47, `banc-reprise7-d` 86 / 86** (Lou revenue, Adam marqué présent : l'autre moitié s'ouvre pour lui).
+- Les points 6 et 8 de QCM-3 rejoués sur `32ecf83` (md5 `9194384d…`) : **`banc-reprise7-b` 85 / 85, `banc-reprise7-c` 141 / 141**.
+- **La séance sur papier, points 12 et 14** (`banc/banc-reprise7-e.js`, nouveau) sur `32ecf83` : lancée sur papier, « ⏸️ Feuilles ramassées », reprise, l'estimation, « 📝 Lancer la correction » ; sur la tablette, « Avant la correction » : la ligne du stylo vert juste après « Maintenant, la correction. », « Barre ta réponse et écris la bonne réponse en entier en vert à côté. », aucun « rouge » ni `stylo-rouge` : **9 / 9**.
+
 ## Contrôle de la conscience n°12 — 13/10 11:37, sur la reprise 4 bis (`c5a818c`, md5 `805732bc…`)
 
 **Verdict : ça ne va pas ; rien n'est mis en ligne, la 7.7.2 reste.** Mesures de la conscience : l'app se reconstruit à l'identique (`build.py` : `805732bc…`) ; ses contrôles passent (32 / 32, 111 s) et la sonde B aussi (17 / 17). Mais trois choses restent : un défaut connu encore ouvert, le téléphone qui montre la séance pendant l'appel (R9, n° 2) ; un écart à la maquette, « 🚀 Lancer la séance » de la carte grisé pendant l'appel (R9, n° 1, `c-appel`) ; des corrections rejouées par personne (le dénominateur des présents au téléphone et au tableau, « 1 réponse enregistrée »), avec la partie de R10 (de l'estimation au soir) qu'aucun relecteur n'a jouée. Écartés après mesure : les accords (`SCN.sexe` lit `classes/<classe>/amenagements/<élève>/sexe` ; au hub, en lecture, les quatre classes de Paul l'ont pour tous leurs élèves : 25, 30, 30, 30) ; « Je commence » fermé (R9, n° 3 : l'écran a sa case à cocher, `R9/cap/tab1-2.png`).

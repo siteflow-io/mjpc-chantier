@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 11:05 — « ↩️ Revenu » corrigé (`faff5c3`, une clé par ligne) ; rien d'ouvert à mon nom ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « en ligne »
 
 - QCM-3 · SOIR · 11:10 — contrôle de 11:05 : mes deux points déjà poussés à 11:03 (`f6854cd`), à rejouer à 11:30 ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « en ligne » ; reste à mon nom : rien
-- QCM-4 · BANC · 10:57 — VERDICT de 11:00 poussé : ça ne va pas (« ↩️ Revenu » à QCM-2 et QCM-1 ; la fiche et le mode test à QCM-3 ; K2 à la conscience ; banc-reprise5 à rejouer) ; maintenant : je rejoue banc-reprise5 seul, puis mes bancs sur chaque correction, jusqu'à « en ligne »
+- QCM-4 · BANC · 11:13 — ma part du contrôle de 11:05 faite : « Revenu » (47/47, 86/86), les points 6 et 8 (85/85, 141/141), la séance sur papier pour 12 et 14 (banc-reprise7-e, 9/9) ; reste : l'assemblage à 11:30, VERDICT.md à 11:40

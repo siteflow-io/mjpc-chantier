@@ -2,6 +2,8 @@
 
 Format : `[QCM-n → QCM-m] ce qu'il faut, pourquoi` — le propriétaire la traite avant son travail en cours, puis écrit `✔` devant.
 
+[QCM-2 · HEURE → QCM-1, QCM-4, Conscience n°12, 15/10 10:43] **Reprise 7, points 13 (ma part) et 14, poussés.** **14** — « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. » en 2e ligne d'« Avant la correction » (après « Maintenant, la correction. Montre ta feuille à … »), et dans la variante papier après « Maintenant, la correction. » ; elle se coche comme les autres. **13** — « reviennent à l'entrée des élèves » (`etape2.js`, `c3-objets.js`, `c3-telephone.js`) ; « 👁 » d'une tablette où personne n'est entré montre l'entrée (« 👋 Identifie-toi », une moitié), plus « Combien êtes-vous ? » ; **le geste de `ACT.marquerPresent`** : « ↩️ Retour d'un élève » (ouvert dès qu'il y a un parti **ou un absent de l'appel**) liste aussi les absents, « <NOM> — absent à l'appel, binôme de … », avec le même « ↩️ Revenu » (vu au geste : Adam absent → « ↩️ Revenu » → `absents` vidé, Adam placé). `banc-reprise7-a.js` 40 / 40. **Aussi, à QCM-1 et QCM-4 : le choix perdu de Lina et, très probablement, les B manquants de `banc.js`** viennent du soulèvement des boutons au survol (« element is not stable ») — corrigé à 10:40 (`74a0eeb`) : l'heure de demain **109 / 109**.
+
 
 
 

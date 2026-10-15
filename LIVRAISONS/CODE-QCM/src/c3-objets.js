@@ -257,7 +257,7 @@ var FENETRES_H = {
         h("p", null, "À l'heure suivante, « 🎯 Pilotage classe » propose « ▶️ Reprendre la séance du " + jjmm(se.date || m.date) + " — " + ouH(m) + " ».")),
       [boutonH("a", "btn btn-ghost", "Annuler", fermerFen, "Ne change rien : la séance continue."), boutonH("ok", "btn btn-or", "⏸️ Finir à une autre heure", fait("finirAutreHeure"), "Met la séance en pause, telle qu'elle est, jusqu'à une heure suivante.")], null); },
   voirTablette:function(n, fond){ var pa = PAIRES[n - 1] || [null, null], m = momH();
-    return Fenetre(fond, "📱 Tablette " + n + " · " + [pa[0], pa[1]].filter(Boolean).map(affH).join(" · ") + " — en direct", "Ce que montrent ses deux moitiés, maintenant : " + ouH(m) + ".",
+    return Fenetre(fond, "📱 Tablette " + n + " · " + [pa[0], pa[1]].filter(Boolean).map(affH).join(" · ") + " — en direct", "Ce que montrent ses deux moitiés, maintenant : " + ((!pa[0] || !entreH(pa[0])) && (!pa[1] || !entreH(pa[1])) ? "personne n'y est encore entré" : ouH(m)) + ".",
       h("div", {className:"voir-tab fige-choix"}, h("div", {className:"voir-tab-in", style:{pointerEvents:"none"}, "aria-hidden":true}, TabletteTelleQuelleH(pa[0], pa[1]))),
       [boutonH("f", "btn btn-ghost", "✕ Fermer", fermerFen)], null, 900); },
   // la fiche d'un élève (un clic sur son nom) : son point d'autonomie, son départ
@@ -279,7 +279,16 @@ var FENETRES_H = {
 
 // (reprise 7, point 1) « 👁 » montre la tablette telle qu'elle est : personne d'entré, « Combien êtes-vous sur cette tablette ? » ;
 // une moitié dont l'élève n'est pas entré, son écran d'entrée ; sinon, l'écran de la phase (TabletteVue)
-function TabletteTelleQuelleH(g, d){
+function TabletteTelleQuelleH(g, d){ return h(VueTabletteH, {g:g, d:d}); }
+// dessinée comme sur la tablette elle-même (« 📊 Mes évaluations » sur chaque moitié entrée, Page) : l'appareil est « tablette »
+// le temps du rendu de ce sous-arbre (les écrans en composants compris), puis redevient celui de la page
+function VueTabletteH(p){
+  var av = window.APPAREIL_H === "tablette" ? (window.APPAREIL_H_AV || null) : window.APPAREIL_H;
+  window.APPAREIL_H_AV = av; window.APPAREIL_H = "tablette";
+  React.useLayoutEffect(function(){ window.APPAREIL_H = av; });
+  return tabletteTelleQuelle(p.g, p.d);
+}
+function tabletteTelleQuelle(g, d){
   var eg = g && entreH(g), ed = d && entreH(d);
   if(!eg && !ed) return EcrCombien();
   if((!g || eg) && (!d || ed)) return TabletteVue(g, d);

@@ -745,7 +745,7 @@ function LancementH(appel, opts){
         !appel && ev && h("div", {className:"field"}, h("label", null, "🕙 Fin de l'heure", InfoI("Par défaut maintenant + 55 min. Les tablettes oublient leurs élèves à « Terminer », ou 10 min après cette heure.")),
           h("input", {value:LANCEMENT_H.fin == null ? finParDefautH() : LANCEMENT_H.fin, title:"L'heure de la fin de l'heure, avant de lancer : la durée de la séance se compare au temps qui reste jusque-là.",
             onChange:function(e){ LANCEMENT_H.fin = e.target.value; LIVE.changer(); }, style:{width:"80px", padding:".3rem .4rem", border:"2px solid var(--bordure)", borderRadius:"6px", fontWeight:900, textAlign:"center", fontFamily:"inherit"}})),
-        !demo && !papier && ev && h("div", {className:"duree-box"}, texteDuree(ev)),
+        !papier && ev && h("div", {className:"duree-box"}, texteDuree(ev)),
         !ev ? h("button", {className:"btn btn-primary", disabled:true, title:"Aucune évaluation n'est prête à lancer : complète-la dans « 📝 Évaluations » (son chapitre, et pour chaque question ses deux temps et ses compétences)."}, "🚀 Lancer la séance")
           : demo ? (appel ? h("button", {className:"btn btn-primary", disabled:true, title:"La séance est lancée : l'appel est ouvert."}, "🎓 Lancer la démo")
             : h("button", Object.assign({className:"btn btn-primary"}, marqueH("LANCER-DEMO:" + classe, function(){ if(!classe) return; LIVE.classeSlug = classe; var r = ACT.lancerSeance(classe, "demo", {fin:finLancementH()}); LANCEMENT_H.fin = null; if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); })), "🎓 Lancer la démo"))

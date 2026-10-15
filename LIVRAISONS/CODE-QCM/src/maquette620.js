@@ -210,22 +210,49 @@ function quitterModeTest(){
 function notesTest(se){ var o = {}; se.presents.forEach(function(e){ var r = resultatV(se, e.slug); o[e.slug] = r ? r.n + "/" + r.total : null; }); return o; }
 function hasard(l){ return l[Math.floor(Math.random() * l.length)]; }
 // « 🎲 Tous les élèves répondent » : chacun fait, par les vrais gestes de l'élève, ce que le moment lui demande
+/* reprise 7, point 7 (Paul, 13/10 15:40, 15:47) : la classe simulée se comporte comme une vraie classe.
+   La feuille de chaque élève, question par question (feuillesTest/<qi>/<élève>) : ce que Paul tape sous la tablette, sinon son clic.
+   À chaque B, l'élève qui a répondu dit B tout seul : « Oui » si sa feuille dit la même chose que son clic, « Non » sinon ;
+   à la lecture, le voisin lit ce que dit cette feuille ; « 🎲 » fait répondre chaque élève à son tour, aux deux tours, et remplit sa feuille. */
+function normTest(s){ return (" " + String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim() + " "); }
+function feuilleTestV(se, x, qi){ var F = (se && se.S.feuillesTest) || {}, f = F[qi]; return f && typeof f === "object" ? String(f[x] || "").trim() : ""; }
+// les choix que dit la feuille (null : feuille vide, elle dit le clic ; "aucun" : aucun des choix)
+function feuilleChoixV(se, x, qi){ var f = feuilleTestV(se, x, qi), q = se.ev.questions[qi]; if(!f || !q) return null;
+  var n = normTest(f), l = q.choix.map(function(c, i){ return i; }).filter(function(i){ var c = normTest(q.choix[i]).trim(); return c && n.indexOf(" " + c + " ") >= 0; });
+  return l.length ? l : "aucun"; }
+function bDeLaFeuilleV(se, x, qi){ var r = SCN.reponse(x, qi), f = feuilleChoixV(se, x, qi); return f == null || (f !== "aucun" && r && memesChoixV(f, r.choix)) ? "oui" : "non"; }
+function lectureDeLaFeuilleV(se, x, qi){ var r = SCN.reponse(x, qi), f = feuilleChoixV(se, x, qi); return f == null ? (r ? r.choix : "aucun") : f; }
+function ecrireFeuilleTest(se, x, qi, choix){ if(feuilleTestV(se, x, qi)) return null; var q = se.ev.questions[qi]; return v3Set(v3Q("sessions/" + se.id + "/feuillesTest/" + qi + "/" + x), choixTexteV(q, choix)); }
+function repondreTest(se, x, qi){ var q = se.ev.questions[qi], faux = q.choix.map(function(c, i){ return i; }).filter(function(i){ return q.bonnes.indexOf(i) < 0; }), c = Math.random() < 0.7 || !faux.length ? q.bonnes : [hasard(faux)];
+  return Promise.all([ELV.repondre(qi, c, x), ecrireFeuilleTest(se, x, qi, c)]); }
+// sans clic de Paul, à chaque rendu du mode test : B pour chaque élève qui a répondu ; après « 🎲 », la moitié dont c'est le tour répond
+function classeSimuleeTest(se){
+  if(!se || !MODE_TEST.actif || MODE_TEST.sortie) return; var d = deroule(se.S) || {}, ph = d.ph, qi = d.qi, l = [], dit = MODE_TEST.dit = MODE_TEST.dit || {};
+  var qb = d.bPour && d.bPour.qi != null ? +d.bPour.qi : ph === "b" ? qi : null;
+  se.presents.forEach(function(e){ var x = e.slug;
+    if(qb != null && SCN.reponse(x, qb) && !SCN.ditB(x, qb) && (ph === "b" ? SCN.cote(x) === d.cote : typeof SCN.doitDireB === "function" && SCN.doitDireB(x))){
+      var k = se.id + ":b:" + qb + ":" + x; if(!dit[k]){ dit[k] = 1; l.push(ELV.direB(qb, bDeLaFeuilleV(se, x, qb), x)); } }
+    if(ph === "reponse" && qi != null && (MODE_TEST.auto || {})[se.id + ":" + qi] && SCN.cote(x) === d.cote && !SCN.reponse(x, qi)){
+      var k2 = se.id + ":r:" + qi + ":" + x; if(!dit[k2]){ dit[k2] = 1; l.push(repondreTest(se, x, qi)); } } });
+  return l.length ? Promise.all(l) : null;
+}
 function tousRepondent(){
   var se = testSession(); if(!se) return Promise.resolve();
   var d = deroule(se.S) || {}, ph = d.ph, qi = d.qi, ev = se.ev, l = [], pres = se.presents.map(function(e){ return e.slug; });
   var qb = d.bPour && d.bPour.qi != null ? +d.bPour.qi : qi;
   pres.forEach(function(x){
     // B : la moitié qui vient de répondre le dit, même pendant le tour suivant ou la question close (contrat C6 : SCN.doitDireB, deroule.bPour)
-    if(ph !== "b" && qb != null && typeof SCN.doitDireB === "function" && SCN.doitDireB(x) && !SCN.ditB(x, qb)) l.push(ELV.direB(qb, Math.random() < 0.85 ? "oui" : "non", x));
-    var q = qi != null ? ev.questions[qi] : null, juste = Math.random() < 0.7, faux = q ? q.choix.map(function(c, i){ return i; }).filter(function(i){ return q.bonnes.indexOf(i) < 0; }) : [];
+    if(ph !== "b" && qb != null && typeof SCN.doitDireB === "function" && SCN.doitDireB(x) && SCN.reponse(x, qb) && !SCN.ditB(x, qb)) l.push(ELV.direB(qb, bDeLaFeuilleV(se, x, qb), x));
     if(ph === "entree" || ph === "pret" || ph === "appel"){ l.push(ELV.cocher(1, 8, x)); l.push(ELV.commencer(x, 1)); }
-    else if((ph === "reponse" || ph === "rouvert") && (ph === "rouvert" ? d.pour === x || d.rouvert === "tous" : SCN.cote(x) === d.cote) && !SCN.reponse(x, qi)) l.push(ELV.repondre(qi, juste ? q.bonnes : [hasard(faux)], x));
-    else if(ph === "b" && SCN.cote(x) === d.cote && !SCN.ditB(x, qi)) l.push(ELV.direB(qi, Math.random() < 0.85 ? "oui" : "non", x));
+    else if((ph === "reponse" || ph === "rouvert") && (ph === "rouvert" ? d.pour === x || d.rouvert === "tous" : SCN.cote(x) === d.cote) && !SCN.reponse(x, qi)) l.push(repondreTest(se, x, qi));
+    else if(ph === "b" && SCN.cote(x) === d.cote && SCN.reponse(x, qi) && !SCN.ditB(x, qi)) l.push(ELV.direB(qi, bDeLaFeuilleV(se, x, qi), x));
     else if(ph === "estim" && !SCN.estimationDe(x)) l.push(ELV.estimer(hasard(["vert", "bleu", "orange", "rouge"]), x));
     else if(ph === "att2"){ l.push(ELV.cocher(2, 5, x)); l.push(ELV.commencer(x, 2)); }
-    else if(ph === "lecture" && !SCN.lecture(x, qi)){ var r = SCN.reponse(x, qi); l.push(ELV.lire(qi, r ? r.choix : "aucun", x)); }
+    else if(ph === "lecture" && !SCN.lecture(x, qi)) l.push(ELV.lire(qi, lectureDeLaFeuilleV(se, x, qi), x));
     else if(ph === "coeval" && !(SCN.coevalDe && SCN.coevalDe(x))) l.push(ELV.coeval("ok", null, null, x));
   });
+  // « 🎲 » pendant une question : chaque élève répond à son tour, l'autre moitié quand vient le sien (classeSimuleeTest)
+  if((ph === "reponse" || ph === "reflexion" || ph === "decompte") && qi != null){ MODE_TEST.auto = MODE_TEST.auto || {}; MODE_TEST.auto[se.id + ":" + qi] = 1; }
   return Promise.all(l);
 }
 // à l'entrée (après l'appel), chaque élève présent est entré sur sa tablette simulée, comme s'il avait tapé son code
@@ -239,7 +266,7 @@ var CAS_TEST = {
   // B se dit dans la phase b, ou pendant que la suite commence (contrat C6 : deroule.bPour, la moitié qui vient de répondre)
   "Un faux « Oui »":function(se, d){ var bp = d.bPour, enB = d.ph === "b" || !!bp, cote = bp ? bp.cote : d.cote, qi = bp ? +bp.qi : d.qi;
     if(!enB && d.ph !== "reponse") return false; var x = se.presents.filter(function(e){ return SCN.cote(e.slug) === cote && (!enB || SCN.reponse(e.slug, qi)); })[0]; if(!x) return false; var Q = se.ev.questions[qi];
-    return Promise.all([enB ? null : ELV.repondre(qi, Q.bonnes, x.slug), v3Set(v3Q("sessions/" + se.id + "/feuillesTest/" + x.slug), "autre chose que son clic"), enB ? ELV.direB(qi, "oui", x.slug) : null]); },
+    return Promise.all([enB ? null : ELV.repondre(qi, Q.bonnes, x.slug), v3Set(v3Q("sessions/" + se.id + "/feuillesTest/" + qi + "/" + x.slug), "autre chose que son clic"), enB ? ELV.direB(qi, "oui", x.slug) : null]); },
   "Rien de dit à la fin du temps":function(se, d){ var bp = d.bPour; if(d.ph !== "b" && !bp) return false; var cote = bp ? bp.cote : d.cote, qi = bp ? +bp.qi : d.qi;
     var x = se.presents.filter(function(e){ return SCN.cote(e.slug) === cote; })[0]; return x ? v3Set(v3Q("sessions/" + se.id + "/b/" + qi + "/" + x.slug), null) : false; },
   "Un lecteur qui clique « aucun » partout":function(se, d){ if(d.ph !== "lecture") return false; var x = se.presents[0].slug, v = SCN.voisinDe(x); return v ? ELV.lire(d.qi, "aucun", v) : false; },
@@ -314,13 +341,13 @@ function contenuTablette(se, t){
   return t.d ? Tablette(g, dd) : h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, g));
 }
 function FeuilleTest(p){
-  var se = p.se, x = p.x, v = se ? ((se.S.feuillesTest || {})[x] || "") : "";
+  var se = p.se, x = p.x, qf = se ? (deroule(se.S) || {}).qi : null, v = se && qf != null ? feuilleTestV(se, x, qf) : "";
   // la feuille posée à côté de la tablette : celle de la maquette validée (etape4.js, ChampFeuille)
   var pr = prenomDeNom(p.nom);
   return h("label", {className:"simt-f"},
     h("span", {className:"simt-fl"}, "📝 Feuille " + deNom(pr)),
-    h("input", {key:x + ":" + v, className:"simt-fi" + (v ? "" : " vide"), defaultValue:v, placeholder:"vide : sa feuille dira ce qu'" + (TEST_F[pr] ? "elle" : "il") + " clique", disabled:!se,
-      title:"Ce " + queNom(pr) + " écrit sur sa feuille, avec ses mots : tu le tapes ici.", onBlur:function(e){ if(se) v3Set(v3Q("sessions/" + se.id + "/feuillesTest/" + x), e.target.value.trim() || null); }}));
+    h("input", {key:x + ":" + qf + ":" + v, className:"simt-fi" + (v ? "" : " vide"), defaultValue:v, placeholder:"vide : sa feuille dira ce qu'" + (TEST_F[pr] ? "elle" : "il") + " clique", disabled:!se,
+      title:"Ce " + queNom(pr) + " écrit sur sa feuille, avec ses mots : tu le tapes ici.", onBlur:function(e){ if(se && qf != null) v3Set(v3Q("sessions/" + se.id + "/feuillesTest/" + qf + "/" + x), e.target.value.trim() || null); }}));
 }
 function TablettesSimuleesV(){
   var se = testSession(), d = se ? deroule(se.S) || {} : {}, places = se && SCN.places ? SCN.places() : [];
@@ -398,6 +425,7 @@ function ModeTestVC(){
   useEffect(function(){ preparerModeTest(); remettreDemo(); });
   var se = testSession(), d = se ? deroule(se.S) || {} : {};
   useEffect(function(){ if(se && d.ph && ["appel"].indexOf(d.ph) < 0) entrerTous(se); });
+  useEffect(function(){ classeSimuleeTest(se); });
   if(typeof LIVE !== "undefined" && LIVE.classeSlug !== CLASSE_TEST){ if(!MODE_TEST.avant) MODE_TEST.avant = {classeSlug:LIVE.classeSlug || null, sid:LIVE.sid || null, lancement:typeof LANCEMENT !== "undefined" ? {classe:LANCEMENT.classe, evalId:LANCEMENT.evalId} : null}; LIVE.classeSlug = CLASSE_TEST; LIVE.sid = null; }
   if(typeof LANCEMENT !== "undefined" && LANCEMENT.classe !== CLASSE_TEST){ LANCEMENT.classe = CLASSE_TEST; LANCEMENT.evalId = TEST_EVAL; }
   var panneau;

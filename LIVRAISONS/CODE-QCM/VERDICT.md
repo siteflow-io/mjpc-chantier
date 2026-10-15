@@ -1,4 +1,29 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 7, 11:40
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 7, 12:20
+
+*Après le contrôle de la conscience de 11:50 (un défaut : le point 11, le nom du lecteur). App : `evaluation-qcm.staging.html`, md5 **`054fcca31c7d1028eb0f7487ec4e9c4e`**, `code-qcm` à `a89453c` (tout ce qui était poussé à 12:05). Sorties : `sorties/2026-10-15_1205/`.*
+
+## Verdict : **ça va.**
+
+Le défaut du contrôle de 11:50 est corrigé (QCM-2, `083bce9`) et rejoué par le geste : sous « 💡 Révéler », « Il en manque 1 : BRUNEAU Camille », le lecteur qui n'a rien cliqué, et son nom en rouge (`banc-reprise7-d.js`, resserré : il acceptait l'un ou l'autre nom). Tout le reste passe sur cette app.
+
+| Épreuve, sur l'app de 12:05 (md5 `054fcca3…`) | Résultat |
+| --- | --- |
+| Contrôles de la conscience, ceux de `main` (md5 `b7d6b6ef…`, `EMPREINTES.md5` vérifié) | **32 / 32** |
+| Banc commun (B exigé de chacun, l'entrée unique, la tablette revient à l'entrée) | **211 / 211** |
+| L'heure de demain (l'évaluation de 4e collée, 11 questions) | **109 / 109** |
+| Gestes rares (dont « ↩️ Revenu ») | **47 / 47** |
+| Reprises 2, 3 (avec le point 14), 4, 5 | **22 / 22, 15 / 15, 27 / 27, 10 / 10** |
+| Reprise 7-a : points 1, 2, 3, 5 | **40 / 40** |
+| Reprise 7-b : points 6, 7 (mode test) | **80 / 80** |
+| Reprise 7-c : points 8, 9, 10 (le soir, « Lire les copies », la question de l'élève, les lignes à lire) | 112 / 141 dans l'assemblage (à Q2, aucune moitié n'a reçu la question B, la séance n'a pas avancé : la charge de 13 bancs en même temps) ; **rejoué seul à 12:16 sur la même app (md5 `054fcca3…`) : 141 / 141** (`sorties/2026-10-15_1205/seul/reprise7-c.txt`) |
+| Reprise 7-d : points 11 (le nom du lecteur), 12, 13 | **87 / 87** |
+| Reprise 7-e : points 12 et 14 sur papier | **9 / 9** |
+
+Les questions de QCM-4 sont closes par la conscience (11:50) : une seconde séance ne se lance pas d'une seconde console pendant qu'une autre est en cours, c'est voulu ; Noé, avec sa session MJPC et sans séance, voit « ⏳ » sans taper son code.
+
+---
+
+# Verdict de 11:40 (pour mémoire)
 
 *Après le contrôle de la conscience de 11:05. App : `evaluation-qcm.staging.html`, md5 **`9194384daab9d02d40d32d3314a90df5`**, `code-qcm` à `263633b` (tout ce qui était poussé à 11:30). Sorties : `sorties/2026-10-15_1130/`.*
 

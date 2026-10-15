@@ -11283,7 +11283,7 @@ function PilotCorrection(){
           reveler, suivant),
         !revele && pasLu.length > 0 && h("div", {className:"manquent"},
           h("div", {className:"tt"}, "« 💡 Révéler » s'ouvre quand les " + pres + " présents ont lu la feuille de leur voisin. Il en manque " + pasLu.length + " :"),
-          h("div", {className:"noms"}, pasLu.map(nomDe).join(" · "), InfoIB("Il en manque", "Le nom est celui dont la feuille n'est pas encore lue."))),
+          h("div", {className:"noms"}, lecteursH(pasLu).map(nomDe).join(" · "), InfoIB("Il en manque", "Le nom est celui du lecteur qui n'a encore rien cliqué : la feuille de son voisin n'est pas encore lue."))),
         lire.length > 0 && h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
           lire.map(function(x, i){ var o = x[3] || {}, lg = Array.isArray(o.lignes) ? o.lignes : []; return lg.length || o.prenom ? h("div", {key:i, className:"alire-x"}, h("div", {className:"alire-p"}, "Q" + (x[1]+1) + " : " + x[2]), lg.map(function(l, j){ return h("div", {key:j, className:"alire-l"}, l); })) : h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); }))),
       h("div", {className:"suivi-box"},
@@ -11563,7 +11563,7 @@ function PilotCorrectionH(){
           reveler, suivant),
         !revele && pasLu.length > 0 && h("div", {className:"manquent"},
           h("div", {className:"tt"}, "« 💡 Révéler » s'ouvre quand les " + pres + " présents ont lu la feuille de leur voisin. Il en manque " + pasLu.length + " :"),
-          h("div", {className:"noms"}, pasLu.map(nomDe).join(" · "), InfoIB("Il en manque", "Le nom est celui dont la feuille n'est pas encore lue."))),
+          h("div", {className:"noms"}, lecteursH(pasLu).map(nomDe).join(" · "), InfoIB("Il en manque", "Le nom est celui du lecteur qui n'a encore rien cliqué : la feuille de son voisin n'est pas encore lue."))),
         lire.length > 0 && h("div", {className:"alire"}, h("div", {className:"tt"}, "📌 À lire sur les feuilles, ce soir (" + lire.length + ")"),
           lire.map(function(x, i){ var o = x[3] || {}, lg = Array.isArray(o.lignes) ? o.lignes : []; return lg.length || o.prenom ? h("div", {key:i, className:"alire-x"}, h("div", {className:"alire-p"}, "Q" + (x[1]+1) + " : " + x[2]), lg.map(function(l, j){ return h("div", {key:j, className:"alire-l"}, l); })) : h("div", {key:i}, x[0] + " — Q" + (x[1]+1) + " : " + x[2]); }))),
       h("div", {className:"suivi-box"},
@@ -11777,6 +11777,9 @@ function BilanClasseH(){
           COMPS.map(function(cp){ return h("td", {key:cp}, PillComp(l.r, cp)); }),
           h("td", null, au.retire ? h("span", {className:"maitrise-pill mt-rouge"}, "⛔ retiré " + (au.quand || "")) : h("span", {className:"maitrise-pill mt-vert"}, "🟢 Très bonne maîtrise"))); }))))), true);
 }
+
+// (reprise 7, point 11) « Il en manque … » nomme le lecteur qui n'a rien cliqué, pas le propriétaire de la feuille : son voisin, ou lui-même s'il est seul
+function lecteursH(pasLu){ var out = []; (pasLu || []).forEach(function(p){ var seul = typeof SCN.seul === "function" && SCN.seul(p), v = seul ? null : SCN.voisinDe(p), l = enDirect() ? (v || p) : p; if(out.indexOf(l) < 0) out.push(l); }); return out; }
 
 /* ═════ c3-appareils.js ═════ */
 /* ═══════════════ Complément 3 — le tableau, le téléphone et les tablettes, au moment de la scène ═══════════════

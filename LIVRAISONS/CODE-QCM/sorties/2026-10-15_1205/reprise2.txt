@@ -1,0 +1,30 @@
+Reprise 2, points 1 à 5, par le geste (QCM-4 · BANC) — durée 167 s
+vérifications : 22 · échecs : 0
+── 5. Les compteurs, 4 élèves entrés sur 24 présents
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] à « ▶️ Lancer Q1 », « CONNECTÉS » compte les 4 entrés (4/24), pas 24/24
+── 1. Le chrono du téléphone avance
+  ok     [QCM-2 · HEURE] au téléphone, le chrono avance (deux lectures à 3 s d'écart)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] « ONT RÉPONDU » au 2e tour, sur les 24 présents (c-q1-tour2, c-q2-tour2 : « 23/24 ») ; en réflexion « 24 »
+  ok     [QCM-1 · SOCLE] Q1 close
+── 3. « 🔓 Rouvrir pour un élève » : pour lui seul
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour un élève »
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour Léa »
+  ok     [QCM-2 · HEURE] le téléphone n'annonce pas un tour à la classe (pas de « ⏭️ Tour suivant », pas de « moitiés de … »)
+  ok     [QCM-2 · HEURE] le tableau n'annonce pas « Pose ton stylo » à la classe
+  ok     [QCM-2 · HEURE] la console n'ouvre pas de « Phase RÉPONSE » pour la classe (c-rouvrir-un : « ⏸️ Question close »)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] après sa réponse, pas de 2e tour pour la classe (la console)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Julien, qui avait répondu, ne se voit pas redonner la question
+── 2. « 🔓 Rouvrir pour tous » : ceux qui n'ont pas répondu
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour tous »
+  ok     [QCM-1 · SOCLE] la question est rouverte (deroule.ph n'est plus close)
+  ok     [QCM-1 · SOCLE] la tablette 2 (sans réponse) retrouve la question
+  ok     [QCM-1 · SOCLE] Julien, qui avait répondu, ne la retrouve pas
+── 4. La console rechargée pendant la réflexion de Q2
+  ok     [QCM-2 · HEURE] « ⚠️ Séance interrompue détectée »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] l'état vrai : question 2, en réflexion
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] l'heure vraie de la coupure (10:07)
+  ok     [QCM-1 · SOCLE] la reprise garde le chrono où il en était (deroule.depuis inchangé)
+── 1. « ▶️ Commencer la correction » au téléphone
+  ok     [QCM-1 · SOCLE] tous prêts : la correction n'a pas commencé seule
+  ok     [QCM-2 · HEURE] au téléphone, « ▶️ Commencer la correction » s'ouvre quand tous sont prêts
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] le clic du téléphone lance la correction (deroule.ph = lecture)

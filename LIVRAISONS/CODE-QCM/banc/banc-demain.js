@@ -72,10 +72,10 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
     J.section("D.2 L'entrée et la première attestation");
     const tabs = {};
     await Promise.all(TABS.map(async t => { const p = await A.tablette("tablette-4e-" + t.n, "4 ESSAI"); tabs[t.n] = p;
-      await attendre(p, /Combien êtes-vous/, 8000); await cliquer(p, (!t.g || !t.d) ? /1 élève/ : /2 élèves/); await pause(300);
-      for(const [cote, sl] of cotes(t)){ const e = C4.find(x => slug(x.nomComplet) === sl); if(!e) continue;
-        await taper(p, cote, "code", e.code); await taper(p, cote, "prenom", e.prenom.toLowerCase()); await taper(p, cote, "nom", e.nom.toLowerCase()); await cliquer(p, /Entrer/, cote); await pause(300);
-        if(cote === null && /Tu es bien/.test(await texte(p))) await cliquer(p, /^Oui/); }
+      // reprise 7, point 13 : l'entrée d'outils.js (« Combien êtes-vous ? » ou l'entrée unique « 👋 Identifie-toi »)
+      const els = cotes(t).map(([cote, sl]) => [cote || (t.g ? "g" : "d"), (C4.find(x => slug(x.nomComplet) === sl) || {}).nomComplet]).filter(x => x[1]);
+      await O.entrerTablette(p, els, nm => C4.find(x => x.nomComplet === nm).code);
+      if(/Tu es bien/.test(await texte(p))) await cliquer(p, /^Oui/);
       for(const [cote] of cotes(t)){ await cocherTout(p, cote); await cliquer(p, /^Je commence$/, cote); } }));
     await pause(800);
     const at1 = ((sess().s.attest || {})[1]) || {};

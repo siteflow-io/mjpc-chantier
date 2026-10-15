@@ -90,8 +90,7 @@ function ressemblance(vrai, vu){ const a = lignes(vrai), b = new Set(lignes(vu))
   const fin = setTimeout(() => { J.v(false, BANC, "plafond de 6 minutes atteint"); ecrire(); process.exit(0); }, 360000);
   const hubs = [];
   const nouveauHub = async extra => { const h = await O.fauxHub(extra); const A = new O.Appareils(h.srv, h.port); await A.demarrer(); hubs.push({...h, A}); return {...h, A}; };
-  const entrer = async (B, p, cote, nom) => { const e = B.eleves.find(x => x.nomComplet === nom); const [N, ...P] = nom.split(" ");
-    await taper(p, cote, "code", e.code); await taper(p, cote, "prenom", P.join(" ").toLowerCase()); await taper(p, cote, "nom", N.toLowerCase()); await cliquer(p, /Entrer/, cote); await pause(400); };
+  const entrer = (B, p, cote, nom) => O.entrer1(p, cote, nom, B.eleves.find(x => x.nomComplet === nom).code);   // reprise 7, point 13 : l'entrée d'outils.js
   const versLancement = async prof => { await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(400); };
 
   // ════════ A — point 5, puis point 1 ════════
@@ -157,7 +156,7 @@ function ressemblance(vrai, vu){ const a = lignes(vrai), b = new Set(lignes(vu))
     J.v(await cliquer(prof, /Lancer Q1\b/), H2, "« ▶️ Lancer Q1 »"); await pause(2500);
     const tVt = await texte(tV); c = await capt(tV, "A-tablette-vide-q1");
     RAPPORT_INFO("la vraie tablette où personne n'entre, Q1 lancée : " + tVt.replace(/\n/g, " ⏎ ").slice(0, 200));
-    J.v(/Combien êtes-vous/.test(tVt) && !/QUESTION 1/i.test(tVt), H2, "la vraie tablette où personne n'entre reste sur « Combien êtes-vous sur cette tablette ? » (Q1 lancée)", tVt.slice(0, 200) + " (" + c + ")");
+    J.v(/Combien êtes-vous|Identifie-toi/.test(tVt) && !/QUESTION 1/i.test(tVt), H2, "la vraie tablette où personne n'entre reste sur « Combien êtes-vous sur cette tablette ? » (Q1 lancée)", tVt.slice(0, 200) + " (" + c + ")");
     const ctV = await carteTablette(prof, nV); c = await capt(prof, "A-console-cartes-q1");
     const ppV = [pl[nV].g, pl[nV].d].map(nomDe).map(x => x.split(" ").slice(1).join(" "));
     J.v(!!ctV && !/✍️ ?écrit/.test(ctV.texte) && /pas encore entr|pas entr|n'est pas (encore )?entr|ne sont pas (encore )?entr/i.test(ctV.texte), H2, "la carte « 📱 Tablette " + nV + " » (" + ppV.join(", ") + ", pas entrés) dit qu'ils ne sont pas encore entrés, pas « ✍️ écrit »", (ctV ? "carte : « " + ctV.texte.slice(0, 250) + " »" : "carte introuvable") + " (" + c + ")");
@@ -166,7 +165,7 @@ function ressemblance(vrai, vu){ const a = lignes(vrai), b = new Set(lignes(vu))
     if(ctV && ctV.oeil){ await prof.click("[data-oeil-banc='1']", {timeout: 3000}).catch(() => {}); await pause(1500); oV = await fenetreOeil(prof); }
     c = await capt(prof, "A-oeil-tablette-vide");
     J.v(!!oV, H2, "« 👁 » de la tablette " + nV + " s'ouvre", (ctV && ctV.oeil ? "pas de fenêtre « .voir-tab »" : "pas de « 👁 » sur la carte") + " (" + c + ")");
-    if(oV) J.v(/Combien êtes-vous/.test(oV.tout) && !/QUESTION 1/i.test(oV.tout), H2, "« 👁 » de la tablette " + nV + " montre son écran d'entrée (« Combien êtes-vous… »), pas la question", "« 👁 » montre : « " + O.norm(oV.tout).replace(/\n/g, " ⏎ ").slice(0, 250) + " » (" + c + ")");
+    if(oV) J.v(/Combien êtes-vous|Identifie-toi/.test(oV.tout) && !/QUESTION 1/i.test(oV.tout), H2, "« 👁 » de la tablette " + nV + " montre son écran d'entrée (« Combien êtes-vous… »), pas la question", "« 👁 » montre : « " + O.norm(oV.tout).replace(/\n/g, " ⏎ ").slice(0, 250) + " » (" + c + ")");
     await cliquer(prof, /✕ Fermer|^Fermer$/); await prof.keyboard.press("Escape").catch(() => {}); await pause(500);
     // « 👁 » sur la tablette où deux élèves sont entrés : ce que montre la vraie tablette
     const ctE = await carteTablette(prof, nE);
@@ -178,7 +177,7 @@ function ressemblance(vrai, vu){ const a = lignes(vrai), b = new Set(lignes(vu))
     else {
       const sG = ressemblance(vg, oE.g || oE.tout), sD = ressemblance(vd, oE.d || oE.tout);
       const ppE = [pl[nE].g, pl[nE].d].map(nomDe).map(x => x.split(" ").slice(1).join(" "));
-      const memePhase = (/QUESTION 1/i.test(vg + vd)) === (/QUESTION 1/i.test(oE.tout)) && !/Combien êtes-vous/.test(oE.tout);
+      const memePhase = (/QUESTION 1/i.test(vg + vd)) === (/QUESTION 1/i.test(oE.tout)) && !/Combien êtes-vous|Identifie-toi/.test(oE.tout);
       J.v(memePhase && sG >= 0.6 && sD >= 0.6 && ppE.every(x => oE.tout.toLowerCase().includes(x.toLowerCase())), H2, "« 👁 » de la tablette " + nE + " (" + ppE.join(", ") + ", entrés) montre ce que montre la vraie tablette, moitié par moitié",
         "lignes retrouvées : gauche " + Math.round(sG * 100) + " %, droite " + Math.round(sD * 100) + " % ; vraie tablette (g) : « " + O.norm(vg).replace(/\n/g, " ⏎ ").slice(0, 120) + " » ; « 👁 » (g) : « " + O.norm(oE.g || oE.tout).replace(/\n/g, " ⏎ ").slice(0, 120) + " » (" + cO + ", " + cT + ")");
     }

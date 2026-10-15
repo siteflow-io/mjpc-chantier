@@ -204,7 +204,7 @@ async function cellule(p, sl){ return norm(await p.evaluate(sl => { const tr = d
   let dernier = null;
   const sess = () => { const a = srv2.store.get("qcm/sessionActive") || {}; let id = a["3 ESSAI"] || a[slug("3 ESSAI")]; if(id && typeof id === "object") id = id.sessionId || id.id || id.sid; if(id) dernier = id; else id = dernier; return {sid: id, s: id ? srv2.store.get("qcm/sessions/" + id) || {} : {}}; };
   const etat = () => { const x = sess().s; return x.deroule && typeof x.deroule === "object" ? x.deroule : {}; };
-  const entrer = async (pg, cote, nom) => { const [N, ...P] = nom.split(" "); await taper(pg, cote, "code", codeDe(nom)); await taper(pg, cote, "prenom", P.join(" ").toLowerCase()); await taper(pg, cote, "nom", N.toLowerCase()); await cliquer(pg, /Entrer/, cote); await pause(400); };
+  const entrer = (pg, cote, nom) => O.entrer1(pg, cote, nom, codeDe(nom));   // reprise 7, point 13 : l'entrée d'outils.js (l'ancienne et la nouvelle)
   const prof = await A2.ouvrir("console", "?mode=prof", 1536, 864);
   await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
   await choisir(prof, /3 ESSAI/); await pause(200);

@@ -14,7 +14,7 @@ const J = new O.Journal();
 const RELEVES = {};       // scène de la maquette → relevé de l'app au même moment
 const PLAFOND = 19 * 60 * 1000;   // le banc tient en moins de 20 minutes : au-delà, il s'arrête et le dit
 const EV = JSON.parse(fs.readFileSync(path.join(O.RACINE, "AUDITS", "CONTROLES-QCM-APP", "attendus", "evaluation-essai.json")));
-const H1 = "QCM-1 · SOCLE", H2 = "QCM-2 · HEURE", H3 = "QCM-3 · SOIR";
+const H1 = "QCM-1 · SOCLE", H2 = "QCM-2 · HEURE", H12 = H1 + ", " + H2, H3 = "QCM-3 · SOIR";
 let nCapt = 0;
 
 async function scene(id, p, appareil){
@@ -103,7 +103,8 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
 
     J.section("1.3 L'entrée : les 12 tablettes partagées, au code, au clavier de l'app");
     const combien = await A.tablette("tablette-0", "3 ESSAI");
-    J.v(await attendre(combien, /Combien êtes-vous sur cette tablette/, 8000), H2, "une tablette demande « Combien êtes-vous sur cette tablette ? »", (await texte(combien)).slice(0, 160));
+    // reprise 7, point 13 (Paul, 15/10 09:19) : plus de « Combien êtes-vous ? » ; l'élève s'identifie une fois (« 👋 Identifie-toi »)
+    J.v(await attendre(combien, /Identifie-toi/, 8000) && !/Combien êtes-vous/.test(await texte(combien)), H12, "une tablette s'ouvre sur l'entrée des élèves, « 👋 Identifie-toi », sans « Combien êtes-vous ? » (reprise 7, point 13)", (await texte(combien)).slice(0, 160));
     J.v(!combien.__classeDemandee, H1, "une séance active : la tablette arrive sur « Combien êtes-vous ? » sans demander la classe (t-combien, comme la maquette)", "elle a d'abord demandé « 🎓 Choisis ta classe »");
     await scene("t-combien", combien, "tablette");
     // un code faux
@@ -115,15 +116,10 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     const champAvant = {};
     await Promise.all(TABS.map(async (t, i) => {
       const p = await A.tablette("tablette-" + t.n, "3 ESSAI"); tabs[t.n] = p;
-      await attendre(p, /Combien êtes-vous/, 8000);
-      const seul = !t.g || !t.d;
-      await cliquer(p, seul ? /1 élève/ : /2 élèves/); await pause(300);
-      for(const cote of seul ? [null] : ["g", "d"]){
-        const sl = seul ? (t.g || t.d) : t[cote]; const nom = nomDeSlug(sl); const [N, ...P] = nom.split(" ");
-        await taper(p, cote, "code", codeDe(nom)); await taper(p, cote, "prenom", P.join(" ").toLowerCase()); await taper(p, cote, "nom", N.toLowerCase());
-        if(enPlace && t.n === enPlace.n && sl === "abrial_julien") await scene("t-login", p, "tablette");
-        await cliquer(p, /Entrer/, cote); await pause(300);
-      }
+      // reprise 7, point 13 : l'entrée d'outils.js (« Combien êtes-vous ? » ou l'entrée unique « 👋 Identifie-toi », puis le code du binôme)
+      const els = (!t.g || !t.d) ? [[t.g ? "g" : "d", nomDeSlug(t.g || t.d)]] : [["g", nomDeSlug(t.g)], ["d", nomDeSlug(t.d)]];
+      if(enPlace && t.n === enPlace.n) await scene("t-login", p, "tablette");
+      await O.entrerTablette(p, els, codeDe);
     }));
     tabJM = enPlace ? tabs[enPlace.n] : null;
     const cJ = enPlace && enPlace.g === "abrial_julien" ? "g" : "d", cM = cJ === "g" ? "d" : "g";

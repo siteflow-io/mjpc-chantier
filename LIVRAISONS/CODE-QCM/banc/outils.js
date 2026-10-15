@@ -82,7 +82,7 @@ class Appareils {
   // une tablette : « 🎓 Choisis ta classe » (si l'app le demande), puis « Combien êtes-vous sur cette tablette ? »
   async tablette(nom, classe){
     const p = await this.ouvrir(nom, "?mode=eleve", 1280, 800);
-    for(let k = 0; k < 30; k++){ const t = await texte(p); if(/Combien êtes-vous/.test(t)) break;
+    for(let k = 0; k < 30; k++){ const t = await texte(p); if(/Combien êtes-vous|Identifie-toi|Tu es bien/.test(t)) break;
       if(/Choisis ta classe/.test(t)){ await cliquer(p, new RegExp("^" + esc(classe) + "$")); p.__classeDemandee = true; } await pause(250); }
     return p;
   }
@@ -160,4 +160,51 @@ async function choixOuverts(p, zone, choix){
 }
 async function photo(p, fichier){ try { await p.screenshot({path: fichier, fullPage: false}); return true; } catch(e){ return false; } }
 
-module.exports = { RACINE, FAUX, pause, norm, esc, slug, scenario, Journal, fauxHub, ajouterClasse, Appareils, texte, attendre, zoneTexte, cliquer, etatBouton, choisir, taper, cocherTout, choixOuverts, photo, releve };
+// ── L'entrée des élèves sur une tablette partagée (reprise 7, point 13, Paul 15/10 09:19) : sans « Combien êtes-vous ? », l'élève
+// s'identifie une fois (« 👋 Identifie-toi » : code, prénom, nom), la grille le place ; son binôme tape son code sur l'autre moitié
+// (« Léa, tape ton code à 4 chiffres : »). Avec l'ancienne entrée (« Combien êtes-vous ? »), « 1 élève » / « 2 élèves » puis chaque moitié.
+// eleves : [[cote, nom], …] dans l'ordre de la grille ; codeDe(nom) donne le code. Rend la liste des écrans traversés (pour le journal).
+async function entrerTablette(p, eleves, codeDe){
+  const vus = [];
+  const ident = async (zone, nom) => { const [N, ...P] = nom.split(" ");
+    if(!(await taper(p, zone, "code", codeDe(nom)))) return false;
+    await taper(p, zone, "prenom", P.join(" ").toLowerCase()); await taper(p, zone, "nom", N.toLowerCase());
+    if(!(await cliquer(p, /Entrer/, zone))) await cliquer(p, /Entrer/); await pause(400); return true; };
+  await attendre(p, /Combien êtes-vous|Identifie-toi|tape ton code|Tu es bien/, 8000);
+  const t0 = await texte(p);
+  if(/Combien êtes-vous/.test(t0)){
+    vus.push("Combien êtes-vous");
+    const seul = eleves.length === 1;
+    await cliquer(p, seul ? /1 élève/ : /2 élèves/); await pause(300);
+    for(const [cote, nom] of eleves) await ident(seul ? null : cote, nom);
+    return vus;
+  }
+  for(let i = 0; i < eleves.length; i++){
+    const [cote, nom] = eleves[i];
+    if(i === 0){
+      if(/Tu es bien/.test(await texte(p))){ vus.push("Tu es bien"); await cliquer(p, /^Non$/); await pause(400); }
+      vus.push("Identifie-toi");
+      if(!(await ident(cote, nom))) await ident(null, nom);
+    } else {
+      // le binôme : son code seul, sur sa moitié
+      await attendre(p, /tape ton code/, 4000);
+      const z = (await zoneTexte(p, cote)) || "";
+      if(/tape ton code/.test(z)){ vus.push("tape ton code"); await taper(p, cote, "code", codeDe(nom)); if(!(await cliquer(p, /Entrer/, cote))) await pause(200); await pause(400); }
+      else if(/Identifie-toi/.test(z)){ vus.push("Identifie-toi (binôme)"); await ident(cote, nom); }
+      else { vus.push("binôme ?"); await ident(cote, nom); }
+    }
+  }
+  return vus;
+}
+
+// Un élève sur sa moitié : code, prénom, nom, « Entrer » ; si le formulaire n'est pas dans la moitié (« 👋 Identifie-toi » de l'entrée
+// unique, reprise 7 point 13), l'écran entier ; un binôme ne tape que son code (« tape ton code à 4 chiffres »), les autres champs manquent
+async function entrer1(p, cote, nom, code){
+  const [N, ...P] = nom.split(" "); let z = cote;
+  if(!(await taper(p, z, "code", code))){ z = null; if(!(await taper(p, null, "code", code))) return false; }
+  await taper(p, z, "prenom", P.join(" ").toLowerCase()); await taper(p, z, "nom", N.toLowerCase());
+  if(!(await cliquer(p, /Entrer/, z)) && z) await cliquer(p, /Entrer/);
+  await pause(400); return true;
+}
+
+module.exports = { entrerTablette, entrer1, RACINE, FAUX, pause, norm, esc, slug, scenario, Journal, fauxHub, ajouterClasse, Appareils, texte, attendre, zoneTexte, cliquer, etatBouton, choisir, taper, cocherTout, choixOuverts, photo, releve };

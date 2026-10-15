@@ -117,7 +117,7 @@ let n = 0; const capt = async (p, id) => { const f = String(++n).padStart(2, "0"
     if(opts.point6){
       // l'appel : la vraie tablette n'a pas de séance (« Combien êtes-vous ? ») ; la simulée de même
       const pe = await vuePetit(); const c = await capt(prof, "s6-appel");
-      J.v(/Combien êtes-vous/.test(pe.tout), H3, "point 6, l'appel : la tablette simulée 1, en petit, dit « Combien êtes-vous sur cette tablette ? » comme la vraie (pas de séance pour les tablettes pendant l'appel)", pe.tout.slice(0, 200) + " ; capture " + c);
+      J.v(/Combien êtes-vous|Identifie-toi/.test(pe.tout), H3, "point 6, l'appel : la tablette simulée 1, en petit, dit « Combien êtes-vous sur cette tablette ? » comme la vraie (pas de séance pour les tablettes pendant l'appel)", pe.tout.slice(0, 200) + " ; capture " + c);
     }
     J.v(await cliquer(prof, /^🚀 Lancer la séance$/), H3, nom + " : « 🚀 Lancer la séance » de la fenêtre de l'appel"); await pause(2000);
     sess(); J.v(!!sid, H3, nom + " : la séance de test existe (sessionActive/" + CL + ")", JSON.stringify(srv.store.get("qcm/sessionActive")));

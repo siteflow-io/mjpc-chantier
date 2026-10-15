@@ -22550,3 +22550,35 @@ Réponse, mot pour mot :
 1168. Une faute de ma part : mes réponses de 20:07, 20:28, 20:40 et 08:21 ont été reformulées au moment de l'envoi, et deux avaient des puces, malgré 1133. Je les ai remises au transcript telles que tu les as reçues.
 
 15/10/2026 08:26 MEMO
+
+---
+
+## TOUR 725 — Paul
+
+Texte de Paul, mot pour mot :
+
+> (15/10, 08:42) 1054 = 1. on repart à 1.
+
+---
+
+## TOUR 725 — Claude (conscience n°12)
+
+La numérotation repart à 1, sur l'ordre de Paul : 1 = 1054, 2 = 1055, 3 = 1082, 4 = 1083, 5 = 1153, 6 = 1154, 7 = 1168. Le contrôle programmé de 10:31 (`trig_01HC8DdAejaT9zNK55JEuUEY`) est mis à jour : il ne numérote plus à partir de 1168, mais à partir du dernier numéro donné à Paul. Rien n'est écrit dans l'app ni sur `code-qcm`.
+
+Réponse, mot pour mot :
+
+1. (= 1054) Ta séance de test du 13/10 à 14:22 avec les 4e Hugo : tu la mets à la corbeille toi-même, ou je le fais au hub, après une copie au sas ?
+
+2. (= 1055) Une séance terminée où aucun élève n'a répondu ne compte pas : je l'ajoute à la reprise 7, oui ou non ?
+
+3. (= 1082) Quand le chrono de lecture arrive à 0, la lecture de celui qui a cliqué se fige, avec « ⏱️ Temps fini : ta lecture est enregistrée » : oui ou non ?
+
+4. (= 1083) La tablette ne demande plus jamais la classe : oui ou non ?
+
+5. (= 1153) Dans « Avant la correction », la ligne « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. » : cette phrase, ou la tienne ?
+
+6. (= 1154) Quand la réponse est fausse, « Barre ta réponse et écris la bonne réponse en entier en vert à côté. » : cette phrase, ou la tienne ?
+
+7. (= 1168) Ma faute d'enregistrement, déjà corrigée. Le prochain point sera le 8.
+
+15/10/2026 08:44 MEMO

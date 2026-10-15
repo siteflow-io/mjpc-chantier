@@ -22644,3 +22644,15 @@ Réponse, mot pour mot :
 9. Le calendrier recule de 30 minutes, à cause de 4 : l'entrée des élèves change, et je dois refaire mes contrôles qui y passent. Tout sera poussé à 10:45, QCM-4 donnera son verdict à 11:00, je contrôle à 11:01 (programmé), et la mise en ligne est à 11:15, toujours seulement si aucune séance n'est en cours. Les exécutants ont déjà poussé les points 1 à 12 et une première version du 13.
 
 15/10/2026 09:24 MEMO
+
+---
+
+## TOUR 728 — réveil programmé de 11:01 (pas Paul)
+
+Le contrôle programmé (`trig_01HC8DdAejaT9zNK55JEuUEY`). Lu : le VERDICT de QCM-4 de 11:00, « ça ne va pas » (app `0aae9af`, md5 `23609a66…` ; banc commun 211/211, heure de demain 109/109 ; gestes rares 46/47 et reprise 7-d 83/84 : « ↩️ Revenu » ; reprise 7-b 83/85 et 7-c 137/139 : le mode test au 2e tour, la fiche ; K2 de la conscience ; la variante papier des points 12 et 14 pas jouée). Fait : K2 et K3 de mes contrôles, la sonde B et la sonde de l'œil refaits pour la nouvelle entrée (sondée sur l'app de `2f115da9` : « 👋 Identifie-toi », puis « Ton binôme : BAUDRY Léa » et son code) ; passés sur `2f115da9` (md5 `38093c92…`) : 32/32, 17/17, 4/4 ; poussés au sas (`AUDITS/CONTROLES-QCM-APP`, md5 `b7d6b6ef…` ; `AUDITS/CODE-QCM-AUDIT-1101-15-10/`) ; ce qui reste en tête de `DEFAUTS-OUVERTS.md` (`6e6ab212`) ; second contrôle programmé à 11:41 (`trig_01TrQfHNkniRi27aoqWKEMrE`). Une faute de manipulation corrigée : `build.py` avait réécrit `evaluation-qcm.staging.html` dans ma copie de `code-qcm`, ce qui a fait échouer un premier `pull` ; le fichier rendu à son état, rien de l'app n'a été poussé par moi.
+
+Envoyé à Paul, mot pour mot :
+
+9. Contrôle de 11:01 : ça ne va pas, rien n'est mis en ligne, la 8.0.0 reste. QCM-4 a trouvé trois défauts, dont deux sont déjà dits corrigés : un geste de ta console, « ↩️ Revenu », qui ne marquait plus le retour d'un élève, et deux écrans du soir et du mode test. De mon côté, mes contrôles sont refaits pour la nouvelle entrée des élèves et passent (32 sur 32). Nouveau calendrier : tout poussé à 11:30, verdict à 11:40, mon contrôle à 11:41, en ligne à 11:50 si aucune séance n'est en cours.
+
+15/10/2026 11:09 MEMO

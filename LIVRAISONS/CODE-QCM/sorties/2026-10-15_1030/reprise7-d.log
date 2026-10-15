@@ -1,0 +1,271 @@
+── Point 13 — deux classes au faux hub, la séance de 3 ESSAI lancée ; 3 BANC sans séance  (0 s)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] la séance de 3 ESSAI est lancée par le geste (sessionActive/3 ESSAI)
+  note   3 ESSAI : ABRIAL Julien (session MJPC), BRUNEAU Camille (code) ; 3 BANC : ALBERT Noé (session MJPC), COSTE Maël (code)
+── Point 13 — sans séance pour 3 BANC : « ⏳ En attente du démarrage… »  (22 s)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Noé (3 BANC, session MJPC), seule la séance de 3 ESSAI en cours : « ⏳ En attente du démarrage… »
+  ok     [QCM-1 · SOCLE] Noé (3 BANC) n'est entré dans aucune séance (pas dans celle de 3 ESSAI)
+  SECOURS Maël : « Combien êtes-vous ? » ; le banc clique « 👤 1 élève » pour voir la suite
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Maël (3 BANC) tape code, prénom, nom, seule la séance de 3 ESSAI en cours : « ⏳ En attente du démarrage… »
+  ok     [QCM-1 · SOCLE] Maël (3 BANC) n'est entré dans aucune séance
+── Point 13 — la séance de 3 BANC lancée (seconde console) : deux séances en cours en même temps  (37 s)
+  note   la séance de 3 BANC ne s'est pas lancée (04-lancer-3_banc.png) : 📝 Évaluation QCMMODE PROF
+🔴
+1 séance en cours
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+🎯 Évaluation d'essai — 3 ESSAI
+🕙 Fin de l'heure : 9:27
+🚫 Départ d'un élève
+↩️ Retour d'un élève
+🔓 Rouvrir po
+  note   « 🎯 Pilotage classe » d'une seconde console, une séance en cours (3 ESSAI), mène au pilotage de cette séance et non à « 🎯 Lancer une nouvelle séance » : la séance de 3 BANC ne se lance pas par le geste (à dire à QCM-1, QCM-2 ; non compté ici)
+  SECOURS la séance de 3 BANC lancée par ACT.lancerSeance("3 BANC", "essai") + ACT.appelFini([]) sur la seconde console, pour jouer le point 13
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] deux séances en cours : sessionActive porte 3 ESSAI et 3 BANC
+── Point 13 — par la session MJPC : chacun arrive dans la séance de sa classe  (46 s)
+  SECOURS Julien : « Combien êtes-vous ? » ; le banc clique « 👤 1 élève » pour voir la suite
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Julien (3 ESSAI, session MJPC) arrive dans la séance de 3 ESSAI (sessions/sess_1792053139577/entres)
+  ok     [QCM-2 · HEURE] Julien : sa moitié montre la séance (« Avant de commencer, Julien »)
+  SECOURS Noé : « Combien êtes-vous ? » ; le banc clique « 👤 1 élève » pour voir la suite
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Noé (3 BANC, session MJPC) arrive dans la séance de 3 BANC (sessions/sess_1792053164808/entres)
+  ok     [QCM-2 · HEURE] Noé : sa moitié montre la séance (« Avant de commencer, Noé »)
+── Point 13 — sans session MJPC, par « 👋 Identifie-toi » : chacun arrive dans la séance de sa classe  (62 s)
+  SECOURS Camille : « Combien êtes-vous ? » ; le banc clique « 👤 1 élève » pour voir la suite
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Camille (3 ESSAI, code, prénom, nom) arrive dans la séance de 3 ESSAI
+  ok     [QCM-2 · HEURE] Camille : sa moitié montre la séance (« Avant de commencer, Camille »)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Maël (3 BANC, code, prénom, nom) arrive dans la séance de 3 BANC
+  ok     [QCM-2 · HEURE] Maël : sa moitié montre la séance (« Avant de commencer, Maël »)
+── Point 13 — « 🎓 Choisis ta classe » et « Combien êtes-vous » à aucune étape  (80 s)
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Noé (3 BANC) : jamais « Combien êtes-vous sur cette tablette ? » — « Combien êtes-vous sur cette tablette ? » à Noé, étape 1 (07-vu-combien_etes_vous_su-tablette_mjpc_3banc.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Noé (3 BANC) : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Maël (3 BANC) : jamais « Combien êtes-vous sur cette tablette ? » — « Combien êtes-vous sur cette tablette ? » à Maël, étape 1 (02-vu-combien_etes_vous_su-tablette_code_3banc.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Maël (3 BANC) : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Julien (3 ESSAI) : jamais « Combien êtes-vous sur cette tablette ? » — « Combien êtes-vous sur cette tablette ? » à Julien, étape 1 (05-vu-combien_etes_vous_su-tablette_mjpc_3essai.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Julien (3 ESSAI) : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Camille (3 ESSAI) : jamais « Combien êtes-vous sur cette tablette ? » — « Combien êtes-vous sur cette tablette ? » à Camille, étape 2 (09-vu-combien_etes_vous_su-tablette_code_3essai.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Camille (3 ESSAI) : jamais « 🎓 Choisis ta classe »
+── Points 11, 12 — la séance de 3 ESSAI, deux tablettes, quatre élèves  (81 s)
+  SECOURS tablette-1 : l'ancienne entrée (« 👥 2 élèves », chaque moitié) pour jouer la suite
+  SECOURS tablette-2 : l'ancienne entrée (« 👥 2 élèves », chaque moitié) pour jouer la suite
+  ok     [QCM-2 · HEURE] point 12, l'entrée et « Avant de commencer » : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  note   tablette 1 : Julien | Léa ; tablette 2 : Camille | Tom ; Camille répond « Milan » à Q1
+── Points 11, 12 — Q1 à Q3, chaque phase relevée  (125 s)
+  ok     [QCM-2 · HEURE] point 12, Q1, phase passage-1 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, Q1, phase reponse-1 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, Q1, phase reponse-2 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, Q1, phase b-2 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, Q1 close : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, l'estimation : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, « Avant la correction » : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-1 · SOCLE] la correction commence au clic de Paul (deroule.ph = lecture)
+── Point 11 — Q1 : trois lecteurs cliquent, Camille (lecteur de la feuille de Tom) ne clique rien ; le chrono va à 0  (228 s)
+  ok     [QCM-2 · HEURE] point 12, la lecture de Q1, avant 0 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  note   chrono de lecture : {"ph":"lecture","qi":0,"duree":15}, 0 dans 13 s
+  ok     [QCM-2 · HEURE] à 0, la question reste en lecture (Paul révèle)
+  ok     [QCM-2 · HEURE] à 0, la moitié de Julien (lue par Léa, qui a cliqué) : « ⏱️ Temps fini : ta lecture est enregistrée »
+  ok     [QCM-2 · HEURE] à 0, les choix de cette lecture sont fermés
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] à 0, un clic sur « Milan » ne change pas la lecture enregistrée (lectures/0/abrial_julien)
+  ok     [QCM-2 · HEURE] à 0, la moitié de Tom (son lecteur Camille n'a rien cliqué) garde la main : ses choix ouverts
+  ok     [QCM-2 · HEURE] à 0, sur la console, la lecture manquante reste en rouge : le nom de Camille (le lecteur qui n'a rien cliqué) ou celui de Tom (sa feuille pas lue) (style calculé, ou une classe d'alerte)
+  note   à trancher (QCM-2) : en rouge sur la console, c'est CARRÉ Tom (la feuille pas lue, « manquent »), pas BRUNEAU Camille, le lecteur qui n'a rien cliqué (16-11-a0-console.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] après le 0, Camille clique « Rome » : sa lecture est dans la base (lectures/0/carre_tom, par bruneau_camille)
+  ok     [QCM-2 · HEURE] après son clic (le temps fini), sa lecture se fige à son tour
+  ok     [QCM-2 · HEURE] point 12, la lecture de Q1, après 0 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+── Point 12 — après « 💡 Révéler » : la consigne de correction  (247 s)
+  ok     [QCM-2 · HEURE] Camille (réponse fausse, Milan) lit « Barre ta réponse et écris la bonne réponse en entier en vert à côté. »
+  ok     [QCM-2 · HEURE] Julien (réponse juste) lit toujours « Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse. »
+  ok     [QCM-2 · HEURE] la tablette de Camille n'a aucun élément .stylo-rouge
+  ok     [QCM-2 · HEURE] point 12, Q1 révélée : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+── Point 12 — la co-évaluation et le bilan  (257 s)
+  ok     [QCM-2 · HEURE] point 12, la co-évaluation : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, le bilan : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12 : à aucun moment de la séance, « rouge » ou .stylo-rouge chez l'élève
+  note   variante papier (LignesAttest2Papier, EcrRevele papier) : non atteinte par ce banc (séance en tablettes)
+── Point 13 (09:25) — la séance de 3 ESSAI, deux absents à l'appel ; une session d'une autre classe possible (3 BANC)  (264 s)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] la séance lancée par le geste, YVON Adam et ZELLER Lou absents à l'appel
+  ok     [QCM-1 · SOCLE] à l'appel fini, Clara (binôme de Adam, absent) est seul sur sa tablette
+  note   tablette prof : Julien | Léa ; session d'un élève de 3 BANC : Camille | Tom ; session d'un autre élève : Théo | Michel ; Clara seul (Adam absent)
+── Point 13 (09:25) — une session MJPC de professeur (« Voir comme un élève ») : « 👋 Identifie-toi », le code  (272 s)
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] session de professeur : « 👋 Identifie-toi » (ni « Tu es bien … ? », ni liste de classes) — (21-13c-prof-entree.png) ⭐ 🎯 ✨ 💡 🎲 Combien êtes-vous sur cette tablette ? 👤 1 élève 👥 2 élèves
+  SECOURS tablette-prof : « Combien êtes-vous ? » → « 👥 2 élèves »
+  ok     [QCM-2 · HEURE] tablette du professeur : l'autre moitié est celle de Léa : « Ton binôme : BAUDRY Léa », « Léa, tape ton code à 4 chiffres : »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette du professeur : Léa tape seulement son code ; les deux sont entrés (entres/abrial_julien, entres/baudry_lea)
+  ok     [QCM-2 · HEURE] tablette du professeur : chaque moitié montre « Avant de commencer » de son élève
+── Point 13 (09:25) — une session MJPC d'une autre heure : « Tu es bien … ? » → « Non », puis le code  (281 s)
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un élève de 3 BANC (BRUN Lina) : « Tu es bien Lina ? » — (24-13c-tablette_autre_classe.png) ✨ 💡 🎲 🔥 3 BANC · BRUN LINA 📊 Mes évaluations ⏳ En attente du démarrage…
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un élève de 3 BANC : « Non » mène à « 👋 Identifie-toi » — (25-13c-tablette_autre_classe-non.png) ✨ 💡 🎲 🔥 3 BANC · BRUN LINA 📊 Mes évaluations ⏳ En attente du démarrage…
+  note   session d'un élève de 3 BANC : pas d'entrée possible sur cette tablette (25-13c-tablette_autre_classe-non.png) : la suite (Camille par son code, son binôme) n'est pas jouée
+  SECOURS tablette-autre-eleve : « Combien êtes-vous ? » → « 👤 1 élève »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un autre élève de 3 ESSAI (FOUCHER Hugo) : « Tu es bien Hugo ? »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un autre élève de 3 ESSAI : « Non » mène à « 👋 Identifie-toi »
+  ÉCHEC  [QCM-2 · HEURE] session d'un autre élève de 3 ESSAI, puis Théo par son code : l'autre moitié est celle de Michel : « Ton binôme : DUVERNAY Michel », « Michel, tape ton code à 4 chiffres : » — (30-13c-binome-michel.png) 
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un autre élève de 3 ESSAI, puis Théo par son code : Michel tape seulement son code ; les deux sont entrés (entres/chevallier_theo, entres/duvernay_michel) — (31-13c-paire-theo.png) entres : ["abrial_julien","baudry_lea","chevallier_theo"] · ✨ 💡 🎲 🔥 3 ESSAI · CHEVALLIER THÉO 📊 Mes évaluations Évaluation d'essai Avant de commencer, Théo Pour chaque ques
+  ÉCHEC  [QCM-2 · HEURE] session d'un autre élève de 3 ESSAI, puis Théo par son code : chaque moitié montre « Avant de commencer » de son élève — (31-13c-paire-theo.png) ✨ 💡 🎲 🔥 3 ESSAI · CHEVALLIER THÉO 📊 Mes évaluations Évaluation d'essai Avant de commencer, Théo Pour chaque question, écris ta réponse sur ta feuille, avec les mots du cour
+── Point 13 (09:25) — un binôme absent : l'élève seul, sans question ; puis marqué présent par Paul  (297 s)
+  SECOURS tablette-seul : « Combien êtes-vous ? » → « 👤 1 élève »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Clara entre par son code
+  ok     [QCM-2 · HEURE] Clara, binôme absent : seul sur la tablette, sans question (ni « Ton binôme », ni une autre entrée)
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Paul marque YVON Adam présent par un geste de la console (« ↩️ Retour d'un élève » ou ce qu'elle propose) — (34-13c-present.png) geste : aucun trouvé (ni dans « ↩️ Retour d'un élève », ni au clic sur son nom) · absents : {"0":"yvon_adam","1":"zeller_lou"}
+── Point 13 (09:25) — « 🛑 Terminer » : chaque tablette oublie ses élèves et revient à l'entrée  (305 s)
+  ok     [QCM-1 · SOCLE] la séance est terminée (sessionActive/3 ESSAI vide)
+  note   tablette-autre-classe : aucun élève entré dans la séance ; pas de vérification après « Terminer »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-prof : après « Terminer », l'entrée (« 👋 Identifie-toi », ou « Tu es bien … ? » s'il y a une session) — (35-13c-fin-tablette_prof.png) ⭐ 🎯 ✨ 💡 🎲 Combien êtes-vous sur cette tablette ? 👤 1 élève 👥 2 élèves
+  ok     [QCM-1 · SOCLE] tablette-prof : la tablette a oublié ses élèves (ELV.ici())
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-eleve : après « Terminer », l'entrée (« 👋 Identifie-toi », ou « Tu es bien … ? » s'il y a une session) — (36-13c-fin-tablette_autre_eleve.png) ⭐ 🎯 ✨ 💡 🎲 Combien êtes-vous sur cette tablette ? 👤 1 élève 👥 2 élèves
+  ok     [QCM-1 · SOCLE] tablette-autre-eleve : la tablette a oublié ses élèves (ELV.ici())
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-seul : après « Terminer », l'entrée (« 👋 Identifie-toi », ou « Tu es bien … ? » s'il y a une session) — (37-13c-fin-tablette_seul.png) ⭐ 🎯 ✨ 💡 🎲 Combien êtes-vous sur cette tablette ? 👤 1 élève 👥 2 élèves
+  ok     [QCM-1 · SOCLE] tablette-seul : la tablette a oublié ses élèves (ELV.ici())
+── Point 13 (09:25) — « Combien êtes-vous » et « Choisis ta classe » à aucune étape  (310 s)
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-prof : jamais « Combien êtes-vous sur cette tablette ? » — « Combien êtes-vous sur cette tablette ? » à l'ouverture (session de professeur) (20-vu-combien_etes_vous_su-tablette_prof.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-prof : jamais « 🎓 Choisis ta classe »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-classe : jamais « Combien êtes-vous sur cette tablette ? »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-classe : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-eleve : jamais « Combien êtes-vous sur cette tablette ? » — « Combien êtes-vous sur cette tablette ? » à l'ouverture (session d'un autre élève de 3 ESSAI) (26-vu-combien_etes_vous_su-tablette_autre_eleve.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-eleve : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-seul : jamais « Combien êtes-vous sur cette tablette ? » — « Combien êtes-vous sur cette tablette ? » à l'ouverture (32-vu-combien_etes_vous_su-tablette_seul.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-seul : jamais « 🎓 Choisis ta classe »
+vérifications : 79 · échecs : 17
+── Point 13 — deux classes au faux hub, la séance de 3 ESSAI lancée ; 3 BANC sans séance
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] la séance de 3 ESSAI est lancée par le geste (sessionActive/3 ESSAI)
+  note   3 ESSAI : ABRIAL Julien (session MJPC), BRUNEAU Camille (code) ; 3 BANC : ALBERT Noé (session MJPC), COSTE Maël (code)
+── Point 13 — sans séance pour 3 BANC : « ⏳ En attente du démarrage… »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Noé (3 BANC, session MJPC), seule la séance de 3 ESSAI en cours : « ⏳ En attente du démarrage… »
+  ok     [QCM-1 · SOCLE] Noé (3 BANC) n'est entré dans aucune séance (pas dans celle de 3 ESSAI)
+  SECOURS Maël : « Combien êtes-vous ? » ; le banc clique « 👤 1 élève » pour voir la suite
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Maël (3 BANC) tape code, prénom, nom, seule la séance de 3 ESSAI en cours : « ⏳ En attente du démarrage… »
+  ok     [QCM-1 · SOCLE] Maël (3 BANC) n'est entré dans aucune séance
+── Point 13 — la séance de 3 BANC lancée (seconde console) : deux séances en cours en même temps
+  note   la séance de 3 BANC ne s'est pas lancée (04-lancer-3_banc.png) : 📝 Évaluation QCMMODE PROF
+🔴
+1 séance en cours
+📖 Mode d'emploi
+📺 Ouvrir vue tableau
+📱 QR pilotage
+🧪 Mode test
+i
+← Retour
+Pilotage
+Données
+Réglages
+?
+📝 Évaluations
+🎯 Pilotage classe
+🎯 Évaluation d'essai — 3 ESSAI
+🕙 Fin de l'heure : 9:27
+🚫 Départ d'un élève
+↩️ Retour d'un élève
+🔓 Rouvrir po
+  note   « 🎯 Pilotage classe » d'une seconde console, une séance en cours (3 ESSAI), mène au pilotage de cette séance et non à « 🎯 Lancer une nouvelle séance » : la séance de 3 BANC ne se lance pas par le geste (à dire à QCM-1, QCM-2 ; non compté ici)
+  SECOURS la séance de 3 BANC lancée par ACT.lancerSeance("3 BANC", "essai") + ACT.appelFini([]) sur la seconde console, pour jouer le point 13
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] deux séances en cours : sessionActive porte 3 ESSAI et 3 BANC
+── Point 13 — par la session MJPC : chacun arrive dans la séance de sa classe
+  SECOURS Julien : « Combien êtes-vous ? » ; le banc clique « 👤 1 élève » pour voir la suite
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Julien (3 ESSAI, session MJPC) arrive dans la séance de 3 ESSAI (sessions/sess_1792053139577/entres)
+  ok     [QCM-2 · HEURE] Julien : sa moitié montre la séance (« Avant de commencer, Julien »)
+  SECOURS Noé : « Combien êtes-vous ? » ; le banc clique « 👤 1 élève » pour voir la suite
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Noé (3 BANC, session MJPC) arrive dans la séance de 3 BANC (sessions/sess_1792053164808/entres)
+  ok     [QCM-2 · HEURE] Noé : sa moitié montre la séance (« Avant de commencer, Noé »)
+── Point 13 — sans session MJPC, par « 👋 Identifie-toi » : chacun arrive dans la séance de sa classe
+  SECOURS Camille : « Combien êtes-vous ? » ; le banc clique « 👤 1 élève » pour voir la suite
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Camille (3 ESSAI, code, prénom, nom) arrive dans la séance de 3 ESSAI
+  ok     [QCM-2 · HEURE] Camille : sa moitié montre la séance (« Avant de commencer, Camille »)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Maël (3 BANC, code, prénom, nom) arrive dans la séance de 3 BANC
+  ok     [QCM-2 · HEURE] Maël : sa moitié montre la séance (« Avant de commencer, Maël »)
+── Point 13 — « 🎓 Choisis ta classe » et « Combien êtes-vous » à aucune étape
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Noé (3 BANC) : jamais « Combien êtes-vous sur cette tablette ? » — vu : « Combien êtes-vous sur cette tablette ? » à Noé, étape 1 (07-vu-combien_etes_vous_su-tablette_mjpc_3banc.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Noé (3 BANC) : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Maël (3 BANC) : jamais « Combien êtes-vous sur cette tablette ? » — vu : « Combien êtes-vous sur cette tablette ? » à Maël, étape 1 (02-vu-combien_etes_vous_su-tablette_code_3banc.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Maël (3 BANC) : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Julien (3 ESSAI) : jamais « Combien êtes-vous sur cette tablette ? » — vu : « Combien êtes-vous sur cette tablette ? » à Julien, étape 1 (05-vu-combien_etes_vous_su-tablette_mjpc_3essai.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Julien (3 ESSAI) : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Camille (3 ESSAI) : jamais « Combien êtes-vous sur cette tablette ? » — vu : « Combien êtes-vous sur cette tablette ? » à Camille, étape 2 (09-vu-combien_etes_vous_su-tablette_code_3essai.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Camille (3 ESSAI) : jamais « 🎓 Choisis ta classe »
+── Points 11, 12 — la séance de 3 ESSAI, deux tablettes, quatre élèves
+  SECOURS tablette-1 : l'ancienne entrée (« 👥 2 élèves », chaque moitié) pour jouer la suite
+  SECOURS tablette-2 : l'ancienne entrée (« 👥 2 élèves », chaque moitié) pour jouer la suite
+  ok     [QCM-2 · HEURE] point 12, l'entrée et « Avant de commencer » : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  note   tablette 1 : Julien | Léa ; tablette 2 : Camille | Tom ; Camille répond « Milan » à Q1
+── Points 11, 12 — Q1 à Q3, chaque phase relevée
+  ok     [QCM-2 · HEURE] point 12, Q1, phase passage-1 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, Q1, phase reponse-1 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, Q1, phase reponse-2 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, Q1, phase b-2 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, Q1 close : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, l'estimation : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, « Avant la correction » : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-1 · SOCLE] la correction commence au clic de Paul (deroule.ph = lecture)
+── Point 11 — Q1 : trois lecteurs cliquent, Camille (lecteur de la feuille de Tom) ne clique rien ; le chrono va à 0
+  ok     [QCM-2 · HEURE] point 12, la lecture de Q1, avant 0 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  note   chrono de lecture : {"ph":"lecture","qi":0,"duree":15}, 0 dans 13 s
+  ok     [QCM-2 · HEURE] à 0, la question reste en lecture (Paul révèle)
+  ok     [QCM-2 · HEURE] à 0, la moitié de Julien (lue par Léa, qui a cliqué) : « ⏱️ Temps fini : ta lecture est enregistrée »
+  ok     [QCM-2 · HEURE] à 0, les choix de cette lecture sont fermés
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] à 0, un clic sur « Milan » ne change pas la lecture enregistrée (lectures/0/abrial_julien)
+  ok     [QCM-2 · HEURE] à 0, la moitié de Tom (son lecteur Camille n'a rien cliqué) garde la main : ses choix ouverts
+  ok     [QCM-2 · HEURE] à 0, sur la console, la lecture manquante reste en rouge : le nom de Camille (le lecteur qui n'a rien cliqué) ou celui de Tom (sa feuille pas lue) (style calculé, ou une classe d'alerte)
+  note   à trancher (QCM-2) : en rouge sur la console, c'est CARRÉ Tom (la feuille pas lue, « manquent »), pas BRUNEAU Camille, le lecteur qui n'a rien cliqué (16-11-a0-console.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] après le 0, Camille clique « Rome » : sa lecture est dans la base (lectures/0/carre_tom, par bruneau_camille)
+  ok     [QCM-2 · HEURE] après son clic (le temps fini), sa lecture se fige à son tour
+  ok     [QCM-2 · HEURE] point 12, la lecture de Q1, après 0 : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+── Point 12 — après « 💡 Révéler » : la consigne de correction
+  ok     [QCM-2 · HEURE] Camille (réponse fausse, Milan) lit « Barre ta réponse et écris la bonne réponse en entier en vert à côté. »
+  ok     [QCM-2 · HEURE] Julien (réponse juste) lit toujours « Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse. »
+  ok     [QCM-2 · HEURE] la tablette de Camille n'a aucun élément .stylo-rouge
+  ok     [QCM-2 · HEURE] point 12, Q1 révélée : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+── Point 12 — la co-évaluation et le bilan
+  ok     [QCM-2 · HEURE] point 12, la co-évaluation : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12, le bilan : ni « rouge » ni .stylo-rouge dans les quatre moitiés
+  ok     [QCM-2 · HEURE] point 12 : à aucun moment de la séance, « rouge » ou .stylo-rouge chez l'élève
+  note   variante papier (LignesAttest2Papier, EcrRevele papier) : non atteinte par ce banc (séance en tablettes)
+── Point 13 (09:25) — la séance de 3 ESSAI, deux absents à l'appel ; une session d'une autre classe possible (3 BANC)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] la séance lancée par le geste, YVON Adam et ZELLER Lou absents à l'appel
+  ok     [QCM-1 · SOCLE] à l'appel fini, Clara (binôme de Adam, absent) est seul sur sa tablette
+  note   tablette prof : Julien | Léa ; session d'un élève de 3 BANC : Camille | Tom ; session d'un autre élève : Théo | Michel ; Clara seul (Adam absent)
+── Point 13 (09:25) — une session MJPC de professeur (« Voir comme un élève ») : « 👋 Identifie-toi », le code
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] session de professeur : « 👋 Identifie-toi » (ni « Tu es bien … ? », ni liste de classes) — vu : (21-13c-prof-entree.png) ⭐ 🎯 ✨ 💡 🎲 Combien êtes-vous sur cette tablette ? 👤 1 élève 👥 2 élèves
+  SECOURS tablette-prof : « Combien êtes-vous ? » → « 👥 2 élèves »
+  ok     [QCM-2 · HEURE] tablette du professeur : l'autre moitié est celle de Léa : « Ton binôme : BAUDRY Léa », « Léa, tape ton code à 4 chiffres : »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette du professeur : Léa tape seulement son code ; les deux sont entrés (entres/abrial_julien, entres/baudry_lea)
+  ok     [QCM-2 · HEURE] tablette du professeur : chaque moitié montre « Avant de commencer » de son élève
+── Point 13 (09:25) — une session MJPC d'une autre heure : « Tu es bien … ? » → « Non », puis le code
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un élève de 3 BANC (BRUN Lina) : « Tu es bien Lina ? » — vu : (24-13c-tablette_autre_classe.png) ✨ 💡 🎲 🔥 3 BANC · BRUN LINA 📊 Mes évaluations ⏳ En attente du démarrage…
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un élève de 3 BANC : « Non » mène à « 👋 Identifie-toi » — vu : (25-13c-tablette_autre_classe-non.png) ✨ 💡 🎲 🔥 3 BANC · BRUN LINA 📊 Mes évaluations ⏳ En attente du démarrage…
+  note   session d'un élève de 3 BANC : pas d'entrée possible sur cette tablette (25-13c-tablette_autre_classe-non.png) : la suite (Camille par son code, son binôme) n'est pas jouée
+  SECOURS tablette-autre-eleve : « Combien êtes-vous ? » → « 👤 1 élève »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un autre élève de 3 ESSAI (FOUCHER Hugo) : « Tu es bien Hugo ? »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un autre élève de 3 ESSAI : « Non » mène à « 👋 Identifie-toi »
+  ÉCHEC  [QCM-2 · HEURE] session d'un autre élève de 3 ESSAI, puis Théo par son code : l'autre moitié est celle de Michel : « Ton binôme : DUVERNAY Michel », « Michel, tape ton code à 4 chiffres : » — vu : (30-13c-binome-michel.png) 
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] session d'un autre élève de 3 ESSAI, puis Théo par son code : Michel tape seulement son code ; les deux sont entrés (entres/chevallier_theo, entres/duvernay_michel) — vu : (31-13c-paire-theo.png) entres : ["abrial_julien","baudry_lea","chevallier_theo"] · ✨ 💡 🎲 🔥 3 ESSAI · CHEVALLIER THÉO 📊 Mes évaluations Évaluation d'essai Avant de commencer, Théo Pour chaque question, écris ta réponse sur ta feuille, avec 
+  ÉCHEC  [QCM-2 · HEURE] session d'un autre élève de 3 ESSAI, puis Théo par son code : chaque moitié montre « Avant de commencer » de son élève — vu : (31-13c-paire-theo.png) ✨ 💡 🎲 🔥 3 ESSAI · CHEVALLIER THÉO 📊 Mes évaluations Évaluation d'essai Avant de commencer, Théo Pour chaque question, écris ta réponse sur ta feuille, avec les mots du cours. Plusieurs réponses : une par ligne. Je co
+── Point 13 (09:25) — un binôme absent : l'élève seul, sans question ; puis marqué présent par Paul
+  SECOURS tablette-seul : « Combien êtes-vous ? » → « 👤 1 élève »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Clara entre par son code
+  ok     [QCM-2 · HEURE] Clara, binôme absent : seul sur la tablette, sans question (ni « Ton binôme », ni une autre entrée)
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] Paul marque YVON Adam présent par un geste de la console (« ↩️ Retour d'un élève » ou ce qu'elle propose) — vu : (34-13c-present.png) geste : aucun trouvé (ni dans « ↩️ Retour d'un élève », ni au clic sur son nom) · absents : {"0":"yvon_adam","1":"zeller_lou"}
+── Point 13 (09:25) — « 🛑 Terminer » : chaque tablette oublie ses élèves et revient à l'entrée
+  ok     [QCM-1 · SOCLE] la séance est terminée (sessionActive/3 ESSAI vide)
+  note   tablette-autre-classe : aucun élève entré dans la séance ; pas de vérification après « Terminer »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-prof : après « Terminer », l'entrée (« 👋 Identifie-toi », ou « Tu es bien … ? » s'il y a une session) — vu : (35-13c-fin-tablette_prof.png) ⭐ 🎯 ✨ 💡 🎲 Combien êtes-vous sur cette tablette ? 👤 1 élève 👥 2 élèves
+  ok     [QCM-1 · SOCLE] tablette-prof : la tablette a oublié ses élèves (ELV.ici())
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-eleve : après « Terminer », l'entrée (« 👋 Identifie-toi », ou « Tu es bien … ? » s'il y a une session) — vu : (36-13c-fin-tablette_autre_eleve.png) ⭐ 🎯 ✨ 💡 🎲 Combien êtes-vous sur cette tablette ? 👤 1 élève 👥 2 élèves
+  ok     [QCM-1 · SOCLE] tablette-autre-eleve : la tablette a oublié ses élèves (ELV.ici())
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-seul : après « Terminer », l'entrée (« 👋 Identifie-toi », ou « Tu es bien … ? » s'il y a une session) — vu : (37-13c-fin-tablette_seul.png) ⭐ 🎯 ✨ 💡 🎲 Combien êtes-vous sur cette tablette ? 👤 1 élève 👥 2 élèves
+  ok     [QCM-1 · SOCLE] tablette-seul : la tablette a oublié ses élèves (ELV.ici())
+── Point 13 (09:25) — « Combien êtes-vous » et « Choisis ta classe » à aucune étape
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-prof : jamais « Combien êtes-vous sur cette tablette ? » — vu : « Combien êtes-vous sur cette tablette ? » à l'ouverture (session de professeur) (20-vu-combien_etes_vous_su-tablette_prof.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-prof : jamais « 🎓 Choisis ta classe »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-classe : jamais « Combien êtes-vous sur cette tablette ? »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-classe : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-eleve : jamais « Combien êtes-vous sur cette tablette ? » — vu : « Combien êtes-vous sur cette tablette ? » à l'ouverture (session d'un autre élève de 3 ESSAI) (26-vu-combien_etes_vous_su-tablette_autre_eleve.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-autre-eleve : jamais « 🎓 Choisis ta classe »
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-seul : jamais « Combien êtes-vous sur cette tablette ? » — vu : « Combien êtes-vous sur cette tablette ? » à l'ouverture (32-vu-combien_etes_vous_su-tablette_seul.png)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] tablette-seul : jamais « 🎓 Choisis ta classe »

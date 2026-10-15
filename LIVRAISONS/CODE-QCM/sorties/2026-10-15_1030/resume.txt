@@ -1,0 +1,89 @@
+Assemblage QCM-4 · BANC — 15/10/2026 10:30 (heure de Paris) — code-qcm 227391d
+
+── build.py
+evaluation-qcm.staging.html 2017609 octets, md5 d12d9f6e52dceca85b9432280a23e0d7
+  code de sortie : 0
+  app : d12d9f6e52dceca85b9432280a23e0d7  evaluation-qcm.staging.html  2062135 octets
+
+── empreintes des contrôles de la conscience (la version de main, extraite telle quelle : /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/sorties/2026-10-15_1030/.controles-main/AUDITS/CONTROLES-QCM-APP)
+  controles-app.js: OK
+  attendus/evaluation-essai.json: OK
+  attendus/taxonomie-competences.json: OK
+
+── reprise2
+  Reprise 2, points 1 à 5, par le geste (QCM-4 · BANC) — durée 163 s
+  vérifications : 22 · échecs : 0
+
+── reprise3
+  Reprise 3, point 5, par le geste (QCM-4 · BANC) — durée 195 s
+  vérifications : 14 · échecs : 0
+
+── reprise4
+  Reprise 4, points 1 à 7, par le geste (QCM-4 · BANC) — durée 254 s
+  vérifications : 27 · échecs : 0
+
+── reprise5
+  Reprise 5, points 1, 2 et 4, par le geste (QCM-4 · BANC) — durée 85 s
+  vérifications : 10 · échecs : 0
+
+── reprise7-a
+  Reprise 7, points 1, 2, 3 et 5, par le geste (QCM-4 · BANC) — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — durée 107 s
+  vérifications : 40 · échecs : 0
+
+── reprise7-b
+  Reprise 7, points 6 et 7, par le geste en mode test (QCM-4 · BANC) — durée 370 s
+  vérifications : 83 · échecs : 1
+
+── reprise7-c
+  Reprise 7, points 8, 9, 10, par le geste (QCM-4 · BANC) — durée 292 s · app md5 d12d9f6e52dceca85b9432280a23e0d7
+  vérifications : 139 · échecs : 2
+
+── reprise7-d
+  Reprise 7, points 11, 12, 13, par le geste (QCM-4 · BANC) — durée 310 s · app md5 d12d9f6e52dceca85b9432280a23e0d7
+  vérifications : 79 · échecs : 17
+
+── jamais
+  Les scènes jamais atteintes (QCM-4 · BANC) — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-15T08:37:37.804Z
+  Durée : 336 s (5 min 36 s) · vérifications : 47 · échecs : 12 · scènes relevées : x610-1-b-julien, x610-2-b-michel, x610-6-coeval-laquelle, x610-7-coeval-ecrit, x610-8-console-alerte, x610-9-telephone-alerte, t-un-eleve
+
+── banc commun (431 s, code 1)
+  Durée : 429 s (7 min 9 s) · vérifications : 211 · échecs : 25 · scènes relevées : 97
+
+── les gestes rares (177 s, code 0)
+  Durée : 175 s (2 min 55 s) · vérifications : 47 · échecs : 0
+
+── l'heure de demain (663 s, code 0)
+  Durée : 661 s (11 min 1 s) · vérifications : 109 · échecs : 0
+
+── contrôles de la conscience (113 s, code 0)
+  Contrôles de la conscience n°12 pour l'app — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-15T08:31:59.885Z
+  md5 de controles-app.js : 1f1ac0d8ca288d796d98b115bd461484
+  Durée : 111 s · vérifications : 32 · échecs : 0
+    ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  échecs : 0
+
+── fidélité à la maquette
+  Scènes atteintes par le geste : 126 / 157 (hors MJPC) · fidèles (aucun écart non nommé) : 40 · avec écarts : 86 · écarts nommés dans ecarts-maquette.json : 123
+
+── synthèse (synthese.txt)
+  Synthèse de l'assemblage 2026-10-15_1030
+  
+  Contrôles de la conscience : Durée : 111 s · vérifications : 32 · échecs : 0
+  
+  ■ l'heure : 273 vérifications passent, 18 échouent
+      QCM-1 · SOCLE : 86 ok, 8 échecs
+      QCM-1 · SOCLE, QCM-2 · HEURE : 0 ok, 1 échecs
+      QCM-2 · HEURE : 185 ok, 9 échecs
+      QCM-3 · SOIR : 2 ok, 0 échecs
+  ■ le soir : 31 vérifications passent, 7 échouent
+      QCM-1 · SOCLE : 3 ok, 0 échecs
+      QCM-3 · SOIR : 28 ok, 7 échecs
+  ■ le reste : 16 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 1 ok, 0 échecs
+      QCM-3 · SOIR : 15 ok, 0 échecs
+  ■ toutes les pages : 22 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 22 ok, 0 échecs
+  
+  Fidélité : 126 scènes atteintes, 40 fidèles ; écarts non nommés : QCM-3 · SOIR 201 dans 23 scènes ; QCM-2 · HEURE 683 dans 63 scènes ; non atteintes : 31
+
+Durée totale de l'assemblage : 780 s

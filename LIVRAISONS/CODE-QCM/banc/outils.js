@@ -82,7 +82,7 @@ class Appareils {
   // une tablette : « 🎓 Choisis ta classe » (si l'app le demande), puis « Combien êtes-vous sur cette tablette ? »
   async tablette(nom, classe){
     const p = await this.ouvrir(nom, "?mode=eleve", 1280, 800);
-    for(let k = 0; k < 30; k++){ const t = await texte(p); if(/Combien êtes-vous|Identifie-toi|Tu es bien/.test(t)) break;
+    for(let k = 0; k < 80; k++){ const t = await texte(p); if(/Combien êtes-vous|Identifie-toi|Tu es bien/.test(t)) break;
       if(/Choisis ta classe/.test(t)){ await cliquer(p, new RegExp("^" + esc(classe) + "$")); p.__classeDemandee = true; } await pause(250); }
     return p;
   }
@@ -170,7 +170,8 @@ async function entrerTablette(p, eleves, codeDe){
     if(!(await taper(p, zone, "code", codeDe(nom)))) return false;
     await taper(p, zone, "prenom", P.join(" ").toLowerCase()); await taper(p, zone, "nom", N.toLowerCase());
     if(!(await cliquer(p, /Entrer/, zone))) await cliquer(p, /Entrer/); await pause(400); return true; };
-  await attendre(p, /Combien êtes-vous|Identifie-toi|tape ton code|Tu es bien/, 8000);
+  // sous la charge d'un assemblage (13 bancs en même temps), l'écran d'entrée peut tarder : jusqu'à 25 s
+  await attendre(p, /Combien êtes-vous|Identifie-toi|tape ton code|Tu es bien/, 25000);
   const t0 = await texte(p);
   if(/Combien êtes-vous/.test(t0)){
     vus.push("Combien êtes-vous");

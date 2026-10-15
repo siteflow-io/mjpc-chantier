@@ -59,7 +59,7 @@ var BULLES = {
   // Les gardes
   "❌ Écarter la question 3": "Écarte la question 3 : elle ne sera ni posée ni corrigée ; la note et ses compétences comptent sans elle. Se défait par « ↩️ Remettre ».",
   "⚠️ Annuler la question 2": "Annule la question 2 : ses réponses restent gardées, mais elle sort du total de la note et des compétences ; les élèves liront qu'elle ne compte pas. Se défait par « ↩️ Remettre ».",
-  "🛑 Terminer la séance": "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous ? ».",
+  "🛑 Terminer la séance": "Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes oublient leurs élèves et reviennent à l'entrée des élèves.",
   "🚫 Parti": "Marque cet élève parti : son binôme continue seul ; ses questions manquées sortent de son total.",
   "↩️ Revenu": "Cet élève revient : il reprend sa moitié.",
   "🔓 Rouvrir pour Théo": "Rouvre la question 2 pour Théo seul, avec son temps de réponse ; Lou porte le voile pendant son tour. Une seule fois.",
@@ -78,7 +78,7 @@ var BULLES = {
   "💾 Enregistrer": "Garde ces réglages pour toutes les séances ; une séance déjà lancée garde les siens.",
   "Ouvrir la console MJPC →": "Ouvre la console MJPC : les classes, les élèves, leurs codes, les aménagements et les exclusions.",
   "👩‍🏫 Accès professeur": "Ouvre la console avec ton code ou ta clé.",
-  "🎓 Mode élève": "Ouvre l'écran des élèves : « Combien êtes-vous sur cette tablette ? ».",
+  "🎓 Mode élève": "Ouvre l'écran des élèves : l'entrée des élèves.",
   "Ouvrir la séance professeur": "Ouvre la console avec la clé gardée sur cet appareil.",
   "Fermer": "Ferme sans rien changer (Échap)."
 };

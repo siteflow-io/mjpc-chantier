@@ -741,6 +741,17 @@ var ACT = (function(){
     return poserDeroule(id, {ph:"rouvert", qi:qi, tour:SCN.cote(x) === SCN.premierCote(qi) ? 1 : 2, cote:SCN.cote(x), duree:SCN.tempsDe(qi).reponse, pour:x}, plus); };
   A.depart = function(x){ var id = sid(); if(!id) return Promise.resolve(); var maj = {}, now = LIVE.maintenant(); maj[cheminS(id, "partis/" + x)] = now;
     maj[cheminS(id, "presence_history/" + x + "/h_" + now)] = {ts:now, etat:"absent"}; return ecrireQCM(maj, "depart"); };
+  /* (15/10, reprise 7 point 13) un élève absent à l'appel, marqué présent plus tard par Paul : il quitte `absents` et prend la moitié libre d'une
+     tablette où un élève est seul (`seul`), sinon une moitié libre, sinon une tablette nouvelle (les règles de l'arrivé après l'appel) ;
+     sur la tablette de celui qui était seul, l'autre moitié s'ouvre pour lui (ELV.ici().combien passe à 2) */
+  A.marquerPresent = function(x){ var id = sid(); if(!id || !x) return Promise.resolve({ok:false}); x = SCN.nomDe(x) !== x ? x : sanMJPC(x);
+    if(SCN.tabletteDe(x, id)) return Promise.resolve({ok:true, deja:true});
+    var pl = SCN.places(id), libre = pl.filter(function(p){ return p.seul && (!p.g || !p.d); })[0] || pl.filter(function(p){ return !p.g || !p.d; })[0], maj = {}, now = LIVE.maintenant(), t;
+    if(libre){ var c = libre.g ? "d" : "g"; maj[cheminS(id, "places/" + libre.n + "/" + c)] = x; maj[cheminS(id, "places/" + libre.n + "/seul")] = null; t = {n:libre.n, cote:c}; }
+    else { var nn = pl.reduce(function(m, p){ return Math.max(m, +p.n || 0); }, 0) + 1; maj[cheminS(id, "places/" + nn)] = {g:x, d:null, seul:true}; t = {n:nn, cote:"g"}; }
+    var ab = SCN.absents(id).filter(function(y){ return y !== x; }); maj[cheminS(id, "absents")] = ab.length ? ab : null;
+    maj[cheminS(id, "presence_history/" + x + "/h_" + now)] = {ts:now, etat:"present"};
+    return ecrireQCM(maj, "marquerPresent").then(function(){ return {ok:true, tablette:t.n, cote:t.cote}; }); };
   A.retour = function(x){ var id = sid(); if(!id) return Promise.resolve(); var maj = {}, now = LIVE.maintenant(); maj[cheminS(id, "partis/" + x)] = null;
     maj[cheminS(id, "presence_history/" + x + "/h_" + now)] = {ts:now, etat:"present"}; return ecrireQCM(maj, "retour"); };
   // l'estimation, puis la seconde attestation, puis la correction (dans l'ordre fixé ici : de la plus ratée à la mieux réussie)
@@ -860,13 +871,17 @@ var ELV = (function(){
   E.presence = presence;
   E.courant = null;
   // qui est sur cet appareil : {combien, n (la tablette), g, d (les slugs des deux moitiés), classe}
-  E.ici = function(){ return {combien:E.n || null, n:E.tab || null, g:E.cotes.g || null, d:E.cotes.d || null, classe:LIVE.classeSlug || null}; };
+  /* (15/10, reprise 7 point 13 : « Combien êtes-vous sur cette tablette ? » disparaît) le nombre de moitiés vient de la grille : 1 tant que
+     personne n'est entré (l'entrée : « Tu es bien … ? » ou « 👋 Identifie-toi ») ; l'élève entré, 2 si la grille lui donne un binôme (son
+     binôme absent à l'appel : 1, il est seul ; marqué présent plus tard par Paul, ACT.marquerPresent : 2, l'autre moitié s'ouvre pour lui) */
+  E.nombre = function(){ if(E.cotes.g && E.cotes.d) return 2; var x = E.cotes.g || E.cotes.d; if(!x || !SCN.sid()) return 1; return SCN.voisinDe(x) ? 2 : 1; };
+  E.ici = function(){ return {combien:E.nombre(), n:E.tab || null, g:E.cotes.g || null, d:E.cotes.d || null, classe:LIVE.classeSlug || null}; };
   E.moitie = function(cote){ E.courant = cote; return E.cotes[cote] || null; };
   function qui(x){ return x || (E.courant && E.cotes[E.courant]) || null; }
   function sid(){ return SCN.sid(); }
   function w(chemin, v, quoi){ var id = sid(); if(!id) return Promise.resolve(); var maj = {}; maj[cheminS(id, chemin)] = v; return ecrireQCM(maj, quoi); }
   E.choisirClasse = function(classe){ LIVE.classeSlug = classe; garder(); };
-  // « Combien êtes-vous sur cette tablette ? »
+  // (point 13) « Combien êtes-vous ? » n'est plus : gardé pour les appels d'avant, sans effet sur le nombre de moitiés (E.nombre)
   E.combien = function(n){ E.n = n; E.fin = false; garder(); };
   // l'entrée : le code, vérifié contre l'empreinte de /codes (la 7.7.1 : mjpcEntreeCode, mjpcVerifierCode), le prénom et le nom
   /* (15/10, reprise 7 point 13) la tablette ne demande jamais la classe : elle vient de l'élève. Tant que personne n'est sur la tablette,

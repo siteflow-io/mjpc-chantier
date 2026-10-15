@@ -213,7 +213,7 @@ var FENETRES_H = {
   terminer:function(arg, fond){ var m = momH();
     return Fenetre(fond, "🛑 Terminer la séance ?", CLASSE + " — " + EV.titre + " · " + ouH(m),
       h(F, null, h("p", null, "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase."),
-        h("p", null, "Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ».")),
+        h("p", null, "Les tablettes oublient leurs élèves et reviennent à l'entrée des élèves.")),
       [annulerH(), boutonH("ok", "btn btn-rouge", "🛑 Terminer la séance", fait("terminer"), "Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves.")], null); },
   depart:function(arg, fond){
     var noms = SCN.presents(MO()).map(function(p){ return {p:p, n:nomDe(p)}; }).sort(function(a, b){ return a.n.localeCompare(b.n, "fr"); });
@@ -221,10 +221,13 @@ var FENETRES_H = {
       h(F, null, h("div", {className:"depart-grille"}, noms.map(function(x){ var f = sexeH(x.p) === "F";
         return h("div", {key:x.p, className:"depart-l"}, h("span", null, x.n), boutonH("p", "btn btn-ghost btn-sm", "🚫 Parti", fait("depart", [x.p]), "Marque " + x.n + " comme parti" + (f ? "e" : "") + " en cours de séance : " + (f ? "elle" : "il") + " ne bloque plus la classe, ses questions manquées sortent de son total.")); }))),
       [annulerH()], null, 760); },
-  retour:function(arg, fond){ var partis = momH().partis || {};
-    return Fenetre(fond, "↩️ Retour d'un élève", "Les élèves partis pendant cette séance",
-      Object.keys(partis).map(function(p){ var t = SCN.tabletteDe(p) || {n:"?"}, v = SCN.voisinDe(p);
+  retour:function(arg, fond){ var partis = momH().partis || {}, absents = absentsRevenusH();
+    return Fenetre(fond, "↩️ Retour d'un élève", "Les élèves partis pendant cette séance" + (absents.length ? ", et les absents de l'appel" : ""),
+      h(F, null, Object.keys(partis).map(function(p){ var t = SCN.tabletteDe(p) || {n:"?"}, v = SCN.voisinDe(p);
         return h("div", {key:p, className:"depart-l"}, h("span", null, nomDe(p) + " — parti à " + partis[p] + " · tablette " + t.n + (v ? ", avec " + nomDe(v) : "")), boutonH("r", "btn btn-ghost btn-sm", "↩️ Revenu", fait("retour", [p]))); }),
+        // (reprise 7, point 13) un absent de l'appel arrivé en retard : « ↩️ Revenu » le marque présent (ACT.marquerPresent) ; il prend la moitié libre de son binôme
+        absents.map(function(p){ var v = SCN.voisinDe(p);
+          return h("div", {key:"a" + p, className:"depart-l"}, h("span", null, nomDe(p) + " — absent à l'appel" + (v ? ", binôme de " + nomDe(v) : "")), boutonH("r", "btn btn-ghost btn-sm", "↩️ Revenu", fait("marquerPresent", [p]), "Marque " + prenomH(p) + " présent" + (sexeH(p) === "F" ? "e" : "") + " : la moitié libre de son binôme s'ouvre pour " + (sexeH(p) === "F" ? "elle" : "lui") + ".")); })),
       [annulerH()], null); },
   rouvrirTous:function(qi, fond){ var sans = momH().sansRep || [];
     return Fenetre(fond, "🔓 Rouvrir la question " + (qi + 1) + " pour tous ?", "Seuls ceux qui n'ont pas répondu la retrouvent, une seule fois.",
@@ -277,7 +280,7 @@ var FENETRES_H = {
        boutonH("ok", "btn btn-rouge", "⛔ Retirer le point d'autonomie", function(){ ps.forEach(function(p){ agir("retirerAutonomie", [p, "heure"]); }); if(ps.length === 1 && FEN_H.depuis === "eleve") ouvrirFen("eleve", ps[0]); else fermerFen(); }, "Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait.")], null); }
 };
 
-// (reprise 7, point 1) « 👁 » montre la tablette telle qu'elle est : personne d'entré, « Combien êtes-vous sur cette tablette ? » ;
+// (reprise 7, points 1 et 13) « 👁 » montre la tablette telle qu'elle est : personne d'entré, l'entrée des élèves ;
 // une moitié dont l'élève n'est pas entré, son écran d'entrée ; sinon, l'écran de la phase (TabletteVue)
 function TabletteTelleQuelleH(g, d){ return h(VueTabletteH, {g:g, d:d}); }
 // dessinée comme sur la tablette elle-même (« 📊 Mes évaluations » sur chaque moitié entrée, Page) : l'appareil est « tablette »
@@ -290,8 +293,11 @@ function VueTabletteH(p){
 }
 function tabletteTelleQuelle(g, d){
   var eg = g && entreH(g), ed = d && entreH(d);
-  if(!eg && !ed) return EcrCombien();
+  if(!eg && !ed) return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, EcrLogin({champ:"code"})));
   if((!g || eg) && (!d || ed)) return TabletteVue(g, d);
   var moitie = function(p, cote, autre){ return !p ? Page(null, null, h("div", {className:"etat-attente"}, "moitié libre")) : entreH(p) ? MoitieH(p, cote, autre) : EcrLogin({champ:"code"}); };
   return Tablette(moitie(g, "g", d), moitie(d, "d", g));
 }
+
+// les absents de l'appel qu'on peut encore marquer présents (ACT.marquerPresent, QCM-1) : en direct, pendant la séance
+function absentsRevenusH(){ if(!enDirect() || typeof ACT.marquerPresent !== "function") return []; var s = (typeof SCN.sess === "function" && SCN.sess()) || {}; if(!s.lancee) return []; return (SCN.absents() || []).slice(); }

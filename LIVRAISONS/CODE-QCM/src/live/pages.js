@@ -41,7 +41,7 @@ var PAGES = (function(){
     if(app === "accueil") return {id:"c-accueil", vue:"console"};
     if(app === "tablette"){
       if(NAV.ecran === "e-mes-evals" && fn("EcranMesEvaluations")) return {id:"e-mes-evals", vue:"tablette", render:function(){ return fn("EcranMesEvaluations")(); }, cle:JSON.stringify(NAV.params)};
-      // la tablette de QCM-2 dès que la classe est connue (« Combien êtes-vous ? », l'entrée, les moitiés) ; avant, le choix de la classe
+      // la tablette de QCM-2 dès que la classe est connue et a sa séance (l'entrée, les moitiés) ; avant, TabletteLive (l'entrée, l'attente)
       if(fn("EcranTablette") && LIVE.pret && classeTablette() && SCN.sid()){ if((ELV.cotes.g || ELV.cotes.d) && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.sid = SCN.sid(); }
         return {id:"t-live", vue:"tablette", render:function(){ return fn("EcranTablette")(); }, cle:"tablette-heure"}; }
       return {id:"t-live", vue:"tablette", render:function(){ return h(TabletteLive); }, cle:"tablette"};
@@ -83,7 +83,7 @@ var PAGES = (function(){
 })();
 
 /* ══════════════════════ La tablette réelle : deux moitiés, chacune à son élève ══════════════════════
-   L'entrée (« Combien êtes-vous sur cette tablette ? », « 👋 Identifie-toi » par le code) est celle de la maquette,
+   L'entrée (« Tu es bien … ? » par la session MJPC, sinon « 👋 Identifie-toi » par le code ; point 13 : ni la classe, ni « Combien êtes-vous ? »),
    vérifiée contre l'empreinte de /codes (ELV.entrer). Ensuite, chaque moitié montre l'écran de son élève au moment réel :
    MOITIES.ecran(e, cote) (src/live/pages.js, à compléter par les écrans de l'heure : QCM-2). */
 function eleveDe(x, sansVoisin){ if(!x) return null; var n = SCN.nomDe(x), e = {cle:x, slug:x, nom:n, prenom:SCN.pre(x), sexe:SCN.sexe(x) || "M"};
@@ -100,36 +100,28 @@ function classeTablette(){
 function TabletteLive(){
   if(!LIVE.pret) return Page(null, "Chargement...", null);
   var classe = classeTablette();
-  // la séance de la classe s'est terminée : la tablette oublie ses élèves et revient à « Combien êtes-vous ? »
+  // la séance de la classe s'est terminée : la tablette oublie ses élèves et revient à l'entrée des élèves
   if(ELV.tab && ELV.sid && SCN.sid() !== ELV.sid){ ELV.oublier(); ELV.fin = !SCN.sid(); ELV.sid = SCN.sid(); }
-  /* (15/10, reprise 7 point 13 : « 🎓 Choisis ta classe » n'apparaît plus jamais) la classe inconnue : l'élève s'identifie, il est cherché
-     dans toutes les classes (ELV.entrer), et la tablette prend sa classe ; sans séance pour elle, « ⏳ En attente du démarrage… » */
-  if(!classe) return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, h(LoginLive, {cote:"g", key:"lg-classe"})));
-  // t-fin : la séance finie, « Combien êtes-vous ? » (puis, sans séance, l'entrée par le code)
-  if(ELV.fin && !SCN.sid()) return EcrCombienLive();
+  /* (15/10, reprise 7 point 13, complété à 09:25) ni « 🎓 Choisis ta classe », ni « Combien êtes-vous sur cette tablette ? » : l'entrée est
+     l'identité. Avec une session MJPC d'élève valide, « Tu es bien … ? » (« Non » : « 👋 Identifie-toi ») ; sinon « 👋 Identifie-toi », l'élève
+     cherché dans toutes les classes (ELV.entrer). La tablette prend sa classe, puis la séance de sa classe ; sans séance, « ⏳ En attente du démarrage… » */
+  if(!classe) return EntreeLive("lg-classe");
   if(SCN.sid()) ELV.fin = false;
-  /* Sans séance active (chez lui, ou avant le lancement) : l'élève entre par son code sur une demi-tablette, puis voit sa moitié, avec
-     « 📊 Mes évaluations » ; au lancement d'une séance, la tablette l'oublie et revient à « Combien êtes-vous sur cette tablette ? » */
+  // sans séance active (chez lui, ou avant le lancement) : l'entrée, puis sa moitié ; au lancement d'une séance, la tablette l'oublie et revient à l'entrée
   if(!SCN.sid()){
     var ici = ELV.cotes.g || ELV.cotes.d;
-    // (15/10, point 13) l'élève a sa session MJPC sur l'appareil : il est entré par elle (ELV.entrerSansCode), sans code, et attend
-    var mj = !ici && ELV.sessionMJPC ? ELV.sessionMJPC() : null;
-    if(mj){ if(ELV.mjpcEntre !== mj.slug){ ELV.mjpcEntre = mj.slug; setTimeout(function(){ ELV.entrerSansCode("g", mj.slug); }, 0); } ici = mj.slug; }
-    if(!ici) return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, h(LoginLive, {cote:"g", key:"lg-hors"})));
+    if(!ici) return EntreeLive("lg-hors");
     var e0 = eleveDe(ici);
     return h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, Page(badgeDe(e0), null, h("div", {className:"etat-attente"}, "⏳ En attente du démarrage…"))));
   }
   if((ELV.cotes.g || ELV.cotes.d) && ELV.sid !== SCN.sid()){ ELV.oublier(); ELV.sid = SCN.sid(); }
-  if(!ELV.n) return EcrCombienLive();
-  if(ELV.n === 1){ var x1 = ELV.cotes.g; return h("div", {className:"tablette seule" + (x1 ? "" : " seule-login")}, h("div", {className:"moitie g"}, x1 ? MOITIES.ecran(eleveDe(x1), "g") : h(LoginLive, {cote:"g", key:"lg"}))); }
+  if(ELV.nombre() === 1){ var x1 = ELV.cotes.g || ELV.cotes.d; if(!x1) return EntreeLive("lg"); return h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, MOITIES.ecran(eleveDe(x1), "g"))); }
   var g = ELV.cotes.g, d = ELV.cotes.d;
   return Tablette(g ? MOITIES.ecran(eleveDe(g), "g") : h(LoginLive, {cote:"g", key:"lg"}), d ? MOITIES.ecran(eleveDe(d), "d") : h(LoginLive, {cote:"d", key:"ld"}));
 }
-function EcrCombienLive(){
-  return Page(null, "Combien êtes-vous sur cette tablette ?",
-    h("div", {className:"combien"},
-      h("button", {className:"btn btn-ghost", "data-local":"1", onClick:function(){ ELV.combien(1); }}, "👤 1 élève"),
-      h("button", {className:"btn btn-primary", "data-local":"1", onClick:function(){ ELV.combien(2); }}, "👥 2 élèves")));
+// l'entrée d'une tablette vide : « Tu es bien … ? » de QCM-2 (UnEleveH, c3-tablettes.js : la session MJPC ; « Non » ou sans session : « 👋 Identifie-toi »)
+function EntreeLive(cle){
+  return h("div", {className:"tablette seule seule-login"}, h("div", {className:"moitie g"}, typeof UnEleveH === "function" ? h(UnEleveH, {key:cle}) : h(LoginLive, {cote:"g", key:cle})));
 }
 // « 👋 Identifie-toi » : les trois champs et le clavier de la maquette (c3-tablettes.js, LoginMoitie) ; « Entrer → » vérifie le code contre son empreinte
 function LoginLive(p){

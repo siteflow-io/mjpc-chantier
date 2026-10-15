@@ -49,7 +49,7 @@ function ScTerminer(){
   var fond = typeof EcranConsoleHeure === "function" && SCN.sid() ? EcranConsoleHeure() : Pilot(etatPilot());
   return Fenetre(fond, "🛑 Terminer la séance ?", ((se && se.classe) || CLASSE) + " — " + ev.titre + " · " + ouEnEst(m),
     h(F, null, h("p", null, "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase."),
-      h("p", null, "Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cette tablette ? ».")),
+      h("p", null, "Les tablettes oublient leurs élèves et reviennent à l'entrée des élèves.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-lancer", title:"Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves."}, "🛑 Terminer la séance")], "c-q1-tour1");
 }
 function ScVoirTablette(){

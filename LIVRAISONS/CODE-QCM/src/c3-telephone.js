@@ -29,7 +29,7 @@ function TelGeste(p){   // p : lib, cls, titre, question, corps, oui, fait ; en 
 }
 function TelTerminer(){ return h(TelGeste, {lib:"🛑 Terminer la séance", cls:"tb-rouge tb-small", titre:"Termine la séance, après une confirmation : l'archive s'écrit avec les notes telles qu'elles sont.",
   question:"🛑 Terminer la séance ?", corps:"La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase.", oui:"🛑 Terminer la séance",
-  fait:"🛑 Séance terminée : les tablettes reviennent à « Combien êtes-vous sur cette tablette ? ».", agir:function(){ agir("terminer"); }}); }
+  fait:"🛑 Séance terminée : les tablettes reviennent à l'entrée des élèves.", agir:function(){ agir("terminer"); }}); }
 
 /* ── Les noms du téléphone : chacun ouvre la fiche de son élève, au même moment ── */
 function TelListe(titre, modeDe, flagDe){

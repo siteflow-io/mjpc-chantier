@@ -385,7 +385,7 @@ function Pilot(s){
       h("span", {key:0, style:{fontSize:".8rem", color:"var(--gris)", fontWeight:700}}, "🕙 Fin de l'heure : " + SCN.finHeure(k)),
       h("button", Object.assign({key:1, className:"btn btn-ghost btn-sm"}, fen("c-depart", "depart")), "🚫 Départ d'un élève"),
       // (relecteurs n°62, 100, 101) un geste qui n'a personne sur qui agir est fermé, et dit pourquoi
-      Object.keys(m.partis || {}).length ? h("button", Object.assign({key:2, className:"btn btn-ghost btn-sm"}, fen("c-retour", "retour")), "↩️ Retour d'un élève")
+      Object.keys(m.partis || {}).length || absentsRevenusH().length ? h("button", Object.assign({key:2, className:"btn btn-ghost btn-sm"}, fen("c-retour", "retour")), "↩️ Retour d'un élève")
         : h("button", {key:2, className:"btn btn-ghost btn-sm", disabled:true, title:"Personne n'est parti pendant cette séance : il n'y a personne à faire revenir."}, "↩️ Retour d'un élève"),
       s.phase === "attente" && nonRepondus() > 0 ? h("button", Object.assign({key:4, className:"btn btn-ghost btn-sm"}, fen("c-rouvrir-un", "rouvrirUn", s.qi)), "🔓 Rouvrir pour un élève")
         : h("button", {key:4, className:"btn btn-ghost btn-sm", disabled:true, title:enCours ? "La question en cours n'est pas close : « 🔓 Rouvrir pour un élève » s'ouvre une fois close, pour ceux qui n'ont pas répondu." : s.phase === "attente" ? "Tous les présents ont répondu à cette question : il n'y a personne à rouvrir." : "Aucune question n'est encore close : il n'y a rien à rouvrir."}, "🔓 Rouvrir pour un élève"),

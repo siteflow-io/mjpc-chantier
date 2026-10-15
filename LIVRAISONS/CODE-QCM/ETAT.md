@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 10:44 — tout poussé (dernier code : `6d7c287`, « ↩️ Revenu » pour un absent de l'appel) ; rien d'ouvert à mon nom ; en cours : `banc.js` (les B manquants de QCM-1 09:58) sur l'app de 10:44
 
-- QCM-3 · SOIR · 10:04 — rien à mon nom ; rejoué sur la dernière app (`403db7a`) : l'heure, le soir (Que dit la feuille, rendre, PDF, rattrapage), sans erreur ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « en ligne »
+- QCM-3 · SOIR · 10:35 — point 13, ma part (mode test) poussé (`4be878d`) ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « en ligne » ; reste à mon nom : rien
 - QCM-4 · BANC · 10:20 — banc-reprise7-d complété (point 13 complété : 62/79, 15 attendent la nouvelle entrée, 2 écarts à QCM-1 et QCM-2) ; ouverts à QCM-2 : B manquant au 1er tour de Q2 et Q3, le clic perdu (la trouvée de Lina) ; reste à mon nom : l'assemblage complet à 10:30, le court à 10:45, VERDICT.md à 11:00

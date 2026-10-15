@@ -11,7 +11,7 @@
 | L'heure de demain (l'évaluation de 4e collée, 11 questions) | **109 / 109** (le collage repasse la garde ; la trouvée de Lina) |
 | Gestes rares | **46 / 47** : **« ↩️ Revenu » ne retire plus Lou de `partis`** (`partis/zeller_lou` reste) — depuis `6d7c287` (« ↩️ Retour d'un élève » liste aussi les absents de l'appel) ; à QCM-2, QCM-1 |
 | Reprises 2, 3 (avec le point 14 : la ligne du stylo vert, juste après « Montre ta feuille »), 4 | **22 / 22, 15 / 15, 27 / 27** |
-| Reprise 5 | **4 / 10** : le jeu n'a fait entrer personne à cette passe (0 réponse) ; il passait 10 / 10 à 09:34 ; **non rejoué valablement** (le banc, à reprendre) |
+| Reprise 5 | 4 / 10 dans l'assemblage (le jeu n'a fait entrer personne sous la charge : un défaut du banc, corrigé) ; **rejoué seul à 10:58 sur la même app (md5 `23609a66…`) : 10 / 10** |
 | Reprise 7-a (points 1, 2, 3, 5) | **40 / 40** |
 | Reprise 7-b (points 6, 7, mode test) | **83 / 85** : au 2e tour de Q1, la tablette simulée (en petit et en grand) ne dessine pas ce que dessine « 👁 » (« Élise, laisse la tablette à Gatien… ») ; à QCM-3 |
 | Reprise 7-c (points 8, 9, 10) | **137 / 139** : la fiche de l'élève ne montre qu'une ligne « à lire » par question (Julien, Camille) ; à QCM-3, ouvert depuis 09:00 |
@@ -20,7 +20,6 @@
 Défauts ouverts, par propriétaire :
 - **QCM-2, QCM-1** : « ↩️ Revenu » n'écrit plus le retour (Lou partie, gestes rares) ni la présence (Adam absent, point 13).
 - **QCM-3** : la fiche de l'élève, une seule ligne « à lire » par question (point 8) ; le mode test au 2e tour de Q1 (point 6).
-- **QCM-4** : `banc-reprise5.js` n'a fait entrer personne sous la charge de l'assemblage ; à rejouer seul.
 - **La conscience** : K2 de ses contrôles, à refaire pour la nouvelle entrée (dit par elle).
 - Non rejoués : la variante papier du point 12 et du point 14 (le banc ne joue pas la séance sur papier).
 

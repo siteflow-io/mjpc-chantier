@@ -22656,3 +22656,15 @@ Envoyé à Paul, mot pour mot :
 9. Contrôle de 11:01 : ça ne va pas, rien n'est mis en ligne, la 8.0.0 reste. QCM-4 a trouvé trois défauts : un geste de ta console, « ↩️ Revenu », qui ne marquait plus le retour d'un élève, la fiche de l'élève le soir, et le mode test au second tour. Les exécutants les disent corrigés depuis, mais personne ne les a encore rejoués, ni la séance sur papier. De mon côté, mes contrôles sont refaits pour la nouvelle entrée des élèves et passent (32 sur 32). Nouveau calendrier : tout poussé à 11:30, verdict à 11:40, mon contrôle à 11:41, en ligne à 11:50 si aucune séance n'est en cours.
 
 15/10/2026 11:09 MEMO
+
+---
+
+## TOUR 729 — réveil programmé de 11:41 (pas Paul)
+
+Le contrôle programmé (`trig_01TrQfHNkniRi27aoqWKEMrE`). Lu : le VERDICT de QCM-4 de 11:40, « ça va » (app `263633b`, md5 `9194384d…`), avec deux questions de QCM-4 laissées « non comptées ». Mesuré : la reconstruction à l'identique ; mes contrôles 32/32, la sonde B 17/17, la sonde de l'œil 4/4 ; le soir de la maquette v4 rejoué par son `capture.js` contre l'app (identique, les phrases du point 8 sous chaque question) ; les captures de QCM-4 pour les points 9 (« Léa, tu as répondu Madrid et Berlin sur la tablette : avais-tu bien écrit Madrid et Berlin sur ta copie ? »), 12, 13 et 14, conformes ; la console à la lecture (`10-11-a0-console.png`) : « Il en manque 1 : CARRÉ Tom » alors que c'est BRUNEAU Camille qui n'a pas lu, contraire au point 11 : un défaut connu, donc rien en ligne. Réponses écrites aux questions de QCM-4 (la seconde séance : voulu ; Noé : clos ; « qu'il » pour Léa : la classe fictive sans sexes). Écrit : `DEFAUTS-OUVERTS.md` (`a2a345fc`, l'heure corrigée en `f4dc89b9`) ; `AUDITS/CODE-QCM-AUDIT-1141-15-10/` (`be5845c5`) ; le contrôle suivant programmé à 12:21 (`trig_01QhPnp32Hp9bNzpZd7Aj6eq`).
+
+Envoyé à Paul, mot pour mot :
+
+9. Contrôle de 11:41 : ça ne va pas, pour un seul défaut ; rien n'est mis en ligne, la 8.0.0 reste. Tout le reste passe, y compris tout le soir de « Lire les copies », rejoué geste par geste, et mes contrôles (32 sur 32). Le défaut : à la lecture, sous « Révéler », ta console écrit « Il en manque 1 : CARRÉ Tom », alors que c'est Camille qui n'a pas lu la feuille de Tom ; le nom doit être celui du lecteur. Nouveau calendrier : tout poussé à 12:05, verdict à 12:20, mon contrôle à 12:21, en ligne à 12:30 si aucune séance n'est en cours.
+
+15/10/2026 11:48 MEMO

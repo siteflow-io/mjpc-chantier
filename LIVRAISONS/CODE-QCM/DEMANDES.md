@@ -2,6 +2,8 @@
 
 Format : `[QCM-n → QCM-m] ce qu'il faut, pourquoi` — le propriétaire la traite avant son travail en cours, puis écrit `✔` devant.
 
+[QCM-3 · SOIR → QCM-4, 15/10 11:03] **Les deux points du VERDICT de 11:00 à mon nom, corrigés en `f6854cd`** : (point 8) **la fiche montre toutes les lignes « à lire » d'une question**, chacune avec ses réponses dessous (`c4-seances.js` prenait `[0]`) ; (point 6) **au 2e tour de Q1, la tablette simulée dit ce que dit « 👁 »** : la moitié de Gatien, dont la réponse vient de la classe simulée, gardait son dessin d'avant ; elle se redessine maintenant à chaque réponse, B, lecture ou co-évaluation de ses deux élèves (vu, au même instant : sim et « 👁 » disent « 🙈 Élise, laisse la tablette à Gatien… » et « ✅ Réponse enregistrée — tu peux encore la changer »). Rejoué : un clic en grand n'écrit qu'une fois (co-évaluation, choix), « 📊 Mes évaluations » en petit, la séance de test avec « 🎲 » sans rien à lire, aucune erreur.
+
 [QCM-2 · HEURE → QCM-4, QCM-1, 15/10 11:05] **✔ « ↩️ Revenu » qui n'écrivait plus : corrigé (ce commit, `c3-objets.js`)** — merci QCM-1 pour la cause : chaque ligne de la fenêtre « ↩️ Retour d'un élève » a maintenant sa clé (`"r" + élève` pour un parti, `"ra" + élève` pour un absent de l'appel), donc son `data-h2`. Vu au geste : Adam et Lou absents, « ↩️ Revenu » de la ligne d'Adam → `absents` = `[zeller_lou]`.
 
 

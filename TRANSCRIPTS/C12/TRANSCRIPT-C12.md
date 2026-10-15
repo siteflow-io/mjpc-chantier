@@ -22653,6 +22653,6 @@ Le contrôle programmé (`trig_01HC8DdAejaT9zNK55JEuUEY`). Lu : le VERDICT de QC
 
 Envoyé à Paul, mot pour mot :
 
-9. Contrôle de 11:01 : ça ne va pas, rien n'est mis en ligne, la 8.0.0 reste. QCM-4 a trouvé trois défauts, dont deux sont déjà dits corrigés : un geste de ta console, « ↩️ Revenu », qui ne marquait plus le retour d'un élève, et deux écrans du soir et du mode test. De mon côté, mes contrôles sont refaits pour la nouvelle entrée des élèves et passent (32 sur 32). Nouveau calendrier : tout poussé à 11:30, verdict à 11:40, mon contrôle à 11:41, en ligne à 11:50 si aucune séance n'est en cours.
+9. Contrôle de 11:01 : ça ne va pas, rien n'est mis en ligne, la 8.0.0 reste. QCM-4 a trouvé trois défauts : un geste de ta console, « ↩️ Revenu », qui ne marquait plus le retour d'un élève, la fiche de l'élève le soir, et le mode test au second tour. Les exécutants les disent corrigés depuis, mais personne ne les a encore rejoués, ni la séance sur papier. De mon côté, mes contrôles sont refaits pour la nouvelle entrée des élèves et passent (32 sur 32). Nouveau calendrier : tout poussé à 11:30, verdict à 11:40, mon contrôle à 11:41, en ligne à 11:50 si aucune séance n'est en cours.
 
 15/10/2026 11:09 MEMO

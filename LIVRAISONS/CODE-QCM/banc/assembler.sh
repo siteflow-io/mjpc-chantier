@@ -34,7 +34,7 @@ if [ -f "${1:-$L/evaluation-qcm.staging.html}" ]; then
   a=$(date +%s)
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc.js" "$O" > "$O/banc.log" 2>&1; echo $? > "$O/.rb"; date +%s > "$O/.tb" ) &
   # COURT=1 (le réassemblage de 11:22, reprise 4 bis) : sans l'heure de demain ni les gestes rares, passés à l'assemblage précédent
-  if [ -z "$COURT" ]; then
+  if [ -z "$COURT" ] || [ -n "$AVEC_DEMAIN" ]; then
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-demain.js" "$O" > "$O/demain.log" 2>&1; echo $? > "$O/.rd"; date +%s > "$O/.td" ) &
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-branches.js" "$O" > "$O/branches.log" 2>&1; echo $? > "$O/.rr"; date +%s > "$O/.tr" ) &
   else echo 0 > "$O/.rd"; echo 0 > "$O/.rr"; date +%s > "$O/.td"; date +%s > "$O/.tr"; fi

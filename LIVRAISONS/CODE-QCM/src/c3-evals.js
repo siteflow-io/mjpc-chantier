@@ -337,6 +337,8 @@ function CarteEvaluationsV(){
         h("div", {className:"eval-meta"}, h("span", null, "📚 tous les niveaux"), h("span", null, "🎯 Tout ou rien"), h("span", null, demo.questions.length + " questions"), h("span", null, d.min + " minutes")),
         h("div", {className:"eval-etat ok"}, "✅ Prête à lancer")),
       h("div", {className:"eval-actions"},
+        // reprise 7, point 2 (Paul, 13/10 14:18) : un bouton permanent « 🚀 Lancer » sur la démo ; la classe se choisit au lancement, puis l'appel
+        h("button", {className:"btn btn-sm btn-primary", "data-local":"1", "data-lancer-demo":"1", title:"Ouvre « 🎯 Lancer une nouvelle séance » avec la démo déjà choisie : tu y choisis la classe, puis vient l'appel.", onClick:function(){ if(typeof LANCEMENT !== "undefined"){ LANCEMENT.evalId = "demo"; LANCEMENT.mode = null; } versScene("c-lancer"); }}, "🚀 Lancer"),
         h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-feuille&eval=demo", title:"Montre la feuille des énoncés de la démo, à imprimer."}, "🖨️ Imprimer"),
         h("button", {className:"btn btn-sm btn-ghost", "data-local":"1", title:"Fait de la démo une évaluation ordinaire, modifiable et supprimable : la démo elle-même ne change jamais.", onClick:function(){ dupliquerEval(demo); }}, "📋 Dupliquer"))),
     NIVEAUX_EV.map(groupe),

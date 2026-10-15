@@ -7,6 +7,11 @@
 //     corrigée, trois lecteurs cliquent, le quatrième non ; le chrono de lecture va à 0 : la lecture cliquée se fige, l'autre garde la main,
 //     son nom en rouge sur la console, puis il clique : sa lecture est dans la base ; « 💡 Révéler » : la consigne en vert pour la réponse
 //     fausse, le V vert pour la juste ; le texte de chaque moitié relevé à chaque phase : aucun « rouge », aucun élément .stylo-rouge.
+//  C. (point 13 complété à 09:25) l'entrée unique, sans « Combien êtes-vous » : une session MJPC de professeur → « 👋 Identifie-toi », le code ;
+//     une session d'une autre heure (un élève de 3 BANC, un autre élève de 3 ESSAI) → « Tu es bien … ? », « Non », puis le code ; le binôme qui
+//     tape seulement son code (« Ton binôme : … », « …, tape ton code à 4 chiffres : ») ; un binôme absent à l'appel (l'élève seul, sans question),
+//     puis marqué présent par Paul : l'autre moitié s'ouvre pour lui ; « 🛑 Terminer » : chaque tablette revient à l'entrée. Partout, à chaque
+//     étape : jamais « Combien êtes-vous sur cette tablette ? » ni « 🎓 Choisis ta classe ».
 //  Les tablettes s'ouvrent par A.ouvrir(nom, "?mode=eleve", 1280, 800) (A.tablette clique « Choisis ta classe », que ce banc doit voir).
 //   APP_FILE=<app> BANC=<faux hub> node banc/banc-reprise7-d.js <dossier de sortie>   → <sortie>/reprise7-d.txt, <sortie>/captures-reprise7-d/
 const path = require("path"), fs = require("fs"), cp = require("child_process");
@@ -32,6 +37,7 @@ function ecrire(fin){
 }
 setTimeout(async () => { J.v(false, BANC, "plafond de 6 minutes atteint : le banc s'arrête là", J.partie); ecrire("arrêté au plafond de 6 minutes");
   try { for(const h of hubs) await h.A.fermer(); } catch(e){} process.exit(0); }, 6 * 60 * 1000).unref();
+const veut = x => !process.env.SEULEMENT || process.env.SEULEMENT.includes(x);   // SEULEMENT=AC : ne jouer que ces parties (essais)
 const note = s => { J.l.push({note: s}); console.log("  note   " + s); };
 
 // ── outils de ce banc ──
@@ -55,9 +61,55 @@ async function sessionMJPC(p, e){
   await p.reload().catch(() => {}); await pause(1200);
 }
 
+// une session MJPC de professeur (Paul en « Voir comme un élève »)
+async function sessionProf(p){
+  await p.evaluate(() => { const s = JSON.stringify({display: "Professeur", is_prof: true, ts: Date.now()}); try { localStorage.setItem("mjpc_eleve", s); sessionStorage.setItem("mjpc_eleve", s); } catch(x){} });
+  await p.reload().catch(() => {}); await pause(1200);
+}
+// ── la garde du point 13 : « Combien êtes-vous » et « Choisis ta classe », relevés à chaque étape de chaque tablette ──
+const VU = new Map();   // page → [« écran » à « étape » (capture)]
+async function garde(p, quoi){
+  const t = await texte(p);
+  for(const [re, ecran] of [[/Combien êtes-vous/, "« Combien êtes-vous sur cette tablette ? »"], [CHOIX_CLASSE, "« 🎓 Choisis ta classe »"]])
+    if(re.test(t)){ const l = VU.get(p) || []; if(!l.some(x => x.startsWith(ecran))){ const f = await capt(p, "vu-" + slug(ecran).slice(0, 20) + "-" + slug(p.__nom)); l.push(ecran + " à " + quoi + " (" + f + ")"); VU.set(p, l); } }
+  return t;
+}
+function verifGarde(p, qui){
+  const l = VU.get(p) || [];
+  J.v(!l.some(x => /Combien/.test(x)), H12, qui + " : jamais « Combien êtes-vous sur cette tablette ? »", l.filter(x => /Combien/.test(x)).join(" | "));
+  J.v(!l.some(x => /Choisis/.test(x)), H12, qui + " : jamais « 🎓 Choisis ta classe »", l.filter(x => /Choisis/.test(x)).join(" | "));
+}
+// « 👋 Identifie-toi » : code, prénom, nom (dans la moitié si le formulaire y est, sinon l'écran entier), « Entrer »
+async function ident(p, nom, code, cote){
+  const [N, ...P] = nom.split(" "); let z = cote === undefined ? null : cote;
+  if(!(await taper(p, z, "code", code))){ if(z === null) return false; z = null; if(!(await taper(p, null, "code", code))) return false; }
+  await taper(p, z, "prenom", P.join(" ").toLowerCase()); await taper(p, z, "nom", N.toLowerCase());
+  if(!(await cliquer(p, /Entrer/, z))) await cliquer(p, /Entrer/);
+  await pause(700); return true;
+}
+// le binôme : « Ton binôme : … », « …, tape ton code à 4 chiffres : » sur sa moitié ; son code seul
+async function codeBinome(p, cote, code){
+  if(!(await taper(p, cote, "code", code))) return false;
+  if(!(await cliquer(p, /Entrer/, cote))) await cliquer(p, /^✓$/, cote);
+  await pause(700); return true;
+}
+// une tablette à deux : l'entrée unique (l'un s'identifie, la grille le place, son binôme tape son code), sinon l'ancienne (« 👥 2 élèves »)
+async function entrerPaire(p, g, d, codeDe, quoi){
+  for(let k = 0; k < 20; k++){ const t = await garde(p, quoi); if(/Combien êtes-vous|Identifie-toi|Tu es bien/.test(t)) break;
+    if(CHOIX_CLASSE.test(t)){ J.secours(p.__nom + " : « Choisis ta classe » ; le banc clique « 3 ESSAI »"); await cliquer(p, /^3 ESSAI$/); } await pause(250); }
+  const t = await garde(p, quoi);
+  if(/Combien êtes-vous/.test(t)){ J.secours(p.__nom + " : l'ancienne entrée (« 👥 2 élèves », chaque moitié) pour jouer la suite"); await cliquer(p, /2 élèves/); await pause(300);
+    await ident(p, g, codeDe(g), "g"); await ident(p, d, codeDe(d), "d"); return "ancienne"; }
+  if(/Tu es bien/.test(t)){ await cliquer(p, /^Non$/); await pause(400); }
+  await ident(p, g, codeDe(g), null);
+  for(let k = 0; k < 12 && !/tape ton code/.test(await zoneTexte(p, "d")); k++) await pause(250);
+  await codeBinome(p, "d", codeDe(d)); await garde(p, quoi);
+  return "nouvelle";
+}
+
 (async () => {
   // ════════════════ A — point 13 : deux classes, deux séances, la classe vient de l'identité ════════════════
-  try {
+  if(veut("A")) try {
     J.section("Point 13 — deux classes au faux hub, la séance de 3 ESSAI lancée ; 3 BANC sans séance");
     let C2 = null;
     const {B, srv, A} = await nouveauHub(B => { C2 = O.ajouterClasse(B, "3 BANC", "3e", ["ALBERT Noé", "BRUN Lina", "COSTE Maël", "DIAZ Inès"], 4101); });
@@ -76,7 +128,7 @@ async function sessionMJPC(p, e){
     // le parcours d'une tablette : à chaque étape, « Choisis ta classe » est-il là ? (vu une fois : noté, puis le banc choisit la classe pour voir la suite)
     const vuChoix = new Map();
     async function etape(p, e, quoi){
-      const t = await texte(p);
+      const t = await garde(p, e.prenom + ", " + quoi);
       if(CHOIX_CLASSE.test(t)){
         if(!vuChoix.has(p)){ const f = await capt(p, "choix-classe-" + slug(e.prenom)); vuChoix.set(p, quoi + " (" + f + ")"); }
         await cliquer(p, new RegExp("^" + esc(e.classe) + "$")); await pause(400);
@@ -89,14 +141,13 @@ async function sessionMJPC(p, e){
     async function arriver(p, e, mode){
       for(let k = 0; k < 14; k++){
         const t = await etape(p, e, "étape " + (k + 1));
-        if(/Combien êtes-vous/.test(t)){ await cliquer(p, /1 élève/); await pause(500); continue; }
+        if(/Combien êtes-vous/.test(t)){ if(!p.__s1){ p.__s1 = true; J.secours(e.prenom + " : « Combien êtes-vous ? » ; le banc clique « 👤 1 élève » pour voir la suite"); } await cliquer(p, /1 élève/); await pause(500); continue; }
         if(new RegExp("Tu es bien " + esc(e.prenom)).test(t)){ await cliquer(p, /^Oui$/); await pause(700); continue; }
         if(/Tu es bien/.test(t)){ note(e.prenom + " : la tablette demande « " + (t.match(/Tu es bien [^?]*\?/) || [""])[0] + " »"); await cliquer(p, /^Non$/); await pause(500); continue; }
         if(/Identifie-toi/.test(t)){
           if(mode === "mjpc"){ if(k < 3){ await pause(400); continue; } note(e.prenom + " (session MJPC) : « 👋 Identifie-toi » demande son code ; le banc ne le tape pas"); break; }
           if(p.__tape) break; p.__tape = true;
-          await taper(p, "g", "code", e.code); await taper(p, "g", "prenom", e.prenom.toLowerCase()); await taper(p, "g", "nom", e.nom.toLowerCase());
-          await cliquer(p, /Entrer/, "g"); await pause(900); continue; }
+          await ident(p, e.nomComplet, e.code, "g"); await pause(200); continue; }
         break;
       }
       p.__tape = false;
@@ -139,7 +190,7 @@ async function sessionMJPC(p, e){
       t = await arriver(p, e, "mjpc"); f = await capt(p, "13-mjpc-" + slug(e.prenom));
       const ou = entreDans(slug(e.nomComplet));
       J.v(ou.length === 1 && ou[0].includes(sid), H12, e.prenom + " (" + cl + ", session MJPC) arrive dans la séance de " + cl + " (sessions/" + sid + "/entres)", "(" + f + ") entré dans : " + JSON.stringify(ou) + " · écran : " + t.slice(0, 200));
-      J.v(!/Identifie-toi|Combien êtes-vous|En attente du démarrage/.test(t), H2, e.prenom + " : sa moitié montre la séance (ni l'entrée, ni l'attente)", "(" + f + ") " + t.slice(0, 220));
+      J.v(new RegExp("Avant de commencer, " + esc(e.prenom)).test(t), H2, e.prenom + " : sa moitié montre la séance (« Avant de commencer, " + e.prenom + " »)", "(" + f + ") " + t.slice(0, 220));
     }
     J.section("Point 13 — sans session MJPC, par « 👋 Identifie-toi » : chacun arrive dans la séance de sa classe");
     const tCO1 = await A.ouvrir("tablette-code-3essai", "?mode=eleve", 1280, 800);
@@ -147,17 +198,16 @@ async function sessionMJPC(p, e){
       t = await arriver(p, e, "code"); f = await capt(p, "13-code-" + slug(e.prenom));
       const ou = entreDans(slug(e.nomComplet));
       J.v(ou.length === 1 && ou[0].includes(sid), H12, e.prenom + " (" + cl + ", code, prénom, nom) arrive dans la séance de " + cl, "(" + f + ") entré dans : " + JSON.stringify(ou) + " · écran : " + t.slice(0, 200));
-      J.v(!/Identifie-toi|Combien êtes-vous|En attente du démarrage/.test(t), H2, e.prenom + " : sa moitié montre la séance (ni l'entrée, ni l'attente)", "(" + f + ") " + t.slice(0, 220));
+      J.v(new RegExp("Avant de commencer, " + esc(e.prenom)).test(t), H2, e.prenom + " : sa moitié montre la séance (« Avant de commencer, " + e.prenom + " »)", "(" + f + ") " + t.slice(0, 220));
     }
-    J.section("Point 13 — « 🎓 Choisis ta classe » à aucune étape");
-    for(const [p, e] of [[tMJ2, eMJ2], [tCO2, eCO2], [tMJ1, eMJ1], [tCO1, eCO1]])
-      J.v(!vuChoix.has(p), H12, e.prenom + " (" + e.classe + ") : aucun écran « 🎓 Choisis ta classe »", "vu à " + vuChoix.get(p));
+    J.section("Point 13 — « 🎓 Choisis ta classe » et « Combien êtes-vous » à aucune étape");
+    for(const [p, e] of [[tMJ2, eMJ2], [tCO2, eCO2], [tMJ1, eMJ1], [tCO1, eCO1]]) verifGarde(p, e.prenom + " (" + e.classe + ")");
     for(const p of A.pages) if(p.__err.length) note(p.__nom + " : " + p.__err.slice(0, 3).join(" | "));
     await A.fermer();
   } catch(e){ J.v(false, BANC, "point 13 : le jeu s'est interrompu : " + e.message); }
 
   // ════════════════ B — points 11 et 12 : une séance de 3 ESSAI jusqu'à la correction ════════════════
-  try {
+  if(veut("B")) try {
     J.section("Points 11, 12 — la séance de 3 ESSAI, deux tablettes, quatre élèves");
     const {B, srv, A} = await nouveauHub();
     const codeDe = nm => B.eleves.find(e => e.nomComplet === nm).code;
@@ -174,11 +224,9 @@ async function sessionMJPC(p, e){
     if(T.length < 2) throw new Error("pas de places : " + JSON.stringify(pl).slice(0, 200));
     const [tA, tB] = T;
     const entrer = async (p, cote, nom) => { const [N, ...P] = nom.split(" "); await taper(p, cote, "code", codeDe(nom)); await taper(p, cote, "prenom", P.join(" ").toLowerCase()); await taper(p, cote, "nom", N.toLowerCase()); await cliquer(p, /Entrer/, cote); await pause(400); };
-    const ouvrirTab = async nom => { const p = await A.ouvrir(nom, "?mode=eleve", 1280, 800);
-      for(let k = 0; k < 20; k++){ const t = await texte(p); if(/Combien êtes-vous/.test(t)) break; if(CHOIX_CLASSE.test(t)){ J.secours(nom + " : « Choisis ta classe » ; le banc clique « 3 ESSAI »"); await cliquer(p, /^3 ESSAI$/); } await pause(250); } return p; };
-    const t1 = await ouvrirTab("tablette-1"), t2 = await ouvrirTab("tablette-2");
-    await cliquer(t1, /2 élèves/); await entrer(t1, "g", nomDe(tA.g)); await entrer(t1, "d", nomDe(tA.d));
-    await cliquer(t2, /2 élèves/); await entrer(t2, "g", nomDe(tB.g)); await entrer(t2, "d", nomDe(tB.d));
+    const t1 = await A.ouvrir("tablette-1", "?mode=eleve", 1280, 800), t2 = await A.ouvrir("tablette-2", "?mode=eleve", 1280, 800);
+    await entrerPaire(t1, nomDe(tA.g), nomDe(tA.d), codeDe, "l'entrée"); await entrerPaire(t2, nomDe(tB.g), nomDe(tB.d), codeDe, "l'entrée");
+    for(const [p, a, b] of [[t1, tA.g, tA.d], [t2, tB.g, tB.d]]){ const en = S().entres || {}; if(!en[a] || !en[b]) note(p.__nom + " : entrés " + JSON.stringify(Object.keys(en))); }
     const M = [[t1, "g", tA.g], [t1, "d", tA.d], [t2, "g", tB.g], [t2, "d", tB.d]];
     // le relevé du point 12 : le texte de chaque moitié, à chaque phase
     const rouges = [];
@@ -311,5 +359,122 @@ async function sessionMJPC(p, e){
     for(const p of A.pages) if(p.__err.length) note(p.__nom + " : " + p.__err.slice(0, 3).join(" | "));
     await A.fermer();
   } catch(e){ J.v(false, BANC, "points 11, 12 : le jeu s'est interrompu : " + e.message); }
+  // ════════════════ C — point 13 complété (09:25) : l'entrée unique, le binôme, l'absent, la fin ════════════════
+  if(veut("C")) try {
+    J.section("Point 13 (09:25) — la séance de 3 ESSAI, deux absents à l'appel ; une session d'une autre classe possible (3 BANC)");
+    let C2 = null;
+    const {B, srv, A} = await nouveauHub(B => { C2 = O.ajouterClasse(B, "3 BANC", "3e", ["ALBERT Noé", "BRUN Lina", "COSTE Maël", "DIAZ Inès"], 4101); });
+    const codeDe = nm => B.eleves.find(e => e.nomComplet === nm).code;
+    const nomDe = sl => (B.eleves.find(e => slug(e.nomComplet) === sl) || {}).nomComplet;
+    const pre = sl => (nomDe(sl) || sl).split(" ").slice(1).join(" ");
+    const S = () => sessDe(srv, "3 ESSAI").s;
+    const prof = await A.ouvrir("console-c", "?mode=prof", 1536, 864);
+    // l'appel : la grille d'avant l'appel ; un absent X dans une paire (son binôme Y restera seul), et les élèves seuls de la grille (sans quoi Y irait avec eux)
+    await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(300);
+    await choisir(prof, /^\s*3 ESSAI/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(400);
+    await cliquer(prof, /Lancer la séance/); await pause(800);
+    const pl0 = S().places || {}; const P0 = Object.keys(pl0).sort((a, b) => a - b).map(k => ({n: k, g: pl0[k].g, d: pl0[k].d}));
+    const paires = P0.filter(x => x.g && x.d), seuls0 = P0.filter(x => !(x.g && x.d)).map(x => x.g || x.d);
+    if(paires.length < 5) throw new Error("grille d'avant l'appel : " + JSON.stringify(pl0).slice(0, 200));
+    const pX = paires[paires.length - 1], X = pX.d, Y = pX.g;
+    const absents = [X].concat(seuls0);
+    for(const a of absents) await cliquer(prof, new RegExp(esc(nomDe(a))));
+    await cliquer(prof, /Lancer la séance/); await pause(1300);
+    const sid = sidDe(srv, "3 ESSAI");
+    J.v(!!sid && JSON.stringify(S().absents || []).includes(X), H12, "la séance lancée par le geste, " + nomDe(X) + (seuls0.length ? " et " + seuls0.map(nomDe).join(", ") : "") + " absents à l'appel", JSON.stringify({sid, absents: S().absents}));
+    if(!sid) throw new Error("pas de séance");
+    const pl = S().places || {}, Pl = Object.keys(pl).map(k => ({n: k, g: pl[k].g || null, d: pl[k].d || null}));
+    const placeDe = x => Pl.find(t => t.g === x || t.d === x), coteDe = x => { const t = placeDe(x); return t ? (t.g === x ? "g" : "d") : null; };
+    const pY = placeDe(Y);
+    J.v(!!pY && !(pY.g && pY.d), H1, "à l'appel fini, " + pre(Y) + " (binôme de " + pre(X) + ", absent) est seul sur sa tablette", JSON.stringify(pY));
+    const [p1, p2, p3] = paires.filter(x => x !== pX).slice(0, 3).map(x => placeDe(x.g)).filter(Boolean);
+    note("tablette prof : " + pre(p1.g) + " | " + pre(p1.d) + " ; session d'un élève de 3 BANC : " + pre(p2.g) + " | " + pre(p2.d) + " ; session d'un autre élève : " + pre(p3.g) + " | " + pre(p3.d) + " ; " + pre(Y) + " seul (" + pre(X) + " absent)");
+    const voitEntree = t => /Identifie-toi/.test(t) && !/Tu es bien/.test(t);
+    const binomeVu = async (p, cote, x) => { for(let k = 0; k < 12; k++){ const z = await zoneTexte(p, cote); if(/tape ton code/.test(z)) return z; await pause(250); } return await zoneTexte(p, cote); };
+    // le premier élève d'une tablette : il s'identifie ; puis l'autre moitié est celle de son binôme : « Ton binôme : … », « …, tape ton code à 4 chiffres : »
+    async function suitePaire(p, t, quoi){
+      const autre = coteDe(t.g) === "g" ? "d" : "g", x = autre === "d" ? t.d : t.g;
+      const z = await binomeVu(p, autre, x); await garde(p, quoi); const f = await capt(p, "13c-binome-" + slug(pre(x)));
+      J.v(new RegExp("Ton binôme : " + esc(nomDe(x))).test(z) && new RegExp(esc(pre(x)) + ", tape ton code à 4 chiffres :").test(z), H2, quoi + " : l'autre moitié est celle de " + pre(x) + " : « Ton binôme : " + nomDe(x) + " », « " + pre(x) + ", tape ton code à 4 chiffres : »", "(" + f + ") " + z.slice(0, 200));
+      await codeBinome(p, autre, codeDe(nomDe(x))); await garde(p, quoi);
+      const en = S().entres || {}; const tt = await texte(p); const f2 = await capt(p, "13c-paire-" + slug(pre(t.g)));
+      p.__entres = Object.assign({}, p.__entres, en[t.g] ? {[t.g]: 1} : {}, en[t.d] ? {[t.d]: 1} : {});
+      J.v(!!en[t.g] && !!en[t.d], H12, quoi + " : " + pre(x) + " tape seulement son code ; les deux sont entrés (entres/" + t.g + ", entres/" + t.d + ")", "(" + f2 + ") entres : " + JSON.stringify(Object.keys(en)) + " · " + tt.slice(0, 160));
+      J.v(new RegExp("Avant de commencer, " + esc(pre(t.g))).test(tt) && new RegExp("Avant de commencer, " + esc(pre(t.d))).test(tt), H2, quoi + " : chaque moitié montre « Avant de commencer » de son élève", "(" + f2 + ") " + tt.slice(0, 220));
+    }
+
+    J.section("Point 13 (09:25) — une session MJPC de professeur (« Voir comme un élève ») : « 👋 Identifie-toi », le code");
+    const tP = await A.ouvrir("tablette-prof", "?mode=eleve", 1280, 800); await sessionProf(tP);
+    let t = await garde(tP, "l'ouverture (session de professeur)"); let f = await capt(tP, "13c-prof-entree");
+    J.v(voitEntree(t), H12, "session de professeur : « 👋 Identifie-toi » (ni « Tu es bien … ? », ni liste de classes)", "(" + f + ") " + t.slice(0, 200));
+    if(/Combien êtes-vous/.test(t)){ J.secours("tablette-prof : « Combien êtes-vous ? » → « 👥 2 élèves »"); await cliquer(tP, /2 élèves/); await pause(300); }
+    await ident(tP, nomDe(p1.g), codeDe(nomDe(p1.g)), /Combien/.test(t) ? coteDe(p1.g) : null);
+    await suitePaire(tP, p1, "tablette du professeur");
+
+    J.section("Point 13 (09:25) — une session MJPC d'une autre heure : « Tu es bien … ? » → « Non », puis le code");
+    for(const [nm, pp, autreE, quoi] of [["tablette-autre-classe", p2, Object.assign({}, C2[1], {classe: "3 BANC"}), "session d'un élève de 3 BANC"],
+                                           ["tablette-autre-eleve", p3, (() => { const n0 = nomDe(Pl.find(x => x !== p1 && x !== p2 && x !== p3 && x.g && x.d).d); const [N, ...P] = n0.split(" "); return {nomComplet: n0, nom: N, prenom: P.join(" "), classe: "3 ESSAI"}; })(), "session d'un autre élève de 3 ESSAI"]]){
+      const p = await A.ouvrir(nm, "?mode=eleve", 1280, 800); await sessionMJPC(p, autreE);
+      t = await garde(p, "l'ouverture (" + quoi + ")"); f = await capt(p, "13c-" + slug(nm));
+      if(/Combien êtes-vous/.test(t)){ J.secours(nm + " : « Combien êtes-vous ? » → « 👤 1 élève »"); await cliquer(p, /1 élève/); await pause(500); t = await garde(p, "après « 1 élève »"); f = await capt(p, "13c-" + slug(nm) + "-1"); }
+      J.v(new RegExp("Tu es bien " + esc(autreE.prenom) + " \\?").test(t), H12, quoi + " (" + autreE.nomComplet + ") : « Tu es bien " + autreE.prenom + " ? »", "(" + f + ") " + t.slice(0, 200));
+      await cliquer(p, /^Non$/); await pause(500); t = await garde(p, "après « Non »"); f = await capt(p, "13c-" + slug(nm) + "-non");
+      J.v(voitEntree(t), H12, quoi + " : « Non » mène à « 👋 Identifie-toi »", "(" + f + ") " + t.slice(0, 200));
+      if(!/Identifie-toi|Combien êtes-vous/.test(t)){ note(quoi + " : pas d'entrée possible sur cette tablette (" + f + ") : la suite (" + pre(pp.g) + " par son code, son binôme) n'est pas jouée"); continue; }
+      await ident(p, nomDe(pp.g), codeDe(nomDe(pp.g)), null);
+      if(!(S().entres || {})[pp.g]) await ident(p, nomDe(pp.g), codeDe(nomDe(pp.g)), "g");
+      await suitePaire(p, pp, quoi + ", puis " + pre(pp.g) + " par son code");
+    }
+
+    J.section("Point 13 (09:25) — un binôme absent : l'élève seul, sans question ; puis marqué présent par Paul");
+    const tY = await A.ouvrir("tablette-seul", "?mode=eleve", 1280, 800);
+    t = await garde(tY, "l'ouverture"); if(/Combien êtes-vous/.test(t)){ J.secours("tablette-seul : « Combien êtes-vous ? » → « 👤 1 élève »"); await cliquer(tY, /1 élève/); await pause(400); }
+    await ident(tY, nomDe(Y), codeDe(nomDe(Y)), null); if(!(S().entres || {})[Y]) await ident(tY, nomDe(Y), codeDe(nomDe(Y)), "g");
+    await pause(600); t = await garde(tY, "après l'entrée de " + pre(Y)); f = await capt(tY, "13c-seul");
+    J.v(!!(S().entres || {})[Y], H12, pre(Y) + " entre par son code", JSON.stringify(Object.keys(S().entres || {})));
+    J.v(new RegExp("Avant de commencer, " + esc(pre(Y))).test(t) && !/Ton binôme|tape ton code|Identifie-toi|Tu es bien/.test(t), H2, pre(Y) + ", binôme absent : seul sur la tablette, sans question (ni « Ton binôme », ni une autre entrée)", "(" + f + ") " + t.slice(0, 220));
+    // Paul marque X présent : ce que propose la console
+    let fait = "";
+    if(await cliquer(prof, /Retour d'un élève/)){ await pause(500);
+      if(await cliquer(prof, new RegExp(esc(nomDe(X)) + "|^" + esc(pre(X))))){ await pause(400); await cliquer(prof, /^(Confirmer|Oui|↩️ .*revient|Revenir|Valider)/); fait = "« ↩️ Retour d'un élève », " + nomDe(X); }
+      else { const fr = await capt(prof, "13c-retour-fenetre"); note("« ↩️ Retour d'un élève » ne propose pas " + nomDe(X) + " (" + fr + ")"); await prof.keyboard.press("Escape").catch(() => {}); await cliquer(prof, /^(Fermer|Annuler|✕)/); } }
+    const libre = async () => (await cliquer(prof, /^moitié libre$/)) || (await prof.getByText("moitié libre", {exact: true}).first().click({timeout: 1500}).then(() => true).catch(() => false));
+    if(!fait && await libre()){ await pause(500);
+      if(await cliquer(prof, new RegExp(esc(nomDe(X)) + "|^" + esc(pre(X))))){ await pause(400); await cliquer(prof, /^(Confirmer|Oui|Valider|Placer)/); fait = "« moitié libre », puis " + nomDe(X); }
+      else { await prof.keyboard.press("Escape").catch(() => {}); } }
+    if(!fait){
+      if(await cliquer(prof, new RegExp("^" + esc(nomDe(X)) + "$|^" + esc(pre(X)) + "$"))){ await pause(500);
+        if(await cliquer(prof, /présent|arrivé|Retour|revient/i)){ await pause(400); await cliquer(prof, /^(Confirmer|Oui|Valider)/); fait = "le nom de " + nomDe(X) + " puis « présent »"; } }
+    }
+    await pause(1200);
+    const fc = await capt(prof, "13c-present");
+    const absApres = JSON.stringify(S().absents || []);
+    J.v(!!fait && !absApres.includes(X), H12, "Paul marque " + nomDe(X) + " présent par un geste de la console (« ↩️ Retour d'un élève » ou ce qu'elle propose)", "(" + fc + ") geste : " + (fait || "aucun trouvé (ni dans « ↩️ Retour d'un élève », ni au clic sur son nom)") + " · absents : " + absApres);
+    if(!absApres.includes(X)){
+      const cX = coteDe(Y) === "g" ? "d" : "g"; const z = await binomeVu(tY, cX, X); await garde(tY, "après le retour de " + pre(X)); f = await capt(tY, "13c-present-tablette");
+      J.v(/tape ton code/.test(z) && z.includes(nomDe(X)), H2, "l'autre moitié de la tablette de " + pre(Y) + " s'ouvre pour " + pre(X) + " (« Ton binôme : " + nomDe(X) + " », « " + pre(X) + ", tape ton code à 4 chiffres : »)", "(" + f + ") " + z.slice(0, 200));
+      await codeBinome(tY, cX, codeDe(nomDe(X)));
+      J.v(!!(S().entres || {})[X], H12, pre(X) + " tape son code : il est entré, à côté de " + pre(Y), JSON.stringify(Object.keys(S().entres || {})));
+    }
+
+    J.section("Point 13 (09:25) — « 🛑 Terminer » : chaque tablette oublie ses élèves et revient à l'entrée");
+    await cliquer(prof, /Terminer la séance/); await pause(400); await cliquer(prof, /^🛑 Terminer la séance$|Terminer la séance/); await pause(2200);
+    J.v(!sidDe(srv, "3 ESSAI"), H1, "la séance est terminée (sessionActive/3 ESSAI vide)", JSON.stringify(srv.store.get("qcm/sessionActive")));
+    const tabs = A.pages.filter(p => /tablette/.test(p.__nom));
+    // seules les tablettes où un élève est entré dans la séance (celle restée sur la session de 3 BANC n'y est jamais entrée)
+    const dansSeance = [];
+    for(const p of tabs){ if(Object.values(p.__entres || {}).length || p === tP || p === tY) dansSeance.push(p); }
+    for(const p of tabs.filter(p => !dansSeance.includes(p))) note(p.__nom + " : aucun élève entré dans la séance ; pas de vérification après « Terminer »");
+    for(const p of dansSeance){
+      t = await garde(p, "après « Terminer »"); f = await capt(p, "13c-fin-" + slug(p.__nom));
+      let ici = null; try { ici = await p.evaluate(() => typeof ELV !== "undefined" ? ELV.ici() : null); } catch(e){}
+      J.v(/Identifie-toi|Tu es bien/.test(t) && !/Avant de commencer|Ton binôme/.test(t), H12, p.__nom + " : après « Terminer », l'entrée (« 👋 Identifie-toi », ou « Tu es bien … ? » s'il y a une session)", "(" + f + ") " + t.slice(0, 200));
+      J.v(!!ici && !ici.g && !ici.d, H1, p.__nom + " : la tablette a oublié ses élèves (ELV.ici())", JSON.stringify(ici));
+    }
+    J.section("Point 13 (09:25) — « Combien êtes-vous » et « Choisis ta classe » à aucune étape");
+    for(const p of tabs) verifGarde(p, p.__nom);
+    for(const p of A.pages) if(p.__err.length) note(p.__nom + " : " + p.__err.slice(0, 3).join(" | "));
+    await A.fermer();
+  } catch(e){ J.v(false, BANC, "point 13 (09:25) : le jeu s'est interrompu : " + e.message); }
   ecrire(); process.exit(0);
 })();

@@ -581,14 +581,15 @@ function FicheV(p){
       var luV = brute.avant ? (brute.avant.choix === "aucun" ? "aucun" : v3Liste(brute.avant.choix).map(Number)) : tr && tr.lu && l && l.par === "prof" ? (tr.lu === "aucun" ? "aucun" : v3Liste(tr.lu).map(Number)) : null;
       var lu = luV || (l ? l.choix : (se.nouvelle ? null : feuillePapierV(se, qi, slug))), t = tabletteV(se, qi, slug), tc = t ? t.choix : null;
       var luJ = lu && lu !== "aucun" && memesChoixV(lu, q.bonnes), tJ = tc && memesChoixV(tc, q.bonnes);
-      var fl = lire.filter(function(x){ return x.q === qi; })[0], dit = (b[qi] || {})[slug];
+      var fls = lire.filter(function(x){ return x.q === qi; }), fl = fls[0], dit = (b[qi] || {})[slug];
       var corr = (r.corrigees || []).indexOf(qi) >= 0;
       return h("div", {key:qi, className:"fiche-q fiche-q-b"},
         h("span", {className:"num"}, "Q" + (qi+1)),
         h("span", null, q.enonce, (q.competences || []).length > 0 && h("div", {className:"fiche-comp"}, "🧩 " + q.competences.join(" · ")),
           tr && tr.decision === "auteur" ? h("div", null, h("span", {className:"flag ok"}, "corrigée en classe : raison donnée à " + pre + " (" + choixTexteV(q, l ? l.choix : tr.choix) + ")"))
             : corr && h("div", null, h("span", {className:"flag ok"}, l && l.par === "prof" ? "Corrigé d'après sa feuille : " + choixTexteV(q, l.choix) : "Corrigé d'après sa feuille")),
-          fl && fl.txt && h("div", null, h("span", {className:"flag" + (fl.lue ? " ok" : "")}, (fl.lue ? "✔ lue · " : "⚠️ ") + fl.txt), (fl.lignes || []).map(function(l, i){ return h("div", {key:i, className:"alire-l"}, l); }))),
+          // toutes les lignes « à lire » de la question, chacune avec ses réponses dessous (une question en a parfois deux)
+          fls.filter(function(x){ return x.txt; }).map(function(x, k){ return h("div", {key:"al" + k}, h("span", {className:"flag" + (x.lue ? " ok" : "")}, (x.lue ? "✔ lue · " : "⚠️ ") + x.txt), (x.lignes || []).map(function(l, i){ return h("div", {key:i, className:"alire-l"}, l); })); })),
         h("span", {className:"val " + (luJ ? "j" : "f")}, lu ? choixTexteV(q, lu) : "—"),
         h("span", {className:"val " + (tJ ? "j" : "f")}, tc ? choixTexteV(q, tc) : "—"),
         h("span", {className:"val"}, dit === "oui" ? "Oui, la même chose" : dit === "non" ? "Non, autre chose" : "rien dit"),

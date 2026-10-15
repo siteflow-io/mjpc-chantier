@@ -338,7 +338,10 @@ function contenuTablette(se, t){
   // reprise 7, point 6 (Paul, 13/10 15:37) : le dessin de la vraie tablette (TabletteVue, MoitieH de c3-tablettes.js), à chaque phase
   // (la co-évaluation, le bilan), en petit comme en grand ; ses gestes passent par ELV pour l'élève de la moitié
   // dessinée comme « 👁 » et la tablette elle-même (VueTabletteH, QCM-2 : « 📊 Mes évaluations » en tête de chaque moitié entrée)
-  if(typeof VueTabletteH === "function" && t.d) return h(VueTabletteH, {g:t.g, d:t.d});
+  // une réponse, un B, une lecture écrits par la classe simulée (et non par un clic dans la moitié) : la moitié se redessine à neuf,
+  // comme « 👁 », au lieu de garder ce qu'elle tenait (QCM-4, 10:57 : le 2e tour de Q1)
+  var cle = JSON.stringify([d.ph, d.qi, d.tour, d.cote, [t.g, t.d].map(function(x){ return x ? [SCN.reponse(x, d.qi), SCN.ditB(x, d.qi), SCN.lecture(x, d.qi), (se.S.coeval || {})[x] || null] : null; })]);
+  if(typeof VueTabletteH === "function" && t.d) return h(VueTabletteH, {key:cle, g:t.g, d:t.d});
   if(typeof TabletteVue === "function" && typeof MoitieH === "function")
     return t.d ? TabletteVue(t.g, t.d, false) : h("div", {className:"tablette seule"}, h("div", {className:"moitie g"}, MoitieH(t.g, "g", null)));
   var g = t.g ? MOITIES.ecran(eleveDe(t.g), "g") : null, dd = t.d ? MOITIES.ecran(eleveDe(t.d), "d") : null;

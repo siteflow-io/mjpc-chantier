@@ -22916,3 +22916,21 @@ Envoyé à Paul, mot pour mot :
 Tu valides 27, 28 et 29 ? Si oui, je l'écris aux exécutants, et ce sont eux qui le codent.
 
 16/10/2026 14:58 MEMO
+
+---
+
+## TOUR 741 — réveil programmé de 15:26 (pas Paul)
+
+Le contrôle programmé (`trig_017aHHtwSaV5UMBxqcqeivXa`). Lu : `VERDICT.md` de QCM-4 de 15:14 (`eae372cc`, « ça va », app `381184d`, md5 `54c0af98…`), `ETAT.md` (les quatre attendent « contrôlé »), la mesure du temps tapé pendant un tour (`banc-micros-16-10-d.js`). Mesuré : la reconstruction à l'identique ; mes contrôles 32/32, sonde B 17/17, sonde de l'œil 4/4 ; `qcm/sessionActive` vide. Fait : production `e694cc2` (point de retour 8.0.3 blob `5f216f5aaf61`, journal, OÙ-TROUVER-QUOI, dette n°12 · 220), servie bit à bit à 15:30:44 ; « CONTRÔLÉ, EN LIGNE » en tête de `DEFAUTS-OUVERTS.md` (`ad9a7a9d`) ; `AUDITS/CODE-QCM-AUDIT-1526-16-10/`.
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.4, en ligne depuis 15:30 (le fichier en ligne est identique à celui contrôlé) · **en cours chez l'exécutant :** rien, j'ai écrit « contrôlé » et ils s'arrêtent · **ouvert :** 27, 28 et 29, qui attendent ta réponse
+
+30. Le contrôle à froid est fini. Le verdict de QCM-4 dit « ça va » : son propre banc des deux micros passe en entier, comme tous ses autres bancs, et mon contrôle aussi. La 8.0.4 est en ligne : ce sont mes micros, avec les corrections des exécutants du point 25, élision comprise, et « +10 » qui ajoute avant le 0 et rouvre après, comme tu l'as dit. L'élève seul a les lignes du papier, en attendant ta réponse au point 27. Aucune séance n'était en cours. Si un écran ne va pas, je remets la 8.0.3 en une minute. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=prof&v=804
+
+28. QCM-4 a mesuré les chronos des questions, et c'est plus grave qu'à la lecture. Pendant un tour, si tu tapes « 45 » dans le temps de réponse, le « 4 » part seul et finit le tour tout de suite. La séance passe au tour suivant, et l'élève qui n'avait pas encore répondu perd son tour. Tant que ce n'est pas réglé, pendant un tour, sers-toi seulement de « +5 », « +10 » et « +30 », pas du champ. Ma proposition reste celle du point 28 : le temps tapé ne part qu'à Entrée ou quand tu quittes le champ, pour les questions comme pour la lecture.
+
+Tes tests (point 30), dans l'ordre. En mode test, va jusqu'à « Avant la correction » et regarde la tablette de l'élève seul, s'il y en a un (les présents en nombre impair) : il a les lignes du papier, sans voisin. Sur une tablette à deux, quand un prénom commence par une voyelle, tu lis « la feuille d'Emma », et non plus « la feuille de Emma ». Pendant une lecture, laisse le chrono arriver à 0, attends un peu, puis clique « +10 » : la lecture se rouvre pour 10 secondes.
+
+16/10/2026 15:32 MEMO

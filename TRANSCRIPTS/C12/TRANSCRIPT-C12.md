@@ -22806,3 +22806,25 @@ Envoyé à Paul, mot pour mot :
 20. Trois suites possibles. Première : on garde la 8.0.3 telle qu'elle est. Deuxième : on la garde en ligne, et QCM-4 la contrôle à froid, comme une livraison d'exécutant ; s'il trouve un défaut, l'exécutant concerné le corrige. Troisième : je remets la 8.0.2 et les exécutants recodent les points 13 à 17, ce qui prend plus de temps. Je ne fais rien tant que tu n'as pas choisi.
 
 16/10/2026 12:10 MEMO
+
+---
+
+## TOUR 736 — Paul, 16/10 12:10
+
+Paul, mot pour mot :
+
+Fais moi un message pour que les exécutants contrôlent tes micros
+
+Fait : la section « Contrôle à froid des micros de la conscience — 16/10/2026 » en tête de `LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md` sur `code-qcm` (`1663e226`) : les mots de Paul, les deux plages de commits (`7a79cb7c..99a7de1d`, `435a93d4..d7897c18`), les fichiers de chacun (COMMUN §1), ce qu'il faut chercher, le banc propre de QCM-4, le calendrier (13:15, 13:45, 13:46, 14:00) ; le contrôle de la conscience programmé à 13:46 (`trig_01URdJGpgHfwXtzz8MjWHiVj`).
+
+Envoyé à Paul, mot pour mot :
+
+20. Voici le message à coller, le même dans les quatre sessions :
+
+« Contrôle à froid des micros de la conscience : lis la section « Contrôle à froid des micros de la conscience — 16/10/2026 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), et fais ta part. Chacun relit ce que la conscience a changé dans ses fichiers ; QCM-4 rejoue tout avec son propre banc. Relectures poussées à 13:15, avec ta ligne dans ETAT.md ; QCM-4 pousse VERDICT.md à 13:45. Tu tournes jusqu'à ce que la conscience écrive « contrôlé » en tête de ce fichier. »
+
+21. Chacun relit ses propres fichiers, ligne à ligne, contre tes mots, que j'ai recopiés dans la section. Il cherche aussi ce que j'aurais oublié : un autre écran où le nom de la classe paraît encore en brut, un autre écran de la correction qui dit encore « tu » à qui n'a pas la feuille, une phrase côté élève que tu n'as pas donnée. QCM-4 écrit son propre banc des deux micros, sans se servir de mes sondes, et vérifie que je n'ai pas affaibli ses bancs en les touchant. Un défaut trouvé est corrigé par l'exécutant qui en est le propriétaire.
+
+22. Calendrier : verdict à 13:45, mon contrôle à 13:46 (je l'ai programmé). S'il y a des corrections, elles partent en ligne à 14:00, seulement si aucune séance n'est en cours. S'ils ne trouvent rien, la 8.0.3 reste telle quelle et je te le dis.
+
+16/10/2026 12:13 MEMO

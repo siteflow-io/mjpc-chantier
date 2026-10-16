@@ -762,6 +762,36 @@
    "sorte": "geste-en-trop",
    "motif": "#e Essai",
    "raison": "Paul, 16/10, 07:15 : « tu me fais en micro l'affichage du nom des classes (il y avait eu le même problème sur correction dictée, le nom des classes s'affichait en brut) ». La maquette écrit la classe comme sa clé (« 3 ESSAI ») ; l'app l'écrit désormais lisible, par la règle de correction_dictee (nomClasseV) : « 3e Essai ». Micro de la conscience n°12."
+  },
+  {
+   "scene": "*",
+   "sorte": "texte",
+   "motif": "[Mm]ontre ta feuille à",
+   "raison": "Paul, 16/10, 10:54 : « Le plus logique c'est qu'ils gardent la feuille du voisin pendant toute la correction. Ainsi pas d'allers retours, et ce qu'ils voient à l'écran leur parle évidemment de la copie du voisin et pas de la leur. » ; phrases validées à 11:02 (« Voilà. ») : « Donne ta feuille à … et prends la sienne », plus de « montre ta feuille », et à « Révéler », la moitié parle au voisin (« Élise avait juste ! », « Sa réponse », « Gatien, sur la feuille d'Élise, … »). Micro 8.0.3 de la conscience n°12."
+  },
+  {
+   "scene": "t-corr-q1-apres",
+   "sorte": "texte",
+   "motif": "Tu avais (juste|faux)|TA RÉPONSE|Ta réponse : aucun|tu avais cliqué sur|tu as cliqué sur la bonne réponse|Bravo ! Sur ta feuille",
+   "raison": "Paul, 16/10, 10:54 : « Le plus logique c'est qu'ils gardent la feuille du voisin pendant toute la correction. Ainsi pas d'allers retours, et ce qu'ils voient à l'écran leur parle évidemment de la copie du voisin et pas de la leur. » ; phrases validées à 11:02 (« Voilà. ») : « Donne ta feuille à … et prends la sienne », plus de « montre ta feuille », et à « Révéler », la moitié parle au voisin (« Élise avait juste ! », « Sa réponse », « Gatien, sur la feuille d'Élise, … »). Micro 8.0.3 de la conscience n°12."
+  },
+  {
+   "scene": "t-corr-q2-apres",
+   "sorte": "texte",
+   "motif": "Tu avais (juste|faux)|TA RÉPONSE|Ta réponse : aucun|tu avais cliqué sur|tu as cliqué sur la bonne réponse|Bravo ! Sur ta feuille",
+   "raison": "Paul, 16/10, 10:54 : « Le plus logique c'est qu'ils gardent la feuille du voisin pendant toute la correction. Ainsi pas d'allers retours, et ce qu'ils voient à l'écran leur parle évidemment de la copie du voisin et pas de la leur. » ; phrases validées à 11:02 (« Voilà. ») : « Donne ta feuille à … et prends la sienne », plus de « montre ta feuille », et à « Révéler », la moitié parle au voisin (« Élise avait juste ! », « Sa réponse », « Gatien, sur la feuille d'Élise, … »). Micro 8.0.3 de la conscience n°12."
+  },
+  {
+   "scene": "t-corr-q3-apres",
+   "sorte": "texte",
+   "motif": "Tu avais (juste|faux)|TA RÉPONSE|Ta réponse : aucun|tu avais cliqué sur|tu as cliqué sur la bonne réponse|Bravo ! Sur ta feuille",
+   "raison": "Paul, 16/10, 10:54 : « Le plus logique c'est qu'ils gardent la feuille du voisin pendant toute la correction. Ainsi pas d'allers retours, et ce qu'ils voient à l'écran leur parle évidemment de la copie du voisin et pas de la leur. » ; phrases validées à 11:02 (« Voilà. ») : « Donne ta feuille à … et prends la sienne », plus de « montre ta feuille », et à « Révéler », la moitié parle au voisin (« Élise avait juste ! », « Sa réponse », « Gatien, sur la feuille d'Élise, … »). Micro 8.0.3 de la conscience n°12."
+  },
+  {
+   "scene": "*",
+   "sorte": "geste-en-trop",
+   "motif": "^\\+#$",
+   "raison": "Paul, 16/10, 11:02 : « je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc. » : la carte « 📄 Temps pour lire la feuille du voisin » a le champ du temps et « +5 », « +10 », « +30 », comme les chronos des questions. Micro 8.0.3 de la conscience n°12."
   }
  ],
  "horsApp": {

@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 17:10 — le mode test joue les vraies évaluations : message reçu à 17:09 ; rien à mon nom (point 5) sauf une demande de QCM-3 ou un défaut de QCM-4 ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé » en tête de la section
 
 - QCM-3 · SOIR · 18:35 — VERDICT de 18:34 : ça va (modetest 121/121) ; rien à mon nom ; j'attends « contrôlé » de la conscience
-- QCM-4 · BANC · 18:44 — mode test des vraies évaluations : VERDICT.md poussé à 18:34 (0081477), ça va ; j'attends le contrôle de la conscience (« contrôlé ») et je rejoue tout correctif poussé
+- QCM-4 · BANC · 18:53 — mode test des vraies évaluations fini : « contrôlé » (la conscience, 18:53, 882611f, md5 764a184f…) sur mon VERDICT de 18:34 (ça va) ; la 8.0.5 attend la confirmation de Paul ; je m'arrête, en attente d'une relance de Paul

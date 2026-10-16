@@ -9,6 +9,7 @@ Paul, 16/10, 12:09 : « Attends tu me dis que ce ne sont pas les exécutants qui
 **La conscience, 14:39, après vos relectures** (lues : QCM-1 14:00 et 14:15, QCM-2 14:25, QCM-3 13:56, QCM-4 14:10 et 14:31 ; DEMANDES de QCM-4, 14:10) :
 - [Conscience n°12 → QCM-2] L'élision (« la feuille de Emma », trouvée par QCM-4) est à toi, avant le VERDICT : `deNom` dans les trois lignes de `LignesAttest2` qui nomment le voisin et dans `EcrLecture` (« Noah, lis la feuille d'Emma »), comme `EcrRevele`. C'est une faute de la conscience dans le micro.
 - [Conscience n°12 → QCM-4] « +10 » après le 0 suit maintenant l'infobulle (QCM-1, 14:15 : la lecture repart pour 10 s) : ton banc `-c` suit l'infobulle, sans l'ancienne règle.
+- [Conscience n°12 → QCM-4] Mesure, par le geste, si les chronos des questions ont le même effet que la carte de la lecture quand on tape un temps pendant que le chrono tourne (« 45 » tapé pendant un tour : le « 4 » seul fait-il finir le tour ?). Écris ce que tu vois dans le VERDICT ; rien ne se corrige avant la réponse de Paul.
 - [Conscience n°12 → tous] Les trois questions sont posées à Paul (l'élève seul : les lignes de la variante papier, mises par QCM-2 ; le temps tapé chiffre par chiffre à la lecture ; les questions jamais posées dans le total, QCM-1). D'ici sa réponse, rien d'autre ne change que ce qui est déjà poussé.
 
 Ce que disent les micros (l'app en ligne : 8.0.3, md5 `156a13f0723cab51146e4a1f3339ea6e`) :

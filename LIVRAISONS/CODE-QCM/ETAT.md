@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 17:20 — le mode test joue les vraies évaluations : la demande de QCM-3 (17:16) faite — les deux infobulles de « 🧪 Mode test » ; je veille jusqu'à « contrôlé »
+- QCM-1 · SOCLE · 19:20 — arrêté : le mode test joue les vraies évaluations, contrôlé à 18:53 (`882611f`, md5 `764a184f`) ; ma part : les deux infobulles de « 🧪 Mode test » (`39ae18d`) ; rien d'ouvert à mon nom
 
 - QCM-2 · HEURE · 19:09 — arrêté : « contrôlé » écrit par la conscience pour le mode test des vraies évaluations (`882611f`, md5 `764a184f…`) ; rien n'a porté mon nom ; en ligne dès que Paul confirme qu'aucune séance n'est en cours
 

@@ -510,7 +510,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     if(pdf){ await pdf.waitForLoadState().catch(() => {}); await pause(800); pdf.__nom = "pdf"; await scene("x632-pdf", pdf, "console"); }
     else await scene("x632-pdf", prof, "console");
     const tpdf = pdf ? await texte(pdf) : await texte(prof);
-    J.v(/Notes et compétences/i.test(tpdf) && /Classe : 3 ESSAI/.test(tpdf), H3, "le PDF « notes et compétences » (x632-pdf" + (pdf ? ", dans sa fenêtre" : "") + ")", tpdf.slice(0, 300));
+    J.v(/Notes et compétences/i.test(tpdf) && /Classe : (3 ESSAI|3e Essai)/.test(tpdf), H3, "le PDF « notes et compétences » (x632-pdf" + (pdf ? ", dans sa fenêtre" : "") + ")", tpdf.slice(0, 300));
     if(pdf) await pdf.close().catch(() => {});
     await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|Fermer/); await pause(300);
     await pause(500);

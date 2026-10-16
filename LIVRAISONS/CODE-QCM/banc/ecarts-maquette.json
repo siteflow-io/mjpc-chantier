@@ -738,6 +738,30 @@
    "sorte": "texte",
    "motif": "^Chapitre choisi",
    "raison": "Le README du prompt (MANDATS/PROMPT-QCM-CREATION/README.md) : « Paul choisit d'abord le chapitre ; l'app remplace alors les jetons » : l'app met un menu du chapitre à la place de la ligne figée de la maquette (QCM-3, DEMANDES 20:45)."
+  },
+  {
+   "scene": "*",
+   "sorte": "texte",
+   "motif": "# ESSAI",
+   "raison": "Paul, 16/10, 07:15 : « tu me fais en micro l'affichage du nom des classes (il y avait eu le même problème sur correction dictée, le nom des classes s'affichait en brut) ». La maquette écrit la classe comme sa clé (« 3 ESSAI ») ; l'app l'écrit désormais lisible, par la règle de correction_dictee (nomClasseV) : « 3e Essai ». Micro de la conscience n°12."
+  },
+  {
+   "scene": "*",
+   "sorte": "bulle",
+   "motif": "# ESSAI",
+   "raison": "Paul, 16/10, 07:15 : « tu me fais en micro l'affichage du nom des classes (il y avait eu le même problème sur correction dictée, le nom des classes s'affichait en brut) ». La maquette écrit la classe comme sa clé (« 3 ESSAI ») ; l'app l'écrit désormais lisible, par la règle de correction_dictee (nomClasseV) : « 3e Essai ». Micro de la conscience n°12."
+  },
+  {
+   "scene": "*",
+   "sorte": "geste",
+   "motif": "# ESSAI",
+   "raison": "Paul, 16/10, 07:15 : « tu me fais en micro l'affichage du nom des classes (il y avait eu le même problème sur correction dictée, le nom des classes s'affichait en brut) ». La maquette écrit la classe comme sa clé (« 3 ESSAI ») ; l'app l'écrit désormais lisible, par la règle de correction_dictee (nomClasseV) : « 3e Essai ». Micro de la conscience n°12."
+  },
+  {
+   "scene": "*",
+   "sorte": "geste-en-trop",
+   "motif": "#e Essai",
+   "raison": "Paul, 16/10, 07:15 : « tu me fais en micro l'affichage du nom des classes (il y avait eu le même problème sur correction dictée, le nom des classes s'affichait en brut) ». La maquette écrit la classe comme sa clé (« 3 ESSAI ») ; l'app l'écrit désormais lisible, par la règle de correction_dictee (nomClasseV) : « 3e Essai ». Micro de la conscience n°12."
   }
  ],
  "horsApp": {

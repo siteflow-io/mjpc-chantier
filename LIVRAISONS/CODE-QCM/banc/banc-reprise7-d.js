@@ -48,7 +48,8 @@ const CHOIX_CLASSE = /Choisis ta classe/;
 // lancer une séance par le geste, depuis une console : Pilotage classe, la classe, l'évaluation d'essai, « 🚀 Lancer la séance », l'appel
 async function lancer(prof, srv, cl, absents){
   await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(300);
-  await choisir(prof, new RegExp("^\\s*" + esc(cl))); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(400);
+  /* (16/10, micro de la conscience : le nom de la classe à l'écran devient « 3e Essai ») la classe se choisit par sa clé, la valeur de l'option */
+  await prof.evaluate(cl => { for(const s of document.querySelectorAll("select")){ const o = [...s.options].find(x => x.value === cl); if(o){ s.value = o.value; s.dispatchEvent(new Event("change", {bubbles: true})); return true; } } return false; }, cl); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(400);
   await cliquer(prof, /Lancer la séance/); await pause(500);
   for(const a of absents || []) await cliquer(prof, new RegExp(esc(a)));
   await cliquer(prof, /Lancer la séance/); await pause(1200);

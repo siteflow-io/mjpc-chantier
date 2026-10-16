@@ -161,7 +161,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
 
     J.section("D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF");
     await cliquer(prof, /^Données$/); await cliquer(prof, /Résultats/); await pause(500);
-    J.v(/4 ESSAI/.test(await texte(prof)), H3, "Résultats : la séance de 4e, sous 4 ESSAI", (await texte(prof)).slice(0, 300));
+    J.v(/4 ESSAI|4e Essai/.test(await texte(prof)), H3, "Résultats : la séance de 4e, sous 4 ESSAI", (await texte(prof)).slice(0, 300));
     await cliquer(prof, /^📊 Ouvrir$/); await pause(700);
     const tt = await texte(prof);
     J.v(NOMS.filter(n => n !== ABSENT).every(n => tt.includes(n)), H3, "le tableau de la séance : les 5 présents", tt.slice(0, 300));

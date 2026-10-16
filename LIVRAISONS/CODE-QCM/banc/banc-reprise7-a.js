@@ -213,8 +213,8 @@ function ressemblance(vrai, vu){ const a = lignes(vrai), b = new Set(lignes(vu))
     const evChoisie = await prof.evaluate(() => { for(const s of document.querySelectorAll("select")){ const o = s.options[s.selectedIndex]; if(o && /Démo|Évaluation d'essai|^\S/.test(o.textContent) && [...s.options].some(x => /Démo — apprendre/.test(x.textContent))) return o.textContent; } return null; }).catch(() => null);
     J.v(/Lancer une nouvelle séance/.test(t) && /Démo — apprendre/.test(evChoisie || ""), H3, "il mène à « 🎯 Lancer une nouvelle séance », la démo déjà choisie", "évaluation choisie : « " + evChoisie + " » (" + c + ")");
     J.v(await choisir(prof, /^(3 ESSAI|3e Essai)/), H3, "la classe 3 ESSAI se choisit"); await pause(500);
-    const cl = await prof.evaluate(() => { for(const s of document.querySelectorAll("select")){ const o = s.options[s.selectedIndex]; if(o && /ESSAI|BANC/.test(o.textContent)) return o.textContent; } return null; }).catch(() => null);
-    J.v(/3 ESSAI/.test(cl || "") && /Démo — apprendre/.test((await prof.evaluate(() => [...document.querySelectorAll("select")].map(s => (s.options[s.selectedIndex] || {}).textContent).join(" | ")).catch(() => ""))), H3, "après le choix de la classe, la démo reste choisie", "classe : « " + cl + " »");
+    const cl = await prof.evaluate(() => { for(const s of document.querySelectorAll("select")){ const o = s.options[s.selectedIndex]; if(o && /ESSAI|BANC/i.test(o.textContent)) return o.textContent; } return null; }).catch(() => null);
+    J.v(/3 ESSAI|3e Essai/.test(cl || "") && /Démo — apprendre/.test((await prof.evaluate(() => [...document.querySelectorAll("select")].map(s => (s.options[s.selectedIndex] || {}).textContent).join(" | ")).catch(() => ""))), H3, "après le choix de la classe, la démo reste choisie", "classe : « " + cl + " »");
     J.v(await cliquer(prof, /^🎓 Lancer la démo$|^🚀 Lancer la séance$/), H3, "« 🎓 Lancer la démo »"); await pause(1500);
     t = await texte(prof); c = await capt(prof, "B-appel");
     const S = seance(srv, "3 ESSAI");

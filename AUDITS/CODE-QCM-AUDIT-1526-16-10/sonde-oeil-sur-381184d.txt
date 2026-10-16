@@ -1,0 +1,9 @@
+Sonde œil — /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/t741/app-54c0af98.html — 2026-10-16T13:27:31.379Z
+Durée : 14 s · vérifications : 4 · échecs : 0
+  ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  info   la vraie tablette, personne d'entré, Q1 lancée : ✨ ⏎ 💡 ⏎ 👋 Identifie-toi ⏎ 1 ⏎ 2 ⏎ 3 ⏎ 4 ⏎ 5 ⏎ 6 ⏎ 7 ⏎ 8 ⏎ 9 ⏎ ⌫ ⏎ 0 ⏎ ✓ ⏎ Entrer →
+  ok     K30 · la vraie tablette reste à l'entrée tant que personne n'est entré (Q1 lancée)
+  info   la console, carte des tablettes : Tablette 1 ⏎ 👁 ⏎ ABRIAL Julien ⏎ pas encore entré ⏎ BAUDRY Léa ⏎ pas encore entré ⏎ 📱 Tablette 2 ⏎ 👁 ⏎ BRUNEAU Camille ⏎ pas encore entré ⏎ CARRÉ Tom ⏎ pas encore entré ⏎ 📱 Tablette 3 ⏎ 👁 ⏎ CHEVALLIER Théo ⏎ pas encore entré ⏎ DUVERNAY Michel ⏎ pas encore entré ⏎ �
+  info   « 👁 » de la tablette 1 : ✨ ⏎ 💡 ⏎ 👋 Identifie-toi ⏎ 1 ⏎ 2 ⏎ 3 ⏎ 4 ⏎ 5 ⏎ 6 ⏎ 7 ⏎ 8 ⏎ 9 ⏎ ⌫ ⏎ 0 ⏎ ✓ ⏎ Entrer →
+  ok     K31 · le bouton « 👁 » d'une tablette existe et s'ouvre
+  ok     K32 · « 👁 » montre ce que montre la vraie tablette (pas la question, puisque personne n'est entré)

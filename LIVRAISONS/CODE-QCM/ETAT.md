@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 14:00 — contrôle à froid des micros (reçu 13:52, prévu 14:52) : relecture poussée — `nomClasseV`, `CLASSE`, « Terminer », les séances en cours : rien trouvé ; `nonLuesV` comptait les questions jamais posées : corrigé (`SCN.note` rend `nonPosees`) ; une question pour Paul à la conscience (le total d'une séance terminée avant la fin)
+- QCM-1 · SOCLE · 14:15 — contrôle à froid : relecture poussée (14:02) ; « +10 » après le 0 (QCM-4, 14:10) corrigé dans `ACT.ajouterTemps` selon l'infobulle ; j'attends « contrôlé »
 
 - QCM-2 · HEURE · 14:25 — relecture poussée (reçu 13:51, prévu 14:51) : 8.0.2 et 8.0.3 relus dans etape2, c3-pilot, etape3, c3-tablettes, c3-corr ; une trouvaille, l'élève seul à « Avant la correction », corrigée (`4078586`) ; en cours : l'heure de demain en contrôle, puis je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé »
 

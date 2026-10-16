@@ -709,7 +709,11 @@ var ACT = (function(){
     var id = sid(); if(!id) return Promise.resolve(); var x = e(); qi = qi != null ? qi : x.qi; if(qi == null) return Promise.resolve();
     var t = SCN.tempsDe(qi), maj = {}; maj[cheminS(id, "temps/" + qi + "/" + sorte)] = Math.max(1, t[sorte] + s);
     var enCours = x.qi === qi && ((sorte === "reflexion" && x.ph === "reflexion") || (sorte === "reponse" && (x.ph === "reponse" || x.ph === "rouvert" || x.ph === "lecture")));
-    if(enCours) maj[cheminS(id, "deroule/duree")] = Math.max(1, (x.duree || 0) + s);
+    // (16/10, contrôle à froid du micro 8.0.3 ; l'infobulle de « +5 », « +10 », « +30 » : « Une lecture déjà figée à 0 se rouvre pour ces secondes. »)
+    // la lecture déjà à 0 repart de maintenant pour ces secondes, au lieu de les ajouter au temps déjà dépassé
+    var fige = enCours && x.ph === "lecture" && s > 0 && SCN.reste(x) != null && SCN.reste(x) <= 0;
+    if(fige){ maj[cheminS(id, "deroule/depuis")] = LIVE.maintenant(); maj[cheminS(id, "deroule/duree")] = s; }
+    else if(enCours) maj[cheminS(id, "deroule/duree")] = Math.max(1, (x.duree || 0) + s);
     return ecrireQCM(maj, "ajouterTemps");
   };
   A.fixerTemps = function(qi, sorte, v){ var id = sid(); if(!id) return Promise.resolve(); var t = SCN.tempsDe(qi); return A.ajouterTemps(sorte, v - t[sorte], qi); };

@@ -530,10 +530,11 @@ function ResultatsC(){
         return h("tr", {key:l.p, "data-eleve":l.p},
           h("td", {className:"eleve-cell"}, h("button", {className:"nom-fiche", "data-va":"c-fiche&eleve=" + encodeURIComponent(l.p) + sq, title:"Ouvre la fiche " + deNom(prenomDeNom(l.nom)) + " : sa feuille lue, sa tablette, ce qu'" + ilElle(se, l.p) + " a dit, son point d'autonomie, son bilan général."}, l.nom)),
           l.r.st.map(function(x, i){ var c = MARQUE_RES[x] || MARQUE_RES.f; return h("td", {key:i, className:c[0] + ((l.r.corrigees || []).indexOf(i) >= 0 ? " cell-corrigee" : "")}, c[1]); }),
-          h("td", {className:"score-cell"}, l.r.complet ? fr1(l.r.n) + "/" + l.r.total : "—"),
-          h("td", {className:"score-cell"}, l.r.complet ? fr1(l.r.sur20) : "—"),
-          h("td", null, h("span", {className:"maitrise-pill " + mt.cls}, mt.em + " " + mt.lib)),
-          comps.map(function(c){ return h("td", {key:c, className:"comp-cell"}, PillCompEv(l.r, c, ev)); }),
+          // (16/10, Paul) la note telle qu'elle est, et ce qui reste à lire ; la maîtrise et les compétences attendent la note complète
+          h("td", {className:"score-cell"}, fr1(l.r.n) + "/" + l.r.total, h(NonLuesV, {r:l.r, ecartees:se.ecartees})),
+          h("td", {className:"score-cell"}, fr1(l.r.sur20)),
+          h("td", null, l.r.complet ? h("span", {className:"maitrise-pill " + mt.cls}, mt.em + " " + mt.lib) : "—"),
+          comps.map(function(c){ return h("td", {key:c, className:"comp-cell"}, l.r.complet ? PillCompEv(l.r, c, ev) : "—"); }),
           !comps.length && h("td", {key:"sans", className:"comp-cell"}, "—"),
           h("td", {className:"comp-cell"}, au.retire ? h("span", {className:"maitrise-pill mt-rouge"}, "⛔ retiré " + au.quand) : h("span", {className:"maitrise-pill mt-vert"}, maitriseV(20).em + " " + maitriseV(20).lib)),
           h("td", {className:"alire-cell" + (fl.length ? "" : " vide")}, fl.map(function(x, i){ return h("div", {key:i}, ligneALireH(x, "Q" + (x.q+1) + " : ", (x.corrigee ? " · Corrigé d'après sa feuille" : "") + (x.lue ? " · ✔ lue" : ""))); })));

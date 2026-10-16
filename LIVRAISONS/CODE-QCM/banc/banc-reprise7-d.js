@@ -342,9 +342,10 @@ async function entrerPaire(p, g, d, codeDe, quoi){
       if(qi === 0){
         J.section("Point 12 — après « 💡 Révéler » : la consigne de correction");
         const zF = await zoneTexte(t2, "g"), fF = await capt(t2, "12-revele-faux");
-        J.v(zF.includes("Barre ta réponse et écris la bonne réponse en entier en vert à côté."), H2, pre(slF) + " (réponse fausse, Milan) lit « Barre ta réponse et écris la bonne réponse en entier en vert à côté. »", "(" + fF + ") « " + ((zF.match(/[^\n]*Barre ta réponse[^\n]*/) || [zF.slice(0, 200)])[0]) + " »");
+        /* (16/10, Paul, 10:54 et 11:02) avec un voisin, la moitié parle au voisin, qui a la feuille : « …, sur la feuille de …, barre sa réponse et écris la bonne réponse en entier en vert à côté. » */
+        J.v(/(Barre ta réponse|, sur la feuille d[e' ][^,]*, barre sa réponse) et écris la bonne réponse en entier en vert à côté\./.test(zF), H2, pre(slF) + " (réponse fausse, Milan) lit « Barre ta réponse et écris la bonne réponse en entier en vert à côté. »", "(" + fF + ") « " + ((zF.match(/[^\n]*Barre ta réponse[^\n]*/) || [zF.slice(0, 200)])[0]) + " »");
         const zJ = await zoneTexte(t1, "g"), fJ = await capt(t1, "12-revele-juste");
-        J.v(zJ.includes("Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse."), H2, pre(M[0][2]) + " (réponse juste) lit toujours « Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse. »", "(" + fJ + ") " + zJ.slice(0, 250));
+        J.v(/(Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse|, sur la feuille d[e' ][^,]*, mets simplement un V vert dans la marge à côté de sa réponse)\./.test(zJ), H2, pre(M[0][2]) + " (réponse juste) lit toujours « Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse. »", "(" + fJ + ") " + zJ.slice(0, 250));
         const sr = await t2.evaluate(() => [...document.querySelectorAll(".stylo-rouge")].map(e => e.textContent)).catch(() => []);
         J.v(sr.length === 0, H2, "la tablette de " + pre(slF) + " n'a aucun élément .stylo-rouge", JSON.stringify(sr));
         await releve("Q" + (qi + 1) + " révélée");

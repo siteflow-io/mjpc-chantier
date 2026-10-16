@@ -338,7 +338,15 @@ function PilotCorrectionH(){
         !revele && h("div", {className:"pilot-chrono-card actif saisie-carte"},
           h("div", {className:"label actif"}, "📄 Temps pour lire la feuille du voisin"),
           h("div", {className:"v"}, (m.reste || 0) + "s"),
-          h("div", {className:"desc"}, "sur " + tempsDe(qi).reponse + " s")),
+          h("div", {className:"desc"}, "sur " + tempsDe(qi).reponse + " s"),
+          /* (16/10, Paul, 11:02 : « je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc. »)
+             le même geste que les chronos des questions (TempsCarteH) : le temps se tape, ou « +5 », « +10 », « +30 », tout de suite au chrono en cours */
+          h("div", {className:"inline-edit t-edit"},
+            h(ChampTemps, {v:tempsDe(qi).reponse, qi:qi, champ:"reponse", actif:true, attrs:{"data-q":qi + 1, "data-temps":"lecture", "aria-label":"Temps pour lire la feuille du voisin",
+              title:"Tape le temps pour lire la feuille du voisin, en secondes : il part tout de suite au chrono de la lecture. C'est aussi le temps de réponse de cette question."}}),
+            h("span", {className:"t-s"}, "s"),
+            [5, 10, 30].map(function(n){ return h("button", {key:n, className:"btn btn-ghost btn-sm t-plus", "data-local":"1",
+              title:"Ajoute " + n + " s au temps pour lire la feuille du voisin, tout de suite au chrono en cours. Une lecture déjà figée à 0 se rouvre pour ces secondes.", onClick:function(){ tempsAjouter(qi, "reponse", n, true); }}, "+" + n); }))),
         h("div", {className:"row", style:{marginTop:".8rem"}},
           prec == null ? fermeEnv("C'est la première question de la correction : il n'y a pas de question précédente.", hBase("button", {className:"btn btn-ghost", disabled:true, title:PREC_771}, "← Question précédente"))
             : h("button", Object.assign({className:"btn btn-ghost", title:PREC_771}, geste(null, "questionPrecedente")), "← Question précédente"),
@@ -530,7 +538,7 @@ function BilanClasseH(){
         h("h3", null, "🧩 Par compétence", InfoI("Pour chaque compétence de l'évaluation : combien d'élèves dans chaque niveau, sur ses questions.")),
         COMPS.map(function(cp){
           var d = {vert:0, bleu:0, orange:0, rouge:0};
-          lignes.forEach(function(l){ d[niveauComp(l.r, cp).k]++; });
+          lignes.forEach(function(l){ if(l.r.complet) d[niveauComp(l.r, cp).k]++; });   // (16/10) la note complète seulement, comme la distribution
           return h("div", {key:cp, className:"par-comp"},
             h("div", {className:"pc-t", title:"La compétence " + cp + " du référentiel : " + (LIB_OFF[cp] || cp) + "."}, (LIB_OFF[cp] || cp) + " · " + compQuestions(cp).map(function(i){ return "Q" + (i+1); }).join(", ")),
             h("div", {className:"bilan-classe-distrib pc-d"}, MAITRISE.map(function(mt){ return h("div", {key:mt.k, className:"bilan-classe-distrib-cell fourchette-" + mt.k}, h("strong", null, d[mt.k]), h("span", null, mt.em + " " + mt.lib)); })));
@@ -554,9 +562,9 @@ function BilanClasseH(){
     h("div", {className:"bilan-classe-table-wrap"}, h("table", {className:"bilan-classe-table"},
       h("thead", null, h("tr", null, ["Élève", "Note", "Sur 20", "Maîtrise de la note"].map(function(t){ return h("th", {key:t}, t); }), COMPS.map(EnteteComp), h("th", null, "🤝 Autonomie"))),
       h("tbody", null, lignes.map(function(l){ var mt = maitriseDe(l.r.sur20), au = SCN.autonomie(l.p, k);
-        return h("tr", {key:l.p}, h("td", null, l.nom), h("td", null, l.r.n + " / " + l.r.total), h("td", null, fr1(l.r.sur20)),
-          h("td", null, h("span", {className:"maitrise-pill " + mt.cls}, mt.em + " " + mt.lib)),
-          COMPS.map(function(cp){ return h("td", {key:cp}, PillComp(l.r, cp)); }),
+        return h("tr", {key:l.p}, h("td", null, l.nom), h("td", null, l.r.n + " / " + l.r.total, h(NonLuesV, {r:l.r})), h("td", null, fr1(l.r.sur20)),
+          h("td", null, l.r.complet ? h("span", {className:"maitrise-pill " + mt.cls}, mt.em + " " + mt.lib) : "—"),   // (16/10) la maîtrise attend la note complète
+          COMPS.map(function(cp){ return h("td", {key:cp}, l.r.complet ? PillComp(l.r, cp) : "—"); }),
           h("td", null, au.retire ? h("span", {className:"maitrise-pill mt-rouge"}, "⛔ retiré " + (au.quand || "")) : h("span", {className:"maitrise-pill mt-vert"}, "🟢 Très bonne maîtrise"))); }))))), true);
 }
 

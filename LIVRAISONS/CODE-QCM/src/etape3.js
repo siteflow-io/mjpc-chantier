@@ -18,13 +18,15 @@ function marque(s){ return s === "j" ? "✓" : s === "t" ? "⛔" : s === "a" ? "
 /* ════════ La seconde attestation (507, 510, 549, 640) : une coche par ligne, les deux compétences par leur libellé élève ════════ */
 function LignesAttest2(e, v){
   return [
-    "Maintenant, la correction. Montre ta feuille à " + v.prenom + ".",
+    // (16/10, Paul, 10:54 : « Le plus logique c'est qu'ils gardent la feuille du voisin pendant toute la correction. Ainsi pas d'allers retours, et ce qu'ils voient à l'écran leur parle évidemment de la copie du voisin et pas de la leur. » ; phrases validées à 11:02) chacun garde la feuille de son voisin toute la correction
+    "Maintenant, la correction. Donne ta feuille à " + v.prenom + " et prends la sienne : tu la gardes jusqu'à la fin de la correction.",
     // (reprise 7, point 14, Paul 15/10 09:19) la ligne du stylo vert, mot pour mot
     "Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert.",
     "Pour chaque question, " + v.prenom + " clique ce que dit ta feuille. Toi, tu cliques ce que dit la feuille de " + v.prenom + ".",
+    "Puis tu corriges la feuille de " + v.prenom + " en vert, comme sa moitié de la tablette te le dit.",
     "Lis avec soin, et clique ce que tu lis.",
     "À la fin, " + v.prenom + " dira si tu as bien lu sa feuille.",
-    "Deux compétences sont évaluées : « " + AUTO[0] + " » et « " + AUTO[1] + " ». Tu gardes ton point d'autonomie si tu as dit la vérité pendant les questions, et si tu lis avec soin la feuille de " + v.prenom + ". Sinon, ces deux compétences ne sont pas atteintes."
+    "Deux compétences sont évaluées : « " + AUTO[0] + " » et « " + AUTO[1] + " ». Tu gardes ton point d'autonomie si tu as dit la vérité pendant les questions, et si tu lis et corriges avec soin la feuille de " + v.prenom + ". Sinon, ces deux compétences ne sont pas atteintes."
   ];
 }
 function Attest2(e, n){ var v = autreDe(e); return h(AttestCoches, {e:e, lignes:LignesAttest2(e, v), n0:n, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", va:"t-attest-corr-fait", titrePage:"📝 Correction"}); }
@@ -73,7 +75,7 @@ function EcrLecture(e, qi, dit, chrono){
     h("div", {className:"correction-banner-peda"}, "💡 On corrige d'abord les questions les plus ratées par la classe."),
     Compteur(pastilles3(e, pos), pos),
     h("div", {className:"eleve-q-zone"}, QHead(qi, true), h("div", {className:"eleve-q-enonce"}, q.enonce),
-      h("div", {className:"montre"}, "📄 " + e.prenom + ", montre ta feuille à " + v.prenom + "."),
+      // (16/10, Paul, 10:54) chacun a déjà la feuille de son voisin : « montre ta feuille » ne se dit plus
       h("div", {className:"decl-titre"}, v.prenom + ", lis la feuille de " + e.prenom + " : qu'a-t-" + il(e) + " écrit ?"),
       h("div", {className:"decl-consigne"}, "Clique sur le ou les choix qui disent la même chose que sa feuille. Les mots ne sont pas forcément les mêmes."),
       h("div", {className:"lecture-l"}, h("div", {className:"soin"}, "Lis avec soin : c'est ton point d'autonomie."), chrono != null && ChronoSaisie(chrono, q.reponse)),
@@ -134,25 +136,31 @@ function EcrRevele(e, qi, opts){
   var lu = opts.papier ? (FEUI[e.cle] || [])[qi] : (LU[e.cle] || [])[qi], luArr = lu === "aucun" || !lu ? [] : lu;
   var st = opts.papier ? ((FEUI[e.cle] || [])[qi] === "aucun" ? "a" : calc(cleE(e)).st[qi] === "t" ? "f" : calc(cleE(e)).st[qi]) : calc(cleE(e)).st[qi];
   var pos = ORDRE_CORR.indexOf(qi), juste = st === "j", trouvee = st === "t";
+  /* (16/10, Paul, 10:54 et 11:02) sur tablette, avec un voisin : c'est le voisin qui a la feuille et qui est devant cette moitié ; elle lui parle
+     de la feuille de l'élève (« Élise avait juste ! », « Gatien, sur la feuille d'Élise, … »). Seul, ou sur papier : l'élève, de sa propre feuille. */
+  var vo = !opts.papier && opts.voisin && opts.voisin.prenom ? opts.voisin : null, pr = e.prenom;
   var pa = opts.papier ? EV.questions.map(function(x, i){ var p = ORDRE_CORR.indexOf(i); if(p > pos) return {cls:"vide", t:String(i+1)}; var s = i === qi ? st : (calc(cleE(e)).st[i] === "j" ? "j" : "f"); return s === "j" ? {cls:"juste", t:"✅"} : {cls:"faux", t:"❌"}; }) : pastilles3(e, pos + 1);
   return Page(badgeDe(e), "📝 Correction", h(F, null,
     h("div", {className:"correction-banner-peda"}, "💡 On corrige d'abord les questions les plus ratées par la classe."),
     Compteur(pa, pos + 1),
     h("div", {className:"eleve-q-zone"}, QHead(qi, true), h("div", {className:"eleve-q-enonce"}, q.enonce),
       trouvee ? h("div", {className:"trouvee"}, h("span", {className:"plus"}, "✓"),
-          h("span", null, "Trouvée au dernier moment", h("span", {className:"sous"}, "Ta feuille disait autre chose, mais tu as cliqué sur la bonne réponse : la question compte. Cela n'arrive qu'une fois par évaluation.")))
-        : h("div", {className:"correction-resultat " + (juste ? "juste" : "faux")}, juste ? "✅ Tu avais juste !" : "❌ Tu avais faux."),
+          h("span", null, "Trouvée au dernier moment", h("span", {className:"sous"}, vo ? "Sa feuille disait autre chose, mais " + pr + " a cliqué sur la bonne réponse : la question compte. Cela n'arrive qu'une fois par évaluation." : "Ta feuille disait autre chose, mais tu as cliqué sur la bonne réponse : la question compte. Cela n'arrive qu'une fois par évaluation.")))
+        : h("div", {className:"correction-resultat " + (juste ? "juste" : "faux")}, vo ? (juste ? "✅ " + pr + " avait juste !" : "❌ " + pr + " avait faux.") : (juste ? "✅ Tu avais juste !" : "❌ Tu avais faux.")),
       h("div", {className:"correction-choix"}, ordre.map(function(i){
         var bon = q.bonnes.indexOf(i) >= 0, moi = luArr.indexOf(i) >= 0;
         var cls = "correction-choix-item" + (bon ? " bonne" : (moi ? " eleve-faux" : ""));
         if(moi && bon) cls = "correction-choix-item eleve-juste";
         return h("div", {key:i, className:cls}, h("span", null, q.choix[i],
           (bon || moi) && h("span", {className:"tags-ens"}, bon && h("span", {className:"correction-tag tag-bonne"}, "Bonne réponse"),
-          moi && h("span", {className:"correction-tag tag-tienne"}, "Ta réponse"))));
+          moi && h("span", {className:"correction-tag tag-tienne"}, vo ? "Sa réponse" : "Ta réponse"))));
       })),
-      lu === "aucun" && h("div", {className:"tablette-ligne"}, "Ta réponse : ", "aucun de ces choix"),
-      trouvee && h("div", {className:"tablette-ligne"}, "Sur la tablette, tu avais cliqué sur : " + tab.map(function(i){ return q.choix[i]; }).join(", ")),
-      h("div", {className:"correction-consigne " + (juste ? "juste" : "faux")}, juste
+      lu === "aucun" && h("div", {className:"tablette-ligne"}, vo ? "Sa réponse : " : "Ta réponse : ", "aucun de ces choix"),
+      trouvee && h("div", {className:"tablette-ligne"}, (vo ? "Sur la tablette, " + pr + " avait cliqué sur : " : "Sur la tablette, tu avais cliqué sur : ") + tab.map(function(i){ return q.choix[i]; }).join(", ")),
+      h("div", {className:"correction-consigne " + (juste ? "juste" : "faux")}, vo ? (juste
+        ? h(F, null, vo.prenom + ", sur la feuille " + deNom(pr) + ", mets simplement un ", h("span", {className:"stylo-vert"}, "V vert"), " dans la marge à côté de sa réponse.")
+        : h(F, null, vo.prenom + ", sur la feuille " + deNom(pr) + ", barre sa réponse et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté."))
+        : juste
         ? h(F, null, h("strong", null, "✅ Bravo ! "), "Sur ta feuille, mets simplement un ", h("span", {className:"stylo-vert"}, "V vert"), " dans la marge à côté de ta réponse.")
         : h(F, null, "Barre ta réponse et écris la bonne réponse en entier en ", h("span", {className:"stylo-vert"}, "vert"), " à côté.")),
       h("div", {className:"correction-explication"}, h("div", {className:"correction-explication-titre"}, "💡 Explication"), h("div", {className:"correction-explication-texte"}, q.explication)))));
@@ -423,6 +431,8 @@ function Coeval(p){
     setEcrit(n); if(p.onCo) p.onCo(k, qc, n);
   }
   var zone = [];
+  // (16/10, Paul, 10:54 et 11:02) chacun avait la feuille de son voisin pendant la correction : elle revient à son élève, qui la juge
+  zone.push(h("div", {key:"rends", className:"montre"}, "📄 " + v.prenom + ", rends sa feuille à " + e.prenom + "."));
   var cp = "CO:" + e.cle + ":";   // (QCM-2) en direct, chaque geste de la moitié par sa clé (clic)
   var btn = function(x){ return h("button", Object.assign({key:x, className:"co-btn " + x + (k === x ? " on" : ""), "aria-pressed":k === x}, clic(cp + x, function(){ choisir(x); })), EM_CO[x] + " ", txtCo(x, v)); };
   if(!k || k === "ok"){

@@ -358,7 +358,7 @@ function MoitieH(p, cote, autreP){
   // sur papier (t-papier-correction) : pas de lecture du voisin ; la réponse quand Paul révèle
   if(papierH() && (ph === "lecture" || ph === "revele")) return ph === "revele" ? EcrRevele(e, qi, {papier:true}) : EcrAttente(e);
   if(ph === "lecture"){ var rl = m.reste == null ? null : reste; return v && !seul ? EcrLecture(e, qi, !!SCN.lecture(p, qi), rl) : EcrLectureSeulH(e, qi, rl); }
-  if(ph === "revele") return EcrRevele(e, qi);
+  if(ph === "revele") return EcrRevele(e, qi, {voisin:v && !seul ? v : null});   /* (16/10, Paul) la moitié parle au voisin, qui a la feuille */
   if(ph === "coeval") return v && !seul ? CoevalH(e) : Page(badgeDe(e), "📝 Correction", h("div", {className:"co-attente"}, "⏳ Attends ton bilan…"));
   if(ph === "bilan") return EcrBilan(e);
   return EcrAttente(e);

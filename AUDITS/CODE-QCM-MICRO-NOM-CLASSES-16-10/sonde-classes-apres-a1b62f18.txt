@@ -1,0 +1,23 @@
+arbre prêt
+serveur 8867
+— console à l'ouverture : 0 forme(s) brute(s)
+— onglet Pilotage : 0 forme(s) brute(s)
+— onglet Données : 0 forme(s) brute(s)
+— onglet Réglages : 0 forme(s) brute(s)
+boutons du haut (Données) : ["📖 Mode d'emploi","📺 Ouvrir vue tableau","📱 QR pilotage","← Retour","Pilotage","Données","Réglages","?","📊 Résultats","💾 Sauvegarde","▸ 6e · vide pour l'instant"]
+— Données › 📊 Résultats : 0 forme(s) brute(s)
+— Données › 💾 Sauvegarde : 0 forme(s) brute(s)
+— Données › ▸ 6e · vide pour l'instant : 0 forme(s) brute(s)
+boutons (Pilotage) : ["📖 Mode d'emploi","📺 Ouvrir vue tableau","📱 QR pilotage","← Retour","Pilotage","Données","Réglages","?","📝 Évaluations","🎯 Pilotage classe","📱 Sur tablettes","📄 Séance sur papier","🚀 Lancer la séance","🔓 Rouvrir","📊 Résultats","🔓 Rouvrir","📊 Résultats"]
+— Pilotage › 📝 Évaluations : 0 forme(s) brute(s)
+— tableau de la séance : 0 forme(s) brute(s)
+— Lire les copies : 0 forme(s) brute(s)
+— Pilotage, la classe choisie : 0 forme(s) brute(s)
+— l'appel : 0 forme(s) brute(s)
+— console, séance lancée : 0 forme(s) brute(s)
+— téléphone : 0 forme(s) brute(s)
+— tableau de la classe : 0 forme(s) brute(s)
+— tablette, entrée : 0 forme(s) brute(s)
+
+══ Les formes brutes vues, une fois chacune (écran où elle paraît en premier) ══
+erreurs de page : []

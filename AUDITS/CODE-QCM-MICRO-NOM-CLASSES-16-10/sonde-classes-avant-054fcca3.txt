@@ -1,0 +1,93 @@
+arbre prêt
+serveur 8865
+— console à l'ouverture : 5 forme(s) brute(s)
+    texte : 3_essai (25 élèves)
+    texte : 4_essai (4 élèves)
+    texte : 📚 Séances précédentes — 3 ESSAIi
+    liste : 3_essai (25 élèves)
+    liste : 4_essai (4 élèves)
+— onglet Pilotage : 5 forme(s) brute(s)
+    texte : 3_essai (25 élèves)
+    texte : 4_essai (4 élèves)
+    texte : 📚 Séances précédentes — 3 ESSAIi
+    liste : 3_essai (25 élèves)
+    liste : 4_essai (4 élèves)
+— onglet Données : 6 forme(s) brute(s)
+    texte : 👥 3 ESSAI · 2 séances
+    texte : 3 ESSAI — 13/10/2026 09:41 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 8 feuilles à lire
+    texte : 3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 22 présents, 3 absents
+    infobulle : Les séances de cette classe : 3 ESSAI · 2 séances.
+    infobulle : La date, l'état et les présents de cette séance : 3 ESSAI — 13/10/2026 09:41 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 8 feuilles à lire.
+    infobulle : La date, l'état et les présents de cette séance : 3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 22 présents, 3 absents.
+— onglet Réglages : 0 forme(s) brute(s)
+boutons du haut (Données) : ["📖 Mode d'emploi","📺 Ouvrir vue tableau","📱 QR pilotage","← Retour","Pilotage","Données","Réglages","?","📊 Résultats","💾 Sauvegarde","▸ 6e · vide pour l'instant"]
+— Données › 📊 Résultats : 6 forme(s) brute(s)
+    texte : 👥 3 ESSAI · 2 séances
+    texte : 3 ESSAI — 13/10/2026 09:41 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 8 feuilles à lire
+    texte : 3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 22 présents, 3 absents
+    infobulle : Les séances de cette classe : 3 ESSAI · 2 séances.
+    infobulle : La date, l'état et les présents de cette séance : 3 ESSAI — 13/10/2026 09:41 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 8 feuilles à lire.
+    infobulle : La date, l'état et les présents de cette séance : 3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 22 présents, 3 absents.
+— Données › 💾 Sauvegarde : 0 forme(s) brute(s)
+— Données › ▸ 6e · vide pour l'instant : 6 forme(s) brute(s)
+    texte : 👥 3 ESSAI · 2 séances
+    texte : 3 ESSAI — 13/10/2026 09:41 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 8 feuilles à lire
+    texte : 3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 22 présents, 3 absents
+    infobulle : Les séances de cette classe : 3 ESSAI · 2 séances.
+    infobulle : La date, l'état et les présents de cette séance : 3 ESSAI — 13/10/2026 09:41 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 8 feuilles à lire.
+    infobulle : La date, l'état et les présents de cette séance : 3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 22 présents, 3 absents.
+boutons (Pilotage) : ["📖 Mode d'emploi","📺 Ouvrir vue tableau","📱 QR pilotage","← Retour","Pilotage","Données","Réglages","?","📝 Évaluations","🎯 Pilotage classe","📱 Sur tablettes","📄 Séance sur papier","🚀 Lancer la séance","🔓 Rouvrir","📊 Résultats","🔓 Rouvrir","📊 Résultats"]
+— Pilotage › 📝 Évaluations : 4 forme(s) brute(s)
+    texte : passée par 3 ESSAI le 13/10
+    texte : passée par 3 ESSAI le 24/09
+    infobulle : Les classes qui ont passé cette évaluation, et quand : 3 ESSAI le 13/10.
+    infobulle : Les classes qui ont passé cette évaluation, et quand : 3 ESSAI le 24/09.
+— tableau de la séance : 1 forme(s) brute(s)
+    texte : 📊 Évaluation d'essai — 3 questions — 3 ESSAI
+— Lire les copies : 1 forme(s) brute(s)
+    texte : 📄 Lire les copies — Évaluation d'essai — 3 questions — 3 ESSAI
+— Pilotage, la classe choisie : 5 forme(s) brute(s)
+    texte : 3_essai (25 élèves)
+    texte : 4_essai (4 élèves)
+    texte : 📚 Séances précédentes — 3 ESSAIi
+    liste : 3_essai (25 élèves)
+    liste : 4_essai (4 élèves)
+— l'appel : 7 forme(s) brute(s)
+    texte : 3_essai (25 élèves)
+    texte : 4_essai (4 élèves)
+    texte : 📚 Séances précédentes — 3 ESSAIi
+    texte : 3_essai — 25 élèves
+    liste : 3_essai (25 élèves)
+    liste : 4_essai (4 élèves)
+    infobulle : De quoi parle cette fenêtre : 3_essai — 25 élèves.
+— console, séance lancée : 1 forme(s) brute(s)
+    texte : 🎯 Évaluation d'essai — 3 questions — 3_essai
+— téléphone : 1 forme(s) brute(s)
+    texte : 3_essai
+— tableau de la classe : 1 forme(s) brute(s)
+    texte : 3_essai
+— tablette, entrée : 0 forme(s) brute(s)
+
+══ Les formes brutes vues, une fois chacune (écran où elle paraît en premier) ══
+console à l'ouverture │ texte : 3_essai (25 élèves)
+console à l'ouverture │ texte : 4_essai (4 élèves)
+console à l'ouverture │ texte : 📚 Séances précédentes — 3 ESSAIi
+console à l'ouverture │ liste : 3_essai (25 élèves)
+console à l'ouverture │ liste : 4_essai (4 élèves)
+onglet Données │ texte : 👥 3 ESSAI · 2 séances
+onglet Données │ texte : 3 ESSAI — 13/10/2026 09:41 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 8 feuilles à lire
+onglet Données │ texte : 3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 22 présents, 3 absents
+onglet Données │ infobulle : Les séances de cette classe : 3 ESSAI · 2 séances.
+onglet Données │ infobulle : La date, l'état et les présents de cette séance : 3 ESSAI — 13/10/2026 09:41 · ✅ terminée · 24 présents, 1 absent (YVON Adam) · 📌 8 feuilles à lire.
+onglet Données │ infobulle : La date, l'état et les présents de cette séance : 3 ESSAI — 24/09/2026 10:04 · ✅ terminée · 22 présents, 3 absents.
+Pilotage › 📝 Évaluations │ texte : passée par 3 ESSAI le 13/10
+Pilotage › 📝 Évaluations │ texte : passée par 3 ESSAI le 24/09
+Pilotage › 📝 Évaluations │ infobulle : Les classes qui ont passé cette évaluation, et quand : 3 ESSAI le 13/10.
+Pilotage › 📝 Évaluations │ infobulle : Les classes qui ont passé cette évaluation, et quand : 3 ESSAI le 24/09.
+tableau de la séance │ texte : 📊 Évaluation d'essai — 3 questions — 3 ESSAI
+Lire les copies │ texte : 📄 Lire les copies — Évaluation d'essai — 3 questions — 3 ESSAI
+l'appel │ texte : 3_essai — 25 élèves
+l'appel │ infobulle : De quoi parle cette fenêtre : 3_essai — 25 élèves.
+console, séance lancée │ texte : 🎯 Évaluation d'essai — 3 questions — 3_essai
+téléphone │ texte : 3_essai
+erreurs de page : []

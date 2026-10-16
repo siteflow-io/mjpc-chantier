@@ -1,0 +1,252 @@
+Banc commun de l'app QCM (QCM-4 · BANC) — /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/codewt/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-16T06:19:50.459Z
+Durée : 384 s (6 min 24 s) · vérifications : 211 · échecs : 3 · scènes relevées : 97
+
+
+── 1.1 Avant l'heure : la console, « 🚀 Lancer la séance », l'appel (2 s)
+  ok     [QCM-1 · SOCLE] la console s'ouvre (?mode=prof, l'adresse de la 7.7.1)
+  ok     [QCM-2 · HEURE] Pilotage classe : la classe 3 ESSAI se choisit
+  ok     [QCM-2 · HEURE] Pilotage classe : l'évaluation d'essai se choisit (complète : chapitre 3e-ch1, temps, compétences)
+  ok     [QCM-2 · HEURE] « 🚀 Lancer la séance » ouvert pour une évaluation complète
+  ok     [QCM-2 · HEURE] l'appel : un clic sur YVON Adam le marque absent
+  ok     [QCM-1 · SOCLE] « 🚀 Lancer la séance » écrit une séance active (qcm/sessionActive/<classeSlug>)
+  ok     [QCM-1 · SOCLE] la séance a son état (deroule : {ph, qi, tour, cote, depuis, duree}, contrat C1) et etat = « en_cours » comme la 7.7.1
+  ok     [QCM-1 · SOCLE] la séance a ses places (places/<n>/{g, d}) : 12 tablettes pour 24 présents
+  ok     [QCM-1 · SOCLE] Adam est absent dans la base (absents)
+  ok     [QCM-1 · SOCLE] chaque présent a une place, une seule ; Adam, absent, n'en a pas
+  ok     [QCM-1 · SOCLE] les binômes d'après le QCM précédent (CH1) : Julien et Michel sur la même tablette, comme dans la maquette (c-lancer)
+  ok     [QCM-1 · SOCLE] Adam absent : son binôme Théo est mis avec Lou, restée seule (c-appel)
+  ok     [QCM-1 · SOCLE] 24 présents : 12 tablettes à deux, aucun élève seul (c-appel : le binôme d'un absent est réapparié)
+
+── 1.2 Le tableau et le téléphone (11 s)
+  ok     [QCM-2 · HEURE] le tableau s'ouvre (?mode=prof&view=board)
+  ok     [QCM-2 · HEURE] le téléphone montre la séance en cours
+
+── 1.3 L'entrée : les 12 tablettes partagées, au code, au clavier de l'app (14 s)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] une tablette s'ouvre sur l'entrée des élèves, « 👋 Identifie-toi », sans « Combien êtes-vous ? » (reprise 7, point 13)
+  ok     [QCM-1 · SOCLE] une séance active : la tablette arrive sur « Combien êtes-vous ? » sans demander la classe (t-combien, comme la maquette)
+  ok     [QCM-1 · SOCLE] un code faux : « Ce code ne correspond pas. Vérifie tes 4 chiffres. »
+  ok     [QCM-2 · HEURE] les 24 élèves entrés se voient sur la console, sans rechargement
+  ok     [QCM-1 · SOCLE] les 24 entrées sont dans la base (entres/<eleve>, ou presence de la 7.7.1)
+
+── 1.4 La première attestation, puis « prêt » (34 s)
+  ok     [QCM-1 · SOCLE] les 24 premières attestations sont dans la base (attest/1/<eleve>/{lignes, fini})
+  ok     [QCM-2 · HEURE] la console montre chaque élève prêt
+
+── 1.5 Question 1 (57 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q1 » se clique
+  ok     [QCM-1 · SOCLE] Q1 : la base passe en réflexion (deroule.ph = reflexion, deroule.qi = 0)
+  ok     [QCM-2 · HEURE] l'énoncé de Q1 sur la tablette, sans rechargement
+  ok     [QCM-2 · HEURE] l'énoncé de Q1 au tableau, sans rechargement
+  ok     [QCM-2 · HEURE] le téléphone suit Q1
+  ok     [QCM-2 · HEURE] réflexion : l'énoncé sans les choix (t-q1-reflexion)
+  ok     [QCM-1 · SOCLE] Q1 : la moitié qui commence est celle du scénario (g) — premier/<qi>
+  ok     [QCM-2 · HEURE] le passage : « Pose ton stylo, … À toi dans 3 secondes » (t-q1-passage1)
+  ok     [QCM-1 · SOCLE] Q1, tour 1 : la base passe en réponse (deroule.ph = reponse, tour 1)
+  ok     [QCM-2 · HEURE] Q1, tour 1 : la tuile de qui répond encore dit « ✋ répond… » (c-q1-tour1)
+  ok     [QCM-2 · HEURE] Q1, 1er tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond
+  ok     [QCM-2 · HEURE] un champ de la console garde sa valeur et le curseur pendant que 12 tablettes répondent (règle du 04/10)
+  ok     [QCM-2 · HEURE] la garde de « 🛑 Terminer la séance » : « Annuler » (c-terminer)
+  ok     [QCM-1 · SOCLE] Q1, 1er tour : les réponses sont dans la base (reponses/0/<eleve>)
+  ok     [QCM-1 · SOCLE] une réponse a la forme de la 7.7.1, plus tour et ms (contrat §3.1)
+  ok     [QCM-2 · HEURE] tous ont répondu : « ⏭️ Tour suivant » se clique (c-q1-tour1)
+  ok     [QCM-1 · SOCLE] « ⏭️ Tour suivant » coupe le 1er tour (deroule passe au 2e tour, ou à B)
+  ok     [QCM-2 · HEURE] Q1, tour 1 : B (« Oui, la même chose » / « Non, autre chose ») paraît à chacun de ceux qui ont répondu, et se dit
+  ok     [QCM-1 · SOCLE] Q1, tour 2 : la base passe en réponse (deroule.ph = reponse, tour 2)
+  ok     [QCM-2 · HEURE] Q1, tour 2 : la tuile de qui répond encore dit « ✋ répond… » (c-q1-tour2)
+  ok     [QCM-2 · HEURE] Q1, 2e tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond
+  ok     [QCM-2 · HEURE] Q1, tour 2 : B (« Oui, la même chose » / « Non, autre chose ») paraît à chacun de ceux qui ont répondu, et se dit
+  ok     [QCM-1 · SOCLE] Q1 : chaque B dit est dans la base (b/<qi>/<eleve> = oui | non)
+  ok     [QCM-1 · SOCLE] la base : deroule.ph = close
+  ok     [QCM-2 · HEURE] les deux tours finis : « Attends la prochaine question » (t-q1-attente)
+
+── 1.6 Question 2 (112 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q2 » se clique
+  ok     [QCM-1 · SOCLE] Q2 : la base passe en réflexion (deroule.ph = reflexion, deroule.qi = 1)
+  ok     [QCM-2 · HEURE] l'énoncé de Q2 sur la tablette, sans rechargement
+  ok     [QCM-2 · HEURE] l'énoncé de Q2 au tableau, sans rechargement
+  ok     [QCM-2 · HEURE] le téléphone suit Q2
+  ok     [QCM-2 · HEURE] « ✋ Autoriser la réponse » pendant la réflexion
+  ok     [QCM-1 · SOCLE] Q2 : la moitié qui commence est celle du scénario (d) — premier/<qi>
+  ok     [QCM-1 · SOCLE] Q2, tour 1 : la base passe en réponse (deroule.ph = reponse, tour 1)
+  ok     [QCM-2 · HEURE] Q2, 1er tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond
+  ok     [QCM-2 · HEURE] Q2, tour 1 : B (« Oui, la même chose » / « Non, autre chose ») paraît à chacun de ceux qui ont répondu, et se dit
+  ok     [QCM-1 · SOCLE] Q2, tour 2 : la base passe en réponse (deroule.ph = reponse, tour 2)
+  ok     [QCM-2 · HEURE] Q2, 2e tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond
+  ok     [QCM-2 · HEURE] Q2, tour 2 : B (« Oui, la même chose » / « Non, autre chose ») paraît à chacun de ceux qui ont répondu, et se dit
+  ok     [QCM-1 · SOCLE] Q2 : chaque B dit est dans la base (b/<qi>/<eleve> = oui | non)
+  ok     [QCM-1 · SOCLE] la base : deroule.ph = close
+  ok     [QCM-2 · HEURE] Q2 close : Théo n'a pas répondu, la console le dit (c-q2-close)
+  ok     [QCM-2 · HEURE] « 🔓 Rouvrir pour un élève » → « 🔓 Rouvrir pour Théo »
+  ok     [QCM-1 · SOCLE] la base : la question rouverte pour Théo seul (deroule.pour = chevallier_theo)
+  ok     [QCM-1 · SOCLE] la base : rouverts/1 = chevallier_theo (contrat C3 : une fois par question)
+  ok     [QCM-2 · HEURE] la moitié de Théo rouverte : ses choix s'ouvrent, il répond (t-rouvrir-un)
+  ok     [QCM-2 · HEURE] Lou, à côté, porte le voile : ses choix restent fermés
+  ok     [QCM-1 · SOCLE] la réponse de Théo à Q2 est dans la base
+  ok     [QCM-2 · HEURE] après « 🔓 Rouvrir pour Théo », la fenêtre se ferme : la console revient à la question close (c-rouvrir-un → c-q2-close)
+  ok     [QCM-2 · HEURE] « Rouvrir pour un élève » ne liste que ceux qui n'ont pas répondu (Julien a répondu à Q2)
+
+── 1.7 Question 3 (198 s)
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q3 » se clique
+  ok     [QCM-1 · SOCLE] Q3 : la base passe en réflexion (deroule.ph = reflexion, deroule.qi = 2)
+  ok     [QCM-2 · HEURE] l'énoncé de Q3 sur la tablette, sans rechargement
+  ok     [QCM-2 · HEURE] l'énoncé de Q3 au tableau, sans rechargement
+  ok     [QCM-2 · HEURE] le téléphone suit Q3
+  ok     [QCM-2 · HEURE] « ✋ Autoriser la réponse » pendant la réflexion
+  ok     [QCM-1 · SOCLE] Q3 : la moitié qui commence est celle du scénario (g) — premier/<qi>
+  ok     [QCM-1 · SOCLE] Q3, tour 1 : la base passe en réponse (deroule.ph = reponse, tour 1)
+  ok     [QCM-2 · HEURE] Q3, 1er tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond
+  ok     [QCM-2 · HEURE] Q3, tour 1 : B (« Oui, la même chose » / « Non, autre chose ») paraît à chacun de ceux qui ont répondu, et se dit
+  ok     [QCM-1 · SOCLE] Q3, tour 2 : la base passe en réponse (deroule.ph = reponse, tour 2)
+  ok     [QCM-2 · HEURE] Q3, 2e tour : sur chaque tablette, la moitié qui a la main a ses choix ouverts, et répond
+  ok     [QCM-2 · HEURE] Q3, tour 2 : B (« Oui, la même chose » / « Non, autre chose ») paraît à chacun de ceux qui ont répondu, et se dit
+  ok     [QCM-1 · SOCLE] Q3 : chaque B dit est dans la base (b/<qi>/<eleve> = oui | non)
+  ok     [QCM-1 · SOCLE] la base : deroule.ph = close
+  ok     [QCM-2 · HEURE] « ✅ Dernière question close — lance l'autoévaluation » (c-q3-close)
+
+── 1.8 L'estimation, la seconde attestation (246 s)
+  ok     [QCM-2 · HEURE] « 📊 Lancer l'autoévaluation » se clique
+  ok     [QCM-1 · SOCLE] la base : etat.ph = estim
+  ok     [QCM-2 · HEURE] l'estimation : « Combien de bonnes réponses penses-tu avoir ? … » (t-estim)
+  ok     [QCM-1 · SOCLE] les 22 estimations sont dans la base (Jade et Enzo n'en font pas)
+  ok     [QCM-2 · HEURE] « 📝 Lancer la correction » se clique
+  ok     [QCM-2 · HEURE] seconde attestation en cours : « 🔒 ▶️ Commencer la correction » fermé, « La correction commence quand les 24 présents ont coché… » (c-attest2)
+  ok     [QCM-1 · SOCLE] les 24 secondes attestations dans la base (attest/2)
+  ok     [QCM-1 · SOCLE] tous ont coché la seconde attestation : la correction ne commence pas seule (décision de Paul, 07:22)
+  ok     [QCM-2 · HEURE] tous ont coché : « ▶️ Commencer la correction » s'ouvre sur la console
+  ok     [QCM-2 · HEURE] Paul clique « ▶️ Commencer la correction »
+  ok     [QCM-1 · SOCLE] après son clic, et seulement alors, la correction commence (deroule.ph = lecture)
+  ok     [QCM-1 · SOCLE] l'ordre de la correction, de la plus ratée à la mieux réussie : Q2, Q3, Q1 (ordreCorr)
+
+── 1.9 La correction : la lecture de la feuille du voisin, « 💡 Révéler », « Trouvée au dernier moment », le point d'autonomie (275 s)
+  ok     [QCM-2 · HEURE] la correction montre la question 2 sur la tablette
+  ok     [QCM-2 · HEURE] « 🔒 Révéler » fermé tant qu'une feuille n'est pas lue
+  ok     [QCM-1 · SOCLE] Q2 : les 24 lectures dans la base (lectures/<qi>/<eleve> = {choix, par, ms})
+  ok     [QCM-2 · HEURE] « 💡 Révéler » s'ouvre quand toutes les feuilles sont lues
+  ok     [QCM-1 · SOCLE] la base : Q2 dans revelees
+  ÉCHEC  [QCM-1 · SOCLE] Q2 : « Trouvée au dernier moment » exactement pour la feuille fausse et la tablette juste, une fois par évaluation (trouvee/<eleve>) — vu : Julien (attendue)
+  ÉCHEC  [QCM-2 · HEURE] la moitié de Julien dit « Trouvée au dernier moment » (t-corr-q2-apres) — vu : ✨ 💡 3E ESSAI · ABRIAL JULIEN 📊 Mes évaluations 📝 Correction 💡 On corrige d'abord les questions les plus ratées par la classe. 0 bonne réponse sur 1 question déjà corrigée 1 ❌ 3 QUESTION 2 Standard
+  ok     [QCM-2 · HEURE] un clic sur FOUCHER Hugo ouvre sa fenêtre (c-autonomie)
+  ok     [QCM-2 · HEURE] « ⛔ Retirer le point d'autonomie »
+  ok     [QCM-2 · HEURE] la garde : « ⛔ Retirer le point d'autonomie »
+  ok     [QCM-1 · SOCLE] la base : autonomie/foucher_hugo = {retire: true, ms, quand: heure}
+  ok     [QCM-2 · HEURE] au téléphone, un clic sur Hugo : son point d'autonomie (p-autonomie)
+  ok     [QCM-2 · HEURE] « Question suivante → » se clique
+  ok     [QCM-2 · HEURE] la correction montre la question 3 sur la tablette
+  ok     [QCM-1 · SOCLE] Q3 : les 24 lectures dans la base (lectures/<qi>/<eleve> = {choix, par, ms})
+  ok     [QCM-2 · HEURE] « 💡 Révéler » s'ouvre quand toutes les feuilles sont lues
+  ok     [QCM-1 · SOCLE] la base : Q3 dans revelees
+  ok     [QCM-1 · SOCLE] Q3 : « Trouvée au dernier moment » exactement pour la feuille fausse et la tablette juste, une fois par évaluation (trouvee/<eleve>)
+  ok     [QCM-2 · HEURE] « Question suivante → » se clique
+  ok     [QCM-2 · HEURE] la correction montre la question 1 sur la tablette
+  ok     [QCM-1 · SOCLE] Q1 : les 24 lectures dans la base (lectures/<qi>/<eleve> = {choix, par, ms})
+  ok     [QCM-2 · HEURE] « 💡 Révéler » s'ouvre quand toutes les feuilles sont lues
+  ok     [QCM-1 · SOCLE] la base : Q1 dans revelees
+  ok     [QCM-1 · SOCLE] Q1 : « Trouvée au dernier moment » exactement pour la feuille fausse et la tablette juste, une fois par évaluation (trouvee/<eleve>)
+
+── 1.10 La co-évaluation, l'alerte, le bilan (302 s)
+  ok     [QCM-2 · HEURE] « 🤝 Ouvrir la co-évaluation, puis leur bilan »
+  ok     [QCM-1 · SOCLE] la base : etat.ph = coeval
+  ok     [QCM-1 · SOCLE] la base : coeval/<eleve> = {statut, qi, ecrit, ms}, 20 réponses (4 en attente)
+  ok     [QCM-1 · SOCLE] Michel : « mal », question 1
+  ok     [QCM-1 · SOCLE] une alerte dans la base (alertes/<id>) pour Michel, Q1
+  ok     [QCM-2 · HEURE] « 🏁 Afficher leur bilan » fermé tant que l'alerte n'est pas tranchée et que 4 n'ont pas répondu
+  ok     [QCM-2 · HEURE] l'alerte de Michel : « La feuille dit autre chose : je clique ce qu'elle dit » (c-coeval-feuille)
+  ok     [QCM-2 · HEURE] l'alerte de Michel : « ⛔ à Michel » (c-autonomie-michel)
+  ok     [QCM-2 · HEURE] l'alerte de Michel : « ⛔ à son voisin » (c-autonomie-julien)
+  ok     [QCM-2 · HEURE] l'alerte de Michel : « ⛔ aux deux » (c-autonomie-deux)
+  ok     [QCM-1 · SOCLE] les gardes annulées n'ont retiré aucun point d'autonomie
+  ok     [QCM-2 · HEURE] « Donner raison à Michel : Rome → 1 point »
+  ok     [QCM-1 · SOCLE] l'alerte tranchée dans la base (alertes/<id>/tranche = {decision, ms})
+  ok     [QCM-2 · HEURE] tous ont répondu, l'alerte tranchée : « 🏁 Afficher leur bilan aux élèves » s'ouvre
+  ok     [QCM-1 · SOCLE] la base : bilanAffiche
+  ÉCHEC  [QCM-2 · HEURE] le bilan de chaque élève dit sa note d'après la règle (24 notes comparées au scénario de la maquette) — vu : 23 justes ; Julien attendu 2/3 vu « 1 / 3 »
+  ok     [QCM-2 · HEURE] « Ta note provisoire » (t-bilan)
+  ok     [QCM-2 · HEURE] aucun code de compétence dans le bilan de l'élève (libellés élève)
+  ok     [QCM-2 · HEURE] le bilan de Hugo dit son point d'autonomie retiré
+
+── 1.11 Terminer la séance (321 s)
+  ok     [QCM-2 · HEURE] « 🛑 Terminer la séance »
+  ok     [QCM-1 · SOCLE] la séance terminée : plus de séance active, etat = « terminee » (la 7.7.1), deroule.ph = fin
+  ok     [QCM-2 · HEURE] la tablette revient à l'entrée des élèves, « 👋 Identifie-toi » (t-fin ; reprise 7, point 13 : plus de « Combien êtes-vous ? »)
+
+── 2.1 Le soir : Données → Résultats, la séance, son tableau (324 s)
+  ok     [QCM-3 · SOIR] « Données » se clique
+  ok     [QCM-3 · SOIR] Résultats : « ▾ 3e · 2 séances », la séance du jour « copies non rendues », celle du 24/09 « copies rendues le 26/09 » (c-seances)
+  ok     [QCM-3 · SOIR] Résultats : 6e, 5e « vide pour l'instant » (c-seances)
+  ok     [QCM-3 · SOIR] « 📊 Ouvrir » la séance du jour
+  ok     [QCM-3 · SOIR] « 📄 PDF notes et compétences » fermé tant que les copies ne sont pas rendues
+  ok     [QCM-3 · SOIR] le tableau : Lou 2 / 3 avant la lecture de sa feuille (c-resultats)
+  ok     [QCM-3 · SOIR] le tableau : Hugo 2 / 3, son point d'autonomie retiré pendant l'heure
+  ok     [QCM-1 · SOCLE] à lire sur les feuilles (aLire/<id>) : Michel, Tom, Enzo, Anna, Lou (scénario A_LIRE : B contre la lecture, « aucun de ces choix », rien de dit)
+
+── 2.2 La fiche de Michel : son point d'autonomie, le soir ; « ✔ Marquer lue » (327 s)
+  ok     [QCM-3 · SOIR] un clic sur Michel ouvre sa fiche (c-fiche)
+  ok     [QCM-3 · SOIR] la fiche de Michel : « Sa feuille, lue par Julien » (c-fiche)
+  ok     [QCM-3 · SOIR] « ⛔ Retirer le point d'autonomie », le soir
+  ok     [QCM-1 · SOCLE] la base : autonomie/duvernay_michel = {retire: true, quand: soir}
+  ok     [QCM-3 · SOIR] le point retiré, dans la fiche : « ↩️ Rendre » (c-fiche-retire)
+  ok     [QCM-3 · SOIR] « ✔ Marquer lue » sur les feuilles à lire de la base (6 élèves, plus Michel)
+
+── 2.3 « Que dit la feuille ? » : Lou, Q3, sa feuille dit 6 (340 s)
+  ok     [QCM-3 · SOIR] la fiche de Lou s'ouvre
+  ok     [QCM-3 · SOIR] « La feuille dit autre chose » (Q3) ouvre « Que dit la feuille ? »
+  ok     [QCM-1 · SOCLE] la base : lectures/2/zeller_lou = {choix: [0], par: prof}
+  ok     [QCM-3 · SOIR] Lou passe à 1 / 3 après « Corrigé d'après sa feuille », partout
+
+── 2.4 Rendre les copies, le PDF, l'élève chez lui, masquer (343 s)
+  ok     [QCM-3 · SOIR] « 📊 Mes évaluations » de Lou avant la remise : « En relecture » (e-mes-evals)
+  ok     [QCM-3 · SOIR] toutes les feuilles lues : « rendre les copies ▸ » (c-seances-lues)
+  ok     [QCM-3 · SOIR] la base : copies.rendues (ms)
+  ok     [QCM-3 · SOIR] « copies rendues le … » (c-copies-rendues)
+  ok     [QCM-3 · SOIR] les copies rendues : « 📄 PDF notes et compétences » s'ouvre (c-resultats-rendues)
+  ok     [QCM-3 · SOIR] le PDF « notes et compétences » (x632-pdf, dans sa fenêtre)
+  ok     [QCM-3 · SOIR] « 📊 Mes évaluations » de Lou : sa note définitive, 1 / 3 (e-mes-evals-rendue)
+  ok     [QCM-3 · SOIR] le bilan de Lou, corrigé d'après sa feuille, finit par « 📝 Bilan » (e-bilan-lou)
+  ok     [QCM-3 · SOIR] Résultats : « 🙈 Masquer les copies » sur la ligne de la séance rendue
+  ok     [QCM-3 · SOIR] la base : copies.masquees = true
+
+── 2.5 La corbeille, la sauvegarde (gardes, sans rien jeter) (359 s)
+  ok     [QCM-3 · SOIR] « 🗑️ » une séance : la garde « 🗑️ Mettre à la corbeille » (c-corbeille)
+  ok     [QCM-3 · SOIR] « 💾 Sauvegarde »
+  ok     [QCM-3 · SOIR] « Purger les évaluations » : la garde de la maquette (c-purger)
+  ok     [QCM-3 · SOIR] la démo est toujours là (qcm/evaluations/demo)
+
+── 3.1 Les évaluations : la liste, imprimer, modifier, la corbeille, le collage du JSON (363 s)
+  ok     [QCM-3 · SOIR] Évaluations : la démo en tête, « 🔒 Permanente » (c-evals)
+  ok     [QCM-3 · SOIR] Évaluations rangées par niveau, 6e à 3e (c-evals)
+  ok     [QCM-3 · SOIR] « Sans chapitre » : les évaluations du hub sans chapitre, « ✏️ Compléter »
+  ok     [QCM-3 · SOIR] « 🖨️ Imprimer » : les énoncés seuls, sur une page (c-feuille)
+  ok     [QCM-3 · SOIR] l'éditeur de l'évaluation : « 🎯 Ce qu'elle vérifie » (x627-3-editeur)
+  ok     [QCM-3 · SOIR] « ➕ Nouvelle évaluation »
+  ok     [QCM-3 · SOIR] un JSON fautif : « ❌ Rien n'est enregistré : … », « il manque le temps de réponse », « il manque ce qu'elle vérifie » (c-collage)
+  ok     [QCM-3 · SOIR] « 📋 Copier les erreurs pour l'instance de création d'éval » (c-collage)
+  ok     [QCM-3 · SOIR] le JSON fautif n'est pas enregistré dans la base
+
+── 3.2 Les réglages, le prompt, le mode d'emploi, le QR, le mode test, le papier, l'accueil (373 s)
+  ok     [QCM-3 · SOIR] « Réglages »
+  ok     [QCM-3 · SOIR] Réglages, en cartes : le prompt, les durées de la séance, les niveaux de maîtrise, ce que lisent les élèves (c-reglages)
+  ok     [QCM-3 · SOIR] le prompt tel que l'app le copie : aucun jeton {{…}} visible (c-reglages-prompt)
+  ok     [QCM-3 · SOIR] « 📄 Séance sur papier » au lancement (c-papier-lancer)
+  ok     [QCM-1 · SOCLE] l'accueil de l'app : « 🎓 Mode élève » ou « Accès professeur » (c-accueil)
+  ok     [QCM-3 · SOIR] « 🧪 Mode test » s'ouvre (x620-1-mode-test-ouverture)
+  ok     [QCM-3 · SOIR] le mode test ne touche à aucune vraie classe
+
+── 4. Aucune erreur de page, aucune boîte système (383 s)
+  ok     [QCM-1 · SOCLE] page « console » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tableau » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « telephone » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-0 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-4 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-5 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-7 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-2 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-6 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-3 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-12 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-11 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-8 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-10 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-9 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-1 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « eleve » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « accueil » sans erreur ni boîte système

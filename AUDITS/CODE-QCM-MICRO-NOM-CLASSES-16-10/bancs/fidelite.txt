@@ -1,0 +1,204 @@
+Fidélité de l'app à la maquette v9 (QCM-4 · BANC) — référence MANDATS/MAQUETTE-QCM-COMPLETE/maquette-qcm-v9.html md5 2f453a1ce78033172b23d57657d0ab8c
+Scènes atteintes par le geste : 97 / 157 (hors MJPC) · fidèles (aucun écart non nommé) : 29 · avec écarts : 68 · écarts nommés dans ecarts-maquette.json : 127
+
+■ c-evals (console) [QCM-3 · SOIR] — 1 écarts
+    gestes en trop : « 🚀 Lancer »
+■ c-eval-corbeille (console) [QCM-3 · SOIR] — 3 écarts
+    gestes en trop : « 🚀 Lancer »
+    infobulles absentes : 1 — « De quoi parle cette fenêtre : #e Chapitre # — Poésie et peinture au XIXème siècle · Interr »
+    textes absents : 1 — « #e Chapitre # — Poésie et peinture au XIXème siècle · Interro de cours (séance # »
+■ c-collage (console) [QCM-3 · SOIR] — 8 écarts
+    gestes en trop : « 🚀 Lancer »
+    infobulles absentes : 1 — « Ferme sans rien enregistrer. »
+    textes absents : 6 — « Question # : # px de trop sur une demi-tablette. Raccourcis l'énoncé ou les choi », « Question # : la compétence « c#-oral-# » n'est pas une compétence du chapitre (# », « Question # : # compétences ; une question en a une ou deux. », « La compétence « c#-culture-# » n'est évaluée que par # questions (Q#, Q#) : il e », « La séance durerait # min : # min de plus que les # minutes utiles. », « ✅ Le reste est bon : chapitre « #e · Ch. # — Poésie et peinture au XIXe siècle » »
+■ x627-3-editeur (console) [QCM-3 · SOIR] — 2 écarts
+    gestes en trop : « 🚀 Lancer »
+    infobulles absentes : 1 — « Le chapitre de l'évaluation : il donne son niveau et les compétences permises. »
+■ c-accueil (console) [QCM-2 · HEURE] — 1 écarts
+    infobulles absentes : 1 — « Ouvre l'écran des élèves : « Combien êtes-vous sur cette tablette ? ». »
+■ c-lancer (console) [QCM-2 · HEURE] — 4 écarts
+    infobulles absentes : 3 — « Les exclusions de MJPC que les binômes proposés respectent. », « La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne. », « Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes. »
+    textes absents : 1 — « ✅ Ça tient dans les # minutes utiles. »
+■ c-appel (console) [QCM-2 · HEURE] — 13 écarts
+    gestes de la maquette absents : « 🚫«élève» »
+    gestes en trop : « 🚀 Lancer la séance· »
+    infobulles absentes : 7 — « Les exclusions de MJPC que les binômes proposés respectent. », « La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne. », « Marqué absent : clique pour le remettre présent. », « L'heure de la fin de l'heure : le lancement et # minutes. », « L'heure de fin de la séance : lancement + # min. Les tablettes oublient leurs élèves à « T », « Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes. »
+    textes absents : 4 — « ✅ Ça tient dans les # minutes utiles. », « 🚫 », « 📱 «élève» (binôme d'«élève») et «élève» (seule) sont mis ensemble : tablette #. », « 🕙 Fin de l'heure : »
+■ t-combien (tablette) [QCM-2 · HEURE] — 9 écarts
+    gestes de la maquette absents : « 👤 # élève », « 👥 # élèves »
+    gestes en trop : « # », « ⌫ », « ✓ », « Entrer → »
+    textes absents : 3 — « Combien êtes-vous sur cette tablette ? », « 👤 # élève », « 👥 # élèves »
+■ t-login (tablette) [QCM-2 · HEURE] — 92 écarts
+    gestes de la maquette absents : « a », « z », « e », « r », « t », « y », « u », « i », « o », « p », « q », « s », « d », « f », « g », « h », « j », « k », « l », « m », « ⇧ », « w », « x », « c », « v » … (+21)
+    textes absents : 46 — « a », « z », « e », « r », « t », « y », « u », « i », « o », « p », « q », « s »
+■ c-pret (console) [QCM-2 · HEURE] — 7 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 4 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « «élève» a coché # lignes de l'attestation sur #. », « «élève» n'est pas encore entrée sur sa moitié de tablette. »
+    textes absents : 2 — « attestation «date» », « pas encore entrée »
+■ c-q1-reflexion (console) [QCM-2 · HEURE] — 3 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 2 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes »
+■ c-q1-tour1 (console) [QCM-2 · HEURE] — 3 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 2 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes »
+■ p-reponse (telephone) [QCM-2 · HEURE] — 2 écarts
+    gestes de la maquette absents : « «élève»⏳ »
+    textes absents : 1 — « ⏳ »
+■ c-qr (console) [QCM-2 · HEURE] — 6 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 4 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « «élève» répond en ce moment, pendant son tour. », « Ferme cette fenêtre sans rien changer (Échap). »
+    textes absents : 1 — « ✋ répond… »
+■ t-q1-b-michel (tablette) [QCM-2 · HEURE] — 1 écarts
+    textes absents : 1 — « «élève», regarde ta feuille : dit-elle la même chose que ton clic ? »
+■ c-q1-tour2 (console) [QCM-2 · HEURE] — 3 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 2 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes »
+■ c-q1-close (console) [QCM-2 · HEURE] — 4 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 3 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Il vaut pour chaque tour, et pour la lecture à la correction. »
+■ c-q2-tour2 (console) [QCM-2 · HEURE] — 3 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 2 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes »
+■ c-q2-close (console) [QCM-2 · HEURE] — 6 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 5 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Il vaut pour chaque tour, et pour la lecture à la correction. », « Rouvre la question close pour ceux qui n'ont pas répondu, une seule fois par question : le », « Annule cette question déjà posée (mal formulée, par exemple) : ses réponses restent gardée »
+■ c-rouvrir-un (console) [QCM-2 · HEURE] — 6 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 5 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Il vaut pour chaque tour, et pour la lecture à la correction. », « Rouvre la question close pour ceux qui n'ont pas répondu, une seule fois par question : le », « Rouvre la question # pour «élève» seul, avec son temps de réponse ; «élève» porte le voile »
+■ c-q3-close (console) [QCM-2 · HEURE] — 4 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 3 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Il vaut pour chaque tour, et pour la lecture à la correction. »
+■ c-terminer (console) [QCM-2 · HEURE] — 7 écarts
+    ouverts/fermés autrement : « ↩️ Retour d'un élève (fermé dans la maquette) »
+    infobulles absentes : 4 — « Personne n'est parti pendant cette séance : il n'y a personne à faire revenir. », « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « «élève» répond en ce moment, pendant son tour. », « Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves. »
+    textes absents : 2 — « ✋ répond… », « Les tablettes oublient leurs élèves et reviennent à « Combien êtes-vous sur cett »
+■ c-mode-emploi (console) [QCM-2 · HEURE] — 4 écarts
+    infobulles absentes : 3 — « Les exclusions de MJPC que les binômes proposés respectent. », « La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne. », « Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes. »
+    textes absents : 1 — « ✅ Ça tient dans les # minutes utiles. »
+■ c-estim (console) [QCM-2 · HEURE] — 2 écarts
+    infobulles absentes : 1 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes »
+    textes absents : 1 — « Pas encore : «élève», «élève», «élève». »
+■ x610-5-attestation-2 (tablette) [QCM-2 · HEURE] — 3 écarts
+    gestes de la maquette absents : « ✓ »
+    textes absents : 2 — « ✓ », « Pour chaque question, «élève» clique ce que dit ta feuille. Toi, tu cliques ce q »
+■ c-attest2 (console) [QCM-2 · HEURE] — 5 écarts
+    infobulles absentes : 3 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Les élèves qui n'ont pas encore fini : «élève», «élève», «élève», «élève», «élève». », « «élève» a coché toutes les lignes de l'attestation, à «heure». »
+    textes absents : 2 — « «élève» · «élève» · «élève» · «élève» · «élève» », « ✓ prêt · «heure» »
+■ c-corr-q2-avant (console) [QCM-2 · HEURE] — 7 écarts
+    infobulles absentes : 5 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Les élèves qui n'ont pas encore fini : «élève», «élève», «élève», «élève», «élève», «élève », « La feuille d'«élève» est lue par son voisin. », « La feuille de «élève» est lue par son voisin. », « Le nom est celui dont la feuille n'est pas encore lue. »
+    textes absents : 2 — « «élève» · «élève» · «élève» · «élève» · «élève» · CHEVALLIER Théoi », « 📄 feuille lue »
+■ p-corr-avant (telephone) [QCM-2 · HEURE] — 3 écarts
+    gestes de la maquette absents : « «élève»📄 »
+    textes absents : 2 — « Feuille pas encore lue : «élève» · «élève» · «élève» · «élève» · «élève» · CHEVA », « 📄 »
+■ c-corr-q2-lu (console) [QCM-2 · HEURE] — 1 écarts
+    infobulles absentes : 1 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes »
+■ c-corr-q2-apres (console) [QCM-2 · HEURE] — 3 écarts
+    infobulles absentes : 2 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Une feuille à lire ce soir : l'élève, la question, la raison. »
+    textes absents : 1 — « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad »
+■ p-corr-apres (telephone) [QCM-2 · HEURE] — 1 écarts
+    textes absents : 1 — « 📌 À lire ce soir (#) : «élève» — Q# : a dit que sa feuille disait son clic, Mad »
+■ t-corr-q2-apres (tablette) [QCM-2 · HEURE] — 1 écarts
+    textes absents : 1 — « Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté. »
+■ c-corr-q3-apres (console) [QCM-2 · HEURE] — 5 écarts
+    infobulles absentes : 2 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Une feuille à lire ce soir : l'élève, la question, la raison. »
+    textes absents : 3 — « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « «élève» — Q# : aucun de ces choix », « «élève» — Q# : a dit que sa feuille disait son clic, # ; «élève» y a lu # »
+■ t-corr-q3-apres (tablette) [QCM-2 · HEURE] — 1 écarts
+    textes absents : 1 — « Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté. »
+■ t-corr-q1-apres (tablette) [QCM-2 · HEURE] — 1 écarts
+    textes absents : 1 — « Barre ta réponse en rouge et écris la bonne réponse en entier en vert à côté. »
+■ c-corr-q1-apres (console) [QCM-2 · HEURE] — 7 écarts
+    infobulles absentes : 2 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Une feuille à lire ce soir : l'élève, la question, la raison. »
+    textes absents : 5 — « «élève» — Q# : a dit que sa feuille ne disait pas son clic, Venise ; «élève» y a », « «élève» — Q# : n'a pas dit si sa feuille disait son clic », « «élève» — Q# : aucun de ces choix », « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « «élève» — Q# : a dit que sa feuille disait son clic, # ; «élève» y a lu # »
+■ c-autonomie (console) [QCM-2 · HEURE] — 4 écarts
+    infobulles absentes : 3 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Une feuille à lire ce soir : l'élève, la question, la raison. », « Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'auton »
+    textes absents : 1 — « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad »
+■ c-autonomie-garde (console) [QCM-2 · HEURE] — 4 écarts
+    infobulles absentes : 3 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Une feuille à lire ce soir : l'élève, la question, la raison. », « Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défa »
+    textes absents : 1 — « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad »
+■ c-autonomie-retiree (console) [QCM-2 · HEURE] — 4 écarts
+    infobulles absentes : 2 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Une feuille à lire ce soir : l'élève, la question, la raison. »
+    textes absents : 2 — « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « ⛔ Point d'autonomie retiré le «date» à «heure». Ses deux compétences d'autonomie »
+■ p-autonomie (telephone) [QCM-2 · HEURE] — 6 écarts
+    ouverts/fermés autrement : « ⛔ Retirer le point d'autonomie (ouvert dans la maquette) »
+    gestes en trop : « «élève»⛔✗ », « ↩️ Rendre »
+    infobulles absentes : 1 — « Demande une confirmation, puis retire son point d'autonomie : ses deux compétences d'auton »
+    textes absents : 2 — « 📌 À lire ce soir (#) : «élève» — Q# : a dit que sa feuille disait son clic, Mad », « État actuel : Q# fausse d'après sa feuille · point d'autonomie gardé. »
+■ c-coeval-attente (console) [QCM-2 · HEURE] — 9 écarts
+    infobulles absentes : 3 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut. », « Une feuille à lire ce soir : l'élève, la question, la raison. »
+    textes absents : 6 — « «élève» — Q# : a dit que sa feuille ne disait pas son clic, Venise ; «élève» y a », « «élève» — Q# : n'a pas dit si sa feuille disait son clic », « «élève» — Q# : aucun de ces choix », « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « «élève» — Q# : a dit que sa feuille disait son clic, # ; «élève» y a lu # », « «élève» — Q# : 🤔 pense qu'«élève» a peut-être mal lu sa feuille »
+■ c-coeval-feuille (console) [QCM-2 · HEURE] — 9 écarts
+    infobulles absentes : 3 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut. », « Une feuille à lire ce soir : l'élève, la question, la raison. »
+    textes absents : 6 — « «élève» — Q# : a dit que sa feuille ne disait pas son clic, Venise ; «élève» y a », « «élève» — Q# : n'a pas dit si sa feuille disait son clic », « «élève» — Q# : aucun de ces choix », « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « «élève» — Q# : a dit que sa feuille disait son clic, # ; «élève» y a lu # », « «élève» — Q# : 🤔 pense qu'«élève» a peut-être mal lu sa feuille »
+■ c-autonomie-michel (console) [QCM-2 · HEURE] — 10 écarts
+    infobulles absentes : 4 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut. », « Une feuille à lire ce soir : l'élève, la question, la raison. », « Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défa »
+    textes absents : 6 — « «élève» — Q# : a dit que sa feuille ne disait pas son clic, Venise ; «élève» y a », « «élève» — Q# : n'a pas dit si sa feuille disait son clic », « «élève» — Q# : aucun de ces choix », « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « «élève» — Q# : a dit que sa feuille disait son clic, # ; «élève» y a lu # », « «élève» — Q# : 🤔 pense qu'«élève» a peut-être mal lu sa feuille »
+■ c-autonomie-julien (console) [QCM-2 · HEURE] — 10 écarts
+    infobulles absentes : 4 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut. », « Une feuille à lire ce soir : l'élève, la question, la raison. », « Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défa »
+    textes absents : 6 — « «élève» — Q# : a dit que sa feuille ne disait pas son clic, Venise ; «élève» y a », « «élève» — Q# : n'a pas dit si sa feuille disait son clic », « «élève» — Q# : aucun de ces choix », « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « «élève» — Q# : a dit que sa feuille disait son clic, # ; «élève» y a lu # », « «élève» — Q# : 🤔 pense qu'«élève» a peut-être mal lu sa feuille »
+■ c-autonomie-deux (console) [QCM-2 · HEURE] — 10 écarts
+    infobulles absentes : 4 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Celui qui pense que son voisin a mal lu sa feuille : son alerte est en haut. », « Une feuille à lire ce soir : l'élève, la question, la raison. », « Retire le point d'autonomie, tout de suite. « ↩️ Rendre » le défait. « ↩️ Rendre » le défa »
+    textes absents : 6 — « «élève» — Q# : a dit que sa feuille ne disait pas son clic, Venise ; «élève» y a », « «élève» — Q# : n'a pas dit si sa feuille disait son clic », « «élève» — Q# : aucun de ces choix », « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « «élève» — Q# : a dit que sa feuille disait son clic, # ; «élève» y a lu # », « «élève» — Q# : 🤔 pense qu'«élève» a peut-être mal lu sa feuille »
+■ c-coeval-tranche (console) [QCM-2 · HEURE] — 8 écarts
+    infobulles absentes : 3 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Celui qui pense que son voisin a mal lu : son alerte est tranchée. », « Une feuille à lire ce soir : l'élève, la question, la raison. »
+    textes absents : 5 — « «élève» — Q# : n'a pas dit si sa feuille disait son clic », « «élève» — Q# : aucun de ces choix », « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « «élève» — Q# : a dit que sa feuille disait son clic, # ; «élève» y a lu # », « «élève» — Q# : 🤔 pense qu'«élève» a peut-être mal lu sa feuille »
+■ t-bilan-imprime (eleve) [QCM-2 · HEURE] — 3 écarts
+    gestes en trop : « 📊 Mes évaluations », « 📄 Imprimer / Exporter mon bilan »
+    textes absents : 1 — « Évaluation d'essai — # questions · «date» »
+■ c-bilan (console) [QCM-2 · HEURE] — 9 écarts
+    infobulles absentes : 3 — « Termine maintenant : l'archive s'écrit avec les notes telles qu'elles sont ; les tablettes », « Une feuille à lire ce soir : l'élève, la question, la raison. », « «élève» : point d'autonomie retiré le «date» à «heure» ; ses deux compétences d'autonomie  »
+    textes absents : 6 — « «élève» — Q# : n'a pas dit si sa feuille disait son clic », « «élève» — Q# : aucun de ces choix », « «élève» — Q# : a dit que sa feuille disait son clic, Madrid ; «élève» y a lu Mad », « «élève» — Q# : a dit que sa feuille disait son clic, # ; «élève» y a lu # », « «élève» — Q# : 🤔 pense qu'«élève» a peut-être mal lu sa feuille », « ⛔ retiré le «date» à «heure» »
+■ t-fin (tablette) [QCM-2 · HEURE] — 9 écarts
+    gestes de la maquette absents : « 👤 # élève », « 👥 # élèves »
+    gestes en trop : « # », « ⌫ », « ✓ », « Entrer → »
+    textes absents : 3 — « Combien êtes-vous sur cette tablette ? », « 👤 # élève », « 👥 # élèves »
+■ c-papier-lancer (console) [QCM-3 · SOIR] — 3 écarts
+    infobulles absentes : 3 — « Les exclusions de MJPC que les binômes proposés respectent. », « La démo faite avec la classe : rien n'y compte, elle ne laisse que cette ligne. », « Rien ne compte : ni note, ni compétence ; elle ne sert jamais aux binômes. »
+■ c-resultats (console) [QCM-3 · SOIR] — 11 écarts
+    gestes en trop : « 📄 Lire les copies (#) »
+    infobulles absentes : 5 — « Ce qui est à lire sur la feuille de «élève» : Q# : n'a pas dit si sa feuille disait son cl », « Ce qui est à lire sur la feuille de «élève» : Q# : aucun de ces choix. », « Ce qui est à lire sur la feuille de «élève» : Q# : 🤔 pense qu'«élève» a peut-être mal lu  », « Ce qui est à lire sur la feuille de «élève» : Q# : a dit que sa feuille disait son clic, M », « Ce qui est à lire sur la feuille de «élève» : Q# : a dit que sa feuille disait son clic, # »
+    textes absents : 5 — « 🟢 Très bonne maîtrise Q# : n'a pas dit si sa feuille disait son clic », « 🟢 Très bonne maîtrise Q# : aucun de ces choix », « 🟢 Très bonne maîtrise Q# : 🤔 pense qu'«élève» a peut-être mal lu sa feuille », « 🟢 Très bonne maîtrise Q# : a dit que sa feuille disait son clic, Madrid ; «élèv », « 🟢 Très bonne maîtrise Q# : a dit que sa feuille disait son clic, # ; «élève» y  »
+■ c-fiche (console) [QCM-3 · SOIR] — 1 écarts
+    textes absents : 1 — « ⚠️ aucun de ces choix »
+■ c-fiche-garde (console) [QCM-3 · SOIR] — 1 écarts
+    textes absents : 1 — « ⚠️ aucun de ces choix »
+■ c-fiche-retire (console) [QCM-3 · SOIR] — 1 écarts
+    textes absents : 1 — « ⚠️ aucun de ces choix »
+■ c-que-dit-la-feuille (console) [QCM-3 · SOIR] — 31 écarts
+    gestes de la maquette absents : « ↩️ Rendre », « #bonne réponse », « Sa feuille ne dit aucun de ces choixlu par «élève» »
+    gestes en trop : « ⛔ Retirer le point d'autonomie », « #bonne réponse · lu par «élève» », « Sa feuille ne dit aucun de ces choix »
+    infobulles absentes : 11 — « La fiche de «élève», le soir : sa feuille lue, sa tablette, ce qu'il a dit, son point d'au », « Ce que le voisin a lu sur sa feuille, à la correction : Venise. », « Ce que l'élève a cliqué sur la tablette : Venise. », « Ce que le voisin a lu sur sa feuille, à la correction : Madrid, Genève, Berlin. », « Ce que le voisin a lu sur sa feuille, à la correction : aucun de ces choix. », « Le niveau de cette compétence : Maîtrise fragile, d'après ses questions. »
+    textes absents : 14 — « 👤 «élève» — # / # · # / # · 🟠 Maîtrise fragilei », « CE QU'IL A DIT », « corrigée en classe : raison donnée à «élève» (Rome) », « Venise », « ⚠️ aucun de ces choix », « aucun de ces choix », « Q# ✓ · Q# ✗ · Q# ∅ → «date» », « 🟠 Maîtrise fragile », « 🔴 Maîtrise insuffisante », « ⛔ Point d'autonomie retiré le «date» à «heure». », « ↩️ Rendre », « «élève» a lu « aucun de ces choix ». Clique sur ce que dit sa feuille. »
+■ c-seances-lues (console) [QCM-3 · SOIR] — 1 écarts
+    infobulles absentes : 1 — « Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic »
+■ c-rendre (console) [QCM-3 · SOIR] — 1 écarts
+    infobulles absentes : 1 — « Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic »
+■ c-copies-rendues (console) [QCM-3 · SOIR] — 1 écarts
+    infobulles absentes : 1 — « Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic »
+■ c-resultats-rendues (console) [QCM-3 · SOIR] — 11 écarts
+    infobulles absentes : 5 — « Ce qui est à lire sur la feuille de «élève» : Q# : n'a pas dit si sa feuille disait son cl », « Ce qui est à lire sur la feuille de «élève» : Q# : aucun de ces choix · ✔ lue. », « Ce qui est à lire sur la feuille de «élève» : Q# : 🤔 pense qu'«élève» a peut-être mal lu  », « Ce qui est à lire sur la feuille de «élève» : Q# : a dit que sa feuille disait son clic, M », « Ce qui est à lire sur la feuille de «élève» : Q# : a dit que sa feuille disait son clic, # »
+    textes absents : 6 — « 🟢 Très bonne maîtrise Q# : n'a pas dit si sa feuille disait son clic · ✔ lue », « ⛔ retiré le «date» à «heure» Q# : aucun de ces choix · ✔ lue », « 🟢 Très bonne maîtrise Q# : 🤔 pense qu'«élève» a peut-être mal lu sa feuille ·  », « 🟢 Très bonne maîtrise Q# : aucun de ces choix · ✔ lue », « 🟢 Très bonne maîtrise Q# : a dit que sa feuille disait son clic, Madrid ; «élèv », « 🟢 Très bonne maîtrise Q# : a dit que sa feuille disait son clic, # ; «élève» y  »
+■ x632-pdf (console) [QCM-3 · SOIR] — 2 écarts
+    infobulles absentes : 1 — « Notes et compétences »
+    textes absents : 1 — « «élève» : parti après la question # ; sa note et ses compétences portent sur les »
+■ c-corbeille (console) [QCM-3 · SOIR] — 2 écarts
+    gestes en trop : « 📤 Rendre les copies »
+    infobulles absentes : 1 — « Il reste des feuilles à lire : « rendre les copies ▸ » paraît quand toutes sont lues. Clic »
+■ c-sauvegarde (console) [QCM-3 · SOIR] — 4 écarts
+    infobulles absentes : 4 — « La sorte d'élément mis à la corbeille : évaluation. », « Ce qui est à la corbeille : « Brouillon — Les figures de style (# questions) ». », « Quand cet élément est parti à la corbeille : le «date» à «heure». », « Remet cet élément à sa place, tel qu'il était. »
+■ c-importer (console) [QCM-3 · SOIR] — 4 écarts
+    infobulles absentes : 4 — « La sorte d'élément mis à la corbeille : évaluation. », « Ce qui est à la corbeille : « Brouillon — Les figures de style (# questions) ». », « Quand cet élément est parti à la corbeille : le «date» à «heure». », « Remet cet élément à sa place, tel qu'il était. »
+■ c-purger (console) [QCM-3 · SOIR] — 4 écarts
+    infobulles absentes : 4 — « La sorte d'élément mis à la corbeille : évaluation. », « Ce qui est à la corbeille : « Brouillon — Les figures de style (# questions) ». », « Quand cet élément est parti à la corbeille : le «date» à «heure». », « Remet cet élément à sa place, tel qu'il était. »
+■ e-mes-evals (eleve) [QCM-3 · SOIR] — 3 écarts
+    textes absents : 3 — « #e- éval # Analyse logique - Construire une phrase complexe », « QCM — Le jambon-beurre », « «date» · # / # · # / # · 🔵 Maîtrise satisfaisante »
+■ e-mes-evals-rendue (eleve) [QCM-3 · SOIR] — 3 écarts
+    textes absents : 3 — « #e- éval # Analyse logique - Construire une phrase complexe », « «date» · # / # · # / # · 🔵 Maîtrise satisfaisante », « QCM — Le jambon-beurre »
+■ c-reglages-prompt (console) [QCM-3 · SOIR] — 1 écarts
+    gestes en trop : « #e · Chapitre # — Poésie et peinture au XIXe siècle »
+■ x620-1-mode-test-ouverture (console) [QCM-3 · SOIR] — 10 écarts
+    gestes de la maquette absents : « 👤 # élève », « 👥 # élèves »
+    gestes en trop : « # », « ⌫ », « ✓ », « Entrer → »
+    textes absents : 4 — « ✅ Ça tient dans les # minutes utiles. », « Combien êtes-vous sur cette tablette ? », « 👤 # élève », « 👥 # élèves »
+
+Scènes que le banc n'a pas encore atteintes par le geste (60) : c-echange-refuse, c-demo-lancer, c-demo-faite, t-un-eleve, t-login-inconnu, t-binome, t-rejoins, t-attest-2, t-demo-q, c-voir-tablette, c-fin-prevue, t-q1-passage2, c-ecarter, c-ecartee, t-q2-ecartee, c-annuler, c-annulee, c-rouvrir-tous, x610-1-b-julien, x610-2-b-michel, c-depart, c-parti, c-retour, c-deplacer, t-deplace, c-finir-autre-heure, c-reprendre, c-rouvrir-seance, c-sessions, c-interrompue, t-attest-corr-fait, x610-3-a-correction, t-corr-seul, t-coeval-daccord, c-coeval-retire-michel, c-coeval-retire-julien, c-coeval-retire-deux, x610-6-coeval-laquelle, x610-7-coeval-ecrit, x610-8-console-alerte, x610-feuille, x610-autonomie-michel, x610-autonomie-julien, x610-autonomie-deux, x610-tranche, x610-9-telephone-alerte, t-bilan-annulee, t-bilan-non-atteinte, c-papier-seance, e-papier-enonces, c-papier-grille, c-papier-reprendre, t-papier-estim, t-papier-attest, c-papier-correction, t-papier-correction, c-rattrapage, x620-2-mode-test-reflexion, x620-3-mode-test-en-grand, t-annexe
+Scènes hors de l'app, nommées dans ecarts-maquette.json (12) : m-classe-exclusions, m-exclusion-refusee, m-fiche-eleve, m-taxonomie, m-taxonomie-editeur, m-taxonomie-domaine, m-taxonomie-notion, m-taxonomie-competences, m-taxonomie-competence, m-emploi-du-temps, m-emploi-du-temps-un, m-emploi-du-temps-tous — Les scènes « m-… » sont les écrans de MJPC (index.html, src/mjpc.js) : COMMUN §1, « src/mjpc.js (les écrans de MJPC, qui vivent dans index.html) n'entre pas dans l'app : personne n'y touche ». L'app n'a pas à les montrer ; seul « Ouvrir la console MJPC → » y mène.

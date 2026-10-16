@@ -1,0 +1,33 @@
+Reprise 4, points 1 à 7, par le geste (QCM-4 · BANC) — durée 221 s
+vérifications : 27 · échecs : 0
+── Q1 : « +5 » au 1er tour ; à chaque tour, un élève répond, l'autre non
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] « +5 » cliqué au 1er tour profite au 1er tour (deroule.duree 15 → 20)
+  ok     [QCM-2 · HEURE] le bandeau du téléphone suit le temps changé (« réponse 20 s »)
+  ok     [QCM-2 · HEURE] au 1er tour, 15 s après le début de la réponse (temps prolongé de 5 s), la moitié qui a la main a encore ses choix
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] B pour chacun de ceux qui ont répondu à Q1 (Julien au 1er tour, Léa au 2e)
+  ok     [QCM-2 · HEURE] au téléphone, un élève sans réponse ou jamais entré ne porte pas « ✗ »
+── « 🔓 Rouvrir pour un élève » (Théo), puis « pour tous »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Théo, rouvert seul, a son B après sa réponse
+  ok     [QCM-1 · SOCLE] la garde de « Rouvrir pour tous » liste Michel (sans réponse), pas les élèves jamais entrés
+  ok     [QCM-1 · SOCLE] « Rouvrir pour tous » : Michel retrouve la question
+  ok     [QCM-2 · HEURE] pendant « Rouvrir pour tous », aucun élève qui avait répondu (dont Théo, rouvert seul juste avant) ne lit « Pose ton stylo »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] pendant « Rouvrir pour tous », pas de nouvelle question B à ceux qui avaient déjà répondu
+  ok     [QCM-1 · SOCLE] la question ne revient qu'à celui qui n'avait pas répondu : pas de tour pour les autres
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] Michel, rouvert « pour tous », a son B
+── Q2 écartée ; Q3 : la console rechargée pendant la réflexion
+  ok     [QCM-2 · HEURE] « ❌ Écarter la question 2 »
+  ok     [QCM-1 · SOCLE] la base : ecartees = [1]
+  ok     [QCM-2 · HEURE] « ▶️ Lancer » la question suivante (Q3, la 2e sur 2)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] « Séance interrompue » : l'heure de la coupure (08:21), pas celle du lancement
+── L'estimation, la correction (Q1, Q3), la co-évaluation : Julien signale ❌ la question 3
+  ok     [QCM-2 · HEURE] au téléphone, la question écartée n'a pas de « % »
+  ok     [QCM-1 · SOCLE] ordreCorr sans la question écartée
+  ok     [QCM-2 · HEURE] la correction de l'élève ne montre pas la question écartée
+  ok     [QCM-2 · HEURE] « 🤝 Ouvrir la co-évaluation »
+  ok     [QCM-2 · HEURE] « c'est laquelle ? » ne propose pas la question écartée
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] pas de bouton « Donner raison » à choix vide avant que Julien ait dit ce qu'il a écrit
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] l'alerte, à la console : « Donner raison à Julien : 8 → 1 point », « Donner raison à Léa : 6 → 0 point » (la note que la feuille vaut)
+  ok     [QCM-2 · HEURE] l'alerte, au téléphone, de même
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] la garde de l'alerte tranchée (sans trouvée) annonce la note du bilan
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] le bilan de Julien ne compte pas la question écartée (ni « Question 2 », ni « Q2 ✗ »)
+  ok     [QCM-1 · SOCLE] le bilan de Julien : 2 / 2 (Q1 juste ; Q3 : raison donnée)

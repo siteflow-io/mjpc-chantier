@@ -22870,3 +22870,25 @@ Envoyé à Paul, mot pour mot :
 29. La troisième : quand une séance est terminée avant la fin, les questions jamais posées restent dans le total. Par exemple, la note est « 0 / 3 » quand seule Q1 a été posée, et elle ne sera jamais complète, puisque Q2 et Q3 ne seront jamais lues. Ma proposition : une question que personne n'a eue sort du total, comme une question écartée. Oui ou non ?
 
 16/10/2026 14:41 MEMO
+
+---
+
+## TOUR 739 — Paul, 16/10 14:43
+
+Paul, mot pour mot :
+
+qu'ont-elle proposé?
+
+Relu pour répondre, mot pour mot : `DEMANDES.md` (QCM-4, 14:10), et sous la section du contrôle à froid de `DEFAUTS-OUVERTS.md`, QCM-1 (14:00, 14:15) et QCM-2 (14:25).
+
+Envoyé à Paul, mot pour mot :
+
+26. Pour « +10 » après le 0, QCM-4 demandait : « rouvrir pour 10 s après le 0, ou seulement ajouter (et corriger l'infobulle) ? ». QCM-1 a choisi de rouvrir pour 10 secondes, puisque l'infobulle le promettait, et l'a déjà codé. Si tu préfères qu'il ajoute seulement, il faut le dire.
+
+27. L'élève seul : QCM-4 n'a rien proposé. Il l'a trouvé et t'a posé la question : « seul, il lit sa propre feuille (maquette 500), mais ses phrases ne sont écrites nulle part ». QCM-2 a choisi les lignes de la séance sur papier, et les a déjà codées : « Seul, l'élève lit et corrige sa propre feuille, comme sur papier : il a maintenant les lignes de la variante papier […], sans phrase nouvelle. » Il ajoute : « si Paul veut d'autres mots pour lui, c'est à lui de les donner. »
+
+28. Le temps tapé chiffre par chiffre : QCM-4 n'a rien proposé non plus. Il demande seulement : « Est-ce voulu ? ». La proposition « à Entrée ou quand tu quittes le champ » vient de moi.
+
+29. Les questions jamais posées : QCM-1 n'a rien codé, et pose la question ainsi : « Faut-il retirer du total une question que personne n'a eue (comme une question écartée) ? Je ne le tranche pas. » Ma proposition reprend la sienne.
+
+16/10/2026 14:44 MEMO

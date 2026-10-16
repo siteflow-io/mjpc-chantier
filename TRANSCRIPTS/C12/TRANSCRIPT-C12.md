@@ -22730,3 +22730,31 @@ Envoyé à Paul, mot pour mot :
 Tes tests (point 11), dans l'ordre. Dans « 🎯 Pilotage classe », ouvre le menu « Classe » : « 4e Hugo (… élèves) », plus aucun « 4_hugo ». Choisis une classe, une évaluation, puis « 🚀 Lancer la séance » : l'appel dit « 4e Hugo — … élèves » ; « Annuler » ne lance rien. Dans « Données », « 📊 Résultats » range tes séances sous « 👥 » et le nom lisible de la classe. À ta prochaine séance, le titre de ta console finit par « — 4e Hugo », et une tablette où un élève est entré dit « 4E HUGO · » puis son nom.
 
 16/10/2026 08:58 MEMO
+
+---
+
+## TOUR 733 — Paul, 16/10 10:54
+
+Paul, mot pour mot :
+
+Le plus logique c'est qu'ils gardent la feuille du voisin pendant toute la correction. Ainsi pas d'allers retours, et ce qu'ils voient à l'écran leur parle évidemment de la copie du voisin et pas de la leur. 
+De plus, autant les notes ne s'affichent pas côté élève, si je t'ai bien compris, autant moi dans mon pilotage je dois les voir ! 
+Par ailleurs, l'affichage "écartée " s'affiche quand dans mon bilan €3 classe?
+
+Mesuré dans le code (code-qcm `435a93d4`) : pour 13, `LignesAttest2`, `EcrLecture`, l'écran de « Révéler » (`etape3.js` l. 136-158), `Coeval` (« Élise, Gatien a-t-il bien lu ta feuille ? ») ; pour 14 et 15, `BilanClasseH` (`c3-corr.js` : la note sans regarder `complet`, la moyenne sur les notes complètes, la maîtrise sur la note partielle), le tableau de la séance (`c4-seances.js` l. 59-61 : « — » sans `complet`, la maîtrise sans), `NoteDirecteL` (`lire-copies.js`) ; pour 16, `ecartTexteV`, les marques « ❌ Écartée — pas posée », `NoteDirecteL` l. 74 (`b == null` → « écartée »), et au hub la séance du 16/10 07:24 (`soir/depart` présent : « Lire les copies » a été ouvert). Dettes : 216 tranchée, 218 (production `docs/MJPC6-DETTES.md`).
+
+Envoyé à Paul, mot pour mot :
+
+13. Noté : chacun garde la feuille de son voisin pendant toute la correction, et la moitié qu'il a devant lui ne parle que de cette feuille. Ça remplace notre 1117 sur tablette ; sur papier, rien ne change, puisque l'élève y corrige seul sa propre feuille. Un télescopage, à la fin : à la co-évaluation, la moitié d'Élise lui demande « Élise, Gatien a-t-il bien lu ta feuille ? », et pour répondre, elle doit avoir sa feuille en main. Les feuilles reviennent donc une seule fois, juste avant la co-évaluation.
+
+Les phrases (point 13), à valider ou à remplacer par les tiennes. Dans « Avant la correction », la première ligne devient « Maintenant, la correction. Donne ta feuille à Gatien et prends la sienne : tu la gardes jusqu'à la fin de la correction. » ; après « Pour chaque question, Gatien clique ce que dit ta feuille. Toi, tu cliques ce que dit la feuille de Gatien. », une ligne s'ajoute : « Puis tu corriges la feuille de Gatien en vert, comme sa moitié de la tablette te le dit. » ; la ligne du point d'autonomie finit par « et si tu lis et corriges avec soin la feuille de Gatien. » À la lecture, « Élise, montre ta feuille à Gatien. » disparaît. À « Révéler », la moitié d'Élise dit « ✅ Élise avait juste ! » ou « ❌ Élise avait faux. » ; « Ta réponse » devient « Sa réponse » ; la consigne devient « Gatien, sur la feuille d'Élise, mets simplement un V vert dans la marge à côté de sa réponse. » ou « Gatien, sur la feuille d'Élise, barre sa réponse et écris la bonne réponse en entier en vert à côté. » ; pour « Trouvée au dernier moment » : « Sa feuille disait autre chose, mais Élise a cliqué sur la bonne réponse : la question compte. Cela n'arrive qu'une fois par évaluation. », et « Sur la tablette, Élise avait cliqué sur : … ». En tête de la co-évaluation : « 📄 Gatien, rends sa feuille à Élise. »
+
+14. Les notes dans ta console, mesuré : trois écrans, deux façons. Ton « 🏁 Bilan classe », à la fin de la correction, montre déjà la note de chacun telle qu'elle est (« 1 / 11 » pour Élise), et « 📄 Lire les copies » aussi ; seul le tableau de la séance, celui de ta capture, met « — » tant qu'une question n'est pas lue. Ma proposition : le tableau fait comme ton bilan, et les trois écrans disent combien de questions restent à lire, par exemple « 1 / 11 », « 1,8 » sur 20, puis « 10 questions pas encore lues ». Côté élève, rien ne change.
+
+15. Avec 14, la maîtrise de la note et la compétence restent « — » tant que la note n'est pas complète, dans les trois écrans : elles vont dans le PDF « notes et compétences » pour École Directe, et un niveau calculé avec dix questions comptées à zéro ne dit rien. Tu valides 14 et 15 ?
+
+16. « Écartée » ne doit paraître que pour une question que tu as retirée toi-même avec « ❌ Écarter la question n », avant de la poser : elle n'est ni posée ni corrigée, et sort du total. Dans le tableau de la séance, sa colonne porte « ❌ », ses cases « · », et l'en-tête dit « Qn écartée » au lieu de « aucune » ; dans ton bilan de classe, elle n'apparaît plus du tout. Ta séance de 07:24 n'en a aucune. Mais si tu l'as vu dans « 📄 Lire les copies », c'est un défaut : dans « 🧮 La note, en direct », toute question pas encore corrigée s'écrit « Question 2 : écartée », et c'est le cas de Q2 à Q11 chez Élise et Gatien. Elle devrait dire « pas encore lue ». Je l'ai inscrit aux dettes (n°12 · 218).
+
+Si tu valides 13 à 15, je fais le tout en micro, avec 16, comme pour le nom des classes.
+
+16/10/2026 10:58 MEMO

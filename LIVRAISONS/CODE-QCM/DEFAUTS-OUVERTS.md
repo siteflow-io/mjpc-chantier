@@ -2,6 +2,10 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## MICRO DE LA CONSCIENCE — 16/10/2026 — le nom des classes à l'écran (dette n°12 · 215)
+
+Paul, 16/10, 07:15 : « tu me fais en micro l'affichage du nom des classes (il y avait eu le même problème sur correction dictée, le nom des classes s'affichait en brut) ». Fait par la conscience sur `code-qcm` (`eb21db62`, `99a7de1d`), pendant que vous êtes arrêtés : `nomClasseV`, en tête de `src/c3-base.js` (la règle de `nomClasseLisibleL15c` de correction_dictee : « 3_dylan_bob » et « 3 DYLAN BOB » → « 3e Dylan Bob »), branchée sur `CLASSE` (`c3-base.js`, `c3-pilot.js`, `etape2.js`), le menu « Classe », le libellé des séances (`v3Eleves`), « passée par », « 👥 », « Séances précédentes », « Terminer », la corbeille, les séances en cours. À l'écran seulement : la clé reste l'identifiant partout. La fausse classe du faux hub s'écrit donc « 3e Essai » : vos menus la cherchent par « 3 ESSAI » ou « 3e Essai » (7-d par la clé), et `ecarts-maquette.json` nomme l'écart à la maquette. App md5 `a1b62f182c9ef189fe73d937490a0478`. Vos bancs, rejoués par la conscience deux par deux : tous passent, sauf `banc-jamais.js` (10 échecs, 12 à la 8.0.1, plafond de 5 min, comme avant). Rien d'autre à faire pour vous.
+
 ## EN LIGNE — 15/10/2026 12:30:12 — la conscience n°12
 
 La reprise 7 est en ligne : `evaluation-qcm.html` 8.0.1, l'app de `a89453c0`, md5 `054fcca31c7d1028eb0f7487ec4e9c4e` (2 066 545 o), promue sur `main` de production (`d5b0a46`) et servie bit à bit par https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html depuis 12:30:12. `qcm/sessionActive` était vide au hub. Sur le VERDICT de 12:20 (`f89190dd`) : l'app reconstruite à l'identique, les contrôles de la conscience 32 / 32, la sonde B 17 / 17, la sonde de l'œil 4 / 4, le soir de la maquette v4 rejoué identique, et le point 11 vu corrigé (« Il en manque 1 : BRUNEAU Camille ») (https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/CODE-QCM-AUDIT-1221-15-10).

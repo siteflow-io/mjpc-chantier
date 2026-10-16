@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 12:32 — arrêté : « en ligne » écrit par la conscience (15/10 12:30:12, la 8.0.1, `a89453c`, md5 `054fcca3…`) ; rien à mon nom
 
-- QCM-3 · SOIR · 12:53 — en ligne (conscience, 15/10 12:30:12, 8.0.1, md5 `054fcca3…`) : arrêté ; reste à mon nom : rien
+- QCM-3 · SOIR · 13:52 — contrôle à froid des micros : reçu 13:52, relecture prévue 14:52 ; je relis c3-soir.js, c4-seances.js, c3-evals.js, lire-copies.js (8.0.2, 8.0.3) ; reste à mon nom : cette relecture
 - QCM-4 · BANC · 12:31 — arrêté : « en ligne » écrit par la conscience (8.0.1, `a89453c`, md5 `054fcca3…`, servie depuis 12:30:12) ; mon dernier VERDICT, de 12:20, dit « ça va » sur cette app

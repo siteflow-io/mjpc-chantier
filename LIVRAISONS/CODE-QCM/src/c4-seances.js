@@ -271,7 +271,7 @@ function seanceV(sid){
   var presents = tous.filter(function(e){ return absents.indexOf(e.slug) < 0 && (!propres || vus[e.slug]); });
   var cop = S.copies || null, ms = msDeSeance(S);
   var rendue = cop ? !!(cop.rendues && !cop.masquees) : (!nouv && seanceTerminee(S));
-  return {id:sid, S:S, ev:ev, classe:cl.libelle || S.classe || S.classeSlug || "", classeCle:cl.cle, classeSlug:S.classeSlug || v3Slug(cl.cle), niveau:cl.niveau, amen:cl.amen,
+  return {id:sid, S:S, ev:ev, classe:cl.libelle || nomClasseV(S.classe || S.classeSlug || ""), classeCle:cl.cle, classeSlug:S.classeSlug || v3Slug(cl.cle), niveau:cl.niveau, amen:cl.amen,
     eleves:tous, presents:presents, absents:tous.filter(function(e){ return absents.indexOf(e.slug) >= 0; }), nouvelle:nouv,
     date:dateFr(ms), heure:heureFr(ms), ms:ms, terminee:seanceTerminee(S), pause:seanceEnPause(S), demo:seanceDemo(S), test:seanceTest(S),
     papier:S.mode === "papier" || !!S.surPapier || !!(S.lancee && S.lancee.mode === "papier"), rattrapage:!!S.rattrapage || !!(S.lancee && S.lancee.rattrapage),
@@ -489,8 +489,8 @@ function csvV(se, lignes, comps){
   var t = [["Élève"].concat(se.ev.questions.map(function(q, i){ return "Q" + (i + 1); }), ["Note", "Sur 20", "Maîtrise de la note"], comps, ["Autonomie", "À lire sur la feuille"])];
   var lire = aLireV(se);
   lignes.forEach(function(l){ var r = l.r, mt = maitriseV(r.sur20);
-    t.push([l.nom].concat(r.st.map(function(x){ return (MARQUE_RES[x] || ["", ""])[1]; }), [r.complet ? r.n + "/" + r.total : "—", r.complet ? fr1(r.sur20) : "—", mt.lib],
-      comps.map(function(c){ return niveauComp(r, c).lib; }), [autonomieV(se, l.p).retire ? "retiré" : "Très bonne maîtrise", lire.filter(function(x){ return x.p === l.p; }).map(function(x){ return "Q" + (x.q + 1) + " : " + texteALireV(x); }).join(" · ")])); });
+    t.push([l.nom].concat(r.st.map(function(x){ return (MARQUE_RES[x] || ["", ""])[1]; }), [fr1(r.n) + "/" + r.total + (nonLuesV(r, se.ecartees) ? " (" + nonLuesV(r, se.ecartees) + " pas encore lue" + (nonLuesV(r, se.ecartees) > 1 ? "s" : "") + ")" : ""), fr1(r.sur20), r.complet ? mt.lib : "—"],
+      comps.map(function(c){ return r.complet ? niveauComp(r, c).lib : "—"; }), [autonomieV(se, l.p).retire ? "retiré" : "Très bonne maîtrise", lire.filter(function(x){ return x.p === l.p; }).map(function(x){ return "Q" + (x.q + 1) + " : " + texteALireV(x); }).join(" · ")])); });
   var csv = "﻿" + t.map(function(r){ return r.map(function(c){ c = String(c == null ? "" : c); return /[;"\n]/.test(c) ? '"' + c.replace(/"/g, '""') + '"' : c; }).join(";"); }).join("\n");
   var nom = "resultats-" + String(se.classe).replace(/\s+/g, "-") + "-" + se.date.replace(/\//g, "-") + ".csv";
   try { var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8"})); a.download = nom; document.body.appendChild(a); a.click(); a.remove(); } catch(e){}
@@ -573,7 +573,8 @@ function FicheV(p){
   if(!se.nouvelle) return FicheAncienneV(se, slug, r, mt, au, comps, e, sq, nom, il, pre);
   return h("div", {className:"student-report", "data-eleve":slug, "data-seance":se.id},
     h("div", {style:{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap"}},
-      h("h3", null, "👤 " + nom + " — " + fr1(r.n) + " / " + r.total + " · " + fr1(r.sur20) + " / 20 · " + mt.em + " " + mt.lib, InfoI("Pour chaque question : ce que " + (vPre || "son voisin") + " a lu sur sa feuille à la correction, ce qu'" + il + " a cliqué sur la tablette, ce qu'" + il + " a dit à la fin de son temps de réponse, « Oui, la même chose » ou « Non, autre chose ». « La feuille dit autre chose » corrige une question d'après sa feuille.")),
+      // (16/10, Paul) la note telle qu'elle est ; la maîtrise attend la note complète, et ce qui reste à lire se dit
+      h("h3", null, "👤 " + nom + " — " + fr1(r.n) + " / " + r.total + " · " + fr1(r.sur20) + " / 20 · " + (r0.complet ? mt.em + " " + mt.lib : "—"), h(NonLuesV, {r:r0, ecartees:se.ecartees}), InfoI("Pour chaque question : ce que " + (vPre || "son voisin") + " a lu sur sa feuille à la correction, ce qu'" + il + " a cliqué sur la tablette, ce qu'" + il + " a dit à la fin de son temps de réponse, « Oui, la même chose » ou « Non, autre chose ». « La feuille dit autre chose » corrige une question d'après sa feuille.")),
       h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-resultats" + sq, title:"Ferme la fiche et revient au tableau de la séance."}, "✕ Fermer")),
     h("div", {className:"fiche-head fiche-head-b"}, h("span", null, ""), h("span", null, "Question"), h("span", null, se.nouvelle ? "Sa feuille, lue par " + (vPre || pre) : "Sa feuille"), h("span", null, "Sa tablette"), h("span", null, "Ce qu'" + il + " a dit"), h("span", null, "Bonne réponse"), h("span", null, "Points"), h("span", null, "")),
     ev.questions.map(function(q, qi){
@@ -602,7 +603,7 @@ function FicheV(p){
           h("button", {className:"btn btn-ghost btn-sm", "data-va":"c-que-dit-la-feuille" + e + "&q=" + (qi + 1), title:"Ouvre les choix de la question " + (qi + 1) + " : tu cliques ce que dit sa feuille, et sa note se recalcule (« Corrigé d'après ta feuille » dans son bilan)."}, "La feuille dit autre chose")));
     }),
     h("div", {className:"fiche-comps"}, h("div", {className:"tt"}, "🧩 Ses compétences"),
-      comps.map(function(c){ var n = niveauComp(r, c), x = r.comp[c] || {n:0, max:0};
+      comps.map(function(c){ var n = r0.complet ? niveauComp(r, c) : {cls:"", em:"", lib:"—"}, x = r.comp[c] || {n:0, max:0};
         return h("div", {key:c, className:"fiche-comp-l"}, h("span", {className:"c"}, c), h("span", null, libOff(c)), h("span", {className:"d"}, compQuestionsEv(c, ev).map(function(i){ return "Q" + (i+1) + " " + marque(r.st[i]); }).join(" · ") + " → " + fr1(x.n) + "/" + x.max), h("span", {className:"maitrise-pill " + n.cls}, n.em + " " + n.lib)); }),
       ["tr-personne-03", "tr-methodes-02"].map(function(c){
         return h("div", {key:c, className:"fiche-comp-l"}, h("span", {className:"c"}, c), h("span", null, libOff(c)), h("span", {className:"d"}, "le point d'autonomie"),

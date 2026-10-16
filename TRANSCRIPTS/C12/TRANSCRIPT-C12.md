@@ -22984,3 +22984,19 @@ Envoyé à Paul, mot pour mot :
 31. Noté : relancés à 17:09. QCM-3 pousse sa livraison vers 18:09, QCM-4 son verdict vers 18:39, et mon contrôle est programmé à 18:39. Si le verdict dit « ça va », que mon contrôle passe et qu'aucune séance n'est en cours, la version part en ligne et je te donne tes tests. Sinon, je te dis où ils en sont, et rien ne part en ligne. 27, 28 et 29 restent ouverts, en attente de ta réponse.
 
 16/10/2026 17:10 MEMO
+
+## TOUR 745 — réveil programmé de 18:39 (pas Paul)
+
+Le contrôle programmé (`trig_01WPa877sedvFUBXKgC63V9D`). Lu : `ETAT.md` (QCM-3 a livré à 17:14, `0c992c8`, `80858ac` ; QCM-1 les infobulles de « 🧪 Mode test », `39ae18d`), `DEMANDES.md` (QCM-4 → QCM-3 17:13, les deux infobulles qui disaient « la démo »), `VERDICT.md` de QCM-4 de 18:34 (`0081477d`, « ça va », app `882611f` md5 `764a184f…`, mode test 121/121 ; deux points laissés à la conscience : l'écart des infobulles de « 🧪 Mode test », `t-q1-attente`), le diff `381184d..882611f` de `src/` (quatre fichiers). Mesuré : la reconstruction à l'identique ; contrôles 32/32 ; sonde du mode test 24/24 (T1 à T8) ; `t-q1-attente` : le banc commun y voit « Attends la prochaine question » (`banc.txt` l. 60), relevé de fidélité pris trop tôt, la livraison ne touche pas la tablette ; le hub : `qcm/sessionActive` illisible depuis l'atelier (proxy : CONNECT 403 ; WebFetch : adresse refusée). Fait : `AUDITS/CODE-QCM-MODE-TEST-VRAIES-EVALS-16-10/` ; « CONTRÔLÉ » en tête de la section (`code-qcm` `5fbc9248`) ; dette n°12 · 221 mise à jour (production) ; le script de mise en ligne de la 8.0.5 prêt, pas lancé.
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.4, toujours en ligne : la 8.0.5 n'y est pas encore · **en cours chez l'exécutant :** rien, j'ai écrit « contrôlé » et ils s'arrêtent · **ouvert :** la mise en ligne, qui attend ta réponse ; 27, 28 et 29
+
+31. Le mode test des vraies évaluations est prêt et contrôlé. QCM-4 dit « ça va ». Il a joué en entier, en mode test, trois évaluations : une de 3e, une de 4e et une de 11 questions. Ta vraie évaluation n'a jamais été écrite. Mon contrôle passe aussi. Le menu propose la démo par défaut, puis tes évaluations prêtes, dans le même ordre que la console. Une séance de 4e va jusqu'au premier tour, à la console comme sur une tablette simulée. À la sortie, tes vraies évaluations sont identiques à l'octet près. Une évaluation de 4e se joue sur la classe de test, qui est en 3e, sans rien qui bloque ni qui le signale. Quatre infobulles disent maintenant « la démo ou une évaluation de ta liste », au lieu de « la démo ».
+
+Mais je ne l'ai pas mise en ligne. À cette heure, le hub n'est pas joignable depuis mon atelier, donc je ne peux pas vérifier qu'aucune séance n'est en cours. C'est toi qui lances les séances : si aucune n'est en cours, dis-le-moi, et je la mets en ligne aussitôt, avec tes tests. D'ici là, la 8.0.4 reste en ligne, inchangée.
+
+27, 28 et 29 attendent toujours ta réponse.
+
+16/10/2026 18:53 MEMO

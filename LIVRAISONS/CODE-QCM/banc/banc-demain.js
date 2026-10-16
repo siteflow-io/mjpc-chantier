@@ -49,7 +49,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
       srv.store.apply({t: "set", p: "qcm/evaluations/banc4e", v: EV4}); srv.broadcast({t: "set", p: "qcm/evaluations/banc4e", v: EV4}, null); id4 = "banc4e";
       J.secours("l'évaluation de 4e posée dans la base par le banc (qcm/evaluations/banc4e), le collage n'ayant rien écrit, pour jouer l'heure"); await pause(800); }
     await cliquer(prof, /Pilotage classe/); await pause(300);
-    J.v(await choisir(prof, /4 ESSAI/), H2, "Pilotage classe : 4 ESSAI se choisit"); await pause(200);
+    J.v(await choisir(prof, /4 ESSAI|4e Essai/), H2, "Pilotage classe : 4 ESSAI se choisit"); await pause(200);
     J.v(await choisir(prof, /Paris à la barre/), H2, "l'évaluation de 4e se choisit"); await pause(300);
     await capt(prof, "lancer");
     J.v(await etatBouton(prof, /Lancer la séance/) === "ouvert", H2, "« 🚀 Lancer la séance » ouvert : l'évaluation est complète (chapitre sans fiche au hub, cadrage 741)", await etatBouton(prof, /Lancer la séance/));

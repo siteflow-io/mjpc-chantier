@@ -47,7 +47,7 @@ function ScRetour(){
 function ScTerminer(){
   var sid = paramHash("seance") || SCN.sid(), se = SCN.seance(sid), ev = SCN.evalDeSeance(sid) || EV, m = SCN.moment(sid);
   var fond = typeof EcranConsoleHeure === "function" && SCN.sid() ? EcranConsoleHeure() : Pilot(etatPilot());
-  return Fenetre(fond, "🛑 Terminer la séance ?", ((se && se.classe) || CLASSE) + " — " + ev.titre + " · " + ouEnEst(m),
+  return Fenetre(fond, "🛑 Terminer la séance ?", nomClasseV((se && se.classe) || CLASSE) + " — " + ev.titre + " · " + ouEnEst(m),
     h(F, null, h("p", null, "La séance est close, et l'archive s'écrit avec les notes telles qu'elles sont, quelle que soit la phase."),
       h("p", null, "Les tablettes oublient leurs élèves et reviennent à l'entrée des élèves.")),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-q1-tour1"}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-lancer", title:"Termine la séance, tout de suite : l'archive s'écrit, les tablettes oublient leurs élèves."}, "🛑 Terminer la séance")], "c-q1-tour1");
@@ -76,7 +76,7 @@ function SessionsEnCours(){
       h("p", {className:"sessions-menu-intro"}, "Voici toutes les séances qui sont actuellement actives quelque part. Tu peux aller au pilotage de chacune ou la terminer si elle n'a plus de raison d'être active."),
       h("div", {className:"sessions-menu-liste"}, l.map(function(x){ var m = SCN.moment(x.id), ev = SCN.evalDeSeance(x.id);
         return h("div", {key:x.id, className:"session-menu-row"},
-          h("div", {className:"session-menu-info"}, h("div", {className:"session-menu-nom"}, x.classe + (ev ? " — " + ev.titre : "")),
+          h("div", {className:"session-menu-info"}, h("div", {className:"session-menu-nom"}, nomClasseV(x.classe) + (ev ? " — " + ev.titre : "")),
             h("div", {className:"session-menu-meta"}, "Phase : ", h("strong", null, phaseTexte(m)), (m.qi != null ? " · Q " + (m.qi + 1) + (m.tour ? " · " + (m.tour === 1 ? "1er" : "2e") + " tour" : "") : "") + " · fin de l'heure " + SCN.finHeure(null, x.id))),
           h("div", {className:"session-menu-actions"},
             h("button", {className:"btn btn-sm btn-primary", "data-local":"1", title:"Ouvre le pilotage de cette séance, là où elle en est.", onClick:function(){ ACT.piloter(x.id); navRemettre(); }}, "🎯 Aller au pilotage"),

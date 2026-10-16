@@ -28,7 +28,7 @@ const hhmm = () => new Date().toLocaleTimeString("fr-FR", {hour: "2-digit", minu
   try {
     prof = await A.ouvrir("console", "?mode=prof", 1536, 864);
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
-    await choisir(prof, /3 ESSAI/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(300);
+    await choisir(prof, /3 ESSAI|3e Essai/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(300);
     await cliquer(prof, /Lancer la séance/); await pause(400); await cliquer(prof, /YVON Adam/); await cliquer(prof, /Lancer la séance/); await pause(1200);
     const pl = sess().s.places || {};
     const T = Object.keys(pl).map(k => ({k, g: pl[k].g, d: pl[k].d}));

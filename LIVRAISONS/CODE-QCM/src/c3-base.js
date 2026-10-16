@@ -13,6 +13,21 @@ function paramHash(n){ if(typeof NAV !== "undefined" && NAV.params && NAV.params
 function jjmm(d){ return String(d || "").slice(0, 5); }
 function hhmm(t){ return String(t || "").slice(0, 5); }
 
+/* (16/10, micro de la conscience n°12 ; Paul, 07:15 : « l'affichage du nom des classes (il y avait eu le même problème sur correction dictée, le nom des
+   classes s'affichait en brut) ») LE NOM D'UNE CLASSE, À L'ÉCRAN : la règle de correction_dictee (nomClasseLisibleL15c). Le nom du registre MJPC s'il a
+   des minuscules (« 3E Charles de Gaulle ») ; sinon ce nom, ou la clé, rendu lisible : « 3_dylan_bob » et « 3 DYLAN BOB » → « 3e Dylan Bob ». Une classe
+   interne (« _test_… ») reste telle quelle. Pour l'écran seulement : la clé reste l'identifiant de la classe partout ailleurs (la base, les gestes, les tris). */
+function nomClasseV(x){
+  var s = String(x == null ? "" : x).trim(); if(!s || s.charAt(0) === "_") return s;
+  var C = (typeof LIVE !== "undefined" && LIVE && LIVE.d && LIVE.d.classes) || (typeof v3Classes === "function" ? v3Classes() : null) || {};
+  function san(t){ return String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, ""); }
+  var k = C[s] ? s : Object.keys(C).filter(function(c){ return san(c) === san(s) || (C[c] && C[c].nom && san(C[c].nom) === san(s)); })[0];
+  var base = (k && C[k] && C[k].nom ? String(C[k].nom) : "") || k || s;
+  if(/[a-z]/.test(base) && base.indexOf("_") < 0) return base;   // écrit à la main, avec ses minuscules (« 3E Charles de Gaulle »), ou déjà lisible : tel quel
+  var src = base.replace(/_/g, " ").replace(/\s+/g, " ").trim().toLowerCase(); if(!src) return s;
+  src = src.replace(/(^|\s)([a-z\u00e0-\u00ff])/g, function(m, a, b){ return a + b.toUpperCase(); });
+  return src.replace(/^(\d)\s/, "$1e ").replace(/^(\d)E\s/, "$1e ");
+}
 /* ── (QCM-1) Les données de la séance réelle, rebranchées avant chaque rendu (brancherGlobales, appelée par src/socle.js) ── */
 // les tables du scénario ne sont plus : chaque écran lit SCN (src/live/base.js) ; ces globales restent pour les écrans qui les nomment encore
 RT = SCN.RT; ESTIM = SCN.ESTIM; ORD = SCN.ORD; TABL = SCN.TABL; FEUI = SCN.FEUI; LU = SCN.LU_JM; CO = SCN.CO; DIT_B = SCN.DIT_B;
@@ -21,7 +36,7 @@ function brancherGlobales(){
   var ev = SCN.ev(), cl = SCN.classe();
   // hors séance (le lancement) : la classe et l'évaluation choisies dans les menus, et les binômes proposés pour cette classe
   if(!SCN.sid() && typeof GESTES !== "undefined"){ var c = GESTES.choixLancement(); if(c.classe) cl = c.classe; if(c.evalId) ev = SCN.evalParId(c.evalId); }
-  if(ev) EV = ev; if(cl) CLASSE = cl;
+  if(ev) EV = ev; if(cl) CLASSE = nomClasseV(cl);   /* (16/10) le nom à l'écran, pas la clé */
   PAIRES = SCN.sid() ? SCN.paires() : (cl ? SCN.binomesProposes(cl).map(function(p){ return [p[0] ? SCN.nomDe(p[0]) : null, p[1] ? SCN.nomDe(p[1]) : null]; }) : []);
   PAIRES_AVANT = PAIRES;
   ORDRE_CORR = SCN.ordreCorr();

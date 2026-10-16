@@ -56,7 +56,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
   async function lancer(evalRe, absents, avant){
     await fermerFen(prof);
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(300);
-    await choisir(prof, /3 ESSAI/); await pause(200);
+    await choisir(prof, /3 ESSAI|3e Essai/); await pause(200);
     J.v(await choisir(prof, evalRe), H2, "l'évaluation se choisit au lancement : " + evalRe.source); await pause(300);
     await cliquer(prof, /Lancer la séance/); await pause(500);
     for(const n of absents) await cliquer(prof, new RegExp(esc(n)));

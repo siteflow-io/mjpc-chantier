@@ -26,7 +26,7 @@ const L12 = "Barre ta réponse et écris la bonne réponse en entier en vert à 
     J.section("La séance sur papier : lancée, « ⏸️ Feuilles ramassées », reprise");
     prof = await A.ouvrir("console", "?mode=prof", 1536, 864);
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
-    await choisir(prof, /3 ESSAI/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(300);
+    await choisir(prof, /3 ESSAI|3e Essai/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(300);
     J.v(await cliquer(prof, /Séance sur papier/), H2, "le mode « 📄 Séance sur papier »"); await pause(400);
     await cliquer(prof, /Lancer la séance/); await pause(600); await cliquer(prof, /YVON Adam/); await pause(300);
     await prof.evaluate(() => { const b = [...document.querySelectorAll("button")].filter(b => b.getBoundingClientRect().width > 0 && /Lancer la séance/.test(b.textContent)); if(b.length) b[b.length - 1].click(); });

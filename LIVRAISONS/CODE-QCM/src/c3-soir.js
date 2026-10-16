@@ -135,13 +135,13 @@ function ScRendre(){
 function corbeilleDuMoment(){
   var j = paramHash("jete"), m = MOM(), l = SCN.CORBEILLE.slice();
   if(j){ var p = j.split(":"), quand = m.date + " " + hhmm(m.heure);
-    if(p[0] === "seance"){ var se = SCN.seance(p[1]); if(se) l.unshift({sorte:"Séance", titre:evalDeSeance(se).titre + " — " + se.classe + " — " + se.date + " " + se.heure, quand:quand}); }
+    if(p[0] === "seance"){ var se = SCN.seance(p[1]); if(se) l.unshift({sorte:"Séance", titre:evalDeSeance(se).titre + " — " + nomClasseV(se.classe) + " — " + se.date + " " + se.heure, quand:quand}); }
     else { var e = SCN.evalParId(p[1]); if(e) l.unshift({sorte:"Évaluation", titre:e.titre + " (" + e.questions.length + " questions)", quand:quand}); } }
   return l;
 }
 function Corbeille(){
   var se = SCN.seance(paramHash("seance") || "S08"), ev = evalDeSeance(se);
-  return Fenetre(ListeSeances(null), "🗑️ Mettre cette séance à la corbeille ?", ev.titre + " — " + se.classe + " — " + se.date + " " + se.heure + " · " + presentsTexte(se),
+  return Fenetre(ListeSeances(null), "🗑️ Mettre cette séance à la corbeille ?", ev.titre + " — " + nomClasseV(se.classe) + " — " + se.date + " " + se.heure + " · " + presentsTexte(se),
     h("p", null, "Elle part dans la corbeille du site, gardée un an, avec ses réponses, ses lectures et ses notes, et sort de cette liste. Rien n'est effacé : tu la restaures depuis ", h("strong", null, "💾 Sauvegarde → 🗑️ Corbeille"), "."),
     [h("button", {key:1, className:"btn btn-ghost", "data-va":"c-seances", title:"Ne met rien à la corbeille."}, "Annuler"), h("button", {key:2, className:"btn btn-rouge", "data-va":"c-sauvegarde&jete=seance:" + se.id, title:"Met la séance à la corbeille, restaurable un an."}, "🗑️ Mettre à la corbeille")], "c-seances");
 }
@@ -494,7 +494,7 @@ function qcmPrecedentV(c){ try { if(SCN.LIVE && typeof SCN.qcmPrecedent === "fun
 function SessionsPrecedentesV(){
   useV3();
   var c = classeDuLancement(), l = seancesV().filter(function(se){ return memeClasse(se, c) && se.terminee && !se.test; }).sort(function(a, b){ return b.ms - a.ms; });
-  var demo = l.filter(function(se){ return se.demo; })[0], lignes = l.filter(function(se){ return !se.demo && !se.rattrapage; }), prec = qcmPrecedentV(c), nomC = (l[0] && l[0].classe) || c || "";
+  var demo = l.filter(function(se){ return se.demo; })[0], lignes = l.filter(function(se){ return !se.demo && !se.rattrapage; }), prec = qcmPrecedentV(c), nomC = nomClasseV((l[0] && l[0].classe) || c || "");
   return h(F, null, h(CarteRepriseV),
     h("div", {className:"card"},
       h("h2", null, "📚 Séances précédentes — " + nomC, InfoI("Les séances passées de la classe : chacune ouvre ses résultats. Celle qui sert de « QCM précédent » aux binômes est marquée. La démo ne laisse qu'une ligne.")),

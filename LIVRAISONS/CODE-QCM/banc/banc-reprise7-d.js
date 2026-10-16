@@ -373,7 +373,7 @@ async function entrerPaire(p, g, d, codeDe, quoi){
     const prof = await A.ouvrir("console-c", "?mode=prof", 1536, 864);
     // l'appel : la grille d'avant l'appel ; un absent X dans une paire (son binôme Y restera seul), et les élèves seuls de la grille (sans quoi Y irait avec eux)
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(300);
-    await choisir(prof, /^\s*3 ESSAI/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(400);
+    await choisir(prof, /^\s*(3 ESSAI|3e Essai)/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(400);
     await cliquer(prof, /Lancer la séance/); await pause(800);
     const pl0 = S().places || {}; const P0 = Object.keys(pl0).sort((a, b) => a - b).map(k => ({n: k, g: pl0[k].g, d: pl0[k].d}));
     const paires = P0.filter(x => x.g && x.d), seuls0 = P0.filter(x => !(x.g && x.d)).map(x => x.g || x.d);

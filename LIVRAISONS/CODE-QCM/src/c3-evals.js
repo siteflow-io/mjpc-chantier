@@ -45,7 +45,7 @@ function CarteEvaluations(){
           e.cree && h("span", null, "Créée le " + e.cree)),
         pret ? h("div", {className:"eval-etat ok"}, "✅ Prête à lancer")
              : h("div", {className:"eval-etat manque"}, "⚠️ À compléter avant de la lancer : " + listeFr(manques)),
-        h("div", {className:"eval-passee"}, passees.length ? passees.map(function(x){ return "passée par " + x.classe + " le " + x.date; }).join(" · ") : "pas encore passée")),
+        h("div", {className:"eval-passee"}, passees.length ? passees.map(function(x){ return "passée par " + nomClasseV(x.classe) + " le " + x.date; }).join(" · ") : "pas encore passée")),
       h("div", {className:"eval-actions"},
         h("button", {className:"btn btn-sm " + (pret ? "btn-ghost" : "btn-primary"), "data-va":"x627-3-editeur" + obj, title:pret ? "Ouvre l'éditeur sur « " + e.titre + " » : énoncés, choix, temps, compétences, ce que chaque question vérifie. Une évaluation déjà passée garde ses notes." : "Ouvre l'éditeur sur « " + e.titre + " », pour compléter ce qui manque avant de pouvoir la lancer : " + listeFr(manques) + "."}, pret ? "✏️ Modifier" : "✏️ Compléter"),
         h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-feuille" + obj, title:"Montre la feuille des énoncés seuls de « " + e.titre + " », avec les points, à imprimer pour la classe."}, "🖨️ Imprimer"),
@@ -62,7 +62,7 @@ function CarteEvaluations(){
       // sous chaque classe qui l'a passée ; les autres, sous « Pas encore passée »
       var cl = {}; l.forEach(function(e){ var p = e.copie ? [] : SCN.passees(e.id, k); (p.length ? p.map(function(x){ return x.classe; }) : ["Pas encore passée"]).forEach(function(c){ (cl[c] = cl[c] || []).push(e); }); });
       corps = Object.keys(cl).sort(function(a, b){ return a === "Pas encore passée" ? 1 : b === "Pas encore passée" ? -1 : a.localeCompare(b); }).map(function(c){
-        return h("div", {key:c, className:"classe-groupe", "data-classe":c}, h("div", {className:"classe-titre", "data-classe":c}, c === "Pas encore passée" ? c : "👥 " + c), cl[c].map(function(e){ return ligne(e, c); })); });
+        return h("div", {key:c, className:"classe-groupe", "data-classe":c}, h("div", {className:"classe-titre", "data-classe":c}, c === "Pas encore passée" ? c : "👥 " + nomClasseV(c)), cl[c].map(function(e){ return ligne(e, c); })); });
     } else corps = l.map(function(e){ return ligne(e); });
     return h("div", {key:n, className:"niv-groupe", "data-niveau-groupe":n},
       h("button", {className:"niv-titre", "data-niveau":n, "data-local":"1", "aria-expanded":!rep, title:rep ? "Déplier ce niveau" : "Replier ce niveau", onClick:function(){ var o = Object.assign({}, replies); o[n] = !rep; setReplies(o); }},
@@ -305,7 +305,7 @@ function CarteEvaluationsV(){
         pret ? h("div", {className:"eval-etat ok"}, "✅ Prête à lancer")
              : h("div", {className:"eval-etat manque"}, "⚠️ À compléter avant de la lancer : " + listeFr(manques)),
         sansChapV(e) && h("div", {className:"eval-etat manque", "data-sans-chapitre":"1", title:"Elle se lance sans chapitre ; ouvre l'éditeur pour la rattacher à son chapitre."}, "⚠️ Sans chapitre pour l'instant : pense à la rattacher plus tard."),
-        h("div", {className:"eval-passee"}, passees.length ? passees.map(function(x){ return "passée par " + x.classe + " le " + x.date; }).join(" · ") : "pas encore passée")),
+        h("div", {className:"eval-passee"}, passees.length ? passees.map(function(x){ return "passée par " + nomClasseV(x.classe) + " le " + x.date; }).join(" · ") : "pas encore passée")),
       h("div", {className:"eval-actions"},
         h("button", {className:"btn btn-sm " + (pret ? "btn-ghost" : "btn-primary"), "data-va":"x627-3-editeur" + obj, title:pret ? "Ouvre l'éditeur sur « " + e.titre + " » : énoncés, choix, temps, compétences, ce que chaque question vérifie. Une évaluation déjà passée garde ses notes." : "Ouvre l'éditeur sur « " + e.titre + " », pour compléter ce qui manque avant de pouvoir la lancer : " + listeFr(manques) + "."}, pret ? "✏️ Modifier" : "✏️ Compléter"),
         h("button", {className:"btn btn-sm btn-ghost", "data-va":"c-feuille" + obj, title:"Montre la feuille des énoncés seuls de « " + e.titre + " », avec les points, à imprimer pour la classe."}, "🖨️ Imprimer"),
@@ -319,7 +319,7 @@ function CarteEvaluationsV(){
     if(tri === "classe"){
       var cl = {}; l.forEach(function(e){ var p = passeesV(e.id); (p.length ? p.map(function(x){ return x.classe; }) : ["Pas encore passée"]).forEach(function(c){ cl[c] = cl[c] || []; if(cl[c].indexOf(e) < 0) cl[c].push(e); }); });
       corps = Object.keys(cl).sort(function(a, b){ return a === "Pas encore passée" ? 1 : b === "Pas encore passée" ? -1 : a.localeCompare(b); }).map(function(c){
-        return h("div", {key:c, className:"classe-groupe", "data-classe":c}, h("div", {className:"classe-titre", "data-classe":c}, c === "Pas encore passée" ? c : "👥 " + c), cl[c].map(function(e){ return ligne(e, c); })); });
+        return h("div", {key:c, className:"classe-groupe", "data-classe":c}, h("div", {className:"classe-titre", "data-classe":c}, c === "Pas encore passée" ? c : "👥 " + nomClasseV(c)), cl[c].map(function(e){ return ligne(e, c); })); });
     } else corps = l.map(function(e){ return ligne(e); });
     return h("div", {key:n, className:"niv-groupe", "data-niveau-groupe":n},
       h("button", {className:"niv-titre", "data-niveau":n, "data-local":"1", "aria-expanded":!rep, title:rep ? "Déplier ce niveau" : "Replier ce niveau", onClick:function(){ var o = Object.assign({}, replies); o[n] = !rep; setReplies(o); }},

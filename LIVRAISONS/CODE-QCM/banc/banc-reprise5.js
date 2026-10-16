@@ -30,7 +30,7 @@ const den = (t, re) => { const m = t.match(re); return m ? m[1] + " / " + m[2] :
     tel = await A.ouvrir("telephone", "?mode=prof&view=phone", 390, 844);
     prof = await A.ouvrir("console", "?mode=prof", 1536, 864);
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
-    await choisir(prof, /3 ESSAI/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(300);
+    await choisir(prof, /3 ESSAI|3e Essai/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(300);
 
     J.section("1, 2. L'appel : les deux « 🚀 Lancer la séance » (c-appel) ; le téléphone sans séance");
     await cliquer(prof, /Lancer la séance/); await pause(600); await cliquer(prof, /YVON Adam/); await pause(800);

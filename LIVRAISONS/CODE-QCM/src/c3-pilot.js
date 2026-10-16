@@ -56,7 +56,7 @@ function chargerHeure(){
   if(!enDirect()) return;
   var k = MO(), m = MOM() || {}, se = (m.seance && SCN.seance(m.seance)) || null, ev = SCN.evalDu(k);
   if(ev && ev.questions) EV = ev;
-  if(se && se.classe) CLASSE = se.classe;
+  if(se && se.classe) CLASSE = nomClasseV(se.classe);   /* (16/10) le nom à l'écran, pas la clé */
   PAIRES = tablettesH();
   var eleves = [].concat.apply([], PAIRES).filter(Boolean);
   HEURE = {sid:m.seance, eleves:eleves};

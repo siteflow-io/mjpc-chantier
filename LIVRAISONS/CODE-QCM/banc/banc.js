@@ -62,7 +62,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     prof = await A.ouvrir("console", "?mode=prof", 1536, 864);
     J.v(/Pilotage|Évaluation/.test(await texte(prof)), H1, "la console s'ouvre (?mode=prof, l'adresse de la 7.7.1)", (await texte(prof)).slice(0, 200));
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
-    J.v(await choisir(prof, /3 ESSAI/), H2, "Pilotage classe : la classe 3 ESSAI se choisit");
+    J.v(await choisir(prof, /3 ESSAI|3e Essai/), H2, "Pilotage classe : la classe 3 ESSAI se choisit");
     J.v(await choisir(prof, /Évaluation d'essai/), H2, "Pilotage classe : l'évaluation d'essai se choisit (complète : chapitre 3e-ch1, temps, compétences)");
     await pause(400);
     await scene("c-lancer", prof, "console");
@@ -577,7 +577,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
       await cliquer(prof, /^✕$/); await prof.keyboard.press("Escape"); await pause(300); } else J.v(false, H3, "« 🤖 Prompt IA »");
     if(await cliquer(prof, /^✏️ Modifier le prompt$/)){ await pause(500); await scene("c-reglages-prompt-modifier", prof, "console"); await cliquer(prof, /^↩️ Annuler$|^Annuler$/); await prof.keyboard.press("Escape"); await pause(300); } else J.v(false, H3, "« ✏️ Modifier le prompt »");
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(300);
-    await choisir(prof, /3 ESSAI/); await choisir(prof, /Évaluation d'essai/); await pause(200);
+    await choisir(prof, /3 ESSAI|3e Essai/); await choisir(prof, /Évaluation d'essai/); await pause(200);
     if(await cliquer(prof, /Séance sur papier/)){ await pause(400); await scene("c-papier-lancer", prof, "console"); J.v(/papier/i.test(await texte(prof)), H3, "« 📄 Séance sur papier » au lancement (c-papier-lancer)"); await cliquer(prof, /Sur tablettes/); }
     else J.v(false, H3, "« 📄 Séance sur papier »");
     const accueil = await A.ouvrir("accueil", "", 1536, 864);

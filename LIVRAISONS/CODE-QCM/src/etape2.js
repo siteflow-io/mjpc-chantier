@@ -724,7 +724,7 @@ function LancementH(appel, opts){
   var cle = classe + "|" + (SCN.qcmPrecedent(null, classe) || {}).id;
   if(LANCEMENT_H.cle !== cle || !LANCEMENT_H.paires){ LANCEMENT_H.cle = cle; LANCEMENT_H.paires = classe ? SCN.binomesProposes(classe) : []; }
   var excl = classe ? exclusionsRespectees(classe) : [];
-  CLASSE = classe || CLASSE;
+  CLASSE = classe ? nomClasseV(classe) : CLASSE;   /* (16/10) le nom à l'écran, pas la clé */
   function lancer(){ if(!classe || !ev) return; LIVE.classeSlug = classe;
     var r = ACT.lancerSeance(classe, ev.id, papier ? {paires:LANCEMENT_H.paires, mode:"papier", fin:finLancementH()} : {paires:LANCEMENT_H.paires, fin:finLancementH()}); LANCEMENT_H.fin = null; if(r && r.then) r.then(function(){ if(typeof navRemettre === "function") navRemettre(); }); }
   var carte = h("div", {className:"card"},
@@ -733,7 +733,7 @@ function LancementH(appel, opts){
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI("Les classes de la console MJPC.")), h("select", {value:classe || "", title:"La classe de la séance.",
             onChange:function(e){ LANCEMENT.classe = e.target.value; LANCEMENT_H.paires = null; LIVE.changer(); }},
-          classesL.map(function(c){ return h("option", {key:c, value:c}, (((LIVE.d.classes || {})[c] || {}).libelle || c) + " (" + SCN.roster(c).length + " élèves)"); }))),
+          classesL.map(function(c){ return h("option", {key:c, value:c}, nomClasseV(c) + " (" + SCN.roster(c).length + " élèves)"); }))),
         h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("Seules les évaluations prêtes à lancer sont proposées ; la démo est toujours en tête.")),
           h("select", {value:ev ? ev.id : "", title:"L'évaluation de la séance : la démo, ou une évaluation prête à lancer.", onChange:function(e){ LANCEMENT.evalId = e.target.value; LIVE.changer(); }},
             h("option", {value:"demo"}, "🎓 Démo — apprendre le déroulé (" + (SCN.evalParId("demo") || SCN.DEMO).questions.length + " questions)"),

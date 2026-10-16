@@ -31,7 +31,7 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     J.section("B.1 La démo, lancée avec la classe : rien ne compte");
     prof = await A.ouvrir("console", "?mode=prof", 1536, 864);
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
-    await choisir(prof, /3 ESSAI/); await pause(200); J.v(await choisir(prof, /Démo — apprendre le déroulé/), H2, "la démo se choisit au lancement"); await pause(300);
+    await choisir(prof, /3 ESSAI|3e Essai/); await pause(200); J.v(await choisir(prof, /Démo — apprendre le déroulé/), H2, "la démo se choisit au lancement"); await pause(300);
     await scene("c-demo-lancer", prof, "console");
     J.v(await cliquer(prof, /Lancer la démo|Lancer la séance/), H2, "« 🎓 Lancer la démo »"); await pause(500); await cliquer(prof, /Lancer la démo|Lancer la séance/); await pause(1000);
     const sd = sess();
@@ -44,13 +44,13 @@ async function scene(id, p, appareil){ if(!p) return; try { RELEVES[id] = Object
     J.v(/🎓 Évaluation d'entraînement : elle ne compte pas\./.test(await texte(td)), H2, "la démo : « 🎓 Évaluation d'entraînement : elle ne compte pas. » (t-demo-q)", (await texte(td)).slice(0, 200));
     await cliquer(prof, /Terminer la séance/); await pause(300); await cliquer(prof, /^🛑 Terminer|Oui, terminer|Terminer la séance/); await pause(1000);
     await td.context().close(); dernier = null;
-    await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(400); await choisir(prof, /3 ESSAI/); await pause(300);
+    await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(400); await choisir(prof, /3 ESSAI|3e Essai/); await pause(300);
     await scene("c-demo-faite", prof, "console");
     J.v(!!(srv.store.get("qcm/evaluations") || {}).demo, H1, "la démo reste dans la base après sa séance");
 
     J.section("B.2 L'entrée qui se trompe : un code pas enregistré, la mauvaise tablette, le binôme");
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
-    await choisir(prof, /3 ESSAI/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(300);
+    await choisir(prof, /3 ESSAI|3e Essai/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(300);
     await cliquer(prof, /Lancer la séance/); await pause(400); await cliquer(prof, /YVON Adam/); await cliquer(prof, /Lancer la séance/); await pause(1200);
     if(!sess().sid){ J.secours("la séance lancée par ACT (le geste n'a rien lancé)"); await prof.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {}).then(() => ACT.appelFini(["yvon_adam"]))).catch(() => {}); await pause(1500); }
     const pl = sess().s.places || {};

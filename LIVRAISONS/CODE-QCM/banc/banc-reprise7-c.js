@@ -207,7 +207,7 @@ async function cellule(p, sl){ return norm(await p.evaluate(sl => { const tr = d
   const entrer = (pg, cote, nom) => O.entrer1(pg, cote, nom, codeDe(nom));   // reprise 7, point 13 : l'entrée d'outils.js (l'ancienne et la nouvelle)
   const prof = await A2.ouvrir("console", "?mode=prof", 1536, 864);
   await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
-  await choisir(prof, /3 ESSAI/); await pause(200);
+  await choisir(prof, /3 ESSAI|3e Essai/); await pause(200);
   J.v(await choisir(prof, /Reprise 7 — réponses longues/), BANC, "l'évaluation « Reprise 7 — réponses longues » se choisit au lancement"); await pause(300);
   await cliquer(prof, /Lancer la séance/); await pause(400); await cliquer(prof, /YVON Adam/); await cliquer(prof, /Lancer la séance/); await pause(1200);
   const pl = sess().s.places || {}; const T = Object.keys(pl).map(k => ({k, g: pl[k].g, d: pl[k].d})).filter(x => x.g && x.d);

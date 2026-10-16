@@ -100,7 +100,7 @@ function ressemblance(vrai, vu){ const a = lignes(vrai), b = new Set(lignes(vu))
     const prof = await A.ouvrir("console-A", "?mode=prof", 1536, 864);
     J.section("Point 5 — « 🕙 Fin de l'heure » sur « 🎯 Lancer une nouvelle séance », avant l'appel");
     await versLancement(prof);
-    await choisir(prof, /3 ESSAI/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(600);
+    await choisir(prof, /3 ESSAI|3e Essai/); await pause(200); await choisir(prof, /Évaluation d'essai/); await pause(600);
     let t = await texte(prof); let c = await capt(prof, "A-lancement");
     let ch = (await champsFin(prof)).filter(x => !x.appel);
     J.v(/Lancer une nouvelle séance/.test(t) && ch.length > 0, H2, "« 🎯 Lancer une nouvelle séance » (3 ESSAI, Évaluation d'essai) : un champ « 🕙 Fin de l'heure », avant « 🚀 Lancer la séance »", "aucun champ « Fin de l'heure » sur la carte (" + c + ") ; texte : " + ((t.match(/Lancer une nouvelle séance[\s\S]{0,400}/) || [""])[0]));
@@ -212,7 +212,7 @@ function ressemblance(vrai, vu){ const a = lignes(vrai), b = new Set(lignes(vu))
     let t = await texte(prof); c = await capt(prof, "B-lancement-demo");
     const evChoisie = await prof.evaluate(() => { for(const s of document.querySelectorAll("select")){ const o = s.options[s.selectedIndex]; if(o && /Démo|Évaluation d'essai|^\S/.test(o.textContent) && [...s.options].some(x => /Démo — apprendre/.test(x.textContent))) return o.textContent; } return null; }).catch(() => null);
     J.v(/Lancer une nouvelle séance/.test(t) && /Démo — apprendre/.test(evChoisie || ""), H3, "il mène à « 🎯 Lancer une nouvelle séance », la démo déjà choisie", "évaluation choisie : « " + evChoisie + " » (" + c + ")");
-    J.v(await choisir(prof, /^3 ESSAI/), H3, "la classe 3 ESSAI se choisit"); await pause(500);
+    J.v(await choisir(prof, /^(3 ESSAI|3e Essai)/), H3, "la classe 3 ESSAI se choisit"); await pause(500);
     const cl = await prof.evaluate(() => { for(const s of document.querySelectorAll("select")){ const o = s.options[s.selectedIndex]; if(o && /ESSAI|BANC/.test(o.textContent)) return o.textContent; } return null; }).catch(() => null);
     J.v(/3 ESSAI/.test(cl || "") && /Démo — apprendre/.test((await prof.evaluate(() => [...document.querySelectorAll("select")].map(s => (s.options[s.selectedIndex] || {}).textContent).join(" | ")).catch(() => ""))), H3, "après le choix de la classe, la démo reste choisie", "classe : « " + cl + " »");
     J.v(await cliquer(prof, /^🎓 Lancer la démo$|^🚀 Lancer la séance$/), H3, "« 🎓 Lancer la démo »"); await pause(1500);
@@ -262,7 +262,7 @@ function ressemblance(vrai, vu){ const a = lignes(vrai), b = new Set(lignes(vu))
     J.v(!!ligne && /sans chapitre pour l'instant/i.test(ligne), H3, "la ligne de « " + TITRE + " » porte la mention « sans chapitre pour l'instant »", (ligne ? "ligne : « " + O.norm(ligne).replace(/\n/g, " ⏎ ").slice(0, 250) + " »" : "ligne introuvable") + " (" + c + ")");
     // le lancement
     await versLancement(prof);
-    await choisir(prof, /^3 ESSAI/); await pause(200);
+    await choisir(prof, /^(3 ESSAI|3e Essai)/); await pause(200);
     const propose = await choisir(prof, new RegExp(esc(TITRE))); await pause(600);
     t = await texte(prof); c = await capt(prof, "C-lancement");
     J.v(propose, H1 + ", " + H3, "« 🎯 Lancer une nouvelle séance » propose « " + TITRE + " » (sans chapitre pour l'instant)", "options : " + (await prof.evaluate(() => [...document.querySelectorAll("select")].map(s => [...s.options].map(o => o.textContent).join(" · ")).join(" | ")).catch(() => "")).slice(0, 250) + " (" + c + ")");

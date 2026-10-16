@@ -233,7 +233,7 @@ function v3Eleves(classeNom, classeSlug){
   var C = v3Classes(), cle = classeNom && C[classeNom] ? classeNom : classeSlug && C[classeSlug] ? classeSlug : Object.keys(C).filter(function(k){ return v3Slug(k) === v3Slug(classeSlug) || (C[k] && v3Slug(C[k].nom) === v3Slug(classeSlug)); })[0];
   var c = cle ? C[cle] : null, brut = c ? (Array.isArray(c) ? c : c.eleves || c.liste || []) : [];
   var l = v3Liste(brut).map(function(e){ var n = typeof e === "string" ? e : e && (e.nomComplet || (e.nom && e.prenom ? String(e.nom).toUpperCase() + " " + e.prenom : e.nom)); return n ? {nom:n, slug:v3Slug(n)} : null; }).filter(Boolean);
-  return {cle:cle || classeNom || "", libelle:(c && c.nom) || cle || classeNom || "", niveau:(c && c.niveau) || null, eleves:l, amen:(c && c.amenagements) || {}};
+  return {cle:cle || classeNom || "", libelle:nomClasseV(cle || (c && c.nom) || classeNom || ""), niveau:(c && c.niveau) || null, eleves:l, amen:(c && c.amenagements) || {}};
 }
 function prenomDeNom(n){ var p = String(n || "").split(" "); var i = 0; while(i < p.length - 1 && p[i] === p[i].toUpperCase() && /[A-ZÀ-Ý]/.test(p[i])) i++; return p.slice(i).join(" ") || n; }
 function sexeV(se, slug){ try { if(typeof SCN.sexe === "function" && SCN.LIVE){ var s = SCN.sexe(slug); if(s) return String(s).toUpperCase().charAt(0); } } catch(e){}

@@ -1,4 +1,36 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, reprise 7, 12:20
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, contrôle à froid des micros 8.0.2 et 8.0.3, 16/10 15:15
+
+*Le contrôle à froid demandé par Paul (DEFAUTS-OUVERTS, « Contrôle à froid des micros de la conscience — 16/10/2026 », point 4). App : `evaluation-qcm.staging.html` assemblée par `build.py` sur `code-qcm` à `381184d` (rien n'a changé dans `src/` ni `build.py` depuis, jusqu'à `8f88e38`), md5 **`54c0af98864fb7cb31fdfb3dddc3a745`**. Sorties : `sorties/2026-10-16_1448/` (la passe d'avant, sur `85918fb`, md5 `4136f346…` : `sorties/2026-10-16_1428/`).*
+
+## Verdict : **ça va.**
+
+Les micros 8.0.2 et 8.0.3 tiennent, rejoués par le geste sur le faux hub, dont une classe au format réel du registre (clé `3_essai`, nom « 3 ESSAI », niveau 3e). Les trois défauts trouvés par mon banc des micros sont corrigés et rejoués ; mes bancs affaiblis par la conscience sont resserrés et passent.
+
+| Épreuve, sur l'app de 14:48 (md5 `54c0af98…`), en trois vagues | Résultat |
+| --- | --- |
+| Contrôles de la conscience, ceux de `main` (`EMPREINTES.md5` vérifié : OK) | **32 / 32** |
+| **Les micros** (`banc-micros-16-10.js`) : a. le nom lisible des classes partout (menu, console, appel, tablette, téléphone, tableau, garde de Terminer, Séances précédentes, Résultats, tableau de la séance, CSV, PDF ; la clé reste l'identifiant) ; b. la correction avec un voisin, de « Avant la correction » à la co-évaluation, un élève seul, sur papier, une séance terminée avant la fin de la correction (tableau de la séance, « Lire les copies ») ; c. la carte du temps de la lecture (« +5 », « +10 », « +30 » et leurs infobulles, un temps tapé pendant que deux tablettes lisent, la lecture figée à 0 puis rouverte, juste après et 15 s après) ; d. la mesure demandée à 14:39 | **252 / 252** (a 56, b 157, c 36, d 3) |
+| Banc commun (B exigé de chacun, l'entrée unique, la tablette revient à l'entrée ; le PDF « Classe : 3e Essai ») | **211 / 211** |
+| L'heure de demain (4e Essai ; l'évaluation de 4e collée, 11 questions) | **109 / 109** |
+| Gestes rares (dont « ↩️ Revenu ») | **47 / 47** |
+| Reprises 2, 3 (point 14 : après « Donne ta feuille à … et prends la sienne »), 4, 5 | **22 / 22, 15 / 15, 27 / 27, 10 / 10** |
+| Reprise 7-a (« 3e Essai (25 élèves) »), 7-b, 7-c, 7-d (point 12 : la phrase avec voisin, mot pour mot), 7-e | **40 / 40, 85 / 85, 141 / 141, 87 / 87, 9 / 9** |
+| Les écrans jamais atteints (`banc-jamais.js`) | 47 vérifications, 12 manques, les mêmes qu'au 15/10 : l'alerte de Michel sur l'évaluation de 3e (x610-8, x610-9, autonomie), `t-corr-seul`, et le plafond de 5 min ; non comptés, comme aux verdicts du 15/10 |
+| Fidélité à la maquette v9 | 126 scènes atteintes sur 157, 30 sans écart non nommé (29 le 15/10 à 12:05) ; l'écart « +# » est nommé seulement sur les six scènes de la correction à la console |
+
+**Les trois défauts du banc des micros** (DEFAUTS-OUVERTS, « QCM-4 · BANC, 14:10 »), rayés :
+- l'élève seul était son propre voisin dans « Avant la correction » (« Donne ta feuille à Clara et prends la sienne ») : QCM-2, `4078586`, il a les lignes de la variante papier (le choix est posé à Paul) ;
+- l'élision : « la feuille de Emma » est devenu « la feuille d'Emma » (QCM-2, `6e7d97e`) ;
+- « +10 » après le 0 ne rouvrait pas une lecture figée depuis plus de 10 s : QCM-1, `3673a83`. Paul, 14:56 : « Les deux: rouvrir ET ajouter. »
+
+**La mesure demandée par la conscience (14:39), rien à corriger avant la réponse de Paul** (`banc-micros-16-10-d.js`, `micros-d.txt`, `captures-micros-d/`) : oui, les chronos des questions ont le même effet que la carte de la lecture. Au 1er tour de Q1 (15 s, 8 s écoulées), Paul tape « 45 » dans le temps de réponse, chiffre par chiffre. Le « 4 » seul met la durée du tour à 5 s, déjà dépassée : **le tour finit** (`deroule` passe de `reponse` à `b`, le temps restant descend à −4,8 s). Ensuite, « 45 » ne rouvre pas le tour : après Tab, le temps de Q1 vaut bien 45 s, mais la séance est passée au tour 2 (« 🖊️ Julien, pose ton stylo. 🙈 Julien, laisse la tablette à Léa… »). Julien, qui n'avait pas encore répondu, a perdu son tour.
+
+**Ma relecture** (poussée à 14:10) : six vérifications affaiblies par la conscience, resserrées (`banc.js`, `banc-demain.js`, `banc-reprise3.js`, `banc-reprise7-a.js`, `banc-reprise7-d.js`, `ecarts-maquette.json`) ; elles passent sur cette app. Le premier assemblage d'un bloc, à 14:10, a cédé sous la charge de seize navigateurs (banc commun 135 / 212 : des tablettes non entrées) ; rejoué seul, puis en trois vagues, il passe ; je ne l'ai pas compté.
+
+---
+
+# Verdict de 12:20, le 15/10 (pour mémoire)
+
 
 *Après le contrôle de la conscience de 11:50 (un défaut : le point 11, le nom du lecteur). App : `evaluation-qcm.staging.html`, md5 **`054fcca31c7d1028eb0f7487ec4e9c4e`**, `code-qcm` à `a89453c` (tout ce qui était poussé à 12:05). Sorties : `sorties/2026-10-15_1205/`.*
 

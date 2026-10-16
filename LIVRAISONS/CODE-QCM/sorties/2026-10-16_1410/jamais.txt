@@ -1,0 +1,30 @@
+Les scènes jamais atteintes (QCM-4 · BANC) — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-16T12:17:31.147Z
+Durée : 305 s (5 min 5 s) · vérifications : 23 · échecs : 13 · scènes relevées : x610-1-b-julien, x610-2-b-michel
+
+
+── J.4 L'évaluation de 3e : Julien et Michel, Théo et Lou (Adam absent) (13 s)
+  ok     [QCM-2 · HEURE] l'évaluation se choisit au lancement : Analyse logique - Construire une phrase complexe
+  ok     [QCM-1 · SOCLE] la séance est lancée (sessionActive)
+  ok     [QCM-1 · SOCLE] les places dans la base
+  ok     [QCM-1 · SOCLE] Julien et Michel sur la même tablette
+  ÉCHEC  [QCM-2 · HEURE] « ▶️ Lancer Q10 » — vu : 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🎯 3e- éval 
+  ÉCHEC  [banc] le banc des scènes jamais atteintes s'est arrêté — vu : Error: plafond de 5 minutes atteint at tropLong (/home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/banc-jamais.js:27:60) at question (/home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/banc-jamais.js:83:5) at /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/banc/banc-jamais.js:142:13
+
+── J.7 Les scènes jamais atteintes avant ce banc (304 s)
+  ÉCHEC  [QCM-2 · HEURE] bilan : « t-un-eleve » pas atteinte — vu : pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « t-corr-seul » pas atteinte — vu : pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « c-deplacer » pas atteinte — vu : pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « t-deplace » pas atteinte — vu : pas atteinte
+  ok     [QCM-2 · HEURE] bilan : « x610-1-b-julien » atteinte et relevée
+  ok     [QCM-2 · HEURE] bilan : « x610-2-b-michel » atteinte et relevée
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-6-coeval-laquelle » pas atteinte — vu : pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-7-coeval-ecrit » pas atteinte — vu : pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-8-console-alerte » pas atteinte — vu : pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-9-telephone-alerte » pas atteinte — vu : pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-autonomie-michel » pas atteinte — vu : pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-autonomie-julien » pas atteinte — vu : pas atteinte
+  ÉCHEC  [QCM-2 · HEURE] bilan : « x610-autonomie-deux » pas atteinte — vu : pas atteinte
+  ok     [QCM-1 · SOCLE] page « console » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « telephone » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-1-302 » sans erreur ni boîte système
+  ok     [QCM-1 · SOCLE] page « tablette-2-17 » sans erreur ni boîte système

@@ -1,0 +1,34 @@
+16.7 s  qcm/sessionActive/3 ESSAI
+22.4 s  {"ph":"entree"}
+141.1 s  {"ph":"pret"}
+141.1 s  {"ph":"pret"}
+145.0 s  {"ph":"reflexion","qi":0,"duree":20}
+165.0 s  {"ph":"passage","qi":0,"tour":1,"cote":"g","duree":3}
+168.0 s  {"ph":"reponse","qi":0,"tour":1,"cote":"g","duree":15}
+183.1 s  {"ph":"b","qi":0,"tour":1,"cote":"g","duree":5}
+188.3 s  {"ph":"passage","qi":0,"tour":2,"cote":"d","duree":3}
+191.3 s  {"ph":"reponse","qi":0,"tour":2,"cote":"d","duree":15}
+207.5 s  {"ph":"b","qi":0,"tour":2,"cote":"d","duree":5}
+212.5 s  {"ph":"close","qi":0}
+240.3 s  {"ph":"reflexion","qi":1,"duree":30}
+248.7 s  {"ph":"passage","qi":1,"tour":1,"cote":"d","duree":3}
+251.8 s  {"ph":"reponse","qi":1,"tour":1,"cote":"d","duree":20}
+271.8 s  {"ph":"b","qi":1,"tour":1,"cote":"d","duree":5}
+276.8 s  {"ph":"passage","qi":1,"tour":2,"cote":"g","duree":3}
+279.8 s  {"ph":"reponse","qi":1,"tour":2,"cote":"g","duree":20}
+299.8 s  {"ph":"b","qi":1,"tour":2,"cote":"g","duree":5}
+304.8 s  {"ph":"close","qi":1}
+354.5 s  {"ph":"reflexion","qi":2,"duree":20}
+361.8 s  {"ph":"passage","qi":2,"tour":1,"cote":"g","duree":3}
+364.9 s  {"ph":"reponse","qi":2,"tour":1,"cote":"g","duree":15}
+380.0 s  {"ph":"b","qi":2,"tour":1,"cote":"g","duree":5}
+385.0 s  {"ph":"passage","qi":2,"tour":2,"cote":"d","duree":3}
+388.0 s  {"ph":"reponse","qi":2,"tour":2,"cote":"d","duree":15}
+403.0 s  {"ph":"b","qi":2,"tour":2,"cote":"d","duree":5}
+408.0 s  {"ph":"close","qi":2}
+421.5 s  {"ph":"estim"}
+424.8 s  {"ph":"att2"}
+433.8 s  {"ph":"lecture","qi":0,"duree":15}
+463.9 s  {"ph":"revele","qi":0}
+473.8 s  qcm/sessionActive/3 ESSAI
+474.2 s  {"ph":"fin"}

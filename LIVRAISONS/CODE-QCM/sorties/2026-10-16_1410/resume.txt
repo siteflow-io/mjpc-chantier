@@ -1,0 +1,97 @@
+Assemblage QCM-4 · BANC — 16/10/2026 14:10 (heure de Paris) — code-qcm 649cd4f
+
+── build.py
+evaluation-qcm.staging.html 2029891 octets, md5 3572b9e8420f9e8c4e826f6ca1b6c227
+  code de sortie : 0
+  app : 3572b9e8420f9e8c4e826f6ca1b6c227  evaluation-qcm.staging.html  2074701 octets
+
+── empreintes des contrôles de la conscience (la version de main, extraite telle quelle : /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/sorties/2026-10-16_1410/.controles-main/AUDITS/CONTROLES-QCM-APP)
+  controles-app.js: OK
+  attendus/evaluation-essai.json: OK
+  attendus/taxonomie-competences.json: OK
+
+── reprise2
+  Reprise 2, points 1 à 5, par le geste (QCM-4 · BANC) — durée 259 s
+  vérifications : 22 · échecs : 0
+
+── reprise3
+  Reprise 3, point 5, par le geste (QCM-4 · BANC) — durée 281 s
+  vérifications : 15 · échecs : 0
+
+── reprise4
+  Reprise 4, points 1 à 7, par le geste (QCM-4 · BANC) — durée 347 s
+  vérifications : 27 · échecs : 2
+
+── reprise5
+  Reprise 5, points 1, 2 et 4, par le geste (QCM-4 · BANC) — durée 150 s
+  vérifications : 10 · échecs : 0
+
+── reprise7-a
+  Reprise 7, points 1, 2, 3 et 5, par le geste (QCM-4 · BANC) — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — durée 166 s
+  vérifications : 40 · échecs : 0
+
+── reprise7-b
+  Reprise 7, points 6 et 7, par le geste en mode test (QCM-4 · BANC) — durée 408 s
+  vérifications : 72 · échecs : 3
+
+── reprise7-c
+  Reprise 7, points 8, 9, 10, par le geste (QCM-4 · BANC) — durée 361 s · app md5 3572b9e8420f9e8c4e826f6ca1b6c227
+  vérifications : 141 · échecs : 0
+
+── reprise7-d
+  Reprise 7, points 11, 12, 13, par le geste (QCM-4 · BANC) — durée 360 s · app md5 3572b9e8420f9e8c4e826f6ca1b6c227
+  vérifications : 53 · échecs : 1 · arrêté au plafond de 6 minutes
+
+── reprise7-e
+  Reprise 7, points 12 et 14 sur papier, par le geste (QCM-4 · BANC) — durée 84 s
+  vérifications : 9 · échecs : 0
+
+── micros
+  Les micros de la conscience du 16/10, par le geste (QCM-4 · BANC) — durée 330 s
+  vérifications : 249 · échecs : 7
+
+── jamais
+  Les scènes jamais atteintes (QCM-4 · BANC) — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-16T12:17:31.147Z
+  Durée : 305 s (5 min 5 s) · vérifications : 23 · échecs : 13 · scènes relevées : x610-1-b-julien, x610-2-b-michel
+
+── banc commun (544 s, code 1)
+  Durée : 542 s (9 min 2 s) · vérifications : 212 · échecs : 77 · scènes relevées : 91
+
+── les gestes rares (294 s, code 0)
+  Durée : 292 s (4 min 52 s) · vérifications : 47 · échecs : 0
+
+── l'heure de demain (724 s, code 0)
+  Durée : 722 s (12 min 2 s) · vérifications : 109 · échecs : 0
+
+── contrôles de la conscience (112 s, code 0)
+  Contrôles de la conscience n°12 pour l'app — /home/user/mjpc-chantier/LIVRAISONS/CODE-QCM/evaluation-qcm.staging.html — 2026-10-16T12:12:24.203Z
+  md5 de controles-app.js : 35a0f5c275d6fa2a72586bc29cf74113
+  Durée : 110 s · vérifications : 32 · échecs : 0
+    ok     K1 · « 🚀 Lancer la séance » écrit une séance active dans la base
+  échecs : 0
+
+── fidélité à la maquette
+  Scènes atteintes par le geste : 115 / 157 (hors MJPC) · fidèles (aucun écart non nommé) : 7 · avec écarts : 108 · écarts nommés dans ecarts-maquette.json : 137
+
+── synthèse (synthese.txt)
+  Synthèse de l'assemblage 2026-10-16_1410
+  
+  Contrôles de la conscience : Durée : 110 s · vérifications : 32 · échecs : 0
+  
+  ■ l'heure : 226 vérifications passent, 66 échouent
+      QCM-1 · SOCLE : 70 ok, 24 échecs
+      QCM-1 · SOCLE, QCM-2 · HEURE : 1 ok, 0 échecs
+      QCM-2 · HEURE : 153 ok, 42 échecs
+      QCM-3 · SOIR : 2 ok, 0 échecs
+  ■ le soir : 27 vérifications passent, 11 échouent
+      QCM-1 · SOCLE : 2 ok, 1 échecs
+      QCM-3 · SOIR : 25 ok, 10 échecs
+  ■ le reste : 16 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 1 ok, 0 échecs
+      QCM-3 · SOIR : 15 ok, 0 échecs
+  ■ toutes les pages : 22 vérifications passent, 0 échouent
+      QCM-1 · SOCLE : 22 ok, 0 échecs
+  
+  Fidélité : 115 scènes atteintes, 7 fidèles ; écarts non nommés : QCM-3 · SOIR 380 dans 23 scènes ; QCM-2 · HEURE 2666 dans 85 scènes ; non atteintes : 42
+
+Durée totale de l'assemblage : 841 s

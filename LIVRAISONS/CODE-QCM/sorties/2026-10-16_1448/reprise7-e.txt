@@ -1,0 +1,13 @@
+Reprise 7, points 12 et 14 sur papier, par le geste (QCM-4 · BANC) — durée 36 s
+vérifications : 9 · échecs : 0
+── La séance sur papier : lancée, « ⏸️ Feuilles ramassées », reprise
+  ok     [QCM-2 · HEURE] le mode « 📄 Séance sur papier »
+  ok     [QCM-2 · HEURE] la séance est lancée sur papier (lancee.mode = papier)
+  ok     [QCM-2 · HEURE] « ⏸️ Feuilles ramassées : finir à une autre heure »
+  ok     [QCM-2 · HEURE] « ▶️ Reprendre la séance du … »
+── Deux élèves entrés : « Avant la correction », sur papier
+  ok     [QCM-2 · HEURE] « 📝 Lancer la correction »
+  ok     [QCM-2 · HEURE] la tablette montre « Avant la correction » (la séance sur papier reprise : la correction)
+  ok     [QCM-2 · HEURE] point 14, sur papier : « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. », la ligne juste après « Maintenant, la correction. »
+  ok     [QCM-2 · HEURE] point 12, sur papier : « Barre ta réponse et écris la bonne réponse en entier en vert à côté. »
+  ok     [QCM-2 · HEURE] point 12, sur papier : aucun « rouge » ni `stylo-rouge` dans ce que voit l'élève

@@ -1,0 +1,21 @@
+Reprise 3, point 5, par le geste (QCM-4 · BANC) — durée 163 s
+vérifications : 15 · échecs : 0
+── Q1 à Q3 : tout le monde juste à la tablette ; le « Oui » de B de Michel dans les dernières secondes
+  ok     [QCM-4 · BANC] Michel a cliqué « Oui, la même chose » dans les 2,5 dernières secondes de son B
+  ok     [QCM-1 · SOCLE] le « Oui » tardif de Michel est dans la base (b)
+── L'estimation, la seconde attestation, la correction : la feuille de Julien lue « Madrid » seul à Q2
+  ok     [QCM-2 · HEURE] « Avant la correction » : « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. », la ligne juste après « Maintenant, la correction. Donne ta feuille à … et prends la sienne. » (point 14, avec la phrase de Paul du 16/10)
+  ok     [QCM-1 · SOCLE] la correction commence au clic de Paul
+  ok     [QCM-1 · SOCLE] Julien : « Trouvée au dernier moment » à Q2 (trouvee/abrial_julien = 1)
+  ok     [QCM-1 · SOCLE] « À lire ce soir » ne dit pas que Michel « n'a pas dit si sa feuille disait son clic » à Q1
+── La co-évaluation : Julien signale ❌ la question 2, celle qu'il a trouvée au dernier moment
+  ok     [QCM-2 · HEURE] l'alerte de Julien, Q2, à la console
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] à la console, l'alerte part de sa note réelle (Q2 : 1 point, trouvée au dernier moment) : ni « 0 → 1 », ni « → 0 point »
+  ok     [QCM-2 · HEURE] au téléphone, de même
+  ok     [QCM-2 · HEURE] « Donner raison à Léa »
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] la garde dit vrai : la question 2 de Julien garde son point (trouvée au dernier moment)
+  ok     [QCM-1 · SOCLE] le bilan de Julien : Q2, 1 point
+  ok     [QCM-1 · SOCLE] le bilan de Julien : 3 / 3 (Q1, Q3 justes ; Q2 trouvée au dernier moment)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] la garde de l'alerte tranchée (avec trouvée) annonce la note du bilan
+── « 🛑 Terminer » : le téléphone dit « séance »
+  ok     [QCM-2 · HEURE] au téléphone : « Aucune séance active » (et non « session »)

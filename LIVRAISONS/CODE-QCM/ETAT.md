@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 17:10 — le mode test joue les vraies évaluations : message reçu à 17:09 ; rien à mon nom (point 5) sauf une demande de QCM-3 ou un défaut de QCM-4 ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé » en tête de la section
 
-- QCM-3 · SOIR · 16:06 — contrôlé, en ligne (conscience, 16/10 15:30:44, 8.0.4, md5 `54c0af98…`) : arrêté ; reste à mon nom : rien
+- QCM-3 · SOIR · 17:10 — le mode test joue les vraies évaluations : reçu 17:10, livraison prévue 18:10 ; je code le menu « Évaluation » du mode test et la copie _test_evaluation-qcm ; reste à mon nom : ces points 1 à 3
 - QCM-4 · BANC · 17:11 — le mode test joue les vraies évaluations : message reçu à 17:10 ; mon banc (banc-modetest-16-10.js : trois évaluations ordinaires du faux hub, 3e, 4e, plus de 3 questions) en écriture, sur la 8.0.4 d'abord ; livraison de QCM-3 attendue vers 18:10, VERDICT.md vers 18:40

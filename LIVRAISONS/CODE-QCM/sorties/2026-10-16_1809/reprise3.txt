@@ -1,0 +1,21 @@
+Reprise 3, point 5, par le geste (QCM-4 · BANC) — durée 113 s
+vérifications : 15 · échecs : 8
+── Q1 à Q3 : tout le monde juste à la tablette ; le « Oui » de B de Michel dans les dernières secondes
+  ok     [QCM-4 · BANC] Michel a cliqué « Oui, la même chose » dans les 2,5 dernières secondes de son B
+  ok     [QCM-1 · SOCLE] le « Oui » tardif de Michel est dans la base (b)
+── L'estimation, la seconde attestation, la correction : la feuille de Julien lue « Madrid » seul à Q2
+  ÉCHEC  [QCM-2 · HEURE] « Avant la correction » : « Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert. », la ligne juste après « Maintenant, la correction. Donne ta feuille à … et prends la sienne. » (point 14, avec la phrase de Paul du 16/10) — vu : ✨ 💡 🎲 🔥 3E ESSAI · ABRIAL JULIEN 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-1 · SOCLE] la correction commence au clic de Paul — vu : {"qi":1,"ph":"close","depuis":1792168044738}
+  ÉCHEC  [QCM-1 · SOCLE] Julien : « Trouvée au dernier moment » à Q2 (trouvee/abrial_julien = 1) — vu : {}
+  ok     [QCM-1 · SOCLE] « À lire ce soir » ne dit pas que Michel « n'a pas dit si sa feuille disait son clic » à Q1
+── La co-évaluation : Julien signale ❌ la question 2, celle qu'il a trouvée au dernier moment
+  ÉCHEC  [QCM-2 · HEURE] l'alerte de Julien, Q2, à la console — vu : 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🎯 Évaluatio
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] à la console, l'alerte part de sa note réelle (Q2 : 1 point, trouvée au dernier moment) : ni « 0 → 1 », ni « → 0 point »
+  ok     [QCM-2 · HEURE] au téléphone, de même
+  ÉCHEC  [QCM-2 · HEURE] « Donner raison à Léa » — vu : 
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] la garde dit vrai : la question 2 de Julien garde son point (trouvée au dernier moment)
+  ÉCHEC  [QCM-1 · SOCLE] le bilan de Julien : Q2, 1 point — vu : ✨ 💡 🎲 🔥 3E ESSAI · ABRIAL JULIEN 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-1 · SOCLE] le bilan de Julien : 3 / 3 (Q1, Q3 justes ; Q2 trouvée au dernier moment) — vu : 
+  ÉCHEC  [QCM-1 · SOCLE, QCM-2 · HEURE] la garde de l'alerte tranchée (avec trouvée) annonce la note du bilan — vu : garde : « », bilan : « »
+── « 🛑 Terminer » : le téléphone dit « séance »
+  ok     [QCM-2 · HEURE] au téléphone : « Aucune séance active » (et non « session »)

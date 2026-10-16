@@ -1,0 +1,47 @@
+Reprise 7, points 1, 2, 3 et 5, par le geste (QCM-4 · BANC) — /tmp/claude-0/-home-user-mjpc-chantier/25c0a9f1-9dbf-5731-9205-8de888c7d613/scratchpad/app-1809.html — durée 63 s
+vérifications : 40 · échecs : 0
+── Point 5 — « 🕙 Fin de l'heure » sur « 🎯 Lancer une nouvelle séance », avant l'appel
+  ok     [QCM-2 · HEURE] « 🎯 Lancer une nouvelle séance » (3 ESSAI, Évaluation d'essai) : un champ « 🕙 Fin de l'heure », avant « 🚀 Lancer la séance »
+  ok     [QCM-2 · HEURE] le champ vaut par défaut maintenant + 55 min (17:20)
+  ok     [QCM-3 · SOIR] fin de l'heure à 18:25 : « ✅ Ça tient : <d> min, il en reste 120 avant la fin de l'heure. » (d = la durée estimée)
+  ok     [QCM-3 · SOIR] fin de l'heure à 16:30 : « ⚠️ Ça ne tient pas : la séance demande <d> min, il n'en reste que 4 avant la fin de l'heure (<d − r> min de trop). »
+  ok     [QCM-3 · SOIR] avec « ça ne tient pas », « 🚀 Lancer la séance » reste ouvert
+  ok     [QCM-2 · HEURE] la démo choisie : le champ « 🕙 Fin de l'heure » est là aussi, avant « 🎓 Lancer la démo »
+  ok     [QCM-3 · SOIR] la démo choisie : le message « Ça tient » / « Ça ne tient pas » s'affiche aussi
+  ok     [QCM-2 · HEURE] « 🚀 Lancer la séance » de la carte
+  ok     [QCM-2 · HEURE] l'appel s'ouvre (« 📋 Check-in »)
+  ok     [QCM-2 · HEURE] plus de champ de fin de l'heure dans la fenêtre « 📋 Check-in »
+  ok     [QCM-1 · SOCLE] l'heure tapée part avec la séance : lancee.fin = « 17:16 » dans la base
+  ok     [QCM-2 · HEURE] la console de la séance : « 🕙 Fin de l'heure : 17:16 »
+── Point 1 — Q1 lancée : une tablette où personne n'entre, une où deux élèves sont entrés ; les cartes et « 👁 »
+  ok     [QCM-2 · HEURE] « ▶️ Lancer Q1 »
+  info   la vraie tablette où personne n'entre, Q1 lancée : ✨ ⏎ 💡 ⏎ 👋 Identifie-toi ⏎ 1 ⏎ 2 ⏎ 3 ⏎ 4 ⏎ 5 ⏎ 6 ⏎ 7 ⏎ 8 ⏎ 9 ⏎ ⌫ ⏎ 0 ⏎ ✓ ⏎ Entrer →
+  ok     [QCM-2 · HEURE] la vraie tablette où personne n'entre reste sur « Combien êtes-vous sur cette tablette ? » (Q1 lancée)
+  ok     [QCM-2 · HEURE] la carte « 📱 Tablette 1 » (Julien, Léa, pas entrés) dit qu'ils ne sont pas encore entrés, pas « ✍️ écrit »
+  ok     [QCM-2 · HEURE] « 👁 » de la tablette 1 s'ouvre
+  ok     [QCM-2 · HEURE] « 👁 » de la tablette 1 montre son écran d'entrée (« Combien êtes-vous… »), pas la question
+  ok     [QCM-2 · HEURE] « 👁 » de la tablette 2 (Camille, Tom, entrés) montre ce que montre la vraie tablette, moitié par moitié
+  ok     [QCM-2 · HEURE] aucune erreur de page ni boîte système (A)
+── Point 2 — « 🚀 Lancer » sur la ligne de la démo, dans « 📝 Évaluations »
+  ok     [QCM-3 · SOIR] la ligne de la démo a un bouton « 🚀 Lancer », ouvert
+  ok     [QCM-3 · SOIR] « 🚀 Lancer » de la démo a une infobulle qui dit ce que le geste fait
+  ok     [QCM-3 · SOIR] il mène à « 🎯 Lancer une nouvelle séance », la démo déjà choisie
+  ok     [QCM-3 · SOIR] la classe 3 ESSAI se choisit, écrite « 3e Essai »
+  ok     [QCM-3 · SOIR] après le choix de la classe, la démo reste choisie
+  ok     [QCM-3 · SOIR] « 🎓 Lancer la démo »
+  ok     [QCM-3 · SOIR] on arrive à l'appel (« 📋 Check-in : qui est absent aujourd'hui ? »), de 3 ESSAI
+  ok     [QCM-3 · SOIR] la séance lancée est celle de 3 ESSAI, avec la démo (evalId « demo »)
+  ok     [QCM-3 · SOIR] aucune erreur de page ni boîte système (B)
+── Point 3 — « Sans chapitre pour l'instant » : l'éditeur, la base, la liste, le lancement
+  ok     [QCM-3 · SOIR] « ✏️ Modifier » ouvre l'éditeur de « Essai à rattacher (banc) »
+  ok     [QCM-3 · SOIR] le choix du chapitre propose « Sans chapitre pour l'instant », distinct de « — à choisir — »
+  ok     [QCM-3 · SOIR] avec « Sans chapitre pour l'instant », le chapitre ne manque plus : « 💾 Enregistrer l'évaluation » est ouvert
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] enregistrée, la base porte sansChapitre: true et chapitre: null
+  ok     [QCM-3 · SOIR] en tête de « 📝 Évaluations » : « ⚠️ 1 évaluation(s) sans chapitre pour l'instant : pense à les rattacher plus tard. »
+  ok     [QCM-3 · SOIR] la ligne de « Essai à rattacher (banc) » porte la mention « sans chapitre pour l'instant »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] « 🎯 Lancer une nouvelle séance » propose « Essai à rattacher (banc) » (sans chapitre pour l'instant)
+  ok     [QCM-1 · SOCLE] « 🚀 Lancer la séance » ouvert pour l'évaluation sans chapitre
+  ok     [QCM-1 · SOCLE] l'évaluation sans chapitre se lance jusqu'à l'appel (« 📋 Check-in »)
+  ok     [QCM-1 · SOCLE] la séance active dans la base est celle de « Essai à rattacher (banc) »
+  ok     [QCM-1 · SOCLE] après l'appel, la séance active passe à l'entrée (deroule.ph ≠ appel)
+  ok     [QCM-3 · SOIR] aucune erreur de page ni boîte système (C)

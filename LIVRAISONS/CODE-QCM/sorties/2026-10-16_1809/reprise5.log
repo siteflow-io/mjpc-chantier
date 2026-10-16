@@ -1,0 +1,27 @@
+── 1, 2. L'appel : les deux « 🚀 Lancer la séance » (c-appel) ; le téléphone sans séance  (9 s)
+  ok     [QCM-1 · SOCLE] pendant l'appel, les deux « 🚀 Lancer la séance » (la carte et la fenêtre) sont ouverts, comme c-appel
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] pendant l'appel, le téléphone dit « Aucune séance active » (la séance n'est pas lancée)
+  ok     [QCM-2 · HEURE] « 🚀 Lancer la séance » de la fenêtre cliqué : le téléphone montre la séance
+── 4. « ont répondu » pendant un tour et question close, aux trois appareils (24 présents, 12 tablettes)  (35 s)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] console, 1er tour : « 1 / 12 ONT RÉPONDU » (c-q1-tour1 : sur les 12 moitiés qui ont la main)
+  ok     [QCM-2 · HEURE] téléphone, 1er tour : « TABLETTES — 1 / 12 ont répondu » (p-reponse)
+  ok     [QCM-2 · HEURE] tableau, 1er tour : « ✋ 1 / 12 ont répondu » (b-reponse)
+  ok     [QCM-4 · BANC] la question 1 est close avant le relevé
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] console, question close : « 1 / 24 ONT RÉPONDU » (c-q1-close : « 24/24 », sur les présents)
+  ok     [QCM-2 · HEURE] téléphone, question close : « TABLETTES — 1 / 24 ont répondu » (p-eleve : sur les présents)
+── 4. « 1 réponse enregistrée » (c-interrompue)  (44 s)
+  ok     [QCM-1 · SOCLE] « Séance interrompue » : « 1 réponse enregistrée », au singulier
+vérifications : 10 · échecs : 0
+── 1, 2. L'appel : les deux « 🚀 Lancer la séance » (c-appel) ; le téléphone sans séance
+  ok     [QCM-1 · SOCLE] pendant l'appel, les deux « 🚀 Lancer la séance » (la carte et la fenêtre) sont ouverts, comme c-appel
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] pendant l'appel, le téléphone dit « Aucune séance active » (la séance n'est pas lancée)
+  ok     [QCM-2 · HEURE] « 🚀 Lancer la séance » de la fenêtre cliqué : le téléphone montre la séance
+── 4. « ont répondu » pendant un tour et question close, aux trois appareils (24 présents, 12 tablettes)
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] console, 1er tour : « 1 / 12 ONT RÉPONDU » (c-q1-tour1 : sur les 12 moitiés qui ont la main)
+  ok     [QCM-2 · HEURE] téléphone, 1er tour : « TABLETTES — 1 / 12 ont répondu » (p-reponse)
+  ok     [QCM-2 · HEURE] tableau, 1er tour : « ✋ 1 / 12 ont répondu » (b-reponse)
+  ok     [QCM-4 · BANC] la question 1 est close avant le relevé
+  ok     [QCM-1 · SOCLE, QCM-2 · HEURE] console, question close : « 1 / 24 ONT RÉPONDU » (c-q1-close : « 24/24 », sur les présents)
+  ok     [QCM-2 · HEURE] téléphone, question close : « TABLETTES — 1 / 24 ont répondu » (p-eleve : sur les présents)
+── 4. « 1 réponse enregistrée » (c-interrompue)
+  ok     [QCM-1 · SOCLE] « Séance interrompue » : « 1 réponse enregistrée », au singulier

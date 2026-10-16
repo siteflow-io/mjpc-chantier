@@ -1,0 +1,310 @@
+Les micros de la conscience du 16/10, par le geste (QCM-4 · BANC) — durée 206 s
+vérifications : 252 · échecs : 0
+
+════ micros-a
+Micro 8.0.2, le nom des classes à l'écran, par le geste (QCM-4 · BANC) — app /tmp/claude-0/-home-user-mjpc-chantier/25c0a9f1-9dbf-5731-9205-8de888c7d613/scratchpad/app-1809.html md5 764a184f6a91657697004fca4be38488 — durée 170 s
+vérifications : 56 · échecs : 0
+── 1. La console avant la séance : « Pilotage classe », le menu « Classe »
+  ok     [QCM-2 · HEURE] menu « Classe » : la clé « 3_essai » s'écrit « 3e Essai (25 élèves) »
+  ok     [QCM-2 · HEURE] menu « Classe » : « 3 DYLAN BOB » s'écrit « 3e Dylan Bob »
+  ok     [QCM-2 · HEURE] menu « Classe » : « 3E Charles de Gaulle » reste tel quel
+  ok     [QCM-2 · HEURE] menu « Classe » : la classe interne, si elle paraît, reste « _test_x »
+  ok     [QCM-4 · BANC] le menu « Classe » : « 3e Essai » choisi
+  ok     [QCM-2 · HEURE] console, Pilotage classe, 3e Essai choisie : jamais le nom brut de la classe (capture 01-console_pilotage_classe_3e_essai_choisie.png)
+  ok     [QCM-2 · HEURE] console, Pilotage classe, 3e Essai choisie : « 3e Essai » (capture 01-console_pilotage_classe_3e_essai_choisie.png)
+── 2. L'appel (« 📋 Check-in ») : deux élèves présents, les autres absents
+  ok     [QCM-2 · HEURE] l'appel « 📋 Check-in » : jamais le nom brut de la classe (capture 02-l_appel_check_in.png)
+  ok     [QCM-2 · HEURE] l'appel « 📋 Check-in » : « 3e Essai — » (capture 02-l_appel_check_in.png)
+  ok     [QCM-4 · BANC] à l'appel, 23 absents ; présents : ABRIAL Julien, BAUDRY Léa
+  ok     [QCM-1 · SOCLE] la base : sessionActive/3_essai, et sessions/<id>/classeSlug = « 3_essai » (la clé reste l'identifiant)
+── 3. La console pendant la séance, le téléphone, le tableau, la tablette
+  ok     [QCM-2 · HEURE] console, la carte de la séance (lancée) : jamais le nom brut de la classe (capture 03-console_la_carte_de_la_seance_lancee.png)
+  ok     [QCM-2 · HEURE] console, la carte de la séance (lancée) : « 3e Essai » (capture 03-console_la_carte_de_la_seance_lancee.png)
+  ok     [QCM-1 · SOCLE] « 🔴 1 séance en cours » se clique
+  ok     [QCM-1 · SOCLE] « 🔴 Séances actuellement en cours » : jamais le nom brut de la classe (capture 04-seances_actuellement_en_cours.png)
+  ok     [QCM-1 · SOCLE] « 🔴 Séances actuellement en cours » : « 3e Essai — Évaluation d'essai » (capture 04-seances_actuellement_en_cours.png)
+  ok     [QCM-2 · HEURE] le téléphone, séance lancée : jamais le nom brut de la classe (capture 05-le_telephone_seance_lancee.png)
+  ok     [QCM-2 · HEURE] le tableau, séance lancée : jamais le nom brut de la classe (capture 06-le_tableau_seance_lancee.png)
+  ok     [QCM-2 · HEURE] la tablette, avant l'entrée : jamais le nom brut de la classe (capture 07-la_tablette_avant_l_entree.png)
+  ok     [QCM-2 · HEURE] la tablette, les deux élèves entrés : jamais le nom brut de la classe (capture 08-la_tablette_les_deux_eleves_entres.png)
+  ok     [QCM-2 · HEURE] la tablette : l'en-tête « 3e Essai · ABRIAL Julien » (son texte ; à l'écran en capitales)
+  ok     [QCM-2 · HEURE] la tablette : l'en-tête « 3e Essai · BAUDRY Léa » (son texte ; à l'écran en capitales)
+── 4. Q1 à Q3 : Autoriser, Tour suivant, Clore
+  ok     [QCM-2 · HEURE] console, Q1 close : jamais le nom brut de la classe (capture 09-console_q1_close.png)
+  ok     [QCM-2 · HEURE] console, Q1 close : « 3e Essai » (capture 09-console_q1_close.png)
+  ok     [QCM-2 · HEURE] le téléphone, Q1 close : jamais le nom brut de la classe (capture 10-le_telephone_q1_close.png)
+  ok     [QCM-2 · HEURE] le tableau, Q1 close : jamais le nom brut de la classe (capture 11-le_tableau_q1_close.png)
+  ok     [QCM-4 · BANC] Q3 close
+── 5. L'estimation, la seconde attestation, la correction, la co-évaluation, le bilan
+  ok     [QCM-4 · BANC] « ▶️ Commencer la correction » : la lecture
+  ok     [QCM-2 · HEURE] console, la correction : jamais le nom brut de la classe (capture 12-console_la_correction.png)
+  ok     [QCM-2 · HEURE] console, la correction : « 3e Essai » (capture 12-console_la_correction.png)
+  ok     [QCM-2 · HEURE] la tablette, la correction révélée : jamais le nom brut de la classe (capture 13-la_tablette_la_correction_revelee.png)
+  ok     [QCM-2 · HEURE] console, la co-évaluation : jamais le nom brut de la classe (capture 14-console_la_co_evaluation.png)
+  ok     [QCM-2 · HEURE] console, la co-évaluation : « 3e Essai » (capture 14-console_la_co_evaluation.png)
+  ok     [QCM-2 · HEURE] console, le bilan de classe : jamais le nom brut de la classe (capture 15-console_le_bilan_de_classe.png)
+  ok     [QCM-2 · HEURE] console, le bilan de classe : « 3e Essai » (capture 15-console_le_bilan_de_classe.png)
+  ok     [QCM-2 · HEURE] la tablette, le bilan : jamais le nom brut de la classe (capture 16-la_tablette_le_bilan.png)
+  ok     [QCM-2 · HEURE] le téléphone, le bilan : jamais le nom brut de la classe (capture 17-le_telephone_le_bilan.png)
+  ok     [QCM-2 · HEURE] le tableau, le bilan : jamais le nom brut de la classe (capture 18-le_tableau_le_bilan.png)
+── 6. « 🛑 Terminer » : la garde, puis « Séances précédentes »
+  ok     [QCM-1 · SOCLE] la garde « 🛑 Terminer la séance ? » : jamais le nom brut de la classe (capture 19-la_garde_terminer_la_seance.png)
+  ok     [QCM-1 · SOCLE] la garde « 🛑 Terminer la séance ? » : « 3e Essai — Évaluation d'essai » (capture 19-la_garde_terminer_la_seance.png)
+  ok     [QCM-1 · SOCLE] la base, la séance terminée : classeSlug « 3_essai », sessionActive/3_essai vidée
+  ok     [QCM-2 · HEURE] le téléphone, séance terminée : jamais le nom brut de la classe (capture 20-le_telephone_seance_terminee.png)
+  ok     [QCM-3 · SOIR] console, « 📚 Séances précédentes » : jamais le nom brut de la classe (capture 21-console_seances_precedentes.png)
+  ok     [QCM-3 · SOIR] console, « 📚 Séances précédentes » : « Séances précédentes — 3e Essai » (capture 21-console_seances_precedentes.png)
+── 7. Le soir : Données → Résultats, le tableau de la séance, le CSV, le PDF
+  ok     [QCM-3 · SOIR] « Données » se clique
+  ok     [QCM-3 · SOIR] Données → Résultats : jamais le nom brut de la classe (capture 22-donnees_resultats.png)
+  ok     [QCM-3 · SOIR] « 📊 Ouvrir » la séance
+  ok     [QCM-3 · SOIR] le tableau de la séance : jamais le nom brut de la classe (capture 23-le_tableau_de_la_seance.png)
+  ok     [QCM-3 · SOIR] le tableau de la séance : « Évaluation d'essai — 3e Essai » (capture 23-le_tableau_de_la_seance.png)
+  ok     [QCM-3 · SOIR] le CSV : son nom ne porte pas le nom brut (« resultats-3e-Essai-… »)
+  ok     [QCM-3 · SOIR] le CSV : son contenu ne porte pas le nom brut
+  ok     [QCM-3 · SOIR] le tableau de la séance, après « 📥 Export CSV » : jamais le nom brut de la classe (capture 24-le_tableau_de_la_seance_apres_export_csv.png)
+  ok     [QCM-4 · BANC] les copies rendues (pour ouvrir le PDF)
+  ok     [QCM-3 · SOIR] Données → Résultats, copies rendues : jamais le nom brut de la classe (capture 25-donnees_resultats_copies_rendues.png)
+  ok     [QCM-3 · SOIR] le PDF « notes et compétences » : jamais le nom brut de la classe (capture 26-le_pdf_notes_et_competences.png)
+  ok     [QCM-3 · SOIR] le PDF « notes et compétences » : « Classe : 3e Essai » (capture 26-le_pdf_notes_et_competences.png)
+
+════ micros-b
+Micro 8.0.3 (la feuille du voisin toute la correction, les notes dans la console), par le geste (QCM-4 · BANC) — durée 194 s · app md5 764a184f6a91657697004fca4be38488 · commit 882611f
+vérifications : 157 · échecs : 0
+── A0. 3 ESSAI : YVON Adam et ZELLER Lou absents ; deux tablettes de voisins (l'une avec un prénom à voyelle), une tablette d'un élève seul
+  ok     [QCM-4 · BANC] les places : une tablette de voisins avec un prénom à voyelle, une sans
+  ok     [QCM-4 · BANC] les places : un élève sans voisin présent (son voisin absent)
+── A1. Q1 à Q3 (Emma et Noah ; Julien et Léa ; Clara seul)
+── A2. « Avant la correction », sur la moitié de chaque élève
+  ok     [QCM-2 · HEURE (etape3)] Emma : « Maintenant, la correction. Donne ta feuille à Noah et prends la sienne : tu la gardes jusqu'à la fin de la correction. »
+  ok     [QCM-2 · HEURE (etape3)] Emma : « Puis tu corriges la feuille de Noah en vert, comme sa moitié de la tablette te le dit. »
+  ok     [QCM-2 · HEURE (etape3)] Emma : « … et si tu lis et corriges avec soin la feuille de Noah. »
+  ok     [QCM-2 · HEURE (etape3)] Emma : plus « montre ta feuille à »
+  ok     [QCM-2 · HEURE (etape3)] Noah : « Maintenant, la correction. Donne ta feuille à Emma et prends la sienne : tu la gardes jusqu'à la fin de la correction. »
+  ok     [QCM-2 · HEURE (etape3)] Noah : « Puis tu corriges la feuille d'Emma en vert, comme sa moitié de la tablette te le dit. »
+  ok     [QCM-2 · HEURE (etape3)] Noah : « … et si tu lis et corriges avec soin la feuille d'Emma. »
+  ok     [QCM-2 · HEURE (etape3)] Noah : plus « montre ta feuille à »
+  ok     [QCM-2 · HEURE (etape3)] Julien : « Maintenant, la correction. Donne ta feuille à Léa et prends la sienne : tu la gardes jusqu'à la fin de la correction. »
+  ok     [QCM-2 · HEURE (etape3)] Julien : « Puis tu corriges la feuille de Léa en vert, comme sa moitié de la tablette te le dit. »
+  ok     [QCM-2 · HEURE (etape3)] Julien : « … et si tu lis et corriges avec soin la feuille de Léa. »
+  ok     [QCM-2 · HEURE (etape3)] Julien : plus « montre ta feuille à »
+  ok     [QCM-2 · HEURE (etape3)] Léa : « Maintenant, la correction. Donne ta feuille à Julien et prends la sienne : tu la gardes jusqu'à la fin de la correction. »
+  ok     [QCM-2 · HEURE (etape3)] Léa : « Puis tu corriges la feuille de Julien en vert, comme sa moitié de la tablette te le dit. »
+  ok     [QCM-2 · HEURE (etape3)] Léa : « … et si tu lis et corriges avec soin la feuille de Julien. »
+  ok     [QCM-2 · HEURE (etape3)] Léa : plus « montre ta feuille à »
+  ok     [QCM-2 · HEURE (etape3)] seul, Clara : « Avant la correction » sans les phrases avec un voisin
+  ok     [QCM-1 · SOCLE] la correction commence au clic de Paul (« Commencer la correction »)
+── A3.1 Q3 : la lecture, puis « 💡 Révéler »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Emma : plus « Emma, montre ta feuille à Noah. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Emma : « Noah, lis la feuille d'Emma : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Emma (Noah a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Noah : plus « Noah, montre ta feuille à Emma. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Noah : « Emma, lis la feuille de Noah : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Noah (Emma a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Julien : plus « Julien, montre ta feuille à Léa. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Julien : « Léa, lis la feuille de Julien : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Julien (Léa a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Léa : plus « Léa, montre ta feuille à Julien. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Léa : « Julien, lis la feuille de Léa : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q3, moitié de Léa (Julien a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Emma (Noah a sa feuille) : « ✅ Emma avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Emma (Noah a sa feuille) : « Noah, sur la feuille d'Emma, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Emma (Noah a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q3, moitié de Emma (Noah a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Noah (Emma a sa feuille) : « ❌ Noah avait faux. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Noah (Emma a sa feuille) : « Emma, sur la feuille de Noah, barre sa réponse et écris la bonne réponse en entier en vert à côté. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Noah (Emma a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q3, moitié de Noah (Emma a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Julien (Léa a sa feuille) : « ✅ Julien avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Julien (Léa a sa feuille) : « Léa, sur la feuille de Julien, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Julien (Léa a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q3, moitié de Julien (Léa a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Léa (Julien a sa feuille) : « ✅ Léa avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Léa (Julien a sa feuille) : « Julien, sur la feuille de Léa, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, moitié de Léa (Julien a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q3, moitié de Léa (Julien a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, Clara seul : « ❌ Tu avais faux. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, Clara seul : « Barre ta réponse et écris la bonne réponse en entier en vert à côté. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q3, Clara seul : l'étiquette « Ta réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q3, Clara seul : pas les phrases avec un voisin
+── A3.2 Q1 : la lecture, puis « 💡 Révéler »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Emma : plus « Emma, montre ta feuille à Noah. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Emma : « Noah, lis la feuille d'Emma : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Emma (Noah a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Noah : plus « Noah, montre ta feuille à Emma. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Noah : « Emma, lis la feuille de Noah : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Noah (Emma a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Julien : plus « Julien, montre ta feuille à Léa. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Julien : « Léa, lis la feuille de Julien : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Julien (Léa a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Léa : plus « Léa, montre ta feuille à Julien. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Léa : « Julien, lis la feuille de Léa : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q1, moitié de Léa (Julien a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Emma (Noah a sa feuille) : « ✅ Emma avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Emma (Noah a sa feuille) : « Noah, sur la feuille d'Emma, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Emma (Noah a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q1, moitié de Emma (Noah a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Noah (Emma a sa feuille) : « ✅ Noah avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Noah (Emma a sa feuille) : « Emma, sur la feuille de Noah, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Noah (Emma a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q1, moitié de Noah (Emma a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Julien (Léa a sa feuille) : « ✅ Julien avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Julien (Léa a sa feuille) : « Léa, sur la feuille de Julien, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Julien (Léa a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q1, moitié de Julien (Léa a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Léa (Julien a sa feuille) : « ✅ Léa avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Léa (Julien a sa feuille) : « Julien, sur la feuille de Léa, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, moitié de Léa (Julien a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q1, moitié de Léa (Julien a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, Clara seul : « ✅ Tu avais juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q1, Clara seul : « Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse. »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q1, Clara seul : pas les phrases avec un voisin
+── A3.3 Q2 : la lecture, puis « 💡 Révéler »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Emma : plus « Emma, montre ta feuille à Noah. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Emma : « Noah, lis la feuille d'Emma : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Emma (Noah a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Noah : plus « Noah, montre ta feuille à Emma. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Noah : « Emma, lis la feuille de Noah : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Noah (Emma a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Julien : plus « Julien, montre ta feuille à Léa. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Julien : « Léa, lis la feuille de Julien : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Julien (Léa a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Léa : plus « Léa, montre ta feuille à Julien. »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Léa : « Julien, lis la feuille de Léa : … »
+  ok     [QCM-2 · HEURE (etape3)] lecture Q2, moitié de Léa (Julien a la feuille) : aucune phrase « tu » sur SA feuille
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Emma (Noah a sa feuille), trouvée au dernier moment : « Sa feuille disait autre chose, mais Emma a cliqué sur la bonne réponse : la question compte. Cela n'arrive qu'une fois par évaluation. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Emma (Noah a sa feuille) : « Sur la tablette, Emma avait cliqué sur : Madrid, Berlin »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Emma (Noah a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q2, moitié de Emma (Noah a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Noah (Emma a sa feuille) : « ✅ Noah avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Noah (Emma a sa feuille) : « Emma, sur la feuille de Noah, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Noah (Emma a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q2, moitié de Noah (Emma a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Julien (Léa a sa feuille) : « ✅ Julien avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Julien (Léa a sa feuille) : « Léa, sur la feuille de Julien, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Julien (Léa a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q2, moitié de Julien (Léa a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Léa (Julien a sa feuille) : « ✅ Léa avait juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Léa (Julien a sa feuille) : « Julien, sur la feuille de Léa, mets simplement un V vert dans la marge à côté de sa réponse. »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, moitié de Léa (Julien a sa feuille) : l'étiquette « Sa réponse »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q2, moitié de Léa (Julien a sa feuille) : aucune phrase « tu » sur SA feuille (« Tu avais juste », « ta réponse », « ta feuille »)
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, Clara seul : « ✅ Tu avais juste ! »
+  ok     [QCM-2 · HEURE (etape3)] « 💡 Révéler » Q2, Clara seul : « Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse. »
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] « 💡 Révéler » Q2, Clara seul : pas les phrases avec un voisin
+  ok     [QCM-4 · BANC] la base : Emma trouvée au dernier moment à Q2 (trouvee/lacombe_emma = 1)
+── A4. La co-évaluation : « 📄 <voisin>, rends sa feuille à <élève>. » en tête
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Emma : « 📄 Noah, rends sa feuille à Emma. »
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Emma : « 📄 Noah, rends sa feuille à Emma. » en tête (avant « ✅ / ❌ Je pense que … »)
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Noah : « 📄 Emma, rends sa feuille à Noah. »
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Noah : « 📄 Emma, rends sa feuille à Noah. » en tête (avant « ✅ / ❌ Je pense que … »)
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Julien : « 📄 Léa, rends sa feuille à Julien. »
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Julien : « 📄 Léa, rends sa feuille à Julien. » en tête (avant « ✅ / ❌ Je pense que … »)
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Léa : « 📄 Julien, rends sa feuille à Léa. »
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Léa : « 📄 Julien, rends sa feuille à Léa. » en tête (avant « ✅ / ❌ Je pense que … »)
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, Clara seul : pas de « rends sa feuille »
+  ok     [QCM-4 · BANC] « Afficher leur bilan aux élèves » : la console montre « 🏁 Bilan classe »
+  ok     [QCM-2 · HEURE (c3-corr)] bilan de classe, ABRIAL Julien (note complète) : la note, la maîtrise, sans « pas encore lue »
+  ok     [QCM-4 · BANC] aucune erreur de page (console, séance A)
+── B0. 3 ESSAI, deux tablettes ; Julien dit « Non, autre chose » à Q1 (une ligne à lire le soir)
+  ok     [QCM-4 · BANC] la correction : Q1 révélée, Q2 en lecture (deux questions pas encore lues)
+── B1. « 🛑 Terminer » au milieu de la correction, puis Données → Résultats → « 📊 Ouvrir »
+  ok     [QCM-4 · BANC] le tableau de la séance terminée s'ouvre
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance : la ligne de ABRIAL Julien
+  ok     [QCM-3 · SOIR (c4-seances), QCM-1 · SOCLE (c3-base)] tableau de la séance, ABRIAL Julien : la note telle qu'elle est (« n/3 ») et « 2 questions pas encore lues »
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, ABRIAL Julien : la note sur 20 telle qu'elle est
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, ABRIAL Julien : la maîtrise « — » jusqu'à la note complète
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, ABRIAL Julien : les compétences « — » jusqu'à la note complète
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance : la ligne de BRUNEAU Camille
+  ok     [QCM-3 · SOIR (c4-seances), QCM-1 · SOCLE (c3-base)] tableau de la séance, BRUNEAU Camille : la note telle qu'elle est (« n/3 ») et « 2 questions pas encore lues »
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, BRUNEAU Camille : la note sur 20 telle qu'elle est
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, BRUNEAU Camille : la maîtrise « — » jusqu'à la note complète
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, BRUNEAU Camille : les compétences « — » jusqu'à la note complète
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance : pas de « écartée » pour une question pas encore lue
+── B2. « 📄 Lire les copies » de la séance terminée avant la fin de la correction : ABRIAL Julien
+  ok     [QCM-4 · BANC] « Lire les copies » : « abri », Entrée : la copie de ABRIAL Julien
+  ok     [QCM-3 · SOIR (lire-copies)] « 🧮 La note, en direct » de la copie de ABRIAL Julien
+  ok     [QCM-3 · SOIR (lire-copies)] la note en direct : « Question 2 : pas encore lue », « Question 3 : pas encore lue »
+  ok     [QCM-3 · SOIR (lire-copies)] la note en direct : plus « écartée » pour une question pas encore lue
+  ok     [QCM-3 · SOIR (lire-copies), QCM-1 · SOCLE (c3-base)] la note en direct : la note telle qu'elle est et « 2 questions pas encore lues »
+  ok     [QCM-4 · BANC] aucune erreur de page (console, séance B)
+── C0. La séance sur papier : lancée, « ⏸️ Feuilles ramassées », reprise ; deux élèves entrés
+  ok     [QCM-2 · HEURE] le mode « 📄 Séance sur papier »
+  ok     [QCM-4 · BANC] la séance est lancée sur papier
+  ok     [QCM-4 · BANC] « ▶️ Reprendre la séance du … »
+── C1. Sur papier : « Avant la correction » et « 💡 Révéler »
+  ok     [QCM-4 · BANC] la tablette montre « Avant la correction » (papier)
+  ok     [QCM-2 · HEURE (etape3)] papier, « Avant la correction » : pas les phrases avec un voisin
+  ok     [QCM-2 · HEURE (etape3)] papier, « Avant la correction » : « Barre ta réponse et écris la bonne réponse en entier en vert à côté. » (la phrase d'avant)
+  ok     [QCM-2 · HEURE (etape3)] papier, « 💡 Révéler », moitié g : la phrase d'avant (« Barre ta réponse … » ou « Sur ta feuille, mets simplement un V vert … »)
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] papier, « 💡 Révéler », moitié g : pas les phrases avec un voisin
+  ok     [QCM-2 · HEURE (etape3)] papier, « 💡 Révéler », moitié d : la phrase d'avant (« Barre ta réponse … » ou « Sur ta feuille, mets simplement un V vert … »)
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] papier, « 💡 Révéler », moitié d : pas les phrases avec un voisin
+  ok     [QCM-4 · BANC] aucune erreur de page (séance sur papier)
+
+════ micros-c
+Micro 8.0.3, la carte du temps de la lecture, par le geste (QCM-4 · BANC) — durée 205 s · app md5 764a184f6a91657697004fca4be38488
+vérifications : 36 · échecs : 0
+── La séance de 3 ESSAI, deux tablettes, quatre élèves, jusqu'à la lecture de la première question corrigée
+  note   tablette 1 : Julien | Léa ; tablette 2 : Camille | Tom ; entrés : 4
+  ok     [QCM-1 · SOCLE] la correction commence au clic de Paul (deroule.ph = lecture)
+  note   lecture de Q1 : {"duree":15} ; « Milan » sert de clic d'essai
+── 1 — la carte « 📄 Temps pour lire la feuille du voisin » sur la console, son champ, « +5 », « +10 », « +30 », leurs infobulles
+  ok     [QCM-2 · HEURE] à la lecture, la console montre la carte « 📄 Temps pour lire la feuille du voisin »
+  ok     [QCM-2 · HEURE] la carte a son champ du temps, ouvert
+  ok     [QCM-2 · HEURE] l'infobulle du champ dit ce que fait le geste (« Tape le temps pour lire la feuille du voisin … chrono de la lecture »)
+  ok     [QCM-2 · HEURE] la carte a « +5 », ouvert
+  ok     [QCM-2 · HEURE] l'infobulle de « +5 » dit ce que fait le geste (« Ajoute 5 s au temps pour lire la feuille du voisin, tout de suite au chrono en cours »)
+  ok     [QCM-2 · HEURE] la carte a « +10 », ouvert
+  ok     [QCM-2 · HEURE] l'infobulle de « +10 » dit ce que fait le geste (« Ajoute 10 s au temps pour lire la feuille du voisin, tout de suite au chrono en cours »)
+  ok     [QCM-2 · HEURE] la carte a « +30 », ouvert
+  ok     [QCM-2 · HEURE] l'infobulle de « +30 » dit ce que fait le geste (« Ajoute 30 s au temps pour lire la feuille du voisin, tout de suite au chrono en cours »)
+── 2 — « +5 », « +10 », « +30 » pendant la lecture : la base, la console et la tablette suivent
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +5 » : deroule/duree passe de 15 à 20
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +5 » : temps/0/reponse passe de 15 à 20
+  ok     [QCM-2 · HEURE] « +5 » : le chrono de la tablette (moitié de Julien) gagne 5 s (au temps écoulé près)
+  ok     [QCM-2 · HEURE] « +5 » : le temps qui reste sur la carte de la console gagne 5 s
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +10 » : deroule/duree passe de 20 à 30
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +10 » : temps/0/reponse passe de 20 à 30
+  ok     [QCM-2 · HEURE] « +10 » : le chrono de la tablette (moitié de Julien) gagne 10 s (au temps écoulé près)
+  ok     [QCM-2 · HEURE] « +10 » : le temps qui reste sur la carte de la console gagne 10 s
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +30 » : deroule/duree passe de 30 à 60
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +30 » : temps/0/reponse passe de 30 à 60
+  ok     [QCM-2 · HEURE] « +30 » : le chrono de la tablette (moitié de Julien) gagne 30 s (au temps écoulé près)
+  ok     [QCM-2 · HEURE] « +30 » : le temps qui reste sur la carte de la console gagne 30 s
+── 3 — un temps tapé dans le champ, caractère par caractère, pendant que les deux tablettes cliquent leur lecture
+  note   pendant la frappe : 22 écritures de lectures/ par les tablettes, 776 changements du DOM de la console
+  ok     [QCM-4 · BANC] pendant la frappe, les tablettes ont bien cliqué et la console s'est redessinée (sinon la vérification suivante ne dit rien)
+  ok     [QCM-2 · HEURE] la saisie « 130 », tapée lentement, n'est jamais effacée ni coupée par un redessin (valeur du champ et curseur, toutes les 150 ms)
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] validé (Tab), temps/0/reponse vaut la valeur tapée (130)
+  ok     [QCM-2 · HEURE] validé, le champ de la carte montre 130
+  note   pendant la frappe, le plus petit temps restant vu dans la base : -9.3 s
+  note   QUESTION pour la conscience : le champ envoie chaque valeur entière au fil de la frappe (règle du 04/10) ; en tapant « 130 », le premier chiffre seul (« 1 s ») a mis le chrono de la lecture à 0 un instant : les lectures cliquées se figent pendant la frappe (le banc ne l'a pas vu à l'écran entre deux relevés), et se rouvrent quand la valeur tapée dépasse le temps écoulé. Voulu ?
+── 4 — la lecture figée à 0, puis rouverte par « +10 »
+  note   le banc tape « 14 » dans le champ : le 0 dans ≈ 12.9 s
+  ok     [QCM-2 · HEURE] à 0, la moitié de Julien (lecture cliquée) : « ⏱️ Temps fini : ta lecture est enregistrée »
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] à 0, un clic sur « Milan » ne change pas la lecture dans la base (lectures/0/abrial_julien)
+  note   à 0, la carte de la console : {"v":"0s","boutons":["+5","+10","+30"]} (11-4-console-a0.png)
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] à 0, « +10 » sur la carte : la lecture repart pour 10 s depuis le clic (l'infobulle)
+  ok     [QCM-2 · HEURE] après « +10 », la lecture de Julien se rouvre (plus de « Temps fini », ses choix ouverts)
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] après « +10 », un clic sur « Milan » change de nouveau la lecture dans la base
+── 4 bis — « +10 » donné 15 s après le 0 (l'infobulle : « Une lecture déjà figée à 0 se rouvre pour ces secondes. »)
+  ok     [QCM-2 · HEURE] 15 s après le 0, la lecture de Julien est figée
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] 15 s après le 0, « +10 » rouvre la lecture de Julien pour 10 s (l'infobulle de « +10 » : « Une lecture déjà figée à 0 se rouvre pour ces secondes. »)
+── 5 — aucune erreur de page
+  ok     [QCM-2 · HEURE] console : aucune erreur de page
+  ok     [QCM-2 · HEURE] tablette-1 : aucune erreur de page
+  ok     [QCM-2 · HEURE] tablette-2 : aucune erreur de page
+
+════ micros-d
+La mesure du temps tapé pendant un tour (chronos des questions), par le geste (QCM-4 · BANC) — durée 62 s · app md5 764a184f6a91657697004fca4be38488
+vérifications : 3 · échecs : 0
+── La mesure : « 45 » tapé dans le temps de réponse de Q1, pendant le 1er tour
+  ok     [QCM-4 · BANC] le 1er tour de Q1 est en cours (deroule.ph = reponse)
+  ok     [QCM-4 · BANC] le champ du temps de réponse de Q1 est à la console, ouvert, pendant le tour
+  note   avant la frappe : {"ph":"reponse","tour":1,"cote":"g","duree":15} ; écoulé 8.2 s, reste 6.8 s
+  note   après « 4 » (0,8 s) : {"ph":"b","tour":1,"duree":5,"reste":4.1} (01-console-apres-4.png) ; la moitié qui avait la main : « ✨ 💡 🎲 🔥 3E ESSAI · ABRIAL JULIEN 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question… »
+  note   après « 45 » (0,8 s) : {"ph":"b","tour":1,"duree":5,"reste":1.9} (03-console-apres-45.png)
+  note   après Tab : {"ph":"passage","tour":2,"duree":3,"temps":{"reponse":45},"reste":2.1} (04-console-apres-tab.png) ; la moitié : « 🖊️ Julien, pose ton stylo. 🙈 Julien, laisse la tablette à Léa pour qu'il réponde sans que tu regardes. »
+  note   pendant la frappe, toutes les 100 ms : le plus petit temps restant 0.1 s ; les phases vues : b/t1/g
+  note   MESURE : le « 4 » seul a fait finir le tour (le chrono à 0 ; la phase a changé : b/t1/g)
+  ok     [QCM-4 · BANC] le champ a gardé « 45 » (la mesure porte bien sur la frappe de « 45 »)

@@ -1,0 +1,12 @@
+La mesure du temps tapé pendant un tour (chronos des questions), par le geste (QCM-4 · BANC) — durée 62 s · app md5 764a184f6a91657697004fca4be38488
+vérifications : 3 · échecs : 0
+── La mesure : « 45 » tapé dans le temps de réponse de Q1, pendant le 1er tour
+  ok     [QCM-4 · BANC] le 1er tour de Q1 est en cours (deroule.ph = reponse)
+  ok     [QCM-4 · BANC] le champ du temps de réponse de Q1 est à la console, ouvert, pendant le tour
+  note   avant la frappe : {"ph":"reponse","tour":1,"cote":"g","duree":15} ; écoulé 8.2 s, reste 6.8 s
+  note   après « 4 » (0,8 s) : {"ph":"b","tour":1,"duree":5,"reste":4.1} (01-console-apres-4.png) ; la moitié qui avait la main : « ✨ 💡 🎲 🔥 3E ESSAI · ABRIAL JULIEN 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question… »
+  note   après « 45 » (0,8 s) : {"ph":"b","tour":1,"duree":5,"reste":1.9} (03-console-apres-45.png)
+  note   après Tab : {"ph":"passage","tour":2,"duree":3,"temps":{"reponse":45},"reste":2.1} (04-console-apres-tab.png) ; la moitié : « 🖊️ Julien, pose ton stylo. 🙈 Julien, laisse la tablette à Léa pour qu'il réponde sans que tu regardes. »
+  note   pendant la frappe, toutes les 100 ms : le plus petit temps restant 0.1 s ; les phases vues : b/t1/g
+  note   MESURE : le « 4 » seul a fait finir le tour (le chrono à 0 ; la phase a changé : b/t1/g)
+  ok     [QCM-4 · BANC] le champ a gardé « 45 » (la mesure porte bien sur la frappe de « 45 »)

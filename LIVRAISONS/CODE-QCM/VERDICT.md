@@ -1,4 +1,54 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, contrôle à froid des micros 8.0.2 et 8.0.3, 16/10 15:15
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, le mode test joue les vraies évaluations, 16/10 18:35
+
+*La section « Le mode test joue les vraies évaluations — 16/10/2026 » (DEFAUTS-OUVERTS, point 4). La livraison de QCM-3 (`0c992c8`, `80858ac`) et de QCM-1 (`39ae18d`). App : `evaluation-qcm.staging.html` assemblée par `build.py` sur `code-qcm` à `882611f`, md5 **`764a184f6a91657697004fca4be38488`**. Rien n'a changé dans `src/` ni dans `build.py` depuis. Sorties : `sorties/2026-10-16_1809/`.*
+
+## Verdict : **ça va.**
+
+Le mode test joue les vraies évaluations. Le menu propose la démo, choisie par défaut, puis les évaluations prêtes de la liste. Le mode test joue une copie de l'évaluation choisie. La vraie évaluation n'est jamais écrite : je l'ai vérifié bit à bit, et le journal du faux hub ne montre aucune écriture sur elle de toute la séance.
+
+| Épreuve, sur l'app de 18:09 (md5 `764a184f…`) | Résultat |
+| --- | --- |
+| **Le mode test des vraies évaluations** (`banc-modetest-16-10.js`), sur trois évaluations ordinaires prêtes à lancer, pas la démo : E1 « Évaluation d'essai » (3e, 3 questions) ; E2, une de 4e (4 questions) ; E3, une de 3e de 11 questions. Pour chacune : le menu, le choix, la carte de la durée, la copie, la séance entière avec les tablettes simulées et les huit « 🎬 Préparer un cas » à leur moment, « 🛑 Terminer », « ✏️ Modifier l'éval après coup », « ⚖️ Vérifier », « 🗑️ Sortir et purger », puis les contrôles de sortie | **121 / 121** |
+| Contrôles de la conscience, ceux de `main` (`EMPREINTES.md5` vérifié : OK) | **32 / 32** |
+| Les micros du 16/10 | **252 / 252** |
+| Banc commun | **211 / 211** |
+| L'heure de demain | **109 / 109** |
+| Gestes rares | **47 / 47** |
+| Reprises 2, 4, 5 | **22 / 22, 27 / 27, 10 / 10** |
+| Reprise 3 | **15 / 15** joué seul à 18:31. Dans la troisième vague, à sept jeux en même temps, il avait fait 7 / 15 : la séance restait à Q2 close, et les échecs suivants en découlaient. Je ne compte pas ce passage. |
+| Reprises 7-a à 7-e | **40 / 40, 85 / 85, 141 / 141, 87 / 87, 9 / 9** |
+| Les écrans jamais atteints | 47 vérifications, 12 manques, les mêmes que le 15/10 ; non comptés, comme à chaque verdict |
+
+**Ce que mon banc a vérifié, pour chacune des trois évaluations :**
+- **À l'entrée en mode test :** la démo est choisie par défaut. Le menu « Évaluation » s'ouvre : la démo en premier, puis les évaluations prêtes, dans l'ordre de la carte de lancement de la console. Chaque ligne donne le titre et le nombre de questions.
+- **Au choix :** la carte de la durée change. La copie `evaluations/_test_evaluation-qcm` est réécrite avant « 🚀 Lancer la séance », avec le titre, les questions telles qu'elles sont (énoncé, choix, bonnes réponses, difficulté, compétences, « ce qu'elle vérifie », temps, explication), le chapitre, le mode et `test:true`.
+- **Pendant la séance :** la séance a pour énoncé (`evalSnapshot`) celui de l'évaluation choisie. Q1 est son énoncé, à la console comme sur la tablette simulée.
+- **Les huit cas :** « Un faux « Oui » » au 1er tour de Q1, « Rien de dit à la fin du temps » au premier B, les trois cas de la lecture sur trois questions, « Le cas ambigu » à la co-évaluation, « Une tablette en panne » et « Un départ en cours de séance » au bilan. Chacun répond « 🎬 Cas préparé : « … ». À toi de jouer la suite. »
+- **« ✏️ Modifier l'éval après coup » :** il change la Q1 de la copie, pas de la vraie. Ensuite, « ⚖️ Les n notes sont identiques. »
+- **Choisir ensuite une autre évaluation :** la séance déjà jouée garde son énoncé.
+- **Après « 🗑️ Sortir et purger » :** la classe de test, la copie et les séances de test sont effacées. `evaluations/<la vraie>` est identique bit à bit à avant l'entrée, et le journal du faux hub ne montre aucune écriture sur elle. Il n'y a ni séance ni résultat pour elle, et « passée par » est inchangé (« pas encore passée »). La carte de lancement de la console réelle est inchangée.
+- **À l'entrée suivante :** la démo est choisie par défaut, la copie est la démo, et `evaluations/demo` n'a pas bougé.
+
+**L'évaluation de 4e, ce que j'ai vu (point 4 : « même si ça va ») :**
+- **Au menu :** elle paraît sous le titre « 4e- Chapitre 1 - Paris à la barre et analyse logique · (4 questions) ».
+- **La durée :** une fois l'évaluation choisie, la carte dit « ⏱️ Durée estimée : 19 min. ✅ Ça tient : 19 min, il en reste 55 avant la fin de l'heure. »
+- **La console :** elle titre « 🎯 4e- Chapitre 1 - Paris à la barre et analyse logique · — _test_evaluation-qcm ». Q1 « Que veut dire « comparaître » ? » arrive avec ses quatre choix et sa bonne réponse « Se présenter devant un tribunal » ; au 1er tour, « 1/15 ont répondu ».
+- **La séance :** elle va au bilan avec les huit cas, et « ⚖️ » dit les notes identiques.
+- **Le niveau :** rien ne signale qu'une évaluation de 4e se joue sur la classe de test, qui est de 3e. C'est conforme à ce que la conscience a mesuré (`A.lancerSeance` ne regarde pas le niveau) ; je le note sans le compter.
+- Captures : `captures-modetest/19-banc_4e-carte-test.png` à `35-banc_4e-console-carte-apres.png`.
+
+**Les évaluations du banc :**
+- « Évaluation d'essai » est celle du faux hub.
+- Les deux autres sont écrites dans mon faux hub seulement. Je les ai tirées de deux évaluations de Paul déjà au faux hub (« 4e- Chapitre 1 - Paris à la barre… », dont les 4 premières questions, et « 3e- éval 1 Analyse logique… », 11 questions). Je les ai complétées de ce qui leur manquait pour être prêtes à lancer : chapitre, temps, compétences, « ce qu'elle vérifie ». Elles ne contiennent aucune donnée d'élève.
+
+**Pour la conscience, sans le compter :**
+- **La fidélité à la maquette :** 26 scènes sans écart non nommé, contre 30 à 14:48. Il y a trois scènes de plus avec des écarts, `c-reglages`, `c-reglages-prompt-modifier` et `c-seances` : les infobulles de « 🧪 Mode test » réécrites par QCM-1 (`39ae18d`) ne sont plus celles de la maquette. C'est la suite de ma DEMANDE de 17:13 ; je n'ai pas nommé cet écart, c'est à la conscience de le prendre ou non.
+- **La quatrième scène, `t-q1-attente`,** a des gestes en trop. C'est un relevé pris sous la charge de la vague, et elle était fidèle à 14:48.
+
+---
+
+# Verdict de 15:15, le 16/10 (pour mémoire)
+
 
 *Le contrôle à froid demandé par Paul (DEFAUTS-OUVERTS, « Contrôle à froid des micros de la conscience — 16/10/2026 », point 4). App : `evaluation-qcm.staging.html` assemblée par `build.py` sur `code-qcm` à `381184d` (rien n'a changé dans `src/` ni `build.py` depuis, jusqu'à `8f88e38`), md5 **`54c0af98864fb7cb31fdfb3dddc3a745`**. Sorties : `sorties/2026-10-16_1448/` (la passe d'avant, sur `85918fb`, md5 `4136f346…` : `sorties/2026-10-16_1428/`).*
 

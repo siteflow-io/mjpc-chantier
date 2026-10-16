@@ -31,8 +31,9 @@ function nomClasseV(x){
 /* (16/10, Paul, 10:54 : « autant les notes ne s'affichent pas côté élève, si je t'ai bien compris, autant moi dans mon pilotage je dois les voir ! » ;
    11:02 : « Voilà. ») LES QUESTIONS PAS ENCORE LUES d'une note : ni écartées, ni annulées, ni pas posées, et sans points. La console montre la note
    telle qu'elle est, et ce nombre tant qu'il n'est pas nul ; la maîtrise et les compétences attendent la note complète. */
-function nonLuesV(r, ecartees){ if(!r || !r.pts) return 0; var an = (r.annulees || []).map(Number), ec = (ecartees || r.ecartees || []).map(Number);
-  return r.pts.filter(function(p, i){ var s = r.st && r.st[i]; return p == null && s !== "e" && s !== "x" && an.indexOf(i) < 0 && ec.indexOf(i) < 0; }).length; }
+function nonLuesV(r, ecartees){ if(!r || !r.pts) return 0; var an = (r.annulees || []).map(Number), ec = (ecartees || r.ecartees || []).map(Number), np = (r.nonPosees || []).map(Number);
+  // (16/10, QCM-1 au contrôle à froid) « ni pas posées » : une question jamais posée (SCN.note, nonPosees) n'est pas « pas encore lue »
+  return r.pts.filter(function(p, i){ var s = r.st && r.st[i]; return p == null && s !== "e" && s !== "x" && an.indexOf(i) < 0 && ec.indexOf(i) < 0 && np.indexOf(i) < 0; }).length; }
 function NonLuesV(p){ var n = nonLuesV(p.r, p.ecartees); return n ? h("div", {className:"non-lues", style:{fontSize:".75rem", fontWeight:600, color:"#92400E", marginTop:".15rem"}, title:"Les questions de cette copie que la lecture n'a pas encore données : la note ne compte encore que celles qui sont lues. La maîtrise et les compétences attendent la note complète."}, n + " question" + (n > 1 ? "s" : "") + " pas encore lue" + (n > 1 ? "s" : "")) : null; }
 /* ── (QCM-1) Les données de la séance réelle, rebranchées avant chaque rendu (brancherGlobales, appelée par src/socle.js) ── */
 // les tables du scénario ne sont plus : chaque écran lit SCN (src/live/base.js) ; ces globales restent pour les écrans qui les nomment encore

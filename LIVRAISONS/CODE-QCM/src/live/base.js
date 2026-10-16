@@ -355,7 +355,10 @@ var SCN = (function(){
     var sur20 = total ? Math.min(20, n * 20 / total) : 0, comp = {};
     ev.questions.forEach(function(q, qi){ if(compte.indexOf(qi) < 0) return; (q.competences || []).forEach(function(c){ comp[c] = comp[c] || {n:0, max:0}; if(!q.bonus) comp[c].max++; comp[c].n += (pts[qi] || 0); }); });
     var corrigees = Object.keys((s.aLire) || {}).map(function(id){ return s.aLire[id]; }).filter(function(a){ return a && a.eleveSlug === x && a.corrige; }).map(function(a){ return Number(a.qi); });
-    return {p:x, st:st, pts:pts, n:n, total:total, complet:complet, sur20:sur20, maitrise:S.maitriseDe(Math.round(sur20 * 10) / 10), comp:comp, corrigees:corrigees, annulees:an, ecartees:ec, trouvee:tr};
+    /* (16/10, contrôle à froid du micro 8.0.3) les questions jamais posées (la séance terminée avant elles : ni lancées, ni une réponse ; sur papier, aucune),
+       la règle de sansLectureV (c4-seances.js, relecteur R6) : « n questions pas encore lues » (nonLuesV, c3-base.js) ne les compte pas. La note n'en change pas. */
+    var nonPosees = papier ? [] : ev.questions.map(function(q, i){ return i; }).filter(function(i){ return lanc[i] == null && !((s.reponses || {})[i]); });
+    return {p:x, st:st, pts:pts, n:n, total:total, complet:complet, sur20:sur20, maitrise:S.maitriseDe(Math.round(sur20 * 10) / 10), comp:comp, corrigees:corrigees, annulees:an, ecartees:ec, trouvee:tr, nonPosees:nonPosees};
   };
   S.resultat = function(id, x, k){ var s = S.sess(id); if(!s) return null; if(S.absents(id).indexOf(x) >= 0 || S.eleves(id).indexOf(x) < 0) return null; return S.note(x, k, id); };
   S.estimation = function(x, k, sid){ var e = S.estimationDe(x, sid); if(!e) return null; var nt = S.note(x, k, sid); if(!nt) return null; var iE = IDX.indexOf(e), iR = IDX.indexOf(nt.maitrise);

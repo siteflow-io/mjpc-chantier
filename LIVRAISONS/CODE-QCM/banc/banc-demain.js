@@ -49,7 +49,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
       srv.store.apply({t: "set", p: "qcm/evaluations/banc4e", v: EV4}); srv.broadcast({t: "set", p: "qcm/evaluations/banc4e", v: EV4}, null); id4 = "banc4e";
       J.secours("l'évaluation de 4e posée dans la base par le banc (qcm/evaluations/banc4e), le collage n'ayant rien écrit, pour jouer l'heure"); await pause(800); }
     await cliquer(prof, /Pilotage classe/); await pause(300);
-    J.v(await choisir(prof, /4 ESSAI|4e Essai/), H2, "Pilotage classe : 4 ESSAI se choisit"); await pause(200);
+    J.v(await choisir(prof, /^\s*4e Essai( \(\d+ élèves?\))?\s*$/), H2, "Pilotage classe : 4 ESSAI se choisit, écrite « 4e Essai » (micro 8.0.2)"); await pause(200);
     J.v(await choisir(prof, /Paris à la barre/), H2, "l'évaluation de 4e se choisit"); await pause(300);
     await capt(prof, "lancer");
     J.v(await etatBouton(prof, /Lancer la séance/) === "ouvert", H2, "« 🚀 Lancer la séance » ouvert : l'évaluation est complète (chapitre sans fiche au hub, cadrage 741)", await etatBouton(prof, /Lancer la séance/));
@@ -161,7 +161,7 @@ const choix = (qi, c) => { const Q = EV4.questions[qi]; if(c === "j") return Q.b
 
     J.section("D.6 Le soir de la 4e : Résultats, rendre les copies, le PDF");
     await cliquer(prof, /^Données$/); await cliquer(prof, /Résultats/); await pause(500);
-    J.v(/4 ESSAI|4e Essai/.test(await texte(prof)), H3, "Résultats : la séance de 4e, sous 4 ESSAI", (await texte(prof)).slice(0, 300));
+    J.v(/4e Essai/.test(await texte(prof)) && !/4 ESSAI/.test(await texte(prof)), H3, "Résultats : la séance de 4e, sous « 4e Essai » (micro 8.0.2)", (await texte(prof)).slice(0, 300));
     await cliquer(prof, /^📊 Ouvrir$/); await pause(700);
     const tt = await texte(prof);
     J.v(NOMS.filter(n => n !== ABSENT).every(n => tt.includes(n)), H3, "le tableau de la séance : les 5 présents", tt.slice(0, 300));

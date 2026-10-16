@@ -79,8 +79,8 @@ const JUSTE = [["Rome"], ["Madrid", "Berlin"], ["8"]];
     { const [p0, c0] = M[0]; await cocherTout(p0, c0); const z = (await zoneTexte(p0, c0)) || "";
       const L = "Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert.";
       const lignes = z.split(/\n/).map(x => x.replace(/^[☐☑✓✔⬜🔲\s]+/u, "").trim()).filter(Boolean);
-      const iM = lignes.findIndex(x => /Donne ta feuille à|Montre ta feuille à/.test(x));   // (16/10, Paul) « Donne ta feuille à … et prends la sienne »
-      J.v(iM >= 0 && lignes[iM + 1] === L, H2, "« Avant la correction » : « " + L + " », la ligne juste après « Maintenant, la correction. Montre ta feuille à … » (point 14)", iM >= 0 ? lignes.slice(iM, iM + 3).join(" | ") : z.slice(0, 300));
+      const iM = lignes.findIndex(x => /Donne ta feuille à .+ et prends la sienne/.test(x));   // (16/10, Paul) « Donne ta feuille à … et prends la sienne »
+      J.v(iM >= 0 && lignes[iM + 1] === L, H2, "« Avant la correction » : « " + L + " », la ligne juste après « Maintenant, la correction. Donne ta feuille à … et prends la sienne. » (point 14, avec la phrase de Paul du 16/10)", iM >= 0 ? lignes.slice(iM, iM + 3).join(" | ") : z.slice(0, 300));
       await capt(p0, "t-attest2-stylo-vert"); }
     for(const [p, c] of M){ await cocherTout(p, c); await cliquer(p, /^Je commence la correction$/, c); }
     await pause(1500);

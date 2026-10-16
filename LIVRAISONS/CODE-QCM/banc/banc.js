@@ -62,7 +62,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     prof = await A.ouvrir("console", "?mode=prof", 1536, 864);
     J.v(/Pilotage|Évaluation/.test(await texte(prof)), H1, "la console s'ouvre (?mode=prof, l'adresse de la 7.7.1)", (await texte(prof)).slice(0, 200));
     await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/);
-    J.v(await choisir(prof, /3 ESSAI|3e Essai/), H2, "Pilotage classe : la classe 3 ESSAI se choisit");
+    J.v(await choisir(prof, /^\s*3e Essai( \(\d+ élèves?\))?\s*$/), H2, "Pilotage classe : la classe 3 ESSAI se choisit, écrite « 3e Essai » (micro 8.0.2)");
     J.v(await choisir(prof, /Évaluation d'essai/), H2, "Pilotage classe : l'évaluation d'essai se choisit (complète : chapitre 3e-ch1, temps, compétences)");
     await pause(400);
     await scene("c-lancer", prof, "console");
@@ -510,7 +510,7 @@ function tropLong(){ if(Date.now() - J.t0 > PLAFOND) throw new Error("plafond de
     if(pdf){ await pdf.waitForLoadState().catch(() => {}); await pause(800); pdf.__nom = "pdf"; await scene("x632-pdf", pdf, "console"); }
     else await scene("x632-pdf", prof, "console");
     const tpdf = pdf ? await texte(pdf) : await texte(prof);
-    J.v(/Notes et compétences/i.test(tpdf) && /Classe : (3 ESSAI|3e Essai)/.test(tpdf), H3, "le PDF « notes et compétences » (x632-pdf" + (pdf ? ", dans sa fenêtre" : "") + ")", tpdf.slice(0, 300));
+    J.v(/Notes et compétences/i.test(tpdf) && /Classe : 3e Essai/.test(tpdf) && !/3 ESSAI/.test(tpdf), H3, "le PDF « notes et compétences » (x632-pdf" + (pdf ? ", dans sa fenêtre" : "") + ")", tpdf.slice(0, 300));
     if(pdf) await pdf.close().catch(() => {});
     await prof.keyboard.press("Escape"); await cliquer(prof, /^✕$|Fermer/); await pause(300);
     await pause(500);

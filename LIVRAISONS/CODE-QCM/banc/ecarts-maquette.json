@@ -788,10 +788,40 @@
    "raison": "Paul, 16/10, 10:54 : « Le plus logique c'est qu'ils gardent la feuille du voisin pendant toute la correction. Ainsi pas d'allers retours, et ce qu'ils voient à l'écran leur parle évidemment de la copie du voisin et pas de la leur. » ; phrases validées à 11:02 (« Voilà. ») : « Donne ta feuille à … et prends la sienne », plus de « montre ta feuille », et à « Révéler », la moitié parle au voisin (« Élise avait juste ! », « Sa réponse », « Gatien, sur la feuille d'Élise, … »). Micro 8.0.3 de la conscience n°12."
   },
   {
-   "scene": "*",
+   "scene": "c-corr-q2-avant",
    "sorte": "geste-en-trop",
    "motif": "^\\+#$",
-   "raison": "Paul, 16/10, 11:02 : « je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc. » : la carte « 📄 Temps pour lire la feuille du voisin » a le champ du temps et « +5 », « +10 », « +30 », comme les chronos des questions. Micro 8.0.3 de la conscience n°12."
+   "raison": "Paul, 16/10, 11:02 : « je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc. » : la carte « 📄 Temps pour lire la feuille du voisin » a le champ du temps et « +5 », « +10 », « +30 », comme les chronos des questions. Micro 8.0.3 de la conscience n°12. (QCM-4, contrôle à froid : limité aux scènes de la correction à la console, où vit la carte ; ailleurs un « +5 » en trop reste un écart.)"
+  },
+  {
+   "scene": "c-corr-q2-lu",
+   "sorte": "geste-en-trop",
+   "motif": "^\\+#$",
+   "raison": "Paul, 16/10, 11:02 : « je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc. » : la carte « 📄 Temps pour lire la feuille du voisin » a le champ du temps et « +5 », « +10 », « +30 », comme les chronos des questions. Micro 8.0.3 de la conscience n°12. (QCM-4, contrôle à froid : limité aux scènes de la correction à la console, où vit la carte ; ailleurs un « +5 » en trop reste un écart.)"
+  },
+  {
+   "scene": "c-corr-q2-apres",
+   "sorte": "geste-en-trop",
+   "motif": "^\\+#$",
+   "raison": "Paul, 16/10, 11:02 : « je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc. » : la carte « 📄 Temps pour lire la feuille du voisin » a le champ du temps et « +5 », « +10 », « +30 », comme les chronos des questions. Micro 8.0.3 de la conscience n°12. (QCM-4, contrôle à froid : limité aux scènes de la correction à la console, où vit la carte ; ailleurs un « +5 » en trop reste un écart.)"
+  },
+  {
+   "scene": "c-corr-q3-apres",
+   "sorte": "geste-en-trop",
+   "motif": "^\\+#$",
+   "raison": "Paul, 16/10, 11:02 : « je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc. » : la carte « 📄 Temps pour lire la feuille du voisin » a le champ du temps et « +5 », « +10 », « +30 », comme les chronos des questions. Micro 8.0.3 de la conscience n°12. (QCM-4, contrôle à froid : limité aux scènes de la correction à la console, où vit la carte ; ailleurs un « +5 » en trop reste un écart.)"
+  },
+  {
+   "scene": "c-corr-q1-apres",
+   "sorte": "geste-en-trop",
+   "motif": "^\\+#$",
+   "raison": "Paul, 16/10, 11:02 : « je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc. » : la carte « 📄 Temps pour lire la feuille du voisin » a le champ du temps et « +5 », « +10 », « +30 », comme les chronos des questions. Micro 8.0.3 de la conscience n°12. (QCM-4, contrôle à froid : limité aux scènes de la correction à la console, où vit la carte ; ailleurs un « +5 » en trop reste un écart.)"
+  },
+  {
+   "scene": "c-papier-correction",
+   "sorte": "geste-en-trop",
+   "motif": "^\\+#$",
+   "raison": "Paul, 16/10, 11:02 : « je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc. » : la carte « 📄 Temps pour lire la feuille du voisin » a le champ du temps et « +5 », « +10 », « +30 », comme les chronos des questions. Micro 8.0.3 de la conscience n°12. (QCM-4, contrôle à froid : limité aux scènes de la correction à la console, où vit la carte ; ailleurs un « +5 » en trop reste un écart.)"
   }
  ],
  "horsApp": {

@@ -72,7 +72,7 @@ async function taper(p, moitie, placeholder, valeur) {
     const prof = await ouvrir("?mode=prof", 1536, 864);
     // K1 — lancer la séance de la classe, sur l'évaluation d'essai, par le geste
     await cliquer(prof, /^Pilotage$/);
-    await prof.evaluate(() => { for (const s of document.querySelectorAll("select")) { const o = [...s.options].find(x => /3 ESSAI/.test(x.textContent)); if (o) { s.value = o.value; s.dispatchEvent(new Event("change", {bubbles: true})); } } });
+    await prof.evaluate(() => { for (const s of document.querySelectorAll("select")) { const o = [...s.options].find(x => /3 ESSAI|3e Essai/.test(x.textContent)); if (o) { s.value = o.value; s.dispatchEvent(new Event("change", {bubbles: true})); } } });
     await pause(300);
     await prof.evaluate(() => { for (const s of document.querySelectorAll("select")) { const o = [...s.options].find(x => /Évaluation d'essai/.test(x.textContent)); if (o) { s.value = o.value; s.dispatchEvent(new Event("change", {bubbles: true})); } } });
     await pause(300);

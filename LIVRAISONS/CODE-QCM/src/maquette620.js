@@ -407,7 +407,7 @@ function LancementTestV(){
   // dans l'ordre de la liste (la classe de test n'a pas de QCM précédent)
   if(!MODE_TEST.paires) MODE_TEST.paires = TEST_PAIRES30.map(function(p){ return [v3Slug(p[0]), p[1] ? v3Slug(p[1]) : null]; });
   return h("div", {className:"card"},
-    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Ta vraie console d'avant l'heure, sur la classe de test et la démo.")),
+    h("h2", null, "🎯 Lancer une nouvelle séance", InfoI("Ta vraie console d'avant l'heure, sur la classe de test et l'évaluation choisie : la démo, ou une de ta liste, jouée sur une copie qui ne touche pas la vraie.")),
     h("div", {className:"lancer-grid"},
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI("La classe de test : 30 élèves fictifs, effacés à la sortie.")), h("select", {value:"c", readOnly:true, title:"La classe de test."}, h("option", {value:"c"}, "🧪 " + CLASSE_TEST + " (" + SCN.roster(CLASSE_TEST).length + " élèves)"))),

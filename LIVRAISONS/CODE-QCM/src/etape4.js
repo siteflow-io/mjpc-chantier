@@ -511,7 +511,7 @@ var BOUTONS_EPROUVER = [
   ["🔄 Relire l'état", "Relit l'état de la séance de test au hub.", "🔄 État relu : question 3, réflexion."]
 ];
 var BOUTONS_CAS = ["Le cas ambigu", "Un faux « Oui »", "Rien de dit à la fin du temps", "Un lecteur qui clique « aucun » partout", "Deux élèves d'accord pour mentir", "Trouvée au dernier moment", "Une tablette en panne", "Un départ en cours de séance"].map(function(t){
-  return ["🎬 " + t, "Remplit les tablettes, les feuilles et les clics de ce cas, sur la démo, jusqu'à son moment ; tu joues la suite.", "🎬 Cas préparé : « " + t + " ». À toi de jouer la suite."];
+  return ["🎬 " + t, "Remplit les tablettes, les feuilles et les clics de ce cas, sur l'évaluation jouée en test, jusqu'à son moment ; tu joues la suite.", "🎬 Cas préparé : « " + t + " ». À toi de jouer la suite."];
 });
 function HautModeTest(phase){
   return h(F, null,

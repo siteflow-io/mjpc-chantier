@@ -22714,3 +22714,19 @@ Envoyé à Paul, mot pour mot :
 15. Mais ta capture montre un vrai défaut : sur la même ligne, la note est « — » et « Maîtrise de la note » dit « Maîtrise insuffisante », comme la colonne de la compétence. Ces deux colonnes sont calculées sur la seule Q1, sans regarder si la note est complète. Il faudrait « — » dans ces deux colonnes tant que la note est « — ». Je l'ai inscrit aux dettes (n°12 · 217), et je le fais en micro si tu me le dis.
 
 16/10/2026 07:47 MEMO
+
+---
+
+## TOUR 732 — réveil programmé de 08:06 (pas Paul)
+
+Le contrôle programmé (`trig_01EKrrQSNj2wDy76ah4f42nb`, arrivé à 08:11). Lu : l'assemblage de 07:42 s'était arrêté vers 07:50 avec l'atelier (le banc commun, l'heure de demain, 7-b et 7-c sans résultat) ; ses bancs, joués tous ensemble sur 2 processeurs, avaient des échecs de temps (reprises 2, 3, 4) et trois qui venaient du nom à l'écran (7-a lisait « ESSAI » en capitales, 7-d cherchait la classe par « 3 ESSAI » et lançait « 3 BANC », demain et le PDF attendaient « 3 ESSAI »). Fait : ces bancs suivent le nom à l'écran (7-d choisit la classe par sa clé) et `ecarts-maquette.json` nomme l'écart à la maquette (`99a7de1d`) ; les bancs rejoués deux par deux : reprises 2, 3, 4, 5, 7-a à 7-e, l'heure de demain 109/109, les gestes rares 47/47 sans échec ; le banc commun 211/211 joué seul (3 échecs d'une seule cause en parallèle : le second clic de Julien à Q2 arrivé trop tard) ; `banc-jamais` 10 échecs (12 sur la 8.0.1, banc d'exploration) ; la fidélité, aucun écart nouveau sur les 97 scènes atteintes. `DEFAUTS-OUVERTS.md` (`435a93d4`), `AUDITS/CODE-QCM-MICRO-NOM-CLASSES-16-10/` (`02264b1d`) ; `qcm/sessionActive` vide ; production `23f480d` (point de retour 8.0.1 blob `552b5a07ba1f`, journal, OÙ-TROUVER-QUOI, dette 215 ✔), servie bit à bit à 08:57:32.
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.2, en ligne depuis 08:57 (le fichier en ligne est identique à celui contrôlé) · **en cours chez l'exécutant :** rien, les exécutants restent arrêtés · **ouvert :** 13 (le « tu » de « Révéler ») et 15 (la maîtrise sans note), qui attendent ta réponse
+
+11. Le nom des classes est en ligne depuis 08:57. Tous les bancs passent, avec mes contrôles et mes sondes ; aucune séance n'était en cours. Tes classes s'écrivent partout « 3e Dylan Bob », « 3e Franklin Aretha », « 4e Hugo », « 4e Turing », comme dans correction dictée ; « 3E Charles de Gaulle », écrite à la main avec ses minuscules, reste telle quelle, comme dans correction dictée aussi. Une page déjà ouverte, sur ta console ou sur une tablette, garde l'ancien affichage jusqu'à ce qu'elle se recharge. Si un écran ne va pas, je remets la 8.0.1 en une minute. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=prof&v=802
+
+Tes tests (point 11), dans l'ordre. Dans « 🎯 Pilotage classe », ouvre le menu « Classe » : « 4e Hugo (… élèves) », plus aucun « 4_hugo ». Choisis une classe, une évaluation, puis « 🚀 Lancer la séance » : l'appel dit « 4e Hugo — … élèves » ; « Annuler » ne lance rien. Dans « Données », « 📊 Résultats » range tes séances sous « 👥 » et le nom lisible de la classe. À ta prochaine séance, le titre de ta console finit par « — 4e Hugo », et une tablette où un élève est entré dit « 4E HUGO · » puis son nom.
+
+16/10/2026 08:58 MEMO

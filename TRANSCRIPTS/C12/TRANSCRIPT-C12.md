@@ -22892,3 +22892,27 @@ Envoyé à Paul, mot pour mot :
 29. Les questions jamais posées : QCM-1 n'a rien codé, et pose la question ainsi : « Faut-il retirer du total une question que personne n'a eue (comme une question écartée) ? Je ne le tranche pas. » Ma proposition reprend la sienne.
 
 16/10/2026 14:44 MEMO
+
+---
+
+## TOUR 740 — Paul, 16/10 14:56
+
+Paul, mot pour mot :
+
+26.  Les deux: rouvrir ET ajouter. Pour le resrte, tes propositions?
+
+Lu : `ACT.ajouterTemps` de QCM-1 (14:15), `EcrLectureSeulH` et la branche « seul » de `MoitieH` (`c3-tablettes.js` l. 357, QCM-2 : `LignesAttest2Papier()`), `S.note` (la question non révélée reste « n » même lue le soir) ; l'élision corrigée par QCM-2 à 14:40 (`6e7d97e5`). Fait : la décision de 26 écrite aux exécutants (`56624378`).
+
+Envoyé à Paul, mot pour mot :
+
+26. Noté, et c'est ce que fait déjà le code de QCM-1. Avant le 0, « +10 » ajoute 10 secondes au temps qui reste ; après le 0, il rouvre la lecture pour 10 secondes ; dans les deux cas, la question gagne 10 secondes. Je l'ai écrit aux exécutants.
+
+27. Ma proposition : garder ce que QCM-2 a fait. Seul, l'élève corrige sa propre feuille, exactement comme sur papier. Les lignes du papier sont déjà les tiennes, et à chaque question, son écran lui dit déjà « Qu'as-tu écrit sur ta feuille ? ». Il n'a donc rien de nouveau à lire.
+
+28. Ma proposition : le temps tapé ne part qu'à Entrée, ou quand tu quittes le champ, parce qu'un nombre n'est connu qu'une fois tapé en entier. Pendant la frappe, le chrono continue comme avant. « +5 », « +10 » et « +30 » partent tout de suite. Si QCM-4 mesure le même effet sur les chronos des questions, la même règle vaut pour eux ; sa mesure arrive avec le verdict.
+
+29. Deux propositions, parce que ta séance de 07:24 a les deux cas. Une question que personne n'a eue sort du total, comme une question écartée. Une question posée mais jamais corrigée en classe, comme tes Q2 à Q11, compte dès que tu as lu la feuille le soir, dans « Lire les copies ». Aujourd'hui, ta lecture du soir s'y enregistre, mais la note l'ignore tant que la question n'a pas été révélée en classe. Avec les deux, la note d'une séance arrêtée avant la fin peut devenir complète.
+
+Tu valides 27, 28 et 29 ? Si oui, je l'écris aux exécutants, et ce sont eux qui le codent.
+
+16/10/2026 14:58 MEMO

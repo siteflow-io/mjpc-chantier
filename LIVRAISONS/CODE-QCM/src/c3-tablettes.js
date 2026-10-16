@@ -351,9 +351,10 @@ function MoitieH(p, cote, autreP){
   if(ph === "b") return (cote === actif && !seul || seul && SCN.ditB(p, qi)) && SCN.reponse(p, qi) ? EcrDeclareH(e, qi, reste) : cote === actif || seul ? EcrAttente(e) : voile();
   if(ph === "rouvert") return m.pour === p ? EcrReponse(e, qi, ORD[qi][p], TABL[p][qi], reste) : m.pour && m.pour === vSlug && !seul ? Voile(v, false, e) : EcrAttente(e);
   if(ph === "estim") return EcrEstim(e, ESTIM[p] || null);
+  // (16/10, contrôle à froid) seul, l'élève lit et corrige sa propre feuille : les lignes de la variante papier, pas « Donne ta feuille à <lui-même> »
   if(ph === "att2"){
     var a2 = attestH(p, 2);
-    return a2.fini ? EcrAttenteCorr(e) : h(AttestCoches, {key:"a2" + p, e:e, lignes:papierH() ? LignesAttest2Papier() : LignesAttest2(e, e.voisin), n0:a2.lignes, attest:2, fini:a2.fini, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", titrePage:"📝 Correction", pret:function(){ return EcrAttenteCorr(e); }});
+    return a2.fini ? EcrAttenteCorr(e) : h(AttestCoches, {key:"a2" + p, e:e, lignes:papierH() || seul ? LignesAttest2Papier() : LignesAttest2(e, e.voisin), n0:a2.lignes, attest:2, fini:a2.fini, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", titrePage:"📝 Correction", pret:function(){ return EcrAttenteCorr(e); }});
   }
   // sur papier (t-papier-correction) : pas de lecture du voisin ; la réponse quand Paul révèle
   if(papierH() && (ph === "lecture" || ph === "revele")) return ph === "revele" ? EcrRevele(e, qi, {papier:true}) : EcrAttente(e);

@@ -22846,3 +22846,27 @@ Envoyé à Paul, mot pour mot :
 24. Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
 
 16/10/2026 13:50 MEMO
+
+---
+
+## TOUR 738 — Paul, 16/10 14:38
+
+Paul, mot pour mot :
+
+1 2 3 ont livré, 4 est encore en cours
+
+Lu sur `code-qcm` : les relectures de QCM-1 (14:00, `e3a45a44` ; 14:15, `3673a83a`), QCM-2 (14:25, `40785865`, `97266812`), QCM-3 (13:56, `a2fb624f`, `7d60f8da`), QCM-4 (14:10, `649cd4f9` ; ETAT 14:31) ; `DEMANDES.md` (QCM-4, 14:10). Fait : en tête de la section, l'élision donnée à QCM-2 avant le verdict, « +10 » après le 0 suit l'infobulle, les trois questions posées à Paul (`e195fca6`, `021cc6d0`), et la mesure du temps tapé pendant un tour demandée à QCM-4 ; le contrôle du VERDICT programmé à 15:26 (`trig_017aHHtwSaV5UMBxqcqeivXa`).
+
+Envoyé à Paul, mot pour mot :
+
+25. Ce que les exécutants ont trouvé dans mon code, et c'est beaucoup. QCM-4 : six de ses vérifications, que j'avais affaiblies en touchant ses bancs ; elles acceptaient l'ancien texte ou le nouveau, donc elles passaient quoi qu'il arrive. Il a aussi trouvé un écart à la maquette que j'avais excusé sur tous les écrans, alors qu'il ne valait que pour la correction ; il a tout resserré. QCM-3 : trois oublis dans le soir. La fiche de l'élève montrait la maîtrise sans note complète, le CSV ne suivait pas le tableau, et une classe sortie du registre gardait son nom brut. QCM-1 : « questions pas encore lues » comptait aussi les questions jamais posées. QCM-4 encore : « la feuille de Emma », sans élision, dans mes phrases ; et « +10 » ne rouvrait pas une lecture figée depuis plus de 10 secondes, alors que l'infobulle que j'avais écrite le promettait. QCM-2 : l'élève seul lisait « Donne ta feuille à Clara et prends la sienne », Clara étant lui-même ; ce défaut existait avant, mais mon micro l'a aggravé.
+
+26. Chaque défaut a été corrigé par son propriétaire, sauf l'élision, que j'ai donnée à QCM-2 pour avant le verdict. « +10 » après le 0 rouvre maintenant la lecture pour 10 secondes, comme l'infobulle le dit. QCM-4 rejoue tout ; son verdict est annoncé vers 15:22, et mon contrôle est programmé à 15:26. Si ça va, et si aucune séance n'est en cours, les corrections partent en ligne.
+
+27. Trois questions pour toi. La première : l'élève seul, à « Avant la correction ». Seul, il corrige sa propre feuille, alors QCM-2 lui a donné les lignes de la séance sur papier, que tu as déjà validées : « Maintenant, la correction. », la ligne du stylo vert, « ✅ Bravo ! Sur ta feuille, mets simplement un V vert dans la marge à côté de ta réponse. », « ❌ Tu avais faux. Barre ta réponse et écris la bonne réponse en entier en vert à côté. », puis les compétences. Ça te va ?
+
+28. La deuxième : le temps tapé à la lecture part chiffre par chiffre. Si tu tapes « 130 », le « 1 » part d'abord, et les lectures se figent le temps de finir la frappe. Ma proposition : dans cette carte, le temps tapé ne part qu'à Entrée, ou quand tu quittes le champ ; « +5 », « +10 » et « +30 » partent tout de suite. Les chronos des questions ont le même champ, et je fais mesurer s'ils ont le même effet. Oui ou non ?
+
+29. La troisième : quand une séance est terminée avant la fin, les questions jamais posées restent dans le total. Par exemple, la note est « 0 / 3 » quand seule Q1 a été posée, et elle ne sera jamais complète, puisque Q2 et Q3 ne seront jamais lues. Ma proposition : une question que personne n'a eue sort du total, comme une question écartée. Oui ou non ?
+
+16/10/2026 14:41 MEMO

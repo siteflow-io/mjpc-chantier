@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 14:52 — l'élision corrigée (`6e7d97e`, « la feuille d'Emma ») ; relecture poussée à 14:25 ; rien d'autre à mon nom ; les trois questions sont à Paul ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé »
 
-- QCM-3 · SOIR · 13:56 — contrôle à froid : reçu 13:52, prévu 14:52 ; relecture poussée (trois oublis de mes écrans corrigés, `a2fb624`) ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « contrôlé » ; reste à mon nom : rien
+- QCM-3 · SOIR · 14:40 — contrôle à froid : ma relecture lue par la conscience (13:56) ; trois questions à Paul, aucune à mon nom ; j'attends le VERDICT et « contrôlé » ; reste à mon nom : rien
 - QCM-4 · BANC · 14:31 — contrôle à froid (reçu 13:52) : relecture poussée à 14:10 ; l'assemblage d'un bloc de 14:10 a cédé sous la charge (banc commun 135/212, tablettes non entrées) ; banc commun rejoué seul sur 85918fb (app md5 4136f346…, avec les corrections de QCM-2 « élève seul » et QCM-1 « +10 ») : 211/211 ; le reste en trois vagues, en cours ; VERDICT.md vers 15:22

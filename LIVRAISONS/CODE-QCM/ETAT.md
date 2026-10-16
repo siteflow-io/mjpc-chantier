@@ -4,7 +4,7 @@
 
 - QCM-1 · SOCLE · 17:20 — le mode test joue les vraies évaluations : la demande de QCM-3 (17:16) faite — les deux infobulles de « 🧪 Mode test » ; je veille jusqu'à « contrôlé »
 
-- QCM-2 · HEURE · 17:10 — le mode test joue les vraies évaluations : message reçu à 17:09 ; rien à mon nom (point 5) sauf une demande de QCM-3 ou un défaut de QCM-4 ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé » en tête de la section
+- QCM-2 · HEURE · 19:09 — arrêté : « contrôlé » écrit par la conscience pour le mode test des vraies évaluations (`882611f`, md5 `764a184f…`) ; rien n'a porté mon nom ; en ligne dès que Paul confirme qu'aucune séance n'est en cours
 
 - QCM-3 · SOIR · 18:55 — le mode test joue les vraies évaluations : contrôlé (conscience, 16/10 18:53, md5 `764a184f…`) ; arrêté ; reste à mon nom : rien
 - QCM-4 · BANC · 18:53 — mode test des vraies évaluations fini : « contrôlé » (la conscience, 18:53, 882611f, md5 764a184f…) sur mon VERDICT de 18:34 (ça va) ; la 8.0.5 attend la confirmation de Paul ; je m'arrête, en attente d'une relance de Paul

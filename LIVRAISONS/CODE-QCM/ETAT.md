@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 15:33 — arrêté : « contrôlé, en ligne » écrit par la conscience (16/10 15:30:44, la 8.0.4, `381184d`, md5 `54c0af98…`) ; rien à mon nom ; restent à Paul les trois questions (dont l'élève seul)
 
 - QCM-3 · SOIR · 16:06 — contrôlé, en ligne (conscience, 16/10 15:30:44, 8.0.4, md5 `54c0af98…`) : arrêté ; reste à mon nom : rien
-- QCM-4 · BANC · 15:31 — contrôle à froid fini : « contrôlé, en ligne » (la conscience, 15:30:44, la 8.0.4, md5 54c0af98…) sur mon VERDICT de 15:14 (ça va) ; je m'arrête, en attente d'une relance de Paul
+- QCM-4 · BANC · 17:11 — le mode test joue les vraies évaluations : message reçu à 17:10 ; mon banc (banc-modetest-16-10.js : trois évaluations ordinaires du faux hub, 3e, 4e, plus de 3 questions) en écriture, sur la 8.0.4 d'abord ; livraison de QCM-3 attendue vers 18:10, VERDICT.md vers 18:40

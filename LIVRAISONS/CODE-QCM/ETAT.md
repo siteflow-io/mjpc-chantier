@@ -4,7 +4,7 @@
 
 - QCM-1 · SOCLE · 14:15 — contrôle à froid : relecture poussée (14:02) ; « +10 » après le 0 (QCM-4, 14:10) corrigé dans `ACT.ajouterTemps` selon l'infobulle ; j'attends « contrôlé »
 
-- QCM-2 · HEURE · 14:52 — l'élision corrigée (`6e7d97e`, « la feuille d'Emma ») ; relecture poussée à 14:25 ; rien d'autre à mon nom ; les trois questions sont à Paul ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé »
+- QCM-2 · HEURE · 15:33 — arrêté : « contrôlé, en ligne » écrit par la conscience (16/10 15:30:44, la 8.0.4, `381184d`, md5 `54c0af98…`) ; rien à mon nom ; restent à Paul les trois questions (dont l'élève seul)
 
 - QCM-3 · SOIR · 15:15 — VERDICT de 15:14 : ça va (micros 252/252) ; rien à mon nom ; j'attends « contrôlé » de la conscience
 - QCM-4 · BANC · 15:31 — contrôle à froid fini : « contrôlé, en ligne » (la conscience, 15:30:44, la 8.0.4, md5 54c0af98…) sur mon VERDICT de 15:14 (ça va) ; je m'arrête, en attente d'une relance de Paul

@@ -215,9 +215,11 @@ async function entrerPaire(p, g, d, codeDe){
     const kF = await carte(); const fCF = await capt(prof, "4-console-a0");
     note("à 0, la carte de la console : " + JSON.stringify(kF && {v: kF.v, boutons: kF.boutons.map(b => b.t + (b.disabled ? " (fermé)" : ""))}) + " (" + fCF + ")");
     // « +10 » : la lecture se rouvre
-    const dA = etat().duree; const okP = await plus(10); await pause(1300);
+    const dA = etat().duree; const okP = await plus(10); const tP = Date.now(); await pause(1300);
     zA = await zoneTexte(pA, cA); const ouv = await O.choixOuverts(pA, cA, Q.choix); const fR = await capt(pA, "4-rouverte-plus10");
-    J.v(okP && etat().duree === dA + 10, H12, "à 0, « +10 » sur la carte : deroule/duree passe de " + dA + " à " + (dA + 10), "clic : " + okP + " · duree " + etat().duree + " · carte : " + JSON.stringify(kF && kF.boutons.map(b => b.t + (b.disabled ? " (fermé)" : ""))));
+    // l'infobulle : « Une lecture déjà figée à 0 se rouvre pour ces secondes » : il reste 10 s depuis le clic (au temps du relevé près)
+    const rP = resteBase(), attenduP = 10 - (Date.now() - tP) / 1000;
+    J.v(okP && rP != null && Math.abs(rP - attenduP) <= 1.5, H12, "à 0, « +10 » sur la carte : la lecture repart pour 10 s depuis le clic (l'infobulle)", "clic : " + okP + " · duree " + dA + " → " + etat().duree + " · reste " + (rP == null ? "?" : rP.toFixed(1)) + " s, attendu ≈ " + attenduP.toFixed(1) + " s · carte : " + JSON.stringify(kF && kF.boutons.map(b => b.t + (b.disabled ? " (fermé)" : ""))));
     J.v(!/Temps fini/.test(zA) && ouv.length > 0, H2, "après « +10 », la lecture de " + pre(slA) + " se rouvre (plus de « Temps fini », ses choix ouverts)", "(" + fR + ") ouverts : " + JSON.stringify(ouv) + " · reste base " + (resteBase() || 0).toFixed(1) + " s · " + zA.slice(0, 200));
     av = lect(slA); await cliquer(pA, new RegExp("^" + esc(autre) + "$"), cA, {apres: 700}); const ap = lect(slA);
     J.v(ap !== av, H12, "après « +10 », un clic sur « " + autre + " » change de nouveau la lecture dans la base", "avant " + av + " · après " + ap);

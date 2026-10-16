@@ -5,12 +5,13 @@
 //   b. banc-micros-16-10-b.js — 8.0.3, la correction avec un voisin (de « Avant la correction » à la co-évaluation), un élève seul, sur papier ;
 //      la console (« n questions pas encore lues », « — », « pas encore lue ») ; une séance terminée avant la fin de la correction ;
 //   c. banc-micros-16-10-c.js — 8.0.3, la carte du temps de la lecture (« +5 », « +10 », « +30 », un temps tapé, la lecture figée à 0 puis rouverte).
+//   d. banc-micros-16-10-d.js — la mesure demandée par la conscience à 14:39 : « 45 » tapé pendant un tour (chronos des questions), en notes.
 //   APP_FILE=<app> node banc/banc-micros-16-10.js <dossier de sortie>   (SEUL=1 : les trois l'un après l'autre)
 const path = require("path"), fs = require("fs"), cp = require("child_process");
 const SORTIE = path.resolve(process.argv[2] || path.join(__dirname, "..", "sorties", "micros-" + Date.now()));
 fs.mkdirSync(SORTIE, {recursive: true});
 const t0 = Date.now();
-const jeux = ["a", "b", "c"];
+const jeux = ["a", "b", "c", "d"];
 const jouer = x => new Promise(ok => {
   const p = cp.spawn(process.execPath, [path.join(__dirname, "banc-micros-16-10-" + x + ".js"), SORTIE], {env: process.env, stdio: ["ignore", "ignore", "pipe"]});
   let err = ""; p.stderr.on("data", d => { err += d; });

@@ -22,11 +22,11 @@ function LignesAttest2(e, v){
     "Maintenant, la correction. Donne ta feuille à " + v.prenom + " et prends la sienne : tu la gardes jusqu'à la fin de la correction.",
     // (reprise 7, point 14, Paul 15/10 09:19) la ligne du stylo vert, mot pour mot
     "Range ta trousse et ton stylo bleu ou noir : pour la correction, garde seulement ton stylo vert.",
-    "Pour chaque question, " + v.prenom + " clique ce que dit ta feuille. Toi, tu cliques ce que dit la feuille de " + v.prenom + ".",
-    "Puis tu corriges la feuille de " + v.prenom + " en vert, comme sa moitié de la tablette te le dit.",
+    "Pour chaque question, " + v.prenom + " clique ce que dit ta feuille. Toi, tu cliques ce que dit la feuille " + deNom(v.prenom) + ".",
+    "Puis tu corriges la feuille " + deNom(v.prenom) + " en vert, comme sa moitié de la tablette te le dit.",
     "Lis avec soin, et clique ce que tu lis.",
     "À la fin, " + v.prenom + " dira si tu as bien lu sa feuille.",
-    "Deux compétences sont évaluées : « " + AUTO[0] + " » et « " + AUTO[1] + " ». Tu gardes ton point d'autonomie si tu as dit la vérité pendant les questions, et si tu lis et corriges avec soin la feuille de " + v.prenom + ". Sinon, ces deux compétences ne sont pas atteintes."
+    "Deux compétences sont évaluées : « " + AUTO[0] + " » et « " + AUTO[1] + " ». Tu gardes ton point d'autonomie si tu as dit la vérité pendant les questions, et si tu lis et corriges avec soin la feuille " + deNom(v.prenom) + ". Sinon, ces deux compétences ne sont pas atteintes."
   ];
 }
 function Attest2(e, n){ var v = autreDe(e); return h(AttestCoches, {e:e, lignes:LignesAttest2(e, v), n0:n, titre:"Avant la correction, " + e.prenom, bouton:"Je commence la correction", va:"t-attest-corr-fait", titrePage:"📝 Correction"}); }
@@ -76,7 +76,7 @@ function EcrLecture(e, qi, dit, chrono){
     Compteur(pastilles3(e, pos), pos),
     h("div", {className:"eleve-q-zone"}, QHead(qi, true), h("div", {className:"eleve-q-enonce"}, q.enonce),
       // (16/10, Paul, 10:54) chacun a déjà la feuille de son voisin : « montre ta feuille » ne se dit plus
-      h("div", {className:"decl-titre"}, v.prenom + ", lis la feuille de " + e.prenom + " : qu'a-t-" + il(e) + " écrit ?"),
+      h("div", {className:"decl-titre"}, v.prenom + ", lis la feuille " + deNom(e.prenom) + " : qu'a-t-" + il(e) + " écrit ?"),
       h("div", {className:"decl-consigne"}, "Clique sur le ou les choix qui disent la même chose que sa feuille. Les mots ne sont pas forcément les mêmes."),
       h("div", {className:"lecture-l"}, h("div", {className:"soin"}, "Lis avec soin : c'est ton point d'autonomie."), chrono != null && ChronoSaisie(chrono, q.reponse)),
       // (QCM-2) en direct, le voisin clique, et chaque clic s'enregistre (ELV.lire)
@@ -101,7 +101,7 @@ function EcrCorrA3(e, dit){
       h("div", {className:"correction-compteur-pastilles"}, EV3.questions.map(function(x, i){ return h("span", {key:i, className:"correction-compteur-pastille vide"}, String(i+1)); }))),
     h("div", {className:"eleve-q-zone"}, QHead3(QI3, true), h("div", {className:"eleve-q-enonce"}, q.enonce),
       h("div", {className:"montre"}, "📄 " + e.prenom + ", montre ta feuille à " + v.prenom + "."),
-      h("div", {className:"decl-titre"}, v.prenom + ", lis la feuille de " + e.prenom + " : qu'a-t-" + il(e) + " écrit ?"),
+      h("div", {className:"decl-titre"}, v.prenom + ", lis la feuille " + deNom(e.prenom) + " : qu'a-t-" + il(e) + " écrit ?"),
       h("div", {className:"decl-consigne"}, "Clique sur le ou les choix qui disent la même chose que sa feuille. Les mots ne sont pas forcément les mêmes."),
       h("div", {className:"lecture-l"}, h("div", {className:"soin"}, "Lis avec soin : c'est ton point d'autonomie."), ChronoSaisie(9, 20)),
       h("div", {className:"eleve-choix long"},

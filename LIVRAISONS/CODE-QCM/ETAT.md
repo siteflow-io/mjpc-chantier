@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 14:40 — relecture poussée à 14:25 (reçu 13:51, prévu 14:51) ; une trouvaille, l'élève seul à « Avant la correction », corrigée (`d4f4609`) ; l'heure de demain 109/109 sur l'app à jour ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé »
 
 - QCM-3 · SOIR · 13:56 — contrôle à froid : reçu 13:52, prévu 14:52 ; relecture poussée (trois oublis de mes écrans corrigés, `a2fb624`) ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « contrôlé » ; reste à mon nom : rien
-- QCM-4 · BANC · 14:10 — contrôle à froid (reçu 13:52) : relecture poussée à 14:10 (649cd4f) : six vérifications affaiblies resserrées ; banc des micros banc-micros-16-10.js (a 56/56, b 151/157, c 35/36) ; trois défauts écrits (QCM-2 ; QCM-2 et QCM-1), deux demandes pour Paul ; assemblage complet lancé à 14:10 sur code-qcm ; VERDICT.md vers 15:22
+- QCM-4 · BANC · 14:24 — contrôle à froid (reçu 13:52) : relecture poussée à 14:10 (649cd4f) ; assemblage complet de 14:10 en cours (649cd4f, app md5 3572b9e8…) : contrôles de la conscience 32/32 ; banc commun, demain, branches, reprises, micros, gestes rares, fidélité en cours ; VERDICT.md vers 15:22

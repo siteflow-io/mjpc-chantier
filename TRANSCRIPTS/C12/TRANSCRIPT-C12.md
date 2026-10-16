@@ -22828,3 +22828,21 @@ Envoyé à Paul, mot pour mot :
 22. Calendrier : verdict à 13:45, mon contrôle à 13:46 (je l'ai programmé). S'il y a des corrections, elles partent en ligne à 14:00, seulement si aucune séance n'est en cours. S'ils ne trouvent rien, la 8.0.3 reste telle quelle et je te le dis.
 
 16/10/2026 12:13 MEMO
+
+---
+
+## TOUR 737 — réveil programmé de 13:46 (pas Paul)
+
+Le contrôle programmé (`trig_01URdJGpgHfwXtzz8MjWHiVj`, arrivé à 13:47). Lu : `code-qcm` au hub de GitHub (`git ls-remote`) à `1663e226`, mon commit de 12:12 : aucun commit des exécutants depuis ; `ETAT.md` : les quatre lignes du 15/10, de 12:31 à 12:53 (« arrêté ») ; pas de `VERDICT.md` neuf. `qcm/sessionActive` vide. Fait : la section recalée en délais (« une heure après la réception du message », « trente minutes plus tard »), `6531db07`.
+
+Envoyé à Paul, mot pour mot :
+
+22. Rien n'est arrivé. À 13:48, aucun exécutant n'avait poussé quoi que ce soit depuis mon message de 12:12, et leurs lignes d'état datent encore d'hier midi : ils n'ont pas reçu le message, ou ne l'ont pas encore traité. Rien n'est donc contrôlé, et la 8.0.3 reste en ligne telle quelle ; aucune séance n'est en cours.
+
+23. Les heures du message sont passées : je les ai remplacées par des délais dans la section. Voici le message à coller, le même dans les quatre sessions, valable à l'heure où tu le colles :
+
+« Contrôle à froid des micros de la conscience : lis la section « Contrôle à froid des micros de la conscience — 16/10/2026 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), et fais ta part. Chacun relit ce que la conscience a changé dans ses fichiers ; QCM-4 rejoue tout avec son propre banc. Relecture poussée une heure après ce message, avec ta ligne dans ETAT.md ; QCM-4 pousse VERDICT.md trente minutes plus tard. Tu tournes jusqu'à ce que la conscience écrive « contrôlé » en tête de ce fichier. »
+
+24. Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
+
+16/10/2026 13:50 MEMO

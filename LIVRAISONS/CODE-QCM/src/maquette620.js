@@ -180,13 +180,25 @@ function preparerModeTest(){
   var db = v3db(), amen = {};
   TEST_NOMS.forEach(function(n){ amen[v3Slug(n)] = {sexe:TEST_F[pre(n)] ? "f" : "m"}; });
   db.ref("classes/" + CLASSE_TEST).once("value").then(function(s){ if(!s.val()) return v3Set("classes/" + CLASSE_TEST, {nom:CLASSE_TEST, niveau:"3e", archivee:false, eleves:TEST_NOMS.slice(), amenagements:amen}); });
-  db.ref(v3Q("evaluations/" + TEST_EVAL)).once("value").then(function(s){ if(!s.val()){ var d = demoBrute(); d.demo = null; d.test = true; d.chapitre = "3e-ch1";
-    d.questions = d.questions.map(function(q){ return Object.assign({}, q, {competences:["c4-lire-01"], verifie:"retrouver la réponse du cours"}); });
-    return v3Set(v3Q("evaluations/" + TEST_EVAL), v3Sans(d)); } });
+  MODE_TEST.choix = "demo";   // à chaque entrée, la démo est choisie par défaut
+  db.ref(v3Q("evaluations/" + TEST_EVAL)).once("value").then(function(s){ if(!s.val()) return v3Set(v3Q("evaluations/" + TEST_EVAL), copieTestV("demo")); });
   if(typeof mjpcEmpreinte === "function" && typeof mjpcSelAleatoire === "function")
     db.ref("codes/" + v3Slug(TEST_NOMS[0])).once("value").then(function(s){ if(s.val()) return;
       TEST_NOMS.reduce(function(p, n, i){ return p.then(function(){ var sel = mjpcSelAleatoire(); return Promise.resolve(mjpcEmpreinte(testCode(i), sel)).then(function(emp){ return v3Set("codes/" + v3Slug(n), {name:n, classe:CLASSE_TEST, createdAt:Date.now(), sel:sel, empreinte:emp, chiffre:"test"}); }); }); }, Promise.resolve()); });
 }
+/* (16/10, Paul 16:56, 17:02 ; cadrage 559) le mode test joue la démo par défaut, ou n'importe quelle évaluation prête de la liste ;
+   il joue toujours une copie (evaluations/_test_evaluation-qcm, que la purge efface) : la vraie évaluation n'est jamais écrite */
+function copieTestV(id){
+  if(id === "demo" || !id){ var d = demoBrute(); d.demo = null; d.test = true; d.chapitre = "3e-ch1";
+    d.questions = d.questions.map(function(q){ return Object.assign({}, q, {competences:["c4-lire-01"], verifie:"retrouver la réponse du cours"}); });
+    return v3Sans(d); }
+  var b = v3Evals()[id]; if(!b) return null; var c = JSON.parse(JSON.stringify(b));
+  var o = {titre:c.titre, chapitre:c.chapitre || null, sansChapitre:c.sansChapitre || null, mode:c.mode || "strict", questions:c.questions, test:true, demo:null, createdAt:Date.now(), version:1};
+  return v3Sans(o);
+}
+function evalsTestV(){ var p = typeof evalsPretes === "function" ? evalsPretes() : []; return p.filter(function(e){ return e && e.id && e.id !== "demo" && String(e.id).charAt(0) !== "_" && !e.demo && !e.test; }); }
+function choixTestV(){ var c = MODE_TEST.choix || "demo"; if(c !== "demo" && !evalsTestV().some(function(e){ return e.id === c; })) c = "demo"; return c; }
+function ecrireCopieTest(id){ var c = copieTestV(id); return c ? v3Set(v3Q("evaluations/" + TEST_EVAL), c) : Promise.resolve(); }
 function purgerModeTest(){
   var db = v3db(); if(!db) return Promise.resolve();
   // pendant la sortie, un rendu du mode test ne recrée rien (la classe, l'évaluation, les codes) : la sortie finit hors du mode test
@@ -390,7 +402,7 @@ function ModeTestV(){ if(!MODE_TEST.sortie) MODE_TEST.actif = true; return h(Mod
    ne propose pas les classes et évaluations « _ ») ; les binômes de la classe de test, à glisser ; « 🚀 Lancer la séance » ouvre l'appel */
 function LancementTestV(){
   useV3();
-  var ev = evalV(TEST_EVAL) || demoV(), cl = (typeof LIVE !== "undefined" && LIVE.d && LIVE.d.classes || {})[CLASSE_TEST];
+  var choix = choixTestV(), autres = evalsTestV(), ev = choix === "demo" ? demoV() : evalV(choix), cl = (typeof LIVE !== "undefined" && LIVE.d && LIVE.d.classes || {})[CLASSE_TEST];
   if(!ev || !cl) return h("div", {className:"card"}, h("p", null, "Chargement…"));
   // dans l'ordre de la liste (la classe de test n'a pas de QCM précédent)
   if(!MODE_TEST.paires) MODE_TEST.paires = TEST_PAIRES30.map(function(p){ return [v3Slug(p[0]), p[1] ? v3Slug(p[1]) : null]; });
@@ -399,9 +411,11 @@ function LancementTestV(){
     h("div", {className:"lancer-grid"},
       h("div", null,
         h("div", {className:"field"}, h("label", null, "Classe", InfoI("La classe de test : 30 élèves fictifs, effacés à la sortie.")), h("select", {value:"c", readOnly:true, title:"La classe de test."}, h("option", {value:"c"}, "🧪 " + CLASSE_TEST + " (" + SCN.roster(CLASSE_TEST).length + " élèves)"))),
-        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("La démo par défaut, ou n'importe quelle évaluation de ta liste.")), h("select", {value:"e", readOnly:true, title:"L'évaluation jouée en test."}, h("option", {value:"e"}, ev.titre + " (" + ev.questions.length + " questions)"))),
+        h("div", {className:"field"}, h("label", null, "Évaluation", InfoI("La démo par défaut, ou n'importe quelle évaluation de ta liste.")), h("select", {value:choix, "data-eval-test":"1", title:"L'évaluation jouée en test.", onChange:function(e){ MODE_TEST.choix = e.target.value; ecrireCopieTest(MODE_TEST.choix); v3Avertir(); }},
+          h("option", {value:"demo"}, demoV().titre + " (" + demoV().questions.length + " questions)"),
+          autres.map(function(x){ return h("option", {key:x.id, value:x.id}, x.titre + " (" + x.questions.length + " questions)"); }))),
         h("div", {className:"duree-box"}, texteDureeV(ev, false)),
-        h("button", surClic(function(){ LIVE.classeSlug = CLASSE_TEST; return Promise.resolve(ACT.lancerSeance(CLASSE_TEST, TEST_EVAL, {paires:MODE_TEST.paires})).then(function(){ MODE_TEST.paires = null; }); },
+        h("button", surClic(function(){ LIVE.classeSlug = CLASSE_TEST; return ecrireCopieTest(choixTestV()).then(function(){ return ACT.lancerSeance(CLASSE_TEST, TEST_EVAL, {paires:MODE_TEST.paires}); }).then(function(){ MODE_TEST.paires = null; }); },
           {className:"btn btn-primary", title:"Ouvre l'appel de la classe de test, puis la séance, comme en classe."}), "🚀 Lancer la séance")),
       h("div", {className:"binomes-box"},
         h("div", {className:"tt"}, "📱 Binômes proposés — dans l'ordre de la liste : la classe de test n'a pas de QCM précédent", InfoIB("📱 Binômes proposés", "Glisse un nom sur un autre pour échanger deux élèves, ou sur une moitié vide pour l'y déplacer, jusqu'au bout de l'heure.")),

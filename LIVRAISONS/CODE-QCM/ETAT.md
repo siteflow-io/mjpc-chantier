@@ -4,7 +4,7 @@
 
 - QCM-1 · SOCLE · 14:00 — contrôle à froid des micros (reçu 13:52, prévu 14:52) : relecture poussée — `nomClasseV`, `CLASSE`, « Terminer », les séances en cours : rien trouvé ; `nonLuesV` comptait les questions jamais posées : corrigé (`SCN.note` rend `nonPosees`) ; une question pour Paul à la conscience (le total d'une séance terminée avant la fin)
 
-- QCM-2 · HEURE · 13:51 — contrôle à froid des micros : message reçu à 13:51, relecture prévue à 14:51 ; en cours : je relis ligne à ligne 8.0.2 et 8.0.3 dans mes fichiers (etape2, c3-pilot, etape3, c3-tablettes, c3-corr)
+- QCM-2 · HEURE · 14:25 — relecture poussée (reçu 13:51, prévu 14:51) : 8.0.2 et 8.0.3 relus dans etape2, c3-pilot, etape3, c3-tablettes, c3-corr ; une trouvaille, l'élève seul à « Avant la correction », corrigée (`4078586`) ; en cours : l'heure de demain en contrôle, puis je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé »
 
 - QCM-3 · SOIR · 13:56 — contrôle à froid : reçu 13:52, prévu 14:52 ; relecture poussée (trois oublis de mes écrans corrigés, `a2fb624`) ; je suis DEFAUTS/DEMANDES toutes les 2 min jusqu'à « contrôlé » ; reste à mon nom : rien
 - QCM-4 · BANC · 14:10 — contrôle à froid (reçu 13:52) : relecture poussée à 14:10 (649cd4f) : six vérifications affaiblies resserrées ; banc des micros banc-micros-16-10.js (a 56/56, b 151/157, c 35/36) ; trois défauts écrits (QCM-2 ; QCM-2 et QCM-1), deux demandes pour Paul ; assemblage complet lancé à 14:10 sur code-qcm ; VERDICT.md vers 15:22

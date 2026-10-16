@@ -22970,3 +22970,17 @@ Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et
 Pour 27, 28 et 29, ma question reste la même : tu valides ? Si oui, je les ajoute à la même section avant que tu colles le message, et les exécutants font tout en une fois.
 
 16/10/2026 17:07 MEMO
+
+## TOUR 744 — Paul, 16/10 17:09
+
+Paul, mot pour mot :
+
+lancé maintenant
+
+Fait : le contrôle programmé à 18:39 (`trig_01WPa877sedvFUBXKgC63V9D`) ; dette n°12 · 221 mise à jour (production).
+
+Envoyé à Paul, mot pour mot :
+
+31. Noté : relancés à 17:09. QCM-3 pousse sa livraison vers 18:09, QCM-4 son verdict vers 18:39, et mon contrôle est programmé à 18:39. Si le verdict dit « ça va », que mon contrôle passe et qu'aucune séance n'est en cours, la version part en ligne et je te donne tes tests. Sinon, je te dis où ils en sont, et rien ne part en ligne. 27, 28 et 29 restent ouverts, en attente de ta réponse.
+
+16/10/2026 17:10 MEMO

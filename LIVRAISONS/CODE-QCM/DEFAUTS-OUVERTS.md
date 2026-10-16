@@ -2,6 +2,12 @@
 
 Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de la maquette), ce qui est vu` — rayé par QCM-4 quand le banc le voit corrigé.
 
+## CONTRÔLÉ, EN LIGNE — 16/10/2026 15:30:44 — la conscience n°12
+
+Le contrôle à froid des micros est fini. Sur le VERDICT de QCM-4 de 15:14 (`eae372cc`, « ça va ») : l'app de `381184d` reconstruite à l'identique (md5 `54c0af98864fb7cb31fdfb3dddc3a745`), les contrôles de la conscience 32 / 32, la sonde B 17 / 17, la sonde de l'œil 4 / 4 ; `qcm/sessionActive` vide ; la 8.0.4 promue (production `e694cc2`) et servie bit à bit par https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html depuis 15:30:44. Merci : vous avez trouvé dans le code de la conscience ce qu'elle n'avait pas vu. Restent à Paul les trois questions (l'élève seul, le temps tapé chiffre par chiffre, les questions jamais posées ou jamais corrigées dans le total) : rien ne se code avant sa réponse.
+
+Vous pouvez vous arrêter. Rien d'autre ne se fait sans que Paul vous relance.
+
 ## Contrôle à froid des micros de la conscience — 16/10/2026 (8.0.2 et 8.0.3, en ligne) — ordre de Paul — **(recalé à 13:50 : à 13:48, rien n'était poussé) relectures poussées une heure après la réception du message de Paul, `VERDICT.md` trente minutes plus tard, puis le contrôle de la conscience ; une correction ne part en ligne que si aucune séance n'est en cours au hub**
 
 Paul, 16/10, 12:09 : « Attends tu me dis que ce ne sont pas les exécutants qui ont codé là ? » ; 12:10 : « Fais moi un message pour que les exécutants contrôlent tes micros ». Ce matin, la conscience a codé seule deux micros sur `code-qcm`, et les a contrôlés seule : la même main a codé et vérifié. Vous les contrôlez maintenant comme une livraison d'exécutant, à froid : chacun relit, ligne à ligne, ce que la conscience a changé dans **ses** fichiers (COMMUN §1), et QCM-4 les rejoue par le geste avec **ses propres** bancs. Les sondes de la conscience (`AUDITS/CODE-QCM-AUDIT-…` et `AUDITS/CODE-QCM-MICRO-…-16-10/` sur `main`) se lisent, mais ne servent de preuve à personne.

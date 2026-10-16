@@ -22758,3 +22758,31 @@ Les phrases (point 13), à valider ou à remplacer par les tiennes. Dans « Avan
 Si tu valides 13 à 15, je fais le tout en micro, avec 16, comme pour le nom des classes.
 
 16/10/2026 10:58 MEMO
+
+---
+
+## TOUR 734 — Paul, 16/10 11:02
+
+Paul, mot pour mot :
+
+Voilà. Par ailleurs il me semble que je n'ai pas la main sur le chrono de correction. Il le faut, je dois avoir les options rapides +5 +10 etc.
+
+Pris comme la validation de 13 à 15 et l'ordre du micro proposé au tour 733 (« Si tu valides 13 à 15, je fais le tout en micro, avec 16 »). Mesuré pour 17 : la carte « 📄 Temps pour lire la feuille du voisin » (`PilotCorrectionH`, `c3-corr.js`) sans champ ni bouton ; `ACT.ajouterTemps` allonge déjà la lecture en cours (`live/base.js`). Fait sur `code-qcm` (`9faf1e63`, `d7897c18`) : les phrases de 13 (`LignesAttest2`, `EcrLecture`, `EcrRevele` avec l'option `voisin` passée par `MoitieH`, `Coeval`), 14 et 15 (`nonLuesV`, `NonLuesV` ; `ResultatsV`, `BilanClasseH`, `NoteDirecteL`), 16 (`NoteDirecteL`), 17 (le geste de `TempsCarteH` sur la carte de la lecture) ; bancs 3 et 7-d accordés aux nouvelles phrases, `ecarts-maquette.json`. Épreuves sur l'app `156a13f0…` : la sonde du micro 44/44 (les 32 contrôles et M1 à M7 par le geste, dont « +10 », la lecture figée à 0 puis rouverte), la sonde du soir d'une séance corrigée à moitié 7/7, sonde B 17/17, sonde de l'œil 4/4 ; les bancs de QCM-4 deux par deux, tous sans échec, `banc-jamais` comme avant ; la fidélité, aucun écart nouveau non nommé (`AUDITS/CODE-QCM-MICRO-0803-16-10/`). `qcm/sessionActive` vide ; production `f3781f2`, servie bit à bit à 11:52:40.
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.3, en ligne depuis 11:52 (le fichier en ligne est identique à celui contrôlé) · **en cours chez l'exécutant :** rien, les exécutants restent arrêtés · **ouvert :** rien de neuf
+
+13. C'est en ligne : chacun garde la feuille de son voisin pendant toute la correction, avec les phrases que tu as validées. Avant la correction, l'élève lit « Donne ta feuille à Léa et prends la sienne : tu la gardes jusqu'à la fin de la correction. » et « Puis tu corriges la feuille de Léa en vert, comme sa moitié de la tablette te le dit. » ; à « Révéler », la moitié de Julien dit par exemple « Léa, sur la feuille de Julien, barre sa réponse et écris la bonne réponse en entier en vert à côté. » ; en tête de la co-évaluation, « 📄 Léa, rends sa feuille à Julien. ». Un élève seul, ou une séance sur papier, garde ses phrases d'avant.
+
+14. Dans ta console, la note s'affiche toujours, telle qu'elle est : le tableau de la séance fait comme ton bilan de classe et « Lire les copies », avec dessous le nombre de questions pas encore lues. Sur une séance corrigée à moitié, comme ta séance de 07:24, tu lis par exemple « 1/3 », puis « 2 questions pas encore lues ».
+
+15. La maîtrise de la note et les compétences restent « — » jusqu'à la note complète, dans ces trois écrans.
+
+16. Dans « Lire les copies », une question pas encore corrigée dit « pas encore lue », et non plus « écartée ».
+
+17. Le chrono de la correction : à la lecture, la carte « 📄 Temps pour lire la feuille du voisin » a maintenant son champ, avec « +5 », « +10 » et « +30 », comme les chronos des questions. Le temps part tout de suite au chrono en cours, et une lecture déjà figée à 0 se rouvre pour ces secondes. Tous les bancs passent, avec mes contrôles, mes sondes et une séance jouée par le geste ; aucune séance n'était en cours. Si un écran ne va pas, je remets la 8.0.2 en une minute. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/evaluation-qcm.html?mode=prof&v=803
+
+Tes tests (points 13 à 17), dans l'ordre. En mode test, lance une séance et va jusqu'à la correction, une tablette simulée ouverte en grand : « Avant la correction », la lecture sans « montre ta feuille », « Révéler » qui parle au voisin, puis « rends sa feuille » à la co-évaluation. Pendant une lecture, clique « +10 » sur la carte du temps : le chrono prend 10 secondes. Dans « Données », « 📊 Résultats », ouvre ta séance de 07:24 : la note de chacun, le nombre de questions pas encore lues, « — » pour la maîtrise ; puis « 📄 Lire les copies », une copie : « pas encore lue ».
+
+16/10/2026 11:53 MEMO

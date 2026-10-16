@@ -1,0 +1,9 @@
+Sonde du soir, séance corrigée à moitié (micro 8.0.3) — /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/t734/app-156a13f0.html — 2026-10-16T09:12:30.415Z
+Durée : 12 s · vérifications : 7 · échecs : 0
+  ok     M5 · Résultats : « 📊 Ouvrir » la séance
+  ok     M5 · le tableau de la séance, seule Q2 révélée : la note telle qu'elle est (« n/3 »), « 2 questions pas encore lues », la note sur 20, et « — » pour la maîtrise
+  ok     M5 · et « — » pour chaque compétence (2)
+  ok     M5 · « 2 questions pas encore lues » a son infobulle, pour toi
+  ok     M6 · « 📄 Lire les copies »
+  ok     M6 · la copie de Tom, « 🧮 La note, en direct » : « Question 1 : pas encore lue », « Question 3 : pas encore lue », jamais « écartée », puis « 2 questions pas encore lues »
+  ok     M8 · aucune erreur de page ni boîte système

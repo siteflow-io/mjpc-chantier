@@ -22934,3 +22934,19 @@ Envoyé à Paul, mot pour mot :
 Tes tests (point 30), dans l'ordre. En mode test, va jusqu'à « Avant la correction » et regarde la tablette de l'élève seul, s'il y en a un (les présents en nombre impair) : il a les lignes du papier, sans voisin. Sur une tablette à deux, quand un prénom commence par une voyelle, tu lis « la feuille d'Emma », et non plus « la feuille de Emma ». Pendant une lecture, laisse le chrono arriver à 0, attends un peu, puis clique « +10 » : la lecture se rouvre pour 10 secondes.
 
 16/10/2026 15:32 MEMO
+
+## TOUR 742 — Paul, 16/10 16:56
+
+Paul, mot pour mot :
+
+pôurquoi dans le mode test je ne pourrais pas jouer des évaluations créées en vrai? ça me permettrait de jouer de vraies évals
+
+Lu : `LancementTestV`, `preparerModeTest`, `purgerModeTest`, `eprouver` (`maquette620.js`, QCM-3, `e5c4e5b2`), `BOUTONS_EPROUVER` (`etape4.js`), `A.lancerSeance` et `S.evals` (`live/base.js`), `evalsPretes` (`etape2.js`). Mesuré : le menu « Évaluation » est en lecture seule, une seule ligne (`_test_evaluation-qcm`, copie de la démo) ; son infobulle et le cadrage 559 promettent la liste ; « ✏️ Modifier l'éval après coup » écrit `questions/0/bonnes` de l'évaluation jouée ; le lancement ne regarde pas le niveau de la classe. Fait : dette n°12 · 221 (production `docs/MJPC6-DETTES.md`).
+
+Envoyé à Paul, mot pour mot :
+
+31. Tu as raison, et c'était prévu. Le cadrage du 09/10 disait : « Il joue la démo par défaut, ou n'importe quelle évaluation de la liste, par exemple celle de 3e avant de la donner. » L'infobulle du menu « Évaluation » du mode test le dit encore. Mais ce menu est figé, avec une seule ligne : la copie de la démo. C'est un écart au cadrage, pas une décision. Ma proposition : le menu propose la démo par défaut, puis toutes les évaluations prêtes à lancer, la même liste qu'en classe. Le mode test joue une copie de l'évaluation choisie, comme il joue aujourd'hui une copie de la démo. C'est nécessaire, parce que le bouton « ✏️ Modifier l'éval après coup » change la bonne réponse de la question 1 de l'évaluation jouée : sur ta vraie évaluation, il la changerait pour de bon. Avec la copie, ta vraie évaluation n'est jamais touchée. À la sortie, la copie, la séance et la classe de test s'effacent comme aujourd'hui, et la séance de test reste hors de Résultats, de « passée par » et du QCM précédent. Une chose n'est pas mesurée : la classe de test est en 3e, et je ne sais pas si une évaluation de 4e ou de 5e s'y joue sans accroc. Le lancement ne regarde pas le niveau, mais je le ferai mesurer.
+
+Tu valides ? Si oui, je l'écris à QCM-3, qui tient le mode test, et ce sont les exécutants qui le codent.
+
+16/10/2026 17:01 MEMO

@@ -22950,3 +22950,23 @@ Envoyé à Paul, mot pour mot :
 Tu valides ? Si oui, je l'écris à QCM-3, qui tient le mode test, et ce sont les exécutants qui le codent.
 
 16/10/2026 17:01 MEMO
+
+## TOUR 743 — Paul, 16/10 17:02
+
+Paul, mot pour mot :
+
+ok
+
+Lu : `ETAT.md` (les quatre arrêtés après la mise en ligne de 15:30), `CAS_TEST` et la classe simulée (`maquette620.js` l. 213 à 278 : génériques), `evalsPretes` et le menu de la console (`etape2.js` l. 701, 721), les `.niveau` du code (la difficulté des questions, jamais le niveau de la classe), le cadrage 559 à 564, le mandat de QCM-3 (le mode test est à lui) ; `src/` inchangés depuis `381184d`. Fait : la section « Le mode test joue les vraies évaluations — 16/10/2026 » en tête de `DEFAUTS-OUVERTS.md` (`code-qcm` `174f0d8c`) ; dette n°12 · 221 mise à jour (production).
+
+Envoyé à Paul, mot pour mot :
+
+31. C'est écrit pour les exécutants, en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm). QCM-3 code le menu et la copie. QCM-4 joue tout par le geste avec une évaluation de 3e, une de 4e et une longue : la séance entière, les cas, « ✏️ Modifier l'éval après coup », la sortie. Il compare ensuite ta vraie évaluation avant et après, et elle doit être identique. Les quatre se sont arrêtés après la mise en ligne de 15:30, il faut donc les relancer. Voici le message à coller, le même dans les quatre sessions :
+
+« Le mode test joue les vraies évaluations : lis la section « Le mode test joue les vraies évaluations — 16/10/2026 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), et fais ta part. QCM-3 code, QCM-4 rejoue tout avec son banc, QCM-1 et QCM-2 répondent à ce qui porte leur nom. La livraison de QCM-3 est poussée une heure après ce message, avec sa ligne dans ETAT.md ; QCM-4 pousse VERDICT.md trente minutes plus tard. Tu tournes jusqu'à ce que la conscience écrive « contrôlé » en tête de cette section. »
+
+Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après. Rien ne part en ligne si une séance est en cours.
+
+Pour 27, 28 et 29, ma question reste la même : tu valides ? Si oui, je les ajoute à la même section avant que tu colles le message, et les exécutants font tout en une fois.
+
+16/10/2026 17:07 MEMO

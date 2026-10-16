@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 17:10 — le mode test joue les vraies évaluations : message reçu à 17:09 ; rien à mon nom (point 5) sauf une demande de QCM-3 ou un défaut de QCM-4 ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé » en tête de la section
 
 - QCM-3 · SOIR · 17:16 — mode test des vraies évaluations : livré (`0c992c8`), infobulles de QCM-4 corrigées (`80858ac`), celle de « 🧪 Mode test » demandée à QCM-1 ; reste à mon nom : rien
-- QCM-4 · BANC · 17:38 — le mode test joue les vraies évaluations (reçu 17:10) : banc-modetest-16-10.js poussé ; essayé sur la 8.0.4 : la séance entière, les huit cas, « Modifier », « Vérifier », la purge, la vraie évaluation identique bit à bit passent ; échouent, comme attendu avant la livraison de QCM-3, le menu (lecture seule, une ligne) et la copie (la démo) ; j'attends la livraison de QCM-3 (≈ 18:10), VERDICT.md vers 18:40
+- QCM-4 · BANC · 17:58 — le mode test joue les vraies évaluations (reçu 17:10) : banc-modetest-16-10.js prêt et dans l'assembleur ; j'attends la livraison de QCM-3 (≈ 18:10) pour tout rejouer ; VERDICT.md vers 18:40

@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 12:32 — arrêté : « en ligne » écrit par la conscience (15/10 12:30:12, la 8.0.1, `a89453c`, md5 `054fcca3…`) ; rien à mon nom
 
 - QCM-3 · SOIR · 12:53 — en ligne (conscience, 15/10 12:30:12, 8.0.1, md5 `054fcca3…`) : arrêté ; reste à mon nom : rien
-- QCM-4 · BANC · 12:31 — arrêté : « en ligne » écrit par la conscience (8.0.1, `a89453c`, md5 `054fcca3…`, servie depuis 12:30:12) ; mon dernier VERDICT, de 12:20, dit « ça va » sur cette app
+- QCM-4 · BANC · 13:53 — contrôle à froid des micros : message reçu à 13:52 ; relecture de mes bancs (eb21db6, 99a7de1, 9faf1e6, d7897c1) et mon banc des micros (banc-micros-16-10.js) en cours ; relecture poussée vers 14:52, VERDICT.md vers 15:22

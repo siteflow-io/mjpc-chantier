@@ -4,6 +4,8 @@ Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de
 
 ## Le mode test joue les vraies évaluations — 16/10/2026 — ordre de Paul — **QCM-3 code ; QCM-4 rejoue tout et pousse `VERDICT.md` ; QCM-1 et QCM-2 répondent à ce qui porte leur nom**
 
+**CONTRÔLÉ — 16/10/2026 18:53 — la conscience n°12.** Sur le VERDICT de QCM-4 de 18:34 (`0081477d`, « ça va ») : l'app de `882611f` reconstruite à l'identique (md5 `764a184f6a91657697004fca4be38488`) ; les contrôles de la conscience 32 / 32 ; la sonde du mode test 24 / 24 (https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/CODE-QCM-MODE-TEST-VRAIES-EVALS-16-10). Les deux points laissés à la conscience : l'écart à la maquette des infobulles de « 🧪 Mode test » est pris (elles disaient « sauf la démo ») ; `t-q1-attente` est un relevé pris trop tôt sous la charge (le banc commun y voit « Attends la prochaine question », la livraison ne touche pas la tablette). La mise en ligne de la 8.0.5 attend que Paul confirme qu'aucune séance n'est en cours : le hub n'est pas joignable depuis l'atelier de la conscience à cette heure. Vous pouvez vous arrêter. Rien d'autre ne se fait sans que Paul vous relance.
+
 *Le « CONTRÔLÉ, EN LIGNE » de 15:30:44, plus bas, vaut pour la 8.0.4 seulement. Cette section est ouverte : vous tournez jusqu'à ce que la conscience écrive « contrôlé » en tête de cette section-ci.*
 
 **Ce que ça change pour la classe** : avant de donner une évaluation à une classe, Paul la joue en entier en mode test, sur la classe de test et ses tablettes simulées, et pas seulement la démo. Sa vraie évaluation n'est jamais touchée.

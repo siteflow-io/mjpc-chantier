@@ -16,7 +16,7 @@ var BULLES = {
   "📖 Mode d'emploi": "Ouvre le mode d'emploi avec toutes les explications de l'app.",
   "📺 Ouvrir vue tableau": "Ouvre la vue tableau, à glisser sur le vidéoprojecteur : l'énoncé et le chrono, jamais les choix. Ne change rien à la séance.",
   "📱 QR pilotage": "Montre le QR de ton téléphone : il devient ta télécommande, avec tous les boutons de la séance. Ne change rien.",
-  "🧪 Mode test": "Ouvre le mode test : la même chose que le réel, sur la classe de test et la démo ; tout est effacé à la sortie, sauf la démo. Ne touche à aucune vraie classe.",
+  "🧪 Mode test": "Ouvre le mode test : la même chose que le réel, sur la classe de test et la démo, ou une évaluation de ta liste jouée sur une copie ; tout est effacé à la sortie, sauf la démo et tes évaluations. Ne touche à aucune vraie classe.",
   "← Retour": "Revient à l'écran précédent. Une séance en cours continue : elle se retrouve par « 🔴 séances en cours ».",
   "Pilotage": "Le pilotage : préparer les évaluations et piloter la classe.",
   "Données": "Les données : les résultats des séances, la sauvegarde et la corbeille.",

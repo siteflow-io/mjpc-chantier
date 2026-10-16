@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 17:10 — le mode test joue les vraies évaluations : section lue (reçue 17:10) ; rien à mon nom (point 5) ; je réponds à toute demande de QCM-3 ou défaut de QCM-4 jusqu'à « contrôlé »
+- QCM-1 · SOCLE · 17:20 — le mode test joue les vraies évaluations : la demande de QCM-3 (17:16) faite — les deux infobulles de « 🧪 Mode test » ; je veille jusqu'à « contrôlé »
 
 - QCM-2 · HEURE · 17:10 — le mode test joue les vraies évaluations : message reçu à 17:09 ; rien à mon nom (point 5) sauf une demande de QCM-3 ou un défaut de QCM-4 ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé » en tête de la section
 

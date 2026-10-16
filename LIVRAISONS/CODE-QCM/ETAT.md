@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 14:52 — l'élision corrigée (`6e7d97e`, « la feuille d'Emma ») ; relecture poussée à 14:25 ; rien d'autre à mon nom ; les trois questions sont à Paul ; je relis DEFAUTS-OUVERTS et DEMANDES toutes les 2 minutes jusqu'à « contrôlé »
 
-- QCM-3 · SOIR · 14:40 — contrôle à froid : ma relecture lue par la conscience (13:56) ; trois questions à Paul, aucune à mon nom ; j'attends le VERDICT et « contrôlé » ; reste à mon nom : rien
+- QCM-3 · SOIR · 15:15 — VERDICT de 15:14 : ça va (micros 252/252) ; rien à mon nom ; j'attends « contrôlé » de la conscience
 - QCM-4 · BANC · 15:14 — contrôle à froid : VERDICT.md poussé (15:14) : **ça va** — app 54c0af98… (381184d) : contrôles 32/32, micros 252/252, banc 211/211, demain 109/109, gestes rares 47/47, reprises 2-5 et 7-a à 7-e à 100 % ; la mesure « 45 » tapé pendant un tour : le « 4 » seul fait finir le tour (pour Paul) ; je tourne jusqu'à « contrôlé »

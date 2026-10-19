@@ -89,7 +89,7 @@ function LireCopiesC(){
   var s4 = useState(""), rech = s4[0], setRech = s4[1], s5 = useState({}), faits = s5[0], setFaits = s5[1];
   var se = seanceV(seanceParam());
   if(!se) return h("div", {className:"card"}, h("p", null, "Chargement…"));
-  var sq = "&seance=" + encodeURIComponent(se.id), lire = aLireV(se), ev = se.ev;
+  var sq = "&seance=" + encodeURIComponent(se.id), lire = aLireCopiesV(se), ev = se.ev;
   var parCopie = {}; lire.forEach(function(x){ (parCopie[x.p] = parCopie[x.p] || []).push(x); });
   var eleves = se.presents.map(function(e){ return {p:e.slug, nom:e.nom, lignes:(parCopie[e.slug] || []).slice().sort(function(a, b){ return a.q - b.q; })}; });
   var aLireN = eleves.filter(function(c){ return c.lignes.some(function(x){ return !x.lue; }); }).length, nQ = lire.filter(function(x){ return !x.lue; }).length;

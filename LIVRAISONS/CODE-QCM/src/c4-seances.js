@@ -400,6 +400,19 @@ function sansLectureV(se){ var l = [], hors = se.ecartees.concat(se.annulees), S
   var posee = function(i){ return papier || (S.questionsLancees || {})[i] != null || (S.reponses || {})[i] != null; };
   se.presents.forEach(function(e){ var r = resultatV(se, e.slug); if(r) r.st.forEach(function(s, i){ if(s === "n" && hors.indexOf(i) < 0 && posee(i)) l.push({p:e.slug, q:i}); }); });
   return l; }
+/* (19/10, Paul ; 29, seconde moitié) une question posée mais jamais corrigée en classe compte dès que Paul a lu la feuille le soir :
+   « Lire les copies » la lui propose (« Que dit la copie ? »), à côté des lignes « à lire » ; sa lecture (par:"prof") la tranche */
+function aLireCopiesV(se){
+  var L = aLireV(se), S = se.S, deja = {}; if(!S || !se.nouvelle || (S.lancee || {}).mode === "papier") return L;
+  L.forEach(function(x){ deja[x.p + "|" + x.q] = 1; });
+  var hors = se.ecartees.concat(se.annulees), Lc = S.lectures || {}, posee = function(i){ return (S.questionsLancees || {})[i] != null || (S.reponses || {})[i] != null; };
+  var cite = function(q, c){ return v3Liste(c).map(Number).map(function(i){ return "« " + q.choix[i] + " »"; }).join(" et "); };
+  se.presents.forEach(function(e){ se.ev.questions.forEach(function(q, i){ if(hors.indexOf(i) >= 0 || !posee(i) || deja[e.slug + "|" + i]) return;
+    var l = (Lc[i] || {})[e.slug]; if(l && (l.par !== "prof" || l.avant)) return;   // lue en classe par le voisin : la règle de la séance
+    var t = tabletteV(se, i, e.slug), pr = prenomEleveV(se, e.slug);
+    L.push({id:"nl_" + e.slug + "_" + i, p:e.slug, q:i, sorte:"nl", txt:pr + " : la correction s'est arrêtée avant cette question ; personne n'a lu sa feuille en classe.",
+      lignes:[t && t.choix.length ? "Tablette : " + cite(q, t.choix) : "Pas de clic sur la tablette"], lue:!!l, corrigee:!!l, nom:nomEleveV(se, e.slug)}); }); });
+  return L; }
 function restentV(se){ var nl = aLireV(se).filter(function(x){ return !x.lue; }), deja = {}; nl.forEach(function(x){ deja[x.p + "|" + x.q] = 1; });
   return nl.length + sansLectureV(se).filter(function(x){ return !deja[x.p + "|" + x.q]; }).length; }
 function etatCopiesV(se){ var lire = restentV(se);
@@ -510,7 +523,7 @@ function ResultatsC(){
     TitreCarte("📊 " + ev.titre + " — " + se.classe, [
       h("button", {key:0, className:"btn btn-primary btn-sm", disabled:!rendues, "data-local":rendues ? "1" : null, onClick:rendues ? function(){ ouvrirPdfV(se.id); } : null, title:rendues ? "Ouvre l'impression du navigateur, « Enregistrer au format PDF » : une ligne par élève, la note, le niveau de chaque compétence, le commentaire." : "Fermé tant que les copies ne sont pas rendues : les notes ne sont définitives qu'à ce moment-là."}, "📄 PDF notes et compétences"),
       h("button", {key:1, className:"btn btn-or btn-sm", "data-local":"1", title:"Télécharge le tableau en CSV, pour un tableur.", onClick:function(){ setExporte(csvV(se, lignes, comps)); }}, "📥 Export CSV"),
-      (function(){ var nc = {}; lire.forEach(function(x){ if(!x.lue) nc[x.p] = 1; }); var n = Object.keys(nc).length; return n ? h("button", {key:3, className:"btn btn-primary btn-sm", "data-va":"c-lire-copies" + sq, title:"Ouvre les copies à lire, dans l'ordre de ton tas : tu tapes les initiales de chaque copie ; pour chaque question à lire, l'app te demande ce que dit la copie, et tu réponds oui ou non."}, "📄 Lire les copies (" + n + ")") : null; })(),
+      (function(){ var nc = {}; aLireCopiesV(se).forEach(function(x){ if(!x.lue) nc[x.p] = 1; }); var n = Object.keys(nc).length; return n ? h("button", {key:3, className:"btn btn-primary btn-sm", "data-va":"c-lire-copies" + sq, title:"Ouvre les copies à lire, dans l'ordre de ton tas : tu tapes les initiales de chaque copie ; pour chaque question à lire, l'app te demande ce que dit la copie, et tu réponds oui ou non."}, "📄 Lire les copies (" + n + ")") : null; })(),
       h("button", {key:2, className:"btn btn-ghost btn-sm", "data-va":"c-seances", title:"Revient à la liste des séances."}, "← Retour")]),
     exporte && h("div", {className:"fen-note"}, "📥 " + exporte + " téléchargé."),
     h("p", {style:{fontSize:".85rem", color:"var(--gris)", marginTop:".2rem"}}, se.date + " " + se.heure + " · " + presentsTexteV(se) + (se.papier ? " · sur papier" : "") + " · questions écartées ou annulées : " + ecartTexteV(se) + " · ",

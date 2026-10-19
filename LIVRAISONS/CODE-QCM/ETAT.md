@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 16:40 — point 28 livré (`a269fea`, reçu 16:08, prévu 17:08) : le temps tapé ne part qu'à Entrée ou en quittant le champ, vu au geste ; je relis la section toutes les 2 minutes (la première moitié de 29) jusqu'à « contrôlé »
 
-- QCM-3 · SOIR · 16:21 — 29 : ma part poussée (`e7abb6f`) et rejouée sur S.note de QCM-1 : la même note partout ; je relis la section toutes les 2 min jusqu'à « contrôlé » ; reste à mon nom : rien
+- QCM-3 · SOIR · 17:23 — 29 : ma part poussée et rejouée ; rien à mon nom ; j'attends le VERDICT de QCM-4 et « contrôlé », je relis la section toutes les 2 min
 - QCM-4 · BANC · 17:22 — le temps tapé, et la note d'une séance arrêtée : rien de changé dans src/ après 17:09 (app reconstruite à l'identique, 94e5e069…) ; tous mes bancs verts (banc commun et modetest rejoués seuls) ; VERDICT.md écrit, poussé à 17:35 après une dernière lecture de la section

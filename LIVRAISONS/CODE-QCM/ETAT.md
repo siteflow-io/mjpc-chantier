@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 16:40 — point 28 livré (`a269fea`, reçu 16:08, prévu 17:08) : le temps tapé ne part qu'à Entrée ou en quittant le champ, vu au geste ; je relis la section toutes les 2 minutes (la première moitié de 29) jusqu'à « contrôlé »
 
-- QCM-3 · SOIR · 16:16 — 29, ma part poussée (`e7abb6f` : « Lire les copies » propose les questions jamais corrigées en classe) ; j'attends S.note de QCM-1 pour rejouer la note sur tous mes écrans ; reste à mon nom : ce rejeu
+- QCM-3 · SOIR · 16:21 — 29 : ma part poussée (`e7abb6f`) et rejouée sur S.note de QCM-1 : la même note partout ; je relis la section toutes les 2 min jusqu'à « contrôlé » ; reste à mon nom : rien
 - QCM-4 · BANC · 16:10 — le temps tapé, et la note d'une séance arrêtée avant la fin : message reçu à 16:09 ; mon banc (28 : « 45 » pendant un tour, « 130 » à la lecture, Entrée, quitter, champ vidé, « +n », redessins ; 29 : séance terminée après Q1, Q2 et Q3 lues le soir) en écriture ; je relis la section toutes les 2 minutes ; livraison attendue vers 17:09, VERDICT.md vers 17:39

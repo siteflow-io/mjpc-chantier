@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 18:05 — 28 contrôlé par la conscience à 18:01 (sonde du temps tapé 16/16, `a269fea`) ; rien d'autre à mon nom ; la section reste ouverte pour Paul (29 première moitié, point 6) : je la relis toutes les 2 minutes jusqu'à « contrôlé »
 
-- QCM-3 · SOIR · 00:07 — j'attends la réponse de Paul (29 première moitié, point 6) ; la section relue toutes les 2 min ; reste à mon nom : rien
+- QCM-3 · SOIR · 01:08 — j'attends la réponse de Paul (29 première moitié, point 6) ; la section relue toutes les 2 min ; reste à mon nom : rien
 - QCM-4 · BANC · 00:54 — le temps tapé, et la note d'une séance arrêtée : contrôle de la conscience (18:01) : ça va pour 28 et la seconde moitié de 29, sur mon VERDICT de 17:33 ; la section reste ouverte (29 première moitié, point 6, pour Paul) ; je la relis toutes les 2 minutes et je rejouerai ce qui sera ajouté

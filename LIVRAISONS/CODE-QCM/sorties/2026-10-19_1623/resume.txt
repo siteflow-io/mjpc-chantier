@@ -1,0 +1,25 @@
+Passe QCM-4 · BANC en trois vagues (le temps tapé, et la note d'une séance arrêtée avant la fin), app md5 94e5e069d0d5b681bf94a4506fa81e1f, code-qcm a269fea (src/ inchangés jusqu'à e989d9c, reconstruite à l'identique à 17:10)
+vague 1 16:25
+vague 2 16:37
+vague 3 16:48
+controles : vérifications : 32 · échecs : 0
+banc : vérifications : 211 · échecs : 1
+demain : vérifications : 109 · échecs : 0
+branches : vérifications : 47 · échecs : 0
+reprise2 : vérifications : 22 · échecs : 0
+reprise3 : vérifications : 15 · échecs : 0
+reprise4 : vérifications : 27 · échecs : 0
+reprise5 : vérifications : 10 · échecs : 0
+reprise7-a : vérifications : 40 · échecs : 0
+reprise7-b : vérifications : 85 · échecs : 0
+reprise7-c : vérifications : 141 · échecs : 0
+reprise7-d : vérifications : 87 · échecs : 0
+reprise7-e : vérifications : 9 · échecs : 0
+micros : vérifications : 252 · échecs : 0
+modetest : vérifications : 121 · échecs : 1
+temps : vérifications : 28 · échecs : 0
+note : vérifications : 41 · échecs : 0
+jamais : vérifications : 47 · échecs : 12
+Scènes atteintes par le geste : 126 / 157 (hors MJPC) · fidèles (aucun écart non nommé) : 27 · avec écarts : 99 · écarts nommés dans ecarts-maquette.json : 137
+fin 16:53
+rejoués seuls (rejoues-seuls/) : banc Durée : 365 s (6 min 5 s) · vérifications : 211 · échecs : 0 · scènes relevées : 97 ; modetest vérifications : 121 · échecs : 0 ; micros-d (la mesure, lectures copiées) vérifications : 3 · échecs : 0

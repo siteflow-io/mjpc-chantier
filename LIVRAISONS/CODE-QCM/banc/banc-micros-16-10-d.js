@@ -24,7 +24,7 @@ const t0 = Date.now();
   const A = new O.Appareils(srv, port); await A.demarrer();
   let dernier = null;
   const sess = () => { const a = srv.store.get("qcm/sessionActive") || {}; let id = a["3 ESSAI"] || a[slug("3 ESSAI")]; if(id && typeof id === "object") id = id.sessionId || id.id || id.sid; if(id) dernier = id; else id = dernier; return id ? srv.store.get("qcm/sessions/" + id) || {} : {}; };
-  const etat = () => { const d = sess().deroule; return d && typeof d === "object" ? d : {}; };
+  const etat = () => { const d = sess().deroule; return d && typeof d === "object" ? JSON.parse(JSON.stringify(d)) : {}; };   // une copie : le faux hub change ses objets en place
   const reste = () => { const d = etat(); return d.duree ? d.duree - (Date.now() - (d.depuis || 0)) / 1000 : null; };
   try {
     J.section("La mesure : « 45 » tapé dans le temps de réponse de Q1, pendant le 1er tour");

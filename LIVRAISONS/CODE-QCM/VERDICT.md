@@ -1,4 +1,69 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, le mode test joue les vraies évaluations, 16/10 18:35
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, le temps tapé, et la note d'une séance arrêtée avant la fin, 19/10 17:35
+
+*La section « Le temps tapé, et la note d'une séance arrêtée avant la fin — 19/10/2026 » (DEFAUTS-OUVERTS, point 4). Les livraisons sont celles de QCM-1 (`4eb3290`), QCM-3 (`e7abb6f`, `90578fc`) et QCM-2 (`a269fea`). L'app, `evaluation-qcm.staging.html`, est assemblée par `build.py` sur `code-qcm` à `a269fea`, md5 **`94e5e069d0d5b681bf94a4506fa81e1f`**. `src/` et `build.py` n'ont pas changé après 17:09 ; l'app, reconstruite à 17:10, est identique. Sorties : `sorties/2026-10-19_1623/`.*
+
+## Verdict : **ça va.**
+
+Pendant un tour ou une lecture, le temps tapé ne part qu'à Entrée ou quand Paul quitte le champ : la frappe n'écrit rien, ne finit aucun tour et ne fige aucune lecture. Le soir, une question posée mais jamais révélée en classe compte dès que Paul a lu la feuille. Les deux copies de la note (la base et c4) disent alors la même chose sur tous les écrans.
+
+| Épreuve, sur l'app de 16:23 (md5 `94e5e069…`), en trois vagues | Résultat |
+| --- | --- |
+| **28, le temps tapé** (`banc-temps-19-10.js`) | **28 / 28** |
+| **29, seconde moitié, la note d'une séance arrêtée** (`banc-note-19-10.js`) | **41 / 41** |
+| Contrôles de la conscience, ceux de `main` (`EMPREINTES.md5` vérifié : OK) | **32 / 32** |
+| Les micros du 16/10 | **252 / 252** |
+| Le mode test des vraies évaluations | **121 / 121** (joué seul) |
+| Banc commun | **211 / 211** (joué seul) |
+| L'heure de demain | **109 / 109** |
+| Gestes rares | **47 / 47** |
+| Reprises 2, 3, 4, 5 | **22 / 22, 15 / 15, 27 / 27, 10 / 10** |
+| Reprises 7-a à 7-e | **40 / 40, 85 / 85, 141 / 141, 87 / 87, 9 / 9** |
+| Les écrans jamais atteints | 47 vérifications, 12 manques, les mêmes qu'avant ; non comptés, comme à chaque verdict |
+| Fidélité à la maquette v9 | 126 scènes atteintes sur 157, 27 sans écart non nommé (26 le 16/10) |
+
+Dans la première vague, à cinq jeux en même temps, deux vérifications ont échoué : un B dit qui manquait dans la base (banc commun, 210 / 211), et un message de cas resté vide (mode test, 120 / 121). Rejoués seuls sur la même app, ces deux jeux passent : 211 / 211 et 121 / 121 (`rejoues-seuls/`). Je ne compte pas ces deux échecs.
+
+**28, ce que mon banc a vérifié, par le geste.** Le journal du faux hub enregistre chaque écriture de `temps/` et de `deroule/duree`.
+
+*Pendant le 1er tour de Q1 :*
+- **« 45 » tapé chiffre par chiffre dans le temps de réponse :** rien n'est écrit et le tour ne finit pas. Une tablette répond pendant la frappe, ce qui redessine la console ; le champ garde « 45 » et le curseur.
+- **À Entrée :** le temps vaut 45, la durée du tour passe de 15 à 45, et le tour continue.
+- **« 50 » tapé puis le champ quitté :** rien n'est écrit avant, puis le temps vaut 50 et le tour continue.
+- **Le champ vidé puis quitté :** il reprend 50 et rien n'est écrit.
+- **« Toutes les questions », Q2 :** « 30 » tapé n'écrit rien avant Entrée, puis le temps vaut 30.
+- **« +5 » :** part tout de suite.
+- **Les infobulles des trois champs :** elles disent « Entrée ».
+
+*À la lecture de la feuille du voisin :*
+- **« 130 » tapé pendant que les tablettes cliquent leur lecture :** rien n'est écrit et aucune lecture n'est figée ; le champ garde la valeur et le curseur. À Entrée, le temps vaut 130.
+- **« +10 » avant le 0 :** +10 s, tout de suite.
+- **Au 0 :** la lecture est figée.
+- **« +10 » après le 0 :** la lecture repart pour 10 s, avec ses choix rouverts.
+
+*La mesure du 16/10 (`banc-micros-16-10-d.js`), rejouée :* « 45 » tapé pendant un tour. Le « 4 » seul ne fait plus finir le tour : il reste 4,2 s au plus bas, toujours en `reponse`, et la durée ne change qu'en quittant le champ. J'ai corrigé une faute de ce banc : il relisait l'état du faux hub après coup et affichait la dernière durée au lieu de celle du moment. La mesure elle-même n'était pas touchée.
+
+**29, ce que mon banc a vérifié, par le geste.**
+
+*La séance :* deux élèves sur une tablette, ABRIAL Julien et BAUDRY Léa, et les autres absents. Q1 est fausse pour les deux, Q2 et Q3 justes. La correction commence par Q1, qui est révélée, puis Paul clique « 🛑 Terminer » : Q2 et Q3 ont été posées mais jamais révélées. À ce moment, la base et c4 disent toutes deux 0 / 3, note pas complète.
+
+*Le soir, dans « 📄 Lire les copies » :* Paul lit la feuille de Q2, puis de Q3, de chaque copie, et `lectures/<qi>/<élève>` est écrit à chaque fois. Après Q2, la base (`SCN.note`) et c4 (`resultatV`) disent 1 / 3, pas encore complète, et « 🧮 La note, en direct » dit « 1 question pas encore lue ». Après Q3, toutes deux disent 2 / 3, complète. À chaque pas, les deux copies sont identiques.
+
+*Ensuite, partout la même note (2 / 3, 13,3 / 20) :*
+- **le tableau de la séance :** « 2/3 · 13,3 », la maîtrise « 🔵 Maîtrise satisfaisante » et les compétences, sans « pas encore lues » ;
+- **la fiche :** « 👤 ABRIAL Julien — 2 / 3 · 13,3 / 20 » ;
+- **le CSV ;**
+- **Données → Résultats :** plus aucun « pas encore lue » ;
+- **le PDF**, une fois les copies rendues ;
+- **le bilan de l'élève** dans « 📊 Mes évaluations » : 2 / 3 · 13,3 / 20.
+
+**Le reste de la section :**
+- QCM-1 n'a rien à changer dans `c3-base.js` : il a mesuré que ses champs ne sont plus atteints (point 2). Le champ de la console que mon banc a joué est celui de QCM-2.
+- Pour la première moitié de 29 (une question que personne n'a eue), la conscience n'avait rien ajouté à la section à 17:35. Je l'ai relue toutes les 2 minutes depuis 16:10. Rien n'y change d'ici la réponse de Paul.
+
+---
+
+# Verdict de 18:35, le 16/10 (pour mémoire)
+
 
 *La section « Le mode test joue les vraies évaluations — 16/10/2026 » (DEFAUTS-OUVERTS, point 4). La livraison de QCM-3 (`0c992c8`, `80858ac`) et de QCM-1 (`39ae18d`). App : `evaluation-qcm.staging.html` assemblée par `build.py` sur `code-qcm` à `882611f`, md5 **`764a184f6a91657697004fca4be38488`**. Rien n'a changé dans `src/` ni dans `build.py` depuis. Sorties : `sorties/2026-10-16_1809/`.*
 

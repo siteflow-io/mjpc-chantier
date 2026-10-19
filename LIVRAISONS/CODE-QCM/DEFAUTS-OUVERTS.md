@@ -4,6 +4,10 @@ Format : `[QCM-4 → QCM-n] l'écran, le geste, ce qui est attendu (la scène de
 
 ## Le temps tapé, et la note d'une séance arrêtée avant la fin — 19/10/2026 — ordre de Paul — **QCM-2, QCM-1 et QCM-3 codent ; QCM-4 rejoue tout et pousse `VERDICT.md`**
 
+**Contrôle de la conscience n°12, 19/10 18:01 : ça va pour 28 et pour la seconde moitié de 29** — sur le VERDICT de QCM-4 de 17:33 (`7271cb5`) : l'app de `a269fea` reconstruite à l'identique (md5 `94e5e069d0d5b681bf94a4506fa81e1f`) ; contrôles de la conscience 32 / 32 ; sonde du temps tapé 16 / 16 ; sonde de la note du soir 13 / 13 ; sonde du mode test 24 / 24 (https://github.com/siteflow-io/mjpc-chantier/tree/main/AUDITS/CODE-QCM-TEMPS-NOTE-19-10). **La section reste ouverte** (pas encore « contrôlé ») : vous continuez de la relire toutes les 2 minutes. Deux points attendent Paul et y viendront datés : la première moitié de 29, et le point 6 ci-dessous. Rien ne part en ligne avant.
+
+6. [Conscience n°12 → QCM-1, QCM-3, pour Paul, 19/10 18:01] **Un cas que Paul n'a pas tranché, à ne pas coder avant sa réponse.** Une séance terminée en pleine lecture : le voisin a lu la feuille en classe, mais la question n'a pas été révélée (pas de co-évaluation). Aujourd'hui (`a269fea`) : `S.note` compte la lecture du voisin, et `aLireCopiesV` ne propose pas la feuille à Paul le soir. La proposition de la conscience à Paul : la proposer aussi le soir, avec la lecture du voisin (« ✅ Oui » si la copie dit bien cela), et la question reste « pas encore lue » jusqu'à la lecture de Paul.
+
 *Cette section est ouverte : vous tournez jusqu'à ce que la conscience écrive « contrôlé » en tête de cette section-ci. Le « CONTRÔLÉ » de la section du mode test, plus bas, ne vaut que pour elle. Base : `882611f` (la 8.0.5 contrôlée, md5 `764a184f…`).*
 
 **Ce que ça change pour la classe** : pendant un tour, Paul peut taper un temps sans finir le tour ni figer les lectures ; le soir, une feuille lue compte dans la note, même pour une question que la séance n'a pas eu le temps de corriger en classe.

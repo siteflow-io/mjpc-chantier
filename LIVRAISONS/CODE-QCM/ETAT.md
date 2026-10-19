@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 16:09 — le temps tapé (28) : message reçu à 16:08, livraison prévue à 17:08 ; en cours : ChampTemps (c3-pilot.js) ne part qu'à Entrée ou en quittant le champ
 
 - QCM-3 · SOIR · 16:10 — le temps tapé et la note d'une séance arrêtée : reçu 16:09, livraison prévue 17:09 ; ma part, le point 3 (29, seconde moitié) avec QCM-1 ; reste à mon nom : le point 3
-- QCM-4 · BANC · 18:53 — mode test des vraies évaluations fini : « contrôlé » (la conscience, 18:53, 882611f, md5 764a184f…) sur mon VERDICT de 18:34 (ça va) ; la 8.0.5 attend la confirmation de Paul ; je m'arrête, en attente d'une relance de Paul
+- QCM-4 · BANC · 16:10 — le temps tapé, et la note d'une séance arrêtée avant la fin : message reçu à 16:09 ; mon banc (28 : « 45 » pendant un tour, « 130 » à la lecture, Entrée, quitter, champ vidé, « +n », redessins ; 29 : séance terminée après Q1, Q2 et Q3 lues le soir) en écriture ; je relis la section toutes les 2 minutes ; livraison attendue vers 17:09, VERDICT.md vers 17:39

@@ -23046,3 +23046,23 @@ Envoyé à Paul, mot pour mot :
 32. Dans l'app, des textes déjà en ligne sont des participes seuls, par exemple « Q2 écartée » dans ton tableau, ou « ✅ Réponse enregistrée » sur la tablette. Ma proposition : la règle vaut dès maintenant pour tout texte nouveau ; pour les textes déjà en ligne, je fais d'abord le relevé, et je te le montre avant toute reprise. Tu valides ?
 
 19/10/2026 16:51 MEMO
+
+## TOUR 748 — réveil programmé de 17:45 (pas Paul)
+
+Le contrôle programmé (`trig_01ESY5tUJBhh2vAcwxx5Hp3y`). Lu : `ETAT.md` (les quatre livrés, à l'écoute), `VERDICT.md` de QCM-4 de 17:33 (`7271cb5`, « ça va », app `a269fea` md5 `94e5e069…`, 28 : 28/28, 29 : 41/41), le diff `882611f..a269fea` de `src/` (`ChampTemps`, trois infobulles, `S.note`, `aLireCopiesV`, `lire-copies.js`), `resultatV0` (`c4-seances.js` : en ligne, il passe par `SCN.resultat`). Mesuré : la reconstruction à l'identique ; contrôles 32/32 ; `sonde-temps.js` 16/16 (une vérification faible corrigée avant le passage compté : le journal pris avant le clic) ; `sonde-note.js` 13/13 ; `sonde-modetest.js` 24/24 ; le cas du voisin (feuille lue en classe, question pas révélée : comptée, pas proposée le soir), lu dans le code. Fait : `AUDITS/CODE-QCM-TEMPS-NOTE-19-10/` ; la section laissée ouverte, avec le point 6 pour Paul (`code-qcm` `470caa93`) ; dette n°12 · 222 mise à jour (production).
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.4, toujours en ligne ; rien de nouveau n'y est · **en cours chez l'exécutant :** rien ; les quatre attendent tes réponses · **ouvert :** la mise en ligne, et 29, 31, 32
+
+28. C'est contrôlé, et ça va. QCM-4 dit « ça va », et mon contrôle passe aussi. Pendant un tour, « 45 » tapé n'écrit rien et ne finit pas le tour ; à Entrée, le temps vaut 45 et le tour continue. Pendant la lecture, « 130 » tapé ne fige aucune lecture. « +10 » ajoute 10 secondes avant le 0, et rouvre la lecture après.
+
+29. La seconde moitié est contrôlée aussi. J'ai pris une séance terminée après Q2, où Q1 et Q3 n'ont jamais été lues en classe. Le soir, « Lire les copies » te propose Q1 et Q3 ; tu les lis, et la note devient complète. Elle est la même dans « La note, en direct », dans le tableau de la séance et sur la tablette de l'élève. Je dois corriger ce que je t'ai dit ce matin : ton tableau du soir ne le faisait pas déjà. Dans l'app en ligne, il passe par le même calcul que la console. Ça ne change rien à la livraison.
+
+En contrôlant, j'ai trouvé un cas que tu n'as pas tranché. Une séance s'arrête en pleine lecture : le voisin a lu la feuille, mais la question n'a pas été révélée, donc l'élève n'a pas pu contester. Aujourd'hui, la lecture du voisin compte, et la feuille ne t'est pas proposée le soir. Ma proposition : te la proposer aussi le soir, avec ce que le voisin a lu ; tu cliques « ✅ Oui » si la copie dit bien cela. Jusque-là, la question reste « pas encore lue ». Tu valides ? Ma proposition pour la première moitié de 29 attend aussi ta réponse : « Q4 à Q11 n'ont pas été posées ».
+
+31. Je ne peux toujours pas vérifier le hub d'ici. Je mettrai en ligne, en une seule version, tout ce qui est contrôlé (le mode test des vraies évaluations, 28 et 29) dès que tu m'auras dit « aucune séance en cours » et que tu auras répondu pour le cas du voisin.
+
+32 attend toujours ta réponse.
+
+19/10/2026 18:02 MEMO

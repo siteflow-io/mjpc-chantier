@@ -23066,3 +23066,21 @@ En contrôlant, j'ai trouvé un cas que tu n'as pas tranché. Une séance s'arr�
 32 attend toujours ta réponse.
 
 19/10/2026 18:02 MEMO
+
+## TOUR 749 — Paul, 19/10 19:46
+
+Paul, mot pour mot :
+
+Livré
+
+Lu : `code-qcm` à `bde5609d` (depuis 18:01, seulement des lignes d'état : les quatre attendent Paul ; `src/` inchangés).
+
+Envoyé à Paul, mot pour mot :
+
+29. Oui, les quatre ont livré, et c'est contrôlé depuis 18:01 ; rien n'a bougé depuis. Ils attendent tes deux réponses sur 29. La première porte sur le cas du voisin : je te propose la feuille le soir, avec ce que le voisin a lu, et tu cliques « ✅ Oui » si la copie dit bien cela. La seconde porte sur une question que personne n'a eue : « Q4 à Q11 n'ont pas été posées ». Tu valides les deux ?
+
+31. Rien n'est en ligne : il me manque ton « aucune séance en cours ».
+
+32. Ma question reste la même : la règle du participe vaut dès maintenant pour tout texte nouveau, et pour les textes déjà en ligne, je fais d'abord le relevé. Tu valides ?
+
+19/10/2026 19:48 MEMO

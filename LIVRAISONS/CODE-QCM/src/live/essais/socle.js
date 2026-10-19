@@ -324,6 +324,22 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     // la séance suivante : les binômes d'après ce QCM précédent (classement de la note)
     const bp = await prof.evaluate(() => SCN.binomesProposes("3 ESSAI"));
     verif(bp[0][0] === "abrial_julien" && bp.length === 13, "les binômes suivants se forment sur le classement du QCM précédent (Julien, 3 / 3, en tête)", bp.slice(0, 3));
+    // (19/10, point 29 seconde moitié) une séance terminée avant la fin : Q1 révélée, Q2 et Q3 posées, jamais révélées ; Paul lit le soir Q2 puis Q3 de
+    // Julien (lectures par:"prof") : chaque lecture compte, la note devient complète, et le socle dit ce que dit la copie de QCM-3 (resultatLocalV)
+    const s29 = await p2.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {})); await p2.evaluate(() => ACT.appelFini([])); await pause(300);
+    await p2.evaluate(s => { const b = SCN.evalDeSeance(s).questions.map(q => q.bonnes), m = {}, P = "/sessions/" + s + "/", now = LIVE.maintenant();
+      m[P + "questionsLancees"] = {0: now - 3000, 1: now - 2000, 2: now - 1000}; [0, 1, 2].forEach(i => { m[P + "reponses/" + i + "/abrial_julien"] = {choix: b[i], ts: now, ms: now, tour: 1}; });
+      m[P + "lectures/0/abrial_julien"] = {choix: b[0], par: "baudry_lea", ms: now}; m[P + "revelees"] = [0]; return ecrireQCM(m, "essai 29"); }, s29); await pause(200);
+    await p2.evaluate(s => ACT.terminer(s), s29); await pause(400);
+    const n29 = async () => p2.evaluate(s => { const se = seancesV().find(x => x.id === s), a = SCN.note("abrial_julien", null, s), l = resultatLocalV(se, "abrial_julien"); return {s: [a.st.join(""), a.n, a.complet, nonLuesV(a)], l: [l.st.join(""), l.n, l.complet]}; }, s29);
+    const a29 = await n29();
+    await p2.evaluate(s => { const b = SCN.evalDeSeance(s).questions.map(q => q.bonnes), m = {}; m["/sessions/" + s + "/lectures/1/abrial_julien"] = {choix: b[1], par: "prof", ms: LIVE.maintenant()}; return ecrireQCM(m, "soir Q2"); }, s29); await pause(300);
+    const b29 = await n29();
+    await p2.evaluate(s => { const m = {}; m["/sessions/" + s + "/lectures/2/abrial_julien"] = {choix: "aucun", par: "prof", ms: LIVE.maintenant()}; return ecrireQCM(m, "soir Q3"); }, s29); await pause(300);
+    const c29 = await n29();
+    verif(JSON.stringify(a29.s) === JSON.stringify(["jnn", 1, false, 2]) && JSON.stringify(b29.s) === JSON.stringify(["jjn", 2, false, 1]) && JSON.stringify(c29.s) === JSON.stringify(["jja", 2, true, 0])
+      && [a29, b29, c29].every(r => JSON.stringify(r.s.slice(0, 3)) === JSON.stringify(r.l)),
+      "une séance terminée avant la fin, lue le soir (Q2 puis Q3) : chaque lecture compte, la note devient complète, et le socle dit la note de resultatLocalV", {a29, b29, c29});
     verif(err.length === 0, "aucune erreur de page", err.slice(0, 3));
   } catch(e){ verif(false, "l'essai s'est arrêté", e.stack); }
   await nav.close(); await srv.close();

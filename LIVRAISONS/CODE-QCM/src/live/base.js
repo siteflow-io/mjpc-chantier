@@ -333,12 +333,15 @@ var SCN = (function(){
     if(!s.deroule && !s.lancee) return noteAncienne(x, s, ev);
     var an = S.annulees(sid), ec = S.ecartees(sid), corr = S.corrigeesAu(k, sid), lanc = S.lancees(sid);
     var papier = s.lancee && s.lancee.mode === "papier", tr = papier ? null : S.trouveeCalculee(x, sid), st = [], pts = [];
+    var terminee = s.etat === "terminee" || s.etat === "finie" || s.phase === "finie" || !!(s.deroule && s.deroule.ph === "fin");   // seanceTerminee (c4-seances.js)
     ev.questions.forEach(function(q, qi){
       if(ec.indexOf(qi) >= 0){ st.push("e"); pts.push(null); return; }   // (13/10) une question écartée n'est nulle part : ni juste, ni fausse
       var rep = S.reponse(x, qi, sid);
       if(!rep && lanc[qi] && S.partiA(x, lanc[qi], sid)){ st.push("x"); pts.push(null); return; }
       if(papier){ var g = ((s.papier || {})[x] || {})[qi]; if(g == null){ st.push("n"); pts.push(null); } else { st.push(g === "j" || g === true || g === 1 ? "j" : "f"); pts.push(st[st.length - 1] === "j" ? 1 : 0); } return; }
-      if(corr.indexOf(qi) < 0){ st.push("n"); pts.push(null); return; }
+      // (19/10, Paul, point 29 seconde moitié) dans une séance terminée, une question posée mais jamais révélée en classe compte dès que sa feuille
+      // est lue (le soir, « Lire les copies ») : la règle de resultatLocalV (c4-seances.js), pour que les deux copies disent la même note
+      if(corr.indexOf(qi) < 0 && !terminee){ st.push("n"); pts.push(null); return; }
       var lu = S.lecture(x, qi, sid);
       // sans lecture de la feuille, pas de note (cadrage : la note, c'est la feuille)
       if(!lu){ st.push("n"); pts.push(null); return; }

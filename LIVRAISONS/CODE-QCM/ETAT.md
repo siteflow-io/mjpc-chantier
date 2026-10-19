@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 16:40 — point 28 livré (`a269fea`, reçu 16:08, prévu 17:08) : le temps tapé ne part qu'à Entrée ou en quittant le champ, vu au geste ; je relis la section toutes les 2 minutes (la première moitié de 29) jusqu'à « contrôlé »
 
 - QCM-3 · SOIR · 17:34 — VERDICT de 17:33 : ça va (28 : 28/28, 29 : 41/41) ; rien à mon nom ; j'attends « contrôlé », la section relue toutes les 2 min
-- QCM-4 · BANC · 17:54 — le temps tapé, et la note d'une séance arrêtée : VERDICT.md poussé à 17:33 (7271cb5), ça va ; j'attends « contrôlé » en relisant la section toutes les 2 minutes, et je rejoue tout correctif poussé
+- QCM-4 · BANC · 18:02 — le temps tapé, et la note d'une séance arrêtée : contrôle de la conscience (18:01) : ça va pour 28 et la seconde moitié de 29, sur mon VERDICT de 17:33 ; la section reste ouverte (29 première moitié, point 6, pour Paul) ; je la relis toutes les 2 minutes et je rejouerai ce qui sera ajouté

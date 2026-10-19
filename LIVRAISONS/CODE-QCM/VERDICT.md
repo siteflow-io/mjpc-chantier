@@ -1,4 +1,4 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, le temps tapé, et la note d'une séance arrêtée avant la fin, 19/10 17:35
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, le temps tapé, et la note d'une séance arrêtée avant la fin, 19/10 17:33
 
 *La section « Le temps tapé, et la note d'une séance arrêtée avant la fin — 19/10/2026 » (DEFAUTS-OUVERTS, point 4). Les livraisons sont celles de QCM-1 (`4eb3290`), QCM-3 (`e7abb6f`, `90578fc`) et QCM-2 (`a269fea`). L'app, `evaluation-qcm.staging.html`, est assemblée par `build.py` sur `code-qcm` à `a269fea`, md5 **`94e5e069d0d5b681bf94a4506fa81e1f`**. `src/` et `build.py` n'ont pas changé après 17:09 ; l'app, reconstruite à 17:10, est identique. Sorties : `sorties/2026-10-19_1623/`.*
 
@@ -58,7 +58,7 @@ Dans la première vague, à cinq jeux en même temps, deux vérifications ont é
 
 **Le reste de la section :**
 - QCM-1 n'a rien à changer dans `c3-base.js` : il a mesuré que ses champs ne sont plus atteints (point 2). Le champ de la console que mon banc a joué est celui de QCM-2.
-- Pour la première moitié de 29 (une question que personne n'a eue), la conscience n'avait rien ajouté à la section à 17:35. Je l'ai relue toutes les 2 minutes depuis 16:10. Rien n'y change d'ici la réponse de Paul.
+- Pour la première moitié de 29 (une question que personne n'a eue), la conscience n'avait rien ajouté à la section à 17:33. Je l'ai relue toutes les 2 minutes depuis 16:10. Rien n'y change d'ici la réponse de Paul.
 
 ---
 

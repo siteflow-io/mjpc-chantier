@@ -23026,3 +23026,23 @@ Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et
 31. Je ne peux pas vérifier d'ici qu'aucune séance n'est en cours : mon atelier n'a pas accès au hub, et cette conversation n'est pas reliée à ton ordinateur. Si tu as l'application Claude sur ton ordinateur, ouvrir cette conversation là-bas et m'envoyer un message peut la relier. Sinon, c'est toi qui lances les séances : dis-moi « aucune séance en cours », et je mets la 8.0.5 en ligne aussitôt, avec tes tests.
 
 19/10/2026 09:49 MEMO
+
+## TOUR 747 — Paul, 19/10 16:49
+
+Paul, mot pour mot :
+
+J'ai lancé les 4 exec.
+
+Lu : `ETAT.md` sur `code-qcm` à `c6da4fc7` (reçu 16:08-16:09 ; QCM-2 `a269fea`, QCM-1 « S.note suit resultatLocalV », QCM-3 `e7abb6f` ; QCM-4 banc-temps 28/28 et banc-note au vert sur l'app `94e5e069…`, ses autres bancs en cours). Mesuré : Claude in Chrome, extension non joignable. Fait : contrôle programmé à 17:45 (`trig_01ESY5tUJBhh2vAcwxx5Hp3y`) ; dette n°12 · 222 mise à jour (production).
+
+Envoyé à Paul, mot pour mot :
+
+28. Noté. D'après leurs lignes d'état, ils ont reçu ton message vers 16:08, et ils ont déjà livré, pour 28 comme pour la seconde moitié de 29 : QCM-2 le temps tapé, QCM-1 et QCM-3 la note du soir. QCM-4 a ses deux nouveaux bancs au vert, et il rejoue tous les autres. Son verdict est attendu vers 17:39, et mon contrôle est programmé à 17:45.
+
+29. Ta règle d'aujourd'hui, jamais de participe tout seul, vaut aussi pour ma proposition. En tête du tableau de la séance et dans le PDF, tu lirais donc « Q4 à Q11 n'ont pas été posées ». Le reste de la proposition ne change pas. Tu valides ?
+
+31. Je ne peux toujours pas vérifier d'ici : ton Chrome n'est pas joignable depuis cette conversation (l'ordinateur est peut-être en veille, Chrome fermé, ou l'extension Claude absente). Rien ne part en ligne sans ton « aucune séance en cours ».
+
+32. Dans l'app, des textes déjà en ligne sont des participes seuls, par exemple « Q2 écartée » dans ton tableau, ou « ✅ Réponse enregistrée » sur la tablette. Ma proposition : la règle vaut dès maintenant pour tout texte nouveau ; pour les textes déjà en ligne, je fais d'abord le relevé, et je te le montre avant toute reprise. Tu valides ?
+
+19/10/2026 16:51 MEMO

@@ -39,9 +39,9 @@ if [ -f "${1:-$L/evaluation-qcm.staging.html}" ]; then
   ( APP_FILE="$APP" BANC="$BANC" timeout 1260 node "$L/banc/banc-branches.js" "$O" > "$O/branches.log" 2>&1; echo $? > "$O/.rr"; date +%s > "$O/.tr" ) &
   else echo 0 > "$O/.rd"; echo 0 > "$O/.rr"; date +%s > "$O/.td"; date +%s > "$O/.tr"; fi
   # les reprises du 13/10, par le geste (points rejoués), et les écrans jamais atteints, s'ils existent
-  for x in reprise2 reprise3 reprise4 reprise5 reprise7-a reprise7-b reprise7-c reprise7-d reprise7-e micros-16-10 modetest-16-10 jamais; do [ -n "$COURT" ] && [ "$x" = jamais ] && continue; t=480; [ "$x" = modetest-16-10 ] && t=1500; [ -f "$L/banc/banc-$x.js" ] && ( APP_FILE="$APP" BANC="$BANC" timeout $t node "$L/banc/banc-$x.js" "$O" > "$O/$x.log" 2>&1 ) & done
+  for x in reprise2 reprise3 reprise4 reprise5 reprise7-a reprise7-b reprise7-c reprise7-d reprise7-e micros-16-10 modetest-16-10 temps-19-10 note-19-10 jamais; do [ -n "$COURT" ] && [ "$x" = jamais ] && continue; t=480; [ "$x" = modetest-16-10 ] && t=1500; [ -f "$L/banc/banc-$x.js" ] && ( APP_FILE="$APP" BANC="$BANC" timeout $t node "$L/banc/banc-$x.js" "$O" > "$O/$x.log" 2>&1 ) & done
   wait
-  for x in reprise2 reprise3 reprise4 reprise5 reprise7-a reprise7-b reprise7-c reprise7-d reprise7-e micros modetest jamais; do [ -f "$O/$x.txt" ] && { echo; echo "── $x"; sed -n '1,2p' "$O/$x.txt" | sed 's/^/  /'; } >> "$O/resume.txt"; done
+  for x in reprise2 reprise3 reprise4 reprise5 reprise7-a reprise7-b reprise7-c reprise7-d reprise7-e micros modetest temps note jamais; do [ -f "$O/$x.txt" ] && { echo; echo "── $x"; sed -n '1,2p' "$O/$x.txt" | sed 's/^/  /'; } >> "$O/resume.txt"; done
   { echo; echo "── banc commun ($(( $(cat "$O/.tb") - a )) s, code $(cat "$O/.rb"))"; sed -n '2p' "$O/banc.txt" 2>/dev/null | sed 's/^/  /';
     echo; echo "── les gestes rares ($(( $(cat "$O/.tr") - a )) s, code $(cat "$O/.rr"))"; sed -n '2p' "$O/branches.txt" 2>/dev/null | sed 's/^/  /';
     echo; echo "── l'heure de demain ($(( $(cat "$O/.td") - a )) s, code $(cat "$O/.rd"))"; sed -n '2p' "$O/demain.txt" 2>/dev/null | sed 's/^/  /'; } >> "$O/resume.txt"

@@ -271,14 +271,19 @@ function tempsAjouter(qi, champ, n, actif){
 }
 // un champ qu'on tape garde ce qu'on y tape tant qu'il a le curseur ; la séance reçoit chaque valeur entière (règle du 04/10)
 function ChampTemps(p){   // p : v, qi, champ, actif, attrs
-  var s = useState(null), brouillon = s[0], setB = s[1];
+  var s = useState(null), brouillon = s[0], setB = s[1], envoye = React.useRef(null);
   var aff = brouillon != null ? brouillon : String(p.v), a = Object.assign({}, p.attrs);
   // (QCM-1, K6) un champ qui se ferme pendant qu'on y tape garde le curseur et sa valeur : il passe en lecture seule, et se ferme au départ du curseur
   var ferme = !!a.disabled;
   if(ferme && brouillon != null){ a.disabled = false; a.readOnly = true; }
+  /* (19/10, Paul, point 28) ce que Paul tape ne part qu'à Entrée, ou quand il quitte le champ : pendant la frappe, rien n'est écrit
+     et le chrono continue ; un champ vide ou à 0 reprend sa valeur ; Entrée puis la sortie du champ n'envoient qu'une fois */
+  function envoyer(val){ if(ferme) return; var x = parseInt(val, 10); if(!(x > 0) || x === p.v || x === envoye.current) return; envoye.current = x; tempsAjouter(p.qi, p.champ, x - p.v, p.actif); }
   return h("input", Object.assign({type:"number", min:1, value:aff,
-    onFocus:function(){ setB(String(p.v)); }, onBlur:function(){ setB(null); },
-    onChange:function(e){ if(ferme) return; setB(e.target.value); var x = parseInt(e.target.value, 10); if(x > 0 && x !== p.v) tempsAjouter(p.qi, p.champ, x - p.v, p.actif); }}, a));
+    onFocus:function(){ envoye.current = null; setB(String(p.v)); },
+    onBlur:function(e){ envoyer(e.target.value); setB(null); envoye.current = null; },
+    onKeyDown:function(e){ if(e.key === "Enter"){ e.preventDefault(); envoyer(e.target.value); var x = parseInt(e.target.value, 10); setB(x > 0 ? String(x) : String(p.v)); } },
+    onChange:function(e){ if(ferme) return; setB(e.target.value); }}, a));
 }
 function TempsCarteH(p){   // p : lbl, champ, qi, reste, actif, fini, sous
   useTemps();
@@ -292,7 +297,7 @@ function TempsCarteH(p){   // p : lbl, champ, qi, reste, actif, fini, sous
     h("div", {className:"desc"}, p.sous),
     h("div", {className:"inline-edit t-edit"},
       h(ChampTemps, {v:total, qi:p.qi, champ:p.champ, actif:p.actif, attrs:{disabled:!!ferme, "data-q":p.qi + 1, "data-temps":p.champ, "aria-label":"Temps " + p.lbl,
-        title:ferme || (p.champ === "reflexion" ? "Tape le temps de réflexion de cette question, en secondes. La fin prévue suit." : "Tape le temps de réponse de cette question, en secondes : il vaut pour chaque tour et pour la lecture à la correction. La fin prévue suit.")}}),
+        title:ferme || (p.champ === "reflexion" ? "Tape le temps de réflexion de cette question, en secondes, puis Entrée (ou quitte le champ) : il part alors, tout de suite au chrono en cours ; pendant la frappe, le chrono continue. La fin prévue suit." : "Tape le temps de réponse de cette question, en secondes, puis Entrée (ou quitte le champ) : il part alors, tout de suite au chrono en cours ; pendant la frappe, le chrono continue. Il vaut pour chaque tour et pour la lecture à la correction. La fin prévue suit.")}}),
       h("span", {className:"t-s"}, "s"),
       [5, 10, 30].map(function(n){ return h("button", {key:n, className:"btn btn-ghost btn-sm t-plus", "data-local":"1", disabled:!!ferme,
         title:ferme || ("Ajoute " + n + " s au temps de " + (p.champ === "reflexion" ? "réflexion" : "réponse") + " de cette question" + (p.actif ? ", tout de suite au chrono en cours" : "") + ". La fin prévue suit."), onClick:function(){ tempsAjouter(p.qi, p.champ, n, p.actif); }}, "+" + n); })));
@@ -310,7 +315,7 @@ function TempsMiniH(p){
   useTemps();
   var t = tempsDe(p.qi);
   function champ(c, lbl, nom){ return h("label", {className:"tm-l"}, lbl, h(ChampTemps, {v:t[c], qi:p.qi, champ:c, actif:false, attrs:{"data-q":p.qi + 1, "data-temps":c,
-    title:"Le temps de " + nom + " de la question " + (p.qi + 1) + ", pour cette séance : l'évaluation elle-même ne change pas. La fin prévue suit."}}), "s"); }
+    title:"Le temps de " + nom + " de la question " + (p.qi + 1) + ", pour cette séance : tape-le, puis Entrée (ou quitte le champ). L'évaluation elle-même ne change pas. La fin prévue suit."}}), "s"); }
   return h("div", {className:"tm"}, champ("reflexion", "🧠 ", "réflexion"), champ("reponse", "✋ ", "réponse"));
 }
 // « ⏸️ Pause » / « ▶️ Reprendre » et « 🔄 Relancer chrono » : en direct, la séance elle-même (etape2.js garde ceux de la maquette)

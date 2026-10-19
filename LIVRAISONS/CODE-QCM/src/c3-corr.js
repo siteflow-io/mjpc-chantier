@@ -343,7 +343,7 @@ function PilotCorrectionH(){
              le même geste que les chronos des questions (TempsCarteH) : le temps se tape, ou « +5 », « +10 », « +30 », tout de suite au chrono en cours */
           h("div", {className:"inline-edit t-edit"},
             h(ChampTemps, {v:tempsDe(qi).reponse, qi:qi, champ:"reponse", actif:true, attrs:{"data-q":qi + 1, "data-temps":"lecture", "aria-label":"Temps pour lire la feuille du voisin",
-              title:"Tape le temps pour lire la feuille du voisin, en secondes : il part tout de suite au chrono de la lecture. C'est aussi le temps de réponse de cette question."}}),
+              title:"Tape le temps pour lire la feuille du voisin, en secondes, puis Entrée (ou quitte le champ) : il part alors, tout de suite au chrono de la lecture ; pendant la frappe, rien ne se fige. C'est aussi le temps de réponse de cette question."}}),
             h("span", {className:"t-s"}, "s"),
             [5, 10, 30].map(function(n){ return h("button", {key:n, className:"btn btn-ghost btn-sm t-plus", "data-local":"1",
               title:"Ajoute " + n + " s au temps pour lire la feuille du voisin, tout de suite au chrono en cours. Une lecture déjà figée à 0 se rouvre pour ces secondes.", onClick:function(){ tempsAjouter(qi, "reponse", n, true); }}, "+" + n); }))),

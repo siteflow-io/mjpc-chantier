@@ -23000,3 +23000,29 @@ Mais je ne l'ai pas mise en ligne. À cette heure, le hub n'est pas joignable de
 27, 28 et 29 attendent toujours ta réponse.
 
 16/10/2026 18:53 MEMO
+
+## TOUR 746 — Paul, 19/10 09:43
+
+Paul, mot pour mot :
+
+Vérifie. pour 27: Oui. 28: oui. 29: une question que j'avais prévue mais que personne n'a eue ne se taggue pas question écartée même si personne ne l'a eue. il faut trouver un autre fléchage.
+
+Lu : `ChampTemps` (`c3-pilot.js` l. 273, écrit à chaque frappe ; ses trois usages), les champs de `c3-base.js` l. 138 et 158, `S.note` (`live/base.js` l. 331 : une question non révélée reste « n » même lue le soir ; « x » pas posée pour l'élève parti), `resultatLocalV` (`c4-seances.js` l. 312 : séance terminée, la lecture du soir compte), `BilanContenuV` (côté élève, « x » n'apparaît pas), `ecartTexteV`, `lire-copies.js` l. 74 (« pas posée »), le badge « 🔴 séances en cours » (`c3-gestes.js` l. 67). Mesuré : le hub toujours illisible (curl : CONNECT 403) ; Claude in Chrome : la conversation n'est reliée à aucun ordinateur. Fait : la section « Le temps tapé, et la note d'une séance arrêtée avant la fin — 19/10/2026 » (`code-qcm` `fb9a961d`) ; dette n°12 · 222 (production).
+
+Envoyé à Paul, mot pour mot :
+
+27. Noté. Il n'y a rien à coder : c'est en ligne depuis la 8.0.4. Seul à sa tablette, l'élève corrige sa propre feuille avec les lignes du papier.
+
+28. Noté, et écrit aux exécutants. Dans tous les champs de temps de ta console, ce que tu tapes ne part qu'à Entrée, ou quand tu quittes le champ : la réflexion, la réponse, les temps de « Toutes les questions », et le temps pour lire la feuille du voisin. « +5 », « +10 » et « +30 » partent tout de suite, comme aujourd'hui. QCM-2 le code, et QCM-4 rejoue « 45 » tapé pendant un tour et « 130 » tapé pendant la lecture. D'ici là, pendant un tour, sers-toi seulement de « +5 », « +10 » et « +30 ».
+
+29. Tu n'as pas commenté la seconde moitié, je la prends donc comme acquise : une question posée mais jamais corrigée en classe compte dès que tu as lu la feuille le soir. Je l'ai écrite aux exécutants avec 28. En la mesurant, j'ai trouvé que ton tableau du soir le fait déjà, mais pas la note de la console : les deux diront la même note. Pour la première moitié, ma nouvelle proposition : une question que personne n'a eue, parce que la séance s'est terminée avant elle, n'est pas « écartée », elle est « pas posée ». C'est le mot que l'app emploie déjà pour un élève parti avant une question. Elle sort du total, et tu lis par exemple, en tête du tableau de la séance et dans le PDF : « Q4 à Q11 pas posées ». Côté élève, rien de nouveau : elle n'apparaît pas dans son bilan, comme aujourd'hui pour l'élève parti avant elle. Une séance en pause, que tu finiras à une autre heure, garde ses questions à venir dans le total. Si tu rouvres une séance terminée et que tu poses la question, elle rentre dans le total. Tu valides ?
+
+Les exécutants se sont arrêtés vendredi, il faut les relancer pour 28 et 29 : le même message couvre les deux. Voici le message à coller, le même dans les quatre sessions :
+
+« Le temps tapé, et la note d'une séance arrêtée avant la fin : lis la section « Le temps tapé, et la note d'une séance arrêtée avant la fin — 19/10/2026 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), et fais ta part. QCM-2, QCM-1 et QCM-3 codent ce qui porte leur nom, QCM-4 rejoue tout avec son banc. La livraison est poussée une heure après ce message, avec ta ligne dans ETAT.md ; QCM-4 pousse VERDICT.md trente minutes plus tard. Relis la section toutes les 2 minutes : la conscience peut y ajouter la première moitié de 29. Tu tournes jusqu'à ce que la conscience écrive « contrôlé » en tête de cette section. »
+
+Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
+
+31. Je ne peux pas vérifier d'ici qu'aucune séance n'est en cours : mon atelier n'a pas accès au hub, et cette conversation n'est pas reliée à ton ordinateur. Si tu as l'application Claude sur ton ordinateur, ouvrir cette conversation là-bas et m'envoyer un message peut la relier. Sinon, c'est toi qui lances les séances : dis-moi « aucune séance en cours », et je mets la 8.0.5 en ligne aussitôt, avec tes tests.
+
+19/10/2026 09:49 MEMO

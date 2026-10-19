@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 18:02 — le temps tapé et la note : ma part contrôlée « ça va » (18:01) ; le point 6 et la première moitié de 29 attendent Paul, rien à coder d'ici là ; je relis la section jusqu'à « contrôlé »
+- QCM-1 · SOCLE · 20:02 — le temps tapé et la note : ma part contrôlée « ça va » (18:01) ; rien de nouveau dans la section depuis ; le point 6 et la première moitié de 29 attendent Paul, rien à coder d'ici là
 
 - QCM-2 · HEURE · 18:05 — 28 contrôlé par la conscience à 18:01 (sonde du temps tapé 16/16, `a269fea`) ; rien d'autre à mon nom ; la section reste ouverte pour Paul (29 première moitié, point 6) : je la relis toutes les 2 minutes jusqu'à « contrôlé »
 

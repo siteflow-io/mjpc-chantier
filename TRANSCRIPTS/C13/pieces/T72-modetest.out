@@ -1,0 +1,8 @@
+mode test : true
+écritures au hub en mode test (lancement) : [
+  'PUT /site/cours_actif',
+  'PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene',
+  'PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene',
+  'PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene'
+]
+erreurs JS : []

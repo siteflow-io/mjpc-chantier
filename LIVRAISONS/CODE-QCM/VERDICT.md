@@ -39,6 +39,11 @@ La part de QCM-1 n'est pas arrivée. C'est `S.note` (`live/base.js`), pour les p
 
 La reprise 7-c a fait 99 vérifications et 29 échecs dans la troisième vague, à sept jeux en même temps. La séance a calé à Q2 : aucune B n'est parue sur les tablettes, et les échecs suivants en découlent. Je la rejoue seule ; le résultat suit sous ce verdict.
 
+**Ajouts de 10:27 :**
+- La reprise 7-c, rejouée seule : **141 / 141** (`rejoues-seuls/reprise7-c.txt`).
+- Le « NaN » du PDF : corrigé par QCM-3 (`a666bd7`) et rejoué : « Q4 à Q11 pas posées » (`rejoues-seuls/arret-a666bd7.txt`).
+- Le verdict ne change pas : la part de QCM-1 manque toujours.
+
 **La séance exacte du point 10 n'est pas jouable par le geste** (DEMANDES, 09:00) : la correction ne se lance qu'après la dernière question. Mon banc en joue les deux moitiés : A, 11 questions arrêtées après Q3 ; B, une évaluation de 3 questions, Q3 lue par les voisins sans « Révéler ». À propos de la lecture du voisin : QCM-3 écrit « Léa a lu la feuille de Julien en classe… » et « Tablette et lecture de Léa » plutôt que « lu par Léa ». Mon banc accepte les deux formes.
 
 ---

@@ -156,8 +156,9 @@ async function partieA(){
     J.v(!!c0 && c0.length && !noteC(c0).q.some(v => /écart/i.test(v)), H3, "le tableau de la séance : aucune case « écartée » pour Q4 à Q11", JSON.stringify(c0));
     J.section("A, le soir : Paul lit Q1 à Q3 de chaque copie");
     J.v(await clic(prof, /📄 Lire les copies/) || await clic(prof, /^\d+ feuilles? à lire$/), H3, "« 📄 Lire les copies »", await capt(prof, "A-lire-copies"));
+    note(J, "« Lire les copies », séance A : " + JSON.stringify(await prof.evaluate(() => { const o = {hash: location.hash}; try { const p = seanceParam(); o.param = p; const se = seanceV(p); o.seance = !!se; if(se){ o.presents = se.presents.length; } } catch(e){ o.erreur = e.message; } try { aLireV(seanceV(seanceParam())); } catch(e){ o.aLire = e.message; } return o; }).catch(e => ({erreur: e.message}))) + " ; erreurs de page : " + prof.__err.slice(-2).join(" | "));
     for(const x of [x1, x2]){
-      J.v(await ouvrirCopie(prof, nomDe(x)), H3, "« Lire les copies » : la copie de " + nomDe(x), (await texte(prof)).slice(0, 200));
+      J.v(await ouvrirCopie(prof, nomDe(x)), H3, "« Lire les copies » : la copie de " + nomDe(x), (await texte(prof)).slice(0, 200) + " ; " + await capt(prof, "A-copie-" + slug(nomDe(x)).slice(0, 8)) + " ; console du navigateur : " + (prof.__cerr || []).slice(-3).join(" | ").slice(0, 400));
       for(let qi = 0; qi < 3; qi++){ const r = await lireLigne(prof, qi, bonnesDe(E11, qi), false);
         if(!r.ok) J.v(false, H3, nomDe(x) + ", Q" + (qi + 1) + " : Paul lit la feuille", r.vu || "« Enregistrer » absent"); }
       const tq = await texte(prof);

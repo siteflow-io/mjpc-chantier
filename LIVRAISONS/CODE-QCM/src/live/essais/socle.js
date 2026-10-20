@@ -340,6 +340,19 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     verif(JSON.stringify(a29.s) === JSON.stringify(["jnn", 1, false, 2]) && JSON.stringify(b29.s) === JSON.stringify(["jjn", 2, false, 1]) && JSON.stringify(c29.s) === JSON.stringify(["jja", 2, true, 0])
       && [a29, b29, c29].every(r => JSON.stringify(r.s.slice(0, 3)) === JSON.stringify(r.l)),
       "une séance terminée avant la fin, lue le soir (Q2 puis Q3) : chaque lecture compte, la note devient complète, et le socle dit la note de resultatLocalV", {a29, b29, c29});
+    // (20/10, Paul 08:49, points 7 et 9) une séance arrêtée : Q1 révélée, Q2 lue par le voisin sans « Révéler », Q3 jamais lancée ; puis en pause
+    const arret = async (pause) => { const s = await p2.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {})); await p2.evaluate(() => ACT.appelFini([])); await pause_(300);
+      await p2.evaluate(s => { const b = SCN.evalDeSeance(s).questions.map(q => q.bonnes), m = {}, P = "/sessions/" + s + "/", now = LIVE.maintenant();
+        m[P + "questionsLancees"] = {0: now - 2000, 1: now - 1000}; [0, 1].forEach(i => { m[P + "reponses/" + i + "/abrial_julien"] = {choix: b[i], ts: now, ms: now, tour: 1}; m[P + "lectures/" + i + "/abrial_julien"] = {choix: b[i], par: "baudry_lea", ms: now}; });
+        m[P + "revelees"] = [0]; return ecrireQCM(m, "essai arrêt"); }, s); await pause_(200);
+      const oc = await p2.evaluate(s => { const m = {}; m["/sessions/" + s + "/ordreCorr"] = null; return ecrireQCM(m, "x").then(() => SCN.ordreCorr(s)); }, s);
+      await p2.evaluate(a => a[1] ? ACT.finirAutreHeure() : ACT.terminer(a[0]), [s, pause]); await pause_(400); return {s, oc}; };
+    const pause_ = pause, nA = (s) => p2.evaluate(s => { const se = seancesV().find(x => x.id === s), a = SCN.note("abrial_julien", null, s), l = resultatLocalV(se, "abrial_julien"); return [a.st.join(""), a.n, a.total, a.complet, nonLuesV(a), l.st.join(""), l.n, l.total, l.complet].join(" "); }, s);
+    const ar = await arret(false), a1 = await nA(ar.s);
+    await p2.evaluate(s => { const b = SCN.evalDeSeance(s).questions.map(q => q.bonnes), m = {}; m["/sessions/" + s + "/lectures/1/abrial_julien"] = {choix: b[1], par: "prof", ms: LIVE.maintenant()}; return ecrireQCM(m, "Oui"); }, ar.s); await pause(300);
+    const a2 = await nA(ar.s), arP = await arret(true), a3 = await nA(arP.s);
+    verif(JSON.stringify(ar.oc) === "[0,1]" && a1 === "jnx 1 2 false 1 jnx 1 2 false" && a2 === "jjx 2 2 true 0 jjx 2 2 true" && a3 === "jnn 1 3 false 1 jnn 1 3 false",
+      "une séance arrêtée (points 7 et 9) : Q3 jamais lancée hors du total, Q2 lue par le voisin sans « Révéler » pas encore lue jusqu'à la lecture de Paul ; en pause, Q3 reste ; l'ordre de la correction ne prend que les questions lancées ; le socle dit la note de resultatLocalV", {oc: ar.oc, a1, a2, a3});
     verif(err.length === 0, "aucune erreur de page", err.slice(0, 3));
   } catch(e){ verif(false, "l'essai s'est arrêté", e.stack); }
   await nav.close(); await srv.close();

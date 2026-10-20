@@ -292,6 +292,9 @@ var SCN = (function(){
   S.ordreCorr = function(sid){ var s = S.sess(sid); if(s && s.ordreCorr) return (Array.isArray(s.ordreCorr) ? s.ordreCorr : Object.values(s.ordreCorr)).map(Number);
     var ev = S.ev(sid); if(!ev) return []; var ec = S.ecartees(sid), pres = S.presents(null, sid);
     var qs = ev.questions.map(function(q, i){ return i; }).filter(function(i){ return ec.indexOf(i) < 0; });
+    // (20/10, vu par QCM-3) sur tablettes, une correction commencée avant la dernière question ne corrige que les questions lancées (ou avec une
+    // réponse) : une question que personne n'a eue n'est pas « la plus ratée » ; toutes lancées, rien ne change
+    if(!S.papier(sid)){ var lq = (s && s.questionsLancees) || {}, rq = (s && s.reponses) || {}, posees = qs.filter(function(i){ return lq[i] != null || rq[i]; }); if(posees.length) qs = posees; }
     // sur papier : l'ordre des erreurs de la grille (papier/<slug>/<qi>) ; sur tablettes : les réponses des tablettes
     var taux = {}; if(S.papier(sid)){ qs.forEach(function(i){ var g = pres.map(function(x){ return ((s.papier || {})[x] || {})[i]; }).filter(function(v){ return v != null; });
         taux[i] = g.length ? g.filter(function(v){ return v === "j" || v === true || v === 1; }).length / g.length : 1; }); }
@@ -342,7 +345,13 @@ var SCN = (function(){
       // (19/10, Paul, point 29 seconde moitié) dans une séance terminée, une question posée mais jamais révélée en classe compte dès que sa feuille
       // est lue (le soir, « Lire les copies ») : la règle de resultatLocalV (c4-seances.js), pour que les deux copies disent la même note
       if(corr.indexOf(qi) < 0 && !terminee){ st.push("n"); pts.push(null); return; }
+      // (20/10, Paul 08:49, point 7 : 29 première moitié) dans une séance terminée, une question jamais lancée (ni questionsLancees, ni une réponse)
+      // sort du total pour tous, comme la question manquée d'un élève parti : « x » ; une séance en pause garde ses questions à venir (pas terminée)
+      if(terminee && lanc[qi] == null && !((s.reponses || {})[qi])){ st.push("x"); pts.push(null); return; }
       var lu = S.lecture(x, qi, sid);
+      // (20/10, Paul 08:49, point 9 : le point 6 tranché) lancée mais pas révélée, lue en classe par le voisin : « pas encore lue » tant que Paul
+      // ne l'a pas lue le soir (« Lire les copies », par:"prof") ; une question révélée ne change pas. La règle de resultatLocalV (c4-seances.js)
+      if(lu && corr.indexOf(qi) < 0 && lu.par !== "prof"){ st.push("n"); pts.push(null); return; }
       // sans lecture de la feuille, pas de note (cadrage : la note, c'est la feuille)
       if(!lu){ st.push("n"); pts.push(null); return; }
       if(lu.choix === "aucun"){ st.push("a"); pts.push(0); return; }

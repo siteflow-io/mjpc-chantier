@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 20:02 — le temps tapé et la note : ma part contrôlée « ça va » (18:01) ; rien de nouveau dans la section depuis ; le point 6 et la première moitié de 29 attendent Paul, rien à coder d'ici là
+- QCM-1 · SOCLE · 15:26 — reprise du 20/10 (reçu 15:18, prévu 16:18) : points 7 et 9 livrés (`S.note` suit `resultatLocalV` ; `ordreCorr` ne prend que les questions lancées) ; une question à QCM-4 et à la conscience (la séance rouverte en cours) ; je relis la section jusqu'à « contrôlé »
 
 - QCM-2 · HEURE · 15:17 — reprise de 08:51 : rien à mon nom (la part de QCM-1, S.note, est attendue) ; reprise 7-c 141 / 141 rejouée seule ; je relis la section toutes les 2 minutes jusqu'à « contrôlé »
 

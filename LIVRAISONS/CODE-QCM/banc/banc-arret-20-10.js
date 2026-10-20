@@ -161,8 +161,9 @@ async function partieA(){
       J.v(await ouvrirCopie(prof, nomDe(x)), H3, "« Lire les copies » : la copie de " + nomDe(x), (await texte(prof)).slice(0, 200) + " ; " + await capt(prof, "A-copie-" + slug(nomDe(x)).slice(0, 8)) + " ; console du navigateur : " + (prof.__cerr || []).slice(-3).join(" | ").slice(0, 400));
       for(let qi = 0; qi < 3; qi++){ const r = await lireLigne(prof, qi, bonnesDe(E11, qi), false);
         if(!r.ok) J.v(false, H3, nomDe(x) + ", Q" + (qi + 1) + " : Paul lit la feuille", r.vu || "« Enregistrer » absent"); }
-      const tq = await texte(prof);
-      J.v(!/Question (4|5|6|7|8|9|10|11)\b/.test((tq.match(/📄 [^\n]*[\s\S]*/) || [""])[0].slice(0, 3000)), H3, nomDe(x) + " : « Lire les copies » ne propose pas Q4 à Q11", (tq.match(/Question (4|5|6|7|8|9|10|11)[^\n]*/) || [""])[0]);
+      // les lignes à lire de la copie (pas « 🧮 La note, en direct », qui dit « pas posée » pour elles, point 8)
+      const lq = await prof.evaluate(() => [...document.querySelectorAll("[data-ligne] strong")].map(x => x.textContent)).catch(() => []);
+      J.v(!lq.some(t => /Question (4|5|6|7|8|9|10|11)$/.test(t)), H3, nomDe(x) + " : « Lire les copies » ne propose pas Q4 à Q11 à lire", JSON.stringify(lq));
       const d = await deuxNotes(x), nd = await noteDirecte(prof);
       J.v(d.base && d.base.n === 3 && d.base.total === 3 && d.base.complet && JSON.stringify(d.base) === JSON.stringify(d.c4), H13, nomDe(x) + ", Q1 à Q3 lues : 3 / 3, complète, la même dans la base et dans c4", JSON.stringify(d));
       J.v(/Note : [^·]*3 \/ 3/.test(nd) && !/pas encore lue/.test(nd), H3, nomDe(x) + " : « 🧮 La note, en direct » dit 3 / 3", nd.slice(0, 300));
@@ -176,7 +177,10 @@ async function partieA(){
     for(let k = 0; k < 3; k++){ if(await cliquer(prof, /^🚀 Lancer la séance$/)) await pause(1500); }
     let okQ4 = false; for(let k = 0; k < 10 && !okQ4; k++){ okQ4 = await cliquer(prof, /Lancer Q4\b/); if(!okQ4){ await cliquer(prof, /▶️ Reprendre/); await pause(800); } }
     await pause(1500); const d4 = await deuxNotes(x1); const c4cap = await capt(prof, "A-q4");
-    J.v(okQ4 && d4.base && d4.base.total === 4 && d4.c4 && d4.c4.total === 4, H13, "la séance rouverte lance Q4 : Q4 revient dans le total (sur 4), la base et c4", "Lancer Q4 : " + okQ4 + " · " + JSON.stringify(d4) + " ; " + c4cap);
+    // pendant qu'elle tourne, la séance rouverte n'est pas terminée : ses questions à venir restent dans le total, comme en pause (QCM-1, 15:26)
+    note(J, "la séance rouverte, Q4 lancée, en cours : " + JSON.stringify(d4) + " (" + c4cap + ")");
+    await terminer(prof); const d5 = await deuxNotes(x1);
+    J.v(okQ4 && d5.base && d5.base.total === 4 && d5.c4 && d5.c4.total === 4, H13, "la séance rouverte a lancé Q4, puis « 🛑 Terminer » : Q4 revient dans le total (sur 4), Q5 à Q11 restent dehors, la base et c4", "Lancer Q4 : " + okQ4 + " · " + JSON.stringify(d5) + " ; " + await capt(prof, "A-q4-terminee"));
   } catch(e){ J.v(false, BANC, "la séance A s'est interrompue : " + e.message); }
 }
 
@@ -198,10 +202,10 @@ async function partieB(){
     await pause(1200); await cliquer(prof, /Commencer la correction/); await pause(1500);
     const ordre = L(S().ordreCorr).map(Number);
     J.v(JSON.stringify(ordre) === "[0,1,2]", BANC, "la correction lit Q1, Q2, puis Q3", JSON.stringify(ordre));
-    // chaque lecteur lit sur la feuille du voisin ce que le voisin a cliqué
+    // sur la moitié de chaque élève, son voisin lit SA feuille (8.0.3) : il y clique ce que l'élève a écrit, son clic
     for(let i = 0; i < 3; i++){
       const qi = ordre[i];
-      for(const [c, sl] of M){ const v = M.find(m => m[1] !== sl)[1]; for(const t of REP[qi](v)) await cliquer(t1, new RegExp("^" + esc(t) + "$"), c, {apres: 150}); }
+      for(const [c, sl] of M){ for(const t of REP[qi](sl)) await cliquer(t1, new RegExp("^" + esc(t) + "$"), c, {apres: 150}); }
       await pause(900);
       if(i < 2){ await cliquer(prof, /Révéler/); await pause(1200); await cliquer(prof, /Question suivante/); await pause(1200); }
     }

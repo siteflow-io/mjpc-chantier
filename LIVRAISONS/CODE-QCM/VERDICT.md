@@ -1,4 +1,50 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, le temps tapé, et la note d'une séance arrêtée avant la fin, 19/10 17:33
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, 29 tranché par Paul (points 7 à 10), 20/10 10:21
+
+*La reprise de 08:51 (DEFAUTS-OUVERTS, « Le temps tapé, et la note d'une séance arrêtée avant la fin », points 7 à 11). L'app, `evaluation-qcm.staging.html`, est assemblée par `build.py` sur `code-qcm` à `a2c4e90`, md5 **`53247f20993b68b4e519b7d0c6c933e0`** : elle contient la part de QCM-3 (`7a1b948`, `cfb8ef5`) mais rien de QCM-1. Sorties : `sorties/2026-10-20_0956/`.*
+
+## Verdict : **ça ne va pas.**
+
+La part de QCM-1 n'est pas arrivée. C'est `S.note` (`live/base.js`), pour les points 7 et 9. À 10:21, sa ligne dans `ETAT.md` date toujours du 19/10 20:02 ; je l'ai signalé dans DEMANDES à 09:55. Sans elle, la note ne suit pas ce que Paul a tranché. C4 passe par `S.note` (`resultatV`) et dit donc la même chose que la base, partout :
+- **Point 7 :** la séance de 11 questions arrêtée après Q3 compte encore sur 11. Q4 à Q11, jamais lancées, restent dans le total et dans « n questions pas encore lues ».
+- **Point 9 :** Q3, lue en classe par les voisins sans « Révéler », compte encore comme lue. « Lire les copies » ne la propose donc pas avec « ✅ Oui ».
+
+**`banc-arret-20-10.js` (points 7 à 10, par le geste) : 35 / 55.**
+
+*Ce qui passe, de la part de QCM-3 :*
+- l'en-tête du tableau de la séance dit « … · Q4 à Q11 pas posées · … », sans « écartée » ;
+- la séance en pause garde Q4 à Q11 dans le total (sur 11), dans la base comme dans c4 ;
+- « Lire les copies » ne plante plus. À 09:17 il plantait en ouvrant une copie (`NoteDirecteL`, `pts`) ; QCM-3 l'a corrigé en `cfb8ef5` et je l'ai rejoué.
+
+*Ce qui échoue :*
+- **La note sur 3 :** les deux copies disent 0 / 11, puis 3 / 11 (5,5) après la lecture de Q1 à Q3. C'est à QCM-1 (`S.note`).
+- **À cause de cela :** « Lire les copies » et « 🧮 La note, en direct » listent Q4 à Q11 « pas encore lue » ; le tableau, le CSV et le bilan de l'élève disent 3/11. Cela tombera avec `S.note`.
+- **La séance rouverte :** « ▶️ Lancer Q4 » se joue, mais rien n'y change, puisque Q4 à Q11 n'étaient pas sorties du total. À rejouer avec `S.note`.
+- **Q3 de la séance B :** elle reste lue (« ftj », 2 / 3 complète) au lieu de « pas encore lue ». C'est à QCM-1.
+- **Le PDF :** la ligne dit « Questions : aucune écartée, aucune annuléeNaN ». C'est un défaut à QCM-3 (ci-dessous), qu'il faudra rejouer une fois `S.note` arrivée.
+
+**Mes autres bancs, sur la même app, en trois vagues :**
+
+| Banc | Résultat |
+| --- | --- |
+| Contrôles de la conscience (`EMPREINTES.md5` vérifié) | **32 / 32** |
+| Banc commun | **211 / 211** |
+| Micros | **252 / 252** |
+| Mode test | **121 / 121** |
+| Temps tapé | **28 / 28** |
+| Note du soir (29, seconde moitié) | **41 / 41** |
+| Heure de demain | **109 / 109** |
+| Gestes rares | **47 / 47** |
+| Reprises 2 à 5 | **22 / 22, 15 / 15, 27 / 27, 10 / 10** |
+| Reprises 7-a, 7-b, 7-d, 7-e | **40 / 40, 85 / 85, 87 / 87, 9 / 9** |
+
+La reprise 7-c a fait 99 vérifications et 29 échecs dans la troisième vague, à sept jeux en même temps. La séance a calé à Q2 : aucune B n'est parue sur les tablettes, et les échecs suivants en découlent. Je la rejoue seule ; le résultat suit sous ce verdict.
+
+**La séance exacte du point 10 n'est pas jouable par le geste** (DEMANDES, 09:00) : la correction ne se lance qu'après la dernière question. Mon banc en joue les deux moitiés : A, 11 questions arrêtées après Q3 ; B, une évaluation de 3 questions, Q3 lue par les voisins sans « Révéler ». À propos de la lecture du voisin : QCM-3 écrit « Léa a lu la feuille de Julien en classe… » et « Tablette et lecture de Léa » plutôt que « lu par Léa ». Mon banc accepte les deux formes.
+
+---
+
+# Verdict de 17:33, le 19/10 (pour mémoire)
+
 
 *La section « Le temps tapé, et la note d'une séance arrêtée avant la fin — 19/10/2026 » (DEFAUTS-OUVERTS, point 4). Les livraisons sont celles de QCM-1 (`4eb3290`), QCM-3 (`e7abb6f`, `90578fc`) et QCM-2 (`a269fea`). L'app, `evaluation-qcm.staging.html`, est assemblée par `build.py` sur `code-qcm` à `a269fea`, md5 **`94e5e069d0d5b681bf94a4506fa81e1f`**. `src/` et `build.py` n'ont pas changé après 17:09 ; l'app, reconstruite à 17:10, est identique. Sorties : `sorties/2026-10-19_1623/`.*
 

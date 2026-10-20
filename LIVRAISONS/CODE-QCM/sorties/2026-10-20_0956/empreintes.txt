@@ -1,0 +1,3 @@
+controles-app.js: OK
+attendus/evaluation-essai.json: OK
+attendus/taxonomie-competences.json: OK

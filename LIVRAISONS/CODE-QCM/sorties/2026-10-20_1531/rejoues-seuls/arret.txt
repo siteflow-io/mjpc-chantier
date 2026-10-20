@@ -1,0 +1,66 @@
+Points 7 à 10 (29 tranché par Paul, 20/10), la séance arrêtée avant la fin, par le geste (QCM-4 · BANC) — durée 151 s · app md5 3b4d0f821ffad2d9bb82817a4ab2cdf5
+vérifications : 55 · échecs : 0
+── A. « 3e- éval 1 Analyse logique » (11 questions) : Q1 à Q3 jouées, justes ; « 🛑 Terminer »
+  ok     [QCM-4 · BANC] la séance est terminée après Q3
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Q4 à Q11, jamais lancées, sortent du total : la note est sur 3 (la base et c4)
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] avant la lecture du soir : 0 / 3, pas complète, la même dans la base et dans c4
+  ok     [QCM-3 · SOIR] Données → Résultats → « 📊 Ouvrir » la séance
+  ok     [QCM-3 · SOIR] en tête du tableau de la séance : « Q4 à Q11 pas posées », jamais « écartée »
+  ok     [QCM-3 · SOIR] le tableau de la séance, ABRIAL Julien : « 0/3 », « 3 questions pas encore lues » (Q4 à Q11 n'y comptent pas)
+  ok     [QCM-3 · SOIR] le tableau de la séance : aucune case « écartée » pour Q4 à Q11
+── A, le soir : Paul lit Q1 à Q3 de chaque copie
+  ok     [QCM-3 · SOIR] « 📄 Lire les copies »
+  note   « Lire les copies », séance A : {"hash":"","param":"sess_1792503639376","seance":true,"presents":2} ; erreurs de page : 
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de ABRIAL Julien
+  ok     [QCM-3 · SOIR] ABRIAL Julien : « Lire les copies » ne propose pas Q4 à Q11 à lire
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] ABRIAL Julien, Q1 à Q3 lues : 3 / 3, complète, la même dans la base et dans c4
+  ok     [QCM-3 · SOIR] ABRIAL Julien : « 🧮 La note, en direct » dit 3 / 3
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de BAUDRY Léa
+  ok     [QCM-3 · SOIR] BAUDRY Léa : « Lire les copies » ne propose pas Q4 à Q11 à lire
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] BAUDRY Léa, Q1 à Q3 lues : 3 / 3, complète, la même dans la base et dans c4
+  ok     [QCM-3 · SOIR] BAUDRY Léa : « 🧮 La note, en direct » dit 3 / 3
+  ok     [QCM-3 · SOIR] A, le tableau de la séance, ABRIAL Julien : 3/3 · 20, sans « pas encore lues »
+  ok     [QCM-3 · SOIR] A, le CSV, ABRIAL Julien : 3/3 et 20
+  ok     [QCM-3 · SOIR] A, Données → Résultats : ni « pas encore lue », ni « écartée »
+  ok     [QCM-4 · BANC] A, les copies rendues
+  ok     [QCM-3 · SOIR] A, le PDF : 20, sans « pas encore lue »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] A, le bilan de ABRIAL Julien (« 📊 Mes évaluations ») : 3 / 3 · 20 / 20
+  ok     [QCM-3 · SOIR] A, le PDF, la ligne « Questions : … » : « Q4 à Q11 pas posées »
+── A : « 🔓 Rouvrir » la séance, « ▶️ Lancer Q4 » : Q4 revient dans le total
+  ok     [QCM-3 · SOIR] « 🔓 Rouvrir » la séance terminée, puis « 🔓 Rouvrir la séance »
+  note   la séance rouverte, Q4 lancée, en cours : {"base":{"n":0,"total":11,"complet":false,"sur20":0,"st":"nnnnnnnnnnn"},"c4":{"n":0,"total":11,"complet":false,"sur20":0,"st":"nnnnnnnnnnn"}} (captures-arret/15-A-q4.png)
+  note   la séance rouverte, terminée de nouveau : {"base":{"n":3,"total":4,"complet":false,"sur20":15,"st":"jjjnxxxxxxx"},"c4":{"n":3,"total":4,"complet":false,"sur20":15,"st":"jjjnxxxxxxx"}}
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] la séance rouverte a lancé Q4, puis « 🛑 Terminer » : Q4 revient dans le total (sur 4), Q5 à Q11 restent dehors, la base et c4
+── B. « Évaluation d'essai » : Q1 et Q2 révélées, Q3 lue par les voisins, pas révélée ; « 🛑 Terminer »
+  ok     [QCM-4 · BANC] la correction lit Q1, Q2, puis Q3
+  ok     [QCM-4 · BANC] Q3 en lecture, lue par les deux voisins, pas révélée
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] Q3, lue en classe par le voisin mais pas révélée : « pas encore lue », la même dans la base et dans c4
+  ok     [QCM-3 · SOIR] Données → Résultats → « 📊 Ouvrir » la séance
+  ok     [QCM-3 · SOIR] le tableau de la séance, ABRIAL Julien : « 1 question pas encore lue »
+── B, le soir : « Lire les copies » propose Q3 avec la lecture du voisin ; « ✅ Oui »
+  ok     [QCM-3 · SOIR] « 📄 Lire les copies »
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de ABRIAL Julien
+  ok     [QCM-3 · SOIR] ABRIAL Julien, Q3 : la ligne propose la lecture du voisin (Léa : « lu par » ou « a lu ») et « ✅ Oui »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] ABRIAL Julien, après « ✅ Oui » : la note complète, la même dans la base et dans c4
+  ok     [QCM-3 · SOIR] ABRIAL Julien : « 🧮 La note, en direct », sans « pas encore lue »
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de BAUDRY Léa
+  ok     [QCM-3 · SOIR] BAUDRY Léa, Q3 : la ligne propose la lecture du voisin (Julien : « lu par » ou « a lu ») et « ✅ Oui »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] BAUDRY Léa, après « ✅ Oui » : la note complète, la même dans la base et dans c4
+  ok     [QCM-3 · SOIR] BAUDRY Léa : « 🧮 La note, en direct », sans « pas encore lue »
+  ok     [QCM-3 · SOIR] B, le tableau de la séance, ABRIAL Julien : 2/3 · 13,3, sans « pas encore lues »
+  ok     [QCM-3 · SOIR] B, le CSV, ABRIAL Julien : 2/3 et 13,3
+  ok     [QCM-3 · SOIR] B, Données → Résultats : ni « pas encore lue », ni « écartée »
+  ok     [QCM-4 · BANC] B, les copies rendues
+  ok     [QCM-3 · SOIR] B, le PDF : 13,3, sans « pas encore lue »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] B, le bilan de ABRIAL Julien (« 📊 Mes évaluations ») : 2 / 3 · 13,3 / 20
+  ok     [QCM-4 · BANC] console : aucune erreur de page
+  ok     [QCM-4 · BANC] tablette-1 : aucune erreur de page
+  ok     [QCM-4 · BANC] console : aucune erreur de page
+  ok     [QCM-4 · BANC] tablette-1 : aucune erreur de page
+  ok     [QCM-4 · BANC] eleve-abrial_j : aucune erreur de page
+  ok     [QCM-4 · BANC] console : aucune erreur de page
+  ok     [QCM-4 · BANC] tablette-1 : aucune erreur de page
+  ok     [QCM-4 · BANC] eleve-abrial_j : aucune erreur de page
+── C. « 3e- éval 1 Analyse logique » : Q1 à Q3 jouées ; « ⏸️ Finir à une autre heure »
+  ok     [QCM-4 · BANC] « ⏸️ Finir à une autre heure » : la séance en pause (pas terminée)
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] la séance en pause garde Q4 à Q11 dans le total (sur 11), la base et c4

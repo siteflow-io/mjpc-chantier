@@ -1,4 +1,42 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, 29 tranché par Paul (points 7 à 10), 20/10 10:21
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, 29 tranché par Paul (points 7 à 10), 20/10 16:20
+
+*La reprise de 08:51 (DEFAUTS-OUVERTS, « Le temps tapé, et la note d'une séance arrêtée avant la fin », points 7 à 11). Les livraisons : QCM-3 (`7a1b948`, `cfb8ef5`, `a666bd7`, `725c3af`) et QCM-1 (`49b138f`, 15:26). L'app finale, `evaluation-qcm.staging.html`, est assemblée par `build.py` sur `code-qcm` après `725c3af`, md5 **`3b4d0f821ffad2d9bb82817a4ab2cdf5`** ; `src/` et `build.py` n'ont pas changé depuis (`ed55bb8`). Sorties : `sorties/2026-10-20_1531/`.*
+
+## Verdict : **ça va.**
+
+Une question jamais lancée sort du total : la séance de 11 questions arrêtée après Q3 est sur 3, dans la base et dans c4, à tous les écrans, et le tableau de la séance et le PDF disent « Q4 à Q11 pas posées », jamais « écartée ». Une question lue par le voisin sans « Révéler » reste « pas encore lue » jusqu'à « ✅ Oui » de Paul dans « Lire les copies ».
+
+**`banc-arret-20-10.js` (points 7 à 10, par le geste), sur l'app finale : 55 / 55** (`rejoues-seuls/arret.txt`).
+- **A**, 11 questions, Q1 à Q3 justes, « 🛑 Terminer » : 0 / 3 avant la lecture du soir, puis 3 / 3 · 20 dans la base, c4, « 🧮 La note, en direct », le tableau, le CSV, Résultats, le PDF et le bilan de l'élève. « Lire les copies » ne propose pas Q4 à Q11, et la note en direct ne les liste plus (`725c3af`).
+- **B**, l'évaluation d'essai, Q1 et Q2 révélées, Q3 lue par les voisins sans « Révéler » : Q3 « pas encore lue » jusqu'à « ✅ Oui », puis 2 / 3 · 13,3 partout.
+- **C**, la séance en pause après Q3 : Q4 à Q11 restent dans le total (sur 11).
+- **La séance rouverte** (« 🔓 Rouvrir », « ▶️ Lancer Q4 ») : en cours, sur 11, comme en pause (la question de QCM-1, 15:26, que j'ai suivie) ; terminée de nouveau, sur 4, Q5 à Q11 dehors (3 / 4, « jjjnxxxxxxx »). À noter : pendant qu'elle tourne, la note montre Q1 à Q3 « pas encore lues » (0 / 11), alors que Paul les avait lues ; elles reviennent lues dès qu'elle est terminée. Je le note, je ne le compte pas : rien de tranché n'en parle.
+
+**Mes autres bancs :**
+
+| Banc | Résultat |
+| --- | --- |
+| Contrôles de la conscience (`EMPREINTES.md5` vérifié) | **32 / 32** |
+| Banc commun | **211 / 211** |
+| Micros | **252 / 252**, sur l'app finale |
+| Mode test | **121 / 121** |
+| Temps tapé | **28 / 28**, sur l'app finale |
+| Note du soir (29, seconde moitié) | **41 / 41**, sur l'app finale |
+| Heure de demain | **109 / 109**, sur l'app finale |
+| Gestes rares | **47 / 47**, sur l'app finale |
+| Reprises 2 à 5 | **22 / 22, 15 / 15, 27 / 27, 10 / 10** |
+| Reprises 7-a à 7-e | **40 / 40, 85 / 85, 141 / 141** (sur l'app finale), **87 / 87** (sur l'app finale), **9 / 9** |
+| Les écrans jamais atteints | 52 vérifications, 10 manques, les mêmes qu'avant (l'alerte de Michel, x610-8, x610-9, l'autonomie, `t-corr-seul`, le plafond de 5 min) ; non comptés, comme à chaque verdict |
+
+Les trois vagues ont joué sur l'app de `49b138f` (md5 `a619198e…`), qui n'a pas encore `725c3af` : seul `src/lire-copies.js` diffère de l'app finale. J'ai rejoué sur l'app finale tous les bancs qui passent par « Lire les copies » (arret, note, micros, reprise 7-c), et seuls ceux qui avaient échoué sous la charge (temps : 17 vérifications, 2 échecs ; reprise 7-d : 70, 2 ; demain : 3 ; gestes rares : 5) : tous passent (`rejoues-seuls/`). Fidélité à la maquette : 128 scènes atteintes sur 157.
+
+**La séance exacte du point 10 n'est pas jouable par le geste** (DEMANDES, 09:00) : la correction ne se lance qu'après la dernière question. Mon banc en joue les deux moitiés, A et B. Pour la lecture du voisin, QCM-3 écrit « Léa a lu la feuille de Julien en classe… » plutôt que « lu par Léa » ; mon banc accepte les deux.
+
+Le défaut « [QCM-4 → QCM-1] Points 7 et 9 » est rayé : corrigé en `49b138f` et rejoué. Les 48 / 55 de QCM-3 (DEMANDES, 15:34) venaient de l'ancien banc, où chaque moitié cliquait sa propre feuille ; c'est corrigé en `51b3216`.
+
+---
+
+# Verdict de 10:21, le 20/10 (pour mémoire)
 
 *La reprise de 08:51 (DEFAUTS-OUVERTS, « Le temps tapé, et la note d'une séance arrêtée avant la fin », points 7 à 11). L'app, `evaluation-qcm.staging.html`, est assemblée par `build.py` sur `code-qcm` à `a2c4e90`, md5 **`53247f20993b68b4e519b7d0c6c933e0`** : elle contient la part de QCM-3 (`7a1b948`, `cfb8ef5`) mais rien de QCM-1. Sorties : `sorties/2026-10-20_0956/`.*
 

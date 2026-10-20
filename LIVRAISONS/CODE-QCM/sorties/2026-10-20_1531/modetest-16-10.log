@@ -1,0 +1,476 @@
+── Avant tout : la carte de lancement de la console réelle (3 ESSAI), les évaluations au faux hub  (4 s)
+  note   la carte de la console : 3 ESSAI=3e Essai (25 élèves) ‖ demo=🎓 Démo — apprendre le déroulé (3 questions) | banc_3e_11=3e- éval 1 Analyse logique - Construire une phrase complexe | banc_4e=4e- Chapitre 1 - Paris à la barre et analyse logique · | essai=Évaluation d'essai (captures-modetest/01-console-carte-avant.png)
+  ok     [QCM-4 · BANC] la console propose E1 (3e, 3 questions) (prête à lancer)
+  ok     [QCM-4 · BANC] la console propose E2 (4e, 4 questions) (prête à lancer)
+  ok     [QCM-4 · BANC] la console propose E3 (3e, 11 questions) (prête à lancer)
+  note   « passée par » avant : essai : « pas encore passée » · banc_4e : « pas encore passée · pas encore passée » · banc_3e_11 : « pas encore passée · pas encore passée »
+── E1 (3e, 3 questions) — « Évaluation d'essai » : l'entrée en mode test, le menu, le choix  (11 s)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : à l'entrée en mode test, la démo est choisie par défaut
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : le menu « Évaluation » s'ouvre (plus en lecture seule)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : le menu, la démo en premier puis les évaluations prêtes, dans l'ordre de la carte de la console
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la ligne « Évaluation d'essai (3 questions) »
+  ok     [QCM-4 · BANC] E1 (3e, 3 questions) : l'infobulle du menu est lue
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « Évaluation d'essai » se choisit au menu
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la carte de la durée suit l'évaluation choisie
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la copie (evaluations/_test_evaluation-qcm) est réécrite d'après elle : titre et questions telles qu'elles sont
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la copie a son chapitre, son mode, et test:true
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : au choix, la vraie évaluation n'a pas bougé
+── E1 (3e, 3 questions) : « 🚀 Lancer la séance », l'appel, la séance entière avec les tablettes simulées et les huit cas  (18 s)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🚀 Lancer la séance » de l'appel
+  ok     [QCM-1 · SOCLE] E1 (3e, 3 questions) : la séance de test joue la copie (evalId = _test_evaluation-qcm)
+  ok     [QCM-1 · SOCLE] E1 (3e, 3 questions) : l'énoncé de la séance (evalSnapshot) est celui de l'évaluation choisie, 3 questions
+   22 s  {"ph":"entree"}
+   26 s  {"ph":"reflexion","qi":0}
+  ok     [QCM-2 · HEURE] E1 (3e, 3 questions) : à la console, Q1 est l'énoncé de l'évaluation choisie (« Quelle est la capitale de l'Italie ? »)
+   28 s  {"ph":"passage","qi":0,"tour":1,"cote":"g"}
+   31 s  {"ph":"reponse","qi":0,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Un faux « Oui » » se prépare à son moment ({"ph":"reponse","qi":0,"tour":1,"cote":"g"})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la tablette simulée 1, au 1er tour de Q1, montre l'énoncé de l'évaluation choisie
+   41 s  {"ph":"b","qi":0,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Rien de dit à la fin du temps » se prépare à son moment ({"ph":"b","qi":0,"tour":1,"cote":"g"})
+   45 s  {"ph":"passage","qi":0,"tour":2,"cote":"d"}
+   48 s  {"ph":"reponse","qi":0,"tour":2,"cote":"d"}
+   53 s  {"ph":"b","qi":0,"tour":2,"cote":"d"}
+   54 s  {"ph":"close","qi":0}
+   55 s  {"ph":"reflexion","qi":1}
+   56 s  {"ph":"passage","qi":1,"tour":1,"cote":"d"}
+   58 s  {"ph":"reponse","qi":1,"tour":1,"cote":"d"}
+   63 s  {"ph":"b","qi":1,"tour":1,"cote":"d"}
+   64 s  {"ph":"passage","qi":1,"tour":2,"cote":"g"}
+   67 s  {"ph":"reponse","qi":1,"tour":2,"cote":"g"}
+   70 s  {"ph":"b","qi":1,"tour":2,"cote":"g"}
+   71 s  {"ph":"close","qi":1}
+   72 s  {"ph":"reflexion","qi":2}
+   73 s  {"ph":"passage","qi":2,"tour":1,"cote":"g"}
+   76 s  {"ph":"reponse","qi":2,"tour":1,"cote":"g"}
+   78 s  {"ph":"b","qi":2,"tour":1,"cote":"g"}
+   80 s  {"ph":"passage","qi":2,"tour":2,"cote":"d"}
+   82 s  {"ph":"reponse","qi":2,"tour":2,"cote":"d"}
+   85 s  {"ph":"b","qi":2,"tour":2,"cote":"d"}
+   87 s  {"ph":"close","qi":2}
+   88 s  {"ph":"estim"}
+   91 s  {"ph":"att2"}
+   94 s  {"ph":"lecture","qi":1}
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Un lecteur qui clique « aucun » partout » se prépare à son moment ({"ph":"lecture","qi":1})
+   98 s  {"ph":"revele","qi":1}
+   99 s  {"ph":"lecture","qi":0}
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Deux élèves d'accord pour mentir » se prépare à son moment ({"ph":"lecture","qi":0})
+   103 s  {"ph":"revele","qi":0}
+   105 s  {"ph":"lecture","qi":2}
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Trouvée au dernier moment » se prépare à son moment ({"ph":"lecture","qi":2})
+   109 s  {"ph":"revele","qi":2}
+   110 s  {"ph":"coeval"}
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Le cas ambigu » se prépare à son moment ({"ph":"coeval"})
+   116 s  {"ph":"bilan"}
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Une tablette en panne » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Un départ en cours de séance » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la séance arrive au bilan
+  ok     [QCM-4 · BANC] E1 (3e, 3 questions) : les huit « 🎬 Préparer un cas » ont eu leur moment
+  note   E1 (3e, 3 questions) : après « 🛑 Terminer », la séance sess_1792503043731 : {"etat":"terminee","ph":"fin"}
+── E1 (3e, 3 questions) : « ✏️ Modifier l'éval après coup », « ⚖️ Vérifier que les notes n'ont pas bougé »  (124 s)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « ✏️ Modifier l'éval après coup »
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la modification porte sur la copie (sa Q1 a une autre bonne réponse)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « ✏️ Modifier » ne touche pas la vraie évaluation
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « ⚖️ Vérifier que les notes n'ont pas bougé » : les notes sont identiques
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] E1 (3e, 3 questions) : la séance jouée garde son énoncé (evalSnapshot) quand Paul choisit ensuite « 4e- Chapitre 1 - Paris à la barre et ana »
+── E1 (3e, 3 questions) : « 🗑️ Sortir et purger », puis la vraie évaluation, « passée par », la console  (130 s)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🗑️ Sortir et purger »
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la purge efface la classe de test, la copie, les séances de test
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : evaluations/essai identique bit à bit à avant l'entrée en mode test
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] E1 (3e, 3 questions) : aucune écriture sur evaluations/essai de toute la séance (journal du faux hub)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : aucun résultat ni séance pour la vraie évaluation
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « passée par » inchangé (« pas encore passée »)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la carte de lancement de la console est inchangée
+── E2 (4e, 4 questions) — « 4e- Chapitre 1 - Paris à la barre et analyse logique · » : l'entrée en mode test, le menu, le choix  (137 s)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : à l'entrée en mode test, la démo est choisie par défaut
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : le menu « Évaluation » s'ouvre (plus en lecture seule)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : le menu, la démo en premier puis les évaluations prêtes, dans l'ordre de la carte de la console
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la ligne « 4e- Chapitre 1 - Paris à la barre et analyse logique · (4 questions) »
+  ok     [QCM-4 · BANC] E2 (4e, 4 questions) : l'infobulle du menu est lue
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 4e- Chapitre 1 - Paris à la barre et analyse logique · » se choisit au menu
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la carte de la durée suit l'évaluation choisie
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la copie (evaluations/_test_evaluation-qcm) est réécrite d'après elle : titre et questions telles qu'elles sont
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la copie a son chapitre, son mode, et test:true
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : au choix, la vraie évaluation n'a pas bougé
+── E2 (4e, 4 questions) : « 🚀 Lancer la séance », l'appel, la séance entière avec les tablettes simulées et les huit cas  (144 s)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🚀 Lancer la séance » de l'appel
+  ok     [QCM-1 · SOCLE] E2 (4e, 4 questions) : la séance de test joue la copie (evalId = _test_evaluation-qcm)
+  ok     [QCM-1 · SOCLE] E2 (4e, 4 questions) : l'énoncé de la séance (evalSnapshot) est celui de l'évaluation choisie, 4 questions
+   148 s  {"ph":"entree"}
+   151 s  {"ph":"reflexion","qi":0}
+  ok     [QCM-2 · HEURE] E2 (4e, 4 questions) : à la console, Q1 est l'énoncé de l'évaluation choisie (« Que veut dire « comparaître » ? »)
+   152 s  {"ph":"passage","qi":0,"tour":1,"cote":"g"}
+   154 s  {"ph":"reponse","qi":0,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Un faux « Oui » » se prépare à son moment ({"ph":"reponse","qi":0,"tour":1,"cote":"g"})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la tablette simulée 1, au 1er tour de Q1, montre l'énoncé de l'évaluation choisie
+   159 s  {"ph":"b","qi":0,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Rien de dit à la fin du temps » se prépare à son moment ({"ph":"b","qi":0,"tour":1,"cote":"g"})
+   162 s  {"ph":"passage","qi":0,"tour":2,"cote":"d"}
+   164 s  {"ph":"reponse","qi":0,"tour":2,"cote":"d"}
+   168 s  {"ph":"b","qi":0,"tour":2,"cote":"d"}
+   169 s  {"ph":"close","qi":0}
+   170 s  {"ph":"reflexion","qi":1}
+   171 s  {"ph":"passage","qi":1,"tour":1,"cote":"d"}
+   173 s  {"ph":"reponse","qi":1,"tour":1,"cote":"d"}
+   176 s  {"ph":"b","qi":1,"tour":1,"cote":"d"}
+   177 s  {"ph":"passage","qi":1,"tour":2,"cote":"g"}
+   180 s  {"ph":"reponse","qi":1,"tour":2,"cote":"g"}
+   183 s  {"ph":"b","qi":1,"tour":2,"cote":"g"}
+   184 s  {"ph":"close","qi":1}
+   185 s  {"ph":"reflexion","qi":2}
+   186 s  {"ph":"passage","qi":2,"tour":1,"cote":"g"}
+   188 s  {"ph":"reponse","qi":2,"tour":1,"cote":"g"}
+   192 s  {"ph":"b","qi":2,"tour":1,"cote":"g"}
+   193 s  {"ph":"passage","qi":2,"tour":2,"cote":"d"}
+   196 s  {"ph":"reponse","qi":2,"tour":2,"cote":"d"}
+   199 s  {"ph":"b","qi":2,"tour":2,"cote":"d"}
+   200 s  {"ph":"close","qi":2}
+   201 s  {"ph":"reflexion","qi":3}
+   202 s  {"ph":"passage","qi":3,"tour":1,"cote":"d"}
+   204 s  {"ph":"reponse","qi":3,"tour":1,"cote":"d"}
+   207 s  {"ph":"b","qi":3,"tour":1,"cote":"d"}
+   208 s  {"ph":"passage","qi":3,"tour":2,"cote":"g"}
+   211 s  {"ph":"reponse","qi":3,"tour":2,"cote":"g"}
+   214 s  {"ph":"b","qi":3,"tour":2,"cote":"g"}
+   215 s  {"ph":"close","qi":3}
+   216 s  {"ph":"estim"}
+   219 s  {"ph":"att2"}
+   221 s  {"ph":"lecture","qi":3}
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Un lecteur qui clique « aucun » partout » se prépare à son moment ({"ph":"lecture","qi":3})
+   225 s  {"ph":"revele","qi":3}
+   226 s  {"ph":"lecture","qi":1}
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Deux élèves d'accord pour mentir » se prépare à son moment ({"ph":"lecture","qi":1})
+   231 s  {"ph":"revele","qi":1}
+   232 s  {"ph":"lecture","qi":0}
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Trouvée au dernier moment » se prépare à son moment ({"ph":"lecture","qi":0})
+   235 s  {"ph":"revele","qi":0}
+   237 s  {"ph":"lecture","qi":2}
+   239 s  {"ph":"revele","qi":2}
+   240 s  {"ph":"coeval"}
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Le cas ambigu » se prépare à son moment ({"ph":"coeval"})
+   246 s  {"ph":"bilan"}
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Une tablette en panne » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Un départ en cours de séance » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la séance arrive au bilan
+  ok     [QCM-4 · BANC] E2 (4e, 4 questions) : les huit « 🎬 Préparer un cas » ont eu leur moment
+  note   E2 (4e, 4 questions) : après « 🛑 Terminer », la séance sess_1792503169802 : {"etat":"terminee","ph":"fin"}
+── E2 (4e, 4 questions) : « ✏️ Modifier l'éval après coup », « ⚖️ Vérifier que les notes n'ont pas bougé »  (253 s)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « ✏️ Modifier l'éval après coup »
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la modification porte sur la copie (sa Q1 a une autre bonne réponse)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « ✏️ Modifier » ne touche pas la vraie évaluation
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « ⚖️ Vérifier que les notes n'ont pas bougé » : les notes sont identiques
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] E2 (4e, 4 questions) : la séance jouée garde son énoncé (evalSnapshot) quand Paul choisit ensuite « 3e- éval 1 Analyse logique - Construire  »
+── E2 (4e, 4 questions) : « 🗑️ Sortir et purger », puis la vraie évaluation, « passée par », la console  (259 s)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🗑️ Sortir et purger »
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la purge efface la classe de test, la copie, les séances de test
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : evaluations/banc_4e identique bit à bit à avant l'entrée en mode test
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] E2 (4e, 4 questions) : aucune écriture sur evaluations/banc_4e de toute la séance (journal du faux hub)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : aucun résultat ni séance pour la vraie évaluation
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « passée par » inchangé (« pas encore passée · pas encore passée »)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la carte de lancement de la console est inchangée
+── E3 (3e, 11 questions) — « 3e- éval 1 Analyse logique - Construire une phrase complexe » : l'entrée en mode test, le menu, le choix  (266 s)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : à l'entrée en mode test, la démo est choisie par défaut
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : le menu « Évaluation » s'ouvre (plus en lecture seule)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : le menu, la démo en premier puis les évaluations prêtes, dans l'ordre de la carte de la console
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la ligne « 3e- éval 1 Analyse logique - Construire une phrase complexe (11 questions) »
+  ok     [QCM-4 · BANC] E3 (3e, 11 questions) : l'infobulle du menu est lue
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 3e- éval 1 Analyse logique - Construire une phrase complexe » se choisit au menu
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la carte de la durée suit l'évaluation choisie
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la copie (evaluations/_test_evaluation-qcm) est réécrite d'après elle : titre et questions telles qu'elles sont
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la copie a son chapitre, son mode, et test:true
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : au choix, la vraie évaluation n'a pas bougé
+── E3 (3e, 11 questions) : « 🚀 Lancer la séance », l'appel, la séance entière avec les tablettes simulées et les huit cas  (272 s)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🚀 Lancer la séance » de l'appel
+  ok     [QCM-1 · SOCLE] E3 (3e, 11 questions) : la séance de test joue la copie (evalId = _test_evaluation-qcm)
+  ok     [QCM-1 · SOCLE] E3 (3e, 11 questions) : l'énoncé de la séance (evalSnapshot) est celui de l'évaluation choisie, 11 questions
+   276 s  {"ph":"entree"}
+   279 s  {"ph":"reflexion","qi":0}
+  ok     [QCM-2 · HEURE] E3 (3e, 11 questions) : à la console, Q1 est l'énoncé de l'évaluation choisie (« Quand est-ce qu'une Proposition Principale se coupe en deux, »)
+   280 s  {"ph":"passage","qi":0,"tour":1,"cote":"g"}
+   283 s  {"ph":"reponse","qi":0,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Un faux « Oui » » se prépare à son moment ({"ph":"reponse","qi":0,"tour":1,"cote":"g"})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la tablette simulée 1, au 1er tour de Q1, montre l'énoncé de l'évaluation choisie
+   288 s  {"ph":"b","qi":0,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Rien de dit à la fin du temps » se prépare à son moment ({"ph":"b","qi":0,"tour":1,"cote":"g"})
+   290 s  {"ph":"passage","qi":0,"tour":2,"cote":"d"}
+   293 s  {"ph":"reponse","qi":0,"tour":2,"cote":"d"}
+   296 s  {"ph":"b","qi":0,"tour":2,"cote":"d"}
+   297 s  {"ph":"close","qi":0}
+   298 s  {"ph":"reflexion","qi":1}
+   299 s  {"ph":"passage","qi":1,"tour":1,"cote":"d"}
+   301 s  {"ph":"reponse","qi":1,"tour":1,"cote":"d"}
+   305 s  {"ph":"b","qi":1,"tour":1,"cote":"d"}
+   306 s  {"ph":"passage","qi":1,"tour":2,"cote":"g"}
+   308 s  {"ph":"reponse","qi":1,"tour":2,"cote":"g"}
+   312 s  {"ph":"b","qi":1,"tour":2,"cote":"g"}
+   313 s  {"ph":"close","qi":1}
+   314 s  {"ph":"reflexion","qi":2}
+   315 s  {"ph":"passage","qi":2,"tour":1,"cote":"g"}
+   317 s  {"ph":"reponse","qi":2,"tour":1,"cote":"g"}
+   321 s  {"ph":"b","qi":2,"tour":1,"cote":"g"}
+   322 s  {"ph":"passage","qi":2,"tour":2,"cote":"d"}
+   324 s  {"ph":"reponse","qi":2,"tour":2,"cote":"d"}
+   328 s  {"ph":"b","qi":2,"tour":2,"cote":"d"}
+   329 s  {"ph":"close","qi":2}
+   330 s  {"ph":"reflexion","qi":3}
+   331 s  {"ph":"passage","qi":3,"tour":1,"cote":"d"}
+   334 s  {"ph":"reponse","qi":3,"tour":1,"cote":"d"}
+   337 s  {"ph":"b","qi":3,"tour":1,"cote":"d"}
+   338 s  {"ph":"passage","qi":3,"tour":2,"cote":"g"}
+   340 s  {"ph":"reponse","qi":3,"tour":2,"cote":"g"}
+   343 s  {"ph":"b","qi":3,"tour":2,"cote":"g"}
+   345 s  {"ph":"close","qi":3}
+   346 s  {"ph":"reflexion","qi":4}
+   347 s  {"ph":"passage","qi":4,"tour":1,"cote":"g"}
+   349 s  {"ph":"reponse","qi":4,"tour":1,"cote":"g"}
+   352 s  {"ph":"b","qi":4,"tour":1,"cote":"g"}
+   353 s  {"ph":"passage","qi":4,"tour":2,"cote":"d"}
+   356 s  {"ph":"reponse","qi":4,"tour":2,"cote":"d"}
+   360 s  {"ph":"b","qi":4,"tour":2,"cote":"d"}
+   361 s  {"ph":"close","qi":4}
+   362 s  {"ph":"reflexion","qi":5}
+   363 s  {"ph":"passage","qi":5,"tour":1,"cote":"d"}
+   365 s  {"ph":"reponse","qi":5,"tour":1,"cote":"d"}
+   368 s  {"ph":"b","qi":5,"tour":1,"cote":"d"}
+   370 s  {"ph":"passage","qi":5,"tour":2,"cote":"g"}
+   372 s  {"ph":"reponse","qi":5,"tour":2,"cote":"g"}
+   375 s  {"ph":"b","qi":5,"tour":2,"cote":"g"}
+   377 s  {"ph":"close","qi":5}
+   377 s  {"ph":"reflexion","qi":6}
+   379 s  {"ph":"passage","qi":6,"tour":1,"cote":"g"}
+   381 s  {"ph":"reponse","qi":6,"tour":1,"cote":"g"}
+   384 s  {"ph":"b","qi":6,"tour":1,"cote":"g"}
+   385 s  {"ph":"passage","qi":6,"tour":2,"cote":"d"}
+   388 s  {"ph":"reponse","qi":6,"tour":2,"cote":"d"}
+   392 s  {"ph":"b","qi":6,"tour":2,"cote":"d"}
+   393 s  {"ph":"close","qi":6}
+   394 s  {"ph":"reflexion","qi":7}
+   395 s  {"ph":"passage","qi":7,"tour":1,"cote":"d"}
+   397 s  {"ph":"reponse","qi":7,"tour":1,"cote":"d"}
+   402 s  {"ph":"b","qi":7,"tour":1,"cote":"d"}
+   403 s  {"ph":"passage","qi":7,"tour":2,"cote":"g"}
+   406 s  {"ph":"reponse","qi":7,"tour":2,"cote":"g"}
+   410 s  {"ph":"b","qi":7,"tour":2,"cote":"g"}
+   412 s  {"ph":"close","qi":7}
+   413 s  {"ph":"reflexion","qi":8}
+   414 s  {"ph":"passage","qi":8,"tour":1,"cote":"g"}
+   416 s  {"ph":"reponse","qi":8,"tour":1,"cote":"g"}
+   420 s  {"ph":"b","qi":8,"tour":1,"cote":"g"}
+   422 s  {"ph":"passage","qi":8,"tour":2,"cote":"d"}
+   425 s  {"ph":"reponse","qi":8,"tour":2,"cote":"d"}
+   429 s  {"ph":"b","qi":8,"tour":2,"cote":"d"}
+   430 s  {"ph":"close","qi":8}
+   432 s  {"ph":"reflexion","qi":9}
+   433 s  {"ph":"passage","qi":9,"tour":1,"cote":"d"}
+   435 s  {"ph":"reponse","qi":9,"tour":1,"cote":"d"}
+   439 s  {"ph":"b","qi":9,"tour":1,"cote":"d"}
+   440 s  {"ph":"passage","qi":9,"tour":2,"cote":"g"}
+   443 s  {"ph":"reponse","qi":9,"tour":2,"cote":"g"}
+   447 s  {"ph":"b","qi":9,"tour":2,"cote":"g"}
+   449 s  {"ph":"close","qi":9}
+   450 s  {"ph":"reflexion","qi":10}
+   451 s  {"ph":"passage","qi":10,"tour":1,"cote":"g"}
+   453 s  {"ph":"reponse","qi":10,"tour":1,"cote":"g"}
+   457 s  {"ph":"b","qi":10,"tour":1,"cote":"g"}
+   458 s  {"ph":"passage","qi":10,"tour":2,"cote":"d"}
+   461 s  {"ph":"reponse","qi":10,"tour":2,"cote":"d"}
+   464 s  {"ph":"b","qi":10,"tour":2,"cote":"d"}
+   465 s  {"ph":"close","qi":10}
+   466 s  {"ph":"estim"}
+   469 s  {"ph":"att2"}
+   472 s  {"ph":"lecture","qi":4}
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Un lecteur qui clique « aucun » partout » se prépare à son moment ({"ph":"lecture","qi":4})
+   477 s  {"ph":"revele","qi":4}
+   479 s  {"ph":"lecture","qi":3}
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Deux élèves d'accord pour mentir » se prépare à son moment ({"ph":"lecture","qi":3})
+   484 s  {"ph":"revele","qi":3}
+   485 s  {"ph":"lecture","qi":2}
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Trouvée au dernier moment » se prépare à son moment ({"ph":"lecture","qi":2})
+   490 s  {"ph":"revele","qi":2}
+   492 s  {"ph":"lecture","qi":7}
+   494 s  {"ph":"revele","qi":7}
+   496 s  {"ph":"lecture","qi":8}
+   499 s  {"ph":"revele","qi":8}
+   501 s  {"ph":"lecture","qi":1}
+   504 s  {"ph":"revele","qi":1}
+   505 s  {"ph":"lecture","qi":9}
+   509 s  {"ph":"revele","qi":9}
+   510 s  {"ph":"lecture","qi":5}
+   513 s  {"ph":"revele","qi":5}
+   515 s  {"ph":"lecture","qi":10}
+   517 s  {"ph":"revele","qi":10}
+   519 s  {"ph":"lecture","qi":0}
+   522 s  {"ph":"revele","qi":0}
+   524 s  {"ph":"lecture","qi":6}
+   527 s  {"ph":"revele","qi":6}
+   528 s  {"ph":"coeval"}
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Le cas ambigu » se prépare à son moment ({"ph":"coeval"})
+   535 s  {"ph":"bilan"}
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Une tablette en panne » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Un départ en cours de séance » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la séance arrive au bilan
+  ok     [QCM-4 · BANC] E3 (3e, 11 questions) : les huit « 🎬 Préparer un cas » ont eu leur moment
+  note   E3 (3e, 11 questions) : après « 🛑 Terminer », la séance sess_1792503298328 : {"etat":"terminee","ph":"fin"}
+── E3 (3e, 11 questions) : « ✏️ Modifier l'éval après coup », « ⚖️ Vérifier que les notes n'ont pas bougé »  (545 s)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « ✏️ Modifier l'éval après coup »
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la modification porte sur la copie (sa Q1 a une autre bonne réponse)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « ✏️ Modifier » ne touche pas la vraie évaluation
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « ⚖️ Vérifier que les notes n'ont pas bougé » : les notes sont identiques
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] E3 (3e, 11 questions) : la séance jouée garde son énoncé (evalSnapshot) quand Paul choisit ensuite « Évaluation d'essai »
+── E3 (3e, 11 questions) : « 🗑️ Sortir et purger », puis la vraie évaluation, « passée par », la console  (551 s)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🗑️ Sortir et purger »
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la purge efface la classe de test, la copie, les séances de test
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : evaluations/banc_3e_11 identique bit à bit à avant l'entrée en mode test
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] E3 (3e, 11 questions) : aucune écriture sur evaluations/banc_3e_11 de toute la séance (journal du faux hub)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : aucun résultat ni séance pour la vraie évaluation
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « passée par » inchangé (« pas encore passée · pas encore passée »)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la carte de lancement de la console est inchangée
+── À l'entrée suivante : la démo, choisie par défaut ; la démo intacte  (557 s)
+  ok     [QCM-3 · SOIR] à l'entrée suivante en mode test, la démo est choisie par défaut
+  ok     [QCM-3 · SOIR] à l'entrée suivante, la copie est celle de la démo
+  ok     [QCM-3 · SOIR] la démo du hub (evaluations/demo) n'a pas bougé
+  ok     [QCM-3 · SOIR] page « console » sans erreur ni boîte système
+vérifications : 121 · échecs : 0
+── Avant tout : la carte de lancement de la console réelle (3 ESSAI), les évaluations au faux hub
+  note   la carte de la console : 3 ESSAI=3e Essai (25 élèves) ‖ demo=🎓 Démo — apprendre le déroulé (3 questions) | banc_3e_11=3e- éval 1 Analyse logique - Construire une phrase complexe | banc_4e=4e- Chapitre 1 - Paris à la barre et analyse logique · | essai=Évaluation d'essai (captures-modetest/01-console-carte-avant.png)
+  ok     [QCM-4 · BANC] la console propose E1 (3e, 3 questions) (prête à lancer)
+  ok     [QCM-4 · BANC] la console propose E2 (4e, 4 questions) (prête à lancer)
+  ok     [QCM-4 · BANC] la console propose E3 (3e, 11 questions) (prête à lancer)
+  note   « passée par » avant : essai : « pas encore passée » · banc_4e : « pas encore passée · pas encore passée » · banc_3e_11 : « pas encore passée · pas encore passée »
+── E1 (3e, 3 questions) — « Évaluation d'essai » : l'entrée en mode test, le menu, le choix
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : à l'entrée en mode test, la démo est choisie par défaut
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : le menu « Évaluation » s'ouvre (plus en lecture seule)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : le menu, la démo en premier puis les évaluations prêtes, dans l'ordre de la carte de la console
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la ligne « Évaluation d'essai (3 questions) »
+  ok     [QCM-4 · BANC] E1 (3e, 3 questions) : l'infobulle du menu est lue
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « Évaluation d'essai » se choisit au menu
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la carte de la durée suit l'évaluation choisie
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la copie (evaluations/_test_evaluation-qcm) est réécrite d'après elle : titre et questions telles qu'elles sont
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la copie a son chapitre, son mode, et test:true
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : au choix, la vraie évaluation n'a pas bougé
+── E1 (3e, 3 questions) : « 🚀 Lancer la séance », l'appel, la séance entière avec les tablettes simulées et les huit cas
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🚀 Lancer la séance » de l'appel
+  ok     [QCM-1 · SOCLE] E1 (3e, 3 questions) : la séance de test joue la copie (evalId = _test_evaluation-qcm)
+  ok     [QCM-1 · SOCLE] E1 (3e, 3 questions) : l'énoncé de la séance (evalSnapshot) est celui de l'évaluation choisie, 3 questions
+  ok     [QCM-2 · HEURE] E1 (3e, 3 questions) : à la console, Q1 est l'énoncé de l'évaluation choisie (« Quelle est la capitale de l'Italie ? »)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Un faux « Oui » » se prépare à son moment ({"ph":"reponse","qi":0,"tour":1,"cote":"g"})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la tablette simulée 1, au 1er tour de Q1, montre l'énoncé de l'évaluation choisie
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Rien de dit à la fin du temps » se prépare à son moment ({"ph":"b","qi":0,"tour":1,"cote":"g"})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Un lecteur qui clique « aucun » partout » se prépare à son moment ({"ph":"lecture","qi":1})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Deux élèves d'accord pour mentir » se prépare à son moment ({"ph":"lecture","qi":0})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Trouvée au dernier moment » se prépare à son moment ({"ph":"lecture","qi":2})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Le cas ambigu » se prépare à son moment ({"ph":"coeval"})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Une tablette en panne » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🎬 Un départ en cours de séance » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la séance arrive au bilan
+  ok     [QCM-4 · BANC] E1 (3e, 3 questions) : les huit « 🎬 Préparer un cas » ont eu leur moment
+  note   E1 (3e, 3 questions) : après « 🛑 Terminer », la séance sess_1792503043731 : {"etat":"terminee","ph":"fin"}
+── E1 (3e, 3 questions) : « ✏️ Modifier l'éval après coup », « ⚖️ Vérifier que les notes n'ont pas bougé »
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « ✏️ Modifier l'éval après coup »
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la modification porte sur la copie (sa Q1 a une autre bonne réponse)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « ✏️ Modifier » ne touche pas la vraie évaluation
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « ⚖️ Vérifier que les notes n'ont pas bougé » : les notes sont identiques
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] E1 (3e, 3 questions) : la séance jouée garde son énoncé (evalSnapshot) quand Paul choisit ensuite « 4e- Chapitre 1 - Paris à la barre et ana »
+── E1 (3e, 3 questions) : « 🗑️ Sortir et purger », puis la vraie évaluation, « passée par », la console
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « 🗑️ Sortir et purger »
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la purge efface la classe de test, la copie, les séances de test
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : evaluations/essai identique bit à bit à avant l'entrée en mode test
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] E1 (3e, 3 questions) : aucune écriture sur evaluations/essai de toute la séance (journal du faux hub)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : aucun résultat ni séance pour la vraie évaluation
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : « passée par » inchangé (« pas encore passée »)
+  ok     [QCM-3 · SOIR] E1 (3e, 3 questions) : la carte de lancement de la console est inchangée
+── E2 (4e, 4 questions) — « 4e- Chapitre 1 - Paris à la barre et analyse logique · » : l'entrée en mode test, le menu, le choix
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : à l'entrée en mode test, la démo est choisie par défaut
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : le menu « Évaluation » s'ouvre (plus en lecture seule)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : le menu, la démo en premier puis les évaluations prêtes, dans l'ordre de la carte de la console
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la ligne « 4e- Chapitre 1 - Paris à la barre et analyse logique · (4 questions) »
+  ok     [QCM-4 · BANC] E2 (4e, 4 questions) : l'infobulle du menu est lue
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 4e- Chapitre 1 - Paris à la barre et analyse logique · » se choisit au menu
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la carte de la durée suit l'évaluation choisie
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la copie (evaluations/_test_evaluation-qcm) est réécrite d'après elle : titre et questions telles qu'elles sont
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la copie a son chapitre, son mode, et test:true
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : au choix, la vraie évaluation n'a pas bougé
+── E2 (4e, 4 questions) : « 🚀 Lancer la séance », l'appel, la séance entière avec les tablettes simulées et les huit cas
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🚀 Lancer la séance » de l'appel
+  ok     [QCM-1 · SOCLE] E2 (4e, 4 questions) : la séance de test joue la copie (evalId = _test_evaluation-qcm)
+  ok     [QCM-1 · SOCLE] E2 (4e, 4 questions) : l'énoncé de la séance (evalSnapshot) est celui de l'évaluation choisie, 4 questions
+  ok     [QCM-2 · HEURE] E2 (4e, 4 questions) : à la console, Q1 est l'énoncé de l'évaluation choisie (« Que veut dire « comparaître » ? »)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Un faux « Oui » » se prépare à son moment ({"ph":"reponse","qi":0,"tour":1,"cote":"g"})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la tablette simulée 1, au 1er tour de Q1, montre l'énoncé de l'évaluation choisie
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Rien de dit à la fin du temps » se prépare à son moment ({"ph":"b","qi":0,"tour":1,"cote":"g"})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Un lecteur qui clique « aucun » partout » se prépare à son moment ({"ph":"lecture","qi":3})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Deux élèves d'accord pour mentir » se prépare à son moment ({"ph":"lecture","qi":1})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Trouvée au dernier moment » se prépare à son moment ({"ph":"lecture","qi":0})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Le cas ambigu » se prépare à son moment ({"ph":"coeval"})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Une tablette en panne » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🎬 Un départ en cours de séance » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la séance arrive au bilan
+  ok     [QCM-4 · BANC] E2 (4e, 4 questions) : les huit « 🎬 Préparer un cas » ont eu leur moment
+  note   E2 (4e, 4 questions) : après « 🛑 Terminer », la séance sess_1792503169802 : {"etat":"terminee","ph":"fin"}
+── E2 (4e, 4 questions) : « ✏️ Modifier l'éval après coup », « ⚖️ Vérifier que les notes n'ont pas bougé »
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « ✏️ Modifier l'éval après coup »
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la modification porte sur la copie (sa Q1 a une autre bonne réponse)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « ✏️ Modifier » ne touche pas la vraie évaluation
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « ⚖️ Vérifier que les notes n'ont pas bougé » : les notes sont identiques
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] E2 (4e, 4 questions) : la séance jouée garde son énoncé (evalSnapshot) quand Paul choisit ensuite « 3e- éval 1 Analyse logique - Construire  »
+── E2 (4e, 4 questions) : « 🗑️ Sortir et purger », puis la vraie évaluation, « passée par », la console
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « 🗑️ Sortir et purger »
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la purge efface la classe de test, la copie, les séances de test
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : evaluations/banc_4e identique bit à bit à avant l'entrée en mode test
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] E2 (4e, 4 questions) : aucune écriture sur evaluations/banc_4e de toute la séance (journal du faux hub)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : aucun résultat ni séance pour la vraie évaluation
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : « passée par » inchangé (« pas encore passée · pas encore passée »)
+  ok     [QCM-3 · SOIR] E2 (4e, 4 questions) : la carte de lancement de la console est inchangée
+── E3 (3e, 11 questions) — « 3e- éval 1 Analyse logique - Construire une phrase complexe » : l'entrée en mode test, le menu, le choix
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : à l'entrée en mode test, la démo est choisie par défaut
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : le menu « Évaluation » s'ouvre (plus en lecture seule)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : le menu, la démo en premier puis les évaluations prêtes, dans l'ordre de la carte de la console
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la ligne « 3e- éval 1 Analyse logique - Construire une phrase complexe (11 questions) »
+  ok     [QCM-4 · BANC] E3 (3e, 11 questions) : l'infobulle du menu est lue
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 3e- éval 1 Analyse logique - Construire une phrase complexe » se choisit au menu
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la carte de la durée suit l'évaluation choisie
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la copie (evaluations/_test_evaluation-qcm) est réécrite d'après elle : titre et questions telles qu'elles sont
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la copie a son chapitre, son mode, et test:true
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : au choix, la vraie évaluation n'a pas bougé
+── E3 (3e, 11 questions) : « 🚀 Lancer la séance », l'appel, la séance entière avec les tablettes simulées et les huit cas
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🚀 Lancer la séance » de l'appel
+  ok     [QCM-1 · SOCLE] E3 (3e, 11 questions) : la séance de test joue la copie (evalId = _test_evaluation-qcm)
+  ok     [QCM-1 · SOCLE] E3 (3e, 11 questions) : l'énoncé de la séance (evalSnapshot) est celui de l'évaluation choisie, 11 questions
+  ok     [QCM-2 · HEURE] E3 (3e, 11 questions) : à la console, Q1 est l'énoncé de l'évaluation choisie (« Quand est-ce qu'une Proposition Principale se coupe en deux, »)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Un faux « Oui » » se prépare à son moment ({"ph":"reponse","qi":0,"tour":1,"cote":"g"})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la tablette simulée 1, au 1er tour de Q1, montre l'énoncé de l'évaluation choisie
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Rien de dit à la fin du temps » se prépare à son moment ({"ph":"b","qi":0,"tour":1,"cote":"g"})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Un lecteur qui clique « aucun » partout » se prépare à son moment ({"ph":"lecture","qi":4})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Deux élèves d'accord pour mentir » se prépare à son moment ({"ph":"lecture","qi":3})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Trouvée au dernier moment » se prépare à son moment ({"ph":"lecture","qi":2})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Le cas ambigu » se prépare à son moment ({"ph":"coeval"})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Une tablette en panne » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🎬 Un départ en cours de séance » se prépare à son moment ({"ph":"bilan"})
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la séance arrive au bilan
+  ok     [QCM-4 · BANC] E3 (3e, 11 questions) : les huit « 🎬 Préparer un cas » ont eu leur moment
+  note   E3 (3e, 11 questions) : après « 🛑 Terminer », la séance sess_1792503298328 : {"etat":"terminee","ph":"fin"}
+── E3 (3e, 11 questions) : « ✏️ Modifier l'éval après coup », « ⚖️ Vérifier que les notes n'ont pas bougé »
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « ✏️ Modifier l'éval après coup »
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la modification porte sur la copie (sa Q1 a une autre bonne réponse)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « ✏️ Modifier » ne touche pas la vraie évaluation
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « ⚖️ Vérifier que les notes n'ont pas bougé » : les notes sont identiques
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] E3 (3e, 11 questions) : la séance jouée garde son énoncé (evalSnapshot) quand Paul choisit ensuite « Évaluation d'essai »
+── E3 (3e, 11 questions) : « 🗑️ Sortir et purger », puis la vraie évaluation, « passée par », la console
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « 🗑️ Sortir et purger »
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la purge efface la classe de test, la copie, les séances de test
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : evaluations/banc_3e_11 identique bit à bit à avant l'entrée en mode test
+  ok     [QCM-3 · SOIR, QCM-1 · SOCLE] E3 (3e, 11 questions) : aucune écriture sur evaluations/banc_3e_11 de toute la séance (journal du faux hub)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : aucun résultat ni séance pour la vraie évaluation
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : « passée par » inchangé (« pas encore passée · pas encore passée »)
+  ok     [QCM-3 · SOIR] E3 (3e, 11 questions) : la carte de lancement de la console est inchangée
+── À l'entrée suivante : la démo, choisie par défaut ; la démo intacte
+  ok     [QCM-3 · SOIR] à l'entrée suivante en mode test, la démo est choisie par défaut
+  ok     [QCM-3 · SOIR] à l'entrée suivante, la copie est celle de la démo
+  ok     [QCM-3 · SOIR] la démo du hub (evaluations/demo) n'a pas bougé
+  ok     [QCM-3 · SOIR] page « console » sans erreur ni boîte système

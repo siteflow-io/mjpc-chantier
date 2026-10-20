@@ -1,0 +1,65 @@
+Micro 8.0.2, le nom des classes à l'écran, par le geste (QCM-4 · BANC) — app /tmp/claude-0/-home-user-mjpc-chantier/25c0a9f1-9dbf-5731-9205-8de888c7d613/scratchpad/app-1528.html md5 a619198eab8d8a12c37955fe19116bbe — durée 155 s
+vérifications : 56 · échecs : 0
+── 1. La console avant la séance : « Pilotage classe », le menu « Classe »
+  ok     [QCM-2 · HEURE] menu « Classe » : la clé « 3_essai » s'écrit « 3e Essai (25 élèves) »
+  ok     [QCM-2 · HEURE] menu « Classe » : « 3 DYLAN BOB » s'écrit « 3e Dylan Bob »
+  ok     [QCM-2 · HEURE] menu « Classe » : « 3E Charles de Gaulle » reste tel quel
+  ok     [QCM-2 · HEURE] menu « Classe » : la classe interne, si elle paraît, reste « _test_x »
+  ok     [QCM-4 · BANC] le menu « Classe » : « 3e Essai » choisi
+  ok     [QCM-2 · HEURE] console, Pilotage classe, 3e Essai choisie : jamais le nom brut de la classe (capture 01-console_pilotage_classe_3e_essai_choisie.png)
+  ok     [QCM-2 · HEURE] console, Pilotage classe, 3e Essai choisie : « 3e Essai » (capture 01-console_pilotage_classe_3e_essai_choisie.png)
+── 2. L'appel (« 📋 Check-in ») : deux élèves présents, les autres absents
+  ok     [QCM-2 · HEURE] l'appel « 📋 Check-in » : jamais le nom brut de la classe (capture 02-l_appel_check_in.png)
+  ok     [QCM-2 · HEURE] l'appel « 📋 Check-in » : « 3e Essai — » (capture 02-l_appel_check_in.png)
+  ok     [QCM-4 · BANC] à l'appel, 23 absents ; présents : ABRIAL Julien, BAUDRY Léa
+  ok     [QCM-1 · SOCLE] la base : sessionActive/3_essai, et sessions/<id>/classeSlug = « 3_essai » (la clé reste l'identifiant)
+── 3. La console pendant la séance, le téléphone, le tableau, la tablette
+  ok     [QCM-2 · HEURE] console, la carte de la séance (lancée) : jamais le nom brut de la classe (capture 03-console_la_carte_de_la_seance_lancee.png)
+  ok     [QCM-2 · HEURE] console, la carte de la séance (lancée) : « 3e Essai » (capture 03-console_la_carte_de_la_seance_lancee.png)
+  ok     [QCM-1 · SOCLE] « 🔴 1 séance en cours » se clique
+  ok     [QCM-1 · SOCLE] « 🔴 Séances actuellement en cours » : jamais le nom brut de la classe (capture 04-seances_actuellement_en_cours.png)
+  ok     [QCM-1 · SOCLE] « 🔴 Séances actuellement en cours » : « 3e Essai — Évaluation d'essai » (capture 04-seances_actuellement_en_cours.png)
+  ok     [QCM-2 · HEURE] le téléphone, séance lancée : jamais le nom brut de la classe (capture 05-le_telephone_seance_lancee.png)
+  ok     [QCM-2 · HEURE] le tableau, séance lancée : jamais le nom brut de la classe (capture 06-le_tableau_seance_lancee.png)
+  ok     [QCM-2 · HEURE] la tablette, avant l'entrée : jamais le nom brut de la classe (capture 07-la_tablette_avant_l_entree.png)
+  ok     [QCM-2 · HEURE] la tablette, les deux élèves entrés : jamais le nom brut de la classe (capture 08-la_tablette_les_deux_eleves_entres.png)
+  ok     [QCM-2 · HEURE] la tablette : l'en-tête « 3e Essai · ABRIAL Julien » (son texte ; à l'écran en capitales)
+  ok     [QCM-2 · HEURE] la tablette : l'en-tête « 3e Essai · BAUDRY Léa » (son texte ; à l'écran en capitales)
+── 4. Q1 à Q3 : Autoriser, Tour suivant, Clore
+  ok     [QCM-2 · HEURE] console, Q1 close : jamais le nom brut de la classe (capture 09-console_q1_close.png)
+  ok     [QCM-2 · HEURE] console, Q1 close : « 3e Essai » (capture 09-console_q1_close.png)
+  ok     [QCM-2 · HEURE] le téléphone, Q1 close : jamais le nom brut de la classe (capture 10-le_telephone_q1_close.png)
+  ok     [QCM-2 · HEURE] le tableau, Q1 close : jamais le nom brut de la classe (capture 11-le_tableau_q1_close.png)
+  ok     [QCM-4 · BANC] Q3 close
+── 5. L'estimation, la seconde attestation, la correction, la co-évaluation, le bilan
+  ok     [QCM-4 · BANC] « ▶️ Commencer la correction » : la lecture
+  ok     [QCM-2 · HEURE] console, la correction : jamais le nom brut de la classe (capture 12-console_la_correction.png)
+  ok     [QCM-2 · HEURE] console, la correction : « 3e Essai » (capture 12-console_la_correction.png)
+  ok     [QCM-2 · HEURE] la tablette, la correction révélée : jamais le nom brut de la classe (capture 13-la_tablette_la_correction_revelee.png)
+  ok     [QCM-2 · HEURE] console, la co-évaluation : jamais le nom brut de la classe (capture 14-console_la_co_evaluation.png)
+  ok     [QCM-2 · HEURE] console, la co-évaluation : « 3e Essai » (capture 14-console_la_co_evaluation.png)
+  ok     [QCM-2 · HEURE] console, le bilan de classe : jamais le nom brut de la classe (capture 15-console_le_bilan_de_classe.png)
+  ok     [QCM-2 · HEURE] console, le bilan de classe : « 3e Essai » (capture 15-console_le_bilan_de_classe.png)
+  ok     [QCM-2 · HEURE] la tablette, le bilan : jamais le nom brut de la classe (capture 16-la_tablette_le_bilan.png)
+  ok     [QCM-2 · HEURE] le téléphone, le bilan : jamais le nom brut de la classe (capture 17-le_telephone_le_bilan.png)
+  ok     [QCM-2 · HEURE] le tableau, le bilan : jamais le nom brut de la classe (capture 18-le_tableau_le_bilan.png)
+── 6. « 🛑 Terminer » : la garde, puis « Séances précédentes »
+  ok     [QCM-1 · SOCLE] la garde « 🛑 Terminer la séance ? » : jamais le nom brut de la classe (capture 19-la_garde_terminer_la_seance.png)
+  ok     [QCM-1 · SOCLE] la garde « 🛑 Terminer la séance ? » : « 3e Essai — Évaluation d'essai » (capture 19-la_garde_terminer_la_seance.png)
+  ok     [QCM-1 · SOCLE] la base, la séance terminée : classeSlug « 3_essai », sessionActive/3_essai vidée
+  ok     [QCM-2 · HEURE] le téléphone, séance terminée : jamais le nom brut de la classe (capture 20-le_telephone_seance_terminee.png)
+  ok     [QCM-3 · SOIR] console, « 📚 Séances précédentes » : jamais le nom brut de la classe (capture 21-console_seances_precedentes.png)
+  ok     [QCM-3 · SOIR] console, « 📚 Séances précédentes » : « Séances précédentes — 3e Essai » (capture 21-console_seances_precedentes.png)
+── 7. Le soir : Données → Résultats, le tableau de la séance, le CSV, le PDF
+  ok     [QCM-3 · SOIR] « Données » se clique
+  ok     [QCM-3 · SOIR] Données → Résultats : jamais le nom brut de la classe (capture 22-donnees_resultats.png)
+  ok     [QCM-3 · SOIR] « 📊 Ouvrir » la séance
+  ok     [QCM-3 · SOIR] le tableau de la séance : jamais le nom brut de la classe (capture 23-le_tableau_de_la_seance.png)
+  ok     [QCM-3 · SOIR] le tableau de la séance : « Évaluation d'essai — 3e Essai » (capture 23-le_tableau_de_la_seance.png)
+  ok     [QCM-3 · SOIR] le CSV : son nom ne porte pas le nom brut (« resultats-3e-Essai-… »)
+  ok     [QCM-3 · SOIR] le CSV : son contenu ne porte pas le nom brut
+  ok     [QCM-3 · SOIR] le tableau de la séance, après « 📥 Export CSV » : jamais le nom brut de la classe (capture 24-le_tableau_de_la_seance_apres_export_csv.png)
+  ok     [QCM-4 · BANC] les copies rendues (pour ouvrir le PDF)
+  ok     [QCM-3 · SOIR] Données → Résultats, copies rendues : jamais le nom brut de la classe (capture 25-donnees_resultats_copies_rendues.png)
+  ok     [QCM-3 · SOIR] le PDF « notes et compétences » : jamais le nom brut de la classe (capture 26-le_pdf_notes_et_competences.png)
+  ok     [QCM-3 · SOIR] le PDF « notes et compétences » : « Classe : 3e Essai » (capture 26-le_pdf_notes_et_competences.png)

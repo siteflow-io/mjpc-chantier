@@ -140,7 +140,10 @@ function LireCopiesC(){
           : h(F, null,
             h("div", {style:{fontSize:"1.25rem", fontWeight:900, margin:".2rem 0 .5rem"}}, qs.texte),
             !ici && h("div", {style:{display:"flex", gap:".6rem", flexWrap:"wrap"}},
-              qs.oui && h("button", {className:"btn btn-primary", "data-local":"1", title:"La copie dit bien cela : la ligne est lue, la note ne change pas.", onClick:function(){ var n0 = noteDe(c.p), l0 = lectureV(se, x.q, x.p), fa = fautesL(se, x, l0 ? l0.choix : []); marquerLueV(se, x.id).then(function(){ repondu(x, qs.luJ, qs.luJ, n0, fa); }); }}, qs.oui),
+              qs.oui && h("button", {className:"btn btn-primary", "data-local":"1", title:"La copie dit bien cela : la ligne est lue, la note ne change pas.", onClick:function(){ var n0 = noteDe(c.p), l0 = lectureV(se, x.q, x.p), fa = fautesL(se, x, l0 ? l0.choix : []);
+                // (point 6, Paul 08:49) une question pas révélée en classe : « ✅ Oui » enregistre la lecture de Paul, la même que celle du voisin
+                var pasRev = se.terminee && v3Liste(se.S.revelees).map(Number).indexOf(x.q) < 0 && l0 && l0.par !== "prof";
+                Promise.all([pasRev ? feuilleDitV(se, x.p, x.q, l0.choix) : null, x.sorte === "nl" ? null : marquerLueV(se, x.id)]).then(function(){ repondu(x, qs.luJ, qs.luJ, n0, fa); }); }}, qs.oui),
               h("button", {className:"btn btn-ghost", "data-local":"1", title:"La copie dit autre chose : tu cliques ce qu'elle dit, et la note se recalcule (« Corrigé d'après ta feuille » dans son bilan).", onClick:function(){ setOuvert(x.id); setSel([]); }}, qs.non)),
             ici && h("div", null,
               h("div", {style:{fontWeight:800, margin:".2rem 0 .4rem"}}, "Que dit la copie ?"),

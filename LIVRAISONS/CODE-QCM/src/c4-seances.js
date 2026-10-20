@@ -312,7 +312,7 @@ function aLireV(se){
 function resultatLocalV(se, slug){
   var ev = se.ev, S = se.S, mode = ev.mode, revelees = v3Liste(S.revelees).map(Number), partiAt = (S.partis || {})[slug];
   if(se.absents.some(function(e){ return e.slug === slug; })) return null;
-  var trouvee = S.trouvee && S.trouvee[slug] != null ? +S.trouvee[slug] : null, st = [], pts = [];
+  var trouvee = S.trouvee && S.trouvee[slug] != null ? +S.trouvee[slug] : null, st = [], pts = [], nonPosees = nonPoseesV(se);
   // « Trouvée au dernier moment », une fois : la première question, dans l'ordre de la correction, dont la feuille est fausse et la tablette juste
   if(trouvee == null && se.nouvelle){ var ordre = v3Liste(S.revelees).map(Number); (ordre.length ? ordre : v3Liste(S.ordreCorr).map(Number)).some(function(qi){
     var q = ev.questions[qi], l = q && lectureV(se, qi, slug), tb = q && tabletteV(se, qi, slug);
@@ -322,7 +322,10 @@ function resultatLocalV(se, slug){
     if(se.nouvelle){
       if(se.papier){ var fp = feuillePapierV(se, qi, slug) || lectureV(se, qi, slug) && lectureV(se, qi, slug).choix; if(!fp){ st.push("n"); pts.push(null); return; } var pp = ptsQuestionV(fp, q, mode); st.push(fp === "aucun" ? "a" : pp === 1 ? "j" : "f"); pts.push(pp); return; }
       if(revelees.indexOf(qi) < 0 && !se.terminee){ st.push("n"); pts.push(null); return; }
+      if(nonPosees.indexOf(qi) >= 0){ st.push("x"); pts.push(null); return; }   // (29) jamais lancée : hors du total
       var l = lectureV(se, qi, slug);
+      // (point 6, Paul 08:49) lue en classe par le voisin, mais pas révélée : « pas encore lue » tant que Paul ne l'a pas lue le soir
+      if(l && l.par !== "prof" && revelees.indexOf(qi) < 0){ st.push("n"); pts.push(null); return; }
       // une feuille non lue ne note pas
       if(!l){ var tb = tabletteV(se, qi, slug); if(!tb && partiAt){ st.push("x"); pts.push(null); return; } st.push("n"); pts.push(null); return; }
       var p = ptsQuestionV(l.choix, q, mode);
@@ -386,6 +389,15 @@ function entreeV(se, slug){
 }
 function texteBilanV(se, slug){ var b = bilanValideV(se, slug); if(b) return b.texte; var e = entreeV(se, slug); return e ? commentaireQCM(e).map(function(x){ return x.t; }).join("") : ""; }
 function presentsTexteV(se){ var n = se.presents.length, a = se.absents; return n + " présent" + (n > 1 ? "s" : "") + (a.length ? ", " + a.length + " absent" + (a.length > 1 ? "s" : "") + (a.length === 1 ? " (" + a[0].nom + ")" : "") : ""); }
+/* (20/10, Paul 08:49 ; 29, première moitié) une séance terminée avant d'avoir lancé une question : elle sort du total (« x »),
+   et Paul lit « Q4 à Q11 pas posées », jamais « écartée » ; une séance en pause ou sur papier garde ses questions */
+function nonPoseesV(se){ var S = se.S; if(!S || !se.nouvelle || !se.terminee || se.papier || (S.lancee || {}).mode === "papier") return [];
+  return se.ev.questions.map(function(q, i){ return i; }).filter(function(i){ return se.ecartees.indexOf(i) < 0 && (S.questionsLancees || {})[i] == null && (S.reponses || {})[i] == null; }); }
+function nonPoseesTexteV(se){ var l = nonPoseesV(se); if(!l.length) return "";
+  var suite = l.every(function(q, k){ return !k || q === l[k - 1] + 1; });
+  if(l.length === 1) return "Q" + (l[0] + 1) + " pas posée";
+  if(suite) return "Q" + (l[0] + 1) + " à Q" + (l[l.length - 1] + 1) + " pas posées";
+  var n = l.map(function(q){ return "Q" + (q + 1); }); return n.slice(0, -1).join(", ") + " et " + n[n.length - 1] + " pas posées"; }
 function ecartTexteV(se){ var e = se.ecartees, a = se.annulees; if(!e.length && !a.length) return "aucune";
   return [].concat(e.map(function(q){ return "Q" + (q + 1) + " écartée"; }), a.map(function(q){ return "Q" + (q + 1) + " annulée"; })).join(", "); }
 function compsDeV(ev){ var o = []; ev.questions.forEach(function(q){ (q.competences || []).forEach(function(c){ if(o.indexOf(c) < 0) o.push(c); }); }); return o; }
@@ -405,13 +417,21 @@ function sansLectureV(se){ var l = [], hors = se.ecartees.concat(se.annulees), S
 function aLireCopiesV(se){
   var L = aLireV(se), S = se.S, deja = {}; if(!S || !se.nouvelle || (S.lancee || {}).mode === "papier") return L;
   L.forEach(function(x){ deja[x.p + "|" + x.q] = 1; });
-  var hors = se.ecartees.concat(se.annulees), Lc = S.lectures || {}, posee = function(i){ return (S.questionsLancees || {})[i] != null || (S.reponses || {})[i] != null; };
+  var hors = se.ecartees.concat(se.annulees), Lc = S.lectures || {}, rev = v3Liste(S.revelees).map(Number), posee = function(i){ return (S.questionsLancees || {})[i] != null || (S.reponses || {})[i] != null; };
   var cite = function(q, c){ return v3Liste(c).map(Number).map(function(i){ return "« " + q.choix[i] + " »"; }).join(" et "); };
   se.presents.forEach(function(e){ se.ev.questions.forEach(function(q, i){ if(hors.indexOf(i) >= 0 || !posee(i) || deja[e.slug + "|" + i]) return;
-    var l = (Lc[i] || {})[e.slug]; if(l && (l.par !== "prof" || l.avant)) return;   // lue en classe par le voisin : la règle de la séance
-    var t = tabletteV(se, i, e.slug), pr = prenomEleveV(se, e.slug);
-    L.push({id:"nl_" + e.slug + "_" + i, p:e.slug, q:i, sorte:"nl", txt:pr + " : la correction s'est arrêtée avant cette question ; personne n'a lu sa feuille en classe.",
-      lignes:[t && t.choix.length ? "Tablette : " + cite(q, t.choix) : "Pas de clic sur la tablette"], lue:!!l, corrigee:!!l, nom:nomEleveV(se, e.slug)}); }); });
+    var l = (Lc[i] || {})[e.slug], revelee = rev.indexOf(i) >= 0;
+    if(revelee && l && (l.par !== "prof" || l.avant)) return;   // révélée et lue en classe par le voisin : la règle de la séance
+    var t = tabletteV(se, i, e.slug), pr = prenomEleveV(se, e.slug), tl = t && t.choix.length ? cite(q, t.choix) : null;
+    // (point 6, Paul 08:49) lue par le voisin mais pas révélée : Paul la lit le soir, avec ce que le voisin a lu
+    var vl = !revelee && l ? (l.par !== "prof" ? l : l.avant || null) : null, vc = vl ? (vl.choix === "aucun" ? "aucun" : v3Liste(vl.choix).map(Number)) : null;
+    var vp = vl && vl.par && vl.par !== "prof" ? prenomEleveV(se, vl.par) : (voisinV(se, e.slug) ? prenomEleveV(se, voisinV(se, e.slug)) : "son voisin");
+    var lu = vc == null ? null : vc === "aucun" ? "aucun de ces choix" : cite(q, vc);
+    var lignes = vc == null ? [tl ? "Tablette : " + tl : "Pas de clic sur la tablette"]
+      : tl && vc !== "aucun" && memesChoixV(vc, t.choix) ? ["Tablette et lecture " + deNom(vp) + " : " + tl] : [tl ? "Tablette : " + tl : "Pas de clic sur la tablette", "Lu par " + vp + " : " + lu];
+    L.push({id:"nl_" + e.slug + "_" + i, p:e.slug, q:i, sorte:"nl",
+      txt:vc == null ? pr + " : la correction s'est arrêtée avant cette question ; personne n'a lu sa feuille en classe." : vp + " a lu la feuille " + deNom(pr) + " en classe, mais la question n'a pas été révélée : " + pr + " n'a pas pu contester.",
+      lignes:lignes, lue:!!(l && l.par === "prof"), corrigee:!!(l && l.par === "prof"), nom:nomEleveV(se, e.slug)}); }); });
   return L; }
 function restentV(se){ var nl = aLireV(se).filter(function(x){ return !x.lue; }), deja = {}; nl.forEach(function(x){ deja[x.p + "|" + x.q] = 1; });
   return nl.length + sansLectureV(se).filter(function(x){ return !deja[x.p + "|" + x.q]; }).length; }
@@ -526,13 +546,14 @@ function ResultatsC(){
       (function(){ var nc = {}; aLireCopiesV(se).forEach(function(x){ if(!x.lue) nc[x.p] = 1; }); var n = Object.keys(nc).length; return n ? h("button", {key:3, className:"btn btn-primary btn-sm", "data-va":"c-lire-copies" + sq, title:"Ouvre les copies à lire, dans l'ordre de ton tas : tu tapes les initiales de chaque copie ; pour chaque question à lire, l'app te demande ce que dit la copie, et tu réponds oui ou non."}, "📄 Lire les copies (" + n + ")") : null; })(),
       h("button", {key:2, className:"btn btn-ghost btn-sm", "data-va":"c-seances", title:"Revient à la liste des séances."}, "← Retour")]),
     exporte && h("div", {className:"fen-note"}, "📥 " + exporte + " téléchargé."),
-    h("p", {style:{fontSize:".85rem", color:"var(--gris)", marginTop:".2rem"}}, se.date + " " + se.heure + " · " + presentsTexteV(se) + (se.papier ? " · sur papier" : "") + " · questions écartées ou annulées : " + ecartTexteV(se) + " · ",
+    h("p", {style:{fontSize:".85rem", color:"var(--gris)", marginTop:".2rem"}}, se.date + " " + se.heure + " · " + presentsTexteV(se) + (se.papier ? " · sur papier" : "") + " · questions écartées ou annulées : " + ecartTexteV(se) + (nonPoseesTexteV(se) ? " · " + nonPoseesTexteV(se) : "") + " · ",
       rendues ? h("strong", {style:{color:"#15803D"}}, "copies rendues le " + dateFr(se.rendueMs).slice(0, 5)) : restent ? h("strong", {style:{color:"#9A3412"}}, restent + " feuille" + (restent > 1 ? "s" : "") + " à lire") : lire.length ? h("strong", {style:{color:"#15803D"}}, "✔ " + lire.length + " feuille" + (lire.length > 1 ? "s" : "") + " lue" + (lire.length > 1 ? "s" : "")) : h("strong", {style:{color:"#9A3412"}}, "copies non rendues")),
     h("div", {className:"scoresheet-wrap"}, h("table", {className:"scoresheet", "data-longue":ev.questions.length > 6 ? "1" : null},
       h("thead", null, h("tr", null,
         h("th", {className:"eleve-col trie", title:"Cliquer pour trier par nom (asc/desc). Cliquer sur un nom d'élève dans le tableau ouvre son Student Report (drill-down).", onClick:function(){ setSens(-sens); }}, "Élève" + (sens > 0 ? " ▴" : " ▾")),
         ev.questions.map(function(q, i){ var ec = se.ecartees.indexOf(i) >= 0, an = se.annulees.indexOf(i) >= 0;
-          return h("th", {key:i, title:q.enonce + (ec ? " — ❌ Écartée — pas posée" : an ? " — ⚠️ Annulée — posée, puis annulée" : "")}, (ec ? "❌ " : an ? "⚠️ " : "") + "Q" + (i+1)); }),
+          var np = nonPoseesV(se).indexOf(i) >= 0;   // (29) jamais lancée : « pas posée », jamais « écartée »
+          return h("th", {key:i, title:q.enonce + (ec ? " — ❌ Écartée — pas posée" : an ? " — ⚠️ Annulée — posée, puis annulée" : np ? " — pas posée : la séance s'est terminée avant elle" : "")}, (ec ? "❌ " : an ? "⚠️ " : "") + "Q" + (i+1)); }),
         h("th", null, "Note"), h("th", null, "Sur 20"), h("th", {className:"res-col-l"}, "Maîtrise de la note"),
         comps.map(function(c){ var qs = compQuestionsEv(c, ev); return h("th", {key:c, className:"comp-col", title:"La compétence " + c + " : " + libOff(c) + ". Ses questions : " + qs.map(function(i){ return "Q" + (i+1); }).join(", ") + "."}, "🧩 " + c, h("div", {className:"thq"}, compCourt(c) + " · " + qs.map(function(i){ return "Q" + (i+1); }).join(", "))); }),
         !comps.length && h("th", {key:"sans", className:"comp-col", title:"Cette évaluation n'a pas de compétences : elle n'en a pas au hub."}, "🧩 —"),
@@ -701,7 +722,7 @@ function pdfSeanceV(se){
     "<div><b>Séance :</b> " + se.date + " · " + ev.questions.length + " questions · " + (ev.mode === "partiel" ? "partiel" : "tout ou rien") + "</div>\n" +
     "<div><b>Copies :</b> rendues le " + dateFr(se.rendueMs) + " — les notes sont définitives</div>\n" +
     "<div><b>Note :</b> sur 20, arrondie au dixième</div>\n" +
-    "<div><b>Questions :</b> " + (nEc ? se.ecartees.map(function(q){ return "Q" + (q + 1); }).join(", ") + " écartée" + (nEc > 1 ? "s" : "") : "aucune écartée") + ", " + (nAn ? se.annulees.map(function(q){ return "Q" + (q + 1); }).join(", ") + " annulée" + (nAn > 1 ? "s" : "") : "aucune annulée") + "</div>\n" +
+    "<div><b>Questions :</b> " + (nEc ? se.ecartees.map(function(q){ return "Q" + (q + 1); }).join(", ") + " écartée" + (nEc > 1 ? "s" : "") : "aucune écartée") + ", " + (nAn ? se.annulees.map(function(q){ return "Q" + (q + 1); }).join(", ") + " annulée" + (nAn > 1 ? "s" : "") : "aucune annulée") +  + (nonPoseesTexteV(se) ? ", " + nonPoseesTexteV(se) : "") + "</div>\n" +
     "</div>\n" +
     '<div class="mode"><b>Pour École Directe.</b> Une ligne par élève, dans l\'ordre alphabétique. « Note » : la note sur 20 du devoir.\n' +
     "Chaque colonne de compétence : le niveau de maîtrise de l'élève, en toutes lettres, parmi quatre : Très bonne maîtrise, Maîtrise satisfaisante, Maîtrise fragile, Maîtrise insuffisante.\n" +

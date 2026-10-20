@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 08:31 — section toujours ouverte (29 première moitié, point 6 : attendent Paul) ; rien à mon nom ; je la relis toutes les 2 minutes jusqu'à « contrôlé »
 
 - QCM-3 · SOIR · 08:16 — j'attends la réponse de Paul (29 première moitié, point 6) ; la section relue toutes les 2 min ; reste à mon nom : rien
-- QCM-4 · BANC · 08:39 — le temps tapé, et la note d'une séance arrêtée : contrôle de la conscience (18:01) : ça va pour 28 et la seconde moitié de 29, sur mon VERDICT de 17:33 ; la section reste ouverte (29 première moitié, point 6, pour Paul) ; je la relis toutes les 2 minutes et je rejouerai ce qui sera ajouté
+- QCM-4 · BANC · 08:52 — 29 tranché par Paul (20/10 08:49, section reprise à 08:51) : mon banc du point 10 (séance de 11 questions arrêtée après Q3 : note sur 3, « Q4 à Q11 pas posées », Q3 « pas encore lue » puis « ✅ Oui » le soir ; pause ; réouverture) en écriture ; livraison de QCM-1 et QCM-3 attendue vers 09:51, VERDICT.md vers 10:21

@@ -69,7 +69,8 @@ function NoteDirecteL(p){
   var bouge = d && (d.n !== r.n), ecQ = (se.ecartees || []).map(Number);   // (16/10, dette 218) « écartée » : seulement une question écartée
   return h("div", {"data-note-directe":slug, title:"La note de la copie, recalculée à chaque réponse : les points de chaque question, et ce qui a changé depuis que tu as ouvert « Lire les copies ».", style:{minWidth:250, padding:".6rem .8rem", borderRadius:10, background:"#F8F6FF", border:"1px solid #DDD6FE", fontSize:".92rem"}},
     h("div", {style:{fontWeight:800, marginBottom:".3rem"}}, "🧮 La note, en direct"),
-    ev.questions.map(function(q, i){ var a = d ? d.pts[i] : null, b = r.pts ? r.pts[i] : null, ch = a != null && b != null && a !== b;
+    // la note de départ gardée dans la base (soir/depart) : une liste de points vide (toutes « pas encore lues ») n'y est pas écrite
+    ev.questions.map(function(q, i){ var dp = d && d.pts ? d.pts : null, a = dp && dp[i] != null ? +dp[i] : null, b = r.pts ? r.pts[i] : null, ch = a != null && b != null && a !== b;
       return h("div", {key:i, style:{fontWeight:ch ? 800 : 400, color:ch ? (b > a ? "#15803D" : "#B91C1C") : "inherit"}},
         "Question " + (i + 1) + " : " + (b == null ? (ecQ.indexOf(i) >= 0 ? "écartée" : r.st && r.st[i] === "x" ? "pas posée" : "pas encore lue") : ch ? fr1(a) + " → " + ptsL(b) + " (" + (b > a ? "+" : "−") + fr1(Math.abs(b - a)) + ")" : ptsL(b))); }),
     h("div", {style:{fontWeight:900, marginTop:".35rem", fontSize:"1.02rem"}}, "✍️ Note : " + (bouge ? fr1(d.n) + " / " + d.total + " → " : "") + fr1(r.n) + " / " + r.total + " · " + (bouge ? fr1(d.sur20) + " → " : "") + fr1(r.sur20) + " / 20"), h(NonLuesV, {r:r, ecartees:se.ecartees}));   // (16/10, Paul) ce qui reste à lire

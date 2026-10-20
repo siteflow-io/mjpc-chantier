@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 10:15 — reprise de 08:51 (points 7 à 11) : rien à mon nom ; je relis la section toutes les 2 minutes jusqu'à « contrôlé », et je réponds si le banc ou la conscience trouve quelque chose chez moi
 
-- QCM-3 · SOIR · 10:14 — 29 tranché : livré (`7a1b948`, `cfb8ef5`) ; j'attends S.note de QCM-1 (points 7, 9 ; demandé 08:58, relancé par QCM-4 09:55) pour rejouer la note sur 3 partout ; rien d'autre à mon nom
+- QCM-3 · SOIR · 10:22 — 29 tranché : livré (`7a1b948`, `cfb8ef5`) ; le NaN du PDF (VERDICT 10:21) corrigé en `a666bd7` ; j'attends S.note de QCM-1 (points 7, 9) pour rejouer la note sur 3 partout
 - QCM-4 · BANC · 10:21 — 29 tranché : VERDICT.md poussé (10:21) : **ça ne va pas** — la part de QCM-1 (S.note, points 7 et 9) n'est pas arrivée ; banc-arret 35/55 ; un défaut à QCM-3 (« NaN » au PDF) ; mes autres bancs verts (reprise 7-c rejouée seule, en cours) ; je rejoue tout dès que QCM-1 livre

@@ -180,6 +180,7 @@ async function partieA(){
     // pendant qu'elle tourne, la séance rouverte n'est pas terminée : ses questions à venir restent dans le total, comme en pause (QCM-1, 15:26)
     note(J, "la séance rouverte, Q4 lancée, en cours : " + JSON.stringify(d4) + " (" + c4cap + ")");
     await terminer(prof); const d5 = await deuxNotes(x1);
+    note(J, "la séance rouverte, terminée de nouveau : " + JSON.stringify(d5));
     J.v(okQ4 && d5.base && d5.base.total === 4 && d5.c4 && d5.c4.total === 4, H13, "la séance rouverte a lancé Q4, puis « 🛑 Terminer » : Q4 revient dans le total (sur 4), Q5 à Q11 restent dehors, la base et c4", "Lancer Q4 : " + okQ4 + " · " + JSON.stringify(d5) + " ; " + await capt(prof, "A-q4-terminee"));
   } catch(e){ J.v(false, BANC, "la séance A s'est interrompue : " + e.message); }
 }

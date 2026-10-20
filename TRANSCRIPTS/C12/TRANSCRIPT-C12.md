@@ -23126,3 +23126,19 @@ Envoyé à Paul, mot pour mot :
 33. La conscience n°13 : j'ai lu son transcript. Elle s'est arrêtée le 13/10 à 08:58, sur ta règle du même jour : une maquette, c'est le vrai fichier sur un faux hub, jamais une page à part. Deux de ses réponses ont été coupées par le filtre de sécurité d'Anthropic. D'après son transcript, tu n'as jamais tranché ses dernières propositions, les points 82 à 86. Depuis, personne n'a travaillé sur le déroulé. Sa dernière livraison est p8-5g ; p8-5h, qui règle les dettes n°13 · 18 à 23, est écrit au sas mais n'a jamais été lancé. Elle proposait de finir p8-5h sur la page à part, puis de porter le déroulé dans index.html, sur un faux hub monté dans un second projet Firebase. Ma proposition : ne plus rien livrer sur la page à part, puisque ta règle l'interdit. Les 16 points de p8-5h se font directement dans index.html, sur un faux hub monté dans l'atelier, comme pour le QCM, sans second projet Firebase ni donnée d'élève. Avant tout mandat, je mesure l'écart entre la page à part et index.html (son point 86). Tu valides ?
 
 20/10/2026 08:53 MEMO
+
+## TOUR 752 — réveil programmé de 10:30 (pas Paul)
+
+Le contrôle programmé (`trig_01AXZ4XJaidhSfLWxjQrDdJn`). Lu : `ETAT.md` (QCM-1 : 19/10 20:02 ; QCM-2, QCM-3, QCM-4 à 10:15-10:27), `DEMANDES.md` (QCM-4 → QCM-1, 09:55), `VERDICT.md` de QCM-4 de 10:21 (`0b8c8b48`, « ça ne va pas », app `a2c4e90` md5 `53247f20…`, banc-arret 35/55 ; le NaN du PDF corrigé par QCM-3 en `a666bd7`, rejoué). Rien à contrôler : le verdict ne dit pas « ça va ». Fait : la ligne à QCM-1 en tête des points 7 à 11 (`code-qcm` `17f62a78`).
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.4, toujours en ligne ; rien de nouveau n'y est · **en cours chez l'exécutant :** QCM-2, QCM-3 et QCM-4 tournent ; QCM-1 est arrêté · **ouvert :** 29, et 33, qui attend ta réponse
+
+29. Le verdict de QCM-4 de 10:21 dit « ça ne va pas », et c'est vrai. QCM-3 a livré sa part : en tête du tableau, on lit « Q4 à Q11 pas posées », jamais « écartée ». Mais QCM-1 n'a rien livré : sa session s'est arrêtée hier soir à 20:02, et il n'a jamais vu ta réponse. C'est lui qui calcule la note. Donc, pour l'instant, la séance arrêtée après Q3 compte encore sur 11, et la feuille lue par Léa compte encore sans toi. Il faut relancer QCM-1, et lui seul. Voici le message à coller dans sa session :
+
+« Reprise du 20/10 : lis la section « Le temps tapé, et la note d'une séance arrêtée avant la fin — 19/10/2026 » en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm) : les points 7 et 9 sont à toi (S.note), avec la demande de QCM-4 de 09:55 dans DEMANDES.md. Ta livraison est poussée une heure après ce message, avec ta ligne dans ETAT.md ; QCM-4 rejoue tout et pousse VERDICT.md trente minutes plus tard. Tu tournes jusqu'à ce que la conscience écrive « contrôlé » en tête de cette section. »
+
+Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
+
+20/10/2026 10:32 MEMO

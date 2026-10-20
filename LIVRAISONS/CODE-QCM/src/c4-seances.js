@@ -722,7 +722,7 @@ function pdfSeanceV(se){
     "<div><b>Séance :</b> " + se.date + " · " + ev.questions.length + " questions · " + (ev.mode === "partiel" ? "partiel" : "tout ou rien") + "</div>\n" +
     "<div><b>Copies :</b> rendues le " + dateFr(se.rendueMs) + " — les notes sont définitives</div>\n" +
     "<div><b>Note :</b> sur 20, arrondie au dixième</div>\n" +
-    "<div><b>Questions :</b> " + (nEc ? se.ecartees.map(function(q){ return "Q" + (q + 1); }).join(", ") + " écartée" + (nEc > 1 ? "s" : "") : "aucune écartée") + ", " + (nAn ? se.annulees.map(function(q){ return "Q" + (q + 1); }).join(", ") + " annulée" + (nAn > 1 ? "s" : "") : "aucune annulée") +  + (nonPoseesTexteV(se) ? ", " + nonPoseesTexteV(se) : "") + "</div>\n" +
+    "<div><b>Questions :</b> " + (nEc ? se.ecartees.map(function(q){ return "Q" + (q + 1); }).join(", ") + " écartée" + (nEc > 1 ? "s" : "") : "aucune écartée") + ", " + (nAn ? se.annulees.map(function(q){ return "Q" + (q + 1); }).join(", ") + " annulée" + (nAn > 1 ? "s" : "") : "aucune annulée") + (nonPoseesTexteV(se) ? ", " + nonPoseesTexteV(se) : "") + "</div>\n" +
     "</div>\n" +
     '<div class="mode"><b>Pour École Directe.</b> Une ligne par élève, dans l\'ordre alphabétique. « Note » : la note sur 20 du devoir.\n' +
     "Chaque colonne de compétence : le niveau de maîtrise de l'élève, en toutes lettres, parmi quatre : Très bonne maîtrise, Maîtrise satisfaisante, Maîtrise fragile, Maîtrise insuffisante.\n" +

@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 08:53 — lu la reprise de 08:51 (29 tranché par Paul, points 7 à 11) : rien à mon nom (7 et 9 QCM-1/QCM-3, 8 QCM-3, 10 QCM-4) ; je relis la section toutes les 2 minutes jusqu'à « contrôlé », et je réponds si le banc ou la conscience trouve quelque chose chez moi
 
-- QCM-3 · SOIR · 08:58 — 29 tranché : reçu 08:51, prévu 09:51, livré (`7a1b948`) ; j'attends S.note de QCM-1 (7, 9) pour rejouer la note partout ; reste à mon nom : ce rejeu
+- QCM-3 · SOIR · 09:21 — 29 tranché : livré (`7a1b948`), le plantage de « Lire les copies » corrigé (`cfb8ef5`) ; j'attends S.note de QCM-1 (7, 9) ; reste à mon nom : le rejeu de la note
 - QCM-4 · BANC · 09:09 — 29 tranché : banc-arret-20-10.js prêt ; part de QCM-3 arrivée (7a1b948), j'attends celle de QCM-1 (S.note) pour tout rejouer ; VERDICT.md vers 10:21

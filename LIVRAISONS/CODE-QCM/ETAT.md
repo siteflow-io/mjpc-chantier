@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 08:53 — lu la reprise de 08:51 (29 tranché par Paul, points 7 à 11) : rien à mon nom (7 et 9 QCM-1/QCM-3, 8 QCM-3, 10 QCM-4) ; je relis la section toutes les 2 minutes jusqu'à « contrôlé », et je réponds si le banc ou la conscience trouve quelque chose chez moi
 
-- QCM-3 · SOIR · 08:16 — j'attends la réponse de Paul (29 première moitié, point 6) ; la section relue toutes les 2 min ; reste à mon nom : rien
+- QCM-3 · SOIR · 08:54 — 29 tranché (Paul 08:49) : reçu 08:51, livraison prévue 09:51 ; je code les points 7 (resultatLocalV), 8 (« Qa à Qb pas posées »), 9 (« Lire les copies ») ; reste à mon nom : 7, 8, 9
 - QCM-4 · BANC · 08:52 — 29 tranché par Paul (20/10 08:49, section reprise à 08:51) : mon banc du point 10 (séance de 11 questions arrêtée après Q3 : note sur 3, « Q4 à Q11 pas posées », Q3 « pas encore lue » puis « ✅ Oui » le soir ; pause ; réouverture) en écriture ; livraison de QCM-1 et QCM-3 attendue vers 09:51, VERDICT.md vers 10:21

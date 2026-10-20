@@ -23108,3 +23108,21 @@ Tu valides ces deux propositions ?
 32. Noté : dans l'app QCM, rien ne change.
 
 20/10/2026 08:38 MEMO
+
+## TOUR 751 — Paul, 20/10 08:49
+
+Paul, mot pour mot :
+
+ok.  et pas de séance en cours. Ensuite, il faudra reprendre le travail de C13 bloquée que je n'arrive pas à relancer.
+
+Lu : `ETAT.md` (les quatre tournent, relisent la section toutes les 2 minutes) ; `marquerLueV`, `feuilleDitV`, `seanceTerminee` ; `TRANSCRIPTS/C13/TRANSCRIPT-C13.md` (tours 1, 53 à 67) ; les branches `deroule/*` (la dernière : `p8-5g`, 12/10) ; `MANDATS/COMPLEMENT-DEROULE-P8-5h.md` (points 1 à 16) ; `AUDITS/CONTROLES-DEROULE/` ; le registre n°13 · 13 à 24. Fait : les points 7 à 11 de la section (`code-qcm` `26de9deb`) ; le contrôle programmé à 10:30 (`trig_01AXZ4XJaidhSfLWxjQrDdJn`) ; dette n°12 · 222 mise à jour (production).
+
+Envoyé à Paul, mot pour mot :
+
+29. C'est noté, et écrit aux exécutants à 08:51. Ils tournaient encore et relisent la section toutes les 2 minutes : tu n'as rien à relancer. QCM-1 et QCM-3 codent, QCM-4 rejoue la séance de 11 questions arrêtée après Q3. Mon contrôle est programmé à 10:30.
+
+31. Ta réponse sur 29 change le code. Je ne mets donc pas en ligne la version d'hier soir : elle compterait encore la lecture de Léa sans toi. Je mettrai tout en ligne en une fois, après mon contrôle, et je te redemanderai à ce moment-là si une séance est en cours.
+
+33. La conscience n°13 : j'ai lu son transcript. Elle s'est arrêtée le 13/10 à 08:58, sur ta règle du même jour : une maquette, c'est le vrai fichier sur un faux hub, jamais une page à part. Deux de ses réponses ont été coupées par le filtre de sécurité d'Anthropic. D'après son transcript, tu n'as jamais tranché ses dernières propositions, les points 82 à 86. Depuis, personne n'a travaillé sur le déroulé. Sa dernière livraison est p8-5g ; p8-5h, qui règle les dettes n°13 · 18 à 23, est écrit au sas mais n'a jamais été lancé. Elle proposait de finir p8-5h sur la page à part, puis de porter le déroulé dans index.html, sur un faux hub monté dans un second projet Firebase. Ma proposition : ne plus rien livrer sur la page à part, puisque ta règle l'interdit. Les 16 points de p8-5h se font directement dans index.html, sur un faux hub monté dans l'atelier, comme pour le QCM, sans second projet Firebase ni donnée d'élève. Avant tout mandat, je mesure l'écart entre la page à part et index.html (son point 86). Tu valides ?
+
+20/10/2026 08:53 MEMO

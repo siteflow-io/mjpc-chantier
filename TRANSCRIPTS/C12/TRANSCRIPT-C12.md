@@ -23084,3 +23084,27 @@ Envoyé à Paul, mot pour mot :
 32. Ma question reste la même : la règle du participe vaut dès maintenant pour tout texte nouveau, et pour les textes déjà en ligne, je fais d'abord le relevé. Tu valides ?
 
 19/10/2026 19:48 MEMO
+
+## TOUR 750 — Paul, 20/10 08:37
+
+Paul, mot pour mot :
+
+pas compris 29. pour 31, le participe passé ne concernait que l'app du sheet des compétences des collègues
+
+Lu : `S.note` (une question jamais lancée : « n », dans le total ; la séance terminée : la lecture du voisin compte). Fait : dette n°12 · 222 mise à jour (production).
+
+Envoyé à Paul, mot pour mot :
+
+29. Je reprends avec un exemple. Tu arrêtes une séance de 11 questions après Q3. Il y a deux cas.
+
+Premier cas : Q4 à Q11 n'ont jamais été lancées. Aujourd'hui, elles restent dans le total : la note de chaque élève est sur 11, et elle ne sera jamais complète. Ma proposition : elles sortent du total, la note est sur 3, et ton tableau dit « Q4 à Q11 pas posées ». Le mot n'est pas « écartées », puisque tu ne les as pas écartées. Côté élève, elles n'apparaissent pas.
+
+Second cas : Q3 était en pleine lecture quand tu as arrêté. Léa a lu la feuille de Tom, mais tu n'as pas cliqué « Révéler », donc Tom n'a pas pu contester. Dans la version contrôlée hier soir, la lecture de Léa compte telle quelle. Ma proposition : le soir, « Lire les copies » te montre la feuille de Tom pour Q3, avec ce que Léa a lu, et tu cliques « ✅ Oui » si la copie dit bien la même chose. Jusque-là, Q3 compte comme « pas encore lue ».
+
+Tu valides ces deux propositions ?
+
+31. J'attends toujours ton « aucune séance en cours » pour mettre en ligne.
+
+32. Noté : dans l'app QCM, rien ne change.
+
+20/10/2026 08:38 MEMO

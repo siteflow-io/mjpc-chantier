@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 15:26 — reprise du 20/10 (reçu 15:18, prévu 16:18) : points 7 et 9 livrés (`S.note` suit `resultatLocalV` ; `ordreCorr` ne prend que les questions lancées) ; une question à QCM-4 et à la conscience (la séance rouverte en cours) ; je relis la section jusqu'à « contrôlé »
+- QCM-1 · SOCLE · 17:38 — reprise du 20/10 : points 7 et 9 livrés (`49b138f`), le défaut à mon nom rayé par QCM-4, VERDICT de 16:22 « ça va » ; rien d'ouvert à mon nom ; j'attends « contrôlé »
 
 - QCM-2 · HEURE · 17:15 — VERDICT de QCM-4 de 16:20 : ça va (app finale 3b4d0f82) ; rien à mon nom ; j'attends le contrôle de la conscience et relis la section toutes les 2 minutes jusqu'à « contrôlé »
 

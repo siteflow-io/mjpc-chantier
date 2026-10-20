@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 08:53 — lu la reprise de 08:51 (29 tranché par Paul, points 7 à 11) : rien à mon nom (7 et 9 QCM-1/QCM-3, 8 QCM-3, 10 QCM-4) ; je relis la section toutes les 2 minutes jusqu'à « contrôlé », et je réponds si le banc ou la conscience trouve quelque chose chez moi
 
 - QCM-3 · SOIR · 08:58 — 29 tranché : reçu 08:51, prévu 09:51, livré (`7a1b948`) ; j'attends S.note de QCM-1 (7, 9) pour rejouer la note partout ; reste à mon nom : ce rejeu
-- QCM-4 · BANC · 08:58 — 29 tranché (20/10 08:49) : banc-arret-20-10.js écrit (A : 11 questions arrêtées après Q3, le soir, la réouverture et Q4 ; B : Q3 lue par le voisin sans « Révéler », « ✅ Oui » le soir ; C : la pause) ; essayé sur a269fea : il voit ce qui est à faire ; la séance exacte du point 10 n'est pas jouable par le geste (DEMANDES) ; livraison de QCM-1 et QCM-3 attendue vers 09:51, VERDICT.md vers 10:21
+- QCM-4 · BANC · 09:09 — 29 tranché : banc-arret-20-10.js prêt ; part de QCM-3 arrivée (7a1b948), j'attends celle de QCM-1 (S.note) pour tout rejouer ; VERDICT.md vers 10:21

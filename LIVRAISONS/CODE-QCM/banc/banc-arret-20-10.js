@@ -218,7 +218,7 @@ async function partieB(){
       const nm = nomDe(x), v = nomDe(M.find(m => m[1] !== x)[1]).split(" ").slice(1).join(" ");
       J.v(await ouvrirCopie(prof, nm), H3, "« Lire les copies » : la copie de " + nm, (await texte(prof)).slice(0, 200));
       const r = await lireLigne(prof, 2, [], true); const cL = await capt(prof, "B-lire-" + slug(nm).slice(0, 8));
-      J.v(r.ok && /lu par/i.test(r.txt || "") && (r.txt || "").includes(v), H3, nm + ", Q3 : la ligne propose la lecture du voisin (« lu par " + v + " ») et « ✅ Oui »", (r.txt || r.vu || "").slice(0, 300) + " ; " + cL);
+      J.v(r.ok && new RegExp("lu par " + esc(v) + "|" + esc(v) + " a lu|lecture d(e |')" + esc(v)).test(r.txt || ""), H3, nm + ", Q3 : la ligne propose la lecture du voisin (" + v + " : « lu par » ou « a lu ») et « ✅ Oui »", (r.txt || r.vu || "").slice(0, 300) + " ; " + cL);
       const d = await deuxNotes(x), nd = await noteDirecte(prof);
       J.v(d.base && d.base.complet && d.base.total === 3 && JSON.stringify(d.base) === JSON.stringify(d.c4), H13, nm + ", après « ✅ Oui » : la note complète, la même dans la base et dans c4", JSON.stringify(d));
       J.v(/Note : /.test(nd) && !/pas encore lue/.test(nd), H3, nm + " : « 🧮 La note, en direct », sans « pas encore lue »", nd.slice(0, 300));

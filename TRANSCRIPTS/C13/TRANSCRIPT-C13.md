@@ -1934,3 +1934,19 @@ Réponse de la conscience (21:37), mot pour mot :
 
 21/10/2026 21:37
 MEMO
+
+## TOUR 91 (21/10/2026, 21:37 → 21:38)
+
+Paul (21:37), mot pour mot :
+« Bon. Du coup on en est où ? »
+
+Réponse de la conscience (21:38), mot pour mot :
+
+179. Le déroulé : les quatre tournent depuis ce matin 09:10 ; la dernière tête (`560aad3e`, 20:58) passe tout mon banc (collisions 0, parcours vert aux deux modes, 108 contrôles sur 108) ; le grave de la journée est réglé. Reste ouvert avant « promeus » : un haute chez E2 (la diapo commencée qui glisse à l'heure suivante et disparaît), un trou chez E1 (la copie de classe pas reprise au premier lancement d'un autre jour), la correction §12.17 à appliquer, et la table d'E4 à finir de revérifier. Prochain contrôle 22:18 ; à ce rythme, l'audit final (écrans changés, captures entières avant/après) se fait demain matin et tu promeus sur captures — c'est dans tes 24 h si rien de neuf ne sort.
+
+180. Le reste du site : en attente de ton mot sur ma proposition de 20:38 — deux exécutants tout de suite, « ATTENDUS » (les attendus au hub, préalable des notions) et « DICTÉE » (le mandat L17 en pause + les 19 lignes de classe), le prompt d'injection en troisième si tu veux ; je cadre le profil longitudinal avec toi pendant qu'ils tournent. Tout ce qui touche `index.html` attend la promotion.
+
+181. À toi, telles quelles : 152 (l'heure de fin dans le récit), 144 (l'animation en accéléré tombe), 13 · 12 (la police réduite avant les pages), §12.17 (« à la maison » revient fléché « à reprendre »). Ce que tu ne commentes pas est acquis.
+
+21/10/2026 21:38
+MEMO

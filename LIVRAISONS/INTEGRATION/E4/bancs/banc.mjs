@@ -168,8 +168,8 @@ else verif('D1', null, 'les documents par référence', 'la maquette simule ses 
 
 // ═════ T · la transposition et la langue (relecteur neuf 1) : les mots accentués, « un élève », la copie sans repère pour Paul ═════
 { const o = await ouvrir({ frais: true }); const pg = o.pg;
-  const t = await pg.evaluate(() => [recit('Placez les poètes sur la frise, devant vous.'), recit('Regardez le cinéma de ta ville.'), personne('Les poètes et tes amis')]);
-  verif('T', !/poèses|cinénotre|poè ses/.test(t.join(' ')) && /poètes/.test(t[0]) && /ses amis/.test(t[2]), 'les mots accentués ne sont pas coupés par la transposition (« poètes », pas « poèses »)', JSON.stringify(t));
+  const t = await pg.evaluate(() => [recit('Placez les poètes sur la frise, devant vous.'), recit('Regardez le cinéma de ta ville.'), personne('Les poètes et tes amis'), recitEtape('Regarde : la troisième bande de la frise.'), recitEtape('Date : 1820')]);
+  verif('T', !/poèses|cinénotre|poè ses/.test(t.join(' ')) && /poètes/.test(t[0]) && /ses amis/.test(t[2]) && /devant nous/.test(t[0]) && /^on a regardé la troisième bande/.test(t[3]) && !/daté/.test(t[4]), 'la transposition : les mots accentués entiers (« poètes »), « devant nous », « Regarde : la… » → « on a regardé la… », « Date : 1820 » intact', JSON.stringify(t));
   await lancer(pg); const q = await jusquA(pg, () => ecran().blocs.some(b => b.t === 'question')); await pg.click('#bdev'); await p(pg, 150); await garde(pg);
   if (q) await reponse(pg, 'ZZ', 'une réponse sans élève reconnu');
   await relecture(pg); const r = await texteRel(pg);

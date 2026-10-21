@@ -399,6 +399,7 @@ body.vue-atelier #dr-zone .haut .dr-enr{display:none} /* E1 (relecture continue 
 #dr-zone .dr-minut { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; }
 #dr-zone .dr-ini-p, #ppop .dr-ini-p, #vif-dernier .dr-ini-p, #vif-sug .dr-ini-p, #vif-palette .dr-ini-p { font-size: .72em; font-weight: 400; opacity: .8; margin-left: 1px; }   /* réveil n°3 : les doublons d'initiales se départagent par le prénom (C1 4b.4) */
 #ppop button.m.dr-choisi { outline: 2px solid #c99a4e; outline-offset: 1px; background: rgba(201,154,78,.18); }   /* réveil n°4 : le motif choisi au clavier, que l'Entrée posera */
+#dr-zone #chr.dr-chr-close { color: var(--sourd, #8d7f6d); animation: none; }   /* réveil n°12 : l'heure close, le chrono neutre */
 body:has(#corps.prep) #volet .vig .mini, body:has(#corps.prep) #volet .vig .role, body:has(#corps.prep) #volet .vig .past { display: none; }   /* réveil n°11 (C1 7.0 ter) : en préparation, le volet réduit à ses numéros */
 body:has(#corps.prep) #volet .vig { min-height: 0; padding: 2px 4px; }   /* le volet est hors de #corps (la colonne de l'atelier) */
 :is(#dr-zone,#ses-tab,.at-som-volet) #dr-test.dr-test { margin-left: 8px; padding: 1px 8px; font-size: .75rem; white-space: nowrap; }   /* réveil n°4, 5 : la pastille du mode test dans l'entête du pilotage */

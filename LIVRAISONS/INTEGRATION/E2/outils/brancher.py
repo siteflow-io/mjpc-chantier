@@ -183,6 +183,10 @@ snippet('case jouée · titre', "if(c.nature==='jouee')return '<div class=\"edt-
 snippet('modale jouée · Relire', "+'<p class=\"edt-p edt-mini-t\">La relecture de cette heure arrive avec le profil de classe.</p>'",
   "+(c.titre?'<p class=\"edt-p\">Séance : <b>'+escapeHtml(c.titre)+'</b></p>':'')+(c.clos?'<button class=\"edt-btn edt-large\" data-relire=\"1\" title=\"Ouvre la Relecture de cette heure : son récit, ce qui s\\u2019est passé, le papier \\u2014 rien ne se rejoue, rien ne s\\u2019écrit\" onclick=\"dr_edtRelire('+JSON.stringify(cle).replace(/\"/g,'&quot;')+')\">Relire cette heure</button>':'')/* [E2] réveil n°5, A4-4 — avant : « La relecture de cette heure arrive avec le profil de classe. » */")
 
+snippet('edtGlisserDebut · refus', "  if(c&&c.classeMjpc&&edtTraceExiste(c.classeMjpc,c.iso,c.creneau)){\n    if(typeof atInfo==='function')\n      atInfo(",
+  "  if(c&&c.classeMjpc&&edtTraceExiste(c.classeMjpc,c.iso,c.creneau)){\n    /* [E2] réveil n°12 (E4 ligne 109) : le refus ne se dit qu'au glissé réel (8 px) — avant, dit dès l'appui, il prenait la place du clic qui ouvre la case (et sa « Relire cette heure ») */\n    var edtX0=ev.clientX,edtY0=ev.clientY,edtUp=function(){document.removeEventListener('mousemove',edtMv);document.removeEventListener('mouseup',edtUp);},edtMv=function(e2){if(Math.abs(e2.clientX-edtX0)+Math.abs(e2.clientY-edtY0)<8)return;edtUp();if(typeof atInfo==='function')atInfo(")
+snippet('edtGlisserDebut · glissé', "        +'n\\u2019ont pas encore été lancées, elles, se déplacent.');\n    return;\n  }\n  if(!c||c.nature!=='prevu')return;",
+  "        +'n\\u2019ont pas encore été lancées, elles, se déplacent.');};\n    document.addEventListener('mousemove',edtMv);document.addEventListener('mouseup',edtUp);\n    return;\n  }\n  if(!c||c.nature!=='prevu')return;")
 # ── ce qui tombe (contrat §6, colonne E2) ──
 for nom in ['atDrJouerClic', 'atDrClore', 'atDrCloreFin', 'atDrClotureModale', 'atDrSuiviAppliquer',
             'atVecuAfficher', 'atVecuDemarrer', 'atVecuEntrer', 'atVecuSortir', 'atVecuMinutes', 'atVecuEcrire',

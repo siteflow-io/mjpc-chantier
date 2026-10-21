@@ -19554,10 +19554,11 @@ function edtGlisserDebut(ev,cle){
      geste, jamais la date. Et une trace vide supprimée la rend déplaçable :
      `edtTraceExiste` relit la trace à chaque fois, elle ne retient rien. */
   if(c&&c.classeMjpc&&edtTraceExiste(c.classeMjpc,c.iso,c.creneau)){
-    if(typeof atInfo==='function')
-      atInfo('Cette heure a été lancée le '+edtJourEnClair(c.iso)+' \u2014 elle a laissé sa trace, '
+    /* [E2] réveil n°12 (E4 ligne 109) : le refus ne se dit qu'au glissé réel (8 px) — avant, dit dès l'appui, il prenait la place du clic qui ouvre la case (et sa « Relire cette heure ») */
+    var edtX0=ev.clientX,edtY0=ev.clientY,edtUp=function(){document.removeEventListener('mousemove',edtMv);document.removeEventListener('mouseup',edtUp);},edtMv=function(e2){if(Math.abs(e2.clientX-edtX0)+Math.abs(e2.clientY-edtY0)<8)return;edtUp();if(typeof atInfo==='function')atInfo('Cette heure a été lancée le '+edtJourEnClair(c.iso)+' \u2014 elle a laissé sa trace, '
         +'et on ne déplace pas une heure qui a eu lieu. Les heures de cette journée qui '
-        +'n\u2019ont pas encore été lancées, elles, se déplacent.');
+        +'n\u2019ont pas encore été lancées, elles, se déplacent.');};
+    document.addEventListener('mousemove',edtMv);document.addEventListener('mouseup',edtUp);
     return;
   }
   if(!c||c.nature!=='prevu')return;

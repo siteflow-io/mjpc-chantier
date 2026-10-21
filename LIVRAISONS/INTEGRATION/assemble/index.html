@@ -15636,6 +15636,7 @@ body.vue-atelier #dr-zone .haut .dr-enr{display:none} /* E1 (relecture continue 
 #dr-zone .dr-minut { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; }
 #dr-zone .dr-ini-p, #ppop .dr-ini-p, #vif-dernier .dr-ini-p, #vif-sug .dr-ini-p, #vif-palette .dr-ini-p { font-size: .72em; font-weight: 400; opacity: .8; margin-left: 1px; }   /* réveil n°3 : les doublons d'initiales se départagent par le prénom (C1 4b.4) */
 #ppop button.m.dr-choisi { outline: 2px solid #c99a4e; outline-offset: 1px; background: rgba(201,154,78,.18); }   /* réveil n°4 : le motif choisi au clavier, que l'Entrée posera */
+#dr-zone #chr.dr-chr-close { color: var(--sourd, #8d7f6d); animation: none; }   /* réveil n°12 : l'heure close, le chrono neutre */
 body:has(#corps.prep) #volet .vig .mini, body:has(#corps.prep) #volet .vig .role, body:has(#corps.prep) #volet .vig .past { display: none; }   /* réveil n°11 (C1 7.0 ter) : en préparation, le volet réduit à ses numéros */
 body:has(#corps.prep) #volet .vig { min-height: 0; padding: 2px 4px; }   /* le volet est hors de #corps (la colonne de l'atelier) */
 :is(#dr-zone,#ses-tab,.at-som-volet) #dr-test.dr-test { margin-left: 8px; padding: 1px 8px; font-size: .75rem; white-space: nowrap; }   /* réveil n°4, 5 : la pastille du mode test dans l'entête du pilotage */
@@ -18454,6 +18455,10 @@ function dr_edtAssurer(){ try { if (typeof EDT !== 'undefined' && !EDT.charge &&
 setInterval(() => { try { const on = typeof m8TestOn === 'function' ? !!m8TestOn() : !!(typeof M8_TEST !== 'undefined' && M8_TEST); const z = document.getElementById('dr-zone'); if (z) { if (on) z.dataset.modeTest = '1'; else delete z.dataset.modeTest; }
   let p = document.getElementById('dr-test'); const hou = document.getElementById('hou'); if (!p && hou && on) { p = document.createElement('span'); p.id = 'dr-test'; p.className = 'tprof-testpill on dr-test'; p.title = 'Mode test : rien de cette heure ne part au hub — ni le journal, ni l’état, ni la clôture'; p.innerHTML = '<span class="tprof-testpill-dot"></span>Mode test'; hou.insertAdjacentElement('afterend', p); }
   if (p) p.style.display = on ? '' : 'none'; } catch (e) {} }, 1000);
+/* réveil n°12 (E4 ligne 107) : l'heure close n'offre plus la fin de l'heure, et le chrono de la tête ne reste pas en compte à rebours rouge — il dit « close · hh:mm » */
+setInterval(() => { try { const bf = document.getElementById('bfin'), ch = document.getElementById('chr'); const close = typeof S === 'object' && S && S.lancee && S.close;
+  if (bf) { if (close && !bf.disabled) { bf.disabled = true; bf.dataset.drTitre = bf.title; bf.title = 'L’heure est close : la fin de l’heure est faite (relis-la dans l’onglet Relecture)'; } else if (!close && bf.disabled && bf.dataset.drTitre != null) { bf.disabled = false; bf.title = bf.dataset.drTitre; delete bf.dataset.drTitre; } }
+  if (ch && close) { const t2 = 'close · ' + hhmm(S.finReel || ((S.closes || {})[S.heure]) || now()); if (ch.textContent !== t2) { ch.textContent = t2; ch.className = 'dr-chr-close'; } } } catch (e) {} }, 500);
 setInterval(() => { try { const t = { 'gclore-oui': 'Clore l’heure malgré ce qui manque : tout ce qui est fait est enregistré ; ce qui manque restera à faire plus tard', 'gclore-non': 'Revenir à l’étape qui manque, sans rien fermer', 'f-fermer': 'Referme la fin de l’heure sans rien clore : tes choix restent', 'garde-devant': 'Change de diapo sans geler : la classe voit ce que tu ouvres' };
   Object.keys(t).forEach(id => { const b = document.getElementById(id); if (b && !b.title) b.title = t[id]; }); } catch (e) {} }, 1000);
 
@@ -23848,10 +23853,11 @@ function edtGlisserDebut(ev,cle){
      geste, jamais la date. Et une trace vide supprimée la rend déplaçable :
      `edtTraceExiste` relit la trace à chaque fois, elle ne retient rien. */
   if(c&&c.classeMjpc&&edtTraceExiste(c.classeMjpc,c.iso,c.creneau)){
-    if(typeof atInfo==='function')
-      atInfo('Cette heure a été lancée le '+edtJourEnClair(c.iso)+' \u2014 elle a laissé sa trace, '
+    /* [E2] réveil n°12 (E4 ligne 109) : le refus ne se dit qu'au glissé réel (8 px) — avant, dit dès l'appui, il prenait la place du clic qui ouvre la case (et sa « Relire cette heure ») */
+    var edtX0=ev.clientX,edtY0=ev.clientY,edtUp=function(){document.removeEventListener('mousemove',edtMv);document.removeEventListener('mouseup',edtUp);},edtMv=function(e2){if(Math.abs(e2.clientX-edtX0)+Math.abs(e2.clientY-edtY0)<8)return;edtUp();if(typeof atInfo==='function')atInfo('Cette heure a été lancée le '+edtJourEnClair(c.iso)+' \u2014 elle a laissé sa trace, '
         +'et on ne déplace pas une heure qui a eu lieu. Les heures de cette journée qui '
-        +'n\u2019ont pas encore été lancées, elles, se déplacent.');
+        +'n\u2019ont pas encore été lancées, elles, se déplacent.');};
+    document.addEventListener('mousemove',edtMv);document.addEventListener('mouseup',edtUp);
     return;
   }
   if(!c||c.nature!=='prevu')return;

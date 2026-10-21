@@ -1,0 +1,57 @@
+parcours du déroulé dans le site · 2026-10-21 09:57 UTC · fichier md5 e434198b33404b64038bceeec8a646c0 · 2147852 o · faux hub /home/user/wt-banc/AUDITS/INTEGRATION-DEROULE/hub · MODE TEST
+
+P0 — le panneau prof
+  ok     P0 · panneau ouvert, mode test posé
+
+P1 — l'emploi du temps
+  ok     P1 · la grille réelle (semaine du 14/09)
+
+P2 — la case de l'heure
+  ok     P2 · la case 3E Charles de Gaulle, bouton « lancer » — ▶ Ouvrir le pilotage et lancer
+  absent P2 · « Préparer » sur la case (E2)
+
+P3 — l'Atelier (préparation) depuis « Mes chapitres »
+  ok     P3 · la porte — Éditer dans l’atelier
+  ok     P3 · la barre fusionnée Structure · Atelier · Pilotage · Relecture (E1) — structure atelier pilotage relecture
+  ok     P3 · le déroulé p8 dans la page (#mur, #volet), sans iframe
+  ok     P3 · plus d'iframe at-dr-iframe
+  ok     P3 · la diapo 1 de la séance 0 au mur, avec ses lignes — 6 lignes
+
+P4 — le clic droit sur une étape
+  ok     P4 · menu ouvert (voir la capture)
+
+P5 — lancer la séance (la classe)
+  ok     P5 · lancée par Pilotage → [data-lancer=1] (E2) — 0 écritures
+  ÉCHEC  P5 · écrit au lancement : deroule_joue
+  ÉCHEC  P5 · écrit au lancement : cours_actif
+
+P6 — la parole (F2 / la case des initiales)
+  ok     P6 · voir la capture
+
+P7 — la palette (Maj+Espace)
+  ok     P7 · voir la capture
+
+P8 — la fenêtre du tableau
+  ok     P8 · fenêtre ouverte — file:///home/user/wt-banc/LIVRAISONS/INTEGRATION/assemble/index.html?vue=tableau&local=1
+  ok     P8 · la fenêtre est la page elle-même (?vue=tableau&local=1, E3)
+  ÉCHEC  P8 · le tableau rend quelque chose
+
+P9 — la fin de l'heure
+  ok     P9 · les sept étapes de la maquette (#fin, E2)
+
+P10 — la Relecture
+  ok     P10 · Relecture ouverte — Le récit · heure 1 | Ce qui s'est passé · heure 1 | Papier · heure 1 | Le chapitre
+  ok     P10 · les faces de la maquette (E4)
+
+P11 — le Papier
+  ok     P11 · la face Papier de la Relecture (E4)
+
+P12 — la clôture
+  absent P12 · aucun bouton « Clore »
+
+K15 — les écritures au hub pendant le parcours
+  ok     K15-test · mode test : zéro écriture au hub — 0 écriture(s)
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS ROUGE — 3 échec(s)

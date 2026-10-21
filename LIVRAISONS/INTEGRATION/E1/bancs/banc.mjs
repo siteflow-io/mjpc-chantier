@@ -92,6 +92,31 @@ await B('A6', 'la colonne unique (point 13, contrat §8.3) : sous la séance dé
   E.verif('A6', await pg.evaluate(() => window.__ECR.filter(x => /\/chapitres\//.test(x)).length === 0), 'K15 : rien d\'écrit en dépliant, en changeant de séance, en changeant d\'onglet');
   E.verif('A6', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
 
+await B('A7', 'p8-5h dans le site (point 14) et la taille (point 15), sur la trame réelle', async () => {
+  const huit = async pg => { await pg.click('#mur .p8-ecrire'); for (let i = 1; i <= 8; i++) { await pg.keyboard.type(`Ligne ajoutée numéro ${i}, assez longue pour prendre de la place dans la diapo.`, { delay: 1 }); if (i < 8) await pg.keyboard.press('Enter'); } await pg.keyboard.press('Escape'); await pg.waitForTimeout(500); };
+  const o = await E.ouvrir(b); const pg = o.pg; await sansVoile(pg); await huit(pg);
+  const ligne = await pg.$eval('#volet [data-at-di="0"]', e => e.textContent.replace(/\s+/g, ' ')); const ligne1 = await pg.$eval('#volet [data-at-di="1"]', e => e.textContent.replace(/\s+/g, ' '));
+  E.verif('A7', /· 2 pages/.test(ligne) && !/pages/.test(ligne1), '5 · atelier : la diapo 1 dit « · 2 pages », la diapo 2 rien', ligne.slice(0, 70));
+  const esc = await pg.evaluate(() => ({ dans: !!(document.activeElement && document.activeElement.closest('#mur') && document.activeElement.isContentEditable), sel: String(getSelection()).length }));
+  E.verif('A7', !esc.dans && esc.sel === 0, '14 · Échap a fait sortir de la ligne (le texte reste, rien de sélectionné)', JSON.stringify(esc));
+  await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(800);
+  const vigs = () => pg.$$eval('#volet .vig', l => l.map(v => ({ i: v.dataset.i, pg: v.dataset.pg, cour: v.classList.contains('cour'), n: (v.querySelector('.dr-n') || {}).textContent, lignes: Array.from(v.querySelectorAll('li')).filter(x => !x.classList.contains('hors')).map(x => x.getAttribute('data-p')) })));
+  const v0 = await vigs(); const d1 = v0.filter(v => v.i === '0'); const nDiapos = await pg.evaluate(() => ordreHeure(S.heure).length);
+  E.verif('A7', d1.length === 2 && d1[0].n === '1 · 1/2' && d1[1].n === '1 · 2/2' && d1[0].cour && !d1[1].cour, '1 · en classe : deux vignettes « 1 · 1/2 » (courante) et « 1 · 2/2 »', JSON.stringify(d1.map(v => [v.n, v.cour])));
+  E.verif('A7', v0.length === nDiapos + 1 && v0.filter(v => v.i === '1').length === 1, '3 · pas un écran de plus : une vignette par diapo (' + nDiapos + ') + une pour la seconde page', v0.length + ' vignettes');
+  let n = 0; while (!/page 2 \/ 2/.test(await pg.$eval('#mur .page', p => p.textContent)) && n < 15) { await pg.click('#bdev'); await pg.waitForTimeout(80); n++; }
+  const v2 = (await vigs()).filter(v => v.i === '0'); const page2 = await pg.$$eval('#mur .corpsd li:not(.hors)', l => l.map(x => x.getAttribute('data-p')));
+  E.verif('A7', !v2[0].cour && v2[1].cour && JSON.stringify(v2[1].lignes) === JSON.stringify(page2), '1-2 · ▶ jusqu\'à la page 2 : « 1 · 2/2 » courante, elle montre les lignes de la page 2 du mur', JSON.stringify(page2));
+  await pg.click('#btableau'); await pg.waitForTimeout(300); const vt = await pg.evaluate(() => ({ c: (document.querySelector('#vue-mini .page') || {}).textContent || '', l: Array.from(document.querySelectorAll('#vue-mini .corpsd li')).filter(x => !x.classList.contains('hors')).map(x => x.getAttribute('data-p')) }));
+  E.verif('A7', /page 2 \/ 2/.test(vt.c) && JSON.stringify(vt.l) === JSON.stringify(page2), '12 · la vue « ⧉ Tableau » porte « page 2 / 2 » et montre les mêmes lignes que le mur', vt.c.replace(/[‹›]/g, ''));
+  await pg.click('#btableau'); await pg.waitForTimeout(200);
+  await pg.click('#volet .vig[data-i="0"][data-pg="0"]'); await pg.waitForTimeout(300); const g = await pg.evaluate(() => document.getElementById('garde').classList.contains('on')); if (g) { await pg.click('#garde-devant'); await pg.waitForTimeout(300); }
+  E.verif('A7', g && /page 1 \/ 2/.test(await pg.$eval('#mur .page', p => p.textContent)), '2 · clic sur « 1 · 1/2 » : la garde « La classe te suivrait », « Y aller » → page 1 / 2');
+  for (const [w, h] of [[1280, 800], [1366, 768]]) { await pg.setViewportSize({ width: w, height: h }); await pg.waitForTimeout(400);
+    const t = await pg.evaluate(() => { const z = document.getElementById('dr-zone').getBoundingClientRect(); const dans = sel => { const e = document.querySelector(sel); if (!e || !e.offsetParent) return true; const r = e.getBoundingClientRect(); return r.right <= z.right + 1 && r.bottom <= window.innerHeight + 1; }; return { haut: Array.from(document.querySelectorAll('#dr-zone .haut > *')).filter(e => e.offsetParent).every(e => e.getBoundingClientRect().right <= z.right + 1), dev: dans('#bdev'), compte: dans('#compte'), mur: dans('#mur') }; });
+    E.verif('A7', t.haut && t.dev && t.compte && t.mur, '15 · ' + w + ' × ' + h + ' : l\'entête, « ▶ Dévoiler », le compteur et la diapo tiennent dans la zone du site', JSON.stringify(t)); }
+  E.verif('A7', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

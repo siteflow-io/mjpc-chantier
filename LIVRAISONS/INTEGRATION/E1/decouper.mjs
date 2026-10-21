@@ -56,7 +56,7 @@ function cssScope(css){
   return out;
 }
 const cssMaq = L.slice(3, 298).join('\n');
-const DRCSS = '/* ═══ dr.css — le CSS de la maquette p8-5g (lignes 4-298), circonscrit à #dr-zone (audit E1, F4) ; classes en collision préfixées dr- (F3, F5). Propriété d\'E1 ; les autres ajoutent en fin de fichier dans un bloc /* E<n> */. ═══ */\n'
+const DRCSS = '/* ═══ dr.css — le CSS de la maquette p8-5g (lignes 4-298), circonscrit à #dr-zone (audit E1, F4) ; classes en collision préfixées dr- (F3, F5). Propriété d\'E1 ; les autres ajoutent en fin de fichier, dans un bloc marqué « E<n> ». ═══ */\n'
   + '#dr-zone{position:relative;display:block;width:100%;overflow:hidden}\n#dr-zone.dr-parque{display:none!important}\n'
   + '#dr-zone .dr-cache{display:none!important}\n'
   + '#dr-zone .dr-page{display:revert;min-height:0;position:revert}   /* la règle « page » du site (display:none, min-height:100vh) ne touche pas le déroulé */\n'

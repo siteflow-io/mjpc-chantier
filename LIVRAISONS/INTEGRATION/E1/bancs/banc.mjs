@@ -520,8 +520,8 @@ await B('A26', 'le réveil n°5 et la relecture continue d\'E4 (A4 14:50, B4 15:
   // A5 · un clic dans une ligne grise d'une consigne : rien ne se dévoile (seul ▶ avance)
   const cg = await pg.evaluate(() => { const aC = e => (e.blocs || []).some(b => b.t === 'consigne' && (b.el || b.etapes || []).length >= 2); const i = ordreHeure(S.heure).find(k => aC(seance().ecrans[k])) ?? seance().ecrans.findIndex(aC); S.di = i; S.page = null; dr_tout(); return { i, n: etatDiapo().nDev }; }); await pg.waitForTimeout(300);
   const lg = await pg.$$('#mur .bloc li.pas[data-k]'); if (lg.length) { await lg[lg.length - 1].click(); await pg.waitForTimeout(300); }
-  const cg2 = await pg.evaluate(() => etatDiapo().nDev);
-  E.verif('A26', lg.length > 0 && cg2 === cg.n, 'A5 · un clic dans la dernière ligne grise d\'une consigne : rien ne se dévoile (' + cg.n + ' → ' + cg2 + ') — le reste à la flèche (C1 4.3, 2.2)', JSON.stringify(cg));
+  const cg2 = await pg.evaluate(() => etatDiapo().nDev); const cur = await pg.evaluate(() => { const a = document.activeElement; const l = Array.from(document.querySelectorAll('#mur .bloc li.pas[data-k]')).pop(); return !!(a && l && (a === l || l.contains(a) || a.contains(l))); });
+  E.verif('A26', lg.length > 0 && cg2 === cg.n && cur, 'A5 · un clic dans la dernière ligne grise d\'une consigne : le curseur y est (la saisie, dans la copie), rien ne se dévoile (' + cg.n + ' → ' + cg2 + ') — le reste à la flèche (C1 4.3, 2.2)', JSON.stringify({ cg, cur }));
   // A5 · le dégel avec un écart dit le vrai numéro (celui de l'heure)
   await pg.evaluate(() => { const o = ordreHeure(S.heure); S.di = o[1]; S.page = null; dr_tout(); gel(); S.di = o.find((i, k) => i !== k) ?? o[o.length - 1]; S.page = null; dr_tout(); gel(); }); await pg.waitForTimeout(300);
   const dg = await pg.evaluate(() => ({ t: document.getElementById('garde2-titre').textContent, attendu: 'diapo ' + rangDe(S.di, S.heure), di1: S.di + 1, tete: (document.querySelector('#dr-zone .ou, .p8-ou, #ou') || {}).textContent || '' }));

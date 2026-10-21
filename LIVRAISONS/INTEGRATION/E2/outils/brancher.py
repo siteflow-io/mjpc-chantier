@@ -164,7 +164,8 @@ neuf('sesReprendre', r'''function sesReprendre(){
 for nom in ['atDrJouerClic', 'atDrClore', 'atDrCloreFin', 'atDrClotureModale', 'atDrSuiviAppliquer',
             'atVecuAfficher', 'atVecuDemarrer', 'atVecuEntrer', 'atVecuSortir', 'atVecuMinutes', 'atVecuEcrire',
             'atT5Reste', 'atT5Etat', 'atT5Zone', 'atT5Appliquer', 'atT5Appel', 'atT5Restantes', 'atT5Modale', 'atT5Choix', 'atT5Veille',
-            '_drVifInstaller', '_drVifAller', '_drPaletteOuvrir', '_drPaletteBrancher', 'sesBrancherPilote', 'sesAppliquer', 'sesPollPilote', 'atDrMajUtile']:
+            '_drVifInstaller', '_drVifAller', '_drPaletteOuvrir', '_drPaletteBrancher', 'sesBrancherPilote', 'sesAppliquer', 'sesPollPilote', 'atDrMajUtile',
+            'atDrReprendre', 'atTempsUtile', 'atDebutPropose', 'atCreneauSel']:   # sans appelant après la chute (R8 repris paramétré dans dr-classe.js ; le versement est l'étape 7, p8Verser)
     tombe(nom)
 
 # les variables d'état du vécu et du T-5 d'aujourd'hui (le vécu est le journal, le T-5 la fin de l'heure de la maquette)

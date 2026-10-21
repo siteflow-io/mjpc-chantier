@@ -15024,37 +15024,6 @@ function atMn(s){ var p=String(s).split(':'); return (+p[0])*60+(+p[1]); }
 function atHhmm(m){ m=((m%1440)+1440)%1440; return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0'); }
 
 
-function atCreneauSel(){ var s=document.getElementById('at-dr-creneau'); return (s&&s.value)||AT_EDT[2]; }
-
-
-function atDebutPropose(){ var c=atCreneauSel(), d=atMn(c.split('-')[0]), f=atMn(c.split('-')[1]);
-  var n=new Date(), m=n.getHours()*60+n.getMinutes(); return atHhmm(m>d&&m<f? m : d); }
-
-
-function atTempsUtile(){ if(!AT_DR_COURS) return 0; return atMn(AT_DR_COURS.fin)-atMn(AT_DR_COURS.debut)-5; }
-
-
-
-
-
-
-
-
-
-
-
-function atDrReprendre(indices){
-  var ec=AT.edChap, sk=ATVUES.snum; if(!ec||!sk) return;
-  var tr=atDrTrame(sk); if(!tr) return;
-  var vus=[]; try{ vus=DR.dr_exporterTrame()||[]; }catch(x){ return; }
-  indices.forEach(function(n){ if(vus[n]) tr.ecrans[n]=JSON.parse(JSON.stringify(vus[n])); });
-  tr.maj=Date.now();
-  mjpcPutJson(FIREBASE_BASE+'/site/'+ec.level+'/chapitres/'+ec.chnum+'/seances/'+sk+'/deroule.json', tr,
-    'Reprise dans la pr\u00e9paration \u2014 s\u00e9ance '+sk, function(){ atDrEnrConfirme(true); });
-  atInfo(indices.length+' \u00e9l\u00e9ment'+(indices.length>1?'s repris':' repris')+' dans ta pr\u00e9paration.');
-}
-
-
 /* ═══════════════════════════════════════════════════════════════════════════
    [LOT C1 ①] LA TRACE DE L'HEURE — l'horaire est l'identifiant
    Décision de Paul (24/08) : « c'est l'horaire qui tranche […] l'horaire doit être
@@ -22419,7 +22388,7 @@ function edtAnnulerDecision(cle){
    « ▶ Lancer la séance » existe, exactement comme le fait déjà le téléphone
    pilote, puis il appuie dessus. Le moteur n'est pas touché.
    Si un seul des éléments attendus manque, on le DIT — jamais de crash. */
-var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */
+var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */
 function edtLancer(cle,preparer){
   /* [E2] « ▶ Ouvrir le pilotage et lancer » et « Préparer » : le premier temps est celui d'aujourd'hui (la séance visée,
      les classes et les chapitres chargés, le chapitre ouvert sur la séance) ; le second appelle `dr_lancer` avec la classe,

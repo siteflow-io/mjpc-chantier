@@ -47,7 +47,7 @@ async function lancerParLaCase(s) {
 const etat = p => p.evaluate(() => ({ lancee: !!(window.S && S.lancee), close: !!(window.S && S.close), heure: window.S && S.heure, ecoule: window.S && S.ecoule, palier: window.S && S.palier,
   hou: (document.getElementById('hou') || {}).textContent || '', J: (window.J || []).map(x => x.type), cours: window.AT_DR_COURS || null, regime: window.AT_DR_REGIME || null }));
 const devoiler = async (s, n) => { for (let i = 0; i < n; i++) { await s.page.click('#bdev'); await s.attendre(150); } };
-const parole = async s => { await s.page.keyboard.press('F2'); await s.attendre(200); await s.page.keyboard.type('AE'); await s.attendre(150); await s.page.keyboard.type('1'); await s.attendre(100); await s.page.keyboard.press('Enter'); await s.attendre(300); };
+const parole = async s => { await s.page.keyboard.press('F2'); await s.attendre(200); await s.page.keyboard.type('AE'); await s.attendre(150); await s.page.keyboard.type('1'); await s.attendre(100); await s.page.keyboard.press('Enter'); await s.attendre(300); await s.page.keyboard.press('Escape'); await s.attendre(150); };   /* le champ du VIF garde le curseur : Échap le rend */
 const H = (hub, sk) => { const h = ((((hub.site['3e'].chapitres[0].seances[sk] || {}).deroule_joue || {})[CLASSE] || {}).heures) || {}; const k = Object.keys(h).find(x => x.startsWith('2026-09-14')); return k ? Object.assign({ __cle: k }, h[k]) : null; };
 
 // ── B1 · la case EDT : « ▶ Ouvrir le pilotage et lancer » et « Préparer » ──

@@ -237,6 +237,32 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   verif('RC4', o.errs.length === 0, 'zéro erreur JS', JSON.stringify(o.errs)); await cap(pg, 'E4-RC4-annuler'); await o.ctx.close(); }
 else verif('RC4', null, 'R4 annuler', 'se mesure sur le site');
 
+// ═════ RC2 · R2 du recyclage : le rappel d'une fiche — reposée, la question ; le motif sur la diapo, au hub, dans le récit et sur le papier ═════
+if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1200); if (await pg.$('#at-aide .x')) await pg.click('#at-aide .x');
+  /* « + fiche… » ne lie aucune fiche tant que les feuilles du site n'en ont pas (audit E1, F17) : la fiche est posée par l'Atelier lui-même (ajouterBloc, le geste de « + fiche » une fois la fiche choisie) */
+  await pg.evaluate(() => ajouterBloc({ t: 'fiche', txt: 'Une fiche neuve du banc', el: ['Elle n’est nulle part ailleurs dans le chapitre.'] }, false)); await p(pg, 700);
+  const neuve = await pg.evaluate(() => ({ pop: !!document.querySelector('#dr-rappel-pop.on'), rap: !!ecran().blocs[ecran().blocs.length - 1].rappel }));
+  verif('RC2', !neuve.pop && !neuve.rap, 'une fiche posée pour la première fois dans le chapitre : pas de question, pas de rappel', JSON.stringify(neuve));
+  await pg.evaluate(() => ajouterBloc({ t: 'fiche', txt: 'Le registre lyrique', el: ['Le registre d’un texte, c’est l’effet qu’il produit sur le lecteur.'] }, false)); await p(pg, 700);
+  const q = await pg.evaluate(() => { const p = document.querySelector('#dr-rappel-pop.on'); return p ? { t: p.innerText, boutons: Array.from(p.querySelectorAll('button')).every(b => b.title) } : null; });
+  verif('RC2', q && /Pourquoi ce rappel/.test(q.t) && /pour réviser avant l.évaluation/.test(q.t) && /pour ceux qui étaient absents/.test(q.t) && q.boutons, '« Le registre lyrique », déjà en séance 1, reposé : « Pourquoi ce rappel ? » et ses quatre motifs (chacun avec son infobulle)', q ? q.t.slice(0, 300) : 'pas de question');
+  if (q) { await pg.click('#dr-rappel-pop [data-motif="reviser"]'); await p(pg, 500); }
+  const tag = await pg.evaluate(() => { const b = ecran().blocs[ecran().blocs.length - 1]; const t = document.querySelector('#mur .dr-rap'); return { r: b.rappel, t: t ? t.textContent : '' }; });
+  verif('RC2', tag.r && tag.r.motif === 'reviser' && /↻ Rappel — pour réviser avant l.évaluation/.test(tag.t), 'le motif choisi est sur la fiche de la diapo : « ↻ Rappel — pour réviser avant l\'évaluation »', JSON.stringify(tag));
+  await cap(pg, 'E4-RC2-rappel-atelier'); await p(pg, 1500);
+  const hub = await pg.evaluate(() => { const e = window.__HUB.site['3e'].chapitres[0].seances[0].deroule.ecrans[0]; const b = e.blocs.find(x => x.t === 'fiche' && /registre lyrique/.test(x.titre || '')); return b ? b.rappel : null; });
+  verif('RC2', hub && hub.motif === 'reviser', 'enregistré dans la trame au hub (b.rappel = {motif, libre})', JSON.stringify(hub));
+  HUB_PERSISTANT = await pg.evaluate(() => window.__HUB); await o.ctx.close();
+  const o2 = await ouvrir(); const pg2 = o2.pg; await pg2.click('[data-lancer="1"]').catch(() => {}); await p(pg2, 700); await devoiler(pg2, 3);
+  const tab = await pg2.evaluate(() => { const t = document.querySelector('#mur .dr-rap'); return t ? t.textContent : ''; });
+  verif('RC2', /↻ Rappel — pour réviser avant l.évaluation/.test(tab), 'en classe, la classe voit « ↻ Rappel — pour réviser avant l\'évaluation » sur la fiche', tab);
+  await relecture(pg2); const t = await texteRel(pg2); verif('RC2', /on a repris la fiche Le registre lyrique — pour réviser avant l.évaluation/.test(t), 'le récit : « on a repris la fiche Le registre lyrique — pour réviser avant l\'évaluation »', t.slice(0, 900));
+  await face(pg2, 'Papier'); const pap = await pg2.evaluate(() => (document.querySelector('#rel .dr-papier') || {}).innerText || '');
+  verif('RC2', /on a repris la fiche Le registre lyrique — pour réviser avant l.évaluation/.test(pap) && /Rappel — pour réviser avant l.évaluation/.test(pap), 'le papier : la phrase du récit, et la fiche « à coller » avec « Rappel — pour réviser avant l\'évaluation »', pap.slice(-500));
+  await cap(pg2, 'E4-RC2-rappel-papier'); verif('RC2', o.errs.length + o2.errs.length === 0, 'zéro erreur JS', JSON.stringify(o.errs.concat(o2.errs))); await o2.ctx.close(); HUB_PERSISTANT = null; }
+else verif('RC2', null, 'R2 le rappel', 'se mesure sur le site');
+
 await nav.close();
 dire(`— fin : ${nbOk} ok · ${nbEchec} échec(s) · ${nbAbsent} absent(s) — ${nbEchec ? 'ROUGE' : 'VERT'}`);
 fs.writeFileSync(path.join(OUT, 'banc-E4.txt'), L.join('\n') + '\n');

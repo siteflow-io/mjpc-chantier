@@ -19,3 +19,14 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 #dr-mk-panneau .dr-mk-liste div{padding:2px 0;border-top:1px solid var(--bord,#3a3129)}
 #dr-mk-panneau .dr-mk-liste i{color:var(--sourd,#888);font-size:.75rem}
 #dr-mk-panneau .dr-mk-x{cursor:pointer;color:#d1495b;margin-left:6px}
+/* R2 le rappel d'une fiche */
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .fiche .dr-rap{margin-top:.4em;font-size:.7em;color:#8a5a2e;font-style:italic}
+#dr-zone .mur .fiche .dr-rap.edit{cursor:pointer;text-decoration:underline dotted}
+#dr-rappel-pop{position:fixed;z-index:9000;display:none;width:360px;background:#191411;color:var(--texte,#eee);border:1px solid var(--bord,#3a3129);border-radius:8px;padding:10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.5);font-size:.85rem}
+#dr-rappel-pop.on{display:block}
+#dr-rappel-pop h4{margin:0 0 4px;color:var(--or,#c99a4e)}
+#dr-rappel-pop .dr-rap-q{color:var(--texte2,#bbb);margin-bottom:6px}
+#dr-rappel-pop [data-motif]{display:block;width:100%;text-align:left;margin:3px 0;padding:3px 8px}
+#dr-rappel-pop [data-motif].on{border-color:var(--or,#c99a4e);color:var(--or,#c99a4e)}
+#dr-rappel-pop input{width:100%;box-sizing:border-box;margin:6px 0;padding:4px 6px;background:#0f0c0a;color:inherit;border:1px solid var(--bord,#3a3129);border-radius:4px}
+#dr-rappel-pop .dr-rap-a{display:flex;gap:6px;justify-content:flex-end}

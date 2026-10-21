@@ -233,3 +233,13 @@
 - **Bancs :**
   - Mon banc : **97 ok · 0 échec** (`sorties/1452-site-E4`).
   - **banc.sh v1.1 : VERT**, K 108/0 et les deux parcours (`sorties/1457`).
+
+## Poussée 32 — 15:37 UTC
+- **Deux dettes soldées :**
+  - **La suite de ma version** dit ce qui a été dévoilé après la prise de plume sur une diapo déjà vue, par exemple « Ensuite, sur X, la réponse attendue vue en classe était : « … » » (`dr_suiteDevoiles`, cadrage 2 §1.10).
+  - **« Le chapitre »** : une heure antérieure à la première heure relue est « jouée avant », jamais « à venir ». « Travaillée pas encore » tient à la règle 7.1 du socle.
+  - Gardes B3.
+- **Bancs :**
+  - Mon banc : **99 ok · 0 échec** (`sorties/1535-site-E4`, avec E2 `712accda` / `00b324f9`).
+  - banc.sh : **VERT** (`sorties/1524`).
+- Le relecteur B4 (atelier, relecture, impression) tourne sur `5f0c01a4`. E1 a poussé après ; le prochain relecteur A partira de la tête.

@@ -17763,11 +17763,18 @@ function edtTraceDe(seance,nomClasse,iso,creneau){
   return res;
 }
 function edtSeanceJouee(seance,nomClasse){
+  /* [E2] une séance est JOUÉE quand toutes ses heures prévues le sont (`faites >= sur`, `sur` = edtHeuresPour, le quotient de la case) ;
+     avant (dette 13 · 26) : dès sa première heure — l'heure 2/3 n'arrivait jamais. Rend le nombre d'heures jouées, ou 0 si elle continue. */
   var d=(seance&&seance.deroule_joue)||{},n=0;
   Object.keys(d).forEach(function(sl){
     var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
     n+=Object.keys(b.heures||{}).length;
   });
+  return n>=edtHeuresPour(seance,null)?n:0;
+}
+function edtHeuresJouees(seance,nomClasse){   /* [E2] les heures déjà jouées d'une séance par cette classe (closes ou en cours) */
+  var d=(seance&&seance.deroule_joue)||{},n=0;
+  Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return; n+=Object.keys(b.heures||{}).length; });
   return n;
 }
 function edtHeuresPour(seance,creneau){
@@ -17812,7 +17819,8 @@ function edtFileDAttente(nomClasse,fil){
   var c=edtChapitreEnCours(nomClasse,fil); if(!c)return null;
   var att=[];
   c.seances.forEach(function(s){ if(!edtSeanceJouee(s,nomClasse))att.push(s); });
-  return {chapitre:c.ch, seances:att, i:0, faites:0};
+  /* [E2] la file reprend là où la classe en est : la séance commencée compte ses heures déjà jouées (la case suivante dit « heure n+1/N ») — avant : faites:0 */
+  return {chapitre:c.ch, seances:att, i:0, faites:att.length?edtHeuresJouees(att[0],nomClasse):0};
 }
 
 /* ── LA GRILLE, JOUR PAR JOUR ─────────────────────────────────────────────── */
@@ -18490,7 +18498,7 @@ function edtAnnulerDecision(cle){
    « ▶ Lancer la séance » existe, exactement comme le fait déjà le téléphone
    pilote, puis il appuie dessus. Le moteur n'est pas touché.
    Si un seul des éléments attendus manque, on le DIT — jamais de crash. */
-var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */
+var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */
 function edtLancer(cle,preparer){
   /* [E2] « ▶ Ouvrir le pilotage et lancer » et « Préparer » : le premier temps est celui d'aujourd'hui (la séance visée,
      les classes et les chapitres chargés, le chapitre ouvert sur la séance) ; le second appelle `dr_lancer` avec la classe,
@@ -18523,7 +18531,7 @@ function edtLancer(cle,preparer){
         edtQuandPilotagePret(function(manque){
           if(manque){ if(typeof atInfo==='function')atInfo('Pilotage indisponible — ouvre l’atelier. (manque : '+manque+')'); return; }
           if(preparer)return;
-          try{ dr_lancer(dr_slugDe(c.classeMjpc), c.creneau, dr_debutPropose(c.creneau), c.heure||1); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); }
+          try{ dr_lancer(dr_slugDe(c.classeMjpc), c.creneau, dr_debutPropose(c.creneau), c.heure||1, c.sur||1); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); }
         });
       });
     });

@@ -52,7 +52,7 @@ neuf('edtLancer', r'''function edtLancer(cle,preparer){
         edtQuandPilotagePret(function(manque){
           if(manque){ if(typeof atInfo==='function')atInfo('Pilotage indisponible — ouvre l’atelier. (manque : '+manque+')'); return; }
           if(preparer)return;
-          try{ dr_lancer(dr_slugDe(c.classeMjpc), c.creneau, dr_debutPropose(c.creneau), c.heure||1); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); }
+          try{ dr_lancer(dr_slugDe(c.classeMjpc), c.creneau, dr_debutPropose(c.creneau), c.heure||1, c.sur||1); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); }
         });
       });
     });
@@ -85,6 +85,30 @@ for nom, avant, apres in [
     if apres[:80] in t or (nom.startswith('case jouée') and 'dr_edtReprendre' in t): rapport.append('%-26s déjà là' % nom)
     elif t.count(avant) == 1: t = t.replace(avant, apres); rapport.append('%-26s posé' % nom)
     else: rapport.append('%-26s INTROUVABLE (%d)' % (nom, t.count(avant)))
+# ── F2, tranché par la conscience (réveil n°2) : l'EDT propose l'HEURE SUIVANTE de la même séance tant que ses heures prévues ne sont
+#    pas toutes jouées (`faites < sur`, CADRAGE-TEMPS §1, C1 6.1) — la seule règle, dans les deux fonctions qui la portent (dette 13 · 26)
+neuf('edtSeanceJouee', r"""function edtSeanceJouee(seance,nomClasse){
+  /* [E2] une séance est JOUÉE quand toutes ses heures prévues le sont (`faites >= sur`, `sur` = edtHeuresPour, le quotient de la case) ;
+     avant (dette 13 · 26) : dès sa première heure — l'heure 2/3 n'arrivait jamais. Rend le nombre d'heures jouées, ou 0 si elle continue. */
+  var d=(seance&&seance.deroule_joue)||{},n=0;
+  Object.keys(d).forEach(function(sl){
+    var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
+    n+=Object.keys(b.heures||{}).length;
+  });
+  return n>=edtHeuresPour(seance,null)?n:0;
+}
+function edtHeuresJouees(seance,nomClasse){   /* [E2] les heures déjà jouées d'une séance par cette classe (closes ou en cours) */
+  var d=(seance&&seance.deroule_joue)||{},n=0;
+  Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return; n+=Object.keys(b.heures||{}).length; });
+  return n;
+}""")
+neuf('edtFileDAttente', r"""function edtFileDAttente(nomClasse,fil){
+  var c=edtChapitreEnCours(nomClasse,fil); if(!c)return null;
+  var att=[];
+  c.seances.forEach(function(s){ if(!edtSeanceJouee(s,nomClasse))att.push(s); });
+  /* [E2] la file reprend là où la classe en est : la séance commencée compte ses heures déjà jouées (la case suivante dit « heure n+1/N ») — avant : faites:0 */
+  return {chapitre:c.ch, seances:att, i:0, faites:att.length?edtHeuresJouees(att[0],nomClasse):0};
+}""")
 # ── l'heure : le lancement, la trace, la clôture, le pointeur — rebranchés sur dr-classe.js (les noms restent, pour tout appelant) ──
 neuf('_drCloreHeureRestee', "function _drCloreHeureRestee(slugNeuf,nomNeuf){ dr_cloreHeureRestee(slugNeuf,nomNeuf); }   /* [E2] par dr_lire / dr_ecrire (13 · 25) */")
 neuf('_drCoursActifEffacerSi', "function _drCoursActifEffacerSi(sig){ dr_coursActifEffacerSi(sig); }   /* [E2] par dr_lire / dr_ecrire (13 · 25) */")

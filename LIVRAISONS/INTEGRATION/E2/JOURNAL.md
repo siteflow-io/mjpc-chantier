@@ -114,3 +114,34 @@ Le relecteur n'avait que le mandat, le contrat et l'assemblé (`f795…` → `ec
 12-13. Hors territoire (textes « à venir dans la maquette », « 3.2 bis », « ✕ Fermer l'atelier » pendant le Pilotage ; l'EDT qui écrit sa grille à l'ouverture) : **pour E1 et la conscience**.
 - **Banc E2 sur l'assemblé : VERT** (`sorties/banc-site.txt`), B3b compris.
 - Le relecteur neuf n°2 (fin de l'heure, clôture, mode test) a rendu : traité à la poussée suivante.
+
+## poussée 13 — la relance du réveil n°2 (12:58) et le relecteur neuf n°2 (fin de l'heure, clôture, mode test)
+**Relance, point « à régler » (mode test)** : mesuré sur le code d'aujourd'hui — après « ▶ Lancer » en mode test, le magasin de test porte `cours_actif`, et `H/clos` n'y est qu'une **lecture mise en cache** (`null`), pas une écriture : l'heure n'est pas close (la relance mesurait `41f8d8b8`, avant le rendu attendu des onglets et l'écriture du pointeur avant le rendu). Le piège réel trouvé en mesurant : le magasin de test est rangé **par chemin** ; une lecture de `H/clos` mise en cache cachait ensuite le `H` entier écrit à la clôture → la garde de l'heure close relit `H` entier. **Garde** : B6 lit le magasin de test — après le lancement `cours_actif` présent et `H` pas clos ; après « Clore quand même », `H.clos === true` et le pointeur effacé ; zéro écriture au réseau. Le P5 du parcours en mode test (« écrit au lancement : deroule_joue / cours_actif ») exige des écritures que le mode test interdit : l'outil se contredit (dit par E1 et E4 aussi) — **à la conscience**.
+**Relance, réveil n°2 (les décisions), appliquées** :
+- **F2** : `edtSeanceJouee` (une séance est jouée quand `faites >= sur`), `edtHeuresJouees` (nouvelle, le compte), `edtFileDAttente` (la file reprend aux heures déjà jouées) — rien d'autre de l'EDT ; `edtLancer` passe `heure` et `sur` de la case. **Banc** : la case du 14/09 dit « séance 0 · heure 2/3 », `dr_lancer` reçoit `heure = 2`, l'entête dit « heure 2/3 » (B1).
+- **F3/F6, §12.6** : `dr_proposer()` — la case EDT du moment pour ce niveau si c'est la séance ouverte, sinon la classe du niveau, le créneau en cours, l'heure de la classe comptée comme l'EDT (par le nom), `N` par `edtHeuresPour` ; le bouton dit « ▶ Lancer avec 3E Charles de Gaulle · 08:57-09:52 · heure 2/3 ».
+- **M3, §12.5** : `N` vient de la case (`sur`), sinon 1 ; plus de 2 en dur (trois lieux).
+- **C1, §12.6** : `dr_heureDe(h)` complétée — enveloppée (la fonction d'E1 n'est pas réécrite) : une heure lancée répond avec son vrai créneau (base = début du créneau), en cours ou passée (`S.heuresCours`, gardé dans `C/etat`). Corrige aussi « l'heure court (09:55) » et le T-5 tardif vus par le relecteur n°2.
+- **C6, §12.8** : `dr_fusionCopie(trame, copie, J)` par `eid` (nouveau → s'ajoute ; modifié dans la trame → la trame, sauf modifié en classe → la copie ; retiré mais joué → reste) ; appliquée à l'heure n > 1 de la même séance avec la même classe. **Banc B7** par le geste (lundi heure 2/3, la trame change, mardi 15:07 « heure 3/3 », ouverture, l'heure 3 : pas de `PUT C`, l'écran ajouté arrive, l'écran modifié prend la trame) + les quatre règles sur un cas fabriqué.
+- **M7** : `H.travail` = l'objet de la maquette (`{terminer, preparer, apprendre, prevu, libre}`) + `travailTexte` ; `H.appel` (les segments) ; `H.parts` de l'heure seulement.
+- **C5** : `H/absents` relu avant chaque PUT de `H` (déjà fait) ; `motAbsents` ajouté au paquet.
+- F1, F4, F5, F7, F8, F9 (`C/vecu` tombé), F10/F11, F13, C2, C3, C4, C7, C8, M1, M2, M4, M5, M6, R19, le slug (la clé de `classesData`) : déjà appliqués.
+**Relecteur neuf n°2 (18 trouvailles)** — sur mon territoire, réglé avec sa garde :
+1. Bloquant — l'heure 2 n'avait aucune diapo (la trame réelle met tout à l'heure 1), ▶ levait → **la séance continue** (`dr_heureContinue`) : à l'heure n > 1 sans écran prévu, ceux que la classe n'a pas vus (après un lancement) passent à l'heure n, le socle pose son « Cahier de textes ». Garde : B2 (lancement à l'heure 2/3, ▶ dévoile), B7.
+2. Bloquant — l'étape 2 disait « tout a été fait » → sans activités dans la trame, elle dit combien de diapos n'ont pas été montrées et qu'elles continuent à l'heure suivante.
+3. L'étape 4 « récit relu » ne se cochait pas après la fin → le récit est final quand l'heure est finie.
+4. L'heure de fin = lancement + 55 → `dr_heureDe` complétée (C1 ci-dessus).
+5. L'ouverture disait faux (date, « 0 min pour 46 utiles ») → la date par `dr_heureDe`, le temps utile réel, l'heure n alimentée par 1.
+6. Pas de `cours_actif` à l'heure 2 → le pointeur s'écrit avant le rendu (poussée 12) ; B7 lance l'heure 3 sans erreur.
+7. « ▶ Lancer » visible pendant l'heure 2 : rejoué, il est caché par le socle pendant une heure en cours ; ne revient qu'après la clôture.
+8. Aucune échéance proposée → `edtProchainesDe(slug, n)` (plan §3), l'EDT chargé au lancement ; « Sans échéance » laisse `echeance: 'aucune'` au paquet.
+9. Le mot aux absents perdu → gardé à la frappe, `motAbsents` au paquet.
+10. Des étapes cochées d'avance (2 sans activités, 3 avec les notions de l'heure, 5 facultative) : c'est la maquette (C1 7.0 bis) — tient.
+11. Le chrono après la clôture → il s'arrête, l'alerte se replie.
+12. Des rangs : `si` du journal → retiré (le chemin `C` dit la séance), refait à la lecture ; `dio` n'est pas un rang (0 ou 1) ; `C/scene` est d'E3.
+13. Le paquet : `decisions` et `closPar` à la clôture normale → tranché par la conscience (C3, F9) ; les paroles de l'heure 1 dans l'heure 2 → filtrées.
+14. La touche 2 → **ne se reproduit pas** (rejoué : `EA2` → « a proposé une piste », `EA3` → « on y reviendra avec lui »).
+15. Le mode test qui ne survit pas au rechargement : le transport (`sessionStorage` jamais relu) — **pas mon territoire, à la conscience**.
+16. L'entête tronquée → réglée (poussée 12).
+17. Infobulles « Clore quand même », « Y retourner », « Annuler » → posées ; deux `#f-fermer` → un id par bouton ; le texte de l'étape 7 en double → une seule fois.
+18. `C/ecrans` à chaque ▶ → seulement quand la copie a changé.

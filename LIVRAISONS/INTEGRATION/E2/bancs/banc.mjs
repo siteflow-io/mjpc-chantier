@@ -54,7 +54,7 @@ const H = (hub, sk) => { const h = ((((hub.site['3e'].chapitres[0].seances[sk] |
 dire(''); dire('B1 — la case de l\'emploi du temps');
 { const s = await session(); const p = s.page;
   if (!s.site) pas('B1', 'absent', 'la case EDT (le fichier joué n\'est pas le site)');
-  else { const t = await lancerParLaCase(s); pas('B1', t ? 'ok' : 'ÉCHEC', 'la case de 3E Charles de Gaulle (lun. 14/09, 08:57-09:52)', t);
+  else { const t = await lancerParLaCase(s); pas('B1', t && /heure 2\/3/.test(t) ? 'ok' : 'ÉCHEC', 'la case de 3E Charles de Gaulle (lun. 14/09, 08:57-09:52) dit « heure 2/3 » de la séance 0 (F2, dette 13 · 26)', t);
     const prep = await visible(p, '[data-preparer]'); const n0 = (await s.ecrits()).length;
     if (!prep) pas('B1', 'absent', '« Préparer » sur la case (E2)');
     else { await p.click('[data-preparer]'); await s.attendre(3000); await cap(p, 'B1-preparer');
@@ -71,7 +71,7 @@ dire(''); dire('B1 — la case de l\'emploi du temps');
       pas('B1', (await visible(p2, '#mur')) && (await visible(p2, '#volet')) ? 'ok' : 'ÉCHEC', 'le Pilotage se voit (dette 12 · 05 : le cours tournait derrière le panneau prof)', '');
       { const ecr = await s2.ecrits(); pas('B1', ecr.some(x => x === 'PUT /site/cours_actif') ? 'ok' : 'ÉCHEC', 'le pointeur /site/cours_actif est écrit (la bannière de reprise en dépend)', ''); }
       pas('B1', !s2.errs.length ? 'ok' : 'ÉCHEC', 'lancer depuis la case : aucune erreur JS', s2.errs.join(' ; '));
-      pas('B1', e.heure === 1 && /heure 1(\/| sur )3/.test(e.hou) ? 'ok' : 'ÉCHEC', 'l\'heure 1/3 de la case (S.heure, l\'entête)', e.hou); }
+      pas('B1', e.heure === 2 && /heure 2(\/| sur )3/.test(e.hou) && (await p2.evaluate(() => ATVUES.snum)) === '0' ? 'ok' : 'ÉCHEC', 'la séance 0, heure 2/3 de la case (F2 tranché : la séance jouée une heure le 07/09 continue ; S.heure, l\'entête)', e.hou); }
     dire('      écritures : ' + depuis(await s2.ecrits(), n1).join(' · ')); await s2.ctx.close(); } }
 
 // ── B2 · lancer en un clic, dévoiler, la parole ; le paquet ; K15 ──
@@ -158,6 +158,29 @@ dire(''); dire('B3b — lancer par la case (séance 1, sans eid au hub), recharg
     pas('B3b', ap.parts === av.parts && ap.notes === av.notes ? 'ok' : 'ÉCHEC', 'la parole et la note', '');
     pas('B3b', !s2.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s2.errs.join(' ; ')); await s2.ctx.close(); } }
 
+// ── B7 · l'heure suivante d'une séance commencée : la copie de la classe FUSIONNÉE avec la trame du jour (contrat §12.8, relance C6) ──
+dire(''); dire('B7 — lundi heure 2/3 par la case, clore ; la trame change ; mardi 15:07 la case dit « heure 3/3 » → la copie fusionnée');
+{ const s = await session(); if (!s.integre) { pas('B7', 'absent', 'le site intégré'); await s.ctx.close(); }
+  else { const p = s.page; await lancerParLaCase(s); await clicTexte(p, '#edt-modale button', 'Ouvrir le pilotage et lancer'); await s.attendre(6000);
+    await devoiler(s, 2); await s.attendre(2000); await p.click('#dr-clore'); await s.attendre(400); await p.click('#f-clore'); await s.attendre(300);
+    if (await p.evaluate(() => document.getElementById('garde-clore').classList.contains('on'))) await p.click('#gclore-oui'); await s.attendre(2500);
+    const hub = await s.hub(); await s.ctx.close();
+    const E = hub.site['3e'].chapitres[0].seances[0].deroule.ecrans; const cible = E[6]; const ancien = cible.act; cible.act = 'Titre changé dans la trame (B7)';   /* un écran pas encore joué, modifié dans la trame */
+    E.splice(8, 0, { eid: 'ecran-ajoute-b7', act: 'Écran ajouté dans la trame (B7)', dur: 2, comp: [], blocs: [{ t: 'consigne', txt: 'Ajouté après l\'heure 2.' }] });
+    const s2 = await session({ store: hub, quand: '2026-09-15T15:08:00+02:00' }); const p2 = s2.page; const t = await lancerParLaCase(s2);
+    pas('B7', t && /heure 3\/3/.test(t) ? 'ok' : 'ÉCHEC', 'la case du mardi 15:07 dit « heure 3/3 » de la même séance', t);
+    const n0 = (await s2.ecrits()).length; await clicTexte(p2, '#edt-modale button', 'Ouvrir le pilotage et lancer'); await s2.attendre(6000);
+    const ouv = await p2.evaluate(() => (document.getElementById('fin') || {}).innerText || ''); if (await visible(p2, '#o-lancer')) { await p2.click('#o-lancer'); await s2.attendre(3000); }
+    const r = await p2.evaluate(() => ({ heure: S.heure, lancee: S.lancee, acts: seance().ecrans.map(e => e.act), eids: seance().ecrans.map(e => e.eid) }));
+    const ec = (await s2.ecrits()).slice(n0).map(x => x.replace(/\/site\/3e\/chapitres\/0\/seances\/0\/deroule_joue\/3E Charles de Gaulle/, 'C'));
+    pas('B7', /Où en est la/.test(ouv) && r.lancee && r.heure === 3 ? 'ok' : 'ÉCHEC', 'l\'écran d\'ouverture, puis l\'heure 3 lancée', ouv.replace(/\s+/g, ' ').slice(0, 90));
+    pas('B7', !ec.includes('PUT C') ? 'ok' : 'ÉCHEC', 'la copie de la classe n\'est pas remplacée par la trame (pas de PUT C)', ec.filter(x => x === 'PUT C').length + ' × PUT C');
+    pas('B7', r.eids.includes('ecran-ajoute-b7') && r.acts.includes('Titre changé dans la trame (B7)') && !r.acts.includes(ancien) ? 'ok' : 'ÉCHEC', 'la fusion : l\'écran ajouté à la trame arrive, l\'écran modifié dans la trame (pas touché en classe) prend la trame', JSON.stringify({ ajoute: r.eids.includes('ecran-ajoute-b7'), change: r.acts.includes('Titre changé dans la trame (B7)') }));
+    const u = await p2.evaluate(() => { const tr = [{ eid: 'a', act: 'A trame' }, { eid: 'b', act: 'B trame' }, { eid: 'n', act: 'N nouveau' }]; const co = [{ eid: 'a', act: 'A classe' }, { eid: 'b', act: 'B copie' }, { eid: 'x', act: 'X retiré, joué' }, { eid: 'y', act: 'Y retiré, pas joué' }];
+      const jj = [{ type: 'reponse', eid: 'a' }, { type: 'diapo', eid: 'x' }]; return dr_fusionCopie(tr, co, jj).map(e => e.act); });
+    pas('B7', JSON.stringify(u) === JSON.stringify(['A classe', 'B trame', 'X retiré, joué', 'N nouveau']) ? 'ok' : 'ÉCHEC', 'les quatre règles : modifié en classe → la copie ; modifié dans la trame → la trame ; retiré mais joué → reste ; nouveau → s\'ajoute', JSON.stringify(u));
+    pas('B7', !s2.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s2.errs.join(' ; ')); await s2.ctx.close(); } }
+
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');
 { const s = await session(); const ok = s.integre ? await s.page.evaluate(() => { const a = { niveau: '3e', chapitre: '0', seance: '0', classeSlug: '3E Charles de Gaulle', debut: '08:57', fin: '09:52' }, b = Object.assign({}, a, { debut: '10:07', fin: '11:02' }); return [_drCleHeureDe(a), _drCleHeureDe(b)]; }) : null;
@@ -170,8 +193,12 @@ dire(''); dire('B6 — le mode test (13 · 25) : lancer, dévoiler, clore → z�
 { const s = await session(); if (!s.site) { pas('B6', 'absent', 'le mode test est celui du site'); await s.ctx.close(); }
   else { await s.page.evaluate(() => { M8_TEST = true; }); const n0 = (await s.ecrits()).length; const v = await lancerUnClic(s);
     if (v === 'absent') pas('B6', 'absent', 'aucun [data-lancer="1"]');
-    else { await devoiler(s, 2); await s.page.click('#bfin').catch(() => {}); await s.attendre(300); await s.page.click('#f-clore').catch(() => {}); await s.attendre(200); await s.page.click('#gclore-oui').catch(() => {}); await s.attendre(2500);
-      const ec = depuis(await s.ecrits(), n0); pas('B6', ec.length === 0 ? 'ok' : 'ÉCHEC', 'mode test : zéro écriture au hub', ec.length + ' : ' + ec.join(' · ')); }
+    else { const m1 = await s.page.evaluate(() => { const st = M8_TEST_STORE, k = Object.keys(st).find(x => /\/heures\/[^/]+$/.test(x)); return { ca: st['/site/cours_actif'] || null, H: k ? st[k] : null }; });
+      pas('B6', m1.ca && m1.ca.classeSlug === '3E Charles de Gaulle' && m1.H && !m1.H.clos ? 'ok' : 'ÉCHEC', 'mode test, après le lancement : le magasin de test porte cours_actif, et l\'heure n\'est PAS close (relance du 21/10 12:58)', JSON.stringify({ ca: !!m1.ca, clos: m1.H && m1.H.clos }));
+      await devoiler(s, 2); await s.page.click('#dr-clore'); await s.attendre(400); await s.page.click('#f-clore'); await s.attendre(300); if (await s.page.evaluate(() => document.getElementById('garde-clore').classList.contains('on'))) { await s.page.click('#gclore-oui'); } await s.attendre(2500);   /* « ■ Clore l'heure » → l'étape 7 → « Clore l'heure » → la garde → « Clore quand même », comme Paul */
+      const ec = depuis(await s.ecrits(), n0); pas('B6', ec.length === 0 ? 'ok' : 'ÉCHEC', 'mode test : zéro écriture au hub', ec.length + ' : ' + ec.join(' · '));
+      const m2 = await s.page.evaluate(() => { const st = M8_TEST_STORE, k = Object.keys(st).find(x => /\/heures\/[^/]+$/.test(x)); return { ca: st['/site/cours_actif'], H: k ? st[k] : null }; });
+      pas('B6', !m2.ca && m2.H && m2.H.clos === true ? 'ok' : 'ÉCHEC', 'mode test, après la clôture : dans le magasin, l\'heure est close et le pointeur effacé', JSON.stringify({ ca: m2.ca || null, clos: m2.H && m2.H.clos })); }
     await s.ctx.close(); } }
 
 await nav.close();

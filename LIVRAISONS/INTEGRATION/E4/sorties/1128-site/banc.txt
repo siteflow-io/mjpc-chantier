@@ -26,3 +26,4 @@ K15 — les écritures au hub pendant le parcours
 
 PARCOURS ROUGE — 1 échec(s)
 — 5. contrôles K1-K13 par l'entrée du site
+— résultat : ROUGE · sorties dans LIVRAISONS/INTEGRATION/E4/sorties/1128-site

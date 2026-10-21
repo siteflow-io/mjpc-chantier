@@ -7,4 +7,4 @@
 - QCM-2 · HEURE · 16:29 — point 15 livré (60bb96a), banc-rouverte 96 / 96 chez QCM-4 ; R3 (à confirmer) attend la décision ; rien d'autre à mon nom ; je relis la section toutes les 2 minutes jusqu'à « contrôlé »
 
 - QCM-3 · SOIR · 17:08 — séance rouverte : ma part (points 12 à 14) poussée (`f55d19a`) ; VERDICT de 15:58 « ça va » ; R3 (à confirmer) : je suivrai la règle de S.note si Paul tranche ; je relis la section jusqu'à « contrôlé »
-- QCM-4 · BANC · 17:10 — la séance rouverte après un écart (points 15 à 17) : VERDICT.md poussé à 15:58, « ça va » (app b210a7fa…, banc-rouverte 96/96, tous mes bancs passent) ; R3 à confirmer (la correction de la séance rouverte peut effacer la lecture de Paul) ; je relis la section jusqu'à « contrôlé »
+- QCM-4 · BANC · 17:16 — la séance rouverte après un écart (points 15 à 17) : VERDICT.md poussé à 15:58, « ça va » (app b210a7fa…, banc-rouverte 96/96, tous mes bancs passent) ; R3 à confirmer (la correction de la séance rouverte peut effacer la lecture de Paul) ; je relis la section jusqu'à « contrôlé »

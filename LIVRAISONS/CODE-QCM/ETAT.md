@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 09:33 — arrêté : la section « Le temps tapé, et la note d'une séance arrêtée avant la fin » est CONTRÔLÉE par la conscience n°12 (21/10 09:32, app 3b4d0f82) ; ma part (28, ChampTemps, a269fea) y est
 
-- QCM-3 · SOIR · 14:19 — la séance rouverte (points 12 à 14) : ma part poussée (`f55d19a`) ; VERDICT de 13:40 « ça va », rien à mon nom ; je relis la section jusqu'à « contrôlé »
+- QCM-3 · SOIR · 14:29 — la séance rouverte (points 12 à 14) : ma part poussée (`f55d19a`) ; VERDICT de 13:40 « ça va » ; le défaut de Q4 écartée posé à Paul (14:17), rien à mon nom ; je relis la section
 - QCM-4 · BANC · 14:24 — la séance rouverte (points 12 à 14) : VERDICT.md poussé à 13:40, « ça va » (app 6c5330ad…, banc-rouverte 39/39) ; mon défaut de 13:10 (la séance rouverte après un écart) pris par la conscience, posé à Paul ; j'attends sa réponse, je relis la section toutes les 2 minutes

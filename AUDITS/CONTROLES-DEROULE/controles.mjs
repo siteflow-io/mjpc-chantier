@@ -37,15 +37,32 @@ const dire = s => { R.push(s); };
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });
 
 // --- les gestes communs ---
-const ouvrir = async (w = 1280, h = 800) => { const ctx = await nav.newContext({ viewport: { width: w, height: h } }); const pg = await ctx.newPage(); const errs = [], boites = [];
+// ── v2 (21/10, intégration) : MJPC_ENTREE=site joue les MÊMES contrôles sur index.html intégré, par l'entrée du site (faux hub, gestes réels
+//    jusqu'à l'onglet Atelier) ; sans la variable, l'entrée est la maquette seule, comme avant (contrat des quatre, §7-§8).
+const ENTREE_SITE = process.env.MJPC_ENTREE === 'site';
+const HUB = path.resolve(process.env.MJPC_HUB || path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'INTEGRATION-DEROULE', 'hub'));
+const hubStore = () => { const J = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8')); const st = { classes: J('classes.json'), taxonomie: fs.existsSync(path.join(HUB, 'taxonomie.json')) ? J('taxonomie.json') : null, site: { '3e': J('site_3e.json'), config: J('site_config.json'), edt: { grille: { '2026-2027': J('grille-appariee.json') }, calendrier: { '2026-2027': J('calendrier.json') }, creneaux: { '2026-2027': J('creneaux.json') } } } }; try { st.classes['3E Charles de Gaulle'].ed = { espace: 2, lien: 'https://www.ecoledirecte.com/P/94/EspacesTravail/2/cloud' }; } catch (e) {} return st; };
+const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); window.__ECR = []; const lire = c => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; }; const pos = (c, v) => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) n[q[k]] = {}; n = n[q[k]]; } if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v; };
+  window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase(); if (m === 'GET') return Promise.resolve(new Response(JSON.stringify(lire(c)), { status: 200 })); let bd = null; try { bd = JSON.parse((o && o.body) || 'null'); } catch (e) {} window.__ECR.push(m + ' ' + c); if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => pos(c + '/' + k, bd[k])); else pos(c, m === 'DELETE' ? null : bd); return Promise.resolve(new Response(JSON.stringify(bd), { status: 200 })); } return Promise.resolve(new Response('null', { status: 200 })); };
+  window.WebSocket = function () { throw new Error('websocket bloqué'); }; };
+const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });
+const ouvrir = async (w = 1280, h = 800) => { const ctx = await nav.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); if (ENTREE_SITE) await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); const pg = await ctx.newPage(); const errs = [], boites = [];
   pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
-  await pg.goto(FILE); await pg.waitForTimeout(600); return { ctx, pg, errs, boites }; };
+  if (!ENTREE_SITE) { await pg.goto(FILE); await pg.waitForTimeout(600); return { ctx, pg, errs, boites }; }
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, hubStore());
+  await pg.goto(FILE + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
+  await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
+  await pg.click('#tprof-btn'); await pg.waitForTimeout(500); await pg.evaluate(() => atelierOuvrir()); await pg.waitForTimeout(1000);
+  await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(800);
+  if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l\u2019atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await pg.waitForTimeout(1500);
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await pg.waitForTimeout(2500);
+  return { ctx, pg, errs, boites }; };
 const atelier = async pg => { await pg.click('[data-atelier]'); await pg.waitForTimeout(400); if (await pg.$('#at-aide .x')) { await pg.click('#at-aide .x'); await pg.waitForTimeout(200); } };
 const lancer = async pg => { await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(500); };
 const garde = async pg => { if (await pg.$eval('#garde', g => g.classList.contains('on')).catch(() => false)) { await pg.click('#garde-devant'); await pg.waitForTimeout(300); return true; } return false; };
 const huitLignes = async pg => { await pg.click('#mur .p8-ecrire'); for (let i = 1; i <= 8; i++) { await pg.keyboard.type(`Ligne ajoutée numéro ${i}, assez longue pour prendre de la place dans la diapo.`, { delay: 2 }); if (i < 8) await pg.keyboard.press('Enter'); } await pg.keyboard.press('Escape'); await pg.waitForTimeout(500); };
 const ecrireNote = async (pg, k, texte) => { await pg.click(`#mur li[data-k="${k}"]`); await pg.waitForTimeout(120); const p = await pg.$$('#notesd [contenteditable]'); if (!p.length) throw new Error('aucun paragraphe de notes éditable (#notesd [contenteditable])'); await p[p.length - 1].click(); await pg.keyboard.press('End'); await pg.keyboard.press('Enter'); await pg.keyboard.type(texte); await pg.waitForTimeout(150); };
-const noteDe = (pg, k) => pg.evaluate(k => { const v = (DATA.notes || {})[k]; return v == null ? '' : typeof v === 'string' ? v.replace(/<[^>]+>/g, '') : v.map(n => (n.p || '') + ' | ' + String(n.html || '').replace(/<[^>]+>/g, '')).join(' ¶ '); }, k);
+const noteDe = (pg, k) => pg.evaluate(k => { const v = ((window.dr && typeof dr.notes === 'function') ? (dr.notes() || {}) : (DATA.notes || {}))[k];   /* v2 : le site intégré expose dr.notes() (contrat §5), même clé que DATA.notes */ return v == null ? '' : typeof v === 'string' ? v.replace(/<[^>]+>/g, '') : v.map(n => (n.p || '') + ' | ' + String(n.html || '').replace(/<[^>]+>/g, '')).join(' ¶ '); }, k);
 const ouvrirTableau = async pg => { const [fen] = await Promise.all([pg.waitForEvent('popup'), pg.click('#bvideoproj')]); await fen.waitForLoadState(); await fen.waitForTimeout(900); return fen; };
 // ce que montre une diapo : son compteur de page, ses lignes visibles (ni hors, ni pas), celles qui sortent du cadre, sa police — au pilote (#mur) ou dans la fenêtre du tableau (.mur.tableau)
 const lireMur = ctx => ctx.evaluate(() => { const mur = document.getElementById('mur') || document.querySelector('.mur.tableau'); if (!mur) return { page: '', lignes: [], hors: -1, police: '' }; const mb = mur.getBoundingClientRect(); const c = mur.querySelector('.corpsd') || mur;
@@ -255,6 +272,6 @@ await K('K9', 'le parcours fixe', async () => { const o = await ouvrir(); const 
 await nav.close();
 R.push(''); R.push(`${nb} vérifications, ${echecs} échec(s)`); R.push(`--- fin : ${echecs} défaut(s)`);
 const md5 = createHash('md5').update(fs.readFileSync(MAQ)).digest('hex'); const md5Ctl = createHash('md5').update(fs.readFileSync(new URL(import.meta.url))).digest('hex');
-const texte = `contrôles de la conscience n°13 (déroulé) · controles.mjs md5 ${md5Ctl} · ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC · maquette : ${MAQ} · md5 ${md5}\n` + R.join('\n') + '\n';
+const texte = `contrôles de la conscience n°13 (déroulé) · v2 · entrée ${ENTREE_SITE ? 'site (faux hub)' : 'maquette'} · controles.mjs md5 ${md5Ctl} · ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC · maquette : ${MAQ} · md5 ${md5}\n` + R.join('\n') + '\n';
 console.log(texte); if (SORTIE) fs.writeFileSync(SORTIE, texte);
 process.exit(echecs ? 1 : 0);

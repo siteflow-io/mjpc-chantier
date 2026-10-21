@@ -42,3 +42,6 @@
 2. les écrans changés, ceux qui devaient changer, et leurs voisins, par le geste et en image (version auditée contre la précédente) ;
 3. K9, le parcours fixe, lu en entier ;
 4. un défaut trouvé devient un contrôle, éprouvé sur la version qui l'a (`epreuves/`), et une dette au registre.
+
+## v2 — 21/10/2026 (l'intégration, contrat des quatre)
+Les contrôles ne changent pas ; **l'entrée** devient paramétrable : `MJPC_ENTREE=site node controles.mjs <index.html assemblé>` joue K1-K13 sur le site intégré (faux hub `AUDITS/INTEGRATION-DEROULE/hub/`, horloge au 14/09 09:00, gestes réels jusqu'à l'onglet Atelier) ; sans la variable, la maquette seule, comme avant. `noteDe` lit `dr.notes()` quand le site l'expose (contrat §5). **Éprouvé** : sur p8-5g, v2 donne exactement les verdicts de v1 (`epreuves/sur-p8-5g-v2.txt` : 108 vérifications, 15 échecs, les mêmes). `controles.mjs` md5 `dbb8e8bce872858a468826bc9ad6b018`.

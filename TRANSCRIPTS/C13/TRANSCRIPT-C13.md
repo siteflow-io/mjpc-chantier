@@ -1543,3 +1543,49 @@ Réponse de la conscience, mot pour mot (chat, points 111-118) :
 
 20/10/2026 18:58
 MEMO
+
+---
+
+## TOUR 74 (21/10/2026, 08:23 → 08:50)
+
+Paul, tour 74, mot pour mot : « Ok ça me va, à un détail près. Le mandat entier doit être codé en parallèle par 4 exécutants Claude code, avec planification des vérifications de leur travail. Je veux être déchargé de la vérification moi même et je veux que dans 24h j'ai mon déroulé intégré au site et tout fonctionnel. »
+
+Premier message de la conscience (08:31), mot pour mot :
+
+119. Acquis : 96 (une barre), p8-5h dans I1, la 13 · 25 tout de suite.
+
+120. Quatre exécutants en parallèle sur un seul fichier de 1,8 Mo, chacun modifiant le même code : ça ne va pas, les quatre se marcheraient dessus et la fusion finale casserait tout. Quatre exécutants en parallèle **chacun sur son territoire**, avec un contrat écrit par moi d'avance (qui fait quoi, quelles fonctions, quels chemins de la base) et un assemblage automatique : ça va. C'est ce que je mets en place.
+
+121. Les quatre territoires : E1 le socle et l'Atelier (le nouveau déroulé entre dans le site, l'ancien tombe, la barre, tes vrais chapitres, p8-5h) ; E2 la classe et l'heure (lancer depuis l'emploi du temps, le chrono, la fin de l'heure, la clôture, la reprise après plantage, la 13 · 25) ; E3 le tableau (la fenêtre projetée, l'autre appareil, le tableau qui garde son image) ; E4 le récit et le papier (la Relecture, le papier du cahier, École Directe, les fiches). Les infobulles et les dettes restantes : chacun sur son territoire.
+
+122. Les vérifications, sans toi : les contrôles que j'ai écrits (K1-K13, plus K14 et K15) sont obligatoires avant chaque poussée de chaque exécutant ; à chaque poussée, un banc assemble les quatre territoires et rejoue ton parcours réel (emploi du temps → case → lancer → classe → tableau → fin de l'heure → relecture → papier → clôture), écran entier capturé ; je me réveille toutes les deux heures pour auditer ce qui a été poussé et relancer qui doit l'être. Tu ne vérifies rien ; tu reçois un point d'avancement à chaque réveil et les captures finales pour « promeus ».
+
+123. Vingt-quatre heures : je ne sais pas le garantir — personne ne l'a mesuré. Ce que je sais : les quatre partent dès que le contrat et les quatre mandats sont au sas, je te les livre vers 10:30, et à chaque heure tu sauras où on en est. Ce qui ne sera pas dans les vingt-quatre heures, c'est ce qui est hors du plan (l'élève, la vidéo, le téléphone).
+
+124. Je rédige maintenant, sauf contre-ordre : le contrat, les quatre mandats, les gardes, le banc d'assemblage, la copie de base complétée. Ensuite tu n'auras que quatre phrases à coller.
+
+21/10/2026 08:31
+MEMO
+
+Ce qui a été fait entre 08:31 et 08:50 (par la conscience) :
+- `MANDATS/INTEGRATION-DEROULE/CONTRAT.md` — la loi commune : ce que ça change pour la classe ; les deux objets de départ (md5) ; une seule branche `integration`, des modules séparés `LIVRAISONS/INTEGRATION/dr/*` (un par territoire), l'assemblé `assemble/index.html` ; l'ordre dans le temps (E1-a à H0 + 2, les autres partent de là) ; les interfaces du socle (`dr_ctx`, `dr_chapitre`, `dr_seance`, `dr_trame`, `dr_blocLu`, `dr_sauve`, `dr_classe`, `dr_taxo`, `dr_lire`, `dr_ecrire`, `dr_cheminB/C/H`, `window.dr`) ; les territoires (plages de lignes de la maquette, fonctions du site reprises / qui tombent / nouvelles, par exécutant) ; ce qui ne change pas de nom (les ids, les onglets qui portent aussi `#ong-*`, `[data-lancer="1"]` en un clic) ; les collisions mesurées (8 globales, 14 classes, 15 ids — `AUDITS/INTEGRATION-DEROULE/collisions.json`) ; ce qui est tranché en plus du plan (la colonne unique : le `#volet` sous la séance dépliée remplace les écrans horodatés — cadrage n°7 ; les tailles ; le faux hub ; les infobulles ; les relecteurs neufs) ; ce qu'on livre ; rien n'arrête un exécutant.
+- `MANDAT-E1-SOCLE-ATELIER.md`, `MANDAT-E2-CLASSE-HEURE.md`, `MANDAT-E3-TABLEAU.md`, `MANDAT-E4-RECIT-PAPIER.md` — chacun : ce que ça change pour la classe, ce qui est mesuré (pièces T72), ce qui est tranché (points numérotés), les bancs par le geste, ce qu'il ne touche pas.
+- `RELANCES/E1…E4.md` (vides) ; `PHRASES-A-COLLER.md` (les quatre prompts).
+- `AUDITS/INTEGRATION-DEROULE/` : `banc.sh` (assembler → collisions → parcours → parcours en mode test → contrôles K par l'entrée du site), `assembler.mjs`, `collisions.mjs`, `parcours.mjs` (P0-P12 + K15 + K15-test, chaque pas essaie le neuf puis l'ancien), `hub/` (classes, site_3e, site_config, grille, calendrier, créneaux, **taxonomie** — lacune comblée), `README.md`, `epreuves/` : **le parcours éprouvé sur la production 8.74.0-③ : vert** (11 écritures, toutes permises, 0 erreur JS) ; **en mode test : rouge** (6 écritures : `cours_actif`, `scene`) = la dette 13 · 25.
+- `AUDITS/CONTROLES-DEROULE/controles.mjs` **v2** : l'entrée du site par `MJPC_ENTREE=site` (faux hub, horloge, gestes jusqu'à l'Atelier), `noteDe` lit `dr.notes()` ; **éprouvé sur p8-5g : verdicts identiques à v1** (108 vérifications, 15 échecs, les mêmes — `epreuves/sur-p8-5g-v2.txt`) ; `EMPREINTES.md5` et le README mis à jour.
+- Le plan : §2.2 (colonne unique) et §8 (les réponses de Paul) mis à jour.
+
+Réponse de la conscience (08:50), mot pour mot :
+
+125. C'est déposé. Les quatre phrases à coller, une par session cloud, E1 en premier puis les trois autres dans la foulée : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/INTEGRATION-DEROULE/PHRASES-A-COLLER.md — tu colles, tu lances, tu peux fermer l'ordinateur.
+
+126. Ce que tu n'as pas à lire mais qui existe : le contrat des quatre (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/INTEGRATION-DEROULE/CONTRAT.md) et les quatre mandats, dans le même dossier ; le banc qui assemble les quatre territoires en un seul fichier et rejoue ton parcours réel d'hier plus les contrôles. Le parcours a été éprouvé ce matin sur ton site tel qu'il est : vert ; en mode test : rouge — c'est bien la 13 · 25, le banc la voit.
+
+127. Les vérifications, planifiées : avant chaque poussée, chaque exécutant lance le banc ; moi, un réveil est programmé toutes les deux heures : je tire ce qu'ils ont poussé, je rejoue le banc, j'écris leurs relances, je te fais le point en quelques lignes. Le premier réveil est à 10:50. Tu ne fais rien d'autre que coller les quatre phrases maintenant et, à la fin, « promeus ».
+
+128. La 13 · 25 (le mode test qui laisse partir deux choses au vrai hub) : je la code moi, en micro d'une ligne, prouvée par le banc en mode test, dès ton prochain message ou à mon premier réveil ; tu la promeus sur captures.
+
+129. Ce qui ne sera pas dans les vingt-quatre heures, pour que tu ne l'attendes pas : l'élève, la vidéo, le téléphone (la section B du point du 20/10). Tout le reste du plan est réparti entre les quatre.
+
+21/10/2026 08:50
+MEMO

@@ -73,7 +73,7 @@ Verdicts : **repris** (le code du site reste, tel quel) · **remplacé** (le cod
 
 | écran | site | maquette | verdict |
 |---|---|---|---|
-| **La colonne « Le chapitre »** | `atSommaireNatifHtml` : chapitre / séances repliables / **écrans horodatés sous la séance dépliée** (`atSomInjecterEcrans`, `atSomEcransDe` lit `DR.dr_exporterTrame()` ou `sce.deroule.ecrans`), suivi du courant (`atSomSuivreCourant`) | `#volet` : les vignettes de la séance (`.vig[data-i]`, par page, `.cour`), l'atelier en liste (`[data-at-di]`) | **repris** pour la colonne (c'est l'arbre à trois niveaux de la n°7, il existe) ; **remplacé** pour le micro : `atSomEcransDe` lit `dr_trame()`, `atSomSuivreCourant` suit `S.di` ; le `#volet` de la maquette reste **dans** l'écran de pilotage (c'est la bande de vignettes, K8). Les deux désignent les mêmes écrans par `eid` : un clic dans l'un ou l'autre est le même geste (`dr_aller(eid)`). |
+| **La colonne « Le chapitre »** | `atSommaireNatifHtml` : chapitre / séances repliables / **écrans horodatés sous la séance dépliée** (`atSomInjecterEcrans`, `atSomEcransDe` lit `DR.dr_exporterTrame()` ou `sce.deroule.ecrans`), suivi du courant (`atSomSuivreCourant`) | `#volet` : les vignettes de la séance (`.vig[data-i]`, par page, `.cour`), l'atelier en liste (`[data-at-di]`) | **repris** pour la colonne (c'est l'arbre à trois niveaux de la n°7, il existe) ; **remplacé** pour le micro : **sous la séance dépliée, le `#volet` de la maquette (ses vignettes, une par page) remplace les écrans horodatés** — une seule colonne, jamais deux côte à côte (cadrage n°7 : « UNE seule colonne, un arbre » ; précisé le 21/10, contrat §8.3). `atSomEcransDe` lit `dr_trame()`, `atSomSuivreCourant` suit `S.di` ; un clic sur une vignette ou sur une séance est le même geste (`dr_aller`). |
 | **La barre des vues** | `atVuesBarreHtml` : `structure · deroule · relecture · papier` ; `atVuesAller(v)` → `atEditerChapitreRendre()` ou `atVuesPoser(v)` | `.haut` : `#ong-pilotage · #ong-relecture · #ong-atelier` | **remplacé par la fusion 96** : defs = `structure · atelier · pilotage · relecture` ; `atVuesAller('structure')` inchangé ; les trois autres → `atVuesPoser(v)` qui pose la colonne + `<div id="dr-zone">` et appelle `dr_onglet(v)` (le `S.vue`/`#ong-*` de la maquette). `ATVUES.vue` reste la mémoire de la vue (`atVuesRetenir`/`atVuesRappeler`). Si Paul refuse 96 : la barre du site garde `deroule`, et `dr-zone` montre `.haut` de la maquette dessous (deux barres, capture 96-5). |
 
 ### 2.3 Les trois onglets du déroulé
@@ -184,6 +184,8 @@ Ce qui reste **après** I5 est la section B du POINT (attendus au hub, l'appel, 
 ---
 
 ## 8 · QUESTIONS À PAUL (le plan ne les tranche pas)
+
+*Réponses de Paul, 21/10, 08:23 (« Ok ça me va, à un détail près ») : **96 acquise** ; **p8-5h dans I1** (le site) ; **13 · 25 tout de suite** (micro de la conscience). Le détail : quatre exécutants en parallèle, vérifications planifiées, Paul déchargé, vingt-quatre heures → `MANDATS/INTEGRATION-DEROULE/CONTRAT.md` et les quatre mandats E1-E4 (les livraisons I1-I5 deviennent les territoires E1-E4, I5 réparti). Restent ouvertes les questions 2, 3 et 4, utiles à partir de E2.*
 
 1. **La proposition 96** (une barre Structure · Atelier · Pilotage · Relecture, Papier = face de la Relecture) — oui ou non. Le plan est écrit avec ; sans, seule la ligne « barre » de 2.2 change (deux barres).
 2. **Où saisir École Directe** (`/classes/<slug>/ed`) : le panneau des classes de l'atelier ?

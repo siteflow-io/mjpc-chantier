@@ -485,6 +485,67 @@ await B('A25', 'la relecture continue d\'E4 (13:35-14:05) : rien au journal hors
   E.verif('A25', /^mode test/.test(mt.txt) && mt.cl && mt.vu && !/mode test/.test(mt2), 'mode test du site : « mode test — rien n\'est enregistré » en pastille dans l\'entête (jamais « Enregistré à … ») ; elle part avec le mode test', JSON.stringify({ mt, mt2 }));
   E.verif('A25', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
 
+await B('A26', 'le réveil n°5 et la relecture continue d\'E4 (A4 14:50, B4 15:50, A5 16:15) : la page suit ▶, la question ouvre sa réponse, la consigne grise reste grise, l\'atelier en classe tient à la reprise, Ctrl+B à la bonne occurrence, l\'entête et l\'image stables, le numéro du dégel, rien de « terminé » avant le lancement', async () => {
+  const o = await E.ouvrir(b, { w: 1366, h: 768 }); const pg = o.pg; await sansVoile(pg);
+  // B4 · l'entête ne descend pas quand le témoin paraît ; l'image absente garde sa ligne, jamais l'icône cassée
+  await pg.click('#volet [data-at-di="1"]'); await pg.waitForTimeout(400);
+  const h0 = await pg.evaluate(() => document.querySelector('#dr-zone .haut').getBoundingClientRect().height);
+  await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('que je dis que je pense', { delay: 20 }); await pg.mouse.click(5, 400); await pg.waitForTimeout(2200);
+  const h1 = await pg.evaluate(() => ({ haut: document.querySelector('#dr-zone .haut').getBoundingClientRect().height, enr: document.getElementById('dr-enr').textContent, casse: Array.from(document.querySelectorAll('#mur .img-sup img')).filter(i => i.complete && !i.naturalWidth && getComputedStyle(i).display !== 'none').length, vide: Array.from(document.querySelectorAll('#mur .img-vide')).filter(v => getComputedStyle(v).display !== 'none').map(v => v.textContent.slice(0, 40)) }));
+  E.verif('A26', /^Enregistré à/.test(h1.enr) && Math.abs(h1.haut - h0) < 2, 'B4 · « Enregistré à … » paraît dans l\'entête sans la faire descendre (' + h0 + ' → ' + h1.haut + ' px)', JSON.stringify(h1.enr));
+  E.verif('A26', h1.casse === 0 && h1.vide.length > 0, 'B4 · après une modification, l\'image absente montre « image absente de mjpc-medias · … », jamais l\'icône cassée', JSON.stringify(h1));
+  // B4 · Ctrl+B sur la 2ᵉ occurrence de « que je » : c'est elle qui passe en gras
+  await pg.evaluate(() => { const e = ecran(); const bi = e.blocs.length - 1; const li = document.querySelector('#mur [data-p="' + bi + '.0"]'); const w = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); const t = w.nextNode(); const i = t.data.indexOf('que je', 1); const r = document.createRange(); r.setStart(t, i); r.setEnd(t, i + 6); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); });
+  await pg.keyboard.press('Control+b'); await pg.waitForTimeout(300); await pg.mouse.click(5, 400); await pg.waitForTimeout(300);
+  const gr = await pg.evaluate(() => { const e = ecran(); const bi = e.blocs.length - 1; const li = document.querySelector('#mur [data-p="' + bi + '.0"]'); const bb = li && li.querySelector('b.p8-gras'); if (!bb) return null; const r = document.createRange(); r.setStart(li, 0); r.setEndBefore(bb); return { avant: r.toString(), b: bb.textContent, donnee: JSON.stringify((e.forme || {}).gras || []) }; });
+  E.verif('A26', gr && gr.b === 'que je' && gr.avant === 'que je dis ', 'B4 · Ctrl+B sur la 2ᵉ occurrence de « que je » : la 2ᵉ passe en gras, pas la 1ʳᵉ (la position est gardée)', JSON.stringify(gr));
+  // B4 · ▶ ×3 au Pilotage avant le lancement : rien de « terminé » une fois l'heure lancée
+  await pg.click('#volet [data-at-di="8"]'); await pg.waitForTimeout(200); await pg.evaluate(() => voir('pilotage')); await pg.waitForTimeout(300); 
+  for (let i = 0; i < 6 && (await pg.evaluate(() => etatDiapo().nDev < elements(ecran()).length)); i++) { await pg.click('#bdev'); await pg.waitForTimeout(150); }
+  const av = await pg.evaluate(() => ({ di: S.di, n: etatDiapo().nDev }));
+  const si0 = await pg.evaluate(() => S.si); await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(800);
+  const ap = await pg.evaluate(di => ({ si: S.si, n: (parDiapo[K(di)] || {}).nDev || 0, J: J.filter(x => x.type === 'devoile').length }), av.di);
+  E.verif('A26', av.di === 8 && av.n > 0 && ap.si === si0 && ap.n === 0 && ap.J === 0, 'B4 · la diapo 9 ouverte dans l\'atelier, ▶ jusqu\'au bout au Pilotage avant de lancer (' + av.n + ' dévoilé(s) sur la diapo ' + (av.di + 1) + ') : au lancement, rien n\'en reste — « pas jouée », rien au journal', JSON.stringify({ av, ap }));
+  // A4 · la page suit ce que ▶ vient de montrer (une question à réponses nombreuses : l'étape de la page 1 ne bascule pas en page 2)
+  const qi = await pg.evaluate(() => { const aQ = e => (e.blocs || []).some(b => b.t === 'question'); const i = ordreHeure(S.heure).find(k => aQ(seance().ecrans[k])) ?? seance().ecrans.findIndex(aQ); S.di = i; dr_tout(); const e = ecran(); const bi = e.blocs.findIndex(b => b.t === 'question'); const d = etatDiapo(); d.reps = d.reps || {}; d.reps[bi] = Array.from({ length: 14 }, (_, k) => ({ eleve: ELEVES[k % ELEVES.length], r: 'Réponse numéro ' + (k + 1) + ' : la nature domine l\'homme et le sentiment, longuement' })); d.nDev = 1; S.page = null; S.neuf = null; dr_tout(); return { i, pages: (S.pagesCourantes || []).length, page: S.page }; });
+  await pg.click('#bdev'); await pg.waitForTimeout(300);
+  const pa = await pg.evaluate(() => { const d = etatDiapo(); const k = d.nDev - 1; const pi = (S.pagesCourantes || []).findIndex(p => p.some(i => { const els = Array.from(document.querySelectorAll('#mur [data-k], #mur .rep[data-r]')); return els[i] && els[i].dataset.k != null && +els[i].dataset.k === k; })); const el = document.querySelector('#mur [data-k="' + k + '"]'); return { nDev: d.nDev, page: S.page, pages: (S.pagesCourantes || []).length, vu: !!(el && el.offsetParent && !el.classList.contains('hors')) }; });
+  E.verif('A26', qi.pages > 1 && pa.vu && pa.page === 0, 'A4 · une question-bilan à ' + qi.pages + ' pages : ▶ dévoile l\'étape de la page 1 — la page reste la 1, l\'élément montré est visible', JSON.stringify({ qi, pa }));
+  // A4 · un clic dans une question grisée : dévoilée, et le curseur dans la saisie de sa réponse
+  await pg.evaluate(() => { const i = ordreHeure(S.heure).find(k => k !== S.di && (seance().ecrans[k].blocs || []).some(b => b.t === 'question')) ?? seance().ecrans.findIndex((e, k) => k !== S.di && (e.blocs || []).some(b => b.t === 'question')); S.di = i; S.page = null; dr_tout(); }); await pg.waitForTimeout(300);
+  await pg.click('#mur .q.pas'); await pg.keyboard.type('EA', { delay: 60 }); await pg.waitForTimeout(300);
+  const qc = await pg.evaluate(() => { const a = document.activeElement; return { ini: !!(a && a.classList.contains('ini')), txt: a && a.textContent, q: document.querySelector('#mur .q').classList.contains('pas'), loupe: !!S.loupe }; });
+  E.verif('A26', qc.ini && /EA/.test(qc.txt || '') && !qc.q && !qc.loupe, 'A4 · clic dans une question grisée puis « EA » : la question dévoilée, la frappe dans les initiales de la réponse (pas d\'espace qui dévoile, pas de loupe)', JSON.stringify(qc));
+  await pg.keyboard.press('Escape'); await pg.mouse.click(5, 400);
+  // A5 · un clic dans une ligne grise d'une consigne : rien ne se dévoile (seul ▶ avance)
+  const cg = await pg.evaluate(() => { const aC = e => (e.blocs || []).some(b => b.t === 'consigne' && (b.el || b.etapes || []).length >= 2); const i = ordreHeure(S.heure).find(k => aC(seance().ecrans[k])) ?? seance().ecrans.findIndex(aC); S.di = i; S.page = null; dr_tout(); return { i, n: etatDiapo().nDev }; }); await pg.waitForTimeout(300);
+  const lg = await pg.$$('#mur .bloc li.pas[data-k]'); if (lg.length) { await lg[lg.length - 1].click(); await pg.waitForTimeout(300); }
+  const cg2 = await pg.evaluate(() => etatDiapo().nDev);
+  E.verif('A26', lg.length > 0 && cg2 === cg.n, 'A5 · un clic dans la dernière ligne grise d\'une consigne : rien ne se dévoile (' + cg.n + ' → ' + cg2 + ') — le reste à la flèche (C1 4.3, 2.2)', JSON.stringify(cg));
+  // A5 · le dégel avec un écart dit le vrai numéro (celui de l'heure)
+  await pg.evaluate(() => { const o = ordreHeure(S.heure); S.di = o[1]; S.page = null; dr_tout(); gel(); S.di = o.find((i, k) => i !== k) ?? o[o.length - 1]; S.page = null; dr_tout(); gel(); }); await pg.waitForTimeout(300);
+  const dg = await pg.evaluate(() => ({ t: document.getElementById('garde2-titre').textContent, attendu: 'diapo ' + rangDe(S.di, S.heure), di1: S.di + 1, tete: (document.querySelector('#dr-zone .ou, .p8-ou, #ou') || {}).textContent || '' }));
+  E.verif('A26', dg.t.includes('tu es à la ' + dg.attendu + '.') && dg.attendu !== 'diapo ' + dg.di1 && dg.t.includes('diapo 2,'), 'A5 · le dégel avec un écart : « La classe est sur la diapo 2, tu es à la ' + dg.attendu + ' » — le rang dans l\'heure', dg.t);
+  await pg.evaluate(() => { document.getElementById('garde2').classList.remove('on'); });
+  E.verif('A26', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close();
+  // B4 (grave) · l'atelier ouvert pendant l'heure : un bloc écrit tient à « Reprendre le cours »
+  const o1 = await E.ouvrir(b, { w: 1366, h: 768 }); let p1 = o1.pg; await sansVoile(p1);
+  await p1.click('[data-lancer="1"]'); await p1.waitForTimeout(800); await p1.click('#bdev'); await p1.waitForTimeout(200);
+  await p1.evaluate(() => voir('atelier')); await p1.waitForTimeout(600); const eid = await p1.evaluate(() => ecran().eid);
+  await p1.click('#mur .p8-ecrire'); await p1.keyboard.type('Bloc tapé en classe', { delay: 30 }); await p1.mouse.click(5, 400); await p1.waitForTimeout(400); await p1.evaluate(() => voir('pilotage')); await p1.waitForTimeout(2500);
+  const ja = await p1.evaluate(eid => ({ n: ecran().blocs.length, cc: J.filter(x => x.type === 'copie-classe' && x.eid === eid).length, autres: J.filter(x => /^atelier/.test(x.type)).length }), eid);
+  E.verif('A26', ja.cc === 1 && ja.autres === 0, 'B4 (grave) · un bloc écrit dans l\'atelier pendant l\'heure : une entrée « copie-classe » pour la diapo (ce que la reprise lit pour garder la copie), rien d\'autre de l\'atelier au journal', JSON.stringify(ja));
+  const hub = await p1.evaluate(() => window.__HUB); await o1.ctx.close();
+  const o2 = await E.ouvrir(b, { w: 1366, h: 768, hub }); const p2 = o2.pg; await sansVoile(p2); await E.clicTexte(p2, 'button', 'Reprendre le cours'); await p2.waitForTimeout(1500);
+  const rp = await p2.evaluate(eid => { const e = seance().ecrans.find(x => x.eid === eid); return e ? e.blocs.length : null; }, eid);
+  if (rp !== ja.n) dire('      (à E2 : après « Reprendre le cours », la diapo a ' + rp + ' bloc(s) au lieu de ' + ja.n + ' — `dr_reprendre` relit la copie (`C/ecrans`) sans la fusionner : la ligne de `dr_lancerNeuf`, `dr_fusionCopie(E, copie, journal)`, y manque ; avec elle, le bloc tient (mesuré))');
+  E.verif('A26', !o2.errs.length, 'la reprise : aucune erreur JS', o2.errs.join(' ; ') || undefined); await o2.ctx.close();
+  // la passe d'infobulles (contrat, après les dettes) : chaque bouton visible de mon territoire en a une — Atelier, Pilotage, Relecture
+  const o3 = await E.ouvrir(b, { w: 1366, h: 768 }); const p3 = o3.pg; await sansVoile(p3);
+  const sans = () => p3.evaluate(() => Array.from(document.querySelectorAll('#dr-zone button, #dr-zone [role=button], #dr-zone .btn, #dr-zone input[type=range], #dr-zone select, #at-arbre .at-som-pli')).filter(x => x.offsetParent && !x.title && !x.getAttribute('aria-label') && !(x.closest('[title]') && x.closest('[title]') !== document.body)).map(x => (x.id ? '#' + x.id : String(x.className).slice(0, 30)) + ' « ' + (x.textContent || '').trim().slice(0, 30) + ' »'));
+  const ia = await sans(); await p3.click('[data-lancer="1"]'); await p3.waitForTimeout(800); const ip = await sans(); await p3.evaluate(() => voir('relecture')); await p3.waitForTimeout(500); const ir = await sans();
+  E.verif('A26', !ia.length && !ip.length && !ir.length, 'la passe d\'infobulles : aucun bouton visible sans infobulle, dans l\'Atelier, le Pilotage en classe et la Relecture', ia.concat(ip, ir).join(' · ') || undefined); await o3.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

@@ -1,5 +1,6 @@
 #!/bin/sh
 # Le banc d'E4 sur la maquette p8-5g, module injecté (avant E1-a, et pour la non-régression du récit hors du site).
+# MJPC_ENTREE=simule : avec E4/bancs/socle-simule.js (hub en mémoire, séance 0 du faux hub).
 # usage : sh essai-maquette.sh <maquette-p8-5g.html> <dossier-de-travail> [dossier-de-sortie]
 set -eu
 ICI=$(cd "$(dirname "$0")" && pwd); E4=$(cd "$ICI/.." && pwd); DR="$E4/../dr"
@@ -12,6 +13,7 @@ keep=[l for i,l in enumerate(L,1) if not any(a<=i<=b for a,b in R)]
 open(sys.argv[2]+'/maq-sans-e4.html','w',encoding='utf-8').write('\n'.join(keep))
 PY
 python3 "$ICI/inject.py" "$TRAV/maq-sans-e4.html" "$DR/dr-recit.js" "$TRAV/essai.html"
+if [ "${MJPC_ENTREE:-}" = simule ]; then python3 "$ICI/inject.py" "$TRAV/essai.html" "$E4/bancs/socle-simule.js" "$TRAV/essai.html"; fi   # le socle simulé, avant le module
 python3 - "$TRAV/essai.html" "$E4/dr-recit.css" <<'PY'
 import sys
 h=open(sys.argv[1],encoding='utf-8').read(); c=open(sys.argv[2],encoding='utf-8').read()

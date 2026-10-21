@@ -357,7 +357,7 @@ function dr_recitUrlDe(it){ const ref = String(it.ref || '').trim(), src = it.so
   if (src === 'drive' || (/^[A-Za-z0-9_-]{20,}$/.test(ref) && src !== 'firebase_app' && src !== 'atelier')) return 'https://drive.google.com/file/d/' + ref + '/preview';
   if (/^https?:\/\//i.test(ref) && (src === 'external' || src === 'html' || src === '' || src === 'drive')) return ref.indexOf('drive.google.com/file/d/') >= 0 ? ref.replace(/\/view(\?|$)/, '/preview$1') : ref;
   return ''; }
-function dr_recitDocuments(){ const D = dr_recitSim(); if (D && D.documents) return D.documents[String(S.si)] || [];
+function dr_recitDocuments(){ const D = dr_recitSim(); if (D && D.documents && D.documents[String(S.si)]) return D.documents[String(S.si)];
   let se = null; const sk = dr_recitSnum(); try { se = typeof dr_seance === 'function' ? dr_seance(sk) : null; } catch (e) {} if (!se || !se.items) return [];
   const n = dr_recitSeanceN(sk); return Object.keys(se.items).map(k => ({ k, o: se.items[k] })).filter(x => x.o && typeof x.o === 'object').sort((a, b) => (a.o.ordre || 0) - (b.o.ordre || 0))
     .map(x => { const url = dr_recitUrlDe(x.o); return { id: x.k, titre: x.o.title || x.k, type: x.o.kind || 'doc', source: x.o.source || '', ref: x.o.ref || '', url, lie: !!x.o.ref, seance: sk, seanceN: n, reference: true, pages: 1, etapes: 1 }; }); }

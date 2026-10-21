@@ -12,13 +12,13 @@ const CAP = path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'ca
 const req = createRequire(import.meta.url); let pw = null;
 for (const c of [process.env.MJPC_PLAYWRIGHT, '/opt/node22/lib/node_modules/playwright', path.join(path.dirname(F), 'node_modules', 'playwright'), 'playwright'].filter(Boolean)) { try { pw = req(c); break; } catch (e) {} }
 if (!pw) { console.log('Playwright introuvable'); process.exit(2); }
-const SITE = process.env.MJPC_ENTREE === 'site';
+const SITE = process.env.MJPC_ENTREE === 'site', SIMULE = process.env.MJPC_ENTREE === 'simule', HUBBE = SITE || SIMULE;   /* simule : la maquette + E4/bancs/socle-simule.js (un hub en mémoire, la séance 0 du faux hub) */
 const HUB = path.resolve(process.env.MJPC_HUB || path.join(path.dirname(new URL(import.meta.url).pathname), '..', '..', '..', '..', 'AUDITS', 'INTEGRATION-DEROULE', 'hub'));
 const md5 = createHash('md5').update(fs.readFileSync(F)).digest('hex');
 const L = []; let nbOk = 0, nbEchec = 0, nbAbsent = 0;
 const dire = s => { L.push(s); console.log(s); };
 const verif = (k, ok, quoi, detail) => { if (ok === null) { nbAbsent++; dire('  absent ' + k + ' · ' + quoi + (detail ? ' — ' + detail : '')); return false; } if (ok) nbOk++; else nbEchec++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && !ok ? ' — ' + String(detail).slice(0, 400) : '')); return !!ok; };
-dire(`banc E4 · ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC · ${SITE ? 'entrée du site (faux hub)' : 'maquette + dr-recit.js'} · ${path.basename(F)} · md5 ${md5}`);
+dire(`banc E4 · ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC · ${SITE ? 'entrée du site (faux hub)' : SIMULE ? 'maquette + socle simulé + dr-recit.js' : 'maquette + dr-recit.js'} · ${path.basename(F)} · md5 ${md5}`);
 
 // ── le faux hub (le même dispositif que parcours.mjs et controles.mjs v2) ──
 const J_ = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8'));
@@ -35,8 +35,9 @@ async function ouvrir(o = {}) {
   const ctx = await nav.newContext({ viewport: { width: 1366, height: 768 }, timezoneId: 'Europe/Paris' }); await ctx.grantPermissions(['clipboard-read', 'clipboard-write']).catch(() => {});
   if (SITE) await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
   const pg = await ctx.newPage(); const errs = [], boites = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
+  if (SIMULE) { const se = store().site['3e'].chapitres; const s0 = (Array.isArray(se) ? se[0] : se['0']).seances; await pg.addInitScript(([h, sc]) => { window.__E4HUB_INIT = h; window.__E4SEANCE = sc; }, [o.frais ? null : HUB_PERSISTANT, Array.isArray(s0) ? s0[0] : s0['0']]); }
   if (!SITE) { await pg.goto('file://' + F); await pg.waitForTimeout(600); return { ctx, pg, errs, boites }; }
-  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, o.hub || HUB_PERSISTANT || store());
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, o.hub || (o.frais ? null : HUB_PERSISTANT) || store());
   if (o.modeTest) await pg.addInitScript(() => { try { localStorage.setItem('mjpc_mode_test', '1'); } catch (e) {} });
   await pg.goto('file://' + F + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
   await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
@@ -54,7 +55,7 @@ async function devoiler(pg, n) { for (let i = 0; i < n; i++) { await pg.click('#
 async function parole(pg, ini) { await pg.keyboard.press('F2'); await p(pg, 100); await pg.keyboard.type(ini); await p(pg, 150); await pg.keyboard.press('1'); await p(pg, 80); await pg.keyboard.press('Enter'); await p(pg, 250); }
 async function jusquA(pg, cond, max = 90) { let n = 0; while (!(await pg.evaluate(cond)) && n < max) { if (await pg.$('.garde.on')) break; /* une garde (le cahier, un saut) : on ne force rien */ await pg.click('#bdev', { timeout: 3000 }).catch(() => {}); await p(pg, 60); n++; } return await pg.evaluate(cond); }
 async function reponse(pg, ini, txt) { await pg.click('#mur .rep .ini'); await pg.keyboard.type(ini); await p(pg, 100); await pg.click('#mur .rep .dit'); await pg.keyboard.type(txt); await pg.keyboard.press('Enter'); await p(pg, 300); }
-async function relecture(pg) { const v = await pg.$('.at-onglet[data-vue="relecture"]'); if (v) await v.click(); else await pg.click('#ong-relecture'); await p(pg, 900); }
+async function relecture(pg) { const v = await pg.$('.at-onglet[data-vue="relecture"]'); if (v) await v.click(); else if (await pg.$('.voile.on')) await pg.evaluate(() => voir('relecture')); /* la maquette rechargée s'ouvre sur son emploi du temps simulé */ else await pg.click('#ong-relecture'); await p(pg, 900); }
 async function face(pg, debut) { const ok = await pg.evaluate(t => { const b = Array.from(document.querySelectorAll('#faces [data-f]')).find(x => x.textContent.trim().startsWith(t)); if (!b) return false; b.click(); return true; }, debut); await p(pg, 500); return ok; }
 const texteRel = pg => pg.evaluate(() => (document.querySelector('#rel') || {}).innerText || '');
 const ecritures = pg => pg.evaluate(() => (window.__ECR || []).map(x => x.m + ' ' + x.c));
@@ -82,13 +83,13 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
   verif('R2', !!edit && (await pg.evaluate(ph => ((S.recitMoi || {})[1] || '').includes(ph), PHRASE)), '« ma version (modifier) » : la phrase corrigée est dans ma version', null);
   // le récit relu : l'étape 4 de la fin de l'heure (E2 la pose ; ici par son geste s'il existe)
   const relu = await pg.evaluate(() => { const b = document.getElementById('f-relu'); if (b) { b.click(); return 'geste'; } if (typeof S !== 'undefined') { return null; } });
-  if (SITE) { await p(pg, 2200); const ecr = await ecritures(pg); const recits = ecr.filter(x => /\/deroule_joue\/[^/]+\/recit\/\d+$/.test(x.split(' ')[1]));
+  if (HUBBE) { await p(pg, 2200); const ecr = await ecritures(pg); const chem = x => x.slice(x.indexOf(' ') + 1); const recits = ecr.filter(x => /\/deroule_joue\/[^/]+\/recit\/\d+$/.test(chem(x)));
     verif('R2', recits.length > 0, 'C/recit/1 est écrit au hub (débounce 900 ms, par dr_ecrire)', JSON.stringify(ecr.slice(-12)));
     const auHub = await pg.evaluate(() => { const c = (typeof dr_cheminC === 'function') ? dr_cheminC() : ''; const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q.concat(['recit', '1'])) { if (!n || typeof n !== 'object') return null; n = n[k]; } return n || null; });
     verif('R2', auHub && auHub.version === 'moi' && String(auHub.texte || '').includes(PHRASE), 'au hub : C/recit/1 = {version:"moi", texte: la phrase corrigée, versions[]}', JSON.stringify(auHub).slice(0, 300));
     HUB_PERSISTANT = await pg.evaluate(() => window.__HUB);
     // K15 (E4) : de mon fait, seul C/recit/<h>
-    const miennes = ecr.filter(x => /recit/.test(x)); verif('K15-E4', miennes.every(x => /\/deroule_joue\/[^/]+\/recit\/\d+$/.test(x.split(' ')[1])), 'K15 : ce qu\'E4 écrit, c\'est C/recit/<heure> et rien d\'autre', JSON.stringify(miennes));
+    const miennes = ecr.filter(x => /recit/.test(x)); verif('K15-E4', miennes.every(x => /\/deroule_joue\/[^/]+\/recit\/\d+$/.test(chem(x))), 'K15 : ce qu\'E4 écrit, c\'est C/recit/<heure> et rien d\'autre', JSON.stringify(miennes));
   } else verif('R2', null, 'C/recit/1 au hub', 'la maquette n\'a pas de hub : se mesure sur le site');
 
   // ═════ P1 · la face Papier : le récit relu, l'entête, le travail, le pied ; ce qu'on colle ═════
@@ -119,12 +120,12 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
 }
 
 // ═════ R3 · le rechargement : ma version revient (site) ═════
-if (SITE && HUB_PERSISTANT) { const o = await ouvrir(); const pg = o.pg; await relecture(pg); const t = await texteRel(pg);
+if (HUBBE && HUB_PERSISTANT) { const o = await ouvrir(); const pg = o.pg; await relecture(pg); await p(pg, 400); await relecture(pg); const t = await texteRel(pg);
   verif('R3', t.includes(PHRASE), 'rechargé : la phrase corrigée (ma version) est là, relue au hub', t.slice(0, 400)); await cap(pg, 'E4-R3-apres-rechargement'); await o.ctx.close(); }
-else verif('R3', null, 'le rechargement', SITE ? 'R2 n\'a rien laissé au hub' : 'la maquette n\'a pas de hub');
+else verif('R3', null, 'le rechargement', HUBBE ? 'R2 n\'a rien laissé au hub' : 'la maquette n\'a pas de hub');
 
 // ═════ R4 · le rappel d'une fiche (R2 du recyclage) et ses citations (R15) ═════
-{ const o = await ouvrir(); const pg = o.pg; await lancer(pg);
+{ const o = await ouvrir({ frais: true }); const pg = o.pg; await lancer(pg);
   /* la séance 0 du faux hub n'a aucune fiche (audit M7) et le geste du rappel est celui de l'Atelier (E1) : la fiche est posée dans la copie
      de la diapo jouée, telle qu'E1 la posera ({t:'fiche', txt, el, rappel:{motif}}) — c'est l'écriture du récit qu'on mesure ici */
   await pg.evaluate(() => { const e = ecran(); e.blocs.push({ t: 'fiche', bid: 'b-e4-fiche', txt: 'Le registre lyrique', el: ['Le lyrique exprime des sentiments personnels.'], rappel: { motif: 'reviser', libre: '' } }); tout(); });
@@ -136,7 +137,7 @@ else verif('R3', null, 'le rechargement', SITE ? 'R2 n\'a rien laissé au hub' :
   await o.ctx.close(); }
 
 // ═════ D1 · un document de Structure dans l'écran, par référence (site) ═════
-if (SITE) { const o = await ouvrir(); const pg = o.pg; await lancer(pg);
+if (HUBBE) { const o = await ouvrir({ frais: true }); const pg = o.pg; await lancer(pg);
   await pg.evaluate(() => ouvrirDocs()); await p(pg, 400); const okD = await clicTexte(pg, '#fdocs-l button', 'Projeter'); await p(pg, 600); await cap(pg, 'E4-D1-document');
   const d = await pg.evaluate(() => { const f = document.querySelector('#mur .dr-doc-cadre'); const m = document.querySelector('#mur .dr-doc-ref'); return { src: f ? f.getAttribute('src') : '', txt: m ? m.innerText : '' }; });
   verif('D1', okD && /^https:\/\/drive\.google\.com\/file\/d\/1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc\/preview$/.test(d.src), 'l\'item Drive de la séance s\'ouvre dans l\'écran en /preview', JSON.stringify(d));
@@ -145,7 +146,7 @@ if (SITE) { const o = await ouvrir(); const pg = o.pg; await lancer(pg);
 else verif('D1', null, 'les documents par référence', 'la maquette simule ses documents : se mesure sur le site');
 
 // ═════ 13·8 · le récit se fonde sur ce que la classe a vu dans sa copie : une phrase corrigée en classe apparaît corrigée ═════
-{ const o = await ouvrir(); const pg = o.pg; await lancer(pg); await devoiler(pg, 1);
+{ const o = await ouvrir({ frais: true }); const pg = o.pg; await lancer(pg); await devoiler(pg, 1);
   const cons = await pg.$('#mur [data-p="0.t"]'); let corrige = false;
   if (cons) { await cons.click(); await pg.keyboard.press('Control+A'); await pg.keyboard.type('Regardez les tableaux et dites ce que vous voyez.'); await p(pg, 400); await pg.keyboard.press('Escape'); await p(pg, 300); corrige = true; }
   await relecture(pg); const t = await texteRel(pg);

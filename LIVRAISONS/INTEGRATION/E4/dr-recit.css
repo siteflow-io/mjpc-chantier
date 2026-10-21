@@ -39,3 +39,4 @@
   #dr-impression .f-page{border:none;min-height:0;font-size:12pt}
   #dr-impression .a4-coller{color:#999}
 }
+#fdocs-l .btn:disabled{opacity:.45;cursor:not-allowed}

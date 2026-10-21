@@ -101,7 +101,17 @@ function dr_part(){
 /* ─── la veille du pilote : elle regarde l'état du tableau (`S.mur`), la copie jouée et la participation ;
        ce qui change part au hub — sans crochet sur les fonctions du socle (le pont et ses enveloppes tombent, C1 §13).
        Pendant le gel, `S.mur` ne bouge pas : rien ne part, le tableau garde son image. ─── */
+/* le QR du tableau distant (`sesQROuvrir`, repris) : son bouton vivait dans la tête du déroulé, qui tombe (audit F8) ;
+   il se pose à côté de « ⧉ Ouvrir le tableau », dans l'entête de la maquette */
+function dr_tabPoserQR(){
+  const b = document.getElementById('bvideoproj'); if (!b || document.getElementById('dr-tab-qr')) return;
+  const q = document.createElement('button'); q.className = 'btn'; q.id = 'dr-tab-qr'; q.type = 'button'; q.textContent = 'QR';
+  q.title = 'Le tableau sur un autre appareil : montre l\u2019adresse du tableau en QR. Scanné (ou l\u2019adresse ouverte dans Chrome) sur l\u2019ordinateur de la classe, il attend le cours puis suit ce que voit la classe, sans jamais rien écrire.';
+  q.onclick = () => { try { sesQROuvrir(); } catch (e) {} };
+  b.insertAdjacentElement('afterend', q);
+}
 function dr_tabVeiller(){
+  try { dr_tabPoserQR(); } catch (e) {}
   if (!dr_tabPeutEcrire()) { DR_TAB.emis = ''; return; }
   let sig = ''; try { sig = JSON.stringify(S.mur || null); } catch (e) {}
   if (S.mur && sig !== DR_TAB.emis) { DR_TAB.emis = sig; dr_sceneAuto(); }

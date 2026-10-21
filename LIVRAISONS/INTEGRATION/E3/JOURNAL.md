@@ -47,3 +47,9 @@
 - **reste** : la classe attendue (F1/I5) ; l'attente à la clôture (C3) ; R3 (le minuteur d'E2) et le document d'E4 (`dr_docEtat`) au tableau distant — à vérifier qu'ils voyagent dans `et` ; R14 (fiche pilotée) ; infobulles ; K7/K10/K11 dès que le voile ne bloque plus.
 - **bloqué** : rien ; les points contestés attendent `RELANCES/E3.md`.
 - **relances** : relu — rien.
+
+## 21/10, 12:05 — poussée 7 : R3 au tableau, le QR reposé
+- **fait** : le banc gagne **T7** (R3 : le minuteur d'E2, « au tableau » coché → la fenêtre montre « ⏱ 05:00 » en bandeau et la scène au hub le porte ; « Arrêter » l'en retire — il passe par `S.bandeau` → `et.bandeau`, rien à ajouter chez moi) et **T8** (le QR). Le **QR** n'avait plus de bouton (son hôte `#at-dr-tete` est tombé, audit F8) : `dr_tabPoserQR` le pose à côté de « ⧉ Ouvrir le tableau » (`#dr-tab-qr`, infobulle pour Paul) ; il donne `?vue=tableau`, ✕ le ferme, **aucune écriture** (plus de `/qrScans`). Banc E3 sur le site (avec E1-b) : **51 vérifications, 0 échec** (`sorties/1200/banc-E3.txt`).
+- Banc de la conscience (`sorties/1200/`) : inchangé — parcours vert (P8 vert), mode test : P5 (l'outil, à la conscience), K bloqués par le voile (F15, E1), collision `durees` (E2).
+- **reste** : mesurer K7/K10/K11 sur une copie sans le voile ; la classe attendue (F1/I5) ; C3 ; R14.
+- **relances** : relu — rien.

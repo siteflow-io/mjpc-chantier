@@ -153,6 +153,36 @@ await CAS('T6', 'la participation au hub : une parole porte son eid', async () =
   verif('T6', liste.every(x => !('note' in x) || !x.note), 'la note « pour toi seul » ne part pas au hub dans `C/part`', '');
   await fin('T6', o); });
 
+// T7 — R3, le minuteur d'activité au tableau (recyclage R3 ; E2 le calcule, E3 le transporte) : « au tableau » coché → la fenêtre et la scène portent « ⏱ mm:ss » en bandeau ; « Arrêter » → il part.
+await CAS('T7', 'le minuteur d\'activité au tableau (R3) : fenêtre et scène', async () => {
+  if (!SITE) { absent('T7', 'la maquette n\'a pas le minuteur (R3 est d\'E2)', ''); return; }
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 1);
+  if (!(await pg.$('#dr-minut-b'))) { absent('T7', 'pas de bouton ⏱ (E2)'); await fin('T7', o); return; }
+  const fen = await ouvrirTableau(pg);
+  await pg.click('#dr-minut-b'); await pg.fill('#dr-minut-in', '05:00'); await pg.check('#dr-minut-tab'); await pg.click('#dr-minut-go'); await pg.waitForTimeout(1500);
+  const band = await fen.evaluate(() => { const b = document.querySelector('#mur2 .bandeau'); return b ? { txt: b.textContent.trim(), on: b.classList.contains('on') } : null; });
+  const sc = await pg.evaluate(() => { const c = window.__hubLire('/site/cours_actif'); return c ? window.__hubLire('/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug + '/scene') : null; });
+  await cap(fen, 'T7-minuteur-au-tableau');
+  verif('T7', !!band && band.on && /^⏱ \d\d:\d\d$/.test(band.txt), 'la fenêtre montre le minuteur en bandeau', band ? '« ' + band.txt + ' »' : 'pas de bandeau');
+  verif('T7', !!sc && /^⏱ \d\d:\d\d$/.test(sc.bandeau || ''), 'la scène au hub le porte (le distant le montrera)', sc ? '« ' + (sc.bandeau || '') + ' »' : '—');
+  await pg.click('#dr-minut-b'); await pg.click('#dr-minut-stop'); await pg.waitForTimeout(1000);
+  const band2 = await fen.evaluate(() => { const b = document.querySelector('#mur2 .bandeau'); return b ? b.classList.contains('on') : false; });
+  verif('T7', !band2, '« Arrêter » : le bandeau quitte le tableau', String(band2));
+  await fen.close(); await fin('T7', o); });
+
+// T8 — le QR (mandat point 7) : un bouton à côté de « ⧉ », qui montre l'adresse `?vue=tableau` (plus `?vue=tel`), sans aucune écriture ; ✕ le ferme.
+await CAS('T8', 'le QR du tableau distant', async () => {
+  if (!SITE) { absent('T8', 'la maquette n\'a pas de QR', ''); return; }
+  const o = await ouvrir(); const pg = o.pg; await pg.waitForTimeout(400); const avant = await pg.evaluate(() => window.__ECR.length);
+  const ok = await pg.$('#dr-tab-qr'); verif('T8', !!ok, 'le bouton QR est à côté de « ⧉ Ouvrir le tableau », avec son infobulle', ok ? await pg.$eval('#dr-tab-qr', b => b.title.slice(0, 60)) : 'absent'); if (!ok) { await fin('T8', o); return; }
+  await pg.click('#dr-tab-qr'); await pg.waitForTimeout(400); await cap(pg, 'T8-qr');
+  const url = await pg.evaluate(() => { const u = document.querySelector('#ses-qr .ses-qr-url'); return u ? u.textContent : null; });
+  verif('T8', !!url && /\?vue=tableau$/.test(url), 'le QR donne l\'adresse du tableau, `?vue=tableau`', url || '—');
+  await pg.click('#ses-qr .ses-qr-x'); await pg.waitForTimeout(300); const ferme = await pg.evaluate(() => !document.getElementById('ses-qr'));
+  verif('T8', ferme, '✕ ferme le QR', String(ferme));
+  const apres = await pg.evaluate(() => window.__ECR.length); verif('T8', apres === avant, 'aucune écriture au hub (plus de /qrScans)', (apres - avant) + ' écriture(s)');
+  await fin('T8', o); });
+
 dire(''); dire(`banc E3 : ${nb} vérifications, ${echecs} échec(s)` + (echecs ? ' — ROUGE' : ' — VERT'));
 if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }
 await nav.close(); process.exit(echecs ? 1 : 0);

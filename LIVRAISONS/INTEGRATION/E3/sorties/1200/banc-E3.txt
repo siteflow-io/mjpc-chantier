@@ -1,0 +1,71 @@
+banc E3 (le tableau) · 2026-10-21 09:58 UTC · entrée SITE (faux hub /home/user/mjpc-chantier/AUDITS/INTEGRATION-DEROULE/hub) · fichier md5 0ae3ea9bf0370b3382c483c0aa422005 · 2101859 o
+
+T1 — la fenêtre locale montre ce que voit la classe, et suit sans rechargement
+  ok     T1 · la fenêtre est la page elle-même, `?vue=tableau&local=1` — VRAISONS/INTEGRATION/assemble/index.html?vue=tableau&local=1
+  ok     T1 · la fenêtre rend dans #mur2.mur.tableau — #mur2 .mur tableau
+  ok     T1 · la page du tableau ne contient pas #mur (les contrôles lisent #mur d'abord) — false
+  ok     T1 · au pilote : la diapo 1, trois lignes dévoilées — 3 l. « Analyse d'images : la routine »
+  ok     T1 · à l'ouverture : même diapo, mêmes lignes, même compteur que le pilote, rien hors du cadre — pilote 3 l. «  » · tableau 3 l. «  », hors 0
+  ok     T1 · un ▶ de plus : la fenêtre suit (quatre lignes, comme le pilote) dans les 700 ms — pilote 4 l. · tableau 4 l.
+  ok     T1 · sans rechargement de la fenêtre — true
+  ok     T1 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T1 · aucune boîte système
+
+T2 — gelé, la fenêtre ne bouge pas pendant que le pilote avance ; dégelée, elle rattrape
+  ok     T2 · ❄ : le pilote est gelé (body.gel)
+  ok     T2 · trois ▶ pendant le gel : la fenêtre montre toujours ce qu'elle montrait, le pilote a avancé — avant 2 l. « Analyse d'images : la routine » · pendant 2 l. « Analyse d'images : la routine » · pilote 5 l. « Analyse d'images : la routine »
+  ok     T2 · dégelé ici : la fenêtre montre ce que montre le pilote — pilote 5 l. « Analyse d'images : la routine » · tableau 5 l. « Analyse d'images : la routine »
+  ok     T2 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T2 · aucune boîte système
+
+T3 — ouverte pendant le gel, la fenêtre montre l'image gelée
+  ok     T3 · la fenêtre montre ce que la classe voyait au gel (2 lignes), pas le pilote (5) — gel 2 l. · pilote 5 l. · tableau 2 l.
+  ok     T3 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T3 · aucune boîte système
+
+T4 — la vue « ⧉ Tableau » du pilote montre ce que montre la fenêtre
+  ok     T4 · mêmes lignes, même diapo — vue 3 l. · fenêtre 3 l.
+  ok     T4 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T4 · aucune boîte système
+
+T5 — le tableau distant (`?vue=tableau`) : attente, garde, scène suivie, image gardée
+  ok     T5 · le pilote a écrit `cours_actif` et `C/scene` — /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+  ok     T5 · la scène = `et` + {eid, origine, ts, trameMaj}, nDev 3 — si,di,fichePage,ficheEntre,arrivee,neuf,eid,qui,quiTotal,coupure,cahier,attente,flash,surl
+  ok     T5 · rev, vues, morceau, iz tombent — 
+  ok     T5 · sans cours actif : l'écran d'attente (le nom du site, l'heure, la date) — MONSIEURJAIPASCOMPRIS 08:50 lundi 14 septembre 2026 Aucun cours en cours
+  absent T5 · la classe attendue (« 3e · <classe> ») — audit F1/I5, en attente de la conscience — MONSIEURJAIPASCOMPRIS 08:50 lundi 14 septembre 2026 Aucun cours en cours
+  ok     T5 · une scène arrive : l'attente disparaît, #mur2 montre la diapo du pilote, trois lignes — pilote 3 l. « Analyse d'images : la routine » · distant 3 l. « Analyse d'images : la routine »
+  ok     T5 · la première scène paraît après la recherche du cours (2 s) et un sondage (900 ms) — 1497 ms depuis l'écriture dans son hub
+  ok     T5 · un ▶ de plus : le distant suit (quatre lignes) en ≤ 900 ms de sondage + rendu (mesure proposée, audit I2) — 109 ms depuis l'écriture dans son hub
+  ok     T5 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T5 · aucune boîte système
+  ok     T5 · le pilote fermé : 30 s plus tard, le distant garde sa dernière image — 4 l.
+  ok     T5 · une scène plus ancienne que la dernière montrée est refusée — 4 l.
+  ok     T5 · K15 en vue tableau : zéro écriture au hub — 0
+  ok     T5 · personne n'a même essayé d'écrire (`SES.ecrituresBloquees` = 0) — 0
+  ok     T5 · une écriture tentée est refusée et comptée — refusé, 1 bloquée(s), 0 au hub
+  ok     T5 · aucune erreur JS au distant
+
+T6 — la participation au hub : une parole porte son eid
+  ok     T6 · `C/part` = {participation, maj, origine}, une parole — {"participation":[{"id":"pgfedf2","nom":"AUGEREAU Gatien","m":"participe","eid":"emt9v3yqoecf9d","h":"09:00","heure":1,"t":1789369200000}],"
+  ok     T6 · chaque parole désigne sa diapo par eid, jamais par rang — {"id":"pgfedf2","nom":"AUGEREAU Gatien","m":"participe","eid":"emt9v3yqoecf9d","h":"09:00","heure":1,"t":1789369200000}
+  ok     T6 · la note « pour toi seul » ne part pas au hub dans `C/part` — 
+  ok     T6 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T6 · aucune boîte système
+
+T7 — le minuteur d'activité au tableau (R3) : fenêtre et scène
+  ok     T7 · la fenêtre montre le minuteur en bandeau — « ⏱ 05:00 »
+  ok     T7 · la scène au hub le porte (le distant le montrera) — « ⏱ 05:00 »
+  ok     T7 · « Arrêter » : le bandeau quitte le tableau — false
+  ok     T7 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T7 · aucune boîte système
+
+T8 — le QR du tableau distant
+  ok     T8 · le bouton QR est à côté de « ⧉ Ouvrir le tableau », avec son infobulle — Le tableau sur un autre appareil : montre l’adresse du table
+  ok     T8 · le QR donne l'adresse du tableau, `?vue=tableau` — file:///home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html?vue=tableau
+  ok     T8 · ✕ ferme le QR — true
+  ok     T8 · aucune écriture au hub (plus de /qrScans) — 0 écriture(s)
+  ok     T8 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T8 · aucune boîte système
+
+banc E3 : 51 vérifications, 0 échec(s) — VERT

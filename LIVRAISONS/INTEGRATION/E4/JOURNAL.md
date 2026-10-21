@@ -441,3 +441,4 @@
   - L12 : le numéro d'activité est celui d'E2, continu sur la séance, comme au pilote (A5, A7). Il ne repart plus à 1 à chaque heure ;
   - « Retour de la diapo 9 à la diapo 2 » : le rang dans l'heure des deux côtés.
 - **Bancs :** mon banc **109 ok · 0 échec** (`sorties/2047-site-E4`).
+- banc.sh : **VERT** (`sorties/2052`).

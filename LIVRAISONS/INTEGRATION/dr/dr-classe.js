@@ -35,6 +35,8 @@ const dr_slugDe = nom => { try { if (classesData[nom]) return nom; const k = Obj
 const dr_nomClasse = slug => { try { const c = classesData && classesData[slug]; return (c && c.nom) || slug; } catch (e) { return slug; } };
 /* le nombre d'heures de la séance : la MÊME fonction que la case de l'EDT (`edtHeuresPour`), jamais un calcul à part */
 function dr_nbHeures(creneau){
+  /* dette 12 · 07 : la frontière d'heure portée par la trame fait foi (C1 6.1) ; à défaut, le quotient de la case (`edtHeuresPour`) */
+  try { const h = Math.max(0, ...seance().ecrans.map(e => +e.heure || 0)); if (h > 0) return h; } catch (e) {}
   try { const ec = AT.edChap, sk = ATVUES.snum; const sce = chapitresData[ec.level][ec.chnum].seances[sk]; return edtHeuresPour(sce, creneau); } catch (e) { return 1; }
 }
 

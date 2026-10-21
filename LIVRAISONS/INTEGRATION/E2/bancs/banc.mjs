@@ -67,7 +67,8 @@ dire(''); dire('B1 — la case de l\'emploi du temps');
     const e = await etat(p2);
     if (!s2.integre) pas('B1', ok && e.regime === 'classe' ? 'ok' : 'ÉCHEC', '« ▶ Ouvrir le pilotage et lancer » (production : l\'ancien moteur)', JSON.stringify(e.cours));
     else { pas('B1', e.lancee && e.cours && e.cours.classeNom === CLASSE ? 'ok' : 'ÉCHEC', 'le Pilotage s\'ouvre, la classe est 3E Charles de Gaulle', JSON.stringify(e.cours));
-      pas('B1', e.cours && e.cours.fin === '09:52' && /08:57/.test(JSON.stringify(e.cours)) ? 'ok' : 'ÉCHEC', 'le créneau 08:57-09:52', JSON.stringify(e.cours));
+      pas('B1', e.cours && e.cours.fin === '09:52' && await p2.evaluate(c => _drCreneauDe(c), e.cours) === '08:57-09:52' ? 'ok' : 'ÉCHEC', 'le créneau 08:57-09:52', JSON.stringify(e.cours));
+      pas('B1', (await visible(p2, '#mur')) && (await visible(p2, '#volet')) ? 'ok' : 'ÉCHEC', 'le Pilotage se voit (dette 12 · 05 : le cours tournait derrière le panneau prof)', '');
       pas('B1', e.heure === 1 && /heure 1 sur 3/.test(e.hou) ? 'ok' : 'ÉCHEC', 'l\'heure 1/3 de la case (S.heure, l\'entête)', e.hou); }
     dire('      écritures : ' + depuis(await s2.ecrits(), n1).join(' · ')); await s2.ctx.close(); } }
 

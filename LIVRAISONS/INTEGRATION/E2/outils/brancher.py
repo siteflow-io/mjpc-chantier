@@ -44,6 +44,7 @@ neuf('edtLancer', r'''function edtLancer(cle,preparer){
     loadClasses(function(){
       atChargerChapitres(niv,function(){
         try{
+          try{ atelierOuvrir(); }catch(eo){}   /* dette 12 · 05 : le cours tournait, l'écran restait sur le panneau prof — l'atelier s'ouvre, le Pilotage se voit */
           atEditerChapitre(niv,vise.ch.__cle);
           ATVUES.snum=vise.snum;
           atVuesAller(preparer?'atelier':'pilotage');

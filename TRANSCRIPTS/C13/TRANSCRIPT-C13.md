@@ -1678,3 +1678,29 @@ Tire `main` (`git fetch origin && git merge origin/main`), relis `MANDATS/INTEGR
 
 21/10/2026 12:50
 MEMO
+
+---
+
+## TOUR 79 — RÉVEIL N°2 (21/10/2026, 12:54 → 13:06 ; déclenché par la tâche planifiée)
+
+Mesuré :
+- La branche `integration` : les quatre tournent depuis ~09:10 ; E1-a à 09:29, E1-b à 10:12 (trame complète, Atelier entier, p8-5h), E2 branché dans le site à 12:29 puis 12:54 (lancer depuis la case, « Préparer », la reprise, les sept étapes, la clôture), E3 (fenêtre `?vue=tableau&local=1`, distant, K7/K10/K11 verts, NOTE à 12:50), E4 (NOTE à 10:20, relance E4-2 prise à 12:47 : `RELECTURE-CONTINUE.md` ouverte).
+- **Le banc de la conscience sur l'assemblé (commit 41f8d8b8, 12:54) : le parcours P0-P12 est VERT** — la barre fusionnée, plus d'iframe, la diapo 1 réelle au mur, la case EDT avec « Préparer », le lancement par le Pilotage, la fenêtre tableau = la page elle-même, les sept étapes de la fin de l'heure, la Relecture à quatre faces dont Papier, la clôture ; 18 écritures, toutes permises ; 0 erreur JS ; collisions 0. **En mode test : zéro écriture au hub, mais `cours_actif` manque au magasin** (le pointeur effacé et l'heure close dans la foulée du lancement) → relance E2. Les contrôles K : le banc les a perdus par ma faute (j'ai changé de branche pendant qu'il tournait) ; relancés à part sur le même fichier (résultat au prochain point).
+- Captures P3 (l'Atelier dans le site) et P5 (la classe lancée : entête de la maquette, vignettes « HEURE 1 · 19 DIAPOS », « Où on en est », participation) : l'entête est à l'étroit à 1366 (classe et date coupées) → relance E1.
+- **Les quatre audits de mission 0** (`E*/AUDIT-DU-MANDAT.md`, 100 ko) lus en entier et **tranchés point par point** dans `RELANCES/E1…E4.md` ; les décisions communes au contrat §12 (15 points : `deroule97`, les collisions réelles, le découpage par les gestes, `.haut` reste, la trame réelle, les interfaces complétées, l'EDT lance l'heure suivante d'une séance, la copie fusionnée par `eid`, le paquet `H`, les sept étapes et T-5 = fin − 10, le tableau garde son image et `pousser` reste au socle avec `dr_versMur`, la Relecture et le Papier « ce qu'on relit puis ce qu'on colle », le slug = la clé de `classesData`, l'attribution du recyclage R13-R22, ce qui tombe en plus). La conscience s'était trompée sur : les 8 globales (des locales), 14 classes (12), quatre plages de lignes, les sept étapes, T-5 (fin − 10), `_drProchainCreneau` (ne propose rien), `edtCleHeure` (la clé, pas l'heure), `atDrReprendre` (un versement), G/S « repris » (faux), `DOCS_CACHE`, `openViewer`, le lien ED, « trois faces » (quatre), K8 en dur (réglé v2.1), le voile `#fi-overlay` (réglé v2.1).
+- **Quatre dettes de production mesurées par les exécutants, déclarées au registre** : 13 · 26 (l'EDT ne lance jamais l'heure 2 d'une séance), 13 · 27 (la reprise d'aujourd'hui perd la trace), 13 · 28 (`sendBeacon` hors de la garde lecture seule), 13 · 29 (lectures directes hors mode test, `DELETE` du QR).
+- `main` fusionné dans `integration` (6764208b, puis 4484e923) ; 13 · 25 toujours en attente de « promeus » (prod `main` = `ac792b28…`).
+- Réveil suivant programmé à 15:05.
+
+Réponse de la conscience (13:06), mot pour mot :
+
+142. Réveil n°2. Les quatre tournent depuis 9 h 10 et ont beaucoup poussé : **ton parcours réel passe en entier sur le fichier intégré** — l'emploi du temps, la case avec « Préparer », l'Atelier sur ton vrai chapitre, le lancement, le tableau (la page elle-même en lecture seule), la fin de l'heure en sept étapes, la Relecture avec sa face Papier, la clôture — sans erreur, avec seulement des écritures permises. En mode test, rien ne part au hub, mais le lancement efface son propre pointeur de cours : relancé chez E2.
+
+143. Leurs audits de mon mandat (mission 0) sont bons et m'ont pris en défaut sur une vingtaine de points (des plages de lignes fausses, un T-5 à fin − 5 au lieu de fin − 10, des fonctions qui ne font pas ce que je disais, « trois faces » au lieu de quatre…). Tout est tranché, écrit dans leurs relances et au contrat (§12). Trois de ces trouvailles sont des défauts du site d'aujourd'hui que personne n'avait vus, maintenant au registre : l'emploi du temps ne lance jamais la deuxième heure d'une séance (13 · 26) ; si tu recharges en pleine heure, la trace de l'heure cesse de s'écrire (13 · 27) ; la vue tableau laisse passer une écriture (13 · 28). Les trois se règlent dans l'intégration.
+
+144. Une chose à toi, courte : la maquette avait un bouton « animation en accéléré » (⚙ Simulation) qui joue l'heure toute seule ; il tombe avec la simulation, comme ton cadrage le prévoyait (« dans la maquette »). Si tu le veux dans le site, dis-le.
+
+145. La 13 · 25 attend toujours ton « promeus » (branche `micro/13-25`, point 138). Prochain réveil à 15:05.
+
+21/10/2026 13:06
+MEMO

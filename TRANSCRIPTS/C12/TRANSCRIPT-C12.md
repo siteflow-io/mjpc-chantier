@@ -23160,3 +23160,17 @@ Envoyé à Paul, mot pour mot :
 33. La conscience n°13 tourne de nouveau depuis hier 09:00 : ses tours 68 à 76, ce matin à 09:03 les mandats des quatre exécutants du déroulé. Je ne la reprends donc pas, sauf si tu me le demandes.
 
 21/10/2026 09:33 MEMO
+
+## TOUR 754 — Paul, 21/10 09:34
+
+Paul, mot pour mot :
+
+donc qcm c'est bon?
+
+Lu : `VERDICT.md` du 20/10 16:20, l. 13 (la séance rouverte, « Je le note, je ne le compte pas ») ; `S.note` (`live/base.js` l. 347) et `resultatLocalV` (`c4-seances.js` l. 324). Mesuré dans le code : une question pas révélée d'une séance non terminée reste « n » même lue par Paul. Faute de la conscience : le cas était dans le verdict qu'elle a lu à 09:32. Fait : la note en tête de la section (`code-qcm` `a6bf83eb`) ; dette n°12 · 222 (production).
+
+Envoyé à Paul, mot pour mot :
+
+31. Presque, et c'est ma faute. Tout ce que tu as tranché est contrôlé, et ça va. Mais en relisant le verdict de QCM-4 pour te répondre, j'ai vu un cas qu'il a noté sans le compter, et que j'ai laissé passer ce matin. Si tu rouvres une séance terminée, les questions que tu as lues le soir redeviennent « pas encore lues » tant qu'elle tourne ; elles recomptent quand elle est terminée de nouveau. C'est contraire à ta règle : une feuille que tu as lue compte. Je l'ai vérifié dans le code, et je ne mets donc rien en ligne. Ma proposition : ta lecture du soir compte toujours, même pendant une séance rouverte. QCM-1 et QCM-3 le codent, QCM-4 le rejoue, puis je contrôle et je mets tout en ligne en une fois. Tu valides ?
+
+21/10/2026 09:35 MEMO

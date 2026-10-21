@@ -14,3 +14,10 @@
 - **reste** : `dr-tableau.js` (audit §6, point 2) ; attendre E1-a (`git fetch` toutes les cinq minutes).
 - **bloqué** : rien.
 - **relances** : `RELANCES/E3.md` relu — rien.
+
+## 21/10, 09:55 — poussée 3 : `dr/dr-tableau.js`, première version (avant E1-a)
+- **fait** : le module du tableau, écrit sur les interfaces du contrat §5 (`S`, `rendre`, `pousser`, `etatComplet`, `eidDe`, `dr_trame`, `dr_ecrire`, `dr_lire`, `dr_cheminC`) — **côté pilote** : `dr_ouvrirTableau` (une seule fenêtre, `?vue=tableau&local=1`, qui devient `fenetreMur` pour `pousser`), le clic sur `#bvideoproj` capté (l'ancienne fenêtre `document.write` ne s'ouvre plus), son infobulle, la réponse à `pret` ; `dr_scene` (= `et` + `{eid, origine, ts, trameMaj}`, sans ce qui ne regarde que Paul), `dr_sceneAuto` (250 ms), `dr_part` (`C/part` depuis `S.parts`, par eid, sans rang ni note privée), **la veille** (`S.mur`, la copie, la participation : ce qui change part — **sans crochet** sur `pousser`, audit C1) ; **côté tableau** : `dr_tabPoser` (l'attente de la production, `#mur2.mur.tableau`, le témoin « interrompu »), `dr_tabRecevoir` (la fenêtre locale ne lit jamais le hub), `dr_tabDemarrer`, `dr_tabMonter`/`dr_tabSonder`/`dr_tabMontrer` (le distant : 900 ms, `C/ecrans` sur `trameMaj`, l'eid fait foi, jamais une scène plus ancienne, ni celle d'une heure précédente), `dr_rendreMur` (le rendu unique).
+- **dette déclarée** : `dr_tabPoserEcran` ne sait pas encore comment le rendu du socle lit l'écran dans la page tableau (audit M2) — à brancher sur E1-a. La classe attendue de l'écran d'attente n'est pas faite (audit F1/I5, en attente).
+- **reste** : brancher `index.html` (les fonctions `ses*` qui me sont attribuées) dès E1-a.
+- **bloqué** : E1-a pas encore poussée (E1 a poussé son audit : il prend R14 « la fiche pilotée comme une diapo » au tableau pour moi — noté).
+- **relances** : `RELANCES/E3.md` relu — rien.

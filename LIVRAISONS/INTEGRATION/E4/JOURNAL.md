@@ -503,3 +503,10 @@
   - **L157 réglée** : le volet réduit aux numéros, la classe dite gelée ;
   - la diapo du cahier en préparation reste vide : **pas réglée**.
 - **Bilan à jour** : 156 lignes, dont 135 réglées, 10 pas réglées, 8 écartées, 3 à Paul, 0 ouverte. (La NOTE §10 donne les chiffres de 23:15 ; ceux-ci les remplacent.)
+
+## Poussée 56 — 02:05 UTC
+- **Réveil n°12 lu : l'audit final est écrit.** Il s'appuie sur ma passe finale. Mon dernier rôle : revérifier chacune des dix lignes « pas réglée » sur la poussée qui la règle, par le geste exact, aux deux tailles. Quand les dix seront réglées, j'écrirai « 0 pas réglée (commit) » dans la NOTE §10.
+- **Ligne 32, ce que je mesure aujourd'hui sur la tête** :
+  - « heure n » est **juste** : « heure 2/3 » au bouton puis à l'entête, l'heure du 07/09 comptée ;
+  - les « deux copies » : le faux hub portait déjà, avant le lancement, `3e_charles_de_gaulle` (l'ancienne forme du nom), et le lancement écrit sous `3E Charles de Gaulle`, la clé de `classesData` (contrat §12.13) ;
+  - le site lit l'ancienne copie sans la fusionner. Migrer, ou laisser la donnée héritée : **à trancher**.

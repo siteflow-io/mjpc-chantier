@@ -207,3 +207,4 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
   - L162 [E2 (E1)] — « Préparer le cahier de textes » à T-5 (`250193a1`)
 - Les deux graves qui bloquaient l'audit, L148 et L149, sont **réglées** sur `de6cd19c`.
 - **Mis à jour à 23:30**, sur `f42ea048` (la poussée 25 d'E2) : L155 et L157 sont réglées. Le compte devient **135 réglées, 10 pas réglées (E2 6, E1 4), 8 écartées, 3 à Paul, 0 ouverte**.
+- **Réveil n°12 (02:05)** : l'audit final s'appuie sur ce bilan. Il reste **10 pas réglées**, à revérifier une à une sur les poussées d'E1 (L66, L156, L160, L161, et sa part de L150) et d'E2 (L32, L107, L109, L150, L158, L162). Cette ligne deviendra « 0 pas réglée (commit) » quand les dix seront réglées. L32 : « heure n » juste ; les deux copies viennent de la donnée héritée du faux hub, le site suit §12.13 ; migrer ou non est à trancher.

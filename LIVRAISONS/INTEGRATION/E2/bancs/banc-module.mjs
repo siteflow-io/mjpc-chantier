@@ -40,6 +40,13 @@ pas('M2', jr && !aRang(jr) ? 'ok' : 'ÉCHEC', 'C/journal : aucun rang (di) au hu
 pas('M2', et && et.S && et.parDiapo && et.vuMax && !aRang(et) ? 'ok' : 'ÉCHEC', 'C/etat : S, parDiapo, vuMax, aucun rang', et ? Object.keys(et).join(',') : '—');
 pas('M2', H && H.classe === '3E Charles de Gaulle' && H.creneau === '15:07-16:02' && H.debutReel && H.activites && H.activites[0] && H.activites[0].passages >= 1 && H.activites[0].eid ? 'ok' : 'ÉCHEC', 'H : classe, créneau, début réel, activites[0] (eid, passages ≥ 1)', H && JSON.stringify(H.activites));
 pas('M2', H && H.activites[0].reel >= 1 && Array.isArray(H.parts) && H.parts.length === 1 && !aRang(H) ? 'ok' : 'ÉCHEC', 'H : le temps réel (≥ 1 min), la parole, aucun rang', H && JSON.stringify({ reel: H.activites[0].reel, parts: (H.parts || []).length }));
+const av = await p.evaluate(() => { try { ouOnEnEst(); } catch (e) {} const x = document.querySelector('#durees .dur-l.cours .dr-avance') || document.querySelector('#durees .dr-avance'); return x ? x.textContent : null; });
+pas('R7', av && /^5\/\d+ · \d+\/\d+ min$/.test(av) ? 'ok' : 'ÉCHEC', '« Où on en est » : dévoilés / total et réel / prévu sur la ligne de l\'activité en cours', av);
+await s.attendre(1200); await p.click('#dr-minut-b'); await s.attendre(100); await p.fill('#dr-minut-in', '00:10'); await p.check('#dr-minut-tab'); await p.click('#dr-minut-go'); await s.attendre(3000);
+const m1 = await p.evaluate(() => ({ aff: document.getElementById('dr-minut-aff').textContent, bandeau: S.bandeau, mur: S.mur && S.mur.bandeau }));
+pas('R3', /^00:0[67]$/.test(m1.aff) && /^⏱ 00:0[67]$/.test(m1.bandeau) && m1.mur === m1.bandeau ? 'ok' : 'ÉCHEC', 'le minuteur : 10 s, Départ, « au tableau » → le compte à rebours au pilote et dans l\'état du tableau', JSON.stringify(m1));
+await s.attendre(12500); const m2 = await p.evaluate(() => ({ bandeau: S.bandeau, J: J.filter(x => x.type === 'minuteur').map(x => x.action) }));
+pas('R3', !m2.bandeau && m2.J.join() === 'depart,fin' ? 'ok' : 'ÉCHEC', 'à zéro : « c\'est fini », le bandeau se retire, le journal a départ et fin', JSON.stringify(m2));
 const avant = await lu(p);
 dire('      avant rechargement : ' + JSON.stringify(avant));
 await s.ctx.close();

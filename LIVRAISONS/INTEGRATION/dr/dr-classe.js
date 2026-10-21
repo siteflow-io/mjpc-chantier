@@ -288,3 +288,63 @@ function dr_cloreFin(){
   dr_coursFermer();
   AT_DR_REGIME = 'prep';
 }
+
+/* ─── pour les autres territoires : relire une heure jouée telle que je l'ai écrite (E4, la Relecture d'une heure close ;
+   E1, `dr_heureDe` pour une heure passée). `chemin` = `C` de la classe (défaut : `dr_cheminC()`). Rend `{S, parDiapo, vuMax, J}`
+   décodés (les rangs refaits depuis les `eid`), ou null. Lecture seule. ─── */
+function dr_lireJoue(cb, chemin){
+  const C = chemin || (typeof dr_cheminC === 'function' ? dr_cheminC() : null); if (!C) { cb(null); return; }
+  dr_lire(C + '/etat', et => dr_lire(C + '/journal', jr => {
+    if (!et && !jr) { cb(null); return; }
+    cb({ S: dr_duHub((et || {}).S || {}), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null });
+  }));
+}
+
+/* ─── R7 « Où on en est » (l'ancien `atVecuAfficher`) : sur chaque ligne d'activité de la colonne de droite, « dévoilés / total »
+   et le réel contre le prévu, depuis le journal. La liste elle-même est celle de la maquette (`ouOnEnEst`, E1) : je la complète
+   après chaque rendu, sans la réécrire (le crochet est posé une fois, ici). ─── */
+function dr_avanceActivites(){
+  try {
+    if (!S.lancee || S.atelier) return; const d = document.getElementById('durees'); if (!d) return; const E = seance().ecrans;
+    d.querySelectorAll('.dur-l .dur-in[data-a]').forEach(inp => {
+      const a = activitesDeLHeure().find(x => x.id === inp.dataset.a); if (!a) return; const l = inp.closest('.dur-l');
+      const ds = (a.diapos || []).filter(i => E[i]); const tot = ds.reduce((t, i) => t + elements(E[i]).length, 0), vus = ds.reduce((t, i) => t + Math.min(elements(E[i]).length, ((parDiapo[K(i)] || {}).nDev || 0)), 0);
+      const reel = Math.round(tempsActiviteSec(a) / 60), prevu = dureeDe(a);
+      let x = l.querySelector('.dr-avance'); if (!x) { x = document.createElement('span'); x.className = 'dr-avance'; l.appendChild(x); }
+      x.textContent = vus + '/' + tot + ' · ' + reel + '/' + prevu + ' min';
+      x.title = 'Activité ' + a.num + ' : ' + vus + ' élément' + (vus > 1 ? 's' : '') + ' dévoilé' + (vus > 1 ? 's' : '') + ' sur ' + tot + ', ' + reel + ' min passées pour ' + prevu + ' prévues (le temps mis à part pendant une coupure ne compte pas).';
+      x.classList.toggle('dr-plus', reel > prevu);
+    });
+  } catch (e) {}
+}
+if (typeof ouOnEnEst === 'function' && !ouOnEnEst.__dr) { const dr_ouOnEnEst0 = ouOnEnEst; window.ouOnEnEst = function () { const r = dr_ouOnEnEst0.apply(this, arguments); dr_avanceActivites(); return r; }; window.ouOnEnEst.__dr = true; }
+
+/* ─── R3 le minuteur d'activité (l'ancien `regleChrono`/`chrono`, #cmin #csec #bchr #bmon) : mm:ss, « Départ », le compte à
+   rebours au pilote, et « au tableau » (le bandeau de l'état du tableau, `et.bandeau`, que le tableau d'E3 affiche) — pour
+   « Étape 1 : j'observe en silence (5 min) ». Il ne touche pas le chrono de l'heure. Journal : `minuteur` (départ, arrêt, fin). ─── */
+DR_CL.minut = null;   /* { fin, duree, tableau, eid } */
+const dr_mmss = ms => { const s = Math.max(0, Math.round(ms / 1000)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
+function dr_minuteurPoser(){
+  if (document.getElementById('dr-minut') || !document.getElementById('chr')) return;
+  const b = document.createElement('span'); b.id = 'dr-minut'; b.className = 'dr-minut';
+  b.innerHTML = '<button class="btn" id="dr-minut-b" title="Le minuteur d’activité : un compte à rebours pour une consigne minutée (« j’observe en silence, 5 min »). Il ne change pas le chrono de l’heure ; tu peux le montrer au tableau.">⏱</button>'
+    + '<span id="dr-minut-p" class="dr-minut-p" style="display:none"><input id="dr-minut-in" value="05:00" size="5" title="La durée, en minutes:secondes"> <button class="btn or" id="dr-minut-go" title="Lance le compte à rebours">Départ</button> <label title="Le compte à rebours paraît aussi au tableau, en bandeau"><input type="checkbox" id="dr-minut-tab"> au tableau</label> <button class="btn" id="dr-minut-stop" title="Arrête le minuteur et le retire du tableau">Arrêter</button></span>'
+    + '<b id="dr-minut-aff" class="dr-minut-aff"></b>';
+  document.getElementById('chr').insertAdjacentElement('afterend', b);
+  const $m = id => document.getElementById(id);
+  $m('dr-minut-b').onclick = () => { const p = $m('dr-minut-p'); p.style.display = p.style.display === 'none' ? '' : 'none'; if (p.style.display === '') $m('dr-minut-in').select(); };
+  $m('dr-minut-in').onkeydown = ev => { ev.stopPropagation(); if (ev.key === 'Enter') $m('dr-minut-go').click(); if (ev.key === 'Escape') $m('dr-minut-p').style.display = 'none'; };
+  $m('dr-minut-go').onclick = () => { const v = String($m('dr-minut-in').value).split(':'); const ms = ((+v[0] || 0) * 60 + (+v[1] || 0)) * 1000; if (ms <= 0) return;
+    DR_CL.minut = { fin: Date.now() + ms, duree: ms, tableau: $m('dr-minut-tab').checked, eid: (ecran() || {}).eid }; journal('minuteur', { action: 'depart', duree: Math.round(ms / 1000), tableau: DR_CL.minut.tableau }); $m('dr-minut-p').style.display = 'none'; dr_minuteurTic(); };
+  $m('dr-minut-tab').onchange = () => { if (DR_CL.minut) { DR_CL.minut.tableau = $m('dr-minut-tab').checked; dr_minuteurTic(); } };
+  $m('dr-minut-stop').onclick = () => { if (DR_CL.minut) journal('minuteur', { action: 'arret', reste: Math.round((DR_CL.minut.fin - Date.now()) / 1000) }); dr_minuteurFin(); $m('dr-minut-p').style.display = 'none'; };
+}
+function dr_minuteurFin(){ DR_CL.minut = null; const a = document.getElementById('dr-minut-aff'); if (a) { a.textContent = ''; a.className = 'dr-minut-aff'; } if (S.bandeau && /^⏱/.test(S.bandeau)) { S.bandeau = ''; dr_minuteurPousser(); } }
+function dr_minuteurPousser(){ try { if (!S.gel && S.lancee && typeof pousser === 'function' && typeof etatComplet === 'function') pousser(etatComplet()); if (typeof dr_sceneAuto === 'function') dr_sceneAuto(); } catch (e) {} }
+function dr_minuteurTic(){
+  const m = DR_CL.minut; if (!m) return; const reste = m.fin - Date.now(); const a = document.getElementById('dr-minut-aff');
+  if (a) { a.textContent = reste > 0 ? dr_mmss(reste) : '00:00'; a.className = 'dr-minut-aff' + (reste <= 60000 ? ' dr-minut-fin' : ''); a.title = 'Le minuteur : ' + dr_mmss(reste) + ' restantes sur ' + dr_mmss(m.duree) + (m.tableau ? ', montré au tableau' : ''); }
+  const txt = m.tableau ? '⏱ ' + dr_mmss(reste) : ''; if ((S.bandeau || '') !== txt && (txt || /^⏱/.test(S.bandeau || ''))) { S.bandeau = txt; dr_minuteurPousser(); }
+  if (reste <= 0) { journal('minuteur', { action: 'fin' }); setTimeout(dr_minuteurFin, 4000); DR_CL.minut = Object.assign({}, m, { fin: Infinity, fini: true }); if (a) { a.textContent = '00:00 — c’est fini'; } }
+}
+setInterval(() => { try { if (S.lancee) dr_minuteurPoser(); if (DR_CL.minut && !DR_CL.minut.fini) dr_minuteurTic(); } catch (e) {} }, 1000);

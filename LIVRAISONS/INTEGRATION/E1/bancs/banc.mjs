@@ -9,7 +9,8 @@ const dire = s => { E.R.push(s); console.log(s); };
 dire('banc E1 · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC · ' + path.relative(E.RACINE, E.FICHIER) + ' · md5 ' + createHash('md5').update(fs.readFileSync(E.FICHIER)).digest('hex'));
 const sansVoile = pg => pg.evaluate(() => { const x = document.getElementById('fi-overlay'); if (x) x.remove(); });   /* le voile « fiches pas à jour » du site : /manifestes manque au faux hub (JOURNAL E1) */
 const b = await E.nav();
-const B = async (k, titre, f) => { dire(''); dire(k + ' — ' + titre); try { await f(); } catch (e) { E.verif(k, false, 'le banc n\'a pas pu aller au bout', String(e.message).split('\n')[0]); } };
+const SEUL = (process.env.MJPC_SEUL || '').split(',').filter(Boolean);   // MJPC_SEUL=A7,A8 : ne jouer que ces parties (mise au point ; le banc de poussée les joue toutes)
+const B = async (k, titre, f) => { if (SEUL.length && !SEUL.includes(k)) return; dire(''); dire(k + ' — ' + titre); try { await f(); } catch (e) { E.verif(k, false, 'le banc n\'a pas pu aller au bout', String(e.message).split('\n')[0]); } };
 
 await B('A1', 'les collisions (contrat §7)', async () => { const r = spawnSync('node', [path.join(E.RACINE, 'AUDITS/INTEGRATION-DEROULE/collisions.mjs'), path.join(E.RACINE, 'LIVRAISONS/INTEGRATION/index.html')], { encoding: 'utf8' }); const noms = (r.stdout.match(/→ (.*)/g) || []).flatMap(l => l.slice(2).trim().split(/\s+/));
   const miens = ['dr.css', 'dr-gabarit.js', 'dr-socle.js', 'dr-atelier.js'].map(f => fs.readFileSync(path.join(E.RACINE, 'LIVRAISONS/INTEGRATION/dr', f), 'utf8')).join('\n');
@@ -116,6 +117,59 @@ await B('A7', 'p8-5h dans le site (point 14) et la taille (point 15), sur la tra
     const t = await pg.evaluate(() => { const z = document.getElementById('dr-zone').getBoundingClientRect(); const dans = sel => { const e = document.querySelector(sel); if (!e || !e.offsetParent) return true; const r = e.getBoundingClientRect(); return r.right <= z.right + 1 && r.bottom <= window.innerHeight + 1; }; return { haut: Array.from(document.querySelectorAll('#dr-zone .haut > *')).filter(e => e.offsetParent).every(e => e.getBoundingClientRect().right <= z.right + 1), dev: dans('#bdev'), compte: dans('#compte'), mur: dans('#mur') }; });
     E.verif('A7', t.haut && t.dev && t.compte && t.mur, '15 · ' + w + ' × ' + h + ' : l\'entête, « ▶ Dévoiler », le compteur et la diapo tiennent dans la zone du site', JSON.stringify(t)); }
   E.verif('A7', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
+
+await B('A8', 'la trame réelle, ligne pour ligne (point 10) : les 9 séances rendues dans le site comme dans la maquette p8-5g', async () => {
+  const maqF = path.join(E.ICI, '.cache', 'maquette-p8-5g.html'); if (!fs.existsSync(maqF)) { fs.mkdirSync(path.dirname(maqF), { recursive: true }); fs.writeFileSync(maqF, spawnSync('git', ['-C', E.RACINE, 'show', 'origin/deroule/p8-5g:LIVRAISONS/DEROULE/p8-5g/maquette-pilotage-ordi-v9c15p8-manipulable.html'], { encoding: 'buffer', maxBuffer: 1 << 26 }).stdout); }
+  const lire = (cote) => { /* chaque diapo rendue hors de l'écran, à la taille du tableau, tout dévoilé, sans pages ; ses lignes et ses titres */
+    const SE = cote === 'site' ? dr_seances() : DATA.seances; const out = []; const z = document.createElement('div'); z.className = 'mur tableau'; z.style.cssText = 'position:fixed;left:-30000px;top:0;width:1096px;height:616px'; (document.getElementById('dr-zone') || document.body).appendChild(z);
+    SE.forEach((se, si) => { const si0 = S.si; S.si = si; se.ecrans.forEach((e, i) => { if (e.role === 'fin') return; try { rendre(z, { si, di: i, nDev: elements(e).length, lum: [], ecr: [], taille: 1, page: 0, reps: {}, tailles: {}, textes: {}, fsBloc: {}, pilote: false, sansPages: true }); out.push({ si, act: e.act, fiche: !!z.querySelector('.fiche'), l: Array.from(z.querySelectorAll('li[data-p], [data-p$=".t"], .fiche .def, .fiche .corps')).filter(x => !x.closest('.page-sup, .doc-sup, .obj-nonlisible')).map(x => x.textContent.replace(/\s+/g, ' ').trim()).filter(Boolean) }); } catch (er) { out.push({ si, act: e.act, err: er.message }); } }); S.si = si0; }); z.remove(); return out; };
+  const o = await E.ouvrir(b); const site = await o.pg.evaluate(lire, 'site'); await o.ctx.close();
+  const ctx = await b.newContext({ viewport: { width: 1280, height: 800 } }); const pm = await ctx.newPage(); await pm.goto('file://' + maqF); await pm.waitForTimeout(800); const maq = await pm.evaluate(lire, 'maquette'); await ctx.close();
+  let comp = 0, egal = 0; const diff = [], f17 = []; const errs = site.filter(x => x.err);
+  for (let si = 0; si < 9; si++) { const S1 = site.filter(x => x.si === si), M1 = maq.filter(x => x.si === si); const vus = {}; S1.forEach(x => { const k = x.act + '#' + (vus[x.act] = (vus[x.act] || 0) + 1); const m = M1.filter(y => y.act === x.act)[vus[x.act] - 1]; if (!m) return; comp++; if (JSON.stringify(x.l) === JSON.stringify(m.l)) egal++; else if (x.fiche && !m.fiche) f17.push(si + ' · ' + x.act); else diff.push({ si, act: x.act, site: x.l.length, maq: m.l.length, premier: (x.l.find((v, j) => v !== m.l[j]) || '').slice(0, 40), maqPremier: (m.l.find((v, j) => v !== x.l[j]) || '').slice(0, 40) }); }); }
+  E.verif('A8', errs.length === 0, 'chaque diapo des 9 séances se rend dans le site sans erreur', errs.slice(0, 3).map(x => x.si + '/' + x.act + ' : ' + x.err).join(' ; ') || site.length + ' diapos');
+  E.verif('A8', comp >= 90 && egal + f17.length === comp, 'les diapos communes (par titre) : mêmes lignes, mêmes titres de blocs, dans le même ordre (hors les objets que la maquette simulait : page, document, objet inconnu)', egal + ' / ' + comp + ' identiques' + (f17.length ? ' ; ' + f17.length + ' fiche(s) que la maquette laissait non liée(s), donc invisible(s), montrée(s) par le site (audit F17) : ' + f17.join(' ; ') : '') + (diff.length ? ' · ÉCARTS ' + JSON.stringify(diff) : ''));
+});
+
+await B('A9', 'l\'écriture complète (point 11) : une activité, une note, le travail prévu → B/deroule seul, par eid ; le rechargement retrouve tout', async () => {
+  const o = await E.ouvrir(b); const pg = o.pg; await sansVoile(pg); pg.removeAllListeners('dialog'); pg.on('dialog', d => d.type() === 'prompt' ? d.accept('Le Romantisme en images') : d.dismiss());
+  const ouvrirPli = k => pg.evaluate(k => { const h = document.querySelector('#droite-atelier h5[data-pli="' + k + '"]'); if (h && h.parentElement.classList.contains('pli')) h.click(); }, k);
+  await ouvrirPli('acts'); await pg.waitForTimeout(200); await pg.click('#droite-atelier [data-nouvelle-act]'); await pg.waitForTimeout(400);
+  await pg.click('#mur li[data-k="1"]'); await pg.waitForTimeout(150); const pn = await pg.$$('#notesd [contenteditable]'); await pn[pn.length - 1].click(); await pg.keyboard.press('End'); await pg.keyboard.press('Enter'); await pg.keyboard.type('Note du banc E1.'); await pg.keyboard.press('Escape'); await pg.waitForTimeout(200);
+  await ouvrirPli('tp'); await pg.waitForTimeout(200); await pg.click('#dc-tp'); await pg.keyboard.type('Relire la fiche.'); await pg.mouse.click(5, 5); await pg.waitForTimeout(1800);
+  const e = await pg.evaluate(() => { const w = window.__CORPS.filter(x => /\/chapitres\//.test(x.c)); const der = w.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const bd = der && der.bd; const e0 = bd && bd.ecrans[0]; return { chemins: [...new Set(w.map(x => x.m + ' ' + x.c))], acts: bd && bd.activites, actId: e0 && e0.actId, eid0: e0 && e0.eid, notes: bd && bd.notes, travail: bd && bd.travail }; });
+  E.verif('A9', e.chemins.length === 1 && e.chemins[0] === 'PUT /site/3e/chapitres/0/seances/0/deroule', 'K15 : les écritures vont toutes à B/deroule de la séance 0', e.chemins.join(' ; '));
+  const a = (e.acts || [])[0] || {}; E.verif('A9', a.titre === 'Le Romantisme en images' && a.num === 1 && e.actId === a.id && (a.diapos || []).every(x => typeof x === 'string'), 'l\'activité : B/deroule/activites (titre, numéro), la diapo 1 la porte (actId) ; ses diapos jamais par rang', JSON.stringify(e.acts));
+  E.verif('A9', e.notes && e.notes[e.eid0] && JSON.stringify(e.notes[e.eid0]).includes('Note du banc E1.'), 'la note : B/deroule/notes/<eid de la diapo 1>', JSON.stringify(e.notes || null).slice(0, 120));
+  E.verif('A9', e.travail && e.travail['1'] === 'Relire la fiche.', 'le travail prévu de l\'heure 1 : B/deroule/travail/1', JSON.stringify(e.travail || null));
+  const hub = await pg.evaluate(() => window.__HUB); E.verif('A9', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close();
+  const o2 = await E.ouvrir(b, { hub }); const p2 = o2.pg; await sansVoile(p2);
+  const r = await p2.evaluate(() => { const k = cle(); const n = dr_notes()[k]; return { act: (actDe(dr_trame()[0]) || {}).titre, note: JSON.stringify(n || null), tp: dr_travail()[S.si + '|1'], ecr: window.__ECR.filter(x => /\/chapitres\//.test(x)).length }; });
+  E.verif('A9', r.act === 'Le Romantisme en images' && r.note.includes('Note du banc E1.') && r.tp === 'Relire la fiche.' && r.ecr === 0, 'rechargé : l\'activité, la note, le travail prévu sont là ; rien ne se réécrit', JSON.stringify(r).slice(0, 200));
+  E.verif('A9', !o2.errs.length, 'aucune erreur JS au rechargement', o2.errs.join(' ; ') || undefined); await o2.ctx.close(); });
+
+await B('A10', 'l\'Atelier entier (point 12) : dupliquer, insérer, déplacer, supprimer, envoyer vers une séance, jouer en avance — et ce qui s\'écrit', async () => {
+  const o = await E.ouvrir(b); const pg = o.pg; await sansVoile(pg); pg.removeAllListeners('dialog'); pg.on('dialog', d => d.accept());
+  const n = () => pg.$$eval('#volet [data-at-di]', l => l.length); const eids = () => pg.evaluate(() => dr_trame().map(e => e.eid));
+  const e0 = await eids(); await pg.click('#volet [data-at-di="0"]'); await pg.waitForTimeout(200); await pg.mouse.click(5, 5);
+  await pg.keyboard.press('Control+d'); await pg.waitForTimeout(400); const e1 = await eids();
+  E.verif('A10', (await n()) === 20 && e1.length === e0.length + 1 && e1[1] !== e0[0] && new Set(e1).size === e1.length, 'Ctrl+D : la diapo dupliquée suit, avec une identité neuve', (await n()) + ' lignes');
+  await pg.keyboard.press('Control+Enter'); await pg.waitForTimeout(400); E.verif('A10', (await n()) === 21, 'Ctrl+Entrée : une diapo insérée après', (await n()) + ' lignes');
+  const avant = await pg.evaluate(() => S.di); await pg.keyboard.press('Alt+ArrowDown'); await pg.waitForTimeout(400); const apres = await pg.evaluate(() => S.di);
+  E.verif('A10', apres === avant + 1, 'Alt+↓ : la diapo descend d\'un cran, elle reste la courante', avant + ' → ' + apres);
+  await pg.keyboard.press('Delete'); await pg.waitForTimeout(400); E.verif('A10', (await n()) === 20, 'Suppr : la diapo courante supprimée', (await n()) + ' lignes');
+  const eidEnvoye = await pg.evaluate(() => dr_trame()[2].eid);
+  await pg.click('#volet [data-at-di="2"]', { button: 'right' }); await pg.waitForTimeout(300); await E.clicTexte(pg, '#menu *', 'Envoyer vers une autre séance'); await pg.waitForTimeout(300);
+  await pg.click('.choix-obj [data-si="1"]'); await pg.waitForTimeout(1600);
+  const w = await pg.evaluate(id => { const W = window.__CORPS.filter(x => /\/chapitres\//.test(x.c)); const der = c => (W.filter(x => x.c === c).pop() || {}).bd; const b0 = der('/site/3e/chapitres/0/seances/0/deroule'), b1 = der('/site/3e/chapitres/0/seances/1/deroule'); return { chemins: [...new Set(W.map(x => x.m + ' ' + x.c))].sort(), dans0: b0 && b0.ecrans.some(e => e.eid === id), dans1: b1 && b1.ecrans.some(e => e.eid === id), n0: b0 && b0.ecrans.length, n1: b1 && b1.ecrans.length, rang: JSON.stringify(b0 || {}).includes('"di":') }; }, eidEnvoye);
+  E.verif('A10', JSON.stringify(w.chemins) === JSON.stringify(['PUT /site/3e/chapitres/0/seances/0/deroule', 'PUT /site/3e/chapitres/0/seances/1/deroule']), 'K15 : seules B/deroule de la séance 0 et B\'/deroule de la séance 1 (la cible de l\'envoi) sont écrites', w.chemins.join(' ; '));
+  E.verif('A10', w.dans1 && !w.dans0 && w.n0 === 18 && w.n1 === 18 && !w.rang, 'envoyer vers la séance 2 : l\'écran (même eid) quitte la séance 1 et arrive dans la 2 ; jamais un rang au hub', JSON.stringify(w));
+  const avantRep = await pg.evaluate(() => window.__ECR.length); await pg.evaluate(() => lancerRepetition()); await pg.waitForTimeout(300); for (let i = 0; i < 3; i++) { await pg.click('#bdev'); await pg.waitForTimeout(100); } await pg.click('#rep-stop'); await pg.waitForTimeout(1500);
+  E.verif('A10', (await pg.evaluate(() => window.__ECR.length)) === avantRep && (await pg.evaluate(() => S.atelier && !S.repetition)), '« Jouer en avance », trois ▶, « ■ Arrêter » : rien d\'écrit, retour à l\'atelier');
+  const hub = await pg.evaluate(() => window.__HUB); E.verif('A10', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close();
+  const o2 = await E.ouvrir(b, { hub }); const p2 = o2.pg; await sansVoile(p2); await p2.evaluate(() => Array.from(document.querySelectorAll('#at-arbre .at-som-pli'))[1].click()); await p2.waitForTimeout(1200);
+  const r = await p2.evaluate(id => ({ la: dr_trame().some(e => e.eid === id), n: document.querySelectorAll('#volet [data-at-di]').length }), eidEnvoye);
+  E.verif('A10', r.la && r.n === 19, 'rechargé : la diapo envoyée est dans la séance 2 (18 diapos + la fin d\'heure)', JSON.stringify(r)); await o2.ctx.close(); });
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

@@ -57,3 +57,13 @@
 - **Banc E1** : 44 vérifications, 0 échec (A7 : « · 2 pages », Échap, « 1 · 1/2 » / « 1 · 2/2 », ▶ jusqu'à la page 2, la vue « ⧉ Tableau », la garde, 1280 × 800 et 1366 × 768).
 - **Reste** : la trame complète ligne pour ligne (10), l'écriture complète (11), l'Atelier entier (12), les infobulles (16), le recyclage (17), puis les dettes (18).
 - **Relances** : relu, rien.
+
+## 10:12 UTC — poussée 6 : E1-b · la trame complète (10), l'écriture complète (11), l'Atelier entier (12)
+- **10 · ligne pour ligne** : les 95 diapos des 9 séances rendues dans le site et dans la maquette p8-5g, comparées par titre : **93 identiques** (mêmes lignes, mêmes titres de blocs, même ordre) ; 2 fiches que la maquette laissait elle-même non liées (donc invisibles) sont montrées par le site — **audit F17** : aucune fiche du hub n'est liée à une feuille (le lien de la maquette était simulé) ; une fiche du site qui porte son texte s'affiche comme dans l'ancien moteur, « À régler » dit qu'elle n'est pas liée (`dr_ficheEnLigne`). Les objets que la maquette simulait (page sans contrat, document, objet inconnu) sont hors comparaison.
+- **11 · l'écriture** : une activité, une note, le travail prévu → **une seule écriture**, `PUT …/seances/0/deroule` : `activites` (titre, numéro, la diapo la porte par `actId`, ses diapos jamais par rang), `notes/<eid>`, `travail/1` ; rechargé, tout est là et rien ne se réécrit.
+- **12 · l'Atelier** : Ctrl+D (identité neuve), Ctrl+Entrée, Alt+↓, Suppr, « Envoyer vers une autre séance… » (`B/deroule` de la séance source **et** `B'/deroule` de la cible, même `eid`, jamais un rang), « Jouer en avance » → ▶ ×3 → « ■ Arrêter » (rien d'écrit) ; rechargé, la diapo envoyée est dans l'autre séance.
+- **Banc E1** : 62 vérifications, 0 échec (A8, A9, A10 ajoutés), sur l'état commun (modules d'E2, E3, E4 du moment).
+- **À noter** : « nouvelle activité » demande son titre par `prompt()`, une boîte du navigateur (le cadrage n°7, T1, veut des modales du site) — à faire avec les infobulles (16) ; les notes de présentateur s'accrochent à un élément par `p` = « bloc.élément » à l'intérieur de la diapo (modèle p8-5c), la diapo par `eid`.
+- **Reste** : les infobulles (16), le recyclage (17), puis les dettes (18), les relecteurs neufs, `NOTE.md`.
+- **Relances** : relu, rien.
+- **Banc de la conscience** (`sorties/1012/`) : assemblage 7/7, collisions 1 id (`durees`, E2) ; **PARCOURS VERT** (P0-P11 ; P8 vert depuis le branchement d'E3 ; « Préparer » et « Clore » absents, E2) ; parcours en mode test : zéro écriture au hub, l'outil compte P5 en échec (il attend des écritures au lancement même en mode test — audit F15/journal) ; contrôles : bloqués par le voile (F15).

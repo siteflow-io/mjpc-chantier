@@ -23234,3 +23234,21 @@ Envoyé à Paul, mot pour mot :
 En testant, QCM-4 a trouvé un défaut qui existait déjà avant. Prends une séance de 4 questions où tu as écarté Q4, et où tu as posé puis corrigé Q1 à Q3. Si tu la rouvres, la console te propose « ▶️ Lancer Q1 », comme si rien n'avait été fait. Q1 à Q4 y sont toutes « à venir », et tu ne peux pas remettre Q4. Ma proposition : la console montre Q1 à Q3 comme déjà faites, et Q4 « écartée » avec « ↩️ Remettre ». Si tu remets Q4, elle te propose « ▶️ Lancer Q4 » ; sinon, « 🛑 Terminer ». Tu valides ? Si oui, il faudra relancer QCM-2, qui tient la console. Tant que ce défaut n'est pas réglé, je ne mets rien en ligne.
 
 21/10/2026 14:17 MEMO
+
+## TOUR 759 — Paul, 21/10 14:48
+
+Paul, mot pour mot :
+
+Ok ouo
+
+Lu : `ETAT.md` (QCM-1 : 12:52 ; QCM-2 : arrêté à 09:33 ; QCM-3 : 14:39 ; QCM-4 : 14:42). Fait : les points 15 à 17 de la section (`code-qcm` `e82e946c`) ; dette n°12 · 223 (production).
+
+Envoyé à Paul, mot pour mot :
+
+31. C'est noté, et écrit aux exécutants. QCM-2, qui s'occupe de la console, s'est arrêté ce matin : il faut le relancer, et QCM-1 avec lui, au cas où QCM-2 aurait besoin de lui. QCM-4 tourne encore et vérifiera tout. Voici le message, le même dans les deux sessions, QCM-2 et QCM-1 :
+
+« La séance rouverte après une question écartée : lis le bloc de 14:48 et ses points 15 à 17, en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), et fais ta part. Tu livres une heure après ce message, avec ta ligne dans ETAT.md, et tu tournes jusqu'à « contrôlé » sous ces points. »
+
+Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
+
+21/10/2026 14:49 MEMO

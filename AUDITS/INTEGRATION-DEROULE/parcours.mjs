@@ -37,8 +37,11 @@ const existe = sel => page.evaluate(s => { const e = document.querySelector(s); 
 const clic = sel => page.evaluate(s => { const e = document.querySelector(s); if (!e) return false; e.click(); return true; }, sel);   // le clic par l'élément : une modale ouverte par-dessus ne bloque pas le pas suivant, elle se voit dans la capture
 const ecrits = () => page.evaluate(() => window.__ECR.slice());
 // en mode test, les écritures vont au magasin M8_TEST_STORE (jamais au hub) : c'est là qu'on vérifie ce que le lancement a écrit
-const magasin = () => page.evaluate(() => Object.keys(window.M8_TEST_STORE || {}).map(k => 'MAGASIN ' + k));
-const traces = () => MODE_TEST ? magasin() : ecrits();
+// (v3, 15:13, mesure d'E2) : le magasin range AUSSI les lectures mises en cache (`secuLire`), donc une clé peut exister avant le lancement ;
+// on compare les VALEURS avant/après, pas la présence des clés
+const magasin = () => page.evaluate(() => { const m = window.M8_TEST_STORE || {}; const o = {}; Object.keys(m).forEach(k => { try { o[k] = JSON.stringify(m[k]); } catch (e) { o[k] = String(m[k]); } }); return o; });
+let magasinAvant = {};
+const traces = async () => { if (!MODE_TEST) return ecrits(); const m = await magasin(); return Object.keys(m).filter(k => magasinAvant[k] !== m[k]).map(k => 'MAGASIN ' + k); };
 const cadreAncien = () => page.evaluate(() => !!document.getElementById('at-dr-iframe'));
 const dansCadre = (f, ...a) => page.evaluate(([src, args]) => { const W = document.getElementById('at-dr-iframe').contentWindow; return (new Function('W', 'd', 'args', 'return (' + src + ')(W, d, ...args)'))(W, W.document, args); }, [f.toString(), a]);
 const P = async (k, titre, f) => { dire(''); dire(k + ' — ' + titre); try { await f(); } catch (e) { pas(k, 'ÉCHEC', 'le pas n\'a pas abouti', String(e.message).slice(0, 200)); } };
@@ -67,7 +70,8 @@ await P('P3', 'l\'Atelier (préparation) depuis « Mes chapitres »', async () =
   const lignes = neuf ? await page.evaluate(() => document.querySelectorAll('#mur li[data-p]').length) : await dansCadre((W, d) => d.querySelectorAll('#contenu li').length).catch(() => 0);
   pas('P3', lignes > 0 ? 'ok' : 'ÉCHEC', 'la diapo 1 de la séance 0 au mur, avec ses lignes', lignes + ' lignes'); });
 await P('P4', 'le clic droit sur une étape', async () => { if (neuf) { const li = await page.$('#mur li[data-p]'); if (!li) throw new Error('pas de ligne'); await li.click({ button: 'right' }); } else { await dansCadre((W, d) => { const li = d.querySelector('#contenu li[data-p]'); if (li) li.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 400, clientY: 300 })); }); } await pause(400); await cap('P4-clic-droit'); pas('P4', 'ok', 'menu ouvert (voir la capture)'); await page.keyboard.press('Escape'); if (!neuf) await page.frameLocator('#at-dr-iframe').locator('body').click({ position: { x: 8, y: 8 } }); else await page.mouse.click(5, 5); await pause(300); });
-const avant = (await traces()).length;
+if (MODE_TEST) magasinAvant = await magasin();
+const avant = MODE_TEST ? 0 : (await traces()).length;
 await P('P5', 'lancer la séance (la classe)', async () => { let voie = null;
   if (neuf && await existe('.at-onglet[data-vue="pilotage"]')) { await clic('.at-onglet[data-vue="pilotage"]'); await pause(600); if (await existe('[data-lancer="1"]')) { await clic('[data-lancer="1"]'); voie = 'Pilotage → [data-lancer=1] (E2)'; } }
   if (!voie && await existe('#at-dr-classe')) { await page.selectOption('#at-dr-classe', '3E Charles de Gaulle'); await page.evaluate(() => { const cr = document.getElementById('at-dr-creneau'); for (let j = 0; j < cr.options.length; j++) if (cr.options[j].text.startsWith('08:57')) cr.selectedIndex = j; cr.dispatchEvent(new Event('change')); const d = document.getElementById('at-dr-debut'); if (d) d.value = '08:57'; }); await nettoyer(); await page.evaluate(() => atDrJouerClic()); voie = 'tête de préparation → atDrJouerClic (production)'; }
@@ -96,7 +100,14 @@ await P('P10', 'la Relecture', async () => { const v = neuf ? 'relecture' : 'rel
 await P('P11', 'le Papier', async () => { if (await existe('.at-onglet[data-vue="papier"]')) { await clic('.at-onglet[data-vue="papier"]'); await pause(1500); await cap('P11-papier'); pas('P11', 'ok', 'la vue Papier de la production (ancienne : tombe)'); if (neuf) pas('P11', 'ÉCHEC', 'la vue papier existe encore comme onglet'); return; }
   const ok = await clicTexte('#dr-zone button, .at-vues-zone button', 'Papier'); await pause(1500); await cap('P11-papier'); pas('P11', ok ? 'ok' : 'absent', ok ? 'la face Papier de la Relecture (E4)' : 'pas de face Papier (E4)'); });
 await P('P12', 'la clôture', async () => { if (neuf && await existe('.at-onglet[data-vue="pilotage"]')) { await clic('.at-onglet[data-vue="pilotage"]'); await pause(800); } else if (await existe('.at-onglet[data-vue="deroule"]')) { await clic('.at-onglet[data-vue="deroule"]'); await pause(1500); }
-  const ok = (await clicTexte('#at-dr-tete button', 'Clore')) || (await clicTexte('#dr-zone button', 'Clore')); await pause(1500); await cap('P12-cloture'); pas('P12', ok ? 'ok' : 'absent', ok ? 'clôture demandée (voir la capture)' : 'aucun bouton « Clore »'); });
+  const ok = (await clicTexte('#at-dr-tete button', 'Clore')) || (await clicTexte('#dr-zone button', 'Clore')); await pause(1200);
+  // (v3) la garde « Clore quand même » / « Oui, continuer » s'il y en a une, puis l'effet au hub : H.clos
+  // le geste réel de la maquette : « ■ Clore l'heure » (entête) mène à l'étape 7 ; le bouton « Clore l'heure » DU PANNEAU clôt ; une garde « Clore quand même » peut suivre
+  const bouton7 = await page.evaluate(() => { const b = Array.from(document.querySelectorAll('#fin button, #dr-zone button')).filter(x => x.offsetParent !== null && /^Clore l[’']heure$/.test((x.innerText || '').trim()) && !x.closest('.haut')); if (!b.length) return false; b[b.length - 1].click(); return true; }); await pause(1200);
+  const garde2 = (await clicTexte('button', 'Clore quand même')) || (await clicTexte('button', 'Oui, continuer')); await pause(2500); await cap('P12-cloture');
+  pas('P12', ok ? 'ok' : 'absent', ok ? 'clôture demandée (voir la capture)' + (bouton7 ? ' — étape 7 : « Clore l’heure »' : '') + (garde2 ? ' — garde passée' : '') : 'aucun bouton « Clore »');
+  if (ok && neuf) { const clos = await page.evaluate((test) => { const lire = () => { try { if (test) { const m = window.M8_TEST_STORE || {}; const k = Object.keys(m).find(x => /\/heures\/[^/]+$/.test(x)); return k ? m[k] : null; } const h = window.__HUB.site['3e'].chapitres[0].seances[0].deroule_joue['3E Charles de Gaulle'].heures; const k = Object.keys(h).find(x => /2026-09-14/.test(x)); return k ? h[k] : null; } catch (e) { return null; } }; const H = lire(); return H ? { clos: !!H.clos, finReel: !!H.finReel } : null; }, MODE_TEST);
+    pas('P12', clos && clos.clos && clos.finReel ? 'ok' : 'ÉCHEC', 'au hub, H.clos et H.finReel après la clôture (E2)', JSON.stringify(clos)); } });
 
 dire(''); dire('K15 — les écritures au hub pendant le parcours');
 const tout = await ecrits(); const motifs = [...new Set(tout.map(e => e.replace(/\/[^\/]*\d{4}-\d\d-\d\d[^\/]*/g, '/<heure>').replace(/\/-?[A-Za-z0-9_]{15,}/g, '/<id>')))];

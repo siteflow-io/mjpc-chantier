@@ -220,3 +220,16 @@
 - **Bancs :**
   - Mon banc : **95 ok · 0 échec** (`sorties/1426-site-E4`).
   - banc.sh : les parcours sont verts. K 108 / 18, la cause est ci-dessus, pas mon module (`sorties/1431`).
+
+## Poussée 31 — 15:00 UTC
+- **Réveil n°4 lu** : sur les dix lignes du 14:05, sept étaient réglées à la poussée 30. Celle-ci règle **l'impression**.
+  - `dr_relectureVisible` lisait `offsetParent`. En média d'impression, ma règle cache la Relecture, donc beforeprint retirait la copie et tout le site s'imprimait.
+  - Garde P1 : un vrai `page.pdf`, dont le texte est lu par pdftotext.
+- Restent « Le chapitre » et « la réponse attendue » (dettes dites). R6 est fait depuis la poussée 27.
+- **Relecteur A4** consigné (sur `d5f9a6d6`) :
+  - 6 réglés : la question grisée, le bandeau, la réponse au tableau, « Où on en est », la reprise de l'heure 2, l'EDT ;
+  - 10 lignes nouvelles. **2 à moi, réglées** : l'échéance hors de la liste se dit (`dr_recitEcheanceDe`) ; une diapo jouée n'est plus « hors de l'heure » (garde B3).
+  - J'ai mesuré que la copie ED de la Relecture garde ses paragraphes. Les paragraphes collés viennent de l'étape 6 de la fin de l'heure (E2).
+- **Bancs :**
+  - Mon banc : **97 ok · 0 échec** (`sorties/1452-site-E4`).
+  - **banc.sh v1.1 : VERT**, K 108/0 et les deux parcours (`sorties/1457`).

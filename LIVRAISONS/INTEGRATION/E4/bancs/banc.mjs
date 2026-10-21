@@ -116,8 +116,11 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
   // l'impression : seule la feuille
   await pg.emulateMedia({ media: 'print' }); await p(pg, 200); await cap(pg, 'E4-P1-impression');
   const imp = await pg.evaluate(() => { const vis = el => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none'; }; const z = document.getElementById('dr-impression'); const hors = Array.from(document.body.children).filter(x => x !== z && vis(x)).map(x => x.tagName + '#' + x.id + '.' + x.className).slice(0, 5); return { feuille: !!z && vis(z) && /Ce qu'on a fait aujourd'hui/.test(z.innerText), hors }; });
-  await pg.emulateMedia({ media: 'screen' });
   verif('P1', imp.feuille && imp.hors.length === 0, '@media print : la feuille, et rien d\'autre du site', JSON.stringify(imp));
+  { const f = path.join(CAP, 'E4-P1-impression.pdf'); await pg.pdf({ path: f, format: 'A4' }); /* en média print, comme une vraie impression (un emulateMedia screen ferait imprimer l'écran) */ let txt = null; try { txt = (await import('node:child_process')).execFileSync('pdftotext', [f, '-'], { encoding: 'utf8' }); } catch (e) {}
+    const reste = await pg.evaluate(() => { const i = document.getElementById('dr-impression'); return i ? { parent: i.parentElement && (i.parentElement.tagName + '#' + i.parentElement.id), n: i.innerHTML.length, ailleurs: document.querySelectorAll('#dr-impression').length } : false; });
+    verif('P1', reste && (txt == null || (/Ce qu.on a fait aujourd.hui/.test(txt) && !/Fermer l.atelier|Identifie-toi|Pilotage/.test(txt))), 'imprimer vraiment (page.pdf, avec beforeprint) : la copie du papier reste, le PDF ne porte que la feuille (relecteur continu B3)', JSON.stringify({ reste, debut: txt ? txt.slice(0, 160) : 'pdftotext absent' })); }
+  await pg.emulateMedia({ media: 'screen' });
 
   // ═════ ED · « Copier pour École Directe » : le HTML propre (R22) et le texte de la maquette ═════
   await face(pg, 'Le récit'); await p(pg, 300); await pg.click('#rel [data-rv="site"]').catch(() => {}); await p(pg, 300);
@@ -311,6 +314,8 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   verif('B3', u.hs.length === 1 && u.hs[0] === u.h, `des diapos parcourues avant de lancer (${u.avant} au journal avant le lancement) ne font pas d'heure fantôme : heures racontées ${JSON.stringify(u.hs)} (cadrage 2 §1.4)`, JSON.stringify(u));
   await devoiler(pg, 12); await relecture(pg); const r = await texteRel(pg);
   verif('B3', /on a écrit au tableau : « Le romantisme : le cœur » ; « Le Parnasse : la forme »/i.test(r), 'un bloc « clique ici et écris » dévoilé se raconte : ses lignes, citées (cadrage 2 §1.2, §1.4)', r.slice(0, 700));
+  { const ec = await pg.evaluate(() => { const r = dr_recitEcheanceDe('2026-09-15'); const d = document.createElement('div'); d.innerHTML = passeHtml(now(), S.heure); return { l: r && r.l, hors: /hors de l.heure/.test(d.innerText) }; });
+    verif('B3', /mardi 15 septembre/.test(ec.l || '') && !ec.hors, 'l\'échéance se dit même hors de la liste (« mardi 15 septembre ») ; « Ce qui s\'est passé » ne dit jamais « hors de l\'heure » d\'une diapo jouée (relecteur continu A4)', JSON.stringify(ec)); }
   const f = await pg.evaluate(() => [dr_finiPhrase('« le voyageur de dos »'), dr_finiPhrase('« Où en sommes-nous ? »'), dr_finiPhrase('la <b>passion</b>.'), dr_finiPhrase('« la passion »')]);
   verif('B3', JSON.stringify(f) === '[false,true,true,false]', 'après un guillemet fermant, le point vient sauf si la citation finit déjà sur « ? ! . » (relecteur continu B3)', JSON.stringify(f));
   const v = await pg.evaluate(() => { const E = seance().ecrans; const a0 = E.map(e => e.actId); E.forEach(e => { delete e.actId; }); S.closes = S.closes || {}; S.closes[S.heure] = now(); const d = document.createElement('div'); d.innerHTML = troisTemps(recitHtml0(now(), S.heure), S.heure, now()); const r = !!d.querySelector('.rt.verdict'); delete S.closes[S.heure]; E.forEach((e, i) => { if (a0[i] != null) e.actId = a0[i]; }); return { verdict: r, acts: (typeof actDe === 'function') ? !!actDe(E[0]) : null }; });

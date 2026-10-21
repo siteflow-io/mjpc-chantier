@@ -1,0 +1,11 @@
+
+/* E2 — la classe et l'heure : le minuteur d'activité (R3), « Où on en est » par activité (R7), le témoin « déroulé intègre » (R9) */
+#dr-zone .dr-minut { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; }
+#dr-zone .dr-minut-p { display: inline-flex; align-items: center; gap: 6px; background: var(--carte); border: 1px solid var(--bord); border-radius: 8px; padding: 2px 6px; }
+#dr-zone .dr-minut-p input[type=text], #dr-zone #dr-minut-in { width: 4.2em; text-align: center; }
+#dr-zone .dr-minut-aff { font-variant-numeric: tabular-nums; color: var(--or); }
+#dr-zone .dr-minut-aff.dr-minut-fin { color: var(--rouge); }
+#dr-zone .dr-avance { margin-left: auto; padding-left: 6px; font-size: .78rem; color: var(--texte2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+#dr-zone .dr-avance.dr-plus { color: var(--rouge); }
+#dr-zone .dr-integre-ok { color: var(--joue); font-size: .8rem; }
+#dr-zone .dr-integre-ko { color: var(--rouge); font-size: .8rem; }

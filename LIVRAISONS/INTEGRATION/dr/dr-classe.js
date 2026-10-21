@@ -373,7 +373,8 @@ function dr_minuteurTic(){
   const txt = m.tableau ? '⏱ ' + dr_mmss(reste) : ''; if ((S.bandeau || '') !== txt && (txt || /^⏱/.test(S.bandeau || ''))) { S.bandeau = txt; dr_minuteurPousser(); }
   if (reste <= 0) { journal('minuteur', { action: 'fin' }); setTimeout(dr_minuteurFin, 4000); DR_CL.minut = Object.assign({}, m, { fin: Infinity, fini: true }); if (a) { a.textContent = '00:00 — c’est fini'; } }
 }
-setInterval(() => { try { if (S.lancee) dr_minuteurPoser(); if (DR_CL.minut && !DR_CL.minut.fini) dr_minuteurTic(); } catch (e) {} }, 1000);
+function dr_temoinPoser(){ const h = document.getElementById('hou'); if (!h || document.getElementById('dr-integre')) return; const t = document.createElement('span'); t.id = 'dr-integre'; t.className = 'dr-integre-ok'; t.style.marginLeft = '8px'; t.title = 'Le témoin d’intégrité : il dit si ce que la classe a vu est bien au hub, tel quel.'; h.insertAdjacentElement('afterend', t); if (DR_CL.empreinte) dr_temoinIntegre(DR_CL.empreinte); }
+setInterval(() => { try { if (S.lancee && AT_DR_REGIME === 'classe') dr_temoinPoser(); if (S.lancee) dr_minuteurPoser(); if (DR_CL.minut && !DR_CL.minut.fini) dr_minuteurTic(); } catch (e) {} }, 1000);
 
 /* ─── R19 ⌫ (retour arrière) = ◀ au pilotage (l'ancien moteur, `touche` : « ⌫ replie ») — hors d'un champ, hors de l'atelier ;
    le même geste que le bouton ◀ (#bprec), donc les mêmes gardes. ─── */

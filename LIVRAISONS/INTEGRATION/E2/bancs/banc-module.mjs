@@ -46,6 +46,8 @@ pas('M2', jr && !aRang(jr) ? 'ok' : 'ÉCHEC', 'C/journal : aucun rang (di) au hu
 pas('M2', et && et.S && et.parDiapo && et.vuMax && !aRang(et) ? 'ok' : 'ÉCHEC', 'C/etat : S, parDiapo, vuMax, aucun rang', et ? Object.keys(et).join(',') : '—');
 pas('M2', H && H.classe === '3E Charles de Gaulle' && H.creneau === '15:07-16:02' && H.debutReel && H.activites && H.activites[0] && H.activites[0].passages >= 1 && H.activites[0].eid ? 'ok' : 'ÉCHEC', 'H : classe, créneau, début réel, activites[0] (eid, passages ≥ 1)', H && JSON.stringify(H.activites));
 pas('M2', H && H.activites[0].reel >= 1 && Array.isArray(H.parts) && H.parts.length === 1 && !aRang(H) ? 'ok' : 'ÉCHEC', 'H : le temps réel (≥ 1 min), la parole, aucun rang', H && JSON.stringify({ reel: H.activites[0].reel, parts: (H.parts || []).length }));
+const r9 = await p.evaluate(() => { const t = document.getElementById('dr-integre'); return t ? t.textContent : null; });
+pas('R9', r9 === '● déroulé intègre' ? 'ok' : 'ÉCHEC', 'le témoin « déroulé intègre » : la copie écrite et la copie relue au hub ont la même empreinte', r9);
 const av = await p.evaluate(() => { try { ouOnEnEst(); } catch (e) {} const x = document.querySelector('#durees .dur-l.cours .dr-avance') || document.querySelector('#durees .dr-avance'); return x ? x.textContent : null; });
 pas('R7', av && /^5\/\d+ · \d+\/\d+ min$/.test(av) ? 'ok' : 'ÉCHEC', '« Où on en est » : dévoilés / total et réel / prévu sur la ligne de l\'activité en cours', av);
 await s.attendre(1200); await p.click('#dr-minut-b'); await s.attendre(100); await p.fill('#dr-minut-in', '00:10'); await p.check('#dr-minut-tab'); await p.click('#dr-minut-go'); await s.attendre(3000);

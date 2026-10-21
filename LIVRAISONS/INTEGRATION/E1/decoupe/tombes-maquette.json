@@ -1,0 +1,261 @@
+[
+ {
+  "l": 444,
+  "fin": 444,
+  "o": 117,
+  "quoi": "DATA.seances.forEach(se => se.ecrans.forEach(e => ",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 445,
+  "fin": 445,
+  "o": 1000,
+  "quoi": "DATA.feuilles = [{ id: 'f-romantisme', titre: 'Le ",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 445,
+  "fin": 445,
+  "o": 962,
+  "quoi": "(function(){ const lie = { 'b1140': ['f-romantisme",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 446,
+  "fin": 446,
+  "o": 885,
+  "quoi": "(function(){ const E = DATA.seances[0].ecrans; con",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 446,
+  "fin": 446,
+  "o": 1086,
+  "quoi": "(function(){ const se = DATA.seances[0]; if (se.ec",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 446,
+  "fin": 446,
+  "o": 410,
+  "quoi": "DATA.seances.forEach(se => se.ecrans.forEach(e => ",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 448,
+  "fin": 448,
+  "o": 618,
+  "quoi": "(function normaliserTrame(){ /* (a) cadrage 4 · 2.",
+  "pourquoi": "normaliserTrame sur DATA (remplacée par dr_normaliserTrame, socle)"
+ },
+ {
+  "l": 449,
+  "fin": 449,
+  "o": 17,
+  "quoi": "let DECALAGE",
+  "pourquoi": "simulation de l'horloge (DECALAGE, HEURES_SIM, T0, now)"
+ },
+ {
+  "l": 450,
+  "fin": 450,
+  "o": 272,
+  "quoi": "const HEURES_SIM",
+  "pourquoi": "simulation de l'horloge (DECALAGE, HEURES_SIM, T0, now)"
+ },
+ {
+  "l": 451,
+  "fin": 451,
+  "o": 20,
+  "quoi": "let T0",
+  "pourquoi": "simulation de l'horloge (DECALAGE, HEURES_SIM, T0, now)"
+ },
+ {
+  "l": 451,
+  "fin": 451,
+  "o": 81,
+  "quoi": "function now",
+  "pourquoi": "simulation de l'horloge (DECALAGE, HEURES_SIM, T0, now)"
+ },
+ {
+  "l": 888,
+  "fin": 889,
+  "o": 571,
+  "quoi": "function docHtml",
+  "pourquoi": "E4 (contrat §6 : « + docHtml, videoHtml, loupeSur du rendu ») — dans dr-recit.js d'E4"
+ },
+ {
+  "l": 890,
+  "fin": 891,
+  "o": 603,
+  "quoi": "function videoHtml",
+  "pourquoi": "E4 (contrat §6 : « + docHtml, videoHtml, loupeSur du rendu ») — dans dr-recit.js d'E4"
+ },
+ {
+  "l": 916,
+  "fin": 917,
+  "o": 403,
+  "quoi": "function loupeSur",
+  "pourquoi": "E4 (contrat §6 : « + docHtml, videoHtml, loupeSur du rendu ») — dans dr-recit.js d'E4"
+ },
+ {
+  "l": 1609,
+  "fin": 1612,
+  "o": 2275,
+  "quoi": "function edt",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1613,
+  "fin": 1613,
+  "o": 117,
+  "quoi": "$('ong-pilotage').addEventListener('click', () => ",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1641,
+  "fin": 1641,
+  "o": 98,
+  "quoi": "$('ong-atelier').onclick = () => { if (S.repetitio",
+  "pourquoi": "les onclick des onglets de la maquette (ce sont ceux de la barre du site : atVuesAller → dr_onglet)"
+ },
+ {
+  "l": 1643,
+  "fin": 1643,
+  "o": 51,
+  "quoi": "$('ong-pilotage').onclick = () => voir('pilotage')",
+  "pourquoi": "les onclick des onglets de la maquette (ce sont ceux de la barre du site : atVuesAller → dr_onglet)"
+ },
+ {
+  "l": 1643,
+  "fin": 1643,
+  "o": 53,
+  "quoi": "$('ong-relecture').onclick = () => voir('relecture",
+  "pourquoi": "les onclick des onglets de la maquette (ce sont ceux de la barre du site : atVuesAller → dr_onglet)"
+ },
+ {
+  "l": 1805,
+  "fin": 1805,
+  "o": 61,
+  "quoi": "$('bsimu').onclick = () => $('fsimu').classList.to",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1805,
+  "fin": 1805,
+  "o": 63,
+  "quoi": "$('fsimu-x').onclick = () => $('fsimu').classList.",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1806,
+  "fin": 1806,
+  "o": 65,
+  "quoi": "$('s-cle').onchange = ev => { S.cle = ev.target.va",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1806,
+  "fin": 1806,
+  "o": 65,
+  "quoi": "$('s-tab').onchange = ev => { S.tab = ev.target.va",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1806,
+  "fin": 1806,
+  "o": 421,
+  "quoi": "const avancerA",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1806,
+  "fin": 1806,
+  "o": 86,
+  "quoi": "$('s-t5').onclick = () => { $('fsimu').classList.r",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1806,
+  "fin": 1806,
+  "o": 86,
+  "quoi": "$('s-t3').onclick = () => { $('fsimu').classList.r",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1806,
+  "fin": 1806,
+  "o": 82,
+  "quoi": "$('s-t1').onclick = () => { $('fsimu').classList.r",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1806,
+  "fin": 1806,
+  "o": 82,
+  "quoi": "$('s-cahier').onclick = () => { $('fsimu').classLi",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1806,
+  "fin": 1806,
+  "o": 1,
+  "quoi": ";",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1807,
+  "fin": 1807,
+  "o": 769,
+  "quoi": "$('s-anim').onclick = () => { $('fsimu').classList",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1808,
+  "fin": 1808,
+  "o": 838,
+  "quoi": "$('s-inserer').onclick = () => { $('fsimu').classL",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1809,
+  "fin": 1809,
+  "o": 1158,
+  "quoi": "$('s-coupure').onclick = () => { $('fsimu').classL",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1809,
+  "fin": 1809,
+  "o": 129,
+  "quoi": "$('s-h2').onclick = () => { $('fsimu').classList.r",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1834,
+  "fin": 1834,
+  "o": 43,
+  "quoi": "$('hclasse').textContent = DATA.classe.nom;",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1834,
+  "fin": 1834,
+  "o": 45,
+  "quoi": "$('hou').textContent = 'aucune heure lancée';",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1835,
+  "fin": 1835,
+  "o": 7,
+  "quoi": "tout();",
+  "pourquoi": "plage"
+ },
+ {
+  "l": 1835,
+  "fin": 1835,
+  "o": 6,
+  "quoi": "edt();",
+  "pourquoi": "plage"
+ }
+]

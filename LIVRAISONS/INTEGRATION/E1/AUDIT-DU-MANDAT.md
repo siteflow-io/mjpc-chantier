@@ -137,4 +137,14 @@ Verdict d'ensemble : **faux sur quatre plages** (récit, schémas, raccourcis/ho
 
 **Ce que je prends (E1)** : R1, R2, R4, R5, R6 (mandat point 17) **et R13, R17, R18, R20, R21**, plus la couche commune de R14 ; à E2 : R19 ; à E3 : R14 au tableau ; à E4 : R15, R16. La conscience confirme l'attribution.
 
+## 7 · ADDENDUM — ce que l'exécution d'E1-a a mesuré (21/10, 09:20 UTC)
+
+**F13 — K8, K10, K11, K12, K13 ne peuvent pas être verts à E1-a (mandat point 8 les compte parmi « verts » pour K12, K13).** Ils mesurent les dettes 13 · 18 à 13 · 22, que **p8-5h** règle (mandat E1, point 14, E1-b). Sur la maquette p8-5g elle-même ils échouent (`AUDITS/CONTROLES-DEROULE/README.md`, table « échoue sur p8-5g »). Une intégration mécanique de p8-5g les a donc rouges. Verdict : **contradictoire** (point 8 contre point 14). Ils passeront avec p8-5h.
+
+**F14 — K8 compte sur la donnée de la maquette.** « Diapo 1 sur 9 », « HEURE 1 · 9 DIAPOS », « 23 + 1 vignettes » : la maquette avait deux heures (9 diapos en H1) ; la trame réelle de la séance 0 n'a pas d'heure prévue (F8, M3) : 19 diapos en H1. Verdict : **impossible tel quel** sur la trame réelle (I4) : la mesure tenable compte « autant de vignettes que de pages » sur la diapo tapée, et « Diapo 1 sur n » avec n = les diapos de l'heure de la trame.
+
+**F15 — les contrôles par l'entrée du site butent sur un voile du site.** `#fi-overlay` (« n fiches d'applications ne sont pas à jour », `fichesVerifierAlerte`, l. 9704 de la production : « l'overlay bloquant, à l'ouverture du panneau prof ») se pose quand `/manifestes` manque : le faux hub ne l'a pas. `controles.mjs` (v2) le retire **avant** `#tprof-btn`, il revient après ; ses clics réels (`page.click`) attendent alors 30 s et échouent : **13 contrôles sur 13 « n'ont pas pu aller au bout »**, sur n'importe quelle livraison. Le parcours ne le voit pas (il clique par l'élément et retire le voile avant chaque capture). Ce n'est ni le déroulé ni mon territoire, et le contrat §8.5 m'interdit d'inventer au faux hub. **À la conscience** : `/manifestes` au faux hub, ou le retrait du voile dans `ouvrir()` après l'Atelier. Mesuré avec une copie de `controles.mjs` qui retire le voile après l'Atelier (une ligne, dans `/home/user/work`, jamais poussée) : voir `JOURNAL.md`.
+
+**F16 — les modules d'E2, E3, E4 existaient avant E1-a.** Le contrat §3 et le mandat E1 point 1 disent qu'E1-a les crée « remplis par le découpage ». E2, E3 et E4 les ont poussés avant (E4 avec le code de sa plage de la maquette ; E3 avec son nouveau code ; E2 avec son nouveau code mais **sans** les 64 fonctions de sa plage, que le socle appelle). Réglé selon le contrat §3 (« en faveur du propriétaire ») : leurs fichiers sont gardés **intacts** ; ma coupe de la plage d'E2 est posée **en tête** de `dr-classe.js` (bloc marqué, son code suit et l'emporte) ; mes coupes d'E3 et d'E4 sont gardées pour mémoire (`E1/decoupe/coupe/`), non chargées.
+
 MEMO

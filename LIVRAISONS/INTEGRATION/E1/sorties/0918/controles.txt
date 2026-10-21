@@ -1,0 +1,43 @@
+contrôles de la conscience n°13 (déroulé) · v2 · entrée site (faux hub) · controles.mjs md5 dbb8e8bce872858a468826bc9ad6b018 · 2026-10-21 09:28 UTC · maquette : /home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html · md5 3cb4920519653db5b475c20d6380e323
+
+K1 — la répétition propre (n°13 · 9)
+  ÉCHEC  K1 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K2 — les notes de présentateur, par étape (n°13 · 10)
+  ÉCHEC  K2 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K3 — la mise en forme à deux boutons et palette (n°13 · 11)
+  ÉCHEC  K3 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K4 — le panneau des notes suit la diapo ; le premier caractère après Entrée (n°13 · 13, 13 · 14)
+  ÉCHEC  K4 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K5 — la poignée des notes, en permanence (n°13 · 15)
+  ÉCHEC  K5 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K6 — la diapo trop pleine se lit en pages, jamais hors du cadre (n°13 · 16)
+  ÉCHEC  K6 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K7 — la fenêtre du tableau reçoit les pages dès son ouverture (n°13 · 17)
+  ÉCHEC  K7 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K8 — une vignette par page dans la colonne de gauche (n°13 · 18)
+  ÉCHEC  K8 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K10 — après « ■ Arrêter », la fenêtre du tableau revient à ce qu'elle montrait avant la répétition (n°13 · 19)
+  ÉCHEC  K10 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K11 — la vue « ⧉ Tableau » porte le compteur de page et montre la même page (n°13 · 20)
+  ÉCHEC  K11 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K12 — dans l'atelier, le curseur reste visible dans un paragraphe plus haut que la diapo (n°13 · 21)
+  ÉCHEC  K12 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K13 — dans l'atelier, Échap sort de la ligne et Maj+← change de page (n°13 · 22)
+  ÉCHEC  K13 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+K9 — le parcours fixe
+  ÉCHEC  K9 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+13 vérifications, 13 échec(s)
+--- fin : 13 défaut(s)

@@ -1,0 +1,58 @@
+banc d'intégration · 2026-10-21 09:03 UTC · branche integration · commit 1d5aa6b4
+— 1. assemblage
+assemblé : /home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html
+  inline  dr/dr.css (73034 o)
+  inline  dr/dr-gabarit.js (19999 o)
+  inline  dr/dr-socle.js (164871 o)
+  inline  dr/dr-atelier.js (128903 o)
+  inline  dr/dr-classe.js (123130 o)
+  inline  dr/dr-tableau.js (14558 o)
+  inline  dr/dr-recit.js (95278 o)
+  modules : 7 · manquants/refusés : 0 · taille : 2063051 o · md5 2fd65facf5df410b30e8d5a517958f87
+— 2. collisions
+modules lus : dr/dr.css dr/dr-gabarit.js dr/dr-socle.js dr/dr-atelier.js dr/dr-classe.js dr/dr-tableau.js dr/dr-recit.js
+  ids en collision : 7 → ses-tab-att ses-tab-h ses-tab-d ses-tab-c ses-tab-perdu durees ses-tab
+  classes CSS en collision : 0
+  globales en collision : 0
+— 3. parcours
+  ok     P10 · Relecture ouverte
+  absent P10 · les faces de la maquette (E4)
+
+P11 — le Papier
+  absent P11 · pas de face Papier (E4)
+
+P12 — la clôture
+  absent P12 · aucun bouton « Clore »
+
+K15 — les écritures au hub pendant le parcours
+      PUT /corbeille/<heure>/edt-mise-a-niveau-grille_090000
+      PUT /site/edt/grille/2026-2027
+      PUT /site/edt/photos/2026-2027
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<heure>
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+  ok     K15 · 10 écritures, toutes sur des chemins permis
+  ÉCHEC  JS · aucune erreur JS — esc is not defined
+  ok     JS · aucune boîte système
+
+PARCOURS ROUGE — 2 échec(s)
+— 4. parcours en mode test
+  absent P12 · aucun bouton « Clore »
+
+K15 — les écritures au hub pendant le parcours
+  ok     K15-test · mode test : zéro écriture au hub — 0 écriture(s)
+  ÉCHEC  JS · aucune erreur JS — esc is not defined
+  ok     JS · aucune boîte système
+
+PARCOURS ROUGE — 4 échec(s)
+— 5. contrôles K1-K13 par l'entrée du site
+  ÉCHEC  K9 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+13 vérifications, 13 échec(s)
+--- fin : 13 défaut(s)
+
+— résultat : ROUGE · sorties dans LIVRAISONS/INTEGRATION/E1/sorties/0903

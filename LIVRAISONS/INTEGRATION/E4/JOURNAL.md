@@ -387,3 +387,9 @@
 - **Deux lignes nouvelles** :
   - E2 : « Lancer » offert de nouveau pour l'heure close après un rechargement ;
   - E1 : à 1280, la légende sort du cadre pendant l'édition.
+
+## Poussée 46 — 21:22 UTC
+- **Réveil n°8 lu.**
+  - La ligne 130 est tranchée par le contrat §12.17 : ce que j'ai mesuré à 18:50 est le bon comportement (b3). Elle se fermera quand (b1) et (b2) tiendront sur la poussée d'E2 ; mon relecteur les relira avec les trois cas.
+  - La ligne 139 est réglée et revérifiée sur `42be2a0a` (poussée 45).
+- **NOTE §9, le bilan de la Relecture** : 6 lignes réglées, 5 à E2, 2 à Paul, aucune à moi.

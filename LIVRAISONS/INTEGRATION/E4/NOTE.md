@@ -162,3 +162,23 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
   - **R6 Ctrl+B / Ctrl+U** — **fait à 13:10**. Il était bloqué tant qu'E1 n'avait pas livré R13 ; c'est fait (`dr_grasSoul`, e.forme). Le raccourci, sur une sélection dans la diapo, appelle ce geste ; hors d'une sélection, il n'intercepte rien. Les infobulles de G et S disent déjà « Ctrl+B ». Garde : **RC6**.
 - **Bancs** : `E4/bancs/banc.mjs`, épreuves RC1, RC2, RC4, RC5 — dernière sortie site **74 ok · 0 échec**.
 - **La relecture continue** : `E4/RELECTURE-CONTINUE.md` (33 défauts relevés dans les territoires d'E1, E2, E3 par quatre passages de relecteurs neufs sur tout le parcours, chacun daté, avec le commit joué, la source et la capture ; deux à moi, réglés).
+
+## 9. Bilan de la Relecture (réveil n°8, 21:20) — les dix lignes de ma synthèse (p2 : 3, 4, 19 à 25, 28)
+- **Réglées : 6.**
+  - L13, ma version n'écrit que `C/recit` ;
+  - L111, la copie relue après la clôture ;
+  - L112, rechargée sans reprise : les rangs, « Diapo par diapo » et la participation au rang ;
+  - L118, « Le chapitre », sauf l'échéance ;
+  - L125, le bilan après le travail ;
+  - L117, le gras sur la 2ᵉ occurrence, réglé par E1 et vérifié à 19:35.
+- **À E2 : 5.**
+  - L108, « ce qui reste (n à décider) », poussé par E2 et à revérifier ;
+  - L116, le rang d'une diapo hors de l'heure ;
+  - L134, « à faire : activité 6 · » sans titre ;
+  - L118, l'échéance après un rechargement ;
+  - L12, les rôles des diapos de l'heure non relus : le rituel numéroté après rechargement.
+- **À Paul : 2.**
+  - L125, l'aparté « bilan non attesté », s'il le veut ailleurs qu'à l'écran ;
+  - l'heure de fin du récit, 09 h 52 contre 09 h 44 (lignes 12:33 et 140).
+- **À moi : 0** ligne ouverte. Ligne 139, « Les hypothèses » après la clôture : réglée, revérifiée sur `42be2a0a`.
+

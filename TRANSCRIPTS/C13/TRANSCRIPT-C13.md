@@ -2026,3 +2026,23 @@ Réponse de la conscience (23:35), mot pour mot :
 
 21/10/2026 23:35
 MEMO
+
+## TOUR 96 — RÉVEIL N°11 (22/10/2026, 00:36 → 00:44 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (00:36, 00:37, 00:43).
+
+Mesuré :
+- `integration` à `de6cd19c` (E1, 00:14) ; pendant le banc, `b51cb6b1` (E3, 00:39 : **T16 au vert sur la poussée d'E1** — le retour de l'Atelier ne fait plus bouger le tableau ; banc 99/99). Depuis le réveil n°10 : **E1** (poussées 16 et 17, 23:31 → 00:14 : **les deux graves réglés chez lui** — l'onglet Atelier écrit lui-même la copie de la classe pendant l'heure, le retour au Pilotage rend la classe à sa diapo sans saut ni entrée au journal ; la légende entière à 1280 ; « Diapo suivante » par `dr_libGlissee` ; 146 expliquée (le bouton du panneau prof, inactif) ; la frontière d'heure hors classe posée par le socle avec le calcul d'E2, « (3 h) » H1 H2 H3 ; garde A28 ; NOTE finale) ; **E2** (poussée 24, 23:38 : la cause du 149 était sa garde `dr_clPeutEcrire` — la copie part pendant l'Atelier, le journal et l'état attendent le Pilotage, garde B15 ; l'étape 5 ne voit pas la retouche de l'Atelier faute de `S.copie[h]` posé par le socle — à E1 ; NOTE finale) ; **E4** (poussées 53-56 : 148 et 149 revérifiées **sur `024dd94e`, avant la poussée 16 d'E1** — 149 réglée pour la perte avec une réserve (le témoin ne passe jamais à « enregistré »), 148 « pas réglée » là ; vingt lignes d'E2 revérifiées, 15 réglées ; cinq lignes neuves : 150 moyen E2 (l'échéance proposée et posée, mais l'étape 1 reste « ○ » et la garde de « Clore » dit « la prochaine fois »), 151 faible E1/E2 (la garde de recul numérote sur la trame), 152 faible E2 (« Préparer le cahier » : le volet garde ses vignettes, « Où on en est » dit « Fin d'heure — en cours »), 153 très faible E2).
+- **Mon banc sur `de6cd19c`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. Épreuves `AUDITS/INTEGRATION-DEROULE/epreuves/banc-sur-integration-de6cd19c.txt`, `AUDITS/CONTROLES-DEROULE/epreuves/sur-integration-de6cd19c-v22.txt` ; captures `pieces/T96-P5-classe-lancee.png`, `pieces/T96-P9-fin-de-l-heure.png`.
+- **Audit final : pas encore** — le critère est « 148/149 revérifiées réglées par E4 sur la tête » ; E3 l'a fait (T16 vert), E4 pas encore sur la tête d'E1.
+- **Relances écrites (00:43)** : E4 — rejouer 148/149 sur `de6cd19c`, puis la passe finale ; E1 — `S.copie[h]` posé quand l'Atelier écrit en heure lancée (l'étape 5 doit voir la retouche), le témoin « enregistré » après l'écriture de l'Atelier, 151 ; E2 — 150 (moyen), 152, 153, 151 avec E1 ; E3 — rien d'ouvert.
+- Réveil suivant : 01:44.
+
+Réponse de la conscience (00:44), mot pour mot :
+
+192. Réveil n°11. Les deux graves sont corrigés par E1 (une retouche faite dans l'Atelier pendant l'heure s'enregistre d'elle-même, et le retour au Pilotage ne fait plus sauter le tableau) ; E2 a retiré la garde qui bloquait l'écriture ; E3 vient de le rejouer vert au tableau. Banc vert sur la tête : collisions 0, parcours vert aux deux modes, 108 contrôles sur 108.
+
+193. L'audit final attend une seule chose : qu'E4 rejoue ses deux gestes sur la tête d'E1 (il les avait rejoués juste avant la correction) ; à côté, un moyen neuf chez E2 (l'échéance est proposée et posée, mais l'étape 1 reste décochée et la garde de « Clore » dit encore « la prochaine fois ») et deux restes chez E1 (la clôture doit proposer de verser aussi la retouche faite dans l'Atelier ; le témoin « enregistré » après cette écriture). Prochain réveil à 01:44 : si E4 dit vert, l'audit final part et tu auras « promeus » à dire au réveil. À toi, telles quelles : 152, 144, 13 · 12, §12.17, le « go » du plan.
+
+22/10/2026 00:44
+MEMO

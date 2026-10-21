@@ -15015,6 +15015,13 @@ function atSomSuivreCourant(){
   var n=S.di||0;
   var lst=col.querySelectorAll('.at-ecr[data-ese="'+String(ATVUES.snum)+'"]');
   for(var k=0;k<lst.length;k++){ lst[k].classList.toggle('at-ecr-sel', k===n); }
+  /* E1 (relecture continue E4, 13:35) : la vignette courante reste en vue — le volet défile avec ▶ ◀, seulement quand la diapo change (le défilement à la main n'est pas repris) */
+  var cle=String(ATVUES.snum)+'|'+n+'|'+(S.atelier?'a':'p'); if(col._drSuivi===cle) return;
+  var cour=col.querySelector('#volet .vig.cour')||col.querySelector('#volet [data-at-di="'+n+'"]'); if(!cour) return; col._drSuivi=cle;
+  var sc=cour.parentElement; while(sc&&sc!==document.body){ var ov=getComputedStyle(sc).overflowY; if((ov==='auto'||ov==='scroll')&&sc.scrollHeight>sc.clientHeight) break; sc=sc.parentElement; }
+  if(!sc||sc===document.body) return;
+  var r=cour.getBoundingClientRect(), rs=sc.getBoundingClientRect();
+  if(r.top<rs.top+8) sc.scrollTop-= (rs.top+8-r.top); else if(r.bottom>rs.bottom-8) sc.scrollTop+= (r.bottom-rs.bottom+8);
 }
 
 

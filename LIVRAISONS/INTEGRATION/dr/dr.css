@@ -328,6 +328,7 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 #dr-zone .outils .zoomt{flex:0 0 auto;white-space:nowrap}
 #dr-zone .outils .zoomt input[type=range]{width:64px}   /* (relecture continue d'E4) la réglette et son libellé entiers, à 1280 comme à 52 pt */
 #dr-zone .haut .dr-enr{color:var(--sourd,#8d7f6d);font-size:.78rem;white-space:nowrap}
+#dr-zone .haut .dr-enr.dr-test{color:#7a4a00;background:#ffe2a8;border:1px solid #e0a040;border-radius:10px;padding:1px 8px;font-weight:600} /* E1 : la pastille « mode test » (relecture continue E4, 13:35) */
 #dr-zone .voile{top:var(--dr-haut,46px)}
 #dr-zone #fnotes{bottom:var(--dr-bas,104px)}
 #dr-zone .outils{gap:6px;flex-wrap:wrap;row-gap:4px}   /* (relecture continue d'E4) plutôt deux rangées qu'un outil sous la colonne de droite */

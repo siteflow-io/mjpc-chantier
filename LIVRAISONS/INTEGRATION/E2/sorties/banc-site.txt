@@ -1,4 +1,4 @@
-banc E2 — la classe et l'heure · 2026-10-21 20:58 UTC · index.html md5 78a754cd95aad59cb02f52abb18cad43 · 2255315 o
+banc E2 — la classe et l'heure · 2026-10-21 21:15 UTC · index.html md5 446a008ae71a836c753bb4e75b0f99cb · 2255924 o
 
 B1 — la case de l'emploi du temps
   ok     B1 · la case de 3E Charles de Gaulle (lun. 14/09, 08:57-09:52) dit « heure 2/3 » de la séance 0 (F2, dette 13 · 26) — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 2/3
@@ -14,14 +14,14 @@ B1 — la case de l'emploi du temps
 
 B2 — lancer en un clic, dévoiler, faire parler ; le paquet de l'heure ; les écritures (K15)
   ok     B2 · l'heure est lancée (S.lancee, journal « lancement ») — 3E Charles de Gaulle · 08:57-09:52 · heure 2/3
-  ok     B2 · le chrono tourne — S.ecoule = 6
+  ok     B2 · le chrono tourne — S.ecoule = 7
   ok     B2 · ▶ ×3 (dévoiler, puis la diapo suivante) et une parole sont au journal — lancement diapo devoile devoile diapo parole
   ok     B2 · le paquet H : classe, créneau, début réel — 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
   ok     B2 · le paquet H : activites[0].passages ≥ 1 — {"n":4,"eid":"emt9v3yqoqmqnf","act":"Tableau 3","prevu":5,"reel":1,"passages":1,"comp":["litt-036","litt-037","litt-038","c4-lire-02","tr-personne-02"]}
   ok     B2 · C/journal au hub, la parole dedans — 6 entrées
   ok     B2 · C/journal : aucun rang (di) écrit au hub
   ok     B2 · C/etat au hub, sans rang — S,parDiapo,vuMax,maj,heures,reactivations,heuresParDurees
-  ok     K15 · les écritures du lancement à la parole : C, cours_actif, C/journal, C/etat, H (+ C/ecrans, + scene/part d'E3) — PUT C · PUT /site/cours_actif · PUT C/ecrans · PUT C/journal · PUT C/etat · PUT C/heures/<H> · PUT C/scene
+  ok     K15 · les écritures du lancement à la parole : C, cours_actif, C/journal, C/etat, H (+ C/ecrans, + scene/part d'E3) — PUT C · PUT /site/cours_actif · PUT C/scene · PUT C/ecrans · PUT C/journal · PUT C/etat · PUT C/heures/<H>
 
 B4 — la fin de l'heure (T-5 = fin − 10 min), les sept étapes, la clôture
   ok     B4 · à T-5 (cinq minutes avant le cahier de textes) l'étape 1 s'ouvre d'elle-même — palier null → t5 · Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprend
@@ -30,7 +30,7 @@ B4 — la fin de l'heure (T-5 = fin − 10 min), les sept étapes, la clôture
   ok     B4 · étape 2 : une carte par diapo restante, à décider (réveil n°3, 3) — 5 cartes · Diapo 3 — Tableau 4 | Diapo 4 — Tableau 5
   ok     B4 · les sept étapes se parcourent — Fin de l'heure — étape 7 sur 7 : clore l'heure Préparer le cahier de t
   ok     B4 · l'étape 7 clôt l'heure (S.close, journal « cloture »)
-  ok     B4 · le paquet H est clos (clos, finReel) — {"clos":true,"finReel":1789371727696}
+  ok     B4 · le paquet H est clos (clos, finReel) — {"clos":true,"finReel":1789371727794}
   ok     B4 · cours_actif est effacé
   ok     B4 · après la clôture (quelques diapos jouées), la case du mardi garde la séance : « heure 3/3 » (F2, réveil n°3, 1) — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 3/3
       écritures de la clôture : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat · PUT /site/cours_actif · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<H> · PUT /site/edt/photos/2026-2027
@@ -49,7 +49,7 @@ B3 — la reprise (recharger en pleine heure, mêmes écritures relues)
   ok     B3 · la reprise relit la copie de la classe (C/ecrans) telle qu'elle est au hub : ce qui a été changé en classe revient (réveil n°6, E4 ligne 110, ma part) — true
   ok     B3 · une copie pour École Directe avant le rechargement = un seul « copie-ed » au journal après la reprise (réveil n°4, point 7) — 1 → 1
   ok     B3 · le chrono (± 2 s) : le temps écoulé depuis le début réel au hub — {"apres":77,"attendu":76}
-  ok     B3 · la parole et les notes sont là — {"avant":{"di":9,"eid":"emt9v3yqon4gew","parts":1,"notes":1,"ecoule":67},"ap":{"lancee":true,"di":9,"eid":"emt9v3yqon4gew","parts":1,"notes":1,"ecoule":77}}
+  ok     B3 · la parole et les notes sont là — {"avant":{"di":9,"eid":"emt9v3yqon4gew","parts":1,"notes":1,"ecoule":66},"ap":{"lancee":true,"di":9,"eid":"emt9v3yqon4gew","parts":1,"notes":1,"ecoule":77}}
 
 B3b — lancer par la case (séance 1, sans eid au hub), recharger, « ▶ Reprendre le cours » dans la case
   ok     B3b · la case de l'heure lancée propose « ▶ Reprendre le cours »
@@ -78,13 +78,13 @@ B9 — F2 « EB1 » tapé d'un trait pose ; pas de « LC2 » à l'écran ; « su
   ok     B9 · infobulles : le ✕ de la parole, « Y aller devant la classe »
   ok     B9 · la liste de contrôle compte sur 7 étapes — étape faite sur 7
   ok     B9 · la fiche de l'élève ne couvre aucun bouton visible de la fin de l'heure et reste dans l'écran — {"a":[469,373,1021,709],"w":1366,"h":768,"boutons":6,"couverts":[]}
-  ok     B9 · après la clôture, le chrono de la tête ne court plus — 00:06 → 00:06
+  ok     B9 · après la clôture, le chrono de la tête ne court plus — 00:05 → 00:05
   ok     B9 · aucune erreur JS
 
 B10 — à 1280 × 768 : la boîte T-5 dans l'écran, ses boutons cliquables ; la fin de l'heure laisse la participation et « Où on en est »
   ok     B10 · F2, une parole posée : le VIF, « posé : … ✕ (Ctrl+Z) » et le haut de la liste des paroles se voient sans défiler (réveil n°5, A4-3 ; C1 4b.1, 5.4 bis) — {"vif":[592,618],"dernier":[666,682],"txt":"posé :\nEB\n✕ (Ctrl+Z)","part":[696,826],"h":768}
   ok     B10 · la T-5 nomme l'activité (ou la diapo) en cours et son état (relecteur neuf n°3, 8 ; C1 6.3) — T-5 — le cahier de textes dans 5 minutes. L'activité en cours : Diapo 1 — Où en sommes-nous ?, dans les temps. Le cahier de textes attend — le tableau ne bouge 
-  ÉCHEC  B10 · la boîte T-5 est entière dans l'écran, sous la diapo (sans la couvrir), au-dessus des notes ; « Aller au cahier », « Plus tard », « Préparer » cliquables (C1 6.3) — {"al":[294,717,914,773],"mur":[294,252,914,600],"notes":[294,780,914,796],"bt":[{"id":"al-aller","q":[730,733,832,757],"dessus":true},{"id":"al-tard","q":[840,733,905,757],"dessus":true},{"id":"al-preparer","q":[659,733,722,757],"dessus":true}],"h":768}
+  ok     B10 · la boîte T-5 est entière dans l'écran, sous la diapo (sans la couvrir), au-dessus des notes ; « Aller au cahier », « Plus tard », « Préparer » cliquables (C1 6.3) — {"al":[294,717,914,758],"mur":[294,252,914,600],"notes":[294,765,914,781],"bt":[{"id":"al-aller","q":[730,725,832,749],"dessus":true},{"id":"al-tard","q":[840,725,905,749],"dessus":true},{"id":"al-preparer","q":[659,725,722,749],"dessus":true}],"h":768}
   ok     B10 · la fin de l'heure s'ouvre avec son titre en vue, même après un F2 qui a fait défiler la colonne (réveil n°7) — {"top":206,"dTop":196,"scroll":0,"txt":"Fin de l'heure — étape 7 sur 7 : clore l"}
   ok     B10 · pendant la fin de l'heure, « Étape suivante ▶ » est entier et cliquable (rien ne le recouvre ; la colonne défile) — réveil n°6, P9 — {"q":[486,520],"dessus":true,"bas":true}
   ok     B10 · pendant la fin de l'heure, la colonne de droite garde la participation, « Où on en est » et le tableau (C1 7.0 ter : la classe continue) — {"fin":true,"part":true,"suivi":true,"tableau":true}
@@ -123,8 +123,8 @@ B5 — deux créneaux dans la journée = deux clés = deux traces
 
 B6 — le mode test (13 · 25) : lancer, dévoiler, clore → zéro écriture au hub
   ok     B6 · mode test : la pastille « Mode test » dans l'entête du pilotage, `data-mode-test` posé (C1 11t.3, réveil n°4, 5) — {"vu":true,"txt":"Mode test","zone":"1"}
-  ÉCHEC  B6 · mode test, après le lancement : le magasin de test porte cours_actif, et l'heure n'est PAS close (relance du 21/10 12:58) — {"ca":true,"clos":null}
+  ok     B6 · mode test, après le lancement : le magasin de test porte cours_actif, et l'heure n'est PAS close (relance du 21/10 12:58) — {"ca":true,"clos":false}
   ok     B6 · mode test : zéro écriture au hub — 0 : 
-  ÉCHEC  B6 · mode test, après la clôture : dans le magasin, l'heure est close et le pointeur effacé — {"ca":null,"clos":null}
+  ok     B6 · mode test, après la clôture : dans le magasin, l'heure est close et le pointeur effacé — {"ca":null,"clos":true}
 
-BANC E2 ROUGE — 3 échec(s)
+BANC E2 VERT

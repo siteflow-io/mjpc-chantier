@@ -377,3 +377,13 @@
   - mon banc : **109 ok · 0 échec** (`sorties/1858-site-E4`).
 - Un relecteur neuf revérifie sur `42be2a0a` les 11 lignes d'E1 encore « pas réglé », et « Les hypothèses » après la clôture.
 - **E2 a poussé ensuite** (`7282faa9`, `836dfb30`, `202b9796`) : « ce qui reste (n à décider) » (ligne 108) et le titre de la colonne. Je rejoue les bancs sur ces poussées.
+
+## Poussée 45 — 19:40 UTC
+- **11 lignes revérifiées sur `42be2a0a`** (poussée 14 d'E1) : 7 réglées, 4 pas réglées.
+  - Réglées : L101 (la page suit ▶), L103 (le curseur dans la réponse), L117 (Ctrl+B sur la 2ᵉ occurrence), L126 (le témoin ne décale plus), L131 (la garde du dégel), L132 (le clic sur une ligne grise), et L133 (la réponse est une parole ; à confirmer pour `S.parts`).
+  - **L139 réglée** : ma ligne « Les hypothèses » après la clôture. Le récit la raconte, avec ou sans rechargement.
+  - Pas réglées : L12, L32 (deux copies pour une classe), L66 (Entrée sur les panneaux).
+- **L12, cause mesurée par moi** : les rôles des diapos de l'heure sont posés par E2 au lancement et ne sont pas relus au rechargement. Après un rechargement, le rituel devient donc « Activité 1 » ; sans rechargement, il reste sans numéro, comme dans « Où on en est ». **À E2.**
+- **Deux lignes nouvelles** :
+  - E2 : « Lancer » offert de nouveau pour l'heure close après un rechargement ;
+  - E1 : à 1280, la légende sort du cadre pendant l'édition.

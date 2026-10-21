@@ -427,3 +427,17 @@
 - **Une erreur de ma part, réparée.** Un `pkill -f "rev | cut"` lancé pour arrêter une commande lente a été lu comme une expression régulière (« rev » ou « cut »). Il a tué ma veille des poussées et les deux bancs en cours sur `aaf6d7f4` : leurs commandes contiennent « | cut ». La veille est réarmée et les bancs sont relancés hors du dépôt. Rien d'autre n'a été touché ; les autres exécutants tournent dans d'autres sessions.
 - **Passe finale, préparation.** Ma table a 139 lignes. Pour l'audit, chaque ligne recevra un verdict final uniforme (« FINAL : réglé (commit) », « écarté » ou « à Paul »), posé sur la tête que la conscience retiendra.
 - **Relancés sur `aaf6d7f4`** (poussée 15 d'E1) : banc.sh **VERT** (`sorties/2032`) ; mon banc **109 ok · 0 échec** (`sorties/2032-site-E4`).
+
+## Poussée 50 — 20:55 UTC
+- **Relecteur sur `aaf6d7f4`** (poussée 15 d'E1) :
+  - **La copie jouée d'un autre jour (§12.8) est réglée** : les retouches de l'heure 2 sont là en heure 3 (pilote, Écran 2, récit), et la trame hors classe est intacte.
+  - Réglées : L142 (la légende à 1280) et L146.
+  - Pas réglées : L32, L66, L144.
+- **Deux défauts graves nouveaux chez E1** :
+  - en classe, revenir de l'Atelier au Pilotage fait sauter le tableau sans garde, et le saut entre au journal et au récit ;
+  - une retouche faite dans l'onglet Atelier n'est pas écrite tant qu'il reste ouvert : elle est perdue si la page se ferme.
+- Deux moyens chez E2 et E1 : le versement à la clôture, la frontière d'heure hors classe. Un faible chez E1 : la légende sur deux lignes.
+- **Deux lignes à moi, réglées à 20:47** :
+  - L12 : le numéro d'activité est celui d'E2, continu sur la séance, comme au pilote (A5, A7). Il ne repart plus à 1 à chaque heure ;
+  - « Retour de la diapo 9 à la diapo 2 » : le rang dans l'heure des deux côtés.
+- **Bancs :** mon banc **109 ok · 0 échec** (`sorties/2047-site-E4`).

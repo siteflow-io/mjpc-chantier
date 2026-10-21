@@ -325,8 +325,11 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 #dr-zone .notes{min-height:72px}
 /* E1 (relance du 21/10, relecteur d'E4) : ▶ Dévoiler et son compteur ne cèdent jamais leur place ; c'est le curseur « texte au tableau » qui se resserre */
 #dr-zone .outils #bdev,#dr-zone .outils #compte{flex:0 0 auto}
-#dr-zone .outils .zoomt{flex:0 1 auto;min-width:0;overflow:hidden}
-#dr-zone .outils{gap:6px}
+#dr-zone .outils .zoomt{flex:0 0 auto;white-space:nowrap}
+#dr-zone .outils .zoomt input[type=range]{width:64px}   /* (relecture continue d'E4) la réglette et son libellé entiers, à 1280 comme à 52 pt */
+#dr-zone .voile{top:var(--dr-haut,46px)}
+#dr-zone #fnotes{bottom:var(--dr-bas,104px)}
+#dr-zone .outils{gap:6px;flex-wrap:wrap;row-gap:4px}   /* (relecture continue d'E4) plutôt deux rangées qu'un outil sous la colonne de droite */
 #dr-zone .outils .zoomt input[type=range]{width:80px}
 
 /* E1 (R13) G et S dans la palette « A » */

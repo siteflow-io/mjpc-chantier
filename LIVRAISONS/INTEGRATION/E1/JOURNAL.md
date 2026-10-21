@@ -123,3 +123,13 @@
 - **Pour la conscience** (territoires, relevé par ce relecteur) : E4 enveloppe `dr_sauve` (son R4) — le contrat §5 réserve les interfaces du socle à E1 ; je n'y touche pas, c'est à arbitrer. Ses crochets d'une ligne dans mon socle sont ceux que la relance autorise.
 - **Bancs, sur `2c24b230`** (sorties `E1/sorties/1157/`) : banc de la conscience — collisions 0 / 0 / 0, **PARCOURS VERT**, mode test : P5 (l'outil), **K1-K13 : 108 / 0** ; **banc E1 : 124 vérifications, 0 échec**.
 - **NOTE.md** écrite (avec `NOTE-fonctions.md`, les tailles avant/après). **Relances** : relues, rien de nouveau.
+
+## HH:MM UTC — poussée 10 : la relecture continue d'E4 (12:33-12:38), ce qui est à moi
+- **Relances** (`main` et `integration`) : rien de nouveau. **La relecture continue d'E4** (`E4/RELECTURE-CONTINUE.md`) me donne sept lignes nouvelles, toutes corrigées et gardées dans **A23** (aux deux tailles) :
+  - **grave · Entrée deux fois puis une frappe rapide** : la première lettre tombait dans la ligne d'avant (à 1280, au milieu d'elle). Le curseur passait à la ligne neuve dans un `setTimeout` : il y passe dans la même tâche (Entrée et Échap), comme `p8EcrireSous` à la poussée 2. Gardé à 90 et à 30 ms par touche.
+  - **Échap / Entrée sans effet** dans « Supprimer la diapo » (la boîte du site), « + bloc », « Envoyer vers… » : Entrée choisit le geste principal, Échap renonce.
+  - **le menu d'un élément sans infobulles** (le titre, Dupliquer l'élément, Monter, Descendre ; et « Supprimer l'image », les en-têtes) : écrites.
+  - **la réglette « texte au tableau » coupée** à 1280 et à 52 pt : le libellé devient court (« 52 pt → 26 », le détail en infobulle), la réglette ne rétrécit plus, et la barre du pilote passe sur deux rangées plutôt que de pousser ▶ sous la colonne de droite.
+  - **la classe deux fois dans l'entête** (le créneau d'E2 la dit déjà) : `#hclasse` se retire quand le créneau la contient.
+  - **en classe, la Relecture couvrait la 2ᵉ rangée de l'entête** (« Écran 2 », « Adresse du tableau », « Fin de l'heure », « Clore l'heure ») ; **N + Entrée, la fenêtre des notes couvrait ◀ ▶ ❄** : la Relecture se cale sous l'entête réelle, la fenêtre des notes au-dessus des outils réels (deux variables suivies par un `ResizeObserver` : le créneau d'E2 s'écrit après le rendu).
+  - *Les lignes de 10:14 et 11:40 qui me concernent sont réglées depuis mes poussées 7 et 8 (▶ derrière un document, `#bdev`, le titre de séance, les libellés de la maquette) ; les activités sans numéro restent la contradiction F8 à arbitrer.*

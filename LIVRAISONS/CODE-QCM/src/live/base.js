@@ -344,7 +344,9 @@ var SCN = (function(){
       if(papier){ var g = ((s.papier || {})[x] || {})[qi]; if(g == null){ st.push("n"); pts.push(null); } else { st.push(g === "j" || g === true || g === 1 ? "j" : "f"); pts.push(st[st.length - 1] === "j" ? 1 : 0); } return; }
       // (19/10, Paul, point 29 seconde moitié) dans une séance terminée, une question posée mais jamais révélée en classe compte dès que sa feuille
       // est lue (le soir, « Lire les copies ») : la règle de resultatLocalV (c4-seances.js), pour que les deux copies disent la même note
-      if(corr.indexOf(qi) < 0 && !terminee){ st.push("n"); pts.push(null); return; }
+      // (21/10, Paul 09:45, point 12) une lecture de Paul (« Lire les copies », par:"prof") compte toujours, aussi pendant qu'une séance rouverte tourne
+      var luP = S.lecture(x, qi, sid), dePaul = !!(luP && luP.par === "prof");
+      if(corr.indexOf(qi) < 0 && !terminee && !dePaul){ st.push("n"); pts.push(null); return; }
       // (20/10, Paul 08:49, point 7 : 29 première moitié) dans une séance terminée, une question jamais lancée (ni questionsLancees, ni une réponse)
       // sort du total pour tous, comme la question manquée d'un élève parti : « x » ; une séance en pause garde ses questions à venir (pas terminée)
       if(terminee && lanc[qi] == null && !((s.reponses || {})[qi])){ st.push("x"); pts.push(null); return; }

@@ -353,6 +353,17 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const a2 = await nA(ar.s), arP = await arret(true), a3 = await nA(arP.s);
     verif(JSON.stringify(ar.oc) === "[0,1]" && a1 === "jnx 1 2 false 1 jnx 1 2 false" && a2 === "jjx 2 2 true 0 jjx 2 2 true" && a3 === "jnn 1 3 false 1 jnn 1 3 false",
       "une séance arrêtée (points 7 et 9) : Q3 jamais lancée hors du total, Q2 lue par le voisin sans « Révéler » pas encore lue jusqu'à la lecture de Paul ; en pause, Q3 reste ; l'ordre de la correction ne prend que les questions lancées ; le socle dit la note de resultatLocalV", {oc: ar.oc, a1, a2, a3});
+    // (21/10, Paul 09:45, point 12) la lecture de Paul compte toujours, aussi pendant qu'une séance rouverte tourne
+    const sR = await p2.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai", {})); await p2.evaluate(() => ACT.appelFini([])); await pause(300);
+    await p2.evaluate(s => { const b = SCN.evalDeSeance(s).questions.map(q => q.bonnes), m = {}, P = "/sessions/" + s + "/", now = LIVE.maintenant(), L = {};
+      [0, 1, 2].forEach(i => { L[i] = now - 1000 * (5 - i); ["abrial_julien", "baudry_lea"].forEach(x => { m[P + "reponses/" + i + "/" + x] = {choix: b[i], ts: now, ms: now, tour: 1}; m[P + "lectures/" + i + "/" + x] = {choix: b[i], par: x === "abrial_julien" ? "baudry_lea" : "abrial_julien", ms: now}; }); });
+      m[P + "questionsLancees"] = L; m[P + "revelees"] = [0, 1]; return ecrireQCM(m, "essai rouverte"); }, sR); await pause(200);
+    await p2.evaluate(s => ACT.terminer(s), sR); await pause(300);
+    await p2.evaluate(s => { const b = SCN.evalDeSeance(s).questions.map(q => q.bonnes), m = {}; m["/sessions/" + s + "/lectures/2/abrial_julien"] = {choix: b[2], par: "prof", ms: LIVE.maintenant()}; return ecrireQCM(m, "Oui"); }, sR); await pause(200);
+    await p2.evaluate(s => ACT.rouvrirSeance(s), sR); await pause(500);
+    const nR = await p2.evaluate(s => [SCN.sess(s).etat, SCN.note("abrial_julien", null, s).st.join(""), SCN.note("abrial_julien", null, s).complet, SCN.note("baudry_lea", null, s).st.join("")], sR);
+    await p2.evaluate(s => ACT.terminer(s), sR); await pause(300);
+    verif(JSON.stringify(nR) === JSON.stringify(["en_cours", "jjj", true, "jjn"]), "la séance rouverte : Q3 lue le soir par Paul compte pendant qu'elle tourne (Julien jjj, complète) ; sans lecture de Paul, Q3 reste pas encore lue (Léa jjn)", nR);
     verif(err.length === 0, "aucune erreur de page", err.slice(0, 3));
   } catch(e){ verif(false, "l'essai s'est arrêté", e.stack); }
   await nav.close(); await srv.close();

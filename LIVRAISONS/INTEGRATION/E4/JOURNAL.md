@@ -175,3 +175,15 @@
   - Mon banc : **86 ok · 0 échec** (`sorties/1310-site-E4`).
   - banc.sh : K 108/0, parcours vert. Seul rouge, P5 en mode test, qui vient de l'outil (`sorties/1314`).
 - Les relecteurs neufs A3 (heure de classe) et B3 (atelier, relecture) tournent sur `a68469f5`.
+
+## Poussée 28 — 13:38 UTC
+- **Réveil n°3 lu et traité :**
+  - `C/part` tombe (contrat §12.9) : ligne écartée.
+  - L'outil des relecteurs pose `M8_TEST = true` après le panneau prof : ligne réglée.
+  - L'heure de fin dans le récit est posée à Paul ; ma lecture tient en attendant.
+  - R6 est fait (poussée 27).
+  - Mes lignes de 12:38 étaient marquées réglées depuis la poussée 26.
+- **Dette soldée :** la phrase fantôme est gardée par un vrai rechargement (R3, mesuré dans le DOM : ni `.ed-suite`, ni « on a continué X avec X »). La garde a trouvé un défaut de plus : avec ce qui a été vu à l'instant où Paul prend la plume, `>=` faisait une « suite » fantôme. Le test est maintenant strict (`>`).
+- **Bancs :**
+  - Mon banc : **87 ok · 0 échec** (`sorties/1330-site-E4`).
+  - banc.sh (parcours.mjs v3) : **tout vert**, K 108/0 et les deux parcours, y compris le mode test (`sorties/1334`).

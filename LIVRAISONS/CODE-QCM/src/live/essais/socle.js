@@ -18,7 +18,8 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
   const B = buildTree();
   // des temps courts : la réflexion 2 s, la réponse 3 s ; le décompte 1 s, B 2 s
   const ev = JSON.parse(JSON.stringify(EV)); ev.questions.forEach(q => { q.reflexion = 2; q.reponse = 3; });
-  B.tree.qcm.evaluations = Object.assign({}, B.tree.qcm.evaluations, {essai: ev});
+  const ev4 = JSON.parse(JSON.stringify(ev)); ev4.questions.push(JSON.parse(JSON.stringify(ev.questions[2]))); ev4.titre = "Essai 4";   // (21/10) la séance rouverte, Q4 remise
+  B.tree.qcm.evaluations = Object.assign({}, B.tree.qcm.evaluations, {essai: ev, essai4: ev4});
   B.tree.qcm.settings.durees = {decompte: 1, b: 2};
   B.tree.taxonomie = {competences: TAXO};
   // une séance de la 7.7.1, terminée : sa forme d'avant (phase, qIdx, etat « terminee », reponses, papier, autoevals), sans deroule
@@ -364,6 +365,21 @@ function verif(ok, quoi, detail){ nb++; if(!ok) ko++; R.push((ok ? "  ok     " :
     const nR = await p2.evaluate(s => [SCN.sess(s).etat, SCN.note("abrial_julien", null, s).st.join(""), SCN.note("abrial_julien", null, s).complet, SCN.note("baudry_lea", null, s).st.join("")], sR);
     await p2.evaluate(s => ACT.terminer(s), sR); await pause(300);
     verif(JSON.stringify(nR) === JSON.stringify(["en_cours", "jjj", true, "jjn"]), "la séance rouverte : Q3 lue le soir par Paul compte pendant qu'elle tourne (Julien jjj, complète) ; sans lecture de Paul, Q3 reste pas encore lue (Léa jjn)", nR);
+    // (21/10, points 15 à 17) la séance rouverte : Q4 écartée, Q1 à Q3 posées et corrigées, terminée ; « 🔓 Rouvrir », « ↩️ Remettre » Q4, « ▶️ Lancer Q4 » :
+    // la correction lit Q4 (l'ordre d'avant, Q4 au bout), et la note, terminée de nouveau, est sur 4
+    const s4 = await p2.evaluate(() => ACT.lancerSeance("3 ESSAI", "essai4", {})); await p2.evaluate(() => ACT.appelFini([])); await pause(300); await p2.evaluate(() => ACT.ecarter(3)); await pause(150);
+    const joue4 = (qs, rev) => p2.evaluate(a => { const [s, qs, rev] = a, b = SCN.evalDeSeance(s).questions.map(q => q.bonnes), m = {}, P = "/sessions/" + s + "/", now = LIVE.maintenant();
+      qs.forEach(i => { m[P + "questionsLancees/" + i] = now - 100 * (9 - i); ["abrial_julien", "baudry_lea"].forEach(x => { m[P + "reponses/" + i + "/" + x] = {choix: b[i], ts: now, ms: now, tour: 1}; m[P + "lectures/" + i + "/" + x] = {choix: b[i], par: "voisin", ms: now}; }); });
+      if(rev) m[P + "revelees"] = rev; return ecrireQCM(m, "jeu"); }, [s4, qs, rev]);
+    await joue4([0, 1, 2], null); await pause(150); await p2.evaluate(() => ACT.lancerEstimation()); await p2.evaluate(() => ACT.lancerCorrection()); await pause(250);
+    await joue4([], [0, 1, 2]); await pause(150); await p2.evaluate(s => ACT.terminer(s), s4); await pause(300);
+    await p2.evaluate(s => ACT.rouvrirSeance(s), s4); await pause(400); await p2.evaluate(() => ACT.appelFini([])); await pause(250);
+    await p2.evaluate(() => ACT.remettre(3)); await pause(150); await p2.evaluate(() => ACT.lancerQuestion(3)); await pause(250); await joue4([3], null); await pause(150);
+    await p2.evaluate(() => ACT.lancerEstimation()); await p2.evaluate(() => ACT.lancerCorrection()); await pause(250); await p2.evaluate(() => ACT.lancerCorrection()); await pause(250);
+    const rq4 = await p2.evaluate(s => { const d = SCN.etat(s); return {o: SCN.ordreCorr(s), ph: d.ph, qi: d.qi}; }, s4);
+    await joue4([], [0, 1, 2, 3]); await pause(150); await p2.evaluate(s => ACT.terminer(s), s4); await pause(300);
+    const n4 = await p2.evaluate(s => { const n = SCN.note("abrial_julien", null, s); return n.st.join("") + " " + n.n + "/" + n.total; }, s4);
+    verif(JSON.stringify(rq4.o) === "[0,1,2,3]" && rq4.ph === "lecture" && rq4.qi === 3 && n4 === "jjjj 4/4", "la séance rouverte, Q4 remise et posée : la correction lit Q4 (l'ordre d'avant, Q4 au bout) ; terminée de nouveau, la note sur 4", {rq4, n4});
     verif(err.length === 0, "aucune erreur de page", err.slice(0, 3));
   } catch(e){ verif(false, "l'essai s'est arrêté", e.stack); }
   await nav.close(); await srv.close();

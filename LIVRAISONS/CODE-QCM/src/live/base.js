@@ -289,7 +289,13 @@ var SCN = (function(){
   };
   // l'ordre de la correction : fixé au lancement de la correction ; avant, de la plus ratée à la mieux réussie sur les tablettes
   S.papier = function(sid){ var s = S.sess(sid); return !!(s && s.lancee && s.lancee.mode === "papier"); };
-  S.ordreCorr = function(sid){ var s = S.sess(sid); if(s && s.ordreCorr) return (Array.isArray(s.ordreCorr) ? s.ordreCorr : Object.values(s.ordreCorr)).map(Number);
+  /* (21/10, points 15 à 17 : la séance rouverte) l'ordre de la correction est fixé une fois (ordreCorr, écrit par « 📝 Lancer la correction ») ; une séance
+     rouverte qui pose une question de plus (« ↩️ Remettre » Q4, puis « ▶️ Lancer Q4 ») la corrige aussi : l'ordre d'avant reste tel quel, et chaque
+     question posée depuis, ni écartée ni déjà dans l'ordre, s'ajoute à la fin, dans l'ordre de la règle (la plus ratée d'abord) */
+  S.ordreCorr = function(sid){ var s = S.sess(sid), calc = ordreCalcule(sid, s); if(!(s && s.ordreCorr)) return calc;
+    var fixe = (Array.isArray(s.ordreCorr) ? s.ordreCorr : Object.values(s.ordreCorr)).map(Number);
+    return fixe.concat(calc.filter(function(i){ return fixe.indexOf(i) < 0; })); };
+  function ordreCalcule(sid, s){
     var ev = S.ev(sid); if(!ev) return []; var ec = S.ecartees(sid), pres = S.presents(null, sid);
     var qs = ev.questions.map(function(q, i){ return i; }).filter(function(i){ return ec.indexOf(i) < 0; });
     // (20/10, vu par QCM-3) sur tablettes, une correction commencée avant la dernière question ne corrige que les questions lancées (ou avec une
@@ -301,7 +307,7 @@ var SCN = (function(){
     // le taux de justes sur les présents entrés (une question sans réponse est à 0, la plus ratée), sinon sur ceux qui ont répondu
     else { var act = S.actifs(null, sid); qs.forEach(function(i){ var rep = pres.filter(function(x){ return S.reponse(x, i, sid); }), n = Math.max(rep.length, act.length);
       taux[i] = n ? rep.filter(function(x){ return S.justeTablette(x, i, sid); }).length / n : 1; }); }
-    return qs.sort(function(a, b){ return taux[a] - taux[b] || a - b; }); };
+    return qs.sort(function(a, b){ return taux[a] - taux[b] || a - b; }); }
   S.corrigeesAu = function(k, sid){ var s = S.sess(sid); return liste(s && s.revelees).map(Number); };
 
   /* ── La note : la règle (288 à 293, 303, 332) ── */

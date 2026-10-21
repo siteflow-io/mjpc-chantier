@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 14:49 — points 15 à 17 (la séance rouverte après une question écartée), reçu 14:49 : à QCM-2 ; le socle a déjà ce qu'il faut (`SCN.lancees`, `SCN.reponse`, `ACT.remettre`, que `suivanteQ` lit) : rien à mon nom sauf demande de QCM-2 ; j'attends « contrôlé » sous 15 à 17
+- QCM-1 · SOCLE · 15:11 — points 15 à 17 (reçu 15:05, prévu 16:05) : livré — `ordreCorr` ajoute au bout les questions posées après « 🔓 Rouvrir » (Q4 remise se corrige) ; le reste est à QCM-2 ; j'attends « contrôlé » sous 15 à 17
 
 - QCM-2 · HEURE · 15:09 — point 15 (la séance rouverte après une question écartée), reçu 15:06, livraison prévue 16:06 : codé dans c3-pilot.js, en essai au geste (banc-rouverte-21-10.js)
 

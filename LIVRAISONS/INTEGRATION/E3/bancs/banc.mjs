@@ -301,6 +301,35 @@ await CAS('T14', 'le bloc écrit en classe reste au tableau après rechargement 
   verif('T14', pareil(pp, ff), 'et elle suit de nouveau le pilote rechargé (un ▶)', `pilote ${pp && pp.lignes.length} l. · tableau ${ff && ff.lignes.length} l.`);
   await fen.close(); await fin('T14', o); });
 
+// T15 — la copie d'un autre jour au tableau (réveil n°9 ; E1 `dr_jouerCopie`, contrat §12.8) : le lundi, une retouche en classe dans une diapo montrée ;
+//       le mardi (même onglet rechargé, le hub gardé), l'heure suivante est lancée : la retouche de la veille est au mur, dans la fenêtre du tableau.
+await CAS('T15', 'la copie d\'un autre jour : la retouche de la veille est au tableau', async () => {
+  if (!SITE) { absent('T15', 'se joue sur le site'); return; }
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 1); await pg.waitForTimeout(300);
+  const ajout = ' (retouché en classe la veille)';
+  const cible = await pg.$('#mur [data-p="0.t"]'); if (!cible) { absent('T15', 'pas de texte retouchable sur la diapo 1 (E1)'); await fin('T15', o); return; }
+  await cible.click(); await pg.keyboard.press('End'); await pg.keyboard.type(ajout, { delay: 2 }); await pg.keyboard.press('Escape'); await pg.waitForTimeout(400);
+  await dev(pg, 2); await pg.waitForTimeout(2500);   /* la copie part au hub (900 ms), le journal aussi */
+  const lundi = await pg.evaluate(t => (document.getElementById('mur').innerText || '').indexOf(t.trim()) >= 0, ajout); verif('T15', lundi, 'lundi : la retouche est au pilote', String(lundi));
+  /* le lendemain : l'horloge passe au mardi 15/09 10:10 (une heure de 3E Charles de Gaulle), le pilote est rechargé, le hub est gardé */
+  await pg.clock.setFixedTime(new Date('2026-09-15T10:10:00+02:00')); await pg.reload({ waitUntil: 'load' }); await pg.waitForTimeout(1800);
+  await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
+  await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('#ses-reprise button, button')).find(x => /Plus tard/.test(x.textContent || '')); if (b) b.click(); });
+  await pg.evaluate(() => { const b = document.getElementById('tprof-btn'); if (b) b.click(); }); await pg.waitForTimeout(500); await pg.evaluate(() => atelierOuvrir()); await pg.waitForTimeout(1000);
+  await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(800);
+  if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await pg.waitForTimeout(1500);
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await pg.waitForTimeout(2500); await sansVoile(pg);
+  if (CAPT) await pg.screenshot({ path: path.join(CAPT, 'T15-mardi-avant-lancer.png') }); await pg.evaluate(() => { const b = document.querySelector('[data-lancer="1"]'); if (b) b.click(); }); await pg.waitForTimeout(2500); await sansVoile(pg); await clicTexte(pg, 'button', 'Lancer l\u2019heure'); await clicTexte(pg, 'button', "Lancer l'heure"); await pg.waitForTimeout(2500); await sansVoile(pg); await clicTexte(pg, 'button', 'Compris'); const fen = await ouvrirTableau(pg);
+  /* aller à la diapo 1 de la séance (là où la retouche a été faite) si l'heure s'ouvre ailleurs */
+  const ouv = await pg.evaluate(t => (document.getElementById('mur').innerText || '').indexOf(t.trim()) >= 0, ajout);
+  if (!ouv) { await pg.evaluate(() => { try { const i = dr_seances()[S.si].ecrans.findIndex(e => /routine/.test(e.act || '')); if (i >= 0) { S.di = i; S.page = null; dr_tout(); } } catch (e) {} }); await pg.waitForTimeout(500); const g = await pg.$('#garde.on #garde-devant'); if (g) { await g.click(); await pg.waitForTimeout(300); } }
+  for (let i = 0; i < 3; i++) { if (await fen.evaluate(t => ((document.getElementById('mur2') || {}).innerText || '').indexOf(t.trim()) >= 0, ajout)) break; await dev(pg, 1); await pg.waitForTimeout(500); }
+  const mardiP = await pg.evaluate(t => (document.getElementById('mur').innerText || '').indexOf(t.trim()) >= 0, ajout);
+  const mardiT = await fen.evaluate(t => ((document.getElementById('mur2') || {}).innerText || '').indexOf(t.trim()) >= 0, ajout); await cap(fen, 'T15-copie-de-la-veille');
+  verif('T15', mardiP, 'mardi, l\'heure suivante lancée : la retouche de la veille est au pilote (E1 `dr_jouerCopie`)', String(mardiP));
+  verif('T15', mardiT, 'et au mur : la fenêtre du tableau la montre', String(mardiT));
+  await fen.close(); await fin('T15', o); });
+
 dire(''); dire(`banc E3 : ${nb} vérifications, ${echecs} échec(s)` + (echecs ? ' — ROUGE' : ' — VERT'));
 if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }
 await nav.close(); process.exit(echecs ? 1 : 0);

@@ -126,3 +126,8 @@
 ## 21/10, 21:25 — réveil n°8 lu
 - Rien d'ouvert ; §12.17 et la ligne 138 sont chez E2 : T13 compare la fenêtre au pilote, il suit quel que soit l'ordre ; je rejoue à sa poussée. Banc rejoué sur `836dfb30` : **89/89**.
 - 21:45 : poussée d'E2 `ace15fda` (§12.17, ligne 138) : banc rejoué **89/89**, T13 compris.
+
+## 21/10, 22:40 — réveil n°9
+- **T15** ajouté : la copie d'un autre jour au tableau (E1 `dr_jouerCopie`) — lundi une retouche en classe sur la diapo 1, mardi 10:10 (le pilote rechargé, le hub gardé), « Lancer l'heure 2 », la diapo 1 : **la retouche de la veille est au pilote et au mur** (5/5, joué seul sur `622b9a55`).
+- Vu en passant (pour E2) : avant de lancer l'heure 2, le pilote affiche « T-undefined · le cahier de textes attend » (capture de T15).
+- **NOTE.md finale** réécrite (ce que ça change, md5, ce que j'ai touché, bancs, relecteurs, ce qui reste chez d'autres, ce qui est à Paul). Le banc complet et le banc de la conscience tournent ; leurs sorties suivent.

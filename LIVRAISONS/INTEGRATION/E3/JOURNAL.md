@@ -34,3 +34,6 @@
 - **reste** : E1-a → appliquer `brancher-index.py`, brancher `dr_tabPoserEcran` sur le socle réel, banc sur `assemble/index.html`.
 - **bloqué** : E1-a absente (veille toutes les 5 min).
 - **relances** : rien.
+
+## 21/10, 10:35 — les dettes de mon territoire, lues (registre de la production `docs/MJPC6-DETTES.md`)
+- n°12 · 05 (lancer depuis l'EDT ne montre pas le cours) : **E2** (la porte), rien au tableau. n°12 · 14, 15, 16, 18, 19 : méthode, cadrage, maquettes, préalables — **rien au tableau**. n°12 · 17 : contient `_drProchainCreneau` (le prochain jour ouvré) — **c'est mon audit F1** ; ajouté à l'audit (la dette était connue). Aucune autre ne touche le tableau ; je le redirai à la fin, dans `NOTE.md`.

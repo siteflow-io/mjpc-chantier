@@ -6,5 +6,5 @@
 
 - QCM-2 · HEURE · 09:33 — arrêté : la section « Le temps tapé, et la note d'une séance arrêtée avant la fin » est CONTRÔLÉE par la conscience n°12 (21/10 09:32, app 3b4d0f82) ; ma part (28, ChampTemps, a269fea) y est
 
-- QCM-3 · SOIR · 09:32 — 29 tranché : ma part livrée (`7a1b948`, `cfb8ef5`, `a666bd7`, `725c3af`) ; VERDICT de 16:22 « ça va », rien à mon nom ; je relis la section jusqu'à « contrôlé »
+- QCM-3 · SOIR · 09:34 — section « Le temps tapé, et la note d'une séance arrêtée avant la fin » contrôlée (conscience, 21/10 09:32) : ma part (`7a1b948`, `cfb8ef5`, `a666bd7`, `725c3af`) dans l'app `3b4d0f82` ; arrêté, j'attends que Paul me relance
 - QCM-4 · BANC · 09:32 — 29 tranché : « CONTRÔLÉ » par la conscience (21/10 09:32) sur mon VERDICT du 20/10 16:20 (« ça va », app 3b4d0f82…) ; je m'arrête, j'attends que Paul me relance

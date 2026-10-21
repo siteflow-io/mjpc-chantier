@@ -788,3 +788,8 @@ const dr_heureCloseBloque = ev => { try { if (typeof S !== 'object' || !S || !S.
   if (ev.type === 'click' && t && t.closest && t.closest('#bdev, #bprec')) { ev.stopPropagation(); ev.preventDefault(); return; }
   if (ev.type === 'keydown' && /^(ArrowRight|ArrowLeft| |Backspace|PageDown|PageUp)$/.test(ev.key) && !(t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))) { ev.stopPropagation(); ev.preventDefault(); } } catch (e) {} };
 document.addEventListener('click', dr_heureCloseBloque, true); document.addEventListener('keydown', dr_heureCloseBloque, true);
+
+/* ─── la garde de la clôture (« il manque… ») appartient au Pilotage : quitter le Pilotage (l'onglet Relecture pour relire le
+   récit, comme la garde y invite) la referme — la Relecture n'est jamais couverte (cadrage 2 · 0.1 ; vu par le relecteur n°3 d'E4) ─── */
+setInterval(() => { try { const g = document.getElementById('garde-clore'); if (!g || !g.classList.contains('on')) return;
+  const v = (typeof ATVUES === 'object' && ATVUES) ? ATVUES.vue : null; if (v && v !== 'pilotage') g.classList.remove('on'); } catch (e) {} }, 250);

@@ -1,0 +1,120 @@
+banc E3 (le tableau) · 2026-10-21 17:15 UTC · entrée SITE (faux hub /home/user/mjpc-chantier/AUDITS/INTEGRATION-DEROULE/hub) · fichier md5 84a4c3494b8551a7fb96824dad7e4964 · 2218209 o
+
+T1 — la fenêtre locale montre ce que voit la classe, et suit sans rechargement
+  ok     T1 · la fenêtre est la page elle-même, `?vue=tableau&local=1` — VRAISONS/INTEGRATION/assemble/index.html?vue=tableau&local=1
+  ok     T1 · la fenêtre rend dans #mur2.mur.tableau — #mur2 .mur tableau
+  ok     T1 · la page du tableau ne contient pas #mur (les contrôles lisent #mur d'abord) — false
+  ok     T1 · au pilote : la diapo 1, trois lignes dévoilées — 3 l. « Analyse d'images : la routine »
+  ok     T1 · à l'ouverture : même diapo, mêmes lignes, même compteur que le pilote, rien hors du cadre — pilote 3 l. «  » · tableau 3 l. «  », hors 0
+  ok     T1 · un ▶ de plus : la fenêtre suit (quatre lignes, comme le pilote) dans les 700 ms — pilote 4 l. · tableau 4 l.
+  ok     T1 · sans rechargement de la fenêtre — true
+  ok     T1 · le crochet `dr_versMur` (relance F7) : `null` vide la fenêtre, `S.mur` la remontre — vide 0 l. · remis 4 l.
+  ok     T1 · la fiche se referme (`dr_versMur(null, {sortie:true})` pendant `S.fichePage`) : la fenêtre garde son image, elle ne se vide pas — 4 l.
+  ok     T1 · `pousser` du socle appelle le crochet (dr_auMur → dr_versMur) — true
+  ok     T1 · le témoin « ● session » (#dr-session, posé par E1, rempli par E3) dit que la scène arrive au hub — ● session
+  ok     T1 · la fenêtre tourne 3 s sans aucune erreur JS (relecteurs 1 n° 5, 2 n° 1 : `tick` sans #fin) — 0
+  ok     T1 · la page `?vue=tableau&local=1` chargée seule tourne 4 s sans erreur JS — 0 erreur(s) 
+  ok     T1 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T1 · aucune boîte système
+
+T2 — gelé, la fenêtre ne bouge pas pendant que le pilote avance ; dégelée, elle rattrape
+  ok     T2 · ❄ : le pilote est gelé (body.gel)
+  ok     T2 · trois ▶ pendant le gel : la fenêtre montre toujours ce qu'elle montrait, le pilote a avancé — avant 2 l. « Analyse d'images : la routine » · pendant 2 l. « Analyse d'images : la routine » · pilote 5 l. « Analyse d'images : la routine »
+  ok     T2 · dégelé ici : la fenêtre montre ce que montre le pilote — pilote 5 l. « Analyse d'images : la routine » · tableau 5 l. « Analyse d'images : la routine »
+  ok     T2 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T2 · aucune boîte système
+
+T3 — ouverte pendant le gel, la fenêtre montre l'image gelée
+  ok     T3 · la fenêtre montre ce que la classe voyait au gel (2 lignes), pas le pilote (5) — gel 2 l. · pilote 5 l. · tableau 2 l.
+  ok     T3 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T3 · aucune boîte système
+
+T4 — la vue « ⧉ Tableau » du pilote montre ce que montre la fenêtre
+  ok     T4 · mêmes lignes, même diapo — vue 3 l. · fenêtre 3 l.
+  ok     T4 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T4 · aucune boîte système
+
+T5 — le tableau distant (`?vue=tableau`) : attente, garde, scène suivie, image gardée
+  ok     T5 · le pilote a écrit `cours_actif` et `C/scene` — /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+  ok     T5 · la scène = `et` + {eid, origine, ts, trameMaj}, nDev 3 — si,di,fichePage,ficheEntre,ficheDev,ficheEcr,arrivee,neuf,eid,qui,quiTotal,coupure,cahier,attente
+  ok     T5 · rev, vues, morceau, iz tombent — 
+  ok     T5 · sans cours actif : l'écran d'attente (le nom du site, l'heure, la date) — MONSIEURJAIPASCOMPRIS 08:50 lundi 14 septembre 2026 Classe attendue : 3E Charles de Gaulle · 08:57 – 09:52
+  ok     T5 · à 08:50 (`?n=3e`) : la classe attendue, lue dans la grille en lecture seule (réveil n°3) — MONSIEURJAIPASCOMPRIS 08:50 lundi 14 septembre 2026 Classe attendue : 3E Charles de Gaulle · 08:57 – 09:52
+  ok     T5 · une scène arrive : l'attente disparaît, #mur2 montre la diapo du pilote, trois lignes — pilote 3 l. « Analyse d'images : la routine » · distant 3 l. « Analyse d'images : la routine »
+  ok     T5 · la première scène paraît après la recherche du cours (2 s) et un sondage (900 ms) — 1494 ms depuis l'écriture dans son hub
+  ok     T5 · un ▶ de plus : le distant suit (quatre lignes) en ≤ 900 ms de sondage + rendu (mesure proposée, audit I2) — 109 ms depuis l'écriture dans son hub
+  ok     T5 · 10 ▶ : du clic au distant, médiane 935 ms, maximum 961 ms (attendu ≤ 1 500 ms au maximum ; veille 125 + débounce 250 + sondage 900) — 880 950 898 919 959 935 900 951 932 961
+  ok     T5 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T5 · aucune boîte système
+  ok     T5 · le pilote fermé : 30 s plus tard, le distant garde sa dernière image — 4 l.
+  ok     T5 · une scène plus ancienne que la dernière montrée est refusée — 4 l.
+  ok     T5 · une scène à l'heure illisible (texte) est ignorée — 4 l.
+  ok     T5 · après une scène venue d'une horloge en avance, la scène vraie suivante passe — 3 l.
+  ok     T5 · pointeur retiré : une scène plus récente est refusée, l'image reste — 3 l.
+  ok     T5 · K15 en vue tableau : zéro écriture au hub — 0
+  ok     T5 · personne n'a même essayé d'écrire (`SES.ecrituresBloquees` = 0) — 0
+  ok     T5 · une écriture tentée est refusée et comptée — refusé, 1 bloquée(s), 0 au hub
+  ok     T5 · `sendBeacon` aussi est refusé et compté (relance M8) — {"r":false,"bloq":2}
+  ok     T5 · aucune erreur JS au distant
+
+T6 — la participation : plus de `C/part` ; « qui a participé » au tableau suit la parole
+  ok     T6 · une parole n'écrit plus `C/part` (plus de lecteur ; elle vit dans `C/etat` et le journal) — 0
+  ok     T6 · « qui a participé » affiché au tableau — 1 élève sur 29 ont participé
+  ok     T6 · une parole de plus pendant que la boîte est au tableau : elle suit (×2) sans réafficher la boîte (M4) — Gatien ×2
+  ok     T6 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T6 · aucune boîte système
+
+T7 — le minuteur d'activité au tableau (R3) : fenêtre et scène
+  ok     T7 · la fenêtre montre le minuteur en bandeau — « ⏱ 05:00 »
+  ok     T7 · la scène au hub le porte (le distant le montrera) — « ⏱ 05:00 »
+  ok     T7 · « Arrêter » : le bandeau quitte le tableau — false
+  ok     T7 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T7 · aucune boîte système
+
+T8 — « Adresse du tableau » (le QR tombe)
+  ok     T8 · le QR n'existe plus (ni `sesQROuvrir`, ni bouton) — false
+  ok     T8 · le bouton « Adresse du tableau » est à côté de « ⧉ », avec son infobulle — Adresse du tableau — Le tableau sur un autre appareil : montre l’adress
+  ok     T8 · l'adresse affichée est celle du tableau, `?vue=tableau` — file:///home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html?vue=tableau
+  ok     T8 · aucune image demandée au réseau (pas de QR distant) — false
+  ok     T8 · ✕ ferme la boîte — true
+  ok     T8 · aucune écriture au hub — 0 écriture(s)
+  ok     T8 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T8 · aucune boîte système
+
+T9 — la fenêtre rechargée pendant l'Atelier remontre la classe
+  ok     T9 · après F5 dans la fenêtre, Paul dans l'Atelier : la diapo de la classe, trois lignes — avant 3 l. · après 3 l.
+  ok     T9 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T9 · aucune boîte système
+
+T10 — le distant sans copie jouée lisible garde l'attente
+  ok     T10 · l'écran d'attente reste affiché (pas de page blanche) — true
+  ok     T10 · aucune erreur JS
+
+T11 — l'attente : le niveau de la page, et rien sans grille
+  ok     T11 · niveau 5e : aucune heure de 5e ce matin → pas de classe attendue — MONSIEURJAIPASCOMPRIS 08:50 lundi 14 septembre 2026
+  ok     T11 · sans grille au hub : rien d'autre que le nom du site, la date, l'heure — MONSIEURJAIPASCOMPRIS 08:50 lundi 14 septembre 2026
+  ok     T11 · à 10:30, l'heure de 08:57 est passée : elle n'est plus attendue — MONSIEURJAIPASCOMPRIS 10:30 lundi 14 septembre 2026
+
+T12 — la Relecture n'écrit pas la scène ; le témoin ne ment pas
+  ok     T12 · « ⧉ Tableau » sans fenêtre ouverte : aucun support annoncé — «  »
+  ok     T12 · fenêtre ouverte : « tableau en Win K » — « tableau en Win K »
+  ok     T12 · dans la Relecture, un redessin du socle n'écrit aucune scène au hub — 0 écriture(s) de la scène
+  ok     T12 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T12 · aucune boîte système
+
+T13 — l'heure suivante : la fenêtre suit depuis le rituel
+  ok     T13 · la fenêtre montre la diapo d'ouverture de l'heure, comme le pilote — pilote « Tableau 3 » 0 l. · tableau « Tableau 3 » 0 l.
+  ok     T13 · trois ▶ : la fenêtre suit — pilote « Les hypothèses de la classe » 0 l. · tableau « Les hypothèses de la classe » 0 l.
+  ok     T13 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T13 · aucune boîte système
+
+T14 — le bloc écrit en classe reste au tableau après rechargement et reprise
+  ok     T14 · avant : la fenêtre montre le bloc écrit — true
+  ÉCHEC  T14 · après « Reprendre le cours » : le pilote montre le bloc écrit (E1/E2 — relecture continue d'E4, ligne 110) — false
+  ok     T14 · E3 · après le rechargement, la fenêtre restée ouverte est retrouvée par le pilote rechargé (signe `ici`) et montre ce qu'il montre — pilote « Analyse d'images : la routine » 6 l. · tableau « Analyse d'images : la routine » 6 l.
+  ÉCHEC  T14 · le bloc écrit en classe est encore au tableau après la reprise (dépend du pilote : E1/E2, ligne 110 d'E4) — false
+  ok     T14 · et elle suit de nouveau le pilote rechargé (un ▶) — pilote 0 l. · tableau 0 l.
+  ok     T14 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T14 · aucune boîte système
+
+banc E3 : 89 vérifications, 2 échec(s) — ROUGE

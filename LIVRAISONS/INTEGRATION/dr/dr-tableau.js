@@ -61,10 +61,16 @@ function dr_versMur(et, x){
   if (et) dr_sceneAuto();
 }
 
-/* la fenêtre dit `pret` à l'ouverture (comme la maquette) : on lui pousse ce que la classe voit, gel compris (p8-5g, point 1) */
+/* la fenêtre dit `pret` à l'ouverture (comme la maquette) : on lui pousse ce que la classe voit, gel compris (p8-5g, point 1).
+   Elle redit `ici` toutes les 3 s : un pilote RECHARGÉ (réveil n°6 : écrire, recharger, « Reprendre le cours ») ne connaît plus la fenêtre
+   qu'il avait ouverte ; il l'adopte à ce signe et lui renvoie ce que voit la classe. Un pilote qui la connaît déjà ignore `ici`. */
 window.addEventListener('message', ev => {
-  if (dr_estTableau() || !ev.data || !ev.data.pret) return;
+  if (dr_estTableau() || !ev.data || !(ev.data.pret || ev.data.ici)) return;
+  const connue = DR_TAB.fen && !DR_TAB.fen.closed;
+  if (ev.data.ici && connue) return;
+  if (!connue && ev.source) DR_TAB.fen = ev.source;
   if (ev.source && DR_TAB.fen && ev.source !== DR_TAB.fen) return;
+  if (ev.data.ici && !(typeof S === 'object' && S && S.lancee)) return;   /* rien à montrer tant que l'heure n'est pas (re)lancée */
   try {
     if (typeof S !== 'object' || !S) return;
     if (!S.atelier) { pousser(S.mur || S.gel || etatComplet()); return; }
@@ -282,6 +288,7 @@ function dr_tabDemarrer(){
   if (dr_tabLocal()) {
     window.addEventListener('message', dr_tabRecevoir);
     try { if (window.opener) window.opener.postMessage({ pret: true }, '*'); } catch (e) {}
+    setInterval(() => { try { if (window.opener && !window.opener.closed) window.opener.postMessage({ ici: true }, '*'); } catch (e) {} }, 3000);   /* le signe pour un pilote rechargé */
     return;
   }
   sesTabChercherCours();

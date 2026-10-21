@@ -110,3 +110,9 @@
 
 ## 21/10, 17:57 — poussée 16 : le réveil n°5 (17:48)
 - Rien d'ouvert. Banc E3 rejoué après chaque poussée des autres depuis 17:00 (E4 5f0c01a4, E2 00b324f9/712accda, E1 f3a819ba, E4 19377fe1) : **82/82 à chaque fois**. T13 suit `dr_heureContinue` (l'heure 2 s'ouvre sur « Tableau 3 », où la classe s'était arrêtée ; la fenêtre la montre et suit). NOTE.md tenue à jour (état, ce qui reste chez les autres, ce qui est à Paul).
+
+## 21/10, 19:25 — poussée 17 : le réveil n°6 (18:58)
+- **Le geste ajouté au banc (T14)** : heure lancée, fenêtre ouverte, **Atelier** (« clique ici et écris » n'existe que dans l'Atelier : `p8EcritureOuverte`), un bloc écrit, retour au Pilotage, dévoilé jusqu'à paraître dans la fenêtre ; **recharger le pilote**, « Reprendre le cours », « Compris ». Le faux hub de mon banc survit désormais au rechargement (`sessionStorage`), comme le vrai.
+- **Trouvé et réglé chez moi** : le pilote rechargé **ne connaissait plus la fenêtre** restée ouverte — elle restait figée sur l'avant (7 l. contre 6 au pilote), et ne suivait plus aucun ▶. Désormais la fenêtre redit `ici` toutes les 3 s ; un pilote qui ne la connaît pas l'adopte et lui renvoie ce que voit la classe (un pilote qui la connaît l'ignore). Garde T14 : rouge sur `dr-tableau.js` d'avant, verte maintenant.
+- **Rouge chez E1/E2 (ligne 110 de la relecture continue d'E4, toujours là)** : après « Reprendre le cours », **le bloc écrit en classe a disparu du pilote** (« 7 / 6 dévoilés » : le compteur le sait, la diapo ne l'a plus) — la fenêtre, fidèle au pilote, le perd donc aussi. Mon banc le dit en deux lignes attribuées (« E1/E2 ») : **89 vérifications, 2 échecs, ce sont ces deux-là**. Capture `captures/site/T14-apres-rechargement.png`.
+- **T13** suivra l'ordre de l'heure suivante d'E2 (réactivation, reporté, programme, cahier) quand E2 le pousse : T13 compare la fenêtre au pilote, il suit l'ordre quel qu'il soit.

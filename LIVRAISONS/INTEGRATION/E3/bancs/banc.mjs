@@ -29,7 +29,7 @@ const hubStore = () => { const J = f => JSON.parse(fs.readFileSync(path.join(HUB
   /* comme les contrôles v2.2 de la conscience : on joue l'HEURE 1 d'une séance jamais jouée — l'heure du 07/09 que porte le faux hub ferait lancer l'heure 2 (F2, 13 · 26) */
   try { Object.values(st.site['3e'].chapitres).forEach(ch => Object.values(ch.seances || {}).forEach(se => { delete se.deroule_joue; })); } catch (e) {} return st; };
 const hubBrut = () => { const st = hubStore0(); return st; };
-const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); window.__ECR = []; const lire = c => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; }; const pos = (c, v) => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) n[q[k]] = {}; n = n[q[k]]; } if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v; };
+const fauxHub = s => { /* le hub survit au rechargement de l'onglet (sessionStorage), comme le vrai hub survit au rechargement du pilote */ let sv = null; try { sv = sessionStorage.getItem('__E3HUB'); } catch (e) {} window.__HUB = sv ? JSON.parse(sv) : JSON.parse(JSON.stringify(s)); window.__ECR = []; const garder = () => { try { sessionStorage.setItem('__E3HUB', JSON.stringify(window.__HUB)); } catch (e) {} }; const lire = c => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; }; const pos = (c, v) => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) n[q[k]] = {}; n = n[q[k]]; } if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v; garder(); };
   window.__hubLire = lire; window.__hubPoser = pos;
   window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase(); if (m === 'GET') return Promise.resolve(new Response(JSON.stringify(lire(c)), { status: 200 })); let bd = null; try { bd = JSON.parse((o && o.body) || 'null'); } catch (e) {} window.__ECR.push(m + ' ' + c); if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => pos(c + '/' + k, bd[k])); else pos(c, m === 'DELETE' ? null : bd); return Promise.resolve(new Response(JSON.stringify(bd), { status: 200 })); } return Promise.reject(new Error('hors du faux hub : ' + s2.slice(0, 60))); };
   window.WebSocket = function () { throw new Error('websocket bloqué'); }; };
@@ -273,6 +273,33 @@ await CAS('T13', 'l\'heure suivante : la fenêtre suit depuis le rituel', async 
   await dev(pg, 3); await pg.waitForTimeout(600); const p1 = await lire(pg, 'pilote'), t1 = await lire(fen, 'tableau'); await cap(fen, 'T13-heure-2');
   verif('T13', pareil(p1, t1), 'trois ▶ : la fenêtre suit', `pilote « ${p1.act} » ${p1.lignes.length} l. · tableau « ${t1 && t1.act} » ${t1 && t1.lignes.length} l.`);
   await fen.close(); await fin('T13', o); });
+
+// T14 — le bloc écrit en classe reste au tableau après un rechargement du pilote (réveil n°6 ; relecture continue d'E4, ligne 110) :
+//       la fenêtre ouverte avant le rechargement est retrouvée par le pilote rechargé et montre toujours le bloc écrit.
+await CAS('T14', 'le bloc écrit en classe reste au tableau après rechargement et reprise', async () => {
+  if (!SITE) { absent('T14', 'se joue sur le site'); return; }
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); const fen = await ouvrirTableau(pg);
+  const phrase = 'Phrase écrite en classe par le banc E3';
+  /* « clique ici et écris » n'existe que dans l'Atelier (p8EcritureOuverte) : en pleine heure, Paul y passe, écrit, revient au Pilotage et dévoile */
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await pg.waitForTimeout(900); await sansVoile(pg);
+  if (await pg.$('#at-aide .x')) { await pg.click('#at-aide .x'); await pg.waitForTimeout(200); }
+  const z = await pg.$('#mur .p8-ecrire'); if (!z) { absent('T14', 'pas de zone « écrire » dans l\'Atelier (E1)'); await fen.close(); await fin('T14', o); return; }
+  await z.click(); await pg.keyboard.type(phrase, { delay: 2 }); await pg.keyboard.press('Escape'); await pg.waitForTimeout(1200);
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await pg.waitForTimeout(900); await sansVoile(pg);
+  const vu = s2 => s2.evaluate(t => { const m = document.getElementById('mur') || document.getElementById('mur2'); return !!m && (m.innerText || '').indexOf(t) >= 0; }, phrase);
+  for (let i = 0; i < 14 && !(await vu(fen)); i++) { await dev(pg, 1); await pg.waitForTimeout(150); const g = await pg.$('#garde.on #garde-devant'); if (g) { await g.click(); await pg.waitForTimeout(200); } }
+  const v0 = await vu(fen); verif('T14', v0, 'avant : la fenêtre montre le bloc écrit', String(v0));
+  await pg.waitForTimeout(1500); await pg.reload({ waitUntil: 'load' }); await pg.waitForTimeout(2500);
+  await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); });
+  await pg.waitForTimeout(5500); const rep = await clicTexte(pg, 'button', 'Reprendre le cours'); await pg.waitForTimeout(4000); await sansVoile(pg); await clicTexte(pg, 'button', 'Compris'); await pg.waitForTimeout(300);
+  if (!rep) absent('T14', 'pas de bannière « Reprendre le cours » après le rechargement (E2)');
+  const p1 = await vu(pg); verif('T14', p1, 'après « Reprendre le cours » : le pilote montre le bloc écrit (E1/E2 — relecture continue d\'E4, ligne 110)', String(p1));
+  await pg.waitForTimeout(3500); const f1 = await vu(fen); await cap(fen, 'T14-apres-rechargement'); const pr = await lire(pg, 'pilote'), fr = await lire(fen, 'tableau');
+  verif('T14', pareil(pr, fr), 'E3 · après le rechargement, la fenêtre restée ouverte est retrouvée par le pilote rechargé (signe `ici`) et montre ce qu\'il montre', `pilote « ${pr && pr.act} » ${pr && pr.lignes.length} l. · tableau « ${fr && fr.act} » ${fr && fr.lignes.length} l.`);
+  verif('T14', f1, 'le bloc écrit en classe est encore au tableau après la reprise (dépend du pilote : E1/E2, ligne 110 d\'E4)', String(f1));
+  await dev(pg, 1); await pg.waitForTimeout(1200); const pp = await lire(pg, 'pilote'), ff = await lire(fen, 'tableau');
+  verif('T14', pareil(pp, ff), 'et elle suit de nouveau le pilote rechargé (un ▶)', `pilote ${pp && pp.lignes.length} l. · tableau ${ff && ff.lignes.length} l.`);
+  await fen.close(); await fin('T14', o); });
 
 dire(''); dire(`banc E3 : ${nb} vérifications, ${echecs} échec(s)` + (echecs ? ' — ROUGE' : ' — VERT'));
 if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }

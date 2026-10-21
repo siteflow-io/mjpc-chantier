@@ -1,4 +1,47 @@
-# Verdict de la livraison du code du QCM — QCM-4 · BANC, 29 tranché par Paul (points 7 à 10), 20/10 16:20
+# Verdict de la livraison du code du QCM — QCM-4 · BANC, la séance rouverte (points 12 à 14, Paul 21/10 09:45), 21/10 13:40
+
+*La reprise de 09:45 (DEFAUTS-OUVERTS, « Le temps tapé, et la note d'une séance arrêtée avant la fin », points 12 à 14). Les livraisons : QCM-1 (`f846f08`, `S.note`) et QCM-3 (`f55d19a`, `resultatLocalV`). L'app, `evaluation-qcm.staging.html`, est assemblée par `build.py` sur `code-qcm` à `f72ff9b`, md5 **`6c5330ad9fe40e1884dd5ccdced38423`** ; `src/` et `build.py` n'ont pas changé depuis. Sorties : `sorties/2026-10-21_1310/`.*
+
+## Verdict : **ça va.**
+
+Une feuille lue par Paul le soir (« Lire les copies ») compte toujours, aussi pendant qu'une séance rouverte tourne. La base et c4 disent la même note, avant, pendant et après la réouverture. Sur l'app d'avant (`3b4d0f82…`), le même banc faisait 4 échecs : Q3 y redevenait « pas encore lue » pendant la séance rouverte.
+
+**`banc-rouverte-21-10.js` (point 13, par le geste) : 39 / 39** (`rouverte.txt`).
+- **R**, 4 questions : Q1 et Q2 révélées ; Q3 lue par les voisins, pas révélée ; « 🛑 Terminer ». Avant le soir, Q3 est « pas encore lue ». Le soir, « ✅ Oui » sur Q3 : 2 / 3, complète. Après « 🔓 Rouvrir », pendant que la séance tourne : « fjj », Q3 comptée, la même note dans la base et dans c4. Terminée de nouveau : 2 / 3, Q3 comptée.
+- **P**, la même évaluation : Q1 à Q3 jouées, sans correction en classe, « 🛑 Terminer ». Le soir, Paul lit Q1 à Q3 : 2 / 3, complète (Q4 jamais lancée, hors du total). « 🔓 Rouvrir », puis « ▶️ Lancer Q4 » : pendant qu'elle tourne, Q1 à Q3 comptent (« fjj »), la même note dans la base et dans c4. Terminée de nouveau : sur 4 (« fjjn » : Q4 lancée sans réponse, pas encore lue).
+- **La mesure, pour la question de Paul (« et si je ne lis pas les copies le soir ? »).** Rien n'a été corrigé. La séance de P est rouverte sans lecture du soir (« nnnx », 0 / 3). Je lance Q4 ; la tablette redemande les codes, les élèves y rentrent, puis Q4 est jouée et close. La console propose alors « 📊 Lancer l'autoévaluation ». La correction lit Q1, Q2, Q3 puis Q4, et chacune se révèle en classe (« 💡 Révéler »). La note devient « fjjj », 3 / 4, complète, la même dans la base et dans c4. **Donc, sans lecture du soir, Q3 se corrige en classe dans la séance rouverte, une fois sa dernière question posée.**
+- **La séance exacte du point 13 ne se joue pas par le geste.** Pour avoir Q3 lue par le voisin pendant la correction, puis Q4 lancée dans la séance rouverte, il faudrait deux gestes que l'app n'offre pas :
+  - lancer la correction avant la dernière question (elle ne se lance qu'après) ;
+  - remettre Q4 dans la séance après l'avoir écartée.
+  R et P en jouent donc les deux moitiés.
+- **Le tableau de la séance pendant qu'elle tourne.** Une séance rouverte n'est pas dans Données → Résultats tant qu'elle tourne : je n'ai pas pu y lire sa note. La base et c4, eux, disent la même chose.
+- **Un défaut à confirmer, nouveau, dans DEFAUTS-OUVERTS ([QCM-4 → QCM-1, QCM-2]).** Il touche une séance rouverte dont la seule question restante avait été écartée :
+  - la console propose « ▶️ Lancer Q1 » et montre Q1 à Q4 « à venir » avec « ❌ Écarter » ;
+  - Q4 ne revient pas (pas de « ↩️ Remettre »).
+  Je l'ai vu sur les deux apps. Il ne touche pas la note, et je ne le compte pas avant la réponse de Paul ou de la conscience.
+
+**Mes autres bancs, sur la même app, en trois vagues :**
+
+| Banc | Résultat |
+| --- | --- |
+| Contrôles de la conscience (`EMPREINTES.md5` vérifié) | **32 / 32** |
+| Banc commun | **211 / 211** |
+| La séance arrêtée (points 7 à 10) | **55 / 55**, joué seul ; la séance rouverte en cours y dit maintenant « jjj » (3 / 11), au lieu de « nnn » (0 / 11) |
+| Micros | **252 / 252**, rejoué seul (dans la 3e vague : 63 vérifications de micros-b, 24 échecs, la séance calée avant la correction) |
+| Mode test | **121 / 121** |
+| Temps tapé | **28 / 28** |
+| Note du soir | **41 / 41** |
+| Heure de demain | **109 / 109** |
+| Gestes rares | **47 / 47** |
+| Reprises 2 à 5 | **22 / 22, 15 / 15, 27 / 27, 10 / 10** |
+| Reprises 7-a à 7-e | **40 / 40, 85 / 85, 141 / 141, 87 / 87, 9 / 9** |
+| Les écrans jamais atteints | 52 vérifications, 10 manques, les mêmes qu'avant ; non comptés, comme à chaque verdict |
+
+Fidélité à la maquette : 128 scènes atteintes sur 157.
+
+---
+
+# Verdict de 16:20, le 20/10 (pour mémoire)
 
 *La reprise de 08:51 (DEFAUTS-OUVERTS, « Le temps tapé, et la note d'une séance arrêtée avant la fin », points 7 à 11). Les livraisons : QCM-3 (`7a1b948`, `cfb8ef5`, `a666bd7`, `725c3af`) et QCM-1 (`49b138f`, 15:26). L'app finale, `evaluation-qcm.staging.html`, est assemblée par `build.py` sur `code-qcm` après `725c3af`, md5 **`3b4d0f821ffad2d9bb82817a4ab2cdf5`** ; `src/` et `build.py` n'ont pas changé depuis (`ed55bb8`). Sorties : `sorties/2026-10-20_1531/`.*
 

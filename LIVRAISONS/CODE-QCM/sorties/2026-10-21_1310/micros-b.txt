@@ -1,0 +1,74 @@
+Micro 8.0.3 (la feuille du voisin toute la correction, les notes dans la console), par le geste (QCM-4 · BANC) — durée 152 s · app md5 6c5330ad9fe40e1884dd5ccdced38423 · commit d43e79d
+vérifications : 63 · échecs : 24
+── A0. 3 ESSAI : YVON Adam et ZELLER Lou absents ; deux tablettes de voisins (l'une avec un prénom à voyelle), une tablette d'un élève seul
+  ok     [QCM-4 · BANC] les places : une tablette de voisins avec un prénom à voyelle, une sans
+  ok     [QCM-4 · BANC] les places : un élève sans voisin présent (son voisin absent)
+── A1. Q1 à Q3 (Emma et Noah ; Julien et Léa ; Clara seul)
+── A2. « Avant la correction », sur la moitié de chaque élève
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Emma : « Maintenant, la correction. Donne ta feuille à Noah et prends la sienne : tu la gardes jusqu'à la fin de la correction. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · LACOMBE EMMA 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Emma : « Puis tu corriges la feuille de Noah en vert, comme sa moitié de la tablette te le dit. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · LACOMBE EMMA 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Emma : « … et si tu lis et corriges avec soin la feuille de Noah. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · LACOMBE EMMA 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ok     [QCM-2 · HEURE (etape3)] Emma : plus « montre ta feuille à »
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Noah : « Maintenant, la correction. Donne ta feuille à Emma et prends la sienne : tu la gardes jusqu'à la fin de la correction. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · MAILLARD NOAH 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Noah : « Puis tu corriges la feuille d'Emma en vert, comme sa moitié de la tablette te le dit. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · MAILLARD NOAH 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Noah : « … et si tu lis et corriges avec soin la feuille d'Emma. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · MAILLARD NOAH 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ok     [QCM-2 · HEURE (etape3)] Noah : plus « montre ta feuille à »
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Julien : « Maintenant, la correction. Donne ta feuille à Léa et prends la sienne : tu la gardes jusqu'à la fin de la correction. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · ABRIAL JULIEN 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Julien : « Puis tu corriges la feuille de Léa en vert, comme sa moitié de la tablette te le dit. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · ABRIAL JULIEN 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Julien : « … et si tu lis et corriges avec soin la feuille de Léa. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · ABRIAL JULIEN 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ok     [QCM-2 · HEURE (etape3)] Julien : plus « montre ta feuille à »
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Léa : « Maintenant, la correction. Donne ta feuille à Julien et prends la sienne : tu la gardes jusqu'à la fin de la correction. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · BAUDRY LÉA 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Léa : « Puis tu corriges la feuille de Julien en vert, comme sa moitié de la tablette te le dit. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · BAUDRY LÉA 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] Léa : « … et si tu lis et corriges avec soin la feuille de Julien. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · BAUDRY LÉA 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ok     [QCM-2 · HEURE (etape3)] Léa : plus « montre ta feuille à »
+  ok     [QCM-2 · HEURE (etape3)] seul, Clara : « Avant la correction » sans les phrases avec un voisin
+  ÉCHEC  [QCM-1 · SOCLE] la correction commence au clic de Paul (« Commencer la correction ») — vu : {"qi":0,"ph":"close","depuis":1792581018506}
+  ÉCHEC  [QCM-4 · BANC] la base : Emma trouvée au dernier moment à Q2 (trouvee/lacombe_emma = 1) — vu : {}
+── A4. La co-évaluation : « 📄 <voisin>, rends sa feuille à <élève>. » en tête
+  ÉCHEC  [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Emma : « 📄 Noah, rends sa feuille à Emma. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · LACOMBE EMMA 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Emma : « 📄 Noah, rends sa feuille à Emma. » en tête (avant « ✅ / ❌ Je pense que … ») — vu : ✨ | 💡 | 🎲 | 🔥 | 3E ESSAI · LACOMBE EMMA | 📊 Mes évaluations | Évaluation d'essai | ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Noah : « 📄 Emma, rends sa feuille à Noah. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · MAILLARD NOAH 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Noah : « 📄 Emma, rends sa feuille à Noah. » en tête (avant « ✅ / ❌ Je pense que … ») — vu : ✨ | 💡 | 🎲 | 🔥 | 3E ESSAI · MAILLARD NOAH | 📊 Mes évaluations | Évaluation d'essai | ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Julien : « 📄 Léa, rends sa feuille à Julien. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · ABRIAL JULIEN 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Julien : « 📄 Léa, rends sa feuille à Julien. » en tête (avant « ✅ / ❌ Je pense que … ») — vu : ✨ | 💡 | 🎲 | 🔥 | 3E ESSAI · ABRIAL JULIEN | 📊 Mes évaluations | Évaluation d'essai | ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Léa : « 📄 Julien, rends sa feuille à Léa. » — vu : (absent) ✨ 💡 🎲 🔥 3E ESSAI · BAUDRY LÉA 📊 Mes évaluations Évaluation d'essai ⏳ Attends la prochaine question…
+  ÉCHEC  [QCM-2 · HEURE (etape3)] co-évaluation, moitié de Léa : « 📄 Julien, rends sa feuille à Léa. » en tête (avant « ✅ / ❌ Je pense que … ») — vu : ✨ | 💡 | 🎲 | 🔥 | 3E ESSAI · BAUDRY LÉA | 📊 Mes évaluations | Évaluation d'essai | ⏳ Attends la prochaine question…
+  ok     [QCM-2 · HEURE (etape3)] co-évaluation, Clara seul : pas de « rends sa feuille »
+  ÉCHEC  [QCM-4 · BANC] « Afficher leur bilan aux élèves » : la console montre « 🏁 Bilan classe » — vu : 📝 Évaluation QCMMODE PROF 🔴 1 séance en cours 📖 Mode d'emploi 📺 Ouvrir vue tableau 📱 QR pilotage 🧪 Mode test i ← Retour Pilotage Données Réglages ? 📝 Évaluations 🎯 Pilotage classe 🎯 Évaluation d'essai — 3e Essai 🕙 Fin de l'heure : 12:04 🚫 Départ d'un élève ↩️ Retour d'un élève 🔓 Rouvrir 
+  ÉCHEC  [QCM-2 · HEURE (c3-corr)] bilan de classe, ABRIAL Julien (note complète) : la note, la maîtrise, sans « pas encore lue » — vu : null
+  ok     [QCM-4 · BANC] aucune erreur de page (console, séance A)
+── B0. 3 ESSAI, deux tablettes ; Julien dit « Non, autre chose » à Q1 (une ligne à lire le soir)
+  ok     [QCM-4 · BANC] la correction : Q1 révélée, Q2 en lecture (deux questions pas encore lues)
+── B1. « 🛑 Terminer » au milieu de la correction, puis Données → Résultats → « 📊 Ouvrir »
+  ok     [QCM-4 · BANC] le tableau de la séance terminée s'ouvre
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance : la ligne de ABRIAL Julien
+  ok     [QCM-3 · SOIR (c4-seances), QCM-1 · SOCLE (c3-base)] tableau de la séance, ABRIAL Julien : la note telle qu'elle est (« n/3 ») et « 2 questions pas encore lues »
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, ABRIAL Julien : la note sur 20 telle qu'elle est
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, ABRIAL Julien : la maîtrise « — » jusqu'à la note complète
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, ABRIAL Julien : les compétences « — » jusqu'à la note complète
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance : la ligne de BRUNEAU Camille
+  ok     [QCM-3 · SOIR (c4-seances), QCM-1 · SOCLE (c3-base)] tableau de la séance, BRUNEAU Camille : la note telle qu'elle est (« n/3 ») et « 2 questions pas encore lues »
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, BRUNEAU Camille : la note sur 20 telle qu'elle est
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, BRUNEAU Camille : la maîtrise « — » jusqu'à la note complète
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance, BRUNEAU Camille : les compétences « — » jusqu'à la note complète
+  ok     [QCM-3 · SOIR (c4-seances)] tableau de la séance : pas de « écartée » pour une question pas encore lue
+── B2. « 📄 Lire les copies » de la séance terminée avant la fin de la correction : ABRIAL Julien
+  ok     [QCM-4 · BANC] « Lire les copies » : « abri », Entrée : la copie de ABRIAL Julien
+  ok     [QCM-3 · SOIR (lire-copies)] « 🧮 La note, en direct » de la copie de ABRIAL Julien
+  ok     [QCM-3 · SOIR (lire-copies)] la note en direct : « Question 2 : pas encore lue », « Question 3 : pas encore lue »
+  ok     [QCM-3 · SOIR (lire-copies)] la note en direct : plus « écartée » pour une question pas encore lue
+  ok     [QCM-3 · SOIR (lire-copies), QCM-1 · SOCLE (c3-base)] la note en direct : la note telle qu'elle est et « 2 questions pas encore lues »
+  ok     [QCM-4 · BANC] aucune erreur de page (console, séance B)
+── C0. La séance sur papier : lancée, « ⏸️ Feuilles ramassées », reprise ; deux élèves entrés
+  ok     [QCM-2 · HEURE] le mode « 📄 Séance sur papier »
+  ok     [QCM-4 · BANC] la séance est lancée sur papier
+  ok     [QCM-4 · BANC] « ▶️ Reprendre la séance du … »
+── C1. Sur papier : « Avant la correction » et « 💡 Révéler »
+  ok     [QCM-4 · BANC] la tablette montre « Avant la correction » (papier)
+  ok     [QCM-2 · HEURE (etape3)] papier, « Avant la correction » : pas les phrases avec un voisin
+  ok     [QCM-2 · HEURE (etape3)] papier, « Avant la correction » : « Barre ta réponse et écris la bonne réponse en entier en vert à côté. » (la phrase d'avant)
+  ok     [QCM-2 · HEURE (etape3)] papier, « 💡 Révéler », moitié g : la phrase d'avant (« Barre ta réponse … » ou « Sur ta feuille, mets simplement un V vert … »)
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] papier, « 💡 Révéler », moitié g : pas les phrases avec un voisin
+  ok     [QCM-2 · HEURE (etape3)] papier, « 💡 Révéler », moitié d : la phrase d'avant (« Barre ta réponse … » ou « Sur ta feuille, mets simplement un V vert … »)
+  ok     [QCM-2 · HEURE (etape3), QCM-2 · HEURE (c3-tablettes)] papier, « 💡 Révéler », moitié d : pas les phrases avec un voisin
+  ok     [QCM-4 · BANC] aucune erreur de page (séance sur papier)

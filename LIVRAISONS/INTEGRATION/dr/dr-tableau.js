@@ -12,7 +12,7 @@ var DR_TAB = { fen: null, montre: null, ts: 0, trameMaj: 0, ecrans: null, docume
   emis: '', emT: null, trameSig: '', trameT: null, tic: 0, partSig: '', partT: null, veilleT: null,
   sondeT: null, pointeurT: null, cle: '', lu: false };
 
-const dr_estTableau = () => typeof SES === 'object' && !!SES && SES.mode === 'tableau';
+const dr_estTableau = () => /[?&]vue=tableau(&|$)/.test(location.search);   /* la même lecture que `SES.mode`, mais sûre au chargement du module (SES n'existe pas encore) */
 const dr_tabLocal = () => /[?&]local=1(&|$)/.test(location.search);
 
 /* ─── la lecture : `dr_lire` du socle (secuLire, mode test) ; à défaut, `sesGet` (lecture pure) ─── */

@@ -21,3 +21,10 @@
 - **reste** : brancher `index.html` (les fonctions `ses*` qui me sont attribuées) dès E1-a.
 - **bloqué** : E1-a pas encore poussée (E1 a poussé son audit : il prend R14 « la fiche pilotée comme une diapo » au tableau pour moi — noté).
 - **relances** : `RELANCES/E3.md` relu — rien.
+
+## 21/10, 10:10 — poussée 4 : l'outil de branchement d'`index.html`
+- **fait** : `E3/outils/brancher-index.py` — retire ce qui tombe dans mon territoire (25 fonctions : `sesPhoto`, `sesEmettre`, `sesPartEmettre`, `sesTabMonter`, `_sesTabBoite`, `_sesTabComposer`, `sesTabChrono`, `sesTabQui`, le téléphone entier — `sesBootTel`, 11 `sesTel*`/`sesCurseurFin`, `sesPartPeindre/Motifs/Motif/Retirer` —, et `sesPollPilote`, orpheline, audit C5) ; rebranche ce qui est repris (`sesOuvrirTableau` → la fenêtre unique, `sesBootTableau` → `dr_tabDemarrer`, `sesTabChercherCours`/`sesTabVeillePointeur` → `dr_tabMonter`, `sesTabPoll` → `dr_tabSonder`, `sesQROuvrir` → l'adresse `?vue=tableau` sans fermeture au scan ni `DELETE` direct, `sesBandeau` sans « 📱 Téléphone ») ; `SES.mode` ne connaît plus `tel`. Essayé sur une copie de la production : 33 fonctions, 1 838 175 → 1 798 519 o, les deux blocs `<script>` passent `node --check`. Les seuls appels restants aux fonctions retirées sont dans `sesBrancherPilote` et `sesAppliquer`, qui tombent chez E2 (contrat §6).
+- `dr-tableau.js` : `dr_estTableau` lit l'adresse (le module se charge avant que `SES` n'existe, à la place d'`AT_DR_B64`).
+- **reste** : appliquer l'outil sur `LIVRAISONS/INTEGRATION/index.html` dès E1-a, puis le banc sur `assemble/index.html`.
+- **bloqué** : E1-a absente.
+- **relances** : rien.

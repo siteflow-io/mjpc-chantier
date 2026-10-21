@@ -418,3 +418,9 @@
   - l'horaire du cahier et A5/A6 en double dans « Où on en est » ;
   - une pastille « Mode test », à confirmer.
 - Rien à moi.
+
+## Poussée 49 — 22:38 UTC
+- **Réveil n°9 lu.**
+- **La ligne 146 est tranchée : écartée.** Rejouée sur le faux hub nu, sans `M8_TEST` ni stockage, rien n'est actif. La pastille « 🧪 Mode test » est le bouton du panneau prof pour entrer en mode test, dans son état inactif (index.html, lignes 2068-2069).
+- **L'audit final approche.** Je prépare la passe finale de ma table sur la tête que la conscience retiendra : chaque ligne « réglée (commit) », « écartée » ou « à Paul », aucune ouverte. La NOTE recevra le bilan en chiffres.
+- Un relecteur neuf rejoue `aaf6d7f4` (poussée 15 d'E1 : la copie jouée d'un autre jour, §12.8) et 6 lignes d'E1. Les deux bancs tournent hors du dépôt.

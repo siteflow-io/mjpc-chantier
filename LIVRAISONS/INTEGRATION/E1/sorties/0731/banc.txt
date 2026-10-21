@@ -1,0 +1,12 @@
+banc d'intégration · 2026-10-21 07:31 UTC · branche integration · commit 2f2d77ac
+— 1. assemblage
+assembler : introuvable /home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/index.html
+— 2. collisions
+collisions : introuvable /home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/index.html
+— 3. parcours
+usage : node parcours.mjs <index.html> [dossier-de-sortie]
+— 4. parcours en mode test
+usage : node parcours.mjs <index.html> [dossier-de-sortie]
+— 5. contrôles K1-K13 par l'entrée du site
+usage : node controles.mjs <maquette.html> [sortie.txt]
+— résultat : ROUGE · sorties dans LIVRAISONS/INTEGRATION/E1/sorties/0731

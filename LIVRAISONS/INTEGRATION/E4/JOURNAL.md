@@ -332,3 +332,28 @@
 - **Bancs :**
   - Mon banc : **108 ok · 0 échec** (`sorties/1752-site-E4`).
   - banc.sh : **VERT** (`sorties/1757`).
+
+## Poussée 41 — 18:14 UTC
+- **Réveil n°7 lu.** Les lignes de la passe p2 que je résumais « en bloc », reprises une par une. Ce sont les lignes 3, 4, 19 à 25 et 28 de `passe-atelier`, avec leur numéro dans la table :
+  - **p2-3 = L12**, pas de « Activité n — » : **réglée** (17:52, poussée 40, garde B3).
+  - **p2-4 = L13**, « ma version » écrivait journal, etat et heures : **réglée** (17:52, `dr_recitJournal`).
+  - **p2-19 = L108**, « 2 · ce qui reste (4 à décider) » qui ne bouge pas : **à E2** (la liste de la fin de l'heure).
+  - **p2-20 = L111**, clore, recharger, Relecture : **réglée** (17:07, régression de ma poussée 34, `dr_preparer`, garde B3).
+  - **p2-21 = L112**, rechargé sans reprise :
+    - « Diapo par diapo » : **réglé** (16:26) ;
+    - les numéros du fil : **réglés** (17:52, `dr_recitOrdres`) ;
+    - la participation « diapo 8 » : **à moi, réglée** à 18:10 (rang dans l'heure par l'`eid`, `dr_recitDiapoDe`, garde B3).
+  - **p2-22 = L116**, Tableau 1 hors de l'heure :
+    - « Diapo par diapo » : **réglé** (16:26) ;
+    - « la diapo — Tableau 1 » sans rang : **à E2** (le rang hors de l'heure).
+  - **p2-23 = L117**, Ctrl+B sur la 2ᵉ occurrence : **à E1** (`dr_grasSoul` garde le texte, pas la position ; R13).
+  - **p2-24 = L118**, « Le chapitre » :
+    - « sur 0 » : **réglé** (16:43) ;
+    - l'heure 3 après rechargement et « 0 diapo modifiée » : **réglés** (17:20, poussée 39, garde B3) ;
+    - « sans échéance » après rechargement : **à E2** (`S.echeanceHeure`).
+  - **p2-25 = L125**, ma version, le bilan avant le travail : **réglée** (16:26, garde T). L'aparté « bilan non attesté » est un repère pour Paul, à l'écran seulement, **par conception** ; à **Paul** s'il le veut ailleurs.
+  - **p2-28 = L134**, l'étape 3 « à faire : activité 6 · » sans titre : **à E2**.
+- **Ligne 110** : rejouée par la reprise (onglet Atelier en heure lancée), **pas réglée** sur `45607419` ; la cause est chez E2 (`dr_reprendre`). Je la revérifie sur la poussée suivante d'E2, avec la ligne 130.
+- **Bancs :**
+  - Mon banc : **109 ok · 0 échec** (`sorties/1810-site-E4`).
+  - banc.sh : **VERT** (`sorties/1815`).

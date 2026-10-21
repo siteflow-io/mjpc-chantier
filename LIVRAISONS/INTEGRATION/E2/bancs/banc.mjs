@@ -181,6 +181,17 @@ dire(''); dire('B7 — lundi heure 2/3 par la case, clore ; la trame change ; ma
     pas('B7', JSON.stringify(u) === JSON.stringify(['A classe', 'B trame', 'X retiré, joué', 'N nouveau']) ? 'ok' : 'ÉCHEC', 'les quatre règles : modifié en classe → la copie ; modifié dans la trame → la trame ; retiré mais joué → reste ; nouveau → s\'ajoute', JSON.stringify(u));
     pas('B7', !s2.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s2.errs.join(' ; ')); await s2.ctx.close(); } }
 
+// ── B8 · l'appel : un absent coché dans la case de l'EDT pendant l'heure est absent au Pilotage (dette 12 · 17, C1 11b.1) ──
+dire(''); dire('B8 — pendant l\'heure, un absent coché dans la case de l\'EDT arrive dans l\'appel du Pilotage');
+{ const s = await session(); if (!s.integre) { pas('B8', 'absent', 'le site intégré'); await s.ctx.close(); }
+  else { const p = s.page; await lancerParLaCase(s); await clicTexte(p, '#edt-modale button', 'Ouvrir le pilotage et lancer'); await s.attendre(6000);
+    await p.evaluate(() => edtOuvrir()); await s.attendre(1500); await p.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-clic')).find(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '') && (e.getAttribute('onclick') || '').indexOf('2026-09-14|08:57') >= 0); if (c) c.click(); }); await s.attendre(800);
+    const coche = await p.evaluate(() => { const b = Array.from(document.querySelectorAll('#edt-modale .edt-el')).find(x => /AUDEBERT/.test(x.innerText)); if (!b) return false; b.click(); return true; }); await s.attendre(1500);
+    await p.evaluate(() => { try { edtFermer(); edtModaleFermer(); } catch (e) {} }); await s.attendre(16000);
+    const ap = await p.evaluate(() => ({ seg: (S.appel['AUDEBERT Elise'] || []).map(x => x.type + ':' + x.raison), absent: absentA('AUDEBERT Elise') }));
+    pas('B8', coche && ap.absent && ap.seg.some(x => /case/.test(x)) ? 'ok' : 'ÉCHEC', 'Élise Audebert, cochée absente dans la case, est absente dans l\'appel (et pas proposée à la parole)', JSON.stringify({ coche, ap }));
+    pas('B8', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); await s.ctx.close(); } }
+
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');
 { const s = await session(); const ok = s.integre ? await s.page.evaluate(() => { const a = { niveau: '3e', chapitre: '0', seance: '0', classeSlug: '3E Charles de Gaulle', debut: '08:57', fin: '09:52' }, b = Object.assign({}, a, { debut: '10:07', fin: '11:02' }); return [_drCleHeureDe(a), _drCleHeureDe(b)]; }) : null;

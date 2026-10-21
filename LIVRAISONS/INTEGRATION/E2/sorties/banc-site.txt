@@ -1,4 +1,4 @@
-banc E2 — la classe et l'heure · 2026-10-21 12:33 UTC · index.html md5 2e9009429c9ed3e9961cc87f4c2d32e6 · 2163920 o
+banc E2 — la classe et l'heure · 2026-10-21 12:49 UTC · assemble-e2.html md5 35616c3bb9d15696cb6352d946c06bdf · 2165885 o
 
 B1 — la case de l'emploi du temps
   ok     B1 · la case de 3E Charles de Gaulle (lun. 14/09, 08:57-09:52) dit « heure 2/3 » de la séance 0 (F2, dette 13 · 26) — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 2/3
@@ -27,9 +27,9 @@ B4 — la fin de l'heure (T-5 = fin − 10 min), les sept étapes, la clôture
   ok     B4 · à T-5 (cinq minutes avant le cahier de textes) l'étape 1 s'ouvre d'elle-même — palier undefined → t5 · Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprend
   ok     B4 · les sept étapes se parcourent — Fin de l'heure — étape 7 sur 7 : clore l'heure Préparer le cahier de t
   ok     B4 · l'étape 7 clôt l'heure (S.close, journal « cloture »)
-  ok     B4 · le paquet H est clos (clos, finReel) — {"clos":true,"finReel":1789371727214}
+  ok     B4 · le paquet H est clos (clos, finReel) — {"clos":true,"finReel":1789371727083}
   ok     B4 · cours_actif est effacé
-      écritures de la clôture : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<H> · PUT /site/cours_actif
+      écritures de la clôture : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat · PUT /site/cours_actif · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<H>
   ok     B4 · après la clôture, « ▶ Lancer l'heure » revient ; sur le même créneau le même jour, l'heure close ne se rouvre pas (C1 12) : dit, rien d'écrit — L’heure de 3E Charles de Gaulle sur le créneau 08:57-09:52 est déjà close aujourd’hui : elle ne se r · 0 écriture(s)
   ok     B4 · après la clôture, ▶ n'écrit plus dans le journal de l'heure close
       erreurs JS : aucune
@@ -38,8 +38,8 @@ B4 — la fin de l'heure (T-5 = fin − 10 min), les sept étapes, la clôture
 B3 — la reprise (recharger en pleine heure, mêmes écritures relues)
   ok     B3 · la bannière « un cours est en cours » (celle d'aujourd'hui) — Un cours est en cours avec 3E Charles de Gaulle. Reprendre le cours Plus tard
   ok     B3 · la diapo courante est revenue — {"avant":"emt9v3yqoecf9d","apres":"emt9v3yqoecf9d"}
-  ok     B3 · le chrono (± 2 s) : le temps écoulé depuis le début réel au hub — {"apres":77,"attendu":76}
-  ok     B3 · la parole et les notes sont là — {"avant":{"di":0,"eid":"emt9v3yqoecf9d","parts":1,"notes":1,"ecoule":64},"ap":{"lancee":true,"di":0,"eid":"emt9v3yqoecf9d","parts":1,"notes":1,"ecoule":77}}
+  ok     B3 · le chrono (± 2 s) : le temps écoulé depuis le début réel au hub — {"apres":76,"attendu":76}
+  ok     B3 · la parole et les notes sont là — {"avant":{"di":0,"eid":"emt9v3yqoecf9d","parts":1,"notes":1,"ecoule":64},"ap":{"lancee":true,"di":0,"eid":"emt9v3yqoecf9d","parts":1,"notes":1,"ecoule":76}}
 
 B3b — lancer par la case (séance 1, sans eid au hub), recharger, « ▶ Reprendre le cours » dans la case
   ok     B3b · la case de l'heure lancée propose « ▶ Reprendre le cours »
@@ -54,6 +54,10 @@ B7 — lundi heure 2/3 par la case, clore ; la trame change ; mardi 15:07 la cas
   ok     B7 · la fusion : l'écran ajouté à la trame arrive, l'écran modifié dans la trame (pas touché en classe) prend la trame — {"ajoute":true,"change":true}
   ok     B7 · les quatre règles : modifié en classe → la copie ; modifié dans la trame → la trame ; retiré mais joué → reste ; nouveau → s'ajoute — ["A classe","B trame","X retiré, joué","N nouveau"]
   ok     B7 · aucune erreur JS
+
+B8 — pendant l'heure, un absent coché dans la case de l'EDT arrive dans l'appel du Pilotage
+  ok     B8 · Élise Audebert, cochée absente dans la case, est absente dans l'appel (et pas proposée à la parole) — {"coche":true,"ap":{"seg":["absent:case de l’emploi du temps"],"absent":true}}
+  ok     B8 · aucune erreur JS
 
 B5 — deux créneaux dans la journée = deux clés = deux traces
   ok     B5 · deux créneaux, deux clés — 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle · 2026-09-14_10h07-11h02_3E_Charles_de_Gaulle

@@ -203,6 +203,11 @@ else verif('D1', null, 'les documents par référence', 'la maquette simule ses 
   verif('T', cp && /Ce qu'on a fait aujourd'hui/.test(cp.texte) && !/tu la reprendras|composée par le site depuis/.test(cp.texte) && /<b>[^<]+<\/b><br>/.test(cp.html) /* le titre du paragraphe (« Activité N — … », ou le nom de la diapo quand la trame n'a pas d'activités) */, 'la copie ED de ma version : avec l\'entête, sans repère pour Paul, le titre d\'activité en titre', cp ? cp.texte.slice(0, 200) : '');
   const ed = await pg.$('#rel .recit.ma-version'); if (ed) { await ed.click(); await p(pg, 300); }
   verif('T', await pg.evaluate(() => document.getElementById('garde-copie').classList.contains('on')), 'après une copie ED, corriger ma version passe par la garde (cadrage 2 · 3.8)', null);
+  if (q) { await pg.keyboard.press('Escape'); await pg.evaluate(() => { const g = document.getElementById('garde-copie'); if (g) g.classList.remove('on'); S.face = 'passe'; relecture(); }); await p(pg, 400);
+    const bt = await pg.$('#rel .dr-a-corriger[data-j]'); if (bt) { await bt.click(); await p(pg, 300); }
+    const nom = await pg.evaluate(() => { const s = document.getElementById('dr-corr-sel'); return s ? s.value : null; }); if (nom) { await pg.click('#dr-corr-ok'); await p(pg, 400); }
+    const co = await pg.evaluate(nom => { const d = document.createElement('div'); d.innerHTML = troisTemps(recitHtml0(now(), S.heure), S.heure, now()); return { trace: J.some(x => x.type === 'reponse-corrigee' && x.eleve === nom), dit: d.innerText.includes(prenomUnique(nom) + ' a répondu : « une réponse sans élève reconnu'), reste: !!document.querySelector('#rel .dr-a-corriger') }; }, nom);
+    verif('T', !!bt && !!nom && co.trace && co.dit && !co.reste, '« ⚠ à corriger » : un clic, l\'élève choisi dans la liste — le récit le nomme, la correction est gardée au journal (reponse-corrigee, cadrage 1 §4.7 ; relecteur continu B3)', JSON.stringify({ bt: !!bt, nom, co })); }
   await o.ctx.close(); }
 
 // ═════ RC1 · R1 du recyclage : les marques sur une image (relance E4-2) — poser, dévoiler une à une au pilote et au tableau, calibrer, garder ═════

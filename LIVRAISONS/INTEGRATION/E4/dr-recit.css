@@ -42,3 +42,12 @@
 }
 #fdocs-l .btn:disabled{opacity:.45;cursor:not-allowed}
 #dr-rel-classe{background:#191411;color:var(--texte,#eee);border:1px solid var(--bord,#3a3129);border-radius:6px;padding:4px 8px;font:inherit;font-size:.9rem}#dr-rel-classe:disabled{opacity:.55;cursor:not-allowed}
+/* E4 · « ⚠ élève non identifié — à corriger » (relecteur continu B3, cadrage 2 §2.3) : un bouton, et sa fenêtre */
+#rel .dr-a-corriger{font:inherit;font-size:.85em;color:#b86b00;background:none;border:1px dashed #b86b00;border-radius:4px;padding:0 6px;cursor:pointer}
+#rel .dr-a-corriger:hover{background:rgba(184,107,0,.12)}
+#dr-corr-pop{position:fixed;z-index:9000;display:none;left:50%;top:30%;transform:translateX(-50%);width:380px;max-width:calc(100vw - 32px);background:#191411;color:var(--texte,#eee);border:1px solid var(--bord,#3a3129);border-radius:8px;padding:12px 14px;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+#dr-corr-pop.on{display:block}
+#dr-corr-pop h4{margin:0 0 6px;font-size:1rem}
+#dr-corr-pop .dr-corr-q{font-size:.85rem;opacity:.8;margin-bottom:8px}
+#dr-corr-pop select{width:100%;margin-bottom:10px}
+#dr-corr-pop .dr-corr-a{display:flex;gap:8px;justify-content:flex-end}

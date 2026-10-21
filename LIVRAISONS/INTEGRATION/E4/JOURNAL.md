@@ -243,3 +243,15 @@
   - Mon banc : **99 ok · 0 échec** (`sorties/1535-site-E4`, avec E2 `712accda` / `00b324f9`).
   - banc.sh : **VERT** (`sorties/1524`).
 - Le relecteur B4 (atelier, relecture, impression) tourne sur `5f0c01a4`. E1 a poussé après ; le prochain relecteur A partira de la tête.
+
+## Poussée 33 — 15:56 UTC
+- **Réveil n°5 lu.**
+  - Les trois lignes « à moi » qu'il cite (le bloc « clique ici et écris », l'outil qui avale le premier clic, l'Étiquette vide) sont **réglées depuis la poussée 30 (14:30)**, gardes B3. Le relecteur B4 (sur `5f0c01a4`) les a revérifiées : réglées toutes trois, aux deux tailles.
+  - **R2 et R4 : faits et gardés depuis 12:05**, comme R1, R5 et R6 (13:10).
+    - R2, le rappel d'une fiche : la question « Pourquoi ce rappel ? », le motif sur la diapo, au tableau, dans le récit et sur le papier (RC2).
+    - R4, ↶ Annuler et Ctrl+Z dans l'Atelier : pas à pas, chaque geste discret fait un pas (RC4, RC1, RC5).
+- **La dernière dette de B3 est soldée** : le « ⚠ élève non identifié » est un bouton. On choisit l'élève dans la liste et le récit le nomme. La trace `reponse-corrigee` va au journal et se réapplique au rechargement (cadrage 1 §4.7, cadrage 2 §2.3, garde T).
+- **Bancs :**
+  - Mon banc : **100 ok · 0 échec** (`sorties/1548-site-E4`).
+  - banc.sh : **VERT** (`sorties/1553`).
+- **Ensuite** : la passe de revérification complète de la table sur `21ed40fe` que demande le réveil n°5. A5 (sur `d212aaec`, qui contient `21ed40fe`) joue l'heure de classe. Je lance la passe de l'atelier et de la relecture, puis je consigne B4.

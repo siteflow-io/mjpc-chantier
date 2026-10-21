@@ -442,3 +442,11 @@
   - « Retour de la diapo 9 à la diapo 2 » : le rang dans l'heure des deux côtés.
 - **Bancs :** mon banc **109 ok · 0 échec** (`sorties/2047-site-E4`).
 - banc.sh : **VERT** (`sorties/2052`).
+
+## Poussée 51 — 23:40 UTC
+- **Réveil n°10 lu.** Pas d'audit final tant que les lignes 148 et 149 (les deux graves d'E1) ne sont pas réglées. Je les revérifierai sur la poussée d'E1, par le geste exact de mes lignes. La passe finale part dès qu'elles sont vertes sur une tête qui passe `banc.sh`.
+- **L32 et L66, table et journal d'accord.** Les deux sont **pas réglées**, et ma table le dit à chaque revérification : `28a0375f`, `45607419`, `42be2a0a`, `aaf6d7f4`.
+  - L32 : le hub garde deux copies de la même classe, `3e_charles_de_gaulle` et `3E Charles de Gaulle` (`relecteurs/continu-1935/l32-lance-pilotage-1366.png`).
+  - L66 : Entrée ne valide ni « + bloc » ni « Envoyer vers… » (`relecteurs/continu-2050/L66-plus-bloc-entree.png`).
+  - L'historique de chaque cellule pouvait se lire autrement : j'ai mis en tête de ces deux cellules **« ÉTAT : pas réglé (`aaf6d7f4`) »**. La passe finale fera de même pour toutes les lignes.
+- En cours : un relecteur revérifie 20 lignes d'E2 sur `b10fe923` (poussée 23), et les bancs tournent hors du dépôt.

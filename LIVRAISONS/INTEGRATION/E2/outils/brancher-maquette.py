@@ -15,9 +15,9 @@ def changer(nom, avant, apres):
 
 # 1 · lancerHeure : l'horloge réelle et l'entête de l'heure réelle
 changer('lancerHeure · l\'horloge', "T0 = Date.now(); S.ecoule = 0; S.close = false;",
-  "T0 = (HEURES_SIM[h] && HEURES_SIM[h].base) || Date.now(); /* E2 : now() = l'horloge réelle (la base est le début du créneau) — avant : T0 = Date.now() */ S.ecoule = 0; S.close = false;")
-changer('lancerHeure · l\'entête', "$('hou').textContent = `${HEURES_SIM[h].jour} ${HEURES_SIM[h].debut}-${HEURES_SIM[h].fin} · heure ${h} sur 2 · ${seance().titre}`; voir('pilotage'); tout(); }",
-  "$('hou').textContent = dr_entete(h); /* E2 : la classe, le créneau, l'heure n/N réels — avant : HEURES_SIM, « sur 2 » */ voir('pilotage'); tout(); }")
+  "/* E2 : now() est l'horloge réelle (socle, E1) — avant : T0 = Date.now() */ S.ecoule = 0; S.close = false;")
+changer('lancerHeure · l\'entête', "$('hou').textContent = `${dr_heureDe(h)/* E1 : lisait HEURES_SIM */.jour} ${dr_heureDe(h)/* E1 : lisait HEURES_SIM */.debut}-${dr_heureDe(h)/* E1 : lisait HEURES_SIM */.fin} · heure ${h} sur 2 · ${seance().titre}`;",
+  "$('hou').textContent = dr_entete(h); /* E2 : la classe, le créneau, l'heure n/N réels — avant : HEURES_SIM puis dr_heureDe (E1), « sur 2 » */")
 # 2 · la clôture (étape 7) : les écritures d'`atDrCloreFin`, puis la relecture
 changer('clôture · les écritures', "journal('cloture', { bilanAtteste: !!S.bilanCoche }); S.close = true; S.closes = S.closes || {}; S.closes[S.heure] = now();",
   "journal('cloture', { bilanAtteste: !!S.bilanCoche }); S.close = true; S.closes = S.closes || {}; S.closes[S.heure] = now(); try { dr_cloreFin(); } catch (e) {} /* E2 : H clos, finReel, cours_actif nul, le journal et l'état (atDrCloreFin) */")
@@ -50,14 +50,7 @@ EDT_NEUF = r'''function edt(){ /* E2 : la porte réelle du Pilotage (audit F6) �
   c.querySelectorAll('[data-atelier]').forEach(b => b.onclick = () => { S.heure = h; try { S.di = ordreHeure(h)[0] || 0; } catch (e) {} S.page = null; $('ecran-edt').classList.remove('on'); voir('atelier'); });
   c.querySelectorAll('[data-lancer]').forEach(b => b.onclick = () => { const sl = ($('dr-porte-classe') || {}).value || sl0, cr = ($('dr-porte-creneau') || {}).value || cr0; dr_lancer(sl, cr, dr_debutPropose(cr), dr_heureProposee(sl, cr)); });
   c.querySelectorAll('[data-reprendre]').forEach(b => b.onclick = () => { $('ecran-edt').classList.remove('on'); tout(); }); }'''
-tous = [(f, t) for f, t in textes.items() if 'function edt(){' in t]
-if len(tous) == 1:
-    f, t = tous[0]; i = t.index('function edt(){'); j = t.find("\n$('ong-pilotage')", i)
-    if 'E2 : la porte réelle' in t[i:i+200]: rapport.append('%-28s déjà rebranché' % 'edt · la porte')
-    elif j < 0: rapport.append('%-28s FIN INTROUVABLE' % 'edt · la porte')
-    else: textes[f] = t[:i] + EDT_NEUF + t[j:]; rapport.append('%-28s rebranché dans %s' % ('edt · la porte', f.split('/')[-1]))
-else: rapport.append('%-28s %s' % ('edt · la porte', 'ABSENT' if not tous else 'AMBIGU'))
-
+rapport.append('%-28s %s' % ('edt · la porte', 'sans objet : E1-a a retiré #ecran-edt, la porte est #dr-lancer → dr_lancer()'))
 print('\n'.join(rapport))
 if ECRIRE:
     for f, t in textes.items(): open(f, 'w', encoding='utf-8').write(t)

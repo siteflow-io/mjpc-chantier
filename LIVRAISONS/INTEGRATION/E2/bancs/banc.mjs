@@ -112,7 +112,13 @@ let hubApres = null, skLance = null;
     if (s.site) { const hub = await s.hub(); const h = H(hub, skLance);
       pas('B4', h && h.clos === true && h.finReel ? 'ok' : 'ÉCHEC', 'le paquet H est clos (clos, finReel)', h && JSON.stringify({ clos: h.clos, finReel: h.finReel }));
       pas('B4', hub.site.cours_actif == null ? 'ok' : 'ÉCHEC', 'cours_actif est effacé', JSON.stringify(hub.site.cours_actif));
-      dire('      écritures de la clôture : ' + [...new Set(depuis(await s.ecrits(), n1))].join(' · ')); } }
+      dire('      écritures de la clôture : ' + [...new Set(depuis(await s.ecrits(), n1))].join(' · '));
+      await p.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await s.attendre(800);
+      const vis = await visible(p, '#dr-lancer'); const n2 = (await s.ecrits()).length; if (vis) { await p.click('#dr-lancer'); await s.attendre(2000); }
+      const e2b = depuis(await s.ecrits(), n2); const info = await p.evaluate(() => (document.body.innerText.match(/[^\n]*déjà close[^\n]*/) || [''])[0]);
+      pas('B4', vis && e2b.length === 0 && /déjà close/.test(info) ? 'ok' : 'ÉCHEC', 'après la clôture, « ▶ Lancer l\'heure » revient ; sur le même créneau le même jour, l\'heure close ne se rouvre pas (C1 12) : dit, rien d\'écrit', (vis ? '' : 'bouton absent · ') + info.slice(0, 100) + ' · ' + e2b.length + ' écriture(s)');
+      const n3 = (await s.ecrits()).length; await p.evaluate(() => { try { const b = document.getElementById('bdev'); if (b) b.click(); } catch (e) {} }); await s.attendre(1500);
+      pas('B4', (await p.evaluate(() => J.filter(x => x.type === 'devoile' && x.h === S.heure && x.t > (S.closes || {})[S.heure]).length)) === 0 ? 'ok' : 'ÉCHEC', 'après la clôture, ▶ n\'écrit plus dans le journal de l\'heure close', ''); } }
   else pas('B4', 'absent', 'pas d\'heure lancée');
   dire('      erreurs JS : ' + (s.errs.join(' ; ') || 'aucune')); pas('JS', s.errs.length ? 'ÉCHEC' : 'ok', 'B2-B4 : aucune erreur JS', s.errs.join(' ; '));
   await s.ctx.close(); }
@@ -122,13 +128,16 @@ dire(''); dire('B3 — la reprise (recharger en pleine heure, mêmes écritures 
 { const s = await session(); const v = await lancerUnClic(s);
   if (v === 'absent' || !s.site) pas('B3', 'absent', 'la reprise se joue sur le site intégré (la maquette perd tout au rechargement)');
   else { await devoiler(s, 2); await parole(s); await s.page.keyboard.press('n'); await s.attendre(200); await s.page.keyboard.type('note de reprise'); await s.page.keyboard.press('Enter'); await s.attendre(400);
-    await s.attendre(60000); const avant = await s.page.evaluate(() => ({ di: S.di, eid: S.eidCourant, parts: S.parts.length, notes: S.notesFil.length, ecoule: S.ecoule }));
+    await s.attendre(60000); const avant = await s.page.evaluate(() => ({ di: S.di, eid: (() => { try { return eidDe(S.di); } catch (e) { return null; } })(), parts: S.parts.length, notes: S.notesFil.length, ecoule: S.ecoule }));
     const hub = await s.hub(); await s.ctx.close();
     const s2 = await session({ store: hub, quand: '2026-09-14T09:01:05+02:00' }); const p2 = s2.page; await s2.attendre(7000);
-    if (await visible(p2, '#ses-reprise')) { await clicTexte(p2, '#ses-reprise button', 'Reprendre'); await s2.attendre(6000); }
-    const ap = await p2.evaluate(() => window.S ? ({ lancee: S.lancee, di: S.di, eid: S.eidCourant, parts: S.parts.length, notes: S.notesFil.length, ecoule: S.ecoule }) : null); await cap(p2, 'B3-reprise');
+    const ban = await p2.evaluate(() => { const b = document.getElementById('ses-reprise'); return b ? b.innerText.replace(/\s+/g, ' ') : null; });   /* la bannière est en position fixe : offsetParent est nul, on teste sa présence */
+    pas('B3', ban ? 'ok' : 'ÉCHEC', 'la bannière « un cours est en cours » (celle d\'aujourd\'hui)', ban);
+    if (ban) { await p2.evaluate(() => { const b = Array.from(document.querySelectorAll('#ses-reprise button')).find(x => /Reprendre/.test(x.innerText)); if (b) b.click(); }); await s2.attendre(9000); }
+    const ap = await p2.evaluate(() => window.S ? ({ lancee: S.lancee, di: S.di, eid: (() => { try { return eidDe(S.di); } catch (e) { return null; } })(), parts: S.parts.length, notes: S.notesFil.length, ecoule: S.ecoule }) : null); await cap(p2, 'B3-reprise');
     pas('B3', ap && ap.lancee && ap.eid === avant.eid ? 'ok' : 'ÉCHEC', 'la diapo courante est revenue', JSON.stringify({ avant: avant.eid, apres: ap && ap.eid }));
-    pas('B3', ap && Math.abs(ap.ecoule - (avant.ecoule + 7 + 6)) <= 3 ? 'ok' : 'ÉCHEC', 'le chrono (± 2 s, recalculé depuis le début réel)', JSON.stringify({ avant: avant.ecoule, apres: ap && ap.ecoule }));
+    const dr0 = (H(hub, await p2.evaluate(() => ATVUES.snum)) || {}).debutReel; const att = Math.round((await p2.evaluate(() => Date.now()) - dr0) / 1000);
+    pas('B3', ap && dr0 && Math.abs(ap.ecoule - att) <= 2 ? 'ok' : 'ÉCHEC', 'le chrono (± 2 s) : le temps écoulé depuis le début réel au hub', JSON.stringify({ apres: ap && ap.ecoule, attendu: att }));
     pas('B3', ap && ap.parts === avant.parts && ap.notes === avant.notes ? 'ok' : 'ÉCHEC', 'la parole et les notes sont là', JSON.stringify({ avant, ap }));
     await s2.ctx.close(); } }
 

@@ -81,6 +81,9 @@ hub = await s2.hub(); const Hc = Object.values(noeud(hub, C + '/heures') || {})[
 pas('M4', Hc && Hc.clos === true && Hc.finReel ? 'ok' : 'ÉCHEC', 'H : clos, finReel', Hc && JSON.stringify({ clos: Hc.clos, finReel: Hc.finReel }));
 pas('M4', noeud(hub, '/site/cours_actif') == null ? 'ok' : 'ÉCHEC', 'cours_actif effacé', '');
 pas('M4', (noeud(hub, C + '/journal') || []).some(x => x.type === 'cloture') ? 'ok' : 'ÉCHEC', 'la clôture est au journal du hub', '');
+{ const n4 = (await s2.ecrits()).length; await p2.evaluate(() => dr_lancer('3E Charles de Gaulle', '15:07-16:02', '15:10')); await s2.attendre(1500);
+  const r4 = await p2.evaluate(() => ({ info: (window.__INFO || []).slice(-1)[0] || '', heure: S.heure, close: S.close })); const e4 = (await s2.ecrits()).slice(n4);
+  pas('M4', /déjà close/.test(r4.info) && e4.length === 0 && r4.close ? 'ok' : 'ÉCHEC', 'relancer sur le créneau d\'une heure close le même jour : refusé, dit, rien d\'écrit (C1 12)', r4.info.slice(0, 90) + ' · ' + e4.length + ' écriture(s)'); }
 pas('JS', !s2.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s2.errs.join(' ; '));
 if (fs.readFileSync(F, 'utf8').includes('dr_lancerSuite')) { dire(''); dire('M5 — le lendemain, l\'heure 2 : l\'écran d\'ouverture sur l\'état réel de la classe (mandat 10), puis « Lancer l\'heure 2 »');
   await s2.ctx.close(); const s5 = await page({ store: hub, quand: '2026-09-17T11:05:00+02:00' }); const p5 = s5.page; const n5 = (await s5.ecrits()).length;

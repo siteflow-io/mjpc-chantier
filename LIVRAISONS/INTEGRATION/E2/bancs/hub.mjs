@@ -37,6 +37,9 @@ export async function ouvrir(fichier, { quand = '2026-09-14T09:00:00+02:00', sto
   page.on('pageerror', e => errs.push(String(e.message).slice(0, 200)));
   page.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
   await page.addInitScript(installer, store || magasin());
+  /* le voile « n fiches d'applications ne sont pas à jour » (#fi-overlay) : une lacune du faux hub (/manifestes absent — audit E1, F15) ;
+     le parcours de la conscience le retire avant chaque pas (`nettoyer`) : ici, dès qu'il paraît */
+  await page.addInitScript(() => { setInterval(() => { const o = document.getElementById('fi-overlay'); if (o) o.remove(); }, 200); });
   if (modeTest) await page.addInitScript(() => { try { sessionStorage.setItem('mjpc_m8_test', '1'); } catch (e) {} });
   await page.goto('file://' + path.resolve(fichier) + '?n=3e', { waitUntil: 'load' });
   await page.clock.runFor(1800);

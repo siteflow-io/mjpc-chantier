@@ -135,6 +135,14 @@ for nom in ['atDrJouerClic', 'atDrClore', 'atDrCloreFin', 'atDrClotureModale', '
 # les variables d'état du vécu et du T-5 d'aujourd'hui (le vécu est le journal, le T-5 la fin de l'heure de la maquette)
 for v in [r"var AT_T5_VU=false;\n", r"var AT_T5_CHOIX=\{\}, AT_T5_TIMER=null;\n", r"var AT_DR_VECU=null;[^\n]*\n"]:
     t2 = re.sub(v, '', t, count=1); rapport.append('%-26s %s' % (v.split('=')[0].replace('var ', '').replace('\\', ''), 'tombe' if t2 != t else 'absente')); t = t2
+# l'écoute F2 du VIF du pont (au niveau du document) : sans `_drVifAller`, elle lèverait à chaque F2 — F2 est le VIF de la maquette
+F2 = "document.addEventListener('keydown',function(ev){\n  if(ev.key==='\u00b2'||ev.key==='F2')_drVifAller(ev);\n},true);\n"
+F2 = F2.replace('\\u00b2', '\u00b2')
+if F2 in t: t = t.replace(F2, '', 1); rapport.append('écoute F2 du pont          tombe')
+else: rapport.append('écoute F2 du pont          absente')
+# `sesPut` (13 · 25 : le `fetch` direct qui passait outre le mode test) tombe dès qu'il n'a plus d'appelant
+if len(re.findall(r'sesPut\(', t)) == 1: tombe('sesPut')
+else: rapport.append('sesPut                     gardé : %d appel(s) restent' % (len(re.findall(r'sesPut\(', t)) - 1))
 # ── ce qui reste appelé après la chute : dit, jamais caché ──
 for nom in ['atDrJouerClic', 'atDrClore', 'atDrCloreFin', 'atVecu', 'atT5', 'AT_DR_VECU', 'AT_T5_CHOIX', 'AT_T5_TIMER', '_drVif', '_drPalette', 'sesBrancherPilote', 'sesAppliquer', 'atDrSuiviAppliquer', 'atDrClotureModale', 'sesPut(']:
     n = len(re.findall(re.escape(nom), t))

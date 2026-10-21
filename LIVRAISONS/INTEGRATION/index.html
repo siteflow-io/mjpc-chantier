@@ -14809,15 +14809,12 @@ function secuInfo(){
 
 /* ── état ── */
 var AT_DR_SUIVI=['où on en est','participation','temps par activité'];
-var AT_T5_VU=false;
 var AT_DR_ENR_T=null;
 var AT_DR_COURS=null;
 var AT_SOM_INIT = false;
 var AT_SOM_ETAT = {};
-var AT_T5_CHOIX={}, AT_T5_TIMER=null;
 var AT_EDT=['08:00-08:55','08:57-09:52','10:07-11:02','11:04-11:59','13:00-13:55','13:57-14:52','15:07-16:02','16:04-16:59'];
 var AT_DR_REGIME='prep';
-var AT_DR_VECU=null;
 var ATVUES={vue:'structure', snum:null};
 
 /* ── fonctions ── */
@@ -15043,221 +15040,6 @@ function atTempsUtile(){ if(!AT_DR_COURS) return 0; return atMn(AT_DR_COURS.fin)
 
 
 
-function atDrSuiviAppliquer(){
-  var enPrep=(AT_DR_REGIME==='prep');
-  /* les commandes de SUIVI n'ont pas de sens en préparation (et cassent si on les clique) :
-     « Qui a participé » relève de la séance jouée avec une classe. */
-  var D=drDoc(); if(!D) return;
-  var bq=D.getElementById('bqui');
-  if(bq){ bq.disabled=enPrep; bq.classList.toggle('off',enPrep);
-    bq.title=enPrep?'Le suivi n’existe qu’en classe — lance la séance':''; }
-  var pil=D.querySelector('.pilote'); if(!pil) return;
-  var h3s=pil.querySelectorAll('h3');
-  for(var k=0;k<h3s.length;k++){
-    var t=(h3s[k].textContent||'').toLowerCase();
-    var cible=AT_DR_SUIVI.some(function(x){return t.indexOf(x)===0;});
-    if(!cible) continue;
-    h3s[k].style.display=enPrep?'none':'';
-    var n=h3s[k].nextElementSibling;
-    while(n && n.tagName!=='H3'){ n.style.display=enPrep?'none':''; n=n.nextElementSibling; }
-  }
-  var note=pil.querySelector('.at-dr-suivi-note');
-  if(enPrep){
-    if(!note){ note=document.createElement('p'); note.className='note at-dr-suivi-note';
-      note.innerHTML='<b>Pr\u00e9paration.</b> Le suivi (participation, temps, r\u00e9cit) n\u2019existe qu\u2019en classe : lance la s\u00e9ance pour le voir para\u00eetre.';
-      pil.insertBefore(note, pil.firstChild); }
-    note.style.display='';
-  } else if(note){ note.style.display='none'; }
-}
-
-
-function atVecuAfficher(){
-  if(AT_DR_REGIME!=='classe'||!AT_DR_VECU) return;
-  var D=drDoc(); if(!D) return;
-  var z=D.getElementById('durees'); if(!z) return;
-  var lignes=z.querySelectorAll('.dur');
-  for(var k=0;k<lignes.length;k++){
-    var r=atVecuMinutes(k);
-    var m=lignes[k].querySelector('.at-vecu');
-    if(!r){ if(m) m.remove(); continue; }
-    if(!m){ m=document.createElement('span'); m.className='at-vecu'; lignes[k].appendChild(m); }
-    var prevu=+(lignes[k].querySelector('input')||{}).value||0;
-    m.textContent=' \u00b7 r\u00e9el '+r+' min';
-    m.className='at-vecu'+((prevu&&r>prevu)?' at-vecu-plus':'');
-  }
-}
-
-
-function atDrClore(){
-  if(typeof _modaleConfirme!=='function'){ atDrCloreFin(); return; }
-  atDrClotureModale();
-}
-
-
-function atDrCloreFin(){
-  try{ if(AT_DR_COURS&&ATVUES)window.AT_DR_DERNIER={level:(AT.edChap||{}).level,chnum:(AT.edChap||{}).chnum,snum:ATVUES.snum,classe:AT_DR_COURS.classeSlug,ts:Date.now()}; }catch(e){}
-  try{ atVecuEcrire(); }catch(e){}
-  try{ sesCoursFermer(); }catch(e){}   /* [SESSION] le cours s'efface : plus rien à rejoindre */
-  AT_DR_REGIME='prep'; AT_DR_VECU=null; AT_DR_COURS=null; AT_T5_CHOIX={}; atT5Veille(false); atDrMonter();
-}
-
-
-function atT5Reste(){
-  if(AT_DR_REGIME!=='classe'||!AT_DR_COURS) return null;
-  var n=new Date(), m=n.getHours()*60+n.getMinutes();
-  return (atMn(AT_DR_COURS.fin)-5)-m;          /* minutes avant le début de l'agenda */
-}
-
-
-function atT5Etat(){
-  var r=atT5Reste(); if(r===null) return null;
-  var u=atTempsUtile(), ecoule=u-r;
-  if(r<0) return {t:'tu d\u00e9passes', c:'#f87171', r:r};
-  if(r<=5) return {t:'les cinq derni\u00e8res minutes', c:'#ffb86c', r:r};
-  if(u>0 && ecoule>=u*0.8) return {t:'il te reste peu de temps', c:'#ffb86c', r:r};
-  return {t:'dans les temps', c:'#34d399', r:r};
-}
-
-
-function atT5Zone(){
-  /* canon §5 : « dans la zone libre SOUS LES COMMANDES de l'écran de pilotage ».
-     On la loge à la fin de la colonne centrale du déroulé, pas sous tout le bloc. */
-  return document.getElementById('at-dr-t5');
-}
-
-
-function atT5Appliquer(){
-  /* [C1-CONSCIENCE] le T-5 n'occupe plus la scène (il l'écrasait) : il vit dans le bandeau
-     sous forme d'un appel discret, et le détail s'ouvre dans une MODALE. */
-  var z=atT5Zone(); if(z) z.innerHTML='';
-  var e=atT5Etat(); if(!e) return;
-  var appel=document.getElementById('at-dr-t5-appel');
-  if(e.r>5){ if(appel) appel.remove(); AT_T5_VU=false; return; }
-  atT5Appel(e);
-  if(!AT_T5_VU){ AT_T5_VU=true; atT5Modale(); }   /* elle s'ouvre UNE fois, jamais en boucle */
-}
-
-
-function atT5Appel(e){
-  var tete=document.getElementById('at-dr-tete'); if(!tete) return;
-  var b=document.getElementById('at-dr-t5-appel');
-  var reste=atT5Restantes().length;
-  var txt=(e.r>=0)
-    ? ('\u23f1 fin dans '+e.r+' min'+(reste?(' \u00b7 '+reste+' activit\u00e9'+(reste>1?'s':'')+' non jou\u00e9e'+(reste>1?'s':'')):''))
-    : ('\u23f1 cours termin\u00e9 depuis '+Math.abs(e.r)+' min'+(reste?(' \u00b7 '+reste+' non jou\u00e9e'+(reste>1?'s':'')):''));
-  if(!b){ b=document.createElement('button'); b.id='at-dr-t5-appel'; b.className='at-btn at-t5-appel';
-    b.onclick=function(){ atT5Modale(); }; tete.appendChild(b); }
-  b.textContent=txt+' \u2014 d\u00e9cider';
-}
-
-
-function atT5Restantes(){
-  var ecr=[]; try{ ecr=window.DR?DR.dr_exporterTrame():[]; }catch(x){ return []; }
-  var cour=0; try{ cour=(DR.dr_ecranCourant&&DR.dr_ecranCourant())||0; }catch(x){}
-  var out=[];
-  for(var n=cour+1;n<ecr.length;n++){ if(!AT_T5_CHOIX[n]) out.push({n:n, e:ecr[n]}); }
-  return out;
-}
-
-
-function atT5Modale(){
-  if(typeof _modaleConfirme!=='function') return;
-  var e=atT5Etat(); if(!e) return;
-  var rest=atT5Restantes();
-  var fin=AT_DR_COURS?AT_DR_COURS.fin:'';
-  var h='<div class="cm-sub">';
-  h+= (e.r>=0)
-    ? ('Ton cours finit \u00e0 <b>'+fin+'</b>. Les <b>cinq derni\u00e8res minutes</b> servent \u00e0 l\u2019agenda : il te reste <b>'+e.r+' minute'+(e.r>1?'s':'')+'</b> de classe.')
-    : ('Ton cours devait finir \u00e0 <b>'+fin+'</b>. Tu es all\u00e9 <b>'+Math.abs(e.r)+' minute'+(Math.abs(e.r)>1?'s':'')+'</b> au-del\u00e0 du temps d\u2019agenda.');
-  if(!rest.length){ h+=' Tout est jou\u00e9 : tu peux clore la s\u00e9ance.</div>'; _modaleConfirme('Fin de l\u2019heure', h, function(){}); return; }
-  h+=' <b>'+rest.length+' activit\u00e9'+(rest.length>1?'s ne sont':' n\u2019est')+' pas jou\u00e9e'+(rest.length>1?'s':'')+'</b> \u2014 d\u00e9cide de leur sort.</div><div class="at-t5-m">';
-  rest.forEach(function(r){
-    var ec=r.e||{}, nom=escapeHtml(ec.act||ec.h||('\u00c9cran '+(r.n+1)));
-    var extrait=escapeHtml(_drCoupe((ec.blocs||[]).map(_drTexteBloc).filter(Boolean).join(' \u00b7 '),120));
-    var comp=(Array.isArray(ec.comp)?ec.comp:[]).filter(Boolean);
-    h+='<div class="at-t5-c"><div class="at-t5-t">'+nom+'</div>'
-      +(extrait?'<div class="at-t5-x">'+extrait+'</div>':'')
-      +(comp.length
-        ? '<div class="at-t5-k">Si tu la passes, ces notions ne seront pas travaill\u00e9es aujourd\u2019hui : <b>'+escapeHtml(comp.map(atTaxoLibelle).join(' \u00b7 '))+'</b></div>'
-        : '<div class="at-t5-k">Aucune notion d\u00e9clar\u00e9e sur cet \u00e9cran.</div>')
-      +'<div class="at-t5-b">'
-      +'<button class="at-btn" onclick="atT5Choix('+r.n+',\'report\u00e9e \u00e0 la s\u00e9ance suivante\')">reporter \u00e0 la prochaine s\u00e9ance</button>'
-      +'<button class="at-btn" onclick="atT5Choix('+r.n+',\'donn\u00e9e \u00e0 la maison\')">donner \u00e0 la maison</button>'
-      +'<button class="at-btn" onclick="atT5Choix('+r.n+',\'annul\u00e9e\')">annuler cette activit\u00e9</button>'
-      +'<button class="at-btn" onclick="atT5Choix('+r.n+',\'laiss\u00e9e sans suite\')">ne rien donner</button>'
-      +'</div></div>';
-  });
-  h+='</div>';
-  var faits=Object.keys(AT_T5_CHOIX);
-  if(faits.length){ h+='<div class="at-t5-f">D\u00e9j\u00e0 d\u00e9cid\u00e9 : '+faits.map(function(k){
-    var ecr=[]; try{ ecr=DR.dr_exporterTrame(); }catch(x){}
-    return escapeHtml(((ecr[k]||{}).act||('\u00e9cran '+(+k+1)))+' \u2192 '+AT_T5_CHOIX[k]); }).join(' \u00b7 ')+'</div>'; }
-  _modaleConfirme('Fin de l\u2019heure \u2014 '+escapeHtml(AT_DR_COURS?AT_DR_COURS.classeNom:''), h, function(){});
-}
-
-
-function atT5Choix(n,quoi){
-  AT_T5_CHOIX[n]=quoi;
-  try{ _drTraceAuto(); }catch(e){}   /* [LOT C1 \u2461] une d\u00e9cision de fin d'heure ne se perd plus */
-  var f=document.querySelector('.cm-fond, .cm-modale, #cm-fond'); if(f&&f.remove) f.remove();
-  var e=atT5Etat(); if(e) atT5Appel(e);
-  setTimeout(atT5Modale,60);
-}
-
-
-function atT5Veille(on){
-  clearInterval(AT_T5_TIMER);
-  if(on){ atT5Appliquer(); atVecuAfficher(); AT_T5_TIMER=setInterval(function(){ atT5Appliquer(); atVecuAfficher(); }, 20000); }
-  else { var z=document.getElementById('at-dr-t5'); if(z) z.innerHTML=''; }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function atDrClotureModale(){
-  var mods=atDrModifsDeLaSeance();
-  var cls=escapeHtml(AT_DR_COURS?AT_DR_COURS.classeNom:'');
-  if(!mods.length){
-    _modaleConfirme('Clore la s\u00e9ance',
-      '<div class="cm-sub">La s\u00e9ance de <b>'+cls+'</b> se ferme. Tu n\u2019as rien modifi\u00e9 pendant le cours : ta pr\u00e9paration reste telle quelle.</div>',
-      atDrCloreFin);
-    return;
-  }
-  var h='<div class="cm-sub">Tu as modifi\u00e9 <b>'+mods.length+'</b> chose'+(mods.length>1?'s':'')+' pendant le cours avec <b>'+cls+'</b>. '
-    +'Ces modifications <b>restent attach\u00e9es \u00e0 cette classe</b> \u2014 elles ne partent nulle part ailleurs.<br>'
-    +'Tu peux, si tu le veux, en <b>reprendre certaines dans ta pr\u00e9paration</b>, pour tes autres classes et l\u2019an prochain. Rien n\u2019est repris si tu ne coches rien.</div>'
-    +'<div class="at-repr">';
-  mods.forEach(function(m){
-    var d='';
-    if(m.neuf){ d='<div class="at-repr-d"><i>\u00e9cran ajout\u00e9 pendant le cours</i>'+(m.detail?' \u2014 '+escapeHtml(m.detail):'')+'</div>'; }
-    else { d=(m.lignes||[]).map(function(l){
-      return '<div class="at-repr-d"><b>'+escapeHtml(l.quoi)+'</b>'
-        +(l.avant?' <span class="at-repr-av">'+escapeHtml(l.avant)+'</span> \u2192 ':' : ')
-        +'<span class="at-repr-ap">'+escapeHtml(l.apres)+'</span></div>';
-    }).join(''); }
-    h+='<label class="at-repr-l"><input type="checkbox" data-n="'+m.n+'">'
-      +'<span><b>'+escapeHtml(m.activite)+'</b>'+d+'</span></label>';
-  });
-  h+='</div>';
-  _modaleConfirme('Clore la s\u00e9ance \u2014 '+cls, h, function(){
-    var pris=[];
-    document.querySelectorAll('.at-repr input:checked').forEach(function(i){ pris.push(+i.dataset.n); });
-    if(pris.length) atDrReprendre(pris);
-    atDrCloreFin();
-  });
-}
-
-
 function atDrReprendre(indices){
   var ec=AT.edChap, sk=ATVUES.snum; if(!ec||!sk) return;
   var tr=atDrTrame(sk); if(!tr) return;
@@ -15322,19 +15104,9 @@ function _drSignatureCours(c){
    trace ouverte. Toute cl\u00f4ture le retire \u2014 mais SEULEMENT s'il d\u00e9signe encore l'heure
    close : si un cours neuf a d\u00e9j\u00e0 pris la place, on n'y touche pas. L'incoh\u00e9rence
    devient impossible par construction, sans d\u00e9pendre de l'ordre des r\u00e9ponses du hub. */
-function _drCoursActifEffacerSi(sig){
-  if(!sig)return;
-  fetch(FIREBASE_BASE+'/site/cours_actif.json').then(function(r){return r.json();}).then(function(c){
-    if(!c||_drSignatureCours(c)!==sig)return;   /* un autre cours occupe la place : rien \u00e0 faire */
-    return sesPut(FIREBASE_BASE+'/site/cours_actif.json',null);
-  }).catch(function(){});
-}
+function _drCoursActifEffacerSi(sig){ dr_coursActifEffacerSi(sig); }   /* [E2] par dr_lire / dr_ecrire (13 · 25) */
 /* LA TRACE FAIT FOI : une heure close ne se reprend plus, par aucun chemin. */
-function _drHeureCloseAu(c,cb){
-  var base=_drBaseHeureDe(c,c&&c.ts); if(!base){ cb(false); return; }
-  fetch(base+'/clos.json').then(function(r){return r.json();})
-    .then(function(v){ cb(v===true); }).catch(function(){ cb(false); });
-}
+function _drHeureCloseAu(c,cb){ var base=_drBaseHeureDe(c,c&&c.ts); if(!base){ cb(false); return; } dr_lire(base.replace(FIREBASE_BASE,'')+'/clos',function(v){ cb(v===true); }); }   /* [E2] par dr_lire : le mode test lit sa copie */
 function _drCreneauHeure(){ return _drCreneauDe(AT_DR_COURS); }
 function _drCleHeure(){
   /* [LOT C2 \u2463] LA CLASSE ENTRE DANS LA CL\u00c9 \u2014 l'emploi du temps encha\u00eene deux classes
@@ -15352,174 +15124,17 @@ function _drBaseHeure(){
 }
 /* le paquet de l'heure — EXACTEMENT celui que composait atVecuEcrire, extrait pour
    être poussé au fil de l'eau comme à la clôture. Rien n'y est inventé. */
-function _drPaquetHeure(clos){
-  if(!AT_DR_VECU||!AT_DR_COURS)return null;
-  var ecr=[]; try{ ecr=DR.dr_exporterTrame()||[]; }catch(e){}
-  var enCours=AT_DR_VECU.courant;
-  var lignes=Object.keys(AT_DR_VECU.activites).map(function(k){
-    var e=ecr[k]||{}, a=AT_DR_VECU.activites[k];
-    var ms=a.ms+((enCours&&enCours.n===+k)?(Date.now()-enCours.depuis):0);
-    return { n:+k, eid:_drEidDuRang(+k,ecr)||null,   /* [LOT C2 \u2462.3] le rang reste lisible, l'identit\u00e9 fait foi */
-             act:e.act||('\u00e9cran '+(+k+1)), prevu:+(e.dur||0),
-             reel:Math.round(ms/60000), passages:a.passages,
-             comp:Array.isArray(e.comp)?e.comp:[] };
-  });
-  if(enCours&&!AT_DR_VECU.activites[enCours.n]){          /* l'activit\u00e9 en cours compte d\u00e9j\u00e0 */
-    var e2=ecr[enCours.n]||{};
-    lignes.push({ n:enCours.n, eid:_drEidDuRang(enCours.n,ecr)||null, act:e2.act||('\u00e9cran '+(enCours.n+1)), prevu:+(e2.dur||0),
-      reel:Math.round((Date.now()-enCours.depuis)/60000), passages:1,
-      comp:Array.isArray(e2.comp)?e2.comp:[] });
-  }
-  var fin=clos?(AT_DR_VECU.finReel||Date.now()):null;
-  return {
-    classe:AT_DR_COURS.classeNom, creneau:_drCreneauHeure(),
-    lanceA:AT_DR_COURS.debut, fin:AT_DR_COURS.fin,
-    debutReel:AT_DR_VECU.debutReel, finReel:fin,
-    tempsUtilePrevu:atTempsUtile(),
-    minutesJouees:Math.round(((fin||Date.now())-AT_DR_VECU.debutReel)/60000),
-    activites:lignes,
-    decisions:JSON.parse(JSON.stringify(AT_T5_CHOIX||{})),
-    /* [LOT C2 \u2462.2] les d\u00e9cisions de fin d'heure, \u00c9CRITES PAR IDENTIT\u00c9. `AT_T5_CHOIX`
-       reste index\u00e9 par rang EN M\u00c9MOIRE VIVE \u2014 le T-5 lui-m\u00eame n'est pas touch\u00e9, ses
-       corps sont compar\u00e9s au rapport \u2014 mais ce qui se M\u00c9MORISE ne parle plus en rangs :
-       \u00ab ce qui pourrait se tromper se v\u00e9rifie \u00e0 l'\u00e9criture, jamais \u00e0 la lecture \u00bb. */
-    decisionsParEcran:(function(){ var d={};
-      Object.keys(AT_T5_CHOIX||{}).forEach(function(k){
-        var id=null; try{ id=_drEidDuRang(+k,ecr); }catch(e){}
-        if(id)d[id]=AT_T5_CHOIX[k];
-      }); return d; })(),
-    clos:!!clos, maj:Date.now()
-  };
-}
+function _drPaquetHeure(clos){ return dr_paquetHeure(clos); }   /* [E2] composé depuis le journal */
 /* [LOT C1 \u2461] LA TRACE S'\u00c9CRIT AU FIL — sur le m\u00e9canisme de `_drCopieAuto` :
    m\u00eame d\u00e9bounce de 900 ms, m\u00eame fonction d'\u00e9criture, m\u00eame chemin de base.
    Aucun second m\u00e9canisme n'est b\u00e2ti. Apr\u00e8s ce lot, fermer l'atelier ou perdre la
    page en pleine heure ne perd plus rien. */
-function _drTraceAuto(){
-  if(AT_DR_REGIME!=='classe'||!AT_DR_COURS||!AT_DR_VECU)return;
-  clearTimeout(AT_PONT._traceT);
-  AT_PONT._traceT=setTimeout(function(){
-    try{
-      var base=_drBaseHeure(); if(!base)return;
-      var paquet=_drPaquetHeure(false); if(!paquet)return;
-      mjpcPutJson(base+'.json', paquet,
-        'Heure de cours \u2014 '+paquet.creneau+' ('+AT_DR_COURS.classeNom+')');
-    }catch(e){}
-  },900);
-}
+function _drTraceAuto(){ dr_traceAuto(); }   /* [E2] */
 /* la RELANCE dans le m\u00eame cr\u00e9neau REPREND la trace en cours (patron du chrono
    accumul\u00e9 de worktrack, CADRAGE-TEMPS \u00a72) : le d\u00e9but r\u00e9el et les minutes d\u00e9j\u00e0
    compt\u00e9es sont conserv\u00e9s, les d\u00e9cisions du T-5 reviennent. Deux cr\u00e9neaux dans la
    journ\u00e9e = deux cl\u00e9s = deux traces : aucune n'\u00e9crase l'autre. */
-function _drTraceReprendre(){
-  var base=_drBaseHeure(); if(!base||!AT_DR_VECU)return;
-  fetch(base+'.json').then(function(r){return r.json();}).then(function(t){
-    if(!t||!AT_DR_VECU)return;
-    /* [LOT C2 \u2463] LE LANCEMENT REFUSE UNE TRACE INCOH\u00c9RENTE. Si la trace trouv\u00e9e porte
-       une autre classe ou un autre cr\u00e9neau, on ouvre une trace neuve au lieu d'y \u00e9crire :
-       une trace de trop se voit et se corrige, une trace m\u00eal\u00e9e ment en silence. */
-    var crAttendu=_drCreneauHeure();
-    if((t.classe&&AT_DR_COURS.classeNom&&t.classe!==AT_DR_COURS.classeNom)||(t.creneau&&crAttendu&&t.creneau!==crAttendu)){
-      atInfo('Une trace d\u2019heure existait sous cette cl\u00e9 mais portait \u00ab '+escapeHtml(String(t.classe||'?'))+' \u00b7 '+escapeHtml(String(t.creneau||'?'))+' \u00bb : elle n\u2019est pas reprise, cette heure part \u00e0 neuf.');
-      _drTraceAuto(); return;
-    }
-    if(t.debutReel)AT_DR_VECU.debutReel=t.debutReel;
-    (t.activites||[]).forEach(function(l){
-      if(!l||l.n===undefined)return;
-      var a=AT_DR_VECU.activites[l.n]||(AT_DR_VECU.activites[l.n]={ms:0,passages:0});
-      a.ms=Math.max(a.ms,(+l.reel||0)*60000);
-      a.passages=Math.max(a.passages,(+l.passages||0));
-    });
-    if(t.decisions&&typeof AT_T5_CHOIX==='object'){
-      Object.keys(t.decisions).forEach(function(k){ if(AT_T5_CHOIX[k]===undefined)AT_T5_CHOIX[k]=t.decisions[k]; });
-    }
-    try{ atVecuAfficher(); }catch(e){}
-    atInfo('Heure de '+t.creneau+' reprise \u2014 '+(t.minutesJouees||0)+' min d\u00e9j\u00e0 compt\u00e9es'
-      +(Object.keys(t.decisions||{}).length?' et tes d\u00e9cisions de fin d\u2019heure':'')+'.');
-    _drTraceAuto();
-  }).catch(function(){});
-}
-function atVecuDemarrer(){
-  AT_DR_VECU={ debutReel:Date.now(), finReel:null, activites:{}, decisions:{}, courant:null };
-  atVecuEntrer(0);
-  try{ _drTraceReprendre(); }catch(e){}   /* [LOT C1 \u2460] m\u00eame cr\u00e9neau \u2192 m\u00eame heure : on reprend */
-  try{ _drTraceAuto(); }catch(e){}        /* [LOT C1 \u2461] la trace na\u00eet tout de suite */
-}
-
-
-function atVecuEntrer(n){
-  if(!AT_DR_VECU) return;
-  /* [LOT C2 \u2462.3 / \u2461] un fils du zoom n'est jamais une ancre : le temps se compte
-     sur le P\u00c8RE. Sans cela, zoomer pendant une activit\u00e9 la couperait en deux lignes
-     de v\u00e9cu dont l'une mourrait au d\u00e9zoom. */
-  try{ n=_drRangPere(n); }catch(e){}
-  if(AT_DR_VECU.courant && AT_DR_VECU.courant.n===n) return;
-  atVecuSortir();
-  AT_DR_VECU.courant={n:n, depuis:Date.now()};
-  try{ _drTraceAuto(); }catch(e){}   /* [LOT C1 \u2461] */
-}
-
-
-function atVecuSortir(){
-  if(!AT_DR_VECU||!AT_DR_VECU.courant) return;
-  var c=AT_DR_VECU.courant, ms=Date.now()-c.depuis;
-  var a=AT_DR_VECU.activites[c.n]||(AT_DR_VECU.activites[c.n]={ms:0, passages:0});
-  a.ms+=ms; a.passages++;
-  AT_DR_VECU.courant=null;
-  try{ _drTraceAuto(); }catch(e){}   /* [LOT C1 \u2461] */
-}
-
-
-function atVecuMinutes(n){
-  if(!AT_DR_VECU) return 0;
-  var ms=(AT_DR_VECU.activites[n]||{}).ms||0;
-  if(AT_DR_VECU.courant && AT_DR_VECU.courant.n===n) ms+=Date.now()-AT_DR_VECU.courant.depuis;
-  return Math.round(ms/60000);
-}
-
-
-function atVecuEcrire(){
-  if(!AT_DR_VECU||!AT_DR_COURS) return;
-  atVecuSortir();
-  AT_DR_VECU.finReel=Date.now();
-  AT_DR_VECU.decisions=JSON.parse(JSON.stringify(AT_T5_CHOIX||{}));
-  var ec=AT.edChap, sk=ATVUES.snum; if(!ec||!sk) return;
-  var ecr=[]; try{ ecr=DR.dr_exporterTrame()||[]; }catch(e){}
-  var lignes=Object.keys(AT_DR_VECU.activites).map(function(k){
-    var e=ecr[k]||{};
-    return { n:+k, act:e.act||('\u00e9cran '+(+k+1)), prevu:+(e.dur||0),
-             reel:Math.round(AT_DR_VECU.activites[k].ms/60000), passages:AT_DR_VECU.activites[k].passages,
-             comp:Array.isArray(e.comp)?e.comp:[] };
-  });
-  var paquet={
-    classe:AT_DR_COURS.classeNom, creneau:AT_DR_COURS.debut+'-'+AT_DR_COURS.fin,
-    debutReel:AT_DR_VECU.debutReel, finReel:AT_DR_VECU.finReel,
-    tempsUtilePrevu:atTempsUtile(),
-    minutesJouees:Math.round((AT_DR_VECU.finReel-AT_DR_VECU.debutReel)/60000),
-    activites:lignes, decisions:AT_DR_VECU.decisions
-  };
-  /* [LOT C1 \u2460] la m\u00eame trace, rang\u00e9e sous son HORAIRE. `vecu` continue d'exister
-     \u00e0 l'identique (l'affichage des minutes le lit) : rien de ce qui marchait ne bouge,
-     la collection s'ajoute \u00e0 c\u00f4t\u00e9. */
-  try{
-    var _b=_drBaseHeure();
-    if(_b){
-      var _p=_drPaquetHeure(true);
-      if(_p){ _p.finReel=AT_DR_VECU.finReel; _p.clos=true;
-        mjpcPutJson(_b+'.json', _p, 'Heure close \u2014 '+_p.creneau+' ('+AT_DR_COURS.classeNom+')', function(){}); }
-    }
-  }catch(e){}
-  var ch=chapitresData[ec.level][ec.chnum], sce=ch.seances[sk];
-  if(sce.deroule_joue && sce.deroule_joue[AT_DR_COURS.classeSlug]){
-    sce.deroule_joue[AT_DR_COURS.classeSlug].vecu=paquet;
-  }
-  mjpcPutJson(FIREBASE_BASE+'/site/'+ec.level+'/chapitres/'+ec.chnum+'/seances/'+sk
-    +'/deroule_joue/'+AT_DR_COURS.classeSlug+'/vecu.json', paquet,
-    'V\u00e9cu de la s\u00e9ance \u2014 '+AT_DR_COURS.classeNom, function(){});
-}
-
-
-
+function _drTraceReprendre(){ dr_traceReprendre(); }   /* [E2] */
 
 
 function atDrEnrConfirme(ok){
@@ -15592,65 +15207,7 @@ function atDrJouer(classeSlug, classeNom){
 
 
 
-function _drCloreHeureRestee(slugNeuf,nomNeuf){
-  /* [LOT C2 \u2463] la clôture de l'heure pr\u00e9c\u00e9dente est CERTAINE, m\u00eame apr\u00e8s un
-     rechargement : `cours_actif` fait foi. Le professeur n'est jamais bloqu\u00e9 \u2014 on
-     avertit d'une ligne, on ne demande rien, et le lancement continue. */
-  fetch(FIREBASE_BASE+'/site/cours_actif.json').then(function(r){return r.json();}).then(function(c){
-    if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000)return;
-    if(c.classeSlug===slugNeuf&&c.seance===ATVUES.snum&&c.chapitre===(AT.edChap||{}).chnum)return;  /* c'est la m\u00eame heure : rien \u00e0 clore */
-    var cr=_drCreneauDe(c)||'';
-    var base=_drBaseHeureDe(c,c.ts); if(!base)return;   /* [LOT C3a \u2460] la M\u00caME fabrique de cl\u00e9 */
-    mjpcPutJson(base+'/clos.json',true,'Cl\u00f4ture certaine de l\u2019heure pr\u00e9c\u00e9dente',function(){});
-    mjpcPutJson(base+'/finReel.json',Date.now(),'Fin r\u00e9elle de l\u2019heure pr\u00e9c\u00e9dente',function(){});
-    mjpcPutJson(base+'/closPar.json','lancement de '+(nomNeuf||slugNeuf),'Motif de cl\u00f4ture',function(){});
-    /* [LOT C3a \u2460] et le POINTEUR suit : une heure close ne peut plus \u00eatre d\u00e9sign\u00e9e comme
-       tournante. L'effacement est CONDITIONNEL \u2014 si le cours neuf a d\u00e9j\u00e0 pris la place,
-       il n'y touche pas : aucune course ne peut effacer le pointeur du cours en cours. */
-    _drCoursActifEffacerSi(_drSignatureCours(c));
-    atInfo('L\u2019heure de '+escapeHtml(String(c.classeNom||c.classeSlug||''))+' ('+escapeHtml(cr)+') n\u2019\u00e9tait pas close : elle vient de l\u2019\u00eatre. Rien de cette heure n\u2019entre dans la suivante.');
-  }).catch(function(){});
-}
-function atDrJouerClic(){
-  var sel=document.getElementById('at-dr-classe'); if(!sel)return;
-  var slug=sel.value, nom=sel.options[sel.selectedIndex]?sel.options[sel.selectedIndex].text:slug;
-  var _c=atCreneauSel(), _e=document.getElementById('at-dr-debut');
-  var _deb=(_e&&_e.value)||_c.split('-')[0], _fin=_c.split('-')[1];
-  /* [C1-CONSCIENCE] le professeur a TOUS les droits : on avertit, on ne bloque JAMAIS. */
-  if(atMn(_fin)-atMn(_deb)-5<=0){ atInfo('Attention : ce d\u00e9but ne laisse aucun temps utile avant '+_fin+' \u2014 la s\u00e9ance se lance quand m\u00eame.'); }
-  /* [LOT C2 \u2463] LA CL\u00d4TURE DE L'HEURE PR\u00c9C\u00c9DENTE EST CERTAINE. Deux minutes s\u00e9parent
-     deux classes : si Paul lance la suivante sans avoir clos, l'heure en cours se clôt
-     proprement d'abord \u2014 sa trace est scell\u00e9e sous SA cl\u00e9 \u2014 et le site le dit d'une
-     ligne, sans rien lui demander. Le professeur n'est jamais bloqu\u00e9 : on avertit. */
-  /* [LOT C2 \u2463] \u2014 et le cas R\u00c9EL : entre deux classes, Paul ferme l'atelier ou la page.
-     La m\u00e9moire vive a disparu, mais `cours_actif` au hub dit qu'une heure tourne encore.
-     On la clôt alors PAR \u00c9CRITURES CIBL\u00c9ES sur SA trace (`clos`, `finReel`), sans jamais
-     r\u00e9\u00e9crire son paquet \u2014 on n'a pas ses donn\u00e9es, et on n'invente rien. */
-  try{ _drCloreHeureRestee(slug,nom); }catch(e){}
-  try{
-    if(AT_DR_REGIME==='classe'&&AT_DR_COURS&&AT_DR_VECU){
-      var _av=AT_DR_COURS.classeNom, _cr=_drCreneauHeure();
-      atVecuSortir();
-      AT_DR_VECU.finReel=Date.now();
-      var _b=_drBaseHeure(), _p=_drPaquetHeure(true);
-      if(_b&&_p){ _p.finReel=AT_DR_VECU.finReel; _p.clos=true; _p.closPar='lancement suivant';
-        mjpcPutJson(_b+'.json',_p,'Heure close \u00e0 l\u2019ouverture de la suivante \u2014 '+_p.creneau,function(){}); }
-      atInfo('L\u2019heure pr\u00e9c\u00e9dente ('+escapeHtml(String(_av||''))+' \u00b7 '+escapeHtml(String(_cr||''))+') n\u2019\u00e9tait pas close : elle vient de l\u2019\u00eatre, sa trace est enregistr\u00e9e.');
-      AT_DR_VECU=null;
-    }
-  }catch(e){}
-  var copie=atDrJouer(slug,nom); if(!copie)return;
-  AT_DR_COURS={debut:_deb, fin:_fin, classeSlug:slug, classeNom:nom};   /* l'objet partagé, écrit au lancement */
-  AT_DR_REGIME='classe';
-  try{ chChargerTaxo(function(){}); }catch(e){}   /* [8.67.1] la taxonomie se charge au lancement : le T-5 nomme les notions, jamais leurs codes */
-  try{ sesCoursEcrire(); }catch(e){}   /* [SESSION] le cours s'annonce : les autres appareils peuvent le rejoindre */
-  atVecuDemarrer();
-  atDrMonter();
-  var ec=AT.edChap, sk=ATVUES.snum;
-  DR.dr_ouvrir('at-dr-hote-zone', copie.ecrans, {level:ec.level,chnum:ec.chnum,snum:sk,classe:slug,joue:true});
-  setTimeout(function(){ atDrSuiviAppliquer(); atSomRafraichir(); },0);
-  var t=document.getElementById('at-dr-etat'); if(t)t.textContent='S\u00e9ance jou\u00e9e avec '+nom+' (copie du '+new Date(copie.demarreLe).toLocaleTimeString()+').';
-}
+function _drCloreHeureRestee(slugNeuf,nomNeuf){ dr_cloreHeureRestee(slugNeuf,nomNeuf); }   /* [E2] par dr_lire / dr_ecrire (13 · 25) */
 
 
 
@@ -16076,21 +15633,7 @@ if(typeof chInjecterConfirme==='function'&&!window.__p2InjPose){
    rien ne remonte ») — mais LA COPIE de la classe doit, elle, suivre chaque geste :
    les réponses écrites en cours appartiennent au vécu de cette classe. Sans cela,
    la relecture après clôture et la future vue vécue seraient vides. */
-function _drCopieAuto(){
-  if(AT_DR_REGIME!=='classe'||!AT_DR_COURS)return;
-  clearTimeout(AT_PONT._copT);
-  AT_PONT._copT=setTimeout(function(){
-    try{
-      var ec=AT.edChap, sk=ATVUES.snum; if(!ec||!sk)return;
-      var ch=chapitresData[ec.level][ec.chnum], sce=ch&&ch.seances&&ch.seances[sk];
-      var cop=sce&&sce.deroule_joue&&sce.deroule_joue[AT_DR_COURS.classeSlug]; if(!cop)return;
-      cop.ecrans=DR.dr_exporterTrame();
-      mjpcPutJson(FIREBASE_BASE+'/site/'+ec.level+'/chapitres/'+ec.chnum+'/seances/'+sk
-        +'/deroule_joue/'+AT_DR_COURS.classeSlug+'/ecrans.json', cop.ecrans,
-        'Séance en classe — copie au fil de l’eau ('+AT_DR_COURS.classeNom+')');
-    }catch(e){}
-  },900);
-}
+function _drCopieAuto(){ dr_copieAuto(); }   /* [E2] */
 
 /* [refusion à l'export] scinde() coupe pour la PROJECTION (« rien n'est jamais
    refusé ») : écran-fragment grp+suite, dur:0, blocs frag. L'artifice ne doit pas
@@ -16161,257 +15704,15 @@ document.addEventListener('change',function(ev){
    fiche de l'élève ; les chiffres choisissent le motif ; la note se tape si le
    temps le permet ; Entrée pose ; le champ revient, vidé, prêt pour le suivant.
    La touche / (hors saisie) amène au champ. Tout à la souris reste possible. */
-function _drVifInstaller(){
-  try{
-    var W=drWin(); if(!W||W.__vifPose)return;
-    var part=W.document.getElementById('part'); if(!part)return;
-    W.__vifPose=true;
-    if(!W.__partPrecis&&typeof W.partAjoute==='function'){
-      W.__partPrecis=true;
-      var _pa=W.partAjoute;
-      W.partAjoute=function(ini,type,note){
-        var r=_pa.apply(W,arguments);
-        try{
-          var e=W.ECRANS[W.i], rv=(e.rev===undefined?0:e.rev);
-          var b=e.blocs[Math.max(0,Math.min(e.blocs.length-1,rv-2))];
-          var precis=b?(b.t==='question'?('question \u00ab '+String(b.q||'').slice(0,40)+' \u00bb')
-                      :b.t==='fiche'?('fiche \u00ab '+String(b.titre||'').slice(0,40)+' \u00bb')
-                      :b.t):null;
-          var l=(W.PARTICIPATION[ini]||[]); var d=l[l.length-1];
-          if(d&&precis&&d.ou&&d.ou.indexOf(String((b&&(b.q||b.titre))||'\u2400').slice(0,25))<0)d.ou=d.ou+' \u00b7 '+precis;   /* pas de doublon si l'endroit porte deja l'element */
-          var v=W.document.getElementById('vif');
-          if(v&&d){
-            var t=W.document.getElementById('vif-dernier');
-            if(!t){ t=W.document.createElement('div'); t.id='vif-dernier';
-              t.setAttribute('style','margin:4px 0 6px;font-size:12px;color:#9c8b76;display:flex;gap:6px;align-items:center');
-              v.parentNode.insertBefore(t,v.nextSibling); }
-            t.innerHTML='pos\u00e9 : <b>'+ini+'</b> <span id="vif-x" style="cursor:pointer;color:#e8484c">\u2715 (Ctrl+Z)</span>';
-            var did=d.id;
-            var annule=function(){ try{ W.partRetire(ini,did); W.rendre(); t.innerHTML='annul\u00e9.'; setTimeout(function(){t.innerHTML='';},1500); W.__vifAnnule=null; }catch(e){} };
-            W.document.getElementById('vif-x').onclick=annule;
-            W.__vifAnnule=annule;
-            clearTimeout(W.__vifDT); W.__vifDT=setTimeout(function(){ t.innerHTML=''; W.__vifAnnule=null; },6000);
-          }
-        }catch(e){}
-        return r;
-      };
-    }
-    var z=W.document.createElement('input');
-    z.id='vif'; z.placeholder='⌨ initiales — puis 1/2/3, note, Entrée';
-    z.setAttribute('style','width:100%;box-sizing:border-box;margin:0 0 6px;padding:4px 8px;'
-      +'border:1px solid #4a3f33;border-radius:8px;background:#171310;color:#e8ddcf;font:inherit;font-size:13px');
-    part.parentNode.insertBefore(z,part);
-    sug=W.document.createElement('div'); sug.id='vif-sug';
-    sug.setAttribute('style','margin:2px 0 6px;font-size:12px;color:#9c8b76;min-height:14px');
-    part.parentNode.insertBefore(sug,part);
-    /* la r\u00e9solution CANON (redaction_dugain_v3) : comparaison d'initiales SANS
-       tenir compte de l'ordre des lettres \u2014 \u00ab TM \u00bb trouve \u00ab MT \u00bb. */
-    function _trier(s){return String(s).toUpperCase().replace(/[^A-Z]/g,'').split('').sort().join('');}
-    function candidats(t){
-      t=String(t||'').trim(); if(!t.length)return [];
-      var E=W.ELEVES||[], P=W.PRENOMS||{}, tt=_trier(t), tu=t.toUpperCase();
-      var meme=(t.length>=2)?E.filter(function(x){return _trier(x)===tt;}):[];
-      if(meme.length)return meme;
-      return E.filter(function(x){return x.indexOf(tu)===0
-        ||String(P[x]||'').toUpperCase().indexOf(tu)===0;});
-    }
-    var sug;
-    z.addEventListener('input',function(){
-      var c=candidats(z.value);
-      [].slice.call(W.document.querySelectorAll('#part span')).forEach(function(s){
-        var ini=(s.textContent||'').replace(/\d+$/,'');
-        s.style.outline=(c.indexOf(ini)>=0&&z.value)?'2px solid #c99a4e':'';
-      });
-      var P=W.PRENOMS||{};
-      if(!z.value.trim()){ sug.innerHTML=''; }
-      else if(!c.length){ sug.innerHTML='<em style="color:#a23a3a">Aucun \u00e9l\u00e8ve avec ces initiales.</em>'; }
-      else if(c.length===1){
-        sug.innerHTML='\u2192 <b>'+(P[c[0]]||c[0])+'</b> (Entr\u00e9e)';
-        W.ouvrirPart(c[0]); setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60);
-      } else {
-        sug.innerHTML=c.slice(0,8).map(function(x){
-          return '<a href="#" data-vif-c="'+x+'" style="color:#c99a4e;margin-right:8px;text-decoration:none"><b>'+(P[x]||x)+'</b> <span style="color:#7d6f5d">'+x+'</span></a>';}).join('')
-          +(c.length>8?(' … +'+(c.length-8)):'');
-        [].slice.call(sug.querySelectorAll('a')).forEach(function(a){
-          a.onclick=function(ev){ ev.preventDefault(); W.ouvrirPart(a.getAttribute('data-vif-c'));
-            setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60); };});
-      }
-    });
-    z.addEventListener('keydown',function(ev){
-      if(ev.key==='Enter'){ var c=candidats(z.value);
-        if(c.length){ W.ouvrirPart(c[0]); setTimeout(function(){var n2=W.document.getElementById('pnote');if(n2)n2.focus();},60); }
-        ev.preventDefault(); }
-      if(ev.key==='Escape'){ z.value=''; z.blur(); }
-      if((ev.ctrlKey||ev.metaKey)&&String(ev.key).toLowerCase()==='z'){ if(W.__vifAnnule){W.__vifAnnule();ev.preventDefault();} }
-    });
-    if(!W.__vifTri){ W.__vifTri=setInterval(function(){ try{
-      if(AT_DR_REGIME!=='classe')return;
-      var pt=W.document.getElementById('part'); if(!pt||!pt.children.length)return;
-      var sp=[].slice.call(pt.children);
-      var muets=sp.filter(function(s){return !s.querySelector('.pastoral');});
-      var voulu=muets.concat(sp.filter(function(s){return s.querySelector('.pastoral');}));
-      var change=voulu.some(function(s,k){return pt.children[k]!==s;});
-      if(change)voulu.forEach(function(s){pt.appendChild(s);});
-      sp.forEach(function(s){ s.style.color=s.querySelector('.pastoral')?'':'#e0a84e'; });
-    }catch(e){} },900); }
-    /* dans la fiche ouverte : 1..9 = motif ; Entrée dans la note = motif défaut (le 1er) avec la note */
-    W.document.addEventListener('keydown',function(ev){
-      var pop=W.document.getElementById('ppop');
-      if(!pop||!pop.classList.contains('on'))return;   /* aucun raccourci d'accès au champ : la touche sera CELLE DE PAUL (/, ² et F2 retirés, 22/08) */
-      var bts=[].slice.call(pop.querySelectorAll('button.m'));
-      if(/^[1-9]$/.test(ev.key)){
-        var dansNote=(ev.target&&ev.target.id==='pnote');
-        var horsSaisie=!/input|textarea/i.test((ev.target&&ev.target.tagName)||'');
-        /* dans la note VIDE, les chiffres choisissent le motif ; d\u00e8s qu'un texte est
-           commenc\u00e9, ils redeviennent des caract\u00e8res (\u00ab 2 propositions \u00bb reste \u00e9crivable) */
-        if(horsSaisie||(dansNote&&!ev.target.value)){
-          var b=bts[+ev.key-1]; if(b){ b.click(); z.value=''; setTimeout(function(){z.focus();},60); ev.preventDefault(); } return;
-        }
-      }
-      if(ev.key==='Enter'&&ev.target&&ev.target.id==='pnote'){
-        var b1=bts[0]; if(b1){ b1.click(); z.value=''; setTimeout(function(){z.focus();},60); ev.preventDefault(); }
-      }
-      if(ev.key==='Escape'){ pop.classList.remove('on'); z.value=''; z.focus(); }
-    },true);
-  }catch(e){}
-}
 
 /* [vif · accès d'un seul appui] ² ou F2, DEPUIS N'IMPORTE OÙ (page ou cadre),
    amène le curseur dans le champ des initiales — zéro clic, zéro visée. */
-function _drVifAller(ev){
-  try{
-    if(AT_DR_REGIME!=='classe')return;
-    var W=drWin(), z=W&&W.document.getElementById('vif');
-    if(!z||z.style.display==='none')return;
-    z.focus(); z.select();
-    if(ev)ev.preventDefault();
-  }catch(e){}
-}
-document.addEventListener('keydown',function(ev){
-  if(ev.key==='²'||ev.key==='F2')_drVifAller(ev);
-},true);
 
 /* [palette Maj+Espace — la touche de Paul] d'où que vienne le geste (champ de
    consigne, réponse au tableau, nulle part), Maj+Espace fait surgir la palette
    en surimpression : initiales en grand, 1/2/3 ou Entrée, et le focus REVIENT
    à l'endroit exact (curseur compris). Préemptée en capture : aucun dévoilement
    ne part. N'existe qu'EN CLASSE. */
-function _drPaletteOuvrir(d){
-  var W=drWin(); if(!W||AT_DR_REGIME!=='classe')return;
-  d=d||W.document;
-  var mem={el:d.activeElement,s:null,e:null,dp:null};
-  try{ if(mem.el&&mem.el.setSelectionRange)
-    { mem.s=mem.el.selectionStart; mem.e=mem.el.selectionEnd; } }catch(e){}
-  try{ if(mem.el&&mem.el.getAttribute)mem.dp=mem.el.getAttribute('data-p'); }catch(e){}
-  var ov=d.getElementById('vif-palette');
-  if(!ov){
-    ov=d.createElement('div'); ov.id='vif-palette';
-    ov.setAttribute('style','position:fixed;inset:0;background:rgba(10,8,6,.74);z-index:99000;display:flex;align-items:center;justify-content:center');
-    ov.innerHTML='<div style="background:#1d1712;border:1px solid #6b5230;border-radius:14px;padding:22px 26px;min-width:460px;box-shadow:0 18px 60px rgba(0,0,0,.55)">'
-      +'<input id="vif-pal-in" placeholder="initiales de l\u2019\u00e9l\u00e8ve\u2026" autocomplete="off" style="width:100%;box-sizing:border-box;font-size:30px;padding:10px 14px;background:#12100c;border:1px solid #4a3f33;border-radius:10px;color:#e8ddcf">'
-      +'<div id="vif-pal-sug" style="margin-top:10px;font-size:15px;color:#9c8b76;min-height:18px"></div>'
-      +'<div id="vif-pal-motifs" style="margin-top:10px;display:none;gap:8px"></div>'
-      +'<input id="vif-pal-note" placeholder="pourquoi (facultatif \u2014 pour toi seul)" autocomplete="off" style="display:none;width:100%;box-sizing:border-box;margin-top:10px;font-size:15px;padding:8px 12px;background:#12100c;border:1px solid #3a322a;border-radius:8px;color:#cfc4b4">'
-      +'<div id="vif-pal-hist" style="margin-top:14px;font-size:13px;color:#8d7f6d"></div></div>';
-    d.body.appendChild(ov);
-    /* [micro 8.58.1] l'élève se ravise : un clic À CÔTÉ de la boîte annule
-       l'ouverture — rien n'est posé, le focus revient où il était. */
-    ov.addEventListener('click',function(ev){ if(ev.target===ov&&ov.__fermer)ov.__fermer(); });
-  }
-  ov.style.display='flex';
-  var inp=d.getElementById('vif-pal-in'), sg=d.getElementById('vif-pal-sug');
-  var zm=d.getElementById('vif-pal-motifs'), zn=d.getElementById('vif-pal-note'), zh=d.getElementById('vif-pal-hist');
-  inp.value=''; sg.innerHTML=''; zm.style.display='none'; zm.innerHTML=''; zn.style.display='none'; zn.value='';
-  var choisi=null;
-  function poserAvec(ini,mc,note){ try{ W.partAjoute(ini,mc,note||''); W.rendre(); }catch(e){} fermer(); }
-  function histoRendre(){
-    try{
-      var tout=[];
-      Object.keys(W.PARTICIPATION||{}).forEach(function(k){ (W.PARTICIPATION[k]||[]).forEach(function(o){ if(o&&o.genre!=='r\u00e9ponse')tout.push({ini:k,id:o.id,h:o.h,type:o.type}); }); });
-      tout.sort(function(a,b){ return String(a.h).localeCompare(String(b.h)); });
-      var der=tout.slice(-5).reverse();
-      zh.innerHTML=!der.length?'':'derni\u00e8res : '+der.map(function(x){
-        return '<span style="margin-right:10px">'+x.ini+' \u00b7 '+String(x.type)+' \u00b7 '+String(x.h)
-          +' <a href="#" data-ann="'+x.ini+'|'+x.id+'" style="color:#e8484c;text-decoration:none">\u2715</a></span>';}).join('');
-      [].slice.call(zh.querySelectorAll('a[data-ann]')).forEach(function(a){
-        a.onclick=function(ev){ ev.preventDefault(); var p=a.getAttribute('data-ann').split('|');
-          try{ W.partRetire(p[0],p[1]); W.rendre(); }catch(e){} histoRendre(); };});
-    }catch(e){}
-  }
-  histoRendre();
-  function trier(s){return String(s).toUpperCase().replace(/[^A-Z]/g,'').split('').sort().join('');}
-  function cands(t){ t=String(t||'').trim(); if(!t.length)return [];
-    var E=W.ELEVES||[],P=W.PRENOMS||{},tt=trier(t),tu=t.toUpperCase();
-    var ex=E.filter(function(x){return x===tu;}); if(ex.length)return ex;
-    if(t.length>=2){ var m=E.filter(function(x){return trier(x)===tt;}); if(m.length)return m; }
-    return E.filter(function(x){return x.indexOf(tu)===0||String(P[x]||'').toUpperCase().indexOf(tu)===0;});}
-  function fermer(){
-    ov.style.display='none';
-    setTimeout(function(){ try{
-      var el=mem.el;
-      /* rendre() a pu reconstruire le champ : retrouver LE MÊME par son data-p */
-      if(mem.dp!=null){ var neuf=d.querySelector('[data-p="'+mem.dp+'"]'); if(neuf)el=neuf; }
-      if(el&&el.isConnected!==false){ el.focus();
-        if(mem.s!==null&&el.setSelectionRange)el.setSelectionRange(mem.s,mem.e);
-        else if(el.isContentEditable&&d.createRange){ var r=d.createRange(); r.selectNodeContents(el); r.collapse(false);
-          var s=d.defaultView.getSelection(); s.removeAllRanges(); s.addRange(r); }
-      }
-    }catch(e){} },80);   /* après le rendre() de la pose */
-  }
-  ov.__fermer=fermer;
-  function designer(x){
-    var P=W.PRENOMS||{};
-    choisi=x;
-    sg.innerHTML='\u2192 <b>'+(P[x]||x)+'</b> \u2014 1/2/3, ou note puis Entr\u00e9e';
-    zm.style.display='flex';
-    zm.innerHTML=(W.MOTIFS_PART||[]).map(function(m,k2){
-      return '<button data-mc="'+m.c+'" style="flex:1;padding:7px 8px;border-radius:8px;border:1px solid #4a3f33;background:#241d15;color:#e0d4c2;cursor:pointer;font-size:13px">'+(k2+1)+' \u00b7 '+m.l+'</button>';}).join('');
-    [].slice.call(zm.querySelectorAll('button')).forEach(function(b){
-      b.onclick=function(){ poserAvec(choisi,b.getAttribute('data-mc'),zn.value.trim()); };});
-    zn.style.display='';
-  }
-  inp.oninput=function(){ var c=cands(inp.value),P=W.PRENOMS||{};
-    if(!inp.value.trim().length){sg.innerHTML='';zm.style.display='none';zn.style.display='none';return;}
-    if(!c.length){ sg.innerHTML='<em style="color:#a23a3a">Aucun \u00e9l\u00e8ve avec ces initiales.</em>'; zm.style.display='none'; zn.style.display='none'; }
-    else if(c.length===1){ designer(c[0]); }
-    else {
-      sg.innerHTML=c.slice(0,10).map(function(x){
-        return '<a href="#" data-vif-c="'+x+'" style="color:#c99a4e;margin-right:10px;text-decoration:none"><b>'+(P[x]||x)+'</b> <span style="color:#7d6f5d">'+x+'</span></a>';}).join('')
-        +(c.length>10?(' … +'+(c.length-10)):'');
-      [].slice.call(sg.querySelectorAll('a[data-vif-c]')).forEach(function(a){
-        a.onclick=function(ev){ ev.preventDefault(); designer(a.getAttribute('data-vif-c')); };});
-      zm.style.display='none'; zn.style.display='none';
-    }};
-  function clavier(ev){
-    var c=cands(inp.value);
-    var cible=(c.length===1)?c[0]:choisi;
-    var noteVide=!zn.value.trim();
-    if(/^[1-3]$/.test(ev.key)&&cible&&(ev.target!==zn||noteVide)){
-      var m=(W.MOTIFS_PART||[])[+ev.key-1];
-      if(m)poserAvec(cible,m.c,zn.value.trim());
-      ev.preventDefault(); return;
-    }
-    if(ev.key==='Enter'&&cible){
-      var m0=(W.MOTIFS_PART||[])[0];
-      if(m0)poserAvec(cible,m0.c,zn.value.trim());
-      ev.preventDefault(); return;
-    }
-    if(ev.key==='Tab'&&cible&&zn.style.display!=='none'){ zn.focus(); ev.preventDefault(); return; }
-    if(ev.key==='Escape'){ fermer(); ev.preventDefault(); }
-  }
-  inp.onkeydown=clavier; zn.onkeydown=clavier;
-  setTimeout(function(){ try{inp.focus();}catch(e){} },30);
-}
-function _drPaletteBrancher(d){
-  try{
-    if(!d||d.__palB)return; d.__palB=true;
-    d.addEventListener('keydown',function(ev){
-      if(ev.key===' '&&ev.shiftKey&&AT_DR_REGIME==='classe'){
-        ev.preventDefault(); ev.stopPropagation(); _drPaletteOuvrir(d);
-      }
-    },true);
-  }catch(e){}
-}
 
 /* le boot du montage : rappeler l'onglet retenu */
 atVuesRappeler();
@@ -16460,55 +15761,11 @@ function sesChemins(c){ /* c = {niveau,chapitre,seance,classeSlug} */
   return { scene:b+'/scene.json', part:b+'/part.json', ecrans:b+'/ecrans.json', cours:FIREBASE_BASE+'/site/cours_actif.json' };
 }
 function sesGet(url,cb){ fetch(url).then(function(r){return r.json();}).then(function(v){cb(v,null);}).catch(function(e){cb(null,e);}); }
-function sesPut(url,val){ /* flux de session : silencieux (l'indicateur d'état parle), jamais le classeur d'échecs */
-  return fetch(url,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(val)})
-    .then(function(r){ if(r.ok){SES.okDepuis=Date.now();} return r.ok; }).catch(function(){ return false; });
-}
 
 /* ═══ CÔTÉ PILOTE — le cours annoncé, la scène émise, les gestes des autres appliqués ═══ */
-function sesCoursEcrire(){
-  var ec=AT.edChap; if(!ec||!AT_DR_COURS||!ATVUES.snum)return;
-  SES.ctx={niveau:ec.level,chapitre:ec.chnum,seance:ATVUES.snum,
-           classeSlug:AT_DR_COURS.classeSlug,classeNom:AT_DR_COURS.classeNom,
-           debut:AT_DR_COURS.debut,fin:AT_DR_COURS.fin};
-  var c=Object.assign({},SES.ctx,{ts:Date.now()});
-  sesPut(FIREBASE_BASE+'/site/cours_actif.json',c);
-  /* la scène du COURS PRÉCÉDENT du même couple séance×classe ne doit jamais
-     ressusciter : écrite à neuf, tout de suite, avant le premier poll de quiconque. */
-  var t0=Date.now(); SES.ts=t0; SES.trameMaj=t0;
-  sesPut(sesChemins(SES.ctx).scene,{ecran:0,rev:0,vues:{},gele:false,fiche:null,
-    chrono:{visible:false,txt:''},quiOn:false,qui:null,trameMaj:t0,origine:SES.id,ts:t0});
-  sesBrancherPilote();
-}
-function sesCoursFermer(){
-  sesPut(FIREBASE_BASE+'/site/cours_actif.json',null);
-  sesArreter();
-}
+function sesCoursEcrire(){ dr_coursEcrire(); }   /* [E2] par dr_ecrire (13 · 25) ; la scène neuve est celle d'E3 */
+function sesCoursFermer(){ dr_coursFermer(); sesArreter(); }   /* [E2] par dr_ecrire (13 · 25) */
 function sesArreter(){ SES.actif=false; clearInterval(SES.pollT); SES.pollT=null; }
-
-function sesBrancherPilote(reprise){
-  if(!SES.ctx)return;
-  SES.actif=true;
-  var W=drWin(); if(!W){ _drQuandPret(function(){sesBrancherPilote(reprise);}); return; }
-  if(!W.__sesCrochets){
-    W.__sesCrochets=true;
-    var vRendre=W.rendre; W.rendre=function(){ try{ _drIdentifierEcrans(W.ECRANS); }catch(e0){}   /* [LOT C2 \u2460] le point de passage unique : un \u00e9cran n\u00e9 de n'importe laquelle des treize fonctions du moteur re\u00e7oit son identit\u00e9 ici, sans qu'aucune ne soit modifi\u00e9e */
-      var r; try{ r=vRendre.apply(W,arguments); }catch(e){ sesIncident('affichage de l\u2019\u00e9cran',e); } sesEmettre(); return r; };   /* [LOT A ②] l'\u00e9mission part M\u00caME si le rendu a bronch\u00e9 */
-    var vEnvoie=W.envoie; W.envoie=function(){ var r; try{ r=vEnvoie.apply(W,arguments); }catch(e){ sesIncident('envoi au tableau',e); } sesEmettre(); return r; };
-    var vQui=W.quiParle; W.quiParle=function(){ var r; try{ r=vQui.apply(W,arguments); }catch(e){ sesIncident('qui a particip\u00e9',e); } sesEmettre(); return r; };
-    var vSauve=W.sauve; W.sauve=function(){ var r=vSauve.apply(W,arguments);
-      if(AT_DR_REGIME==='classe'){ clearTimeout(SES.trameT);
-        SES.trameT=setTimeout(function(){ SES.trameMaj=Date.now(); sesEmettre(); },950); }   /* APRÈS la poussée réelle de la copie (débounce 900 de _drCopieAuto) — jamais une annonce avant la marchandise */
-      return r; };
-    var vPA=W.partAjoute; W.partAjoute=function(){ var r=vPA.apply(W,arguments); sesPartEmettre(); return r; };
-    var vPR=W.partRetire; W.partRetire=function(){ var r=vPR.apply(W,arguments); sesPartEmettre(); return r; };
-  }
-  sesBandeau();
-  if(!SES.pollT) SES.pollT=setInterval(sesPollPilote,900);
-  if(reprise==='froid'){ SES.ts=0; SES.trameMaj=0; sesPollPilote(); }   /* la reprise LIT l'état courant, elle ne l'écrase jamais */
-  else if(reprise==='chaud'){ }                                          /* rebranchement (cadre reconstruit) : crochets+poll suffisent */
-  else sesEmettre();
-}
 
 /* ═══ [LOT C3a ④] LE TABLEAU NE MONTRE JAMAIS PLUS QUE CE QUE LE PROFESSEUR A DÉVOILÉ.
    Quand le pilote est sur un FILS du zoom, il désigne le PÈRE (l'identité de C2 est juste) ;
@@ -16561,75 +15818,6 @@ function _sesRangLocal(o,W){
   if(!o)return 0;
   if(o.eid){ var r=_drRangDeLEid(o.eid,W&&W.ECRANS); if(r!==null)return r; }
   return o.ecran|0;
-}
-function sesAppliquer(o){
-  var W=drWin(); if(!W)return;
-  SES.applique=true;
-  /* ═══ [LOT E · COMPLÉMENT] LA RÈGLE DU ZOOM ENTRE PLUSIEURS PILOTES ═══
-     LE DERNIER GESTE GAGNE, D'OÙ QU'IL VIENNE : toute surface adopte le cran reçu
-     et le montre sur sa réglette, personne ne réimpose le sien.
-     Ce que ça change en classe : Paul est au fond de la salle, il pousse la réglette
-     du téléphone ; le mur grossit ET la réglette du PC resté sur le bureau affiche
-     le même cran — son écran de contrôle ne ment jamais sur ce que voit la classe.
-     Le PC applique donc le cran adopté à son propre rendu (par sa réglette, comme si
-     la main l'avait poussée) : c'est « ce que je vois dans mon écran de contrôle est
-     ce qui est au tableau, tel quel ». Le TÉLÉPHONE, lui, ne bouge que son étiquette :
-     son prompteur n'est pas un tableau. Pas d'oscillation possible : chaque surface
-     ADOPTE au lieu de réimposer, donc la valeur reçue est celle qu'elle réémettra. */
-  try{
-    if(o&&o.iz!==undefined&&o.iz!==null){
-      SES.cran=o.iz|0;
-      if(SES.mode==='tel')sesTelMajCran();
-      else if((W.iz|0)!==(SES.cran|0)){
-        var _rz=W.document.getElementById('rz');
-        SES.izVu=SES.cran|0;                      /* adopté, pas un geste local : la réglette ne « re-gagne » pas */
-        if(_rz){ _rz.value=String(SES.cran|0); try{ W.zoom(); }catch(e0){} }
-        else { W.iz=SES.cran|0; }
-      }
-    }
-    if(o&&o.ratio)SES.ratio=o.ratio;
-    if(o&&o.bw)SES.largeur=o.bw;
-  }catch(eZ){}
-  try{
-    /* [LOT F ③] UN RÉCEPTEUR SCINDÉ RECOLLE AVANT D'APPLIQUER. La scène porte le
-       dévoilement du GROUPE ENTIER ; le poser tel quel sur un père qui n'a plus que
-       la moitié des étapes laisserait deux états incompatibles — et c'est ce qui
-       revoilait les étapes au dézoom (mesuré : 6 dévoilées → 3). On recolle, on pose
-       dans le référentiel du père, on laisse le moteur redécouper, puis on va au
-       morceau. Même geste que le mur : un seul chemin, pas deux. */
-    var _n=_sesRangLocal(o,W);   /* [LOT C2 ③.5] */
-    var _grp=(W.ECRANS&&W.ECRANS[_n])?W.ECRANS[_n].grp:null;
-    if(_grp){
-      try{ W.reabsorbe(); }catch(eR){}
-      _n=_sesRangLocal(o,W);
-    }
-    var e=W.ECRANS&&W.ECRANS[_n];
-    if(e){ W.i=_n;
-      e.rev=o.rev;
-      (e.blocs||[]).forEach(function(b0){ if(b0)b0.vues=0; });   /* rien ne survit du cycle précédent */
-      Object.keys(o.vues||{}).forEach(function(j){ if(e.blocs[j])e.blocs[j].vues=o.vues[j]; }); }
-    W.gele=!!o.gele;
-    try{ W.document.getElementById('bgel').classList.toggle('on',W.gele); }catch(e2){}
-    /* [LOT C3a ④] la fiche se pose sur MON rang, pas sur celui de l'émetteur : les deux
-       appareils n'ont pas le même nombre d'écrans quand le pilote est scindé. */
-    W.ficheOuverte=o.fiche?[_n,o.fiche[1]]:null;
-    try{ W.quiOn=!!o.quiOn; W.document.getElementById('bqui').classList.toggle('on',W.quiOn); }catch(e3){}
-    try{ W.rendre(); }catch(e4){}
-    /* [LOT F ②] si l'émetteur a une position (un écran de contrôle qui découpe), on
-       se met sur SON morceau — la découpe est la même, le LOT E l'a prouvé. */
-    try{
-      if(o&&o.pos&&(o.morceau|0)>=0&&W.ECRANS[W.i]&&W.ECRANS[W.i].grp){
-        var _c=_drRangDuMorceau(W,W.i,(o.morceau|0));
-        if(_c!==null&&_c!==W.i){ W.i=_c;
-          if(W.ficheOuverte)W.ficheOuverte=[_c,W.ficheOuverte[1]];
-          try{ W.rendre(); }catch(e7){}
-        }
-      }
-    }catch(e8){}
-    try{ if(!W.gele)W.envoie(); }catch(e5){}
-    if(SES.mode==='tel')sesTelPeindre();
-  }catch(e6){}
-  SES.applique=false;
 }
 /* le bandeau du pilote : l'état de la session, sobre, dans la tête du déroulé */
 function sesBandeau(){
@@ -16695,45 +15883,42 @@ function sesReprisePeindre(c){
 }
 function sesRepriseSilence(){ SES._repriseTue=_drSignatureCours(SES._reprise); sesRepriseRetirer(); }
 function sesReprisePoser(){
+  /* [E2] la bannière « un cours est en cours » d'aujourd'hui, lue par `dr_lire` (13 · 25 : en test, la copie) */
   if(SES.mode)return;
   setInterval(function(){
     var prof=document.body.classList.contains('admin-mode')||(window.TRACK&&TRACK.eleve&&TRACK.eleve.is_prof);
     if(!prof){ sesRepriseRetirer(); return; }
-    if(SES.actif){ sesRepriseRetirer(); return; }              /* c'est d\u00e9j\u00e0 nous */
-    sesGet(FIREBASE_BASE+'/site/cours_actif.json',function(c){
+    if(SES.actif||(typeof AT_DR_REGIME!=='undefined'&&AT_DR_REGIME==='classe')){ sesRepriseRetirer(); return; }   /* c'est déjà nous */
+    dr_lire('/site/cours_actif',function(c){
       if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000){ sesRepriseRetirer(); return; }
-      if(SES._repriseTue&&SES._repriseTue===_drSignatureCours(c))return;   /* \u00ab plus tard \u00bb, pour CE cours */
-      _drHeureCloseAu(c,function(close){
-        if(close){ sesRepriseRetirer(); return; }               /* close \u2192 plus reprenable */
-        sesReprisePeindre(c);
-      });
+      if(SES._repriseTue&&SES._repriseTue===_drSignatureCours(c))return;
+      _drHeureCloseAu(c,function(close){ if(close){ sesRepriseRetirer(); return; } sesReprisePeindre(c); });
     });
   },5000);
 }
 function sesReprendre(){
+  /* [E2] « Reprendre le cours » : le pointeur et la trace font foi (comme aujourd'hui), puis `dr_reprendre` remonte L'HEURE
+     ENTIÈRE — la diapo, les dévoilements, le chrono, les décisions, les paroles, les notes — et le paquet repart (audit E2, M1 :
+     aujourd'hui `AT_DR_VECU` restait nul et l'heure n'avait plus de trace). */
   var c=SES._reprise; if(!c)return;
-  /* [LOT C3a \u2460] DERNI\u00c8RE V\u00c9RIFICATION AVANT D'AGIR : le pointeur et la trace font foi.
-     Le professeur n'est pas bloqu\u00e9 \u2014 on lui dit ce qui s'est pass\u00e9, d'une ligne. */
-  sesGet(FIREBASE_BASE+'/site/cours_actif.json',function(p){
-    if(!p||!p.ts||_drSignatureCours(p)!==_drSignatureCours(c)){
-      sesRepriseRetirer();
-      atInfo('Ce cours n\u2019est plus celui qui tourne : il a \u00e9t\u00e9 clos ou remplac\u00e9 par un autre. Rien n\u2019est repris.');
-      return; }
+  dr_lire('/site/cours_actif',function(p){
+    if(!p||!p.ts||_drSignatureCours(p)!==_drSignatureCours(c)){ sesRepriseRetirer();
+      atInfo('Ce cours n’est plus celui qui tourne : il a été clos ou remplacé par un autre. Rien n’est repris.'); return; }
     _drHeureCloseAu(c,function(close){
-      if(close){ sesRepriseRetirer();
-        atInfo('Cette heure a \u00e9t\u00e9 close : elle ne se reprend pas. Lance la classe pour ouvrir une heure neuve.');
-        return; }
+      if(close){ sesRepriseRetirer(); atInfo('Cette heure a été close : elle ne se reprend pas. Lance la classe pour ouvrir une heure neuve.'); return; }
       sesRepriseRetirer();
       atelierOuvrir();
-      atEditerChapitre(c.niveau,c.chapitre);
-      setTimeout(function(){
+      atChargerChapitres(c.niveau,function(){
+        atEditerChapitre(c.niveau,c.chapitre);
         ATVUES.snum=c.seance;
         AT_DR_COURS={debut:c.debut,fin:c.fin,classeSlug:c.classeSlug,classeNom:c.classeNom};
         AT_DR_REGIME='classe';
-        SES.ctx={niveau:c.niveau,chapitre:c.chapitre,seance:c.seance,classeSlug:c.classeSlug,classeNom:c.classeNom};
-        atVuesAller('deroule');
-        setTimeout(function(){ sesBrancherPilote('froid'); },600);
-      },400);
+        atVuesAller('pilotage');
+        edtQuandPilotagePret(function(manque){
+          if(manque){ atInfo('Le pilotage ne s’ouvre pas (manque : '+manque+').'); return; }
+          dr_reprendre(function(ok){ if(!ok) atInfo('L’état de cette heure n’est pas au hub : relance-la depuis l’emploi du temps, sa trace sera reprise.'); });
+        });
+      });
     });
   });
 }
@@ -19374,8 +18559,13 @@ function edtAnnulerDecision(cle){
    « ▶ Lancer la séance » existe, exactement comme le fait déjà le téléphone
    pilote, puis il appuie dessus. Le moteur n'est pas touché.
    Si un seul des éléments attendus manque, on le DIT — jamais de crash. */
-var EDT_PILOTAGE_ELEMENTS=['at-dr-classe','at-dr-creneau','at-dr-debut','at-dr-tete','at-zone'];
-function edtLancer(cle){
+var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet'];   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */
+function edtLancer(cle,preparer){
+  /* [E2] « ▶ Ouvrir le pilotage et lancer » et « Préparer » : le premier temps est celui d'aujourd'hui (la séance visée,
+     les classes et les chapitres chargés, le chapitre ouvert sur la séance) ; le second appelle `dr_lancer` avec la classe,
+     le créneau et le NUMÉRO D'HEURE DE LA CASE (`edtCellule(cle).heure`, « heure 1 sur 3 » — audit E2, F1). « Préparer »
+     s'arrête à l'Atelier : rien n'est lancé, rien n'est écrit (cadrage 4 §0.3). La séance visée garde le critère d'aujourd'hui
+     (la première non jouée) : audit E2, F2, en attente de la conscience. */
   var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
   var niv=edtNiveauDe(c.classeMjpc), l=EDT_CHAP[niv]||[];
   var vise=null;
@@ -19390,40 +18580,32 @@ function edtLancer(cle){
   }
   if(!vise){ edtRienDePret(c); return; }
   edtFermer(); edtModaleFermer();
-  /* Le site doit avoir SES classes et SES chapitres avant que le bandeau du
-     déroulé se monte : sinon son menu de classes sort vide et le lancement ne
-     prend pas — mesuré au banc : `optionsClasse: []`, régime resté « prep ».
-     C'est exactement le chemin du téléphone pilote, repris à l'identique. */
   try{
     loadClasses(function(){
       atChargerChapitres(niv,function(){
         try{
+          try{ atelierOuvrir(); }catch(eo){}   /* dette 12 · 05 : le cours tournait, l'écran restait sur le panneau prof — l'atelier s'ouvre, le Pilotage se voit */
           atEditerChapitre(niv,vise.ch.__cle);
           ATVUES.snum=vise.snum;
-          atVuesAller('deroule');
-        }catch(e){ if(typeof atInfo==='function')atInfo('Le pilotage ne s\u2019ouvre pas : '+e.message+' \u2014 ouvre l\u2019atelier.'); return; }
-        /* On n'attend pas « un peu » : on attend que le bandeau ET le moteur
-           soient là. Un délai fixe marche au banc et rate en classe. */
+          atVuesAller(preparer?'atelier':'pilotage');
+        }catch(e){ if(typeof atInfo==='function')atInfo('Le pilotage ne s’ouvre pas : '+e.message+' — ouvre l’atelier.'); return; }
         edtQuandPilotagePret(function(manque){
-          if(manque){ if(typeof atInfo==='function')atInfo('Pilotage indisponible \u2014 ouvre l\u2019atelier. (manque : '+manque+')'); return; }
-          var sel=document.getElementById('at-dr-classe');
-          for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text===c.classeMjpc)sel.selectedIndex=i; }
-          var cr=document.getElementById('at-dr-creneau');
-          for(var j=0;j<cr.options.length;j++){ if(cr.options[j].text===c.creneau)cr.selectedIndex=j; }
-          document.getElementById('at-dr-debut').value=c.creneau.split('-')[0];
-          try{ atDrJouerClic(); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); }
+          if(manque){ if(typeof atInfo==='function')atInfo('Pilotage indisponible — ouvre l’atelier. (manque : '+manque+')'); return; }
+          if(preparer)return;
+          try{ dr_lancer(dr_slugDe(c.classeMjpc), c.creneau, dr_debutPropose(c.creneau), c.heure||1); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); }
         });
       });
     });
-  }catch(e0){ if(typeof atInfo==='function')atInfo('Le pilotage ne s\u2019ouvre pas : '+e0.message+' \u2014 ouvre l\u2019atelier.'); }
+  }catch(e0){ if(typeof atInfo==='function')atInfo('Le pilotage ne s’ouvre pas : '+e0.message+' — ouvre l’atelier.'); }
 }
 /* sonde bornée : le bandeau du déroulé, ses trois champs, et le moteur monté */
 function edtQuandPilotagePret(apres,essai){
+  /* [E2] sonde bornée : la zone du déroulé, son mur et son volet, et le déroulé monté (`window.dr`, contrat §5) — avant : `window.DR` */
   essai=essai||0;
   var manque=EDT_PILOTAGE_ELEMENTS.filter(function(id){return !document.getElementById(id);});
-  var moteur=false; try{ moteur=!!window.DR; }catch(e){}
+  var moteur=false; try{ moteur=!!window.dr; }catch(e){}
   if(!manque.length&&moteur){ apres(null); return; }
-  if(essai>=30){ apres((manque.join(', ')||'le moteur du déroulé')); return; }
+  if(essai>=30){ apres((manque.join(', ')||'le déroulé')); return; }
   setTimeout(function(){ edtQuandPilotagePret(apres,essai+1); },150);
 }
 function edtRienDePret(c){
@@ -19575,6 +18757,7 @@ function edtPeindreModale(){
     }
     if(c.nature==='prevu'||c.nature==='rienDePret'){
       h+='<button class="edt-btn edt-btn-prim edt-large" onclick="edtLancer('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Ouvrir le pilotage et lancer</button>';
+      h+='<button class="edt-btn edt-large" data-preparer="1" title="Ouvre l\u2019Atelier sur cette séance pour la préparer : rien n\u2019est lancé, rien n\u2019est projeté, la classe ne voit rien." onclick="edtLancer('+JSON.stringify(cle).replace(/"/g,'&quot;')+',true)">\u270e Préparer</button>';   /* [E2] cadrage 4 §0.3 */
     }
     /* une heure JOUÉE ne se décide plus : elle a eu lieu. On y gère les absents,
        rien d'autre — mesuré à la matrice actions × état, où « Annuler » y

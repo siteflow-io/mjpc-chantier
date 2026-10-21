@@ -1,0 +1,43 @@
+banc d'intégration · 2026-10-21 10:52 UTC · branche HEAD · commit 2512c89e
+— 1. assemblage
+assemblé : /home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html
+  inline  dr/dr.css (103003 o)
+  inline  dr/dr-gabarit.js (19999 o)
+  inline  dr/dr-socle.js (166578 o)
+  inline  dr/dr-atelier.js (135301 o)
+  inline  dr/dr-classe.js (131507 o)
+  inline  dr/dr-tableau.js (16221 o)
+  inline  dr/dr-recit.js (108897 o)
+  modules : 7 · manquants/refusés : 0 · taille : 2042654 o · md5 ecbaf10c9813f4b67802747d7803541c
+— 2. collisions
+modules lus : dr/dr.css dr/dr-gabarit.js dr/dr-socle.js dr/dr-atelier.js dr/dr-classe.js dr/dr-tableau.js dr/dr-recit.js
+  ids en collision : 0
+  classes CSS en collision : 0
+  globales en collision : 0
+— 3. parcours
+  ok     P10 · Relecture ouverte — Le récit · heure 1 | Ce qui s'est passé · heure 1 | Papier · heure 1 | Le chapitre
+  ok     P10 · les faces de la maquette (E4)
+
+P11 — le Papier
+  ok     P11 · la face Papier de la Relecture (E4)
+
+P12 — la clôture
+  ok     P12 · clôture demandée (voir la capture)
+
+K15 — les écritures au hub pendant le parcours
+      PUT /corbeille/<heure>/edt-mise-a-niveau-grille_090000
+      PUT /site/edt/grille/2026-2027
+      PUT /site/edt/photos/2026-2027
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<heure>
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+  ok     K15 · 18 écritures, toutes sur des chemins permis
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS VERT
+— 4. parcours en mode test

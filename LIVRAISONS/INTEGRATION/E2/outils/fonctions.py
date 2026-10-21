@@ -26,7 +26,8 @@ def plage(lignes, nom):
     a=debut[0]; t='\n'.join(lignes[a:]); j=_fin(t,0)
     if j<0: raise SystemExit('fonction %s : pas de fin'%nom)
     b=a+t[:j].count('\n')
-    if t[j:].split('\n')[0].strip() not in ('',';'): raise SystemExit('fonction %s : du code suit sa fin sur la ligne %d'%(nom,b+1))
+    reste = re.sub(r'/\*.*?\*/|//.*$', '', t[j:].split('\n')[0]).strip()   # un commentaire en fin de ligne n'est pas du code
+    if reste not in ('',';'): raise SystemExit('fonction %s : du code suit sa fin sur la ligne %d'%(nom,b+1))
     return a,b
 def remplacer(texte, nom, neuf):
     L=texte.split('\n'); a,b=plage(L,nom); return '\n'.join(L[:a]+neuf.rstrip('\n').split('\n')+L[b+1:]), (b-a+1, len('\n'.join(L[a:b+1])))

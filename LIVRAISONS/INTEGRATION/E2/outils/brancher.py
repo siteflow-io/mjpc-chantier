@@ -109,6 +109,8 @@ neuf('edtFileDAttente', r"""function edtFileDAttente(nomClasse,fil){
   /* [E2] la file reprend là où la classe en est : la séance commencée compte ses heures déjà jouées (la case suivante dit « heure n+1/N ») — avant : faites:0 */
   return {chapitre:c.ch, seances:att, i:0, faites:att.length?edtHeuresJouees(att[0],nomClasse):0};
 }""")
+A = "b=document.createElement('div'); b.className='ses-reprise'; b.id='ses-reprise';"
+if A in t and "b.style.bottom='18px'" not in t: t = t.replace(A, A + " b.style.top='auto'; b.style.bottom='18px';   /* [E2] réveil n°3 : la bannière ne couvre plus « ✕ Fermer l'atelier » */", 1); rapport.append('bannière · position          posée')
 # ── l'heure : le lancement, la trace, la clôture, le pointeur — rebranchés sur dr-classe.js (les noms restent, pour tout appelant) ──
 neuf('_drCloreHeureRestee', "function _drCloreHeureRestee(slugNeuf,nomNeuf){ dr_cloreHeureRestee(slugNeuf,nomNeuf); }   /* [E2] par dr_lire / dr_ecrire (13 · 25) */")
 neuf('_drCoursActifEffacerSi', "function _drCoursActifEffacerSi(sig){ dr_coursActifEffacerSi(sig); }   /* [E2] par dr_lire / dr_ecrire (13 · 25) */")

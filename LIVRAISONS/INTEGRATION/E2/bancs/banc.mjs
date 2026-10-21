@@ -84,7 +84,7 @@ let hubApres = null, skLance = null;
     pas('B2', e.lancee && e.J.includes('lancement') ? 'ok' : 'ÉCHEC', 'l\'heure est lancée (S.lancee, journal « lancement »)', e.hou);
     await s.attendre(5000); const e5 = await etat(p); pas('B2', e5.ecoule >= 4 ? 'ok' : 'ÉCHEC', 'le chrono tourne', 'S.ecoule = ' + e5.ecoule);
     await devoiler(s, 3); await parole(s); await s.attendre(2500); await cap(p, 'B2-trois-devoilements-une-parole');
-    const e2 = await etat(p); pas('B2', e2.J.filter(x => x === 'devoile').length === 3 && e2.J.includes('parole') ? 'ok' : 'ÉCHEC', '▶ ×3 et une parole sont au journal', e2.J.join(' '));
+    const e2 = await etat(p); { const k = e2.J.indexOf('lancement'); const apres = e2.J.slice(k + 1); pas('B2', apres.filter(x => x === 'devoile' || x === 'diapo').length >= 3 && apres.includes('parole') ? 'ok' : 'ÉCHEC', '▶ ×3 (dévoiler, puis la diapo suivante) et une parole sont au journal', e2.J.join(' ')); }
     if (s.site) { const hub = await s.hub(); skLance = await p.evaluate(() => ATVUES.snum); const h = H(hub, skLance);
       pas('B2', h && h.classe === CLASSE && h.creneau === '08:57-09:52' && h.debutReel ? 'ok' : 'ÉCHEC', 'le paquet H : classe, créneau, début réel', h && h.__cle);
       pas('B2', h && h.activites && h.activites[0] && h.activites[0].passages >= 1 ? 'ok' : 'ÉCHEC', 'le paquet H : activites[0].passages ≥ 1', h && JSON.stringify((h.activites || [])[0]));
@@ -105,6 +105,12 @@ let hubApres = null, skLance = null;
     await s.attendre(Math.max(0, cible - t0 - 20000)); const avant = await etat(p); await s.attendre(25000); const e = await etat(p); await cap(p, 'B4-T5');
     const finTxt = await p.evaluate(() => (document.getElementById('fin').innerText || '').replace(/\s+/g, ' ').slice(0, 80));
     pas('B4', avant.palier == null && e.palier === 't5' && /étape 1 sur 7/.test(finTxt) ? 'ok' : 'ÉCHEC', 'à T-5 (cinq minutes avant le cahier de textes) l\'étape 1 s\'ouvre d\'elle-même', 'palier ' + avant.palier + ' → ' + e.palier + ' · ' + finTxt);
+    if (s.site) { const v = await p.evaluate(() => ({ titre: ((document.querySelector('#volet h5') || {}).innerText || ''), total: seance().ecrans.filter(e => e.role !== 'fin').length, opts: Array.from((document.getElementById('f-ech') || { options: [] }).options).map(o => o.text) }));
+      const k = +((/(\d+) DIAPOS/i.exec(v.titre) || [])[1] || 0); pas('B4', k > 0 && k < v.total ? 'ok' : 'ÉCHEC', 'la frontière d\'heure par les durées : « HEURE n · k DIAPOS », k < le total de la séance (12 · 07, réveil n°3)', v.titre + ' / ' + v.total + ' diapos');
+      pas('B4', v.opts.length > 1 ? 'ok' : 'ÉCHEC', 'étape 1 : l\'échéance propose la prochaine heure de la classe', v.opts.join(' | ').slice(0, 120));
+      await p.click('#f-suivante'); await s.attendre(200); const c2 = await p.evaluate(() => Array.from(document.querySelectorAll('#fin .carte[data-act]')).map(x => (x.querySelector('b') || {}).innerText || ''));
+      pas('B4', c2.length > 0 ? 'ok' : 'ÉCHEC', 'étape 2 : une carte par diapo restante, à décider (réveil n°3, 3)', c2.length + ' cartes · ' + c2.slice(0, 2).join(' | '));
+      await p.click('#f-precedente'); await s.attendre(200); }
     for (let i = 1; i < 7; i++) { await p.click('#f-suivante'); await s.attendre(200); }
     const t7 = await p.evaluate(() => (document.querySelector('#fin .pp-tete') || {}).innerText || ''); pas('B4', /étape 7 sur 7/.test(t7) ? 'ok' : 'ÉCHEC', 'les sept étapes se parcourent', t7.replace(/\s+/g, ' ').slice(0, 70));
     const n1 = (await s.ecrits()).length;
@@ -114,11 +120,15 @@ let hubApres = null, skLance = null;
     if (s.site) { const hub = await s.hub(); const h = H(hub, skLance);
       pas('B4', h && h.clos === true && h.finReel ? 'ok' : 'ÉCHEC', 'le paquet H est clos (clos, finReel)', h && JSON.stringify({ clos: h.clos, finReel: h.finReel }));
       pas('B4', hub.site.cours_actif == null ? 'ok' : 'ÉCHEC', 'cours_actif est effacé', JSON.stringify(hub.site.cours_actif));
+      { const t2 = await p.evaluate(() => { try { edtOuvrir(); } catch (e) {} return 1; }); await s.attendre(1500);
+        const mardi = await p.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-clic')).find(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '') && (e.getAttribute('onclick') || '').indexOf('2026-09-15|15:07') >= 0); return c ? c.innerText.replace(/\s+/g, ' ') : null; });
+        pas('B4', mardi && /Poésie et peinture/.test(mardi) && /heure 3\/3/.test(mardi) ? 'ok' : 'ÉCHEC', 'après la clôture (quelques diapos jouées), la case du mardi garde la séance : « heure 3/3 » (F2, réveil n°3, 1)', mardi);
+        await p.evaluate(() => { try { edtFermer(); } catch (e) {} }); await s.attendre(300); }
       dire('      écritures de la clôture : ' + [...new Set(depuis(await s.ecrits(), n1))].join(' · '));
       await p.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await s.attendre(800);
-      const vis = await visible(p, '#dr-lancer'); const n2 = (await s.ecrits()).length; if (vis) { await p.click('#dr-lancer'); await s.attendre(2000); }
-      const e2b = depuis(await s.ecrits(), n2); const info = await p.evaluate(() => (document.body.innerText.match(/[^\n]*déjà close[^\n]*/) || [''])[0]);
-      pas('B4', vis && e2b.length === 0 && /déjà close/.test(info) ? 'ok' : 'ÉCHEC', 'après la clôture, « ▶ Lancer l\'heure » revient ; sur le même créneau le même jour, l\'heure close ne se rouvre pas (C1 12) : dit, rien d\'écrit', (vis ? '' : 'bouton absent · ') + info.slice(0, 100) + ' · ' + e2b.length + ' écriture(s)');
+      await s.attendre(1500); const bt = await p.evaluate(() => { const b = document.getElementById('dr-lancer'); return b ? { vis: b.offsetParent !== null, dis: b.disabled, txt: b.textContent, title: b.title } : null; }); const n2 = (await s.ecrits()).length;
+      await p.evaluate(() => { const b = document.getElementById('dr-lancer'); if (b) b.click(); }); await s.attendre(1500); const e2b = depuis(await s.ecrits(), n2);
+      pas('B4', bt && bt.vis && bt.dis && /close/.test(bt.txt + bt.title) && e2b.length === 0 ? 'ok' : 'ÉCHEC', 'après la clôture, « ▶ Lancer » reste à l\'écran, grisé avec sa raison (l\'heure de ce créneau est close) ; le cliquer n\'écrit rien (C1 12, réveil n°3)', JSON.stringify(bt) + ' · ' + e2b.length + ' écriture(s)');
       const n3 = (await s.ecrits()).length; await p.evaluate(() => { try { const b = document.getElementById('bdev'); if (b) b.click(); } catch (e) {} }); await s.attendre(1500);
       pas('B4', (await p.evaluate(() => J.filter(x => x.type === 'devoile' && x.h === S.heure && x.t > (S.closes || {})[S.heure]).length)) === 0 ? 'ok' : 'ÉCHEC', 'après la clôture, ▶ n\'écrit plus dans le journal de l\'heure close', ''); } }
   else pas('B4', 'absent', 'pas d\'heure lancée');

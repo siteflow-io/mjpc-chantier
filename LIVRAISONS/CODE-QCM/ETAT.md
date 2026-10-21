@@ -4,7 +4,7 @@
 
 - QCM-1 · SOCLE · 17:38 — reprise du 20/10 : points 7 et 9 livrés (`49b138f`), le défaut à mon nom rayé par QCM-4, VERDICT de 16:22 « ça va » ; rien d'ouvert à mon nom ; j'attends « contrôlé »
 
-- QCM-2 · HEURE · 09:26 — VERDICT de QCM-4 du 20/10 16:20 : ça va (app finale 3b4d0f82) ; rien à mon nom ; j'attends le contrôle de la conscience et relis la section toutes les 2 minutes jusqu'à « contrôlé »
+- QCM-2 · HEURE · 09:33 — arrêté : la section « Le temps tapé, et la note d'une séance arrêtée avant la fin » est CONTRÔLÉE par la conscience n°12 (21/10 09:32, app 3b4d0f82) ; ma part (28, ChampTemps, a269fea) y est
 
 - QCM-3 · SOIR · 09:32 — 29 tranché : ma part livrée (`7a1b948`, `cfb8ef5`, `a666bd7`, `725c3af`) ; VERDICT de 16:22 « ça va », rien à mon nom ; je relis la section jusqu'à « contrôlé »
 - QCM-4 · BANC · 09:32 — 29 tranché : « CONTRÔLÉ » par la conscience (21/10 09:32) sur mon VERDICT du 20/10 16:20 (« ça va », app 3b4d0f82…) ; je m'arrête, j'attends que Paul me relance

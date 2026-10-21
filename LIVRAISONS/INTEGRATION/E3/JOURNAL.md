@@ -63,3 +63,8 @@
 - **à E1** : la diapo de la répétition projetée sans garde au retour au Pilotage ; « Chrono au tableau » en dur ; la police plafonnée au tableau / pas de pages ; l'infobulle du gel ; « 1 élève … ont participé » ; `#dr-zone` dans la page tableau.
 - **à la conscience** : le nom du bouton (« 🖥 Écran 2 » de Paul contre « ⧉ Ouvrir le tableau » du mandat) ; C3 ; I2 ; la répétition à la fenêtre locale.
 - **relances** : relu — rien.
+
+## 21/10, 13:25 — poussée 10 : `NOTE.md`
+- **fait** : `E3/NOTE.md` (ce que ça change, md5, fonctions touchées avec leurs tailles, ce qui tombe compté, bancs, relecteurs, ce qui reste). Banc E3 rejoué après rebase sur l'assemblé `691f1c2b…` : 62/62.
+- **reste** : les relances de la conscience (veille toutes les cinq minutes) ; R1/R14 quand E1 les livre ; retirer ma rustine `#dr-mur-gare` quand E1 ne pose plus `#dr-zone` en page tableau.
+- **relances** : relu — rien.

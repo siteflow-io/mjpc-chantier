@@ -1,14 +1,17 @@
 // QCM-4 · BANC — « La séance rouverte » (DEFAUTS-OUVERTS, section « Le temps tapé, et la note d'une séance arrêtée avant la fin », points 12 à 14,
 // validés par Paul le 21/10 à 09:45) : la lecture de Paul (« Lire les copies ») compte toujours, aussi pendant qu'une séance rouverte tourne.
 // Par le geste, sur le faux hub, une évaluation de 4 questions (écrite dans CE faux hub : les 3 questions de l'évaluation d'essai, puis la 4e de
-// « 3e- éval 1 Analyse logique », complétée pour être prête), deux élèves sur une tablette :
-//  R. (point 13) Q1 à Q3 jouées ; la correction : Q1 et Q2 révélées, Q3 lue par les voisins, pas révélée ; « 🛑 Terminer » ; le soir, « ✅ Oui » sur Q3 :
-//     la note complète ; « 🔓 Rouvrir », « ▶️ Lancer Q4 » : pendant qu'elle tourne, Q3 compte (jamais « pas encore lue »), la même note dans la base,
-//     dans c4 et au tableau de la séance ; terminée de nouveau, la note sur 4, Q3 comptée.
-//  M. (point 13, la mesure pour la question de Paul, sans rien corriger) la même séance, rouverte SANS la lecture du soir, Q4 posée : peut-on corriger
-//     Q3 en classe (« 💡 Révéler ») ? Ce qui est vu s'écrit en notes.
-// La séance exacte (Q4 jamais lancée, la correction faite avant elle) ne se joue pas autrement : la correction ne se lance qu'après la dernière
-// question (« 📊 Lancer l'autoévaluation »). Le banc écarte donc Q4 pendant la séance (« ❌ Écarter »), et la remet (« ↩️ Remettre ») après « 🔓 Rouvrir ».
+// « 3e- éval 1 Analyse logique », complétée pour être prête), deux élèves sur une tablette, trois séances en même temps :
+//  R. Q4 écartée (« ❌ Écarter » : la correction ne se lance qu'après la dernière question) ; Q1 et Q2 révélées, Q3 lue par les voisins, pas révélée ;
+//     « 🛑 Terminer » ; le soir, « ✅ Oui » sur Q3 : la note complète ; « 🔓 Rouvrir » : pendant qu'elle tourne, Q3 compte, la même note dans la base
+//     et dans c4 ; terminée de nouveau, Q3 comptée. (La séance rouverte ne rend pas Q4 : noté, à confirmer.)
+//  P. Q1 à Q3 jouées, sans correction en classe ; « 🛑 Terminer » ; le soir, Paul lit Q1 à Q3 ; « 🔓 Rouvrir », « ▶️ Lancer Q4 » : pendant qu'elle
+//     tourne, Q1 à Q3 comptent ; terminée de nouveau, la note sur 4.
+//  M. (la mesure pour la question de Paul, « et si je ne lis pas les copies le soir ? », sans rien corriger) la séance de P, rouverte SANS la lecture
+//     du soir, Q4 posée : la correction en classe propose-t-elle Q3 (« 💡 Révéler ») ? Ce qui est vu s'écrit en notes.
+// La séance exacte du point 13 (Q3 lue par le voisin pendant la correction, Q4 jamais lancée, puis lancée dans la séance rouverte) ne se joue pas
+// par le geste : la correction ne se lance qu'après la dernière question, et une Q4 écartée ne revient pas dans la séance rouverte. R et P en jouent
+// les deux moitiés.
 //   APP_FILE=<app> node banc/banc-rouverte-21-10.js <dossier de sortie>   → rouverte.txt, captures-rouverte/
 const path = require("path"), fs = require("fs"), cp = require("child_process");
 const O = require("./outils");
@@ -16,7 +19,7 @@ const { pause, slug, esc, texte, zoneTexte, cliquer, choisir, cocherTout, photo 
 const SORTIE = path.resolve(process.argv[2] || path.join(__dirname, "..", "sorties", "rouverte-" + Date.now()));
 const CAP = path.join(SORTIE, "captures-rouverte"); fs.mkdirSync(CAP, {recursive: true});
 const H1 = "QCM-1 · SOCLE", H3 = "QCM-3 · SOIR", H13 = H1 + ", " + H3, BANC = "QCM-4 · BANC";
-const JR = new O.Journal(), JM = new O.Journal();
+const JR = new O.Journal(), JP = new O.Journal(), JM = new O.Journal();
 const t0 = Date.now();
 let n = 0; const capt = async (p, id) => { const f = String(++n).padStart(2, "0") + "-" + id + ".png"; await photo(p, path.join(CAP, f)); return "captures-rouverte/" + f; };
 const note = (J, s) => { J.l.push({note: s}); console.log("  note   " + s); };
@@ -27,7 +30,7 @@ const E4 = Object.assign({}, ESSAI, {titre: "Essai rouvert en 4 questions", ques
 const L = l => Array.isArray(l) ? l : l && typeof l === "object" ? Object.keys(l).sort((a, b) => a - b).map(k => l[k]) : [];
 const bonnesDe = (ev, qi) => L(ev.questions[qi].bonnes).map(i => ev.questions[qi].choix[i]);
 const NAVS = [];
-setTimeout(() => { for(const J of [JR, JM]) J.v(false, BANC, "plafond de 9 minutes atteint"); ecrire(); process.exit(0); }, 540000).unref();
+setTimeout(() => { for(const J of [JR, JP, JM]) J.v(false, BANC, "plafond de 9 minutes atteint"); ecrire(); process.exit(0); }, 540000).unref();
 
 // ── une séance : le faux hub (avec l'évaluation de 4 questions), la console, deux élèves sur une tablette, les autres absents ──
 async function seance(J){
@@ -92,19 +95,29 @@ async function ouiLigne(prof, qi){
     const txt = l.innerText.replace(/\s+/g, " ").trim(); const b = [...l.querySelectorAll("button")].find(b => /✅ Oui/.test(b.textContent));
     if(!b) return {ok: false, vu: "pas de « ✅ Oui » : " + txt.slice(0, 200)}; b.click(); return {ok: true, txt}; }, qi).catch(e => ({ok: false, vu: e.message}));
   await pause(1300); return r; }
+// lire une ligne sans lecture du voisin : le bouton qui ouvre « Que dit la copie ? », les choix, puis « Enregistrer » (repris de banc-arret)
+async function lireLigne(prof, qi, choix){
+  const r = await prof.evaluate(qi => { const l = [...document.querySelectorAll("[data-ligne]")].find(d => (d.querySelector("strong") || {}).textContent === "Question " + (qi + 1)); if(!l) return {ok: false, vu: "pas de ligne Q" + (qi + 1)};
+    const txt = l.innerText.replace(/\s+/g, " ").trim(); const bs = [...l.querySelectorAll("button")];
+    const b = bs.find(b => b.classList.contains("btn-ghost") && !/Annuler/.test(b.textContent)) || bs[0];
+    if(!b) return {ok: false, vu: "pas de bouton : " + txt.slice(0, 200)}; l.setAttribute("data-banc-l", "1"); b.click(); return {ok: true, txt}; }, qi).catch(e => ({ok: false, vu: e.message}));
+  await pause(600);
+  if(r.ok){ for(const c of choix) await cliquer(prof, new RegExp("^" + esc(c) + "$"), "[data-banc-l='1']", {apres: 150});
+    r.ok = await prof.evaluate(() => { const l = document.querySelector("[data-banc-l='1']"); const b = l && [...l.querySelectorAll("button.btn-primary")].find(b => !b.disabled); if(!b) return false; b.click(); return true; }).catch(() => false); }
+  await prof.evaluate(() => document.querySelectorAll("[data-banc-l]").forEach(x => x.removeAttribute("data-banc-l"))).catch(() => {});
+  await pause(1300); return r; }
 // un bouton de la ligne d'une question dans « 📋 Toutes les questions » ([data-q]) : « ❌ Écarter » (puis la confirmation) ou « ↩️ Remettre »
 async function gesteQ(prof, q, re){ return prof.evaluate(([q, src]) => { const re = new RegExp(src); const l = document.querySelector("[data-q='" + q + "']"); if(!l) return false;
   const b = [...l.querySelectorAll("button")].find(b => re.test(b.textContent) && !b.disabled); if(!b) return false; b.click(); return true; }, [q, re.source]).catch(() => false); }
 const boutons = prof => prof.evaluate(() => [...document.querySelectorAll("button")].filter(b => b.getBoundingClientRect().width > 0).map(b => b.textContent.trim()).filter(t => /Lancer|Révéler|Question suivante|Rouvrir|Reprendre|Terminer|correction|autoévaluation|Remettre/.test(t))).catch(() => []);
 
-// Q1 faux pour les deux, Q2 juste pour l'élève 1 et faux pour l'élève 2, Q3 juste ; la correction : Q1 et Q2 révélées, Q3 lue par les voisins
-async function jusquaLArret(J, X){
-  const {prof, t1, M, etat, S} = X;
-  const x2 = M[1][1];
-  const REP = [() => ["Milan"], sl => sl === x2 ? ["Genève"] : ["Madrid", "Berlin"], () => ["8"]];
-  // Q4 écartée avant la fin de Q3 : la correction peut se lancer après Q3
+// Q1 faux pour les deux, Q2 juste pour l'élève 1 et faux pour l'élève 2, Q3 juste
+const REPDE = x2 => [() => ["Milan"], sl => sl === x2 ? ["Genève"] : ["Madrid", "Berlin"], () => ["8"]];
+// R : Q4 écartée (pour lancer la correction après Q3) ; la correction : Q1 et Q2 révélées, Q3 lue par les voisins, pas révélée ; « 🛑 Terminer »
+async function arretApresCorrection(J, X){
+  const {prof, t1, M, etat, S} = X, REP = REPDE(M[1][1]);
   const okE = await gesteQ(prof, 4, /❌ Écarter/); await pause(700); const okE2 = await cliquer(prof, /^❌ Écarter la question 4$/); await pause(1200);
-  J.v(okE && okE2 && !!(S().ecartees || {})[3], BANC, "« ❌ Écarter » Q4 avant la séance (pour lancer la correction après Q3)", JSON.stringify({ecarter: okE, confirmer: okE2, ecartees: S().ecartees}));
+  J.v(okE && okE2 && L(S().ecartees).map(Number).includes(3), BANC, "« ❌ Écarter » Q4 avant la séance (pour lancer la correction après Q3)", JSON.stringify({ecarter: okE, confirmer: okE2, ecartees: S().ecartees}));
   for(let qi = 0; qi < 3; qi++) await jouerQ(X, qi, REP[qi]);
   await cliquer(prof, /Lancer l'autoévaluation/); await pause(900);
   for(const [c] of M) await cliquer(t1, /Maîtrise satisfaisante/, c);
@@ -122,33 +135,64 @@ async function jusquaLArret(J, X){
   }
   const lec = (S().lectures || {})[2] || {};
   J.v(etat().ph === "lecture" && Number(etat().qi) === 2 && Object.keys(lec).length === 2, BANC, "Q3 en lecture, lue par les deux voisins, pas révélée", JSON.stringify({deroule: etat(), lectures: lec, revelees: S().revelees}));
+  note(J, "pendant la correction, la liste « 📋 Toutes les questions » (et son « ↩️ Remettre ») n'est pas à la console : la ligne de Q4 est " + (await prof.evaluate(() => !!document.querySelector("[data-q='4']")).catch(() => false) ? "là" : "absente"));
   await terminer(prof);
   J.v(S().etat === "terminee", BANC, "« 🛑 Terminer » : la séance est terminée après Q3", JSON.stringify({etat: S().etat}));
 }
-// « 🔓 Rouvrir » la séance terminée, « ↩️ Remettre » Q4, « ▶️ Lancer Q4 »
-async function rouvrirQ4(J, X, pref){
+// P et M : Q1 à Q3 jouées, sans correction en classe (elle ne se lance qu'après la dernière question) ; « 🛑 Terminer »
+async function arretSansCorrection(J, X){
+  const {prof, M, S} = X, REP = REPDE(M[1][1]);
+  for(let qi = 0; qi < 3; qi++) await jouerQ(X, qi, REP[qi]);
+  await terminer(prof);
+  J.v(S().etat === "terminee" && L(S().questionsLancees).length === 3, BANC, "Q1 à Q3 jouées, « 🛑 Terminer » : la séance est terminée, Q4 jamais lancée", JSON.stringify({etat: S().etat, lancees: S().questionsLancees}));
+}
+// « 🔓 Rouvrir » la séance terminée, puis « 🔓 Rouvrir la séance »
+async function rouvrir(J, X, pref){
   const {prof, S} = X;
   await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(600);
   const okR = await cliquer(prof, /🔓 Rouvrir/); await pause(700); const okR2 = await cliquer(prof, /^🔓 Rouvrir la séance$/); await pause(1500);
   for(let k = 0; k < 3; k++){ if(await cliquer(prof, /^🚀 Lancer la séance$/)) await pause(1500); }
-  J.v(okR && okR2 && S().etat !== "terminee", H3, pref + "« 🔓 Rouvrir » la séance terminée, puis « 🔓 Rouvrir la séance »", JSON.stringify({etat: S().etat}) + " ; " + await capt(prof, pref.replace(/\W+/g, "") + "rouvrir"));
-  const okRem = await gesteQ(prof, 4, /↩️ Remettre/); await pause(1200);
-  J.v(okRem && !(S().ecartees || {})[3], H3, pref + "« ↩️ Remettre » Q4 dans « 📋 Toutes les questions »", JSON.stringify({remettre: okRem, ecartees: S().ecartees}) + " ; boutons : " + JSON.stringify(await boutons(prof)));
+  J.v(okR && okR2 && S().etat !== "terminee", H3, pref + "« 🔓 Rouvrir » la séance terminée, puis « 🔓 Rouvrir la séance » : elle tourne", JSON.stringify({etat: S().etat}) + " ; " + await capt(prof, pref.replace(/\W+/g, "") + "rouvrir"));
+}
+// après « 🔓 Rouvrir », la tablette redemande les codes : les deux élèves s'y entrent de nouveau
+async function rentrer(J, X, pref){
+  const {t1, M, nomDe, codeDe} = X;
+  const z = (await zoneTexte(t1, "g")).replace(/\s+/g, " ");
+  if(/Identifie-toi/.test(z) || !/Q\d|Je commence|prêt/.test(z)){
+    await O.entrerTablette(t1, [["g", nomDe(M[0][1])], ["d", nomDe(M[1][1])]], codeDe);
+    for(const [c] of M){ await cocherTout(t1, c); await cliquer(t1, /^Je commence$/, c); }
+    await pause(800); }
+  note(J, pref + "la tablette après « 🔓 Rouvrir » : « " + z.slice(0, 100) + " » ; les élèves s'y entrent de nouveau");
+}
+async function lancerQ4(J, X, pref){
+  const {prof, S} = X;
   let okQ4 = false; for(let k = 0; k < 10 && !okQ4; k++){ okQ4 = await cliquer(prof, /Lancer Q4\b/); if(!okQ4){ await cliquer(prof, /▶️ Reprendre/); await pause(800); } }
   await pause(1500);
-  J.v(okQ4 && L(S().questionsLancees).map(Number).includes(3), H3, pref + "« ▶️ Lancer Q4 » : Q4 lancée", JSON.stringify({lancees: S().questionsLancees, deroule: S().deroule}) + " ; " + await capt(prof, pref.replace(/\W+/g, "") + "q4"));
+  J.v(okQ4 && Object.keys(S().questionsLancees || {}).map(Number).includes(3), H3, pref + "« ▶️ Lancer Q4 » : Q4 lancée", JSON.stringify({lancees: S().questionsLancees, deroule: S().deroule, gestes: await boutons(prof)}) + " ; " + await capt(prof, pref.replace(/\W+/g, "") + "q4"));
   return okQ4;
 }
+// la note en cours et le tableau de la séance (Données → Résultats), pendant que la séance rouverte tourne
+async function enCours(J, X, pref, attendu){
+  const {prof, M, nomDe, deuxNotes} = X, [x1, x2] = M.map(m => m[1]);
+  const d = await deuxNotes(x1);
+  J.v(d.base && d.base.st && d.base.st.slice(0, 3) === attendu, H1, pref + "pendant que la séance rouverte tourne, " + nomDe(x1) + " : Q1 à Q3, lues par Paul, comptent (« " + attendu + " », jamais « pas encore lue »), dans la base", JSON.stringify(d));
+  J.v(d.c4 && d.c4.st && d.c4.st.slice(0, 3) === attendu, H3, pref + "… et dans c4 (resultatLocalV)", JSON.stringify(d));
+  J.v(JSON.stringify(d.base) === JSON.stringify(d.c4), H13, pref + "en cours : la même note dans la base et dans c4", JSON.stringify(d));
+  note(J, pref + "en cours, " + nomDe(x2) + " : " + JSON.stringify(await deuxNotes(x2)));
+  const okT = await ouvrirSeance(prof); const c = okT ? await ligneTab(prof, x1) : null;
+  note(J, pref + "en cours, Données → Résultats : " + (okT ? "la séance s'ouvre ; la ligne de " + nomDe(x1) + " : " + JSON.stringify(c) : "la séance qui tourne n'y est pas (« 📊 Ouvrir » absent)") + " ; " + await capt(prof, pref.replace(/\W+/g, "") + "resultats-en-cours"));
+  await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(600);
+}
 
-// ════════════ R. la lecture du soir, puis la séance rouverte : Q3 compte pendant qu'elle tourne ════════════
+// ════════════ R. Q3 lue par les voisins, pas révélée ; le soir « ✅ Oui » ; la séance rouverte : Q3 compte pendant qu'elle tourne ════════════
 async function partieR(){
   const J = JR;
   try {
-    J.section("R. Q1 à Q3, Q1 et Q2 révélées, Q3 lue par les voisins, pas révélée ; « 🛑 Terminer » ; le soir, « ✅ Oui »");
+    J.section("R. Q1 et Q2 révélées, Q3 lue par les voisins, pas révélée ; « 🛑 Terminer » ; le soir, « ✅ Oui » sur Q3");
     const X = await seance(J);
-    const {prof, M, nomDe, deuxNotes} = X;
+    const {prof, M, S, nomDe, deuxNotes} = X;
     const [x1, x2] = M.map(m => m[1]);
-    await jusquaLArret(J, X);
+    await arretApresCorrection(J, X);
     const d0 = await deuxNotes(x1);
     J.v(d0.base && d0.base.st && d0.base.st[2] === "n" && !d0.base.complet && JSON.stringify(d0.base) === JSON.stringify(d0.c4), H13, "avant la lecture du soir : Q3 « pas encore lue », la même dans la base et dans c4", JSON.stringify(d0));
     J.v(await ouvrirSeance(prof), H3, "Données → Résultats → « 📊 Ouvrir » la séance");
@@ -160,41 +204,66 @@ async function partieR(){
       J.v(r.ok, H3, nm + ", Q3 : « ✅ Oui » (la lecture de Paul, la même que celle du voisin)", (r.txt || r.vu || "").slice(0, 300));
     }
     const d1 = await deuxNotes(x1);
-    J.v(d1.base && d1.base.complet && d1.base.n === 2 && d1.base.total === 3 && d1.base.st.slice(0, 3) === "fjj" && JSON.stringify(d1.base) === JSON.stringify(d1.c4), H13, "après la lecture du soir : 2 / 3 complète (Q1 faux, Q2 et Q3 justes, Q4 écartée), la même dans la base et dans c4", JSON.stringify(d1));
-    J.section("R : « 🔓 Rouvrir », « ↩️ Remettre » Q4, « ▶️ Lancer Q4 » : pendant qu'elle tourne, Q3 compte");
-    await rouvrirQ4(J, X, "R, ");
-    const d2 = await deuxNotes(x1);
-    J.v(d2.base && d2.base.st && d2.base.st[2] === "j" && d2.base.st[1] === "j", H1, "la séance rouverte, Q4 lancée, en cours : Q2 et Q3, lues par Paul, comptent (jamais « pas encore lue »), dans la base", JSON.stringify(d2));
-    J.v(d2.c4 && d2.c4.st && d2.c4.st[2] === "j" && d2.c4.st[1] === "j", H3, "… et dans c4 (resultatLocalV)", JSON.stringify(d2));
-    J.v(JSON.stringify(d2.base) === JSON.stringify(d2.c4), H13, "en cours : la même note dans la base et dans c4", JSON.stringify(d2));
-    for(const x of [x1, x2]){ const d = await deuxNotes(x); note(J, "en cours, " + nomDe(x) + " : " + JSON.stringify(d)); }
-    // le tableau de la séance, pendant qu'elle tourne
-    const okT = await ouvrirSeance(prof); const c2 = okT ? await ligneTab(prof, x1) : null; const cT = await capt(prof, "R-tableau-en-cours");
-    J.v(!!c2 && !/pas encore lue/.test(noteC(c2).note) && /^2\/4/.test(noteC(c2).note), H3, "en cours, le tableau de la séance, " + nomDe(x1) + " : « 2/4 » (Q4 pas encore répondue), sans « Q3 pas encore lue »", JSON.stringify({ouvert: okT, ligne: c2}) + " ; " + cT);
-    J.section("R : « 🛑 Terminer » de nouveau : la note sur 4, Q3 comptée");
-    await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(600);
+    J.v(d1.base && d1.base.complet && d1.base.n === 2 && d1.base.total === 3 && d1.base.st.slice(0, 3) === "fjj" && JSON.stringify(d1.base) === JSON.stringify(d1.c4), H13, "après la lecture du soir : 2 / 3 complète (Q1 faux, Q2 et Q3 justes ; Q4 écartée), la même dans la base et dans c4", JSON.stringify(d1));
+    J.section("R : « 🔓 Rouvrir » : pendant qu'elle tourne, Q3 compte");
+    await rouvrir(J, X, "R, ");
+    await enCours(J, X, "R, ", "fjj");
+    // Q4, écartée avant la séance : peut-elle revenir dans la séance rouverte ?
+    const lq4 = await prof.evaluate(() => { const l = document.querySelector("[data-q='4']"); return l ? l.innerText.replace(/\s+/g, " ").slice(-90) : "absente"; }).catch(() => "?");
+    const g = await boutons(prof); const cG = await capt(prof, "R-rouverte-gestes");
+    note(J, "R, la séance rouverte : la ligne de Q4 « … " + lq4 + " » ; la séance garde ecartees " + JSON.stringify(S().ecartees) + " ; les gestes de la console : " + JSON.stringify(g) + " (" + cG + ")");
+    J.section("R : « 🛑 Terminer » de nouveau : Q3 comptée");
     await terminer(prof);
     const d3 = await deuxNotes(x1);
-    note(J, "terminée de nouveau : " + JSON.stringify(d3));
-    J.v(d3.base && d3.base.total === 4 && d3.base.st[2] === "j" && JSON.stringify(d3.base) === JSON.stringify(d3.c4), H13, "terminée de nouveau : la note sur 4, Q3 comptée, la même dans la base et dans c4", JSON.stringify(d3));
+    J.v(d3.base && d3.base.complet && d3.base.st.slice(0, 3) === "fjj" && JSON.stringify(d3.base) === JSON.stringify(d3.c4), H13, "terminée de nouveau : Q3 comptée (2 / 3 complète), la même dans la base et dans c4", JSON.stringify(d3));
   } catch(e){ JR.v(false, BANC, "la séance R s'est interrompue : " + e.message); }
 }
 
-// ════════════ M. la mesure : rouverte SANS la lecture du soir, Q4 posée : peut-on corriger Q3 en classe ? ════════════
+// ════════════ P. sans correction en classe : Paul lit Q1 à Q3 le soir ; « 🔓 Rouvrir », « ▶️ Lancer Q4 » : Q1 à Q3 comptent ; terminée : sur 4 ════════════
+async function partieP(){
+  const J = JP;
+  try {
+    J.section("P. Q1 à Q3 jouées, pas corrigées en classe ; « 🛑 Terminer » ; le soir, Paul lit Q1 à Q3 (« Lire les copies »)");
+    const X = await seance(J);
+    const {prof, M, nomDe, deuxNotes} = X;
+    const [x1, x2] = M.map(m => m[1]), REP = REPDE(x2);
+    await arretSansCorrection(J, X);
+    J.v(await ouvrirSeance(prof), H3, "Données → Résultats → « 📊 Ouvrir » la séance");
+    J.v(await clic(prof, /📄 Lire les copies/) || await clic(prof, /^\d+ feuilles? à lire$/), H3, "« 📄 Lire les copies »");
+    for(const x of [x1, x2]){
+      const nm = nomDe(x);
+      J.v(await ouvrirCopie(prof, nm), H3, "« Lire les copies » : la copie de " + nm, (await texte(prof)).slice(0, 200));
+      for(let qi = 0; qi < 3; qi++){ const r = await lireLigne(prof, qi, REP[qi](x)); if(!r.ok) J.v(false, H3, nm + ", Q" + (qi + 1) + " : Paul lit la feuille", r.vu || "« Enregistrer » absent"); }
+    }
+    const d1 = await deuxNotes(x1);
+    J.v(d1.base && d1.base.complet && d1.base.n === 2 && d1.base.total === 3 && d1.base.st.slice(0, 3) === "fjj" && JSON.stringify(d1.base) === JSON.stringify(d1.c4), H13, "après la lecture du soir : 2 / 3 complète (Q4 jamais lancée, hors du total), la même dans la base et dans c4", JSON.stringify(d1));
+    J.section("P : « 🔓 Rouvrir », « ▶️ Lancer Q4 » : pendant qu'elle tourne, Q1 à Q3 comptent");
+    await rouvrir(J, X, "P, ");
+    await lancerQ4(J, X, "P, ");
+    await enCours(J, X, "P, ", "fjj");
+    J.section("P : « 🛑 Terminer » de nouveau : la note sur 4, Q1 à Q3 comptées");
+    await terminer(prof);
+    const d3 = await deuxNotes(x1);
+    note(J, "P, terminée de nouveau : " + JSON.stringify(d3));
+    J.v(d3.base && d3.base.total === 4 && d3.base.st.slice(0, 3) === "fjj" && JSON.stringify(d3.base) === JSON.stringify(d3.c4), H13, "terminée de nouveau : la note sur 4, Q1 à Q3 comptées, la même dans la base et dans c4", JSON.stringify(d3));
+  } catch(e){ JP.v(false, BANC, "la séance P s'est interrompue : " + e.message); }
+}
+
+// ════════════ M. la mesure : rouverte SANS la lecture du soir, Q4 posée : Q1 à Q3 se corrigent-elles en classe ? ════════════
 async function partieM(){
   const J = JM;
   try {
-    J.section("M (mesure, rien ne se corrige) : la même séance, rouverte sans la lecture du soir ; Q4 posée ; Q3 se corrige-t-elle en classe ?");
+    J.section("M (mesure, rien ne se corrige) : la même séance que P, rouverte sans la lecture du soir ; Q4 posée ; Q1 à Q3 se corrigent-elles en classe (« 💡 Révéler ») ?");
     const X = await seance(J);
-    const {prof, t1, M, S, etat, deuxNotes, nomDe} = X;
+    const {prof, t1, M, S, etat, deuxNotes} = X;
     const [x1] = M.map(m => m[1]);
-    await jusquaLArret(J, X);
+    await arretSansCorrection(J, X);
     note(J, "terminée, sans lecture du soir : " + JSON.stringify(await deuxNotes(x1)));
-    const ok = await rouvrirQ4(J, X, "M, ");
-    if(ok){
-      // Q4 jouée jusqu'au bout (les élèves sont-ils encore sur la tablette ?)
+    await rouvrir(J, X, "M, ");
+    await rentrer(J, X, "M, ");
+    if(await lancerQ4(J, X, "M, ")){
       await cliquer(prof, /Autoriser la réponse/); await pause(1500);
-      const zg = await zoneTexte(t1, "g"); note(J, "la tablette, Q4 lancée : « " + zg.replace(/\s+/g, " ").slice(0, 160) + " »");
+      note(J, "la tablette, Q4 lancée : « " + (await zoneTexte(t1, "g")).replace(/\s+/g, " ").slice(0, 160) + " »");
       const fait = new Set();
       for(let k = 0; k < 120 && !/close/.test(etat().ph || ""); k++){
         for(const [c, sl] of M){ const z = await zoneTexte(t1, c), cle = (etat().tour || 1) + ":" + sl;
@@ -205,35 +274,35 @@ async function partieM(){
       }
       if(!/close/.test(etat().ph || "")){ await cliquer(prof, /Clore la question/); await pause(800); }
       J.v(/close/.test(etat().ph || ""), BANC, "M : Q4 jouée, close", JSON.stringify({deroule: etat(), reponses: Object.keys((S().reponses || {})[3] || {})}));
-      const bQ4 = await boutons(prof); const cQ4 = await capt(prof, "M-q4-close");
-      note(J, "Q4 close, les gestes de la console : " + JSON.stringify(bQ4) + " (" + cQ4 + ")");
+      note(J, "Q4 close, les gestes de la console : " + JSON.stringify(await boutons(prof)) + " (" + await capt(prof, "M-q4-close") + ")");
       const okA = await cliquer(prof, /Lancer l'autoévaluation/); await pause(900);
       note(J, "« 📊 Lancer l'autoévaluation » : " + (okA ? "présent, cliqué" : "absent") + " ; deroule : " + JSON.stringify(etat()));
+      const vus = [];
       if(okA){
         for(const [c] of M) await cliquer(t1, /Maîtrise satisfaisante/, c);
         const okC = await cliquer(prof, /Lancer la correction/); await pause(900);
         for(const [c] of M){ await cocherTout(t1, c); await cliquer(t1, /^Je commence la correction$/, c); }
         await pause(1200); const okC2 = await cliquer(prof, /Commencer la correction/); await pause(1500);
-        note(J, "« 📝 Lancer la correction » " + okC + ", « Commencer la correction » " + okC2 + " ; ordreCorr : " + JSON.stringify(S().ordreCorr) + " ; deroule : " + JSON.stringify(etat()) + " ; revelees : " + JSON.stringify(S().revelees));
-        // tant que la correction avance : le voisin lit ce que l'élève a écrit (Q4 : les bonnes ; Q3 : « 8 »), puis « 💡 Révéler » et « Question suivante »
-        const vus = [];
-        for(let i = 0; i < 4; i++){
+        note(J, "« 📝 Lancer la correction » " + okC + ", « Commencer la correction » " + okC2 + " ; ordreCorr : " + JSON.stringify(S().ordreCorr) + " ; deroule : " + JSON.stringify(etat()));
+        // tant que la correction avance : le voisin lit ce que l'élève a écrit, puis « 💡 Révéler » et « Question suivante »
+        const REP = REPDE(M[1][1]);
+        for(let i = 0; i < 5; i++){
           const d = etat(); if(d.ph !== "lecture") break; const qi = Number(d.qi);
-          const rep = qi === 2 ? ["8"] : qi === 3 ? bonnesDe(E4, 3) : [];
-          for(const [c] of M){ for(const t of rep) await cliquer(t1, new RegExp("^" + esc(t) + "$"), c, {apres: 150}); }
+          for(const [c, sl] of M){ for(const t of (qi < 3 ? REP[qi](sl) : bonnesDe(E4, 3))) await cliquer(t1, new RegExp("^" + esc(t) + "$"), c, {apres: 150}); }
           await pause(900);
           const okRev = await cliquer(prof, /Révéler/); await pause(1200);
-          vus.push({qi: qi + 1, reveler: okRev, revelees: S().revelees});
+          vus.push({q: "Q" + (qi + 1), reveler: okRev, revelees: S().revelees});
           if(!await cliquer(prof, /Question suivante/)) break; await pause(1200);
         }
         note(J, "la correction en classe, question par question : " + JSON.stringify(vus) + " ; " + await capt(prof, "M-correction"));
-        const q3 = vus.find(v => v.qi === 3);
-        note(J, "MESURE : " + (q3 && q3.reveler ? "Q3 se corrige en classe : la correction de la séance rouverte la propose, « 💡 Révéler » est ouvert" : "Q3 ne se corrige pas en classe : la correction de la séance rouverte ne la propose pas (ordreCorr " + JSON.stringify(S().ordreCorr) + ")"));
-      } else note(J, "MESURE : après Q4, la console ne propose pas « 📊 Lancer l'autoévaluation » ; Q3 ne se corrige pas en classe");
+      }
+      const corr = vus.filter(v => v.reveler).map(v => v.q);
+      note(J, "MESURE : " + (!okA ? "après Q4, la console ne propose pas « 📊 Lancer l'autoévaluation » : Q1 à Q3 ne se corrigent pas en classe"
+        : "la correction de la séance rouverte lit " + JSON.stringify(L(S().ordreCorr).map(q => "Q" + (Number(q) + 1))) + " ; révélées en classe : " + JSON.stringify(corr) + (corr.includes("Q3") ? " — Q3 se corrige en classe" : " — Q3 ne se corrige pas en classe")));
       note(J, "la note après la correction en classe : " + JSON.stringify(await deuxNotes(x1)));
       await cliquer(prof, /^Pilotage$/); await cliquer(prof, /Pilotage classe/); await pause(600);
       await terminer(prof);
-      note(J, "terminée de nouveau, sans lecture du soir : " + JSON.stringify(await deuxNotes(x1)) + " ; " + nomDe(x1));
+      note(J, "terminée de nouveau, sans lecture du soir : " + JSON.stringify(await deuxNotes(x1)));
     }
   } catch(e){ JM.v(false, BANC, "la mesure M s'est interrompue : " + e.message); }
 }
@@ -241,7 +310,7 @@ async function partieM(){
 let ecrit = false;
 function ecrire(){
   if(ecrit) return; ecrit = true;
-  const tous = [JR, JM], v = tous.reduce((a, j) => a + j.verifs.length, 0), e = tous.reduce((a, j) => a + j.echecs.length, 0);
+  const tous = [JR, JP, JM], v = tous.reduce((a, j) => a + j.verifs.length, 0), e = tous.reduce((a, j) => a + j.echecs.length, 0);
   let app = ""; try { app = " · app md5 " + cp.execSync("md5sum " + JSON.stringify(process.env.APP_FILE || "")).toString().slice(0, 32); } catch(x){}
   const lignes = j => j.l.map(x => x.section ? "── " + x.section : x.note ? "  note   " + x.note : (x.ok ? "  ok     " : "  ÉCHEC  ") + "[" + x.proprio + "] " + x.quoi + (x.ok ? "" : " — vu : " + x.vu)).join("\n");
   const out = "vérifications : " + v + " · échecs : " + e + "\n" + tous.map(lignes).join("\n");
@@ -249,7 +318,7 @@ function ecrire(){
   console.log(out);
 }
 (async () => {
-  await Promise.all([partieR(), partieM()]);
+  await Promise.all([partieR(), partieP(), partieM()]);
   for(const A of NAVS) for(const p of A.pages) JR.v(!p.__err.length, BANC, p.__nom + " : aucune erreur de page", p.__err.slice(0, 3).join(" | "));
   for(const A of NAVS) try { await A.nav.close(); } catch(e){}
   ecrire(); process.exit(0);

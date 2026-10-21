@@ -1,0 +1,65 @@
+Points 12 et 13 (Paul, 21/10 09:45), la séance rouverte après la lecture du soir, par le geste (QCM-4 · BANC) — durée 168 s · app md5 6c5330ad9fe40e1884dd5ccdced38423
+vérifications : 39 · échecs : 0
+── R. Q1 et Q2 révélées, Q3 lue par les voisins, pas révélée ; « 🛑 Terminer » ; le soir, « ✅ Oui » sur Q3
+  ok     [QCM-4 · BANC] « ❌ Écarter » Q4 avant la séance (pour lancer la correction après Q3)
+  ok     [QCM-4 · BANC] la correction lit Q1, Q2, puis Q3 (Q4 écartée)
+  ok     [QCM-4 · BANC] Q3 en lecture, lue par les deux voisins, pas révélée
+  note   pendant la correction, la liste « 📋 Toutes les questions » (et son « ↩️ Remettre ») n'est pas à la console : la ligne de Q4 est absente
+  ok     [QCM-4 · BANC] « 🛑 Terminer » : la séance est terminée après Q3
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] avant la lecture du soir : Q3 « pas encore lue », la même dans la base et dans c4
+  ok     [QCM-3 · SOIR] Données → Résultats → « 📊 Ouvrir » la séance
+  ok     [QCM-3 · SOIR] « 📄 Lire les copies »
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de ABRIAL Julien
+  ok     [QCM-3 · SOIR] ABRIAL Julien, Q3 : « ✅ Oui » (la lecture de Paul, la même que celle du voisin)
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de BAUDRY Léa
+  ok     [QCM-3 · SOIR] BAUDRY Léa, Q3 : « ✅ Oui » (la lecture de Paul, la même que celle du voisin)
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] après la lecture du soir : 2 / 3 complète (Q1 faux, Q2 et Q3 justes ; Q4 écartée), la même dans la base et dans c4
+── R : « 🔓 Rouvrir » : pendant qu'elle tourne, Q3 compte
+  ok     [QCM-3 · SOIR] R, « 🔓 Rouvrir » la séance terminée, puis « 🔓 Rouvrir la séance » : elle tourne
+  ok     [QCM-1 · SOCLE] R, pendant que la séance rouverte tourne, ABRIAL Julien : Q1 à Q3, lues par Paul, comptent (« fjj », jamais « pas encore lue »), dans la base
+  ok     [QCM-3 · SOIR] R, … et dans c4 (resultatLocalV)
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] R, en cours : la même note dans la base et dans c4
+  note   R, en cours, BAUDRY Léa : {"base":{"n":1,"total":3,"complet":true,"sur20":6.7,"st":"ffje"},"c4":{"n":1,"total":3,"complet":true,"sur20":6.7,"st":"ffje"}}
+  note   R, en cours, Données → Résultats : la séance qui tourne n'y est pas (« 📊 Ouvrir » absent) ; captures-rouverte/08-Rresultats-en-cours.png
+  note   R, la séance rouverte : la ligne de Q4 « … Je le mets dans le crochet de la première relative Je l'étiquette MS/PR 🧠 s ✋ s ❌ Écarter » ; la séance garde ecartees {"0":3} ; les gestes de la console : ["🔓 Rouvrir pour un élève","🛑 Terminer la séance","▶️ Lancer Q1"] (captures-rouverte/09-R-rouverte-gestes.png)
+── R : « 🛑 Terminer » de nouveau : Q3 comptée
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] terminée de nouveau : Q3 comptée (2 / 3 complète), la même dans la base et dans c4
+  ok     [QCM-4 · BANC] console : aucune erreur de page
+  ok     [QCM-4 · BANC] tablette-1 : aucune erreur de page
+  ok     [QCM-4 · BANC] console : aucune erreur de page
+  ok     [QCM-4 · BANC] tablette-1 : aucune erreur de page
+  ok     [QCM-4 · BANC] console : aucune erreur de page
+  ok     [QCM-4 · BANC] tablette-1 : aucune erreur de page
+── P. Q1 à Q3 jouées, pas corrigées en classe ; « 🛑 Terminer » ; le soir, Paul lit Q1 à Q3 (« Lire les copies »)
+  ok     [QCM-4 · BANC] Q1 à Q3 jouées, « 🛑 Terminer » : la séance est terminée, Q4 jamais lancée
+  ok     [QCM-3 · SOIR] Données → Résultats → « 📊 Ouvrir » la séance
+  ok     [QCM-3 · SOIR] « 📄 Lire les copies »
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de ABRIAL Julien
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de BAUDRY Léa
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] après la lecture du soir : 2 / 3 complète (Q4 jamais lancée, hors du total), la même dans la base et dans c4
+── P : « 🔓 Rouvrir », « ▶️ Lancer Q4 » : pendant qu'elle tourne, Q1 à Q3 comptent
+  ok     [QCM-3 · SOIR] P, « 🔓 Rouvrir » la séance terminée, puis « 🔓 Rouvrir la séance » : elle tourne
+  ok     [QCM-3 · SOIR] P, « ▶️ Lancer Q4 » : Q4 lancée
+  ok     [QCM-1 · SOCLE] P, pendant que la séance rouverte tourne, ABRIAL Julien : Q1 à Q3, lues par Paul, comptent (« fjj », jamais « pas encore lue »), dans la base
+  ok     [QCM-3 · SOIR] P, … et dans c4 (resultatLocalV)
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] P, en cours : la même note dans la base et dans c4
+  note   P, en cours, BAUDRY Léa : {"base":{"n":1,"total":4,"complet":false,"sur20":5,"st":"ffjn"},"c4":{"n":1,"total":4,"complet":false,"sur20":5,"st":"ffjn"}}
+  note   P, en cours, Données → Résultats : la séance qui tourne n'y est pas (« 📊 Ouvrir » absent) ; captures-rouverte/05-Presultats-en-cours.png
+── P : « 🛑 Terminer » de nouveau : la note sur 4, Q1 à Q3 comptées
+  note   P, terminée de nouveau : {"base":{"n":2,"total":4,"complet":false,"sur20":10,"st":"fjjn"},"c4":{"n":2,"total":4,"complet":false,"sur20":10,"st":"fjjn"}}
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] terminée de nouveau : la note sur 4, Q1 à Q3 comptées, la même dans la base et dans c4
+── M (mesure, rien ne se corrige) : la même séance que P, rouverte sans la lecture du soir ; Q4 posée ; Q1 à Q3 se corrigent-elles en classe (« 💡 Révéler ») ?
+  ok     [QCM-4 · BANC] Q1 à Q3 jouées, « 🛑 Terminer » : la séance est terminée, Q4 jamais lancée
+  note   terminée, sans lecture du soir : {"base":{"n":0,"total":3,"complet":false,"sur20":0,"st":"nnnx"},"c4":{"n":0,"total":3,"complet":false,"sur20":0,"st":"nnnx"}}
+  ok     [QCM-3 · SOIR] M, « 🔓 Rouvrir » la séance terminée, puis « 🔓 Rouvrir la séance » : elle tourne
+  note   M, la tablette après « 🔓 Rouvrir » : « ✨ 💡 👋 Identifie-toi 1 2 3 4 5 6 7 8 9 ⌫ 0 ✓ Entrer → » ; les élèves s'y entrent de nouveau
+  ok     [QCM-3 · SOIR] M, « ▶️ Lancer Q4 » : Q4 lancée
+  note   la tablette, Q4 lancée : « 🖊️ Julien, pose ton stylo. 🙈 Julien, laisse la tablette à Léa pour qu'il réponde sans que tu regardes. »
+  ok     [QCM-4 · BANC] M : Q4 jouée, close
+  note   Q4 close, les gestes de la console : ["🔓 Rouvrir pour un élève","🛑 Terminer la séance","📊 Lancer l'autoévaluation","🔓 Rouvrir pour tous"] (captures-rouverte/07-M-q4-close.png)
+  note   « 📊 Lancer l'autoévaluation » : présent, cliqué ; deroule : {"ph":"estim","depuis":1792580907320}
+  note   « 📝 Lancer la correction » true, « Commencer la correction » true ; ordreCorr : {"0":0,"1":1,"2":2,"3":3} ; deroule : {"qi":0,"duree":15,"ph":"lecture","depuis":1792580914088}
+  note   la correction en classe, question par question : [{"q":"Q1","reveler":true,"revelees":{"0":0}},{"q":"Q2","reveler":true,"revelees":{"0":0,"1":1}},{"q":"Q3","reveler":true,"revelees":{"0":0,"1":1,"2":2}},{"q":"Q4","reveler":true,"revelees":{"0":0,"1":1,"2":2,"3":3}}] ; captures-rouverte/10-M-correction.png
+  note   MESURE : la correction de la séance rouverte lit ["Q1","Q2","Q3","Q4"] ; révélées en classe : ["Q1","Q2","Q3","Q4"] — Q3 se corrige en classe
+  note   la note après la correction en classe : {"base":{"n":3,"total":4,"complet":true,"sur20":15,"st":"fjjj"},"c4":{"n":3,"total":4,"complet":true,"sur20":15,"st":"fjjj"}}
+  note   terminée de nouveau, sans lecture du soir : {"base":{"n":3,"total":4,"complet":true,"sur20":15,"st":"fjjj"},"c4":{"n":3,"total":4,"complet":true,"sur20":15,"st":"fjjj"}}

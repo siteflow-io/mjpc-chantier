@@ -41,3 +41,9 @@
 - **Relances** : `RELANCES/E1.md` relu à 09:20 — « rien pour l'instant ».
 
 - **Après E1-a** : `decouper.mjs` ne réécrit plus `dr/` ni `index.html` (ils sont la source ; rejoué, il écrit dans `decoupe/rejoue/`, pour preuve). Je travaille désormais dans les modules.
+
+## 09:34 UTC — poussée 4 : E1-b · la colonne unique (mandat point 13, contrat §8.3)
+- **Fait** : sous la séance dépliée de la colonne du site, **le `#volet` du déroulé** (ses vignettes en classe, ses lignes dans l'atelier) **remplace les écrans horodatés** ; **une seule séance dépliée**, l'active (`ATVUES.snum`) ; déplier une autre séance l'ouvre dans le déroulé (`ATVUES.snum` et `S.si` changent, la précédente se replie — audit C2 : le pliage indépendant du site ne vaut plus qu'en Structure) ; la colonne gauche de la maquette n'a plus de largeur et sa poignée se cache (la diapo y gagne ~186 px) ; en Structure le volet rentre dans la zone garée, il revient au retour ; si le site redessine sa colonne, le garde-fou le remet en place. Site : `atSomInjecterEcrans`, `atSomOuverte`, `atSomPlier` (une ligne commentée chacune) ; socle : `dr_placerVolet` ; `dr.css` : la portée `:is(#dr-zone,#ses-tab,.at-som-volet)`.
+- **Banc E1** : 34 vérifications, 0 échec (A6 ajouté : le volet sous la séance 0, une seule dépliée, déplier la 1 → 18 lignes et la 0 repliée, Structure ↔ Pilotage, K15 rien d'écrit) — `sorties/<heure>/banc-E1.txt`.
+- **Reste** : p8-5h (14), la taille (15), la trame complète (10), l'Atelier entier (12), le recyclage (17), les infobulles (16).
+- **Relances** : relu, rien.

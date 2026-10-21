@@ -13,15 +13,23 @@ var DR_MEM = { zone: document.getElementById('dr-zone'), demarre: false, chap: n
    Le site peut effacer sa zone (`at-zone`) quand il veut : la nôtre n'y meurt jamais, elle revient au garage. ── */
 function dr_zone(){ return DR_MEM.zone || document.getElementById('dr-zone'); }
 function dr_actif(){ const z = dr_zone(); return !!(z && z.isConnected && !z.classList.contains('dr-parque')); }
-function dr_parquer(){ const z = dr_zone(); if (!z) return; z.classList.add('dr-parque'); if (z.parentNode !== document.body) document.body.appendChild(z); }
-function dr_monter(hote){ const z = dr_zone(); if (!z || !hote) return; if (z.parentNode !== hote) hote.appendChild(z); z.classList.remove('dr-parque'); dr_dimensionnerZone(); }
+function dr_parquer(){ const z = dr_zone(); if (!z) return; z.classList.add('dr-parque'); if (z.parentNode !== document.body) document.body.appendChild(z); dr_placerVolet(); }
+function dr_monter(hote){ const z = dr_zone(); if (!z || !hote) return; if (z.parentNode !== hote) hote.appendChild(z); z.classList.remove('dr-parque'); dr_placerVolet(); dr_dimensionnerZone(); }
+/* (13, contrat §8.3) la colonne unique : le #volet du déroulé vit sous la séance dépliée de la colonne du site (.at-som-volet, posé par atSomInjecterEcrans) ;
+   quand le déroulé n'est pas à l'écran, il revient à sa place dans la zone (avant .scene). Jamais deux colonnes. */
+function dr_placerVolet(){
+  const v = DR_MEM.volet || (DR_MEM.volet = document.getElementById('volet')); const z = dr_zone(); if (!v || !z) return;
+  const hote = dr_actif() ? document.querySelector('#at-arbre .at-som-volet') : null;
+  if (hote) { if (v.parentNode !== hote) hote.appendChild(v); z.classList.add('dr-colonne-unique'); }
+  else { const c = z.querySelector('.corps'); if (c && v.parentNode !== c) c.insertBefore(v, c.querySelector('.scene')); z.classList.remove('dr-colonne-unique'); }
+}
 function dr_dimensionnerZone(){ const z = dr_zone(); if (!z || z.classList.contains('dr-parque')) return; const haut = Math.max(0, z.getBoundingClientRect().top); z.style.height = Math.max(420, window.innerHeight - haut - 4) + 'px'; }
 /* les écoutes globales de la maquette (clavier, souris, fenêtre) ne valent que quand le déroulé est à l'écran :
    ailleurs dans le site, ← → espace G N T L R n'appartiennent pas au déroulé */
 function dr_ecouteDoc(type, fn, opt){ document.addEventListener(type, function(ev){ if (!dr_actif()) return; return fn.call(this, ev); }, opt); }
 function dr_ecouteWin(type, fn, opt){ window.addEventListener(type, function(ev){ if (!dr_actif() && type !== 'message') return; return fn.call(this, ev); }, opt); }
 (function(){ /* le garde-fou : si le site efface la zone qui la portait, elle revient au garage (ses écoutes, son état et ses nœuds restent) */
-  const veille = () => { const z = dr_zone(); if (z && !z.isConnected) dr_parquer(); };
+  const veille = () => { const z = dr_zone(); if (z && !z.isConnected) dr_parquer(); const v = DR_MEM.volet; if (v && !v.isConnected) dr_placerVolet(); };   /* la colonne redessinée par le site : le volet y revient (ou rentre dans la zone) */
   try { new MutationObserver(veille).observe(document.documentElement, { childList: true, subtree: true }); } catch (e) {}
   window.addEventListener('resize', () => { if (dr_actif()) dr_dimensionnerZone(); });
 })();

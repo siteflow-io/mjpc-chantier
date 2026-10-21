@@ -14946,7 +14946,7 @@ function atSomInjecterEcrans(html){
     if(m){ var ouv=atSomOuverte(m[1]);
       seg=seg.replace('><span class="ed2-n"',
         '><span class="at-som-pli" onclick="event.stopPropagation();atSomPlier(\''+atEsc(m[1])+'\')" title="'+(ouv?'Replier':'Déplier')+' cette séance">'+(ouv?'▾':'▸')+'</span><span class="ed2-n"'); }
-    var bloc=(m && atSomOuverte(m[1])) ? atSomEcransHtml(m[1]) : '';
+    var bloc=(m && atSomOuverte(m[1])) ? (String(m[1])===String(ATVUES.snum) ? '<div class="at-som-volet" data-ese="'+atEsc(String(m[1]))+'" title="Les diapos de la s\u00e9ance ouverte : un clic y va ; la courante est marqu\u00e9e"></div>' : '') : '';   /* E1 (13, contrat §8.3) : sous la séance dépliée, le #volet du déroulé (posé par dr_placerVolet) remplace les écrans horodatés — une seule colonne */
     if(bloc){
       var pos=seg.lastIndexOf('<button class="ed2-inserer"');
       if(pos<0) pos=seg.lastIndexOf('</div>');
@@ -14979,6 +14979,7 @@ function atSomAllerEcran(n,seance){
 
 function atSomOuverte(seance){
   var k=String(seance);
+  if(ATVUES.vue!=='structure') return k===String(ATVUES.snum);   /* E1 (13, cadrage n°7, contrat §8.3) : une seule séance dépliée, l'active — la précédente se replie (audit C2 : le pliage indépendant du site ne vaut plus qu'en Structure) */
   if(AT_SOM_ETAT[k]===undefined){
     if(!AT_SOM_INIT){ AT_SOM_ETAT[k]=true; AT_SOM_INIT=true; }   /* la première s'ouvre */
     else AT_SOM_ETAT[k]=false;
@@ -14989,6 +14990,7 @@ function atSomOuverte(seance){
 
 function atSomPlier(seance){
   var k=String(seance);
+  if(ATVUES.vue!=='structure'){ if(k!==String(ATVUES.snum)) atSomAllerEcran(0,k); return; }   /* E1 (13) : déplier une autre séance, c'est l'ouvrir dans le déroulé */
   AT_SOM_ETAT[k]=!atSomOuverte(k);
   atSomRafraichir();
 }

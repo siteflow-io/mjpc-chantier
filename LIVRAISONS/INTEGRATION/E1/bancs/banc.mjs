@@ -77,6 +77,21 @@ await B('A5', 'Structure ↔ Atelier : la zone se gare et revient, intacte ; le 
   await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(500); await pg.click('#ong-atelier'); await pg.waitForTimeout(300); await pg.click('.at-p8-rep, #at-rep, [id*=repet]').catch(() => {});
   E.verif('A5', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
 
+await B('A6', 'la colonne unique (point 13, contrat §8.3) : sous la séance dépliée, le volet du déroulé ; une seule séance dépliée', async () => { const o = await E.ouvrir(b); const pg = o.pg; await sansVoile(pg);
+  const etat = () => pg.evaluate(() => { const v = document.getElementById('volet'); return { hote: v.parentNode.className, seance: v.parentNode.dataset ? v.parentNode.dataset.ese : null, dansArbre: !!v.closest('#at-arbre'), ouvertes: Array.from(document.querySelectorAll('#at-arbre .at-som-pli')).filter(x => x.textContent === '▾').length, ecrHorodates: document.querySelectorAll('#at-arbre .at-ecr').length, lignes: document.querySelectorAll('#volet [data-at-di], #volet .vig').length, si: S.si, snum: ATVUES.snum, lg: getComputedStyle(document.querySelector('#dr-zone .corps')).getPropertyValue('--lg').trim(), mur: Math.round(document.getElementById('mur').getBoundingClientRect().width) }; });
+  const e0 = await etat();
+  E.verif('A6', e0.hote === 'at-som-volet' && e0.dansArbre && e0.seance === '0' && e0.ouvertes === 1 && e0.ecrHorodates === 0, 'le #volet est dans la colonne du site, sous la séance 0, seule dépliée ; plus d\'écrans horodatés', JSON.stringify(e0));
+  E.verif('A6', e0.lg === '0px' && e0.lignes === 19, 'la colonne gauche de la maquette n\'a plus de largeur (la diapo y gagne), 19 lignes au volet', e0.lg + ' · mur ' + e0.mur + ' px');
+  await pg.evaluate(() => Array.from(document.querySelectorAll('#at-arbre .at-som-pli'))[1].click()); await pg.waitForTimeout(1200); await sansVoile(pg);
+  const e1 = await etat();
+  E.verif('A6', e1.snum === '1' && e1.si === 1 && e1.seance === '1' && e1.ouvertes === 1 && e1.lignes === 18, 'déplier la séance 1 : elle devient celle du déroulé (ATVUES.snum, S.si), son volet (17 + la fin d\'heure), la séance 0 se replie', JSON.stringify(e1));
+  await pg.click('.at-onglet[data-vue="structure"]'); await pg.waitForTimeout(1200); await sansVoile(pg);
+  E.verif('A6', await pg.evaluate(() => document.getElementById('volet').parentNode.classList.contains('corps')), 'en Structure : le volet est rentré dans la zone du déroulé (garée)');
+  await pg.click('#ong-pilotage'); await pg.waitForTimeout(1200); await sansVoile(pg); const e2 = await etat();
+  E.verif('A6', e2.hote === 'at-som-volet' && e2.seance === '1' && e2.lignes === 18, 'retour au Pilotage : le volet revient sous la séance 1', JSON.stringify(e2));
+  E.verif('A6', await pg.evaluate(() => window.__ECR.filter(x => /\/chapitres\//.test(x)).length === 0), 'K15 : rien d\'écrit en dépliant, en changeant de séance, en changeant d\'onglet');
+  E.verif('A6', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

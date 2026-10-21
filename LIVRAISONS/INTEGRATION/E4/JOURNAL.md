@@ -290,3 +290,11 @@
   - Mon banc : **103 ok · 0 échec** (`sorties/1626-site-E4`).
   - banc.sh : **VERT** (`sorties/1631`).
 - La passe complète (84 lignes) tourne sur `28a0375f`.
+
+## Poussée 37 — 16:48 UTC
+- **Deux lignes de B4 réglées**, avec gardes B3 :
+  - dans « Ce qui s'est passé », une entrée qui porte sa diapo va sous sa diapo (`dr_passePlace`) ;
+  - « Le chapitre » lit les activités dans l'heure jouée (`S.ordres`), jamais « … sur 0 ».
+- **Bancs :**
+  - Mon banc : **104 ok · 0 échec** (`sorties/1643-site-E4`).
+  - banc.sh : **VERT** (`sorties/1648`), avec E2 `bb5f52e5`.

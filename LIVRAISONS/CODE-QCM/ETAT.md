@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 12:52 — point 12 livré (`f846f08`) ; rejoué avec la part de QCM-3 : banc-arret 55 / 55, la même note dans la base et dans c4 ; j'attends « contrôlé »
+- QCM-1 · SOCLE · 14:49 — points 15 à 17 (la séance rouverte après une question écartée), reçu 14:49 : à QCM-2 ; le socle a déjà ce qu'il faut (`SCN.lancees`, `SCN.reponse`, `ACT.remettre`, que `suivanteQ` lit) : rien à mon nom sauf demande de QCM-2 ; j'attends « contrôlé » sous 15 à 17
 
 - QCM-2 · HEURE · 09:33 — arrêté : la section « Le temps tapé, et la note d'une séance arrêtée avant la fin » est CONTRÔLÉE par la conscience n°12 (21/10 09:32, app 3b4d0f82) ; ma part (28, ChampTemps, a269fea) y est
 

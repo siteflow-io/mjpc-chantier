@@ -20,9 +20,9 @@ Si la page se ferme en pleine heure : la bannière d'aujourd'hui (« Reprendre l
 |---|---|---|
 | production de départ (`index.html` 8.74.0-③) | `ac792b28f40d3a0510e725fc4a6b6985` | 1 838 175 o |
 | maquette de départ (p8-5g) | `62d9557ac8fedcfbdd8b157a2588cbee` | 605 996 o |
-| `LIVRAISONS/INTEGRATION/index.html` à cette note (commit 88a18a49) | `2618fd3220c8ed128ea99e1c93572f3c` | 1 388 783 o |
-| `dr/dr-classe.js` à cette note (ma coupe de la maquette posée par E1 + mon module) | `d314a8cbe72c3acea7cb53c9a9c46186` | 178 257 o |
-| `assemble/index.html` à cette note | `ac32cdc20606c4ba06ac30a371278361` | 2 238 727 o |
+| `LIVRAISONS/INTEGRATION/index.html` à cette note (commit 02a60b28) | `2618fd3220c8ed128ea99e1c93572f3c` | 1 388 783 o |
+| `dr/dr-classe.js` à cette note (ma coupe de la maquette posée par E1 + mon module) | `c4faa909f53f0d23ecbd5a344b30382a` | 188 342 o |
+| `assemble/index.html` à cette note | `03581899c4281e1040cadcef80b1e427` | 2 256 303 o |
 
 ## Les fonctions du site touchées (nom, taille avant → après)
 
@@ -62,8 +62,8 @@ Appliquées par `E2/outils/brancher.py` (par le nom, idempotent, rejouable sur t
 
 ## Les bancs et leurs sorties
 
-- **`E2/bancs/banc.mjs`** (banc unique, par le geste, faux hub) sur `assemble/index.html` : **VERT** (`sorties/banc-site.txt`, `sorties/1759/banc-E2.txt`) — B1 la case (heure 2/3, Préparer sans écriture, le Pilotage visible, `cours_actif`) ; B2 (lancer en un clic, le paquet, sans rang, K15) ; B4 (T-5 de lui-même, les sept étapes, la clôture, « Lancer » gris avec sa raison et jamais hors de la grille à 09:53, ▶ inerte) ; B3 (la reprise : la diapo, le chrono, les paroles, les notes, **l'heure telle qu'elle était** — frontières, volet « H2 », entête, activités —, la copie de la classe relue, un seul `copie-ed`, la copie ED avec ses paragraphes) ; B3b ; B7 (la fusion) ; B8 (les absents de la case) ; B9 (l'heure 2 ouvre sur son rituel puis la diapo 4, les jouées marquées ; le VIF du pont, une seule pose ; « LC2 » absent ; « sur 7 » ; la fiche d'élève ; le chrono arrêté) ; B10 (à 1280 × 768 : la T-5 entière, la confirmation de la parole, la fin de l'heure entière et la classe dessous) ; B11 (la case close : son titre, « Relire cette heure ») ; B12 (l'ordre de l'heure suivante, §12.16 : rituel, reports dans l'ordre des décisions, sans « non fait » ni « pas le temps », le cahier en dernier) ; B13 (les décisions provisoires suivent ce qui se joue ; l'étape 3 nomme ce qui part à la maison) ; B5 ; B6 (le mode test, sa pastille).
-- **`banc.sh` de la conscience**, rejoué avant chaque poussée depuis le réveil n°4 (dernier : `sorties/1759`, commit `88a18a49`, md5 de l'assemblé identique à celui du banc E2) : collisions **0** ; parcours P0-P12 **VERT** ; parcours en mode test **VERT** ; contrôles K1-K13 **108 vérifications, 0 échec**. Un manquement : la poussée 16 (`a0c4c92d`) est partie sans lui et a cassé K6-K11 (18 échecs) — mesuré, bissecté, corrigé (journal, poussée 17).
+- **`E2/bancs/banc.mjs`** (banc unique, par le geste, faux hub) sur `assemble/index.html` : **VERT** (`sorties/banc-site.txt`, `sorties/2138/banc-E2.txt`, B1-B15) — B1 la case (heure 2/3, Préparer sans écriture, le Pilotage visible, `cours_actif`) ; B2 (lancer en un clic, le paquet, sans rang, K15) ; B4 (T-5 de lui-même, les sept étapes, la clôture, « Lancer » gris avec sa raison et jamais hors de la grille à 09:53, ▶ inerte) ; B3 (la reprise : la diapo, le chrono, les paroles, les notes, **l'heure telle qu'elle était** — frontières, volet « H2 », entête, activités —, la copie de la classe relue, un seul `copie-ed`, la copie ED avec ses paragraphes) ; B3b ; B7 (la fusion) ; B8 (les absents de la case) ; B9 (l'heure 2 ouvre sur son rituel puis la diapo 4, les jouées marquées ; le VIF du pont, une seule pose ; « LC2 » absent ; « sur 7 » ; la fiche d'élève ; le chrono arrêté) ; B10 (à 1280 × 768 : la T-5 entière, la confirmation de la parole, la fin de l'heure entière et la classe dessous) ; B11 (la case close : son titre, « Relire cette heure ») ; B12 (l'ordre de l'heure suivante, §12.16 : rituel, reports dans l'ordre des décisions, sans « non fait » ni « pas le temps », le cahier en dernier) ; B13 (les décisions provisoires suivent ce qui se joue ; l'étape 3 nomme ce qui part à la maison) ; B5 ; B6 (le mode test, sa pastille) ; B14 (l'absent et les mêmes initiales au VIF, « Lancer » d'une page neuve après la clôture) ; B15 (la retouche de l'Atelier en classe part dans la copie).
+- **`banc.sh` de la conscience**, rejoué avant chaque poussée depuis le réveil n°4 (dernier : `sorties/2138`, commit `02a60b28`, md5 de l'assemblé identique à celui du banc E2) : collisions **0** ; parcours P0-P12 **VERT** ; parcours en mode test **VERT** ; contrôles K1-K13 **108 vérifications, 0 échec**. Un manquement : la poussée 16 (`a0c4c92d`) est partie sans lui et a cassé K6-K11 (18 échecs) — mesuré, bissecté, corrigé (journal, poussée 17).
 - Pour mémoire : `banc-maquette.txt`, `banc-module*.txt` (le module sur la maquette avec un socle simulé, avant E1-a), `sonde-prod.txt` (la production jouée : les trois défauts de l'audit mesurés).
 - **Captures** : `E2/captures/site/` (B1-lancer, B1-preparer, B2, B3-reprise, B4-T5, B4-close), `E2/captures/maquette/`.
 
@@ -88,3 +88,12 @@ Deux sous-agents, avec le mandat, le contrat et l'assemblé seulement, sur le fa
 13. **À E1** : « 50 utiles » est écrit en dur dans `ouOnEnEst` (dr-atelier.js) — `dr_heureDe(h).utiles` le donne ; l'aperçu de la diapo suivante (« · glissée ») peut prendre `dr_libGlissee(e, h)` (« à reprendre » pour b2).
 14. **À E4** : `H.travail.terminer` / `preparer` / `maison` sont des listes `{cle, titre}` (depuis les décisions), `prevu` n'est vrai que si la trame prévoit un travail (`prevuTexte`).
 15. **Le battement de `C/etat`** (une écriture par minute pendant l'heure) : c'est le prix d'une reprise juste (la coupure part de la dernière trace de vie) ; chemin déjà permis (K15).
+16. **À E1, l'étape 5** : « Diapos modifiées pendant l'heure » (`p8ListeVersement`) ne voit que les retouches au pilote (`S.copie[h]`) ; une retouche faite en classe dans l'onglet Atelier part bien dans la copie de la classe (B15) mais pas dans `S.copie[h]` — le socle (l. 189) doit la poser, ou la liste comparer la copie à la trame (C1 8.4).
+17. **La frontière d'heure hors classe** est celle de la trame (Paul, l'Atelier, E1) ; la mienne (par les durées) ne vit qu'en classe, jamais écrite dans `B/deroule`.
+
+## Ce qui est à Paul
+
+- Le rituel d'ouverture se reconnaît à son titre tant que la trame ne porte pas de rôle : poser le rôle « réactivation » dans l'Atelier (ou au prompt de préparation) le rend sûr.
+- Les activités : la trame réelle n'en a pas ; chaque diapo se décide comme une activité jusqu'à ce qu'elles existent.
+- La frontière d'heure : sans frontière posée dans la trame, le site la prévoit par les durées (50 minutes utiles) et la refait, en classe, à partir de là où la classe s'est arrêtée.
+- Les décisions par défaut de la clôture (« Clore quand même » : « à l'heure suivante ») passent après les siennes.

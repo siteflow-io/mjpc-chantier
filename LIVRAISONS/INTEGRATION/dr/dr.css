@@ -467,3 +467,4 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 /* E4 · le menu d'une marque (clic droit, relecteur continu B4) */
 #dr-mk-menu{position:fixed;z-index:9000;display:none;flex-direction:column;gap:6px;background:#191411;border:1px solid var(--bord,#3a3129);border-radius:8px;padding:8px;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 #dr-mk-menu.on{display:flex}
+#dr-zone .choix-obj .dr-c:focus,#dr-zone .choix-obj [data-si][data-h]:focus,.choix-obj .dr-c:focus,.choix-obj [data-si][data-h]:focus{outline:2px solid #c99a4e;outline-offset:2px} /* E1 : le choix que prendra Entrée se voit */

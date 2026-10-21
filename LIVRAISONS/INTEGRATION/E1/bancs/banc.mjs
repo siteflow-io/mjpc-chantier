@@ -609,6 +609,34 @@ await B('A28', 'le réveil n°9 et la relecture continue d\'E4 (20:50) : l\'ongl
   E.verif('A28', lb.a === 'préparée à la maison — à reprendre' && lb.b === 'terminée à la maison — à reprendre' && /glissée/.test(lb.c), '« Diapo suivante » : « préparée à la maison — à reprendre », « terminée à la maison — à reprendre », « glissée » — le libellé de l\'ouverture (dr_libGlissee d\'E2, une seule fonction)', JSON.stringify(lb));
   E.verif('A28', !o3.errs.length, 'aucune erreur JS', o3.errs.join(' ; ') || undefined); await o3.ctx.close(); });
 
+await B('A29', 'le réveil n°11 : la retouche de l\'onglet Atelier pendant l\'heure dans la copie de la classe (S.copie[h], versable à la clôture), le témoin à « enregistré » ; la garde de ◀ au rang de l\'heure ; Entrée dans « + bloc » et « Envoyer vers… »', async () => {
+  const o = await E.ouvrir(b, { w: 1366, h: 768 }); const pg = o.pg; await sansVoile(pg);
+  await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(800); await pg.click('#bdev'); await pg.waitForTimeout(150);
+  await pg.click('#ong-atelier'); await pg.waitForTimeout(500); await pg.click('#volet [data-at-di="2"]'); await pg.waitForTimeout(300);
+  const ci = await pg.evaluate(() => { const e = ecran(); const bi = e.blocs.findIndex(b => b.bid && b.txt != null); return { eid: e.eid, bi, bid: e.blocs[bi].bid, txt: e.blocs[bi].txt, h: S.heure }; });
+  await pg.click(`#mur [data-p="${ci.bi}.t"]`); await pg.keyboard.press('End'); await pg.keyboard.type(' — retouche atelier', { delay: 25 }); await pg.waitForTimeout(2200);
+  const ra = await pg.evaluate(c => { const e = seance().ecrans.find(x => x.eid === c.eid); const b = e.blocs.find(x => x.bid === c.bid); const cp = ((S.copie || {})[c.h] || {})[c.eid] || {}; const li = document.querySelector('#mur [data-p="' + c.bi + '.t"]'); const dj = window.__HUB.site['3e'].chapitres[0].seances[0].deroule_joue; const k = Object.keys(dj)[0]; return { copie: (cp[c.bid] || {}).t, trame: b.txt, vu: li && li.textContent, hub: JSON.stringify((dj[k] || {}).etat || {}).includes('retouche atelier'), temoin: (document.getElementById('at-save') || {}).textContent }; }, ci);
+  E.verif('A29', /retouche atelier$/.test(ra.copie || '') && ra.trame === ci.txt && /retouche atelier/.test(ra.vu || '') && ra.hub, '149 (a) · une retouche de texte dans l\'onglet Atelier pendant l\'heure va dans la copie de la classe (S.copie[h]), comme au Pilotage ; l\'atelier la montre ; la trame ne bouge pas ; elle est au hub (C/etat) sans repasser au Pilotage', JSON.stringify(ra).slice(0, 220));
+  E.verif('A29', /^✔ enregistré à \d\d:\d\d$/.test(ra.temoin || ''), '149 (b) · après l\'écriture faite depuis l\'atelier, le témoin dit « enregistré à … » (la vérité du hub)', ra.temoin);
+  await pg.click('#ong-pilotage'); await pg.waitForTimeout(600);
+  const ver = await pg.evaluate(c => { const d = document.createElement('div'); d.innerHTML = p8ListeVersement(); return { liste: /retouche atelier/.test(d.textContent), diffère: p8CopieDiffere() }; }, ci);
+  E.verif('A29', ver.liste && ver.diffère, '149 (a) · à la clôture, « verser dans la trame » propose la retouche faite dans l\'atelier (C1 8.4)', JSON.stringify(ver));
+  // ◀ : la garde dit le rang dans l'heure
+  const gd = await pg.evaluate(() => { const o0 = ordreHeure(S.heure).filter(i => seance().ecrans[i].role !== 'fin'); const o1 = o0.slice().reverse(); S.ordres[S.heure] = o1.concat(ordreHeure(S.heure).filter(i => seance().ecrans[i].role === 'fin')); S.di = o1[2]; S.page = null; etatDiapo().nDev = 0; dr_tout(); revoiler(); const t = document.getElementById('garde-titre').textContent; document.getElementById('garde').classList.remove('on'); S.ordres[S.heure] = o0.concat(ordreHeure(S.heure).filter(i => seance().ecrans[i].role === 'fin')); return { t, prec: o1[1] }; });
+  E.verif('A29', /revenir à la diapo 2\b/.test(gd.t) && gd.prec + 1 !== 2, '156 · ◀ hors du fil : « La classe te suivrait — revenir à la diapo 2 » — le rang dans l\'heure, plus celui de la trame (' + (gd.prec + 1) + ')', gd.t);
+  E.verif('A29', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close();
+  // Entrée dans « + bloc » et « Envoyer vers… »
+  const o2 = await E.ouvrir(b, { w: 1366, h: 768 }); const p2 = o2.pg; await sansVoile(p2);
+  await p2.click('#volet [data-at-di="1"]'); await p2.waitForTimeout(300); const nb0 = await p2.evaluate(() => ecran().blocs.length);
+  await p2.click('#at-bloc'); await p2.waitForTimeout(200); await p2.keyboard.press('Enter'); await p2.waitForTimeout(300);
+  const pb = await p2.evaluate(n => ({ ouvert: !!document.querySelector('.choix-obj'), form: !!document.querySelector('#obj-form input, #obj-form textarea'), blocs: ecran().blocs.length - n }), nb0);
+  E.verif('A29', pb.blocs === 1 || pb.form, '« + bloc », Entrée : le premier objet est choisi (un bloc posé, ou son formulaire ouvert) — plus « rien »', JSON.stringify(pb));
+  await p2.keyboard.press('Escape'); await p2.mouse.click(5, 400);
+  const n0 = await p2.evaluate(() => seance().ecrans.length); await p2.evaluate(() => envoyerVersSeance(S.di)); await p2.waitForTimeout(200); await p2.keyboard.press('ArrowDown'); await p2.keyboard.press('Enter'); await p2.waitForTimeout(400);
+  const ev = await p2.evaluate(n => ({ ouvert: !!document.querySelector('.choix-obj'), parti: n - seance().ecrans.length }), n0);
+  E.verif('A29', !ev.ouvert && ev.parti === 1, '« Envoyer vers… », ↓ puis Entrée : la diapo part vers la séance choisie au clavier', JSON.stringify(ev));
+  E.verif('A29', !o2.errs.length && !o2.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o2.errs.concat(o2.boites)).join(' ; ') || undefined); await o2.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

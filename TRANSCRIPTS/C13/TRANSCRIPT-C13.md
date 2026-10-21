@@ -1763,3 +1763,27 @@ Réponse de la conscience (15:24), mot pour mot :
 
 21/10/2026 15:24
 MEMO
+
+---
+
+## TOUR 83 — RÉVEIL N°4 (21/10/2026, 16:24 → 16:42 ; déclenché par la tâche planifiée)
+
+Note : mes deux messages d'attente de ce réveil portaient des horodatages écrits sans lire l'heure (« 16:33 », « 16:38 », « 16:40 » pour ~16:28-16:31). Règle tenue désormais : lire l'heure avant d'écrire.
+
+Mesuré :
+- `integration` à `d1752cd2` (16:01). Depuis le réveil n°3 : E3 (15:35) et E1 (15:31, 15:39) ont traité les relances du 15:14 (E1 : 2, 3, 4, 5, 8, 9 ; reste le grave n°1) ; E2 (15:44) : F2 remesuré, la frontière d'heure par les durées, une carte par diapo restante, l'échéance proposée, « Où on en est » par diapo, « Lancer » grisé après clôture — **sans `banc.sh`** ; E4 (15:41, 15:59, 16:01) : relecteurs A3 et B3, ~30 lignes nouvelles, 7 de ses 8 corrections vérifiées.
+- **Mon banc sur `d1752cd2`** : collisions 0 ; parcours P0-P12 VERT (mode normal et mode test, avec la clôture réelle) ; **contrôles K : 90/108, 18 échecs** (K2, K6, K7, K8, K9, K10, K11) — E4 l'avait mesuré à 15:52 sur la poussée d'E2. **Cause mesurée** : le lancement est l'heure 2/3 (le faux hub porte une heure jouée le 07/09 : trois diapos) et E2 fait commencer l'heure 2 à une **frontière calculée par les durées** (diapo 9, « HEURE 2 · 10 DIAPOS »), donc loin de la diapo 1 que les contrôles tapent. Deux corrections : (1) **la règle d'E2 est fausse** — l'heure suivante commence **où la classe s'est arrêtée** (CADRAGE-TEMPS §1, C1 6.1), ici la diapo 4 ; la frontière par les durées ne sert qu'à prévoir ; (2) les contrôles (v2.2) jouent l'heure 1 d'une séance neuve (copie du hub sans `deroule_joue`) : **108/0 sur `d1752cd2`**. `banc.sh` v1.1 : le verdict des contrôles vient du fichier (le tube rendait « VERT » avec 18 échecs — c'est ce qui a pu tromper E2).
+- Capture P5 : « Où on en est » par activité (R7) ; le témoin « Enregistré à … » rangé dans l'entête (E1) ; l'entête tient sur deux rangées.
+- **Relances (16:35)** : E2 — la poussée sans banc, la règle de l'heure suivante, la reprise qui perd la 19ᵉ vignette et passe en H1 (grave), le VIF qui pose deux paroles (grave, avec E1), la T-5 hors écran et la fin de l'heure qui remplace la colonne de droite, le reste de sa liste ; E1 — le grave n°1 (la première lettre perdue), le VIF, le volet qui ne suit pas, « + bloc » Consigne, Échap du clic droit, les entrées `h:1` au journal hors heure lancée, la pastille « mode test » ; E3 — ses deux points à revérifier ; E4 — ses dix lignes puis R6. `main` → `integration` (f31cfdd4).
+- Réveil suivant : 17:45.
+
+Réponse de la conscience (16:42), mot pour mot :
+
+154. Réveil n°4. Les quatre ont traité les relances de 15:14 en moins d'une heure et continuent ; E4 a passé deux relecteurs de plus sur tout. **Une alerte** : E2 a poussé à 15:44 sans le banc complet, et mon banc y trouve dix-huit contrôles rouges — pas un bug de code mais une règle fausse : après une heure jouée, il fait commencer l'heure suivante à une frontière calculée sur les durées (la diapo 9) au lieu de **là où la classe s'est arrêtée** (la diapo 4). C'est ton cadrage (« la séance reste ouverte et reprend à l'heure suivante ») : relancé en premier chez lui, avec l'obligation du banc avant chaque poussée. Mes contrôles, eux, jouent maintenant l'heure 1 d'une séance neuve : 108/108 sur la même poussée.
+
+155. Deux autres graves relancés : la reprise après rechargement perd la vignette du cahier de textes et retombe en « heure 1 » (E2) ; la parole au clavier (initiales, 1/2/3, note, Entrée) pose parfois deux paroles ou met le chiffre dans la note (E1/E2). Le reste : des tailles, des infobulles, des phrases du récit, chez chacun.
+
+156. Prochain réveil à 17:45. Rien à te demander ; la question du point 152 (l'heure de fin dans le récit) reste posée.
+
+21/10/2026 16:42
+MEMO

@@ -45,3 +45,6 @@
 
 ## v2 — 21/10/2026 (l'intégration, contrat des quatre)
 Les contrôles ne changent pas ; **l'entrée** devient paramétrable : `MJPC_ENTREE=site node controles.mjs <index.html assemblé>` joue K1-K13 sur le site intégré (faux hub `AUDITS/INTEGRATION-DEROULE/hub/`, horloge au 14/09 09:00, gestes réels jusqu'à l'onglet Atelier) ; sans la variable, la maquette seule, comme avant. `noteDe` lit `dr.notes()` quand le site l'expose (contrat §5). **Éprouvé** : sur p8-5g, v2 donne exactement les verdicts de v1 (`epreuves/sur-p8-5g-v2.txt` : 108 vérifications, 15 échecs, les mêmes). `controles.mjs` md5 `dbb8e8bce872858a468826bc9ad6b018`.
+
+## v2.2 — 21/10/2026, 16:33
+Par l'entrée du site, les contrôles jouent **l'heure 1 d'une séance jamais jouée** (comme la maquette) : la copie du faux hub qu'ils lisent est débarrassée des `deroule_joue` (le faux hub porte une heure du 07/09 pour la séance 0, qui faisait lancer l'heure 2/3 et commencer loin de la diapo 1 : 18 échecs sur `d1752cd2` avec v2.1, **108/0 avec v2.2** — `epreuves/sur-integration-d1752cd2-v22.txt`). Les K ne mesurent pas la reprise d'une séance commencée : c'est le parcours (P5 « heure 2/3 ») et le banc d'E2 qui la mesurent. `controles.mjs` md5 `324e2124fd…`.

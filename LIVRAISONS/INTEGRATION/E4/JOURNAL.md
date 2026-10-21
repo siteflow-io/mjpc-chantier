@@ -137,3 +137,14 @@
 ## Poussée 24 — 12:36 UTC
 - Relecture continue : le relecteur A2 (sur `5bbc8097`) est consigné dans RELECTURE-CONTINUE. Il juge réglés le lancement par la case, la reprise et la tête à 1280. Restent ouverts, revérifiés : « rien ne restait », la question grisée, le bandeau « Enregistré », la séance qui disparaît de l'EDT à la clôture, la réponse absente du tableau. Il y a 8 lignes nouvelles, et une écartée par le cadrage : l'heure de fin dans le récit. Les captures sont dans `relecteurs/continu-1233/`.
 - Ensuite : je rejoue banc.sh sur les poussées E2 `59c633ea` et E3 `b35bcc0f`, et j'attends le relecteur B2.
+
+## Poussée 25 — 12:45 UTC
+- Rejoué sur les poussées E2 `59c633ea` / `4a13e628` et E3 `b35bcc0f` :
+  - banc.sh : K1-K13 108/0, parcours vert ; seul rouge, P5 en mode test, l'outil (`sorties/1235`).
+  - Mon banc : **74 ok · 0 échec**.
+- Relecteur B2 consigné (sur `5bbc8097`) :
+  - les 6 points de 11:40 sont réglés ;
+  - la répétition reste cachée à 1280 et à 1366 ;
+  - 12 lignes nouvelles, dont **8 à moi** (marque posée sans focus, phrase fantôme au rechargement, transpositions, annuler après « Marquer », annulation en rafale, menu de la sélection, « Ce qui s'est passé », espace insécable au papier).
+  - Captures dans `relecteurs/continu-1238/`.
+- Ensuite : je corrige mes 8 lignes, une épreuve chacune.

@@ -8,6 +8,9 @@ Paul prépare ses séances dans l'Atelier du nouveau déroulé, **sur ses vrais 
 ## CE QUI EST MESURÉ (20/10, pièces `TRANSCRIPTS/C13/pieces/T72-*`)
 Le site (EX-03) : vue Déroulé = tête de préparation + ancien moteur dans l'iframe `at-dr-iframe` (`AT_DR_B64`, 229 960 o, décodé par `_drAssurerCadre`), enveloppé par le pont (`_drEnvelopper` crochète `rendre`, `sauve`, `tableau`, `degorge`) ; la Relecture et le Papier sont rendus par ce moteur (`atDrVueInterne` → `DR.dr_vue`). La barre `atVuesBarreHtml` (`structure deroule relecture papier`), la colonne `atSommaireNatifHtml` avec `atSomInjecterEcrans`. La maquette (T72-B1) : 294 fonctions, 373 globales, 271 ids, 413 classes CSS ; `DATA` en dur ; collisions avec le site : 8 globales, 14 classes, 15 ids (`AUDITS/INTEGRATION-DEROULE/collisions.json`).
 
+## MISSION 0 — L'AUDIT DU MANDAT (contrat §11), dans l'heure, avant tout code
+Tu confrontes ce mandat, le contrat et le plan au code réel ; tu pousses `E1/AUDIT-DU-MANDAT.md`. Pour toi en particulier : les plages de lignes du contrat §6 (la maquette) ; la liste des fonctions du site qui tombent (chacune existe-t-elle, est-elle bien morte avec le moteur ?) ; les interfaces du socle (sont-elles suffisantes pour E2-E4 ? en manque-t-il ?) ; **les 157 fonctions de `deroule86.html` relues une à une** : tout geste qui marchait et que la maquette ne fait pas, absent de `RECYCLAGE-ANCIEN-DEROULE.md` table B, s'ajoute à ta table dans l'audit.
+
 ## CE QUI EST TRANCHÉ
 
 ### E1-a — la première poussée (cible : H0 + 2 ; au plus tard H0 + 3)
@@ -29,7 +32,8 @@ Le site (EX-03) : vue Déroulé = tête de préparation + ancien moteur dans l'i
 14. **p8-5h dans le site** : les points 1 à 16 de `MANDATS/COMPLEMENT-DEROULE-P8-5h.md` (dettes 13 · 18 à 13 · 23), avec leurs bancs tels que le complément les décrit, joués sur `assemble/index.html` ; K1, K8, K10-K13 verts (K10 et K11 dès que E3 a la fenêtre ; sinon tu le notes).
 15. **La taille** : à 1280 × 800 et 1366 × 768 l'entête de la maquette tient dans la zone du site (13 · 23) ; `dimensionner` prend la hauteur réellement disponible sous la barre du site.
 16. **Les infobulles** de l'Atelier et de la barre, écrites pour Paul.
-17. Quand tout tient : les dettes 13 · 4, 13 · 5, 13 · 6 (vérifier qu'elle tient), 13 · 12 et 12 · 14-19 qui touchent l'Atelier ; puis les relecteurs neufs ; puis `NOTE.md`.
+17. **Le recyclage de l'ancien déroulé** (`RECYCLAGE-ANCIEN-DEROULE.md`, table B, « pour ce qui marchait ») : **R1** les marques sur une image (« Document analysé » / « Illustration », poser · éditer · supprimer, dévoilées une à une ou toutes ensemble, calibrées — `b.marques`, `b.support`, repris du moteur `armeMk`/`editeMarque`/`supMk`/`calibreMarques`/`prendreImage`, rendu au socle pour que E3 les montre au tableau) ; **R2** le rappel d'une fiche dans l'Atelier (« Pourquoi ce rappel ? » : les quatre motifs + texte libre, `b.rappel`, `memeFeuille`, `dejaPosee` — E4 l'écrit dans le récit) ; **R4** ↶ Annuler (Ctrl+Z) dans l'Atelier : une pile d'états de la trame (le `annuler`/`pile` du moteur) ; **R6** Ctrl+B / Ctrl+U au clavier ; **R5** la sélection multiple (sauf si Paul la raye). Chacun avec son banc par le geste et son infobulle.
+18. Quand tout tient : les dettes 13 · 4, 13 · 5, 13 · 6 (vérifier qu'elle tient), 13 · 12 et 12 · 14-19 qui touchent l'Atelier ; puis les relecteurs neufs ; puis `NOTE.md`.
 
 ## BANCS PAR LE GESTE (`E1/bancs/banc.mjs`, banc unique)
 - E1-a : le parcours P0-P4 ; `collisions.mjs` à 0 ; la liste des fonctions du site retirées (comptée) contre la liste du contrat ; la trame de la séance 0 rendue (19 vignettes, diapo 1 au mur).

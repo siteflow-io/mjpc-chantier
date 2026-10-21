@@ -21,7 +21,7 @@ La chaîne `v9c15p8-template.html` + `patch-*.py` + `regen.sh` de la maquette **
 
 ## 3 · OÙ ON TRAVAILLE — une seule branche, des fichiers séparés
 
-- **Branche du sas : `integration`** (créée par E1 à partir de `main`, les autres s'y joignent). Jamais `main`. Jamais la production.
+- **Branche du sas : `integration`** (créée depuis `main` par le premier qui pousse — l'audit de mission 0 arrive avant E1-a —, les autres s'y joignent ; `git pull --rebase` règle les croisements). Jamais `main`. Jamais la production.
 - **Dossier : `LIVRAISONS/INTEGRATION/`** :
   - `index.html` — le site, modifié (copie de la production, md5 vérifié au départ).
   - `dr/` — les modules du déroulé pendant le chantier, un fichier par territoire : `dr.css`, `dr-gabarit.js` (le corps HTML de la maquette, chaîne `dr_gabarit`), `dr-socle.js` (E1), `dr-atelier.js` (E1), `dr-classe.js` (E2), `dr-tableau.js` (E3), `dr-recit.js` (E4). `index.html` les charge par `<link rel="stylesheet" href="dr/dr.css">` et `<script src="dr/…"></script>`, **dans cet ordre**, à l'endroit où vivait `AT_DR_B64`.
@@ -35,7 +35,7 @@ La chaîne `v9c15p8-template.html` + `patch-*.py` + `regen.sh` de la maquette **
 
 | heure | E1 | E2 · E3 · E4 |
 |---|---|---|
-| H0 | lit (plan, contrat, mandat, la maquette, le pont du site), commence **E1-a** | lisent (plan, contrat, mandat, leur territoire dans la maquette et dans le site) ; écrivent leurs bancs **sur la maquette p8-5g** (les mêmes gestes passeront sur le site : §7) |
+| H0 | **mission 0 (§11) : l'audit du mandat**, poussé dans `E1/AUDIT-DU-MANDAT.md` dès qu'il est écrit ; puis lit la maquette et le pont du site, commence **E1-a** | **mission 0 (§11) : l'audit du mandat**, poussé dans `E<n>/AUDIT-DU-MANDAT.md` ; puis lisent leur territoire dans la maquette et dans le site ; écrivent leurs bancs **sur la maquette p8-5g** (les mêmes gestes passeront sur le site : §7) |
 | H0 + 2 (cible) | **pousse E1-a** : la maquette dans le site, en modules, préfixée, l'iframe et le pont tombés, la barre fusionnée, les interfaces du socle (§5) ; parcours P0-P4 vert ; `assemble/index.html` produit | dès que `E1-a` est poussée (ils surveillent `integration` : `git fetch` toutes les cinq minutes) : **partent de là** et codent dans leur module |
 | ensuite | la trame réelle complète, l'Atelier, la colonne unique, p8-5h, les activités/notes/travail au hub | leur territoire, morceau par morceau |
 | toutes les 2 h | la conscience tire `integration`, assemble, rejoue le parcours et les contrôles, écrit les relances, fait le point à Paul | |
@@ -105,5 +105,16 @@ Ce que **personne** ne touche : l'EDT hors des fonctions nommées (229 fonctions
 ## 10 · CE QUI ARRÊTE UN EXÉCUTANT (et rien d'autre)
 
 Rien. Si le mandat est contradictoire ou impossible à mesurer sur un point, on l'écrit dans `JOURNAL.md`, on livre le reste, on continue. Si `integration` ne reçoit pas `E1-a` à H0 + 3, E2-E4 commencent leur module **sur la maquette p8-5g copiée dans `LIVRAISONS/INTEGRATION/attente-E<n>/`** et le reporteront dans leur module dès `E1-a` — ils le disent dans `JOURNAL.md`.
+
+## 11 · MISSION 0 — L'AUDIT DU MANDAT (Paul, 21/10, 08:49 : « il faut que les exécutants auditent ton mandat, c'est leur première mission. En effet, si tu t'es trompé, il faut qu'ils le signalent »)
+
+Avant de coder, chaque exécutant **confronte ce contrat, le plan et son mandat au code réel** (`index.html` de production et la maquette p8-5g) et pousse `E<n>/AUDIT-DU-MANDAT.md` — c'est sa première poussée, dans l'heure :
+1. **Ce qui est faux** : une fonction nommée qui n'existe pas ou ne fait pas ce que le mandat dit ; une plage de lignes qui ne correspond pas ; un chemin du hub qui n'est pas celui que le site écrit ; un id ou un nom que les contrôles attendent et qui n'existe pas.
+2. **Ce qui est contradictoire** : entre le contrat et un mandat, entre un mandat et un cadrage (`DEROULE/CADRAGE-*.md`), entre deux territoires (deux exécutants à qui la même fonction est donnée, ou une fonction donnée à personne).
+3. **Ce qui manque** : un geste de l'ancien déroulé qui marchait, absent de la maquette et absent de `RECYCLAGE-ANCIEN-DEROULE.md` (**E1 relit les 157 fonctions de `deroule86` une à une** et complète la table B de ce fichier, dans son audit) ; une donnée écrite aujourd'hui au hub que le plan §3 ne rebranche pas ; un écran du parcours T72 que personne ne reprend.
+4. **Ce qui est impossible à mesurer** tel que le mandat le demande, avec la mesure qu'on propose à la place.
+5. **Le verdict** par point du mandat : « tient » / « faux, parce que… » / « incomplet, il manque… ». Rien d'autre : pas de réécriture du mandat, pas de propositions de design.
+
+Puis il continue sans attendre : il code ce qui n'est pas contesté ; ce qui est contesté attend la réponse de la conscience dans `RELANCES/E<n>.md` (au premier réveil, deux heures au plus). Un audit vide (« tout tient ») est suspect : la conscience le relit ligne à ligne.
 
 MEMO

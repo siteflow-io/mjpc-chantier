@@ -1589,3 +1589,28 @@ Réponse de la conscience (08:50), mot pour mot :
 
 21/10/2026 08:50
 MEMO
+
+---
+
+## TOUR 75 (21/10/2026, 08:49 → 08:58)
+
+Paul, tour 75, mot pour mot : « Attends déjà il faut que les exécutants auditent ton mandat, c'est leur première mission. En effet, si tu t'es trompé, ils faut qu'ils le signalent. par ailleurs, as-tu mesuré les fonctionnalités de l'ancien déroulé qui n'étaient pas intégrées dans le nouveau et qu'il faudra bien sûr recycler? Afin que le travail ne soit pas perdu, POUR CE QUI MARCHAIT »
+
+Fait par la conscience entre 08:49 et 08:58 :
+- **La mesure du recyclage**, `MANDATS/INTEGRATION-DEROULE/RECYCLAGE-ANCIEN-DEROULE.md` : l'ancien déroulé inventorié par le geste visible (les boutons et leurs infobulles de `deroule86`, les menus, les raccourcis, les onglets ; le pont et la session du site), chaque geste cherché dans le code de la maquette p8-5g. A · repris (liste) ; B · **pas repris et qui marchait, à recycler** : R1 les marques sur une image (Document analysé / Illustration, une à une / toutes ensemble) ; R2 le rappel d'une fiche (« Pourquoi ce rappel ? », quatre motifs, visible par les élèves dans le récit) ; R3 le minuteur d'activité (mm:ss, Départ, au tableau) ; R4 ↶ Annuler (Ctrl+Z) dans la préparation ; R5 la sélection multiple ; R6 Ctrl+B / Ctrl+U ; R7 « Où on en est » (dévoilés / total par activité, prévu / réel) ; R8 le temps utile au lancement ; R9 le témoin « déroulé intègre » ; R10 le téléphone (tombe par le cadrage, rien n'est perdu) ; R11 la scission (tombe, voulu : dette LOT G) ; R12 Sommaire / Documents (couverts). Limite dite : les 157 fonctions ne sont pas relues une à une — c'est la mission 0 d'E1.
+- **La mission 0 — l'audit du mandat** : contrat §11 (ce qui est faux, contradictoire, manquant, impossible à mesurer ; un verdict par point ; poussé dans `E<n>/AUDIT-DU-MANDAT.md` dans l'heure ; on continue avec ce qui n'est pas contesté ; un audit vide est suspect) ; ajoutée en tête des quatre mandats (avec ce que chacun doit regarder de près) et des quatre phrases.
+- Les points de recyclage ajoutés aux mandats : E1 (R1, R2, R4, R5, R6), E2 (R3, R7, R8, R9), E3 (R1 et R3 au tableau), E4 (R2 dans le récit et le papier).
+- Contrat §3 : la branche `integration` est créée par le premier qui pousse (l'audit arrive avant E1-a).
+
+Réponse de la conscience (08:58), mot pour mot :
+
+130. La mission 0 est écrite : chaque exécutant commence par auditer le contrat, le plan et son mandat contre le code réel, pousse son audit dans l'heure (ce qui est faux, contradictoire, manquant, impossible à mesurer — un verdict par point), signale sans corriger en silence, puis continue avec ce qui n'est pas contesté. Je tranche les contestations à chaque réveil.
+
+131. Le recyclage : non, je ne l'avais pas mesuré geste par geste avant ce matin — c'est fait maintenant : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/INTEGRATION-DEROULE/RECYCLAGE-ANCIEN-DEROULE.md. Ce qui marchait dans l'ancien et que la maquette ne fait pas : les marques sur une image (document analysé), le rappel d'une fiche (« pourquoi ce rappel ? », que les élèves lisent dans le récit), le minuteur d'activité (« 5 min », Départ, au tableau), ↶ Annuler dans la préparation, la sélection de plusieurs éléments, Ctrl+B/Ctrl+U au clavier, « Où on en est » par activité (dévoilés / total, prévu / réel), le temps utile au lancement, le témoin « déroulé intègre ». Les neuf sont ajoutés aux mandats, chacun chez l'exécutant du territoire. Le téléphone tombe par ton cadrage (rien n'est perdu, il se refait après) ; la scission tombe parce qu'elle ne marchait pas (le LOT G) : les pages la remplacent.
+
+132. Deux choses à toi dans ce fichier : rayer ce dont tu ne te sers pas (la sélection multiple, les raccourcis clavier gras/souligné sont les candidats) ; et dire si le minuteur doit aussi s'écrire dans le récit (ma proposition : oui).
+
+133. Les quatre phrases sont mises à jour (mission 0 en tête, le fichier de recyclage dans les lectures) : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/INTEGRATION-DEROULE/PHRASES-A-COLLER.md. Rien n'est lancé tant que tu ne colles pas. Le réveil de 10:50 reste : s'ils tournent, j'audite leurs audits ; sinon je le dis en une ligne.
+
+21/10/2026 08:58
+MEMO

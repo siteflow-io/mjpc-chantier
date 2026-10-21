@@ -23206,3 +23206,17 @@ Les exécutants se sont arrêtés à 09:32, sur mon « contrôlé ». Il faut re
 Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
 
 21/10/2026 09:46 MEMO
+
+## TOUR 757 — Paul, 21/10 12:42
+
+Paul, mot pour mot :
+
+je viuens de le coller, et je n'ai collé que la moitié du message sans faire exprès
+
+Lu : `ETAT.md` et les commits de `code-qcm` (QCM-4 reçu 12:43, `9a177fc0` ; QCM-1 reçu 12:43, livré `f846f082` à 12:47 ; QCM-3 `f55d19a` à 12:49). Fait : la condition d'arrêt au point 14 (`code-qcm` `94a89a52`) ; le contrôle programmé à 14:15 (`trig_011nNQiNBynEmX4ZEhX11kFU`).
+
+Envoyé à Paul, mot pour mot :
+
+31. Pas de souci : la moitié collée suffisait. Les trois exécutants ont bien reçu ton message à 12:43, et j'ai ajouté dans leur section ce qui manquait (quand s'arrêter). QCM-1 a déjà livré à 12:47, QCM-3 à 12:49, et QCM-4 rejoue tout. Mon contrôle est programmé à 14:15. Si ça va, je te demanderai alors si une séance est en cours, puis je mettrai tout en ligne.
+
+21/10/2026 12:49 MEMO

@@ -140,7 +140,9 @@ dire(''); dire('B3 — la reprise (recharger en pleine heure, mêmes écritures 
 { const s = await session(); const v = await lancerUnClic(s);
   if (v === 'absent' || !s.site) pas('B3', 'absent', 'la reprise se joue sur le site intégré (la maquette perd tout au rechargement)');
   else { await devoiler(s, 2); await parole(s); await s.page.keyboard.press('n'); await s.attendre(200); await s.page.keyboard.type('note de reprise'); await s.page.keyboard.press('Enter'); await s.attendre(400);
-    await s.attendre(60000); const avant = await s.page.evaluate(() => ({ di: S.di, eid: (() => { try { return eidDe(S.di); } catch (e) { return null; } })(), parts: S.parts.length, notes: S.notesFil.length, ecoule: S.ecoule }));
+    await s.page.click('#dr-clore'); await s.attendre(600); await s.page.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="6"]'); if (e) e.click(); }); await s.attendre(400); await s.page.evaluate(() => { const b = document.getElementById('f-copie-contenu'); if (b) b.click(); }); await s.attendre(300); await s.page.evaluate(() => { const b = document.getElementById('f-fermer'); if (b) b.click(); }); await s.attendre(300);
+    const heuresDe = p => p.evaluate(() => ({ h: S.heure, sur: (dr_heureJouee(S.heure) || {}).sur, heures: seance().ecrans.map(e => (e.role === 'fin' ? 'F' : '') + e.heure).join(' '), titre: (document.querySelector('#volet h5') || {}).textContent || '', hou: (document.getElementById('hou') || {}).textContent || '', copies: J.filter(x => x.type === 'copie-ed').length }));
+    await s.attendre(60000); const avant = await s.page.evaluate(() => ({ di: S.di, eid: (() => { try { return eidDe(S.di); } catch (e) { return null; } })(), parts: S.parts.length, notes: S.notesFil.length, ecoule: S.ecoule })); const hAvant = await heuresDe(s.page);
     const hub = await s.hub(); await s.ctx.close();
     const s2 = await session({ store: hub, quand: '2026-09-14T09:01:05+02:00' }); const p2 = s2.page; await s2.attendre(7000);
     const ban = await p2.evaluate(() => { const b = document.getElementById('ses-reprise'); return b ? b.innerText.replace(/\s+/g, ' ') : null; });   /* la bannière est en position fixe : offsetParent est nul, on teste sa présence */
@@ -148,6 +150,9 @@ dire(''); dire('B3 — la reprise (recharger en pleine heure, mêmes écritures 
     if (ban) { await p2.evaluate(() => { const b = Array.from(document.querySelectorAll('#ses-reprise button')).find(x => /Reprendre/.test(x.innerText)); if (b) b.click(); }); await s2.attendre(9000); }
     const ap = await p2.evaluate(() => window.S ? ({ lancee: S.lancee, di: S.di, eid: (() => { try { return eidDe(S.di); } catch (e) { return null; } })(), parts: S.parts.length, notes: S.notesFil.length, ecoule: S.ecoule }) : null); await cap(p2, 'B3-reprise');
     pas('B3', ap && ap.lancee && ap.eid === avant.eid ? 'ok' : 'ÉCHEC', 'la diapo courante est revenue', JSON.stringify({ avant: avant.eid, apres: ap && ap.eid }));
+    const hApres = await heuresDe(p2);
+    pas('B3', hAvant.h === 2 && hApres.h === hAvant.h && hApres.sur === hAvant.sur && hApres.heures === hAvant.heures && hApres.titre === hAvant.titre && hApres.hou === hAvant.hou ? 'ok' : 'ÉCHEC', 'la reprise remonte l\'heure telle qu\'elle était : heure 2/3, les frontières de chaque diapo, le volet, l\'entête (réveil n°4, point 3)', JSON.stringify({ avant: hAvant, apres: hApres }));
+    pas('B3', hAvant.copies === 1 && hApres.copies === 1 ? 'ok' : 'ÉCHEC', 'une copie pour École Directe avant le rechargement = un seul « copie-ed » au journal après la reprise (réveil n°4, point 7)', hAvant.copies + ' → ' + hApres.copies);
     const dr0 = (H(hub, await p2.evaluate(() => ATVUES.snum)) || {}).debutReel; const att = Math.round((await p2.evaluate(() => Date.now()) - dr0) / 1000);
     pas('B3', ap && dr0 && Math.abs(ap.ecoule - att) <= 2 ? 'ok' : 'ÉCHEC', 'le chrono (± 2 s) : le temps écoulé depuis le début réel au hub', JSON.stringify({ apres: ap && ap.ecoule, attendu: att }));
     pas('B3', ap && ap.parts === avant.parts && ap.notes === avant.notes ? 'ok' : 'ÉCHEC', 'la parole et les notes sont là', JSON.stringify({ avant, ap }));
@@ -206,8 +211,8 @@ dire(''); dire('B8 — pendant l\'heure, un absent coché dans la case de l\'EDT
 dire(''); dire('B9 — F2 « EB1 » tapé d\'un trait pose ; pas de « LC2 » à l\'écran ; « sur 7 » ; la fiche ne couvre pas la fin de l\'heure ; le chrono s\'arrête à la clôture');
 { const s = await session(); const p = s.page; const v = await lancerUnClic(s);
   if (v === 'absent' || !s.integre) { pas('B9', 'absent', 'le Lancer du site intégré'); }
-  else { const d0 = await p.evaluate(() => { const E = seance().ecrans, f = E.filter(e => e.role === 'fin').map(e => e.eid); return { h: S.heure, premier: ordreHeure(S.heure)[0], di: S.di, jouees: Array.from(document.querySelectorAll('#volet .vig.jouee')).map(v => +v.dataset.i), fins: f, uniques: new Set(f).size === f.length && f.every(x => !/-sx$/.test(x)) }; });
-    pas('B9', d0.h === 2 && d0.premier === 3 && d0.di === 3 && JSON.stringify(d0.jouees) === '[0,1,2]' && d0.uniques ? 'ok' : 'ÉCHEC', 'heure 2/3 : le paquet du 07/09 a joué trois diapos → l\'heure 2 commence à la diapo 4, les trois jouées marquées au volet (réveil n°4, point 2 ; CADRAGE-TEMPS §1), aucun « Cahier de textes » doublé, tous à la clé de la séance (banc.sh 13:56, K6-K11)', JSON.stringify(d0));
+  else { const d0 = await p.evaluate(() => { const E = seance().ecrans, f = E.filter(e => e.role === 'fin').map(e => e.eid); const o0 = ordreHeure(S.heure)[0]; const rang = i => E.slice(0, i + 1).filter(e => !e.role).length; return { h: S.heure, premier: rang(o0), di: rang(S.di), jouees: Array.from(document.querySelectorAll('#volet .vig.jouee')).map(v => +v.dataset.i), fins: f, uniques: new Set(f).size === f.length && f.every(x => !/-sx$/.test(x)) }; });
+    pas('B9', d0.h === 2 && d0.premier === 4 && d0.di === 4 && JSON.stringify(d0.jouees) === '[0,1,2]' && d0.uniques ? 'ok' : 'ÉCHEC', 'heure 2/3 : le paquet du 07/09 a joué trois diapos → l\'heure 2 commence à la diapo 4, les trois jouées marquées au volet (réveil n°4, point 2 ; CADRAGE-TEMPS §1), aucun « Cahier de textes » doublé, tous à la clé de la séance (banc.sh 13:56, K6-K11)', JSON.stringify(d0));
     const poses = () => p.evaluate(() => S.parts.map(x => x.nom + ':' + x.m + ':' + x.note));
     await p.keyboard.press('F2'); await s.attendre(200); await p.keyboard.type('EB1'); await s.attendre(400); const avant = await poses(); await p.keyboard.type('au tableau'); await p.keyboard.press('Enter'); await s.attendre(400);
     const apres1 = await poses(); const champ = await p.evaluate(() => (document.activeElement || {}).id);
@@ -232,6 +237,21 @@ dire(''); dire('B9 — F2 « EB1 » tapé d\'un trait pose ; pas de « LC2 » à
     pas('B9', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
 
+// ── B10 · à 1280 × 768 : la boîte T-5 entière au-dessus des notes ; pendant la fin de l'heure, la participation reste (réveil n°4, point 5) ──
+dire(''); dire('B10 — à 1280 × 768 : la boîte T-5 dans l\'écran, ses boutons cliquables ; la fin de l\'heure laisse la participation et « Où on en est »');
+{ const s = await session({ vue: { width: 1280, height: 768 } }); const p = s.page; const v = await lancerUnClic(s);
+  if (v === 'absent' || !s.integre) pas('B10', 'absent', 'le Lancer du site intégré');
+  else { await p.evaluate(() => { S.palier = 't5'; alerteOuvrir(); }); await s.attendre(500);
+    const a = await p.evaluate(() => { const r = el => { const b = el.getBoundingClientRect(); return [Math.round(b.left), Math.round(b.top), Math.round(b.right), Math.round(b.bottom)]; }; const al = document.getElementById('al-boite'), mur = document.getElementById('murcadre'), no = document.querySelector('.scene > .notes');
+      const bt = ['al-aller', 'al-tard', 'al-preparer'].map(id => { const e = document.getElementById(id); const q = r(e); const c = document.elementFromPoint((q[0] + q[2]) / 2, (q[1] + q[3]) / 2); return { id, q, dessus: !!c && (c === e || e.contains(c)) }; });
+      return { al: r(al), mur: r(mur), notes: r(no), bt, h: innerHeight }; });
+    pas('B10', a.al[3] <= a.h && a.al[1] >= a.mur[3] && a.al[3] <= a.notes[1] + 1 && a.bt.every(b => b.dessus && b.q[3] <= a.h) ? 'ok' : 'ÉCHEC', 'la boîte T-5 est entière dans l\'écran, sous la diapo (sans la couvrir), au-dessus des notes ; « Aller au cahier », « Plus tard », « Préparer » cliquables (C1 6.3)', JSON.stringify(a));
+    await p.click('#dr-clore'); await s.attendre(600);
+    const d = await p.evaluate(() => { const vis = sel => { const e = document.querySelector(sel); return !!(e && e.offsetParent); }; return { fin: vis('#droite-fin'), part: vis('#part'), suivi: vis('#droite > .suivi'), tableau: vis('#droite > .suivante') }; });
+    pas('B10', d.fin && d.part && d.suivi && d.tableau ? 'ok' : 'ÉCHEC', 'pendant la fin de l\'heure, la colonne de droite garde la participation, « Où on en est » et le tableau (C1 7.0 ter : la classe continue)', JSON.stringify(d));
+    pas('B10', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');
 { const s = await session(); const ok = s.integre ? await s.page.evaluate(() => { const a = { niveau: '3e', chapitre: '0', seance: '0', classeSlug: '3E Charles de Gaulle', debut: '08:57', fin: '09:52' }, b = Object.assign({}, a, { debut: '10:07', fin: '11:02' }); return [_drCleHeureDe(a), _drCleHeureDe(b)]; }) : null;
@@ -245,6 +265,8 @@ dire(''); dire('B6 — le mode test (13 · 25) : lancer, dévoiler, clore → z�
   else { await s.page.evaluate(() => { M8_TEST = true; }); const n0 = (await s.ecrits()).length; const v = await lancerUnClic(s);
     if (v === 'absent') pas('B6', 'absent', 'aucun [data-lancer="1"]');
     else { const m1 = await s.page.evaluate(() => { const st = M8_TEST_STORE, k = Object.keys(st).find(x => /\/heures\/[^/]+$/.test(x)); return { ca: st['/site/cours_actif'] || null, H: k ? st[k] : null }; });
+      await s.attendre(1500); const pil = await s.page.evaluate(() => { const x = document.getElementById('dr-test'); return x ? { vu: !!x.offsetParent, txt: x.innerText, zone: (document.getElementById('dr-zone') || {}).dataset.modeTest || null } : null; });
+      pas('B6', pil && pil.vu && pil.zone === '1' ? 'ok' : 'ÉCHEC', 'mode test : la pastille « Mode test » dans l\'entête du pilotage, `data-mode-test` posé (C1 11t.3, réveil n°4, 5)', JSON.stringify(pil));
       pas('B6', m1.ca && m1.ca.classeSlug === '3E Charles de Gaulle' && m1.H && !m1.H.clos ? 'ok' : 'ÉCHEC', 'mode test, après le lancement : le magasin de test porte cours_actif, et l\'heure n\'est PAS close (relance du 21/10 12:58)', JSON.stringify({ ca: !!m1.ca, clos: m1.H && m1.H.clos }));
       await devoiler(s, 2); await s.page.click('#dr-clore'); await s.attendre(400); await s.page.click('#f-clore'); await s.attendre(300); if (await s.page.evaluate(() => document.getElementById('garde-clore').classList.contains('on'))) { await s.page.click('#gclore-oui'); } await s.attendre(2500);   /* « ■ Clore l'heure » → l'étape 7 → « Clore l'heure » → la garde → « Clore quand même », comme Paul */
       const ec = depuis(await s.ecrits(), n0); pas('B6', ec.length === 0 ? 'ok' : 'ÉCHEC', 'mode test : zéro écriture au hub', ec.length + ' : ' + ec.join(' · '));

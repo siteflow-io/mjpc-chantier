@@ -73,6 +73,9 @@ await CAS('T1', 'la fenêtre locale montre ce que voit la classe, et suit sans r
   await fen.evaluate(() => { window.__pasRecharge = 1; }); await dev(pg, 1); await pg.waitForTimeout(700); const p1 = await lire(pg, 'pilote'), t1 = await lire(fen, 'tableau'); const garde = await fen.evaluate(() => window.__pasRecharge === 1);
   verif('T1', pareil(p1, t1) && t1.lignes.length === 4, 'un ▶ de plus : la fenêtre suit (quatre lignes, comme le pilote) dans les 700 ms', `pilote ${p1.lignes.length} l. · tableau ${t1 && t1.lignes.length} l.`);
   verif('T1', garde, 'sans rechargement de la fenêtre', String(garde)); await cap(fen, 'T1-fenetre-quatre-devoiles');
+  if (SITE) { await pg.evaluate(() => dr_versMur(null, { sortie: true })); await pg.waitForTimeout(400); const vide = await lire(fen, 'tableau');
+    await pg.evaluate(() => dr_versMur(S.mur)); await pg.waitForTimeout(400); const remis = await lire(fen, 'tableau');
+    verif('T1', !!vide && vide.lignes.length === 0 && pareil(remis, t1), 'le crochet `dr_versMur` (relance F7) : `null` vide la fenêtre, `S.mur` la remontre', `vide ${vide && vide.lignes.length} l. · remis ${remis && remis.lignes.length} l.`); }
   const errF = []; fen.on('pageerror', e => errF.push(String(e.message).slice(0, 120))); await fen.waitForTimeout(3000);
   verif('T1', errF.length === 0, 'la fenêtre tourne 3 s sans aucune erreur JS (relecteurs 1 n° 5, 2 n° 1 : `tick` sans #fin)', errF.join(' ; ') || '0');
   if (SITE) { const c3 = await nav.newContext(); await c3.route(u => !String(u).startsWith('file:'), r => r.abort()); const p3 = await c3.newPage(); const e3 = []; p3.on('pageerror', e => e3.push(String(e.message).slice(0, 120)));
@@ -119,7 +122,9 @@ await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène su
   await tb.goto(URL0 + '?vue=tableau', { waitUntil: 'load' }); await tb.waitForTimeout(2500);
   const att = await tb.evaluate(() => { const a = document.getElementById('ses-tab-att') || document.getElementById('dr-attente'); return a && a.offsetParent !== null ? a.innerText.replace(/\s+/g, ' ').trim() : null; }); await cap(tb, 'T5-attente');
   verif('T5', !!att && /monsieurjaipascompris/i.test(att) && /\d\d:\d\d/.test(att), 'sans cours actif : l\'écran d\'attente (le nom du site, l\'heure, la date)', att || '—');
-  verif('T5', !!att && /Classe attendue : 3E Charles de Gaulle/.test(att) && /08:57/.test(att), 'à 08:50, l\'EDT dit qu\'une heure commence : la classe attendue est dite (lue dans la grille, en lecture seule)', att || '—');
+  const prop = await tb.evaluate(() => typeof dr_proposer === 'function');
+  if (prop) verif('T5', !!att && /Classe attendue : /.test(att), 'à 08:50 : la classe attendue vient de `dr_proposer()` (E2)', att || '—');
+  else verif('T5', !!att && !/Aucun cours|Classe/.test(att), 'sans `dr_proposer()` (E2) : l\'attente ne dit que le nom du site, l\'heure et la date (relance F1)', att || '—');
   // le pilote publie : on recopie sa scène, son pointeur et sa copie dans le faux hub du distant (deux contextes ne partagent pas la mémoire — audit I2)
   const relais = async h => tb.evaluate(h => { window.__hubPoser('/site/cours_actif', h.c); window.__hubPoser(h.b + '/ecrans', h.ecrans); window.__hubPoser(h.b + '/scene', h.scene); }, h);
   await tb.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await relais(h0); const t0r = Date.now(); let vu = null;
@@ -130,6 +135,12 @@ await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène su
   // suivre : un ▶ au pilote → relayé → le distant suit
   await dev(pg, 1); await pg.waitForTimeout(500); const h1 = await hubPilote(); await relais(h1); const t1r = Date.now(); let vu1 = null; while (Date.now() - t1r < 6000) { const r = await lire(tb, 'tableau'); if (r && r.lignes.length === 4) { vu1 = r; break; } await pause(50); }
   const d1 = Date.now() - t1r; verif('T5', !!vu1 && d1 <= 1200, 'un ▶ de plus : le distant suit (quatre lignes) en ≤ 900 ms de sondage + rendu (mesure proposée, audit I2)', d1 + ' ms depuis l\'écriture dans son hub');
+  // le délai (relance C4/I2) : 10 ▶, chacun relayé ; médiane et maximum, attendu ≤ 1 500 ms au maximum (pilote → hub du distant → #mur2)
+  const delais = []; for (let g = 0; g < 10; g++) { const r0 = await lire(tb, 'tableau'); const tg = Date.now(); await dev(pg, 1);
+    let ok = false; while (Date.now() - tg < 4000) { await relais(await hubPilote()); const r = await lire(tb, 'tableau'); if (r && !pareil(r, r0)) { ok = true; break; } await pause(25); }   /* le banc recopie le hub du pilote en continu : un hub partagé */ delais.push(ok ? Date.now() - tg : 9999); }
+  const tri = delais.slice().sort((a, b) => a - b); const med = tri[5], max = tri[9];
+  verif('T5', max <= 1500, `10 ▶ : du clic au distant, médiane ${med} ms, maximum ${max} ms (attendu ≤ 1 500 ms au maximum ; veille 125 + débounce 250 + sondage 900)`, delais.join(' '));
+  { const dern = await hubPilote(); h1.scene = Object.assign({}, h1.scene, { ts: dern.scene.ts + 1000 }); await relais(h1); await pause(1500); }   /* on remet la diapo à 4 lignes pour la suite */
   // le pilote se ferme : plus de scène neuve → l'image reste (30 s d'horloge du distant)
   await fin('T5', o); const avant = await lire(tb, 'tableau'); await tb.clock.runFor(30000).catch(async () => { await pause(1500); }); await pause(1200); const apres = await lire(tb, 'tableau'); await cap(tb, 'T5-pilote-ferme-image-gardee');
   verif('T5', pareil(avant, apres) && apres.lignes.length === 4, 'le pilote fermé : 30 s plus tard, le distant garde sa dernière image', `${apres && apres.lignes.length} l.`);
@@ -152,21 +163,27 @@ await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène su
   verif('T5', g.bloq === 0, 'personne n\'a même essayé d\'écrire (`SES.ecrituresBloquees` = 0)', String(g.bloq));
   const essai = await tb.evaluate(() => fetch('https://x.firebasedatabase.app/site/essai.json', { method: 'PUT', body: '1' }).then(() => 'passé', () => 'refusé')); const g2 = await tb.evaluate(() => ({ ecr: window.__ECR.length, bloq: SES.ecrituresBloquees }));
   verif('T5', essai === 'refusé' && g2.ecr === 0 && g2.bloq === 1, 'une écriture tentée est refusée et comptée', `${essai}, ${g2.bloq} bloquée(s), ${g2.ecr} au hub`);
+  const bea = await tb.evaluate(() => { const r = navigator.sendBeacon('https://x.firebasedatabase.app/presence/x.json', 'x'); return { r, bloq: SES.ecrituresBloquees }; });
+  verif('T5', bea.r === false && bea.bloq === 2, '`sendBeacon` aussi est refusé et compté (relance M8)', JSON.stringify(bea));
   verif('T5', !errs2.length, 'aucune erreur JS au distant', errs2.join(' ; ') || undefined);
   await ctx2.close(); });
 
-// T6 — la participation (mandat point 6) : une parole → `C/part.participation` la porte avec son eid, sans rang. Site seulement (la maquette n'écrit rien).
-await CAS('T6', 'la participation au hub : une parole porte son eid', async () => {
+// T6 — la participation (relance C8 : `C/part` tombe ; M4 : « qui a participé » au tableau suit la parole). Site seulement.
+await CAS('T6', 'la participation : plus de `C/part` ; « qui a participé » au tableau suit la parole', async () => {
   if (!SITE) { absent('T6', 'la maquette n\'écrit rien au hub', 'se jouera sur le site'); return; }
-  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 1);
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 1); const fen = await ouvrirTableau(pg);
   const qui = await pg.evaluate(() => { try { const c = dr_classe(); const n = String((c.eleves || [])[1] || (c.eleves || [])[0] || ''); const p = n.split(/\s+/).slice(-1)[0] || n; return p.slice(0, 4); } catch (e) { return 'a'; } });
-  await pg.keyboard.press('F2'); await pg.waitForTimeout(200); await pg.keyboard.type(qui); await pg.waitForTimeout(150); await pg.keyboard.press('1'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(800);
-  const p = await pg.evaluate(() => { const c = window.__hubLire('/site/cours_actif'); if (!c) return null; return window.__hubLire('/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug + '/part'); });
-  const liste = p && p.participation ? (Array.isArray(p.participation) ? p.participation : Object.values(p.participation).flat()) : [];
-  verif('T6', !!p && p.maj && p.origine && liste.length >= 1, '`C/part` = {participation, maj, origine}, une parole', p ? JSON.stringify(p).slice(0, 140) : '—');
-  verif('T6', liste.length >= 1 && liste.every(x => x && x.eid && !('di' in x) && !('ecran' in x)), 'chaque parole désigne sa diapo par eid, jamais par rang', JSON.stringify(liste[0] || {}).slice(0, 120));
-  verif('T6', liste.every(x => !('note' in x) || !x.note), 'la note « pour toi seul » ne part pas au hub dans `C/part`', '');
-  await fin('T6', o); });
+  const parler = async () => { await pg.keyboard.press('F2'); await pg.waitForTimeout(200); await pg.keyboard.type(qui); await pg.waitForTimeout(150); await pg.keyboard.press('1'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(800); };
+  await parler();
+  const ecr = await pg.evaluate(() => window.__ECR.filter(e => /\/part$/.test(e)));
+  verif('T6', ecr.length === 0, 'une parole n\'écrit plus `C/part` (plus de lecteur ; elle vit dans `C/etat` et le journal)', ecr.join(' ') || '0');
+  await pg.evaluate(() => { if (typeof basculerQui === 'function') basculerQui('banc'); }); await pg.waitForTimeout(800);
+  const q1 = await fen.evaluate(() => { const q = document.querySelector('#mur2 .quiw .quit'); return q ? q.textContent : null; });
+  await parler(); await pg.waitForTimeout(500);
+  const q2 = await fen.evaluate(() => { const q = document.querySelector('#mur2 .quiw .quil'); return q ? q.textContent : null; }); await cap(fen, 'T6-qui-suit-la-parole');
+  verif('T6', !!q1 && /1 élève/.test(q1), '« qui a participé » affiché au tableau', q1 || '—');
+  verif('T6', !!q2 && /×2/.test(q2), 'une parole de plus pendant que la boîte est au tableau : elle suit (×2) sans réafficher la boîte (M4)', q2 || '—');
+  await fen.close(); await fin('T6', o); });
 
 // T7 — R3, le minuteur d'activité au tableau (recyclage R3 ; E2 le calcule, E3 le transporte) : « au tableau » coché → la fenêtre et la scène portent « ⏱ mm:ss » en bandeau ; « Arrêter » → il part.
 await CAS('T7', 'le minuteur d\'activité au tableau (R3) : fenêtre et scène', async () => {
@@ -185,17 +202,19 @@ await CAS('T7', 'le minuteur d\'activité au tableau (R3) : fenêtre et scène',
   verif('T7', !band2, '« Arrêter » : le bandeau quitte le tableau', String(band2));
   await fen.close(); await fin('T7', o); });
 
-// T8 — le QR (mandat point 7) : un bouton à côté de « ⧉ », qui montre l'adresse `?vue=tableau` (plus `?vue=tel`), sans aucune écriture ; ✕ le ferme.
-await CAS('T8', 'le QR du tableau distant', async () => {
-  if (!SITE) { absent('T8', 'la maquette n\'a pas de QR', ''); return; }
+// T8 — « Adresse du tableau » (relance F5 : le QR tombe) : un bouton à côté de « ⧉ » qui affiche l'adresse `?vue=tableau`, sans aucune écriture ; ✕ le ferme.
+await CAS('T8', '« Adresse du tableau » (le QR tombe)', async () => {
+  if (!SITE) { absent('T8', 'se joue sur le site', ''); return; }
   const o = await ouvrir(); const pg = o.pg; await pg.waitForTimeout(400); const avant = await pg.evaluate(() => window.__ECR.length);
-  const ok = await pg.$('#dr-tab-qr'); verif('T8', !!ok, 'le bouton QR est à côté de « ⧉ Ouvrir le tableau », avec son infobulle', ok ? await pg.$eval('#dr-tab-qr', b => b.title.slice(0, 60)) : 'absent'); if (!ok) { await fin('T8', o); return; }
-  await pg.click('#dr-tab-qr'); await pg.waitForTimeout(400); await cap(pg, 'T8-qr');
-  const url = await pg.evaluate(() => { const u = document.querySelector('#ses-qr .ses-qr-url'); return u ? u.textContent : null; });
-  verif('T8', !!url && /\?vue=tableau$/.test(url), 'le QR donne l\'adresse du tableau, `?vue=tableau`', url || '—');
-  await pg.click('#ses-qr .ses-qr-x'); await pg.waitForTimeout(300); const ferme = await pg.evaluate(() => !document.getElementById('ses-qr'));
-  verif('T8', ferme, '✕ ferme le QR', String(ferme));
-  const apres = await pg.evaluate(() => window.__ECR.length); verif('T8', apres === avant, 'aucune écriture au hub (plus de /qrScans)', (apres - avant) + ' écriture(s)');
+  const qr = await pg.evaluate(() => typeof sesQROuvrir === 'function' || !!document.getElementById('dr-tab-qr')); verif('T8', !qr, 'le QR n\'existe plus (ni `sesQROuvrir`, ni bouton)', String(qr));
+  const ok = await pg.$('#dr-tab-adr'); verif('T8', !!ok, 'le bouton « Adresse du tableau » est à côté de « ⧉ », avec son infobulle', ok ? await pg.$eval('#dr-tab-adr', b => b.textContent + ' — ' + b.title.slice(0, 50)) : 'absent'); if (!ok) { await fin('T8', o); return; }
+  await pg.click('#dr-tab-adr'); await pg.waitForTimeout(400); await cap(pg, 'T8-adresse-du-tableau');
+  const url = await pg.evaluate(() => { const u = document.getElementById('dr-tab-adr-url'); return u ? u.textContent : null; });
+  verif('T8', !!url && /\?vue=tableau$/.test(url), 'l\'adresse affichée est celle du tableau, `?vue=tableau`', url || '—');
+  const img = await pg.evaluate(() => !!document.querySelector('#dr-tab-adr-boite img')); verif('T8', !img, 'aucune image demandée au réseau (pas de QR distant)', String(img));
+  await pg.click('#dr-tab-adr-x'); await pg.waitForTimeout(300); const ferme = await pg.evaluate(() => !document.getElementById('dr-tab-adr-boite'));
+  verif('T8', ferme, '✕ ferme la boîte', String(ferme));
+  const apres = await pg.evaluate(() => window.__ECR.length); verif('T8', apres === avant, 'aucune écriture au hub', (apres - avant) + ' écriture(s)');
   await fin('T8', o); });
 
 // T9 — la fenêtre rechargée pendant que Paul est dans l'Atelier en pleine heure (relecteur 2, n° 3) : elle remontre ce que voit la classe.

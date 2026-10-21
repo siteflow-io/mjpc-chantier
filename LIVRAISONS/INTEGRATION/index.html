@@ -15755,13 +15755,14 @@ if(SES.mode==='tableau'){
     }
     return _fetchVrai.apply(this,arguments);
   };
+  /* [E3] relance M8 : sendBeacon (la présence) est une écriture aussi — bloquée et comptée */
+  if(navigator.sendBeacon){ navigator.sendBeacon=function(u){ SES.ecrituresBloquees++; try{console.warn('[session] sendBeacon bloqué depuis la vue tableau :',String(u).slice(0,80));}catch(e){} return false; }; }
 }
 
 function sesChemins(c){ /* c = {niveau,chapitre,seance,classeSlug} */
   var b=FIREBASE_BASE+'/site/'+c.niveau+'/chapitres/'+c.chapitre+'/seances/'+c.seance+'/deroule_joue/'+c.classeSlug;
   return { scene:b+'/scene.json', part:b+'/part.json', ecrans:b+'/ecrans.json', cours:FIREBASE_BASE+'/site/cours_actif.json' };
 }
-function sesGet(url,cb){ fetch(url).then(function(r){return r.json();}).then(function(v){cb(v,null);}).catch(function(e){cb(null,e);}); }
 
 /* ═══ CÔTÉ PILOTE — le cours annoncé, la scène émise, les gestes des autres appliqués ═══ */
 function sesCoursEcrire(){ dr_coursEcrire(); }   /* [E2] par dr_ecrire (13 · 25) ; la scène neuve est celle d'E3 */
@@ -15815,28 +15816,7 @@ function sesArreter(){ SES.actif=false; clearInterval(SES.pollT); SES.pollT=null
 /* [LOT C2 \u2462.5] la r\u00e9solution locale : chaque appareil traduit l'identit\u00e9 re\u00e7ue en
    SON propre rang. \u00c0 d\u00e9faut d'identit\u00e9 (\u00e9metteur ant\u00e9rieur au lot), le rang re\u00e7u sert
    de repli \u2014 exactement le comportement d'avant, jamais pire. */
-function _sesRangLocal(o,W){
-  if(!o)return 0;
-  if(o.eid){ var r=_drRangDeLEid(o.eid,W&&W.ECRANS); if(r!==null)return r; }
-  return o.ecran|0;
-}
 /* le bandeau du pilote : l'état de la session, sobre, dans la tête du déroulé */
-function sesBandeau(){
-  /* [E3] la tête du déroulé (`#at-dr-tete`) tombe avec l'ancien moteur : le bandeau ne se pose que si elle existe.
-     « Ouvrir la vue tableau » → la fenêtre unique ; « 📱 Téléphone » tombe (cadrage 1 §13). */
-  var t=document.getElementById('at-dr-tete'); if(!t||document.getElementById('ses-etat'))return;
-  t.insertAdjacentHTML('beforeend',
-    '<span class="ses-etat" id="ses-etat" title="Session multi-appareils">\u25cf session</span>'
-   +'<button class="at-btn ses-tab-btn" onclick="sesOuvrirTableau()" title="'+DR_TAB_BULLE+'">\u29c9 Ouvrir le tableau</button>'
-   +'<button class="at-btn ses-qr-btn" onclick="sesQROuvrir()" title="Montre l\u2019adresse du tableau en QR, pour l\u2019ouvrir sur l\u2019ordinateur de la classe ou une tablette : il suivra le cours tout seul, en lecture seule.">QR du tableau</button>');
-}
-function sesBandeauEtat(ok,muet){
-  var s=document.getElementById('ses-etat'); if(!s)return;
-  if(ok){ s.className='ses-etat'; s.textContent='\u25cf session'; SES.perduDepuis=0; }
-  else { if(!SES.perduDepuis)SES.perduDepuis=Date.now();
-    s.className='ses-etat ses-etat-ko';
-    s.textContent='\u25cf session coup\u00e9e depuis '+new Date(SES.perduDepuis).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
-}
 
 /* ═══ LE QR — le pattern d'evaluation-qcm, à l'identique : nonce, image, écoute, fermeture au scan ═══ */
 /* ═══ [LOT B \u2461] LE CHEMIN D'ACC\u00c8S AU TABLEAU \u2014 au patron d'evaluation-qcm ═══
@@ -15846,21 +15826,6 @@ function sesBandeauEtat(ok,muet){
    elle se rattache seule d\u00e8s qu'un cours est lanc\u00e9. L'ancienne adresse continue de
    fonctionner \u2014 un favori d\u00e9j\u00e0 pos\u00e9 n'est pas cass\u00e9. */
 function sesOuvrirTableau(){ return dr_ouvrirTableau(); }   /* [E3] une seule fenêtre : la page elle-même, ?vue=tableau&local=1 (dr-tableau.js) */
-function sesQROuvrir(){
-  /* [E3] l'adresse du TABLEAU distant (le téléphone tombe) ; plus de fermeture au scan : la page tableau n'écrit
-     jamais (`/qrScans` restait vide) et l'effacement était un fetch direct (audit F5). On ferme par ✕ ou à côté. */
-  var url=window.location.origin+window.location.pathname+'?vue=tableau';
-  var img='https://api.qrserver.com/v1/create-qr-code/?size=280x280&margin=10&data='+encodeURIComponent(url);
-  var d=document.createElement('div'); d.className='ses-qr-fond'; d.id='ses-qr';
-  d.innerHTML='<div class="ses-qr-boite"><button class="ses-qr-x" onclick="sesQRFermer()" title="Ferme cette fenêtre">\u2715</button>'
-    +'<h3>\u29c9 Le tableau sur un autre appareil</h3>'
-    +'<p>Scanne avec l\u2019appareil branché au vidéoprojecteur (ou ouvre l\u2019adresse dans Chrome) : il attend le cours, puis suit ce que voit la classe. Il n\u2019écrit jamais rien.</p>'
-    +'<img src="'+img+'" alt="QR" width="280" height="280">'
-    +'<div class="ses-qr-url">'+url+'</div></div>';
-  d.addEventListener('click',function(ev){ if(ev.target===d)sesQRFermer(); });
-  document.body.appendChild(d);
-}
-function sesQRFermer(){ var d=document.getElementById('ses-qr'); if(d)d.remove(); }
 
 /* ═══ LA REPRISE — « un cours est en cours » sur tout appareil du professeur ═══ */
 /* [LOT C3a \u2461] LA BANNI\u00c8RE V\u00c9RIFIE \u00c0 CHAQUE PASSAGE, et DISPARA\u00ceT D'ELLE-M\u00caME d\u00e8s que
@@ -15942,22 +15907,19 @@ function sesBootTableau(){
    actualiser, ce qui est pr\u00e9cis\u00e9ment ce qu'il ne veut plus faire. */
 function sesTabCle(c){ return c?[c.niveau,c.chapitre,c.seance,c.classeSlug].join('|'):''; }
 function sesTabVeillePointeur(){
-  sesGet(FIREBASE_BASE+'/site/cours_actif.json',function(c){
-    if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000)return;   /* plus de cours : l'image RESTE */
+  dr_tabLire('/site/cours_actif',function(c){                /* [E3] par dr_lire (sesGet tombe, relance C5) */
+    if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000)return;   /* plus de cours : l'image RESTE (relance C3) */
     var cle=sesTabCle(c);
     if(!cle||cle===SES.tabPointeur)return;                /* même cours : rien à faire */
     SES.tabPointeur=cle; SES.ctx=c;
-    dr_tabDireClasse(c.classeNom||c.classeSlug||'');     /* [E3] l'attente est posée par dr-tableau.js : ses ids y vivent */
+    dr_tabDireClasse(c.classeNom||c.classeSlug||'');
     dr_tabMonter();                                        /* [E3] le nouveau cours prend la main : sa copie, puis sa scène */
   });
 }
 function sesTabChercherCours(){
   var t=setInterval(function(){
-    sesGet(FIREBASE_BASE+'/site/cours_actif.json',function(c){
-      if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000){
-        /* [E3] la ligne d'attente (classe attendue ou « Aucun cours en cours ») est tenue par dr_tabAttendre */
-        return;
-      }
+    dr_tabLire('/site/cours_actif',function(c){             /* [E3] par dr_lire (sesGet tombe, relance C5) */
+      if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000)return;   /* [E3] l'attente est tenue par dr_tabAttendre */
       clearInterval(t);
       SES.ctx=c; SES.tabPointeur=sesTabCle(c);
       dr_tabDireClasse(c.classeNom||c.classeSlug||'');

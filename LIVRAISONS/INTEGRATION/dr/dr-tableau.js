@@ -5,20 +5,19 @@
    Un autre appareil ouvre `?vue=tableau` : il lit la scène au hub (`C/scene` = l'état du tableau) et la
    rend par le même chemin, `dr_rendreMur`. Il garde sa dernière image quand le pilote se ferme ou gèle.
    Règles tenues ici (contrat §5) : aucune écriture autrement que par `dr_ecrire` ; aucune en vue tableau,
-   en répétition, dans l'atelier, hors d'une heure lancée ; la diapo est désignée par son `eid`, le rang
-   n'est qu'un repli (audit C7, en attente de la conscience). Tout est préfixé `dr_` / `DR_TAB`.
+   en répétition, dans l'atelier, hors d'une heure lancée ; la diapo est désignée par son `eid`, `si`/`di` ne sont
+   qu'un repli (relance du 21/10 13:15, C7). Tout est préfixé `dr_` / `DR_TAB`.
    ═══════════════════════════════════════════════════════════════════════════════════════════════════ */
 var DR_TAB = { fen: null, montre: null, ts: 0, trameMaj: 0, ecrans: null, documents: null, si: null,
-  emis: '', emT: null, trameSig: '', trameT: null, tic: 0, partSig: '', partT: null, veilleT: null,
+  emis: '', emT: null, trameSig: '', trameT: null, tic: 0, veilleT: null, ecrT: null,
   sondeT: null, pointeurT: null, cle: '', lu: false };
 
 const dr_estTableau = () => /[?&]vue=tableau(&|$)/.test(location.search);   /* la même lecture que `SES.mode`, mais sûre au chargement du module (SES n'existe pas encore) */
 const dr_tabLocal = () => /[?&]local=1(&|$)/.test(location.search);
 
-/* ─── la lecture : `dr_lire` du socle (secuLire, mode test) ; à défaut, `sesGet` (lecture pure) ─── */
+/* ─── la lecture : `dr_lire` du socle (secuLire, mode test) — `sesGet` tombe (relance C5) ─── */
 function dr_tabLire(chemin, cb){
-  if (typeof dr_lire === 'function') { try { dr_lire(chemin, v => cb(v === undefined ? null : v)); return; } catch (e) {} }
-  sesGet(FIREBASE_BASE + chemin + '.json', (v, err) => cb(err ? undefined : v));   /* undefined = la lecture a échoué (le tableau le dit) */
+  try { dr_lire(chemin, v => cb(v === undefined ? null : v)); } catch (e) { cb(undefined); }   /* undefined = la lecture n'a pas pu partir */
 }
 
 /* ═══ CÔTÉ PILOTE ═══════════════════════════════════════════════════════════════════════════════════ */
@@ -38,6 +37,24 @@ const DR_TAB_BULLE = 'Ouvre le tableau dans une nouvelle fenêtre, à envoyer su
   + 'Il montre exactement ce que voit la classe — la diapo, ce qui est dévoilé, la page, la taille du texte — et rien de ton pilotage. '
   + 'Gelé, il ne bouge plus ; fermé, il se rouvre ici, sur ce que la classe voit.';
 
+/* ─── le crochet du socle (relance F7 / C1) : `pousser` (après le journal), `fermerFiche`, la sortie de l'atelier et la répétition
+       appellent `dr_versMur(et)` — ou `dr_versMur(null, {sortie:true})`. Ici vivent l'envoi à la fenêtre et la scène au hub. ─── */
+function dr_versMur(et, x){
+  x = x || {};
+  if (et && typeof S === 'object' && S && S.qui && !S.gel && typeof quiAParticipe === 'function') {   /* M4 : « qui a participé » suit la parole */
+    try { S.qui = quiAParticipe(); et.qui = S.qui; } catch (e) {}
+  }
+  const f = (DR_TAB.fen && !DR_TAB.fen.closed) ? DR_TAB.fen : ((typeof fenetreMur !== 'undefined' && fenetreMur && !fenetreMur.closed) ? fenetreMur : null);
+  if (f) {
+    try {
+      if (!et) f.postMessage(Object.assign({ et: null }, x), '*');
+      else { let ecran = x.ecran; if (ecran === undefined) { try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) { ecran = null; } }
+        f.postMessage({ et, ecran, documents: x.documents }, '*'); }
+    } catch (e) {}
+  }
+  if (et) dr_sceneAuto();
+}
+
 /* la fenêtre dit `pret` à l'ouverture (comme la maquette) : on lui pousse ce que la classe voit, gel compris (p8-5g, point 1) */
 window.addEventListener('message', ev => {
   if (dr_estTableau() || !ev.data || !ev.data.pret) return;
@@ -49,7 +66,7 @@ window.addEventListener('message', ev => {
        ce que voit la classe, sans rien écrire ni journaliser (relecteur 2, n° 3) */
     const et = S.gel || S.mur; if (!et || !DR_TAB.fen || DR_TAB.fen.closed) return;
     let ecran = null; try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) {}
-    DR_TAB.fen.postMessage({ et, ecran }, '*');
+    DR_TAB.fen.postMessage({ et, ecran }, '*');   /* directement : pas de scène au hub depuis l'Atelier */
   } catch (e) {}
 });
 /* le clic sur « ⧉ Ouvrir le tableau », d'où que vienne le bouton (le gabarit est posé plus tard par `atVuesPoser`) :
@@ -89,44 +106,56 @@ function dr_sceneAuto(vite){
   DR_TAB.emT = setTimeout(() => {
     if (!dr_tabPeutEcrire() || !S.mur) return;
     const sc = dr_scene(S.mur); if (!sc) return;
-    dr_ecrire(dr_cheminC() + '/scene', sc, 'La scène du tableau (ce que voit la classe)', () => {});
+    clearTimeout(DR_TAB.ecrT); DR_TAB.ecrT = setTimeout(() => dr_sessionEtat(false), 5000);   /* sans accusé en 5 s : la session est coupée */
+    dr_ecrire(dr_cheminC() + '/scene', sc, 'La scène du tableau (ce que voit la classe)', () => { clearTimeout(DR_TAB.ecrT); dr_sessionEtat(true); });
   }, vite ? 0 : 250);   /* le débounce de `sesEmettre` */
 }
+/* le témoin « ● session » (relance F8 : `sesBandeau`/`sesBandeauEtat` tombent ; E1 pose `#dr-session` dans `.haut`, je le remplis) */
+function dr_sessionEtat(ok){
+  const s = document.getElementById('dr-session'); if (!s) return;
+  if (ok) { DR_TAB.perduDepuis = 0; s.className = 'dr-session'; s.textContent = '\u25cf session';
+    s.title = 'Le tableau distant reçoit ce que voit la classe (la dernière scène est arrivée au hub).'; }
+  else { if (!DR_TAB.perduDepuis) DR_TAB.perduDepuis = Date.now(); const h = new Date(DR_TAB.perduDepuis).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    s.className = 'dr-session dr-session-ko'; s.textContent = '\u25cf session coupée depuis ' + h;
+    s.title = 'Le hub ne répond plus depuis ' + h + ' : le tableau distant garde la dernière image qu\u2019il a reçue ; la fenêtre du tableau, elle, continue de suivre.'; }
+}
 
-/* ─── la participation : `C/part` = {participation, maj, origine} depuis `S.parts`, par eid (mandat point 6) ─── */
-function dr_partListe(){
-  return ((typeof S === 'object' && S && S.parts) || []).map(p => ({ id: p.id, nom: p.nom, m: p.m, eid: p.eid || null, h: p.h, heure: p.heure, t: p.t }));
-  /* ni `di` (un rang), ni `note` (« pour toi seul », cadrage 1 §4b.2) : audit C8 */
-}
-function dr_part(){
-  clearTimeout(DR_TAB.partT);
-  DR_TAB.partT = setTimeout(() => {
-    if (!dr_tabPeutEcrire()) return;
-    dr_ecrire(dr_cheminC() + '/part', { participation: dr_partListe(), maj: Date.now(), origine: (typeof SES === 'object' && SES) ? SES.id : 'pilote' }, 'La participation de l’heure', () => {});
-  }, 250);
-}
+/* ─── la participation : `C/part` tombe (relance C8 : plus de lecteur ; elle vit dans `C/etat` et le journal, chez E2) ─── */
 
 /* ─── la veille du pilote : elle regarde l'état du tableau (`S.mur`), la copie jouée et la participation ;
        ce qui change part au hub — sans crochet sur les fonctions du socle (le pont et ses enveloppes tombent, C1 §13).
        Pendant le gel, `S.mur` ne bouge pas : rien ne part, le tableau garde son image. ─── */
-/* le QR du tableau distant (`sesQROuvrir`, repris) : son bouton vivait dans la tête du déroulé, qui tombe (audit F8) ;
-   il se pose à côté de « ⧉ Ouvrir le tableau », dans l'entête de la maquette */
-function dr_tabPoserQR(){
+/* « Adresse du tableau » (relance F5 : le QR tombe avec le téléphone — il attendait une écriture que la vue tableau ne fait jamais) :
+   un bouton à côté de « ⧉ » qui AFFICHE l'adresse `?vue=tableau` à taper sur l'ordinateur de la classe. Aucune écriture. */
+const DR_TAB_BULLE_ADR = 'Le tableau sur un autre appareil : montre l\u2019adresse à ouvrir dans Chrome sur l\u2019ordinateur de la classe. '
+  + 'Il attend le cours, puis suit ce que voit la classe, sans jamais rien écrire.';
+function dr_tabAdresse(){
+  if (document.getElementById('dr-tab-adr-boite')) return;
+  const url = location.origin + location.pathname + '?vue=tableau';
+  const d = document.createElement('div'); d.className = 'ses-qr-fond'; d.id = 'dr-tab-adr-boite';
+  d.innerHTML = '<div class="ses-qr-boite"><button class="ses-qr-x" id="dr-tab-adr-x" title="Ferme cette fenêtre">\u2715</button>'
+    + '<h3>Le tableau sur un autre appareil</h3>'
+    + '<p>Sur l\u2019ordinateur branché au vidéoprojecteur, ouvre cette adresse dans Chrome : il attend le cours, puis suit ce que voit la classe. Il n\u2019écrit jamais rien.</p>'
+    + '<div class="ses-qr-url" id="dr-tab-adr-url"></div></div>';
+  d.querySelector('#dr-tab-adr-url').textContent = url;
+  d.addEventListener('click', ev => { if (ev.target === d || ev.target.id === 'dr-tab-adr-x') d.remove(); });
+  document.body.appendChild(d);
+}
+function dr_tabPoserBoutons(){
   const b = document.getElementById('bvideoproj'); if (!b) return;
   if (b.title !== DR_TAB_BULLE) b.title = DR_TAB_BULLE;   /* une seule infobulle pour ce geste, dès qu'il est à l'écran (relecteur 1, n° 4) */
-  if (document.getElementById('dr-tab-qr')) return;
-  const q = document.createElement('button'); q.className = 'btn'; q.id = 'dr-tab-qr'; q.type = 'button'; q.textContent = 'QR';
-  q.title = 'Le tableau sur un autre appareil : montre l\u2019adresse du tableau en QR. Scanné (ou l\u2019adresse ouverte dans Chrome) sur l\u2019ordinateur de la classe, il attend le cours puis suit ce que voit la classe, sans jamais rien écrire.';
-  q.onclick = () => { try { sesQROuvrir(); } catch (e) {} };
+  if (document.getElementById('dr-tab-adr')) return;
+  const q = document.createElement('button'); q.className = 'btn'; q.id = 'dr-tab-adr'; q.type = 'button'; q.textContent = 'Adresse du tableau';
+  q.title = DR_TAB_BULLE_ADR; q.onclick = dr_tabAdresse;
   b.insertAdjacentElement('afterend', q);
 }
 function dr_tabVeiller(){
-  try { dr_tabPoserQR(); } catch (e) {}
+  try { dr_tabPoserBoutons(); } catch (e) {}
   if (!dr_tabPeutEcrire()) { DR_TAB.emis = ''; return; }
+  /* M4, filet tant que `dr_versMur` n'est pas appelé par `pousser` : « qui a participé », affiché au tableau, suit la parole */
+  if (S.qui && !S.gel && typeof quiAParticipe === 'function') { try { const q = quiAParticipe(); if (JSON.stringify(q) !== JSON.stringify(S.qui)) { S.qui = q; dr_tout(); } } catch (e) {} }
   let sig = ''; try { sig = JSON.stringify(S.mur || null); } catch (e) {}
-  if (S.mur && sig !== DR_TAB.emis) { DR_TAB.emis = sig; dr_sceneAuto(); }
-  let ps = ''; try { ps = JSON.stringify(dr_partListe()); } catch (e) {}
-  if (ps !== DR_TAB.partSig) { const premier = DR_TAB.partSig === ''; DR_TAB.partSig = ps; if (!premier || (S.parts || []).length) dr_part(); }
+  if (S.mur && sig !== DR_TAB.emis) { DR_TAB.emis = sig; dr_sceneAuto(); }   /* filet tant que le crochet `dr_versMur` n'est pas posé partout (idempotent : même débounce) */
   if ((DR_TAB.tic++ % 8) === 0) {   /* une fois par seconde : la copie jouée a-t-elle changé ? */
     let ts = ''; try { const t = (typeof dr_trame === 'function') ? dr_trame() : null; ts = t ? JSON.stringify(t) : ''; } catch (e) {}
     if (ts && ts !== DR_TAB.trameSig) {
@@ -171,7 +200,7 @@ function dr_tabPoser(){
   const z = document.createElement('div'); z.id = 'ses-tab'; z.className = 'ses-tab';
   z.innerHTML = '<div class="ses-tab-attente" id="ses-tab-att">'
     + '<div class="n">monsieurjaipascompris</div><div class="h" id="ses-tab-h">--:--</div>'
-    + '<div class="d" id="ses-tab-d"></div><div class="c" id="ses-tab-c">Aucun cours en cours</div></div>'
+    + '<div class="d" id="ses-tab-d"></div><div class="c" id="ses-tab-c" style="display:none"></div></div>'
     + '<div class="mur tableau" id="mur2"></div>'
     + '<div class="ses-tab-perdu" id="ses-tab-perdu"></div>';
   [].slice.call(document.body.children).forEach(el => { el.style.display = 'none'; });
@@ -189,37 +218,18 @@ function dr_tabPoser(){
   window.addEventListener('resize', () => { if (DR_TAB.montre) dr_rendreMur(DR_TAB.montre); });
 }
 
-/* la classe attendue (mandat point 5 ; audit F1/I5) : `_drProchainCreneau` ne la donne pas (dette n°12 · 17) ; on lit la grille
-   de l'EDT et son calendrier EN LECTURE SEULE (aucune fonction `edt*` n'est appelée : l'EDT écrit à son ouverture) et l'on cherche,
-   aujourd'hui, une heure MJPC de la bonne semaine (A/B) qui commence dans le quart d'heure ou qui est en cours. */
-const DR_TAB_JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-function dr_tabAnnee(d){ const y = d.getFullYear(); return d.getMonth() >= 7 ? y + '-' + (y + 1) : (y - 1) + '-' + y; }
-function dr_tabIso(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
-function dr_tabLettre(cal, d){
-  const t = (cal && cal.semaines) || null; if (!t) return null;
-  const l = new Date(d.getFullYear(), d.getMonth(), d.getDate() - ((d.getDay() + 6) % 7)); const iso = dr_tabIso(l);
-  const x = t.find(s => s && s.lundi === iso); return x ? (x.lettre || null) : null;
-}
-function dr_tabHeureAttendue(grille, cal, d){
-  if (!grille || !Array.isArray(grille.creneaux)) return null;
-  const jour = DR_TAB_JOURS[d.getDay()], lettre = dr_tabLettre(cal, d), m = d.getHours() * 60 + d.getMinutes();
-  const mn = h => { const p = String(h || '').split(':'); return (+p[0] || 0) * 60 + (+p[1] || 0); };
-  return grille.creneaux.filter(c => c && c.mjpc && c.jour === jour && (!lettre || !c.semaine || String(c.semaine).indexOf(lettre) >= 0))
-    .map(c => ({ c, d: mn(String(c.creneau).split('-')[0]), f: mn(String(c.creneau).split('-')[1]) }))
-    .filter(x => m >= x.d - 15 && m < x.f).sort((a, b) => a.d - b.d)[0] || null;
-}
+/* la classe attendue (relance F1) : elle vient de `dr_proposer()` d'E2 quand il existe (la grille lue en lecture seule par `dr_lire`,
+   jamais le module EDT en vue tableau) ; sinon l'attente ne dit que le nom du site, la date et l'heure. */
 function dr_tabAttendre(){
   if (DR_TAB.montre || SES.ctx) return;
-  const d = new Date(), an = dr_tabAnnee(d);
-  dr_tabLire('/site/edt/grille/' + an, g => dr_tabLire('/site/edt/calendrier/' + an, cal => {
-    if (DR_TAB.montre || SES.ctx) return;
-    const h = dr_tabHeureAttendue(g, cal, new Date());
-    dr_tabDireClasse(h ? 'Classe attendue : ' + (h.c.classeMjpc || h.c.classe) + ' \u00b7 ' + String(h.c.creneau).replace('-', ' \u2013 ') : 'Aucun cours en cours');
-  }));
+  const dire = p => { if (DR_TAB.montre || SES.ctx) return; const c = p && (p.classeNom || p.classe || p.classeSlug), cr = p && (p.creneau || (p.debut && p.fin ? p.debut + '-' + p.fin : ''));
+    dr_tabDireClasse(c ? 'Classe attendue : ' + c + (cr ? ' \u00b7 ' + String(cr).replace('-', ' \u2013 ') : '') : ''); };
+  if (typeof dr_proposer !== 'function') { dire(null); return; }
+  try { const r = dr_proposer(dire); if (r && typeof r.then === 'function') r.then(dire, () => dire(null)); else if (r !== undefined) dire(r); } catch (e) { dire(null); }
 }
 
-/* la ligne du bas de l'attente : « Aucun cours en cours » ou la classe du cours trouvé (appelée par `sesTabChercherCours`, `sesTabVeillePointeur`) */
-function dr_tabDireClasse(t){ const el = document.getElementById('ses-tab-c'); if (el) el.textContent = t || ''; }
+/* la ligne du bas de l'attente : la classe attendue, ou celle du cours trouvé ; vide, elle disparaît (appelée par `sesTabChercherCours`, `sesTabVeillePointeur`) */
+function dr_tabDireClasse(t){ const el = document.getElementById('ses-tab-c'); if (el) { el.textContent = t || ''; el.style.display = t ? '' : 'none'; } }
 
 /* la fenêtre locale : elle reçoit l'état du pilote par `postMessage` et ne lit jamais le hub */
 function dr_tabRecevoir(ev){
@@ -246,15 +256,24 @@ function dr_tabDemarrer(){
 
 /* le distant : le cours trouvé, on lit la copie jouée, puis la scène toutes les 900 ms et le pointeur toutes les 3 s */
 function dr_tabCheminC(c){ return '/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug; }
-/* le pilote est-il là ? `cours_actif` désigne ce cours et a moins de 4 h (comme `_drCloreHeureRestee` le juge ; audit F2 : c'est
-   « lancé il y a moins de 4 h », le seul signe que le site donne) */
+/* la règle (relance F2/I1) : une scène n'est acceptée que si la clé de cours de `cours_actif` est celle de ce cours ;
+   le « pilote présent » n'existe pas — sans scène neuve, l'image reste */
 function dr_tabPointeur(){
   dr_tabLire('/site/cours_actif', c => { if (c === undefined) return;   /* lecture échouée : on ne conclut rien */
-    DR_TAB.pilotePresent = !!(c && typeof c.ts === 'number' && (Date.now() - c.ts) <= 4 * 3600 * 1000 && sesTabCle(c) === SES.tabPointeur); });
+    DR_TAB.pilotePresent = !!(c && sesTabCle(c) === SES.tabPointeur); });
+}
+/* la séance du chapitre (relance M2), lue par `dr_lire(B)` : ses `items` (les documents par référence d'E4) ; rangée en mémoire de la
+   page tableau là où le socle la cherche (`chapitresData`), rien n'est écrit au hub */
+function dr_tabLireSeance(c){
+  dr_tabLire('/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance, sce => {
+    if (!sce || typeof sce !== 'object') return; DR_TAB.seance = sce;
+    try { if (typeof chapitresData === 'object' && chapitresData) { chapitresData[c.niveau] = chapitresData[c.niveau] || {}; const ch = chapitresData[c.niveau][c.chapitre] = chapitresData[c.niveau][c.chapitre] || { seances: {} }; ch.seances = ch.seances || {}; ch.seances[c.seance] = Object.assign({}, ch.seances[c.seance] || {}, sce); } } catch (e) {}
+  });
 }
 function dr_tabMonter(){
   if (!SES.ctx) return;
   DR_TAB.ts = 0; DR_TAB.trameMaj = 0; DR_TAB.pilotePresent = true;   /* le cours vient d'être trouvé au pointeur */
+  dr_tabLireSeance(SES.ctx);
   dr_tabLire(dr_tabCheminC(SES.ctx) + '/ecrans', ecr => {
     if (Array.isArray(ecr)) DR_TAB.ecrans = ecr;
     if (!DR_TAB.sondeT) DR_TAB.sondeT = setInterval(dr_tabSonder, 900);

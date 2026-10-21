@@ -475,3 +475,18 @@
     - Réserve : le témoin ne passe jamais à « enregistré ».
 - **L'audit final reste bloqué par L148.** Je la revérifierai à la prochaine poussée d'E1 ou d'E2.
 - **Sur `de6cd19c`** (poussée 17 d'E1) : banc.sh VERT ; E4 — fin : 109 ok · 0 échec(s) · 0 absent(s) — VERT (`sorties/2232`).
+
+## Poussée 54 — 23:00 UTC
+- **Réveil n°11 lu.**
+- **L148 et L149 sont vertes sur `de6cd19c`**, par le geste exact, aux deux tailles :
+  - L148 : au retour de l'Atelier, la classe ne bouge pas, rien n'entre au journal, le récit ne raconte rien de non travaillé ;
+  - L149 : la retouche de l'Atelier est écrite au hub sans revenir au Pilotage et survit à la reprise. Le témoin passe à « ✔ enregistré » en 3 s, la réserve est levée.
+- **Sept lignes revérifiées sur `de6cd19c`** : réglées L144, L148, L154 ; pas réglées L66, L150, L151, L156.
+- **Trois lignes nouvelles** :
+  - **la nature d'un pas** : le journal dit « retour » pour un pas en avant. Je la relis sur les rangs de l'heure (`dr_recitNature`, garde B3) ; l'entrée journalisée reste à E2 ;
+  - H2 hors classe commence par le bilan, et non par la réactivation (E1/E2) ;
+  - toutes les heures sont datées du jour (E1/E2).
+- **Bancs :**
+  - Mon banc : **110 ok · 0 échec** (`sorties/2251-site-E4`).
+  - banc.sh : **VERT** (`sorties/2257`).
+- **La passe finale part maintenant**, sur la tête poussée ici : toutes les lignes ni réglées, ni écartées, ni à Paul sont revérifiées par un relecteur neuf ; puis le verdict uniforme et le bilan en chiffres dans la NOTE.

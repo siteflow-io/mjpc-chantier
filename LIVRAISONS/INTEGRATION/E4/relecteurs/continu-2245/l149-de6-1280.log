@@ -1,0 +1,82 @@
+témoin à 0,3 s: ● modification en cours — pas encore au hub
+témoin à 3 s: ✔ enregistré à 09:00 | dr-enr: Enregistré à 09:00
+écritures depuis lancement: ["PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans"]
+écriture …/deroule_joue/<classe>/ecrans ? [
+  '/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans'
+]
+retouche dans le hub avant pagehide: true
+retouche au hub après pagehide: [
+  '/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans/4/blocs/0/legende'
+]
+clic Reprendre le cours: <button class="at-btn at-btn-prim" title="Rouvre le Pilotage de cette heure là où la classe en est : la diapo, le chrono, les décisions, les paroles, les notes" onclick="sesReprendre()">Reprendre le c
+état: { lancee: true, di: 9, heure: 2 }
+retouche dans la trame du pilote: true
+diapo suivante au pilote: DIAPO SUIVANTE / TABLEAU 3 / Le Radeau de la Méduse, Théodore Géricault, 1818-1819 RETOUCHE-L149 / Tableau 3
+murs visibles: [
+  'OÙ EN SOMMES-NOUS ?\n' +
+    '\n' +
+    'Quel mot-bilan avons-nous écrit sur les cinq tableaux ?\n' +
+    '\n' +
+    'Le',
+  'TABLEAU 3\n' +
+    'Le Radeau de la Méduse, Théodore Géricault, 1818-1819 RETOUCHE-L149',
+  'TABLEAU 4\n' +
+    "Ville médiévale au bord d'un fleuve, Karl Friedrich Schinkel, 1815",
+  'TABLEAU 5\nLe Lac de Whyte, Estes Park, Colorado, Albert Bierstadt, 1877',
+  'LES HYPOTHÈSES DE LA CLASSE\n' +
+    '🗣️\n' +
+    'Chaque groupe présente son tableau et son hypoth',
+  'QUESTION-BILAN\n' +
+    '\n' +
+    "Qu'ont en commun ces cinq tableaux ? La réponse validée est reco",
+  'LES RÈGLES HÉRITÉES\n' +
+    '•\n' +
+    "Au XVIIe siècle, écrire un poème, c'est suivre des règles ",
+  "FIN D'HEURE",
+  "ANALYSE D'IMAGES : LA ROUTINE\n" +
+    '•\n' +
+    'Observe, discute, fais une hypothèse sur le Roma',
+  'TABLEAU 1\n' +
+    'Le Voyageur contemplant une mer de nuages, Caspar David Friedrich, ver',
+  'TABLEAU 2\nPêcheurs en mer, Joseph Mallord William Turner, 1796',
+  "FIN D'HEURE",
+  'LA FRISE DU SIÈCLE\n' +
+    '🗺️\n' +
+    "La frise est projetée : elle se remplit devant vous, l'Hi",
+  'PLACER LES POÈTES\n' +
+    '✍\n' +
+    'À chaque apparition, je reporte sur ma frise ce qui vient de',
+  'LE SIÈCLE DES INVENTIONS\n' +
+    '⚙\n' +
+    'Regarde la troisième bande de la frise : la photograp',
+  'LES MOUVEMENTS DU SIÈCLE\n' +
+    '•\n' +
+    "Un mouvement, c'est une manière partagée de voir l'ar",
+  'TROIS MOTS POUR LA FRISE\n' +
+    '📖\n' +
+    'Trois mots à retenir, à écrire dans la partie cours ',
+  'UN POÈTE SPÉCIAL…\n' +
+    '\n' +
+    'Où avons-nous placé Baudelaire sur la frise ? À quel mouvemen',
+  'BAUDELAIRE, 1821-1867\n' +
+    '•\n' +
+    "« Chaque jour vers l'enfer nous descendons d'un pas. » (",
+  'QUESTION-BILAN ET TRAVAIL À FAIRE\n' +
+    '\n' +
+    "Qu'est-ce que le Romantisme ? La réponse vali",
+  "FIN D'HEURE",
+  'OÙ EN SOMMES-NOUS ?\n' +
+    '\n' +
+    'Quel mot-bilan avons-nous écrit sur les cinq tableaux ?\n' +
+    '\n' +
+    'Le',
+  'TABLEAU 3\n' +
+    'Le Radeau de la Méduse, Théodore Géricault, 1818-1819 RETOUCHE-L149',
+  'LES RÈGLES HÉRITÉES\n' +
+    '•\n' +
+    "Au XVIIe siècle, écrire un poème, c'est suivre des règles "
+]
+retouche au hub après reprise: [
+  '/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans/4/blocs/0/legende'
+]
+errs [] [] boites [] []

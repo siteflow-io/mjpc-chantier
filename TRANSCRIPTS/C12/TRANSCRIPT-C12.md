@@ -23220,3 +23220,17 @@ Envoyé à Paul, mot pour mot :
 31. Pas de souci : la moitié collée suffisait. Les trois exécutants ont bien reçu ton message à 12:43, et j'ai ajouté dans leur section ce qui manquait (quand s'arrêter). QCM-1 a déjà livré à 12:47, QCM-3 à 12:49, et QCM-4 rejoue tout. Mon contrôle est programmé à 14:15. Si ça va, je te demanderai alors si une séance est en cours, puis je mettrai tout en ligne.
 
 21/10/2026 12:49 MEMO
+
+## TOUR 758 — réveil programmé de 14:15 (pas Paul)
+
+Le contrôle programmé (`trig_011nNQiNBynEmX4ZEhX11kFU`). Lu : `ETAT.md`, `VERDICT.md` de QCM-4 de 13:40 (« ça va », app `f72ff9b` md5 `6c5330ad…`, banc-rouverte 39/39 ; la mesure sans lecture du soir ; le défaut de 13:10), `DEFAUTS-OUVERTS.md` l. 19, `suivanteQ` (`c3-pilot.js` l. 336). Pas de contrôle de la conscience à ce tour : un défaut est pris, l'app changera ; le contrôle se fera sur l'app finale. Fait : la note en tête de la section (`code-qcm` `e6ec7cbc`) ; dette n°12 · 223 (production).
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.4, toujours en ligne · **en cours chez l'exécutant :** QCM-1, QCM-3 et QCM-4 attendent ; QCM-2 est arrêté · **ouvert :** 31, une question pour toi
+
+31. Ta question de ce matin a sa réponse. QCM-4 a rouvert une séance sans lecture du soir, puis il a posé Q4. Ensuite, la correction en classe a repris Q1, Q2, Q3 puis Q4, chacune avec « 💡 Révéler », et la note est devenue complète. Donc, si tu ne lis pas les copies le soir, tu peux corriger en classe dans la séance rouverte. Ta lecture du soir compte maintenant toujours, même pendant une séance rouverte : QCM-4 dit « ça va », et je le contrôlerai avec le reste.
+
+En testant, QCM-4 a trouvé un défaut qui existait déjà avant. Prends une séance de 4 questions où tu as écarté Q4, et où tu as posé puis corrigé Q1 à Q3. Si tu la rouvres, la console te propose « ▶️ Lancer Q1 », comme si rien n'avait été fait. Q1 à Q4 y sont toutes « à venir », et tu ne peux pas remettre Q4. Ma proposition : la console montre Q1 à Q3 comme déjà faites, et Q4 « écartée » avec « ↩️ Remettre ». Si tu remets Q4, elle te propose « ▶️ Lancer Q4 » ; sinon, « 🛑 Terminer ». Tu valides ? Si oui, il faudra relancer QCM-2, qui tient la console. Tant que ce défaut n'est pas réglé, je ne mets rien en ligne.
+
+21/10/2026 14:17 MEMO

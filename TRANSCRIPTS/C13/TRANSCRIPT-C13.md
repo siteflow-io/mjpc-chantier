@@ -1763,3 +1763,49 @@ Réponse de la conscience (15:24), mot pour mot :
 
 21/10/2026 15:24
 MEMO
+
+---
+
+## TOUR 83 — RÉVEIL N°4 (21/10/2026, 16:24 → 16:42 ; déclenché par la tâche planifiée)
+
+Note : mes deux messages d'attente de ce réveil portaient des horodatages écrits sans lire l'heure (« 16:33 », « 16:38 », « 16:40 » pour ~16:28-16:31). Règle tenue désormais : lire l'heure avant d'écrire.
+
+Mesuré :
+- `integration` à `d1752cd2` (16:01). Depuis le réveil n°3 : E3 (15:35) et E1 (15:31, 15:39) ont traité les relances du 15:14 (E1 : 2, 3, 4, 5, 8, 9 ; reste le grave n°1) ; E2 (15:44) : F2 remesuré, la frontière d'heure par les durées, une carte par diapo restante, l'échéance proposée, « Où on en est » par diapo, « Lancer » grisé après clôture — **sans `banc.sh`** ; E4 (15:41, 15:59, 16:01) : relecteurs A3 et B3, ~30 lignes nouvelles, 7 de ses 8 corrections vérifiées.
+- **Mon banc sur `d1752cd2`** : collisions 0 ; parcours P0-P12 VERT (mode normal et mode test, avec la clôture réelle) ; **contrôles K : 90/108, 18 échecs** (K2, K6, K7, K8, K9, K10, K11) — E4 l'avait mesuré à 15:52 sur la poussée d'E2. **Cause mesurée** : le lancement est l'heure 2/3 (le faux hub porte une heure jouée le 07/09 : trois diapos) et E2 fait commencer l'heure 2 à une **frontière calculée par les durées** (diapo 9, « HEURE 2 · 10 DIAPOS »), donc loin de la diapo 1 que les contrôles tapent. Deux corrections : (1) **la règle d'E2 est fausse** — l'heure suivante commence **où la classe s'est arrêtée** (CADRAGE-TEMPS §1, C1 6.1), ici la diapo 4 ; la frontière par les durées ne sert qu'à prévoir ; (2) les contrôles (v2.2) jouent l'heure 1 d'une séance neuve (copie du hub sans `deroule_joue`) : **108/0 sur `d1752cd2`**. `banc.sh` v1.1 : le verdict des contrôles vient du fichier (le tube rendait « VERT » avec 18 échecs — c'est ce qui a pu tromper E2).
+- Capture P5 : « Où on en est » par activité (R7) ; le témoin « Enregistré à … » rangé dans l'entête (E1) ; l'entête tient sur deux rangées.
+- **Relances (16:35)** : E2 — la poussée sans banc, la règle de l'heure suivante, la reprise qui perd la 19ᵉ vignette et passe en H1 (grave), le VIF qui pose deux paroles (grave, avec E1), la T-5 hors écran et la fin de l'heure qui remplace la colonne de droite, le reste de sa liste ; E1 — le grave n°1 (la première lettre perdue), le VIF, le volet qui ne suit pas, « + bloc » Consigne, Échap du clic droit, les entrées `h:1` au journal hors heure lancée, la pastille « mode test » ; E3 — ses deux points à revérifier ; E4 — ses dix lignes puis R6. `main` → `integration` (f31cfdd4).
+- Réveil suivant : 17:45.
+
+Réponse de la conscience (16:42), mot pour mot :
+
+154. Réveil n°4. Les quatre ont traité les relances de 15:14 en moins d'une heure et continuent ; E4 a passé deux relecteurs de plus sur tout. **Une alerte** : E2 a poussé à 15:44 sans le banc complet, et mon banc y trouve dix-huit contrôles rouges — pas un bug de code mais une règle fausse : après une heure jouée, il fait commencer l'heure suivante à une frontière calculée sur les durées (la diapo 9) au lieu de **là où la classe s'est arrêtée** (la diapo 4). C'est ton cadrage (« la séance reste ouverte et reprend à l'heure suivante ») : relancé en premier chez lui, avec l'obligation du banc avant chaque poussée. Mes contrôles, eux, jouent maintenant l'heure 1 d'une séance neuve : 108/108 sur la même poussée.
+
+155. Deux autres graves relancés : la reprise après rechargement perd la vignette du cahier de textes et retombe en « heure 1 » (E2) ; la parole au clavier (initiales, 1/2/3, note, Entrée) pose parfois deux paroles ou met le chiffre dans la note (E1/E2). Le reste : des tailles, des infobulles, des phrases du récit, chez chacun.
+
+156. Prochain réveil à 17:45. Rien à te demander ; la question du point 152 (l'heure de fin dans le récit) reste posée.
+
+21/10/2026 16:42
+MEMO
+
+## TOUR 84 — RÉVEIL N°5 (21/10/2026, 17:40 → 17:50 ; déclenché par la tâche planifiée)
+
+Note : trois messages d'attente pendant le banc ; le troisième portait « 17:53 » pour ~17:47 (écrit sans lire l'heure, encore) ; les deux premiers (« 17:46 », « 17:47 ») étaient justes. Le banc de ce réveil : lancé 17:41, fini 17:47.
+
+Mesuré :
+- `integration` à `21ed40fe` (E1, 17:36). Depuis le réveil n°4 (16:35) : E1 (le grave n°1 revérifié à 80 ms par touche ; F2 + note = une seule pose ; rien au journal hors d'une heure lancée ; le volet suit ▶ ; « + bloc » sans texte d'amorce ; rebase sur E2) ; E2 (16:48 : le manquement de 15:44 reconnu, « la frontière par les durées » remplacée par `dr_marquerJoues`/`dr_heureContinue` — l'heure suivante commence là où la classe s'est arrêtée ; VIF une seule pose ; « EB1 », la fiche d'élève écartée, « LC2 », « sur 7 », T-0 dit la fin réelle, le chrono s'arrête après la clôture ; `banc.sh` avant chaque poussée ; reste 3, 5, 7) ; E3 (17:00, `22692088` : (a)/(b) gardés par T12, banc à l'heure 1 + T13 pour l'heure 2, infobulles, dettes relues) ; E4 (relecteurs A4 et B3 à 14:50-14:52 : dix lignes dont deux réglées chez lui ; l'impression ; 103 lignes au total, 45 réglées/écartées, 58 « ouvertes » dont beaucoup périmées).
+- **Mon banc sur `21ed40fe`** : collisions 0 ; parcours P0-P12 VERT (mode normal et mode test, clôture réelle : `H.clos`/`H.finReel` au magasin) ; **contrôles K : 108 vérifications, 0 échec** (v2.2). Épreuves : `AUDITS/INTEGRATION-DEROULE/epreuves/banc-sur-integration-21ed40fe.txt`, `AUDITS/CONTROLES-DEROULE/epreuves/sur-integration-21ed40fe-v22.txt` ; captures `pieces/T84-P5-classe-lancee.png`, `pieces/T84-P9-fin-de-l-heure.png`.
+- Captures P5/P9 : la barre Structure · Atelier · Pilotage · Relecture ; l'entête sur deux rangées (classe, créneau, « heure 2/3 », « déroulé intègre ● », chrono, Notes, Tableau, « Enregistré à 09:00 », ● session, Écran 2 ; Adresse du tableau, Fin de l'heure, ■ Clore l'heure) ; « HEURE 2 · 8 DIAPOS » ; « Où on en est » par activité avec « H2 · 59 min prévues / 50 utiles — l'heure dépasse de 9 min » ; la fin de l'heure « étape 1 sur 7 » remplace encore la colonne de droite (point 5 d'E2, ouvert).
+- **Relances écrites (17:48)**, `MANDATS/INTEGRATION-DEROULE/RELANCES/E<n>.md` : E2 — le reste du réveil n°4 (3, 5, 7) puis six lignes A4 (la copie ED sans retours ; les décisions provisoires qui ne suivent pas ce qui se joue ; « posé : JC » sous le bas de l'écran ; la case EDT sans titre ni relecture après la clôture ; chrono/« 5 à décider » à revérifier par E4 ; « ▶ Lancer » actif après l'heure close, créneau 10:07-11:02 inexistant) ; E1 — ▶ sur la page 1 bascule en page 2 ; le clic dans une question grisée ne mène pas à la saisie ; puis 6, 7, 10 et les dettes ; E3 — rien d'ouvert, rejoue à chaque poussée d'E1/E2 ; E4 — passe de revérification complète de la table sur `21ed40fe` (A5), ses trois lignes « à moi », R2/R4 où en est-il.
+- Réveil suivant : 18:50.
+
+Réponse de la conscience (17:50), mot pour mot :
+
+157. Réveil n°5. Sur la dernière poussée (`21ed40fe`, E1, 17:36) mon banc est entièrement vert : collisions 0, parcours P0-P12 vert, mode test vert avec la clôture réelle, contrôles K 108 sur 108. Les quatre ont traité le réveil n°4 en moins d'une heure : E2 a reconnu la poussée sans banc et refait la règle (l'heure suivante commence là où la classe s'est arrêtée), la parole au clavier ne pose plus qu'une parole, E1 a revérifié la première lettre perdue, E3 a tout rejoué, E4 relit.
+
+158. Relancé à 17:48. E2 : le reste du réveil n°4 (la reprise qui doit remonter l'heure telle qu'elle était, la T-5 dans l'écran, la colonne de droite pendant la fin de l'heure) puis six lignes du dernier relecteur d'E4 — la copie pour École Directe qui colle sans retours à la ligne, les décisions de la T-5 qui ne suivent pas ce qui se joue ensuite, la confirmation de la parole sous le bas de l'écran, la case de l'emploi du temps qui perd son titre après la clôture, « Lancer » encore actif après l'heure close et qui propose un créneau qui n'existe pas. E1 : ▶ sur la page 1 d'une diapo paginée bascule aussitôt en page 2 (la classe ne voit jamais la page 1) ; le clic dans une question grisée ne mène pas à la saisie. E4 : revérifier toute sa table sur cette poussée (58 lignes « ouvertes » dont beaucoup sont réglées depuis) et finir ses trois lignes. E3 : rien d'ouvert.
+
+159. Pas encore mûr pour « promeus » : trois moyens chez E2 touchent ce que tu colles dans École Directe et la T-5 ; je veux la table d'E4 revérifiée et zéro grave ouvert avant l'audit final (écrans changés et voisins, captures entières avant/après). Prochain réveil à 18:50. La question du point 152 (l'heure de fin dans le récit) reste à toi. Mon erreur de ce réveil : un message d'attente horodaté « 17:53 » écrit à 17:47 sans lire l'heure.
+
+21/10/2026 17:50
+MEMO

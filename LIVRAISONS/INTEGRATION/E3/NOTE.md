@@ -75,7 +75,7 @@ J'ai appliqué deux outils : `E3/outils/brancher-index.py`, puis `E3/outils/rela
   - **T14** : le bloc écrit en classe, le rechargement, la reprise.
   - **T15** : la copie d'un autre jour, la retouche de la veille au mur.
 - Chaque trouvaille d'un relecteur a reçu sa garde, vérifiée rouge sur l'ancien assemblé et verte sur le nouveau.
-- **Dernier passage (22:39, `sorties/2239/banc-E3.txt`) : 94 vérifications, 0 échec.**
+- **Dernier passage : 99 vérifications, 0 échec** (T16 compris, sur `69f8e1c5`/`82f70c97` d'E1 — voir le journal) ; avant T16 : 94/94 (`sorties/2239/`).
 - **Le banc de la conscience** (`banc.sh`) est vert à chaque passage depuis 15:30 : collisions 0, parcours et mode test verts, K1-K13 108/0.
 - **Captures** : `E3/captures/site/` (T1 à T15), et `E3/captures/` (la maquette, l'essai du module avant E1-a).
 
@@ -88,7 +88,7 @@ Deux relecteurs (12:30-13:00) ont relevé 8 trouvailles dans mon territoire, tou
   - « texte au tableau » à 52 pt ne grossit le texte que de 1,8 % et ne pagine pas, au pilote comme au tableau. La fenêtre reproduit fidèlement le pilote.
   - `#dr-zone` est encore posé dans la page tableau. Ma rustine renomme son `#mur` en `#dr-mur-gare` ; elle tombe dès qu'E1 ne le pose plus.
   - `fermerFiche` appelle `dr_versMur(null, {sortie:true})` comme la sortie de l'atelier. Je distingue les deux par `S.fichePage` ; un appel explicite serait plus sûr.
-- **E1 (grave 148, réveil n°10)** : en heure lancée, l'Atelier puis une autre diapo, retour au Pilotage → le tableau saute sans garde à la diapo de l'Atelier (T16, rouge à 23:40).
+- **E1 (grave 148, réveil n°10)** : réglé par E1 (`69f8e1c5`) — T16 vert.
 - **E1/E4** : R14 (la fiche pilotée) et R1 (les marques) passent par `rendre` et `dr_versMur`. Le tableau les montrera tels que le pilote les rend ; je les vérifierai au banc à leur livraison.
 - **E2** : `dr_caseDuMoment` n'est pas encore exposée en fonction pure (ma `dr_tabCaseDuMoment` applique la même règle). (« T-undefined » vu au banc T15 : réglé par E2, commit `067f8ba3`.)
 

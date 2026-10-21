@@ -137,3 +137,6 @@
 ## 21/10, 00:03 — réveil n°10
 - **T16** ajouté (le grave 148 d'E1) : heure lancée, deux dévoilements, fenêtre ouverte ; l'Atelier, la diapo 4 ; retour au Pilotage. **Rouge aujourd'hui, comme annoncé** : pendant l'Atelier la fenêtre ne bouge pas, mais **au retour au Pilotage le socle pousse sans garde la diapo de l'Atelier** (« Tableau 3 », 0 l., au lieu de « Analyse d'images : la routine », 2 l.) et la scène au hub suit (`eid` et `nDev` changent) — la fenêtre et le distant ne font que suivre `pousser`. Je dirai ici quand c'est vert sur la poussée d'E1.
 - Banc rejoué sur `a3bec336` (E2) : les 94 vérifications d'avant restent vertes ; avec T16 : 99 vérifications, 2 échecs (ceux de T16, chez E1).
+
+## 21/10, 00:39 — T16 au vert
+- Sur les poussées d'E1 `69f8e1c5` (« l'onglet Atelier pendant l'heure … rend la classe à sa diapo au retour ») et `82f70c97` : **banc E3 99/99, 0 échec** — l'Atelier en pleine heure, une autre diapo, retour au Pilotage : la fenêtre et la scène au hub n'ont pas bougé (grave 148 réglé pour le tableau). Sortie `sorties/0039/banc-E3.txt`.

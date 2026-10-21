@@ -153,6 +153,12 @@ else verif('D1', null, 'les documents par référence', 'la maquette simule ses 
   verif('13·8', corrige ? /on a regardé les tableaux et dit ce qu'on voyait|Regardez les tableaux|on a regardé les tableaux/i.test(t) : null, 'la consigne corrigée en classe (la copie) est celle que raconte le récit', t.slice(0, 500));
   await o.ctx.close(); }
 
+// ═════ P0 · avant tout lancement, il n'y a ni récit ni papier (relecteur neuf 2 ; cadrage 2 · 1.4) ═════
+{ const o = await ouvrir({ frais: true }); const pg = o.pg; await relecture(pg);
+  const f = await pg.evaluate(() => Array.from(document.querySelectorAll('#faces [data-f]')).map(b => b.textContent.trim()));
+  verif('P0', !f.some(t => /^Papier|^Le récit ·/.test(t)), 'aucune heure lancée : aucune face « Le récit » ni « Papier » à imprimer', JSON.stringify(f));
+  await o.ctx.close(); }
+
 // ═════ T · la transposition et la langue (relecteur neuf 1) : les mots accentués, « un élève », la copie sans repère pour Paul ═════
 { const o = await ouvrir({ frais: true }); const pg = o.pg;
   const t = await pg.evaluate(() => [recit('Placez les poètes sur la frise, devant vous.'), recit('Regardez le cinéma de ta ville.'), personne('Les poètes et tes amis')]);

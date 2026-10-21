@@ -126,10 +126,10 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
 
 - **Le réveil n°3** (15:14, ce que la relecture continue tenait ouvert) : 1 et 6 (A23), 2, 3, 4, 5, 8, 9 (A24) — dont : un appui sur un élément grisé le dévoile sans y écrire ; le bandeau « Enregistré à … » du site ne couvre plus rien (témoin discret dans l'entête) ; une réponse tapée dévoile sa question et part au tableau ; « Activité n — » au récit dès qu'une activité existe.
 - **La relecture continue d'E4** (13:35-14:05, relue sur `a68469f5`, antérieur à mes poussées 10 et 11) : ce qui restait chez moi est corrigé et gardé dans A25 (chaque garde rouge sur la page d'avant, verte après) :
-  - **F2 + note** (grave) : le chiffre choisit le motif (allumé), la note s'écrit, Entrée pose ce qui est affiché — une seule pose ;
+  - **F2 + note** (grave) : initiales, 1/2/3, note, Entrée → une seule pose, le bon motif, la note. E2 a poussé la même correction au même endroit (`712accda`) : sa version est gardée, A25 la mesure ;
   - **hors heure lancée, rien au journal** (l'« heure 1 » fantôme de la Relecture venait de là) ;
   - le volet suit ▶ ; « + bloc » → la frappe remplace « Nouvelle consigne » ; Échap ferme le menu d'une étape ; en mode test, une pastille « mode test » au lieu d'« Enregistré à … ».
-- **Dernier passage (poussée 12, `dfa8db4b`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 153 / 0.
+- **Dernier passage (poussée 12, `159ceec3`, sorties `1520`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 153 / 0.
 
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :

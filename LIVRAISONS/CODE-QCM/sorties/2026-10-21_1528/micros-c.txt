@@ -1,0 +1,51 @@
+Micro 8.0.3, la carte du temps de la lecture, par le geste (QCM-4 · BANC) — durée 179 s · app md5 b210a7faa15f0329183830735173132d
+vérifications : 36 · échecs : 0
+── La séance de 3 ESSAI, deux tablettes, quatre élèves, jusqu'à la lecture de la première question corrigée
+  note   tablette 1 : Julien | Léa ; tablette 2 : Camille | Tom ; entrés : 4
+  ok     [QCM-1 · SOCLE] la correction commence au clic de Paul (deroule.ph = lecture)
+  note   lecture de Q1 : {"duree":15} ; « Milan » sert de clic d'essai
+── 1 — la carte « 📄 Temps pour lire la feuille du voisin » sur la console, son champ, « +5 », « +10 », « +30 », leurs infobulles
+  ok     [QCM-2 · HEURE] à la lecture, la console montre la carte « 📄 Temps pour lire la feuille du voisin »
+  ok     [QCM-2 · HEURE] la carte a son champ du temps, ouvert
+  ok     [QCM-2 · HEURE] l'infobulle du champ dit ce que fait le geste (« Tape le temps pour lire la feuille du voisin … chrono de la lecture »)
+  ok     [QCM-2 · HEURE] la carte a « +5 », ouvert
+  ok     [QCM-2 · HEURE] l'infobulle de « +5 » dit ce que fait le geste (« Ajoute 5 s au temps pour lire la feuille du voisin, tout de suite au chrono en cours »)
+  ok     [QCM-2 · HEURE] la carte a « +10 », ouvert
+  ok     [QCM-2 · HEURE] l'infobulle de « +10 » dit ce que fait le geste (« Ajoute 10 s au temps pour lire la feuille du voisin, tout de suite au chrono en cours »)
+  ok     [QCM-2 · HEURE] la carte a « +30 », ouvert
+  ok     [QCM-2 · HEURE] l'infobulle de « +30 » dit ce que fait le geste (« Ajoute 30 s au temps pour lire la feuille du voisin, tout de suite au chrono en cours »)
+── 2 — « +5 », « +10 », « +30 » pendant la lecture : la base, la console et la tablette suivent
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +5 » : deroule/duree passe de 15 à 20
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +5 » : temps/0/reponse passe de 15 à 20
+  ok     [QCM-2 · HEURE] « +5 » : le chrono de la tablette (moitié de Julien) gagne 5 s (au temps écoulé près)
+  ok     [QCM-2 · HEURE] « +5 » : le temps qui reste sur la carte de la console gagne 5 s
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +10 » : deroule/duree passe de 20 à 30
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +10 » : temps/0/reponse passe de 20 à 30
+  ok     [QCM-2 · HEURE] « +10 » : le chrono de la tablette (moitié de Julien) gagne 10 s (au temps écoulé près)
+  ok     [QCM-2 · HEURE] « +10 » : le temps qui reste sur la carte de la console gagne 10 s
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +30 » : deroule/duree passe de 30 à 60
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] « +30 » : temps/0/reponse passe de 30 à 60
+  ok     [QCM-2 · HEURE] « +30 » : le chrono de la tablette (moitié de Julien) gagne 30 s (au temps écoulé près)
+  ok     [QCM-2 · HEURE] « +30 » : le temps qui reste sur la carte de la console gagne 30 s
+── 3 — un temps tapé dans le champ, caractère par caractère, pendant que les deux tablettes cliquent leur lecture
+  note   pendant la frappe : 47 écritures de lectures/ par les tablettes, 1268 changements du DOM de la console
+  ok     [QCM-4 · BANC] pendant la frappe, les tablettes ont bien cliqué et la console s'est redessinée (sinon la vérification suivante ne dit rien)
+  ok     [QCM-2 · HEURE] la saisie « 130 », tapée lentement, n'est jamais effacée ni coupée par un redessin (valeur du champ et curseur, toutes les 150 ms)
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] validé (Tab), temps/0/reponse vaut la valeur tapée (130)
+  ok     [QCM-2 · HEURE] validé, le champ de la carte montre 130
+  note   pendant la frappe, le plus petit temps restant vu dans la base : 48.9 s
+── 4 — la lecture figée à 0, puis rouverte par « +10 »
+  note   le banc tape « 21 » dans le champ : le 0 dans ≈ 4.1 s
+  ok     [QCM-2 · HEURE] à 0, la moitié de Julien (lecture cliquée) : « ⏱️ Temps fini : ta lecture est enregistrée »
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] à 0, un clic sur « Milan » ne change pas la lecture dans la base (lectures/0/abrial_julien)
+  note   à 0, la carte de la console : {"v":"0s","boutons":["+5","+10","+30"]} (11-4-console-a0.png)
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] à 0, « +10 » sur la carte : la lecture repart pour 10 s depuis le clic (l'infobulle)
+  ok     [QCM-2 · HEURE] après « +10 », la lecture de Julien se rouvre (plus de « Temps fini », ses choix ouverts)
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] après « +10 », un clic sur « Milan » change de nouveau la lecture dans la base
+── 4 bis — « +10 » donné 15 s après le 0 (l'infobulle : « Une lecture déjà figée à 0 se rouvre pour ces secondes. »)
+  ok     [QCM-2 · HEURE] 15 s après le 0, la lecture de Julien est figée
+  ok     [QCM-2 · HEURE (c3-corr.js, c3-pilot.js), QCM-1 · SOCLE (ACT.ajouterTemps)] 15 s après le 0, « +10 » rouvre la lecture de Julien pour 10 s (l'infobulle de « +10 » : « Une lecture déjà figée à 0 se rouvre pour ces secondes. »)
+── 5 — aucune erreur de page
+  ok     [QCM-2 · HEURE] console : aucune erreur de page
+  ok     [QCM-2 · HEURE] tablette-1 : aucune erreur de page
+  ok     [QCM-2 · HEURE] tablette-2 : aucune erreur de page

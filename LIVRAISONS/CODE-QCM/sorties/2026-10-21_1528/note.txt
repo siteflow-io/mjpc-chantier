@@ -1,0 +1,53 @@
+Point 29, seconde moitié, la note d'une séance arrêtée avant la fin, lue le soir, par le geste (QCM-4 · BANC) — durée 151 s · app md5 b210a7faa15f0329183830735173132d
+vérifications : 41 · échecs : 0
+── La séance : deux élèves sur une tablette ; Q1 fausse pour les deux, Q2 et Q3 justes
+  note   présents : ABRIAL Julien (gauche), BAUDRY Léa (droite)
+  ok     [QCM-4 · BANC] la correction commence par Q1 (la plus ratée)
+  ok     [QCM-4 · BANC] Q1 révélée
+── « 🛑 Terminer » : Q2 et Q3 posées, jamais révélées
+  ok     [QCM-4 · BANC] la séance est terminée
+  note   ABRIAL Julien, avant toute lecture du soir : {"base":{"n":0,"total":3,"complet":false,"sur20":0,"st":["f","n","n"],"maitrise":"rouge"},"c4":{"n":0,"total":3,"complet":false,"sur20":0,"st":["f","n","n"],"maitrise":"rouge"}}
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] avant la lecture du soir : 0 / 3, note pas complète, dans la base et dans c4
+── Le soir : « 📄 Lire les copies » ; Paul lit Q2 puis Q3 de chaque copie
+  ok     [QCM-3 · SOIR] Données → Résultats → « 📊 Ouvrir » la séance
+  note   le tableau de la séance avant : ["ABRIAL Julien","✗","?","?","0/3 2 questions pas encore lues","0","—","—","—","🟢 Très bonne maîtrise",""]
+  ok     [QCM-3 · SOIR] « 📄 Lire les copies » (ou « n feuilles à lire »)
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de ABRIAL Julien
+  ok     [QCM-3 · SOIR] ABRIAL Julien, Q2 : Paul lit la feuille (« Madrid, Berlin ») : lectures/1/abrial_julien écrite
+  ok     [QCM-1 · SOCLE] ABRIAL Julien, après la lecture de Q2 : la base (SCN.note) compte la lecture : 1 / 3, pas encore complète
+  ok     [QCM-3 · SOIR] ABRIAL Julien, après la lecture de Q2 : c4 (resultatV) : 1 / 3, pas encore complète
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] ABRIAL Julien, après la lecture de Q2 : les deux copies de la note disent la même chose
+  ok     [QCM-3 · SOIR] ABRIAL Julien, Q2 : « 🧮 La note, en direct » dit 1 / 3 et « 1 question pas encore lue »
+  ok     [QCM-3 · SOIR] ABRIAL Julien, Q3 : Paul lit la feuille (« 8 ») : lectures/2/abrial_julien écrite
+  ok     [QCM-1 · SOCLE] ABRIAL Julien, après la lecture de Q3 : la base (SCN.note) compte la lecture : 2 / 3, complète
+  ok     [QCM-3 · SOIR] ABRIAL Julien, après la lecture de Q3 : c4 (resultatV) : 2 / 3, complète
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] ABRIAL Julien, après la lecture de Q3 : les deux copies de la note disent la même chose
+  ok     [QCM-3 · SOIR] ABRIAL Julien, Q3 : « 🧮 La note, en direct » dit 2 / 3, sans « pas encore lue »
+  ok     [QCM-3 · SOIR] « Lire les copies » : la copie de BAUDRY Léa
+  ok     [QCM-3 · SOIR] BAUDRY Léa, Q2 : Paul lit la feuille (« Madrid, Berlin ») : lectures/1/baudry_lea écrite
+  ok     [QCM-1 · SOCLE] BAUDRY Léa, après la lecture de Q2 : la base (SCN.note) compte la lecture : 1 / 3, pas encore complète
+  ok     [QCM-3 · SOIR] BAUDRY Léa, après la lecture de Q2 : c4 (resultatV) : 1 / 3, pas encore complète
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] BAUDRY Léa, après la lecture de Q2 : les deux copies de la note disent la même chose
+  ok     [QCM-3 · SOIR] BAUDRY Léa, Q2 : « 🧮 La note, en direct » dit 1 / 3 et « 1 question pas encore lue »
+  ok     [QCM-3 · SOIR] BAUDRY Léa, Q3 : Paul lit la feuille (« 8 ») : lectures/2/baudry_lea écrite
+  ok     [QCM-1 · SOCLE] BAUDRY Léa, après la lecture de Q3 : la base (SCN.note) compte la lecture : 2 / 3, complète
+  ok     [QCM-3 · SOIR] BAUDRY Léa, après la lecture de Q3 : c4 (resultatV) : 2 / 3, complète
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] BAUDRY Léa, après la lecture de Q3 : les deux copies de la note disent la même chose
+  ok     [QCM-3 · SOIR] BAUDRY Léa, Q3 : « 🧮 La note, en direct » dit 2 / 3, sans « pas encore lue »
+── La note complète, sur tous les écrans
+  ok     [QCM-3 · SOIR] le tableau de la séance, ABRIAL Julien : 2/3 · 13,3, sans « pas encore lues »
+  ok     [QCM-3 · SOIR] le tableau de la séance, ABRIAL Julien : la maîtrise et les compétences, la note complète
+  note   ABRIAL Julien : base {"n":2,"sur20":13.333333333333334,"maitrise":"bleu"} · tableau : maîtrise « 🔵 Maîtrise satisfaisante »
+  ok     [QCM-3 · SOIR] le tableau de la séance, BAUDRY Léa : 2/3 · 13,3, sans « pas encore lues »
+  ok     [QCM-3 · SOIR] le tableau de la séance, BAUDRY Léa : la maîtrise et les compétences, la note complète
+  note   BAUDRY Léa : base {"n":2,"sur20":13.333333333333334,"maitrise":"bleu"} · tableau : maîtrise « 🔵 Maîtrise satisfaisante »
+  ok     [QCM-3 · SOIR] la fiche de ABRIAL Julien : « 2 / 3 · 13,3 / 20 », sans « pas encore lue »
+  ok     [QCM-3 · SOIR] le CSV, ABRIAL Julien : 2/3 et 13,3, sans « pas encore lue »
+  note   Données → Résultats : « Évaluation d'essai » (captures-note/08-resultats.png)
+  ok     [QCM-3 · SOIR] Données → Résultats : plus rien « pas encore lue » pour la séance
+  ok     [QCM-4 · BANC] les copies rendues
+  ok     [QCM-3 · SOIR] le PDF « notes et compétences » : 13,3, sans « pas encore lue »
+  ok     [QCM-1 · SOCLE, QCM-3 · SOIR] le bilan de ABRIAL Julien (« 📊 Mes évaluations ») : 2 / 3 · 13,3 / 20
+  ok     [QCM-4 · BANC] console : aucune erreur de page
+  ok     [QCM-4 · BANC] tablette-1 : aucune erreur de page
+  ok     [QCM-4 · BANC] eleve : aucune erreur de page

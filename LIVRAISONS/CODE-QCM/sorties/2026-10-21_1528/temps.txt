@@ -1,0 +1,34 @@
+Point 28, le temps tapé, par le geste (QCM-4 · BANC) — durée 194 s · app md5 b210a7faa15f0329183830735173132d
+vérifications : 28 · échecs : 0
+── La séance : 3 ESSAI, Adam absent, deux tablettes, quatre élèves ; Q1, « Autoriser la réponse »
+  ok     [QCM-4 · BANC] le 1er tour de Q1 est en cours
+── A. Le temps de réponse de Q1, tapé pendant le 1er tour
+  ok     [QCM-4 · BANC] le champ du temps de réponse de Q1, ouvert, pendant le tour
+  ok     [QCM-2 · HEURE] son infobulle dit que le temps part à Entrée (« Tape le temps …, puis Entrée … »)
+  ok     [QCM-2 · HEURE] pendant la frappe de « 45 », rien n'est écrit (ni temps/0, ni deroule/duree)
+  ok     [QCM-2 · HEURE] pendant la frappe, le tour ne finit pas : le chrono continue comme avant
+  ok     [QCM-2 · HEURE] pendant la frappe, une tablette répond (un redessin) : le champ garde « 45 » et le curseur
+  ok     [QCM-4 · BANC] la tablette 2 a bien répondu pendant la frappe
+  ok     [QCM-2 · HEURE, QCM-1 · SOCLE] à Entrée, le temps de réponse de Q1 vaut 45
+  ok     [QCM-2 · HEURE, QCM-1 · SOCLE] à Entrée, le tour continue, son temps suit (durée 15 → 45)
+  ok     [QCM-2 · HEURE, QCM-1 · SOCLE] « 50 » tapé puis le champ quitté (Tab) : rien avant, puis le temps vaut 50, le tour continue
+  ok     [QCM-2 · HEURE] le champ vidé puis quitté reprend sa valeur (50), rien n'est écrit
+  ok     [QCM-2 · HEURE] « Toutes les questions », Q2 : l'infobulle du temps dit « Entrée »
+  ok     [QCM-2 · HEURE] « Toutes les questions », Q2 : « 30 » tapé, rien n'est écrit avant Entrée, le champ garde « 30 »
+  ok     [QCM-2 · HEURE, QCM-1 · SOCLE] « Toutes les questions », Q2 : à Entrée, le temps de réponse de Q2 vaut 30
+  ok     [QCM-2 · HEURE, QCM-1 · SOCLE] « +5 » du temps de réponse, pendant le tour : tout de suite, la durée gagne 5 s
+── La suite de la séance, jusqu'à la lecture de la feuille du voisin
+  ok     [QCM-4 · BANC] la lecture de la feuille du voisin
+── B. Le temps pour lire la feuille du voisin, tapé pendant que les tablettes lisent
+  ok     [QCM-2 · HEURE] l'infobulle du temps pour lire la feuille du voisin dit « Entrée »
+  ok     [QCM-4 · BANC] pendant la frappe, les tablettes ont cliqué leur lecture
+  ok     [QCM-2 · HEURE] pendant la frappe de « 130 », rien n'est écrit
+  ok     [QCM-2 · HEURE] pendant la frappe de « 130 », aucune lecture n'est figée (le chrono continue comme avant)
+  ok     [QCM-2 · HEURE] pendant la frappe, les tablettes cliquent (des redessins) : le champ garde la valeur et le curseur
+  ok     [QCM-2 · HEURE, QCM-1 · SOCLE] à Entrée, le temps pour lire vaut 130
+  ok     [QCM-2 · HEURE, QCM-1 · SOCLE] « +10 » avant le 0 : tout de suite, +10 s (durée 130 → 140, temps 140)
+  ok     [QCM-2 · HEURE] au 0, la lecture est figée (« ⏱️ Temps fini : ta lecture est enregistrée »)
+  ok     [QCM-2 · HEURE, QCM-1 · SOCLE] « +10 » après le 0 : la lecture repart pour 10 s, ses choix rouverts
+  ok     [QCM-2 · HEURE] console : aucune erreur de page
+  ok     [QCM-2 · HEURE] tablette-1 : aucune erreur de page
+  ok     [QCM-2 · HEURE] tablette-2 : aucune erreur de page

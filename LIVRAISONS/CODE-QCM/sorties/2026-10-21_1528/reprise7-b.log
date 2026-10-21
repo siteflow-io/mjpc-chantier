@@ -1,0 +1,256 @@
+── Séance A (🎲 partout, aucune feuille tapée) : « 🧪 Mode test », « 🚀 Lancer la séance », l'appel  (3 s)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée) : « 🧪 Mode test »
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] point 6, l'appel : la tablette simulée 1, en petit, dit « Combien êtes-vous sur cette tablette ? » comme la vraie (pas de séance pour les tablettes pendant l'appel)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée) : « 🚀 Lancer la séance » de la fenêtre de l'appel
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée) : la séance de test existe (sessionActive/_test_evaluation-qcm)
+   phase {"ph":"entree"}
+  ok     [QCM-3 · SOIR] point 6 : la tablette simulée 1, en petit, porte « 📊 Mes évaluations » en tête de chaque moitié, comme « 👁 » (la vraie tablette)
+  ok     [QCM-3 · SOIR] point 6, l'entrée (« Avant de commencer ») : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6 : la tablette simulée 1, « 🔍 en grand », porte « 📊 Mes évaluations » en tête de chaque moitié, comme « 👁 » (la vraie tablette)
+  ok     [QCM-3 · SOIR] point 6, l'entrée (« Avant de commencer ») : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, prêts (« En attente du démarrage ») : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, prêts (« En attente du démarrage ») : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+   phase {"ph":"reflexion","qi":0}
+  ok     [QCM-3 · SOIR] point 6, Q1 réflexion : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 réflexion : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+   phase {"ph":"passage","qi":0,"tour":1,"cote":"g"}
+   phase {"ph":"reponse","qi":0,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 1, la réponse : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 1, la réponse : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":0,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 1, B (« avais-tu bien écrit … sur ta copie ? ») : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 1, B (« avais-tu bien écrit … sur ta copie ? ») : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+   phase {"ph":"passage","qi":0,"tour":2,"cote":"d"}
+   phase {"ph":"reponse","qi":0,"tour":2,"cote":"d"}
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 2, la réponse : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 2, la réponse : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":0,"tour":2,"cote":"d"}
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 2, B (« avais-tu bien écrit … sur ta copie ? ») : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 2, B (« avais-tu bien écrit … sur ta copie ? ») : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+   phase {"ph":"close","qi":0}
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+  ok     [QCM-3 · SOIR] point 6, Q1 close : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 close : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+   phase {"ph":"reflexion","qi":1}
+   champs « 📝 Feuille » de la tablette 1 à la réflexion de Q2 : ["",""] (captures-reprise7-b/18-feuilles-q2-reflexion.png)
+   phase {"ph":"passage","qi":1,"tour":1,"cote":"d"}
+   phase {"ph":"reponse","qi":1,"tour":1,"cote":"d"}
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":1,"tour":1,"cote":"d"}
+   phase {"ph":"passage","qi":1,"tour":2,"cote":"g"}
+   phase {"ph":"reponse","qi":1,"tour":2,"cote":"g"}
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":1,"tour":2,"cote":"g"}
+   phase {"ph":"close","qi":1}
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+   phase {"ph":"reflexion","qi":2}
+   phase {"ph":"passage","qi":2,"tour":1,"cote":"g"}
+   phase {"ph":"reponse","qi":2,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":2,"tour":1,"cote":"g"}
+   phase {"ph":"passage","qi":2,"tour":2,"cote":"d"}
+   phase {"ph":"reponse","qi":2,"tour":2,"cote":"d"}
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":2,"tour":2,"cote":"d"}
+   phase {"ph":"close","qi":2}
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+   phase {"ph":"estim"}
+  SECOURS point 6, l'estimation : pas de « 👁 » sur la console à cette phase ; comparé à l'écran de la vraie tablette (MoitieH) : « Combien de bonnes réponses penses-tu avoir ? »
+  ok     [QCM-3 · SOIR] point 6, l'estimation : la tablette simulée 1, en petit, dessine l'écran de la vraie tablette, les deux moitiés (« Combien de bonnes réponses penses-tu avoir ? »)
+  ok     [QCM-3 · SOIR] point 6, l'estimation : la tablette simulée 1, « 🔍 en grand », dessine l'écran de la vraie tablette, les deux moitiés (« Combien de bonnes réponses penses-tu avoir ? »)
+   phase {"ph":"att2"}
+  ok     [QCM-3 · SOIR] point 6, la seconde attestation : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la seconde attestation : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+   phase {"ph":"lecture","qi":2}
+  ok     [QCM-3 · SOIR] point 6, la correction (lecture de la feuille du voisin) : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la correction (lecture de la feuille du voisin) : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+   phase {"ph":"revele","qi":2}
+  ok     [QCM-3 · SOIR] point 6, la correction (réponse révélée) : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la correction (réponse révélée) : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+   phase {"ph":"lecture","qi":0}
+   phase {"ph":"revele","qi":0}
+   phase {"ph":"lecture","qi":1}
+   phase {"ph":"revele","qi":1}
+   phase {"ph":"coeval"}
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation : la tablette simulée 1, en petit, ne dit pas « ⏳ Attends la prochaine question… »
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation : la tablette simulée 1, « 🔍 en grand », ne dit pas « ⏳ Attends la prochaine question… »
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation en grand : « ✅ Je pense que Gatien a bien lu ma feuille » est là et ouvert (moitié d'Élise)
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation en grand : un clic « ✅ » écrit une seule fois coeval/audebert_elise = ok, comme sur la vraie tablette
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation en grand, après le clic : la moitié d'Élise dit ce que dit la vraie (« ⏳ Attends ton bilan… »)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), à la co-évaluation : la liste « 📌 À lire sur les feuilles, ce soir » est vide (aucune feuille tapée)
+   phase {"ph":"bilan"}
+  SECOURS point 6, le bilan : pas de « 👁 » sur la console à cette phase ; comparé à l'écran de la vraie tablette (MoitieH) : « 🎯 Bilan personnel · Ta note provisoire : n / 3 »
+  ok     [QCM-3 · SOIR] point 6, le bilan : la tablette simulée 1, en petit, dessine l'écran de la vraie tablette, les deux moitiés (« 🎯 Bilan personnel · Ta note provisoire : n / 3 »)
+  ok     [QCM-3 · SOIR] point 6, le bilan : la tablette simulée 1, en petit, ne dit pas « ⏳ Attends la prochaine question… »
+  ok     [QCM-3 · SOIR] point 6, le bilan : la tablette simulée 1, « 🔍 en grand », dessine l'écran de la vraie tablette, les deux moitiés (« 🎯 Bilan personnel · Ta note provisoire : n / 3 »)
+  ok     [QCM-3 · SOIR] point 6, le bilan : la tablette simulée 1, « 🔍 en grand », ne dit pas « ⏳ Attends la prochaine question… »
+  ok     [QCM-3 · SOIR] point 6, le bilan en grand : « 📄 Imprimer / Exporter mon bilan » est là (moitié d'Élise)
+  ok     [QCM-3 · SOIR] point 6, le bilan en grand : un clic « 📄 Imprimer / Exporter mon bilan » ouvre son bilan imprimable, une seule fois, comme sur la vraie tablette
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), au bilan : la liste « 📌 À lire sur les feuilles, ce soir » est vide (aucune feuille tapée)
+   aLire (base) : []
+  SECOURS Séance A (🎲 partout, aucune feuille tapée), le soir : après « 🛑 Terminer », la console reste en mode test (sans Données → Résultats) et « 🗑️ Sortir et purger » efface la séance ; S.seances écarte d'ailleurs les classes « _ » : le tableau de la séance de test n'est pas joignable par le geste, non joué (captures-reprise7-b/34-SanceApartoutaucunefeuilletape-apres-terminer.png) ; aLire en base : []
+── Séance B (une feuille tapée par Paul : Élise, Q3) : « 🧪 Mode test », « 🚀 Lancer la séance », l'appel  (133 s)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : « 🧪 Mode test » (la console y est restée après « 🛑 Terminer »)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : « 🚀 Lancer la séance » de la fenêtre de l'appel
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : la séance de test existe (sessionActive/_test_evaluation-qcm)
+   phase {"ph":"entree"}
+   phase {"ph":"reflexion","qi":0}
+   phase {"ph":"passage","qi":0,"tour":1,"cote":"g"}
+   phase {"ph":"reponse","qi":0,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":0,"tour":1,"cote":"g"}
+   phase {"ph":"passage","qi":0,"tour":2,"cote":"d"}
+   phase {"ph":"reponse","qi":0,"tour":2,"cote":"d"}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":0,"tour":2,"cote":"d"}
+   phase {"ph":"close","qi":0}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+   phase {"ph":"reflexion","qi":1}
+   phase {"ph":"passage","qi":1,"tour":1,"cote":"d"}
+   phase {"ph":"reponse","qi":1,"tour":1,"cote":"d"}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":1,"tour":1,"cote":"d"}
+   phase {"ph":"passage","qi":1,"tour":2,"cote":"g"}
+   phase {"ph":"reponse","qi":1,"tour":2,"cote":"g"}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":1,"tour":2,"cote":"g"}
+   phase {"ph":"close","qi":1}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+   phase {"ph":"reflexion","qi":2}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : Paul tape « je ne sais pas trop » dans « 📝 Feuille Élise » (Q3) : elle est dans la base
+   phase {"ph":"passage","qi":2,"tour":1,"cote":"g"}
+   phase {"ph":"reponse","qi":2,"tour":1,"cote":"g"}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":2,"tour":1,"cote":"g"}
+   phase {"ph":"passage","qi":2,"tour":2,"cote":"d"}
+   phase {"ph":"reponse","qi":2,"tour":2,"cote":"d"}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+   phase {"ph":"b","qi":2,"tour":2,"cote":"d"}
+   phase {"ph":"close","qi":2}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic), sauf Élise
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 : Élise, dont Paul a tapé la feuille « je ne sais pas trop », dit B « Non » toute seule (sa feuille ne dit pas son clic)
+   phase {"ph":"estim"}
+   phase {"ph":"att2"}
+   phase {"ph":"lecture","qi":0}
+   phase {"ph":"revele","qi":0}
+   phase {"ph":"lecture","qi":1}
+   phase {"ph":"revele","qi":1}
+   phase {"ph":"lecture","qi":2}
+   phase {"ph":"revele","qi":2}
+   phase {"ph":"coeval"}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), à la co-évaluation : la liste « 📌 À lire sur les feuilles, ce soir » a une seule ligne, Élise, Q3
+   phase {"ph":"bilan"}
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), au bilan : la liste « 📌 À lire sur les feuilles, ce soir » a une seule ligne, Élise, Q3
+   aLire (base) : []
+  SECOURS Séance B (une feuille tapée par Paul : Élise, Q3), le soir : après « 🛑 Terminer », la console reste en mode test (sans Données → Résultats) et « 🗑️ Sortir et purger » efface la séance ; S.seances écarte d'ailleurs les classes « _ » : le tableau de la séance de test n'est pas joignable par le geste, non joué (captures-reprise7-b/38-SanceBunefeuilletapeparPaulliseQ3-apres-terminer.png) ; aLire en base : []
+  ok     [QCM-3 · SOIR] page « console » sans erreur ni boîte système
+vérifications : 85 · échecs : 0
+── Séance A (🎲 partout, aucune feuille tapée) : « 🧪 Mode test », « 🚀 Lancer la séance », l'appel
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée) : « 🧪 Mode test »
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] point 6, l'appel : la tablette simulée 1, en petit, dit « Combien êtes-vous sur cette tablette ? » comme la vraie (pas de séance pour les tablettes pendant l'appel)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée) : « 🚀 Lancer la séance » de la fenêtre de l'appel
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée) : la séance de test existe (sessionActive/_test_evaluation-qcm)
+  ok     [QCM-3 · SOIR] point 6 : la tablette simulée 1, en petit, porte « 📊 Mes évaluations » en tête de chaque moitié, comme « 👁 » (la vraie tablette)
+  ok     [QCM-3 · SOIR] point 6, l'entrée (« Avant de commencer ») : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6 : la tablette simulée 1, « 🔍 en grand », porte « 📊 Mes évaluations » en tête de chaque moitié, comme « 👁 » (la vraie tablette)
+  ok     [QCM-3 · SOIR] point 6, l'entrée (« Avant de commencer ») : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, prêts (« En attente du démarrage ») : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, prêts (« En attente du démarrage ») : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 réflexion : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 réflexion : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 1, la réponse : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 1, la réponse : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 1, B (« avais-tu bien écrit … sur ta copie ? ») : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 1, B (« avais-tu bien écrit … sur ta copie ? ») : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 2, la réponse : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 2, la réponse : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 2, B (« avais-tu bien écrit … sur ta copie ? ») : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 tour 2, B (« avais-tu bien écrit … sur ta copie ? ») : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q1 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+  ok     [QCM-3 · SOIR] point 6, Q1 close : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, Q1 close : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q2 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), Q3 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+  NOTE   point 6, l'estimation : pas de « 👁 » sur la console à cette phase ; comparé à l'écran de la vraie tablette (MoitieH) : « Combien de bonnes réponses penses-tu avoir ? »
+  ok     [QCM-3 · SOIR] point 6, l'estimation : la tablette simulée 1, en petit, dessine l'écran de la vraie tablette, les deux moitiés (« Combien de bonnes réponses penses-tu avoir ? »)
+  ok     [QCM-3 · SOIR] point 6, l'estimation : la tablette simulée 1, « 🔍 en grand », dessine l'écran de la vraie tablette, les deux moitiés (« Combien de bonnes réponses penses-tu avoir ? »)
+  ok     [QCM-3 · SOIR] point 6, la seconde attestation : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la seconde attestation : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la correction (lecture de la feuille du voisin) : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la correction (lecture de la feuille du voisin) : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la correction (réponse révélée) : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la correction (réponse révélée) : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation : la tablette simulée 1, en petit, dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation : la tablette simulée 1, en petit, ne dit pas « ⏳ Attends la prochaine question… »
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation : la tablette simulée 1, « 🔍 en grand », dessine ce que dessine « 👁 » (la vraie tablette), les deux moitiés
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation : la tablette simulée 1, « 🔍 en grand », ne dit pas « ⏳ Attends la prochaine question… »
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation en grand : « ✅ Je pense que Gatien a bien lu ma feuille » est là et ouvert (moitié d'Élise)
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation en grand : un clic « ✅ » écrit une seule fois coeval/audebert_elise = ok, comme sur la vraie tablette
+  ok     [QCM-3 · SOIR] point 6, la co-évaluation en grand, après le clic : la moitié d'Élise dit ce que dit la vraie (« ⏳ Attends ton bilan… »)
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), à la co-évaluation : la liste « 📌 À lire sur les feuilles, ce soir » est vide (aucune feuille tapée)
+  NOTE   point 6, le bilan : pas de « 👁 » sur la console à cette phase ; comparé à l'écran de la vraie tablette (MoitieH) : « 🎯 Bilan personnel · Ta note provisoire : n / 3 »
+  ok     [QCM-3 · SOIR] point 6, le bilan : la tablette simulée 1, en petit, dessine l'écran de la vraie tablette, les deux moitiés (« 🎯 Bilan personnel · Ta note provisoire : n / 3 »)
+  ok     [QCM-3 · SOIR] point 6, le bilan : la tablette simulée 1, en petit, ne dit pas « ⏳ Attends la prochaine question… »
+  ok     [QCM-3 · SOIR] point 6, le bilan : la tablette simulée 1, « 🔍 en grand », dessine l'écran de la vraie tablette, les deux moitiés (« 🎯 Bilan personnel · Ta note provisoire : n / 3 »)
+  ok     [QCM-3 · SOIR] point 6, le bilan : la tablette simulée 1, « 🔍 en grand », ne dit pas « ⏳ Attends la prochaine question… »
+  ok     [QCM-3 · SOIR] point 6, le bilan en grand : « 📄 Imprimer / Exporter mon bilan » est là (moitié d'Élise)
+  ok     [QCM-3 · SOIR] point 6, le bilan en grand : un clic « 📄 Imprimer / Exporter mon bilan » ouvre son bilan imprimable, une seule fois, comme sur la vraie tablette
+  ok     [QCM-3 · SOIR] Séance A (🎲 partout, aucune feuille tapée), au bilan : la liste « 📌 À lire sur les feuilles, ce soir » est vide (aucune feuille tapée)
+  NOTE   Séance A (🎲 partout, aucune feuille tapée), le soir : après « 🛑 Terminer », la console reste en mode test (sans Données → Résultats) et « 🗑️ Sortir et purger » efface la séance ; S.seances écarte d'ailleurs les classes « _ » : le tableau de la séance de test n'est pas joignable par le geste, non joué (captures-reprise7-b/34-SanceApartoutaucunefeuilletape-apres-terminer.png) ; aLire en base : []
+── Séance B (une feuille tapée par Paul : Élise, Q3) : « 🧪 Mode test », « 🚀 Lancer la séance », l'appel
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : « 🧪 Mode test » (la console y est restée après « 🛑 Terminer »)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : « 🚀 Lancer la séance » de la carte du mode test
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : « 🚀 Lancer la séance » de la fenêtre de l'appel
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : la séance de test existe (sessionActive/_test_evaluation-qcm)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q1 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q2 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3) : Paul tape « je ne sais pas trop » dans « 📝 Feuille Élise » (Q3) : elle est dans la base
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 tour 1 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 tour 2 : « 🎲 » remplit la feuille (« 📝 Feuille ») de chacun des 15 élèves qui répondent, du texte de ce qu'il clique
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 close : chacun des 30 élèves qui ont répondu a dit B tout seul (aucun « 🎲 » pendant B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 : aucun B n'est écrit par le clic « 🎲 » de la réponse (chacun le dit à la fin de son temps, phase B)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 : chaque B est « Oui » (la feuille remplie par « 🎲 » dit son clic), sauf Élise
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), Q3 : Élise, dont Paul a tapé la feuille « je ne sais pas trop », dit B « Non » toute seule (sa feuille ne dit pas son clic)
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), à la co-évaluation : la liste « 📌 À lire sur les feuilles, ce soir » a une seule ligne, Élise, Q3
+  ok     [QCM-3 · SOIR] Séance B (une feuille tapée par Paul : Élise, Q3), au bilan : la liste « 📌 À lire sur les feuilles, ce soir » a une seule ligne, Élise, Q3
+  NOTE   Séance B (une feuille tapée par Paul : Élise, Q3), le soir : après « 🛑 Terminer », la console reste en mode test (sans Données → Résultats) et « 🗑️ Sortir et purger » efface la séance ; S.seances écarte d'ailleurs les classes « _ » : le tableau de la séance de test n'est pas joignable par le geste, non joué (captures-reprise7-b/38-SanceBunefeuilletapeparPaulliseQ3-apres-terminer.png) ; aLire en base : []
+  ok     [QCM-3 · SOIR] page « console » sans erreur ni boîte système

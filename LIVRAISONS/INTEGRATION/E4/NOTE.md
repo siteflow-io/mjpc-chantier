@@ -206,3 +206,4 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
   - L161 [E1 (E2)] — Atelier le mercredi 16/09 après la clôture du lundi (`250193a1`)
   - L162 [E2 (E1)] — « Préparer le cahier de textes » à T-5 (`250193a1`)
 - Les deux graves qui bloquaient l'audit, L148 et L149, sont **réglées** sur `de6cd19c`.
+- **Mis à jour à 23:30**, sur `f42ea048` (la poussée 25 d'E2) : L155 et L157 sont réglées. Le compte devient **135 réglées, 10 pas réglées (E2 6, E1 4), 8 écartées, 3 à Paul, 0 ouverte**.

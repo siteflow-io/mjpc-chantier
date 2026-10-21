@@ -498,3 +498,8 @@
   - l'heure de fin du récit contre celle de l'en-tête, la même question **à Paul**.
 - **NOTE §10, le bilan en chiffres** : 156 lignes, dont 133 réglées, 12 pas réglées (E2 8, E1 4), 8 écartées, 3 à Paul (une seule question), **0 ouverte**. Chez E4 : 41 lignes, 37 réglées, 3 écartées, 1 à Paul, **aucune pas réglée**.
 - La poussée 25 d'E2 (`95366194`) touche L155 (l'échéance) et L157 (la préparation), après le commit de la passe : je les revérifie sur la tête.
+- **23:30, rejoué par moi sur `f42ea048`** (la poussée 25 d'E2) :
+  - **L155 réglée** : l'échéance proposée coche l'étape 1, la garde ne la cite plus ;
+  - **L157 réglée** : le volet réduit aux numéros, la classe dite gelée ;
+  - la diapo du cahier en préparation reste vide : **pas réglée**.
+- **Bilan à jour** : 156 lignes, dont 135 réglées, 10 pas réglées, 8 écartées, 3 à Paul, 0 ouverte. (La NOTE §10 donne les chiffres de 23:15 ; ceux-ci les remplacent.)

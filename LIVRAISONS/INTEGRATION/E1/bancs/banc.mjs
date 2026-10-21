@@ -529,12 +529,17 @@ await B('A26', 'le réveil n°5 et la relecture continue d\'E4 (A4 14:50, B4 15:
   const dg = await pg.evaluate(() => ({ t: document.getElementById('garde2-titre').textContent, attendu: 'diapo ' + rangDe(S.di, S.heure), di1: S.di + 1, tete: (document.querySelector('#dr-zone .ou, .p8-ou, #ou') || {}).textContent || '' }));
   E.verif('A26', dg.t.includes('tu es à la ' + dg.attendu + '.') && dg.attendu !== 'diapo ' + dg.di1 && dg.t.includes('diapo 2,'), 'A5 · le dégel avec un écart : « La classe est sur la diapo 2, tu es à la ' + dg.attendu + ' » — le rang dans l\'heure', dg.t);
   await pg.evaluate(() => { document.getElementById('garde2').classList.remove('on'); });
+  // réveil n°7 · le témoin lisible en entier au Pilotage, à 1366 et 1280 (« Enregistré à 09:00 »)
+  for (const [w, h] of [[1366, 768], [1280, 800]]) { await pg.setViewportSize({ width: w, height: h }); await pg.waitForTimeout(300); await pg.evaluate(() => dr_temoinHub());
+    const te = await pg.evaluate(() => { const t = document.getElementById('dr-enr'); const r = t.getBoundingClientRect(); const z = document.getElementById('dr-zone').getBoundingClientRect(); const el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return { txt: t.textContent, entier: t.scrollWidth <= t.clientWidth + 1 && r.width > 40, dans: r.right <= z.right + 1 && r.bottom <= innerHeight, dessus: !!(el && (el === t || t.contains(el))) }; });
+    E.verif('A26', /^Enregistré à \d\d:\d\d$/.test(te.txt) && te.entier && te.dans && te.dessus, 'réveil n°7 · ' + w + ' × ' + h + ' : au Pilotage, « ' + te.txt + ' » se lit en entier dans l\'entête', JSON.stringify(te)); }
+  await pg.setViewportSize({ width: 1366, height: 768 }); await pg.waitForTimeout(200);
   E.verif('A26', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close();
   // B4 (grave) · l'atelier ouvert pendant l'heure : un bloc écrit tient à « Reprendre le cours »
   const o1 = await E.ouvrir(b, { w: 1366, h: 768 }); let p1 = o1.pg; await sansVoile(p1);
   await p1.click('[data-lancer="1"]'); await p1.waitForTimeout(800); await p1.click('#bdev'); await p1.waitForTimeout(200);
-  await p1.evaluate(() => voir('atelier')); await p1.waitForTimeout(600); const eid = await p1.evaluate(() => ecran().eid);
-  await p1.click('#mur .p8-ecrire'); await p1.keyboard.type('Bloc tapé en classe', { delay: 30 }); await p1.mouse.click(5, 400); await p1.waitForTimeout(400); await p1.evaluate(() => voir('pilotage')); await p1.waitForTimeout(2500);
+  await p1.click('#ong-atelier'); await p1.waitForTimeout(600); const eid = await p1.evaluate(() => ecran().eid); /* réveil n°7 : en heure lancée, on écrit un bloc neuf par l'onglet Atelier (#ong-atelier) puis « ✎ clique ici et écris » (#mur .p8-ecrire) */
+  await p1.click('#mur .p8-ecrire'); await p1.keyboard.type('Bloc tapé en classe', { delay: 30 }); await p1.mouse.click(5, 400); await p1.waitForTimeout(400); await p1.click('#ong-pilotage'); await p1.waitForTimeout(2500);
   const ja = await p1.evaluate(eid => ({ n: ecran().blocs.length, cc: J.filter(x => x.type === 'copie-classe' && x.eid === eid).length, autres: J.filter(x => /^atelier/.test(x.type)).length }), eid);
   E.verif('A26', ja.cc === 1 && ja.autres === 0, 'B4 (grave) · un bloc écrit dans l\'atelier pendant l\'heure : une entrée « copie-classe » pour la diapo (ce que la reprise lit pour garder la copie), rien d\'autre de l\'atelier au journal', JSON.stringify(ja));
   const hub = await p1.evaluate(() => window.__HUB); await o1.ctx.close();

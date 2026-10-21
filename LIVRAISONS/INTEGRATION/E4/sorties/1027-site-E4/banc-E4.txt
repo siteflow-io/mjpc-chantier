@@ -1,0 +1,41 @@
+banc E4 · 2026-10-21 10:25 UTC · entrée du site (faux hub) · index.html · md5 8970f3b68f44ad8f544df6ae2524d70f
+  ok     R1 · une diapo à question est atteinte en dévoilant
+  ok     R1 · la face « Le récit » s'ouvre sur « Ce qu'on a fait aujourd'hui »
+  ok     R1 · le récit porte la diapo jouée (son activité)
+  ok     R1 · le récit porte l'heure réelle (« À hh h mm, »)
+  ok     R1 · le récit porte le prénom (Gatien, pas ses initiales) et sa réponse
+  ok     R1 · aucune initiale à la place d'un prénom
+  ok     R1 · une prise de parole hors d'une question se raconte (« Zélia a pris la parole », cadrage 2 · 1.5)
+  ok     R1 · zéro erreur JS
+  ok     R2 · « ma version (modifier) » : la phrase corrigée est dans ma version
+  ok     R2 · C/recit/1 est écrit au hub (débounce 900 ms, par dr_ecrire)
+  ok     R2 · au hub : C/recit/1 = {version:"moi", texte: la phrase corrigée, versions[]}
+  ok     K15-E4 · K15 : ce qu'E4 écrit, c'est C/recit/<heure> et rien d'autre
+  ok     P1 · la face « Papier » existe dans la Relecture (proposition 96)
+  ok     P1 · l'entête du papier : classe · chapitre · séance
+  ok     P1 · « Ce qu'on a fait aujourd'hui », « À relire — <date> »
+  ok     P1 · le papier est composé depuis le récit relu (ma version, la phrase corrigée y est)
+  ok     P1 · le pied « MJPC · monsieurjaipascompris » / « À relire. »
+  ok     P1 · le travail à faire est sur le papier quand il y en a un
+  ok     P1 · @media print : la feuille, et rien d'autre du site
+  ok     ED · la copie « contenu de séance » est un HTML propre (ancien copierED : Georgia, sans classes ni repères)
+  ok     ED · le texte copié : le récit, sans le travail à faire
+  ok     ED · le presse-papier reçoit text/html et text/plain
+  ok     ED · « Copier — travail à faire » porte le lien de l'espace de travail (/classes/<classe>/ed)
+  ok     ED · la copie est notée (S.copieED, journal copie-ed : la garde après copie s'en sert)
+  ok     R3 · rechargé : la phrase corrigée (ma version) est là, relue au hub
+  absent R3 · rechargé, le récit recomposé depuis C/journal — C/journal au hub ne contient pas la réponse écrite (E2 : le journal n'est poussé qu'au lancement) — 299 o
+  ok     R4 · le rappel s'écrit dans le récit : « on a repris la fiche … — pour réviser avant l'évaluation »
+  ok     R4 · le bilan dit « repris une fiche déjà vue »
+  ok     R4 · le papier « ce qu'on colle » : la fiche montrée, son rappel, « à coller dans le cahier » (ancien papier, R16)
+  ok     D1 · l'item Drive de la séance s'ouvre dans l'écran en /preview
+  ok     D1 · « cette fiche vient de Structure · Séance N »
+  ok     13·8 · la consigne corrigée en classe (la copie) est celle que raconte le récit
+  ok     P0 · aucune heure lancée : la Relecture le dit, sans récit
+  ok     P0 · aucune heure lancée : aucune face « Le récit » ni « Papier » à imprimer
+  ok     T · la transposition : les mots accentués entiers (« poètes »), « devant nous », « Regarde : la… » → « on a regardé la… », « Date : 1820 » intact
+  ok     T · un élève non identifié : « un élève a répondu », jamais ses initiales (cadrage 2 · 1.5 bis)
+  ok     T · « ma version » garde l'entête et le cadre de l'heure
+  ok     T · la copie ED de ma version : avec l'entête, sans repère pour Paul, le titre d'activité en titre
+  ok     T · après une copie ED, corriger ma version passe par la garde (cadrage 2 · 3.8)
+— fin : 38 ok · 0 échec(s) · 1 absent(s) — VERT

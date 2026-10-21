@@ -280,6 +280,19 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   await cap(pg2, 'E4-RC2-rappel-papier'); verif('RC2', o.errs.length + o2.errs.length === 0, 'zéro erreur JS', JSON.stringify(o.errs.concat(o2.errs))); await o2.ctx.close(); HUB_PERSISTANT = null; }
 else verif('RC2', null, 'R2 le rappel', 'se mesure sur le site');
 
+// ═════ RC6 · R6 du recyclage : Ctrl+B / Ctrl+U sur une sélection de la diapo = G / S (R13 d'E1) ═════
+if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1200); if (await pg.$('#at-aide .x')) await pg.click('#at-aide .x');
+  const choisir = () => pg.evaluate(() => { const li = document.querySelector('#mur li[data-p="0.1"]'); if (!li) return null; const w = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode()) && n.textContent.trim().length < 6) {} if (!n) return null; const r = document.createRange(); r.setStart(n, 0); r.setEnd(n, Math.min(5, n.textContent.length)); const s = getSelection(); s.removeAllRanges(); s.addRange(r); return r.toString(); });
+  const t1 = await choisir(); await pg.keyboard.press('Control+b'); await p(pg, 400); const t2 = await choisir(); await pg.keyboard.press('Control+u'); await p(pg, 1500);
+  const f = await pg.evaluate(() => ({ forme: ecran().forme || null, b: !!document.querySelector('#mur li[data-p="0.1"] b, #mur li[data-p="0.1"] strong, #mur li[data-p="0.1"] [style*="bold"]'), hub: ((window.__HUB.site['3e'].chapitres[0].seances[0].deroule || {}).ecrans || [])[0] }));
+  verif('RC6', t1 && f.forme && (f.forme.gras || []).some(x => x.p === '0.1' && x.txt === t1) && (f.forme.soul || []).some(x => x.p === '0.1' && x.txt === t2), 'Atelier : une sélection dans la diapo, Ctrl+B puis Ctrl+U — le gras et le souligné posés comme G et S (e.forme, R13 d\'E1)', JSON.stringify({ t1, forme: f.forme }));
+  verif('RC6', f.hub && f.hub.forme && (f.hub.forme.gras || []).length >= 1, 'enregistrés avec la trame au hub (B/deroule)', JSON.stringify(f.hub && f.hub.forme));
+  await pg.keyboard.press('Escape'); await pg.mouse.click(5, 5); await pg.keyboard.press('Control+b'); await p(pg, 300); const f2 = await pg.evaluate(() => (ecran().forme.gras || []).length);
+  verif('RC6', f2 === 1, 'sans sélection, Ctrl+B ne pose rien', String(f2));
+  verif('RC6', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte', JSON.stringify(o.errs)); await cap(pg, 'E4-RC6-gras-souligne'); await o.ctx.close(); }
+else verif('RC6', null, 'R6 Ctrl+B / Ctrl+U', 'se mesure sur le site');
+
 // ═════ RC5 · R5 du recyclage : la sélection multiple dans l'Atelier — Ctrl+clic, « Supprimer les N éléments », « ✍🏻 Marquer « à écrire » », Échap ═════
 if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1200); if (await pg.$('#at-aide .x')) await pg.click('#at-aide .x');

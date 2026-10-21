@@ -19185,6 +19185,14 @@ document.addEventListener('contextmenu', ev => { try { if (DR_SEL.length < 2 || 
 window.addEventListener('keydown', ev => { try { if (!DR_SEL.length || typeof S === 'undefined' || !S.atelier || ev.key !== 'Delete') return; const a = document.activeElement; if (a && (a.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(a.tagName))) return; ev.preventDefault(); ev.stopImmediatePropagation(); dr_selSup(); } catch (e) {} }, true);
 (function(){ let k = null; const obs = new MutationObserver(() => { if (!DR_SEL.length) return; const c = (typeof S !== 'undefined') ? S.si + '|' + S.di + '|' + !!S.atelier : null; if (k && c !== k) { dr_selVide(); k = c; return; } k = c; dr_selPeindre(); }); const go = () => obs.observe(document.body, { childList: true, subtree: true }); if (document.body) go(); else document.addEventListener('DOMContentLoaded', go); })();
 
+/* ══ R6 · CTRL+B / CTRL+U (relance E4-2) ══
+   L'ancien (moteur L2010-2016) : Ctrl+B / Ctrl+U sur une sélection de la diapo met en gras / souligne, comme G et S. E1 a livré R13 (dr_grasSoul,
+   G et S de la palette « A » et de la barre de l'atelier, e.forme dans la trame, l'état de l'heure en classe) : le raccourci ne fait qu'appeler
+   ce geste. Sur window, en capture : avant le Ctrl+B du navigateur dans un élément en cours d'écriture (son <b> serait perdu : le socle
+   enregistre le texte seul). Hors d'une sélection dans la diapo, rien n'est intercepté. */
+window.addEventListener('keydown', ev => { try { if (!(ev.ctrlKey || ev.metaKey) || ev.altKey || ev.shiftKey || !/^[bu]$/i.test(ev.key)) return; if (typeof dr_grasSoul !== 'function' || typeof dr_marqueSel !== 'function' || typeof S === 'undefined') return;
+  const m = dr_marqueSel(); if (!m || !m.txt.trim()) return; ev.preventDefault(); ev.stopImmediatePropagation(); dr_grasSoul(ev.key.toLowerCase() === 'b' ? 'gras' : 'soul'); } catch (e) {} }, true);
+
 </script><!-- E4 : le recyclage (relance E4-2) -->
 <script>
 

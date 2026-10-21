@@ -167,3 +167,11 @@
   - banc.sh : K1-K13 108/0, parcours vert. Seul rouge, P5 en mode test, qui vient de l'outil (`sorties/1302`).
 - `assemble/index.html` est régénéré.
 - **Dette dite :** la phrase fantôme est gardée par un test unitaire (`dr_recitSansRepetes`), pas encore par un rechargement complet au banc. Le prochain relecteur la revérifie.
+
+## Poussée 27 — 13:16 UTC
+- **R6 fait** : Ctrl/Cmd+B et +U sur une sélection de la diapo appellent `dr_grasSoul` (R13, livré par E1). Ils marchent dans l'atelier (trame) et en classe (état de l'heure). Garde RC6 : gras et souligné posés, enregistrés au hub ; sans sélection, rien.
+- Toute la relance E4-2 A est faite : R1, R4, R2, R6, R5.
+- **Bancs :**
+  - Mon banc : **86 ok · 0 échec** (`sorties/1310-site-E4`).
+  - banc.sh : K 108/0, parcours vert. Seul rouge, P5 en mode test, qui vient de l'outil (`sorties/1314`).
+- Les relecteurs neufs A3 (heure de classe) et B3 (atelier, relecture) tournent sur `a68469f5`.

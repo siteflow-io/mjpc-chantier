@@ -187,3 +187,16 @@
 - **Bancs :**
   - Mon banc : **87 ok · 0 échec** (`sorties/1330-site-E4`).
   - banc.sh (parcours.mjs v3) : **tout vert**, K 108/0 et les deux parcours, y compris le mode test (`sorties/1334`).
+
+## Poussée 29 — 13:56 UTC
+- **Relecteur A3 consigné** (sur `a68469f5`) :
+  - réglés : le chrono après la clôture ; l'EDT après la clôture ; l'échéance au lancement ;
+  - encore ouverts : la question grisée, le bandeau, la réponse au tableau, le paquet sans décisions, l'échéance après une reprise ;
+  - 10 lignes nouvelles, dont 2 graves : F2 qui pose une parole pour une autre élève, et la reprise qui fait perdre le cahier de l'heure 2.
+  - **1 ligne à moi, réglée** : « on a continué » n'est plus inventé quand le journal n'a rien dans ce temps (garde T).
+- **Mon banc :** **88 ok · 0 échec** (`sorties/1342-site-E4`).
+- **banc.sh : ROUGE, et ce n'est pas mon fait.**
+  - K 108 / 18 échecs (K2, K6-K11) apparaissent avec la poussée E2 `a0c4c92d` (la frontière d'heure par les durées).
+  - C'est mesuré sur `origin/integration` seul, sans mon changement : les mêmes 18 échecs (`sorties/1345-a0c4c92d-seul/`).
+  - Les deux parcours restent verts.
+  - Je l'écris dans RELECTURE-CONTINUE pour la conscience. Je ne corrige pas chez E2.

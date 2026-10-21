@@ -1,6 +1,6 @@
 # E4 — AUDIT DU MANDAT (mission 0, contrat §11)
 
-*E4, le récit et le papier. 21/10/2026, 07:25 → 07:40 UTC. Confronté au code réel : la production `index.html` 8.74.0-③ (clonée de `siteflow-io/monsieurjaipascompris`, md5 `ac792b28f40d3a0510e725fc4a6b6985` vérifié), l'ancien moteur tel qu'il est embarqué dans la production (`AT_DR_B64` décodé, 232 358 o, md5 `e7ceefa8…` — ce n'est PAS `DEROULE/deroule86.html` du sas, md5 `2ffada12…` : les numéros de ligne du moteur ci-dessous sont ceux du décodé), la maquette p8-5g (`maquette-pilotage-ordi-v9c15p8-manipulable.html`, md5 `62d9557ac8fedcfbdd8b157a2588cbee` vérifié, 605 996 o, 1 836 lignes), le faux hub `AUDITS/INTEGRATION-DEROULE/hub/`. Rien n'est réécrit ici ; chaque point a son verdict. Ce qui est contesté attend la réponse de la conscience dans `RELANCES/E4.md` ; je continue sur le reste.*
+*E4, le récit et le papier. 21/10/2026, 07:23 → 07:28 UTC. Confronté au code réel : la production `index.html` 8.74.0-③ (clonée de `siteflow-io/monsieurjaipascompris`, md5 `ac792b28f40d3a0510e725fc4a6b6985` vérifié), l'ancien moteur tel qu'il est embarqué dans la production (`AT_DR_B64` décodé, 232 358 o, md5 `e7ceefa8…` — ce n'est PAS `DEROULE/deroule86.html` du sas, md5 `2ffada12…` : les numéros de ligne du moteur ci-dessous sont ceux du décodé), la maquette p8-5g (`maquette-pilotage-ordi-v9c15p8-manipulable.html`, md5 `62d9557ac8fedcfbdd8b157a2588cbee` vérifié, 605 996 o, 1 836 lignes), le faux hub `AUDITS/INTEGRATION-DEROULE/hub/`. Rien n'est réécrit ici ; chaque point a son verdict. Ce qui est contesté attend la réponse de la conscience dans `RELANCES/E4.md` ; je continue sur le reste.*
 
 ## 1 · CE QUI EST FAUX
 
@@ -68,7 +68,7 @@
 
 ## 6 · AJOUTS À LA TABLE B DU RECYCLAGE (ce que je reprends, sous réserve de la conscience)
 
-*Numéros alignés à 07:55 sur ceux d'E1 (son audit, section 6, R13-R21) : mes R14/R15 sont ses **R16**/**R15** (même geste, attribués à E4) ; ma copie en HTML propre devient **R22**.*
+*Numéros alignés à 07:44 sur ceux d'E1 (son audit, section 6, R13-R21) : mes R14/R15 sont ses **R16**/**R15** (même geste, attribués à E4) ; ma copie en HTML propre devient **R22**.*
 
 | | le geste de l'ancien | où | recyclé par |
 |---|---|---|---|
@@ -81,7 +81,7 @@
 - `_drProchainCreneau()` (prod) ne rend **ni classe ni créneau** : il rend le prochain jour ouvré en lettres. Le contrat §7 lui fait proposer « la classe et le créneau » du « Lancer » en un clic (E1/E2) : faux.
 - La production écrit aussi `…/deroule_joue/<classe>/vecu.json` (le paquet `atVecu`) — absent de la liste des 13 écritures du plan §0.1 et de `PERMIS` n'est pas en cause (le motif `deroule_joue/` le couvre), mais K15 « la liste exacte » devra le compter ou le voir tomber (E2).
 
-## 8 · AJOUTS APRÈS LA PREMIÈRE POUSSÉE (07:50)
+## 8 · AJOUTS APRÈS LA PREMIÈRE POUSSÉE (07:44)
 
 | # | quoi | verdict |
 |---|---|---|

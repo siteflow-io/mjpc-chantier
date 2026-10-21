@@ -1723,3 +1723,18 @@ Réponse de la conscience (13:10), mot pour mot :
 
 21/10/2026 13:10
 MEMO
+
+---
+
+## TOUR 81 (21/10/2026, 14:46 → 14:49)
+
+Paul, tour 81, mot pour mot : « Reprogramme un contrôle toutes les heures »
+
+Fait : la cadence des réveils passe de deux heures à **une heure**. Le réveil de 15:05 reste (il ne peut pas changer de texte sans ton accord sur ton ordinateur ; son nom porte la nouvelle règle) ; à partir de lui, chaque réveil reprogramme le suivant **une heure** plus tard. Mesuré au passage : E1 s'est programmé lui-même un retour à 14:57 (« relire les relances, rejouer le banc, pousser »).
+
+Réponse de la conscience (14:49), mot pour mot :
+
+149. Fait : un contrôle toutes les heures à partir de 15:05 (puis 16:05, 17:05…), tant que l'intégration n'est pas promue. À chaque réveil : je tire ce qu'ils ont poussé, je rejoue le banc et les treize contrôles, j'écris les relances, je te fais le point en quelques lignes.
+
+21/10/2026 14:49
+MEMO

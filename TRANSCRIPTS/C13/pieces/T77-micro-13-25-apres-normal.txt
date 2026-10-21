@@ -1,0 +1,67 @@
+parcours du déroulé dans le site · 2026-10-21 08:50 UTC · fichier md5 c384d8504c097784e98ffc04d7327887 · 1838791 o · faux hub /home/claude/mjpc-chantier/AUDITS/INTEGRATION-DEROULE/hub
+
+P0 — le panneau prof
+  ok     P0 · panneau ouvert
+
+P1 — l'emploi du temps
+  ok     P1 · la grille réelle (semaine du 14/09)
+
+P2 — la case de l'heure
+  ok     P2 · la case 3E Charles de Gaulle, bouton « lancer » — ▶ Ouvrir le pilotage et lancer
+  absent P2 · « Préparer » sur la case (E2)
+
+P3 — l'Atelier (préparation) depuis « Mes chapitres »
+  ok     P3 · la porte — Modifier (ancien libellé)
+  absent P3 · la barre fusionnée Structure · Atelier · Pilotage · Relecture (E1) — structure deroule relecture papier
+  ok     P3 · l'ancien moteur dans son cadre (production)
+  ok     P3 · la diapo 1 de la séance 0 au mur, avec ses lignes — 6 lignes
+
+P4 — le clic droit sur une étape
+  ok     P4 · menu ouvert (voir la capture)
+
+P5 — lancer la séance (la classe)
+  ok     P5 · lancée par tête de préparation → atDrJouerClic (production) — 6 écritures
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+  ok     P5 · écrit au lancement : deroule_joue\/[^/]+$
+  ok     P5 · écrit au lancement : cours_actif$
+
+P6 — la parole (F2 / la case des initiales)
+  ok     P6 · voir la capture
+
+P7 — la palette (Maj+Espace)
+  ok     P7 · voir la capture
+
+P8 — la fenêtre du tableau
+  ok     P8 · fenêtre ouverte — about:blank
+  ok     P8 · le tableau rend quelque chose — monsieurjaipascompris09:00lundi 14 septembre 2026Poésie et peinture au XIXe siècle (proposition) · Poésie et peinture : 
+
+P9 — la fin de l'heure
+  ok     P9 · la modale T-5 de la production (ancienne)
+
+P10 — la Relecture
+  ok     P10 · Relecture ouverte
+
+P11 — le Papier
+  ok     P11 · la vue Papier de la production (ancienne : tombe)
+
+P12 — la clôture
+  ok     P12 · clôture demandée (voir la capture)
+
+K15 — les écritures au hub pendant le parcours
+      PUT /corbeille/<heure>/edt-mise-a-niveau-grille_090000
+      PUT /site/edt/grille/2026-2027
+      PUT /site/edt/photos/2026-2027
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<heure>
+  ok     K15 · 11 écritures, toutes sur des chemins permis
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS VERT

@@ -52,6 +52,7 @@ const ouvrir = async (w = 1280, h = 800) => { const ctx = await nav.newContext({
   await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, hubStore());
   await pg.goto(FILE + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
   await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
+  await pg.addStyleTag({ content: '#fi-overlay{display:none!important}' });   /* v2.1 (21/10, 12:50) : le voile de présentation du site revient après certains rendus et interceptait tous les clics des contrôles (E4, journal 10:12 ; E1, audit F15) — il n'est pas un geste du déroulé, il est tenu hors du chemin */
   await pg.click('#tprof-btn'); await pg.waitForTimeout(500); await pg.evaluate(() => atelierOuvrir()); await pg.waitForTimeout(1000);
   await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(800);
   if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l\u2019atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await pg.waitForTimeout(1500);

@@ -23142,3 +23142,67 @@ Envoyé à Paul, mot pour mot :
 Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
 
 20/10/2026 10:32 MEMO
+
+## TOUR 753 — Paul, 21/10 09:23
+
+Paul, mot pour mot :
+
+on en est où?
+
+Lu : `ETAT.md`, `VERDICT.md` de QCM-4 du 20/10 16:20 (« ça va », app md5 `3b4d0f82…`, banc-arret 55/55), le diff `a269fea..725c3af` de `src/` ; les commits de la n°13 depuis le 20/10 (tours 68 à 76). Mesuré : la reconstruction à l'identique ; contrôles 32/32 ; `sonde-arret.js` 14/14 (écrite pour ce contrôle : la séance du banc portée à 11 questions, arrêtée après Q3 ; deux passages d'essai avant le compté, pour ouvrir la copie de Léa : les autres lignes « à lire » de Tom confirmées comme Paul le ferait) ; `sonde-temps.js` 16/16 ; `sonde-note.js` 13/13 ; `sonde-modetest.js` 24/24. Fait : `AUDITS/CODE-QCM-ARRET-29-20-10/` ; « CONTRÔLÉ » en tête de la section (`code-qcm` `0e4724f0`) ; dette n°12 · 222 (production) ; le script de mise en ligne de la 8.0.5 prêt, pas lancé.
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.4, toujours en ligne · **en cours chez l'exécutant :** rien ; j'ai écrit « contrôlé », les quatre s'arrêtent · **ouvert :** la mise en ligne, qui attend ta réponse
+
+31. Tout est prêt et contrôlé. Hier, tu as relancé QCM-1, qui a livré à 15:26. QCM-4 a rendu « ça va » à 16:20, et mon contrôle de ce matin passe aussi. La séance de 11 questions arrêtée après Q3 est notée sur 3, et ton tableau dit « Q4 à Q11 pas posées ». Q3, lue par Léa sans « Révéler », reste « pas encore lue » jusqu'à ton « ✅ Oui » le soir ; ensuite, c'est la même note dans ton tableau et sur la tablette de l'élève. J'ai rejoué aussi le temps tapé, la note du soir et le mode test des vraies évaluations : ça va. Tout part en ligne en une seule version, la 8.0.5. Aucune séance n'est en cours ? Dès que tu me le dis, je la mets en ligne et je te donne tes tests.
+
+33. La conscience n°13 tourne de nouveau depuis hier 09:00 : ses tours 68 à 76, ce matin à 09:03 les mandats des quatre exécutants du déroulé. Je ne la reprends donc pas, sauf si tu me le demandes.
+
+21/10/2026 09:33 MEMO
+
+## TOUR 754 — Paul, 21/10 09:34
+
+Paul, mot pour mot :
+
+donc qcm c'est bon?
+
+Lu : `VERDICT.md` du 20/10 16:20, l. 13 (la séance rouverte, « Je le note, je ne le compte pas ») ; `S.note` (`live/base.js` l. 347) et `resultatLocalV` (`c4-seances.js` l. 324). Mesuré dans le code : une question pas révélée d'une séance non terminée reste « n » même lue par Paul. Faute de la conscience : le cas était dans le verdict qu'elle a lu à 09:32. Fait : la note en tête de la section (`code-qcm` `a6bf83eb`) ; dette n°12 · 222 (production).
+
+Envoyé à Paul, mot pour mot :
+
+31. Presque, et c'est ma faute. Tout ce que tu as tranché est contrôlé, et ça va. Mais en relisant le verdict de QCM-4 pour te répondre, j'ai vu un cas qu'il a noté sans le compter, et que j'ai laissé passer ce matin. Si tu rouvres une séance terminée, les questions que tu as lues le soir redeviennent « pas encore lues » tant qu'elle tourne ; elles recomptent quand elle est terminée de nouveau. C'est contraire à ta règle : une feuille que tu as lue compte. Je l'ai vérifié dans le code, et je ne mets donc rien en ligne. Ma proposition : ta lecture du soir compte toujours, même pendant une séance rouverte. QCM-1 et QCM-3 le codent, QCM-4 le rejoue, puis je contrôle et je mets tout en ligne en une fois. Tu valides ?
+
+21/10/2026 09:35 MEMO
+
+## TOUR 755 — Paul, 21/10 09:43
+
+Paul, mot pour mot :
+
+pas compris
+
+Envoyé à Paul, mot pour mot :
+
+31. Je reprends avec un exemple. Lundi, tu arrêtes une séance après Q3, sans avoir cliqué « Révéler » pour Q3. Le soir, dans « Lire les copies », tu lis la feuille de Tom pour Q3 : sa note est complète. Mardi, tu rouvres cette séance avec « 🔓 Rouvrir » pour poser Q4. Pendant qu'elle tourne, la note de Tom dit de nouveau « Q3 pas encore lue », alors que tu l'as lue lundi soir. Quand tu termines la séance, Q3 compte de nouveau. Ma proposition : la feuille que tu as lue le soir compte tout le temps, même pendant que la séance rouverte tourne. Tu valides ?
+
+21/10/2026 09:43 MEMO
+
+## TOUR 756 — Paul, 21/10 09:45
+
+Paul, mot pour mot :
+
+oui, mais si je ne lis pas les copies le soir?
+
+Lu : `A.rouvrirSeance` (`live/base.js` : la séance repasse en cours, les copies rendues sont masquées, l'appel de la reprise) ; rien ne dit, sans mesure, si la correction de Q3 se reprend en classe. Fait : les points 12 à 14 de la section (`code-qcm` `00cc73c6`) ; dette n°12 · 222 (production).
+
+Envoyé à Paul, mot pour mot :
+
+31. Noté pour le oui. Si tu ne lis pas les copies le soir, rien n'est perdu, et rien n'est compté de travers : Q3 reste « pas encore lue », la note de Tom n'est pas complète, et « Rendre les copies » attend que tu l'aies lue. Tu peux la lire quand tu veux, pas seulement le soir même : « Lire les copies » te la propose tant que tu ne l'as pas lue. Une chose que je ne sais pas encore : si tu rouvres la séance sans avoir lu les copies, est-ce que tu peux corriger Q3 en classe, avec « Révéler » ? Je le fais vérifier par QCM-4 dans le même banc, et je te dis ce qu'il voit.
+
+Les exécutants se sont arrêtés à 09:32, sur mon « contrôlé ». Il faut relancer QCM-1, QCM-3 et QCM-4. Voici le message à coller, le même dans les trois sessions :
+
+« La séance rouverte : lis, en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), dans la section « Le temps tapé, et la note d'une séance arrêtée avant la fin — 19/10/2026 », le bloc de 09:45 et ses points 12 à 14, et fais ta part : QCM-1 et QCM-3 codent, QCM-4 rejoue tout et mesure. La livraison est poussée une heure après ce message, avec ta ligne dans ETAT.md ; QCM-4 pousse VERDICT.md trente minutes plus tard. Tu tournes jusqu'à ce que la conscience écrive « contrôlé » sous ces points 12 à 14. »
+
+Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
+
+21/10/2026 09:46 MEMO

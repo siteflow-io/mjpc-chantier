@@ -1635,3 +1635,23 @@ Tu es **E1**, l'un des quatre exécutants de l'intégration du déroulé de MJPC
 
 21/10/2026 09:05
 MEMO
+
+---
+
+## TOUR 77 — RÉVEIL N°1 (21/10/2026, 10:48 → 10:55 ; déclenché par la tâche planifiée, pas par un message de Paul)
+
+Fait :
+- `git pull origin main`, `git fetch origin` sur le sas : **la branche `integration` n'existe pas** — les quatre exécutants ne sont pas lancés, ou n'ont encore rien poussé. Rien à auditer.
+- **Le micro 13 · 25** (acquis le 21/10 à 08:23, « tout de suite ») : branche prod `micro/13-25`, commit `6867874f`, `index.html` 8.74.0-④ (1 838 791 o, md5 `c384d8504c097784e98ffc04d7327887`) ; une fonction touchée, `sesPut` : `fetch` direct → `mjpcEcrireRest` (même silence, même verdict vrai/faux, aucun classeur d'issues). **Preuve par le parcours** (`AUDITS/INTEGRATION-DEROULE/parcours.mjs`) : avant, mode test → 6 écritures au vrai hub (`cours_actif`, `scene`) ; après, mode test → 0 écriture au hub, les cinq écritures du lancement dans le magasin `M8_TEST_STORE` ; mode normal → inchangé (11 écritures, mêmes chemins) ; 0 erreur JS. Pièces `T77-micro-13-25-{avant-mode-test,apres-mode-test,apres-normal}.txt`, captures P5 avant/après.
+- `parcours.mjs` corrigé en route : en mode test, le pas P5 vérifie le magasin (les écritures ne doivent pas atteindre le hub) — avant, « deroule_joue » était satisfait par `…/deroule_joue/<classe>/scene` (faux positif).
+- Registre prod : n°13 · 25 → « micro prêt, en attente de « promeus » ».
+- Réveil suivant programmé à 12:55.
+
+Réponse de la conscience (10:55), mot pour mot :
+
+137. Réveil n°1 : la branche `integration` n'existe pas encore — les quatre ne sont pas lancés, ou n'ont encore rien poussé. Rien à auditer ; prochain réveil à 12:55.
+
+138. La 13 · 25 est codée et prouvée, en attente de ton « promeus » : branche `micro/13-25` du dépôt de production, `index.html` 8.74.0-④ (md5 `c384d8504c097784e98ffc04d7327887`). Une seule fonction touchée. Avant, en mode test, « Lancer la séance » écrivait six fois au vrai hub ; après, zéro — tout reste dans le magasin de test ; hors mode test, rien ne change (les mêmes onze écritures). Les deux sorties du banc et les captures sont au sas (pièces T77).
+
+21/10/2026 10:55
+MEMO

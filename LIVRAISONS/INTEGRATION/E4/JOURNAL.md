@@ -200,3 +200,23 @@
   - C'est mesuré sur `origin/integration` seul, sans mon changement : les mêmes 18 échecs (`sorties/1345-a0c4c92d-seul/`).
   - Les deux parcours restent verts.
   - Je l'écris dans RELECTURE-CONTINUE pour la conscience. Je ne corrige pas chez E2.
+
+## Poussée 30 — 14:32 UTC
+- **Relecteur B3** (sur `a68469f5`) :
+  - Il confirme 7 de mes 8 corrections de B2.
+  - Il a 11 lignes pour moi. **8 sont réglées**, chacune avec une garde (épreuve B3) :
+    - l'heure fantôme : `dr_dansLH`, et une heure n'est racontée que si elle a été lancée ;
+    - le bloc libre est raconté ;
+    - le premier clic sur un outil après l'écriture n'est plus perdu ;
+    - l'étiquette vide s'enregistre vide ;
+    - le point après « », et jamais deux fois le même connecteur ;
+    - le verdict sans activités ;
+    - les insécables à l'écran ;
+    - la ligne « a répondu » n'est plus doublée.
+  - **Dettes dites** (RELECTURE-CONTINUE) : « Le chapitre » quand la classe joue l'heure 2 ; « hors de l'heure » sans reprise ; la suite qui ne raconte pas un dévoilement sur une diapo déjà vue ; le « ⚠ » pas encore cliquable.
+- **La frontière d'heure d'E2 (`a0c4c92d`)** fait lancer, sur le faux hub, l'heure 2 aux diapos 7-16.
+  - Mon banc s'aligne : RC1, RC2, RC5 jouent l'heure 1, et R1 donne la parole sur une diapo sans question.
+  - Les K2-K11 de la conscience visent la diapo 1 : c'est à trancher par la conscience (écrit en relecture continue).
+- **Bancs :**
+  - Mon banc : **95 ok · 0 échec** (`sorties/1426-site-E4`).
+  - banc.sh : les parcours sont verts. K 108 / 18, la cause est ci-dessus, pas mon module (`sorties/1431`).

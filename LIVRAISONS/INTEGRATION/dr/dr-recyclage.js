@@ -16,7 +16,8 @@ var DR_MK = { outil: null, sel: null, dernier: { k: -1, t: 0 } };
 function dr_mkDe(b){ return b && Array.isArray(b.marques) ? b.marques : []; }
 function dr_mkUneAUne(b){ return !!(b && b.support && b.devoilerTout === false); }
 /* pour elements() du socle : une marque dévoilable = un élément, son libellé (le récit dit « où on a repéré « … » ») */
-function dr_marquesElements(b){ return dr_mkUneAUne(b) ? dr_mkDe(b).map(m => m.txt || (m.t === 'fl' ? 'une flèche' : m.t === 'cd' ? 'un cadre' : '')) : []; }
+function dr_mkTxt(m){ return m && m.txt && m.txt !== 'à écrire' ? m.txt : ''; }   /* « à écrire » : l'attente des marques posées avant 14:20, jamais un texte */
+function dr_marquesElements(b){ return dr_mkUneAUne(b) ? dr_mkDe(b).map(m => dr_mkTxt(m) || (m.t === 'fl' ? 'une flèche' : m.t === 'cd' ? 'un cadre' : '')) : []; }
 function dr_marquesNb(b){ return dr_marquesElements(b).length; }
 /* le rendu des marques dans .img-sup (crochet du socle, dans rendre) : k0 = le rang du premier élément de ce bloc dans la diapo */
 function dr_marquesHtml(b, bi, k0, et){
@@ -28,8 +29,9 @@ function dr_marquesHtml(b, bi, k0, et){
     const x = +m.x || 0, y = +m.y || 0, att = ` data-mk="${j}" data-bi="${bi}"` + (et && et.atelier ? ' title="Deux appuis rapprochés : écrire sur la marque ; Suppr : la retirer"' : '');
     if (m.t === 'fl') { const x2 = m.x2 == null ? x + 14 : +m.x2, y2 = m.y2 == null ? y + 9 : +m.y2; const id = 'drfl' + bi + '_' + j;
       return `<svg class="dr-flsvg${pas ? ' pas' : ''}" viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;pointer-events:none;width:100%;height:100%"><defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d1495b"/></marker></defs><line x1="${x}" y1="${y}" x2="${x2}" y2="${y2}" stroke="#d1495b" stroke-width="0.7" marker-end="url(#${id})" vector-effect="non-scaling-stroke"/></svg>`
-        + (m.txt ? `<span class="mk mk-lg${pas ? ' pas' : ''}${sel === j ? ' selmk' : ''}"${att} style="left:${(x + x2) / 2}%;top:${(y + y2) / 2 - 5}%"><span>${dr_esc(m.txt)}</span></span>` : (et && et.atelier ? `<span class="mk mk-fl${sel === j ? ' selmk' : ''}"${att} style="left:${x}%;top:${y}%"><span>•</span></span>` : '')); }
-    return `<span class="${cls.trim()}"${att} style="left:${x}%;top:${y}%${m.t === 'cd' ? `;width:${+m.w || 18}%;height:${+m.h || 14}%;transform:none` : ''}">${m.t === 'cd' ? '' : `<span>${dr_esc(m.txt || '')}</span>`}</span>`;
+        + (dr_mkTxt(m) ? `<span class="mk mk-lg${pas ? ' pas' : ''}${sel === j ? ' selmk' : ''}"${att} style="left:${(x + x2) / 2}%;top:${(y + y2) / 2 - 5}%"><span>${dr_esc(dr_mkTxt(m))}</span></span>` : (et && et.atelier ? `<span class="mk mk-fl${sel === j ? ' selmk' : ''}"${att} style="left:${x}%;top:${y}%"><span>•</span></span>` : '')); }
+    if ((m.t === 'et' || m.t === 'lg') && !dr_mkTxt(m) && !(et && et.atelier)) return '';   /* une étiquette vide n'existe pas hors de l'atelier */
+    return `<span class="${cls.trim()}"${att} style="left:${x}%;top:${y}%${m.t === 'cd' ? `;width:${+m.w || 18}%;height:${+m.h || 14}%;transform:none` : ''}">${m.t === 'cd' ? '' : (dr_mkTxt(m) || m.t === 'pt' ? `<span>${dr_esc(dr_mkTxt(m))}</span>` : '<span data-vide="1">à écrire</span>')}</span>`;
   }).join(''); }
 /* calibreMarques : les marques se mesurent sur la LARGEUR DE L'IMAGE (au pilote, au tableau, dans les vignettes) */
 function dr_calibreMarques(racine){ (racine || document).querySelectorAll('.img-sup').forEach(s => { const mk = s.querySelectorAll('.mk'); if (!mk.length) return; const L = s.getBoundingClientRect().width; if (!L) return; mk.forEach(m => { m.style.fontSize = (L * 0.042) + 'px'; }); }); }
@@ -42,12 +44,12 @@ function dr_setDev(v){ dr_mkChanger(b => { b.devoilerTout = v; }); }
 function dr_armeMk(o){ DR_MK.outil = (DR_MK.outil === o) ? null : o; document.body.classList.toggle('dr-pose-mk', !!DR_MK.outil); dr_mkPanneau(); }
 function dr_supMk(k, bi){ DR_MK.sel = null; dr_mkChanger(b => { b.marques.splice(k, 1); }, bi); }
 function dr_poseMk(ev, sup){ const blocEl = sup.closest('[data-bi]'); const bi = blocEl ? +blocEl.dataset.bi : null; const r = sup.getBoundingClientRect(); const outil = DR_MK.outil;
-  dr_mkChanger(b => { const n = b.marques.filter(m => m.t === 'pt').length + 1; b.marques.push({ t: outil, x: Math.round((ev.clientX - r.left) / r.width * 1000) / 10, y: Math.round((ev.clientY - r.top) / r.height * 1000) / 10, txt: outil === 'pt' ? String(n) : (outil === 'fl' ? '' : 'à écrire'), w: 18, h: 14 }); }, bi);
+  dr_mkChanger(b => { const n = b.marques.filter(m => m.t === 'pt').length + 1; b.marques.push({ t: outil, x: Math.round((ev.clientX - r.left) / r.width * 1000) / 10, y: Math.round((ev.clientY - r.top) / r.height * 1000) / 10, txt: outil === 'pt' ? String(n) : '', w: 18, h: 14 }); /* (E4 · B3) lisait 'à écrire' : le texte d'attente s'enregistrait, paraissait au tableau et dans le récit */ }, bi);
   DR_MK.outil = null; document.body.classList.remove('dr-pose-mk'); dr_mkPanneau();
   if (outil === 'et' || outil === 'lg') { const o = dr_mkBloc(bi); const k = o ? o.b.marques.length - 1 : -1; const ouvrir = n => { const mk = document.querySelector(`#mur .img-sup .mk[data-mk="${k}"][data-bi="${o ? o.bi : bi}"]`); if (mk) dr_editeMarque(mk, true); else if (n > 0) requestAnimationFrame(() => ouvrir(n - 1)); }; if (k >= 0) ouvrir(5); } }   /* (E4 · relecteur continu B2) une étiquette, une légende posées s'ouvrent à l'écriture : la frappe va dans la marque (lisait : Espace passait à la diapo suivante, « r » ouvrait la Relecture) */   /* l'ancien gardait l'outil armé : le panneau le réarme d'un clic */
 function dr_editeMarque(mk, posee){ const sp = mk.querySelector('span'); if (!sp) return; const k = +mk.dataset.mk, bi = +mk.dataset.bi;
   sp.setAttribute('contenteditable', 'true'); sp.focus(); try { const r = document.createRange(); r.selectNodeContents(sp); const s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
-  let fini = false; const fin = annule => { if (fini) return; fini = true; sp.removeAttribute('contenteditable'); const t = sp.textContent.trim(); if (!annule) dr_mkChanger(b => { if (b.marques[k]) b.marques[k].txt = t; }, bi, posee); else dr_tout(); };   /* le texte d'une marque qu'on vient de poser ne coupe pas une rafale en cours (la pose et son texte, tapé vite, font un pas) */
+  let fini = false; const fin = annule => { if (fini) return; fini = true; sp.removeAttribute('contenteditable'); let t = sp.textContent.trim(); if (sp.dataset.vide && t === 'à écrire') t = ''; if (!annule) dr_mkChanger(b => { if (b.marques[k]) b.marques[k].txt = t; }, bi, posee); else dr_tout(); };   /* le texte d'une marque qu'on vient de poser ne coupe pas une rafale en cours (la pose et son texte, tapé vite, font un pas) */
   sp.addEventListener('blur', () => fin(false), { once: true });
   sp.addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Enter') { e.preventDefault(); sp.blur(); } if (e.key === 'Escape') { e.preventDefault(); fin(true); } }); }
 /* le panneau des marques (l'ancien « réglages » du bloc image), dans l'atelier, sur une diapo qui a une image */
@@ -63,7 +65,7 @@ function dr_mkPanneau(){
   }
   if (z._h === h) return; z._h = h; z.innerHTML = h;   /* rien ne change : on ne touche à rien (le bouton survolé reste le même) */
   z.querySelectorAll('[data-mk-a]').forEach(x => x.onclick = () => { const a = x.dataset.mkA; if (a === 'support') dr_setSupport(true); if (a === 'illustration') dr_setSupport(false); if (a === 'une') dr_setDev(false); if (a === 'toutes') dr_setDev(true); });
-  z.querySelectorAll('[data-mk-o]').forEach(x => x.onclick = () => dr_armeMk(x.dataset.mkO));
+  z.querySelectorAll('[data-mk-o]').forEach(x => { x.onpointerdown = ev => { if (ev.button !== 0) return; x._pd = true; dr_armeMk(x.dataset.mkO); }; x.onclick = () => { if (x._pd) { x._pd = false; return; } dr_armeMk(x.dataset.mkO); }; });   /* (E4 · relecteur continu B3) au pointerdown : juste après l'écriture d'une étiquette, le blur redessinait le panneau et le premier clic se perdait */
   z.querySelectorAll('[data-mk-x]').forEach(x => x.onclick = () => dr_supMk(+x.dataset.mkX, o.bi));
 }
 /* les gestes sur l'image, dans l'atelier : poser (outil armé), sélectionner, éditer (deux appuis), supprimer (Suppr), Échap */

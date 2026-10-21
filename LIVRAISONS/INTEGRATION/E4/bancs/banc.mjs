@@ -22,7 +22,12 @@ dire(`banc E4 · ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC 
 
 // ── le faux hub (le même dispositif que parcours.mjs et controles.mjs v2) ──
 const J_ = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8'));
-const store = () => { const st = { classes: J_('classes.json'), taxonomie: fs.existsSync(path.join(HUB, 'taxonomie.json')) ? J_('taxonomie.json') : null, site: { '3e': J_('site_3e.json'), config: J_('site_config.json'), edt: { grille: { '2026-2027': J_('grille-appariee.json') }, calendrier: { '2026-2027': J_('calendrier.json') }, creneaux: J_('creneaux.json') } } };
+/* (E4, 14:15) l'heure du 07/09 rangée au faux hub (deroule_joue) fait lancer l'heure 2, que la frontière par les durées (E2, a0c4c92d) arrête aux diapos 7-16 :
+   RC1, RC2, RC5 visent les diapos 0-6 (les marques, la fiche reposée, les étapes « à écrire ») : elles ouvrent avec { heure1: true }, un faux hub sans
+   heure jouée, et jouent l'heure 1 ; les autres épreuves gardent le faux hub tel quel (l'heure 2, qui commence par une question). */
+const sansHeureJouee = st => { try { const ch = st.site['3e'].chapitres; const s0 = (Array.isArray(ch) ? ch[0] : ch['0']).seances; const se = Array.isArray(s0) ? s0[0] : s0['0']; delete se.deroule_joue; } catch (e) {} return st; };
+const store = () => store0();
+const store0 = () => { const st = { classes: J_('classes.json'), taxonomie: fs.existsSync(path.join(HUB, 'taxonomie.json')) ? J_('taxonomie.json') : null, site: { '3e': J_('site_3e.json'), config: J_('site_config.json'), edt: { grille: { '2026-2027': J_('grille-appariee.json') }, calendrier: { '2026-2027': J_('calendrier.json') }, creneaux: J_('creneaux.json') } } };
   if (process.env.E4_SANS_ED !== '1') { try { st.classes['3E Charles de Gaulle'].ed = { espace: 2, lien: 'https://www.ecoledirecte.com/P/94/EspacesTravail/2/cloud' }; } catch (e) {} } return st; };
 const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); window.__ECR = []; const lire = c => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; }; const pos = (c, v) => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) n[q[k]] = {}; n = n[q[k]]; } if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v; };
   window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase(); if (m === 'GET') return Promise.resolve(new Response(JSON.stringify(lire(c)), { status: 200 })); let bd = null; try { bd = JSON.parse((o && o.body) || 'null'); } catch (e) {} if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => pos(c + '/' + k, bd[k])); else if (m === 'DELETE') pos(c, null); else pos(c, bd); window.__ECR.push({ m, c, t: Date.now() }); return Promise.resolve(new Response(JSON.stringify(bd), { status: 200 })); } return Promise.resolve(new Response('{}', { status: 200 })); };
@@ -40,7 +45,7 @@ async function ouvrir(o = {}) {
   const pg = await ctx.newPage(); const errs = [], boites = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
   if (SIMULE) { const se = store().site['3e'].chapitres; const s0 = (Array.isArray(se) ? se[0] : se['0']).seances; await pg.addInitScript(([h, sc]) => { window.__E4HUB_INIT = h; window.__E4SEANCE = sc; }, [o.frais ? null : HUB_PERSISTANT, Array.isArray(s0) ? s0[0] : s0['0']]); }
   if (!SITE) { await pg.goto('file://' + F); await pg.waitForTimeout(600); return { ctx, pg, errs, boites }; }
-  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, o.hub || (o.frais ? null : HUB_PERSISTANT) || store());
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, o.hub || (o.frais ? null : HUB_PERSISTANT) || (o.heure1 ? sansHeureJouee(store0()) : store()));
   /* le voile #fi-overlay du site (« Aucune fiche n'existe pour cette application ») : le faux hub n'a pas /manifestes (audit E1, F15, à la conscience) — écarté ici à chaque apparition, comme une lacune du faux hub, pas du site */
   await pg.addInitScript(() => { const ot = () => { const v = document.getElementById('fi-overlay'); if (v) v.remove(); }; document.addEventListener('DOMContentLoaded', () => { ot(); new MutationObserver(ot).observe(document.body, { childList: true, subtree: true }); }); });
   if (o.modeTest) await pg.addInitScript(() => { try { localStorage.setItem('mjpc_mode_test', '1'); } catch (e) {} });
@@ -62,16 +67,17 @@ async function jusquA(pg, cond, max = 90) { let n = 0; while (!(await pg.evaluat
 async function reponse(pg, ini, txt) { await pg.click('#mur .rep .ini'); await pg.keyboard.type(ini); await p(pg, 100); await pg.click('#mur .rep .dit'); await pg.keyboard.type(txt); await pg.keyboard.press('Enter'); await p(pg, 300); }
 async function relecture(pg) { const v = await pg.$('.at-onglet[data-vue="relecture"]'); if (v) await v.click(); else if (await pg.$('.voile.on')) await pg.evaluate(() => voir('relecture')); /* la maquette rechargée s'ouvre sur son emploi du temps simulé */ else await pg.click('#ong-relecture'); await p(pg, 900); }
 async function face(pg, debut) { const ok = await pg.evaluate(t => { const b = Array.from(document.querySelectorAll('#faces [data-f]')).find(x => x.textContent.trim().startsWith(t)); if (!b) return false; b.click(); return true; }, debut); await p(pg, 500); return ok; }
-const texteRel = pg => pg.evaluate(() => (document.querySelector('#rel') || {}).innerText || '');
+const texteRel = pg => pg.evaluate(() => ((document.querySelector('#rel') || {}).innerText || '').replace(/\u00a0/g, ' ')); /* les insécables (dr_typo) se lisent comme des espaces */
 const ecritures = pg => pg.evaluate(() => (window.__ECR || []).map(x => x.m + ' ' + x.c));
 const DIT = 'Ils montrent tous la nature plus grande que l’homme';
 const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
 
 // ═════ R1 · le récit d'une heure jouée : la diapo, l'heure, le prénom, la réponse (mandat, bancs ; cadrage 2 · 1.2, 1.3, 1.5 bis) ═════
 { const o = await ouvrir(); const pg = o.pg; await lancer(pg);
-  await devoiler(pg, 3); await parole(pg, 'ZP');
   const q = await jusquA(pg, () => ecran().blocs.some(b => b.t === 'question')); await pg.click('#bdev'); await p(pg, 150); await garde(pg);
   if (q) await reponse(pg, 'GA', DIT);
+  /* (14:20) l'heure 2 commence par une question (la frontière par les durées, E2) : la parole hors d'une question se donne ensuite, sur la première diapo sans question */
+  await jusquA(pg, () => !ecran().blocs.some(b => b.t === 'question')); await garde(pg); await devoiler(pg, 1); await parole(pg, 'ZP');
   await relecture(pg); await cap(pg, 'E4-R1-le-recit');
   const t = await texteRel(pg); const act = await pg.evaluate(() => ecran().act);
   verif('R1', q, 'une diapo à question est atteinte en dévoilant', null);
@@ -197,7 +203,7 @@ else verif('D1', null, 'les documents par référence', 'la maquette simule ses 
   await o.ctx.close(); }
 
 // ═════ RC1 · R1 du recyclage : les marques sur une image (relance E4-2) — poser, dévoiler une à une au pilote et au tableau, calibrer, garder ═════
-if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
+if (SITE) { const o = await ouvrir({ frais: true, heure1: true }); const pg = o.pg;
   await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1200); if (await pg.$('#at-aide .x')) await pg.click('#at-aide .x');
   await pg.evaluate(() => dr_aller(1)); await p(pg, 700);
   const pan = await pg.evaluate(() => { const z = document.getElementById('dr-mk-panneau'); return z ? { vis: !!z.offsetParent, titres: Array.from(z.querySelectorAll('button')).every(b => b.title) } : null; });
@@ -228,7 +234,7 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
     await pg2.click('[data-lancer="1"]').catch(() => {}); await p(pg2, 700); const atteint = await jusquA(pg2, () => ecran().act === 'Tableau 1'); await garde(pg2);
     const vus = async () => pg2.evaluate(() => ({ dev: document.querySelectorAll('#mur .img-sup .mk:not(.pas)').length, tout: document.querySelectorAll('#mur .img-sup .mk').length }));
     const v0 = await vus(); let tab = null; if (W === 1366) { try { [tab] = await Promise.all([o2.ctx.waitForEvent('page', { timeout: 8000 }), pg2.click('#bvideoproj')]); await tab.waitForLoadState(); await p(pg2, 1500); } catch (e) { tab = null; } }
-    const etapes = [v0]; const tabs = []; for (let i = 0; i < 3; i++) { await pg2.click('#bdev'); await p(pg2, 600); etapes.push(await vus()); if (tab) tabs.push(await tab.evaluate(() => document.querySelectorAll('#mur2 .img-sup .mk').length).catch(() => -1)); }
+    const etapes = [v0]; const tabs = []; for (let i = 0; i < 3; i++) { await pg2.click('#bdev', { timeout: 4000 }).catch(e => { o2.errs.push('banc : ▶ inatteignable (' + String(e.message).split('\n')[0].slice(0, 120) + ')'); }); await p(pg2, 600); etapes.push(await vus()); if (tab) tabs.push(await tab.evaluate(() => document.querySelectorAll('#mur2 .img-sup .mk').length).catch(() => -1)); }
     const cal2 = await pg2.evaluate(() => { const s = document.querySelector('#mur .img-sup'); const m = s && s.querySelector('.mk'); return m ? { L: s.getBoundingClientRect().width, fs: parseFloat(m.style.fontSize) } : null; });
     verif('RC1', atteint && etapes.map(x => x.dev).join(',') === '0,1,2,3' && etapes.every(x => x.tout === 3), `rechargé (${W}) : les trois marques sont là ; en classe, ▶ les dévoile une à une au pilote (0, 1, 2, 3)`, JSON.stringify(etapes));
     verif('RC1', cal2 && Math.abs(cal2.fs - cal2.L * 0.042) < 0.5, `calibrées à la largeur de l'image en classe — ${W}`, JSON.stringify(cal2));
@@ -259,7 +265,7 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
 else verif('RC4', null, 'R4 annuler', 'se mesure sur le site');
 
 // ═════ RC2 · R2 du recyclage : le rappel d'une fiche — reposée, la question ; le motif sur la diapo, au hub, dans le récit et sur le papier ═════
-if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
+if (SITE) { const o = await ouvrir({ frais: true, heure1: true }); const pg = o.pg;
   await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1200); if (await pg.$('#at-aide .x')) await pg.click('#at-aide .x');
   /* « + fiche… » ne lie aucune fiche tant que les feuilles du site n'en ont pas (audit E1, F17) : la fiche est posée par l'Atelier lui-même (ajouterBloc, le geste de « + fiche » une fois la fiche choisie) */
   await pg.evaluate(() => ajouterBloc({ t: 'fiche', txt: 'Une fiche neuve du banc', el: ['Elle n’est nulle part ailleurs dans le chapitre.'] }, false)); await p(pg, 700);
@@ -297,8 +303,31 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   verif('RC6', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte', JSON.stringify(o.errs)); await cap(pg, 'E4-RC6-gras-souligne'); await o.ctx.close(); }
 else verif('RC6', null, 'R6 Ctrl+B / Ctrl+U', 'se mesure sur le site');
 
-// ═════ RC5 · R5 du recyclage : la sélection multiple dans l'Atelier — Ctrl+clic, « Supprimer les N éléments », « ✍🏻 Marquer « à écrire » », Échap ═════
+// ═════ B3 · le relecteur continu B3 (14:05) : l'heure fantôme, le bloc libre, le verdict sans activités, le point après « », l'étiquette vide ═════
 if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
+  await pg.evaluate(() => { try { dr_aller(1); } catch (e) {} }); await p(pg, 400); await pg.click('#bdev').catch(() => {}); await p(pg, 300); await pg.evaluate(() => { try { dr_aller(0); } catch (e) {} }); await p(pg, 300);
+  await lancer(pg); await devoiler(pg, 2);
+  const u = await pg.evaluate(() => { const e = ecran(); e.blocs.push({ t: 'texte', bid: 'bE4libre', txt: '', el: ['Le romantisme : le cœur', 'Le Parnasse : la forme'] }); dr_tout(); return { hs: heuresJouees(), h: S.heure, avant: J.filter(x => x.type === 'diapo' && x.t < (dr_lanceT(S.heure) || 0)).length }; });
+  verif('B3', u.hs.length === 1 && u.hs[0] === u.h, `des diapos parcourues avant de lancer (${u.avant} au journal avant le lancement) ne font pas d'heure fantôme : heures racontées ${JSON.stringify(u.hs)} (cadrage 2 §1.4)`, JSON.stringify(u));
+  await devoiler(pg, 12); await relecture(pg); const r = await texteRel(pg);
+  verif('B3', /on a écrit au tableau : « Le romantisme : le cœur » ; « Le Parnasse : la forme »/i.test(r), 'un bloc « clique ici et écris » dévoilé se raconte : ses lignes, citées (cadrage 2 §1.2, §1.4)', r.slice(0, 700));
+  const f = await pg.evaluate(() => [dr_finiPhrase('« le voyageur de dos »'), dr_finiPhrase('« Où en sommes-nous ? »'), dr_finiPhrase('la <b>passion</b>.'), dr_finiPhrase('« la passion »')]);
+  verif('B3', JSON.stringify(f) === '[false,true,true,false]', 'après un guillemet fermant, le point vient sauf si la citation finit déjà sur « ? ! . » (relecteur continu B3)', JSON.stringify(f));
+  const v = await pg.evaluate(() => { const E = seance().ecrans; const a0 = E.map(e => e.actId); E.forEach(e => { delete e.actId; }); S.closes = S.closes || {}; S.closes[S.heure] = now(); const d = document.createElement('div'); d.innerHTML = troisTemps(recitHtml0(now(), S.heure), S.heure, now()); const r = !!d.querySelector('.rt.verdict'); delete S.closes[S.heure]; E.forEach((e, i) => { if (a0[i] != null) e.actId = a0[i]; }); return { verdict: r, acts: (typeof actDe === 'function') ? !!actDe(E[0]) : null }; });
+  verif('B3', v.acts === false ? v.verdict : null, 'une trame sans activités, l\'heure close : le verdict est dit (« Et on l\'a terminée » / « Mais on ne l\'a pas terminée », cadrage 2 §1.2 quater)', JSON.stringify(v));
+  verif('B3', o.errs.length === 0, 'zéro erreur JS', JSON.stringify(o.errs)); await o.ctx.close();
+  const o2 = await ouvrir({ frais: true }); const pg2 = o2.pg; await pg2.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg2, 1200); if (await pg2.$('#at-aide .x')) await pg2.click('#at-aide .x'); await pg2.evaluate(() => dr_aller(1)); await p(pg2, 600);
+  if (!(await pg2.evaluate(() => ecran().blocs[0].support))) await pg2.click('#dr-mk-panneau [data-mk-a="support"]');
+  await pg2.click('#dr-mk-panneau [data-mk-o="et"]'); const rr = await pg2.evaluate(() => document.querySelector('#mur .img-sup').getBoundingClientRect().toJSON()); await pg2.mouse.click(rr.x + rr.width * 0.3, rr.y + rr.height * 0.3); await p(pg2, 300); await pg2.keyboard.type('ciel'); await p(pg2, 100);
+  await pg2.click('#dr-mk-panneau [data-mk-o="cd"]'); await p(pg2, 200); const arme = await pg2.evaluate(() => DR_MK.outil);
+  await pg2.keyboard.press('Escape'); await pg2.click('#dr-mk-panneau [data-mk-o="et"]').catch(() => {}); await pg2.mouse.click(rr.x + rr.width * 0.6, rr.y + rr.height * 0.6); await p(pg2, 300); await pg2.mouse.click(5, 5); await p(pg2, 400);
+  const mk = await pg2.evaluate(() => ({ m: ecran().blocs[0].marques.map(m => m.t + ':' + m.txt), el: dr_marquesElements(ecran().blocs[0]) }));
+  verif('B3', arme === 'cd' && mk.m.includes('et:ciel') && mk.m.includes('et:') && !mk.m.some(x => /à écrire/.test(x)), 'juste après l\'écriture d\'une étiquette, un clic arme l\'outil ; une étiquette laissée vide s\'enregistre vide, jamais « à écrire » (relecteur continu B3)', JSON.stringify({ arme, mk }));
+  verif('B3', o2.errs.length === 0, 'zéro erreur JS (marques)', JSON.stringify(o2.errs)); await o2.ctx.close(); }
+else verif('B3', null, 'le relecteur B3', 'se mesure sur le site');
+
+// ═════ RC5 · R5 du recyclage : la sélection multiple dans l'Atelier — Ctrl+clic, « Supprimer les N éléments », « ✍🏻 Marquer « à écrire » », Échap ═════
+if (SITE) { const o = await ouvrir({ frais: true, heure1: true }); const pg = o.pg;
   await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1200); if (await pg.$('#at-aide .x')) await pg.click('#at-aide .x');
   const et0 = await pg.evaluate(() => ecran().blocs[0].etapes.slice());
   await pg.click('#mur li[data-p="0.1"]', { modifiers: ['Control'] }); await pg.click('#mur li[data-p="0.3"]', { modifiers: ['Control'] }); await p(pg, 300);

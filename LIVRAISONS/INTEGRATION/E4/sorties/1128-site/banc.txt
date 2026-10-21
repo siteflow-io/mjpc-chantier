@@ -16,3 +16,4 @@ modules lus : dr/dr.css dr/dr-gabarit.js dr/dr-socle.js dr/dr-atelier.js dr/dr-c
   classes CSS en collision : 0
   globales en collision : 0
 — 3. parcours
+— 4. parcours en mode test

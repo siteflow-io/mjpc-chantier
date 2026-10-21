@@ -1,0 +1,32 @@
+sonde E2 sur la production · 2026-10-21 07:29 UTC · index.html md5 ac792b28f40d3a0510e725fc4a6b6985 · 1838175 o
+
+1 — la case EDT et le lancement
+  ok     1 · la case de 3E Charles de Gaulle (lun. 14/09) — 3E Charles de Gaulle Étude de texte accompagnée : « L'Albatros » heure 1/3
+      modale : lundi 14 septembre · 08:57-09:52 ✕ 3E Charles de Gaulle Étude de texte accompagnée : « L'Albatros » heure 1 sur 3 ▶ Ouvrir le pilotage et lancer Déplacer cette heure, ou en ajouter une… Jusqu’à la fin de l’année. Un « créneau libre » n’est pas un déplacement : c’est une heure de plus, épinglée, qui compte dans la prévision. — choisir parmi 785 créneaux — mar 15/9 · 08:00-08:55 — créneau libre, heu
+      cellule : {"cle":"2026-09-14|08:57-09:52|3 FRANKLIN Aretha","iso":"2026-09-14","creneau":"08:57-09:52","classe":"3E Charles de Gaulle","titre":"Étude de texte accompagnée : « L'Albatros »","heure":1,"sur":3,"nature":"prevu"}
+      lancé : {"snum":"1","titre":"Étude de texte accompagnée : « L'Albatros »","cours":{"debut":"08:57","fin":"09:52","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle"},"regime":"classe"}
+  ok     1 · edtLancer lance — séance 1 « Étude de texte accompagnée : « L'Albatros » »
+  ok     1 · la séance lancée est celle que la case annonce — case « Étude de texte accompagnée : « L'Albatros » » · lancée « Étude de texte accompagnée : « L'Albatros » »
+      PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/scene
+      PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/scene
+      PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+
+2 — la reprise d'aujourd'hui (recharger en pleine heure)
+      avant rechargement : H = 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle · maj 1789369207573 · cours_actif {"niveau":"3e","chapitre":"0","seance":"1","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle","debut":"08:57","fin":"09:52","ts":17893692066
+  ok     2 · la bannière « un cours est en cours » — Un cours est en cours avec 3E Charles de Gaulle. Reprendre le cours Plus tard
+      après « Reprendre » : {"regime":"classe","cours":{"debut":"08:57","fin":"09:52","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle"},"vecu":false}
+      PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/ecrans
+  ÉCHEC  2 · après la reprise, le vécu de l'heure (AT_DR_VECU) est remonté — AT_DR_VECU nul : _drTraceAuto sort sans rien écrire
+  ÉCHEC  2 · après la reprise, le paquet H s'écrit encore — 1 écriture(s)
+
+3 — le mode test (lancement depuis la case)
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/scene
+      PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/scene
+  ÉCHEC  3 · mode test : zéro écriture au hub au lancement — 3 écriture(s)
+
+erreurs JS : aucune
+
+— 3 constat(s) rouge(s) sur la production (attendu : ce sont les points de l'audit)

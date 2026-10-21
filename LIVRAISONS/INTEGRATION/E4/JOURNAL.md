@@ -405,3 +405,16 @@
   - Les deux ont écrit leurs sorties hors du dépôt ; je les ai copiées ensuite.
 - Le banc lit maintenant `E4_CAP` pour ses captures : elles aussi s'écrivent hors du dépôt pendant le passage.
 - Un relecteur neuf rejoue l'heure 3 dans les trois cas du §12.17 (P1 à l'heure suivante, P2 à la maison, P3 sortis du programme), et les lignes 130, 137 et 138.
+
+## Poussée 48 — 20:12 UTC
+- Sur `613ade62`, l'heure 3 a été rejouée dans les trois cas du §12.17 :
+  - P1 : « à l'heure suivante » glisse, et la diapo commencée reprend à 1/3 ;
+  - P2 : « terminer / préparer à la maison » revient, fléché « à reprendre » ;
+  - P3 : « pas le temps », « en réserve » et « non fait » sortent du programme.
+- **Les lignes 130, 137 et 138 sont réglées.** L'écran d'ouverture annonce exactement ce qui ouvre.
+- Quatre lignes nouvelles, toutes chez E2 ou E1 :
+  - le bandeau « T-undefined » ;
+  - le libellé « glissée » au lieu de « à reprendre » ;
+  - l'horaire du cahier et A5/A6 en double dans « Où on en est » ;
+  - une pastille « Mode test », à confirmer.
+- Rien à moi.

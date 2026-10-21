@@ -221,14 +221,25 @@ function dr_lancer(classeSlug, creneau, debut, heure){
     dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c);
   });
 }
-function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c){
+function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   const fin = String(creneau).split('-')[1];
-  try { dr_cloreHeureRestee(classeSlug, nom, c); } catch (e) {}
+  if (!suite) try { dr_cloreHeureRestee(classeSlug, nom, c); } catch (e) {}
   /* une heure tourne encore ici (Paul enchaîne deux classes en deux minutes) : elle se clôt d'abord, sa trace sous SA clé */
   if (S.lancee && !S.close && AT_DR_REGIME === 'classe' && AT_DR_COURS) { const ch = dr_cheminH(); S.finReel = Date.now(); S.closPar = 'lancement suivant'; const p = dr_paquetHeure(true);
     if (ch && p) dr_ecrire(ch, p, 'Heure close à l’ouverture de la suivante — ' + p.creneau, () => {}); dr_journalAuto(true); dr_etatAuto(true);
     try { atInfo('L’heure précédente (' + escapeHtml(AT_DR_COURS.classeNom) + ' · ' + escapeHtml(p ? p.creneau : '') + ') n’était pas close : elle vient de l’être, sa trace est enregistrée.'); } catch (e) {} }
-  const copie = (typeof atDrJouer === 'function') ? atDrJouer(classeSlug, nom) : null;
+  /* l'heure n > 1 : la séance a déjà joué pour cette classe ; on relit son état (C/etat, C/journal), puis l'écran d'ouverture de la
+     maquette (« Où en est la classe », 6.5-6.7) — il dit l'heure d'avant, ce qui glisse, le faisceau ; « Lancer l'heure n » passe par
+     `dr_lancerSuite`. La copie de la classe n'est PAS recopiée depuis la trame (C1 8.1 : ce qui a été vu est immuable ; audit C6). */
+  if (heure > 1 && !suite) {
+    dr_lireJoue(j => {
+      if (j && j.S && j.S.lancee) { dr_restaurer(j); S.heure = heure - 1; S.close = true; S.lancee = true; DR_CL.suite = { classeSlug, nom, creneau, debut, heure, garder: true }; dr_heurePoser(heure, { debut, fin, classeSlug, classeNom: nom });
+        try { $('ecran-edt').classList.remove('on'); } catch (e) {} try { voir('pilotage'); } catch (e) {} ouvrirOuverture(); return; }
+      dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, true);
+    }, (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug);
+    return; }
+  const garder = suite && DR_CL.suite && DR_CL.suite.garder; DR_CL.suite = null;
+  const copie = garder ? null : ((typeof atDrJouer === 'function') ? atDrJouer(classeSlug, nom) : null);
   AT_DR_COURS = { debut, fin, classeSlug, classeNom: nom }; AT_DR_REGIME = 'classe';
   try { chChargerTaxo(() => {}); } catch (e) {}   /* [8.67.1] le T-5 nomme les notions, jamais leurs codes */
   try { if (copie && typeof dr_jouerCopie === 'function') dr_jouerCopie(copie.ecrans); } catch (e) {}   /* le socle joue la copie de la classe (E1) */
@@ -239,6 +250,9 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c){
   dr_coursEcrire();
   dr_traceReprendre(() => dr_copieAuto(true));
 }
+/* « Lancer l'heure n » de l'écran d'ouverture : la classe, le créneau et le début posés par `dr_lancer` */
+function dr_lancerSuite(h){ const x = DR_CL.suite || {}; const cr = x.creneau || dr_creneauPropose(); const sl = x.classeSlug || dr_classeProposee();
+  dr_lancerNeuf(sl, x.nom || dr_nomClasse(sl), cr, x.debut || dr_debutPropose(cr), h || x.heure || (S.heure + 1), undefined, true); }
 /* la relance dans le même créneau reprend la trace (`_drTraceReprendre`) : le début réel revient ; une trace d'une autre
    classe ou d'un autre créneau n'est pas reprise (elle se dit, l'heure part à neuf) */
 function dr_traceReprendre(cb){
@@ -258,12 +272,7 @@ function dr_reprendre(cb){
   dr_lire(C + '/etat', etat => dr_lire(C + '/journal', jr => dr_lire(ch, t => {
     if (!etat || !etat.S) { if (cb) cb(false); return; }
     if (t && (t.clos || (t.classe && t.classe !== AT_DR_COURS.classeNom) || (t.creneau && t.creneau !== dr_creneauDuCours(AT_DR_COURS)))) { if (cb) cb(false); return; }
-    const s = dr_duHub(etat.S);
-    Object.keys(s).forEach(k => { S[k] = s[k]; });
-    [[parDiapo, etat.parDiapo], [vuMax, etat.vuMax]].forEach(([o, v]) => { Object.keys(o).forEach(k => delete o[k]); Object.assign(o, dr_duHub(v || {})); });
-    J.length = 0; (Array.isArray(jr) ? jr : []).forEach(o => J.push(dr_duHub(o)));
-    S.ordres = {}; Object.keys(S.ordresEid || {}).forEach(h => { S.ordres[h] = (S.ordresEid[h] || []).map(indexDe).filter(i => i >= 0); });   /* l'ordre de l'heure, refait depuis les identités */
-    try { reindexer(); } catch (e) {}
+    dr_restaurer({ S: dr_duHub(etat.S), parDiapo: dr_duHub(etat.parDiapo || {}), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
     const hc = dr_heureJouee(S.heure); if (hc && typeof HEURES_SIM === 'object') HEURES_SIM[S.heure] = hc; else dr_heurePoser(S.heure, AT_DR_COURS, t && t.debutReel);
     S.debutReel = (t && t.debutReel) || S.debutReel || Date.now();
     try { T0 = (dr_heureJouee(S.heure) || {}).base || T0; } catch (e) {}   /* now() = l'horloge réelle */
@@ -281,6 +290,14 @@ function dr_reprendre(cb){
     try { atInfo('Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus.'); } catch (e) {}
     if (cb) cb(true);
   })));
+}
+/* remettre dans la page l'état d'une heure jouée, décodé (`dr_lireJoue`) : S, les dévoilements, le journal ; les rangs refaits */
+function dr_restaurer(j){
+  Object.keys(j.S || {}).forEach(k => { S[k] = j.S[k]; });
+  [[parDiapo, j.parDiapo], [vuMax, j.vuMax]].forEach(([o, v]) => { Object.keys(o).forEach(k => delete o[k]); Object.assign(o, v || {}); });
+  J.length = 0; (j.J || []).forEach(o => J.push(o));
+  S.ordres = {}; Object.keys(S.ordresEid || {}).forEach(h => { S.ordres[h] = (S.ordresEid[h] || []).map(indexDe).filter(i => i >= 0); });   /* l'ordre de chaque heure, refait depuis les identités */
+  try { reindexer(); } catch (e) {}
 }
 /* l'entête de l'heure : la classe, le créneau, l'heure n/N, la séance */
 function dr_entete(h){ const x = dr_heureJouee(h) || {}; return (x.jour || '') + ' ' + (x.debut || '') + '-' + (x.fin || '') + ' · ' + (x.classe || '') + ' · heure ' + h + ' sur ' + (x.sur || '?') + ' · ' + (seance().titre || seance().title || ''); }

@@ -30,7 +30,7 @@ changer('clotureHtml · le bilan', "h += (S.heure === 2 ?", "h += (S.heure >= ((
 changer('ouverture · N heures', "heure ${h} sur 2</h2>", "heure ${h} sur ${(dr_heureJouee(S.heure) || {}).sur || 2}</h2>")
 # 4 · l'ouverture de l'heure suivante lance par `dr_lancer` (les écritures du site), plus par `lancerHeure` seul
 changer('ouverture · lancer', "$('o-lancer').onclick = () => { DECALAGE = 0; S.paliers = {}; S.t5 = false; S.palier = null; if (!S.close) return; lancerHeure(h); }; }",
-  "$('o-lancer').onclick = () => { DECALAGE = 0; S.paliers = {}; S.t5 = false; S.palier = null; if (!S.close) return; const cr = dr_creneauPropose(); dr_lancer(dr_classeProposee(), cr, dr_debutPropose(cr), h); }; } /* E2 — avant : lancerHeure(h) seul, sans classe ni hub */")
+  "$('o-lancer').onclick = () => { DECALAGE = 0; S.paliers = {}; S.t5 = false; S.palier = null; if (!S.close) return; dr_lancerSuite(h); }; } /* E2 : la classe, le créneau, le hub — avant : lancerHeure(h) seul */")
 
 # 5 · la porte : l'EDT simulé tombe, la porte réelle reste (audit F6) — la classe et le créneau proposés, l'heure n/N, R8
 EDT_NEUF = r'''function edt(){ /* E2 : la porte réelle du Pilotage (audit F6) — avant : deux heures simulées en dur (HEURES_SIM, « 3E Charles de Gaulle », « sur 2 »).

@@ -56,3 +56,9 @@
 - **12 · 07** (« le nombre d'heures est un quotient ») : `dr_nbHeures` prend d'abord la frontière d'heure de la trame (`max(e.heure)`, C1 6.1), à défaut le quotient de la case. Tant que la trame réelle n'a pas d'`heure` (audit M3, E1), c'est encore le quotient : la dette reste ouverte par là, dite.
 - **13 · 8** (le récit sur la trame) : c'est le récit, E4 ; pas la classe.
 - Banc du module **VERT**.
+
+## 07:58 UTC — poussée 8 : l'heure suivante (mandat 10, l'écran d'ouverture sur l'état réel)
+
+- **Fait** : `dr_lancer(…, heure > 1)` relit l'état de la séance pour cette classe (`dr_lireJoue` : `C/etat`, `C/journal`), le remet dans la page (`dr_restaurer`, factorisé avec la reprise), pose la vraie heure (`dr_heurePoser`) et ouvre **l'écran d'ouverture de la maquette** (« Où en est la classe » : l'heure d'avant, close ou non, ce qui glisse, le faisceau) ; « Lancer l'heure n » → `dr_lancerSuite` → la suite de `dr_lancerNeuf` **sans recopier la trame sur la copie de la classe** (C1 8.1, audit C6). Sans état au hub, l'heure part à neuf.
+- **Banc** (maquette rebranchée, `sorties/banc-module-maquette-rebranchee.txt`) **VERT**, dont M5 : le jeudi 17/09 11:04, `dr_lancer(…, 2)` montre « Où en est la 3E Charles de Gaulle — jeudi 17 septembre 2026, 11:04-11:59 · heure 2 sur 2 … L'heure 1 (lundi 14 septembre 2026, 15:07) : close à 15:09 » ; « Lancer l'heure 2 » : heure 2 lancée, pas de `PUT C`, deux traces sous deux clés, le journal porte les deux heures. (Le banc a d'abord attrapé l'écran d'ouverture qui lisait encore l'heure simulée : corrigé.) Maquette telle quelle : **VERT**.
+- **Limite dite** : pour les diapos **non encore montrées**, la copie gardée ne reçoit pas les changements faits depuis dans la trame (C1 8.2 voudrait la trame du jour) — c'est la fusion copie/trame, au socle (`dr_trame` en classe, E1) ; écrit ici, pas caché.

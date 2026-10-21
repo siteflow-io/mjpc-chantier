@@ -80,6 +80,17 @@ pas('M4', Hc && Hc.clos === true && Hc.finReel ? 'ok' : 'ÉCHEC', 'H : clos, fin
 pas('M4', noeud(hub, '/site/cours_actif') == null ? 'ok' : 'ÉCHEC', 'cours_actif effacé', '');
 pas('M4', (noeud(hub, C + '/journal') || []).some(x => x.type === 'cloture') ? 'ok' : 'ÉCHEC', 'la clôture est au journal du hub', '');
 pas('JS', !s2.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s2.errs.join(' ; '));
+if (fs.readFileSync(F, 'utf8').includes('dr_lancerSuite')) { dire(''); dire('M5 — le lendemain, l\'heure 2 : l\'écran d\'ouverture sur l\'état réel de la classe (mandat 10), puis « Lancer l\'heure 2 »');
+  await s2.ctx.close(); const s5 = await page({ store: hub, quand: '2026-09-17T11:05:00+02:00' }); const p5 = s5.page; const n5 = (await s5.ecrits()).length;
+  await p5.evaluate(() => dr_lancer('3E Charles de Gaulle', '11:04-11:59', '11:05', 2)); await s5.attendre(2000);
+  const ouv = await p5.evaluate(() => ({ on: document.getElementById('ecran-fin').classList.contains('ouverture'), txt: (document.getElementById('fin').innerText || '').replace(/\s+/g, ' ').slice(0, 400) }));
+  pas('M5', ouv.on && /jeudi 17 septembre 2026, 11:04-11:59/.test(ouv.txt) && /Où en est la/.test(ouv.txt) && /L'heure 1/.test(ouv.txt) && /close/.test(ouv.txt) ? 'ok' : 'ÉCHEC', 'l\'écran d\'ouverture dit l\'heure 1 (close) — lu au hub, rien de simulé', ouv.txt);
+  await p5.click('#o-lancer'); await s5.attendre(2500); const e5 = await lu(p5);
+  const ec5 = (await s5.ecrits()).slice(n5).map(x => x.replace(C, 'C')); const h5 = await s5.hub(); const H5 = noeud(h5, C + '/heures') || {};
+  pas('M5', e5.lancee && (await p5.evaluate(() => S.heure)) === 2 && /heure 2 sur/.test(e5.hou) ? 'ok' : 'ÉCHEC', 'l\'heure 2 est lancée', e5.hou);
+  pas('M5', !ec5.includes('PUT C') && Object.keys(H5).some(k => k.startsWith('2026-09-17_11h04-11h59')) && Object.keys(H5).some(k => k.startsWith('2026-09-14')) ? 'ok' : 'ÉCHEC', 'la copie de la classe gardée (pas de PUT C) ; une seconde trace, sous sa clé, à côté de la première', Object.keys(H5).join(' · '));
+  pas('M5', await p5.evaluate(() => J.some(x => x.h === 1 && x.type === 'cloture') && J.some(x => x.h === 2 && x.type === 'lancement')) ? 'ok' : 'ÉCHEC', 'le journal porte l\'heure 1 et l\'heure 2', '');
+  pas('JS', !s5.errs.length ? 'ok' : 'ÉCHEC', 'M5 : aucune erreur JS', s5.errs.join(' ; ')); }
 await nav.close();
 dire(''); dire(r.echecs() === 0 ? 'BANC DU MODULE VERT' : 'BANC DU MODULE ROUGE — ' + r.echecs() + ' échec(s)');
 if (OUT) fs.writeFileSync(OUT, r.R.join('\n') + '\n');

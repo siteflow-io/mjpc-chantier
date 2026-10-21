@@ -50,3 +50,9 @@ K15 — les écritures au hub pendant le parcours
 
 PARCOURS ROUGE — 3 échec(s)
 — 5. contrôles K1-K13 par l'entrée du site
+  ÉCHEC  K9 · le contrôle n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+13 vérifications, 13 échec(s)
+--- fin : 13 défaut(s)
+
+— résultat : ROUGE · sorties dans LIVRAISONS/INTEGRATION/E4/sorties/0930-site

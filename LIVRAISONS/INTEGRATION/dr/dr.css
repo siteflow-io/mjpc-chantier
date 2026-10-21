@@ -342,3 +342,4 @@ body.gel :is(#dr-zone,#ses-tab) .mur{outline:2px solid var(--gel)}
   #dr-impression .a4-coller{position:static;order:-1;text-align:right;margin:0 0 4mm}
 }
 #fdocs-l .btn:disabled{opacity:.45;cursor:not-allowed}
+#dr-rel-classe{background:#191411;color:var(--texte,#eee);border:1px solid var(--bord,#3a3129);border-radius:6px;padding:4px 8px;font:inherit;font-size:.9rem}#dr-rel-classe:disabled{opacity:.55;cursor:not-allowed}

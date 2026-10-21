@@ -1,6 +1,16 @@
 # NOTE — E3, le tableau (mandat d'intégration du déroulé, 21/10/2026)
 
-*Écrite à 13:20 ; tenue à jour à chaque relance de la conscience. Rien de ce qui n'est pas fait n'est tu : voir « ce qui reste ».*
+*Écrite à 13:20, mise à jour à 13:35 après la relance du réveil n°2 (13:15) — voir la section « Après la relance ». Rien de ce qui n'est pas fait n'est tu.*
+
+## Après la relance du réveil n°2 (13:15, traitée à 13:30, commit 552cb038) — ce qui l'emporte sur la suite de cette note
+- **Le QR tombe** : à sa place, « Adresse du tableau » (`#dr-tab-adr`) affiche `?vue=tableau` en texte ; `sesQROuvrir`, `sesQRFermer` retirées.
+- **`C/part` tombe** (`dr_part` retiré) ; « qui a participé » au tableau suit la parole.
+- **`sesBandeau`, `sesBandeauEtat`, `sesGet`, `_sesRangLocal` tombent** ; `dr_sessionEtat` remplira `#dr-session` (à poser par E1) ; le pointeur passe par `dr_lire`.
+- **La classe attendue** vient de `dr_proposer()` (E2, pas encore livré) ; sinon l'attente ne dit que le nom du site, l'heure et la date.
+- **Le distant** n'accepte une scène que si `ts` est plus récent et la clé de cours celle de `cours_actif` ; il garde son image (pas de retour à l'attente).
+- **`dr_versMur(et)`** : le crochet du socle (E1 le pose dans `pousser`, `fermerFiche`, l'atelier, la répétition ; ma veille reste en filet tant qu'il manque).
+- **La garde** bloque aussi `sendBeacon`. La page tableau lit la séance (`dr_lireSeance`) pour les documents.
+- Bancs : **E3 67/67** (le délai : 10 ▶, médiane ≈ 900 ms, maximum < 1 s ; attendu ≤ 1 500) ; banc de la conscience `sorties/1321/` : collisions 0, parcours vert, **K1-K13 108/108** ; mode test : P5 (l'outil).
 
 ## Ce que ça change pour la classe
 - « 🖥 Écran 2 » (`#bvideoproj`) ouvre **le site lui-même** en lecture seule, `index.html?vue=tableau&local=1`, à envoyer au vidéoprojecteur. Il montre exactement ce que voit la classe : la diapo, ce qui est dévoilé, la page, la taille, le gel. Ce n'est plus une fenêtre écrite à la main avec des fonctions recopiées. Il suit chaque ▶ sans se recharger. Rouvert ou rechargé, même quand Paul est dans l'Atelier, il remontre ce que voit la classe.

@@ -106,7 +106,7 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
   await pg.emulateMedia({ media: 'screen' });
   verif('P1', imp.feuille && imp.hors.length === 0, '@media print : la feuille, et rien d\'autre du site', JSON.stringify(imp));
 
-  // ═════ ED · « Copier pour École Directe » : le HTML propre (R13) et le texte de la maquette ═════
+  // ═════ ED · « Copier pour École Directe » : le HTML propre (R22) et le texte de la maquette ═════
   await face(pg, 'Le récit'); await p(pg, 300); await pg.click('#rel [data-rv="site"]').catch(() => {}); await p(pg, 300);
   await pg.click('#r-copie-contenu'); await p(pg, 500);
   const cp = await pg.evaluate(() => window.DR_RECIT_DERNIERE_COPIE || null);
@@ -132,7 +132,7 @@ else verif('R3', null, 'le rechargement', SITE ? 'R2 n\'a rien laissé au hub' :
   verif('R4', /on a repris la fiche Le registre lyrique — pour réviser avant l'évaluation/i.test(t), 'le rappel s\'écrit dans le récit : « on a repris la fiche … — pour réviser avant l\'évaluation »', t.slice(0, 900));
   verif('R4', /repris une fiche déjà vue/.test(t), 'le bilan dit « repris une fiche déjà vue »', t.slice(-300));
   await face(pg, 'Papier'); const pap = await pg.evaluate(() => (document.querySelector('#rel .dr-papier') || {}).innerText || '');
-  verif('R4', /à coller dans le cahier/i.test(pap) && /Le registre lyrique/.test(pap) && /Rappel — pour réviser avant l'évaluation/.test(pap), 'le papier « ce qu\'on colle » : la fiche montrée, son rappel, « à coller dans le cahier » (ancien papier, R14)', pap.slice(-400)); await cap(pg, 'E4-R4-fiche-a-coller');
+  verif('R4', /à coller dans le cahier/i.test(pap) && /Le registre lyrique/.test(pap) && /Rappel — pour réviser avant l'évaluation/.test(pap), 'le papier « ce qu\'on colle » : la fiche montrée, son rappel, « à coller dans le cahier » (ancien papier, R16)', pap.slice(-400)); await cap(pg, 'E4-R4-fiche-a-coller');
   await o.ctx.close(); }
 
 // ═════ D1 · un document de Structure dans l'écran, par référence (site) ═════

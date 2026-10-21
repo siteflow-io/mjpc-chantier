@@ -30,8 +30,8 @@
 
 | # | quoi | où ça marchait | verdict |
 |---|---|---|---|
-| M1 | **La copie en HTML propre pour École Directe** (cadrage 2 §1.9 : « en HTML propre, comme aujourd'hui ») | L'ancien `copierED` (moteur l. 1115-1141) : `ClipboardItem` `text/html` (Georgia 14 px, sans classes, sans repères) **et** `text/plain`, repli texte. La maquette copie du **texte seul** (`navigator.clipboard.writeText(innerText)`, l. 1764, 1528). | **manque**, pas dans `RECYCLAGE-ANCIEN-DEROULE.md` : je le recycle dans la face « Le récit » (R13 ci-dessous). |
-| M2 | **Le papier « ce qu'on colle »** : les fiches annotées, une page chacune | ancien moteur l. 1399-1404 (`corpsFiche`, `.a4-coller`) | **manque** (C3) : R14. |
+| M1 | **La copie en HTML propre pour École Directe** (cadrage 2 §1.9 : « en HTML propre, comme aujourd'hui ») | L'ancien `copierED` (moteur l. 1115-1141) : `ClipboardItem` `text/html` (Georgia 14 px, sans classes, sans repères) **et** `text/plain`, repli texte. La maquette copie du **texte seul** (`navigator.clipboard.writeText(innerText)`, l. 1764, 1528). | **manque**, pas dans `RECYCLAGE-ANCIEN-DEROULE.md` : je le recycle dans la face « Le récit » (R22 ci-dessous). |
+| M2 | **Le papier « ce qu'on colle »** : les fiches annotées, une page chacune | ancien moteur l. 1399-1404 (`corpsFiche`, `.a4-coller`) | **manque** (C3) : R16. |
 | M3 | **Les citations d'une fiche dans le récit** : « où on a surligné « … » », « On a recopié dans le cahier : « … » » (cadrage 2 §1.3) ; « où on a repéré « … » » pour les marques d'une image | ancien moteur l. 1281, 1305-1311 (`citations(b,j,x)`) ; la maquette n'en a plus aucune (grep : 0) — elle dit seulement « on a travaillé la fiche *X* : <première ligne> » (l. 1730) | **manque**, absent de la table B. Le journal de la maquette a les événements (`surligne`, `ecrire` = à recopier) : R15. Les marques d'image dépendent de R1 (E1). |
 | M4 | **Le rappel d'une fiche dans le bilan** : « repris une fiche déjà vue » | ancien moteur l. 1357 (`nbRappels`) | R2 du recyclage ne parle que de la phrase ; le bilan l'avait aussi. Je le reprends avec R2. |
 | M5 | **La phrase exacte de R2** | Le mandat cite « cette fiche revient pour réviser avant l'évaluation » ; l'ancien dit : « on a **repris la fiche** *T* — pour réviser avant l'évaluation » (motif ou texte libre, moteur l. 1292-1296). | **faux dans la citation** ; je reprends la phrase de l'ancien. |
@@ -68,13 +68,24 @@
 
 ## 6 · AJOUTS À LA TABLE B DU RECYCLAGE (ce que je reprends, sous réserve de la conscience)
 
+*Numéros alignés à 07:55 sur ceux d'E1 (son audit, section 6, R13-R21) : mes R14/R15 sont ses **R16**/**R15** (même geste, attribués à E4) ; ma copie en HTML propre devient **R22**.*
+
 | | le geste de l'ancien | où | recyclé par |
 |---|---|---|---|
-| R13 | la copie pour École Directe **en HTML propre** (`text/html` + `text/plain`) | moteur `copierED`, l. 1115-1141 | E4 (face « Le récit ») ; la copie de la fin d'heure (E2, l. 1567-1568) peut appeler la même fonction |
-| R14 | le papier « **ce qu'on colle** » : chaque fiche montrée, annotée, une page A4 | moteur l. 1399-1404 | E4 (face Papier) |
+| R22 | la copie pour École Directe **en HTML propre** (`text/html` + `text/plain`) | moteur `copierED`, l. 1115-1141 | E4 (face « Le récit ») ; la copie de la fin d'heure (E2, l. 1567-1568) peut appeler la même fonction |
+| R16 | le papier « **ce qu'on colle** » : chaque fiche montrée, annotée, une page A4 | moteur l. 1399-1404 | E4 (face Papier) |
 | R15 | les **citations** d'une fiche dans le récit (surligné / à recopier) et les marques repérées d'une image | moteur l. 1281, 1305-1311 | E4 (récit, depuis `J` : `surligne`, `ecrire`) ; marques : après R1 (E1) |
 
 ## 7 · OBSERVATIONS HORS DE MON TERRITOIRE (pour la conscience, je n'y touche pas)
 
 - `_drProchainCreneau()` (prod) ne rend **ni classe ni créneau** : il rend le prochain jour ouvré en lettres. Le contrat §7 lui fait proposer « la classe et le créneau » du « Lancer » en un clic (E1/E2) : faux.
 - La production écrit aussi `…/deroule_joue/<classe>/vecu.json` (le paquet `atVecu`) — absent de la liste des 13 écritures du plan §0.1 et de `PERMIS` n'est pas en cause (le motif `deroule_joue/` le couvre), mais K15 « la liste exacte » devra le compter ou le voir tomber (E2).
+
+## 8 · AJOUTS APRÈS LA PREMIÈRE POUSSÉE (07:50)
+
+| # | quoi | verdict |
+|---|---|---|
+| F10 | Contrat §6 : E4 possède « relecture 1639-1803 ». Les lignes **1640-1643** ne sont pas la relecture : `voir(v)` (le changement d'onglet Pilotage · Relecture · Atelier, qui pose `S.atelier`), `$('ong-atelier').onclick`, les raccourcis clavier de l'atelier (Ctrl+D, Ctrl+Entrée, Suppr, Alt+↑↓), `$('ong-pilotage')/$('ong-relecture').onclick`. | **faux** : c'est la navigation du socle et l'atelier (E1, `dr_onglet` de la barre 96). Je ne les prends pas ; `voir('relecture')` appelle `relecture()`, qui est à moi. |
+| C6 | E2 (son audit, C1) annonce `dr_heureDe(h)` = `{jour, debut, fin, base}` pour une heure de la séance (en cours : E1 ; passée : E2 depuis `H`). | **tient** pour moi : `dr_recitHeure(h)` la lit en premier quand elle existe ; sinon `dr_ctx()`, sinon le journal. Le `C5` ci-dessus est couvert si `dr_heureDe` arrive. |
+| C7 | E2 (son audit, M2) écrit `C/journal` = `J` **sans `di`** (l'`eid` fait foi) et `C/etat` = `{S épuré sans rangs, parDiapo, vuMax}`. | **dépendance** : la Relecture d'une heure close (rechargée, ou d'une autre classe) relira `C/journal` et `C/etat` et refera les rangs par `reindexer` (socle) avant de composer ; je ne l'écris qu'avec le format réel d'E2. |
+| M8 | Le dessus de la maquette (`S.copie`, la copie de la classe corrigée en classe : `p8EcrireCopie`, l. 1122, territoire E1) n'était pas lu par le récit (dette 13 · 8). | **réglé dans mon territoire** : `dr_recitEcranVu(h, e)` pose la copie de l'heure `h` par identité de bloc (`bid`, ou `id` sur le site) avant de raconter ; banc « 13·8 » vert sur la maquette. Sur le site, la copie de la classe doit rester dans `S.copie` (ou E1/E2 me disent où) et partir dans `C/etat`. |

@@ -122,3 +122,6 @@
 
 ## 21/10, 20:40 — T14 au vert
 - Sur la poussée d'E2 `c00eb71c` (la reprise relit `C/ecrans` ; l'ordre §12.16 de l'heure suivante) : **banc E3 89/89, 0 échec** — après « Reprendre le cours », le bloc écrit en classe est au pilote **et au tableau** (la ligne 110 d'E4 est réglée pour le tableau) ; T13 suit le nouvel ordre de l'heure suivante (la fenêtre = le pilote). Sortie `sorties/2040/banc-E3.txt`.
+
+## 21/10, 21:25 — réveil n°8 lu
+- Rien d'ouvert ; §12.17 et la ligne 138 sont chez E2 : T13 compare la fenêtre au pilote, il suit quel que soit l'ordre ; je rejoue à sa poussée. Banc rejoué sur `836dfb30` : **89/89**.

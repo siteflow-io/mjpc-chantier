@@ -53,3 +53,7 @@
 - Banc de la conscience (`sorties/1200/`) : inchangé — parcours vert (P8 vert), mode test : P5 (l'outil, à la conscience), K bloqués par le voile (F15, E1), collision `durees` (E2).
 - **reste** : mesurer K7/K10/K11 sur une copie sans le voile ; la classe attendue (F1/I5) ; C3 ; R14.
 - **relances** : relu — rien.
+
+## 21/10, 12:25 — poussée 8 : K7, K10, K11 mesurés (copie sans le voile)
+- **fait** : les contrôles K1-K13 de la conscience joués sur une copie de `assemble/index.html` (md5 `acc0613e…`) où le voile `#fi-overlay` est masqué par une seule règle CSS (F15 d'E1 ; la copie n'est pas poussée, la sortie l'est : `sorties/1200/controles-K-sur-copie-sans-voile.txt`). **108 vérifications, 2 échecs.** **K7 vert** (la fenêtre reçoit les pages dès l'ouverture, à 0, 9, 13 dévoilés et à la molette, puis suit ▶), **K10 vert** (« ■ Arrêter » : la fenêtre se vide, ou remontre la diapo d'avant), **K11 vert** (la vue « ⧉ Tableau » porte « page i / n » et les mêmes lignes), **K6 vert** y compris la fenêtre à 1920. Les deux échecs sont **K8** (19 diapos dans l'heure de la trame réelle contre 9 dans la maquette : l'attendu du contrôle vient de la maquette — à E1 et à la conscience), pas mon territoire.
+- **relances** : relu — rien.

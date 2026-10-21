@@ -23142,3 +23142,21 @@ Envoyé à Paul, mot pour mot :
 Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
 
 20/10/2026 10:32 MEMO
+
+## TOUR 753 — Paul, 21/10 09:23
+
+Paul, mot pour mot :
+
+on en est où?
+
+Lu : `ETAT.md`, `VERDICT.md` de QCM-4 du 20/10 16:20 (« ça va », app md5 `3b4d0f82…`, banc-arret 55/55), le diff `a269fea..725c3af` de `src/` ; les commits de la n°13 depuis le 20/10 (tours 68 à 76). Mesuré : la reconstruction à l'identique ; contrôles 32/32 ; `sonde-arret.js` 14/14 (écrite pour ce contrôle : la séance du banc portée à 11 questions, arrêtée après Q3 ; deux passages d'essai avant le compté, pour ouvrir la copie de Léa : les autres lignes « à lire » de Tom confirmées comme Paul le ferait) ; `sonde-temps.js` 16/16 ; `sonde-note.js` 13/13 ; `sonde-modetest.js` 24/24. Fait : `AUDITS/CODE-QCM-ARRET-29-20-10/` ; « CONTRÔLÉ » en tête de la section (`code-qcm` `0e4724f0`) ; dette n°12 · 222 (production) ; le script de mise en ligne de la 8.0.5 prêt, pas lancé.
+
+Envoyé à Paul, mot pour mot :
+
+**À jouer :** la 8.0.4, toujours en ligne · **en cours chez l'exécutant :** rien ; j'ai écrit « contrôlé », les quatre s'arrêtent · **ouvert :** la mise en ligne, qui attend ta réponse
+
+31. Tout est prêt et contrôlé. Hier, tu as relancé QCM-1, qui a livré à 15:26. QCM-4 a rendu « ça va » à 16:20, et mon contrôle de ce matin passe aussi. La séance de 11 questions arrêtée après Q3 est notée sur 3, et ton tableau dit « Q4 à Q11 pas posées ». Q3, lue par Léa sans « Révéler », reste « pas encore lue » jusqu'à ton « ✅ Oui » le soir ; ensuite, c'est la même note dans ton tableau et sur la tablette de l'élève. J'ai rejoué aussi le temps tapé, la note du soir et le mode test des vraies évaluations : ça va. Tout part en ligne en une seule version, la 8.0.5. Aucune séance n'est en cours ? Dès que tu me le dis, je la mets en ligne et je te donne tes tests.
+
+33. La conscience n°13 tourne de nouveau depuis hier 09:00 : ses tours 68 à 76, ce matin à 09:03 les mandats des quatre exécutants du déroulé. Je ne la reprends donc pas, sauf si tu me le demandes.
+
+21/10/2026 09:33 MEMO

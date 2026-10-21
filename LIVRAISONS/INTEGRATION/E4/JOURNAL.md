@@ -450,3 +450,4 @@
   - L66 : Entrée ne valide ni « + bloc » ni « Envoyer vers… » (`relecteurs/continu-2050/L66-plus-bloc-entree.png`).
   - L'historique de chaque cellule pouvait se lire autrement : j'ai mis en tête de ces deux cellules **« ÉTAT : pas réglé (`aaf6d7f4`) »**. La passe finale fera de même pour toutes les lignes.
 - En cours : un relecteur revérifie 20 lignes d'E2 sur `b10fe923` (poussée 23), et les bancs tournent hors du dépôt.
+- **Sur `b10fe923`** (poussée 23 d'E2) : banc.sh **VERT** (`sorties/2132`) ; mon banc **109 ok · 0 échec** (`sorties/2132-site-E4`).

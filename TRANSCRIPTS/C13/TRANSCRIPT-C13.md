@@ -1904,3 +1904,19 @@ Réponse de la conscience (21:18), mot pour mot :
 
 21/10/2026 21:18
 MEMO
+
+## TOUR 89 (21/10/2026, 21:23 → 21:24)
+
+Paul (21:23), mot pour mot :
+« Tu m'étonnes sur correction dictée. 30 dettes restantes?? »
+
+Mesuré (21:23) : `MANDATS/PAUSE-CORRECTION-DICTEE.md` §4 (la liste de la n°12 au 07/10) et chaque numéro dans `docs/MJPC6-DETTES.md` : 24 entrées, pas 30 — 143 et 160 « ✔ en partie » (un reste chacune), 141 un chantier à cadrer (l'audit des pièges), 97 du code mort, 122 l'audio (L16b, tranché : Paul enregistre ses lettres), et 19 dettes déclarées par Paul les 05-07/10 en classe (Franklin, Hugo) : 149, 150, 151, 155, 159, 161, 162/165, 163, 164, 167, 171, 172, 174, 176, et 132, 133, 138, 139 repliées dans L17-7 / L17-8. Production `correction_dictee.html` : 6.7.0-L17-1q3 (07/10), aucun commit depuis.
+
+Réponse de la conscience (21:24), mot pour mot :
+
+176. Tu as raison de tiquer : « une trentaine » était une lecture de la plage 143-176, pas un compte — non mesuré, je n'aurais pas dû l'écrire. Compté maintenant dans la note de pause de la n°12 et le registre : **24 entrées**, dont 2 déjà réglées en partie (143, 160 : un reste chacune), 1 chantier à cadrer (141, l'audit des pièges), 1 code mort (97), 1 audio tranché (122 : tu enregistres tes lettres, L16b), et **19 dettes que tu as déclarées en classe les 6 et 7 octobre** — des choses de l'écran des élèves (le bouton « afficher la note », la consigne à recopier, deux phrases par tablette, le clavier sans chiffres, « sdp », le bandeau, la question-guide, « Acc. », l'engagement case par case, les commentaires pauvres en grammaire, « Correspondances » qui mène à un lien invalide, « lève la main », le plafond des questions, suspendre une séance, la note visible à l'arrivée, le mode qui ne change pas les mots, le type d'un mot à compléter). Rien de gros, mais rien de réglé non plus depuis le 7 octobre : la production est restée à 6.7.0-L17-1q3.
+
+177. Verdict : c'est un mandat de reprise court — le mandat L17 en pause plus ces 19 lignes, une à une, avec les bancs de la n°12 — pas « trente dettes ». Si tu dis « DICTÉE », j'écris ce mandat à partir de la note de pause (elle tient tout : questions en attente, bancs à rejouer, leçons) et la phrase à coller.
+
+21/10/2026 21:24
+MEMO

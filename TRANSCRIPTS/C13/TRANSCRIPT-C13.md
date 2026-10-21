@@ -1968,3 +1968,19 @@ Réponse de la conscience (21:48), mot pour mot :
 
 21/10/2026 21:48
 MEMO
+
+## TOUR 93 (21/10/2026, 22:09 → 22:10)
+
+Paul (22:09), mot pour mot :
+« M17 a a déjà été fait en partie, au moins l'import ( et pas mal de choses ont changé d'ailleurs à ce moment là). Pour le plan, attention ; rien ne doit être créé qui n'existe pas déjà. »
+
+Mesuré (22:10) : le hub, `/classes` (lecture) : `3_dylan_bob`, `3_franklin_aretha`, `4_hugo`, `4_turing`, `3E Charles de Gaulle`, `CLASSE TEST`, `_TEST`, `_test_correction_dictee`, `_test_pilotage_debat_s3` — l'import des classes réelles est fait (ÉLÈVE — 1), Hergé / Banksy / Pythagore / Saint Michel ont été purgées, « 3E Charles de Gaulle » est gardée (données martyres, décision du 29/09). Plan mis à jour (`MANDATS/PLAN-10-JOURS.md`) : la règle « rien ne se crée qui n'existe pas déjà » en §0 ; M17a « fait en partie », reste la purge de « 3E Charles de Gaulle » quand Paul le décide ; retirés : la banque d'exercices, l'app de révisions M20, l'appli de création de pages, le « cockpit » hors cadrage ; le téléphone se recycle depuis `?vue=tel` ; le profil lit `mjpcProfils` qui existe.
+
+Réponse de la conscience (22:10), mot pour mot :
+
+185. Mesuré au hub : tes quatre classes 2026-2027 y sont (3 Dylan Bob, 3 Franklin Aretha, 4 Hugo, 4 Turing), les quatre anciennes ont été purgées, « 3E Charles de Gaulle » reste comme données martyres. M17a est donc fait sauf cette dernière purge, à ton signal — corrigé au plan, retiré du calendrier.
+
+186. La règle est écrite en tête du plan et appliquée : rien de neuf — les lots règlent les dettes et codent le prévu cadré ; sortent du plan la banque d'exercices, l'app de révisions, l'appli de pages et tout « cockpit » qui n'est pas dans un cadrage ; le téléphone se recycle depuis ce qui existe (`?vue=tel`), le profil lit `mjpcProfils` qui existe déjà et n'est jamais lu. Le plan tient en cinq cadrages avec toi au lieu de six. Ce que tu ne commentes pas est acquis ; j'attends ton « go » pour écrire cette nuit les quatre mandats lançables.
+
+21/10/2026 22:10
+MEMO

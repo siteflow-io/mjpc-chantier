@@ -126,9 +126,10 @@ await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène su
   await tb.goto(URL0 + '?vue=tableau', { waitUntil: 'load' }); await tb.waitForTimeout(2500);
   const att = await tb.evaluate(() => { const a = document.getElementById('ses-tab-att') || document.getElementById('dr-attente'); return a && a.offsetParent !== null ? a.innerText.replace(/\s+/g, ' ').trim() : null; }); await cap(tb, 'T5-attente');
   verif('T5', !!att && /monsieurjaipascompris/i.test(att) && /\d\d:\d\d/.test(att), 'sans cours actif : l\'écran d\'attente (le nom du site, l\'heure, la date)', att || '—');
-  const prop = await tb.evaluate(() => typeof dr_proposer === 'function');
-  if (prop) verif('T5', !!att && /Classe attendue : /.test(att), 'à 08:50 : la classe attendue vient de `dr_proposer()` (E2)', att || '—');
-  else verif('T5', !!att && !/Aucun cours|Classe/.test(att), 'sans `dr_proposer()` (E2) : l\'attente ne dit que le nom du site, l\'heure et la date (relance F1)', att || '—');
+  const prop = await tb.evaluate(() => { try { return typeof dr_proposer === 'function' ? dr_proposer() : null; } catch (e) { return { erreur: e.message }; } });
+  if (prop && prop.depuis === 'edt') verif('T5', !!att && /Classe attendue : /.test(att), 'à 08:50 : la classe attendue vient de `dr_proposer()` (E2), depuis l\'EDT', att || '—');
+  else { verif('T5', !!att && !/Aucun cours|Classe/.test(att), 'sans proposition venue de l\'EDT : l\'attente ne dit que le nom du site, l\'heure et la date (relance F1) — jamais le repli « première classe du niveau »', att || '—');
+    absent('T5', 'la classe attendue au tableau distant : `dr_proposer()` y rend ' + JSON.stringify(prop) + ' (pas de chapitre ouvert ni d\'EDT chargé dans la page tableau) — à la conscience'); }
   // le pilote publie : on recopie sa scène, son pointeur et sa copie dans le faux hub du distant (deux contextes ne partagent pas la mémoire — audit I2)
   const relais = async h => tb.evaluate(h => { window.__hubPoser('/site/cours_actif', h.c); window.__hubPoser(h.b + '/ecrans', h.ecrans); window.__hubPoser(h.b + '/scene', h.scene); }, h);
   await tb.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await relais(h0); const t0r = Date.now(); let vu = null;

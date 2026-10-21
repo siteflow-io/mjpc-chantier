@@ -86,3 +86,9 @@
 - **Bancs** : banc E3 **70/70** (+ le crochet appelé par `pousser`, la fiche refermée garde l'image, `#dr-session` dit « ● session ») ; banc de la conscience `sorties/1349/` : collisions 0, parcours vert, **K1-K13 108/108** ; mode test : P5 (l'outil).
 - **reste** : `dr_proposer()` (E2) ; ma rustine `#dr-mur-gare` (E1 pose encore `#dr-zone` en page tableau).
 - **relances** : relu — rien de neuf.
+
+## 21/10, 14:27 — poussée 13 : `dr_proposer()` d'E2 branché sur l'attente — et mesuré inopérant en page tableau
+- **fait** : l'attente du distant montre « Classe attendue : … » **seulement** quand `dr_proposer()` rend `depuis: 'edt'` (le repli « première classe du niveau » n'est pas une classe attendue).
+- **mesuré** (faux hub, 14/09 08:50, `?vue=tableau`) : `dr_proposer()` y rend `{classeSlug:"", classeNom:"", creneau:"08:00-08:55", depuis:"jour"}` — il lit `AT.edChap` et `edtProjeter` (l'EDT chargé), que la page tableau n'a pas. **Donc la classe attendue n'est jamais dite au tableau distant.** Le banc le dit (« absent », pas vert). **À la conscience** : soit `dr_proposer` accepte d'être appelé sans chapitre ouvert avec la grille lue en lecture seule (ce que faisait ma version de 13:00, retirée sur la relance F1), soit l'attente reste sans classe. Je ne rétablis pas ma lecture de la grille sans réponse.
+- **Bancs** : banc E3 70/70 (+1 absent dit) ; banc de la conscience `sorties/1420/` ci-dessus.
+- **relances** : relu — rien de neuf.

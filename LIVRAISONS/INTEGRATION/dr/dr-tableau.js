@@ -225,7 +225,8 @@ function dr_tabPoser(){
    jamais le module EDT en vue tableau) ; sinon l'attente ne dit que le nom du site, la date et l'heure. */
 function dr_tabAttendre(){
   if (DR_TAB.montre || SES.ctx) return;
-  const dire = p => { if (DR_TAB.montre || SES.ctx) return; const c = p && (p.classeNom || p.classe || p.classeSlug), cr = p && (p.creneau || (p.debut && p.fin ? p.debut + '-' + p.fin : ''));
+  /* seule une proposition qui vient de l'EDT (`depuis: 'edt'`) est une classe ATTENDUE ; le repli « première classe du niveau » ne l'est pas */
+  const dire = p => { if (DR_TAB.montre || SES.ctx) return; if (p && p.depuis && p.depuis !== 'edt') p = null; const c = p && (p.classeNom || p.classe || p.classeSlug), cr = p && (p.creneau || (p.debut && p.fin ? p.debut + '-' + p.fin : ''));
     dr_tabDireClasse(c ? 'Classe attendue : ' + c + (cr ? ' \u00b7 ' + String(cr).replace('-', ' \u2013 ') : '') : ''); };
   if (typeof dr_proposer !== 'function') { dire(null); return; }
   try { const r = dr_proposer(dire); if (r && typeof r.then === 'function') r.then(dire, () => dire(null)); else if (r !== undefined) dire(r); } catch (e) { dire(null); }

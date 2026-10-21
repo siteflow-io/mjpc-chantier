@@ -1,0 +1,59 @@
+banc d'intégration · 2026-10-21 13:14 UTC · branche integration · commit a68469f5
+— 1. assemblage
+assemblé : /home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html
+  inline  dr/dr.css (109750 o)
+  inline  dr/dr-gabarit.js (21077 o)
+  inline  dr/dr-socle.js (177951 o)
+  inline  dr/dr-atelier.js (144892 o)
+  inline  dr/dr-classe.js (150673 o)
+  inline  dr/dr-tableau.js (23065 o)
+  inline  dr/dr-recit.js (113457 o)
+  inline  dr/dr-recyclage.js (33930 o)
+  modules : 8 · manquants/refusés : 0 · taille : 2132787 o · md5 dc70e8418b1facb71a9ffbbc5d241f6a
+— 2. collisions
+modules lus : dr/dr.css dr/dr-gabarit.js dr/dr-socle.js dr/dr-atelier.js dr/dr-classe.js dr/dr-tableau.js dr/dr-recit.js dr/dr-recyclage.js
+  ids en collision : 0
+  classes CSS en collision : 0
+  globales en collision : 0
+— 3. parcours
+  ok     P10 · Relecture ouverte — Le récit · heure 2 | Ce qui s'est passé · heure 2 | Papier · heure 2 | Le chapitre
+  ok     P10 · les faces de la maquette (E4)
+
+P11 — le Papier
+  ok     P11 · la face Papier de la Relecture (E4)
+
+P12 — la clôture
+  ok     P12 · clôture demandée (voir la capture)
+
+K15 — les écritures au hub pendant le parcours
+      PUT /corbeille/<heure>/edt-mise-a-niveau-grille_090000
+      PUT /site/edt/grille/2026-2027
+      PUT /site/edt/photos/2026-2027
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<heure>
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+  ok     K15 · 16 écritures, toutes sur des chemins permis
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS VERT
+— 4. parcours en mode test
+  ok     P12 · clôture demandée (voir la capture)
+
+K15 — les écritures au hub pendant le parcours
+  ok     K15-test · mode test : zéro écriture au hub — 0 écriture(s)
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS ROUGE — 1 échec(s)
+— 5. contrôles K1-K13 par l'entrée du site
+  ok     K9 · aucune boîte système
+
+108 vérifications, 0 échec(s)
+--- fin : 0 défaut(s)
+
+— résultat : ROUGE · sorties dans LIVRAISONS/INTEGRATION/E4/sorties/1314

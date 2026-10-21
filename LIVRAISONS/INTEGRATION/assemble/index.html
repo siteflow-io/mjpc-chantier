@@ -17469,6 +17469,9 @@ $('vif').addEventListener('keydown', ev => { const z = $('vif'); if (ev.key === 
 
 /* réveil n°5, A4-3 (C1 4b.1, 5.4 bis) : le VIF, « posé : … ✕ (Ctrl+Z) » et le haut de la liste des paroles se voient sans défiler — la colonne de droite
    (#droite, qui défile) vient à eux au F2 (le socle met le curseur dans le VIF sans faire défiler) et après chaque pose */
+/* réveil n°7 : quand la fin de l'heure S'OUVRE, la colonne de droite revient en haut — son titre (« Fin de l'heure — étape n sur 7 ») se voit ; `dr_vifMontrer` l'avait
+   fait défiler jusqu'au VIF. Un nouveau rendu de la fin de l'heure (une étape, une décision) ne la fait pas bouger. */
+setTimeout(() => { if (typeof ouvrirFin !== 'function' || ouvrirFin.__dr) return; const o0 = ouvrirFin; ouvrirFin = function () { const d = document.getElementById('droite'); const avant = !!(d && d.classList.contains('fin')); const r = o0.apply(this, arguments); try { if (d && !avant && d.classList.contains('fin')) d.scrollTop = 0; } catch (e) {} return r; }; ouvrirFin.__dr = true; }, 0);
 function dr_vifMontrer(){ try { const d = document.getElementById('droite'), a = document.getElementById('vif'); if (!d || !a || !a.offsetParent) return; const z = document.getElementById('vif-dernier'), pt = document.getElementById('part');
   const R = d.getBoundingClientRect(); const haut = a.getBoundingClientRect().top - 6; let bas = Math.max(a.getBoundingClientRect().bottom, z && z.offsetParent ? z.getBoundingClientRect().bottom : 0); if (pt && pt.offsetParent) bas = Math.max(bas, Math.min(pt.getBoundingClientRect().bottom, pt.getBoundingClientRect().top + 60));
   if (bas + 8 > R.bottom) d.scrollTop += Math.min(bas + 8 - R.bottom, haut - R.top); else if (haut < R.top) d.scrollTop -= R.top - haut; } catch (e) {} }

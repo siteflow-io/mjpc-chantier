@@ -47,6 +47,8 @@ const m1 = await p.evaluate(() => ({ aff: document.getElementById('dr-minut-aff'
 pas('R3', /^00:0[67]$/.test(m1.aff) && /^⏱ 00:0[67]$/.test(m1.bandeau) && m1.mur === m1.bandeau ? 'ok' : 'ÉCHEC', 'le minuteur : 10 s, Départ, « au tableau » → le compte à rebours au pilote et dans l\'état du tableau', JSON.stringify(m1));
 await s.attendre(12500); const m2 = await p.evaluate(() => ({ bandeau: S.bandeau, J: J.filter(x => x.type === 'minuteur').map(x => x.action) }));
 pas('R3', !m2.bandeau && m2.J.join() === 'depart,fin' ? 'ok' : 'ÉCHEC', 'à zéro : « c\'est fini », le bandeau se retire, le journal a départ et fin', JSON.stringify(m2));
+{ await p.evaluate(() => { if (document.activeElement) document.activeElement.blur(); }); const c0 = await p.$eval('#compte', e => e.textContent); await p.keyboard.press('Backspace'); await s.attendre(300); const c1 = await p.$eval('#compte', e => e.textContent);
+  pas('R19', parseInt(c1) === parseInt(c0) - 1 ? 'ok' : 'ÉCHEC', '⌫ hors d\'un champ = ◀ (revoile le dernier élément)', c0 + ' → ' + c1); await p.click('#bdev'); await s.attendre(300); }
 const avant = await lu(p);
 dire('      avant rechargement : ' + JSON.stringify(avant));
 await s.ctx.close();

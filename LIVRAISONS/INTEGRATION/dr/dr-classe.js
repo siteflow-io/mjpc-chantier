@@ -30,6 +30,8 @@ function dr_classeProposee(){
   try { const l = _lvlClasses((AT.edChap || {}).level) || []; if (l[0]) return l[0].slug; } catch (e) {}
   return '';
 }
+/* le slug d'une classe depuis son nom (la case de l'EDT dit le nom) : la clé de `classesData` */
+const dr_slugDe = nom => { try { if (classesData[nom]) return nom; const k = Object.keys(classesData || {}).find(k => (classesData[k] || {}).nom === nom); return k || nom; } catch (e) { return nom; } };
 const dr_nomClasse = slug => { try { const c = classesData && classesData[slug]; return (c && c.nom) || slug; } catch (e) { return slug; } };
 /* le nombre d'heures de la séance : la MÊME fonction que la case de l'EDT (`edtHeuresPour`), jamais un calcul à part */
 function dr_nbHeures(creneau){
@@ -348,3 +350,15 @@ function dr_minuteurTic(){
   if (reste <= 0) { journal('minuteur', { action: 'fin' }); setTimeout(dr_minuteurFin, 4000); DR_CL.minut = Object.assign({}, m, { fin: Infinity, fini: true }); if (a) { a.textContent = '00:00 — c’est fini'; } }
 }
 setInterval(() => { try { if (S.lancee) dr_minuteurPoser(); if (DR_CL.minut && !DR_CL.minut.fini) dr_minuteurTic(); } catch (e) {} }, 1000);
+
+/* ─── R19 ⌫ (retour arrière) = ◀ au pilotage (l'ancien moteur, `touche` : « ⌫ replie ») — hors d'un champ, hors de l'atelier ;
+   le même geste que le bouton ◀ (#bprec), donc les mêmes gardes. ─── */
+document.addEventListener('keydown', ev => {
+  try {
+    if (ev.key !== 'Backspace' || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    const a = document.activeElement; if (a && (a.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))) return;
+    if (typeof S !== 'object' || !S || !S.lancee || S.atelier || S.close) return;
+    const b = document.getElementById('bprec'); if (!b || b.disabled || b.offsetParent === null) return;
+    ev.preventDefault(); b.click();
+  } catch (e) {}
+}, true);

@@ -168,7 +168,9 @@ function etatPilot(k){
   if(enDirect() && m.pour && m.pour !== "tous" && ["rouvert", "b", "passage", "reponse"].indexOf(ph) >= 0) ph = "close";
   var phase = ({pret:"idle", avant:"idle", appel:"idle", entree:"idle", reflexion:"reflexion", passage:"reponse", reponse:"reponse", b:"reponse", close:"attente", rouvert:"attente", panne:"reponse"})[ph] || "idle";
   var qi = m.qi == null ? null : m.qi;
-  var passees = toutesQ().filter(function(q){ return qi != null && (q < qi || (q === qi && phase === "attente")); });
+  // (21/10, Paul, point 15) une question déjà posée de la séance (une séance rouverte) est faite : jamais « à venir »
+  var pose = poseesH();
+  var passees = toutesQ().filter(function(q){ return (qi != null && (q < qi || (q === qi && phase === "attente"))) || (pose[q] && q !== qi); });
   var obj = function(l){ var o = {}; (l || []).forEach(function(x){ o[x] = true; }); return o; };
   var leg = LEG_Q.slice();
   if((m.sansRep || []).length) leg = LEG_Q.slice(0, 4).concat([["#fff", "pas de réponse", "2px dashed #EF4444"]]);
@@ -255,7 +257,7 @@ function Overview(qCur, passees, opts){
         avenir && !ec[qi] ? h(TempsMiniH, {qi:qi}) : h("div", {className:"pilot-q-mini-status"}, "Réflexion " + t.reflexion + " s · Réponse " + t.reponse + " s par tour",
           (passee || (current && opts.phase === "attente")) && !an[qi] && h("span", null, " — ", h("span", {className:"score-pct " + (taux >= .7 ? "score-vert" : taux >= .5 ? "score-orange" : "score-rouge")}, b.justes + "/" + b.repondu + " justes"))),
         h("div", {className:"q-gestes"},
-          ec[qi] || an[qi] ? h("button", Object.assign({key:"rem", className:"btn btn-ghost btn-sm"}, remettre), "↩️ Remettre")
+          ec[qi] || an[qi] ? h("button", Object.assign({key:"rem", className:"btn btn-ghost btn-sm", title:enDirect() ? (ec[qi] ? "Remet la question " + (qi + 1) + " dans la séance : elle n'a pas été posée, elle redevient à poser, et compte de nouveau dans le total. « ▶️ Lancer Q" + (qi + 1) + " » la propose quand son tour vient." : "Remet la question " + (qi + 1) + " dans la note : elle compte de nouveau, comme avant « ⚠️ Annuler ».") : undefined}, remettre), "↩️ Remettre")
             : avenir ? h("button", Object.assign({key:"ec", className:"btn btn-ghost btn-sm btn-ecarter", title:"Écarte la question " + (qi + 1) + ", après une confirmation : elle ne sera ni posée ni corrigée, et sort du total, comme une question manquée par un absent ; les tablettes et le tableau comptent sans elle. « ↩️ Remettre » la défait, tant que son tour n'est pas passé."}, fen("c-ecarter&q=" + (qi + 1), "ecarter", qi)), "❌ Écarter")
             : passee || (current && opts.phase === "attente") ? h("button", Object.assign({key:"an", className:"btn btn-ghost btn-sm"}, fen("c-annuler&q=" + (qi + 1), "annuler", qi)), "⚠️ Annuler") : null));
     }),
@@ -333,19 +335,33 @@ function BoutonRelancerH(){
 
 /* ════════ Le pilotage pendant les questions ════════ */
 function nonRepondus(){ return (momH().sansRep || []).length; }
-// la première question pas écartée après qi (ou la première de l'évaluation)
-function suivanteQ(qi){ var ec = momH().ecartees || [], lanc = enDirect() && qi == null && typeof SCN.lancees === "function" ? SCN.lancees() : {};
-  // avant toute question (ou à la reprise d'une séance), la première qui n'est ni écartée ni déjà lancée
-  return toutesQ().filter(function(q){ return ec.indexOf(q) < 0 && (qi == null ? !lanc[q] : q > qi); })[0]; }
+// (21/10, Paul, point 15) en direct, les questions déjà posées de la séance (lancées, ou avec une réponse) : une séance rouverte part de ce qui a été fait
+function poseesH(){ var o = {}; if(!enDirect()) return o; var s = SCN.sess() || {}, l = (typeof SCN.lancees === "function" ? SCN.lancees() : s.questionsLancees) || {}, r = s.reponses || {};
+  Object.keys(l).forEach(function(q){ if(l[q] != null) o[+q] = true; }); Object.keys(r).forEach(function(q){ if(r[q]) o[+q] = true; }); return o; }
+// la première question ni écartée ni déjà posée après qi (ou la première de l'évaluation)
+function suivanteQ(qi){ var ec = (momH().ecartees || []).map(Number), pose = poseesH();
+  return toutesQ().filter(function(q){ return ec.indexOf(q) < 0 && !pose[q] && (qi == null || q > qi); })[0]; }
+// (point 15) plus rien à poser : les questions posées pas encore corrigées (ni écartées, ni annulées), que la correction lira. Corrigée : révélée en
+// classe, ou chaque feuille de la question (un élève qui y a répondu, ou dont la feuille a été lue) lue par Paul le soir (la note ne la dit plus « pas encore lue »)
+function aCorrigerH(){ var pose = poseesH(), m = momH(), ec = (m.ecartees || []).map(Number), an = (m.annulees || []).map(Number), rv = SCN.corrigeesAu(), s = SCN.sess() || {}, notes = {};
+  function st(x){ if(!(x in notes)) notes[x] = SCN.note(x) || {st:[]}; return notes[x].st || []; }
+  return Object.keys(pose).map(Number).filter(function(q){ if(rv.indexOf(q) >= 0 || ec.indexOf(q) >= 0 || an.indexOf(q) >= 0) return false;
+    var qui = Object.keys(Object.assign({}, (s.reponses || {})[q] || {}, (s.lectures || {})[q] || {}));
+    return !qui.length || qui.some(function(x){ return st(x)[q] === "n"; }); }); }
 function Pilot(s){
   s = s || etatPilot();
-  var m = momH(), k = MO();
+  // (point 15) en direct, avant la première question (« prêt », la séance rouverte) : les questions écartées, annulées et déjà posées de la séance
+  if(enDirect() && !s.ecartees){ var e0 = etatPilot(); s = Object.assign({}, s, {ecartees:e0.ecartees, annulees:e0.annulees, passees:e0.passees}); }
+  var m = momH(), k = MO(), pose = poseesH();
   var ec = s.ecartees || {}, nbQ = EV.questions.length - Object.keys(ec).length;
-  var restantes = toutesQ().filter(function(q){ return !ec[q] && (s.qi == null || q > s.qi); });
+  var restantes = toutesQ().filter(function(q){ return !ec[q] && !pose[q] && (s.qi == null || q > s.qi); });
   var derniere = s.qi != null && restantes.length === 0;
   var suivante = restantes.length ? restantes[0] : null;
+  // (point 15) une séance rouverte où il ne reste rien à poser : la correction de ce qui n'a pas été révélé, sinon la fin
+  var plusRien = enDirect() && s.phase === "idle" && suivante == null, aCorr = plusRien ? aCorrigerH() : [];
   var st, statusCls = s.phase;
-  if(s.phase === "idle") st = "⏳ En attente — clique sur « ▶️ Lancer Q1 »";
+  if(s.phase === "idle") st = plusRien ? (aCorr.length ? "✅ Plus de question à poser — lance l'autoévaluation, puis la correction" : "✅ Plus de question à poser — termine la séance")
+    : "⏳ En attente — clique sur « ▶️ Lancer Q" + (enDirect() && suivante != null ? suivante + 1 : 1) + " »";
   else if(s.phase === "reflexion") st = "🧠 Phase RÉFLEXION en cours";
   else if(s.phase === "reponse") st = h(F, null, "✋ Phase RÉPONSE — " + (s.tour === 1 ? "1er" : "2e") + " tour", h("span", {className:"tour-chip"}, (coteDuTour(s.qi, s.tour) === "g" ? "moitiés de gauche" : "moitiés de droite")));
   else st = derniere ? "✅ Dernière question close — lance l'autoévaluation" : "⏸️ Question close — passe à la suivante";
@@ -356,6 +372,9 @@ function Pilot(s){
   // (QCM-2) une séance reprise à une autre heure : après l'appel et l'entrée, « ▶️ Reprendre » fait recommencer le moment gelé au début (ACT.reprendre)
   var rep = enDirect() ? momH().reprise : null;
   if(s.phase === "idle" && rep && rep.ph && ["avant", "appel", "entree", "pret"].indexOf(rep.ph) < 0) actions = [h("button", Object.assign({key:1, className:"btn btn-primary", title:BULLES["▶️ Reprendre"]}, geste("c-pret", "reprendre")), "▶️ Reprendre")];
+  else if(plusRien) actions = [aCorr.length
+      ? h("button", Object.assign({key:1, className:"btn btn-or", title:"Toutes les questions de la séance sont posées ; " + (aCorr.length > 1 ? "Q" + aCorr.map(function(q){ return q + 1; }).join(", Q") + " n'ont" : "Q" + (aCorr[0] + 1) + " n'a") + " pas encore été " + (aCorr.length > 1 ? "corrigées" : "corrigée") + " (ni révélée en classe, ni lue par toi dans « Lire les copies »). Ouvre l'estimation sur les deux moitiés, puis la correction de ce qui reste."}, geste("c-estim", "lancerEstimation")), "📊 Lancer l'autoévaluation")
+      : h("button", Object.assign({key:1, className:"btn btn-rouge", title:"Toutes les questions de la séance sont posées et corrigées : il n'y a plus rien à lancer. Termine la séance, après une confirmation ; une question écartée revient d'abord par « ↩️ Remettre », dans « 📋 Toutes les questions »."}, fen("c-terminer", "terminer")), "🛑 Terminer la séance")];
   else if(s.phase === "idle") actions = [h("button", Object.assign({key:1, className:"btn btn-primary"}, geste("c-q1-reflexion", "lancerQuestion", q0)), "▶️ Lancer Q" + (q0 + 1))];
   else if(s.phase === "reflexion") actions = [h("button", Object.assign({key:1, className:"btn btn-vert"}, geste("c-q1-tour1", "autoriserReponse")), "✋ Autoriser la réponse"), h(BoutonPauseH, {key:2}), h(BoutonRelancerH, {key:3})];
   else if(s.phase === "reponse") actions = [s.tour === 1 ? h("button", Object.assign({key:1, className:"btn btn-vert"}, geste("c-q1-tour2", "tourSuivant")), "⏭️ Tour suivant") : h("button", Object.assign({key:1, className:"btn btn-or"}, geste(s.qi === 2 ? "c-q3-close" : s.qi === 1 ? "c-q2-close" : "c-q1-close", "cloreQuestion")), "🔒 Clore la question"), h(BoutonPauseH, {key:2}), h(BoutonRelancerH, {key:3})];
@@ -374,7 +393,7 @@ function Pilot(s){
   var colG = h("div", null,
     h("div", {className:"pilot-status " + statusCls, title:TITRES_STATUT[s.phase]}, st),
     // (K6) la même colonne d'une phase à l'autre de la question : le champ qu'on tape garde son curseur
-    h(ColonneTempsH, {key:"t" + s.qi, qi:s.qi == null ? (suivante == null ? 0 : suivante) : s.qi, phase:enCours ? s.phase : null, tour:s.tour, reste:s.chrono || 0, close:s.phase === "attente", qiPosee:s.qi != null}),
+    !plusRien && h(ColonneTempsH, {key:"t" + s.qi, qi:s.qi == null ? (suivante == null ? 0 : suivante) : s.qi, phase:enCours ? s.phase : null, tour:s.tour, reste:s.chrono || 0, close:s.phase === "attente", qiPosee:s.qi != null}),
     s.qi != null && QCourante(s.qi),
     h("div", {className:"pilot-actions"}, actions),
     qn && h("div", {className:"pilot-q-next-detail"},

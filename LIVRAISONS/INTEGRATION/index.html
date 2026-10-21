@@ -14953,6 +14953,7 @@ function atSomInjecterEcrans(html){
     }
     out+=seg;
   }
+  if(ATVUES.vue!=='structure') out=out.replace(/<button class="ed2-inserer"[^>]*>[^<]*<\/button>/g,'');   /* E1 (relecteur neuf n°2) : « + insérer une séance ici » est un geste de la Structure (il écrit /seances/N/ordre) ; hors d'elle, la colonne est celle du déroulé */
   return out;
 }
 
@@ -19809,7 +19810,7 @@ else sesReprisePoser();
 .at-vues-barre .at-onglet{font:inherit;font-size:.92rem}
 .at-vues-cadre{display:flex;flex-direction:column;min-height:60vh}
 .at-vues-corps{display:flex;gap:14px;align-items:flex-start}
-.at-vues-arbre{flex:0 0 250px}
+.at-vues-arbre{flex:0 0 250px;min-width:0;max-width:250px;overflow-x:clip}   /* E1 (relecteur neuf n°2) : la colonne garde sa largeur, quelle que soit la séance (un titre de fiche dans une vignette l'élargissait jusqu'à 360 px) */
 /* [É3b] UN SEUL ascenseur : celui du sommaire du site (.ed2-som, sticky). Le conteneur
    du pont n'en ajoute plus un deuxième par-dessus (double barre vue par Paul). */
 .at-vues-zone{flex:1;min-width:0}

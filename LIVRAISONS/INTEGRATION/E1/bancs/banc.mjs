@@ -319,6 +319,51 @@ await B('A21', 'les trouvailles du relecteur neuf n°1 (contrat §8) : chacune c
   E.verif('A21', o.errs.length === n0e && !c45.mortes, 'réveil n°2, C4/C5 : le glisser mort est retiré (un dragover sur la page ne lève plus d\'erreur) ; pont-css sans ses 29 règles mortes', JSON.stringify(c45));
   E.verif('A21', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
 
+
+await B('A22', 'les trouvailles du relecteur neuf n°2 (contrat §8) : chacune corrigée, chacune gardée', async () => {
+  for (const [w, h] of [[1366, 768], [1280, 800]]) {
+    const o = await E.ouvrir(b, { w, h }); const pg = o.pg; await sansVoile(pg);
+    // 11 · la barre de l'atelier et les notes, dans le cadre
+    const t11 = await pg.evaluate(() => { const dr = document.getElementById('droite-atelier'); const L = dr ? dr.getBoundingClientRect().left : 1e9; const hors = Array.from(document.querySelectorAll('#outils-atelier button, #outils-atelier .at-save')).filter(x => x.offsetParent && (x.getBoundingClientRect().right > L + 1 || x.getBoundingClientRect().bottom > innerHeight)).map(x => x.id || x.className); const n = document.getElementById('notesd').getBoundingClientRect(); return { hors, notesVues: n.top < innerHeight - 20 }; });
+    E.verif('A22', !t11.hors.length && t11.notesVues, w + ' × ' + h + ' · 11 : « ▶ Jouer en avance », le témoin et la barre restent hors de la colonne de droite ; les notes se voient', JSON.stringify(t11));
+    // 10 · un clic dans la diapo ne fait défiler ni la page ni la zone
+    await pg.click('#mur li[data-p="0.2"]'); await pg.waitForTimeout(300); const t10 = await pg.evaluate(() => { let n = 0, x = document.getElementById('mur'); while (x) { n += x.scrollTop || 0; x = x.parentElement; } return n + (document.scrollingElement.scrollTop || 0); }); await pg.keyboard.press('Escape');
+    E.verif('A22', t10 === 0, w + ' × ' + h + ' · 10 : un clic dans une ligne ne fait rien défiler (la barre du site reste entière)', t10 + ' px');
+    if (w === 1366) {
+      // 14 · la colonne garde sa largeur
+      const l14 = []; for (const k of ['0', '2', '5']) { await pg.evaluate(k => atSomPlier(k), k); await pg.waitForTimeout(1000); l14.push(await pg.evaluate(() => Math.round(document.querySelector('.at-vues-arbre').getBoundingClientRect().width))); }
+      E.verif('A22', new Set(l14).size === 1, '14 : la colonne de gauche garde sa largeur d\'une séance à l\'autre', l14.join(' · ') + ' px');
+      await pg.evaluate(() => atSomPlier('0')); await pg.waitForTimeout(1000);
+      // 20 · pas de « + insérer une séance ici » hors de la Structure
+      E.verif('A22', (await pg.$$('#at-arbre .ed2-inserer')).length === 0, '20 : « + insérer une séance ici » (il écrit /seances/N/ordre) n\'est pas dans la colonne de l\'atelier');
+      // 17 · les touches seules de la classe n'agissent pas dans l'atelier
+      await pg.mouse.click(5, 5); await pg.keyboard.press('g'); await pg.keyboard.press('r'); await pg.waitForTimeout(300); const t17 = await pg.evaluate(() => ({ gel: !!S.gel, vue: ATVUES.vue, atelier: !!S.atelier }));
+      E.verif('A22', !t17.gel && t17.vue === 'atelier' && t17.atelier, '17 : dans l\'atelier, « g » ne gèle pas, « r » ne bascule pas en Relecture', JSON.stringify(t17));
+      // 21 · la zone d'écriture ne couvre pas l'étiquette d'une image pleine
+      await pg.click('#volet [data-at-di="1"]'); await pg.waitForTimeout(400); const t21 = await pg.evaluate(() => { const R = x => x.getBoundingClientRect(); const a = R(document.querySelector('#mur .p8-ecrire')), c = R(document.querySelector('#mur .act')); return !(a.right <= c.left || a.left >= c.right || a.bottom <= c.top || a.top >= c.bottom); });
+      E.verif('A22', !t21, '21 : sur une image pleine, « ✎ clique ici et écris » ne couvre pas l\'étiquette de la diapo');
+      // 5 · « joindre un document » mène là où il s'enregistre
+      await pg.evaluate(() => choixObjet('doc')); await pg.waitForTimeout(300); const t5 = await pg.evaluate(() => ({ fic: !!document.getElementById('of-fic'), bouton: (document.getElementById('of-ok') || {}).textContent })); await pg.evaluate(() => fermerChoix());
+      E.verif('A22', !t5.fic && /Structure/.test(t5.bouton || ''), '5 : « joindre un nouveau document » mène à la Structure (où il s\'enregistre) — plus de document en mémoire seulement', JSON.stringify(t5));
+      // 16 · l'objet manquant s'écrit avec sa diapo
+      await pg.click('#volet [data-at-di="0"]'); await pg.waitForTimeout(300); await pg.evaluate(() => choixObjet('manque')); await pg.waitForTimeout(200); await pg.fill('#of-m', 'un tableau à deux colonnes'); await pg.click('#of-ok'); await pg.waitForTimeout(1600);
+      // 19 · rien d'ajouté que Paul n'a pas touché
+      await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('x'); await pg.keyboard.press('Escape'); await pg.waitForTimeout(1600);
+      const w16 = await pg.evaluate(() => { const d = window.__CORPS.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const bd = d && d.bd; const ori = window.__HUB.site['3e'].chapitres[0].seances[0].deroule; return { manque: bd && JSON.stringify(bd.ecrans[0].manques || null), ajoutes: bd ? bd.ecrans.slice(1).reduce((n, e, i) => n + (e.blocs || []).filter(b => (('etapes' in b && !b.etapes.length) || ('el' in b && !(b.el || []).length))).length, 0) : -1 }; });
+      E.verif('A22', /deux colonnes/.test(w16.manque || ''), '16 : l\'objet manquant déclaré s\'écrit avec sa diapo (B/deroule, ecrans[i].manques)', w16.manque);
+      E.verif('A22', w16.ajoutes === 0, '19 : une frappe dans la diapo 1 n\'écrit aucun « etapes: [] » ni « el: [] » dans les autres diapos', w16.ajoutes + ' champ(s) vide(s)');
+      // 13 · une deuxième heure se crée depuis l'atelier
+      const t13 = await pg.evaluate(() => { const E = dr_trame(); const der = E.map((e, i) => ({ e, i })).filter(o => o.e.heure === 1 && !o.e.role).pop(); S.di = der.i; dr_tout(); const ouv = document.querySelector('#droite-atelier [data-declare="ouvrir"]'); if (ouv) ouv.click(); const offre = !!document.querySelector('#droite-atelier [data-heure="2"]'); passerEnHeure(2); const T = dr_trame(); return { offre, h2: T.filter(e => e.heure === 2 && !e.role).length, fin2: T.some(e => e.heure === 2 && e.role === 'fin') }; });
+      E.verif('A22', t13.offre && t13.h2 === 1 && t13.fin2, '13 : sur la dernière diapo de la dernière heure, « modifier » offre « → H2 » ; la diapo passe en H2, qui reçoit sa fin d\'heure', JSON.stringify(t13));
+      // 15 · une frappe juste avant de quitter part quand même
+      await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('ultime'); const n0 = await pg.evaluate(() => window.__CORPS.length); await pg.evaluate(() => { Object.defineProperty(document, 'visibilityState', { value: 'hidden', configurable: true }); document.dispatchEvent(new Event('visibilitychange')); }); const n1 = await pg.evaluate(() => ({ n: window.__CORPS.length, ok: JSON.stringify(window.__CORPS[window.__CORPS.length - 1] || {}).includes('ultime') }));
+      E.verif('A22', n1.n > n0 && n1.ok, '15 : la page se cache moins de 900 ms après la frappe — l\'enregistrement en attente part tout de suite', JSON.stringify(n1));
+      // 3 · la note de la fin d'heure survit au déplacement de la première diapo
+      const hub = await pg.evaluate(() => { Object.defineProperty(document, 'visibilityState', { value: 'visible', configurable: true }); const T = dr_trame(); const fin = T.find(e => e.role === 'fin'); return { fin: fin.eid }; });
+      E.verif('A22', /^fin-h1-s0$/.test(hub.fin), '3 : la fin d\'heure a une identité stable (l\'heure et la clé de la séance), plus celle de la première diapo', hub.fin);
+    }
+    E.verif('A22', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

@@ -316,6 +316,13 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 #dr-zone .haut{height:auto;min-height:46px;flex-wrap:wrap;row-gap:4px;padding:4px 10px;box-sizing:border-box}
 #dr-zone .haut .qui{flex:0 0 auto;overflow:visible;text-overflow:clip}
 #dr-zone .haut .ou{flex:1 0 auto;overflow:visible;text-overflow:clip;min-width:auto}
+/* E1 (relecteur neuf n°2) : sur une diapo « image pleine », la zone « ✎ clique ici et écris » ne couvre plus l'étiquette et le haut de l'image : elle se range dans le coin haut-droit, discrète, pleine au survol et quand on y écrit */
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .p8-ecrire{position:absolute;top:.3em;right:.3em;left:auto;bottom:auto;width:auto;max-width:40%;z-index:3;opacity:.55;border:1px dashed #c9b48a;border-radius:4px}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .p8-ecrire:hover,:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .p8-ecrire:focus{opacity:1}
+/* E1 (relecteur neuf n°2) : la barre de l'atelier passe sur deux rangées plutôt que de pousser « ▶ Jouer en avance » et le témoin sous la colonne de droite ; ses boutons tiennent sur une ligne ; les notes gardent de quoi se lire */
+#dr-zone .outils-atelier{flex-wrap:wrap;row-gap:4px}
+#dr-zone .outils-atelier .btn,#dr-zone .outils-atelier .at-save,#dr-zone .outils-atelier .at-taille{white-space:nowrap}
+#dr-zone .notes{min-height:72px}
 /* E1 (relance du 21/10, relecteur d'E4) : ▶ Dévoiler et son compteur ne cèdent jamais leur place ; c'est le curseur « texte au tableau » qui se resserre */
 #dr-zone .outils #bdev,#dr-zone .outils #compte{flex:0 0 auto}
 #dr-zone .outils .zoomt{flex:0 1 auto;min-width:0;overflow:hidden}

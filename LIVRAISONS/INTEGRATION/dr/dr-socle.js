@@ -237,7 +237,9 @@ function now(){ return Date.now(); }   /* E1 : l'horloge réelle (la maquette : 
 
 /* ── le transport : lecture par secuLire, écriture par mjpcPutJson (chemin sans FIREBASE_BASE, sans .json) ── */
 function dr_lire(chemin, cb){ if (typeof secuLire !== 'function') { cb && cb(null); return; } secuLire(chemin).then(v => cb && cb(v)); }
-function dr_ecrire(chemin, valeur, libelle, cb){ if (typeof S !== 'undefined' && S.repetition) return; if (typeof mjpcPutJson !== 'function') return; mjpcPutJson(FIREBASE_BASE + chemin + '.json', valeur, libelle || 'Déroulé', cb); }
+function dr_ecrire(chemin, valeur, libelle, cb){ if (typeof S !== 'undefined' && S.repetition) return; if (typeof mjpcPutJson !== 'function') return; mjpcPutJson(FIREBASE_BASE + chemin + '.json', valeur, libelle || 'Déroulé', () => { dr_temoinHub(); if (cb) cb(); }); }
+/* E1 (réveil n°3, 3) : le déroulé écrit souvent (la classe toutes les 900 ms) — le bandeau « Enregistré à … » du site, posé à chaque écriture acceptée, couvrait les pastilles et ne disparaissait plus. Pour les écritures du déroulé, il se referme dans la même tâche (il n'est jamais peint) ; le témoin est une ligne discrète de l'entête (#dr-enr). Un échec garde le bandeau du site. */
+function dr_temoinHub(){ const bd = document.querySelector('.mjpc-bandeau-ok'); if (bd && !(typeof MJPC_ECHECS !== 'undefined' && MJPC_ECHECS.liste && MJPC_ECHECS.liste.length)) bd.style.display = 'none'; const t = document.getElementById('dr-enr'); if (t) { const d = new Date(now()); t.textContent = 'Enregistré à ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); } }
 function dr_cheminBDe(sk){ const x = dr_ctx(); return '/site/' + x.level + '/chapitres/' + x.chnum + '/seances/' + sk; }
 function dr_cheminB(){ return dr_cheminBDe(dr_ctx().snum); }
 function dr_cheminC(){ const x = dr_ctx(); return dr_cheminB() + '/deroule_joue/' + x.classeSlug; }

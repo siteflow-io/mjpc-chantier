@@ -396,6 +396,45 @@ await B('A23', 'la relecture continue d\'E4 (12:33-12:38) : Entrée puis frappe 
     E.verif('A23', !t1.length && !t2.length, w + ' × ' + h + ' : N + Entrée, la fenêtre des notes laisse ◀ ▶ ❄ atteignables ; en Relecture, l\'entête (ses deux rangées) reste atteignable', JSON.stringify({ t1, t2 }));
     E.verif('A23', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
 
+
+await B('A24', 'le réveil n°3 (15:14) : la question grisée, le témoin du hub, ▶ derrière un document projeté, la réponse qui dévoile sa question, « Activité n — » au récit, la taille au tableau', async () => {
+  const o = await E.ouvrir(b, { w: 1366, h: 768 }); const pg = o.pg; await sansVoile(pg);
+  // 8 · une activité créée : son numéro au récit d'une heure jouée
+  await pg.evaluate(() => { const h = document.querySelector('#droite-atelier h5[data-pli="acts"]'); if (h && h.parentElement.classList.contains('pli')) h.click(); }); await pg.waitForTimeout(200); await pg.click('#droite-atelier [data-nouvelle-act]'); await pg.waitForTimeout(300); await pg.fill('#dr-saisie', 'Observer les tableaux'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(1500);
+  // 3 · le témoin du hub : jamais le bandeau du site pour une écriture du déroulé, une ligne dans l'entête
+  const t3a = await pg.evaluate(() => { const bd = document.querySelector('.mjpc-bandeau-ok'); return { bandeau: !!(bd && bd.style.display !== 'none' && bd.offsetParent), enr: (document.getElementById('dr-enr') || {}).textContent || '' }; });
+  await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(800);
+  for (let i = 0; i < 4; i++) { await pg.click('#bdev'); await pg.waitForTimeout(500); }
+  const t3b = await pg.evaluate(() => { const bd = document.querySelector('.mjpc-bandeau-ok'); const vu = !!(bd && bd.style.display !== 'none' && bd.offsetParent); const pas = Array.from(document.querySelectorAll('#part [data-e], #part button')).slice(0, 3).every(x => { const q = x.getBoundingClientRect(); const el = document.elementFromPoint(q.left + q.width / 2, q.top + q.height / 2); return !el || !el.closest('.mjpc-bandeau-ok'); }); return { bandeau: vu, pastilles: pas, enr: (document.getElementById('dr-enr') || {}).textContent || '' }; });
+  E.verif('A24', !t3a.bandeau && /^Enregistré à \d\d:\d\d$/.test(t3a.enr) && !t3b.bandeau && t3b.pastilles && /^Enregistré à/.test(t3b.enr), '3 · aucune écriture du déroulé ne pose le bandeau du site (atelier, puis ▶ en classe) ; « Enregistré à … » dans l\'entête ; les pastilles restent libres', JSON.stringify({ t3a, t3b }));
+  const rec = await pg.evaluate(() => { const d = document.createElement('div'); d.innerHTML = recitHtml(now(), S.heure); return d.innerText; });
+  E.verif('A24', /Activité 1 — Observer les tableaux/.test(rec), '8 · une activité créée dans l\'atelier porte son numéro au récit de l\'heure jouée (« Activité 1 — … »)', (rec.match(/.{0,10}Activité 1.{0,30}/) || [''])[0]);
+  // 4 · « Projeter au tableau » un document, puis ▶ : rien ne se dévoile derrière
+  await pg.evaluate(() => { S.di = 0; dr_tout(); ouvrirDocs(); }); await pg.waitForTimeout(300); const n0 = await pg.evaluate(() => ({ n: etatDiapo().nDev, d: J.filter(x => x.type === 'devoile').length }));
+  const doc = await pg.$('#fdocs-l [data-doc]'); if (doc) { await doc.click(); await pg.waitForTimeout(300); for (let i = 0; i < 3; i++) { await pg.click('#bdev'); await pg.waitForTimeout(150); } await pg.keyboard.press('ArrowRight'); await pg.waitForTimeout(200); }
+  const n1 = await pg.evaluate(() => ({ n: etatDiapo().nDev, d: J.filter(x => x.type === 'devoile').length, doc: !!S.doc }));
+  E.verif('A24', !!doc && n1.doc && n1.n === n0.n && n1.d === n0.d, '4 · le geste exact : « Projeter au tableau » un document, ▶ ×3 et → : rien ne se dévoile ni ne se raconte derrière lui', JSON.stringify({ n0, n1 }));
+  await pg.evaluate(() => { S.doc = null; dr_tout(); });
+  // 2 · un clic dans une question grisée la dévoile, n'y écrit pas
+  await pg.evaluate(() => { const i = seance().ecrans.findIndex(e => (e.blocs || []).some(b => b.t === 'question')); S.di = i; dr_tout(); }); await pg.waitForTimeout(300);
+  const q0 = await pg.evaluate(() => ({ pas: document.querySelector('#mur .q').classList.contains('pas'), txt: document.querySelector('#mur .q').textContent, cc: J.filter(x => x.type === 'copie-classe').length }));
+  await pg.click('#mur .q'); await pg.keyboard.type('xyz', { delay: 40 }); await pg.waitForTimeout(300);
+  const q1 = await pg.evaluate(() => ({ pas: document.querySelector('#mur .q').classList.contains('pas'), txt: document.querySelector('#mur .q').textContent, cc: J.filter(x => x.type === 'copie-classe').length }));
+  E.verif('A24', q0.pas && !q1.pas && q1.txt === q0.txt && q1.cc === q0.cc, '2 · un clic dans une question grisée la dévoile ; la frappe qui suit n\'écrit pas dans l\'énoncé, rien au journal', JSON.stringify({ q0: q0.pas, q1 }).slice(0, 160));
+  // 2 bis · la frappe dans un texte dévoilé : une entrée « copie-classe », pas une par touche
+  await pg.click('#mur .q'); await pg.keyboard.press('End'); await pg.keyboard.type(' bis', { delay: 40 }); await pg.waitForTimeout(300); await pg.keyboard.press('Escape');
+  const q2 = await pg.evaluate(() => J.filter(x => x.type === 'copie-classe').length);
+  E.verif('A24', q2 - q1.cc === 1, '2 · quatre touches dans la copie : une seule entrée au journal (sa longueur suit)', (q2 - q1.cc) + ' entrée(s)');
+  // 5 · une réponse tapée dans sa case dévoile la question et part au tableau
+  await pg.evaluate(() => { const i = seance().ecrans.findIndex((e, k) => k !== S.di && (e.blocs || []).some(b => b.t === 'question')); S.di = i; dr_tout(); }); await pg.waitForTimeout(300);
+  const ini = await pg.$('#mur .rep .ini'); if (ini) { await ini.click(); await pg.keyboard.type('TB'); await pg.keyboard.press('Tab'); await pg.keyboard.type('une réponse', { delay: 20 }); await pg.waitForTimeout(400); }
+  const r5 = await pg.evaluate(() => { const e = ecran(); const els = elements(e); const bi = e.blocs.findIndex(b => b.t === 'question'); const k = els.findIndex(x => x.b === bi && x.e === 'q'); const m = S.mur || {}; return { kq: k, nDev: etatDiapo().nDev, murN: m.nDev, murRep: JSON.stringify((m.reps || {})[bi] || []).includes('une réponse') }; });
+  E.verif('A24', !!ini && r5.nDev > r5.kq && r5.murN > r5.kq && r5.murRep, '5 · « TB », Tab, la réponse : la question se dévoile, la réponse part au tableau au fil de la frappe', JSON.stringify(r5));
+  // 9 · la taille demandée et la police obtenue partent au tableau
+  const vm = await pg.evaluate(() => { const vus = [], vrai = window.dr_versMur; window.dr_versMur = (et, x) => { if (et) vus.push({ taille: et.taille, ratio: et.policeRatio }); if (vrai) vrai(et, x); }; const r = document.getElementById('taille'); r.value = 4; r.dispatchEvent(new Event('input', { bubbles: true })); r.dispatchEvent(new Event('change', { bubbles: true })); window.dr_versMur = vrai; return vus.pop() || null; });
+  E.verif('A24', vm && vm.taille === 4 && vm.ratio > 0, '9 · à 52 pt, la donnée part au tableau : la taille demandée et la police réellement obtenue (13 · 12 : réduite plutôt que paginée — à Paul)', JSON.stringify(vm));
+  E.verif('A24', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

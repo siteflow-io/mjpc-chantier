@@ -450,6 +450,12 @@ await B('A25', 'la relecture continue d\'E4 (13:35-14:05) : rien au journal hors
   await pg.keyboard.type('Relis ton tableau.', { delay: 60 }); await pg.waitForTimeout(300);
   const cs = await pg.evaluate(() => { const e = ecran(); const b2 = e.blocs[e.blocs.length - 1]; return { t: b2.t, txt: b2.txt }; });
   E.verif('A25', cs.t === 'consigne' && cs.txt === 'Relis ton tableau.', '« + bloc » → Consigne, puis la frappe : elle remplace « Nouvelle consigne » (pas « Nouvelle consigneRelis… »)', JSON.stringify(cs));
+  // réveil n°4, 1 (grave) : un bloc neuf, écrire puis Entrée à 80 ms par touche, quatre fois — chaque ligne entière
+  const lignes = [];
+  for (let r = 0; r < 4; r++) { await pg.click(`#volet [data-at-di="${r + 3}"]`); await pg.waitForTimeout(200); await pg.click('#at-bloc'); await pg.waitForTimeout(150); await pg.click('.choix-obj .dr-c[data-t="consigne"]'); await pg.waitForTimeout(150);
+    await pg.keyboard.type('T' + r, { delay: 80 }); await pg.keyboard.press('Tab'); await pg.keyboard.type('Ligne A.\nLigne B.\nLigne C.', { delay: 80 }); await pg.waitForTimeout(300);
+    lignes.push(await pg.evaluate(() => { const e = ecran(); const b2 = e.blocs[e.blocs.length - 1]; return (b2.el || []).map(x => typeof x === 'string' ? x : (x && (x.t || x.txt)) || '').join('|'); })); }
+  E.verif('A25', lignes.every(x => x === 'Ligne A.|Ligne B.|Ligne C.'), 'réveil n°4, 1 (grave) : dans un bloc neuf, « Ligne A. » Entrée « Ligne B. » Entrée « Ligne C. » à 80 ms par touche, quatre fois : chaque ligne entière, aucune lettre sur la ligne d\'avant', lignes.join(' ; '));
   // clic droit sur une étape, Échap : le menu se ferme
   await pg.click('#volet [data-at-di="0"]'); await pg.waitForTimeout(200);
   const li = await pg.$('#mur li[data-p]:not([data-p$=".t"])'); if (li) { await li.click(); await li.click({ button: 'right' }); await pg.waitForTimeout(200); }

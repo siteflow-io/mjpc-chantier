@@ -1655,3 +1655,26 @@ Réponse de la conscience (10:55), mot pour mot :
 
 21/10/2026 10:55
 MEMO
+
+---
+
+## TOUR 78 (21/10/2026, 12:43 → 12:50)
+
+Paul, tour 78, mot pour mot : « E4 ne fait plus rien. peut-on lui donner quelque chose à faire? »
+
+Mesuré : la branche `integration` existe (les quatre tournent depuis ~09:10 ; 17 poussées d'E4, E1-b à 10:12, E3 à 10:16, E4 arrêté à 10:27 après sa NOTE : mandat fini, 38 bancs ok, 13 · 8 réglée, relecteurs neufs passés — 14 corrections chez lui et des défauts mesurés chez E1, E2, E3). Trouvé en route : **les relances écrites sur `main` n'étaient pas vues par les exécutants** (ils tirent `integration`) → contrat §3 précisé (`git merge origin/main` avant de relire les relances), `main` fusionné dans `integration` (a259559b). E1 F15 : le voile `#fi-overlay` du site arrêtait tous les contrôles K par l'entrée du site → `controles.mjs` v2.1 le tient hors du chemin.
+
+Fait : `RELANCES/E4.md` — mission E4-2 : A · le recyclage R1 (marques d'image), R4 (↶ Annuler), R2 (rappel d'une fiche), R6 (Ctrl+B/U), R5 (sélection multiple, sauf si Paul la raye) dans un module à lui `dr/dr-recyclage.js`, crochets d'une ligne `/* E4 */` chez E1 ; B · le relecteur continu (à chaque poussée des autres, rejouer le parcours et ses relecteurs sur l'assemblé, `E4/RELECTURE-CONTINUE.md`, la conscience en fait des relances). `RELANCES/E1.md` — le transfert, les trois défauts mesurés par E4 (▶ derrière un document, `#bdev` recouvert, activités sans numéro), F15 réglé.
+
+Réponse de la conscience (12:50), mot pour mot :
+
+139. E4 a fini son mandat à 10:27 (38 bancs verts, sa dette réglée, ses relecteurs passés) et s'est arrêté — il n'avait plus rien d'écrit à faire. Il en a maintenant : je lui donne cinq gestes de l'ancien déroulé à recycler (les marques sur une image en premier, puis ↶ Annuler, le rappel d'une fiche, Ctrl+B/U, la sélection multiple), qu'E1 n'aura plus à faire, et, entre deux, le rôle de relecteur continu de ce que les trois autres poussent.
+
+140. À coller dans la session d'E4 :
+
+Tire `main` (`git fetch origin && git merge origin/main`), relis `MANDATS/INTEGRATION-DEROULE/RELANCES/E4.md` et fais ce qui y est, du début à la fin, sans jamais t'arrêter.
+
+141. Trouvé en regardant : les quatre ne voyaient pas mes relances (elles sont sur `main`, eux travaillent sur `integration`) — c'est réglé (fusion faite, règle écrite) ; et le voile d'alerte du site bloquait mes contrôles par l'entrée du site — réglé aussi. Le réveil de 12:55 fait l'audit complet des quatre (leurs audits de mission 0, le banc, les relances).
+
+21/10/2026 12:50
+MEMO

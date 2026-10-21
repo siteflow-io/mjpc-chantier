@@ -38,10 +38,10 @@ async function lancerUnClic(s) {
   if (!(await visible(p, '[data-lancer="1"]'))) return 'absent';
   await p.click('[data-lancer="1"]'); await s.attendre(1500); return 'ok';
 }
-async function lancerParLaCase(s) {
+async function lancerParLaCase(s, iso) {
   const p = s.page; if (!s.site) return null;
   await p.click('#tprof-btn'); await s.attendre(600); await p.evaluate(() => edtOuvrir()); await s.attendre(1500);
-  const t = await p.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-clic')).find(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); if (!c) return null; const x = c.innerText.replace(/\s+/g, ' '); c.click(); return x; });
+  const t = await p.evaluate(iso => { const c = Array.from(document.querySelectorAll('.edt-clic')).find(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '') && (!iso || (e.getAttribute('onclick') || '').indexOf(iso) >= 0)); if (!c) return null; const x = c.innerText.replace(/\s+/g, ' '); c.click(); return x; }, iso || null);
   await s.attendre(800); return t;
 }
 const etat = p => p.evaluate(() => ({ lancee: !!(window.S && S.lancee), close: !!(window.S && S.close), heure: window.S && S.heure, ecoule: window.S && S.ecoule, palier: window.S && S.palier,
@@ -167,7 +167,7 @@ dire(''); dire('B7 — lundi heure 2/3 par la case, clore ; la trame change ; ma
     const hub = await s.hub(); await s.ctx.close();
     const E = hub.site['3e'].chapitres[0].seances[0].deroule.ecrans; const cible = E[6]; const ancien = cible.act; cible.act = 'Titre changé dans la trame (B7)';   /* un écran pas encore joué, modifié dans la trame */
     E.splice(8, 0, { eid: 'ecran-ajoute-b7', act: 'Écran ajouté dans la trame (B7)', dur: 2, comp: [], blocs: [{ t: 'consigne', txt: 'Ajouté après l\'heure 2.' }] });
-    const s2 = await session({ store: hub, quand: '2026-09-15T15:08:00+02:00' }); const p2 = s2.page; const t = await lancerParLaCase(s2);
+    const s2 = await session({ store: hub, quand: '2026-09-15T15:08:00+02:00' }); const p2 = s2.page; const t = await lancerParLaCase(s2, '2026-09-15|15:07');
     pas('B7', t && /heure 3\/3/.test(t) ? 'ok' : 'ÉCHEC', 'la case du mardi 15:07 dit « heure 3/3 » de la même séance', t);
     const n0 = (await s2.ecrits()).length; await clicTexte(p2, '#edt-modale button', 'Ouvrir le pilotage et lancer'); await s2.attendre(6000);
     const ouv = await p2.evaluate(() => (document.getElementById('fin') || {}).innerText || ''); if (await visible(p2, '#o-lancer')) { await p2.click('#o-lancer'); await s2.attendre(3000); }

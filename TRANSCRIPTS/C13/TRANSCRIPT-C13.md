@@ -1904,3 +1904,105 @@ Réponse de la conscience (21:18), mot pour mot :
 
 21/10/2026 21:18
 MEMO
+
+## TOUR 89 (21/10/2026, 21:23 → 21:24)
+
+Paul (21:23), mot pour mot :
+« Tu m'étonnes sur correction dictée. 30 dettes restantes?? »
+
+Mesuré (21:23) : `MANDATS/PAUSE-CORRECTION-DICTEE.md` §4 (la liste de la n°12 au 07/10) et chaque numéro dans `docs/MJPC6-DETTES.md` : 24 entrées, pas 30 — 143 et 160 « ✔ en partie » (un reste chacune), 141 un chantier à cadrer (l'audit des pièges), 97 du code mort, 122 l'audio (L16b, tranché : Paul enregistre ses lettres), et 19 dettes déclarées par Paul les 05-07/10 en classe (Franklin, Hugo) : 149, 150, 151, 155, 159, 161, 162/165, 163, 164, 167, 171, 172, 174, 176, et 132, 133, 138, 139 repliées dans L17-7 / L17-8. Production `correction_dictee.html` : 6.7.0-L17-1q3 (07/10), aucun commit depuis.
+
+Réponse de la conscience (21:24), mot pour mot :
+
+176. Tu as raison de tiquer : « une trentaine » était une lecture de la plage 143-176, pas un compte — non mesuré, je n'aurais pas dû l'écrire. Compté maintenant dans la note de pause de la n°12 et le registre : **24 entrées**, dont 2 déjà réglées en partie (143, 160 : un reste chacune), 1 chantier à cadrer (141, l'audit des pièges), 1 code mort (97), 1 audio tranché (122 : tu enregistres tes lettres, L16b), et **19 dettes que tu as déclarées en classe les 6 et 7 octobre** — des choses de l'écran des élèves (le bouton « afficher la note », la consigne à recopier, deux phrases par tablette, le clavier sans chiffres, « sdp », le bandeau, la question-guide, « Acc. », l'engagement case par case, les commentaires pauvres en grammaire, « Correspondances » qui mène à un lien invalide, « lève la main », le plafond des questions, suspendre une séance, la note visible à l'arrivée, le mode qui ne change pas les mots, le type d'un mot à compléter). Rien de gros, mais rien de réglé non plus depuis le 7 octobre : la production est restée à 6.7.0-L17-1q3.
+
+177. Verdict : c'est un mandat de reprise court — le mandat L17 en pause plus ces 19 lignes, une à une, avec les bancs de la n°12 — pas « trente dettes ». Si tu dis « DICTÉE », j'écris ce mandat à partir de la note de pause (elle tient tout : questions en attente, bancs à rejouer, leçons) et la phrase à coller.
+
+21/10/2026 21:24
+MEMO
+
+## TOUR 90 (21/10/2026, 21:35 → 21:37)
+
+Paul (21:35), mot pour mot :
+« Tu es sûr ? »
+
+Mesuré (21:35-21:37) : le fichier de production `correction_dictee.html` porte `6.7.0-L17-1q3` (une seule occurrence, aucune version plus récente) ; le registre dit « PAUSE … production 6.7.0-L17-1q3 » au 07/10 et ne porte aucune entrée sur la dictée après cette date ; aucun des 19 numéros n'a de marque ✔ / réglée / promue dans son corps ; le sas n'a aucune livraison DICTEE après le 06/10 (`LIVRAISONS/DICTEE-CORRECTION`, dernier commit « L15.1b-1d » du 06/10) ; l'historique git du dépôt de production a été aplati le 11/10 (un seul commit racine), donc les commits d'avant le 11/10 ne sont plus lisibles — ce que je ne peux pas voir : une poussée faite par Paul lui-même entre le 07 et le 11/10 sans entrée au registre.
+
+Réponse de la conscience (21:37), mot pour mot :
+
+178. Sûr de ce que je peux mesurer : le fichier en production porte la version 6.7.0-L17-1q3, celle de la pause du 7 octobre ; le registre n'a aucune entrée sur la dictée depuis ; aucune des 19 dettes n'y est marquée réglée ; le sas n'a aucune livraison de dictée après le 6 octobre. Ce que je ne peux pas voir : l'historique du dépôt de production a été aplati le 11 octobre (un seul commit), donc si tu as poussé toi-même une version entre le 7 et le 11, je ne la vois pas — mais le fichier qui est en ligne est bien celui de la pause. Si une de ces 19 lignes est réglée à ta connaissance, dis laquelle et je la mesure dans le code.
+
+21/10/2026 21:37
+MEMO
+
+## TOUR 91 (21/10/2026, 21:37 → 21:38)
+
+Paul (21:37), mot pour mot :
+« Bon. Du coup on en est où ? »
+
+Réponse de la conscience (21:38), mot pour mot :
+
+179. Le déroulé : les quatre tournent depuis ce matin 09:10 ; la dernière tête (`560aad3e`, 20:58) passe tout mon banc (collisions 0, parcours vert aux deux modes, 108 contrôles sur 108) ; le grave de la journée est réglé. Reste ouvert avant « promeus » : un haute chez E2 (la diapo commencée qui glisse à l'heure suivante et disparaît), un trou chez E1 (la copie de classe pas reprise au premier lancement d'un autre jour), la correction §12.17 à appliquer, et la table d'E4 à finir de revérifier. Prochain contrôle 22:18 ; à ce rythme, l'audit final (écrans changés, captures entières avant/après) se fait demain matin et tu promeus sur captures — c'est dans tes 24 h si rien de neuf ne sort.
+
+180. Le reste du site : en attente de ton mot sur ma proposition de 20:38 — deux exécutants tout de suite, « ATTENDUS » (les attendus au hub, préalable des notions) et « DICTÉE » (le mandat L17 en pause + les 19 lignes de classe), le prompt d'injection en troisième si tu veux ; je cadre le profil longitudinal avec toi pendant qu'ils tournent. Tout ce qui touche `index.html` attend la promotion.
+
+181. À toi, telles quelles : 152 (l'heure de fin dans le récit), 144 (l'animation en accéléré tombe), 13 · 12 (la police réduite avant les pages), §12.17 (« à la maison » revient fléché « à reprendre »). Ce que tu ne commentes pas est acquis.
+
+21/10/2026 21:38
+MEMO
+
+## TOUR 92 (21/10/2026, 21:46 → 21:48)
+
+Paul (21:46), mot pour mot :
+« Il faut que l'ensemble des dettes de toutes les apps et tout le site soient réglées d'ici 10 jours. Pareil pour tout ce qui a été prévu. En gros, dans 10 jours on doit avoir le site fonctionnel ainsi que toutes les apps. »
+
+Fait (21:46-21:48) : le plan déposé au sas, `MANDATS/PLAN-10-JOURS.md` (règles, inventaire par fichier, dix lots et leurs exécutants, six cadrages à faire avec Paul, calendrier J1-J10, ce qui est à Paul, les vérifications). Mesuré contre le registre, le POINT, la note de pause de la dictée, les cadrages, les mandats, les quatorze fichiers html.
+
+Réponse de la conscience (21:48), mot pour mot :
+
+182. Compris : tout réglé et tout le prévu codé pour le 31/10, le site et toutes les apps fonctionnels. Le plan est déposé : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PLAN-10-JOURS.md — dix lots, un exécutant par fichier (plusieurs sur `index.html` par territoire, comme aujourd'hui), mes contrôles toutes les heures sur tous les lots, un calendrier jour par jour.
+
+183. Verdict de faisabilité : **ce qui est cadré tient en dix jours** avec six à huit exécutants en parallèle — le déroulé et son reste, la dictée, les attendus, le prompt, les huit apps, M-SÉCU. **Ce qui n'est pas cadré ne tient pas sans toi** : six sujets ont besoin d'un cadrage avec toi avant de coder (le profil longitudinal et le cockpit, le récit figé et le papier, le téléphone télécommande, l'audit des pièges, M-SÉCU, la banque d'exercices) — un par jour, une question chacun, mes propositions sont écrites au §3 du plan. Le QCM reste à la n°12 sauf si tu me le confies. M17a (la purge et l'import de tes classes) est ton geste, le dernier jour.
+
+184. Ce qu'il me faut de toi ce soir, en un mot : « go » — et j'écris cette nuit les mandats des quatre lots lançables tout de suite (ATTENDUS, DICTÉE, PROMPT, APPS) avec les phrases à coller, pendant que les quatre finissent le déroulé. Demain matin : l'audit final du déroulé, ta promotion, et le premier cadrage (le profil).
+
+21/10/2026 21:48
+MEMO
+
+## TOUR 93 (21/10/2026, 22:09 → 22:10)
+
+Paul (22:09), mot pour mot :
+« M17 a a déjà été fait en partie, au moins l'import ( et pas mal de choses ont changé d'ailleurs à ce moment là). Pour le plan, attention ; rien ne doit être créé qui n'existe pas déjà. »
+
+Mesuré (22:10) : le hub, `/classes` (lecture) : `3_dylan_bob`, `3_franklin_aretha`, `4_hugo`, `4_turing`, `3E Charles de Gaulle`, `CLASSE TEST`, `_TEST`, `_test_correction_dictee`, `_test_pilotage_debat_s3` — l'import des classes réelles est fait (ÉLÈVE — 1), Hergé / Banksy / Pythagore / Saint Michel ont été purgées, « 3E Charles de Gaulle » est gardée (données martyres, décision du 29/09). Plan mis à jour (`MANDATS/PLAN-10-JOURS.md`) : la règle « rien ne se crée qui n'existe pas déjà » en §0 ; M17a « fait en partie », reste la purge de « 3E Charles de Gaulle » quand Paul le décide ; retirés : la banque d'exercices, l'app de révisions M20, l'appli de création de pages, le « cockpit » hors cadrage ; le téléphone se recycle depuis `?vue=tel` ; le profil lit `mjpcProfils` qui existe.
+
+Réponse de la conscience (22:10), mot pour mot :
+
+185. Mesuré au hub : tes quatre classes 2026-2027 y sont (3 Dylan Bob, 3 Franklin Aretha, 4 Hugo, 4 Turing), les quatre anciennes ont été purgées, « 3E Charles de Gaulle » reste comme données martyres. M17a est donc fait sauf cette dernière purge, à ton signal — corrigé au plan, retiré du calendrier.
+
+186. La règle est écrite en tête du plan et appliquée : rien de neuf — les lots règlent les dettes et codent le prévu cadré ; sortent du plan la banque d'exercices, l'app de révisions, l'appli de pages et tout « cockpit » qui n'est pas dans un cadrage ; le téléphone se recycle depuis ce qui existe (`?vue=tel`), le profil lit `mjpcProfils` qui existe déjà et n'est jamais lu. Le plan tient en cinq cadrages avec toi au lieu de six. Ce que tu ne commentes pas est acquis ; j'attends ton « go » pour écrire cette nuit les quatre mandats lançables.
+
+21/10/2026 22:10
+MEMO
+
+## TOUR 94 — RÉVEIL N°9 (21/10/2026, 22:18 → 22:27 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (22:18, 22:19, 22:25, 22:26).
+
+Mesuré :
+- `integration` à `312d8a4b` (E4, 22:12) ; pendant le banc, `aaf6d7f4` (E1, poussée 15, 22:06 UTC+2 : **`dr_jouerCopie` écrite au socle** — la copie d'avant fusionnée par `eid` avec la trame, retouches de classe comprises, la trame seule pour une séance close ; `dr_copieReporter` au lancement ; une erreur JS de l'écran d'ouverture réglée ; garde A27 ; réveil n°8 marqué). Depuis le réveil n°8 : **E2** (poussée 22, 21:23 : la ligne 138 — la diapo commencée qui glisse reprend où la classe en était, l'ouverture annonce l'ordre joué ; §12.17 b1/b2/b3, garde B12 ; 137 ; l'échéance : la prochaine heure affichée et posée par défaut, « aucune » un choix — B13 ; `dr_jouerCopie` appelée dès qu'elle existe ; réveil n°8 marqué) ; **E3** (banc rejoué sur §12.17, 89/89) ; **E4** (poussées 45-48 : **130, 137, 138 réglées** sur `613ade62` par les trois parcours du §12.17 — P1 glisse et reprend à 1/3, P2 « à reprendre », P3 sortent ; le bilan de la Relecture en NOTE §9 ; quatre lignes neuves : 142 E1 faible (la légende d'image sort du cadre à 1280), 143 E2 moyen (« T-undefined · le cahier de textes attend » à l'heure 3), 144 E2/E1 faible (« glissée » pour « à reprendre »), 145 E2 moyen (le cahier à 15:57 avant les diapos qui le précèdent, A5 et A6 en double), 146 à confirmer (une pastille « Mode test » sans mode test — le faux hub ou l'outil ?)).
+- **Mon banc sur `312d8a4b`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. Épreuves `AUDITS/INTEGRATION-DEROULE/epreuves/banc-sur-integration-312d8a4b.txt`, `AUDITS/CONTROLES-DEROULE/epreuves/sur-integration-312d8a4b-v22.txt` ; captures `pieces/T94-P5-classe-lancee.png`, `pieces/T94-P9-fin-de-l-heure.png` (l'échéance affiche « mardi 15 septembre, 15 h 07 » par défaut — réglé).
+- **Relances écrites (22:26)** : E2 — 143 et 145 (moyens), 144 avec E1, rejouer sur `dr_jouerCopie`, NOTE à jour ; E1 — poussée 15 vue, 142, 144, 146 (d'où `m8TestOn()` tient sa valeur), NOTE finale ; E3 — rejouer sur la poussée 15 d'E1, NOTE finale ; E4 — 146 à trancher sur le faux hub nu, la passe finale de sa table sur la tête de l'audit (aucune « ouverte »), le bilan en chiffres dans sa NOTE.
+- **État pour l'audit final** : zéro grave, zéro haute ; `dr_jouerCopie` poussée (à rejouer par le banc au prochain réveil) ; restent deux moyens chez E2 (143, 145), deux faibles, une à confirmer. Le prochain réveil (23:26) rejoue le banc sur la tête d'E1 et, si 143/145 sont verts, **lance l'audit final**.
+- Réveil suivant : 23:26.
+
+Réponse de la conscience (22:27), mot pour mot :
+
+187. Réveil n°9. Le haute est réglé (la diapo qui glisse reprend où la classe en était), l'ordre de l'heure suivante est joué dans les trois cas de ton cadrage et E4 l'a rejoué, l'échéance propose bien la prochaine heure de la classe (ma capture), et E1 vient de pousser le trou du socle (la copie de classe d'un autre jour reprise au lancement). Banc vert sur la tête d'avant sa poussée : collisions 0, parcours vert aux deux modes, 108 contrôles sur 108.
+
+188. Reste avant l'audit final : deux moyens chez E2 trouvés par E4 à l'heure 3 (un bandeau « T-undefined », le cahier de textes mal placé dans « Où on en est » avec deux activités en double), deux faibles, et une pastille « mode test » à expliquer. Zéro grave, zéro haute. Au prochain réveil (23:26) : le banc sur la tête d'E1 ; si les deux moyens sont verts, je lance l'audit final (parcours fixe, écrans changés et voisins, captures entières avant/après) et tu auras « promeus » à dire demain matin.
+
+189. Rien de neuf à te demander ; le plan 10 jours attend ton « go », et 152, 144, 13 · 12, §12.17 restent à toi.
+
+21/10/2026 22:27
+MEMO

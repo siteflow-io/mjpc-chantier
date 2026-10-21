@@ -86,7 +86,7 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
   // ═════ R2 · ma version : une phrase corrigée survit au rechargement (C/recit/1.texte, version 'moi') ; « relu » (C/recit/1.relu) ═════
   await pg.click('#rel [data-rv="moi"]'); await p(pg, 400);
   const edit = await pg.$('#rel .recit.ma-version'); if (edit) { await edit.click(); await pg.keyboard.press('Control+End'); await pg.keyboard.type(' ' + PHRASE); await p(pg, 1400); }
-  verif('R2', !!edit && (await pg.evaluate(ph => ((S.recitMoi || {})[1] || '').includes(ph), PHRASE)), '« ma version (modifier) » : la phrase corrigée est dans ma version', null);
+  verif('R2', !!edit && (await pg.evaluate(ph => ((S.recitMoi || {})[S.heure] || '').includes(ph), PHRASE)), '« ma version (modifier) » : la phrase corrigée est dans ma version', null);
   // le récit relu : l'étape 4 de la fin de l'heure (E2 la pose ; ici par son geste s'il existe)
   const relu = await pg.evaluate(() => { const b = document.getElementById('f-relu'); if (b) { b.click(); return 'geste'; } if (typeof S !== 'undefined') { return null; } });
   if (HUBBE) { await p(pg, 2200); const ecr = await ecritures(pg); const chem = x => x.slice(x.indexOf(' ') + 1); const recits = ecr.filter(x => /\/deroule_joue\/[^/]+\/recit\/[^/]+$/.test(chem(x)));
@@ -123,7 +123,7 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
   verif('ED', Array.isArray(presse) ? presse.includes('text/html') && presse.includes('text/plain') : null, 'le presse-papier reçoit text/html et text/plain', JSON.stringify(presse));
   await pg.click('#r-copie-travail'); await p(pg, 400); const ct = await pg.evaluate(() => window.DR_RECIT_DERNIERE_COPIE || null); const lienAttendu = SITE && process.env.E4_SANS_ED !== '1';
   verif('ED', ct && !/ecoledirecte/.test(ct.texte) && !/<a href=/.test(ct.html), '« Copier — travail à faire » ne met pas de lien (relance E4, F8 tranché : ni aujourd\'hui ni dans la maquette)', ct ? ct.texte.slice(-200) : '');
-  verif('ED', await pg.evaluate(() => (S.copieED || {})[1] && J.some(x => x.type === 'copie-ed')), 'la copie est notée (S.copieED, journal copie-ed : la garde après copie s\'en sert)', null);
+  verif('ED', await pg.evaluate(() => (S.copieED || {})[S.heure] && J.some(x => x.type === 'copie-ed')), 'la copie est notée (S.copieED, journal copie-ed : la garde après copie s\'en sert)', null);
   await o.ctx.close();
 }
 

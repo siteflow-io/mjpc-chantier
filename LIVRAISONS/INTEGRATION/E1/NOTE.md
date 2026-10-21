@@ -69,7 +69,7 @@ Tailles avant et après (`toString().length`) : **`E1/NOTE-fonctions.md`**, prod
 ## 5 · Les bancs
 - **Le banc d'E1** : `E1/bancs/banc.mjs`, un banc unique, **A1 à A22**, sur `assemble/index.html` et le faux hub. Il passe par les gestes réels, de l'entrée du site jusqu'à l'Atelier.
   - A1 collisions · A2 ce qui tombe · A3 la porte et la barre · A4 une modification → `B/deroule` · A5 Structure ↔ Atelier · A6 la colonne unique · A7 p8-5h et les tailles · A8 la trame ligne à ligne · A9 l'écriture complète · A10 l'Atelier entier.
-  - A11 la mise en forme · A13 les blocs au clavier · A14 l'adresse d'une image · A18 les dettes · A19 la fiche ouverte · A20 la relance du 21/10 · A21 et A22 les relecteurs neufs · A23 la relecture continue d'E4.
+  - A11 la mise en forme · A13 les blocs au clavier · A14 l'adresse d'une image · A18 les dettes · A19 la fiche ouverte · A20 la relance du 21/10 · A21 et A22 les relecteurs neufs · A23 la relecture continue d'E4 · A24 le réveil n°3.
   - A12, A15, A16 et A17 (R4, R2, R1, R5) sont partis avec le recyclage vers E4.
   - **Dernier passage : 108 vérifications, 0 échec** (poussée 8), puis **124 vérifications, 0 échec** sur la poussée 9 (`2c24b230`, `E1/sorties/1157/banc-E1.txt`).
 - **Le banc de la conscience** (`banc.sh`) à chaque poussée, sorties dans `E1/sorties/<heure>/` :
@@ -123,6 +123,9 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
   - la flèche d'une marque n'avait pas de pointe (ce défaut était dans mon R1, parti chez E4).
 
 - **La relecture continue d'E4** (12:33-12:38) : sept défauts chez moi, corrigés et gardés dans A23 — dont un **grave** (Entrée deux fois puis une frappe rapide : la première lettre tombait dans la ligne d'avant).
+
+- **Le réveil n°3** (15:14, ce que la relecture continue tenait ouvert) : 1 et 6 (A23), 2, 3, 4, 5, 8, 9 (A24) — dont : un appui sur un élément grisé le dévoile sans y écrire ; le bandeau « Enregistré à … » du site ne couvre plus rien (témoin discret dans l'entête) ; une réponse tapée dévoile sa question et part au tableau ; « Activité n — » au récit dès qu'une activité existe.
+- **Dernier passage (poussée 11, `4baa4215`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 144 / 0.
 
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :

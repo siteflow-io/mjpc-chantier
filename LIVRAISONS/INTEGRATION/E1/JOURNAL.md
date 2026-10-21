@@ -137,7 +137,7 @@
 - **Bancs** (sorties `E1/sorties/1306/`) : banc de la conscience sur `81e7ae17` — collisions 0 / 0 / 0, **PARCOURS VERT**, mode test : P5 (l'outil), **K1-K13 : 108 / 0** ; **banc E1 : 136 vérifications, 0 échec** (A7 recompté, modules inchangés). **Relances** : rien de nouveau.
 - **Réveil n°3 (15:14 Paris) lu en premier à la reprise** : 1, 6, 7 et une partie du 9 sont déjà réglés ici ; marqués traités. Poussée faite sur l'état fusionné avec les derniers modules d'E4 (dr-recit, dr-recyclage, leur banc 86/0) ; mes bancs rejoués juste après (poussée suivante). En cours : 2, 3, 4, 5, 8, 9 (`taille`).
 
-## HH:MM UTC — poussée 11 : le réveil n°3, le reste (2, 3, 4, 5, 8, 9) — chacun gardé dans A24
+## 13:39 UTC — poussée 11 : le réveil n°3, le reste (2, 3, 4, 5, 8, 9) — chacun gardé dans A24
 - **Banc E1 sur l'état poussé `946946ac`** (avec les derniers modules d'E4) : 136 vérifications, 0 échec.
 - **2 · un clic dans une question grisée** écrivait dans l'énoncé (38 `copie-classe`, une par touche) : en classe, un appui sur un élément grisé le **dévoile** (jusqu'à lui) et n'y met pas le curseur ; la frappe dans un texte dévoilé ne fait plus qu'une entrée au journal (sa longueur suit).
 - **3 · le bandeau « Enregistré à … »** du site (posé par `mjpcSucces` à chaque écriture acceptée ; en classe le déroulé écrit toutes les 900 ms) couvrait les pastilles et ne disparaissait plus : pour les écritures du déroulé (toutes passent par `dr_ecrire`), il se referme dans la même tâche — jamais peint ; le témoin est une ligne discrète de l'entête (`#dr-enr`, « Enregistré à 09:00 »). Un échec garde le bandeau rouge du site.
@@ -145,3 +145,4 @@
 - **5 · une réponse tapée** (dans sa case : « TB », Tab, le texte) laissait la question grisée et le tableau vide : une question qui reçoit une réponse **se dévoile**, la réponse part au tableau au fil de la frappe (`S.mur.reps`).
 - **8 · « Activité n — »** : dès qu'une activité est créée dans l'atelier, le récit de l'heure jouée dit « Activité 1 — Observer les tableaux » (le récit d'E4 lit mes `dr_activites` et l'`actId` de la diapo) — gardé.
 - **9 · la taille** : à 52 pt, la donnée part au tableau — `taille: 4` et la police réellement obtenue (`policeRatio`) ; l'Écran 2 à ~32 pt sur une diapo pleine, c'est **13 · 12** (la police réduite plutôt que des pages) : à Paul, comme écrit dans la NOTE.
+- **Bancs, sur `4baa4215`** (sorties `E1/sorties/1331/`) : **banc de la conscience VERT** — collisions 0 / 0 / 0, parcours vert, **parcours en mode test vert** (parcours v3), **K1-K13 : 108 / 0** ; **banc E1 : 144 vérifications, 0 échec**. **Relances** : le réveil n°3 est entièrement traité.

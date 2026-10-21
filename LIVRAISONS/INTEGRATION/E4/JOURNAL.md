@@ -273,3 +273,10 @@
     - le cadre qu'on ne dimensionne pas.
 - **Bancs :** mon banc **101 ok · 0 échec** (`sorties/1607-site-E4`).
 - banc.sh : VERT (`sorties/1612`).
+
+## Poussée 35 — 16:20 UTC
+- **Relecteur A5** consigné (sur `d212aaec`, qui contient `21ed40fe`) :
+  - réglés : F2 avec sa note, la copie ED en HTML, le paquet avec ses décisions ;
+  - pas réglés : l'échéance après une reprise, « Lancer » après la clôture, le curseur dans la réponse, la page 1 d'une diapo paginée, la confirmation de F2, T-5, le chrono ;
+  - 7 lignes nouvelles, dont 2 hautes chez E2 (la reprise en « H1 », les décisions rejouées à l'heure 3). Rien à moi.
+- **La passe complète du réveil n°5** : il reste 84 lignes ouvertes (56 pour l'heure de classe, 28 pour l'atelier et la relecture). Deux relecteurs neufs revérifient **chaque ligne** sur la tête `d1b54fc9`, qui contient `21ed40fe`. Chaque ligne sera marquée « réglé le … (commit) » ou « pas réglé (commit) ».

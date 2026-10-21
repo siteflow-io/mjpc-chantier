@@ -36,6 +36,9 @@ const clicTexte = (sel, txt) => page.evaluate(({ s, t }) => { const el = Array.f
 const existe = sel => page.evaluate(s => { const e = document.querySelector(s); return !!(e && e.offsetParent !== null); }, sel);
 const clic = sel => page.evaluate(s => { const e = document.querySelector(s); if (!e) return false; e.click(); return true; }, sel);   // le clic par l'élément : une modale ouverte par-dessus ne bloque pas le pas suivant, elle se voit dans la capture
 const ecrits = () => page.evaluate(() => window.__ECR.slice());
+// en mode test, les écritures vont au magasin M8_TEST_STORE (jamais au hub) : c'est là qu'on vérifie ce que le lancement a écrit
+const magasin = () => page.evaluate(() => Object.keys(window.M8_TEST_STORE || {}).map(k => 'MAGASIN ' + k));
+const traces = () => MODE_TEST ? magasin() : ecrits();
 const cadreAncien = () => page.evaluate(() => !!document.getElementById('at-dr-iframe'));
 const dansCadre = (f, ...a) => page.evaluate(([src, args]) => { const W = document.getElementById('at-dr-iframe').contentWindow; return (new Function('W', 'd', 'args', 'return (' + src + ')(W, d, ...args)'))(W, W.document, args); }, [f.toString(), a]);
 const P = async (k, titre, f) => { dire(''); dire(k + ' — ' + titre); try { await f(); } catch (e) { pas(k, 'ÉCHEC', 'le pas n\'a pas abouti', String(e.message).slice(0, 200)); } };
@@ -64,14 +67,14 @@ await P('P3', 'l\'Atelier (préparation) depuis « Mes chapitres »', async () =
   const lignes = neuf ? await page.evaluate(() => document.querySelectorAll('#mur li[data-p]').length) : await dansCadre((W, d) => d.querySelectorAll('#contenu li').length).catch(() => 0);
   pas('P3', lignes > 0 ? 'ok' : 'ÉCHEC', 'la diapo 1 de la séance 0 au mur, avec ses lignes', lignes + ' lignes'); });
 await P('P4', 'le clic droit sur une étape', async () => { if (neuf) { const li = await page.$('#mur li[data-p]'); if (!li) throw new Error('pas de ligne'); await li.click({ button: 'right' }); } else { await dansCadre((W, d) => { const li = d.querySelector('#contenu li[data-p]'); if (li) li.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: 400, clientY: 300 })); }); } await pause(400); await cap('P4-clic-droit'); pas('P4', 'ok', 'menu ouvert (voir la capture)'); await page.keyboard.press('Escape'); if (!neuf) await page.frameLocator('#at-dr-iframe').locator('body').click({ position: { x: 8, y: 8 } }); else await page.mouse.click(5, 5); await pause(300); });
-const avant = (await ecrits()).length;
+const avant = (await traces()).length;
 await P('P5', 'lancer la séance (la classe)', async () => { let voie = null;
   if (neuf && await existe('.at-onglet[data-vue="pilotage"]')) { await clic('.at-onglet[data-vue="pilotage"]'); await pause(600); if (await existe('[data-lancer="1"]')) { await clic('[data-lancer="1"]'); voie = 'Pilotage → [data-lancer=1] (E2)'; } }
   if (!voie && await existe('#at-dr-classe')) { await page.selectOption('#at-dr-classe', '3E Charles de Gaulle'); await page.evaluate(() => { const cr = document.getElementById('at-dr-creneau'); for (let j = 0; j < cr.options.length; j++) if (cr.options[j].text.startsWith('08:57')) cr.selectedIndex = j; cr.dispatchEvent(new Event('change')); const d = document.getElementById('at-dr-debut'); if (d) d.value = '08:57'; }); await nettoyer(); await page.evaluate(() => atDrJouerClic()); voie = 'tête de préparation → atDrJouerClic (production)'; }
   await pause(3000); await page.keyboard.press('Escape'); await pause(300); await cap('P5-classe-lancee');
   if (!voie) { pas('P5', 'absent', 'aucune entrée de lancement (ni [data-lancer=1], ni #at-dr-classe)'); return; }
-  const e = (await ecrits()).slice(avant); pas('P5', 'ok', 'lancée par ' + voie, e.length + ' écritures'); e.forEach(x => dire('      ' + x));
-  const attendu = ['deroule_joue', 'cours_actif']; attendu.forEach(a => pas('P5', e.some(x => x.indexOf(a) >= 0) ? 'ok' : 'ÉCHEC', 'écrit au lancement : ' + a)); });
+  const e = (await traces()).slice(avant); pas('P5', 'ok', 'lancée par ' + voie, e.length + (MODE_TEST ? ' écritures au magasin (mode test)' : ' écritures')); e.forEach(x => dire('      ' + x));
+  const attendu = [/deroule_joue\/[^/]+$/, /cours_actif$/]; attendu.forEach(a => pas('P5', e.some(x => a.test(x)) ? 'ok' : 'ÉCHEC', 'écrit au lancement : ' + a.source)); });
 await P('P6', 'la parole (F2 / la case des initiales)', async () => { await page.keyboard.press('F2'); await pause(300); await cap('P6-parole'); pas('P6', 'ok', 'voir la capture'); await page.keyboard.press('Escape'); await pause(200); });
 await P('P7', 'la palette (Maj+Espace)', async () => { await page.keyboard.press('Shift+Space'); await pause(400); await cap('P7-palette'); pas('P7', 'ok', 'voir la capture'); await page.keyboard.press('Escape'); await pause(200); });
 await P('P8', 'la fenêtre du tableau', async () => { let fen = null;

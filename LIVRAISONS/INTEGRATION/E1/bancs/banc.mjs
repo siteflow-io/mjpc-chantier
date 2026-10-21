@@ -579,6 +579,32 @@ await B('A27', 'le réveil n°8 (contrat §12.8) : la copie jouée d\'un autre j
   E.verif('A27', jc.fusion && jc.apres === 'Titre de la classe' && jc.r2 && jc.close === jc.avant && jc.env, 'dr_jouerCopie (au premier lancement, appelée par dr_lancerNeuf d\'E2) : la copie d\'avant fusionnée par eid, le titre retouché en classe repris ; sa dernière heure (« 2 sur 2 ») close : la trame (LOT A ④) ; l\'enveloppe d\'atDrJouer garde la copie avant qu\'elle soit réécrite', JSON.stringify(jc));
   E.verif('A27', !o3.errs.length, 'aucune erreur JS', o3.errs.join(' ; ') || undefined); await o3.ctx.close(); });
 
+await B('A28', 'le réveil n°9 et la relecture continue d\'E4 (20:50) : l\'onglet Atelier pendant l\'heure — la classe ne saute pas, la retouche part au hub sans repasser au Pilotage ; la légende de deux lignes ; « Diapo suivante » dit « préparée à la maison — à reprendre »', async () => {
+  const o = await E.ouvrir(b, { w: 1366, h: 768 }); const pg = o.pg; await sansVoile(pg);
+  await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(800); for (let i = 0; i < 8; i++) { await pg.click('#bdev'); await pg.waitForTimeout(120); }
+  const av = await pg.evaluate(() => ({ di: S.di, mur: S.mur && S.mur.di, n: J.length }));
+  await pg.click('#ong-atelier'); await pg.waitForTimeout(500); await pg.click('#volet [data-at-di="6"]'); await pg.waitForTimeout(300); const eid = await pg.evaluate(() => ecran().eid);
+  await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('Retouche en atelier', { delay: 20 }); await pg.mouse.click(5, 400); await pg.waitForTimeout(1800);
+  const au = await pg.evaluate(eid => { const c = window.__HUB.site['3e'].chapitres[0].seances[0].deroule_joue; const k = Object.keys(c)[0]; const e = ((c[k] || {}).ecrans || []).find(x => x.eid === eid); return { hub: e ? e.blocs.length : 0, ici: seance().ecrans.find(x => x.eid === eid).blocs.length, temoin: (document.getElementById('at-save') || {}).textContent, trame: (window.__HUB.site['3e'].chapitres[0].seances[0].deroule || { ecrans: [] }).ecrans.filter(x => x.eid === eid).map(x => x.blocs.length)[0] }; }, eid);
+  E.verif('A28', au.hub === au.ici && au.hub >= 2 && /enregistré/.test(au.temoin) && au.trame !== au.ici, 'grave (perte) · l\'onglet Atelier ouvert pendant l\'heure : la retouche est dans la copie de la classe au hub en moins de 2 s, sans repasser au Pilotage — jamais dans la trame', JSON.stringify(au));
+  const hub = await pg.evaluate(() => window.__HUB);
+  await pg.click('#ong-pilotage'); await pg.waitForTimeout(800);
+  const ap = await pg.evaluate(n0 => ({ di: S.di, mur: S.mur && S.mur.di, nouv: J.slice(n0).map(x => x.type), garde: document.getElementById('garde').classList.contains('on') }), av.n);
+  E.verif('A28', ap.di === av.di && ap.mur === av.mur && !ap.garde && ap.nouv.every(t => t === 'copie-classe'), 'grave · retour au Pilotage : Paul retrouve la diapo où est la classe (' + (av.di + 1) + '), le tableau n\'a pas bougé, aucune garde, rien d\'autre au journal que la copie retouchée', JSON.stringify({ av, ap }));
+  E.verif('A28', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close();
+  const o2 = await E.ouvrir(b, { w: 1366, h: 768, hub }); const p2 = o2.pg; await sansVoile(p2); await E.clicTexte(p2, 'button', 'Reprendre le cours'); await p2.waitForTimeout(1500);
+  const rp = await p2.evaluate(eid => seance().ecrans.find(x => x.eid === eid).blocs.length, eid);
+  E.verif('A28', rp === au.ici, 'grave · la page quittée depuis l\'onglet Atelier, « Reprendre le cours » : la retouche est là (' + rp + ' blocs)', String(rp)); await o2.ctx.close();
+  // la légende d'une image pleine, sur deux lignes, dans l'atelier à 1280 : entière dans le cadre
+  const o3 = await E.ouvrir(b, { w: 1280, h: 800 }); const p3 = o3.pg; await sansVoile(p3);
+  await p3.click('#volet [data-at-di="3"]'); await p3.waitForTimeout(400); await p3.click('#mur .img-lg'); await p3.keyboard.press('End'); await p3.keyboard.type(' (huile sur toile, 491 × 716 cm, musée du Louvre, Paris)', { delay: 5 }); await p3.waitForTimeout(300);
+  const lg = await p3.evaluate(() => { const x = document.querySelector('#mur .img-lg'); const r = x.getBoundingClientRect(); const ec = x.closest('.ecran').getBoundingClientRect(); return { entiere: x.scrollHeight <= x.clientHeight + 1, dedans: r.top >= ec.top - 1 && r.bottom <= ec.bottom + 1, lignes: Math.round(x.clientHeight / parseFloat(getComputedStyle(x).lineHeight || 20)) }; });
+  E.verif('A28', lg.entiere && lg.dedans, '1280 · la légende d\'une image pleine, éditée sur deux lignes : entière, dans le cadre (le texte ne se coupe jamais)', JSON.stringify(lg));
+  // « Diapo suivante » : le libellé de l'ouverture (§12.17)
+  const lb = await p3.evaluate(() => { const e = seance().ecrans[0]; const k = cleDec(e); const avant = S.decisions[k]; S.decisions[k] = { choix: 'preparer', heure: 1 }; const a = dr_libGlissee(e, 2); S.decisions[k] = { choix: 'terminer', heure: 1 }; const b2 = dr_libGlissee(e, 2); S.decisions[k] = { choix: 'suivante', heure: 1 }; const c = dr_libGlissee(e, 2); if (avant) S.decisions[k] = avant; else delete S.decisions[k]; return { a, b: b2, c }; });
+  E.verif('A28', lb.a === ' · préparée à la maison — à reprendre' && lb.b === ' · terminée à la maison — à reprendre' && /glissée de l'heure 1/.test(lb.c), '« Diapo suivante » : « préparée à la maison — à reprendre », « terminée à la maison — à reprendre », « glissée de l\'heure 1 » — comme l\'écran d\'ouverture', JSON.stringify(lb));
+  E.verif('A28', !o3.errs.length, 'aucune erreur JS', o3.errs.join(' ; ') || undefined); await o3.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

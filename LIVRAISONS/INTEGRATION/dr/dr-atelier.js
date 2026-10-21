@@ -400,7 +400,7 @@ function brancherAtelier(){ const mur = $('mur'); if (!mur || !(S.atelier || S.r
 /* (p8-5h, 13) dans l'atelier, Paul voit toujours où il écrit : une ligne plus haute que la place qui lui reste dans la diapo défile en elle-même
    (le curseur reste dans le cadre ; rien ne sort par le haut ; la zone « ✎ » et le compteur ne recouvrent jamais la ligne). En classe, la règle p8-5f ne change pas. */
 function p85hTenirCurseur(x){
-  if (!x) return; x.style.maxHeight = ''; x.classList.remove('p85h-defile'); if (!S.atelier || !x.isConnected) return; const c = $('mur').querySelector('.corpsd'); if (!c || !c.contains(x)) return;
+  if (!x) return; x.style.maxHeight = ''; x.classList.remove('p85h-defile'); if (!S.atelier || !x.isConnected) return; if (getComputedStyle(x).position === 'absolute') return; /* E1 (relecture continue E4, 20:50) : la légende d'une image pleine est collée au bas du cadre et grandit vers le haut — elle reste dans le cadre ; la plafonner coupait sa 2ᵉ ligne */ const c = $('mur').querySelector('.corpsd'); if (!c || !c.contains(x)) return;
   const rc = c.getBoundingClientRect(), rx = x.getBoundingClientRect(); const pgc = $('mur').querySelector('.page'); const hPage = pgc && pgc.textContent.trim() ? pgc.getBoundingClientRect().height : 0;
   const z = $('mur').querySelector('.p8-ecrire'); const zH = z && z !== x ? z.offsetHeight : 0;   /* la zone « ✎ » se colle au bas du corps (sticky) : sa place collée est une borne fixe */
   const pb = parseFloat(getComputedStyle(c).paddingBottom) || 0; let bas = rc.bottom - pb - zH - 4; if (hPage) bas = Math.min(bas, pgc.getBoundingClientRect().top - 4); const cap = Math.floor(bas - rx.top);   /* le bas du contenu (rembourrage compris), moins la zone collée ; au-dessus du compteur */

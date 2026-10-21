@@ -125,3 +125,4 @@
 
 ## 21/10, 21:25 — réveil n°8 lu
 - Rien d'ouvert ; §12.17 et la ligne 138 sont chez E2 : T13 compare la fenêtre au pilote, il suit quel que soit l'ordre ; je rejoue à sa poussée. Banc rejoué sur `836dfb30` : **89/89**.
+- 21:45 : poussée d'E2 `ace15fda` (§12.17, ligne 138) : banc rejoué **89/89**, T13 compris.

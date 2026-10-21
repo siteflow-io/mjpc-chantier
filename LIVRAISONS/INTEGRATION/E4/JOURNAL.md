@@ -370,3 +370,10 @@
   - l'écran d'ouverture annonce toujours « sur la réactivation » ;
   - **haute** : avec « à l'heure suivante », Question-bilan est annoncée mais disparaît de l'heure 3.
 - **Une ligne à moi, non reproduite** : le récit de l'heure close sans « Les hypothèses ». En jeu direct, l'activité est racontée ; je la laisse à revérifier par le chemin clôture + Relecture.
+
+## Poussée 44 — 19:25 UTC
+- **Rejoué sur `42be2a0a`** (poussée 14 d'E1) :
+  - banc.sh : **VERT** (`sorties/1858`) ;
+  - mon banc : **109 ok · 0 échec** (`sorties/1858-site-E4`).
+- Un relecteur neuf revérifie sur `42be2a0a` les 11 lignes d'E1 encore « pas réglé », et « Les hypothèses » après la clôture.
+- **E2 a poussé ensuite** (`7282faa9`, `836dfb30`, `202b9796`) : « ce qui reste (n à décider) » (ligne 108) et le titre de la colonne. Je rejoue les bancs sur ces poussées.

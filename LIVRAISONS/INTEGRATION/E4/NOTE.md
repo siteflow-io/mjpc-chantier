@@ -182,3 +182,27 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
   - l'heure de fin du récit, 09 h 52 contre 09 h 44 (lignes 12:33 et 140).
 - **À moi : 0** ligne ouverte. Ligne 139, « Les hypothèses » après la clôture : réglée, revérifiée sur `42be2a0a`.
 
+
+
+## 10. La passe finale (réveil n°11, 23:15) — le bilan en chiffres
+- **156 lignes** dans `RELECTURE-CONTINUE.md`, chacune avec « ÉTAT : … (commit) » en tête de cellule pour celles revérifiées en passe finale :
+  - **133 réglées** ;
+  - **8 écartées** (pas un défaut, tranché, ou par conception) ;
+  - **3 à Paul**, une seule question vue trois fois (lignes 50, 140, 163) : le récit dit la fin du créneau (09 h 52), l'en-tête l'heure close (09 h 44 ou 09 h 47) ;
+  - **12 pas réglées**, toutes chez les autres territoires ({'E2': 8, 'E1': 4}) ;
+  - **0 ouverte**.
+- **Chez E4 : 41 lignes portent E4.** 37 sont réglées, 3 écartées (L89, L91 et L125, dont l'aparté « bilan non attesté », par conception) et 1 à Paul (L50). **Aucune n'est pas réglée, aucune n'est ouverte.**
+- **Les pas réglées, sur `250193a1`** (passe finale) ou sur le dernier commit revérifié :
+  - L32 [E2 (E1)] — lancer la séance 0 depuis le Pilotage (`250193a1`)
+  - L66 [E1] — boîte « Supprimer la diapo », panneaux « + bloc », « Envoyer vers… » (`250193a1`)
+  - L107 [E2] — après « Clore l'heure » (`250193a1`)
+  - L109 [E2] — EDT après la clôture (`250193a1`)
+  - L150 [E2 (E1)] — clore une heure avec des retouches faites par l'onglet Atelier (`250193a1`)
+  - L155 [E2] — arriver à la fin de l'heure sans toucher à l'échéance (`250193a1`)
+  - L156 [E1 (E2)] — ◀ depuis la diapo 7 de l'heure (`250193a1`)
+  - L157 [E2] — « Préparer le cahier de textes » (`250193a1`)
+  - L158 [E2] — étape 7 (`250193a1`)
+  - L160 [E1 (E2)] — Atelier hors classe (`250193a1`)
+  - L161 [E1 (E2)] — Atelier le mercredi 16/09 après la clôture du lundi (`250193a1`)
+  - L162 [E2 (E1)] — « Préparer le cahier de textes » à T-5 (`250193a1`)
+- Les deux graves qui bloquaient l'audit, L148 et L149, sont **réglées** sur `de6cd19c`.

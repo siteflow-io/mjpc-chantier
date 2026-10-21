@@ -490,3 +490,11 @@
   - Mon banc : **110 ok · 0 échec** (`sorties/2251-site-E4`).
   - banc.sh : **VERT** (`sorties/2257`).
 - **La passe finale part maintenant**, sur la tête poussée ici : toutes les lignes ni réglées, ni écartées, ni à Paul sont revérifiées par un relecteur neuf ; puis le verdict uniforme et le bilan en chiffres dans la NOTE.
+
+## Poussée 55 — 23:20 UTC
+- **La passe finale est faite**, sur `250193a1` : les 14 lignes qui n'étaient ni réglées, ni écartées, ni à Paul ont été revérifiées. 3 sont réglées (L75, L151, L152), 11 pas réglées, toutes chez E1 ou E2. Chacune porte « ÉTAT : … (`250193a1`) » en tête de cellule.
+- **Deux lignes nouvelles** :
+  - la diapo du cahier, vide en préparation (E2/E1, moyen) ;
+  - l'heure de fin du récit contre celle de l'en-tête, la même question **à Paul**.
+- **NOTE §10, le bilan en chiffres** : 156 lignes, dont 133 réglées, 12 pas réglées (E2 8, E1 4), 8 écartées, 3 à Paul (une seule question), **0 ouverte**. Chez E4 : 41 lignes, 37 réglées, 3 écartées, 1 à Paul, **aucune pas réglée**.
+- La poussée 25 d'E2 (`95366194`) touche L155 (l'échéance) et L157 (la préparation), après le commit de la passe : je les revérifie sur la tête.

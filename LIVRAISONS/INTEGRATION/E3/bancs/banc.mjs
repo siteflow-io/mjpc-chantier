@@ -1,0 +1,155 @@
+// LE BANC UNIQUE D'E3 — le tableau, par le geste (contrat §9 ; mandat E3, « bancs par le geste »).
+// usage : node banc.mjs <fichier.html> [sortie.txt] [dossier-captures]
+//   MJPC_ENTREE=site : le fichier est index.html intégré (assemble/index.html), joué par l'entrée du site sur le faux hub, horloge au 14/09 09:00 ;
+//   sans la variable : le fichier est la maquette p8-5g, jouée seule (les bancs écrits avant E1-a, qui passeront ensuite sur le site).
+//   MJPC_HUB, MJPC_PLAYWRIGHT, MJPC_CHROMIUM comme les outils de la conscience. Code 1 si un seul cas échoue.
+// Ce que chaque cas prouve est dit dans sa ligne ; un cas qui ne peut pas se jouer sur l'entrée choisie est « absent » (écrit, jamais compté vert).
+import path from 'node:path'; import fs from 'node:fs'; import { createRequire } from 'node:module'; import { createHash } from 'node:crypto';
+
+const FICHIER = path.resolve(process.argv[2] || ''); const SORTIE = process.argv[3] || null; const CAPT = process.argv[4] || null;
+if (!process.argv[2] || !fs.existsSync(FICHIER)) { console.log('usage : node banc.mjs <fichier.html> [sortie.txt] [captures/]'); process.exit(2); }
+const req = createRequire(import.meta.url); let pw = null;
+for (const c of [process.env.MJPC_PLAYWRIGHT, '/opt/node22/lib/node_modules/playwright', path.join(path.dirname(FICHIER), 'node_modules', 'playwright'), 'playwright'].filter(Boolean)) { try { pw = req(c); break; } catch (e) {} }
+if (!pw) { console.log('Playwright introuvable'); process.exit(2); }
+const SITE = process.env.MJPC_ENTREE === 'site';
+const ici = path.dirname(new URL(import.meta.url).pathname);
+const HUB = path.resolve(process.env.MJPC_HUB || path.join(ici, '..', '..', '..', '..', 'AUDITS', 'INTEGRATION-DEROULE', 'hub'));
+if (CAPT) fs.mkdirSync(CAPT, { recursive: true });
+const URL0 = 'file://' + FICHIER;
+
+const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log(s); };
+const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null ? ' — ' + detail : '')); return !!ok; };
+const absent = (k, quoi, detail) => dire('  absent ' + k + ' · ' + quoi + (detail ? ' — ' + detail : ''));
+const pause = ms => new Promise(r => setTimeout(r, ms));
+const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });
+
+// ── le faux hub (le même dispositif que parcours.mjs et controles.mjs) ──
+const hubStore = () => { const J = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8')); const st = { classes: J('classes.json'), taxonomie: fs.existsSync(path.join(HUB, 'taxonomie.json')) ? J('taxonomie.json') : null, site: { '3e': J('site_3e.json'), config: J('site_config.json'), edt: { grille: { '2026-2027': J('grille-appariee.json') }, calendrier: { '2026-2027': J('calendrier.json') }, creneaux: { '2026-2027': J('creneaux.json') } } } }; try { st.classes['3E Charles de Gaulle'].ed = { espace: 2, lien: 'https://www.ecoledirecte.com/P/94/EspacesTravail/2/cloud' }; } catch (e) {} return st; };
+const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); window.__ECR = []; const lire = c => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; }; const pos = (c, v) => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) n[q[k]] = {}; n = n[q[k]]; } if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v; };
+  window.__hubLire = lire; window.__hubPoser = pos;
+  window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase(); if (m === 'GET') return Promise.resolve(new Response(JSON.stringify(lire(c)), { status: 200 })); let bd = null; try { bd = JSON.parse((o && o.body) || 'null'); } catch (e) {} window.__ECR.push(m + ' ' + c); if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => pos(c + '/' + k, bd[k])); else pos(c, m === 'DELETE' ? null : bd); return Promise.resolve(new Response(JSON.stringify(bd), { status: 200 })); } return Promise.reject(new Error('hors du faux hub : ' + s2.slice(0, 60))); };
+  window.WebSocket = function () { throw new Error('websocket bloqué'); }; };
+const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });
+
+// ── l'entrée : la maquette seule, ou le site par ses gestes jusqu'au Pilotage ──
+const ouvrir = async (w = 1366, h = 768) => { const ctx = await nav.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); const pg = await ctx.newPage(); const errs = [], boites = [];
+  pg.on('pageerror', e => errs.push(String(e.message).slice(0, 160))); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
+  if (!SITE) { await pg.goto(URL0); await pg.waitForTimeout(700); return { ctx, pg, errs, boites }; }
+  await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, hubStore());
+  await pg.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
+  await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
+  await pg.click('#tprof-btn'); await pg.waitForTimeout(500); await pg.evaluate(() => atelierOuvrir()); await pg.waitForTimeout(1000);
+  await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(800);
+  if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l\u2019atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await pg.waitForTimeout(1500);
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await pg.waitForTimeout(2500);
+  return { ctx, pg, errs, boites }; };
+const lancer = async pg => { await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(600); };
+const ouvrirTableau = async pg => { const [fen] = await Promise.all([pg.waitForEvent('popup'), pg.click('#bvideoproj')]); await fen.waitForLoadState(); await fen.waitForTimeout(SITE ? 1500 : 900); return fen; };
+// ce que montre une diapo : au pilote, #mur ; dans la fenêtre, #mur2 (.mur.tableau) — la page tableau ne doit jamais contenir #mur (audit I3)
+const lire = (ctx, quel) => ctx.evaluate(q => { const mur = q === 'pilote' ? document.getElementById('mur') : (document.getElementById('mur2') || document.querySelector('.mur.tableau')); if (!mur) return null; const mb = mur.getBoundingClientRect(); const c = mur.querySelector('.corpsd') || mur;
+  const els = Array.from(c.querySelectorAll('li')).filter(l => !l.classList.contains('hors') && !l.classList.contains('pas') && l.getBoundingClientRect().height > 0 && getComputedStyle(l).visibility !== 'hidden' && getComputedStyle(l).opacity !== '0');
+  const act = (mur.querySelector('.act') || {}).textContent || '';
+  return { page: ((mur.querySelector('.page') || {}).textContent || '').replace(/[‹›]/g, '').trim(), act: act.trim().slice(0, 60), lignes: els.map(l => l.getAttribute('data-p') || l.textContent.trim().slice(0, 24)), hors: els.filter(e => { const b = e.getBoundingClientRect(); return b.top < mb.top - 1 || b.bottom > mb.bottom + 1; }).length, mur: !!document.getElementById('mur'), id: mur.id, cls: mur.className }; }, quel);
+const pareil = (a, b) => !!a && !!b && a.page === b.page && a.act === b.act && JSON.stringify(a.lignes) === JSON.stringify(b.lignes);
+const dev = async (pg, n) => { for (let i = 0; i < n; i++) { await pg.click('#bdev'); await pg.waitForTimeout(90); } };
+const cap = async (ctx, n) => { if (CAPT) { try { await ctx.screenshot({ path: path.join(CAPT, n + '.png') }); } catch (e) {} } };
+const fin = (k, o) => { verif(k, !o.errs.length, 'aucune erreur JS au pilote', o.errs.join(' ; ') || undefined); verif(k, !o.boites.length, 'aucune boîte système', o.boites.join(' ; ') || undefined); return o.ctx.close(); };
+const CAS = async (k, titre, f) => { dire(''); dire(k + ' — ' + titre); try { await f(); } catch (e) { verif(k, false, 'le cas n\'a pas pu aller au bout', String(e.message).split('\n')[0]); } };
+
+dire('banc E3 (le tableau) · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC · entrée ' + (SITE ? 'SITE (faux hub ' + HUB + ')' : 'MAQUETTE seule') + ' · fichier md5 ' + createHash('md5').update(fs.readFileSync(FICHIER)).digest('hex') + ' · ' + fs.statSync(FICHIER).size + ' o');
+
+// T1 — la fenêtre locale (mandat point 1, P8) : heure lancée, trois dévoilements, « ⧉ Ouvrir le tableau » → la fenêtre est la page elle-même, #mur2 montre la diapo 1 avec trois lignes ;
+//      un dévoilement de plus → la fenêtre suit, sans rechargement.
+await CAS('T1', 'la fenêtre locale montre ce que voit la classe, et suit sans rechargement', async () => { const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 3); await pg.waitForTimeout(300);
+  const pil = await lire(pg, 'pilote'); const fen = await ouvrirTableau(pg); const url = fen.url(); const t0 = await lire(fen, 'tableau'); await cap(fen, 'T1-fenetre-trois-devoiles');
+  if (SITE) verif('T1', /[?&]vue=tableau/.test(url) && /[?&]local=1/.test(url), 'la fenêtre est la page elle-même, `?vue=tableau&local=1`', url.slice(-60)); else absent('T1', 'la fenêtre est `?vue=tableau&local=1`', 'maquette : ' + (url || 'about:blank') + ' (document.write) — se jouera sur le site');
+  verif('T1', !!t0 && t0.id === 'mur2' && /\btableau\b/.test(t0.cls), 'la fenêtre rend dans #mur2.mur.tableau', t0 ? '#' + t0.id + ' .' + t0.cls : 'rien');
+  verif('T1', !!t0 && !t0.mur, 'la page du tableau ne contient pas #mur (les contrôles lisent #mur d\'abord)', t0 ? String(t0.mur) : '—');
+  verif('T1', !!pil && pil.lignes.length === 3, 'au pilote : la diapo 1, trois lignes dévoilées', pil ? pil.lignes.length + ' l. « ' + pil.act + ' »' : '—');
+  verif('T1', pareil(pil, t0) && t0.hors === 0, 'à l\'ouverture : même diapo, mêmes lignes, même compteur que le pilote, rien hors du cadre', `pilote ${pil && pil.lignes.length} l. « ${pil && pil.page} » · tableau ${t0 && t0.lignes.length} l. « ${t0 && t0.page} », hors ${t0 && t0.hors}`);
+  await fen.evaluate(() => { window.__pasRecharge = 1; }); await dev(pg, 1); await pg.waitForTimeout(700); const p1 = await lire(pg, 'pilote'), t1 = await lire(fen, 'tableau'); const garde = await fen.evaluate(() => window.__pasRecharge === 1);
+  verif('T1', pareil(p1, t1) && t1.lignes.length === 4, 'un ▶ de plus : la fenêtre suit (quatre lignes, comme le pilote) dans les 700 ms', `pilote ${p1.lignes.length} l. · tableau ${t1 && t1.lignes.length} l.`);
+  verif('T1', garde, 'sans rechargement de la fenêtre', String(garde)); await cap(fen, 'T1-fenetre-quatre-devoiles');
+  await fen.close(); await fin('T1', o); });
+
+// T2 — le gel vu de la fenêtre (mandat point 5 ; cadrage 1 §2.1) : gelé, le pilote avance de trois ▶ et change de diapo — la fenêtre ne bouge pas ; dégelé ici, elle rattrape le pilote.
+await CAS('T2', 'gelé, la fenêtre ne bouge pas pendant que le pilote avance ; dégelée, elle rattrape', async () => { const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 2); const fen = await ouvrirTableau(pg); const a = await lire(fen, 'tableau');
+  await pg.click('#bgel'); await pg.waitForTimeout(300); const gele = await pg.evaluate(() => document.body.classList.contains('gel')); verif('T2', gele, '❄ : le pilote est gelé (body.gel)');
+  await dev(pg, 3); await pg.waitForTimeout(600); const p = await lire(pg, 'pilote'), b = await lire(fen, 'tableau'); await cap(fen, 'T2-gel-fenetre-tenue');
+  verif('T2', pareil(a, b) && !pareil(p, b), 'trois ▶ pendant le gel : la fenêtre montre toujours ce qu\'elle montrait, le pilote a avancé', `avant ${a.lignes.length} l. « ${a.act} » · pendant ${b.lignes.length} l. « ${b.act} » · pilote ${p.lignes.length} l. « ${p.act} »`);
+  await pg.click('#bgel'); await pg.waitForTimeout(400); const g2 = await pg.evaluate(() => { const g = document.getElementById('garde2'); return !!(g && g.classList.contains('on')); }); if (g2) { await pg.click('#garde2-ici'); await pg.waitForTimeout(500); }
+  const p2 = await lire(pg, 'pilote'), c = await lire(fen, 'tableau'); await cap(fen, 'T2-degel-fenetre-rattrape');
+  verif('T2', pareil(p2, c), 'dégelé ici' + (g2 ? ' (seconde garde : « Dégeler ici »)' : '') + ' : la fenêtre montre ce que montre le pilote', `pilote ${p2.lignes.length} l. « ${p2.act} » · tableau ${c && c.lignes.length} l. « ${c && c.act} »`);
+  await fen.close(); await fin('T2', o); });
+
+// T3 — la fenêtre ouverte pendant le gel (p8-5g, point 1 : à `pret`, « ce que la classe voit, gel compris ») : elle montre l'image gelée, pas le pilote.
+await CAS('T3', 'ouverte pendant le gel, la fenêtre montre l\'image gelée', async () => { const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 2); const p0 = await lire(pg, 'pilote');
+  await pg.click('#bgel'); await pg.waitForTimeout(300); await dev(pg, 3); await pg.waitForTimeout(300); const p1 = await lire(pg, 'pilote');
+  const fen = await ouvrirTableau(pg); const t = await lire(fen, 'tableau'); await cap(fen, 'T3-ouverte-pendant-le-gel');
+  verif('T3', pareil(p0, t) && !pareil(p1, t), 'la fenêtre montre ce que la classe voyait au gel (2 lignes), pas le pilote (5)', `gel ${p0.lignes.length} l. · pilote ${p1.lignes.length} l. · tableau ${t && t.lignes.length} l.`);
+  await fen.close(); await fin('T3', o); });
+
+// T4 — la vue « ⧉ Tableau » du pilote (mandat point 8 ; K11) : elle montre ce que montre la fenêtre (même rendu).
+await CAS('T4', 'la vue « ⧉ Tableau » du pilote montre ce que montre la fenêtre', async () => { const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 3); const fen = await ouvrirTableau(pg); await pg.click('#btableau'); await pg.waitForTimeout(500);
+  const vue = await pg.evaluate(() => { const mur = Array.from(document.querySelectorAll('.mur.tableau')).find(m => m.id !== 'mur2' && !m.closest('#volet') && m.id !== 'p8-banc' && m.getBoundingClientRect().width > 0); if (!mur) return null; const c = mur.querySelector('.corpsd') || mur; return { lignes: Array.from(c.querySelectorAll('li')).filter(l => !l.classList.contains('hors') && !l.classList.contains('pas') && l.getBoundingClientRect().height > 0).map(l => l.getAttribute('data-p')), act: ((mur.querySelector('.act') || {}).textContent || '').trim().slice(0, 60) }; });
+  const t = await lire(fen, 'tableau'); await cap(pg, 'T4-vue-tableau-du-pilote');
+  verif('T4', !!vue && !!t && JSON.stringify(vue.lignes) === JSON.stringify(t.lignes) && vue.act === t.act, 'mêmes lignes, même diapo', `vue ${vue && vue.lignes.length} l. · fenêtre ${t && t.lignes.length} l.`);
+  await fen.close(); await fin('T4', o); });
+
+// T5 — la page tableau, appareil distant (mandat points 4-5) : la garde lecture seule, l'écran d'attente, la scène suivie, l'image gardée. Se joue sur le site seulement.
+await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène suivie, image gardée', async () => {
+  if (!SITE) { absent('T5', 'la page `?vue=tableau` n\'existe pas dans la maquette', 'se jouera sur assemble/index.html'); return; }
+  // le pilote : une heure lancée, trois dévoilements → sa scène au faux hub
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 3); await pg.waitForTimeout(1200);
+  const hubPilote = () => pg.evaluate(() => { const c = window.__hubLire('/site/cours_actif'); if (!c) return { c: null }; const b = '/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug; return { c, b, scene: window.__hubLire(b + '/scene'), ecrans: window.__hubLire(b + '/ecrans'), part: window.__hubLire(b + '/part') }; });
+  const h0 = await hubPilote(); verif('T5', !!h0.c && !!h0.scene, 'le pilote a écrit `cours_actif` et `C/scene`', h0.c ? h0.b : 'pas de cours_actif');
+  verif('T5', !!h0.scene && h0.scene.eid && h0.scene.ts && h0.scene.origine && ('trameMaj' in h0.scene) && h0.scene.nDev === 3, 'la scène = `et` + {eid, origine, ts, trameMaj}, nDev 3', h0.scene ? Object.keys(h0.scene).slice(0, 14).join(',') : '—');
+  verif('T5', !!h0.scene && !('rev' in h0.scene) && !('vues' in h0.scene) && !('morceau' in h0.scene) && !('iz' in h0.scene), 'rev, vues, morceau, iz tombent', '');
+  // le distant : un second contexte, le même faux hub au départ, sans cours actif → l'attente
+  const ctx2 = await nav.newContext({ viewport: { width: 1280, height: 720 }, timezoneId: 'Europe/Paris' }); await ctx2.route(u => !String(u).startsWith('file:'), r => r.abort());
+  const tb = await ctx2.newPage(); const errs2 = []; tb.on('pageerror', e => errs2.push(String(e.message).slice(0, 160))); const st = hubStore(); await tb.clock.setFixedTime(new Date('2026-09-14T08:50:00+02:00')); await tb.addInitScript(fauxHub, st);
+  await tb.goto(URL0 + '?vue=tableau', { waitUntil: 'load' }); await tb.waitForTimeout(2500);
+  const att = await tb.evaluate(() => { const a = document.getElementById('ses-tab-att') || document.getElementById('dr-attente'); return a && a.offsetParent !== null ? a.innerText.replace(/\s+/g, ' ').trim() : null; }); await cap(tb, 'T5-attente');
+  verif('T5', !!att && /monsieurjaipascompris/i.test(att) && /\d\d:\d\d/.test(att), 'sans cours actif : l\'écran d\'attente (le nom du site, l\'heure, la date)', att || '—');
+  if (att && /Charles/i.test(att)) verif('T5', true, 'la classe attendue est dite', att); else absent('T5', 'la classe attendue (« 3e · <classe> ») — audit F1/I5, en attente de la conscience', att || '');
+  // le pilote publie : on recopie sa scène, son pointeur et sa copie dans le faux hub du distant (deux contextes ne partagent pas la mémoire — audit I2)
+  const relais = async h => tb.evaluate(h => { window.__hubPoser('/site/cours_actif', h.c); window.__hubPoser(h.b + '/ecrans', h.ecrans); window.__hubPoser(h.b + '/scene', h.scene); }, h);
+  await tb.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await relais(h0); const t0r = Date.now(); let vu = null;
+  while (Date.now() - t0r < 6000) { const r = await lire(tb, 'tableau'); if (r && r.lignes.length === 3) { vu = r; break; } await pause(50); } const delai = Date.now() - t0r;
+  await cap(tb, 'T5-distant-suit'); const pil = await lire(pg, 'pilote');
+  verif('T5', pareil(pil, vu), 'une scène arrive : l\'attente disparaît, #mur2 montre la diapo du pilote, trois lignes', `pilote ${pil.lignes.length} l. « ${pil.act} » · distant ${vu ? vu.lignes.length + ' l. « ' + vu.act + ' »' : 'rien'}`);
+  verif('T5', !!vu && delai <= 1200, 'le distant suit en ≤ 900 ms de sondage + rendu (mesure proposée, audit I2)', delai + ' ms depuis l\'écriture dans son hub');
+  // suivre : un ▶ au pilote → relayé → le distant suit
+  await dev(pg, 1); await pg.waitForTimeout(500); const h1 = await hubPilote(); await relais(h1); const t1r = Date.now(); let vu1 = null; while (Date.now() - t1r < 6000) { const r = await lire(tb, 'tableau'); if (r && r.lignes.length === 4) { vu1 = r; break; } await pause(50); }
+  verif('T5', !!vu1, 'un ▶ de plus : le distant suit (quatre lignes)', (Date.now() - t1r) + ' ms');
+  // le pilote se ferme : plus de scène neuve → l'image reste (30 s d'horloge du distant)
+  await fin('T5', o); const avant = await lire(tb, 'tableau'); await tb.clock.runFor(30000).catch(async () => { await pause(1500); }); await pause(1200); const apres = await lire(tb, 'tableau'); await cap(tb, 'T5-pilote-ferme-image-gardee');
+  verif('T5', pareil(avant, apres) && apres.lignes.length === 4, 'le pilote fermé : 30 s plus tard, le distant garde sa dernière image', `${apres && apres.lignes.length} l.`);
+  // une scène plus ancienne (ts antérieur) n'est jamais acceptée
+  await tb.evaluate(h => { const s = Object.assign({}, h.scene, { nDev: 1, ts: h.scene.ts - 60000 }); window.__hubPoser(h.b + '/scene', s); }, h1); await pause(1500); const vieux = await lire(tb, 'tableau');
+  verif('T5', !!vieux && vieux.lignes.length === 4, 'une scène plus ancienne que la dernière montrée est refusée', `${vieux && vieux.lignes.length} l.`);
+  // la garde : aucune écriture, aucune tentative
+  const g = await tb.evaluate(() => ({ ecr: (window.__ECR || []).slice(), bloq: (window.SES && SES.ecrituresBloquees) | 0, mode: window.SES && SES.mode }));
+  verif('T5', g.mode === 'tableau' && g.ecr.length === 0, 'K15 en vue tableau : zéro écriture au hub', g.ecr.join(' ') || '0');
+  verif('T5', g.bloq === 0, 'personne n\'a même essayé d\'écrire (`SES.ecrituresBloquees` = 0)', String(g.bloq));
+  const essai = await tb.evaluate(() => fetch('https://x.firebasedatabase.app/site/essai.json', { method: 'PUT', body: '1' }).then(() => 'passé', () => 'refusé')); const g2 = await tb.evaluate(() => ({ ecr: window.__ECR.length, bloq: SES.ecrituresBloquees }));
+  verif('T5', essai === 'refusé' && g2.ecr === 0 && g2.bloq === 1, 'une écriture tentée est refusée et comptée', `${essai}, ${g2.bloq} bloquée(s), ${g2.ecr} au hub`);
+  verif('T5', !errs2.length, 'aucune erreur JS au distant', errs2.join(' ; ') || undefined);
+  await ctx2.close(); });
+
+// T6 — la participation (mandat point 6) : une parole → `C/part.participation` la porte avec son eid, sans rang. Site seulement (la maquette n'écrit rien).
+await CAS('T6', 'la participation au hub : une parole porte son eid', async () => {
+  if (!SITE) { absent('T6', 'la maquette n\'écrit rien au hub', 'se jouera sur le site'); return; }
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 1);
+  await pg.keyboard.press('F2'); await pg.waitForTimeout(200); await pg.keyboard.type('a'); await pg.waitForTimeout(150); await pg.keyboard.press('1'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(800);
+  const p = await pg.evaluate(() => { const c = window.__hubLire('/site/cours_actif'); if (!c) return null; return window.__hubLire('/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug + '/part'); });
+  const liste = p && p.participation ? (Array.isArray(p.participation) ? p.participation : Object.values(p.participation).flat()) : [];
+  verif('T6', !!p && p.maj && p.origine && liste.length >= 1, '`C/part` = {participation, maj, origine}, une parole', p ? JSON.stringify(p).slice(0, 140) : '—');
+  verif('T6', liste.length >= 1 && liste.every(x => x && x.eid && !('di' in x) && !('ecran' in x)), 'chaque parole désigne sa diapo par eid, jamais par rang', JSON.stringify(liste[0] || {}).slice(0, 120));
+  verif('T6', liste.every(x => !('note' in x) || !x.note), 'la note « pour toi seul » ne part pas au hub dans `C/part`', '');
+  await fin('T6', o); });
+
+dire(''); dire(`banc E3 : ${nb} vérifications, ${echecs} échec(s)` + (echecs ? ' — ROUGE' : ' — VERT'));
+if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }
+await nav.close(); process.exit(echecs ? 1 : 0);

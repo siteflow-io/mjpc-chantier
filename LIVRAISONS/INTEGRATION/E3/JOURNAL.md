@@ -7,3 +7,10 @@
 - **reste** : les bancs sur la maquette p8-5g ; `dr-tableau.js` pour ce qui n'est pas contesté (audit §6).
 - **bloqué** : rien. `integration` n'avait pas encore de E1-a : je la crée depuis `main` (contrat §3 : « créée depuis `main` par le premier qui pousse »).
 - **relances** : `RELANCES/E3.md` relu — « rien pour l'instant ».
+
+## 21/10, 09:35 — poussée 2 : le banc unique, joué sur la maquette p8-5g
+- **fait** : `E3/bancs/banc.mjs` (banc unique, deux entrées : la maquette seule, ou le site par ses gestes avec `MJPC_ENTREE=site`) — T1 la fenêtre locale (trois dévoilements, un ▶ de plus sans rechargement, `#mur2`, pas de `#mur` dans la page tableau) · T2 le gel (la fenêtre tient pendant trois ▶, rattrape au dégel) · T3 la fenêtre ouverte pendant le gel · T4 la vue « ⧉ Tableau » = la fenêtre · T5 le distant (attente, scène = `et`, suivi mesuré, image gardée 30 s, scène plus ancienne refusée, K15 tableau = 0 et `ecrituresBloquees` = 0, écriture tentée refusée et comptée) · T6 `C/part` par `eid`, sans rang, sans note privée. Sur la maquette : **19 vérifications, 0 échec**, T5/T6 « absents » (pas de page `?vue=tableau` ni d'écriture dans la maquette). Sortie : `sorties/0931/banc-E3-sur-maquette-p8-5g.txt` ; captures `captures/maquette-T*.png`.
+- **le banc de la conscience** (`banc.sh`) : lancé, **rouge par construction** — `LIVRAISONS/INTEGRATION/index.html` n'existe pas avant E1-a (sortie `sorties/0931/banc.txt`).
+- **reste** : `dr-tableau.js` (audit §6, point 2) ; attendre E1-a (`git fetch` toutes les cinq minutes).
+- **bloqué** : rien.
+- **relances** : `RELANCES/E3.md` relu — rien.

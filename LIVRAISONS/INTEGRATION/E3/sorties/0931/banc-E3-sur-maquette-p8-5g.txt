@@ -1,0 +1,37 @@
+banc E3 (le tableau) · 2026-10-21 07:30 UTC · entrée MAQUETTE seule · fichier md5 62d9557ac8fedcfbdd8b157a2588cbee · 605996 o
+
+T1 — la fenêtre locale montre ce que voit la classe, et suit sans rechargement
+  absent T1 · la fenêtre est `?vue=tableau&local=1` — maquette : about:blank (document.write) — se jouera sur le site
+  ok     T1 · la fenêtre rend dans #mur2.mur.tableau — #mur2 .mur tableau
+  ok     T1 · la page du tableau ne contient pas #mur (les contrôles lisent #mur d'abord) — false
+  ok     T1 · au pilote : la diapo 1, trois lignes dévoilées — 3 l. « Activité 1 — Analyse d'images : la routine »
+  ok     T1 · à l'ouverture : même diapo, mêmes lignes, même compteur que le pilote, rien hors du cadre — pilote 3 l. «  » · tableau 3 l. «  », hors 0
+  ok     T1 · un ▶ de plus : la fenêtre suit (quatre lignes, comme le pilote) dans les 700 ms — pilote 4 l. · tableau 4 l.
+  ok     T1 · sans rechargement de la fenêtre — true
+  ok     T1 · aucune erreur JS au pilote
+  ok     T1 · aucune boîte système
+
+T2 — gelé, la fenêtre ne bouge pas pendant que le pilote avance ; dégelée, elle rattrape
+  ok     T2 · ❄ : le pilote est gelé (body.gel)
+  ok     T2 · trois ▶ pendant le gel : la fenêtre montre toujours ce qu'elle montrait, le pilote a avancé — avant 2 l. « Activité 1 — Analyse d'images : la routine » · pendant 2 l. « Activité 1 — Analyse d'images : la routine » · pilote 5 l. « Activité 1 — Analyse d'images : la routine »
+  ok     T2 · dégelé ici : la fenêtre montre ce que montre le pilote — pilote 5 l. « Activité 1 — Analyse d'images : la routine » · tableau 5 l. « Activité 1 — Analyse d'images : la routine »
+  ok     T2 · aucune erreur JS au pilote
+  ok     T2 · aucune boîte système
+
+T3 — ouverte pendant le gel, la fenêtre montre l'image gelée
+  ok     T3 · la fenêtre montre ce que la classe voyait au gel (2 lignes), pas le pilote (5) — gel 2 l. · pilote 5 l. · tableau 2 l.
+  ok     T3 · aucune erreur JS au pilote
+  ok     T3 · aucune boîte système
+
+T4 — la vue « ⧉ Tableau » du pilote montre ce que montre la fenêtre
+  ok     T4 · mêmes lignes, même diapo — vue 3 l. · fenêtre 3 l.
+  ok     T4 · aucune erreur JS au pilote
+  ok     T4 · aucune boîte système
+
+T5 — le tableau distant (`?vue=tableau`) : attente, garde, scène suivie, image gardée
+  absent T5 · la page `?vue=tableau` n'existe pas dans la maquette — se jouera sur assemble/index.html
+
+T6 — la participation au hub : une parole porte son eid
+  absent T6 · la maquette n'écrit rien au hub — se jouera sur le site
+
+banc E3 : 19 vérifications, 0 échec(s) — VERT

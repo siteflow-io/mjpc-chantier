@@ -474,3 +474,4 @@
     - La copie est écrite sans revenir au Pilotage (≈ 1,95 s), et la retouche survit au rechargement et à la reprise.
     - Réserve : le témoin ne passe jamais à « enregistré ».
 - **L'audit final reste bloqué par L148.** Je la revérifierai à la prochaine poussée d'E1 ou d'E2.
+- **Sur `de6cd19c`** (poussée 17 d'E1) : banc.sh VERT ; E4 — fin : 109 ok · 0 échec(s) · 0 absent(s) — VERT (`sorties/2232`).

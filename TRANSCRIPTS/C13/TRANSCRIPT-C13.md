@@ -2046,3 +2046,25 @@ Réponse de la conscience (00:44), mot pour mot :
 
 22/10/2026 00:44
 MEMO
+
+## TOUR 97 — RÉVEIL N°12 (22/10/2026, 01:44 → 01:53 ; déclenché par la tâche planifiée) — L'AUDIT FINAL
+
+Note : horodatages lus avant chaque écriture (01:44, 01:48, 01:50, 01:51).
+
+Mesuré :
+- `integration` à `fc8122b4` (E4, 01:25). Depuis le réveil n°11 : **E4** (01:03 : **L148 et L149 vertes sur `de6cd19c`** ; 01:23 : la passe finale sur `250193a1`, 156 lignes, l'état en tête de chaque cellule, NOTE §10 ; 01:25 : 155 et 157 réglées sur la poussée 25 d'E2 ; **bilan : 135 réglées, 10 pas réglées (E2 6, E1 4), 8 écartées, 3 à Paul, 0 ouverte**) ; **E2** (poussée 25, 01:03 : l'échéance proposée coche l'étape 1, la préparation du cahier en numéros, « Où on en est » dit la diapo gelée, l'étape 7 ; réveil n°11 marqué) ; **E3** (00:49 : réveil n°11 lu, banc 99/99) ; **E1** : rien depuis 00:14, réveil n°11 non marqué.
+- **Mon banc sur `fc8122b4`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. Le fichier assemblé commis : 2 261 436 octets, md5 `40099c81454a800e878b319a3f1589fc` (identique à celui du banc). Épreuves `banc-sur-integration-fc8122b4.txt`, `sur-integration-fc8122b4-v22.txt`.
+- **L'audit final est fait et déposé** : `AUDITS/INTEGRATION-DEROULE/AUDIT-FINAL.md` — (a) les treize écrans du parcours fixe comparés un à un à la production d'hier (pièces `T72-EX-00..12` avant, `T97-P0..P12` après) : aucun écran n'a perdu ce qu'il faisait sans que le contrat le veuille (ce qui tombe : l'iframe, le téléphone, les quatre boutons du T-5, « appoint » ; ce qui vient : la barre Structure · Atelier · Pilotage · Relecture, « Préparer » depuis la case, l'heure n/N juste, l'Atelier de p8, le pilotage, l'heure suivante sur son rituel, la fin de l'heure en sept étapes, la Relecture à quatre faces et le Papier, la clôture avec « Lancer » gris et sa raison) ; (b) les écrans changés et voisins ; (c) les NOTE des quatre et la table d'E4 ; (d) les dettes 12 · 05, 12 · 14-19, 13 · 4/5/6/8/12/18-23/24/26-29 une à une (13 · 12 à Paul ; 13 · 29 : le DELETE direct du QR est tombé — 8 `DELETE` contre 9 en production) ; (e) le fichier ; (f) **le verdict : pas encore « promeus »** — dix lignes de la table d'E4 restent à régler (quatre moyens : 32 l'heure n depuis le Pilotage et les deux copies, 150 le versement de la retouche de l'Atelier, 160 l'ordre H2 hors classe, 162 le cahier à T-5 réduit à son étiquette ; cinq faibles : 66, 107, 109, 156, 161 ; une très faible : 158), aucune grave ni haute. Règle : jamais de promotion sur dette.
+- **Relances écrites (01:52)** : E1 — 160, 66, 156, 161, sa part de 150, le témoin ; marquer les réveils n°11 et n°12 ; E2 — 32, 150, 162, 107, 109, 158 ; E3 — rien, rejouer ; E4 — revérifier chacune des dix sur la poussée qui la règle, « 0 pas réglée » dans sa NOTE = le signal du promeus.
+- Réveil suivant : 02:53.
+
+Réponse de la conscience (01:53), mot pour mot :
+
+194. Réveil n°12. **L'audit final est fait** : https://github.com/siteflow-io/mjpc-chantier/blob/main/AUDITS/INTEGRATION-DEROULE/AUDIT-FINAL.md — les treize écrans du parcours d'hier comparés un à un à ceux d'aujourd'hui (captures entières `T72-EX-*` avant, `T97-P*` après), les dettes du registre pointées une à une, le fichier mesuré (2,26 Mo). Banc vert sur la tête : collisions 0, parcours vert aux deux modes, 108 contrôles sur 108 ; les deux graves de la nuit revérifiés réglés par E4 et E3 ; la table d'E4 n'a plus aucune ligne ouverte.
+
+195. **Verdict : pas encore « promeus ».** Il reste dix lignes à régler chez E1 et E2 — quatre moyennes (l'heure n quand on lance depuis le Pilotage et non depuis l'emploi du temps ; la clôture qui ne propose pas de verser une retouche faite dans l'Atelier ; l'ordre de l'heure 2 hors classe ; le cahier de textes à T-5 réduit à son étiquette), cinq faibles, une très faible, aucune grave. Ta règle : jamais de promotion sur dette. Les quatre tournent dessus ; E4 revérifie chaque ligne sur la poussée qui la règle, et son « 0 pas réglée » est le signal. Prochain réveil à 02:53 ; le promeus se dira au réveil où ce signal est là, le banc rejoué sur cette tête.
+
+196. À toi, telles quelles : 152, 144, 13 · 12, §12.17, le « go » du plan 10 jours. Rien d'autre.
+
+22/10/2026 01:53
+MEMO

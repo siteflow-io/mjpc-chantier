@@ -18,7 +18,7 @@ def tombe(nom):
     except SystemExit as e: rapport.append('%-26s absente (%s)' % (nom, e))
 
 # ── la porte : l'emploi du temps ─────────────────────────────────────────────────────────────────────────────────────
-t2 = re.sub(r"var EDT_PILOTAGE_ELEMENTS=\[[^\]]*\];", "var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet'];   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */", t, count=1)
+t2 = re.sub(r"var EDT_PILOTAGE_ELEMENTS=\[[^\]]*\];", "var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */", t, count=1)
 rapport.append('EDT_PILOTAGE_ELEMENTS      ' + ('rebranché' if t2 != t else 'déjà rebranché ou absent')); t = t2
 neuf('edtLancer', r'''function edtLancer(cle,preparer){
   /* [E2] « ▶ Ouvrir le pilotage et lancer » et « Préparer » : le premier temps est celui d'aujourd'hui (la séance visée,
@@ -74,6 +74,17 @@ if LANCER in t and 'data-preparer' not in t:
     rapport.append('edtPeindreModale           « Préparer » ajouté')
 else: rapport.append('edtPeindreModale           « Préparer » : ' + ('déjà là' if 'data-preparer' in t else 'LIGNE DU BOUTON INTROUVABLE'))
 
+# la case d'une heure lancée, pas close : « ▶ Reprendre le cours » (mandat 6) ; infobulles des boutons de la case et de la bannière (mandat 12)
+for nom, avant, apres in [
+  ('case jouée · Reprendre', "+(c.clos?' Close.':' Pas encore close.')+'</p>'",
+   "+(c.clos?' Close.':' Pas encore close.')+'</p>'\n        +(c.clos?'':'<button class=\"edt-btn edt-btn-prim edt-large\" data-reprendre=\"1\" title=\"L\\u2019heure est en cours (la page s\\u2019est fermée ?) : rouvrir le Pilotage là où la classe en est \\u2014 la diapo, le chrono, les paroles, les notes\" onclick=\"dr_edtReprendre('+JSON.stringify(cle).replace(/\"/g,'&quot;')+')\">\\u25b6 Reprendre le cours</button>')   /* [E2] mandat 6 */"),
+  ('case · infobulle de Lancer', "h+='<button class=\"edt-btn edt-btn-prim edt-large\" onclick=\"edtLancer(",
+   "h+='<button class=\"edt-btn edt-btn-prim edt-large\" title=\"Lance l\\u2019heure de cette case : le Pilotage s\\u2019ouvre avec cette classe, ce créneau et cette heure de la séance ; le chrono démarre, tout s\\u2019enregistre\" onclick=\"edtLancer("),
+  ('bannière · infobulles', "+'<button class=\"at-btn at-btn-prim\" onclick=\"sesReprendre()\">Reprendre le cours</button>'\n      +'<button class=\"at-btn\" onclick=\"sesRepriseSilence()\">Plus tard</button>';",
+   "+'<button class=\"at-btn at-btn-prim\" title=\"Rouvre le Pilotage de cette heure là où la classe en est : la diapo, le chrono, les décisions, les paroles, les notes\" onclick=\"sesReprendre()\">Reprendre le cours</button>'\n      +'<button class=\"at-btn\" title=\"Cache ce bandeau pour ce cours ; il reviendra si un autre cours est lancé\" onclick=\"sesRepriseSilence()\">Plus tard</button>';   /* [E2] mandat 12 */")]:
+    if apres[:80] in t or (nom.startswith('case jouée') and 'dr_edtReprendre' in t): rapport.append('%-26s déjà là' % nom)
+    elif t.count(avant) == 1: t = t.replace(avant, apres); rapport.append('%-26s posé' % nom)
+    else: rapport.append('%-26s INTROUVABLE (%d)' % (nom, t.count(avant)))
 # ── l'heure : le lancement, la trace, la clôture, le pointeur — rebranchés sur dr-classe.js (les noms restent, pour tout appelant) ──
 neuf('_drCloreHeureRestee', "function _drCloreHeureRestee(slugNeuf,nomNeuf){ dr_cloreHeureRestee(slugNeuf,nomNeuf); }   /* [E2] par dr_lire / dr_ecrire (13 · 25) */")
 neuf('_drCoursActifEffacerSi', "function _drCoursActifEffacerSi(sig){ dr_coursActifEffacerSi(sig); }   /* [E2] par dr_lire / dr_ecrire (13 · 25) */")

@@ -69,7 +69,9 @@ dire(''); dire('B1 — la case de l\'emploi du temps');
     else { pas('B1', e.lancee && e.cours && e.cours.classeNom === CLASSE ? 'ok' : 'ÉCHEC', 'le Pilotage s\'ouvre, la classe est 3E Charles de Gaulle', JSON.stringify(e.cours));
       pas('B1', e.cours && e.cours.fin === '09:52' && await p2.evaluate(c => _drCreneauDe(c), e.cours) === '08:57-09:52' ? 'ok' : 'ÉCHEC', 'le créneau 08:57-09:52', JSON.stringify(e.cours));
       pas('B1', (await visible(p2, '#mur')) && (await visible(p2, '#volet')) ? 'ok' : 'ÉCHEC', 'le Pilotage se voit (dette 12 · 05 : le cours tournait derrière le panneau prof)', '');
-      pas('B1', e.heure === 1 && /heure 1 sur 3/.test(e.hou) ? 'ok' : 'ÉCHEC', 'l\'heure 1/3 de la case (S.heure, l\'entête)', e.hou); }
+      { const ecr = await s2.ecrits(); pas('B1', ecr.some(x => x === 'PUT /site/cours_actif') ? 'ok' : 'ÉCHEC', 'le pointeur /site/cours_actif est écrit (la bannière de reprise en dépend)', ''); }
+      pas('B1', !s2.errs.length ? 'ok' : 'ÉCHEC', 'lancer depuis la case : aucune erreur JS', s2.errs.join(' ; '));
+      pas('B1', e.heure === 1 && /heure 1(\/| sur )3/.test(e.hou) ? 'ok' : 'ÉCHEC', 'l\'heure 1/3 de la case (S.heure, l\'entête)', e.hou); }
     dire('      écritures : ' + depuis(await s2.ecrits(), n1).join(' · ')); await s2.ctx.close(); } }
 
 // ── B2 · lancer en un clic, dévoiler, la parole ; le paquet ; K15 ──
@@ -140,6 +142,21 @@ dire(''); dire('B3 — la reprise (recharger en pleine heure, mêmes écritures 
     pas('B3', ap && dr0 && Math.abs(ap.ecoule - att) <= 2 ? 'ok' : 'ÉCHEC', 'le chrono (± 2 s) : le temps écoulé depuis le début réel au hub', JSON.stringify({ apres: ap && ap.ecoule, attendu: att }));
     pas('B3', ap && ap.parts === avant.parts && ap.notes === avant.notes ? 'ok' : 'ÉCHEC', 'la parole et les notes sont là', JSON.stringify({ avant, ap }));
     await s2.ctx.close(); } }
+
+// ── B3b · la reprise par la case de l'EDT, sur une séance dont la trame du hub n'a pas d'identités (séance 1) ──
+dire(''); dire('B3b — lancer par la case (séance 1, sans eid au hub), recharger, « ▶ Reprendre le cours » dans la case');
+{ const s = await session(); if (!s.integre) { pas('B3b', 'absent', 'le site intégré'); await s.ctx.close(); }
+  else { const p = s.page; await lancerParLaCase(s); await clicTexte(p, '#edt-modale button', 'Ouvrir le pilotage et lancer'); await s.attendre(6000);
+    await devoiler(s, 2); await parole(s); await p.keyboard.press('n'); await s.attendre(200); await p.keyboard.type('note B3b'); await p.keyboard.press('Enter'); await s.attendre(300); await p.keyboard.press('Escape');
+    await s.attendre(4000); const av = await p.evaluate(() => ({ eid: eidDe(S.di), compte: (document.getElementById('compte') || {}).textContent, parts: S.parts.length, notes: S.notesFil.length, sk: ATVUES.snum }));
+    const hub = await s.hub(); await s.ctx.close();
+    const s2 = await session({ store: hub, quand: '2026-09-14T09:02:00+02:00' }); const p2 = s2.page; await lancerParLaCase(s2);
+    const rb = await visible(p2, '#edt-modale [data-reprendre]'); pas('B3b', rb ? 'ok' : 'ÉCHEC', 'la case de l\'heure lancée propose « ▶ Reprendre le cours »', '');
+    if (rb) { await p2.click('#edt-modale [data-reprendre]'); await s2.attendre(9000); }
+    const ap = await p2.evaluate(() => { try { return { lancee: S.lancee, eid: eidDe(S.di), compte: (document.getElementById('compte') || {}).textContent, parts: S.parts.length, notes: S.notesFil.length, sk: ATVUES.snum }; } catch (e) { return { err: e.message }; } });
+    pas('B3b', ap.lancee && ap.sk === av.sk && ap.eid === av.eid && ap.compte === av.compte ? 'ok' : 'ÉCHEC', 'la même séance, la même diapo (même identité), les mêmes dévoilements', JSON.stringify({ avant: av, apres: ap }));
+    pas('B3b', ap.parts === av.parts && ap.notes === av.notes ? 'ok' : 'ÉCHEC', 'la parole et la note', '');
+    pas('B3b', !s2.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s2.errs.join(' ; ')); await s2.ctx.close(); } }
 
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');

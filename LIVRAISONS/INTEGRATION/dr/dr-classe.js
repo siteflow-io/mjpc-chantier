@@ -430,6 +430,7 @@ function dr_versHub(x){
   if (!x || typeof x !== 'object') return (typeof x === 'function' || typeof x === 'undefined') ? null : x;
   if (typeof Node !== 'undefined' && x instanceof Node) return null;
   const o = {};
+  if (typeof x.di === 'number' && x.eid == null && typeof eidDe === 'function' && (x.si == null || x.si === S.si)) { const e = eidDe(x.di); if (e != null) x = Object.assign({}, x, { eid: e }); }   /* relecteur neuf n°1 : `de: {si, di}` gardait son rang */
   Object.keys(x).forEach(k => {
     const v = x[k]; if (typeof v === 'function' || v === undefined) return;
     if (k === 'di' && typeof v === 'number' && x.eid != null && typeof indexDe === 'function') { const i = indexDe(x.eid); if (i >= 0 && v - i >= 0 && v - i <= 1) o.dio = v - i; else o.di = v; return; }   /* un rang sans identité retrouvable reste tel quel : il se voit au banc */
@@ -512,9 +513,10 @@ function dr_paquetHeure(clos){
   const ev = J.filter(x => x.type === 'diapo' && x.h === h);
   const fin = (x, k) => (k + 1 < ev.length ? ev[k + 1].t : t1);
   const parEid = {};
-  ev.forEach((x, k) => { const eid = x.eid != null ? x.eid : eidDe(x.di); if (eid == null) return; const l = parEid[eid] || (parEid[eid] = { ms: 0, passages: 0 }); l.ms += Math.max(0, fin(x, k) - x.t); l.passages++; });
+  let prec = null;
+  ev.forEach((x, k) => { const eid = x.eid != null ? x.eid : eidDe(x.di); if (eid == null) return; const l = parEid[eid] || (parEid[eid] = { ms: 0, passages: 0 }); l.ms += Math.max(0, fin(x, k) - x.t); if (eid !== prec) l.passages++; prec = eid; });   /* deux « diapo » de suite sur la même diapo (le début et le lancement) = un passage — relecteur neuf n°1 */
   (S.coupures || []).forEach(c => { if (!c.compte && c.eid != null && parEid[c.eid]) parEid[c.eid].ms = Math.max(0, parEid[c.eid].ms - ((c.fin || t1) - c.debut)); });
-  const activites = Object.keys(parEid).map(eid => { const i = indexDe(eid), e = E[i] || {}; return { n: i, eid, act: e.act || ('écran ' + (i + 1)), prevu: +(e.dur || 0), reel: Math.round(parEid[eid].ms / 60000), passages: parEid[eid].passages, comp: Array.isArray(e.comp) ? e.comp : [] }; })
+  const activites = Object.keys(parEid).map(eid => { const i = indexDe(eid), e = E[i] || {}; return { n: i, eid, act: e.act || ('écran ' + (i + 1)), prevu: +(e.dur || 0), reel: Math.max(1, Math.round(parEid[eid].ms / 60000)), passages: parEid[eid].passages,   /* un écran vu compte au moins une minute : `reel === 0` veut dire « pas joué » pour la case de l'EDT (« reportée ») */ comp: Array.isArray(e.comp) ? e.comp : [] }; })
     .sort((a, b) => a.n - b.n);
   const acts = (typeof actDe === 'function') ? [...new Set(E.map(actDe).filter(Boolean))] : [];
   const parActivite = acts.map(a => { const ds = (a.diapos || []).map(i => eidDe(i)).filter(x => x != null); const ms = ds.reduce((t, d) => t + ((parEid[d] || {}).ms || 0), 0); const ps = ds.reduce((t, d) => t + ((parEid[d] || {}).passages || 0), 0);
@@ -589,14 +591,17 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   const fin = String(creneau).split('-')[1];
   if (!suite) try { dr_cloreHeureRestee(classeSlug, nom, c); } catch (e) {}
   /* une heure tourne encore ici (Paul enchaîne deux classes en deux minutes) : elle se clôt d'abord, sa trace sous SA clé */
-  if (S.lancee && !S.close && AT_DR_REGIME === 'classe' && AT_DR_COURS) { const ch = dr_cheminH(); S.finReel = Date.now(); S.closPar = 'lancement suivant'; const p = dr_paquetHeure(true);
-    if (ch && p) dr_ecrire(ch, p, 'Heure close à l’ouverture de la suivante — ' + p.creneau, () => {}); dr_journalAuto(true); dr_etatAuto(true);
+  if (S.lancee && !S.close && AT_DR_REGIME === 'classe' && AT_DR_COURS && DR_CL.ouverte) { const o = DR_CL.ouverte; const p = { creneau: o.creneau };
+    /* écritures CIBLÉES sous la clé de l'heure qui tournait (comme la clôture certaine) : son paquet complet est déjà au hub, poussé au fil */
+    dr_ecrire(o.H + '/clos', true, 'Heure close à l’ouverture de la suivante', () => {}); dr_ecrire(o.H + '/finReel', Date.now(), 'Fin réelle', () => {}); dr_ecrire(o.H + '/closPar', 'lancement suivant', 'Motif de clôture', () => {});
+    dr_ecrire(o.C + '/journal', dr_journalHub(), 'Le journal de l’heure close', () => {}); [DR_CL.jT, DR_CL.eT, DR_CL.tT, DR_CL.cT].forEach(clearTimeout); S.close = true;
     try { atInfo('L’heure précédente (' + escapeHtml(AT_DR_COURS.classeNom) + ' · ' + escapeHtml(p ? p.creneau : '') + ') n’était pas close : elle vient de l’être, sa trace est enregistrée.'); } catch (e) {} }
   /* l'heure n > 1 : la séance a déjà joué pour cette classe ; on relit son état (C/etat, C/journal), puis l'écran d'ouverture de la
      maquette (« Où en est la classe », 6.5-6.7) — il dit l'heure d'avant, ce qui glisse, le faisceau ; « Lancer l'heure n » passe par
      `dr_lancerSuite`. La copie de la classe n'est PAS recopiée depuis la trame (C1 8.1 : ce qui a été vu est immuable ; audit C6). */
   if (heure > 1 && !suite) {
     dr_lireJoue(j => {
+      if (j && j.S && j.S.lancee && dr_adopterIdentites(j.ecrans) > 0) { dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); return; }   /* les identités adoptées : on relit, pour que les rangs se refassent dessus */
       if (j && j.S && j.S.lancee) { dr_restaurer(j); S.heure = heure - 1; S.close = true; S.lancee = true; DR_CL.suite = { classeSlug, nom, creneau, debut, heure, garder: true }; dr_heurePoser(heure, { debut, fin, classeSlug, classeNom: nom });
         try { $('ecran-edt').classList.remove('on'); } catch (e) {} try { voir('pilotage'); } catch (e) {} ouvrirOuverture(); return; }
       dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, true);
@@ -608,11 +613,15 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   try { chChargerTaxo(() => {}); } catch (e) {}   /* [8.67.1] le T-5 nomme les notions, jamais leurs codes */
   try { if (copie && typeof dr_jouerCopie === 'function') dr_jouerCopie(copie.ecrans); } catch (e) {}   /* le socle joue la copie de la classe (E1) */
   dr_heurePoser(heure, AT_DR_COURS);
+  DR_CL.ouverte = { C: dr_cheminC(), H: dr_cheminH(), creneau };   /* l'adresse de CETTE heure, gardée pour sa clôture (même si la page change de séance ou de jour) */
   S.closPar = null; S.finReel = null; S.debutReel = Date.now();
   try { $('ecran-edt').classList.remove('on'); } catch (e) {}   /* la porte se referme (le clic de l'EDT simulé le faisait) */
-  lancerHeure(heure);
-  dr_coursEcrire();
-  dr_traceReprendre(() => dr_copieAuto(true));
+  dr_coursEcrire();   /* le pointeur d'abord : la bannière de reprise et le tableau distant en dépendent, même si le rendu bute */
+  /* la barre du site se redessine pendant les lectures du hub (ouverture du chapitre) : on attend ses onglets, borné à 4 s (relecteur neuf n°1 : `voir` levait) */
+  const go = n => { if (!['ong-pilotage', 'ong-relecture', 'ong-atelier'].every(id => document.getElementById(id)) && n < 40) { setTimeout(() => go(n + 1), 100); return; }
+    try { lancerHeure(heure); } catch (e) { try { atInfo('Le Pilotage ne s’est pas affiché entièrement (' + e.message + ') : l’heure est lancée et s’enregistre ; rouvre l’onglet Pilotage.'); } catch (x) {} }
+    dr_traceReprendre(() => dr_copieAuto(true)); };
+  go(0);
 }
 /* « Lancer l'heure n » de l'écran d'ouverture : la classe, le créneau et le début posés par `dr_lancer` */
 function dr_lancerSuite(h){ const x = DR_CL.suite || {}; const cr = x.creneau || dr_creneauPropose(); const sl = x.classeSlug || dr_classeProposee();
@@ -633,8 +642,9 @@ function dr_traceReprendre(cb){
 /* ─── reprendre en pleine heure : `C/etat` + `C/journal` + `H` (la règle de `_drTraceReprendre`) ─── */
 function dr_reprendre(cb){
   const C = dr_cheminC(), ch = dr_cheminH(); if (!C || !ch) { if (cb) cb(false); return; }
-  dr_lire(C + '/etat', etat => dr_lire(C + '/journal', jr => dr_lire(ch, t => {
+  dr_lire(C + '/ecrans', copie => dr_lire(C + '/etat', etat => dr_lire(C + '/journal', jr => dr_lire(ch, t => {
     if (!etat || !etat.S) { if (cb) cb(false); return; }
+    dr_adopterIdentites(copie);
     if (t && (t.clos || (t.classe && t.classe !== AT_DR_COURS.classeNom) || (t.creneau && t.creneau !== dr_creneauDuCours(AT_DR_COURS)))) { if (cb) cb(false); return; }
     dr_restaurer({ S: dr_duHub(etat.S), parDiapo: dr_duHub(etat.parDiapo || {}), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
     const hc = dr_heureJouee(S.heure); if (hc && typeof HEURES_SIM === 'object') HEURES_SIM[S.heure] = hc; else dr_heurePoser(S.heure, AT_DR_COURS, t && t.debutReel);
@@ -651,8 +661,9 @@ function dr_reprendre(cb){
     try { dr_coursEcrire(); } catch (e) {}
     tout(); dr_copieAuto(true);
     try { atInfo('Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus.'); } catch (e) {}
+    DR_CL.ouverte = { C, H: ch, creneau: dr_creneauDuCours(AT_DR_COURS) };
     if (cb) cb(true);
-  })));
+  }))));
 }
 /* remettre dans la page l'état d'une heure jouée, décodé (`dr_lireJoue`) : S, les dévoilements, le journal ; les rangs refaits */
 function dr_restaurer(j){
@@ -663,7 +674,9 @@ function dr_restaurer(j){
   try { reindexer(); } catch (e) {}
 }
 /* l'entête de l'heure : la classe, le créneau, l'heure n/N, la séance */
-function dr_entete(h){ const x = dr_heureJouee(h) || {}; return (x.jour || '') + ' ' + (x.debut || '') + '-' + (x.fin || '') + ' · ' + (x.classe || '') + ' · heure ' + h + ' sur ' + (x.sur || '?') + ' · ' + (seance().titre || seance().title || ''); }
+function dr_entete(h){ const x = dr_heureJouee(h) || {}; try { const el = document.getElementById('hou'); if (el) el.title = dr_enteteLong(h); } catch (e) {}
+  return (x.classe || '') + ' · ' + (x.debut || '') + '-' + (x.fin || '') + ' · heure ' + h + '/' + (x.sur || '?'); }   /* relecteur neuf n°1 : l'entête longue était coupée à 119 px */
+function dr_enteteLong(h){ const x = dr_heureJouee(h) || {}; return (x.jour || '') + ' ' + (x.debut || '') + '-' + (x.fin || '') + ' · ' + (x.classe || '') + ' · heure ' + h + ' sur ' + (x.sur || '?') + ' · ' + (seance().titre || seance().title || ''); }
 
 /* ─── clore : l'étape 7 fait les écritures d'`atDrCloreFin` (H clos, finReel, cours_actif nul), plus le journal et l'état ─── */
 function dr_cloreFin(){
@@ -683,10 +696,10 @@ function dr_cloreFin(){
    décodés (les rangs refaits depuis les `eid`), ou null. Lecture seule. ─── */
 function dr_lireJoue(cb, chemin){
   const C = chemin || (typeof dr_cheminC === 'function' ? dr_cheminC() : null); if (!C) { cb(null); return; }
-  dr_lire(C + '/etat', et => dr_lire(C + '/journal', jr => {
+  dr_lire(C + '/ecrans', ecr => dr_lire(C + '/etat', et => dr_lire(C + '/journal', jr => {
     if (!et && !jr) { cb(null); return; }
-    cb({ S: dr_duHub((et || {}).S || {}), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null });
-  }));
+    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_duHub((et || {}).S || {}), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null });
+  })));
 }
 
 /* ─── R7 « Où on en est » (l'ancien `atVecuAfficher`) : sur chaque ligne d'activité de la colonne de droite, « dévoilés / total »
@@ -793,3 +806,36 @@ document.addEventListener('click', dr_heureCloseBloque, true); document.addEvent
    récit, comme la garde y invite) la referme — la Relecture n'est jamais couverte (cadrage 2 · 0.1 ; vu par le relecteur n°3 d'E4) ─── */
 setInterval(() => { try { const g = document.getElementById('garde-clore'); if (!g || !g.classList.contains('on')) return;
   const v = (typeof ATVUES === 'object' && ATVUES) ? ATVUES.vue : null; if (v && v !== 'pilotage') g.classList.remove('on'); } catch (e) {} }, 250);
+
+/* ─── l'identité des diapos en classe (relecteur neuf n°1) : la trame du hub n'a pas toujours ses `eid` ; le socle en fabrique de
+   neufs à chaque chargement, et la copie de la classe (C/ecrans) garde ceux du lancement. À la reprise et à l'heure suivante, la trame
+   en mémoire ADOPTE les identités de la copie (même ordre, mêmes titres) : le journal, les notes, les dévoilements retrouvent leur diapo.
+   `dr_trameJouee` (attendue par `dr_trame` du socle) rend la copie de la classe. ─── */
+DR_CL.copie = null;
+function dr_trameJouee(){ return DR_CL.copie; }
+function dr_adopterIdentites(copie){
+  try { if (!Array.isArray(copie)) return 0; DR_CL.copie = copie; const E = seance().ecrans; let n = 0;
+    if (E.length === copie.length) E.forEach((e, i) => { const c = copie[i]; if (c && c.eid && (e.act || '') === (c.act || '') && e.eid !== c.eid) { e.eid = c.eid; n++; } });
+    return n; } catch (e) { return 0; }
+}
+
+/* ─── reprendre depuis la case de l'EDT (mandat 6, « ou à edtLancer sur une heure déjà lancée » ; relecteur neuf n°1) : la case
+   d'une heure lancée et pas close propose « ▶ Reprendre le cours ». L'heure est retrouvée par sa trace (`edtCheminTrace`), pas par le
+   pointeur : elle se reprend même si `cours_actif` manque. ─── */
+function dr_reprendreCours(c){
+  try { atelierOuvrir(); } catch (e) {}
+  atChargerChapitres(c.niveau, () => {
+    atEditerChapitre(c.niveau, c.chapitre); ATVUES.snum = String(c.seance);
+    AT_DR_COURS = { debut: c.debut, fin: c.fin, classeSlug: c.classeSlug, classeNom: c.classeNom }; AT_DR_REGIME = 'classe';
+    atVuesAller('pilotage');
+    edtQuandPilotagePret(manque => { if (manque) { atInfo('Le pilotage ne s’ouvre pas (manque : ' + manque + ').'); return; }
+      dr_reprendre(ok => { if (!ok) atInfo('L’état de cette heure n’est pas au hub : elle ne peut pas être reprise telle quelle.'); }); });
+  });
+}
+function dr_edtReprendre(cle){
+  const cel = edtCellule(cle); if (!cel) return; const t = edtCheminTrace(cel.classeMjpc, cel.iso, cel.creneau); if (!t || !t.trace) { atInfo('La trace de cette heure est introuvable.'); return; }
+  if (t.trace.clos) { atInfo('Cette heure a été close : elle ne se reprend pas.'); return; }
+  const m = /^\/site\/([^/]+)\/chapitres\/([^/]+)\/seances\/([^/]+)\/deroule_joue\/([^/]+)\//.exec(t.chemin); if (!m) return;
+  edtFermer(); edtModaleFermer();
+  dr_reprendreCours({ niveau: m[1], chapitre: m[2], seance: m[3], classeSlug: m[4], classeNom: t.trace.classe || cel.classeMjpc, debut: t.trace.lanceA || String(cel.creneau).split('-')[0], fin: t.trace.fin || String(cel.creneau).split('-')[1] });
+}

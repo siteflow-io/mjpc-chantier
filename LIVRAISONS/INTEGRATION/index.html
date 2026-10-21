@@ -15841,8 +15841,8 @@ function sesReprisePeindre(c){
   if(!b){
     b=document.createElement('div'); b.className='ses-reprise'; b.id='ses-reprise';
     b.innerHTML='<span id="ses-reprise-txt">'+txt+'</span>'
-      +'<button class="at-btn at-btn-prim" onclick="sesReprendre()">Reprendre le cours</button>'
-      +'<button class="at-btn" onclick="sesRepriseSilence()">Plus tard</button>';
+      +'<button class="at-btn at-btn-prim" title="Rouvre le Pilotage de cette heure là où la classe en est : la diapo, le chrono, les décisions, les paroles, les notes" onclick="sesReprendre()">Reprendre le cours</button>'
+      +'<button class="at-btn" title="Cache ce bandeau pour ce cours ; il reviendra si un autre cours est lancé" onclick="sesRepriseSilence()">Plus tard</button>';   /* [E2] mandat 12 */
     document.body.appendChild(b);
   } else { var t=document.getElementById('ses-reprise-txt'); if(t)t.innerHTML=txt; }
   SES._reprise=c;
@@ -18522,7 +18522,7 @@ function edtAnnulerDecision(cle){
    « ▶ Lancer la séance » existe, exactement comme le fait déjà le téléphone
    pilote, puis il appuie dessus. Le moteur n'est pas touché.
    Si un seul des éléments attendus manque, on le DIT — jamais de crash. */
-var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet'];   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */
+var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */
 function edtLancer(cle,preparer){
   /* [E2] « ▶ Ouvrir le pilotage et lancer » et « Préparer » : le premier temps est celui d'aujourd'hui (la séance visée,
      les classes et les chapitres chargés, le chapitre ouvert sur la séance) ; le second appelle `dr_lancer` avec la classe,
@@ -18694,6 +18694,7 @@ function edtPeindreModale(){
       h+='<p class="edt-p">Heure jouée \u2014 '+c.activites+' activité'+(c.activites>1?'s':'')
         +(c.reportees?(', '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'.'
         +(c.clos?' Close.':' Pas encore close.')+'</p>'
+        +(c.clos?'':'<button class="edt-btn edt-btn-prim edt-large" data-reprendre="1" title="L\u2019heure est en cours (la page s\u2019est fermée ?) : rouvrir le Pilotage là où la classe en est \u2014 la diapo, le chrono, les paroles, les notes" onclick="dr_edtReprendre('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Reprendre le cours</button>')   /* [E2] mandat 6 */
         +'<p class="edt-p edt-mini-t">La relecture de cette heure arrive avec le profil de classe.</p>'
         +edtAbsencesHtml(cle,c);
     } else if(c.nature==='deplacee'){
@@ -18719,7 +18720,7 @@ function edtPeindreModale(){
         +(c.fil?(' \u00b7 fil '+escapeHtml(c.fil)):'')+(c.epingle?' \u00b7 \ud83d\udccc épinglée':'')+'</p>';
     }
     if(c.nature==='prevu'||c.nature==='rienDePret'){
-      h+='<button class="edt-btn edt-btn-prim edt-large" onclick="edtLancer('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Ouvrir le pilotage et lancer</button>';
+      h+='<button class="edt-btn edt-btn-prim edt-large" title="Lance l\u2019heure de cette case : le Pilotage s\u2019ouvre avec cette classe, ce créneau et cette heure de la séance ; le chrono démarre, tout s\u2019enregistre" onclick="edtLancer('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Ouvrir le pilotage et lancer</button>';
       h+='<button class="edt-btn edt-large" data-preparer="1" title="Ouvre l\u2019Atelier sur cette séance pour la préparer : rien n\u2019est lancé, rien n\u2019est projeté, la classe ne voit rien." onclick="edtLancer('+JSON.stringify(cle).replace(/"/g,'&quot;')+',true)">\u270e Préparer</button>';   /* [E2] cadrage 4 §0.3 */
     }
     /* une heure JOUÉE ne se décide plus : elle a eu lieu. On y gère les absents,

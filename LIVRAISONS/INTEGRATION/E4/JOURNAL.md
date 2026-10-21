@@ -255,3 +255,21 @@
   - Mon banc : **100 ok · 0 échec** (`sorties/1548-site-E4`).
   - banc.sh : **VERT** (`sorties/1553`).
 - **Ensuite** : la passe de revérification complète de la table sur `21ed40fe` que demande le réveil n°5. A5 (sur `d212aaec`, qui contient `21ed40fe`) joue l'heure de classe. Je lance la passe de l'atelier et de la relecture, puis je consigne B4.
+
+## Poussée 34 — 16:10 UTC
+- **Relecteur B4** consigné (sur `5f0c01a4`) :
+  - Il vérifie mes 12 corrections : 9 réglées, 3 réglées avec une réserve. Le seul « pas réglé » : « puis… puis » (réglé maintenant).
+  - **Réglés à 16:07**, avec gardes :
+    - la relecture d'une heure close lit les écrans de la classe (C/ecrans) et relit `ordres` / `ordresEid` : le bloc écrit en classe est raconté, les rangs reviennent ;
+    - une activité montrée n'est jamais « pas faite » ;
+    - « A, puis B et enfin C » ;
+    - la minuscule après le connecteur d'une note versée ;
+    - une image sans légende dit le nom de la diapo (« on a observé . », trouvé par mon banc).
+  - **Ouverts, à moi** :
+    - la reprise sans « Reprendre le cours » (ordres et participation) ;
+    - « Diapo par diapo » sans les diapos jouées hors de l'heure ;
+    - « Le chapitre » après un rechargement ;
+    - l'ordre bilan / travail en ma version ;
+    - le cadre qu'on ne dimensionne pas.
+- **Bancs :** mon banc **101 ok · 0 échec** (`sorties/1607-site-E4`).
+- banc.sh : VERT (`sorties/1612`).

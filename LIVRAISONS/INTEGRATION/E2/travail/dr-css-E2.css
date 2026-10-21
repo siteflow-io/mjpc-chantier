@@ -3,6 +3,8 @@
 #dr-zone .dr-minut { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; }
 #dr-zone .dr-ini-p, #ppop .dr-ini-p, #vif-dernier .dr-ini-p, #vif-sug .dr-ini-p, #vif-palette .dr-ini-p { font-size: .72em; font-weight: 400; opacity: .8; margin-left: 1px; }   /* réveil n°3 : les doublons d'initiales se départagent par le prénom (C1 4b.4) */
 #ppop button.m.dr-choisi { outline: 2px solid #c99a4e; outline-offset: 1px; background: rgba(201,154,78,.18); }   /* réveil n°4 : le motif choisi au clavier, que l'Entrée posera */
+body:has(#corps.prep) #volet .vig .mini, body:has(#corps.prep) #volet .vig .role, body:has(#corps.prep) #volet .vig .past { display: none; }   /* réveil n°11 (C1 7.0 ter) : en préparation, le volet réduit à ses numéros */
+body:has(#corps.prep) #volet .vig { min-height: 0; padding: 2px 4px; }   /* le volet est hors de #corps (la colonne de l'atelier) */
 :is(#dr-zone,#ses-tab,.at-som-volet) #dr-test.dr-test { margin-left: 8px; padding: 1px 8px; font-size: .75rem; white-space: nowrap; }   /* réveil n°4, 5 : la pastille du mode test dans l'entête du pilotage */
 :is(#dr-zone,#ses-tab,.at-som-volet) .scene > #al-boite.al-boite:not(.flotte) { flex-wrap: nowrap; flex-shrink: 0; gap: 8px; margin-top: 2px; padding: 4px 8px 4px 4px; font-size: .8rem; }   /* réveil n°4, 5 (C1 6.3) : la boîte d'alerte entière dans la colonne du centre, au-dessus des notes, à 1280 × 768 : une rangée, le texte sur trois lignes au plus */
 :is(#dr-zone,#ses-tab,.at-som-volet) .scene > #al-boite.al-boite:not(.flotte) > .al-txt { flex: 1 1 auto; min-width: 0; line-height: 1.2; max-height: 2.4em; overflow: auto; }   /* deux lignes : la phrase entière en infobulle (relecteur neuf n°3 : l'activité en cours allonge le texte) */

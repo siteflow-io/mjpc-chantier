@@ -265,7 +265,7 @@ await CAS('T12', 'la Relecture n\'écrit pas la scène ; le témoin ne ment pas'
   verif('T12', n1 === n0, 'dans la Relecture, un redessin du socle n\'écrit aucune scène au hub', `${n1 - n0} écriture(s) de la scène`);
   await fen.close(); await fin('T12', o); });
 
-// T13 — l'heure 2 d'une séance déjà jouée (le faux hub tel quel : une heure du 07/09) : elle s'ouvre sur son rituel ; la fenêtre montre la diapo de la classe et suit.
+// T13 — l'heure 2 d'une séance déjà jouée (le faux hub tel quel : une heure du 07/09) : elle s'ouvre là où la classe s'est arrêtée (dr_heureContinue, E2) ; la fenêtre montre cette diapo et suit.
 await CAS('T13', 'l\'heure suivante : la fenêtre suit depuis le rituel', async () => {
   if (!SITE) { absent('T13', 'se joue sur le site'); return; }
   const o = await ouvrir(1366, 768, true); const pg = o.pg; await lancer(pg); const p0 = await lire(pg, 'pilote'); const fen = await ouvrirTableau(pg); const t0 = await lire(fen, 'tableau');

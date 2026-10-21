@@ -2,6 +2,11 @@
 
 *Écrite à 13:20, mise à jour à 13:35 après la relance du réveil n°2 (13:15) — voir la section « Après la relance ». Rien de ce qui n'est pas fait n'est tu.*
 
+## État au réveil n°5 (17:48) — à jour
+- **Rien d'ouvert chez E3.** Banc E3 **82/82** sur l'assemblé `f6c4bad5…` (sortie `sorties/1757/`), rejoué à chaque poussée des autres depuis 17:00 (E4 ×2, E2 ×2, E1) : toujours vert. T13 suit `dr_heureContinue` (E2) : l'heure 2 s'ouvre là où la classe s'est arrêtée (« Tableau 3 ») et la fenêtre la montre.
+- **Ce qui reste, chez d'autres** : E1 — le clic qui dévoile une question grisée (C1 4.2), la taille du texte qui ne grossit pas au pilote comme au tableau, `#dr-zone` posé dans la page tableau (ma rustine `#dr-mur-gare` tient), R14 et (E4) R1 qui arriveront par `dr_versMur` — je les vérifierai au banc. E2 — `dr_caseDuMoment` pure (sinon ma `dr_tabCaseDuMoment` reste).
+- **À Paul** : le nom du bouton (« 🖥 Écran 2 », son mot du cadrage 1 §1.7, ou « ⧉ Ouvrir le tableau » du mandat) ; « Adresse du tableau » remplace le QR (la page tableau n'écrit jamais : le QR ne pouvait pas se fermer seul) ; le téléphone tombe (à refaire plus tard, point 22 du POINT).
+
 ## Après le réveil n°3 (15:14, traité à 15:35)
 - **L'attente** lit la grille de l'EDT, le calendrier et `/classes` en lecture seule (`dr_tabCaseDuMoment`, niveau `?n=`) : « Classe attendue : 3E Charles de Gaulle · 08:57 – 09:52 » ; sans grille, rien. Cela remplace « la classe attendue vient de `dr_proposer()` » plus bas.
 - Rien ne part au hub depuis la Relecture ; le témoin « tableau en Win K » n'apparaît que fenêtre ouverte (`dr_tabTemoin`).

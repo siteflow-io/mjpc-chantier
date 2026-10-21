@@ -107,3 +107,6 @@
 - **Passe d'infobulles de mon territoire** (mandat point 9 ; contrat §8.6) : « 🖥 Écran 2 » (`DR_TAB_BULLE`), « Adresse du tableau », le témoin « ● session » (deux états) — les deux textes du témoin disaient « hub » et « scène » (mots du chantier, pas de Paul) : réécrits (« ce que voit la classe part bien vers le tableau distant », « le site n'arrive plus à envoyer (réseau coupé ?) »). Le gel vu du tableau : l'infobulle de ❄ est à E1 (relance M6).
 - **Dettes de mon territoire** (12 · 05, 12 · 14-19) : relues à 10:35 — aucune ne touche le tableau (12 · 17 → la classe attendue, faite) ; rien de neuf.
 - **Banc de la conscience** `sorties/1650/` : **VERT** (collisions 0, parcours et mode test verts, K sans défaut).
+
+## 21/10, 17:57 — poussée 16 : le réveil n°5 (17:48)
+- Rien d'ouvert. Banc E3 rejoué après chaque poussée des autres depuis 17:00 (E4 5f0c01a4, E2 00b324f9/712accda, E1 f3a819ba, E4 19377fe1) : **82/82 à chaque fois**. T13 suit `dr_heureContinue` (l'heure 2 s'ouvre sur « Tableau 3 », où la classe s'était arrêtée ; la fenêtre la montre et suit). NOTE.md tenue à jour (état, ce qui reste chez les autres, ce qui est à Paul).

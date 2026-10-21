@@ -130,7 +130,7 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
   - **hors heure lancée, rien au journal** (l'« heure 1 » fantôme de la Relecture venait de là) ;
   - le volet suit ▶ ; « + bloc » → la frappe remplace « Nouvelle consigne » ; Échap ferme le menu d'une étape ; en mode test, une pastille « mode test » au lieu d'« Enregistré à … ».
 - **Le réveil n°5** (A4 14:50, B4 15:50, A5 16:15), gardé dans A26 : la page suit ce que ▶ montre ; une question grisée cliquée s'ouvre sur la saisie de sa réponse, une consigne grise reste grise ; Ctrl+B marque l'occurrence choisie ; l'entête ne descend plus quand le témoin paraît ; l'image absente garde sa ligne ; le dégel dit le rang dans l'heure ; rien n'est « terminé » de ce qui a été feuilleté avant le lancement ; l'atelier ouvert pendant l'heure journalise sa copie (`copie-classe`) — **la reprise ne la garde que quand E2 fusionnera la copie dans `dr_reprendre`** (mesuré, transmis).
-- **Dernier passage (poussée 13, `3b7ca02e`, sorties `1708`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 165 / 0.
+- **Dernier passage (poussée 13 bis, `95c1990d`, sorties `1801`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 166 / 0.
 
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :

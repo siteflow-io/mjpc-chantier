@@ -72,7 +72,7 @@ function dr_scene(et){
   let eid = sc.eid; try { if (!eid && typeof eidDe === 'function') eid = eidDe(sc.di); } catch (e) {}
   sc.eid = eid || null;
   sc.origine = (typeof SES === 'object' && SES) ? SES.id : 'pilote';
-  sc.ts = Date.now();
+  sc.ts = Math.max(Date.now(), (DR_TAB.dernierTs || 0) + 1); DR_TAB.dernierTs = sc.ts;   /* toujours croissant : deux scènes dans la même milliseconde (ou une horloge figée) restent ordonnées */
   sc.trameMaj = DR_TAB.trameMaj || 0;
   return sc;
 }
@@ -144,6 +144,9 @@ function dr_tabPoserEcran(et, ecran){
 /* la page tableau : on cache le site, on pose l'attente, le mur et le témoin « interrompu » */
 function dr_tabPoser(){
   if (document.getElementById('ses-tab')) return;
+  /* le gabarit du pilotage (#dr-zone, garé dans <body> par dr-gabarit.js) n'a rien à faire dans la page tableau : vidé, il n'y laisse
+     ni #mur ni #volet (les contrôles lisent `#mur` d'abord, audit I3). Provisoire : demandé à E1 de ne pas le poser en page tableau. */
+  try { const z = document.getElementById('dr-zone'); if (z) z.innerHTML = ''; } catch (e) {}
   const z = document.createElement('div'); z.id = 'ses-tab'; z.className = 'ses-tab';
   z.innerHTML = '<div class="ses-tab-attente" id="ses-tab-att">'
     + '<div class="n">monsieurjaipascompris</div><div class="h" id="ses-tab-h">--:--</div>'
@@ -164,6 +167,9 @@ function dr_tabPoser(){
   horloge(); setInterval(horloge, 1000);
   window.addEventListener('resize', () => { if (DR_TAB.montre) dr_rendreMur(DR_TAB.montre); });
 }
+
+/* la ligne du bas de l'attente : « Aucun cours en cours » ou la classe du cours trouvé (appelée par `sesTabChercherCours`, `sesTabVeillePointeur`) */
+function dr_tabDireClasse(t){ const el = document.getElementById('ses-tab-c'); if (el) el.textContent = t || ''; }
 
 /* la fenêtre locale : elle reçoit l'état du pilote par `postMessage` et ne lit jamais le hub */
 function dr_tabRecevoir(ev){

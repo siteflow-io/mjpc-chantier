@@ -77,7 +77,7 @@ remplacer('sesTabVeillePointeur', '''function sesTabVeillePointeur(){
     var cle=sesTabCle(c);
     if(!cle||cle===SES.tabPointeur)return;                /* même cours : rien à faire */
     SES.tabPointeur=cle; SES.ctx=c;
-    var n=document.getElementById('ses-tab-c'); if(n)n.textContent=(c.classeNom||c.classeSlug||'');
+    dr_tabDireClasse(c.classeNom||c.classeSlug||'');     /* [E3] l'attente est posée par dr-tableau.js : ses ids y vivent */
     dr_tabMonter();                                        /* [E3] le nouveau cours prend la main : sa copie, puis sa scène */
   });
 }''')
@@ -85,13 +85,12 @@ remplacer('sesTabChercherCours', '''function sesTabChercherCours(){
   var t=setInterval(function(){
     sesGet(FIREBASE_BASE+'/site/cours_actif.json',function(c){
       if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000){
-        var el=document.getElementById('ses-tab-c'); if(el)el.textContent='Aucun cours en cours';
+        dr_tabDireClasse('Aucun cours en cours');
         return;
       }
       clearInterval(t);
       SES.ctx=c; SES.tabPointeur=sesTabCle(c);
-      var el=document.getElementById('ses-tab-c');
-      if(el)el.textContent=[c.classeNom,''].filter(Boolean).join(' \\u00b7 ');
+      dr_tabDireClasse(c.classeNom||c.classeSlug||'');
       dr_tabMonter();                                      /* [E3] au lieu de sesTabMonter (l'ancien moteur) */
     });
   },2000);

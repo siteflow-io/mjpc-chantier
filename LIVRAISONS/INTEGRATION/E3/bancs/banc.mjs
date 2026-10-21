@@ -33,7 +33,7 @@ const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array
 
 // ── l'entrée : la maquette seule, ou le site par ses gestes jusqu'au Pilotage ──
 const ouvrir = async (w = 1366, h = 768) => { const ctx = await nav.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); const pg = await ctx.newPage(); const errs = [], boites = [];
-  pg.on('pageerror', e => errs.push(String(e.message).slice(0, 160))); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
+  pg.on('pageerror', e => errs.push(String(e.message).slice(0, 160))); ctx.on('page', p => { if (p !== pg) p.on('pageerror', e => errs.push('[fenêtre du tableau] ' + String(e.message).slice(0, 160))); }); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
   if (!SITE) { await pg.goto(URL0); await pg.waitForTimeout(700); return { ctx, pg, errs, boites }; }
   await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
   await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, hubStore());
@@ -43,8 +43,10 @@ const ouvrir = async (w = 1366, h = 768) => { const ctx = await nav.newContext({
   await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(800);
   if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l\u2019atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await pg.waitForTimeout(1500);
   await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await pg.waitForTimeout(2500);
-  return { ctx, pg, errs, boites }; };
-const lancer = async pg => { await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(600); };
+  await sansVoile(pg); return { ctx, pg, errs, boites }; };
+// le voile « n fiches d'applications ne sont pas à jour » (#fi-overlay) recouvre le site sur le faux hub (audit E1 F15 : /manifestes manque) : il n'est pas du tableau, on le retire
+const sansVoile = pg => pg.evaluate(() => { const o = document.getElementById('fi-overlay'); if (o) o.remove(); }).catch(() => {});
+const lancer = async pg => { await sansVoile(pg); await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(SITE ? 2500 : 600); await sansVoile(pg); if (SITE) { await pg.keyboard.press('Escape'); await pg.waitForTimeout(200); } };
 const ouvrirTableau = async pg => { const [fen] = await Promise.all([pg.waitForEvent('popup'), pg.click('#bvideoproj')]); await fen.waitForLoadState(); await fen.waitForTimeout(SITE ? 1500 : 900); return fen; };
 // ce que montre une diapo : au pilote, #mur ; dans la fenêtre, #mur2 (.mur.tableau) — la page tableau ne doit jamais contenir #mur (audit I3)
 const lire = (ctx, quel) => ctx.evaluate(q => { const mur = q === 'pilote' ? document.getElementById('mur') : (document.getElementById('mur2') || document.querySelector('.mur.tableau')); if (!mur) return null; const mb = mur.getBoundingClientRect(); const c = mur.querySelector('.corpsd') || mur;
@@ -54,7 +56,7 @@ const lire = (ctx, quel) => ctx.evaluate(q => { const mur = q === 'pilote' ? doc
 const pareil = (a, b) => !!a && !!b && a.page === b.page && a.act === b.act && JSON.stringify(a.lignes) === JSON.stringify(b.lignes);
 const dev = async (pg, n) => { for (let i = 0; i < n; i++) { await pg.click('#bdev'); await pg.waitForTimeout(90); } };
 const cap = async (ctx, n) => { if (CAPT) { try { await ctx.screenshot({ path: path.join(CAPT, n + '.png') }); } catch (e) {} } };
-const fin = (k, o) => { verif(k, !o.errs.length, 'aucune erreur JS au pilote', o.errs.join(' ; ') || undefined); verif(k, !o.boites.length, 'aucune boîte système', o.boites.join(' ; ') || undefined); return o.ctx.close(); };
+const fin = (k, o) => { verif(k, !o.errs.length, 'aucune erreur JS au pilote ni dans la fenêtre du tableau', o.errs.join(' ; ') || undefined); verif(k, !o.boites.length, 'aucune boîte système', o.boites.join(' ; ') || undefined); return o.ctx.close(); };
 const CAS = async (k, titre, f) => { dire(''); dire(k + ' — ' + titre); try { await f(); } catch (e) { verif(k, false, 'le cas n\'a pas pu aller au bout', String(e.message).split('\n')[0]); } };
 
 dire('banc E3 (le tableau) · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC · entrée ' + (SITE ? 'SITE (faux hub ' + HUB + ')' : 'MAQUETTE seule') + ' · fichier md5 ' + createHash('md5').update(fs.readFileSync(FICHIER)).digest('hex') + ' · ' + fs.statSync(FICHIER).size + ' o');
@@ -119,10 +121,10 @@ await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène su
   while (Date.now() - t0r < 6000) { const r = await lire(tb, 'tableau'); if (r && r.lignes.length === 3) { vu = r; break; } await pause(50); } const delai = Date.now() - t0r;
   await cap(tb, 'T5-distant-suit'); const pil = await lire(pg, 'pilote');
   verif('T5', pareil(pil, vu), 'une scène arrive : l\'attente disparaît, #mur2 montre la diapo du pilote, trois lignes', `pilote ${pil.lignes.length} l. « ${pil.act} » · distant ${vu ? vu.lignes.length + ' l. « ' + vu.act + ' »' : 'rien'}`);
-  verif('T5', !!vu && delai <= 1200, 'le distant suit en ≤ 900 ms de sondage + rendu (mesure proposée, audit I2)', delai + ' ms depuis l\'écriture dans son hub');
+  verif('T5', !!vu && delai <= 2000 + 900 + 600, 'la première scène paraît après la recherche du cours (2 s) et un sondage (900 ms)', delai + ' ms depuis l\'écriture dans son hub');
   // suivre : un ▶ au pilote → relayé → le distant suit
   await dev(pg, 1); await pg.waitForTimeout(500); const h1 = await hubPilote(); await relais(h1); const t1r = Date.now(); let vu1 = null; while (Date.now() - t1r < 6000) { const r = await lire(tb, 'tableau'); if (r && r.lignes.length === 4) { vu1 = r; break; } await pause(50); }
-  verif('T5', !!vu1, 'un ▶ de plus : le distant suit (quatre lignes)', (Date.now() - t1r) + ' ms');
+  const d1 = Date.now() - t1r; verif('T5', !!vu1 && d1 <= 1200, 'un ▶ de plus : le distant suit (quatre lignes) en ≤ 900 ms de sondage + rendu (mesure proposée, audit I2)', d1 + ' ms depuis l\'écriture dans son hub');
   // le pilote se ferme : plus de scène neuve → l'image reste (30 s d'horloge du distant)
   await fin('T5', o); const avant = await lire(tb, 'tableau'); await tb.clock.runFor(30000).catch(async () => { await pause(1500); }); await pause(1200); const apres = await lire(tb, 'tableau'); await cap(tb, 'T5-pilote-ferme-image-gardee');
   verif('T5', pareil(avant, apres) && apres.lignes.length === 4, 'le pilote fermé : 30 s plus tard, le distant garde sa dernière image', `${apres && apres.lignes.length} l.`);
@@ -142,7 +144,8 @@ await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène su
 await CAS('T6', 'la participation au hub : une parole porte son eid', async () => {
   if (!SITE) { absent('T6', 'la maquette n\'écrit rien au hub', 'se jouera sur le site'); return; }
   const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 1);
-  await pg.keyboard.press('F2'); await pg.waitForTimeout(200); await pg.keyboard.type('a'); await pg.waitForTimeout(150); await pg.keyboard.press('1'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(800);
+  const qui = await pg.evaluate(() => { try { const c = dr_classe(); const n = String((c.eleves || [])[1] || (c.eleves || [])[0] || ''); const p = n.split(/\s+/).slice(-1)[0] || n; return p.slice(0, 4); } catch (e) { return 'a'; } });
+  await pg.keyboard.press('F2'); await pg.waitForTimeout(200); await pg.keyboard.type(qui); await pg.waitForTimeout(150); await pg.keyboard.press('1'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(800);
   const p = await pg.evaluate(() => { const c = window.__hubLire('/site/cours_actif'); if (!c) return null; return window.__hubLire('/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug + '/part'); });
   const liste = p && p.participation ? (Array.isArray(p.participation) ? p.participation : Object.values(p.participation).flat()) : [];
   verif('T6', !!p && p.maj && p.origine && liste.length >= 1, '`C/part` = {participation, maj, origine}, une parole', p ? JSON.stringify(p).slice(0, 140) : '—');

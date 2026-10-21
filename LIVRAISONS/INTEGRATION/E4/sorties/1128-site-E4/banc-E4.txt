@@ -1,0 +1,74 @@
+banc E4 · 2026-10-21 11:24 UTC · entrée du site (faux hub) · index.html · md5 6eb7a71fe3501b220bf084396648878e
+  ok     R1 · une diapo à question est atteinte en dévoilant
+  ok     R1 · la face « Le récit » s'ouvre sur « Ce qu'on a fait aujourd'hui »
+  ok     R1 · le récit porte la diapo jouée (son activité)
+  ok     R1 · le récit porte l'heure réelle (« À hh h mm, »)
+  ok     R1 · le récit porte le prénom (Gatien, pas ses initiales) et sa réponse
+  ok     R1 · aucune initiale à la place d'un prénom
+  ok     R1 · une prise de parole hors d'une question se raconte (« Zélia a pris la parole », cadrage 2 · 1.5)
+  ok     R1 · zéro erreur JS
+  ok     R2 · « ma version (modifier) » : la phrase corrigée est dans ma version
+  ok     R2 · C/recit/1 est écrit au hub (débounce 900 ms, par dr_ecrire)
+  ok     R2 · au hub : C/recit/<clé> = {version:"moi", moi: la phrase corrigée, versions[]} (relance E4, F2)
+  ok     K15-E4 · K15 : ce qu'E4 écrit, c'est C/recit/<clé de l'heure> (<iso>_<créneau>_<classe>, relance E4 I4) et rien d'autre
+  ok     P1 · la face « Papier » existe dans la Relecture (proposition 96)
+  ok     P1 · l'entête du papier : classe · chapitre · séance
+  ok     P1 · « Ce qu'on a fait aujourd'hui », « À relire — <date> »
+  ok     P1 · le papier est composé depuis le récit relu (ma version, la phrase corrigée y est)
+  ok     P1 · le pied « MJPC · monsieurjaipascompris » / « À relire. »
+  ok     P1 · le travail à faire est sur le papier quand il y en a un
+  ok     P1 · @media print : la feuille, et rien d'autre du site
+  ok     ED · la copie « contenu de séance » est un HTML propre (ancien copierED : Georgia, sans classes ni repères)
+  ok     ED · le texte copié : le récit, sans le travail à faire
+  ok     ED · le presse-papier reçoit text/html et text/plain
+  ok     ED · « Copier — travail à faire » ne met pas de lien (relance E4, F8 tranché : ni aujourd'hui ni dans la maquette)
+  ok     ED · la copie est notée (S.copieED, journal copie-ed : la garde après copie s'en sert)
+  ok     R3 · rechargé : la phrase corrigée (ma version) est là, relue au hub
+  ok     R3 · rechargé, « composé par le site » : le récit se recompose depuis le journal relu au hub (C/journal, C/etat d'E2)
+  ok     R4 · le rappel s'écrit dans le récit : « on a repris la fiche … — pour réviser avant l'évaluation »
+  ok     R4 · le bilan dit « repris une fiche déjà vue »
+  ok     R4 · le papier « ce qu'on colle » : la fiche montrée, son rappel, « à coller dans le cahier » (ancien papier, R16)
+  ok     D1 · l'item Drive de la séance s'ouvre dans l'écran en /preview
+  ok     D1 · « cette fiche vient de Structure · Séance N »
+  ok     D1 · un document sans adresse le dit en clair ; pas de modale du site dans le déroulé (relance E4, F5)
+  ok     13·8 · la consigne corrigée en classe (la copie) est celle que raconte le récit
+  ok     P0 · aucune heure lancée : la Relecture le dit, sans récit
+  ok     P0 · aucune heure lancée : aucune face « Le récit » ni « Papier » à imprimer
+  ok     T · la transposition : les mots accentués entiers (« poètes »), « devant nous », « Regarde : la… » → « on a regardé la… », « Date : 1820 » intact
+  ok     T · un élève non identifié : « un élève a répondu », jamais ses initiales (cadrage 2 · 1.5 bis)
+  ok     T · « ma version » garde l'entête et le cadre de l'heure
+  ok     T · la copie ED de ma version : avec l'entête, sans repère pour Paul, le titre d'activité en titre
+  ok     T · après une copie ED, corriger ma version passe par la garde (cadrage 2 · 3.8)
+  ok     RC1 · Atelier, diapo « Tableau 1 » : le panneau des marques (Document analysé · Illustration · outils · une à une), chaque bouton avec son infobulle
+  ok     RC1 · trois points posés d'un clic chacun (① 1, 2, 3), visibles sur l'image, « une à une »
+  ok     RC1 · calibrées à la largeur de l'image (calibreMarques : 4,2 % de la largeur) — 1366
+  ok     RC1 · enregistrées dans la trame au hub (B/deroule : marques, devoilerTout, support)
+  ok     RC1 · rechargé (1280) : les trois marques sont là ; en classe, ▶ les dévoile une à une au pilote (0, 1, 2, 3)
+  ok     RC1 · calibrées à la largeur de l'image en classe — 1280
+  ok     RC1 · zéro erreur JS (1280)
+  ok     RC1 · rechargé (1366) : les trois marques sont là ; en classe, ▶ les dévoile une à une au pilote (0, 1, 2, 3)
+  ok     RC1 · calibrées à la largeur de l'image en classe — 1366
+  ok     RC1 · dans la fenêtre du tableau (⧉ Écran 2, E3), les marques paraissent une à une avec le pilote
+  ok     RC1 · zéro erreur JS (1366)
+  ok     RC4 · « ↶ Annuler » dans la barre de l'atelier, grisé avec sa raison tant que rien n'a changé
+  ok     RC4 · dans un champ de texte, Ctrl+Z est celui du navigateur (il retire la dernière frappe, pas un geste de la trame)
+  ok     RC4 · trois gestes de la trame : un texte modifié, un ordre changé (Alt+↓), une diapo supprimée (Suppr)
+  ok     RC4 · trois ↶ (Ctrl+Z, Ctrl+Z, le bouton) : la diapo revient, l'ordre revient, le texte revient — à l'identique (eid, id, texte)
+  ok     RC4 · la trame d'avant est réenregistrée au hub (B/deroule)
+  ok     RC4 · zéro erreur JS
+  ok     RC2 · une fiche posée pour la première fois dans le chapitre : pas de question, pas de rappel
+  ok     RC2 · « Le registre lyrique », déjà en séance 1, reposé : « Pourquoi ce rappel ? » et ses quatre motifs (chacun avec son infobulle)
+  ok     RC2 · le motif choisi est sur la fiche de la diapo : « ↻ Rappel — pour réviser avant l'évaluation »
+  ok     RC2 · enregistré dans la trame au hub (b.rappel = {motif, libre})
+  ok     RC2 · en classe, la classe voit « ↻ Rappel — pour réviser avant l'évaluation » sur la fiche
+  ok     RC2 · le récit : « on a repris la fiche Le registre lyrique — pour réviser avant l'évaluation »
+  ok     RC2 · le papier : la phrase du récit, et la fiche « à coller » avec « Rappel — pour réviser avant l'évaluation »
+  ok     RC2 · zéro erreur JS
+  ok     RC5 · Ctrl+clic sur deux étapes : elles sont sélectionnées, le menu dit « Supprimer les 2 éléments », « ✍🏻 Marquer « à écrire » », « Annuler la sélection » (avec infobulles)
+  ok     RC5 · « Supprimer les 2 éléments » retire exactement ces deux étapes de la trame
+  ok     RC5 · ↶ (R4) les remet, à leur place
+  ok     RC5 · Échap vide la sélection
+  ok     RC5 · « Marquer « à écrire » » : gardé dans la trame par identité (<bid>.<étape>) et au hub
+  ok     RC5 · en classe, l'étape préparée « à écrire » l'est : ✍🏻 (et.ecr)
+  ok     RC5 · zéro erreur JS
+— fin : 72 ok · 0 échec(s) · 0 absent(s) — VERT

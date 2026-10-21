@@ -15660,6 +15660,11 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 #dr-rappel-pop [data-motif].on{border-color:var(--or,#c99a4e);color:var(--or,#c99a4e)}
 #dr-rappel-pop input{width:100%;box-sizing:border-box;margin:6px 0;padding:4px 6px;background:#0f0c0a;color:inherit;border:1px solid var(--bord,#3a3129);border-radius:4px}
 #dr-rappel-pop .dr-rap-a{display:flex;gap:6px;justify-content:flex-end}
+/* E4 — R5 la sélection multiple */
+#dr-zone .mur .dr-sel{outline:2px dashed #6b8fb5;outline-offset:2px;background:rgba(107,143,181,.12)}
+#dr-sel-menu{position:fixed;z-index:9000;display:flex;flex-direction:column;gap:4px;background:#191411;border:1px solid var(--bord,#3a3129);border-radius:8px;padding:8px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#dr-sel-menu .btn{text-align:left;padding:3px 9px;font-size:.82rem}
+#dr-sel-menu .btn.rouge{color:#e8484c;border-color:#7b1113}
 
 </style>
 <script>
@@ -16325,7 +16330,7 @@ const seance = () => dr_seances()/* E1 : lisait DATA.seances */[S.si];
  const ecran = () => seance().ecrans[S.di];
  const cle = () => K(S.di);
 
-const etatDiapo = () => parDiapo[cle()] || (parDiapo[cle()] = { nDev: 0, lum: [], ecr: [], reps: {}, tailles: {}, textes: {}, fsBloc: {} });
+const etatDiapo = () => parDiapo[cle()] || (parDiapo[cle()] = { nDev: 0, lum: [], ecr: (typeof dr_ecrDeLaTrame === 'function' ? dr_ecrDeLaTrame() : [])/* E4 : R5, « à écrire » préparé dans l'atelier */, reps: {}, tailles: {}, textes: {}, fsBloc: {} });
 
 const eleves = () => ELEVES;
 
@@ -18910,6 +18915,37 @@ function dr_rappelOuvrir(bi){ const b = (ecran().blocs || [])[bi]; if (!b || !b.
 document.addEventListener('click', ev => { try { if (typeof S === 'undefined' || !S.atelier) return; const t = ev.target.closest && ev.target.closest('#mur .dr-rap.edit[data-rappel]'); if (!t) return; ev.preventDefault(); ev.stopPropagation(); dr_rappelOuvrir(+t.dataset.rappel); } catch (e) {} }, true);
 if (typeof window.dr_sauve === 'function' && !window.dr_sauve.__dr2) { const dr_sauveR = window.dr_sauve; window.dr_sauve = function () { dr_rappelDetecter(); return dr_sauveR.apply(this, arguments); }; window.dr_sauve.__dr2 = true; window.dr_sauve.__dr4 = true; }
 (function(){ const obs = new MutationObserver(() => { try { if (typeof S !== 'undefined' && S.atelier) dr_rappelSuivre(); } catch (e) {} }); const go = () => obs.observe(document.body, { childList: true, subtree: true }); if (document.body) go(); else document.addEventListener('DOMContentLoaded', go); })();
+
+/* ══ R5 · LA SÉLECTION MULTIPLE DANS L'ATELIER ══
+   L'ancien (moteur L2185-2245 : SEL, selSup, selEcrire, selVide ; un lasso et son menu) : plusieurs éléments de la diapo à la fois →
+   « Supprimer les N éléments », « ✍🏻 Marquer « à écrire » », « Annuler la sélection ». Ici, comme la relance E4-2 le dit : Ctrl+clic
+   (Cmd+clic) sur une étape ou sur un bloc l'ajoute ou le retire ; le menu suit la sélection ; Échap la vide. Copier / couper restent
+   ceux de l'atelier (un bloc à la fois). « À écrire » préparé dans l'atelier vit dans la trame par identité (e.aEcrire = ['<bid>',
+   '<bid>.<étape>']) et devient, au lancement, le « ✍🏻 à écrire » de la classe (crochet d'une ligne dans etatDiapo, dr-socle.js). */
+var DR_SEL = [];   /* [{bi, ei}] — ei null : le bloc entier */
+function dr_selVide(){ DR_SEL = []; const m = document.getElementById('dr-sel-menu'); if (m) m.remove(); document.querySelectorAll('#mur .dr-sel').forEach(x => x.classList.remove('dr-sel')); }
+function dr_selPeindre(){ document.querySelectorAll('#mur .dr-sel').forEach(x => x.classList.remove('dr-sel')); DR_SEL.forEach(x => { const el = x.ei == null ? document.querySelector(`#mur .bloc[data-bi="${x.bi}"]`) : document.querySelector(`#mur li[data-p="${x.bi}.${x.ei}"]`); if (el) el.classList.add('dr-sel'); }); }
+function dr_selMenu(){ let m = document.getElementById('dr-sel-menu'); if (!DR_SEL.length) { if (m) m.remove(); return; } if (!m) { m = document.createElement('div'); m.id = 'dr-sel-menu'; document.body.appendChild(m); }
+  const n = DR_SEL.length; m.innerHTML = `<button class="btn rouge" data-sel="sup" title="Retire de la trame les ${n} élément${n > 1 ? 's' : ''} sélectionné${n > 1 ? 's' : ''} (↶ Annuler les remet)">Supprimer les ${n} élément${n > 1 ? 's' : ''}</button><button class="btn" data-sel="ecr" title="En classe, ces éléments seront « ✍🏻 à écrire » : les élèves les recopient">✍🏻 Marquer « à écrire »</button><button class="btn" data-sel="vide" title="Désélectionne tout (Échap)">Annuler la sélection</button>`;
+  const der = DR_SEL[DR_SEL.length - 1]; const el = der.ei == null ? document.querySelector(`#mur .bloc[data-bi="${der.bi}"]`) : document.querySelector(`#mur li[data-p="${der.bi}.${der.ei}"]`); const r = el ? el.getBoundingClientRect() : { right: 500, top: 200 };
+  m.style.left = Math.min(r.right + 8, window.innerWidth - 240) + 'px'; m.style.top = Math.max(8, Math.min(r.top, window.innerHeight - 140)) + 'px';
+  m.querySelectorAll('[data-sel]').forEach(b => b.onclick = () => { const a = b.dataset.sel; if (a === 'sup') dr_selSup(); if (a === 'ecr') dr_selEcrire(); if (a === 'vide') dr_selVide(); }); }
+function dr_selSup(){ const e = ecran(); const sous = DR_SEL.filter(x => x.ei != null && !DR_SEL.some(y => y.ei == null && y.bi === x.bi)), blocs = DR_SEL.filter(x => x.ei == null);
+  sous.sort((a, b) => b.ei - a.ei).forEach(x => { const b = e.blocs[x.bi]; if (!b) return; const arr = b.t === 'question' ? b.reps : (Array.isArray(b.etapes) ? b.etapes : null); if (arr) arr.splice(x.ei, 1); });
+  blocs.map(x => x.bi).sort((a, b) => b - a).forEach(bi => { if (e.blocs.length <= 1) return; e.blocs.splice(bi, 1); if (typeof p8NotesBloc === 'function') { try { p8NotesBloc(S.di, bi, 'supprimer'); } catch (er) {} } });
+  const n = DR_SEL.length; dr_selVide(); if (typeof marquerModif === 'function') marquerModif({ di: S.di, selection: 'supprimer', n }); dr_tout(); }
+function dr_selEcrire(){ const e = ecran(); const l = Array.isArray(e.aEcrire) ? e.aEcrire : []; DR_SEL.forEach(x => { const b = e.blocs[x.bi]; if (!b) return; const id = b.bid || b.id; const c = x.ei == null ? String(id) : id + '.' + x.ei; if (!l.includes(c)) l.push(c); }); e.aEcrire = l;
+  try { const d = etatDiapo(); d.ecr = Array.from(new Set((d.ecr || []).concat(dr_ecrDeLaTrame(e)))); } catch (er) {}
+  dr_selVide(); if (typeof marquerModif === 'function') marquerModif({ di: S.di, selection: 'a-ecrire' }); dr_tout(); }
+/* pour etatDiapo() (crochet du socle) : « à écrire » préparé dans la trame, en éléments de la diapo ('b'+bi pour un bloc, k pour une étape) */
+function dr_ecrDeLaTrame(e){ try { e = e || ecran(); const l = Array.isArray(e && e.aEcrire) ? e.aEcrire : []; if (!l.length) return []; const els = elements(e); const out = [];
+  l.forEach(c => { const p = String(c).split('.'); const bi = e.blocs.findIndex(b => String(b.bid || b.id) === p[0]); if (bi < 0) return; if (p.length < 2) { out.push('b' + bi); return; } const k = els.findIndex(x => x.b === bi && String(x.e) === p[1]); if (k >= 0) out.push(k); }); return out; } catch (er) { return []; } }
+document.addEventListener('mousedown', ev => { try { if (typeof S === 'undefined' || !S.atelier || !(ev.ctrlKey || ev.metaKey) || ev.button !== 0) return; const li = ev.target.closest && ev.target.closest('#mur li[data-p]'); const bloc = !li && ev.target.closest && ev.target.closest('#mur .bloc[data-bi]'); if (!li && !bloc) return;
+  ev.preventDefault(); ev.stopImmediatePropagation(); const x = li ? { bi: +li.dataset.p.split('.')[0], ei: +li.dataset.p.split('.')[1] } : { bi: +bloc.dataset.bi, ei: null }; if (li && isNaN(x.ei)) return;
+  const i = DR_SEL.findIndex(y => y.bi === x.bi && y.ei === x.ei); if (i >= 0) DR_SEL.splice(i, 1); else DR_SEL.push(x); dr_selPeindre(); dr_selMenu(); } catch (e) {} }, true);
+document.addEventListener('click', ev => { try { if (DR_SEL.length && (ev.ctrlKey || ev.metaKey) && ev.target.closest && ev.target.closest('#mur')) { ev.preventDefault(); ev.stopImmediatePropagation(); } } catch (e) {} }, true);
+document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && DR_SEL.length) { dr_selVide(); } }, true);
+(function(){ let k = null; const obs = new MutationObserver(() => { if (!DR_SEL.length) return; const c = (typeof S !== 'undefined') ? S.si + '|' + S.di + '|' + !!S.atelier : null; if (k && c !== k) { dr_selVide(); k = c; return; } k = c; dr_selPeindre(); }); const go = () => obs.observe(document.body, { childList: true, subtree: true }); if (document.body) go(); else document.addEventListener('DOMContentLoaded', go); })();
 
 </script><!-- E4 : le recyclage (relance E4-2) -->
 <script>

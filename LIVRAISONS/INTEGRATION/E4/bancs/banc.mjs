@@ -263,6 +263,30 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   await cap(pg2, 'E4-RC2-rappel-papier'); verif('RC2', o.errs.length + o2.errs.length === 0, 'zéro erreur JS', JSON.stringify(o.errs.concat(o2.errs))); await o2.ctx.close(); HUB_PERSISTANT = null; }
 else verif('RC2', null, 'R2 le rappel', 'se mesure sur le site');
 
+// ═════ RC5 · R5 du recyclage : la sélection multiple dans l'Atelier — Ctrl+clic, « Supprimer les N éléments », « ✍🏻 Marquer « à écrire » », Échap ═════
+if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1200); if (await pg.$('#at-aide .x')) await pg.click('#at-aide .x');
+  const et0 = await pg.evaluate(() => ecran().blocs[0].etapes.slice());
+  await pg.click('#mur li[data-p="0.1"]', { modifiers: ['Control'] }); await pg.click('#mur li[data-p="0.3"]', { modifiers: ['Control'] }); await p(pg, 300);
+  const m = await pg.evaluate(() => { const x = document.getElementById('dr-sel-menu'); return x ? { t: x.innerText, titres: Array.from(x.querySelectorAll('button')).every(b => b.title), sel: document.querySelectorAll('#mur .dr-sel').length } : null; });
+  verif('RC5', m && /Supprimer les 2 éléments/.test(m.t) && /Marquer « à écrire »/.test(m.t) && /Annuler la sélection/.test(m.t) && m.titres && m.sel === 2, 'Ctrl+clic sur deux étapes : elles sont sélectionnées, le menu dit « Supprimer les 2 éléments », « ✍🏻 Marquer « à écrire » », « Annuler la sélection » (avec infobulles)', JSON.stringify(m));
+  await cap(pg, 'E4-RC5-selection'); await pg.click('#dr-sel-menu [data-sel="sup"]'); await p(pg, 1200);
+  const et1 = await pg.evaluate(() => ecran().blocs[0].etapes.slice());
+  verif('RC5', et1.length === et0.length - 2 && !et1.includes(et0[1]) && !et1.includes(et0[3]), '« Supprimer les 2 éléments » retire exactement ces deux étapes de la trame', JSON.stringify(et1.map(x => x.slice(0, 20))));
+  await pg.keyboard.press('Control+z'); await p(pg, 600); const et2 = await pg.evaluate(() => ecran().blocs[0].etapes.slice());
+  verif('RC5', JSON.stringify(et2) === JSON.stringify(et0), '↶ (R4) les remet, à leur place', null);
+  await pg.click('#mur li[data-p="0.0"]', { modifiers: ['Control'] }); await pg.keyboard.press('Escape'); await p(pg, 200); const vide = await pg.evaluate(() => !document.getElementById('dr-sel-menu') && !document.querySelector('#mur .dr-sel'));
+  verif('RC5', vide, 'Échap vide la sélection', null);
+  await pg.click('#mur li[data-p="0.0"]', { modifiers: ['Control'] }); await p(pg, 200); await pg.click('#dr-sel-menu [data-sel="ecr"]'); await p(pg, 1500);
+  const ae = await pg.evaluate(() => ({ t: ecran().aEcrire, hub: window.__HUB.site['3e'].chapitres[0].seances[0].deroule.ecrans[0].aEcrire }));
+  verif('RC5', Array.isArray(ae.t) && ae.t.length === 1 && /\.0$/.test(ae.t[0]) && JSON.stringify(ae.hub) === JSON.stringify(ae.t), '« Marquer « à écrire » » : gardé dans la trame par identité (<bid>.<étape>) et au hub', JSON.stringify(ae));
+  HUB_PERSISTANT = await pg.evaluate(() => window.__HUB); await o.ctx.close();
+  const o2 = await ouvrir(); const pg2 = o2.pg; await pg2.click('[data-lancer="1"]').catch(() => {}); await p(pg2, 700); await devoiler(pg2, 1);
+  const cl = await pg2.evaluate(() => ({ li: !!document.querySelector('#mur li[data-p="0.0"].aecrire'), ecr: etatDiapo().ecr }));
+  verif('RC5', cl.li, 'en classe, l\'étape préparée « à écrire » l\'est : ✍🏻 (et.ecr)', JSON.stringify(cl));
+  verif('RC5', o.errs.length + o2.errs.length === 0, 'zéro erreur JS', JSON.stringify(o.errs.concat(o2.errs))); await o2.ctx.close(); HUB_PERSISTANT = null; }
+else verif('RC5', null, 'R5 la sélection multiple', 'se mesure sur le site');
+
 await nav.close();
 dire(`— fin : ${nbOk} ok · ${nbEchec} échec(s) · ${nbAbsent} absent(s) — ${nbEchec ? 'ROUGE' : 'VERT'}`);
 fs.writeFileSync(path.join(OUT, 'banc-E4.txt'), L.join('\n') + '\n');

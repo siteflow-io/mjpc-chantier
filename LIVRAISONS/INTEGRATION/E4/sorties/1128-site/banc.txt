@@ -1,0 +1,18 @@
+banc d'intégration · 2026-10-21 11:28 UTC · branche integration · commit 03c7bddf
+— 1. assemblage
+assemblé : /home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html
+  inline  dr/dr.css (106801 o)
+  inline  dr/dr-gabarit.js (19999 o)
+  inline  dr/dr-socle.js (167160 o)
+  inline  dr/dr-atelier.js (135301 o)
+  inline  dr/dr-classe.js (132046 o)
+  inline  dr/dr-tableau.js (20449 o)
+  inline  dr/dr-recit.js (109772 o)
+  inline  dr/dr-recyclage.js (29811 o)
+  modules : 8 · manquants/refusés : 0 · taille : 2082644 o · md5 6eb7a71fe3501b220bf084396648878e
+— 2. collisions
+modules lus : dr/dr.css dr/dr-gabarit.js dr/dr-socle.js dr/dr-atelier.js dr/dr-classe.js dr/dr-tableau.js dr/dr-recit.js dr/dr-recyclage.js
+  ids en collision : 0
+  classes CSS en collision : 0
+  globales en collision : 0
+— 3. parcours

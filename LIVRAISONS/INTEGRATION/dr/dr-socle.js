@@ -651,7 +651,7 @@ const seance = () => dr_seances()/* E1 : lisait DATA.seances */[S.si];
  const ecran = () => seance().ecrans[S.di];
  const cle = () => K(S.di);
 
-const etatDiapo = () => parDiapo[cle()] || (parDiapo[cle()] = { nDev: 0, lum: [], ecr: [], reps: {}, tailles: {}, textes: {}, fsBloc: {} });
+const etatDiapo = () => parDiapo[cle()] || (parDiapo[cle()] = { nDev: 0, lum: [], ecr: (typeof dr_ecrDeLaTrame === 'function' ? dr_ecrDeLaTrame() : [])/* E4 : R5, « à écrire » préparé dans l'atelier */, reps: {}, tailles: {}, textes: {}, fsBloc: {} });
 
 const eleves = () => ELEVES;
 

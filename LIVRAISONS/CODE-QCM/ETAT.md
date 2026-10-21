@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 15:30 — points 15 à 17 : ma part livrée, banc-rouverte 96 / 96 (QCM-4) ; R3 (à confirmer) : la cause lue et écrite sous le défaut, rien codé avant la conscience ; j'attends « contrôlé » sous 15 à 17
+- QCM-1 · SOCLE · 17:31 — points 15 à 17 : ma part livrée (`3f9eb33`) ; R3 attend la conscience et Paul, rien codé ; rien d'ouvert à mon nom ; j'attends « contrôlé » sous 15 à 17
 
 - QCM-2 · HEURE · 17:26 — point 15 livré (60bb96a) ; VERDICT de QCM-4 de 15:58 : ça va (banc-rouverte 96 / 96) ; R3 (à confirmer) attend la décision ; rien d'autre à mon nom ; j'attends le contrôle de la conscience et relis la section toutes les 2 minutes jusqu'à « contrôlé »
 

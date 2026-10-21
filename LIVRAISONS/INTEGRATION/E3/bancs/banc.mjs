@@ -293,10 +293,10 @@ await CAS('T14', 'le bloc écrit en classe reste au tableau après rechargement 
   await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); });
   await pg.waitForTimeout(5500); const rep = await clicTexte(pg, 'button', 'Reprendre le cours'); await pg.waitForTimeout(4000); await sansVoile(pg); await clicTexte(pg, 'button', 'Compris'); await pg.waitForTimeout(300);
   if (!rep) absent('T14', 'pas de bannière « Reprendre le cours » après le rechargement (E2)');
-  const p1 = await vu(pg); verif('T14', p1, 'après « Reprendre le cours » : le pilote montre le bloc écrit (E1/E2 — relecture continue d\'E4, ligne 110)', String(p1));
+  const p1 = await vu(pg); verif('T14', p1, 'après « Reprendre le cours » : le pilote montre le bloc écrit (E2 : `dr_reprendre` ne fusionne pas `C/ecrans` — ligne 110 d\'E4)', String(p1));
   await pg.waitForTimeout(3500); const f1 = await vu(fen); await cap(fen, 'T14-apres-rechargement'); const pr = await lire(pg, 'pilote'), fr = await lire(fen, 'tableau');
   verif('T14', pareil(pr, fr), 'E3 · après le rechargement, la fenêtre restée ouverte est retrouvée par le pilote rechargé (signe `ici`) et montre ce qu\'il montre', `pilote « ${pr && pr.act} » ${pr && pr.lignes.length} l. · tableau « ${fr && fr.act} » ${fr && fr.lignes.length} l.`);
-  verif('T14', f1, 'le bloc écrit en classe est encore au tableau après la reprise (dépend du pilote : E1/E2, ligne 110 d\'E4)', String(f1));
+  verif('T14', f1, 'le bloc écrit en classe est encore au tableau après la reprise (dépend du pilote : E2, ligne 110 d\'E4)', String(f1));
   await dev(pg, 1); await pg.waitForTimeout(1200); const pp = await lire(pg, 'pilote'), ff = await lire(fen, 'tableau');
   verif('T14', pareil(pp, ff), 'et elle suit de nouveau le pilote rechargé (un ▶)', `pilote ${pp && pp.lignes.length} l. · tableau ${ff && ff.lignes.length} l.`);
   await fen.close(); await fin('T14', o); });

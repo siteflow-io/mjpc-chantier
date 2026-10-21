@@ -116,3 +116,6 @@
 - **Trouvé et réglé chez moi** : le pilote rechargé **ne connaissait plus la fenêtre** restée ouverte — elle restait figée sur l'avant (7 l. contre 6 au pilote), et ne suivait plus aucun ▶. Désormais la fenêtre redit `ici` toutes les 3 s ; un pilote qui ne la connaît pas l'adopte et lui renvoie ce que voit la classe (un pilote qui la connaît l'ignore). Garde T14 : rouge sur `dr-tableau.js` d'avant, verte maintenant.
 - **Rouge chez E1/E2 (ligne 110 de la relecture continue d'E4, toujours là)** : après « Reprendre le cours », **le bloc écrit en classe a disparu du pilote** (« 7 / 6 dévoilés » : le compteur le sait, la diapo ne l'a plus) — la fenêtre, fidèle au pilote, le perd donc aussi. Mon banc le dit en deux lignes attribuées (« E1/E2 ») : **89 vérifications, 2 échecs, ce sont ces deux-là**. Capture `captures/site/T14-apres-rechargement.png`.
 - **T13** suivra l'ordre de l'heure suivante d'E2 (réactivation, reporté, programme, cahier) quand E2 le pousse : T13 compare la fenêtre au pilote, il suit l'ordre quel qu'il soit.
+
+## 21/10, 20:16 — réveil n°7 lu
+- Rien d'ouvert ; les deux rouges de T14 sont attribués à E2 dans le banc (`dr_reprendre` ne fusionne pas `C/ecrans`) ; je dirai ici quand ils passent au vert. Banc rejoué sur `440e851c` : 89 vérifications, ces 2 échecs seulement.

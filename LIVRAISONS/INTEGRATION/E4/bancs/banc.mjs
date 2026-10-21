@@ -153,6 +153,22 @@ else verif('D1', null, 'les documents par référence', 'la maquette simule ses 
   verif('13·8', corrige ? /on a regardé les tableaux et dit ce qu'on voyait|Regardez les tableaux|on a regardé les tableaux/i.test(t) : null, 'la consigne corrigée en classe (la copie) est celle que raconte le récit', t.slice(0, 500));
   await o.ctx.close(); }
 
+// ═════ T · la transposition et la langue (relecteur neuf 1) : les mots accentués, « un élève », la copie sans repère pour Paul ═════
+{ const o = await ouvrir({ frais: true }); const pg = o.pg;
+  const t = await pg.evaluate(() => [recit('Placez les poètes sur la frise, devant vous.'), recit('Regardez le cinéma de ta ville.'), personne('Les poètes et tes amis')]);
+  verif('T', !/poèses|cinénotre|poè ses/.test(t.join(' ')) && /poètes/.test(t[0]) && /ses amis/.test(t[2]), 'les mots accentués ne sont pas coupés par la transposition (« poètes », pas « poèses »)', JSON.stringify(t));
+  await lancer(pg); const q = await jusquA(pg, () => ecran().blocs.some(b => b.t === 'question')); await pg.click('#bdev'); await p(pg, 150); await garde(pg);
+  if (q) await reponse(pg, 'ZZ', 'une réponse sans élève reconnu');
+  await relecture(pg); const r = await texteRel(pg);
+  verif('T', q ? /[Uu]n élève a répondu : « une réponse sans élève reconnu/.test(r) && !/\bZZ a répondu/.test(r) : null, 'un élève non identifié : « un élève a répondu », jamais ses initiales (cadrage 2 · 1.5 bis)', r.slice(0, 900));
+  await pg.click('#rel [data-rv="moi"]'); await p(pg, 400); const r2 = await texteRel(pg);
+  verif('T', /Ce qu'on a fait aujourd'hui/.test(r2) && /Cette heure a commencé à/.test(r2), '« ma version » garde l\'entête et le cadre de l\'heure', r2.slice(0, 300));
+  await pg.click('#r-copie-contenu'); await p(pg, 400); const cp = await pg.evaluate(() => window.DR_RECIT_DERNIERE_COPIE || null);
+  verif('T', cp && /Ce qu'on a fait aujourd'hui/.test(cp.texte) && !/tu la reprendras|composée par le site depuis/.test(cp.texte) && /<b>Activité \d+/.test(cp.html), 'la copie ED de ma version : avec l\'entête, sans repère pour Paul, le titre d\'activité en titre', cp ? cp.texte.slice(0, 200) : '');
+  const ed = await pg.$('#rel .recit.ma-version'); if (ed) { await ed.click(); await p(pg, 300); }
+  verif('T', await pg.evaluate(() => document.getElementById('garde-copie').classList.contains('on')), 'après une copie ED, corriger ma version passe par la garde (cadrage 2 · 3.8)', null);
+  await o.ctx.close(); }
+
 await nav.close();
 dire(`— fin : ${nbOk} ok · ${nbEchec} échec(s) · ${nbAbsent} absent(s) — ${nbEchec ? 'ROUGE' : 'VERT'}`);
 fs.writeFileSync(path.join(OUT, 'banc-E4.txt'), L.join('\n') + '\n');

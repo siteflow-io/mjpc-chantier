@@ -18340,6 +18340,7 @@ function dr_tabPeutEcrire(){
   try {
     if (dr_estTableau() || typeof S !== 'object' || !S) return false;
     if (!S.lancee || S.close || S.atelier || S.repetition) return false;          /* p1, p6 : ni atelier, ni répétition */
+    if (document.body.classList.contains('vue-relecture')) return false;        /* réveil n°3 (a) : rien ne part depuis la Relecture (« ma version ») */
     if (typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME !== 'classe') return false;   /* rien tant que l'heure n'est pas lancée */
     return typeof dr_cheminC === 'function' && !!dr_cheminC();
   } catch (e) { return false; }
@@ -18402,8 +18403,17 @@ function dr_tabPoserBoutons(){
   q.title = DR_TAB_BULLE_ADR; q.onclick = dr_tabAdresse;
   b.insertAdjacentElement('afterend', q);
 }
+/* le témoin de la vue « ⧉ Tableau » (réveil n°3 (b) ; cadrage 1 §1.8 : le libellé seulement si un support est connecté) : « tableau en Win K »
+   n'existe que si la fenêtre du tableau est ouverte ; le tableau distant ne se déclare pas (il n'écrit jamais) : rien n'est affirmé pour lui.
+   `vueDroite` (E1) peut l'appeler ; en attendant, la veille corrige ce qu'elle a écrit. */
+function dr_tabTemoin(){
+  const f = DR_TAB.fen && !DR_TAB.fen.closed; if (!f) return '';
+  const coupe = typeof S === 'object' && S && S.coupure;
+  return '<span class="pt-cnx ' + (coupe ? 'rouge' : 'vert') + '"></span> ' + (coupe ? 'déconnecté' : 'tableau en Win K');
+}
 function dr_tabVeiller(){
   try { dr_tabPoserBoutons(); } catch (e) {}
+  try { const t = document.getElementById('vue-temoin'); if (t && typeof S === 'object' && S && S.vueTableau) { const h = dr_tabTemoin(); if (t.innerHTML !== h) t.innerHTML = h; } } catch (e) {}
   if (!dr_tabPeutEcrire()) return;
   /* M4 : une parole n'appelle pas `pousser` — « qui a participé », s'il est au tableau, se recalcule ici et repart par `pousser` (dr_tout) */
   if (S.qui && !S.gel && typeof quiAParticipe === 'function') { try { const q = quiAParticipe(); if (JSON.stringify(q) !== JSON.stringify(S.qui)) { S.qui = q; dr_tout(); } } catch (e) {} }
@@ -18469,15 +18479,35 @@ function dr_tabPoser(){
   window.addEventListener('resize', () => { if (DR_TAB.montre) dr_rendreMur(DR_TAB.montre); });
 }
 
-/* la classe attendue (relance F1) : elle vient de `dr_proposer()` d'E2 quand il existe (la grille lue en lecture seule par `dr_lire`,
-   jamais le module EDT en vue tableau) ; sinon l'attente ne dit que le nom du site, la date et l'heure. */
+/* la classe attendue (réveil n°3 : tranché) — en page tableau sans cours actif, la grille de l'EDT est lue EN LECTURE SEULE (`dr_lire` :
+   grille, calendrier, classes ; jamais le module EDT, qui écrit à son ouverture) et la case du moment se calcule pour le niveau de la page
+   (`?n=`) avec la règle de `dr_proposer` (E2) : aujourd'hui, une heure MJPC de la bonne semaine (A/B), en cours ou la prochaine, hors vacances
+   et fériés. `dr_caseDuMoment` d'E2, s'il existe (fonction pure), fait foi ; sinon `dr_tabCaseDuMoment` ci-dessous. Sans grille : rien. */
+const DR_TAB_JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+function dr_tabAnnee(d){ const y = d.getFullYear(); return d.getMonth() >= 7 ? y + '-' + (y + 1) : (y - 1) + '-' + y; }
+function dr_tabIso(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function dr_tabCaseDuMoment(grille, cal, classes, d, niveau){
+  if (!grille || !Array.isArray(grille.creneaux)) return null;
+  const iso = dr_tabIso(d), lundi = dr_tabIso(new Date(d.getFullYear(), d.getMonth(), d.getDate() - ((d.getDay() + 6) % 7)));
+  if (cal && ((cal.vacances || []).some(v => v && iso >= v.debut && iso <= v.fin) || (cal.feries || []).some(f => f && f.date === iso))) return null;   /* comme edtJourSansCours */
+  const sem = ((cal && cal.semaines) || []).find(x => x && x.lundi === lundi); const lettre = sem ? (sem.lettre || null) : null;   /* comme edtSemaineLettre */
+  const mn = h => { const p = String(h || '').split(':'); return (+p[0] || 0) * 60 + (+p[1] || 0); }; const m = d.getHours() * 60 + d.getMinutes();
+  const niv = c => { const k = c.classeMjpc || c.classe; const x = classes && classes[k]; return (x && x.niveau) || null; };
+  const l = grille.creneaux.filter(c => c && c.mjpc && c.jour === DR_TAB_JOURS[d.getDay()] && (!lettre || !c.semaine || String(c.semaine).indexOf(lettre) >= 0)
+      && (!niveau || niv(c) === niveau) && mn(String(c.creneau).split('-')[1]) > m)
+    .sort((a, b) => String(a.creneau).localeCompare(String(b.creneau)));
+  const c = l[0]; return c ? { classeNom: c.classeMjpc || c.classe, creneau: c.creneau, depuis: 'edt' } : null;
+}
 function dr_tabAttendre(){
   if (DR_TAB.montre || SES.ctx) return;
-  /* seule une proposition qui vient de l'EDT (`depuis: 'edt'`) est une classe ATTENDUE ; le repli « première classe du niveau » ne l'est pas */
-  const dire = p => { if (DR_TAB.montre || SES.ctx) return; if (p && p.depuis && p.depuis !== 'edt') p = null; const c = p && (p.classeNom || p.classe || p.classeSlug), cr = p && (p.creneau || (p.debut && p.fin ? p.debut + '-' + p.fin : ''));
-    dr_tabDireClasse(c ? 'Classe attendue : ' + c + (cr ? ' \u00b7 ' + String(cr).replace('-', ' \u2013 ') : '') : ''); };
-  if (typeof dr_proposer !== 'function') { dire(null); return; }
-  try { const r = dr_proposer(dire); if (r && typeof r.then === 'function') r.then(dire, () => dire(null)); else if (r !== undefined) dire(r); } catch (e) { dire(null); }
+  const d = new Date(), an = dr_tabAnnee(d), niveau = (location.search.match(/[?&]n=([^&]+)/) || [])[1] || null;
+  const dire = p => { if (DR_TAB.montre || SES.ctx) return; const c = p && p.depuis === 'edt' && (p.classeNom || p.classe);
+    dr_tabDireClasse(c ? 'Classe attendue : ' + c + ' · ' + String(p.creneau || '').replace('-', ' – ') : ''); };
+  dr_tabLire('/site/edt/grille/' + an, g => { if (!g) { dire(null); return; }
+    dr_tabLire('/site/edt/calendrier/' + an, cal => dr_tabLire('/classes', cl => {
+      const f = (typeof dr_caseDuMoment === 'function') ? dr_caseDuMoment : (gr, ca, cr, now, n) => dr_tabCaseDuMoment(gr, ca, cl, now, n);
+      let p = null; try { p = f(g, cal, null, new Date(), niveau); } catch (e) {} dire(p);
+    })); });
 }
 
 /* la ligne du bas de l'attente : la classe attendue, ou celle du cours trouvé ; vide, elle disparaît (appelée par `sesTabChercherCours`, `sesTabVeillePointeur`) */

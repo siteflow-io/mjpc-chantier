@@ -18198,9 +18198,15 @@ function dr_versMur(et, x){
   const f = (DR_TAB.fen && !DR_TAB.fen.closed) ? DR_TAB.fen : ((typeof fenetreMur !== 'undefined' && fenetreMur && !fenetreMur.closed) ? fenetreMur : null);
   if (f) {
     try {
-      if (!et) f.postMessage(Object.assign({ et: null }, x), '*');
-      else { let ecran = x.ecran; if (ecran === undefined) { try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) { ecran = null; } }
-        f.postMessage({ et, ecran, documents: x.documents }, '*'); }
+      if (!et) {
+        /* le socle appelle `dr_versMur(null, {sortie:true})` pour deux gestes (dr_auMur) : refermer la fiche ouverte (`fermerFiche` : S.fichePage
+           est encore posé — la fenêtre anime la sortie et garde l'image, comme la maquette) ou n'avoir plus rien au mur (l'atelier, l'arrêt
+           d'une répétition sans état d'avant : la fenêtre se vide, K10) */
+        const fiche = typeof S === 'object' && S && S.fichePage;
+        f.postMessage(fiche ? { sortie: true } : Object.assign({ et: null }, x), '*');
+      } else { let ecran = x.ecran; if (ecran === undefined) { try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) { ecran = null; } }
+        let docs = x.documents; if (docs === undefined) { try { docs = (dr_documents() || {})[String(et.si)] || []; } catch (e) { docs = []; } }
+        f.postMessage({ et, ecran, documents: docs }, '*'); }
     } catch (e) {}
   }
   if (et) dr_sceneAuto();
@@ -18273,9 +18279,8 @@ function dr_sessionEtat(ok){
 
 /* ─── la participation : `C/part` tombe (relance C8 : plus de lecteur ; elle vit dans `C/etat` et le journal, chez E2) ─── */
 
-/* ─── la veille du pilote : elle regarde l'état du tableau (`S.mur`), la copie jouée et la participation ;
-       ce qui change part au hub — sans crochet sur les fonctions du socle (le pont et ses enveloppes tombent, C1 §13).
-       Pendant le gel, `S.mur` ne bouge pas : rien ne part, le tableau garde son image. ─── */
+/* ─── la veille du pilote : la copie jouée (une fois par seconde) — quand elle change, `trameMaj` avance et la scène le dit.
+       L'état du tableau, lui, part par le crochet `dr_versMur` que `pousser` appelle (pendant le gel, rien ne part). ─── */
 /* « Adresse du tableau » (relance F5 : le QR tombe avec le téléphone — il attendait une écriture que la vue tableau ne fait jamais) :
    un bouton à côté de « ⧉ » qui AFFICHE l'adresse `?vue=tableau` à taper sur l'ordinateur de la classe. Aucune écriture. */
 const DR_TAB_BULLE_ADR = 'Le tableau sur un autre appareil : montre l\u2019adresse à ouvrir dans Chrome sur l\u2019ordinateur de la classe. '
@@ -18302,18 +18307,16 @@ function dr_tabPoserBoutons(){
 }
 function dr_tabVeiller(){
   try { dr_tabPoserBoutons(); } catch (e) {}
-  if (!dr_tabPeutEcrire()) { DR_TAB.emis = ''; return; }
-  /* M4, filet tant que `dr_versMur` n'est pas appelé par `pousser` : « qui a participé », affiché au tableau, suit la parole */
+  if (!dr_tabPeutEcrire()) return;
+  /* M4 : une parole n'appelle pas `pousser` — « qui a participé », s'il est au tableau, se recalcule ici et repart par `pousser` (dr_tout) */
   if (S.qui && !S.gel && typeof quiAParticipe === 'function') { try { const q = quiAParticipe(); if (JSON.stringify(q) !== JSON.stringify(S.qui)) { S.qui = q; dr_tout(); } } catch (e) {} }
-  let sig = ''; try { sig = JSON.stringify(S.mur || null); } catch (e) {}
-  if (S.mur && sig !== DR_TAB.emis) { DR_TAB.emis = sig; dr_sceneAuto(); }   /* filet tant que le crochet `dr_versMur` n'est pas posé partout (idempotent : même débounce) */
   if ((DR_TAB.tic++ % 8) === 0) {   /* une fois par seconde : la copie jouée a-t-elle changé ? */
     let ts = ''; try { const t = (typeof dr_trame === 'function') ? dr_trame() : null; ts = t ? JSON.stringify(t) : ''; } catch (e) {}
     if (ts && ts !== DR_TAB.trameSig) {
       const premier = DR_TAB.trameSig === ''; DR_TAB.trameSig = ts;
       clearTimeout(DR_TAB.trameT);
       /* APRÈS la poussée réelle de la copie (`dr_sauve`, débounce 900 ms) — jamais l'annonce avant la marchandise */
-      DR_TAB.trameT = setTimeout(() => { DR_TAB.trameMaj = Date.now(); DR_TAB.emis = ''; }, premier ? 0 : 1100);
+      DR_TAB.trameT = setTimeout(() => { DR_TAB.trameMaj = Date.now(); if (!premier) dr_sceneAuto(); }, premier ? 0 : 1100);   /* la copie a changé : la scène le dit au distant */
     }
   }
 }

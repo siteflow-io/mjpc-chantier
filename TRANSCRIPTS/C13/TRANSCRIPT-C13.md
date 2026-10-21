@@ -1614,3 +1614,24 @@ Réponse de la conscience (08:58), mot pour mot :
 
 21/10/2026 08:58
 MEMO
+
+---
+
+## TOUR 76 (21/10/2026, 09:02 → 09:05)
+
+Paul, tour 76, mot pour mot : « Donne moi un message court que je puisse leur coller et dis moi comment les nommer. »
+
+Réponse de la conscience (09:05), mot pour mot :
+
+134. Les noms des quatre sessions cloud (dépôt `siteflow-io/mjpc-chantier` à chaque fois) : **Déroulé E1 — socle et Atelier**, **Déroulé E2 — classe et heure**, **Déroulé E3 — tableau**, **Déroulé E4 — récit et papier**. E1 en premier.
+
+135. Le message, un par session, seule la lettre change :
+
+Tu es **E1**, l'un des quatre exécutants de l'intégration du déroulé de MJPC. Dans ce dépôt, lis `MANDATS/INTEGRATION-DEROULE/PHRASES-A-COLLER.md`, section **E1**, et fais exactement ce qu'elle dit, du début à la fin, sans jamais t'arrêter.
+
+(puis le même avec **E2** / section **E2**, **E3** / section **E3**, **E4** / section **E4**.)
+
+136. Les quatre messages sont aussi dans le fichier, en tête : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/INTEGRATION-DEROULE/PHRASES-A-COLLER.md.
+
+21/10/2026 09:05
+MEMO

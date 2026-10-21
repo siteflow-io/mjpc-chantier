@@ -177,6 +177,7 @@ else verif('D1', null, 'les documents par référence', 'la maquette simule ses 
   await lancer(pg); const q = await jusquA(pg, () => ecran().blocs.some(b => b.t === 'question')); await pg.click('#bdev'); await p(pg, 150); await garde(pg);
   if (q) await reponse(pg, 'ZZ', 'une réponse sans élève reconnu');
   await relecture(pg); const r = await texteRel(pg);
+  verif('T', !/[.!?]\s+un élève a répondu/.test(r) && !/\?\./.test(r), 'la ponctuation : une majuscule après le point même devant un nom en gras ; jamais « ?. » (relecteur continu B)', r.slice(0, 600));
   verif('T', q ? /[Uu]n élève a répondu : « une réponse sans élève reconnu/.test(r) && !/\bZZ a répondu/.test(r) : null, 'un élève non identifié : « un élève a répondu », jamais ses initiales (cadrage 2 · 1.5 bis)', r.slice(0, 900));
   await pg.click('#rel [data-rv="moi"]'); await p(pg, 400); const r2 = await texteRel(pg);
   verif('T', /Ce qu'on a fait aujourd'hui/.test(r2) && /Cette heure a commencé à/.test(r2), '« ma version » garde l\'entête et le cadre de l\'heure', r2.slice(0, 300));
@@ -197,6 +198,10 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
     const mk = await pg.evaluate(() => ({ m: ecran().blocs[0].marques.map(m => m.t + ':' + m.txt), dom: document.querySelectorAll('#mur .img-sup .mk').length, une: ecran().blocs[0].devoilerTout === false }));
     verif('RC1', mk.m.join(',') === 'pt:1,pt:2,pt:3' && mk.dom === 3 && mk.une, 'trois points posés d\'un clic chacun (① 1, 2, 3), visibles sur l\'image, « une à une »', JSON.stringify(mk));
     const cal = await pg.evaluate(() => { const s = document.querySelector('#mur .img-sup'); const m = s.querySelector('.mk'); return { L: s.getBoundingClientRect().width, fs: parseFloat(m.style.fontSize) }; });
+    { const n0 = await pg.evaluate(() => seance().ecrans.length); await pg.evaluate(() => { DR_MK.sel = { k: 2, bi: 0 }; dr_tout(); }); await p(pg, 200); let boite = null; pg.once('dialog', d => { boite = d.message(); d.dismiss().catch(() => {}); }); await pg.keyboard.press('Delete'); await p(pg, 600);
+      const apres = await pg.evaluate(() => ({ n: seance().ecrans.length, m: ecran().blocs[0].marques.length }));
+      verif('RC1', apres.n === n0 && apres.m === 2 && !boite, 'Suppr sur une marque sélectionnée ne retire que la marque — jamais la diapo (relecteur continu B)', JSON.stringify({ apres, boite }));
+      for (const [x, y] of [[0.4, 0.75]]) { await pg.click('#dr-mk-panneau [data-mk-o="pt"]'); const r = await pg.evaluate(() => document.querySelector('#mur .img-sup').getBoundingClientRect().toJSON()); await pg.mouse.click(r.x + r.width * x, r.y + r.height * y); await p(pg, 300); } }
     verif('RC1', Math.abs(cal.fs - cal.L * 0.042) < 0.5, 'calibrées à la largeur de l\'image (calibreMarques : 4,2 % de la largeur) — 1366', JSON.stringify(cal));
     await cap(pg, 'E4-RC1-marques-atelier'); await p(pg, 1500);
     const hub = await pg.evaluate(() => { const e = window.__HUB.site['3e'].chapitres[0].seances[0].deroule.ecrans[1]; return e ? e.blocs[0] : null; });
@@ -228,7 +233,7 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   await pg.keyboard.press('Escape'); await p(pg, 1200); const e1 = await etat();
   verif('RC4', !/ajout du bancX/.test(champ.txt) && /ajout du banc/.test(champ.txt), 'dans un champ de texte, Ctrl+Z est celui du navigateur (il retire la dernière frappe, pas un geste de la trame)', JSON.stringify(champ));
   await pg.evaluate(() => document.activeElement && document.activeElement.blur()); await pg.keyboard.press('Alt+ArrowDown'); await p(pg, 1200); const e2 = await etat();
-  pg.removeAllListeners('dialog'); pg.on('dialog', d => d.accept()); await pg.keyboard.press('Delete'); await p(pg, 1400); const e3 = await etat();
+  pg.removeAllListeners('dialog'); pg.on('dialog', d => d.accept()); await pg.keyboard.press('Delete'); await p(pg, 400); if (await pg.$('#at-modale .at-btn-prim')) await pg.click('#at-modale .at-btn-prim'); /* la modale du site (E1 : dr_confirmer), sinon la boîte native */ await p(pg, 1200); const e3 = await etat();
   verif('RC4', e0 !== e1 && e1 !== e2 && e2 !== e3, 'trois gestes de la trame : un texte modifié, un ordre changé (Alt+↓), une diapo supprimée (Suppr)', null);
   await pg.keyboard.press('Control+z'); await p(pg, 500); const u1 = await etat(); await pg.keyboard.press('Control+z'); await p(pg, 500); const u2 = await etat(); await pg.click('#dr-annuler'); await p(pg, 500); const u3 = await etat();
   verif('RC4', u1 === e2 && u2 === e1 && u3 === e0, 'trois ↶ (Ctrl+Z, Ctrl+Z, le bouton) : la diapo revient, l\'ordre revient, le texte revient — à l\'identique (eid, id, texte)', [u1 === e2, u2 === e1, u3 === e0].join(','));

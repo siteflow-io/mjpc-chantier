@@ -70,7 +70,7 @@ document.addEventListener('click', ev => { try { if (!DR_MK.outil || typeof S ==
 document.addEventListener('mousedown', ev => { try { if (typeof S === 'undefined' || !S.atelier || DR_MK.outil) return; const mk = ev.target.closest && ev.target.closest('#mur .img-sup .mk'); if (!mk || mk.querySelector('[contenteditable="true"]')) return; const k = +mk.dataset.mk, bi = +mk.dataset.bi, t = Date.now();
   if (DR_MK.dernier.k === k && t - DR_MK.dernier.t < 380) { DR_MK.dernier = { k: -1, t: 0 }; ev.preventDefault(); dr_editeMarque(mk); return; }
   DR_MK.dernier = { k, t }; DR_MK.sel = { k, bi }; ev.preventDefault(); ev.stopPropagation(); dr_tout(); } catch (e) {} }, true);
-document.addEventListener('keydown', ev => { try { if (typeof S === 'undefined' || !S.atelier) return; const a = document.activeElement; if (a && (a.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(a.tagName))) return;
+window.addEventListener('keydown', ev => { try { if (typeof S === 'undefined' || !S.atelier) return; const a = document.activeElement; if (a && (a.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(a.tagName))) return;   /* sur window : avant les gestes du socle sur document (Suppr y supprime la diapo — relecteur continu B) */
   if (ev.key === 'Escape' && (DR_MK.outil || DR_MK.sel)) { DR_MK.outil = null; DR_MK.sel = null; document.body.classList.remove('dr-pose-mk'); dr_tout(); dr_mkPanneau(); }
   if (ev.key === 'Delete' && DR_MK.sel) { ev.preventDefault(); ev.stopImmediatePropagation(); dr_supMk(DR_MK.sel.k, DR_MK.sel.bi); } } catch (e) {} }, true);
 /* après chaque rendu (pilote, atelier, tableau, vignettes) : calibrer ; le panneau suit la diapo de l'atelier */

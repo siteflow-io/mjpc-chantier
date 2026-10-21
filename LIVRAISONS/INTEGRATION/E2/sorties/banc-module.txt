@@ -1,10 +1,10 @@
-banc du module dr-classe.js sur la maquette (socle simulé) · 2026-10-21 07:50 UTC · maquette.html md5 62d9557ac8fedcfbdd8b157a2588cbee · 605996 o
-module dr-classe.js md5 16dc986f3d44c965d20c553c8300c5f3
+banc du module dr-classe.js sur la maquette (socle simulé) · 2026-10-21 07:55 UTC · maquette.html md5 62d9557ac8fedcfbdd8b157a2588cbee · 605996 o
+module dr-classe.js md5 66e0bc4ec6cee95a83ad1cb49cbf9732
 
 M1 — lancer par dr_lancer : les écritures
   ok     M1 · l'heure est lancée en régime classe — lundi 14 septembre 2026 15:07-16:02 · heure 1 sur 2 · Poésie et peinture : le Romantisme en question
   ok     M1 · C, cours_actif, C/ecrans, C/journal, C/etat, H — PUT C · PUT /site/cours_actif · PUT C/ecrans · PUT C/journal · PUT C/etat · PUT C/heures/<H>
-  ok     M1 · cours_actif : même forme qu'aujourd'hui — {"niveau":"3e","chapitre":"0","seance":"0","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle","debut":"15:07","fin":"16:02","ts":1789391252366}
+  ok     M1 · cours_actif : même forme qu'aujourd'hui — {"niveau":"3e","chapitre":"0","seance":"0","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle","debut":"15:07","fin":"16:02","ts":1789391252409}
 
 M2 — ▶ ×3, une parole, une note : le journal, l'état, le paquet
   ok     M2 · C/journal : la parole et les dévoilements — diapo lancement diapo devoile devoile devoile parole note devoile devoile
@@ -27,7 +27,7 @@ M3 — recharger en pleine heure, relancer la même heure : la REPRISE, pas une 
   ok     M3 · la reprise est au journal
 
 M4 — les sept étapes, clore : H clos, cours_actif effacé
-  ok     M4 · H : clos, finReel — {"clos":true,"finReel":1789391347323}
+  ok     M4 · H : clos, finReel — {"clos":true,"finReel":1789391347241}
   ok     M4 · cours_actif effacé
   ok     M4 · la clôture est au journal du hub
   ok     JS · aucune erreur JS

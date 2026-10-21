@@ -1,0 +1,39 @@
+banc du module dr-classe.js sur la maquette (socle simulé) · 2026-10-21 07:54 UTC · maquette-e2.html md5 1a459cf0d15acc1ead7dac18d14b6110 · 608295 o
+module dr-classe.js md5 66e0bc4ec6cee95a83ad1cb49cbf9732
+
+M0 — la porte réelle (la maquette rebranchée) : « ▶ Lancer » en un clic
+  ok     M0 · la porte propose la classe, le créneau, l'heure n/N, le temps utile — LUNDI 14 SEPTEMBRE 08:00-08:55 08:57-09:52 10:07-11:02 11:04-11:59 13:00-13:55 13:57-14:52 15:07-16:02 16:04-16:59 3E Charles de Gaulle heur
+  ok     M0 · [data-lancer="1"] lance avec la classe proposée — lundi 14 septembre 2026 15:07-16:02 · 3E Charles de Gaulle · heure 1 sur 1 · Poésie et peinture : le Romantisme en question
+
+M1 — lancer par dr_lancer : les écritures
+  ok     M1 · l'heure est lancée en régime classe — lundi 14 septembre 2026 15:07-16:02 · 3E Charles de Gaulle · heure 1 sur 1 · Poésie et peinture : le Romantisme en question
+  ok     M1 · C, cours_actif, C/ecrans, C/journal, C/etat, H — PUT C · PUT /site/cours_actif · PUT C/ecrans · PUT C/journal · PUT C/etat · PUT C/heures/<H>
+  ok     M1 · cours_actif : même forme qu'aujourd'hui — {"niveau":"3e","chapitre":"0","seance":"0","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle","debut":"15:07","fin":"16:02","ts":1789391252211}
+
+M2 — ▶ ×3, une parole, une note : le journal, l'état, le paquet
+  ok     M2 · C/journal : la parole et les dévoilements — diapo lancement diapo devoile devoile devoile parole note devoile devoile
+  ok     M2 · C/journal : aucun rang (di) au hub
+  ok     M2 · C/etat : S, parDiapo, vuMax, aucun rang — S,parDiapo,vuMax,maj
+  ok     M2 · H : classe, créneau, début réel, activites[0] (eid, passages ≥ 1) — [{"n":0,"eid":"e9fcd9fc2","act":"Analyse d'images : la routine","prevu":3,"reel":2,"passages":2,"comp":["litt-036","c4-lire-02"]}]
+  ok     M2 · H : le temps réel (≥ 1 min), la parole, aucun rang — {"reel":2,"parts":1}
+  ok     R7 · « Où on en est » : dévoilés / total et réel / prévu sur la ligne de l'activité en cours — 5/9 · 2/52 min
+  ok     R3 · le minuteur : 10 s, Départ, « au tableau » → le compte à rebours au pilote et dans l'état du tableau — {"aff":"00:07","bandeau":"⏱ 00:07","mur":"⏱ 00:07"}
+  ok     R3 · à zéro : « c'est fini », le bandeau se retire, le journal a départ et fin — {"bandeau":"","J":["depart","fin"]}
+  ok     R19 · ⌫ hors d'un champ = ◀ (revoile le dernier élément) — 5 / 6 dévoilés → 4 / 6 dévoilés
+      avant rechargement : {"lancee":true,"close":false,"eid":"e9fcd9fc2","di":0,"compte":"5 / 6 dévoilés","parts":1,"notes":1,"ecoule":91,"J":14,"regime":"classe","hou":"lundi 14 septembre 2026 15:07-16:02 · 3E Charles de Gaulle · heure 1 sur 1 · Poésie et peinture : le Romantisme en question"}
+
+M3 — recharger en pleine heure, relancer la même heure : la REPRISE, pas une copie neuve
+      après reprise : {"lancee":true,"close":false,"eid":"e9fcd9fc2","di":0,"compte":"5 / 6 dévoilés","parts":1,"notes":1,"ecoule":93,"J":12,"regime":"classe","hou":"lundi 14 septembre 2026 15:07-16:02 · 3E Charles de Gaulle · heure 1 sur 1 · Poésie et peinture : le Romantisme en question"}
+  ok     M3 · la copie jouée n'est pas recopiée depuis la trame — 0 × PUT C
+  ok     M3 · la diapo courante et ses dévoilements sont revenus — 5 / 6 dévoilés → 5 / 6 dévoilés
+  ok     M3 · la parole et les notes — {"parts":1,"notes":1}
+  ok     M3 · le chrono, recalculé depuis le début réel (± 2 s) — 93 s pour 93 attendues
+  ok     M3 · la reprise est au journal
+
+M4 — les sept étapes, clore : H clos, cours_actif effacé
+  ok     M4 · H : clos, finReel — {"clos":true,"finReel":1789391346657}
+  ok     M4 · cours_actif effacé
+  ok     M4 · la clôture est au journal du hub
+  ok     JS · aucune erreur JS
+
+BANC DU MODULE VERT

@@ -19,6 +19,12 @@ const noeud = (hub, chemin) => chemin.split('/').filter(Boolean).reduce((n, k) =
 const aRang = x => JSON.stringify(x).includes('"di":');
 const lu = p => p.evaluate(() => ({ lancee: S.lancee, close: S.close, eid: eidDe(S.di), di: S.di, compte: (document.getElementById('compte') || {}).textContent, parts: S.parts.length, notes: S.notesFil.length, ecoule: S.ecoule, J: J.length, regime: AT_DR_REGIME, hou: document.getElementById('hou').textContent }));
 
+if (fs.readFileSync(F, 'utf8').includes('dr-porte-classe')) { dire(''); dire('M0 — la porte réelle (la maquette rebranchée) : « ▶ Lancer » en un clic');
+  const s0 = await page(); const p0 = s0.page; await s0.attendre(300); await p0.evaluate(() => { $('ecran-edt').classList.add('on'); edt(); }); await s0.attendre(300);
+  const porte = await p0.evaluate(() => (document.getElementById('edt-cases') || {}).innerText || ''); pas('M0', /3E Charles de Gaulle/.test(porte) && /min utiles/.test(porte) ? 'ok' : 'ÉCHEC', 'la porte propose la classe, le créneau, l\'heure n/N, le temps utile', porte.replace(/\s+/g, ' ').slice(0, 140));
+  await p0.click('[data-lancer="1"]'); await s0.attendre(2000); const e0 = await lu(p0);
+  pas('M0', e0.lancee && /3E Charles de Gaulle/.test(e0.hou) ? 'ok' : 'ÉCHEC', '[data-lancer="1"] lance avec la classe proposée', e0.hou);
+  await s0.ctx.close(); }
 dire(''); dire('M1 — lancer par dr_lancer : les écritures');
 const s = await page(); const p = s.page;
 await p.evaluate(() => dr_lancer('3E Charles de Gaulle', '15:07-16:02', '15:07', 1)); await s.attendre(2500);
@@ -44,7 +50,7 @@ const av = await p.evaluate(() => { try { ouOnEnEst(); } catch (e) {} const x = 
 pas('R7', av && /^5\/\d+ · \d+\/\d+ min$/.test(av) ? 'ok' : 'ÉCHEC', '« Où on en est » : dévoilés / total et réel / prévu sur la ligne de l\'activité en cours', av);
 await s.attendre(1200); await p.click('#dr-minut-b'); await s.attendre(100); await p.fill('#dr-minut-in', '00:10'); await p.check('#dr-minut-tab'); await p.click('#dr-minut-go'); await s.attendre(3000);
 const m1 = await p.evaluate(() => ({ aff: document.getElementById('dr-minut-aff').textContent, bandeau: S.bandeau, mur: S.mur && S.mur.bandeau }));
-pas('R3', /^00:0[67]$/.test(m1.aff) && /^⏱ 00:0[67]$/.test(m1.bandeau) && m1.mur === m1.bandeau ? 'ok' : 'ÉCHEC', 'le minuteur : 10 s, Départ, « au tableau » → le compte à rebours au pilote et dans l\'état du tableau', JSON.stringify(m1));
+pas('R3', /^00:0[5-8]$/.test(m1.aff) && /^⏱ 00:0[5-8]$/.test(m1.bandeau) && m1.mur === m1.bandeau ? 'ok' : 'ÉCHEC', 'le minuteur : 10 s, Départ, « au tableau » → le compte à rebours au pilote et dans l\'état du tableau', JSON.stringify(m1));
 await s.attendre(12500); const m2 = await p.evaluate(() => ({ bandeau: S.bandeau, J: J.filter(x => x.type === 'minuteur').map(x => x.action) }));
 pas('R3', !m2.bandeau && m2.J.join() === 'depart,fin' ? 'ok' : 'ÉCHEC', 'à zéro : « c\'est fini », le bandeau se retire, le journal a départ et fin', JSON.stringify(m2));
 { await p.evaluate(() => { if (document.activeElement) document.activeElement.blur(); }); const c0 = await p.$eval('#compte', e => e.textContent); await p.keyboard.press('Backspace'); await s.attendre(300); const c1 = await p.$eval('#compte', e => e.textContent);

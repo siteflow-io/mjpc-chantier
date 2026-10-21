@@ -38,6 +38,11 @@ function dr_nbHeures(creneau){
   try { const ec = AT.edChap, sk = ATVUES.snum; const sce = chapitresData[ec.level][ec.chnum].seances[sk]; return edtHeuresPour(sce, creneau); } catch (e) { return 1; }
 }
 
+/* l'heure proposée pour un lancement sans l'EDT : les heures déjà jouées par cette classe dans cette séance, plus une (l'heure du jour sur ce créneau ne compte pas : c'est elle) */
+function dr_heureProposee(slug, creneau){
+  try { const ec = AT.edChap, sk = ATVUES.snum; const hs = ((((chapitresData[ec.level][ec.chnum].seances[sk] || {}).deroule_joue || {})[slug] || {}).heures) || {};
+    const ici = _drCleHeureDe({ classeSlug: slug, debut: String(creneau).split('-')[0], fin: String(creneau).split('-')[1] }); return Object.keys(hs).filter(k => k !== ici).length + 1; } catch (e) { return 1; }
+}
 /* ─── l'heure n de la séance pour cette classe : jour, début, fin, base (ce que `HEURES_SIM[h]` simulait) ───
    L'heure en cours vient de `AT_DR_COURS` ; une heure passée, de ce qui a été posé à son lancement (`S.heuresCours`,
    gardé dans `C/etat`). `dr_heureDe` (E1, le socle) peut lire `dr_heureJouee(h)` pour les heures passées. */

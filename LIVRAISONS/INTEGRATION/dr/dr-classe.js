@@ -61,7 +61,7 @@ function participation(){ /* le panneau : les initiales, vert = a répondu, poin
 function quiAParticipe(){ /* réponses au tableau + prises de parole, par élève (ce que comptent les pastilles) */ const c = {}; S.parts.forEach(p => { c[p.nom] = (c[p.nom] || 0) + 1; }); Object.keys(parDiapo).forEach(k => Object.values(parDiapo[k].reps || {}).forEach(l => l.forEach(r => { if (r.eleve && r.r) c[r.eleve] = (c[r.eleve] || 0) + 1; }))); return ELEVES.filter(n => c[n]).map(n => ({ p: prenomUnique(n), n: c[n] })); }
 
 function dr_ppopEcarter(p){ /* E2 (réveil n°3) : la fiche d'élève ne couvre pas les boutons de la fin de l'heure — elle se pose à côté du volet, sinon au-dessus */
-  const pr0 = p.getBoundingClientRect(); if (pr0.height) p.style.top = Math.max(8, Math.min(parseFloat(p.style.top) || 0, innerHeight - pr0.height - 8)) + 'px'; if (pr0.width) p.style.left = Math.max(8, Math.min(parseFloat(p.style.left) || 0, innerWidth - pr0.width - 8)) + 'px';   /* toujours entière dans l'écran */
+  const pr0 = p.getBoundingClientRect(); if (pr0.height) p.style.top = Math.max(8, Math.min(parseFloat(p.style.top) || 0, innerHeight - pr0.height - 8)) + 'px'; if (pr0.width) p.style.left = Math.max(8, Math.min(parseFloat(p.style.left) || 0, innerWidth - pr0.width - 8)) + 'px'; { const q = p.getBoundingClientRect(); if (q.right > innerWidth - 8) p.style.left = Math.max(8, (parseFloat(p.style.left) || 0) - (q.right - innerWidth + 8)) + 'px'; }   /* toujours entière dans l'écran (sa largeur suit sa place : on remesure) */
   const f = document.getElementById('droite-fin') && document.getElementById('droite-fin').offsetParent ? document.getElementById('droite-fin') : document.getElementById('fin'); if (!f || !f.offsetParent) return; const fr = f.getBoundingClientRect(), pr = p.getBoundingClientRect(); const w = pr.width || 320, hh = pr.height || 320;
   const l = parseFloat(p.style.left) || 0, tp = parseFloat(p.style.top) || 0; if (l + w <= fr.left || l >= fr.right || tp + hh <= fr.top || tp >= fr.bottom) return;
   if (fr.left - w - 8 >= 8) p.style.left = (fr.left - w - 8) + 'px'; else if (fr.right + w + 8 <= innerWidth) p.style.left = (fr.right + 8) + 'px'; else p.style.top = Math.max(8, fr.top - hh - 8) + 'px'; }
@@ -107,7 +107,13 @@ $('vif').addEventListener('input', () => { const z = $('vif'); const c = dr_cand
 
 $('vif').addEventListener('keydown', ev => { const z = $('vif'); if (ev.key === 'Enter') { const c = dr_candidats(z.value); if (c.length) { ouvrirPart(c[0]); setTimeout(() => { const n2 = $('dr-pnote'); if (n2) n2.focus({ preventScroll: true }); }, 60); } ev.preventDefault(); } if (ev.key === 'Escape') { z.value = ''; S.vifCands = []; participation(); z.blur(); } if ((ev.ctrlKey || ev.metaKey) && String(ev.key).toLowerCase() === 'z') { if (S.vifAnnule) { S.vifAnnule(); ev.preventDefault(); } } });
 
-function vifDernier(ini, id){ const t = $('vif-dernier'); t.innerHTML = 'posé : <b>' + dr_iniVu(ini) + '</b> <span id="dr-vif-x" title="Retire cette prise de parole (Ctrl+Z) — rien d\'autre ne change" style="cursor:pointer;color:#e8484c">✕ (Ctrl+Z)</span>'; const annule = () => { partRetire(ini, id); t.innerHTML = 'annulé.'; setTimeout(() => { t.innerHTML = ''; }, 1500); S.vifAnnule = null; }; $('dr-vif-x').onclick = annule; S.vifAnnule = annule; clearTimeout(S.vifDT); S.vifDT = setTimeout(() => { t.innerHTML = ''; S.vifAnnule = null; }, 6000); }
+/* réveil n°5, A4-3 (C1 4b.1, 5.4 bis) : le VIF, « posé : … ✕ (Ctrl+Z) » et le haut de la liste des paroles se voient sans défiler — la colonne de droite
+   (#droite, qui défile) vient à eux au F2 (le socle met le curseur dans le VIF sans faire défiler) et après chaque pose */
+function dr_vifMontrer(){ try { const d = document.getElementById('droite'), a = document.getElementById('vif'); if (!d || !a || !a.offsetParent) return; const z = document.getElementById('vif-dernier'), pt = document.getElementById('part');
+  const R = d.getBoundingClientRect(); const haut = a.getBoundingClientRect().top - 6; let bas = Math.max(a.getBoundingClientRect().bottom, z && z.offsetParent ? z.getBoundingClientRect().bottom : 0); if (pt && pt.offsetParent) bas = Math.max(bas, Math.min(pt.getBoundingClientRect().bottom, pt.getBoundingClientRect().top + 60));
+  if (bas + 8 > R.bottom) d.scrollTop += Math.min(bas + 8 - R.bottom, haut - R.top); else if (haut < R.top) d.scrollTop -= R.top - haut; } catch (e) {} }
+document.getElementById('vif').addEventListener('focus', () => setTimeout(dr_vifMontrer, 0));
+function vifDernier(ini, id){ const t = $('vif-dernier'); t.innerHTML = 'posé : <b>' + dr_iniVu(ini) + '</b> <span id="dr-vif-x" title="Retire cette prise de parole (Ctrl+Z) — rien d\'autre ne change" style="cursor:pointer;color:#e8484c">✕ (Ctrl+Z)</span>'; const annule = () => { partRetire(ini, id); t.innerHTML = 'annulé.'; setTimeout(() => { t.innerHTML = ''; }, 1500); S.vifAnnule = null; }; $('dr-vif-x').onclick = annule; S.vifAnnule = annule; setTimeout(dr_vifMontrer, 0); clearTimeout(S.vifDT); S.vifDT = setTimeout(() => { t.innerHTML = ''; S.vifAnnule = null; }, 6000); }
 
 // la palette Maj+Espace (le pont L16517-16621) : voile, initiales en grand, suggestions, motifs 1/2/3 ou Entrée, note, « dernières », clic à côté annule, le curseur revient exactement
 let PAL = null;
@@ -299,8 +305,9 @@ function ouvrirFin(cloture){ if ((document.getElementById('fin').parentElement =
   const frn = $('f-rien'); if (frn) frn.onclick = () => { S.rienProchaine = S.rienProchaine || {}; S.rienProchaine[S.heure] = !S.rienProchaine[S.heure]; journal('rien-prochaine-fois', { h: S.heure, valeur: S.rienProchaine[S.heure] }); ouvrirFin(cloture); };
   const fvt = $('f-vers-travail'); if (fvt) fvt.onclick = () => { allerAuCahier('travail'); }; const fvr = $('f-vers-recit'); if (fvr) fvr.onclick = () => { allerAuCahier('contenu'); };
   const frl = $('f-relu'); if (frl) frl.onclick = () => { S.recitRelu = S.recitRelu || {}; S.recitRelu[S.heure] = true; journal('recit-relu', { h: S.heure, par: 'clic' }); ouvrirFin(cloture); };
-  const fcc = $('f-copie-contenu'); if (fcc) fcc.onclick = () => { S.copieED = S.copieED || {}; S.copieED[S.heure] = Object.assign(S.copieED[S.heure] || {}, { t: now(), contenu: true }); journal('copie-ed', { quoi: 'contenu' }); const d = document.createElement('div'); d.innerHTML = recitPourED(S.heure); const dire = m => { const z = $('f-copie-etat'); if (z) z.textContent = m; }; if (typeof dr_recitCopierED === 'function') dr_recitCopierED(recitPourED(S.heure), d.textContent, 'copié : le contenu de séance', dire); else copierTexte(d.textContent, 'copié : le contenu de séance'); ouvrirFin(cloture); }; /* E2 : en HTML propre et en texte (C2 1.9, l'outil d'E4) — avant : texte brut */
-  const fct = $('f-copie-travail'); if (fct) fct.onclick = () => { S.copieED = S.copieED || {}; S.copieED[S.heure] = Object.assign(S.copieED[S.heure] || {}, { t: now(), travail: true }); journal('copie-ed', { quoi: 'travail' }); { const tx = texteTravail() || '(rien à faire)'; const dire = m => { const z = $('f-copie-etat'); if (z) z.textContent = m; }; if (typeof dr_recitCopierED === 'function') dr_recitCopierED('<p>' + dr_esc(tx) + '</p>', tx, 'copié : le travail à faire', dire); else copierTexte(tx, 'copié : le travail à faire'); } ouvrirFin(cloture); }; /* E2 : HTML propre + texte — avant : texte brut */
+  const fcc = $('f-copie-contenu'); if (fcc) fcc.onclick = () => { S.copieED = S.copieED || {}; S.copieED[S.heure] = Object.assign(S.copieED[S.heure] || {}, { t: now(), contenu: true }); journal('copie-ed', { quoi: 'contenu' }); const dire = m => { const z = $('f-copie-etat'); if (z) z.textContent = m; }; const d = document.createElement('div'); let html0 = ''; try { d.innerHTML = recitHtml(now(), S.heure); const rec0 = d.querySelector('.recit'), tete = d.querySelector('.dr-recit-tete'); if (rec0 && typeof dr_recitContenuED === 'function') html0 = (tete ? tete.innerHTML : '') + dr_recitContenuED(rec0); } catch (e) {} if (!html0) html0 = recitPourED(S.heure);
+    if (typeof dr_recitCopierED === 'function') dr_recitCopierED(html0, null, 'copié : le contenu de séance', dire); else { d.innerHTML = html0; copierTexte(d.innerText, 'copié : le contenu de séance'); } ouvrirFin(cloture); }; /* E2 (réveil n°5, A4-1) : le même contenu que la copie de la Relecture (son entête, `dr_recitContenuED`), et le texte simple composé par l'outil d'E4 (ses paragraphes) — avant : `textContent`, les paragraphes collés sans retour */
+  const fct = $('f-copie-travail'); if (fct) fct.onclick = () => { S.copieED = S.copieED || {}; S.copieED[S.heure] = Object.assign(S.copieED[S.heure] || {}, { t: now(), travail: true }); journal('copie-ed', { quoi: 'travail' }); { const tx = texteTravail() || '(rien à faire)'; const dire = m => { const z = $('f-copie-etat'); if (z) z.textContent = m; }; if (typeof dr_recitCopierED === 'function') dr_recitCopierED('<p>' + dr_esc(tx).replace(/\n/g, '<br>') + '</p>', tx, 'copié : le travail à faire', dire);   /* comme la Relecture (E4) */ else copierTexte(tx, 'copié : le travail à faire'); } ouvrirFin(cloture); }; /* E2 : HTML propre + texte — avant : texte brut */
 
   const fmo = $('f-mot'); if (fmo) fmo.oninput = () => { S.motAbsents = fmo.value; };   /* E2 : le mot aux absents se garde à la frappe */
   const fse = $('f-sans-ech'); if (fse) fse.onclick = () => { S.echeance = null; S.finFaites[1] = true; S.finSection = 2; edTexte(); dr_tout(); ouvrirFin(cloture); };
@@ -742,7 +749,7 @@ function dr_cloreFin(){
   if (C) { dr_ecrire(C + '/journal', jr, 'Le journal de l’heure, à la clôture', () => {}); dr_ecrire(C + '/etat', et, 'L’état de l’heure, à la clôture', () => {}); }
   [DR_CL.jT, DR_CL.eT, DR_CL.tT, DR_CL.cT].forEach(clearTimeout);
   try { window.AT_DR_DERNIER = { level: (AT.edChap || {}).level, chnum: (AT.edChap || {}).chnum, snum: ATVUES.snum, classe: AT_DR_COURS.classeSlug, ts: Date.now() }; } catch (e) {}
-  DR_CL.cleClose = ch;   /* la clé de l'heure close dans cette page : « ▶ Lancer » ne la repropose pas */
+  DR_CL.cleClose = ch; DR_CL.creneauClos = dr_creneauDuCours(AT_DR_COURS);   /* la clé de l'heure close dans cette page : « ▶ Lancer » ne la repropose pas */
   dr_coursFermer();
   AT_DR_REGIME = 'prep';
 }
@@ -888,6 +895,17 @@ function dr_reprendreCours(c){
       dr_reprendre(ok => { if (!ok) atInfo('L’état de cette heure n’est pas au hub : elle ne peut pas être reprise telle quelle.'); }); });
   });
 }
+/* réveil n°5, A4-4 (C1 6.5, 8.6) : la case close ouvre la Relecture de CETTE heure — la séance, la classe et l'heure de sa trace ; l'atelier
+   s'ouvre sans régime « classe » (rien ne s'écrit), la Relecture d'E4 relit la classe au hub (`dr_recitChargerClasse`), puis l'heure n. */
+function dr_edtRelire(cle){
+  const cel = edtCellule(cle); if (!cel) return; const t = edtCheminTrace(cel.classeMjpc, cel.iso, cel.creneau); if (!t || !t.trace) { atInfo('La trace de cette heure est introuvable.'); return; }
+  const m = /^\/site\/([^/]+)\/chapitres\/([^/]+)\/seances\/([^/]+)\/deroule_joue\/([^/]+)\//.exec(t.chemin); if (!m) return; const h = +t.trace.heure || null;
+  if (typeof S === 'object' && S && S.lancee && !S.close) { atInfo('Une heure est en cours : relis celle-ci une fois l’heure en cours close.'); return; }
+  try { edtFermer(); edtModaleFermer(); } catch (e) {} try { atelierOuvrir(); } catch (e) {}
+  atChargerChapitres(m[1], () => { atEditerChapitre(m[1], m[2]); ATVUES.snum = String(m[3]);
+    edtQuandPilotagePret(manque => { if (manque) { atInfo('La Relecture ne s’ouvre pas (manque : ' + manque + ').'); return; } try { atVuesAller('relecture'); } catch (e) {}
+      dr_recitChargerClasse(decodeURIComponent(m[4]), () => { S.face = 'recit'; if (h) S.faceH = h; try { relecture(); } catch (e) {} }); }); });
+}
 function dr_edtReprendre(cle){
   const cel = edtCellule(cle); if (!cel) return; const t = edtCheminTrace(cel.classeMjpc, cel.iso, cel.creneau); if (!t || !t.trace) { atInfo('La trace de cette heure est introuvable.'); return; }
   if (t.trace.clos) { atInfo('Cette heure a été close : elle ne se reprend pas.'); return; }
@@ -915,6 +933,9 @@ function dr_proposer(){
 setInterval(() => { try { const b = document.getElementById('dr-lancer'); if (!b || (S.lancee && !S.close)) return; const p = dr_proposer();
   const cleP = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + p.classeSlug + '/heures/' + _drCleHeureDe({ classeSlug: p.classeSlug, debut: p.debut, fin: String(p.creneau).split('-')[1] });
   if (S.close && DR_CL.cleClose && cleP === DR_CL.cleClose) { const t2 = '▶ Lancer — l’heure de ' + p.creneau + ' est close'; if (b.textContent !== t2) { b.textContent = t2; b.disabled = true; b.title = 'L’heure de ce créneau est close : elle ne se rouvre pas. L’heure suivante de la séance se lance depuis sa case de l’emploi du temps (son créneau à elle).'; } return; }   /* réveil n°3 : le geste fait ce que le bouton dit, ou il se grise avec sa raison */
+  if (S.close && DR_CL.cleClose && p.depuis !== 'edt') { const nx = (edtProchainesDe(p.classeSlug, 1) || [])[0]; const t3 = '▶ Lancer — l’heure est close';   /* réveil n°5, A4-6 : après la clôture, jamais un créneau hors de la grille de la classe (avant : « 10:07-11:02 », qui n'existe pas le lundi) */
+    const ti = 'L’heure de ' + (DR_CL.creneauClos || 'ce créneau') + ' est close : elle ne se rouvre pas. ' + (nx ? 'La prochaine heure de ' + p.classeNom + ' : ' + nx.l + ' — elle se lance depuis sa case de l’emploi du temps.' : 'Aucune autre heure de ' + p.classeNom + ' aujourd’hui dans l’emploi du temps.');
+    if (b.textContent !== t3 || b.title !== ti || !b.disabled) { b.textContent = t3; b.disabled = true; b.title = ti; } return; }
   b.disabled = false; const t = '▶ Lancer avec ' + p.classeNom + ' · ' + p.creneau + ' · heure ' + p.heure + '/' + p.sur;
   if (b.textContent !== t) { b.textContent = t; b.title = 'Lance l’heure avec ' + p.classeNom + ', créneau ' + p.creneau + ', heure ' + p.heure + ' sur ' + p.sur + ' de la séance' + (p.depuis === 'edt' ? ' (la case de ton emploi du temps)' : ' (aucune case de l’emploi du temps pour cette séance maintenant : la classe du niveau et le créneau en cours)') + ' — le chrono démarre, tout s’enregistre pour la classe.'; } } catch (e) {} }, 1000);
 

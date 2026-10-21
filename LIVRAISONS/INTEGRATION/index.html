@@ -17790,6 +17790,13 @@ function edtChercherTrace(nomClasse,iso,creneau){
   }
   return res;
 }
+function edtSeanceDeTrace(nomClasse,iso,creneau){   /* [E2] la séance d'une heure jouée (son titre) : où edtTraceDe la trouve (réveil n°5, A4-4) */
+  var niv=edtNiveauDe(nomClasse); if(!niv)return null; var l=EDT_CHAP[niv]||[], cle=edtCleHeure(iso,creneau,nomClasse);
+  for(var i=0;i<l.length;i++){ var se=edtListe(l[i]&&l[i].seances);
+    for(var k=0;k<se.length;k++){ var d=(se[k]&&se[k].deroule_joue)||{};
+      if(Object.keys(d).some(function(sl){ var b=d[sl]; return b&&!(b.classe&&b.classe!==nomClasse)&&(b.heures||{})[cle]; }))return {titre:se[k].titre||se[k].title||'', chapitre:l[i].__cle, seance:se[k].__i}; } }
+  return null;
+}
 /* la file des séances qui attendent, pour une classe et un fil */
 function edtFileDAttente(nomClasse,fil){
   var c=edtChapitreEnCours(nomClasse,fil); if(!c)return null;
@@ -17906,7 +17913,7 @@ function edtProjeter(isoDebut,nbJours){
       if(trouvee){
         cel.nature='jouee'; cel.activites=(trouvee.activites||[]).length;
         cel.reportees=(trouvee.activites||[]).filter(function(a){return a&&a.reel===0;}).length;
-        cel.clos=!!trouvee.clos; cellules[cle]=cel; continue;
+        cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau); if(edtOu)cel.titre=edtOu.titre; /* [E2] la case close garde le titre de sa séance (réveil n°5, A4-4) */ cellules[cle]=cel; continue;
       }
       /* [2ter 14a] LA BORNE SE POSE ICI, ET PAS PLUS HAUT.
          Elle remplace LE PREVU, jamais le reel ni une decision de Paul :
@@ -18068,7 +18075,7 @@ function edtCelluleCorps(c){
   }
   if(c.nature==='sansSeance')return '<div class="edt-b edt-b-sans"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'
     +escapeHtml('heure banalisée — '+(c.categorie||''))+(c.precision?(' \u2014 '+escapeHtml(c.precision)):'')+'</i></div>';
-  if(c.nature==='jouee')return '<div class="edt-b edt-b-joue"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'
+  if(c.nature==='jouee')return '<div class="edt-b edt-b-joue"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'+(c.titre?escapeHtml(c.titre)+' \u00b7 ':'')/* [E2] A4-4 */
     +c.activites+' activité'+(c.activites>1?'s':'')+(c.reportees?(' \u00b7 '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'</i></div>';
   if(c.nature==='rienDePret')return '<div class="edt-b edt-b-vide"><b>'+escapeHtml(c.classeMjpc)+'</b><i>aucune séance prête</i></div>';
   return '<div class="edt-b edt-b-prevu'+(c.fil?' edt-b-fil':'')+(c.ajoutee?' edt-b-ajout':'')+'">'
@@ -18647,7 +18654,7 @@ function edtPeindreModale(){
         +(c.reportees?(', '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'.'
         +(c.clos?' Close.':' Pas encore close.')+'</p>'
         +(c.clos?'':'<button class="edt-btn edt-btn-prim edt-large" data-reprendre="1" title="L\u2019heure est en cours (la page s\u2019est fermée ?) : rouvrir le Pilotage là où la classe en est \u2014 la diapo, le chrono, les paroles, les notes" onclick="dr_edtReprendre('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Reprendre le cours</button>')   /* [E2] mandat 6 */
-        +'<p class="edt-p edt-mini-t">La relecture de cette heure arrive avec le profil de classe.</p>'
+        +(c.titre?'<p class="edt-p">Séance : <b>'+escapeHtml(c.titre)+'</b></p>':'')+(c.clos?'<button class="edt-btn edt-large" data-relire="1" title="Ouvre la Relecture de cette heure : son récit, ce qui s\u2019est passé, le papier \u2014 rien ne se rejoue, rien ne s\u2019écrit" onclick="dr_edtRelire('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Relire cette heure</button>':'')/* [E2] réveil n°5, A4-4 — avant : « La relecture de cette heure arrive avec le profil de classe. » */
         +edtAbsencesHtml(cle,c);
     } else if(c.nature==='deplacee'){
       var edtQ=String(c.deplaceeVers||'').split('|');

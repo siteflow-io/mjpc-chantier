@@ -130,7 +130,10 @@ let hubApres = null, skLance = null;
       await p.evaluate(() => { const b = document.getElementById('dr-lancer'); if (b) b.click(); }); await s.attendre(1500); const e2b = depuis(await s.ecrits(), n2);
       pas('B4', bt && bt.vis && bt.dis && /close/.test(bt.txt + bt.title) && e2b.length === 0 ? 'ok' : 'ÉCHEC', 'après la clôture, « ▶ Lancer » reste à l\'écran, grisé avec sa raison (l\'heure de ce créneau est close) ; le cliquer n\'écrit rien (C1 12, réveil n°3)', JSON.stringify(bt) + ' · ' + e2b.length + ' écriture(s)');
       const n3 = (await s.ecrits()).length; await p.evaluate(() => { try { const b = document.getElementById('bdev'); if (b) b.click(); } catch (e) {} }); await s.attendre(1500);
-      pas('B4', (await p.evaluate(() => J.filter(x => x.type === 'devoile' && x.h === S.heure && x.t > (S.closes || {})[S.heure]).length)) === 0 ? 'ok' : 'ÉCHEC', 'après la clôture, ▶ n\'écrit plus dans le journal de l\'heure close', ''); } }
+      pas('B4', (await p.evaluate(() => J.filter(x => x.type === 'devoile' && x.h === S.heure && x.t > (S.closes || {})[S.heure]).length)) === 0 ? 'ok' : 'ÉCHEC', 'après la clôture, ▶ n\'écrit plus dans le journal de l\'heure close', '');
+      await s.attendre(11 * 60000); const bt2 = await p.evaluate(() => { const b = document.getElementById('dr-lancer'); const g = new Set(); try { (edtProchainesDe('3E Charles de Gaulle', 20) || []).filter(x => String(x.iso).slice(0, 10) === '2026-09-14').forEach(x => g.add(x.creneau)); } catch (e) {} return b ? { h: hhmm(), dis: b.disabled, txt: b.textContent, title: b.title, grille: [...g] } : null; });
+      const hors = bt2 ? ((bt2.txt + ' ' + bt2.title).match(/\d\d:\d\d-\d\d:\d\d/g) || []).filter(c => c !== '08:57-09:52' && !bt2.grille.includes(c)) : ['?'];
+      pas('B4', bt2 && bt2.dis && /close/.test(bt2.txt + bt2.title) && !hors.length ? 'ok' : 'ÉCHEC', 'après la fin du créneau clos (09:53), « ▶ Lancer » reste gris avec sa raison et ne propose aucun créneau hors de la grille de la classe (réveil n°5, A4-6)', JSON.stringify({ bt2, hors })); } }
   else pas('B4', 'absent', 'pas d\'heure lancée');
   dire('      erreurs JS : ' + (s.errs.join(' ; ') || 'aucune')); pas('JS', s.errs.length ? 'ÉCHEC' : 'ok', 'B2-B4 : aucune erreur JS', s.errs.join(' ; '));
   await s.ctx.close(); }
@@ -141,6 +144,8 @@ dire(''); dire('B3 — la reprise (recharger en pleine heure, mêmes écritures 
   if (v === 'absent' || !s.site) pas('B3', 'absent', 'la reprise se joue sur le site intégré (la maquette perd tout au rechargement)');
   else { await devoiler(s, 2); await parole(s); await s.page.keyboard.press('n'); await s.attendre(200); await s.page.keyboard.type('note de reprise'); await s.page.keyboard.press('Enter'); await s.attendre(400);
     await s.page.click('#dr-clore'); await s.attendre(600); await s.page.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="6"]'); if (e) e.click(); }); await s.attendre(400); await s.page.evaluate(() => { const b = document.getElementById('f-copie-contenu'); if (b) b.click(); }); await s.attendre(300); await s.page.evaluate(() => { const b = document.getElementById('f-fermer'); if (b) b.click(); }); await s.attendre(300);
+    const cop = await s.page.evaluate(() => { const c = window.DR_RECIT_DERNIERE_COPIE || null; return c ? { lignes: String(c.texte).split(/\n+/).filter(x => x.trim()).length, colle: (String(c.texte).match(/[a-zà-ÿ][?.!»][A-ZÀ-Ý]/g) || []).slice(0, 3), p: (String(c.html).match(/<p[\s>]/g) || []).length, debut: String(c.texte).slice(0, 120) } : null; });
+    pas('B3', cop && cop.lignes >= 2 && !cop.colle.length && cop.p >= 2 ? 'ok' : 'ÉCHEC', 'étape 6, « Copier le contenu de séance » : le texte simple garde ses paragraphes (aucune phrase collée à la suivante), le HTML ses <p> — l\'outil d\'E4, comme la Relecture (réveil n°5, A4-1)', JSON.stringify(cop));
     const heuresDe = p => p.evaluate(() => ({ h: S.heure, sur: (dr_heureJouee(S.heure) || {}).sur, heures: seance().ecrans.map(e => (e.role === 'fin' ? 'F' : '') + e.heure).join(' '), titre: (document.querySelector('#volet h5') || {}).textContent || '', hou: (document.getElementById('hou') || {}).textContent || '', copies: J.filter(x => x.type === 'copie-ed').length }));
     await s.attendre(60000); const avant = await s.page.evaluate(() => ({ di: S.di, eid: (() => { try { return eidDe(S.di); } catch (e) { return null; } })(), parts: S.parts.length, notes: S.notesFil.length, ecoule: S.ecoule })); const hAvant = await heuresDe(s.page);
     const hub = await s.hub(); await s.ctx.close();
@@ -228,9 +233,10 @@ dire(''); dire('B9 — F2 « EB1 » tapé d\'un trait pose ; pas de « LC2 » à
     const sur = await p.evaluate(() => (document.getElementById('fin').innerText.match(/étapes? faites? sur \d/) || [''])[0]);
     pas('B9', /sur 7/.test(sur) ? 'ok' : 'ÉCHEC', 'la liste de contrôle compte sur 7 étapes', sur);
     await p.evaluate(() => ouvrirPart('EB')); await s.attendre(300);
-    const rec = await p.evaluate(() => { const a = document.getElementById('ppop').getBoundingClientRect(), b = document.getElementById('fin').getBoundingClientRect(); return { a: [a.left, a.top, a.right, a.bottom].map(Math.round), b: [b.left, b.top, b.right, b.bottom].map(Math.round) }; });
-    const couvre = !(rec.a[2] <= rec.b[0] || rec.a[0] >= rec.b[2] || rec.a[3] <= rec.b[1] || rec.a[1] >= rec.b[3]);
-    pas('B9', !couvre && rec.a[0] >= 0 ? 'ok' : 'ÉCHEC', 'la fiche de l\'élève ne couvre pas la fin de l\'heure et reste dans l\'écran', JSON.stringify(rec)); await p.keyboard.press('Escape'); await s.attendre(200);
+    const rec = await p.evaluate(() => { const pp = document.getElementById('ppop').getBoundingClientRect(); const zf = document.getElementById('droite-fin'), zd = document.getElementById('droite'); const A = zf.getBoundingClientRect(), D = zd.getBoundingClientRect(); const vis = { t: Math.max(A.top, D.top), b: Math.min(A.bottom, D.bottom) };
+      const bts = Array.from(document.querySelectorAll('#fin button')).filter(b => b.offsetParent).map(b => { const r = b.getBoundingClientRect(); const x = (r.left + r.right) / 2, y = (r.top + r.bottom) / 2; if (y < vis.t || y > vis.b || y > innerHeight) return null; const e = document.elementFromPoint(x, y); return { id: b.id || b.textContent.slice(0, 16), ok: !!e && (e === b || b.contains(e)) }; }).filter(Boolean);
+      return { a: [pp.left, pp.top, pp.right, pp.bottom].map(Math.round), w: innerWidth, h: innerHeight, boutons: bts.length, couverts: bts.filter(b => !b.ok).map(b => b.id) }; });
+    pas('B9', rec.boutons > 0 && !rec.couverts.length && rec.a[0] >= 0 && rec.a[2] <= rec.w && rec.a[3] <= rec.h ? 'ok' : 'ÉCHEC', 'la fiche de l\'élève ne couvre aucun bouton visible de la fin de l\'heure et reste dans l\'écran', JSON.stringify(rec)); await p.keyboard.press('Escape'); await s.attendre(200);
     await p.click('#f-clore'); await s.attendre(400); if (await p.evaluate(() => document.getElementById('garde-clore').classList.contains('on'))) await p.click('#gclore-oui'); await s.attendre(1500);
     const c1 = await p.evaluate(() => document.getElementById('chr').textContent); await s.attendre(4000); const c2 = await p.evaluate(() => document.getElementById('chr').textContent);
     pas('B9', c1 === c2 ? 'ok' : 'ÉCHEC', 'après la clôture, le chrono de la tête ne court plus', c1 + ' → ' + c2);
@@ -241,7 +247,11 @@ dire(''); dire('B9 — F2 « EB1 » tapé d\'un trait pose ; pas de « LC2 » à
 dire(''); dire('B10 — à 1280 × 768 : la boîte T-5 dans l\'écran, ses boutons cliquables ; la fin de l\'heure laisse la participation et « Où on en est »');
 { const s = await session({ vue: { width: 1280, height: 768 } }); const p = s.page; const v = await lancerUnClic(s);
   if (v === 'absent' || !s.integre) pas('B10', 'absent', 'le Lancer du site intégré');
-  else { await p.evaluate(() => { S.palier = 't5'; alerteOuvrir(); }); await s.attendre(500);
+  else { await p.keyboard.press('F2'); await s.attendre(200); await p.keyboard.type('EB1'); await s.attendre(300); await p.keyboard.press('Enter'); await s.attendre(500);
+    const vd = await p.evaluate(() => { const r = id => { const e = document.getElementById(id); if (!e) return null; const b = e.getBoundingClientRect(); return [Math.round(b.top), Math.round(b.bottom)]; }; return { vif: r('vif'), dernier: r('vif-dernier'), txt: (document.getElementById('vif-dernier') || {}).innerText || '', part: r('part'), h: innerHeight }; });
+    pas('B10', vd.dernier && /posé/.test(vd.txt) && vd.dernier[1] <= vd.h && vd.vif[0] >= 0 && vd.part && vd.part[0] < vd.h - 20 ? 'ok' : 'ÉCHEC', 'F2, une parole posée : le VIF, « posé : … ✕ (Ctrl+Z) » et le haut de la liste des paroles se voient sans défiler (réveil n°5, A4-3 ; C1 4b.1, 5.4 bis)', JSON.stringify(vd));
+    await p.keyboard.press('Escape'); await s.attendre(200);
+    await p.evaluate(() => { S.palier = 't5'; alerteOuvrir(); }); await s.attendre(500);
     const a = await p.evaluate(() => { const r = el => { const b = el.getBoundingClientRect(); return [Math.round(b.left), Math.round(b.top), Math.round(b.right), Math.round(b.bottom)]; }; const al = document.getElementById('al-boite'), mur = document.getElementById('murcadre'), no = document.querySelector('.scene > .notes');
       const bt = ['al-aller', 'al-tard', 'al-preparer'].map(id => { const e = document.getElementById(id); const q = r(e); const c = document.elementFromPoint((q[0] + q[2]) / 2, (q[1] + q[3]) / 2); return { id, q, dessus: !!c && (c === e || e.contains(c)) }; });
       return { al: r(al), mur: r(mur), notes: r(no), bt, h: innerHeight }; });
@@ -250,6 +260,21 @@ dire(''); dire('B10 — à 1280 × 768 : la boîte T-5 dans l\'écran, ses bouto
     const d = await p.evaluate(() => { const vis = sel => { const e = document.querySelector(sel); return !!(e && e.offsetParent); }; return { fin: vis('#droite-fin'), part: vis('#part'), suivi: vis('#droite > .suivi'), tableau: vis('#droite > .suivante') }; });
     pas('B10', d.fin && d.part && d.suivi && d.tableau ? 'ok' : 'ÉCHEC', 'pendant la fin de l\'heure, la colonne de droite garde la participation, « Où on en est » et le tableau (C1 7.0 ter : la classe continue)', JSON.stringify(d));
     pas('B10', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+
+// ── B11 · la case close garde le titre de sa séance et ouvre la Relecture de cette heure (réveil n°5, A4-4 ; C1 6.5, 8.6) ──
+dire(''); dire('B11 — après la clôture, la case de l\'heure garde le titre de sa séance ; « Relire cette heure » ouvre sa Relecture');
+{ const s = await session(); const p = s.page; const v = await lancerUnClic(s);
+  if (v === 'absent' || !s.integre) pas('B11', 'absent', 'le Lancer du site intégré');
+  else { const titre = await p.evaluate(() => seance().titre || seance().title || ''); const h0 = await p.evaluate(() => S.heure);
+    await devoiler(s, 2); await p.click('#dr-clore'); await s.attendre(400); await p.click('#f-clore'); await s.attendre(300); if (await p.evaluate(() => document.getElementById('garde-clore').classList.contains('on'))) await p.click('#gclore-oui'); await s.attendre(2500);
+    await p.evaluate(() => edtOuvrir()); await s.attendre(1500);
+    const cas = await p.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-clic')).find(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '') && (e.getAttribute('onclick') || '').indexOf('2026-09-14|08:57') >= 0); if (!c) return null; const x = c.innerText.replace(/\s+/g, ' '); c.click(); return x; }); await s.attendre(800);
+    pas('B11', cas && titre && cas.indexOf(titre.slice(0, 20)) >= 0 ? 'ok' : 'ÉCHEC', 'la case close du lundi 08:57 garde le titre de sa séance', JSON.stringify({ cas, titre }));
+    const bt = await p.evaluate(() => { const b = document.querySelector('#edt-modale [data-relire]'); if (!b) return null; const r = { txt: b.innerText, title: b.title }; b.click(); return r; }); await s.attendre(6000);
+    const rel = await p.evaluate(() => ({ vis: typeof dr_relectureVisible === 'function' ? dr_relectureVisible() : null, faceH: S.faceH, face: S.face, faces: ((document.getElementById('faces') || {}).innerText || '').replace(/\s+/g, ' ').slice(0, 120) }));
+    pas('B11', bt && rel.vis && rel.faceH === h0 ? 'ok' : 'ÉCHEC', '« Relire cette heure » (avec son infobulle) ouvre la Relecture sur l\'heure ' + h0 + ' de cette classe', JSON.stringify({ bt: !!bt && !!bt.title, rel }));
+    pas('B11', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
 
 // ── B5 · deux créneaux = deux clés ──

@@ -18,7 +18,7 @@ def tombe(nom):
     except SystemExit as e: rapport.append('%-26s absente (%s)' % (nom, e))
 
 # ── la porte : l'emploi du temps ─────────────────────────────────────────────────────────────────────────────────────
-t2 = re.sub(r"var EDT_PILOTAGE_ELEMENTS=\[[^\]]*\];", "var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */", t, count=1)
+t2 = t if "var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];" in t else re.sub(r"var EDT_PILOTAGE_ELEMENTS=\[[^\]]*\];", "var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */", t, count=1)
 rapport.append('EDT_PILOTAGE_ELEMENTS      ' + ('rebranché' if t2 != t else 'déjà rebranché ou absent')); t = t2
 neuf('edtLancer', r'''function edtLancer(cle,preparer){
   /* [E2] « ▶ Ouvrir le pilotage et lancer » et « Préparer » : le premier temps est celui d'aujourd'hui (la séance visée,
@@ -161,6 +161,27 @@ neuf('sesReprendre', r'''function sesReprendre(){
     });
   });
 }''')
+
+# ── réveil n°5, A4-4 : la case close garde le titre de sa séance et ouvre sa Relecture (C1 6.5, 8.6) ──
+def snippet(nom, avant, apres):
+    global t
+    if apres in t: rapport.append('%-26s déjà rebranché' % nom); return
+    n = t.count(avant)
+    if n != 1: rapport.append('%-26s ABSENT/AMBIGU (%d)' % (nom, n)); return
+    t = t.replace(avant, apres); rapport.append('%-26s rebranché' % nom)
+snippet('edtSeanceDeTrace', "/* la file des séances qui attendent, pour une classe et un fil */\n",
+  "function edtSeanceDeTrace(nomClasse,iso,creneau){   /* [E2] la séance d'une heure jouée (son titre) : où edtTraceDe la trouve (réveil n°5, A4-4) */\n"
+  "  var niv=edtNiveauDe(nomClasse); if(!niv)return null; var l=EDT_CHAP[niv]||[], cle=edtCleHeure(iso,creneau,nomClasse);\n"
+  "  for(var i=0;i<l.length;i++){ var se=edtListe(l[i]&&l[i].seances);\n"
+  "    for(var k=0;k<se.length;k++){ var d=(se[k]&&se[k].deroule_joue)||{};\n"
+  "      if(Object.keys(d).some(function(sl){ var b=d[sl]; return b&&!(b.classe&&b.classe!==nomClasse)&&(b.heures||{})[cle]; }))return {titre:se[k].titre||se[k].title||'', chapitre:l[i].__cle, seance:se[k].__i}; } }\n"
+  "  return null;\n}\n/* la file des séances qui attendent, pour une classe et un fil */\n")
+snippet('edtProjeter · titre joué', "cel.clos=!!trouvee.clos; cellules[cle]=cel; continue;",
+  "cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau); if(edtOu)cel.titre=edtOu.titre; /* [E2] la case close garde le titre de sa séance (réveil n°5, A4-4) */ cellules[cle]=cel; continue;")
+snippet('case jouée · titre', "if(c.nature==='jouee')return '<div class=\"edt-b edt-b-joue\"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'\n    +c.activites",
+  "if(c.nature==='jouee')return '<div class=\"edt-b edt-b-joue\"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'+(c.titre?escapeHtml(c.titre)+' \\u00b7 ':'')/* [E2] A4-4 */\n    +c.activites")
+snippet('modale jouée · Relire', "+'<p class=\"edt-p edt-mini-t\">La relecture de cette heure arrive avec le profil de classe.</p>'",
+  "+(c.titre?'<p class=\"edt-p\">Séance : <b>'+escapeHtml(c.titre)+'</b></p>':'')+(c.clos?'<button class=\"edt-btn edt-large\" data-relire=\"1\" title=\"Ouvre la Relecture de cette heure : son récit, ce qui s\\u2019est passé, le papier \\u2014 rien ne se rejoue, rien ne s\\u2019écrit\" onclick=\"dr_edtRelire('+JSON.stringify(cle).replace(/\"/g,'&quot;')+')\">Relire cette heure</button>':'')/* [E2] réveil n°5, A4-4 — avant : « La relecture de cette heure arrive avec le profil de classe. » */")
 
 # ── ce qui tombe (contrat §6, colonne E2) ──
 for nom in ['atDrJouerClic', 'atDrClore', 'atDrCloreFin', 'atDrClotureModale', 'atDrSuiviAppliquer',

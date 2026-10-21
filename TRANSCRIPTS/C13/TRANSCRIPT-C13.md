@@ -2006,3 +2006,23 @@ Réponse de la conscience (22:27), mot pour mot :
 
 21/10/2026 22:27
 MEMO
+
+## TOUR 95 — RÉVEIL N°10 (21/10/2026, 23:26 → 23:35 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (23:26, 23:28, 23:34).
+
+Mesuré :
+- `integration` à `aa2f80d2` (E4, 23:17) ; pendant le banc, `b10fe923` (E2, poussée 23, 23:15 : 143 « T-undefined » remis à zéro au lancement ; 145 un numéro par ligne, rien après le cahier ; 144 `dr_libGlissee` ; banc rejoué sur `dr_jouerCopie` ; les trouvailles de son relecteur neuf n°3 ; garde B14 ; réveil n°9 marqué). Depuis le réveil n°9 : **E3** (22:51 : T15 la retouche de la veille au tableau, 94/94, NOTE finale chiffrée) ; **E4** (poussées 49-52 : 146 écartée — le bouton du mode test, inactif ; le relecteur sur `aaf6d7f4` : **§12.8 réglé** (les retouches de l'heure 2 sont là en heure 3, pilote, Écran 2, récit ; la trame hors classe intacte), 142 réglée, L12 et le rang dans l'heure réglés chez lui ; **deux graves neufs chez E1** : ligne 149 — en classe, une retouche faite dans l'onglet Atelier n'est pas écrite tant qu'il reste ouvert (`dr_clPeutEcrire` faux), perdue si la page se ferme ; ligne 148 — revenir de l'Atelier au Pilotage fait sauter le pilote et le tableau sur la dernière diapo ouverte dans l'Atelier, sans garde, et le saut entre au journal et au récit ; deux moyens (le versement à la clôture ne propose que la retouche faite au pilote — E2 ; la frontière d'heure hors classe « (1 h) », 19 diapos en H1 — E1/E2) ; un faible (la légende sur deux lignes) ; la passe finale préparée). **E1 : rien depuis 22:06**, réveil n°9 non marqué.
+- **Mon banc sur `aa2f80d2`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. Épreuves `AUDITS/INTEGRATION-DEROULE/epreuves/banc-sur-integration-aa2f80d2.txt`, `AUDITS/CONTROLES-DEROULE/epreuves/sur-integration-aa2f80d2-v22.txt` ; captures `pieces/T95-P5-classe-lancee.png`, `pieces/T95-P9-fin-de-l-heure.png`.
+- **Pas d'audit final** : deux graves ouverts chez E1 (le critère est zéro grave).
+- **Relances écrites (23:34)** : E1 — les deux graves en premier (149 : l'Atelier ouvert en heure lancée n'empêche pas l'écriture de la copie, règle du 04/10 et contrat §5 ; 148 : rien de l'Atelier n'entre au journal ni au tableau, le retour au Pilotage ramène la diapo que la classe voit, tout saut passe par la garde C1 2.3), la frontière d'heure hors classe (146, avec E2), 147, 144, une ligne au JOURNAL ; E2 — poussée 23 vue, le versement à la clôture (C1 8.4) à revérifier quand E1 écrit la retouche, 146 avec E1, NOTE finale ; E3 — un geste de plus au banc (retour de l'Atelier : le tableau n'a pas bougé) ; E4 — la passe finale dès que 148 et 149 sont vertes, L32/L66 à mettre d'accord entre table et journal.
+- Réveil suivant : 00:35.
+
+Réponse de la conscience (23:35), mot pour mot :
+
+190. Réveil n°10. Banc vert sur la tête (collisions 0, parcours vert aux deux modes, 108 contrôles sur 108) ; E2 a réglé ses deux moyens et rejoué sur la copie d'un autre jour ; E3 et E4 l'ont revérifiée. **Mais pas d'audit final ce soir** : le relecteur d'E4 a trouvé deux graves chez E1 dans un geste que tu fais en classe — retoucher une diapo dans l'onglet Atelier pendant l'heure. Un : la retouche n'est pas enregistrée tant que l'Atelier reste ouvert, et elle est perdue si la page se ferme. Deux : en revenant au Pilotage, le tableau saute sur la diapo ouverte dans l'Atelier, sans garde, et ce saut entre dans le récit. Relancés en premier chez E1, qui n'a rien poussé depuis 22:06 ; E3 ajoute le geste à son banc, E4 revérifie.
+
+191. Prochain réveil à 00:35 ; si les deux graves sont verts et que rien de neuf ne sort, l'audit final part à ce moment-là ou au suivant, et tu auras « promeus » à dire au réveil. À toi, telles quelles : 152, 144, 13 · 12, §12.17, et le « go » du plan 10 jours.
+
+21/10/2026 23:35
+MEMO

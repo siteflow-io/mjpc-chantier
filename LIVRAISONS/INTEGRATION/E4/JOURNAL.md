@@ -280,3 +280,13 @@
   - pas réglés : l'échéance après une reprise, « Lancer » après la clôture, le curseur dans la réponse, la page 1 d'une diapo paginée, la confirmation de F2, T-5, le chrono ;
   - 7 lignes nouvelles, dont 2 hautes chez E2 (la reprise en « H1 », les décisions rejouées à l'heure 3). Rien à moi.
 - **La passe complète du réveil n°5** : il reste 84 lignes ouvertes (56 pour l'heure de classe, 28 pour l'atelier et la relecture). Deux relecteurs neufs revérifient **chaque ligne** sur la tête `d1b54fc9`, qui contient `21ed40fe`. Chaque ligne sera marquée « réglé le … (commit) » ou « pas réglé (commit) ».
+
+## Poussée 36 — 16:30 UTC
+- **Trois lignes de B4 réglées**, avec gardes :
+  - rechargée sans « Reprendre le cours », la Relecture relit l'état de la classe : « Diapo par diapo » et la participation reviennent (R3) ;
+  - « Diapo par diapo » montre aussi les diapos jouées hors de l'heure ;
+  - en ma version, le bilan reste celui du site, après le travail, dans le récit, sur le Papier et dans la copie ED (T).
+- **Bancs :**
+  - Mon banc : **103 ok · 0 échec** (`sorties/1626-site-E4`).
+  - banc.sh : **VERT** (`sorties/1631`).
+- La passe complète (84 lignes) tourne sur `28a0375f`.

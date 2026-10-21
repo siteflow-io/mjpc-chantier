@@ -1704,3 +1704,22 @@ Réponse de la conscience (13:06), mot pour mot :
 
 21/10/2026 13:06
 MEMO
+
+---
+
+## TOUR 80 (21/10/2026, 13:06 → 13:10)
+
+Paul, tour 80, mot pour mot : « promeus »
+
+Fait : `main` de production ← branche `micro/13-25` (merge `fd9b947`, puis `49b0b74` les documents) ; `index.html` = `c384d8504c097784e98ffc04d7327887`, 1 838 791 o, 8.74.0-④, **bit à bit** contre la branche (vérifié sur `origin/main`). Dans le tour même : point de retour (`docs/MJPC6-restauration.md` : blob `9ba3e3105610`, commit `0fee36c1d568`, md5 `ac792b28…` ③) ; dette 13 · 25 ✔ au registre ; journal (`docs/MJPC6-journal.md`) ; index des fonctions (`sesPut`). Et, arrivé pendant ce tour : **les contrôles K1-K13 (v2.1) par l'entrée du site sur l'assemblé de 12:54 : 108 vérifications, 0 échec.**
+
+Réponse de la conscience (13:10), mot pour mot :
+
+146. Promu : **8.74.0-④** est en ligne (bit à bit contre la branche), la 13 · 25 est réglée au registre, le point de retour, le journal et l'index sont à jour. Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.74.0-4 (compte ~30 s de propagation).
+
+147. À jouer, geste par geste : ouvre le site, panneau prof, « 🧪 Mode test » → vert ; atelier → « Mes chapitres » → « Modifier » → vue Déroulé → « ▶ Lancer la séance » avec une classe → la séance se lance, l'entête dit « EN CLASSE », rien n'a bougé pour un tableau distant d'une vraie classe (rien ne part au hub en mode test) ; « ■ Clore la séance » → sans message d'échec. Puis mode test retiré : « ▶ Lancer » → « ● session » vert dans l'entête (l'écriture réelle passe comme avant).
+
+148. Arrivé pendant ce tour : **mes treize contrôles passent tous sur le fichier intégré de 12:54 par l'entrée du site** (108 vérifications, 0 échec) — la maquette tient dans le site, avec p8-5h. Prochain réveil à 15:05.
+
+21/10/2026 13:10
+MEMO

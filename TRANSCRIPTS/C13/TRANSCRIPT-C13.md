@@ -1835,3 +1835,26 @@ Réponse de la conscience (19:00), mot pour mot :
 
 21/10/2026 19:00
 MEMO
+
+## TOUR 86 — RÉVEIL N°7 (21/10/2026, 19:59 → 20:08 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (19:59, 20:01, 20:07). Un message d'attente de plus pour le crochet d'arrêt (le fichier assemblé réécrit par le banc en cours, remis tel quel après).
+
+Mesuré :
+- `integration` à `49fdc49e` (E4, 19:25) ; pendant le banc, `440e851c` (E4, la reprise de la passe consignée). Depuis le réveil n°6 : **E1** (poussée 13, 18:49-19:08 : la page suit ▶ ; la question grisée ouvre sa réponse, la consigne grise reste grise au clic ; Ctrl+B à l'occurrence choisie ; le rang du dégel ; rien de terminé avant le lancement ; l'entête ne descend plus ; réveils n°5 et n°6 marqués ; **le grave 110 mesuré jusqu'à sa cause** : `dr_copieAuto` écrit bien 2 blocs au hub, c'est `dr_reprendre` (E2) qui relit `C/ecrans` sans la fusionner) ; **E2** (poussée 19, 19:25 : A4-1 la copie ED par l'outil d'E4, A4-3 la confirmation dans l'écran, A4-4 la case close garde son titre et « Relire cette heure », A4-6 « Lancer — l'heure est close » ; A4-2 et le réveil n°6 à la poussée suivante) ; **E3** (19:25, `d6f0c23c` : T14 le bloc écrit / rechargement / reprise, rouge sur la ligne 110 ; la fenêtre restée ouverte retrouvée par le pilote rechargé) ; **E4** (la passe complète finie sur `28a0375f` — 84 lignes, verdict et preuve —, une régression de sa poussée 34 trouvée et réparée (`dr_preparer`), lignes 127, 124, 118, 113 réglées, R1-R6 faits ; la reprise de la passe sur `45607419` : 32 lignes, 5 réglées dont la 129 — la reprise rend la même heure —, 27 pas réglées ; L12, L13, L88 réglées).
+- **Mon banc sur `49fdc49e`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. Épreuves `AUDITS/INTEGRATION-DEROULE/epreuves/banc-sur-integration-49fdc49e.txt`, `AUDITS/CONTROLES-DEROULE/epreuves/sur-integration-49fdc49e-v22.txt` ; captures `pieces/T86-P5-classe-lancee.png`, `pieces/T86-P9-fin-de-l-heure.png`.
+- Captures : P5 — l'heure 2 s'ouvre encore sur « Tableau 3 », le rituel 6ᵉ (§12.16 pas encore appliqué, attendu) ; « Enregistré… » coupé dans l'entête. P9 — la colonne de droite a défilé jusqu'au VIF à l'ouverture de la fin de l'heure (le titre « étape 1 sur 7 » hors de vue), les boutons « ◀ Étape / Étape suivante ▶ » toujours coupés par « Où on en est ».
+- **Le grave 110** reste ouvert : cause chez E2 (`dr_reprendre`), mesurée par E1, rouge chez E3 (T14) et E4.
+- **Relances écrites (20:07)** : E2 — le grave 110 en premier (la reprise relit la copie telle qu'elle est au hub, la ligne de `dr_lancerNeuf`), la ligne 130 + §12.16 (dire comment la diapo de réactivation est reconnue), le reste du réveil n°6 (A4-2, « EA »/`S.parts`, la colonne de la fin de l'heure : titre visible et boutons entiers, les faibles) ; E1 — le sélecteur par lequel on écrit en heure lancée (E4 dit « 0 zone « clique ici et écris » sur 8 diapos »), « Enregistré… » coupé, la passe de dettes ; E3 — rien d'ouvert, T14 au vert sur la poussée d'E2 ; E4 — rejouer le 110 avec le sélecteur d'E1, sa synthèse « Relecture : tout reste ouvert (3, 4, 19-25, 28) » prise ligne à ligne, la ligne 118 à finir, 130 et 110 revérifiés sur la poussée d'E2.
+- Réveil suivant : 21:07.
+
+Réponse de la conscience (20:08), mot pour mot :
+
+164. Réveil n°7. Banc vert sur la tête de 19:25 (`49fdc49e`) : collisions 0, parcours vert aux deux modes, contrôles K 108 sur 108. Les quatre avancent : E1 a tout traité (réveils n°5 et n°6) et a trouvé la cause du grave ; E2 a fait quatre des six lignes du réveil n°5 ; E3 a ajouté le geste du grave à son banc ; E4 a fini sa passe complète et l'a reprise sur la tête.
+
+165. **Le grave reste ouvert, mais il est cerné** : le bloc que tu écris en classe est bien enregistré au hub (E1 l'a mesuré : deux blocs) ; c'est la reprise du cours après rechargement qui le relit sans le garder. C'est chez E2, en premier, avec la ligne de code qui manque déjà pointée par E1. E3 et E4 le mesurent rouge jusqu'à sa poussée.
+
+166. Le reste : E2 n'a pas encore appliqué l'ordre de l'heure suivante (rituel d'abord, §12.16) ni la colonne de la fin de l'heure (titre hors de vue, boutons coupés) ; chez E1 deux détails (le témoin « Enregistré… » coupé, le sélecteur de l'écriture en classe pour qu'E4 rejoue le geste). Pas de « promeus » tant que le grave n'est pas vert. Prochain réveil à 21:07 ; les questions 152 et 144 restent à toi.
+
+21/10/2026 20:08
+MEMO

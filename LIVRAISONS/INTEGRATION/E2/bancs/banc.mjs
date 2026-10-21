@@ -202,6 +202,31 @@ dire(''); dire('B8 — pendant l\'heure, un absent coché dans la case de l\'EDT
     pas('B8', coche && ap.absent && ap.seg.some(x => /case/.test(x)) ? 'ok' : 'ÉCHEC', 'Élise Audebert, cochée absente dans la case, est absente dans l\'appel (et pas proposée à la parole)', JSON.stringify({ coche, ap }));
     pas('B8', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); await s.ctx.close(); } }
 
+// ── B9 · le réveil n°3 (relecture continue d'E4) : le VIF tapé vite, les suffixes, « sur 7 », le chrono après la clôture, les infobulles ──
+dire(''); dire('B9 — F2 « EB1 » tapé d\'un trait pose ; pas de « LC2 » à l\'écran ; « sur 7 » ; la fiche ne couvre pas la fin de l\'heure ; le chrono s\'arrête à la clôture');
+{ const s = await session(); const p = s.page; const v = await lancerUnClic(s);
+  if (v === 'absent' || !s.integre) { pas('B9', 'absent', 'le Lancer du site intégré'); }
+  else { const d0 = await p.evaluate(() => { const E = seance().ecrans, f = E.filter(e => e.role === 'fin').map(e => e.eid); return { h: S.heure, premier: ordreHeure(S.heure)[0], fins: f, uniques: new Set(f).size === f.length && f.every(x => !/-sx$/.test(x)) }; });
+    pas('B9', d0.h === 2 && d0.premier === 0 && d0.uniques ? 'ok' : 'ÉCHEC', 'heure 2 sans rien de vu : elle commence à la diapo 1 de la séance (la séance continue), aucun « Cahier de textes » doublé, tous à la clé de la séance (banc.sh 13:56, K6-K11)', JSON.stringify(d0));
+    await p.keyboard.press('F2'); await s.attendre(200); await p.keyboard.type('EB1'); await s.attendre(500);
+    const pose = await p.evaluate(() => S.parts.map(x => x.nom + ':' + x.m)); await p.keyboard.press('Escape'); await s.attendre(200);
+    pas('B9', pose.length === 1 && /BOIVIN Eden:participe/i.test(pose[0]) ? 'ok' : 'ÉCHEC', 'F2 puis « EB1 » sans pause : « participe » posé pour Eden Boivin (relance réveil n°3)', JSON.stringify(pose));
+    const vu = await p.evaluate(() => ({ dup: Object.values(INI).filter(x => /\d$/.test(x)), aff: Array.from(document.querySelectorAll('#part span[data-ini]')).map(x => x.firstChild ? x.firstChild.textContent : '').filter(x => /\d$/.test(x)) }));
+    pas('B9', !vu.aff.length ? 'ok' : 'ÉCHEC', 'la participation n\'affiche aucun suffixe chiffré (C1 4b.4)' + (vu.dup.length ? ' — ' + vu.dup.length + ' doublon(s) dans la classe' : ' — la classe n\'a pas de doublon : garde sans prise'), JSON.stringify(vu));
+    pas('B9', await p.evaluate(() => !!document.getElementById('dr-vif-x') && !!document.getElementById('dr-vif-x').title) && await p.evaluate(() => !!(document.getElementById('garde-devant') || {}).title) ? 'ok' : 'ÉCHEC', 'infobulles : le ✕ de la parole, « Y aller devant la classe »');
+    await devoiler(s, 2); await p.click('#dr-clore'); await s.attendre(600);
+    const sur = await p.evaluate(() => (document.getElementById('fin').innerText.match(/étapes? faites? sur \d/) || [''])[0]);
+    pas('B9', /sur 7/.test(sur) ? 'ok' : 'ÉCHEC', 'la liste de contrôle compte sur 7 étapes', sur);
+    await p.evaluate(() => ouvrirPart('EB')); await s.attendre(300);
+    const rec = await p.evaluate(() => { const a = document.getElementById('ppop').getBoundingClientRect(), b = document.getElementById('fin').getBoundingClientRect(); return { a: [a.left, a.top, a.right, a.bottom].map(Math.round), b: [b.left, b.top, b.right, b.bottom].map(Math.round) }; });
+    const couvre = !(rec.a[2] <= rec.b[0] || rec.a[0] >= rec.b[2] || rec.a[3] <= rec.b[1] || rec.a[1] >= rec.b[3]);
+    pas('B9', !couvre && rec.a[0] >= 0 ? 'ok' : 'ÉCHEC', 'la fiche de l\'élève ne couvre pas la fin de l\'heure et reste dans l\'écran', JSON.stringify(rec)); await p.keyboard.press('Escape'); await s.attendre(200);
+    await p.click('#f-clore'); await s.attendre(400); if (await p.evaluate(() => document.getElementById('garde-clore').classList.contains('on'))) await p.click('#gclore-oui'); await s.attendre(1500);
+    const c1 = await p.evaluate(() => document.getElementById('chr').textContent); await s.attendre(4000); const c2 = await p.evaluate(() => document.getElementById('chr').textContent);
+    pas('B9', c1 === c2 ? 'ok' : 'ÉCHEC', 'après la clôture, le chrono de la tête ne court plus', c1 + ' → ' + c2);
+    pas('B9', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');
 { const s = await session(); const ok = s.integre ? await s.page.evaluate(() => { const a = { niveau: '3e', chapitre: '0', seance: '0', classeSlug: '3E Charles de Gaulle', debut: '08:57', fin: '09:52' }, b = Object.assign({}, a, { debut: '10:07', fin: '11:02' }); return [_drCleHeureDe(a), _drCleHeureDe(b)]; }) : null;

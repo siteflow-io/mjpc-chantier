@@ -28,3 +28,9 @@
 - **reste** : appliquer l'outil sur `LIVRAISONS/INTEGRATION/index.html` dès E1-a, puis le banc sur `assemble/index.html`.
 - **bloqué** : E1-a absente.
 - **relances** : rien.
+
+## 21/10, 10:20 — poussée 5 : `dr-tableau.js` éprouvé sur la maquette (avant E1-a)
+- **fait** : `E3/outils/essai-sur-maquette.sh` — la maquette p8-5g + `dr-tableau.js` + l'amorce de la page tableau. Le banc unique y donne **18 vérifications vertes sur 19** : la fenêtre ouverte par « ⧉ » est **la page elle-même** (`maq.html?vue=tableau&local=1`), rendue par le `rendre` de la maquette, sans `document.write` ni `inj` ; elle suit ▶ sans rechargement ; elle tient pendant le gel et rattrape au dégel ; ouverte pendant le gel, elle montre l'image gelée ; la vue « ⧉ Tableau » montre la même chose. **Le seul échec est attendu** : la page de la maquette garde son `#mur` (corps statique) — dans le site, le gabarit n'est posé que par `atVuesPoser`, jamais dans la page tableau. Sortie `sorties/1020/banc-E3-essai-module-sur-maquette.txt`, captures `captures/essai-module-*.png`.
+- **reste** : E1-a → appliquer `brancher-index.py`, brancher `dr_tabPoserEcran` sur le socle réel, banc sur `assemble/index.html`.
+- **bloqué** : E1-a absente (veille toutes les 5 min).
+- **relances** : rien.

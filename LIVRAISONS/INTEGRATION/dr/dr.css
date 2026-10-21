@@ -403,7 +403,7 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .scene > #al-boite.al-boite:not(.flotte) > .al-txt { flex: 1 1 auto; min-width: 0; line-height: 1.2; max-height: 3.6em; overflow: auto; }
 :is(#dr-zone,#ses-tab,.at-som-volet) .scene > #al-boite.al-boite:not(.flotte) > .btn { flex: 0 0 auto; padding: 3px 9px; font-size: .8rem; white-space: nowrap; }
 :is(#dr-zone,#ses-tab,.at-som-volet) .scene.dr-al > .notes { flex-shrink: 1; min-height: 0; overflow: hidden; }
-:is(#dr-zone,#ses-tab,.at-som-volet) #droite.droite.fin:not(.cahier) > #droite-fin { order: -2; flex-shrink: 0; max-height: 62%; overflow: auto; }   /* réveil n°4, 5 (C1 7.0, 7.0 ter) : la classe continue pendant la fin de l'heure — la participation, « Où on en est » et le tableau restent dessous */
+:is(#dr-zone,#ses-tab,.at-som-volet) #droite.droite.fin:not(.cahier) > #droite-fin { order: -2; flex-shrink: 0; }   /* réveil n°4, 5 (C1 7.0, 7.0 ter) : la classe continue pendant la fin de l'heure — la participation, « Où on en est » et le tableau restent dessous ; réveil n°6 : la fin de l'heure entière (ses boutons), la colonne défile */
 :is(#dr-zone,#ses-tab,.at-som-volet) #droite.droite.fin:not(.cahier) > .suivi { display: flex; order: -1; flex-shrink: 0; }
 :is(#dr-zone,#ses-tab,.at-som-volet) #droite.droite.fin.cahier > .suivi { display: flex; flex-shrink: 0; }   /* 7.0 ter : en préparation, le tableau en ce moment, puis « Où on en est » et la participation */
 :is(#dr-zone,#ses-tab,.at-som-volet) #droite.droite.fin:not(.cahier) > .suivante { display: block; flex-shrink: 0; }

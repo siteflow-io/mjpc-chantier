@@ -271,7 +271,7 @@ function manquesAvantDeClore(restantes){ return controleCahier(restantes).etapes
 function ouvrirFin(cloture){ if ((document.getElementById('fin').parentElement === document.getElementById('ecran-fin') && document.getElementById('ecran-fin').classList.contains('on')) && !S._rattrapage) return; const derniere = S.heure >= ((dr_heureJouee(S.heure) || {}).sur || 1); /* E2 : la séance a N heures (edtHeuresPour) — avant : S.heure === 2 */ const E = seance().ecrans;
   const acts = dr_activitesOuDiapos(); /* E2 : les activités, et chaque diapo sans activité comme la sienne (réveil n°3, 3 ; C1 7.0-7.1) — avant : les activités seules */
   const restantes = acts.map(a => { const diapos = a.diapos.filter(i => E[i].heure <= S.heure && !finie(E[i], i) && !(decisionDe(E[i]) && decisionDe(E[i]).choix === 'passee')); const dansHeure = a.diapos.some(i => E[i].heure === S.heure || glisseeDe(E[i], S.heure)); return { a, diapos, commencee: a.diapos.some(i => vuMax[K(i)]) }; }).filter(x => x.diapos.length && (x.a.diapos.some(i => E[i].heure === S.heure) || x.a.diapos.some(i => glisseeDe(E[i], S.heure)) || (derniere && S.decisions[x.a.id] && S.decisions[x.a.id].choix === 'reserve')));
-  restantes.forEach(x => { if (!S.decisions[x.a.id] && !derniere) S.decisions[x.a.id] = { choix: 'suivante', moment: 'fin', defaut: true, heure: S.heure }; });
+  restantes.forEach(x => { if (!S.decisions[x.a.id] && !derniere) S.decisions[x.a.id] = { choix: 'suivante', moment: 'fin', defaut: true, heure: S.heure, t: now() }; });
   const bilan = E.find(e => e.role === 'bilan');
   const montrees = new Set(J.filter(x => x.type === 'diapo' && x.h === S.heure).map(x => x.di)); /* E2 : les diapos montrées DANS CETTE HEURE (vu par E4 : l'heure 2 donnait à apprendre les notions de l'heure 1) — avant : tout le journal */ const notionsHeure = new Set(); E.forEach((e, i) => { if (montrees.has(i) || vuMax[K(i)]) (e.comp || []).forEach(c => notionsHeure.add(c)); (S.notionsImprevues[e.eid] || []).forEach(c => notionsHeure.add(c)); });
   if (S.travail.apprendre == null) S.travail.apprendre = [...notionsHeure].filter(id => libNotion(id) !== id && !dejaVue(id)); /* E2 : seulement les nouvelles (réveil n°3, 5) */
@@ -285,8 +285,10 @@ function ouvrirFin(cloture){ if ((document.getElementById('fin').parentElement =
   if (!restantes.length) { const nonVues = ordreHeure(S.heure).filter(i => !E[i].role && !vuMax[K(i)]).length; h += nonVues && !acts.length ? `<div style="color:var(--texte2)">La trame de cette séance n’a pas d’activités à décider : <b>${nonVues} diapo${nonVues > 1 ? 's' : ''} de cette heure n’${nonVues > 1 ? 'ont' : 'a'} pas été montrée${nonVues > 1 ? 's' : ''}</b> — ${nonVues > 1 ? 'elles continuent' : 'elle continue'} à l’heure suivante de la séance.</div>` : '<div style="color:var(--texte2)">tout ce qui était prévu pour cette heure a été fait.</div>'; }   /* E2 : relecteur neuf n°2 — sans activités, « tout a été fait » mentait */
   h += `</div>`;
   h += `<div class="travail"><h3 style="margin-top:0">Travail à faire pour la prochaine fois</h3>`;
-  const term = restantes.filter(x => (S.decisions[x.a.id] || {}).choix === 'terminer'); const prep = restantes.filter(x => (S.decisions[x.a.id] || {}).choix === 'preparer'); const mais = restantes.filter(x => ['pastemps', 'maison'].includes((S.decisions[x.a.id] || {}).choix));
-  h += `<div style="color:var(--texte2)">${term.length ? 'terminer : ' + term.map(x => '<b>activité ' + dr_esc(String(x.a.num)) + '</b>').join(', ') + ' (reprise en classe) · ' : ''}${prep.length ? 'préparer : ' + prep.map(x => '<b>activité ' + dr_esc(String(x.a.num)) + '</b>').join(', ') + ' (reprise en classe) · ' : ''}${mais.length ? 'à faire : ' + mais.map(x => '<b>activité ' + dr_esc(String(x.a.num)) + '</b>').join(', ') + ' · ' : ''}${!term.length && !prep.length && !mais.length ? 'rien choisi au-dessus pour la maison.' : ''}</div>`;
+  /* E2 (réveil n°6, E4 lignes 122 et 134) : les décisions elles-mêmes, comme le travail à faire (`texteTravail`) les lit — avant : seulement ce qui restait dans l'heure (« rien pour la prochaine fois » avec une activité à la maison), et le numéro sans le titre (« activité 6 · ») */
+  const decDe = cs => Object.keys(S.decisions || {}).filter(k => { const d = S.decisions[k] || {}; return cs.includes(d.choix) && (!d.heure || d.heure === S.heure); }); const nomDec = k => '<b>' + dr_esc((objetDec(k) || {}).titre || 'diapo') + '</b>';
+  const term = decDe(['terminer']), prep = decDe(['preparer']), mais = decDe(['pastemps', 'maison']);
+  h += `<div style="color:var(--texte2)">${term.length ? 'terminer : ' + term.map(nomDec).join(', ') + ' (reprise en classe) · ' : ''}${prep.length ? 'préparer : ' + prep.map(nomDec).join(', ') + ' (reprise en classe) · ' : ''}${mais.length ? 'à faire : ' + mais.map(nomDec).join(', ') + ' · ' : ''}${!term.length && !prep.length && !mais.length ? 'rien choisi au-dessus pour la maison.' : ''}</div>`;
   h += `<label><input type="checkbox" id="f-prevu" ${S.travail.prevu && prevu ? 'checked' : ''} ${prevu ? '' : 'disabled'}> Ce que la trame prévoyait pour cette heure : <i>${dr_esc(prevu || 'rien de prévu')}</i></label>`;
   h += `<div class="taxo"><label><b>Apprendre les notions de l'heure</b> <button class="btn" id="f-nouvelles" style="padding:1px 7px;font-size:.8rem" title="Décoche les notions déjà rencontrées plus tôt dans le chapitre (dans la maquette : d'après la trame, pas d'après ce que la classe a vu)">seulement les nouvelles</button></label>${taxoHtml(notionsHeure)}</div>`;
   h += `<label>Autre travail : <input type="text" id="f-libre" value="${dr_esc(S.travail.libre)}" placeholder="un travail spécifique, dans tes mots" style="width:70%"></label>`;
@@ -314,7 +316,7 @@ function ouvrirFin(cloture){ if ((document.getElementById('fin').parentElement =
   const fe2 = $('f-ech'); if (fe2) fe2.addEventListener('change', () => { S.finFaites[1] = true; ouvrirFin(cloture); });
   $('droite').scrollTop = scrollAvant; $('fin').querySelectorAll('[data-finvue]').forEach(b => b.onclick = () => { S.finVue = b.dataset.finvue; journal('tableau-onglet', { onglet: S.finVue }); ouvrirFin(cloture); dr_tout(); });
   const debord = () => { const min = restantes.filter(x => ['suivante', 'terminer', 'preparer'].includes((S.decisions[x.a.id] || {}).choix)).reduce((t, x) => t + x.diapos.reduce((u, i) => u + E[i].dur, 0), 0); const suiv = E.filter(e => e.heure === S.heure + 1).reduce((t, e) => t + e.dur, 0); const d = suiv + min - 46; if ($('f-debord')) if ($('f-debord')) $('f-debord').textContent = derniere ? '' : (d > 0 ? `l'heure suivante dépasserait de ${d} min` : 'l\'heure suivante tient'); }; debord();
-  Z.querySelectorAll('[data-c]').forEach(b => b.onclick = () => { const id = b.closest('.carte').dataset.act; S.decisions[id] = { choix: b.dataset.c, moment: 'fin', h: hhmm(), heure: S.heure }; ouvrirFin(cloture); dr_tout(); });
+  Z.querySelectorAll('[data-c]').forEach(b => b.onclick = () => { const id = b.closest('.carte').dataset.act; S.decisions[id] = { choix: b.dataset.c, moment: 'fin', h: hhmm(), heure: S.heure, t: now() }   /* t : l'ordre des décisions ouvre l'heure suivante (§12.16 b) */; ouvrirFin(cloture); dr_tout(); });
   $('fin').querySelectorAll('[data-motif]').forEach(i => i.onchange = () => { S.decisions[i.dataset.motif].motif = i.value; edTexte(); });
   Z.querySelectorAll('[data-notion]').forEach(c => c.onchange = () => { const id = c.dataset.notion; const l = S.travail.apprendre; if (c.checked) { if (!l.includes(id)) l.push(id); } else { const j = l.indexOf(id); if (j >= 0) l.splice(j, 1); } ouvrirFin(cloture); });
   $('fin').querySelectorAll('[data-grp]').forEach(c => c.onchange = () => { const ids = c.dataset.grp.split(','); const l = S.travail.apprendre; ids.forEach(id => { const j = l.indexOf(id); if (c.checked) { if (j < 0) l.push(id); } else if (j >= 0) l.splice(j, 1); }); ouvrirFin(cloture); });
@@ -335,6 +337,11 @@ function taxoHtml(set){ let h = ''; dr_taxo()/* E1 : lisait DATA.taxo */.forEach
 
 function contenuEntier(e){ return e.blocs.map(b => { if (b.t === 'consigne') return b.txt + (b.el && b.el.length ? ' ' + b.el.map((x, i) => (i + 1) + '. ' + x).join(' ') : ''); if (b.t === 'question') return b.txt; if (b.t === 'fiche') return b.txt + (b.el && b.el[0] ? ' — ' + b.el[0] : ''); if (b.t === 'image') return b.txt + ' (image)'; if (b.t === 'schema') return 'le schéma « ' + b.txt + ' »'; if (b.t === 'video') return 'la vidéo « ' + b.txt + ' »'; return b.txt; }).join(' '); }
 
+/* réveil n°5, A4-2 (C1 7.0 ter) : une décision prise à la fin de l'heure (provisoire tant que l'heure n'est pas close) tombe si ses diapos sont ensuite
+   jouées jusqu'au bout — la copie ED, le paquet et l'étape 3 ne gardent plus « Préparer … » pour une activité faite en classe ; journal « decision-levee » */
+function dr_decisionsSuivre(){ if (!S.lancee || S.close || !S.decisions) return 0; let n = 0; const E = seance().ecrans; const acts = dr_activites()[String(S.si)] || [];
+  Object.keys(S.decisions).forEach(k => { const d = S.decisions[k]; if (!d || d.moment !== 'fin' || (d.heure && d.heure !== S.heure)) return; const a = acts.find(x => x.id === k); const ds = a ? a.diapos : [indexDe(k)].filter(i => i >= 0); if (!ds.length) return;
+    if (ds.every(i => E[i] && finie(E[i], i))) { delete S.decisions[k]; journal('decision-levee', { act: k, choix: d.choix }); n++; } }); return n; }
 function objetDec(cle){ const a = (dr_activites()/* E1 : lisait DATA.activites */[String(S.si)] || []).find(x => x.id === cle); if (a) { const E = seance().ecrans; const rest = a.diapos.filter(i => !finie(E[i], i)); return { titre: 'Activité ' + a.num + ' — ' + a.titre, video: rest.length === 1 && E[rest[0]].blocs[0] && E[rest[0]].blocs[0].t === 'video' ? E[rest[0]].blocs[0] : null, contenu: rest.map(i => E[i].act + ' : ' + contenuEntier(E[i])).join(' — ') }; } const e = seance().ecrans.find(x => x.eid === cle); return e ? { titre: e.act, video: e.blocs[0] && e.blocs[0].t === 'video' ? e.blocs[0] : null, contenu: contenuEntier(e) } : null; }
 
 function texteTravailED(){ return (S.travailEdite && S.travailEdite[S.heure] != null) ? S.travailEdite[S.heure] : texteTravail(); }
@@ -384,7 +391,13 @@ function ouvrirOuverture(){ if (S.anim) { clearInterval(S.anim); S.anim = null; 
   const rv = $('o-reverif'); if (rv) rv.onclick = () => ouvrirOuverture(); $('o-relecture').onclick = () => { $('ecran-fin').classList.remove('on', 'ouverture'); voir('relecture'); };
   $('o-lancer').onclick = () => { DECALAGE = 0; S.paliers = {}; S.t5 = false; S.palier = null; if (!S.close) return; dr_lancerSuite(h); }; } /* E2 : la classe, le créneau, le hub — avant : lancerHeure(h) seul */
 
-function lancerHeure(h){ S.heure = h; S.lancee = true; S.ordres = S.ordres || {}; S.ordres[h] = ordreHeureCalc(h); S.ordresEid = S.ordresEid || {}; S.ordresEid[h] = S.ordres[h].map(eidDe); /* E2 : now() est l'horloge réelle (socle, E1) — avant : T0 = Date.now() */ S.ecoule = 0; S.close = false; S.t5 = false; S.finSection = 1; S.finFaites = {}; /* E2 : la fin de l'heure n repart de l'étape 1 (vu par E4 : l'heure 2 s'ouvrait à l'étape 7, « sans échéance » coché) */ S.bilanCoche = false; S.travail = { terminer: [], preparer: [], apprendre: null, prevu: true, libre: '' }; S.echeance = null; S.motAbsents = ''; S.encart = null; S.doc = null; if (S.gel) degeler();
+/* contrat §12.16 (b) : ce que la fin de l'heure d'avant reporte revient dans l'ordre des DÉCISIONS (le socle les rend dans l'ordre de la trame) —
+   d'abord celles que Paul a prises (par leur heure, sinon leur ordre d'arrivée), puis celles que la clôture a posées par défaut ; les diapos d'une
+   activité restent ensemble, dans leur ordre. Le rituel (a) reste premier, le programme (c) et le cahier de textes (d) suivent (`ordreHeureCalc`, E1). */
+function dr_ordreOuverture(h){ const o = ordreHeureCalc(h); try { const E = seance().ecrans; const cles = Object.keys(S.decisions || {}); const gl = o.filter(i => E[i] && !E[i].role && glisseeDe(E[i], h)); if (gl.length < 2) return o;
+    const rg = i => { const d = decisionDe(E[i]) || {}; return [d.defaut ? 1 : 0, +d.t || 0, cles.indexOf(cleDec(E[i]))]; };
+    const tri = gl.slice().sort((a, b) => { const A = rg(a), B = rg(b); return (A[0] - B[0]) || ((A[1] && B[1]) ? A[1] - B[1] : 0) || (A[2] - B[2]) || (a - b); }); let k = 0; return o.map(i => gl.includes(i) ? tri[k++] : i); } catch (e) { return o; } }
+function lancerHeure(h){ S.heure = h; S.lancee = true; S.ordres = S.ordres || {}; S.ordres[h] = dr_ordreOuverture(h); S.ordresEid = S.ordresEid || {}; S.ordresEid[h] = S.ordres[h].map(eidDe); /* E2 : now() est l'horloge réelle (socle, E1) — avant : T0 = Date.now() */ S.ecoule = 0; S.close = false; S.t5 = false; S.finSection = 1; S.finFaites = {}; /* E2 : la fin de l'heure n repart de l'étape 1 (vu par E4 : l'heure 2 s'ouvrait à l'étape 7, « sans échéance » coché) */ S.bilanCoche = false; S.travail = { terminer: [], preparer: [], apprendre: null, prevu: true, libre: '' }; S.echeance = null; S.motAbsents = ''; S.encart = null; S.doc = null; if (S.gel) degeler();
   const o = ordreHeure(h); S.di = o[0]; S.page = null; S.mur = null; S._rattrapage = false; journal('lancement', { heure: h }); $('ecran-fin').classList.remove('on'); $('hou').textContent = dr_entete(h); /* E2 : la classe, le créneau, l'heure n/N réels — avant : HEURES_SIM puis dr_heureDe (E1), « sur 2 » */ voir('pilotage'); dr_tout(); }
 
 /* ═══ fin de la coupe E1-a ═══ */
@@ -487,12 +500,14 @@ const DR_ETAT_HORS = ['mur', 'attente', 'anim', 'coupure', 'di', 'ordres', 'repS
 function dr_etatHeure(){
   try { S.eidCourant = eidDe(S.di); } catch (e) {}
   const s = {}; Object.keys(S).forEach(k => { if (DR_ETAT_HORS.includes(k) || k.charAt(0) === '_') return; s[k] = S[k]; });
-  return { S: dr_versHub(s), parDiapo: dr_versHub(parDiapo), vuMax: dr_versHub(vuMax), maj: Date.now(), heures: dr_versHub(dr_heuresDesEcrans()), heuresParDurees: DR_CL.partages.get(seance().ecrans) || 0 };   /* réveil n°4, points 3 et 7 : l'heure de chaque diapo (les frontières) et l'heure courante (`S.heure`) — la reprise remonte l'heure telle qu'elle était, E4 lit où était chaque diapo */
+  return { S: dr_versHub(s), parDiapo: dr_versHub(parDiapo), vuMax: dr_versHub(vuMax), maj: Date.now(), heures: dr_versHub(dr_heuresDesEcrans()), reactivations: dr_versHub(dr_reactivationsDesEcrans()), heuresParDurees: DR_CL.partages.get(seance().ecrans) || 0 };   /* réveil n°4, points 3 et 7 : l'heure de chaque diapo (les frontières) et l'heure courante (`S.heure`) — la reprise remonte l'heure telle qu'elle était, E4 lit où était chaque diapo */
 }
 /* les frontières d'heure de la trame en mémoire : {eid: heure}, sans les « Cahier de textes » (le socle les place) */
 function dr_heuresDesEcrans(){ const o = {}; try { seance().ecrans.forEach(e => { if (!e.role && e.eid != null) o[e.eid] = +e.heure || 1; }); } catch (e) {} return o; }
+function dr_reactivationsDesEcrans(){ const o = {}; try { seance().ecrans.forEach(e => { if (e.role === 'reactivation' && e.eid != null) o[e.eid] = +e.heure || 1; }); } catch (e) {} return o; }   /* le rituel posé à chaque heure (§12.16), pour la reprise */
 /* reposer des frontières gardées (la reprise, l'heure suivante) : chaque diapo à son heure, chaque « Cahier de textes » derrière la dernière diapo de la sienne */
-function dr_appliquerHeures(m, parDurees){ const E = seance().ecrans; if (!m || typeof m !== 'object' || !Object.keys(m).length) return 0; let n = 0;
+function dr_appliquerHeures(m, parDurees, reac){ const E = seance().ecrans; if (!m || typeof m !== 'object' || !Object.keys(m).length) return 0; let n = 0;
+  if (reac && typeof reac === 'object') E.forEach(e => { if (e.eid != null && reac[e.eid] != null && (!e.role || e.role === 'reactivation')) { e.role = 'reactivation'; e.heure = +reac[e.eid]; n++; } });
   E.forEach(e => { if (!e.role && e.eid != null && m[e.eid] != null && +m[e.eid] !== e.heure) { e.heure = +m[e.eid]; n++; } });
   if (parDurees) DR_CL.partages.set(E, +parDurees);
   dr_placerFins(E, 1); if (typeof dr_normaliserTrame === 'function') dr_normaliserTrame(E, (dr_ctx() || {}).snum); try { reindexer(); } catch (e) {} return n; }
@@ -550,6 +565,11 @@ function dr_temoinIntegre(em){
    journal, moins les coupures mises à part (C1 1.3 bis) ; `passages` = les entrées sur cet écran.
    `decisions` par rang TOMBE (audit C3 : personne ne le relit) ; `decisionsParEcran` (par `eid`) et `decisionsParActivite`
    (par `actId`) le remplacent. Plus ce que la maquette sait : appel, coupures, échéance, travail, réserve, versements, paroles. */
+/* les prises de parole de l'heure pour son paquet : celles du VIF et de la palette (`S.parts`), et chaque réponse écrite avec son élève dans une diapo
+   jouée cette heure — C1 4b.5 : écrire une réponse est une prise de parole (motif « réponse »), sans double saisie ; `S.parts` n'en reçoit pas de copie
+   (les compteurs la comptent déjà) — réveil n°6, E4 ligne 133 */
+function dr_partsHeure(h, parEid){ const out = (S.parts || []).filter(x => x.heure == null || x.heure === h).slice();
+  try { Object.keys(parEid || {}).forEach(eid => { const i = indexDe(eid); if (i < 0) return; const st = parDiapo[K(i)] || {}; Object.keys(st.reps || {}).forEach(bi => (st.reps[bi] || []).forEach((r, ri) => { if (r && r.eleve && r.r) out.push({ nom: r.eleve, m: 'reponse', note: '', eid, bi: +bi, ri, heure: h, reponse: true }); })); }); } catch (e) {} return out; }
 function dr_paquetHeure(clos){
   if (typeof AT_DR_COURS === 'undefined' || !AT_DR_COURS || !S.lancee) return null;
   const h = S.heure, E = seance().ecrans, t1 = clos ? (S.finReel || Date.now()) : Date.now();
@@ -576,7 +596,7 @@ function dr_paquetHeure(clos){
     activites, parActivite, decisionsParEcran, decisionsParActivite,
     appel: S.appel || {}, coupures: (S.coupures || []).filter(c => (c.debut || 0) >= debutReel), echeance: S.echeance || ((S.finFaites || {})[1] ? 'aucune' : null),   /* « Sans échéance » se dit (relecteur neuf n°2) */
     travail: Object.assign({ terminer: [], preparer: [], apprendre: null, prevu: true, libre: '' }, S.travail || {}), travailTexte: (typeof texteTravailED === 'function' ? texteTravailED() : '') || '',   /* relance M7 : la forme de la maquette ; `prevu:false` = « pas de travail », jamais un silence */
-    reserve: S.reserve || [], versements: S.versements || {}, parts: (S.parts || []).filter(x => x.heure == null || x.heure === h),   /* les paroles de CETTE heure (relecteur neuf n°2) */
+    reserve: S.reserve || [], versements: S.versements || {}, parts: dr_partsHeure(h, parEid),   /* les paroles de CETTE heure (relecteur neuf n°2) */
     motAbsents: S.motAbsents || '', clos: !!clos, maj: Date.now()
   };
   if (clos && S.closPar) p.closPar = S.closPar;
@@ -649,7 +669,7 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
     dr_lireJoue(j => {
       if (j && j.S && j.S.lancee && dr_adopterIdentites(j.ecrans) > 0) { dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); return; }   /* les identités adoptées : on relit, pour que les rangs se refassent dessus */
       if (j && j.S && j.S.lancee) { if (Array.isArray(j.ecrans)) { const E = seance().ecrans; const f = dr_fusionCopie(E.slice(), j.ecrans, j.J); E.splice(0, E.length, ...f); }   /* la copie de la classe fusionnée avec la trame du jour */
-        dr_restaurer(j); if (!(j.heures && Object.keys(j.heures).length)) dr_partagerHeures(dr_utileCreneau(creneau)); else dr_appliquerHeures(j.heures, j.heuresParDurees); dr_heureContinue(heure);   /* les frontières de la veille, puis la séance continue */ S.heure = heure - 1; S.close = true; S.lancee = true; DR_CL.suite = { classeSlug, nom, creneau, debut, heure, garder: true }; dr_heurePoser(heure, { debut, fin, classeSlug, classeNom: nom });
+        dr_restaurer(j); if (!(j.heures && Object.keys(j.heures).length)) dr_partagerHeures(dr_utileCreneau(creneau)); else dr_appliquerHeures(j.heures, j.heuresParDurees, j.reactivations); dr_heureContinue(heure);   /* les frontières de la veille, puis la séance continue */ S.heure = heure - 1; S.close = true; S.lancee = true; DR_CL.suite = { classeSlug, nom, creneau, debut, heure, garder: true }; dr_heurePoser(heure, { debut, fin, classeSlug, classeNom: nom });
         try { $('ecran-edt').classList.remove('on'); } catch (e) {} try { voir('pilotage'); } catch (e) {} ouvrirOuverture(); return; }
       dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, true);
     }, (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug);
@@ -705,7 +725,8 @@ function dr_reprendre(cb){
   const C = dr_cheminC(), ch = dr_cheminH(); if (!C || !ch) { if (cb) cb(false); return; }
   dr_lire(C + '/ecrans', copie => dr_lire(C + '/etat', etat => dr_lire(C + '/journal', jr => dr_lire(ch, t => {
     if (!etat || !etat.S) { if (cb) cb(false); return; }
-    dr_adopterIdentites(copie); if (!dr_appliquerHeures(dr_duHub(etat.heures || {}), etat.heuresParDurees) && !(etat.heures && Object.keys(etat.heures).length)) dr_partagerHeures(dr_utileCreneau(dr_creneauDuCours(AT_DR_COURS)));   /* réveil n°4, 3 : les frontières de l'heure telles qu'elles étaient (avant : recalculées, la diapo 7 repassait à l'heure 1) */
+    dr_adopterIdentites(copie); if (Array.isArray(copie) && copie.length && copie.every(x => x && typeof x === 'object')) { const E0 = seance().ecrans; E0.splice(0, E0.length, ...copie); try { reindexer(); } catch (e) {} }   /* réveil n°6 (E4 ligne 110, ma part) : la reprise relit la copie de la classe (C/ecrans) telle qu'elle est au hub, sans recalcul — ce qui a été écrit en classe revient */
+    if (!dr_appliquerHeures(dr_duHub(etat.heures || {}), etat.heuresParDurees, dr_duHub(etat.reactivations || {})) && !(etat.heures && Object.keys(etat.heures).length)) dr_partagerHeures(dr_utileCreneau(dr_creneauDuCours(AT_DR_COURS)));   /* réveil n°4, 3 : les frontières de l'heure telles qu'elles étaient (avant : recalculées, la diapo 7 repassait à l'heure 1) */
     if (t && (t.clos || (t.classe && t.classe !== AT_DR_COURS.classeNom) || (t.creneau && t.creneau !== dr_creneauDuCours(AT_DR_COURS)))) { if (cb) cb(false); return; }
     dr_restaurer({ S: dr_duHub(etat.S), parDiapo: dr_duHub(etat.parDiapo || {}), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
     DR_CL.sur = ((dr_heureJouee(S.heure) || {}).sur) || DR_CL.sur || 1;   /* N revient avec l'heure */
@@ -749,7 +770,7 @@ function dr_cloreFin(){
   if (C) { dr_ecrire(C + '/journal', jr, 'Le journal de l’heure, à la clôture', () => {}); dr_ecrire(C + '/etat', et, 'L’état de l’heure, à la clôture', () => {}); }
   [DR_CL.jT, DR_CL.eT, DR_CL.tT, DR_CL.cT].forEach(clearTimeout);
   try { window.AT_DR_DERNIER = { level: (AT.edChap || {}).level, chnum: (AT.edChap || {}).chnum, snum: ATVUES.snum, classe: AT_DR_COURS.classeSlug, ts: Date.now() }; } catch (e) {}
-  DR_CL.cleClose = ch; DR_CL.creneauClos = dr_creneauDuCours(AT_DR_COURS);   /* la clé de l'heure close dans cette page : « ▶ Lancer » ne la repropose pas */
+  DR_CL.cleClose = ch; DR_CL.creneauClos = dr_creneauDuCours(AT_DR_COURS); try { const hu = document.getElementById('hou'); if (hu) hu.textContent = dr_entete(S.heure) + ' · close'; } catch (e) {}   /* réveil n°6 (E4 ligne 119) : l'entête dit que l'heure est close */   /* la clé de l'heure close dans cette page : « ▶ Lancer » ne la repropose pas */
   dr_coursFermer();
   AT_DR_REGIME = 'prep';
 }
@@ -761,7 +782,7 @@ function dr_lireJoue(cb, chemin){
   const C = chemin || (typeof dr_cheminC === 'function' ? dr_cheminC() : null); if (!C) { cb(null); return; }
   dr_lire(C + '/ecrans', ecr => dr_lire(C + '/etat', et => dr_lire(C + '/journal', jr => {
     if (!et && !jr) { cb(null); return; }
-    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_duHub((et || {}).S || {}), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
+    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_duHub((et || {}).S || {}), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), reactivations: dr_duHub((et || {}).reactivations || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
   })));
 }
 
@@ -833,7 +854,7 @@ const heureCahier = () => { /* E2 : la vraie fin de l'heure (la case, `AT_DR_COU
   const hj = dr_heureJouee(S.heure); if (hj && hj.base && hj.fin) { const d = new Date(hj.base); return new Date(d.getFullYear(), d.getMonth(), d.getDate(), dr_mn(hj.fin) / 60 | 0, dr_mn(hj.fin) % 60).getTime() - 5 * 60000; }
   return dr_heureDe(S.heure).base + 55 * 60000 - 5 * 60000; };
  /* 6.3 : le repère de la fin d'heure = la fin moins les cinq minutes réservées au cahier de textes */
-function tick(){ if ((document.getElementById('fin').parentElement === document.getElementById('ecran-fin') && document.getElementById('ecran-fin').classList.contains('on'))) { $('heure').textContent = hhmm(); return; } if (S.lancee && !S.close && S.ecoule % 15 === 0 && !(document.activeElement && document.activeElement.classList.contains('dur-in'))) { try { ouOnEnEst(); } catch (e) {} } if (!S.lancee) { $('chr').textContent = '—'; $('chr').className = ''; $('heure').textContent = ''; return; } if (S.close) { try { if (S.palier) alerteFermer(); } catch (e) {} return; } /* E2 : l'heure close, le chrono s'arrête (relecteur neuf n°2) */ S.ecoule++; $('heure').textContent = hhmm(); const chr = $('chr'); const reste = heureCahier() - now();
+function tick(){ if ((document.getElementById('fin').parentElement === document.getElementById('ecran-fin') && document.getElementById('ecran-fin').classList.contains('on'))) { $('heure').textContent = hhmm(); return; } if (S.lancee && !S.close && S.ecoule % 15 === 0 && !(document.activeElement && document.activeElement.classList.contains('dur-in'))) { try { ouOnEnEst(); } catch (e) {} } if (!S.lancee) { $('chr').textContent = '—'; $('chr').className = ''; $('heure').textContent = ''; return; } if (S.close) { try { if (S.palier) alerteFermer(); } catch (e) {} return; } /* E2 : l'heure close, le chrono s'arrête (relecteur neuf n°2) */ try { if (dr_decisionsSuivre() && document.getElementById('fin') && document.getElementById('fin').offsetParent) ouvrirFin(); } catch (e) {} S.ecoule++; $('heure').textContent = hhmm(); const chr = $('chr'); const reste = heureCahier() - now();
   if (S.close || reste > 5 * 60000) { const m = Math.floor(S.ecoule / 60), s = S.ecoule % 60; chr.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); chr.className = ''; chr.title = 'Le temps écoulé depuis le lancement de l\'heure'; return; }
   const abs = Math.abs(reste); const m = Math.floor(abs / 60000), sec = Math.floor((abs % 60000) / 1000); chr.textContent = (reste >= 0 ? '−' : '+') + m + ':' + String(sec).padStart(2, '0'); chr.className = reste <= 0 ? 'cr-zero' : reste <= 60000 ? 'cr-t1' : reste <= 180000 ? 'cr-t3' : 'cr-t5'; chr.title = reste >= 0 ? 'Compte à rebours vers l\'heure du cahier de textes (' + hhmm(heureCahier()) + ')' : 'Le cahier de textes a commencé depuis ' + m + ' min ' + sec + ' s (l\'heure court jusqu\'à Clore)';
   S.paliers = S.paliers || {}; const kk = reste <= 0 ? 'zero' : reste <= 60000 ? 't1' : reste <= 180000 ? 't3' : 't5'; ['t5', 't3', 't1', 'zero'].forEach(k => { const seuil = { t5: 5 * 60000, t3: 3 * 60000, t1: 60000, zero: 0 }[k]; if (reste <= seuil && !S.paliers[k]) { S.paliers[k] = true; dr_palier(k); } }); }
@@ -968,12 +989,18 @@ function dr_fusionCopie(trame, copie, journalJ){
 function dr_heureContinue(h){
   try { if (!(h > 1)) return 0; const E = seance().ecrans; const utile = DR_CL.partages.get(E); if (!utile && E.some(e => e.heure === h && e.role !== 'fin')) return 0;   /* une frontière posée par Paul : son heure h tient */
     const i0 = J.findIndex(x => x.type === 'lancement'); const vus = new Set((i0 < 0 ? [] : J.slice(i0)).filter(x => x.type === 'diapo').map(x => x.eid)); let n = 0;   /* ce qui a été montré APRÈS un lancement : la diapo poussée au chargement n'a pas été vue par la classe */
-    E.forEach((e, i) => { if (!e.role && !vus.has(e.eid) && !vuMax[K(i)] && (+e.heure || 1) < h) { e.heure = h; n++; } });
+    const vu = (e, i) => vus.has(e.eid) || !!vuMax[K(i)];
+    /* contrat §12.16 (réveil n°6, C1 6.5-6.6) : (a) le rituel de l'heure — la première diapo de réactivation de la trame pas encore jouée (« Où en sommes-nous ? »), première de l'heure ;
+       (b) ce que les décisions de la fin de l'heure d'avant reportent revient par le glissement du socle (`ordreHeureCalc0`) : une diapo décidée ne se déplace pas ici
+       (« non fait », « pas le temps » sortent du programme — E4 ligne 130) ; (c) le reste dans l'ordre de la trame, depuis là où la classe s'est arrêtée ; (d) le cahier de textes en dernier (socle) */
+    if (!E.some(e => e.role === 'reactivation' && e.heure === h)) { const i = E.findIndex((e, k) => !vu(e, k) && (e.role === 'reactivation' || (!e.role && dr_estRituel(e))) && !decisionDe(e)); if (i >= 0) { E[i].role = 'reactivation'; E[i].heure = h; n++; } }
+    E.forEach((e, i) => { if (!e.role && !vu(e, i) && (+e.heure || 1) < h && !decisionDe(e)) { e.heure = h; n++; } });
     if (utile) n += dr_refaireHeures(E, h, utile);   /* banc.sh 13:56 (K6-K11) : la frontière par les durées laissait à l'heure 1 ce que la classe n'avait pas vu — l'heure 2 sautait les premières diapos */
     if (n && typeof dr_normaliserTrame === 'function') dr_normaliserTrame(E, (dr_ctx() || {}).snum);   /* la clé de la séance : l'eid « fin-hN-s<clé> » du socle, stable */ try { reindexer(); } catch (e) {} return n; } catch (e) { return 0; }
 }
 /* la séance continue (CADRAGE-TEMPS §1) sur ma frontière par les durées : à partir de l'heure h, ce qui reste se repartage par les minutes
    utiles ; chaque « Cahier de textes » (rôle fin, eid stable du socle) est déplacé derrière la dernière diapo de son heure, jamais doublé. */
+const dr_estRituel = e => /o[uù] en sommes[- ]nous|r[ée]activation/i.test(String(e.act || ''));   /* le rituel d'ouverture d'une heure, quand la trame ne porte pas de rôle */
 function dr_refaireHeures(E, h, utile){
   let cum = 0, n = 0; E.forEach(e => { if (e.role || (+e.heure || 1) < h) return; const nh = h + Math.floor(cum / utile); if (nh !== e.heure) { e.heure = nh; n++; } cum += +e.dur || 0; });
   dr_placerFins(E, 1); return n; }   /* tous les « Cahier de textes », pour que la reprise retrouve le même ordre */

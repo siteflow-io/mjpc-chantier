@@ -38,6 +38,8 @@ async function ouvrir(o = {}) {
   if (SIMULE) { const se = store().site['3e'].chapitres; const s0 = (Array.isArray(se) ? se[0] : se['0']).seances; await pg.addInitScript(([h, sc]) => { window.__E4HUB_INIT = h; window.__E4SEANCE = sc; }, [o.frais ? null : HUB_PERSISTANT, Array.isArray(s0) ? s0[0] : s0['0']]); }
   if (!SITE) { await pg.goto('file://' + F); await pg.waitForTimeout(600); return { ctx, pg, errs, boites }; }
   await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, o.hub || (o.frais ? null : HUB_PERSISTANT) || store());
+  /* le voile #fi-overlay du site (« Aucune fiche n'existe pour cette application ») : le faux hub n'a pas /manifestes (audit E1, F15, à la conscience) — écarté ici à chaque apparition, comme une lacune du faux hub, pas du site */
+  await pg.addInitScript(() => { const ot = () => { const v = document.getElementById('fi-overlay'); if (v) v.remove(); }; document.addEventListener('DOMContentLoaded', () => { ot(); new MutationObserver(ot).observe(document.body, { childList: true, subtree: true }); }); });
   if (o.modeTest) await pg.addInitScript(() => { try { localStorage.setItem('mjpc_mode_test', '1'); } catch (e) {} });
   await pg.goto('file://' + F + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
   await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
@@ -170,7 +172,7 @@ else verif('D1', null, 'les documents par référence', 'la maquette simule ses 
   await pg.click('#rel [data-rv="moi"]'); await p(pg, 400); const r2 = await texteRel(pg);
   verif('T', /Ce qu'on a fait aujourd'hui/.test(r2) && /Cette heure a commencé à/.test(r2), '« ma version » garde l\'entête et le cadre de l\'heure', r2.slice(0, 300));
   await pg.click('#r-copie-contenu'); await p(pg, 400); const cp = await pg.evaluate(() => window.DR_RECIT_DERNIERE_COPIE || null);
-  verif('T', cp && /Ce qu'on a fait aujourd'hui/.test(cp.texte) && !/tu la reprendras|composée par le site depuis/.test(cp.texte) && /<b>Activité \d+/.test(cp.html), 'la copie ED de ma version : avec l\'entête, sans repère pour Paul, le titre d\'activité en titre', cp ? cp.texte.slice(0, 200) : '');
+  verif('T', cp && /Ce qu'on a fait aujourd'hui/.test(cp.texte) && !/tu la reprendras|composée par le site depuis/.test(cp.texte) && /<b>[^<]+<\/b><br>/.test(cp.html) /* le titre du paragraphe (« Activité N — … », ou le nom de la diapo quand la trame n'a pas d'activités) */, 'la copie ED de ma version : avec l\'entête, sans repère pour Paul, le titre d\'activité en titre', cp ? cp.texte.slice(0, 200) : '');
   const ed = await pg.$('#rel .recit.ma-version'); if (ed) { await ed.click(); await p(pg, 300); }
   verif('T', await pg.evaluate(() => document.getElementById('garde-copie').classList.contains('on')), 'après une copie ED, corriger ma version passe par la garde (cadrage 2 · 3.8)', null);
   await o.ctx.close(); }

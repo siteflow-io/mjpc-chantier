@@ -362,3 +362,11 @@
 - E2 a poussé `c00eb71c`, `2376e8dc` et `43c1d2f0` (§12.16, l'ordre de l'heure suivante). **banc.sh sur `43c1d2f0` : VERT** (`sorties/1834`).
 - Un relecteur neuf revérifie les lignes 110 et 130 sur `43c1d2f0`. Mon banc tourne sur la même tête ; les captures de cette poussée sont les siennes, encore en cours.
 - Mon banc sur `43c1d2f0` : **109 ok · 0 échec** (`sorties/1834-site-E4`).
+
+## Poussée 43 — 18:58 UTC
+- **Ligne 110 réglée** (revérifiée sur `43c1d2f0`) : le bloc écrit en classe survit au rechargement et à la reprise, au pilote, dans la copie au hub, sur l'Écran 2 et dans le récit.
+- **Ligne 130 pas réglée** sur `43c1d2f0`. « Non fait » et « pas le temps » ne reviennent pas à l'heure 3. Le site suit C1 7.1 (« sort du programme »), alors que le §12.16 (b) du contrat range ces deux décisions parmi les reports. **Le contrat se contredit : à trancher.**
+- **Deux lignes nouvelles chez E2** :
+  - l'écran d'ouverture annonce toujours « sur la réactivation » ;
+  - **haute** : avec « à l'heure suivante », Question-bilan est annoncée mais disparaît de l'heure 3.
+- **Une ligne à moi, non reproduite** : le récit de l'heure close sans « Les hypothèses ». En jeu direct, l'activité est racontée ; je la laisse à revérifier par le chemin clôture + Relecture.

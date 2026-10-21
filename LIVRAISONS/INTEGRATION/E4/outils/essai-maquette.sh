@@ -13,6 +13,7 @@ keep=[l for i,l in enumerate(L,1) if not any(a<=i<=b for a,b in R)]
 open(sys.argv[2]+'/maq-sans-e4.html','w',encoding='utf-8').write('\n'.join(keep))
 PY
 python3 "$ICI/inject.py" "$TRAV/maq-sans-e4.html" "$DR/dr-recit.js" "$TRAV/essai.html"
+python3 "$ICI/inject.py" "$TRAV/essai.html" "$E4/bancs/alias-maquette.js" "$TRAV/essai.html"   # les noms du socle -> ceux de la maquette
 if [ "${MJPC_ENTREE:-}" = simule ]; then python3 "$ICI/inject.py" "$TRAV/essai.html" "$E4/bancs/socle-simule.js" "$TRAV/essai.html"; fi   # le socle simulé, avant le module
 python3 - "$TRAV/essai.html" "$E4/dr-recit.css" <<'PY'
 import sys

@@ -1738,3 +1738,28 @@ Réponse de la conscience (14:49), mot pour mot :
 
 21/10/2026 14:49
 MEMO
+
+---
+
+## TOUR 82 — RÉVEIL N°3 (21/10/2026, 15:11 → 15:24 ; déclenché par la tâche planifiée)
+
+Mesuré :
+- `integration` à `a68469f5` : ~70 poussées depuis 09:10, dont depuis le réveil n°2 : E1 (relances traitées 13:29-13:39 ; recyclage R13, R17, R18, R20, R21, R14 ; dettes 13·4, 13·5, 13·6, 13·12 ; deux relecteurs neufs), E2 (relances traitées 14:12-14:32 : F2 l'heure suivante, `dr_proposer`, `dr_heureDe`, la fusion copie/trame B7, le paquet ; dette 12·17 ; NOTE), E3 (relances traitées 13:28-13:56 : `dr_versMur`, « Adresse du tableau », `C/part` tombe, `dr_sessionEtat` ; l'attente sur `dr_proposer` ; NOTE), E4 (E4-2 : R1, R4, R2, R5 faits, R6 bloqué par R13 — poussé depuis ; **la relecture continue** : quatre relecteurs A, A2, B, B2 sur tout le parcours, ~60 lignes, ses propres défauts réglés, les autres consignés par territoire).
+- **Mon banc sur `a68469f5`** : collisions 0 ; **parcours P0-P12 VERT** (26/26) ; **K1-K13 : 108 vérifications, 0 échec** ; mode test : deux rouges, **tous deux miens** (P5 : l'outil comparait la présence des clés du magasin, où `cours_actif` est déjà une lecture mise en cache — E2 l'avait mesuré ; P8 : j'ai changé de branche pendant le banc). `parcours.mjs` v3 : le magasin comparé par valeurs ; **la clôture réelle** (« ■ Clore l'heure » → étape 7 → « Clore l'heure » → garde « Clore quand même ») et `H.clos`/`H.finReel` vérifiés au hub : **VERT en mode test** (le défaut « edt is not defined » du 10:14 est réglé).
+- Capture P9 : l'entête tient (classe, créneau, « heure 2/3 » — F2 réglée, la copie de l'heure 1 du 07/09 reprise), deux rangées ; reste la classe écrite deux fois, « rien ne restait » à l'étape 2 (diapo 1 sur 19), le bandeau « Enregistré à … » en bas.
+- **Relances écrites (15:14)** depuis `E4/RELECTURE-CONTINUE.md`, par gravité : E1 (10 points : la première lettre perdue après deux Entrée — grave ; le clic dans une question grisée qui écrit dans l'énoncé ; le témoin « Enregistré » qui couvre ; ▶ derrière un document ; la réponse qui ne part pas au tableau ; les tailles ; le clic sur une séance ; la numérotation des activités ; Échap/Entrée ; infobulles), E2 (6 points : l'heure suivante après une clôture à 3 diapos ; la frontière d'heure par les durées ; « rien ne restait » ; l'échéance proposée ; « Où on en est » par diapo à défaut d'activité ; EB1 ; infobulles ; les suffixes), E3 (4 points : la scène écrite depuis la Relecture ; « tableau en Win K » ; la réponse au tableau ; 52 pt), E4 (R6 à reprendre, ses lignes restantes). Décisions : `C/part` tombe (clos) ; l'attente de la page tableau lit la grille en lecture seule par la règle d'E2 ; le mode test de l'outil d'E4.
+- Fusions : `main` → `integration` (e4af23d4 : conflits sur les transcripts, cadrages et relances — les exécutants avaient rebasé mes commits — résolus par la version de `main` ; puis f41ef48e). Dette 13 · 25 promue (tour 80). Réveil suivant : **16:25** (toutes les heures, Paul 14:46).
+- Ma faute, deux fois : changer de branche pendant que le banc tourne ; des horodatages écrits en avance (corrigés).
+
+Réponse de la conscience (15:24), mot pour mot :
+
+150. Réveil n°3. Les quatre ont traité toutes mes relances du réveil n°2 et continuent ; E4 relit en continu tout le parcours avec deux relecteurs à chaque poussée des autres (une soixantaine de défauts consignés, les siens réglés, les autres répartis). **Mon banc sur leur dernière poussée : le parcours entier vert, les treize contrôles 108/108, zéro collision, et en mode test la clôture complète écrit bien l'heure close sans rien laisser partir au hub.**
+
+151. J'ai relancé les quatre avec ce que les relecteurs d'E4 tiennent ouvert, par gravité : chez E1 d'abord la première lettre perdue quand on tape vite après deux Entrée, le clic dans une question grisée qui écrit dans l'énoncé au lieu de la dévoiler, le témoin « Enregistré à… » qui couvre les outils ; chez E2 la deuxième heure d'une séance close trop tôt, la frontière d'heure par les durées (toute la séance tenait dans l'heure 1), « rien ne restait » à l'étape 2 ; chez E3 la scène écrite depuis la Relecture ; chez E4 ses dernières lignes et R6.
+
+152. Une question pour toi, courte : quand tu clos l'heure à 09 h 44 alors que le créneau finit à 09 h 52, le récit dit « s'est terminée à 09 h 52 ». Ma proposition : le récit dit l'heure réelle (09 h 44) et l'entête garde le créneau.
+
+153. Prochain réveil à 16:25, puis toutes les heures.
+
+21/10/2026 15:24
+MEMO

@@ -119,3 +119,6 @@
 
 ## 21/10, 20:16 — réveil n°7 lu
 - Rien d'ouvert ; les deux rouges de T14 sont attribués à E2 dans le banc (`dr_reprendre` ne fusionne pas `C/ecrans`) ; je dirai ici quand ils passent au vert. Banc rejoué sur `440e851c` : 89 vérifications, ces 2 échecs seulement.
+
+## 21/10, 20:40 — T14 au vert
+- Sur la poussée d'E2 `c00eb71c` (la reprise relit `C/ecrans` ; l'ordre §12.16 de l'heure suivante) : **banc E3 89/89, 0 échec** — après « Reprendre le cours », le bloc écrit en classe est au pilote **et au tableau** (la ligne 110 d'E4 est réglée pour le tableau) ; T13 suit le nouvel ordre de l'heure suivante (la fenêtre = le pilote). Sortie `sorties/2040/banc-E3.txt`.

@@ -375,13 +375,13 @@ dire(''); dire('B6 — le mode test (13 · 25) : lancer, dévoiler, clore → z�
 { const s = await session(); if (!s.site) { pas('B6', 'absent', 'le mode test est celui du site'); await s.ctx.close(); }
   else { await s.page.evaluate(() => { M8_TEST = true; }); const n0 = (await s.ecrits()).length; const v = await lancerUnClic(s);
     if (v === 'absent') pas('B6', 'absent', 'aucun [data-lancer="1"]');
-    else { const m1 = await s.page.evaluate(() => { const st = M8_TEST_STORE, k = Object.keys(st).find(x => /\/heures\/[^/]+$/.test(x)); return { ca: st['/site/cours_actif'] || null, H: k ? st[k] : null }; });
+    else { const m1 = await s.page.evaluate(() => { const st = M8_TEST_STORE, k = Object.keys(st).find(x => /\/heures\/[^/]+$/.test(x) && st[x] && st[x].classe);   /* la clé de l'heure jouée (une lecture « l'heure proposée est-elle close ? » met aussi un nul en magasin) */ return { ca: st['/site/cours_actif'] || null, H: k ? st[k] : null }; });
       await s.attendre(1500); const pil = await s.page.evaluate(() => { const x = document.getElementById('dr-test'); return x ? { vu: !!x.offsetParent, txt: x.innerText, zone: (document.getElementById('dr-zone') || {}).dataset.modeTest || null } : null; });
       pas('B6', pil && pil.vu && pil.zone === '1' ? 'ok' : 'ÉCHEC', 'mode test : la pastille « Mode test » dans l\'entête du pilotage, `data-mode-test` posé (C1 11t.3, réveil n°4, 5)', JSON.stringify(pil));
       pas('B6', m1.ca && m1.ca.classeSlug === '3E Charles de Gaulle' && m1.H && !m1.H.clos ? 'ok' : 'ÉCHEC', 'mode test, après le lancement : le magasin de test porte cours_actif, et l\'heure n\'est PAS close (relance du 21/10 12:58)', JSON.stringify({ ca: !!m1.ca, clos: m1.H && m1.H.clos }));
       await devoiler(s, 2); await s.page.click('#dr-clore'); await s.attendre(400); await s.page.click('#f-clore'); await s.attendre(300); if (await s.page.evaluate(() => document.getElementById('garde-clore').classList.contains('on'))) { await s.page.click('#gclore-oui'); } await s.attendre(2500);   /* « ■ Clore l'heure » → l'étape 7 → « Clore l'heure » → la garde → « Clore quand même », comme Paul */
       const ec = depuis(await s.ecrits(), n0); pas('B6', ec.length === 0 ? 'ok' : 'ÉCHEC', 'mode test : zéro écriture au hub', ec.length + ' : ' + ec.join(' · '));
-      const m2 = await s.page.evaluate(() => { const st = M8_TEST_STORE, k = Object.keys(st).find(x => /\/heures\/[^/]+$/.test(x)); return { ca: st['/site/cours_actif'], H: k ? st[k] : null }; });
+      const m2 = await s.page.evaluate(() => { const st = M8_TEST_STORE, k = Object.keys(st).find(x => /\/heures\/[^/]+$/.test(x) && st[x] && st[x].classe);   /* la clé de l'heure jouée (une lecture « l'heure proposée est-elle close ? » met aussi un nul en magasin) */ return { ca: st['/site/cours_actif'], H: k ? st[k] : null }; });
       pas('B6', !m2.ca && m2.H && m2.H.clos === true ? 'ok' : 'ÉCHEC', 'mode test, après la clôture : dans le magasin, l\'heure est close et le pointeur effacé', JSON.stringify({ ca: m2.ca || null, clos: m2.H && m2.H.clos })); }
     await s.ctx.close(); } }
 

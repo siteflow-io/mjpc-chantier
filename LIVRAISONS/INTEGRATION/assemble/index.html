@@ -17484,7 +17484,7 @@ function dr_vifDire(){ const d = $('dr-pdit'); if (!d) return; const m = DR_CL.v
   d.innerHTML = m ? 'Entrée pose <b>« ' + dr_esc(lib(m)) + ' »</b> pour <b>' + dr_esc(P) + '</b>, avec la note' : '1, 2, 3… choisit le motif · Entrée pose <b>« ' + dr_esc(lib((MOTIFS_PART[0] || {}).c)) + ' »</b> pour <b>' + dr_esc(P) + '</b>'; }
 
 // le VIF (le pont L16417-16498) : les pastilles candidates s'allument ; un seul élève ouvre sa fiche et le curseur va dans la note ; Entrée ouvre la fiche du premier ; Échap vide ; « posé : INI ✕ (Ctrl+Z) » six secondes
-function dr_vifAbsent(v){ const tu = String(v || '').trim().toUpperCase(); if (tu.length < 2 || !/^[A-Z]+$/.test(tu)) return null; const tri = trierIni(tu); const va = x => { const b = String(x).replace(/\d+$/, ''); return b === tu || trierIni(b) === tri; };
+function dr_vifAbsent(v){ const tu = String(v || '').trim().toUpperCase().replace(/\d+$/, '');   /* « TB1 » : les initiales, puis le motif */ if (tu.length < 2 || !/^[A-Z]+$/.test(tu)) return null; const tri = trierIni(tu); const va = x => { const b = String(x).replace(/\d+$/, ''); return b === tu || trierIni(b) === tri; };
   if (ELEVES.some(n => !absentA(n) && va(iniDe(n)))) return null; const n = ELEVES.find(n => absentA(n) && va(iniDe(n))); return n ? iniDe(n) : null; }
 $('vif').addEventListener('input', () => { const z = $('vif'); const c = dr_candidats(z.value); S.vifCands = z.value ? c : []; participation(); const sg = $('vif-sug');
   const abs = dr_vifAbsent(z.value);   /* relecteur neuf n°3 (5) : des initiales d'absent le disent, au lieu de proposer un autre élève ; une seule lettre n'ouvre jamais la fiche (C1 4b.4) */
@@ -17594,7 +17594,7 @@ function tempsActiviteSec(a){ let passe = 0; const ev = J.filter(x => x.type ===
 
 function activitesDeLHeure(){ const E = seance().ecrans; const o = ordreHeure(S.heure); const vues = []; const out = []; o.forEach(i => { const e = E[i]; if (e.role && e.role !== 'reactivation') return; const a = actDe(e) || dr_pseudoAct(e, i, true);   /* le rituel a sa ligne (relecteur neuf n°3, 11 ; C1 5.4 bis) */ /* E2 : une diapo sans activité compte comme une (réveil n°3, 5) */ if (!a || vues.includes(a.id)) return; vues.push(a.id); out.push(a); }); return out; }
 
-function etatActivite(){ const e = ecran(); const a = actDe(e) || dr_pseudoAct(e, S.di); if (!a || e.role) return null; let w = {}; try { w = etatWorktrack(a) || {}; } catch (x) {}   /* relecteur neuf n°3 (8) : sans activités dans la trame, la diapo en cours est l'« activité » que la T-5 nomme (C1 6.3) */ return { a, prevu: w.prevu, min: w.min, txt: w.txt || 'dans les temps' }; }
+function etatActivite(){ const e = ecran(); const a = actDe(e) || dr_pseudoAct(e, S.di, true); if (!a || (e.role && e.role !== 'reactivation')) return null; let w = {}; try { w = etatWorktrack(a) || {}; } catch (x) {}   /* relecteur neuf n°3 (8) : sans activités dans la trame, la diapo en cours est l'« activité » que la T-5 nomme (C1 6.3) */ return { a, prevu: w.prevu, min: w.min, txt: w.txt || 'dans les temps' }; }
 
 function etatActiviteAncien(){ const e = ecran(); const a = actDe(e); if (!a || e.role) return null; const E = seance().ecrans; const prevu = a.diapos.reduce((t, i) => t + (E[i].dur || 0), 0); let passe = 0; const ev = J.filter(x => x.type === 'diapo' && x.h === S.heure); ev.forEach((x, k) => { const fin = k + 1 < ev.length ? ev[k + 1].t : now(); if (a.diapos.includes(x.di)) passe += fin - x.t; }); (S.coupures || []).forEach(c => { if (!c.compte && a.diapos.includes(c.di)) passe -= (c.fin - c.debut); }); const min = Math.round(passe / 60000); return { a, prevu, min, txt: min > prevu ? `tu dépasses de ${min - prevu} min` : (prevu && min >= prevu * 0.8 ? 'il te reste peu de temps' : 'dans les temps') }; }
 
@@ -18170,7 +18170,7 @@ function dr_cloreFin(){
   if (C) { dr_ecrire(C + '/journal', jr, 'Le journal de l’heure, à la clôture', () => {}); dr_ecrire(C + '/etat', et, 'L’état de l’heure, à la clôture', () => {}); }
   [DR_CL.jT, DR_CL.eT, DR_CL.tT, DR_CL.cT].forEach(clearTimeout);
   try { window.AT_DR_DERNIER = { level: (AT.edChap || {}).level, chnum: (AT.edChap || {}).chnum, snum: ATVUES.snum, classe: AT_DR_COURS.classeSlug, ts: Date.now() }; } catch (e) {}
-  DR_CL.cleClose = ch; DR_CL.creneauClos = dr_creneauDuCours(AT_DR_COURS); try { const hu = document.getElementById('hou'); if (hu) hu.textContent = dr_entete(S.heure) + ' · close'; } catch (e) {}   /* réveil n°6 (E4 ligne 119) : l'entête dit que l'heure est close */   /* la clé de l'heure close dans cette page : « ▶ Lancer » ne la repropose pas */
+  DR_CL.cleClose = ch; DR_CL.creneauClos = dr_creneauDuCours(AT_DR_COURS); DR_CL.closVu = DR_CL.closVu || {}; DR_CL.closVu[ch] = true; try { const hu = document.getElementById('hou'); if (hu) hu.textContent = dr_entete(S.heure) + ' · close'; } catch (e) {}   /* réveil n°6 (E4 ligne 119) : l'entête dit que l'heure est close */   /* la clé de l'heure close dans cette page : « ▶ Lancer » ne la repropose pas */
   dr_coursFermer();
   AT_DR_REGIME = 'prep';
 }
@@ -18354,6 +18354,8 @@ function dr_proposer(){
 }
 setInterval(() => { try { const b = document.getElementById('dr-lancer'); if (!b || (S.lancee && !S.close)) return; const p = dr_proposer();
   const cleP = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + p.classeSlug + '/heures/' + _drCleHeureDe({ classeSlug: p.classeSlug, debut: p.debut, fin: String(p.creneau).split('-')[1] });
+  DR_CL.closVu = DR_CL.closVu || {}; if (DR_CL.closVu[cleP] === undefined && typeof dr_lire === 'function') { DR_CL.closVu[cleP] = null; dr_lire(cleP, x => { DR_CL.closVu[cleP] = !!(x && x.clos); }); }   /* relecteur neuf n°3 (7) : une page neuve demande au hub si l'heure proposée est close (une lecture par proposition) — sans l'EDT chargé, la case ne le disait pas */
+  if (DR_CL.closVu[cleP] === true) p.clos = true;
   if (p.clos && !(S.close && DR_CL.cleClose)) { DR_CL.cleClose = cleP; DR_CL.creneauClos = p.creneau; }   /* relecteur neuf n°3 (7) : une page rechargée sait par la case de l'EDT que l'heure de ce créneau est close */
   if ((S.close || p.clos) && DR_CL.cleClose && cleP === DR_CL.cleClose) { const t2 = '▶ Lancer — l’heure de ' + p.creneau + ' est close'; if (b.textContent !== t2) { b.textContent = t2; b.disabled = true; b.title = 'L’heure de ce créneau est close : elle ne se rouvre pas. L’heure suivante de la séance se lance depuis sa case de l’emploi du temps (son créneau à elle).'; } return; }   /* réveil n°3 : le geste fait ce que le bouton dit, ou il se grise avec sa raison */
   if (S.close && DR_CL.cleClose && p.depuis !== 'edt') { const nx = (edtProchainesDe(p.classeSlug, 1) || [])[0]; const t3 = '▶ Lancer — l’heure est close';   /* réveil n°5, A4-6 : après la clôture, jamais un créneau hors de la grille de la classe (avant : « 10:07-11:02 », qui n'existe pas le lundi) */

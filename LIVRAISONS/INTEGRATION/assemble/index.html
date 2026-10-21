@@ -15015,6 +15015,13 @@ function atSomSuivreCourant(){
   var n=S.di||0;
   var lst=col.querySelectorAll('.at-ecr[data-ese="'+String(ATVUES.snum)+'"]');
   for(var k=0;k<lst.length;k++){ lst[k].classList.toggle('at-ecr-sel', k===n); }
+  /* E1 (relecture continue E4, 13:35) : la vignette courante reste en vue — le volet défile avec ▶ ◀, seulement quand la diapo change (le défilement à la main n'est pas repris) */
+  var cle=String(ATVUES.snum)+'|'+n+'|'+(S.atelier?'a':'p'); if(col._drSuivi===cle) return;
+  var cour=col.querySelector('#volet .vig.cour')||col.querySelector('#volet [data-at-di="'+n+'"]'); if(!cour) return; col._drSuivi=cle;
+  var sc=cour.parentElement; while(sc&&sc!==document.body){ var ov=getComputedStyle(sc).overflowY; if((ov==='auto'||ov==='scroll')&&sc.scrollHeight>sc.clientHeight) break; sc=sc.parentElement; }
+  if(!sc||sc===document.body) return;
+  var r=cour.getBoundingClientRect(), rs=sc.getBoundingClientRect();
+  if(r.top<rs.top+8) sc.scrollTop-= (rs.top+8-r.top); else if(r.bottom>rs.bottom-8) sc.scrollTop+= (r.bottom-rs.bottom+8);
 }
 
 
@@ -15558,6 +15565,7 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 #dr-zone .outils .zoomt{flex:0 0 auto;white-space:nowrap}
 #dr-zone .outils .zoomt input[type=range]{width:64px}   /* (relecture continue d'E4) la réglette et son libellé entiers, à 1280 comme à 52 pt */
 #dr-zone .haut .dr-enr{color:var(--sourd,#8d7f6d);font-size:.78rem;white-space:nowrap}
+#dr-zone .haut .dr-enr.dr-test{color:#7a4a00;background:#ffe2a8;border:1px solid #e0a040;border-radius:10px;padding:1px 8px;font-weight:600} /* E1 : la pastille « mode test » (relecture continue E4, 13:35) */
 #dr-zone .voile{top:var(--dr-haut,46px)}
 #dr-zone #fnotes{bottom:var(--dr-bas,104px)}
 #dr-zone .outils{gap:6px;flex-wrap:wrap;row-gap:4px}   /* (relecture continue d'E4) plutôt deux rangées qu'un outil sous la colonne de droite */
@@ -15925,7 +15933,9 @@ function now(){ return Date.now(); }   /* E1 : l'horloge réelle (la maquette : 
 function dr_lire(chemin, cb){ if (typeof secuLire !== 'function') { cb && cb(null); return; } secuLire(chemin).then(v => cb && cb(v)); }
 function dr_ecrire(chemin, valeur, libelle, cb){ if (typeof S !== 'undefined' && S.repetition) return; if (typeof mjpcPutJson !== 'function') return; mjpcPutJson(FIREBASE_BASE + chemin + '.json', valeur, libelle || 'Déroulé', () => { dr_temoinHub(); if (cb) cb(); }); }
 /* E1 (réveil n°3, 3) : le déroulé écrit souvent (la classe toutes les 900 ms) — le bandeau « Enregistré à … » du site, posé à chaque écriture acceptée, couvrait les pastilles et ne disparaissait plus. Pour les écritures du déroulé, il se referme dans la même tâche (il n'est jamais peint) ; le témoin est une ligne discrète de l'entête (#dr-enr). Un échec garde le bandeau du site. */
-function dr_temoinHub(){ const bd = document.querySelector('.mjpc-bandeau-ok'); if (bd && !(typeof MJPC_ECHECS !== 'undefined' && MJPC_ECHECS.liste && MJPC_ECHECS.liste.length)) bd.style.display = 'none'; const t = document.getElementById('dr-enr'); if (t) { const d = new Date(now()); t.textContent = 'Enregistré à ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); } }
+function dr_temoinHub(){ const bd = document.querySelector('.mjpc-bandeau-ok'); if (bd && !(typeof MJPC_ECHECS !== 'undefined' && MJPC_ECHECS.liste && MJPC_ECHECS.liste.length)) bd.style.display = 'none'; const t = document.getElementById('dr-enr'); if (dr_temoinTest()) return; if (t) { const d = new Date(now()); t.textContent = 'Enregistré à ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); } }
+function dr_temoinTest(){ /* E1 (relecture continue E4, 13:35) : en mode test du site, rien ne part au hub — le témoin le dit, en pastille, au lieu d'« Enregistré à … » */ const t = document.getElementById('dr-enr'); const test = typeof m8TestOn === 'function' && m8TestOn(); if (t) { t.classList.toggle('dr-test', test); if (test) { t.textContent = 'mode test — rien n\'est enregistré'; t.title = 'Le mode test du site est actif : aucune écriture ne part au hub.'; } else if (t.classList.contains('dr-test-vu')) { t.textContent = ''; t.title = ''; } t.classList.toggle('dr-test-vu', test); } return test; }
+setInterval(() => { try { dr_temoinTest(); } catch (e) {} }, 1500);
 function dr_cheminBDe(sk){ const x = dr_ctx(); return '/site/' + x.level + '/chapitres/' + x.chnum + '/seances/' + sk; }
 function dr_cheminB(){ return dr_cheminBDe(dr_ctx().snum); }
 function dr_cheminC(){ const x = dr_ctx(); return dr_cheminB() + '/deroule_joue/' + x.classeSlug; }
@@ -16382,7 +16392,7 @@ const eidDe = i => { const e = seance().ecrans[i]; return e ? e.eid : null; };
  const indexDe = eid => seance().ecrans.findIndex(e => e.eid === eid);
  const K = i => S.si + '|' + (eidDe(i) != null ? eidDe(i) : i);
  /* (a0) toute clé d'état par diapo est si|eid, jamais si|rang */
-const journal = (type, x) => { if (S.atelier || /^atelier/.test(type)) return; /* E1 (relecteur neuf 1 ; contrat §5 : rien ne se journalise dans l'atelier) — la maquette y gardait ses « atelier-* », qui partaient ensuite dans C/journal au lancement */ if (S.repetition && !/^repetition/.test(type)) return; /* (p6) rien n'est écrit en répétition */ if (type === 'diapo' && S.recitRelu && S.recitRelu[S.heure]) { S.recitRelu[S.heure] = false; S.recitAChange = S.recitAChange || {}; S.recitAChange[S.heure] = true; } const o = Object.assign({ t: now(), h: S.heure, type, mur: S.mur ? { si: S.mur.si, di: S.mur.di, eid: S.mur.eid } : null }, x || {}); if (o.di != null && o.eid == null) o.eid = eidDe(o.di); J.push(o); };
+const journal = (type, x) => { if (S.atelier || /^atelier/.test(type)) return; /* E1 (relecteur neuf 1 ; contrat §5 : rien ne se journalise dans l'atelier) — la maquette y gardait ses « atelier-* », qui partaient ensuite dans C/journal au lancement */ if (S.repetition && !/^repetition/.test(type)) return; /* (p6) rien n'est écrit en répétition */ if (!S.lancee && !S.repetition) return; /* E1 (relecture continue E4, 14:05) : hors heure lancée, rien n'entre au journal — parcourir la trame avant de lancer faisait des entrées « h:1 », une heure 1 fantôme dans la Relecture */ if (type === 'diapo' && S.recitRelu && S.recitRelu[S.heure]) { S.recitRelu[S.heure] = false; S.recitAChange = S.recitAChange || {}; S.recitAChange[S.heure] = true; } const o = Object.assign({ t: now(), h: S.heure, type, mur: S.mur ? { si: S.mur.si, di: S.mur.di, eid: S.mur.eid } : null }, x || {}); if (o.di != null && o.eid == null) o.eid = eidDe(o.di); J.push(o); };
 
 function reindexer(){ /* (a0) après toute insertion ou réordonnancement de la trame : le rang de chaque objet se recalcule depuis son identifiant */ J.forEach(o => { if (o.eid != null) { const i = indexDe(o.eid); if (i >= 0) o.di = i; } if (o.mur && o.mur.eid != null) { const i = indexDe(o.mur.eid); if (i >= 0) o.mur.di = i; } }); if (S.ordres) Object.keys(S.ordres).forEach(h => { S.ordresEid = S.ordresEid || {}; if (S.ordresEid[h]) S.ordres[h] = S.ordresEid[h].map(indexDe).filter(i => i >= 0); }); if (S.gel && S.gel.eid != null) { const i = indexDe(S.gel.eid); if (i >= 0) S.gel.di = i; } if (S.mur && S.mur.eid != null) { const i = indexDe(S.mur.eid); if (i >= 0) S.mur.di = i; } if (S.eidCourant != null) { const i = indexDe(S.eidCourant); if (i >= 0) S.di = i; } (S.coupures || []).forEach(c => { if (c.eid != null) { const i = indexDe(c.eid); if (i >= 0) c.di = i; } }); }
 
@@ -16854,7 +16864,7 @@ function fermerChoix(){ const z = document.querySelector('.choix-obj'); if (z) z
 
 function choixObjet(type){ fermerChoix(); const e = ecran(); if (!e || e.role === 'fin') return; const z = document.createElement('div'); z.className = 'choix-obj'; z.innerHTML = `<h4><span>QUEL OBJET AJOUTER À LA DIAPO ? — chacun a son contrat (cadrage 4, §3)</span><span class="x" title="Ferme sans rien ajouter">✕</span></h4><div class="dr-g">${OBJETS.filter(o => o.t !== 'texte' /* (p8-4) le texte s'écrit dans la diapo, sous le dernier bloc */).map(o => { const g8 = p8GardeObjet(o.t, e); /* (p8-3) */ return `<div class="dr-c${o.dernier ? ' dernier' : ''}${o.off || g8 ? ' off' : ''}" data-t="${o.t}" title="${dr_esc(g8 ? g8 + '.' : o.d)}"><b>${o.l}</b><span>${dr_esc(g8 || o.d)}</span></div>`; }).join('')}</div><div class="manque">Aucun objet ne convient ? <a data-manque="1">Déclarer un objet manquant</a> — « objet à ajouter à l'éditeur : … » : la ligne reste visible dans « À régler » du chapitre, avec ce qui l'attend (3.3). Personne ne tord un objet pour en faire un autre.</div><div class="form" id="obj-form"></div>`; document.querySelector('.scene').appendChild(z); z.querySelector('.x').onclick = fermerChoix; z.querySelectorAll('.dr-c:not(.off)').forEach(c => c.onclick = () => formulaireObjet(c.dataset.t)); z.querySelector('[data-manque]').onclick = () => formulaireObjet('manque'); if (type) formulaireObjet(type); }
 
-function ajouterBloc(b, focusT){ const e = ecran(); b.bid = nouveauBid(); e.blocs.push(b); marquerModif({ di: S.di, bloc: 'ajout', type: b.t, bi: e.blocs.length - 1 }); fermerChoix(); dr_tout(); setTimeout(() => { const nv = $('mur').querySelector('[data-p="' + (e.blocs.length - 1) + '.t"]'); if (nv && focusT !== false) focaliser(nv); }, 0); }
+function ajouterBloc(b, focusT){ const e = ecran(); b.bid = nouveauBid(); e.blocs.push(b); marquerModif({ di: S.di, bloc: 'ajout', type: b.t, bi: e.blocs.length - 1 }); fermerChoix(); dr_tout(); { const nv = $('mur').querySelector('[data-p="' + (e.blocs.length - 1) + '.t"]'); if (nv && focusT !== false) { focaliser(nv, false); const r = document.createRange(); r.selectNodeContents(nv); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); } } } /* (relecture continue d'E4, 14:05) le texte d'attente (« Nouvelle consigne ») est sélectionné : la frappe le remplace ; et le curseur y est dans la même tâche */
 
 function formulaireObjet(t){ const f = $('obj-form'); if (!f) return; const e = ecran();
   if (t === 'texte') return ajouterBloc({ t: 'texte', txt: 'Nouveau texte', el: [''] });
@@ -17175,7 +17185,7 @@ function p8FermerPalettes(){ document.querySelectorAll('.p8-palette.on').forEach
 function blocDe(el){ const li = el.closest('[data-p]'); if (!li) return null; const [bi, ei] = li.dataset.p.split('.'); return { bi: +bi, ei: ei === 't' ? 't' : +ei, li }; }
 
 /* E1 (relecture continue d'E4, B2 12:38) : au clavier, la boîte du site et les panneaux de l'atelier — Entrée choisit le geste principal, Échap renonce (cadrage 1 §2.3-2.4) */
-dr_ecouteDoc('keydown', ev => { if (ev.key !== 'Enter' && ev.key !== 'Escape') return; const m = document.querySelector('#at-modale');
+dr_ecouteDoc('keydown', ev => { if (ev.key !== 'Enter' && ev.key !== 'Escape') return; if (ev.key === 'Escape' && $('menu') && $('menu').classList.contains('on')) { ev.preventDefault(); ev.stopPropagation(); $('menu').classList.remove('on'); return; } /* (relecture continue d'E4, 14:05) Échap ferme le menu du clic droit, même quand la ligne a le curseur */ const m = document.querySelector('#at-modale');
   if (m) { const a = document.activeElement; if (ev.key === 'Enter' && a && (a.tagName === 'TEXTAREA' || (a.tagName === 'BUTTON' && m.contains(a)))) return; ev.preventDefault(); ev.stopPropagation(); if (ev.key === 'Enter') { const p = m.querySelector('.at-btn-prim'); if (p) p.click(); } else m.remove(); return; }
   const c = document.querySelector('.choix-obj'); if (c && ev.key === 'Escape') { ev.preventDefault(); ev.stopPropagation(); fermerChoix(); } }, true);
 

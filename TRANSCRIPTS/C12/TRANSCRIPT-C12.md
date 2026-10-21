@@ -23174,3 +23174,15 @@ Envoyé à Paul, mot pour mot :
 31. Presque, et c'est ma faute. Tout ce que tu as tranché est contrôlé, et ça va. Mais en relisant le verdict de QCM-4 pour te répondre, j'ai vu un cas qu'il a noté sans le compter, et que j'ai laissé passer ce matin. Si tu rouvres une séance terminée, les questions que tu as lues le soir redeviennent « pas encore lues » tant qu'elle tourne ; elles recomptent quand elle est terminée de nouveau. C'est contraire à ta règle : une feuille que tu as lue compte. Je l'ai vérifié dans le code, et je ne mets donc rien en ligne. Ma proposition : ta lecture du soir compte toujours, même pendant une séance rouverte. QCM-1 et QCM-3 le codent, QCM-4 le rejoue, puis je contrôle et je mets tout en ligne en une fois. Tu valides ?
 
 21/10/2026 09:35 MEMO
+
+## TOUR 755 — Paul, 21/10 09:43
+
+Paul, mot pour mot :
+
+pas compris
+
+Envoyé à Paul, mot pour mot :
+
+31. Je reprends avec un exemple. Lundi, tu arrêtes une séance après Q3, sans avoir cliqué « Révéler » pour Q3. Le soir, dans « Lire les copies », tu lis la feuille de Tom pour Q3 : sa note est complète. Mardi, tu rouvres cette séance avec « 🔓 Rouvrir » pour poser Q4. Pendant qu'elle tourne, la note de Tom dit de nouveau « Q3 pas encore lue », alors que tu l'as lue lundi soir. Quand tu termines la séance, Q3 compte de nouveau. Ma proposition : la feuille que tu as lue le soir compte tout le temps, même pendant que la séance rouverte tourne. Tu valides ?
+
+21/10/2026 09:43 MEMO

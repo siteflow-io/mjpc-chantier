@@ -363,6 +363,19 @@ dire(''); dire('B14 — F2 sur un absent ; deux élèves aux mêmes initiales ; 
     pas('B14', !s.errs.length && !s2.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.concat(s2.errs).join(' ; ')); await s2.ctx.close(); }
   if (v === 'absent' || !s.integre) await s.ctx.close(); }
 
+// ── B15 · en classe, une retouche par l'onglet Atelier part dans la copie de la classe (réveil n°10, E4 ligne 149) ──
+dire(''); dire('B15 — en classe, retoucher dans l\'onglet Atelier : la copie de la classe part au hub, l\'état et le journal attendent le Pilotage');
+{ const s = await session(); const p = s.page; const v = await lancerUnClic(s);
+  if (v === 'absent' || !s.integre) pas('B15', 'absent', 'le Lancer du site intégré');
+  else { await s.attendre(2000); await p.click('#ong-atelier'); await s.attendre(600); if (await p.$('#at-aide .x')) { await p.click('#at-aide .x'); await s.attendre(200); }
+    const n0 = (await s.ecrits()).length; const at = await p.evaluate(() => !!S.atelier);
+    await p.evaluate(() => { const e = seance().ecrans.find(x => !x.role); e.act = e.act + ' — retouché dans l\'Atelier (B15)'; if (typeof dr_copieAuto === 'function') dr_copieAuto(); }); await s.attendre(2500);
+    const ec = depuis(await s.ecrits(), n0).map(x => x.replace(/\/site\/3e\/chapitres\/0\/seances\/0\/deroule_joue\/3E Charles de Gaulle/, 'C'));
+    const hub = await s.hub(); const copie = ((((hub.site['3e'].chapitres[0].seances[0].deroule_joue || {})[CLASSE] || {}).ecrans) || []);
+    pas('B15', at && ec.includes('PUT C/ecrans') && copie.some(e => /retouché dans l'Atelier \(B15\)/.test(e.act || '')) && !ec.some(x => /^PUT C\/(etat|journal)$/.test(x)) ? 'ok' : 'ÉCHEC', 'l\'onglet Atelier ouvert en classe : la retouche part dans `C/ecrans` en moins de 3 s ; ni `C/etat` ni `C/journal` pendant l\'Atelier (son `S` n\'est pas celui de la classe)', JSON.stringify({ atelier: at, ec }));
+    pas('B15', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');
 { const s = await session(); const ok = s.integre ? await s.page.evaluate(() => { const a = { niveau: '3e', chapitre: '0', seance: '0', classeSlug: '3E Charles de Gaulle', debut: '08:57', fin: '09:52' }, b = Object.assign({}, a, { debut: '10:07', fin: '11:02' }); return [_drCleHeureDe(a), _drCleHeureDe(b)]; }) : null;

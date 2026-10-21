@@ -17907,10 +17907,11 @@ function dr_appliquerHeures(m, parDurees, reac){ const E = seance().ecrans; if (
 const dr_journalHub = () => dr_versHub(J);
 
 /* ─── peut-on écrire ? (contrat §5 : ni atelier, ni répétition, ni hors d'une heure lancée, ni en vue tableau) ─── */
-function dr_clPeutEcrire(){
+function dr_clPeutEcrire(copie){
   try {
     if (/[?&]vue=tableau(&|$)/.test(location.search)) return false;
-    if (typeof S !== 'object' || !S || !S.lancee || S.atelier || S.repetition) return false;
+    if (typeof S !== 'object' || !S || !S.lancee || S.repetition) return false;
+    if (S.atelier && !copie) return false;   /* réveil n°10 (E4 ligne 149, grave : la retouche perdue) : en classe, l'onglet Atelier ouvert laisse passer la COPIE de la classe (C/ecrans, la trame retouchée) — le journal, l'état et le paquet attendent le retour au Pilotage (dans l'Atelier, `S` est celui de l'Atelier, le socle le rend ensuite) ; avant : rien ne s'écrivait */
     if (typeof AT_DR_REGIME === 'undefined' || AT_DR_REGIME !== 'classe' || !AT_DR_COURS) return false;
     return typeof dr_cheminC === 'function' && !!dr_cheminC();
   } catch (e) { return false; }
@@ -17921,7 +17922,7 @@ function dr_clPeutEcrire(){
 function dr_copieAuto(vite){
   clearTimeout(DR_CL.cT);
   DR_CL.cT = setTimeout(() => {
-    if (!dr_clPeutEcrire()) return;
+    if (!dr_clPeutEcrire(true)) return;
     const ecr = JSON.parse(JSON.stringify(seance().ecrans)); const em = dr_empreinte(ecr);
     if (em === DR_CL.empreinteEcrite) return; DR_CL.empreinteEcrite = em;   /* la copie ne repart que si elle a changé (relecteur neuf n°2 : 14 écritures en 17 min sans rien éditer) */
     dr_ecrire(dr_cheminC() + '/ecrans', ecr, 'Séance en classe — copie au fil de l’eau (' + AT_DR_COURS.classeNom + ')', () => { dr_temoinIntegre(em); });

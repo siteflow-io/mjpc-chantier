@@ -1858,3 +1858,25 @@ Réponse de la conscience (20:08), mot pour mot :
 
 21/10/2026 20:08
 MEMO
+
+## TOUR 87 (21/10/2026, 20:34 → 20:38)
+
+Paul (20:34), mot pour mot :
+« Il reste beaucoup à faire sur le site normalement. Mesure, audite et reviens me dire. J'aimerais lancer des exécutants sur d'autres parties afin d'avancer au maximum »
+
+Mesuré (20:34-20:38) : `MANDATS/POINT-DEROULE-RESTE-A-CODER.md` (v2, points 13-25 et 31-36 : ce que le cadrage prévoit et que la maquette ne fait pas) ; `docs/MJPC6-DETTES.md` (la liste ordonnée du 25/08 : 1bis, 1 ✔ ; 2 téléphone ; 3 temps réel ; 4 pulsation ; 5 export ED + bilan ; 6 dettes vivantes du moteur ; 7 profil de classe ; 8 prompts ; 9 profil longitudinal ; 10 affichages menteurs et bugs des apps ; 11 M-SÉCU ; 12 M17a — et les sections n°12 (225 entrées, dont la dictée 132-178 en pause depuis le 07/10 et le QCM 179-223 tenu par la n°12, QCM-4 le 21/10) et n°13 (1-29)) ; `MANDATS/` (MANDAT-ELEVE-2 « à lancer avec la refonte du déroulé », PAUSE-CORRECTION-DICTEE avec le mandat L17 en pause et ses dettes, CHANTIER-PROMPTS, LOT-C profil de classe « non codé ») ; les quatorze fichiers html de production et leur dernier commit (index.html 21/10, evaluation-qcm 16/10, les autres au 11/10). Règle qui tranche ce qui est lançable : jamais deux exécutants sur le même fichier — `index.html` est tenu par E1-E4 jusqu'à la promotion ; `evaluation-qcm.html` par la n°12.
+
+Réponse de la conscience (20:38), mot pour mot :
+
+167. Mesuré sur le point du 20/10 (ce qui reste après l'intégration), le registre des dettes et les mandats au sas. Ce qui reste sur le site, dans ton ordre (le temps → l'intégration → les prompts → le calendrier → le profil), une fois le déroulé promu : le prompt d'injection en trois sections (jamais rédigé) ; les notions réelles et leur préalable, les attendus au hub (jamais mandaté) ; « L'ÉLÈVE — 2 » (le ◆ au pilotage, les anniversaires) et l'appel dans le flux avec le mot à l'absent ; ce que l'élève reçoit après l'heure (côté élève, rien n'existe) ; les documents du chapitre au tableau et la fiche de préparation de dictée au format canonique ; la vidéo depuis la clé ; le récit figé et le papier en détail (à cadrer avant de coder) ; le profil de classe, le profil longitudinal et le cockpit (rien n'existe, à cadrer) ; le téléphone télécommande ; l'interface du panneau prof (quatre dettes de la n°12) ; M-SÉCU (la base se lit sans clé) ; M17a en tout dernier. Tout cela vit dans `index.html` sauf trois choses.
+
+168. Ce qui est lançable tout de suite, en parallèle, sans toucher `index.html` (tenu par les quatre jusqu'à la promotion ; le QCM est à la n°12) : (1) **les attendus au hub et la taxonomie** — un fichier de données, le cadrage 3 existe, c'est le préalable des notions ; (2) **la dictée** — `correction_dictee.html` est en pause depuis le 07/10 avec le mandat L17 et une trentaine de dettes ouvertes (143 à 176), fichier libre ; (3) **le prompt d'injection** — un document, rédigé contre le contrat des objets, éprouvé sur un chapitre JSON, à revérifier à la promotion. Les apps satellites (réécriture, dictée universelle, worktrack…) sont libres aussi, mais ce n'est pas ce que tu as mis devant.
+
+169. Ce qui n'est pas lançable avant la promotion : tout ce qui touche `index.html` (ÉLÈVE — 2, l'appel, la vidéo, les documents, le panneau prof, le profil). En attendant, ce que je peux faire avec toi, en chat, sans exécutant : cadrer le profil longitudinal et le cockpit (le point 23 — « ce qui compte se décide d'un clic dans le profil »), qui est le prochain gros morceau de ton ordre et qui n'a aucune ligne de cadrage.
+
+170. Ma proposition : deux exécutants maintenant — « ATTENDUS » (les attendus Éduscol cycle 4 au hub, rattachés à la taxonomie) et « DICTÉE L17 » (la reprise du mandat en pause et ses dettes) — et le prompt d'injection en troisième si tu le veux ; je cadre le profil avec toi pendant qu'ils tournent. Dis-moi lesquels, et j'écris les mandats et les phrases à coller.
+
+171. Le déroulé : banc vert sur la tête, un grave encore ouvert (le bloc écrit en classe perdu à la reprise, chez E2, cause pointée) ; prochain réveil 21:07.
+
+21/10/2026 20:38
+MEMO

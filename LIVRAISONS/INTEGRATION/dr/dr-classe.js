@@ -68,18 +68,18 @@ function dr_iniVu(ini){ /* E2 (réveil n°3, C1 4b.4) : les suffixes « LC2 » d
   const b = String(ini || '').replace(/\d+$/, ''); const dup = Object.keys(INI).filter(n => String(INI[n]).replace(/\d+$/, '') === b).length > 1; if (!dup) return dr_esc(b);
   return dr_esc(b) + '<small class="dr-ini-p">' + dr_esc(String(PRENOMS[ini] || '').slice(0, 3)) + '</small>'; }
 function ouvrirPart(ini){ /* la fiche d'élève de l'ancien (moteur ouvrirPart) */
-  partEleve = ini; const p = $('ppop'); const hist = histoire(ini); const P = PRENOMS[ini] || ini; let h = `<h4>${dr_iniVu(ini)} — ${hist.length} prise${hist.length > 1 ? 's' : ''} de parole <span style="color:#8a7660;font-weight:400">· ${dr_esc(P)}</span></h4>`;
+  if (partEleve !== ini || !$('ppop').classList.contains('on')) DR_CL.vifMotif = null; partEleve = ini; const p = $('ppop'); const hist = histoire(ini); const P = PRENOMS[ini] || ini; let h = `<h4>${dr_iniVu(ini)} — ${hist.length} prise${hist.length > 1 ? 's' : ''} de parole <span style="color:#8a7660;font-weight:400">· ${dr_esc(P)}</span></h4>`;
   if (hist.length) h += '<div class="hist2">' + hist.map(o => o.genre === 'réponse' ? `<div class="hl"><span class="hg r">réponse</span><b>${o.h}</b> · ${dr_esc(o.ou)}<div class="hq">« ${dr_esc(o.texte.length > 70 ? o.texte.slice(0, 68) + '…' : o.texte)} »${o.refo ? ' <i>reformulée</i>' : ''}</div><span class="hx" title="se corrige dans l'écran" data-aller="${o.ecran}|${o.bi}|${o.k}">→</span></div>` : `<div class="hl"><span class="hg p">parole</span><b>${o.h}</b> · ${dr_esc(o.ou)}<div class="hq">${dr_esc((MOTIFS_PART.find(m => m.c === o.type) || { l: o.type }).l)}${o.note ? ' <i>(' + dr_esc(o.note) + ')</i>' : ''}</div><span class="hx" title="corriger" data-corr="${o.id}">✎</span><span class="hx sup" title="retirer" data-sup="${o.id}">✕</span></div>`).join('') + '</div>';
   h += '<div class="hsep">Noter une prise de parole ici :</div>'; MOTIFS_PART.forEach(m => { h += `<button class="m" data-pose="${m.c}">${m.l}</button>`; });
-  h += '<input id="dr-pnote" placeholder="pourquoi (facultatif — pour toi seul)" autocomplete="off">';
+  h += '<input id="dr-pnote" placeholder="pourquoi (facultatif — pour toi seul)" autocomplete="off" title="La note de cette prise de parole ; Entrée pose">'; h += '<div id="dr-pdit" class="hist" style="color:#c99a4e"></div>';
   h += '<div class="hist" style="color:#5c4f42">Ces notes ne partent jamais au tableau. Elles rejoignent le profil de l\'élève.</div>';
   p.innerHTML = h;
-  const el = $('part').querySelector(`span[data-ini="${ini}"]`); const r = el ? el.getBoundingClientRect() : { left: innerWidth / 2, bottom: 200 }; p.style.left = Math.max(8, Math.min(r.left - 40, innerWidth - 330)) + 'px'; p.style.top = Math.min(r.bottom + 6, innerHeight - 330) + 'px'; dr_ppopEcarter(p);
+  const el = $('part').querySelector(`span[data-ini="${ini}"]`); const r = el ? el.getBoundingClientRect() : { left: innerWidth / 2, bottom: 200 }; p.style.left = Math.max(8, Math.min(r.left - 40, innerWidth - 330)) + 'px'; p.style.top = Math.min(r.bottom + 6, innerHeight - 330) + 'px'; dr_ppopEcarter(p); dr_vifDire(); if (DR_CL.vifMotif) p.querySelectorAll('button.m[data-pose]').forEach(b => b.classList.toggle('dr-choisi', b.dataset.pose === DR_CL.vifMotif));
   gardeMenu = Date.now() + 400; p.classList.add('on');
   p.querySelectorAll('[data-pose]').forEach(b => b.onclick = () => posePart(b.dataset.pose)); p.querySelectorAll('[data-sup]').forEach(b => b.onclick = () => { partRetire(ini, b.dataset.sup); ouvrirPart(ini); }); p.querySelectorAll('[data-corr]').forEach(b => b.onclick = () => corrigePart(ini, b.dataset.corr));
   p.querySelectorAll('[data-aller]').forEach(b => b.onclick = () => { const [di, bi, k] = b.dataset.aller.split('|').map(Number); p.classList.remove('on'); aller(di); setTimeout(() => { const el2 = mur.querySelector(`.rep[data-bi="${bi}"][data-r="${k}"] .dit`); if (el2) { el2.contentEditable = 'true'; el2.focus(); } }, 200); }); }
 
-function posePart(type){ const n = $('dr-pnote'); partAjoute(partEleve, type, n ? n.value.trim() : ''); $('ppop').classList.remove('on'); }
+function posePart(type){ const n = $('dr-pnote'); partAjoute(partEleve, type, n ? n.value.trim() : ''); $('ppop').classList.remove('on'); DR_CL.vifMotif = null; }
 
 function corrigePart(ini, id){ const o = S.parts.find(x => x.id === id); if (!o) return; const p = $('ppop'); let h = `<h4>${ini} — corriger</h4><div class="hsep">${o.h} · ${dr_esc(o.ou || '')}</div>`;
   MOTIFS_PART.forEach(m => { h += `<button class="m${m.c === o.m ? ' on' : ''}" data-maj="${m.c}">${m.l}</button>`; }); h += `<input id="pnote2" value="${dr_esc(o.note || '')}" placeholder="pourquoi (pour toi seul)"><button class="m" data-maj="">valider la note</button><button class="m sup" data-sup2="1">retirer cette prise de parole</button>`;
@@ -87,7 +87,18 @@ function corrigePart(ini, id){ const o = S.parts.find(x => x.id === id); if (!o)
 
 dr_ecouteDoc('click', ev => { if (Date.now() < gardeMenu) return; if (!ev.target.closest('#ppop')) $('ppop').classList.remove('on'); });
 
-dr_ecouteDoc('keydown', ev => { const pop = $('ppop'); if (!pop.classList.contains('on')) return; const bts = Array.from(pop.querySelectorAll('button.m[data-pose]')); if (/^[1-9]$/.test(ev.key)) { const dansNote = ev.target && ev.target.id === 'dr-pnote'; const horsSaisie = !/input|textarea/i.test((ev.target && ev.target.tagName) || ''); const dansVif = ev.target && ev.target.id === 'vif' && dr_candidats(ev.target.value).length === 1; /* E2 (réveil n°3) : « EB1 » tapé vite — le chiffre arrive encore dans le VIF, avant que la note ne prenne le focus */ if (horsSaisie || dansVif || (dansNote && !ev.target.value)) { const b = bts[+ev.key - 1]; if (b) { b.click(); $('vif').value = ''; setTimeout(() => $('vif').focus({ preventScroll: true }), 60); ev.preventDefault(); } return; } } if (ev.key === 'Enter' && ev.target && ev.target.id === 'dr-pnote') { const b1 = bts[0]; if (b1) { b1.click(); $('vif').value = ''; setTimeout(() => $('vif').focus({ preventScroll: true }), 60); ev.preventDefault(); } } if (ev.key === 'Escape') { pop.classList.remove('on'); $('vif').value = ''; $('vif').focus({ preventScroll: true }); ev.stopPropagation(); } }, true);
+/* E2 (réveil n°4, point 4 ; C1 4b.1, 4b.4) : le dispositif du pont — initiales, puis 1/2/3 (choisit le motif, ne pose pas), la note, Entrée → UNE pose ;
+   le chiffre choisit tant qu'aucun motif n'est choisi (dans le VIF, la note ou hors saisie), ensuite il s'écrit dans la note ; la fiche dit ce qu'Entrée posera.
+   Avant : le chiffre posait aussitôt (note vide) et la note tapée ensuite repartait en initiales. Un clic sur un motif pose tout de suite, comme avant. */
+dr_ecouteDoc('keydown', ev => { const pop = $('ppop'); if (!pop.classList.contains('on')) return; const bts = Array.from(pop.querySelectorAll('button.m[data-pose]')); const tg = ev.target || {}; const id = tg.id;
+  const revenir = () => { $('vif').value = ''; S.vifCands = []; const sg = $('vif-sug'); if (sg) sg.innerHTML = ''; setTimeout(() => $('vif').focus({ preventScroll: true }), 60); };
+  if (/^[1-9]$/.test(ev.key) && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { const horsSaisie = !/input|textarea/i.test(tg.tagName || ''); const dansVif = id === 'vif' && dr_candidats(tg.value).length === 1;
+    if (!DR_CL.vifMotif && (horsSaisie || dansVif || id === 'dr-pnote')) { const b = bts[+ev.key - 1]; if (b) { dr_vifChoisir(b.dataset.pose); ev.preventDefault(); ev.stopPropagation(); } return; } }
+  if (ev.key === 'Enter' && (id === 'dr-pnote' || id === 'vif') && partEleve) { const m = DR_CL.vifMotif || (bts[0] && bts[0].dataset.pose); if (m) { posePart(m); revenir(); } ev.preventDefault(); ev.stopPropagation(); return; }
+  if (ev.key === 'Escape') { pop.classList.remove('on'); DR_CL.vifMotif = null; $('vif').value = ''; $('vif').focus({ preventScroll: true }); ev.stopPropagation(); } }, true);
+function dr_vifChoisir(m){ DR_CL.vifMotif = m; const pop = $('ppop'); pop.querySelectorAll('button.m[data-pose]').forEach(b => b.classList.toggle('dr-choisi', b.dataset.pose === m)); dr_vifDire(); const n = $('dr-pnote'); if (n) n.focus({ preventScroll: true }); }
+function dr_vifDire(){ const d = $('dr-pdit'); if (!d) return; const m = DR_CL.vifMotif; const lib = x => (MOTIFS_PART.find(o => o.c === x) || { l: x }).l; const P = PRENOMS[partEleve] || partEleve || '';
+  d.innerHTML = m ? 'Entrée pose <b>« ' + dr_esc(lib(m)) + ' »</b> pour <b>' + dr_esc(P) + '</b>, avec la note' : '1, 2, 3… choisit le motif · Entrée pose <b>« ' + dr_esc(lib((MOTIFS_PART[0] || {}).c)) + ' »</b> pour <b>' + dr_esc(P) + '</b>'; }
 
 // le VIF (le pont L16417-16498) : les pastilles candidates s'allument ; un seul élève ouvre sa fiche et le curseur va dans la note ; Entrée ouvre la fiche du premier ; Échap vide ; « posé : INI ✕ (Ctrl+Z) » six secondes
 $('vif').addEventListener('input', () => { const z = $('vif'); const c = dr_candidats(z.value); S.vifCands = z.value ? c : []; participation(); const sg = $('vif-sug');
@@ -636,12 +647,25 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   try { $('ecran-edt').classList.remove('on'); } catch (e) {}   /* la porte se referme (le clic de l'EDT simulé le faisait) */
   dr_coursEcrire();   /* le pointeur d'abord : la bannière de reprise et le tableau distant en dépendent, même si le rendu bute */
   /* la barre du site se redessine pendant les lectures du hub (ouverture du chapitre) : on attend ses onglets, borné à 4 s (relecteur neuf n°1 : `voir` levait) */
-  dr_partagerHeures(dr_utileCreneau(creneau)); dr_heureContinue(heure); dr_edtAssurer();
   const go = n => { if (!['ong-pilotage', 'ong-relecture', 'ong-atelier'].every(id => document.getElementById(id)) && n < 40) { setTimeout(() => go(n + 1), 100); return; }
     try { lancerHeure(heure); } catch (e) { try { atInfo('Le Pilotage ne s’est pas affiché entièrement (' + e.message + ') : l’heure est lancée et s’enregistre ; rouvre l’onglet Pilotage.'); } catch (x) {} }
     dr_traceReprendre(() => { dr_absentsDeLaCase(); dr_copieAuto(true); }); };
-  go(0);
+  const placer = () => { dr_partagerHeures(dr_utileCreneau(creneau)); dr_heureContinue(heure); dr_edtAssurer(); go(0); };
+  /* réveil n°4, point 2 : l'heure n > 1 commence là où la classe s'est arrêtée — les paquets des heures d'avant (toutes les clés de
+     cette classe, comme l'EDT les compte) disent ce qui a été joué ; ces diapos sont marquées jouées, la suivante ouvre l'heure */
+  if (heure > 1) dr_lire((typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue', dj => { try { dr_marquerJoues(dj, classeSlug, nom, DR_CL.ouverte && DR_CL.ouverte.H); } catch (e) {} placer(); });
+  else placer();
 }
+/* ce que les heures d'avant ont joué (réveil n°4, point 2) : un paquet écrit par ce module porte l'`eid` de chaque diapo jouée ; un paquet
+   plus ancien (sans `eid`, comme celui du 07/09 au faux hub) compte ses lignes : ce sont les premières diapos de la séance. Lu, jamais
+   réécrit (contrat §12.13 : l'ancienne clé de la classe est de l'histoire ; l'EDT la compte déjà pour « heure n/N »). Rend le nombre marqué. */
+function dr_marquerJoues(dj, slug, nom, cheminCourant){
+  const E = seance().ecrans; const ix = {}; E.forEach((e, i) => { if (e.eid != null) ix[e.eid] = i; }); const marque = new Set(); let anciens = 0;
+  Object.keys(dj || {}).forEach(sl => { const b = dj[sl]; if (!b || typeof b !== 'object' || !(sl === slug || b.classe === nom)) return;
+    Object.keys(b.heures || {}).forEach(k => { if (cheminCourant && String(cheminCourant).endsWith('/deroule_joue/' + sl + '/heures/' + k)) return; const H = b.heures[k] || {}; let acts = H.activites; if (typeof acts === 'string') { try { acts = JSON.parse(acts); } catch (e) { acts = []; } }
+      (Array.isArray(acts) ? acts : Object.values(acts || {})).forEach(a => { if (a && a.eid != null && ix[a.eid] != null) marque.add(ix[a.eid]); else if (a) anciens++; }); }); });
+  if (anciens) E.forEach((e, i) => { if (anciens > 0 && !e.role && !marque.has(i)) { marque.add(i); anciens--; } });
+  let n = 0; marque.forEach(i => { const k = K(i); if (!vuMax[k]) { vuMax[k] = Math.max(1, elements(E[i]).length); n++; } }); return n; }
 /* « Lancer l'heure n » de l'écran d'ouverture : la classe, le créneau et le début posés par `dr_lancer` */
 function dr_lancerSuite(h){ const x = DR_CL.suite || {}; const cr = x.creneau || dr_creneauPropose(); const sl = x.classeSlug || dr_classeProposee();
   dr_lancerNeuf(sl, x.nom || dr_nomClasse(sl), cr, x.debut || dr_debutPropose(cr), h || x.heure || (S.heure + 1), undefined, true); }

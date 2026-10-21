@@ -2,6 +2,7 @@
 /* E2 — la classe et l'heure : le minuteur d'activité (R3), « Où on en est » par activité (R7), le témoin « déroulé intègre » (R9) */
 #dr-zone .dr-minut { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; }
 #dr-zone .dr-ini-p, #ppop .dr-ini-p, #vif-dernier .dr-ini-p, #vif-sug .dr-ini-p, #vif-palette .dr-ini-p { font-size: .72em; font-weight: 400; opacity: .8; margin-left: 1px; }   /* réveil n°3 : les doublons d'initiales se départagent par le prénom (C1 4b.4) */
+#ppop button.m.dr-choisi { outline: 2px solid #c99a4e; outline-offset: 1px; background: rgba(201,154,78,.18); }   /* réveil n°4 : le motif choisi au clavier, que l'Entrée posera */
 #dr-zone .dr-minut-p { display: inline-flex; align-items: center; gap: 6px; background: var(--carte); border: 1px solid var(--bord); border-radius: 8px; padding: 2px 6px; }
 #dr-zone .dr-minut-p input[type=text], #dr-zone #dr-minut-in { width: 4.2em; text-align: center; }
 #dr-zone .dr-minut-aff { font-variant-numeric: tabular-nums; color: var(--or); }

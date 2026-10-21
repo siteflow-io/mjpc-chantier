@@ -281,6 +281,44 @@ await B('A20', 'la relance du 21/10 (12:50-13:02) : ▶ derrière un document, #
     }
     E.verif('A20', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
 
+
+await B('A21', 'les trouvailles du relecteur neuf n°1 (contrat §8) : chacune corrigée, chacune gardée', async () => {
+  const o = await E.ouvrir(b, { w: 1366, h: 768 }); const pg = o.pg; await sansVoile(pg);
+  // 1 · le menu des diapos de la colonne, au-dessus de la colonne du site
+  const r = await pg.$eval('#volet [data-at-di="2"]', x => { const q = x.getBoundingClientRect(); return { x: q.left + 20, y: q.top + q.height / 2 }; });
+  await pg.mouse.click(r.x, r.y, { button: 'right' }); await pg.waitForTimeout(300);
+  const m = await pg.evaluate(() => { const it = Array.from(document.querySelectorAll('#menu [data-a]')).find(x => !x.disabled); if (!it) return { ok: false }; const q = it.getBoundingClientRect(); const el = document.elementFromPoint(q.left + q.width / 2, q.top + q.height / 2); return { ok: !!(el && el.closest('#menu')), lib: it.textContent }; });
+  E.verif('A21', m.ok, '1 · clic droit sur une diapo de la colonne : le menu est au-dessus de la colonne du site, ses entrées reçoivent le clic', JSON.stringify(m)); await pg.keyboard.press('Escape');
+  // 4, 5 · plus de simulation ni de texte périmé à l'écran
+  const tx = await pg.evaluate(() => { const z = document.getElementById('dr-zone').innerText + ' ' + Array.from(document.querySelectorAll('#dr-zone [title]')).map(x => x.title).join(' '); const col = (document.querySelector('.at-som-volet') || document.body).innerText; return { maquette: /maquette|simulé|à venir : p|à venir dans/.test(z + col), chap: (document.querySelector('#dr-zone .at-chap .sea') || {}).textContent || '' }; });
+  E.verif('A21', !tx.maquette, '4, 5 · ni « maquette », ni « simulé », ni « à venir : p… » dans l\'atelier (textes et infobulles)');
+  // 2 · rien ne se journalise dans l'atelier
+  await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('Une ligne du banc.'); await pg.waitForTimeout(200);
+  const sv1 = await pg.$eval('#at-save', x => x.textContent); await pg.waitForTimeout(1600); const sv2 = await pg.$eval('#at-save', x => x.textContent);
+  E.verif('A21', /pas encore au hub/.test(sv1) && /✔ enregistré/.test(sv2), '5 · le témoin : « pas encore au hub » tant que le hub n\'a rien reçu, « ✔ enregistré » quand il a accepté (plus une minuterie de 3 s)', sv1 + ' → ' + sv2);
+  const jA = await pg.evaluate(() => J.filter(x => /^atelier/.test(x.type) || x.type === 'diapo').length);
+  E.verif('A21', jA === 0, '2 · contrat §5 : rien ne se journalise dans l\'atelier (une ligne écrite, l\'enregistrement)', jA + ' entrée(s)');
+  // 11 · l'activité : identité sans rang, diapos par eid
+  await pg.evaluate(() => { const h = document.querySelector('#droite-atelier h5[data-pli="acts"]'); if (h && h.parentElement.classList.contains('pli')) h.click(); }); await pg.waitForTimeout(200); await pg.click('#droite-atelier [data-nouvelle-act]'); await pg.waitForTimeout(300); await pg.fill('#dr-saisie', 'Activité du banc'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(1600);
+  const ac = await pg.evaluate(() => { const d = window.__CORPS.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const a = d && (d.bd.activites || [])[0]; return { a, eid: dr_trame()[S.di].eid }; });
+  E.verif('A21', ac.a && /^a-[a-z0-9]+$/.test(ac.a.id) && (ac.a.diapos || []).includes(ac.eid), '11 · l\'activité au hub : une identité sans rang de séance, ses diapos par eid (celle qui la porte)', JSON.stringify(ac.a));
+  // 12 · « + fiche… » sans feuille : la fiche s'écrit ici
+  const n0 = await pg.evaluate(() => dr_trame()[S.di].blocs.length); await pg.evaluate(() => choixObjet('fiche')); await pg.waitForTimeout(300);
+  const ok12 = await pg.$('#of-ft'); if (ok12) { await pg.fill('#of-ft', 'La fiche du banc'); await pg.fill('#of-fd', 'Ce qu\'on retient.'); await pg.fill('#of-fc', 'Premier paragraphe.\nSecond paragraphe.'); await pg.click('#of-ok'); await pg.waitForTimeout(400); }
+  const f12 = await pg.evaluate(n0 => { const b = dr_trame()[S.di].blocs[n0]; return b ? { t: b.t, titre: b.titre, def: b.def, corps: b.corps, rendu: !!document.querySelector('#mur .fiche') } : null; }, n0);
+  E.verif('A21', !!ok12 && f12 && f12.t === 'fiche' && f12.titre === 'La fiche du banc' && /retient/.test(f12.def) && /Second paragraphe/.test(f12.corps) && f12.rendu, '12 · « + fiche… » sans feuille dans le chapitre : la fiche s\'écrit ici, au format du site (titre, def, corps), et se rend', JSON.stringify(f12));
+  // 7 · un clic sur le titre d'une séance l'ouvre
+  await pg.evaluate(() => { const r = document.querySelectorAll('#at-arbre .ed2-sce')[3]; const t = Array.from(r.childNodes).find(n => n.nodeType === 3 && n.textContent.trim()); const rg = document.createRange(); rg.selectNodeContents(r); }); 
+  await pg.click('#at-arbre .ed2-sce[data-seance="3"]', { position: { x: 120, y: 8 } }); await pg.waitForTimeout(1200);
+  const s7 = await pg.evaluate(() => ({ snum: ATVUES.snum, vol: !!document.querySelector('.at-som-volet[data-ese="3"]') }));
+  E.verif('A21', s7.snum === '3' && s7.vol, '7 · dans l\'atelier, un clic sur le titre d\'une séance l\'ouvre (comme le chevron)', JSON.stringify(s7));
+  // 9 · « Éditer dans l'atelier » sur une séance
+  const e9 = await pg.evaluate(() => (typeof ctxEntreesSeance === 'function' ? ctxEntreesSeance(1) : []).map(x => x.lib));
+  E.verif('A21', e9[0] === 'Éditer dans l’atelier', '9 · le menu d\'une séance commence par « Éditer dans l’atelier » (mandat point 6)', e9.join(' · '));
+  const n0e = o.errs.length; const c45 = await pg.evaluate(() => { document.body.dispatchEvent(new DragEvent('dragover', { bubbles: true })); document.body.dispatchEvent(new DragEvent('drop', { bubbles: true })); const p = document.getElementById('pont-css'); return { mortes: p ? /at-t5-|at-repr|at-dr-pastille|at-vecu/.test(p.textContent.replace(/\/\*[\s\S]*?\*\//g, '')) : false }; }); await pg.waitForTimeout(100);
+  E.verif('A21', o.errs.length === n0e && !c45.mortes, 'réveil n°2, C4/C5 : le glisser mort est retiré (un dragover sur la page ne lève plus d\'erreur) ; pont-css sans ses 29 règles mortes', JSON.stringify(c45));
+  E.verif('A21', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

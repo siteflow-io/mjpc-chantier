@@ -12308,7 +12308,8 @@ function ctxEntreesSeance(j){
   var c=_edCh();if(!c)return [];
   var se=c.ch.seances[j];if(!se)return [];
   return [
-    {lib:'Ouvrir / Modifier',faire:function(){
+    {lib:'\u00c9diter dans l\u2019atelier',faire:function(){ ATVUES.snum=String(j); AT_SOM_ETAT[String(j)]=true; atVuesPoser('atelier'); }},   /* E1 (mandat point 6, relecteur neuf 1) : sur une séance aussi */
+    {lib:'Ouvrir dans la Structure',faire:function(){
       var prem=ordPaires(se.items||{})[0];
       if(prem){ed2Aller(prem.k);return;}
       var bloc=document.querySelector('#ed2-pan [data-sce="'+j+'"]');
@@ -12377,7 +12378,7 @@ function ctxEntreesChapitre(level,chnum){
   var ch=chapitresData[level]&&chapitresData[level][chnum];if(!ch)return [];
   var dansEditeur=!!(AT.edChap&&AT.edChap.level===level&&AT.edChap.chnum===chnum);
   var e=[];
-  if(!dansEditeur)e.push({lib:'Ouvrir / Modifier',faire:function(){atEditerChapitre(level,chnum);}});
+  if(!dansEditeur)e.push({lib:'\u00c9diter dans l\u2019atelier',faire:function(){atEditerChapitre(level,chnum);}});   /* E1 (mandat point 6) */
   e.push({lib:'Ajouter une s\u00e9ance',faire:function(){addSeance(level,chnum);setTimeout(dansEditeur?atEditerChapitreRendre:atRendreListe,900);}});
   e.push({lib:'R\u00e9g\u00e9n\u00e9rer la page de garde\u2026',faire:function(){atProposerSommaire(level,chnum,dansEditeur?atEditerChapitreRendre:null);}});
   e.push({lib:'Voir dans le panneau prof',faire:function(){atVoirPanneau(level,chnum);}});
@@ -14941,6 +14942,7 @@ function atSomInjecterEcrans(html){
     var seg='<div class="ed2-sce'+parts[k];
     var m=seg.match(/data-seance="([^"]*)"/);
     if(m){ var ouv=atSomOuverte(m[1]);
+      seg=seg.replace('onclick="ed2SelectionnerSeance(', 'onclick="if(ATVUES.vue!==\'structure\'){atSomPlier(\''+atEsc(m[1])+'\');return;}ed2SelectionnerSeance(');   /* E1 (relecteur neuf 1) : hors de la Structure, un clic sur la séance l'ouvre dans le déroulé, comme son chevron */
       seg=seg.replace('><span class="ed2-n"',
         '><span class="at-som-pli" onclick="event.stopPropagation();atSomPlier(\''+atEsc(m[1])+'\')" title="'+(ouv?'Replier':'Déplier')+' cette séance">'+(ouv?'▾':'▸')+'</span><span class="ed2-n"'); }
     var bloc=(m && atSomOuverte(m[1])) ? (String(m[1])===String(ATVUES.snum) ? '<div class="at-som-volet" data-ese="'+atEsc(String(m[1]))+'" title="Les diapos de la s\u00e9ance ouverte : un clic y va ; la courante est marqu\u00e9e"></div>' : '') : '';   /* E1 (13, contrat §8.3) : sous la séance dépliée, le #volet du déroulé (posé par dr_placerVolet) remplace les écrans horodatés — une seule colonne */
@@ -15426,32 +15428,7 @@ function _drRangPere(n,ecrans){
 
 
 
-/* [drag inter-séances, décision de Paul] les minis du sommaire se GLISSENT d'une séance
-   à l'autre — même opération que « Envoyer vers » (atEcranEnvoyer), geste souris en plus.
-   Tout se passe dans la page hôte : aucune traversée du cadre. */
-
-document.addEventListener('dragstart',function(ev){
-  var m=ev.target&&ev.target.closest&&ev.target.closest('.at-ecr[data-ecr]');
-  if(!m||AT_DR_REGIME==='classe')return;
-  AT_DRAG_ECR={sk:m.getAttribute('data-ese'), n:parseInt(m.getAttribute('data-ecr'),10)};
-  try{ ev.dataTransfer.setData('text/plain','atecran'); ev.dataTransfer.effectAllowed='move'; }catch(e){}
-});
-document.addEventListener('dragover',function(ev){
-  if(!AT_DRAG_ECR)return;
-  var cible=ev.target&&ev.target.closest&&(ev.target.closest('.at-ecr[data-ecr]')||ev.target.closest('.ed2-sce[data-seance]'));
-  if(cible){ ev.preventDefault(); try{ev.dataTransfer.dropEffect='move';}catch(e){} }
-});
-document.addEventListener('drop',function(ev){
-  if(!AT_DRAG_ECR)return;
-  var d=AT_DRAG_ECR; AT_DRAG_ECR=null;
-  var mini=ev.target&&ev.target.closest&&ev.target.closest('.at-ecr[data-ecr]');
-  var sce=ev.target&&ev.target.closest&&ev.target.closest('.ed2-sce[data-seance]');
-  var skDst=mini?mini.getAttribute('data-ese'):(sce?sce.getAttribute('data-seance'):null);
-  if(!skDst)return; ev.preventDefault();
-  if(String(skDst)===String(d.sk))return;                     /* dans la même séance : le moteur a déjà son drag */
-  var pos=mini?parseInt(mini.getAttribute('data-ecr'),10):undefined;
-  atEcranEnvoyer(d.sk,d.n,skDst,pos);
-});
+/* E1 (réveil n°2, C4/C5) : le glisser des minis d'une séance à l'autre est tombé avec les minis (.at-ecr : la colonne unique les a remplacés par le volet du déroulé, §8.3) et avec atEcranEnvoyer ; `AT_DRAG_ECR` n'était plus déclaré : chaque dragover sur la page levait une erreur. Pour changer une diapo de séance : « Envoyer vers une autre séance… » (clic droit). */
 
 
 
@@ -15643,17 +15620,7 @@ function _drCopieAuto(){ dr_copieAuto(); }   /* [E2] */
    durées rendues au père. La colonne, la copie et le récit voient l'écran ENTIER. */
 
 
-/* [relecture par classe] changer la classe dans la tête recharge Relecture/Papier
-   sur LA COPIE DE CETTE CLASSE — les vues ne restent plus figées. */
-document.addEventListener('change',function(ev){
-  try{
-    if(ev.target&&ev.target.id==='at-dr-classe'&&(ATVUES.vue==='relecture'||ATVUES.vue==='papier')){
-      AT_PONT.classeVue=ev.target.value;                       /* la reconstruction recrée le sélecteur : la valeur survit ici */
-      try{DR.__charge=null;}catch(e){} window.__pontRelec=false; atVuesPoser(ATVUES.vue);
-      var s2=document.getElementById('at-dr-classe'); if(s2&&AT_PONT.classeVue)s2.value=AT_PONT.classeVue;
-    }
-  }catch(e){}
-});
+/* E1 (réveil n°2, C4/C5) : le changement de classe de la Relecture par le pont (AT_PONT, #at-dr-classe) est tombé avec le pont ; la Relecture par classe est à E4 */
 
 /* [reléve-en-dur · les trois branchements] la maquette n'a plus le dernier mot :
    PRENOMS viennent de LA CLASSE (initiales dérivées, collisions suffixées),
@@ -19837,6 +19804,7 @@ else sesReprisePoser();
 
 </script>
 <style id="pont-css">
+/* E1 (réveil n°2, C4/C5) : « pont-css » ne tombe pas en bloc — il porte la mise en page des vues du site (.at-vues-*, la colonne). Ses 29 règles mortes (aucune de leurs classes n'existe plus nulle part : .at-dr-* de l'ancienne tête, .at-t5-*, .at-repr*, .at-vecu*) sont retirées. */
 .at-vues-barre{display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap}
 .at-vues-barre .at-onglet{font:inherit;font-size:.92rem}
 .at-vues-cadre{display:flex;flex-direction:column;min-height:60vh}
@@ -19859,42 +19827,13 @@ else sesReprisePoser();
 /* [PONT] pilotable : la tête tient sur UNE ligne — les champs du site (at-edch-in, larges
    par nature dans l'éditeur) reprennent ici une taille de commande, pas de formulaire */
 .at-dr-tete .at-edch-in{width:auto;min-width:0;min-height:34px;padding:5px 9px;font-size:.85rem}
-.at-dr-pastille+.at-dr-lib{flex:0 1 auto;min-width:100px;max-width:235px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .at-dr-tete label[for="at-dr-comp"]{display:none}   /* le champ dit déjà tout par sa consigne interne */
-.at-dr-pastille{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
-.at-dr-lib{font-size:.85rem;color:#d8cfba}
-.at-dr-sep{flex:0 0 4px}
-.at-dr-sel,.at-dr-heure,.at-dr-comp{font:inherit;font-size:.85rem}
-.at-dr-sel{max-width:200px}
-.at-dr-heure{width:88px}
-.at-dr-comp{flex:1 1 170px;min-width:130px;max-width:280px}
-.at-dr-lancer{border-color:rgba(52,211,153,.55)}
-.at-dr-clore{border-color:rgba(248,113,113,.55)}
 .at-dr-etat{font-size:.78rem;color:#9c8f74}
 .at-dr-enr-ok{color:#7fae7f}
 .at-dr-enr-ko{color:#e07b7b;font-weight:700}
-.at-dr-integ{font-size:.72rem;color:#7fae7f;flex:0 0 auto}
-.at-dr-integ-ko{color:#e07b7b;font-weight:700}
 #at-dr-hote-zone{height:calc(100vh - 132px);min-height:520px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:#0f0d09}
 /* [PONT] la scène du jeu doit avoir la hauteur du plein écran d'origine : une scène
    plus basse déclenche la scission automatique du moteur plus tôt que chez lui. */
-.at-dr-cadre{border:0;background:#fff;z-index:8500;border-radius:10px}
-#at-dr-t5{margin-top:8px}
-.at-t5-appel{border-color:rgba(255,184,108,.6);color:#ffd9a8}
-.at-t5-m{display:flex;flex-direction:column;gap:10px;max-height:52vh;overflow:auto}
-.at-t5-c{border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:9px}
-.at-t5-t{font-weight:700;margin-bottom:3px}
-.at-t5-x{font-size:.85rem;color:#c9bfa4;margin-bottom:4px}
-.at-t5-k{font-size:.82rem;color:#ffd9a8;margin-bottom:7px}
-.at-t5-b{display:flex;gap:6px;flex-wrap:wrap}
-.at-t5-f{margin-top:8px;font-size:.82rem;color:#9c8f74}
-.at-repr{display:flex;flex-direction:column;gap:8px;max-height:50vh;overflow:auto}
-.at-repr-l{display:flex;gap:8px;align-items:flex-start;border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:8px;cursor:pointer}
-.at-repr-d{font-size:.82rem;color:#c9bfa4;margin-top:3px}
-.at-repr-av{color:#e0a8a8;text-decoration:line-through}
-.at-repr-ap{color:#a8d8b0}
-.at-vecu{font-size:.82em;color:#7fae7f;margin-left:4px}
-.at-vecu-plus{color:#ffb86c;font-weight:700}
 .at-som-pli{cursor:pointer;margin-right:6px;user-select:none;color:#c9a25a;display:inline-block;width:14px}
 .ctx-menu{z-index:9000}
 .at-ecr[draggable]{cursor:grab}

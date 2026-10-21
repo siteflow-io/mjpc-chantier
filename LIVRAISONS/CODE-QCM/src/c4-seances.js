@@ -321,7 +321,8 @@ function resultatLocalV(se, slug){
     if(se.ecartees.indexOf(qi) >= 0){ st.push("x"); pts.push(null); return; }
     if(se.nouvelle){
       if(se.papier){ var fp = feuillePapierV(se, qi, slug) || lectureV(se, qi, slug) && lectureV(se, qi, slug).choix; if(!fp){ st.push("n"); pts.push(null); return; } var pp = ptsQuestionV(fp, q, mode); st.push(fp === "aucun" ? "a" : pp === 1 ? "j" : "f"); pts.push(pp); return; }
-      if(revelees.indexOf(qi) < 0 && !se.terminee){ st.push("n"); pts.push(null); return; }
+      // (21/10, Paul 09:45, point 12) une feuille lue par Paul (« Lire les copies », par:"prof") compte toujours, aussi pendant une séance rouverte
+      if(revelees.indexOf(qi) < 0 && !se.terminee){ var lr = lectureV(se, qi, slug); if(!(lr && lr.par === "prof")){ st.push("n"); pts.push(null); return; } }
       if(nonPosees.indexOf(qi) >= 0){ st.push("x"); pts.push(null); return; }   // (29) jamais lancée : hors du total
       var l = lectureV(se, qi, slug);
       // (point 6, Paul 08:49) lue en classe par le voisin, mais pas révélée : « pas encore lue » tant que Paul ne l'a pas lue le soir

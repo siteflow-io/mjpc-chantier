@@ -1,0 +1,18 @@
+Sonde de la conscience n°12 — 28, le temps tapé — /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/t753/app-3b4d0f82.html — 2026-10-21T07:31:49.113Z
+Durée : 78 s · vérifications : 16 · échecs : 0
+  ok     T0 · le mode test, sur la démo : « 🚀 Lancer la séance »
+  ok     T1 · le 1er tour de Q1 est en cours
+  ok     T1 · « 4 » tapé : rien n'est écrit, le tour continue (15 s)
+  ok     T1 · « 45 » tapé : toujours rien d'écrit, le tour continue, le champ garde « 45 » et le curseur
+  ok     T1 · à Entrée : le temps de réponse de Q1 vaut 45 (undefined avant), la durée du tour aussi, et le tour continue
+  ok     T1 · en quittant le champ après Entrée, rien n'est écrit une seconde fois
+  ok     T2 · la correction commence : la lecture de la feuille du voisin, Q3
+  ok     T2 · « 130 » tapé pendant la lecture : aucune lecture figée sur les tablettes simulées, rien n'est écrit, le champ garde « 130 » et le curseur
+  ok     T2 · à Entrée : le temps pour lire vaut 130, la lecture continue, aucune lecture figée
+  ok     T3 · « +10 » de la carte de la lecture
+  ok     T3 · « +10 » avant le 0 : 140 s, tout de suite
+  ok     T4 · au 0 : les lectures cliquées se figent (« ⏱️ Temps fini : ta lecture est enregistrée. » sur les tablettes simulées)
+  ok     T4 · « +10 » après le 0
+  ok     T4 · « +10 » après le 0 : la lecture repart pour 10 s, et plus aucune lecture n'est figée
+  ok     T5 · « 🗑️ Sortir et purger » : la séance et la copie de test sont effacées
+  ok     T5 · aucune erreur de page ni boîte système

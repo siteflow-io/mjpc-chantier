@@ -1,0 +1,17 @@
+Sonde de la conscience n°12 — 29 tranché (points 7 à 10) : la séance de 11 questions arrêtée après Q3 — /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/t753/app-3b4d0f82.html — 2026-10-21T07:30:21.606Z
+Attendu, de la base : Tom 0/3 avant le soir, 1/3 · 6,7 après « ✅ Oui » pour Q3
+Durée : 34 s · vérifications : 14 · échecs : 0
+  ok     A1 · Résultats : « 📊 Ouvrir » la séance de 11 questions, terminée après Q3
+  ok     A1 · l'en-tête du tableau de la séance dit « Q4 à Q11 pas posées », jamais « écartée »
+  ok     A1 · avant la lecture du soir : Tom « 0/3 1 question pas encore lue » (la note sur 3 ; Q3, lue par Léa sans « Révéler », pas encore lue), maîtrise « — »
+  ok     A2 · « 📄 Lire les copies »
+  ok     A2 · la copie de Tom : Q3 proposée avec ce que Léa a lu, et « ✅ Oui » ; aucune des questions pas posées
+  ok     A2 · « ✅ Oui » pour Q3
+  ok     A2 · « ✅ Oui » enregistre la lecture de Paul, la même que celle de Léa
+  ok     A3 · « 🧮 La note, en direct » : 1 / 3, sans « pas encore lue », sans les questions pas posées (après 1 autre(s) ligne(s) à lire confirmée(s))
+  ok     A3 · la copie de Léa : « ✅ Oui » pour Q3
+  ok     A4 · de nouveau, le tableau de la séance
+  ok     A4 · le tableau de la séance : Tom « 1/3 », « 6,7 », une maîtrise, sans « pas encore lues »
+  ok     A5 · les copies rendues
+  ok     A5 · le bilan de Tom, sur sa tablette : 1 / 3 · 6,7 / 20, la même note
+  ok     A6 · aucune erreur de page ni boîte système

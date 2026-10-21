@@ -1,0 +1,26 @@
+Sonde de la conscience n°12 — le mode test joue les vraies évaluations — /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/t753/app-3b4d0f82.html — 2026-10-21T07:31:40.363Z
+Durée : 30 s · vérifications : 24 · échecs : 0
+  ok     T1 · avant le mode test, la carte de lancement de la console propose l'évaluation de 3e et celle de 4e
+  ok     T1 · la carte de lancement de la console ne propose aucune évaluation de test
+  ok     T2 · le mode test ouvre sa carte de lancement, avec un menu « Évaluation » qui se choisit
+  ok     T2 · la démo est en premier et choisie par défaut
+  ok     T2 · après la démo, les évaluations prêtes, la même liste et le même ordre que la carte de la console
+  ok     T2 · chaque ligne donne le titre et le nombre de questions
+  ok     T3 · le menu garde le choix de l'évaluation de 4e après le redessin
+  ok     T3 · la copie de test prend le titre, les questions telles qu'elles sont, le chapitre de l'évaluation de 4e, et test:true
+  ok     T3 · la carte de la durée suit l'évaluation choisie
+  ok     T4 · l'évaluation de 3e choisie : la copie est la sienne
+  ok     T5 · « 🚀 Lancer la séance » de la carte du mode test
+  ok     T5 · « ▶️ Lancer Q1 »
+  ok     T5 · « Autoriser la réponse » : le premier tour
+  ok     T5 · la séance de test joue la copie, et son énoncé conservé est celui de l'évaluation de 4e
+  ok     T5 · la console du mode test, au premier tour : l'énoncé de Q1 de l'évaluation de 4e et « n / N ont répondu »
+  ok     T5 · la tablette simulée 1 montre la question 1 de l'évaluation de 4e
+  ok     T6 · « 🗑️ Sortir et purger »
+  ok     T6 · les deux vraies évaluations sont identiques bit à bit avant l'entrée et après la sortie
+  ok     T6 · le journal du faux hub ne montre aucune écriture sur les vraies évaluations
+  ok     T6 · la démo du hub : absente du faux hub, créée une fois par l'app à l'entrée du mode test (remettreDemo, maquette620.js l. 446, hors de la livraison ; créée, 0 écriture avant l'entrée), puis plus jamais écrite
+  ok     T6 · la copie, la classe et la séance de test sont effacées ; aucune séance ne porte une vraie évaluation
+  ok     T6 · la carte de lancement de la console est inchangée
+  ok     T7 · à l'entrée suivante, la démo est choisie par défaut
+  ok     T8 · aucune erreur de page ni boîte système

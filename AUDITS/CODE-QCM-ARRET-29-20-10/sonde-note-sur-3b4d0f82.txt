@@ -1,0 +1,15 @@
+Sonde de la conscience n°12 — 29, seconde moitié : la note d'une séance arrêtée avant la fin, lue le soir — /tmp/claude-0/-home-claude/6f83f394-f2d4-5070-8d91-714cb465417b/scratchpad/t753/app-3b4d0f82.html — 2026-10-21T07:31:08.967Z
+Durée : 40 s · vérifications : 13 · échecs : 0
+  ok     N1 · Résultats : « 📊 Ouvrir » la séance
+  ok     N1 · avant la lecture du soir : Tom « 0/3 2 questions pas encore lues », maîtrise « — »
+  ok     N2 · « 📄 Lire les copies »
+  ok     N2 · la copie de Tom : Q1 et Q3, jamais lues en classe, sont à lire, « Que dit la copie ? »
+  ok     N3 · Q1 : « ✏️ Je clique ce qu'elle dit », le choix de la copie, puis l'enregistrement : lectures/0/carre_tom écrite par Paul
+  ok     N3 · Q3 : « ✏️ Je clique ce qu'elle dit », le choix de la copie, puis l'enregistrement : lectures/2/carre_tom écrite par Paul
+  ok     N3 · la copie de Léa : Q1 et Q3 lues par Paul
+  ok     N3 · « 🧮 La note, en direct » : 1 / 3, sans « pas encore lue »
+  ok     N4 · de nouveau, le tableau de la séance
+  ok     N4 · le tableau de la séance : Tom « 1/3 », « 6,7 », une maîtrise, sans « pas encore lues »
+  ok     N5 · les copies rendues
+  ok     N5 · le bilan de Tom, sur sa tablette (« 📊 Mes évaluations ») : 1 / 3 · 6,7 / 20, la même note
+  ok     N6 · aucune erreur de page ni boîte système

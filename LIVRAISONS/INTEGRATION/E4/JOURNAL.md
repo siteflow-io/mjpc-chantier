@@ -397,3 +397,11 @@
   - banc.sh : **VERT** (`sorties/1910`) ;
   - mon banc : **109 ok · 0 échec** (`sorties/1910-site-E4`).
 - Les passages suivants écrivent leurs sorties hors du dépôt, puis les copient une fois finies.
+
+## Poussée 47 — 19:58 UTC
+- **Rejoué sur `613ade62`** (E2, §12.17) :
+  - banc.sh : **VERT** (`sorties/1942`) ;
+  - mon banc : **109 ok · 0 échec** (`sorties/1942-site-E4`).
+  - Les deux ont écrit leurs sorties hors du dépôt ; je les ai copiées ensuite.
+- Le banc lit maintenant `E4_CAP` pour ses captures : elles aussi s'écrivent hors du dépôt pendant le passage.
+- Un relecteur neuf rejoue l'heure 3 dans les trois cas du §12.17 (P1 à l'heure suivante, P2 à la maison, P3 sortis du programme), et les lignes 130, 137 et 138.

@@ -8,7 +8,7 @@
 import path from 'node:path'; import fs from 'node:fs'; import { createRequire } from 'node:module'; import { createHash } from 'node:crypto';
 const F = path.resolve(process.argv[2] || ''); if (!process.argv[2] || !fs.existsSync(F)) { console.log('usage : node banc.mjs <fichier.html> [sortie]'); process.exit(2); }
 const OUT = path.resolve(process.argv[3] || path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'sorties', new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-'))); fs.mkdirSync(OUT, { recursive: true });
-const CAP = path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'captures'); fs.mkdirSync(CAP, { recursive: true });
+const CAP = process.env.E4_CAP ? path.resolve(process.env.E4_CAP) : path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'captures'); fs.mkdirSync(CAP, { recursive: true });   /* E4_CAP : les captures hors du dépôt pendant le passage (copiées ensuite dans E4/captures) */
 const req = createRequire(import.meta.url); let pw = null;
 for (const c of [process.env.MJPC_PLAYWRIGHT, '/opt/node22/lib/node_modules/playwright', path.join(path.dirname(F), 'node_modules', 'playwright'), 'playwright'].filter(Boolean)) { try { pw = req(c); break; } catch (e) {} }
 if (!pw) { console.log('Playwright introuvable'); process.exit(2); }

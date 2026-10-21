@@ -67,9 +67,9 @@ Paul ouvre un chapitre, « Éditer dans l'atelier » (sur le chapitre comme sur 
 Tailles avant et après (`toString().length`) : **`E1/NOTE-fonctions.md`**, produit par `E1/outils/tailles.mjs`, rejouable. Pour ma part de `dr-classe`, la taille « après » est celle de la version d'E2, qui l'emporte. Les globales de la maquette restent telles quelles quand elles n'entrent pas en collision ; les 8 collisions mesurées sont préfixées `dr_`, comme les 11 classes `dr-*` et les 7 ids `dr-*`. Le banc `collisions` est à **0 / 0 / 0**.
 
 ## 5 · Les bancs
-- **Le banc d'E1** : `E1/bancs/banc.mjs`, un banc unique, **A1 à A27**, sur `assemble/index.html` et le faux hub. Il passe par les gestes réels, de l'entrée du site jusqu'à l'Atelier.
+- **Le banc d'E1** : `E1/bancs/banc.mjs`, un banc unique, **A1 à A28**, sur `assemble/index.html` et le faux hub. Il passe par les gestes réels, de l'entrée du site jusqu'à l'Atelier.
   - A1 collisions · A2 ce qui tombe · A3 la porte et la barre · A4 une modification → `B/deroule` · A5 Structure ↔ Atelier · A6 la colonne unique · A7 p8-5h et les tailles · A8 la trame ligne à ligne · A9 l'écriture complète · A10 l'Atelier entier.
-  - A11 la mise en forme · A13 les blocs au clavier · A14 l'adresse d'une image · A18 les dettes · A19 la fiche ouverte · A20 la relance du 21/10 · A21 et A22 les relecteurs neufs · A23 la relecture continue d'E4 · A24 le réveil n°3 · A25 la relecture continue d'E4 (13:35-14:05) · A26 le réveil n°5 (A4, B4, A5) et la passe d'infobulles · A27 la copie jouée d'un autre jour (réveil n°8).
+  - A11 la mise en forme · A13 les blocs au clavier · A14 l'adresse d'une image · A18 les dettes · A19 la fiche ouverte · A20 la relance du 21/10 · A21 et A22 les relecteurs neufs · A23 la relecture continue d'E4 · A24 le réveil n°3 · A25 la relecture continue d'E4 (13:35-14:05) · A26 le réveil n°5 (A4, B4, A5) et la passe d'infobulles · A27 la copie jouée d'un autre jour (réveil n°8) · A28 l'onglet Atelier pendant l'heure (réveil n°9).
   - A12, A15, A16 et A17 (R4, R2, R1, R5) sont partis avec le recyclage vers E4.
   - **Dernier passage : 108 vérifications, 0 échec** (poussée 8), puis **124 vérifications, 0 échec** sur la poussée 9 (`2c24b230`, `E1/sorties/1157/banc-E1.txt`), **153 vérifications, 0 échec** sur la poussée 12 (`dfa8db4b`, `E1/sorties/1502/banc-E1.txt`). Depuis la poussée 12, il joue l'heure 1 d'une séance jamais jouée, comme les contrôles v2.2 (`MJPC_JOUE=1` garde l'heure du 07/09).
 - **Le banc de la conscience** (`banc.sh`) à chaque poussée, sorties dans `E1/sorties/<heure>/` :
@@ -132,7 +132,8 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
 - **Le réveil n°5** (A4 14:50, B4 15:50, A5 16:15), gardé dans A26 : la page suit ce que ▶ montre ; une question grisée cliquée s'ouvre sur la saisie de sa réponse, une consigne grise reste grise ; Ctrl+B marque l'occurrence choisie ; l'entête ne descend plus quand le témoin paraît ; l'image absente garde sa ligne ; le dégel dit le rang dans l'heure ; rien n'est « terminé » de ce qui a été feuilleté avant le lancement ; l'atelier ouvert pendant l'heure journalise sa copie (`copie-classe`) — **E2 a fait sa part (`dr_reprendre` relit la copie) : le bloc tient de bout en bout** (A26).
 - **Le réveil n°7** : le témoin de l'entête lisible en entier au Pilotage (en fin d'entête) ; dans l'atelier, celui de sa barre dit l'heure. En heure lancée, un bloc neuf s'écrit par l'onglet Atelier (`#ong-atelier`) puis « ✎ clique ici et écris » ; le Pilotage n'a pas de zone (p8-4). La passe de dettes, une ligne par dette, est au JOURNAL (poussée 14).
 - **Le réveil n°8 — la copie jouée d'un autre jour** (contrat §12.8), gardé dans A27 : au lancement d'une heure, les retouches faites en classe aux heures d'avant passent dans la copie (`dr_copieReporter`) — un titre retouché le lundi est là le mardi ; au premier lancement, `dr_jouerCopie` fusionne la copie d'avant par eid avec la trame (une séance close repart de la trame). L'écran d'ouverture ne lève plus d'erreur sur une heure de la veille jamais close.
-- **Dernier passage (poussée 15, `d7a1976e`, sorties `2006`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 174 / 0 ; le grave 110 tient de bout en bout (A26).
+- **Le réveil n°9** (gardé dans A28) : **deux graves** — l'onglet Atelier ouvert pendant l'heure écrit lui-même la copie de la classe en 900 ms (elle n'attendait plus le retour au Pilotage : une page quittée depuis l'atelier perdait la retouche) ; au retour au Pilotage, Paul retrouve la diapo où est la classe (le pilote et le tableau sautaient, sans garde, avec un « saut » au journal) ; la légende d'une image pleine sur deux lignes reste entière ; « Diapo suivante » dit « préparée / terminée à la maison — à reprendre » comme l'ouverture.
+- **Dernier passage (poussée 16, `2a88fffa`, sorties `2131`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 181 / 0 ; le grave 110 tient de bout en bout (A26).
 
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
@@ -142,14 +143,21 @@ Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
 - le réveil n°2 (#dr-session, `dr_ctx` en vue tableau, le crochet `dr_versMur` d'E3, C4/C5) ;
 - l'entête à 1366.
 
-## 9 · Ce qui reste — jamais une dette cachée
-- **13 · 12 :** le libellé dit la taille obtenue. **Passer en pages plutôt que réduire la police reste à trancher par Paul.**
-- **Les activités sur la trame réelle :** le hub n'en porte aucune (0 `actId` sur 95 écrans). Elles sont donc sans numéro jusqu'à ce que Paul les crée (F8). Le relecteur d'E4 attendait « chaque activité porte son numéro » : **la contradiction est à arbitrer**.
-- **Les documents :** un document se joint dans la Structure, pas dans l'atelier. Les feuilles (`DATA.feuilles`) n'ont pas de source dans ce mandat : une fiche s'écrit donc en ligne, sans lien de feuille (F17).
-- **La clé USB :** le dossier choisi n'est retenu que pour la session (pas de stockage durable). Lire la vidéo au pilote depuis la clé n'est pas dans mon territoire et n'a pas été vérifié ici.
-- **La frappe avant départ :** l'écriture part quand la page se cache ou se ferme, mais par `mjpcPutJson` sans `keepalive`. À la fermeture brutale d'un onglet, le navigateur peut encore l'interrompre.
-- **Le défilement de 36 px (relecteur n°2, 10) :** non reproduit sur l'état actuel ; il est gardé au banc.
-- **`dr_sauve` enveloppé par E4 (son R4) :** à arbitrer par la conscience (contrat §5).
-- **R14 au tableau** (la couche d'annotation de la classe, ANNOT) : à E3.
-- **R1, R2, R4, R5, R6 :** à E4. Les défauts relevés par le relecteur n°2 sur sa version sont transmis.
-- **Pour E2** : la copie jouée garde la fin d'heure de l'heure 1 quand l'EDT lance l'heure 2 (une vignette de plus) — A7 l'écrit tant qu'elle existe.
+## 9 · Ce qui reste — jamais une dette cachée (NOTE finale, poussée 16, 21/10)
+**À Paul (une décision, pas du code) :**
+- **13 · 12 — « texte au tableau » à 52 pt sur une diapo pleine** : aujourd'hui la police se réduit jusqu'au plancher (26 pt) et le libellé dit la taille obtenue (« 52 pt → 26 », la donnée part au tableau avec `policeRatio`) ; **passer en pages plutôt que réduire la police** est à trancher. La conscience la lui pose.
+- **Les activités sur la trame réelle** : le hub n'en porte aucune (0 `actId` sur 95 écrans) ; « Activité n — » paraît au récit dès qu'une activité est créée dans l'atelier (A24), pas avant. La ligne d'E4 « aucune Activité n — » reste donc vraie tant que Paul n'a pas déclaré ses activités (F8) — ou qu'il décide que les pseudo-activités d'E2 (une par diapo) en tiennent lieu.
+
+**Ouvert, mesuré, pas à moi seul :**
+- **La frontière d'heure hors classe** (E4, 20:50, moyen, E1/E2) : dans l'atelier et au Pilotage avant le lancement, la trame réelle met ses 19 diapos à l'heure 1 (§12.5) — « Séance 1 (1 h) », « l'heure 1 dépasse de 65 min » ; en classe, E2 pose la frontière par les durées (H1 H2 H3). Montrer hors classe les heures qu'E2 calculera demande que le socle appelle son calcul sans l'écrire : à décider avec E2 (qui pose la frontière, où elle s'écrit).
+- **Pour E2** : la copie jouée garde la fin d'heure d'une autre heure que celle lancée (une vignette de plus) — A7 l'écrit tant qu'elle existe.
+- **Entrée dans les panneaux « + bloc » et « Envoyer vers… »** (E4, passe complète) : Échap renonce partout, Entrée choisit dans la boîte du site ; dans ces deux panneaux il n'y a pas de choix par défaut à valider — Entrée n'y fait rien. Si Paul veut un choix par défaut (le premier objet, la séance suivante), c'est une ligne.
+- **R14 au tableau** (la couche d'annotation de la classe, ANNOT) : à E3. **R1, R2, R4, R5, R6** : à E4. **`dr_sauve` enveloppé par E4** : laissé (crochets d'une ligne).
+
+**Limites connues de mon territoire :**
+- **Les documents** : un document se joint dans la Structure, pas dans l'atelier ; une fiche s'écrit en ligne, sans lien de feuille (F17 : `DATA.feuilles` n'a pas de source dans ce mandat).
+- **La clé USB** : le dossier choisi n'est retenu que pour la session ; la lecture au pilote depuis la clé n'est pas vérifiée ici.
+- **La frappe avant départ** : elle part quand la page se cache ou se ferme (`mjpcPutJson`, sans `keepalive`) ; une fermeture brutale peut encore l'interrompre.
+- **`dr_jouerCopie` au premier lancement** : éprouvée sur une copie posée (fusion, retouche, séance close) ; le geste réel « heure 1 d'un autre jour avec une copie déjà jouée » ne se produit pas sur le faux hub (la case propose l'heure suivante).
+- **La garde du VIF (A25)** attrape la course de la note **statistiquement** (quatre essais) ; corrigée à la source (le curseur passe dans la même tâche).
+- **Le mode test (ligne 146, écartée)** : `m8TestOn()` lit `M8_TEST`, faux au chargement, basculé seulement par le bouton du panneau prof (`m8BasculerModeTest`), recopié dans `sessionStorage` sans y être relu ; la pastille « 🧪 Mode test » vue est ce bouton, inactif.

@@ -24,7 +24,11 @@ const pause = ms => new Promise(r => setTimeout(r, ms));
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });
 
 // ── le faux hub (le même dispositif que parcours.mjs et controles.mjs) ──
-const hubStore = () => { const J = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8')); const st = { classes: J('classes.json'), taxonomie: fs.existsSync(path.join(HUB, 'taxonomie.json')) ? J('taxonomie.json') : null, site: { '3e': J('site_3e.json'), config: J('site_config.json'), edt: { grille: { '2026-2027': J('grille-appariee.json') }, calendrier: { '2026-2027': J('calendrier.json') }, creneaux: { '2026-2027': J('creneaux.json') } } } }; try { st.classes['3E Charles de Gaulle'].ed = { espace: 2, lien: 'https://www.ecoledirecte.com/P/94/EspacesTravail/2/cloud' }; } catch (e) {} return st; };
+const hubStore0 = () => { const J = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8')); return { classes: J('classes.json'), taxonomie: fs.existsSync(path.join(HUB, 'taxonomie.json')) ? J('taxonomie.json') : null, site: { '3e': J('site_3e.json'), config: J('site_config.json'), edt: { grille: { '2026-2027': J('grille-appariee.json') }, calendrier: { '2026-2027': J('calendrier.json') }, creneaux: { '2026-2027': J('creneaux.json') } } } }; };
+const hubStore = () => { const J = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8')); const st = { classes: J('classes.json'), taxonomie: fs.existsSync(path.join(HUB, 'taxonomie.json')) ? J('taxonomie.json') : null, site: { '3e': J('site_3e.json'), config: J('site_config.json'), edt: { grille: { '2026-2027': J('grille-appariee.json') }, calendrier: { '2026-2027': J('calendrier.json') }, creneaux: { '2026-2027': J('creneaux.json') } } } }; try { st.classes['3E Charles de Gaulle'].ed = { espace: 2, lien: 'https://www.ecoledirecte.com/P/94/EspacesTravail/2/cloud' }; } catch (e) {}
+  /* comme les contrôles v2.2 de la conscience : on joue l'HEURE 1 d'une séance jamais jouée — l'heure du 07/09 que porte le faux hub ferait lancer l'heure 2 (F2, 13 · 26) */
+  try { Object.values(st.site['3e'].chapitres).forEach(ch => Object.values(ch.seances || {}).forEach(se => { delete se.deroule_joue; })); } catch (e) {} return st; };
+const hubBrut = () => { const st = hubStore0(); return st; };
 const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); window.__ECR = []; const lire = c => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; }; const pos = (c, v) => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) n[q[k]] = {}; n = n[q[k]]; } if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v; };
   window.__hubLire = lire; window.__hubPoser = pos;
   window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase(); if (m === 'GET') return Promise.resolve(new Response(JSON.stringify(lire(c)), { status: 200 })); let bd = null; try { bd = JSON.parse((o && o.body) || 'null'); } catch (e) {} window.__ECR.push(m + ' ' + c); if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => pos(c + '/' + k, bd[k])); else pos(c, m === 'DELETE' ? null : bd); return Promise.resolve(new Response(JSON.stringify(bd), { status: 200 })); } return Promise.reject(new Error('hors du faux hub : ' + s2.slice(0, 60))); };
@@ -32,11 +36,11 @@ const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); window.__EC
 const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });
 
 // ── l'entrée : la maquette seule, ou le site par ses gestes jusqu'au Pilotage ──
-const ouvrir = async (w = 1366, h = 768) => { const ctx = await nav.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); const pg = await ctx.newPage(); const errs = [], boites = [];
+const ouvrir = async (w = 1366, h = 768, brut = false) => { const ctx = await nav.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); const pg = await ctx.newPage(); const errs = [], boites = [];
   pg.on('pageerror', e => errs.push(String(e.message).slice(0, 160))); ctx.on('page', p => { if (p !== pg) p.on('pageerror', e => errs.push('[fenêtre du tableau] ' + String(e.message).slice(0, 160))); }); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
   if (!SITE) { await pg.goto(URL0); await pg.waitForTimeout(700); return { ctx, pg, errs, boites }; }
   await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
-  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, hubStore());
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, brut ? hubBrut() : hubStore());
   await pg.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
   await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
   await pg.click('#tprof-btn'); await pg.waitForTimeout(500); await pg.evaluate(() => atelierOuvrir()); await pg.waitForTimeout(1000);
@@ -260,6 +264,15 @@ await CAS('T12', 'la Relecture n\'écrit pas la scène ; le témoin ne ment pas'
   const n1 = await pg.evaluate(() => window.__ECR.filter(e => /\/scene$/.test(e)).length);
   verif('T12', n1 === n0, 'dans la Relecture, un redessin du socle n\'écrit aucune scène au hub', `${n1 - n0} écriture(s) de la scène`);
   await fen.close(); await fin('T12', o); });
+
+// T13 — l'heure 2 d'une séance déjà jouée (le faux hub tel quel : une heure du 07/09) : elle s'ouvre sur son rituel ; la fenêtre montre la diapo de la classe et suit.
+await CAS('T13', 'l\'heure suivante : la fenêtre suit depuis le rituel', async () => {
+  if (!SITE) { absent('T13', 'se joue sur le site'); return; }
+  const o = await ouvrir(1366, 768, true); const pg = o.pg; await lancer(pg); const p0 = await lire(pg, 'pilote'); const fen = await ouvrirTableau(pg); const t0 = await lire(fen, 'tableau');
+  verif('T13', pareil(p0, t0), 'la fenêtre montre la diapo d\'ouverture de l\'heure, comme le pilote', `pilote « ${p0 && p0.act} » ${p0 && p0.lignes.length} l. · tableau « ${t0 && t0.act} » ${t0 && t0.lignes.length} l.`);
+  await dev(pg, 3); await pg.waitForTimeout(600); const p1 = await lire(pg, 'pilote'), t1 = await lire(fen, 'tableau'); await cap(fen, 'T13-heure-2');
+  verif('T13', pareil(p1, t1), 'trois ▶ : la fenêtre suit', `pilote « ${p1.act} » ${p1.lignes.length} l. · tableau « ${t1 && t1.act} » ${t1 && t1.lignes.length} l.`);
+  await fen.close(); await fin('T13', o); });
 
 dire(''); dire(`banc E3 : ${nb} vérifications, ${echecs} échec(s)` + (echecs ? ' — ROUGE' : ' — VERT'));
 if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }

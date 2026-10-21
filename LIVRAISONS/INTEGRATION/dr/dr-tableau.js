@@ -121,10 +121,10 @@ function dr_sceneAuto(vite){
 function dr_sessionEtat(ok){
   const s = document.getElementById('dr-session'); if (!s) return;
   if (ok) { DR_TAB.perduDepuis = 0; s.className = 'dr-session'; s.textContent = '\u25cf session';
-    s.title = 'Le tableau distant reçoit ce que voit la classe (la dernière scène est arrivée au hub).'; }
+    s.title = 'Ce que voit la classe part bien vers le tableau distant (l\u2019ordinateur de la classe) : il suit.'; }
   else { if (!DR_TAB.perduDepuis) DR_TAB.perduDepuis = Date.now(); const h = new Date(DR_TAB.perduDepuis).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
     s.className = 'dr-session dr-session-ko'; s.textContent = '\u25cf session coupée depuis ' + h;
-    s.title = 'Le hub ne répond plus depuis ' + h + ' : le tableau distant garde la dernière image qu\u2019il a reçue ; la fenêtre du tableau, elle, continue de suivre.'; }
+    s.title = 'Depuis ' + h + ', le site n\u2019arrive plus à envoyer (réseau coupé ?) : le tableau distant garde la dernière image reçue ; la fenêtre du tableau, sur cet ordinateur, continue de suivre.'; }
 }
 
 /* ─── la participation : `C/part` tombe (relance C8 : plus de lecteur ; elle vit dans `C/etat` et le journal, chez E2) ─── */

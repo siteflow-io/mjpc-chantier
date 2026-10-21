@@ -1,0 +1,26 @@
+banc E2 — la classe et l'heure · 2026-10-21 07:38 UTC · index.html md5 ac792b28f40d3a0510e725fc4a6b6985 · 1838175 o
+
+B1 — la case de l'emploi du temps
+  ok     B1 · la case de 3E Charles de Gaulle (lun. 14/09, 08:57-09:52) — 3E Charles de Gaulle Étude de texte accompagnée : « L'Albatros » heure 1/3
+  absent B1 · « Préparer » sur la case (E2)
+  ok     B1 · « ▶ Ouvrir le pilotage et lancer » (production : l'ancien moteur) — {"debut":"08:57","fin":"09:52","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle"}
+      écritures : PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle · PUT /site/cours_actif · PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/scene · PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/scene · PUT /site/3e/chapitres/0/seances/1/deroule_joue/3E Charles de Gaulle/heures/<H>
+
+B2 — lancer en un clic, dévoiler, faire parler ; le paquet de l'heure ; les écritures (K15)
+  absent B2 · aucun [data-lancer="1"] (le site avant E2)
+
+B4 — la fin de l'heure (T-5 = fin − 10 min), les sept étapes, la clôture
+  absent B4 · pas d'heure lancée
+      erreurs JS : aucune
+  ok     JS · B2-B4 : aucune erreur JS
+
+B3 — la reprise (recharger en pleine heure, mêmes écritures relues)
+  absent B3 · la reprise se joue sur le site intégré (la maquette perd tout au rechargement)
+
+B5 — deux créneaux dans la journée = deux clés = deux traces
+  absent B5 · le site intégré
+
+B6 — le mode test (13 · 25) : lancer, dévoiler, clore → zéro écriture au hub
+  absent B6 · aucun [data-lancer="1"]
+
+BANC E2 VERT

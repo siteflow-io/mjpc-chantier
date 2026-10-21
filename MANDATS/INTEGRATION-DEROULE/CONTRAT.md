@@ -117,7 +117,7 @@ Avant de coder, chaque exécutant **confronte ce contrat, le plan et son mandat 
 
 Puis il continue sans attendre : il code ce qui n'est pas contesté ; ce qui est contesté attend la réponse de la conscience dans `RELANCES/E<n>.md` (au premier réveil, deux heures au plus). Un audit vide (« tout tient ») est suspect : la conscience le relit ligne à ligne.
 
-## 12 · LES DÉCISIONS DU RÉVEIL N°2 (21/10, 13:25) — ce que les quatre audits de mission 0 ont changé
+## 12 · LES DÉCISIONS DU RÉVEIL N°2 (21/10, 13:01) — ce que les quatre audits de mission 0 ont changé
 
 *Les quatre audits (`LIVRAISONS/INTEGRATION/E*/AUDIT-DU-MANDAT.md`) ont trouvé des erreurs dans ce contrat et dans les mandats ; elles sont tranchées ici et dans `RELANCES/E<n>.md`. Ce qui suit l'emporte sur les sections 1 à 11 quand ça les contredit.*
 

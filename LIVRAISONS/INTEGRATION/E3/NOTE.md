@@ -24,7 +24,7 @@
 - **À cette note** :
   - `dr/dr-tableau.js` `1691cda68c23…` (27 782 o, 34 déclarations, toutes `dr_*` / `DR_TAB*`) ;
   - `index.html` `2618fd3220c8…` (avec les poussées de tous) ;
-  - l'assemblé et sa sortie sont dans `sorties/<heure de cette note>/`.
+  - l’assemblé joué et ses sorties sont dans `sorties/2239/`.
 
 ## Ce que j'ai touché dans `index.html`
 J'ai appliqué deux outils : `E3/outils/brancher-index.py`, puis `E3/outils/relance-1315.py`.
@@ -75,7 +75,7 @@ J'ai appliqué deux outils : `E3/outils/brancher-index.py`, puis `E3/outils/rela
   - **T14** : le bloc écrit en classe, le rechargement, la reprise.
   - **T15** : la copie d'un autre jour, la retouche de la veille au mur.
 - Chaque trouvaille d'un relecteur a reçu sa garde, vérifiée rouge sur l'ancien assemblé et verte sur le nouveau.
-- **Dernier passage : voir `sorties/<heure de cette note>/banc-E3.txt`.** Il était à 89/89 avant T15 ; T15, joué seul, a passé 5/5.
+- **Dernier passage (22:39, `sorties/2239/banc-E3.txt`) : 94 vérifications, 0 échec.**
 - **Le banc de la conscience** (`banc.sh`) est vert à chaque passage depuis 15:30 : collisions 0, parcours et mode test verts, K1-K13 108/0.
 - **Captures** : `E3/captures/site/` (T1 à T15), et `E3/captures/` (la maquette, l'essai du module avant E1-a).
 

@@ -131,3 +131,4 @@
 - **T15** ajouté : la copie d'un autre jour au tableau (E1 `dr_jouerCopie`) — lundi une retouche en classe sur la diapo 1, mardi 10:10 (le pilote rechargé, le hub gardé), « Lancer l'heure 2 », la diapo 1 : **la retouche de la veille est au pilote et au mur** (5/5, joué seul sur `622b9a55`).
 - Vu en passant (pour E2) : avant de lancer l'heure 2, le pilote affiche « T-undefined · le cahier de textes attend » (capture de T15).
 - **NOTE.md finale** réécrite (ce que ça change, md5, ce que j'ai touché, bancs, relecteurs, ce qui reste chez d'autres, ce qui est à Paul). Le banc complet et le banc de la conscience tournent ; leurs sorties suivent.
+- 22:51 : **banc E3 94/94** et **banc de la conscience VERT** (collisions 0, parcours et mode test verts, K 0 défaut) — `sorties/2239/`.

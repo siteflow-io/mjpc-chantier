@@ -123,13 +123,10 @@ await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène su
   // le distant : un second contexte, le même faux hub au départ, sans cours actif → l'attente
   const ctx2 = await nav.newContext({ viewport: { width: 1280, height: 720 }, timezoneId: 'Europe/Paris' }); await ctx2.route(u => !String(u).startsWith('file:'), r => r.abort());
   const tb = await ctx2.newPage(); const errs2 = []; tb.on('pageerror', e => errs2.push(String(e.message).slice(0, 160))); const st = hubStore(); await tb.clock.setFixedTime(new Date('2026-09-14T08:50:00+02:00')); await tb.addInitScript(fauxHub, st);
-  await tb.goto(URL0 + '?vue=tableau', { waitUntil: 'load' }); await tb.waitForTimeout(2500);
+  await tb.goto(URL0 + '?vue=tableau&n=3e', { waitUntil: 'load' }); await tb.waitForTimeout(2500);
   const att = await tb.evaluate(() => { const a = document.getElementById('ses-tab-att') || document.getElementById('dr-attente'); return a && a.offsetParent !== null ? a.innerText.replace(/\s+/g, ' ').trim() : null; }); await cap(tb, 'T5-attente');
   verif('T5', !!att && /monsieurjaipascompris/i.test(att) && /\d\d:\d\d/.test(att), 'sans cours actif : l\'écran d\'attente (le nom du site, l\'heure, la date)', att || '—');
-  const prop = await tb.evaluate(() => { try { return typeof dr_proposer === 'function' ? dr_proposer() : null; } catch (e) { return { erreur: e.message }; } });
-  if (prop && prop.depuis === 'edt') verif('T5', !!att && /Classe attendue : /.test(att), 'à 08:50 : la classe attendue vient de `dr_proposer()` (E2), depuis l\'EDT', att || '—');
-  else { verif('T5', !!att && !/Aucun cours|Classe/.test(att), 'sans proposition venue de l\'EDT : l\'attente ne dit que le nom du site, l\'heure et la date (relance F1) — jamais le repli « première classe du niveau »', att || '—');
-    absent('T5', 'la classe attendue au tableau distant : `dr_proposer()` y rend ' + JSON.stringify(prop) + ' (pas de chapitre ouvert ni d\'EDT chargé dans la page tableau) — à la conscience'); }
+  verif('T5', !!att && /Classe attendue : 3E Charles de Gaulle · 08:57 – 09:52/.test(att), 'à 08:50 (`?n=3e`) : la classe attendue, lue dans la grille en lecture seule (réveil n°3)', att || '—');
   // le pilote publie : on recopie sa scène, son pointeur et sa copie dans le faux hub du distant (deux contextes ne partagent pas la mémoire — audit I2)
   const relais = async h => tb.evaluate(h => { window.__hubPoser('/site/cours_actif', h.c); window.__hubPoser(h.b + '/ecrans', h.ecrans); window.__hubPoser(h.b + '/scene', h.scene); }, h);
   await tb.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await relais(h0); const t0r = Date.now(); let vu = null;
@@ -241,6 +238,28 @@ await CAS('T10', 'le distant sans copie jouée lisible garde l\'attente', async 
   await tb.evaluate(({ b, t }) => { window.__hubPoser('/site/cours_actif', { niveau: '3e', chapitre: 0, seance: 0, classeSlug: '3E Charles de Gaulle', classeNom: '3E Charles de Gaulle', ts: t }); window.__hubPoser(b + '/scene', { si: 0, di: 0, eid: 'inconnu', nDev: 2, lum: [], ecr: [], reps: {}, ts: t + 10, origine: 'x', trameMaj: 0 }); }, { b, t });
   await tb.waitForTimeout(4000); const vis = await tb.evaluate(() => { const a = document.getElementById('ses-tab-att'); return !!(a && a.offsetParent !== null); }); await cap(tb, 'T10-sans-copie');
   verif('T10', vis, 'l\'écran d\'attente reste affiché (pas de page blanche)', String(vis)); verif('T10', !errs2.length, 'aucune erreur JS', errs2.join(' ; ') || undefined); await ctx2.close(); });
+
+// T11 — la classe attendue suit le niveau de la page ; sans grille, rien (réveil n°3).
+await CAS('T11', 'l\'attente : le niveau de la page, et rien sans grille', async () => {
+  if (!SITE) { absent('T11', 'se joue sur le site'); return; }
+  for (const cas of [{ q: '?vue=tableau&n=5e', st: s => s, attendu: v => !/Classe/.test(v), dit: 'niveau 5e : aucune heure de 5e ce matin → pas de classe attendue' }, { q: '?vue=tableau&n=3e', st: s => { delete s.site.edt.grille; return s; }, attendu: v => !/Classe/.test(v), dit: 'sans grille au hub : rien d\'autre que le nom du site, la date, l\'heure' }, { q: '?vue=tableau&n=3e', st: s => s, h: '2026-09-14T10:30:00+02:00', attendu: v => /Classe attendue : 3E Charles de Gaulle · 13:00|Classe attendue : .* · \d\d:\d\d/.test(v) || !/08:57/.test(v), dit: 'à 10:30, l\'heure de 08:57 est passée : elle n\'est plus attendue' }]) {
+    const c = await nav.newContext({ timezoneId: 'Europe/Paris' }); await c.route(u => !String(u).startsWith('file:'), r => r.abort()); const t = await c.newPage(); await t.clock.setFixedTime(new Date(cas.h || '2026-09-14T08:50:00+02:00')); await t.addInitScript(fauxHub, cas.st(hubStore()));
+    await t.goto(URL0 + cas.q); await t.waitForTimeout(2500); const v = await t.evaluate(() => document.getElementById('ses-tab-att').innerText.replace(/\s+/g, ' ')); verif('T11', cas.attendu(v), cas.dit, v); await c.close(); } });
+
+// T12 — rien ne part au hub depuis la Relecture ; le témoin « tableau en Win K » seulement si la fenêtre est ouverte (réveil n°3, (a) et (b)).
+await CAS('T12', 'la Relecture n\'écrit pas la scène ; le témoin ne ment pas', async () => {
+  if (!SITE) { absent('T12', 'se joue sur le site'); return; }
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 2); await pg.waitForTimeout(600);
+  await pg.click('#btableau'); await pg.waitForTimeout(500); const t0 = await pg.evaluate(() => (document.getElementById('vue-temoin') || {}).textContent || '');
+  verif('T12', !/Win K|connecté/.test(t0), '« ⧉ Tableau » sans fenêtre ouverte : aucun support annoncé', `« ${t0.trim()} »`);
+  const fen = await ouvrirTableau(pg); await pg.waitForTimeout(400); const t1 = await pg.evaluate(() => (document.getElementById('vue-temoin') || {}).textContent || '');
+  verif('T12', /tableau en Win K/.test(t1), 'fenêtre ouverte : « tableau en Win K »', `« ${t1.trim()} »`);
+  const n0 = await pg.evaluate(() => window.__ECR.filter(e => /\/scene$/.test(e)).length);
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="relecture"]'); if (b) b.click(); }); await pg.waitForTimeout(800);
+  await pg.evaluate(() => { try { S.taille = 2; dr_tout(); } catch (e) {} }); await pg.waitForTimeout(900);
+  const n1 = await pg.evaluate(() => window.__ECR.filter(e => /\/scene$/.test(e)).length);
+  verif('T12', n1 === n0, 'dans la Relecture, un redessin du socle n\'écrit aucune scène au hub', `${n1 - n0} écriture(s) de la scène`);
+  await fen.close(); await fin('T12', o); });
 
 dire(''); dire(`banc E3 : ${nb} vérifications, ${echecs} échec(s)` + (echecs ? ' — ROUGE' : ' — VERT'));
 if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }

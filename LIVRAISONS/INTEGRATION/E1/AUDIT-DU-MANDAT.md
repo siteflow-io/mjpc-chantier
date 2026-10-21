@@ -117,6 +117,24 @@ Verdict d'ensemble : **faux sur quatre plages** (récit, schémas, raccourcis/ho
 
 ## 6 · LA RELECTURE DES 157 FONCTIONS DE `deroule97` — complément de la table B
 
-*(en cours au moment de cette première poussée ; poussée dans la suivante, section 6 de ce fichier)*
+*Relues une à une (une ligne par fonction : ce qu'elle fait, le geste visible, repris ou non) : **`E1/AUDIT-157-deroule97.md`**, section 1 (157 lignes). Faite par un relecteur que j'ai lancé sur `deroule97`, la maquette et la table B ; j'ai vérifié par sondage (R13 : 0 occurrence de « gras », `bold`, `bgras` dans la maquette ; R17 : aucun gestionnaire Ctrl+V/C/X).*
+
+**Neuf gestes qui marchaient, absents de la maquette ET de la table B — à ajouter (R13-R21)** :
+
+| | le geste | où dans `deroule97` | territoire |
+|---|---|---|---|
+| **R13** | **G et S** (gras, souligné) à la souris — la table A les dit « repris » : **faux**, la maquette n'a que la couleur « A » et le surligneur ; et `ecrireDansDiapo` enregistre `textContent` : un gras serait perdu | `forme` (L2004), boutons L409 | E1 |
+| **R14** | **la fiche ouverte se pilote comme une diapo** : ▶ la dévoile bloc à bloc, ✍🏻 sur un paragraphe, annotée par la classe dans une couche à part (`ANNOT`), « tu la prépares — la classe ne la voit pas encore » | `rendre` 677-699, `elems` 1470, `marqueFiche`, `lire` 1434, `corpsFiche`, `envoie` 2633 | E3 (tableau), E1 (le rendu commun) |
+| **R15** | **le récit cite le surligné et le recopié** (« où on a surligné « … » », « On a recopié dans le cahier : … ») | `citations` 1204, `lisible` 1197, `majVues` 1297-1303 | E4 |
+| **R16** | **le Papier = le récit + toutes les fiches annotées, « à coller dans le cahier »**, en A4 | `majVues` 1387-1406 | E4 |
+| **R17** | **Ctrl/Cmd+V colle les blocs copiés** (le menu affiche « Ctrl + C », « Ctrl + X » sans aucun gestionnaire clavier) | keydown 2448-2453 | E1 |
+| **R18** | **Ctrl+H bascule** : sur un passage surligné, il retire le surlignage | `forme` 2007, `dansSurligne` | E1 |
+| **R19** | **⌫ (retour arrière) = ◀ replier** au pilotage | keydown 2463 | E2 |
+| **R20** | **les raccourcis avec Cmd (Mac)** : Z, C, X, V, B, U, H | keydown 2442-2457 | E1 |
+| **R21** | **changer l'adresse d'une image posée** (le lien suit la frappe) et « image absente de mjpc-medias · ref » au pilote | `reglages` 1642, `setRef` 1681, `urlMedia`, `html` 618 | E1 |
+
+**Ce qui est faux ou imprécis dans la table B existante** (détail : section 3 du fichier joint) : **R6** cite `touche` (qui ne gère qu'Entrée/Échap sur une marque, L1819) — Ctrl+B/U sont dans le keydown L2454-2456 ; **R3** : le « Chrono au tableau » de la maquette est un bandeau figé « ⏱ 07:00 », pas l'heure écoulée ; **R11** : `zoom` est la réglette de taille du texte, **reprise** (le curseur « texte au tableau ») — seule la réabsorption des suites tombe ; **R7** : le compteur dévoilés/total existe aussi dans le moteur (`rendre`, L753-769) ; **R5** oublie `selCoupe`, `selCopie2`, Ctrl+C/X ; **R1** range `prendreImage` (importer une image du disque) parmi les marques et ne nomme pas déplacer/redimensionner une marque ; **attention** : dans l'atelier de la maquette, **Suppr supprime la diapo entière** — la même touche supprimait une marque ou une sélection dans l'ancien : deux sens pour une touche ; **R7-R11** citent des fonctions du pont, pas de `deroule97`.
+
+**Ce que je prends (E1)** : R1, R2, R4, R5, R6 (mandat point 17) **et R13, R17, R18, R20, R21**, plus la couche commune de R14 ; à E2 : R19 ; à E3 : R14 au tableau ; à E4 : R15, R16. La conscience confirme l'attribution.
 
 MEMO

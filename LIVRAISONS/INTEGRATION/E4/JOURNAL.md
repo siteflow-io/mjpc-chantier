@@ -298,3 +298,20 @@
 - **Bancs :**
   - Mon banc : **104 ok · 0 échec** (`sorties/1643-site-E4`).
   - banc.sh : **VERT** (`sorties/1648`), avec E2 `bb5f52e5`.
+
+## Poussée 38 — 17:12 UTC
+- **Réveil n°6 lu.**
+  - La passe complète est **finie sur `28a0375f`** : les 84 lignes sont revérifiées.
+    - Lignes de l'heure de classe : 26 réglées, 27 pas réglées, 3 non rejouables.
+    - Lignes de l'atelier et de la relecture : 15 réglées, 13 pas réglées.
+    - Chaque ligne porte son verdict, le commit joué et sa preuve. Les captures citées sont dans `relecteurs/passe-1700/`.
+  - Je la reprends sur la tête pour les lignes 110 et 129 et pour les « pas réglé » touchés depuis par E1 et E2.
+- **Une régression de ma poussée 34 (16:07), trouvée par la passe (ligne 20 de p2)** : après clôture et rechargement, le récit perdait les légendes, les questions et les étapes. Les écrans de la classe relus au hub sont au modèle du site (`q`, `reps`, `etapes`, `legende`) ; je les relis maintenant par `dr_preparer`. Garde B3 : la copie relue fait le même récit que la trame.
+- **À moi (réveil n°6), soldé :**
+  - ligne 127 : le Cadre se trace en glissant ; le clic droit sur une marque ouvre son menu ;
+  - ligne 124 : une entrée qui porte sa diapo va sous sa diapo (`dr_passePlace`, 16:38) ;
+  - ligne 118 : « sur 0 » (16:43) ;
+  - ligne 113 : le récit ne lit que l'heure ; la passe la dit réglée.
+- **Reste ligne 118** : l'heure 3 après un rechargement, et « 0 diapo modifiée ».
+- La NOTE a sa ligne R1-R6 : tout est fait.
+- Bancs : mon banc **107 ok · 0 échec** (`sorties/1707-site-E4`) ; banc.sh **VERT** (`sorties/1712`).

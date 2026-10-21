@@ -461,3 +461,6 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 #dr-corr-pop .dr-corr-q{font-size:.85rem;opacity:.8;margin-bottom:8px}
 #dr-corr-pop select{width:100%;margin-bottom:10px}
 #dr-corr-pop .dr-corr-a{display:flex;gap:8px;justify-content:flex-end}
+/* E4 · le menu d'une marque (clic droit, relecteur continu B4) */
+#dr-mk-menu{position:fixed;z-index:9000;display:none;flex-direction:column;gap:6px;background:#191411;border:1px solid var(--bord,#3a3129);border-radius:8px;padding:8px;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+#dr-mk-menu.on{display:flex}

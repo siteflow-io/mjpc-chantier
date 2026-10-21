@@ -18399,7 +18399,7 @@ function dr_scene(et){
   let eid = sc.eid; try { if (!eid && typeof eidDe === 'function') eid = eidDe(sc.di); } catch (e) {}
   sc.eid = eid || null;
   sc.origine = (typeof SES === 'object' && SES) ? SES.id : 'pilote';
-  sc.ts = Date.now();
+  sc.ts = Math.max(Date.now(), (DR_TAB.dernierTs || 0) + 1); DR_TAB.dernierTs = sc.ts;   /* toujours croissant : deux scènes dans la même milliseconde (ou une horloge figée) restent ordonnées */
   sc.trameMaj = DR_TAB.trameMaj || 0;
   return sc;
 }
@@ -18471,6 +18471,9 @@ function dr_tabPoserEcran(et, ecran){
 /* la page tableau : on cache le site, on pose l'attente, le mur et le témoin « interrompu » */
 function dr_tabPoser(){
   if (document.getElementById('ses-tab')) return;
+  /* le gabarit du pilotage (#dr-zone, garé dans <body> par dr-gabarit.js) n'a rien à faire dans la page tableau : vidé, il n'y laisse
+     ni #mur ni #volet (les contrôles lisent `#mur` d'abord, audit I3). Provisoire : demandé à E1 de ne pas le poser en page tableau. */
+  try { const z = document.getElementById('dr-zone'); if (z) z.innerHTML = ''; } catch (e) {}
   const z = document.createElement('div'); z.id = 'ses-tab'; z.className = 'ses-tab';
   z.innerHTML = '<div class="ses-tab-attente" id="ses-tab-att">'
     + '<div class="n">monsieurjaipascompris</div><div class="h" id="ses-tab-h">--:--</div>'
@@ -18491,6 +18494,9 @@ function dr_tabPoser(){
   horloge(); setInterval(horloge, 1000);
   window.addEventListener('resize', () => { if (DR_TAB.montre) dr_rendreMur(DR_TAB.montre); });
 }
+
+/* la ligne du bas de l'attente : « Aucun cours en cours » ou la classe du cours trouvé (appelée par `sesTabChercherCours`, `sesTabVeillePointeur`) */
+function dr_tabDireClasse(t){ const el = document.getElementById('ses-tab-c'); if (el) el.textContent = t || ''; }
 
 /* la fenêtre locale : elle reçoit l'état du pilote par `postMessage` et ne lit jamais le hub */
 function dr_tabRecevoir(ev){
@@ -19713,7 +19719,7 @@ atVuesRappeler();
    La fenêtre tableau LOCALE (Win+K) ne change pas d'un octet.
    ═══════════════════════════════════════════════════════════════════════════ */
 var SES={ id:'ap_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7),
-  mode:(location.search.match(/[?&]vue=(tableau|tel)/)||[])[1]||null,
+  mode:(location.search.match(/[?&]vue=(tableau)/)||[])[1]||null,   /* [E3] le téléphone tombe */
   actif:false, base:'', ctx:null, ts:0, trameMaj:0, partMaj:0,
   applique:false, emT:null, pollT:null, okDepuis:0, perduDepuis:0, gelePhoto:null,
   /* [LOT E] LE CRAN DE ZOOM EST UN ÉTAT DE SESSION, PAS UN ÉTAT D'APPAREIL.
@@ -19838,106 +19844,6 @@ function sesBrancherPilote(reprise){
 /* la PHOTO DE SCÈNE : l'équivalent exact d'envoie() côté données — c'est ELLE qui
    décide ce que voit le tableau. Gel : la photo n'est plus renouvelée, seul le
    drapeau part (le tableau garde son image, les pilotes naviguent librement). */
-function sesPhoto(){
-  var W=drWin(); if(!W||typeof W.i!=='number')return null;
-  if(W.gele && SES.gelePhoto){ var p=Object.assign({},SES.gelePhoto); p.gele=true; return p; }
-  var n=W.i, e=W.ECRANS&&W.ECRANS[n]; if(!e)return null;
-  var vues={}; (e.blocs||[]).forEach(function(b,j){ if(b&&b.vues!==undefined)vues[j]=b.vues|0; });
-  var jf=W.ficheOuverte&&W.ficheOuverte[0]===n?W.ficheOuverte[1]:null;
-  var ficheMontree=(jf!==null)&&(e.suite||jf<((e.rev===undefined?0:e.rev)-1));
-  var chr={visible:false,txt:''};
-  try{ var D=W.document, on=D.getElementById('bmon').classList.contains('on');
-       chr={visible:on, txt:D.getElementById('cmin').value+':'+D.getElementById('csec').value}; }catch(e2){}
-  var qui=null;
-  if(W.quiOn){
-    var ont=(W.ELEVES||[]).map(function(x){return {p:(W.PRENOMS&&W.PRENOMS[x])||x, n:(W.histoire(x)||[]).length};})
-                          .filter(function(o){return o.n>0;});
-    qui={total:(W.ELEVES||[]).length, ont:ont};
-  }
-  /* [LOT C2 \u2462.5] LA SC\u00c8NE CIRCULE ENTRE TROIS APPAREILS \u2014 elle transporte d\u00e9sormais
-     l'IDENTIT\u00c9 du p\u00e8re, plus le num\u00e9ro du morceau quand le pilote est scind\u00e9. Le rang
-     reste \u00e9mis pour le repli (appareil sur une trame non identifi\u00e9e), mais l'identit\u00e9
-     fait foi : le pilote peut avoir 13 \u00e9crans et le tableau 11, les trois d\u00e9signent le
-     m\u00eame. C'est le point le plus \u00e0 risque du lot, donc le dernier bascul\u00e9. */
-  var _vp=null; try{ if(e.suite)_vp=_drVuePere(W,n); }catch(e8){}   /* [LOT C3a ④] */
-  /* [LOT E] LE CRAN VOYAGE. La réglette locale fait foi dès qu'elle bouge ; sinon
-     on réémet le cran de session (adopté d'un autre appareil). Les proportions ne
-     s'émettent que si on a un écran de contrôle à mesurer. */
-  /* [LOT F ①] le dévoilement émis est celui du GROUPE ENTIER quand l'écran en a un.
-     [LOT F ②] `pos` DIT si l'appareil a une position : vrai quand son cadre a une
-     taille réelle, donc qu'il découpe comme le mur découpera. Le téléphone (cadre
-     0×0, jamais scindé) émet `pos:false` — le mur choisira alors par dévoilement.
-     C'est déclaré, pas déduit. */
-  var _vg=_drVueGroupe(W,n);
-  var _cl=(W.iz|0);
-  if(SES.mode!=='tel' && SES.izVu!==_cl){ SES.izVu=_cl; SES.cran=_cl; }
-  if(SES.cran===null||SES.cran===undefined)SES.cran=_cl;
-  var _rl=_drRatioEcran(W); if(_rl)SES.ratio=_rl;
-  var _lg=_drLargeurEcran(W); if(_lg)SES.largeur=_lg;
-  var p2={ecran:n, eid:_drEidDuRang(n,W.ECRANS)||null, morceau:(e.suite||0),
-          iz:(SES.cran|0), ratio:(SES.ratio||null), pos:!!_rl, bw:(SES.largeur||null),
-          rev:(_vg?_vg.rev:(_vp?_vp.rev:(e.rev===undefined?(e.suite?2:0):e.rev))),
-          vues:(_vg?_vg.vues:(_vp?_vp.vues:vues)), gele:!!W.gele,
-          fiche:ficheMontree?[n,(_vp?(_vp.off+jf):jf)]:null, ficheEid:(ficheMontree?(_drEidDuRang(n,W.ECRANS)||null):null),
-          chrono:chr, quiOn:!!W.quiOn, qui:qui,
-          trameMaj:SES.trameMaj, origine:SES.id, ts:Date.now()};
-  SES.gelePhoto=p2;
-  return p2;
-}
-function sesEmettre(vite){
-  if(!SES.actif||SES.applique||AT_DR_REGIME!=='classe')return;
-  clearTimeout(SES.emT);
-  SES.emT=setTimeout(function(){
-    var p=sesPhoto(); if(!p)return;
-    SES.ts=p.ts;
-    sesPut(sesChemins(SES.ctx).scene,p).then(function(ok){ sesBandeauEtat(ok); });
-  },vite?0:250);
-}
-function sesPartEmettre(){
-  var W=drWin(); if(!W||!SES.actif)return;
-  SES.partMaj=Date.now();
-  /* [LOT C2 \u2462.4] le moteur \u00e9crit `ecran:i` (un RANG) dans la participation \u2014 il n'est
-     pas touch\u00e9. L'identit\u00e9 voyage donc avec, pos\u00e9e \u00c0 L'\u00c9CRITURE, et toujours celle du
-     P\u00c8RE : une prise de parole pendant un zoom appartient \u00e0 l'activit\u00e9, pas au morceau
-     qui mourra au d\u00e9zoom. */
-  var _part={};
-  try{
-    Object.keys(W.PARTICIPATION||{}).forEach(function(ini){
-      _part[ini]=(W.PARTICIPATION[ini]||[]).map(function(o){
-        var c=Object.assign({},o);
-        if(c&&c.ecran!==undefined&&c.ecran!==null){ var id=_drEidDuRang(+c.ecran,W.ECRANS); if(id)c.eid=id; }
-        return c;
-      });
-    });
-  }catch(e){ _part=W.PARTICIPATION||{}; }
-  sesPut(sesChemins(SES.ctx).part,{participation:_part,maj:SES.partMaj,origine:SES.id});
-  sesEmettre();   /* l'agrégat « qui » suit, si la modale est ouverte */
-}
-function sesPollPilote(){
-  if(!SES.actif||!SES.ctx)return;
-  var ch=sesChemins(SES.ctx);
-  sesGet(ch.scene,function(o){
-    if(!o){ sesBandeauEtat(false,true); return; }
-    sesBandeauEtat(true);
-    if(o.origine===SES.id||!(o.ts>SES.ts))return;
-    SES.ts=o.ts;
-    var fini=function(){ sesAppliquer(o); };
-    if(o.trameMaj&&o.trameMaj>SES.trameMaj){
-      SES.trameMaj=o.trameMaj;
-      sesGet(ch.ecrans,function(ecr){ if(Array.isArray(ecr)){ var W=drWin();
-        if(W){ SES.applique=true; try{ W.ECRANS=_drNormaliserTrame(ecr); W.__pontCharge=true; }catch(e){} SES.applique=false; } }   /* [LOT A ①] */
-        fini(); });
-    } else fini();
-  });
-  if(SES._partVu===undefined)SES._partVu=0;
-  sesGet(sesChemins(SES.ctx).part,function(p){
-    if(p&&p.maj&&p.maj>SES._partVu&&p.origine!==SES.id){
-      SES._partVu=p.maj; var W=drWin();
-      if(W){ W.PARTICIPATION=p.participation||{}; try{W.peintQui&&W.peintQui();}catch(e){} }
-      if(SES.mode==='tel')sesTelPeindre();
-    } else if(p&&p.maj)SES._partVu=Math.max(SES._partVu,p.maj);
-  });
-}
 /* [LOT C2 \u2462.5] la r\u00e9solution locale : chaque appareil traduit l'identit\u00e9 re\u00e7ue en
    SON propre rang. \u00c0 d\u00e9faut d'identit\u00e9 (\u00e9metteur ant\u00e9rieur au lot), le rang re\u00e7u sert
    de repli \u2014 exactement le comportement d'avant, jamais pire. */
@@ -20017,11 +19923,13 @@ function sesAppliquer(o){
 }
 /* le bandeau du pilote : l'état de la session, sobre, dans la tête du déroulé */
 function sesBandeau(){
+  /* [E3] la tête du déroulé (`#at-dr-tete`) tombe avec l'ancien moteur : le bandeau ne se pose que si elle existe.
+     « Ouvrir la vue tableau » → la fenêtre unique ; « 📱 Téléphone » tombe (cadrage 1 §13). */
   var t=document.getElementById('at-dr-tete'); if(!t||document.getElementById('ses-etat'))return;
   t.insertAdjacentHTML('beforeend',
     '<span class="ses-etat" id="ses-etat" title="Session multi-appareils">\u25cf session</span>'
-   +'<button class="at-btn ses-tab-btn" onclick="sesOuvrirTableau()" title="Ouvre la vue tableau dans une NOUVELLE FEN\u00caTRE (pas un onglet), \u00e0 glisser sur l\u2019\u00e9cran qui projette. Windows+P en mode \u00ab \u00c9tendre \u00bb, puis F11 pour le plein \u00e9cran. Cette vue n\u2019affiche que le tableau : le pilotage ne peut jamais \u00eatre projet\u00e9 par erreur.">\ud83d\udcfa Ouvrir la vue tableau</button>'   /* [LOT B \u2461] */
-   +'<button class="at-btn ses-qr-btn" onclick="sesQROuvrir()">\ud83d\udcf1 T\u00e9l\u00e9phone</button>');
+   +'<button class="at-btn ses-tab-btn" onclick="sesOuvrirTableau()" title="'+DR_TAB_BULLE+'">\u29c9 Ouvrir le tableau</button>'
+   +'<button class="at-btn ses-qr-btn" onclick="sesQROuvrir()" title="Montre l\u2019adresse du tableau en QR, pour l\u2019ouvrir sur l\u2019ordinateur de la classe ou une tablette : il suivra le cours tout seul, en lecture seule.">QR du tableau</button>');
 }
 function sesBandeauEtat(ok,muet){
   var s=document.getElementById('ses-etat'); if(!s)return;
@@ -20038,34 +19946,22 @@ function sesBandeauEtat(ok,muet){
    NOUVELLE FEN\u00caTRE, dimensionn\u00e9e, sans barres, \u00e0 glisser sur l'\u00e9cran qui projette ;
    elle se rattache seule d\u00e8s qu'un cours est lanc\u00e9. L'ancienne adresse continue de
    fonctionner \u2014 un favori d\u00e9j\u00e0 pos\u00e9 n'est pas cass\u00e9. */
-function sesOuvrirTableau(){
-  var w=Math.min(1280,screen.width), h=Math.min(800,screen.height);
-  var url=window.location.pathname+'?vue=tableau';
-  var f=window.open(url,'TableauMJPC',
-    'width='+w+',height='+h+',toolbar=no,menubar=no,location=no,status=no,scrollbars=yes,resizable=yes');
-  if(!f){ atInfo('La fen\u00eatre n\u2019a pas pu s\u2019ouvrir \u2014 autorise les fen\u00eatres pop-up pour ce site, ou ouvre l\u2019adresse \u00ab ?vue=tableau \u00bb sur l\u2019ordinateur de la classe.'); return; }
-  try{ f.focus(); }catch(e){}
-}
+function sesOuvrirTableau(){ return dr_ouvrirTableau(); }   /* [E3] une seule fenêtre : la page elle-même, ?vue=tableau&local=1 (dr-tableau.js) */
 function sesQROuvrir(){
-  var nonce='qr_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
-  var url=window.location.origin+window.location.pathname+'?vue=tel&qr='+nonce;
+  /* [E3] l'adresse du TABLEAU distant (le téléphone tombe) ; plus de fermeture au scan : la page tableau n'écrit
+     jamais (`/qrScans` restait vide) et l'effacement était un fetch direct (audit F5). On ferme par ✕ ou à côté. */
+  var url=window.location.origin+window.location.pathname+'?vue=tableau';
   var img='https://api.qrserver.com/v1/create-qr-code/?size=280x280&margin=10&data='+encodeURIComponent(url);
   var d=document.createElement('div'); d.className='ses-qr-fond'; d.id='ses-qr';
-  d.innerHTML='<div class="ses-qr-boite"><button class="ses-qr-x" onclick="sesQRFermer()">\u2715</button>'
-    +'<h3>\ud83d\udcf1 Le t\u00e9l\u00e9phone rejoint le cours</h3>'
-    +'<p>Scanne avec ton t\u00e9l\u00e9phone. La fen\u00eatre se ferme toute seule.</p>'
+  d.innerHTML='<div class="ses-qr-boite"><button class="ses-qr-x" onclick="sesQRFermer()" title="Ferme cette fenêtre">\u2715</button>'
+    +'<h3>\u29c9 Le tableau sur un autre appareil</h3>'
+    +'<p>Scanne avec l\u2019appareil branché au vidéoprojecteur (ou ouvre l\u2019adresse dans Chrome) : il attend le cours, puis suit ce que voit la classe. Il n\u2019écrit jamais rien.</p>'
     +'<img src="'+img+'" alt="QR" width="280" height="280">'
     +'<div class="ses-qr-url">'+url+'</div></div>';
   d.addEventListener('click',function(ev){ if(ev.target===d)sesQRFermer(); });
   document.body.appendChild(d);
-  SES._qrNonce=nonce;
-  SES._qrT=setInterval(function(){
-    sesGet(FIREBASE_BASE+'/qrScans/'+nonce+'.json',function(v){
-      if(v){ sesQRFermer(); fetch(FIREBASE_BASE+'/qrScans/'+nonce+'.json',{method:'DELETE'}).catch(function(){}); }
-    });
-  },1000);
 }
-function sesQRFermer(){ clearInterval(SES._qrT); var d=document.getElementById('ses-qr'); if(d)d.remove(); }
+function sesQRFermer(){ var d=document.getElementById('ses-qr'); if(d)d.remove(); }
 
 /* ═══ LA REPRISE — « un cours est en cours » sur tout appareil du professeur ═══ */
 /* [LOT C3a \u2461] LA BANNI\u00c8RE V\u00c9RIFIE \u00c0 CHAQUE PASSAGE, et DISPARA\u00ceT D'ELLE-M\u00caME d\u00e8s que
@@ -20134,25 +20030,10 @@ function sesReprendre(){
 
 /* ═══ LA VUE TABLEAU (?vue=tableau) — un terminal muet : elle PEINT, elle n'écrit JAMAIS ═══ */
 function sesBootTableau(){
+  /* [E3] la page tableau : la garde lecture seule (plus haut) est déjà posée. Le rendu n'est plus l'ancien moteur dans une
+     toile : c'est `rendre` du socle dans #mur2 (dr-tableau.js). `&local=1` : la fenêtre du pilote, qui reçoit l'état par postMessage. */
   document.title='Tableau \u2014 MJPC';
-  var z=document.createElement('div'); z.id='ses-tab'; z.className='ses-tab';
-  z.innerHTML='<div class="ses-tab-attente" id="ses-tab-att">'
-    +'<div class="n">monsieurjaipascompris</div><div class="h" id="ses-tab-h">--:--</div>'
-    +'<div class="d" id="ses-tab-d"></div><div class="c" id="ses-tab-c">Aucun cours en cours</div></div>'
-    +'<iframe id="ses-tab-toile" class="ses-tab-toile"></iframe>'
-    +'<div class="ses-tab-perdu" id="ses-tab-perdu"></div>';
-  document.addEventListener('DOMContentLoaded',function(){
-    [].slice.call(document.body.children).forEach(function(el){ el.style.display='none'; });
-    document.body.appendChild(z); document.body.classList.add('ses-corps-tab');
-    setInterval(function(){
-      var d=new Date(),J=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'],
-          M=['janvier','f\u00e9vrier','mars','avril','mai','juin','juillet','ao\u00fbt','septembre','octobre','novembre','d\u00e9cembre'];
-      var h=document.getElementById('ses-tab-h'),dd=document.getElementById('ses-tab-d');
-      if(h)h.textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
-      if(dd)dd.textContent=J[d.getDay()]+' '+d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear();
-    },1000);
-    sesTabChercherCours();
-  });
+  document.addEventListener('DOMContentLoaded',function(){ dr_tabDemarrer(); });
 }
 /* ═══ [LOT B \u2462] LE TABLEAU SURVIT \u2014 il TIENT, puis il REPREND ═══
    La demande de Paul (v\u00e9rifi\u00e9e, et longtemps prise \u00e0 l'envers) : \u00ab que le tableau
@@ -20168,50 +20049,25 @@ function sesTabVeillePointeur(){
   sesGet(FIREBASE_BASE+'/site/cours_actif.json',function(c){
     if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000)return;   /* plus de cours : l'image RESTE */
     var cle=sesTabCle(c);
-    if(!cle||cle===SES.tabPointeur)return;                /* m\u00eame cours : rien \u00e0 faire */
-    SES.tabPointeur=cle; SES.ctx=c; SES._tabTs=0; SES._tabTrame=0;
-    var n=document.getElementById('ses-tab-c'); if(n)n.textContent=(c.classeNom||c.classeSlug||'');
-    try{ var W=drWin(); if(W){ W.META=W.META||{}; W.META.classe=c.classeNom||''; } }catch(e){}
-    sesTabPoll();                                          /* le nouveau cours prend la main */
+    if(!cle||cle===SES.tabPointeur)return;                /* même cours : rien à faire */
+    SES.tabPointeur=cle; SES.ctx=c;
+    dr_tabDireClasse(c.classeNom||c.classeSlug||'');     /* [E3] l'attente est posée par dr-tableau.js : ses ids y vivent */
+    dr_tabMonter();                                        /* [E3] le nouveau cours prend la main : sa copie, puis sa scène */
   });
 }
 function sesTabChercherCours(){
   var t=setInterval(function(){
     sesGet(FIREBASE_BASE+'/site/cours_actif.json',function(c){
       if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000){
-        var el=document.getElementById('ses-tab-c'); if(el)el.textContent='Aucun cours en cours';
+        dr_tabDireClasse('Aucun cours en cours');
         return;
       }
       clearInterval(t);
       SES.ctx=c; SES.tabPointeur=sesTabCle(c);
-      var el=document.getElementById('ses-tab-c');
-      if(el)el.textContent=[c.classeNom,''].filter(Boolean).join(' \u00b7 ');
-      sesTabMonter();
+      dr_tabDireClasse(c.classeNom||c.classeSlug||'');
+      dr_tabMonter();                                      /* [E3] au lieu de sesTabMonter (l'ancien moteur) */
     });
   },2000);
-}
-function sesTabMonter(){
-  _drAssurerCadre();          /* l'iframe moteur du site, cachée — intégrité vérifiée par le pont */
-  _drQuandPret(function(){
-    var W=drWin(); if(!W)return;
-    /* le stub : window.open du moteur rend NOTRE toile — le moteur écrit son tableau dedans */
-    var toile=document.getElementById('ses-tab-toile');
-    var faux={ closed:false, focus:function(){}, innerHeight:toile.clientHeight||800,
-               setInterval:function(f,ms){ return window.setInterval(f,ms); },
-               get document(){ return toile.contentDocument; } };
-    W.open=function(){ return faux; };
-    try{ W.META=W.META||{}; W.META.classe=SES.ctx.classeNom||''; }catch(e){}
-    var ch=sesChemins(SES.ctx);
-    sesGet(ch.ecrans,function(ecr){
-      if(Array.isArray(ecr)&&ecr.length){ try{ W.ECRANS=_drNormaliserTrame(ecr); W.__pontCharge=true; W.i=0; }catch(e){} }   /* [LOT A ①] */
-      try{ _sesTabBoite(SES.ratio); }catch(e){}   /* [LOT E] la boîte avant la première peinture */
-      try{ W.tableau(); }catch(e){}
-      document.getElementById('ses-tab-att').style.display='none';
-      SES._tabTrame=0; SES._tabTs=0;
-      setInterval(sesTabPoll,900);
-      setInterval(sesTabVeillePointeur,3000);   /* [LOT B \u2462] la reprise, sans jamais se vider */
-    });
-  });
 }
 /* ═══ [LOT E] LE MUR SE DÉCOUPE LUI-MÊME ═══════════════════════════════════════
    À QUOI ÇA SERT EN CLASSE : l'élève du fond lit au cran que le professeur choisit,
@@ -20226,38 +20082,6 @@ function sesTabMonter(){
    embarque déjà. Mesuré : à boîte homothétique et cran égal, la découpe est
    IDENTIQUE à celle du pilote, aux quatre crans essayés. La scène reste une
    position et un état — jamais un fragment : la doctrine tient. ═════════════════ */
-function _sesTabBoite(r){
-  var z=document.getElementById('ses-tab'), toile=document.getElementById('ses-tab-toile'),
-      f=document.getElementById('at-dr-iframe');
-  if(!toile)return null;
-  var LW=(z&&z.clientWidth)||window.innerWidth||1360,
-      LH=(z&&z.clientHeight)||window.innerHeight||768;
-  var rr=(+r>0)?+r:(LW/LH);
-  var h=LH, w=Math.round(h*rr);
-  if(w>LW){ w=LW; h=Math.round(w/rr); }        /* on CONTIENT : bandes plutôt que déformation */
-  var g=Math.round((LW-w)/2), t=Math.round((LH-h)/2);
-  var cle=w+'x'+h+'/'+(SES.largeur?(SES.largeur.w+'x'+SES.largeur.h):0);
-  if(SES.boiteVue===cle)return {w:w,h:h,change:false};
-  SES.boiteVue=cle;
-  /* la toile prend les proportions du pilote : le moteur y peint `100vh` sans
-     déformer, et `cale()` calcule sa police sur CETTE hauteur */
-  toile.style.inset='auto'; toile.style.left=g+'px'; toile.style.top=t+'px';
-  toile.style.width=w+'px'; toile.style.height=h+'px';
-  /* le CADRE DE DÉCOUPE : même boîte, hors champ, invisible, hors du doigt et du
-     clavier. Il ne sert qu'à mesurer un débordement — il n'est jamais montré. */
-  /* [LOT F ②] le cadre de découpe prend la LARGEUR de l'écran de contrôle quand on
-     la connaît : découpe identique à celle du professeur, pas seulement homothétique.
-     Sans elle (téléphone seul), il prend la boîte de la toile, comme au LOT E. */
-  var _bo=SES.largeur;
-  var cw=(_bo&&+_bo.w>200)?(+_bo.w):w;
-  var ch=(_bo&&+_bo.h>120)?(+_bo.h):Math.max(40,Math.round(cw/rr));
-  if(f){ f.style.display='block'; f.style.position='fixed';
-         f.style.left='-30000px'; f.style.top='0px';
-         f.style.width=cw+'px'; f.style.height=ch+'px';
-         f.style.opacity='0'; f.style.pointerEvents='none'; f.style.zIndex='-1';
-         f.setAttribute('aria-hidden','true'); f.setAttribute('tabindex','-1'); }
-  return {w:w,h:h,change:true};
-}
 /* LE SENS QUI MANQUAIT : du dévoilement cumulé VERS le morceau. `_drVuePere` sait
    aller du morceau au père ; ici on fait le chemin inverse. Le morceau à projeter
    est le DERNIER du groupe qui a quelque chose de montré — car ce qui est gris chez
@@ -20269,293 +20093,9 @@ function _sesTabBoite(r){
    Aucun état résiduel ne survit d'un cycle à l'autre — deux états ne peuvent pas
    coexister par construction. La scission du moteur est asynchrone (cascade de
    `degorge` en setTimeout) : on attend qu'elle se taise avant de peindre. */
-function _sesTabComposer(W,o,essai){
-  var n=_sesRangLocal(o,W), e=W.ECRANS&&W.ECRANS[n];
-  if(!e){ try{ W.envoie(); }catch(x){} return; }
-  if(essai===0){
-    try{ if(W.ECRANS.some(function(x){return x&&x.suite;}))W.reabsorbe(); }catch(x){}
-    n=_sesRangLocal(o,W); e=W.ECRANS&&W.ECRANS[n];
-    if(!e)return;
-    /* [LOT E] on REMET À ZÉRO avant d'appliquer : la trame relue au hub peut porter
-       des `vues` d'un état antérieur (reprise à froid), et un bloc que la scène ne
-       mentionne pas resterait dévoilé — la classe verrait ce que le professeur a
-       replié. Rien ne survit d'un cycle à l'autre. Piège attrapé au banc 4/3. */
-    (e.blocs||[]).forEach(function(b0){ if(b0)b0.vues=0; });
-    e.rev=o.rev;
-    Object.keys(o.vues||{}).forEach(function(j){ if(e.blocs[j])e.blocs[j].vues=o.vues[j]; });
-    W.ficheOuverte=o.fiche?[n,o.fiche[1]]:null; W.ficheAnime=false;
-    W.i=n;
-    try{ W.rendre(); }catch(x){}
-  }
-  var encore=false;
-  try{ encore=!!W.enCoursDeDegorgement; }catch(x){}
-  if(encore && essai<12){ setTimeout(function(){ _sesTabComposer(W,o,essai+1); },40); return; }
-  /* [LOT F ②] LE MUR SUIT LA POSITION QUAND LA SOURCE EN A UNE.
-     « Tel quel » veut dire : la classe voit le morceau que le professeur a sous les
-     yeux. Le LOT E choisissait toujours par dévoilement — juste quand la source est
-     le téléphone (qui n'a pas de position), faux quand c'est un PC scindé, qui en a
-     une. Mesuré en phase 0 : PC sur le morceau 0 (étapes 1·2·3), mur sur le
-     morceau 1 (étape 3 seule). La source le DÉCLARE (`pos`), on ne le déduit pas. */
-  var cible=null;
-  if(o&&o.pos&&(o.morceau|0)>=0)cible=_drRangDuMorceau(W,n,(o.morceau|0));
-  if(cible===null||cible===undefined)cible=_drMorceauDuDevoilement(W,n);
-  var _cibleAvant=W.i;
-  if(W.ECRANS[cible]&&W.i!==cible){ W.i=cible;
-    if(W.ficheOuverte)W.ficheOuverte=[cible,W.ficheOuverte[1]]; }
-  /* [LOT E] LE DERNIER MORCEAU AUSSI DOIT TENIR. La cascade de `degorge` ne vérifie
-     que l'écran courant, et la garde de position du pont le ramène au père à chaque
-     tour : les morceaux SUIVANTS ne sont donc jamais re-mesurés. Au mur, le dernier
-     morceau pouvait déborder et la classe perdait la fin — mesuré au banc
-     « téléphone seul » : 822 px de contenu dans 765 px.
-     ON MESURE CE QUI EST PROJETÉ, PAS CE QUI EST COMPOSÉ. Piège payé au banc : le
-     `deborde()` du moteur mesure le CADRE, qui rend l'écran ENTIER, grisé compris ;
-     la toile, elle, ne peint que le dévoilé. Se fier au cadre faisait rescinder des
-     morceaux qui tenaient, et le mur montrait alors MOINS que la fenêtre locale
-     (151 signes contre 201, cran 5). On peint, on mesure la toile, et on ne
-     recoupe que si la classe perdrait vraiment quelque chose. */
-  /* [LOT F ②] UN SEUL GABARIT DÉCIDE : LE CADRE. Le LOT E vérifiait le rognage sur
-     la TOILE et recoupait si elle débordait — deux gabarits pour une seule décision.
-     Mesuré : la toile rend 0,848× la hauteur du cadre à contenu et proportion égaux,
-     et cette différence déclenchait UNE re-découpe de trop (compteur au banc) : le
-     professeur voyait [1·2·3], le mur projetait [1·2].
-     Maintenant que le cadre du mur a la boîte EXACTE de l'écran de contrôle (LOT F ②),
-     il suffit de le laisser décider comme le pilote décide : on se place sur le
-     morceau, on rend, et le moteur scinde de lui-même s'il le faut — exactement ce
-     qu'il fait chez le professeur. Rien ne peut dépasser au mur : la toile rend plus
-     bas que le cadre, jamais plus haut. */
-  var _bougé=(W.i!==_cibleAvant);
-  if(_bougé){ try{ W.rendre(); }catch(x){} }
-  var _enc2=false; try{ _enc2=!!W.enCoursDeDegorgement; }catch(x){}
-  if(_bougé && _enc2 && essai<10){
-    setTimeout(function(){ _sesTabComposer(W,o,essai+1); },40); return;
-  }
-  /* le filet, MESURÉ SUR LE GABARIT QUI DÉCIDE. La cascade de `degorge` ne vérifie
-     que l'écran courant — la garde de position la ramène au père à chaque tour —
-     donc un morceau suivant peut déborder. On le vérifie donc ici, dans le CADRE
-     (même gabarit, même boîte que l'écran de contrôle), jamais dans la toile :
-     mesurer dans l'un et couper d'après l'autre faisait diverger la découpe du mur
-     de celle du professeur. */
-  var _deb=false; try{ _deb=!!W.deborde(); }catch(x){}
-  if(_deb && essai<10){
-    SES.__recoupes=(SES.__recoupes|0)+1;
-    try{ W.degorge(true); }catch(x){}
-    setTimeout(function(){ _sesTabComposer(W,o,essai+1); },40); return;
-  }
-  try{ W.envoie(); }catch(x){}
-}
-function sesTabPoll(){
-  var ch=sesChemins(SES.ctx);
-  sesGet(ch.scene,function(o,err){
-    var perdu=document.getElementById('ses-tab-perdu');
-    if(!o){ if(!SES.perduDepuis)SES.perduDepuis=Date.now();
-      perdu.textContent='Pilotage interrompu \u00e0 '+new Date(SES.perduDepuis).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})+' \u2014 le tableau tient, il reprendra tout seul.';   /* [LOT B \u2462] */
-      perdu.classList.add('on'); return; }
-    SES.perduDepuis=0; perdu.classList.remove('on');
-    if(!(o.ts>SES._tabTs))return;
-    SES._tabTs=o.ts;
-    var W=drWin(); if(!W)return;
-    var applique=function(){
-      SES.applique=true;
-      try{
-        if(!o.gele){
-          /* [LOT E] LE CRAN D'ABORD : la boîte de découpe se règle sur les
-             proportions de l'écran de contrôle (ou sur la sienne quand la source
-             est le téléphone), puis le cran s'applique au moteur de la vue. */
-          /* [LOT F ②] la vue tableau a son propre chemin : elle n'appelle pas
-             `sesAppliquer`. On y adopte donc explicitement la boîte de l'émetteur
-             AVANT de tracer la sienne — sinon le cadre garde sa taille par défaut
-             et découpe 2 % plus tôt que le professeur. */
-          if(o&&o.bw)SES.largeur=o.bw;
-          if(o&&o.ratio)SES.ratio=o.ratio;
-          _sesTabBoite(o.ratio);
-          var _c=(o.iz===undefined||o.iz===null)?W.iz:(o.iz|0);
-          if(_c!==W.iz){
-            try{ if(_c<W.iz)W.reabsorbe(); }catch(e9){}   /* dézoom : on recolle avant de recomposer, comme `zoom()` du moteur */
-            W.iz=_c;
-          }
-          W.gele=false;
-          _sesTabComposer(W,o,0);   /* [LOT E] pose le dévoilement, scinde à SA boîte, va au bon morceau, peint */
-        }
-        /* le gel : on ne repeint RIEN — l'image reste, c'est le contrat d'envoie() */
-        sesTabChrono(o.chrono);
-        sesTabQui(o);
-      }catch(e3){}
-      SES.applique=false;
-    };
-    if(o.trameMaj&&o.trameMaj>SES._tabTrame){
-      SES._tabTrame=o.trameMaj;
-      sesGet(ch.ecrans,function(ecr){ if(Array.isArray(ecr)){ try{ W.ECRANS=_drNormaliserTrame(ecr); }catch(e){} } applique(); });   /* [LOT A ①] la sixième porte */
-    } else applique();
-  });
-}
-function sesTabChrono(chr){
-  try{ var D=document.getElementById('ses-tab-toile').contentDocument;
-    var c=D.getElementById('c'); if(!c)return;
-    c.style.display=(chr&&chr.visible)?'block':'none';
-    if(chr&&chr.visible)c.textContent=chr.txt;
-  }catch(e){}
-}
-function sesTabQui(o){
-  try{ var D=document.getElementById('ses-tab-toile').contentDocument;
-    var d=D.getElementById('qui');
-    if(!d){ d=D.createElement('div'); d.id='qui'; d.className='quiw'; D.body.appendChild(d); }
-    if(!o.quiOn||o.gele||!o.qui){ d.classList.remove('on'); return; }
-    var ont=o.qui.ont||[], reste=(o.qui.total||0)-ont.length;
-    d.innerHTML='<div class="quib"><div class="quit">'+ont.length+' \u00e9l\u00e8ve'+(ont.length>1?'s':'')+' sur '+(o.qui.total||0)+' ont particip\u00e9</div>'
-      +'<div class="quil">'+(ont.length?ont.map(function(x){return x.p+(x.n>1?' <i class="qn">\u00d7'+x.n+'</i>':'');}).join(' \u00b7 '):'personne pour l\u2019instant')+'</div>'
-      +(reste>0?'<div class="quir">il reste '+reste+' \u00e9l\u00e8ve'+(reste>1?'s':'')+' \u00e0 passer</div>':'')+'</div>';
-    d.classList.add('on');
-  }catch(e){}
-}
+function sesTabPoll(){ dr_tabSonder(); }   /* [E3] la scène = l'état du tableau ; rendu par dr_rendreMur (dr-tableau.js) */
 
 /* ═══ LE TÉLÉPHONE (?vue=tel) — le pilote de poche : prompteur + palette (maquettes 23/08) ═══ */
-function sesBootTel(){
-  document.title='Pilotage \u2014 MJPC';
-  document.addEventListener('DOMContentLoaded',function(){
-    [].slice.call(document.body.children).forEach(function(el){ el.style.display='none'; });
-    document.body.classList.add('ses-corps-tel');
-    var z=document.createElement('div'); z.id='ses-tel'; z.className='ses-tel';
-    z.innerHTML='<div class="ses-tel-bandeau"><span id="ses-tel-titre">Connexion au cours\u2026</span><span class="ses-tel-chr" id="ses-tel-chr"></span></div>'
-      +'<div class="ses-tel-prompteur" id="ses-tel-pr"><div class="ses-tel-vide">Le cours arrive\u2026</div></div>'
-      +'<div class="ses-tel-suivant" id="ses-tel-suiv"></div>'
-      +'<div class="ses-tel-palette" id="ses-tel-pal">'
-      +'<button class="ses-pb ses-pb-sombre" onclick="sesTelGeste(\'replie\')">\u25c0<span>replier</span></button>'
-      +'<button class="ses-pb ses-pb-sombre ses-pb-large" onclick="sesTelGeste(\'devoile\')">\u25b6<span>d\u00e9voiler</span></button>'
-      +'<button class="ses-pb ses-hors-saisie" onclick="sesTelGeste(\'prec\')">\u23ee<span>\u00e9cran pr\u00e9c.</span></button>'
-      +'<button class="ses-pb ses-hors-saisie" onclick="sesTelGeste(\'suiv\')">\u23ed<span>\u00e9cran suiv.</span></button>'
-      +'<button class="ses-pb ses-hors-saisie" id="ses-pb-gel" onclick="sesTelGeste(\'gel\')">\u2744<span>gel</span></button>'
-      +'<button class="ses-pb ses-hors-saisie" id="ses-pb-ecrire" onclick="sesTelGeste(\'marquer\')">\u270d\ufe0f<span>\u00e0 \u00e9crire</span></button>'   /* [LOT B \u2460 A-5] le bouton dit ce qu'il fait */
-      +'<button class="ses-pb ses-hors-saisie" id="ses-pb-chr" onclick="sesTelGeste(\'chrono\')">\u23f1<span>chrono</span></button>'
-      +'<button class="ses-pb ses-hors-saisie" id="ses-pb-chrtab" onclick="sesTelGeste(\'chronoTableau\')">\ud83d\udcfa<span>au tableau</span></button>'   /* [LOT B \u2460 A-4] deux gestes distincts, comme sur l'ordi */
-      +'<button class="ses-pb ses-hors-saisie" id="ses-pb-qui" onclick="sesTelGeste(\'qui\')">\ud83d\ude4b<span>qui a particip\u00e9</span></button>'
-      +'<button class="ses-pb-part" onclick="sesTelPart()">\uff0b PARTICIPATION \u2014 la classe</button>'
-      +'</div>'
-      /* [LOT E] LA TÉLÉCOMMANDE DE ZOOM DU TABLEAU. À quoi ça sert en classe : quand
-         le professeur pilote au téléphone, il est AU FOND de la salle — il voit le mur
-         comme les élèves, et c'est le mur qu'il doit pouvoir grossir. La réglette est
-         celle du moteur, reprise telle quelle : cinq crans, un point, « NN pt ». Elle
-         ne passe PAS par `W.zoom()` : l'affichage du téléphone ne bouge pas d'un pixel. */
-      /* [LOT F ③] DEUX GROS BOUTONS, PAS UNE RÉGLETTE. Paul : « la réglette est très
-         difficile à piloter au doigt ». Un appui = un cran, butées aux crans 1 et 5,
-         le cran courant entre les deux. Ils posent le cran DANS LA SCÈNE, jamais par
-         `W.zoom()` : l'affichage du téléphone ne bouge pas. */
-      +'<div class="ses-tel-zoom ses-hors-saisie" id="ses-tel-zoom">'
-      +'<span class="ses-tel-zt">zoom du tableau</span>'
-      +'<button type="button" class="ses-tel-zb" id="ses-tel-zmoins" onclick="sesTelCranPas(-1)" aria-label="Réduire le zoom du tableau">\u2212</button>'
-      +'<span class="ses-tel-zl" id="ses-tel-zl">32 pt</span>'
-      +'<button type="button" class="ses-tel-zb" id="ses-tel-zplus" onclick="sesTelCranPas(1)" aria-label="Agrandir le zoom du tableau">\uff0b</button>'
-      +'</div>'
-      +'<div class="ses-tel-classe" id="ses-tel-cl"></div>';
-    document.body.appendChild(z);
-    /* la palette se réduit pendant la saisie : le clavier prend la place */
-    /* [LOT B \u2460 A-0] LA CAUSE DES SIX BOUTONS DISPARUS. Le retrait d\u00e9pendait de
-       `focusout` \u2014 mais le gestionnaire `blur` d'un champ repeint le prompteur
-       (`innerHTML` remplac\u00e9) : l'\u00e9l\u00e9ment qui perdait le focus \u00e9tait d\u00e9truit dans le
-       m\u00eame tour, l'\u00e9v\u00e9nement ne remontait jamais, et `.ses-saisie` restait coll\u00e9e \u2014
-       masquant \u00e9cran pr\u00e9c./suiv., gel, stylo, chrono et \u00ab qui a particip\u00e9 \u00bb (mesur\u00e9 :
-       6 boutons sur 9). D\u00e9sormais l'\u00e9tat ne D\u00c9PEND que d'un champ r\u00e9ellement focalis\u00e9,
-       v\u00e9rifi\u00e9 \u00e0 l'instant, et un battement de s\u00fbret\u00e9 le rattrape en toute hypoth\u00e8se. */
-    window.sesSaisieMaj=function(){
-      try{
-        var a=document.activeElement;
-        var dedans=!!(a&&a.closest&&a.closest('#ses-tel-pr [contenteditable]'));
-        z.classList.toggle('ses-saisie',dedans);
-      }catch(e){ z.classList.remove('ses-saisie'); }
-    };
-    document.addEventListener('focusin',sesSaisieMaj);
-    document.addEventListener('focusout',function(){ setTimeout(sesSaisieMaj,150); });
-    setInterval(sesSaisieMaj,900);   /* le filet : aucune commande ne peut rester masqu\u00e9e */
-    setInterval(sesTelChrono,1000);  /* [LOT B \u2460 A-4] le temps s'affiche \u00e0 la seconde, sans attendre un repeint */
-    /* le handshake QR : le pattern d'evaluation-qcm — écrire qrScans/<nonce> au montage */
-    var qr=(location.search.match(/[?&]qr=([\w]+)/)||[])[1];
-    if(qr) sesPut(FIREBASE_BASE+'/qrScans/'+qr+'.json',Date.now());
-    sesTelChercherCours();
-  });
-}
-function sesTelChercherCours(){
-  var t=setInterval(function(){
-    sesGet(FIREBASE_BASE+'/site/cours_actif.json',function(c){
-      if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000){
-        document.getElementById('ses-tel-titre').textContent='Aucun cours en cours';
-        return;
-      }
-      clearInterval(t);
-      SES.ctx=c;
-      document.getElementById('ses-tel-titre').textContent=(c.classeNom||c.classeSlug)+' \u00b7 S'+c.seance;
-      /* le TEL est un PILOTE : il monte le moteur (caché), rejoint la copie jouée, pose le régime */
-      AT.edChap={level:c.niveau,chnum:c.chapitre};
-      ATVUES.snum=c.seance;
-      AT_DR_COURS={debut:c.debut,fin:c.fin,classeSlug:c.classeSlug,classeNom:c.classeNom};
-      AT_DR_REGIME='classe';
-      loadClasses(function(){
-        atChargerChapitres(c.niveau,function(){
-          _drAssurerCadre();
-          _drQuandPret(function(){
-            var W=drWin(); if(!W)return;
-            var ch=sesChemins(SES.ctx);
-            sesGet(ch.ecrans,function(ecr){
-              try{ W.ECRANS=_drNormaliserTrame((Array.isArray(ecr)&&ecr.length)?ecr:[{act:'Nouvelle activit\u00e9',h:'\u2014',dur:0,blocs:[]}]);   /* [LOT A ①] */
-                   W.__pontCharge=true; W.i=0; }catch(e){}
-              try{ _drPoserContexteMoteur(); }catch(e){}
-              sesGet(ch.part,function(p){ if(p&&p.participation){ try{ W.PARTICIPATION=p.participation; }catch(e){} SES._partVu=p.maj||0; }
-                sesGet(ch.scene,function(o){ if(o){ SES.ts=o.ts||0; SES.trameMaj=o.trameMaj||0; sesAppliquer(o); } 
-                  sesBrancherPiloteTel(W);
-                  sesTelPeindre();
-                });
-              });
-            });
-          });
-        });
-      });
-    });
-  },1500);
-}
-function sesBrancherPiloteTel(W){
-  SES.actif=true;
-  if(!W.__sesCrochets){
-    W.__sesCrochets=true;
-    var vRendre=W.rendre; W.rendre=function(){ try{ _drIdentifierEcrans(W.ECRANS); }catch(e0){}   /* [LOT C2 \u2460] le point de passage unique : un \u00e9cran n\u00e9 de n'importe laquelle des treize fonctions du moteur re\u00e7oit son identit\u00e9 ici, sans qu'aucune ne soit modifi\u00e9e */
-      var r; try{ r=vRendre.apply(W,arguments); }catch(e){ sesIncident('affichage de l\u2019\u00e9cran',e); } sesEmettre(); sesTelPeindre(); return r; };   /* [LOT A ②] */
-    var vEnvoie=W.envoie; W.envoie=function(){ var r; try{ r=vEnvoie.apply(W,arguments); }catch(e){ sesIncident('envoi au tableau',e); } sesEmettre(); return r; };
-    var vQui=W.quiParle; W.quiParle=function(){ var r; try{ r=vQui.apply(W,arguments); }catch(e){ sesIncident('qui a particip\u00e9',e); } sesEmettre(); return r; };
-    var vSauve=W.sauve; W.sauve=function(){ var r=vSauve.apply(W,arguments);
-      clearTimeout(SES.trameT);
-      SES.trameT=setTimeout(function(){ SES.trameMaj=Date.now(); sesEmettre(true); },950);
-      return r; };
-    var vPA=W.partAjoute; W.partAjoute=function(){ var r=vPA.apply(W,arguments); sesPartEmettre(); sesTelPeindre(); return r; };
-    var vPR=W.partRetire; W.partRetire=function(){ var r=vPR.apply(W,arguments); sesPartEmettre(); sesTelPeindre(); return r; };
-  }
-  if(!SES.pollT)SES.pollT=setInterval(sesPollPilote,900);
-}
-function sesTelGeste(g){
-  var W=drWin(); if(!W)return;
-  try{   /* [LOT A ②] l'\u00e9chec est d\u00e9clar\u00e9 (voir le catch) */
-    if(g==='devoile')W.devoile();
-    else if(g==='replie')W.replie();
-    else if(g==='prec')W.pas(-1);
-    else if(g==='suiv')W.pas(1);
-    else if(g==='gel'){ W.gel(); document.getElementById('ses-pb-gel').classList.toggle('ses-pb-on',W.gele); }
-    else if(g==='marquer'){
-      /* [LOT B \u2460 A-5] CE QUE LE \u00ab STYLO \u00bb FAIT R\u00c9ELLEMENT (moteur L2044) : il n'\u00e9crit rien,
-         il ARME un mode o\u00f9 un clic sur un bloc l'ajoute \u00e0 `e.ecrire` \u2014 \u00ab ce que les \u00e9l\u00e8ves
-         doivent \u00e9crire \u00bb, le trait dor\u00e9. Au t\u00e9l\u00e9phone ce mode \u00e9tait INOP\u00c9RANT : sa surface
-         cliquable est `#ecran`, dans le cadre invisible. Le geste devient donc direct \u2014 le
-         bloc dont on parle est marqu\u00e9 \u2014 et le bouton porte enfin son nom. */
-      var _e=W.ECRANS[W.i]; if(!_e)return;
-      var _rv=(_e.rev===undefined?0:_e.rev);
-      var _j=Math.max(0,Math.min((_e.blocs||[]).length-1,_rv-2));
-      _e.ecrire=_e.ecrire||[];
-      var _p=_e.ecrire.indexOf(_j);
-      if(_p>=0)_e.ecrire.splice(_p,1); else _e.ecrire.push(_j);
-      W.sauve(); W.rendre();
-      atInfo(_p>=0?'Ce bloc n\u2019est plus marqu\u00e9 \u00ab \u00e0 \u00e9crire \u00bb.':'Bloc marqu\u00e9 \u00ab \u00e0 \u00e9crire \u00bb \u2014 les \u00e9l\u00e8ves le recopient.');
-    }
-    else if(g==='chrono'){ W.chrono&&W.chrono(); }            /* [LOT B \u2460 A-4] d\u00e9part / pause, comme le bouton \u00ab D\u00e9part \u00bb de l'ordi */
-    else if(g==='chronoTableau'){ var _b=W.document.getElementById('bmon'); if(_b)_b.click(); }   /* et l'envoi au tableau, le second geste, comme \u00ab Chrono au tableau \u00bb */
-    else if(g==='qui'){ W.quiParle(); document.getElementById('ses-pb-qui').classList.toggle('ses-pb-on',W.quiOn); }
-  }catch(e){ sesIncident(g,e); }
-  try{ sesTelPeindre(); }catch(e2){ sesIncident('affichage du prompteur',e2); }
-}
 /* le PROMPTEUR : l'écran courant, le dévoilé NET + l'à-venir GRISÉ « À VENIR » — c'est
    la lecture pilote (html(n,false)) refaite en cartes tactiles, avec l'ÉDITION AU DOIGT
    des réponses (le format du moteur : b.reps=[{i,r,refo}], persisté par W.sauve() routé). */
@@ -20563,197 +20103,7 @@ function sesTelGeste(g){
    Aucun appel à `W.zoom()`, aucun `rendre()` local : le prompteur du téléphone est
    inchangé, et c'est la demande explicite du professeur. */
 /* un appui = un cran, avec butées : le doigt ne peut pas dépasser */
-function sesTelCranPas(d){
-  var c=(SES.cran===null||SES.cran===undefined)?1:(SES.cran|0);
-  sesTelCran(Math.max(0,Math.min(4,c+(d|0))));
-}
-function sesTelCran(v){
-  var c=Math.max(0,Math.min(4,parseInt(v,10)||0));
-  SES.cran=c; SES.izVu=null;
-  sesTelMajCran();
-  try{ sesEmettre(true); }catch(e){}
-}
 /* l'étiquette et le point suivent le cran de session, d'où qu'il vienne */
-function sesTelMajCran(){
-  if(SES.mode!=='tel')return;
-  var c=(SES.cran===null||SES.cran===undefined)?1:(SES.cran|0);
-  var W=drWin(), pt=(W&&W.PT&&W.PT[c])||[24,32,38,44,52][c];
-  var l=document.getElementById('ses-tel-zl'); if(l)l.textContent=pt+' pt';
-  var mo=document.getElementById('ses-tel-zmoins'); if(mo)mo.disabled=(c<=0);
-  var pl=document.getElementById('ses-tel-zplus');  if(pl)pl.disabled=(c>=4);
-}
-function sesTelChrono(){
-  /* [LOT B \u2460 A-4] L'AFFICHEUR DISAIT LE MAUVAIS T\u00c9MOIN. Il lisait `bmon` \u2014 \u00ab chrono
-     au tableau \u00bb \u2014 et non l'\u00e9tat du compte : le chrono partait (mesur\u00e9 : t 420\u2192418)
-     et le t\u00e9l\u00e9phone n'en montrait RIEN. Il dit maintenant le temps d\u00e8s qu'il tourne,
-     \u00e0 la seconde, et signale s\u00e9par\u00e9ment qu'il est projet\u00e9. */
-  var W=drWin(); var ch=document.getElementById('ses-tel-chr'); if(!W||!ch)return;
-  try{
-    var D=W.document;
-    var auTableau=D.getElementById('bmon').classList.contains('on');
-    var enMarche=!!W.run;
-    var txt=D.getElementById('cmin').value+':'+D.getElementById('csec').value;
-    ch.textContent=(enMarche||auTableau)?((auTableau?'\ud83d\udcfa ':'\u23f1 ')+txt):'';
-    ch.classList.toggle('ses-chr-pause',!enMarche&&auTableau);
-    var bc=document.getElementById('ses-pb-chr'); if(bc)bc.classList.toggle('ses-pb-on',enMarche);
-    var bt=document.getElementById('ses-pb-chrtab'); if(bt)bt.classList.toggle('ses-pb-on',auTableau);
-  }catch(e){}
-}
-function sesCurseurFin(el){
-  /* [LOT B \u2460 A-3] au doigt le curseur se pose o\u00f9 l'on touche : la frappe s'ins\u00e9rait au
-     milieu d'un mot (mesur\u00e9). Il va d\u00e9sormais toujours en fin de champ. */
-  try{ var r=document.createRange(); r.selectNodeContents(el); r.collapse(false);
-    var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }catch(e){}
-}
-function sesTelPeindre(){
-  var W=drWin(); if(!W||typeof W.i!=='number')return;
-  var n=W.i, e=W.ECRANS&&W.ECRANS[n]; if(!e)return;
-  var rev=(e.rev===undefined?(e.suite?2:0):e.rev);
-  var pr=document.getElementById('ses-tel-pr'); if(!pr)return;
-  var t=(W.PT&&W.PT[W.iz])||32;
-  var h='<div class="ses-tel-ecran">\u00c9CRAN '+(n+1)+'/'+W.ECRANS.length+' \u00b7 '+escapeHtml((e.act||'').toUpperCase())+(rev<1&&!e.suite?' <i class="ses-avenir-tag">\u00c0 VENIR</i>':'')+'</div>';
-  (e.blocs||[]).forEach(function(b,j){
-    if(!b)return;
-    var visible=e.suite||j<=rev-2;
-    var lib={consigne:'CONSIGNE',question:'QUESTION',fiche:'FICHE',texte:'TEXTE',image:'IMAGE',schema:'SCH\u00c9MA'}[b.t]||String(b.t||'').toUpperCase();
-    if(b.t==='question'){
-      h+='<div class="ses-carte'+(visible?'':' ses-avenir')+'"><div class="ses-carte-lib">'+lib+(visible?'':' \u00b7 \u00c0 VENIR')+'</div>'
-        +'<div class="ses-carte-q" contenteditable="true" data-ses-q="'+j+'">'+(b.q||'')+'</div>';
-      (b.reps||[]).forEach(function(r,k){
-        var vide=!r.i&&!r.r;
-        var kv=visible&&(k<(b.vues||0)||!vide);
-        h+='<div class="ses-rep'+(vide?' ses-rep-vide':'')+(kv?'':' ses-avenir')+'">'
-          +'<span class="ses-ini" contenteditable="true" data-ses-i="'+j+'.'+k+'">'+(r.i||'')+'</span>'
-          +'<span class="ses-dit" contenteditable="true" data-ses-r="'+j+'.'+k+'">'+(r.r||(vide?'':''))+'</span>'
-          +(vide?'<span class="ses-rep-invite">r\u00e9ponse \u00e0 venir \u2014 appuyer pour taper</span>':'')
-          +'</div>';
-      });
-      h+='</div>';
-    } else {
-      var corps=b.txt||b.def||b.legende||b.titre||(b.etapes?b.etapes.join(' \u00b7 '):'')||b.src||'';
-      var d=document.createElement('div'); d.innerHTML=corps; corps=d.textContent.slice(0,220);
-      h+='<div class="ses-carte'+(visible?'':' ses-avenir')+'"><div class="ses-carte-lib">'+lib+(visible?'':' \u00b7 \u00c0 VENIR')+'</div>'
-        +'<div class="ses-carte-t">'+escapeHtml(corps)+'</div></div>';
-    }
-  });
-  pr.innerHTML=h;
-  try{ if(window.sesSaisieMaj)sesSaisieMaj(); }catch(e){}   /* [LOT B \u2460 A-0] le repeint ne laisse jamais l'\u00e9tat \u00ab saisie \u00bb derri\u00e8re lui */
-  var s=W.ECRANS[n+1];
-  document.getElementById('ses-tel-suiv').textContent=s?('\u00c9cran suivant \u2192 \u00ab '+(s.act||'\u2026')+' \u00bb'):'Dernier \u00e9cran.';
-  document.getElementById('ses-pb-gel').classList.toggle('ses-pb-on',!!W.gele);
-  document.getElementById('ses-pb-qui').classList.toggle('ses-pb-on',!!W.quiOn);
-  try{ sesTelChrono(); }catch(e){}   /* [LOT B ① A-4] */
-  /* l'ÉDITION AU DOIGT : la frappe écrit la trame du moteur puis part par sauve() (routé) */
-  pr.querySelectorAll('[data-ses-q]').forEach(function(el){
-    el.addEventListener('blur',function(){ var b=W.ECRANS[W.i].blocs[+el.dataset.sesQ]; if(b&&b.q!==el.innerHTML){ b.q=el.innerHTML; W.sauve(); } });
-  });
-  pr.querySelectorAll('[data-ses-i]').forEach(function(el){
-    el.addEventListener('focus',function(){ sesCurseurFin(el); });   /* [LOT B \u2460 A-3] */
-    el.addEventListener('blur',function(){ var p=el.dataset.sesI.split('.'), b=W.ECRANS[W.i].blocs[+p[0]];
-      if(b&&b.reps[+p[1]]&&b.reps[+p[1]].i!==el.textContent.trim()){ b.reps[+p[1]].i=el.textContent.trim().toUpperCase().slice(0,3); W.sauve(); sesTelPeindre(); } });
-  });
-  pr.querySelectorAll('[data-ses-r]').forEach(function(el){
-    el.addEventListener('focus',function(){ sesCurseurFin(el); });   /* [LOT B \u2460 A-3] le curseur en FIN, jamais au point du tap */
-    el.addEventListener('blur',function(){ var p=el.dataset.sesR.split('.'), b=W.ECRANS[W.i].blocs[+p[0]];
-      if(b&&b.reps[+p[1]]&&b.reps[+p[1]].r!==el.innerHTML){ b.reps[+p[1]].r=el.innerHTML;
-        var e2=W.ECRANS[W.i]; if((b.vues|0)<=+p[1])b.vues=+p[1]+1;   /* une réponse tapée est montrée */
-        W.sauve(); W.rendre(); } });
-  });
-  /* [LOT B \u2460 A-3] l'INITIALE D'ABORD : c'est `r.i` qui attribue la réponse à un élève
-     (`histoire()` filtre dessus) — sans elle, un rond vide au tableau. Un appui sur une
-     réponse VIDE pose le focus sur les initiales. Rien n'est refusé pour autant. */
-  pr.querySelectorAll('.ses-rep-vide').forEach(function(li){
-    li.addEventListener('click',function(ev){
-      if(ev.target.closest&&ev.target.closest('[data-ses-i]'))return;
-      var ini=li.querySelector('[data-ses-i]');
-      if(ini&&!ini.textContent.trim()){ ev.preventDefault(); ini.focus(); sesCurseurFin(ini); }
-    });
-  });
-}
-function sesTelPart(){
-  /* ═══ [LOT B \u2460 A-6] LA LISTE DENSE \u2014 elle sert le mod\u00e8le d\u00e9j\u00e0 d\u00e9cid\u00e9
-     (PASSATION \u00a7 participation), elle n'en invente pas un autre : trois motifs
-     (a particip\u00e9 \u00b7 a propos\u00e9 une piste \u00b7 on y reviendra avec lui) + note priv\u00e9e,
-     compteurs pour tous \u2014 vert = r\u00e9ponses retenues, bleu = prises sans r\u00e9ponse \u2014
-     historique par \u00e9l\u00e8ve, avec retrait. Mesur\u00e9 en cartes : 385 px par nom \u00e0 trois
-     \u00e9l\u00e8ves, 994 px de d\u00e9filement \u00e0 trente. En lignes de 44 px sur deux colonnes,
-     trente noms tiennent sans d\u00e9filer. Le professeur n'est jamais bloqu\u00e9 : un appui
-     compte, un appui long ouvre les motifs, rien n'exige de regarder. */
-  var W=drWin(); if(!W)return;
-  var anc=document.getElementById('ses-part'); if(anc){ anc.remove(); return; }
-  var d=document.createElement('div'); d.id='ses-part'; d.className='ses-part';
-  d.innerHTML='<div class="ses-part-tete"><span>Un appui = +1 \u00b7 appui long = motif</span>'
-    +'<button onclick="document.getElementById(\'ses-part\').remove()">\u2715</button></div>'
-    +'<div class="ses-part-liste" id="ses-part-liste"></div>';
-  document.body.appendChild(d);
-  sesPartPeindre();
-}
-function sesPartPeindre(){
-  var W=drWin(); var z=document.getElementById('ses-part-liste'); if(!W||!z)return;
-  var h='';
-  (W.ELEVES||[]).forEach(function(x){
-    var hist=[]; try{ hist=W.histoire(x)||[]; }catch(e){}
-    var rep=hist.filter(function(o){return o.genre==='r\u00e9ponse';}).length;
-    var oral=((W.PARTICIPATION&&W.PARTICIPATION[x])||[]).length;
-    h+='<button class="ses-pl" data-ini="'+x+'" onclick="sesTelPlus1(\''+x+'\')">'
-      +'<span class="ses-pl-nom">'+escapeHtml((W.PRENOMS&&W.PRENOMS[x])||x)+'</span>'
-      +(rep?'<i class="ses-pl-c ses-pl-v">'+rep+'</i>':'')
-      +(oral?'<i class="ses-pl-c ses-pl-b">'+oral+'</i>':'')
-      +'</button>';
-  });
-  if(!(W.ELEVES||[]).length)h='<div class="ses-part-vide">Aucun \u00e9l\u00e8ve extrait pour cette classe.</div>';
-  z.innerHTML=h;
-  /* l'appui long ouvre les motifs \u2014 sans jamais emp\u00eacher l'appui simple */
-  [].slice.call(z.querySelectorAll('.ses-pl')).forEach(function(b){
-    var t=null;
-    var lance=function(){ t=setTimeout(function(){ t=null; sesPartMotifs(b.dataset.ini); },520); };
-    var stop=function(){ if(t){clearTimeout(t);t=null;} };
-    b.addEventListener('touchstart',lance,{passive:true});
-    b.addEventListener('mousedown',lance);
-    ['touchend','touchmove','touchcancel','mouseup','mouseleave'].forEach(function(ev){ b.addEventListener(ev,stop); });
-  });
-}
-function sesPartMotifs(ini){
-  var W=drWin(); if(!W||!ini)return;
-  var anc=document.getElementById('ses-pmot'); if(anc)anc.remove();
-  var hist=((W.PARTICIPATION&&W.PARTICIPATION[ini])||[]);
-  var m=document.createElement('div'); m.id='ses-pmot'; m.className='ses-pmot';
-  var h='<div class="ses-pmot-boite"><div class="ses-pmot-tete">'+escapeHtml((W.PRENOMS&&W.PRENOMS[ini])||ini)
-    +'<button onclick="document.getElementById(\'ses-pmot\').remove()">\u2715</button></div>';
-  (W.MOTIFS_PART||[]).forEach(function(o){
-    h+='<button class="ses-pmot-b" onclick="sesPartMotif(\''+ini+'\',\''+o.c+'\')">'+escapeHtml(o.l)+'</button>';
-  });
-  h+='<input id="ses-pmot-note" class="ses-pmot-note" placeholder="pourquoi (pour toi seul)">';
-  if(hist.length){
-    h+='<div class="ses-pmot-hist">';
-    hist.slice(-6).forEach(function(o){
-      var lib=((W.MOTIFS_PART||[]).filter(function(x){return x.c===o.type;})[0]||{l:o.type}).l;
-      h+='<div class="ses-pmot-l"><span>'+escapeHtml(o.h||'')+' \u00b7 '+escapeHtml(lib)+(o.note?' \u2014 '+escapeHtml(o.note):'')+'</span>'
-        +'<button onclick="sesPartRetirer(\''+ini+'\',\''+o.id+'\')">retirer</button></div>';
-    });
-    h+='</div>';
-  }
-  m.innerHTML=h+'</div>';
-  m.addEventListener('click',function(ev){ if(ev.target===m)m.remove(); });
-  document.body.appendChild(m);
-}
-function sesPartMotif(ini,type){
-  var W=drWin(); if(!W)return;
-  var n=document.getElementById('ses-pmot-note');
-  try{ W.partAjoute(ini,type,n?n.value.trim():''); }catch(e){ sesIncident('participation',e); }
-  var m=document.getElementById('ses-pmot'); if(m)m.remove();
-  sesPartPeindre();
-}
-function sesPartRetirer(ini,id){
-  var W=drWin(); if(!W)return;
-  try{ W.partRetire(ini,id); }catch(e){ sesIncident('retrait de participation',e); }
-  sesPartMotifs(ini); sesPartPeindre();
-}
-function sesTelPlus1(ini){
-  var W=drWin(); if(!W)return;
-  try{ W.partAjoute(ini,'participe',''); }catch(e){ sesIncident('participation',e); }   /* [LOT B \u2460 A-6] motif par d\u00e9faut ; l'appui long en choisit un autre */
-  sesPartPeindre();
-}
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -24626,7 +23976,6 @@ function edtChangerEmploiDuTemps(cleSource,iso,creneau,effet){
 
 /* ═══ L'AUTO-BOOT — la même page, trois rôles ═══ */
 if(SES.mode==='tableau')sesBootTableau();
-else if(SES.mode==='tel')sesBootTel();
 else sesReprisePoser();
 
 </script>

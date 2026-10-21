@@ -89,7 +89,7 @@ Deux relecteurs (12:30-13:00) ont relevé 8 trouvailles dans mon territoire, tou
   - `#dr-zone` est encore posé dans la page tableau. Ma rustine renomme son `#mur` en `#dr-mur-gare` ; elle tombe dès qu'E1 ne le pose plus.
   - `fermerFiche` appelle `dr_versMur(null, {sortie:true})` comme la sortie de l'atelier. Je distingue les deux par `S.fichePage` ; un appel explicite serait plus sûr.
 - **E1/E4** : R14 (la fiche pilotée) et R1 (les marques) passent par `rendre` et `dr_versMur`. Le tableau les montrera tels que le pilote les rend ; je les vérifierai au banc à leur livraison.
-- **E2** : `dr_caseDuMoment` n'est pas encore exposée en fonction pure (ma `dr_tabCaseDuMoment` applique la même règle). Vu en passant au banc T15 : « T-undefined · le cahier de textes attend » s'affiche au pilote avant le lancement d'une heure 2.
+- **E2** : `dr_caseDuMoment` n'est pas encore exposée en fonction pure (ma `dr_tabCaseDuMoment` applique la même règle). (« T-undefined » vu au banc T15 : réglé par E2, commit `067f8ba3`.)
 
 ## Ce qui est à Paul
 - **Le nom du bouton** : « 🖥 Écran 2 », son mot (cadrage 1 §1.7), ou « ⧉ Ouvrir le tableau », celui du mandat. Je n'ai rien renommé.

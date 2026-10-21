@@ -12,10 +12,10 @@ export const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); wind
 export const nav = () => pw.chromium.launch({ args: ['--no-sandbox', '--allow-file-access-from-files'] });
 export const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });
 // ouvre le site, va à l'Atelier par les gestes ; hub : un store (pour le rechargement) ; garde le hub d'une page à l'autre si on lui passe __HUB
-export async function ouvrir(b, { w = 1280, h = 800, hub = null, vue = 'atelier' } = {}) {
+export async function ouvrir(b, { w = 1280, h = 800, hub = null, vue = 'atelier', quand = '2026-09-14T09:00:00+02:00' } = {}) {
   const ctx = await b.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
   const pg = await ctx.newPage(); const errs = [], boites = []; pg.on('pageerror', e => errs.push(e.message + ' @ ' + String(e.stack || '').split('\n').slice(1, 3).join(' | ').replace(/file:\/\/\S+index\.html/g, ''))); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
-  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(fauxHub, hub || store());
+  await pg.clock.setFixedTime(new Date(quand)); await pg.addInitScript(fauxHub, hub || store());
   await pg.goto('file://' + FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
   await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
   await pg.click('#tprof-btn'); await pg.waitForTimeout(500); await pg.evaluate(() => atelierOuvrir()); await pg.waitForTimeout(1000);

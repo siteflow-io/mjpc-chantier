@@ -553,6 +553,32 @@ await B('A26', 'le réveil n°5 et la relecture continue d\'E4 (A4 14:50, B4 15:
   const ia = await sans(); await p3.click('[data-lancer="1"]'); await p3.waitForTimeout(800); const ip = await sans(); await p3.evaluate(() => voir('relecture')); await p3.waitForTimeout(500); const ir = await sans();
   E.verif('A26', !ia.length && !ip.length && !ir.length, 'la passe d\'infobulles : aucun bouton visible sans infobulle, dans l\'Atelier, le Pilotage en classe et la Relecture', ia.concat(ip, ir).join(' · ') || undefined); await o3.ctx.close(); });
 
+await B('A27', 'le réveil n°8 (contrat §12.8) : la copie jouée d\'un autre jour — un titre retouché en classe le lundi est là le mardi ; dr_jouerCopie fusionne par eid ; une séance close repart de la trame', async () => {
+  // lundi : l'heure 1, un titre retouché en classe
+  const o1 = await E.ouvrir(b, { w: 1366, h: 768 }); const p1 = o1.pg; await sansVoile(p1);
+  await p1.click('[data-lancer="1"]'); await p1.waitForTimeout(800); for (let i = 0; i < 2; i++) { await p1.click('#bdev'); await p1.waitForTimeout(150); }
+  const ci = await p1.evaluate(() => { const e = ecran(); const bi = e.blocs.findIndex(b => b.bid && b.txt != null); return { eid: e.eid, bi, bid: e.blocs[bi].bid, txt: e.blocs[bi].txt }; });
+  await p1.click(`#mur [data-p="${ci.bi}.t"]`); await p1.keyboard.press('End'); await p1.keyboard.type(' — retouché lundi', { delay: 30 }); await p1.mouse.click(5, 400); await p1.waitForTimeout(2500);
+  const hub = await p1.evaluate(() => window.__HUB); E.verif('A27', !o1.errs.length, 'lundi : aucune erreur JS', o1.errs.join(' ; ') || undefined); await o1.ctx.close();
+  // mardi 15/09, 15 h 05 : l'heure suivante, par l'écran d'ouverture
+  const o2 = await E.ouvrir(b, { w: 1366, h: 768, hub, quand: '2026-09-15T15:05:00+02:00' }); const p2 = o2.pg; await sansVoile(p2);
+  const prop = await p2.evaluate(() => (document.querySelector('[data-lancer="1"]') || {}).textContent || ''); await p2.click('[data-lancer="1"]'); await p2.waitForTimeout(1500);
+  const ol = await p2.$('#o-lancer'); if (ol) { await ol.click(); await p2.waitForTimeout(1500); }
+  const ma = await p2.evaluate(c => { const e = seance().ecrans.find(x => x.eid === c.eid); const b = e && e.blocs.find(x => x.bid === c.bid); const i = seance().ecrans.indexOf(e); S.di = i; S.page = null; dr_tout(); const li = document.querySelector('#mur [data-p="' + c.bi + '.t"]'); return { heure: S.heure, lancee: S.lancee, close: S.close, txt: b && b.txt, vu: li ? li.textContent : null }; }, ci);
+  E.verif('A27', /heure 2/.test(prop) && !!ol && ma.heure === 2 && ma.lancee && !ma.close && /retouché lundi$/.test(ma.txt || '') && /retouché lundi/.test(ma.vu || ''), 'mardi, « ' + prop.trim().slice(0, 60) + ' » puis « Lancer l\'heure 2 » : le titre retouché en classe le lundi est là, dans la copie et à l\'écran', JSON.stringify(ma));
+  E.verif('A27', !o2.errs.length, 'mardi : l\'écran d\'ouverture sans erreur JS (une heure de la veille jamais close n\'a pas de S.closes)', o2.errs.join(' ; ') || undefined); await o2.ctx.close();
+  // dr_jouerCopie : la copie d'avant fusionnée par eid, retouches comprises ; une séance close repart de la trame ; l'enveloppe d'atDrJouer posée
+  const o3 = await E.ouvrir(b, { w: 1366, h: 768 }); const p3 = o3.pg; await sansVoile(p3);
+  const jc = await p3.evaluate(() => { const E0 = seance().ecrans; const e = E0[0]; const b0 = e.blocs.find(x => x.bid && x.txt != null); const avant = b0.txt; const trame = JSON.parse(JSON.stringify(E0));
+    const copie = { ecrans: JSON.parse(JSON.stringify(E0)), journal: [{ type: 'diapo', eid: e.eid, h: 1 }, { type: 'copie-classe', eid: e.eid, h: 1 }], etat: { S: { copie: { 1: { [e.eid]: { [b0.bid]: { t: 'Titre de la classe' } } } } } }, heures: { a: { clos: true, heure: 1, sur: 3 } } };
+    const r1 = dr_jouerCopie(copie); const apres = seance().ecrans[0].blocs.find(x => x.bid === b0.bid).txt;
+    E0.splice(0, E0.length, ...JSON.parse(JSON.stringify(trame)));
+    const heures = { h1: { clos: true, heure: 1, sur: 2 }, h2: { clos: true, heure: 2, sur: 2 } };
+    const r2 = dr_jouerCopie(Object.assign({}, copie, { heures })); const close = seance().ecrans[0].blocs.find(x => x.bid === b0.bid).txt;
+    E0.splice(0, E0.length, ...trame); return { avant, apres, fusion: !!r1, close, r2: r2 === null, env: !!(window.atDrJouer && atDrJouer._dr) }; });
+  E.verif('A27', jc.fusion && jc.apres === 'Titre de la classe' && jc.r2 && jc.close === jc.avant && jc.env, 'dr_jouerCopie (au premier lancement, appelée par dr_lancerNeuf d\'E2) : la copie d\'avant fusionnée par eid, le titre retouché en classe repris ; sa dernière heure (« 2 sur 2 ») close : la trame (LOT A ④) ; l\'enveloppe d\'atDrJouer garde la copie avant qu\'elle soit réécrite', JSON.stringify(jc));
+  E.verif('A27', !o3.errs.length, 'aucune erreur JS', o3.errs.join(' ; ') || undefined); await o3.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

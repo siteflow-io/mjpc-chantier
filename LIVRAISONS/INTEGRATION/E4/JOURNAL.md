@@ -453,7 +453,7 @@
 - **Sur `b10fe923`** (poussée 23 d'E2) : banc.sh **VERT** (`sorties/2132`) ; mon banc **109 ok · 0 échec** (`sorties/2132-site-E4`).
 
 ## Poussée 52 — 22:05 UTC
-- **20 lignes d'E2 revérifiées sur `b10fe923`** : 15 réglées, 5 pas réglées.
+- **20 lignes d'E2 revérifiées sur `b10fe923`** : 14 réglées, 6 pas réglées. *(Corrigé à 22:08 : j'avais d'abord écrit 15 et 5, en reprenant le résumé du relecteur ; sa liste, ligne par ligne, donne 14 et 6.)*
   - Réglées : L17, L22, L30, L100, L102, L106, L108, L120, L122, L134, L135, L141, L143, L145. L'une d'elles garde une réserve, vérifiée par mon banc : le « · » final de L134.
   - Pas réglées : L32 (deux copies au hub), L75 (T-5 cache « Où on en est »), L107 (le chrono rouge, « Fin de l'heure » actif après la clôture), L109 (la case close sans chemin vers sa relecture), L144 (« glissée » au lieu de « à reprendre »), L150 (le versement d'une retouche de l'Atelier).
 - Chaque ligne revérifiée porte maintenant **« ÉTAT : … (commit) »** en tête de sa cellule.

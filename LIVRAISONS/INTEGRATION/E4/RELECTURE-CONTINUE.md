@@ -1,0 +1,13 @@
+# E4 — LA RELECTURE CONTINUE (relance E4-2, B)
+
+*À chaque poussée d'un autre exécutant sur `integration`, E4 rejoue sur `assemble/index.html` : `banc.sh`, puis deux relecteurs neufs sur tout le parcours, comme Paul. Une ligne par défaut. E4 ne corrige pas chez les autres : la conscience en fait des relances. Une ligne réglée garde sa date et reçoit « réglé le <heure>, commit <sha> ».*
+
+| heure (UTC) | commit joué | terr. | le geste | ce qui est vu | ce qui était attendu (source) | capture | état |
+|---|---|---|---|---|---|---|---|
+| 10:14 | `f795aab0` (assemblé) | E2 | lancer, 3 dévoilements, une parole, une réponse écrite, attendre 12 s, recharger | `C/journal` au hub = les 3 entrées du lancement (10 à 16 en mémoire) ; le récit rechargé se réduit à la première diapo | le journal au fil, 900 ms (plan §3, « le journal ») ; « tout ça survit à un rechargement » (mandat E4) | `E4/captures/E4-R3-apres-rechargement.png` | ouvert |
+| 10:14 | `f795aab0` | E2 | Fin de l'heure, étapes 1 à 7, « Clore l'heure », « Clore quand même » | erreur JS `edt is not defined` ; `H` reste `clos:false`, `finReel:null`, `travail:""` | la clôture avec les écritures du site (contrat §6, E2 ; plan §2.3) | (relecteur n°4) | ouvert |
+| 10:14 | `f795aab0` | E2 | fin de l'heure → garde « Il manque… le récit relu » → onglet Relecture | la garde couvre la Relecture et bloque ses boutons | la Relecture est un onglet à part, jamais couverte (cadrage 2 · 0.1) | (relecteur n°3) | ouvert |
+| 10:14 | `f795aab0` | E1 | « Projeter au tableau » un document, puis ▶ Dévoiler | un élément de la diapo cachée est dévoilé (journal `devoile`) et raconté | seulement ce qui a été montré (cadrage 2 · 1.4) | (relecteur n°4) | ouvert |
+| 10:14 | `f795aab0` | E1 | Pilotage à 1366 × 768 et 1280 × 800 | `#bdev` (▶ Dévoiler) recouvert par la colonne de droite (« Dév ») | tailles 1280 × 800 et 1366 × 768 (contrat §8.4) | (relecteur n°4) | ouvert |
+| 10:14 | `f795aab0` | E1 | Relecture d'une heure jouée sur la trame réelle | aucune « Activité n — » dans le récit ni le papier | « Chaque activité porte son numéro » (cadrage 2 · 1.1 bis) ; `B/deroule/activites` (plan §3) | `E4/captures/E4-R1-le-recit.png` | ouvert |
+| 10:14 | `f795aab0` | E3 | Relecture → « ma version (modifier) » | une écriture `C/scene` (le `tout()` du socle pousse la scène) | la Relecture n'écrit que `C/recit/<h>` (mandat E4, K15) | (relecteur n°3) | ouvert |

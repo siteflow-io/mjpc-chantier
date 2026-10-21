@@ -15564,7 +15564,8 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 #dr-zone .outils #bdev,#dr-zone .outils #compte{flex:0 0 auto}
 #dr-zone .outils .zoomt{flex:0 0 auto;white-space:nowrap}
 #dr-zone .outils .zoomt input[type=range]{width:64px}   /* (relecture continue d'E4) la réglette et son libellé entiers, à 1280 comme à 52 pt */
-#dr-zone .haut .dr-enr{color:var(--sourd,#8d7f6d);font-size:.78rem;white-space:nowrap;flex:1 1 0;min-width:0;max-width:9em;overflow:hidden;text-overflow:ellipsis} /* E1 (relecture continue E4, B4 15:50) : le témoin prend la place qui reste dans la rangée (base 0) — il paraît sans jamais faire passer l'entête sur une rangée de plus (34 px) ; le texte entier en infobulle */
+#dr-zone .haut .dr-enr{color:var(--sourd,#8d7f6d);font-size:.78rem;white-space:nowrap;flex:0 0 auto;order:99} /* E1 (réveil n°7) : lisible en entier (« Enregistré à 09:00 »), en fin d'entête — au Pilotage, sur la 2ᵉ rangée qui existe déjà */
+body.vue-atelier #dr-zone .haut .dr-enr{display:none} /* E1 (relecture continue E4, B4 15:50) : dans l'atelier, le témoin est celui de sa barre (« ✔ enregistré à 09:00 ») — l'entête ne descend plus de 34 px à la première modification */
 #dr-zone .haut .dr-enr.dr-test{color:#7a4a00;background:#ffe2a8;border:1px solid #e0a040;border-radius:10px;padding:1px 8px;font-weight:600} /* E1 : la pastille « mode test » (relecture continue E4, 13:35) */
 #dr-zone .voile{top:var(--dr-haut,46px)}
 #dr-zone #fnotes{bottom:var(--dr-bas,104px)}
@@ -17285,8 +17286,9 @@ function dr_imageAdresse(bi){ const b = ecran().blocs[bi]; if (!b || b.t !== 'im
 function supprimerBloc(bi){ const e = ecran(); const st = parDiapo[K(S.di)] || { reps: {} }; const reps = Object.keys(st.reps || {}).filter(k => +k === bi && (st.reps[k] || []).length).length; const faire = () => { if (e.blocs.length <= 1) { dr_dire('Une diapo garde au moins un bloc.'); return; } e.blocs.splice(bi, 1); p8NotesBloc(S.di, bi, 'supprimer'); /* (p8-5c) */ marquerModif({ di: S.di, supprime: bi, reps }); dr_tout(); }; if (reps) dr_confirmer('Des réponses d\'élèves sont accrochées à ce bloc : les supprimer avec lui ?', faire, 'Supprimer le bloc et ses réponses'); else faire(); } /* E1 : la modale du site, plus confirm() */
 
 /* E1 (relecteur neuf 1) : le témoin dit ce que le hub a reçu — « ✔ enregistré » quand dr_sauve a été accepté (son rappel), jamais à une minuterie */
-function dr_temoinEnregistre(){ S.atelierDirty = null; S.atelierSaved = Date.now(); const sv = $('at-save'); if (sv) { sv.className = 'at-save'; sv.textContent = '✔ enregistré'; } }
-setInterval(() => { const sv = $('at-save'); if (!sv || !S.atelier) return; if (S.atelierDirty) { if (Date.now() - S.atelierDirty > 15000) sv.textContent = '● pas encore au hub — la connexion ? (le site le signale)'; } else if (S.atelierSaved) { const n = Math.round((Date.now() - S.atelierSaved) / 1000); sv.textContent = '✔ enregistré' + (n >= 1 ? ' il y a ' + (n < 60 ? n + ' s' : Math.round(n / 60) + ' min') : ''); } }, 1000);
+function dr_temoinEnregistre(){ S.atelierDirty = null; S.atelierSaved = Date.now(); const sv = $('at-save'); if (sv) { sv.className = 'at-save'; sv.textContent = '✔ enregistré à ' + dr_hhmmEnr(); sv.title = 'La dernière écriture acceptée par le hub'; } }
+function dr_hhmmEnr(){ const d = new Date(S.atelierSaved || now()); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); }
+setInterval(() => { const sv = $('at-save'); if (!sv || !S.atelier) return; if (S.atelierDirty) { if (Date.now() - S.atelierDirty > 15000) sv.textContent = '● pas encore au hub — la connexion ? (le site le signale)'; } else if (S.atelierSaved) { const n = Math.round((Date.now() - S.atelierSaved) / 1000); sv.textContent = '✔ enregistré à ' + dr_hhmmEnr(); } }, 1000);
 
 /* E1 (réveil n°3, 5) : une question qui reçoit une réponse (la case de participation, ou la ligne de réponse) se dévoile — la réponse part au tableau au fil de la frappe (C1 4.2) ; le rendu tait à raison les réponses d'une question grisée */
 function dr_devoilerQuestionsRepondues(){ if (S.atelier || S.preparation || !S.lancee) return; const e = ecran(); if (!e) return; const d = etatDiapo(); const reps = d.reps || {}; const els = elements(e);

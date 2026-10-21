@@ -1,0 +1,21 @@
+/* E4 — le recyclage (relance E4-2) : R1 les marques sur une image */
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk{position:absolute;transform:translate(-50%,-50%);line-height:1.25;z-index:2}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-pt span{background:#0f8f53;color:#fff;font-weight:700;border-radius:50%;width:1.9em;height:1.9em;display:flex;align-items:center;justify-content:center}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-et span{background:#fffdf9;color:#22303f;border:1.4px solid #22303f;border-radius:3px;padding:.1em .4em;white-space:nowrap}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-lg span{background:rgba(34,48,63,.9);color:#fff;border-radius:3px;padding:.1em .45em;white-space:nowrap}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-fl span{color:#d1495b;font-size:1.5em}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-cd{border:2px solid #d1495b;border-radius:3px;background:rgba(209,73,91,.07)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk.pas,:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .dr-flsvg.pas{opacity:.35}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur.tableau .img-sup .mk.pas{display:none}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk.selmk{outline:2px dashed #0f8f53;outline-offset:3px}
+#dr-zone .mur .img-sup .mk{cursor:pointer}
+body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a4e;outline-offset:-2px}
+#dr-mk-panneau{position:relative;margin:0 0 10px;background:#191411;color:var(--texte,#eee);border:1px solid var(--bord,#3a3129);border-radius:8px;padding:8px 10px;font-size:.82rem;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+#dr-mk-panneau .dr-mk-t{font-weight:700;color:var(--or,#c99a4e);margin-bottom:4px}
+#dr-mk-panneau .dr-mk-s{margin:6px 0 2px;color:var(--texte2,#bbb)}
+#dr-mk-panneau .dr-mk-l{display:flex;flex-wrap:wrap;gap:4px;margin:3px 0}
+#dr-mk-panneau .btn{padding:2px 7px;font-size:.78rem}
+#dr-mk-panneau .btn.on{border-color:var(--or,#c99a4e);color:var(--or,#c99a4e)}
+#dr-mk-panneau .dr-mk-liste div{padding:2px 0;border-top:1px solid var(--bord,#3a3129)}
+#dr-mk-panneau .dr-mk-liste i{color:var(--sourd,#888);font-size:.75rem}
+#dr-mk-panneau .dr-mk-x{cursor:pointer;color:#d1495b;margin-left:6px}

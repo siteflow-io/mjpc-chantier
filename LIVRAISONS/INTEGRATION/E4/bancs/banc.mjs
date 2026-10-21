@@ -30,10 +30,13 @@ const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); window.__EC
 
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'], headless: true });
 const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });
-let HUB_PERSISTANT = null;   /* entre deux ouvertures (le rechargement), le faux hub garde ce qui a été écrit */
+let HUB_PERSISTANT = null;
+/* le réseau est coupé (faux hub) : les images de mjpc-medias reçoivent une image locale 160 × 90, pour que la diapo ait une image où poser des marques */
+import zlib from 'node:zlib';
+const PNG = (() => { const w = 160, h = 90; const raw = Buffer.alloc((w * 3 + 1) * h, 0x99); for (let y = 0; y < h; y++) raw[y * (w * 3 + 1)] = 0; const T = []; for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; T[n] = c >>> 0; } const crc = b => { let x = 0xffffffff; for (const v of b) x = T[(x ^ v) & 0xff] ^ (x >>> 8); return (x ^ 0xffffffff) >>> 0; }; const ch = (ty, d) => { const l = Buffer.alloc(4); l.writeUInt32BE(d.length); const td = Buffer.concat([Buffer.from(ty), d]); const c = Buffer.alloc(4); c.writeUInt32BE(crc(td)); return Buffer.concat([l, td, c]); }; const ih = Buffer.alloc(13); ih.writeUInt32BE(w, 0); ih.writeUInt32BE(h, 4); ih[8] = 8; ih[9] = 2; return Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), ch('IHDR', ih), ch('IDAT', zlib.deflateSync(raw)), ch('IEND', Buffer.alloc(0))]); })();   /* entre deux ouvertures (le rechargement), le faux hub garde ce qui a été écrit */
 async function ouvrir(o = {}) {
-  const ctx = await nav.newContext({ viewport: { width: 1366, height: 768 }, timezoneId: 'Europe/Paris' }); await ctx.grantPermissions(['clipboard-read', 'clipboard-write']).catch(() => {});
-  if (SITE) await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
+  const ctx = await nav.newContext({ viewport: { width: o.largeur || 1366, height: o.hauteur || 768 }, timezoneId: 'Europe/Paris' }); await ctx.grantPermissions(['clipboard-read', 'clipboard-write']).catch(() => {});
+  if (SITE) { await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); await ctx.route(/mjpc-medias/, r => r.fulfill({ status: 200, contentType: 'image/png', body: PNG })); }
   const pg = await ctx.newPage(); const errs = [], boites = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
   if (SIMULE) { const se = store().site['3e'].chapitres; const s0 = (Array.isArray(se) ? se[0] : se['0']).seances; await pg.addInitScript(([h, sc]) => { window.__E4HUB_INIT = h; window.__E4SEANCE = sc; }, [o.frais ? null : HUB_PERSISTANT, Array.isArray(s0) ? s0[0] : s0['0']]); }
   if (!SITE) { await pg.goto('file://' + F); await pg.waitForTimeout(600); return { ctx, pg, errs, boites }; }
@@ -86,13 +89,13 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
   verif('R2', !!edit && (await pg.evaluate(ph => ((S.recitMoi || {})[1] || '').includes(ph), PHRASE)), '« ma version (modifier) » : la phrase corrigée est dans ma version', null);
   // le récit relu : l'étape 4 de la fin de l'heure (E2 la pose ; ici par son geste s'il existe)
   const relu = await pg.evaluate(() => { const b = document.getElementById('f-relu'); if (b) { b.click(); return 'geste'; } if (typeof S !== 'undefined') { return null; } });
-  if (HUBBE) { await p(pg, 2200); const ecr = await ecritures(pg); const chem = x => x.slice(x.indexOf(' ') + 1); const recits = ecr.filter(x => /\/deroule_joue\/[^/]+\/recit\/\d+$/.test(chem(x)));
+  if (HUBBE) { await p(pg, 2200); const ecr = await ecritures(pg); const chem = x => x.slice(x.indexOf(' ') + 1); const recits = ecr.filter(x => /\/deroule_joue\/[^/]+\/recit\/[^/]+$/.test(chem(x)));
     verif('R2', recits.length > 0, 'C/recit/1 est écrit au hub (débounce 900 ms, par dr_ecrire)', JSON.stringify(ecr.slice(-12)));
-    const auHub = await pg.evaluate(() => { const c = (typeof dr_cheminC === 'function') ? dr_cheminC() : ''; const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q.concat(['recit', '1'])) { if (!n || typeof n !== 'object') return null; n = n[k]; } return n || null; });
-    verif('R2', auHub && auHub.version === 'moi' && String(auHub.texte || '').includes(PHRASE), 'au hub : C/recit/1 = {version:"moi", texte: la phrase corrigée, versions[]}', JSON.stringify(auHub).slice(0, 300));
+    const auHub = await pg.evaluate(() => { const c = (typeof dr_cheminC === 'function') ? dr_cheminC() : ''; const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q.concat(['recit'])) { if (!n || typeof n !== 'object') return null; n = n[k]; } return n ? Object.values(n)[0] || null : null; });
+    verif('R2', auHub && auHub.version === 'moi' && String(auHub.moi || '').includes(PHRASE), 'au hub : C/recit/<clé> = {version:"moi", moi: la phrase corrigée, versions[]} (relance E4, F2)', JSON.stringify(auHub).slice(0, 300));
     HUB_PERSISTANT = await pg.evaluate(() => window.__HUB);
     // K15 (E4) : de mon fait, seul C/recit/<h>
-    const miennes = ecr.filter(x => /recit/.test(x)); verif('K15-E4', miennes.every(x => /\/deroule_joue\/[^/]+\/recit\/\d+$/.test(chem(x))), 'K15 : ce qu\'E4 écrit, c\'est C/recit/<heure> et rien d\'autre', JSON.stringify(miennes));
+    const miennes = ecr.filter(x => /recit/.test(x)); verif('K15-E4', miennes.every(x => /\/deroule_joue\/[^/]+\/recit\/\d{4}-\d\d-\d\d_[^/]+$/.test(chem(x))), 'K15 : ce qu\'E4 écrit, c\'est C/recit/<clé de l\'heure> (<iso>_<créneau>_<classe>, relance E4 I4) et rien d\'autre', JSON.stringify(miennes));
   } else verif('R2', null, 'C/recit/1 au hub', 'la maquette n\'a pas de hub : se mesure sur le site');
 
   // ═════ P1 · la face Papier : le récit relu, l'entête, le travail, le pied ; ce qu'on colle ═════
@@ -119,7 +122,7 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
   const presse = await pg.evaluate(async () => { try { const it = await navigator.clipboard.read(); return it.length ? it[0].types : []; } catch (e) { return 'illisible : ' + e.message; } });
   verif('ED', Array.isArray(presse) ? presse.includes('text/html') && presse.includes('text/plain') : null, 'le presse-papier reçoit text/html et text/plain', JSON.stringify(presse));
   await pg.click('#r-copie-travail'); await p(pg, 400); const ct = await pg.evaluate(() => window.DR_RECIT_DERNIERE_COPIE || null); const lienAttendu = SITE && process.env.E4_SANS_ED !== '1';
-  verif('ED', SITE ? (ct && (lienAttendu ? /ecoledirecte\.com/.test(ct.texte) && /<a href=/.test(ct.html) : !/ecoledirecte/.test(ct.texte))) : null, lienAttendu ? '« Copier — travail à faire » porte le lien de l\'espace de travail (/classes/<classe>/ed)' : 'sans /classes/<classe>/ed : la copie se fait sans lien', ct ? ct.texte.slice(-200) : '');
+  verif('ED', ct && !/ecoledirecte/.test(ct.texte) && !/<a href=/.test(ct.html), '« Copier — travail à faire » ne met pas de lien (relance E4, F8 tranché : ni aujourd\'hui ni dans la maquette)', ct ? ct.texte.slice(-200) : '');
   verif('ED', await pg.evaluate(() => (S.copieED || {})[1] && J.some(x => x.type === 'copie-ed')), 'la copie est notée (S.copieED, journal copie-ed : la garde après copie s\'en sert)', null);
   await o.ctx.close();
 }
@@ -148,6 +151,7 @@ if (HUBBE) { const o = await ouvrir({ frais: true }); const pg = o.pg; await lan
   const d = await pg.evaluate(() => { const f = document.querySelector('#mur .dr-doc-cadre'); const m = document.querySelector('#mur .dr-doc-ref'); return { src: f ? f.getAttribute('src') : '', txt: m ? m.innerText : '' }; });
   verif('D1', okD && /^https:\/\/drive\.google\.com\/file\/d\/1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc\/preview$/.test(d.src), 'l\'item Drive de la séance s\'ouvre dans l\'écran en /preview', JSON.stringify(d));
   verif('D1', /vient de Structure · Séance \d+/.test(d.txt), '« cette fiche vient de Structure · Séance N »', d.txt.slice(0, 120));
+  const sansAdr = await pg.evaluate(() => Array.from(document.querySelectorAll('#fdocs-l .dr-c')).map(x => x.innerText).filter(t => /n.a pas d.adresse/.test(t)).length); verif('D1', sansAdr >= 1 && !(await pg.$('#mur .dr-doc-grand')), 'un document sans adresse le dit en clair ; pas de modale du site dans le déroulé (relance E4, F5)', String(sansAdr));
   await o.ctx.close(); }
 else verif('D1', null, 'les documents par référence', 'la maquette simule ses documents : se mesure sur le site');
 
@@ -181,6 +185,36 @@ else verif('D1', null, 'les documents par référence', 'la maquette simule ses 
   const ed = await pg.$('#rel .recit.ma-version'); if (ed) { await ed.click(); await p(pg, 300); }
   verif('T', await pg.evaluate(() => document.getElementById('garde-copie').classList.contains('on')), 'après une copie ED, corriger ma version passe par la garde (cadrage 2 · 3.8)', null);
   await o.ctx.close(); }
+
+// ═════ RC1 · R1 du recyclage : les marques sur une image (relance E4-2) — poser, dévoiler une à une au pilote et au tableau, calibrer, garder ═════
+if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1200); if (await pg.$('#at-aide .x')) await pg.click('#at-aide .x');
+  await pg.evaluate(() => dr_aller(1)); await p(pg, 700);
+  const pan = await pg.evaluate(() => { const z = document.getElementById('dr-mk-panneau'); return z ? { vis: !!z.offsetParent, titres: Array.from(z.querySelectorAll('button')).every(b => b.title) } : null; });
+  verif('RC1', pan && pan.vis && pan.titres, 'Atelier, diapo « Tableau 1 » : le panneau des marques (Document analysé · Illustration · outils · une à une), chaque bouton avec son infobulle', JSON.stringify(pan));
+  if (pan) { if (!(await pg.evaluate(() => ecran().blocs[0].support))) await pg.click('#dr-mk-panneau [data-mk-a="support"]'); await pg.click('#dr-mk-panneau [data-mk-a="une"]'); await p(pg, 300);
+    for (const [x, y] of [[0.25, 0.3], [0.6, 0.5], [0.4, 0.75]]) { await pg.click('#dr-mk-panneau [data-mk-o="pt"]'); const r = await pg.evaluate(() => document.querySelector('#mur .img-sup').getBoundingClientRect().toJSON()); await pg.mouse.click(r.x + r.width * x, r.y + r.height * y); await p(pg, 300); }
+    const mk = await pg.evaluate(() => ({ m: ecran().blocs[0].marques.map(m => m.t + ':' + m.txt), dom: document.querySelectorAll('#mur .img-sup .mk').length, une: ecran().blocs[0].devoilerTout === false }));
+    verif('RC1', mk.m.join(',') === 'pt:1,pt:2,pt:3' && mk.dom === 3 && mk.une, 'trois points posés d\'un clic chacun (① 1, 2, 3), visibles sur l\'image, « une à une »', JSON.stringify(mk));
+    const cal = await pg.evaluate(() => { const s = document.querySelector('#mur .img-sup'); const m = s.querySelector('.mk'); return { L: s.getBoundingClientRect().width, fs: parseFloat(m.style.fontSize) }; });
+    verif('RC1', Math.abs(cal.fs - cal.L * 0.042) < 0.5, 'calibrées à la largeur de l\'image (calibreMarques : 4,2 % de la largeur) — 1366', JSON.stringify(cal));
+    await cap(pg, 'E4-RC1-marques-atelier'); await p(pg, 1500);
+    const hub = await pg.evaluate(() => { const e = window.__HUB.site['3e'].chapitres[0].seances[0].deroule.ecrans[1]; return e ? e.blocs[0] : null; });
+    verif('RC1', hub && Array.isArray(hub.marques) && hub.marques.length === 3 && hub.devoilerTout === false && hub.support === true, 'enregistrées dans la trame au hub (B/deroule : marques, devoilerTout, support)', JSON.stringify(hub).slice(0, 300));
+    HUB_PERSISTANT = await pg.evaluate(() => window.__HUB); }
+  await o.ctx.close();
+  if (HUB_PERSISTANT) { for (const W of [1280, 1366]) { const o2 = await ouvrir({ largeur: W, hauteur: W === 1280 ? 800 : 768 }); const pg2 = o2.pg;
+    await pg2.click('[data-lancer="1"]').catch(() => {}); await p(pg2, 700); const atteint = await jusquA(pg2, () => ecran().act === 'Tableau 1'); await garde(pg2);
+    const vus = async () => pg2.evaluate(() => ({ dev: document.querySelectorAll('#mur .img-sup .mk:not(.pas)').length, tout: document.querySelectorAll('#mur .img-sup .mk').length }));
+    const v0 = await vus(); let tab = null; if (W === 1366) { try { [tab] = await Promise.all([o2.ctx.waitForEvent('page', { timeout: 8000 }), pg2.click('#bvideoproj')]); await tab.waitForLoadState(); await p(pg2, 1500); } catch (e) { tab = null; } }
+    const etapes = [v0]; const tabs = []; for (let i = 0; i < 3; i++) { await pg2.click('#bdev'); await p(pg2, 600); etapes.push(await vus()); if (tab) tabs.push(await tab.evaluate(() => document.querySelectorAll('#mur2 .img-sup .mk').length).catch(() => -1)); }
+    const cal2 = await pg2.evaluate(() => { const s = document.querySelector('#mur .img-sup'); const m = s && s.querySelector('.mk'); return m ? { L: s.getBoundingClientRect().width, fs: parseFloat(m.style.fontSize) } : null; });
+    verif('RC1', atteint && etapes.map(x => x.dev).join(',') === '0,1,2,3' && etapes.every(x => x.tout === 3), `rechargé (${W}) : les trois marques sont là ; en classe, ▶ les dévoile une à une au pilote (0, 1, 2, 3)`, JSON.stringify(etapes));
+    verif('RC1', cal2 && Math.abs(cal2.fs - cal2.L * 0.042) < 0.5, `calibrées à la largeur de l'image en classe — ${W}`, JSON.stringify(cal2));
+    if (W === 1366) { verif('RC1', tab ? tabs.join(',') === '1,2,3' : null, 'dans la fenêtre du tableau (⧉ Écran 2, E3), les marques paraissent une à une avec le pilote', tab ? JSON.stringify(tabs) : 'la fenêtre du tableau ne s\'est pas ouverte'); await cap(pg2, 'E4-RC1-marques-en-classe'); if (tab) { await tab.screenshot({ path: path.join(CAP, 'E4-RC1-marques-au-tableau.png') }).catch(() => {}); } }
+    verif('RC1', o2.errs.length === 0, `zéro erreur JS (${W})`, JSON.stringify(o2.errs)); await o2.ctx.close(); } }
+  HUB_PERSISTANT = null; }
+else verif('RC1', null, 'R1 les marques', 'se mesure sur le site');
 
 await nav.close();
 dire(`— fin : ${nbOk} ok · ${nbEchec} échec(s) · ${nbAbsent} absent(s) — ${nbEchec ? 'ROUGE' : 'VERT'}`);

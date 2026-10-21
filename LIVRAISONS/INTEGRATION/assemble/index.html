@@ -15628,6 +15628,27 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 #dr-zone .dr-avance.dr-plus { color: var(--rouge); }
 #dr-zone .dr-integre-ok { color: var(--joue); font-size: .8rem; }
 #dr-zone .dr-integre-ko { color: var(--rouge); font-size: .8rem; }
+/* E4 — le recyclage (relance E4-2) : R1 les marques sur une image */
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk{position:absolute;transform:translate(-50%,-50%);line-height:1.25;z-index:2}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-pt span{background:#0f8f53;color:#fff;font-weight:700;border-radius:50%;width:1.9em;height:1.9em;display:flex;align-items:center;justify-content:center}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-et span{background:#fffdf9;color:#22303f;border:1.4px solid #22303f;border-radius:3px;padding:.1em .4em;white-space:nowrap}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-lg span{background:rgba(34,48,63,.9);color:#fff;border-radius:3px;padding:.1em .45em;white-space:nowrap}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-fl span{color:#d1495b;font-size:1.5em}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk-cd{border:2px solid #d1495b;border-radius:3px;background:rgba(209,73,91,.07)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk.pas,:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .dr-flsvg.pas{opacity:.35}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur.tableau .img-sup .mk.pas{display:none}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup .mk.selmk{outline:2px dashed #0f8f53;outline-offset:3px}
+#dr-zone .mur .img-sup .mk{cursor:pointer}
+body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a4e;outline-offset:-2px}
+#dr-mk-panneau{position:relative;margin:0 0 10px;background:#191411;color:var(--texte,#eee);border:1px solid var(--bord,#3a3129);border-radius:8px;padding:8px 10px;font-size:.82rem;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+#dr-mk-panneau .dr-mk-t{font-weight:700;color:var(--or,#c99a4e);margin-bottom:4px}
+#dr-mk-panneau .dr-mk-s{margin:6px 0 2px;color:var(--texte2,#bbb)}
+#dr-mk-panneau .dr-mk-l{display:flex;flex-wrap:wrap;gap:4px;margin:3px 0}
+#dr-mk-panneau .btn{padding:2px 7px;font-size:.78rem}
+#dr-mk-panneau .btn.on{border-color:var(--or,#c99a4e);color:var(--or,#c99a4e)}
+#dr-mk-panneau .dr-mk-liste div{padding:2px 0;border-top:1px solid var(--bord,#3a3129)}
+#dr-mk-panneau .dr-mk-liste i{color:var(--sourd,#888);font-size:.75rem}
+#dr-mk-panneau .dr-mk-x{cursor:pointer;color:#d1495b;margin-left:6px}
 
 </style>
 <script>
@@ -16351,7 +16372,7 @@ const finie = (e, i) => { if (S.faiteOral && e.actId && S.faiteOral[e.actId]) re
 
 const retiree = e => { const d = decisionDe(e); return !!(d && d.moment === 'classe'); };
 
-function elements(e){ const out = []; e.blocs.forEach((b, bi) => { if (b.t === 'cahier') { ['l\'échéance', 'le travail à faire', 'le contenu de la séance', 'qui a participé'].forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'cahier' })); return; } if (b.t === 'schema') { p8Elements(b).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'schema' })); return; } /* (p8-2) une bulle = un élément, dans l'ordre de la source ; « Tout ensemble » : aucun */ if (b.t === 'question') out.push({ b: bi, e: 'q', txt: b.txt || '', t: 'question', q: true }); /* (p8-3c) la question se dévoile à son tour, avant ses lignes */ (b.el || []).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: b.t })); }); return out; }
+function elements(e){ const out = []; e.blocs.forEach((b, bi) => { if (b.t === 'image' && typeof dr_marquesElements === 'function') { dr_marquesElements(b).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'image' })); return; } /* E4 : R1, les marques une à une (dr-recyclage.js) */ if (b.t === 'cahier') { ['l\'échéance', 'le travail à faire', 'le contenu de la séance', 'qui a participé'].forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'cahier' })); return; } if (b.t === 'schema') { p8Elements(b).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'schema' })); return; } /* (p8-2) une bulle = un élément, dans l'ordre de la source ; « Tout ensemble » : aucun */ if (b.t === 'question') out.push({ b: bi, e: 'q', txt: b.txt || '', t: 'question', q: true }); /* (p8-3c) la question se dévoile à son tour, avant ses lignes */ (b.el || []).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: b.t })); }); return out; }
 
 // ───────── mise à jour minimale : on ne reconstruit pas, on ajuste (le nœud qui a le focus n'est jamais touché ; les champs gardent leur valeur ; les défilements et les images restent) ─────────
 function morph(a, b){
@@ -16403,7 +16424,7 @@ function rendre(mur, et){ const et0 = et; /* (p8-5f) */ if (et && et.atelier && 
         const rs = reps[bi] || []; rs.forEach((r, ri) => { if (!et.pilote && !r.r) return; /* la classe ne voit jamais une ligne vide */ if (!et.pilote && qPas) return; /* (p8-3c) ni la réponse d'une question pas encore dévoilée */ h += `<div class="rep${qPas ? ' pas' : ''}" data-r="${ri}" data-bi="${bi}"><span class="ini${r.refo ? ' refo' : ''}${r.i ? '' : ' vide'}"${et.pilote ? ` contenteditable="true" data-p="${bi}.i.${ri}" title="Les initiales (dans n'importe quel ordre) ou le début du prénom ; double-clic : reformulée"` : ''}>${dr_esc(r.i || '')}</span><span class="dit"${et.pilote ? ` contenteditable="true" data-p="${bi}.r.${ri}" title="La réponse, au tableau au fil de la frappe ; Entrée : la réponse suivante"` : ''}>${dr_esc(r.r)}</span></div>`; });
         if (et.pilote && (!rs.length || rs[rs.length - 1].validee)) { const ri = rs.length; h += `<div class="rep libre${qPas ? ' pas' : ''}" data-r="${ri}" data-bi="${bi}"><span class="ini vide" contenteditable="true" data-p="${bi}.i.${ri}" title="Les initiales (dans n'importe quel ordre) ou le début du prénom"></span><span class="dit" contenteditable="true" data-p="${bi}.r.${ri}" title="La réponse, au tableau au fil de la frappe ; Entrée : la réponse suivante"></span></div>`; } }
       else if (b.t === 'fiche') { h += `<div class="fiche${marqBloc}${lumBloc}" data-bloc="${bi}"><div class="tt">${dr_esc(b.tt || 'fiche')}</div><h3 data-p="${bi}.t">${surligne(dr_esc(titre), bi + '.t', et)}</h3>${(b.el || []).map((x, ei) => `<div class="${ei === 0 ? 'def' : 'corps'}" data-p="${bi}.${ei}">${surligne(tx[bi + '.' + ei] != null ? tx[bi + '.' + ei] : x, bi + '.' + ei, et)}</div>`).join('')}</div>`; }
-      else if (b.t === 'image') { h += `<div class="img-sup">${b.ref ? `<img src="${b.ref}" alt="" onerror="this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'"><div class="img-vide" style="display:none"></div>` : '<div class="img-vide"></div>'}</div>${b.txt ? `<div class="img-lg" data-p="${bi}.t">${surligne(dr_esc(titre), bi + '.t', et)}</div>` : ''}`; }
+      else if (b.t === 'image') { h += `<div class="img-sup">${b.ref ? `<img src="${b.ref}" alt="" onerror="this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'"><div class="img-vide" style="display:none"></div>` : '<div class="img-vide"></div>'}${typeof dr_marquesHtml === 'function' ? dr_marquesHtml(b, bi, k, et) : ''/* E4 : R1 */}</div>${b.txt ? `<div class="img-lg" data-p="${bi}.t">${surligne(dr_esc(titre), bi + '.t', et)}</div>` : ''}`;  if (typeof dr_marquesNb === 'function') k += dr_marquesNb(b); /* E4 : R1 */ }
       else if (b.t === 'schema') { /* (p8-2) le moteur de l'ancien déroulé ; la carte dit son titre au centre, une seule fois (décision 2) */ const k0 = k; const nS = p8Elements(b).length; const vu = nS ? Math.max(0, (et.nDev || 0) - k0) : Infinity; const fl = typeof et.flash === 'number' && et.flash >= k0 && et.flash < k0 + nS ? et.flash - k0 : null; const bx = (mur._p8 || {})[e.eid + '|' + bi] || {}; h += `<div class="sch p8-sch${marqBloc}${lumBloc}" data-bloc="${bi}">${(b.forme || 'carte') === 'carte' ? '' : `<div class="sch-t" data-p="${bi}.t">${dr_esc(titre)}</div>`}<div class="sch-dessin p8-dessin" data-p8="${bi}" data-vu="${vu}" data-fl="${fl == null ? '' : fl}" data-titre="${dr_esc(titre)}">${p8Dessin(b, bx.W, bx.H, H, TAILLES[et.taille].pt, vu, fl, !!et.atelier, titre)}</div></div>`; k += nS; }
       h += '</div>'; });
     if (et.pilote && et.ecrire && p8PeutEcrireSous(e)) h += p8ZoneEcrire(); /* (p8-4) sous le dernier bloc, on clique et on écrit */
@@ -17971,6 +17992,11 @@ const dr_heureCloseBloque = ev => { try { if (typeof S !== 'object' || !S || !S.
   if (ev.type === 'keydown' && /^(ArrowRight|ArrowLeft| |Backspace|PageDown|PageUp)$/.test(ev.key) && !(t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))) { ev.stopPropagation(); ev.preventDefault(); } } catch (e) {} };
 document.addEventListener('click', dr_heureCloseBloque, true); document.addEventListener('keydown', dr_heureCloseBloque, true);
 
+/* ─── la garde de la clôture (« il manque… ») appartient au Pilotage : quitter le Pilotage (l'onglet Relecture pour relire le
+   récit, comme la garde y invite) la referme — la Relecture n'est jamais couverte (cadrage 2 · 0.1 ; vu par le relecteur n°3 d'E4) ─── */
+setInterval(() => { try { const g = document.getElementById('garde-clore'); if (!g || !g.classList.contains('on')) return;
+  const v = (typeof ATVUES === 'object' && ATVUES) ? ATVUES.vue : null; if (v && v !== 'pilotage') g.classList.remove('on'); } catch (e) {} }, 250);
+
 </script>
 <script>
 /* ═══ dr/dr-tableau.js ═══ */
@@ -18492,7 +18518,7 @@ function recitHtml0(fin, h, bornes){ h = h || S.heure; const finHeure = (S.close
     g.dis.forEach(di => { const e = dr_recitEcranVu(h, seance().ecrans[di]); /* (E4 · 13 · 8) lisait seance().ecrans[di] : la trame, sans ce que la classe a corrigé */ const vu = vuJ(h, di).fin; const els = elements(e); const lumJ = JH.filter(x => x.type === 'lumiere' && x.di === di).map(x => x.k); const dj0 = (JH.find(x => x.type === 'diapo' && x.di === di) || {}).deja || 0; if (dj0 && !reprise) reprise = dj0; if (premiere == null) premiere = vus[di];
       e.blocs.forEach((b, bi) => { const elsB = els.map((x, idx) => ({ x, idx })).filter(o => o.x.b === bi && o.idx < vu && o.idx >= dj0);
         if (b.t === 'schema') { phrases.push('on a construit le schéma <b>' + dr_esc(b.txt) + '</b>'); return; }
-        if (b.t === 'image') { nbImages++; phrases.push('on a observé <b>' + dr_esc(b.txt) + '</b>'); return; }
+        if (b.t === 'image') { nbImages++; const mq = (Array.isArray(b.marques) ? b.marques : []).filter((m, j) => m.txt && !/^\d+$/.test(m.txt) && (b.devoilerTout !== false || elsB.some(x => x.x.e === j))).map(m => '« ' + dr_esc(m.txt) + ' »'); phrases.push('on a observé <b>' + dr_esc(b.txt) + '</b>' + (mq.length ? ', où on a repéré ' + mq.slice(0, 4).join(', ') : '')); return; } /* (E4 · R1, R15) l'ancien (L1270-1274) : les marques dévoilées, nommées — sauf les numéros seuls */
         if (b.t === 'video') { const pos = S.videoPos[e.eid] || 0; const rep = b.reperes.filter(r => r.t <= pos).slice(-1)[0]; if (pos > 0) phrases.push('on a regardé <b>' + dr_esc(b.txt) + '</b>' + (rep ? ' jusqu\'à ' + dr_esc(rep.l) : '')); return; }
         if (b.t === 'consigne') { const brut = (b.txt || '') + ' ' + elsB.map(o => o.x.txt).join(' '); if (/pour (la prochaine|demain|lundi|mardi|mercredi|jeudi|vendredi|le \d)/i.test(brut) || /à (faire|rendre|apprendre|réviser) pour/i.test(brut) || /devoirs?\b/i.test(brut)) return; const s0 = recit(b.txt); if (!s0) return; const et = elsB.map(o => recitEtape(o.x.txt)).filter(Boolean);
           const bout = et.map((x, kk) => { const x2 = x.replace(/\.$/, ''); return adverbeEtape(kk, e.act + bi, et.length) + (x2.indexOf('la consigne était') === 0 ? x2.replace(/^la consigne était : /, 'la consigne disait : ') : x2.charAt(0).toLowerCase() + x2.slice(1)); });
@@ -18534,7 +18560,7 @@ function recitHtml0(fin, h, bornes){ h = h || S.heure; const finHeure = (S.close
   hh += barreRecit();
   setTimeout(() => { const copier = (txt, ok) => { const dire = m => { const z = $('r-copie-etat'); if (z) z.textContent = m; }; if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(() => dire(ok)).catch(() => dire('la copie automatique a échoué — sélectionne le texte et copie-le')); else dire('la copie automatique a échoué — sélectionne le texte et copie-le'); };
     const rc = $('r-copie-contenu'); if (rc) rc.onclick = () => { S.copieED = S.copieED || {}; S.copieED[S.heure] = Object.assign(S.copieED[S.heure] || {}, { t: now(), contenu: true }); journal('copie-ed', { quoi: 'contenu' }); const rec0 = document.querySelector('#rel .recit') || document.querySelector('.recit'); const tete = document.querySelector('#rel .dr-recit-tete'); /* (E4 · R22) lisait copier(innerText) : le texte seul, et coupait le bilan avec le travail */ const html0 = (tete ? tete.innerHTML : '') + dr_recitContenuED(rec0); dr_recitCopierED(html0, null, 'copié : le contenu de séance'); };
-    const rt = $('r-copie-travail'); if (rt) rt.onclick = () => { S.copieED = S.copieED || {}; S.copieED[S.heure] = Object.assign(S.copieED[S.heure] || {}, { t: now(), travail: true }); journal('copie-ed', { quoi: 'travail' }); const tt = texteTravail() || '(rien à faire)'; const li = dr_recitLienED(); /* (E4 · R22) lisait copier(texte) ; (mandat §4) le lien de l'espace de travail de la classe, s'il est saisi */ dr_recitCopierED('<p>' + dr_esc(tt).replace(/\n/g, '<br>') + '</p>' + (li ? '<p>L\u2019espace de travail de la classe : <a href="' + dr_esc(li) + '">' + dr_esc(li) + '</a></p>' : ''), tt + (li ? '\n\nL\u2019espace de travail de la classe : ' + li : ''), 'copié : le travail à faire'); };
+    const rt = $('r-copie-travail'); if (rt) rt.onclick = () => { S.copieED = S.copieED || {}; S.copieED[S.heure] = Object.assign(S.copieED[S.heure] || {}, { t: now(), travail: true }); journal('copie-ed', { quoi: 'travail' }); const tt = texteTravail() || '(rien à faire)'; /* (E4 · R22) lisait copier(texte). (relance E4, F8 tranché) pas de lien : /classes/<clé>/ed sert au texte du travail (E2) */ dr_recitCopierED('<p>' + dr_esc(tt).replace(/\n/g, '<br>') + '</p>', tt, 'copié : le travail à faire'); };
     const rf = $('r-figer'); if (rf) { const h = S.faceH || S.heure; const v = (S.recitVersion || {})[h] || 'site'; rf.outerHTML = `<span class="rv" style="font-size:.85rem"><span class="${v === 'site' ? 'on' : ''}" data-rv="site" title="Le récit se réécrit tout seul à chaque geste de l'heure. Ta version, si tu en as une, attend dans l'autre position : rien n'est perdu.">composé par le site</span><span class="${v === 'moi' ? 'on' : ''}" data-rv="moi" title="Le récit devient le tien : tu le corriges ici, il ne se réécrit plus ; ce qui se passe ensuite dans l'heure s'ajoute dessous, à part. C'est ce texte qui part (École Directe, le papier). S'il a déjà été copié pour École Directe, on te le demande d'abord.">ma version (modifier)</span></span>`; /* (E4) + les infobulles du sélecteur (contrat §8.6) */ $('rel').querySelectorAll('[data-rv]').forEach(b => b.onclick = () => basculerRecit(h, b.dataset.rv)); if (v === 'moi' && suiteDepuis(h)) { const rvb = $('rel').querySelector('.rv'); if (rvb && !$('rel-reprendre')) rvb.insertAdjacentHTML('beforeend', '<button class="btn" id="rel-reprendre" style="margin-left:8px" title="Colle à la fin de ta version ce que le site a raconté depuis que tu as pris la plume, pour n\'avoir qu\'un seul récit à corriger">Reprendre la suite dans ma version</button>'); const rr = $('rel-reprendre'); if (rr) rr.onclick = () => reprendreSuite(h); } if (v === 'moi') { const rvb = $('rel').querySelector('.rv'); if (rvb && !$('rel-undo')) { rvb.insertAdjacentHTML('beforeend', '<button class="btn" id="rel-undo" style="margin-left:8px" title="Revient à la version précédente de ton récit (l\u2019historique des versions datées)">↶</button><button class="btn" id="rel-redo" title="Revient à la version suivante">↷</button>'); const vv = versionsDe(h); const u = $('rel-undo'), rd = $('rel-redo'); u.disabled = vv.k <= 0; rd.disabled = vv.k >= vv.l.length - 1; u.onclick = () => { const w = versionsDe(h); if (w.k > 0) { w.k--; S.recitMoi[h] = w.l[w.k].html; journal('recit-version-precedente', { h }); relecture(); } }; rd.onclick = () => { const w = versionsDe(h); if (w.k < w.l.length - 1) { w.k++; S.recitMoi[h] = w.l[w.k].html; journal('recit-version-suivante', { h }); relecture(); } }; } } /* (E4 · relecteur neuf, cadrage 2 · 3.8) ↶ ↷ dans la Relecture aussi, comme au cahier (brancherFin, E2) */ const r = document.querySelector('#rel .recit.ma-version'); if (r) { r.contentEditable = 'true'; r.onfocus = () => { const c = (S.copieED || {})[h]; if (c && !((S.copieConfirme || {})[h] >= c.t)) { r.blur(); gardeCopie(h, () => r.focus()); } }; /* (E4 · relecteur 1, cadrage 2 · 3.8) toute modification après une copie ED passe par la garde */ r.oninput = () => { S.recitMoi[h] = r.innerHTML; if (!S._rvT) S._rvT = setTimeout(() => { S._rvT = null; poserVersion(h, r.innerHTML); journal('recit-modifie', { h }); dr_papierPreparer(h); /* (E4) la feuille prête suit la frappe */ }, 800); }; } } }, 0);
   const absents = ELEVES.filter(e => (S.appel[e] || []).some(x => x.heure === h)); if (absents.length && !bornes) { hh += `<h3>Le mot pour chaque absent (enregistré à la clôture)</h3>`; absents.forEach(e => { const seg = S.appel[e].filter(x => x.heure === h); const arr = seg.find(x => x.type === 'arrive'); const part = seg.find(x => x.type === 'parti'); const rev = seg.find(x => x.type === 'revenu');
     const b = arr ? { avant: arr.t } : part ? { apres: part.t, avant: rev ? rev.t : null } : null; const tronque = b ? recitHtml(fin, h, b) : null; const d2 = document.createElement('div'); if (tronque) d2.innerHTML = tronque; const paras = tronque ? Array.from(d2.querySelectorAll('.recit > p')).filter(x => !x.classList.contains('sous') && !x.classList.contains('cadre') && !x.classList.contains('bilan') && !x.classList.contains('devoirs')).map(x => x.outerHTML).join('') : '';
@@ -18598,18 +18624,22 @@ function dr_recitEcranVu(h, e){ if (!e) return e; const c = ((S.copie || {})[h] 
    et à la clôture ; un récit non corrigé se recompose depuis J (comme la maquette). Rien en répétition, rien dans l'atelier. */
 var DR_RECIT_ECRIT = {}, DR_RECIT_CHARGE = {}, DR_RECIT_EN_LECTURE = {};
 function dr_recitChamps(){ return ['recitVersion', 'recitMoi', 'recitMoiT', 'recitVersions', 'recitRelu', 'recitAChange', 'copieED']; }
-function dr_recitEtatDe(h){ const g = k => (S[k] || {})[h]; const v = g('recitVersions'); return { version: g('recitVersion') || 'site', texte: g('recitMoi') == null ? null : g('recitMoi'), moiT: g('recitMoiT') || null, versions: v ? v.l : [], k: v ? v.k : -1, relu: !!g('recitRelu'), aChange: !!g('recitAChange'), copieED: g('copieED') || null }; }
+function dr_recitEtatDe(h){ const g = k => (S[k] || {})[h]; const v = g('recitVersions'); return { version: g('recitVersion') || 'site', moi: g('recitMoi') == null ? null : g('recitMoi'), /* (relance E4, F2 tranché) « moi », comme S le tient */ moiT: g('recitMoiT') || null, versions: v ? v.l : [], k: v ? v.k : -1, relu: !!g('recitRelu'), aChange: !!g('recitAChange'), copieED: g('copieED') || null }; }
 function dr_recitPoser(h, o){ if (!o || typeof o !== 'object') return; const pose = (k, val) => { if (val == null) return; S[k] = S[k] || {}; if (S[k][h] == null) S[k][h] = val; };
-  pose('recitVersion', o.version && o.version !== 'site' ? o.version : null); pose('recitMoi', o.texte); pose('recitMoiT', o.moiT); if (o.versions && o.versions.length) pose('recitVersions', { l: o.versions, k: o.k != null && o.k >= 0 ? o.k : o.versions.length - 1 }); if (o.relu) pose('recitRelu', true); if (o.aChange) pose('recitAChange', true); if (o.copieED) pose('copieED', o.copieED); }
+  pose('recitVersion', o.version && o.version !== 'site' ? o.version : null); pose('recitMoi', o.moi != null ? o.moi : o.texte); pose('recitMoiT', o.moiT); if (o.versions && o.versions.length) pose('recitVersions', { l: o.versions, k: o.k != null && o.k >= 0 ? o.k : o.versions.length - 1 }); if (o.relu) pose('recitRelu', true); if (o.aChange) pose('recitAChange', true); if (o.copieED) pose('copieED', o.copieED); }
 function dr_recitChemin(){ try { if (DR_RECIT_CLASSE && typeof dr_cheminB === 'function' && !dr_recitEnCours()) return dr_cheminB() + '/deroule_joue/' + DR_RECIT_CLASSE; return typeof dr_cheminC === 'function' ? (dr_cheminC() || '') : ''; } catch (e) { return ''; } }
+/* (relance E4, I4 tranché) C/recit est indexé par la CLÉ DE L'HEURE (_drCleHeureDe : <iso>_<créneau>_<classe>), pas par son numéro :
+   l'heure en cours depuis AT_DR_COURS, une heure passée depuis ce qu'E2 a posé à son lancement (S.heuresCours[h].cle) */
+function dr_recitCle(h){ try { const x = (S.heuresCours || {})[h]; if (x && x.cle) return x.cle; } catch (e) {} try { if (h === S.heure && typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && typeof _drCleHeureDe === 'function') return _drCleHeureDe(AT_DR_COURS); } catch (e) {} return null; }
+function dr_recitHDeCle(cle){ try { const hc = S.heuresCours || {}; const h = Object.keys(hc).find(k => hc[k] && hc[k].cle === cle); if (h) return +h; if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && typeof _drCleHeureDe === 'function' && _drCleHeureDe(AT_DR_COURS) === cle) return S.heure; } catch (e) {} return /^\d+$/.test(cle) ? +cle : null; }
 function dr_recitHeuresTouchees(){ const hs = new Set(); dr_recitChamps().forEach(k => Object.keys(S[k] || {}).forEach(h => hs.add(+h))); return [...hs].filter(h => h > 0); }
 function dr_recitCharger(cb){ const C = dr_recitChemin(); if (!C || typeof dr_lire !== 'function') { if (cb) cb(); return; } if (DR_RECIT_EN_LECTURE[C]) { if (cb) setTimeout(cb, 300); return; } DR_RECIT_EN_LECTURE[C] = true;
-  dr_lire(C + '/recit', v => { DR_RECIT_EN_LECTURE[C] = false; if (v && typeof v === 'object') Object.keys(v).forEach(h => { if (v[h] && +h > 0) dr_recitPoser(+h, v[h]); });
+  dr_lire(C + '/recit', v => { DR_RECIT_EN_LECTURE[C] = false; if (v && typeof v === 'object') Object.keys(v).forEach(c => { const h = dr_recitHDeCle(c); if (v[c] && h > 0) dr_recitPoser(h, v[c]); });
     dr_recitHeuresTouchees().forEach(h => { DR_RECIT_ECRIT[C + '|' + h] = JSON.stringify(dr_recitEtatDe(h)); }); DR_RECIT_CHARGE[C] = true; if (cb) cb(); }); }
 function dr_recitAuto(){ try {
   if (typeof S === 'undefined' || S.repetition || S.atelier) return; const C = dr_recitChemin(); if (!C || typeof dr_ecrire !== 'function') return;
   if (!DR_RECIT_CHARGE[C]) { dr_recitCharger(); return; }   /* jamais une écriture avant d'avoir lu ce qui est au hub : on n'écrase pas un récit relu */
-  dr_recitHeuresTouchees().forEach(h => { const o = dr_recitEtatDe(h); const sig = JSON.stringify(o); if (DR_RECIT_ECRIT[C + '|' + h] === sig) return; DR_RECIT_ECRIT[C + '|' + h] = sig; o.maj = Date.now(); dr_ecrire(C + '/recit/' + h, o, 'Le récit de l’heure ' + h, () => {}); });
+  dr_recitHeuresTouchees().forEach(h => { const cle = dr_recitCle(h); if (!cle) return; /* sans clé d'heure, rien ne s'écrit */ const o = dr_recitEtatDe(h); const sig = JSON.stringify(o); if (DR_RECIT_ECRIT[C + '|' + h] === sig) return; DR_RECIT_ECRIT[C + '|' + h] = sig; o.maj = Date.now(); dr_ecrire(C + '/recit/' + cle, o, 'Le récit de l’heure ' + h, () => {}); });
 } catch (e) {} }
 setInterval(dr_recitAuto, 900);
 
@@ -18681,12 +18711,12 @@ function dr_recitSeanceTitre(){ try { const se = seance(); return (se && (se.tit
 /* le cadre du document dans l'écran (au pilote et au tableau, le même) : le titre, sa provenance (« vient de Structure · Séance N »),
    l'aperçu Drive / la page, ou la raison en clair quand il n'est pas encore lié */
 function dr_docHtmlRef(doc){ const prov = `<span class="dr-doc-prov">— cette fiche vient de Structure · Séance ${dr_esc(String(doc.seanceN))}</span>`;
-  const grand = !dr_recitAuTableau() && doc.url ? `<button class="btn dr-doc-grand" data-doc-grand="${dr_esc(doc.id)}" title="Ouvre le document en grand sur ton écran (pas au tableau) — la classe garde ce qu'elle voit">⤢ en grand</button>` : '';
+  const grand = '';   /* (relance E4, F5 tranché) la modale #doc-viewer du site n'est pas utilisée dans le déroulé */
   const corps = doc.url ? `<iframe class="dr-doc-cadre" src="${dr_esc(doc.url)}" title="${dr_esc(doc.titre)}" allow="autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe>`
-    : `<div class="pg dr-doc-vide">${doc.lie ? 'Ce document s’ouvre par le site (' + dr_esc(doc.type) + ') : il ne se projette pas dans l’écran.' : 'Ce document n’est pas encore lié dans Structure : lie-le dans Structure (🔗), il apparaîtra ici.'}</div>`;
+    : `<div class="pg dr-doc-vide">Ce document n’a pas d’adresse${doc.lie ? '' : ' : lie-le dans Structure (🔗), il apparaîtra ici'}.</div>`;
   setTimeout(() => document.querySelectorAll('[data-doc-grand]').forEach(b => { if (b._ok) return; b._ok = true; b.onclick = ev => { ev.stopPropagation(); dr_recitOuvrirItem(b.dataset.docGrand); }; }), 0);
   return `<div class="doc dr-doc-ref" data-doc-id="${dr_esc(doc.id)}"><h3>${dr_esc(doc.titre)} ${prov} ${grand}</h3>${corps}</div>`; }
-function dr_docsPanneau(l){ const x = $('fdocs-x'); if (x && !x.title) x.title = 'Ferme la liste des documents (ce qui est au tableau ne change pas)'; $('fdocs-l').innerHTML = l.map(d => `<div class="dr-c" style="padding:6px 0;border-top:1px solid var(--bord)"><b>${dr_esc(d.titre)}</b> <span style="color:var(--sourd)">Structure · Séance ${dr_esc(String(d.seanceN))}${d.url ? '' : d.lie ? ' · s’ouvre par le site' : ' · pas encore lié'}</span><div>${d.url ? `<button class="btn" data-doc="${dr_esc(d.id)}" style="margin-top:4px;padding:2px 8px" title="${S.doc && S.doc.id === d.id ? 'Ferme le document : la classe revient à la diapo' : 'Montre ce document au tableau, dans l’écran — la classe le voit tel que Structure le garde'}">${S.doc && S.doc.id === d.id ? '✕ Fermer (retour à la diapo)' : 'Projeter au tableau'}</button>` : d.lie ? `<button class="btn" data-doc-site="${dr_esc(d.id)}" style="margin-top:4px;padding:2px 8px" title="Ouvre ce document comme le site l’ouvre (sur ton écran)">Ouvrir</button>` : `<button class="btn" disabled style="margin-top:4px;padding:2px 8px" title="Ce document n’est pas encore lié dans Structure : rien à projeter">Projeter au tableau</button>`}</div></div>`).join('') || '<div style="color:var(--sourd)">aucun document dans cette séance (Structure)</div>';
+function dr_docsPanneau(l){ const x = $('fdocs-x'); if (x && !x.title) x.title = 'Ferme la liste des documents (ce qui est au tableau ne change pas)'; $('fdocs-l').innerHTML = l.map(d => `<div class="dr-c" style="padding:6px 0;border-top:1px solid var(--bord)"><b>${dr_esc(d.titre)}</b> <span style="color:var(--sourd)">Structure · Séance ${dr_esc(String(d.seanceN))}${d.url ? '' : ' · n’a pas d’adresse'}</span><div>${d.url ? `<button class="btn" data-doc="${dr_esc(d.id)}" style="margin-top:4px;padding:2px 8px" title="${S.doc && S.doc.id === d.id ? 'Ferme le document : la classe revient à la diapo' : 'Montre ce document au tableau, dans l’écran — la classe le voit tel que Structure le garde'}">${S.doc && S.doc.id === d.id ? '✕ Fermer (retour à la diapo)' : 'Projeter au tableau'}</button>` : `<button class="btn" disabled style="margin-top:4px;padding:2px 8px" title="Ce document n’a pas d’adresse (pas encore lié dans Structure, ou une application du site) : rien à projeter dans l’écran">Projeter au tableau</button>`}</div></div>`).join('') || '<div style="color:var(--sourd)">aucun document dans cette séance (Structure)</div>';
   $('fdocs-l').querySelectorAll('[data-doc]').forEach(b => b.onclick = () => { if (S.doc && S.doc.id === b.dataset.doc) { S.doc = null; /* le socle journalise la fermeture (pousser) */ } else { S.doc = dr_docEtat(b.dataset.doc); } dr_tout(); ouvrirDocs(); });
   $('fdocs-l').querySelectorAll('[data-doc-site]').forEach(b => b.onclick = () => dr_recitOuvrirItem(b.dataset.docSite)); }
 
@@ -18710,6 +18740,90 @@ function dr_recitChargerClasse(slug, cb){ if (dr_recitEnCours() || typeof dr_lir
 function brancherSelecteur(){ const sel = document.getElementById('dr-rel-classe'); if (!sel || sel._ok) return; sel._ok = true; sel.onchange = () => dr_recitChargerClasse(sel.value, () => relecture()); }
 
 </script>
+<script>
+/* ═══ dr/dr-recyclage.js ═══ */
+/* ═══════════════════════════════════════════════════════════════════════════════════════════════════════
+   dr-recyclage.js — E4, LE RECYCLAGE DE L'ANCIEN DÉROULÉ (relance E4-2, A : R1, R4, R2, R6, R5)
+   Les gestes qui marchaient dans l'ancien moteur (deroule86, tel qu'il est embarqué dans la production 8.74.0-③ :
+   AT_DR_B64 décodé) et que la maquette p8-5g ne faisait pas (MANDATS/INTEGRATION-DEROULE/RECYCLAGE-ANCIEN-DEROULE.md, table B).
+   Chargé après dr-recit.js. Dans le socle et l'Atelier d'E1, seulement des crochets d'une ligne marqués « E4 ».
+   ═══════════════════════════════════════════════════════════════════════════════════════════════════════ */
+
+/* ══ R1 · LES MARQUES SUR UNE IMAGE ══
+   L'ancien (moteur L605-650, L1602-1830) : un bloc image est « Document analysé » (b.support) ou « Illustration » ; sur un document
+   analysé, Paul pose des marques (b.marques = [{t, x, y, txt, w, h, x2, y2}] : t = pt ① point numéroté · et étiquette · fl flèche ·
+   cd cadre · lg légende ; x, y en % de l'image) ; il les édite en place (deux appuis rapprochés), les supprime (✕ ou Suppr) ; elles se
+   dévoilent « une à une » (b.devoilerTout === false : chacune est un élément de la diapo, comme une étape) ou « toutes ensemble » ;
+   elles se calent sur la largeur de l'image (calibreMarques : la même part de l'image au pilote et au tableau). */
+const DR_OUTILS_MK = [['pt', '① Point'], ['et', 'Étiquette'], ['fl', '→ Flèche'], ['cd', '▭ Cadre'], ['lg', 'Légende']];
+var DR_MK = { outil: null, sel: null, dernier: { k: -1, t: 0 } };
+function dr_mkDe(b){ return b && Array.isArray(b.marques) ? b.marques : []; }
+function dr_mkUneAUne(b){ return !!(b && b.support && b.devoilerTout === false); }
+/* pour elements() du socle : une marque dévoilable = un élément, son libellé (le récit dit « où on a repéré « … » ») */
+function dr_marquesElements(b){ return dr_mkUneAUne(b) ? dr_mkDe(b).map(m => m.txt || (m.t === 'fl' ? 'une flèche' : m.t === 'cd' ? 'un cadre' : '')) : []; }
+function dr_marquesNb(b){ return dr_marquesElements(b).length; }
+/* le rendu des marques dans .img-sup (crochet du socle, dans rendre) : k0 = le rang du premier élément de ce bloc dans la diapo */
+function dr_marquesHtml(b, bi, k0, et){
+  if (!b || !b.support) return ''; const une = dr_mkUneAUne(b), pilote = !!(et && (et.pilote || et.atelier)), nDev = (et && et.nDev) || 0;
+  const sel = (et && et.atelier && DR_MK.sel && DR_MK.sel.bi === bi) ? DR_MK.sel.k : null;
+  return dr_mkDe(b).map((m, j) => {
+    const pas = une && (k0 + j) >= nDev; if (pas && !pilote) return '';   /* au tableau, ce qui n'est pas dévoilé n'existe pas */
+    const cls = ' mk mk-' + m.t + (pas ? ' pas' : '') + (sel === j ? ' selmk' : '') + ((et && et.flash === k0 + j) ? ' spot-on' : '') + ((et && et.neuf === k0 + j) ? ' neuf-vu' : '');
+    const x = +m.x || 0, y = +m.y || 0, att = ` data-mk="${j}" data-bi="${bi}"` + (et && et.atelier ? ' title="Deux appuis rapprochés : écrire sur la marque ; Suppr : la retirer"' : '');
+    if (m.t === 'fl') { const x2 = m.x2 == null ? x + 14 : +m.x2, y2 = m.y2 == null ? y + 9 : +m.y2; const id = 'drfl' + bi + '_' + j;
+      return `<svg class="dr-flsvg${pas ? ' pas' : ''}" viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;pointer-events:none;width:100%;height:100%"><defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d1495b"/></marker></defs><line x1="${x}" y1="${y}" x2="${x2}" y2="${y2}" stroke="#d1495b" stroke-width="0.7" marker-end="url(#${id})" vector-effect="non-scaling-stroke"/></svg>`
+        + (m.txt ? `<span class="mk mk-lg${pas ? ' pas' : ''}${sel === j ? ' selmk' : ''}"${att} style="left:${(x + x2) / 2}%;top:${(y + y2) / 2 - 5}%"><span>${dr_esc(m.txt)}</span></span>` : (et && et.atelier ? `<span class="mk mk-fl${sel === j ? ' selmk' : ''}"${att} style="left:${x}%;top:${y}%"><span>•</span></span>` : '')); }
+    return `<span class="${cls.trim()}"${att} style="left:${x}%;top:${y}%${m.t === 'cd' ? `;width:${+m.w || 18}%;height:${+m.h || 14}%;transform:none` : ''}">${m.t === 'cd' ? '' : `<span>${dr_esc(m.txt || '')}</span>`}</span>`;
+  }).join(''); }
+/* calibreMarques : les marques se mesurent sur la LARGEUR DE L'IMAGE (au pilote, au tableau, dans les vignettes) */
+function dr_calibreMarques(racine){ (racine || document).querySelectorAll('.img-sup').forEach(s => { const mk = s.querySelectorAll('.mk'); if (!mk.length) return; const L = s.getBoundingClientRect().width; if (!L) return; mk.forEach(m => { m.style.fontSize = (L * 0.042) + 'px'; }); }); }
+/* le bloc image de la diapo de l'atelier, rangé : `marques` devient une propriété enregistrée (le socle la pose cachée tant qu'elle est vide) */
+function dr_mkBloc(bi){ try { const e = ecran(); if (!e) return null; const i = bi != null ? bi : e.blocs.findIndex(b => b.t === 'image'); const b = e.blocs[i]; if (!b || b.t !== 'image') return null; return { b, bi: i }; } catch (e) { return null; } }
+function dr_mkRendreEnregistrable(b){ const d = Object.getOwnPropertyDescriptor(b, 'marques'); if (!d || !d.enumerable) Object.defineProperty(b, 'marques', { value: Array.isArray(b.marques) ? b.marques.slice() : [], writable: true, enumerable: true, configurable: true }); }
+function dr_mkChanger(f, bi){ const o = dr_mkBloc(bi); if (!o) return; if (typeof dr_annulerEmpiler === 'function') dr_annulerEmpiler('marques'); dr_mkRendreEnregistrable(o.b); f(o.b); if (typeof dr_sauve === 'function') dr_sauve(); if (typeof journal === 'function') journal('atelier-modif', { quoi: 'marques', di: S.di }); dr_tout(); dr_mkPanneau(); }
+function dr_setSupport(v){ dr_mkChanger(b => { b.support = v; if (!v) b.marques = []; }); }
+function dr_setDev(v){ dr_mkChanger(b => { b.devoilerTout = v; }); }
+function dr_armeMk(o){ DR_MK.outil = (DR_MK.outil === o) ? null : o; document.body.classList.toggle('dr-pose-mk', !!DR_MK.outil); dr_mkPanneau(); }
+function dr_supMk(k, bi){ DR_MK.sel = null; dr_mkChanger(b => { b.marques.splice(k, 1); }, bi); }
+function dr_poseMk(ev, sup){ const blocEl = sup.closest('[data-bi]'); const bi = blocEl ? +blocEl.dataset.bi : null; const r = sup.getBoundingClientRect(); const outil = DR_MK.outil;
+  dr_mkChanger(b => { const n = b.marques.filter(m => m.t === 'pt').length + 1; b.marques.push({ t: outil, x: Math.round((ev.clientX - r.left) / r.width * 1000) / 10, y: Math.round((ev.clientY - r.top) / r.height * 1000) / 10, txt: outil === 'pt' ? String(n) : (outil === 'fl' ? '' : 'à écrire'), w: 18, h: 14 }); }, bi);
+  DR_MK.outil = null; document.body.classList.remove('dr-pose-mk'); dr_mkPanneau(); }   /* l'ancien gardait l'outil armé : le panneau le réarme d'un clic */
+function dr_editeMarque(mk){ const sp = mk.querySelector('span'); if (!sp) return; const k = +mk.dataset.mk, bi = +mk.dataset.bi;
+  sp.setAttribute('contenteditable', 'true'); sp.focus(); try { const r = document.createRange(); r.selectNodeContents(sp); const s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
+  let fini = false; const fin = annule => { if (fini) return; fini = true; sp.removeAttribute('contenteditable'); const t = sp.textContent.trim(); if (!annule) dr_mkChanger(b => { if (b.marques[k]) b.marques[k].txt = t; }, bi); else dr_tout(); };
+  sp.addEventListener('blur', () => fin(false), { once: true });
+  sp.addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Enter') { e.preventDefault(); sp.blur(); } if (e.key === 'Escape') { e.preventDefault(); fin(true); } }); }
+/* le panneau des marques (l'ancien « réglages » du bloc image), dans l'atelier, sur une diapo qui a une image */
+function dr_mkPanneau(){
+  let z = document.getElementById('dr-mk-panneau'); const actif = (typeof dr_actif !== 'function' || dr_actif()) && typeof S !== 'undefined' && S.atelier; const o = actif ? dr_mkBloc() : null;
+  if (!o) { if (z) z.remove(); DR_MK.outil = null; document.body.classList.remove('dr-pose-mk'); return; }
+  const hote = document.getElementById('droite-atelier') || document.getElementById('droite') || (document.getElementById('mur') || {}).parentElement; if (!hote) return; if (!z || z.parentElement !== hote) { if (z) z.remove(); z = document.createElement('div'); z.id = 'dr-mk-panneau'; hote.insertBefore(z, hote.firstChild); }   /* en tête de la colonne de droite : jamais sur l'image */
+  const b = o.b; let h = `<div class="dr-mk-t">Image · bloc ${o.bi + 1}</div><div class="dr-mk-l"><button class="btn${b.support ? ' on' : ''}" data-mk-a="support" title="Un document que la classe analyse : on y pose des marques (numéros, étiquettes, flèches, cadres, légendes)">Document analysé</button><button class="btn${b.support ? '' : ' on'}" data-mk-a="illustration" title="Une image qui illustre : pas de marques (passer en illustration retire les marques posées)">Illustration</button></div>`;
+  if (b.support) {
+    h += `<div class="dr-mk-s">Poser une marque${DR_MK.outil ? ' — <b>clique sur l’image</b>' : ''}</div><div class="dr-mk-l">${DR_OUTILS_MK.map(x => `<button class="btn${DR_MK.outil === x[0] ? ' on' : ''}" data-mk-o="${x[0]}" title="Arme l'outil « ${x[1]} » : le prochain clic sur l'image pose la marque à cet endroit">${x[1]}</button>`).join('')}</div>`
+      + `<div class="dr-mk-l"><button class="btn${b.devoilerTout === false ? ' on' : ''}" data-mk-a="une" title="En classe, ▶ dévoile les marques une à une, comme les étapes d'une consigne">Marques une à une</button><button class="btn${b.devoilerTout === false ? '' : ' on'}" data-mk-a="toutes" title="Toutes les marques paraissent ensemble avec l'image">Toutes ensemble</button></div>`
+      + `<div class="dr-mk-liste">${dr_mkDe(b).map((m, k) => `<div><b>${(DR_OUTILS_MK.find(x => x[0] === m.t) || ['', '?'])[1]}</b> ${dr_esc(m.txt || '')} <i>${Math.round(m.x)} % · ${Math.round(m.y)} %</i> <span class="dr-mk-x" data-mk-x="${k}" title="Retire cette marque">✕</span></div>`).join('') || '<i>aucune marque</i>'}</div>`;
+  }
+  if (z._h === h) return; z._h = h; z.innerHTML = h;   /* rien ne change : on ne touche à rien (le bouton survolé reste le même) */
+  z.querySelectorAll('[data-mk-a]').forEach(x => x.onclick = () => { const a = x.dataset.mkA; if (a === 'support') dr_setSupport(true); if (a === 'illustration') dr_setSupport(false); if (a === 'une') dr_setDev(false); if (a === 'toutes') dr_setDev(true); });
+  z.querySelectorAll('[data-mk-o]').forEach(x => x.onclick = () => dr_armeMk(x.dataset.mkO));
+  z.querySelectorAll('[data-mk-x]').forEach(x => x.onclick = () => dr_supMk(+x.dataset.mkX, o.bi));
+}
+/* les gestes sur l'image, dans l'atelier : poser (outil armé), sélectionner, éditer (deux appuis), supprimer (Suppr), Échap */
+document.addEventListener('click', ev => { try { if (!DR_MK.outil || typeof S === 'undefined' || !S.atelier) return; const sup = ev.target.closest && ev.target.closest('#mur .img-sup'); if (!sup) return; ev.preventDefault(); ev.stopPropagation(); dr_poseMk(ev, sup); } catch (e) {} }, true);
+document.addEventListener('mousedown', ev => { try { if (typeof S === 'undefined' || !S.atelier || DR_MK.outil) return; const mk = ev.target.closest && ev.target.closest('#mur .img-sup .mk'); if (!mk || mk.querySelector('[contenteditable="true"]')) return; const k = +mk.dataset.mk, bi = +mk.dataset.bi, t = Date.now();
+  if (DR_MK.dernier.k === k && t - DR_MK.dernier.t < 380) { DR_MK.dernier = { k: -1, t: 0 }; ev.preventDefault(); dr_editeMarque(mk); return; }
+  DR_MK.dernier = { k, t }; DR_MK.sel = { k, bi }; ev.preventDefault(); ev.stopPropagation(); dr_tout(); } catch (e) {} }, true);
+document.addEventListener('keydown', ev => { try { if (typeof S === 'undefined' || !S.atelier) return; const a = document.activeElement; if (a && (a.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(a.tagName))) return;
+  if (ev.key === 'Escape' && (DR_MK.outil || DR_MK.sel)) { DR_MK.outil = null; DR_MK.sel = null; document.body.classList.remove('dr-pose-mk'); dr_tout(); dr_mkPanneau(); }
+  if (ev.key === 'Delete' && DR_MK.sel) { ev.preventDefault(); ev.stopImmediatePropagation(); dr_supMk(DR_MK.sel.k, DR_MK.sel.bi); } } catch (e) {} }, true);
+/* après chaque rendu (pilote, atelier, tableau, vignettes) : calibrer ; le panneau suit la diapo de l'atelier */
+(function(){ let attente = false; const apres = () => { attente = false; dr_calibreMarques(document); dr_mkPanneau(); };
+  const obs = new MutationObserver(ms => { if (attente) return; if (ms.every(m => m.target && m.target.closest && m.target.closest('#dr-mk-panneau'))) return; attente = true; requestAnimationFrame(apres); });
+  const brancher = () => { obs.observe(document.body, { childList: true, subtree: true }); window.addEventListener('resize', () => dr_calibreMarques(document)); };
+  if (document.body) brancher(); else document.addEventListener('DOMContentLoaded', brancher); })();
+
+</script><!-- E4 : le recyclage (relance E4-2) -->
 <script>
 
 

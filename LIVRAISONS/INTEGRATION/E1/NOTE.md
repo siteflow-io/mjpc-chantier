@@ -67,15 +67,15 @@ Paul ouvre un chapitre, « Éditer dans l'atelier » (sur le chapitre comme sur 
 Tailles avant et après (`toString().length`) : **`E1/NOTE-fonctions.md`**, produit par `E1/outils/tailles.mjs`, rejouable. Pour ma part de `dr-classe`, la taille « après » est celle de la version d'E2, qui l'emporte. Les globales de la maquette restent telles quelles quand elles n'entrent pas en collision ; les 8 collisions mesurées sont préfixées `dr_`, comme les 11 classes `dr-*` et les 7 ids `dr-*`. Le banc `collisions` est à **0 / 0 / 0**.
 
 ## 5 · Les bancs
-- **Le banc d'E1** : `E1/bancs/banc.mjs`, un banc unique, **A1 à A22**, sur `assemble/index.html` et le faux hub. Il passe par les gestes réels, de l'entrée du site jusqu'à l'Atelier.
+- **Le banc d'E1** : `E1/bancs/banc.mjs`, un banc unique, **A1 à A25**, sur `assemble/index.html` et le faux hub. Il passe par les gestes réels, de l'entrée du site jusqu'à l'Atelier.
   - A1 collisions · A2 ce qui tombe · A3 la porte et la barre · A4 une modification → `B/deroule` · A5 Structure ↔ Atelier · A6 la colonne unique · A7 p8-5h et les tailles · A8 la trame ligne à ligne · A9 l'écriture complète · A10 l'Atelier entier.
   - A11 la mise en forme · A13 les blocs au clavier · A14 l'adresse d'une image · A18 les dettes · A19 la fiche ouverte · A20 la relance du 21/10 · A21 et A22 les relecteurs neufs · A23 la relecture continue d'E4 · A24 le réveil n°3 · A25 la relecture continue d'E4 (13:35-14:05).
   - A12, A15, A16 et A17 (R4, R2, R1, R5) sont partis avec le recyclage vers E4.
-  - **Dernier passage : 108 vérifications, 0 échec** (poussée 8), puis **124 vérifications, 0 échec** sur la poussée 9 (`2c24b230`, `E1/sorties/1157/banc-E1.txt`).
+  - **Dernier passage : 108 vérifications, 0 échec** (poussée 8), puis **124 vérifications, 0 échec** sur la poussée 9 (`2c24b230`, `E1/sorties/1157/banc-E1.txt`), **153 vérifications, 0 échec** sur la poussée 12 (`dfa8db4b`, `E1/sorties/1502/banc-E1.txt`). Depuis la poussée 12, il joue l'heure 1 d'une séance jamais jouée, comme les contrôles v2.2 (`MJPC_JOUE=1` garde l'heure du 07/09).
 - **Le banc de la conscience** (`banc.sh`) à chaque poussée, sorties dans `E1/sorties/<heure>/` :
   - collisions 0 / 0 / 0 ;
   - **PARCOURS VERT** ;
-  - mode test : zéro écriture au hub, mais l'outil compte P5 en échec (connu, côté outil) ;
+  - mode test : zéro écriture au hub — vert depuis le parcours v3 ;
   - **contrôles K1-K13 : 108 vérifications, 0 échec** (depuis la v2.1).
 - **Les gardes vérifiées à rebours :** les gardes F17 et C4/C5 sont rouges sur la page d'avant la correction et vertes après.
 
@@ -129,7 +129,7 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
   - **F2 + note** (grave) : le chiffre choisit le motif (allumé), la note s'écrit, Entrée pose ce qui est affiché — une seule pose ;
   - **hors heure lancée, rien au journal** (l'« heure 1 » fantôme de la Relecture venait de là) ;
   - le volet suit ▶ ; « + bloc » → la frappe remplace « Nouvelle consigne » ; Échap ferme le menu d'une étape ; en mode test, une pastille « mode test » au lieu d'« Enregistré à … ».
-- **Dernier passage (poussée 11, `4baa4215`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 144 / 0.
+- **Dernier passage (poussée 12, `dfa8db4b`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 153 / 0.
 
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
@@ -149,5 +149,4 @@ Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
 - **`dr_sauve` enveloppé par E4 (son R4) :** à arbitrer par la conscience (contrat §5).
 - **R14 au tableau** (la couche d'annotation de la classe, ANNOT) : à E3.
 - **R1, R2, R4, R5, R6 :** à E4. Les défauts relevés par le relecteur n°2 sur sa version sont transmis.
-- **Le parcours en mode test :** l'outil compte P5 en échec, alors que le site n'écrit rien en mode test. C'est l'outil (ouvert chez la conscience).
 - **Pour E2** : la copie jouée garde la fin d'heure de l'heure 1 quand l'EDT lance l'heure 2 (une vignette de plus) — A7 l'écrit tant qu'elle existe.

@@ -133,7 +133,7 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
 - **Le réveil n°7** : le témoin de l'entête lisible en entier au Pilotage (en fin d'entête) ; dans l'atelier, celui de sa barre dit l'heure. En heure lancée, un bloc neuf s'écrit par l'onglet Atelier (`#ong-atelier`) puis « ✎ clique ici et écris » ; le Pilotage n'a pas de zone (p8-4). La passe de dettes, une ligne par dette, est au JOURNAL (poussée 14).
 - **Le réveil n°8 — la copie jouée d'un autre jour** (contrat §12.8), gardé dans A27 : au lancement d'une heure, les retouches faites en classe aux heures d'avant passent dans la copie (`dr_copieReporter`) — un titre retouché le lundi est là le mardi ; au premier lancement, `dr_jouerCopie` fusionne la copie d'avant par eid avec la trame (une séance close repart de la trame). L'écran d'ouverture ne lève plus d'erreur sur une heure de la veille jamais close.
 - **Le réveil n°9** (gardé dans A28) : **deux graves** — l'onglet Atelier ouvert pendant l'heure écrit lui-même la copie de la classe en 900 ms (elle n'attendait plus le retour au Pilotage : une page quittée depuis l'atelier perdait la retouche) ; au retour au Pilotage, Paul retrouve la diapo où est la classe (le pilote et le tableau sautaient, sans garde, avec un « saut » au journal) ; la légende d'une image pleine sur deux lignes reste entière ; « Diapo suivante » dit « préparée / terminée à la maison — à reprendre » comme l'ouverture.
-- **Dernier passage (poussée 16, `2a88fffa`, sorties `2131`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 181 / 0 ; le grave 110 tient de bout en bout (A26).
+- **Dernier passage (poussée 17, `4478f3d4`, sorties `2214`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 182 / 0 ; le grave 110 tient de bout en bout (A26).
 
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
@@ -143,13 +143,13 @@ Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
 - le réveil n°2 (#dr-session, `dr_ctx` en vue tableau, le crochet `dr_versMur` d'E3, C4/C5) ;
 - l'entête à 1366.
 
-## 9 · Ce qui reste — jamais une dette cachée (NOTE finale, poussée 16, 21/10)
+## 9 · Ce qui reste — jamais une dette cachée (NOTE finale, poussée 17, 21/10)
 **À Paul (une décision, pas du code) :**
 - **13 · 12 — « texte au tableau » à 52 pt sur une diapo pleine** : aujourd'hui la police se réduit jusqu'au plancher (26 pt) et le libellé dit la taille obtenue (« 52 pt → 26 », la donnée part au tableau avec `policeRatio`) ; **passer en pages plutôt que réduire la police** est à trancher. La conscience la lui pose.
 - **Les activités sur la trame réelle** : le hub n'en porte aucune (0 `actId` sur 95 écrans) ; « Activité n — » paraît au récit dès qu'une activité est créée dans l'atelier (A24), pas avant. La ligne d'E4 « aucune Activité n — » reste donc vraie tant que Paul n'a pas déclaré ses activités (F8) — ou qu'il décide que les pseudo-activités d'E2 (une par diapo) en tiennent lieu.
 
 **Ouvert, mesuré, pas à moi seul :**
-- **La frontière d'heure hors classe** (E4, 20:50, moyen, E1/E2) : dans l'atelier et au Pilotage avant le lancement, la trame réelle met ses 19 diapos à l'heure 1 (§12.5) — « Séance 1 (1 h) », « l'heure 1 dépasse de 65 min » ; en classe, E2 pose la frontière par les durées (H1 H2 H3). Montrer hors classe les heures qu'E2 calculera demande que le socle appelle son calcul sans l'écrire : à décider avec E2 (qui pose la frontière, où elle s'écrit).
+- **La frontière d'heure hors classe** (réveil n°10) : **réglée** — le socle la pose au chargement de la séance par le calcul d'E2 (par les durées), sans rien écrire à l'ouverture ; l'atelier dit les mêmes heures que la classe (A28). Elle entre dans la trame à la prochaine modification de Paul ; une frontière qu'il pose lui-même n'est jamais refaite.
 - **Pour E2** : la copie jouée garde la fin d'heure d'une autre heure que celle lancée (une vignette de plus) — A7 l'écrit tant qu'elle existe.
 - **Entrée dans les panneaux « + bloc » et « Envoyer vers… »** (E4, passe complète) : Échap renonce partout, Entrée choisit dans la boîte du site ; dans ces deux panneaux il n'y a pas de choix par défaut à valider — Entrée n'y fait rien. Si Paul veut un choix par défaut (le premier objet, la séance suivante), c'est une ligne.
 - **R14 au tableau** (la couche d'annotation de la classe, ANNOT) : à E3. **R1, R2, R4, R5, R6** : à E4. **`dr_sauve` enveloppé par E4** : laissé (crochets d'une ligne).

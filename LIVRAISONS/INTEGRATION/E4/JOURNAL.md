@@ -315,3 +315,10 @@
 - **Reste ligne 118** : l'heure 3 après un rechargement, et « 0 diapo modifiée ».
 - La NOTE a sa ligne R1-R6 : tout est fait.
 - Bancs : mon banc **107 ok · 0 échec** (`sorties/1707-site-E4`) ; banc.sh **VERT** (`sorties/1712`).
+
+## Poussée 39 — 17:25 UTC
+- **Ligne 118 (« Le chapitre »)** : l'heure 3 reste après un rechargement (le « sur » de l'heure jouée), et les retouches en classe comptent (garde B3).
+- **Bancs :**
+  - Mon banc : **107 ok · 0 échec** (`sorties/1720-site-E4`).
+  - banc.sh : **VERT** (`sorties/1725`).
+- La reprise de la passe tourne sur `45607419` : 32 lignes, d'abord 110 et 129.

@@ -148,3 +148,22 @@
   - 12 lignes nouvelles, dont **8 à moi** (marque posée sans focus, phrase fantôme au rechargement, transpositions, annuler après « Marquer », annulation en rafale, menu de la sélection, « Ce qui s'est passé », espace insécable au papier).
   - Captures dans `relecteurs/continu-1238/`.
 - Ensuite : je corrige mes 8 lignes, une épreuve chacune.
+
+## Poussée 26 — 13:04 UTC
+- **Mes 8 lignes de B2 sont réglées**, chacune avec une garde au banc.
+- **dr-recyclage.js :**
+  - l'étiquette ou la légende posée prend la frappe ;
+  - chaque geste discret fait un pas de ↶ (`dr_annulerCoupure`) ;
+  - ↶ après « Marquer à écrire » recalcule les ✍ (`dr_ecrResynchro`) ;
+  - le clic droit sur une sélection ouvre le menu de la sélection, et Suppr supprime la sélection.
+- **dr-recit.js :**
+  - une diapo reloguée au rechargement ne compte plus (`dr_recitSansRepetes`), donc plus de phrase fantôme ni de « Ensuite, on a fait X » à chaque rechargement ;
+  - ce qui ne se transpose pas se cite (`dr_seCite`) ;
+  - l'impératif en tête se transpose ;
+  - « Ce qui s'est passé » signale la réponse sans élève, et la dernière diapo garde ce qui arrive à l'instant de sa fin ;
+  - le papier a ses espaces insécables (`dr_typo`).
+- **Bancs :**
+  - Mon banc : **82 ok · 0 échec** (`sorties/1258-site-E4`).
+  - banc.sh : K1-K13 108/0, parcours vert. Seul rouge, P5 en mode test, qui vient de l'outil (`sorties/1302`).
+- `assemble/index.html` est régénéré.
+- **Dette dite :** la phrase fantôme est gardée par un test unitaire (`dr_recitSansRepetes`), pas encore par un rechargement complet au banc. Le prochain relecteur la revérifie.

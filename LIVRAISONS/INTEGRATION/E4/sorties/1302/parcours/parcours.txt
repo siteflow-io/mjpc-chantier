@@ -1,0 +1,77 @@
+parcours du déroulé dans le site · 2026-10-21 13:02 UTC · fichier md5 8d55ee2102b2bb299dac0d1283457ac5 · 2170513 o · faux hub /home/user/mjpc-chantier/AUDITS/INTEGRATION-DEROULE/hub
+
+P0 — le panneau prof
+  ok     P0 · panneau ouvert
+
+P1 — l'emploi du temps
+  ok     P1 · la grille réelle (semaine du 14/09)
+
+P2 — la case de l'heure
+  ok     P2 · la case 3E Charles de Gaulle, bouton « lancer » — ▶ Ouvrir le pilotage et lancer | ✎ Préparer
+  ok     P2 · « Préparer » sur la case (E2)
+
+P3 — l'Atelier (préparation) depuis « Mes chapitres »
+  ok     P3 · la porte — Éditer dans l’atelier
+  ok     P3 · la barre fusionnée Structure · Atelier · Pilotage · Relecture (E1) — structure atelier pilotage relecture
+  ok     P3 · le déroulé p8 dans la page (#mur, #volet), sans iframe
+  ok     P3 · plus d'iframe at-dr-iframe
+  ok     P3 · la diapo 1 de la séance 0 au mur, avec ses lignes — 6 lignes
+
+P4 — le clic droit sur une étape
+  ok     P4 · menu ouvert (voir la capture)
+
+P5 — lancer la séance (la classe)
+  ok     P5 · lancée par Pilotage → [data-lancer=1] (E2) — 10 écritures
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+  ok     P5 · écrit au lancement : deroule_joue\/[^/]+$
+  ok     P5 · écrit au lancement : cours_actif$
+
+P6 — la parole (F2 / la case des initiales)
+  ok     P6 · voir la capture
+
+P7 — la palette (Maj+Espace)
+  ok     P7 · voir la capture
+
+P8 — la fenêtre du tableau
+  ok     P8 · fenêtre ouverte — file:///home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html?vue=tableau&loc
+  ok     P8 · la fenêtre est la page elle-même (?vue=tableau&local=1, E3)
+  ok     P8 · le tableau rend quelque chose — ANALYSE D'IMAGES : LA ROUTINE • Observe, discute, fais une hypothèse sur le Romantisme.
+
+P9 — la fin de l'heure
+  ok     P9 · les sept étapes de la maquette (#fin, E2)
+
+P10 — la Relecture
+  ok     P10 · Relecture ouverte — Le récit · heure 2 | Ce qui s'est passé · heure 2 | Papier · heure 2 | Le chapitre
+  ok     P10 · les faces de la maquette (E4)
+
+P11 — le Papier
+  ok     P11 · la face Papier de la Relecture (E4)
+
+P12 — la clôture
+  ok     P12 · clôture demandée (voir la capture)
+
+K15 — les écritures au hub pendant le parcours
+      PUT /corbeille/<heure>/edt-mise-a-niveau-grille_090000
+      PUT /site/edt/grille/2026-2027
+      PUT /site/edt/photos/2026-2027
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<heure>
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+  ok     K15 · 18 écritures, toutes sur des chemins permis
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS VERT

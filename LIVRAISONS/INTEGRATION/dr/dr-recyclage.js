@@ -36,17 +36,18 @@ function dr_calibreMarques(racine){ (racine || document).querySelectorAll('.img-
 /* le bloc image de la diapo de l'atelier, rangé : `marques` devient une propriété enregistrée (le socle la pose cachée tant qu'elle est vide) */
 function dr_mkBloc(bi){ try { const e = ecran(); if (!e) return null; const i = bi != null ? bi : e.blocs.findIndex(b => b.t === 'image'); const b = e.blocs[i]; if (!b || b.t !== 'image') return null; return { b, bi: i }; } catch (e) { return null; } }
 function dr_mkRendreEnregistrable(b){ const d = Object.getOwnPropertyDescriptor(b, 'marques'); if (!d || !d.enumerable) Object.defineProperty(b, 'marques', { value: Array.isArray(b.marques) ? b.marques.slice() : [], writable: true, enumerable: true, configurable: true }); }
-function dr_mkChanger(f, bi){ const o = dr_mkBloc(bi); if (!o) return; dr_mkRendreEnregistrable(o.b); f(o.b); if (typeof dr_sauve === 'function') dr_sauve(); if (typeof journal === 'function') journal('atelier-modif', { quoi: 'marques', di: S.di }); dr_tout(); dr_mkPanneau(); }
+function dr_mkChanger(f, bi, suite){ const o = dr_mkBloc(bi); if (!o) return; if (!suite && typeof dr_annulerCoupure === 'function') dr_annulerCoupure(); /* (E4 · relecteur continu B2) chaque marque posée, retirée, chaque réglage = un pas de ↶ (lisait : une rafale de 900 ms emportait trois marques d'un coup) */ dr_mkRendreEnregistrable(o.b); f(o.b); if (typeof dr_sauve === 'function') dr_sauve(); if (typeof journal === 'function') journal('atelier-modif', { quoi: 'marques', di: S.di }); dr_tout(); dr_mkPanneau(); }
 function dr_setSupport(v){ dr_mkChanger(b => { b.support = v; if (!v) b.marques = []; }); }
 function dr_setDev(v){ dr_mkChanger(b => { b.devoilerTout = v; }); }
 function dr_armeMk(o){ DR_MK.outil = (DR_MK.outil === o) ? null : o; document.body.classList.toggle('dr-pose-mk', !!DR_MK.outil); dr_mkPanneau(); }
 function dr_supMk(k, bi){ DR_MK.sel = null; dr_mkChanger(b => { b.marques.splice(k, 1); }, bi); }
 function dr_poseMk(ev, sup){ const blocEl = sup.closest('[data-bi]'); const bi = blocEl ? +blocEl.dataset.bi : null; const r = sup.getBoundingClientRect(); const outil = DR_MK.outil;
   dr_mkChanger(b => { const n = b.marques.filter(m => m.t === 'pt').length + 1; b.marques.push({ t: outil, x: Math.round((ev.clientX - r.left) / r.width * 1000) / 10, y: Math.round((ev.clientY - r.top) / r.height * 1000) / 10, txt: outil === 'pt' ? String(n) : (outil === 'fl' ? '' : 'à écrire'), w: 18, h: 14 }); }, bi);
-  DR_MK.outil = null; document.body.classList.remove('dr-pose-mk'); dr_mkPanneau(); }   /* l'ancien gardait l'outil armé : le panneau le réarme d'un clic */
-function dr_editeMarque(mk){ const sp = mk.querySelector('span'); if (!sp) return; const k = +mk.dataset.mk, bi = +mk.dataset.bi;
+  DR_MK.outil = null; document.body.classList.remove('dr-pose-mk'); dr_mkPanneau();
+  if (outil === 'et' || outil === 'lg') { const o = dr_mkBloc(bi); const k = o ? o.b.marques.length - 1 : -1; const ouvrir = n => { const mk = document.querySelector(`#mur .img-sup .mk[data-mk="${k}"][data-bi="${o ? o.bi : bi}"]`); if (mk) dr_editeMarque(mk, true); else if (n > 0) requestAnimationFrame(() => ouvrir(n - 1)); }; if (k >= 0) ouvrir(5); } }   /* (E4 · relecteur continu B2) une étiquette, une légende posées s'ouvrent à l'écriture : la frappe va dans la marque (lisait : Espace passait à la diapo suivante, « r » ouvrait la Relecture) */   /* l'ancien gardait l'outil armé : le panneau le réarme d'un clic */
+function dr_editeMarque(mk, posee){ const sp = mk.querySelector('span'); if (!sp) return; const k = +mk.dataset.mk, bi = +mk.dataset.bi;
   sp.setAttribute('contenteditable', 'true'); sp.focus(); try { const r = document.createRange(); r.selectNodeContents(sp); const s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
-  let fini = false; const fin = annule => { if (fini) return; fini = true; sp.removeAttribute('contenteditable'); const t = sp.textContent.trim(); if (!annule) dr_mkChanger(b => { if (b.marques[k]) b.marques[k].txt = t; }, bi); else dr_tout(); };
+  let fini = false; const fin = annule => { if (fini) return; fini = true; sp.removeAttribute('contenteditable'); const t = sp.textContent.trim(); if (!annule) dr_mkChanger(b => { if (b.marques[k]) b.marques[k].txt = t; }, bi, posee); else dr_tout(); };   /* le texte d'une marque qu'on vient de poser ne coupe pas une rafale en cours (la pose et son texte, tapé vite, font un pas) */
   sp.addEventListener('blur', () => fin(false), { once: true });
   sp.addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Enter') { e.preventDefault(); sp.blur(); } if (e.key === 'Escape') { e.preventDefault(); fin(true); } }); }
 /* le panneau des marques (l'ancien « réglages » du bloc image), dans l'atelier, sur une diapo qui a une image */
@@ -92,13 +93,16 @@ function dr_annulerSuivre(){ try { if (typeof S === 'undefined' || !S.atelier ||
 if (typeof dr_sauve === 'function' && !dr_sauve.__dr4) { const dr_sauve0 = dr_sauve; window.dr_sauve = function () { try { if (typeof S !== 'undefined' && S.atelier && !S.repetition && !DR_PILE.restaure) { dr_annulerSuivre();
       if (!DR_PILE.rafale && DR_PILE.dernier) { DR_PILE.l.push(DR_PILE.dernier); if (DR_PILE.l.length > 40) DR_PILE.l.shift(); }
       clearTimeout(DR_PILE.rafale); DR_PILE.rafale = setTimeout(() => { DR_PILE.rafale = null; try { DR_PILE.dernier = dr_photoTrame(); } catch (e) {} dr_annulerBouton(); }, 900); } } catch (e) {} return dr_sauve0.apply(this, arguments); }; window.dr_sauve.__dr4 = true; }
+function dr_annulerCoupure(){ /* clôt la rafale en cours : le geste qui suit s'empile seul */ try { if (DR_PILE.rafale) { clearTimeout(DR_PILE.rafale); DR_PILE.rafale = null; DR_PILE.dernier = dr_photoTrame(); } } catch (e) {} }
 function dr_annuler(){ if (typeof S === 'undefined' || !S.atelier || !DR_PILE.l.length) return false; clearTimeout(DR_PILE.rafale); DR_PILE.rafale = null;
-  const p = JSON.parse(DR_PILE.l.pop()); const E = seance().ecrans;
+  const p = JSON.parse(DR_PILE.l.pop()); const E = seance().ecrans; S.di = Math.min(p.di, E.length - 1); const ecrAvant = typeof dr_ecrDeLaTrame === 'function' ? dr_ecrDeLaTrame() : [];
   const neufs = p.e.map(x => { const h = x.__heure; delete x.__heure; Object.defineProperty(x, 'heure', { value: h, writable: true, enumerable: false, configurable: true }); return x; });
   E.splice(0, E.length, ...neufs); S.di = Math.min(p.di, E.length - 1); if (typeof reindexer === 'function') { try { reindexer(); } catch (e) {} }
-  DR_PILE.dernier = dr_photoTrame();
+  DR_PILE.dernier = dr_photoTrame(); dr_ecrResynchro(ecrAvant);
   DR_PILE.restaure = true; try { window.dr_sauve(); } finally { DR_PILE.restaure = false; }   /* la trame d'avant s'enregistre (B/deroule), sans s'empiler */
   if (typeof journal === 'function') journal('atelier-annuler', { di: S.di }); DR_MK.sel = null; dr_tout(); dr_annulerBouton(); return true; }
+/* (E4 · relecteur continu B2) ↶ après « Marquer à écrire » : l'écran suit la trame — les ✍ venus de la trame sont recalculés (lisait : la donnée annulée, les ✍ restés) */
+function dr_ecrResynchro(avant){ try { if (typeof etatDiapo !== 'function') return; const d = etatDiapo(); const t = dr_ecrDeLaTrame(); d.ecr = (d.ecr || []).filter(x => !avant.includes(x) || t.includes(x)); t.forEach(x => { if (!d.ecr.includes(x)) d.ecr.push(x); }); } catch (e) {} }
 /* le bouton ↶ dans la barre de l'atelier, grisé avec sa raison quand il n'y a rien à annuler */
 function dr_annulerBouton(){ const bar = document.getElementById('at-bloc'); if (!bar || !bar.parentElement) return; let b = document.getElementById('dr-annuler');
   if (!b) { b = document.createElement('button'); b.id = 'dr-annuler'; b.className = 'btn'; b.textContent = '↶ Annuler'; b.onclick = () => dr_annuler(); bar.parentElement.insertBefore(b, bar); }
@@ -154,8 +158,8 @@ function dr_selMenu(){ let m = document.getElementById('dr-sel-menu'); if (!DR_S
 function dr_selSup(){ const e = ecran(); const sous = DR_SEL.filter(x => x.ei != null && !DR_SEL.some(y => y.ei == null && y.bi === x.bi)), blocs = DR_SEL.filter(x => x.ei == null);
   sous.sort((a, b) => b.ei - a.ei).forEach(x => { const b = e.blocs[x.bi]; if (!b) return; const arr = b.t === 'question' ? b.reps : (Array.isArray(b.etapes) ? b.etapes : null); if (arr) arr.splice(x.ei, 1); });
   blocs.map(x => x.bi).sort((a, b) => b - a).forEach(bi => { if (e.blocs.length <= 1) return; e.blocs.splice(bi, 1); if (typeof p8NotesBloc === 'function') { try { p8NotesBloc(S.di, bi, 'supprimer'); } catch (er) {} } });
-  const n = DR_SEL.length; dr_selVide(); if (typeof marquerModif === 'function') marquerModif({ di: S.di, selection: 'supprimer', n }); dr_tout(); }
-function dr_selEcrire(){ const e = ecran(); const l = Array.isArray(e.aEcrire) ? e.aEcrire : []; DR_SEL.forEach(x => { const b = e.blocs[x.bi]; if (!b) return; const id = b.bid || b.id; const c = x.ei == null ? String(id) : id + '.' + x.ei; if (!l.includes(c)) l.push(c); }); e.aEcrire = l;
+  const n = DR_SEL.length; dr_selVide(); if (typeof dr_annulerCoupure === 'function') dr_annulerCoupure(); if (typeof marquerModif === 'function') marquerModif({ di: S.di, selection: 'supprimer', n }); dr_tout(); }
+function dr_selEcrire(){ if (typeof dr_annulerCoupure === 'function') dr_annulerCoupure(); const e = ecran(); const l = Array.isArray(e.aEcrire) ? e.aEcrire : []; DR_SEL.forEach(x => { const b = e.blocs[x.bi]; if (!b) return; const id = b.bid || b.id; const c = x.ei == null ? String(id) : id + '.' + x.ei; if (!l.includes(c)) l.push(c); }); e.aEcrire = l;
   try { const d = etatDiapo(); d.ecr = Array.from(new Set((d.ecr || []).concat(dr_ecrDeLaTrame(e)))); } catch (er) {}
   dr_selVide(); if (typeof marquerModif === 'function') marquerModif({ di: S.di, selection: 'a-ecrire' }); dr_tout(); }
 /* pour etatDiapo() (crochet du socle) : « à écrire » préparé dans la trame, en éléments de la diapo ('b'+bi pour un bloc, k pour une étape) */
@@ -166,4 +170,7 @@ document.addEventListener('mousedown', ev => { try { if (typeof S === 'undefined
   const i = DR_SEL.findIndex(y => y.bi === x.bi && y.ei === x.ei); if (i >= 0) DR_SEL.splice(i, 1); else DR_SEL.push(x); dr_selPeindre(); dr_selMenu(); } catch (e) {} }, true);
 document.addEventListener('click', ev => { try { if (DR_SEL.length && (ev.ctrlKey || ev.metaKey) && ev.target.closest && ev.target.closest('#mur')) { ev.preventDefault(); ev.stopImmediatePropagation(); } } catch (e) {} }, true);
 document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && DR_SEL.length) { dr_selVide(); } }, true);
+/* (E4 · relecteur continu B2) avec une sélection de deux éléments ou plus : le clic droit sur l'un d'eux ouvre le menu de la sélection (lisait : le menu d'un seul élément) ; Suppr hors d'un champ supprime la sélection */
+document.addEventListener('contextmenu', ev => { try { if (DR_SEL.length < 2 || typeof S === 'undefined' || !S.atelier) return; const el = ev.target.closest && ev.target.closest('#mur .dr-sel'); if (!el) return; ev.preventDefault(); ev.stopImmediatePropagation(); dr_selMenu(); const m = document.getElementById('dr-sel-menu'); if (m) { m.style.left = Math.min(ev.clientX, window.innerWidth - 240) + 'px'; m.style.top = Math.max(8, Math.min(ev.clientY, window.innerHeight - 140)) + 'px'; } } catch (e) {} }, true);
+window.addEventListener('keydown', ev => { try { if (!DR_SEL.length || typeof S === 'undefined' || !S.atelier || ev.key !== 'Delete') return; const a = document.activeElement; if (a && (a.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(a.tagName))) return; ev.preventDefault(); ev.stopImmediatePropagation(); dr_selSup(); } catch (e) {} }, true);
 (function(){ let k = null; const obs = new MutationObserver(() => { if (!DR_SEL.length) return; const c = (typeof S !== 'undefined') ? S.si + '|' + S.di + '|' + !!S.atelier : null; if (k && c !== k) { dr_selVide(); k = c; return; } k = c; dr_selPeindre(); }); const go = () => obs.observe(document.body, { childList: true, subtree: true }); if (document.body) go(); else document.addEventListener('DOMContentLoaded', go); })();

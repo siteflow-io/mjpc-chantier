@@ -73,6 +73,11 @@ await CAS('T1', 'la fenêtre locale montre ce que voit la classe, et suit sans r
   await fen.evaluate(() => { window.__pasRecharge = 1; }); await dev(pg, 1); await pg.waitForTimeout(700); const p1 = await lire(pg, 'pilote'), t1 = await lire(fen, 'tableau'); const garde = await fen.evaluate(() => window.__pasRecharge === 1);
   verif('T1', pareil(p1, t1) && t1.lignes.length === 4, 'un ▶ de plus : la fenêtre suit (quatre lignes, comme le pilote) dans les 700 ms', `pilote ${p1.lignes.length} l. · tableau ${t1 && t1.lignes.length} l.`);
   verif('T1', garde, 'sans rechargement de la fenêtre', String(garde)); await cap(fen, 'T1-fenetre-quatre-devoiles');
+  const errF = []; fen.on('pageerror', e => errF.push(String(e.message).slice(0, 120))); await fen.waitForTimeout(3000);
+  verif('T1', errF.length === 0, 'la fenêtre tourne 3 s sans aucune erreur JS (relecteurs 1 n° 5, 2 n° 1 : `tick` sans #fin)', errF.join(' ; ') || '0');
+  if (SITE) { const c3 = await nav.newContext(); await c3.route(u => !String(u).startsWith('file:'), r => r.abort()); const p3 = await c3.newPage(); const e3 = []; p3.on('pageerror', e => e3.push(String(e.message).slice(0, 120)));
+    await p3.goto(URL0 + '?vue=tableau&local=1'); await p3.waitForTimeout(4000); await c3.close();
+    verif('T1', e3.length === 0, 'la page `?vue=tableau&local=1` chargée seule tourne 4 s sans erreur JS', e3.length + ' erreur(s) ' + (e3[0] || '')); }
   await fen.close(); await fin('T1', o); });
 
 // T2 — le gel vu de la fenêtre (mandat point 5 ; cadrage 1 §2.1) : gelé, le pilote avance de trois ▶ et change de diapo — la fenêtre ne bouge pas ; dégelé ici, elle rattrape le pilote.
@@ -114,7 +119,7 @@ await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène su
   await tb.goto(URL0 + '?vue=tableau', { waitUntil: 'load' }); await tb.waitForTimeout(2500);
   const att = await tb.evaluate(() => { const a = document.getElementById('ses-tab-att') || document.getElementById('dr-attente'); return a && a.offsetParent !== null ? a.innerText.replace(/\s+/g, ' ').trim() : null; }); await cap(tb, 'T5-attente');
   verif('T5', !!att && /monsieurjaipascompris/i.test(att) && /\d\d:\d\d/.test(att), 'sans cours actif : l\'écran d\'attente (le nom du site, l\'heure, la date)', att || '—');
-  if (att && /Charles/i.test(att)) verif('T5', true, 'la classe attendue est dite', att); else absent('T5', 'la classe attendue (« 3e · <classe> ») — audit F1/I5, en attente de la conscience', att || '');
+  verif('T5', !!att && /Classe attendue : 3E Charles de Gaulle/.test(att) && /08:57/.test(att), 'à 08:50, l\'EDT dit qu\'une heure commence : la classe attendue est dite (lue dans la grille, en lecture seule)', att || '—');
   // le pilote publie : on recopie sa scène, son pointeur et sa copie dans le faux hub du distant (deux contextes ne partagent pas la mémoire — audit I2)
   const relais = async h => tb.evaluate(h => { window.__hubPoser('/site/cours_actif', h.c); window.__hubPoser(h.b + '/ecrans', h.ecrans); window.__hubPoser(h.b + '/scene', h.scene); }, h);
   await tb.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await relais(h0); const t0r = Date.now(); let vu = null;
@@ -131,6 +136,16 @@ await CAS('T5', 'le tableau distant (`?vue=tableau`) : attente, garde, scène su
   // une scène plus ancienne (ts antérieur) n'est jamais acceptée
   await tb.evaluate(h => { const s = Object.assign({}, h.scene, { nDev: 1, ts: h.scene.ts - 60000 }); window.__hubPoser(h.b + '/scene', s); }, h1); await pause(1500); const vieux = await lire(tb, 'tableau');
   verif('T5', !!vieux && vieux.lignes.length === 4, 'une scène plus ancienne que la dernière montrée est refusée', `${vieux && vieux.lignes.length} l.`);
+  // une scène dont l'heure n'est pas un nombre est ignorée (relecteur 2, n° 5c) ; une scène « du futur » ne bloque pas la suite (n° 5b)
+  await tb.evaluate(h => { window.__hubPoser(h.b + '/scene', Object.assign({}, h.scene, { nDev: 1, ts: '9999999999999' })); }, h1); await pause(1500); const txt = await lire(tb, 'tableau');
+  verif('T5', !!txt && txt.lignes.length === 4, 'une scène à l\'heure illisible (texte) est ignorée', `${txt && txt.lignes.length} l.`);
+  await tb.evaluate(h => { window.__hubPoser(h.b + '/scene', Object.assign({}, h.scene, { nDev: 2, ts: Date.now() + 3600000 })); }, h1); await pause(1500);
+  await tb.evaluate(h => { window.__hubPoser(h.b + '/scene', Object.assign({}, h.scene, { nDev: 3, ts: Date.now() + 1000 })); }, h1); await pause(1500); const apresFutur = await lire(tb, 'tableau');
+  verif('T5', !!apresFutur && apresFutur.lignes.length === 3, 'après une scène venue d\'une horloge en avance, la scène vraie suivante passe', `${apresFutur && apresFutur.lignes.length} l.`);
+  // le pilote absent (pointeur retiré) : une scène plus récente n'est pas acceptée (mandat point 5 ; relecteur 2, n° 5a)
+  await tb.evaluate(h => { window.__hubPoser('/site/cours_actif', null); }, h1); await pause(3600);
+  await tb.evaluate(h => { window.__hubPoser(h.b + '/scene', Object.assign({}, h.scene, { nDev: 1, ts: Date.now() + 5000 })); }, h1); await pause(1500); const absentP = await lire(tb, 'tableau');
+  verif('T5', !!absentP && absentP.lignes.length === 3, 'pointeur retiré : une scène plus récente est refusée, l\'image reste', `${absentP && absentP.lignes.length} l.`);
   // la garde : aucune écriture, aucune tentative
   const g = await tb.evaluate(() => ({ ecr: (window.__ECR || []).slice(), bloq: (window.SES && SES.ecrituresBloquees) | 0, mode: window.SES && SES.mode }));
   verif('T5', g.mode === 'tableau' && g.ecr.length === 0, 'K15 en vue tableau : zéro écriture au hub', g.ecr.join(' ') || '0');
@@ -182,6 +197,26 @@ await CAS('T8', 'le QR du tableau distant', async () => {
   verif('T8', ferme, '✕ ferme le QR', String(ferme));
   const apres = await pg.evaluate(() => window.__ECR.length); verif('T8', apres === avant, 'aucune écriture au hub (plus de /qrScans)', (apres - avant) + ' écriture(s)');
   await fin('T8', o); });
+
+// T9 — la fenêtre rechargée pendant que Paul est dans l'Atelier en pleine heure (relecteur 2, n° 3) : elle remontre ce que voit la classe.
+await CAS('T9', 'la fenêtre rechargée pendant l\'Atelier remontre la classe', async () => {
+  if (!SITE) { absent('T9', 'se joue sur le site'); return; }
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 3); const fen = await ouvrirTableau(pg); const a = await lire(fen, 'tableau');
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]') || document.getElementById('ong-atelier'); if (b) b.click(); }); await pg.waitForTimeout(800); await sansVoile(pg);
+  await fen.reload(); await fen.waitForTimeout(2000); const b = await lire(fen, 'tableau'); await cap(fen, 'T9-rechargee-pendant-atelier');
+  verif('T9', pareil(a, b) && b.lignes.length === 3, 'après F5 dans la fenêtre, Paul dans l\'Atelier : la diapo de la classe, trois lignes', `avant ${a && a.lignes.length} l. · après ${b ? b.lignes.length + ' l.' : 'rien'}`);
+  await fen.close(); await fin('T9', o); });
+
+// T10 — le distant dont la copie jouée est illisible : jamais une page blanche, l'attente reste (relecteur 2, n° 8).
+await CAS('T10', 'le distant sans copie jouée lisible garde l\'attente', async () => {
+  if (!SITE) { absent('T10', 'se joue sur le site'); return; }
+  const ctx2 = await nav.newContext({ viewport: { width: 1280, height: 720 }, timezoneId: 'Europe/Paris' }); await ctx2.route(u => !String(u).startsWith('file:'), r => r.abort());
+  const tb = await ctx2.newPage(); const errs2 = []; tb.on('pageerror', e => errs2.push(String(e.message).slice(0, 160))); await tb.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00'));
+  const st = hubStore(); const b = '/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle'; const t = new Date('2026-09-14T09:00:00+02:00').getTime();
+  await tb.addInitScript(fauxHub, st); await tb.goto(URL0 + '?vue=tableau', { waitUntil: 'load' }); await tb.waitForTimeout(500);
+  await tb.evaluate(({ b, t }) => { window.__hubPoser('/site/cours_actif', { niveau: '3e', chapitre: 0, seance: 0, classeSlug: '3E Charles de Gaulle', classeNom: '3E Charles de Gaulle', ts: t }); window.__hubPoser(b + '/scene', { si: 0, di: 0, eid: 'inconnu', nDev: 2, lum: [], ecr: [], reps: {}, ts: t + 10, origine: 'x', trameMaj: 0 }); }, { b, t });
+  await tb.waitForTimeout(4000); const vis = await tb.evaluate(() => { const a = document.getElementById('ses-tab-att'); return !!(a && a.offsetParent !== null); }); await cap(tb, 'T10-sans-copie');
+  verif('T10', vis, 'l\'écran d\'attente reste affiché (pas de page blanche)', String(vis)); verif('T10', !errs2.length, 'aucune erreur JS', errs2.join(' ; ') || undefined); await ctx2.close(); });
 
 dire(''); dire(`banc E3 : ${nb} vérifications, ${echecs} échec(s)` + (echecs ? ' — ROUGE' : ' — VERT'));
 if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }

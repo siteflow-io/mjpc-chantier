@@ -16769,7 +16769,7 @@ function sesTabChercherCours(){
   var t=setInterval(function(){
     sesGet(FIREBASE_BASE+'/site/cours_actif.json',function(c){
       if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000){
-        dr_tabDireClasse('Aucun cours en cours');
+        /* [E3] la ligne d'attente (classe attendue ou « Aucun cours en cours ») est tenue par dr_tabAttendre */
         return;
       }
       clearInterval(t);

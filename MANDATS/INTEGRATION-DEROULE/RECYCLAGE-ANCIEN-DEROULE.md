@@ -29,6 +29,21 @@ Côté site, repris par le contrat : la copie jouée par classe, le paquet de l'
 | R11 | **Le zoom / la scission / les suites / la réabsorption** (LOT G, « Tout replier dans l'écran d'origine ») | moteur : `zoom`, `scinde`, `degorge`, `reabsorbe`, `supprimeSuite` ; pont : `_drRefusionner`… | non — remplacé par les **pages** (p8-5f) | **non** : dette LOT G (registre, « s'il faut refaire le moteur, il faut »), c'est précisément ce que les pages règlent | tombe, voulu |
 | R12 | **Les onglets du moteur** « Sommaire » et « Documents » | moteur : `ong` | — | oui | couverts : Sommaire = la colonne du site (contrat §8.3), Documents = Structure (cadrage n°7) |
 
+## B bis · Ajouts des exécutants (mission 0, 21/10) — attribués au réveil n°2
+| | le geste | où dans `deroule97` | recyclé par |
+|---|---|---|---|
+| R13 | **G et S** (gras, souligné) — la table A les disait « repris » : **faux**, la maquette n'a que la couleur et le surligneur | `forme`, boutons | E1 |
+| R14 | **la fiche ouverte se pilote comme une diapo** (▶ bloc à bloc, ✍🏻, annotée par la classe, « tu la prépares — la classe ne la voit pas encore ») | `rendre`, `elems`, `marqueFiche`, `corpsFiche`, `envoie` | E1 (couche commune), E3 (au tableau) |
+| R15 | **le récit cite le surligné et le recopié** (« où on a surligné « … » », « On a recopié dans le cahier : … ») | `citations`, `lisible`, `majVues` | E4 |
+| R16 | **le Papier = le récit + chaque fiche annotée, « à coller dans le cahier »**, une page A4 chacune | `majVues` | E4 |
+| R17 | **Ctrl/Cmd+V colle les blocs copiés** | keydown | E1 |
+| R18 | **Ctrl+H bascule** (retire le surlignage sur un passage surligné) | `forme`, `dansSurligne` | E1 |
+| R19 | **⌫ = ◀ replier** au pilotage | keydown | E2 |
+| R20 | **les raccourcis avec Cmd (Mac)** | keydown | E1 |
+| R21 | **changer l'adresse d'une image posée**, « image absente de mjpc-medias · ref » | `reglages`, `setRef`, `urlMedia` | E1 |
+| R22 | **la copie pour École Directe en HTML propre** (`text/html` + `text/plain`) | `copierED` | E4 |
+Corrections de la table B par les audits : R6 vit dans le keydown, pas dans `touche` ; R3 : le « Chrono au tableau » de la maquette est un bandeau figé « ⏱ 07:00 » ; R11 : la réglette de taille (`zoom`) est reprise, seule la réabsorption des suites tombe. Attribution finale : R1, R2, R4, R5, R6 → E4 (`dr-recyclage.js`, mission E4-2).
+
 ## C · Ce qui est à Paul
 - Rayer dans B ce dont il ne se sert pas (R5, R6 sont les candidats).
 - Dire si R3 (le minuteur d'activité) doit aussi s'écrire dans le récit (« 5 min de silence, montre en main ») — ma proposition : oui, une ligne dans `J` (`journal('minuteur')`).

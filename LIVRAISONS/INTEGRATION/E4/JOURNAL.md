@@ -322,3 +322,13 @@
   - Mon banc : **107 ok · 0 échec** (`sorties/1720-site-E4`).
   - banc.sh : **VERT** (`sorties/1725`).
 - La reprise de la passe tourne sur `45607419` : 32 lignes, d'abord 110 et 129.
+
+## Poussée 40 — 17:56 UTC
+- **Reprise de la passe sur `45607419` consignée** : 32 lignes revérifiées, 5 réglées (dont les lignes 129 et 95 : la reprise rend la même heure), 27 pas réglées. La ligne 110 (le bloc écrit en classe effacé par la reprise) n'est **pas réglée** : c'est chez E1/E2. Les captures citées sont dans `relecteurs/passe-1730/`.
+- **Mes trois lignes réglées**, avec gardes :
+  - L12 : « Activité n — » pour une diapo sans activité déclarée, comme le fait « Où on en est » ;
+  - L13 : après l'heure, la Relecture n'écrit que `C/recit` (`dr_recitJournal`, `recitCorr`) ;
+  - L88 : rechargée sans reprise, les rangs se refont depuis `S.ordresEid`.
+- **Bancs :**
+  - Mon banc : **108 ok · 0 échec** (`sorties/1752-site-E4`).
+  - banc.sh : **VERT** (`sorties/1757`).

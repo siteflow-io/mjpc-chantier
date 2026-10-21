@@ -463,3 +463,14 @@
   - la garde de recul numérotée sur la trame (faible) ;
   - « Préparer » qui garde ses vignettes (faible) ;
   - « la liste à droite » (très faible).
+
+## Poussée 53 — 22:18 UTC
+- **Les deux graves revérifiées sur `024dd94e`**, par le geste exact, aux deux tailles :
+  - **L148 : pas réglée.**
+    - Revenir de l'Atelier au Pilotage fait toujours sauter la classe, sans garde.
+    - Le journal reçoit `copie-classe {atelier:true}` pendant que l'Atelier est ouvert, puis le saut.
+    - Le récit raconte donc une activité que la classe n'a pas travaillée. Il lit le journal ; la cause est l'entrée journalisée (E1/E2).
+  - **L149 : réglée pour la perte.**
+    - La copie est écrite sans revenir au Pilotage (≈ 1,95 s), et la retouche survit au rechargement et à la reprise.
+    - Réserve : le témoin ne passe jamais à « enregistré ».
+- **L'audit final reste bloqué par L148.** Je la revérifierai à la prochaine poussée d'E1 ou d'E2.

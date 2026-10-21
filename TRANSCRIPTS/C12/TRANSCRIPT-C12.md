@@ -23186,3 +23186,23 @@ Envoyé à Paul, mot pour mot :
 31. Je reprends avec un exemple. Lundi, tu arrêtes une séance après Q3, sans avoir cliqué « Révéler » pour Q3. Le soir, dans « Lire les copies », tu lis la feuille de Tom pour Q3 : sa note est complète. Mardi, tu rouvres cette séance avec « 🔓 Rouvrir » pour poser Q4. Pendant qu'elle tourne, la note de Tom dit de nouveau « Q3 pas encore lue », alors que tu l'as lue lundi soir. Quand tu termines la séance, Q3 compte de nouveau. Ma proposition : la feuille que tu as lue le soir compte tout le temps, même pendant que la séance rouverte tourne. Tu valides ?
 
 21/10/2026 09:43 MEMO
+
+## TOUR 756 — Paul, 21/10 09:45
+
+Paul, mot pour mot :
+
+oui, mais si je ne lis pas les copies le soir?
+
+Lu : `A.rouvrirSeance` (`live/base.js` : la séance repasse en cours, les copies rendues sont masquées, l'appel de la reprise) ; rien ne dit, sans mesure, si la correction de Q3 se reprend en classe. Fait : les points 12 à 14 de la section (`code-qcm` `00cc73c6`) ; dette n°12 · 222 (production).
+
+Envoyé à Paul, mot pour mot :
+
+31. Noté pour le oui. Si tu ne lis pas les copies le soir, rien n'est perdu, et rien n'est compté de travers : Q3 reste « pas encore lue », la note de Tom n'est pas complète, et « Rendre les copies » attend que tu l'aies lue. Tu peux la lire quand tu veux, pas seulement le soir même : « Lire les copies » te la propose tant que tu ne l'as pas lue. Une chose que je ne sais pas encore : si tu rouvres la séance sans avoir lu les copies, est-ce que tu peux corriger Q3 en classe, avec « Révéler » ? Je le fais vérifier par QCM-4 dans le même banc, et je te dis ce qu'il voit.
+
+Les exécutants se sont arrêtés à 09:32, sur mon « contrôlé ». Il faut relancer QCM-1, QCM-3 et QCM-4. Voici le message à coller, le même dans les trois sessions :
+
+« La séance rouverte : lis, en tête de https://github.com/siteflow-io/mjpc-chantier/blob/code-qcm/LIVRAISONS/CODE-QCM/DEFAUTS-OUVERTS.md (branche code-qcm), dans la section « Le temps tapé, et la note d'une séance arrêtée avant la fin — 19/10/2026 », le bloc de 09:45 et ses points 12 à 14, et fais ta part : QCM-1 et QCM-3 codent, QCM-4 rejoue tout et mesure. La livraison est poussée une heure après ce message, avec ta ligne dans ETAT.md ; QCM-4 pousse VERDICT.md trente minutes plus tard. Tu tournes jusqu'à ce que la conscience écrive « contrôlé » sous ces points 12 à 14. »
+
+Dis-moi à quelle heure tu l'as collé : je programme mon contrôle une heure et demie après.
+
+21/10/2026 09:46 MEMO

@@ -1920,3 +1920,17 @@ Réponse de la conscience (21:24), mot pour mot :
 
 21/10/2026 21:24
 MEMO
+
+## TOUR 90 (21/10/2026, 21:35 → 21:37)
+
+Paul (21:35), mot pour mot :
+« Tu es sûr ? »
+
+Mesuré (21:35-21:37) : le fichier de production `correction_dictee.html` porte `6.7.0-L17-1q3` (une seule occurrence, aucune version plus récente) ; le registre dit « PAUSE … production 6.7.0-L17-1q3 » au 07/10 et ne porte aucune entrée sur la dictée après cette date ; aucun des 19 numéros n'a de marque ✔ / réglée / promue dans son corps ; le sas n'a aucune livraison DICTEE après le 06/10 (`LIVRAISONS/DICTEE-CORRECTION`, dernier commit « L15.1b-1d » du 06/10) ; l'historique git du dépôt de production a été aplati le 11/10 (un seul commit racine), donc les commits d'avant le 11/10 ne sont plus lisibles — ce que je ne peux pas voir : une poussée faite par Paul lui-même entre le 07 et le 11/10 sans entrée au registre.
+
+Réponse de la conscience (21:37), mot pour mot :
+
+178. Sûr de ce que je peux mesurer : le fichier en production porte la version 6.7.0-L17-1q3, celle de la pause du 7 octobre ; le registre n'a aucune entrée sur la dictée depuis ; aucune des 19 dettes n'y est marquée réglée ; le sas n'a aucune livraison de dictée après le 6 octobre. Ce que je ne peux pas voir : l'historique du dépôt de production a été aplati le 11 octobre (un seul commit), donc si tu as poussé toi-même une version entre le 7 et le 11, je ne la vois pas — mais le fichier qui est en ligne est bien celui de la pause. Si une de ces 19 lignes est réglée à ta connaissance, dis laquelle et je la mesure dans le code.
+
+21/10/2026 21:37
+MEMO

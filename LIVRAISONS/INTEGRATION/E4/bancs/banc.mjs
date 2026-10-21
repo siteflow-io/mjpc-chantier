@@ -216,6 +216,27 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   HUB_PERSISTANT = null; }
 else verif('RC1', null, 'R1 les marques', 'se mesure sur le site');
 
+// ═════ RC4 · R4 du recyclage : ↶ Annuler (Ctrl+Z) dans l'Atelier — trois gestes, trois ↶, à l'identique (eid, id, texte) ; Ctrl+Z dans un champ reste celui du navigateur ═════
+if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1200); if (await pg.$('#at-aide .x')) await pg.click('#at-aide .x');
+  const etat = () => pg.evaluate(() => JSON.stringify(seance().ecrans.map(e => e.eid + ':' + e.blocs.map(b => b.id + '=' + (b.txt || '') + '|' + (b.el || []).join('¦')).join('/'))));
+  const b0 = await pg.evaluate(() => { const b = document.getElementById('dr-annuler'); return b ? { dis: b.disabled, t: b.title } : null; });
+  verif('RC4', b0 && b0.dis && /Rien à annuler/.test(b0.t), '« ↶ Annuler » dans la barre de l\'atelier, grisé avec sa raison tant que rien n\'a changé', JSON.stringify(b0));
+  const e0 = await etat();
+  const t = await pg.$('#mur [data-p="0.t"]'); await t.click(); await pg.keyboard.press('End'); await pg.keyboard.type(' — ajout du banc'); await p(pg, 300);
+  await pg.keyboard.type('X'); await pg.keyboard.press('Control+z'); await p(pg, 300); const champ = await pg.evaluate(() => ({ txt: document.querySelector('#mur [data-p="0.t"]').textContent, pile: DR_PILE.l.length }));
+  await pg.keyboard.press('Escape'); await p(pg, 1200); const e1 = await etat();
+  verif('RC4', !/ajout du bancX/.test(champ.txt) && /ajout du banc/.test(champ.txt), 'dans un champ de texte, Ctrl+Z est celui du navigateur (il retire la dernière frappe, pas un geste de la trame)', JSON.stringify(champ));
+  await pg.evaluate(() => document.activeElement && document.activeElement.blur()); await pg.keyboard.press('Alt+ArrowDown'); await p(pg, 1200); const e2 = await etat();
+  pg.removeAllListeners('dialog'); pg.on('dialog', d => d.accept()); await pg.keyboard.press('Delete'); await p(pg, 1400); const e3 = await etat();
+  verif('RC4', e0 !== e1 && e1 !== e2 && e2 !== e3, 'trois gestes de la trame : un texte modifié, un ordre changé (Alt+↓), une diapo supprimée (Suppr)', null);
+  await pg.keyboard.press('Control+z'); await p(pg, 500); const u1 = await etat(); await pg.keyboard.press('Control+z'); await p(pg, 500); const u2 = await etat(); await pg.click('#dr-annuler'); await p(pg, 500); const u3 = await etat();
+  verif('RC4', u1 === e2 && u2 === e1 && u3 === e0, 'trois ↶ (Ctrl+Z, Ctrl+Z, le bouton) : la diapo revient, l\'ordre revient, le texte revient — à l\'identique (eid, id, texte)', [u1 === e2, u2 === e1, u3 === e0].join(','));
+  await p(pg, 1500); const hub = await pg.evaluate(() => JSON.stringify(window.__HUB.site['3e'].chapitres[0].seances[0].deroule.ecrans.map(e => e.eid)));
+  verif('RC4', hub === JSON.stringify(JSON.parse(e0).map(x => x.split(':')[0])), 'la trame d\'avant est réenregistrée au hub (B/deroule)', hub.slice(0, 200));
+  verif('RC4', o.errs.length === 0, 'zéro erreur JS', JSON.stringify(o.errs)); await cap(pg, 'E4-RC4-annuler'); await o.ctx.close(); }
+else verif('RC4', null, 'R4 annuler', 'se mesure sur le site');
+
 await nav.close();
 dire(`— fin : ${nbOk} ok · ${nbEchec} échec(s) · ${nbAbsent} absent(s) — ${nbEchec ? 'ROUGE' : 'VERT'}`);
 fs.writeFileSync(path.join(OUT, 'banc-E4.txt'), L.join('\n') + '\n');

@@ -18780,7 +18780,7 @@ function dr_calibreMarques(racine){ (racine || document).querySelectorAll('.img-
 /* le bloc image de la diapo de l'atelier, rangé : `marques` devient une propriété enregistrée (le socle la pose cachée tant qu'elle est vide) */
 function dr_mkBloc(bi){ try { const e = ecran(); if (!e) return null; const i = bi != null ? bi : e.blocs.findIndex(b => b.t === 'image'); const b = e.blocs[i]; if (!b || b.t !== 'image') return null; return { b, bi: i }; } catch (e) { return null; } }
 function dr_mkRendreEnregistrable(b){ const d = Object.getOwnPropertyDescriptor(b, 'marques'); if (!d || !d.enumerable) Object.defineProperty(b, 'marques', { value: Array.isArray(b.marques) ? b.marques.slice() : [], writable: true, enumerable: true, configurable: true }); }
-function dr_mkChanger(f, bi){ const o = dr_mkBloc(bi); if (!o) return; if (typeof dr_annulerEmpiler === 'function') dr_annulerEmpiler('marques'); dr_mkRendreEnregistrable(o.b); f(o.b); if (typeof dr_sauve === 'function') dr_sauve(); if (typeof journal === 'function') journal('atelier-modif', { quoi: 'marques', di: S.di }); dr_tout(); dr_mkPanneau(); }
+function dr_mkChanger(f, bi){ const o = dr_mkBloc(bi); if (!o) return; dr_mkRendreEnregistrable(o.b); f(o.b); if (typeof dr_sauve === 'function') dr_sauve(); if (typeof journal === 'function') journal('atelier-modif', { quoi: 'marques', di: S.di }); dr_tout(); dr_mkPanneau(); }
 function dr_setSupport(v){ dr_mkChanger(b => { b.support = v; if (!v) b.marques = []; }); }
 function dr_setDev(v){ dr_mkChanger(b => { b.devoilerTout = v; }); }
 function dr_armeMk(o){ DR_MK.outil = (DR_MK.outil === o) ? null : o; document.body.classList.toggle('dr-pose-mk', !!DR_MK.outil); dr_mkPanneau(); }
@@ -18822,6 +18822,33 @@ document.addEventListener('keydown', ev => { try { if (typeof S === 'undefined' 
   const obs = new MutationObserver(ms => { if (attente) return; if (ms.every(m => m.target && m.target.closest && m.target.closest('#dr-mk-panneau'))) return; attente = true; requestAnimationFrame(apres); });
   const brancher = () => { obs.observe(document.body, { childList: true, subtree: true }); window.addEventListener('resize', () => dr_calibreMarques(document)); };
   if (document.body) brancher(); else document.addEventListener('DOMContentLoaded', brancher); })();
+
+/* ══ R4 · ↶ ANNULER (Ctrl+Z) DANS L'ATELIER ══
+   L'ancien (moteur L555-556) : sauve() empile l'état de la trame avant chaque modification (40 au plus), annuler() le dépile et redessine.
+   Ici : toute modification de l'atelier passe par marquerModif() → dr_sauve() (E1) ; dr_sauve est enveloppée (rien n'est réécrit chez E1) :
+   au premier appel d'une rafale, l'état d'AVANT (le dernier état posé) est empilé ; 900 ms sans modification, l'état courant devient
+   le dernier état posé. ↶ (ou Ctrl+Z hors d'un champ) reprend l'état empilé : blocs, textes, ordre, marques — par identité (eid, bid).
+   Dans un champ de texte, Ctrl+Z reste celui du navigateur. Rien en classe (la copie de la classe n'est pas la trame). */
+var DR_PILE = { cle: null, l: [], dernier: null, rafale: null };
+function dr_annulerCle(){ try { return String(dr_ctx().snum) + '|' + String(S.si); } catch (e) { return null; } }
+function dr_photoTrame(){ const E = seance().ecrans; return JSON.stringify({ e: E.map(e => Object.assign(JSON.parse(JSON.stringify(e)), { __heure: e.heure })), di: S.di }); }
+function dr_annulerSuivre(){ try { if (typeof S === 'undefined' || !S.atelier || S.repetition) return; const k = dr_annulerCle(); if (k !== DR_PILE.cle) { DR_PILE = { cle: k, l: [], dernier: dr_photoTrame(), rafale: null }; dr_annulerBouton(); } else if (DR_PILE.dernier == null && !DR_PILE.rafale) DR_PILE.dernier = dr_photoTrame(); } catch (e) {} }
+if (typeof dr_sauve === 'function' && !dr_sauve.__dr4) { const dr_sauve0 = dr_sauve; window.dr_sauve = function () { try { if (typeof S !== 'undefined' && S.atelier && !S.repetition && !DR_PILE.restaure) { dr_annulerSuivre();
+      if (!DR_PILE.rafale && DR_PILE.dernier) { DR_PILE.l.push(DR_PILE.dernier); if (DR_PILE.l.length > 40) DR_PILE.l.shift(); }
+      clearTimeout(DR_PILE.rafale); DR_PILE.rafale = setTimeout(() => { DR_PILE.rafale = null; try { DR_PILE.dernier = dr_photoTrame(); } catch (e) {} dr_annulerBouton(); }, 900); } } catch (e) {} return dr_sauve0.apply(this, arguments); }; window.dr_sauve.__dr4 = true; }
+function dr_annuler(){ if (typeof S === 'undefined' || !S.atelier || !DR_PILE.l.length) return false; clearTimeout(DR_PILE.rafale); DR_PILE.rafale = null;
+  const p = JSON.parse(DR_PILE.l.pop()); const E = seance().ecrans;
+  const neufs = p.e.map(x => { const h = x.__heure; delete x.__heure; Object.defineProperty(x, 'heure', { value: h, writable: true, enumerable: false, configurable: true }); return x; });
+  E.splice(0, E.length, ...neufs); S.di = Math.min(p.di, E.length - 1); if (typeof reindexer === 'function') { try { reindexer(); } catch (e) {} }
+  DR_PILE.dernier = dr_photoTrame();
+  DR_PILE.restaure = true; try { window.dr_sauve(); } finally { DR_PILE.restaure = false; }   /* la trame d'avant s'enregistre (B/deroule), sans s'empiler */
+  if (typeof journal === 'function') journal('atelier-annuler', { di: S.di }); DR_MK.sel = null; dr_tout(); dr_annulerBouton(); return true; }
+/* le bouton ↶ dans la barre de l'atelier, grisé avec sa raison quand il n'y a rien à annuler */
+function dr_annulerBouton(){ const bar = document.getElementById('at-bloc'); if (!bar || !bar.parentElement) return; let b = document.getElementById('dr-annuler');
+  if (!b) { b = document.createElement('button'); b.id = 'dr-annuler'; b.className = 'btn'; b.textContent = '↶ Annuler'; b.onclick = () => dr_annuler(); bar.parentElement.insertBefore(b, bar); }
+  const n = DR_PILE.l.length; b.disabled = !n; const t = n ? `Annule la dernière modification de la trame (${n} en mémoire, 40 au plus) — Ctrl+Z hors d'un champ de texte` : 'Rien à annuler : aucune modification de la trame depuis l’ouverture de cette séance dans l’atelier'; if (b.title !== t) b.title = t; }
+window.addEventListener('keydown', ev => { try { if (typeof S === 'undefined' || !S.atelier || S.repetition) return; if (!(ev.ctrlKey || ev.metaKey) || ev.shiftKey || ev.altKey || (ev.key !== 'z' && ev.key !== 'Z')) return; const a = document.activeElement; if (a && (a.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(a.tagName))) return; /* dans un champ : le Ctrl+Z du navigateur */ ev.preventDefault(); ev.stopImmediatePropagation(); dr_annuler(); } catch (e) {} }, true);
+(function(){ const t = () => { dr_annulerSuivre(); dr_annulerBouton(); }; const obs = new MutationObserver(() => { if (t._a) return; t._a = true; requestAnimationFrame(() => { t._a = false; t(); }); }); const go = () => obs.observe(document.body, { childList: true, subtree: true }); if (document.body) go(); else document.addEventListener('DOMContentLoaded', go); })();
 
 </script><!-- E4 : le recyclage (relance E4-2) -->
 <script>

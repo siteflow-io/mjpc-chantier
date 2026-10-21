@@ -75,7 +75,11 @@ await CAS('T1', 'la fenêtre locale montre ce que voit la classe, et suit sans r
   verif('T1', garde, 'sans rechargement de la fenêtre', String(garde)); await cap(fen, 'T1-fenetre-quatre-devoiles');
   if (SITE) { await pg.evaluate(() => dr_versMur(null, { sortie: true })); await pg.waitForTimeout(400); const vide = await lire(fen, 'tableau');
     await pg.evaluate(() => dr_versMur(S.mur)); await pg.waitForTimeout(400); const remis = await lire(fen, 'tableau');
-    verif('T1', !!vide && vide.lignes.length === 0 && pareil(remis, t1), 'le crochet `dr_versMur` (relance F7) : `null` vide la fenêtre, `S.mur` la remontre', `vide ${vide && vide.lignes.length} l. · remis ${remis && remis.lignes.length} l.`); }
+    verif('T1', !!vide && vide.lignes.length === 0 && pareil(remis, t1), 'le crochet `dr_versMur` (relance F7) : `null` vide la fenêtre, `S.mur` la remontre', `vide ${vide && vide.lignes.length} l. · remis ${remis && remis.lignes.length} l.`);
+    await pg.evaluate(() => { S.fichePage = { di: S.di, bi: 0 }; dr_versMur(null, { sortie: true }); S.fichePage = null; }); await pg.waitForTimeout(400); const fiche = await lire(fen, 'tableau');
+    verif('T1', pareil(fiche, t1), 'la fiche se referme (`dr_versMur(null, {sortie:true})` pendant `S.fichePage`) : la fenêtre garde son image, elle ne se vide pas', `${fiche && fiche.lignes.length} l.`);
+    const branche = await pg.evaluate(() => /dr_versMur/.test(String(pousser)) || /dr_auMur/.test(String(pousser))); verif('T1', branche, '`pousser` du socle appelle le crochet (dr_auMur → dr_versMur)', String(branche));
+    const ses = await pg.evaluate(() => { const s = document.getElementById('dr-session'); return s ? s.textContent.trim() : null; }); verif('T1', !!ses && /● session/.test(ses) && !/coupée/.test(ses), 'le témoin « ● session » (#dr-session, posé par E1, rempli par E3) dit que la scène arrive au hub', ses || 'absent'); }
   const errF = []; fen.on('pageerror', e => errF.push(String(e.message).slice(0, 120))); await fen.waitForTimeout(3000);
   verif('T1', errF.length === 0, 'la fenêtre tourne 3 s sans aucune erreur JS (relecteurs 1 n° 5, 2 n° 1 : `tick` sans #fin)', errF.join(' ; ') || '0');
   if (SITE) { const c3 = await nav.newContext(); await c3.route(u => !String(u).startsWith('file:'), r => r.abort()); const p3 = await c3.newPage(); const e3 = []; p3.on('pageerror', e => e3.push(String(e.message).slice(0, 120)));

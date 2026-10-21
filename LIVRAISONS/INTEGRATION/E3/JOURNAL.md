@@ -79,3 +79,10 @@
 - `index.html` : `E3/outils/relance-1315.py` (md5 après : `97251554…` sur la base du moment) — 6 fonctions retirées, 2 réécrites, la garde étendue.
 - **Bancs** : banc E3 **67 vérifications, 0 échec** (deux fois) ; banc de la conscience (`sorties/1321/`) : collisions **0**, parcours **vert**, contrôles K1-K13 **108 vérifications, 0 échec** ; parcours en mode test : P5 « cours_actif au lancement » (l'outil, déjà à la conscience).
 - **à E1** : poser `dr_versMur` dans `pousser` (après le journal), `fermerFiche`, la sortie de l'atelier et la répétition ; poser `#dr-session` dans `.haut` ; ne pas poser `#dr-zone` en page tableau (ma rustine `#dr-mur-gare`). Le contrat §12.2 nomme `#dr-tableau` le conteneur de la page tableau ; le mien s'appelle `#ses-tab` (celui de la production) et `dr.css` d'E1 le vise déjà (`:is(#dr-zone,#ses-tab)`) — je garde, sauf avis.
+
+## 21/10, 13:55 — poussée 12 : le crochet d'E1 branché
+- E1 a posé `dr_auMur` → `dr_versMur` dans `pousser`, `fermerFiche`, l'atelier, la répétition, et `#dr-session` dans `.haut`.
+- **fait** : `dr_versMur` envoie aussi les documents (`dr_documents()`) ; **un même appel `dr_versMur(null, {sortie:true})` sert deux gestes** chez E1 (refermer la fiche, ou plus rien au mur) : je les distingue par `S.fichePage` (encore posé pendant `fermerFiche`) — la fiche refermée anime sa sortie et **garde l'image**, sinon la fenêtre se vide (K10). *À E1, pour la clarté* : un `dr_versMur(null, {fiche:true})` explicite pour `fermerFiche` serait plus sûr que ma déduction. Le filet de ma veille sur `S.mur` est **retiré** (le crochet suffit) ; elle garde la copie (`trameMaj` → scène) et « qui a participé » (une parole n'appelle pas `pousser`, M4).
+- **Bancs** : banc E3 **70/70** (+ le crochet appelé par `pousser`, la fiche refermée garde l'image, `#dr-session` dit « ● session ») ; banc de la conscience `sorties/1349/` : collisions 0, parcours vert, **K1-K13 108/108** ; mode test : P5 (l'outil).
+- **reste** : `dr_proposer()` (E2) ; ma rustine `#dr-mur-gare` (E1 pose encore `#dr-zone` en page tableau).
+- **relances** : relu — rien de neuf.

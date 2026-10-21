@@ -477,6 +477,8 @@ await B('A25', 'la relecture continue d\'E4 (13:35-14:05) : rien au journal hors
   E.verif('A25', p1.n === p0 + 1 && p1.d.m === 'piste' && p1.d.note === 'bonne idee' && !p1.pop, 'F2, « ' + ini + ' », 2, une note, Entrée : une seule prise de parole, « a proposé une piste » avec la note ; le chiffre ne s\'écrit pas', JSON.stringify({ p0, p1 }));
   await pose([ini, 'bien vu', '3', 'Enter']);
   const p2 = await pg.evaluate(() => ({ n: S.parts.length, d: S.parts.slice(-1).map(x => ({ m: x.m, note: x.note }))[0] }));
+  const notes = []; for (let r = 0; r < 4; r++) { await pose([ini, 'bien vu', '3', 'Enter']); notes.push(await pg.evaluate(() => S.parts[S.parts.length - 1].note)); }
+  E.verif('A25', notes.every(x => x === 'bien vu'), 'F2, la note tapée vite juste après les initiales, quatre fois : jamais une lettre perdue (le curseur passe à la note dans la même tâche)', notes.join(' | '));
   E.verif('A25', p2.n === p1.n + 1 && p2.d.m === 'revenir' && p2.d.note === 'bien vu', 'F2, la note d\'abord, puis 3, Entrée : « on y reviendra avec lui » avec la note « bien vu »', JSON.stringify(p2));
   // mode test du site : la pastille dans l'entête, jamais « Enregistré à … »
   await pg.evaluate(() => { M8_TEST = true; }); await pg.waitForTimeout(1700); await pg.click('#bdev').catch(() => {}); await pg.waitForTimeout(1200);

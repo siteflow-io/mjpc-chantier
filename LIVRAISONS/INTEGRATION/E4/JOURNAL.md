@@ -357,3 +357,7 @@
 - **Bancs :**
   - Mon banc : **109 ok · 0 échec** (`sorties/1810-site-E4`).
   - banc.sh : **VERT** (`sorties/1815`).
+
+## Poussée 42 — 18:45 UTC
+- E2 a poussé `c00eb71c`, `2376e8dc` et `43c1d2f0` (§12.16, l'ordre de l'heure suivante). **banc.sh sur `43c1d2f0` : VERT** (`sorties/1834`).
+- Un relecteur neuf revérifie les lignes 110 et 130 sur `43c1d2f0`. Mon banc tourne sur la même tête ; les captures de cette poussée sont les siennes, encore en cours.

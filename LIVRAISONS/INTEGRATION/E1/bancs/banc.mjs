@@ -545,7 +545,7 @@ await B('A26', 'le réveil n°5 et la relecture continue d\'E4 (A4 14:50, B4 15:
   const hub = await p1.evaluate(() => window.__HUB); await o1.ctx.close();
   const o2 = await E.ouvrir(b, { w: 1366, h: 768, hub }); const p2 = o2.pg; await sansVoile(p2); await E.clicTexte(p2, 'button', 'Reprendre le cours'); await p2.waitForTimeout(1500);
   const rp = await p2.evaluate(eid => { const e = seance().ecrans.find(x => x.eid === eid); return e ? e.blocs.length : null; }, eid);
-  if (rp !== ja.n) dire('      (à E2 : après « Reprendre le cours », la diapo a ' + rp + ' bloc(s) au lieu de ' + ja.n + ' — `dr_reprendre` relit la copie (`C/ecrans`) sans la fusionner : la ligne de `dr_lancerNeuf`, `dr_fusionCopie(E, copie, journal)`, y manque ; avec elle, le bloc tient (mesuré))');
+  E.verif('A26', rp === ja.n, 'B4 (grave 110), de bout en bout : après rechargement et « Reprendre le cours », le bloc écrit en classe est toujours là (' + rp + ' / ' + ja.n + ' blocs) — ma part (l\'entrée copie-classe) et celle d\'E2 (dr_reprendre relit C/ecrans, réveil n°6)', String(rp));
   E.verif('A26', !o2.errs.length, 'la reprise : aucune erreur JS', o2.errs.join(' ; ') || undefined); await o2.ctx.close();
   // la passe d'infobulles (contrat, après les dettes) : chaque bouton visible de mon territoire en a une — Atelier, Pilotage, Relecture
   const o3 = await E.ouvrir(b, { w: 1366, h: 768 }); const p3 = o3.pg; await sansVoile(p3);

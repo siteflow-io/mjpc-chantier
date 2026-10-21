@@ -129,9 +129,9 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
   - **F2 + note** (grave) : initiales, 1/2/3, note, Entrée → une seule pose, le bon motif, la note. E2 a poussé la même correction au même endroit (`712accda`) : sa version est gardée, A25 la mesure ;
   - **hors heure lancée, rien au journal** (l'« heure 1 » fantôme de la Relecture venait de là) ;
   - le volet suit ▶ ; « + bloc » → la frappe remplace « Nouvelle consigne » ; Échap ferme le menu d'une étape ; en mode test, une pastille « mode test » au lieu d'« Enregistré à … ».
-- **Le réveil n°5** (A4 14:50, B4 15:50, A5 16:15), gardé dans A26 : la page suit ce que ▶ montre ; une question grisée cliquée s'ouvre sur la saisie de sa réponse, une consigne grise reste grise ; Ctrl+B marque l'occurrence choisie ; l'entête ne descend plus quand le témoin paraît ; l'image absente garde sa ligne ; le dégel dit le rang dans l'heure ; rien n'est « terminé » de ce qui a été feuilleté avant le lancement ; l'atelier ouvert pendant l'heure journalise sa copie (`copie-classe`) — **la reprise ne la garde que quand E2 fusionnera la copie dans `dr_reprendre`** (mesuré, transmis).
+- **Le réveil n°5** (A4 14:50, B4 15:50, A5 16:15), gardé dans A26 : la page suit ce que ▶ montre ; une question grisée cliquée s'ouvre sur la saisie de sa réponse, une consigne grise reste grise ; Ctrl+B marque l'occurrence choisie ; l'entête ne descend plus quand le témoin paraît ; l'image absente garde sa ligne ; le dégel dit le rang dans l'heure ; rien n'est « terminé » de ce qui a été feuilleté avant le lancement ; l'atelier ouvert pendant l'heure journalise sa copie (`copie-classe`) — **E2 a fait sa part (`dr_reprendre` relit la copie) : le bloc tient de bout en bout** (A26).
 - **Le réveil n°7** : le témoin de l'entête lisible en entier au Pilotage (en fin d'entête) ; dans l'atelier, celui de sa barre dit l'heure. En heure lancée, un bloc neuf s'écrit par l'onglet Atelier (`#ong-atelier`) puis « ✎ clique ici et écris » ; le Pilotage n'a pas de zone (p8-4). La passe de dettes, une ligne par dette, est au JOURNAL (poussée 14).
-- **Dernier passage (poussée 14, `d6eaa87a`, sorties `1822`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 168 / 0.
+- **Dernier passage (poussée 14, `04533055`, sorties `1839`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 168 / 0 ; le grave 110 tient de bout en bout (A26).
 
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
@@ -151,5 +151,4 @@ Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
 - **`dr_sauve` enveloppé par E4 (son R4) :** à arbitrer par la conscience (contrat §5).
 - **R14 au tableau** (la couche d'annotation de la classe, ANNOT) : à E3.
 - **R1, R2, R4, R5, R6 :** à E4. Les défauts relevés par le relecteur n°2 sur sa version sont transmis.
-- **Pour E2 — un bloc écrit dans l'atelier pendant l'heure, perdu à « Reprendre le cours »** : `dr_reprendre` ne fusionne pas la copie (`dr_fusionCopie`). Ma part (l'entrée `copie-classe`) est faite ; A26 l'écrit tant que ça dure.
 - **Pour E2** : la copie jouée garde la fin d'heure de l'heure 1 quand l'EDT lance l'heure 2 (une vignette de plus) — A7 l'écrit tant qu'elle existe.

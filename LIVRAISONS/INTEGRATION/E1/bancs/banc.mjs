@@ -135,6 +135,7 @@ await B('A9', 'l\'écriture complète (point 11) : une activité, une note, le t
   const o = await E.ouvrir(b); const pg = o.pg; await sansVoile(pg);
   const ouvrirPli = k => pg.evaluate(k => { const h = document.querySelector('#droite-atelier h5[data-pli="' + k + '"]'); if (h && h.parentElement.classList.contains('pli')) h.click(); }, k);
   await ouvrirPli('acts'); await pg.waitForTimeout(200); await pg.click('#droite-atelier [data-nouvelle-act]'); await pg.waitForTimeout(300); E.verif('A9', await pg.$('#at-modale #dr-saisie') !== null, '« + activité » : la modale du site demande le titre (plus de prompt du navigateur)'); await pg.fill('#dr-saisie', 'Le Romantisme en images'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(400);
+  { const l0 = await pg.$eval('#volet [data-at-di="0"]', x => Array.from(x.querySelectorAll('*')).some(y => y.children.length === 0 && y.textContent.trim() === 'A1') ? 'A1 · ' + x.textContent.replace(/\s+/g, ' ') : x.textContent.replace(/\s+/g, ' ')); E.verif('A9', /^A1 · /.test(l0), 'relecteur d\'E4 (« activités sans numéro ») : l\'activité créée porte son numéro dans la colonne (« A1 ») — la trame réelle n\'en a aucune (0 actId sur 95 écrans : F8)', l0.slice(0, 60)); }
   await pg.click('#mur li[data-k="1"]'); await pg.waitForTimeout(150); const pn = await pg.$$('#notesd [contenteditable]'); await pn[pn.length - 1].click(); await pg.keyboard.press('End'); await pg.keyboard.press('Enter'); await pg.keyboard.type('Note du banc E1.'); await pg.keyboard.press('Escape'); await pg.waitForTimeout(200);
   await ouvrirPli('tp'); await pg.waitForTimeout(200); await pg.click('#dc-tp'); await pg.keyboard.type('Relire la fiche.'); await pg.mouse.click(5, 5); await pg.waitForTimeout(1800);
   const e = await pg.evaluate(() => { const w = window.__CORPS.filter(x => /\/chapitres\//.test(x.c)); const der = w.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const bd = der && der.bd; const e0 = bd && bd.ecrans[0]; return { chemins: [...new Set(w.map(x => x.m + ' ' + x.c))], acts: bd && bd.activites, actId: e0 && e0.actId, eid0: e0 && e0.eid, notes: bd && bd.notes, travail: bd && bd.travail }; });
@@ -258,6 +259,27 @@ await B('A19', 'la fiche ouverte se pilote comme une diapo (recyclage R14, la co
   E.verif('A19', j === 'fiche-ouverte,fiche-devoile,fiche-devoile,fiche-retire,fiche-ecrire', 'le journal (le récit le lira) : ouverte, dévoilé ×2, retiré, à écrire', j);
   await pg.click('#mur .dr-fiche-fermer'); await pg.waitForTimeout(900); const e5 = await pg.evaluate(() => [S.fichePage, document.querySelectorAll('#mur .f-tab').length]);
   E.verif('A19', e5[0] === null && e5[1] === 0 && !o.errs.length && !o.boites.length, '✕ : la fiche se referme, la page s\'en va ; aucune erreur JS, aucune boîte', JSON.stringify(e5) + ' ' + (o.errs.concat(o.boites)).join(' ; ')); await o.ctx.close(); });
+
+
+await B('A20', 'la relance du 21/10 (12:50-13:02) : ▶ derrière un document, #bdev et l\'entête à 1366 et 1280, #dr-session, dr_ctx en vue tableau, le crochet dr_versMur d\'E3', async () => {
+  for (const [w, h] of [[1366, 768], [1280, 800]]) {
+    const o = await E.ouvrir(b, { w, h }); const pg = o.pg; await sansVoile(pg); await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(1000);
+    const r = await pg.evaluate(() => { const z = document.getElementById('dr-zone').getBoundingClientRect(); const coupe = id => { const x = document.getElementById(id); return !x || x.scrollWidth > x.clientWidth + 1; }; const haut = document.querySelector('#dr-zone .haut');
+      const hors = Array.from(haut.querySelectorAll('button')).filter(x => x.offsetParent && x.getBoundingClientRect().right > z.right + 1).map(x => x.id || x.textContent.trim());
+      const recouvert = []; const n = seance().ecrans.length; for (let di = 0; di < n; di++) for (const t of [0, 1, 2, 3, 4]) { S.di = di; S.taille = t; dr_tout(); const bd = document.getElementById('bdev').getBoundingClientRect(); const el = document.elementFromPoint(bd.right - 3, bd.top + bd.height / 2); if (!(el && el.closest('#bdev'))) recouvert.push(di + ':' + t); } S.di = 0; S.taille = 1; dr_tout();
+      return { classe: !coupe('hclasse'), ou: !coupe('hou'), hors, recouvert, session: !!haut.querySelector('#dr-session') }; });
+    E.verif('A20', r.classe && r.ou && !r.hors.length, w + ' × ' + h + ' (13:02) : l\'entête dit la classe entière et le créneau entier ; aucun bouton hors de la zone', JSON.stringify(r).slice(0, 160));
+    E.verif('A20', !r.recouvert.length, w + ' × ' + h + ' (relecteur d\'E4) : ▶ Dévoiler n\'est jamais recouvert — toutes les diapos, les cinq tailles de texte', r.recouvert.slice(0, 6).join(' '));
+    if (w === 1366) {
+      E.verif('A20', r.session, 'C1 : #dr-session est posé dans .haut (le témoin de session, qu\'E3 remplit)');
+      const d = await pg.evaluate(() => { const nJ = J.filter(x => x.type === 'devoile').length; const n0 = etatDiapo().nDev; S.doc = { id: 'banc-doc-absent', pos: 1 }; devoiler(); devoiler(); const r = { nDev: etatDiapo().nDev - n0, devoile: J.filter(x => x.type === 'devoile').length - nJ }; S.doc = null; dr_tout(); return r; });
+      E.verif('A20', d.nDev === 0 && d.devoile === 0, 'relecteur d\'E4 : un document au tableau, ▶ au bout du document ne dévoile rien derrière lui (ni dévoilement, ni journal)', JSON.stringify(d));
+      const v = await pg.evaluate(() => { const vus = []; window.dr_versMur = x => vus.push(x && x.sortie ? 'sortie' : (x && x.si != null ? 'et' : '?')); devoiler(); S.fichePage = { di: S.di, bi: 0, nDev: 0, ecr: [] }; fermerFiche(); return new Promise(res => setTimeout(() => { delete window.dr_versMur; res(vus); }, 600)); });
+      E.verif('A20', v.includes('et') && v.includes('sortie'), 'réveil n°2 (pour E3) : pousser passe par dr_versMur(et) ; fermer la fiche, par dr_versMur({ et: null, sortie: true })', v.join(','));
+      const c = await pg.evaluate(() => { const av = SES.mode, ac = SES.ctx; SES.mode = 'tableau'; SES.ctx = { niveau: '3e', chapitre: 0, seance: 2, classeSlug: '3e-cdg', classeNom: '3E Charles de Gaulle' }; const x = dr_ctx(); SES.mode = av; SES.ctx = ac; return x; });
+      E.verif('A20', c.level === '3e' && c.chnum === 0 && c.snum === '2' && c.classeSlug === '3e-cdg' && c.regime === 'tableau', 'réveil n°2, M1 : en vue tableau, dr_ctx() lit SES.ctx (cours_actif), pas AT.edChap', JSON.stringify(c));
+    }
+    E.verif('A20', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

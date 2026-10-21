@@ -312,6 +312,13 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 #dr-zone .haut{gap:8px;padding:0 10px}
 #dr-zone .haut .qui{min-width:0;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto}
 #dr-zone .haut.p8-rep .p8-rep-chr{min-width:0;overflow:hidden;text-overflow:ellipsis;flex:1 1 auto}
+/* E1 (relance du 21/10, 13:02) : la classe et le créneau ne se coupent jamais — l'entête passe sur deux rangées quand la zone est étroite (1366, 1280) ; les boutons vont dessous, aucun ne disparaît */
+#dr-zone .haut{height:auto;min-height:46px;flex-wrap:wrap;row-gap:4px;padding:4px 10px;box-sizing:border-box}
+#dr-zone .haut .qui{flex:0 0 auto;overflow:visible;text-overflow:clip}
+#dr-zone .haut .ou{flex:1 0 auto;overflow:visible;text-overflow:clip;min-width:auto}
+/* E1 (relance du 21/10, relecteur d'E4) : ▶ Dévoiler et son compteur ne cèdent jamais leur place ; c'est le curseur « texte au tableau » qui se resserre */
+#dr-zone .outils #bdev,#dr-zone .outils #compte{flex:0 0 auto}
+#dr-zone .outils .zoomt{flex:0 1 auto;min-width:0;overflow:hidden}
 #dr-zone .outils{gap:6px}
 #dr-zone .outils .zoomt input[type=range]{width:80px}
 

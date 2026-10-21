@@ -69,7 +69,7 @@ Tailles avant et après (`toString().length`) : **`E1/NOTE-fonctions.md`**, prod
 ## 5 · Les bancs
 - **Le banc d'E1** : `E1/bancs/banc.mjs`, un banc unique, **A1 à A22**, sur `assemble/index.html` et le faux hub. Il passe par les gestes réels, de l'entrée du site jusqu'à l'Atelier.
   - A1 collisions · A2 ce qui tombe · A3 la porte et la barre · A4 une modification → `B/deroule` · A5 Structure ↔ Atelier · A6 la colonne unique · A7 p8-5h et les tailles · A8 la trame ligne à ligne · A9 l'écriture complète · A10 l'Atelier entier.
-  - A11 la mise en forme · A13 les blocs au clavier · A14 l'adresse d'une image · A18 les dettes · A19 la fiche ouverte · A20 la relance du 21/10 · A21 et A22 les relecteurs neufs.
+  - A11 la mise en forme · A13 les blocs au clavier · A14 l'adresse d'une image · A18 les dettes · A19 la fiche ouverte · A20 la relance du 21/10 · A21 et A22 les relecteurs neufs · A23 la relecture continue d'E4.
   - A12, A15, A16 et A17 (R4, R2, R1, R5) sont partis avec le recyclage vers E4.
   - **Dernier passage : 108 vérifications, 0 échec** (poussée 8), puis **124 vérifications, 0 échec** sur la poussée 9 (`2c24b230`, `E1/sorties/1157/banc-E1.txt`).
 - **Le banc de la conscience** (`banc.sh`) à chaque poussée, sorties dans `E1/sorties/<heure>/` :
@@ -122,6 +122,8 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
   - le corps d'une fiche du site héritait la grille de la mise en page, et s'écrasait lettre par lettre dans la colonne unique ;
   - la flèche d'une marque n'avait pas de pointe (ce défaut était dans mon R1, parti chez E4).
 
+- **La relecture continue d'E4** (12:33-12:38) : sept défauts chez moi, corrigés et gardés dans A23 — dont un **grave** (Entrée deux fois puis une frappe rapide : la première lettre tombait dans la ligne d'avant).
+
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
 - le recyclage passé à E4 ;
@@ -141,3 +143,4 @@ Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :
 - **R14 au tableau** (la couche d'annotation de la classe, ANNOT) : à E3.
 - **R1, R2, R4, R5, R6 :** à E4. Les défauts relevés par le relecteur n°2 sur sa version sont transmis.
 - **Le parcours en mode test :** l'outil compte P5 en échec, alors que le site n'écrit rien en mode test. C'est l'outil (ouvert chez la conscience).
+- **Pour E2** : la copie jouée garde la fin d'heure de l'heure 1 quand l'EDT lance l'heure 2 (une vignette de plus) — A7 l'écrit tant qu'elle existe.

@@ -337,11 +337,11 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 .dr-papier .a4-coller{position:absolute;right:16px;top:2px;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:#8a7a5a}
 .dr-papier mark{background:#fff1a8;color:inherit}
 /* le document de Structure dans l'écran (par référence) */
-.doc.dr-doc-ref{display:flex;flex-direction:column;height:100%;box-sizing:border-box}
+.doc.dr-doc-ref{display:flex;flex-direction:column;height:100%;max-height:100%;overflow:hidden;box-sizing:border-box}
 .doc.dr-doc-ref h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:0 0 6px}
 .dr-doc-prov{color:#6a5a48;font-size:.55em;font-weight:400;font-style:italic}
 .dr-doc-grand{font-size:.45em;padding:1px 8px;margin-left:auto}
-.dr-doc-cadre{flex:1;width:100%;min-height:240px;border:1px solid #d4cbb8;background:#fff}
+.dr-doc-cadre{flex:1 1 auto;width:100%;min-height:0;height:100%;border:1px solid #d4cbb8;background:#fff}
 .dr-doc-vide{font-style:italic;color:#6a5a48}
 /* l'impression : la seule chose qui s'imprime est le papier (mandat E4 §3). La face Papier pose sa copie dans #dr-impression,
    enfant direct de body ; à l'impression, tout le reste du site est retiré. */

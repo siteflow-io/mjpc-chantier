@@ -77,6 +77,7 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
   verif('R1', /À \d{1,2} h \d{2}, /.test(t), 'le récit porte l\'heure réelle (« À hh h mm, »)', t.slice(0, 300));
   verif('R1', /Gatien/.test(t) && t.includes(DIT), 'le récit porte le prénom (Gatien, pas ses initiales) et sa réponse', t.slice(0, 1200));
   verif('R1', !/\bGA\b a répondu/.test(t), 'aucune initiale à la place d\'un prénom', null);
+  verif('R1', /Zélia a pris la parole/.test(t), 'une prise de parole hors d\'une question se raconte (« Zélia a pris la parole », cadrage 2 · 1.5)', t.slice(0, 700));
   verif('R1', o.errs.length === 0, 'zéro erreur JS', JSON.stringify(o.errs));
 
   // ═════ R2 · ma version : une phrase corrigée survit au rechargement (C/recit/1.texte, version 'moi') ; « relu » (C/recit/1.relu) ═════
@@ -117,6 +118,8 @@ const PHRASE = 'Phrase corrigée par M. Meney pour le banc E4.';
   verif('ED', cp && /Gatien/.test(cp.texte) && !/Pour la prochaine séance/.test(cp.texte), 'le texte copié : le récit, sans le travail à faire', cp ? cp.texte.slice(-200) : '');
   const presse = await pg.evaluate(async () => { try { const it = await navigator.clipboard.read(); return it.length ? it[0].types : []; } catch (e) { return 'illisible : ' + e.message; } });
   verif('ED', Array.isArray(presse) ? presse.includes('text/html') && presse.includes('text/plain') : null, 'le presse-papier reçoit text/html et text/plain', JSON.stringify(presse));
+  await pg.click('#r-copie-travail'); await p(pg, 400); const ct = await pg.evaluate(() => window.DR_RECIT_DERNIERE_COPIE || null); const lienAttendu = SITE && process.env.E4_SANS_ED !== '1';
+  verif('ED', SITE ? (ct && (lienAttendu ? /ecoledirecte\.com/.test(ct.texte) && /<a href=/.test(ct.html) : !/ecoledirecte/.test(ct.texte))) : null, lienAttendu ? '« Copier — travail à faire » porte le lien de l\'espace de travail (/classes/<classe>/ed)' : 'sans /classes/<classe>/ed : la copie se fait sans lien', ct ? ct.texte.slice(-200) : '');
   verif('ED', await pg.evaluate(() => (S.copieED || {})[1] && J.some(x => x.type === 'copie-ed')), 'la copie est notée (S.copieED, journal copie-ed : la garde après copie s\'en sert)', null);
   await o.ctx.close();
 }
@@ -159,6 +162,7 @@ else verif('D1', null, 'les documents par référence', 'la maquette simule ses 
 // ═════ P0 · avant tout lancement, il n'y a ni récit ni papier (relecteur neuf 2 ; cadrage 2 · 1.4) ═════
 { const o = await ouvrir({ frais: true }); const pg = o.pg; await relecture(pg);
   const f = await pg.evaluate(() => Array.from(document.querySelectorAll('#faces [data-f]')).map(b => b.textContent.trim()));
+  const relT = await texteRel(pg); verif('P0', /Aucune heure n.a encore été lancée/.test(relT) && !/Ce qu'on a fait aujourd'hui/.test(relT), 'aucune heure lancée : la Relecture le dit, sans récit', relT.slice(0, 200));
   verif('P0', !f.some(t => /^Papier|^Le récit ·/.test(t)), 'aucune heure lancée : aucune face « Le récit » ni « Papier » à imprimer', JSON.stringify(f));
   await o.ctx.close(); }
 

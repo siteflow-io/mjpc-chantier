@@ -1,4 +1,4 @@
-banc E2 — la classe et l'heure · 2026-10-21 11:28 UTC · index.html md5 df34c323c9ecd19a9b9390398b20300a · 2092648 o
+banc E2 — la classe et l'heure · 2026-10-21 11:35 UTC · index.html md5 9108c82fe6c93ea6a8092f5244e81b8f · 2128219 o
 
 B1 — la case de l'emploi du temps
   ok     B1 · la case de 3E Charles de Gaulle (lun. 14/09, 08:57-09:52) — 3E Charles de Gaulle Étude de texte accompagnée : « L'Albatros » heure 1/3
@@ -14,22 +14,22 @@ B1 — la case de l'emploi du temps
 
 B2 — lancer en un clic, dévoiler, faire parler ; le paquet de l'heure ; les écritures (K15)
   ok     B2 · l'heure est lancée (S.lancee, journal « lancement ») — 3E Charles de Gaulle · 08:57-09:52 · heure 1/3
-  ok     B2 · le chrono tourne — S.ecoule = 6
+  ok     B2 · le chrono tourne — S.ecoule = 7
   ok     B2 · ▶ ×3 et une parole sont au journal — diapo lancement diapo devoile devoile devoile parole
   ok     B2 · le paquet H : classe, créneau, début réel — 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
   ok     B2 · le paquet H : activites[0].passages ≥ 1 — {"n":0,"eid":"emt9v3yqoecf9d","act":"Analyse d'images : la routine","prevu":3,"reel":1,"passages":1,"comp":["litt-036","c4-lire-02"]}
   ok     B2 · C/journal au hub, la parole dedans — 7 entrées
   ok     B2 · C/journal : aucun rang (di) écrit au hub
   ok     B2 · C/etat au hub, sans rang — S,parDiapo,vuMax,maj
-  ok     K15 · les écritures du lancement à la parole : C, cours_actif, C/journal, C/etat, H (+ C/ecrans, + scene/part d'E3) — PUT C · PUT /site/cours_actif · PUT C/scene · PUT C/ecrans · PUT C/journal · PUT C/etat · PUT C/heures/<H> · PUT C/part
+  ok     K15 · les écritures du lancement à la parole : C, cours_actif, C/journal, C/etat, H (+ C/ecrans, + scene/part d'E3) — PUT C · PUT /site/cours_actif · PUT C/scene · PUT C/ecrans · PUT C/journal · PUT C/etat · PUT C/heures/<H>
 
 B4 — la fin de l'heure (T-5 = fin − 10 min), les sept étapes, la clôture
   ok     B4 · à T-5 (cinq minutes avant le cahier de textes) l'étape 1 s'ouvre d'elle-même — palier undefined → t5 · Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprend
   ok     B4 · les sept étapes se parcourent — Fin de l'heure — étape 7 sur 7 : clore l'heure Préparer le cahier de t
   ok     B4 · l'étape 7 clôt l'heure (S.close, journal « cloture »)
-  ok     B4 · le paquet H est clos (clos, finReel) — {"clos":true,"finReel":1789371726975}
+  ok     B4 · le paquet H est clos (clos, finReel) — {"clos":true,"finReel":1789371727361}
   ok     B4 · cours_actif est effacé
-      écritures de la clôture : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat · PUT /site/cours_actif · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<H>
+      écritures de la clôture : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<H> · PUT /site/cours_actif
   ok     B4 · après la clôture, « ▶ Lancer l'heure » revient ; sur le même créneau le même jour, l'heure close ne se rouvre pas (C1 12) : dit, rien d'écrit — L’heure de 3E Charles de Gaulle sur le créneau 08:57-09:52 est déjà close aujourd’hui : elle ne se r · 0 écriture(s)
   ok     B4 · après la clôture, ▶ n'écrit plus dans le journal de l'heure close
       erreurs JS : aucune
@@ -43,7 +43,7 @@ B3 — la reprise (recharger en pleine heure, mêmes écritures relues)
 
 B3b — lancer par la case (séance 1, sans eid au hub), recharger, « ▶ Reprendre le cours » dans la case
   ok     B3b · la case de l'heure lancée propose « ▶ Reprendre le cours »
-  ok     B3b · la même séance, la même diapo (même identité), les mêmes dévoilements — {"avant":{"eid":"emu0w83bru9xoo","compte":"2 / 2 dévoilés","parts":1,"notes":1,"sk":"1"},"apres":{"lancee":true,"eid":"emu0w83bru9xoo","compte":"2 / 2 dévoilés","parts":1,"notes":1,"sk":"1"}}
+  ok     B3b · la même séance, la même diapo (même identité), les mêmes dévoilements — {"avant":{"eid":"emu0w83f9fokn2","compte":"2 / 2 dévoilés","parts":1,"notes":1,"sk":"1"},"apres":{"lancee":true,"eid":"emu0w83f9fokn2","compte":"2 / 2 dévoilés","parts":1,"notes":1,"sk":"1"}}
   ok     B3b · la parole et la note
   ok     B3b · aucune erreur JS
 

@@ -2,7 +2,7 @@
 
 *Règle de Paul (13/10, 12:42) : les exécutants tournent en permanence jusqu'à ce que l'objectif soit atteint (l'app en ligne sans défaut connu) et poussent chaque morceau dès qu'il est fait. La conscience lit ce fichier quand Paul demande où on en est.*
 
-- QCM-1 · SOCLE · 15:11 — points 15 à 17 (reçu 15:05, prévu 16:05) : livré — `ordreCorr` ajoute au bout les questions posées après « 🔓 Rouvrir » (Q4 remise se corrige) ; le reste est à QCM-2 ; j'attends « contrôlé » sous 15 à 17
+- QCM-1 · SOCLE · 15:17 — points 15 à 17 : ma part livrée (`3f9eb33`, ordreCorr) ; avec la console de QCM-2, banc-rouverte 69 / 70 (le reste : la marque « Trouvée » de Q3, dite à QCM-4) ; j'attends « contrôlé » sous 15 à 17
 
 - QCM-2 · HEURE · 15:13 — point 15 livré (c3-pilot.js) : la séance rouverte part de ce qui a été fait (Q1 à Q3 faites, Q4 « ❌ Écartée — pas posée » avec « ↩️ Remettre », « ▶️ Lancer Q4 » une fois remise, sinon « 🛑 Terminer la séance » ; s'il reste une question posée pas corrigée, « 📊 Lancer l'autoévaluation »). banc-rouverte 68 / 70 : mes 10 vérifications passent ; les 2 échecs (Q4 remise jamais lue à la correction) viennent de ordreCorr du socle : à QCM-1 (DEMANDES 15:55). Je relis la section toutes les 2 minutes jusqu'à « contrôlé »
 

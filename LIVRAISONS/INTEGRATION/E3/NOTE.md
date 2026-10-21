@@ -2,6 +2,12 @@
 
 *Écrite à 13:20, mise à jour à 13:35 après la relance du réveil n°2 (13:15) — voir la section « Après la relance ». Rien de ce qui n'est pas fait n'est tu.*
 
+## Après le réveil n°3 (15:14, traité à 15:35)
+- **L'attente** lit la grille de l'EDT, le calendrier et `/classes` en lecture seule (`dr_tabCaseDuMoment`, niveau `?n=`) : « Classe attendue : 3E Charles de Gaulle · 08:57 – 09:52 » ; sans grille, rien. Cela remplace « la classe attendue vient de `dr_proposer()` » plus bas.
+- Rien ne part au hub depuis la Relecture ; le témoin « tableau en Win K » n'apparaît que fenêtre ouverte (`dr_tabTemoin`).
+- Mesurés et rendus à E1 : la question grisée qui ne se dévoile pas au clic (C1 4.2) ; la taille du texte qui ne grossit pas, au pilote comme au tableau.
+- Bancs : E3 **78/78** ; banc de la conscience `sorties/1530/` **entièrement vert** (collisions 0, parcours et mode test verts, K 0 défaut).
+
 ## Après la relance du réveil n°2 (13:15, traitée à 13:30, commit 552cb038) — ce qui l'emporte sur la suite de cette note
 - **Le QR tombe** : à sa place, « Adresse du tableau » (`#dr-tab-adr`) affiche `?vue=tableau` en texte ; `sesQROuvrir`, `sesQRFermer` retirées.
 - **`C/part` tombe** (`dr_part` retiré) ; « qui a participé » au tableau suit la parole.

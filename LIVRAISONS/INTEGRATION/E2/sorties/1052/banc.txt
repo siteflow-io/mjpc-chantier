@@ -41,3 +41,5 @@ K15 — les écritures au hub pendant le parcours
 
 PARCOURS VERT
 — 4. parcours en mode test
+— 5. contrôles K1-K13 par l'entrée du site
+— résultat : ROUGE · sorties dans LIVRAISONS/INTEGRATION/E2/sorties/1052

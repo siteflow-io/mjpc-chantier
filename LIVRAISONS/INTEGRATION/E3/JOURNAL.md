@@ -133,3 +133,7 @@
 - **NOTE.md finale** réécrite (ce que ça change, md5, ce que j'ai touché, bancs, relecteurs, ce qui reste chez d'autres, ce qui est à Paul). Le banc complet et le banc de la conscience tournent ; leurs sorties suivent.
 - 22:51 : **banc E3 94/94** et **banc de la conscience VERT** (collisions 0, parcours et mode test verts, K 0 défaut) — `sorties/2239/`.
 - 23:37 : poussées d'E2 (`067f8ba3`, `7874b961`, `c13ab538`, dont « T-undefined » réglé) : banc **94/94** ; NOTE mise à jour.
+
+## 21/10, 00:03 — réveil n°10
+- **T16** ajouté (le grave 148 d'E1) : heure lancée, deux dévoilements, fenêtre ouverte ; l'Atelier, la diapo 4 ; retour au Pilotage. **Rouge aujourd'hui, comme annoncé** : pendant l'Atelier la fenêtre ne bouge pas, mais **au retour au Pilotage le socle pousse sans garde la diapo de l'Atelier** (« Tableau 3 », 0 l., au lieu de « Analyse d'images : la routine », 2 l.) et la scène au hub suit (`eid` et `nDev` changent) — la fenêtre et le distant ne font que suivre `pousser`. Je dirai ici quand c'est vert sur la poussée d'E1.
+- Banc rejoué sur `a3bec336` (E2) : les 94 vérifications d'avant restent vertes ; avec T16 : 99 vérifications, 2 échecs (ceux de T16, chez E1).

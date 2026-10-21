@@ -62,7 +62,7 @@ J'ai appliqué deux outils : `E3/outils/brancher-index.py`, puis `E3/outils/rela
   - `dr_rendreMur` : le rendu unique, qui appelle `rendre` du socle.
 
 ## Bancs et sorties
-- **`E3/bancs/banc.mjs`**, banc unique : 15 cas, T1 à T15.
+- **`E3/bancs/banc.mjs`**, banc unique : 16 cas, T1 à T16 (T16 : l'Atelier en pleine heure ne fait pas bouger le tableau — grave 148, chez E1).
   - **T1** : la fenêtre, le crochet, la fiche refermée qui garde l'image, « ● session », sans erreur JS.
   - **T2** : le gel. **T3** : l'ouverture pendant le gel. **T4** : la vue « ⧉ Tableau ».
   - **T5** : le distant (attente, scène, délai sur 10 ▶, image gardée, refus, garde, `sendBeacon`).
@@ -88,6 +88,7 @@ Deux relecteurs (12:30-13:00) ont relevé 8 trouvailles dans mon territoire, tou
   - « texte au tableau » à 52 pt ne grossit le texte que de 1,8 % et ne pagine pas, au pilote comme au tableau. La fenêtre reproduit fidèlement le pilote.
   - `#dr-zone` est encore posé dans la page tableau. Ma rustine renomme son `#mur` en `#dr-mur-gare` ; elle tombe dès qu'E1 ne le pose plus.
   - `fermerFiche` appelle `dr_versMur(null, {sortie:true})` comme la sortie de l'atelier. Je distingue les deux par `S.fichePage` ; un appel explicite serait plus sûr.
+- **E1 (grave 148, réveil n°10)** : en heure lancée, l'Atelier puis une autre diapo, retour au Pilotage → le tableau saute sans garde à la diapo de l'Atelier (T16, rouge à 23:40).
 - **E1/E4** : R14 (la fiche pilotée) et R1 (les marques) passent par `rendre` et `dr_versMur`. Le tableau les montrera tels que le pilote les rend ; je les vérifierai au banc à leur livraison.
 - **E2** : `dr_caseDuMoment` n'est pas encore exposée en fonction pure (ma `dr_tabCaseDuMoment` applique la même règle). (« T-undefined » vu au banc T15 : réglé par E2, commit `067f8ba3`.)
 

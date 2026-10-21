@@ -330,6 +330,24 @@ await CAS('T15', 'la copie d\'un autre jour : la retouche de la veille est au ta
   verif('T15', mardiT, 'et au mur : la fenêtre du tableau la montre', String(mardiT));
   await fen.close(); await fin('T15', o); });
 
+// T16 — le grave 148 d'E1 (réveil n°10) : en heure lancée, l'Atelier, une autre diapo, retour au Pilotage → le tableau n'a pas bougé (la diapo que la classe voyait).
+await CAS('T16', 'l\'Atelier et une autre diapo en pleine heure : le tableau ne bouge pas', async () => {
+  if (!SITE) { absent('T16', 'se joue sur le site'); return; }
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 2); await pg.waitForTimeout(500); const fen = await ouvrirTableau(pg); const avant = await lire(fen, 'tableau');
+  const scene = () => pg.evaluate(() => { const c = window.__hubLire('/site/cours_actif'); const s = c ? window.__hubLire('/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug + '/scene') : null; return s ? { eid: s.eid, nDev: s.nDev } : null; });
+  const s0 = await scene();
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await pg.waitForTimeout(900); await sansVoile(pg);
+  if (await pg.$('#at-aide .x')) { await pg.click('#at-aide .x'); await pg.waitForTimeout(200); }
+  const allee = await pg.evaluate(() => { const v = document.querySelector('#volet [data-at-di="3"]') || document.querySelectorAll('#volet [data-at-di]')[3]; if (!v) return false; v.click(); return true; }); await pg.waitForTimeout(700);
+  if (!allee) absent('T16', 'pas de liste des diapos dans l\'Atelier ([data-at-di])');
+  const pendant = await lire(fen, 'tableau');
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await pg.waitForTimeout(1500); await sansVoile(pg);
+  const g = await pg.$('#garde.on'); const apres = await lire(fen, 'tableau'); const s1 = await scene(); await cap(fen, 'T16-retour-au-pilotage');
+  verif('T16', pareil(avant, pendant), 'dans l\'Atelier, sur une autre diapo : la fenêtre du tableau n\'a pas bougé', `avant « ${avant && avant.act} » ${avant && avant.lignes.length} l. · pendant « ${pendant && pendant.act} » ${pendant && pendant.lignes.length} l.`);
+  verif('T16', pareil(avant, apres), 'revenu au Pilotage : le tableau montre toujours la diapo que la classe voyait (grave 148, E1)', `avant « ${avant && avant.act} » ${avant && avant.lignes.length} l. · après « ${apres && apres.act} » ${apres && apres.lignes.length} l.${g ? ' (une garde est ouverte)' : ''}`);
+  verif('T16', !!s0 && !!s1 && s0.eid === s1.eid && s0.nDev === s1.nDev, 'et la scène au hub (le tableau distant) non plus', `${JSON.stringify(s0)} → ${JSON.stringify(s1)}`);
+  await fen.close(); await fin('T16', o); });
+
 dire(''); dire(`banc E3 : ${nb} vérifications, ${echecs} échec(s)` + (echecs ? ' — ROUGE' : ' — VERT'));
 if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }
 await nav.close(); process.exit(echecs ? 1 : 0);

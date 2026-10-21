@@ -1950,3 +1950,21 @@ Réponse de la conscience (21:38), mot pour mot :
 
 21/10/2026 21:38
 MEMO
+
+## TOUR 92 (21/10/2026, 21:46 → 21:48)
+
+Paul (21:46), mot pour mot :
+« Il faut que l'ensemble des dettes de toutes les apps et tout le site soient réglées d'ici 10 jours. Pareil pour tout ce qui a été prévu. En gros, dans 10 jours on doit avoir le site fonctionnel ainsi que toutes les apps. »
+
+Fait (21:46-21:48) : le plan déposé au sas, `MANDATS/PLAN-10-JOURS.md` (règles, inventaire par fichier, dix lots et leurs exécutants, six cadrages à faire avec Paul, calendrier J1-J10, ce qui est à Paul, les vérifications). Mesuré contre le registre, le POINT, la note de pause de la dictée, les cadrages, les mandats, les quatorze fichiers html.
+
+Réponse de la conscience (21:48), mot pour mot :
+
+182. Compris : tout réglé et tout le prévu codé pour le 31/10, le site et toutes les apps fonctionnels. Le plan est déposé : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PLAN-10-JOURS.md — dix lots, un exécutant par fichier (plusieurs sur `index.html` par territoire, comme aujourd'hui), mes contrôles toutes les heures sur tous les lots, un calendrier jour par jour.
+
+183. Verdict de faisabilité : **ce qui est cadré tient en dix jours** avec six à huit exécutants en parallèle — le déroulé et son reste, la dictée, les attendus, le prompt, les huit apps, M-SÉCU. **Ce qui n'est pas cadré ne tient pas sans toi** : six sujets ont besoin d'un cadrage avec toi avant de coder (le profil longitudinal et le cockpit, le récit figé et le papier, le téléphone télécommande, l'audit des pièges, M-SÉCU, la banque d'exercices) — un par jour, une question chacun, mes propositions sont écrites au §3 du plan. Le QCM reste à la n°12 sauf si tu me le confies. M17a (la purge et l'import de tes classes) est ton geste, le dernier jour.
+
+184. Ce qu'il me faut de toi ce soir, en un mot : « go » — et j'écris cette nuit les mandats des quatre lots lançables tout de suite (ATTENDUS, DICTÉE, PROMPT, APPS) avec les phrases à coller, pendant que les quatre finissent le déroulé. Demain matin : l'audit final du déroulé, ta promotion, et le premier cadrage (le profil).
+
+21/10/2026 21:48
+MEMO

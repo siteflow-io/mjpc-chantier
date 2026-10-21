@@ -1984,3 +1984,25 @@ Réponse de la conscience (22:10), mot pour mot :
 
 21/10/2026 22:10
 MEMO
+
+## TOUR 94 — RÉVEIL N°9 (21/10/2026, 22:18 → 22:27 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (22:18, 22:19, 22:25, 22:26).
+
+Mesuré :
+- `integration` à `312d8a4b` (E4, 22:12) ; pendant le banc, `aaf6d7f4` (E1, poussée 15, 22:06 UTC+2 : **`dr_jouerCopie` écrite au socle** — la copie d'avant fusionnée par `eid` avec la trame, retouches de classe comprises, la trame seule pour une séance close ; `dr_copieReporter` au lancement ; une erreur JS de l'écran d'ouverture réglée ; garde A27 ; réveil n°8 marqué). Depuis le réveil n°8 : **E2** (poussée 22, 21:23 : la ligne 138 — la diapo commencée qui glisse reprend où la classe en était, l'ouverture annonce l'ordre joué ; §12.17 b1/b2/b3, garde B12 ; 137 ; l'échéance : la prochaine heure affichée et posée par défaut, « aucune » un choix — B13 ; `dr_jouerCopie` appelée dès qu'elle existe ; réveil n°8 marqué) ; **E3** (banc rejoué sur §12.17, 89/89) ; **E4** (poussées 45-48 : **130, 137, 138 réglées** sur `613ade62` par les trois parcours du §12.17 — P1 glisse et reprend à 1/3, P2 « à reprendre », P3 sortent ; le bilan de la Relecture en NOTE §9 ; quatre lignes neuves : 142 E1 faible (la légende d'image sort du cadre à 1280), 143 E2 moyen (« T-undefined · le cahier de textes attend » à l'heure 3), 144 E2/E1 faible (« glissée » pour « à reprendre »), 145 E2 moyen (le cahier à 15:57 avant les diapos qui le précèdent, A5 et A6 en double), 146 à confirmer (une pastille « Mode test » sans mode test — le faux hub ou l'outil ?)).
+- **Mon banc sur `312d8a4b`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. Épreuves `AUDITS/INTEGRATION-DEROULE/epreuves/banc-sur-integration-312d8a4b.txt`, `AUDITS/CONTROLES-DEROULE/epreuves/sur-integration-312d8a4b-v22.txt` ; captures `pieces/T94-P5-classe-lancee.png`, `pieces/T94-P9-fin-de-l-heure.png` (l'échéance affiche « mardi 15 septembre, 15 h 07 » par défaut — réglé).
+- **Relances écrites (22:26)** : E2 — 143 et 145 (moyens), 144 avec E1, rejouer sur `dr_jouerCopie`, NOTE à jour ; E1 — poussée 15 vue, 142, 144, 146 (d'où `m8TestOn()` tient sa valeur), NOTE finale ; E3 — rejouer sur la poussée 15 d'E1, NOTE finale ; E4 — 146 à trancher sur le faux hub nu, la passe finale de sa table sur la tête de l'audit (aucune « ouverte »), le bilan en chiffres dans sa NOTE.
+- **État pour l'audit final** : zéro grave, zéro haute ; `dr_jouerCopie` poussée (à rejouer par le banc au prochain réveil) ; restent deux moyens chez E2 (143, 145), deux faibles, une à confirmer. Le prochain réveil (23:26) rejoue le banc sur la tête d'E1 et, si 143/145 sont verts, **lance l'audit final**.
+- Réveil suivant : 23:26.
+
+Réponse de la conscience (22:27), mot pour mot :
+
+187. Réveil n°9. Le haute est réglé (la diapo qui glisse reprend où la classe en était), l'ordre de l'heure suivante est joué dans les trois cas de ton cadrage et E4 l'a rejoué, l'échéance propose bien la prochaine heure de la classe (ma capture), et E1 vient de pousser le trou du socle (la copie de classe d'un autre jour reprise au lancement). Banc vert sur la tête d'avant sa poussée : collisions 0, parcours vert aux deux modes, 108 contrôles sur 108.
+
+188. Reste avant l'audit final : deux moyens chez E2 trouvés par E4 à l'heure 3 (un bandeau « T-undefined », le cahier de textes mal placé dans « Où on en est » avec deux activités en double), deux faibles, et une pastille « mode test » à expliquer. Zéro grave, zéro haute. Au prochain réveil (23:26) : le banc sur la tête d'E1 ; si les deux moyens sont verts, je lance l'audit final (parcours fixe, écrans changés et voisins, captures entières avant/après) et tu auras « promeus » à dire demain matin.
+
+189. Rien de neuf à te demander ; le plan 10 jours attend ton « go », et 152, 144, 13 · 12, §12.17 restent à toi.
+
+21/10/2026 22:27
+MEMO

@@ -15,6 +15,8 @@ echo "— 1. assemblage" | tee -a "$OUT/banc.txt"; node "$ICI/assembler.mjs" "$S
 echo "— 2. collisions" | tee -a "$OUT/banc.txt"; node "$ICI/collisions.mjs" "$SRC" 2>&1 | tee -a "$OUT/banc.txt" || R=1
 echo "— 3. parcours" | tee -a "$OUT/banc.txt"; node "$ICI/parcours.mjs" "$ASM" "$OUT/parcours" 2>&1 | tail -n 25 | tee -a "$OUT/banc.txt"; [ -f "$OUT/parcours/parcours.txt" ] && grep -q "PARCOURS VERT" "$OUT/parcours/parcours.txt" || R=1
 echo "— 4. parcours en mode test" | tee -a "$OUT/banc.txt"; MJPC_MODE_TEST=1 node "$ICI/parcours.mjs" "$ASM" "$OUT/parcours-mode-test" 2>&1 | tail -n 8 | tee -a "$OUT/banc.txt"; [ -f "$OUT/parcours-mode-test/parcours.txt" ] && grep -q "PARCOURS VERT" "$OUT/parcours-mode-test/parcours.txt" || R=1
-echo "— 5. contrôles K1-K13 par l'entrée du site" | tee -a "$OUT/banc.txt"; MJPC_ENTREE=site node "$RACINE/AUDITS/CONTROLES-DEROULE/controles.mjs" "$ASM" "$OUT/controles.txt" 2>&1 | tail -n 5 | tee -a "$OUT/banc.txt" || R=1
+echo "— 5. contrôles K1-K13 par l'entrée du site" | tee -a "$OUT/banc.txt"; MJPC_ENTREE=site node "$RACINE/AUDITS/CONTROLES-DEROULE/controles.mjs" "$ASM" "$OUT/controles.txt" 2>&1 | tail -n 5 | tee -a "$OUT/banc.txt"
+# (v1.1, 16:33) le verdict vient du fichier, pas du tube (le code de sortie d'un tube est celui de `tail`) : « --- fin : 0 défaut(s) » ou ROUGE
+grep -q -- "--- fin : 0 défaut" "$OUT/controles.txt" 2>/dev/null || R=1
 echo "— résultat : $([ $R = 0 ] && echo VERT || echo ROUGE) · sorties dans $OUT" | tee -a "$OUT/banc.txt"
 exit $R

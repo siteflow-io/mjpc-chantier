@@ -1809,3 +1809,29 @@ Réponse de la conscience (17:50), mot pour mot :
 
 21/10/2026 17:50
 MEMO
+
+## TOUR 85 — RÉVEIL N°6 (21/10/2026, 18:51 → 19:00 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (18:51, 18:54, 18:55, 18:58). Un faux signal « 13 commits non poussés sur integration » : le ref local `origin/integration` n'était jamais rafraîchi (refspec sur `main` seul) — ajouté au refspec, le distant était déjà à jour.
+
+Mesuré :
+- `integration` à `dd0333a6` (E4, 18:30) ; pendant le banc, `3f2e1fcd` (E4, « Ce qui s'est passé » range une entrée sous sa diapo). Depuis le réveil n°5 : E2 (poussée 18, 18:19 : 3, 5, 7 du réveil n°4 — la reprise remonte l'heure telle qu'elle était, `C/etat` porte `heures`, la T-5 dans l'écran à 1280, `copie-ed` non reproduit, les sept étapes cliquables ; les six lignes A4 lues, en cours) ; E3 (17:57, réveil n°5 traité : banc rejoué sur chaque poussée 82/82, T13 suit `dr_heureContinue`) ; E4 (poussées 32-36 : relecteurs A5 — 17 revérifiées, 3 réglées, 7 neuves — et B4 ; la Relecture rechargée sans reprise relit l'état ; « ⚠ élève non identifié » corrigeable ; la passe complète de 84 lignes lancée sur `28a0375f`) ; **E1 : rien depuis `21ed40fe` (17:36), réveil n°5 non marqué**.
+- **Mon banc sur `dd0333a6`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. Épreuves `AUDITS/INTEGRATION-DEROULE/epreuves/banc-sur-integration-dd0333a6.txt`, `AUDITS/CONTROLES-DEROULE/epreuves/sur-integration-dd0333a6-v22.txt` ; captures `pieces/T85-P5-classe-lancee.png`, `pieces/T85-P9-fin-de-l-heure.png`.
+- Capture P9 : « Où on en est » reste sous la fin de l'heure (point 5 d'E2 fait) mais recouvre les boutons « ◀ Étape précédente / Étape suivante ▶ » à 1366 × 768 (relancé, moyen). Capture P5 : l'heure 2 s'ouvre sur « Tableau 3 », le rituel « Où en sommes-nous ? » 6ᵉ.
+- **Table d'E4 (131 lignes)** : un **grave** neuf (ligne 110, 17:50) — un bloc écrit en classe (« clique ici et écris »), rechargement, « Reprendre le cours » → le bloc disparaît du pilote, de l'Écran 2, du récit et de la copie de la classe au hub ; deux **hautes** chez E2 (129 : la reprise en « H1 », 9 activités au lieu de 4 — avant la poussée 18 ; 130 : « non fait » et « pas le temps » rejouées en diapos 1 et 2, le rituel de l'heure 3 en 9ᵉ) ; une ligne « à trancher » (135 : l'heure 2 commence sur « Tableau 3 », le rituel 6ᵉ — la règle du réveil n°4 contre C1 6.5).
+- **Tranché** (contrat §12.16) : ma relance du réveil n°4 était incomplète ; C1 6.5 et 6.6 font foi — l'heure n s'ouvre sur sa diapo de réactivation non jouée, puis le reporté dans l'ordre des décisions, puis le programme à partir de là où la classe s'est arrêtée, puis le cahier.
+- **Relances écrites (18:58)** : E1 — le grave 110 en premier (la copie jouée `C/ecrans` porte le bloc dès qu'il est écrit, par `eid`), puis cinq moyens (▶ page 1 → page 2 ; le clic dans une consigne grise ne mène pas à la saisie ; Ctrl+B sur la 2ᵉ occurrence met la 1ʳᵉ en gras ; la garde du dégel dit « diapo 8 » sur « 5 sur 8 » ; l'état d'avant le lancement compte), un faible, et « une ligne au JOURNAL toutes les heures » ; E2 — §12.16, la ligne 129 à revérifier par le geste exact, les moyens (bandeau « heure 2/3 » et créneau 10:07-11:02 après la clôture ; la copie ED sans retours ni entête ; « EA » et `S.parts` vide ; les boutons recouverts à 1366), les faibles (étapes 2/3, « activité 6 · » sans titre, les éléments sous la diapo suivante avec E4) ; E3 — §12.16 par T13, le bloc écrit en classe au tableau après rechargement dans son banc ; E4 — finir la passe complète sur la tête (110 et 129 d'abord, chaque ligne avec son commit), §12.16, ses lignes 118, 127, 124, 113, R2/R4 en une ligne.
+- Réveil suivant : 19:59.
+
+Réponse de la conscience (19:00), mot pour mot :
+
+160. Réveil n°6. Sur la tête de 18:30 (`dd0333a6`) mon banc est vert : collisions 0, parcours P0-P12 vert, mode test vert, contrôles K 108 sur 108. E2 a fini le réveil n°4 (la reprise remonte l'heure telle qu'elle était, la T-5 tient dans l'écran) et attaque les six lignes du réveil n°5 ; E3 est à jour ; E4 revérifie sa table ligne à ligne. E1 n'a rien poussé depuis 17:36 — relancé : une ligne au journal toutes les heures au moins.
+
+161. **Un grave neuf**, trouvé par E4 : un bloc que tu écris en classe (« clique ici et écris ») disparaît si tu recharges la page et reprends le cours — du pilote, de l'Écran 2, du récit et de la copie de la classe. Relancé en premier chez E1 (la copie jouée doit porter le bloc dès qu'il est écrit) avec E2 pour la reprise. Tant que ce n'est pas réglé, pas de « promeus ».
+
+162. **Tranché sans toi**, parce que ton cadrage le dit déjà (C1 6.5 et 6.6) : l'heure suivante s'ouvre sur son rituel « Où en sommes-nous ? », puis ce qui a été reporté, puis le programme là où la classe s'est arrêtée, puis le cahier de textes. Ma relance du réveil n°4 avait oublié le rituel (l'heure 2 s'ouvrait sur « Tableau 3 », le rituel 6ᵉ) ; c'est corrigé au contrat (§12.16) et chez E2, E3, E4.
+
+163. Prochain réveil à 19:59. Les questions 152 (l'heure de fin dans le récit) et 144 (l'animation en accéléré) restent à toi.
+
+21/10/2026 19:00
+MEMO

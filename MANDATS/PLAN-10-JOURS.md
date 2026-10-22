@@ -27,10 +27,10 @@
 | lot | exécutant | fichier | quand | contenu |
 |---|---|---|---|---|
 | L0 l'intégration du déroulé | E1-E4 (en cours) | `index.html` (modules dr/) | J0-J1 | ce qui reste de la table d'E4 → audit final → **promeus** |
-| L1 ATTENDUS | A1 | hub : `taxonomie_atelier.json`, `/taxonomie`, `/attendus` | J1-J3 | les attendus Éduscol cycle 4 français au hub, rattachés aux notions (cadrage 3) ; la garde « pas de terminale » ; le volet littérature |
-| L2 DICTÉE | D1 | `correction_dictee.html` | J1-J4 | L17 repris, les 19 lignes de classe, 143/160 restes, 97, 122 (L16b : les lettres de Paul au hub), 178 ; puis 141 une fois cadré |
-| L3 PROMPT | P1 | `MANDATS/PROMPT-INJECTION/` | J1-J3 | le prompt d'injection en trois sections, éprouvé sur un chapitre JSON contre le contrat des objets (E1) ; branché au site au L5 |
-| L4 APPS | S1 (une app après l'autre, ou S1-S3 en parallèle) | les huit satellites | J1-J5 | item 10 ligne à ligne, la passe identité/aide sur chaque app, les non ordonnancées de la table 1 ; bancs par app |
+| L1 ATTENDUS | A1 (`MANDAT-A1-ATTENDUS.md`) | une table `attendus.json` (nœud `/attendus`, cadrage 3 §6.1), les rattachements des 210 notions, `poser.mjs`, un banc | J1-J3 | les attendus de fin d'année 5e/4e/3e (Éduscol) découpés en items et enrichis, rattachés aux notions (cadrage 3 §6) ; la liste des attendus sans notion (le volet littérature : à cadrer avec Paul, rien n'est créé) ; la garde « pas de terminale » est le rattachement — son geste dans l'éditeur est L5 |
+| L2 DICTÉE | D1 (`MANDAT-D1-DICTEE.md`) | `correction_dictee.html` (prod `9d5dcfb6…`, +29 lignes depuis la pause) | J1-J4 | le banc unique remis en marche, puis L17-2 → L17-8 avec les dettes de classe pliées dedans (146, 164, 160, 174, 161, 163, 167, 144, 155, 159, 143, 171, 150, 151, 162, 165, 149, 133, 138, 139, 172, 132), 178 (le registre des séances), 97, 122 (la voix de Paul, maquette T420) ; 176 et 141 : à Paul |
+| L3 PROMPT | P1 (`MANDAT-P1-PROMPT.md`) | `MANDATS/PROMPT-INJECTION/` (la pièce, `valider.mjs`, le chapitre 3e réécrit au contrat) | J1-J3 | le prompt en trois sections (cadrage 4 §5) écrit contre le déroulé intégré et l'import réel ; le validateur = le deuxième des trois endroits (3.1) ; dettes mesurées en le préparant : **13 · 30** (l'injection n'écrit pas les trames : `FB` indéclaré, « Compléter » sans déroulé) et **13 · 31** (les refus à l'import ne sont que des textes) → L5 |
+| L4 APPS | **S1** (les deux réécritures + la mesure des trois fichiers hors socle), **S2** (dictée coévaluée, applaudimètre, plan de travail), **S3** (analyse logique, débat) | les dix satellites (`MANDAT-S-APPS.md`) | J1-J5 | la passe unique (banc par le geste, **le mode test recyclé d'`index.html` — n°11 · 98 : onze fichiers écrivent au vrai hub en « test »**, l'aide élève, « rien à montrer » dit, l'identité MJPC, le direct), puis les dettes propres (M9, M11, M14, les constats de Paul du 09/08) ; ce qui est dans `index.html` (libellé de publication, Apps Script, CSS inerte, portes du portail) va en L5 |
 | L5 DÉROULÉ — le reste cadré | E1'-E4' (les mêmes territoires, après la promotion) | `index.html` (modules) | J2-J7 | 13 notions ; 14 ÉLÈVE — 2 ; 15 appel/absents ; 16 ce que l'élève reçoit (+34) ; 17 documents/feuilles ; 18 vidéo ; 19 ; 20 branché ; 24 ; 12 · 87-89, 212, item 10 panneau prof |
 | L6 PROFIL | F1 | `index.html` | J5-J9 | le profil de classe (35, LOT C) et le profil longitudinal élève (23 ; programme du 25/08 n°9 : `mjpcProfils` existe, alimenté, jamais lu — on le lit, on ne crée rien) ; « ce qui compte » d'un clic (15/10) — **après cadrage avec Paul (J1-J3)** ; le « cockpit » n'entre que s'il est dans un cadrage |
 | L7 RÉCIT ET PAPIER | E4' | `index.html` (dr-recit) | J4-J7 | 21, 25 — **après cadrage avec Paul (J2)** |
@@ -47,8 +47,8 @@
 6. *(retiré : la banque d'exercices et l'app de révisions sont neuves — hors plan, règle du 22:09.)*
 
 ## 4 · Le calendrier (J1 = mercredi 22/10)
-- **J0 (21/10, soir)** : réveils toutes les heures sur L0 ; ce plan déposé ; les mandats L1, L2, L3, L4 écrits cette nuit si Paul dit « go ».
-- **J1 (22/10)** : L0 audit final + promeus (matin) ; A1, D1, P1, S1 lancés ; cadrage 1 (profil) avec Paul.
+- **J0 (21/10, soir)** : réveils toutes les heures sur L0 ; ce plan déposé.
+- **J1 (22/10)** : L0 prêt au promeus (09:12 : signal d'E4, banc vert sur `523ce739`) ; 152 tranchée par Paul (§12.20, E4 la code avant le promeus) ; 198 réglée dans la donnée ; **Paul : « go » à 09:31** → le contrat commun et les six mandats écrits (`MANDATS/PLAN-10-JOURS/`, `PHRASES-A-COLLER.md`) ; A1, D1, P1, S1, S2, S3 à lancer par Paul ; cadrage 1 (profil) avec Paul.
 - **J2 (23/10)** : E1'-E4' lancés sur L5 ; cadrage 2 (récit/papier).
 - **J3 (24/10)** : L1 et L3 livrés ; cadrage 3 (télécommande), 4 (pièges), 5 (M-SÉCU).
 - **J4-J5 (25-26/10, week-end)** : L2 livré ; L4 livré ; L5 en cours ; L7 lancé.
@@ -57,7 +57,7 @@
 - **J10 (31/10)** : audit final global, dernières promotions ; le site et les apps fonctionnels, le registre à zéro. (La purge de « 3E Charles de Gaulle » : quand Paul le décide.)
 
 ## 5 · Ce qui est à Paul, et seulement à lui
-Les promotions (sur captures) ; les cinq cadrages du §3, un par jour ; le QCM (le confier ou non) ; le mot sur 152, 144, 13 · 12, §12.17 ; la purge finale de « 3E Charles de Gaulle ».
+Les promotions (sur captures) ; le mot « promeus » du déroulé ; coller les six phrases ; les cinq cadrages du §3, un par jour ; le QCM (le confier ou non) ; le mot sur 144 (l'animation en accéléré dans le mode test : faisable, L5 — avant ou après le promeus), 13 · 12, §12.17, 176 (le plafond des questions), le pied « stylo vert », les trois fichiers hors socle, `/presence` racine ; la purge finale de « 3E Charles de Gaulle ».
 
 ## 6 · Les vérifications (pour que Paul ne vérifie rien)
 Chaque lot a son banc (par le geste), lancé avant chaque poussée ; la conscience rejoue le banc de chaque lot à chaque réveil et relance par gravité ; un relecteur continu par lot (le modèle d'E4) ; l'audit final de chaque lot = écrans changés et voisins + un parcours fixe + captures entières avant/après ; ce plan dit à chaque réveil « fait / reste / à Paul ».

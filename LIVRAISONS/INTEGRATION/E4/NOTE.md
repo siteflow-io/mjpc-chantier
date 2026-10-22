@@ -266,3 +266,7 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 - **15:00 UTC, réveil n°24** : L186 réglée (`5e8cf3fd`, l'import pose l'adresse complète des images) ; **L187 réglée** (`aede3c85` : « À régler » compte et liste toutes les séances du chapitre ; « Ouvrir la diapo » ouvre la bonne séance), revérifiée par le geste aux deux tailles sur `69bfb051`. La carte mesurée avec EB Garamond : une famille par diapo, les autres coupes encore refusées. Le chapitre au contrat attend Paul pour ses 4 refus (trois réponses attendues, la « Question-bilan » de la séance 3). `banc.sh` vert, mon banc **117 ok · 0 échec** sur `69bfb051`. **Compte : 180 lignes, dont 170 réglées, 0 pas réglée, 10 écartées, 0 à Paul, 0 ouverte.**
 
 **0 pas réglée (`69bfb051`)** — la tête d'E1 qui porte L187 réglée ; `banc.sh` vert, mon banc 117 ok · 0 échec.
+
+- **15:50 UTC, §12.23 (Paul, 17:33)** : le bilan sans réponse attendue. Le récit dit « sans réponse écrite » quand le bilan est resté sans réponse, et dit la réponse écrite en classe (L188, réglée dans `ba46e503`, RC8). Le chapitre au contrat : les trois bilans gardent leur question sans `reps` ; ma liste n'a plus qu'**un** écart (la « Question-bilan » de la séance 3, à Paul). L'import attend la tête d'E1 avec §12.23. `banc.sh` vert, mon banc **121 ok · 0 échec**. **Compte : 181 lignes, dont 171 réglées, 0 pas réglée, 10 écartées, 0 à Paul, 0 ouverte.**
+
+**0 pas réglée (`ba46e503`)** — `banc.sh` vert, mon banc 121 ok · 0 échec.

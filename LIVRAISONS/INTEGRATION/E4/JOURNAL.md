@@ -806,3 +806,12 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - **Bancs** sur `69bfb051` : `banc.sh` vert ; le mien **117 ok · 0 échec** (`sorties/1500-site-E4`).
 - **Compte** : 180 lignes, dont 170 réglées, **0 pas réglée**, 10 écartées, 0 à Paul, 0 ouverte. **Signal réécrit : « 0 pas réglée (`69bfb051`) ».**
 - Reste hors de ma table, chez Paul : les 4 refus du chapitre au contrat. Quand il tranche, le script se met à jour et l'import se rejoue.
+
+## Poussée 84 — 15:50 UTC · §12.23 (Paul, 17:33), la question du bilan sans réponse attendue
+- **Le récit** : le geste (lancer, aller au bilan, dévoiler la question, « Clore », Relecture) disait « on a posé la question : « … » » sans rien de plus. **L188**, chez moi, réglée (`ba46e503`) :
+  - sans réponse écrite : « … », sans réponse écrite » ;
+  - avec la réponse écrite en classe (initiales) : le récit la dit, et ne dit pas « sans réponse écrite ».
+  - Garde **RC8** (les deux cas). Mon banc **121 ok · 0 échec** (`sorties/1550-site-E4`) ; `banc.sh` vert.
+- **Le chapitre au contrat** : les trois bilans (séances 1, 2, 7) gardent leur question **sans `reps`** (la réponse s'écrira en classe). Ma liste n'exige plus de réponse attendue sur le bilan : **1 écart**, la « Question-bilan » de la séance 3, à Paul. La copie d'essai ne diffère plus du livré que par la séance 3.
+- L'import se rejoue quand la tête d'E1 portera §12.23 (« la réponse attendue manque » ne doit plus tomber sur le bilan) ; attendu : un seul refus (séance 3).
+- **Compte** : 181 lignes, dont 171 réglées, 0 pas réglée, 10 écartées, 0 à Paul, 0 ouverte. **Signal : « 0 pas réglée (`ba46e503`) ».**

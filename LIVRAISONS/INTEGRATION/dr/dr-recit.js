@@ -245,17 +245,18 @@ function troisTemps(html, h, fin, depuis){ /* (d) 2 · 1.2 ter et quater — les
 function dr_recitFinReel(h){
   if (typeof S === 'undefined') return { t: null, enCours: false };
   if (S.lancee && !S.close && +h === +S.heure) return { t: null, enCours: true };
-  const hc = (S.heuresCours || {})[h] || {};
-  const t = (+h === +S.heure && S.finReel) || hc.finReel || (S.closes && S.closes[h]) || null;
-  return { t, enCours: false };
+  const hc = (S.heuresCours || {})[h] || {}; const hub = DR_RECIT_FIN_HUB[dr_recitCle(h)] || null;
+  const t = (+h === +S.heure && S.finReel) || hc.finReel || (S.closes && S.closes[h]) || (hub && hub.finReel) || null;
+  return { t, enCours: false, pasClose: !t && !!hub && !hub.clos };   /* relue au hub, jamais close (la page fermée sans « Clore ») : pas d'heure de fin inventée */
 }
+var DR_RECIT_FIN_HUB = {};
 function recitHtml0(fin, h, bornes){ h = h || S.heure; const finHeure = (S.closes && S.closes[h]) || fin;
   /* (d) l'ancien « figé » retiré : le sélecteur composé | ma version le remplace */
   const hm = t => hhmm(t).replace(':', ' h ');
   const JH = J.filter(x => dr_dansLH(x, h)); const dateJour = dr_recitHeure(h).jour;
   const p = [`<h2>Ce qu'on a fait aujourd'hui</h2>`, `<p class="sous">${[dr_recitClasseNom(), dr_recitChapitre() + ', ' + dr_recitSeanceTitre(), dateJour + ' · heure ' + h].filter(Boolean).map(esc).join(' · ')}</p>`];
   const debut = JH.length ? JH[0].t : now(); const finCr = (dr_recitHeure(h) || {}).fin; const fr = dr_recitFinReel(h); /* contrat §12.20 (Paul, 22/10 09:31) : l'heure réelle de « Clore » (H.finReel d'E2) ; l'entête garde le créneau ; en cours, pas d'heure de fin */
-  p.push(fr.enCours ? `<p class="cadre">Cette heure a commencé à <b>${hm(debut)}</b> ; elle est en cours.</p>` : `<p class="cadre">Cette heure a commencé à <b>${hm(debut)}</b> et s'est terminée à <b>${fr.t ? hm(fr.t) : finCr ? String(finCr).replace(':', ' h ') : hm(finHeure)}</b>.</p>`);
+  p.push(fr.enCours ? `<p class="cadre">Cette heure a commencé à <b>${hm(debut)}</b> ; elle est en cours.</p>` : fr.pasClose ? `<p class="cadre">Cette heure a commencé à <b>${hm(debut)}</b> ; elle n'a pas été close.</p>` :`<p class="cadre">Cette heure a commencé à <b>${hm(debut)}</b> et s'est terminée à <b>${fr.t ? hm(fr.t) : finCr ? String(finCr).replace(':', ' h ') : hm(finHeure)}</b>.</p>`);
   const diapos = JH.filter(e => e.type === 'diapo'); const vus = {}; diapos.forEach(e => { vus[e.di] = vus[e.di] || e.t; }); let ordre = Object.keys(vus).map(Number).sort((x, y) => vus[x] - vus[y]); if (bornes) ordre = ordre.filter(di => (bornes.avant == null || vus[di] < bornes.avant) && (bornes.apres == null || vus[di] > bornes.apres));
   let rang = 0, nbFiches = 0, nbQuestions = 0, nbImages = 0, nbRappels = 0; /* (E4 · R2) + nbRappels */ const eleves = {}; const dejaCite = {};
   const majApresPoint = t => t.replace(/((?:[.!?]\s+|[.!?]\s*»\s+)(?:<[^>]+>)*)([a-zà-ÿ])/g, (_, x, y) => x + y.toUpperCase()); /* (relecteur continu B) la majuscule aussi quand le mot suivant est en gras (« … ». <b>un élève</b> ») */ /* (E4 · relecteur neuf du site) lisait [.!?»] : « Le « je » Y est partout » — un guillemet fermant en pleine phrase n'ouvre pas une phrase */
@@ -384,6 +385,7 @@ function dr_recitCle(h){ try { const x = (S.heuresCours || {})[h]; if (x && x.cl
 function dr_recitHDeCle(cle){ try { const hc = S.heuresCours || {}; const h = Object.keys(hc).find(k => hc[k] && hc[k].cle === cle); if (h) return +h; if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && typeof _drCleHeureDe === 'function' && _drCleHeureDe(AT_DR_COURS) === cle) return S.heure; } catch (e) {} return /^\d+$/.test(cle) ? +cle : null; }
 function dr_recitHeuresTouchees(){ const hs = new Set(); dr_recitChamps().forEach(k => Object.keys(S[k] || {}).forEach(h => hs.add(+h))); return [...hs].filter(h => h > 0); }
 function dr_recitCharger(cb){ const C = dr_recitChemin(); if (!C || typeof dr_lire !== 'function') { if (cb) cb(); return; } if (DR_RECIT_EN_LECTURE[C]) { if (cb) setTimeout(cb, 300); return; } DR_RECIT_EN_LECTURE[C] = true;
+  dr_lire(C + '/heures', hs => { if (hs && typeof hs === 'object') Object.keys(hs).forEach(k => { const x = hs[k] || {}; DR_RECIT_FIN_HUB[k] = { clos: x.clos === true, finReel: x.finReel || null }; }); });   /* §12.20 : la fin réelle et la clôture d'une heure relue après rechargement (H/clos, H/finReel écrits par E2) */
   dr_lire(C + '/recit', v => { DR_RECIT_EN_LECTURE[C] = false; if (v && typeof v === 'object') Object.keys(v).forEach(c => { const h = dr_recitHDeCle(c); if (v[c] && h > 0) dr_recitPoser(h, v[c]); });
     dr_recitHeuresTouchees().forEach(h => { DR_RECIT_ECRIT[C + '|' + h] = JSON.stringify(dr_recitEtatDe(h)); }); DR_RECIT_CHARGE[C] = true; if (cb) cb(); }); }
 function dr_recitAuto(){ try {

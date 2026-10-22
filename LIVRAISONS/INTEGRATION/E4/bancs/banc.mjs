@@ -329,7 +329,15 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg; await lanc
   verif('RC7', v.close ? /s'est terminée à 09 h 49/.test(cadre) && !/09 h 52/.test(cadre) : null, 'l\'heure close à 09:49 dans le créneau 08:57-09:52 : le récit dit « s\'est terminée à 09 h 49 » (H.finReel), pas la fin du créneau', JSON.stringify({ v, cadre }));
   const ent = await pg.evaluate(() => (document.getElementById('hou') || {}).textContent || '');
   verif('RC7', v.close ? /08:57-09:52/.test(ent) : null, 'l\'entête garde le créneau (08:57-09:52)', ent);
-  verif('RC7', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte', JSON.stringify(o.errs)); await cap(pg, 'E4-RC7-fin-reelle'); await o.ctx.close(); }
+  verif('RC7', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte', JSON.stringify(o.errs)); await cap(pg, 'E4-RC7-fin-reelle');
+  HUB_PERSISTANT = await pg.evaluate(() => window.__HUB); await o.ctx.close();
+  { const o2 = await ouvrir(); const pg2 = o2.pg; await pg2.clock.setFixedTime(new Date('2026-09-14T10:30:00+02:00')); await p(pg2, 800); await relecture(pg2); await p(pg2, 800); const c2 = ((await texteRel(pg2)).match(/Cette heure a commencé[^.]*\./) || [''])[0];
+    verif('RC7', v.close ? /s'est terminée à 09 h 49/.test(c2) : null, 'la page rouverte à 10:30 : la fin réelle relue au hub (H/finReel), toujours « 09 h 49 »', c2); await o2.ctx.close(); }
+  { const o3 = await ouvrir({ frais: true }); const pg3 = o3.pg; await lancer(pg3); await devoiler(pg3, 3); await pg3.clock.setFixedTime(new Date('2026-09-14T09:02:00+02:00')); await p(pg3, 1500);
+    HUB_PERSISTANT = await pg3.evaluate(() => window.__HUB); await o3.ctx.close();
+    const o4 = await ouvrir(); const pg4 = o4.pg; await pg4.clock.setFixedTime(new Date('2026-09-14T09:58:00+02:00')); await p(pg4, 800); await relecture(pg4); await p(pg4, 800); const c4 = ((await texteRel(pg4)).match(/Cette heure a commencé[^.]*\./) || [''])[0];
+    verif('RC7', /elle n'a pas été close/.test(c4) && !/terminée/.test(c4), 'la page fermée sans « Clore » puis rouverte : le récit ne dit pas d\'heure de fin (« elle n\'a pas été close »)', c4);
+    verif('RC7', o3.errs.length + o4.errs.length === 0, 'zéro erreur JS (rouvertures)', JSON.stringify(o3.errs.concat(o4.errs))); await o4.ctx.close(); HUB_PERSISTANT = null; } }
 else verif('RC7', null, '§12.20 la fin réelle', 'se mesure sur le site');
 
 // ═════ B3 · le relecteur continu B3 (14:05) : l'heure fantôme, le bloc libre, le verdict sans activités, le point après « », l'étiquette vide ═════

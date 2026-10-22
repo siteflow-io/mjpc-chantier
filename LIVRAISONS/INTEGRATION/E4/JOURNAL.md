@@ -684,3 +684,7 @@
 ## Poussée 76 — 10:20 UTC (veille)
 - Depuis la poussée 75, seule la poussée `6cff14c3` d'E1 est arrivée (son banc sur §12.20) ; aucun code ne change.
 - `banc.sh` rejoué sur `6cff14c3` : **vert**. Le signal tient : **0 pas réglée (`a61fe923`)**. L'intégration est prête, le promeus est à Paul.
+
+## Poussée 77 — 11:20 UTC (veille)
+- Réveil n°21 lu (rien de neuf). Aucun code n'a changé depuis `a61fe923`.
+- `banc.sh` rejoué sur la tête : **vert**. Le signal tient : **0 pas réglée (`a61fe923`)**. Le promeus est à Paul.

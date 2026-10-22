@@ -25,6 +25,8 @@
 
 **Mise à jour 22/10, 23:14 (réveil n°30, tête `905c8d85`, code = `b8a11d55`).** Code inchangé : pas de banc ; **candidat `b8a11d55`** (md5 `003e0eef…`). E4 : la session d'avant était vivante (veille sans poussée) — elle garde la main, la session relancée à 22:19 se retire ; E1, E2, E3 : rien. Paul (22:50) : la consigne d'intégration « Rédige le bilan au brouillon. » — exemple aujourd'hui, proposition de la figer dans le prompt (point 287), en attente.
 
+**Mise à jour 23/10, 00:21 (réveil n°31, tête `2229fee9`).** Paul (23:17) : la consigne d'intégration **proposée, pas figée** → prompt v0.7 (23:19), contrat §12.24, relances. Les exécutants dans l'heure : E4 `64886b1d` (les trois bilans du chapitre au contrat en trois blocs, notes présentateur, 0 écart) ; E3 `5b5330fa` (mesure : 5 mots-clés au plus sur une page, la question sur une ligne) ; E1 `45b7c8b3` / `41af9896` (§12.24 à l'import : notes du bilan à l'eid, trois blocs dans l'ordre, les refus ; A33 62/0, E1 268/0, bancs VERT) ; E2 `2229fee9` (`travail` au T-5 vérifié). Code bougé (`index.html` +16/−3, l'import). **Mon banc sur `2229fee9` : collisions 0, parcours vert ×2, K 108 / 0** (épreuves `banc-sur-integration-2229fee9.txt`, `sur-integration-2229fee9-v22.txt` ; pièces T132) ; assemblé 2 299 802 o, md5 `746227673f68401bd399af6edd3bbc2f`. **E4 n'a pas signé cette tête** (signal « 0 pas réglée (`c8bf7b61`) ») : **le candidat reste `b8a11d55`** ; `2229fee9` est « benchée, pas signée ». Prompt v0.8 (00:21) : 5 mots-clés au plus, question sur une ligne.
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

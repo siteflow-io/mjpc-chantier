@@ -578,3 +578,14 @@
 - **Compte** : 170 lignes, dont 150 réglées, 5 pas réglées (E1 : 161, 164, 172, 173, 177), 9 écartées, 6 à Paul, 0 ouverte. 0 ligne nouvelle.
 - **Correction d'horodatage** : la poussée 63 était datée « 04:15 » ; l'heure réelle est ≈ 02:20 UTC (relevé `date -u`). La table, la NOTE et le dossier des captures (`relecteurs/final-0220`) sont corrigés.
 - **Bancs** sur `d32cde68` : `banc.sh` vert (0 défaut) ; le mien **110 ok · 0 échec** (`sorties/0250-site-E4`).
+
+## Poussée 65 — 03:20 UTC
+- **E1, poussée 20 (`46710b3e`, `d184420f`, sorties `88301b93`)** et E3 `586b5779` (son banc seul). Revérifié sur `586b5779`, aux deux tailles, par le geste exact, sur une copie fraîche de la page :
+  - **L161 réglée** : le mercredi, H1 · lundi 7 (jouée), H2 · lundi 14 (jouée), H3 · vendredi 18.
+  - **L172 réglée** : le lundi, « Lancer » heure 2/3 et l'Atelier H1 · lundi 7, H2 · lundi 14, H3 · mardi 15, comme l'EDT.
+  - **L164 réglée** : « + bloc » et « Envoyer vers… » cerclent le choix d'Entrée, le cercle suit le survol, Entrée prend le choix cerclé (même formulaire qu'un clic pour « Image… » ; la diapo part pour « Envoyer »).
+  - **L173 réglée** : chaque séance porte son nombre d'heures, une case par heure.
+  - **L177 pas réglée** (E1 / E2) : le mercredi, trois suites encore (Pilotage → mer. 10 h 07 « fil langue » ; EDT → 3/3 au mardi passé, L'Albatros vendredi ; Atelier → H3 vendredi).
+- **Relecteur neuf** lancé sur le §12.18 (rel21).
+- **Compte** : 170 lignes, dont 154 réglées, 1 pas réglée (L177), 9 écartées, 6 à Paul, 0 ouverte.
+- **Bancs** sur `586b5779` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0315-site-E4`).

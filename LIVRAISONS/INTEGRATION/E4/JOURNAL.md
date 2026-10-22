@@ -564,7 +564,17 @@
 - **Convergence** : 2 nouvelles à cette passe, contre 4 aux trois précédentes.
 - **Compte** : 170 lignes, dont 149 réglées, 7 pas réglées, 8 écartées, 6 à Paul, 0 ouverte.
 
-## Poussée 63 — 04:15 UTC
+## Poussée 63 — 02:20 UTC
 - **Réveil n°14 lu** (main fusionnée). Les 7 restantes : 5 chez E1, 2 chez E2 ; ma prochaine passe attend la poussée d'E1.
-- **L175 revérifiée sur `913a9a75`**, aux deux tailles : la case du mercredi 16 à 10:07 dit « aucune séance prête · fil « langue » ». C'est la lecture de la conscience : **écartée** ; le 3/3 au mardi passé reste dans L177. Captures `relecteurs/final-0415/`.
+- **L175 revérifiée sur `913a9a75`**, aux deux tailles : la case du mercredi 16 à 10:07 dit « aucune séance prête · fil « langue » ». C'est la lecture de la conscience : **écartée** ; le 3/3 au mardi passé reste dans L177. Captures `relecteurs/final-0220/`.
 - **Compte** : 170 lignes, dont 149 réglées, 6 pas réglées (E1 : 161, 164, 172, 173, 177 ; E2 : 176), 9 écartées, 6 à Paul, 0 ouverte. Aucune nouvelle ligne : pas de poussée d'E1 ni d'E2 depuis `fa6ff3d4`.
+
+## Poussée 64 — 02:55 UTC
+- **E3 `3beda214`** : sa relance seule, aucun code.
+- **E2, poussée 29 (`d32cde68`, `c3bd9e05`)**, revérifié aux deux tailles :
+  - **L176 réglée** : l'infobulle de « Lancer » dit « la case de ton emploi du temps » le lundi 09:00 et le mardi 15:00.
+  - **L172 et L177 pas réglées** (chez E1) : le lundi, l'Atelier liste « H1 · mardi 15 » face à « heure 2/3 » ; le mercredi, Pilotage et Atelier visent le 16 à 10 h 07, que l'EDT dit « fil langue ».
+- **Correction de ma part** : ma lecture de L175 à 02:20 tournait sur une copie périmée de la page assemblée (l'espace des relecteurs n'avait pas été rafraîchi). Relue sur la page fraîche : même résultat, « écartée » tient. La copie est désormais rafraîchie avant chaque passe.
+- **Compte** : 170 lignes, dont 150 réglées, 5 pas réglées (E1 : 161, 164, 172, 173, 177), 9 écartées, 6 à Paul, 0 ouverte. 0 ligne nouvelle.
+- **Correction d'horodatage** : la poussée 63 était datée « 04:15 » ; l'heure réelle est ≈ 02:20 UTC (relevé `date -u`). La table, la NOTE et le dossier des captures (`relecteurs/final-0220`) sont corrigés.
+- **Bancs** sur `d32cde68` : `banc.sh` vert (0 défaut) ; le mien **110 ok · 0 échec** (`sorties/0250-site-E4`).

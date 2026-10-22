@@ -2680,3 +2680,18 @@ Réponse de la conscience (23:20), mot pour mot :
 
 22/10/2026 23:20
 MEMO
+
+---
+
+## Tour 132 — 23/10/2026 00:21 — réveil n°31 (00:12, programmé au tour 130)
+
+**Mesuré.** Pas de mot de Paul depuis 23:17. `origin/integration` : tête `2229fee9` — E4 `4a927a5e` (veille), `64886b1d` (§12.24 : les trois bilans du chapitre au contrat en trois blocs, notes, 0 écart ; pas encore de ligne au JOURNAL) ; E3 `5b5330fa` (mesure : 5 mots-clés au plus sur une page, question d'une ligne ; 6 au plancher 26 pt ; 7 → deux pages) ; E1 `45b7c8b3` + `41af9896` (§12.24 à l'import : `notes` du bilan → notes présentateur à l'eid, trois blocs dans l'ordre, refus (point final / > 12 mots, `notes` hors bilan, « copie de (la) classe »), A33 62/0, E1 268/0, bancs VERT sur `daed2c0e`) ; E2 `2229fee9` (`travail` au T-5 vérifié, `ouvrirFin` l. 288). Code bougé (`index.html` +16/−3). Banc `banc-0013` sur `2229fee9` : collisions 0, parcours vert ×2, K 108 / 0, « résultat : VERT » ; assemblé 2 299 802 o, md5 `746227673f68401bd399af6edd3bbc2f` ; restauré. E4 §10 : signal inchangé « 0 pas réglée (`c8bf7b61`) » → candidat inchangé `b8a11d55`. Prompt v0.8 (E3, E1, E2 pris) ; relances r31 ; audit §0/§6 ; épreuves ; pièces T132.
+
+**Réponse (mot pour mot).**
+
+290. Le prompt : en une heure, les quatre ont fait leur part — E1 a mis la diapo du bilan dans l'import (les notes présentateur, les refus), E4 a refait les trois bilans de ton chapitre, E3 a mesuré ce qui tient (cinq mots-clés au plus, la question sur une ligne : c'est dans le prompt, version 0.8), E2 a vérifié que le travail à faire reste proposé à la fin d'heure. Reste l'import de ton chapitre rejoué sur la version d'E1 (E4, en cours) : je te dis quand c'est prouvé.
+
+291. Le déroulé : la version du soir (`2229fee9`, avec l'import du bilan) passe mon banc, vert. E4 ne l'a pas encore signée : la candidate reste `b8a11d55`. Ton mot « promeus » attendu.
+
+23/10/2026 00:21
+MEMO

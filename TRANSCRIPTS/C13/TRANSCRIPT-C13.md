@@ -2547,3 +2547,32 @@ MEMO
 
 22/10/2026 18:19
 MEMO
+
+---
+
+## TOUR 124 (22/10/2026, 18:19 → 18:31)
+
+*(La réponse du tour 123 — points 277-279 — n'a pas été envoyée : Paul a écrit à 18:19 pendant le réveil n°26. Le réveil était fini sauf le `send_later` du n°27, fait à ce tour. Les points 277-279 ci-dessous remplacent ceux du tour 123.)*
+
+Paul (18:19), mot pour mot :
+« Récap de l'heure partout.  Et les éléments à intégrer ne sont jamais la totalité de ce qui a été vu avant, mais de ce qui a été vu pendant le chapitre. Pour les élèves avant le bilan rédigé en live ça donne une diapo avec la question bilan, les notions à y intégrer et la consigne d'intégration. Montre moi des captures construites avant de poursuivre. Je veux voir si on est d'accord visuellement »
+
+Fait (18:19-18:31) :
+- « Récap' de l'heure » partout : au hub réel, `/site/3e/chapitres/0/seances/0/deroule/ecrans/7/act` « Avant de se quitter » → « Récap' de l'heure » (état d'avant : `scratchpad/hub-avant-s0-e7-bis.json`) ; même changement dans la source (`bc239f02`, l. 178). Relu au hub : les deux diapos de fin d'heure à question (séance 1 écran 7, séance 3 écran 5) s'appellent « Récap' de l'heure » ; les « Avant de se quitter » restants (séances 2, 3, 4, 5, 7, 8) n'ont qu'une consigne pour la prochaine fois, pas de question — gardés.
+- Les captures : le candidat `6d19ef74` assemblé depuis `git archive` (md5 `022fc8a832bcc11c963a0f16b3827103`, 2 297 141 o) ; faux hub du banc, séance 2 (« L'Albatros ») : sa dernière diapo réécrite en bilan au contrat de Paul — `role: "bilan"`, trois blocs : `question` sans `reps` (« Pourquoi Baudelaire a-t-il choisi un albatros pour parler du poète ? »), `texte` « À mettre dans le bilan » à cinq lignes (prises dans le chapitre : séances 1 et 2), `consigne` « Rédige ta réponse dans la copie de classe. » à trois étapes ; notes présentateur de la diapo (`deroule.notes[eid]`) : chaque élément suivi de la notion qu'il couvre. Script `T124-capture.mjs` (Playwright, horloge figée au 14/09 09:00, hub simulé, aucune écriture au hub réel) : Pilotage, `aller` sur le bilan, fenêtre du tableau `#bvideoproj`, dévoilements un à un (9), captures 1366 × 768 et 1920 × 1080 ; mesuré : tableau 1366 × 768 sans débordement (scrollHeight 768 = vue), 0 erreur JS, 0 boîte. Pièces `T124-bilan-tableau-devoilement-1366.png`, `T124-bilan-tableau-tout-1366.png`, `T124-bilan-tableau-tout-1920.png`, `T124-bilan-pilote-notes-1366.png`, `T124-diapo-bilan.json`.
+- Vu en passant (non demandé) : `integration` porte E1 `3440264f` (« fil » « langue » à la racine, refusé s'il vaut autre chose, écrit par Compléter ; A33 52/0), `d8ef3991` (§12.23 à l'import : le bilan sans réponse attendue passe ; A33 53/0), `a18b529c` (bancs VERT, E1 259/0) — l'ancienne session d'E1 a travaillé avant la relance de 18:19 ; à bencher au réveil n°27. Rien dit à Paul (un seul sujet).
+
+Réponse de la conscience (18:31), mot pour mot :
+
+277. Le déroulé : la version d'aujourd'hui (`6d19ef74`) est la candidate — E4 l'a signée, mon banc est vert dessus. Elle attend ton mot « promeus ».
+
+278. « Récap' de l'heure » partout : fait. La diapo de fin d'heure de ta séance 1 (« Qu'ont en commun ces cinq tableaux ? ») s'appelle « Récap' de l'heure », au hub et dans la source. Les « Avant de se quitter » qui ne sont qu'une consigne pour la prochaine fois (sans question) gardent leur nom — dis-le si tu les veux aussi.
+
+279. Les captures, construites dans le site intégré (la version candidate), sur le bilan de ta séance 2 (« L'Albatros ») — trois images jointes, écran entier 1366 × 768 :
+- **le tableau des élèves pendant le dévoilement** : la question, puis les éléments un à un ;
+- **le tableau avec tout dévoilé** : la question du bilan, « À mettre dans le bilan » (cinq éléments pris dans le chapitre — séances 1 et 2 —, pas tout ce qui a été vu avant), puis la consigne d'intégration ;
+- **ton écran de pilotage** : la même diapo, la ligne où la réponse validée s'écrit en classe, et sous la diapo les notes présentateur (chaque élément suivi de la notion qu'il couvre).
+Rien d'ajouté au site : trois blocs qui existent déjà (question sans réponse attendue, texte à lignes dévoilées, consigne à étapes). Tout tient sans déborder. Une chose à savoir : à l'arrivée sur la diapo, avant le premier dévoilement, les élèves voient les deux titres (« À mettre dans le bilan », « Rédige ta réponse… ») et pas encore la question — c'est la règle du site pour tout bloc, les titres d'abord, les lignes au dévoilement. Dis « d'accord » ou ce qui cloche ; je n'écris pas la version 0.7 du prompt avant.
+
+22/10/2026 18:31
+MEMO

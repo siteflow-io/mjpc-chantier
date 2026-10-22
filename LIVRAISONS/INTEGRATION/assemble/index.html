@@ -18398,7 +18398,8 @@ function dr_proposer(){
     const titre = (seance() || {}).titre || '';
     if (cel && (cel.nature === 'jouee' || !cel.titre || cel.titre === titre)) { const sl = dr_slugDe(cel.classeMjpc);
       let N = cel.sur; if (!N) { try { N = edtHeuresPour(chapitresData[AT.edChap.level][AT.edChap.chnum].seances[ATVUES.snum], cel.creneau); } catch (e) {} }   /* relecteur neuf n°3 (7) : une case jouée ne porte pas `sur` — « heure 2/1 » */
-      return { classeSlug: sl, classeNom: dr_nomClasse(sl), creneau: cel.creneau, debut: dr_debutPropose(cel.creneau), heure: cel.heure || dr_heureProposee(sl, cel.creneau), sur: Math.max(1, N || 1, cel.heure || 1), depuis: 'edt', clos: !!(cel.nature === 'jouee' && cel.clos) }; }
+      const hx = (dr_heuresDeLaClasse(sl) || []).find(x => x.iso === iso && x.creneau === cel.creneau);   /* réveil n°14 : la source unique de l'heure n/N (§12.18) — la même que l'Atelier */
+      return { classeSlug: sl, classeNom: dr_nomClasse(sl), creneau: cel.creneau, debut: dr_debutPropose(cel.creneau), heure: (hx && hx.n) || cel.heure || dr_heureProposee(sl, cel.creneau), sur: (hx && hx.sur) || Math.max(1, N || 1, cel.heure || 1), depuis: 'edt', clos: !!(cel.nature === 'jouee' && cel.clos) }; }
   } catch (e) {}
   const sl = dr_classeProposee(); let cr = dr_creneauPropose();
   /* réveil n°13 (E4 lignes 167, 170) : hors d'une case de la classe, jamais le créneau d'une autre classe (le repli sur les créneaux du site, `AT_EDT`) — l'EDT chargé, « Lancer » se grise et nomme la prochaine heure de la classe */
@@ -18418,7 +18419,8 @@ setInterval(() => { try { const b = document.getElementById('dr-lancer'); if (!b
     const ti = 'L’heure de ' + (DR_CL.creneauClos || 'ce créneau') + ' est close : elle ne se rouvre pas. ' + (nx ? 'La prochaine heure de ' + p.classeNom + ' : ' + nx.l + ' — elle se lance depuis sa case de l’emploi du temps.' : 'Aucune autre heure de ' + p.classeNom + ' aujourd’hui dans l’emploi du temps.');
     if (b.textContent !== t3 || b.title !== ti || !b.disabled) { b.textContent = t3; b.disabled = true; b.title = ti; } return; }
   b.disabled = false; const t = '▶ Lancer avec ' + p.classeNom + ' · ' + p.creneau + ' · heure ' + p.heure + '/' + p.sur;
-  if (b.textContent !== t) { b.textContent = t; b.title = 'Lance l’heure avec ' + p.classeNom + ', créneau ' + p.creneau + ', heure ' + p.heure + ' sur ' + p.sur + ' de la séance' + (p.depuis === 'edt' ? ' (la case de ton emploi du temps)' : ' (aucune case de l’emploi du temps pour cette séance maintenant : la classe du niveau et le créneau en cours)') + ' — le chrono démarre, tout s’enregistre pour la classe.'; } } catch (e) {} }, 1000);
+  const ti5 = 'Lance l’heure avec ' + p.classeNom + ', créneau ' + p.creneau + ', heure ' + p.heure + ' sur ' + p.sur + ' de la séance' + (p.depuis === 'edt' ? ' (la case de ton emploi du temps)' : ' (l’emploi du temps n’est pas encore lu : la classe et le créneau en cours, l’heure d’après les heures déjà jouées)') + ' — le chrono démarre, tout s’enregistre pour la classe.';   /* réveil n°14 (E4 ligne 176) : l'infobulle se refait avec la proposition — elle ne suivait que le libellé, et gardait « aucune case » quand la case arrivait au même libellé */
+  if (b.textContent !== t) b.textContent = t; if (b.title !== ti5) b.title = ti5; } catch (e) {} }, 1000);
 
 /* ─── `dr_heureDe(h)` complétée (contrat §12.6, relance C1) : une heure lancée par `dr_lancer` répond avec son vrai créneau (la base =
    le début du créneau, pas le lancement) — l'heure en cours comme les heures passées, gardées dans `C/etat` (`S.heuresCours`) et relues

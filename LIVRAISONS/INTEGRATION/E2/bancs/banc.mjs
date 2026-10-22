@@ -404,6 +404,15 @@ for (const [quand, attendu] of [['2026-09-14T10:00:00+02:00', /mardi 15 septembr
   pas('B16', bt && bt.dis && attendu.test(bt.txt) && !/08:00-08:55|10:07-11:02 · heure/.test(bt.txt) ? 'ok' : 'ÉCHEC', quand.slice(0, 16) + ' : « Lancer » gris, il nomme la prochaine heure de la 3E, jamais le créneau d\'une autre classe', JSON.stringify(bt));
   pas('B16', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); await s.ctx.close(); }
 
+{ const s = await session({ quand: '2026-09-14T09:00:00+02:00' }); const p = s.page;   /* B16 bis — réveil n°14 (E4 ligne 176) : dans la case de la 3E, l'infobulle de « Lancer » le dit */
+  if (s.integre) { await p.click('#tprof-btn'); await s.attendre(500); await p.evaluate(() => atelierOuvrir()); await s.attendre(1000); await clicTexte(p, 'button,[onclick]', "atOnglet('chapitres')"); await s.attendre(800);
+    if (!(await clicTexte(p, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(p, 'button,[onclick]', 'Modifier'); await s.attendre(1500);
+    await p.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]') || document.getElementById('ong-pilotage'); if (b) b.click(); }); await s.attendre(8000);
+    const bt = await p.evaluate(() => { const b = document.getElementById('dr-lancer'); const hx = (dr_heuresDeLaClasse('3E Charles de Gaulle') || []).find(x => x.iso === '2026-09-14'); return b ? { dis: b.disabled, txt: b.textContent, title: b.title, hx } : null; });
+    pas('B16', bt && !bt.dis && /08:57-09:52 · heure 2\/3/.test(bt.txt) && /la case de ton emploi du temps/.test(bt.title) && bt.hx && bt.hx.n === 2 ? 'ok' : 'ÉCHEC', 'lundi 09:00, dans la case de la 3E : « Lancer … heure 2/3 », l\'infobulle dit « la case de ton emploi du temps » ; l\'heure n est celle de `dr_heuresDeLaClasse` (réveil n°14, E4 ligne 176 ; §12.18)', JSON.stringify(bt));
+    pas('B16', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');
 { const s = await session(); const ok = s.integre ? await s.page.evaluate(() => { const a = { niveau: '3e', chapitre: '0', seance: '0', classeSlug: '3E Charles de Gaulle', debut: '08:57', fin: '09:52' }, b = Object.assign({}, a, { debut: '10:07', fin: '11:02' }); return [_drCleHeureDe(a), _drCleHeureDe(b)]; }) : null;

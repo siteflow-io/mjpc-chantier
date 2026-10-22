@@ -2327,3 +2327,91 @@ Réponse de la conscience (13:32), mot pour mot :
 
 22/10/2026 13:32
 MEMO
+
+## TOUR 111 (22/10/2026, 13:40 → 13:48)
+
+Paul (13:40), mot pour mot :
+« Le prompt doit être fait par toi et les exécutants. Tu les relances toi meme »
+
+Fait (13:41-13:47) : message d'attente (241, 13:41). La pièce écrite : `MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md`, version 0.1 (commit `79ef9375`) — ce que l'instance fait et pour qui, la règle qui prime (déclarer le manque, ne rien fabriquer), section 1 les objets et leurs gardes (le fichier, les diapos et leurs champs `act, dur, heure, actId, comp, remob, legende, role`, les rituels réactivation / bilan unique dernier / fin d'heure, les dix types de blocs avec un exemple JSON chacun et les refus mot pour mot, ce qui n'existe pas, les activités numérotées en continu, le travail à faire par heure, les items et liaisons, les textes vus par l'élève), section 2 la création de HTML (« n'en fais pas », le contrat de pilotage, la forme, les preuves, la déclaration), section 3 le mode de travail (modèles, jouer le site, cadrage avant JSON, la voie d'injection qui marche aujourd'hui — « Remplacer » / « Jumeau », dette 13 · 30), une annexe des refus actuels et des refus à ajouter à l'import (13 · 31) ; quatre points marqués « [E1 …] » à confirmer dans le code (la forme des repères de vidéo, de `contrat` / `etapes` d'une page, ce qu'est une feuille dans la donnée). Contrat §12.21 (le prompt et l'import disent la même chose ; le gel levé pour ce seul travail ; le candidat au promeus reste `ef674d4b`). Relances 13:45 : E1 (relecture dans l'heure ; puis le code : 13 · 30 et 13 · 31, dix types, les refus mot pour mot, `devoilerTout` gardé, un contrôle par refus), E2 (relecture : heures, 50 min, rituels, `travail`), E3 (chiffrer « ce qui tient » par forme, à 1366 et 1920, avec et sans consigne ; les messages du contrat de pilotage), E4 (relecture récit ; le chapitre 3e réécrit au contrat par un script rejouable, sans phrase nouvelle ; l'import joué sur le faux hub, « À régler (0) » attendu). Mesuré : seules deux tâches planifiées existent (mon réveil n°23 et le retour d'E1 à 14:13) ; E2 silencieuse depuis 07:53 et E3 depuis 07:48, aucune session cloud joignable (`ListAgents` : aucune) → **E2 et E3 relancées par la conscience comme sessions neuves** (tâches planifiées `trig_012C9nbz…` 13:50 et `trig_01BPtAgX…` 13:51, mode auto, dépôt cloné, leur relance du 13:45 pour tâche, retour toutes les 50 min) ; E4 pousse encore d'elle-même (13:21) — relancée de même au réveil n°23 si rien à 14:21. Poussé sur main (`79ef9375`, puis les relances) et fusionné dans `integration` (`8f0477f1`).
+
+Réponse de la conscience (13:48), mot pour mot :
+
+242. **Le prompt est écrit, version 0.1**, en trois sections comme ton cadrage le demande : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md — tu le reliras quand les exécutants l'auront relu.
+
+243. **Les quatre exécutants sont relancés dessus, par moi** : E1 relit la partie « les objets » contre son code, puis fait que l'import refuse ce que le prompt interdit (aujourd'hui il ne refuse presque rien) ; E2 relit les heures ; E3 mesure ce qui tient sur une diapo (combien de familles dans une carte, de repères dans une frise…) pour que le prompt donne des chiffres ; E4 réécrit ton chapitre 3e au contrat (la structure seulement, pas un mot nouveau pour les élèves) et l'injecte sur le faux hub : zéro ligne « À régler » attendue. E2 et E3 ne répondaient plus depuis ce matin : je les ai relancées comme sessions neuves, tu n'as rien à coller.
+
+244. Le déroulé reste prêt au promeus sur la version de 11:33 ; chaque nouvelle version passera au banc avant d'être candidate. Prochain point à 14:30.
+
+22/10/2026 13:48
+MEMO
+
+## TOUR 112 (22/10/2026, 13:49 → 13:51)
+
+Paul (13:49), mot pour mot :
+« Ok donc le prompt, explique le moi en termes simples et pédagogiques. »
+
+Réponse de la conscience (13:51), mot pour mot :
+
+245. **À quoi il sert.** Quand tu veux un nouveau chapitre, tu ouvres une conversation avec Claude, tu lui colles ce texte, tu lui donnes ton chapitre précédent comme modèle, et tu travailles le chapitre avec lui. À la fin, il te rend un fichier (le JSON) que tu colles dans ton site. Le prompt, c'est le mode d'emploi que cette conversation doit suivre pour que le fichier rentre dans le site **sans une seule ligne « À régler »** — ce qui n'était pas le cas de ton chapitre 3e (19 lignes), parce que ce mode d'emploi n'existait pas.
+
+246. **Partie 1 — de quoi un chapitre est fait, et ce qui est interdit.** Un chapitre, ce sont des séances ; une séance, des heures ; une heure, des diapos ; une diapo, des blocs. Le prompt dit, pour chaque sorte de bloc (une consigne, une question, une fiche, un schéma, une image, une vidéo…), à quoi elle sert, ce qu'elle doit contenir, et ce que le site refuse — avec un exemple à chaque fois. Il dit aussi les règles que tu as fixées : chaque diapo appartient à une activité numérotée du début à la fin du chapitre (activité 1, 2, 3… jamais remise à zéro) ; chaque heure commence par « Où en sommes-nous ? » (sauf la première), finit par une diapo de fin d'heure, et la séance a un seul bilan, le dernier ; chaque diapo dit ce qu'elle fait travailler et ce qu'elle remobilise ; un schéma par diapo, lisible du fond ; une heure, c'est 50 minutes de contenu.
+
+247. **Partie 2 — les pages HTML : n'en fais pas.** Si rien dans le site ne convient, la conversation ne bricole pas : elle te dit « il manque tel objet » et attend ton mot. Si tu décides quand même une page pour cette fois, le prompt dit comment elle doit être faite pour que tu puisses la piloter au tableau avec tes flèches, et quelles preuves elle doit fournir.
+
+248. **Partie 3 — comment la conversation travaille avec toi.** D'abord elle te demande tes chapitres précédents. Puis elle regarde vraiment le site (elle joue une séance) au lieu de supposer. Puis elle fait le cadrage avec toi (combien d'heures tu as, les contraintes, le fil « langue ») avant d'écrire une seule diapo. Elle ne fabrique jamais quelque chose qui n'existe pas dans le site sans ton accord. Elle vérifie son fichier contre la liste des règles avant de te le donner, et elle te dit par quelle porte l'injecter.
+
+249. **Ce qui change avec les exécutants cette après-midi** : ils vérifient que chaque règle du prompt est bien celle du site (E1, E2, E4), ils chiffrent « ce qui tient » sur une diapo (E3 : combien de familles dans une carte, combien de repères sur une frise), et E1 fait que le site **refuse** ce que le prompt interdit — pour que le prompt, le site et l'éditeur disent la même chose, comme ton cadrage l'exige.
+
+22/10/2026 13:51
+MEMO
+
+## TOUR 113 (22/10/2026, 13:50 → 13:51)
+
+Paul (13:50), mot pour mot :
+« Ok bon j'ai des petites choses à modifier. »
+
+Réponse de la conscience (13:51), mot pour mot :
+
+250. Je t'écoute : dis-les une par une, dans tes mots, et je les mets dans le prompt telles quelles (chaque modification entre au contrat, et les exécutants la reçoivent).
+
+22/10/2026 13:51
+MEMO
+
+## TOUR 114 (22/10/2026, 13:52 → 13:54)
+
+Paul (13:52), mot pour mot :
+« Déjà que chaque heure commence par où en est-on, je ne sais pas... Cette diapo est-elle figée ou construite par le récit précédent? »
+
+Mesuré (13:52-13:53, fichier assemblé `ef674d4b`) : `dr_estRituel = e => /o[uù] en sommes[- ]nous|r[ée]activation/i.test(e.act)` (l. 18482, E2 : « le rituel d'ouverture d'une heure, quand la trame ne porte pas de rôle ») ; l'ordre de l'heure (l. 16472) met en tête `role === 'reactivation'` ou, sans rôle et h > 1, la diapo que `dr_estRituel` reconnaît ; son contenu est celui de la trame (chapitre 3e : une question écrite par l'instance, « Quel mot-bilan avons-nous écrit sur les cinq tableaux ? »). L'écran construit depuis l'heure d'avant existe, mais pour Paul : « l'écran d'ouverture de la maquette (« Où en est la classe », 6.5-6.7) — il dit l'heure d'avant, ce qui glisse, le faisceau » (l. 18131, `dr-classe.js`, cadrage 1 §6.5-6.7), avant « Lancer l'heure n ».
+
+Réponse de la conscience (13:54), mot pour mot :
+
+251. **Figée.** La diapo « Où en sommes-nous ? » est écrite dans la trame par la conversation qui crée le chapitre (dans ton chapitre 3e : une question, « Quel mot-bilan avons-nous écrit sur les cinq tableaux ? »). Le site la reconnaît à son titre et la met en tête de l'heure suivante ; il ne change pas son contenu.
+
+252. **Ce qui est construit depuis l'heure d'avant, c'est un écran pour toi, pas pour la classe** : avant de lancer l'heure 2, le pilotage te montre « Où en est la classe » — ce qui a été fait, ce qui glisse, où on en est — d'après ce que la classe a réellement vu (ton cadrage 1, 6.5-6.7).
+
+253. Donc, aujourd'hui : la question de réactivation vue par les élèves est figée (écrite d'avance), et le rappel automatique de ce qui s'est passé n'existe que sur ton écran. Si tu préfères que la diapo vue par la classe soit construite par le site d'après l'heure d'avant (ce qui a été fait, ce qui reste), dis-le : c'est une diapo nouvelle à créer dans le site (pas dans le prompt), donc après le promeus ; le prompt dirait alors « ne l'écris pas ». Ma proposition : garder la diapo figée — une question de contenu, que le site ne sait pas inventer — et laisser le rappel automatique sur ton écran.
+
+22/10/2026 13:54
+MEMO
+
+## TOUR 115 (22/10/2026, 13:59 → 14:02)
+
+Paul (13:59), mot pour mot :
+« Non mais alors la réactivation étant essentiellement commandée par ce qui s'est fait réellement en classe, il faut absolument que cette diapo ne soit jamais en dur. De plus, il faut que ce soit au choix , et non systématique. Que proposes-tu ? »
+
+Réponse de la conscience (14:02), mot pour mot :
+
+254. **Compris : la réactivation n'est jamais écrite d'avance, et elle est à ton choix.** Voici ma proposition, en quatre points à valider.
+
+255. **Dans le prompt** : la conversation qui crée le chapitre **n'écrit aucune diapo de réactivation** (plus de « Où en sommes-nous ? » dans la trame, plus de rôle « réactivation » dans le fichier). Les deux « Où en sommes-nous ? » de ton chapitre 3e sont retirées de la trame par E4 quand il la réécrit au contrat.
+
+256. **Dans le site, une diapo construite sur place** — comme la diapo de fin d'heure, que le site remplit en classe avec ce qui s'est vraiment passé : à l'ouverture de l'heure 2 (et suivantes), le site compose la diapo de réactivation d'après l'heure d'avant **telle qu'elle a été jouée** : les activités faites (leur numéro, leur titre), ce qui a été décidé (ce qui glisse, ce qui est à reprendre), les notions travaillées, le travail à faire qui avait été donné. Tout ça, le site le sait déjà (c'est ce qu'il te montre sur ton écran « Où en est la classe » et ce qu'il met dans le récit) : il le montre à la classe, élément par élément, avec ▶ — tu t'en sers comme tu veux (faire deviner, faire relire, passer).
+
+257. **Au choix, pas systématique** : au moment de lancer l'heure, sur l'écran « Où en est la classe », un bouton « Ouvrir par la réactivation » — oui ou non, à chaque heure, selon ce que tu vois ; et dans l'Atelier, un réglage par séance qui fixe la réponse proposée par défaut. Si tu dis non, l'heure s'ouvre directement sur ce qui glisse et le programme.
+
+258. **Quand** : le prompt change tout de suite (c'est un texte) ; la diapo construite et le bouton sont du code nouveau dans le site, donc après le promeus, par E2 et E4 (c'est leur territoire : l'ordre de l'heure et le récit), en premier du reste du déroulé. Dis « ok » ou corrige, et j'écris la règle au contrat.
+
+22/10/2026 14:02
+MEMO

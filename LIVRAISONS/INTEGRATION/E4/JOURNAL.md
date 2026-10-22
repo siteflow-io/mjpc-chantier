@@ -832,3 +832,10 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 ## Poussée 86 — 17:45 UTC (veille)
 - Depuis la poussée 85, seuls des journaux d'E1, E2 et E3 sont arrivés (« rien de neuf ») ; aucun code ne change depuis `726215db`.
 - `banc.sh` rejoué sur `3f4813d8` : **vert**. Le signal tient : **0 pas réglée (`61245b22`)** ; le chapitre au contrat s'importe sans refus, « À régler (0) ».
+
+## Poussée 87 — 18:35 UTC · réveil n°27, le signal sur la tête nouvelle
+- **Réveil n°27 lu** : la preuve sur pièce est dite à Paul. La diapo du bilan (mots-clés, sans « copie de classe ») attend son « d'accord » : rien à faire d'ici là.
+- **La tête a bougé** (l'import d'E1). Ma table reste à 0 pas réglée.
+  - Bancs sur `c8bf7b61` (même code que `b8a11d55`, la tête benchée par la conscience) : `banc.sh` **vert** ; le mien **121 ok · 0 échec** (`sorties/1830-site-E4`).
+  - Le chapitre au contrat s'importe sur cette tête sans refus, « À régler (0) » (poussée 85).
+- **Signal réécrit : « 0 pas réglée (`c8bf7b61`) ».**

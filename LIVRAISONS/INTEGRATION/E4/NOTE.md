@@ -270,3 +270,7 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 - **15:50 UTC, §12.23 (Paul, 17:33)** : le bilan sans réponse attendue. Le récit dit « sans réponse écrite » quand le bilan est resté sans réponse, et dit la réponse écrite en classe (L188, réglée dans `61245b22`, RC8). Le chapitre au contrat : les trois bilans gardent leur question sans `reps` ; ma liste n'a plus qu'**un** écart (la « Question-bilan » de la séance 3, à Paul). L'import attend la tête d'E1 avec §12.23. `banc.sh` vert, mon banc **121 ok · 0 échec**. **Compte : 181 lignes, dont 171 réglées, 0 pas réglée, 10 écartées, 0 à Paul, 0 ouverte.**
 
 **0 pas réglée (`61245b22`)** — `banc.sh` vert, mon banc 121 ok · 0 échec.
+
+- **18:30 UTC, réveil n°27** : la tête a bougé (E1 `3440264f`, `d8ef3991` : l'import, `fil`, §12.23). Ma table reste à 0 pas réglée (181 lignes : 171 réglées, 10 écartées, 0 à Paul, 0 ouverte). Bancs sur `c8bf7b61` (même code que `b8a11d55` : seuls des fichiers d'audit diffèrent) : `banc.sh` vert, mon banc **121 ok · 0 échec**. Le chapitre au contrat s'importe sur cette tête sans refus, « À régler (0) ».
+
+**0 pas réglée (`c8bf7b61`)** — code identique à `b8a11d55` ; `banc.sh` vert, mon banc 121 ok · 0 échec.

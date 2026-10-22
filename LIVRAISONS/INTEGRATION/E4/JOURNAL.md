@@ -594,3 +594,12 @@
 - **Réveil n°15 lu** (main fusionnée, `-X theirs`). Il demande « 0 pas réglée (88301b93) » si les cinq d'E1 sont vertes.
 - **Elles ne le sont pas toutes** : 161, 164, 172, 173 réglées (poussée 65) ; **177 pas réglée sur `88301b93`**, revérifiée aux deux tailles, sur le hub frais comme après la clôture du lundi. Le mercredi, l'EDT met L'Albatros 1/3 au vendredi 18, l'Atelier y met la Poésie, et « Lancer » vise la case « fil langue » du mercredi 10 h 07. La garde A31 d'E1 ne lit que l'Atelier ; les trois sources sont chez E2. Captures `relecteurs/final-0315/l177-*`.
 - **Le signal « 0 pas réglée » n'est donc pas écrit.**
+- **Relecteur neuf (rel21) sur le §12.18** : 4 lignes nouvelles, toutes aux deux tailles, sans erreur JS. J'ai revu les captures principales. Elles sont dans la table (L178-L181) et la NOTE §10 :
+  - L178 : l'heure close n'est marquée « jouée » qu'après rechargement ;
+  - L179 : un lundi manqué donne deux n au mardi ;
+  - L180 : « Lancer » sur la séance L'Albatros ;
+  - L181 : l'Atelier de L'Albatros saute la case du vendredi.
+  Scripts et captures dans `relecteurs/continu-0330/`.
+- **Convergence** : 4 neuves en 1 h 45 (≈ 2,3 par heure), contre ≈ 6 sur la soirée ; aucune grave.
+- **Compte** : 174 lignes, dont 154 réglées, 5 pas réglées (L177-L181, famille §12.18, surtout chez E2), 9 écartées, 6 à Paul, 0 ouverte.
+- **Bancs** : `banc.sh` vert sur la tête de cette poussée.

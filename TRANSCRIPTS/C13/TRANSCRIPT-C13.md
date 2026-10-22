@@ -2327,3 +2327,21 @@ Réponse de la conscience (13:32), mot pour mot :
 
 22/10/2026 13:32
 MEMO
+
+## TOUR 111 (22/10/2026, 13:40 → 13:48)
+
+Paul (13:40), mot pour mot :
+« Le prompt doit être fait par toi et les exécutants. Tu les relances toi meme »
+
+Fait (13:41-13:47) : message d'attente (241, 13:41). La pièce écrite : `MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md`, version 0.1 (commit `79ef9375`) — ce que l'instance fait et pour qui, la règle qui prime (déclarer le manque, ne rien fabriquer), section 1 les objets et leurs gardes (le fichier, les diapos et leurs champs `act, dur, heure, actId, comp, remob, legende, role`, les rituels réactivation / bilan unique dernier / fin d'heure, les dix types de blocs avec un exemple JSON chacun et les refus mot pour mot, ce qui n'existe pas, les activités numérotées en continu, le travail à faire par heure, les items et liaisons, les textes vus par l'élève), section 2 la création de HTML (« n'en fais pas », le contrat de pilotage, la forme, les preuves, la déclaration), section 3 le mode de travail (modèles, jouer le site, cadrage avant JSON, la voie d'injection qui marche aujourd'hui — « Remplacer » / « Jumeau », dette 13 · 30), une annexe des refus actuels et des refus à ajouter à l'import (13 · 31) ; quatre points marqués « [E1 …] » à confirmer dans le code (la forme des repères de vidéo, de `contrat` / `etapes` d'une page, ce qu'est une feuille dans la donnée). Contrat §12.21 (le prompt et l'import disent la même chose ; le gel levé pour ce seul travail ; le candidat au promeus reste `ef674d4b`). Relances 13:45 : E1 (relecture dans l'heure ; puis le code : 13 · 30 et 13 · 31, dix types, les refus mot pour mot, `devoilerTout` gardé, un contrôle par refus), E2 (relecture : heures, 50 min, rituels, `travail`), E3 (chiffrer « ce qui tient » par forme, à 1366 et 1920, avec et sans consigne ; les messages du contrat de pilotage), E4 (relecture récit ; le chapitre 3e réécrit au contrat par un script rejouable, sans phrase nouvelle ; l'import joué sur le faux hub, « À régler (0) » attendu). Mesuré : seules deux tâches planifiées existent (mon réveil n°23 et le retour d'E1 à 14:13) ; E2 silencieuse depuis 07:53 et E3 depuis 07:48, aucune session cloud joignable (`ListAgents` : aucune) → **E2 et E3 relancées par la conscience comme sessions neuves** (tâches planifiées `trig_012C9nbz…` 13:50 et `trig_01BPtAgX…` 13:51, mode auto, dépôt cloné, leur relance du 13:45 pour tâche, retour toutes les 50 min) ; E4 pousse encore d'elle-même (13:21) — relancée de même au réveil n°23 si rien à 14:21. Poussé sur main (`79ef9375`, puis les relances) et fusionné dans `integration` (`8f0477f1`).
+
+Réponse de la conscience (13:48), mot pour mot :
+
+242. **Le prompt est écrit, version 0.1**, en trois sections comme ton cadrage le demande : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md — tu le reliras quand les exécutants l'auront relu.
+
+243. **Les quatre exécutants sont relancés dessus, par moi** : E1 relit la partie « les objets » contre son code, puis fait que l'import refuse ce que le prompt interdit (aujourd'hui il ne refuse presque rien) ; E2 relit les heures ; E3 mesure ce qui tient sur une diapo (combien de familles dans une carte, de repères dans une frise…) pour que le prompt donne des chiffres ; E4 réécrit ton chapitre 3e au contrat (la structure seulement, pas un mot nouveau pour les élèves) et l'injecte sur le faux hub : zéro ligne « À régler » attendue. E2 et E3 ne répondaient plus depuis ce matin : je les ai relancées comme sessions neuves, tu n'as rien à coller.
+
+244. Le déroulé reste prêt au promeus sur la version de 11:33 ; chaque nouvelle version passera au banc avant d'être candidate. Prochain point à 14:30.
+
+22/10/2026 13:48
+MEMO

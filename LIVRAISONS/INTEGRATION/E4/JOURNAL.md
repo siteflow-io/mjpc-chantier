@@ -785,3 +785,14 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - Recollé : **exactement les 4 refus attendus** (trois réponses attendues vides, la « Question-bilan » de la séance 3), à Paul ; ma liste dit les mêmes 4.
 - La copie d'essai (scratch) : « Vérifier » sans refus, « Créer un double », **« À régler (0) » dans les neuf séances, aux deux tailles**.
 - L187 reste (`dr-atelier.js:69` inchangé). `banc.sh` vert sur `6d42ab51`.
+
+## Poussée 82 — la carte « Les figures de style » mesurée avec EB Garamond (réveil n°24)
+- **Le geste** : le chapitre au contrat, avec 3, 2 puis 1 famille par diapo (`E4_FAMILLES`), copie d'essai importée sur la tête (« Vérifier » → « Créer un double »). Puis l'Atelier de la séance « L'Albatros » et son « À régler », aux deux tailles.
+  - Une fois avec la police de repli du sandbox, une fois avec **EB Garamond chargée** comme E3 (`E3/outils/eb-garamond/`, `@font-face`).
+  - La preuve par la largeur de « Figures d'analogie » à 40 px : 293 px en repli, **272 px avec EB Garamond**.
+  - Journal brut : `E4/prompt/mesure-carte-police.log` ; outil : `E4/prompt/outils/imp5f.mjs`.
+- **Résultat (identique à 1366 × 768 et 1280 × 800)** :
+  - **3 familles par diapo** : en repli, 2 diapos sur 3 refusées (4 chevauchements et 3 traits ; 1 chevauchement et 2 ou 3 traits). **Avec EB Garamond : encore 2 sur 3 refusées** (1 chevauchement et 1 trait ; 1 chevauchement et 4 traits).
+  - **2 familles par diapo** : en repli, 3 sur 4 refusées. **Avec EB Garamond : 2 sur 4 refusées** (1 trait ; 1 chevauchement et 4 traits).
+  - **1 famille par diapo : 0, avec les deux polices.**
+- **Conclusion** : la police de repli explique une part de l'écart, une diapo de moins refusée à 2 familles ; elle n'explique pas tout. Avec la vraie police, la carte de ce chapitre ne tient lisible qu'à **une famille par diapo**. Les familles à 4 notions (analogie, substitution, sonores) font les traits à travers un mot. Le chapitre livré reste à une famille par diapo. **À E3** : le chiffre « 3 familles sans consigne » ne tient pas ici, même avec EB Garamond.

@@ -2695,3 +2695,18 @@ MEMO
 
 23/10/2026 00:21
 MEMO
+
+---
+
+## Tour 133 — 23/10/2026 01:21 — réveil n°32 (01:18, programmé au tour 132)
+
+**Mesuré.** Pas de mot de Paul depuis 23:17. `origin/integration` : tête `3a0da3e7` — E4 `9eba2708` (RC9), `05f6b903` (poussée 90 : import du chapitre au contrat sur `2229fee9` aux deux tailles « Réponse comprise », « À régler (0) » ×9, notes présentateur visibles ; **L189 à Paul : la diapo du bilan sur deux pages avec 4 ou 5 mots-clés, une avec 3** ; 2 écarts : questions de 86 et 79 signes > 60 ; **signal « 0 pas réglée (`9eba2708`) », code = `2229fee9`**) ; E3 `7ba3b367` (105/105 sur `9eba2708`) ; E1 `7cdabb3a`, E2 `3a0da3e7` : rien. `git diff --stat 2229fee9 origin/integration -- index.html dr` : vide → pas de banc ; règle du candidat : banc vert 00:20 + signal E4 → **candidat = `2229fee9`** (md5 `746227673f68401bd399af6edd3bbc2f`, 2 299 802 o). **Contre-mesure de L189** (script `T133-capture.mjs` = `T124-capture.mjs` + EB Garamond par `@font-face` file:// (méthode E3) + compte des pages ; assemblé `2229fee9` reconstruit par `git archive` + `assembler.mjs`, md5 `74622767…` ; hub simulé, le bilan de la séance 2 d'E4 tel quel) : Pilotage → lancer → `#bvideoproj`, 9 dévoilements : **une page**, tout visible, à 1366 × 768 et 1920 × 1080 (pièces `T133-bilan-E4-s2-tableau-1366.png`, `-1920.png`) ; 0 erreur JS. Prompt v0.9 (la question en deux lignes au plus, 90 signes ; une question de Paul ne se reformule pas) ; relances r32 (E4 : L189 ne va pas à Paul, dis ton geste ; E3 : d'où vient le « deux pages ») ; audit §0/§6.
+
+**Réponse (mot pour mot).**
+
+292. Le déroulé : E4 a signé la version qui porte la diapo du bilan à l'import (`2229fee9`) ; mon banc est vert dessus. **Elle devient la candidate.** Elle attend ton mot « promeus ».
+
+293. Le prompt : **prouvé sur pièce** — ton chapitre 3e, refait au contrat (les trois bilans à trois blocs, les notes présentateur), s'importe dans le site sans un refus, « À régler (0) » dans les neuf séances, les notes présentateur sous la diapo. Une seule chose que je vérifie encore entre E3, E4 et moi : E4 voit la diapo du bilan sur deux pages au tableau, E3 et moi la voyons sur une (ta question de 86 signes, cinq mots-clés, la consigne : une page, aux deux tailles, pièces T133). Je ne te la soumets pas tant que ce n'est pas mesuré d'accord.
+
+23/10/2026 01:21
+MEMO

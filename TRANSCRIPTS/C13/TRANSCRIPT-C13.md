@@ -2514,3 +2514,36 @@ Réponse de la conscience (17:38), mot pour mot :
 
 22/10/2026 17:38
 MEMO
+
+## TOUR 122 (22/10/2026, 17:50 → 17:53)
+
+Paul (17:50), mot pour mot :
+« 273. En revanche les idées du bilan doivent faire partie des notes présentateur, afin que je vérifie que toutes les notions sont bien dedans. De ce fait, une question bilan doit contenir ces notions à la fin de sa rédaction. Cependant, c'est une question de rédaction "en live", donc les élèves doivent avoir au tableau les éléments à intégrer dans le bilan. J'attends ta proposition ce n'est pas tout à fait cadré avec ce que j'ai dit.  274. Plutôt : "récap' de l'heure " »
+
+Fait (17:50-17:51) : **274** — au hub, la diapo 6 de la séance 3 (index 2, écran 5 : « Combien de propositions dans une phrase ? … ») s'appelle « Récap' de l'heure » (état d'avant gardé : `scratchpad/hub-avant-s2-e5.json` ; relu : un seul titre, plus aucun « bilan » hors du dernier) ; même changement dans la source d'import (`dd803725`). La séance 7 (index 6) a sa « Question-bilan » en dernière position (6ᵉ sur 6) : c'est son bilan, rien à changer.
+
+Réponse de la conscience (17:53), mot pour mot :
+
+275. **274 — fait** : la diapo s'appelle « Récap' de l'heure » (au hub et dans la source). Ta séance 1 garde « Avant de se quitter » pour la même diapo de fin d'heure, sauf si tu veux « Récap' de l'heure » partout : dis-le.
+
+276. **273 — ma proposition, en trois points.** Un : la diapo du bilan porte **trois blocs** — la question du bilan (sans réponse écrite), puis un bloc « À mettre dans le bilan » qui liste **les éléments à intégrer** (une ligne par élément, dans les mots des élèves), que tu dévoiles au tableau un par un pendant qu'ils rédigent, puis le travail à faire. Deux : la conversation qui crée le chapitre écrit ces éléments **à partir des notions travaillées dans la séance** (elle les reprend toutes), et elle les écrit aussi dans les **notes présentateur** de cette diapo, chaque élément suivi du nom de la notion qu'il couvre — c'est là que tu vérifies qu'aucune notion ne manque ; les notes présentateur deviennent donc, pour cette seule diapo, écrites par la conversation (aujourd'hui elles sont à toi seul). Trois : en classe, le bilan rédigé s'écrit dans la copie de classe, comme tu l'as dit. Rien de neuf dans le site : le bloc qui liste des lignes dévoilées une à une existe, les notes présentateur existent ; ce qui change, c'est le prompt et l'import (le bloc « À mettre dans le bilan » obligatoire sur la diapo de bilan, les notes présentateur acceptées sur elle). Dis « ok » ou corrige.
+
+22/10/2026 17:53
+MEMO
+
+---
+
+## Tour 123 — 22/10/2026 18:19 — réveil n°26 (18:06, programmé au tour 122)
+
+**Mesuré.** `git pull` integration : tête `6d19ef74` (code `61245b22`, E4 §12.23 : L188, le récit dit « sans réponse écrite » ou la réponse écrite en classe ; E2 retour 4 17:50 ; E3 retour 3 17:32). `E4/NOTE.md` §10 : 181 lignes, 171 réglées, 0 pas réglée, 10 écartées, 0 à Paul, 0 ouverte ; signal « 0 pas réglée (`61245b22`) ». Banc `banc-1805` sur `6d19ef74` : collisions 0, parcours P0-P12 vert ×2, K1-K13 108 vérifications 0 échec, « résultat : VERT » ; assemblé restauré ; 2 297 141 octets, md5 `022fc8a832bcc11c963a0f16b3827103`. `list_triggers` : retours E2 (18:41) et E3 (18:23) seuls ; E1 silencieuse depuis 16:40 → relancée comme session neuve à 18:19 (`trig_011ymT4HnsQAJLL244c6YY9C`) : `fil` à l'import, §12.23 à l'import. Épreuves `banc-sur-integration-6d19ef74.txt`, `sur-integration-6d19ef74-v22.txt`, EMPREINTES.md5 ; pièces T123-P5/P9/P10. Relances r26 écrites (E1-E4). Audit §0/§6 : le candidat au promeus devient `6d19ef74`.
+
+**Réponse (mot pour mot).**
+
+277. Le déroulé : la version d'aujourd'hui (`6d19ef74`, avec « sans réponse écrite » dans le récit) est maintenant la candidate. E4 l'a signée (0 ligne pas réglée), mon banc est vert dessus. Elle attend ton mot « promeus ».
+
+278. Le prompt : E1 s'était tue après son import ; je l'ai relancée en session neuve à 18:19 pour les deux dernières choses à l'import — le fil « langue » et le bilan sans réponse attendue.
+
+279. Un seul sujet à trancher : le 276 (la diapo du bilan : la question, les éléments « À mettre dans le bilan » au tableau, les notions dans les notes présentateur). J'attends ton ok ou ta correction avant d'écrire la v0.7.
+
+22/10/2026 18:19
+MEMO

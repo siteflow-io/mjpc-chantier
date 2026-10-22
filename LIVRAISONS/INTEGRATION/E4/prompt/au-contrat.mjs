@@ -1,5 +1,5 @@
 // E4 · la preuve sur pièce (réveil n°19 suite, Paul 13:40 ; contrat §12.21) : le chapitre 3e réécrit au contrat du prompt
-// d'injection (MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md v0.7 ; §12.22 : ni réactivation ni fin d'heure dans le fichier), SANS UNE PHRASE NOUVELLE VUE PAR L'ÉLÈVE — seulement la structure.
+// d'injection (MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md v0.9 ; §12.22 : ni réactivation ni fin d'heure dans le fichier), SANS UNE PHRASE NOUVELLE VUE PAR L'ÉLÈVE — seulement la structure.
 // Rejouable : node au-contrat.mjs [source.json] [sortie.json] [taxonomie.json]
 // Sorties : le chapitre au contrat, la table avant / après par séance (avant-apres.md), la liste du §3 point 5 avec son compte.
 import fs from 'node:fs';
@@ -175,7 +175,7 @@ chap.seances.forEach(s => {
     if (e.role === 'bilan') { const t = (e.blocs || []).map(b => b.t).join(','); R(t === 'question,texte,consigne', 'le bilan : trois blocs, question, texte, consigne (§12.24)', ou + ' : ' + t);
       const tx = (e.blocs || [])[1] || {}; R(tx.txt === 'À mettre dans le bilan' && (tx.el || []).length >= 4 && (tx.el || []).length <= 5, '« À mettre dans le bilan » : quatre à cinq lignes (v0.8)', ou);
       (tx.el || []).forEach(l => R(!/\.$/.test(l) && l.split(/\s+/).length <= 12, 'une ligne « À mettre dans le bilan » : sans point final, douze mots au plus', ou + ' · « ' + l + ' »'));
-      R(String(((e.blocs || [])[0] || {}).q || '').length <= 60, 'la question du bilan sur une ligne, 60 signes au plus (réveil n°31)', ou + ' · ' + String(((e.blocs || [])[0] || {}).q || '').length + ' signes'); R(JSON.stringify((e.blocs || [])[2]) === JSON.stringify(CONSIGNE_BILAN), 'la consigne proposée, mot pour mot (v0.7)', ou); R(!!e.notes, 'le bilan a ses notes présentateur', ou); } });
+      R(String(((e.blocs || [])[0] || {}).q || '').length <= 90, 'la question du bilan en deux lignes au plus, 90 signes (v0.9 ; une question de Paul ne se reformule pas)', ou + ' · ' + String(((e.blocs || [])[0] || {}).q || '').length + ' signes'); R(JSON.stringify((e.blocs || [])[2]) === JSON.stringify(CONSIGNE_BILAN), 'la consigne proposée, mot pour mot (v0.7)', ou); R(!!e.notes, 'le bilan a ses notes présentateur', ou); } });
   const bi = E.findIndex(e => e.role === 'bilan'); if (bi >= 0) R(bi === E.length - 1, 'le bilan est la dernière diapo de la séance', s.cle);
   E.forEach((e, i) => { R(!e.role || e.role === 'bilan', 'aucun rôle « reactivation » ni « fin » (§12.22)', `${s.cle} · diapo ${i + 1} « ${e.act} » : ${e.role}`); R(!REACTIVATION(e.act), 'aucune diapo « Où en sommes-nous ? » (§12.22)', `${s.cle} · diapo ${i + 1}`); });
   for (let k = 1; k <= nH; k++) { const t = E.filter(e => e.heure === k).reduce((a, e) => a + e.dur, 0); R(t <= UTILE, 'la somme des dur par heure ≤ 50', `${s.cle} · heure ${k} : ${t} min`); }

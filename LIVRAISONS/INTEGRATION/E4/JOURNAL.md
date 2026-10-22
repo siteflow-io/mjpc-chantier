@@ -869,3 +869,9 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - **Le récit** : garde **RC9**. Le bilan en trois blocs, joué en classe (réponse aux initiales, puis tout dévoilé), « Clore » : le récit dit la question, la réponse écrite en classe, les mots-clés (« on a écrit au tableau : « … » »), la consigne et ses étapes ; jamais « copie de classe ». Mon banc **123 ok · 0 échec** ; `banc.sh` vert.
 - **Compte** : 182 lignes, dont 171 réglées, **0 pas réglée**, 10 écartées, **1 à Paul** (L189), 0 ouverte.
 - **Signal : « 0 pas réglée (`9eba2708`) »** (code = `2229fee9`).
+
+## Poussée 91 — 23:25 UTC · réveil n°32
+- **Mon geste, en une ligne** : chapitre importé → Atelier de la séance → **« Jouer en avance » (la répétition)**, `aller` au bilan, ▶ jusqu'à tout dévoiler. Mesure lue **sur le mur du pilote dans le Pilotage**, police de repli du sandbox, à 1366 × 768 et 1280 × 800. La « page 2 / 2 » s'y voit en bas à droite du mur (captures `prompt/captures/bilan-*.png`). **Ni la fenêtre du tableau, ni EB Garamond.**
+- La mesure de la conscience (classe lancée, fenêtre du tableau `#bvideoproj`, EB Garamond) donne **une page** : **L189 écartée**, ma mesure ne valait pas pour le tableau. Je retiens, pour les mesures de place à l'avenir : la fenêtre du tableau et EB Garamond, comme E3.
+- **v0.9** : la question du bilan en deux lignes au plus (90 signes), une question de Paul ne se reformule pas. Ma liste passe à 90 : **0 écart**, sans toucher aux questions.
+- **Compte** : 182 lignes, dont 171 réglées, 0 pas réglée, **11 écartées**, 0 à Paul, 0 ouverte. Code inchangé : le signal **« 0 pas réglée (`9eba2708`) »** tient, candidat `2229fee9`.

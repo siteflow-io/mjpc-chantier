@@ -45,6 +45,5 @@
 - remediation · « Avant de se quitter » (heure 2) : ferme l'activité « Je m'entraîne sur mes points faibles » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part
 - tache-finale · heure 1 : 55 min > 50 — « Étude du texte (sur 32) » passe de 45 à 40 min [PROPOSITION]
 
-### La liste du §3 point 5 — 2 écart(s)
-- la question du bilan sur une ligne, 60 signes au plus (réveil n°31) — etude-albatros · diapo 23 « Question-bilan et travail à faire » · 86 signes
-- la question du bilan sur une ligne, 60 signes au plus (réveil n°31) — recitation · diapo 6 « Question-bilan » · 79 signes
+### La liste du §3 point 5 — 0 écart(s)
+

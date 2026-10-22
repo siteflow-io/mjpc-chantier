@@ -248,7 +248,7 @@ await B('A18', 'les dettes du territoire : 13 · 4 et 13 · 5 (le bloc question 
 
 await B('A19', 'la fiche ouverte se pilote comme une diapo (recyclage R14, la couche commune) : ⤢, ▶ par paragraphe, ◀, ✍🏻 sur un paragraphe, ✕ ; au journal', async () => {
   const o = await E.ouvrir(b); const pg = o.pg; await sansVoile(pg);
-  await pg.evaluate(() => Array.from(document.querySelectorAll('#at-arbre .at-som-pli'))[2].click()); await pg.waitForTimeout(1200); await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(800);
+  await pg.evaluate(() => Array.from(document.querySelectorAll('#at-arbre .at-som-pli'))[2].click()); await pg.waitForTimeout(1200); await pg.evaluate(() => dr_lancer('3E Charles de Gaulle', '08:57-09:52', '09:00', 1, 3)); await pg.waitForTimeout(1200); /* E2 (réveil n°13) : « Lancer » ne prend que la case de la séance — à 9 h, la séance 2 n'a pas la sienne ; le banc la lance par dr_lancer, créneau donné */
   const di = await pg.evaluate(() => { const i = seance().ecrans.findIndex(e => (e.blocs || []).some(b => b.t === 'fiche' && dr_ficheEnLigne(b))); S.di = i; dr_tout(); return i; }); await pg.waitForTimeout(300);
   const etat = () => pg.evaluate(() => ({ f: S.fichePage && { nDev: S.fichePage.nDev, ecr: S.fichePage.ecr }, p: Array.from(document.querySelectorAll('#mur .f-tab [data-fk]')).map(x => (x.classList.contains('pas') ? 'p' : 'v') + (x.classList.contains('aecrire') ? 'w' : '')).join(' ') }));
   const nb = await pg.$$eval('#mur .dr-fiche-ouvrir', l => l.length); await pg.click('#mur .dr-fiche-ouvrir'); await pg.waitForTimeout(800); const e1 = await etat();
@@ -463,8 +463,7 @@ await B('A25', 'la relecture continue d\'E4 (13:35-14:05) : rien au journal hors
   const m0 = await pg.evaluate(() => $('menu').classList.contains('on')); await pg.keyboard.press('Escape'); await pg.waitForTimeout(150); const m1 = await pg.evaluate(() => $('menu').classList.contains('on'));
   E.verif('A25', !!li && m0 && !m1, 'clic droit sur une étape, Échap : le menu se ferme (Échap renonce)', JSON.stringify({ m0, m1 }));
   // heure lancée : ▶ jusqu'à la diapo 8, la vignette courante reste en vue dans la colonne
-  await pg.evaluate(() => Array.from(document.querySelectorAll('#at-arbre .at-som-pli'))[2].click()); await pg.waitForTimeout(1000);
-  await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(800);
+  await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(800); /* la séance 0 (la séance 2 n'a plus de case à 9 h : E2, réveil n°13) */
   await pg.mouse.click(683, 300); for (let k = 0; k < 40 && (await pg.evaluate(() => S.di)) < 7; k++) { await pg.click('#bdev', { timeout: 3000 }).catch(() => pg.keyboard.press('ArrowRight')); await pg.waitForTimeout(80); }
   await pg.waitForTimeout(300);
   const vg = await pg.evaluate(() => { const c = document.querySelector('#volet .vig.cour'); if (!c) return null; const r = c.getBoundingClientRect(); return { di: S.di, top: Math.round(r.top), bas: Math.round(r.bottom), h: innerHeight, sous: (document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2) || { closest: () => null }).closest('.vig') === c }; });
@@ -643,6 +642,31 @@ await B('A30', 'le réveil n°12 : hors classe, l\'heure suivante s\'ouvre sur l
   E.verif('A30', /sommes-nous/.test(r.premier || '') && /bilan/i.test(r.dernier || ''), '160 · hors classe, H2 s\'ouvre sur « ' + r.premier + ' » et finit sur « ' + r.dernier + ' » (le rituel en tête, le bilan en dernier)', JSON.stringify({ p: r.premier, d: r.dernier }));
   E.verif('A30', /lundi 14 septembre/.test(r.fr[0] || '') && /mardi 15 septembre/.test(r.fr[1] || '') && /mercredi 16 septembre/.test(r.fr[2] || ''), '161 · chaque heure sa date : H1 la case du jour en cours, H2 et H3 les prochaines cases de la classe dans l\'EDT', r.fr.join(' · '));
   E.verif('A30', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
+
+await B('A31', 'le réveil n°13 (contrat §12.18) : l\'heure n de l\'atelier est celle de l\'EDT — jouée : sa date ; à venir : sa case ; le choix d\'Entrée surligné, celui du survol ; « Envoyer vers… » : chaque séance ses heures', async () => {
+  process.env.MJPC_JOUE = '1'; const hubJ = E.store(); delete process.env.MJPC_JOUE;
+  const lire = async pg => { await pg.waitForTimeout(2500); await pg.evaluate(() => dr_tout()); await pg.waitForTimeout(300); return pg.evaluate(() => ({ lancer: ((document.querySelector('[data-lancer="1"]') || {}).textContent || '').trim(), num: (document.getElementById('numero') || {}).textContent || '', fr: Array.from(document.querySelectorAll('#volet .fr span:first-child')).map(x => x.textContent).filter(x => /^H\d/.test(x)) })); };
+  const o = await E.ouvrir(b, { w: 1366, h: 768, hub: hubJ }); const pg = o.pg; await sansVoile(pg); const r = await lire(pg);
+  E.verif('A31', /heure 2\/3/.test(r.lancer) && /lundi 7 septembre · jouée/.test(r.fr[0] || '') && /lundi 14 septembre/.test(r.fr[1] || '') && /mardi 15 septembre/.test(r.fr[2] || '') && /lundi 7 septembre.*jouée/.test(r.num), '172 · lundi 14, 9 h, « ' + r.lancer.slice(0, 60) + ' » : H1 « lundi 7 septembre · jouée », H2 lundi 14 (la case que « Lancer » prend), H3 mardi 15 (sa prochaine case) ; l\'entête de la diapo dit « jouée »', r.fr.join(' · '));
+  await o.ctx.close();
+  const o2 = await E.ouvrir(b, { w: 1366, h: 768, hub: hubJ, quand: '2026-09-16T10:30:00+02:00' }); const p2 = o2.pg; await sansVoile(p2); const r2 = await lire(p2);
+  E.verif('A31', /lundi 7 septembre · jouée/.test(r2.fr[0] || '') && /vendredi 18 septembre/.test(r2.fr[1] || '') && !r2.fr.slice(1).some(x => /mercredi 16/.test(x)), '161 · mercredi 16, aucune case en cours : H1 jouée le lundi 7, H2 à sa prochaine case (vendredi 18) — jamais trois heures datées du même jour', r2.fr.join(' · '));
+  E.verif('A31', !o2.errs.length, 'aucune erreur JS', o2.errs.join(' ; ') || undefined); await o2.ctx.close();
+  // 164 · le choix d'Entrée surligné : le premier, puis celui du survol
+  const o3 = await E.ouvrir(b, { w: 1366, h: 768 }); const p3 = o3.pg; await sansVoile(p3);
+  await p3.click('#volet [data-at-di="1"]'); await p3.waitForTimeout(300); const nb0 = await p3.evaluate(() => ecran().blocs.length);
+  await p3.click('#at-bloc'); await p3.waitForTimeout(200); const m0 = await p3.evaluate(() => { const x = document.querySelector('.choix-obj .dr-pris'); return x && x.dataset.t; });
+  const autre = await p3.evaluate(m0 => { const l = Array.from(document.querySelectorAll('.choix-obj .dr-c:not(.off)')).filter(y => y.dataset.t !== m0 && y.dataset.t !== 'manque'); const x = l.find(y => y.dataset.t === 'consigne') || l[0]; return x && x.dataset.t; }, m0);
+  await p3.hover(`.choix-obj .dr-c[data-t="${autre}"]`); await p3.waitForTimeout(150); const m1 = await p3.evaluate(() => { const x = document.querySelector('.choix-obj .dr-pris'); return x && x.dataset.t; });
+  await p3.mouse.move(5, 5); await p3.keyboard.press('Enter'); await p3.waitForTimeout(300);
+  const ap = await p3.evaluate(n => ({ blocs: ecran().blocs.length - n, form: !!document.querySelector('#obj-form'), titre: ((document.querySelector('.choix-obj h4') || {}).textContent || '').slice(0, 60), dernier: (ecran().blocs[ecran().blocs.length - 1] || {}).t }), nb0);
+  E.verif('A31', m0 && m1 === autre && m0 !== m1 && ((ap.blocs === 1 && ap.dernier === autre) || (ap.blocs === 0 && ap.form)), '164 · « + bloc » : le premier choix surligné à l\'ouverture ; le survol de « ' + autre + ' » le surligne ; Entrée prend celui-là, pas le premier', JSON.stringify({ m0, m1, ap }));
+  await p3.keyboard.press('Escape'); await p3.mouse.click(5, 400);
+  // 173 · « Envoyer vers… » : chaque séance ses heures
+  await p3.evaluate(() => envoyerVersSeance(S.di)); await p3.waitForTimeout(200);
+  const ev = await p3.evaluate(() => Array.from(document.querySelectorAll('.choix-obj .fe')).map(x => ({ t: (x.querySelector('b') || {}).textContent, h: (x.textContent.match(/(\d+) heures?/) || [])[1], plus: Math.max(0, ...Array.from(x.querySelectorAll('[data-h]')).map(y => +((y.textContent.match(/\+(\d+)$/) || [])[1] || 0))) })));
+  E.verif('A31', ev.length && ev.every(x => +x.h >= 1) && ev.some(x => +x.h > 1) && ev.every(x => x.plus < 40), '173 · « Envoyer vers… » : chaque séance son nombre d\'heures (sa frontière par les durées), plus « · 1 heure » partout ni +70 min', JSON.stringify(ev));
+  E.verif('A31', !o3.errs.length && !o3.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o3.errs.concat(o3.boites)).join(' ; ') || undefined); await o3.ctx.close(); });
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

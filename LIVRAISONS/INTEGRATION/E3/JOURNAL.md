@@ -147,3 +147,4 @@
 ## 22/10, 02:43 — T17 : le cahier de textes au tableau
 - Sur la poussée d'E2 `a36f722d` (la diapo « fin » porte le cahier) : banc **99/99** ; et **T17** ajouté (l'audit final cite le cahier au tableau) : « Préparer le cahier » → le tableau reste sur la diapo de la classe, rien du cahier n'y paraît ; « Revenir au cours » → toujours la diapo de la classe ; le cahier montré à la classe → **il est au tableau comme au pilote** (même diapo, même page ; capture `captures/site/T17-cahier-au-tableau.png`). Joué seul : 6/6.
 - 02:54 : poussée d'E1 `f7c3f2ab` : banc complet **105/105** (T17 compris).
+- 05:13 : poussées d'E1 `46710b3e`, `d184420f` (§12.18) : banc **105/105**.

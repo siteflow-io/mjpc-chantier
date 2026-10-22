@@ -1,5 +1,5 @@
 // E4 · la preuve sur pièce (réveil n°19 suite, Paul 13:40 ; contrat §12.21) : le chapitre 3e réécrit au contrat du prompt
-// d'injection (MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md v0.3 ; §12.22 : ni réactivation ni fin d'heure dans le fichier), SANS UNE PHRASE NOUVELLE VUE PAR L'ÉLÈVE — seulement la structure.
+// d'injection (MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md v0.7 ; §12.22 : ni réactivation ni fin d'heure dans le fichier), SANS UNE PHRASE NOUVELLE VUE PAR L'ÉLÈVE — seulement la structure.
 // Rejouable : node au-contrat.mjs [source.json] [sortie.json] [taxonomie.json]
 // Sorties : le chapitre au contrat, la table avant / après par séance (avant-apres.md), la liste du §3 point 5 avec son compte.
 import fs from 'node:fs';
@@ -22,6 +22,8 @@ const familleDe = {}; const connus = new Set();
 const compet = taxo.competences; (Array.isArray(compet) ? compet : Object.values(compet || {})).forEach(c => { if (c && c.id) connus.add(c.id); else if (c && typeof c === 'object') Object.values(c).forEach(x => x && x.id && connus.add(x.id)); });
 const listeIds = o => { if (!o || typeof o !== 'object') return; if (Array.isArray(o)) return o.forEach(listeIds); if (typeof o.id === 'string') connus.add(o.id); Object.values(o).forEach(listeIds); };
 listeIds(taxo.competences);
+const libelle = {}; (taxo.domaines || []).forEach(d => (d.familles || []).forEach(f => (f.notions || []).forEach(n => { libelle[n.id] = n.libelleProf || n.libelleEleve || n.id; })));
+const libC = o => { if (!o || typeof o !== 'object') return; if (Array.isArray(o)) return o.forEach(libC); if (typeof o.id === 'string' && o.libelle) libelle[o.id] = o.libelle; Object.values(o).forEach(libC); }; libC(taxo.competences);
 
 // ── les choix de structure, déclarés (aucun n'écrit une phrase : ils rangent ce qui existe) ──
 const REACTIVATION = act => /^Où en sommes-nous\s*\?$/.test(act);
@@ -46,6 +48,16 @@ const FEUILLES = {
   'interro-analyse|La PSCci': 'fiche-notion-propositions',
   'atelier-paragraphe|Le sonnet': 'fiche-versification',   // [à vérifier] : la fiche « rappel sur la versification » de la séance porte-t-elle le sonnet ?
 };
+// §12.24 (Paul, 22/10 18:19-23:17 ; pièce v0.7 §1.3) : le bilan en trois blocs — la question sans réponse attendue, « À mettre dans le bilan » (4 à 6 mots-clés
+// sans verbe conjugué, pris dans ce qui a été vu pendant le chapitre, ceux de la séance d'abord), la consigne proposée mot pour mot ; ses notes présentateur.
+// Les mots-clés : séance 2, l'exemple de la pièce v0.7 §1.3, mot pour mot ; séances 1 et 7, pris dans les diapos de la séance (titres, réponse validée du « Récap' »,
+// critères) — les reformulations nominales sont des [PROPOSITION] à Paul (journal).
+const BILANS = {
+  'intro-peinture': [['une nature immense face à un homme petit', 'litt-037'], ["l'émotion avant la règle", 'c4-culture-02'], ['les règles héritées', 'c4-culture-01'], ['la frise du siècle', 'c4-culture-01'], ['les mouvements du siècle', 'c4-culture-02'], ['le siècle des inventions', 'c4-culture-01']],
+  'etude-albatros': [["l'albatros : roi du ciel, infirme sur le pont", 'litt-026'], ['le poète parmi les hommes', 'c4-lire-04'], ['la comparaison filée', 'litt-020'], ['le champ lexical de la moquerie', 'lex-008'], ["le registre lyrique : l'émotion avant la règle", 'litt-018']],
+  'recitation': [['le texte su', 'c4-oral-04'], ['chaque mot entendu', 'c4-oral-04'], ['le rythme du vers respecté', 'vers-015'], ['le e muet, compté ou non', 'vers-006'], ['une récitation vivante', 'c4-oral-04']],
+};
+const CONSIGNE_BILAN = { t: 'consigne', pic: '✎', txt: 'Rédige le bilan au brouillon.', etapes: ['Cinq à huit lignes, au présent.', 'Chaque mot-clé y est, dans une phrase à toi.', 'Souligne chaque mot-clé une fois placé.'] };   // v0.7 §1.3, mot pour mot
 const FAMILLES_PAR_CARTE = +(process.env.E4_FAMILLES || 1);   // mesuré par « À régler » du site après import (1366 et 1280) : 3 familles par diapo → 2 diapos sur 3 refusées (4 chevauchements / 3 traits ; 1 / 2) ; 2 familles → 3 sur 4 refusées ; 1 famille → 0. Le réveil n°23 demandait 3 (selon E3) : écart dit au journal
 
 const journal = []; const avantApres = [];
@@ -117,6 +129,12 @@ chap.seances.forEach((s, si) => {
   // 8 · le travail à faire prévu, par heure : la consigne « pour la prochaine fois / heure » qui existe déjà (mot pour mot)
   const travail = {};
   E.forEach(e => { if (!(AVANT(e.act) || e.role === 'bilan')) return; (e.blocs || []).forEach(b => { if (b.t === 'consigne' && /prochaine (fois|heure)/i.test(b.txt || '')) travail[String(e.heure)] = b.txt; }); });
+  // 8 bis · §12.24 : le bilan refait en trois blocs (le travail à faire en sort : il vit dans `travail`), ses notes présentateur
+  E.forEach(e => { if (e.role !== 'bilan') return; const kw = BILANS[s.cle]; if (!kw) { journal.push(`${s.cle} · bilan « ${e.act} » : pas de mots-clés déclarés`); return; }
+    const q = (e.blocs || []).find(b => b.t === 'question'); const avantB = (e.blocs || []).map(b => b.t).join(', ');
+    e.blocs = [Object.assign({}, q, { reps: [] }), { t: 'texte', txt: 'À mettre dans le bilan', el: kw.map(k => k[0]) }, JSON.parse(JSON.stringify(CONSIGNE_BILAN))];
+    e.notes = kw.map(([k, id]) => `<p><b>${k}</b> — ${libelle[id] || id} (${id})</p>`).join('') + "<p>La réponse validée s'écrit dans la copie de la classe.</p>";
+    journal.push(`${s.cle} · bilan « ${e.act} » : ${avantB} → question, « À mettre dans le bilan » (${kw.length} mots-clés), consigne proposée ; notes présentateur`); });
   // 9 · §12.22 : pas de fin d'heure dans le fichier (le site la pose, dernière de chaque heure)
   const E2 = []; for (let k = 1; k <= nH; k++) E.filter(e => e.heure === k).forEach(e => E2.push(e));
   E2.forEach(e => { delete e.__carte; delete e.__coupe; delete e.__retireeAvant; });
@@ -150,6 +168,13 @@ chap.seances.forEach(s => {
     (e.comp || []).concat(e.remob || []).forEach(id => R(connus.has(id), 'les notions existent dans la taxonomie', `${ou} · ${id}`));
   });
   R(E.filter(e => e.role === 'bilan').length <= 1, 'un seul bilan', s.cle);
+  E.forEach((e, i) => { const ou = `${s.cle} · diapo ${i + 1} « ${e.act} »`;
+    if (e.notes != null) R(e.role === 'bilan', '`notes` seulement sur le bilan (§12.24)', ou);
+    const vu = JSON.stringify(e.blocs || []) + ' ' + e.act; R(!/copie de (la )?classe/i.test(vu), 'aucun texte vu par les élèves ne dit « copie de classe » (§12.24)', ou);
+    if (e.role === 'bilan') { const t = (e.blocs || []).map(b => b.t).join(','); R(t === 'question,texte,consigne', 'le bilan : trois blocs, question, texte, consigne (§12.24)', ou + ' : ' + t);
+      const tx = (e.blocs || [])[1] || {}; R(tx.txt === 'À mettre dans le bilan' && (tx.el || []).length >= 4 && (tx.el || []).length <= 6, '« À mettre dans le bilan » : quatre à six lignes', ou);
+      (tx.el || []).forEach(l => R(!/\.$/.test(l) && l.split(/\s+/).length <= 12, 'une ligne « À mettre dans le bilan » : sans point final, douze mots au plus', ou + ' · « ' + l + ' »'));
+      R(JSON.stringify((e.blocs || [])[2]) === JSON.stringify(CONSIGNE_BILAN), 'la consigne proposée, mot pour mot (v0.7)', ou); R(!!e.notes, 'le bilan a ses notes présentateur', ou); } });
   const bi = E.findIndex(e => e.role === 'bilan'); if (bi >= 0) R(bi === E.length - 1, 'le bilan est la dernière diapo de la séance', s.cle);
   E.forEach((e, i) => { R(!e.role || e.role === 'bilan', 'aucun rôle « reactivation » ni « fin » (§12.22)', `${s.cle} · diapo ${i + 1} « ${e.act} » : ${e.role}`); R(!REACTIVATION(e.act), 'aucune diapo « Où en sommes-nous ? » (§12.22)', `${s.cle} · diapo ${i + 1}`); });
   for (let k = 1; k <= nH; k++) { const t = E.filter(e => e.heure === k).reduce((a, e) => a + e.dur, 0); R(t <= UTILE, 'la somme des dur par heure ≤ 50', `${s.cle} · heure ${k} : ${t} min`); }

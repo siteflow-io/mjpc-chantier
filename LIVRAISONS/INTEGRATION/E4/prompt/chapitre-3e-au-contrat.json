@@ -415,13 +415,31 @@
                   "reps": []
                 },
                 {
+                  "t": "texte",
+                  "txt": "À mettre dans le bilan",
+                  "el": [
+                    "une nature immense face à un homme petit",
+                    "l'émotion avant la règle",
+                    "les règles héritées",
+                    "la frise du siècle",
+                    "les mouvements du siècle",
+                    "le siècle des inventions"
+                  ]
+                },
+                {
                   "t": "consigne",
-                  "txt": "Pour la prochaine fois : lis « L'Albatros » deux fois.",
-                  "etapes": []
+                  "pic": "✎",
+                  "txt": "Rédige le bilan au brouillon.",
+                  "etapes": [
+                    "Cinq à huit lignes, au présent.",
+                    "Chaque mot-clé y est, dans une phrase à toi.",
+                    "Souligne chaque mot-clé une fois placé."
+                  ]
                 }
               ],
               "role": "bilan",
-              "heure": 2
+              "heure": 2,
+              "notes": "<p><b>une nature immense face à un homme petit</b> — Les plans et le cadrage (litt-037)</p><p><b>l'émotion avant la règle</b> — Établir des liens entre des créations littéraires et artistiques issues de cultures et d'époques diverses (c4-culture-02)</p><p><b>les règles héritées</b> — Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle (c4-culture-01)</p><p><b>la frise du siècle</b> — Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle (c4-culture-01)</p><p><b>les mouvements du siècle</b> — Établir des liens entre des créations littéraires et artistiques issues de cultures et d'époques diverses (c4-culture-02)</p><p><b>le siècle des inventions</b> — Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle (c4-culture-01)</p><p>La réponse validée s'écrit dans la copie de la classe.</p>"
             }
           ],
           "activites": [
@@ -1120,13 +1138,30 @@
                   "reps": []
                 },
                 {
+                  "t": "texte",
+                  "txt": "À mettre dans le bilan",
+                  "el": [
+                    "l'albatros : roi du ciel, infirme sur le pont",
+                    "le poète parmi les hommes",
+                    "la comparaison filée",
+                    "le champ lexical de la moquerie",
+                    "le registre lyrique : l'émotion avant la règle"
+                  ]
+                },
+                {
                   "t": "consigne",
-                  "txt": "Pour la prochaine fois, révise avec la fiche de révision : l'interro portera sur les mouvements, la versification, les figures et le registre lyrique.",
-                  "etapes": []
+                  "pic": "✎",
+                  "txt": "Rédige le bilan au brouillon.",
+                  "etapes": [
+                    "Cinq à huit lignes, au présent.",
+                    "Chaque mot-clé y est, dans une phrase à toi.",
+                    "Souligne chaque mot-clé une fois placé."
+                  ]
                 }
               ],
               "role": "bilan",
-              "heure": 2
+              "heure": 2,
+              "notes": "<p><b>l'albatros : roi du ciel, infirme sur le pont</b> — La personnification (litt-026)</p><p><b>le poète parmi les hommes</b> — Élaborer une interprétation de textes littéraires (c4-lire-04)</p><p><b>la comparaison filée</b> — La comparaison (litt-020)</p><p><b>le champ lexical de la moquerie</b> — Reconnaître un champ lexical (lex-008)</p><p><b>le registre lyrique : l'émotion avant la règle</b> — Le registre lyrique (litt-018)</p><p>La réponse validée s'écrit dans la copie de la classe.</p>"
             }
           ],
           "activites": [
@@ -3270,10 +3305,32 @@
                   "t": "question",
                   "q": "Qu'est-ce qui distingue une récitation vivante d'une récitation seulement sue ? La réponse validée est recopiée dans le cahier, partie cours.",
                   "reps": []
+                },
+                {
+                  "t": "texte",
+                  "txt": "À mettre dans le bilan",
+                  "el": [
+                    "le texte su",
+                    "chaque mot entendu",
+                    "le rythme du vers respecté",
+                    "le e muet, compté ou non",
+                    "une récitation vivante"
+                  ]
+                },
+                {
+                  "t": "consigne",
+                  "pic": "✎",
+                  "txt": "Rédige le bilan au brouillon.",
+                  "etapes": [
+                    "Cinq à huit lignes, au présent.",
+                    "Chaque mot-clé y est, dans une phrase à toi.",
+                    "Souligne chaque mot-clé une fois placé."
+                  ]
                 }
               ],
               "role": "bilan",
-              "heure": 2
+              "heure": 2,
+              "notes": "<p><b>le texte su</b> — Exploiter les ressources expressives et créatives de la parole (c4-oral-04)</p><p><b>chaque mot entendu</b> — Exploiter les ressources expressives et créatives de la parole (c4-oral-04)</p><p><b>le rythme du vers respecté</b> — Les sonorités du poème (vers-015)</p><p><b>le e muet, compté ou non</b> — Le e muet (vers-006)</p><p><b>une récitation vivante</b> — Exploiter les ressources expressives et créatives de la parole (c4-oral-04)</p><p>La réponse validée s'écrit dans la copie de la classe.</p>"
             }
           ],
           "activites": [

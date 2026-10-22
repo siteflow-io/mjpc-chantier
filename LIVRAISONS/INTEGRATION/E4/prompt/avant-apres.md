@@ -15,11 +15,13 @@
 - intro-peinture · heure 1 : 55 min > 50 — « Les hypothèses de la classe » passe de 22 à 17 min [PROPOSITION]
 - intro-peinture · heure 2 : 52 min > 50 — « Les règles héritées » passe de 10 à 8 min [PROPOSITION]
 - intro-peinture · « Récap' de l'heure » (heure 1) : ferme l'activité « Les cinq tableaux à analyser » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part
+- intro-peinture · bilan « Question-bilan et travail à faire » : question, consigne → question, « À mettre dans le bilan » (6 mots-clés), consigne proposée ; notes présentateur
 - etude-albatros · « Les figures de style » : la carte de 8 familles coupée en 8 diapos de 1 familles au plus (« (suite) »)
 - etude-albatros · « Où en sommes-nous ? » (3 min) retirée (§12.22) — avant : question
 - etude-albatros · heure 1 : 55 min > 50 — « L'enjambement » passe de 10 à 5 min [PROPOSITION]
 - etude-albatros · heure 2 : 55 min > 50 — « Le portrait de l'oiseau » passe de 10 à 5 min [PROPOSITION]
 - etude-albatros · « Avant de se quitter » (heure 1) : ferme l'activité « Les sonorités » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part
+- etude-albatros · bilan « Question-bilan et travail à faire » : question, consigne → question, « À mettre dans le bilan » (5 mots-clés), consigne proposée ; notes présentateur
 - interro-analyse · « Où en sommes-nous ? » (3 min) retirée (§12.22) — avant : question
 - interro-analyse · heure 1 : 55 min > 50 — « Interro de cours » passe de 15 à 10 min [PROPOSITION]
 - interro-analyse · heure 2 : 52 min > 50 — « La subordonnée relative et son antécédent » passe de 10 à 8 min [PROPOSITION]
@@ -38,6 +40,7 @@
 - recitation · heure 1 : 55 min > 50 — « Les passages » passe de 45 à 40 min [PROPOSITION]
 - recitation · heure 2 : 55 min > 50 — « Reprise des passages » passe de 50 à 45 min [PROPOSITION]
 - recitation · « Avant de se quitter » (heure 1) : ferme l'activité « Les passages » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part
+- recitation · bilan « Question-bilan » : question → question, « À mettre dans le bilan » (5 mots-clés), consigne proposée ; notes présentateur
 - remediation · un segment de 85 min sans repère d'heure, coupé par les durées (50 min utiles)
 - remediation · « Avant de se quitter » (heure 2) : ferme l'activité « Je m'entraîne sur mes points faibles » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part
 - tache-finale · heure 1 : 55 min > 50 — « Étude du texte (sur 32) » passe de 45 à 40 min [PROPOSITION]

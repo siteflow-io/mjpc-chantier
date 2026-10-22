@@ -199,7 +199,7 @@
               ]
             },
             {
-              "act": "Avant de se quitter",
+              "act": "Récap' de l'heure",
               "dur": 3,
               "comp": [
                 "c4-lire-02"
@@ -1595,7 +1595,7 @@
               ]
             },
             {
-              "act": "Question-bilan",
+              "act": "Récap' de l'heure",
               "dur": 5,
               "comp": [
                 "gram-023",
@@ -1614,7 +1614,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a27",
+              "actId": "a26",
               "remob": [
                 "gram-025"
               ]
@@ -1633,7 +1633,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a27",
+              "actId": "a26",
               "remob": []
             },
             {
@@ -1654,7 +1654,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a28",
+              "actId": "a27",
               "remob": [
                 "gram-023",
                 "gram-024"
@@ -1682,7 +1682,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a29",
+              "actId": "a28",
               "remob": [
                 "gram-024"
               ]
@@ -1705,7 +1705,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a30",
+              "actId": "a29",
               "remob": [
                 "gram-023",
                 "gram-024"
@@ -1741,7 +1741,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a31",
+              "actId": "a30",
               "remob": [
                 "gram-023",
                 "gram-024"
@@ -1764,7 +1764,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a32",
+              "actId": "a31",
               "remob": [
                 "gram-023",
                 "gram-024",
@@ -1795,7 +1795,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a33",
+              "actId": "a32",
               "remob": [
                 "gram-024"
               ]
@@ -1817,7 +1817,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a34",
+              "actId": "a33",
               "remob": []
             }
           ],
@@ -1850,41 +1850,36 @@
             {
               "id": "a27",
               "num": 27,
-              "titre": "Question-bilan"
+              "titre": "La subordonnée relative et son antécédent"
             },
             {
               "id": "a28",
               "num": 28,
-              "titre": "La subordonnée relative et son antécédent"
+              "titre": "Entraînement 3 : trouver l'antécédent"
             },
             {
               "id": "a29",
               "num": 29,
-              "titre": "Entraînement 3 : trouver l'antécédent"
+              "titre": "Le point d'attention : « que »"
             },
             {
               "id": "a30",
               "num": 30,
-              "titre": "Le point d'attention : « que »"
+              "titre": "Entraînement 4 : relative ou complétive ?"
             },
             {
               "id": "a31",
               "num": 31,
-              "titre": "Entraînement 4 : relative ou complétive ?"
+              "titre": "La subordonnée circonstancielle"
             },
             {
               "id": "a32",
               "num": 32,
-              "titre": "La subordonnée circonstancielle"
+              "titre": "Entraînement 5 : tout mélangé"
             },
             {
               "id": "a33",
               "num": 33,
-              "titre": "Entraînement 5 : tout mélangé"
-            },
-            {
-              "id": "a34",
-              "num": 34,
               "titre": "Travail en autonomie"
             }
           ],
@@ -2030,7 +2025,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a35",
+              "actId": "a34",
               "remob": [
                 "litt-001"
               ]
@@ -2053,7 +2048,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a36",
+              "actId": "a35",
               "remob": []
             },
             {
@@ -2076,7 +2071,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a37",
+              "actId": "a36",
               "remob": []
             },
             {
@@ -2109,7 +2104,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a38",
+              "actId": "a37",
               "remob": []
             },
             {
@@ -2133,7 +2128,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a39",
+              "actId": "a38",
               "remob": [
                 "vers-016",
                 "vers-017",
@@ -2160,7 +2155,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a40",
+              "actId": "a39",
               "remob": [
                 "litt-001"
               ]
@@ -2190,7 +2185,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a40",
+              "actId": "a39",
               "remob": []
             },
             {
@@ -2207,7 +2202,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a40",
+              "actId": "a39",
               "remob": []
             },
             {
@@ -2233,7 +2228,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a41",
+              "actId": "a40",
               "remob": []
             },
             {
@@ -2256,7 +2251,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a42",
+              "actId": "a41",
               "remob": [
                 "ortho-gram-008",
                 "ortho-gram-009"
@@ -2284,7 +2279,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a43",
+              "actId": "a42",
               "remob": []
             },
             {
@@ -2307,7 +2302,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a44",
+              "actId": "a43",
               "remob": [
                 "gram-024",
                 "gram-027"
@@ -2327,59 +2322,59 @@
                 }
               ],
               "heure": 2,
-              "actId": "a44",
+              "actId": "a43",
               "remob": []
             }
           ],
           "activites": [
             {
+              "id": "a34",
+              "num": 34,
+              "titre": "Lecture : « Les Fenêtres »"
+            },
+            {
               "id": "a35",
               "num": 35,
-              "titre": "Lecture : « Les Fenêtres »"
+              "titre": "Le poème en prose"
             },
             {
               "id": "a36",
               "num": 36,
-              "titre": "Le poème en prose"
+              "titre": "Un poème, sans vers ?"
             },
             {
               "id": "a37",
               "num": 37,
-              "titre": "Un poème, sans vers ?"
+              "titre": "Qui parle, à qui ?"
             },
             {
               "id": "a38",
               "num": 38,
-              "titre": "Qui parle, à qui ?"
+              "titre": "Le rythme et les images"
             },
             {
               "id": "a39",
               "num": 39,
-              "titre": "Le rythme et les images"
+              "titre": "La dictée se prépare : le paratexte"
             },
             {
               "id": "a40",
               "num": 40,
-              "titre": "La dictée se prépare : le paratexte"
+              "titre": "Dictée"
             },
             {
               "id": "a41",
               "num": 41,
-              "titre": "Dictée"
+              "titre": "Relecture guidée"
             },
             {
               "id": "a42",
               "num": 42,
-              "titre": "Relecture guidée"
+              "titre": "Réécriture"
             },
             {
               "id": "a43",
               "num": 43,
-              "titre": "Réécriture"
-            },
-            {
-              "id": "a44",
-              "num": 44,
               "titre": "Analyse logique notée"
             }
           ],
@@ -2514,7 +2509,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a45",
+              "actId": "a44",
               "remob": []
             },
             {
@@ -2548,7 +2543,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a46",
+              "actId": "a45",
               "remob": [
                 "litt-001",
                 "vers-001",
@@ -2579,7 +2574,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a47",
+              "actId": "a46",
               "remob": [
                 "litt-001",
                 "litt-005"
@@ -2605,7 +2600,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a48",
+              "actId": "a47",
               "remob": []
             },
             {
@@ -2630,7 +2625,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a49",
+              "actId": "a48",
               "remob": [
                 "litt-001",
                 "litt-005"
@@ -2658,7 +2653,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a49",
+              "actId": "a48",
               "remob": [
                 "litt-001",
                 "litt-005"
@@ -2687,7 +2682,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a50",
+              "actId": "a49",
               "remob": [
                 "vers-001",
                 "vers-003",
@@ -2710,7 +2705,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a50",
+              "actId": "a49",
               "remob": []
             },
             {
@@ -2733,7 +2728,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a51",
+              "actId": "a50",
               "remob": [
                 "litt-026",
                 "litt-020"
@@ -2760,7 +2755,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a52",
+              "actId": "a51",
               "remob": []
             },
             {
@@ -2782,7 +2777,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a53",
+              "actId": "a52",
               "remob": []
             },
             {
@@ -2810,7 +2805,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a54",
+              "actId": "a53",
               "remob": []
             },
             {
@@ -2846,7 +2841,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a55",
+              "actId": "a54",
               "remob": [
                 "litt-026"
               ]
@@ -2854,58 +2849,58 @@
           ],
           "activites": [
             {
+              "id": "a44",
+              "num": 44,
+              "titre": "Lecture : « À une passante »"
+            },
+            {
               "id": "a45",
               "num": 45,
-              "titre": "Lecture : « À une passante »"
+              "titre": "La forme du sonnet"
             },
             {
               "id": "a46",
               "num": 46,
-              "titre": "La forme du sonnet"
+              "titre": "La bascule du sonnet"
             },
             {
               "id": "a47",
               "num": 47,
-              "titre": "La bascule du sonnet"
+              "titre": "Le dernier vers"
             },
             {
               "id": "a48",
               "num": 48,
-              "titre": "Le dernier vers"
+              "titre": "Trois questions à ne pas confondre"
             },
             {
               "id": "a49",
               "num": 49,
-              "titre": "Trois questions à ne pas confondre"
+              "titre": "La récitation se prépare"
             },
             {
               "id": "a50",
               "num": 50,
-              "titre": "La récitation se prépare"
+              "titre": "Un vers, une idée"
             },
             {
               "id": "a51",
               "num": 51,
-              "titre": "Un vers, une idée"
+              "titre": "La méthode en quatre étapes"
             },
             {
               "id": "a52",
               "num": 52,
-              "titre": "La méthode en quatre étapes"
+              "titre": "Le contre-exemple"
             },
             {
               "id": "a53",
               "num": 53,
-              "titre": "Le contre-exemple"
+              "titre": "À toi d'écrire"
             },
             {
               "id": "a54",
               "num": 54,
-              "titre": "À toi d'écrire"
-            },
-            {
-              "id": "a55",
-              "num": 55,
               "titre": "Je me relis, et je fais travailler ma mémoire"
             }
           ],
@@ -3000,7 +2995,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a56",
+              "actId": "a55",
               "remob": []
             },
             {
@@ -3019,7 +3014,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a57",
+              "actId": "a56",
               "remob": [
                 "litt-001",
                 "litt-005"
@@ -3051,7 +3046,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a58",
+              "actId": "a57",
               "remob": [
                 "litt-001",
                 "vers-001",
@@ -3068,18 +3063,18 @@
           ],
           "activites": [
             {
+              "id": "a55",
+              "num": 55,
+              "titre": "Le cadre de l'épreuve"
+            },
+            {
               "id": "a56",
               "num": 56,
-              "titre": "Le cadre de l'épreuve"
+              "titre": "Lecture du sonnet"
             },
             {
               "id": "a57",
               "num": 57,
-              "titre": "Lecture du sonnet"
-            },
-            {
-              "id": "a58",
-              "num": 58,
               "titre": "Compréhension et interprétation (sur 32)"
             }
           ],
@@ -3159,7 +3154,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a59",
+              "actId": "a58",
               "remob": []
             },
             {
@@ -3177,7 +3172,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a60",
+              "actId": "a59",
               "remob": []
             },
             {
@@ -3204,7 +3199,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a61",
+              "actId": "a60",
               "remob": [
                 "vers-001",
                 "vers-003",
@@ -3229,7 +3224,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a61",
+              "actId": "a60",
               "remob": []
             },
             {
@@ -3253,7 +3248,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a62",
+              "actId": "a61",
               "remob": [
                 "vers-001",
                 "vers-003",
@@ -3283,23 +3278,23 @@
           ],
           "activites": [
             {
+              "id": "a58",
+              "num": 58,
+              "titre": "Ce que la classe évalue"
+            },
+            {
               "id": "a59",
               "num": 59,
-              "titre": "Ce que la classe évalue"
+              "titre": "Les quatre critères"
             },
             {
               "id": "a60",
               "num": 60,
-              "titre": "Les quatre critères"
+              "titre": "Les passages"
             },
             {
               "id": "a61",
               "num": 61,
-              "titre": "Les passages"
-            },
-            {
-              "id": "a62",
-              "num": 62,
               "titre": "Reprise des passages"
             }
           ],
@@ -3411,7 +3406,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a63",
+              "actId": "a62",
               "remob": []
             },
             {
@@ -3435,7 +3430,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a64",
+              "actId": "a63",
               "remob": [
                 "ortho-gram-008",
                 "ortho-gram-009"
@@ -3459,7 +3454,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a65",
+              "actId": "a64",
               "remob": []
             },
             {
@@ -3485,7 +3480,7 @@
                 }
               ],
               "heure": 2,
-              "actId": "a66",
+              "actId": "a65",
               "remob": [
                 "vers-010",
                 "gram-023",
@@ -3508,29 +3503,29 @@
                 }
               ],
               "heure": 2,
-              "actId": "a66",
+              "actId": "a65",
               "remob": []
             }
           ],
           "activites": [
             {
+              "id": "a62",
+              "num": 62,
+              "titre": "Retour sur le brevet blanc"
+            },
+            {
               "id": "a63",
               "num": 63,
-              "titre": "Retour sur le brevet blanc"
+              "titre": "Ma dictée, mes erreurs"
             },
             {
               "id": "a64",
               "num": 64,
-              "titre": "Ma dictée, mes erreurs"
+              "titre": "Ma réécriture, mes erreurs"
             },
             {
               "id": "a65",
               "num": 65,
-              "titre": "Ma réécriture, mes erreurs"
-            },
-            {
-              "id": "a66",
-              "num": 66,
               "titre": "Je m'entraîne sur mes points faibles"
             }
           ],
@@ -3633,7 +3628,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a67",
+              "actId": "a66",
               "remob": [
                 "litt-001",
                 "litt-006"
@@ -3654,7 +3649,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a68",
+              "actId": "a67",
               "remob": [
                 "litt-001",
                 "litt-006"
@@ -3686,7 +3681,7 @@
                 }
               ],
               "heure": 1,
-              "actId": "a69",
+              "actId": "a68",
               "remob": [
                 "litt-001",
                 "litt-006"
@@ -3695,18 +3690,18 @@
           ],
           "activites": [
             {
+              "id": "a66",
+              "num": 66,
+              "titre": "Les repères avant de lire"
+            },
+            {
               "id": "a67",
               "num": 67,
-              "titre": "Les repères avant de lire"
+              "titre": "Lecture silencieuse"
             },
             {
               "id": "a68",
               "num": 68,
-              "titre": "Lecture silencieuse"
-            },
-            {
-              "id": "a69",
-              "num": 69,
               "titre": "Étude du texte (sur 32)"
             }
           ],

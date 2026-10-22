@@ -27,6 +27,7 @@ listeIds(taxo.competences);
 const REACTIVATION = act => /^Où en sommes-nous\s*\?$/.test(act);
 const AVANT = act => /^Avant de se quitter/.test(act);
 const BILAN = act => /^Question-bilan/.test(act);
+const RECAP = act => /^Récap' de l'heure/.test(act);   // Paul (17:50 et 18:19) : « Récap' de l'heure » — une question qui clôt l'activité d'avant, ni un bilan ni un repère d'heure
 // les activités de plusieurs diapos (la diapo n'est pas l'activité, §1.6) : [clé de séance, titres des diapos, titre de l'activité ou null = le titre de la première diapo]
 const GROUPES = [
   ['intro-peinture', ['Tableau 1', 'Tableau 2', 'Tableau 3', 'Tableau 4', 'Tableau 5', 'Les hypothèses de la classe'], 'Les cinq tableaux à analyser'],   // le titre de l'item « tableaux » de la séance (relance n°19)
@@ -99,7 +100,7 @@ chap.seances.forEach((s, si) => {
   GROUPES.filter(g => g[0] === s.cle).forEach(g => g[1].forEach(t => { parTitre[t] = g; }));
   E.forEach((e, i) => {
     if (e.role) return;
-    if (AVANT(e.act)) { const prec = [...E.slice(0, i)].reverse().find(z => !z.role && z.actId); if (prec) { e.actId = prec.actId; journal.push(`${s.cle} · « ${e.act} » (heure ${e.heure}) : ferme l'activité « ${acts.find(a => a.id === prec.actId).titre} » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part`); return; } }
+    if (AVANT(e.act) || RECAP(e.act)) { const prec = [...E.slice(0, i)].reverse().find(z => !z.role && z.actId); if (prec) { e.actId = prec.actId; journal.push(`${s.cle} · « ${e.act} » (heure ${e.heure}) : ferme l'activité « ${acts.find(a => a.id === prec.actId).titre} » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part`); return; } }
     const cleGroupe = e.__carte || e.act; const g = parTitre[cleGroupe];
     let a = g ? acts.find(x => x.__g === g) : null;
     if (!a) { numAct++; a = { id: 'a' + numAct, num: numAct, titre: g && g[2] ? g[2] : (g ? g[1][0] : (e.__carte || e.act)), __g: g || null }; acts.push(a); }

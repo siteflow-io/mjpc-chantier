@@ -816,3 +816,13 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - L'import se rejoue quand la tête d'E1 portera §12.23 (« la réponse attendue manque » ne doit plus tomber sur le bilan) ; attendu : un seul refus (séance 3).
 - **Compte** : 181 lignes, dont 171 réglées, 0 pas réglée, 10 écartées, 0 à Paul, 0 ouverte. **Signal : « 0 pas réglée (`61245b22`) ».**
 - Le rebasage avant poussée a renommé `ba46e503` en `61245b22` (même contenu) ; les références sont mises à jour.
+
+## Poussée 85 — 16:20 UTC · réveil n°26 : le chapitre au contrat importé sans refus, « À régler (0) »
+- **L187** (réveil n°26) : elle est **numérotée L187** dans ma table et **revérifiée par le geste** aux deux tailles sur `69bfb051` (poussée 83, 14:40). Une copie d'essai met des lignes « À régler » dans deux séances : depuis la séance 1, « À régler (3) — … dans ce chapitre », et « Ouvrir la diapo » ouvre la séance 2, diapo 16. **La correction d'E1 (`aede3c85`) tient.** Captures `prompt/captures/l187-*.png`.
+- **Paul a tranché la séance 3** (`dd803725` : « Question-bilan » → « Récap' de l'heure », dans la source). **Le chapitre au contrat est refait par le script, depuis la source : ma liste du §3 point 5, 0 écart.**
+- **L'import du JSON livré** (pas une copie) sur la tête d'E1 `6a932b71` (`fil`, §12.23), aux deux tailles :
+  - « Vérifier » : **« Réponse comprise »**, aucun refus ;
+  - « Créer un double » : **« À régler (0) » dans les neuf séances** ;
+  - « L'Albatros » rejouée (« Jouer en avance », ▶) : activités 11 à 16, zéro erreur JS.
+  - Captures `prompt/captures/*-final.png`.
+- **La preuve sur pièce est faite.**

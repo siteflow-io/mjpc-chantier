@@ -222,3 +222,6 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 
 ## 22/10, 18:30 — retour 4 : §12.23 et réveil n°26
 - Rien d'ouvert (§12.23 : rien au tableau). E4 a touché `dr-recit.js` et E1 `index.html` (§12.23) : banc E3 rejoué sur l'assemblé de la tête `6a932b71` (md5 `003e0eef…`, qui contient le `022fc8a8…` de `6d19ef74` demandé par la conscience plus la poussée d'E1 `d8ef3991`) — **105 vérifications, 0 échec** (`sorties/1823/banc-E3.txt`). Le tableau ne bouge pas.
+
+## 22/10, 19:22 — retour 5 : rien de neuf
+- Aucune relance après le réveil n°26 ; aucun module ni `index.html` touché depuis `6a932b71` (assemblé `003e0eef…` identique) : le banc de 18:23 (105/105) vaut. Rien à coder.

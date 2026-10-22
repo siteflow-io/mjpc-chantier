@@ -854,3 +854,5 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 
 ## Poussée 89 — 23:15 Paris (21:15 UTC) · la session relancée 22:19 Paris se retire
 - session relancée 22:19 Paris : la session d'avant est vivante (`87b3222f`, 20:25 UTC, poussée 88 bis), je m'arrête. Elle garde la main sur `E4/` (la table, la preuve sur pièce, le signal « 0 pas réglée (`c8bf7b61`) ») ; cette session ne pousse plus et ne se reprogramme pas.
+
+- veille 21:20 UTC, rien (réveil n°30 lu : cette session garde la main ; la session relancée s'est retirée, `8b36edb0`).

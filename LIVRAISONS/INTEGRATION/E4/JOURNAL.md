@@ -630,3 +630,11 @@
 - **0 ligne nouvelle.**
 - **Compte** : 176 lignes, dont 159 réglées, 2 pas réglées (L178 E1, L182 E2), 9 écartées, 6 à Paul, 0 ouverte.
 - **Bancs** sur `c21ce3aa` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0500-site-E4`).
+
+## Poussée 69 — 05:20 UTC
+- **Le conteneur a redémarré** vers 05:12 pendant la passe. Les bancs sont relancés, la veille est réarmée.
+- **E1, poussée 21 (`12f0cb17`, sorties `89e549f6`)**, revérifiée aux deux tailles : **L178 réglée**. Le volet dit « H2 · lundi 14 septembre · jouée » aussitôt après « Clore », et encore à 09:58 et 10:30.
+- **L182 pas réglée** (E2), inchangée.
+- **0 ligne nouvelle.**
+- **Compte** : 176 lignes, dont 160 réglées, 1 pas réglée (L182), 9 écartées, 6 à Paul, 0 ouverte.
+- **Bancs** sur `89e549f6` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0515-site-E4`).

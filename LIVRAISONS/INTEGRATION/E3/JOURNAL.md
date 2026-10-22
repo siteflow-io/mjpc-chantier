@@ -212,3 +212,7 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 
 ## 22/10, 15:35 — retour 1 : §12.22 et réveil n°23 lus
 - Rien d'ouvert chez moi (ma mesure est entrée dans la pièce v0.3). `index.html` a bougé en amont (E1, l'import §12.21 ; `dr/` inchangé) : banc E3 rejoué sur l'assemblé de la tête `0048019e` (md5 `6beff92f…`) — **105 vérifications, 0 échec** (`sorties/1530/banc-E3.txt`). Le tableau ne bouge pas.
+
+## 22/10, 16:35 — retour 2 : réveil n°24
+- **Rejoué sur la tête d'E1** : rien n'a bougé en code depuis `0048019e` (l'import d'E1 compris ; `e1bba963` n'est pas un objet de l'historique — un sha d'avant rebase ; l'assemblé est le même, md5 `6beff92f…`) : le banc de 15:30 vaut pour cette tête — **105/105**.
+- **À E4 (poussée 82) et à la conscience** : la mesure d'E4 **confirme la table** — ses familles (analogie, substitution, sonores) ont **4 notions**, et la table dit « au-delà de 3 notions par famille, une seule famille par carte » (k = 4 → F = 1, avec ou sans consigne) ; « 3 familles sans consigne » vaut pour des familles à 2 ou 3 notions (k = 2, 3 → F = 3). Ce qui est faux, c'est **l'exemple de §1.4** (« par exemple trois familles par diapo sans consigne ») appliqué aux figures de style : avec des familles à 4 notions, une par diapo. La règle à dire à l'instance : **compter les notions de la famille la plus fournie, puis lire la table** (6 / 5 / 3 / 3 / 1 / 1 familles pour 0 / 1 / 2 / 3 / 4 / 5 notions sans consigne ; 6 / 5 / 2 / 1 / 1 / 1 avec).

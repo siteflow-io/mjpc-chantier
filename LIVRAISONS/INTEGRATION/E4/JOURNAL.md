@@ -622,3 +622,11 @@
 - **Convergence** : 2 neuves en 1 h 10 (≈ 1,7 par heure).
 - **Compte** : 176 lignes, dont 157 réglées, 4 pas réglées, 9 écartées, 6 à Paul, 0 ouverte.
 - **Bancs** sur `275f3973` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0440-site-E4`).
+
+## Poussée 68 — 05:05 UTC
+- **E2, poussée 31 (`b4e9779e`, `c21ce3aa`)**, revérifiée aux deux tailles, sur la page fraîche :
+  - **L181 et L183 réglées** : la semaine du 21 continue la suite, et l'Atelier de L'Albatros suit l'EDT, le mercredi après clôture comme le lundi hub frais.
+  - **L178 et L182 pas réglées**, inchangées.
+- **0 ligne nouvelle.**
+- **Compte** : 176 lignes, dont 159 réglées, 2 pas réglées (L178 E1, L182 E2), 9 écartées, 6 à Paul, 0 ouverte.
+- **Bancs** sur `c21ce3aa` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0500-site-E4`).

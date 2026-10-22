@@ -138,7 +138,7 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
 - **Le réveil n°13** (A31, contrat §12.18) : l'heure n de l'atelier est celle de l'EDT — une heure jouée porte sa date (« jouée »), l'heure de « Lancer » sa case, les suivantes leurs prochaines cases ; le choix d'Entrée surligné (celui du survol) ; « Envoyer vers… » compte les heures de chaque séance.
 - **E4, 03:30** (A32) : une heure close dans la page est « jouée » dans l'atelier dès la clôture, sans recharger.
 - **Ouvert chez E2 — la ligne 177** : le mercredi, `dr_heuresDeLaClasse`, la prochaine heure de « Lancer » et les cases de l'EDT ne donnent pas encore la même suite ; l'atelier suit `dr_heuresDeLaClasse`.
-- **Dernier passage (poussée 21, `bdc496e5`, sorties `0412`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 201 / 0 ; le grave 110 tient de bout en bout (A26).
+- **Dernier passage (poussée 21, `e579ce78`, sorties `0433`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 202 / 0 ; le grave 110 tient de bout en bout (A26).
 
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :

@@ -380,6 +380,11 @@ dire(''); dire('B15 — en classe, retoucher dans l\'onglet Atelier : la copie d
     const ec = depuis(await s.ecrits(), n0).map(x => x.replace(/\/site\/3e\/chapitres\/0\/seances\/0\/deroule_joue\/3E Charles de Gaulle/, 'C'));
     const hub = await s.hub(); const copie = ((((hub.site['3e'].chapitres[0].seances[0].deroule_joue || {})[CLASSE] || {}).ecrans) || []);
     pas('B15', at && ec.includes('PUT C/ecrans') && copie.some(e => /retouché dans l'Atelier \(B15\)/.test(e.act || '')) && !ec.some(x => /^PUT C\/(etat|journal)$/.test(x)) ? 'ok' : 'ÉCHEC', 'l\'onglet Atelier ouvert en classe : la retouche part dans `C/ecrans` en moins de 3 s ; ni `C/etat` ni `C/journal` pendant l\'Atelier (son `S` n\'est pas celui de la classe)', JSON.stringify({ atelier: at, ec }));
+    if (await p.$('#mur .p8-ecrire')) { await p.click('#mur .p8-ecrire'); await p.keyboard.type('Retouche de l Atelier (B15).'); await p.keyboard.press('Escape'); await s.attendre(800); }   /* le geste d'E4 (ligne 150) : un texte écrit dans l'Atelier, en classe */
+    await p.evaluate(() => { const b = document.getElementById('ong-pilotage'); if (b) b.click(); }); await s.attendre(1200);
+    await p.click('#dr-clore'); await s.attendre(500); await p.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="5"]'); if (e) e.click(); }); await s.attendre(400);
+    const l5 = await p.evaluate(() => ((document.getElementById('fin') || {}).innerText || '').replace(/\s+/g, ' '));
+    pas('B15', /Retouche de l Atelier \(B15\)/.test(l5) && /Verser dans la trame/.test(l5) ? 'ok' : 'ÉCHEC', 'étape 5 : la retouche écrite dans l\'onglet Atelier pendant l\'heure est proposée au versement, diapo par diapo (réveil n°12, E4 ligne 150 ; C1 8.4 — avec `S.copie[h]` posé par E1)', l5.slice(l5.indexOf('Diapos modifiées'), l5.indexOf('Diapos modifiées') + 260));
     pas('B15', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
 

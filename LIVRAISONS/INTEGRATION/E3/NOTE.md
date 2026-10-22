@@ -75,7 +75,7 @@ J'ai appliqué deux outils : `E3/outils/brancher-index.py`, puis `E3/outils/rela
   - **T14** : le bloc écrit en classe, le rechargement, la reprise.
   - **T15** : la copie d'un autre jour, la retouche de la veille au mur.
 - Chaque trouvaille d'un relecteur a reçu sa garde, vérifiée rouge sur l'ancien assemblé et verte sur le nouveau.
-- **Dernier passage : 99 vérifications, 0 échec** (T16 compris, sur `69f8e1c5`/`82f70c97` d'E1 — voir le journal) ; avant T16 : 94/94 (`sorties/2239/`).
+- **Dernier passage : 105 vérifications, 0 échec** (T16 et T17 compris, sur `f7c3f2ab` d’E1) ; avant T17 : 99/99 (T16 compris, sur `69f8e1c5`/`82f70c97` d'E1 — voir le journal) ; avant T16 : 94/94 (`sorties/2239/`).
 - **Le banc de la conscience** (`banc.sh`) est vert à chaque passage depuis 15:30 : collisions 0, parcours et mode test verts, K1-K13 108/0.
 - **Captures** : `E3/captures/site/` (T1 à T15), et `E3/captures/` (la maquette, l'essai du module avant E1-a).
 

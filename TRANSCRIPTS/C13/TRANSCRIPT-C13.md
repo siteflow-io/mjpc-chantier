@@ -2481,3 +2481,20 @@ Réponse de la conscience (15:58), mot pour mot :
 
 22/10/2026 15:58
 MEMO
+
+## TOUR 120 — RÉVEIL N°25 (22/10/2026, 16:55 → 17:06 ; déclenché par la tâche planifiée)
+
+Aucun message de Paul depuis 14:19 (la proposition du point 268 — la question du bilan sans réponse attendue — reste posée).
+
+Mesuré (16:55-17:04) : tête `integration` = `69bfb051` ; poussées depuis `4af2e9f0` : E2 `cd6fb6d3` (16:04 : une case « fil langue » joue le premier chapitre du niveau dont `ch.fil` vaut « langue », publié pour la classe, non fini — `edtChapitreEnCours`, `index.html` l. 17769-17781 ; **rien n'écrit `fil` sur un chapitre aujourd'hui**, d'où « aucune séance prête · fil « langue » » au mercredi) ; E4 `e4d0cfed`, `dcb889b1` (16:06-16:09 : la carte mesurée avec EB Garamond chargée — 3 et 2 familles par diapo encore refusées par « À régler » (traits à travers un mot), 1 famille tient ; la police explique une part de l'écart, pas tout) ; E1 `aede3c85`, `69bfb051` (16:19-16:40 : **L187 réglée** — « À régler » compte et liste toutes les séances du chapitre, « Ouvrir la diapo » ouvre la bonne séance ; A34 rouge avant 18 / vert après 102 ; E1 253/0) ; E3 `bb4f57ee` (16:30 : rien en code depuis `0048019e` (sur son banc) ; la mesure d'E4 confirme la table — k = 4 notions par famille → une famille par carte ; l'exemple de §1.4 était faux). Banc sur `69bfb051` (`banc-1655`) : collisions 0 / 0 / 0, parcours P0-P12 vert ×2, K 108 / 0 ; assemblé 2 296 879 o, md5 `040d446ffe0498df930891a4a01b6259` (épreuves, pièces T120). E4 NOTE §10 : « 0 pas réglée (`a61fe923`) » (pas encore réécrit : L187 à revérifier) → le candidat au promeus reste `ef674d4b`. Prompt **v0.5** (`"fil": "langue"` à la racine du chapitre, §1.1 et §3.3 ; la carte des figures de style à une famille par diapo). Relances r25 (E1 : `fil` accepté et écrit à l'import, un contrôle A33 ; E4 : revérifier L187 et réécrire le signal sur `69bfb051` ; E2, E3 : rien). Audit §0 et §6 mis à jour. Réveil n°26 programmé à 18:05.
+
+Réponse de la conscience (17:06), mot pour mot :
+
+270. **Le déroulé** : la dernière ligne (la liste « À régler » qui ne comptait que la séance ouverte) est réglée par E1, banc vert dessus. Il manque le mot d'E4 (sa revérification) pour que cette version devienne la candidate au promeus — sinon la candidate reste celle de 11:33. Dans les deux cas, c'est ton mot « promeus » qui déclenche.
+
+271. **Le prompt, version 0.5** : le fil « langue » a trouvé sa place — ton emploi du temps joue, sur les cases « fil langue », le premier chapitre marqué « fil : langue » ; il suffira que le JSON du chapitre de langue porte ce mot (E1 le fait accepter à l'import). Et pour ta carte des figures de style : une famille par diapo (tes familles ont quatre notions ; mesuré avec ta police).
+
+272. Reste à toi : le 268 (la question du bilan sans réponse écrite — « ok » ou ta règle), puis la « Question-bilan » de ta séance 3 ; le mot « promeus » ; la relecture du prompt quand tu veux.
+
+22/10/2026 17:06
+MEMO

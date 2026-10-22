@@ -241,3 +241,4 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
   - La pente des réglées est plus forte que celle des nouvelles : 146 réglées à 01:00, contre 105 à 21:25.
   - Les heures « 02:40 » et « 03:10 » de la table sont des erreurs de date de ma part. Les passes ont eu lieu vers 23:45 et 00:10 UTC, sur les commits indiqués.
 
+- **01:45, sur `fa6ff3d4`** (poussée 28 d'E2) : **L165, L167, L170 réglées**. Pas réglées : L161, L164, L172, L173, L175. **2 lignes nouvelles** (l'infobulle de « Lancer », trois suites contradictoires le mercredi) ; le 3ᵉ point du relecteur est déjà L32. Convergence : **2 nouvelles en 40 min** (contre 4 aux trois passes d'avant). **Compte : 170 lignes, dont 149 réglées, 7 pas réglées, 8 écartées, 6 à Paul, 0 ouverte.**

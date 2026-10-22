@@ -551,3 +551,15 @@
   - La ligne 174 (deux diapos bilan dans la trame de la séance 1) part à Paul.
 - **La convergence, dans la NOTE §10** : 39 lignes nouvelles en 6 h 10, ≈ 6 par heure. Aucune grave depuis 20:50. Elles se concentrent dans deux familles : les dates et créneaux des heures, et les panneaux de l'Atelier.
 - **Correction de ma part** : deux passes de la table sont datées « 02:40 » et « 03:10 ». Ce sont en réalité ≈ 23:45 et ≈ 00:10 UTC ; je le note dans la NOTE.
+
+## Poussée 62 — 01:45 UTC
+- **Le conteneur a redémarré** vers 01:20. Le dépôt et l'espace de travail sont intacts, la veille est relancée.
+- **Revérifié sur `fa6ff3d4`** (poussée 28 d'E2), aux deux tailles :
+  - **réglées** : L165 (l'étape 5 dans l'ordre de l'heure), L167 et L170 (« Lancer » ne prend plus le créneau d'une autre classe) ;
+  - **pas réglées** : L161, L164, L172, L173, L175.
+- **Deux lignes nouvelles** :
+  - l'infobulle de « Lancer » nie la case de l'EDT (faible) ;
+  - le mercredi, le Pilotage, l'EDT et l'Atelier donnent trois suites différentes (moyen, la famille du §12.18).
+  - Le point « deux clés pour une classe » est déjà la ligne 32.
+- **Convergence** : 2 nouvelles à cette passe, contre 4 aux trois précédentes.
+- **Compte** : 170 lignes, dont 149 réglées, 7 pas réglées, 8 écartées, 6 à Paul, 0 ouverte.

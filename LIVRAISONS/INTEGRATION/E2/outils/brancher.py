@@ -189,6 +189,18 @@ snippet('edtGlisserDebut · glissé', "        +'n\\u2019ont pas encore été la
   "        +'n\\u2019ont pas encore été lancées, elles, se déplacent.');};\n    document.addEventListener('mousemove',edtMv);document.addEventListener('mouseup',edtUp);\n    return;\n  }\n  if(!c||c.nature!=='prevu')return;")
 snippet('case rienDePret · fil', "if(c.nature==='rienDePret')return '<div class=\"edt-b edt-b-vide\"><b>'+escapeHtml(c.classeMjpc)+'</b><i>aucune séance prête</i></div>';",
   "if(c.nature==='rienDePret')return '<div class=\"edt-b edt-b-vide\"><b>'+escapeHtml(c.classeMjpc)+'</b><i>aucune séance prête'+(c.fil?' \\u00b7 fil \\u00ab\\u00a0'+escapeHtml(c.fil)+'\\u00a0\\u00bb':'')+'</i></div>';   /* [E2] réveil n°13 (E4 ligne 175) : la case dit pourquoi — son fil n'a pas de séance publiée (la file de la classe est par fil) */")
+# ── réveil n°16 (E4 lignes 177, 179, 180, 181 ; §12.18) : une case passée sans heure jouée ne consomme pas la file — la séance continue à la prochaine case de la classe ;
+#    avant, l'heure 3/3 restait au mardi passé et le vendredi prenait la séance suivante : l'EDT, l'Atelier et « Lancer » donnaient trois suites ──
+snippet('edtProjeter · passée', "      if(!f||!f.seances.length){ cel.nature='rienDePret'; cellules[cle]=cel; continue; }\n",
+  "      var edtFinC=String(c.creneau).split('-')[1]||'', edtAuj=edtAujourdhui();\n"
+  "      if(iso<edtAuj||(iso===edtAuj&&edtFinC&&edtFinC<=edtHeureCourante())){ cel.nature='passee'; cellules[cle]=cel; continue; }   /* [E2] réveil n°16 (§12.18) : passée sans être jouée — elle ne prend aucune heure de la file */\n"
+  "      if(!f||!f.seances.length){ cel.nature='rienDePret'; cellules[cle]=cel; continue; }\n")
+snippet('case passée', "  if(c.nature==='rienDePret')return '<div class=\"edt-b edt-b-vide\">",
+  "  if(c.nature==='passee')return '<div class=\"edt-b edt-b-vide\" title=\"Case passée sans heure jouée : la séance n\\u2019y a pas eu lieu, elle continue à la case suivante de la classe.\"><b>'+escapeHtml(c.classeMjpc)+'</b><i>passée \\u00b7 pas jouée</i></div>';   /* [E2] réveil n°16 (§12.18) */\n"
+  "  if(c.nature==='rienDePret')return '<div class=\"edt-b edt-b-vide\">")
+snippet('modale passée', "    } else if(c.nature==='rienDePret'){\n      h+='<p class=\"edt-p\">Aucune séance prête pour cette classe.</p>'",
+  "    } else if(c.nature==='passee'){\n      h+='<p class=\"edt-p\">Case passée sans heure jouée : la séance n\\u2019y a pas eu lieu. Elle continue à la case suivante de la classe \\u2014 aucune heure n\\u2019est perdue dans la file.</p>';   /* [E2] réveil n°16 (§12.18) */\n"
+  "    } else if(c.nature==='rienDePret'){\n      h+='<p class=\"edt-p\">Aucune séance prête pour cette classe.</p>'")
 # ── ce qui tombe (contrat §6, colonne E2) ──
 for nom in ['atDrJouerClic', 'atDrClore', 'atDrCloreFin', 'atDrClotureModale', 'atDrSuiviAppliquer',
             'atVecuAfficher', 'atVecuDemarrer', 'atVecuEntrer', 'atVecuSortir', 'atVecuMinutes', 'atVecuEcrire',

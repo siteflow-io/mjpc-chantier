@@ -423,8 +423,12 @@ function dr_prepCahierVoir(){ try { if (!S.preparation) return; const e = ecran(
 function dr_prepCahierRendre(){ try { const p = S._prepCahier; if (!p) return; S._prepCahier = null; if (parDiapo[p.k]) parDiapo[p.k].nDev = p.nDev; if (p.vu == null) delete vuMax[p.k]; else vuMax[p.k] = p.vu; } catch (x) {} }   /* « Où on en est » se redit tout de suite en entrant et en sortant de la préparation */
 /* contrat §12.18 (réveil n°13, E4 ligne 172, avec E1) : les heures de la séance pour une classe, telles que l'EDT les voit — une heure jouée porte sa date (« jouée »),
    une heure à venir la date de sa prochaine case de la classe à l'EDT ; même numéro que « Lancer … heure n/N ». Rend [{ n, iso, creneau, l, jouee }] — pour l'entête de l'Atelier (E1). */
+function dr_jourCreneauEnClair(iso, creneau){ const d = new Date(iso + 'T12:00:00'); return DR_JOURS[d.getDay()] + ' ' + d.getDate() + ' ' + DR_MOIS[d.getMonth()] + ', ' + String(creneau).split('-')[0].replace(':', ' h '); }   /* comme `edtProchainesDe` */
+function dr_joueeIci(H, clos){ if (!H) return; DR_CL.joueesIci = DR_CL.joueesIci || {}; DR_CL.joueesIci[H] = !!(clos || DR_CL.joueesIci[H]); }
 function dr_heuresDeLaClasse(slug){ try { slug = slug || dr_classeProposee(); const nom = dr_nomClasse(slug); const ec = AT.edChap, sce = chapitresData[ec.level][ec.chnum].seances[ATVUES.snum]; const out = [];
-    Object.keys(sce.deroule_joue || {}).forEach(sl => { const b = sce.deroule_joue[sl]; if (!b || !(sl === slug || b.classe === nom)) return; Object.keys(b.heures || {}).forEach(k => { const m = /^(\d{4}-\d\d-\d\d)_(\d\d)h(\d\d)-(\d\d)h(\d\d)/.exec(k); if (m) out.push({ iso: m[1], creneau: m[2] + ':' + m[3] + '-' + m[4] + ':' + m[5], jouee: true, clos: !!(b.heures[k] || {}).clos }); }); });
+    const vues = {}; const pousser = (k, clos) => { const m = /^(\d{4}-\d\d-\d\d)_(\d\d)h(\d\d)-(\d\d)h(\d\d)/.exec(k); if (!m) return; const x = vues[m[1] + m[2] + m[3]]; if (x) { x.clos = x.clos || clos; return; } out.push(vues[m[1] + m[2] + m[3]] = { iso: m[1], creneau: m[2] + ':' + m[3] + '-' + m[4] + ':' + m[5], jouee: true, clos }); };
+    Object.keys(sce.deroule_joue || {}).forEach(sl => { const b = sce.deroule_joue[sl]; if (!b || !(sl === slug || b.classe === nom)) return; Object.keys(b.heures || {}).forEach(k => pousser(k, !!(b.heures[k] || {}).clos)); });
+    try { const pre = dr_cheminB() + '/deroule_joue/' + slug + '/heures/'; Object.keys(DR_CL.joueesIci || {}).forEach(H => { if (H.startsWith(pre)) pousser(H.slice(pre.length), DR_CL.joueesIci[H]); }); } catch (e) {}   /* réveil n°16 (E4 ligne 178) : l'heure lancée ou close dans cette page est jouée tout de suite — la copie de la séance en page ne l'a qu'après un rechargement */
     out.sort((a, b) => (a.iso + a.creneau).localeCompare(b.iso + b.creneau)); let N = 1; try { N = edtHeuresPour(sce, null) || 1; } catch (e) {}
     const auj = new Date(); const iso0 = auj.getFullYear() + '-' + String(auj.getMonth() + 1).padStart(2, '0') + '-' + String(auj.getDate()).padStart(2, '0'); const titre = sce.title || sce.titre || '';
     let cs = []; try { cs = Object.values(edtProjeter(iso0, 21) || {}).filter(c => c && c.classeMjpc === nom && c.nature === 'prevu' && c.titre === titre).sort((a, b) => (a.iso + a.creneau).localeCompare(b.iso + b.creneau)); } catch (e) {}   /* les cases de CETTE séance pour cette classe, avec leur heure n/N : la même projection que l'EDT */
@@ -723,7 +727,7 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   try { chChargerTaxo(() => {}); } catch (e) {}   /* [8.67.1] le T-5 nomme les notions, jamais leurs codes */
   try { if (copie && typeof dr_jouerCopie === 'function') dr_jouerCopie(copie.ecrans); } catch (e) {}   /* le socle joue la copie de la classe (E1) */
   dr_heurePoser(heure, AT_DR_COURS);
-  DR_CL.ouverte = { C: dr_cheminC(), H: dr_cheminH(), creneau };   /* l'adresse de CETTE heure, gardée pour sa clôture (même si la page change de séance ou de jour) */
+  DR_CL.ouverte = { C: dr_cheminC(), H: dr_cheminH(), creneau }; dr_joueeIci(DR_CL.ouverte.H, false);   /* l'adresse de CETTE heure, gardée pour sa clôture (même si la page change de séance ou de jour) */
   S.closPar = null; S.finReel = null; S.debutReel = Date.now();
   try { $('ecran-edt').classList.remove('on'); } catch (e) {}   /* la porte se referme (le clic de l'EDT simulé le faisait) */
   dr_coursEcrire();   /* le pointeur d'abord : la bannière de reprise et le tableau distant en dépendent, même si le rendu bute */
@@ -789,7 +793,7 @@ function dr_reprendre(cb){
     try { dr_coursEcrire(); } catch (e) {}
     tout(); dr_copieAuto(true);
     try { atInfo('Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus.'); } catch (e) {}
-    DR_CL.ouverte = { C, H: ch, creneau: dr_creneauDuCours(AT_DR_COURS) }; dr_absentsDeLaCase();
+    DR_CL.ouverte = { C, H: ch, creneau: dr_creneauDuCours(AT_DR_COURS) }; dr_joueeIci(ch, false); dr_absentsDeLaCase();
     if (cb) cb(true);
   }))));
 }
@@ -815,7 +819,7 @@ function dr_cloreFin(){
   if (C) { dr_ecrire(C + '/journal', jr, 'Le journal de l’heure, à la clôture', () => {}); dr_ecrire(C + '/etat', et, 'L’état de l’heure, à la clôture', () => {}); }
   [DR_CL.jT, DR_CL.eT, DR_CL.tT, DR_CL.cT].forEach(clearTimeout);
   try { window.AT_DR_DERNIER = { level: (AT.edChap || {}).level, chnum: (AT.edChap || {}).chnum, snum: ATVUES.snum, classe: AT_DR_COURS.classeSlug, ts: Date.now() }; } catch (e) {}
-  DR_CL.cleClose = ch; DR_CL.creneauClos = dr_creneauDuCours(AT_DR_COURS); DR_CL.closVu = DR_CL.closVu || {}; DR_CL.closVu[ch] = true; try { const hu = document.getElementById('hou'); if (hu) hu.textContent = dr_entete(S.heure) + ' · close'; } catch (e) {}   /* réveil n°6 (E4 ligne 119) : l'entête dit que l'heure est close */   /* la clé de l'heure close dans cette page : « ▶ Lancer » ne la repropose pas */
+  DR_CL.cleClose = ch; dr_joueeIci(ch, true); DR_CL.creneauClos = dr_creneauDuCours(AT_DR_COURS); DR_CL.closVu = DR_CL.closVu || {}; DR_CL.closVu[ch] = true; try { const hu = document.getElementById('hou'); if (hu) hu.textContent = dr_entete(S.heure) + ' · close'; } catch (e) {}   /* réveil n°6 (E4 ligne 119) : l'entête dit que l'heure est close */   /* la clé de l'heure close dans cette page : « ▶ Lancer » ne la repropose pas */
   dr_coursFermer();
   AT_DR_REGIME = 'prep';
 }
@@ -984,7 +988,7 @@ function dr_edtReprendre(cle){
    l'EDT du moment pour ce niveau (aujourd'hui, l'heure en cours ou la prochaine) si c'est bien la séance ouverte ; sinon la première classe
    du niveau, le créneau qui contient maintenant (sinon le 3e), le début proposé, l'heure n de la classe et N = 1. Le bouton le dit. ─── */
 function dr_proposer(){
-  const niv = (AT.edChap || {}).level; const auj = new Date(); const iso = auj.getFullYear() + '-' + String(auj.getMonth() + 1).padStart(2, '0') + '-' + String(auj.getDate()).padStart(2, '0'); const m = dr_maintenantMn();
+  const niv = (AT.edChap || {}).level; const auj = new Date(); const iso = auj.getFullYear() + '-' + String(auj.getMonth() + 1).padStart(2, '0') + '-' + String(auj.getDate()).padStart(2, '0'); const m = dr_maintenantMn(); let celAutre = null;
   try {
     const cel = Object.values(edtProjeter(iso, 1) || {}).filter(c => c && c.classeMjpc && edtNiveauDe(c.classeMjpc) === niv && (c.nature === 'prevu' || c.nature === 'jouee') && dr_mn(String(c.creneau).split('-')[1]) > m)
       .sort((a, b) => String(a.creneau).localeCompare(String(b.creneau)))[0];
@@ -993,10 +997,12 @@ function dr_proposer(){
       let N = cel.sur; if (!N) { try { N = edtHeuresPour(chapitresData[AT.edChap.level][AT.edChap.chnum].seances[ATVUES.snum], cel.creneau); } catch (e) {} }   /* relecteur neuf n°3 (7) : une case jouée ne porte pas `sur` — « heure 2/1 » */
       const hx = (dr_heuresDeLaClasse(sl) || []).find(x => x.iso === iso && x.creneau === cel.creneau);   /* réveil n°14 : la source unique de l'heure n/N (§12.18) — la même que l'Atelier */
       return { classeSlug: sl, classeNom: dr_nomClasse(sl), creneau: cel.creneau, debut: dr_debutPropose(cel.creneau), heure: (hx && hx.n) || cel.heure || dr_heureProposee(sl, cel.creneau), sur: (hx && hx.sur) || Math.max(1, N || 1, cel.heure || 1), depuis: 'edt', clos: !!(cel.nature === 'jouee' && cel.clos) }; }
+    if (cel && cel.nature === 'prevu' && cel.titre && dr_mn(String(cel.creneau).split('-')[0]) <= m) celAutre = cel;   /* réveil n°16 (E4 ligne 180) : la case de maintenant est à une autre séance — « Lancer » le dit, jamais « aucune case maintenant » */
   } catch (e) {}
   const sl = dr_classeProposee(); let cr = dr_creneauPropose();
   /* réveil n°13 (E4 lignes 167, 170) : hors d'une case de la classe, jamais le créneau d'une autre classe (le repli sur les créneaux du site, `AT_EDT`) — l'EDT chargé, « Lancer » se grise et nomme la prochaine heure de la classe */
-  if (dr_edtPret()) { const nx = (edtProchainesDe(sl, 1) || [])[0]; return { classeSlug: sl, classeNom: dr_nomClasse(sl), creneau: nx ? nx.creneau : cr, debut: nx ? String(nx.creneau).split('-')[0] : dr_debutPropose(cr), heure: 0, sur: 0, depuis: 'aucune', prochaine: nx || null }; }
+  if (dr_edtPret()) { const hs = (dr_heuresDeLaClasse(sl) || []).find(x => !x.jouee && x.iso && x.creneau); const nx = hs ? { iso: hs.iso, creneau: hs.creneau, l: dr_jourCreneauEnClair(hs.iso, hs.creneau), n: hs.n, sur: hs.sur } : null;   /* réveil n°16 (E4 lignes 177, 180 ; §12.18) : la prochaine heure de CETTE séance, la case que l'EDT lui donne (son fil) — avant, la prochaine case de la classe, quel qu'en soit le fil (« mercredi 16, 10 h 07 », la case du fil « langue ») */
+    return { classeSlug: sl, classeNom: dr_nomClasse(sl), creneau: nx ? nx.creneau : cr, debut: nx ? String(nx.creneau).split('-')[0] : dr_debutPropose(cr), heure: 0, sur: 0, depuis: 'aucune', prochaine: nx, maintenant: celAutre && celAutre.classeMjpc === dr_nomClasse(sl) ? celAutre : null }; }
   try { const z = document.getElementById('dr-zone'); if (z && z.offsetParent !== null && AT.edChap && AT.edChap.level) dr_edtAssurer(); } catch (e) {}   /* l'EDT pas encore lu : on le lit — seulement le Pilotage à l'écran, une séance ouverte (la lecture de l'EDT peut mettre la grille à niveau : jamais au chargement de la page, avant que le mode de la session soit posé — K15-test, 01:19) ; d'ici là, le repli d'avant */
   const hp = dr_heureProposee(sl, cr); let N = hp; try { N = edtHeuresPour(chapitresData[AT.edChap.level][AT.edChap.chnum].seances[ATVUES.snum], cr); } catch (e) {}   /* N par la même fonction que la case */
   return { classeSlug: sl, classeNom: dr_nomClasse(sl), creneau: cr, debut: dr_debutPropose(cr), heure: hp, sur: Math.max(1, N, hp), depuis: 'jour' };
@@ -1007,7 +1013,7 @@ setInterval(() => { try { const b = document.getElementById('dr-lancer'); if (!b
   if (DR_CL.closVu[cleP] === true) p.clos = true;
   if (p.clos && !(S.close && DR_CL.cleClose)) { DR_CL.cleClose = cleP; DR_CL.creneauClos = p.creneau; }   /* relecteur neuf n°3 (7) : une page rechargée sait par la case de l'EDT que l'heure de ce créneau est close */
   if ((S.close || p.clos) && DR_CL.cleClose && cleP === DR_CL.cleClose) { const t2 = '▶ Lancer — l’heure de ' + p.creneau + ' est close'; if (b.textContent !== t2) { b.textContent = t2; b.disabled = true; b.title = 'L’heure de ce créneau est close : elle ne se rouvre pas. L’heure suivante de la séance se lance depuis sa case de l’emploi du temps (son créneau à elle).'; } return; }   /* réveil n°3 : le geste fait ce que le bouton dit, ou il se grise avec sa raison */
-  if (p.depuis === 'aucune' && !(S.lancee && !S.close)) { const t4 = '▶ Lancer — ' + (p.prochaine ? 'prochaine heure : ' + p.prochaine.l : 'aucune heure de la classe'); const ti4 = 'Aucune case de ' + p.classeNom + ' maintenant dans l’emploi du temps : ' + (p.prochaine ? 'sa prochaine heure est ' + p.prochaine.l + ' — elle se lance depuis sa case.' : 'aucune heure à venir n’est connue.') + ' Le Pilotage ne lance jamais sur le créneau d’une autre classe.'; if (b.textContent !== t4 || b.title !== ti4 || !b.disabled) { b.textContent = t4; b.title = ti4; b.disabled = true; } return; }
+  if (p.depuis === 'aucune' && !(S.lancee && !S.close)) { const t4 = '▶ Lancer — ' + (p.prochaine ? 'prochaine heure : ' + p.prochaine.l : 'aucune heure de la classe'); const ti4 = (p.maintenant ? 'La case de maintenant (' + p.maintenant.creneau + ') de ' + p.classeNom + ' est à la séance « ' + p.maintenant.titre + ' », heure ' + p.maintenant.heure + '/' + p.maintenant.sur + ', d’après l’emploi du temps : cette séance-ci ' : 'Aucune case de ' + p.classeNom + ' maintenant dans l’emploi du temps : cette séance ') + (p.prochaine ? 'vient à sa case du ' + p.prochaine.l + (p.prochaine.n ? ' (heure ' + p.prochaine.n + '/' + p.prochaine.sur + ')' : '') + ' — elle se lance depuis sa case.' : 'n’a aucune case à venir connue.') + ' Le Pilotage ne lance jamais sur le créneau d’une autre classe ni d’une autre séance.'; if (b.textContent !== t4 || b.title !== ti4 || !b.disabled) { b.textContent = t4; b.title = ti4; b.disabled = true; } return; }
   if (S.close && DR_CL.cleClose && p.depuis !== 'edt') { const nx = (edtProchainesDe(p.classeSlug, 1) || [])[0]; const t3 = '▶ Lancer — l’heure est close';   /* réveil n°5, A4-6 : après la clôture, jamais un créneau hors de la grille de la classe (avant : « 10:07-11:02 », qui n'existe pas le lundi) */
     const ti = 'L’heure de ' + (DR_CL.creneauClos || 'ce créneau') + ' est close : elle ne se rouvre pas. ' + (nx ? 'La prochaine heure de ' + p.classeNom + ' : ' + nx.l + ' — elle se lance depuis sa case de l’emploi du temps.' : 'Aucune autre heure de ' + p.classeNom + ' aujourd’hui dans l’emploi du temps.');
     if (b.textContent !== t3 || b.title !== ti || !b.disabled) { b.textContent = t3; b.disabled = true; b.title = ti; } return; }

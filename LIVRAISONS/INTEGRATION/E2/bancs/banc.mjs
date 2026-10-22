@@ -394,7 +394,7 @@ dire(''); dire('B15 — en classe, retoucher dans l\'onglet Atelier : la copie d
 
 // ── B16 · hors d'une case de la classe, « Lancer » ne prend jamais le créneau d'une autre classe (réveil n°13, E4 lignes 167, 170) ──
 dire(''); dire('B16 — lundi 10:00 et mercredi 08:30, sans case de la 3E : « Lancer » gris, la prochaine heure de la classe');
-for (const [quand, attendu] of [['2026-09-14T10:00:00+02:00', /mardi 15 septembre/], ['2026-09-16T08:30:00+02:00', /mercredi 16 septembre/]]) {
+for (const [quand, attendu] of [['2026-09-14T10:00:00+02:00', /mardi 15 septembre/], ['2026-09-16T08:30:00+02:00', /vendredi 18 septembre/]]   /* réveil n°16 (E4 ligne 177) : le mercredi, la prochaine heure de la séance (vendredi 18) — avant « mercredi 16 », la case du fil « langue » */) {
   const s = await session({ quand }); const p = s.page;
   if (!s.integre) { pas('B16', 'absent', 'le site intégré'); await s.ctx.close(); continue; }
   await p.click('#tprof-btn'); await s.attendre(500); await p.evaluate(() => atelierOuvrir()); await s.attendre(1000); await clicTexte(p, 'button,[onclick]', "atOnglet('chapitres')"); await s.attendre(800);
@@ -411,6 +411,32 @@ for (const [quand, attendu] of [['2026-09-14T10:00:00+02:00', /mardi 15 septembr
     const bt = await p.evaluate(() => { const b = document.getElementById('dr-lancer'); const hx = (dr_heuresDeLaClasse('3E Charles de Gaulle') || []).find(x => x.iso === '2026-09-14'); return b ? { dis: b.disabled, txt: b.textContent, title: b.title, hx } : null; });
     pas('B16', bt && !bt.dis && /08:57-09:52 · heure 2\/3/.test(bt.txt) && /la case de ton emploi du temps/.test(bt.title) && bt.hx && bt.hx.n === 2 ? 'ok' : 'ÉCHEC', 'lundi 09:00, dans la case de la 3E : « Lancer … heure 2/3 », l\'infobulle dit « la case de ton emploi du temps » ; l\'heure n est celle de `dr_heuresDeLaClasse` (réveil n°14, E4 ligne 176 ; §12.18)', JSON.stringify(bt));
     pas('B16', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+
+// ── B17 · une seule suite (§12.18) : l'EDT, l'Atelier (`dr_heuresDeLaClasse`) et « Lancer » (réveil n°16, E4 lignes 177-181) ──
+dire(''); dire('B17 — une seule suite : les cases passées sans heure jouée ne prennent rien ; « Lancer » vise la case de la séance ; l\'heure close est jouée tout de suite');
+const ouvrirPilotage = async (s, snum) => { const p = s.page; await p.click('#tprof-btn'); await s.attendre(500); await p.evaluate(() => atelierOuvrir()); await s.attendre(1000); await clicTexte(p, 'button,[onclick]', "atOnglet('chapitres')"); await s.attendre(800);
+  if (!(await clicTexte(p, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(p, 'button,[onclick]', 'Modifier'); await s.attendre(1500); if (snum) await p.evaluate(n => { ATVUES.snum = n; }, snum);
+  await p.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]') || document.getElementById('ong-pilotage'); if (b) b.click(); }); await s.attendre(8000); };
+const mesurer = p => p.evaluate(() => { const b = document.getElementById('dr-lancer'); const cel = edtProjeter(edtLundiDe(edtAujourdhui()), 5); const c = {}; Object.values(cel).filter(x => x.classeMjpc === '3E Charles de Gaulle').forEach(x => { c[x.iso.slice(5)] = x.nature + (x.titre ? ' ' + x.titre.slice(0, 12) : '') + (x.heure ? ' ' + x.heure + '/' + x.sur : ''); });
+  return { dis: b && b.disabled, txt: b && b.textContent, title: b && b.title, h: dr_heuresDeLaClasse('3E Charles de Gaulle').map(x => ({ n: x.n, iso: x.iso, jouee: !!x.jouee, clos: !!x.clos })), c }; });
+{ const s = await session({ quand: '2026-09-16T08:30:00+02:00' });
+  if (!s.integre) pas('B17', 'absent', 'le site intégré');
+  else { await ouvrirPilotage(s, 0); const m = await mesurer(s.page); const h2 = m.h.find(x => !x.jouee) || {};
+    pas('B17', /passee/.test(m.c['09-14']) && /passee/.test(m.c['09-15']) && /Poésie.* 2\/3/.test(m.c['09-18']) && h2.iso === '2026-09-18' && h2.n === 2 && m.dis && /vendredi 18 septembre/.test(m.txt) ? 'ok' : 'ÉCHEC', 'mercredi 08:30, hub frais : l\'EDT dit le lundi 14 et le mardi 15 « passée », la Poésie 2/3 au vendredi 18 ; l\'Atelier H2 au vendredi 18 ; « Lancer » gris vers le vendredi 18 (E4 lignes 177, 179, 181)', JSON.stringify(m));
+    pas('B17', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+{ const s = await session({ quand: '2026-09-14T09:00:00+02:00' });
+  if (s.integre) { await ouvrirPilotage(s, 1); const m = await mesurer(s.page); const h1 = m.h[0] || {};
+    pas('B17', m.dis && /vendredi 18 septembre/.test(m.txt) && /La case de maintenant \(08:57-09:52\)/.test(m.title) && !/Aucune case/.test(m.title) && h1.iso === '2026-09-18' && h1.n === 1 && /Albatros|L'Albatros|Étude de text/.test(m.c['09-18']) ? 'ok' : 'ÉCHEC', 'lundi 09:00, la séance « L\'Albatros » montrée : « Lancer » gris vers sa case (vendredi 18, heure 1/3, la même que l\'EDT), l\'infobulle nomme la séance de la case de maintenant, jamais « aucune case » (E4 ligne 180)', JSON.stringify(m));
+    pas('B17', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+{ const s = await session({ quand: '2026-09-14T09:00:00+02:00' });
+  if (s.integre && (await lancerUnClic(s)) === 'ok') { await devoiler(s, 2); await s.page.click('#dr-clore'); await s.attendre(400); await s.page.click('#f-clore'); await s.attendre(300); if (await s.page.evaluate(() => document.getElementById('garde-clore').classList.contains('on'))) { await s.page.click('#gclore-oui'); } await s.attendre(2500);
+    const h = await s.page.evaluate(() => dr_heuresDeLaClasse('3E Charles de Gaulle').map(x => ({ n: x.n, iso: x.iso, jouee: !!x.jouee, clos: !!x.clos })));
+    const x = h.find(y => y.iso === '2026-09-14') || {};
+    pas('B17', x.jouee && x.clos && x.n === 2 && h.filter(y => y.iso === '2026-09-14').length === 1 ? 'ok' : 'ÉCHEC', 'lundi 09:00, l\'heure lancée puis close : `dr_heuresDeLaClasse` la dit « H2 · jouée, close » sans rechargement, une seule fois (E4 ligne 178)', JSON.stringify(h));
+    pas('B17', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
 
 // ── B5 · deux créneaux = deux clés ──

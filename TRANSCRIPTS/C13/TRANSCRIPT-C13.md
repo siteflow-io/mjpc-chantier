@@ -2091,3 +2091,23 @@ Réponse de la conscience (03:02), mot pour mot :
 
 22/10/2026 03:02
 MEMO
+
+## TOUR 99 — RÉVEIL N°14 (22/10/2026, 04:03 → 04:11 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (04:03, 04:04, 04:10).
+
+Mesuré :
+- `integration` à `17f4444b` (E4, 03:54). Depuis le réveil n°13 : **E2** (poussée 28, 03:10-03:44 : « Lancer » ne prend jamais le créneau d'une autre classe — gris, la prochaine heure de la classe, garde B16 ; l'EDT prêt avec les chapitres du niveau ; l'étape 5 dans l'ordre ; `dr_heuresDeLaClasse` posée pour E1 (§12.18) ; l'EDT lu pour « Lancer » au Pilotage affiché seulement — K15-test ; ligne 175 mesurée : le mercredi est le fil « langue » sans chapitre publié, la case le dit ; réveil n°13 marqué) ; **E3** (réveil n°13 lu, banc 105/105) ; **E4** (poussées 62-63 : 165, 167, 170 réglées sur `fa6ff3d4` ; deux lignes neuves — 176 faible E2, l'infobulle de « Lancer » ; 177 moyen E1/E2, le mercredi trois suites différentes ; la convergence mesurée : ≈ 6 neuves par heure sur six heures, 2 à la dernière passe, aucune grave depuis 20:50 ; le conteneur d'E4 a redémarré vers 03:20 sans perte ; **NOTE §10 : 170 lignes, 149 réglées, 7 pas réglées, 8 écartées, 6 à Paul, 0 ouverte**) ; **E1 : rien depuis 03:02**, réveil n°13 non marqué — il tient 5 des 7 lignes.
+- **Mon banc sur `17f4444b`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. L'assemblé commis : 2 277 035 octets, md5 `c3a2930be52e8b768bb6688f0096c330`. Épreuves `banc-sur-integration-17f4444b.txt`, `sur-integration-17f4444b-v22.txt` ; captures `pieces/T99-P5-*.png`, `T99-P9-*.png`.
+- **Audit final mis à jour** (§0, §4, §6) : 7 lignes restent (une famille de quatre : §12.18, chez E1 par `dr_heuresDeLaClasse` ; 164, 173 chez E1 ; 176 chez E2 ; 175 à revérifier par E4 avec la lecture d'E2).
+- **Relances écrites (04:10)** : E1 — la famille §12.18 (172, 177, 161) par `dr_heuresDeLaClasse`, 164, 173, une ligne au JOURNAL ; E2 — 176, 175 avec E4, le Pilotage lit aussi `dr_heuresDeLaClasse` ; E3 — rien ; E4 — le signal.
+- Réveil suivant : 05:11.
+
+Réponse de la conscience (04:11), mot pour mot :
+
+200. Réveil n°14. Banc vert sur la tête (collisions 0, parcours vert aux deux modes, 108 sur 108). E2 a réglé trois lignes (« Lancer » ne propose plus jamais le créneau d'une autre classe) ; il en reste **sept** sur 170 (149 réglées, aucune ouverte), cinq chez E1 — qui n'a rien poussé depuis 03:02 — dont quatre de la même famille : l'Atelier, le Pilotage et l'emploi du temps doivent dire la même suite d'heures (la règle est tranchée, E2 a posé la fonction, E1 doit la brancher). E4 mesure la convergence : deux lignes neuves à sa dernière passe contre six par heure avant, aucune grave depuis 20:50.
+
+201. Prochain réveil à 05:11. Le promeus se dira quand E4 écrit « 0 pas réglée » sur une tête qui passe le banc ; à ce rythme, c'est ce matin si E1 pousse. À toi, telles quelles : 152, 144, 13 · 12, §12.17, 198, le « go » du plan 10 jours.
+
+22/10/2026 04:11
+MEMO

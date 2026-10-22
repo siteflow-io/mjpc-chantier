@@ -741,7 +741,7 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 | tache-finale | 3 diapos · 55 min | 3 diapos | 1 (50) | 67 Les repères avant de lire ; 68 Lecture silencieuse ; 69 Étude du texte (sur 32) | 0 | — | — |
 
 - **Les choix déclarés à Paul** (`[PROPOSITION]`) :
-  - les heures de la trame duraient 55 min. Treize heures dépassent 50 ; la diapo d'activité la plus longue de chacune rend l'excès (par exemple « Les hypothèses de la classe » 22 → 17 min ; « Compréhension et interprétation » 45 → 40). La liste complète est dans `avant-apres.md` ;
+  - les heures de la trame duraient 55 min. Quatorze heures dépassent 50 ; la diapo d'activité la plus longue de chacune rend l'excès (par exemple « Les hypothèses de la classe » 22 → 17 min ; « Compréhension et interprétation » 45 → 40). La liste complète est dans `avant-apres.md` ;
   - « Avant de se quitter » (7 diapos) n'est pas un rituel du contrat : chacune ferme l'activité qui la précède (même `actId`) plutôt que d'être une activité numérotée à part ;
   - la séance Remédiation (85 min sans repère d'heure) est coupée par les durées : heures de 37 et 48 min.
 - **Ma liste du §3 point 5 : 4 écarts, tous à Paul, car aucun ne se règle sans une phrase nouvelle :**

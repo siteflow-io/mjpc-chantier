@@ -529,3 +529,7 @@
 - **Bancs :** mon banc **110 ok · 0 échec** (`sorties/0019-site-E4`).
 - **NOTE §10** : 164 lignes, dont 143 réglées, 8 pas réglées, 8 écartées, 5 à Paul, 0 ouverte.
 - banc.sh : **VERT** (`sorties/0024`).
+
+## Poussée 59 — 00:42 UTC
+- **L162 réglée** sur `4699143e` (poussée 27 d'E2), rejouée par moi à 1366 et à 1280 : en préparation, la diapo du cahier montre le cahier de textes entier.
+- **Il reste 7 pas réglées** : L160, L161, L164, L165, L167, la ligne du créneau du lundi, et celle des totaux d'« Envoyer vers… » (à confirmer). Toutes chez E1 ou E2.

@@ -219,3 +219,4 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
   - **nouvelles** : une à moi, le numéro d'activité qui changeait au rechargement, **réglée** à 00:19 ; une 5ᵉ à Paul (la même question) ; deux faibles chez E2 et E1.
 - **Compte : 164 lignes, dont 143 réglées, 8 pas réglées (E1 et E2), 8 écartées, 5 à Paul (une seule question), 0 ouverte.** Chez E4 : aucune pas réglée.
 
+- **00:40, L162 réglée** sur `4699143e` (poussée 27 d'E2), rejouée par moi aux deux tailles : le cahier de textes s'affiche en préparation. **Compte : 164 lignes, dont 144 réglées, 7 pas réglées, 8 écartées, 5 à Paul, 0 ouverte.**

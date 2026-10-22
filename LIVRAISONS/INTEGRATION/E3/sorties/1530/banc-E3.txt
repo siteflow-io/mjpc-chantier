@@ -1,4 +1,4 @@
-banc E3 (le tableau) · 2026-10-21 13:27 UTC · entrée SITE (faux hub /home/user/mjpc-chantier/AUDITS/INTEGRATION-DEROULE/hub) · fichier md5 78bb3963e9c8587f908a022844f94113 · 2176537 o
+banc E3 (le tableau) · 2026-10-22 13:30 UTC · entrée SITE (faux hub /home/claude/mjpc-chantier/AUDITS/INTEGRATION-DEROULE/hub) · fichier md5 6beff92f6c2b7168388bc0fa90b23f72 · 2295700 o
 
 T1 — la fenêtre locale montre ce que voit la classe, et suit sans rechargement
   ok     T1 · la fenêtre est la page elle-même, `?vue=tableau&local=1` — VRAISONS/INTEGRATION/assemble/index.html?vue=tableau&local=1
@@ -41,9 +41,9 @@ T5 — le tableau distant (`?vue=tableau`) : attente, garde, scène suivie, imag
   ok     T5 · sans cours actif : l'écran d'attente (le nom du site, l'heure, la date) — MONSIEURJAIPASCOMPRIS 08:50 lundi 14 septembre 2026 Classe attendue : 3E Charles de Gaulle · 08:57 – 09:52
   ok     T5 · à 08:50 (`?n=3e`) : la classe attendue, lue dans la grille en lecture seule (réveil n°3) — MONSIEURJAIPASCOMPRIS 08:50 lundi 14 septembre 2026 Classe attendue : 3E Charles de Gaulle · 08:57 – 09:52
   ok     T5 · une scène arrive : l'attente disparaît, #mur2 montre la diapo du pilote, trois lignes — pilote 3 l. « Analyse d'images : la routine » · distant 3 l. « Analyse d'images : la routine »
-  ok     T5 · la première scène paraît après la recherche du cours (2 s) et un sondage (900 ms) — 1563 ms depuis l'écriture dans son hub
-  ok     T5 · un ▶ de plus : le distant suit (quatre lignes) en ≤ 900 ms de sondage + rendu (mesure proposée, audit I2) — 124 ms depuis l'écriture dans son hub
-  ok     T5 · 10 ▶ : du clic au distant, médiane 912 ms, maximum 961 ms (attendu ≤ 1 500 ms au maximum ; veille 125 + débounce 250 + sondage 900) — 910 923 901 961 886 898 936 902 926 912
+  ok     T5 · la première scène paraît après la recherche du cours (2 s) et un sondage (900 ms) — 1643 ms depuis l'écriture dans son hub
+  ok     T5 · un ▶ de plus : le distant suit (quatre lignes) en ≤ 900 ms de sondage + rendu (mesure proposée, audit I2) — 158 ms depuis l'écriture dans son hub
+  ok     T5 · 10 ▶ : du clic au distant, médiane 922 ms, maximum 973 ms (attendu ≤ 1 500 ms au maximum ; veille 125 + débounce 250 + sondage 900) — 922 955 897 911 922 973 905 950 939 922
   ok     T5 · aucune erreur JS au pilote ni dans la fenêtre du tableau
   ok     T5 · aucune boîte système
   ok     T5 · le pilote fermé : 30 s plus tard, le distant garde sa dernière image — 4 l.
@@ -74,7 +74,7 @@ T7 — le minuteur d'activité au tableau (R3) : fenêtre et scène
 T8 — « Adresse du tableau » (le QR tombe)
   ok     T8 · le QR n'existe plus (ni `sesQROuvrir`, ni bouton) — false
   ok     T8 · le bouton « Adresse du tableau » est à côté de « ⧉ », avec son infobulle — Adresse du tableau — Le tableau sur un autre appareil : montre l’adress
-  ok     T8 · l'adresse affichée est celle du tableau, `?vue=tableau` — file:///home/user/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html?vue=tableau
+  ok     T8 · l'adresse affichée est celle du tableau, `?vue=tableau` — file:///home/claude/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html?vue=tableau
   ok     T8 · aucune image demandée au réseau (pas de QR distant) — false
   ok     T8 · ✕ ferme la boîte — true
   ok     T8 · aucune écriture au hub — 0 écriture(s)
@@ -102,4 +102,41 @@ T12 — la Relecture n'écrit pas la scène ; le témoin ne ment pas
   ok     T12 · aucune erreur JS au pilote ni dans la fenêtre du tableau
   ok     T12 · aucune boîte système
 
-banc E3 : 78 vérifications, 0 échec(s) — VERT
+T13 — l'heure suivante : la fenêtre suit depuis le rituel
+  ok     T13 · la fenêtre montre la diapo d'ouverture de l'heure, comme le pilote — pilote « Où en sommes-nous ? » 0 l. · tableau « Où en sommes-nous ? » 0 l.
+  ok     T13 · trois ▶ : la fenêtre suit — pilote « Tableau 3 » 0 l. · tableau « Tableau 3 » 0 l.
+  ok     T13 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T13 · aucune boîte système
+
+T14 — le bloc écrit en classe reste au tableau après rechargement et reprise
+  ok     T14 · avant : la fenêtre montre le bloc écrit — true
+  ok     T14 · après « Reprendre le cours » : le pilote montre le bloc écrit (E2 : `dr_reprendre` ne fusionne pas `C/ecrans` — ligne 110 d'E4) — true
+  ok     T14 · E3 · après le rechargement, la fenêtre restée ouverte est retrouvée par le pilote rechargé (signe `ici`) et montre ce qu'il montre — pilote « Analyse d'images : la routine » 7 l. · tableau « Analyse d'images : la routine » 7 l.
+  ok     T14 · le bloc écrit en classe est encore au tableau après la reprise (dépend du pilote : E2, ligne 110 d'E4) — true
+  ok     T14 · et elle suit de nouveau le pilote rechargé (un ▶) — pilote 0 l. · tableau 0 l.
+  ok     T14 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T14 · aucune boîte système
+
+T15 — la copie d'un autre jour : la retouche de la veille est au tableau
+  ok     T15 · lundi : la retouche est au pilote — true
+  ok     T15 · mardi, l'heure suivante lancée : la retouche de la veille est au pilote (E1 `dr_jouerCopie`) — true
+  ok     T15 · et au mur : la fenêtre du tableau la montre — true
+  ok     T15 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T15 · aucune boîte système
+
+T16 — l'Atelier et une autre diapo en pleine heure : le tableau ne bouge pas
+  ok     T16 · dans l'Atelier, sur une autre diapo : la fenêtre du tableau n'a pas bougé — avant « Analyse d'images : la routine » 2 l. · pendant « Analyse d'images : la routine » 2 l.
+  ok     T16 · revenu au Pilotage : le tableau montre toujours la diapo que la classe voyait (grave 148, E1) — avant « Analyse d'images : la routine » 2 l. · après « Analyse d'images : la routine » 2 l.
+  ok     T16 · et la scène au hub (le tableau distant) non plus — {"eid":"emt9v3yqoecf9d","nDev":2} → {"eid":"emt9v3yqoecf9d","nDev":2}
+  ok     T16 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T16 · aucune boîte système
+
+T17 — le cahier de textes au tableau : rien en préparation, tout une fois montré
+  ok     T17 · en préparation du cahier : le tableau reste sur la diapo de la classe, rien du cahier n'y paraît — avant « Analyse d'images : la routine » · pendant « Analyse d'images : la routine », cahier au tableau : false
+  ok     T17 · « Revenir au cours » : le tableau est toujours sur la diapo de la classe — « Analyse d'images : la routine »
+  ok     T17 · le cahier montré à la classe : il est au tableau comme au pilote — pilote true · tableau true
+  ok     T17 · même diapo, même page des deux côtés — pilote « Cahier de textes — lundi 14 septembre 2026, 08 h 57 – 09 h 5 » «  » · tableau « Cahier de textes — lundi 14 septembre 2026, 08 h 57 – 09 h 5 » «  »
+  ok     T17 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     T17 · aucune boîte système
+
+banc E3 : 105 vérifications, 0 échec(s) — VERT

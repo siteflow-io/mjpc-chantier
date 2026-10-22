@@ -209,3 +209,6 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 5. **Le chiffre « elle se coupe en cinq »** (la carte des huit familles) : avec les notions de mes essais (3 par famille), 8 familles font 32 bulles ; ce qui tient sans consigne est 3 familles × 3 → **trois diapos**, pas cinq ; avec consigne, une famille par diapo → **huit**. Le « cinq » dépend du nombre de notions par famille ; à écrire sans chiffre, ou « une carte par diapo, 9 à 12 bulles ».
 
 **Ce qui n'est pas mesuré ici** (dit, pas caché) : l'`image` et la `video` (pas de schéma) ; les marques sur image ; une `question` avec ses réponses (pas de plancher à part) ; les libellés très longs (une notion de 30 signes compte comme deux) ; le dévoilement partiel (la mesure compte tout dévoilé, comme « À régler »).
+
+## 22/10, 15:35 — retour 1 : §12.22 et réveil n°23 lus
+- Rien d'ouvert chez moi (ma mesure est entrée dans la pièce v0.3). `index.html` a bougé en amont (E1, l'import §12.21 ; `dr/` inchangé) : banc E3 rejoué sur l'assemblé de la tête `0048019e` (md5 `6beff92f…`) — **105 vérifications, 0 échec** (`sorties/1530/banc-E3.txt`). Le tableau ne bouge pas.

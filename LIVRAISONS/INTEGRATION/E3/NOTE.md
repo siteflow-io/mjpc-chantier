@@ -62,7 +62,7 @@ J'ai appliqué deux outils : `E3/outils/brancher-index.py`, puis `E3/outils/rela
   - `dr_rendreMur` : le rendu unique, qui appelle `rendre` du socle.
 
 ## Bancs et sorties
-- **`E3/bancs/banc.mjs`**, banc unique : 16 cas, T1 à T16 (T16 : l'Atelier en pleine heure ne fait pas bouger le tableau — grave 148, chez E1).
+- **`E3/bancs/banc.mjs`**, banc unique : 17 cas, T1 à T17 (T16 : l’Atelier en pleine heure ne fait pas bouger le tableau ; T17 : le cahier de textes — rien au tableau en préparation, tout une fois montré).
   - **T1** : la fenêtre, le crochet, la fiche refermée qui garde l'image, « ● session », sans erreur JS.
   - **T2** : le gel. **T3** : l'ouverture pendant le gel. **T4** : la vue « ⧉ Tableau ».
   - **T5** : le distant (attente, scène, délai sur 10 ▶, image gardée, refus, garde, `sendBeacon`).

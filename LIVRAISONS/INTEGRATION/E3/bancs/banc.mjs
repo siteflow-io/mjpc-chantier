@@ -348,6 +348,26 @@ await CAS('T16', 'l\'Atelier et une autre diapo en pleine heure : le tableau ne 
   verif('T16', !!s0 && !!s1 && s0.eid === s1.eid && s0.nDev === s1.nDev, 'et la scène au hub (le tableau distant) non plus', `${JSON.stringify(s0)} → ${JSON.stringify(s1)}`);
   await fen.close(); await fin('T16', o); });
 
+// T17 — le cahier de textes au tableau (audit final ; E2 a36f722d, la diapo « fin » porte le cahier) : « Préparer le cahier » gèle le tableau sur la diapo de la classe
+//       (rien du cahier n'y paraît) ; « Revenir au cours » dégèle ; aller au cahier devant la classe → la fenêtre montre le cahier comme le pilote, ▶ après ▶.
+await CAS('T17', 'le cahier de textes au tableau : rien en préparation, tout une fois montré', async () => {
+  if (!SITE) { absent('T17', 'se joue sur le site'); return; }
+  const o = await ouvrir(); const pg = o.pg; await lancer(pg); await dev(pg, 2); const fen = await ouvrirTableau(pg); const avant = await lire(fen, 'tableau');
+  const aCahier = c => c.evaluate(() => { const m = document.getElementById('mur2') || document.getElementById('mur'); return !!(m && m.querySelector('.corpsd.cahier, .cahier')); });
+  const prep = await pg.evaluate(() => { if (typeof preparerCahier !== 'function') return false; preparerCahier(); return true; }); await pg.waitForTimeout(900);
+  if (!prep) { absent('T17', 'pas de « Préparer le cahier » (E2)'); await fen.close(); await fin('T17', o); return; }
+  const pendant = await lire(fen, 'tableau'); const cahierPrep = await aCahier(fen);
+  verif('T17', pareil(avant, pendant) && !cahierPrep, 'en préparation du cahier : le tableau reste sur la diapo de la classe, rien du cahier n\'y paraît', `avant « ${avant && avant.act} » · pendant « ${pendant && pendant.act} », cahier au tableau : ${cahierPrep}`);
+  await pg.evaluate(() => { if (typeof revenirAuCours === 'function') revenirAuCours(); }); await pg.waitForTimeout(800); const g2 = await pg.$('#garde2.on #garde2-ici'); if (g2) { await g2.click(); await pg.waitForTimeout(300); }
+  const retour = await lire(fen, 'tableau'); verif('T17', pareil(avant, retour), '« Revenir au cours » : le tableau est toujours sur la diapo de la classe', `« ${retour && retour.act} »`);
+  /* devant la classe : aller à la diapo du cahier (la garde : « Y aller devant la classe »), dévoiler ses éléments */
+  await pg.evaluate(() => { const E = dr_seances()[S.si].ecrans; const i = E.findIndex(e => e && e.role === 'fin'); if (i >= 0) { S.di = i; S.page = null; dr_tout(); } }); await pg.waitForTimeout(500);
+  const g = await pg.$('#garde.on #garde-devant'); if (g) { await g.click(); await pg.waitForTimeout(400); }
+  await dev(pg, 2); await pg.waitForTimeout(900); const p1 = await lire(pg, 'pilote'), t1 = await lire(fen, 'tableau'); const cP = await aCahier(pg), cT = await aCahier(fen); await cap(fen, 'T17-cahier-au-tableau');
+  verif('T17', cP && cT, 'le cahier montré à la classe : il est au tableau comme au pilote', `pilote ${cP} · tableau ${cT}`);
+  verif('T17', !!p1 && !!t1 && p1.act === t1.act && p1.page === t1.page, 'même diapo, même page des deux côtés', `pilote « ${p1 && p1.act} » « ${p1 && p1.page} » · tableau « ${t1 && t1.act} » « ${t1 && t1.page} »`);
+  await fen.close(); await fin('T17', o); });
+
 dire(''); dire(`banc E3 : ${nb} vérifications, ${echecs} échec(s)` + (echecs ? ' — ROUGE' : ' — VERT'));
 if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }
 await nav.close(); process.exit(echecs ? 1 : 0);

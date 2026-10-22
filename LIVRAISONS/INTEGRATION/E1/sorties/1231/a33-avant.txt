@@ -1,0 +1,41 @@
+banc E1 · 2026-10-22 12:30 UTC · ../work/asm-avant.html · md5 733a7385349725531b7f4e25505ad572
+
+A33 — l'import des déroulés (§12.21, dettes 13 · 30 et 13 · 31 ; §12.22) : chaque refus de la pièce, mot pour mot ; Compléter, Remplacer, Jumeau écrivent la trame au modèle du site
+  ok     A33 · le chapitre de test (tiré du 3e du faux hub, au contrat de la pièce) passe sans un refus
+  ÉCHEC  A33 · les dix types passent, chacun à son contrat (texte, vidéo, page, doc compris — l'import n'en connaissait que cinq) — « Poésie et peinture : le Romantisme en question · écran 1 » bloc 2 : type inconnu (« texte »). Types : consigne, fiche, question, schema, image. | « Poésie et peinture : le Romantisme en question · écran 1 » bloc 3 : type inconnu (« video »). Types : consigne, fiche, question, schema, image. | « Poésie et peinture : le Romantisme en question · écran 1 » bloc 4 : type inconnu (« page »). Types : consigne, fiche, question, schema, image. | « Poésie et peinture : le Romantisme en question · écran 1 » bloc 5 : type inconnu (« doc »). Types : consigne, fiche, question, schema, image.
+  ÉCHEC  A33 · refus « actId » — une diapo d'activité sans actId : « … : une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis). » — aucun refus
+  ÉCHEC  A33 · refus « num » — les activités non numérotées en continu sur le chapitre (la séance 2 repart à 1) : « … : une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis). » — aucun refus
+  ÉCHEC  A33 · refus « bilan2 » — deux bilans : « … : deux bilans — le bilan est unique et dernier. » — aucun refus
+  ÉCHEC  A33 · refus « bilanDernier » — le bilan n'est pas la dernière diapo : « … : le bilan n’est pas la dernière diapo de la séance. » — aucun refus
+  ÉCHEC  A33 · refus « bilanTitre » — le mot « bilan » dans le titre d'une autre diapo (le site la lit comme un bilan) : « … : deux bilans — le bilan est unique et dernier. » — aucun refus
+  ÉCHEC  A33 · refus « reactivation » — rôle « reactivation » : « … : rôle « reactivation » ou « fin » — le site pose ces diapos lui-même, retire-les. » — aucun refus
+  ÉCHEC  A33 · refus « fin » — rôle « fin » : « … : rôle « reactivation » ou « fin » — le site pose ces diapos lui-même, retire-les. » — aucun refus
+  ÉCHEC  A33 · refus « ouEnSommes » — une diapo « Où en sommes-nous ? » (sans rôle) : « … : rôle « reactivation » ou « fin » — le site pose ces diapos lui-même, retire-les. » — aucun refus
+  ÉCHEC  A33 · refus « schema2 » — deux schémas sur une diapo : « … : deux schémas sur une diapo — un schéma par diapo. » — aucun refus
+  ÉCHEC  A33 · refus « schemaConsigne » — un schéma avec une consigne de deux lignes : « … : un schéma avec plus d’une consigne d’une ligne — donne-lui sa diapo. » — aucun refus
+  ÉCHEC  A33 · refus « feuille » — une fiche sans feuille : « … : une fiche sans feuille (« feuille ») — une fiche vit dans une feuille du chapitre (1.7). » — aucun refus
+  ÉCHEC  A33 · refus « heure50 » — une heure de plus de 50 minutes : « … : l’heure 1 dépasse 50 minutes ( » — aucun refus
+  ÉCHEC  A33 · refus « remob » — « remob » absent d'une diapo d'activité : « … : « remob » manque sur une diapo d’activité. » — aucun refus
+  ÉCHEC  A33 · refus « type » — un type inconnu : « … type inconnu (« tableur ») — les dix types : texte, consigne, question, fiche, schema, image, video, page, doc, cahier. » — « Poésie et peinture : le Romantisme en question · écran 1 » bloc 2 : type inconnu (« tableur »). Types : consigne, fiche, question, schema, image.
+  ÉCHEC  A33 · refus « reps » — une question sans réponse attendue : « … Refus : la réponse attendue manque — elle vit à part, c’est le contrat. » — aucun refus
+  ÉCHEC  A33 · refus « ficheTitre » — une fiche sans titre : « … Refus : une fiche a un titre. » — aucun refus
+  ÉCHEC  A33 · refus « ficheDef » — une fiche sans définition : « … Refus : une fiche a sa définition (la phrase à retenir). » — aucun refus
+  ÉCHEC  A33 · refus « schemaTitre » — un schéma sans titre : « … Refus : un schéma a un titre. » — aucun refus
+  ÉCHEC  A33 · refus « schemaLigne » — un schéma sans ligne : « … Refus : un schéma a au moins un élément (une ligne). » — aucun refus
+  ÉCHEC  A33 · refus « imageComplete » — une image à l'adresse complète : « … Refus : l’adresse doit être relative dans mjpc-medias, jamais complète (3.2). » — aucun refus
+  ÉCHEC  A33 · refus « video » — une vidéo sans légende : « … Refus : une vidéo a une légende. » — « Poésie et peinture : le Romantisme en question · écran 1 » bloc 2 : type inconnu (« video »). Types : consigne, fiche, question, schema, image.
+  ÉCHEC  A33 · refus « page » — une page sans fichier : « … Refus : un fichier et un titre. » — « Poésie et peinture : le Romantisme en question · écran 1 » bloc 2 : type inconnu (« page »). Types : consigne, fiche, question, schema, image.
+  ÉCHEC  A33 · refus « notion » — une notion inexistante dans « comp » : « … utilise une notion qui n’existe pas (« zz-999 »). Reprends un identifiant de la liste du prompt. » — aucun refus
+  ÉCHEC  A33 · Compléter (séance appariée par son titre) : la trame s'écrit au hub, à la suite de l'existante, sans rien écraser — 18 = 18 + 17
+  ÉCHEC  A33 · Compléter : 17 diapos neuves, chacune son eid, son heure, son actId et son remob (le bilan : son rôle) — 17 / 17
+  ÉCHEC  A33 · Compléter : l'image a son adresse complète au hub (le site la lit telle quelle) et garde devoilerTout — https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/tableau-5-friedrich-voyageur.webp · true
+  ÉCHEC  A33 · Compléter : vidéo (repères triés), page (contrat, étapes) et fiche (feuille) gardées — {}
+  ÉCHEC  A33 · Compléter : les activités (numéro, diapos par eid) et le travail à faire sont écrits — [] · undefined
+  ÉCHEC  A33 · Compléter : le schéma garde son titre (« titre ») et « Un à un » (devoilerTout false) — {"titre":"Les figures de style"}
+  ok     A33 · Remplacer : la trame du fichier seule, normalisée — 17
+  ÉCHEC  A33 · Remplacer : 17 diapos neuves, chacune son eid, son heure, son actId et son remob (le bilan : son rôle) — 17 / 17
+  ÉCHEC  A33 · Remplacer : l'image a son adresse complète au hub (le site la lit telle quelle) et garde devoilerTout — poesie-peinture-xixe/tableau-5-friedrich-voyageur.webp · false
+  ÉCHEC  A33 · Remplacer : vidéo (repères triés), page (contrat, étapes) et fiche (feuille) gardées — {"r":[{"t":80,"l":"le monologue"},{"t":0,"l":"l'ouverture"}],"pa":{"t":"page","txt":"Le jeu des rimes","src":"pages/jeu-des-rimes.html","contrat":true,"etapes":
+  ÉCHEC  A33 · le banc n'a pas pu aller au bout — Cannot read properties of undefined (reading 'length')
+
+36 vérifications, 34 échec(s) · 14 s

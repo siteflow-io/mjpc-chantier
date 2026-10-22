@@ -148,3 +148,8 @@
 - Sur la poussée d'E2 `a36f722d` (la diapo « fin » porte le cahier) : banc **99/99** ; et **T17** ajouté (l'audit final cite le cahier au tableau) : « Préparer le cahier » → le tableau reste sur la diapo de la classe, rien du cahier n'y paraît ; « Revenir au cours » → toujours la diapo de la classe ; le cahier montré à la classe → **il est au tableau comme au pilote** (même diapo, même page ; capture `captures/site/T17-cahier-au-tableau.png`). Joué seul : 6/6.
 - 02:54 : poussée d'E1 `f7c3f2ab` : banc complet **105/105** (T17 compris).
 - 05:13 : poussées d'E1 `46710b3e`, `d184420f` (§12.18) : banc **105/105**.
+
+## 22/10, 05:42 — réveil n°15 : la tête candidate `88301b93`
+- Jouée dans un arbre extrait **exactement** à `88301b93` (son `dr/` et son `index.html` sont identiques à la tête d'`integration` à cette heure) ; assemblé md5 `c3c08656979ae6f71165c1bdbced3e7f`, 2 236 628 o.
+- **Banc E3 : 105 vérifications, 0 échec** (T1-T17). **Banc de la conscience : VERT** — collisions 0, parcours vert, parcours en mode test vert, contrôles K 0 défaut. Sorties : `sorties/0529-tete-88301b93/`.
+- **Pour le tableau, rien ne s'oppose à la promotion de `88301b93`.**

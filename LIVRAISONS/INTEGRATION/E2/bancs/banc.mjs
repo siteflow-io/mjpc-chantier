@@ -428,7 +428,7 @@ const mesurer = p => p.evaluate(() => { const b = document.getElementById('dr-la
   await s.ctx.close(); }
 { const s = await session({ quand: '2026-09-14T09:00:00+02:00' });
   if (s.integre) { await ouvrirPilotage(s, 1); const m = await mesurer(s.page); const h1 = m.h[0] || {};
-    pas('B17', m.dis && /vendredi 18 septembre/.test(m.txt) && /La case de maintenant \(08:57-09:52\)/.test(m.title) && !/Aucune case/.test(m.title) && h1.iso === '2026-09-18' && h1.n === 1 && /Albatros|L'Albatros|Étude de text/.test(m.c['09-18']) ? 'ok' : 'ÉCHEC', 'lundi 09:00, la séance « L\'Albatros » montrée : « Lancer » gris vers sa case (vendredi 18, heure 1/3, la même que l\'EDT), l\'infobulle nomme la séance de la case de maintenant, jamais « aucune case » (E4 ligne 180)', JSON.stringify(m));
+    pas('B17', m.dis && /vendredi 18 septembre/.test(m.txt) && /La case de maintenant \(08:57-09:52\)/.test(m.title) && !/Aucune case/.test(m.title) && h1.iso === '2026-09-18' && h1.n === 1 && /Étude de tex.* 1\/3/.test(m.c['09-18']) ? 'ok' : 'ÉCHEC', 'lundi 09:00, la séance « L\'Albatros » montrée : « Lancer » gris vers sa case (vendredi 18, heure 1/3, la même que l\'EDT), l\'infobulle nomme la séance de la case de maintenant, jamais « aucune case » (E4 ligne 180)', JSON.stringify(m));
     pas('B17', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
 { const s = await session({ quand: '2026-09-14T09:00:00+02:00' });

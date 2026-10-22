@@ -251,3 +251,4 @@
 - **Ligne 150 (ma part) · `S.copie[h]` quand l'atelier écrit en heure lancée ; le témoin « enregistré »** — réglée, commit `e74de0c0` (poussée 18) : la retouche va dans la copie de la classe, la clôture propose de la verser ; le témoin dit « enregistré à … ». A29.
 - **Banc E1 sur l'état d'avant le rebase** : 190 vérifications, 0 échec (et A30 : 3 / 0, rouge sur l'assemblage d'avant).
 - **Bancs sur `e62b7dde`** (sorties `E1/sorties/0008/`) : **banc de la conscience VERT** — collisions 0 / 0 / 0, parcours vert ×2, **K1-K13 : 108 / 0** ; **banc E1 : 193 vérifications, 0 échec**.
+- **Rejoué après le rebase sur E2 `f557e9db`/`afd475d6`** (qui touche `dr-classe.js`, `dr.css`, `index.html` ; tête `1228dbe1`, sorties `E1/sorties/0026/`) : **banc de la conscience VERT** — collisions 0 / 0 / 0, parcours vert ×2, **K1-K13 : 108 / 0** ; **banc E1 : 193 vérifications, 0 échec**.

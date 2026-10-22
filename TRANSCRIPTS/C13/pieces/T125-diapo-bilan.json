@@ -1,0 +1,55 @@
+{
+ "diapo": {
+  "act": "Question-bilan",
+  "blocs": [
+   {
+    "id": "bq1",
+    "t": "question",
+    "q": "Pourquoi Baudelaire a-t-il choisi un albatros pour parler du poète ?",
+    "reps": [],
+    "vues": 0
+   },
+   {
+    "id": "bnotions1",
+    "t": "texte",
+    "txt": "À mettre dans le bilan",
+    "el": [
+     "l'albatros : roi du ciel, infirme sur le pont",
+     "le poète parmi les hommes",
+     "la comparaison filée",
+     "le champ lexical de la moquerie",
+     "le registre lyrique : l'émotion avant la règle"
+    ],
+    "vues": 0
+   },
+   {
+    "id": "bconsig1",
+    "t": "consigne",
+    "pic": "✎",
+    "txt": "Rédige le bilan au brouillon.",
+    "etapes": [
+     "Cinq à huit lignes, au présent.",
+     "Chaque mot-clé y est, dans une phrase à toi.",
+     "Souligne chaque mot-clé une fois placé."
+    ],
+    "vues": 0
+   }
+  ],
+  "comp": [
+   "c4-lire-04",
+   "tr-langages-03"
+  ],
+  "dur": 8,
+  "heure": 1,
+  "role": "bilan",
+  "eid": "ebilanalba01"
+ },
+ "notes": {
+  "ebilanalba01": [
+   {
+    "p": null,
+    "html": "<p><b>Le bilan doit contenir</b> — un mot-clé = une notion travaillée dans le chapitre (séances 1 et 2) :</p><ul><li>l'albatros : roi du ciel, infirme sur le pont — <i>le portrait de l'oiseau (séance 2)</i></li><li>le poète parmi les hommes — <i>que dit ce poème du poète ? (séance 2)</i></li><li>la comparaison filée — <i>les figures de style (séance 2)</i></li><li>le champ lexical de la moquerie — <i>le champ lexical (séance 2)</i></li><li>le registre lyrique : l'émotion avant la règle — <i>le registre du poème (séance 2) ; le Romantisme (séance 1)</i></li></ul><p>La réponse validée s'écrit dans la copie de classe pendant qu'ils rédigent, puis se recopie dans le cahier, partie cours.</p>"
+   }
+  ]
+ }
+}

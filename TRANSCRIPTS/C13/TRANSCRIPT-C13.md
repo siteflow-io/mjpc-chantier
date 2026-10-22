@@ -2576,3 +2576,19 @@ Rien d'ajouté au site : trois blocs qui existent déjà (question sans réponse
 
 22/10/2026 18:31
 MEMO
+
+---
+
+## TOUR 125 (22/10/2026, 18:36 → 18:38)
+
+Paul (18:36), mot pour mot :
+« Un élève ne doit jamais voir rédige ta réponse dans la copie de classe. Par ailleurs, le contenu doit toujours être des mots clefs ou des expressions, jamais le contenu juste sans verbes »
+
+Fait (18:36-18:38) : la même diapo reconstruite dans le site intégré (candidat `6d19ef74`, md5 `022fc8a8…`, même script `T124-capture.mjs`, hub simulé) — les cinq lignes « À mettre dans le bilan » en mots-clés et expressions, sans verbe (« l'albatros : roi du ciel, infirme sur le pont » · « le poète parmi les hommes » · « la comparaison filée » · « le champ lexical de la moquerie » · « le registre lyrique : l'émotion avant la règle ») ; la consigne « Rédige le bilan au brouillon. » (étapes : « Cinq à huit lignes, au présent. » · « Chaque mot-clé y est, dans une phrase à toi. » · « Souligne chaque mot-clé une fois placé. ») — « copie de classe » n'apparaît plus que dans les notes présentateur (le prof). Mesuré : tableau 1366 × 768 sans débordement, 0 erreur JS. Pièces `T125-bilan-tableau-tout-1366.png`, `T125-bilan-tableau-devoilement-1366.png`, `T125-bilan-pilote-notes-1366.png`, `T125-diapo-bilan.json`.
+
+Réponse de la conscience (18:38), mot pour mot :
+
+280. Refait, deux images jointes (`T125-bilan-tableau-tout-1366.png`, `T125-bilan-tableau-devoilement-1366.png`) : les cinq lignes sont des mots-clés ou des expressions, sans verbe — l'élève fait les phrases ; « copie de classe » ne se voit plus au tableau, seulement dans tes notes présentateur. La consigne dit « Rédige le bilan au brouillon. » — c'est mon mot, donne le tien s'il est autre (cahier, feuille…). Dis « d'accord » ou ce qui cloche.
+
+22/10/2026 18:38
+MEMO

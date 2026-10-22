@@ -519,3 +519,13 @@
   - trois faibles : le choix d'Entrée invisible dans « + bloc », l'étape 5 à l'envers, le mercredi un créneau d'une autre classe ;
   - une 4ᵉ ligne **à Paul** : l'heure de fin du récit, la même question.
 - **NOTE §10** : 160 lignes, dont 140 réglées, 8 pas réglées, 8 écartées, 4 à Paul, 0 ouverte.
+
+## Poussée 58 — 00:25 UTC
+- **Revérifié sur `afd475d6`** (poussée 26 d'E2), aux deux tailles :
+  - **L107 réglée** : la clôture fige le chrono en gris, « Fin de l'heure » est désactivé ;
+  - **L109 réglée** : la case close ouvre « Relire cette heure » ;
+  - **pas réglées** : L160, L161, L162, L164, L165, L167.
+- **Un défaut à moi, réglé** : après rechargement, le récit renumérotait les activités, avec 6 et 7 deux fois. Le rang d'E2 suit l'ordre de l'heure, qui change. Le numéro se compte maintenant dans l'ordre de la trame, continu sur la séance (`dr_recitNumAct`). La garde B3 vérifie des numéros uniques, croissants et identiques quel que soit l'ordre relu.
+- **Bancs :** mon banc **110 ok · 0 échec** (`sorties/0019-site-E4`).
+- **NOTE §10** : 164 lignes, dont 143 réglées, 8 pas réglées, 8 écartées, 5 à Paul, 0 ouverte.
+- banc.sh : **VERT** (`sorties/0024`).

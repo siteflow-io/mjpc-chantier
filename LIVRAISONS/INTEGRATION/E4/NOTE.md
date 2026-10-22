@@ -213,4 +213,9 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
   - **5 pas réglées** : L107 et L109 (E2), L160 et L161 (E1/E2), L162 (E2/E1) ;
   - 3 lignes faibles nouvelles et une 4ᵉ à Paul, la même question.
 - **Compte : 160 lignes, dont 140 réglées, 8 pas réglées, 8 écartées, 4 à Paul (une seule question), 0 ouverte.** Pas encore « 0 pas réglée » : il en reste 8, dont 3 faibles nouvelles.
+- **03:15, revérifié sur `afd475d6`** (la poussée 26 d'E2), aux deux tailles :
+  - **réglées** : L107 et L109 ;
+  - **pas réglées** : L160, L161, L162, L164, L165, L167 ;
+  - **nouvelles** : une à moi, le numéro d'activité qui changeait au rechargement, **réglée** à 00:19 ; une 5ᵉ à Paul (la même question) ; deux faibles chez E2 et E1.
+- **Compte : 164 lignes, dont 143 réglées, 8 pas réglées (E1 et E2), 8 écartées, 5 à Paul (une seule question), 0 ouverte.** Chez E4 : aucune pas réglée.
 

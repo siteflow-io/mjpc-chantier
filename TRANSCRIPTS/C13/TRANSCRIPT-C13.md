@@ -2592,3 +2592,18 @@ Réponse de la conscience (18:38), mot pour mot :
 
 22/10/2026 18:38
 MEMO
+
+---
+
+## Tour 126 — 22/10/2026 20:19 — réveil n°27 (19:28, programmé au tour 124)
+
+**Mesuré.** Pas de mot de Paul depuis 18:36 (le 280 reste en attente). `origin/integration` : tête `b8a11d55` — E1 `3440264f` (fil « langue » à la racine), `d8ef3991` (§12.23 à l'import), `a18b529c` / `77e76d4a` (bancs VERT, E1 259/0), `3aa59e71` / `6879386f` (deux sessions E1 : la session d'avant vivante, retour 20:00 ; la session relancée à 18:19, retour 19:37) ; E2 `9c72385a` (rien à coder) ; E3 `85ba98bf`, `b8a11d55` (rien) ; E4 `00fbe511` / `572ea025` (chapitre au contrat depuis `bc239f02` : 68 activités, 0 écart ; importé sur `726215db` : « Réponse comprise », « À régler (0) » ×9 ; banc.sh vert). Diff code depuis `6d19ef74` : `index.html` +6/−2 (fil ; bilan sans `reps`). Banc `banc-1930` sur `b8a11d55` : collisions 0, parcours vert ×2, K1-K13 108 / 0, « résultat : VERT » ; assemblé 2 297 926 o, md5 `003e0eef1216f6b5e790812943ed97e8` ; restauré. E4 §10 : signal inchangé « 0 pas réglée (`61245b22`) » → candidat inchangé `6d19ef74`. `list_triggers` : E2 19:33, E1 (ancienne) 19:59, E3 20:12, E1 (neuve) 19:37 — **le retour de la session E1 neuve supprimé** (`trig_015q3BBXVv3N3RRBUhQySiYj`) : une seule E1, la session d'avant. Épreuves `banc-sur-integration-b8a11d55.txt`, `sur-integration-b8a11d55-v22.txt`, EMPREINTES.md5 ; pièces T126-P5/P9/P10. Relances r27 ; audit §0/§6.
+
+**Réponse (mot pour mot).**
+
+281. Le déroulé, contrôle de 20:18 : la version du soir (`b8a11d55` — E1 a mis « fil » et le bilan sans réponse attendue dans l'import) passe mon banc, vert. E4 ne l'a pas encore signée : la candidate reste `6d19ef74`. Toujours ton mot « promeus » attendu.
+
+282. Le prompt : E4 a refait ton chapitre 3e au contrat depuis la source (avec « Récap' de l'heure ») et l'a importé dans le site — « À régler (0) » dans les neuf séances. La preuve sur pièce est faite. Il reste ta réponse au 280 (la diapo du bilan) pour la version 0.7.
+
+22/10/2026 20:19
+MEMO

@@ -2068,3 +2068,26 @@ Réponse de la conscience (01:53), mot pour mot :
 
 22/10/2026 01:53
 MEMO
+
+## TOUR 98 — RÉVEIL N°13 (22/10/2026, 02:54 → 03:02 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (02:54, 02:55, 03:01).
+
+Mesuré :
+- `integration` à `64022f46` (E4, 02:52) ; pendant le banc, `f199d1f2` (E3, banc 105/105 avec T17 sur la poussée d'E1). Depuis le réveil n°12 : **E1** (poussées 18 et 19, 01:37-02:44 : l'Atelier en heure lancée écrit dans la copie de la classe, `S.copie[h]` versable ; l'ordre de l'heure suit §12.16 hors classe ; chaque heure à venir datée ; réveils n°11 et n°12 marqués) ; **E2** (poussées 26 et 27, 01:56-02:31 : la case close s'ouvre au clic, l'heure close n'offre plus la fin de l'heure ; 32, 107, 109, 150, 158 ; la diapo « fin » porte le cahier entier en préparation ; réveil n°12 marqué) ; **E3** (T17 le cahier au tableau, 99/99 + 6/6 ; puis 105/105) ; **E4** (poussées 57-61 : les dix de l'audit revérifiées une à une sur les poussées qui les règlent — 32, 66, 150, 156, 158 sur `7fd900ea` ; 107, 109 sur `afd475d6` ; 162 sur `4699143e` ; 160, 171 sur `4130482a` ; sept lignes neuves dont une moyenne (172 : les dates et l'heure n de l'Atelier hors classe) et une à Paul (174 : deux diapos bilan dans la trame de la séance 1) ; **NOTE §10 : 168 lignes, 146 réglées, 8 pas réglées, 8 écartées, 6 à Paul, 0 ouverte**).
+- **Mon banc sur `64022f46`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. L'assemblé commis : 2 271 859 octets, md5 `27ddbd949769c1776f760ca37f447435`. Épreuves `banc-sur-integration-64022f46.txt`, `sur-integration-64022f46-v22.txt` ; captures `pieces/T98-P5-*.png`, `T98-P9-*.png`.
+- **Tranché — contrat §12.18** : l'heure n de l'Atelier hors classe est celle de l'EDT (une heure jouée porte sa date, une heure à venir celle de sa prochaine case ; l'entête et le bouton « Lancer » disent la même heure n).
+- **Audit final mis à jour** (§0, §4, §6) : pas encore « promeus » — 8 lignes (une moyenne tranchée, sept faibles), aucune grave ; dix réglées en une heure, sept neuves trouvées dans le même temps.
+- **Relances écrites (03:01)** : E1 — 172 (§12.18), 161, 164, 173 ; E2 — 167/170/175 (`dr_proposer` : les cases de cette classe seulement), 165, 172/173 à deux ; E3 — rien ; E4 — le signal « 0 pas réglée », et le nombre de neuves par heure.
+- Réveil suivant : 04:02.
+
+Réponse de la conscience (03:02), mot pour mot :
+
+197. Réveil n°13. Des dix lignes qui bloquaient à 01:45, neuf sont réglées et revérifiées par E4 ; banc vert sur la tête (collisions 0, parcours vert aux deux modes, 108 sur 108). Mais E4, en rejouant, en a trouvé sept de neuves : il en reste huit, aucune grave — une moyenne (les dates et le numéro d'heure que l'Atelier affiche hors classe ne suivent pas l'emploi du temps : tranché au contrat, l'Atelier dit la même heure que l'emploi du temps) et sept faibles (dont une famille chez E2 : hors d'une case de la classe, « Lancer » propose le créneau d'une autre classe). On converge — dix réglées, sept trouvées en une heure — mais pas encore zéro.
+
+198. **Une question pour toi, nouvelle** : ta trame de la séance 1 du chapitre 3e porte deux diapos bilan (« Question-bilan » en 9ᵉ de l'heure 2, et « Question-bilan et travail à faire » en heure 3) ; ton cadrage veut un bilan unique, dernier. Ma proposition : c'est la trame à corriger (la seconde devient le bilan, la première une question ordinaire), par toi ou par le prompt d'injection ; le site ne touche pas à ta trame. Si tu ne commentes pas, je la laisse telle quelle et le récit s'en accommode.
+
+199. Prochain réveil à 04:02. Le promeus se dira au réveil où E4 écrit « 0 pas réglée » sur une tête qui passe le banc. À toi, telles quelles : 152, 144, 13 · 12, §12.17, le « go » du plan 10 jours, et 198.
+
+22/10/2026 03:02
+MEMO

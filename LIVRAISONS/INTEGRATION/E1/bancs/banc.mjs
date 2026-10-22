@@ -637,6 +637,13 @@ await B('A29', 'le réveil n°11 : la retouche de l\'onglet Atelier pendant l\'h
   E.verif('A29', !ev.ouvert && ev.parti === 1, '« Envoyer vers… », ↓ puis Entrée : la diapo part vers la séance choisie au clavier', JSON.stringify(ev));
   E.verif('A29', !o2.errs.length && !o2.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o2.errs.concat(o2.boites)).join(' ; ') || undefined); await o2.ctx.close(); });
 
+await B('A30', 'le réveil n°12 : hors classe, l\'heure suivante s\'ouvre sur le rituel (« Où en sommes-nous ? ») et finit sur le bilan (§12.16, C1 6.1) ; chaque heure porte sa date (la case du jour, puis les prochaines cases de l\'EDT)', async () => {
+  const o = await E.ouvrir(b, { w: 1366, h: 768 }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(2500); await pg.evaluate(() => dr_tout()); await pg.waitForTimeout(300);
+  const r = await pg.evaluate(() => { const E0 = seance().ecrans; const o2 = ordreHeure(2).filter(i => E0[i].role !== 'fin').map(i => E0[i].act); const vol = Array.from(document.querySelectorAll('#volet [data-at-di]')).map(x => +x.dataset.atDi); const i1 = vol.indexOf(ordreHeure(2)[0]); const fr = Array.from(document.querySelectorAll('#volet .fr span:first-child')).map(x => x.textContent).filter(x => /^H\d/.test(x)); return { premier: o2[0], dernier: o2[o2.length - 1], fr }; });
+  E.verif('A30', /sommes-nous/.test(r.premier || '') && /bilan/i.test(r.dernier || ''), '160 · hors classe, H2 s\'ouvre sur « ' + r.premier + ' » et finit sur « ' + r.dernier + ' » (le rituel en tête, le bilan en dernier)', JSON.stringify({ p: r.premier, d: r.dernier }));
+  E.verif('A30', /lundi 14 septembre/.test(r.fr[0] || '') && /mardi 15 septembre/.test(r.fr[1] || '') && /mercredi 16 septembre/.test(r.fr[2] || ''), '161 · chaque heure sa date : H1 la case du jour en cours, H2 et H3 les prochaines cases de la classe dans l\'EDT', r.fr.join(' · '));
+  E.verif('A30', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

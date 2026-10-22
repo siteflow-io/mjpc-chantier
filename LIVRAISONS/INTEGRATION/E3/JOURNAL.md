@@ -237,3 +237,11 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 
 ## 22/10, 22:49 — retour 9 : réveil n°29 lu
 - Rien à faire ; code et assemblé inchangés (`003e0eef…`), candidat `b8a11d55`.
+
+## 22/10, 23:48 — retour 10 : réveil n°30 et §12.24 — la diapo du bilan (prompt v0.7), ce qui tient
+- Réveil n°30 : rien à faire ; code et assemblé inchangés (`003e0eef…`).
+- **§12.24, mesuré** (`E3/bancs/mesure-bilan.mjs`, même moteur et même scaffold que `mesure-tient.mjs` : `rendre` dans `#mur2` de la page tableau, EB Garamond chargée, 1366 × 768 et 1920 × 1080 — mêmes chiffres aux deux tailles ; sorties `E3/sorties/2342/mesure-bilan.txt`, 14 captures). La diapo = la question sans réponse attendue + « À mettre dans le bilan » à n mots-clés (ceux du chapitre d'E4, 10 à 45 signes) + la consigne d'intégration mot pour mot (3 étapes). Une diapo de texte ne se refuse pas : la police descend de 32 vers 26 pt, puis le site fait des pages.
+  - **Question d'une ligne** (≈ 60 signes) : **3 mots-clés** à 32 pt sans réduction ; 4 → 31,3 pt ; 5 → 28,7 pt ; **6 mots-clés tiennent sur une page, à 26 pt** (le plancher) ; **7 → deux pages**.
+  - **Question de deux lignes** (celle du chapitre d'E4, ≈ 150 signes : « En trois lignes : … La réponse validée est recopiée dans le cahier, partie cours. ») : 3 à 32 pt ; 4 → 29 pt ; **5 mots-clés tiennent sur une page, à 26,4 pt** ; **6 → deux pages**.
+  - **Le chiffre pour le prompt : n ≤ 5 mots-clés** (« quatre à six » de v0.7 : le six ne tient qu'avec une question d'une ligne, et au plancher) ; question du bilan sur une ligne (≤ 60 signes) ; la phrase « La réponse validée est recopiée dans le cahier, partie cours. » coûte un mot-clé — si elle reste dans la question, n ≤ 5 strictement ; sans la police (essai de la conscience, T125) : 5 — même chiffre, la police ne change rien ici (c'est la hauteur qui limite, pas la largeur).
+  - Captures : `1366x768-bilan-qE4-n5-une-page.png` (ce que la classe voit), `…-n6-2pages.png` (la page 2 apparaît).

@@ -563,3 +563,8 @@
   - Le point « deux clés pour une classe » est déjà la ligne 32.
 - **Convergence** : 2 nouvelles à cette passe, contre 4 aux trois précédentes.
 - **Compte** : 170 lignes, dont 149 réglées, 7 pas réglées, 8 écartées, 6 à Paul, 0 ouverte.
+
+## Poussée 63 — 04:15 UTC
+- **Réveil n°14 lu** (main fusionnée). Les 7 restantes : 5 chez E1, 2 chez E2 ; ma prochaine passe attend la poussée d'E1.
+- **L175 revérifiée sur `913a9a75`**, aux deux tailles : la case du mercredi 16 à 10:07 dit « aucune séance prête · fil « langue » ». C'est la lecture de la conscience : **écartée** ; le 3/3 au mardi passé reste dans L177. Captures `relecteurs/final-0415/`.
+- **Compte** : 170 lignes, dont 149 réglées, 6 pas réglées (E1 : 161, 164, 172, 173, 177 ; E2 : 176), 9 écartées, 6 à Paul, 0 ouverte. Aucune nouvelle ligne : pas de poussée d'E1 ni d'E2 depuis `fa6ff3d4`.

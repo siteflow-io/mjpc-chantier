@@ -2637,3 +2637,17 @@ MEMO
 
 22/10/2026 22:16
 MEMO
+
+---
+
+## TOUR 129 (22/10/2026, 22:50 → 22:52)
+
+Paul (22:50), mot pour mot :
+« Rédige au brouillon, c'est un exemple ou c'est du figé ? »
+
+Réponse de la conscience (22:52), mot pour mot :
+
+287. Aujourd'hui c'est un exemple : la phrase est dans le bloc consigne de la diapo, écrite par la conversation qui crée le chapitre, comme les mots-clés — donc elle peut changer d'un chapitre à l'autre. Ma proposition : la figer. La consigne d'intégration est la même à chaque bilan (c'est la règle de la classe, pas le contenu du chapitre) : une phrase à toi, écrite une fois dans le prompt, que la conversation recopie mot pour mot sur chaque diapo de bilan — rien à coder, la règle « aucune phrase vue par l'élève que tu n'as pas donnée » est tenue. Donne la phrase (et ses étapes, ou aucune), ou dis « garde la tienne » et « Rédige le bilan au brouillon. » devient la phrase figée.
+
+22/10/2026 22:52
+MEMO

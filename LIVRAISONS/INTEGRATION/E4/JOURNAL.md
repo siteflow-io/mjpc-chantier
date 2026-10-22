@@ -589,3 +589,8 @@
 - **Relecteur neuf** lancé sur le §12.18 (rel21).
 - **Compte** : 170 lignes, dont 154 réglées, 1 pas réglée (L177), 9 écartées, 6 à Paul, 0 ouverte.
 - **Bancs** sur `586b5779` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0315-site-E4`).
+
+## Poussée 66 — 03:30 UTC
+- **Réveil n°15 lu** (main fusionnée, `-X theirs`). Il demande « 0 pas réglée (88301b93) » si les cinq d'E1 sont vertes.
+- **Elles ne le sont pas toutes** : 161, 164, 172, 173 réglées (poussée 65) ; **177 pas réglée sur `88301b93`**, revérifiée aux deux tailles, sur le hub frais comme après la clôture du lundi. Le mercredi, l'EDT met L'Albatros 1/3 au vendredi 18, l'Atelier y met la Poésie, et « Lancer » vise la case « fil langue » du mercredi 10 h 07. La garde A31 d'E1 ne lit que l'Atelier ; les trois sources sont chez E2. Captures `relecteurs/final-0315/l177-*`.
+- **Le signal « 0 pas réglée » n'est donc pas écrit.**

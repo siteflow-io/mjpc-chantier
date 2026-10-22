@@ -352,3 +352,6 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 
 ## 22/10, 23:03 (Paris) — retour 10 : réveil n°29, rien à coder
 - Réveil n°29 : vu (code inchangé, candidat `b8a11d55`). Rien d'ouvert chez moi, module intact. Retour reprogrammé (50 min).
+
+## 22/10, 23:54 (Paris) — retour 11 : réveil n°30 et §12.24
+- Réveil n°30 : vu, rien à coder. **§12.24 (la diapo du bilan, prompt v0.7) — vérifié** : `travail` de la dernière heure est bien proposé au T-5 dans la fin d'heure comme pour toute heure — `ouvrirFin` lit `dr_travail()[S.si + '|' + S.heure]` (`dr-classe.js` l. 288) sans condition sur `derniere`, l'étape 3 l'affiche cochée « Ce que la trame prévoyait pour cette heure : … » (l. 302, `#f-prevu`, décochable l. 335), `texteTravail` (l. 362) le met dans le cahier de textes et la copie ED, `dr_travailHeure` (l. 620) dans le paquet (`prevuTexte`). Le bilan ne le redisant plus, rien ne manque : la seule source du travail prévu à la dernière heure est `deroule.travail["N"]`. Pas de code. Retour reprogrammé (50 min).

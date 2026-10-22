@@ -19153,12 +19153,21 @@ function troisTemps(html, h, fin, depuis){ /* (d) 2 · 1.2 ter et quater — les
   /* le verdict : l'activité en cours au passage au cahier (ou la dernière vue) */ const last = acts[acts.length - 1]; const auCahier = (S.closes && S.closes[h]) || J.some(x => dr_dansLH(x, h) && x.type === 'diapo' && E[x.di] && E[x.di].role === 'fin'); /* (E4 · relecteur 1) le verdict porte sur l'activité en cours au passage au cahier : pas avant (cadrage 2 · 1.2 quater) */ if (last && auCahier) { const e0 = E[JH[JH.length - 1].di]; const a = actDe(e0); if (!a) { const di0 = JH[JH.length - 1].di; const v = document.createElement('p'); v.className = 'rt verdict'; v.innerHTML = finie(e0, di0) ? 'Et on l\'a terminée.' : 'Mais on ne l\'a pas terminée.'; out.push(v); } /* (E4 · relecteur continu B3) une trame sans activités : le verdict porte sur la diapo en cours (cadrage 2 §1.2 quater) */ if (a) { const diapos = a.diapos.filter(i => ordreHeure(h).includes(i)); const toutes = diapos.every(i => finie(E[i], i)); const min = tempsActivite(a); const v = document.createElement('p'); v.className = 'rt verdict'; v.innerHTML = toutes ? 'Et on l\'a terminée.' : (min >= 1 && min <= 5 ? 'Mais on ne l\'a pas terminée — tout juste commencée.' : 'Mais on ne l\'a pas terminée.'); out.push(v); } }
   ps.forEach(x => x.remove()); const ancre = rec.querySelector('p.cadre'); let cur = ancre; out.forEach(el => { if (cur && cur.parentElement === rec) { cur.insertAdjacentElement('afterend', el); cur = el; } else rec.appendChild(el); });
   return d.innerHTML; }
+/* contrat §12.20 : la fin réelle de l'heure h — `S.finReel` (l'heure de la page, écrite par E2 au « Clore »), `S.heuresCours[h].finReel`, sinon l'horodatage de la clôture (`S.closes[h]`) ; { enCours } tant que l'heure de la page n'est pas close */
+function dr_recitFinReel(h){
+  if (typeof S === 'undefined') return { t: null, enCours: false };
+  if (S.lancee && !S.close && +h === +S.heure) return { t: null, enCours: true };
+  const hc = (S.heuresCours || {})[h] || {};
+  const t = (+h === +S.heure && S.finReel) || hc.finReel || (S.closes && S.closes[h]) || null;
+  return { t, enCours: false };
+}
 function recitHtml0(fin, h, bornes){ h = h || S.heure; const finHeure = (S.closes && S.closes[h]) || fin;
   /* (d) l'ancien « figé » retiré : le sélecteur composé | ma version le remplace */
   const hm = t => hhmm(t).replace(':', ' h ');
   const JH = J.filter(x => dr_dansLH(x, h)); const dateJour = dr_recitHeure(h).jour;
   const p = [`<h2>Ce qu'on a fait aujourd'hui</h2>`, `<p class="sous">${[dr_recitClasseNom(), dr_recitChapitre() + ', ' + dr_recitSeanceTitre(), dateJour + ' · heure ' + h].filter(Boolean).map(esc).join(' · ')}</p>`];
-  const debut = JH.length ? JH[0].t : now(); const finCr = (dr_recitHeure(h) || {}).fin; /* (E4 · relecteur 1) cadrage 2 · 1.1 : « la fin du créneau » — lisait finHeure (maintenant, en cours d'heure) */ p.push(`<p class="cadre">Cette heure a commencé à <b>${hm(debut)}</b> et s'est terminée à <b>${finCr ? String(finCr).replace(':', ' h ') : hm(finHeure)}</b>.</p>`);
+  const debut = JH.length ? JH[0].t : now(); const finCr = (dr_recitHeure(h) || {}).fin; const fr = dr_recitFinReel(h); /* contrat §12.20 (Paul, 22/10 09:31) : l'heure réelle de « Clore » (H.finReel d'E2) ; l'entête garde le créneau ; en cours, pas d'heure de fin */
+  p.push(fr.enCours ? `<p class="cadre">Cette heure a commencé à <b>${hm(debut)}</b> ; elle est en cours.</p>` : `<p class="cadre">Cette heure a commencé à <b>${hm(debut)}</b> et s'est terminée à <b>${fr.t ? hm(fr.t) : finCr ? String(finCr).replace(':', ' h ') : hm(finHeure)}</b>.</p>`);
   const diapos = JH.filter(e => e.type === 'diapo'); const vus = {}; diapos.forEach(e => { vus[e.di] = vus[e.di] || e.t; }); let ordre = Object.keys(vus).map(Number).sort((x, y) => vus[x] - vus[y]); if (bornes) ordre = ordre.filter(di => (bornes.avant == null || vus[di] < bornes.avant) && (bornes.apres == null || vus[di] > bornes.apres));
   let rang = 0, nbFiches = 0, nbQuestions = 0, nbImages = 0, nbRappels = 0; /* (E4 · R2) + nbRappels */ const eleves = {}; const dejaCite = {};
   const majApresPoint = t => t.replace(/((?:[.!?]\s+|[.!?]\s*»\s+)(?:<[^>]+>)*)([a-zà-ÿ])/g, (_, x, y) => x + y.toUpperCase()); /* (relecteur continu B) la majuscule aussi quand le mot suivant est en gras (« … ». <b>un élève</b> ») */ /* (E4 · relecteur neuf du site) lisait [.!?»] : « Le « je » Y est partout » — un guillemet fermant en pleine phrase n'ouvre pas une phrase */

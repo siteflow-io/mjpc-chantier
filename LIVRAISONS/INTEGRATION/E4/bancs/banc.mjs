@@ -315,6 +315,23 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   verif('RC6', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte', JSON.stringify(o.errs)); await cap(pg, 'E4-RC6-gras-souligne'); await o.ctx.close(); }
 else verif('RC6', null, 'R6 Ctrl+B / Ctrl+U', 'se mesure sur le site');
 
+// ═════ RC7 · contrat §12.20 : la fin dite par le récit = l'heure réelle de « Clore » ; en cours, pas d'heure de fin ═════
+if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg; await lancer(pg);
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:20:00+02:00')); await p(pg, 600);
+  const enCours = await pg.evaluate(() => { const d = document.createElement('div'); d.innerHTML = recitHtml0(now(), S.heure); return (d.querySelector('.cadre') || {}).textContent || ''; });
+  verif('RC7', /elle est en cours/.test(enCours) && !/terminée/.test(enCours), 'l\'heure en cours : le récit ne dit pas d\'heure de fin (« elle est en cours »)', enCours);
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:47:30+02:00')); await p(pg, 2500);
+  for (let n = 1; n <= 7; n++) { const t = await pg.evaluate(() => (document.querySelector('.pp-tete') || {}).innerText || ''); if (/étape 7 sur 7/.test(t)) break; const b = await pg.$('#f-suivante:not([disabled])'); if (!b) break; await b.click(); await p(pg, 700); }
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:49:00+02:00')); await p(pg, 600);
+  await pg.locator('#f-clore:visible').first().click().catch(() => {}); await p(pg, 1200); if (await pg.$('#gclore-oui:visible')) { await pg.click('#gclore-oui'); await p(pg, 1500); }
+  const v = await pg.evaluate(() => ({ close: !!S.close, fin: S.finReel ? hhmm(S.finReel) : null }));
+  await relecture(pg); const r = await texteRel(pg); const cadre = (r.match(/Cette heure a commencé[^.]*\./) || [''])[0];
+  verif('RC7', v.close ? /s'est terminée à 09 h 49/.test(cadre) && !/09 h 52/.test(cadre) : null, 'l\'heure close à 09:49 dans le créneau 08:57-09:52 : le récit dit « s\'est terminée à 09 h 49 » (H.finReel), pas la fin du créneau', JSON.stringify({ v, cadre }));
+  const ent = await pg.evaluate(() => (document.getElementById('hou') || {}).textContent || '');
+  verif('RC7', v.close ? /08:57-09:52/.test(ent) : null, 'l\'entête garde le créneau (08:57-09:52)', ent);
+  verif('RC7', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte', JSON.stringify(o.errs)); await cap(pg, 'E4-RC7-fin-reelle'); await o.ctx.close(); }
+else verif('RC7', null, '§12.20 la fin réelle', 'se mesure sur le site');
+
 // ═════ B3 · le relecteur continu B3 (14:05) : l'heure fantôme, le bloc libre, le verdict sans activités, le point après « », l'étiquette vide ═════
 if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   await pg.evaluate(() => { try { dr_aller(1); } catch (e) {} }); await p(pg, 400); await pg.click('#bdev').catch(() => {}); await p(pg, 300); await pg.evaluate(() => { try { dr_aller(0); } catch (e) {} }); await p(pg, 300);

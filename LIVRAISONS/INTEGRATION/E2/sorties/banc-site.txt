@@ -1,4 +1,4 @@
-banc E2 — la classe et l'heure · 2026-10-21 23:56 UTC · index.html md5 51e8ac214297fb6fd73312e19646de9a · 2266667 o
+banc E2 — la classe et l'heure · 2026-10-22 00:15 UTC · index.html md5 416abd1ec49d4584e198a83ef291a610 · 2268262 o
 
 B1 — la case de l'emploi du temps
   ok     B1 · la case de 3E Charles de Gaulle (lun. 14/09, 08:57-09:52) dit « heure 2/3 » de la séance 0 (F2, dette 13 · 26) — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 2/3
@@ -14,7 +14,7 @@ B1 — la case de l'emploi du temps
 
 B2 — lancer en un clic, dévoiler, faire parler ; le paquet de l'heure ; les écritures (K15)
   ok     B2 · l'heure est lancée (S.lancee, journal « lancement ») — 3E Charles de Gaulle · 08:57-09:52 · heure 2/3
-  ok     B2 · le chrono tourne — S.ecoule = 7
+  ok     B2 · le chrono tourne — S.ecoule = 6
   ok     B2 · ▶ ×3 (dévoiler, puis la diapo suivante) et une parole sont au journal — lancement diapo devoile devoile diapo parole
   ok     B2 · le paquet H : classe, créneau, début réel — 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
   ok     B2 · le paquet H : activites[0].passages ≥ 1 — {"n":4,"eid":"emt9v3yqoqmqnf","act":"Tableau 3","prevu":5,"reel":1,"passages":1,"comp":["litt-036","litt-037","litt-038","c4-lire-02","tr-personne-02"]}
@@ -30,7 +30,7 @@ B4 — la fin de l'heure (T-5 = fin − 10 min), les sept étapes, la clôture
   ok     B4 · étape 2 : une carte par diapo restante, à décider (réveil n°3, 3) — 5 cartes · Diapo 3 — Tableau 4 | Diapo 4 — Tableau 5
   ok     B4 · les sept étapes se parcourent — Fin de l'heure — étape 7 sur 7 : clore l'heure Préparer le cahier de t
   ok     B4 · l'étape 7 clôt l'heure (S.close, journal « cloture »)
-  ok     B4 · le paquet H est clos (clos, finReel) — {"clos":true,"finReel":1789371727535}
+  ok     B4 · le paquet H est clos (clos, finReel) — {"clos":true,"finReel":1789371727552}
   ok     B4 · cours_actif est effacé
   ok     B4 · après la clôture (quelques diapos jouées), la case du mardi garde la séance : « heure 3/3 » (F2, réveil n°3, 1) — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 3/3
       écritures de la clôture : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat · PUT /site/cours_actif · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<H> · PUT /site/edt/photos/2026-2027
@@ -44,12 +44,12 @@ B3 — la reprise (recharger en pleine heure, mêmes écritures relues)
   ok     B3 · étape 6, « Copier le contenu de séance » : le texte simple garde ses paragraphes (aucune phrase collée à la suivante), le HTML ses <p> — l'outil d'E4, comme la Relecture (réveil n°5, A4-1) — {"lignes":7,"colle":[],"p":5,"debut":"Ce qu'on a fait aujourd'hui\n\n3E Charles de Gaulle · Poésie et peinture au XIXe siècle, Poésie et peinture : le Romantism"}
   ok     B3 · la bannière « un cours est en cours » (celle d'aujourd'hui) — Un cours est en cours avec 3E Charles de Gaulle. Reprendre le cours Plus tard
   ok     B3 · la diapo courante est revenue — {"avant":"emt9v3yqon4gew","apres":"emt9v3yqon4gew"}
-  ok     B3 · la reprise garde le temps de l'activité en cours (relecteur neuf n°3, 4 : la coupure part de la dernière trace de vie, l'état battu chaque minute) — 67 s → 76 s
+  ok     B3 · la reprise garde le temps de l'activité en cours (relecteur neuf n°3, 4 : la coupure part de la dernière trace de vie, l'état battu chaque minute) — 66 s → 76 s
   ok     B3 · la reprise remonte l'heure telle qu'elle était : heure 2/3, les frontières de chaque diapo, le volet et ses « H2 », l'entête, les activités de l'heure et leurs numéros (réveil n°4, point 3 ; E4 ligne 129, le geste A5 : lancer, dévoiler, recharger, « Reprendre le cours ») — {"avant":{"h":2,"sur":3,"heures":"1 1 1 F1 2 2 2 2 2 2 2 F2 3 3 3 3 3 3 3 3 F3","titre":"Heure 2 · 8 diapos","hou":"3E Charles de Gaulle · 08:57-09:52 · heure 2/3","copies":1,"acts":"1 Où en sommes-nous ? — retouché en classe (B3) | 2 Tableau 3 | 3 Tableau 4 | 4 Tableau 5 | 5 Les hypothèses de la classe | 6 Question-bilan | 7 Les règles héritées","vigH":"H2,H2,H2,H2,H2,H2,H2,H2"},"apres":{"h":2,"sur":3,"heures":"1 1 1 F1 2 2 2 2 2 2 2 F2 3 3 3 3 3 3 3 3 F3","titre":"Heure 2 · 8 diapos","hou":"3E Charles de Gaulle · 08:57-09:52 · heure 2/3","copies":1,"acts":"1 Où en sommes-nous ? — retouché en classe (B3) | 2 Tableau 3 | 3 Tableau 4 | 4 Tableau 5 | 5 Les hypothèses de la classe | 6 Question-bilan | 7 Les règles héritées","vigH":"H2,H2,H2,H2,H2,H2,H2,H2"}}
   ok     B3 · la reprise relit la copie de la classe (C/ecrans) telle qu'elle est au hub : ce qui a été changé en classe revient (réveil n°6, E4 ligne 110, ma part) — true
   ok     B3 · une copie pour École Directe avant le rechargement = un seul « copie-ed » au journal après la reprise (réveil n°4, point 7) — 1 → 1
   ok     B3 · le chrono (± 2 s) : le temps écoulé depuis le début réel au hub — {"apres":76,"attendu":76}
-  ok     B3 · la parole et les notes sont là — {"avant":{"di":9,"eid":"emt9v3yqon4gew","parts":1,"notes":1,"ecoule":67},"ap":{"lancee":true,"di":9,"eid":"emt9v3yqon4gew","parts":1,"notes":1,"ecoule":76}}
+  ok     B3 · la parole et les notes sont là — {"avant":{"di":9,"eid":"emt9v3yqon4gew","parts":1,"notes":1,"ecoule":66},"ap":{"lancee":true,"di":9,"eid":"emt9v3yqon4gew","parts":1,"notes":1,"ecoule":76}}
 
 B3b — lancer par la case (séance 1, sans eid au hub), recharger, « ▶ Reprendre le cours » dans la case
   ok     B3b · la case de l'heure lancée propose « ▶ Reprendre le cours »
@@ -112,7 +112,8 @@ B13 — décider à la fin de l'heure puis jouer : la décision tombe ; l'étape
   ok     B13 · la liste : « ce qui reste (n à décider) » compte ce que Paul n'a pas décidé — les deux diapos décidées en moins (E4 ligne 122, A4-5) — ○ 2 · ce qui reste (4 à décider) · 6 activités dans l'heure
   ok     B13 · étape 3 : « à faire : » nomme la diapo partie à la maison par son titre (« Les hypothèses de la classe »), plus « rien choisi » — Travail à faire pour la prochaine fois préparer : Tableau 4 (reprise en classe) · à faire : Les hypothèses de la classe · Ce que la trame prévoyait pour cette heure : rien de prévu Apprendre les notio
   ok     B13 · la décision « préparer » prise à la fin de l'heure tombe quand sa diapo est jouée jusqu'au bout (journal « decision-levee »), le travail à faire ne la garde pas ; l'autre décision reste (C1 7.0 ter) — {"dec":false,"tt":"Pour la prochaine séance (mardi 15 septembre) — Faire « Les hypothèses de la classe » : Chaque groupe présente son tableau et son hypothèse en quatre minutes. Pendant ce temps, la classe prend des notes. 1. Je note pour chaque tableau : le titre et le peintre, ce que le groupe a vu, l'hypothèse qu'il en tire. 2. Je note à ma façon, sans recopier mot à mot : des mots, des flèches, des abréviations. 3. À la fin, j'ai cinq blocs de notes — un par tableau.","lev":1,"b":true}
-  ok     B13 · « Préparer le cahier de textes » : le volet réduit à ses numéros, « Où on en est » dit la diapo où la classe est gelée (réveil n°11, E4 ligne 152 ; C1 7.0 ter) — {"prep":true,"mini":false,"ou":"Tableau 4 — la classe y est (gelée pendant la préparation)","gel":"Tableau 4"}
+  ok     B13 · en préparation, le cahier de textes s'affiche entier chez Paul (ses quatre éléments), la classe gelée sur sa diapo (réveil n°12, E4 ligne 162 ; C1 6.4 bis, 7.0 ter) — {"mur":"CAHIER DE TEXTES — LUNDI 14 SEPTEMBRE 2026, 08 H 57 – 09 H 52 Collège Saint-Joseph Cahier de textes (3 Charles de Gaulle) PRENEZ VOS AGENDAS — POUR MARDI 15 SEP","nDev":4}
+  ok     B13 · « Préparer le cahier de textes » : le volet réduit à ses numéros, « Où on en est » dit la diapo où la classe est gelée (réveil n°11, E4 ligne 152 ; C1 7.0 ter) — {"prep":true,"mini":false,"ou":"Tableau 4 — la classe y est (gelée pendant la préparation)","gel":"Tableau 4","mur":"CAHIER DE TEXTES — LUNDI 14 SEPTEMBRE 2026, 08 H 57 – 09 H 52 Collège Saint-Joseph Cahier de textes (3 Charles de Gaulle) PRENEZ VOS AGENDAS — POUR MARDI 15 SEP","nDev":4}
   ok     B13 · aucune erreur JS
 
 B14 — F2 sur un absent ; deux élèves aux mêmes initiales ; « Lancer » après la clôture, page rechargée

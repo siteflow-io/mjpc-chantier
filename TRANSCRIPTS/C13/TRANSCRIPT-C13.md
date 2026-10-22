@@ -2395,3 +2395,23 @@ Réponse de la conscience (13:54), mot pour mot :
 
 22/10/2026 13:54
 MEMO
+
+## TOUR 115 (22/10/2026, 13:59 → 14:02)
+
+Paul (13:59), mot pour mot :
+« Non mais alors la réactivation étant essentiellement commandée par ce qui s'est fait réellement en classe, il faut absolument que cette diapo ne soit jamais en dur. De plus, il faut que ce soit au choix , et non systématique. Que proposes-tu ? »
+
+Réponse de la conscience (14:02), mot pour mot :
+
+254. **Compris : la réactivation n'est jamais écrite d'avance, et elle est à ton choix.** Voici ma proposition, en quatre points à valider.
+
+255. **Dans le prompt** : la conversation qui crée le chapitre **n'écrit aucune diapo de réactivation** (plus de « Où en sommes-nous ? » dans la trame, plus de rôle « réactivation » dans le fichier). Les deux « Où en sommes-nous ? » de ton chapitre 3e sont retirées de la trame par E4 quand il la réécrit au contrat.
+
+256. **Dans le site, une diapo construite sur place** — comme la diapo de fin d'heure, que le site remplit en classe avec ce qui s'est vraiment passé : à l'ouverture de l'heure 2 (et suivantes), le site compose la diapo de réactivation d'après l'heure d'avant **telle qu'elle a été jouée** : les activités faites (leur numéro, leur titre), ce qui a été décidé (ce qui glisse, ce qui est à reprendre), les notions travaillées, le travail à faire qui avait été donné. Tout ça, le site le sait déjà (c'est ce qu'il te montre sur ton écran « Où en est la classe » et ce qu'il met dans le récit) : il le montre à la classe, élément par élément, avec ▶ — tu t'en sers comme tu veux (faire deviner, faire relire, passer).
+
+257. **Au choix, pas systématique** : au moment de lancer l'heure, sur l'écran « Où en est la classe », un bouton « Ouvrir par la réactivation » — oui ou non, à chaque heure, selon ce que tu vois ; et dans l'Atelier, un réglage par séance qui fixe la réponse proposée par défaut. Si tu dis non, l'heure s'ouvre directement sur ce qui glisse et le programme.
+
+258. **Quand** : le prompt change tout de suite (c'est un texte) ; la diapo construite et le bouton sont du code nouveau dans le site, donc après le promeus, par E2 et E4 (c'est leur territoire : l'ordre de l'heure et le récit), en premier du reste du déroulé. Dis « ok » ou corrige, et j'écris la règle au contrat.
+
+22/10/2026 14:02
+MEMO

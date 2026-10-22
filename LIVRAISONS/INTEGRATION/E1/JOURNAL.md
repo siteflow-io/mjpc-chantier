@@ -358,3 +358,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - *(20:32 Paris / 18:32 UTC, session relancée `session_01SJugtYPR9HQMhdGxCX8TzW`) Dernier retour : la conscience garde la session d'avant (réveil n°27) ; rien de neuf, aucun module changé (banc de la conscience vert sur `b8a11d55`, md5 `003e0eef…`). Je ne reprogramme pas de retour ; cette session s'arrête. Ses sorties restent (`E1/sorties/1822-r26/`).*
 - *(18:52 UTC) Réveil n°27 lu : la conscience garde cette session, seule E1 (la session relancée s'est arrêtée). Rien d'ouvert ; prochain retour 19:42 UTC.*
 - *(19:44 UTC) Réveil n°28 lu : le candidat au promeus est `b8a11d55` (= `c8bf7b61`), il porte mon import (`fil`, §12.23) ; rien à faire, aucun module changé. Prochain retour 20:34 UTC.*
+- *(20:36 UTC) Réveil n°29 lu : rien à faire, code inchangé (candidat `b8a11d55`). Prochain retour 21:26 UTC.*

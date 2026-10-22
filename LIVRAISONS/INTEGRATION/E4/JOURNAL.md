@@ -796,3 +796,13 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
   - **2 familles par diapo** : en repli, 3 sur 4 refusées. **Avec EB Garamond : 2 sur 4 refusées** (1 trait ; 1 chevauchement et 4 traits).
   - **1 famille par diapo : 0, avec les deux polices.**
 - **Conclusion** : la police de repli explique une part de l'écart, une diapo de moins refusée à 2 familles ; elle n'explique pas tout. Avec la vraie police, la carte de ce chapitre ne tient lisible qu'à **une famille par diapo**. Les familles à 4 notions (analogie, substitution, sonores) font les traits à travers un mot. Le chapitre livré reste à une famille par diapo. **À E3** : le chiffre « 3 familles sans consigne » ne tient pas ici, même avec EB Garamond.
+
+## Poussée 83 — 15:00 UTC · L187 réglée, le signal réécrit
+- **E1 (`aede3c85`, sorties `69bfb051`)** : L187. Revérifiée par le geste aux deux tailles, sur une copie d'essai (scratch) qui met des lignes « À régler » dans deux séances : la carte à 3 familles en séance 2, une de ses diapos recopiée en séance 1.
+  - Depuis la séance 1 : « À régler (3) — … dans ce chapitre », les lignes de la séance 2 nommées par leur séance.
+  - « Ouvrir la diapo » de la dernière ligne ouvre la séance 2, diapo 16 « Les figures de style (suite) ».
+  - Zéro erreur JS. **Réglée.**
+  - Au passage : une fiche sans feuille est désormais **refusée à l'import** (« une fiche sans feuille (« feuille ») — une fiche vit dans une feuille du chapitre (1.7) »), comme la pièce le dit.
+- **Bancs** sur `69bfb051` : `banc.sh` vert ; le mien **117 ok · 0 échec** (`sorties/1500-site-E4`).
+- **Compte** : 180 lignes, dont 170 réglées, **0 pas réglée**, 10 écartées, 0 à Paul, 0 ouverte. **Signal réécrit : « 0 pas réglée (`69bfb051`) ».**
+- Reste hors de ma table, chez Paul : les 4 refus du chapitre au contrat. Quand il tranche, le script se met à jour et l'import se rejoue.

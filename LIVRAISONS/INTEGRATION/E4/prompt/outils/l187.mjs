@@ -1,0 +1,17 @@
+import { ouvrir, nav } from './entree2.mjs';
+import fs from 'node:fs';
+const W=+process.argv[2]||1366,H=+process.argv[3]||768;
+const o = await ouvrir({largeur:W,hauteur:H,hub:JSON.parse(fs.readFileSync(`hub-apres-import-${W}.json`,'utf8'))}); const pg=o.pg;
+await pg.evaluate(()=>{const b=document.querySelector('.at-onglet[data-vue="structure"]'); if(b) b.click();}); await pg.waitForTimeout(1000);
+await pg.locator('button:visible',{hasText:'Mes chapitres'}).first().click(); await pg.waitForTimeout(1500);
+await pg.locator('[onclick="atEditerChapitre(\'3e\',\'1\')"]:visible').first().click(); await pg.waitForTimeout(2500);
+await pg.evaluate(()=>{const b=document.querySelector('.at-onglet[data-vue="atelier"]'); if(b) b.click();}); await pg.waitForTimeout(1500);
+console.log('séance ouverte:', await pg.evaluate(()=>S.si+' · '+seance().titre));
+const b = pg.locator(':is(button,[onclick],span):visible', {hasText:/^À régler \(/}).first(); console.log('compteur:', (await b.innerText()).slice(0,16)); await b.click(); await pg.waitForTimeout(900);
+console.log('LISTE:', JSON.stringify(await pg.evaluate(()=>{ const z=Array.from(document.querySelectorAll('div')).filter(x=>x.offsetParent&&/^À RÉGLER/.test((x.innerText||'').trim())).sort((a,b)=>a.innerText.length-b.innerText.length)[0]; return z ? [z.innerText.split('\n')[0]].concat(z.innerText.split('\n').filter(l=>/ — /.test(l)&&/diapo \d+/.test(l)).map(l=>l.slice(0,150))) : []; }),null,1));
+await pg.screenshot({path:`l187-liste-${W}.png`});
+const ouv = pg.locator(':visible', {hasText:/^Ouvrir la diapo$/}); console.log('boutons « Ouvrir la diapo »:', await ouv.count());
+await ouv.last().click(); await pg.waitForTimeout(2000);
+console.log('après « Ouvrir la diapo » (dernière ligne):', await pg.evaluate(()=>S.si+' · '+seance().titre+' · diapo '+(S.di+1)+' « '+(ecran()||{}).act+' »'));
+await pg.screenshot({path:`l187-ouvrir-${W}.png`});
+console.log('ERRS',o.errs,'BOITES',o.boites); await nav.close();

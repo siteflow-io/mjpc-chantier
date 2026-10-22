@@ -13608,6 +13608,8 @@ function chCalculerEcritures(voie,chaps){
       if(!vide&&!dejaRempli)
         ecritures.push({chemin:base+'/'+idx+'/'+ch2,val:v,quoi:'d\u00e9claration du chapitre ('+ch2+')'});
     });
+    /* E1 (réveil n°25) : le fil « langue » s'écrit aussi par Compléter (Remplacer, Jumeau et le chapitre neuf le recopient avec le chapitre) */
+    if(o.chapitre.fil==='langue'&&cible.fil!=='langue')ecritures.push({chemin:base+'/'+idx+'/fil',val:'langue',quoi:'d\u00e9claration du chapitre (fil \u00ab langue \u00bb)'});
   }
   if(!cible){
     var n2=atP2NormaliserSeances(JSON.parse(JSON.stringify(o.chapitre)));   /* E1 (§12.21) */
@@ -19845,6 +19847,8 @@ function atP2NormaliserBloc(b){
 function atP2EstBilan(e){ return !!e&&(e.role==='bilan'||(!e.role&&/bilan/i.test(String(e.act||'')))); }
 function atP2Heure(e){ var h=parseInt(e&&e.heure,10); return h>0?h:1; }
 function atP2ValiderDeroule(o,V,taxo){
+  /* E1 (réveil n°25, pièce v0.5 §1.1) : le chapitre du fil « langue » le dit à sa racine — lu par l'EDT (edtChapitreEnCours, ch.fil) */
+  if(o&&o.chapitre&&o.chapitre.fil!==undefined&&o.chapitre.fil!=='langue')V.cite(o.chapitre.title||'le chapitre',': « fil » ne vaut que « langue », ou s’omet.');
   var ses=(o&&o.chapitre&&o.chapitre.seances)||[]; if(!Array.isArray(ses))return;
   var ids=(taxo&&typeof chIdsTaxo==='function')?chIdsTaxo(taxo):null;
   var cles={},nums=[];

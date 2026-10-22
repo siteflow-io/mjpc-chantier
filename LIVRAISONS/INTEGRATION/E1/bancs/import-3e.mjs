@@ -42,6 +42,7 @@ export const MUTATIONS = [
   ['actSansDiapo', 'une activité sans diapo', ': une activité sans diapo.', j => { const A = s1(j).deroule.activites; A.push({ id: 'a99', num: A[A.length - 1].num + 1, titre: 'Orpheline' }); }],
   ['heureEntier', '« heure » non entière', ': « heure » n’est pas un nombre entier.', j => { E0(j)[1].heure = 1.5; }],
   ['schemaSansTitre', 'un schéma sans le champ « titre » (le « txt » de la v0.2)', 'un schéma sans « titre ».', j => { const b = blocDe(E1(j), 'schema'); b.txt = b.titre; delete b.titre; }],
+  ['fil', 'un « fil » autre que « langue »', ': « fil » ne vaut que « langue », ou s’omet.', j => { j.chapitre.fil = 'grammaire'; }],
   ['feuilleInconnue', 'une fiche dont la feuille ne nomme aucun item du chapitre', ': une fiche sans feuille (« feuille ») — une fiche vit dans une feuille du chapitre (1.7).', j => { blocDe(E1(j), 'fiche').feuille = 'pas-un-item'; }],
   ['bilan2', 'deux bilans', ': deux bilans — le bilan est unique et dernier.', j => { E0(j)[2].role = 'bilan'; }],
   ['bilanDernier', 'le bilan n\'est pas la dernière diapo', ': le bilan n’est pas la dernière diapo de la séance.', j => { const E = E0(j); const x = E.pop(); E.splice(E.length - 1, 0, x); }],

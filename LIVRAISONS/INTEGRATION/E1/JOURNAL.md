@@ -333,3 +333,8 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **Banc A34** (faux hub, chapitre 3e, séance 0 ouverte) : **rouge avant** — « À régler (18) », 18 lignes, la séance 0 seule (`a34-avant.txt`) ; **vert après** — « À régler (102) », 102 lignes, dont 77 diapos sans activité hors de la séance ouverte ; « Ouvrir la diapo » d'une ligne de la séance 1 : séance 1, sa diapo, la carte ouverte ; aucune erreur JS.
 - Hors L187, dit : « Pages HTML » et « objets manquants à l'éditeur » (même carte, `dr-socle.js:974`) comptent encore la séance ouverte seule — même défaut, non demandé ici ; je le règle si la conscience le veut.
 - **Bancs sur `bb633a0c`** (sorties `E1/sorties/1419/`, avec `a34-avant.txt`) : **banc de la conscience VERT** — collisions 0, parcours vert ×2, K1-K13 0 défaut ; **banc E1 : 253 vérifications, 0 échec**. E4 peut revérifier L187 sur cette tête.
+
+## 15:33 UTC — réveil n°25 · `fil` à la racine du chapitre (pièce v0.5 §1.1)
+- La validation : `chapitre.fil` vaut « langue » ou s'omet ; toute autre valeur : « … : « fil » ne vaut que « langue », ou s'omet. » (mot pour mot).
+- L'écriture : **Compléter** écrit `/site/<niveau>/chapitres/<k>/fil` quand le fichier le porte et que le chapitre ne l'a pas encore (`chCalculerEcritures`, montré par la garde, comme `entree`). **Remplacer, Jumeau et le chapitre neuf** le recopiaient déjà avec le chapitre brut — vérifié, pas changé. Lu par l'EDT (`edtChapitreEnCours`, E2).
+- **A33 : 5 contrôles de plus** (le chapitre « fil langue » passe ; le refus ; Compléter, Remplacer, Jumeau écrivent `fil`) — **rouge avant 2/52** (le refus, et Compléter qui n'écrivait pas `fil` ; `a33-avant-fil.txt`), **vert après 52/0**.

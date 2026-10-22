@@ -1,0 +1,1 @@
+EB Garamond (OFL 1.1, paquet npm @fontsource/eb-garamond 5.3.0) — la police du tableau (dr-socle.js P8_POLICE, dr.css), que le sandbox des bancs n a pas : mesure-tient.mjs la charge par @font-face pour mesurer avec la vraie police (sans elle, Chromium rend en DejaVu Serif, plus large : la mesure serait pessimiste). Rien du site ne la lit ici.

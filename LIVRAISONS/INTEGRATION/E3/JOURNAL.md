@@ -231,3 +231,6 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 
 ## 22/10, 21:05 — retour 7 : réveil n°27 lu
 - Rien à faire ; code et assemblé inchangés (`003e0eef…`) : le banc de 18:23 (105/105) vaut.
+
+## 22/10, 21:57 — retour 8 : réveil n°28 lu
+- Rien à faire ; code et assemblé inchangés (`003e0eef…`), candidat `b8a11d55` : le banc de 18:23 (105/105) vaut.

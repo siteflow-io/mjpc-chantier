@@ -2530,3 +2530,20 @@ Réponse de la conscience (17:53), mot pour mot :
 
 22/10/2026 17:53
 MEMO
+
+---
+
+## Tour 123 — 22/10/2026 18:19 — réveil n°26 (18:06, programmé au tour 122)
+
+**Mesuré.** `git pull` integration : tête `6d19ef74` (code `61245b22`, E4 §12.23 : L188, le récit dit « sans réponse écrite » ou la réponse écrite en classe ; E2 retour 4 17:50 ; E3 retour 3 17:32). `E4/NOTE.md` §10 : 181 lignes, 171 réglées, 0 pas réglée, 10 écartées, 0 à Paul, 0 ouverte ; signal « 0 pas réglée (`61245b22`) ». Banc `banc-1805` sur `6d19ef74` : collisions 0, parcours P0-P12 vert ×2, K1-K13 108 vérifications 0 échec, « résultat : VERT » ; assemblé restauré ; 2 297 141 octets, md5 `022fc8a832bcc11c963a0f16b3827103`. `list_triggers` : retours E2 (18:41) et E3 (18:23) seuls ; E1 silencieuse depuis 16:40 → relancée comme session neuve à 18:19 (`trig_011ymT4HnsQAJLL244c6YY9C`) : `fil` à l'import, §12.23 à l'import. Épreuves `banc-sur-integration-6d19ef74.txt`, `sur-integration-6d19ef74-v22.txt`, EMPREINTES.md5 ; pièces T123-P5/P9/P10. Relances r26 écrites (E1-E4). Audit §0/§6 : le candidat au promeus devient `6d19ef74`.
+
+**Réponse (mot pour mot).**
+
+277. Le déroulé : la version d'aujourd'hui (`6d19ef74`, avec « sans réponse écrite » dans le récit) est maintenant la candidate. E4 l'a signée (0 ligne pas réglée), mon banc est vert dessus. Elle attend ton mot « promeus ».
+
+278. Le prompt : E1 s'était tue après son import ; je l'ai relancée en session neuve à 18:19 pour les deux dernières choses à l'import — le fil « langue » et le bilan sans réponse attendue.
+
+279. Un seul sujet à trancher : le 276 (la diapo du bilan : la question, les éléments « À mettre dans le bilan » au tableau, les notions dans les notes présentateur). J'attends ton ok ou ta correction avant d'écrire la v0.7.
+
+22/10/2026 18:19
+MEMO

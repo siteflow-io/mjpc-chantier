@@ -718,3 +718,39 @@ Lu contre `dr-recit.js`, le socle qu'il lit (`dr-socle.js`) et ma table. Je ne r
 
 Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur pièce (`E4/prompt/`) suit.
 - **Bancs** sur les deux corrections du récit (bilan à son heure, activités refaites par `actId`) : `banc.sh` vert ; le mien **117 ok · 0 échec** (`sorties/1150-site-E4`).
+
+## PROMPT — la preuve sur pièce (E4) — 12:30 UTC, pièce v0.2 (§12.22)
+- **Le chapitre 3e réécrit au contrat** : `E4/prompt/chapitre-3e-au-contrat.json`, produit par `E4/prompt/au-contrat.mjs` (rejouable : `node au-contrat.mjs`) depuis `CONSULTANT/CHAPITRE-1/chapitre-3e-poesie-peinture-final.json`, tête de main.
+  - **Aucune phrase nouvelle vue par l'élève**, sauf « (suite) », demandé par la relance.
+  - Les titres d'activité sont ceux des diapos ou de l'item de la séance ; le travail par heure reprend les consignes existantes mot pour mot.
+- **69 activités, numérotées 1 à 69 sur le chapitre ; 97 diapos.** Ni « Où en sommes-nous ? », ni rôle `reactivation` ou `fin` (§12.22 : les cinq retirées, pas transformées) ; `role: "bilan"` sur les trois bilans en dernière place.
+  - `heure` sur chaque diapo, 50 min utiles au plus ; `comp` et `remob` sur chaque diapo d'activité (`remob` = la famille de la taxonomie, travaillée plus tôt).
+  - `fiche.feuille` sur les six fiches ; `devoilerTout: false` sur chaque schéma.
+  - La carte « Les figures de style » est coupée en **8 diapos d'une famille** : deux familles par carte ne tiennent pas au « À régler » du site après import (« 1 trait à travers un mot », « 1 chevauchement »). C'est ma mesure ; E3 chiffre la limite.
+- **La table avant / après par séance**, et les choix déclarés (`E4/prompt/avant-apres.md`) :
+| séance | avant | après | heures (min utiles) | activités (num titre) | « Où en sommes-nous ? » retirées | bilan | travail (heures) |
+|---|---|---|---|---|---|---|---|
+| intro-peinture | 18 diapos · 110 min | 17 diapos | 2 (50 / 50) | 1 Analyse d'images : la routine ; 2 Les cinq tableaux à analyser ; 3 Les règles héritées ; 4 La frise du siècle ; 5 Placer les poètes ; 6 Le siècle des inventions ; 7 Les mouvements du siècle ; 8 Trois mots pour la frise ; 9 Un poète spécial… ; 10 Baudelaire, 1821-1867 | 1 | oui | 2 |
+| etude-albatros | 17 diapos · 110 min | 23 diapos | 2 (50 / 50) | 11 De la toile au poème ; 12 Écoute et premières impressions ; 13 Le e muet dans le vers ; 14 Les rimes ; 15 L'enjambement ; 16 Les sonorités ; 17 Le portrait de l'oiseau ; 18 Le champ lexical ; 19 La famille des images ; 20 Le registre du poème ; 21 Que dit ce poème du poète ? | 1 | oui | 1, 2 |
+| interro-analyse | 15 diapos · 110 min | 14 diapos | 2 (50 / 50) | 22 Interro de cours ; 23 La méthode d'analyse logique, par cœur ; 24 Entraînement 1 : trois phrases simples… ou pas ; 25 La locomotive : la proposition principale ; 26 Entraînement 2 : le test du point ; 27 Question-bilan ; 28 La subordonnée relative et son antécédent ; 29 Entraînement 3 : trouver l'antécédent ; 30 Le point d'attention : « que » ; 31 Entraînement 4 : relative ou complétive ? ; 32 La subordonnée circonstancielle ; 33 Entraînement 5 : tout mélangé ; 34 Travail en autonomie | 1 | — | 1 |
+| dictee-reecriture | 14 diapos · 110 min | 13 diapos | 2 (50 / 50) | 35 Lecture : « Les Fenêtres » ; 36 Le poème en prose ; 37 Un poème, sans vers ? ; 38 Qui parle, à qui ? ; 39 Le rythme et les images ; 40 La dictée se prépare : le paratexte ; 41 Dictée ; 42 Relecture guidée ; 43 Réécriture ; 44 Analyse logique notée | 1 | — | 1 |
+| atelier-paragraphe | 14 diapos · 110 min | 13 diapos | 2 (50 / 50) | 45 Lecture : « À une passante » ; 46 La forme du sonnet ; 47 La bascule du sonnet ; 48 Le dernier vers ; 49 Trois questions à ne pas confondre ; 50 La récitation se prépare ; 51 Un vers, une idée ; 52 La méthode en quatre étapes ; 53 Le contre-exemple ; 54 À toi d'écrire ; 55 Je me relis, et je fais travailler ma mémoire | 1 | — | 1 |
+| brevet-blanc | 3 diapos · 55 min | 3 diapos | 1 (50) | 56 Le cadre de l'épreuve ; 57 Lecture du sonnet ; 58 Compréhension et interprétation (sur 32) | 0 | — | — |
+| recitation | 6 diapos · 110 min | 6 diapos | 2 (50 / 50) | 59 Ce que la classe évalue ; 60 Les quatre critères ; 61 Les passages ; 62 Reprise des passages | 0 | oui | 1 |
+| remediation | 5 diapos · 85 min | 5 diapos | 2 (37 / 48) | 63 Retour sur le brevet blanc ; 64 Ma dictée, mes erreurs ; 65 Ma réécriture, mes erreurs ; 66 Je m'entraîne sur mes points faibles | 0 | — | — |
+| tache-finale | 3 diapos · 55 min | 3 diapos | 1 (50) | 67 Les repères avant de lire ; 68 Lecture silencieuse ; 69 Étude du texte (sur 32) | 0 | — | — |
+
+- **Les choix déclarés à Paul** (`[PROPOSITION]`) :
+  - les heures de la trame duraient 55 min. Treize heures dépassent 50 ; la diapo d'activité la plus longue de chacune rend l'excès (par exemple « Les hypothèses de la classe » 22 → 17 min ; « Compréhension et interprétation » 45 → 40). La liste complète est dans `avant-apres.md` ;
+  - « Avant de se quitter » (7 diapos) n'est pas un rituel du contrat : chacune ferme l'activité qui la précède (même `actId`) plutôt que d'être une activité numérotée à part ;
+  - la séance Remédiation (85 min sans repère d'heure) est coupée par les durées : heures de 37 et 48 min.
+- **Ma liste du §3 point 5 : 4 écarts, tous à Paul, car aucun ne se règle sans une phrase nouvelle :**
+  - les réponses attendues vides des bilans des séances 1, 2 et 7 (« La réponse validée est recopiée dans le cahier » : la pièce exige une réponse attendue) ;
+  - « Question-bilan » au milieu de la séance 3 (un bilan non dernier, ou le mot « bilan » dans le titre d'une autre diapo).
+- **L'import joué sur le faux hub, aux deux tailles** (tête `34f7c367` ; E1 n'a pas encore poussé 13 · 30 / 13 · 31) :
+  - « 📚 Nouveau chapitre » → coller → « Vérifier » : **« Réponse comprise », aucun refus** ;
+  - « Créer un double » : le chapitre 1 est créé ; la trame est gardée entière (activités, heures, `travail`, `remob`, bilan).
+  - **« À régler » : séance 1 (5), séance 2 (1), séances 3 à 9 (0) : 6 lignes, toutes « Image « … » hors de mjpc-medias ».** L'import ne pose pas `DR_MEDIAS` devant l'adresse relative que la pièce exige : **L186, chez E1**.
+  - Le titre « dans ce chapitre » ne compte que la séance ouverte : **L187, chez E1**.
+  - **La séance « L'Albatros » jouée** (« Jouer en avance — répétition », ▶ au fil de l'heure 1) : « Diapo n sur 9 · heure 1 · activité 11 … 16 », « Activité 14 — Les rimes » au tableau, « Où on en est » A11 à A16 puis le cahier ; zéro erreur JS, aucune boîte. Captures dans `E4/prompt/captures/`.
+- **Compte de la table** : 180 lignes, dont 168 réglées, **2 pas réglées (L186, L187, E1)**, 10 écartées, 0 à Paul, 0 ouverte. Le signal ne se réécrit pas en « 0 » tant qu'elles restent ; le candidat au promeus reste `ef674d4b`.

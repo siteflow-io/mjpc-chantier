@@ -1,0 +1,31 @@
+import { ouvrir, nav } from './entree2.mjs';
+import fs from 'node:fs';
+const W=+process.argv[2]||1366,H=+process.argv[3]||768;
+const o = await ouvrir({largeur:W,hauteur:H,frais:true}); const pg=o.pg;
+const btns = () => pg.evaluate(()=>Array.from(document.querySelectorAll('button,[onclick]')).filter(x=>x.offsetParent).map(x=>'['+(x.getAttribute('onclick')||'').slice(0,40)+'] '+(x.innerText||'').replace(/\n/g,' ').slice(0,50)));
+for (const v of ['structure']) { await pg.evaluate(v=>{const b=document.querySelector(`.at-onglet[data-vue="${v}"]`); if(b) b.click();}, v); await pg.waitForTimeout(1000); }
+let b = (await btns()).filter(x=>/Mes chapitres|chapitres/i.test(x)); console.log('structure, chapitres:', JSON.stringify(b));
+const sortie = pg.locator('button:visible',{hasText:'Mes chapitres'}).first();
+if (await sortie.count()) { await sortie.click(); console.log('clic « Mes chapitres »'); } else { console.log('pas de bouton « Mes chapitres » visible : atEditerChapitreSortie()'); await pg.evaluate(()=>atEditerChapitreSortie()); }
+await pg.waitForTimeout(1500);
+console.log('après sortie:', JSON.stringify((await btns()).filter(x=>/IA|chapitre/i.test(x)).slice(0,10)));
+await pg.screenshot({path:`imp-liste-${W}.png`});
+await pg.locator('[onclick="chOuvrir()"]:visible').first().click(); await pg.waitForTimeout(2500);
+const json = fs.readFileSync('au-contrat.json','utf8');
+console.log('apres chOuvrir:', JSON.stringify((await btns()).slice(0,25))); await pg.screenshot({path:`imp-ch-${W}.png`}); const zone = pg.locator('textarea[placeholder*="Colle ici"]').first(); await zone.scrollIntoViewIfNeeded(); console.log('zone id:', await zone.getAttribute('id')); await zone.click(); await pg.evaluate(t=>{ const z=document.getElementById('ch-coller'); z.value=t; z.dispatchEvent(new Event('input',{bubbles:true})); }, json); await pg.waitForTimeout(300);
+await pg.locator('button:visible',{hasText:'Vérifier'}).first().click(); await pg.waitForTimeout(3000);
+console.log('MSG:', await pg.evaluate(()=>((document.getElementById('ch-msg')||{}).innerText||'').slice(0,1500)));
+console.log('INV:', await pg.evaluate(()=>((document.getElementById('ch-inv')||{}).innerText||'').replace(/\n+/g,' / ').slice(0,2500)));
+console.log('boutons:', JSON.stringify((await btns()).filter(x=>/chInjecter|Jumeau|double|Créer|Remplacer|Compléter/i.test(x))));
+await pg.screenshot({path:`imp-verifier-${W}.png`, fullPage:false});
+console.log('ERRS',o.errs,'BOITES',o.boites);
+await pg.locator('button:visible',{hasText:'Créer un double'}).first().click(); await pg.waitForTimeout(2000);
+console.log('modale:', JSON.stringify(await pg.evaluate(()=>Array.from(document.querySelectorAll('button')).filter(x=>x.offsetParent).map(x=>(x.id||'')+'|'+(x.className||'')+'|'+(x.innerText||'').replace(/\n/g,' ').slice(0,40)).slice(-8)))); await pg.screenshot({path:`imp-modale-${W}.png`});
+await pg.locator('button:visible',{hasText:'Créer un double'}).last().click(); await pg.waitForTimeout(6000);
+console.log('MSG2:', await pg.evaluate(()=>((document.getElementById('ch-msg')||{}).innerText||'').slice(0,800)));
+await pg.screenshot({path:`imp-injecte-${W}.png`});
+console.log('après injection:', JSON.stringify((await btns()).filter(x=>/atEditerChapitre|Mes chapitres|proposition|À régler/i.test(x)).slice(0,10)));
+const hubChaps = await pg.evaluate(()=>{ const c=window.__HUB.site['3e'].chapitres; const l=Array.isArray(c)?c:Object.values(c); return l.map((x,i)=>i+' '+x.title+' · '+(x.seances?Object.keys(x.seances).length:0)+' séances'); }); console.log('HUB chapitres:', JSON.stringify(hubChaps));
+fs.writeFileSync(`hub-apres-import-${W}.json`, JSON.stringify(await pg.evaluate(()=>window.__HUB)));
+console.log('ERRS',o.errs,'BOITES',o.boites);
+await nav.close();

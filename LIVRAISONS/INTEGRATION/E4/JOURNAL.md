@@ -667,3 +667,11 @@
 - **Bancs** sur `09316b3d` : `banc.sh` vert ; le mien **114 ok · 0 échec** (`sorties/0750-site-E4`).
 - **Signal réécrit : « 0 pas réglée (`09316b3d`) ».** Compte : 176 lignes, dont 164 réglées, 9 écartées, 3 à Paul, 0 ouverte.
 - Le rebasage avant poussée a renommé `20de217a` en `09316b3d` (même contenu) ; les références sont mises à jour.
+
+## Poussée 74 — 08:45 UTC
+- **Réveil n°19 (suite) lu** : la ligne pour E2 doit être mesurée par le geste. Les lignes 166 et 169 passent réglées ; la 174 est réglée dans la donnée.
+- **Mesure** (scripts dans `relecteurs/final-0840/`), aux deux tailles :
+  - le geste « Lancer une autre classe sans clore » ne s'atteint pas : « Lancer » est caché pendant une heure, et le faux hub n'a pas d'autre classe importée. **L185 écartée** ;
+  - fermer la page sans « Clore » puis la rouvrir donnait « s'est terminée à 09 h 52 » pour une heure jamais close. **L184**, chez moi, réglée dans `a61fe923` : le récit relit `H/clos` et `H/finReel` au hub et dit « elle n'a pas été close ». Une heure close à 09:47 puis rouverte dit toujours « 09 h 47 ». RC7 étendue.
+- **Bancs** sur `a61fe923` : `banc.sh` vert ; le mien **117 ok · 0 échec** (`sorties/0840-site-E4`).
+- **Compte** : 178 lignes, dont 168 réglées, 0 pas réglée, 10 écartées, 0 à Paul, 0 ouverte. **Signal réécrit : « 0 pas réglée (`a61fe923`) ».**

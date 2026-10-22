@@ -153,3 +153,4 @@
 - Jouée dans un arbre extrait **exactement** à `88301b93` (son `dr/` et son `index.html` sont identiques à la tête d'`integration` à cette heure) ; assemblé md5 `c3c08656979ae6f71165c1bdbced3e7f`, 2 236 628 o.
 - **Banc E3 : 105 vérifications, 0 échec** (T1-T17). **Banc de la conscience : VERT** — collisions 0, parcours vert, parcours en mode test vert, contrôles K 0 défaut. Sorties : `sorties/0529-tete-88301b93/`.
 - **Pour le tableau, rien ne s'oppose à la promotion de `88301b93`.**
+- 06:39 : réveil n°16 — poussées d'E2 (§12.19) : banc **105/105**.

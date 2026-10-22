@@ -368,3 +368,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - (e) Compléter (fusionné avec les notes déjà au hub), Remplacer, Jumeau : les notes du bilan partent avec la trame.
 - **A33** : 9 contrôles de plus (6 refus ; les notes rangées à l'eid par les trois voies) ; le chapitre de test a ses bilans au contrat v0.7 (trois blocs, la consigne mot pour mot, `notes`). **Rouge avant 9/62** (`a33-avant-bilan3.txt`), **vert après 62/0**.
 - **Bancs sur `daed2c0e`** (sorties `E1/sorties/2130/`, avec `a33-avant-bilan3.txt`) : **banc de la conscience VERT** — collisions 0, parcours vert ×2, K1-K13 0 défaut ; **banc E1 : 268 vérifications, 0 échec**.
+- *(22:42 UTC) Réveil n°31 lu : rien d'ouvert. La v0.8 (5 mots-clés au plus, question ≤ 60 signes, mesurés par E3) n'est pas codée en refus à l'import — pas demandé ; dit à la conscience. Prochain retour 23:32 UTC.*

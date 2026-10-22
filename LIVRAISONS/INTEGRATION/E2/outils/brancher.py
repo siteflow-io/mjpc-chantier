@@ -201,6 +201,14 @@ snippet('case passée', "  if(c.nature==='rienDePret')return '<div class=\"edt-b
 snippet('modale passée', "    } else if(c.nature==='rienDePret'){\n      h+='<p class=\"edt-p\">Aucune séance prête pour cette classe.</p>'",
   "    } else if(c.nature==='passee'){\n      h+='<p class=\"edt-p\">Case passée sans heure jouée : la séance n\\u2019y a pas eu lieu. Elle continue à la case suivante de la classe \\u2014 aucune heure n\\u2019est perdue dans la file.</p>';   /* [E2] réveil n°16 (§12.18) */\n"
   "    } else if(c.nature==='rienDePret'){\n      h+='<p class=\"edt-p\">Aucune séance prête pour cette classe.</p>'")
+# ── réveil n°16, §12.19 (une seule source) : une semaine à venir se projette depuis aujourd'hui — la file passe par les cases d'ici là ;
+#    avant, la semaine prochaine partait de son lundi avec la file entière : la séance en cours y recommençait ──
+snippet('edtProjeter · depuis aujourd\'hui', "function edtProjeter(isoDebut,nbJours){\n  var files={}, cellules={};\n  for(var j=0;j<nbJours;j++){\n",
+  "function edtProjeter(isoDebut,nbJours){\n  var files={}, cellules={};\n"
+  "  var edtAuj0=edtAujourdhui(), edtAv=0; while(edtAv<400&&edtPlusJour(edtAuj0,edtAv)<isoDebut)edtAv++;   /* [E2] réveil n°16 (§12.19) : une vue à venir part d'aujourd'hui, la file passe par les cases d'ici là ; seules ses cases sont rendues */\n"
+  "  for(var j=-edtAv;j<nbJours;j++){\n")
+snippet('edtProjeter · rendu', "  return cellules;\n}\n\n/* ── L'ÉCRAN DE LA SEMAINE",
+  "  if(edtAv)Object.keys(cellules).forEach(function(k){ if(cellules[k].iso<isoDebut)delete cellules[k]; });   /* [E2] réveil n°16 : les jours d'avant la vue ont servi à la file, ils ne sont pas rendus */\n  return cellules;\n}\n\n/* ── L'ÉCRAN DE LA SEMAINE")
 # ── ce qui tombe (contrat §6, colonne E2) ──
 for nom in ['atDrJouerClic', 'atDrClore', 'atDrCloreFin', 'atDrClotureModale', 'atDrSuiviAppliquer',
             'atVecuAfficher', 'atVecuDemarrer', 'atVecuEntrer', 'atVecuSortir', 'atVecuMinutes', 'atVecuEcrire',

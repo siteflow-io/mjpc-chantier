@@ -424,6 +424,9 @@ const mesurer = p => p.evaluate(() => { const b = document.getElementById('dr-la
   if (!s.integre) pas('B17', 'absent', 'le site intégré');
   else { await ouvrirPilotage(s, 0); const m = await mesurer(s.page); const h2 = m.h.find(x => !x.jouee) || {};
     pas('B17', /passee/.test(m.c['09-14']) && /passee/.test(m.c['09-15']) && /Poésie.* 2\/3/.test(m.c['09-18']) && h2.iso === '2026-09-18' && h2.n === 2 && m.dis && /vendredi 18 septembre/.test(m.txt) ? 'ok' : 'ÉCHEC', 'mercredi 08:30, hub frais : l\'EDT dit le lundi 14 et le mardi 15 « passée », la Poésie 2/3 au vendredi 18 ; l\'Atelier H2 au vendredi 18 ; « Lancer » gris vers le vendredi 18 (E4 lignes 177, 179, 181)', JSON.stringify(m));
+    const sem = await s.page.evaluate(() => { const f = o => { const r = {}; Object.values(o).filter(x => x.classeMjpc === '3E Charles de Gaulle' && x.iso >= '2026-09-21' && x.iso <= '2026-09-25').forEach(x => { r[x.iso + ' ' + x.creneau] = x.nature + ' ' + (x.titre || '') + ' ' + (x.heure || '') + '/' + (x.sur || ''); }); return r; };
+      const a = f(edtProjeter('2026-09-21', 5)), b = f(edtProjeter(edtAujourdhui(), 14)); return { a, b, egal: JSON.stringify(a) === JSON.stringify(b) && Object.keys(a).length > 0 }; });
+    pas('B17', sem.egal && /Poésie.* 3\/3/.test(sem.a['2026-09-21 08:57-09:52'] || '') ? 'ok' : 'ÉCHEC', 'mercredi 08:30 : la semaine prochaine vue seule (depuis son lundi) = la même projection que depuis aujourd\'hui — la Poésie 3/3 le lundi 21 (§12.19, une seule source)', JSON.stringify(sem));
     pas('B17', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
 { const s = await session({ quand: '2026-09-14T09:00:00+02:00' });

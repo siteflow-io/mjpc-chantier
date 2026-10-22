@@ -17868,7 +17868,8 @@ function edtDecisionPour(nomClasse,iso,creneau){
 }
 function edtProjeter(isoDebut,nbJours){
   var files={}, cellules={};
-  for(var j=0;j<nbJours;j++){
+  var edtAuj0=edtAujourdhui(), edtAv=0; while(edtAv<400&&edtPlusJour(edtAuj0,edtAv)<isoDebut)edtAv++;   /* [E2] réveil n°16 (§12.19) : une vue à venir part d'aujourd'hui, la file passe par les cases d'ici là ; seules ses cases sont rendues */
+  for(var j=-edtAv;j<nbJours;j++){
     var iso=edtPlusJour(isoDebut,j);
     var off=edtJourSansCours(iso);
     var cases=edtCasesDuJour(iso).slice();
@@ -17944,6 +17945,7 @@ function edtProjeter(isoDebut,nbJours){
       if(f.faites>=total){ f.i++; f.faites=0; }
     }
   }
+  if(edtAv)Object.keys(cellules).forEach(function(k){ if(cellules[k].iso<isoDebut)delete cellules[k]; });   /* [E2] réveil n°16 : les jours d'avant la vue ont servi à la file, ils ne sont pas rendus */
   return cellules;
 }
 

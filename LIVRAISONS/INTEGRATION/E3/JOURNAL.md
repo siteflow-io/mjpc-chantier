@@ -140,3 +140,6 @@
 
 ## 21/10, 00:39 — T16 au vert
 - Sur les poussées d'E1 `69f8e1c5` (« l'onglet Atelier pendant l'heure … rend la classe à sa diapo au retour ») et `82f70c97` : **banc E3 99/99, 0 échec** — l'Atelier en pleine heure, une autre diapo, retour au Pilotage : la fenêtre et la scène au hub n'ont pas bougé (grave 148 réglé pour le tableau). Sortie `sorties/0039/banc-E3.txt`.
+
+## 22/10, 02:01 — réveil n°12 (l'audit final)
+- Territoire du tableau vert à l'audit final (T1-T16) ; banc rejoué **99/99** sur l'assemblé `cbb1d313`. Je rejoue sur les poussées d'E1/E2.

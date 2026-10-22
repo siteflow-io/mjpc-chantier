@@ -646,3 +646,9 @@
 - **Bancs** sur `8e49ca58` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0550-site-E4`). Les commits suivants (`5d63bdfb`, `4c1c479b`) ne touchent pas le code.
 - **0 ligne nouvelle.**
 - **Compte** : 176 lignes, dont 161 réglées, **0 pas réglée**, 9 écartées, 6 à Paul, 0 ouverte. **Signal écrit dans la NOTE §10 : « 0 pas réglée (`4c1c479b`) ».**
+
+## Poussée 71 — 07:05 UTC (veille)
+- Depuis la poussée 70, seule la poussée `523ce739` d'E1 est arrivée (réveil n°17 lu, sorties) ; elle ne touche pas le code. Rien de neuf sur main pour E4.
+- `banc.sh` rejoué sur `523ce739` : **vert**.
+- Le signal tient : **0 pas réglée (`4c1c479b`)**, code inchangé depuis. Compte : 176 lignes, dont 161 réglées, 9 écartées, 6 à Paul, 0 ouverte.
+- Veille réarmée.

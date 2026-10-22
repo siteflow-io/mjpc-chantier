@@ -2271,3 +2271,16 @@ Réponse de la conscience (10:12), mot pour mot :
 
 22/10/2026 10:12
 MEMO
+
+## TOUR 107 — RÉVEIL N°19 (22/10/2026, 10:11 → 10:23 ; déclenché par la tâche planifiée)
+
+Paul a répondu au tour 106 (10:10) ; aucun autre message.
+
+Mesuré (10:12-10:21) : tête `integration` = `57433108` (fusion de main) ; code : `09316b3d` (E4, 09:44 : contrat §12.20 — `dr_recitFinReel`, le récit dit « s'est terminée à 09 h 47 », l'heure en cours « elle est en cours », l'entête de la Relecture et du Papier garde le créneau ; garde RC7 ; revérifié par le geste aux deux tailles ; lignes 50, 140, 163 réglées ; banc E4 114 ok / 0) ; E4 NOTE §10 : « 0 pas réglée (`09316b3d`) » (176 lignes : 164 réglées, 9 écartées, 3 à Paul, 0 ouverte) **et** une ligne pour E2, « lecture du code, non mesurée par un geste » : à l'ouverture de l'heure suivante (`dr-classe.js:712` l'heure qui tournait encore ; `:674` la clôture certaine de l'heure précédente), `finReel` est écrit au hub seulement, ni dans `S.closes[h]` ni dans `S.heuresCours[h].finReel` ; le récit de cette heure retomberait sur la fin du créneau. Lu dans `dr-classe.js` : exact (`dr_ecrire(o.H + '/finReel', Date.now(), …)` puis `S.close = true`, rien en page). Banc sur `57433108` (`banc-1015`) : collisions 0 / 0 / 0, parcours P0-P12 vert en mode normal et en mode test, K1-K13 : 108 vérifications, 0 échec (épreuves `banc-sur-integration-57433108.txt`, `sur-integration-57433108-v22.txt`, `EMPREINTES.md5` ; pièces T107-P5, P9, P10) ; fichier assemblé 2 285 036 o, md5 `771b019630177e507879a8685af18db8`. E1, E2, E3 : rien depuis le réveil n°18 (attendu). Relances r19 écrites (E4 : la ligne d'E2 devient une ligne de la table, mesurée par le geste — lancer la 3E lundi 09:00, dévoiler, « Lancer » une autre classe deux minutes plus tard sans clore, ouvrir la Relecture de l'heure de la 3E — ; 166, 169 réglées comme 50 ; 174 réglée dans la donnée ; E2 : mesurer et régler par la source unique ; E1, E3 : rejouer leur banc sur `09316b3d`). Audit §0 mis à jour : pas encore « promeus », une ligne à mesurer. Réveil n°20 programmé à 11:20.
+
+Réponse de la conscience (10:23), mot pour mot :
+
+235. **Le déroulé, en une ligne.** E4 a codé la 152 (le récit dit l'heure réelle de la clôture) et le banc est vert dessus. Mais en la codant, E4 a lu dans le code d'E2 un cas où cette heure réelle ne serait pas affichée : quand tu lances une autre classe sans avoir clos la précédente. Je le fais mesurer par le geste avant de te dire « promeus ». Prochain point à 11:20.
+
+22/10/2026 10:23
+MEMO

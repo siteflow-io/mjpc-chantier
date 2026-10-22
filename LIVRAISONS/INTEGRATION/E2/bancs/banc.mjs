@@ -439,6 +439,10 @@ const mesurer = p => p.evaluate(() => { const b = document.getElementById('dr-la
     const h = await s.page.evaluate(() => dr_heuresDeLaClasse('3E Charles de Gaulle').map(x => ({ n: x.n, iso: x.iso, jouee: !!x.jouee, clos: !!x.clos })));
     const x = h.find(y => y.iso === '2026-09-14') || {};
     pas('B17', x.jouee && x.clos && x.n === 2 && h.filter(y => y.iso === '2026-09-14').length === 1 ? 'ok' : 'ÉCHEC', 'lundi 09:00, l\'heure lancée puis close : `dr_heuresDeLaClasse` la dit « H2 · jouée, close » sans rechargement, une seule fois (E4 ligne 178)', JSON.stringify(h));
+    await s.page.clock.fastForward(58 * 60 * 1000); await s.attendre(3000);   /* E4 ligne 182 : 09:58, le créneau de l'heure close est fini, la même page */
+    const m2 = await s.page.evaluate(() => { const b = document.getElementById('dr-lancer'); const c = {}; Object.values(edtProjeter(edtAujourdhui(), 5)).filter(x => x.classeMjpc === '3E Charles de Gaulle').forEach(x => { c[x.iso.slice(5)] = x.nature + ' ' + (x.heure || '') + '/' + (x.sur || ''); });
+      return { txt: b && b.textContent, h: dr_heuresDeLaClasse('3E Charles de Gaulle').map(x => x.n + '/' + x.sur + ' ' + x.iso + (x.jouee ? ' jouée' : '')), c }; });
+    pas('B17', m2.h.join('|') === '1/3 2026-09-07 jouée|2/3 2026-09-14 jouée|3/3 2026-09-15' && /^jouee/.test(m2.c['09-14'] || '') && /prevu 3\/3/.test(m2.c['09-15'] || '') && !/heure 2\/3/.test(m2.txt || '') ? 'ok' : 'ÉCHEC', 'lundi 09:58, l\'heure close dans la même page, son créneau fini : H1 et H2 jouées, H3 au mardi 15 (3/3) — l\'EDT, `dr_heuresDeLaClasse` et « Lancer » d\'accord, trois heures pour trois (E4 ligne 182, §12.19)', JSON.stringify(m2));
     pas('B17', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
 

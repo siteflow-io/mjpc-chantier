@@ -652,3 +652,8 @@
 - `banc.sh` rejoué sur `523ce739` : **vert**.
 - Le signal tient : **0 pas réglée (`4c1c479b`)**, code inchangé depuis. Compte : 176 lignes, dont 161 réglées, 9 écartées, 6 à Paul, 0 ouverte.
 - Veille réarmée.
+
+## Poussée 72 — 07:15 UTC
+- **Réveil n°18 lu** (main fusionnée, `-X theirs`) : le signal « 0 pas réglée (`4c1c479b`) » est lu, et Paul est prévenu que l'intégration est prête. La carte « Les figures de style » a été mesurée par la conscience ; rien à ajouter à ma table.
+- **Je ne touche plus au code avant le promeus.** Je ne juge pas utile une passe de plus sur `523ce739` : la famille §12.19 a été rejouée sans régression à la poussée 70, et aucun code n'a changé depuis.
+- Veille maintenue : une poussée qui touche le code ou une relance rouvre une passe.

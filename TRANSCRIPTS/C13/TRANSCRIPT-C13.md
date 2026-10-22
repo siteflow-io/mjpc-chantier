@@ -2131,3 +2131,23 @@ Réponse de la conscience (05:20), mot pour mot :
 
 22/10/2026 05:20
 MEMO
+
+## TOUR 101 — RÉVEIL N°16 (22/10/2026, 06:21 → 06:31 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (06:21, 06:23, 06:30).
+
+Mesuré :
+- `integration` à `2179ba66` (E3, 05:42) ; pendant le banc, E2 poussée 30 (06:25 : « E4 177-181, une seule suite », garde B17). Depuis le réveil n°15 : **E4** (poussées 66-68, 05:20-05:29 : 161, 164, 172, 173 réglées sur `88301b93` ; **177 pas réglée** (hub frais et après clôture : le mercredi, « Lancer » vise la case « fil langue », l'EDT garde 3/3 au mardi passé, l'Atelier met la Poésie au vendredi) ; son relecteur neuf sur §12.18 : **quatre lignes neuves 178-181**, même famille — « jouée » seulement après rechargement, un lundi manqué donne deux n au mardi, « Lancer » sur L'Albatros, l'Atelier de L'Albatros saute la case du vendredi ; convergence ≈ 2,3 neuves par heure, aucune grave ; **174 lignes, 154 réglées, 5 pas réglées, 9 écartées, 6 à Paul, 0 ouverte**) ; **E2** (05:40 : NOTE finale à jour ; 06:25 : poussée 30 sur 177-181) ; **E3** (05:42 : la tête candidate jouée, 105/105).
+- **Mon banc sur `2179ba66`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0** ; l'assemblé : 2 279 217 octets, md5 `c3c08656979ae6f71165c1bdbced3e7f` (le même qu'à 05:19). Épreuves `banc-sur-integration-2179ba66.txt`, `sur-integration-2179ba66-v22.txt` ; captures `pieces/T101-P5-*.png`, `T101-P9-*.png`.
+- **Tranché — contrat §12.19** (précise §12.18) : une seule source `dr_heuresDeLaClasse` pour l'EDT, « Lancer » et l'Atelier ; n = heures jouées + 1 ; une case passée sans être jouée ne compte pas ; le fil compte ; la séance suivante commence à la première case de la classe sur ce fil ; « jouée » sans rechargement.
+- **Audit final mis à jour** (§0, §4, §6). **Relances écrites (06:30)** : E2 — 177, 179, 181 (moyens), 180, 178 avec E1, §12.19 ; E1 — 178, 181 ; E3 — rejouer ; E4 — revérifier les cinq sur la poussée d'E2, le signal.
+- Réveil suivant : 07:31.
+
+Réponse de la conscience (06:31), mot pour mot :
+
+204. Réveil n°16. Banc vert sur la tête (collisions 0, parcours vert aux deux modes, 108 sur 108). E4 a fermé quatre des cinq lignes d'E1, pas la cinquième, et son relecteur neuf en a trouvé quatre de la même famille : l'emploi du temps, « Lancer » et l'Atelier ne lisent pas encore la même source pour « heure n/N » et la prochaine case — une case passée sans être jouée compte encore comme « 2/3 », une case d'un autre fil (le fil « langue ») est proposée, et « jouée » n'apparaît qu'après rechargement. **Tranché au contrat** (§12.19 : une seule source, la case passée ne compte pas, le fil compte) et relancé chez E2, qui y a déjà poussé pendant mon banc ; E4 revérifie. 174 lignes, 154 réglées, 5 à régler, aucune grave, 0 ouverte.
+
+205. Pas de « promeus » ce réveil ; le prochain est à 07:31. À toi, telles quelles : 152, 144, 13 · 12, §12.17, 198, le « go » du plan 10 jours.
+
+22/10/2026 06:31
+MEMO

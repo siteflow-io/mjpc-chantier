@@ -260,3 +260,6 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 - **§12.18, la source unique** : « Lancer » lit son heure n/N dans `dr_heuresDeLaClasse` (la même que je pose pour l'Atelier, E1). **Garde** B16.
 - **Ligne 175** : rien de plus de mon côté — la case dit « aucune séance prête · fil « langue » » ; à E4 de la fermer.
 - **Bancs** : banc E2 **VERT** (`sorties/0216/banc-E2.txt`) ; `banc.sh` (`sorties/0216`, commit `ef9a145e`, md5 `5e8a3df9…` identique) : collisions 0, parcours **VERT** ×2, **K 108 / 0**. NOTE à jour.
+
+## 03:40 UTC — le réveil n°15
+- Rien d'ouvert chez moi. **La NOTE finale est à jour** : empreintes, fonctions, bancs et ce qui reste rafraîchis sur la tête `4fe9208c` (avec la poussée 20 d'E1, qui branche `dr_heuresDeLaClasse`) — banc E2 **VERT** (`sorties/0325/banc-E2.txt`, B1-B16) ; `banc.sh` (`sorties/0325`, md5 `c3c08656…` identique) : collisions 0, parcours **VERT** ×2, **K 108 / 0**.

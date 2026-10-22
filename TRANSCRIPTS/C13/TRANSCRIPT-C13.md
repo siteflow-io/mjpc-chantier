@@ -2251,3 +2251,23 @@ Réponse de la conscience (09:38, points 222-225, puis 09:54), mot pour mot :
 
 22/10/2026 09:54
 MEMO
+
+## TOUR 106 (22/10/2026, 10:10 → 10:12)
+
+Paul (10:10), mot pour mot :
+« 198 rien compris. Pour le reste, beaucoup trop de choses dont je ne comprends pas la moitié parce que tu synthétise trop. De plus, aucun plan de 10 jours lancé tant que déroulé n'est pas fini et intégré correctement et prêt à accueillir un chapitre créé grâce au nouveau prompt. »
+
+Ordre reçu : aucun lot du plan 10 jours ne se lance tant que le déroulé n'est pas fini, intégré correctement, et prêt à recevoir un chapitre créé avec le nouveau prompt. Les six phrases ne sont pas à coller. Faute de style déclarée : les tours 104-105 synthétisaient trop ; un sujet par point, en clair.
+
+Réponse de la conscience (10:12), mot pour mot :
+
+231. **198, en clair.** Ta séance 1 (« Poésie et peinture : le Romantisme en question ») dure deux heures. À la fin de la première heure, tu avais une diapo qui s'appelait « Question-bilan ». À la fin de la deuxième, une diapo « Question-bilan et travail à faire ». Le site prend pour bilan toute diapo dont le titre contient le mot « bilan ». Il voyait donc deux bilans dans la séance, et ton cadrage dit : un seul bilan, le dernier. J'ai renommé la première diapo : elle s'appelle maintenant « Avant de se quitter », le nom que tu donnes à la même diapo de fin d'heure dans ta séance 2. Sa question n'a pas changé (« Qu'ont en commun ces cinq tableaux ? »). Rien d'autre n'a bougé.
+
+232. **Compris : rien du plan ne se lance.** Les six phrases ne sont pas à coller. Les mandats restent écrits au sas, pour plus tard.
+
+233. **L'ordre, tel que je le lis dans ton mot** : d'abord E4 finit la ligne 152 et je te dis « promeus » ; ensuite le site doit savoir recevoir un chapitre fait avec le nouveau prompt — ça demande deux choses qui vont ensemble : le prompt lui-même (une pièce que tu relis), et l'import du site qui refuse ce que le prompt interdit (aujourd'hui l'import ne vérifie presque rien, c'est pour ça que ton chapitre 3e a 19 lignes « À régler ») ; ensuite seulement, le reste du plan.
+
+234. Une question : le prompt, tu veux que je l'écrive moi-même maintenant (c'est un document, pas du code), ou que je le laisse à un exécutant après le promeus ?
+
+22/10/2026 10:12
+MEMO

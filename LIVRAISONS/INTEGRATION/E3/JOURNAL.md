@@ -159,7 +159,7 @@
 ## 22/10, 09:09 → 13:31 — réveils n°18 à 22, lus (par l'E3 relancé à 13:54 : la session d'origine ne répondait plus depuis 07:48)
 - Rien à pousser avant le promeus (n°18, n°20, n°21, n°22) ; le banc n'a pas été rejoué sur `09316b3d` / `a61fe923` (n°19) par la session d'origine — le présent E3 ne refait pas ce qui est passé : la tête candidate reste `ef674d4b`, la conscience l'a jouée (K 108 / 0, P8-P10 verts).
 
-## 22/10, 14:20 — PROMPT — ce qui tient (relance du 13:45, nouvel ordre de Paul 13:40)
+## 22/10, 14:12 — PROMPT — ce qui tient (relance du 13:45, nouvel ordre de Paul 13:40)
 
 *Mesuré sur `assemble/index.html` de la tête `8f0477f1` (md5 `d9bd88fdfd5d3cc7a6ede8ed9e7a3e93`, 2 285 718 o — l'assemblé est celui de `a61fe923`, le code du déroulé est celui d'`ef674d4b`), par le moteur réel : `rendre` dans `#mur2` de la page `?vue=tableau&local=1` (la fenêtre « Écran 2 »), puis **`p8MesureLisible`** (dr-socle.js l. 650) — exactement la mesure que `p8MesureDiapo` (dr-atelier.js l. 71) fait pour « À régler » (`alertesForme`, l. 69, alerte « dense »). Playwright + Chromium sur le faux hub, horloge au 14/09 09:00, 0 erreur JS. **Script** : `E3/bancs/mesure-tient.mjs` ; **sorties** : `E3/sorties/1406/mesure-tient.txt` (chaque cas, ligne à ligne, avec le détail des défauts), `mesure-tient.json`, 84 **captures** dans `sorties/1406/captures/` (le plus grand qui tient et le premier qui ne tient plus, par forme, avec et sans consigne, aux deux tailles). « Tient » = total 0 : aucun chevauchement, rien hors du cadre, aucun trait à travers un mot, aucun libellé sur deux lignes, aucune police sous 26 pt.*
 

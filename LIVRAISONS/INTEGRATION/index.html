@@ -18077,7 +18077,7 @@ function edtCelluleCorps(c){
     +escapeHtml('heure banalisée — '+(c.categorie||''))+(c.precision?(' \u2014 '+escapeHtml(c.precision)):'')+'</i></div>';
   if(c.nature==='jouee')return '<div class="edt-b edt-b-joue"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'+(c.titre?escapeHtml(c.titre)+' \u00b7 ':'')/* [E2] A4-4 */
     +c.activites+' activité'+(c.activites>1?'s':'')+(c.reportees?(' \u00b7 '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'</i></div>';
-  if(c.nature==='rienDePret')return '<div class="edt-b edt-b-vide"><b>'+escapeHtml(c.classeMjpc)+'</b><i>aucune séance prête</i></div>';
+  if(c.nature==='rienDePret')return '<div class="edt-b edt-b-vide"><b>'+escapeHtml(c.classeMjpc)+'</b><i>aucune séance prête'+(c.fil?' \u00b7 fil \u00ab\u00a0'+escapeHtml(c.fil)+'\u00a0\u00bb':'')+'</i></div>';   /* [E2] réveil n°13 (E4 ligne 175) : la case dit pourquoi — son fil n'a pas de séance publiée (la file de la classe est par fil) */
   return '<div class="edt-b edt-b-prevu'+(c.fil?' edt-b-fil':'')+(c.ajoutee?' edt-b-ajout':'')+'">'
     +(c.epingle||c.ajoutee?'\ud83d\udccc ':'')+'<b>'+escapeHtml(c.classeMjpc)+'</b>'
     +'<u>'+escapeHtml(c.titre||'')+'</u>'

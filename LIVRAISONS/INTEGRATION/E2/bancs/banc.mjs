@@ -386,8 +386,23 @@ dire(''); dire('B15 — en classe, retoucher dans l\'onglet Atelier : la copie d
     await p.click('#dr-clore'); await s.attendre(500); await p.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="5"]'); if (e) e.click(); }); await s.attendre(400);
     const l5 = await p.evaluate(() => ((document.getElementById('fin') || {}).innerText || '').replace(/\s+/g, ' '));
     pas('B15', /Retouche de l Atelier \(B15\)/.test(l5) && /Verser dans la trame/.test(l5) ? 'ok' : 'ÉCHEC', 'étape 5 : la retouche écrite dans l\'onglet Atelier pendant l\'heure est proposée au versement, diapo par diapo (réveil n°12, E4 ligne 150 ; C1 8.4 — avec `S.copie[h]` posé par E1)', l5.slice(l5.indexOf('Diapos modifiées'), l5.indexOf('Diapos modifiées') + 260));
+    const ord = await p.evaluate(() => { const E = seance().ecrans, o = ordreHeure(S.heure).filter(i => (E[i].blocs || []).some(b => b.bid && b.t !== 'image')); const h = S.heure; S.copie = S.copie || {}; S.copie[h] = S.copie[h] || {}; const pris = o.slice(0, 2).reverse();   /* deux retouches posées dans l'ordre inverse de l'heure */
+      pris.forEach(i => { const b = E[i].blocs.find(x => x.bid && x.t !== 'image'); S.copie[h][E[i].eid] = Object.assign(S.copie[h][E[i].eid] || {}, { [b.bid]: { t: (b.txt || '') + ' (B15 ordre)' } }); }); ouvrirFin(); const vu = Array.from(document.querySelectorAll('#fin .p8-verse')).map(x => o.indexOf(indexDe(x.dataset.p8eid))); return vu; });
+    pas('B15', ord.length >= 2 && ord.every((v, k) => k === 0 || v >= ord[k - 1]) ? 'ok' : 'ÉCHEC', 'étape 5 : les diapos modifiées dans l\'ordre de l\'heure (réveil n°13, E4 ligne 165)', JSON.stringify(ord));
     pas('B15', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
+
+// ── B16 · hors d'une case de la classe, « Lancer » ne prend jamais le créneau d'une autre classe (réveil n°13, E4 lignes 167, 170) ──
+dire(''); dire('B16 — lundi 10:00 et mercredi 08:30, sans case de la 3E : « Lancer » gris, la prochaine heure de la classe');
+for (const [quand, attendu] of [['2026-09-14T10:00:00+02:00', /mardi 15 septembre/], ['2026-09-16T08:30:00+02:00', /mercredi 16 septembre/]]) {
+  const s = await session({ quand }); const p = s.page;
+  if (!s.integre) { pas('B16', 'absent', 'le site intégré'); await s.ctx.close(); continue; }
+  await p.click('#tprof-btn'); await s.attendre(500); await p.evaluate(() => atelierOuvrir()); await s.attendre(1000); await clicTexte(p, 'button,[onclick]', "atOnglet('chapitres')"); await s.attendre(800);
+  if (!(await clicTexte(p, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(p, 'button,[onclick]', 'Modifier'); await s.attendre(1500);
+  await p.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]') || document.getElementById('ong-pilotage'); if (b) b.click(); }); await s.attendre(8000);
+  const bt = await p.evaluate(() => { const b = document.getElementById('dr-lancer'); return b ? { dis: b.disabled, txt: b.textContent, title: b.title } : null; });
+  pas('B16', bt && bt.dis && attendu.test(bt.txt) && !/08:00-08:55|10:07-11:02 · heure/.test(bt.txt) ? 'ok' : 'ÉCHEC', quand.slice(0, 16) + ' : « Lancer » gris, il nomme la prochaine heure de la 3E, jamais le créneau d\'une autre classe', JSON.stringify(bt));
+  pas('B16', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); await s.ctx.close(); }
 
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');

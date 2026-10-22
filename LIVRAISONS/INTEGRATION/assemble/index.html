@@ -18403,7 +18403,7 @@ function dr_proposer(){
   const sl = dr_classeProposee(); let cr = dr_creneauPropose();
   /* réveil n°13 (E4 lignes 167, 170) : hors d'une case de la classe, jamais le créneau d'une autre classe (le repli sur les créneaux du site, `AT_EDT`) — l'EDT chargé, « Lancer » se grise et nomme la prochaine heure de la classe */
   if (dr_edtPret()) { const nx = (edtProchainesDe(sl, 1) || [])[0]; return { classeSlug: sl, classeNom: dr_nomClasse(sl), creneau: nx ? nx.creneau : cr, debut: nx ? String(nx.creneau).split('-')[0] : dr_debutPropose(cr), heure: 0, sur: 0, depuis: 'aucune', prochaine: nx || null }; }
-  try { dr_edtAssurer(); } catch (e) {}   /* l'EDT pas encore lu : on le lit ; d'ici là, le repli d'avant */
+  try { const z = document.getElementById('dr-zone'); if (z && z.offsetParent !== null && AT.edChap && AT.edChap.level) dr_edtAssurer(); } catch (e) {}   /* l'EDT pas encore lu : on le lit — seulement le Pilotage à l'écran, une séance ouverte (la lecture de l'EDT peut mettre la grille à niveau : jamais au chargement de la page, avant que le mode de la session soit posé — K15-test, 01:19) ; d'ici là, le repli d'avant */
   const hp = dr_heureProposee(sl, cr); let N = hp; try { N = edtHeuresPour(chapitresData[AT.edChap.level][AT.edChap.chnum].seances[ATVUES.snum], cr); } catch (e) {}   /* N par la même fonction que la case */
   return { classeSlug: sl, classeNom: dr_nomClasse(sl), creneau: cr, debut: dr_debutPropose(cr), heure: hp, sur: Math.max(1, N, hp), depuis: 'jour' };
 }

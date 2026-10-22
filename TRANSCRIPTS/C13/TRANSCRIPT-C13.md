@@ -2284,3 +2284,20 @@ Réponse de la conscience (10:23), mot pour mot :
 
 22/10/2026 10:23
 MEMO
+
+## TOUR 108 — RÉVEIL N°20 (22/10/2026, 11:21 → 11:33 ; déclenché par la tâche planifiée)
+
+Aucun message de Paul depuis 10:10 (la question du point 234 reste posée).
+
+Mesuré (11:22-11:31) : tête `integration` = `ef674d4b` (E4, 10:44) ; code `a61fe923` (E4, 10:36 : le récit relit `H/clos` et `H/finReel` au hub à la réouverture ; une heure jamais close ne dit pas d'heure de fin — ligne 184, trouvée par E4 en mesurant, réglée ; RC7 étendue ; assemblé réassemblé). La ligne de la relance r19 (`finReel` à l'ouverture de l'heure suivante) : mesurée par E4 → ligne 185, **écartée** (« Lancer » caché pendant une heure dans les trois vues, `dr_suivreBarre` ; l'EDT du faux hub n'a aucune autre classe importée ; `relecteurs/final-0840/l184q.mjs` : aucun bouton « Lancer » visible à 09:02 au Pilotage, à l'Atelier, dans la modale de la case 10:07 ; et depuis `a61fe923` le récit relit `H/finReel` au hub — ce que ces chemins écrivent). 166, 169, 174 réglées. **E4 NOTE §10 : « 0 pas réglée (`a61fe923`) »** — 178 lignes : 168 réglées, 10 écartées, 0 à Paul, 0 ouverte ; banc E4 117 ok / 0. Banc sur `ef674d4b` (`banc-1120`) : collisions 0 / 0 / 0, parcours P0-P12 vert en mode normal et en mode test, K1-K13 : 108 vérifications, 0 échec (épreuves `banc-sur-integration-ef674d4b.txt`, `sur-integration-ef674d4b-v22.txt`, `EMPREINTES.md5` ; pièces T108-P5, P9, P10, P12) ; P10 : « Cette heure a commencé à 09 h 00 ; elle est en cours. ». Fichier assemblé : **2 285 718 o, md5 `d9bd88fdfd5d3cc7a6ede8ed9e7a3e93`**. E1, E2, E3 : rien depuis le réveil n°18 (attendu). Relances r20 écrites (le signal est lu, plus rien à pousser) ; audit §0 et §6 mis à jour (prête au promeus ; limite du banc : une seule classe importée dans le faux hub). Réveil n°21 programmé à 12:30.
+
+Réponse de la conscience (11:33), mot pour mot :
+
+236. **Le déroulé est prêt.** À jouer : rien · en cours : rien · ouvert : 0. E4 a tout revérifié (178 lignes, 0 ouverte, 0 pour toi) et mon banc est vert sur la dernière version (108 vérifications sur 108). Le cas que je faisais mesurer (lancer une autre classe sans avoir clos) ne peut pas se jouer sur le banc, et de toute façon le récit lit maintenant l'heure de clôture au hub : il dira ce qui a été écrit.
+
+237. **Sur ton mot « promeus »**, je copie cette version (2 285 718 octets, empreinte `d9bd88fd…`) en production, version 8.75.0-①, et je fais le reste dans le tour : le journal, les dettes cochées, le point de retour, l'adresse du site et tes tests geste par geste. Rien n'est copié avant ton mot.
+
+238. La question du point 234 reste posée : le prompt, par moi maintenant, ou par un exécutant après le promeus ?
+
+22/10/2026 11:33
+MEMO

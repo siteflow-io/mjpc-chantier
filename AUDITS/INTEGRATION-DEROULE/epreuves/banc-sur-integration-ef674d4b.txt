@@ -1,0 +1,59 @@
+banc d'intégration · 2026-10-22 09:22 UTC · branche integration · commit ef674d4b
+— 1. assemblage
+assemblé : /home/claude/mjpc-chantier/LIVRAISONS/INTEGRATION/assemble/index.html
+  inline  dr/dr.css (114993 o)
+  inline  dr/dr-gabarit.js (21186 o)
+  inline  dr/dr-socle.js (192357 o)
+  inline  dr/dr-atelier.js (158394 o)
+  inline  dr/dr-classe.js (197330 o)
+  inline  dr/dr-tableau.js (26842 o)
+  inline  dr/dr-recit.js (131920 o)
+  inline  dr/dr-recyclage.js (37561 o)
+  modules : 8 · manquants/refusés : 0 · taille : 2243007 o · md5 d9bd88fdfd5d3cc7a6ede8ed9e7a3e93
+— 2. collisions
+modules lus : dr/dr.css dr/dr-gabarit.js dr/dr-socle.js dr/dr-atelier.js dr/dr-classe.js dr/dr-tableau.js dr/dr-recit.js dr/dr-recyclage.js
+  ids en collision : 0
+  classes CSS en collision : 0
+  globales en collision : 0
+— 3. parcours
+  ok     P10 · les faces de la maquette (E4)
+
+P11 — le Papier
+  ok     P11 · la face Papier de la Relecture (E4)
+
+P12 — la clôture
+  ok     P12 · clôture demandée (voir la capture) — étape 7 : « Clore l’heure » — garde passée
+  ok     P12 · au hub, H.clos et H.finReel après la clôture (E2) — {"clos":true,"finReel":true}
+
+K15 — les écritures au hub pendant le parcours
+      PUT /corbeille/<heure>/edt-mise-a-niveau-grille_090000
+      PUT /site/edt/grille/2026-2027
+      PUT /site/edt/photos/2026-2027
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<heure>
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+  ok     K15 · 25 écritures, toutes sur des chemins permis
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS VERT
+— 4. parcours en mode test
+  ok     P12 · au hub, H.clos et H.finReel après la clôture (E2) — {"clos":true,"finReel":true}
+
+K15 — les écritures au hub pendant le parcours
+  ok     K15-test · mode test : zéro écriture au hub — 0 écriture(s)
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS VERT
+— 5. contrôles K1-K13 par l'entrée du site
+  ok     K9 · aucune boîte système
+
+108 vérifications, 0 échec(s)
+--- fin : 0 défaut(s)
+
+— résultat : VERT · sorties dans /tmp/claude-0/-home-claude/fbedd388-7b0c-5f43-87ab-077e6ae1db43/scratchpad/banc-1120

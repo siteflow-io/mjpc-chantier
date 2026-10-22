@@ -220,3 +220,4 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 - **Compte : 164 lignes, dont 143 réglées, 8 pas réglées (E1 et E2), 8 écartées, 5 à Paul (une seule question), 0 ouverte.** Chez E4 : aucune pas réglée.
 
 - **00:40, L162 réglée** sur `4699143e` (poussée 27 d'E2), rejouée par moi aux deux tailles : le cahier de textes s'affiche en préparation. **Compte : 164 lignes, dont 144 réglées, 7 pas réglées, 8 écartées, 5 à Paul, 0 ouverte.**
+- **01:05, sur `4130482a`** (poussée 19 d'E1) : **L160 et L171 réglées**. Pas réglées : L161, L164, L165, L167, L170. Quatre nouvelles : trois chez E1/E2 (les dates de l'Atelier le lundi, le nombre d'heures dans « Envoyer vers… », l'EDT du mercredi), une à Paul (deux bilans dans sa trame de la séance 1). **Compte : 168 lignes, dont 146 réglées, 8 pas réglées, 8 écartées, 6 à Paul, 0 ouverte.**

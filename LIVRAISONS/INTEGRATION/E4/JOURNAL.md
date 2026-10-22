@@ -533,3 +533,14 @@
 ## Poussée 59 — 00:42 UTC
 - **L162 réglée** sur `4699143e` (poussée 27 d'E2), rejouée par moi à 1366 et à 1280 : en préparation, la diapo du cahier montre le cahier de textes entier.
 - **Il reste 7 pas réglées** : L160, L161, L164, L165, L167, la ligne du créneau du lundi, et celle des totaux d'« Envoyer vers… » (à confirmer). Toutes chez E1 ou E2.
+
+## Poussée 60 — 01:05 UTC
+- **Revérifié sur `4130482a`** (la poussée 19 d'E1), aux deux tailles :
+  - **réglées** : L160 (l'ordre de l'heure hors classe : le rituel en tête, le bilan à la fin) et L171 (chaque séance a son total, calculé sur ses diapos) ;
+  - **pas réglées** : L161, L164, L165, L167, L170.
+- **Quatre lignes nouvelles** :
+  - les dates de l'Atelier le lundi (même famille que L161) ;
+  - toutes les séances à « 1 heure » dans « Envoyer vers… » ;
+  - l'EDT du mercredi ;
+  - **à Paul** : sa trame de la séance 1 a deux diapos bilan.
+- **Compte** : 168 lignes, dont 146 réglées, 8 pas réglées, 8 écartées, 6 à Paul, 0 ouverte. Aucune pas réglée chez E4.

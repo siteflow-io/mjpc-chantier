@@ -23,6 +23,8 @@
 
 **Mise à jour 22/10, 22:16 (réveil n°29, tête `c7a44f9c`, code = `b8a11d55`).** Le code n'a pas bougé (diff vide sur `index.html` et `dr/`) : pas de banc ; **le candidat reste `b8a11d55`** (assemblé 2 297 926 o, md5 `003e0eef1216f6b5e790812943ed97e8`). E1 `c2468d97`, E2 `985d1b38` / `c7a44f9c`, E3 `693d7784` : rien à faire. E4 : rien poussé depuis 20:33 → session neuve relancée à 22:19 (règle anti-croisement : elle s'arrête si la session d'avant pousse). Paul : toujours en attente de son mot sur la diapo du bilan (280) et du « promeus ».
 
+**Mise à jour 22/10, 23:14 (réveil n°30, tête `905c8d85`, code = `b8a11d55`).** Code inchangé : pas de banc ; **candidat `b8a11d55`** (md5 `003e0eef…`). E4 : la session d'avant était vivante (veille sans poussée) — elle garde la main, la session relancée à 22:19 se retire ; E1, E2, E3 : rien. Paul (22:50) : la consigne d'intégration « Rédige le bilan au brouillon. » — exemple aujourd'hui, proposition de la figer dans le prompt (point 287), en attente.
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

@@ -2433,3 +2433,17 @@ Réponse de la conscience (14:16), mot pour mot :
 
 22/10/2026 14:16
 MEMO
+
+## TOUR 117 (22/10/2026, 14:19 → 14:21)
+
+Paul (14:19), mot pour mot :
+« 260. Attention, si je montre quelque chose et que je reviens en arrière après, le figé va télescoper ,non? »
+
+Réponse de la conscience (14:21), mot pour mot :
+
+262. **Non, si on le construit au bon moment.** Ma proposition précise : la réactivation est construite **une fois, au lancement de l'heure** (quand tu réponds « oui » sur l'écran « Où en est la classe »), d'après l'heure d'avant telle qu'elle est close à ce moment-là. Ensuite, pendant l'heure, revenir en arrière avec ◀ ou repasser dessus montre toujours la même diapo — comme pour n'importe quelle diapo, ◀ cache ce qui était dévoilé, il ne change pas le contenu. Rien ne se télescope.
+
+263. **Le seul cas où elle ne suivrait pas** : si, après le lancement, tu modifiais l'heure d'avant (une décision changée, une reprise). La diapo déjà montrée à la classe ne bougerait pas — c'est ta règle (ce que la classe a vu est immuable). Si tu veux au contraire qu'elle se reconstruise tant qu'elle n'a pas encore été montrée à la classe, dis-le : c'est un détail de la règle, pas un autre mécanisme.
+
+22/10/2026 14:21
+MEMO

@@ -851,3 +851,6 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - Aucun code n'a changé depuis `c8bf7b61`. `banc.sh` rejoué sur `03c12245` : **vert**. Le signal tient : **0 pas réglée (`c8bf7b61`)**.
 - **Deux sessions E4** : la session relancée à 22:19 Paris a cru celle-ci éteinte (aucune poussée entre 20:33 et 22:19 Paris : elle attendait, la veille n'avait rien à pousser). **Celle-ci est vivante** (veille armée, bancs rejoués à 20:18 UTC).
 - **Règle anti-croisement proposée (comme E1)** : une seule session écrit dans `E4/`. Celle-ci, la plus ancienne, avec tout le contexte de la table et de la preuve sur pièce, garde la main. La session relancée lit, ne pousse plus, et se retire à son prochain retour. À la conscience de trancher autrement dans `RELANCES/E4.md` ; je suivrai.
+
+## Poussée 89 — 23:15 Paris (21:15 UTC) · la session relancée 22:19 Paris se retire
+- session relancée 22:19 Paris : la session d'avant est vivante (`87b3222f`, 20:25 UTC, poussée 88 bis), je m'arrête. Elle garde la main sur `E4/` (la table, la preuve sur pièce, le signal « 0 pas réglée (`c8bf7b61`) ») ; cette session ne pousse plus et ne se reprogramme pas.

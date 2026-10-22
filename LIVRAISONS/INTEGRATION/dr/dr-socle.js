@@ -232,26 +232,14 @@ function dr_taxo(){
 }
 /* ── l'heure : la maquette lisait HEURES_SIM[h] = {jour, debut, fin, base} ; ici l'heure de cours réelle (AT_DR_COURS, E2)
    ou, en préparation, l'heure qu'il est. Les heures passées viendront des paquets H (E2). ── */
-function dr_paquetsJoues(slug){ const out = []; try { const nom = (typeof dr_nomClasse === 'function' && dr_nomClasse(slug)) || slug; const ec = AT.edChap; const sce = chapitresData[ec.level][ec.chnum].seances[ATVUES.snum];
-  Object.keys((sce && sce.deroule_joue) || {}).forEach(k => { const c = sce.deroule_joue[k]; if (!c || (k !== slug && c.classe !== nom && c.classe !== slug)) return; Object.keys(c.heures || {}).forEach(kh => { const x = c.heures[kh]; if (!x || !x.creneau) return; const m = /^(\d{4}-\d{2}-\d{2})/.exec(kh); const d = x.debutReel ? new Date(x.debutReel) : null; const iso = m ? m[1] : (d ? d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0') : null); if (iso) out.push({ x, iso }); }); }); } catch (e) {}   /* la date dans la clé du paquet (_drCleHeureDe) fait foi */
-  return out.sort((a, b) => (a.iso < b.iso ? -1 : a.iso > b.iso ? 1 : (a.x.debutReel || 0) - (b.x.debutReel || 0))); }
-function dr_heureAVenir(h){ /* E1 (réveils n°12 et n°13, contrat §12.18 ; E4 lignes 161, 172) : pour la classe de « Lancer avec… », l'heure n de l'atelier est celle de l'EDT —
-     une heure déjà jouée porte la date où elle a été jouée (« jouée ») ; l'heure n, celle que « Lancer » propose (ou l'heure ouverte en classe), sa case ; les suivantes, les prochaines cases de la classe (edtProchainesDe d'E2) ; sans EDT, rien */
-  try { const ouverte = S.lancee && !S.close ? S.heure : 0; if (ouverte && h === ouverte) return null;   /* l'heure ouverte : le créneau du cours (AT_DR_COURS) */
-    const p = !ouverte && typeof dr_proposer === 'function' ? dr_proposer() : null;
-    const slug = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && AT_DR_COURS.classeSlug) || (p && p.classeSlug) || (typeof dr_classeProposee === 'function' ? dr_classeProposee() : null); if (!slug) return null;
-    const paquets = dr_paquetsJoues(slug); const n = ouverte || (p && +p.heure) || (paquets.length + 1);
-    const cle = slug + '|' + n + '|' + h + '|' + (typeof EDT !== 'undefined' && EDT.charge ? 1 : 0) + '|' + (p ? p.creneau + (p.prochaine ? p.prochaine.iso : '') : ''); const M = DR_MEM.heuresAVenir = DR_MEM.heuresAVenir || {}; if (M[cle] && Date.now() - M[cle].t < 30000) return M[cle].v;
-    const p2 = x => String(x).padStart(2, '0'); const mnDe = x => { const [a, b] = String(x).split(':').map(Number); return (a || 0) * 60 + (b || 0); }; const auj = new Date(); const nmn = auj.getHours() * 60 + auj.getMinutes(); const isoDe = d => d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate());
-    const fait = (iso, creneau, jouee) => { const [debut, fin] = String(creneau).split('-'); const [y, mo, d] = iso.split('-').map(Number); const [hh, mm] = debut.split(':').map(Number); const [fh, fm] = fin.split(':').map(Number); const dt = new Date(y, mo - 1, d, hh || 0, mm || 0); const v = { jour: dt.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), debut, fin, base: dt.getTime(), utiles: Math.max(0, ((fh * 60 + fm) - (hh * 60 + mm)) - 5), aVenir: !jouee, jouee: !!jouee }; M[cle] = { t: Date.now(), v }; return v; };
-    if (h < n) { const q = paquets.find(z => +z.x.heure === h) || paquets[h - 1]; return q ? fait(q.iso, q.x.creneau, true) : null; }
-    if (typeof edtProchainesDe !== 'function') return null; const enCours = cr => !!cr && mnDe(cr.split('-')[0]) <= nmn && nmn < mnDe(cr.split('-')[1]);
-    const L = edtProchainesDe(slug, h - n + 3); let caseN = null, jN = -1;
-    if (ouverte) caseN = { iso: isoDe(auj), creneau: AT_DR_COURS.debut + '-' + AT_DR_COURS.fin };
-    else if (p && +p.heure && enCours(p.creneau)) caseN = { iso: isoDe(auj), creneau: p.creneau };
-    else { const vise = p && p.prochaine ? p.prochaine : (p && +p.heure ? { creneau: p.creneau } : null); jN = vise ? L.findIndex(c => c.creneau === vise.creneau && (!vise.iso || c.iso === vise.iso)) : 0; if (jN < 0) jN = 0; caseN = L[jN] || null; }   /* la case de l'heure n : celle du jour en cours (hors de L), sinon sa case dans L */
-    if (h === n) return caseN ? fait(caseN.iso, caseN.creneau, false) : null;
-    const c = L[jN + (h - n)]; return c && c.iso && c.creneau ? fait(c.iso, c.creneau, false) : null; } catch (e) { return null; } }
+function dr_heureAVenir(h){ /* E1 (réveils n°12-14, contrat §12.18 ; E4 lignes 161, 172, 177) : une seule suite, celle de l'EDT — l'heure n de l'atelier est l'heure n de la classe
+     telle que `dr_heuresDeLaClasse` d'E2 la donne (jouée : sa date ; à venir : sa case, numérotée comme « Lancer ») ; l'heure ouverte en classe garde le créneau du cours */
+  try { const ouverte = S.lancee && !S.close ? S.heure : 0; if (ouverte && h === ouverte) return null; if (typeof dr_heuresDeLaClasse !== 'function') return null;
+    const slug = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && AT_DR_COURS.classeSlug) || (typeof dr_classeProposee === 'function' ? dr_classeProposee() : null); if (!slug) return null;
+    const cle = slug + '|' + h + '|' + (ATVUES && ATVUES.snum) + '|' + (typeof EDT !== 'undefined' && EDT.charge ? 1 : 0); const M = DR_MEM.heuresAVenir = DR_MEM.heuresAVenir || {}; if (M[cle] && Date.now() - M[cle].t < 30000) return M[cle].v;
+    const L = dr_heuresDeLaClasse(slug) || []; const x = L.find(e => +e.n === h && e.jouee) || L.find(e => +e.n === h); if (!x || !x.iso || !x.creneau) return null;
+    const [debut, fin] = String(x.creneau).split('-'); const [y, mo, d] = x.iso.split('-').map(Number); const [hh, mm] = debut.split(':').map(Number); const [fh, fm] = fin.split(':').map(Number); const dt = new Date(y, mo - 1, d, hh || 0, mm || 0);
+    const v = { jour: dt.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), debut, fin, base: dt.getTime(), utiles: Math.max(0, ((fh * 60 + fm) - (hh * 60 + mm)) - 5), aVenir: !x.jouee, jouee: !!x.jouee, sur: x.sur }; M[cle] = { t: Date.now(), v }; return v; } catch (e) { return null; } }
 function dr_heureDe(h){ { const av = h != null ? dr_heureAVenir(h) : null; if (av) return av; }
   const c = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) || null; const d = new Date(); const p = n => (n < 10 ? '0' : '') + n;
   const debut = (c && c.debut) || (p(d.getHours()) + ':' + p(d.getMinutes())); const fin = (c && c.fin) || (() => { const x = new Date(d.getTime() + 55 * 60000); return p(x.getHours()) + ':' + p(x.getMinutes()); })();

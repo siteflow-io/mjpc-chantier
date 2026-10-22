@@ -2498,3 +2498,19 @@ Réponse de la conscience (17:06), mot pour mot :
 
 22/10/2026 17:06
 MEMO
+
+## TOUR 121 (22/10/2026, 17:33 → 17:38)
+
+Paul (17:33), mot pour mot :
+« Une question bilan a toujours une réponse écrite dans la copie de classe. »
+
+Écrit (17:33-17:37) : contrat §12.23 (la diapo `role: "bilan"` porte sa question sans réponse attendue — la seule dispensée ; l'import ne refuse plus « la réponse attendue manque » sur le bilan (E1) ; en classe, la réponse validée s'écrit dans la diapo, elle vit dans la copie jouée, le récit la dit (E4) ; une heure close sans réponse écrite : le récit le dit, rien ne bloque) ; prompt v0.6 (§1.3, §1.4-3) ; relances E1 (l'import), E4 (le chapitre au contrat : plus de `[à vérifier]`, un seul refus attendu — la séance 3 ; le récit), E2, E3 (rien) ; poussé sur main et `integration`.
+
+Réponse de la conscience (17:38), mot pour mot :
+
+273. **Compris, c'est écrit** : la question du bilan n'a pas de réponse écrite d'avance — sa réponse, c'est celle que la classe valide et qui s'écrit dans la copie de classe pendant l'heure. Le prompt le dit (version 0.6), le site ne refusera plus un bilan sans réponse attendue (E1 le code), et ton chapitre 3e n'a plus qu'un seul point refusé.
+
+274. **Ce dernier point, le quatrième** : dans ta séance 3 (« Interro de cours et analyse logique »), la diapo « Question-bilan » est en 6ᵉ position sur 15 — à la fin de la première heure, pas à la fin de la séance. Le site la prend pour le bilan et refuse (« le bilan n'est pas la dernière diapo de la séance »). Ma proposition : la renommer « Avant de se quitter », comme je l'ai fait pour ta séance 1 à ton mot — sa question (sur les propositions) ne change pas. Dis « ok » ou donne-lui un autre nom.
+
+22/10/2026 17:38
+MEMO

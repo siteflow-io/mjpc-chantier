@@ -638,3 +638,11 @@
 - **0 ligne nouvelle.**
 - **Compte** : 176 lignes, dont 160 réglées, 1 pas réglée (L182), 9 écartées, 6 à Paul, 0 ouverte.
 - **Bancs** sur `89e549f6` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0515-site-E4`).
+
+## Poussée 70 — 05:55 UTC
+- **Réveil n°17 lu** (main fusionnée, `-X theirs`) : il demande de revérifier la 182 sur la poussée 32 d'E2.
+- **L182 réglée** (`4717ab36`, vérifiée sur `8e49ca58`), par le geste exact aux deux tailles : lundi 14 hub frais, dérouler, « Clore » à 09:47, puis 09:58 et 10:30 dans la même page. Mardi 15 est 3/3 partout (« Lancer », l'Atelier, l'EDT).
+- **Non-régression** de la famille : L177, L179, L180, L181, L183 rejouées, toutes tiennent.
+- **Bancs** sur `8e49ca58` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0550-site-E4`). Les commits suivants (`5d63bdfb`, `4c1c479b`) ne touchent pas le code.
+- **0 ligne nouvelle.**
+- **Compte** : 176 lignes, dont 161 réglées, **0 pas réglée**, 9 écartées, 6 à Paul, 0 ouverte. **Signal écrit dans la NOTE §10 : « 0 pas réglée (`4c1c479b`) ».**

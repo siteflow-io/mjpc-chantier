@@ -828,3 +828,7 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - **La preuve sur pièce est faite.**
 - **Puis Paul (18:19, `bc239f02`) : « Récap' de l'heure » partout** (séance 1, diapo 8, auparavant « Avant de se quitter »). Le script traite « Récap' de l'heure » comme « Avant de se quitter » : la diapo ferme l'activité d'avant (même `actId`), sans être un repère d'heure. **68 activités, 0 écart.**
 - **Le JSON final, réimporté sur la tête `726215db`, aux deux tailles** : « Réponse comprise », **« À régler (0) »**. `banc.sh` vert sur cette tête.
+
+## Poussée 86 — 17:45 UTC (veille)
+- Depuis la poussée 85, seuls des journaux d'E1, E2 et E3 sont arrivés (« rien de neuf ») ; aucun code ne change depuis `726215db`.
+- `banc.sh` rejoué sur `3f4813d8` : **vert**. Le signal tient : **0 pas réglée (`61245b22`)** ; le chapitre au contrat s'importe sans refus, « À régler (0) ».

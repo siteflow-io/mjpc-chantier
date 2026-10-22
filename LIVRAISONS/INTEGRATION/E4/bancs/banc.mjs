@@ -355,6 +355,26 @@ if (SITE) { for (const avecReponse of [false, true]) { const o = await ouvrir({ 
   verif('RC8', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte (' + (avecReponse ? 'avec' : 'sans') + ' réponse)', JSON.stringify(o.errs)); await cap(pg, 'E4-RC8-bilan-' + (avecReponse ? 'avec' : 'sans')); await o.ctx.close(); } }
 else verif('RC8', null, '§12.23 le bilan sans réponse attendue', 'se mesure sur le site');
 
+// ═════ RC9 · contrat §12.24 : la diapo du bilan en trois blocs (question sans réponse attendue, « À mettre dans le bilan », consigne proposée) — le récit dit la question, les mots-clés, la consigne et la réponse écrite en classe ═════
+if (SITE) { const hub = store(); let posee = false;
+  try { const ch = hub.site['3e'].chapitres; const c0 = Array.isArray(ch) ? ch[0] : ch['0']; const ss = c0.seances; const s0 = Array.isArray(ss) ? ss[0] : ss[Object.keys(ss)[0]]; const E = s0.deroule.ecrans; const L = Array.isArray(E) ? E : Object.values(E);
+    const bs = L.filter(e => /^Question-bilan/.test(String(e.act || ''))); const b = bs[0]; bs.slice(1).forEach(x => { x.act = 'Travail à faire (essai)'; });   /* le banc joue l'heure 2 : la première « Question-bilan » (fin de l'heure 1, glissée en tête de l'heure 2) porte le bilan en trois blocs ; l'autre est renommée, un seul bilan */
+    if (b) { const q = (b.blocs || []).find(x => x.t === 'question'); b.role = 'bilan'; b.blocs = [Object.assign({}, q, { reps: [] }), { t: 'texte', txt: 'À mettre dans le bilan', el: ['une nature immense face à un homme petit', "l'émotion avant la règle", 'les mouvements du siècle', 'le siècle des inventions'] }, { t: 'consigne', pic: '✎', txt: 'Rédige le bilan au brouillon.', etapes: ['Cinq à huit lignes, au présent.', 'Chaque mot-clé y est, dans une phrase à toi.', 'Souligne chaque mot-clé une fois placé.'] }]; posee = true; } } catch (e) {}
+  const o = await ouvrir({ hub }); const pg = o.pg; await lancer(pg);
+  const vu = posee && await jusquA(pg, () => { try { return ecran().role === 'bilan'; } catch (e) { return false; } }, 40) && await pg.evaluate(() => { try { return ecran().role === 'bilan'; } catch (e) { return false; } });
+  if (vu) { try { await pg.click('#bdev', { timeout: 3000 }); await p(pg, 200); await reponse(pg, 'GA', 'La nature domine un homme petit ; l\'émotion passe avant la règle'); } catch (e) {}
+    for (let n = 0; n < 10; n++) { if (await pg.$('.garde.on')) { await pg.keyboard.press('Escape'); await p(pg, 200); break; } const reste = await pg.evaluate(() => { try { return ecran().role === 'bilan' && dr_dev && false; } catch (e) { return false; } }); await pg.click('#bdev', { timeout: 2000 }).catch(() => {}); await p(pg, 150); if (await pg.$('.garde.on')) { await pg.keyboard.press('Escape'); await p(pg, 200); break; } } }
+  if (await pg.$('#garde-cahier.on')) { const ya = pg.locator('#garde-cahier.on :is(button,[onclick])', { hasText: /Y aller/ }).first(); if (await ya.count()) { await ya.click().catch(() => {}); await p(pg, 1200); } }
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:47:30+02:00')); await p(pg, 2500);
+  for (let n = 1; n <= 7; n++) { const t = await pg.evaluate(() => (document.querySelector('.pp-tete') || {}).innerText || ''); if (/étape 7 sur 7/.test(t)) break; const b = await pg.$('#f-suivante:not([disabled])'); if (!b) break; await b.click(); await p(pg, 700); }
+  await pg.locator('#f-clore:visible').first().click().catch(() => {}); await p(pg, 1200); if (await pg.$('#gclore-oui:visible')) { await pg.click('#gclore-oui'); await p(pg, 1500); }
+  const close = await pg.evaluate(() => !!S.close); await relecture(pg); const r = await texteRel(pg);
+  try { fs.writeFileSync(path.join(CAP, 'E4-RC9-recit.txt'), r); } catch (e) {}
+  const dit = { question: /Qu['’]ont en commun ces cinq tableaux/.test(r), motsCles: /émotion avant la règle|nature immense/.test(r), consigne: /Rédige le bilan|bilan au brouillon/i.test(r), reponse: /domine un homme petit/.test(r), copieDeClasse: /copie de (la )?classe/i.test(r) };
+  verif('RC9', vu && close ? dit.question && dit.motsCles && dit.consigne && dit.reponse && !dit.copieDeClasse : null, 'le bilan en trois blocs, joué : le récit dit la question, les mots-clés (« À mettre dans le bilan »), la consigne et la réponse écrite en classe ; jamais « copie de classe »', JSON.stringify({ posee, vu, close, dit, extrait: (r.match(/[^.]*(Romantisme|mettre dans le bilan|brouillon)[^.]*\./g) || []).join(' ').slice(0, 500) }));
+  verif('RC9', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte', JSON.stringify(o.errs)); await cap(pg, 'E4-RC9-bilan-trois-blocs'); await o.ctx.close(); }
+else verif('RC9', null, '§12.24 la diapo du bilan', 'se mesure sur le site');
+
 // ═════ B3 · le relecteur continu B3 (14:05) : l'heure fantôme, le bloc libre, le verdict sans activités, le point après « », l'étiquette vide ═════
 if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   await pg.evaluate(() => { try { dr_aller(1); } catch (e) {} }); await p(pg, 400); await pg.click('#bdev').catch(() => {}); await p(pg, 300); await pg.evaluate(() => { try { dr_aller(0); } catch (e) {} }); await p(pg, 300);

@@ -411,7 +411,7 @@
               "blocs": [
                 {
                   "t": "question",
-                  "q": "Qu'est-ce que le Romantisme ? La réponse validée est recopiée dans le cahier, partie cours.",
+                  "q": "Qu'est-ce que le Romantisme ?",
                   "reps": []
                 },
                 {
@@ -422,8 +422,7 @@
                     "l'émotion avant la règle",
                     "les règles héritées",
                     "la frise du siècle",
-                    "les mouvements du siècle",
-                    "le siècle des inventions"
+                    "les mouvements du siècle"
                   ]
                 },
                 {
@@ -439,7 +438,7 @@
               ],
               "role": "bilan",
               "heure": 2,
-              "notes": "<p><b>une nature immense face à un homme petit</b> — Les plans et le cadrage (litt-037)</p><p><b>l'émotion avant la règle</b> — Établir des liens entre des créations littéraires et artistiques issues de cultures et d'époques diverses (c4-culture-02)</p><p><b>les règles héritées</b> — Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle (c4-culture-01)</p><p><b>la frise du siècle</b> — Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle (c4-culture-01)</p><p><b>les mouvements du siècle</b> — Établir des liens entre des créations littéraires et artistiques issues de cultures et d'époques diverses (c4-culture-02)</p><p><b>le siècle des inventions</b> — Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle (c4-culture-01)</p><p>La réponse validée s'écrit dans la copie de la classe.</p>"
+              "notes": "<p><b>une nature immense face à un homme petit</b> — Les plans et le cadrage (litt-037)</p><p><b>l'émotion avant la règle</b> — Établir des liens entre des créations littéraires et artistiques issues de cultures et d'époques diverses (c4-culture-02)</p><p><b>les règles héritées</b> — Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle (c4-culture-01)</p><p><b>la frise du siècle</b> — Mobiliser des références culturelles pour interpréter les textes et les créations artistiques et littéraires et pour enrichir son expression personnelle (c4-culture-01)</p><p><b>les mouvements du siècle</b> — Établir des liens entre des créations littéraires et artistiques issues de cultures et d'époques diverses (c4-culture-02)</p><p>La réponse validée s'écrit dans la copie de la classe.</p>"
             }
           ],
           "activites": [
@@ -1134,7 +1133,7 @@
               "blocs": [
                 {
                   "t": "question",
-                  "q": "En trois lignes : pourquoi Baudelaire a-t-il choisi un albatros pour parler du poète ? La réponse validée est recopiée dans le cahier, partie cours.",
+                  "q": "En trois lignes : pourquoi Baudelaire a-t-il choisi un albatros pour parler du poète ?",
                   "reps": []
                 },
                 {
@@ -3303,7 +3302,7 @@
               "blocs": [
                 {
                   "t": "question",
-                  "q": "Qu'est-ce qui distingue une récitation vivante d'une récitation seulement sue ? La réponse validée est recopiée dans le cahier, partie cours.",
+                  "q": "Qu'est-ce qui distingue une récitation vivante d'une récitation seulement sue ?",
                   "reps": []
                 },
                 {

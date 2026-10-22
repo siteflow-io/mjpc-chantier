@@ -15,7 +15,7 @@
 - intro-peinture · heure 1 : 55 min > 50 — « Les hypothèses de la classe » passe de 22 à 17 min [PROPOSITION]
 - intro-peinture · heure 2 : 52 min > 50 — « Les règles héritées » passe de 10 à 8 min [PROPOSITION]
 - intro-peinture · « Récap' de l'heure » (heure 1) : ferme l'activité « Les cinq tableaux à analyser » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part
-- intro-peinture · bilan « Question-bilan et travail à faire » : question, consigne → question, « À mettre dans le bilan » (6 mots-clés), consigne proposée ; notes présentateur
+- intro-peinture · bilan « Question-bilan et travail à faire » : question, consigne → question, « À mettre dans le bilan » (5 mots-clés), consigne proposée ; notes présentateur
 - etude-albatros · « Les figures de style » : la carte de 8 familles coupée en 8 diapos de 1 familles au plus (« (suite) »)
 - etude-albatros · « Où en sommes-nous ? » (3 min) retirée (§12.22) — avant : question
 - etude-albatros · heure 1 : 55 min > 50 — « L'enjambement » passe de 10 à 5 min [PROPOSITION]
@@ -45,5 +45,6 @@
 - remediation · « Avant de se quitter » (heure 2) : ferme l'activité « Je m'entraîne sur mes points faibles » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part
 - tache-finale · heure 1 : 55 min > 50 — « Étude du texte (sur 32) » passe de 45 à 40 min [PROPOSITION]
 
-### La liste du §3 point 5 — 0 écart(s)
-
+### La liste du §3 point 5 — 2 écart(s)
+- la question du bilan sur une ligne, 60 signes au plus (réveil n°31) — etude-albatros · diapo 23 « Question-bilan et travail à faire » · 86 signes
+- la question du bilan sur une ligne, 60 signes au plus (réveil n°31) — recitation · diapo 6 « Question-bilan » · 79 signes

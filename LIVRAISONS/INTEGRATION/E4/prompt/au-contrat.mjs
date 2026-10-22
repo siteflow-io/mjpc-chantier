@@ -53,7 +53,7 @@ const FEUILLES = {
 // Les mots-clés : séance 2, l'exemple de la pièce v0.7 §1.3, mot pour mot ; séances 1 et 7, pris dans les diapos de la séance (titres, réponse validée du « Récap' »,
 // critères) — les reformulations nominales sont des [PROPOSITION] à Paul (journal).
 const BILANS = {
-  'intro-peinture': [['une nature immense face à un homme petit', 'litt-037'], ["l'émotion avant la règle", 'c4-culture-02'], ['les règles héritées', 'c4-culture-01'], ['la frise du siècle', 'c4-culture-01'], ['les mouvements du siècle', 'c4-culture-02'], ['le siècle des inventions', 'c4-culture-01']],
+  'intro-peinture': [['une nature immense face à un homme petit', 'litt-037'], ["l'émotion avant la règle", 'c4-culture-02'], ['les règles héritées', 'c4-culture-01'], ['la frise du siècle', 'c4-culture-01'], ['les mouvements du siècle', 'c4-culture-02']],   // v0.8 : cinq mots-clés au plus (E3 : six ne tiennent qu'avec une question d'une ligne)
   'etude-albatros': [["l'albatros : roi du ciel, infirme sur le pont", 'litt-026'], ['le poète parmi les hommes', 'c4-lire-04'], ['la comparaison filée', 'litt-020'], ['le champ lexical de la moquerie', 'lex-008'], ["le registre lyrique : l'émotion avant la règle", 'litt-018']],
   'recitation': [['le texte su', 'c4-oral-04'], ['chaque mot entendu', 'c4-oral-04'], ['le rythme du vers respecté', 'vers-015'], ['le e muet, compté ou non', 'vers-006'], ['une récitation vivante', 'c4-oral-04']],
 };
@@ -132,7 +132,8 @@ chap.seances.forEach((s, si) => {
   // 8 bis · §12.24 : le bilan refait en trois blocs (le travail à faire en sort : il vit dans `travail`), ses notes présentateur
   E.forEach(e => { if (e.role !== 'bilan') return; const kw = BILANS[s.cle]; if (!kw) { journal.push(`${s.cle} · bilan « ${e.act} » : pas de mots-clés déclarés`); return; }
     const q = (e.blocs || []).find(b => b.t === 'question'); const avantB = (e.blocs || []).map(b => b.t).join(', ');
-    e.blocs = [Object.assign({}, q, { reps: [] }), { t: 'texte', txt: 'À mettre dans le bilan', el: kw.map(k => k[0]) }, JSON.parse(JSON.stringify(CONSIGNE_BILAN))];
+    const qq = String(q.q || '').replace(/\s*La réponse validée est recopiée dans le cahier, partie cours\.?\s*$/, '').trim();   /* réveil n°31 : la phrase coûte un mot-clé et n'a plus lieu d'être (la consigne dit « au brouillon ») */
+    e.blocs = [Object.assign({}, q, { q: qq, reps: [] }), { t: 'texte', txt: 'À mettre dans le bilan', el: kw.map(k => k[0]) }, JSON.parse(JSON.stringify(CONSIGNE_BILAN))];
     e.notes = kw.map(([k, id]) => `<p><b>${k}</b> — ${libelle[id] || id} (${id})</p>`).join('') + "<p>La réponse validée s'écrit dans la copie de la classe.</p>";
     journal.push(`${s.cle} · bilan « ${e.act} » : ${avantB} → question, « À mettre dans le bilan » (${kw.length} mots-clés), consigne proposée ; notes présentateur`); });
   // 9 · §12.22 : pas de fin d'heure dans le fichier (le site la pose, dernière de chaque heure)
@@ -172,9 +173,9 @@ chap.seances.forEach(s => {
     if (e.notes != null) R(e.role === 'bilan', '`notes` seulement sur le bilan (§12.24)', ou);
     const vu = JSON.stringify(e.blocs || []) + ' ' + e.act; R(!/copie de (la )?classe/i.test(vu), 'aucun texte vu par les élèves ne dit « copie de classe » (§12.24)', ou);
     if (e.role === 'bilan') { const t = (e.blocs || []).map(b => b.t).join(','); R(t === 'question,texte,consigne', 'le bilan : trois blocs, question, texte, consigne (§12.24)', ou + ' : ' + t);
-      const tx = (e.blocs || [])[1] || {}; R(tx.txt === 'À mettre dans le bilan' && (tx.el || []).length >= 4 && (tx.el || []).length <= 6, '« À mettre dans le bilan » : quatre à six lignes', ou);
+      const tx = (e.blocs || [])[1] || {}; R(tx.txt === 'À mettre dans le bilan' && (tx.el || []).length >= 4 && (tx.el || []).length <= 5, '« À mettre dans le bilan » : quatre à cinq lignes (v0.8)', ou);
       (tx.el || []).forEach(l => R(!/\.$/.test(l) && l.split(/\s+/).length <= 12, 'une ligne « À mettre dans le bilan » : sans point final, douze mots au plus', ou + ' · « ' + l + ' »'));
-      R(JSON.stringify((e.blocs || [])[2]) === JSON.stringify(CONSIGNE_BILAN), 'la consigne proposée, mot pour mot (v0.7)', ou); R(!!e.notes, 'le bilan a ses notes présentateur', ou); } });
+      R(String(((e.blocs || [])[0] || {}).q || '').length <= 60, 'la question du bilan sur une ligne, 60 signes au plus (réveil n°31)', ou + ' · ' + String(((e.blocs || [])[0] || {}).q || '').length + ' signes'); R(JSON.stringify((e.blocs || [])[2]) === JSON.stringify(CONSIGNE_BILAN), 'la consigne proposée, mot pour mot (v0.7)', ou); R(!!e.notes, 'le bilan a ses notes présentateur', ou); } });
   const bi = E.findIndex(e => e.role === 'bilan'); if (bi >= 0) R(bi === E.length - 1, 'le bilan est la dernière diapo de la séance', s.cle);
   E.forEach((e, i) => { R(!e.role || e.role === 'bilan', 'aucun rôle « reactivation » ni « fin » (§12.22)', `${s.cle} · diapo ${i + 1} « ${e.act} » : ${e.role}`); R(!REACTIVATION(e.act), 'aucune diapo « Où en sommes-nous ? » (§12.22)', `${s.cle} · diapo ${i + 1}`); });
   for (let k = 1; k <= nH; k++) { const t = E.filter(e => e.heure === k).reduce((a, e) => a + e.dur, 0); R(t <= UTILE, 'la somme des dur par heure ≤ 50', `${s.cle} · heure ${k} : ${t} min`); }

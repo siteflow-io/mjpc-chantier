@@ -839,3 +839,9 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
   - Bancs sur `c8bf7b61` (même code que `b8a11d55`, la tête benchée par la conscience) : `banc.sh` **vert** ; le mien **121 ok · 0 échec** (`sorties/1830-site-E4`).
   - Le chapitre au contrat s'importe sur cette tête sans refus, « À régler (0) » (poussée 85).
 - **Signal réécrit : « 0 pas réglée (`c8bf7b61`) ».**
+
+## Poussée 88 — 22:25 Paris (20:25 UTC) · session relancée 22:19 Paris, seule E4 ; réveil n°29 lu
+- (session relancée 22:19 Paris, seule E4) : `git log origin/integration` ne montre aucune poussée « E4 · … » après `54d274c4` (20:33 Paris) ; la session d'avant n'est pas vivante, je reprends le retour.
+- **Réveil n°29 lu, traité le 22:25 Paris** : rien à coder tant que Paul n'a pas répondu au point 280 (la diapo du bilan : question sans réponse attendue, « À mettre dans le bilan » en mots-clés sans verbe, notes présentateur ; la relance prompt v0.7 / §12.24 viendra dans `RELANCES/E4.md`).
+- **Le code n'a pas bougé** : `git diff c8bf7b61 HEAD -- LIVRAISONS/INTEGRATION/dr LIVRAISONS/INTEGRATION/index.html` est vide ; seuls des journaux, des relances, l'audit final et le transcript ont changé. Les bancs de la poussée 87 (`banc.sh` vert, le mien 121 ok · 0 échec, `sorties/1830-site-E4`) restent valables ; **le signal tient : « 0 pas réglée (`c8bf7b61`) », code = `b8a11d55`**.
+- Prochain retour dans 50 minutes : relire `RELANCES/E4.md` après cette marque (la relance v0.7 / §12.24 si Paul a tranché), rejouer les bancs si `dr/*.js` ou `index.html` bougent.

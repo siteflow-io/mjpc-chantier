@@ -2221,3 +2221,66 @@ Réponse de la conscience (09:12), mot pour mot :
 
 22/10/2026 09:12
 MEMO
+
+## TOUR 105 (22/10/2026, 09:31 → 09:54)
+
+Paul (09:31), mot pour mot :
+« 152. Ok ta proposition. 144. À mettre dans le mode test? Faisable? 198. Corriger la trame, bilan unique. 215. Go, avec audit préalable de tes mandats par les exécutants, comme on a fait là pour l'intégration du déroulé. »
+
+Mesuré et fait (09:31-09:54) : **152** → contrat §12.20 (le récit dit l'heure réelle de la clôture, `H.finReel` ; l'entête garde le créneau ; tant que l'heure n'est pas close, pas d'heure de fin) ; relance E4 (seule exception à « rien avant le promeus » ; le signal se réécrit), E1-E3 une ligne ; poussé sur main et `integration`. **198** → la trame mesurée au hub (séance 1 = index 0 : 18 écrans, « Question-bilan » en 8ᵉ (fin de l'heure 1) et « Question-bilan et travail à faire » en 18ᵉ ; le site lit « bilan » par le titre, `bil = e => e.role === 'bilan' || (!e.role && /bilan/i.test(e.act))`, aucun rôle dans la trame) ; état d'avant gardé (`scratchpad/hub-avant-s0-e7.json`) ; `PATCH` au hub `/site/3e/chapitres/0/seances/0/deroule/ecrans/7` : `act` = « Avant de se quitter » (le titre que Paul donne au même geste en séance 2, écran 8) ; relu : seul le titre a changé ; un seul titre « bilan » dans la séance ; même changement dans `CONSULTANT/CHAPITRE-1/chapitre-3e-poesie-peinture-final.json` (commit `af088c3e`) ; le faux hub du banc gardé tel quel (exprès, jusqu'au promeus) ; les autres séances : séance 3 (index 2) un seul « Question-bilan » en 6ᵉ sur 15, séance 7 (index 6) en 6ᵉ sur 6, séances 4, 5, 6, 8, 9 sans bilan — non touchées. **144** → mesuré : maquette p8-5g `#fsimu`, `s-anim` (`setInterval` 350 ms : dévoile, puis `DECALAGE += dur × 60000`, `tick()`, `allerSuivante()`, jusqu'au cahier) sur l'horloge simulée `now() = HEURES_SIM.base + (Date.now() − T0) + DECALAGE` ; le site : `now(){ return Date.now(); }` (l. 15971), 116 appels de `now()`, 52 `Date.now()` et 9 `new Date()` directs dans le déroulé, `DECALAGE` remis à 0 à « Lancer » mais ignoré par `now()` ; `#fsimu` tombé (gabarit l. 15713). **215** → quatre dossiers de sources rassemblés (quatre agents en lecture seule, 09:40-09:47), puis écrits : `MANDATS/PLAN-10-JOURS/CONTRAT-COMMUN.md` (mission 0 §4 ; rien au hub réel par un exécutant ; une branche par lot), `MANDAT-A1-ATTENDUS.md`, `MANDAT-D1-DICTEE.md`, `MANDAT-P1-PROMPT.md`, `MANDAT-S-APPS.md` (S1-S3), `PHRASES-A-COLLER.md` (six) ; le plan mis à jour (commits `840e3057`, `1d2d6fb2`) ; deux dettes mesurées en préparant P1, au registre (prod `8326e7c`) : **13 · 30** (`FB` indéclaré l. 16813, « Compléter » n'écrit jamais `deroule`) et **13 · 31** (les refus à l'import ne sont que des textes ; `devoilerTout` perdu). Les faits saillants des sources : aucun nœud `/attendus` ; la taxonomie du hub en 1.4.1 (210 notions, 56 avec `source`, 28 + 28) ; les textes des attendus absents du dépôt (la 3e dans la sauvegarde du 11/08) ; la production `correction_dictee.html` décalée de +29 lignes depuis la pause ; aucun banc par le geste sur les satellites ; onze fichiers sur quatorze sans bascule de mode test (n°11 · 98) ; le prompt en trois sections jamais rédigé.
+
+Réponse de la conscience (09:38, points 222-225, puis 09:54), mot pour mot :
+
+222. **152 — fait côté règle** : contrat §12.20 (le récit dit l'heure réelle de la clôture, l'entête garde le créneau ; tant que l'heure n'est pas close, le récit ne dit pas d'heure de fin). E4 la code, seule exception à « rien avant le promeus » ; son signal « 0 pas réglée » se réécrit dessus, puis le promeus. Le promeus attend donc E4 (une à deux heures).
+
+223. **198 — fait dans la donnée** : au hub, la diapo 8 de la séance 1 s'appelle maintenant « Avant de se quitter » (ton titre de la séance 2 pour le même geste) ; le seul bilan est « Question-bilan et travail à faire », en dernier. Même changement dans la source d'import (`CONSULTANT/CHAPITRE-1/…final.json`). J'ai gardé l'état d'avant. Dans ta trame, il reste : la séance 3 a son seul bilan en 6ᵉ position sur 15, la séance 7 en 6ᵉ sur 6, et cinq séances n'ont pas de bilan du tout — je n'y touche pas sans ton mot.
+
+224. **144 — faisable, mesuré.** L'animation en accéléré existait dans la maquette (l'heure se joue seule, l'horloge saute de la durée prévue de chaque diapo) sur une horloge simulée. Dans le site, l'horloge est réelle (`now()` = l'heure vraie, lue 116 fois, plus 61 lectures directes de l'heure). La mettre dans le mode test, c'est : une horloge unique qui sait sauter en mode test, les 61 lectures directes ramenées à elle, et l'animation reprise telle quelle de la maquette — recyclage, rien de neuf. Une journée d'exécutant (E1 + E2), avec le banc. Je la mets au plan en L5, après le promeus — sauf si tu la veux avant.
+
+225. **215 — go reçu.** J'écris les quatre mandats (ATTENDUS, DICTÉE, PROMPT, APPS), chacun avec la mission 0 d'audit du mandat par l'exécutant, comme pour le déroulé, et les phrases à coller. Je te les donne dans l'heure.
+
+226. **Les mandats sont écrits, six exécutants, chacun avec la mission 0** (l'audit de mon mandat dans l'heure, poussé, verdict par point — comme E1-E4). Le dossier : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PLAN-10-JOURS/CONTRAT-COMMUN.md (la règle commune : une branche par lot, un fichier par exécutant, rien au hub réel par un exécutant, le banc par le geste, la promotion sur ton mot) ; https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PLAN-10-JOURS/MANDAT-A1-ATTENDUS.md ; https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PLAN-10-JOURS/MANDAT-D1-DICTEE.md ; https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PLAN-10-JOURS/MANDAT-P1-PROMPT.md ; https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PLAN-10-JOURS/MANDAT-S-APPS.md (S1 les deux réécritures, S2 dictée coévaluée + applaudimètre + plan de travail, S3 analyse logique + débat). Les apps font six, pas quatre : trois exécutants sur les dix satellites, un fichier n'est jamais à deux.
+
+227. **Les six phrases à coller** : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PLAN-10-JOURS/PHRASES-A-COLLER.md — six sessions cloud sur `siteflow-io/mjpc-chantier`, à nommer « Plan 10 jours — A1 attendus », « — D1 dictée », « — P1 prompt », « — S1 apps (réécritures) », « — S2 apps (dictée coévaluée, applaudimètre, plan de travail) », « — S3 apps (analyse logique, débat) ». Le message, un par session (seule la lettre change) : « Tu es **A1**, l'un des exécutants du plan 10 jours de MJPC. Dans ce dépôt, lis `MANDATS/PLAN-10-JOURS/PHRASES-A-COLLER.md`, section **A1**, et fais exactement ce qu'elle dit, du début à la fin, sans jamais t'arrêter. » Je les audite à chaque réveil, avec le déroulé.
+
+228. **Deux dettes trouvées en écrivant le mandat du prompt, au registre (13 · 30, 13 · 31)** : l'injection d'un chapitre n'écrit jamais les trames normalisées (une variable qui n'existe pas, l'erreur avalée) et « Compléter le chapitre » n'écrit aucun déroulé ; les refus annoncés à l'import (activités numérotées, deux schémas, fiche liée) ne sont que des textes — c'est pour ça que ton chapitre 3e porte 19 lignes « À régler ». Les deux se règlent au L5 (l'import) ; le prompt dit la voie qui marche aujourd'hui.
+
+229. **Une pièce te sera demandée** : les attendus de fin d'année (Éduscol) ne sont pas au dépôt — la 3e survit dans une sauvegarde, la 4e et la 5e nulle part. Si la session d'A1 ne peut pas les télécharger, je te demanderai les trois PDF (tu les avais téléversés en juillet).
+
+230. À toi, telles quelles : le « promeus » (après le signal d'E4 sur 152) ; coller les six phrases ; 144 (avant ou après le promeus) ; 13 · 12 ; §12.17 ; le cadrage 1 (le profil) quand tu veux. Réveil n°19 à 10:10.
+
+22/10/2026 09:54
+MEMO
+
+## TOUR 106 (22/10/2026, 10:10 → 10:12)
+
+Paul (10:10), mot pour mot :
+« 198 rien compris. Pour le reste, beaucoup trop de choses dont je ne comprends pas la moitié parce que tu synthétise trop. De plus, aucun plan de 10 jours lancé tant que déroulé n'est pas fini et intégré correctement et prêt à accueillir un chapitre créé grâce au nouveau prompt. »
+
+Ordre reçu : aucun lot du plan 10 jours ne se lance tant que le déroulé n'est pas fini, intégré correctement, et prêt à recevoir un chapitre créé avec le nouveau prompt. Les six phrases ne sont pas à coller. Faute de style déclarée : les tours 104-105 synthétisaient trop ; un sujet par point, en clair.
+
+Réponse de la conscience (10:12), mot pour mot :
+
+231. **198, en clair.** Ta séance 1 (« Poésie et peinture : le Romantisme en question ») dure deux heures. À la fin de la première heure, tu avais une diapo qui s'appelait « Question-bilan ». À la fin de la deuxième, une diapo « Question-bilan et travail à faire ». Le site prend pour bilan toute diapo dont le titre contient le mot « bilan ». Il voyait donc deux bilans dans la séance, et ton cadrage dit : un seul bilan, le dernier. J'ai renommé la première diapo : elle s'appelle maintenant « Avant de se quitter », le nom que tu donnes à la même diapo de fin d'heure dans ta séance 2. Sa question n'a pas changé (« Qu'ont en commun ces cinq tableaux ? »). Rien d'autre n'a bougé.
+
+232. **Compris : rien du plan ne se lance.** Les six phrases ne sont pas à coller. Les mandats restent écrits au sas, pour plus tard.
+
+233. **L'ordre, tel que je le lis dans ton mot** : d'abord E4 finit la ligne 152 et je te dis « promeus » ; ensuite le site doit savoir recevoir un chapitre fait avec le nouveau prompt — ça demande deux choses qui vont ensemble : le prompt lui-même (une pièce que tu relis), et l'import du site qui refuse ce que le prompt interdit (aujourd'hui l'import ne vérifie presque rien, c'est pour ça que ton chapitre 3e a 19 lignes « À régler ») ; ensuite seulement, le reste du plan.
+
+234. Une question : le prompt, tu veux que je l'écrive moi-même maintenant (c'est un document, pas du code), ou que je le laisse à un exécutant après le promeus ?
+
+22/10/2026 10:12
+MEMO
+
+## TOUR 107 — RÉVEIL N°19 (22/10/2026, 10:11 → 10:23 ; déclenché par la tâche planifiée)
+
+Paul a répondu au tour 106 (10:10) ; aucun autre message.
+
+Mesuré (10:12-10:21) : tête `integration` = `57433108` (fusion de main) ; code : `09316b3d` (E4, 09:44 : contrat §12.20 — `dr_recitFinReel`, le récit dit « s'est terminée à 09 h 47 », l'heure en cours « elle est en cours », l'entête de la Relecture et du Papier garde le créneau ; garde RC7 ; revérifié par le geste aux deux tailles ; lignes 50, 140, 163 réglées ; banc E4 114 ok / 0) ; E4 NOTE §10 : « 0 pas réglée (`09316b3d`) » (176 lignes : 164 réglées, 9 écartées, 3 à Paul, 0 ouverte) **et** une ligne pour E2, « lecture du code, non mesurée par un geste » : à l'ouverture de l'heure suivante (`dr-classe.js:712` l'heure qui tournait encore ; `:674` la clôture certaine de l'heure précédente), `finReel` est écrit au hub seulement, ni dans `S.closes[h]` ni dans `S.heuresCours[h].finReel` ; le récit de cette heure retomberait sur la fin du créneau. Lu dans `dr-classe.js` : exact (`dr_ecrire(o.H + '/finReel', Date.now(), …)` puis `S.close = true`, rien en page). Banc sur `57433108` (`banc-1015`) : collisions 0 / 0 / 0, parcours P0-P12 vert en mode normal et en mode test, K1-K13 : 108 vérifications, 0 échec (épreuves `banc-sur-integration-57433108.txt`, `sur-integration-57433108-v22.txt`, `EMPREINTES.md5` ; pièces T107-P5, P9, P10) ; fichier assemblé 2 285 036 o, md5 `771b019630177e507879a8685af18db8`. E1, E2, E3 : rien depuis le réveil n°18 (attendu). Relances r19 écrites (E4 : la ligne d'E2 devient une ligne de la table, mesurée par le geste — lancer la 3E lundi 09:00, dévoiler, « Lancer » une autre classe deux minutes plus tard sans clore, ouvrir la Relecture de l'heure de la 3E — ; 166, 169 réglées comme 50 ; 174 réglée dans la donnée ; E2 : mesurer et régler par la source unique ; E1, E3 : rejouer leur banc sur `09316b3d`). Audit §0 mis à jour : pas encore « promeus », une ligne à mesurer. Réveil n°20 programmé à 11:20.
+
+Réponse de la conscience (10:23), mot pour mot :
+
+235. **Le déroulé, en une ligne.** E4 a codé la 152 (le récit dit l'heure réelle de la clôture) et le banc est vert dessus. Mais en la codant, E4 a lu dans le code d'E2 un cas où cette heure réelle ne serait pas affichée : quand tu lances une autre classe sans avoir clos la précédente. Je le fais mesurer par le geste avant de te dire « promeus ». Prochain point à 11:20.
+
+22/10/2026 10:23
+MEMO

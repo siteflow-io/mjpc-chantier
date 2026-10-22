@@ -245,3 +245,6 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - **Question de deux lignes** (celle du chapitre d'E4, ≈ 150 signes : « En trois lignes : … La réponse validée est recopiée dans le cahier, partie cours. ») : 3 à 32 pt ; 4 → 29 pt ; **5 mots-clés tiennent sur une page, à 26,4 pt** ; **6 → deux pages**.
   - **Le chiffre pour le prompt : n ≤ 5 mots-clés** (« quatre à six » de v0.7 : le six ne tient qu'avec une question d'une ligne, et au plancher) ; question du bilan sur une ligne (≤ 60 signes) ; la phrase « La réponse validée est recopiée dans le cahier, partie cours. » coûte un mot-clé — si elle reste dans la question, n ≤ 5 strictement ; sans la police (essai de la conscience, T125) : 5 — même chiffre, la police ne change rien ici (c'est la hauteur qui limite, pas la largeur).
   - Captures : `1366x768-bilan-qE4-n5-une-page.png` (ce que la classe voit), `…-n6-2pages.png` (la page 2 apparaît).
+
+## 23/10, 00:41 — retour 11 : réveil n°31
+- Rien d'ouvert (mon chiffre est dans le prompt v0.8). E1 a touché `index.html` (§12.24, `45b7c8b3`) : banc E3 rejoué sur l'assemblé de la tête `9eba2708` (md5 `74622767…`) — **105 vérifications, 0 échec** (`sorties/0035/banc-E3.txt`). Le tableau ne bouge pas.

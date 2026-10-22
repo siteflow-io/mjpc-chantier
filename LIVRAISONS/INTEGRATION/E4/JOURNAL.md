@@ -603,3 +603,22 @@
 - **Convergence** : 4 neuves en 1 h 45 (≈ 2,3 par heure), contre ≈ 6 sur la soirée ; aucune grave.
 - **Compte** : 174 lignes, dont 154 réglées, 5 pas réglées (L177-L181, famille §12.18, surtout chez E2), 9 écartées, 6 à Paul, 0 ouverte.
 - **Bancs** : `banc.sh` vert sur la tête de cette poussée.
+
+## Poussée 67 — 04:45 UTC
+- **Le conteneur a redémarré** vers 04:10 pendant la passe. Les bancs sont relancés, la veille est réarmée.
+- **Réveil n°16 lu** (main fusionnée, `-X theirs`) : contrat §12.19, une seule source `dr_heuresDeLaClasse`.
+- **E2 poussée 30 (`9ef3f6f0`, `5395632e`, `275f3973`)**, revérifiée par les gestes exacts aux deux tailles, sur la page fraîche :
+  - **réglées** :
+    - L177 : le mercredi, une seule suite au vendredi 18 3/3 ;
+    - L179 : le mardi 2/3 partout après un lundi manqué ;
+    - L180 : « Lancer » sur L'Albatros nomme sa case et dit à qui est la case de maintenant ;
+  - **pas réglées** :
+    - L178 : la source dit « jouée », mais le volet de l'Atelier non (E1) ;
+    - L181 : l'Atelier de L'Albatros contre l'EDT de la semaine du 21.
+- **2 lignes nouvelles** :
+  - L182, une régression : après « Clore », dès 09:58, 1/4, 2/4 puis « Lancer » « heure 2/3 » le mardi ;
+  - L183 : l'EDT de la semaine suivante recommence la suite.
+  Scripts et captures dans `relecteurs/final-0440/`.
+- **Convergence** : 2 neuves en 1 h 10 (≈ 1,7 par heure).
+- **Compte** : 176 lignes, dont 157 réglées, 4 pas réglées, 9 écartées, 6 à Paul, 0 ouverte.
+- **Bancs** sur `275f3973` : `banc.sh` vert ; le mien **110 ok · 0 échec** (`sorties/0440-site-E4`).

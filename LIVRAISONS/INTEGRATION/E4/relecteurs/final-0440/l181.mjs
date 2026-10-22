@@ -1,0 +1,10 @@
+import { ouvrir, nav } from './entree2.mjs';
+import fs from 'node:fs';
+const W=+process.argv[2],H=+process.argv[3], cas=process.argv[4];
+const opt={largeur:W,hauteur:H,date:cas==='mer'?'2026-09-16T08:30:00+02:00':'2026-09-14T09:00:00+02:00'}; if(cas==='mer') opt.hub=JSON.parse(fs.readFileSync(`hub-apres-clore-${W}.json`,'utf8')); else opt.frais=true;
+const o=await ouvrir(opt); const pg=o.pg;
+await pg.evaluate(()=>edtOuvrir()); await pg.waitForTimeout(1800);
+await pg.locator('button:visible',{hasText:'›'}).first().click(); await pg.waitForTimeout(1500);
+console.log(cas, W, JSON.stringify(await pg.evaluate(()=>Array.from(document.querySelectorAll('[onclick*="edtCaseClic"]')).filter(x=>x.offsetParent&&/Charles/i.test(x.innerText)).map(x=>x.getAttribute('onclick').slice(12,30)+' :: '+x.innerText.replace(/\n/g,' / ').slice(0,100))),null,1));
+await pg.screenshot({path:`l181-edt-s2-${cas}-${W}.png`});
+console.log('ERRS',o.errs,'BOITES',o.boites); await nav.close();

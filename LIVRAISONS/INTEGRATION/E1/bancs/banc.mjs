@@ -683,6 +683,42 @@ await B('A32', 'E4 (03:30, §12.18) : une heure close dans la page est « jouée
   E.verif('A32', h === 2 && /jouée/.test(r.fr[0] || '') && /jouée/.test(r.num), 'l\'heure ' + h + ' close, puis l\'onglet Atelier : « ' + (r.fr[0] || '') + ' » et l\'entête de sa diapo disent « jouée », sans rechargement', JSON.stringify(r).slice(0, 220));
   E.verif('A32', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
 
+await B('A33', 'l\'import des déroulés (§12.21, dettes 13 · 30 et 13 · 31 ; §12.22) : chaque refus de la pièce, mot pour mot ; Compléter, Remplacer, Jumeau écrivent la trame au modèle du site', async () => {
+  const { chapitreTest, MUTATIONS, ACCEPTES } = await import('./import-3e.mjs');
+  const st = E.store(); const base = chapitreTest(st); const taxo = st.taxonomie;
+  const o = await E.ouvrir(b, { vue: null, hub: st }); const pg = o.pg; await sansVoile(pg);
+  const valider = j => pg.evaluate(([j, taxo]) => chValiderChapitre(j, taxo).motifs(), [j, taxo]);
+  const cp = () => JSON.parse(JSON.stringify(base));
+  const m0 = await valider(cp()); E.verif('A33', m0.length === 0, 'le chapitre de test (tiré du 3e du faux hub, au contrat de la pièce) passe sans un refus', m0.join(' | ') || undefined);
+  const m1 = await valider(ACCEPTES(cp())); E.verif('A33', m1.length === 0, 'les dix types passent, chacun à son contrat (texte, vidéo, page, doc compris — l\'import n\'en connaissait que cinq)', m1.join(' | ') || undefined);
+  for (const [k, quoi, motif, f] of MUTATIONS) { const j = cp(); f(j); const m = await valider(j);
+    E.verif('A33', m.some(x => x.includes(motif)), 'refus « ' + k + ' » — ' + quoi + ' : « … ' + motif + ' »', m.length ? m.slice(0, 2).join(' | ') : 'aucun refus'); }
+  // les trois voies écrivent la trame normalisée par le canal de l'injection (le faux hub)
+  const j = ACCEPTES(cp()); const img = j.chapitre.seances[0].deroule.ecrans.find(e => e.blocs.some(x => x.t === 'image')).blocs.find(x => x.t === 'image'); img.devoilerTout = false;
+  j.chapitre.seances[1].deroule.ecrans.find(e => e.blocs.some(x => x.t === 'schema')).blocs.find(x => x.t === 'schema').devoilerTout = false;
+  const lire = c => pg.evaluate(c => secuLire(c), c);
+  const avant = await lire('/site/3e/chapitres/0/seances/0/deroule'); const nAv = avant.ecrans.length, eid0 = avant.ecrans[0].eid || avant.ecrans[0].id;
+  const voie = async v => { await pg.evaluate(([j, v]) => { CH.json = j; CH.niveau = '3e'; CH.chapIdx = 0; CH.taxo = null; chInjecterConfirme(v); }, [j, v]); await pg.waitForTimeout(2500); };
+  const juger = (d, n, quoi) => { const E0 = (d && d.ecrans) || []; const neufs = E0.slice(E0.length - n); const tous = neufs.flatMap(e => e.blocs);
+    const im = tous.find(x => x.t === 'image'), vi = tous.find(x => x.t === 'video'), pa = tous.find(x => x.t === 'page'), fi = tous.find(x => x.t === 'fiche');
+    const acts = Array.isArray(d.activites) ? d.activites : []; const eids = new Set(E0.map(e => e.eid));
+    E.verif('A33', neufs.length === n && neufs.every(e => e.eid && e.heure >= 1 && (e.role === 'bilan' || (e.actId && Array.isArray(e.remob)))), quoi + ' : ' + n + ' diapos neuves, chacune son eid, son heure, son actId et son remob (le bilan : son rôle)', neufs.length + ' / ' + n);
+    E.verif('A33', im && im.ref.startsWith('https://siteflow-io.github.io/mjpc-medias/') && im.devoilerTout === false, quoi + ' : l\'image a son adresse complète au hub (le site la lit telle quelle) et garde devoilerTout', im && (im.ref + ' · ' + im.devoilerTout));
+    E.verif('A33', vi && vi.reperes.map(r => r.t).join() === '0,80' && pa && pa.contrat === true && pa.etapes === 4 && (!fi || fi.feuille), quoi + ' : vidéo (repères triés), page (contrat, étapes) et fiche (feuille) gardées', JSON.stringify({ r: vi && vi.reperes, pa, f: fi && fi.feuille }).slice(0, 160));
+    E.verif('A33', acts.length && acts.every(a => a.num > 0 && a.diapos.length && a.diapos.every(x => eids.has(x))) && d.travail && Object.keys(d.travail).length, quoi + ' : les activités (numéro, diapos par eid) et le travail à faire sont écrits', JSON.stringify(acts.slice(-1)) + ' · ' + JSON.stringify(d.travail)); };
+  await voie('completer'); const dC = await lire('/site/3e/chapitres/0/seances/0/deroule'); const nJ = j.chapitre.seances[0].deroule.ecrans.length;
+  E.verif('A33', dC && dC.ecrans.length === nAv + nJ && (dC.ecrans[0].eid || dC.ecrans[0].id) === eid0, 'Compléter (séance appariée par son titre) : la trame s\'écrit au hub, à la suite de l\'existante, sans rien écraser', (dC ? dC.ecrans.length : 0) + ' = ' + nAv + ' + ' + nJ);
+  juger(dC, nJ, 'Compléter');
+  const dS = await lire('/site/3e/chapitres/0/seances/1/deroule'); const sch = dS && dS.ecrans.flatMap(e => e.blocs).filter(x => x.t === 'schema').pop();
+  E.verif('A33', sch && sch.titre && sch.devoilerTout === false, 'Compléter : le schéma garde son titre (« titre ») et « Un à un » (devoilerTout false)', sch && JSON.stringify({ titre: sch.titre, d: sch.devoilerTout }));
+  await voie('remplacer'); const dR = await lire('/site/3e/chapitres/0/seances/0/deroule');
+  E.verif('A33', dR && dR.ecrans.length === nJ, 'Remplacer : la trame du fichier seule, normalisée', dR && dR.ecrans.length); juger(dR, nJ, 'Remplacer');
+  await voie('jumeau'); const chs = await lire('/site/3e/chapitres'); const jum = (Array.isArray(chs) ? chs : Object.values(chs)).filter(Boolean).find(c => / \(proposition\)$/.test(c.title || '') && c.title !== st.site['3e'].chapitres[0].title);
+  const dJ = jum && (Array.isArray(jum.seances) ? jum.seances : Object.values(jum.seances))[0].deroule; juger(dJ || {}, nJ, 'Jumeau');
+  const src = fs.readFileSync(path.join(E.RACINE, 'LIVRAISONS/INTEGRATION/index.html'), 'utf8');
+  E.verif('A33', !/mjpcPutJson\(FB\b/.test(src) && !/\bFB\+/.test(src), 'plus de `FB` (l\'écriture qui échouait en silence)');
+  E.verif('A33', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

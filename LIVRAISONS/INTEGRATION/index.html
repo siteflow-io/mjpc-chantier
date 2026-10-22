@@ -9097,7 +9097,7 @@ function chInjecterConfirme(voie){
     var idx=CH.chapIdx;
     /* JUMEAU : un rang neuf en FIN de liste, jamais push, jamais la liste entière */
     if(voie==='jumeau'){
-      var neuf=JSON.parse(JSON.stringify(o.chapitre));
+      var neuf=atP2NormaliserSeances(JSON.parse(JSON.stringify(o.chapitre)));   /* E1 (§12.21) : la trame au modèle du site */
       neuf.title=String(neuf.title||'')+' (proposition)';
       neuf.ordre=ordSuivant(chaps);   /* [C5-ORD] \u2460 le rang, pas le compte */
       delete neuf.published;
@@ -9116,12 +9116,13 @@ function chInjecterConfirme(voie){
       var payload={_meta:{motif:'site-chapitre',chemin:base+'/'+idx,app:'site',ts:ts},data:ancien};
       secuEcrire(atCorbeilleCle('site-chapitre'),payload).then(function(a){
         if(!a.ok){dire('La mise \u00e0 la corbeille a \u00e9chou\u00e9 \u2014 <b>rien n\u2019a \u00e9t\u00e9 remplac\u00e9</b>. R\u00e9essaie quand la connexion est stable.',false);return;}
-        var neuf=JSON.parse(JSON.stringify(o.chapitre));
+        var neuf=atP2NormaliserSeances(JSON.parse(JSON.stringify(o.chapitre)));   /* E1 (§12.21) : la trame au modèle du site */
         neuf.ordre=(ancien&&ancien.ordre)||neuf.ordre;
         if(ancien&&ancien.published)neuf.published=ancien.published;   /* la publication existante est CONSERVÉE, jamais décidée ici */
         chNettoyerPublished(neuf,true);
         secuEcrire(base+'/'+idx,neuf).then(function(r){
           dire(r.ok?('Chapitre remplac\u00e9. L\u2019ancien est \u00e0 la corbeille.'):'L\u2019\u00e9criture n\u2019a pas abouti \u2014 l\u2019ancien est \u00e0 la corbeille, rien n\u2019a \u00e9t\u00e9 perdu.',r.ok);
+          if(r.ok)chApresEcriture();   /* E1 (§12.21) : la mémoire suit le hub (la trame remplacée se relit) */
         });
       });
       return;
@@ -13609,7 +13610,7 @@ function chCalculerEcritures(voie,chaps){
     });
   }
   if(!cible){
-    var n2=JSON.parse(JSON.stringify(o.chapitre));
+    var n2=atP2NormaliserSeances(JSON.parse(JSON.stringify(o.chapitre)));   /* E1 (§12.21) */
     delete n2.published;chNettoyerPublished(n2);
     ecritures.push({chemin:base+'/'+chaps.length,val:n2,quoi:'chapitre \u00ab '+n2.title+' \u00bb'});
     (o.chapitre.seances||[]).forEach(function(np){if(np)out.ajoutees.push(np.title||'');});
@@ -13620,6 +13621,7 @@ function chCalculerEcritures(voie,chaps){
       var m=parTitre[String(np.title||'').toLowerCase()];
       if(!m){
         var se2=JSON.parse(JSON.stringify(np));delete se2.published;chNettoyerPublished(se2);
+        if(se2.deroule&&Array.isArray(se2.deroule.ecrans)&&se2.deroule.ecrans.length)se2.deroule=atP2DerouleNormalise(se2,null);   /* E1 (§12.21) */
         var rang=atSeancesRangSuivant(cible)+ecritures.filter(function(e){return e.quoi.indexOf('s\u00e9ance')===0;}).length;
         ecritures.push({chemin:base+'/'+idx+'/seances/'+rang,val:se2,quoi:'s\u00e9ance \u00ab '+np.title+' \u00bb'});
         out.ajoutees.push(np.title||'');
@@ -13647,6 +13649,10 @@ function chCalculerEcritures(voie,chaps){
       }
       if((np.competences||[]).length&&!(m.se.competences||[]).length){
         ecritures.push({chemin:base+'/'+idx+'/seances/'+m.i+'/competences',val:np.competences,quoi:'comp\u00e9tences de \u00ab '+np.title+' \u00bb'});ajouts++;
+      }
+      /* E1 (§12.21, dette 13 · 30) : la séance appariée reçoit sa trame — à la suite de l'existante (Compléter n'écrase jamais) */
+      if(np.deroule&&Array.isArray(np.deroule.ecrans)&&np.deroule.ecrans.length){
+        ecritures.push({chemin:base+'/'+idx+'/seances/'+m.i+'/deroule',val:atP2DerouleNormalise(np,m.se.deroule||null),quoi:'d\u00e9roul\u00e9 de \u00ab '+np.title+' \u00bb ('+np.deroule.ecrans.length+' diapo'+(np.deroule.ecrans.length>1?'s':'')+')'});ajouts++;
       }
       out.appariees.push({titre:np.title||'',ajouts:ajouts});
     });
@@ -15439,20 +15445,38 @@ document.addEventListener('wheel',function(ev){
    Validation ADDITIVE par enveloppe (la base n'est pas touchée) ; application
    par normalisation aux défauts exacts du moteur ; politique : COMPLÉTER par
    défaut, REMPLACER seulement sur demande — jamais d'écrasement silencieux. */
-var AT_P2_TYPES={consigne:1,fiche:1,question:1,schema:1,image:1};
+/* E1 (contrat §12.21, dettes 13 · 30 et 13 · 31 ; §12.22) : l'import dit ce que le prompt dit
+   (MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md, annexe) — les dix types du site (dr-socle.js, TYPES),
+   chaque refus mot pour mot ; la trame se NORMALISE au modèle du site (rien de perdu : heure, actId,
+   remob, legende, role, devoilerTout, feuille ; activites, travail) et s'ÉCRIT par le canal de
+   l'injection (secuEcrire) — Compléter, Remplacer, Jumeau. La fin d'heure n'est jamais écrite : le site
+   la pose à la lecture (dr_normaliserTrame) ; la réactivation non plus (il la construit en classe). */
+var AT_P2_TYPES={texte:1,consigne:1,question:1,fiche:1,schema:1,image:1,video:1,page:1,doc:1,cahier:1};
+var AT_P2_DIX='texte, consigne, question, fiche, schema, image, video, page, doc, cahier';
+var AT_P2_MEDIAS='https://siteflow-io.github.io/mjpc-medias/';   /* = DR_MEDIAS (dr-socle.js) : le site garde l'adresse complète */
 function atP2Uid(){return 'b'+Math.random().toString(36).slice(2,9);}
+function atP2Complete(ref){ return /^(https?:)?\/\//i.test(ref)||/^[a-z]:\\/i.test(ref); }   /* le test de l'éditeur (dr-atelier.js, « Image… ») */
 function atP2NormaliserBloc(b){
-  var t=b&&b.t;
-  if(t==='consigne')return {id:atP2Uid(),t:'consigne',pic:String(b.pic||'•'),txt:String(b.txt||''),etapes:Array.isArray(b.etapes)?b.etapes.map(String):[],vues:0};
-  if(t==='fiche')return {id:atP2Uid(),t:'fiche',tt:String(b.tt||'Fiche'),titre:String(b.titre||''),def:String(b.def||''),corps:String(b.corps||'<p>—</p>'),vues:0};
-  if(t==='question')return {id:atP2Uid(),t:'question',q:String(b.q||''),reps:(Array.isArray(b.reps)&&b.reps.length?b.reps:[{i:'',r:''}]).map(function(r){return {i:String((r&&r.i)||''),r:String((r&&r.r)||''),refo:false};}),vues:0};
-  if(t==='schema')return {id:atP2Uid(),t:'schema',forme:String(b.forme||'carte'),titre:String(b.titre||''),z:1,pos:{},src:String(b.src||''),vues:0};
-  if(t==='image')return {id:atP2Uid(),t:'image',support:true,ref:String(b.ref||''),src:'',legende:String(b.legende||''),marques:[],devoilerTout:true,vues:0};
+  var t=b&&b.t, S2=function(v){return String(v==null?'':v);};
+  if(t==='texte')return {id:atP2Uid(),t:'texte',txt:S2(b.txt),el:Array.isArray(b.el)?b.el.map(S2):[],vues:0};
+  if(t==='consigne')return {id:atP2Uid(),t:'consigne',pic:S2(b.pic||'•'),txt:S2(b.txt),etapes:Array.isArray(b.etapes)?b.etapes.map(S2):[],vues:0};
+  if(t==='fiche'){ var f={id:atP2Uid(),t:'fiche',tt:S2(b.tt||'Fiche'),titre:S2(b.titre),def:S2(b.def),corps:S2(b.corps||'<p>—</p>'),vues:0}; if(String(b.feuille||'').trim())f.feuille=S2(b.feuille).trim(); return f; }
+  if(t==='question')return {id:atP2Uid(),t:'question',q:S2(b.q),reps:(Array.isArray(b.reps)&&b.reps.length?b.reps:[{i:'',r:''}]).map(function(r){return {i:S2(r&&r.i),r:S2(r&&r.r),refo:false};}),vues:0};
+  if(t==='schema'){ var s={id:atP2Uid(),t:'schema',forme:S2(b.forme||'carte'),titre:S2(b.titre!=null?b.titre:b.txt),z:1,pos:{},src:S2(b.src),devoilerTout:b.devoilerTout===true,vues:0}; if(b.echelle)s.echelle=S2(b.echelle); return s; }
+  if(t==='image')return {id:atP2Uid(),t:'image',support:true,ref:AT_P2_MEDIAS+S2(b.ref).trim().replace(/^\/+/,''),src:'',legende:S2(b.legende),marques:[],devoilerTout:b.devoilerTout===undefined?true:!!b.devoilerTout,vues:0};
+  if(t==='video')return {id:atP2Uid(),t:'video',txt:S2(b.txt),fichier:S2(b.fichier),duree:+b.duree||0,reperes:(Array.isArray(b.reperes)?b.reperes:[]).filter(function(r){return r&&String(r.l||'').trim();}).map(function(r){return {t:+r.t||0,l:S2(r.l)};}).sort(function(a,c){return a.t-c.t;}),vues:0};
+  if(t==='page')return {id:atP2Uid(),t:'page',txt:S2(b.txt),src:S2(b.src),contrat:!!b.contrat,etapes:b.contrat?(Math.max(1,parseInt(b.etapes,10)||1)):null,vues:0};
+  if(t==='doc')return {id:atP2Uid(),t:'doc',doc:S2(b.doc),txt:S2(b.txt),vues:0};
+  if(t==='cahier')return {id:atP2Uid(),t:'cahier',vues:0};
   return null;
 }
-function atP2ValiderDeroule(o,V){
+/* le bilan tel que le site le lit (dr-socle.js, ordreHeureCalc0 : le rôle, ou le mot « bilan » dans le titre) */
+function atP2EstBilan(e){ return !!e&&(e.role==='bilan'||(!e.role&&/bilan/i.test(String(e.act||'')))); }
+function atP2Heure(e){ var h=parseInt(e&&e.heure,10); return h>0?h:1; }
+function atP2ValiderDeroule(o,V,taxo){
   var ses=(o&&o.chapitre&&o.chapitre.seances)||[]; if(!Array.isArray(ses))return;
-  var cles={};
+  var ids=(taxo&&typeof chIdsTaxo==='function')?chIdsTaxo(taxo):null;
+  var cles={},numPrec=null;
   ses.forEach(function(se,ix){
     var ref=(se&&se.title)||('séance n° '+(ix+1));
     if(se&&se.cle!==undefined){
@@ -15463,20 +15487,73 @@ function atP2ValiderDeroule(o,V){
     var dr=se&&se.deroule;
     if(dr===undefined)return;
     if(!dr||!Array.isArray(dr.ecrans)||!dr.ecrans.length){V.cite(ref,'déclare un déroulé sans écrans (deroule.ecrans doit être une liste non vide).');return;}
+    /* les activités (3.2 bis) : un numéro continu sur le chapitre, dans l'ordre des séances */
+    var acts={},actsOk=true;
+    (Array.isArray(dr.activites)?dr.activites:[]).forEach(function(a){
+      var n=a&&parseInt(a.num,10);
+      if(!a||!String(a.id||'').trim()||!(n>0)||(numPrec!=null&&n!==numPrec+1)){actsOk=false;return;}
+      numPrec=n; acts[String(a.id)]=1;
+    });
+    var bilans=[],parHeure={};
     dr.ecrans.forEach(function(e,n){
       var r2=ref+' · écran '+(n+1);
       if(!e||!String(e.act||'').trim())V.cite(r2,'n’a pas de titre (« act »).');
       if(!(+(e&&e.dur)>0))V.cite(r2,'n’a pas de durée en minutes (« dur »).');
-      if(e&&e.comp!==undefined){
+      if(!e)return;
+      if(e.comp!==undefined){
         if(!Array.isArray(e.comp)||e.comp.some(function(x){return !String(x||'').trim();}))
           V.cite(r2,'« comp » doit être une liste d’identifiants non vides (notions/compétences travaillées).');
       }
-      (e&&Array.isArray(e.blocs)?e.blocs:[]).forEach(function(b,k){
-        if(!b||!AT_P2_TYPES[b.t]){V.cite(r2,'bloc '+(k+1)+' : type inconnu (« '+((b&&b.t)||'')+' »). Types : consigne, fiche, question, schema, image.');return;}
-        if(b.t==='question'&&!String(b.q||'').trim())V.cite(r2,'bloc '+(k+1)+' : la question est vide (« q »).');
-        if(b.t==='image'&&!String(b.ref||'').trim())V.cite(r2,'bloc '+(k+1)+' : l’image n’a pas d’adresse (« ref »).');
+      if(ids)[].concat(Array.isArray(e.comp)?e.comp:[],Array.isArray(e.remob)?e.remob:[]).forEach(function(id){
+        if(id&&!ids.notions[id]&&!ids.competences[id])V.cite(r2,'utilise une notion qui n’existe pas (« '+id+' »). Reprends un identifiant de la liste du prompt.');
+      });
+      /* §12.22 : seul le bilan s'écrit ; la réactivation et la fin d'heure, le site les pose */
+      if(e.role==='reactivation'||e.role==='fin'||(!e.role&&typeof dr_estRituel==='function'&&dr_estRituel(e)))V.cite(r2,': rôle « reactivation » ou « fin » — le site pose ces diapos lui-même, retire-les.');
+      else if(e.role!==undefined&&e.role!=='bilan')V.cite(r2,': rôle « '+e.role+' » inconnu — seul « bilan » s’écrit.');
+      var bil=atP2EstBilan(e); if(bil)bilans.push(n);
+      if(!bil&&e.role!=='reactivation'&&e.role!=='fin'){
+        if(!String(e.actId||'').trim()||!actsOk||!acts[String(e.actId)])V.cite(r2,': une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis).');
+        if(!Array.isArray(e.remob))V.cite(r2,': « remob » manque sur une diapo d’activité.');
+      }
+      var h=atP2Heure(e); parHeure[h]=(parHeure[h]||0)+(+e.dur||0);
+      var blocs=Array.isArray(e.blocs)?e.blocs:[];
+      var nSch=blocs.filter(function(b){return b&&b.t==='schema';}).length;
+      if(nSch>1)V.cite(r2,': deux schémas sur une diapo — un schéma par diapo.');
+      else if(nSch===1){
+        var autres=blocs.filter(function(b){return !b||b.t!=='schema';});
+        var uneLigne=function(b){return b&&b.t==='consigne'&&((String(b.txt||'').trim()?1:0)+(Array.isArray(b.etapes)?b.etapes.filter(function(x){return String(x||'').trim();}).length:0))<=1;};
+        if(autres.length>1||(autres.length===1&&!uneLigne(autres[0])))V.cite(r2,': un schéma avec plus d’une consigne d’une ligne — donne-lui sa diapo.');
+      }
+      blocs.forEach(function(b,k){
+        var bk='bloc '+(k+1)+' : ';
+        if(!b||!AT_P2_TYPES[b.t]){V.cite(r2,bk+'type inconnu (« '+((b&&b.t)||'')+' ») — les dix types : '+AT_P2_DIX+'.');return;}
+        if(b.t==='question'){
+          if(!String(b.q||'').trim())V.cite(r2,bk+'la question est vide (« q »).');
+          else if(!(Array.isArray(b.reps)&&b.reps.some(function(x){return x&&String(x.r||'').trim();})))V.cite(r2,bk+'Refus : la réponse attendue manque — elle vit à part, c’est le contrat.');
+        }
+        if(b.t==='fiche'){
+          if(!String(b.titre||'').trim())V.cite(r2,bk+'Refus : une fiche a un titre.');
+          else if(!String(b.def||'').trim())V.cite(r2,bk+'Refus : une fiche a sa définition (la phrase à retenir).');
+          if(!String(b.feuille||'').trim())V.cite(r2,': une fiche sans feuille (« feuille ») — une fiche vit dans une feuille du chapitre (1.7).');
+        }
+        if(b.t==='schema'){
+          if(!String(b.titre!=null?b.titre:(b.txt||'')).trim())V.cite(r2,bk+'Refus : un schéma a un titre.');
+          else if(!String(b.src||'').split('\n').some(function(x){return x.trim();}))V.cite(r2,bk+'Refus : un schéma a au moins un élément (une ligne).');
+        }
+        if(b.t==='image'){
+          if(!String(b.ref||'').trim())V.cite(r2,bk+'l’image n’a pas d’adresse (« ref »).');
+          else if(atP2Complete(String(b.ref).trim()))V.cite(r2,bk+'Refus : l’adresse doit être relative dans mjpc-medias, jamais complète (3.2).');
+        }
+        if(b.t==='video'){
+          if(!String(b.txt||'').trim())V.cite(r2,bk+'Refus : une vidéo a une légende.');
+          else if(!String(b.fichier||'').trim())V.cite(r2,bk+'Refus : choisis le fichier sur la clé.');
+        }
+        if(b.t==='page'&&(!String(b.src||'').trim()||!String(b.txt||'').trim()))V.cite(r2,bk+'Refus : un fichier et un titre.');
       });
     });
+    if(bilans.length>1)V.cite(ref,': deux bilans — le bilan est unique et dernier.');
+    else if(bilans.length===1&&bilans[0]!==dr.ecrans.length-1)V.cite(ref,': le bilan n’est pas la dernière diapo de la séance.');
+    Object.keys(parHeure).forEach(function(h){ if(parHeure[h]>50)V.cite(ref,': l’heure '+h+' dépasse 50 minutes ('+parHeure[h]+' min).'); });
   });
   (Array.isArray(o&&o.aLier)?o.aLier:[]).forEach(function(l,ix){
     if(l&&l.seance_cle!==undefined&&!cles[String(l.seance_cle)])
@@ -15488,43 +15565,42 @@ if(typeof chValiderChapitre==='function'&&!window.__p2ValPose){
   var _chValiderOrig=chValiderChapitre;
   chValiderChapitre=function(o,taxo){
     var V=_chValiderOrig(o,taxo);
-    try{atP2ValiderDeroule(o,V);}catch(e){}
+    atP2ValiderDeroule(o,V,taxo);   /* E1 : plus de try muet — une validation qui casse ne laisse pas passer un chapitre */
     return V;
   };
 }
-/* L'application : rapprocher les séances (par clé d'abord, par titre sinon) et écrire
-   les trames normalisées. politique='completer' (défaut) ajoute à la suite ;
-   'remplacer' substitue. Retourne le compte-rendu — la garde d'atterrissage le montre. */
-function atP2AppliquerDeroules(level,chnum,json,politique){
-  var cr=[], ch=chapitresData[level]&&chapitresData[level][chnum];
-  if(!ch)return [{err:'chapitre introuvable'}];
-  var ses=(json&&json.chapitre&&json.chapitre.seances)||[];
-  ses.forEach(function(se){
-    if(!se||!se.deroule||!Array.isArray(se.deroule.ecrans)||!se.deroule.ecrans.length)return;
-    var sk=null,reels=ch.seances||{};
-    Object.keys(reels).forEach(function(k){
-      if(sk)return;
-      if(se.cle&&reels[k]&&String(reels[k].cle||'')===String(se.cle))sk=k;
-    });
-    if(!sk)Object.keys(reels).forEach(function(k){
-      if(sk)return;
-      if(reels[k]&&String(reels[k].title||'').trim()===String(se.title||'').trim())sk=k;
-    });
-    if(!sk){cr.push({seance:se.title||se.cle,etat:'introuvable — rien écrit'});return;}
-    var ecr=se.deroule.ecrans.map(function(e){
-      return {id:atP2Uid(),act:String(e.act||''),dur:+e.dur||5,h:'',
-        comp:(Array.isArray(e.comp)?e.comp.map(String).filter(Boolean):[]),   /* les notions de l'écran, décidées en AMONT */
-        blocs:(Array.isArray(e.blocs)?e.blocs:[]).map(atP2NormaliserBloc).filter(Boolean),vues:0,rev:0};
-    });
-    var dst=reels[sk];
-    var avait=dst.deroule&&Array.isArray(dst.deroule.ecrans)?dst.deroule.ecrans.length:0;
-    if(avait&&politique!=='remplacer'){ dst.deroule.ecrans=dst.deroule.ecrans.concat(ecr); }
-    else { dst.deroule={ecrans:ecr}; }
-    if(se.cle&&!dst.cle)dst.cle=String(se.cle);
-    try{ mjpcPutJson(FB+'/chapitres/'+level+'/'+chnum+'/seances/'+sk+'/deroule.json',dst.deroule,'P2 · trames injectées'); }catch(e){}
-    cr.push({seance:dst.title||sk,etat:(avait?(politique==='remplacer'?'remplacé ('+avait+'→'+ecr.length+' écrans)':'complété ('+avait+'+'+ecr.length+' écrans)'):('créé ('+ecr.length+' écrans)'))});
+/* La trame normalisée d'une séance du JSON, telle qu'elle s'écrit au hub (/seances/<j>/deroule) :
+   {ecrans, activites:[{id,num,titre,diapos:[eid]}], travail:{heure:phrase}, maj}. avant = le déroulé
+   déjà au hub (Compléter : la trame s'ajoute à la suite, le travail déjà écrit reste) ; null = remplacer. */
+function atP2DerouleNormalise(se,avant){
+  var src=(se&&se.deroule)||{};
+  var ecr=(Array.isArray(src.ecrans)?src.ecrans:[]).map(function(e){
+    var x={id:atP2Uid(),act:String(e.act||''),dur:+e.dur||5,h:'',
+      comp:(Array.isArray(e.comp)?e.comp.map(String).filter(Boolean):[]),   /* les notions de l'écran, décidées en AMONT */
+      blocs:(Array.isArray(e.blocs)?e.blocs:[]).map(atP2NormaliserBloc).filter(Boolean),vues:0,rev:0};
+    if(Array.isArray(e.remob))x.remob=e.remob.map(String).filter(Boolean);
+    if(parseInt(e.heure,10)>0)x.heure=parseInt(e.heure,10);
+    if(String(e.actId||'').trim())x.actId=String(e.actId);
+    if(e.legende&&typeof e.legende==='object'&&!Array.isArray(e.legende))x.legende=JSON.parse(JSON.stringify(e.legende));
+    if(e.role==='bilan')x.role='bilan';
+    return x;
   });
-  return cr;
+  _drIdentifierEcrans(ecr);   /* les eid, pour que les activités nomment leurs diapos (jamais un rang) */
+  var acts=(Array.isArray(src.activites)?src.activites:[]).map(function(a){
+    return {id:String(a.id),num:parseInt(a.num,10),titre:String(a.titre||''),
+      diapos:ecr.filter(function(x){return x.actId===String(a.id);}).map(function(x){return x.eid;})};
+  });
+  var trav={}; if(src.travail&&typeof src.travail==='object')Object.keys(src.travail).forEach(function(h){ if(String(src.travail[h]||'').trim())trav[h]=String(src.travail[h]); });
+  var av=avant&&Array.isArray(avant.ecrans)&&avant.ecrans.length?avant:null;
+  if(!av)return {ecrans:ecr,activites:acts,travail:trav,maj:Date.now()};
+  var avActs=Array.isArray(av.activites)?av.activites:Object.values(av.activites||{});
+  var avTrav=Object.assign({},av.travail||{}); Object.keys(trav).forEach(function(h){ if(avTrav[h]==null)avTrav[h]=trav[h]; });
+  return Object.assign({},av,{ecrans:av.ecrans.concat(ecr),activites:avActs.concat(acts),travail:avTrav,maj:Date.now()});
+}
+/* le chapitre JSON dont chaque séance porte sa trame normalisée (Remplacer, Jumeau, séance nouvelle de Compléter) */
+function atP2NormaliserSeances(chap){
+  atSeances(chap).forEach(function(p){ var se=p.se; if(se&&se.deroule&&Array.isArray(se.deroule.ecrans)&&se.deroule.ecrans.length)se.deroule=atP2DerouleNormalise(se,null); });
+  return chap;
 }
 
 /* [P2-fin] Le branchement au cérémonial réel de l'injection — par enveloppes, base intacte.
@@ -15546,43 +15622,18 @@ if(typeof chInjecter==='function'&&!window.__p2GardePose){
         if(z&&!z.__p2){ z.__p2=true; clearInterval(iv);
           z.innerHTML+='<br><b>Trames de déroulé</b> : '
             +ses.map(function(s){return '« '+atEsc(String(s.title||s.cle||''))+' » ('+s.deroule.ecrans.length+' écran'+(s.deroule.ecrans.length>1?'s':'')+')';}).join(' · ')
-            +' — '+(voie==='remplacer'?'elles remplaceront l’existant.':'elles s’ajouteront à la suite si la séance en a déjà.');
+            +' — '+(voie==='remplacer'?'elles remplaceront l’existant.':'elles s’ajouteront à la suite si la séance en a déjà.')
+            +' La fin de chaque heure n’est pas dans le fichier : le site la pose lui-même (cadrage 4 · 2.6).';   /* E1 (§12.21) : dite, jamais ajoutée en silence */
         }
         if(n>25)clearInterval(iv);
       },200);
     }catch(e){}
   };
 }
-if(typeof chInjecterConfirme==='function'&&!window.__p2InjPose){
-  window.__p2InjPose=true;
-  var _p2InjOrig=chInjecterConfirme;
-  chInjecterConfirme=function(voie){
-    var json=window.CH&&CH.json, niveau=window.CH&&CH.niveau, idx=window.CH?CH.chapIdx:null;
-    _p2InjOrig(voie);
-    try{
-      if(!json||!niveau)return;
-      var aTrames=((json.chapitre||{}).seances||[]).some(function(s){return s&&s.deroule&&s.deroule.ecrans&&s.deroule.ecrans.length;});
-      if(!aTrames)return;
-      var titreVise=String((json.chapitre||{}).title||'')+(voie==='jumeau'?' (proposition)':'');
-      var passe=function(essai){
-        var t=chapitresData[niveau]||{}; var chnum=null;
-        Object.keys(t).forEach(function(k){ if(chnum===null&&t[k]&&String(t[k].title||'')===titreVise)chnum=k; });
-        if(chnum===null&&voie!=='jumeau'&&idx!=null&&t[idx])chnum=idx;
-        if(chnum===null){ if(essai<4)setTimeout(function(){passe(essai+1);},3000); return; }
-        var cr=atP2AppliquerDeroules(niveau,chnum,json,(voie==='remplacer'||voie==='jumeau')?'remplacer':'completer');   /* jumeau : la copie brute a deja pose des trames NON normalisees - remplacees par les propres */
-        var manque=cr.some(function(x){return /introuvable/.test(String(x.etat||''));});
-        try{
-          var msg=document.getElementById('ch-msg');
-          if(msg&&cr.length&&!msg.__p2fait){ msg.__p2fait=true;
-            msg.innerHTML+='<br>Trames de déroulé : '+cr.map(function(x){return '« '+atEsc(String(x.seance||''))+' » '+atEsc(String(x.etat||''));}).join(' · ');
-          }
-        }catch(e){}
-        if(manque&&essai<4)setTimeout(function(){passe(essai+1);},3000);
-      };
-      setTimeout(function(){passe(1);},2200);
-    }catch(e){}
-  };
-}
+/* E1 (§12.21) : l'ancienne reprise à retardement (atP2AppliquerDeroules) écrivait par `FB`, qui n'existait
+   nulle part (erreur avalée : les trames ne restaient qu'en mémoire). La trame normalisée s'écrit désormais
+   avec le reste, par le canal de l'injection : chCalculerEcritures (Compléter), chInjecterConfirme
+   (Remplacer, Jumeau) — une seule écriture, montrée par la garde d'atterrissage avant le oui. */
 
 /* [classe · copie au fil de l'eau] atDrEnrAuto protège la préparation (« en classe,
    rien ne remonte ») — mais LA COPIE de la classe doit, elle, suivre chaque geste :

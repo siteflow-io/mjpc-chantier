@@ -2170,3 +2170,33 @@ Réponse de la conscience (07:41), mot pour mot :
 
 22/10/2026 07:41
 MEMO
+
+## TOUR 103 (22/10/2026, 08:41 → 08:44)
+
+Paul (08:41), mot pour mot :
+« Allons y pour le détail de 207 mais avant, dis moi si le chantier des schémas avait été finalement réglé ou pas, dans la maquette »
+
+Mesuré (08:41-08:44) : le mandat p8 (« un schéma par diapo, parfaitement lisible »), les audits C13 des 06-07/10 (points 72 p8-2 « ça va », 73-79 p8-3 → p8-3b « ça va », p8-3c), les dettes 13 · 1 et 13 · 7 ✔ au registre, les points 82-83 (la garde à l'import et le réglage « Un à un » perdu à l'import : « pour le mandat du vrai site », écrits dans `CARTE-EXISTANT-DEROULE.md`) ; le mandat E1 ne nomme pas l'import ; le vrai chapitre 3e au hub (lecture) : un seul bloc schéma, la carte « Les figures de style » (séance « L'Albatros »), présent aussi dans le faux hub ; mon parcours fixe joue la séance 0 (sans schéma) ; aucune ligne d'E4 ni d'E1/E3 ne dit avoir joué cette carte dans le site intégré.
+
+Réponse de la conscience (08:44), mot pour mot :
+
+208. **Les schémas, dans la maquette : réglé, audité.** p8-2 a repris l'ancien moteur tel quel, ligne à ligne, avec les cinq formes lisibles par construction et leurs plafonds (« ça va », 06/10) ; p8-3b a mis « un schéma par diapo » dans les gestes de l'atelier avec ses gardes, « Couper le schéma ici », et l'écartement des bulles sur ta vraie carte des figures de style (« ça va », 07/10) ; p8-3c les infobulles et le schéma plausible ; tout est tenu par les 34 bancs à 0 et les dettes 13 · 1 et 13 · 7 sont cochées. **Deux choses sont restées ouvertes exprès, parce que la maquette n'a pas d'import** (points 82-83 du 06/10) : le refus à l'import d'une diapo à deux schémas ou d'un schéma noyé dans du texte, et le réglage « Un à un / Tout ensemble » perdu à l'import. Elles ne sont pas dans le mandat d'E1 : elles entrent dans le plan (L5, le reste du déroulé), pas avant le promeus — sauf si tu les veux avant.
+
+209. **Dans le site intégré : je ne sais pas.** Le socle a repris le rendu des schémas de la maquette, mais personne n'a joué ta carte « Les figures de style » dans le site (mon parcours fixe joue la séance 0, qui n'en a pas ; E4 a joué « L'Albatros » sans dire un mot du schéma). Je le fais mesurer aujourd'hui (E4 : la carte dans l'Atelier, en classe, au tableau, « Un à un », le plancher 26 pt) et je te le dis au réveil où c'est vert. Ça ne bloque pas le promeus si c'est vert ; ça le bloque si c'est rouge.
+
+210. **152 — l'heure de fin dans le récit.** Quand tu clos à 09 h 44, le récit dit « s'est terminée à 09 h 52 » (la fin du créneau, cadrage 2 §1.1). Ma proposition : le récit dit l'heure réelle de la clôture (09 h 44) et l'entête garde le créneau (08:57-09:52). Si tu ne dis rien, ça reste au créneau.
+
+211. **144 — l'animation en accéléré.** La maquette jouait une heure entière en accéléré (un outil de démonstration, `#fsimu`) ; dans le site, ça tombe — rien à voir en classe. Si tu la veux comme outil de test, dis-le ; sinon c'est acquis.
+
+212. **13 · 12 — la police réduite avant les pages.** Quand une diapo est trop grande pour le tableau, la police se réduit d'abord « jusqu'à l'acceptable au fond » (26 pt), et c'est seulement ensuite que la diapo passe en pages : c'est ta loi de taille du cadrage, elle est codée (E1). E1 demandait si tu préfères les pages d'abord ; ma proposition : non, rien à changer. Acquis si tu ne commentes pas.
+
+213. **§12.17 — ce qui revient à l'heure suivante.** Après le rituel : ce qui glisse « à l'heure suivante » ; puis ce qui est « à terminer / à préparer à la maison », fléché « à reprendre » (puisque « terminer à la maison c'est forcément repris en classe ») ; « pas le temps », « en réserve », « non fait » ne reviennent jamais. C'est ce qui est codé et vérifié. Acquis si tu ne commentes pas.
+
+214. **198 — ta trame de la séance 1 a deux diapos bilan** (« Question-bilan » en 9ᵉ de l'heure 2, « Question-bilan et travail à faire » en heure 3) ; ton cadrage veut un bilan unique, dernier. Ma proposition : corriger la trame (la seconde devient le bilan, la première une question ordinaire), par toi ou par le prompt d'injection ; le site ne touche pas à ta trame et le récit s'en accommode d'ici là.
+
+215. **Le « go » du plan 10 jours** (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PLAN-10-JOURS.md) : sur ton mot, j'écris aujourd'hui les mandats des quatre lots lançables sans toucher `index.html` — ATTENDUS (les attendus au hub), DICTÉE (le mandat L17 en pause + les 19 lignes de classe), PROMPT (le prompt d'injection), APPS (les huit satellites) — et les phrases à coller ; les cinq cadrages avec toi commencent par le profil, un par jour.
+
+216. Le déroulé, pour mémoire : il reste une ligne (176 : 160 réglées, 0 ouverte), poussée par E2 à 07:17 ; E4 la revérifie ; le réveil de 08:41 vient de tirer, je le traite juste après ce point.
+
+22/10/2026 08:44
+MEMO

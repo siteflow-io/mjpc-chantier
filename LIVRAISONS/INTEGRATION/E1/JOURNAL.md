@@ -367,3 +367,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - (d) « … : un texte vu par les élèves dit « copie de classe ». » — `act`, et `txt`, `q`, `el`, `etapes` de chaque bloc, de toute diapo ; jamais les `notes`. Je prends aussi « copie de **la** classe » (la phrase des notes, si elle passait dans un bloc) — dit ici.
 - (e) Compléter (fusionné avec les notes déjà au hub), Remplacer, Jumeau : les notes du bilan partent avec la trame.
 - **A33** : 9 contrôles de plus (6 refus ; les notes rangées à l'eid par les trois voies) ; le chapitre de test a ses bilans au contrat v0.7 (trois blocs, la consigne mot pour mot, `notes`). **Rouge avant 9/62** (`a33-avant-bilan3.txt`), **vert après 62/0**.
+- **Bancs sur `daed2c0e`** (sorties `E1/sorties/2130/`, avec `a33-avant-bilan3.txt`) : **banc de la conscience VERT** — collisions 0, parcours vert ×2, K1-K13 0 défaut ; **banc E1 : 268 vérifications, 0 échec**.

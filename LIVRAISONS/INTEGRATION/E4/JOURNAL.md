@@ -675,3 +675,8 @@
   - fermer la page sans « Clore » puis la rouvrir donnait « s'est terminée à 09 h 52 » pour une heure jamais close. **L184**, chez moi, réglée dans `a61fe923` : le récit relit `H/clos` et `H/finReel` au hub et dit « elle n'a pas été close ». Une heure close à 09:47 puis rouverte dit toujours « 09 h 47 ». RC7 étendue.
 - **Bancs** sur `a61fe923` : `banc.sh` vert ; le mien **117 ok · 0 échec** (`sorties/0840-site-E4`).
 - **Compte** : 178 lignes, dont 168 réglées, 0 pas réglée, 10 écartées, 0 à Paul, 0 ouverte. **Signal réécrit : « 0 pas réglée (`a61fe923`) ».**
+
+## Poussée 75 — 09:35 UTC
+- **Réveil n°20 lu** : le signal « 0 pas réglée (`a61fe923`) » est lu, l'intégration est dite prête à Paul, le promeus est à son mot. Plus rien à pousser de mon côté.
+- Noté pour après le promeus : la ligne 185 se rejouera quand le faux hub aura deux classes importées.
+- Veille maintenue, sans changement de code.

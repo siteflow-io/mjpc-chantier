@@ -669,6 +669,16 @@ await B('A31', 'le réveil n°13 (contrat §12.18) : l\'heure n de l\'atelier es
   E.verif('A31', ev.length && ev.every(x => +x.h >= 1) && ev.some(x => +x.h > 1) && ev.every(x => x.plus < 40), '173 · « Envoyer vers… » : chaque séance son nombre d\'heures (sa frontière par les durées), plus « · 1 heure » partout ni +70 min', JSON.stringify(ev));
   E.verif('A31', !o3.errs.length && !o3.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o3.errs.concat(o3.boites)).join(' ; ') || undefined); await o3.ctx.close(); });
 
+await B('A32', 'E4 (03:30, §12.18) : une heure close dans la page est « jouée » dans l\'atelier dès la clôture, sans recharger', async () => {
+  process.env.MJPC_JOUE = '1'; const hubJ = E.store(); delete process.env.MJPC_JOUE;
+  const o = await E.ouvrir(b, { w: 1366, h: 768, hub: hubJ }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(1500);
+  await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(1500); const h = await pg.evaluate(() => S.heure);
+  await pg.evaluate(() => { S.closes = S.closes || {}; S.closes[S.heure] = Date.now(); S.close = true; });   /* la clôture, telle qu'elle se pose en page */
+  await pg.click('#ong-atelier'); await pg.waitForTimeout(600);
+  const r = await pg.evaluate(h => { const i = ordreHeure(h).find(k => seance().ecrans[k].role !== 'fin'); S.di = i; dr_tout(); return { fr: Array.from(document.querySelectorAll('#volet .fr span:first-child')).map(x => x.textContent).filter(x => x.startsWith('H' + h + ' ')), num: (document.getElementById('numero') || {}).textContent || '' }; }, h);
+  E.verif('A32', h === 2 && /jouée/.test(r.fr[0] || '') && /jouée/.test(r.num), 'l\'heure ' + h + ' close, puis l\'onglet Atelier : « ' + (r.fr[0] || '') + ' » et l\'entête de sa diapo disent « jouée », sans rechargement', JSON.stringify(r).slice(0, 220));
+  E.verif('A32', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

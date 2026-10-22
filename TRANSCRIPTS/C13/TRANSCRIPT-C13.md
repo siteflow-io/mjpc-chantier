@@ -2664,3 +2664,19 @@ MEMO
 
 22/10/2026 23:14
 MEMO
+
+---
+
+## TOUR 131 (22/10/2026, 23:17 → 23:20)
+
+Paul (23:17), mot pour mot :
+« Non pas figée. Proposée. Et je la modifie si je veux »
+
+Fait (23:17-23:20) : ce que Paul ne commente pas est acquis → la diapo du bilan (280) est cadrée. **Prompt v0.7** (`MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md` : §1.2 les notes présentateur du bilan écrites par la conversation (champ `notes`) ; §1.3 le bilan à trois blocs — question sans réponse attendue, « À mettre dans le bilan » en mots-clés sans verbe pris dans ce qui a été vu pendant le chapitre, consigne d'intégration **proposée, pas figée** (« Rédige le bilan au brouillon. » + trois étapes, Paul la modifie dans l'Atelier) ; jamais « copie de classe » devant les élèves ; le travail à faire quitte le bilan (§1.7, il vit dans `travail`) ; « Récap' de l'heure » partout ; §3 la liste et les refus à l'import ; journal 0.7). **Contrat §12.24.** Relances : E1 (l'import : `notes` du bilan → notes présentateur, quatre refus, A33), E4 (les trois bilans du chapitre au contrat refaits, notes comprises, import rejoué, captures, récit), E2 (une ligne : `travail` au T-5), E3 (mesure : n lignes maximal sur la diapo du bilan avec EB Garamond).
+
+Réponse de la conscience (23:20), mot pour mot :
+
+289. Compris : la consigne est proposée, pas figée — le prompt la propose mot pour mot sur chaque bilan et tu la modifies quand tu veux, directement dans la diapo. C'est écrit : prompt version 0.7, contrat §12.24. E1 porte l'import (les notes présentateur du bilan, les refus), E4 refait les trois bilans de ton chapitre 3e et rejoue l'import. Je te dis quand c'est prouvé sur pièce. Rien d'autre à trancher ce soir ; la candidate `b8a11d55` attend ton mot « promeus ».
+
+22/10/2026 23:20
+MEMO

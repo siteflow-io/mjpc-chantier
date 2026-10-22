@@ -1,0 +1,55 @@
+{
+ "diapo": {
+  "act": "Question-bilan",
+  "blocs": [
+   {
+    "id": "bq1",
+    "t": "question",
+    "q": "Pourquoi Baudelaire a-t-il choisi un albatros pour parler du poète ?",
+    "reps": [],
+    "vues": 0
+   },
+   {
+    "id": "bnotions1",
+    "t": "texte",
+    "txt": "À mettre dans le bilan",
+    "el": [
+     "l'albatros, roi du ciel, devient infirme sur le pont",
+     "le poète, comme lui : grand par ses vers, moqué par les hommes",
+     "une comparaison filée sur tout le poème",
+     "le champ lexical de la moquerie (« gauche », « veule », « comique »)",
+     "le registre lyrique : l'émotion avant la règle, comme chez les peintres romantiques"
+    ],
+    "vues": 0
+   },
+   {
+    "id": "bconsig1",
+    "t": "consigne",
+    "pic": "✎",
+    "txt": "Rédige ta réponse dans la copie de classe.",
+    "etapes": [
+     "Cinq à huit lignes, au présent.",
+     "Chaque élément de la liste y est, dans tes mots.",
+     "Souligne chaque élément quand tu l'as placé."
+    ],
+    "vues": 0
+   }
+  ],
+  "comp": [
+   "c4-lire-04",
+   "tr-langages-03"
+  ],
+  "dur": 8,
+  "heure": 1,
+  "role": "bilan",
+  "eid": "ebilanalba01"
+ },
+ "notes": {
+  "ebilanalba01": [
+   {
+    "p": null,
+    "html": "<p><b>Le bilan doit contenir</b> — un élément = une notion travaillée dans le chapitre (séances 1 et 2) :</p><ul><li>l'albatros, roi du ciel, infirme sur le pont — <i>le portrait de l'oiseau (séance 2)</i></li><li>le poète, grand par ses vers, moqué par les hommes — <i>que dit ce poème du poète ? (séance 2)</i></li><li>une comparaison filée sur tout le poème — <i>les figures de style : la comparaison (séance 2)</i></li><li>le champ lexical de la moquerie — <i>le champ lexical (séance 2)</i></li><li>le registre lyrique, l'émotion avant la règle — <i>le registre du poème (séance 2) ; le Romantisme (séance 1)</i></li></ul><p>La réponse validée s'écrit dans la copie de classe pendant qu'ils rédigent — pas de réponse attendue dans la diapo.</p>"
+   }
+  ]
+ }
+}

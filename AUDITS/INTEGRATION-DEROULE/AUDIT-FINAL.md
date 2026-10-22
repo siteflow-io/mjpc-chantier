@@ -21,6 +21,8 @@
 
 **Mise à jour 22/10, 21:17 (réveil n°28, tête `93f6d98c`, code = `b8a11d55`) — LE CANDIDAT CHANGE.** E4 `54d274c4` : NOTE §10 « 0 pas réglée (`c8bf7b61`) » (code identique à `b8a11d55` ; 181 lignes : 171 réglées, 10 écartées, 0 à Paul, 0 ouverte ; banc.sh vert, banc E4 121/0 ; le chapitre au contrat s'importe sans refus, « À régler (0) »). Le code n'a pas bougé depuis `b8a11d55` (diff vide sur `index.html` et `dr/`) : mon banc de 20:18 vaut (collisions 0, parcours vert ×2, K 108 / 0). **Candidat au promeus : `b8a11d55` (= `c8bf7b61`, `93f6d98c` : même code), assemblé 2 297 926 o, md5 `003e0eef1216f6b5e790812943ed97e8`** — il porte l'import au contrat §12.21 (13 · 30, 13 · 31), le fil « langue » (E1 `3440264f`), §12.23 à l'import (E1 `d8ef3991`) et au récit (E4 `61245b22`), L187, §12.20. E1 : une seule session (`dda63d95`) ; E2, E3 : rien à coder. Le promeus se dit par Paul, dans le chat, par le mot « promeus ».
 
+**Mise à jour 22/10, 22:16 (réveil n°29, tête `c7a44f9c`, code = `b8a11d55`).** Le code n'a pas bougé (diff vide sur `index.html` et `dr/`) : pas de banc ; **le candidat reste `b8a11d55`** (assemblé 2 297 926 o, md5 `003e0eef1216f6b5e790812943ed97e8`). E1 `c2468d97`, E2 `985d1b38` / `c7a44f9c`, E3 `693d7784` : rien à faire. E4 : rien poussé depuis 20:33 → session neuve relancée à 22:19 (règle anti-croisement : elle s'arrête si la session d'avant pousse). Paul : toujours en attente de son mot sur la diapo du bilan (280) et du « promeus ».
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

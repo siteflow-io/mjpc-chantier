@@ -2622,3 +2622,18 @@ MEMO
 
 22/10/2026 21:17
 MEMO
+
+---
+
+## Tour 128 — 22/10/2026 22:16 — réveil n°29 (22:14, programmé au tour 127)
+
+**Mesuré.** Pas de mot de Paul depuis 18:36. `origin/integration` : tête `c7a44f9c` — E2 `985d1b38`, `c7a44f9c` (rien), E1 `c2468d97` (rien), E3 `693d7784` (rien). `git diff --stat b8a11d55 origin/integration -- index.html dr` : vide → pas de banc ; candidat inchangé `b8a11d55` (signal E4 « 0 pas réglée (`c8bf7b61`) », banc vert 20:18). `list_triggers` : E2 23:02, E3 22:48, E1 22:35 ; **E4 : aucun retour programmé, rien poussé depuis 20:33 (103 min) → relancée en session neuve à 22:19** (`trig_01XcTaaWtNKw7ZV4vfTKZn2P`, règle anti-croisement écrite dans son prompt). Relances r29 ; audit §0.
+
+**Réponse (mot pour mot).**
+
+285. Le déroulé, contrôle de 22:16 : rien n'a bougé dans le code depuis la candidate `b8a11d55` (banc vert, signée par E4). Elle attend ton mot « promeus ».
+
+286. E4 s'était tue depuis 20:33 ; je l'ai relancée en session neuve à 22:19 (elle s'arrête d'elle-même si l'ancienne se réveille). Ta réponse au 280 (la diapo du bilan) reste attendue pour la version 0.7 du prompt.
+
+22/10/2026 22:16
+MEMO

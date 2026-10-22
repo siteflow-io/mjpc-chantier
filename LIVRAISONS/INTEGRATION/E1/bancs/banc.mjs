@@ -691,6 +691,8 @@ await B('A33', 'l\'import des déroulés (§12.21, dettes 13 · 30 et 13 · 31 ;
   const cp = () => JSON.parse(JSON.stringify(base));
   const m0 = await valider(cp()); E.verif('A33', m0.length === 0, 'le chapitre de test (tiré du 3e du faux hub, au contrat de la pièce) passe sans un refus', m0.join(' | ') || undefined);
   const mf = await valider(Object.assign(cp(), { chapitre: Object.assign(cp().chapitre, { fil: 'langue' }) })); E.verif('A33', mf.length === 0, 'le chapitre du fil « langue » (« fil »: « langue » à sa racine) passe', mf.join(' | ') || undefined);
+  const jb = cp(); [jb.chapitre.seances[0], jb.chapitre.seances[1]].forEach(s => { const bil = s.deroule.ecrans[s.deroule.ecrans.length - 1]; bil.blocs.filter(x => x.t === 'question').forEach((x, n) => { if (n) delete x.reps; else x.reps = []; }); });
+  const mb = await valider(jb); E.verif('A33', mb.length === 0 && jb.chapitre.seances[0].deroule.ecrans.slice(-1)[0].role === 'bilan', '§12.23 : la question du bilan sans réponse attendue (« reps » vide ou absent) passe ; ailleurs, le refus reste (contrôle « reps »)', mb.join(' | ') || undefined);
   const m1 = await valider(ACCEPTES(cp())); E.verif('A33', m1.length === 0, 'les dix types passent, chacun à son contrat (texte, vidéo, page, doc compris — l\'import n\'en connaissait que cinq)', m1.join(' | ') || undefined);
   for (const [k, quoi, motif, f] of MUTATIONS) { const j = cp(); f(j); const m = await valider(j);
     E.verif('A33', m.some(x => x.includes(motif)), 'refus « ' + k + ' » — ' + quoi + ' : « … ' + motif + ' »', m.length ? m.slice(0, 2).join(' | ') : 'aucun refus'); }

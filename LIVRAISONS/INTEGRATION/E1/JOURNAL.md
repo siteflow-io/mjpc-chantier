@@ -339,3 +339,8 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - L'écriture : **Compléter** écrit `/site/<niveau>/chapitres/<k>/fil` quand le fichier le porte et que le chapitre ne l'a pas encore (`chCalculerEcritures`, montré par la garde, comme `entree`). **Remplacer, Jumeau et le chapitre neuf** le recopiaient déjà avec le chapitre brut — vérifié, pas changé. Lu par l'EDT (`edtChapitreEnCours`, E2).
 - **A33 : 5 contrôles de plus** (le chapitre « fil langue » passe ; le refus ; Compléter, Remplacer, Jumeau écrivent `fil`) — **rouge avant 2/52** (le refus, et Compléter qui n'écrivait pas `fil` ; `a33-avant-fil.txt`), **vert après 52/0**.
 - **Bancs sur `2083762c`** (sorties `E1/sorties/1533/`, avec `a33-avant-fil.txt`) : **banc de la conscience VERT** — collisions 0, parcours vert ×2, K1-K13 0 défaut ; **banc E1 : 258 vérifications, 0 échec**.
+
+## 15:55 UTC — §12.23 : la question du bilan sans réponse attendue
+- À l'import, « Refus : la réponse attendue manque — elle vit à part, c'est le contrat. » ne s'applique plus à une question de la diapo `role: "bilan"` (`reps` vide ou absent) ; partout ailleurs il reste (le contrôle « reps » d'A33, sur une question d'activité, est toujours vert). La normalisation donne au bilan sa ligne de réponse vide (`[{i:'',r:''}]`), où la réponse validée s'écrit en classe.
+- **A33** : un contrôle de plus — **rouge avant 1/53** (`a33-avant-bilan.txt`), **vert après 53/0**.
+- Les bancs sur `2083762c` (sorties 1533) ne portaient pas `dr-recit.js` d'E4 (`61245b22`, arrivé en amont pendant ce temps) : ils sont rejoués sur la tête qui porte les deux.

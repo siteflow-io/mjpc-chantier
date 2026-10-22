@@ -19908,9 +19908,9 @@ function atP2ValiderDeroule(o,V,taxo){
       blocs.forEach(function(b,k){
         var bk='bloc '+(k+1)+' : ';
         if(!b||!AT_P2_TYPES[b.t]){V.cite(r2,bk+'type inconnu (« '+((b&&b.t)||'')+' ») — les dix types : '+AT_P2_DIX+'.');return;}
-        if(b.t==='question'){
+        if(b.t==='question'){   /* §12.23 (Paul, 17:33) : la question du bilan n'a pas de réponse attendue — elle s'écrit en classe, dans la copie */
           if(!String(b.q||'').trim())V.cite(r2,bk+'la question est vide (« q »).');
-          else if(!(Array.isArray(b.reps)&&b.reps.some(function(x){return x&&String(x.r||'').trim();})))V.cite(r2,bk+'Refus : la réponse attendue manque — elle vit à part, c’est le contrat.');
+          else if(e.role!=='bilan'&&!(Array.isArray(b.reps)&&b.reps.some(function(x){return x&&String(x.r||'').trim();})))V.cite(r2,bk+'Refus : la réponse attendue manque — elle vit à part, c’est le contrat.');
         }
         if(b.t==='fiche'){
           if(!String(b.titre||'').trim())V.cite(r2,bk+'Refus : une fiche a un titre.');

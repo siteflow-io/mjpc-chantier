@@ -826,3 +826,5 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
   - « L'Albatros » rejouée (« Jouer en avance », ▶) : activités 11 à 16, zéro erreur JS.
   - Captures `prompt/captures/*-final.png`.
 - **La preuve sur pièce est faite.**
+- **Puis Paul (18:19, `bc239f02`) : « Récap' de l'heure » partout** (séance 1, diapo 8, auparavant « Avant de se quitter »). Le script traite « Récap' de l'heure » comme « Avant de se quitter » : la diapo ferme l'activité d'avant (même `actId`), sans être un repère d'heure. **68 activités, 0 écart.**
+- **Le JSON final, réimporté sur la tête `726215db`, aux deux tailles** : « Réponse comprise », **« À régler (0) »**. `banc.sh` vert sur cette tête.

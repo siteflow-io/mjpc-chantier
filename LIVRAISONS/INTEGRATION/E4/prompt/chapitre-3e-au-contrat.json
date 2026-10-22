@@ -412,12 +412,7 @@
                 {
                   "t": "question",
                   "q": "Qu'est-ce que le Romantisme ? La réponse validée est recopiée dans le cahier, partie cours.",
-                  "reps": [
-                    {
-                      "i": "",
-                      "r": ""
-                    }
-                  ]
+                  "reps": []
                 },
                 {
                   "t": "consigne",
@@ -1122,12 +1117,7 @@
                 {
                   "t": "question",
                   "q": "En trois lignes : pourquoi Baudelaire a-t-il choisi un albatros pour parler du poète ? La réponse validée est recopiée dans le cahier, partie cours.",
-                  "reps": [
-                    {
-                      "i": "",
-                      "r": ""
-                    }
-                  ]
+                  "reps": []
                 },
                 {
                   "t": "consigne",
@@ -3284,12 +3274,7 @@
                 {
                   "t": "question",
                   "q": "Qu'est-ce qui distingue une récitation vivante d'une récitation seulement sue ? La réponse validée est recopiée dans le cahier, partie cours.",
-                  "reps": [
-                    {
-                      "i": "",
-                      "r": ""
-                    }
-                  ]
+                  "reps": []
                 }
               ],
               "role": "bilan",

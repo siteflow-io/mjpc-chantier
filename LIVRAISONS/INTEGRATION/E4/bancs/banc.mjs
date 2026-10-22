@@ -340,6 +340,21 @@ if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg; await lanc
     verif('RC7', o3.errs.length + o4.errs.length === 0, 'zéro erreur JS (rouvertures)', JSON.stringify(o3.errs.concat(o4.errs))); await o4.ctx.close(); HUB_PERSISTANT = null; } }
 else verif('RC7', null, '§12.20 la fin réelle', 'se mesure sur le site');
 
+// ═════ RC8 · contrat §12.23 : la question du bilan n'a pas de réponse attendue ; sa réponse s'écrit en classe, le récit la dit ; sans réponse : « sans réponse écrite », rien ne bloque ═════
+if (SITE) { for (const avecReponse of [false, true]) { const o = await ouvrir({ frais: true }); const pg = o.pg; await lancer(pg);
+  const vu = await jusquA(pg, () => /bilan/i.test(String(ecran().act || '')), 120);
+  const q = vu ? await jusquA(pg, () => /bilan/i.test(String(ecran().act || '')) && ecran().blocs.some(b => b.t === 'question'), 3) : false;
+  await pg.click('#bdev').catch(() => {}); await p(pg, 200); await garde(pg);
+  if (vu && avecReponse) await reponse(pg, 'GA', 'Un mouvement qui place l\'émotion avant la règle');
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:47:30+02:00')); await p(pg, 2500);
+  for (let n = 1; n <= 7; n++) { const t = await pg.evaluate(() => (document.querySelector('.pp-tete') || {}).innerText || ''); if (/étape 7 sur 7/.test(t)) break; const b = await pg.$('#f-suivante:not([disabled])'); if (!b) break; await b.click(); await p(pg, 700); }
+  await pg.locator('#f-clore:visible').first().click().catch(() => {}); await p(pg, 1200); if (await pg.$('#gclore-oui:visible')) { await pg.click('#gclore-oui'); await p(pg, 1500); }
+  const close = await pg.evaluate(() => !!S.close); await relecture(pg); const r = await texteRel(pg); const l = (r.match(/[^.]*bilan[^.]*\.|[^.]*Romantisme \?[^.]*\./gi) || []).join(' ').slice(0, 400);
+  if (!avecReponse) verif('RC8', vu && close ? /sans réponse écrite/.test(r) : null, 'le bilan posé sans réponse écrite, l\'heure close : le récit dit « sans réponse écrite » — rien ne bloque', JSON.stringify({ vu, close, l }));
+  else verif('RC8', vu && close ? /émotion avant la règle/.test(r) && !/sans réponse écrite/.test(r) : null, 'la réponse du bilan écrite en classe (les initiales) : le récit la dit, sans « sans réponse écrite »', JSON.stringify({ vu, close, l }));
+  verif('RC8', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte (' + (avecReponse ? 'avec' : 'sans') + ' réponse)', JSON.stringify(o.errs)); await cap(pg, 'E4-RC8-bilan-' + (avecReponse ? 'avec' : 'sans')); await o.ctx.close(); } }
+else verif('RC8', null, '§12.23 le bilan sans réponse attendue', 'se mesure sur le site');
+
 // ═════ B3 · le relecteur continu B3 (14:05) : l'heure fantôme, le bloc libre, le verdict sans activités, le point après « », l'étiquette vide ═════
 if (SITE) { const o = await ouvrir({ frais: true }); const pg = o.pg;
   await pg.evaluate(() => { try { dr_aller(1); } catch (e) {} }); await p(pg, 400); await pg.click('#bdev').catch(() => {}); await p(pg, 300); await pg.evaluate(() => { try { dr_aller(0); } catch (e) {} }); await p(pg, 300);

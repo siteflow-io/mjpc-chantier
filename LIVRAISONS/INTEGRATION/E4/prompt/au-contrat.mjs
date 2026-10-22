@@ -71,7 +71,7 @@ chap.seances.forEach((s, si) => {
   //     le seul rituel écrit est le bilan (s'il est la dernière diapo de la séance)
   for (let i = E.length - 1; i >= 0; i--) if (REACTIVATION(E[i].act)) { journal.push(`${s.cle} · « ${E[i].act} » (${E[i].dur} min) retirée (§12.22) — avant : ${E[i].blocs.map(b => b.t).join(', ')}`); E[i].__retireeAvant = true; E.splice(i, 1, Object.assign(E[i], { __coupe: true })); }
   const coupes = new Set(E.map((e, i) => e.__coupe ? i : -1).filter(i => i >= 0));
-  const last = E[E.length - 1]; if (last && BILAN(last.act)) last.role = 'bilan';
+  const last = E[E.length - 1]; if (last && BILAN(last.act)) { last.role = 'bilan'; (last.blocs || []).forEach(b => { if (b.t === 'question') b.reps = (b.reps || []).filter(r => String(r.r || '').trim()); }); }   /* §12.23 (Paul, 17:33) : la question du bilan n'a pas de réponse attendue — sa réponse s'écrit en classe, dans la copie */
   E.forEach((e, i) => { if (BILAN(e.act) && !e.role) journal.push(`${s.cle} · « ${e.act} » (diapo ${i + 1}) : un bilan au milieu de la séance — ni déplacé ni renommé (pas de phrase nouvelle) ; à trancher (§1.3 : jamais « bilan » dans le titre d'une autre diapo)`); });
   // 3 · les heures : d'abord les repères de la trame (une heure se ferme après « Avant de se quitter », s'ouvre à une réactivation) ;
   //     un segment de 60 min au plus (la trame a été écrite pour des heures de 55 min) reste une heure — l'étape 4 rend l'excès ;
@@ -143,7 +143,8 @@ chap.seances.forEach(s => {
     (e.blocs || []).forEach(b => {
       if (b.t === 'fiche') R(!!b.feuille && itemsDuChap.has(b.feuille), 'chaque fiche nomme sa feuille', `${ou} · « ${b.titre} »`);
       if (b.t === 'image') R(!!b.ref && !/^[a-z]+:\/\//i.test(b.ref), 'image : adresse relative', ou);
-      if (b.t === 'question') R((b.reps || []).length > 0 && (b.reps || []).every(r => String(r.r || '').trim()), 'aucune réponse attendue vide (reps)', `${ou} · « ${String(b.q).slice(0, 50)}… »`);
+      if (b.t === 'question' && e.role !== 'bilan') R((b.reps || []).length > 0 && (b.reps || []).every(r => String(r.r || '').trim()), 'aucune réponse attendue vide (reps), hors bilan (§12.23)', `${ou} · « ${String(b.q).slice(0, 50)}… »`);
+      if (b.t === 'question' && e.role === 'bilan') R((b.reps || []).every(r => String(r.r || '').trim()), 'le bilan : pas de réponse attendue vide (reps vide ou absent, §12.23)', ou);
     });
     (e.comp || []).concat(e.remob || []).forEach(id => R(connus.has(id), 'les notions existent dans la taxonomie', `${ou} · ${id}`));
   });

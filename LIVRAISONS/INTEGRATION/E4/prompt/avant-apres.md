@@ -42,8 +42,5 @@
 - remediation · « Avant de se quitter » (heure 2) : ferme l'activité « Je m'entraîne sur mes points faibles » (même actId) — ni un rituel du contrat (§1.3), ni une activité à part
 - tache-finale · heure 1 : 55 min > 50 — « Étude du texte (sur 32) » passe de 45 à 40 min [PROPOSITION]
 
-### La liste du §3 point 5 — 4 écart(s)
-- aucune réponse attendue vide (reps) — intro-peinture · diapo 17 « Question-bilan et travail à faire » · « Qu'est-ce que le Romantisme ? La réponse validée e… »
-- aucune réponse attendue vide (reps) — etude-albatros · diapo 23 « Question-bilan et travail à faire » · « En trois lignes : pourquoi Baudelaire a-t-il chois… »
+### La liste du §3 point 5 — 1 écart(s)
 - jamais « bilan » dans le titre d'une autre diapo — interro-analyse · diapo 6 « Question-bilan »
-- aucune réponse attendue vide (reps) — recitation · diapo 6 « Question-bilan » · « Qu'est-ce qui distingue une récitation vivante d'u… »

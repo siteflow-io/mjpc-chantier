@@ -45,7 +45,7 @@ const FEUILLES = {
   'interro-analyse|La PSCci': 'fiche-notion-propositions',
   'atelier-paragraphe|Le sonnet': 'fiche-versification',   // [à vérifier] : la fiche « rappel sur la versification » de la séance porte-t-elle le sonnet ?
 };
-const FAMILLES_PAR_CARTE = 1;   // mesuré sur le faux hub (import, 1366 et 1280) : deux familles par carte ne tiennent pas (« 1 trait à travers un mot », « 1 chevauchement ») ; une famille par diapo, « (suite) » — E3 chiffrera la limite
+const FAMILLES_PAR_CARTE = 1;   // mesuré par « À régler » du site après import (1366 et 1280) : 3 familles par diapo → 2 diapos sur 3 refusées (4 chevauchements / 3 traits ; 1 / 2) ; 2 familles → 3 sur 4 refusées ; 1 famille → 0. Le réveil n°23 demandait 3 (selon E3) : écart dit au journal
 
 const journal = []; const avantApres = [];
 const chap = out.chapitre; let numAct = 0; const vuesAvant = [];   // les notions travaillées plus tôt dans le chapitre, dans l'ordre

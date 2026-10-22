@@ -754,3 +754,16 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
   - Le titre « dans ce chapitre » ne compte que la séance ouverte : **L187, chez E1**.
   - **La séance « L'Albatros » jouée** (« Jouer en avance — répétition », ▶ au fil de l'heure 1) : « Diapo n sur 9 · heure 1 · activité 11 … 16 », « Activité 14 — Les rimes » au tableau, « Où on en est » A11 à A16 puis le cahier ; zéro erreur JS, aucune boîte. Captures dans `E4/prompt/captures/`.
 - **Compte de la table** : 180 lignes, dont 168 réglées, **2 pas réglées (L186, L187, E1)**, 10 écartées, 0 à Paul, 0 ouverte. Le signal ne se réécrit pas en « 0 » tant qu'elles restent ; le candidat au promeus reste `ef674d4b`.
+
+## Poussée 79 — 12:55 UTC · réveil n°23
+- **Réveil n°23 lu** : ma relecture est entrée dans la pièce (v0.3). Le chapitre au contrat est précisé ; ce qu'il demande est déjà dans le JSON :
+  - aucune « Où en sommes-nous ? », aucune fin d'heure ;
+  - `role: "bilan"` sur les bilans existants en dernière place. Séances 1 et 2, et aussi la séance 7, dont « Question-bilan » est la dernière diapo : c'est un bilan existant, je le dis ;
+  - la séance 3 garde sa « Question-bilan » en 6ᵉ position : **le seul refus attendu de ma liste**. Ma liste compte aussi les trois réponses attendues vides (séances 1, 2, 7), que le site ne refuse pas.
+- **La carte « Les figures de style » : le réveil demandait 3 familles par diapo (selon E3) ; le site les refuse.** Mesures de « À régler » sur le chapitre importé, aux deux tailles :
+  - **3 familles** : diapo 1 (analogie, opposition, substitution : 11 notions) « 4 chevauchements, 3 traits à travers un mot » ; diapo 2 (insistance, amplification, atténuation : 8 notions) « 1 chevauchement, 2 traits » ; diapo 3 (syntaxiques, sonores : 7 notions) tient ;
+  - **2 familles** : 3 diapos sur 4 refusées ;
+  - **1 famille** : 0.
+  - **Le JSON livré coupe donc en 8 diapos d'une famille**, pour « À régler (0) » côté schémas. Le réglage tient dans une constante (`FAMILLES_PAR_CARTE`) si la conscience ou E3 tranchent autrement. À E3 : la limite « 9 à 12 bulles » ne tient pas sur cette carte, où 11 bulles plus 3 familles sont refusées.
+- **L'import rejoué** sur le JSON final, aux deux tailles : « À régler » séance 1 (5), séance 2 (1), séances 3 à 9 (0) ; les 6 sont les images (L186, E1). Aucune ligne de schéma ; zéro erreur JS.
+- Le JSON et le script sont poussés ; l'import final attend la tête d'E1 (L186, L187).

@@ -109,6 +109,21 @@ neuf('edtFileDAttente', r"""function edtFileDAttente(nomClasse,fil){
   /* [E2] la file reprend là où la classe en est : la séance commencée compte ses heures déjà jouées (la case suivante dit « heure n+1/N ») — avant : faites:0 */
   return {chapitre:c.ch, seances:att, i:0, faites:att.length?edtHeuresJouees(att[0],nomClasse):0};
 }""")
+# ── N, les heures de la séance (22/10, le prompt d'injection §1.2, contrat §12.21 : « E2 vérifie les heures ») : la frontière posée dans
+#    la trame (`heure` sur chaque diapo) fait foi quand elle existe ; sinon le quotient d'aujourd'hui (dette 12 · 07), hors fin d'heure.
+neuf('edtHeuresPour', r"""function edtHeuresPour(seance,creneau){
+  /* [E2] N (la case dit « heure n/N », contrat §12.5) : LA FRONTIÈRE POSÉE DANS LA TRAME fait foi quand elle existe — `heure` sur les
+     diapos (le prompt d'injection §1.2, ou le geste de Paul dans l'Atelier), plus d'une heure distincte hors « fin » (le critère de
+     `dr_partagerHeures` : la trame d'aujourd'hui met tout à 1) ; sinon le quotient (dette 12 · 07), sur les diapos qui ne sont pas la
+     fin d'heure (ses 5 minutes sont celles que le temps utile retire déjà ; `dr_partagerHeures` les saute de même). Avant : le seul
+     quotient, fins comprises — trois heures posées pleines (3 × 50 + 3 × 5 = 165) disaient « /4 », une heure pleine posée seule « /2 ». */
+  var ec=((seance&&seance.deroule)||{}).ecrans||[],somme=0,heures={},max=0;
+  ec.forEach(function(e){ if(!e)return; var fin=(e.role==='fin'); if(fin)return; var h=Number(e.heure); if(h>0&&h===Math.floor(h)){ heures[h]=1; if(h>max)max=h; } somme+=(Number(e.dur)||0); });
+  if(Object.keys(heures).length>1)return max;
+  var utile=edtTempsUtile(creneau)||50;
+  if(!somme)return 1;
+  return Math.max(1,Math.ceil(somme/utile));
+}""")
 A = "b=document.createElement('div'); b.className='ses-reprise'; b.id='ses-reprise';"
 if A in t and "b.style.bottom='18px'" not in t: t = t.replace(A, A + " b.style.top='auto'; b.style.bottom='18px';   /* [E2] réveil n°3 : la bannière ne couvre plus « ✕ Fermer l'atelier » */", 1); rapport.append('bannière · position          posée')
 # ── l'heure : le lancement, la trace, la clôture, le pointeur — rebranchés sur dr-classe.js (les noms restent, pour tout appelant) ──

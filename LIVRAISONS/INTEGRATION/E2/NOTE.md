@@ -20,9 +20,9 @@ Si la page se ferme en pleine heure : la bannière d'aujourd'hui (« Reprendre l
 |---|---|---|
 | production de départ (`index.html` 8.74.0-③) | `ac792b28f40d3a0510e725fc4a6b6985` | 1 838 175 o |
 | maquette de départ (p8-5g) | `62d9557ac8fedcfbdd8b157a2588cbee` | 605 996 o |
-| `LIVRAISONS/INTEGRATION/index.html` à cette note (réveil n°16, §12.19) | `6beb2b564146d3dfcf14335d63219546` | 1 390 874 o |
+| `LIVRAISONS/INTEGRATION/index.html` à cette note (22/10, le prompt d'injection : `edtHeuresPour`) | `7a859d2c849d2add770e9bb0b3401908` | 1 391 772 o |
 | `dr/dr-classe.js` à cette note (ma coupe de la maquette posée par E1 + mon module) | `fec4d7bd9734cdc55fdfb76c4631183a` | 200 935 o |
-| `assemble/index.html` à cette note | `9b77448d960637de544425105dba8779` | 2 283 942 o |
+| `assemble/index.html` à cette note | `c1b97245f2cbb3b62d0dd01438e02d13` | 2 286 616 o |
 
 ## Les fonctions du site touchées (nom, taille avant → après)
 
@@ -49,6 +49,7 @@ Appliquées par `E2/outils/brancher.py` (par le nom, idempotent, rejouable sur t
 | `edtSeanceDeTrace` | — | 573 | nouvelle (réveil n°5, A4-4) : la séance d'une heure jouée, pour son titre |
 | `edtProjeter` (quatre lignes) | — | +146 · +314 · +420 | la case jouée garde le titre de sa séance ; la case passée sans heure jouée ne prend rien de la file (réveil n°16) |
 | la case jouée (`edtCelluleCorps`, une ligne) · la modale jouée (`edtPeindreModale`, une ligne) | — | +44 · +420 | le titre ; « Relire cette heure » → `dr_edtRelire` (avant : « La relecture … arrive avec le profil de classe ») |
+| `edtHeuresPour` | 268 | 1 140 | N (22/10, le prompt d'injection §1.2) : la frontière posée dans la trame (`heure`, plus d'une heure distincte hors fin) fait foi ; sinon le quotient d'aujourd'hui, hors fin d'heure — avant : le seul quotient, fins comprises, sans lire `heure` |
 
 **Ce qui tombe (33 fonctions, 39 129 o)** : `atDrJouerClic`, `atDrClore`, `atDrCloreFin`, `atDrClotureModale`, `atDrSuiviAppliquer`, `atVecu*` (6), `atT5*` (9), `_drVifInstaller`, `_drVifAller`, `_drPaletteOuvrir`, `_drPaletteBrancher`, `sesBrancherPilote`, `sesAppliquer`, `sesPollPilote`, `atDrMajUtile`, `sesPut`, `atDrReprendre`, `atTempsUtile`, `atDebutPropose`, `atCreneauSel` ; l'écoute F2 du pont ; les variables `AT_T5_VU`, `AT_T5_CHOIX`, `AT_T5_TIMER`, `AT_DR_VECU` ; l'écriture `C/vecu`.
 
@@ -79,7 +80,7 @@ Deux sous-agents, avec le mandat, le contrat et l'assemblé seulement, sur le fa
 4. **`edtProchainesDe`** ne voit que les cases de la grille (pas les heures ajoutées à la main) et rend vide tant que l'EDT n'est pas chargé ; je le charge au lancement.
 5. **Les activités** : la trame réelle n'en a pas (contrat §12.5). Depuis le réveil n°3, chaque diapo restante sans activité est une **pseudo-activité** (`dr_pseudoAct`, la décision rangée sous son `eid`) : l'étape 2 montre une carte par diapo restante et « Où on en est » une ligne par diapo jouée. Quand le prompt de préparation posera `activites`, ce sont elles qui reprendront la main, sans rien changer d'autre.
 6. **Le registre** : dettes 13 · 26 (F2) et 13 · 27 (la reprise) déclarées par la conscience ; réglées dans le fichier intégré (B1, B3, B3b) — à fermer au registre à la promotion.
-7. **Les dettes 12 · 05** (réglée, B1), **12 · 17** (ses deux points de mon territoire réglés : les absents de la case dans l'appel, B8 ; « À relire — » = la prochaine heure de la classe) et **12 · 07** (N vient de la case, contrat §12.5 ; à défaut de frontière posée dans la trame, **la frontière par les durées** — `dr_partagerHeures`, réveil n°3 : l'heure n = les diapos qui commencent dans ses minutes utiles, en mémoire, la trame du hub n'est pas réécrite ; la frontière posée par Paul reste à faire avec le prompt de préparation).
+7. **Les dettes 12 · 05** (réglée, B1), **12 · 17** (ses deux points de mon territoire réglés : les absents de la case dans l'appel, B8 ; « À relire — » = la prochaine heure de la classe) et **12 · 07** (N vient de la case, contrat §12.5 ; à défaut de frontière posée dans la trame, **la frontière par les durées** — `dr_partagerHeures`, réveil n°3 : l'heure n = les diapos qui commencent dans ses minutes utiles, en mémoire, la trame du hub n'est pas réécrite ; la frontière posée par Paul ou par le prompt d'injection fait foi pour N depuis le 22/10 — `edtHeuresPour` la lit avant le quotient ; ce que le site lit de `heure`, `travail` et des rituels, et ce que l'import d'aujourd'hui en perd, est dans le journal, « PROMPT — relecture »).
 8. **Le rituel de l'heure** se reconnaît au rôle `reactivation` de la trame ou, à défaut (la trame réelle n'a pas de rôle), à son titre (« Où en sommes-nous ? », « réactivation ») : quand le prompt de préparation posera le rôle, le titre ne servira plus. **Les décisions par défaut de la clôture** (« Clore quand même » : « à l'heure suivante ») passent après celles de Paul dans l'ordre de l'heure suivante.
 9. **La porte avant tout lancement** propose encore un créneau du site hors de la case de l'EDT quand aucune case du niveau ne reste aujourd'hui (les bancs des autres lancent par elle) ; après une clôture, jamais.
 10. **Les deux copies de 3E** (`3e_charles_de_gaulle` du 07/09 et `3E Charles de Gaulle`) : la clé de `classesData` fait foi (contrat §12.13) ; l'ancienne forme est de l'histoire : jamais reprise ni réécrite, seulement **lue** pour savoir où la classe s'est arrêtée (`dr_marquerJoues`, par le champ `classe`, comme l'EDT la compte pour « heure n/N »).

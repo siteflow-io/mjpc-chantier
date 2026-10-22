@@ -22123,8 +22123,14 @@ function edtHeuresJouees(seance,nomClasse){   /* [E2] les heures déjà jouées 
   return n;
 }
 function edtHeuresPour(seance,creneau){
-  var ec=((seance&&seance.deroule)||{}).ecrans||[],somme=0;
-  ec.forEach(function(e){ somme+=(Number(e&&e.dur)||0); });
+  /* [E2] N (la case dit « heure n/N », contrat §12.5) : LA FRONTIÈRE POSÉE DANS LA TRAME fait foi quand elle existe — `heure` sur les
+     diapos (le prompt d'injection §1.2, ou le geste de Paul dans l'Atelier), plus d'une heure distincte hors « fin » (le critère de
+     `dr_partagerHeures` : la trame d'aujourd'hui met tout à 1) ; sinon le quotient (dette 12 · 07), sur les diapos qui ne sont pas la
+     fin d'heure (ses 5 minutes sont celles que le temps utile retire déjà ; `dr_partagerHeures` les saute de même). Avant : le seul
+     quotient, fins comprises — trois heures posées pleines (3 × 50 + 3 × 5 = 165) disaient « /4 », une heure pleine posée seule « /2 ». */
+  var ec=((seance&&seance.deroule)||{}).ecrans||[],somme=0,heures={},max=0;
+  ec.forEach(function(e){ if(!e)return; var fin=(e.role==='fin'); if(fin)return; var h=Number(e.heure); if(h>0&&h===Math.floor(h)){ heures[h]=1; if(h>max)max=h; } somme+=(Number(e.dur)||0); });
+  if(Object.keys(heures).length>1)return max;
   var utile=edtTempsUtile(creneau)||50;
   if(!somme)return 1;
   return Math.max(1,Math.ceil(somme/utile));

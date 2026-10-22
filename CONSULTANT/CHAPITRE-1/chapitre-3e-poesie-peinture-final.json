@@ -1234,7 +1234,7 @@
        ]
       },
       {
-       "act": "Question-bilan",
+       "act": "Récap' de l'heure",
        "dur": 5,
        "comp": [
         "gram-023",

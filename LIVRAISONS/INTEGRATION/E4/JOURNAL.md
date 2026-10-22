@@ -657,3 +657,13 @@
 - **Réveil n°18 lu** (main fusionnée, `-X theirs`) : le signal « 0 pas réglée (`4c1c479b`) » est lu, et Paul est prévenu que l'intégration est prête. La carte « Les figures de style » a été mesurée par la conscience ; rien à ajouter à ma table.
 - **Je ne touche plus au code avant le promeus.** Je ne juge pas utile une passe de plus sur `523ce739` : la famille §12.19 a été rejouée sans régression à la poussée 70, et aucun code n'a changé depuis.
 - Veille maintenue : une poussée qui touche le code ou une relance rouvre une passe.
+
+## Poussée 73 — 07:55 UTC
+- **Réveil n°19 lu** (main fusionnée) : contrat §12.20, la seule exception au gel avant le promeus.
+- **Codé** dans `dr/dr-recit.js` (`09316b3d`) : `dr_recitFinReel(h)`. Le cadre du récit dit « s'est terminée à <H.finReel> » ; l'heure en cours dit « elle est en cours », sans heure de fin. L'entête (`#hou`, Relecture, Papier) garde le créneau. Garde **RC7** dans mon banc.
+- **Revérifié par le geste**, aux deux tailles : « Clore » à 09:47 donne « s'est terminée à 09 h 47 », l'entête « 08:57-09:52 · heure 2/3 · close ».
+- Mes lignes **50, 140, 163** (« à Paul », la même question) passent **réglées**.
+- **Une ligne à E2**, dans la NOTE §10 : la clôture à l'ouverture de l'heure suivante n'écrit `finReel` qu'au hub (lecture du code, non mesurée).
+- **Bancs** sur `09316b3d` : `banc.sh` vert ; le mien **114 ok · 0 échec** (`sorties/0750-site-E4`).
+- **Signal réécrit : « 0 pas réglée (`09316b3d`) ».** Compte : 176 lignes, dont 164 réglées, 9 écartées, 3 à Paul, 0 ouverte.
+- Le rebasage avant poussée a renommé `20de217a` en `09316b3d` (même contenu) ; les références sont mises à jour.

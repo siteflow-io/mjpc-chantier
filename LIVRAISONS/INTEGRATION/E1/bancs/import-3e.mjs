@@ -37,7 +37,12 @@ const s0 = j => j.chapitre.seances[0], s1 = j => j.chapitre.seances[1], E0 = j =
 const blocDe = (E, t) => { for (const e of E) for (const b of e.blocs) if (b.t === t) return b; return null; };
 export const MUTATIONS = [
   ['actId', 'une diapo d\'activité sans actId', ': une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis).', j => { delete E0(j)[1].actId; }],
-  ['num', 'les activités non numérotées en continu sur le chapitre (la séance 2 repart à 1)', ': une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis).', j => { s1(j).deroule.activites[0].num = 1; }],
+  ['num', 'les activités non numérotées en continu sur le chapitre (la séance 2 repart à 1 : doublon)', ': les numéros d’activité ne vont pas de 1 à n (trou ou doublon).', j => { s1(j).deroule.activites[0].num = 1; }],
+  ['numTrou', 'un trou dans les numéros d\'activité', ': les numéros d’activité ne vont pas de 1 à n (trou ou doublon).', j => { s1(j).deroule.activites.forEach(a => { a.num += 1; }); }],
+  ['actSansDiapo', 'une activité sans diapo', ': une activité sans diapo.', j => { const A = s1(j).deroule.activites; A.push({ id: 'a99', num: A[A.length - 1].num + 1, titre: 'Orpheline' }); }],
+  ['heureEntier', '« heure » non entière', ': « heure » n’est pas un nombre entier.', j => { E0(j)[1].heure = 1.5; }],
+  ['schemaSansTitre', 'un schéma sans le champ « titre » (le « txt » de la v0.2)', 'un schéma sans « titre ».', j => { const b = blocDe(E1(j), 'schema'); b.txt = b.titre; delete b.titre; }],
+  ['feuilleInconnue', 'une fiche dont la feuille ne nomme aucun item du chapitre', ': une fiche sans feuille (« feuille ») — une fiche vit dans une feuille du chapitre (1.7).', j => { blocDe(E1(j), 'fiche').feuille = 'pas-un-item'; }],
   ['bilan2', 'deux bilans', ': deux bilans — le bilan est unique et dernier.', j => { E0(j)[2].role = 'bilan'; }],
   ['bilanDernier', 'le bilan n\'est pas la dernière diapo', ': le bilan n’est pas la dernière diapo de la séance.', j => { const E = E0(j); const x = E.pop(); E.splice(E.length - 1, 0, x); }],
   ['bilanTitre', 'le mot « bilan » dans le titre d\'une autre diapo (le site la lit comme un bilan)', ': deux bilans — le bilan est unique et dernier.', j => { E0(j)[3].act = 'Petit bilan des tableaux'; }],

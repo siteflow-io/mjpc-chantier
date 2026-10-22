@@ -15476,7 +15476,12 @@ function atP2Heure(e){ var h=parseInt(e&&e.heure,10); return h>0?h:1; }
 function atP2ValiderDeroule(o,V,taxo){
   var ses=(o&&o.chapitre&&o.chapitre.seances)||[]; if(!Array.isArray(ses))return;
   var ids=(taxo&&typeof chIdsTaxo==='function')?chIdsTaxo(taxo):null;
-  var cles={},numPrec=null;
+  var cles={},nums=[];
+  /* les clés d'items du chapitre (le fichier, et le chapitre déjà au site de même titre) : ce que `fiche.feuille` nomme (v0.3, la proposition d'E1 retenue) */
+  var items={};
+  ses.forEach(function(se){ Object.keys((se&&se.items)||{}).forEach(function(k){items[k]=1;}); });
+  try{ var dejaCh=Object.values((typeof chapitresData!=='undefined'&&chapitresData[o.niveau])||{}).find(function(c){return c&&String(c.title||'')===String((o.chapitre||{}).title||'');});
+    if(dejaCh)atSeances(dejaCh).forEach(function(p){ Object.keys(p.se.items||{}).forEach(function(k){items[k]=1;}); }); }catch(e){}
   ses.forEach(function(se,ix){
     var ref=(se&&se.title)||('séance n° '+(ix+1));
     if(se&&se.cle!==undefined){
@@ -15487,12 +15492,12 @@ function atP2ValiderDeroule(o,V,taxo){
     var dr=se&&se.deroule;
     if(dr===undefined)return;
     if(!dr||!Array.isArray(dr.ecrans)||!dr.ecrans.length){V.cite(ref,'déclare un déroulé sans écrans (deroule.ecrans doit être une liste non vide).');return;}
-    /* les activités (3.2 bis) : un numéro continu sur le chapitre, dans l'ordre des séances */
-    var acts={},actsOk=true;
+    /* les activités (3.2 bis) : chacune son id, son numéro (de 1 à n sur le chapitre, vérifié plus bas) et au moins une diapo */
+    var acts={};
     (Array.isArray(dr.activites)?dr.activites:[]).forEach(function(a){
-      var n=a&&parseInt(a.num,10);
-      if(!a||!String(a.id||'').trim()||!(n>0)||(numPrec!=null&&n!==numPrec+1)){actsOk=false;return;}
-      numPrec=n; acts[String(a.id)]=1;
+      if(!a||!String(a.id||'').trim())return;
+      acts[String(a.id)]=1; nums.push(a.num);
+      if(!dr.ecrans.some(function(e){return e&&String(e.actId||'')===String(a.id);}))V.cite(ref+' · activité « '+(a.titre||a.id)+' »',': une activité sans diapo.');
     });
     var bilans=[],parHeure={};
     dr.ecrans.forEach(function(e,n){
@@ -15512,9 +15517,10 @@ function atP2ValiderDeroule(o,V,taxo){
       else if(e.role!==undefined&&e.role!=='bilan')V.cite(r2,': rôle « '+e.role+' » inconnu — seul « bilan » s’écrit.');
       var bil=atP2EstBilan(e); if(bil)bilans.push(n);
       if(!bil&&e.role!=='reactivation'&&e.role!=='fin'){
-        if(!String(e.actId||'').trim()||!actsOk||!acts[String(e.actId)])V.cite(r2,': une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis).');
+        if(!String(e.actId||'').trim()||!acts[String(e.actId)])V.cite(r2,': une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis).');
         if(!Array.isArray(e.remob))V.cite(r2,': « remob » manque sur une diapo d’activité.');
       }
+      if(e.heure!==undefined&&!(Number.isInteger(e.heure)&&e.heure>=1))V.cite(r2,': « heure » n’est pas un nombre entier.');
       var h=atP2Heure(e); parHeure[h]=(parHeure[h]||0)+(+e.dur||0);
       var blocs=Array.isArray(e.blocs)?e.blocs:[];
       var nSch=blocs.filter(function(b){return b&&b.t==='schema';}).length;
@@ -15534,10 +15540,11 @@ function atP2ValiderDeroule(o,V,taxo){
         if(b.t==='fiche'){
           if(!String(b.titre||'').trim())V.cite(r2,bk+'Refus : une fiche a un titre.');
           else if(!String(b.def||'').trim())V.cite(r2,bk+'Refus : une fiche a sa définition (la phrase à retenir).');
-          if(!String(b.feuille||'').trim())V.cite(r2,': une fiche sans feuille (« feuille ») — une fiche vit dans une feuille du chapitre (1.7).');
+          if(!String(b.feuille||'').trim()||!items[String(b.feuille).trim()])V.cite(r2,': une fiche sans feuille (« feuille ») — une fiche vit dans une feuille du chapitre (1.7).');
         }
         if(b.t==='schema'){
-          if(!String(b.titre!=null?b.titre:(b.txt||'')).trim())V.cite(r2,bk+'Refus : un schéma a un titre.');
+          if(b.titre===undefined)V.cite(r2,bk+'un schéma sans « titre ».');
+          else if(!String(b.titre).trim())V.cite(r2,bk+'Refus : un schéma a un titre.');
           else if(!String(b.src||'').split('\n').some(function(x){return x.trim();}))V.cite(r2,bk+'Refus : un schéma a au moins un élément (une ligne).');
         }
         if(b.t==='image'){
@@ -15555,6 +15562,8 @@ function atP2ValiderDeroule(o,V,taxo){
     else if(bilans.length===1&&bilans[0]!==dr.ecrans.length-1)V.cite(ref,': le bilan n’est pas la dernière diapo de la séance.');
     Object.keys(parHeure).forEach(function(h){ if(parHeure[h]>50)V.cite(ref,': l’heure '+h+' dépasse 50 minutes ('+parHeure[h]+' min).'); });
   });
+  if(nums.length&&!nums.every(function(n,i){return Number.isInteger(n)&&nums.slice().sort(function(a,b){return a-b;})[i]===i+1;}))
+    V.cite((o.chapitre||{}).title||'le chapitre',': les numéros d’activité ne vont pas de 1 à n (trou ou doublon).');
   (Array.isArray(o&&o.aLier)?o.aLier:[]).forEach(function(l,ix){
     if(l&&l.seance_cle!==undefined&&!cles[String(l.seance_cle)])
       V.cite('aLier n° '+(ix+1),'vise une clé de séance inconnue (« '+l.seance_cle+' »).');

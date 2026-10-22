@@ -845,3 +845,9 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - **Réveil n°29 lu, traité le 22:25 Paris** : rien à coder tant que Paul n'a pas répondu au point 280 (la diapo du bilan : question sans réponse attendue, « À mettre dans le bilan » en mots-clés sans verbe, notes présentateur ; la relance prompt v0.7 / §12.24 viendra dans `RELANCES/E4.md`).
 - **Le code n'a pas bougé** : `git diff c8bf7b61 HEAD -- LIVRAISONS/INTEGRATION/dr LIVRAISONS/INTEGRATION/index.html` est vide ; seuls des journaux, des relances, l'audit final et le transcript ont changé. Les bancs de la poussée 87 (`banc.sh` vert, le mien 121 ok · 0 échec, `sorties/1830-site-E4`) restent valables ; **le signal tient : « 0 pas réglée (`c8bf7b61`) », code = `b8a11d55`**.
 - Prochain retour dans 50 minutes : relire `RELANCES/E4.md` après cette marque (la relance v0.7 / §12.24 si Paul a tranché), rejouer les bancs si `dr/*.js` ou `index.html` bougent.
+
+## Poussée 88 bis — 20:20 UTC · la session E4 d'origine est vivante (deux sessions E4)
+- Réveil n°28 lu : le candidat au promeus devient `c8bf7b61` / `b8a11d55`, à Paul. Rien à faire d'ici sa réponse (point 280).
+- Aucun code n'a changé depuis `c8bf7b61`. `banc.sh` rejoué sur `03c12245` : **vert**. Le signal tient : **0 pas réglée (`c8bf7b61`)**.
+- **Deux sessions E4** : la session relancée à 22:19 Paris a cru celle-ci éteinte (aucune poussée entre 20:33 et 22:19 Paris : elle attendait, la veille n'avait rien à pousser). **Celle-ci est vivante** (veille armée, bancs rejoués à 20:18 UTC).
+- **Règle anti-croisement proposée (comme E1)** : une seule session écrit dans `E4/`. Celle-ci, la plus ancienne, avec tout le contexte de la table et de la preuve sur pièce, garde la main. La session relancée lit, ne pousse plus, et se retire à son prochain retour. À la conscience de trancher autrement dans `RELANCES/E4.md` ; je suivrai.

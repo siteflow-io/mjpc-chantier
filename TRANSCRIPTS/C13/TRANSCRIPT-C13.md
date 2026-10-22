@@ -2377,3 +2377,21 @@ Réponse de la conscience (13:51), mot pour mot :
 
 22/10/2026 13:51
 MEMO
+
+## TOUR 114 (22/10/2026, 13:52 → 13:54)
+
+Paul (13:52), mot pour mot :
+« Déjà que chaque heure commence par où en est-on, je ne sais pas... Cette diapo est-elle figée ou construite par le récit précédent? »
+
+Mesuré (13:52-13:53, fichier assemblé `ef674d4b`) : `dr_estRituel = e => /o[uù] en sommes[- ]nous|r[ée]activation/i.test(e.act)` (l. 18482, E2 : « le rituel d'ouverture d'une heure, quand la trame ne porte pas de rôle ») ; l'ordre de l'heure (l. 16472) met en tête `role === 'reactivation'` ou, sans rôle et h > 1, la diapo que `dr_estRituel` reconnaît ; son contenu est celui de la trame (chapitre 3e : une question écrite par l'instance, « Quel mot-bilan avons-nous écrit sur les cinq tableaux ? »). L'écran construit depuis l'heure d'avant existe, mais pour Paul : « l'écran d'ouverture de la maquette (« Où en est la classe », 6.5-6.7) — il dit l'heure d'avant, ce qui glisse, le faisceau » (l. 18131, `dr-classe.js`, cadrage 1 §6.5-6.7), avant « Lancer l'heure n ».
+
+Réponse de la conscience (13:54), mot pour mot :
+
+251. **Figée.** La diapo « Où en sommes-nous ? » est écrite dans la trame par la conversation qui crée le chapitre (dans ton chapitre 3e : une question, « Quel mot-bilan avons-nous écrit sur les cinq tableaux ? »). Le site la reconnaît à son titre et la met en tête de l'heure suivante ; il ne change pas son contenu.
+
+252. **Ce qui est construit depuis l'heure d'avant, c'est un écran pour toi, pas pour la classe** : avant de lancer l'heure 2, le pilotage te montre « Où en est la classe » — ce qui a été fait, ce qui glisse, où on en est — d'après ce que la classe a réellement vu (ton cadrage 1, 6.5-6.7).
+
+253. Donc, aujourd'hui : la question de réactivation vue par les élèves est figée (écrite d'avance), et le rappel automatique de ce qui s'est passé n'existe que sur ton écran. Si tu préfères que la diapo vue par la classe soit construite par le site d'après l'heure d'avant (ce qui a été fait, ce qui reste), dis-le : c'est une diapo nouvelle à créer dans le site (pas dans le prompt), donc après le promeus ; le prompt dirait alors « ne l'écris pas ». Ma proposition : garder la diapo figée — une question de contenu, que le site ne sait pas inventer — et laisser le rappel automatique sur ton écran.
+
+22/10/2026 13:54
+MEMO

@@ -856,3 +856,16 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - session relancée 22:19 Paris : la session d'avant est vivante (`87b3222f`, 20:25 UTC, poussée 88 bis), je m'arrête. Elle garde la main sur `E4/` (la table, la preuve sur pièce, le signal « 0 pas réglée (`c8bf7b61`) ») ; cette session ne pousse plus et ne se reprogramme pas.
 
 - veille 21:20 UTC, rien (réveil n°30 lu : cette session garde la main ; la session relancée s'est retirée, `8b36edb0`).
+
+## Poussée 90 — 22:35 UTC · §12.24, réveils n°30 et n°31
+- **Les bilans du chapitre au contrat** (`64886b1d`, puis réveil n°31) : trois blocs (question sans `reps` ; « À mettre dans le bilan » ; la consigne proposée mot pour mot) et les notes présentateur.
+  - La question perd « La réponse validée est recopiée dans le cahier, partie cours. ».
+  - **Cinq mots-clés au plus** (v0.8) : la séance 1 passe de 6 à 5.
+  - Ma liste : **2 écarts, à Paul** : les questions des séances 2 (86 signes) et 7 (79 signes) dépassent 60 signes ; les raccourcir, c'est les reformuler.
+- **L'import** sur la tête d'E1 avec §12.24 (`2229fee9`, puis `9eba2708`), aux deux tailles : **« Réponse comprise », « À régler (0) »** dans les neuf séances. **Les notes présentateur du bilan sont visibles sous la diapo en Pilotage** : chaque mot-clé, sa notion et son identifiant, puis « La réponse validée s'écrit dans la copie de la classe ». Captures `prompt/captures/bilan-*.png`.
+- **La diapo du bilan au tableau, tout dévoilé** : **deux pages** dans les trois séances, aux deux tailles. Les deux dernières étapes de la consigne passent en page 2.
+  - Copie d'essai : **4 mots-clés → deux pages ; 3 mots-clés → une page.** Le « 5 mots-clés » de v0.8 (mesure d'E3) ne tient pas avec la consigne et ses trois étapes, même avec une question d'une ligne (séance 1, 29 signes).
+  - **Ligne à Paul (L189)** : trois mots-clés, sa consigne plus courte, ou deux pages.
+- **Le récit** : garde **RC9**. Le bilan en trois blocs, joué en classe (réponse aux initiales, puis tout dévoilé), « Clore » : le récit dit la question, la réponse écrite en classe, les mots-clés (« on a écrit au tableau : « … » »), la consigne et ses étapes ; jamais « copie de classe ». Mon banc **123 ok · 0 échec** ; `banc.sh` vert.
+- **Compte** : 182 lignes, dont 171 réglées, **0 pas réglée**, 10 écartées, **1 à Paul** (L189), 0 ouverte.
+- **Signal : « 0 pas réglée (`9eba2708`) »** (code = `2229fee9`).

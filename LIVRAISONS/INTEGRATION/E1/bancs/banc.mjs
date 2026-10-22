@@ -719,6 +719,20 @@ await B('A33', 'l\'import des déroulés (§12.21, dettes 13 · 30 et 13 · 31 ;
   E.verif('A33', !/mjpcPutJson\(FB\b/.test(src) && !/\bFB\+/.test(src), 'plus de `FB` (l\'écriture qui échouait en silence)');
   E.verif('A33', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
 
+await B('A34', 'L187 (E4, cadrage 4 · 6.1) : « À régler » compte et liste toutes les séances du chapitre ; « Ouvrir la diapo » ouvre la bonne séance', async () => {
+  const o = await E.ouvrir(b, { w: 1366, h: 768 }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(800);
+  const r0 = await pg.evaluate(() => { const si0 = S.si; const par = dr_seances().map((s, si) => { S.si = si; let n = 0; try { n = (seance().ecrans || []).filter(e => !e.role && !actDe(e)).length; } catch (e) {} S.si = si0; return n; }); dr_tout(); const bt = document.getElementById('at-regler'); return { si0, par, lib: bt ? bt.textContent : '' }; });
+  const total = r0.par.reduce((a, b2) => a + b2, 0), autres = total - r0.par[r0.si0];
+  const nLib = +((r0.lib.match(/\((\d+)\)/) || [])[1] || -1);
+  E.verif('A34', autres > 0 && nLib >= total, 'le bouton « ' + r0.lib + ' » compte le chapitre : au moins les ' + total + ' diapos sans activité des ' + r0.par.length + ' séances (dont ' + autres + ' hors de la séance ouverte)', JSON.stringify(r0.par));
+  await pg.click('#at-regler'); await pg.waitForTimeout(500);
+  const l = await pg.evaluate(() => { const bs = Array.from(document.querySelectorAll('.choix-obj [data-ouvrir]')); const h = (document.querySelector('.choix-obj h4') || {}).textContent || ''; const b2 = bs.find(x => x.dataset.si && +x.dataset.si !== S.si && x.dataset.k === 'activite'); return { n: bs.length, h, si: b2 ? +b2.dataset.si : null, di: b2 ? +b2.dataset.ouvrir : null, txt: b2 ? b2.closest('.fe').textContent.slice(0, 140) : '' }; });
+  E.verif('A34', l.n === nLib && new RegExp('— ' + nLib + ' choses').test(l.h) && l.si != null && /séance « /.test(l.txt), 'la liste a ' + l.n + ' lignes (le même compte que le bouton), dont celles des autres séances, nommées', l.h.slice(0, 80) + ' · ' + l.txt);
+  await pg.evaluate(([si, di]) => { const b2 = Array.from(document.querySelectorAll('.choix-obj [data-ouvrir]')).find(x => +x.dataset.si === si && +x.dataset.ouvrir === di); b2.click(); }, [l.si, l.di]); await pg.waitForTimeout(1500);
+  const r1 = await pg.evaluate(() => ({ si: S.si, di: S.di, snum: ATVUES.snum, cle: dr_cleSeance(S.si), declare: !!S.declareOuverte, act: (seance().ecrans[S.di] || {}).act }));
+  E.verif('A34', r1.si === l.si && r1.di === l.di && String(r1.snum) === String(r1.cle) && r1.declare, '« Ouvrir la diapo » d\'une autre séance : le déroulé passe à la séance ' + l.si + ' (la colonne la suit), à sa diapo ' + (l.di + 1) + ', la carte « Ce que la diapo déclare » ouverte', JSON.stringify(r1));
+  E.verif('A34', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

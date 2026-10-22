@@ -688,3 +688,33 @@
 ## Poussée 77 — 11:20 UTC (veille)
 - Réveil n°21 lu (rien de neuf). Aucun code n'a changé depuis `a61fe923`.
 - `banc.sh` rejoué sur la tête : **vert**. Le signal tient : **0 pas réglée (`a61fe923`)**. Le promeus est à Paul.
+
+## PROMPT — relecture (E4 : le récit, les activités, les notions) — 11:55 UTC, sur `PROMPT-INJECTION.md` v0.1
+Lu contre `dr-recit.js`, le socle qu'il lit (`dr-socle.js`) et ma table. Je ne réécris pas la pièce ; chaque point cite sa ligne.
+
+1. **§1.6 (l. 96-103), `activites` : il manque `diapos`, ou la règle qui le remplace.**
+   - Le socle range chaque activité par sa liste `diapos` : des **eid**, convertis en rangs (`dr-socle.js:155`). Le récit en tire le temps passé par activité, les « non faites » et le tracé du chapitre (`dr-recit.js` `tempsActiviteH`, `montre`).
+   - L'exemple de la pièce n'a que `id`, `num`, `titre`. Un JSON n'a pas d'eid (l. 54 : « le site pose les identités »).
+   - Il faut donc soit que **l'import refasse `diapos` depuis les `actId`** (E1), soit que la pièce dise que `actId` sur la diapo est la seule source. Je l'ai rendu sûr côté récit (`dr_recitDiaposParActId`) ; le socle et l'Atelier (`diaposAct`) lisent encore `diapos`.
+2. **§1.6, `actId` ↔ `id`** : juste. `actDe` apparie `e.actId === a.id` (`dr-socle.js:758`) ; le récit dit « Activité `num` — `titre` ». Une diapo sans activité y est numérotée par le rang dans la séance (`dr_recitNumAct`), pas dans le chapitre : avec toutes les activités déclarées (la règle de la pièce), le cas ne se présente plus.
+3. **§1.3 (l. 59), la réactivation « première diapo de chaque heure sauf la première »** : la pièce ne dit pas le cas de l'heure 1 d'une séance qui réactive la séance d'avant. Les séances 4 et 5 du chapitre 3e commencent par « Où en sommes-nous ? ».
+   - Est-ce une réactivation (`role`) ou une activité (`actId`) ? Le socle accepte `reactivation` à toute heure (`dr-classe.js:550`), et le récit l'exclut des activités.
+   - **À trancher** dans la pièce, et dans la liste du §3 point 5, qui dit « après la première ».
+4. **§1.3 (l. 60), le bilan « unique et dernier »** : la pièce ne dit pas si **chaque** séance doit en avoir un. Le chapitre 3e n'en a pas dans les séances 4, 5, 6, 8 et 9. La séance 3 a « Question-bilan » au milieu, fin de l'heure 1, et non à la fin de la séance.
+   - Sans phrase nouvelle, je ne peux ni en créer ni en déplacer un.
+   - La pièce doit dire « au plus un, et dernier », ou « un par séance » (et alors il faut une phrase de Paul).
+   - **Corrigé chez moi** : le récit écrivait « bilan de la séance (non) attesté » à l'heure 2 **en dur** (`dr-recit.js`, deux endroits). Il lit maintenant l'heure de la diapo `role: "bilan"`, à défaut la dernière heure (`dr_recitHeureBilan`).
+5. **§1.2 (l. 51), `remob` « par défaut, les notions de la même famille »** : il faut dire **quelle** famille.
+   - La taxonomie a `domaines → familles → notions` (`fam-01`…), et les compétences (`c4-*`, `tr-*`) n'ont pas de famille.
+   - Ma lecture pour la preuve : la famille de la taxonomie (`fam-xx`) ; les compétences ne se remobilisent pas.
+   - Le récit lit `e.remob` (« ce que l'heure remobilise sans que ce soit travaillé », `remobNonTravaillees`) : juste.
+6. **§1.2 (l. 52) et §1.4 (l. 84), deux `legende` différentes** : la pièce les dit bien toutes deux (diapo : `couleur: sens` ; bloc image : une phrase). Elle pourrait l'écrire en une ligne.
+   - Le récit lit la `legende` du **bloc image**, et à défaut le titre de la diapo.
+   - La `legende` de la **diapo** (surlignage) n'entre pas au récit : juste, c'est un repère du tableau.
+7. **§1.7 (l. 106), `travail` par heure** : juste. Le socle le range par séance et heure (`dr-socle.js:159`), proposé au T-5 et repris au bilan.
+   - Dans le chapitre 3e, il n'existe que dans les blocs « Avant de se quitter » et « Question-bilan et travail à faire ». La preuve le reprend mot pour mot, sans phrase nouvelle.
+8. **§1.3 (l. 61), la fin d'heure** : juste. Le socle l'ajoute quand elle manque (`dr_normaliserTrame`). Le récit s'arrête au cahier et ne la compte pas comme activité.
+9. **§3 point 5 (l. 141), la liste** : il y manque « chaque activité déclarée a au moins une diapo » (une activité vide est « non faite » au récit à chaque heure), et « `num` de 1 à n, sans trou ni doublon ».
+
+Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur pièce (`E4/prompt/`) suit.
+- **Bancs** sur les deux corrections du récit (bilan à son heure, activités refaites par `actId`) : `banc.sh` vert ; le mien **117 ok · 0 échec** (`sorties/1150-site-E4`).

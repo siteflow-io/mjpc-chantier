@@ -219,3 +219,6 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 
 ## 22/10, 17:32 — retour 3 : réveil n°25
 - Rien d'ouvert. E1 a bougé `dr-atelier.js` / `dr-socle.js` (L187, `aede3c85`) : banc E3 rejoué sur l'assemblé de la tête `18dcfdde` (md5 `040d446f…`) — **105 vérifications, 0 échec** (`sorties/1726/banc-E3.txt`). Le tableau ne bouge pas.
+
+## 22/10, 18:30 — retour 4 : §12.23 et réveil n°26
+- Rien d'ouvert (§12.23 : rien au tableau). E4 a touché `dr-recit.js` et E1 `index.html` (§12.23) : banc E3 rejoué sur l'assemblé de la tête `6a932b71` (md5 `003e0eef…`, qui contient le `022fc8a8…` de `6d19ef74` demandé par la conscience plus la poussée d'E1 `d8ef3991`) — **105 vérifications, 0 échec** (`sorties/1823/banc-E3.txt`). Le tableau ne bouge pas.

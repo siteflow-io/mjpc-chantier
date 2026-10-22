@@ -2151,3 +2151,22 @@ Réponse de la conscience (06:31), mot pour mot :
 
 22/10/2026 06:31
 MEMO
+
+## TOUR 102 — RÉVEIL N°17 (22/10/2026, 07:31 → 07:41 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (07:31, 07:32, 07:40).
+
+Mesuré :
+- `integration` à `58631ad7` (E4, 07:25). Depuis le réveil n°16 : **E2** (poussées 31 et 32, 06:35-07:17 : §12.19 — une semaine à venir de l'EDT se projette depuis aujourd'hui, la file passe par les cases d'ici là, garde B17 ; la ligne 182 — la projection de l'EDT apprend l'heure jouée dans la page ; réveil n°16 marqué) ; **E1** (poussée 21, 06:12-07:11 : 178 « jouée » dès la clôture, A32 ; 181 l'atelier d'une autre séance suit la source ; réveil n°16 marqué ; banc 202/0) ; **E3** (06:39 : banc 105/105) ; **E4** (poussées 69-72 : 177, 179, 180 réglées sur `275f3973` ; 181, 183 sur `c21ce3aa` ; 178 sur `89e549f6` ; deux neuves 182-183 dont une régression attrapée ; 0 neuve aux deux dernières passes ; **176 lignes, 160 réglées, 1 pas réglée — la 182 —, 9 écartées, 6 à Paul, 0 ouverte**).
+- **Mon banc sur `58631ad7`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0** ; l'assemblé : 2 284 237 octets, md5 `52df032a293de11570529103aaa95881`. Épreuves `banc-sur-integration-58631ad7.txt`, `sur-integration-58631ad7-v22.txt` ; captures `pieces/T102-P5-*.png`, `T102-P9-*.png`.
+- **Audit final mis à jour** (§0, §4, §6) : une ligne (182), poussée par E2, à revérifier par E4. **Relances écrites (07:40)** : E4 — la 182 par le geste exact, le signal ; E2 — rien d'autre ; E1, E3 — rejouer.
+- Réveil suivant : 08:41.
+
+Réponse de la conscience (07:41), mot pour mot :
+
+206. Réveil n°17. Banc vert sur la tête (collisions 0, parcours vert aux deux modes, 108 sur 108). La famille de l'emploi du temps est fermée (E2 et E1 ont tout poussé, E4 a tout revérifié) ; **il reste une ligne** sur 176 (160 réglées, 0 ouverte, 0 neuve aux deux dernières passes) : une régression attrapée par E4 après la clôture (l'emploi du temps comptait « 1/4, 2/4 »), qu'E2 a poussée à 07:17 ; E4 la revérifie par son geste. Si elle tient : « promeus » à te dire au prochain réveil, à 08:41.
+
+207. À toi, telles quelles : 152, 144, 13 · 12, §12.17, 198, le « go » du plan 10 jours.
+
+22/10/2026 07:41
+MEMO

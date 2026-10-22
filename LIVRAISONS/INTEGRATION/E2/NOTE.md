@@ -22,7 +22,7 @@ Si la page se ferme en pleine heure : la bannière d'aujourd'hui (« Reprendre l
 | maquette de départ (p8-5g) | `62d9557ac8fedcfbdd8b157a2588cbee` | 605 996 o |
 | `LIVRAISONS/INTEGRATION/index.html` à cette note (22/10, le prompt d'injection : `edtHeuresPour`) | `7a859d2c849d2add770e9bb0b3401908` | 1 391 772 o |
 | `dr/dr-classe.js` à cette note (ma coupe de la maquette posée par E1 + mon module) | `fec4d7bd9734cdc55fdfb76c4631183a` | 200 935 o |
-| `assemble/index.html` à cette note | `c1b97245f2cbb3b62d0dd01438e02d13` | 2 286 616 o |
+| `assemble/index.html` à cette note (sur E4 `8a7880f8`) | `733a7385349725531b7f4e25505ad572` | 2 287 712 o |
 
 ## Les fonctions du site touchées (nom, taille avant → après)
 

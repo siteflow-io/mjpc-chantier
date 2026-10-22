@@ -2607,3 +2607,18 @@ MEMO
 
 22/10/2026 20:19
 MEMO
+
+---
+
+## Tour 127 — 22/10/2026 21:17 — réveil n°28 (21:16, programmé au tour 126)
+
+**Mesuré.** Pas de mot de Paul depuis 18:36 (le 280 reste en attente). `origin/integration` : tête `93f6d98c` — E2 `b3b805c3` (rien à coder), E1 `8f266e2b` (session relancée : dernier retour, plus de reprogrammation) et `dda63d95` (seule session E1, rien d'ouvert), E4 `54d274c4` (NOTE §10 : « 0 pas réglée (`c8bf7b61`) », code = `b8a11d55` ; bancs verts 121/0 ; le chapitre au contrat s'importe sans refus), E3 `93f6d98c` (rien). `git diff --stat b8a11d55 origin/integration -- index.html dr` : vide — le code n'a pas bougé depuis mon banc vert de 20:18 → pas de banc. Règle du candidat : banc vert (20:18) + signal E4 sur ce code → **candidat = `b8a11d55` (= `c8bf7b61`), assemblé 2 297 926 o, md5 `003e0eef1216f6b5e790812943ed97e8`**. `list_triggers` : E2 21:17, E1 (unique) 21:43, E3 21:56 ; E4 poussée 20:33. Relances r28 ; audit §0/§6.
+
+**Réponse (mot pour mot).**
+
+283. Le déroulé : E4 a signé la version du soir (`b8a11d55` — celle qui porte l'import complet : fil « langue », bilan sans réponse attendue). Mon banc est vert dessus (20:18). **Elle devient la candidate** à la place de `6d19ef74`. Elle attend ton mot « promeus ».
+
+284. Le prompt : rien de neuf, ta réponse au 280 (la diapo du bilan) reste attendue pour la version 0.7.
+
+22/10/2026 21:17
+MEMO

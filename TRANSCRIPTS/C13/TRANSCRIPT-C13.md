@@ -2514,3 +2514,19 @@ Réponse de la conscience (17:38), mot pour mot :
 
 22/10/2026 17:38
 MEMO
+
+## TOUR 122 (22/10/2026, 17:50 → 17:53)
+
+Paul (17:50), mot pour mot :
+« 273. En revanche les idées du bilan doivent faire partie des notes présentateur, afin que je vérifie que toutes les notions sont bien dedans. De ce fait, une question bilan doit contenir ces notions à la fin de sa rédaction. Cependant, c'est une question de rédaction "en live", donc les élèves doivent avoir au tableau les éléments à intégrer dans le bilan. J'attends ta proposition ce n'est pas tout à fait cadré avec ce que j'ai dit.  274. Plutôt : "récap' de l'heure " »
+
+Fait (17:50-17:51) : **274** — au hub, la diapo 6 de la séance 3 (index 2, écran 5 : « Combien de propositions dans une phrase ? … ») s'appelle « Récap' de l'heure » (état d'avant gardé : `scratchpad/hub-avant-s2-e5.json` ; relu : un seul titre, plus aucun « bilan » hors du dernier) ; même changement dans la source d'import (`dd803725`). La séance 7 (index 6) a sa « Question-bilan » en dernière position (6ᵉ sur 6) : c'est son bilan, rien à changer.
+
+Réponse de la conscience (17:53), mot pour mot :
+
+275. **274 — fait** : la diapo s'appelle « Récap' de l'heure » (au hub et dans la source). Ta séance 1 garde « Avant de se quitter » pour la même diapo de fin d'heure, sauf si tu veux « Récap' de l'heure » partout : dis-le.
+
+276. **273 — ma proposition, en trois points.** Un : la diapo du bilan porte **trois blocs** — la question du bilan (sans réponse écrite), puis un bloc « À mettre dans le bilan » qui liste **les éléments à intégrer** (une ligne par élément, dans les mots des élèves), que tu dévoiles au tableau un par un pendant qu'ils rédigent, puis le travail à faire. Deux : la conversation qui crée le chapitre écrit ces éléments **à partir des notions travaillées dans la séance** (elle les reprend toutes), et elle les écrit aussi dans les **notes présentateur** de cette diapo, chaque élément suivi du nom de la notion qu'il couvre — c'est là que tu vérifies qu'aucune notion ne manque ; les notes présentateur deviennent donc, pour cette seule diapo, écrites par la conversation (aujourd'hui elles sont à toi seul). Trois : en classe, le bilan rédigé s'écrit dans la copie de classe, comme tu l'as dit. Rien de neuf dans le site : le bloc qui liste des lignes dévoilées une à une existe, les notes présentateur existent ; ce qui change, c'est le prompt et l'import (le bloc « À mettre dans le bilan » obligatoire sur la diapo de bilan, les notes présentateur acceptées sur elle). Dis « ok » ou corrige.
+
+22/10/2026 17:53
+MEMO

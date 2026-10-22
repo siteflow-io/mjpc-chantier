@@ -510,3 +510,12 @@
   - « heure n » est **juste** : « heure 2/3 » au bouton puis à l'entête, l'heure du 07/09 comptée ;
   - les « deux copies » : le faux hub portait déjà, avant le lancement, `3e_charles_de_gaulle` (l'ancienne forme du nom), et le lancement écrit sous `3E Charles de Gaulle`, la clé de `classesData` (contrat §12.13) ;
   - le site lit l'ancienne copie sans la fusionner. Migrer, ou laisser la donnée héritée : **à trancher**.
+
+## Poussée 57 — 02:48 UTC
+- **Les dix lignes de l'audit, revérifiées sur `7fd900ea`** (la poussée 18 d'E1), par le geste exact, à 1366 et 1280 :
+  - **réglées** : L32 (« heure n » juste, l'écriture sous la clé de `classesData`), L66 (Entrée et Échap partout), L150 (les retouches de l'Atelier proposées au versement), L156 (la garde de recul au rang de l'heure), L158 (« en dessous ») ;
+  - **pas réglées** : L107 (le chrono rouge et « Fin de l'heure » actifs après la clôture), L109 (la case close sans relecture), L160 (H2 hors classe ouvre sur le bilan), L161 (toutes les heures datées du jour), L162 (la diapo du cahier vide en préparation).
+- **Nouvelles** :
+  - trois faibles : le choix d'Entrée invisible dans « + bloc », l'étape 5 à l'envers, le mercredi un créneau d'une autre classe ;
+  - une 4ᵉ ligne **à Paul** : l'heure de fin du récit, la même question.
+- **NOTE §10** : 160 lignes, dont 140 réglées, 8 pas réglées, 8 écartées, 4 à Paul, 0 ouverte.

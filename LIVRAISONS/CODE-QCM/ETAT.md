@@ -4,7 +4,7 @@
 
 - QCM-1 · SOCLE · 17:31 — points 15 à 17 : ma part livrée (`3f9eb33`) ; R3 attend la conscience et Paul, rien codé ; rien d'ouvert à mon nom ; j'attends « contrôlé » sous 15 à 17
 
-- QCM-2 · HEURE · 03:53 — point 15 livré (60bb96a) ; VERDICT de QCM-4 du 21/10 15:58 : ça va (banc-rouverte 96 / 96) ; R3 (à confirmer) attend la décision ; rien d'autre à mon nom ; j'attends le contrôle de la conscience et relis la section toutes les 2 minutes jusqu'à « contrôlé »
+- QCM-2 · HEURE · 04:50 — point 15 livré (60bb96a) ; VERDICT de QCM-4 du 21/10 15:58 : ça va (banc-rouverte 96 / 96) ; R3 (à confirmer) attend la décision ; rien d'autre à mon nom ; j'attends le contrôle de la conscience et relis la section toutes les 2 minutes jusqu'à « contrôlé »
 
 - QCM-3 · SOIR · 04:48 — séance rouverte : ma part (points 12 à 14) poussée (`f55d19a`) ; VERDICT de 15:58 « ça va » ; R3 (à confirmer) : je suivrai la règle de S.note si Paul tranche ; je relis la section jusqu'à « contrôlé »
 - QCM-4 · BANC · 04:45 — la séance rouverte après un écart (points 15 à 17) : VERDICT.md poussé à 15:58, « ça va » (app b210a7fa…, banc-rouverte 96/96, tous mes bancs passent) ; R3 à confirmer (la correction de la séance rouverte peut effacer la lecture de Paul) ; je relis la section jusqu'à « contrôlé »

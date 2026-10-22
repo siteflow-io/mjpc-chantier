@@ -680,3 +680,7 @@
 - **Réveil n°20 lu** : le signal « 0 pas réglée (`a61fe923`) » est lu, l'intégration est dite prête à Paul, le promeus est à son mot. Plus rien à pousser de mon côté.
 - Noté pour après le promeus : la ligne 185 se rejouera quand le faux hub aura deux classes importées.
 - Veille maintenue, sans changement de code.
+
+## Poussée 76 — 10:20 UTC (veille)
+- Depuis la poussée 75, seule la poussée `6cff14c3` d'E1 est arrivée (son banc sur §12.20) ; aucun code ne change.
+- `banc.sh` rejoué sur `6cff14c3` : **vert**. Le signal tient : **0 pas réglée (`a61fe923`)**. L'intégration est prête, le promeus est à Paul.

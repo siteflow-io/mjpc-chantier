@@ -136,7 +136,7 @@ Deux sous-agents, avec le mandat, le contrat et la page seuls.
 - **Le réveil n°11** (A29) : en heure lancée, l'atelier écrit le texte dans la copie de la classe (`S.copie[h]`), comme le Pilotage, et la clôture propose de le verser dans la trame ; la garde de ◀ dit le rang dans l'heure ; Entrée choisit dans « + bloc » et « Envoyer vers… ».
 - **Le réveil n°12** (A30) : hors classe, l'heure suivante s'ouvre sur le rituel et finit sur le bilan (§12.16) ; chaque heure à venir porte la date de sa case dans l'EDT.
 - **Le réveil n°13** (A31, contrat §12.18) : l'heure n de l'atelier est celle de l'EDT — une heure jouée porte sa date (« jouée »), l'heure de « Lancer » sa case, les suivantes leurs prochaines cases ; le choix d'Entrée surligné (celui du survol) ; « Envoyer vers… » compte les heures de chaque séance.
-- **Dernier passage (poussée 19, `4130482a`, sorties `0044`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 193 / 0 ; le grave 110 tient de bout en bout (A26).
+- **Dernier passage (poussée 20, `3220cf72`, sorties `0229`)** : banc de la conscience **entièrement vert** (le mode test aussi), K1-K13 108 / 0 ; banc E1 199 / 0 ; le grave 110 tient de bout en bout (A26).
 
 ## 8 · Les relances
 Toutes traitées, marquées « traitée » sous chacune dans `RELANCES/E1.md` :

@@ -1,9 +1,9 @@
-# AUDIT FINAL — l'intégration du déroulé dans `index.html` (branche `integration`, tête `fc8122b4` le 22/10 01:45 ; mis à jour sur `64022f46` le 22/10 03:01, sur `17f4444b` le 22/10 04:10, sur `88301b93` le 22/10 05:19)
+# AUDIT FINAL — l'intégration du déroulé dans `index.html` (branche `integration`, tête `fc8122b4` le 22/10 01:45 ; mis à jour sur `64022f46` le 22/10 03:01, sur `17f4444b` le 22/10 04:10, sur `88301b93` le 22/10 05:19, sur `2179ba66` le 22/10 06:30)
 
 *Conscience n°13, réveil n°12. Règle du 12/10 : un audit vérifie, il ne refait pas ; ce qui est regardé est fixé d'avance (le parcours fixe P0-P12, les écrans changés et leurs voisins, les NOTE des quatre, la table d'E4, les dettes nommées). Avant = la production 8.74.0-④ jouée le 20/10 sur le faux hub (pièces `TRANSCRIPTS/C13/pieces/T72-EX-00` à `12`) ; après = le fichier assemblé de la tête, joué par `parcours.mjs` sur le même faux hub (captures `TRANSCRIPTS/C13/pieces/T97-P0` à `P12`). Ce document se met à jour à chaque réveil jusqu'au promeus.*
 
 ## 0 · Le verdict, d'abord
-**Pas encore « promeus », mais à une revérification près (mis à jour 22/10, 05:19, tête `88301b93`).** Le banc est vert sur cette tête (collisions 0, parcours P0-P12 vert en mode normal et en mode test, K 108 / 0) ; E3 l'a rejouée (105/105). La table d'E4 : **170 lignes : 150 réglées, 9 écartées, 6 à Paul (deux questions : 152 et la ligne 174), 5 pas réglées, 0 ouverte, 0 neuve à ses deux dernières passes** — et **les cinq restantes sont réglées par la poussée 20 d'E1** (`88301b93`, 05:06 : la famille §12.18 par `dr_heuresDeLaClasse` d'E2 — ma capture P3 montre « H1 · lundi 7 septembre · jouée », « H2 · lundi 14 septembre » —, le choix d'Entrée, « Envoyer vers… » ; garde A31 rouge avant / vert après), **pas encore revérifiées par E4** sur cette tête. Règle : jamais de promotion sur dette — le promeus se dit quand E4 écrit « 0 pas réglée (88301b93) ».
+**Pas encore « promeus » (mis à jour 22/10, 06:30, tête `2179ba66`).** Le banc est vert sur cette tête (collisions 0, parcours P0-P12 vert en mode normal et en mode test, K 108 / 0). La table d'E4 : **174 lignes : 154 réglées, 9 écartées, 6 à Paul (deux questions : 152 et la ligne 174), 5 pas réglées, 0 ouverte**. Les cinq sont **une seule famille** (lignes 177-181 : l'EDT, « Lancer » et l'Atelier ne lisent pas la même source pour « heure n/N » et la prochaine case — une case passée sans être jouée compte encore, une case d'un autre fil est proposée, la séance suivante n'est pas placée sur la même case par les trois, « jouée » n'apparaît qu'après rechargement), **tranchée au contrat §12.19** et relancée chez E2 (les trois sources) et E1 ; E2 y a poussé pendant ce réveil (poussée 30, 06:25), E4 revérifie. Convergence : ≈ 2,3 lignes neuves par heure, aucune grave depuis 20:50. Règle : jamais de promotion sur dette — le promeus se dit quand E4 écrit « 0 pas réglée (commit) » sur une tête qui passe le banc.
 
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
@@ -35,14 +35,16 @@ Lecture : aucun écran du parcours n'a perdu ce qu'il faisait avant sans que le 
 ## 3 · (c) Les NOTE des quatre et la table d'E4
 - `LIVRAISONS/INTEGRATION/E1/NOTE.md` (socle, Atelier ; §9 : ce qui reste — 13 · 12 à Paul, les activités à Paul, la frontière hors classe faite) ; `E2/NOTE.md` (classe, heure ; §7-8 : 12 · 05 réglée, 12 · 17 deux points réglés, 13 · 26 et 13 · 27 réglées, à fermer au registre à la promotion) ; `E3/NOTE.md` (tableau ; la garde lecture seule + `sendBeacon` = 13 · 28 ; le banc 99/99) ; `E4/NOTE.md` §10 (le bilan en chiffres : 156 lignes, 135 réglées, 10 pas réglées — E2 6, E1 4 —, 8 écartées, 3 à Paul — une seule question vue trois fois : 152 —, 0 ouverte).
 
-## 4 · Les lignes qui restent (la table d'E4, numéros de ligne du fichier) — état 22/10, 05:19
-| ligne | qui | gravité | le geste | état |
+## 4 · Les lignes qui restent (la table d'E4, numéros de ligne du fichier) — état 22/10, 06:30
+| ligne | qui | gravité | le geste | ce qu'il faut (§12.19) |
 |---|---|---|---|---|
-| 172, 177, 161 | E1 (E2) | moyen / faible | la suite des heures (dates, numéro) dans l'Atelier, le Pilotage, l'EDT | **réglées par E1 (poussée 20, `88301b93`, §12.18 via `dr_heuresDeLaClasse`), à revérifier par E4** |
-| 164 | E1 | faible | « + bloc », « Envoyer vers… » : le choix qu'Entrée prendra | **réglée par E1 (poussée 20), à revérifier par E4** |
-| 173 | E1 (E2) | faible | « Envoyer vers… » : le nombre d'heures par séance | **réglée par E1 (poussée 20), à revérifier par E4** |
+| 177 | E2 (E1) | moyen | le mercredi après la clôture du lundi : « Lancer » vise la case « fil langue » du 10 h 07, l'EDT garde « 3/3 » au mardi passé, l'Atelier met la Poésie au vendredi | une seule source ; le fil compte ; la case passée ne compte pas |
+| 179 | E2 (E1) | moyen | hub frais, mardi 15:10 : « Lancer » 2/3, l'Atelier H2 mardi, l'EDT 3/3 au mardi et 2/3 au lundi passé non joué | une seule source ; la case passée sans être jouée ne compte pas |
+| 181 | E2 (E1) | moyen | l'Atelier de « L'Albatros » date H1 lundi 21 quand l'EDT met son 1/3 au vendredi 18 | H1 = la case « 1/N » de l'EDT, la même pour les trois |
+| 180 | E2 | faible | « Lancer » pendant la case en cours, après un passage par une autre séance : « aucune case maintenant » | la prochaine heure de la séance montrée |
+| 178 | E1 (E2) | faible | après « Clore », l'Atelier ne marque « jouée » qu'après rechargement | la source relit l'heure close sans rechargement |
 | 174 | Paul | — | sa trame de la séance 1 a deux diapos bilan | question 198 |
-Réglées depuis 04:10 et revérifiées par E4 : 176 ; écartée : 175 (la case dit « fil « langue » »).
+Réglées depuis 05:19 et revérifiées par E4 : 161, 164, 172, 173.
 
 ## 5 · (d) Les dettes du registre, une à une
 | dette | état | qui |
@@ -62,7 +64,7 @@ Réglées depuis 04:10 et revérifiées par E4 : 176 ; écartée : 175 (la case 
 Les ✔ se posent au registre dans le tour du promeus, pas avant.
 
 ## 6 · (e) Le fichier
-`LIVRAISONS/INTEGRATION/assemble/index.html` de la tête `fc8122b4` : 2 261 436 octets, md5 `40099c81454a800e878b319a3f1589fc` ; de la tête `64022f46` (03:01) : 2 271 859 octets, md5 `27ddbd949769c1776f760ca37f447435` ; de la tête `17f4444b` (04:10) : 2 277 035 octets, md5 `c3a2930be52e8b768bb6688f0096c330` ; de la tête `88301b93` (05:19) : 2 279 217 octets, md5 `c3c08656979ae6f71165c1bdbced3e7f` (la production 8.74.0-④ : 1 838 791 octets, md5 `c384d8504c097784e98ffc04d7327887`). Le fichier grossit de ~420 Ko : le déroulé p8 (606 Ko de maquette) remplace l'iframe base64 de `deroule86` (230 Ko × 4/3) et le pont (78 Ko).
+`LIVRAISONS/INTEGRATION/assemble/index.html` de la tête `fc8122b4` : 2 261 436 octets, md5 `40099c81454a800e878b319a3f1589fc` ; de la tête `64022f46` (03:01) : 2 271 859 octets, md5 `27ddbd949769c1776f760ca37f447435` ; de la tête `17f4444b` (04:10) : 2 277 035 octets, md5 `c3a2930be52e8b768bb6688f0096c330` ; de la tête `88301b93` (05:19) et `2179ba66` (06:30, même assemblé) : 2 279 217 octets, md5 `c3c08656979ae6f71165c1bdbced3e7f` (la production 8.74.0-④ : 1 838 791 octets, md5 `c384d8504c097784e98ffc04d7327887`). Le fichier grossit de ~420 Ko : le déroulé p8 (606 Ko de maquette) remplace l'iframe base64 de `deroule86` (230 Ko × 4/3) et le pont (78 Ko).
 
 ## 7 · (f) Ce que Paul fera au promeus, et ce qui est à lui
 - **Le promeus** : sur son mot, la conscience copie `assemble/index.html` de la tête auditée en `index.html` de production, version **8.75.0-①**, puis dans le tour même : bit à bit, journal, les dettes ✔ (§5), le point de retour, l'index des fonctions, « où trouver quoi », l'adresse du site avec `&v=8.75.0-1` et les tests geste par geste (le premier cours réel : l'EDT → la case → Lancer → ▶ → F2 → Fin de l'heure → Clore → Relecture → Papier).

@@ -254,3 +254,9 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 - **Ligne 165** (l'étape 5 à l'envers) — `b6360de3` : la liste d'E1 suit l'ordre du tableau des écrans ; mon étape 5 la range dans l'ordre de l'heure (`dr_versementDansLOrdre`, après le rendu). **Garde** B15.
 - **Lignes 172 et 173** (avec E1, §12.18) : je pose `dr_heuresDeLaClasse(slug)` — chaque heure de la séance pour la classe : jouée avec sa date, à venir avec la date de sa case (la projection même de l'EDT, ses n/N) ; à E1 de l'afficher dans l'entête de l'Atelier et « Envoyer vers… ».
 - **Bancs** : banc E2 **VERT** (`sorties/0128/banc-E2.txt`, B1-B16) ; `banc.sh` (`sorties/0128`, commit `02c99e2c`, md5 `c3a2930b…` identique) : collisions 0, parcours **VERT** ×2, **K 108 / 0**. NOTE à jour.
+
+## 02:30 UTC — poussée 29 : le réveil n°14
+- **Ligne 176** (l'infobulle de « Lancer » dit « aucune case de l'emploi du temps » dans la case de la 3E) — `ef9a145e` : cause mesurée — l'infobulle n'était refaite qu'au changement du libellé ; le repli (l'EDT pas encore lu) et la case de l'EDT donnent le même libellé (« … 08:57-09:52 · heure 2/3 »), l'infobulle du repli restait. Elle se refait maintenant avec la proposition ; et celle du repli dit vrai (« l'emploi du temps n'est pas encore lu : la classe et le créneau en cours, l'heure d'après les heures déjà jouées »). **Garde** B16 (lundi 09:00 : « la case de ton emploi du temps »).
+- **§12.18, la source unique** : « Lancer » lit son heure n/N dans `dr_heuresDeLaClasse` (la même que je pose pour l'Atelier, E1). **Garde** B16.
+- **Ligne 175** : rien de plus de mon côté — la case dit « aucune séance prête · fil « langue » » ; à E4 de la fermer.
+- **Bancs** : banc E2 **VERT** (`sorties/0216/banc-E2.txt`) ; `banc.sh` (`sorties/0216`, commit `ef9a145e`, md5 `5e8a3df9…` identique) : collisions 0, parcours **VERT** ×2, **K 108 / 0**. NOTE à jour.

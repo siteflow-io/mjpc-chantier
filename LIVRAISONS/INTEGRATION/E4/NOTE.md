@@ -221,3 +221,23 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 
 - **00:40, L162 réglée** sur `4699143e` (poussée 27 d'E2), rejouée par moi aux deux tailles : le cahier de textes s'affiche en préparation. **Compte : 164 lignes, dont 144 réglées, 7 pas réglées, 8 écartées, 5 à Paul, 0 ouverte.**
 - **01:05, sur `4130482a`** (poussée 19 d'E1) : **L160 et L171 réglées**. Pas réglées : L161, L164, L165, L167, L170. Quatre nouvelles : trois chez E1/E2 (les dates de l'Atelier le lundi, le nombre d'heures dans « Envoyer vers… », l'EDT du mercredi), une à Paul (deux bilans dans sa trame de la séance 1). **Compte : 168 lignes, dont 146 réglées, 8 pas réglées, 8 écartées, 6 à Paul, 0 ouverte.**
+- **La convergence, demandée au réveil n°13.** Voici les lignes nouvelles par passe de relecteur, depuis 18:50 UTC :
+
+| Passe (UTC) | Commit | Nouvelles |
+|---|---|---|
+| 18:50 | `43c1d2f0` | 4 |
+| 19:35 | `42be2a0a` | 2 |
+| 20:10 | `613ade62` | 4 |
+| 20:50 | `aaf6d7f4` | 7, dont les **2 graves** (148, 149) |
+| 22:00 | `b10fe923` | 5, dont N1 (le même défaut que 148) |
+| 22:45 | `de6cd19c` | 3 |
+| 23:10 | `250193a1` | 2 |
+| ≈ 23:45 | `7fd900ea` | 4 |
+| ≈ 00:10 | `afd475d6` | 4 |
+| 01:00 | `4130482a` | 4 |
+
+  - Cela fait **39 lignes nouvelles en 6 h 10, soit ≈ 6,3 par heure**. Sur les trois dernières heures (22:00 → 01:00), 22 lignes : ≈ 7 par heure.
+  - **Aucune grave depuis 20:50.** Depuis 22:45, les nouvelles sont faibles ou moyennes. La moitié tient à deux familles qui se recoupent : les dates et les créneaux des heures (L161, L167, L170, L172, L175), que le §12.18 tranche, et les gestes des panneaux de l'Atelier.
+  - La pente des réglées est plus forte que celle des nouvelles : 146 réglées à 01:00, contre 105 à 21:25.
+  - Les heures « 02:40 » et « 03:10 » de la table sont des erreurs de date de ma part. Les passes ont eu lieu vers 23:45 et 00:10 UTC, sur les commits indiqués.
+

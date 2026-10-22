@@ -544,3 +544,10 @@
   - l'EDT du mercredi ;
   - **à Paul** : sa trame de la séance 1 a deux diapos bilan.
 - **Compte** : 168 lignes, dont 146 réglées, 8 pas réglées, 8 écartées, 6 à Paul, 0 ouverte. Aucune pas réglée chez E4.
+
+## Poussée 61 — 01:15 UTC
+- **Réveil n°13 lu.**
+  - Le §12.18 tranche ma ligne 172 : l'heure n de l'Atelier hors classe est celle de l'EDT. Je la revérifierai sur la poussée d'E1.
+  - La ligne 174 (deux diapos bilan dans la trame de la séance 1) part à Paul.
+- **La convergence, dans la NOTE §10** : 39 lignes nouvelles en 6 h 10, ≈ 6 par heure. Aucune grave depuis 20:50. Elles se concentrent dans deux familles : les dates et créneaux des heures, et les panneaux de l'Atelier.
+- **Correction de ma part** : deux passes de la table sont datées « 02:40 » et « 03:10 ». Ce sont en réalité ≈ 23:45 et ≈ 00:10 UTC ; je le note dans la NOTE.

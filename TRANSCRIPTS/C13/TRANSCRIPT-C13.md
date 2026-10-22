@@ -2637,3 +2637,30 @@ MEMO
 
 22/10/2026 22:16
 MEMO
+
+---
+
+## TOUR 129 (22/10/2026, 22:50 → 22:52)
+
+Paul (22:50), mot pour mot :
+« Rédige au brouillon, c'est un exemple ou c'est du figé ? »
+
+Réponse de la conscience (22:52), mot pour mot :
+
+287. Aujourd'hui c'est un exemple : la phrase est dans le bloc consigne de la diapo, écrite par la conversation qui crée le chapitre, comme les mots-clés — donc elle peut changer d'un chapitre à l'autre. Ma proposition : la figer. La consigne d'intégration est la même à chaque bilan (c'est la règle de la classe, pas le contenu du chapitre) : une phrase à toi, écrite une fois dans le prompt, que la conversation recopie mot pour mot sur chaque diapo de bilan — rien à coder, la règle « aucune phrase vue par l'élève que tu n'as pas donnée » est tenue. Donne la phrase (et ses étapes, ou aucune), ou dis « garde la tienne » et « Rédige le bilan au brouillon. » devient la phrase figée.
+
+22/10/2026 22:52
+MEMO
+
+---
+
+## Tour 130 — 22/10/2026 23:14 — réveil n°30 (23:13, programmé au tour 128)
+
+**Mesuré.** Pas de mot de Paul depuis 22:50 (287 en attente). `origin/integration` : tête `905c8d85` — E4 `4d0d213a` (session relancée : « seule E4 », signal inchangé) puis `87b3222f` (**la session d'avant, vivante** : veille armée, banc.sh vert sur `03c12245`, signal « 0 pas réglée (`c8bf7b61`) », propose de garder la main) ; E1 `dd4eb3cb`, E3 `7b53f504`, E2 `905c8d85` : rien. `git diff --stat b8a11d55 origin/integration -- index.html dr` : vide → pas de banc ; candidat inchangé `b8a11d55`. `list_triggers` : E1 23:27, E3 23:41, E2 23:54 ; aucun retour E4 (ni l'ancienne — veille en session —, ni la relancée). Tranché en r30 : l'ancienne E4 garde la main, la relancée se retire ; ma règle corrigée (E4 ne se relance que sur une relance sans réponse > 90 min). Relances r30 ; audit §0.
+
+**Réponse (mot pour mot).**
+
+288. Rien n'a bougé : la candidate reste `b8a11d55` (banc vert, signée par E4), ton mot « promeus » attendu ; et ta réponse au 287 (la consigne d'intégration figée) pour la version 0.7 du prompt. E4 n'était pas morte (elle veille sans rien pousser quand rien ne change) : l'ancienne garde la main, celle que j'avais relancée se retire.
+
+22/10/2026 23:14
+MEMO

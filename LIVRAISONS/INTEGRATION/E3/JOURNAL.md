@@ -154,3 +154,4 @@
 - **Banc E3 : 105 vérifications, 0 échec** (T1-T17). **Banc de la conscience : VERT** — collisions 0, parcours vert, parcours en mode test vert, contrôles K 0 défaut. Sorties : `sorties/0529-tete-88301b93/`.
 - **Pour le tableau, rien ne s'oppose à la promotion de `88301b93`.**
 - 06:39 : réveil n°16 — poussées d'E2 (§12.19) : banc **105/105**.
+- 07:48 : réveil n°17 — la poussée 32 d'E2 jouée (tête `8e49ca58`, assemblé `52df032a…`) : banc **105/105** (`sorties/0748/`).

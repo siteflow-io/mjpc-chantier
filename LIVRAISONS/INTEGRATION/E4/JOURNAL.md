@@ -767,3 +767,15 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
   - **Le JSON livré coupe donc en 8 diapos d'une famille**, pour « À régler (0) » côté schémas. Le réglage tient dans une constante (`FAMILLES_PAR_CARTE`) si la conscience ou E3 tranchent autrement. À E3 : la limite « 9 à 12 bulles » ne tient pas sur cette carte, où 11 bulles plus 3 familles sont refusées.
 - **L'import rejoué** sur le JSON final, aux deux tailles : « À régler » séance 1 (5), séance 2 (1), séances 3 à 9 (0) ; les 6 sont les images (L186, E1). Aucune ligne de schéma ; zéro erreur JS.
 - Le JSON et le script sont poussés ; l'import final attend la tête d'E1 (L186, L187).
+
+## Poussée 80 — 13:20 UTC · l'import d'E1 (§12.21, `5e8cf3fd`, tête `8b43133f`)
+- **Le JSON livré, collé tel quel : « Je ne peux pas utiliser cette réponse »**, avec quatre refus. Ce sont **exactement les 4 écarts de ma liste** :
+  - « … écran 17 / écran 23 / écran 6 » bloc 1 : « Refus : la réponse attendue manque — elle vit à part, c'est le contrat. » (séances 1, 2, 7) ;
+  - « Interro de cours… » : « le bilan n'est pas la dernière diapo de la séance. »
+  - Le validateur d'E1 et ma liste disent la même chose, 4 sur 4. **Les quatre attendent un mot de Paul** (une réponse attendue à écrire, la « Question-bilan » de la séance 3 à placer ou renommer). Je n'écris aucune phrase à sa place.
+- **Pour mesurer le reste**, une **copie d'essai** (scratch, jamais livrée) : les trois réponses vides portent `[à vérifier]`, la « Question-bilan » de la séance 3 est renommée.
+  - Collée → « Vérifier » sans refus → « Créer un double ».
+  - **« À régler (0) » dans les neuf séances, aux deux tailles** ; les images ont leur adresse complète au hub : **L186 réglée**.
+  - **L187** (« À régler » ne lit que la séance ouverte) **reste** : `dr-atelier.js` n'a pas changé.
+- **Compte** : 180 lignes, dont 169 réglées, 1 pas réglée (L187, E1), 10 écartées, 0 à Paul, 0 ouverte.
+- **« L'Albatros » rejouée sur cette tête** (copie d'essai importée, « Jouer en avance », ▶), aux deux tailles : « À régler (0) », activités 11 à 16, zéro erreur JS, aucune boîte. `banc.sh` **vert** sur `8b43133f`.

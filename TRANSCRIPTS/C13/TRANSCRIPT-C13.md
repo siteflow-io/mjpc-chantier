@@ -2345,3 +2345,23 @@ Réponse de la conscience (13:48), mot pour mot :
 
 22/10/2026 13:48
 MEMO
+
+## TOUR 112 (22/10/2026, 13:49 → 13:51)
+
+Paul (13:49), mot pour mot :
+« Ok donc le prompt, explique le moi en termes simples et pédagogiques. »
+
+Réponse de la conscience (13:51), mot pour mot :
+
+245. **À quoi il sert.** Quand tu veux un nouveau chapitre, tu ouvres une conversation avec Claude, tu lui colles ce texte, tu lui donnes ton chapitre précédent comme modèle, et tu travailles le chapitre avec lui. À la fin, il te rend un fichier (le JSON) que tu colles dans ton site. Le prompt, c'est le mode d'emploi que cette conversation doit suivre pour que le fichier rentre dans le site **sans une seule ligne « À régler »** — ce qui n'était pas le cas de ton chapitre 3e (19 lignes), parce que ce mode d'emploi n'existait pas.
+
+246. **Partie 1 — de quoi un chapitre est fait, et ce qui est interdit.** Un chapitre, ce sont des séances ; une séance, des heures ; une heure, des diapos ; une diapo, des blocs. Le prompt dit, pour chaque sorte de bloc (une consigne, une question, une fiche, un schéma, une image, une vidéo…), à quoi elle sert, ce qu'elle doit contenir, et ce que le site refuse — avec un exemple à chaque fois. Il dit aussi les règles que tu as fixées : chaque diapo appartient à une activité numérotée du début à la fin du chapitre (activité 1, 2, 3… jamais remise à zéro) ; chaque heure commence par « Où en sommes-nous ? » (sauf la première), finit par une diapo de fin d'heure, et la séance a un seul bilan, le dernier ; chaque diapo dit ce qu'elle fait travailler et ce qu'elle remobilise ; un schéma par diapo, lisible du fond ; une heure, c'est 50 minutes de contenu.
+
+247. **Partie 2 — les pages HTML : n'en fais pas.** Si rien dans le site ne convient, la conversation ne bricole pas : elle te dit « il manque tel objet » et attend ton mot. Si tu décides quand même une page pour cette fois, le prompt dit comment elle doit être faite pour que tu puisses la piloter au tableau avec tes flèches, et quelles preuves elle doit fournir.
+
+248. **Partie 3 — comment la conversation travaille avec toi.** D'abord elle te demande tes chapitres précédents. Puis elle regarde vraiment le site (elle joue une séance) au lieu de supposer. Puis elle fait le cadrage avec toi (combien d'heures tu as, les contraintes, le fil « langue ») avant d'écrire une seule diapo. Elle ne fabrique jamais quelque chose qui n'existe pas dans le site sans ton accord. Elle vérifie son fichier contre la liste des règles avant de te le donner, et elle te dit par quelle porte l'injecter.
+
+249. **Ce qui change avec les exécutants cette après-midi** : ils vérifient que chaque règle du prompt est bien celle du site (E1, E2, E4), ils chiffrent « ce qui tient » sur une diapo (E3 : combien de familles dans une carte, combien de repères sur une frise), et E1 fait que le site **refuse** ce que le prompt interdit — pour que le prompt, le site et l'éditeur disent la même chose, comme ton cadrage l'exige.
+
+22/10/2026 13:51
+MEMO

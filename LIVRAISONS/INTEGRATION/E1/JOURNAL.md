@@ -277,3 +277,7 @@
 ## 06:20 UTC — le réveil n°17 : rien d'ouvert chez moi ; mon banc rejoué sur la poussée 32 d'E2
 - **Relances** : le réveil n°17 (07:40 Paris) lu, marqué : E4 ferme 178 et 181 ; rien d'ouvert chez moi ; rejouer mon banc sur la poussée 32 d'E2, puis attendre le promeus. Aucune ligne « E1 » neuve dans la table d'E4.
 - **Bancs sur `7b3794f2`** (avec E2 `4717ab36`, la projection de l'EDT qui apprend l'heure jouée en page ; sorties `E1/sorties/0603/`) : **banc de la conscience VERT** — collisions 0 / 0 / 0, parcours vert ×2, **K1-K13 : 108 / 0** ; **banc E1 : 202 vérifications, 0 échec**. Aucun code touché de ma part.
+
+## 09:39 UTC — réveils n°18, n°19 et n°20 : mon banc sur §12.20 d'E4 (a61fe923 compris) ; le promeus au mot de Paul
+- **Réveil n°18** (09:09 Paris) : rien d'ouvert chez moi, rien poussé avant le promeus — tenu (aucun code, aucune poussée entre 07:11 et maintenant). **Ligne de 09:35** (Paul tranche la 152, §12.20 codé par E4) : rien chez moi.
+- **Réveil n°19 · mon banc sur `09316b3d`** (§12.20) : rejoué sur `57433108` qui le contient (local, 08:09 : conscience VERT, K 108/0 ; E1 202/0), puis sur la tête `ef674d4b` (avec `a61fe923`, la fin réelle relue au hub ; sorties `E1/sorties/0920/`) : **banc de la conscience VERT** — collisions 0 / 0 / 0, parcours vert ×2, **K1-K13 : 108 / 0** ; **banc E1 : 202 vérifications, 0 échec**. Rien de mon territoire ne bouge avec §12.20.

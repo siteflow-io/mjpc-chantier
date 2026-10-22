@@ -359,3 +359,11 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - *(18:52 UTC) Réveil n°27 lu : la conscience garde cette session, seule E1 (la session relancée s'est arrêtée). Rien d'ouvert ; prochain retour 19:42 UTC.*
 - *(19:44 UTC) Réveil n°28 lu : le candidat au promeus est `b8a11d55` (= `c8bf7b61`), il porte mon import (`fil`, §12.23) ; rien à faire, aucun module changé. Prochain retour 20:34 UTC.*
 - *(20:36 UTC) Réveil n°29 lu : rien à faire, code inchangé (candidat `b8a11d55`). Prochain retour 21:26 UTC.*
+
+## 21:29 UTC — §12.24 : la diapo du bilan à l'import (prompt v0.7)
+- (a) `notes` de la diapo `role: "bilan"` → notes présentateur de cette diapo, `deroule.notes[<eid posé par l'import>] = [{ p: null, html }]` (le format que lit `p8NotesDe`, `dr-atelier.js:275` — une chaîne y serait échappée, le HTML se lirait en balises) ; le champ n'est pas gardé dans la diapo. `notes` ailleurs : « … : « notes » sur une diapo qui n'est pas le bilan — les notes présentateur sont à Paul. »
+- (b) « … : le bilan n'a pas ses trois blocs (question, texte « À mettre dans le bilan », consigne) — dans cet ordre. » — exactement trois blocs, `question`, `texte` au `txt` exact « À mettre dans le bilan », `consigne` (sur la diapo `role: "bilan"`).
+- (c) « … : une ligne « À mettre dans le bilan » finit par un point ou dépasse douze mots — des mots-clés, pas la réponse. » (chaque `el` du texte : point final, ou plus de 12 mots séparés par des blancs).
+- (d) « … : un texte vu par les élèves dit « copie de classe ». » — `act`, et `txt`, `q`, `el`, `etapes` de chaque bloc, de toute diapo ; jamais les `notes`. Je prends aussi « copie de **la** classe » (la phrase des notes, si elle passait dans un bloc) — dit ici.
+- (e) Compléter (fusionné avec les notes déjà au hub), Remplacer, Jumeau : les notes du bilan partent avec la trame.
+- **A33** : 9 contrôles de plus (6 refus ; les notes rangées à l'eid par les trois voies) ; le chapitre de test a ses bilans au contrat v0.7 (trois blocs, la consigne mot pour mot, `notes`). **Rouge avant 9/62** (`a33-avant-bilan3.txt`), **vert après 62/0**.

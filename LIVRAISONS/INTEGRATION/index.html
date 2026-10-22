@@ -15520,6 +15520,17 @@ function atP2ValiderDeroule(o,V,taxo){
       if(e.role==='reactivation'||e.role==='fin'||(!e.role&&typeof dr_estRituel==='function'&&dr_estRituel(e)))V.cite(r2,': rôle « reactivation » ou « fin » — le site pose ces diapos lui-même, retire-les.');
       else if(e.role!==undefined&&e.role!=='bilan')V.cite(r2,': rôle « '+e.role+' » inconnu — seul « bilan » s’écrit.');
       var bil=atP2EstBilan(e); if(bil)bilans.push(n);
+      /* §12.24 (prompt v0.7 §1.2, §1.3) : la diapo du bilan — trois blocs dans l'ordre, des mots-clés, ses notes présentateur ; rien « copie de classe » sous les yeux des élèves */
+      if(e.notes!==undefined&&e.role!=='bilan')V.cite(r2,': « notes » sur une diapo qui n’est pas le bilan — les notes présentateur sont à Paul.');
+      var bl=Array.isArray(e.blocs)?e.blocs:[];
+      if(e.role==='bilan'){
+        if(!(bl.length===3&&bl[0]&&bl[0].t==='question'&&bl[1]&&bl[1].t==='texte'&&String(bl[1].txt||'').trim()==='À mettre dans le bilan'&&bl[2]&&bl[2].t==='consigne'))
+          V.cite(r2,': le bilan n’a pas ses trois blocs (question, texte « À mettre dans le bilan », consigne) — dans cet ordre.');
+        else if((Array.isArray(bl[1].el)?bl[1].el:[]).some(function(l){ l=String(l||'').trim(); return /\.$/.test(l)||l.split(/\s+/).filter(Boolean).length>12; }))
+          V.cite(r2,': une ligne « À mettre dans le bilan » finit par un point ou dépasse douze mots — des mots-clés, pas la réponse.');
+      }
+      var vus=[e.act].concat.apply([e.act],bl.map(function(b){ return b?[b.txt,b.q].concat(Array.isArray(b.el)?b.el:[],Array.isArray(b.etapes)?b.etapes:[]):[]; }));
+      if(vus.some(function(x){return /copie de (la )?classe/i.test(String(x==null?'':x));}))V.cite(r2,': un texte vu par les élèves dit « copie de classe ».');
       if(!bil&&e.role!=='reactivation'&&e.role!=='fin'){
         if(!String(e.actId||'').trim()||!acts[String(e.actId)])V.cite(r2,': une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis).');
         if(!Array.isArray(e.remob))V.cite(r2,': « remob » manque sur une diapo d’activité.');
@@ -15596,19 +15607,21 @@ function atP2DerouleNormalise(se,avant){
     if(String(e.actId||'').trim())x.actId=String(e.actId);
     if(e.legende&&typeof e.legende==='object'&&!Array.isArray(e.legende))x.legende=JSON.parse(JSON.stringify(e.legende));
     if(e.role==='bilan')x.role='bilan';
+    if(e.role==='bilan'&&String(e.notes||'').trim())Object.defineProperty(x,'_notes',{value:String(e.notes),enumerable:false});   /* §12.24 : rangées en notes présentateur à l'eid, plus bas */
     return x;
   });
-  _drIdentifierEcrans(ecr);   /* les eid, pour que les activités nomment leurs diapos (jamais un rang) */
+  _drIdentifierEcrans(ecr);
+  var notes={}; ecr.forEach(function(x){ if(x._notes)notes[x.eid]=[{p:null,html:x._notes}]; });   /* le format que lit p8NotesDe (dr-atelier.js) : [{p, html}] — une chaîne y serait échappée */   /* les eid, pour que les activités nomment leurs diapos (jamais un rang) */
   var acts=(Array.isArray(src.activites)?src.activites:[]).map(function(a){
     return {id:String(a.id),num:parseInt(a.num,10),titre:String(a.titre||''),
       diapos:ecr.filter(function(x){return x.actId===String(a.id);}).map(function(x){return x.eid;})};
   });
   var trav={}; if(src.travail&&typeof src.travail==='object')Object.keys(src.travail).forEach(function(h){ if(String(src.travail[h]||'').trim())trav[h]=String(src.travail[h]); });
   var av=avant&&Array.isArray(avant.ecrans)&&avant.ecrans.length?avant:null;
-  if(!av)return {ecrans:ecr,activites:acts,travail:trav,maj:Date.now()};
+  if(!av){ var r={ecrans:ecr,activites:acts,travail:trav,maj:Date.now()}; if(Object.keys(notes).length)r.notes=notes; return r; }
   var avActs=Array.isArray(av.activites)?av.activites:Object.values(av.activites||{});
   var avTrav=Object.assign({},av.travail||{}); Object.keys(trav).forEach(function(h){ if(avTrav[h]==null)avTrav[h]=trav[h]; });
-  return Object.assign({},av,{ecrans:av.ecrans.concat(ecr),activites:avActs.concat(acts),travail:avTrav,maj:Date.now()});
+  return Object.assign({},av,{ecrans:av.ecrans.concat(ecr),activites:avActs.concat(acts),travail:avTrav,notes:Object.assign({},av.notes||{},notes),maj:Date.now()});
 }
 /* le chapitre JSON dont chaque séance porte sa trame normalisée (Remplacer, Jumeau, séance nouvelle de Compléter) */
 function atP2NormaliserSeances(chap){

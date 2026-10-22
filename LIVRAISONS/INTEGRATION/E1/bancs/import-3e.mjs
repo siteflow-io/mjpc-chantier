@@ -19,7 +19,10 @@ function seanceDuContrat(se, num0) {
       return x; }) }));
   // les heures par les durées (≤ 50 min utiles), une activité par heure ; le bilan, dernier
   let h = 1, cumul = 0; const activites = []; let num = num0;
-  ecrans.forEach((e, i) => { if (i === ecrans.length - 1) { e.role = 'bilan'; delete e.remob; } if (cumul + e.dur > 50) { h++; cumul = 0; } cumul += e.dur; e.heure = h;
+  ecrans.forEach((e, i) => { if (i === ecrans.length - 1) { e.role = 'bilan'; delete e.remob;   // §12.24 (v0.7 §1.3) : trois blocs dans l'ordre, des mots-clés, ses notes présentateur
+      const q = e.blocs.find(b => b.t === 'question') || { t: 'question', q: 'Que retiens-tu de cette séance ?' };
+      e.blocs = [{ t: 'question', q: q.q, reps: [] }, { t: 'texte', txt: 'À mettre dans le bilan', el: ['le titre de la séance', 'la notion du jour', 'un exemple du texte', 'le mot juste'] }, { t: 'consigne', pic: '✎', txt: 'Rédige le bilan au brouillon.', etapes: ['Cinq à huit lignes, au présent.', 'Chaque mot-clé y est, dans une phrase à toi.', 'Souligne chaque mot-clé une fois placé.'] }];
+      e.notes = '<ul><li><b>la notion du jour</b> (litt-036)</li></ul><p>La réponse validée s\'écrit dans la copie de la classe.</p>'; } if (cumul + e.dur > 50) { h++; cumul = 0; } cumul += e.dur; e.heure = h;
     if (e.role) return; let a = activites.find(x => x.h === h); if (!a) { a = { id: 'a' + num, num, titre: 'Activité de l\'heure ' + h, h }; activites.push(a); num++; } e.actId = a.id; });
   activites.forEach(a => delete a.h);
   return { s: { title: se.title, type: se.type, ordre: se.ordre, cle: se.cle, notions: se.notions || [], competences: se.competences || [], items: {},
@@ -43,6 +46,12 @@ export const MUTATIONS = [
   ['heureEntier', '« heure » non entière', ': « heure » n’est pas un nombre entier.', j => { E0(j)[1].heure = 1.5; }],
   ['schemaSansTitre', 'un schéma sans le champ « titre » (le « txt » de la v0.2)', 'un schéma sans « titre ».', j => { const b = blocDe(E1(j), 'schema'); b.txt = b.titre; delete b.titre; }],
   ['fil', 'un « fil » autre que « langue »', ': « fil » ne vaut que « langue », ou s’omet.', j => { j.chapitre.fil = 'grammaire'; }],
+  ['notesHorsBilan', '« notes » sur une diapo d\'activité', ': « notes » sur une diapo qui n’est pas le bilan — les notes présentateur sont à Paul.', j => { E0(j)[1].notes = '<p>pour moi</p>'; }],
+  ['bilanBlocs', 'un bilan à deux blocs (la consigne manque)', ': le bilan n’a pas ses trois blocs (question, texte « À mettre dans le bilan », consigne) — dans cet ordre.', j => { E0(j)[E0(j).length - 1].blocs.pop(); }],
+  ['bilanOrdre', 'un bilan dont les blocs ne sont pas dans l\'ordre', ': le bilan n’a pas ses trois blocs (question, texte « À mettre dans le bilan », consigne) — dans cet ordre.', j => { const B = E0(j)[E0(j).length - 1].blocs; B.push(B.shift()); }],
+  ['bilanPoint', 'une ligne « À mettre dans le bilan » qui finit par un point', ': une ligne « À mettre dans le bilan » finit par un point ou dépasse douze mots — des mots-clés, pas la réponse.', j => { E0(j)[E0(j).length - 1].blocs[1].el[0] = 'Le poète est comme l\'albatros.'; }],
+  ['bilanLong', 'une ligne « À mettre dans le bilan » de treize mots', ': une ligne « À mettre dans le bilan » finit par un point ou dépasse douze mots — des mots-clés, pas la réponse.', j => { E0(j)[E0(j).length - 1].blocs[1].el[0] = 'un deux trois quatre cinq six sept huit neuf dix onze douze treize'; }],
+  ['copieDeClasse', 'un texte vu par les élèves qui dit « copie de classe »', ': un texte vu par les élèves dit « copie de classe ».', j => { E0(j)[0].blocs[0].txt = 'Recopie la réponse de la copie de classe.'; }],
   ['feuilleInconnue', 'une fiche dont la feuille ne nomme aucun item du chapitre', ': une fiche sans feuille (« feuille ») — une fiche vit dans une feuille du chapitre (1.7).', j => { blocDe(E1(j), 'fiche').feuille = 'pas-un-item'; }],
   ['bilan2', 'deux bilans', ': deux bilans — le bilan est unique et dernier.', j => { E0(j)[2].role = 'bilan'; }],
   ['bilanDernier', 'le bilan n\'est pas la dernière diapo', ': le bilan n’est pas la dernière diapo de la séance.', j => { const E = E0(j); const x = E.pop(); E.splice(E.length - 1, 0, x); }],

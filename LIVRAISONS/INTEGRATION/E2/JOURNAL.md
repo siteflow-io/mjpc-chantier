@@ -343,3 +343,6 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 
 ## 22/10, 20:26 (Paris) — retour 7 : réveil n°27, rien à coder
 - Réveil n°27 : vu (banc vert sur `b8a11d55`, §12.22 après le promeus). Rien d'ouvert chez moi, module intact en amont. Retour reprogrammé (50 min).
+
+## 22/10, 21:18 (Paris) — retour 8 : réveil n°28, rien à coder
+- Réveil n°28 : vu (candidat `c8bf7b61`, code inchangé). Rien d'ouvert chez moi, module intact. Retour reprogrammé (50 min).

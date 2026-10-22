@@ -1,0 +1,8 @@
+banc E1 · 2026-10-22 14:19 UTC · ../work/asm-avant3.html · md5 6beff92f6c2b7168388bc0fa90b23f72
+
+A34 — L187 (E4, cadrage 4 · 6.1) : « À régler » compte et liste toutes les séances du chapitre ; « Ouvrir la diapo » ouvre la bonne séance
+  ÉCHEC  A34 · le bouton « À régler (18) » compte le chapitre : au moins les 95 diapos sans activité des 9 séances (dont 77 hors de la séance ouverte) — [18,17,15,14,14,3,6,5,3]
+  ÉCHEC  A34 · la liste a 18 lignes (le même compte que le bouton), dont celles des autres séances, nommées — À RÉGLER — 18 choses qui peuvent casser en classe, dans ce chapitre (cadrage 4,  · 
+  ÉCHEC  A34 · le banc n'a pas pu aller au bout — page.evaluate: TypeError: Cannot read properties of undefined (reading 'click')
+
+3 vérifications, 3 échec(s) · 10 s

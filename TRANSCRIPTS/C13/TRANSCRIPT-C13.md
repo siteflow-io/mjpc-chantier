@@ -2111,3 +2111,23 @@ Réponse de la conscience (04:11), mot pour mot :
 
 22/10/2026 04:11
 MEMO
+
+## TOUR 100 — RÉVEIL N°15 (22/10/2026, 05:11 → 05:20 ; déclenché par la tâche planifiée)
+
+Note : horodatages lus avant chaque écriture (05:11, 05:12, 05:18, 05:19).
+
+Mesuré :
+- `integration` à `88301b93` (E1, 05:06) ; pendant le banc, E3 (05:13 : banc 105/105 sur la poussée d'E1). Depuis le réveil n°14 : **E1** (poussée 20, 04:17-05:06 : §12.18 — l'atelier date et numérote les heures de la classe par `dr_heuresDeLaClasse` d'E2, une seule suite avec l'EDT et « Lancer » (lundi : H1 lundi 7 jouée, H2 lundi 14, H3 mardi 15 ; mercredi : H2 vendredi 18) ; 164 ; 173 ; garde A31 ; réveils n°13 et n°14 marqués ; banc 199/0) ; **E2** (poussée 29, 04:16-04:32 : l'infobulle de « Lancer » suit la proposition ; l'heure n de « Lancer » par `dr_heuresDeLaClasse` ; réveil n°14 marqué) ; **E4** (poussées 64-65 : 175 écartée, 176 réglée ; la copie des relecteurs rafraîchie avant chaque passe ; **170 lignes, 150 réglées, 5 pas réglées — toutes chez E1, 161, 164, 172, 173, 177 —, 9 écartées, 6 à Paul, 0 ouverte, 0 neuve**).
+- **Mon banc sur `88301b93`** : collisions 0 ; parcours P0-P12 VERT (normal et mode test) ; **K 108 / 0**. L'assemblé commis : 2 279 217 octets, md5 `c3c08656979ae6f71165c1bdbced3e7f`. Capture P3 : « H1 · lundi 7 septembre · jouée », « H2 · lundi 14 septembre » (§12.18 visible). Épreuves `banc-sur-integration-88301b93.txt`, `sur-integration-88301b93-v22.txt` ; captures `pieces/T100-P3-atelier.png`, `T100-P5-*.png`, `T100-P9-*.png`.
+- **Audit final mis à jour** (§0, §4, §6) : les cinq dernières lignes sont réglées par la poussée 20 d'E1, pas encore revérifiées par E4 sur cette tête.
+- **Relances écrites (05:19)** : E4 — revérifier les cinq sur `88301b93`, « 0 pas réglée (88301b93) » = le signal ; E1, E2 — rien, le banc à chaque poussée ; E3 — fait.
+- Réveil suivant : 06:21.
+
+Réponse de la conscience (05:20), mot pour mot :
+
+202. Réveil n°15. **E1 a poussé les cinq dernières lignes** (l'Atelier, le Pilotage et l'emploi du temps disent maintenant la même suite d'heures — ma capture montre « H1 · lundi 7 septembre · jouée », « H2 · lundi 14 » —, le choix d'Entrée, « Envoyer vers… »), avec sa garde rouge avant / vert après ; E2 a réglé la sienne ; E3 a rejoué. Banc vert sur cette tête : collisions 0, parcours vert aux deux modes, 108 sur 108. E4 : 170 lignes, 150 réglées, 0 ouverte, 0 neuve à ses deux dernières passes — il lui reste à revérifier ces cinq sur la tête d'E1.
+
+203. Verdict : **prêt à une revérification près.** Dès qu'E4 écrit « 0 pas réglée » (son prochain passage), je te dirai « promeus » avec la phrase, et ce que ta promotion déclenche (le fichier intégré copié en production, version 8.75.0-①, le bit à bit, le journal, les dettes cochées, le point de retour, l'adresse du site et tes tests geste par geste pour le premier cours). Prochain réveil à 06:21. À toi, telles quelles : 152, 144, 13 · 12, §12.17, 198, le « go » du plan 10 jours.
+
+22/10/2026 05:20
+MEMO

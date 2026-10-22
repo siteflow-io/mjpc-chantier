@@ -1,5 +1,5 @@
 // E4 · la preuve sur pièce (réveil n°19 suite, Paul 13:40 ; contrat §12.21) : le chapitre 3e réécrit au contrat du prompt
-// d'injection (MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md v0.2 ; §12.22 : ni réactivation ni fin d'heure dans le fichier), SANS UNE PHRASE NOUVELLE VUE PAR L'ÉLÈVE — seulement la structure.
+// d'injection (MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md v0.3 ; §12.22 : ni réactivation ni fin d'heure dans le fichier), SANS UNE PHRASE NOUVELLE VUE PAR L'ÉLÈVE — seulement la structure.
 // Rejouable : node au-contrat.mjs [source.json] [sortie.json] [taxonomie.json]
 // Sorties : le chapitre au contrat, la table avant / après par séance (avant-apres.md), la liste du §3 point 5 avec son compte.
 import fs from 'node:fs';
@@ -53,12 +53,12 @@ const chap = out.chapitre; let numAct = 0; const vuesAvant = [];   // les notion
 chap.seances.forEach((s, si) => {
   const E0 = (s.deroule && s.deroule.ecrans) || [];
   const avant = { diapos: E0.length, min: E0.reduce((t, e) => t + (e.dur || 0), 0) };
-  // 1 · la carte trop pleine coupée en diapos qui tiennent (même titre, « (suite) ») ; un schéma : devoilerTout false, echelle plein, titre en `txt`
+  // 1 · la carte trop pleine coupée en diapos qui tiennent (même titre, « (suite) ») ; un schéma : devoilerTout false, son titre en `titre` (v0.3)
   const E = [];
   E0.forEach(e0 => {
     const e = JSON.parse(JSON.stringify(e0));
     const sch = (e.blocs || []).filter(b => b.t === 'schema');
-    sch.forEach(b => { if (b.titre != null && b.txt == null) { b.txt = b.titre; delete b.titre; } b.devoilerTout = false; b.echelle = b.echelle || 'plein'; });
+    sch.forEach(b => { if (b.txt != null && b.titre == null) { b.titre = b.txt; delete b.txt; } b.devoilerTout = false; });   /* pièce v0.3 §1.4 : « `titre`, pas `txt` : un schéma écrit avec `txt` arrive sans titre » */
     const b = sch[0]; const lignes = b ? String(b.src || '').split('\n').filter(x => x.trim()) : [];
     if (b && b.forme === 'carte' && lignes.length > FAMILLES_PAR_CARTE) {
       const parts = []; for (let i = 0; i < lignes.length; i += FAMILLES_PAR_CARTE) parts.push(lignes.slice(i, i + FAMILLES_PAR_CARTE));
@@ -138,7 +138,7 @@ chap.seances.forEach(s => {
     if (!e.role) { R(!!e.actId && A.some(a => a.id === e.actId), 'toute diapo d\'activité a son actId', ou); R(Array.isArray(e.comp) && Array.isArray(e.remob), 'comp et remob sur chaque diapo d\'activité', ou); }
     if (!e.role) R(!/bilan/i.test(e.act), 'jamais « bilan » dans le titre d\'une autre diapo', ou);
     const sch = (e.blocs || []).filter(b => b.t === 'schema'); R(sch.length <= 1, 'un schéma par diapo', ou);
-    sch.forEach(b => { R(b.devoilerTout === false, 'schéma devoilerTout: false', ou); R(!!b.txt, 'un schéma a un titre', ou); });
+    sch.forEach(b => { R(b.devoilerTout === false, 'schéma devoilerTout: false', ou); R(!!b.titre && !b.txt, 'un schéma a un titre (« titre », pas « txt »)', ou); });
     if (sch.length) { const cons = (e.blocs || []).filter(b => b.t === 'consigne'); R(cons.length <= 1 && cons.every(c => !(c.etapes || []).length), 'au plus une consigne d\'une ligne avec le schéma', ou); R((e.blocs || []).every(b => b.t === 'schema' || b.t === 'consigne'), 'la diapo d\'un schéma : le schéma et au plus une consigne', ou); }
     (e.blocs || []).forEach(b => {
       if (b.t === 'fiche') R(!!b.feuille && itemsDuChap.has(b.feuille), 'chaque fiche nomme sa feuille', `${ou} · « ${b.titre} »`);

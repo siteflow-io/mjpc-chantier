@@ -779,3 +779,9 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
   - **L187** (« À régler » ne lit que la séance ouverte) **reste** : `dr-atelier.js` n'a pas changé.
 - **Compte** : 180 lignes, dont 169 réglées, 1 pas réglée (L187, E1), 10 écartées, 0 à Paul, 0 ouverte.
 - **« L'Albatros » rejouée sur cette tête** (copie d'essai importée, « Jouer en avance », ▶), aux deux tailles : « À régler (0) », activités 11 à 16, zéro erreur JS, aucune boîte. `banc.sh` **vert** sur `8b43133f`.
+
+## Poussée 81 — 13:45 UTC · l'import d'E1 v0.3 (`ec5e8b2c`, tête `6d42ab51`)
+- Le JSON livré, recollé, prenait sept refus de plus : « un schéma sans « titre » » sur les 8 diapos de la carte. **La pièce v0.3 dit « `titre`, pas `txt` »** ; j'avais suivi la v0.1 (`txt`). **Le script est corrigé** : le schéma garde `titre` (celui de la source) et n'ajoute plus `echelle`, absent de l'exemple v0.3. Ma liste vérifie `titre`.
+- Recollé : **exactement les 4 refus attendus** (trois réponses attendues vides, la « Question-bilan » de la séance 3), à Paul ; ma liste dit les mêmes 4.
+- La copie d'essai (scratch) : « Vérifier » sans refus, « Créer un double », **« À régler (0) » dans les neuf séances, aux deux tailles**.
+- L187 reste (`dr-atelier.js:69` inchangé). `banc.sh` vert sur `6d42ab51`.

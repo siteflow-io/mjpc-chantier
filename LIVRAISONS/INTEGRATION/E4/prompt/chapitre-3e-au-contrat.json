@@ -892,10 +892,9 @@
                 {
                   "t": "schema",
                   "forme": "carte",
+                  "titre": "Les figures de style",
                   "src": "Figures d'analogie : personnification, comparaison, métaphore, allégorie",
-                  "txt": "Les figures de style",
-                  "devoilerTout": false,
-                  "echelle": "plein"
+                  "devoilerTout": false
                 }
               ],
               "heure": 2,
@@ -915,10 +914,9 @@
                 {
                   "t": "schema",
                   "forme": "carte",
+                  "titre": "Les figures de style",
                   "src": "Figures d'opposition : antithèse, oxymore, antiphrase",
-                  "txt": "Les figures de style",
-                  "devoilerTout": false,
-                  "echelle": "plein"
+                  "devoilerTout": false
                 }
               ],
               "heure": 2,
@@ -938,10 +936,9 @@
                 {
                   "t": "schema",
                   "forme": "carte",
+                  "titre": "Les figures de style",
                   "src": "Figures de substitution : métonymie, synecdoque, périphrase, ironie",
-                  "txt": "Les figures de style",
-                  "devoilerTout": false,
-                  "echelle": "plein"
+                  "devoilerTout": false
                 }
               ],
               "heure": 2,
@@ -961,10 +958,9 @@
                 {
                   "t": "schema",
                   "forme": "carte",
+                  "titre": "Les figures de style",
                   "src": "Figures d'insistance : anaphore, répétition, pléonasme",
-                  "txt": "Les figures de style",
-                  "devoilerTout": false,
-                  "echelle": "plein"
+                  "devoilerTout": false
                 }
               ],
               "heure": 2,
@@ -984,10 +980,9 @@
                 {
                   "t": "schema",
                   "forme": "carte",
+                  "titre": "Les figures de style",
                   "src": "Figures d'amplification : hyperbole, accumulation, gradation",
-                  "txt": "Les figures de style",
-                  "devoilerTout": false,
-                  "echelle": "plein"
+                  "devoilerTout": false
                 }
               ],
               "heure": 2,
@@ -1007,10 +1002,9 @@
                 {
                   "t": "schema",
                   "forme": "carte",
+                  "titre": "Les figures de style",
                   "src": "Figures d'atténuation : euphémisme, litote",
-                  "txt": "Les figures de style",
-                  "devoilerTout": false,
-                  "echelle": "plein"
+                  "devoilerTout": false
                 }
               ],
               "heure": 2,
@@ -1030,10 +1024,9 @@
                 {
                   "t": "schema",
                   "forme": "carte",
+                  "titre": "Les figures de style",
                   "src": "Figures syntaxiques : parallélisme, chiasme, ellipse",
-                  "txt": "Les figures de style",
-                  "devoilerTout": false,
-                  "echelle": "plein"
+                  "devoilerTout": false
                 }
               ],
               "heure": 2,
@@ -1053,10 +1046,9 @@
                 {
                   "t": "schema",
                   "forme": "carte",
+                  "titre": "Les figures de style",
                   "src": "Procédés sonores : allitération, assonance, onomatopée, homophone",
-                  "txt": "Les figures de style",
-                  "devoilerTout": false,
-                  "echelle": "plein"
+                  "devoilerTout": false
                 }
               ],
               "heure": 2,

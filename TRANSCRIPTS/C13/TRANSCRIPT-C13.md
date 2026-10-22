@@ -2415,3 +2415,21 @@ Réponse de la conscience (14:02), mot pour mot :
 
 22/10/2026 14:02
 MEMO
+
+## TOUR 116 (22/10/2026, 14:13 → 14:16)
+
+Paul (14:13), mot pour mot :
+« Ok ça me va. La seule chose: les diapos "flottantes" ( celles qui ne sont pas dans le chapitre, donc la "où en sommes nous" et la fin d'heure ), si affichées en classe, font bien partie du déroulé joué pour chaque classe? Tu vois ce que je veux dire ? »
+
+Mesuré (14:13-14:14, fichier assemblé `ef674d4b`) : la fin d'heure posée à la lecture (`dr_normaliserTrame`, l. 15801, `dr_pose`) n'est pas écrite dans la trame du chapitre (`dr_sauve`, l. 15898 : « la fin d'heure posée à la lecture ne s'écrit que si Paul y a mis quelque chose ») ; **la copie jouée de la classe** (`C/ecrans`, `dr_copieAuto`, l. 17987-17993) est une copie entière de `seance().ecrans`, donc elle contient la diapo de fin d'heure (sans son drapeau de pose) ; son contenu (le cahier de textes) n'est pas dans la copie : il se recompose depuis le journal et l'état de l'heure, écrits à la clôture (`C/journal`, `C/etat`, l. 18237). Validé par Paul (14:13) : les points 255-258. Écrit : contrat §12.22 (a-e) ; prompt v0.2 (l'instance n'écrit ni réactivation ni fin d'heure ; `role` ne vaut que « bilan » ; les deux diapos construites font partie du déroulé joué de chaque classe) ; relances E1 (refuser « reactivation » et « fin » à l'import ; `dr_estRituel` à noter, pas à retirer avant le promeus), E2 et E4 (le code de la réactivation construite et du choix : après le promeus, leur territoire), E3 (rien), E4 (le chapitre 3e au contrat sans « Où en sommes-nous ? »). Fusionné dans `integration` (`60278fb4`). Vu en fusionnant : E4 (14:01, relecture 9 points), E2 (14:06, relecture, « le trou : `edtHeuresPour` lit … »), E3 (14:12, « ce qui tient » chiffré forme par forme) ont déjà répondu — lus au réveil n°23 (14:30).
+
+Réponse de la conscience (14:16), mot pour mot :
+
+259. **Oui, je vois, et c'est écrit comme règle** (contrat §12.22) : la réactivation et la fin d'heure ne sont pas dans le chapitre, mais dès qu'elles sont montrées à une classe, elles font partie du déroulé joué de cette classe — ce que la classe a vu est gardé tel quel dans sa copie, le journal le note, le récit le dit.
+
+260. **Ce que le site fait déjà pour la fin d'heure** : la diapo est bien dans la copie jouée de la classe ; son contenu (le cahier de textes) n'y est pas copié tel quel, il se recompose depuis le journal et l'état de l'heure, qui sont enregistrés à la clôture. Pour la réactivation construite, la règle que j'ai écrite est plus stricte : le contenu montré est figé dans la copie au moment où il est montré.
+
+261. Le prompt est passé en version 0.2 avec ça (la conversation n'écrit ni réactivation ni fin d'heure) ; les exécutants l'ont reçu. E2, E3 et E4 ont déjà rendu leur relecture : je les lis au réveil de 14:30 et je te dis ce qui change.
+
+22/10/2026 14:16
+MEMO

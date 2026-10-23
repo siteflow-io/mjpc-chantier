@@ -2762,3 +2762,16 @@ MEMO
 
 23/10/2026 05:15
 MEMO
+
+---
+
+## Tour 138 — 23/10/2026 06:13 — réveil n°37 (06:12, programmé au tour 137)
+
+**Mesuré.** Pas de mot de Paul depuis 23:17. `origin/integration` : tête `a011d61f` — E1 `c47ce49e`, E3 `2c7d8b21`, E2 `a011d61f` : rien ; E4 : dernière veille 05:08. `git diff --stat 2229fee9 origin/integration -- index.html dr` : vide → pas de banc ; candidat inchangé `2229fee9` (signal E4 `9eba2708`). Relances r37 (une ligne chacune) ; audit §0 (une ligne).
+
+**Réponse (mot pour mot).**
+
+298. Rien n'a bougé : la candidate reste `2229fee9`, le prompt est prouvé sur pièce, les exécutants veillent. Ton mot « promeus » attendu.
+
+23/10/2026 06:13
+MEMO

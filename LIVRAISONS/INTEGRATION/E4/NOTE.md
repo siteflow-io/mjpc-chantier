@@ -281,4 +281,4 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 
 - **07:25 UTC, §12.22 / §12.25 (réveils n°38-39)** : la réactivation construite, branchée sur le bouton d'E2 ; RC10, RC12-RC15 verts (RC11 absent : pas de séance d'avant jouée au faux hub). Aucune ligne nouvelle à la table.
 
-**0 pas réglée (`45e8fc5d`)** — `banc.sh` vert, mon banc 131 ok · 0 échec.
+**0 pas réglée (`c9c58e4c`)** — `banc.sh` vert, mon banc 131 ok · 0 échec.

@@ -373,3 +373,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - *(23/10, 00:25 UTC) Réveil n°33 lu : rien à faire, candidat `2229fee9`. Prochain retour 01:15 UTC.*
 - *(23/10, 02:09 UTC) Réveil n°34 lu : rien à faire, candidat `2229fee9`. Prochain retour 02:59 UTC.*
 - *(23/10, 03:00 UTC) Réveil n°35 lu : rien à faire, candidat `2229fee9`. Prochain retour 03:50 UTC.*
+- *(23/10, 03:51 UTC) Réveil n°36 lu : rien à faire, candidat `2229fee9`. Prochain retour 04:41 UTC.*

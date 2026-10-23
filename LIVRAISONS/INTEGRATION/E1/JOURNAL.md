@@ -370,3 +370,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **Bancs sur `daed2c0e`** (sorties `E1/sorties/2130/`, avec `a33-avant-bilan3.txt`) : **banc de la conscience VERT** — collisions 0, parcours vert ×2, K1-K13 0 défaut ; **banc E1 : 268 vérifications, 0 échec**.
 - *(22:42 UTC) Réveil n°31 lu : rien d'ouvert. La v0.8 (5 mots-clés au plus, question ≤ 60 signes, mesurés par E3) n'est pas codée en refus à l'import — pas demandé ; dit à la conscience. Prochain retour 23:32 UTC.*
 - *(23:34 UTC) Réveil n°32 lu : candidat au promeus `2229fee9` (= `9eba2708`, porte §12.24) ; rien à faire. Prochain retour 00:24 UTC.*
+- *(23/10, 00:25 UTC) Réveil n°33 lu : rien à faire, candidat `2229fee9`. Prochain retour 01:15 UTC.*

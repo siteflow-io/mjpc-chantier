@@ -2814,3 +2814,16 @@ MEMO
 
 23/10/2026 07:13
 MEMO
+
+---
+
+## Tour 141 — 23/10/2026 08:22 — réveil n°39 (08:14, programmé au tour 140)
+
+**Mesuré.** Pas de mot de Paul depuis 06:19. `origin/integration` : tête `961a83d1` — E1 `99ac5b29` + `961a83d1` (§12.25 sa part : `dr_derouleDe` porte `reactivation` ; `dr_eidReactivation` / `dr_poserEidReactivation` ; la branche par le titre retirée de `ordreHeureCalc0` ; l'entête de l'Atelier par les fonctions d'E2 ; A35 rouge avant 4/5, vert 5/0 ; bancs VERT, E1 273/0) ; E3 `9ec4e022` (mesure anticipée de la diapo construite : 8 lignes à 32 pt, 12 lignes titres compris sur une page, 13+ → deux pages ; budget E4 : 8 lignes de contenu) ; E2, E4 : rien poussé depuis leurs lectures (ils codent). Code bougé (3 fichiers, +14/−5). Banc `banc-0815` sur `961a83d1` : collisions 0, parcours vert ×2, K 108 / 0, VERT ; assemblé 2 301 960 o, md5 `6b07960d596a1fe7339a481c25d92365` ; restauré. Pas de candidat 8.75.0-② (§12.22 en cours). Relances r39 ; audit §0/§6 ; épreuves ; pièces T141.
+
+**Réponse (mot pour mot).**
+
+303. La réactivation construite avance : E1 a posé sa part (l'identité de la diapo, le réglage par séance gardé à la sauvegarde, l'entête de l'Atelier), mon banc est vert dessus ; E3 a mesuré d'avance ce qui tient sur cette diapo au tableau (douze lignes titres compris sur une page) ; E2 et E4 codent. Le 302 (les quatre titres) reste posé.
+
+23/10/2026 08:22
+MEMO

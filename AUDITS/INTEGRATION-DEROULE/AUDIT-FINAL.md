@@ -43,6 +43,8 @@
 
 **Mise à jour 23/10, 07:13 (réveil n°38, tête `46c856ce`, code = `2229fee9` = 8.75.0-①).** Code inchangé : pas de banc. E2 (retour 19) et E4 (poussée 92) ont écrit leur lecture de §12.22 avant de coder ; la conscience tranche au contrat §12.25 (défaut oui ; heure 1 : l'écran d'ouverture avec le bouton ; eid par le socle ; `dur: 3` ; réglage `B/deroule/reactivation` ; la lecture par le titre tombe ; libellé élève ; les quatre titres à Paul) et donne « va » à E2, E4, E1 (sa part). E3 en veille. Prochain candidat : banc vert + signal E4.
 
+**Mise à jour 23/10, 08:22 (réveil n°39, tête `961a83d1`).** E1 `99ac5b29` (§12.25 : `dr_derouleDe` porte `reactivation`, l'eid `react-h<n>-s<clé>`, la lecture par le titre retirée de l'ordre d'heure, l'entête de l'Atelier ; A35 5/0, E1 273/0) ; E3 `9ec4e022` (la forme de la diapo construite mesurée d'avance : 12 lignes titres compris sur une page) ; E2, E4 codent (rien poussé). Code bougé (`dr-socle.js`, `dr-atelier.js`, `index.html`) : **mon banc sur `961a83d1` : collisions 0, parcours vert ×2, K 108 / 0** (épreuves `banc-sur-integration-961a83d1.txt`, `sur-integration-961a83d1-v22.txt` ; pièces T141) ; assemblé 2 301 960 o, md5 `6b07960d596a1fe7339a481c25d92365`. Pas de candidat 8.75.0-② (§12.22 en cours).
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

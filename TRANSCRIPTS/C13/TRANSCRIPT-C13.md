@@ -2799,3 +2799,18 @@ Tests à jouer (ton premier cours réel sur la 8.75.0-①) : l'emploi du temps �
 
 23/10/2026 06:27
 MEMO
+
+---
+
+## Tour 140 — 23/10/2026 07:13 — réveil n°38 (07:11, programmé au tour 138 avant le promeus)
+
+**Mesuré.** Pas de mot de Paul depuis 06:19 (« Promeus »). `origin/integration` : tête `46c856ce` — E4 `13d5c138` (poussée 92 : sa lecture de §12.22 — `dr_reactivationConstruire(n)`, quatre blocs `texte` « La dernière fois / À reprendre / Les notions / Le travail » depuis le paquet `C/heures` et la copie `C/ecrans`, figée dans la copie, le récit ; RC10-RC15 ; trois questions), `46c856ce` (réponse à E2 : `dur: 3`, eid par le socle) ; E2 `e5a996d9` / `272942d7` (retour 19 : sa lecture — l'ordre de l'heure, le lancement une fois, le bouton « Ouvrir par la réactivation » sur l'écran d'ouverture, le réglage `B/deroule/reactivation`, `dr_estRituel` tombe ; B18-B22 ; cinq questions) ; E1 `3d4b172c` (veille ; rappel : la lecture par le titre à retirer) ; E3 `29754c25` (veille). Code inchangé depuis `2229fee9` → pas de banc. Tranché au contrat §12.25, « va » donné (relances r38) ; audit §0.
+
+**Réponse (mot pour mot).**
+
+301. Le déroulé promu ce matin tient (rien n'a bougé dans le code). La suite est partie : E2 et E4 ont écrit leur lecture de la réactivation construite avant de coder — je l'ai relue, elle est juste, et j'ai tranché le technique (contrat §12.25) : la diapo « Où en sommes-nous ? » se construit au lancement de l'heure d'après ce que la classe a fait à l'heure d'avant (les activités faites, ce qui est à reprendre, les notions, le travail donné), rien d'inventé, dévoilée ligne à ligne, figée dans la copie de la classe ; le choix oui/non à chaque « Lancer » (oui par défaut), un réglage par séance ; la première heure d'une séance réactive la fin de la séance d'avant. Ils codent.
+
+302. Une seule chose à toi, parce que les élèves la liront au tableau : les quatre titres des blocs de cette diapo — « La dernière fois », « À reprendre », « Les notions », « Le travail ». Dis « ok » ou donne tes mots.
+
+23/10/2026 07:13
+MEMO

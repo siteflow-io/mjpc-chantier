@@ -41,6 +41,8 @@
 
 **23/10, 06:21 — PROMU : 8.75.0-①.** Paul (06:19) : « Promeus ». Le candidat `2229fee9` (code inchangé depuis, vérifié) assemblé par `git archive` + `assembler.mjs` (md5 `746227673f68401bd399af6edd3bbc2f`, 2 299 802 o), copié en `index.html` de production avec la seule ligne `APP_VERSION="8.75.0-①"` : commit prod `d597b5fcd146`, md5 `6cf9c1f2a173e333c45ffb4b7d9a9863`, 2 299 802 o ; **bit à bit : le site en ligne sert ce md5** (06:26). Prod ④ (micro 13 · 25, `sesPut`) : absorbée — `sesPut` n'existe plus, le lancement passe par `dr_ecrire` (K15-test vert). Suivi fait dans le tour (commit prod `eb7c39f`) : journal, dettes ✔ (12 · 05, 12 · 16, 13 · 4-6, 8, 18-24, 26-31 ; 12 · 17 en partie, 12 · 18 ouverte, 13 · 12 à Paul), point de retour (blob `551ee1cc2aec`), index des fonctions régénéré (1838 ; générateur adapté : plus d'`AT_DR_B64`), « où trouver quoi ». Prochain cycle sur `integration` : §12.22 (E2/E4), promeus 8.75.0-②.
 
+**Mise à jour 23/10, 07:13 (réveil n°38, tête `46c856ce`, code = `2229fee9` = 8.75.0-①).** Code inchangé : pas de banc. E2 (retour 19) et E4 (poussée 92) ont écrit leur lecture de §12.22 avant de coder ; la conscience tranche au contrat §12.25 (défaut oui ; heure 1 : l'écran d'ouverture avec le bouton ; eid par le socle ; `dur: 3` ; réglage `B/deroule/reactivation` ; la lecture par le titre tombe ; libellé élève ; les quatre titres à Paul) et donne « va » à E2, E4, E1 (sa part). E3 en veille. Prochain candidat : banc vert + signal E4.
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

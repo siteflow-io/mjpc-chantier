@@ -373,3 +373,6 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 
 ## 23/10 05:08 (Paris) — retour 17 : réveil n°35, rien à coder
 - Réveil n°35 : vu. Rien d'ouvert chez moi, module intact. Retour reprogrammé (50 min).
+
+## 23/10 06:00 (Paris) — retour 18 : réveil n°36, rien à coder
+- Réveil n°36 : vu. Rien d'ouvert chez moi, module intact. Retour reprogrammé (50 min).

@@ -31,6 +31,8 @@
 
 **Mise à jour 23/10, 02:20 (réveil n°33, tête `0dc1d12a`, code = `2229fee9`).** Code inchangé : pas de banc ; **candidat `2229fee9`** (md5 `74622767…`). **L189 écartée** : E4 (`36a6d505`) mesurait la répétition sur le mur du pilote avec la police de repli ; E3 (`0585fbdd`) : même pagination entre son `rendre` et la fenêtre du tableau par le geste — une page avec 5 mots-clés ; le pilote a une ligne de plus (la réponse vide `.rep.libre`, comptée par `paginer`) et le tableau reprend les pages du pilote. E4 : 182 lignes, 171 réglées, 0 pas réglée, 11 écartées, 0 à Paul ; liste à 0 écart avec v0.9. Le prompt (v0.9) est prouvé sur pièce. E1, E2 : rien. Rien d'autre en attente que le mot de Paul.
 
+**Mise à jour 23/10, 03:18 (réveil n°34, tête `da7437a1`, code = `2229fee9`).** Rien n'a bougé : code inchangé, pas de banc, candidat `2229fee9` ; E1-E4 : rien (veilles et retours). En attente du mot de Paul.
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

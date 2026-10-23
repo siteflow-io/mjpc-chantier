@@ -885,3 +885,43 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - veille 03:08 UTC, rien (réveil n°35 lu ; code inchangé depuis `9eba2708`).
 
 - veille 04:14 UTC, rien (réveil n°37 lu ; conteneur redémarré vers 03:55, veille réarmée ; code inchangé depuis `9eba2708`).
+
+## Poussée 92 — 04:35 UTC · PROMEUS (8.75.0-①, prod `d597b5f`) ; mandat suivant : la réactivation construite (§12.22) — **ma lecture, avant de coder** (j'attends « va »)
+
+### Ce que je construis
+Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'écran « Où en sommes-nous ? » de l'heure *n* pour la classe ouverte, ou `null` avec sa raison. E2 l'appelle au « Lancer l'heure n » quand Paul répond « oui » ; l'ordre de l'heure, le bouton et le réglage sont à E2. L'écran :
+- `{ act: "Où en sommes-nous ?", role: "reactivation", heure: n, construite: { depuis: <clé de l'heure d'avant>, t: <horodatage> }, blocs: [...] }`, sans `actId`, hors de la numérotation des activités (comme aujourd'hui pour `role`) ;
+- **des blocs `texte` à lignes dévoilées une à une (▶)**, chacun présent seulement s'il a du contenu, dans cet ordre :
+  1. **« La dernière fois »** : les activités faites, `Activité <num> — <titre>`, dans l'ordre joué ;
+  2. **« À reprendre »** : ce qui a été décidé, ce qui glisse, ce qui est à terminer ou à préparer, en `Activité <num> — <titre>` (pas d'autre mot que ceux des décisions déjà dites dans l'heure) ;
+  3. **« Les notions »** : les notions travaillées, avec le libellé élève de la taxonomie ;
+  4. **« Le travail »** : le travail donné, tel qu'il a été écrit au cahier de l'heure d'avant.
+- **Aucune phrase inventée** : les seuls mots ajoutés sont les quatre titres de bloc (à valider : je les propose, Paul tranche).
+
+### Depuis quelles clés
+- **L'heure d'avant de cette classe dans cette séance** (*n* − 1) : le **paquet `C/heures/<clé>`** écrit par E2 à la clôture (`dr_paquetHeure`) :
+  - `parActivite` (`num`, `titre`, `passages` > 0 : faite) ;
+  - `decisionsParActivite` / `decisionsParEcran` (`choix` : glisse, terminer, préparer, réserve, passée…) ;
+  - `activites[].eid`, d'où les `comp` des diapos vues, via la copie `C/ecrans`. **La copie, pas la trame** : ce que la classe a vu ;
+  - `travailTexte` / `travail`.
+  - En page, si l'heure d'avant a été jouée dans cette page : `S` et `J` (`J.filter(x => x.h === n − 1)`) donnent la même chose sans relire le hub.
+- **La première heure d'une séance** (*n* = 1, §12.22 et pièce v0.9 §1.3) : la **dernière heure jouée de la séance d'avant**, par la même classe : `deroule_joue/<classe>/heures` de la séance précédente, la plus récente par `finReel`.
+- **Rien à réactiver** (aucune heure d'avant jouée, ou une heure sans activité faite) : `null`, raison dite (« rien de joué avant »). E2 n'ouvre pas par la réactivation.
+
+### Figée, dans la copie, dans le récit
+- **Construite une fois, au moment où elle est montrée** (pas au chargement), puis **écrite telle quelle dans la copie de la classe** (`C/ecrans`, à l'eid que le socle lui pose). Un rechargement relit la copie, pas une reconstruction. Une retouche de la trame ou du paquet après coup ne change pas ce que la classe a vu (§12.22 d).
+- **Le journal** note les dévoilements comme pour toute diapo (`diapo`, `dev` à l'eid de la diapo construite) : rien de neuf côté journal.
+- **Le récit** : « On a ouvert l'heure par la réactivation : on a rappelé <les lignes dévoilées, dans l'ordre> ». Seulement ce qui a été dévoilé ; rien si Paul a répondu « non ». Elle n'est pas une activité : pas de numéro, et elle n'entre pas dans « non faites ».
+
+### Les gardes (mon banc, aux deux tailles par le geste quand le bouton d'E2 sera là ; d'ici là par l'appel)
+- **RC10** : contenu depuis l'heure d'avant jouée. Heure 1 jouée avec deux activités faites et une qui glisse → heure 2 : « La dernière fois » = les deux, « À reprendre » = celle qui glisse, les notions des diapos vues, le travail donné. Jamais une activité non vue.
+- **RC11** : la première heure d'une séance réactive la dernière heure de la séance d'avant.
+- **RC12** : figée. Montrée, puis paquet et trame retouchés, puis rechargement : la copie `C/ecrans` garde le contenu montré.
+- **RC13** : le récit dit les lignes dévoilées, et seulement elles ; rien si « non ».
+- **RC14** : rien à réactiver → `null`, aucune écriture au hub.
+- **RC15** : la réactivation n'a pas d'activité et ne compte pas dans « non faites », ni dans le numéro des activités.
+
+### Questions à trancher (pour la conscience, avant « va »)
+1. Les quatre titres de bloc : « La dernière fois », « À reprendre », « Les notions », « Le travail ». Ce sont des mots vus par les élèves : à Paul.
+2. Les notions : le libellé élève (`libelleEleve`, avec verbes) ou le libellé prof ? Je propose le libellé élève, puisque la diapo est au tableau.
+3. Dans la copie, l'eid de la diapo construite : posé par le socle (E1) ou par moi ? Je propose le socle, comme pour la fin d'heure.

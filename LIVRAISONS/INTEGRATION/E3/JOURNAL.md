@@ -265,3 +265,6 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 
 ## 23/10, 04:08 — retour 15 : réveil n°34 lu
 - Rien à faire ; code et assemblé inchangés (`74622767…`).
+
+## 23/10, 05:00 — retour 16 : réveil n°35 lu
+- Rien à faire ; code et assemblé inchangés (`74622767…`).

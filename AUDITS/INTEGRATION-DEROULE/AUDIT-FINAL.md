@@ -35,6 +35,8 @@
 
 **Mise à jour 23/10, 04:16 (réveil n°35, tête `b6b48ec3`, code = `2229fee9`).** Rien n'a bougé : code inchangé, pas de banc, candidat `2229fee9` ; E1-E4 : rien. En attente du mot de Paul.
 
+**Mise à jour 23/10, 05:15 (réveil n°36, tête `e8a0f0ee`, code = `2229fee9`).** Rien n'a bougé : code inchangé, pas de banc, candidat `2229fee9` ; E1-E4 : rien. En attente du mot de Paul.
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

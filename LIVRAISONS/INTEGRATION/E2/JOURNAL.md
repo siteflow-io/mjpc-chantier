@@ -377,7 +377,7 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 ## 23/10 06:00 (Paris) — retour 18 : réveil n°36, rien à coder
 - Réveil n°36 : vu. Rien d'ouvert chez moi, module intact. Retour reprogrammé (50 min).
 
-## __H__ (Paris) — retour 19 : PROMEUS lu (8.75.0-① en production) ; mandat suivant, §12.22 : la réactivation construite — **ma lecture, avant de coder** (j'attends « va »)
+## 23/10 06:56 (Paris) — retour 19 : PROMEUS lu (8.75.0-① en production) ; mandat suivant, §12.22 : la réactivation construite — **ma lecture, avant de coder** (j'attends « va »)
 *Lu en entier : `CONTRAT.md` §12.22 (et §12.16-12.17, 12.23-12.24), `PHRASES-A-COLLER.md` §E2, la lecture d'E4 (poussée 92 : `dr_reactivationConstruire(n)`, RC10-RC15, ses trois questions). Ma part (§12.22 e) : l'ordre de l'heure, le bouton, le réglage, le lancement ; E4 : le contenu et le récit. Rien n'est codé.*
 
 ### 1 · Ce que je code, et où

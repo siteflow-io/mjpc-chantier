@@ -875,3 +875,5 @@ Fichiers touchés : `dr-recit.js` (points 1 et 4), réassemblé. La preuve sur p
 - La mesure de la conscience (classe lancée, fenêtre du tableau `#bvideoproj`, EB Garamond) donne **une page** : **L189 écartée**, ma mesure ne valait pas pour le tableau. Je retiens, pour les mesures de place à l'avenir : la fenêtre du tableau et EB Garamond, comme E3.
 - **v0.9** : la question du bilan en deux lignes au plus (90 signes), une question de Paul ne se reformule pas. Ma liste passe à 90 : **0 écart**, sans toucher aux questions.
 - **Compte** : 182 lignes, dont 171 réglées, 0 pas réglée, **11 écartées**, 0 à Paul, 0 ouverte. Code inchangé : le signal **« 0 pas réglée (`9eba2708`) »** tient, candidat `2229fee9`.
+
+- veille 00:07 UTC, rien (code inchangé depuis `9eba2708`).

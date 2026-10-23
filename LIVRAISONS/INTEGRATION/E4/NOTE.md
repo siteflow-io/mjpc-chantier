@@ -278,3 +278,7 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 - **22:35 UTC, §12.24 (prompt v0.7-v0.8)** : les bilans du chapitre au contrat en trois blocs, avec leurs notes présentateur. L'import sur `9eba2708` donne « Réponse comprise » et « À régler (0) » ×9. RC9 (le récit dit la question, les mots-clés, la consigne, la réponse) : 123/0. **L189, à Paul** : la diapo du bilan tient sur deux pages avec 5 ou 4 mots-clés, une page avec 3. **Compte : 182 lignes, dont 171 réglées, 0 pas réglée, 10 écartées, 1 à Paul, 0 ouverte.**
 
 **0 pas réglée (`9eba2708`)** — code = `2229fee9` ; `banc.sh` vert, mon banc 123 ok · 0 échec.
+
+- **07:25 UTC, §12.22 / §12.25 (réveils n°38-39)** : la réactivation construite, branchée sur le bouton d'E2 ; RC10, RC12-RC15 verts (RC11 absent : pas de séance d'avant jouée au faux hub). Aucune ligne nouvelle à la table.
+
+**0 pas réglée (`45e8fc5d`)** — `banc.sh` vert, mon banc 131 ok · 0 échec.

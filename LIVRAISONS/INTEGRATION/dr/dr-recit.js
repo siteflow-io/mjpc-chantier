@@ -269,6 +269,7 @@ function recitHtml0(fin, h, bornes){ h = h || S.heure; const finHeure = (S.close
   groupes.forEach(g => { if (g.a && (S.faiteOral || {})[g.a.id] && (S.faiteOral[g.a.id].h === h)) return; /* faite à l'oral : son paragraphe est l'oral (7.2) */ const phrases = []; let premiere = null; let reprise = 0;
     g.dis.forEach(di => { const e = dr_recitEcranVu(h, seance().ecrans[di]); /* (E4 · 13 · 8) lisait seance().ecrans[di] : la trame, sans ce que la classe a corrigé */ const vu = vuJ(h, di).fin; const els = elements(e); const lumJ = JH.filter(x => x.type === 'lumiere' && x.di === di).map(x => x.k); const dj0 = (JH.find(x => x.type === 'diapo' && x.di === di) || {}).deja || 0; if (dj0 && !reprise) reprise = dj0; if (premiere == null) premiere = vus[di];
       e.blocs.forEach((b, bi) => { const elsB = els.map((x, idx) => ({ x, idx })).filter(o => o.x.b === bi && o.idx < vu && o.idx >= dj0);
+        if (b.t === 'texte' && elsB.length && e.role === 'reactivation' && e.construite) { const l = elsB.map(o => String(o.x.txt || '').trim().replace(/\.$/, '')).filter(Boolean); if (l.length) phrases.push((phrases.length ? '' : 'on a ouvert l\'heure par la réactivation : ') + 'on a rappelé ' + (b.txt ? '« ' + dr_esc(String(b.txt).toLowerCase()) + ' » : ' : '') + '« ' + l.map(dr_esc).join(' » ; « ') + ' »'); return; }   /* §12.22 d : la réactivation construite (`construite`, posée par dr_reactivationConstruire) se dit, ce qui a été dévoilé seulement, sans plafond de lignes ; une « Où en sommes-nous ? » de trame (rôle posé par le titre) reste racontée comme avant */
         if (b.t === 'texte' && elsB.length) { const l = elsB.map(o => String(o.x.txt || '').trim().replace(/\.$/, '')).filter(Boolean); if (l.length) phrases.push('on a écrit au tableau : « ' + l.slice(0, 4).map(dr_esc).join(' » ; « ') + ' »' + (l.length > 4 ? ' (et ' + (l.length - 4) + ' ligne' + (l.length > 5 ? 's' : '') + ' de plus)' : '')); return; } /* (E4 · relecteur continu B3) un bloc « clique ici et écris » se raconte : ses lignes vues, citées (cadrage 2 §1.2, §1.4) */
         if (b.t === 'schema') { phrases.push('on a construit le schéma <b>' + dr_esc(b.txt) + '</b>'); return; }
         if (b.t === 'image') { nbImages++; const mq = (Array.isArray(b.marques) ? b.marques : []).filter((m, j) => m.txt && m.txt !== 'à écrire' && !/^\d+$/.test(m.txt) && (b.devoilerTout !== false || elsB.some(x => x.x.e === j))).map(m => '« ' + dr_esc(m.txt) + ' »'); phrases.push('on a observé <b>' + dr_esc(String(b.txt || '').trim() || e.act || 'une image') + '</b>' /* (E4 · 16:05) une image sans légende disait « on a observé . » : le nom de la diapo */ + (mq.length ? ', où on a repéré ' + mq.slice(0, 4).join(', ') : '')); return; } /* (E4 · R1, R15) l'ancien (L1270-1274) : les marques dévoilées, nommées — sauf les numéros seuls */
@@ -494,3 +495,53 @@ function dr_recitChargerClasse(slug, cb){ if (dr_recitEnCours() || typeof dr_lir
       dr_recitChamps().forEach(k => { S[k] = {}; }); const C = dr_recitChemin(); DR_RECIT_CHARGE[C] = false; S.faceH = null; }
     if (cb) cb(); }); }
 function brancherSelecteur(){ const sel = document.getElementById('dr-rel-classe'); if (!sel || sel._ok) return; sel._ok = true; sel.onchange = () => dr_recitChargerClasse(sel.value, () => relecture()); }
+
+/* ─── §12.22 / §12.25 : la réactivation construite — E4 : son contenu (depuis l'heure d'avant telle que la classe l'a jouée) et le récit ;
+   E2 : l'ordre de l'heure, le bouton « Ouvrir par la réactivation », le réglage, l'appel ; E1 : l'eid (`react-h<n>-s<clé>`).
+   Le contenu vient du paquet de l'heure d'avant (`C/heures/<clé>`, écrit par E2 à la clôture : `parActivite`, `decisionsParActivite`,
+   `activites[].comp`, `travailTexte`) — jamais de la trame. Construite une fois, au lancement ; la copie de la classe (`C/ecrans`,
+   écrite au fil de l'heure par E2) la garde telle qu'elle a été montrée. ─── */
+const DR_REACT_TITRES = { faites: 'La dernière fois', reprendre: 'À reprendre', notions: 'Les notions', travail: 'Le travail' };   /* §12.25 (1) : proposés à Paul, tels quels en attendant son mot */
+const DR_REACT_DUR = 3;   /* §12.25 (3) : fixe — la durée des « Où en sommes-nous ? » des trames d'avant */
+const DR_REACT_REPRENDRE = ['suivante', 'terminer', 'preparer'];   /* §12.17 : ce qui glisse (b1) et ce qui revient « à reprendre » (b2) ; « pas le temps », « réserve », « non fait » quittent le programme (b3) */
+var DR_REACT_HUB = {}, DR_REACT_RAISON = '';
+/* le chemin de la classe dans la séance d'avant (l'heure 1 d'une séance réactive la fin de la séance précédente, §12.22 b) */
+function dr_reactivationCheminAvant(){ try { const cles = dr_cles(); const k = String(dr_ctx().snum); const i = cles.indexOf(k); if (i <= 0) return null; return dr_cheminBDe(cles[i - 1]) + '/deroule_joue/' + dr_ctx().classeSlug; } catch (e) { return null; } }
+/* lit les paquets d'heures de la classe (cette séance, la séance d'avant), puis rend l'écran de l'heure h à cb (E2, `dr_reactPreparerAsync(h, cb)`) :
+   l'écran construit, ou `{ raison }` quand il n'y a rien à réactiver ; appelé sans h (`dr_reactivationPreparer(cb)`), cb() après la lecture seule */
+function dr_reactivationPreparer(h, cb){
+  if (typeof h === 'function') { cb = h; h = null; }
+  const rendre = () => { if (!cb) return; if (h == null) return cb(); let e = null; try { e = dr_reactivationConstruire(h); } catch (x) { DR_REACT_RAISON = 'la réactivation n’a pas pu être construite (' + (x && x.message) + ')'; } cb(e || { raison: DR_REACT_RAISON || 'rien de joué avant : rien à réactiver' }); };
+  const C = typeof dr_cheminC === 'function' ? dr_cheminC() : null, P = dr_reactivationCheminAvant(); let reste = 0; const fini = () => { if (--reste <= 0) rendre(); };
+  [C, P].filter(Boolean).forEach(ch => { reste++; dr_lire(ch + '/heures', v => { DR_REACT_HUB[ch] = (v && typeof v === 'object') ? v : {}; fini(); }); });
+  if (!reste) rendre();
+}
+/* l'heure d'avant jouée : l'heure n − 1 de cette séance, ou (n = 1) la dernière heure jouée de la séance d'avant */
+function dr_reactivationSource(n){
+  const C = dr_cheminC(), P = dr_reactivationCheminAvant(); const joue = p => p && ((Array.isArray(p.parActivite) && p.parActivite.some(a => a.passages > 0)) || (Array.isArray(p.activites) && p.activites.some(a => a.passages > 0)));   /* une trame sans activités déclarées : le paquet n'a que ses diapos vues */
+  const plus = l => l.sort((a, b) => ((b[1].finReel || b[1].maj || 0) - (a[1].finReel || a[1].maj || 0)))[0] || null;
+  if (n > 1) { const l = Object.entries(DR_REACT_HUB[C] || {}).filter(([k, p]) => p && +p.heure === n - 1 && joue(p)); const x = plus(l); return x ? { cle: x[0], p: x[1] } : null; }
+  if (!P) return null; const x = plus(Object.entries(DR_REACT_HUB[P] || {}).filter(([k, p]) => joue(p))); return x ? { cle: x[0], p: x[1], seanceAvant: true } : null;
+}
+/* les notions resserrées sur une ligne (budget d'E3, réveil n°39 : ≤ 70 signes) : dans l'ordre des diapos vues, tant qu'elles tiennent ; « … » dit qu'il y en a d'autres (toutes restent dans `comp`) */
+const DR_REACT_NOTIONS_MAX = 70;
+function dr_reactivationNotions(libs){ libs = libs.filter(Boolean); if (!libs.length) return []; const l = [libs[0]]; for (let i = 1; i < libs.length; i++) { if ((l.concat(libs[i]).join(' · ') + (i < libs.length - 1 ? ' …' : '')).length > DR_REACT_NOTIONS_MAX) break; l.push(libs[i]); } return [l.join(' · ') + (l.length < libs.length ? ' …' : '')]; }
+/* l'écran « Où en sommes-nous ? » de l'heure n, ou null (DR_REACT_RAISON dit pourquoi) */
+function dr_reactivationConstruire(n){
+  DR_REACT_RAISON = ''; const src = dr_reactivationSource(+n || 1); if (!src) { DR_REACT_RAISON = 'rien de joué avant'; return null; }
+  const p = src.p; const lib = a => 'Activité ' + a.num + ' — ' + (a.titre || '');
+  let faites = (p.parActivite || []).filter(a => a.passages > 0 && a.num != null).sort((a, b) => a.num - b.num);
+  if (!faites.length) { const vus = {}; (p.activites || []).filter(a => a.passages > 0).sort((a, b) => a.n - b.n).forEach(a => { let num = null, titre = a.act; if (!src.seanceAvant) { try { const E = seance().ecrans; const i = E.findIndex(e => e.eid === a.eid); if (i >= 0 && (E[i].role || /bilan/i.test(String(E[i].act || '')))) return;   /* un rituel (bilan, réactivation, fin d'heure) n'est pas une activité */ const x = i >= 0 ? dr_recitAct(E[i], i, n - 1) : null; if (x) { num = x.num; titre = x.titre || titre; } } catch (e) {} }
+      const k = num != null ? 'n' + num : 'e' + a.eid; if (!vus[k]) vus[k] = { num, titre }; }); faites = Object.values(vus).filter(a => a.num != null).sort((a, b) => a.num - b.num); }   /* une trame sans activités déclarées : la diapo vue compte comme une activité, numérotée comme au récit (dr_recitNumAct) */
+  if (!faites.length) { DR_REACT_RAISON = 'aucune activité faite à l\'heure d\'avant'; return null; }
+  const connues = {}; (p.parActivite || []).forEach(a => { connues[a.actId] = a; }); (src.seanceAvant ? [] : (dr_recitActivites() || [])).forEach(a => { if (!connues[a.id]) connues[a.id] = { actId: a.id, num: a.num, titre: a.titre }; });
+  const reprendre = Object.keys(p.decisionsParActivite || {}).filter(k => DR_REACT_REPRENDRE.includes((p.decisionsParActivite[k] || {}).choix) && connues[k] && connues[k].num != null).map(k => connues[k]).sort((a, b) => a.num - b.num);
+  const taxo = {}; (dr_recitTaxo() || []).forEach(d => (d.familles || []).forEach(f => (f.notions || []).forEach(x => { taxo[x.id] = x.eleve || x.libelleEleve || x.prof || x.libelleProf; })   /* le site : `eleve` / `prof` ; le fichier de taxonomie : `libelleEleve` */));
+  const ids = []; (p.activites || []).forEach(a => (a.comp || []).forEach(id => { if (taxo[id] && !ids.includes(id)) ids.push(id); }));
+  const travail = String(p.travailTexte || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+  const bloc = (titre, el) => el.length ? { t: 'texte', txt: titre, el } : null;
+  const blocs = [bloc(DR_REACT_TITRES.faites, faites.map(lib)), bloc(DR_REACT_TITRES.reprendre, reprendre.map(lib)), bloc(DR_REACT_TITRES.notions, dr_reactivationNotions(ids.map(id => taxo[id]))), bloc(DR_REACT_TITRES.travail, travail)].filter(Boolean);
+  const e = { act: 'Où en sommes-nous ?', role: 'reactivation', heure: +n || 1, dur: DR_REACT_DUR, comp: ids, blocs, construite: { depuis: src.cle, seanceAvant: !!src.seanceAvant, t: Date.now() } };
+  try { if (typeof dr_poserEidReactivation === 'function') dr_poserEidReactivation(e, e.heure); } catch (x) {}   /* l'eid du socle (E1, §12.25-3) : react-h<n>-s<clé> */
+  return e;
+}

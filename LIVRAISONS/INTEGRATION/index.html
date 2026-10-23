@@ -15517,7 +15517,8 @@ function atP2ValiderDeroule(o,V,taxo){
         if(id&&!ids.notions[id]&&!ids.competences[id])V.cite(r2,'utilise une notion qui n’existe pas (« '+id+' »). Reprends un identifiant de la liste du prompt.');
       });
       /* §12.22 : seul le bilan s'écrit ; la réactivation et la fin d'heure, le site les pose */
-      if(e.role==='reactivation'||e.role==='fin'||(!e.role&&typeof dr_estRituel==='function'&&dr_estRituel(e)))V.cite(r2,': rôle « reactivation » ou « fin » — le site pose ces diapos lui-même, retire-les.');
+      if(e.role==='reactivation'||e.role==='fin'||(!e.role&&/o[uù] en sommes[- ]nous|r[ée]activation/i.test(String(e.act||''))))   /* §12.25 (6) : dr_estRituel tombe chez E2 ; la règle de la pièce reste à l'import (§3.5 « aucune diapo « Où en sommes-nous ? » ») */
+        V.cite(r2,': rôle « reactivation » ou « fin » — le site pose ces diapos lui-même, retire-les.');
       else if(e.role!==undefined&&e.role!=='bilan')V.cite(r2,': rôle « '+e.role+' » inconnu — seul « bilan » s’écrit.');
       var bil=atP2EstBilan(e); if(bil)bilans.push(n);
       /* §12.24 (prompt v0.7 §1.2, §1.3) : la diapo du bilan — trois blocs dans l'ordre, des mots-clés, ses notes présentateur ; rien « copie de classe » sous les yeux des élèves */

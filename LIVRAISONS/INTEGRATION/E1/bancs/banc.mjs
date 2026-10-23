@@ -739,6 +739,26 @@ await B('A34', 'L187 (E4, cadrage 4 · 6.1) : « À régler » compte et liste t
   E.verif('A34', r1.si === l.si && r1.di === l.di && String(r1.snum) === String(r1.cle) && r1.declare, '« Ouvrir la diapo » d\'une autre séance : le déroulé passe à la séance ' + l.si + ' (la colonne la suit), à sa diapo ' + (l.di + 1) + ', la carte « Ce que la diapo déclare » ouverte', JSON.stringify(r1));
   E.verif('A34', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
 
+await B('A35', '§12.25 (§12.22, ma part) : le réglage porté par dr_derouleDe, l\'eid de la réactivation construite, la lecture par le titre tombée, le réglage dans l\'entête de l\'Atelier', async () => {
+  const o = await E.ouvrir(b, { w: 1366, h: 768 }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(800);
+  // (6) la lecture par le titre tombe : « Où en sommes-nous ? » sans rôle n'est plus mis en tête de son heure
+  const r6 = await pg.evaluate(() => { const E0 = seance().ecrans; const h = 2; const o0 = ordreHeure(h); const i = o0[3]; E0[i].act = 'Où en sommes-nous ?'; delete E0[i].role; dr_tout(); return { i, h, tete: ordreHeure(h)[0], avant: o0[0], rang: ordreHeure(h).indexOf(i), role: E0[i].role || null }; });   /* une diapo du milieu de l'heure 2, retitrée « Où en sommes-nous ? » sans rôle */
+  E.verif('A35', r6.i != null && r6.rang === 3 && r6.tete === r6.avant && !r6.role, '(6) « Où en sommes-nous ? » sans rôle (diapo ' + (r6.i + 1) + ', heure ' + r6.h + ') n\'est plus pris pour la réactivation : il garde sa place (4ᵉ de son heure), il ne remonte plus en tête (seul role « reactivation » compte)', JSON.stringify(r6));
+  // (3) l'eid de la construite
+  const r3 = await pg.evaluate(() => ({ a: typeof dr_eidReactivation === 'function' ? dr_eidReactivation(2, '1') : null, b: typeof dr_poserEidReactivation === 'function' ? dr_poserEidReactivation({ role: 'reactivation', heure: 3 }, null, '0').eid : null, c: typeof dr_poserEidReactivation === 'function' ? dr_poserEidReactivation({ act: 'x', heure: 3 }, null, '0').eid || null : 'absent' }));
+  E.verif('A35', r3.a === 'react-h2-s1' && r3.b === 'react-h3-s0' && r3.c === null, '(3) l\'eid stable de la réactivation : react-h<n>-s<clé> (rien posé sur une diapo qui n\'est pas une réactivation)', JSON.stringify(r3));
+  // (5) le réglage : porté par dr_derouleDe, il survit à une sauvegarde de la trame
+  const r5 = await pg.evaluate(() => { const k = dr_cleSeance(S.si); dr_seance(k).deroule.reactivation = 'non'; return { k, de: dr_derouleDe(k).reactivation }; });
+  await pg.evaluate(() => { seance().ecrans[1].act += ' (retouche)'; dr_sauveMaintenant(); }); await pg.waitForTimeout(1500);
+  const hub5 = await pg.evaluate(k => secuLire('/site/3e/chapitres/0/seances/' + k + '/deroule').then(d => ({ r: d && d.reactivation, act: d && d.ecrans && d.ecrans[1] && d.ecrans[1].act })), r5.k);
+  E.verif('A35', r5.de === 'non' && hub5.r === 'non' && /retouche/.test(hub5.act || ''), '(5) B/deroule/reactivation porté par dr_derouleDe, et toujours au hub après une sauvegarde de la trame', JSON.stringify({ de: r5.de, hub: hub5 }));
+  // (5) l'entête de l'Atelier : le réglage par les deux fonctions d'E2 (des doublures si E2 n'a pas encore poussé)
+  const r5b = await pg.evaluate(() => { const vraies = typeof dr_reglageReactivationLu === 'function'; if (!vraies) { window.dr_reglageReactivationLu = sk => (dr_seance(sk).deroule || {}).reactivation; window.dr_reglageReactivation = (sk, v) => { dr_seance(sk).deroule.reactivation = v; }; } delete dr_seance(dr_cleSeance(S.si)).deroule.reactivation; const v = document.getElementById('volet'); if (v) v.dataset.atelier = ''; dr_tout(); const x = document.querySelector('#volet [data-dr-react]'); return { vraies, t: x ? x.textContent : null }; });
+  await pg.click('#volet [data-dr-react]').catch(() => {}); await pg.waitForTimeout(300);
+  const r5c = await pg.evaluate(() => { const x = document.querySelector('#volet [data-dr-react]'); return { t: x ? x.textContent : null, v: dr_reglageReactivationLu(dr_cleSeance(S.si)) }; });
+  E.verif('A35', /réactivation : oui \(par défaut\)/.test(r5b.t || '') && /réactivation : non/.test(r5c.t || '') && r5c.v === 'non', '(5) l\'entête de l\'Atelier dit le réglage (« oui (par défaut) »), un clic le pose à « non » par la fonction d\'E2' + (r5b.vraies ? '' : ' (doublures : E2 n\'a pas encore poussé ses deux fonctions)'), JSON.stringify({ avant: r5b.t, apres: r5c }));
+  E.verif('A35', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

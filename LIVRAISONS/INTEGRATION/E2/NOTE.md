@@ -20,7 +20,7 @@ Si la page se ferme en pleine heure : la bannière d'aujourd'hui (« Reprendre l
 |---|---|---|
 | production de départ (`index.html` 8.74.0-③) | `ac792b28f40d3a0510e725fc4a6b6985` | 1 838 175 o |
 | maquette de départ (p8-5g) | `62d9557ac8fedcfbdd8b157a2588cbee` | 605 996 o |
-| `LIVRAISONS/INTEGRATION/index.html` à cette note (23/10, après le promeus) | `94a06436df260de12d02e02e7e81e652` | 1 391 772 o |
+| `LIVRAISONS/INTEGRATION/index.html` à cette note (23/10, après le promeus) | `94a06436df260de12d02e02e7e81e652` | 1 402 421 o |
 | `dr/dr-classe.js` à cette note (ma coupe de la maquette posée par E1 + mon module ; §12.22 la réactivation construite) | `d11aeb050fc6530bf39463c59e8f9629` | 212 405 o |
 | `assemble/index.html` à cette note (poussée 33) | `a79f310b971228c249ae335970a1c11e` | 2 311 272 o |
 

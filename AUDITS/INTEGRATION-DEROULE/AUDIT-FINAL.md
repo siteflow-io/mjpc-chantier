@@ -45,6 +45,8 @@
 
 **Mise à jour 23/10, 08:22 (réveil n°39, tête `961a83d1`).** E1 `99ac5b29` (§12.25 : `dr_derouleDe` porte `reactivation`, l'eid `react-h<n>-s<clé>`, la lecture par le titre retirée de l'ordre d'heure, l'entête de l'Atelier ; A35 5/0, E1 273/0) ; E3 `9ec4e022` (la forme de la diapo construite mesurée d'avance : 12 lignes titres compris sur une page) ; E2, E4 codent (rien poussé). Code bougé (`dr-socle.js`, `dr-atelier.js`, `index.html`) : **mon banc sur `961a83d1` : collisions 0, parcours vert ×2, K 108 / 0** (épreuves `banc-sur-integration-961a83d1.txt`, `sur-integration-961a83d1-v22.txt` ; pièces T141) ; assemblé 2 301 960 o, md5 `6b07960d596a1fe7339a481c25d92365`. Pas de candidat 8.75.0-② (§12.22 en cours).
 
+**Mise à jour 23/10, 09:29 (réveil n°40, tête `f1dc33dd`).** E2 `01df4c86` → `cfd80497` (§12.25 : l'ordre de l'heure sans `dr_estRituel`, le bouton oui/non, le réglage `B/deroule/reactivation`, le lancement une fois, l'écran d'ouverture léger ; B18-B22 verts avec un bouchon d'E4 ; 12 · 17 mesurée) ; E1 `9a6e5110` (l'entête avec les vraies fonctions d'E2, A35 5/0, 273/0) ; E3 `49fb5b5b` (105/105) ; E4 code. **Mon banc sur `f1dc33dd` : collisions 0, parcours vert ×2, K 108 / 0** (épreuves `banc-sur-integration-f1dc33dd.txt`, `sur-integration-f1dc33dd-v22.txt` ; pièces T142) ; assemblé 2 313 619 o, md5 `bb294c80d55636409072677e968d36ff`. Registre prod : 12 · 17 ✔, 13 · 32 ouverte (`_drProchainCreneau` code mort, à retirer avant 8.75.0-②). Pas de candidat (E4 en cours).
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

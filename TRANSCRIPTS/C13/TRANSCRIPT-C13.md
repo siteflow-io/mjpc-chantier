@@ -2827,3 +2827,16 @@ MEMO
 
 23/10/2026 08:22
 MEMO
+
+---
+
+## Tour 142 — 23/10/2026 09:29 — réveil n°40 (09:20, programmé au tour 141)
+
+**Mesuré.** Pas de mot de Paul depuis 06:19. `origin/integration` : tête `f1dc33dd` — E2 `01df4c86` / `1d394415` / `cfd80497` / `f1dc33dd` (poussée 33 §12.25 : l'ordre de l'heure sans `dr_estRituel`, le bouton « Ouvrir par la réactivation » oui/non (défaut oui), le réglage `B/deroule/reactivation`, `dr_reactInserer` une fois, l'écran d'ouverture léger à l'heure 1 ; B18-B22 verts (bouchon d'E4), B13 corrigé dans le banc ; **12 · 17 mesurée** : `_drProchainCreneau` sans appelant, les absents de la case relus par `dr_absentsDeLaCase`, le report à la séance suivante seulement à la dernière heure) ; E1 `9a6e5110` / `59525ce7` (l'entête avec les vraies fonctions d'E2, A35 5/0, 273/0) ; E3 `49fb5b5b` (105/105) ; E4 : rien poussé (code). Code bougé (`dr-classe.js` +66/−11, `dr-socle.js`). Banc `banc-0922` sur `f1dc33dd` : collisions 0, parcours vert ×2, K 108 / 0, VERT ; assemblé 2 313 619 o, md5 `bb294c80d55636409072677e968d36ff` ; restauré. Registre prod (`cd1958b`) : 12 · 17 ✔ (contre le code), 13 · 32 ouverte (`_drProchainCreneau` code mort — relance E1/E2). Relances r40 ; audit §0/§6 ; épreuves ; pièces T142.
+
+**Réponse (mot pour mot).**
+
+304. La réactivation construite : E2 a livré sa part (le choix oui/non à « Lancer », le réglage par séance, l'ouverture de l'heure sur la diapo construite, une seule fois), mon banc est vert dessus ; E4 code le contenu de la diapo, c'est lui qu'on attend. La dette 12 · 17 est cochée (mesurée contre le code) ; une ligne neuve, 13 · 32 : une vieille fonction devenue morte (`_drProchainCreneau`), à retirer avant la prochaine promotion — demandé. Le 302 (les quatre titres) reste posé.
+
+23/10/2026 09:29
+MEMO

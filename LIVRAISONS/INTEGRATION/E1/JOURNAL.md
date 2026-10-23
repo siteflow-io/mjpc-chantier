@@ -374,3 +374,6 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - *(23/10, 02:09 UTC) Réveil n°34 lu : rien à faire, candidat `2229fee9`. Prochain retour 02:59 UTC.*
 - *(23/10, 03:00 UTC) Réveil n°35 lu : rien à faire, candidat `2229fee9`. Prochain retour 03:50 UTC.*
 - *(23/10, 03:51 UTC) Réveil n°36 lu : rien à faire, candidat `2229fee9`. Prochain retour 04:41 UTC.*
+
+## 23/10, 04:44 UTC — PROMEUS lu : 8.75.0-① en production (l'assemblé de `2229fee9`, mon import compris)
+- En veille, retour toutes les 50 min. Reste promis pour l'après-promeus, en attente d'une relance (§12.22, avec E2 et E4) : retirer la lecture par le titre de mon ordre d'heure (`dr-socle.js:752`, `dr_estRituel` / `/bilan/i`) — pas seul, le chapitre 3e au hub en dépend encore.

@@ -1,0 +1,33 @@
+banc E2 — la classe et l'heure · 2026-10-23 06:29 UTC · index.html md5 621aa142f192beaa8f59e660ef4fbe71 · 2313430 o
+
+B18 — « Ouvrir par la réactivation » oui : l'heure 2 s'ouvre sur la diapo construite, en tête, dévoilée avec ▶, dans la copie de la classe, hors des activités
+  ok     B18 · l'écran « Où en est la classe » paraît (heure 2 sans état au hub : §12.25-2), « oui » proposé (défaut, §12.25-1), le réglage de la séance « oui », l'ouverture annonce la réactivation construite, rien n'est lancé — {"on":true,"oui":true,"ouiCoche":true,"desact":false,"reg":"oui","lancee":false,"txt":"Où en est la 3E Charles de Gaulle — lundi 14 septembre, 08 h 57 · heure 2 sur 3 Poésie et peinture : le Romantisme en question La classe a déjà joué cette séance (son état n’est pas au hub : seul le p"}
+  ok     B18 · lancée : la construite (`react-h2-s0`, rôle reactivation, heure 2) est la première diapo de l'heure et au tableau, puis « Tableau 3 » ; construite une fois (un seul appel) ; le choix au journal et dans S.reactChoix — {"h":2,"lancee":true,"o":["Où en sommes-nous ?[reactivation]","Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Où en sommes-nous ?","Les règles héritées","Question-bilan","Fin d'heure[fin]"],"eid0":"react-h2-s0","di":"Où en sommes-nous ?","nReact":["react-h2-s0@2"],"calls":1,"J":["2:oui:react-h2-s0"],"choix":{"2":"oui"}}
+  ok     B18 · ▶ dévoile la construite élément par élément (journal `devoile` à son eid), ses lignes au tableau ; « Où on en est » la liste sans numéro d'activité (RC15) — {"dev":["react-h2-s0","react-h2-s0"],"mur":"OÙ EN SOMMES-NOUS ? La dernière fois Activité 1 — Tableau 1 Activité 2 — Tableau 2 Les notions le registre lyrique","lignes":["↺ Où en sommes-nous ?"]}
+  ok     B18 · la copie de la classe (`C/ecrans`) porte la construite telle quelle (eid, heure, ses deux blocs, `construite.depuis`), figée (§12.22 d) ; le paquet ne la compte pas dans `parActivite[]` — {"r":[{"eid":"react-h2-s0","heure":2,"nb":2,"c":{"depuis":"bouchon-h1","t":1789369205180}}],"pa":[],"ecrans":["react-h2-s0"]}
+  ok     B18 · aucune erreur JS
+
+B20 — construite une fois : la reprise la relit de la copie (même eid, même contenu), jamais une seconde ; l'heure 3 a la sienne, celle de l'heure 2 reste
+    (modale après la reprise : Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus. Compris)
+  ok     B20 · recharger puis « Reprendre le cours » : la construite revient de `C/ecrans` (même eid, mêmes blocs), première de l'heure 2, sans aucun appel à la construction — {"o":{"h":2,"lancee":true,"o":["Où en sommes-nous ?[reactivation]","Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Où en sommes-nous ?","Les règles héritées","Question-bilan","Fin d'heure[fin]"],"eid0":"react-h2-s0","di":"Où en sommes-nous ?","nReact":["react-h2-s0@2"],"calls":0,"J":["2:oui:react-h2-s0"],"choix":{"2":"oui"}},"bl":"La dernière fois:2|Les notions:1"}
+  ok     B20 · aucune erreur JS (reprise, clôture)
+  ok     B20 · l'heure 3 (état au hub) : l'écran « Où en est la classe » entier porte le bouton, « oui » proposé, l'ouverture annonce la réactivation — {"on":true,"oui":true,"ouiCoche":true,"txt":"Où en est la 3E Charles de Gaulle — mardi 15 septembre 2026, 15:07-16:02 · heure 3 sur 3 Poésie et peinture : le Romantisme en question L'heure 2 (lundi 14 sept"}
+  ok     B20 · l'heure 3 s'ouvre sur SA construite (`react-h3-s0`), celle de l'heure 2 reste à l'heure 2 ; une construction par heure — {"h":3,"lancee":true,"o":["Où en sommes-nous ?[reactivation]","Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Question-bilan","Où en sommes-nous ?","Les règles héritées","Fin d'heure[fin]"],"eid0":"react-h3-s0","di":"Où en sommes-nous ?","nReact":["react-h2-s0@2","react-h3-s0@3"],"calls":1,"J":["2:oui:react-h2-s0","3:oui:react-h3-s0"],"choix":{"2":"oui","3":"oui"}}
+  ok     B20 · aucune erreur JS
+
+B19 / B21 — « non » : l'heure s'ouvre sur le programme, rien de construit ni d'écrit ; le réglage de la séance (`B/deroule/reactivation`) est proposé à l'heure suivante ; mode test étanche
+  ok     B19 · « non » coché : l'ouverture annonce le programme, plus la réactivation — {"nonCoche":true,"txt":"Où en est la 3E Charles de Gaulle — lundi 14 septembre, 08 h 57 · heure 2 sur 3 Poésie et peinture : le Romantisme en question La classe a déjà joué cette séance (son état n’est pas au hub : seul le paquet de l’heure d’a"}
+  ok     B21 · le réglage de la séance « non » : une seule écriture, `B/deroule/reactivation` (K15), rien d'autre — {"reg":"non","ecr":["PUT /site/3e/chapitres/0/seances/0/deroule/reactivation"]}
+  ok     B19 · lancée avec « non » : l'heure 2 s'ouvre sur « Tableau 3 », aucune réactivation dans la trame jouée, le choix « non » au journal et dans S.reactChoix — {"h":2,"lancee":true,"o":["Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Où en sommes-nous ?","Les règles héritées","Question-bilan","Fin d'heure[fin]"],"eid0":"emt9v3yqoqmqnf","di":"Tableau 3","nReact":[],"calls":1,"J":["2:non:null"],"choix":{"2":"non"}}
+  ok     B19 · au hub : aucune réactivation dans `C/ecrans` ; `B/deroule/reactivation` = « non » — {"r":0,"reg":"non"}
+  ok     B19 · aucune erreur JS
+  ok     B21 · l'heure suivante : le réglage « non » de la séance est la réponse proposée (relu de la trame), l'ouverture annonce le programme — {"nonCoche":true,"reg":"non","txt":"Où en est la 3E Charles de Gaulle — mardi 15 septembre 2026, 15:07-16:02 · heure 3 sur 3 Poésie et peinture : le Romantisme en question L'heure 2 (lundi 14 septembre 2026, 08:57) : close (fermée à l'o"}
+  ok     B21 · le réglage remis à « oui » : la proposition suit (le choix de l'heure n'avait pas été fait à la main) — {"ouiCoche":true,"reg":"oui"}
+  ok     B21 · mode test : le réglage va au magasin de test, zéro écriture au hub ; l'heure se lance — {"h":2,"lancee":true,"ecr":[],"mt":"non"}
+
+B22 — rien à réactiver (la construction rend null, ou n'est pas dans le site) : « Lancer » reste direct, aucune réactivation
+  ok     B22 · la construction rend null (rien de joué avant) : pas d'écran d'ouverture, l'heure 2 est lancée directement sur « Tableau 3 », sans réactivation (§12.25-2) — {"on":false,"o":{"h":2,"lancee":true,"o":["Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Où en sommes-nous ?","Les règles héritées","Question-bilan","Fin d'heure[fin]"],"eid0":"emt9v3yqoqmqnf","di":"Tableau 3","nReact":[],"calls":1,"J":["2:non:null"],"choix":{"2":"non"}}}
+  ok     B22 · aucune erreur JS
+  ok     B22 · sans la fonction de construction dans le site (E4 pas encore là) : « Lancer » direct, comme avant — {"on":false,"h":2,"lancee":true}
+
+BANC E2 VERT

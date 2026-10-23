@@ -1,0 +1,41 @@
+E3 · ce qui tient sur une diapo · 2026-10-23 05:37 UTC · fichier md5 746227673f68401bd399af6edd3bbc2f · 2299802 o · faux hub /home/claude/mjpc-chantier/AUDITS/INTEGRATION-DEROULE/hub · police EB Garamond chargée depuis /home/claude/mjpc-chantier/LIVRAISONS/INTEGRATION/E3/outils/eb-garamond
+
+── tableau 1366 × 768 · #mur2 = 1365 × 768 · police EB Garamond (chargée) · largeur-test « Figures d'analogie » à 40 px : 272 px
+
+  RÉACTIVATION — quatre blocs texte (titre + lignes) : a activités, r à reprendre, n notions, t travail → lignes en tout (titres compris)
+    a=1 r=0 n=1 t=1 →  6 lignes · police 32 pt · 1 page(s)
+    a=1 r=1 n=1 t=1 →  8 lignes · police 32 pt · 1 page(s)
+    a=2 r=1 n=2 t=1 → 10 lignes · police 31.3 pt · 1 page(s)
+    a=2 r=1 n=3 t=1 → 11 lignes · police 28.3 pt · 1 page(s)
+    a=3 r=1 n=3 t=1 → 12 lignes · police 26 pt · 1 page(s)
+    a=3 r=2 n=3 t=1 → 13 lignes · police 26 pt · 2 page(s)
+    a=3 r=2 n=4 t=1 → 14 lignes · police 26 pt · 2 page(s)
+    a=4 r=2 n=4 t=1 → 15 lignes · police 26 pt · 2 page(s)
+    a=4 r=2 n=5 t=1 → 16 lignes · police 26 pt · 2 page(s)
+    a=4 r=3 n=5 t=1 → 17 lignes · police 26 pt · 2 page(s)
+    a=5 r=3 n=5 t=2 → 19 lignes · police 26 pt · 2 page(s)
+    a=6 r=4 n=6 t=2 → 22 lignes · police 26 pt · 2 page(s)
+    a=6 r=4 n=8 t=3 → 25 lignes · police 26 pt · 3 page(s)
+    → à 32 pt sans réduction jusqu'à 8 lignes (titres compris) ; une seule page (police ≥ 26 pt) jusqu'à 12 lignes ; 2 pages à partir de 13
+
+  erreurs JS dans la page tableau : 0
+
+── tableau 1920 × 1080 · #mur2 = 1920 × 1080 · police EB Garamond (chargée) · largeur-test « Figures d'analogie » à 40 px : 272 px
+
+  RÉACTIVATION — quatre blocs texte (titre + lignes) : a activités, r à reprendre, n notions, t travail → lignes en tout (titres compris)
+    a=1 r=0 n=1 t=1 →  6 lignes · police 32 pt · 1 page(s)
+    a=1 r=1 n=1 t=1 →  8 lignes · police 32 pt · 1 page(s)
+    a=2 r=1 n=2 t=1 → 10 lignes · police 31.5 pt · 1 page(s)
+    a=2 r=1 n=3 t=1 → 11 lignes · police 28.6 pt · 1 page(s)
+    a=3 r=1 n=3 t=1 → 12 lignes · police 26.2 pt · 1 page(s)
+    a=3 r=2 n=3 t=1 → 13 lignes · police 26 pt · 2 page(s)
+    a=3 r=2 n=4 t=1 → 14 lignes · police 26 pt · 2 page(s)
+    a=4 r=2 n=4 t=1 → 15 lignes · police 26 pt · 2 page(s)
+    a=4 r=2 n=5 t=1 → 16 lignes · police 26 pt · 2 page(s)
+    a=4 r=3 n=5 t=1 → 17 lignes · police 26 pt · 2 page(s)
+    a=5 r=3 n=5 t=2 → 19 lignes · police 26 pt · 2 page(s)
+    a=6 r=4 n=6 t=2 → 22 lignes · police 26 pt · 2 page(s)
+    a=6 r=4 n=8 t=3 → 25 lignes · police 26 pt · 3 page(s)
+    → à 32 pt sans réduction jusqu'à 8 lignes (titres compris) ; une seule page (police ≥ 26 pt) jusqu'à 12 lignes ; 2 pages à partir de 13
+
+  erreurs JS dans la page tableau : 0

@@ -2710,3 +2710,16 @@ MEMO
 
 23/10/2026 01:21
 MEMO
+
+---
+
+## Tour 134 — 23/10/2026 02:20 — réveil n°33 (02:19, programmé au tour 133)
+
+**Mesuré.** Pas de mot de Paul depuis 23:17. `origin/integration` : tête `0dc1d12a` — E4 `36a6d505` (L189 écartée : sa mesure venait de la répétition, mur du pilote, police de repli ; v0.9 → liste à 0 écart ; 182 lignes, 0 pas réglée, 11 écartées, 0 à Paul ; signal « 0 pas réglée (`9eba2708`) » tient), `0dc1d12a` (veille) ; E3 `0585fbdd` (même pagination `rendre` / fenêtre du tableau : une page avec 5 mots-clés ; cause du « deux pages » : la ligne de réponse vide du pilote comptée par `paginer` + police de repli ; le tableau reprend les pages du pilote) ; E1 `7d44e8ce`, E2 `7f50f99a` : rien. `git diff --stat 2229fee9 origin/integration -- index.html dr` : vide → pas de banc ; candidat inchangé `2229fee9`. Relances r33 ; audit §0.
+
+**Réponse (mot pour mot).**
+
+294. Réglé entre eux : le « deux pages » d'E4 venait de son écran de pilotage (il a une ligne de plus que le tableau, la ligne où tu écris la réponse) et d'une autre police ; au tableau, E3 et moi avons raison, une page. Rien ne bouge : le prompt est prouvé sur pièce, la candidate reste `2229fee9`, ton mot « promeus » attendu.
+
+23/10/2026 02:20
+MEMO

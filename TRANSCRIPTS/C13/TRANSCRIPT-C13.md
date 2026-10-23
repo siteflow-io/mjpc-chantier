@@ -2775,3 +2775,27 @@ MEMO
 
 23/10/2026 06:13
 MEMO
+
+---
+
+## TOUR 139 (23/10/2026, 06:19 → 06:27) — LE PROMEUS
+
+Paul (06:19), mot pour mot :
+« Promeus »
+
+Fait (06:19-06:27) :
+- Vérifié : `origin/integration` tête `be8770c7`, code identique à `2229fee9` (diff vide) ; assemblé de `2229fee9` (`git archive` + `assembler.mjs`) md5 `746227673f68401bd399af6edd3bbc2f`, 2 299 802 o. Prod avant : 8.74.0-④, 1 838 791 o, md5 `c384d850…`, blob `551ee1cc2aec` (gardé en `scratchpad/prod-8.74.0-4-index.html`). Le micro 13 · 25 de la ④ (`sesPut` → `mjpcEcrireRest`) : `sesPut` n'existe plus dans le candidat, le lancement passe par `dr_ecrire` (K15-test vert) — rien de perdu.
+- **Promotion** : `index.html` = l'assemblé + `APP_VERSION="8.75.0-①"` (la seule ligne qui diffère, vérifiée par `diff`) ; commit prod `d597b5fcd146` « 8.75.0-① — le déroulé intégré (E1-E4, audit final C13 tours 97-138) », poussé 06:21 ; md5 `6cf9c1f2a173e333c45ffb4b7d9a9863`, 2 299 802 o. **Bit à bit** : `curl` du site en ligne (`?v=8.75.0-1`) → même md5, même taille (06:26).
+- Suivi dans le tour (commit prod `eb7c39ff6883`) : `docs/MJPC6-journal.md` (entrée de promotion) ; `docs/MJPC6-DETTES.md` : ✔ 12 · 05 (P5), 12 · 16 (« appoint » 0, « notion imprévue » 6, mesuré), 13 · 4, 5, 6, 8, 18-23, 24, 26, 27, 28, 29, 30, 31 chacune avec sa garde ; 12 · 14, 15, 19 : consignations, rien à régler ; 12 · 17 : en partie (bilan, « M. Meney ») — restent à mesurer `_drProchainCreneau`, les absents de la case EDT, le report du T-5 ; 12 · 18 : ouverte (lot A1) ; 13 · 12 : à Paul ; « ÉTAT DE PRODUCTION » : v8.75.0-① ; `docs/MJPC6-restauration.md` : point de retour 8.74.0-④ (blob `551ee1cc2aec`) ; `docs/MJPC6-INDEX-FONCTIONS.md` régénéré (1838 fonctions : dr_ 339, p8 92, edt 233 ; `docs/outils/index_fonctions.py` adapté — plus d'`AT_DR_B64`, prend le fichier en argument) ; `docs/MJPC6-OU-TROUVER-QUOI.md` : section 8.75.0-①.
+- Sas : relances « promeus » E1-E4 (E2/E4 : §12.22 la réactivation construite — lecture au JOURNAL, attendre « va » avant de coder) ; audit §0.
+
+Réponse de la conscience (06:27), mot pour mot :
+
+299. **Promu.** Le déroulé intégré est en ligne : version 8.75.0-①, adresse https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.75.0-1 — le site en ligne sert bien le fichier promu, vérifié octet par octet (md5 `6cf9c1f2…`, 2 299 802 o). Tout le suivi est fait dans le tour : journal, dettes cochées (12 · 05, 12 · 16, 13 · 4, 5, 6, 8, 18 à 24, 26 à 31 — chacune avec la garde qui la tient), point de retour vers la 8.74.0-④, index des fonctions refait (1 838 fonctions), « où trouver quoi ». Restent dans le registre : 13 · 12 (à toi), 12 · 18 (les attendus au hub — c'est le lot A1 du plan), 12 · 17 en partie (trois points à mesurer contre le code, je le fais au prochain contrôle).
+
+300. La suite chez les exécutants, comme décidé au contrat (§12.22, ton « ok ça me va » d'hier 14:13) : E2 et E4 préparent la réactivation construite (la diapo « Où en sommes-nous ? » faite en classe d'après l'heure d'avant, au choix) — ils écrivent d'abord leur lecture, je te la montre avant qu'ils codent. Le plan de 10 jours : ses six mandats sont écrits, rien n'est lancé — dis « go » quand tu veux qu'il parte, ou dis d'abord ce que tu veux jouer.
+
+Tests à jouer (ton premier cours réel sur la 8.75.0-①) : l'emploi du temps → la case de l'heure (« heure 1/2 » juste) → Préparer → Lancer → la diapo 1 au mur → ▶ (dévoiler) → F2 (la parole, les initiales) → Écran 2 (la fenêtre du tableau suit) → Fin de l'heure (le cahier de textes, le travail prévu proposé) → Clore → Relecture (le récit dit ce qui s'est passé, l'heure réelle de fin) → Papier. Si quelque chose cloche : « BUG » et le point de retour est prêt.
+
+23/10/2026 06:27
+MEMO

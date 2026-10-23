@@ -271,3 +271,6 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 
 ## 23/10, 05:52 — retour 17 : réveil n°36 lu
 - Rien à faire ; code et assemblé inchangés (`74622767…`).
+
+## 23/10, 06:44 — retour 18 : réveil n°37 et le PROMEUS (8.75.0-① en production, 06:21)
+- Rien à faire ; code du sas et assemblé inchangés (`74622767…`). Je reste en veille (retour 50 min) ; quand §12.22 (la diapo de réactivation construite, E2/E4) touche le tableau, sa mesure viendra ici (patron : `mesure-tient.mjs` / `mesure-bilan.mjs`).

@@ -388,3 +388,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 
 ## 06:53 UTC — réveil n°39 lu ; l'entête de l'Atelier avec les vraies fonctions d'E2
 - E2 a poussé `dr_reglageReactivationLu` / `dr_reglageReactivation` (`01df4c86`). Rejoué A35 sur la tête : **1 échec** — `dr_reglageReactivationLu` rend « oui » quand rien n'est posé (l'absent est le défaut), mes doublures rendaient l'absent : l'entête disait « oui » sans « (par défaut) » (`a35-avant-e2.txt`). Corrigé : « (par défaut) » se décide sur la valeur brute de la trame (`B/deroule/reactivation` absent), le oui/non sur la fonction d'E2. **A35 5/0 avec les vraies fonctions** (plus de doublures).
+- **Bancs sur `9a6e5110`** (avec E2 `01df4c86` ; sorties `E1/sorties/0653/`, avec `a35-avant-e2.txt`) : **banc de la conscience VERT** — collisions 0, parcours vert ×2, K1-K13 0 défaut ; **banc E1 : 273 vérifications, 0 échec**.

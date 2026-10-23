@@ -39,6 +39,8 @@
 
 **Mise à jour 23/10, 06:13 (réveil n°37, tête `a011d61f`, code = `2229fee9`).** Rien n'a bougé : code inchangé, pas de banc, candidat `2229fee9` ; E1-E4 : rien. En attente du mot de Paul.
 
+**23/10, 06:21 — PROMU : 8.75.0-①.** Paul (06:19) : « Promeus ». Le candidat `2229fee9` (code inchangé depuis, vérifié) assemblé par `git archive` + `assembler.mjs` (md5 `746227673f68401bd399af6edd3bbc2f`, 2 299 802 o), copié en `index.html` de production avec la seule ligne `APP_VERSION="8.75.0-①"` : commit prod `d597b5fcd146`, md5 `6cf9c1f2a173e333c45ffb4b7d9a9863`, 2 299 802 o ; **bit à bit : le site en ligne sert ce md5** (06:26). Prod ④ (micro 13 · 25, `sesPut`) : absorbée — `sesPut` n'existe plus, le lancement passe par `dr_ecrire` (K15-test vert). Suivi fait dans le tour (commit prod `eb7c39f`) : journal, dettes ✔ (12 · 05, 12 · 16, 13 · 4-6, 8, 18-24, 26-31 ; 12 · 17 en partie, 12 · 18 ouverte, 13 · 12 à Paul), point de retour (blob `551ee1cc2aec`), index des fonctions régénéré (1838 ; générateur adapté : plus d'`AT_DR_B64`), « où trouver quoi ». Prochain cycle sur `integration` : §12.22 (E2/E4), promeus 8.75.0-②.
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

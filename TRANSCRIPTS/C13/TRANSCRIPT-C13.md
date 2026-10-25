@@ -3006,3 +3006,20 @@ MEMO
 
 25/10/2026 14:45
 MEMO
+
+## Tour 154 — 25/10/2026 14:47 — Paul (14:46)
+
+**Paul (mot pour mot).** « Donc il faut absolument que je la voie avant.  Et que je puisse éventuellement la modifier si besoin. »
+
+**Mesuré (faisabilité, dans `b7997488`).** L'écran d'ouverture d'une heure n > 1 (« Où en est la classe », l. 18150-18158) s'ouvre depuis la case de l'emploi du temps sans lancer : il relit l'état joué de la classe (`dr_lireJoue`), prépare la diapo en mémoire (`dr_reactPreparerAsync`) et montre le bouton « Ouvrir par la réactivation » ; « Lancer » (`o-lancer`) insère la diapo (`dr_reactInserer`). Le déroulé de la séance est commun à toutes les classes du chapitre ; la copie (`C`) est par classe : la diapo construite est par classe, elle ne peut pas vivre dans l'Atelier du chapitre. Les entrées existent à la clôture de l'heure d'avant (activités faites, notions cochées, travail écrit au cahier). L'Atelier sait déjà qu'un écran `role === 'reactivation'` ne se déplace pas (`roleFixe`, l. 16918) et édite les blocs `texte` ligne à ligne. Candidat `b7997488` : suspendu (relances, audit §0).
+
+**Réponse (mot pour mot).**
+
+322. Acquis : le candidat attend, je ne le promeus pas — telle qu'elle est, la réactivation se construit au moment où tu lances, tu ne la vois pas avant. Ça ne va pas ; ça se règle avant 8.75.0-②.
+
+323. Ce que je propose, à valider : elle se construit à la clôture de l'heure d'avant (tout existe à ce moment-là : ce qui a été fait, les notions cochées, le travail du cahier) et elle est gardée avec la copie de cette classe. Tu la vois et tu la modifies depuis l'écran « Où en est la classe » de l'heure suivante — celui que tu ouvres depuis ta case d'emploi du temps, n'importe quand, sans lancer : « Voir » la montre comme au tableau ; « Modifier » te laisse changer, enlever ou ajouter une ligne (le site n'écrit rien de lui-même) ; « Reconstruire » rend la version du site si tu veux repartir de zéro. Tes modifications restent ; au lancement, c'est ta version qui s'ouvre. Les élèves ne voient rien avant la classe.
+
+324. Si c'est « va », je l'écris au contrat (§12.26) et je relance E2 (l'écran, la clôture), E4 (la construction à la clôture, la garde avec la copie), E1 (la modification ligne par ligne), E3 (la mesure) — puis nouveau candidat. Si tu la veux ailleurs (dans l'Atelier, par exemple), dis-le : l'Atelier est commun à toutes tes classes, la réactivation est propre à chacune, c'est pour ça que je la mets sur l'écran de la classe.
+
+25/10/2026 14:47
+MEMO

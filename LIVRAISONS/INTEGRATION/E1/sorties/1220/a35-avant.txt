@@ -1,0 +1,13 @@
+banc E1 · 2026-10-25 11:20 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 1b615ac4ff682395484e8503f55cd97c
+
+A35 — §12.25 (§12.22, ma part) : le réglage porté par dr_derouleDe, l'eid de la réactivation construite, la lecture par le titre tombée, le réglage dans l'entête de l'Atelier
+  ok     A35 · (6) « Où en sommes-nous ? » sans rôle (diapo 12, heure 2) n'est plus pris pour la réactivation : il garde sa place (4ᵉ de son heure), il ne remonte plus en tête (seul role « reactivation » compte) — {"i":11,"h":2,"tete":8,"avant":8,"rang":3,"role":null}
+  ok     A35 · (3) l'eid stable de la réactivation : react-h<n>-s<clé> (rien posé sur une diapo qui n'est pas une réactivation) — {"a":"react-h2-s1","b":"react-h3-s0","c":null}
+  ok     A35 · (5) B/deroule/reactivation porté par dr_derouleDe, et toujours au hub après une sauvegarde de la trame — {"de":"non","hub":{"r":"non","act":"Tableau 1 (retouche)"}}
+  ok     A35 · (5) l'entête de l'Atelier dit le réglage (« oui (par défaut) »), un clic le pose à « non » par la fonction d'E2 — {"avant":"Ouvrir chaque heure par la réactivation : oui (par défaut)","apres":{"t":"Ouvrir chaque heure par la réactivation : non","v":"non"}}
+  ÉCHEC  A35 · (13 · 34) l'écran construit, vue tableau : les deux titres cachés avant tout dévoilement ; « La dernière fois » paraît avec sa 1ʳᵉ ligne, « Le travail » reste caché jusqu'à la sienne ; tout visible à la fin — {"c0":{"t":["La dernière fois","Le travail"],"vis":[1,1]},"c1":{"t":["La dernière fois","Le travail"],"vis":[1,1]},"c3":{"t":["La dernière fois","Le travail"],"vis":[1,1]}}
+  ÉCHEC  A35 · (13 · 34) le pilote voit les titres à venir atténués (comme la question), et le compte des éléments ne change pas (3 lignes, les titres n'en sont pas) — {"p0":{"t":["La dernière fois","Le travail"],"vis":[1,1]},"nEl":3}
+  ok     A35 · (13 · 34) une diapo ordinaire (non construite) garde ses titres de bloc dès le premier instant (p8-4 inchangé) — {"t":["La dernière fois","Le travail"],"vis":[1,1]}
+  ok     A35 · aucune erreur JS, aucune boîte
+
+8 vérifications, 2 échec(s) · 12 s

@@ -411,3 +411,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - *(12:42 Paris / 11:42 UTC) Réveil n°44 lu (rien de nouveau, E3 attend 13 · 34). Rebasé sur la poussée 99 d'E4 (13 · 35, dr-recit.js) : banc.sh rejoué sur la tête rebasée avant la poussée — voir la ligne suivante.*
 - *(12:50 Paris / 11:50 UTC) Tête rebasée `2360baca` (sur E4 poussée 99, 13 · 35) : banc.sh rejoué **VERT** (sorties `E1/sorties/1243/`), A33 62/0 + A35 8/0 (`a33-a35.txt`). Poussé.*
 - *(25/10, 13:43 Paris / 12:43 UTC) Réveil n°45 lu : 13 · 34 ✔ au registre prod (E3 : 0 ▶ fautif sur 20 ; conscience sur b7997488 : plus aucun titre vide, banc vert). Rien à faire. Tête d2b8cf52. Prochain retour 13:33 UTC.*
+- *(25/10, 14:34 Paris / 13:34 UTC) Réveil n°46 lu : b7997488 est le candidat 8.75.0-② (ma 13 · 34 dedans), on attend le mot de Paul. Rien à faire. Tête d172a808. Prochain retour 14:24 UTC.*

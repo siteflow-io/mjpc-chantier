@@ -3193,3 +3193,16 @@ MEMO
 
 25/10/2026 20:27
 MEMO
+
+## Tour 167 — 25/10/2026 20:28 — Paul (20:28)
+
+**Paul (mot pour mot).** « Ok »
+
+**Acquis.** Le contrôle horaire reste ce soir jusqu'à 13 · 12 réglée par E3 (un ou deux réveils, le n°52 part à 20:31 avec son texte d'avant — il relit l'état réel, pas de promeus à refaire), puis il est supprimé ; il ne revient que sur le mot de Paul.
+
+**Réponse (mot pour mot).**
+
+349. Acquis : le contrôle tourne encore ce soir pour 13 · 12, puis je le supprime et je te le dis ; il ne revient que sur ton mot.
+
+25/10/2026 20:28
+MEMO

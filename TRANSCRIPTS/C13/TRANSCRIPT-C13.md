@@ -3180,3 +3180,16 @@ MEMO
 
 25/10/2026 20:26
 MEMO
+
+## Tour 166 — 25/10/2026 20:27 — Paul (20:26)
+
+**Paul (mot pour mot).** « Est il utile? »
+
+**Mesuré.** Réveils du jour (n°41 à n°51, depuis 09:10) : onze ; ceux qui ont trouvé du nouveau à vérifier (banc, geste, dette, candidat) : n°41, 42, 43, 45, 46, 48, 49 ; ceux qui n'ont rien trouvé (« rien de nouveau ») : n°44, 47, 50, 51. Les exécutants poussent d'eux-mêmes et se reprogramment seuls ; le réveil ne les fait pas travailler, il vérifie ce qu'ils ont poussé (banc, geste, registre) et te le dit.
+
+**Réponse (mot pour mot).**
+
+348. Utile quand ils codent, inutile quand ils veillent. Aujourd'hui, sur onze réveils, sept ont vérifié quelque chose (un banc, un geste, une dette, le candidat — c'est comme ça que §12.26 a été contrôlé et annoncé sans que tu demandes) et quatre n'ont rien trouvé et t'ont coûté un tour pour rien. Ce qu'il fait n'est jamais un geste sur le site : lire ce qu'ils ont poussé, le mesurer, te le dire. Ce que je propose : je le garde ce soir jusqu'à ce qu'E3 ait réglé 13 · 12 (un ou deux réveils), puis je le supprime ; il ne revient que sur ton mot, quand un nouveau cycle fait coder les exécutants. Si tu ne dis rien, c'est ce que je fais.
+
+25/10/2026 20:27
+MEMO

@@ -78,6 +78,7 @@ function dr_eidReactivation(h, sk){ if (sk == null) { try { sk = dr_ctx().snum; 
 function dr_poserEidReactivation(e, h, sk){ if (e && e.role === 'reactivation') e.eid = dr_eidReactivation(h != null ? h : e.heure, sk); return e; }
 /* cadrage 4 · 2.6 (repris de la maquette, normaliserTrame) : chaque heure se termine par une diapo de rôle « fin » ; écrans sans heure = heure 1 (le site n'a pas encore d'heure prévue) */
 function dr_normaliserTrame(E, sk){
+  for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'reactivation') E.splice(i, 1);   /* E1 (§12.26 (2)) : la réactivation construite est propre à chaque classe (C/ecrans) — jamais dans le déroulé du chapitre : le prompt n'en écrit pas, l'import la refuse, et si une trame du hub en portait une, l'Atelier ne la montre pas et ne la réécrit pas (dr_derouleDe) */
   E.forEach(e => dr_heureParDefaut(e));
   const heures = [...new Set(E.map(e => e.heure))].sort((a, b) => a - b);
   heures.forEach(h => { const idx = E.map((e, i) => e.heure === h ? i : -1).filter(i => i >= 0); const der = idx[idx.length - 1]; if (der != null && E[der].role === 'fin') return;
@@ -178,7 +179,7 @@ function dr_derouleDe(sk, brut){
   const travail = {}; Object.keys(DR_MEM.travail).forEach(k => { if (k.startsWith(si + '|')) travail[k.slice(si.length + 1)] = DR_MEM.travail[k]; });
   if (!brut) dr_preparer(E);
   dr_ecritsSeulement(E);
-  const o = { ecrans: E.filter(e => !(e && e.dr_pose && !(e.blocs || []).length)) };   /* la fin d'heure posée à la lecture ne s'écrit que si Paul y a mis quelque chose */
+  const o = { ecrans: E.filter(e => !(e && e.dr_pose && !(e.blocs || []).length) && !(e && e.role === 'reactivation')) };   /* la fin d'heure posée à la lecture ne s'écrit que si Paul y a mis quelque chose ; E1 (§12.26 (2)) : jamais une réactivation construite dans B/deroule */
   if (acts.length) o.activites = acts; if (Object.keys(notes).length) o.notes = notes; if (Object.keys(travail).length) o.travail = travail;
   if (d.reactivation === 'oui' || d.reactivation === 'non') o.reactivation = d.reactivation;   /* E1 (§12.25 (5)) : le réglage par séance (E2 l'écrit sur B/deroule/reactivation) — porté ici pour que le PUT entier de dr_sauve ne l'efface pas */
   return o;

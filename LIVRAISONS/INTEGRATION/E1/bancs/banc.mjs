@@ -767,6 +767,38 @@ await B('A35', '§12.25 (§12.22, ma part) : le réglage porté par dr_derouleDe
   E.verif('A35', r34.o0.t.join('|') === 'La dernière fois|Le travail' && r34.o0.vis.every(v => v === 1), '(13 · 34) une diapo ordinaire (non construite) garde ses titres de bloc dès le premier instant (p8-4 inchangé)', JSON.stringify(r34.o0));
   E.verif('A35', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
 
+await B('A36', '§12.26, ma part : le geste d\'écriture du pilote sur la réactivation construite AVANT le lancement (changer, ajouter, enlever une ligne → ses blocs) ; l\'Atelier ne la montre ni ne l\'écrit jamais', async () => {
+  const o = await E.ouvrir(b, { w: 1366, h: 768, vue: 'pilotage' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(800);
+  /* l'écran construit, tel qu'E2 le met dans la copie (en mémoire : seance().ecrans) et le montre dans le pilote sans lancer ; ici avant l'heure 1 */
+  const r0 = await pg.evaluate(() => { const E0 = seance().ecrans; const e = { act: 'Où en sommes-nous ?', role: 'reactivation', heure: 1, dur: 3, eid: 'react-h1-s0', construite: { depuis: 'x', t: 1 }, blocs: [{ t: 'texte', txt: 'La dernière fois', el: ['Activité 1 — a', 'Activité 2 — b'] }, { t: 'texte', txt: 'Le travail', el: ['Apprendre la leçon'] }] }; E0.splice(0, 0, e); dr_preparer(E0); S.di = 0; S.page = null; dr_tout(); return { lancee: !!S.lancee, atelier: !!S.atelier, regime: dr_ctx().regime }; }); await pg.waitForTimeout(600);
+  const arme = () => pg.evaluate(() => { const x = Array.from(document.querySelectorAll('#mur [data-p][contenteditable]')); return { n: x.length, ps: x.map(z => z.dataset.p).join(' '), titre: x[0] ? x[0].title.slice(0, 60) : null, role: (ecran() || {}).role || null }; });
+  const a1 = await arme();
+  E.verif('A36', !r0.lancee && !r0.atelier && a1.role === 'reactivation' && a1.n === 5 && a1.ps === '0.t 0.0 0.1 1.t 1.0' && /ta version reste dans la copie/.test(a1.titre || ''), 'avant le lancement, la diapo construite s\'écrit : ses deux titres et ses trois lignes sont éditables, l\'infobulle du pilote dit où va la frappe', JSON.stringify({ r0, a1 }));
+  /* changer une ligne : la frappe va dans le bloc lui-même */
+  await pg.evaluate(() => { const z = document.querySelector('#mur [data-p="0.1"]'); z.focus(); z.textContent = 'Activité 2 — b (revue avec eux)'; z.dispatchEvent(new Event('input', { bubbles: true })); });
+  await pg.waitForTimeout(200); const c1 = await pg.evaluate(() => ({ el: Array.from(ecran().blocs[0].el), copie: Object.keys(S.copie || {}).length, J: J.filter(x => x.type === 'copie-classe').length }));
+  E.verif('A36', c1.el[1] === 'Activité 2 — b (revue avec eux)' && c1.copie === 0 && c1.J === 0, 'changer une ligne : le bloc de l\'écran la porte (pas de surcouche S.copie, rien au journal d\'une heure qui n\'est pas lancée)', JSON.stringify(c1));
+  /* ajouter une ligne : Entrée ; enlever : Échap sur la ligne vide */
+  await pg.focus('#mur [data-p="1.0"]'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(500); const c2 = await pg.evaluate(() => ({ el: Array.from(ecran().blocs[1].el), focus: (document.activeElement.dataset || {}).p || null }));
+  await pg.keyboard.type('Relire la fiche'); await pg.waitForTimeout(300); const c3 = await pg.evaluate(() => Array.from(ecran().blocs[1].el));
+  await pg.keyboard.press('Enter'); await pg.waitForTimeout(400); await pg.keyboard.press('Escape'); await pg.waitForTimeout(400); const c4 = await pg.evaluate(() => ({ el: Array.from(ecran().blocs[1].el), focus: (document.activeElement.dataset || {}).p || null }));
+  E.verif('A36', c2.el.length === 2 && c2.focus === '1.1' && c3.join('|') === 'Apprendre la leçon|Relire la fiche' && c4.el.join('|') === 'Apprendre la leçon|Relire la fiche' && c4.focus === '1.1', 'Entrée ajoute une ligne au bloc (le curseur y va), la frappe l\'écrit ; Entrée puis Échap sur la ligne vide la retire', JSON.stringify({ c2, c3, c4 }));
+  await pg.keyboard.down('Alt'); await pg.keyboard.press('ArrowUp'); await pg.keyboard.up('Alt'); await pg.waitForTimeout(300); const c5 = await pg.evaluate(() => ecran().blocs.map(b => b.txt).join('|'));
+  E.verif('A36', c5 === 'La dernière fois|Le travail', 'Alt+↑ ne déplace pas les blocs (les lignes seulement, rien d\'autre)', c5);
+  /* pas armé ailleurs avant le lancement, ni sur une réactivation déjà jouée */
+  const n1 = await pg.evaluate(() => { S.di = 1; S.page = null; dr_tout(); return (ecran() || {}).role || 'aucun'; }); await pg.waitForTimeout(500); const a2 = await arme();
+  const n2 = await pg.evaluate(() => { S.lancee = true; S.close = true; S.heure = 1; S.di = 0; S.page = null; dr_tout(); return p8ReactAvantLancement(); }); await pg.waitForTimeout(500); const a3 = await arme();
+  const n3 = await pg.evaluate(() => { ecran().heure = 2; const r = p8ReactAvantLancement(); S.lancee = false; S.close = false; ecran().heure = 1; dr_tout(); return r; });
+  E.verif('A36', n1 === 'aucun' && a2.n === 0 && n2 === false && a3.n === 0 && n3 === true, 'avant le lancement, une diapo ordinaire ne s\'écrit pas ; l\'heure 1 close, la réactivation jouée (heure 1) ne s\'écrit plus, celle de l\'heure 2 à venir s\'écrit', JSON.stringify({ n1, a2: a2.n, n2, a3: a3.n, n3 }));
+  /* (2) jamais dans le déroulé de l'Atelier : dr_derouleDe ne l'écrit pas, la trame lue au hub la perd, le versement la saute */
+  const d = await pg.evaluate(() => { const k = dr_cleSeance(S.si); const o = dr_derouleDe(k); const E1 = [{ act: 'x', role: 'reactivation', heure: 1, blocs: [] }, { act: 'y', heure: 1, blocs: [] }]; dr_normaliserTrame(E1, '0');
+    const e = seance().ecrans[0]; S.heure = 1; S.copie = { 1: {} }; S.copie[1][e.eid] = {}; S.copie[1][e.eid][e.blocs[0].bid] = { t: 'changé en classe' }; const diff = p8DiffCopie(1, e).length; const dif = p8CopieDiffere(); const liste = p8ListeVersement(); const verse = p8Verser(1, e.eid); S.copie = {};
+    return { enMemoire: seance().ecrans.some(x => x.role === 'reactivation'), ecrits: o.ecrans.filter(x => x.role === 'reactivation').length, nEcrits: o.ecrans.length, nMem: seance().ecrans.filter(x => !(x.dr_pose && !(x.blocs || []).length)).length, lue: E1.map(x => x.role || x.act).join(','), diff, dif, liste: /aucune/.test(liste), verse }; });
+  E.verif('A36', d.enMemoire && d.ecrits === 0 && d.nEcrits === d.nMem - 1 && d.lue === 'y,fin' && d.diff === 1 && d.dif === false && d.liste && d.verse === 0, 'dr_derouleDe n\'écrit pas la réactivation (en mémoire : oui, au PUT : non) ; une trame du hub qui en porte une la perd à la lecture (dr_normaliserTrame) ; « verser dans la trame » la saute même retouchée en classe', JSON.stringify(d));
+  const hub = await pg.evaluate(() => (window.__ECR || []).filter(x => /\/deroule$/.test(x.c || x.chemin || '') && JSON.stringify(x).includes('reactivation')).length);
+  E.verif('A36', hub === 0, 'rien au hub : aucun B/deroule portant « reactivation »', String(hub));
+  E.verif('A36', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

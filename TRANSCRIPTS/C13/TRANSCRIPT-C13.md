@@ -3129,3 +3129,24 @@ MEMO
 
 25/10/2026 19:34
 MEMO
+
+## Tour 163 — 25/10/2026 19:37 — Paul (19:36)
+
+**Paul (mot pour mot).** « Que proposes-tu pour chaque? »
+
+**Mesuré.** Registre prod, section H : toutes les dettes 13 · 1 à 13 · 35 sont réglées (13 · 9 et 13 · 10 réglées par la livraison p8-5c de 13 · 11, tour 47 — leurs lignes n'ont pas la coche : à poser au prochain réveil), sauf **13 · 12** (à Paul, point 335). Les six mandats du plan de 10 jours (`MANDATS/PLAN-10-JOURS/`) ont été écrits avant §12.22-§12.26.
+
+**Réponse (mot pour mot).**
+
+339. 333 (promeus ②) : oui. Tout est vert, signé, les dettes cochées, le geste vérifié par E3 et par moi ; attendre n'apporte rien.
+
+340. 334 (les quatre titres) : oui, tels quels. Quatre mots simples, lisibles par les élèves, qui disent ce qu'il y a dessous ; c'est une constante, un mot se change en une ligne si tu en veux un autre un jour.
+
+341. 335 (13 · 12) : oui, afficher la taille obtenue. Un curseur qui annonce 44 pt quand la diapo reste à 33 te ment ; l'afficher à côté est petit pour E3 et te dit la vérité ; dire non, c'est garder un curseur menteur.
+
+342. 336 (144, l'animation en accéléré) : non. C'était un outil de maquette pour regarder l'heure se jouer seule ; dans le site, « Jouer en avance » et la Relecture font ce travail, et rien ne se lance tout seul dans ta classe — c'est ta règle.
+
+343. 337 (go du plan de 10 jours) : oui, une fois ② en production — le registre du déroulé est à zéro (sauf 13 · 12, que tu tranches au 335). Une condition que je tiens moi-même avant le jour 1 : relire les six mandats ligne à ligne contre le site d'aujourd'hui, parce qu'ils ont été écrits avant la réactivation construite ; ce qui a changé, je te le dis avant de lancer.
+
+25/10/2026 19:37
+MEMO

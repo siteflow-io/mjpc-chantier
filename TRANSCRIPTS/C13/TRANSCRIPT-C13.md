@@ -2939,3 +2939,14 @@ MEMO
 
 25/10/2026 11:29
 MEMO
+
+## Tour 149 — 25/10/2026 12:28 — réveil n°44 (12:28, programmé au tour 148)
+
+**Mesuré.** Pas de mot de Paul depuis 09:14. `origin/integration` : tête `7af23694` — E1 `7af23694` (13 · 34 en cours) ; E3 `738867a8` / `fb5a68c0` (retour 26 : la vérification 13 · 34 dans `mesure-react-charge.mjs`, avant = 17 ▶ fautifs sur 30 aux deux tailles ; 13 · 35 attendue) ; E2 `32a7a4c4` (retour 25, rien à coder) ; E4 rien depuis la 98. Aucun module bougé depuis `e62d3344` (diff vide sur `index.html`, `dr/`) : pas de banc, celui de 11:25 sur `ade38ca9` vaut ; signal E4 inchangé « 0 pas réglée (`a0dc33cb`) ». Retours programmés : E2 (12:53), E3 (13:05) ; E1 et E4 sans retour programmé mais actifs (poussées 12:18 et 11:20) : pas de relance. Relances r44 (une ligne chacun). Audit §0. Pas de candidat 8.75.0-② (13 · 34, 13 · 35 ouvertes). Réveil n°45 programmé (+55 min).
+
+**Réponse (mot pour mot).**
+
+313. Rien de nouveau pour toi depuis 11:31 : E1 code le titre de bloc (13 · 34), E4 le doublon (13 · 35), E3 a préparé sa mesure (avant le réglage : 17 dévoilements sur 30 montrent un titre sans ligne dessous). Aucune ligne du site n'a bougé, donc pas de banc. Le 302, 13 · 34 et 13 · 35 restent posés à toi.
+
+25/10/2026 12:28
+MEMO

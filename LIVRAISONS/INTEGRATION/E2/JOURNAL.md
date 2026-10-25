@@ -499,3 +499,6 @@ Je code maintenant (l'ordre : la fusion, la clôture, l'aperçu + l'écriture + 
 
 ## 25/10 17:46 (Paris) — retour 32 : réveil n°49 lu (candidat 8.75.0-② = `548da82d`), rien à coder
 - Le candidat porte §12.26 (poussée 36). Ni `index.html` ni `dr/*` n'ont bougé depuis `5496a741` (le banc entier 156/0, `sorties/1640`) : rien à rejouer. Tête `8e13a115`, `main` fusionné. Retour reprogrammé (50 min).
+
+## 25/10 18:37 (Paris) — retour 33 : rien de neuf (aucune relance après le réveil n°49), rien à coder
+- Tête `2a8d51a9` (veilles E1, E3, E4), `main` fusionné ; le site n'a pas bougé depuis `5496a741`. Le candidat 8.75.0-② (`548da82d`) attend le mot de Paul. Retour reprogrammé (50 min).

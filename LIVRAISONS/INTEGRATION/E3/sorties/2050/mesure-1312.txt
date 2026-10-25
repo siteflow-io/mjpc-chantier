@@ -1,0 +1,27 @@
+E3 · dette 13 · 12 par le geste (le curseur « texte au tableau » et la taille obtenue) · 2026-10-25 19:52 UTC · fichier md5 13b780c6c7ab3ab114c8d99979cb8118
+
+P-1366 — 13 · 12 par le geste, 1366×768 : le curseur à 44 puis 52 sur une diapo pleine
+  ok     P · 1366×768 · une diapo pleine est trouvée (à 52 pt la police ne peut pas grossir : policeReduite, pages, ou police obtenue < 50 pt) — diapo 0 : à 52 pt obtenu 41.6 pt, policeReduite undefined, pages «  »
+    curseur 44 pt : libellé « 44 pt → 42 » · police du corps 27.68 px = 41.7 pt (mur 379 px) · policeReduite undefined · infobulle « La diapo pleine ne peut pas grossir : sa police descend jusqu'à 42 pt (plancher  »
+  ok     P · 1366×768 · à 44 pt demandés la diapo reste à 41.7 pt : le libellé du curseur dit la taille réellement obtenue (« 44 pt → N ») — libellé « 44 pt → 42 »
+  ok     P · 1366×768 · la taille annoncée (42 pt) est celle mesurée au corps (41.7 pt, ± 1,5) — 0.3 pt d'écart
+    curseur 52 pt : libellé « 52 pt → 41 » · police du corps 27.49 px = 41.4 pt (mur 379 px) · policeReduite undefined · infobulle « La diapo pleine ne peut pas grossir : sa police descend jusqu'à 41 pt (plancher  »
+  ok     P · 1366×768 · à 52 pt demandés la diapo reste à 41.4 pt : le libellé du curseur dit la taille réellement obtenue (« 52 pt → N ») — libellé « 52 pt → 41 »
+  ok     P · 1366×768 · la taille annoncée (41 pt) est celle mesurée au corps (41.4 pt, ± 1,5) — -0.4 pt d'écart
+  ok     P · 1366×768 · rien du curseur ni de la taille annoncée dans la fenêtre du tableau — 0 élément(s)
+  ok     P-1366 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     P-1366 · aucune boîte système
+
+P-1920 — 13 · 12 par le geste, 1920×1080 : le curseur à 44 puis 52 sur une diapo pleine
+  ok     P · 1920×1080 · une diapo pleine est trouvée (à 52 pt la police ne peut pas grossir : policeReduite, pages, ou police obtenue < 50 pt) — diapo 0 : à 52 pt obtenu 41.7 pt, policeReduite undefined, pages «  »
+    curseur 44 pt : libellé « 44 pt → 42 » · police du corps 34.34 px = 41.6 pt (mur 472 px) · policeReduite undefined · infobulle « La diapo pleine ne peut pas grossir : sa police descend jusqu'à 42 pt (plancher  »
+  ok     P · 1920×1080 · à 44 pt demandés la diapo reste à 41.6 pt : le libellé du curseur dit la taille réellement obtenue (« 44 pt → N ») — libellé « 44 pt → 42 »
+  ok     P · 1920×1080 · la taille annoncée (42 pt) est celle mesurée au corps (41.6 pt, ± 1,5) — 0.4 pt d'écart
+    curseur 52 pt : libellé « 52 pt → 42 » · police du corps 34.45 px = 41.7 pt (mur 472 px) · policeReduite undefined · infobulle « La diapo pleine ne peut pas grossir : sa police descend jusqu'à 42 pt (plancher  »
+  ok     P · 1920×1080 · à 52 pt demandés la diapo reste à 41.7 pt : le libellé du curseur dit la taille réellement obtenue (« 52 pt → N ») — libellé « 52 pt → 42 »
+  ok     P · 1920×1080 · la taille annoncée (42 pt) est celle mesurée au corps (41.7 pt, ± 1,5) — 0.3 pt d'écart
+  ok     P · 1920×1080 · rien du curseur ni de la taille annoncée dans la fenêtre du tableau — 0 élément(s)
+  ok     P-1920 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     P-1920 · aucune boîte système
+
+mesure 13 · 12 : 16 vérifications, 0 échec(s) — VERT

@@ -1124,7 +1124,7 @@ setInterval(() => { try { if (typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIM
 /* ─── les activités de la fin de l'heure, et chaque diapo sans activité comme la sienne (réveil n°3, points 3 et 5 ; C1 7.0-7.1) : la trame
    réelle n'a pas encore d'activités ; sans elles, « ce qui reste » ne proposait rien à décider. La décision d'une diapo se range sous son `eid`
    (`cleDec` du socle), elle glisse à l'heure suivante comme une activité. ─── */
-function dr_pseudoAct(e, i, rituel){ if (!e || (e.role && !(rituel && e.role === 'reactivation')) || e.actId) return null; let n = null; try { const E0 = seance().ecrans; const o = ordreHeure(S.heure).filter(k => E0[k] && E0[k].role !== 'fin'); const r = o.indexOf(i); n = r >= 0 ? r + 1 : rangDe(i, e.heure); } catch (x) {}   /* relecteur neuf n°3 (3) : le rang dans l'heure EN COURS — une glissée gardait celui de son heure d'origine (A5, A6 en double) */ return { id: e.eid, num: n || (i + 1), titre: e.act || '', diapos: [i], pseudo: true }; }
+function dr_pseudoAct(e, i, rituel){ if (!e || (e.role && !(rituel && e.role === 'reactivation')) || e.actId) return null; let n = null; try { const E0 = seance().ecrans; const o = ordreHeure(S.heure).filter(k => E0[k] && E0[k].role !== 'fin' && E0[k].role !== 'reactivation'); const r = o.indexOf(i); n = r >= 0 ? r + 1 : rangDe(i, e.heure); } catch (x) {}   /* relecteur neuf n°3 (3) : le rang dans l'heure EN COURS — une glissée gardait celui de son heure d'origine (A5, A6 en double) ; 25/10 (B18, RC15) : la réactivation construite ne prend pas de numéro — sans ce filtre les activités de l'heure commençaient à A2 */ return { id: e.eid, num: n || (i + 1), titre: e.act || '', diapos: [i], pseudo: true }; }
 function dr_activitesOuDiapos(){ const E = seance().ecrans; const vraies = dr_activites()[String(S.si)] || []; return vraies.concat(E.map((e, i) => dr_pseudoAct(e, i)).filter(Boolean)); }
 
 /* ─── la frontière d'heure par les durées (dette 12 · 07, réveil n°3, point 2) : quand la trame ne la porte pas (tout à l'heure 1),
@@ -1164,7 +1164,7 @@ function dr_reactPreparerAsync(h, cb){ const R = DR_CL.react; if (R.prete[h] !==
 function dr_reactChoix(h){ const c = DR_CL.react.choix[h]; return c === 'oui' || c === 'non' ? c : dr_reglageReactivationLu(); }
 function dr_reactAnnoncee(h){ return !dr_reactDejaLa(h) && dr_reactChoix(h) === 'oui' && !!dr_reactPreparer(h); }
 function dr_reactDecal(h){ return dr_reactAnnoncee(h) ? 1 : 0; }
-function dr_reactPuceHtml(h){ return dr_reactAnnoncee(h) ? `<span class="puce">1. ${dr_esc(DR_REACT_TITRE)} <i style="color:var(--ambre)">réactivation (construite depuis l'heure d'avant)</i></span>` : ''; }
+function dr_reactPuceHtml(h){ return dr_reactAnnoncee(h) ? `<span class="puce">1. ${dr_esc(DR_REACT_TITRE)} <i style="color:var(--ambre)">réactivation (construite depuis l'heure d'avant)</i></span> ` : ''; }   /* l'espace : la puce suivante est jointe par ' ' comme les autres */
 function dr_reactInserer(h){ /* au lancement de l'heure h : une fois, si oui, si E4 a construit */
   try { if (dr_reactDejaLa(h) || dr_reactChoix(h) !== 'oui') return false; const p = DR_CL.react.prete[h]; if (!dr_reactValide(p)) return false;
     const E = seance().ecrans; const sk = (dr_ctx() || {}).snum; const e = Object.assign({ act: DR_REACT_TITRE }, p, { role: 'reactivation', heure: +h }); e.dur = +e.dur || 3; delete e.actId;

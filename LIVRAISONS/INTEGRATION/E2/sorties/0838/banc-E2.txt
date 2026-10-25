@@ -1,0 +1,202 @@
+banc E2 — la classe et l'heure · 2026-10-25 07:38 UTC · index.html md5 db920cdb78e2b7019da93f6c99741bac · 2323674 o
+
+B1 — la case de l'emploi du temps
+  ok     B1 · la case de 3E Charles de Gaulle (lun. 14/09, 08:57-09:52) dit « heure 2/3 » de la séance 0 (F2, dette 13 · 26) — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 2/3
+  ok     B1 · « Préparer » ouvre l'Atelier sur la séance, sans lancer — {"lancee":false}
+  ok     B1 · « Préparer » : zéro écriture du déroulé
+  ok     B1 · le Pilotage s'ouvre, la classe est 3E Charles de Gaulle — {"debut":"09:00","fin":"09:52","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle"}
+  ok     B1 · le créneau 08:57-09:52 — {"debut":"09:00","fin":"09:52","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle"}
+  ok     B1 · le Pilotage se voit (dette 12 · 05 : le cours tournait derrière le panneau prof)
+  ok     B1 · le pointeur /site/cours_actif est écrit (la bannière de reprise en dépend)
+  ok     B1 · lancer depuis la case : aucune erreur JS
+  ok     B1 · la séance 0, heure 2/3 de la case (F2 tranché : la séance jouée une heure le 07/09 continue ; S.heure, l'entête) — 3E Charles de Gaulle · 08:57-09:52 · heure 2/3
+      écritures : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle · PUT /site/cours_actif · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<H> · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<H>
+
+B2 — lancer en un clic, dévoiler, faire parler ; le paquet de l'heure ; les écritures (K15)
+  ok     B2 · l'heure est lancée (S.lancee, journal « lancement ») — 3E Charles de Gaulle · 08:57-09:52 · heure 2/3
+  ok     B2 · le chrono tourne — S.ecoule = 7
+  ok     B2 · ▶ ×3 (dévoiler, puis la diapo suivante) et une parole sont au journal — lancement reactivation diapo diapo diapo diapo parole
+  ok     B2 · le paquet H : classe, créneau, début réel — 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+  ok     B2 · le paquet H : activites[0].passages ≥ 1 — {"n":4,"eid":"emt9v3yqoqmqnf","act":"Tableau 3","prevu":5,"reel":1,"passages":1,"comp":["litt-036","litt-037","litt-038","c4-lire-02","tr-personne-02"]}
+  ok     B2 · C/journal au hub, la parole dedans — 7 entrées
+  ok     B2 · C/journal : aucun rang (di) écrit au hub
+  ok     B2 · C/etat au hub, sans rang — S,parDiapo,vuMax,maj,heures,reactivations,heuresParDurees
+  ok     K15 · les écritures du lancement à la parole : C, cours_actif, C/journal, C/etat, H (+ C/ecrans, + scene/part d'E3) — PUT C · PUT /site/cours_actif · PUT C/ecrans · PUT C/journal · PUT C/etat · PUT C/heures/<H> · PUT C/scene
+
+B4 — la fin de l'heure (T-5 = fin − 10 min), les sept étapes, la clôture
+  ok     B4 · à T-5 (cinq minutes avant le cahier de textes) l'étape 1 s'ouvre d'elle-même — palier null → t5 · Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprend
+  ok     B4 · la frontière d'heure par les durées : « HEURE n · k DIAPOS », k < le total de la séance (12 · 07, réveil n°3) — HEURE 2 · 8 DIAPOS / 18 diapos
+  ok     B4 · étape 1 : l'échéance propose la prochaine heure de la classe — aucune | mardi 15 septembre, 15 h 07 | mercredi 16 septembre, 10 h 07 | vendredi 18 septembre, 10 h 07
+  ok     B4 · étape 2 : une carte par diapo restante, à décider (réveil n°3, 3) — 4 cartes · Diapo 4 — Les hypothèses de la classe | Diapo 7 — Question-bilan
+  ok     B4 · les sept étapes se parcourent — Fin de l'heure — étape 7 sur 7 : clore l'heure Préparer le cahier de t
+  ok     B4 · l'étape 7 clôt l'heure (S.close, journal « cloture »)
+  ok     B4 · le paquet H est clos (clos, finReel) — {"clos":true,"finReel":1789371727584}
+  ok     B4 · cours_actif est effacé
+  ok     B4 · après la clôture (quelques diapos jouées), la case du mardi garde la séance : « heure 3/3 » (F2, réveil n°3, 1) — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 3/3
+      écritures de la clôture : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat · PUT /site/cours_actif · PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<H> · PUT /site/edt/photos/2026-2027
+  ok     B4 · après la clôture, « ▶ Lancer » reste à l'écran, grisé avec sa raison (l'heure de ce créneau est close) ; le cliquer n'écrit rien (C1 12, réveil n°3) — {"vis":true,"dis":true,"txt":"▶ Lancer — l’heure de 08:57-09:52 est close","title":"L’heure de ce créneau est close : elle ne se rouvre pas. L’heure suivante de la séance se lance depuis sa case de l’emploi du temps (son créneau à elle)."} · 0 écriture(s)
+  ok     B4 · après la clôture, ▶ n'écrit plus dans le journal de l'heure close
+  ok     B4 · après la fin du créneau clos (09:53), « ▶ Lancer » reste gris avec sa raison et ne propose aucun créneau hors de la grille de la classe (réveil n°5, A4-6) — {"bt2":{"h":"09:53","dis":true,"txt":"▶ Lancer — prochaine heure : mardi 15 septembre, 15 h 07","title":"Aucune case de 3E Charles de Gaulle maintenant dans l’emploi du temps : cette séance vient à sa case du mardi 15 septembre, 15 h 07 (heure 3/3) — elle se lance depuis sa case. Le Pilotage ne lance jamais sur le créneau d’une autre classe ni d’une autre séance.","grille":[]},"hors":[]}
+      erreurs JS : aucune
+  ok     JS · B2-B4 : aucune erreur JS
+
+B3 — la reprise (recharger en pleine heure, mêmes écritures relues)
+  ok     B3 · étape 6, « Copier le contenu de séance » : le texte simple garde ses paragraphes (aucune phrase collée à la suivante), le HTML ses <p> — l'outil d'E4, comme la Relecture (réveil n°5, A4-1) — {"lignes":11,"colle":[],"p":7,"debut":"Ce qu'on a fait aujourd'hui\n\n3E Charles de Gaulle · Poésie et peinture au XIXe siècle, Poésie et peinture : le Romantism"}
+  ok     B3 · la bannière « un cours est en cours » (celle d'aujourd'hui) — Un cours est en cours avec 3E Charles de Gaulle. Reprendre le cours Plus tard
+  ok     B3 · la diapo courante est revenue — {"avant":"emt9v3yqoj80qn","apres":"emt9v3yqoj80qn"}
+  ok     B3 · la reprise garde le temps de l'activité en cours (relecteur neuf n°3, 4 : la coupure part de la dernière trace de vie, l'état battu chaque minute) — 65 s → 74 s
+  ok     B3 · la reprise remonte l'heure telle qu'elle était : heure 2/3, les frontières de chaque diapo, le volet et ses « H2 », l'entête, les activités de l'heure et leurs numéros (réveil n°4, point 3 ; E4 ligne 129, le geste A5 : lancer, dévoiler, recharger, « Reprendre le cours ») — {"avant":{"h":2,"sur":3,"heures":"1 1 1 F1 2 2 2 2 2 2 2 F2 3 3 3 3 3 3 3 3 F3","titre":"Heure 2 · 8 diapos","hou":"3E Charles de Gaulle · 08:57-09:52 · heure 2/3","copies":1,"acts":"1 Tableau 3 | 2 Tableau 4 | 3 Tableau 5 — retouché en classe (B3) | 4 Les hypothèses de la classe | 5 Où en sommes-nous ? | 6 Les règles héritées | 7 Question-bilan","vigH":"H2,H2,H2,H2,H2,H2,H2,H2"},"apres":{"h":2,"sur":3,"heures":"1 1 1 F1 2 2 2 2 2 2 2 F2 3 3 3 3 3 3 3 3 F3","titre":"Heure 2 · 8 diapos","hou":"3E Charles de Gaulle · 08:57-09:52 · heure 2/3","copies":1,"acts":"1 Tableau 3 | 2 Tableau 4 | 3 Tableau 5 — retouché en classe (B3) | 4 Les hypothèses de la classe | 5 Où en sommes-nous ? | 6 Les règles héritées | 7 Question-bilan","vigH":"H2,H2,H2,H2,H2,H2,H2,H2"}}
+  ok     B3 · la reprise relit la copie de la classe (C/ecrans) telle qu'elle est au hub : ce qui a été changé en classe revient (réveil n°6, E4 ligne 110, ma part) — true
+  ok     B3 · une copie pour École Directe avant le rechargement = un seul « copie-ed » au journal après la reprise (réveil n°4, point 7) — 1 → 1
+  ok     B3 · le chrono (± 2 s) : le temps écoulé depuis le début réel au hub — {"apres":77,"attendu":76}
+  ok     B3 · la parole et les notes sont là — {"avant":{"di":6,"eid":"emt9v3yqoj80qn","parts":1,"notes":1,"ecoule":67},"ap":{"lancee":true,"di":6,"eid":"emt9v3yqoj80qn","parts":1,"notes":1,"ecoule":77}}
+
+B3b — lancer par la case (séance 1, sans eid au hub), recharger, « ▶ Reprendre le cours » dans la case
+  ok     B3b · la case de l'heure lancée propose « ▶ Reprendre le cours »
+  ok     B3b · la même séance, la même diapo (même identité), les mêmes dévoilements — {"avant":{"eid":"emt9v3yqoj80qn","compte":"rien à dévoiler","parts":1,"notes":1,"sk":"0"},"apres":{"lancee":true,"eid":"emt9v3yqoj80qn","compte":"rien à dévoiler","parts":1,"notes":1,"sk":"0"}}
+  ok     B3b · la parole et la note
+  ok     B3b · aucune erreur JS
+
+B7 — lundi heure 2/3 par la case, clore ; la trame change ; mardi 15:07 la case dit « heure 3/3 » → la copie fusionnée
+  ok     B7 · la case du mardi 15:07 dit « heure 3/3 » de la même séance — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 3/3
+  ok     B7 · l'écran d'ouverture, puis l'heure 3 lancée — Où en est la 3E Charles de Gaulle — mardi 15 septembre 2026, 15:07-16:02 · heure 3 sur 3 P
+  ok     B7 · la copie de la classe n'est pas remplacée par la trame (pas de PUT C) — 0 × PUT C
+  ok     B7 · la fusion : l'écran ajouté à la trame arrive, l'écran modifié dans la trame (pas touché en classe) prend la trame — {"ajoute":true,"change":true}
+  ok     B7 · les quatre règles : modifié en classe → la copie ; modifié dans la trame → la trame ; retiré mais joué → reste ; nouveau → s'ajoute — ["A classe","B trame","X retiré, joué","N nouveau"]
+  ok     B7 · aucune erreur JS
+
+B8 — pendant l'heure, un absent coché dans la case de l'EDT arrive dans l'appel du Pilotage
+  ok     B8 · Élise Audebert, cochée absente dans la case, est absente dans l'appel (et pas proposée à la parole) — {"coche":true,"ap":{"seg":["absent:case de l’emploi du temps"],"absent":true}}
+  ok     B8 · aucune erreur JS
+
+B9 — F2 « EB1 » tapé d'un trait pose ; pas de « LC2 » à l'écran ; « sur 7 » ; la fiche ne couvre pas la fin de l'heure ; le chrono s'arrête à la clôture
+  ok     B9 · heure 2/3 : le paquet du 07/09 a joué trois diapos → l'heure 2 s'ouvre sur la diapo 4 (« Tableau 3 » — le rituel de la trame n'est plus reconnu à son titre, §12.25-6 ; la réactivation construite est B18), les trois jouées marquées au volet (réveil n°4, point 2 ; CADRAGE-TEMPS §1), aucun « Cahier de textes » doublé, tous à la clé de la séance (banc.sh 13:56, K6-K11) — {"h":2,"premier":4,"premierAct":"Tableau 3","second":5,"di":4,"jouees":[0,1,2],"fins":["fin-h1-s0","fin-h2-s0","fin-h3-s0"],"uniques":true}
+  ok     B9 · « Où on en est » : la première ligne est à l'heure du lancement, pas du début du créneau (relecteur neuf n°3, 2 ; C1 6.2) — {"h0":"09:00","lance":"09:00"}
+  ok     B9 · F2, « EB1 » d'un trait, la note, Entrée : UNE pose, « participe » pour Eden Boivin avec la note — le chiffre choisit, Entrée pose (réveil n°4, point 4) — {"avant":[],"apres1":["BOIVIN Eden:participe:au tableau"],"champ":"vif"}
+  ok     B9 · la note avant le motif : « EA », « au fond », « 2 », « bis », Entrée → une pose, le 2e motif pour Élise Audebert, la note gardée (le premier chiffre de la note choisit le motif) — ["AUDEBERT Elise:piste:au fond bis"]
+  ok     B9 · la participation n'affiche aucun suffixe chiffré (C1 4b.4) — 2 doublon(s) dans la classe — {"dup":["LC2","RD2"],"aff":[]}
+  ok     B9 · infobulles : le ✕ de la parole, « Y aller devant la classe »
+  ok     B9 · la liste de contrôle compte sur 7 étapes — étapes faites sur 7
+  ok     B9 · la fiche de l'élève ne couvre aucun bouton visible de la fin de l'heure et reste dans l'écran — {"a":[649,389,1021,724],"w":1366,"h":768,"boutons":6,"couverts":[]}
+  ok     B9 · après la clôture : « Fin de l'heure » gris avec sa raison, le chrono dit « close · hh:mm » (réveil n°12, E4 ligne 107) — {"bf":{"dis":true,"title":"L’heure est close : la fin de l’heure est faite (relis-la dans l’onglet Relecture)"},"c2":"close · 09:00"}
+  ok     B9 · après la clôture, le chrono de la tête ne court plus — close · 09:00 → close · 09:00
+  ok     B9 · aucune erreur JS
+
+B10 — à 1280 × 768 : la boîte T-5 dans l'écran, ses boutons cliquables ; la fin de l'heure laisse la participation et « Où on en est »
+  ok     B10 · F2, une parole posée : le VIF, « posé : … ✕ (Ctrl+Z) » et le haut de la liste des paroles se voient sans défiler (réveil n°5, A4-3 ; C1 4b.1, 5.4 bis) — {"vif":[592,618],"dernier":[666,682],"txt":"posé :\nEB\n✕ (Ctrl+Z)","part":[696,826],"h":768}
+  ok     B10 · la T-5 nomme l'activité (ou la diapo) en cours et son état (relecteur neuf n°3, 8 ; C1 6.3) — T-5 — le cahier de textes dans 5 minutes. L'activité en cours : Diapo 1 — Tableau 3, dans les temps. Le cahier de textes attend — le tableau ne bouge pas tant q
+  ok     B10 · la boîte T-5 est entière dans l'écran, sous la diapo (sans la couvrir), au-dessus des notes ; « Aller au cahier », « Plus tard », « Préparer » cliquables (C1 6.3) — {"al":[294,696,914,737],"mur":[294,231,914,579],"notes":[294,744,914,760],"bt":[{"id":"al-aller","q":[730,704,832,729],"dessus":true},{"id":"al-tard","q":[840,704,905,729],"dessus":true},{"id":"al-preparer","q":[659,704,722,729],"dessus":true}],"h":768}
+  ok     B10 · la fin de l'heure s'ouvre avec son titre en vue, même après un F2 qui a fait défiler la colonne (réveil n°7) — {"top":206,"dTop":196,"scroll":0,"txt":"Fin de l'heure — étape 7 sur 7 : clore l"}
+  ok     B10 · pendant la fin de l'heure, « Étape suivante ▶ » est entier et cliquable (rien ne le recouvre ; la colonne défile) — réveil n°6, P9 — {"q":[486,520],"dessus":true,"bas":true}
+  ok     B10 · pendant la fin de l'heure, la colonne de droite garde la participation, « Où on en est » et le tableau (C1 7.0 ter : la classe continue) — {"fin":true,"part":true,"suivi":true,"tableau":true}
+  ok     B10 · aucune erreur JS
+
+B11 — après la clôture, la case de l'heure garde le titre de sa séance ; « Relire cette heure » ouvre sa Relecture
+  ok     B11 · un clic de souris sur la case close ouvre sa fenêtre (« Relire cette heure »), sans le refus du glissé (réveil n°12, E4 ligne 109)
+  ok     B11 · la case close du lundi 08:57 garde le titre de sa séance — {"cas":"3E Charles de Gaulle Poésie et peinture : le Romantisme en question · 3 activités","titre":"Poésie et peinture : le Romantisme en question"}
+  ok     B11 · « Relire cette heure » (avec son infobulle) ouvre la Relecture sur l'heure 2 de cette classe — {"bt":true,"rel":{"vis":true,"faceH":2,"face":"recit","faces":"Le récit · heure 2 Ce qui s'est passé · heure 2 Papier · heure 2 Le chapitre 3E Charles de Gaulle"}}
+  ok     B11 · aucune erreur JS
+
+B12 — l'heure 2 s'ouvre sur son rituel ; les décisions de sa fin : « non fait » et « pas le temps » sortent, « à l'heure suivante » ouvre l'heure 3
+  ok     B12 · heure 2 : (a) sans réactivation construite (E4 absente : rien n'est reconnu au titre, §12.25-6), (c) le programme depuis la diapo 4 (« Tableau 3 »), (d) le cahier de textes en dernier — Tableau 3 | Tableau 4 | Tableau 5 | Les hypothèses de la classe | Où en sommes-nous ? | Les règles héritées | Question-bilan | Fin d'heure[fin]
+  ok     B12 · le paquet de l'heure 2 : `H.travail.terminer` porte la diapo décidée « terminer à la maison » (relecteur neuf n°3, 1 ; contrat §12.9) — {"terminer":[{"cle":"emt9v3yqoh928y","titre":"Les règles héritées"}],"preparer":[],"apprendre":[],"prevu":false,"libre":"","maison":[{"cle":"emt9v3yqobbdyt","titre":"Les hypothèses de la classe"}],"prevuTexte":""}
+  ok     B12 · « Où on en est » de l'heure 3 : un numéro par ligne, 1, 2, 3… dans l'ordre de l'heure (relecteur neuf n°3, 3) — 1,2,3,4,5,6,7,8,9,10
+  ok     B12 · « Où on en est » de l'heure 3 : chaque ligne avant le cahier de textes (le rituel et les reports comptent dans l'heure) ; aucun « T-undefined » (réveil n°9, E4 lignes 143 et 145) — {"t":["15:08","15:11","15:14","15:24","15:29","15:38","15:42","15:50","15:52","15:56","15:57"],"lig":""}
+  ok     B12 · l'ouverture de l'heure 3 annonce ce que le lancement jouera : « sur « Question-bilan » », elle d'abord, « Les règles héritées » fléchée « à reprendre » (E4 lignes 137-138, §12.17 b2) — Où en est la 3E Charles de Gaulle — mardi 15 septembre 2026, 15:07-16:02 · heure 3 sur 3 Poésie et peinture : le Romantisme en question L'heure 2 (lundi 14 septembre 2026, 08:57) : close à 09:00 · 3 diapos montrées · 0 élève ayant pris la parole Ce que l'heure 3 jouera, dans l'ordre : 1. Question-bilan ↩ glissée de l'heure 2 2. Où en sommes-nous ? ↩ glissée de l'heure 2 3. Les règles héritées ↩ gl
+  ok     B12 · « Question-bilan », montrée à 0 dévoilé puis décidée « à l'heure suivante », reprend où la classe en était (C1 6.6) ; (b1) les reports « à l'heure suivante » avant (b2) « terminer à la maison » (§12.17) — {"avant":{"di":true,"vu":0},"apres":0,"iR":2,"iT":-1}
+  ok     B12 · heure 3 : (b1) « Question-bilan » (« à l'heure suivante », la diapo où la classe s'était arrêtée) en premier et au tableau — E4 ligne 138 ; (b3) « non fait » (Tableau 5) et « pas le temps » (les hypothèses) n'y sont pas ; rien de joué ne revient ; le cahier de textes en dernier — {"h":3,"mur":"Question-bilan","o":["Question-bilan","Où en sommes-nous ?","Les règles héritées","La frise du siècle","Placer les poètes","Le siècle des inventions","Les mouvements du siècle","Trois mots pour la frise","Un poète spécial…","Baudelaire, 1821-1867","Fin d'heure[fin]"],"rejoue":[],"qbVu":0}
+  ok     B12 · aucune erreur JS
+
+B13 — décider à la fin de l'heure puis jouer : la décision tombe ; l'étape 3 nomme ce qui part à la maison
+  ok     B13 · étape 1 : la prochaine heure de la classe est affichée et posée par défaut, « aucune » reste un choix ; l'étape est cochée « proposée : … » — ce qui est posé est ce qui est dit (réveil n°8, C1 7.6 ; réveil n°11, E4 ligne 150) — {"aff":"mardi 15 septembre, 15 h 07","val":"2026-09-15","p0":"2026-09-15","faite":true,"lib":"✔ 1 · l'échéance (proposée : mardi 15 septembre, 15 h 07)"}
+  ok     B13 · la liste : « ce qui reste (n à décider) » compte ce que Paul n'a pas décidé — les deux diapos décidées en moins (E4 ligne 122, A4-5) — ○ 2 · ce qui reste (4 à décider) · 6 activités dans l'heure
+  ok     B13 · étape 3 : « à faire : » nomme la diapo partie à la maison par son titre (« Les hypothèses de la classe »), plus « rien choisi » — Travail à faire pour la prochaine fois préparer : Tableau 4 (reprise en classe) · à faire : Les hypothèses de la classe · Ce que la trame prévoyait pour cette heure : rien de prévu Apprendre les notio
+  ok     B13 · la décision « préparer » prise à la fin de l'heure tombe quand sa diapo est jouée jusqu'au bout (journal « decision-levee »), le travail à faire ne la garde pas ; l'autre décision reste (C1 7.0 ter) — {"dec":false,"tt":"Pour la prochaine séance (mardi 15 septembre) — Faire « Les hypothèses de la classe » : Chaque groupe présente son tableau et son hypothèse en quatre minutes. Pendant ce temps, la classe prend des notes. 1. Je note pour chaque tableau : le titre et le peintre, ce que le groupe a vu, l'hypothèse qu'il en tire. 2. Je note à ma façon, sans recopier mot à mot : des mots, des flèches, des abréviations. 3. À la fin, j'ai cinq blocs de notes — un par tableau.","lev":1,"b":true}
+  ok     B13 · en préparation, le cahier de textes s'affiche entier chez Paul (ses quatre éléments), la classe gelée sur sa diapo (réveil n°12, E4 ligne 162 ; C1 6.4 bis, 7.0 ter) — {"mur":"CAHIER DE TEXTES — LUNDI 14 SEPTEMBRE 2026, 08 H 57 – 09 H 52 Collège Saint-Joseph Cahier de textes (3 Charles de Gaulle) PRENEZ VOS AGENDAS — POUR MARDI 15 SEP","nDev":4}
+  ok     B13 · « Préparer le cahier de textes » : le volet réduit à ses numéros, « Où on en est » dit la diapo où la classe est gelée (réveil n°11, E4 ligne 152 ; C1 7.0 ter) — {"prep":true,"mini":false,"ou":"Tableau 4 — la classe y est (gelée pendant la préparation)","gel":"Tableau 4","mur":"CAHIER DE TEXTES — LUNDI 14 SEPTEMBRE 2026, 08 H 57 – 09 H 52 Collège Saint-Joseph Cahier de textes (3 Charles de Gaulle) PRENEZ VOS AGENDAS — POUR MARDI 15 SEP","nDev":4}
+  ok     B13 · aucune erreur JS
+
+B14 — F2 sur un absent ; deux élèves aux mêmes initiales ; « Lancer » après la clôture, page rechargée
+  ok     B14 · F2, « T » n'ouvre aucune fiche ; « TB » (élève absent) le dit, et rien n'est posé sur un autre élève (relecteur neuf n°3, 5 ; C1 4b.4) — {"apresT":{"pop":false,"act":"vif"},"r":{"parts":[],"sug":"Titouan est noté(e) absent(e) — rien n’est posé."}}
+  ok     B14 · deux élèves « RD » : deux étiquettes différentes, et « RD » les propose tous les deux (relecteur neuf n°3, 6 ; C1 4b.4) — {"lab":["RDRomai","RDRoman"],"cands":2}
+  ok     B14 · page rechargée après la clôture : « ▶ Lancer » gris avec sa raison (la case de l'EDT dit l'heure close), jamais « heure 2/1 » (relecteur neuf n°3, 7) — {"dis":true,"txt":"▶ Lancer — l’heure de 08:57-09:52 est close","title":"L’heure de ce créneau est close : elle ne se rouvre pas. L’heure suivante de la séance se lance depuis sa case de l’emploi du temps (son créneau à elle)."}
+  ok     B14 · aucune erreur JS
+
+B15 — en classe, retoucher dans l'onglet Atelier : la copie de la classe part au hub, l'état et le journal attendent le Pilotage
+  ok     B15 · l'onglet Atelier ouvert en classe : la retouche part dans `C/ecrans` en moins de 3 s ; ni `C/etat` ni `C/journal` pendant l'Atelier (son `S` n'est pas celui de la classe) — {"atelier":true,"ec":["PUT C/ecrans"]}
+  ok     B15 · étape 5 : la retouche écrite dans l'onglet Atelier pendant l'heure est proposée au versement, diapo par diapo (réveil n°12, E4 ligne 150 ; C1 8.4 — avec `S.copie[h]` posé par E1) — Diapos modifiées pendant l'heure — ce que la classe a vu, à verser ou non dans la trame : Diapo 1 · « Tableau 3 » — 1 texte écrit en classe : la classe a vu « Retouche de l Atelier (B15). » — la trame dit « R » Verser dans la trame ? Oui, verser Non, garder la
+  ok     B15 · étape 5 : les diapos modifiées dans l'ordre de l'heure (réveil n°13, E4 ligne 165) — {"vu":[0,1],"n":2,"d":[1,1],"sec":5,"l":1}
+  ok     B15 · aucune erreur JS
+
+B16 — lundi 10:00 et mercredi 08:30, sans case de la 3E : « Lancer » gris, la prochaine heure de la classe
+  ok     B16 · 2026-09-14T10:00 : « Lancer » gris, il nomme la prochaine heure de la 3E, jamais le créneau d'une autre classe — {"dis":true,"txt":"▶ Lancer — prochaine heure : mardi 15 septembre, 15 h 07","title":"Aucune case de 3E Charles de Gaulle maintenant dans l’emploi du temps : cette séance vient à sa case du mardi 15 septembre, 15 h 07 (heure 2/3) — elle se lance depuis sa case. Le Pilotage ne lance jamais sur le créneau d’une autre classe ni d’une autre séance."}
+  ok     B16 · aucune erreur JS
+  ok     B16 · 2026-09-16T08:30 : « Lancer » gris, il nomme la prochaine heure de la 3E, jamais le créneau d'une autre classe — {"dis":true,"txt":"▶ Lancer — prochaine heure : vendredi 18 septembre, 10 h 07","title":"Aucune case de 3E Charles de Gaulle maintenant dans l’emploi du temps : cette séance vient à sa case du vendredi 18 septembre, 10 h 07 (heure 2/3) — elle se lance depuis sa case. Le Pilotage ne lance jamais sur le créneau d’une autre classe ni d’une autre séance."}
+  ok     B16 · aucune erreur JS
+  ok     B16 · lundi 09:00, dans la case de la 3E : « Lancer … heure 2/3 », l'infobulle dit « la case de ton emploi du temps » ; l'heure n est celle de `dr_heuresDeLaClasse` (réveil n°14, E4 ligne 176 ; §12.18) — {"dis":false,"txt":"▶ Lancer avec 3E Charles de Gaulle · 08:57-09:52 · heure 2/3","title":"Lance l’heure avec 3E Charles de Gaulle, créneau 08:57-09:52, heure 2 sur 3 de la séance (la case de ton emploi du temps) — le chrono démarre, tout s’enregistre pour la classe.","hx":{"n":2,"sur":3,"iso":"2026-09-14","creneau":"08:57-09:52","l":"lundi 14 septembre, 08:57-09:52","jouee":false,"nEdt":2,"surEdt":3}}
+  ok     B16 · aucune erreur JS
+
+B17 — une seule suite : les cases passées sans heure jouée ne prennent rien ; « Lancer » vise la case de la séance ; l'heure close est jouée tout de suite
+  ok     B17 · mercredi 08:30, hub frais : l'EDT dit le lundi 14 et le mardi 15 « passée », la Poésie 2/3 au vendredi 18 ; l'Atelier H2 au vendredi 18 ; « Lancer » gris vers le vendredi 18 (E4 lignes 177, 179, 181) — {"dis":true,"txt":"▶ Lancer — prochaine heure : vendredi 18 septembre, 10 h 07","title":"Aucune case de 3E Charles de Gaulle maintenant dans l’emploi du temps : cette séance vient à sa case du vendredi 18 septembre, 10 h 07 (heure 2/3) — elle se lance depuis sa case. Le Pilotage ne lance jamais sur le créneau d’une autre classe ni d’une autre séance.","h":[{"n":1,"iso":"2026-09-07","jouee":true,"clos":true},{"n":2,"iso":"2026-09-18","jouee":false,"clos":false},{"n":3,"iso":"2026-09-21","jouee":false,"clos":false}],"c":{"09-14":"passee","09-15":"passee","09-16":"rienDePret","09-18":"prevu Poésie et pe 2/3"}}
+  ok     B17 · mercredi 08:30 : la semaine prochaine vue seule (depuis son lundi) = la même projection que depuis aujourd'hui — la Poésie 3/3 le lundi 21 (§12.19, une seule source) — {"a":{"2026-09-21 08:57-09:52":"prevu Poésie et peinture : le Romantisme en question 3/3","2026-09-22 15:07-16:02":"prevu Étude de texte accompagnée : « L'Albatros » 1/3","2026-09-23 10:07-11:02":"prevu Étude de texte accompagnée : « L'Albatros » 2/3","2026-09-24 16:04-16:59":"prevu Étude de texte accompagnée : « L'Albatros » 3/3","2026-09-25 10:07-11:02":"prevu Interro de cours et analyse logique — les bases (1) 1/3"},"b":{"2026-09-21 08:57-09:52":"prevu Poésie et peinture : le Romantisme en question 3/3","2026-09-22 15:07-16:02":"prevu Étude de texte accompagnée : « L'Albatros » 1/3","2026-09-23 10:07-11:02":"prevu Étude de texte accompagnée : « L'Albatros » 2/3","2026-09-24 16:04-16:59":"prevu Étude de texte accompagnée : « L'Albatros » 3/3","2026-09-25 10:07-11:02":"prevu Interro de cours et analyse logique — les bases (1) 1/3"},"egal":true}
+  ok     B17 · aucune erreur JS
+  ok     B17 · lundi 09:00, la séance « L'Albatros » montrée : « Lancer » gris vers sa case (vendredi 18, heure 1/3, la même que l'EDT), l'infobulle nomme la séance de la case de maintenant, jamais « aucune case » (E4 ligne 180) — {"dis":true,"txt":"▶ Lancer — prochaine heure : vendredi 18 septembre, 10 h 07","title":"La case de maintenant (08:57-09:52) de 3E Charles de Gaulle est à la séance « Poésie et peinture : le Romantisme en question », heure 2/3, d’après l’emploi du temps : cette séance-ci vient à sa case du vendredi 18 septembre, 10 h 07 (heure 1/3) — elle se lance depuis sa case. Le Pilotage ne lance jamais sur le créneau d’une autre classe ni d’une autre séance.","h":[{"n":1,"iso":"2026-09-18","jouee":false,"clos":false},{"n":2,"iso":"2026-09-21","jouee":false,"clos":false},{"n":3,"iso":"2026-09-22","jouee":false,"clos":false}],"c":{"09-14":"prevu Poésie et pe 2/3","09-15":"prevu Poésie et pe 3/3","09-16":"rienDePret","09-18":"prevu Étude de tex 1/3"}}
+  ok     B17 · aucune erreur JS
+  ok     B17 · lundi 09:00, l'heure lancée puis close : `dr_heuresDeLaClasse` la dit « H2 · jouée, close » sans rechargement, une seule fois (E4 ligne 178) — [{"n":1,"iso":"2026-09-07","jouee":true,"clos":true},{"n":2,"iso":"2026-09-14","jouee":true,"clos":true},{"n":3,"iso":"2026-09-15","jouee":false,"clos":false}]
+  ok     B17 · lundi 09:58, l'heure close dans la même page, son créneau fini : H1 et H2 jouées, H3 au mardi 15 (3/3) — l'EDT, `dr_heuresDeLaClasse` et « Lancer » d'accord, trois heures pour trois (E4 ligne 182, §12.19) — {"txt":"▶ Lancer — prochaine heure : mardi 15 septembre, 15 h 07","h":["1/3 2026-09-07 jouée","2/3 2026-09-14 jouée","3/3 2026-09-15"],"c":{"09-14":"jouee /","09-15":"prevu 3/3","09-16":"rienDePret /","09-18":"prevu 1/3"}}
+  ok     B17 · aucune erreur JS
+
+B18-0 — le prélude : l'heure 1 de la séance jouée sous la clé actuelle de la classe (lundi 07/09, 08:57) — trois ▶, « Tableau 2 » décidé « à l'heure suivante », close ; E4 lira ce paquet
+    (la construction jouée : la vraie fonction d'E4, comptée)
+  ok     B18 · prélude : la case du lundi 07/09 dit « heure 1/3 » ; « Lancer » est direct (première séance : rien à réactiver, §12.25-2) ; l'heure 1 s'ouvre sur la première diapo, sans réactivation — {"t":"3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1/3","on":false,"h":1,"lancee":true,"calls":1,"o":["Analyse d'images : la routine","Tableau 1","Tableau 2"]}
+  ok     B18 · prélude : au hub, le paquet de l'heure 1 sous la clé actuelle (`2026-09-07_08h57-09h52_3E_Charles_de_Gaulle`) : close, `heure: 1`, des diapos vues (`passages`) — {"cles":["2026-09-07_08h57-09h52_3E_Charles_de_Gaulle"],"clos":true,"heure":1,"vues":["Analyse d'images : la routine"],"dec":0}
+  ok     B18 · aucune erreur JS (prélude)
+
+B18 — « Ouvrir par la réactivation » oui : l'heure 2 s'ouvre sur la diapo construite par E4 depuis l'heure 1 jouée, en tête, dévoilée avec ▶, dans la copie de la classe, hors des activités
+  ok     B18 · l'écran « Où en est la classe » paraît (heure 2, l'heure 1 close au hub : l'état relu est le sien, close), « oui » proposé (défaut, §12.25-1), le réglage de la séance « oui », l'ouverture annonce la réactivation construite depuis l'heure 1 (sa clé), l'heure 2 n'est pas lancée — {"on":true,"oui":true,"ouiCoche":true,"desact":false,"reg":"oui","lancee":true,"close":true,"txt":"Où en est la 3E Charles de Gaulle — lundi 14 septembre 2026, 08:57-09:52 · heure 2 sur 3 Poésie et peinture : le Romantisme en question L'heure 1 (lundi 7 septembre 2026, 08:57) : close à 09:00 · 1 diapo montrée · 0 élève ayant pris la parole Ce que l'heure 2 "}
+  ok     B18 · lancée : la construite (`react-h2-s0`, rôle reactivation, heure 2) est la première diapo de l'heure et au tableau, puis le programme ; construite une fois (un seul appel à E4) ; le choix au journal (sa dernière entrée « reactivation » ; celle de l'heure 1 dit « non », rien à réactiver) et dans S.reactChoix — {"h":2,"lancee":true,"o":["Où en sommes-nous ?[reactivation]","Tableau 2","Analyse d'images : la routine","Tableau 1","Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Fin d'heure[fin]"],"eid0":"react-h2-s0","di":"Où en sommes-nous ?","nReact":["react-h2-s0@2"],"calls":1,"J":["1:non:null","2:oui:react-h2-s0"],"choix":{"1":"non","2":"oui"}}
+  ok     B18 · le contenu est celui d'E4 depuis l'heure 1 jouée : « La dernière fois » en premier bloc, une ligne — la seule diapo vue à l'heure 1 (« Analyse d'images »), rien d'inventé (§12.22 b) ; puis les notions et le travail — {"blocs":"La dernière fois:1|Les notions:1|Le travail:1","l1":"Activité 1 — Analyse d'images : la routine"}
+  absent B18 · « À reprendre » : « Tableau 2 », décidé « à l'heure suivante » à la fin de l'heure 1 (§12.22 b : ce qui a été décidé) — ABSENT du contenu d'E4 : sur une trame sans activités déclarées, la décision est dans `decisionsParEcran` (par eid) du paquet, et `dr_reactivationConstruire` ne lit que `decisionsParActivite` (à E4, signalé au JOURNAL) ; l'heure 2 la joue bien en premier (b1) — {"blocs":"La dernière fois:1|Les notions:1|Le travail:1"}
+  ok     B18 · ▶ dévoile la construite élément par élément (journal `devoile` à son eid), ses lignes au tableau (« La dernière fois » …) ; « Où on en est » la liste sans numéro d'activité (RC15) — {"dev":["react-h2-s0","react-h2-s0"],"mur":"OÙ EN SOMMES-NOUS ? La dernière fois Activité 1 — Analyse d'images : la routine Les notions Dire ce qu’on voit, avec les mots justes Le travail Apprendre : Dire ce qu’on voit, avec les mots justes","lignes":["↺ Où en sommes-nous ?"]}
+  ok     B18 · « Où on en est » : les activités de l'heure sont numérotées 1, 2, 3… après la ligne « ↺ » — la construite ne prend pas de numéro (RC15 ; relecteur neuf n°3, 3) — 1,2,3,4,5,6,7
+  ok     B18 · la copie de la classe (`C/ecrans`) porte la construite telle quelle (eid, heure, ses blocs, `construite.depuis` = la clé de l'heure 1), figée (§12.22 d) ; le paquet ne la compte pas dans `parActivite[]` ; ▶ au bout de la construite passe au programme — {"r":[{"eid":"react-h2-s0","heure":2,"nb":3,"c":{"depuis":"2026-09-07_08h57-09h52_3E_Charles_de_Gaulle","seanceAvant":false,"t":1789369205320}}],"pa":[],"ecrans":["react-h2-s0"],"apres":"Tableau 2"}
+  ok     B18 · aucune erreur JS
+
+B20 — construite une fois : la reprise la relit de la copie (même eid, même contenu), jamais une seconde ; l'heure 3 a la sienne (depuis l'heure 2 jouée), celle de l'heure 2 reste
+    (modale après la reprise : Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus. Compris)
+  ok     B20 · recharger puis « Reprendre le cours » : la construite revient de `C/ecrans` (même eid, mêmes blocs que la copie au hub), première de l'heure 2, sans aucun appel à la construction — {"o":{"h":2,"lancee":true,"o":["Où en sommes-nous ?[reactivation]","Tableau 2","Analyse d'images : la routine","Tableau 1","Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Fin d'heure[fin]"],"eid0":"react-h2-s0","di":"Tableau 2","nReact":["react-h2-s0@2"],"calls":0,"J":["1:non:null","2:oui:react-h2-s0"],"choix":{"1":"non","2":"oui"}},"bl":"La dernière fois:1|Les notions:1|Le travail:1","blAvant":"La dernière fois:1|Les notions:1|Le travail:1"}
+  ok     B20 · aucune erreur JS (reprise, clôture)
+  ok     B20 · l'heure 3 (état au hub) : l'écran « Où en est la classe » entier porte le bouton, « oui » proposé, l'ouverture annonce la réactivation construite depuis l'heure 2 (sa clé) — {"on":true,"oui":true,"ouiCoche":true,"cle2":"2026-09-14_08h57-09h52_3E_Charles_de_Gaulle","txt":"Où en est la 3E Charles de Gaulle — mardi 15 septembre 2026, 15:07-16:02 · heure 3 sur 3 Poésie et peinture : le Romantisme en question L'heure 2 (lundi 14 septembre 2026, 08:57) : close à 09:00 · 2 d"}
+  ok     B20 · l'heure 3 s'ouvre sur SA construite (`react-h3-s0`, « La dernière fois » depuis l'heure 2), celle de l'heure 2 reste à l'heure 2 ; une construction par heure — {"o3":{"h":3,"lancee":true,"o":["Où en sommes-nous ?[reactivation]","Analyse d'images : la routine","Tableau 1","Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Fin d'heure[fin]"],"eid0":"react-h3-s0","di":"Où en sommes-nous ?","nReact":["react-h2-s0@2","react-h3-s0@3"],"calls":1,"J":["1:non:null","2:oui:react-h2-s0","3:oui:react-h3-s0"],"choix":{"1":"non","2":"oui","3":"oui"}},"bl3":"La dernière fois:1|Les notions:1"}
+  ok     B20 · aucune erreur JS
+
+B19 / B21 — « non » : l'heure s'ouvre sur le programme, rien de construit ni d'écrit ; le réglage de la séance (`B/deroule/reactivation`) est proposé à l'heure suivante ; mode test étanche
+  ok     B19 · « non » coché : l'ouverture annonce le programme — « Tableau 2 », décidé « à l'heure suivante » à l'heure 1 (b1, §12.17) —, plus la réactivation — {"nonCoche":true,"txt":"Où en est la 3E Charles de Gaulle — lundi 14 septembre 2026, 08:57-09:52 · heure 2 sur 3 Poésie et peinture : le Romantisme en question L'heure 1 (lundi 7 septembre 2026, 08:57) : close à 09:00 · 1 diapo montrée · 0 élève ayant pris la parole Ce que l'heure 2 "}
+  ok     B21 · le réglage de la séance « non » : une seule écriture, `B/deroule/reactivation` (K15), rien d'autre — {"reg":"non","ecr":["PUT /site/3e/chapitres/0/seances/0/deroule/reactivation"]}
+  ok     B19 · lancée avec « non » : l'heure 2 s'ouvre sur « Tableau 2 » (ce qui glisse), aucune réactivation dans la trame jouée, le choix « non » au journal et dans S.reactChoix — {"h":2,"lancee":true,"o":["Tableau 2","Analyse d'images : la routine","Tableau 1","Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Fin d'heure[fin]"],"eid0":"emt9v3yqo3d528","di":"Tableau 2","nReact":[],"calls":1,"J":["1:non:null","2:non:null"],"choix":{"1":"non","2":"non"}}
+  ok     B19 · au hub : aucune réactivation dans `C/ecrans` ; `B/deroule/reactivation` = « non » — {"r":0,"reg":"non"}
+  ok     B19 · aucune erreur JS
+  ok     B21 · l'heure suivante (quelque chose à réactiver, le bouton actif) : le réglage « non » de la séance est la réponse proposée (relu de la trame), l'ouverture annonce le programme — {"on":true,"oui":true,"desact":false,"nonCoche":true,"reg":"non","txt":"Où en est la 3E Charles de Gaulle — mardi 15 septembre 2026, 15:07-16:02 · heure 3 sur 3 Poésie et peinture : le Romantisme en question L'heure 2 (lundi 14 septembre 2026, 08:57) : close à 09:00 · 1 diapo montrée · 0 élè"}
+  ok     B21 · le réglage remis à « oui » : la proposition suit (le choix de l'heure n'avait pas été fait à la main), l'ouverture annonce la réactivation — {"ouiCoche":true,"reg":"oui"}
+  ok     B21 · aucune erreur JS
+  ok     B21 · mode test : le réglage va au magasin de test, zéro écriture au hub ; l'heure se lance — {"h":2,"lancee":true,"ecr":[],"mt":"non"}
+
+B22 — rien à réactiver (la construction rend null, ou n'est pas dans le site) : « Lancer » reste direct, aucune réactivation
+  ok     B22 · le faux hub tel quel (l'heure du 07/09 sous l'ancien slug seulement) : la vraie fonction d'E4 rend null (rien de joué sous la clé de la classe) : pas d'écran d'ouverture, l'heure 2 est lancée directement sur « Tableau 3 », sans réactivation (§12.25-2) — le parcours P5 de la conscience ne change pas — {"on":false,"raison":"rien de joué avant","o":{"h":2,"lancee":true,"o":["Tableau 3","Tableau 4","Tableau 5","Les hypothèses de la classe","Où en sommes-nous ?","Les règles héritées","Question-bilan","Fin d'heure[fin]"],"eid0":"emt9v3yqoqmqnf","di":"Tableau 3","nReact":[],"calls":1,"J":["2:non:null"],"choix":{"2":"non"}}}
+  ok     B22 · aucune erreur JS
+  ok     B22 · sans la fonction de construction dans le site (retirée pour le pas ; le faux hub tel quel, sans état) : « Lancer » direct, comme avant — {"on":false,"h":2,"lancee":true,"o":["Tableau 3","Tableau 4"]}
+  ok     B22 · aucune erreur JS
+  ok     B22 · sans la fonction, l'heure 1 close au hub : l'écran « Où en est la classe » entier (l'état relu) porte le bouton grisé avec la raison (contrat §8.6), l'ouverture annonce le programme — {"on":true,"oui":true,"desact":true,"txt":"Où en est la 3E Charles de Gaulle — lundi 14 septembre 2026, 08:57-09:52 · heure 2 sur 3 Poésie et peinture : le Romantisme en question L'heure 1 (lundi 7 septembre 2026, 08:57) : close à 09:00 · 1 diapo montrée · 0 élève ayant pris la parole Ce que l'heure 2 jouera, dans l'ordre : 1. Tableau 2 ↩ gl"}
+  ok     B22 · « Lancer l'heure 2 » : l'heure s'ouvre sur ce qui glisse (« Tableau 2 »), sans réactivation, le choix « non » au journal — {"h":2,"lancee":true,"o":["Tableau 2","Analyse d'images : la routine","Tableau 1"],"J":["1:non:null","2:non:null"]}
+  ok     B22 · aucune erreur JS
+
+B5 — deux créneaux dans la journée = deux clés = deux traces
+  ok     B5 · deux créneaux, deux clés — 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle · 2026-09-14_10h07-11h02_3E_Charles_de_Gaulle
+
+B6 — le mode test (13 · 25) : lancer, dévoiler, clore → zéro écriture au hub
+  ok     B6 · mode test : la pastille « Mode test » dans l'entête du pilotage, `data-mode-test` posé (C1 11t.3, réveil n°4, 5) — {"vu":true,"txt":"Mode test","zone":"1"}
+  ok     B6 · mode test, après le lancement : le magasin de test porte cours_actif, et l'heure n'est PAS close (relance du 21/10 12:58) — {"ca":true,"clos":false}
+  ok     B6 · mode test : zéro écriture au hub — 0 : 
+  ok     B6 · mode test, après la clôture : dans le magasin, l'heure est close et le pointeur effacé — {"ca":null,"clos":true}
+
+BANC E2 VERT

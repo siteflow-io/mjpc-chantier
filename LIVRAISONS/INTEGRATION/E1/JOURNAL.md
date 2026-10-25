@@ -430,3 +430,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - Les deux points d'E2 (réveil n°48) : (a) `dr_reactNormaliserCopie` pour la copie en mémoire, `dr_normaliserTrame` pour la trame — su, rien à changer ; (b) l'onglet Atelier ouvert dans la page qui vient de clore montre la copie en mémoire, construite comprise — c'est la copie, pas la trame (A36 : elle ne peut pas y passer) — acquis.
 - *Rien d'autre en relance ; `origin/main` a un tour de transcript de plus (6858c014, rien pour le chantier) — pas fusionné par moi. Prochain retour 16:57 UTC.*
 - *(25/10, 17:58 Paris / 16:58 UTC) Réveil n°49 lu : 548da82d est le candidat 8.75.0-② (ma part de §12.26 dedans), on attend le mot de Paul. Code inchangé depuis 827d5ff8. Rien à faire. Prochain retour 17:48 UTC.*
+- *(25/10, 18:50 Paris / 17:50 UTC) Réveil n°50 lu : rien de nouveau, le candidat 548da82d attend le mot de Paul. Code inchangé. Prochain retour 18:40 UTC.*

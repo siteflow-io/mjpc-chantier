@@ -395,7 +395,7 @@ function ouvrirOuverture(){ if (S.anim) { clearInterval(S.anim); S.anim = null; 
   let x = `<h2>Où en est la ${dr_esc(dr_classe()/* E1 : lisait DATA.classe */.nom)} — ${dr_esc(sim.jour)}, ${sim.debut}-${sim.fin} · heure ${h} sur ${(dr_heureJouee(S.heure) || {}).sur || 1}</h2><div class="sous">${dr_esc(seance().titre)}</div>`;
   x += `<div class="travail"><b>L'heure ${S.heure}</b> (${dr_esc(h1.jour)}, ${h1.debut}) : ${S.close ? ((S.closes || {})[S.heure] ? 'close à ' + hhmm(S.closes[S.heure]) : 'close (fermée à l\'ouverture de cette heure)') /* E1 (réveil n°8) : une heure d'un autre jour jamais close n'a pas de S.closes — « Cannot read properties of undefined » à l'ouverture */ : '<b style="color:var(--rouge)">pas close — ses décisions sont à prendre avant de lancer</b>'} · ${jouees} diapo${jouees > 1 ? 's' : ''} montrée${jouees > 1 ? 's' : ''} · ${[...new Set(S.parts.map(p => p.nom))].length} élève${S.parts.length > 1 ? 's' : ''} ayant pris la parole${S.mots && S.mots[S.heure] ? ' · mot aux absents : « ' + dr_esc(S.mots[S.heure]) + ' »' : ''}</div>`;
   x += faisceauHtml(h);
-  const rp = (S.reprisesPrevues || {})[h] || []; x += `<div class="travail"><b>Ce que l'heure ${h} jouera, dans l'ordre</b> : ${rp.map(q => `<span class="puce" style="color:var(--or)">↺ reprise à l'oral de « ${dr_esc(q.lib)} » avant « ${dr_esc(q.act)} »</span>`).join('')}${dr_reactPuceHtml(h)}${o.map((i, r) => `<span class="puce">${r + 1 + dr_reactDecal(h)}. ${numDe(E[i]) ? 'A' + dr_esc(String(numDe(E[i]))) + ' · ' : ''}${dr_esc(E[i].act)}${glisseeDe(E[i], h) ? ' <i style="color:var(--ambre)">↩ glissée de l\'heure ' + E[i].heure + (decisionDe(E[i]).choix === 'terminer' ? ', terminée à la maison — <b>à reprendre</b>' : decisionDe(E[i]).choix === 'preparer' ? ', préparée à la maison — <b>à reprendre</b>' : '') + '</i>'   /* §12.17 (b2) : fléchée « à reprendre » */ : ''}${E[i].role === 'reactivation' ? ' <i style="color:var(--ambre)">réactivation</i>' : ''}${retiree(E[i]) && decisionDe(E[i]) && decisionDe(E[i]).remob ? ' <i style="color:var(--rouge)">↪ décalée à l\'heure suivante</i>' : ''}${E[i].role === 'bilan' ? ' <i style="color:var(--ambre)">bilan de la séance</i>' : ''}</span>`).join(' ')}<div style="margin-top:8px" class="${debord > 0 ? 'debord' : ''}">${prevu} min prévues pour ${utileH} utiles${debord > 0 ? ' — l\'heure dépasserait de ' + debord + ' min : le T-5 le redira, c\'est toi qui décides' : ''}</div></div>`;
+  const rp = (S.reprisesPrevues || {})[h] || []; x += `<div class="travail"><b>Ce que l'heure ${h} jouera, dans l'ordre</b> : ${rp.map(q => `<span class="puce" style="color:var(--or)">↺ reprise à l'oral de « ${dr_esc(q.lib)} » avant « ${dr_esc(q.act)} »</span>`).join('')}${dr_reactPuceHtml(h)}${o.map((i, r) => E[i].role === 'reactivation' ? dr_reactPuce(h, r + 1 + dr_reactDecal(h), E[i].act) : `<span class="puce">${r + 1 + dr_reactDecal(h)}. ${numDe(E[i]) ? 'A' + dr_esc(String(numDe(E[i]))) + ' · ' : ''}${dr_esc(E[i].act)}${glisseeDe(E[i], h) ? ' <i style="color:var(--ambre)">↩ glissée de l\'heure ' + E[i].heure + (decisionDe(E[i]).choix === 'terminer' ? ', terminée à la maison — <b>à reprendre</b>' : decisionDe(E[i]).choix === 'preparer' ? ', préparée à la maison — <b>à reprendre</b>' : '') + '</i>'   /* §12.17 (b2) : fléchée « à reprendre » */ : ''}${E[i].role === 'reactivation' ? ' <i style="color:var(--ambre)">réactivation</i>' : ''}${retiree(E[i]) && decisionDe(E[i]) && decisionDe(E[i]).remob ? ' <i style="color:var(--rouge)">↪ décalée à l\'heure suivante</i>' : ''}${E[i].role === 'bilan' ? ' <i style="color:var(--ambre)">bilan de la séance</i>' : ''}</span>`).join(' ')}<div style="margin-top:8px" class="${debord > 0 ? 'debord' : ''}">${prevu} min prévues pour ${utileH} utiles${debord > 0 ? ' — l\'heure dépasserait de ' + debord + ' min : le T-5 le redira, c\'est toi qui décides' : ''}</div></div>`;
   if (videos.length) x += `<div class="travail"><b>Les vidéos de cette heure</b> : ${videos.map(v => `<div>${cleOk ? '✔' : '✘'} <b>${dr_esc(v.blocs[0].txt)}</b> — ${cleOk ? 'clé USB branchée sur ' + (S.tab === 'classe' ? "l'ordi de classe" : 'ton ordi portable') : '<b>branche la clé USB sur ' + (S.tab === 'classe' ? "l'ordi de classe" : 'ton ordi portable') + '</b>' + (S.tab === 'classe' && S.cle === 'portable' ? ' — ou ouvre la fenêtre du tableau sur ton ordi portable, où la clé est branchée' : '')}</div>`).join('')}<button class="btn" id="o-reverif" style="margin-top:6px" title="Regarde de nouveau si la clé USB des vidéos de cette heure est branchée">Revérifier</button></div>`;
   x += dr_reactBoutonHtml(h);   /* §12.22 (c) : « Ouvrir par la réactivation » oui / non, et le réglage de la séance */
   x += `<div style="height:70px"></div><div class="barre-fin"><span style="color:var(--texte2)">Lancer ouvre l'heure ${h} sur ${dr_ouvertureSur(o, h)} ; rien n'est projeté avant.</span><span style="flex:1"></span><button class="btn" id="o-relecture" title="Ouvre la relecture de l\'heure d\'avant : le récit, ce qui s\'est passé, le papier — rien n\'est lancé">Voir la relecture de l'heure ${S.heure}</button><button class="btn or" id="o-lancer" ${S.close ? 'title="Lance l\'heure ' + h + ' : le chrono démarre, ' + dr_esc(dr_ouvertureSur(o, h).replace(/<[^>]+>/g, '')) + ' va au tableau, tout s\'enregistre pour la classe"' : 'disabled title="Clos d\'abord l\'heure précédente (Fin de l\'heure)"'}>Lancer l'heure ${h}</button></div>`;
@@ -438,11 +438,11 @@ function dr_heuresDeLaClasse(slug){ try { slug = slug || dr_classeProposee(); co
     let cs = []; try { cs = Object.values(edtProjeter(iso0, 21) || {}).filter(c => c && c.classeMjpc === nom && c.nature === 'prevu' && c.titre === titre).sort((a, b) => (a.iso + a.creneau).localeCompare(b.iso + b.creneau)); } catch (e) {}   /* les cases de CETTE séance pour cette classe, avec leur heure n/N : la même projection que l'EDT */
     cs.forEach(c => { if (vues[c.iso + String(c.creneau).slice(0, 2) + String(c.creneau).slice(3, 5)]) return;   /* réveil n°16 (B17) : une heure jouée dans cette page que la projection croit encore à venir n'est pas deux fois */ out.push({ iso: c.iso, creneau: c.creneau, l: (typeof edtJourEnClair === 'function' ? edtJourEnClair(c.iso) : c.iso) + ', ' + c.creneau, jouee: false, nEdt: c.heure, surEdt: c.sur }); });
     return out.map((x, k) => Object.assign({ n: x.nEdt || (k + 1), sur: x.surEdt || Math.max(N, out.length) }, x)); } catch (e) { return []; } }
-function dr_ordreOuverture(h){ const o = ordreHeureCalc(h); try { const E = seance().ecrans; const cles = Object.keys(S.decisions || {}); const gl = o.filter(i => E[i] && !E[i].role && glisseeDe(E[i], h)); if (gl.length < 2) return o;
+function dr_ordreOuverture(h){ let o = ordreHeureCalc(h); try { if (dr_reactChoix(h) !== 'oui') { const E0 = seance().ecrans; o = o.filter(i => !(E0[i] && E0[i].role === 'reactivation')); } } catch (e) {}   /* §12.26 : « non » — la construite de la copie n'entre pas dans l'ordre (retirée au lancement) */ try { const E = seance().ecrans; const cles = Object.keys(S.decisions || {}); const gl = o.filter(i => E[i] && !E[i].role && glisseeDe(E[i], h)); if (gl.length < 2) return o;
     const rg = i => { const d = decisionDe(E[i]) || {}; return [d.choix === 'suivante' ? 0 : 1, d.defaut ? 1 : 0, +d.t || 0, cles.indexOf(cleDec(E[i]))]; };   /* §12.17 : (b1) « à l'heure suivante », puis (b2) « terminer / préparer à la maison » */
     const tri = gl.slice().sort((a, b) => { const A = rg(a), B = rg(b); return (A[0] - B[0]) || (A[1] - B[1]) || ((A[2] && B[2]) ? A[2] - B[2] : 0) || (A[3] - B[3]) || (a - b); }); let k = 0; return o.map(i => gl.includes(i) ? tri[k++] : i); } catch (e) { return o; } }
 function lancerHeure(h){ dr_finAvecCahier(); S.heure = h; S.lancee = true; S.ordres = S.ordres || {}; S.ordres[h] = dr_ordreOuverture(h); S.ordresEid = S.ordresEid || {}; S.ordresEid[h] = S.ordres[h].map(eidDe); /* E2 : now() est l'horloge réelle (socle, E1) — avant : T0 = Date.now() */ S.ecoule = 0; S.close = false; S.t5 = false; S.finSection = 1; S.finFaites = {}; /* E2 : la fin de l'heure n repart de l'étape 1 (vu par E4 : l'heure 2 s'ouvrait à l'étape 7, « sans échéance » coché) */ S.bilanCoche = false; S.travail = { terminer: [], preparer: [], apprendre: null, prevu: true, libre: '' }; S.palier = null; S.paliers = {}; S.t5 = false; S.alerteOuverte = false; try { alerteFermer(); } catch (e) {}   /* réveil n°9 (E4 ligne 143) : l'alerte de l'heure d'avant (relue avec son état) ne passe pas à l'heure lancée */ S.echeance = null; S.echeanceChoisie = false; S.echeanceAuto = false; S.motAbsents = ''; S.encart = null; S.doc = null; if (S.gel) degeler();
-  const o = ordreHeure(h); S.di = o[0]; S.page = null; S.mur = null; S._rattrapage = false; journal('lancement', { heure: h }); try { if (DR_CL.react && DR_CL.react.decide[h]) { const r = seance().ecrans.find(e => e && e.role === 'reactivation' && +e.heure === +h); S.reactChoix = S.reactChoix || {}; S.reactChoix[h] = r ? 'oui' : 'non'; journal('reactivation', { heure: h, choix: S.reactChoix[h], eid: r ? r.eid : null }); } } catch (e) {}   /* §12.22 (c) : le choix de Paul, au journal et dans C/etat */ $('ecran-fin').classList.remove('on'); $('hou').textContent = dr_entete(h); /* E2 : la classe, le créneau, l'heure n/N réels — avant : HEURES_SIM puis dr_heureDe (E1), « sur 2 » */ voir('pilotage'); dr_tout(); }
+  const o = ordreHeure(h); S.di = o[0]; S.page = null; S.mur = null; S._rattrapage = false; journal('lancement', { heure: h }); try { if (DR_CL.react && DR_CL.react.decide[h]) { const r = seance().ecrans.find(e => e && e.role === 'reactivation' && +e.heure === +h); S.reactChoix = S.reactChoix || {}; S.reactChoix[h] = r ? 'oui' : 'non'; journal('reactivation', Object.assign({ heure: h, choix: S.reactChoix[h], eid: r ? r.eid : null }, r && dr_reactEstModifiee(r) ? { modifiee: true } : {})); } } catch (e) {}   /* §12.22 (c) : le choix de Paul, au journal et dans C/etat */ $('ecran-fin').classList.remove('on'); $('hou').textContent = dr_entete(h); /* E2 : la classe, le créneau, l'heure n/N réels — avant : HEURES_SIM puis dr_heureDe (E1), « sur 2 » */ voir('pilotage'); dr_tout(); }
 
 /* ═══ fin de la coupe E1-a ═══ */
 
@@ -546,6 +546,10 @@ function dr_etatHeure(){
   const s = {}; Object.keys(S).forEach(k => { if (DR_ETAT_HORS.includes(k) || k.charAt(0) === '_') return; s[k] = S[k]; });
   return { S: dr_versHub(s), parDiapo: dr_versHub(parDiapo), vuMax: dr_versHub(vuMax), maj: Date.now(), heures: dr_versHub(dr_heuresDesEcrans()), reactivations: dr_versHub(dr_reactivationsDesEcrans()), heuresParDurees: DR_CL.partages.get(seance().ecrans) || 0 };   /* réveil n°4, points 3 et 7 : l'heure de chaque diapo (les frontières) et l'heure courante (`S.heure`) — la reprise remonte l'heure telle qu'elle était, E4 lit où était chaque diapo */
 }
+/* `dr_normaliserTrame` du socle retire les écrans `reactivation` (E1, §12.26-2 : jamais dans la trame du chapitre) — appliquée ici à la COPIE de la classe en mémoire
+   (les fins d'heure, l'heure par défaut), elle en retirerait la construite : on la met de côté et on la remet à sa place */
+function dr_reactNormaliserCopie(E, sk){ if (typeof dr_normaliserTrame !== 'function') return; const mis = []; for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'reactivation') mis.unshift({ i, e: E[i], apres: (E[i - 1] || {}).eid });
+  dr_normaliserTrame(E, sk); mis.forEach(m => { if (E.includes(m.e)) return; let k = m.apres != null ? E.findIndex(x => x && x.eid === m.apres) : -1; k = k >= 0 ? k + 1 : Math.min(m.i, E.length); E.splice(k, 0, m.e); }); }
 /* les frontières d'heure de la trame en mémoire : {eid: heure}, sans les « Cahier de textes » (le socle les place) */
 function dr_heuresDesEcrans(){ const o = {}; try { seance().ecrans.forEach(e => { if (!e.role && e.eid != null) o[e.eid] = +e.heure || 1; }); } catch (e) {} return o; }
 function dr_reactivationsDesEcrans(){ const o = {}; try { seance().ecrans.forEach(e => { if (e.role === 'reactivation' && e.eid != null) o[e.eid] = +e.heure || 1; }); } catch (e) {} return o; }   /* le rituel posé à chaque heure (§12.16), pour la reprise */
@@ -554,7 +558,7 @@ function dr_appliquerHeures(m, parDurees, reac){ const E = seance().ecrans; if (
   if (reac && typeof reac === 'object') E.forEach(e => { if (e.eid != null && reac[e.eid] != null && (!e.role || e.role === 'reactivation')) { e.role = 'reactivation'; e.heure = +reac[e.eid]; n++; } });
   E.forEach(e => { if (!e.role && e.eid != null && m[e.eid] != null && +m[e.eid] !== e.heure) { e.heure = +m[e.eid]; n++; } });
   if (parDurees) DR_CL.partages.set(E, +parDurees);
-  dr_placerFins(E, 1); if (typeof dr_normaliserTrame === 'function') dr_normaliserTrame(E, (dr_ctx() || {}).snum); try { reindexer(); } catch (e) {} return n; }
+  dr_placerFins(E, 1); if (typeof dr_normaliserTrame === 'function') dr_reactNormaliserCopie(E, (dr_ctx() || {}).snum); try { reindexer(); } catch (e) {} return n; }
 const dr_journalHub = () => dr_versHub(J);
 
 /* ─── peut-on écrire ? (contrat §5 : ni atelier, ni répétition, ni hors d'une heure lancée, ni en vue tableau) ─── */
@@ -682,7 +686,7 @@ function dr_cloreHeureRestee(slugNeuf, nomNeuf, c){
 
 /* ─── lancer : `atDrJouerClic`, ses gestes dans l'ordre, puis le lancement de la maquette ─── */
 function dr_lancer(classeSlug, creneau, debut, heure, sur){
-  DR_CL.react = { choix: {}, prete: {}, raison: {}, decide: {}, enCours: false };   /* §12.22 : un nouveau lancement, un nouveau choix */
+  DR_CL.react = { choix: {}, prete: {}, raison: {}, decide: {}, enCours: false }; DR_CL.reactVue = null; DR_CL.reactC = null;   /* §12.22 : un nouveau lancement, un nouveau choix */
   if (!classeSlug && !creneau) { const pr = dr_proposer(); classeSlug = pr.classeSlug; creneau = pr.creneau; debut = pr.debut; heure = heure || pr.heure; sur = sur || pr.sur; }
   DR_CL.sur = +sur || ((S.lancee && S.close && S.heure) ? DR_CL.sur : 0) || 1;
   classeSlug = classeSlug || dr_classeProposee(); creneau = creneau || dr_creneauPropose(); debut = debut || dr_debutPropose(creneau); heure = +heure || ((S.lancee && S.close && S.heure) ? S.heure + 1 : dr_heureProposee(classeSlug, creneau));   /* l'heure close dans cette page : la suivante */
@@ -722,7 +726,7 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
       if (j && j.S && j.S.lancee && dr_adopterIdentites(j.ecrans) > 0) { dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); return; }   /* les identités adoptées : on relit, pour que les rangs se refassent dessus */
       if (j && j.S && j.S.lancee) { if (Array.isArray(j.ecrans)) { const E = seance().ecrans; const f = dr_fusionCopie(E.slice(), j.ecrans, j.J); E.splice(0, E.length, ...f); }   /* la copie de la classe fusionnée avec la trame du jour */
         dr_restaurer(j); if (!(j.heures && Object.keys(j.heures).length)) dr_partagerHeures(dr_utileCreneau(creneau)); else dr_appliquerHeures(j.heures, j.heuresParDurees, j.reactivations); dr_heureContinue(heure);   /* les frontières de la veille, puis la séance continue */ S.heure = heure - 1; S.close = true; S.lancee = true; DR_CL.suite = { classeSlug, nom, creneau, debut, heure, garder: true }; dr_heurePoser(heure, { debut, fin, classeSlug, classeNom: nom });
-        try { $('ecran-edt').classList.remove('on'); } catch (e) {} try { voir('pilotage'); } catch (e) {} dr_reactPreparerAsync(heure, () => ouvrirOuverture()); return; }
+        try { $('ecran-edt').classList.remove('on'); } catch (e) {} try { voir('pilotage'); } catch (e) {} DR_CL.reactC = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug; dr_reactOuvertureAssurer(heure, DR_CL.reactC, () => ouvrirOuverture()); return; }   /* §12.26 (7) : la construite de la copie, ou construite maintenant (clôture manquée) et écrite ; le chemin C pour l'écriture de Paul avant le lancement */
       dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, true);
     }, (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug);
     return; }
@@ -822,7 +826,9 @@ function dr_cloreFin(){
   if (typeof AT_DR_COURS === 'undefined' || !AT_DR_COURS || AT_DR_REGIME !== 'classe') return;
   const C = dr_cheminC(), ch = dr_cheminH(); S.finReel = Date.now(); S.closPar = null;
   const p = dr_paquetHeure(true), jr = dr_journalHub(), et = dr_etatHeure();
+  const hClose = S.heure; const cleH = ch ? String(ch).split('/').pop() : null;
   if (ch && p) dr_lire(ch + '/absents', abs => { if (abs) p.absents = abs; dr_ecrire(ch, p, 'Heure close — ' + p.creneau + ' (' + p.classe + ')', () => {}); });
+  if (C && p) try { dr_reactApresCloture(C, hClose + 1, { cle: cleH, paquet: p }); } catch (e) {}   /* §12.26-1 : la diapo de l'heure h+1, construite depuis le paquet qui vient d'être clos — le paquet local prime sur le hub chez E4 (poussée 102 : aussi en mode test, où le hub ne le portera jamais) —, écrite dans la copie */
   if (C) { dr_ecrire(C + '/journal', jr, 'Le journal de l’heure, à la clôture', () => {}); dr_ecrire(C + '/etat', et, 'L’état de l’heure, à la clôture', () => {}); }
   [DR_CL.jT, DR_CL.eT, DR_CL.tT, DR_CL.cT].forEach(clearTimeout);
   try { window.AT_DR_DERNIER = { level: (AT.edChap || {}).level, chnum: (AT.edChap || {}).chnum, snum: ATVUES.snum, classe: AT_DR_COURS.classeSlug, ts: Date.now() }; } catch (e) {}
@@ -1047,7 +1053,7 @@ function dr_fusionCopie(trame, copie, journalJ){
   (trame || []).forEach(e => { const c = e && parEid[e.eid]; vus.add(e && e.eid);
     if (!c) { res.push(e); return; }                                   /* nouveau dans la trame */
     res.push(sig(e) !== sig(c) && modifie(e.eid) ? c : e); });         /* modifié dans la trame : la trame, sauf ce que la classe a modifié */
-  (copie || []).forEach((c, i) => { if (!c || vus.has(c.eid) || !joue(c.eid)) return;   /* retiré de la trame mais joué : il reste, à sa place */
+  (copie || []).forEach((c, i) => { if (!c || vus.has(c.eid) || !(joue(c.eid) || c.role === 'reactivation')) return;   /* retiré de la trame mais joué : il reste, à sa place ; §12.26-2 : la réactivation construite ne vit que dans la copie — gardée même pas encore montrée (construite à la clôture) */
     const prec = (copie[i - 1] || {}).eid; const k = res.findIndex(x => x && x.eid === prec); res.splice(k >= 0 ? k + 1 : res.length, 0, c); });
   return res;
 }
@@ -1065,7 +1071,7 @@ function dr_heureContinue(h){
     /* §12.25 (6) : la lecture du rituel par le titre est tombée — la réactivation est construite par le site au lancement (`dr_reactInserer`), seule `role === 'reactivation'` compte */
     E.forEach((e, i) => { if (!e.role && !vu(e, i) && (+e.heure || 1) < h && !decisionDe(e)) { e.heure = h; n++; } });
     if (utile) n += dr_refaireHeures(E, h, utile);   /* banc.sh 13:56 (K6-K11) : la frontière par les durées laissait à l'heure 1 ce que la classe n'avait pas vu — l'heure 2 sautait les premières diapos */
-    if (n && typeof dr_normaliserTrame === 'function') dr_normaliserTrame(E, (dr_ctx() || {}).snum);   /* la clé de la séance : l'eid « fin-hN-s<clé> » du socle, stable */ try { reindexer(); } catch (e) {} return n; } catch (e) { return 0; }
+    if (n && typeof dr_normaliserTrame === 'function') dr_reactNormaliserCopie(E, (dr_ctx() || {}).snum);   /* la clé de la séance : l'eid « fin-hN-s<clé> » du socle, stable */ try { reindexer(); } catch (e) {} return n; } catch (e) { return 0; }
 }
 /* la séance continue (CADRAGE-TEMPS §1) sur ma frontière par les durées : à partir de l'heure h, ce qui reste se repartage par les minutes
    utiles ; chaque « Cahier de textes » (rôle fin, eid stable du socle) est déplacé derrière la dernière diapo de son heure, jamais doublé. */
@@ -1132,7 +1138,7 @@ function dr_partagerHeures(utile){
   try { const E = seance().ecrans; const pleines = E.filter(e => e.role !== 'fin'); if (new Set(pleines.map(e => +e.heure || 1)).size > 1) return 0;   /* une frontière existe déjà */
     utile = utile || 50; let cum = 0, n = 0; E.forEach(e => { if (e.role === 'fin') return; const h = 1 + Math.floor(cum / utile); if (h !== (+e.heure || 1)) { e.heure = h; n++; } cum += +e.dur || 0; });
     if (n) DR_CL.partages.set(E, utile);   /* la frontière est la mienne (par les durées) : `dr_heureContinue` peut la refaire ; une frontière posée par Paul, jamais */
-    if (n && typeof dr_normaliserTrame === 'function') dr_normaliserTrame(E, (dr_ctx() || {}).snum);   /* la clé de la séance : l'eid « fin-hN-s<clé> » du socle, stable */ try { reindexer(); } catch (x) {} return n; } catch (e) { return 0; }
+    if (n && typeof dr_normaliserTrame === 'function') dr_reactNormaliserCopie(E, (dr_ctx() || {}).snum);   /* la clé de la séance : l'eid « fin-hN-s<clé> » du socle, stable */ try { reindexer(); } catch (x) {} return n; } catch (e) { return 0; }
 }
 const dr_utileCreneau = cr => Math.max(10, dr_tempsUtile(cr, String(cr).split('-')[0]));
 
@@ -1158,30 +1164,114 @@ function dr_reactPreparer(h){ const R = DR_CL.react; if (R.prete[h] !== undefine
 function dr_reactPreparerAsync(h, cb){ const R = DR_CL.react; if (R.prete[h] !== undefined || typeof dr_reactivationPreparer !== 'function') { cb(dr_reactPreparer(h)); return; }
   let fait = false; const fin = e => { if (fait) return; fait = true; if (!dr_reactValide(e)) { R.raison[h] = (e && e.raison) || 'rien de joué avant : rien à réactiver'; R.prete[h] = null; cb(null); } else { R.prete[h] = e; cb(e); } };
   try { dr_reactivationPreparer(h, fin); setTimeout(() => fin(null), 4000); } catch (x) { fin(null); } }   /* E4 relit le hub : borné à 4 s */
+/* ═══ §12.26 (25/10, « va » 14:59) — LA RÉACTIVATION CONSTRUITE À LA CLÔTURE, VUE ET MODIFIÉE AVANT LE LANCEMENT (E2).
+   §12.25-10 est remplacé : la diapo de l'heure h+1 est construite À LA CLÔTURE de l'heure h (`dr_reactApresCloture`, par
+   `dr_reactivationPreparer(h+1, cb, {cle, paquet})` d'E4 — le paquet local prime sur le hub : pas de course avec son écriture),
+   écrite tout de suite dans `C/ecrans` (la copie de la classe, jamais la trame) ; `dr_fusionCopie` la garde à l'ouverture suivante.
+   Sur l'écran d'ouverture, la puce « 1. Où en sommes-nous ? » l'ouvre dans le pilote SANS LANCER (`dr_reactVoir` : rendu seul, jamais
+   `pousser` — ni journal ni tableau) ; Paul y écrit comme dans toute diapo (le geste du socle, E1, armé sur `dr_reactAvantLancement()`),
+   `dr_reactModifiee()` écrit la copie et pose « ta version » + ↩ dans l'entête du pilote (`.scene > .titre`, jamais au tableau) ;
+   ↩ remet `construite.calculee` (E4 la pose ; `dr_reactivationRetour` / `dr_reactivationModifiee` s'il les a, sinon ici).
+   « Lancer » : `dr_reactInserer` ne construit plus — « oui » : la construite est déjà dans la copie (ou, à l'heure 1 / sans copie,
+   `prete[h]` tenu en mémoire est inséré) ; « non » : elle est retirée de la copie. (7) clôture manquée : construite à l'ouverture,
+   écrite alors dans la copie. ═══ */
+DR_CL.reactVue = null;   /* l'aperçu en cours : { h, eid, C, diAvant, retour: 'ouverture' | 'legere' } */
+DR_CL.reactC = null;     /* le chemin `C` de la classe connu avant le lancement (l'ouverture depuis la case) */
+function dr_reactEcran(h){ try { return seance().ecrans.find(e => e && e.role === 'reactivation' && +e.heure === +h) || null; } catch (e) { return null; } }
+function dr_reactEcranDe(eid){ try { return seance().ecrans.find(e => e && e.eid === eid) || null; } catch (e) { return null; } }
+function dr_reactCheminC(){ try { if (DR_CL.reactC) return DR_CL.reactC; if (DR_CL.ouverte && DR_CL.ouverte.C) return DR_CL.ouverte.C; if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && AT_DR_REGIME === 'classe') return dr_cheminC(); } catch (e) {} return null; }
+const dr_reactClone = x => JSON.parse(JSON.stringify(x));
+/* les blocs `texte` comparés sans les `id` (E4, RC20 : `dr_reactivationModifiee` fait de même) */
+function dr_reactSignature(blocs){ return JSON.stringify((blocs || []).map(b => ({ t: b.t, txt: b.txt || '', el: (b.el || []).map(x => typeof x === 'string' ? x : (x && x.txt) || '') }))); }
+function dr_reactEstModifiee(e){ if (!e || !e.construite || !e.construite.calculee) return false; try { if (typeof dr_reactivationModifiee === 'function') return !!dr_reactivationModifiee(e); } catch (x) {} return dr_reactSignature(e.blocs) !== dr_reactSignature(e.construite.calculee); }
+/* l'écran rendu par E4, normalisé pour la copie : rôle, heure, eid du socle, dur, la version calculée gardée (§12.26-5) — l'objet lui-même (l'heure 1 le tient en mémoire jusqu'au lancement) */
+function dr_reactNormaliser(h, p){ const sk = (dr_ctx() || {}).snum; if (p.act == null) p.act = DR_REACT_TITRE; p.role = 'reactivation'; p.heure = +h; p.dur = +p.dur || 3; delete p.actId;
+  if (p.eid == null) p.eid = 'react-h' + h + '-s' + (sk != null ? sk : 'x');   /* la formule du socle (§12.25-3) */
+  p.construite = p.construite || {}; if (!p.construite.calculee) p.construite.calculee = dr_reactClone(p.blocs || []);   /* E4 la pose (RC20) ; sinon ici, à l'identique */
+  return p; }
+/* poser l'écran dans `seance().ecrans`, devant la première diapo de l'heure h (le socle la met en tête) ; une fois */
+function dr_reactPoser(h, p){ if (!dr_reactValide(p)) return null; const E = seance().ecrans; if (dr_reactDejaLa(h)) return dr_reactEcran(h); const e = dr_reactNormaliser(h, p);
+  let i = E.findIndex(x => x && +x.heure === +h && x.role !== 'reactivation'); if (i < 0) i = E.length; let j = -1; E.forEach((x, k) => { if (x && +x.heure < +h) j = k; }); i = Math.max(i, j + 1); E.splice(i, 0, e);   /* devant la première diapo de l'heure h, derrière tout ce qui est aux heures d'avant (la construite de l'heure d'avant comprise) */
+  try { if (typeof dr_preparer === 'function') dr_preparer(E); } catch (x) {} try { reindexer(); } catch (x) {} return e; }
+/* la copie de la classe réécrite (C/ecrans) — par le chemin connu, pas par `dr_copieAuto` (hors heure lancée, `dr_clPeutEcrire` refuse) */
+function dr_reactEcrireCopie(C, motif, cb){ C = C || dr_reactCheminC(); if (!C) { if (cb) cb(false); return false; }
+  try { const ecr = dr_reactClone(seance().ecrans); DR_CL.empreinteEcrite = dr_empreinte(ecr); dr_ecrire(C + '/ecrans', ecr, motif || 'La copie de la classe — la réactivation construite', () => { if (cb) cb(true); }); return true; } catch (x) { if (cb) cb(false); return false; } }
+/* (1) à la clôture de l'heure h : la diapo de l'heure h+1, depuis le paquet qui vient d'être clos, dans la copie */
+function dr_reactApresCloture(C, h, local, cb){ const fini = ok => { if (cb) cb(ok); };
+  try { if (!C || dr_reactDejaLa(h)) return fini(false); const sur = +((dr_heureJouee(h - 1) || {}).sur || DR_CL.sur || 0); if (sur && h > sur) return fini(false);   /* la dernière heure de la séance : pas d'heure h+1 ici (l'heure 1 de la séance d'après se construit à son ouverture, E4 RC11) */
+    if (typeof dr_reactivationPreparer !== 'function') return fini(false);
+    let fait = false; const fin = e => { if (fait) return; fait = true; if (!dr_reactValide(e)) { DR_CL.react.raison[h] = (e && e.raison) || 'rien de joué avant : rien à réactiver'; return fini(false); }
+      const pose = dr_reactPoser(h, e); if (!pose) return fini(false); DR_CL.react.prete[h] = undefined; dr_reactEcrireCopie(C, 'La réactivation de l’heure ' + h + ', construite à la clôture de l’heure ' + (h - 1), () => fini(true)); };
+    dr_reactivationPreparer(h, fin, local || undefined); setTimeout(() => fin(null), 4000); } catch (x) { fini(false); } }
+/* (7) à l'ouverture de l'heure h (état relu, l'heure d'avant close sans construite — clôture manquée) : construite maintenant, écrite dans la copie */
+function dr_reactOuvertureAssurer(h, C, cb){ if (dr_reactDejaLa(h)) { cb(dr_reactEcran(h)); return; } dr_reactPreparerAsync(h, e => { if (e && C) { const pose = dr_reactPoser(h, e); if (pose) { DR_CL.react.prete[h] = undefined; dr_reactEcrireCopie(C, 'La réactivation de l’heure ' + h + ', construite à l’ouverture (clôture manquée)'); } } cb(e); }); }
 function dr_reactChoix(h){ const c = DR_CL.react.choix[h]; return c === 'oui' || c === 'non' ? c : dr_reglageReactivationLu(); }
-function dr_reactAnnoncee(h){ return !dr_reactDejaLa(h) && dr_reactChoix(h) === 'oui' && !!dr_reactPreparer(h); }
-function dr_reactDecal(h){ return dr_reactAnnoncee(h) ? 1 : 0; }
-function dr_reactPuceHtml(h){ return dr_reactAnnoncee(h) ? `<span class="puce">1. ${dr_esc(DR_REACT_TITRE)} <i style="color:var(--ambre)">réactivation (construite depuis l'heure d'avant)</i></span> ` : ''; }   /* l'espace : la puce suivante est jointe par ' ' comme les autres */
-function dr_reactInserer(h){ /* au lancement de l'heure h : une fois, si oui, si E4 a construit */
-  try { if (dr_reactDejaLa(h) || dr_reactChoix(h) !== 'oui') return false; const p = DR_CL.react.prete[h]; if (!dr_reactValide(p)) return false;
-    const E = seance().ecrans; const sk = (dr_ctx() || {}).snum; const e = Object.assign({ act: DR_REACT_TITRE }, p, { role: 'reactivation', heure: +h }); e.dur = +e.dur || 3; delete e.actId;
-    if (e.eid == null) e.eid = 'react-h' + h + '-s' + (sk != null ? sk : 'x');   /* la formule du socle (§12.25-3), posée ici s'il ne l'a pas déjà fait */
-    let i = E.findIndex(x => x && +x.heure === +h); if (i < 0) i = E.length; E.splice(i, 0, e); DR_CL.react.prete[h] = undefined;
-    try { if (typeof dr_preparer === 'function') dr_preparer(E); } catch (x) {} try { reindexer(); } catch (x) {} return true; } catch (x) { return false; } }
-function dr_reactBoutonHtml(h){ const p = dr_reactPreparer(h); const deja = dr_reactDejaLa(h); const c = dr_reactChoix(h); const reg = dr_reglageReactivationLu(); const off = !p && !deja; const raison = off ? (DR_CL.react.raison[h] || 'rien à réactiver') : '';
-  const depuis = p && p.construite && p.construite.depuis ? ' (depuis ' + dr_esc(String(p.construite.depuis)) + ')' : '';
-  return `<div class="travail" id="o-react"><b>Ouvrir par la réactivation</b> — ${deja ? 'déjà construite pour cette heure : elle est dans la copie de la classe, telle qu’elle a été montrée' : off ? '<i>' + dr_esc(raison) + '</i>' : 'la diapo « ' + dr_esc(DR_REACT_TITRE) + ' », construite depuis ce que la classe a fait à l’heure d’avant' + depuis + ' (activités faites, reports, notions, travail), dévoilée élément par élément avec ▶'} :
-    <label style="display:inline-block;margin-right:12px" title="Oui : l’heure ${h} s’ouvre sur la réactivation construite, en tête, avant ce qui glisse et le programme — rien n’est inventé, seulement ce qui a été fait"><input type="radio" name="o-react" id="o-react-oui" value="oui" ${c === 'oui' ? 'checked' : ''} ${off || deja ? 'disabled' : ''}> oui</label>
-    <label style="display:inline-block;margin-right:12px" title="Non : l’heure ${h} s’ouvre sur ce qui glisse, puis le programme ; aucune réactivation n’est construite ni écrite"><input type="radio" name="o-react" id="o-react-non" value="non" ${c === 'non' ? 'checked' : ''} ${off || deja ? 'disabled' : ''}> non</label>
+/* l'écran de l'heure h : celui de la copie, sinon celui tenu en mémoire (l'heure 1 : la copie n'existe pas avant le lancement) */
+function dr_reactEcranOuPrete(h){ return dr_reactEcran(h) || (DR_CL.react.prete[h] !== undefined ? DR_CL.react.prete[h] : dr_reactPreparer(h)); }
+function dr_reactAnnoncee(h){ return dr_reactChoix(h) === 'oui' && !!dr_reactEcranOuPrete(h); }
+function dr_reactHorsCopie(h){ return dr_reactAnnoncee(h) && !dr_reactDejaLa(h); }   /* annoncée mais pas encore dans la copie (l'heure 1) : la puce est à part */
+function dr_reactDecal(h){ return dr_reactHorsCopie(h) ? 1 : 0; }
+function dr_reactPuceHtml(h){ return dr_reactHorsCopie(h) ? dr_reactPuce(h, 1, DR_REACT_TITRE) : ''; }
+/* la puce « n. Où en sommes-nous ? » de l'écran d'ouverture : cliquable, elle ouvre la diapo dans le pilote sans lancer (§12.26-3) */
+function dr_reactPuce(h, n, act){ return `<span class="puce" id="o-react-voir" role="button" style="cursor:pointer;text-decoration:underline dotted" title="Voir la diapo « ${dr_esc(act)} » dans le pilote, telle qu’elle ira au tableau, sans rien lancer — tu peux y écrire ; retour à cet écran ensuite">${n}. ${dr_esc(act)} <i style="color:var(--ambre)">réactivation (construite depuis l'heure d'avant)</i></span> `; }
+function dr_reactInserer(h){ /* au lancement de l'heure h (§12.26) : « oui » → la construite de la copie (ou celle tenue en mémoire) ; « non » → retirée de la copie ; plus de construction ici */
+  try { const E = seance().ecrans;
+    if (dr_reactChoix(h) !== 'oui') { let n = 0; for (let i = E.length - 1; i >= 0; i--) { if (E[i] && E[i].role === 'reactivation' && +E[i].heure === +h) { E.splice(i, 1); n++; } } if (n) { try { reindexer(); } catch (x) {} } DR_CL.react.prete[h] = undefined; return false; }
+    if (dr_reactDejaLa(h)) return true; const p = DR_CL.react.prete[h]; if (!dr_reactValide(p)) return false; const e = dr_reactPoser(h, p); DR_CL.react.prete[h] = undefined; return !!e; } catch (x) { return false; } }
+function dr_reactBoutonHtml(h){ const e = dr_reactEcranOuPrete(h); const deja = dr_reactDejaLa(h); const c = dr_reactChoix(h); const reg = dr_reglageReactivationLu(); const off = !e; const raison = off ? (DR_CL.react.raison[h] || 'rien à réactiver') : '';
+  const depuis = e && e.construite && e.construite.depuis ? ' (depuis ' + dr_esc(String(e.construite.depuis)) + ')' : ''; const mod = e && dr_reactEstModifiee(e);
+  return `<div class="travail" id="o-react"><b>Ouvrir par la réactivation</b> — ${off ? '<i>' + dr_esc(raison) + '</i>' : 'la diapo « ' + dr_esc(DR_REACT_TITRE) + ' », construite depuis ce que la classe a fait à l’heure d’avant' + depuis + (deja ? ', dans la copie de la classe' : '') + (mod ? ' — <b>ta version</b>' : '') + ' ; la puce 1 la montre dans le pilote, sans lancer'} :
+    <label style="display:inline-block;margin-right:12px" title="Oui : l’heure ${h} s’ouvre sur la réactivation construite, en tête, avant ce qui glisse et le programme — rien n’est inventé, seulement ce qui a été fait"><input type="radio" name="o-react" id="o-react-oui" value="oui" ${c === 'oui' ? 'checked' : ''} ${off ? 'disabled' : ''}> oui</label>
+    <label style="display:inline-block;margin-right:12px" title="Non : l’heure ${h} s’ouvre sur ce qui glisse, puis le programme ; la réactivation construite est retirée de la copie de la classe"><input type="radio" name="o-react" id="o-react-non" value="non" ${c === 'non' ? 'checked' : ''} ${off ? 'disabled' : ''}> non</label>
     <label style="display:inline-block;margin-left:14px" title="Le réglage de la séance : la réponse proposée à chaque heure de cette séance (écrite dans la trame : deroule/reactivation ; l’Atelier l’affiche aussi) — ce choix-ci reste à toi à chaque heure">réglage de la séance : <select id="o-react-reg"><option value="oui" ${reg === 'oui' ? 'selected' : ''}>oui</option><option value="non" ${reg === 'non' ? 'selected' : ''}>non</option></select></label></div>`; }
-function dr_reactBrancher(h, redessiner){ try { ['o-react-oui', 'o-react-non'].forEach(id => { const el = document.getElementById(id); if (el) el.onchange = () => { if (el.checked) { DR_CL.react.choix[h] = el.value; redessiner(); } }; });
-    const sel = document.getElementById('o-react-reg'); if (sel) sel.onchange = () => { dr_reglageReactivation(null, sel.value, () => {}); redessiner(); }; } catch (e) {} }
-/* l'écran d'ouverture léger (§12.25-2) : l'heure 1 d'une séance, ou une heure n dont l'état n'est pas au hub — la classe, le créneau, la réactivation proposée, le même bouton */
+function dr_reactBrancher(h, redessiner, retour){ try { ['o-react-oui', 'o-react-non'].forEach(id => { const el = document.getElementById(id); if (el) el.onchange = () => { if (el.checked) { DR_CL.react.choix[h] = el.value; redessiner(); } }; });
+    const sel = document.getElementById('o-react-reg'); if (sel) sel.onchange = () => { dr_reglageReactivation(null, sel.value, () => {}); redessiner(); };
+    const v = document.getElementById('o-react-voir'); if (v) v.onclick = ev => { if (ev) { ev.preventDefault(); ev.stopPropagation(); } dr_reactVoir(h, retour || 'ouverture'); }; } catch (e) {} }
+/* ─── (3) voir sans lancer : l'aperçu dans le pilote ─── */
+function dr_reactAvantLancement(){ return !!(DR_CL.reactVue && !S.atelier && !S.repetition); }   /* pour E1 : le geste d'écriture s'arme là-dessus (à l'écran d'ouverture, S est l'état relu de l'heure d'avant : S.lancee et S.close sont vrais) */
+function dr_reactVoir(h, retour){ try { let e = dr_reactEcran(h); if (!e) { const p = DR_CL.react.prete[h]; if (!dr_reactValide(p)) return false; e = dr_reactPoser(h, p); if (!e) return false; }   /* l'heure 1 : l'écran tenu en mémoire est posé dans la trame en mémoire pour le rendu (E1 : `dr_derouleDe` ne l'écrit pas) ; `prete[h]` reste le même objet jusqu'au lancement */
+    DR_CL.reactVue = { h: +h, eid: e.eid, C: dr_reactCheminC(), diAvant: S.di, retour: retour || 'ouverture' };
+    try { $('ecran-fin').classList.remove('on', 'ouverture'); } catch (x) {} try { voir('pilotage'); } catch (x) {}
+    dr_reactApercuRendre(); return true; } catch (x) { DR_CL.reactVue = null; return false; } }
+function dr_reactApercuRendre(){ const v = DR_CL.reactVue; if (!v) return; const E = seance().ecrans; const i = E.findIndex(x => x && x.eid === v.eid); if (i < 0) { dr_reactRetour(); return; }
+  const e = E[i]; S.di = i; S.page = null; S.doc = null; S.blocActif = null; const mur = $('mur'); if (!mur) return;
+  try { dimensionner(); } catch (x) {} const et = etatComplet(); et.pilote = true; et.nDev = elements(e).length; et.ecrire = true; et.attente = null; et.flash = null;   /* toutes ses lignes, comme l'Atelier ; l'heure d'avant est close : pas l'écran d'attente ; rien n'est poussé : ni journal, ni tableau */
+  rendre(mur, et); mur.className = 'mur pilote react-apercu' + (S.mode === 'lum' ? ' mode-lum' : S.mode === 'ecr' ? ' mode-ecr' : '');
+  try { $('numero').innerHTML = `<b>Avant le lancement · ${dr_esc(e.act)} · heure ${v.h}</b>`; $('dtitre').textContent = `· réactivation construite depuis l'heure ${v.h - 1} · prévue ${e.dur} min · H${v.h}`; $('compte').textContent = 'aperçu — rien n\'est montré à la classe, rien n\'est écrit au journal'; } catch (x) {}
+  dr_reactEnteteRendre(e);
+  try { if (typeof brancherAtelier === 'function') setTimeout(brancherAtelier, 0); } catch (x) {} }
+/* l'entête du pilote (`.scene > .titre`, jamais au tableau) : le retour à l'écran d'ouverture ; « ta version » + ↩ quand les blocs diffèrent de la version calculée (§12.26-5) */
+function dr_reactEnteteRendre(e){ let z = document.getElementById('react-entete'); const titre = document.querySelector('#pilotage .scene > .titre') || (document.getElementById('dtitre') || {}).parentElement; if (!DR_CL.reactVue || !e) { if (z) z.remove(); return; }
+  if (!z) { z = document.createElement('span'); z.id = 'react-entete'; z.className = 'dr-d'; z.style.cssText = 'display:inline-flex;gap:8px;align-items:center;margin-left:14px;white-space:nowrap;flex:0 0 auto'; if (titre) { const tm = document.getElementById('temoin-mini'); if (tm && tm.parentElement === titre) titre.insertBefore(z, tm); else titre.appendChild(z); } }
+  const mod = dr_reactEstModifiee(e);
+  z.innerHTML = `<button class="btn" id="react-retour" title="Revenir à l’écran « Où en est la classe » — rien n’est lancé, ce que tu as écrit ici est gardé dans la copie de la classe">↶ Où en est la classe</button>` + (mod ? `<span id="react-version" style="display:inline-flex;gap:6px;align-items:center;color:var(--ambre)"><span class="ta-version"><b>ta version</b></span><button class="btn" id="react-calculee" title="Réafficher la version calculée par le site — ce que tu as changé dans cette diapo est perdu">↩</button></span>` : '');
+  const r = document.getElementById('react-retour'); if (r) r.onclick = () => dr_reactRetour(); const c = document.getElementById('react-calculee'); if (c) c.onclick = () => dr_reactRetourCalculee(); }
+/* (4) après la frappe de Paul dans la diapo (E1 l'appelle, ou `dr_sauve` enveloppé) : la copie écrite, la mention à jour */
+function dr_reactModifiee(){ const v = DR_CL.reactVue; if (!v) return false; const e = dr_reactEcranDe(v.eid); if (!e) return false;
+  try { if (typeof dr_preparer === 'function') dr_preparer(seance().ecrans); } catch (x) {}
+  const mod = dr_reactEstModifiee(e); if (v.C) dr_reactEcrireCopie(v.C, mod ? 'La réactivation de l’heure ' + v.h + ' — ta version' : 'La réactivation de l’heure ' + v.h);   /* l'heure 1 (pas de copie avant le lancement) : en mémoire, écrite au lancement */
+  if (document.activeElement && document.activeElement.closest && document.activeElement.closest('#mur')) dr_reactEnteteRendre(e); else dr_reactApercuRendre(); return mod; }   /* Paul écrit encore (le curseur est dans la diapo) : l'entête seule ; sinon le rendu entier */
+/* (5) ↩ : la version calculée revient (sans recalcul : `construite.calculee`), la copie est réécrite, la mention tombe */
+function dr_reactRetourCalculee(){ const v = DR_CL.reactVue; if (!v) return false; const e = dr_reactEcranDe(v.eid); if (!e || !e.construite || !e.construite.calculee) return false;
+  try { if (typeof dr_reactivationRetour === 'function') dr_reactivationRetour(e); else e.blocs = dr_reactClone(e.construite.calculee); } catch (x) { e.blocs = dr_reactClone(e.construite.calculee); }
+  try { if (typeof dr_preparer === 'function') dr_preparer(seance().ecrans); } catch (x) {} try { reindexer(); } catch (x) {}
+  if (v.C) dr_reactEcrireCopie(v.C, 'La réactivation de l’heure ' + v.h + ' — la version calculée réaffichée'); dr_reactApercuRendre(); return true; }
+/* retour à l'écran d'ouverture */
+function dr_reactRetour(){ const v = DR_CL.reactVue; DR_CL.reactVue = null; const z = document.getElementById('react-entete'); if (z) z.remove(); try { const mur = $('mur'); if (mur) mur.classList.remove('react-apercu'); } catch (x) {}
+  if (!v) return;
+  if (v.retour === 'legere') { try { const E = seance().ecrans; const i = E.findIndex(x => x && x.eid === v.eid); if (i >= 0 && DR_CL.react.prete[v.h] === E[i]) { E.splice(i, 1); reindexer(); } } catch (x) {} }   /* l'heure 1 : l'écran tenu en mémoire (prete[h], ses modifications avec) quitte la trame en mémoire ; le lancement le posera */
+  if (v.diAvant != null && v.diAvant >= 0 && v.diAvant < seance().ecrans.length) { S.di = v.diAvant; S.page = null; }
+  try { if (v.retour === 'legere') dr_ouvertureLegere(v.h); else ouvrirOuverture(); } catch (x) {} }
+/* pendant l'aperçu, le socle ne pousse rien et n'écrit pas la trame : `dr_tout` rend seulement, `dr_sauve` écrit la copie (E1 appelle l'un et l'autre après chaque frappe) */
+setTimeout(() => { [['dr_tout', () => { dr_reactApercuRendre(); }], ['dr_sauve', () => { dr_reactModifiee(); }]].forEach(([nom, f]) => { const o0 = window[nom]; if (typeof o0 !== 'function' || o0.__react) return;
+  const g = function () { if (DR_CL.reactVue) { f(); return; } return o0.apply(this, arguments); }; g.__react = true; window[nom] = g; }); }, 0);
+/* l'écran d'ouverture léger (§12.25-2) : l'heure 1 d'une séance, ou une heure n dont l'état n'est pas au hub — la classe, le créneau, la réactivation proposée, le même bouton, la puce qui montre */
 function dr_ouvertureLegere(h){ try { if ($('fin').parentElement !== $('ecran-fin')) $('ecran-fin').appendChild($('fin')); $('droite').classList.remove('fin'); } catch (e) {}
-  const x = DR_CL.suite || {}; const nom = x.nom || dr_nomClasse(x.classeSlug); const N = DR_CL.sur || 1; const p = DR_CL.react.prete[h]; const sur = () => dr_reactAnnoncee(h) ? 'la réactivation « ' + dr_esc(DR_REACT_TITRE) + ' » (construite)' : 'le programme, là où la classe s’est arrêtée';   /* l'ordre de l'heure n'est calculé qu'au lancement (frontières, continuation) : on annonce ce qui est sûr */
+  const x = DR_CL.suite || {}; const nom = x.nom || dr_nomClasse(x.classeSlug); const N = DR_CL.sur || 1; const p = dr_reactEcranOuPrete(h); const sur = () => dr_reactAnnoncee(h) ? 'la réactivation « ' + dr_esc(DR_REACT_TITRE) + ' » (construite)' : 'le programme, là où la classe s’est arrêtée';   /* l'ordre de l'heure n'est calculé qu'au lancement (frontières, continuation) : on annonce ce qui est sûr */
   let html = `<h2>Où en est la ${dr_esc(nom)} — ${dr_esc(dr_jourCreneauEnClair(new Date().toISOString().slice(0, 10), x.creneau || ''))} · heure ${h} sur ${N}</h2><div class="sous">${dr_esc(seance().titre)}</div>`;
   html += `<div class="travail">${h > 1 ? 'La classe a déjà joué cette séance (son état n’est pas au hub : seul le paquet de l’heure d’avant est lu)' : 'Première heure de la séance'} : ${p && p.construite && p.construite.depuis ? 'la dernière heure jouée (' + dr_esc(String(p.construite.depuis)) + ') peut être réactivée.' : 'rien à réactiver.'}</div>`;
+  if (dr_reactAnnoncee(h)) html += `<div class="travail"><b>Ce que l'heure ${h} jouera, dans l'ordre</b> : ${dr_reactDejaLa(h) ? dr_reactPuce(h, 1, DR_REACT_TITRE) : dr_reactPuceHtml(h)}<span class="puce">2. le programme, là où la classe s’est arrêtée</span></div>`;
   html += dr_reactBoutonHtml(h);
   html += `<div style="height:70px"></div><div class="barre-fin"><span style="color:var(--texte2)">Lancer ouvre l'heure ${h} sur ${sur()} ; rien n'est projeté avant.</span><span style="flex:1"></span><button class="btn or" id="o-lancer" title="Lance l’heure ${h} : le chrono démarre, ${dr_esc(sur().replace(/<[^>]+>/g, ''))} va au tableau, tout s’enregistre pour la classe">Lancer l'heure ${h}</button></div>`;
   poserHtml($('fin'), html); $('ecran-fin').classList.add('on', 'ouverture'); try { $('ecran-edt').classList.remove('on'); } catch (e) {} try { voir('pilotage'); } catch (e) {}
-  dr_reactBrancher(h, () => dr_ouvertureLegere(h)); $('o-lancer').onclick = () => { DR_CL.react.decide[h] = true; $('ecran-fin').classList.remove('on', 'ouverture'); dr_lancerSuite(h); }; }
+  dr_reactBrancher(h, () => dr_ouvertureLegere(h), 'legere'); $('o-lancer').onclick = () => { DR_CL.react.decide[h] = true; $('ecran-fin').classList.remove('on', 'ouverture'); dr_lancerSuite(h); }; }

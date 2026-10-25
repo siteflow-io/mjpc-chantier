@@ -292,3 +292,7 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 - **25/10, 11:40 UTC (12:40 Paris), dette 13 · 35 (réveil n°43 suite)** : le doublon « Apprendre » / « Les notions » retiré de la diapo construite (`13b332df`) ; RC19, RC18 ajustée ; mon banc 138 ok · 0 échec · 0 absent ; `banc.sh` vert (`E4/sorties/1221-25-10/`, `1221-site-E4-25-10/`) ; hub brut 12 lignes / 1 page, hub chargé 23 lignes / 3 pages. Pas de ligne nouvelle (suite de L190). **Compte inchangé : 183 lignes, 172 réglées, 0 pas réglée, 11 écartées, 0 à Paul, 0 ouverte.**
 
 **0 pas réglée (`13b332df`)** — la tête qui porte 13 · 35 (E1 13 · 32, E2 34-35, E4 93-99) ; `banc.sh` vert, mon banc 138 ok · 0 échec · 0 absent, RC1-RC19.
+
+- **25/10, 12:40 UTC (13:40 Paris), la tête `b7997488`** (E1 13 · 34 dans le socle et la feuille ; E2, E3 remesurés verts) : `banc.sh` vert, mon banc 138 ok · 0 échec · 0 absent (RC1-RC19 ; `E4/sorties/1332-25-10/`, `1332-site-E4-25-10/`). Aucune ligne nouvelle. **Compte inchangé : 183 lignes, 172 réglées, 0 pas réglée, 11 écartées, 0 à Paul, 0 ouverte.**
+
+**0 pas réglée (`b7997488`)** — la tête avec 13 · 34 (E1) et 13 · 35 (E4) ; `banc.sh` vert, mon banc 138 ok · 0 échec · 0 absent.

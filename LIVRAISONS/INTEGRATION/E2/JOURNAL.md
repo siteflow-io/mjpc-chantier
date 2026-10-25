@@ -455,3 +455,6 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 
 ## 25/10 14:42 (Paris) — retour 28 : réveil n°46 lu (candidat 8.75.0-② = `b7997488`), rien à coder
 - Le candidat porte mes poussées 34-35 (la réactivation construite mesurée contre E4, l'enveloppe 13 · 32 retirée). Le site (`index.html`, `dr/*`) n'a pas bougé depuis `sorties/1255` (B18-B22 verts) : rien à rejouer. Tête `2a430166`, `main` fusionné. Retour reprogrammé (50 min).
+
+## 25/10 15:36 (Paris) — retour 29 : relance §12.26 (14:59, « va ») prise — **en cours** ; réveil n°47 lu
+- La relance de 14:47 (le candidat attend : Paul veut voir et modifier la diapo construite avant le lancement) et celle de 14:59 (§12.26, ma part : la clôture construit et écrit dans la copie, l'ouverture sans lancer, l'écriture de Paul dans la copie, « ta version » + ↩) : lues. Je lis d'abord (§12.26 en entier, la lecture d'E1, le `banc-1226.mjs` d'E3), puis une poussée de lecture, puis le code (B23-B26).

@@ -308,3 +308,5 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 - **25/10, 21:28 UTC (22:28 Paris), la tête de 13 · 36 (E2 poussée 37) `520d81ed`** (code identique sur `55b201ce`) : `banc.sh` vert, mon banc 140 ok · 0 échec · 0 absent (RC1-RC21 ; `E4/sorties/2219-25-10/`, `2219-site-E4-25-10/`). Aucune ligne nouvelle. **Compte inchangé : 183 lignes, 172 réglées, 0 pas réglée, 11 écartées, 0 à Paul, 0 ouverte.**
 
 **0 pas réglée (`520d81ed`)** — la tête qui porte 13 · 36 (E2) sur 8.75.0-② ; `banc.sh` vert, mon banc 140 ok · 0 échec · 0 absent.
+
+**0 pas réglée (`2da707c9`)** — la tête de 13 · 36 (code = `520d81ed`, signée à la 104 : `banc.sh` vert, mon banc 140 ok · 0 échec · 0 absent, RC1-RC21) ; candidat 8.75.0-③. Veille close le 25/10 à 23:30 Paris.

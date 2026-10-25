@@ -3097,3 +3097,24 @@ MEMO
 
 25/10/2026 18:37
 MEMO
+
+## Tour 161 — 25/10/2026 19:09 — Paul (19:08)
+
+**Paul (mot pour mot).** « Redis moi les points qui attendent, et que je puisse répondre par oui ou non à chaque »
+
+**Mesuré.** Cinq points en attente de Paul : le promeus du candidat `548da82d` ; le 302 (les quatre titres) ; 13 · 12 ; 144 ; le « go » du plan de 10 jours. Rien d'autre. Chacun reposé en une question fermée.
+
+**Réponse (mot pour mot).**
+
+333. Je mets 8.75.0-② (`548da82d`, md5 `13b780c6…` — la réactivation construite, vue et modifiée avant le lancement) en production maintenant ? Oui = je promeus dans le tour même ; non = elle attend.
+
+334. Les quatre titres des blocs de la diapo « Où en sommes-nous ? » restent « La dernière fois », « À reprendre », « Les notions », « Le travail » ? Oui = ils restent ; non = tu me donnes tes mots.
+
+335. 13 · 12 — le curseur « texte au tableau » annonce 44 ou 52 pt alors que la diapo reste vers 33 pt quand elle ne peut pas grossir : on affiche la taille réellement obtenue à côté du curseur ? Oui = E3 le code ; non = on laisse comme c'est et je ferme la dette.
+
+336. 144 — le bouton « animation en accéléré » de la maquette (l'heure jouée toute seule, pour voir) entre dans le site ? Oui = il revient ; non = il reste tombé.
+
+337. Avec 8.75.0-② le déroulé est fini pour toi : « go » au plan de 10 jours (les six mandats écrits, un par territoire) ? Oui = je lance dès que ② est en production ; non = rien ne part.
+
+25/10/2026 19:09
+MEMO

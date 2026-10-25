@@ -3217,3 +3217,16 @@ MEMO
 
 25/10/2026 20:32
 MEMO
+
+## Tour 169 — 25/10/2026 21:31 — réveil n°53 (21:29, programmé au tour 168) — 13 · 12 ✔, fin du contrôle horaire
+
+**Mesuré.** Pas de mot de Paul depuis 20:28. `origin/integration` : tête `03323fca` — E3 `7903f909` / `a4a48039` (retour 35 : 13 · 12 lue puis mesurée par le geste — le libellé « N pt → obtenu » existe déjà, `dr-atelier.js` l. 471, E1 poussée 7 `b7db27ed` du 21/10 ; `E3/bancs/mesure-1312.mjs` : 16 vérifications, 0 échec aux deux tailles — à 1366, 44 pt demandés → libellé « 44 pt → 42 », corps 27,6 px = 41,7 pt ; 52 pt → « 52 pt → 41 », 41,4 pt ; à 1920 « 44 pt → 42 » / « 52 pt → 42 » ; rien au tableau ; pas d'erreur JS) ; E2 retour 36, E1 `6bb9e5d4` / `9a69d13a`, E4 `599e8895` / `03323fca` : veille, PROMU lu. Aucun module bougé depuis `548da82d` (diff vide) : pas de banc. Vérifié par la conscience contre la production ② (`index.html` l. 17381 : `tl.textContent = TAILLES[S.taille].l + (et.policeReduite ? ' → ' + et.policeReduite : '')`, infobulle « La diapo pleine ne peut pas grossir : sa police descend jusqu'à N pt (plancher 26 pt) avant de passer en pages. », commentaire « E1 (dette 13 · 12) »). **13 · 12 ✔ au registre prod** (`cc55d58`) : réglée depuis le 21/10, le registre ne le disait pas (ma tenue). Section H : 13 · 1 à 13 · 35 toutes réglées. Pas de candidat ③ (rien à promouvoir). Relances r53 : 13 · 12 ✔, fin du contrôle horaire (les exécutants peuvent cesser de se reprogrammer ; relance par session neuve au prochain cycle). Audit §0. **Aucun réveil programmé.**
+
+**Réponse (mot pour mot).**
+
+351. 13 · 12 était déjà dans ton site : E1 l'avait codée le 21/10 (le curseur dit « 44 pt → 42 » quand la diapo ne peut pas grossir, avec l'explication en infobulle) et c'est dans la ② que tu as en production ; E3 l'a mesurée ce soir (16 sur 16, l'annonce et la police mesurée se tiennent à 0,4 pt), je l'ai vérifiée dans le fichier en ligne. Je la coche. Le registre la disait encore « à toi » : c'est une erreur de ma tenue, corrigée. Toutes les dettes du déroulé (13 · 1 à 13 · 35) sont réglées.
+
+352. Le contrôle horaire est arrêté, comme convenu : plus aucun réveil programmé ; les exécutants sont prévenus et peuvent cesser leurs retours. Rien ne part sans ton mot.
+
+25/10/2026 21:31
+MEMO

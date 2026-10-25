@@ -19511,11 +19511,15 @@ function dr_reactivationSource(n){
 /* le travail donné : le texte du cahier de textes de l'heure d'avant (`travailTexte` du paquet = `texteTravailED()` d'E2 : ce qui part à École Directe, que Paul
    peut avoir réécrit à la main), entier, une consigne par ligne : découpé aux « — » que le site met entre les consignes, puis aux « ; » et aux « . » hors
    guillemets et hors parenthèses (un « . » seulement devant une majuscule ou « «  », pas « p. 12 ») ; la ponctuation finale d'une consigne tombe (« . », « ; ») —
-   aucun mot ne tombe. Seule l'entête d'École Directe « Pour la prochaine séance (mardi 15 septembre) — » n'est pas répétée au tableau (E3 retour 21, poussée 94). */
-function dr_reactivationTravail(t){ const out = [];
+   aucun mot ne tombe. Seule l'entête d'École Directe « Pour la prochaine séance (mardi 15 septembre) — » n'est pas répétée au tableau (E3 retour 21, poussée 94).
+   (dette 13 · 35, réveil n°43) la ligne du cahier « Apprendre : a ; b ; c. » est composée par le site depuis les mêmes notions que « Les notions » : une notion
+   déjà dans « Les notions » (`dejaDites`) n'est pas répétée dans « Le travail » — la ligne tombe quand toutes y sont ; sinon seules les absentes restent, une par
+   ligne, la première avec son « Apprendre : ». Les consignes de Paul, entières, restent. On ne retire qu'un doublon : rien d'inventé, rien de coupé. */
+function dr_reactivationTravail(t, dejaDites){ const out = []; const dites = new Set((dejaDites || []).map(x => String(x).trim()));
+  const apprendre = x => { const ap = x.match(/^Apprendre\s*:\s*(.*)$/); if (!ap) return null; const restent = ap[1].split(/\s*;\s*/).map(v => v.replace(/[\s.]+$/, '').trim()).filter(v => v && !dites.has(v)); return restent.map((v, i) => (i ? '' : 'Apprendre : ') + v); };
   const decoupe = (l, estCoupe, saut) => { const m = []; let q = 0, pa = 0, d = 0; for (let i = 0; i < l.length; i++) { const c = l[i]; if (c === '«') q++; else if (c === '»') q = Math.max(0, q - 1); else if (c === '(') pa++; else if (c === ')') pa = Math.max(0, pa - 1); else if (!q && !pa) { const n = estCoupe(l, i); if (n) { m.push(l.slice(d, i + saut)); d = i + n; i = d - 1; } } } m.push(l.slice(d)); return m.map(x => x.trim()).filter(Boolean); };
   String(t || '').split(/\n+/).forEach(l => { l = l.trim().replace(/^Pour la prochaine séance[^—]*— /, ''); if (!l) return;
-    decoupe(l, (s, i) => s.startsWith(' — ', i) ? 3 : 0, 0).forEach(c => decoupe(c, (s, i) => (s[i] === ';' && (i + 1 >= s.length || s[i + 1] === ' ')) || (s[i] === '.' && /^\.\s+(?=[A-ZÀ-ÝŒ«])/.test(s.slice(i, i + 3)) ) ? 1 : 0, 0).forEach(x => { x = x.replace(/[\s;.]+$/, '').trim(); if (x) out.push(x); })); });
+    decoupe(l, (s, i) => s.startsWith(' — ', i) ? 3 : 0, 0).forEach(c => { const ap = apprendre(c); if (ap) { ap.forEach(x => out.push(x)); return; } decoupe(c, (s, i) => (s[i] === ';' && (i + 1 >= s.length || s[i + 1] === ' ')) || (s[i] === '.' && /^\.\s+(?=[A-ZÀ-ÝŒ«])/.test(s.slice(i, i + 3)) ) ? 1 : 0, 0).forEach(x => { x = x.replace(/[\s;.]+$/, '').trim(); if (x) out.push(x); }); }); });
   return out; }
 /* l'écran « Où en sommes-nous ? » de l'heure n, ou null (DR_REACT_RAISON dit pourquoi) */
 function dr_reactivationConstruire(n){
@@ -19529,9 +19533,9 @@ function dr_reactivationConstruire(n){
   const reprendre = Object.keys(p.decisionsParActivite || {}).filter(k => DR_REACT_REPRENDRE.includes((p.decisionsParActivite[k] || {}).choix) && connues[k] && connues[k].num != null).map(k => connues[k]).sort((a, b) => a.num - b.num);
   const taxo = {}; (dr_recitTaxo() || []).forEach(d => (d.familles || []).forEach(f => (f.notions || []).forEach(x => { taxo[x.id] = x.eleve || x.libelleEleve || x.prof || x.libelleProf; })   /* le site : `eleve` / `prof` ; le fichier de taxonomie : `libelleEleve` */));
   const ids = []; (p.activites || []).forEach(a => (a.comp || []).forEach(id => { if (taxo[id] && !ids.includes(id)) ids.push(id); }));
-  const travail = dr_reactivationTravail(p.travailTexte);
-  const bloc = (titre, el) => el.length ? { t: 'texte', txt: titre, el: el.map(x => String(x)) } : null;   /* entières : rien n'est coupé (13 · 33) */
   const notions = ids.map(id => taxo[id]).filter(Boolean);   /* toutes, une par ligne, dans l'ordre des diapos vues */
+  const travail = dr_reactivationTravail(p.travailTexte, notions);   /* 13 · 35 : sans les notions déjà dites */
+  const bloc = (titre, el) => el.length ? { t: 'texte', txt: titre, el: el.map(x => String(x)) } : null;   /* entières : rien n'est coupé (13 · 33) */
   const blocs = [bloc(DR_REACT_TITRES.faites, faites.map(lib)), bloc(DR_REACT_TITRES.reprendre, reprendre.map(lib)), bloc(DR_REACT_TITRES.notions, notions), bloc(DR_REACT_TITRES.travail, travail)].filter(Boolean);
   const e = { act: 'Où en sommes-nous ?', role: 'reactivation', heure: +n || 1, dur: DR_REACT_DUR, comp: ids, blocs, construite: { depuis: src.cle, seanceAvant: !!src.seanceAvant, t: Date.now() } };
   try { if (typeof dr_poserEidReactivation === 'function') dr_poserEidReactivation(e, e.heure); } catch (x) {}   /* l'eid du socle (E1, §12.25-3) : react-h<n>-s<clé> */

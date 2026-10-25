@@ -77,6 +77,8 @@
 
 **Mise à jour 25/10, 18:37 (réveil n°50, tête `41dbfb5b`, code = `9214d4e8`).** Pas de « promeus ». Les quatre en veille (E2 retours 32-33, E3 32, E1, E4 : réveil n°49 lu). Aucun module bougé depuis `548da82d` (diff vide) : pas de banc. **Le candidat reste `548da82d`** (md5 `13b780c6…`).
 
+**Mise à jour 25/10, 19:34 (réveil n°51, tête `51b73aa4`, code = `9214d4e8`).** Pas de « promeus » (les cinq points reposés à Paul en oui / non au tour 161, 19:09 : promeus, 302, 13 · 12, 144, go). Les quatre en veille. Aucun module bougé depuis `548da82d` : pas de banc. Le candidat reste `548da82d`.
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

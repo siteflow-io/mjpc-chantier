@@ -353,3 +353,6 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 
 ## 25/10, 19:05 — retour 33 : rien de neuf
 - Seule E3 ; pas de STOP ; réveil n°50 lu (veille, le candidat `548da82d` attend le mot de Paul). Aucun module bougé depuis `827d5ff8` ; pas d'assemblé ; bancs et mesures du retour 31 valables. En veille (retour 50 min).
+
+## 25/10, 19:56 — retour 34 : rien de neuf
+- Seule E3 ; pas de STOP ; réveil n°51 lu (veille, le candidat `548da82d` attend les réponses de Paul aux cinq questions du tour 161). Aucun module bougé depuis `827d5ff8` ; pas d'assemblé ; bancs et mesures du retour 31 valables. En veille (retour 50 min).

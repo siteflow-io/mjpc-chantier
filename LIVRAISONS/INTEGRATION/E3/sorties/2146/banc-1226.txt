@@ -1,0 +1,51 @@
+E3 · banc §12.26 par le geste (la réactivation construite avant le lancement) · 2026-10-25 20:46 UTC · fichier md5 13b780c6c7ab3ab114c8d99979cb8118
+
+U-1366 — §12.26 par le geste, 1366×768 : clore l'heure 1 → voir sans lancer → modifier → ↩ → l'Atelier → l'élève
+  ok     U1 · 1366×768 · l'heure 1 est close (S.close) — true
+  ok     U1 · 1366×768 · à la clôture, la diapo construite de l'heure 2 est dans la copie de classe (C/ecrans, role reactivation, eid react-h2-s0) — react-h2-s0 · « La dernière fois » 7 l. · « Les notions » 3 l.
+  ok     U1 · 1366×768 · la version calculée est gardée dans l'écran (construite.calculee, RC20) — 2 bloc(s)
+  ok     U1 · 1366×768 · la trame du chapitre (dr_derouleDe) ne porte aucun écran de réactivation (jamais dans le déroulé de l'Atelier, §12.26-2) — 0 écran(s)
+  ok     U2 · 1366×768 · l'écran d'ouverture de l'heure 2 est ouvert, l'heure n'est pas lancée — ouverture true · lancée false
+  ok     U2 · 1366×768 · la puce « 1. Où en sommes-nous ? » ouvre la diapo construite dans le pilote, sans lancer (le titre de la diapo au #mur, ses lignes) — puce cliquée · #mur « Où en sommes-nous ? » 10 ligne(s) · lancée false
+  ok     U2 · 1366×768 · telle qu'au tableau : les lignes vues au pilote sont celles de l'écran (12 lignes titres compris) — 10 au pilote
+    au pilote (aperçu avant lancement) : 10 lignes vues, 0 hors du mur · corps déborde true · dernière ligne hors cadre false · sous la zone « clique ici et écris » true · compteur «  »
+  ÉCHEC  U2 · 1366×768 · 13 · 36 : le corps de l'aperçu ne déborde pas son cadre (scrollHeight ≤ clientHeight) — déborde true
+  ÉCHEC  U2 · 1366×768 · 13 · 36 : la dernière ligne vue est au-dessus de la zone « clique ici et écris » et dans le cadre — sous la zone true · hors cadre false
+  ÉCHEC  U2 · 1366×768 · 13 · 36 : le compteur « page i / n » est présent (l'aperçu pagine) — compteur «  »
+  ok     U2 · 1366×768 · sans modification, aucune mention « ta version » dans le pilotage — 0 mention(s)
+  ok     U3 · 1366×768 · une ligne de la diapo se change directement, comme n'importe quelle diapo où Paul écrit — écrite
+  ok     U3 · 1366×768 · la copie de classe porte la ligne changée (C/ecrans, même eid) — oui
+  ok     U3 · 1366×768 · « ta version » et la flèche ↩ paraissent dans le pilotage — 1 mention(s), 3 flèche(s)
+  ok     U3 · 1366×768 · rien de « ta version » ni ↩ dans la fenêtre du tableau (jamais vu des élèves) — 0 mention(s) · #mur2 true · 0 ligne(s)
+  ok     U4 · 1366×768 · ↩ réaffiche la version calculée (les blocs = construite.calculee) et la copie la reporte — flèche cliquée (#react-calculee) · ligne changée encore là : false
+  ok     U4 · 1366×768 · après ↩, la mention « ta version » est tombée — 0 mention(s)
+  ok     U5 · 1366×768 · l'Atelier du chapitre ne montre pas la diapo construite (son titre absent du déroulé de l'Atelier) — Atelier non ouvert · 0 occurrence(s)
+  ok     U6 · 1366×768 · avant le lancement, aucun dévoilement de la diapo construite n'est écrit (journal, écran) : les élèves n'ont rien — dévoilements au journal 0 · marques sur l'écran false
+  ok     U-1366 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     U-1366 · aucune boîte système
+
+U-1920 — §12.26 par le geste, 1920×1080 : clore l'heure 1 → voir sans lancer → modifier → ↩ → l'Atelier → l'élève
+  ok     U1 · 1920×1080 · l'heure 1 est close (S.close) — true
+  ok     U1 · 1920×1080 · à la clôture, la diapo construite de l'heure 2 est dans la copie de classe (C/ecrans, role reactivation, eid react-h2-s0) — react-h2-s0 · « La dernière fois » 7 l. · « Les notions » 3 l.
+  ok     U1 · 1920×1080 · la version calculée est gardée dans l'écran (construite.calculee, RC20) — 2 bloc(s)
+  ok     U1 · 1920×1080 · la trame du chapitre (dr_derouleDe) ne porte aucun écran de réactivation (jamais dans le déroulé de l'Atelier, §12.26-2) — 0 écran(s)
+  ok     U2 · 1920×1080 · l'écran d'ouverture de l'heure 2 est ouvert, l'heure n'est pas lancée — ouverture true · lancée false
+  ok     U2 · 1920×1080 · la puce « 1. Où en sommes-nous ? » ouvre la diapo construite dans le pilote, sans lancer (le titre de la diapo au #mur, ses lignes) — puce cliquée · #mur « Où en sommes-nous ? » 10 ligne(s) · lancée false
+  ok     U2 · 1920×1080 · telle qu'au tableau : les lignes vues au pilote sont celles de l'écran (12 lignes titres compris) — 10 au pilote
+    au pilote (aperçu avant lancement) : 10 lignes vues, 0 hors du mur · corps déborde true · dernière ligne hors cadre false · sous la zone « clique ici et écris » true · compteur «  »
+  ÉCHEC  U2 · 1920×1080 · 13 · 36 : le corps de l'aperçu ne déborde pas son cadre (scrollHeight ≤ clientHeight) — déborde true
+  ÉCHEC  U2 · 1920×1080 · 13 · 36 : la dernière ligne vue est au-dessus de la zone « clique ici et écris » et dans le cadre — sous la zone true · hors cadre false
+  ÉCHEC  U2 · 1920×1080 · 13 · 36 : le compteur « page i / n » est présent (l'aperçu pagine) — compteur «  »
+  ok     U2 · 1920×1080 · sans modification, aucune mention « ta version » dans le pilotage — 0 mention(s)
+  ok     U3 · 1920×1080 · une ligne de la diapo se change directement, comme n'importe quelle diapo où Paul écrit — écrite
+  ok     U3 · 1920×1080 · la copie de classe porte la ligne changée (C/ecrans, même eid) — oui
+  ok     U3 · 1920×1080 · « ta version » et la flèche ↩ paraissent dans le pilotage — 1 mention(s), 3 flèche(s)
+  ok     U3 · 1920×1080 · rien de « ta version » ni ↩ dans la fenêtre du tableau (jamais vu des élèves) — 0 mention(s) · #mur2 true · 0 ligne(s)
+  ok     U4 · 1920×1080 · ↩ réaffiche la version calculée (les blocs = construite.calculee) et la copie la reporte — flèche cliquée (#react-calculee) · ligne changée encore là : false
+  ok     U4 · 1920×1080 · après ↩, la mention « ta version » est tombée — 0 mention(s)
+  ok     U5 · 1920×1080 · l'Atelier du chapitre ne montre pas la diapo construite (son titre absent du déroulé de l'Atelier) — Atelier non ouvert · 0 occurrence(s)
+  ok     U6 · 1920×1080 · avant le lancement, aucun dévoilement de la diapo construite n'est écrit (journal, écran) : les élèves n'ont rien — dévoilements au journal 0 · marques sur l'écran false
+  ok     U-1920 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     U-1920 · aucune boîte système
+
+banc §12.26 : 42 vérifications, 6 échec(s) — ROUGE

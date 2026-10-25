@@ -452,3 +452,6 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 
 ## 25/10 13:50 (Paris) — retour 27 : réveil n°45 lu, rien à coder
 - Tête `a8533cbe` (`main` fusionné). Aucun changement du site depuis `sorties/1255` (ni `index.html` ni `dr/*`) : rien à rejouer. Retour reprogrammé (50 min).
+
+## 25/10 14:42 (Paris) — retour 28 : réveil n°46 lu (candidat 8.75.0-② = `b7997488`), rien à coder
+- Le candidat porte mes poussées 34-35 (la réactivation construite mesurée contre E4, l'enveloppe 13 · 32 retirée). Le site (`index.html`, `dr/*`) n'a pas bougé depuis `sorties/1255` (B18-B22 verts) : rien à rejouer. Tête `2a430166`, `main` fusionné. Retour reprogrammé (50 min).

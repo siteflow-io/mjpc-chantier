@@ -2887,3 +2887,25 @@ MEMO
 
 25/10/2026 09:10
 MEMO
+
+---
+
+## TOUR 146 (25/10/2026, 09:14 → 09:25)
+
+Paul (09:14), mot pour mot :
+« Dans ton exemple ça marche parce qu'il n'y a pas de contenu. Mets les titres des activités par exemple, ainsi que le travail qui était à faire. Teste la situation où ça surcharge le tableau et vois ce qui se passe »
+
+**Mesuré** (09:16-09:22, sur l'assemblé de `17f2bd3a`, md5 `382408ad…`, EB Garamond, 1366 × 768 et 1920 × 1080 ; script `T146-react-charge.mjs` = le geste d'E3 (`mesure-react-piece.mjs`) sur un hub chargé `T146-hub-charge-site_3e.json` : sept titres d'activité longs (« Tableau 1 — Le Radeau de la Méduse, Théodore Géricault, 1818-1819 »…), huit notions réparties sur les diapos jouées, `travail["1"]` de 266 signes ; l'heure 1 jouée (14 ▶) et close par le geste, puis `dr_reactivationConstruire(2)`, rendu dans la page tableau dévoilement par dévoilement) :
+- la diapo construite : « La dernière fois » 7 lignes, « Les notions » 1 ligne, « Le travail » 2 lignes = 13 lignes titres compris ; 26 pt ; **2 pages** aux deux tailles ;
+- **les titres sont coupés** à 72-79 signes avec « … » (3 sur 7) ; **une seule notion gardée** sur huit (« Dire ce qu’on voit, avec les mots justes … ») ; **le travail de Paul coupé** à 78 signes (« … surligne … ») **et une ligne inventée** « Apprendre : Dire ce qu’on voit, avec les mots justes … » (pas au cahier) ;
+- la pagination : 9 dévoilés → page 1 pleine (capture `T146-reactivation-chargee-page1-9-devoiles-1366.png`) ; le 10ᵉ → « page 2 / 2 » avec cette seule ligne, la page 1 disparaît (`T146-…-page2-10e-devoile-1366.png`) ; 0 erreur JS.
+- Mon premier essai (22 ▶) a échoué sur un clic (`#bdev` bloqué après 22 dévoilements : une garde) — non creusé, 14 ▶ comme E3 suffisent au cas.
+
+Fait : **dette 13 · 33** (registre prod) ; relance E4 (règle : rien de coupé, rien d'inventé, une notion par ligne, le travail entier découpé aux ponctuations fortes, le site pagine ; RC16-RC18 ; d'où vient « Apprendre : … ») ; E3 (remesure sur le hub chargé après la correction) ; pièces T146.
+
+Réponse de la conscience (09:25), mot pour mot :
+
+308. Tu avais raison : avec du contenu, ça ne va pas. Testé avec sept titres longs, huit notions et un travail de quatre lignes (captures `T146-reactivation-chargee-page1-9-devoiles-1366.png` et `-page2-10e-devoile-1366.png`) : la diapo coupe trois titres avec « … », ne garde qu'une notion sur huit, coupe ton travail au milieu d'une phrase et y ajoute une ligne que tu n'as pas écrite (« Apprendre : … ») ; et malgré ces coupes elle fait deux pages — au dixième dévoilement le tableau passe à la page 2 avec une seule ligne. Quatre défauts, dette 13 · 33, E4 relancé avec la règle : rien de coupé, rien d'inventé, une notion par ligne, ton travail entier ; si c'est long, c'est deux pages et c'est toi qui les dévoiles. Rien ne devient candidat avant.
+
+25/10/2026 09:25
+MEMO

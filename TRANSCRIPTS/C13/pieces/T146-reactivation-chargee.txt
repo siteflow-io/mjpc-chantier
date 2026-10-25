@@ -1,0 +1,39 @@
+C13 · la réactivation construite, le cas chargé (Paul 25/10 09:14 : titres longs, notions, travail long) · 2026-10-25 08:19 UTC · fichier md5 382408ad06f4cfb7149cc04639bcde76
+
+R0 — une heure jouée et close, puis la diapo construite par dr_reactivationConstruire(2)
+  ok     R0 · l'heure 1 est close (S.close) — true
+  ok     R0 · la diapo construite existe (quatre blocs au plus) — react-h2-s0 · « La dernière fois » 7 l. · « Les notions » 1 l. · « Le travail » 2 l.
+      La dernière fois : Activité 1 — Analyse d'images : la routine du regard — décrire, nommer … (72 signes)
+      La dernière fois : Activité 2 — Tableau 1 — Le Radeau de la Méduse, Théodore Géricault, 1818-1819 (78 signes)
+      La dernière fois : Activité 3 — Tableau 2 — Le Voyageur contemplant une mer de nuages, Caspar … (76 signes)
+      La dernière fois : Activité 4 — Tableau 3 — La Liberté guidant le peuple, Eugène Delacroix, 1830 (77 signes)
+      La dernière fois : Activité 5 — Tableau 4 — Le Tres de Mayo, Francisco de Goya, 1814 (65 signes)
+      La dernière fois : Activité 6 — Tableau 5 — L'Abbaye dans une forêt de chênes, Caspar David … (74 signes)
+      La dernière fois : Activité 7 — Les hypothèses de la classe : qu'ont en commun ces cinq tableaux ? (79 signes)
+      Les notions : Dire ce qu’on voit, avec les mots justes … (42 signes)
+      Le travail : Pour la prochaine fois : lis « L'Albatros » deux fois à voix haute, surligne … (78 signes)
+      Le travail : Apprendre : Dire ce qu’on voit, avec les mots justes … (54 signes)
+  ok     R0 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     R0 · aucune boîte système
+
+R-1366 — la diapo construite au tableau, 1366 × 768
+    5 dévoilés sur 10 : page 1 / 1, 5 lignes visibles
+    7 dévoilés sur 10 : page 1 / 1, 7 lignes visibles
+    8 dévoilés sur 10 : page 1 / 1, 8 lignes visibles
+    9 dévoilés sur 10 : page 1 / 1, 9 lignes visibles
+    10 dévoilés sur 10 : page 2 / 2, 1 lignes visibles, compteur « ‹page 2 / 2› »
+    au tableau (1365×768) : 13 lignes titres compris (10 li) · police 26 pt · 2 page(s)
+    verdict : 2 page(s), police 26 pt (le site pagine, rien n'est refusé)
+  ok     R-1366 · aucune erreur JS dans la page tableau
+
+R-1920 — la diapo construite au tableau, 1920 × 1080
+    5 dévoilés sur 10 : page 1 / 1, 5 lignes visibles
+    7 dévoilés sur 10 : page 1 / 1, 7 lignes visibles
+    8 dévoilés sur 10 : page 1 / 1, 8 lignes visibles
+    9 dévoilés sur 10 : page 1 / 1, 9 lignes visibles
+    10 dévoilés sur 10 : page 2 / 2, 1 lignes visibles, compteur « ‹page 2 / 2› »
+    au tableau (1920×1080) : 13 lignes titres compris (10 li) · police 26 pt · 2 page(s)
+    verdict : 2 page(s), police 26 pt (le site pagine, rien n'est refusé)
+  ok     R-1920 · aucune erreur JS dans la page tableau
+
+mesure sur pièce : 6 vérifications, 0 échec(s)

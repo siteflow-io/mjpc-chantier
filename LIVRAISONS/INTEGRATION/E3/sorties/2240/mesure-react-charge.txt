@@ -1,0 +1,49 @@
+E3 · la réactivation construite, le cas chargé (dette 13 · 33 ; hub chargé T146) · 2026-10-25 21:51 UTC · fichier md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+R0 — une heure jouée et close, puis la diapo construite par dr_reactivationConstruire(2)
+  ok     R0 · l'heure 1 est close (S.close) — true
+  ok     R0 · la diapo construite existe (quatre blocs au plus) — react-h2-s0 · « La dernière fois » 7 l. · « Les notions » 10 l. · « Le travail » 3 l.
+      La dernière fois : Activité 1 — Analyse d'images : la routine du regard — décrire, nommer, interpréter (83 signes)
+      La dernière fois : Activité 2 — Tableau 1 — Le Radeau de la Méduse, Théodore Géricault, 1818-1819 (78 signes)
+      La dernière fois : Activité 3 — Tableau 2 — Le Voyageur contemplant une mer de nuages, Caspar David Friedrich, 1818 (96 signes)
+      La dernière fois : Activité 4 — Tableau 3 — La Liberté guidant le peuple, Eugène Delacroix, 1830 (77 signes)
+      La dernière fois : Activité 5 — Tableau 4 — Le Tres de Mayo, Francisco de Goya, 1814 (65 signes)
+      La dernière fois : Activité 6 — Tableau 5 — L'Abbaye dans une forêt de chênes, Caspar David Friedrich, 1810 (88 signes)
+      La dernière fois : Activité 7 — Les hypothèses de la classe : qu'ont en commun ces cinq tableaux ? (79 signes)
+      Les notions : Dire ce qu’on voit, avec les mots justes (40 signes)
+      Les notions : Savoir si l’on voit de près ou de loin, et ce qui est choisi (60 signes)
+      Les notions : D’où l’on regarde la scène (26 signes)
+      Les notions : Savoir si le récit accepte l’impossible, l’imite le réel, ou hésite (67 signes)
+      Les notions : Les mots qui montrent si l’auteur est sûr, ou doute (51 signes)
+      Les notions : Par les yeux de qui on voit l’histoire (38 signes)
+      Les notions : Reconnaître à quelle famille appartient un texte (48 signes)
+      Les notions : Deviner la suite à partir d’indices (35 signes)
+      Les notions : Repérer qui parle, à qui, où et quand (37 signes)
+      Les notions : Ce qui fait rire, et comment (28 signes)
+      Le travail : Pour la prochaine fois : lis « L'Albatros » deux fois à voix haute, surligne les mots que tu ne comprends pas et cherche-les dans le dictionnaire (145 signes)
+      Le travail : apprends la fiche sur les mouvements du siècle (les dates et les noms des peintres) (83 signes)
+      Le travail : apporte ton cahier de brouillon (31 signes)
+  ok     R0 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     R0 · aucune boîte système
+
+R-1366 — la diapo construite au tableau, 1366 × 768
+    10 dévoilés sur 20 : page 2 / 2, 1 lignes visibles, compteur « ‹page 2 / 2› » ← la page tourne ici
+    19 dévoilés sur 20 : page 3 / 3, 1 lignes visibles, compteur « ‹page 3 / 3› » ← la page tourne ici
+    20 dévoilés sur 20 : page 3 / 3, 2 lignes visibles, compteur « ‹page 3 / 3› »
+  ok     R-1366 · aucun titre de bloc sans ligne dévoilée sous lui, à chaque ▶ et sur chaque page (13 · 34)
+    la page tourne au dévoilement : 10, 19 sur 20
+    au tableau (1365×768) : 23 lignes titres compris (20 li) · police 26 pt · 3 page(s)
+    verdict : 3 page(s), police 26 pt (le site pagine, rien n'est refusé)
+  ok     R-1366 · aucune erreur JS dans la page tableau
+
+R-1920 — la diapo construite au tableau, 1920 × 1080
+    10 dévoilés sur 20 : page 2 / 2, 1 lignes visibles, compteur « ‹page 2 / 2› » ← la page tourne ici
+    19 dévoilés sur 20 : page 3 / 3, 1 lignes visibles, compteur « ‹page 3 / 3› » ← la page tourne ici
+    20 dévoilés sur 20 : page 3 / 3, 2 lignes visibles, compteur « ‹page 3 / 3› »
+  ok     R-1920 · aucun titre de bloc sans ligne dévoilée sous lui, à chaque ▶ et sur chaque page (13 · 34)
+    la page tourne au dévoilement : 10, 19 sur 20
+    au tableau (1920×1080) : 23 lignes titres compris (20 li) · police 26 pt · 3 page(s)
+    verdict : 3 page(s), police 26 pt (le site pagine, rien n'est refusé)
+  ok     R-1920 · aucune erreur JS dans la page tableau
+
+mesure sur pièce : 8 vérifications, 0 échec(s)

@@ -2950,3 +2950,20 @@ MEMO
 
 25/10/2026 12:28
 MEMO
+
+## Tour 150 — 25/10/2026 13:06 — Paul (13:05)
+
+**Paul (mot pour mot).** « Redis-moi ce que je dois régler et qui est posé à moi »
+
+**Mesuré.** Relu au registre prod (13 · 12, 13 · 34, 13 · 35) et au transcript (points 144, 302). Rien d'autre n'est posé à Paul ; le candidat 8.75.0-② n'existe pas encore (13 · 34 chez E1, 13 · 35 chez E4).
+
+**Réponse (mot pour mot).**
+
+314. Posé à toi, et les élèves le liront au tableau : le 302 — les quatre titres des blocs de la diapo « Où en sommes-nous ? » : « La dernière fois », « À reprendre », « Les notions », « Le travail ». Dis « ok » ou donne tes mots.
+
+315. Deux réglages que j'ai tranchés par défaut ce matin, que tu peux reprendre : 13 · 34 — dans cette diapo, le titre d'un bloc apparaît avec sa première ligne dévoilée, au lieu d'être affiché d'avance (sinon « Le travail » reste un titre vide en bas de page) ; 13 · 35 — dans « Le travail », on ne répète pas les notions déjà listées dans « Les notions » ; tes consignes restent entières. Si tu ne dis rien, c'est acquis, E1 et E4 codent ainsi.
+
+316. Plus ancien, toujours à toi : 13 · 12 — le curseur « texte au tableau » annonce 44 ou 52 pt alors que la diapo reste vers 33 pt quand elle ne peut pas grossir : afficher la taille réelle à côté du curseur, ou passer en pages ? ; le 144 — le bouton « animation en accéléré » de la maquette (l'heure jouée toute seule) est tombé avec la simulation : tu le veux dans le site, ou non ? Et deux mots qui n'attendent que toi, mais pas aujourd'hui : « promeus » pour 8.75.0-② (je t'annonce le candidat avec une capture quand 13 · 34 et 13 · 35 sont réglées) ; le « go » du plan de 10 jours (les six mandats sont écrits, rien ne part sans ton mot).
+
+25/10/2026 13:06
+MEMO

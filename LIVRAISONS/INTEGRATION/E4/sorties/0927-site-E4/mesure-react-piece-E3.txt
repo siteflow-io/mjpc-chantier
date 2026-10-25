@@ -1,0 +1,28 @@
+E3 · la réactivation construite sur pièce · 2026-10-25 08:43 UTC · fichier md5 a78727c3c03e8d9eb7eb7214d0731e95
+
+R0 — une heure jouée et close, puis la diapo construite par dr_reactivationConstruire(2)
+  ok     R0 · l'heure 1 est close (S.close) — true
+  ok     R0 · la diapo construite existe (quatre blocs au plus) — react-h2-s0 · « La dernière fois » 7 l. · « Les notions » 1 l. · « Le travail » 1 l.
+      La dernière fois : Activité 1 — Analyse d'images : la routine (42 signes)
+      La dernière fois : Activité 2 — Tableau 1 (22 signes)
+      La dernière fois : Activité 3 — Tableau 2 (22 signes)
+      La dernière fois : Activité 4 — Tableau 3 (22 signes)
+      La dernière fois : Activité 5 — Tableau 4 (22 signes)
+      La dernière fois : Activité 6 — Tableau 5 (22 signes)
+      La dernière fois : Activité 7 — Les hypothèses de la classe (40 signes)
+      Les notions : Dire ce qu’on voit, avec les mots justes · … (44 signes)
+      Le travail : Apprendre : Dire ce qu’on voit, avec les mots justes ; … (56 signes)
+  ok     R0 · aucune erreur JS au pilote ni dans la fenêtre du tableau
+  ok     R0 · aucune boîte système
+
+R-1366 — la diapo construite au tableau, 1366 × 768
+    au tableau (1365×768) : 12 lignes titres compris (9 li) · police 26 pt · 1 page(s)
+  ok     R-1366 · la diapo construite tient sur une page — 1 page(s), police 26 pt
+  ok     R-1366 · aucune erreur JS dans la page tableau
+
+R-1920 — la diapo construite au tableau, 1920 × 1080
+    au tableau (1920×1080) : 12 lignes titres compris (9 li) · police 26.2 pt · 1 page(s)
+  ok     R-1920 · la diapo construite tient sur une page — 1 page(s), police 26.2 pt
+  ok     R-1920 · aucune erreur JS dans la page tableau
+
+mesure sur pièce : 8 vérifications, 0 échec(s)

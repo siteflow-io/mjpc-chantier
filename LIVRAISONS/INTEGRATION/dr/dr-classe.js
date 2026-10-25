@@ -1230,13 +1230,15 @@ function dr_reactBrancher(h, redessiner, retour){ try { ['o-react-oui', 'o-react
 /* ─── (3) voir sans lancer : l'aperçu dans le pilote ─── */
 function dr_reactAvantLancement(){ return !!(DR_CL.reactVue && !S.atelier && !S.repetition); }   /* pour E1 : le geste d'écriture s'arme là-dessus (à l'écran d'ouverture, S est l'état relu de l'heure d'avant : S.lancee et S.close sont vrais) */
 function dr_reactVoir(h, retour){ try { let e = dr_reactEcran(h); if (!e) { const p = DR_CL.react.prete[h]; if (!dr_reactValide(p)) return false; e = dr_reactPoser(h, p); if (!e) return false; }   /* l'heure 1 : l'écran tenu en mémoire est posé dans la trame en mémoire pour le rendu (E1 : `dr_derouleDe` ne l'écrit pas) ; `prete[h]` reste le même objet jusqu'au lancement */
-    DR_CL.reactVue = { h: +h, eid: e.eid, C: dr_reactCheminC(), diAvant: S.di, retour: retour || 'ouverture' };
+    DR_CL.reactVue = { h: +h, eid: e.eid, C: dr_reactCheminC(), diAvant: S.di, pageAvant: S.page, retour: retour || 'ouverture' };
+    S.page = null; S.pageManuelle = false; S.pagesCourantes = null;   /* 13 · 36 : la pagination repart pour cette diapo (celle de la diapo d'avant ne vaut pas) */
     try { $('ecran-fin').classList.remove('on', 'ouverture'); } catch (x) {} try { voir('pilotage'); } catch (x) {}
     dr_reactApercuRendre(); return true; } catch (x) { DR_CL.reactVue = null; return false; } }
 function dr_reactApercuRendre(){ const v = DR_CL.reactVue; if (!v) return; const E = seance().ecrans; const i = E.findIndex(x => x && x.eid === v.eid); if (i < 0) { dr_reactRetour(); return; }
-  const e = E[i]; S.di = i; S.page = null; S.doc = null; S.blocActif = null; const mur = $('mur'); if (!mur) return;
-  try { dimensionner(); } catch (x) {} const et = etatComplet(); et.pilote = true; et.nDev = elements(e).length; et.ecrire = true; et.attente = null; et.flash = null;   /* toutes ses lignes, comme l'Atelier ; l'heure d'avant est close : pas l'écran d'attente ; rien n'est poussé : ni journal, ni tableau */
+  const e = E[i]; if (S.di !== i) { S.di = i; S.page = null; S.pageManuelle = false; } S.doc = null; S.blocActif = null; const mur = $('mur'); if (!mur) return;   /* 13 · 36 : la page courante est gardée d'un rendu à l'autre (Maj+←/→, ‹ ›) */
+  try { dimensionner(); } catch (x) {} const et = etatComplet(); et.pilote = true; et.nDev = elements(e).length; et.ecrire = false; et.attente = null; et.flash = null; et.pages = null; et.pagesP = null; et.policeRatio = null; et.page = S.page == null ? 0 : S.page; et._pageManuelle = true;   /* la première page d'abord (le suivi du dévoilement irait à la dernière : tout est « dévoilé » dans l'aperçu), puis celle que Paul a choisie */   /* toutes ses lignes ; l'heure d'avant est close : pas l'écran d'attente ; rien n'est poussé : ni journal, ni tableau. 13 · 36 : pas la zone « ✎ clique ici et écris » (inerte hors Atelier — `p8EcrireSous` refuse — et collée au bas du cadre, elle couvrait la dernière ligne) ; les pages se recalculent pour CETTE diapo (`paginer`), comme au pilote d'une heure lancée */
   rendre(mur, et); mur.className = 'mur pilote react-apercu' + (S.mode === 'lum' ? ' mode-lum' : S.mode === 'ecr' ? ' mode-ecr' : '');
+  S.page = et.page; S.pagesCourantes = et.pages; S.pagesPCourantes = et.pagesP; S.policeRatioCourante = et.policeRatio;   /* 13 · 36 : le compteur « page i / n », ‹ › et Maj+←/→ (`pageMain`) marchent dans l'aperçu — le tableau aura les mêmes pages (`pagesP`) */
   try { $('numero').innerHTML = `<b>Avant le lancement · ${dr_esc(e.act)} · heure ${v.h}</b>`; $('dtitre').textContent = `· réactivation construite depuis l'heure ${v.h - 1} · prévue ${e.dur} min · H${v.h}`; $('compte').textContent = 'aperçu — rien n\'est montré à la classe, rien n\'est écrit au journal'; } catch (x) {}
   dr_reactEnteteRendre(e);
   try { if (typeof brancherAtelier === 'function') setTimeout(brancherAtelier, 0); } catch (x) {} }
@@ -1260,7 +1262,7 @@ function dr_reactRetourCalculee(){ const v = DR_CL.reactVue; if (!v) return fals
 function dr_reactRetour(){ const v = DR_CL.reactVue; DR_CL.reactVue = null; const z = document.getElementById('react-entete'); if (z) z.remove(); try { const mur = $('mur'); if (mur) mur.classList.remove('react-apercu'); } catch (x) {}
   if (!v) return;
   if (v.retour === 'legere') { try { const E = seance().ecrans; const i = E.findIndex(x => x && x.eid === v.eid); if (i >= 0 && DR_CL.react.prete[v.h] === E[i]) { E.splice(i, 1); reindexer(); } } catch (x) {} }   /* l'heure 1 : l'écran tenu en mémoire (prete[h], ses modifications avec) quitte la trame en mémoire ; le lancement le posera */
-  if (v.diAvant != null && v.diAvant >= 0 && v.diAvant < seance().ecrans.length) { S.di = v.diAvant; S.page = null; }
+  if (v.diAvant != null && v.diAvant >= 0 && v.diAvant < seance().ecrans.length) { S.di = v.diAvant; S.page = v.pageAvant != null ? v.pageAvant : null; S.pagesCourantes = null; S.pageManuelle = false; }
   try { if (v.retour === 'legere') dr_ouvertureLegere(v.h); else ouvrirOuverture(); } catch (x) {} }
 /* pendant l'aperçu, le socle ne pousse rien et n'écrit pas la trame : `dr_tout` rend seulement, `dr_sauve` écrit la copie (E1 appelle l'un et l'autre après chaque frappe) */
 setTimeout(() => { [['dr_tout', () => { dr_reactApercuRendre(); }], ['dr_sauve', () => { dr_reactModifiee(); }]].forEach(([nom, f]) => { const o0 = window[nom]; if (typeof o0 !== 'function' || o0.__react) return;

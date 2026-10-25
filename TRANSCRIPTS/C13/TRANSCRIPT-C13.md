@@ -3086,3 +3086,14 @@ MEMO
 
 25/10/2026 17:40
 MEMO
+
+## Tour 160 — 25/10/2026 18:37 — réveil n°50 (18:36, programmé au tour 159)
+
+**Mesuré.** Pas de mot de Paul depuis 16:53 (hors chantier) ; pas de « promeus ». `origin/integration` : tête `41dbfb5b` — E2 retours 32-33, E3 retour 32, E1 `aa98f3d7`, E4 `7c839180` : tous en veille, réveil n°49 lu. Aucun module bougé depuis `548da82d` (diff vide) : pas de banc. Le candidat reste `548da82d`. Relances r50 (une ligne chacun). Audit §0. Réveil n°51 programmé (+55 min).
+
+**Réponse (mot pour mot).**
+
+332. Rien de nouveau : le candidat 8.75.0-② (`548da82d`) attend ton mot « promeus » ; les quatre exécutants sont en veille, aucune ligne du site n'a bougé. Le 302, 13 · 12 et 144 restent posés à toi.
+
+25/10/2026 18:37
+MEMO

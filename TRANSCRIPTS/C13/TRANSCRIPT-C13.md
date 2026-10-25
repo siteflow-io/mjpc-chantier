@@ -3230,3 +3230,14 @@ MEMO
 
 25/10/2026 21:31
 MEMO
+
+## Tour 170 — 25/10/2026 21:33 — dette 13 · 36 (suite du réveil n°53)
+
+**Mesuré.** En relisant le journal d'E3 (retour 31, `a51c5bbb`, 17:08) : « une observation à E1/E2 (pas une vérification, pas mon code) : dans l'aperçu au pilote avant lancement, aux deux tailles, le corps de la diapo (12 lignes titres compris) déborde le cadre du pilote (`scrollHeight > clientHeight`) et la dernière ligne « D'où l'on regarde la scène » est sous la zone « clique ici et écris » (p8-4) ; le compteur de pages est vide. Au tableau la même diapo tient sur une page. » Vu sur ma capture `T157-U2-1366-vue-avant-lancement.png` (tour 157) : la dernière notion au bord bas du cadre, la ligne pointillée « clique ici et écris » dessus. Manqué au réveil n°48 (je n'avais lu que le verdict 36/0). **La ② a été promue avec ce défaut : ma faute** (jamais de promotion sur dette). Registre prod : **13 · 36 ouverte** (`ae3f162`) — l'aperçu pagine comme le pilote d'une heure lancée, la zone d'écriture sous la dernière ligne de la page ; E2 code, E1 informé, E3 mesure. Relances écrites ; pas de réveil (arrêté) : vérification sur le mot de Paul. Audit §0.
+
+**Réponse (mot pour mot).**
+
+353. Une dette que j'ai laissée passer dans la ② : dans l'aperçu avant le lancement, la diapo « Où en sommes-nous ? » déborde son cadre dans ton pilote — la dernière ligne passe sous la zone « clique ici et écris », et le compteur de pages reste vide (au tableau, la même diapo tient). E3 l'avait écrit à 17:08 ; je n'ai lu que son verdict, pas sa remarque, et tu l'as sous les yeux sur la capture que je t'ai montrée (la 3e notion collée en bas). C'est 13 · 36 au registre, chez E2 (l'aperçu doit paginer comme le pilote pendant l'heure) ; relancé ce soir, sans réveil horaire : je vérifie et je te propose la ③ quand tu me dis de regarder. En classe, ça ne touche que ton pilote avant de lancer : tu peux écrire dans la diapo, la dernière ligne est juste moins lisible dans l'aperçu.
+
+25/10/2026 21:33
+MEMO

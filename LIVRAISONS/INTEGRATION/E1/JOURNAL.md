@@ -431,3 +431,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - *Rien d'autre en relance ; `origin/main` a un tour de transcript de plus (6858c014, rien pour le chantier) — pas fusionné par moi. Prochain retour 16:57 UTC.*
 - *(25/10, 17:58 Paris / 16:58 UTC) Réveil n°49 lu : 548da82d est le candidat 8.75.0-② (ma part de §12.26 dedans), on attend le mot de Paul. Code inchangé depuis 827d5ff8. Rien à faire. Prochain retour 17:48 UTC.*
 - *(25/10, 18:50 Paris / 17:50 UTC) Réveil n°50 lu : rien de nouveau, le candidat 548da82d attend le mot de Paul. Code inchangé. Prochain retour 18:40 UTC.*
+- *(25/10, 19:43 Paris / 18:43 UTC) Réveil n°51 lu : rien de nouveau, le candidat 548da82d attend les réponses de Paul (cinq questions oui/non, tour 161). Code inchangé ; main n'a qu'un tour de transcript de plus (6f7818a7), pas fusionné par moi. Prochain retour 19:33 UTC.*

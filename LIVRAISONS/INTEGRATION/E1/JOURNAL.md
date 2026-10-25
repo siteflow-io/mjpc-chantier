@@ -432,3 +432,6 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - *(25/10, 17:58 Paris / 16:58 UTC) Réveil n°49 lu : 548da82d est le candidat 8.75.0-② (ma part de §12.26 dedans), on attend le mot de Paul. Code inchangé depuis 827d5ff8. Rien à faire. Prochain retour 17:48 UTC.*
 - *(25/10, 18:50 Paris / 17:50 UTC) Réveil n°50 lu : rien de nouveau, le candidat 548da82d attend le mot de Paul. Code inchangé. Prochain retour 18:40 UTC.*
 - *(25/10, 19:43 Paris / 18:43 UTC) Réveil n°51 lu : rien de nouveau, le candidat 548da82d attend les réponses de Paul (cinq questions oui/non, tour 161). Code inchangé ; main n'a qu'un tour de transcript de plus (6f7818a7), pas fusionné par moi. Prochain retour 19:33 UTC.*
+
+## 25/10, 20:35 Paris (19:35 UTC) — PROMEUS lu : 8.75.0-② en production (l'assemblé de `548da82d`, mes 13 · 32, 13 · 34 et ma part de §12.26 dedans)
+- Prod `828978c8ea03`, md5 `7d121b514decf667d162c65594afd07e`, bit à bit contre le site en ligne (conscience, 20:20). Décisions de Paul (20:17) : les quatre titres restent, 13 · 12 → E3, 144 reste tombé, pas de plan de 10 jours. Réveil n°52 : rien de nouveau. Rien à coder : veille, retour 50 min. Prochain retour 20:25 UTC.

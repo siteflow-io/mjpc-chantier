@@ -2967,3 +2967,16 @@ MEMO
 
 25/10/2026 13:06
 MEMO
+
+## Tour 151 — 25/10/2026 13:33 — réveil n°45 (13:25, programmé au tour 149)
+
+**Mesuré.** Pas de mot de Paul depuis 13:05 (tour 150). `origin/integration` : tête `b7997488` — E4 `13b332df` / `a0804cb3` (poussée 99 : 13 · 35, le doublon « Apprendre » / « Les notions » retiré ; RC19 ; 138/0 ; signal « 0 pas réglée (`13b332df`) ») ; E1 `c2661ae8` → `2360baca` → `65a3cf21` (13 · 34 : `dr-socle.js` `rendre`, `e.construite` seulement, classe `pas` sur le titre de bloc tant que sa première ligne n'est pas dévoilée ; `dr.css` `.cons.pas` ; banc.sh vert, E1 276/0, A35 8/0 — rouge avant 2/8) ; E2 `35ea2995` (retour 26 : B18-B22 rejoués sur `65a3cf21`, vert) ; E3 `609dad28` / `b7997488` (retour 27 : 13 · 34 vert 0 ▶ fautif sur 20 aux deux tailles, 13 · 35 vert : cas chargé 23 lignes / 26 pt / 3 pages, page tournée aux 10e et 19e ; hub brut 12 lignes / 1 page). Code bougé (`dr-recit.js` +9/−5, `dr-socle.js` 1 ligne, `dr.css` 2 lignes ; la 13 · 34 d'E1 lue : limitée à `e.construite`). Banc `banc-1326` sur `b7997488` : collisions 0, parcours vert ×2, K 108 / 0, VERT ; assemblé 2 324 597 o, md5 `5fa5cf259797e74d1b8c92b653022fcc` ; restauré, retour sur `main`. **Le cas chargé rejoué sur `b7997488`** (`react-charge.mjs`, hub chargé, EB Garamond) : 23 lignes construites — 7 titres entiers, 10 notions une par ligne, le travail = les trois consignes de Paul (145, 83, 31 signes), plus aucune ligne « Apprendre : … » ; aucun « … » ; au 1er dévoilé : un seul titre (« La dernière fois ») ; page 1 pleine à 9 dévoilés : s'arrête à la 2e notion, aucun titre vide ; page 2 : « Les notions » répété, 8 notions, « Le travail » avec sa première ligne ; 3 pages aux deux tailles, 26 pt. **13 · 34 ✔, 13 · 35 ✔** au registre prod (`acf4a97`). Candidat 8.75.0-② : le signal d'E4 (`13b332df`) est antérieur à la 13 · 34 d'E1 → E4 relancé pour signer `b7997488`. Relances r45. Audit §0 / §6. Épreuves `banc-sur-integration-b7997488.txt`, `sur-integration-b7997488-v22.txt`, EMPREINTES. Pièces T151 (P5, P9, P10 ; `T151-reactivation-chargee-sur-b7997488.txt`, six captures 1366). Deux captures à Paul.
+
+**Réponse (mot pour mot).**
+
+317. Les deux réglages de ce matin sont faits et vérifiés sur ton cas chargé : plus de titre vide en bas de page (13 · 34, E1), plus de notions répétées dans « Le travail » (13 · 35, E4) — la diapo fait maintenant 23 lignes sur 3 pages, ton travail = tes trois consignes ; sur le hub de ton chapitre elle retombe sur une page. Mon banc est vert, les deux dettes sont cochées. Les deux captures : la page 1 pleine (9 dévoilés), la page 2 pleine (18 dévoilés).
+
+318. Le candidat 8.75.0-② n'est pas encore annoncé : E4 a signé la version d'avant le réglage d'E1 ; je lui ai demandé de rejouer son banc sur la version finale et de signer — au prochain réveil, si c'est fait, je te l'annonce avec sa capture et j'attends ton mot. Le 302, 13 · 12 et 144 restent posés à toi.
+
+25/10/2026 13:33
+MEMO

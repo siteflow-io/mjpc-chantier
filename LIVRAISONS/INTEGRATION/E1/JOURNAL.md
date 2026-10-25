@@ -401,3 +401,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **Bancs sur `987c3565` (= `b8c161f2` après rebase, code identique)** (sorties `E1/sorties/0822/`) : **banc de la conscience VERT** — assemblage 8/8, collisions 0, parcours vert ×2 (K15-test 0 écriture), K1-K13 108/0 ; **banc E1 : 273 vérifications, 0 échec** (678 s).
 - *(25/10, 09:43 Paris / 08:43 UTC) Réveil n°41 lu (banc de la conscience vert sur 17f2bd3a, grep 5) et tour 146 (dette 13 · 33, le cas chargé : rien pour moi) : rien à faire. E2 a retiré son enveloppe (a052d830). Tête 2a8de5b9. Prochain retour 09:33 UTC.*
 - *(25/10, 10:34 Paris / 09:34 UTC) Réveil n°42 lu : banc de la conscience vert sur d73b4b57, 13 · 32 ✔ au registre prod ; rien à faire. Tête f3617c18. Prochain retour 10:24 UTC.*
+- *(25/10, 11:27 Paris / 10:27 UTC) Retour de veille : aucune relance après le réveil n°42 ; rien à faire. Tête dc162211 (E3 retour 25, E2 retour 24). Prochain retour 11:17 UTC.*

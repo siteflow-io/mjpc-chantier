@@ -505,3 +505,6 @@ Je code maintenant (l'ordre : la fusion, la clôture, l'aperçu + l'écriture + 
 
 ## 25/10 19:30 (Paris) — retour 34 : réveil n°50 lu, rien à coder ; `main` fusionné
 - Rien de nouveau pour moi ; `origin/main` avait un tour d'avance (161 : les cinq questions oui / non à Paul — le promeus de ②, les quatre titres, 13 · 12, le bouton 144, le plan de 10 jours) : fusionné dans `integration` (`3196fce5`). Le site n'a pas bougé depuis `5496a741`. Retour reprogrammé (50 min).
+
+## 25/10 20:22 (Paris) — retour 35 : réveil n°51 lu, rien à coder ; `main` (tour 163) fusionné
+- Rien de nouveau pour moi ; le candidat attend les réponses de Paul (333-337 ; tour 163 : les propositions de la conscience). `origin/main` fusionné dans `integration` (`fa87bc6a`, un vrai commit de fusion cette fois, poussé sans rebase). Le site n'a pas bougé depuis `5496a741`. Retour reprogrammé (50 min).

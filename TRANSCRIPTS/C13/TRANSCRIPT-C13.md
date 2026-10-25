@@ -3254,3 +3254,16 @@ MEMO
 
 25/10/2026 21:44
 MEMO
+
+## Tour 172 — 25/10/2026 22:44 — réveil n°54 (22:34, programmé au tour 171) — 13 · 36 ✔
+
+**Mesuré.** Pas de mot de Paul depuis 21:34. `origin/integration` : tête `2da707c9` — E2 `98f021cd` (13 · 36 prise), `1197808e` (retour 38, la lecture : la zone « ✎ clique ici et écris », inerte hors Atelier, collée au bas du cadre, couvre la dernière ligne ; l'aperçu ne paginait pas), `520d81ed` / `55b201ce` (poussée 37, 22:12 : `dr_reactApercuRendre` — `et.ecrire = false`, `et.pages` recalculées, la première page d'abord puis celle choisie, `S.page` / `S.pagesCourantes` posés → « page i / n », ‹ ›, Maj+←/→ ; `dr_reactVoir` page 0 à l'entrée, `dr_reactRetour` rend la page d'avant ; B27 ; banc E2 158/0 ; banc.sh vert) ; E3 `dc7fbdac` / `cbb7c1b0` (retour 36 : trois vérifications 13 · 36 dans `banc-1226.mjs` U2) ; E1 `2da707c9` (veille, A33/A35/A36 79/0 sur la 37) ; E4 : rien (signal encore `548da82d`). Code bougé : `dr-classe.js` +6/−4 (diff lue). Banc `banc-2236` sur `2da707c9` : collisions 0, parcours vert ×2, K 108 / 0, VERT ; assemblé 2 348 450 o, md5 `a8d3c59015ccee73b7d354dbfa9f0e3c` ; restauré, retour sur `main`. **Le geste** (le banc d'E3 à jour, par `git archive`) : sur le hub brut (12 lignes, une page) : le corps ne déborde plus (`scrollHeight ≤ clientHeight`), la dernière ligne entière dans le cadre, pas de zone « ✎ » ; 2 échecs à tort — la troisième vérification attend un compteur sur une diapo d'une seule page, or le pilote ne le montre que si `pages.length > 1` (code lu) ; **sur le hub chargé** (`$S/react/hub`, 23 lignes) : **42 vérifications, 0 échec** — « ‹page 1 / 3› » (les mêmes pages qu'au tableau : page 1 = 7 activités + 2 notions), l'écriture dans la diapo toujours possible, « ta version » + ↩, rien au tableau. Capture E2 B27 lue aussi (10 lignes chargées : « page 1 / 2 »). **13 · 36 ✔ au registre prod (`f5b9410`).** Relances r54 (E2 : ✔ ; E3 : la troisième vérification à conditionner ; E4 : signer `2da707c9` ; E1 : vu). Audit §0 / §6. Épreuves, EMPREINTES, pièces T172 (P5, P9, P10, deux sorties de banc, trois captures). Réveil n°55 programmé (+50 min) pour le signal d'E4 → candidat ③. Deux captures à Paul.
+
+**Réponse (mot pour mot).**
+
+355. 13 · 36 est réglée : E2 a fait paginer l'aperçu comme ton pilote pendant l'heure (« page 1 / 3 », les flèches ‹ ›, la première page d'abord) et la zone « clique ici et écris », qui ne servait à rien hors de l'Atelier, ne se pose plus dessus. Vérifié par le geste sur ton cas chargé (42 vérifications, 0 échec ; tu écris toujours dans la diapo) et sur le hub simple (tout tient dans le cadre) ; mon banc est vert. Dette cochée. Les deux captures (`T172-U2-hub-charge-page1-3-1366`, `T172-U2-hub-brut-1366`) : l'aperçu paginé, l'aperçu d'une page.
+
+356. Le candidat 8.75.0-③ (= la ② avec 13 · 36) attend la signature d'E4 sur cette version ; je repasse à 23:35 et, si elle y est, je te l'annonce avec son empreinte et j'attends ton mot.
+
+25/10/2026 22:44
+MEMO

@@ -3267,3 +3267,16 @@ MEMO
 
 25/10/2026 22:44
 MEMO
+
+## Tour 173 — 25/10/2026 23:38 — réveil n°55 (23:37, programmé au tour 172) — le candidat 8.75.0-③
+
+**Mesuré.** Pas de mot de Paul depuis 21:34. `origin/integration` : tête `e3b103d7` — E4 `6fa8522f` / `e3b103d7` (poussées 104-105 : bancs sur la tête de 13 · 36, signal « 0 pas réglée (`2da707c9`) », banc.sh vert, 140/0/0) ; E3 `ca36848e` / `448643fb` (retour 37 : 13 · 36 remesurée VERTE ; fin de ses retours) ; E2 `50eca61e` (retour 39, veille suspendue) ; E1 `dea0a906` (veille suspendue). Aucun module bougé depuis `2da707c9` (diff vide) : pas de banc, celui de 22:36 vaut. **Candidat 8.75.0-③ : `2da707c9`** (mon banc vert, le signal d'E4 dessus, E3 vert, 13 · 36 ✔) — assemblé 2 348 450 o, md5 `a8d3c59015ccee73b7d354dbfa9f0e3c`. Relances r55 (une ligne chacun). Audit §0. Aucun réveil programmé. La capture T172 à Paul.
+
+**Réponse (mot pour mot).**
+
+357. Le candidat 8.75.0-③ existe : la version `2da707c9` du sas = ta ② plus 13 · 36 (l'aperçu de la réactivation avant le lancement pagine comme ton pilote : « page 1 / 3 » sur ton cas chargé, tout dans le cadre). Mon banc est vert dessus (collisions 0, parcours vert deux fois, 108 contrôles sans échec), E4 l'a signée (183 lignes, 0 pas réglée), E3 l'a remesurée verte, aucune dette ouverte au registre. Empreinte md5 `a8d3c59015ccee73b7d354dbfa9f0e3c`, 2 348 450 octets. La capture `T172-U2-hub-charge-page1-3-1366` est celle de l'aperçu paginé.
+
+358. Je ne copie rien avant ton mot : « promeus » (ou « oui ») et je la mets en production dans le tour même, comme la ②. Plus aucun réveil programmé ; les exécutants ont suspendu leurs retours ; tout repart sur ton mot.
+
+25/10/2026 23:38
+MEMO

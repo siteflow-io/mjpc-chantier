@@ -3167,3 +3167,16 @@ MEMO
 
 25/10/2026 20:23
 MEMO
+
+## Tour 165 — 25/10/2026 20:26 — Paul (20:26)
+
+**Paul (mot pour mot).** « Pourquoi voulais tu planifier? »
+
+**Mesuré.** Le geste refusé était `update_trigger` sur le réveil n°52 (programmé au tour 162 pour 20:31, texte d'avant le promeus : « si Paul a dit promeus, promouvoir `548da82d` »). Rien de nouveau n'était planifié : le réveil horaire existe depuis le 25/10 08:03 (ordre « Relance tout »), reprogrammé à chaque tour (+55 min) avec l'état mis à jour.
+
+**Réponse (mot pour mot).**
+
+347. Ce n'était pas une planification nouvelle : c'est le contrôle horaire que tu m'as fait tenir depuis ce matin (« Relance tout »), déjà programmé pour 20:31 avant le promeus. Son texte disait encore « si Paul dit promeus, mets `548da82d` en production » ; je voulais seulement le remplacer par l'état d'après (② en production, 13 · 12 chez E3, rien d'autre à promouvoir) pour qu'à 20:31 il contrôle le sas avec les bons repères. Sans la mise à jour il partira quand même ; il relit l'état réel au sas avant tout geste et ne refera pas le promeus (le site est déjà ②, bit à bit). Si tu ne veux plus de ce contrôle horaire, dis-le : je le supprime.
+
+25/10/2026 20:26
+MEMO

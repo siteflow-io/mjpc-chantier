@@ -1,0 +1,10 @@
+banc E1 · 2026-10-25 14:36 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 5fa5cf259797e74d1b8c92b653022fcc
+
+A36 — §12.26, ma part : le geste d'écriture du pilote sur la réactivation construite AVANT le lancement (changer, ajouter, enlever une ligne → ses blocs) ; l'Atelier ne la montre ni ne l'écrit jamais
+  ÉCHEC  A36 · avant le lancement, la diapo construite s'écrit : ses deux titres et ses trois lignes sont éditables, l'infobulle du pilote dit où va la frappe — {"r0":{"lancee":false,"atelier":false,"regime":"prep"},"a1":{"n":0,"ps":"","titre":null,"role":"reactivation"}}
+  ÉCHEC  A36 · changer une ligne : le bloc de l'écran la porte (pas de surcouche S.copie, rien au journal d'une heure qui n'est pas lancée) — {"el":["Activité 1 — a","Activité 2 — b"],"copie":0,"J":0}
+  ÉCHEC  A36 · Entrée ajoute une ligne au bloc (le curseur y va), la frappe l'écrit ; Entrée puis Échap sur la ligne vide la retire — {"c2":{"el":["Apprendre la leçon"],"focus":null},"c3":["Apprendre la leçon"],"c4":{"el":["Apprendre la leçon"],"focus":null}}
+  ok     A36 · Alt+↑ ne déplace pas les blocs (les lignes seulement, rien d'autre) — La dernière fois|Le travail
+  ÉCHEC  A36 · le banc n'a pas pu aller au bout — page.evaluate: ReferenceError: p8ReactAvantLancement is not defined
+
+5 vérifications, 4 échec(s) · 13 s

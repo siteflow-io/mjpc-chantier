@@ -435,3 +435,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 
 ## 25/10, 20:35 Paris (19:35 UTC) — PROMEUS lu : 8.75.0-② en production (l'assemblé de `548da82d`, mes 13 · 32, 13 · 34 et ma part de §12.26 dedans)
 - Prod `828978c8ea03`, md5 `7d121b514decf667d162c65594afd07e`, bit à bit contre le site en ligne (conscience, 20:20). Décisions de Paul (20:17) : les quatre titres restent, 13 · 12 → E3, 144 reste tombé, pas de plan de 10 jours. Réveil n°52 : rien de nouveau. Rien à coder : veille, retour 50 min. Prochain retour 20:25 UTC.
+- *(25/10, 21:26 Paris / 20:26 UTC) Retour de veille : aucune relance après le réveil n°52. Vu chez E3 (retour 35) : la dette 13 · 12 est déjà dans le site (mon libellé `#taille-l` « N pt → obtenu », poussée 7, b7db27ed) et sa mesure la dit juste — rien à coder sans relance de la conscience. Code inchangé. Prochain retour 21:16 UTC.*

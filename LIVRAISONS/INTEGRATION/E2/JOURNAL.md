@@ -502,3 +502,6 @@ Je code maintenant (l'ordre : la fusion, la clôture, l'aperçu + l'écriture + 
 
 ## 25/10 18:37 (Paris) — retour 33 : rien de neuf (aucune relance après le réveil n°49), rien à coder
 - Tête `2a8d51a9` (veilles E1, E3, E4), `main` fusionné ; le site n'a pas bougé depuis `5496a741`. Le candidat 8.75.0-② (`548da82d`) attend le mot de Paul. Retour reprogrammé (50 min).
+
+## 25/10 19:30 (Paris) — retour 34 : réveil n°50 lu, rien à coder ; `main` fusionné
+- Rien de nouveau pour moi ; `origin/main` avait un tour d'avance (161 : les cinq questions oui / non à Paul — le promeus de ②, les quatre titres, 13 · 12, le bouton 144, le plan de 10 jours) : fusionné dans `integration` (`3196fce5`). Le site n'a pas bougé depuis `5496a741`. Retour reprogrammé (50 min).

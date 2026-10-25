@@ -3241,3 +3241,16 @@ MEMO
 
 25/10/2026 21:33
 MEMO
+
+## Tour 171 — 25/10/2026 21:44 — Paul (21:34) : « Règle cette dette »
+
+**Paul (mot pour mot).** « Règle cette dette »
+
+**Fait.** 13 · 36 : la relance à E2 est au sas depuis 21:33 (E1 informé, E3 la mesure). La session E2 a été réveillée tout de suite (`fire_trigger` sur son retour de veille, 21:43 — le texte ajouté a été refusé par l'outil, le réveil nu suffit : il relit `RELANCES/E2.md` après sa dernière marque). Un réveil de la conscience pour cette dette seule est programmé à 22:34 (+50 min ; au plus trois ce soir) : banc, geste (le banc d'E3 avec sa vérification 13 · 36, les captures U2/U3), ✔ au registre, candidat ③ annoncé avec capture, attente du mot de Paul. Le contrôle horaire reste arrêté pour le reste.
+
+**Réponse (mot pour mot).**
+
+354. E2 est réveillé à l'instant sur 13 · 36 (l'aperçu qui pagine comme le pilote pendant l'heure) ; E3 remesure après lui. Je repasse à 22:34 pour vérifier (banc, geste, captures) ; si c'est bon, je coche la dette et je t'annonce la ③ avec la capture, et j'attends ton mot. Au plus trois passages ce soir, puis j'arrête et je reprends sur ton mot.
+
+25/10/2026 21:44
+MEMO

@@ -443,3 +443,6 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 
 ## 25/10 11:11 (Paris) — retour 24 : réveil n°42 lu (13 · 32 ✔ au registre), rien à coder
 - Tête `a0dc33cb` (E1 veille), `main` fusionné (`f3617c18`). Rien de mien n'a bougé ; retour reprogrammé (50 min).
+
+## 25/10 12:03 (Paris) — retour 25 : réveil n°43 lu, rien à coder
+- Tête `e62d3344` (`main` fusionné : réveil n°43 et sa suite — 13 · 33 ✔, 13 · 34 ouverte sur E1/E3, 13 · 35 sur E4). Rien de mien n'a bougé ; retour reprogrammé (50 min).

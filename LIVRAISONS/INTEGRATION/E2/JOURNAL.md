@@ -496,3 +496,6 @@ Je code maintenant (l'ordre : la fusion, la clôture, l'aperçu + l'écriture + 
 
 ## 25/10 16:55 (Paris) — retour 31 : le banc E2 entier sur la tête (`548da82d`) — VERT 156 / 0 ; réveil n°48 lu
 - `sorties/1640/banc-E2.txt` (assemblé md5 `13b780c6…`, celui de `banc.sh` `sorties/1613`) : B1-B26, **156 vérifications, 0 échec**, un `absent` (« À reprendre », E4) ; le geste d'écriture mesuré est celui d'E1. La conscience a lu la poussée 36 (réveil n°48 : « c'est ce que Paul a demandé » ; le banc d'E3 par le geste 36 / 0 sur mes vrais sélecteurs). Rien à coder ; retour reprogrammé (50 min).
+
+## 25/10 17:46 (Paris) — retour 32 : réveil n°49 lu (candidat 8.75.0-② = `548da82d`), rien à coder
+- Le candidat porte §12.26 (poussée 36). Ni `index.html` ni `dr/*` n'ont bougé depuis `5496a741` (le banc entier 156/0, `sorties/1640`) : rien à rejouer. Tête `8e13a115`, `main` fusionné. Retour reprogrammé (50 min).

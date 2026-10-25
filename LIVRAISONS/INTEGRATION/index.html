@@ -15707,16 +15707,6 @@ function _drPrenomsDeLaClasse(slug){
     return Object.keys(map).length?map:null;
   }catch(e){return null;}
 }
-function _drProchainCreneau(){
-  try{
-    var s=document.getElementById('at-dr-creneau');
-    var jours={0:'dimanche',1:'lundi',2:'mardi',3:'mercredi',4:'jeudi',5:'vendredi',6:'samedi'};
-    var mois=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
-    var d=new Date(); d.setDate(d.getDate()+1);
-    while(d.getDay()===0||d.getDay()===6)d.setDate(d.getDate()+1);   /* le prochain jour ouvré, à défaut d'EDT hebdo */
-    return jours[d.getDay()]+' '+d.getDate()+' '+mois[d.getMonth()];
-  }catch(e){return '';}
-}
 
 document.addEventListener('change',function(ev){
   try{ if(ev.target&&ev.target.id==='at-dr-debut')_drPoserContexteMoteur(); }catch(e){}

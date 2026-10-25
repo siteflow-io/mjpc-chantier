@@ -302,3 +302,5 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 - **25/10, 15:58 UTC (16:58 Paris), la tête de §12.26 `548da82d`** (E1 §12.26 + A36 ; E2 poussée 36 ; E4 `96f3a7b5` ; code identique sur `6210a207`) : `banc.sh` vert, mon banc 140 ok · 0 échec · 0 absent (RC1-RC21 ; `E4/sorties/1646-25-10/`, `1646-site-E4-25-10/`). Aucune ligne nouvelle. **Compte inchangé : 183 lignes, 172 réglées, 0 pas réglée, 11 écartées, 0 à Paul, 0 ouverte.**
 
 **0 pas réglée (`548da82d`)** — la tête qui porte §12.26 (E1, E2, E4) ; `banc.sh` vert, mon banc 140 ok · 0 échec · 0 absent, RC1-RC21.
+
+- **25/10, 20:20 Paris — PROMU 8.75.0-②** (prod `828978c8ea03`, md5 `7d121b51…` = `548da82d` signé + la version). Les quatre titres : tranchés par Paul, gardés tels quels (20:17). Table : 183 lignes, 172 réglées, 0 pas réglée, 11 écartées, 0 à Paul (le point 302 est tranché).

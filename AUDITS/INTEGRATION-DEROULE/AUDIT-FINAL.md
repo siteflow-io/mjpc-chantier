@@ -79,6 +79,8 @@
 
 **Mise à jour 25/10, 19:34 (réveil n°51, tête `51b73aa4`, code = `9214d4e8`).** Pas de « promeus » (les cinq points reposés à Paul en oui / non au tour 161, 19:09 : promeus, 302, 13 · 12, 144, go). Les quatre en veille. Aucun module bougé depuis `548da82d` : pas de banc. Le candidat reste `548da82d`.
 
+**25/10, 20:20 — PROMU : 8.75.0-②.** Paul (20:17) : « Ok sauf 337 » = oui au 333 (promeus), 334 (les quatre titres restent), 335 (13 · 12 : afficher la taille obtenue → E3), 336 (144 reste tombé) ; non au 337 (pas de plan de 10 jours). Le candidat `548da82d` (code identique à la tête, vérifié) assemblé par `git archive` → md5 `13b780c6c7ab3ab114c8d99979cb8118`, 2 347 244 o ; prod `index.html` = l'assemblé avec `var APP_VERSION="8.75.0-②";` (à la place de `8.74.0-③` de l'assemblé, l. 2967) → md5 `7d121b514decf667d162c65594afd07e`, 2 347 244 o, commit prod `828978c8ea03`, blob `ffbdab35fa43` ; **bit à bit contre le site en ligne à 20:21** (`?v=8.75.0-2`). Suivi dans le tour même (`a0176f5`) : journal, dettes (ÉTAT DE PRODUCTION v8.75.0-② ; 13 · 32-35 promues ; 13 · 9 et 13 · 10 cochées — réglées par p8-5c avec 13 · 11, la coche manquait ; 13 · 12 tranchée → E3), point de retour (blob ① `705c07c06508`), index des fonctions (1886), où-trouver-quoi (section 8.75.0-②). Relances : PROMU aux quatre ; 13 · 12 à E3. Cycle suivant : rien sans Paul (13 · 12 en cours chez E3).
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

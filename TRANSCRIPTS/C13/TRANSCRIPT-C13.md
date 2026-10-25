@@ -3150,3 +3150,20 @@ MEMO
 
 25/10/2026 19:37
 MEMO
+
+## Tour 164 — 25/10/2026 20:23 — Paul (20:17) : « Ok sauf 337 » — PROMEUS 8.75.0-②
+
+**Paul (mot pour mot).** « Ok sauf 337 »
+
+**Fait.** Lu : oui au 333 (promeus ②), au 334 (les quatre titres restent), au 335 (13 · 12 : afficher la taille obtenue, E3), au 336 (144 reste tombé) ; non au 337 (pas de plan de 10 jours). **Promeus** : `git archive 548da82d` → assemblé md5 `13b780c6c7ab3ab114c8d99979cb8118`, 2 347 244 o (code identique à la tête `af92ee43`, diff vide) ; prod `index.html` = l'assemblé avec `var APP_VERSION="8.75.0-②";` (l. 2967, à la place de `8.74.0-③`) → md5 `7d121b514decf667d162c65594afd07e`, 2 347 244 o ; commit prod `828978c8ea03` (blob `ffbdab35fa43`), poussé 20:20 ; **bit à bit** : `curl …/index.html?v=8.75.0-2` → `6cf9c1f2…` à 20:20, `7d121b51…` à 20:21 — identique. Suivi prod (`a0176f5`) : `docs/MJPC6-journal.md` (entrée 25/10 20:20), `docs/MJPC6-DETTES.md` (ÉTAT DE PRODUCTION = v8.75.0-② ; 13 · 32-35 « promue le 25/10 avec 8.75.0-② » ; 13 · 9 et 13 · 10 cochées — réglées par p8-5c avec 13 · 11, tour 47, la coche manquait ; 13 · 12 tranchée par Paul → E3, ouverte), `docs/MJPC6-restauration.md` (point de retour avant ② : blob `705c07c06508`), `docs/MJPC6-INDEX-FONCTIONS.md` (1886 fonctions), `docs/MJPC6-OU-TROUVER-QUOI.md` (section 8.75.0-②). Sas : PROMU dans les quatre relances ; relance 13 · 12 à E3 ; audit §0. Réveil n°52 (20:31) à mettre à jour.
+
+**Réponse (mot pour mot).**
+
+344. 8.75.0-② est en production depuis 20:20 : le fichier en ligne est bit à bit celui que je t'ai annoncé (md5 `7d121b514decf667d162c65594afd07e`, 2 347 244 octets). Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.75.0-2 — la pastille dit v8.75.0-②. Journal, registre (13 · 32 à 35 promues), point de retour vers ①, index des fonctions, où-trouver-quoi : à jour.
+
+345. Tes autres réponses sont appliquées : les quatre titres restent ; 13 · 12 est chez E3 (la taille obtenue affichée à côté du curseur) ; 144 reste tombé ; pas de plan de 10 jours. Rien d'autre ne part sans toi.
+
+346. Tests geste par geste, sur une classe : clore une heure (« Fin de l'heure », jusqu'au bout) ; ouvrir la case de l'heure suivante dans ton emploi du temps → « Où en est la classe » → cliquer « 1. Où en sommes-nous ? » : la diapo s'ouvre dans ton pilote, rien au tableau ; écrire dans une ligne : « ta version » et ↩ paraissent dans l'entête ; ↩ : la version calculée revient ; « ↶ Où en est la classe » puis « Lancer » : l'heure s'ouvre sur ta diapo ; « Ouvrir par la réactivation : non » : l'heure s'ouvre sur le programme. Et le tableau (⧉) pendant tout ça : jamais « ta version ».
+
+25/10/2026 20:23
+MEMO

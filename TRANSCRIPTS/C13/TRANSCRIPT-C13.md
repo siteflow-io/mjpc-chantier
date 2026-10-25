@@ -3023,3 +3023,16 @@ MEMO
 
 25/10/2026 14:47
 MEMO
+
+## Tour 155 — 25/10/2026 14:59 — Paul (14:59)
+
+**Paul (mot pour mot).** « 323 oui. Non pas de voir modifier reconstruire, terminologie trop compliquée. Je modifie directement dans la diapo comme n'importe quelle diapo où je peux écrire, et il y a juste une mention "ta version " dans mon pilotage, jamais au tableau, et une fléche retour à côté de "ta version" pour reafficher la version calculée. Et oui la réactivation est uniquement dans la copie de classe jamais dans le déroulé de l'atelier »
+
+**Fait.** Contrat `MANDATS/INTEGRATION-DEROULE/CONTRAT.md` §12.26 écrit (le cadrage de Paul mot pour mot ; §12.25-10 remplacé ; neuf tranchages : (1) construite à la clôture de l'heure h pour l'heure h+1 ; (2) uniquement dans `C/ecrans`, jamais dans l'Atelier ; (3) vue depuis l'écran d'ouverture « Où en est la classe » sans lancer, par la puce « 1. Où en sommes-nous ? » ; (4) modifiée directement dans la diapo par le geste d'écriture du pilote, écrite dans la copie ; (5) « ta version » + ↩ dans l'entête de la diapo au pilote, jamais au tableau, `construite.calculee` gardée, infobulle de ↩ pour Paul ; (6) élèves : rien avant ; (7) clôture manquée : construite à l'ouverture ; (8) mesures E3 par le geste ; (9) gardes B23-B26, RC20-RC21, A36). Relances « va » aux quatre (lecture d'abord, puis code). Audit §0 : le candidat `b7997488` ne l'est plus ; le candidat sera la tête qui porte §12.26. Réveil n°47 (15:30) à mettre à jour.
+
+**Réponse (mot pour mot).**
+
+325. Écrit au contrat (§12.26) avec tes mots : construite à la clôture de l'heure d'avant, uniquement dans la copie de classe, jamais dans l'Atelier ; tu l'ouvres depuis « Où en est la classe » sans lancer et tu écris dedans comme dans n'importe quelle diapo ; « ta version » et la flèche retour dans ton pilotage seulement, jamais au tableau ; les élèves ne voient rien avant. E1, E2, E3, E4 sont relancés avec leur part (ils lisent d'abord, puis codent) ; le candidat sera la version qui porte ça, bancs verts et signée — je te l'annoncerai avec une capture de l'écran d'ouverture et de la diapo modifiée.
+
+25/10/2026 14:59
+MEMO

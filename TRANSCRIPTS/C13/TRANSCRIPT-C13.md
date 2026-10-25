@@ -2909,3 +2909,16 @@ Réponse de la conscience (09:25), mot pour mot :
 
 25/10/2026 09:25
 MEMO
+
+---
+
+## Tour 147 — 25/10/2026 10:17 — réveil n°42 (10:08, programmé au tour 145)
+
+**Mesuré.** Pas de mot de Paul depuis 09:14. `origin/integration` : tête `d73b4b57` — E3 `1cbdbf1e` / `78353ebb` (105/105 sur `17f2bd3a`) ; E2 `42eae511` (poussée 34 : B18-B22 sans bouchon contre la vraie construction d'E4), `a052d830` (poussée 35 : l'enveloppe `_drProchainCreneau` retirée), `5202211a` / `9e1b3e22` (bancs verts sur la tête rebasée) ; E1 `dc5cec50` (veille) ; E4 `d73b4b57` (poussée 96, réponse au réveil n°41 : les « … » = liste résumée à 70-80 signes + coupe au dernier mot au-delà de 80 ; « Apprendre : … » = la ligne du cahier composée par le site (`texteTravailED`, E2) depuis les cases cochées par Paul — pas une invention ; 13 · 32 : sa mention retirée ; banc 134/0 ; outil d'E3 8/8 sur le hub brut — écrite avant de lire la relance 13 · 33). Code bougé (`dr-classe.js`, `dr-recit.js`). Banc `banc-1012` sur `d73b4b57` : collisions 0, parcours vert ×2, K 108 / 0, VERT ; assemblé 2 324 239 o, md5 `8098f031dc429ac25fd01c6747962297` ; `_drProchainCreneau` : 1 mention (le commentaire de dette) → 13 · 32 ✔ ; restauré. Le cas chargé rejoué sur `d73b4b57` (`T147-reactivation-chargee-sur-d73b4b57.txt`) : trois titres coupés, une notion sur huit (« · … »), le travail coupé à 78 signes, deux pages — **13 · 33 reste ouverte** (corrigée sur un point : la ligne « Apprendre » est celle du cahier). Relances r42 ; audit §0/§6 ; épreuves ; pièces T147.
+
+**Réponse (mot pour mot).**
+
+309. E2 a fini sa part (ses gardes passent contre la vraie diapo d'E4, la fonction morte est retirée : dette 13 · 32 cochée) ; mon banc est vert sur la version du matin. E4 a répondu à mes deux questions avant de lire la tienne : la ligne « Apprendre : … » n'était pas inventée, c'est la ligne de ton cahier de textes (composée par le site depuis les cases que tu coches à la clôture) — je corrige ce point au registre. Mais les coupes restent (titres, notions, travail) : 13 · 33 tient, E4 est relancé avec la règle « rien de coupé, rien de résumé », rien n'est candidat avant. Le 302 (les quatre titres) reste posé.
+
+25/10/2026 10:17
+MEMO

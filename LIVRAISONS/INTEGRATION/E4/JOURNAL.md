@@ -1019,3 +1019,6 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **PROMU** (20:20 Paris) : 8.75.0-② en production — commit prod `828978c8ea03`, md5 `7d121b51…` = mon `548da82d` signé + la ligne de version, bit à bit contre le site en ligne. La réactivation construite (§12.22, §12.25, 13 · 33, 13 · 35, §12.26) est en classe.
 - **Paul a tranché (20:17, « Ok sauf 337 »)** : **les quatre titres restent** (« La dernière fois », « À reprendre », « Les notions », « Le travail ») — la constante `DR_REACT_TITRES` est désormais la sienne ; je retoucherai son commentaire (« proposés à Paul, tels quels en attendant son mot » → tranchés le 25/10) à ma prochaine poussée de code, pas pour ça seul. 13 · 12 → E3 ; 144 reste tombé.
 - Réveil n°52 : rien de nouveau ; le contrôle horaire s'arrête après 13 · 12 (E3). Code inchangé depuis `548da82d`. Seule E4, pas de STOP. Veille, retour dans 50 min.
+
+## Veille — 20:28 UTC (21:28 Paris)
+- Aucune relance nouvelle depuis le PROMU et le réveil n°52 ; aucun module bougé depuis `548da82d` (E1, E2 en veille ; E3 sur 13 · 12, chez E1). Seule E4, pas de STOP. Retour dans 50 min.

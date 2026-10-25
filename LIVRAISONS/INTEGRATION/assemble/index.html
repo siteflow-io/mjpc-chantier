@@ -18548,10 +18548,7 @@ function dr_absentsDeLaCase(){
     (typeof ELEVES !== 'undefined' ? ELEVES : []).forEach(e => { if (!abs.includes(edtSlugEleve(e)) || (S.appel[e] || []).length) return; S.appel[e] = [{ type: 'absent', t: t0, heure: S.heure, raison: 'case de l’emploi du temps' }]; n++; });
     if (n) { journal('appel', { depuis: 'case', n }); dr_tout(); } } catch (e) {} });
 }
-/* dette 12 · 17 : `_drProchainCreneau` (« À relire — … ») rendait le prochain jour ouvré ; c'est la prochaine heure de la classe (contrat §12.12) */
-if (typeof _drProchainCreneau === 'function' && !_drProchainCreneau.__e2) { const dr_prochain0 = _drProchainCreneau;
-  window._drProchainCreneau = function () { try { const sl = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && AT_DR_COURS.classeSlug) || dr_classeProposee(); const p = edtProchainesDe(sl, 1); if (p && p[0]) return p[0].l; } catch (e) {} return dr_prochain0.apply(this, arguments); };
-  window._drProchainCreneau.__e2 = true; }
+/* dette 13 · 32 (25/10) : l'enveloppe de `_drProchainCreneau` (12 · 17, « À relire — » : le prochain jour ouvré → la prochaine heure de la classe) est retirée — la fonction n'a plus aucun appelant dans 8.75.0-① (le papier lit `dr_recitProchaines()`) ; E1 retire la fonction morte dans `index.html` */
 setInterval(() => { try { if (typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe' && S.lancee && !S.close) dr_absentsDeLaCase(); } catch (e) {} }, 15000);   /* un absent coché dans la case pendant l'heure arrive au Pilotage */
 
 /* ─── les activités de la fin de l'heure, et chaque diapo sans activité comme la sienne (réveil n°3, points 3 et 5 ; C1 7.0-7.1) : la trame

@@ -402,3 +402,5 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - *(25/10, 09:43 Paris / 08:43 UTC) Réveil n°41 lu (banc de la conscience vert sur 17f2bd3a, grep 5) et tour 146 (dette 13 · 33, le cas chargé : rien pour moi) : rien à faire. E2 a retiré son enveloppe (a052d830). Tête 2a8de5b9. Prochain retour 09:33 UTC.*
 - *(25/10, 10:34 Paris / 09:34 UTC) Réveil n°42 lu : banc de la conscience vert sur d73b4b57, 13 · 32 ✔ au registre prod ; rien à faire. Tête f3617c18. Prochain retour 10:24 UTC.*
 - *(25/10, 11:27 Paris / 10:27 UTC) Retour de veille : aucune relance après le réveil n°42 ; rien à faire. Tête dc162211 (E3 retour 25, E2 retour 24). Prochain retour 11:17 UTC.*
+
+## 25/10, 12:18 Paris (11:18 UTC) — réveil n°43 : dette 13 · 34 (socle `rendre`, le titre de bloc de l'écran construit) — **en cours**

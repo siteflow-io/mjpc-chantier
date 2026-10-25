@@ -446,3 +446,6 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 
 ## 25/10 12:03 (Paris) — retour 25 : réveil n°43 lu, rien à coder
 - Tête `e62d3344` (`main` fusionné : réveil n°43 et sa suite — 13 · 33 ✔, 13 · 34 ouverte sur E1/E3, 13 · 35 sur E4). Rien de mien n'a bougé ; retour reprogrammé (50 min).
+
+## 25/10 12:57 (Paris) — retour 26 : réveil n°44 lu, rien à coder ; B18-B22 rejoués sur la tête (13 · 34, 13 · 35)
+- Tête `65a3cf21` (`main` fusionné). E1 (13 · 34 : le titre d'un bloc `texte` de l'écran construit, `dr-socle.js`, `dr.css`) et E4 (13 · 35 : le doublon « Apprendre » / « Les notions », `dr-recit.js`) touchent la diapo construite que mes gardes jouent : **B18-B22 rejoués** sur l'assemblé de la tête (md5 `5fa5cf25…`, identique à celui commis) — **VERT** (31 ok, l'`absent` « À reprendre » à E4 inchangé), `sorties/1255/banc-react.txt`. Rien de mien n'a bougé ; retour reprogrammé (50 min).

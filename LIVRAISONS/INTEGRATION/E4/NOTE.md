@@ -296,3 +296,5 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 - **25/10, 12:40 UTC (13:40 Paris), la tête `b7997488`** (E1 13 · 34 dans le socle et la feuille ; E2, E3 remesurés verts) : `banc.sh` vert, mon banc 138 ok · 0 échec · 0 absent (RC1-RC19 ; `E4/sorties/1332-25-10/`, `1332-site-E4-25-10/`). Aucune ligne nouvelle. **Compte inchangé : 183 lignes, 172 réglées, 0 pas réglée, 11 écartées, 0 à Paul, 0 ouverte.**
 
 **0 pas réglée (`b7997488`)** — la tête avec 13 · 34 (E1) et 13 · 35 (E4) ; `banc.sh` vert, mon banc 138 ok · 0 échec · 0 absent.
+
+- **25/10, 14:55 UTC (15:55 Paris), §12.26 ma part (`96f3a7b5`)** : le paquet local à la clôture (`dr_reactivationPreparer(h, cb, { cle, paquet })`), `construite.calculee`, `dr_reactivationModifiee` / `dr_reactivationRetour` ; RC20-RC21 ; mon banc 140 ok · 0 échec · 0 absent, `banc.sh` vert (`E4/sorties/1536-25-10/`, `1536-site-E4-25-10/`). Aucune ligne nouvelle. **Compte inchangé : 183 lignes, 172 réglées, 0 pas réglée, 11 écartées, 0 à Paul, 0 ouverte.** Le signal sur la tête finale de §12.26 attend E1 et E2 (le candidat 8.75.0-② reste `b7997488` tant que la conscience n'en nomme pas un autre).

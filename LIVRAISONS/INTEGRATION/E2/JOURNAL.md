@@ -440,3 +440,6 @@ Un relecteur neuf (protocole du 12/10 : le mandat, le contrat, C1 et l'assemblé
 
 ## 25/10 10:18 (Paris) — retour 23 : relance « le cas chargé » (09:24, 13 · 33) lue, rien à coder
 - Elle a croisé mes poussées 34-35 (09:23-09:24) : B18-B22 sans bouchon et 13 · 32 y étaient déjà. 13 · 33 (la construite coupe les textes, invente une ligne de travail sur un hub chargé) est à E4 ; E4 a poussé 96 (`d73b4b57`), E3 l'a mesuré (`40e309e5`). Tête `40e309e5`, `main` fusionné. Rien de mien à rejouer : `dr/dr-classe.js` et `index.html` n'ont pas bougé depuis `sorties/0928`. Retour reprogrammé (50 min).
+
+## 25/10 11:11 (Paris) — retour 24 : réveil n°42 lu (13 · 32 ✔ au registre), rien à coder
+- Tête `a0dc33cb` (E1 veille), `main` fusionné (`f3617c18`). Rien de mien n'a bougé ; retour reprogrammé (50 min).

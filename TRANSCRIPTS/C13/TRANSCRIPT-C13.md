@@ -3073,3 +3073,16 @@ MEMO
 
 25/10/2026 16:53
 MEMO
+
+## Tour 159 — 25/10/2026 17:40 — réveil n°49 (17:39, programmé au tour 157)
+
+**Mesuré.** Pas de mot de Paul sur le chantier depuis 14:59 (16:53 : hors chantier). `origin/integration` : tête `9bd2e0d9` — E4 `8e5ee63b` (poussée 103 : signal « 0 pas réglée (`548da82d`) », banc.sh vert, 140/0/0 RC1-RC21) ; E3 `a51c5bbb` / `9bd2e0d9` (retour 31 : `banc-1226.mjs` adapté — `plaintext-only`, `#react-calculee` — VERT 36/0 sur la tête) ; E2 `5496a741` (retour 31 : banc E2 entier 156/0) ; E1 `827d5ff8` (A36 9/0, banc.sh vert). Aucun module bougé depuis `548da82d` (diff vide) : pas de banc, celui de 16:30 vaut. **Candidat 8.75.0-② : `548da82d`** (mon banc vert, le signal d'E4 dessus, E3 36/0, E2 156/0, E1 A36 9/0, 13 · 32-35 ✔) — assemblé 2 347 244 o, md5 `13b780c6c7ab3ab114c8d99979cb8118`. Relances r49 (une ligne chacun). Audit §0. Réveil n°50 programmé (+55 min). La capture T157-U3 à Paul.
+
+**Réponse (mot pour mot).**
+
+330. Le candidat 8.75.0-② existe : la version `548da82d` du sas — mon banc est vert dessus (collisions 0, parcours vert deux fois, 108 contrôles sans échec), E4 l'a signée (183 lignes, 0 pas réglée, 0 ouverte), E3 a rejoué par le geste ce que tu as demandé (36 sur 36 : clôture → copie, ouvrir sans lancer, écrire dans la diapo, « ta version » et ↩, rien au tableau, rien dans l'Atelier, rien pour les élèves avant), E2 et E1 verts aussi. Elle porte la réactivation construite complète : construite à la clôture de l'heure d'avant, dans la copie de classe seulement ; « Ouvrir par la réactivation » et son réglage ; tu la vois depuis « Où en est la classe » sans lancer et tu écris dedans ; « ta version » + ↩ dans ton pilotage. Empreinte md5 `13b780c6c7ab3ab114c8d99979cb8118`. La capture `T157-U3-…-ta-version` est celle de ta diapo modifiée avant le lancement.
+
+331. Je ne copie rien avant ton mot : écris « promeus » et je la mets en production dans le tour même (bit à bit, journal, dettes, point de retour, index, où-trouver-quoi, adresse, tests geste par geste). Le 302 (les quatre titres), 13 · 12 et 144 restent posés à toi.
+
+25/10/2026 17:40
+MEMO

@@ -2993,3 +2993,16 @@ MEMO
 
 25/10/2026 14:32
 MEMO
+
+## Tour 153 — 25/10/2026 14:45 — Paul (14:44)
+
+**Paul (mot pour mot).** « J'ai une question : est ce que les diapos générées sont visibles dans la copie de classe AVANT le jeu de la copie de classe? »
+
+**Mesuré (dans le candidat `b7997488`, assemblé md5 `5fa5cf25…`).** La diapo « Où en sommes-nous ? » (réactivation construite) : construite au lancement de l'heure seulement — `placer` (l. 18178) : `dr_partagerHeures` → `dr_heureContinue` → `dr_reactInserer(heure)` → `go(0)` ; `dr_reactInserer` (l. 18598-18603) : « au lancement de l'heure h : une fois, si oui, si E4 a construit », insérée devant la première diapo de l'heure dans `seance().ecrans`, puis écrite dans `C/ecrans` par `dr_copieAuto` avec le reste, relue de la copie à toute reprise (commentaire de contrat l. 18573-18578 : « construite UNE fois, au lancement de l'heure quand Paul dit oui … jamais reconstruite »). Avant le lancement : nulle part — ni dans le déroulé de l'Atelier, ni dans la copie de classe ; l'écran d'ouverture montre seulement la ligne « la réactivation « Où en sommes-nous ? » (construite) » et la puce « 1. Où en sommes-nous ? réactivation (construite depuis l'heure d'avant) » (`dr_reactPuceHtml`, l. 18597), le contenu est préparé en mémoire (`dr_reactPreparer`) pour savoir s'il y a quelque chose à réactiver, pas montré. La diapo « Récap' de l'heure » (fin) : posée par `dr_normaliserTrame` à la première lecture de la séance (l. 15790, `DR_MEM.prepares`), donc présente dans le déroulé avant le jeu, comme une diapo du chapitre.
+
+**Réponse (mot pour mot).**
+
+321. Non. La diapo « Où en sommes-nous ? » n'existe pas avant que tu lances l'heure : elle est construite une seule fois au moment où tu cliques « Lancer » avec « Ouvrir par la réactivation » à oui, mise devant la première diapo de l'heure, et écrite dans la copie de classe avec le reste ; à partir de là, elle y reste et s'y relit à toute reprise, jamais reconstruite. Avant, l'écran d'ouverture te dit seulement qu'elle existera (« 1. Où en sommes-nous ? — réactivation construite depuis l'heure d'avant ») : tu ne la vois pas, et les élèves ne la voient nulle part. Le « Récap' de l'heure », lui, est une diapo du chapitre : il est dans le déroulé avant le jeu.
+
+25/10/2026 14:45
+MEMO

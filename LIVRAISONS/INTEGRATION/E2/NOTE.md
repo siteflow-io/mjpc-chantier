@@ -23,6 +23,7 @@ Si la page se ferme en pleine heure : la bannière d'aujourd'hui (« Reprendre l
 | `LIVRAISONS/INTEGRATION/index.html` à cette note (23/10, après le promeus) | `94a06436df260de12d02e02e7e81e652` | 1 402 421 o |
 | `dr/dr-classe.js` à cette note (ma coupe de la maquette posée par E1 + mon module ; §12.22 la réactivation construite) | `d11aeb050fc6530bf39463c59e8f9629` | 212 405 o |
 | `assemble/index.html` à la poussée 34 (25/10, B18-B22 sans bouchon) | `d57a8f8697b326c08844a997b00181ae` | 2 280 235 o |
+| `assemble/index.html` à la poussée 36 (25/10, §12.26 — la tête `548da82d` = **8.75.0-② en production** le 25/10 20:20, prod `828978c8ea03`) | `13b780c6c7ab3ab114c8d99979cb8118` | 2 303 274 o |
 | `assemble/index.html` à cette note (poussée 33) | `a79f310b971228c249ae335970a1c11e` | 2 311 272 o |
 
 ## Les fonctions du site touchées (nom, taille avant → après)

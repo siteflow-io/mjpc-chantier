@@ -508,3 +508,6 @@ Je code maintenant (l'ordre : la fusion, la clôture, l'aperçu + l'écriture + 
 
 ## 25/10 20:22 (Paris) — retour 35 : réveil n°51 lu, rien à coder ; `main` (tour 163) fusionné
 - Rien de nouveau pour moi ; le candidat attend les réponses de Paul (333-337 ; tour 163 : les propositions de la conscience). `origin/main` fusionné dans `integration` (`fa87bc6a`, un vrai commit de fusion cette fois, poussé sans rebase). Le site n'a pas bougé depuis `5496a741`. Retour reprogrammé (50 min).
+
+## 25/10 21:16 (Paris) — retour 36 : PROMEUS 8.75.0-② lu (20:20 : `548da82d` → prod `828978c8ea03`, md5 `7d121b51…`), réveil n°52 lu, rien à coder
+- La production porte §12.22 / §12.25 / §12.26 : la réactivation construite à la clôture, vue et modifiée avant le lancement (poussées 33-36). Paul (20:17, « Ok sauf 337 ») : les quatre titres restent, 13 · 12 → E3, 144 reste tombé, pas de plan de 10 jours. Le contrôle horaire de la conscience s'arrête après 13 · 12 (tours 166-167) ; mes retours de veille continuent tant qu'aucun STOP n'est écrit dans `RELANCES/E2.md`. Tête `a4a48039`, `main` fusionné ; le site n'a pas bougé depuis `5496a741`. Retour reprogrammé (50 min).

@@ -3167,3 +3167,53 @@ MEMO
 
 25/10/2026 20:23
 MEMO
+
+## Tour 165 — 25/10/2026 20:26 — Paul (20:26)
+
+**Paul (mot pour mot).** « Pourquoi voulais tu planifier? »
+
+**Mesuré.** Le geste refusé était `update_trigger` sur le réveil n°52 (programmé au tour 162 pour 20:31, texte d'avant le promeus : « si Paul a dit promeus, promouvoir `548da82d` »). Rien de nouveau n'était planifié : le réveil horaire existe depuis le 25/10 08:03 (ordre « Relance tout »), reprogrammé à chaque tour (+55 min) avec l'état mis à jour.
+
+**Réponse (mot pour mot).**
+
+347. Ce n'était pas une planification nouvelle : c'est le contrôle horaire que tu m'as fait tenir depuis ce matin (« Relance tout »), déjà programmé pour 20:31 avant le promeus. Son texte disait encore « si Paul dit promeus, mets `548da82d` en production » ; je voulais seulement le remplacer par l'état d'après (② en production, 13 · 12 chez E3, rien d'autre à promouvoir) pour qu'à 20:31 il contrôle le sas avec les bons repères. Sans la mise à jour il partira quand même ; il relit l'état réel au sas avant tout geste et ne refera pas le promeus (le site est déjà ②, bit à bit). Si tu ne veux plus de ce contrôle horaire, dis-le : je le supprime.
+
+25/10/2026 20:26
+MEMO
+
+## Tour 166 — 25/10/2026 20:27 — Paul (20:26)
+
+**Paul (mot pour mot).** « Est il utile? »
+
+**Mesuré.** Réveils du jour (n°41 à n°51, depuis 09:10) : onze ; ceux qui ont trouvé du nouveau à vérifier (banc, geste, dette, candidat) : n°41, 42, 43, 45, 46, 48, 49 ; ceux qui n'ont rien trouvé (« rien de nouveau ») : n°44, 47, 50, 51. Les exécutants poussent d'eux-mêmes et se reprogramment seuls ; le réveil ne les fait pas travailler, il vérifie ce qu'ils ont poussé (banc, geste, registre) et te le dit.
+
+**Réponse (mot pour mot).**
+
+348. Utile quand ils codent, inutile quand ils veillent. Aujourd'hui, sur onze réveils, sept ont vérifié quelque chose (un banc, un geste, une dette, le candidat — c'est comme ça que §12.26 a été contrôlé et annoncé sans que tu demandes) et quatre n'ont rien trouvé et t'ont coûté un tour pour rien. Ce qu'il fait n'est jamais un geste sur le site : lire ce qu'ils ont poussé, le mesurer, te le dire. Ce que je propose : je le garde ce soir jusqu'à ce qu'E3 ait réglé 13 · 12 (un ou deux réveils), puis je le supprime ; il ne revient que sur ton mot, quand un nouveau cycle fait coder les exécutants. Si tu ne dis rien, c'est ce que je fais.
+
+25/10/2026 20:27
+MEMO
+
+## Tour 167 — 25/10/2026 20:28 — Paul (20:28)
+
+**Paul (mot pour mot).** « Ok »
+
+**Acquis.** Le contrôle horaire reste ce soir jusqu'à 13 · 12 réglée par E3 (un ou deux réveils, le n°52 part à 20:31 avec son texte d'avant — il relit l'état réel, pas de promeus à refaire), puis il est supprimé ; il ne revient que sur le mot de Paul.
+
+**Réponse (mot pour mot).**
+
+349. Acquis : le contrôle tourne encore ce soir pour 13 · 12, puis je le supprime et je te le dis ; il ne revient que sur ton mot.
+
+25/10/2026 20:28
+MEMO
+
+## Tour 168 — 25/10/2026 20:32 — réveil n°52 (20:31, programmé au tour 162, texte d'avant le promeus)
+
+**Mesuré.** Le promeus est fait (tour 164) : rien à refaire. `origin/integration` : tête `5ade6f1c` (mon PROMU de 20:24) ; aucune poussée depuis (E3 : dernier retour 19:56, 13 · 12 pas encore lue ; E1, E2, E4 : veille). Aucun module bougé : pas de banc. Relances r52 (une ligne). Audit §0. Réveil n°53 programmé (+55 min), le dernier ou l'avant-dernier : il s'arrête après 13 · 12 (Paul, 20:28 : « Ok »).
+
+**Réponse (mot pour mot).**
+
+350. Rien de nouveau depuis la mise en production : E3 n'a pas encore pris 13 · 12 (son prochain retour est vers 20:46) ; les trois autres veillent ; aucune ligne du site n'a bougé.
+
+25/10/2026 20:32
+MEMO

@@ -2980,3 +2980,16 @@ MEMO
 
 25/10/2026 13:33
 MEMO
+
+## Tour 152 — 25/10/2026 14:32 — réveil n°46 (14:31, programmé au tour 151)
+
+**Mesuré.** Pas de mot de Paul depuis 13:05. `origin/integration` : tête `387a8c5d` — E4 `17252a1e` / `d21fbac7` (poussée 100 : signal « 0 pas réglée (`b7997488`) », banc.sh vert, 138/0/0, RC1-RC19) ; E1 `a8533cbe`, E2 `f19c397c`, E3 `387a8c5d` : veille. Aucun module bougé depuis `b7997488` (diff vide sur `index.html` et `dr/`) : pas de banc, celui de 13:33 vaut. **Candidat 8.75.0-② : `b7997488`** (mon banc vert, le signal d'E4 sur cette tête, 13 · 32-35 ✔) — assemblé 2 324 597 o, md5 `5fa5cf259797e74d1b8c92b653022fcc`. Relances r46 (une ligne chacun). Audit §0. Réveil n°47 programmé (+55 min). La capture T151 (page 1 pleine) à Paul.
+
+**Réponse (mot pour mot).**
+
+319. Le candidat 8.75.0-② existe : la version `b7997488` du sas — mon banc est vert dessus (collisions 0, parcours vert deux fois, 108 contrôles sans échec), E4 l'a signée (sa relecture : 183 lignes, 0 pas réglée, 0 ouverte), les dettes 13 · 32 à 13 · 35 sont cochées. Elle porte la réactivation construite (§12.22) : le bouton « Ouvrir par la réactivation » à l'heure 2, la diapo « Où en sommes-nous ? » construite depuis l'heure d'avant (activités, à reprendre, notions, travail — tes mots, rien de coupé, rien de répété), le réglage dans tes réglages. Empreinte md5 `5fa5cf259797e74d1b8c92b653022fcc`. La capture `T151-…-dev9-page1-pleine` est celle de ton cas chargé.
+
+320. Je ne copie rien avant ton mot : écris « promeus » et je la mets en production dans le tour même (bit à bit, journal, dettes, point de retour, index, où-trouver-quoi, adresse, tests). Le 302 (les quatre titres : « La dernière fois », « À reprendre », « Les notions », « Le travail ») est dedans tel quel — si tu veux d'autres mots, dis-les avant ou après, c'est une constante.
+
+25/10/2026 14:32
+MEMO

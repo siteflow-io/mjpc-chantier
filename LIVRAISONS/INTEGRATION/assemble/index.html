@@ -19505,31 +19505,18 @@ function dr_reactivationSource(n){
   if (n > 1) { const l = Object.entries(DR_REACT_HUB[C] || {}).filter(([k, p]) => p && +p.heure === n - 1 && joue(p)); const x = plus(l); return x ? { cle: x[0], p: x[1] } : null; }
   if (!P) return null; const x = plus(Object.entries(DR_REACT_HUB[P] || {}).filter(([k, p]) => joue(p))); return x ? { cle: x[0], p: x[1], seanceAvant: true } : null;
 }
-/* les notions resserrées (budget d'E3, réveil n°39 : des lignes ≤ 70 signes) : dans l'ordre des diapos vues, une notion jamais coupée, sur les lignes
-   que la page laisse (`nb`, 1 au moins) ; quand il en reste, la dernière ligne finit par « · … » — l'élément « … » dit « et d'autres » (toutes restent dans `comp`).
-   (réveil n°41) le « … » est un élément de la liste après son séparateur, jamais collé au libellé : il ne se lit pas comme une phrase coupée */
-const DR_REACT_NOTIONS_MAX = 70;
-function dr_reactivationNotions(libs, max, sep, nb){ max = max || DR_REACT_NOTIONS_MAX; sep = sep || ' · '; nb = Math.max(1, nb || 1); libs = libs.filter(Boolean); if (!libs.length) return [];
-  const out = []; let i = 0;
-  while (i < libs.length && out.length < nb) { const l = [libs[i++]]; const derniere = out.length === nb - 1;
-    while (i < libs.length) { const suite = derniere && i < libs.length - 1 ? sep + '…' : ''; if ((l.concat(libs[i]).join(sep) + suite).length > max) break; l.push(libs[i++]); }
-    out.push(l.join(sep) + (derniere && i < libs.length ? sep + '…' : '')); }
-  return out; }
-/* le budget d'une page au tableau (E3, retours 21-22 : 12 lignes titres compris au plancher 26 pt ; au-delà, le site pagine) : les notions prennent les lignes que les autres blocs laissent */
-const DR_REACT_LIGNES_MAX = 12;
-/* le travail donné, une consigne par ligne ≤ 80 signes (E3, retour 21 : le `travailTexte` entier faisait 193 signes, 3 lignes rendues, la page 2) :
-   sans l'entête d'École Directe, coupé aux « — » hors guillemets ; « Terminer / Préparer « … » » sans le contenu recopié ; la ligne « Apprendre : a ; b ; c. » du cahier
-   (écrite par le site au cahier de textes depuis les notions que Paul a cochées, `texteTravail` d'E2) garde ses mots et son « ; », resserrée sur une ligne : « ; … » quand il en reste (réveil n°41) */
-const DR_REACT_LIGNE_MAX = 80;
+/* (dette 13 · 33, Paul 25/10 09:14 ; la règle que la conscience écrira au contrat §12.26, déjà le sens de §12.22) : RIEN N'EST COUPÉ, RIEN N'EST INVENTÉ.
+   Un titre long se replie (le site le fait) ; toutes les notions des diapos vues, une par ligne, au libellé élève ; le travail tel qu'il est écrit au cahier.
+   Si la diapo fait deux pages, le site pagine et Paul dévoile. (Les poussées 93-96 resserraient les notions et coupaient à 70/80 signes avec « … » : retiré.) */
+/* le travail donné : le texte du cahier de textes de l'heure d'avant (`travailTexte` du paquet = `texteTravailED()` d'E2 : ce qui part à École Directe, que Paul
+   peut avoir réécrit à la main), entier, une consigne par ligne : découpé aux « — » que le site met entre les consignes, puis aux « ; » et aux « . » hors
+   guillemets et hors parenthèses (un « . » seulement devant une majuscule ou « «  », pas « p. 12 ») ; la ponctuation finale d'une consigne tombe (« . », « ; ») —
+   aucun mot ne tombe. Seule l'entête d'École Directe « Pour la prochaine séance (mardi 15 septembre) — » n'est pas répétée au tableau (E3 retour 21, poussée 94). */
 function dr_reactivationTravail(t){ const out = [];
-  String(t || '').split(/\n+/).forEach(l => { l = l.trim().replace(/^Pour la prochaine séance[^—]*— /, ''); let q = 0, d = 0; const m = [];
-    for (let i = 0; i < l.length; i++) { const c = l[i]; if (c === '«') q++; else if (c === '»') q = Math.max(0, q - 1); else if (!q && l.startsWith(' — ', i)) { m.push(l.slice(d, i)); d = i + 3; i += 2; } } m.push(l.slice(d));
-    m.map(x => x.trim()).filter(Boolean).forEach(x => { const ap = x.match(/^Apprendre : (.*?)\.?$/); if (ap) { const libs = ap[1].split(/ ; /); const r = dr_reactivationNotions(libs.map(v => v.trim()), DR_REACT_LIGNE_MAX - 12, ' ; ', 1)[0]; out.push('Apprendre : ' + r); return; }
-      const td = x.match(/^((?:Terminer|Préparer) « [^»]*») : /); if (td) x = td[1];
-      out.push(dr_reactivationLigne(x)); }); });
+  const decoupe = (l, estCoupe, saut) => { const m = []; let q = 0, pa = 0, d = 0; for (let i = 0; i < l.length; i++) { const c = l[i]; if (c === '«') q++; else if (c === '»') q = Math.max(0, q - 1); else if (c === '(') pa++; else if (c === ')') pa = Math.max(0, pa - 1); else if (!q && !pa) { const n = estCoupe(l, i); if (n) { m.push(l.slice(d, i + saut)); d = i + n; i = d - 1; } } } m.push(l.slice(d)); return m.map(x => x.trim()).filter(Boolean); };
+  String(t || '').split(/\n+/).forEach(l => { l = l.trim().replace(/^Pour la prochaine séance[^—]*— /, ''); if (!l) return;
+    decoupe(l, (s, i) => s.startsWith(' — ', i) ? 3 : 0, 0).forEach(c => decoupe(c, (s, i) => (s[i] === ';' && (i + 1 >= s.length || s[i + 1] === ' ')) || (s[i] === '.' && /^\.\s+(?=[A-ZÀ-ÝŒ«])/.test(s.slice(i, i + 3)) ) ? 1 : 0, 0).forEach(x => { x = x.replace(/[\s;.]+$/, '').trim(); if (x) out.push(x); })); });
   return out; }
-/* une ligne rendue au tableau (≤ 80 signes) : coupée au dernier mot, « … » */
-function dr_reactivationLigne(x){ x = String(x); if (x.length <= DR_REACT_LIGNE_MAX) return x; const c = x.slice(0, DR_REACT_LIGNE_MAX - 1); return c.slice(0, Math.max(c.lastIndexOf(' '), 40)).replace(/[\s,;:—-]+$/, '') + ' …'; }
 /* l'écran « Où en sommes-nous ? » de l'heure n, ou null (DR_REACT_RAISON dit pourquoi) */
 function dr_reactivationConstruire(n){
   DR_REACT_RAISON = ''; const src = dr_reactivationSource(+n || 1); if (!src) { DR_REACT_RAISON = 'rien de joué avant'; return null; }
@@ -19543,10 +19530,8 @@ function dr_reactivationConstruire(n){
   const taxo = {}; (dr_recitTaxo() || []).forEach(d => (d.familles || []).forEach(f => (f.notions || []).forEach(x => { taxo[x.id] = x.eleve || x.libelleEleve || x.prof || x.libelleProf; })   /* le site : `eleve` / `prof` ; le fichier de taxonomie : `libelleEleve` */));
   const ids = []; (p.activites || []).forEach(a => (a.comp || []).forEach(id => { if (taxo[id] && !ids.includes(id)) ids.push(id); }));
   const travail = dr_reactivationTravail(p.travailTexte);
-  const bloc = (titre, el) => el.length ? { t: 'texte', txt: titre, el: el.map(dr_reactivationLigne) } : null;
-  /* les lignes que la page laisse aux notions : le budget d'E3 moins les autres blocs (chacun : son titre + ses lignes), 1 au moins */
-  const prises = [faites, reprendre, travail].reduce((s, l) => s + (l.length ? l.length + 1 : 0), 0) + 1;
-  const notions = dr_reactivationNotions(ids.map(id => taxo[id]), DR_REACT_NOTIONS_MAX, ' · ', DR_REACT_LIGNES_MAX - prises);
+  const bloc = (titre, el) => el.length ? { t: 'texte', txt: titre, el: el.map(x => String(x)) } : null;   /* entières : rien n'est coupé (13 · 33) */
+  const notions = ids.map(id => taxo[id]).filter(Boolean);   /* toutes, une par ligne, dans l'ordre des diapos vues */
   const blocs = [bloc(DR_REACT_TITRES.faites, faites.map(lib)), bloc(DR_REACT_TITRES.reprendre, reprendre.map(lib)), bloc(DR_REACT_TITRES.notions, notions), bloc(DR_REACT_TITRES.travail, travail)].filter(Boolean);
   const e = { act: 'Où en sommes-nous ?', role: 'reactivation', heure: +n || 1, dur: DR_REACT_DUR, comp: ids, blocs, construite: { depuis: src.cle, seanceAvant: !!src.seanceAvant, t: Date.now() } };
   try { if (typeof dr_poserEidReactivation === 'function') dr_poserEidReactivation(e, e.heure); } catch (x) {}   /* l'eid du socle (E1, §12.25-3) : react-h<n>-s<clé> */

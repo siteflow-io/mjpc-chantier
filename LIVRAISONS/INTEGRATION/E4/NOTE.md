@@ -282,3 +282,5 @@ Quatre : deux en passe préalable sur la maquette (`E4/relecteurs/R1-pre-E1a.md`
 - **07:25 UTC, §12.22 / §12.25 (réveils n°38-39)** : la réactivation construite, branchée sur le bouton d'E2 ; RC10, RC12-RC15 verts (RC11 absent : pas de séance d'avant jouée au faux hub). Aucune ligne nouvelle à la table.
 
 **0 pas réglée (`c9c58e4c`)** — `banc.sh` vert, mon banc 131 ok · 0 échec.
+
+- **25/10, 09:15 UTC, dette 13 · 33 (Paul 09:14, le cas chargé)** : la diapo construite ne coupe plus rien et n'invente rien — titres entiers, toutes les notions une par ligne, le travail = le cahier entier découpé aux ponctuations fortes ; RC16-RC18 sur le hub chargé (`E4/bancs/hub-charge/`), verts ; `banc.sh` vert, mon banc 137 ok · 0 échec. Aucune ligne nouvelle à la table (le défaut était une règle de la mienne, levée). **Compte inchangé : 182 lignes, 171 réglées, 0 pas réglée, 10 écartées, 1 à Paul (L189), 0 ouverte.** Le signal sur la tête finale attend la poussée d'E2.

@@ -511,3 +511,6 @@ Je code maintenant (l'ordre : la fusion, la clôture, l'aperçu + l'écriture + 
 
 ## 25/10 21:16 (Paris) — retour 36 : PROMEUS 8.75.0-② lu (20:20 : `548da82d` → prod `828978c8ea03`, md5 `7d121b51…`), réveil n°52 lu, rien à coder
 - La production porte §12.22 / §12.25 / §12.26 : la réactivation construite à la clôture, vue et modifiée avant le lancement (poussées 33-36). Paul (20:17, « Ok sauf 337 ») : les quatre titres restent, 13 · 12 → E3, 144 reste tombé, pas de plan de 10 jours. Le contrôle horaire de la conscience s'arrête après 13 · 12 (tours 166-167) ; mes retours de veille continuent tant qu'aucun STOP n'est écrit dans `RELANCES/E2.md`. Tête `a4a48039`, `main` fusionné ; le site n'a pas bougé depuis `5496a741`. Retour reprogrammé (50 min).
+
+## 25/10 21:50 (Paris) — retour 37 : réveil n°53 lu (13 · 12 ✔, fin du contrôle horaire) ; dette 13 · 36 (l'aperçu déborde son cadre) prise — **en cours**
+- Je lis d'abord (la cause : `dr_reactApercuRendre` rend par `rendre(mur, et)` avec toutes les lignes et sans la pagination du pilote), une poussée de lecture, puis le code (B27).

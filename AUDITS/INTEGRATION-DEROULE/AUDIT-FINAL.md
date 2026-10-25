@@ -83,6 +83,8 @@
 
 **Mise à jour 25/10, 20:32 (réveil n°52, tête `5ade6f1c`, code = `9214d4e8` = la production ②).** Rien poussé depuis le PROMU (E3 n'a pas encore lu 13 · 12 : son dernier retour 19:56, le prochain vers 20:46). Aucun module bougé : pas de banc. Paul (20:26-20:28) : le contrôle horaire est gardé jusqu'à 13 · 12 réglée, puis supprimé ; il ne revient que sur son mot.
 
+**Mise à jour 25/10, 21:31 (réveil n°53, tête `03323fca`, code = la production ②) — 13 · 12 ✔, FIN DU CONTRÔLE HORAIRE.** E3 retour 35 (`7903f909`) : le libellé du curseur « texte au tableau » porte déjà la taille obtenue — `#taille-l` = « 44 pt → 42 » + infobulle, **E1 poussée 7 `b7db27ed` du 21/10**, dans 8.75.0-① et ② ; `mesure-1312.mjs` 16/0 aux deux tailles (44 / 52 pt demandés → 41-42 annoncés, corps 41,4-41,7 pt mesurés). Vérifié par la conscience contre la production ② (`index.html` l. 17381). **13 · 12 ✔ au registre prod (`cc55d58`)** — elle était réglée depuis le 21/10 sans que le registre le dise : erreur de tenue de la conscience (la ligne est restée « à Paul » alors que le code la portait), corrigée. Aucun module bougé : pas de banc ; pas de candidat ③ (rien à promouvoir). E1, E2, E4 : veille. Section H du registre : 13 · 1 à 13 · 35 toutes réglées. **Le contrôle horaire s'arrête** (Paul, 20:28 : « Ok ») : aucun réveil programmé ; les exécutants sont prévenus (ils peuvent cesser de se reprogrammer) ; tout cycle nouveau part sur le mot de Paul.
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

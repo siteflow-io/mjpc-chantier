@@ -19490,14 +19490,26 @@ var DR_REACT_HUB = {}, DR_REACT_RAISON = '';
 /* le chemin de la classe dans la séance d'avant (l'heure 1 d'une séance réactive la fin de la séance précédente, §12.22 b) */
 function dr_reactivationCheminAvant(){ try { const cles = dr_cles(); const k = String(dr_ctx().snum); const i = cles.indexOf(k); if (i <= 0) return null; return dr_cheminBDe(cles[i - 1]) + '/deroule_joue/' + dr_ctx().classeSlug; } catch (e) { return null; } }
 /* lit les paquets d'heures de la classe (cette séance, la séance d'avant), puis rend l'écran de l'heure h à cb (E2, `dr_reactPreparerAsync(h, cb)`) :
-   l'écran construit, ou `{ raison }` quand il n'y a rien à réactiver ; appelé sans h (`dr_reactivationPreparer(cb)`), cb() après la lecture seule */
-function dr_reactivationPreparer(h, cb){
-  if (typeof h === 'function') { cb = h; h = null; }
-  const rendre = () => { if (!cb) return; if (h == null) return cb(); let e = null; try { e = dr_reactivationConstruire(h); } catch (x) { DR_REACT_RAISON = 'la réactivation n’a pas pu être construite (' + (x && x.message) + ')'; } cb(e || { raison: DR_REACT_RAISON || 'rien de joué avant : rien à réactiver' }); };
-  const C = typeof dr_cheminC === 'function' ? dr_cheminC() : null, P = dr_reactivationCheminAvant(); let reste = 0; const fini = () => { if (--reste <= 0) rendre(); };
+   l'écran construit, ou `{ raison }` quand il n'y a rien à réactiver ; appelé sans h (`dr_reactivationPreparer(cb)`), cb() après la lecture seule.
+   (§12.26-1, à la clôture de l'heure h) `local` = `{ cle, paquet }` : le paquet de l'heure qui vient d'être close, tel que la clôture l'a calculé
+   (`dr_paquetHeure(true)`), posé dans ma lecture du hub sous sa clé — il prime sur la copie du hub, dont l'écriture (asynchrone) peut ne pas avoir abouti.
+   Sans `local`, la lecture du hub seule (le cas (7) : clôture manquée, construction à l'ouverture de l'écran d'ouverture). */
+function dr_reactivationPreparer(h, cb, local){
+  if (typeof h === 'function') { local = cb; cb = h; h = null; }
+  const C = typeof dr_cheminC === 'function' ? dr_cheminC() : null, P = dr_reactivationCheminAvant();
+  const poserLocal = () => { if (!local || !C || !local.paquet || typeof local.paquet !== 'object') return; const cle = local.cle != null ? String(local.cle) : (typeof dr_cheminH === 'function' && dr_cheminH() ? String(dr_cheminH()).split('/').pop() : null); if (!cle) return; DR_REACT_HUB[C] = Object.assign({}, DR_REACT_HUB[C] || {}, { [cle]: local.paquet }); };
+  const rendre = () => { poserLocal(); if (!cb) return; if (h == null) return cb(); let e = null; try { e = dr_reactivationConstruire(h); } catch (x) { DR_REACT_RAISON = 'la réactivation n’a pas pu être construite (' + (x && x.message) + ')'; } cb(e || { raison: DR_REACT_RAISON || 'rien de joué avant : rien à réactiver' }); };
+  let reste = 0; const fini = () => { if (--reste <= 0) rendre(); };
   [C, P].filter(Boolean).forEach(ch => { reste++; dr_lire(ch + '/heures', v => { DR_REACT_HUB[ch] = (v && typeof v === 'object') ? v : {}; fini(); }); });
   if (!reste) rendre();
 }
+/* (§12.26-5) la version calculée, gardée dans l'écran : `construite.calculee` = les blocs à la construction (copie profonde, sans les `id` que dr_preparer pose).
+   `dr_reactivationModifiee(e)` : les blocs de `e` diffèrent-ils de la version calculée (titres et lignes des blocs, les `id` ignorés) → la mention « ta version » (E2, pilotage seulement).
+   `dr_reactivationRetour(e)` : la flèche ↩ — remet dans `e.blocs` une copie profonde de la version calculée, sans recalcul (rejouer la construction après coup pourrait rendre autre chose) ; E2 écrit la copie. */
+function dr_reactivationCopieBlocs(blocs){ return JSON.parse(JSON.stringify((blocs || []).map(b => { const c = Object.assign({}, b); delete c.id; delete c.bid; return c; }))); }
+function dr_reactivationEmpreinte(blocs){ return JSON.stringify((blocs || []).map(b => [b.t, String(b.txt == null ? '' : b.txt), (b.el || []).map(x => (x && typeof x === 'object') ? String(x.txt == null ? JSON.stringify(x) : x.txt) : String(x))])); }
+function dr_reactivationModifiee(e){ if (!e || !e.construite || !Array.isArray(e.construite.calculee)) return false; return dr_reactivationEmpreinte(e.blocs) !== dr_reactivationEmpreinte(e.construite.calculee); }
+function dr_reactivationRetour(e){ if (!e || !e.construite || !Array.isArray(e.construite.calculee)) return e; e.blocs = dr_reactivationCopieBlocs(e.construite.calculee); try { if (typeof dr_preparer === 'function' && typeof seance === 'function' && seance().ecrans && seance().ecrans.includes(e)) dr_preparer(seance().ecrans); } catch (x) {} return e; }
 /* l'heure d'avant jouée : l'heure n − 1 de cette séance, ou (n = 1) la dernière heure jouée de la séance d'avant */
 function dr_reactivationSource(n){
   const C = dr_cheminC(), P = dr_reactivationCheminAvant(); const joue = p => p && ((Array.isArray(p.parActivite) && p.parActivite.some(a => a.passages > 0)) || (Array.isArray(p.activites) && p.activites.some(a => a.passages > 0)));   /* une trame sans activités déclarées : le paquet n'a que ses diapos vues */
@@ -19537,7 +19549,7 @@ function dr_reactivationConstruire(n){
   const travail = dr_reactivationTravail(p.travailTexte, notions);   /* 13 · 35 : sans les notions déjà dites */
   const bloc = (titre, el) => el.length ? { t: 'texte', txt: titre, el: el.map(x => String(x)) } : null;   /* entières : rien n'est coupé (13 · 33) */
   const blocs = [bloc(DR_REACT_TITRES.faites, faites.map(lib)), bloc(DR_REACT_TITRES.reprendre, reprendre.map(lib)), bloc(DR_REACT_TITRES.notions, notions), bloc(DR_REACT_TITRES.travail, travail)].filter(Boolean);
-  const e = { act: 'Où en sommes-nous ?', role: 'reactivation', heure: +n || 1, dur: DR_REACT_DUR, comp: ids, blocs, construite: { depuis: src.cle, seanceAvant: !!src.seanceAvant, t: Date.now() } };
+  const e = { act: 'Où en sommes-nous ?', role: 'reactivation', heure: +n || 1, dur: DR_REACT_DUR, comp: ids, blocs, construite: { depuis: src.cle, seanceAvant: !!src.seanceAvant, t: Date.now(), calculee: dr_reactivationCopieBlocs(blocs) } };   /* §12.26-5 : la version calculée, gardée */
   try { if (typeof dr_poserEidReactivation === 'function') dr_poserEidReactivation(e, e.heure); } catch (x) {}   /* l'eid du socle (E1, §12.25-3) : react-h<n>-s<clé> */
   return e;
 }

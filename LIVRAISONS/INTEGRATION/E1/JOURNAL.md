@@ -412,3 +412,5 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - *(12:50 Paris / 11:50 UTC) Tête rebasée `2360baca` (sur E4 poussée 99, 13 · 35) : banc.sh rejoué **VERT** (sorties `E1/sorties/1243/`), A33 62/0 + A35 8/0 (`a33-a35.txt`). Poussé.*
 - *(25/10, 13:43 Paris / 12:43 UTC) Réveil n°45 lu : 13 · 34 ✔ au registre prod (E3 : 0 ▶ fautif sur 20 ; conscience sur b7997488 : plus aucun titre vide, banc vert). Rien à faire. Tête d2b8cf52. Prochain retour 13:33 UTC.*
 - *(25/10, 14:34 Paris / 13:34 UTC) Réveil n°46 lu : b7997488 est le candidat 8.75.0-② (ma 13 · 34 dedans), on attend le mot de Paul. Rien à faire. Tête d172a808. Prochain retour 14:24 UTC.*
+
+## 25/10, 15:27 Paris (14:27 UTC) — relance 14:59 : §12.26 « va », ma part (le geste d'écriture du pilote sur la réactivation avant le lancement ; l'Atelier ne la montre ni ne l'écrit jamais) — **en cours** (lecture d'abord, puis une poussée de compréhension, puis le code)

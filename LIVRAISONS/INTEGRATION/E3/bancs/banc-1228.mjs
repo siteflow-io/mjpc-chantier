@@ -68,7 +68,8 @@ const pareil = (a, b) => !!a && !!b && a.page === b.page && a.act === b.act && J
 const dD = d => d ? `${d.act || '?'} · ${d.lignes.length} lignes · page « ${d.page} »` : 'absente';
 const vis = (pg, sel) => pg.evaluate(s => Array.from(document.querySelectorAll(s)).some(e => { const r = e.getBoundingClientRect(); const c = getComputedStyle(e); return r.width > 1 && r.height > 1 && c.display !== 'none' && c.visibility !== 'hidden' && +c.opacity > 0; }), sel);
 const texteVisible = (pg, re) => pg.evaluate(src => { const re = new RegExp(src); const W = innerWidth, H = innerHeight; return Array.from(document.querySelectorAll('body *')).filter(e => e.children.length < 4 && re.test((e.innerText || '').replace(/\s+/g, ' '))).find(e => { const r = e.getBoundingClientRect(); const c = getComputedStyle(e); return r.width > 1 && r.height > 1 && r.bottom > 0 && r.top < H && c.visibility !== 'hidden' && c.display !== 'none' && +c.opacity > 0; }) ? true : false; }, re.source);
-const clore = async (pg, quand) => { await pg.clock.setFixedTime(new Date(quand)); await p(pg, 2500); if (await pg.$('#al-aller:visible')) { await pg.click('#al-aller').catch(() => {}); await p(pg, 1500); } if (await pg.$('#garde-cahier.on')) { const ya = pg.locator('#garde-cahier.on :is(button,[onclick])', { hasText: /Y aller/ }).first(); if (await ya.count()) { await ya.click().catch(() => {}); await p(pg, 1200); } }
+/* clore par la séquence « Fin de l'heure » (§12.29 : plus de barre ni de garde à franchir ; « Aller au cahier » n'est plus le chemin) */
+const clore = async (pg, quand) => { await pg.clock.setFixedTime(new Date(quand)); await p(pg, 2500);
   if (!(await vis(pg, '.pp-tete'))) { await pg.click('#bfin').catch(() => {}); await p(pg, 900); }
   for (let n = 1; n <= 7; n++) { const t = await pg.evaluate(() => (document.querySelector('.pp-tete') || {}).innerText || ''); if (/étape 7 sur 7/.test(t)) break; const b = await pg.$('#f-suivante:not([disabled])'); if (!b) break; await b.click().catch(() => {}); await p(pg, 700); }
   await pg.locator('#f-clore:visible').first().click().catch(() => {}); await p(pg, 1200); if (await pg.$('#gclore-oui:visible')) { await pg.click('#gclore-oui'); await p(pg, 1500); } await p(pg, 1500); return pg.evaluate(() => !!(window.S && S.close)); };
@@ -256,13 +257,15 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
   { const o = await ouvrirCtx(W, H); const pg = o.pg;
     try { await entrerProf(pg); const lance = await lancerParLaCase(pg); verif('46', lance, T + ' · l’heure se lance par la case (séance aux diapos sans numéro d’activité — toutes celles du faux hub)');
       await dev(pg, 3); await p(pg, 400);
+      /* le compte de l'étape 2 d'abord (la séquence ouverte puis repliée), puis la diapo de fin */
+      await pg.click('#bfin').catch(() => {}); await p(pg, 1200); const L = await liste2(pg); await revenirCours(pg); await p(pg, 800);
       const iFin = await pg.evaluate(() => { try { const E = seance().ecrans; for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'fin' && ordreHeure(S.heure).includes(i)) return i; for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'fin') return i; } catch (e) {} return -1; });
       const vg = iFin >= 0 && await pg.evaluate(i => { const v = document.querySelector('.vig[data-i="' + i + '"]'); if (!v) return false; v.click(); return true; }, iFin); await p(pg, 1200);
       const g = await pg.evaluate(() => { const e = document.getElementById('garde-cahier'); return e && e.classList.contains('on') && e.getBoundingClientRect().height > 0 ? e.innerText.replace(/\s+/g, ' ').trim() : null; });
       await capt(pg, W, H, '46-vers-la-diapo-de-fin');
       verif('46', vg && g == null, T + ' · 13 · 46 / §12.29 (2) · plus de garde « Aller au cahier » (aller à la diapo de fin n’ouvre plus de garde)', vg ? (g ? '« ' + g.slice(0, 110) + ' »' : '') : 'pas de vignette de fin (' + iFin + ')');
       const tx = await pg.evaluate(() => document.body.innerText); verif('46', !/Aucune activité restante prévue pour cette heure|tu es à l.heure\. Tout a été fait/.test(tx), T + ' · 13 · 46 · nulle part « Aucune activité restante… tu es à l’heure » pendant qu’il reste des activités');
-      if (!(await vis(pg, '.pp-liste'))) { await pg.click('#bfin').catch(() => {}); await p(pg, 1200); } const L = await liste2(pg); const nE = /— rien/.test(L.l2) ? 0 : +((/— (?:encore )?(\d+) activités?/.exec(L.l2) || [])[1] || -1);
+      const nE = /— rien/.test(L.l2) ? 0 : +((/— (?:encore )?(\d+) activités?/.exec(L.l2) || [])[1] || -1);
       verif('46', nE > 0, T + ' · 13 · 46 · le seul compte, celui de l’étape 2', '« ' + L.l2.slice(0, 90) + ' »');
     } catch (e) { verif('46', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (46)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }

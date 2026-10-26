@@ -3423,3 +3423,16 @@ MEMO
 
 26/10/2026 10:34
 MEMO
+
+## Tour 183 — 26/10/2026 10:43 — Paul (10:41) : « je pense que c'est l'appariement. le hub doit être lisible d'ici. »
+
+**Paul (mot pour mot).** « je pense que c'est l'appariement. le hub doit être lisible d'ici. » — puis une capture du panneau prof, section Emploi du temps, « Classes de la grille et classes du site » : 3 FRANKLIN Aretha → 3 FRANKLIN ARETHA, 4 HUGO → 4 HUGO, 3 DYLAN Bob → 3 DYLAN BOB, 4 TURING → 4 TURING (pièce `T183-capture-Paul-appariement.png`).
+
+**Fait.** Le hub répond d'ici (200 ; le 403 du tour 172 ne tient plus) : lus `/site/edt/grille/2026-2027`, `/classes`, `/site/edt/periodes`, `/site/edt/decisions` (null), `/site/3e/chapitres/0/published`. Mesuré : les sept cases de 3e « 3 FRANKLIN Aretha » de la grille sont appariées à la classe du hub « 3 FRANKLIN ARETHA » (`3_franklin_aretha`, 30 élèves) ; « 3E Charles de Gaulle » (29 élèves, la classe pour laquelle le chapitre est publié) n'a aucune case ; le menu d'appariement (`edtClassesDuHub`, l. 21787) offre toutes les classes non archivées, dont « 3E Charles de Gaulle » ; le changement (`edtApparierNom`, l. 22076) écrit la grille pour toutes ses versions, l'état d'avant archivé. Pièce `T183-hub-grille-appariement.txt`.
+
+**Réponse (mot pour mot).**
+
+381. Tu as raison, et le hub répond d'ici (je corrige 380) : dans ta grille, les sept cases « 3 FRANKLIN Aretha » sont appariées à la classe du hub « 3 FRANKLIN ARETHA » (30 élèves), pas à « 3E Charles de Gaulle » (29 élèves, la classe pour laquelle ton chapitre est publié) — elle n'a aucune case, donc ni carte en bas de l'emploi du temps ni heure dans « la classe ». Le geste, dans ce panneau : au menu de « 3 FRANKLIN Aretha », choisir « 3E Charles de Gaulle » (le menu l'offre ; l'état d'avant est archivé). Ma lecture de ta grille papier (T85) les mettait là ; si tes De Gaulle sont les DYLAN Bob, c'est l'autre menu.
+
+26/10/2026 10:43
+MEMO

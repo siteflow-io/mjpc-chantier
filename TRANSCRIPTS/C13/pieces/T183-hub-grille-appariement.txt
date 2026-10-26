@@ -1,0 +1,18 @@
+T183 — le vrai hub lu le 26/10/2026 10:42 (mjpc-hub, /site/edt/grille/2026-2027, injectée le 2026-09-03) : les cases de 3e et leur appariement
+
+lundi     08:57-09:52  AB  classe de la grille « 3 FRANKLIN Aretha » → classeMjpc « 3 FRANKLIN ARETHA » 
+lundi     15:07-16:02  A   classe de la grille « 3 DYLAN Bob » → classeMjpc « 3 DYLAN BOB » 
+mardi     10:07-11:02  AB  classe de la grille « 3 DYLAN Bob » → classeMjpc « 3 DYLAN BOB » 
+mardi     15:07-16:02  A   classe de la grille « 3 FRANKLIN Aretha » → classeMjpc « 3 FRANKLIN ARETHA » périodes ['P3', 'P4', 'PFIN']
+mardi     15:07-16:02  B   classe de la grille « 3 FRANKLIN Aretha » → classeMjpc « 3 FRANKLIN ARETHA » périodes ['P1', 'P2']
+mardi     16:04-16:59  B   classe de la grille « 3 DYLAN Bob » → classeMjpc « 3 DYLAN BOB » 
+mercredi  10:07-11:02  A   classe de la grille « 3 FRANKLIN Aretha » → classeMjpc « 3 FRANKLIN ARETHA » 
+mercredi  10:07-11:02  B   classe de la grille « 3 FRANKLIN Aretha » → classeMjpc « 3 FRANKLIN ARETHA » 
+mercredi  11:04-11:59  A   classe de la grille « 3 DYLAN Bob » → classeMjpc « 3 DYLAN BOB » 
+jeudi     15:07-16:02  A   classe de la grille « 3 DYLAN Bob » → classeMjpc « 3 DYLAN BOB » 
+jeudi     16:04-16:59  B   classe de la grille « 3 FRANKLIN Aretha » → classeMjpc « 3 FRANKLIN ARETHA » 
+vendredi  10:07-11:02  AB  classe de la grille « 3 FRANKLIN Aretha » → classeMjpc « 3 FRANKLIN ARETHA » 
+vendredi  11:04-11:59  AB  classe de la grille « 3 DYLAN Bob » → classeMjpc « 3 DYLAN BOB » 
+
+/classes (hub) : 3E Charles de Gaulle = « 3E Charles de Gaulle », 3e, 29 élèves · 3_dylan_bob = « 3 DYLAN BOB », 3e, 25 élèves · 3_franklin_aretha = « 3 FRANKLIN ARETHA », 3e, 30 élèves · CLASSE TEST = « CLASSE TEST », 3e, 4 élèves
+/site/3e/chapitres/0/published : {"3e_charles_de_gaulle":true,"classe_test":true} — le chapitre est publié pour la 3E Charles de Gaulle, qui n'a aucune case dans la grille.

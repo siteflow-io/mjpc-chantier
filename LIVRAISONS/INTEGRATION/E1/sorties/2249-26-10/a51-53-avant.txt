@@ -1,0 +1,50 @@
+banc E1 · 2026-10-26 21:45 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 c66af6c71f49265293d6aebb73535ce2
+
+A51 — §12.29 (2)(3), S2-S3 : « ❄ Préparer le cahier » ne change jamais la forme de l'écran (la colonne des diapos, la diapo, les notes à leur place et à leur taille) ; la séquence dans la colonne de droite sous « le tableau, en ce moment » ; « Retour au cours » ; la garde « Aller au cahier » tombée — ▶ au bout de l'heure ouvre la séquence, la classe ne passe pas au cahier
+  ÉCHEC  A51 · 1366 × 768 : « Préparer le cahier » — la diapo du cahier au centre, le tableau gelé sur la diapo de la classe ; la colonne des diapos, la diapo, les notes et la colonne de droite gardent place et taille — {"f0":["14,127,186,637","216,162,784,441","216,712,784,72"],"f1":["27,136,64,619","315,171,465,261","107,721,880,26"],"gel":0,"di0":0}
+  ÉCHEC  A51 · 1366 × 768 : la séquence en préparation est dans la colonne de droite, sous « le tableau, en ce moment », dans l'écran — {"vis":true,"droite":false,"sous":true,"dedans":true}
+  ok     A51 · 1366 × 768 : « Retour au cours » — la diapo de la classe, le tableau dégelé, la même forme — {"di":0,"gel":null}
+  ok     A51 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ÉCHEC  A51 · 1536 × 864 : « Préparer le cahier » — la diapo du cahier au centre, le tableau gelé sur la diapo de la classe ; la colonne des diapos, la diapo, les notes et la colonne de droite gardent place et taille — {"f0":["14,110,186,750","216,145,954,536","216,758,954,94"],"f1":["27,119,64,732","330,154,605,340","107,817,1050,26"],"gel":0,"di0":0}
+  ÉCHEC  A51 · 1536 × 864 : la séquence en préparation est dans la colonne de droite, sous « le tableau, en ce moment », dans l'écran — {"vis":true,"droite":false,"sous":true,"dedans":true}
+  ok     A51 · 1536 × 864 : « Retour au cours » — la diapo de la classe, le tableau dégelé, la même forme — {"di":0,"gel":null}
+  ok     A51 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ÉCHEC  A51 · 1707 × 743 : « Préparer le cahier » — la diapo du cahier au centre, le tableau gelé sur la diapo de la classe ; la colonne des diapos, la diapo, les notes et la colonne de droite gardent place et taille — {"f0":["14,110,186,629","349,145,860,484","216,700,1125,72"],"f1":["27,119,64,611","478,154,480,270","107,696,1221,26"],"gel":0,"di0":0}
+  ÉCHEC  A51 · 1707 × 743 : la séquence en préparation est dans la colonne de droite, sous « le tableau, en ce moment », dans l'écran — {"vis":true,"droite":false,"sous":true,"dedans":true}
+  ok     A51 · 1707 × 743 : « Retour au cours » — la diapo de la classe, le tableau dégelé, la même forme — {"di":0,"gel":null}
+  ÉCHEC  A51 · ▶ au bout de l'heure : plus de garde « Aller au cahier » (#garde-cahier n'existe plus) — la séquence « Fin de l'heure » s'ouvre, la classe reste sur sa diapo (seul chemin vers le cahier : la séquence) — {"garde":true,"enFin":false,"di":6,"avantFin":6,"role":null}
+  ok     A51 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ÉCHEC  A51 · 1920 × 1080 : « Préparer le cahier » — la diapo du cahier au centre, le tableau gelé sur la diapo de la classe ; la colonne des diapos, la diapo, les notes et la colonne de droite gardent place et taille — {"f0":["14,110,186,966","216,145,1338,752","216,974,1338,94"],"f1":["27,119,64,948","411,154,827,465","107,1033,1434,26"],"gel":0,"di0":0}
+  ÉCHEC  A51 · 1920 × 1080 : la séquence en préparation est dans la colonne de droite, sous « le tableau, en ce moment », dans l'écran — {"vis":true,"droite":false,"sous":true,"dedans":true}
+  ok     A51 · 1920 × 1080 : « Retour au cours » — la diapo de la classe, le tableau dégelé, la même forme — {"di":0,"gel":null}
+  ok     A51 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+A52 — §12.29 (4), S4 : un nom par geste dans l'entête — « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe », leurs infobulles ; plus d'« Écran 2 » ni de « ⧉ Tableau »
+  ÉCHEC  A52 · 1366 × 768 : l'entête de l'heure dit « 🖥 Ouvrir le tableau » et « ⧉ Ce que voit la classe » (infobulles pour Paul), dans l'écran ; plus les anciens noms — {"v":"🖥 Écran 2","t":"⧉ Tableau","vis":true,"vieux":true}
+  ok     A52 · 1366 × 768 : « ⧉ Ce que voit la classe » montre « Le tableau, en ce moment » (le geste d'avant, inchangé) — Le tableau, en ce moment
+  ok     A52 · 1366 × 768 : aucune erreur JS
+  ÉCHEC  A52 · 1536 × 864 : l'entête de l'heure dit « 🖥 Ouvrir le tableau » et « ⧉ Ce que voit la classe » (infobulles pour Paul), dans l'écran ; plus les anciens noms — {"v":"🖥 Écran 2","t":"⧉ Tableau","vis":true,"vieux":true}
+  ok     A52 · 1536 × 864 : « ⧉ Ce que voit la classe » montre « Le tableau, en ce moment » (le geste d'avant, inchangé) — Le tableau, en ce moment
+  ok     A52 · 1536 × 864 : aucune erreur JS
+  ÉCHEC  A52 · 1707 × 743 : l'entête de l'heure dit « 🖥 Ouvrir le tableau » et « ⧉ Ce que voit la classe » (infobulles pour Paul), dans l'écran ; plus les anciens noms — {"v":"🖥 Écran 2","t":"⧉ Tableau","vis":true,"vieux":true}
+  ok     A52 · 1707 × 743 : « ⧉ Ce que voit la classe » montre « Le tableau, en ce moment » (le geste d'avant, inchangé) — Le tableau, en ce moment
+  ok     A52 · 1707 × 743 : aucune erreur JS
+  ÉCHEC  A52 · 1920 × 1080 : l'entête de l'heure dit « 🖥 Ouvrir le tableau » et « ⧉ Ce que voit la classe » (infobulles pour Paul), dans l'écran ; plus les anciens noms — {"v":"🖥 Écran 2","t":"⧉ Tableau","vis":true,"vieux":true}
+  ok     A52 · 1920 × 1080 : « ⧉ Ce que voit la classe » montre « Le tableau, en ce moment » (le geste d'avant, inchangé) — Le tableau, en ce moment
+  ok     A52 · 1920 × 1080 : aucune erreur JS
+
+A53 — §12.29 (5), S5 : la répétition ne montre que la répétition — ni « Fin de l'heure », ni « ■ Clore l'heure », ni 👥, ni le bloc « Participation » ; la ligne de la répétition ; « 🖥 Ouvrir le tableau » reste
+  ÉCHEC  A53 · 1366 × 768 : en répétition (l'onglet Pilotage de l'Atelier) : ni « Fin de l'heure », ni « ■ Clore », ni 👥, ni « Participation » (titre, saisie, initiales) ; « 🖥 Ouvrir le tableau » et la ligne de la répétition sont là — {"rep":true,"bfin":false,"clore":false,"qui":true,"vif":true,"part":true,"titre":true,"ouvrir":true,"ligne":true,"ecr":6}
+  ok     A53 · 1366 × 768 : dans l'écran de la classe, tout revient (Fin de l'heure, Clore, 👥, la participation) — §12.29 (6) — {"rep":false,"bfin":true,"clore":true,"qui":true,"vif":true,"part":true}
+  ok     A53 · 1366 × 768 : aucune erreur JS
+  ÉCHEC  A53 · 1536 × 864 : en répétition (l'onglet Pilotage de l'Atelier) : ni « Fin de l'heure », ni « ■ Clore », ni 👥, ni « Participation » (titre, saisie, initiales) ; « 🖥 Ouvrir le tableau » et la ligne de la répétition sont là — {"rep":true,"bfin":false,"clore":false,"qui":true,"vif":true,"part":true,"titre":true,"ouvrir":true,"ligne":true,"ecr":6}
+  ok     A53 · 1536 × 864 : dans l'écran de la classe, tout revient (Fin de l'heure, Clore, 👥, la participation) — §12.29 (6) — {"rep":false,"bfin":true,"clore":true,"qui":true,"vif":true,"part":true}
+  ok     A53 · 1536 × 864 : aucune erreur JS
+  ÉCHEC  A53 · 1707 × 743 : en répétition (l'onglet Pilotage de l'Atelier) : ni « Fin de l'heure », ni « ■ Clore », ni 👥, ni « Participation » (titre, saisie, initiales) ; « 🖥 Ouvrir le tableau » et la ligne de la répétition sont là — {"rep":true,"bfin":false,"clore":false,"qui":true,"vif":true,"part":true,"titre":true,"ouvrir":true,"ligne":true,"ecr":6}
+  ok     A53 · 1707 × 743 : dans l'écran de la classe, tout revient (Fin de l'heure, Clore, 👥, la participation) — §12.29 (6) — {"rep":false,"bfin":true,"clore":true,"qui":true,"vif":true,"part":true}
+  ok     A53 · 1707 × 743 : aucune erreur JS
+  ÉCHEC  A53 · 1920 × 1080 : en répétition (l'onglet Pilotage de l'Atelier) : ni « Fin de l'heure », ni « ■ Clore », ni 👥, ni « Participation » (titre, saisie, initiales) ; « 🖥 Ouvrir le tableau » et la ligne de la répétition sont là — {"rep":true,"bfin":false,"clore":false,"qui":true,"vif":true,"part":true,"titre":true,"ouvrir":true,"ligne":true,"ecr":6}
+  ok     A53 · 1920 × 1080 : dans l'écran de la classe, tout revient (Fin de l'heure, Clore, 👥, la participation) — §12.29 (6) — {"rep":false,"bfin":true,"clore":true,"qui":true,"vif":true,"part":true}
+  ok     A53 · 1920 × 1080 : aucune erreur JS
+
+41 vérifications, 17 échec(s) · 135 s

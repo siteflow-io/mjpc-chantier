@@ -550,3 +550,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **Gardes** : le balayage de A42 / A46 (toute la page, par tiers d'écran) cherche maintenant sous le badge **et** sous « 🛠 Panneau prof » / « 📚 Mes applications » ; A46 attend 182 px côté prof, 124 px côté élève. **Rouge avant 7/40** (`a42-a46-avant.txt`), **vert après 40/0** (`a42-a46.txt`).
 - **banc.sh VERT** sur `0154ef7a` (sorties `LIVRAISONS/INTEGRATION/E1/sorties/1655-26-10/` : collisions 0, parcours vert ×2, 108 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `a3f2d455…`).
 - **§12.27 E1 fini (`0154ef7a`)** de nouveau. Joignable : retour toutes les 50 min.
+- *(26/10, 17:11 Paris) Retour de veille n°1 depuis « fini (0154ef7a) » : rien de nouveau dans RELANCES/E1.md ; E3 n'a pas encore rejoué après le contrôle n°60. Tête ad6c6d3a. Prochain retour dans 50 min.*

@@ -278,6 +278,27 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
       verif('H2', !!ap.c && ap.h === ap.c, T + ' · l’heure lancée, #hclasse = sa classe (la première du niveau est « ' + av.prem + ' »)', '« ' + ap.h + ' » pour « ' + ap.c + ' »');
     } catch (e) { verif('H2', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('H2', !o.errs.length, T + ' · 0 erreur JS', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* J · 13 · 45 (§12.27 (13)) : panneau ouvert → atelier → Mes chapitres → « Voir dans l'arborescence » → la carte du chapitre visible, dépliée, en haut, rien par-dessus */
+  { const o = await ouvrirCtx(W, H, false); const q = o.pg;
+    try { await q.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await p(q, 1800); await q.evaluate(() => { try { loginAsProf(); } catch (e) {} }); await p(q, 2200); await q.evaluate(() => { ['m8-regles-overlay', 'fi-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); try { edtFermer(); } catch (e) {} }); await p(q, 500);
+      await q.evaluate(() => openProfPanel()); await p(q, 900); await sansVoile(q); await q.evaluate(() => atelierOuvrir()); await p(q, 1200); await sansVoile(q); await clicTexte(q, 'button,[onclick]', "atOnglet('chapitres')"); await p(q, 1000);
+      const bt = await q.evaluate(() => { const b = Array.from(document.querySelectorAll('#atelier-ecran button, #atelier-ecran [onclick]')).find(x => x.offsetParent !== null && (x.getAttribute('onclick') || '').indexOf('atVoirPanneau') >= 0); if (!b) return null; const m = /atVoirPanneau\(\s*['"]([^'"]+)['"]\s*,\s*['"]?(\d+)/.exec(b.getAttribute('onclick')); return { txt: (b.innerText || '').trim(), level: m ? m[1] : null, ch: m ? m[2] : null }; });
+      verif('J', !!bt, T + ' · Mes chapitres · le bouton qui mène à l’arborescence est là', bt ? '« ' + bt.txt + ' »' : 'absent');
+      if (bt) { verif('J', /Voir dans l.arborescence/.test(bt.txt), T + ' · le bouton dit « Voir dans l’arborescence »', '« ' + bt.txt + ' »');
+        await q.evaluate(() => { const b = Array.from(document.querySelectorAll('#atelier-ecran button, #atelier-ecran [onclick]')).find(x => x.offsetParent !== null && (x.getAttribute('onclick') || '').indexOf('atVoirPanneau') >= 0); b.click(); }); await p(q, 2200); await sansVoile(q);   /* le voile des fiches du faux hub (/manifestes manque, audit E1 F15) n'est pas l'écran mesuré */
+        if (capt) await q.screenshot({ path: path.join(CAPT, TT + '-34-voir-dans-l-arborescence-' + SUFF + '.png') }).catch(() => {});
+        const r = await q.evaluate(ch => { const H = innerHeight, W = innerWidth; const vis = el => { if (!el) return false; const b = el.getBoundingClientRect(); const s = getComputedStyle(el); return b.width > 2 && b.height > 2 && s.display !== 'none' && s.visibility !== 'hidden' && +s.opacity > 0; };
+          const dessus = ['.tprof-overlay', '#atelier-ecran', '.m8-overlay', '.fi-overlay', '.doc-viewer-overlay'].filter(s => Array.from(document.querySelectorAll(s)).some(e => vis(e) && (s !== '#atelier-ecran' || e.classList.contains('at-actif'))));
+          const c = Array.from(document.querySelectorAll('.chapter-card[data-chapter="' + ch + '"]')).find(vis); if (!c) return { dessus, carte: false };
+          const b = c.getBoundingClientRect(); const corps = c.querySelector('.chapter-body'); const hd = c.firstElementChild ? c.firstElementChild.getBoundingClientRect() : b;
+          const top = document.elementFromPoint(Math.min(W - 1, Math.max(0, hd.left + hd.width / 2)), Math.min(H - 1, Math.max(0, hd.top + Math.min(hd.height, 40) / 2)));
+          return { dessus, carte: true, ouverte: !!(corps && corps.classList.contains('open')), haut: Math.round(b.top), libre: !!(top && c.contains(top)), sur: top ? top.tagName.toLowerCase() + (top.id ? '#' + top.id : '') + (typeof top.className === 'string' && top.className ? '.' + top.className.split(' ')[0] : '') : '' }; }, bt.ch);
+        verif('J', !r.dessus.length, T + ' · 13 · 45 · rien par-dessus la page (ni panneau, ni atelier)', r.dessus.join(', '));
+        verif('J', r.carte && r.ouverte, T + ' · 13 · 45 · la carte du chapitre ' + bt.ch + ' est visible et dépliée', r.carte ? 'dépliée ' + r.ouverte : 'absente');
+        verif('J', r.carte && r.haut >= -2 && r.haut < H * 0.35 && r.libre, T + ' · 13 · 45 · la carte en haut de l’écran, rien au-dessus d’elle', r.carte ? 'haut ' + r.haut + ' px, au point : ' + r.sur : ''); }
+    } catch (e) { verif('J', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('J', !o.errs.length, T + ' · 0 erreur JS', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 }
 await nav.close();
 if (process.env.MJPC_DIAPO_OUT) { let av = {}; try { av = JSON.parse(fs.readFileSync(process.env.MJPC_DIAPO_OUT, 'utf8')); if (av.__md5 !== MD5) av = {}; } catch (e) {} fs.writeFileSync(process.env.MJPC_DIAPO_OUT, JSON.stringify(Object.assign(av, DOUT), null, 1)); }

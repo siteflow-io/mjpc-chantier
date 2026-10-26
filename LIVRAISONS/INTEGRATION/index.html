@@ -14989,6 +14989,7 @@ function atClasseMarquer(){   /* l'état de l'écran, sur la racine (les règles
   var r=document.documentElement; r.classList.toggle('dr-en-classe',atClasseEnCours()); r.classList.toggle('dr-heure-court',atClasseTient());
 }
 function dr_ouvrirClasse(niveau,chcle,snum,apres){
+  try{ if(typeof S!=='undefined'&&S&&S.repetition&&typeof arreterRepetition==='function')arreterRepetition(); }catch(e){}   /* une répétition laissée ouverte dans l'onglet Pilotage de l'Atelier s'arrête : la classe ne joue jamais par-dessus elle */
   if(typeof DR_MEM!=='undefined')DR_MEM.enClasse=true;
   atClasseMarquer();
   var ec=document.getElementById('atelier-ecran');

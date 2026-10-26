@@ -18736,6 +18736,25 @@ var DR_TAB = { fen: null, montre: null, ts: 0, trameMaj: 0, ecrans: null, docume
 const dr_estTableau = () => /[?&]vue=tableau(&|$)/.test(location.search);   /* la même lecture que `SES.mode`, mais sûre au chargement du module (SES n'existe pas encore) */
 const dr_tabLocal = () => /[?&]local=1(&|$)/.test(location.search);
 
+/* ─── 13 · 44 (contrat §12.27 (9)) : la fenêtre du tableau ne montre JAMAIS un écran du prof. Elle porte la session du prof (le
+   `sessionStorage` de l'onglet du pilote, recopié par `window.open`) : sans `?n=`, `restoreSession` → `_atterrirProf` → `verifierAlerteRegles`
+   y ouvrait, à J + 29, « ⚠️ Vérifier les règles Firebase » devant la classe, au vidéoprojecteur. Dans la page tableau (locale ou distante),
+   les gestes qui ouvrent un écran du prof ne font rien et sont comptés (`DR_TAB.refuses`) ; la page du prof (le pilote) les garde tous.
+   Deux temps : ceux déjà déclarés au chargement de ce module, puis ceux du site déclarés après lui (l'EDT), au DOMContentLoaded ; et une
+   seconde ligne, le CSS : ces écrans restent cachés dans la page tableau même si un chemin oublié les posait. ─── */
+const DR_TAB_ECRANS_DU_PROF = ['verifierAlerteRegles', 'ouvrirOverlayRegles', 'simulerJ29', 'fichesVerifierAlerte', 'openProfPanel', 'showProfSection', 'atelierOuvrir', 'edtArriveeProf', 'edtOuvrir'];
+function dr_tabSansEcranDuProf(){
+  DR_TAB.refuses = DR_TAB.refuses || [];
+  DR_TAB_ECRANS_DU_PROF.forEach(nom => { const f = window[nom]; if (typeof f !== 'function' || f.__drTab) return;
+    const muet = function(){ DR_TAB.refuses.push(nom); return false; }; muet.__drTab = true; try { window[nom] = muet; } catch (e) {} });
+}
+if (dr_estTableau()) {
+  dr_tabSansEcranDuProf(); document.addEventListener('DOMContentLoaded', dr_tabSansEcranDuProf);
+  try { document.documentElement.classList.add('dr-vue-tableau'); const st = document.createElement('style'); st.id = 'dr-tab-sans-prof';
+    st.textContent = 'html.dr-vue-tableau :is(.m8-overlay,#m8-regles-overlay,.fi-overlay,.tprof-overlay,#edt-ecran,#atelier-ecran,.doc-viewer-overlay,#tprof-testpill,.admin-banner){display:none!important}';
+    (document.head || document.documentElement).appendChild(st); } catch (e) {}
+}
+
 /* ─── la lecture : `dr_lire` du socle (secuLire, mode test) — `sesGet` tombe (relance C5) ─── */
 function dr_tabLire(chemin, cb){
   try { dr_lire(chemin, v => cb(v === undefined ? null : v)); } catch (e) { cb(undefined); }   /* undefined = la lecture n'a pas pu partir */

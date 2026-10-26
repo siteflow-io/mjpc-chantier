@@ -222,6 +222,12 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
         let pr = await ecransDuProf(fen); for (let i = 0; i < 16 && !pr.vus.length && !pr.geo.length; i++) { await p(fen, 500); pr = await ecransDuProf(fen); }
         if (capt && (pr.vus.length || pr.geo.length)) await fen.screenshot({ path: path.join(CAPT, TT + '-' + id + '-' + SUFF + '.png') }).catch(() => {});
         verif('G', !pr.vus.length && !pr.geo.length, T + ' · fenêtre du tableau · aucun écran du prof (règles à J + 30) — 13 · 44', (pr.vus.concat(pr.geo.map(x => 'fixe ' + x))).join(', ') + (pr.admin ? ' · body.admin-mode' : ''));
+        /* puis on PROVOQUE les chemins qui ouvrent un écran du prof dans cette page (l'atterrissage du prof, l'alerte, l'arrivée sur l'EDT,
+           le panneau) : la garde ne dépend plus de l'ordre des lectures à l'ouverture */
+        await fen.evaluate(() => { ['_atterrirProf', 'verifierAlerteRegles', 'edtArriveeProf', 'openProfPanel'].forEach(f => { try { if (typeof window[f] === 'function') window[f](); } catch (e) {} }); }); await p(fen, 2500);
+        const pr2 = await ecransDuProf(fen); verif('G', !pr2.vus.length && !pr2.geo.length, T + ' · fenêtre du tableau · aucun écran du prof, même provoqué (_atterrirProf, verifierAlerteRegles, edtArriveeProf, openProfPanel)', (pr2.vus.concat(pr2.geo.map(x => 'fixe ' + x))).join(', '));
+        if (capt && (pr2.vus.length || pr2.geo.length)) await fen.screenshot({ path: path.join(CAPT, TT + '-' + id + '-provoque-' + SUFF + '.png') }).catch(() => {});
+        pr.refuses = pr2.refuses; pr.ecr = pr2.ecr;
         info('G', T + ' · fenêtre du tableau · gestes du prof refusés : ' + (pr.refuses ? (pr.refuses.join(', ') || 'aucun appelé') : 'pas de garde (DR_TAB.refuses absent)') + ' · écritures bloquées ' + pr.ecr);
         const gt = await geometrie(fen); verif('G', !gt.cote.length, T + ' · fenêtre du tableau · aucun défilement de côté', gt.cote.join(', '));
         const dp = await lire(pg, 'pilote'), dt = await lire(fen, 'tableau');

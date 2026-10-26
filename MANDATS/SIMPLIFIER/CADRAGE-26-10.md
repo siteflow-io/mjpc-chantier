@@ -27,6 +27,9 @@ Le fichier intégré d'aujourd'hui (`integration` `2518615a`, assemblé `b5b0fd8
 ## 3 bis · La maquette (26/10 20:45, Paul : « Montre moi les images de ce que ça donnerait. Tu nommes tes captures avec ce qu'elles montrent. »)
 `maquette/simplifier.js` posé par-dessus le fichier intégré d'aujourd'hui (assemblé `b5b0fd8a…`), pour les captures seulement ; le même parcours joué deux fois (`maquette/captures.mjs`), 1707 × 743, l'horloge qui court ; captures brutes `maquette/captures/avant-*.png`, `apres-*.png` ; les paires (en haut aujourd'hui, en bas proposé) : `TRANSCRIPTS/C13/pieces/T200-1…5-*.png`. **Ce que la maquette montre aussi** : à la hauteur de la fenêtre de Paul (743 px), les étapes dans la colonne de droite sont plus serrées que dans la bande du bas d'aujourd'hui (elles défilent) — le prix de « l'écran garde sa forme » ; à trancher par Paul.
 
+## 3 ter · Le mot de Paul
+- **21:35, sur les cinq paires T200 : « Ok c'est bon »** — S1-S5 validés tels que les images les montrent ; la question 439 (les étapes à droite ou en bas pendant la préparation) : à droite, comme T200-2. → contrat §12, point 29.
+
 ## 4 · La suite
 Sur le mot de Paul : codé dans le site après les cinq dettes (§12.28) ; avant / après sur captures, même parcours, à la taille de sa fenêtre ; puis le mode dirigé s'il sert encore.
 

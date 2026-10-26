@@ -3717,3 +3717,30 @@ MEMO
 
 26/10/2026 20:21
 MEMO
+
+## Tour 200 — 26/10/2026 20:51 — Paul (20:23) : « Montre moi les images de ce que ça donnerait »
+
+**Paul (mot pour mot).** « Montre moi les images de ce que ça donnerait. Tu nommes tes captures avec ce qu'elles montrent. »
+
+**Fait.** Maquette `MANDATS/SIMPLIFIER/maquette/simplifier.js` posée par-dessus le fichier intégré d'aujourd'hui (assemblé `b5b0fd8a…`), pour les captures seulement ; le même parcours joué deux fois par le geste (`maquette/captures.mjs`), 1707 × 743, l'horloge qui court. En la faisant : « Préparer » a une finesse à garder (la diapo du cahier au centre, le tableau gelé, « le tableau, en ce moment », « Montrer cette suite à la classe ») — S2 précisé dans le cadrage : deux boutons au plus dans la tête des étapes (« ❄ Préparer le cahier » et « Plus tard » ; en préparation « Montrer le cahier à la classe » et « Retour au cours »). Paires envoyées (en haut aujourd'hui, en bas proposé) : `T200-1-a-T-5-une-seule-chose-s-ouvre.png`, `T200-2-preparer-le-cahier-l-ecran-garde-sa-forme.png`, `T200-3-l-heure-lancee-un-nom-par-bouton.png`, `T200-4-la-repetition-dans-l-atelier-sans-gestes-de-classe.png`, `T200-5-la-case-d-une-heure-en-cours-reprendre-l-heure.png`.
+
+**Réponse (mot pour mot).**
+
+433. Les cinq images : en haut aujourd'hui, en bas proposé, à la taille de ta fenêtre. C'est une maquette posée sur ton site d'aujourd'hui, rien n'est codé.
+
+434. T200-1, « à T-5, une seule chose s'ouvre » : la barre du bas disparaît ; « T-5 — le cahier de textes dans 5 minutes » s'écrit en tête des étapes ; deux boutons : « ❄ Préparer le cahier » et « Plus tard ». Je corrige mon 428 : « Plus tard » reste, mais un seul, là.
+
+435. T200-2, « préparer le cahier, l'écran garde sa forme » : la diapo du cahier au centre à sa taille, le tableau gelé, « le tableau, en ce moment » à droite comme aujourd'hui ; les étapes restent à droite avec « Montrer le cahier à la classe » et « Retour au cours ». Le prix, mesuré : à ta hauteur de fenêtre, les étapes y sont plus serrées que dans la bande du bas d'aujourd'hui — elles défilent.
+
+436. T200-3, « l'heure lancée, un nom par bouton » : « Ouvrir le tableau » au lieu de « Écran 2 », « Ce que voit la classe » au lieu de « Tableau ».
+
+437. T200-4, « la répétition dans l'Atelier, sans gestes de classe » : plus de « Lancer avec… », ni de « Fin de l'heure », ni de participation ; une ligne dit « Répétition : rien n'est écrit. Une heure avec une classe se lance depuis l'emploi du temps. »
+
+438. T200-5, « la case d'une heure en cours » : « Reprendre l'heure » au lieu de « Reprendre le cours ».
+
+439. Une question, pour la T200-2 : les étapes à droite (l'écran ne bouge jamais, mais c'est plus serré) ou en bas comme aujourd'hui quand tu prépares (plus large, mais l'écran change de forme) ?
+
+À tester : rien — rien n'est en ligne.
+
+26/10/2026 20:51
+MEMO

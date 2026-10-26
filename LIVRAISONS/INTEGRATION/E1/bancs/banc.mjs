@@ -1007,6 +1007,37 @@ await B('A46', '§12.27 (14) : la page du niveau (l\'arborescence des chapitres)
     const v = await mes(pg); E.verif('A46', ok(v), w + ' × ' + h + ' : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe', JSON.stringify(v));
     E.verif('A46', !errs.length, w + ' × ' + h + ' : aucune erreur JS', errs.join(' ; ') || undefined); await ctx.close(); } });
 
+// ── §12.28 « les cinq dettes » (26/10, 18:46) : mes gardes A47+ ──
+const storeEssai = () => { const st = E.store(); st.classes['3A ESSAI'] = JSON.parse(JSON.stringify(st.classes['CLASSE TEST'])); st.classes['3A ESSAI'].nom = '3A ESSAI'; st.classes['3A ESSAI'].niveau = '3e';
+  st.site.edt.grille['2026-2027'].creneaux.forEach(x => { if (x.classe === '3 DYLAN Bob') x.classeMjpc = '3A ESSAI'; }); return st; };   /* une classe de 3e appariée autre que les De Gaulle (les cases « 3 DYLAN Bob ») — dans le magasin du banc seulement, pas dans AUDITS/…/hub */
+await B('A47', '§12.28 (1), dette 13 · 39 : en mode test, ce qui a été écrit se lit — « Je publie pour » une classe → l\'emploi du temps montre la séance dans ses cases ; dépublier → elle part ; aucune écriture au hub ; hors mode test, rien ne change', async () => {
+  for (const test of [true, false]) { const st = storeEssai();
+    const ctx = await b.newContext({ viewport: { width: 1707, height: 743 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); const pg = await ctx.newPage(); const errs = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => d.dismiss().catch(() => {}));
+    await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, st); await pg.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(2000);
+    await pg.evaluate(() => { try { loginAsProf(); } catch (e) {} }); await pg.waitForTimeout(2500);
+    await pg.evaluate(() => { const o = document.getElementById('m8-regles-overlay'); if (o) o.remove(); try { edtFermer(); } catch (e) {} }); await sansVoile(pg);
+    if (test) { await pg.evaluate(() => m8BasculerModeTest()); await pg.waitForTimeout(500); }
+    const e0 = await pg.evaluate(() => window.__ECR.length);
+    const cases = async () => { await pg.evaluate(() => edtOuvrir()); await pg.waitForTimeout(2500); const r = await pg.evaluate(() => Array.from(document.querySelectorAll('.edt-clic')).filter(c => /3A ESSAI/.test(c.innerText) && !/langue/.test(c.innerText)).map(c => c.innerText.replace(/\s+/g, ' ').trim())); await pg.evaluate(() => edtFermer()); await pg.waitForTimeout(500); return r; };
+    const avant = await cases();
+    const publier = async () => { await pg.evaluate(() => { clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); }); await pg.waitForTimeout(1800); await sansVoile(pg);
+      await pg.evaluate(() => { const p = Array.from(document.querySelectorAll('.lens-pill')).find(x => /3A ESSAI/.test(x.textContent)); p.click(); }); await pg.waitForTimeout(800);
+      await pg.evaluate(() => document.querySelector('[onclick*="togglePublishChapterCls(\'3e\',\'0\',\'3A ESSAI\')"]').click()); await pg.waitForTimeout(1500); await pg.evaluate(() => { try { goHome(); } catch (e) {} }); };   /* « Je publie pour » 3A ESSAI → « Publier » sur le chapitre (le geste de la page du niveau) */
+    await publier(); const pub = await cases(); const ecrPub = await pg.evaluate(() => window.__ECR.slice());
+    await publier(); const depub = await cases(); const ecrFin = await pg.evaluate(() => window.__ECR.slice());
+    const seance = l => l.length > 0 && l.every(t => /Poésie et peinture|Albatros/.test(t) && !/aucune séance prête/.test(t));
+    const vide = l => l.length > 0 && l.every(t => /aucune séance prête/.test(t));
+    if (test) {
+      E.verif('A47', vide(avant) && seance(pub), 'mode test : « Je publie pour » 3A ESSAI → « Publier » le chapitre → l\'emploi du temps montre la séance dans les ' + pub.length + ' cases de 3A ESSAI (avant : « aucune séance prête »)', JSON.stringify({ avant: avant[0], apres: pub.slice(0, 2) }));
+      E.verif('A47', vide(depub), 'mode test : dépublier → les cases de 3A ESSAI reviennent à « aucune séance prête »', JSON.stringify(depub.slice(0, 2)));
+      const horsPres = ecrFin.slice(e0).filter(x => !/^PUT \/presence\//.test(x)); E.verif('A47', horsPres.length === 0, 'mode test : le faux hub n\'a reçu aucune écriture (K15) — hors la présence du prof (/presence, écrite par son propre fetch, l. 4963 : dit au JOURNAL)', horsPres.join(' ; ') || undefined);
+      const arbre = await pg.evaluate(() => { M8T.ecrire('/zz/a/b', 1); M8T.ecrire('/zz/a/c', 2); M8T.suppr('/zz/a/b'); M8T.patch('/zz/a', { d: 3 }); M8T.ecrire('/zz', { e: { f: 4 } }); return [JSON.stringify(M8_TEST_STORE['/zz']), M8_TEST_STORE['/zz/e/f'], M8_TEST_STORE['/zz/a'], M8_TEST_STORE['/inconnu'] === undefined]; });
+      E.verif('A47', arbre[0] === '{"e":{"f":4}}' && arbre[1] === 4 && arbre[2] === null && arbre[3], 'mode test : l\'arbre — une feuille effacée reste effacée, PATCH fusionne, un parent écrit remplace ce qu\'il contient, une clé jamais lue reste « pas encore lue »', JSON.stringify(arbre));
+    } else {
+      E.verif('A47', vide(avant) && seance(pub) && vide(depub) && ecrPub.slice(e0).some(x => /^PUT \/site\/3e\/chapitres\/0\/published\/3a_essai$/.test(x)), 'hors mode test : rien ne change — la publication part au hub (PUT …/chapitres/0/published/3a_essai) et l\'emploi du temps la montre', JSON.stringify(ecrPub.slice(e0).filter(x => /published/.test(x)).slice(0, 3).concat([ecrPub.length - e0])));
+    }
+    E.verif('A47', !errs.length, (test ? 'mode test' : 'hors mode test') + ' : aucune erreur JS', errs.join(' ; ') || undefined); await ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

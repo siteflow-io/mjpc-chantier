@@ -1812,11 +1812,66 @@ var levelThemes={'6e':{bg:'linear-gradient(180deg, #1e1730 0%, #2a1e35 25%, #3d2
    à la sortie. C'est ce qui permet d'éprouver les mécanismes sans données
    réelles (point 16), y compris pendant le développement. ─── */
 var M8_TEST = false;
-var M8_TEST_STORE = {};
+/* E1 (§12.28-1, dette 13 · 39) : LE MAGASIN DU MODE TEST EST UN SEUL ARBRE, comme le hub. Avant : une table plate « chemin exact → valeur » —
+   une lecture de sous-arbre rendait ce qui avait été déposé à sa première lecture, jamais recomposé avec les feuilles écrites depuis
+   (« Je publie pour » en mode test → l'emploi du temps ne voyait rien) ; un effacement (`delete`) ramenait la valeur du hub réel.
+   Maintenant toute lecture rend ce que rendrait le hub si les écritures du magasin y étaient passées, dans l'ordre : le chemin lu au
+   hub UNE fois (lecture pure, GET), et par-dessus chaque écriture faite depuis — à ce chemin, sous lui ou au-dessus (un parent écrit
+   remplace ce qu'il contient) ; DELETE ou null retire ; PATCH fusionne les enfants. TOUJOURS AUCUNE ÉCRITURE AU HUB.
+   `M8_TEST_STORE` reste le nom que lisent les anciens accès (un mandataire sur l'arbre) : lire une clé inconnue rend `undefined`
+   (« pas encore lu »), une clé connue rend la valeur de l'arbre (null si absente) ; écrire, `delete`, null passent par l'arbre. */
+var M8T = (function(){
+  var racine = { v: null }, connus = {};
+  var seg = function(c){ return String(c == null ? '' : c).split('/').filter(Boolean); };
+  var cle = function(s){ return '/' + s.join('/'); };
+  var copie = function(v){ return (v === undefined) ? null : JSON.parse(JSON.stringify(v)); };
+  function connu(c){ var s = seg(c); for(var i = s.length; i >= 0; i--){ if(connus[cle(s.slice(0, i))]) return true; } return false; }
+  function lireA(s){ var n = racine.v; for(var i = 0; i < s.length; i++){ if(n === null || typeof n !== 'object') return null; n = n[s[i]]; if(n === undefined) return null; } return n === undefined ? null : n; }
+  function poserDans(base, s, v){   /* pose v sous base (un objet) au chemin s ; rend la nouvelle base */
+    if(!s.length) return v;
+    if(base === null || typeof base !== 'object') base = {};
+    var n = base; for(var i = 0; i < s.length - 1; i++){ if(n[s[i]] === null || typeof n[s[i]] !== 'object') n[s[i]] = {}; n = n[s[i]]; }
+    var d = s[s.length - 1]; if(v === null || v === undefined) delete n[d]; else n[d] = v; return base;
+  }
+  function marquer(s){ var k = cle(s), p = k === '/' ? '/' : k + '/'; Object.keys(connus).forEach(function(c){ if(c !== k && (k === '/' || c.indexOf(p) === 0)) delete connus[c]; }); connus[k] = true; }
+  function ecrire(c, v){ var s = seg(c); racine.v = poserDans(racine.v, s, (v === null || v === undefined) ? null : copie(v)); marquer(s); }
+  function suppr(c){ ecrire(c, null); }
+  function patch(c, o){ var s = seg(c); Object.keys(o || {}).forEach(function(k){ ecrire(cle(s.concat(seg(k))), o[k]); }); }
+  function greffer(c, valHub){   /* la valeur lue au hub pour un chemin pas encore connu, recouverte de tout ce qui a été écrit sous lui */
+    if(connu(c)) return lireA(seg(c));
+    var s = seg(c), k = cle(s), p = k === '/' ? '/' : k + '/', base = copie(valHub);
+    Object.keys(connus).filter(function(x){ return x.indexOf(p) === 0; }).sort(function(a, b){ return a.length - b.length; })
+      .forEach(function(x){ base = poserDans(base, seg(x).slice(s.length), copie(lireA(seg(x)))); });
+    racine.v = poserDans(racine.v, s, base); marquer(s); return lireA(s);
+  }
+  function lire(c, cb){   /* cb(valeur, panne) — la panne ne se met pas en cache (elle rendrait le vide définitif) */
+    if(connu(c)){ cb(lireA(seg(c))); return; }
+    fetch(FIREBASE_BASE + cle(seg(c)).replace(/^\/$/, '/') + '.json')
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(v){ cb(greffer(c, v)); }, function(){ cb(null, true); });
+  }
+  function vider(){ racine = { v: null }; connus = {}; }
+  var mandataire = new Proxy({}, {
+    get: function(t, k){ if(typeof k !== 'string') return undefined; return connu(k) ? lireA(seg(k)) : undefined; },
+    set: function(t, k, v){ ecrire(k, v); return true; },
+    deleteProperty: function(t, k){ suppr(k); return true; },
+    has: function(t, k){ return connu(k); },
+    ownKeys: function(){ return Object.keys(connus); },
+    getOwnPropertyDescriptor: function(t, k){ return connus[k] ? { enumerable: true, configurable: true, writable: true, value: lireA(seg(k)) } : undefined; }
+  });
+  return { lire: lire, ecrire: ecrire, suppr: suppr, patch: patch, greffer: greffer, connu: connu, vider: vider, magasin: mandataire,
+           arbre: function(){ return copie(racine.v); } };
+})();
+var M8_TEST_STORE = M8T.magasin;
 function m8TestOn(){ return M8_TEST === true; }
+/* la lecture d'un chemin du hub pour les lecteurs qui faisaient leur fetch eux-mêmes : en mode test, l'arbre recomposé ; sinon le hub, inchangé */
+function m8LireOuHub(chemin){
+  if(m8TestOn()) return new Promise(function(res){ M8T.lire(chemin, function(v){ res(v); }); });
+  return fetch(FIREBASE_BASE + chemin + '.json').then(function(r){ return r.json(); }).catch(function(){ return null; });
+}
 function m8BasculerModeTest(){
   M8_TEST = !M8_TEST;
-  if(!M8_TEST){ M8_TEST_STORE = {}; }
+  if(!M8_TEST){ M8T.vider(); }
   try{ sessionStorage.setItem('mjpc_m8_test', M8_TEST ? '1' : '0'); }catch(e){}
   chargerBrevetDates(function(){ if(typeof renderConsoleM8==='function') renderConsoleM8(); });
 }
@@ -1861,14 +1916,7 @@ function _siteGet(chemin, cb){
      `mjpcEcrireRest` ne bougent pas d'une ligne.
      La panne ne se met PAS en cache : elle rendrait le vide définitif alors que
      le réseau peut revenir — elle rend `cb(null, true)`, comme hors mode test. */
-  if(m8TestOn()){
-    if(M8_TEST_STORE[chemin] !== undefined){ cb(M8_TEST_STORE[chemin]); return; }
-    fetch(FIREBASE_BASE + chemin + '.json')
-      .then(function(r){ if(!r.ok)throw 0; return r.json(); })
-      .then(function(v){ M8_TEST_STORE[chemin] = v; cb(v); })
-      .catch(function(){ cb(null, true); });
-    return;
-  }
+  if(m8TestOn()){ M8T.lire(chemin, cb); return; }   /* E1 (13 · 39) : l'arbre recomposé */
   fetch(FIREBASE_BASE + chemin + '.json')
     .then(function(r){ if(!r.ok)throw 0; return r.json(); })
     .then(function(v){ cb(v); })
@@ -1883,7 +1931,7 @@ function _sitePut(chemin, valeur, cb){
     function(issue){ if(cb) cb(issue.etat===MJPC_ISSUE.ACCEPTEE, issue); });
 }
 function _siteDelete(chemin, cb){
-  if(m8TestOn()){ delete M8_TEST_STORE[chemin]; if(cb) cb(true,{etat:MJPC_ISSUE.ACCEPTEE,status:0,url:chemin,quand:Date.now()}); return; }
+  if(m8TestOn()){ M8T.suppr(chemin); if(cb) cb(true,{etat:MJPC_ISSUE.ACCEPTEE,status:0,url:chemin,quand:Date.now()}); return; }   /* E1 (13 · 39) : effacé reste effacé (avant : la clé oubliée, le hub réel revenait) */
   mjpcEcrireRest(FIREBASE_BASE + chemin + '.json', {method:'DELETE'},
     function(issue){ if(cb) cb(issue.etat===MJPC_ISSUE.ACCEPTEE, issue); });
 }
@@ -2235,14 +2283,7 @@ var TAXO_CACHE_MODE = null;
    une fois par une lecture PURE du hub (GET, aucune écriture) : on édite
    alors une COPIE réelle qui s'évapore en sortant du mode test. ─── */
 function taxoCharger(cb){
-  if(m8TestOn()){
-    if(M8_TEST_STORE['/taxonomie'] !== undefined){ cb(M8_TEST_STORE['/taxonomie']); return; }
-    fetch(FIREBASE_BASE + '/taxonomie.json')
-      .then(function(r){ return r.json(); })
-      .then(function(v){ M8_TEST_STORE['/taxonomie'] = v; cb(v); })
-      .catch(function(){ cb(null); });
-    return;
-  }
+  if(m8TestOn()){ M8T.lire('/taxonomie', function(v){ cb(v); }); return; }   /* E1 (13 · 39) : l'arbre recomposé */
   _siteGet('/taxonomie', cb);
 }
 
@@ -2632,8 +2673,7 @@ function tabLibelle(tabId){
   return (typeof TAB_LABELS!=='undefined'&&TAB_LABELS[tabId])?TAB_LABELS[tabId]:tabId;
 }
 function tabLibellesCharger(cb){
-  fetch(FIREBASE_BASE+'/site/libelles/onglets.json')
-    .then(function(r){return r.ok?r.json():null;})
+  (m8TestOn()?m8LireOuHub('/site/libelles/onglets'):fetch(FIREBASE_BASE+'/site/libelles/onglets.json').then(function(r){return r.ok?r.json():null;}))   /* E1 (13 · 39) */
     .then(function(v){TAB_LABELS_HUB=v||{};if(cb)cb(true);})
     .catch(function(){if(cb)cb(false);});
 }
@@ -2904,8 +2944,10 @@ function mjpcEcrireRest(url,options,cb){
   if(typeof m8TestOn==='function' && m8TestOn() && options && options.method && options.method!=='GET'){
     var cheminM8=String(url).replace(/^https?:\/\/[^/]+/,'').replace(/\.json.*$/,'');
     try{
-      if(options.method==='DELETE') delete M8_TEST_STORE[cheminM8];
-      else M8_TEST_STORE[cheminM8]=JSON.parse(options.body||'null');
+      try{ cheminM8=decodeURIComponent(cheminM8); }catch(e){}
+      if(options.method==='DELETE') M8T.suppr(cheminM8);   /* E1 (13 · 39) : effacé reste effacé */
+      else if(options.method==='PATCH') M8T.patch(cheminM8, JSON.parse(options.body||'{}')||{});   /* PATCH fusionne (avant : remplaçait) */
+      else M8T.ecrire(cheminM8, JSON.parse(options.body||'null'));
     }catch(e){}
     if(cb)cb({etat:MJPC_ISSUE.ACCEPTEE,status:0,url:url,quand:quand,test:true});
     return;
@@ -3410,9 +3452,7 @@ function sanitizeChapitres(chapitres){
 }
 
 function loadPublished(level){
-  fetch(FIREBASE_BASE+'/site/'+level+'.json')
-    .then(function(r){return r.json()})
-    .catch(function(){return null})
+  m8LireOuHub('/site/'+level)   /* E1 (13 · 39) : en mode test, l'arbre recomposé (« Je publie pour » s'y voit) ; sinon le hub, comme avant */
     .then(function(val){
       var v=val||{};
       publishedTabs[level]=v.published_tabs||[];
@@ -7007,7 +7047,7 @@ function _modaleConfirme(titre,corpsHtml,cbOui,motConfirmation){
 }
 /* ═══ M12 · CORBEILLE — canal de restauration UNIQUE, respecte le mode test M8 ═══ */
 function _corbeilleRestaure(chemin,valeur,cb){
-  if(m8TestOn()){ M8_TEST_STORE['/'+chemin]=valeur; if(cb)cb(true); return; }
+  if(m8TestOn()){ M8T.ecrire('/'+chemin, valeur); if(cb)cb(true); return; }
   _fbPutPath(chemin,valeur).then(function(){if(cb)cb(true);}).catch(function(){if(cb)cb(false);});
 }
 
@@ -7328,6 +7368,8 @@ function loadCodes(cb){fetch(FIREBASE_BASE+'/codes.json').then(function(r){retur
    rechargeait les classes (« Aucune classe active »). Hors mode test : la lecture rend la valeur telle quelle. */
 function _m8Superposer(racine,val){
   if(typeof m8TestOn!=='function'||!m8TestOn())return val;
+  /* E1 (13 · 39) : la valeur que l'appelant vient de lire au hub, recouverte par l'arbre du magasin (la même règle que toutes les lectures) */
+  var g=M8T.greffer(racine,val); return (g&&typeof g==='object')?JSON.parse(JSON.stringify(g)):(g==null?{}:g);
   var out=(val&&typeof val==='object')?JSON.parse(JSON.stringify(val)):{};
   Object.keys(M8_TEST_STORE).filter(function(k){return k===racine||k.indexOf(racine+'/')===0;})
     .sort(function(a,b){return a.length-b.length;}).forEach(function(k){
@@ -10397,13 +10439,7 @@ function atelierFermer(sansPanneau,puis){
    chemins enfants puis lire le parent donnerait null. En mode test, la liste
    reconstitue donc le parent par préfixe — la sémantique même de RTDB. */
 function atSiteGetDocs(cb){
-  if(m8TestOn()){
-    var docs={},pfx=AT_NOEUD+'/';
-    Object.keys(M8_TEST_STORE).forEach(function(k){
-      if(k.indexOf(pfx)===0){var id=k.slice(pfx.length);if(id&&id.indexOf('/')<0&&M8_TEST_STORE[k])docs[id]=M8_TEST_STORE[k];}
-    });
-    cb(docs);return;
-  }
+  if(m8TestOn()){ M8T.lire(AT_NOEUD,function(v){ cb(v||{}); }); return; }   /* E1 (13 · 39) : l'arbre recomposé (les feuilles du hub et celles écrites en mode test) */
   _siteGet(AT_NOEUD,cb);
 }
 
@@ -10903,8 +10939,9 @@ function atChargerChapitres(niveau,cb){
   if(chapitresData[niveau]&&Object.keys(chapitresData[niveau]).length){AT_CHAP_ETAT[niveau]='charge';if(cb)cb(true);return;}
   if(AT_CHAP_ETAT[niveau]==='enCours'){if(cb)cb(false);return;}
   AT_CHAP_ETAT[niveau]='enCours';
-  fetch(FIREBASE_BASE+'/site/'+niveau+'/chapitres.json')   /* LECTURE SEULE — ce chantier n'écrit jamais dans l'arborescence */
-    .then(function(rp){if(!rp.ok)throw new Error('HTTP '+rp.status);return rp.json();})
+  (m8TestOn()?new Promise(function(res,rej){M8T.lire('/site/'+niveau+'/chapitres',function(v,panne){if(panne)rej(new Error('lecture'));else res(v);});}):   /* E1 (13 · 39) */
+   fetch(FIREBASE_BASE+'/site/'+niveau+'/chapitres.json')   /* LECTURE SEULE — ce chantier n'écrit jamais dans l'arborescence */
+    .then(function(rp){if(!rp.ok)throw new Error('HTTP '+rp.status);return rp.json();}))
     .then(function(v){chapitresData[niveau]=sanitizeChapitres(v||{});AT_CHAP_ETAT[niveau]='charge';if(cb)cb(true);})
     .catch(function(){AT_CHAP_ETAT[niveau]='erreur';if(cb)cb(false);});
 }
@@ -14257,12 +14294,9 @@ function mjpcFetchOk(url,options){
     var cheminM8=String(url).slice(FIREBASE_BASE.length).replace(/\.json.*$/,'');
     try{ cheminM8=decodeURIComponent(cheminM8); }catch(e){}
     try{
-      if(options.method==='DELETE') M8_TEST_STORE[cheminM8]=null;
-      else if(options.method==='PATCH'){
-        var lot=JSON.parse(options.body||'{}')||{};
-        Object.keys(lot).forEach(function(k){ M8_TEST_STORE[(cheminM8==='/'?'':cheminM8)+'/'+k]=lot[k]; });
-      }
-      else M8_TEST_STORE[cheminM8]=JSON.parse(options.body||'null');
+      if(options.method==='DELETE') M8T.suppr(cheminM8);
+      else if(options.method==='PATCH') M8T.patch(cheminM8, JSON.parse(options.body||'{}')||{});
+      else M8T.ecrire(cheminM8, JSON.parse(options.body||'null'));   /* E1 (13 · 39) : l'arbre */
     }catch(e){}
     return Promise.resolve({ok:true,status:0,test:true,json:function(){return Promise.resolve(null);},text:function(){return Promise.resolve('null');}});
   }
@@ -14302,9 +14336,7 @@ function secuEcrire(chemin,valeur){return new Promise(function(res){_sitePut(che
 function secuPatchCode(k,objet,cb){
   var chemin='/codes/'+k;
   if(m8TestOn()){
-    var cour=M8_TEST_STORE[chemin];if(!cour||typeof cour!=='object')cour={};
-    Object.keys(objet).forEach(function(c){cour[c]=objet[c];});
-    M8_TEST_STORE[chemin]=cour;
+    M8T.patch(chemin, objet);   /* E1 (13 · 39) : fusionne avec le code tel qu'il est au hub (avant : remplaçait par les seuls champs du PATCH s'il n'avait pas été lu) */
     if(cb)cb({etat:MJPC_ISSUE.ACCEPTEE,status:0,url:chemin,quand:Date.now()});
     return;
   }

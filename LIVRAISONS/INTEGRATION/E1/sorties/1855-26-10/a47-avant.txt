@@ -1,0 +1,9 @@
+banc E1 · 2026-10-26 17:55 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant28.html · md5 a3f2d455effb76e16aaf2aaad0bfe9cf
+
+A47 — §12.28 (1), dette 13 · 39 : en mode test, ce qui a été écrit se lit — « Je publie pour » une classe → l'emploi du temps montre la séance dans ses cases ; dépublier → elle part ; aucune écriture au hub ; hors mode test, rien ne change
+  ÉCHEC  A47 · mode test : « Je publie pour » 3A ESSAI → « Publier » le chapitre → l'emploi du temps montre la séance dans les 4 cases de 3A ESSAI (avant : « aucune séance prête ») — {"avant":"3A ESSAI aucune séance prête","apres":["3A ESSAI aucune séance prête","3A ESSAI aucune séance prête"]}
+  ok     A47 · mode test : dépublier → les cases de 3A ESSAI reviennent à « aucune séance prête » — ["3A ESSAI aucune séance prête","3A ESSAI aucune séance prête"]
+  ok     A47 · mode test : le faux hub n'a reçu aucune écriture (K15) — hors la présence du prof (/presence, écrite par son propre fetch, l. 4963 : dit au JOURNAL)
+  ÉCHEC  A47 · le banc n'a pas pu aller au bout — page.evaluate: ReferenceError: M8T is not defined
+
+4 vérifications, 2 échec(s) · 23 s

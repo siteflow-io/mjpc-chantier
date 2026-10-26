@@ -1070,6 +1070,60 @@ await B('A48', '§12.28 (3a)(3b), dette 13 · 41 : l\'écran « la classe en cou
     E.verif('A48', e6 === 'structure atelier pilotage relecture', 'l\'atelier rouvert ensuite est l\'atelier d\'avant (Structure · Atelier · Pilotage · Relecture)', e6);
     E.verif('A48', !o.errs.length, w + ' × ' + h + ' : aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); } });
 
+const aideMesure = pg => pg.evaluate(() => { const b = document.getElementById('aide-q'); if (!b || b.hidden || getComputedStyle(b).display === 'none') return { visible: false, cle: (typeof aideCle === 'function') ? aideCle() : null }; const R = b.getBoundingClientRect();
+  const sous = new Set(); for (let x = R.left + 2; x < R.right - 1; x += 6) for (let y = R.top + 2; y < R.bottom - 1; y += 8) { const pile = document.elementsFromPoint(x, y).filter(e => e !== b && !b.contains(e)); const e = pile[0]; if (!e) continue;
+    const inter = e.closest('button,a,input,select,textarea,[onclick],[contenteditable="true"]'); const texte = Array.from(e.childNodes).some(n => n.nodeType === 3 && n.textContent.trim()) ? e : null;
+    if (inter && !/^(BODY|HTML)$/.test(inter.tagName)) sous.add((inter.id ? '#' + inter.id : inter.tagName) + ' « ' + (inter.textContent || inter.value || '').trim().slice(0, 24) + ' »');
+    else if (texte) { const rg = document.createRange(); rg.selectNodeContents(texte); const rs = Array.from(rg.getClientRects()); if (rs.some(r => x >= r.left && x <= r.right && y >= r.top && y <= r.bottom)) sous.add('texte « ' + texte.textContent.trim().slice(0, 24) + ' »'); } }
+  return { visible: true, cle: aideCle(), droite: Math.round(innerWidth - R.right), milieu: Math.round((R.top + R.bottom) / 2 - innerHeight / 2), l: Math.round(R.width), h: Math.round(R.height), sous: Array.from(sous) }; });
+const aideOuvreLeBon = async (pg, par) => { if (par === 'clic') await pg.evaluate(() => document.getElementById('aide-q').click()); else await pg.keyboard.press('?'); await pg.waitForTimeout(250);
+  const r = await pg.evaluate(() => { const v = document.getElementById('aide-volet'); const k = aideCle(); const t = AIDE_ECRANS[k]; const R = v ? v.getBoundingClientRect() : null; return { ouvert: !!v && !v.hidden, cle: v && v.dataset.cle, k, titre: v && (v.querySelector('.aide-t') || {}).textContent, attendu: t && t.titre, motpourmot: !!v && !!t && v.querySelector('.aide-corps').innerHTML === t.html, ici: v && Array.from(v.querySelectorAll('.aide-fil li')).findIndex(li => li.classList.contains('aide-ici')) + 1, fil: t && t.fil, hauteur: R ? Math.round(R.height) : 0, H: innerHeight, droite: R ? Math.round(innerWidth - R.right) : null }; });
+  await pg.keyboard.press('Escape'); await pg.waitForTimeout(200); r.ferme = await pg.evaluate(() => document.getElementById('aide-volet').hidden); return r; };
+await B('A49', '§12.28 (5), dette 13 · 43 : le « ? » de chaque écran du prof — visible au même endroit, rien dessous ; le clic et la touche « ? » ouvrent le texte de cet écran mot pour mot (et le fil, son étape en évidence) ; Échap ferme ; dans un champ, « ? » s\'écrit ; rien dans la fenêtre du tableau ni dans la vue élève', async () => {
+  for (const [w, h] of TAILLES_1227) { const o = await ouvrirProf(w, h); const pg = o.pg; const vus = [], fautes = []; let place = null; let n = 0;
+    const ecran = async (attendu, faire) => { if (faire) { await faire(); await pg.waitForTimeout(700); await sansVoile(pg); } const m = await aideMesure(pg); n++;
+      if (!m.visible || m.cle !== attendu) { fautes.push(attendu + ' : ' + JSON.stringify(m)); return; }
+      const p = m.droite + ',' + m.milieu + ',' + m.l + 'x' + m.h; if (place === null) place = p; if (p !== place) fautes.push(attendu + ' : ailleurs (' + p + ' au lieu de ' + place + ')'); if (m.sous.length) fautes.push(attendu + ' : dessous ' + m.sous.join(', '));
+      const par = (n % 2) ? 'clic' : 'touche'; const r = await aideOuvreLeBon(pg, par);
+      if (!(r.ouvert && r.cle === attendu && r.titre === r.attendu && r.motpourmot && r.ici === r.fil && r.hauteur === r.H && r.droite === 0 && r.ferme)) fautes.push(attendu + ' (' + par + ') : ' + JSON.stringify(r)); else vus.push(attendu); };
+    await ecran('accueil');
+    await ecran('niveau', () => pg.evaluate(() => { clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); }));
+    await ecran('edt-semaine', () => pg.evaluate(() => edtOuvrir()));
+    await ecran('edt-mois', () => pg.evaluate(() => edtVue('mois'))); await ecran('edt-annee', () => pg.evaluate(() => edtVue('annee'))); await ecran('edt-heures-perdues', () => pg.evaluate(() => edtVue('calendrier')));
+    await ecran('edt-case', async () => { await pg.evaluate(() => edtVue('semaine')); await pg.waitForTimeout(500); await pg.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-clic')).find(e => e.offsetParent !== null && /Charles/.test(e.innerText)); if (c) c.click(); }); });
+    await pg.evaluate(() => { try { edtModaleFermer(); } catch (e) {} edtFermer(); });
+    for (const [sec, cle] of [['dashboard', 'tableau-de-bord'], ['classes', 'classes'], ['eleves', 'eleves-codes'], ['profil-test', 'profil-test'], ['archi', 'architecture'], ['archives', 'archives'], ['corbeille', 'corbeille'], ['annonces', 'annonces'], ['brevet', 'dates'], ['taxo', 'taxonomie'], ['edt', 'emploi-du-temps'], ['config', 'configuration'], ['presence', 'presence']])
+      await ecran('panneau-' + cle, () => pg.evaluate(k => { openProfPanel(); showProfSection(k); }, sec));
+    if (w === 1707) {   /* dans un champ, « ? » s'écrit (la zone d'injection de la section « Emploi du temps ») */
+      await pg.evaluate(() => { showProfSection('edt'); }); await pg.waitForTimeout(1500); await pg.evaluate(() => { const v = Array.from(document.querySelectorAll('#edt-panneau .edt-voies button'))[0]; if (v) v.click(); }); await pg.waitForTimeout(400); await pg.click('#edt-inj-coller'); await pg.keyboard.type('a?b');
+      const ch = await pg.evaluate(() => ({ v: document.getElementById('edt-inj-coller').value, ouvert: !document.getElementById('aide-volet').hidden }));
+      E.verif('A49', ch.v === 'a?b' && !ch.ouvert, w + ' × ' + h + ' : dans un champ où l\'on écrit, « ? » s\'écrit et n\'ouvre rien', JSON.stringify(ch)); }
+    await ecran('atelier-accueil', () => pg.evaluate(() => atelierOuvrir()));
+    await ecran('atelier-mes-chapitres', () => E.clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"));
+    await ecran('chapitre-structure', async () => { await E.clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'); await pg.waitForTimeout(900); });
+    for (const v of ['atelier', 'pilotage', 'relecture']) await ecran('chapitre-' + v, () => pg.evaluate(x => document.querySelector('.at-onglet[data-vue="' + x + '"]').click(), v));
+    await pg.evaluate(() => { const r = document.querySelector('.at-onglet[data-vue="atelier"]'); if (r) r.click(); }); await pg.waitForTimeout(600); await pg.evaluate(() => { try { atelierFermer(); } catch (e) {} closeProfPanel(); }); await pg.waitForTimeout(900);
+    await ecran('classe-ouverture', () => pg.evaluate(() => new Promise(r => dr_ouvrirClasse('3e', '0', '0', () => r()))));
+    await ecran('classe-heure', () => pg.evaluate(() => document.querySelector('[data-lancer="1"]').click()));
+    await ecran('chapitre-relecture', () => pg.evaluate(() => document.querySelector('.at-onglet[data-vue="relecture"]').click()));
+    await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="pilotage"]').click()); await pg.waitForTimeout(500);
+    await ecran('classe-fin', () => pg.evaluate(() => document.getElementById('dr-clore').click()));
+    await ecran('classe-close', async () => { await pg.evaluate(() => { const x = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (x) x.click(); }); await pg.waitForTimeout(300); await pg.evaluate(() => { const x = document.getElementById('f-clore'); if (x) x.click(); }); await pg.waitForTimeout(500); await pg.evaluate(() => { const g = document.getElementById('garde-clore'); if (g && g.classList.contains('on')) document.getElementById('gclore-oui').click(); }); await pg.waitForTimeout(1200); await pg.evaluate(() => { const x = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (x) x.click(); }); await pg.waitForTimeout(400); });   /* après « Clore », l'écran montre la Relecture (chapitre-relecture) ; « l'heure close » est le Pilotage */
+    E.verif('A49', fautes.length === 0 && vus.length === 31, w + ' × ' + h + ' : ' + vus.length + ' écrans du prof — le « ? » au même endroit (' + place + ' : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme', fautes.slice(0, 4).join(' ; ') || undefined);
+    await pg.evaluate(() => { basculerVue(); }); await pg.waitForTimeout(600);
+    const el = await pg.evaluate(() => { const b = document.getElementById('aide-q'); return { visible: !!b && !b.hidden, admin: document.body.classList.contains('admin-mode') }; });
+    E.verif('A49', !el.visible && !el.admin, w + ' × ' + h + ' : « Voir comme un élève » — pas de « ? »', JSON.stringify(el));
+    E.verif('A49', !o.errs.length, w + ' × ' + h + ' : aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); }
+  { const ctx = await b.newContext({ viewport: { width: 1707, height: 743 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); const pg = await ctx.newPage();
+    await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, E.store()); await pg.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1500); await pg.evaluate(() => { try { loginAsProf(); } catch (e) {} }); await pg.waitForTimeout(1200);
+    await pg.goto('file://' + E.FICHIER + '?vue=tableau&local=1', { waitUntil: 'load' }); await pg.waitForTimeout(2500); await pg.keyboard.press('?'); await pg.waitForTimeout(500);
+    const t = await pg.evaluate(() => { const b = document.getElementById('aide-q'), v = document.getElementById('aide-volet'); return { b: !!b && !b.hidden, v: !!v && !v.hidden }; });
+    E.verif('A49', !t.b && !t.v, 'la fenêtre du tableau (session du prof) : ni « ? », ni volet, même à la touche', JSON.stringify(t)); await ctx.close(); }
+  { const ctx = await b.newContext({ viewport: { width: 1707, height: 743 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); const pg = await ctx.newPage();
+    await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, E.store()); await pg.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(2000); await pg.keyboard.press('?'); await pg.waitForTimeout(500);
+    const t = await pg.evaluate(() => { const b = document.getElementById('aide-q'), v = document.getElementById('aide-volet'); return { b: !!b && !b.hidden, v: !!v && !v.hidden }; });
+    E.verif('A49', !t.b && !t.v, 'côté élève (la page sans session du prof) : ni « ? », ni volet, même à la touche', JSON.stringify(t)); await ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

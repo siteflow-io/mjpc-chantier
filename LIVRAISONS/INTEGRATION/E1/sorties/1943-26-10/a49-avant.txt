@@ -1,0 +1,12 @@
+banc E1 · 2026-10-26 18:42 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/tete.html · md5 7479be40dd5dc563761b52cdbe171aa2
+
+A49 — §12.28 (5), dette 13 · 43 : le « ? » de chaque écran du prof — visible au même endroit, rien dessous ; le clic et la touche « ? » ouvrent le texte de cet écran mot pour mot (et le fil, son étape en évidence) ; Échap ferme ; dans un champ, « ? » s'écrit ; rien dans la fenêtre du tableau ni dans la vue élève
+  ÉCHEC  A49 · 1366 × 768 : 0 écrans du prof — le « ? » au même endroit (null : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme — accueil : {"visible":false,"cle":null} ; niveau : {"visible":false,"cle":null} ; edt-semaine : {"visible":false,"cle":null} ; edt-mois : {"visible":false,"cle":null}
+  ok     A49 · 1366 × 768 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1366 × 768 : aucune erreur JS
+  ÉCHEC  A49 · 1536 × 864 : 0 écrans du prof — le « ? » au même endroit (null : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme — accueil : {"visible":false,"cle":null} ; niveau : {"visible":false,"cle":null} ; edt-semaine : {"visible":false,"cle":null} ; edt-mois : {"visible":false,"cle":null}
+  ok     A49 · 1536 × 864 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1536 × 864 : aucune erreur JS
+  ÉCHEC  A49 · le banc n'a pas pu aller au bout — page.evaluate: TypeError: Cannot read properties of null (reading 'hidden')
+
+7 vérifications, 3 échec(s) · 88 s

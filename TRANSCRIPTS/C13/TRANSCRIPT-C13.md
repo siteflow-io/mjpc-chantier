@@ -3449,3 +3449,16 @@ MEMO
 
 26/10/2026 10:45
 MEMO
+
+## Tour 185 — 26/10/2026 10:48 — Paul (10:47) : « ok comment je fais pour attribuer un chapitre à une classe du coup? »
+
+**Paul (mot pour mot).** « ok comment je fais pour attribuer un chapitre à une classe du coup? »
+
+**Fait.** Mesuré dans `index.html` ③ : la publication par classe est `chapitre.published[<slug de classe>] = true` (`isPubFor`, l. 3565 ; l'EDT la lit dans `edtChapitreEnCours`, l. 22448) ; le geste est sur la page du niveau en session prof : la barre « Je publie pour : » (`_renderLensBar`, l. 3446 — Vue d'ensemble, puis une pastille par classe non archivée du niveau, `_lvlClasses`) et, sur chaque chapitre, les points de classe (`_pubCtrl`, l. 3447 : « Toutes » + un point par classe, `togglePublishChapterCls` ; avec une classe choisie dans la barre : un bouton « Publier » / « ✓ Publié »). Le nom affiché sur le point perd son préfixe de niveau (`_classTag`) : « CHARLES DE GAULLE ».
+
+**Réponse (mot pour mot).**
+
+383. Sur la page du niveau (3e), connecté en prof : en haut de la liste des chapitres, « Je publie pour : » Vue d'ensemble ou une de tes classes. En Vue d'ensemble, chaque chapitre porte un point par classe (FRANKLIN ARETHA, DYLAN BOB, CHARLES DE GAULLE, CLASSE TEST) : un clic publie le chapitre pour cette classe, le point prend sa couleur, un second clic retire ; « Toutes » publie pour toutes les classes du niveau. Si tu choisis une classe dans la barre, chaque chapitre a un bouton « Publier » / « ✓ Publié ». L'emploi du temps lit cette publication : dès qu'un chapitre est publié pour une classe, sa carte et ses heures le prennent (première séance pas jouée).
+
+26/10/2026 10:48
+MEMO

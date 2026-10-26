@@ -490,3 +490,10 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **A40** : le contrôle « Mes chapitres garde sa bande » devient « Mes chapitres : le bouton sur sa rangée, à droite, plus de bande » + son clic ferme et rouvre le panneau : **57/0** sur l'assemblé de ce commit (`a40.txt`, md5 `1ed0de63…`).
 - **banc.sh VERT** sur `4345e50e` (sorties `LIVRAISONS/INTEGRATION/E1/sorties/1231-26-10/` : 108 vérifications, 0 échec ; fin : 0 défaut(s) ; parcours vert ×2).
 - **Reste** : (5) codé (A41 12/0, rouge avant 4/12), (6)-(8) codés (A42 16/0, A43 8/0, A44 8/0 sur une copie de travail), leurs bancs suivent un par un. **Relances** : rien de nouveau.
+
+## 26/10, 13:35 Paris (12:35 UTC) — §12.27 (5) poussé : la Relecture à toute la largeur de sa colonne — commit `a9916434`
+- **Ce que ça change pour Paul** : le récit de l'heure prend toute la largeur de la colonne de droite (chez lui 1 347 px ; avant le récit tenait dans 900 px au milieu).
+- **Fait** : `dr/dr.css`, une ligne après la l. 88 : `#dr-zone .rel,#dr-zone .recit{max-width:none}` — sous `#dr-zone` seulement (audit point 6) : la fenêtre du tableau (`#ses-tab`) garde 1120 / 900 px (point 27 (10)).
+- **Garde A41** (par le geste, aux quatre tailles, la Relecture ouverte par son onglet) : `.rel` = la largeur de sa colonne à 1 px près, `.rel` et `.recit` sans `max-width` ; sous `#ses-tab` les deux bornes restent. **Rouge avant 4/12** (`a41-avant.txt`), **vert après 12/0** (`a41.txt`).
+- **banc.sh VERT** sur `a9916434` (sorties `LIVRAISONS/INTEGRATION/E1/sorties/1241-26-10/` : 108 vérifications, 0 échec ; fin : 0 défaut(s) ; parcours vert ×2).
+- **Reste** : (6) committé ensuite (A42 16/0, rouge avant 12/16), (7), (8). **Relances** : rien de nouveau.

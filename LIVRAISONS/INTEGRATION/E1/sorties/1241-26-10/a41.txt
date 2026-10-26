@@ -1,0 +1,17 @@
+banc E1 · 2026-10-26 11:48 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 d764a6ee807dcdcc9fa84353fca8fb6b
+
+A41 — §12.27 (5) : la Relecture à toute la largeur de sa colonne — .rel et .recit sans borne sous #dr-zone ; la fenêtre du tableau garde les siennes (10)
+  ok     A41 · 1366 × 768 : la Relecture prend sa colonne (1006 px sur 1006), .rel et .recit sans max-width — {"rel":"none","recit":"none","visRel":true,"visRecit":true,"largeurRel":1006,"colonne":1006,"largeurRecit":1006,"tab":{"rel":"1120px","recit":"900px"}}
+  ok     A41 · 1366 × 768 : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px — {"rel":"1120px","recit":"900px"}
+  ok     A41 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ok     A41 · 1536 × 864 : la Relecture prend sa colonne (1176 px sur 1176), .rel et .recit sans max-width — {"rel":"none","recit":"none","visRel":true,"visRecit":true,"largeurRel":1176,"colonne":1176,"largeurRecit":1176,"tab":{"rel":"1120px","recit":"900px"}}
+  ok     A41 · 1536 × 864 : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px — {"rel":"1120px","recit":"900px"}
+  ok     A41 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ok     A41 · 1707 × 743 : la Relecture prend sa colonne (1347 px sur 1347), .rel et .recit sans max-width — {"rel":"none","recit":"none","visRel":true,"visRecit":true,"largeurRel":1347,"colonne":1347,"largeurRecit":1347,"tab":{"rel":"1120px","recit":"900px"}}
+  ok     A41 · 1707 × 743 : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px — {"rel":"1120px","recit":"900px"}
+  ok     A41 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ok     A41 · 1920 × 1080 : la Relecture prend sa colonne (1560 px sur 1560), .rel et .recit sans max-width — {"rel":"none","recit":"none","visRel":true,"visRecit":true,"largeurRel":1560,"colonne":1560,"largeurRecit":1560,"tab":{"rel":"1120px","recit":"900px"}}
+  ok     A41 · 1920 × 1080 : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px — {"rel":"1120px","recit":"900px"}
+  ok     A41 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+12 vérifications, 0 échec(s) · 34 s

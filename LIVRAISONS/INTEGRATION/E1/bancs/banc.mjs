@@ -940,6 +940,13 @@ await B('A42', '§12.27 (6) : l\'accueil des niveaux et la page du niveau (prof,
     const v = await mesHome(pg); E.verif('A42', okHome(v), w + ' × ' + h + ' : la page du niveau vue comme un élève — .home-inner de bord à bord', JSON.stringify(v));
     E.verif('A42', !errs.length, w + ' × ' + h + ' : aucune erreur JS', errs.join(' ; ') || undefined); await ctx.close(); } });
 
+await B('A43', '§12.27 (7) : la visionneuse d\'un document (openViewer) bord à bord, à toute la fenêtre, sans coins', async () => {
+  for (const [w, h] of TAILLES_1227) { const o = await ouvrirPanneau(w, h); const pg = o.pg;
+    await pg.evaluate(() => { closeProfPanel(); openViewer('Document du banc', 'about:blank'); }); await pg.waitForTimeout(500);
+    const r = await pg.evaluate(() => { const x = document.querySelector('#doc-viewer.visible .doc-viewer-box'); if (!x) return null; const R = x.getBoundingClientRect(); const fr = document.getElementById('doc-viewer-frame').getBoundingClientRect(); return { l: Math.round(R.left), t: Math.round(R.top), r: Math.round(R.right), b: Math.round(R.bottom), W: innerWidth, H: innerHeight, coins: getComputedStyle(x).borderTopLeftRadius, cadre: Math.round(fr.height), ferme: !!document.querySelector('#doc-viewer .doc-viewer-close') }; });
+    E.verif('A43', r && Math.abs(r.l) <= 1 && Math.abs(r.t) <= 1 && Math.abs(r.r - r.W) <= 1 && Math.abs(r.b - r.H) <= 1 && r.coins === '0px' && r.cadre > r.H - 120 && r.ferme, w + ' × ' + h + ' : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l\'en-tête ; le bouton de fermeture est là', JSON.stringify(r));
+    E.verif('A43', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

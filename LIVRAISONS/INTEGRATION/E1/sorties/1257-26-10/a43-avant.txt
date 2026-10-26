@@ -1,0 +1,13 @@
+banc E1 · 2026-10-26 11:49 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant.html · md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+A43 — §12.27 (7) : la visionneuse d'un document (openViewer) bord à bord, à toute la fenêtre, sans coins
+  ÉCHEC  A43 · 1366 × 768 : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l'en-tête ; le bouton de fermeture est là — {"l":133,"t":58,"r":1233,"b":710,"W":1366,"H":768,"coins":"16px","cadre":583,"ferme":true}
+  ok     A43 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ÉCHEC  A43 · 1536 × 864 : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l'en-tête ; le bouton de fermeture est là — {"l":218,"t":65,"r":1318,"b":799,"W":1536,"H":864,"coins":"16px","cadre":664,"ferme":true}
+  ok     A43 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ÉCHEC  A43 · 1707 × 743 : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l'en-tête ; le bouton de fermeture est là — {"l":304,"t":56,"r":1404,"b":687,"W":1707,"H":743,"coins":"16px","cadre":562,"ferme":true}
+  ok     A43 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ÉCHEC  A43 · 1920 × 1080 : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l'en-tête ; le bouton de fermeture est là — {"l":410,"t":81,"r":1510,"b":999,"W":1920,"H":1080,"coins":"16px","cadre":848,"ferme":true}
+  ok     A43 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+8 vérifications, 4 échec(s) · 17 s

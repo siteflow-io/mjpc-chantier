@@ -296,6 +296,8 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
           return { dessus, carte: true, ouverte: !!(corps && corps.classList.contains('open')), haut: Math.round(b.top), libre: !!(top && c.contains(top)), sur: top ? top.tagName.toLowerCase() + (top.id ? '#' + top.id : '') + (typeof top.className === 'string' && top.className ? '.' + top.className.split(' ')[0] : '') : '' }; }, bt.ch);
         verif('J', !r.dessus.length, T + ' · 13 · 45 · rien par-dessus la page (ni panneau, ni atelier)', r.dessus.join(', '));
         verif('J', r.carte && r.ouverte, T + ' · 13 · 45 · la carte du chapitre ' + bt.ch + ' est visible et dépliée', r.carte ? 'dépliée ' + r.ouverte : 'absente');
+        { const lc = await q.evaluate(() => { const e = Array.from(document.querySelectorAll('#page-level .level-content, .level-content')).find(x => x.getBoundingClientRect().width > 0); return e ? { l: Math.round(e.getBoundingClientRect().width), mw: getComputedStyle(e).maxWidth, W: innerWidth } : null; });
+          info('J', T + ' · la vraie page du niveau (#page-level) · .level-content ' + (lc ? lc.l + ' px sur ' + lc.W + ' (max-width ' + lc.mw + ')' : 'absente') + ' — hors du point 27 tel qu’écrit (il nomme .home-inner) : dit à la conscience (retour 45)'); }
         verif('J', r.carte && r.haut >= -2 && r.haut < H * 0.35 && r.libre, T + ' · 13 · 45 · la carte en haut de l’écran, rien au-dessus d’elle', r.carte ? 'haut ' + r.haut + ' px, au point : ' + r.sur : ''); }
     } catch (e) { verif('J', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('J', !o.errs.length, T + ' · 0 erreur JS', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }

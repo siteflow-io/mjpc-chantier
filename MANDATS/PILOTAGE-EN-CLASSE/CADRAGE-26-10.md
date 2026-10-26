@@ -30,5 +30,8 @@
 - **P5 — Le « ? ».** Un « ? » par écran (emploi du temps, la classe, la classe en cours, l'Atelier, le panneau prof, la Relecture), en haut à droite, toujours au même endroit ; il ouvre un volet qui dit, dans les mots de Paul, **ce qu'on fait sur cet écran et dans quel ordre**, avec ce qui vient avant et après (le fil, `docs/MJPC6-LE-FIL.md`, tour 186 point 387) ; la touche « ? » l'ouvre aussi, et rien d'autre.
 - **P6 — Le récit.** Les connecteurs suivent le rang de ce qui a été joué (la première activité jouée : « Au début de l'heure, on a commencé par », la dernière : « Enfin »), jamais la tranche d'horloge seule ; une seule activité jouée : « Cette heure, on a fait ».
 
+## 4 bis · Le mot de Paul (26/10)
+- **P1 — « Oui »** (11:29). Puis : « La première chose à faire avant tout c'est l'UI des écrans que j'ai demandé. Déjà j'y verrai plus clair. On utilise toute la largeur et la hauteur de l'écran, tout le temps. Tu vas tout mesurer dans le site de ce point de vue et faire ce chantier. Ensuite on reprendra. » ; 11:37 : « ça se fait dans le site ça, pas en maquette ». → le chantier de l'interface d'abord (contrat §12, point 27 ; `MANDATS/UI-PLEIN-ECRAN/`) ; P2-P6 reprennent ensuite, un sujet à la fois.
+
 ## 5 · La suite
 Sur les tranchages validés : les maquettes (ton fichier de production sur le faux hub, la nouveauté écrite dedans), puis le contrat (§12.27 profil de classe + §12.28 la classe en cours), E1-E4 relancés par des sessions neuves.

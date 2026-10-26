@@ -1061,3 +1061,6 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 
 ## Veille — 20:26 UTC (21:26 Paris) · retour n°1/2
 - Rien de nouveau pour moi dans `RELANCES/E4.md` après « 26/10, 19:50 — contrôle n°62 » ; contrôle n°63 : « E4 fini » lu ; E3 (retour 55 suite, `06858cf0`) : **13 · 42 vert aux quatre tailles**. `dr-recit.js` inchangé depuis `fe825c57`. Le mot de Paul sur « Cette heure, on a fait » attendu. Retour n°2/2 dans 50 min, puis arrêt sans nouveau.
+
+## Veille close — 21:18 UTC (22:18 Paris) · retour n°2/2
+- Rien de nouveau pour moi dans `RELANCES/E4.md` après « 26/10, 19:50 — contrôle n°62 » ; §12.29 (simplifier l'existant, relances E1, E2, E3) ne me nomme pas ; `dr-recit.js` inchangé depuis `fe825c57`. **§12.28 E4 fini (`fe825c57`)** ; reste le mot de Paul sur « Cette heure, on a fait » (captures `E4-RC22-AVANT-…` / `E4-RC22-APRES-une-activite-fin.png`) avant toute production. **Veille close** : plus de retour programmé ; la conscience me relancera par une session neuve.

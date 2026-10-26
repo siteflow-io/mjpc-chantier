@@ -3511,3 +3511,28 @@ MEMO
 
 26/10/2026 11:28
 MEMO
+
+## Tour 189 — 26/10/2026 11:29 — Paul (11:29) : « Oui. La première chose à faire avant tout c'est l'UI des écrans »
+
+**Paul (mot pour mot).** « Oui. La première chose à faire avant tout c'est l'UI des écrans que j'ai demandé. Déjà j'y verrai plus clair. On utilise toute la largeur et la hauteur de l'écran, tout le temps. Tu vas tout mesurer dans le site de ce point de vue et faire ce chantier. Ensuite on reprendra. »
+
+**Fait.** « Oui » = P1 validé (la classe en cours, son propre écran) — noté au cadrage `MANDATS/PILOTAGE-EN-CLASSE/CADRAGE-26-10.md` §4 bis. Relevé des dettes d'affichage déjà dites : 12 · 87, 12 · 88, 12 · 212 (validées dans la maquette du QCM le 11/10, jamais codées), 13 · 37. Mesure par le geste de 32 écrans de la production ③ sur le faux hub à 1366 × 768 et 1920 × 1080 (`MANDATS/UI-PLEIN-ECRAN/mesure.mjs`) ; maquette commencée (interrompue par Paul, tour 190).
+
+**Réponse (mot pour mot, avant l'interruption).** « Je mesure tout le site sous l'angle « toute la largeur, toute la hauteur » (chaque écran, aux deux tailles d'écran), je relève les dettes d'affichage déjà dites, puis je fais la maquette du chantier avec des captures avant / après. »
+
+## Tour 190 — 26/10/2026 11:48 — Paul (11:37) : « Non ça se fait dans le site ça, pas en maquette »
+
+**Paul (mot pour mot).** « Non ça se fait dans le site ça, pas en maquette »
+
+**Fait.** Plus de maquette. Mesure complétée à 1536 × 864 et **1707 × 743 — la fenêtre de Paul, mesurée sur ses captures** (boutons 1,12 fois plus grands qu'à 100 % sur 1920 ; 103 px de marge de chaque côté de l'Atelier = `max-width:1500px` dans 1707 px ; la loupe de zoom dans sa barre d'adresse). Ce qui borne : panneau prof `max-width:1100px` (1 100 sur 1 707), Atelier `max-width:1500px` + bande de 60 px au-dessus des onglets + 36 px de défilement de la page, Relecture 1 120 / 900 px, accueil 1 100 px, visionneuse 1 100 px ; l'EDT et la fenêtre du tableau sont déjà plein écran ; texte médian 13-15 px (EDT 9-11). Trouvé en mesurant : la fenêtre du tableau peut ouvrir l'alerte « Vérifier les règles Firebase » au vidéoprojecteur → **dette 13 · 44** (registre prod `72d3e71`, `c3af129`). Écrit : `MANDATS/UI-PLEIN-ECRAN/MESURE.md`, captures « avant », **contrat §12 point 27** (1-11 : panneau bord à bord, ↻ ✕, section EDT en trois groupes, Atelier toute largeur et hauteur avec « Fermer l'atelier » sur la rangée des onglets, Relecture, accueil, visionneuse, 13 · 38, 13 · 44 ; rien ne change à la diapo ni au tableau ; la taille du texte = sujet suivant ; gardes E3 `banc-1227.mjs` aux quatre tailles) ; relances E1 / E3 « VA », E2 / E4 information ; sas `main` et `integration` poussés (`412a3b3a`). **E1 et E3 lancés par sessions neuves** (11:49 et 11:50, mode automatique) ; contrôle horaire de la conscience reprend (n°56 à 12:38) tant qu'ils codent.
+
+**Réponse (mot pour mot).**
+
+392. Compris : directement dans le site. Mesuré, chez toi (ta fenêtre fait 1707 × 743, mesurée sur tes captures) : le panneau prof ne prend que 1 100 px sur 1 707, l'Atelier et le pilotage 1 500 avec une bande vide au-dessus des onglets et la page qui défile un peu, la Relecture 900 px au milieu, l'accueil et la visionneuse 1 100 ; l'emploi du temps et le tableau sont déjà plein écran. Tout ça passe à toute la largeur et toute la hauteur, avec les dettes d'affichage que tu avais déjà dites (le panneau bord à bord, ↻ ✕ dans la carte d'élève, la rangée « Sortir le JSON ») ; rien ne change à la diapo ni au tableau.
+
+393. C'est lancé : E1 code, E3 vérifie chaque écran à ta taille et à trois autres, je contrôle chaque heure. Tu auras les captures avant / après, écran par écran, puis tu promeus. Trouvé en mesurant : le tableau pourrait afficher devant la classe l'alerte « Vérifier les règles Firebase » — réglé dans le même chantier.
+
+394. En attendant, sur ta capture : la loupe dans ta barre d'adresse dit que la page est zoomée ; Ctrl+0 la remet à 100 % — à essayer, ça peut déjà grossir tout le site. La taille du texte sera le sujet suivant.
+
+26/10/2026 11:48
+MEMO

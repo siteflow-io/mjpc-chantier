@@ -10426,6 +10426,7 @@ function atelierOuvrir(){
   else pret();
 }
 function atelierFermer(sansPanneau,puis){
+  if(atClasseTient()){ if(typeof atInfo==='function')atInfo('L’heure est en cours : cet écran ne se quitte pas. Il se ferme par « Clore l’heure » ; pour aller ailleurs dans le site, « ↗ Le site dans un nouvel onglet ».'); return; }   /* E1 (§12.28-3b) */
   atEnregistrerMaintenant(function(){
     var ec=document.getElementById('atelier-ecran');if(ec)ec.classList.remove('at-actif');
     document.body.classList.remove('at-corps-fige');
@@ -14894,9 +14895,19 @@ function atVuesBarreHtml(){
     ['pilotage','Pilotage','L’écran de classe : la diapo, le tableau, la participation, le chrono'],
     ['relecture','Relecture','Le récit de l’heure, ce qui s’est passé, le chapitre — et le papier du cahier (R)']];
   var ids={atelier:'ong-atelier',pilotage:'ong-pilotage',relecture:'ong-relecture'};
+  if(atClasseEnCours()){   /* E1 (§12.28-3a, 13 · 41) : « la classe en cours » — le pilote et la Relecture de cette classe, rien d'autre */
+    defs=[['pilotage','Pilotage','L’heure avec la classe : la diapo, le tableau, la participation, le chrono'],['relecture','Relecture','Le récit de l’heure de cette classe, ce qui s’est passé — et le papier du cahier (R)']];
+    return '<div class="at-vues-barre at-vues-barre-classe">'
+      +'<button class="at-onglet" data-vue="atelier" id="ong-atelier" data-atelier="1" hidden tabindex="-1" aria-hidden="true"></button>'   /* le déroulé lit #ong-atelier : présent, jamais montré ni cliquable */
+      +defs.map(function(d){
+      return '<button class="at-onglet'+(ATVUES.vue===d[0]?' at-onglet-actif':'')+'" data-vue="'+d[0]+'" id="'+ids[d[0]]+'" title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue,true)">'+d[1]+'</button>';
+    }).join('')+'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de l’heure au hub : il se fait seul, moins d’une seconde après chaque geste"></span>'
+      +'<button class="at-btn at-classe-site" onclick="atClasseSiteAilleurs()" title="Ouvre l’accueil du site dans un nouvel onglet, pour aller ailleurs sans quitter l’heure : cet écran reste ouvert ici, l’heure continue.">↗ Le site dans un nouvel onglet</button>'
+      +'<button class="at-btn at-classe-fermer" id="at-classe-fermer" onclick="atClasseFermer()" title="Ferme l’écran de la classe et ramène à l’emploi du temps. Possible avant le lancement et après « Clore l’heure » ; pendant l’heure, l’écran ne se quitte pas.">✕ Fermer</button></div>';
+  }
   return '<div class="at-vues-barre">'+defs.map(function(d){
     return '<button class="at-onglet'+(ATVUES.vue===d[0]?' at-onglet-actif':'')+'" data-vue="'+d[0]+'"'+(ids[d[0]]?' id="'+ids[d[0]]+'"':'')+(d[0]==='atelier'?' data-atelier="1"':'')
-      +' title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue)">'+d[1]+'</button>';
+      +' title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue,true)">'+d[1]+'</button>';
   }).join('')+'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de la trame au hub : il se fait seul, moins d’une seconde après chaque modification"></span>'
     +'<button class="at-btn at-fermer-onglets" onclick="atelierFermer()" title="Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd.">✕ Fermer l’atelier</button></div>';   /* E1 (§12.27-4) : « Fermer l’atelier » sur la rangée des onglets, à droite — la bande de 60 px au-dessus tombe quand la rangée existe */
 }
@@ -14928,6 +14939,7 @@ function atVuesMonter(){
 
 function atVuesAller(v){
   if(v==='deroule')v='atelier'; if(v==='papier')v='relecture';   /* E1 : les vues d'avant la 96 */
+  if(atClasseEnCours()&&v!=='pilotage'&&v!=='relecture')return;   /* E1 (§12.28-3a) : l'écran de la classe n'a ni Structure ni Atelier */
   ATVUES.vue=v; atVuesRetenir();
   if(v==='structure'){ if(typeof dr_parquer==='function')dr_parquer(); atEditerChapitreRendre(); return; }   /* E1 : lisait DR.dr_fermer() (le cadre) */
   if(typeof dr_actif==='function'&&dr_actif()&&document.querySelector('.at-vues-dr')){ atVuesMarquer(v); dr_onglet(v); return; }   /* E1 : déjà monté — on change d'onglet, rien ne se redessine */
@@ -14943,7 +14955,7 @@ function atVuesPoser(v){
   if(ATVUES.snum===null||ATVUES.snum===undefined) ATVUES.snum=(typeof atArbrePremiereSeance==='function')?atArbrePremiereSeance():'0';
   if(typeof dr_parquer==='function') dr_parquer();   /* la zone sort avant que le site ne réécrive la sienne */
   var h=atVuesBarreHtml()
-    +'<div class="at-vues-corps">'+atSommaireNatifHtml()
+    +'<div class="at-vues-corps">'+(atClasseEnCours()?'':atSommaireNatifHtml())   /* E1 (§12.28-3a) : en classe, ni « Mes chapitres » ni les autres séances — le volet de la séance revient dans la zone */
     +'<div class="at-vues-zone at-vues-zone-dr" id="at-vues-zone"></div></div>';
   z.innerHTML='<div class="at-vues-cadre at-vues-dr">'+h+'</div>';
   if(typeof dr_monter==='function'){
@@ -14954,6 +14966,60 @@ function atVuesPoser(v){
 }
 
 
+/* ═══ E1 (§12.28-3a/3b, dette 13 · 41) — L'ÉCRAN « LA CLASSE EN COURS » (P1, validé par Paul le 26/10 11:29) ═══
+   Paul, 26/10 11:20 : « je ne dois pas pouvoir quitter le pilotage. Si j'ai besoin d'aller autre part dans le site, ça doit s'ouvrir dans un
+   nouvel onglet. » — L'heure d'une classe se joue dans un écran à elle : la zone du déroulé montée dans #atelier-ecran en MODE CLASSE
+   (html.dr-en-classe) : Pilotage · Relecture de cette classe, « ↗ Le site dans un nouvel onglet », « ✕ Fermer » (avant le lancement et après
+   « Clore » seulement) ; ni Structure, ni Atelier, ni « Mes chapitres ». Tant que l'heure est lancée et pas close, rien ne la quitte :
+   atelierFermer refuse, le retour du navigateur reste sur place.
+   L'ENTRÉE : dr_ouvrirClasse(niveau, chcle, snum, apres) — E2 l'appelle depuis edtLancer, dr_edtReprendre et la reprise, à la place de
+   atelierOuvrir / atEditerChapitre / ATVUES.snum / atVuesAller('pilotage') ; apres(manque) quand le pilote est monté (manque : null si tout est là). */
+function atClasseEnCours(){ return !!(typeof DR_MEM!=='undefined'&&DR_MEM&&DR_MEM.enClasse); }
+function atClasseTient(){ try{ return atClasseEnCours()&&typeof S!=='undefined'&&!!S.lancee&&!S.close&&!S.repetition; }catch(e){ return false; } }
+function atClasseMarquer(){   /* l'état de l'écran, sur la racine (les règles de pont-css le lisent) : appelé au rendu du déroulé et à la seconde */
+  var r=document.documentElement; r.classList.toggle('dr-en-classe',atClasseEnCours()); r.classList.toggle('dr-heure-court',atClasseTient());
+}
+function dr_ouvrirClasse(niveau,chcle,snum,apres){
+  if(typeof DR_MEM!=='undefined')DR_MEM.enClasse=true;
+  atClasseMarquer();
+  var ec=document.getElementById('atelier-ecran');
+  if(typeof closeProfPanel==='function')closeProfPanel();
+  if(typeof edtFermer==='function'){ try{ edtFermer(); }catch(e){} }
+  if(ec)ec.classList.add('at-actif'); document.body.classList.add('at-corps-fige');
+  AT.doc=null; AT.docId=null;
+  try{ if(!history.state||!history.state.drClasse)history.pushState({drClasse:1},''); }catch(e){}   /* une entrée d'historique : le retour du navigateur revient sur elle, pas hors de l'écran */
+  var monter=function(){
+    try{
+      ATVUES.vue='pilotage'; ATVUES.snum=String(snum);
+      atEditerChapitre(niveau,String(chcle));
+      ATVUES.snum=String(snum);
+      atVuesAller('pilotage');
+    }catch(e){ if(typeof atInfo==='function')atInfo('L’écran de la classe ne s’ouvre pas : '+e.message); if(apres)apres('écran'); return; }
+    if(typeof edtQuandPilotagePret==='function')edtQuandPilotagePret(function(m){ atClasseMarquer(); if(apres)apres(m); });
+    else if(apres)apres(null);
+  };
+  var classes=function(){ if(typeof atChargerChapitres==='function')atChargerChapitres(niveau,function(){ monter(); }); else monter(); };
+  if(typeof loadClasses==='function')loadClasses(function(){ if(typeof loadCodes==='function')loadCodes(classes); else classes(); });
+  else classes();
+}
+function atClasseFermer(){   /* « ✕ Fermer » : avant le lancement et après « Clore » — l'emploi du temps */
+  if(atClasseTient()){ if(typeof atInfo==='function')atInfo('L’heure est en cours : elle se ferme par « Clore l’heure ».'); return; }
+  atEnregistrerMaintenant(function(){
+    if(typeof DR_MEM!=='undefined')DR_MEM.enClasse=false; atClasseMarquer();
+    var ec=document.getElementById('atelier-ecran');if(ec)ec.classList.remove('at-actif');
+    document.body.classList.remove('at-corps-fige');
+    if(typeof dr_parquer==='function')dr_parquer();
+    var z=document.getElementById('at-zone'); if(z)z.innerHTML='';   /* la prochaine ouverture de l'atelier repart de sa porte */
+    if(typeof edtOuvrir==='function')edtOuvrir();
+  });
+}
+function atClasseSiteAilleurs(){   /* « ↗ Le site dans un nouvel onglet » : l'accueil du site, en session prof (sessionStorage copié par window.open), jamais cet écran */
+  var u=location.pathname; try{ window.open(u,'_blank'); }catch(e){}
+}
+window.addEventListener('popstate',function(){
+  if(atClasseTient()){ try{ history.pushState({drClasse:1},''); }catch(e){} if(typeof atInfo==='function')atInfo('L’heure est en cours : le retour ne quitte pas l’écran de la classe. Pour aller ailleurs : « ↗ Le site dans un nouvel onglet ».'); }
+});
+setInterval(function(){ try{ atClasseMarquer(); }catch(e){} },1000);
 function atSommaireNatifHtml(){
   var ec=AT.edChap||AT_FIL; if(!ec) return '<div class="at-vues-arbre" id="at-arbre"></div>';
   try{
@@ -20011,6 +20077,10 @@ else sesReprisePoser();
    et la bande du haut (.at-fermer) tombe ; la rangée reste en haut quand Structure défile. Quand la zone du déroulé est montrée (Atelier, Pilotage,
    Relecture), rien ne défile : la zone va du dessous des onglets au bas de la fenêtre (dr_dimensionnerZone), la colonne du chapitre défile chez elle. */
 #atelier-ecran:has(.at-vues-barre)>.at-fermer,#atelier-ecran:has(.at-onglets)>.at-fermer{display:none}
+/* E1 (§12.28-3a/3b) : l'écran de la classe — ni Fermer l'atelier, ni la répétition ; « ✕ Fermer » seulement hors de l'heure ; ↗ et Fermer à droite */
+.at-vues-barre-classe .at-classe-site{margin-left:auto}
+html.dr-heure-court .at-classe-fermer{display:none}
+html.dr-en-classe #dr-zone .p8-rep-pre{display:none}
 #atelier-ecran:has(.at-onglets) .at-zone{padding-top:8px}
 .at-onglets{align-items:center}
 #atelier-ecran:has(.at-vues-barre) .at-zone{padding-top:8px}

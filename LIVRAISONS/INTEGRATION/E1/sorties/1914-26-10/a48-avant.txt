@@ -1,0 +1,6 @@
+banc E1 · 2026-10-26 18:14 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant28.html · md5 a3f2d455effb76e16aaf2aaad0bfe9cf
+
+A48 — §12.28 (3a)(3b), dette 13 · 41 : l'écran « la classe en cours » (dr_ouvrirClasse) — Pilotage · Relecture de la classe, ni Structure ni Atelier ni Mes chapitres ; aucune sortie tant que l'heure court (Fermer refusé, retour du navigateur sans effet) ; « ↗ » ouvre l'accueil du site dans un nouvel onglet ; « ✕ Fermer » avant le lancement et après « Clore » → l'emploi du temps
+  ÉCHEC  A48 · le banc n'a pas pu aller au bout — page.evaluate: ReferenceError: dr_ouvrirClasse is not defined
+
+1 vérifications, 1 échec(s) · 5 s

@@ -3295,3 +3295,18 @@ MEMO
 
 26/10/2026 08:12
 MEMO
+
+## Tour 175 — 26/10/2026 08:49 — Paul (08:48)
+
+**Paul (mot pour mot).** « Comment je fais pour voir la copie complète d'une classe? »
+
+**Mesuré (production ③, `index.html`).** L'entrée : la case d'une heure close dans l'emploi du temps porte le bouton « Relire cette heure » (l. 23339, `dr_edtRelire`, l. 18420 : ouvre le chapitre et la séance de la trace, relit la classe au hub par `dr_recitChargerClasse`, puis l'onglet Relecture ; « rien ne se rejoue, rien ne s'écrit » ; refusé si une heure est en cours). La Relecture a cinq faces (l. 19238 et suivantes) : « Le récit · heure n » (pour l'élève et École Directe), « Ce qui s'est passé · heure n » (pour Paul : diapo par diapo, ce qui a été dévoilé, qui a répondu quoi, les coupures — `passeHtml`, l. 19418), « Papier · heure n » (le papier du cahier, prêt à imprimer), « La séance » (les heures bout à bout, un seul bilan), « Le chapitre » (le tracé des travaux, ce qui a tenu, les notions — calculé des heures closes de cette classe). Les diapos de la copie de classe elles-mêmes (`C/ecrans`, avec ce qui a été écrit dedans) ne s'affichent que dans l'onglet Atelier **pendant l'heure** (régime classe) ou à « Reprendre » une heure non close ; pour une heure close, `dr_edtRelire` ouvre l'Atelier sans régime classe (la trame du chapitre, pas la copie) : aucune vue « diapo par diapo » de la copie close n'existe pour Paul. Côté élève : aucune vue de la copie de classe dans le portail (pas de « copie de classe » hors des modules du déroulé).
+
+**Réponse (mot pour mot).**
+
+361. Dans ton emploi du temps, clique la case d'une heure close de cette classe → « Relire cette heure » : la Relecture s'ouvre sur cette classe, avec cinq faces en haut — « Le récit · heure n » (le texte pour l'élève), « Ce qui s'est passé · heure n » (pour toi : diapo par diapo, ce qui a été dévoilé, qui a répondu quoi), « Papier · heure n » (le papier du cahier), « La séance » (toutes les heures de la séance bout à bout) et « Le chapitre » (le tracé des travaux, ce qui a tenu, les notions, sur toutes les heures closes de la classe). Rien ne se rejoue ni ne s'écrit depuis là.
+
+362. Si par « copie complète » tu veux les diapos telles que la classe les a remplies (ce qui a été écrit dedans, diapo par diapo), ça n'existe pas pour une heure close : tu ne les vois dans l'onglet Atelier que pendant l'heure, ou en reprenant une heure pas encore close. C'est un cadrage à ouvrir si tu le veux — dis-le.
+
+26/10/2026 08:49
+MEMO

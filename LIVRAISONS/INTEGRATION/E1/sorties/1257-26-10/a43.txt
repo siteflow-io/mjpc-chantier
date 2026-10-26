@@ -1,0 +1,13 @@
+banc E1 · 2026-10-26 12:04 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 6e4f55e3620f11e8309b6bfd6b688f02
+
+A43 — §12.27 (7) : la visionneuse d'un document (openViewer) bord à bord, à toute la fenêtre, sans coins
+  ok     A43 · 1366 × 768 : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l'en-tête ; le bouton de fermeture est là — {"l":0,"t":0,"r":1366,"b":768,"W":1366,"H":768,"coins":"0px","cadre":700,"ferme":true}
+  ok     A43 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ok     A43 · 1536 × 864 : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l'en-tête ; le bouton de fermeture est là — {"l":0,"t":0,"r":1536,"b":864,"W":1536,"H":864,"coins":"0px","cadre":796,"ferme":true}
+  ok     A43 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ok     A43 · 1707 × 743 : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l'en-tête ; le bouton de fermeture est là — {"l":0,"t":0,"r":1707,"b":743,"W":1707,"H":743,"coins":"0px","cadre":675,"ferme":true}
+  ok     A43 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ok     A43 · 1920 × 1080 : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l'en-tête ; le bouton de fermeture est là — {"l":0,"t":0,"r":1920,"b":1080,"W":1920,"H":1080,"coins":"0px","cadre":1012,"ferme":true}
+  ok     A43 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+8 vérifications, 0 échec(s) · 15 s

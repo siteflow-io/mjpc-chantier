@@ -1,0 +1,67 @@
+fichier md5 83adc8decc16ee4c51b8a68e3ceaa285
+1707x743 · 01-accueil-connexion · largeur 97 % (marges 24 / 24 px) · hauteur 73 % · texte 15.2 px (p10 12.32, p90 22.4) · aucune borne px
+1707x743 · 02-edt-semaine · largeur 98 % (marges 12 / 26 px) · hauteur 96 % · texte 10.88 px (p10 10.08, p90 14.4) · aucune borne px
+1707x743 · 03-edt-mois · largeur 98 % (marges 12 / 26 px) · hauteur 96 % · texte 9.6 px (p10 9.6, p90 10.4) · aucune borne px
+1707x743 · 04-edt-annee · largeur 98 % (marges 0 / 26 px) · hauteur 98 % · texte 9.28 px (p10 8.32, p90 11.2) · aucune borne px
+1707x743 · 05-edt-heures-perdues · largeur 98 % (marges 12 / 26 px) · hauteur 90 % · texte 11.52 px (p10 11.52, p90 11.52) · aucune borne px
+1707x743 · 06-edt-case-modale · largeur 98 % (marges 12 / 26 px) · hauteur 96 % · texte 11.2 px (p10 10.08, p90 14.72) · aucune borne px
+1707x743 · 07-accueil-niveaux · largeur 97 % (marges 24 / 24 px) · hauteur 94 % · texte 15.2 px (p10 13.6, p90 25.6) · bornes : .home-inner {max-width:1100px} ; .hero {max-width:700px}
+1707x743 · 08-niveau-3e · largeur 97 % (marges 24 / 24 px) · hauteur 97 % · texte 15.2 px (p10 12.48, p90 25.6) · bornes : .home-inner {max-width:1100px} ; .hero {max-width:700px}
+1707x743 · 09-niveau-3e-chapitre-ouvert · largeur 97 % (marges 24 / 24 px) · hauteur 97 % · texte 15.2 px (p10 12.48, p90 25.6) · bornes : .home-inner {max-width:1100px} ; .hero {max-width:700px}
+1707x743 · 10-panneau-dashboard · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 14.08 px (p10 14.08, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 11-panneau-classes · largeur 61 % (marges 325 / 335 px) · hauteur 93 % · texte 14.08 px (p10 12.48, p90 16) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 12-panneau-eleves · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 14.72 px (p10 13.76, p90 16.8) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 13-panneau-profil-test · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 14.08 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 14-panneau-archi · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 14.08 px (p10 12.48, p90 16.8) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 15-panneau-archives · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 14.08 px (p10 12.48, p90 16) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 16-panneau-corbeille · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 14.72 px (p10 12.48, p90 16) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 17-panneau-annonces · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 13.12 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 18-panneau-brevet · largeur 61 % (marges 325 / 336 px) · hauteur 93 % · texte 13.12 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 19-panneau-taxo · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 13.12 px (p10 12.48, p90 18.4) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 20-panneau-edt · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 14.4 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 21-panneau-config · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 14.08 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 22-panneau-presence · largeur 61 % (marges 325 / 339 px) · hauteur 93 % · texte 14.72 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1707x743 · 23-atelier-accueil · largeur 92 % (marges 118 / 27 px) · hauteur 50 % · texte 13.76 px (p10 12.48, p90 15.2) · bornes : .at-zone {max-width:1500px}
+1707x743 · 24-atelier-mes-chapitres · largeur 92 % (marges 118 / 27 px) · hauteur 66 % · texte 13.6 px (p10 12.48, p90 16) · bornes : .at-zone {max-width:1500px}
+1707x743 · 25-chapitre-structure · largeur 92 % (marges 118 / 27 px) · hauteur 97 % · texte 13.6 px (p10 11.52, p90 14.72) · bornes : .ed2-a4 {max-width:794px} ; .ed2-xapercu {height:260px} ; .at-zone {max-width:1500px}
+1707x743 · 26-chapitre-atelier · largeur 91 % (marges 131 / 27 px) · hauteur 97 % · texte 13.76 px (p10 12, p90 25.43) · bornes : .at-zone {max-width:1500px}
+1707x743 · 27-chapitre-pilotage-avant-lancement · largeur 91 % (marges 131 / 27 px) · hauteur 97 % · texte 15.68 px (p10 10.045, p90 34.5) · bornes : .at-zone {max-width:1500px}
+1707x743 · 28-pilote-heure-lancee · largeur 91 % (marges 131 / 27 px) · hauteur 97 % · texte 15 px (p10 10.56, p90 34.5) · bornes : .at-zone {max-width:1500px}
+1707x743 · 29-pilote-fin-de-l-heure · largeur 91 % (marges 131 / 27 px) · hauteur 97 % · texte 15 px (p10 12, p90 34.5) · bornes : .at-zone {max-width:1500px}
+1707x743 · 30-fenetre-du-tableau · largeur 31 % · hauteur 55 % · texte 14.08 px · bornes : .m8-overlay-box {max-width:620px}
+1707x743 · 31-chapitre-relecture · largeur 91 % (marges 131 / 27 px) · hauteur 97 % · texte 16.8 px (p10 13.6, p90 34.5) · bornes : .at-zone {max-width:1500px} ; :is(#dr-zone, #ses-tab, .at-som-volet) .rel {max-width:1120px} ; :is(#dr-zone, #ses-tab, .at-som-volet) .recit {max-width:900px}
+1707x743 · 32-visionneuse · largeur 61 % (marges 325 / 340 px) · hauteur 3 % · texte 16 px (p10 14.4, p90 16) · bornes : .doc-viewer-box {max-width:1100px}
+1707x743 · erreurs JS : aucune
+1536x864 · 01-accueil-connexion · largeur 97 % (marges 24 / 24 px) · hauteur 70 % · texte 15.2 px (p10 12.32, p90 22.4) · bornes : .val-box {max-width:420px}
+1536x864 · 02-edt-semaine · largeur 98 % (marges 12 / 26 px) · hauteur 97 % · texte 10.88 px (p10 10.08, p90 14.4) · aucune borne px
+1536x864 · 03-edt-mois · largeur 98 % (marges 12 / 26 px) · hauteur 97 % · texte 9.6 px (p10 9.6, p90 10.4) · aucune borne px
+1536x864 · 04-edt-annee · largeur 98 % (marges 0 / 26 px) · hauteur 98 % · texte 9.28 px (p10 8.32, p90 11.2) · aucune borne px
+1536x864 · 05-edt-heures-perdues · largeur 98 % (marges 12 / 26 px) · hauteur 77 % · texte 11.52 px (p10 11.52, p90 11.52) · aucune borne px
+1536x864 · 06-edt-case-modale · largeur 98 % (marges 12 / 26 px) · hauteur 97 % · texte 11.2 px (p10 10.08, p90 14.72) · aucune borne px
+1536x864 · 07-accueil-niveaux · largeur 97 % (marges 24 / 24 px) · hauteur 95 % · texte 15.2 px (p10 13.6, p90 25.6) · bornes : .home-inner {max-width:1100px} ; .hero {max-width:700px}
+1536x864 · 08-niveau-3e · largeur 97 % (marges 24 / 24 px) · hauteur 95 % · texte 15.2 px (p10 12.48, p90 25.6) · bornes : .home-inner {max-width:1100px} ; .hero {max-width:700px}
+1536x864 · 09-niveau-3e-chapitre-ouvert · largeur 97 % (marges 24 / 24 px) · hauteur 95 % · texte 15.2 px (p10 12.48, p90 25.6) · bornes : .home-inner {max-width:1100px} ; .hero {max-width:700px}
+1536x864 · 10-panneau-dashboard · largeur 68 % (marges 239 / 254 px) · hauteur 93 % · texte 14.08 px (p10 13.76, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 11-panneau-classes · largeur 68 % (marges 239 / 249 px) · hauteur 93 % · texte 14.08 px (p10 12.48, p90 16) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 12-panneau-eleves · largeur 68 % (marges 239 / 254 px) · hauteur 94 % · texte 14.72 px (p10 13.76, p90 16.8) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 13-panneau-profil-test · largeur 68 % (marges 239 / 254 px) · hauteur 86 % · texte 14.08 px (p10 13.76, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 14-panneau-archi · largeur 68 % (marges 239 / 254 px) · hauteur 94 % · texte 14.08 px (p10 13.6, p90 16.8) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 15-panneau-archives · largeur 68 % (marges 239 / 254 px) · hauteur 86 % · texte 14.08 px (p10 12.48, p90 16) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 16-panneau-corbeille · largeur 68 % (marges 239 / 254 px) · hauteur 86 % · texte 14.72 px (p10 12.48, p90 16) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 17-panneau-annonces · largeur 68 % (marges 239 / 254 px) · hauteur 86 % · texte 13.12 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 18-panneau-brevet · largeur 68 % (marges 239 / 251 px) · hauteur 86 % · texte 13.12 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 19-panneau-taxo · largeur 68 % (marges 239 / 254 px) · hauteur 86 % · texte 14.72 px (p10 12.48, p90 18.4) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 20-panneau-edt · largeur 68 % (marges 239 / 254 px) · hauteur 94 % · texte 14.4 px (p10 11.2, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 21-panneau-config · largeur 68 % (marges 239 / 254 px) · hauteur 86 % · texte 14.08 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 22-panneau-presence · largeur 68 % (marges 239 / 254 px) · hauteur 86 % · texte 14.72 px (p10 12.48, p90 14.72) · bornes : .tprof-box {max-width:1100px}
+1536x864 · 23-atelier-accueil · largeur 96 % (marges 32 / 27 px) · hauteur 43 % · texte 13.76 px (p10 12.48, p90 15.2) · bornes : .at-zone {max-width:1500px}
+1536x864 · 24-atelier-mes-chapitres · largeur 96 % (marges 32 / 27 px) · hauteur 57 % · texte 13.6 px (p10 12.48, p90 16) · bornes : .at-zone {max-width:1500px}
+1536x864 · 25-chapitre-structure · largeur 96 % (marges 32 / 27 px) · hauteur 98 % · texte 13.6 px (p10 11.52, p90 14.72) · bornes : .ed2-a4 {max-width:794px} ; .ed2-xapercu {height:260px} ; .at-zone {max-width:1500px}
+1536x864 · 26-chapitre-atelier · largeur 95 % (marges 45 / 27 px) · hauteur 98 % · texte 13.6 px (p10 12, p90 25.43) · bornes : .at-zone {max-width:1500px}
+1536x864 · 27-chapitre-pilotage-avant-lancement · largeur 95 % (marges 45 / 27 px) · hauteur 97 % · texte 15 px (p10 10.045, p90 34.5) · bornes : .at-zone {max-width:1500px}
+1536x864 · 28-pilote-heure-lancee · largeur 95 % (marges 45 / 27 px) · hauteur 97 % · texte 15 px (p10 10.045, p90 34.5) · bornes : .at-zone {max-width:1500px}
+1536x864 · 29-pilote-fin-de-l-heure · largeur 95 % (marges 45 / 27 px) · hauteur 98 % · texte 15 px (p10 12, p90 34.5) · bornes : .at-zone {max-width:1500px}
+1536x864 · 30-fenetre-du-tableau · largeur 35 % · hauteur 47 % · texte 14.08 px · bornes : .m8-overlay-box {max-width:620px}
+1536x864 · 31-chapitre-relecture · largeur 95 % (marges 45 / 27 px) · hauteur 97 % · texte 16.8 px (p10 13.12, p90 34.5) · bornes : .at-zone {max-width:1500px} ; :is(#dr-zone, #ses-tab, .at-som-volet) .rel {max-width:1120px} ; :is(#dr-zone, #ses-tab, .at-som-volet) .recit {max-width:900px}
+1536x864 · 32-visionneuse · largeur 68 % (marges 239 / 254 px) · hauteur 2 % · texte 16 px (p10 14.4, p90 16) · bornes : .doc-viewer-box {max-width:1100px}
+1536x864 · erreurs JS : aucune

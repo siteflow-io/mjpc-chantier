@@ -3410,3 +3410,104 @@ MEMO
 
 26/10/2026 10:29
 MEMO
+
+## Tour 182 — 26/10/2026 10:34 — Paul (10:32) : « pourquoi mes De gaulle ne s'affichent pas dans leur faux edt? »
+
+**Paul (mot pour mot).** « pourquoi mes De gaulle ne s'affichent pas dans leur faux edt? (sur les cases où je n'ai pas cours avec les autres) »
+
+**Fait.** Le vrai hub n'est pas lisible d'ici (proxy 403, mesuré au tour 172) : pas de mesure possible sur ce que Paul voit. Mesuré dans le code : les heures de la vue viennent d'`edtProjeter` (l. 22546) sur l'année, filtrées sur `classeMjpc === nom` ; une case tombe si elle n'est pas appariée à la classe (`nonImportee`), si le jour est hors des dates de l'année (`horsAnnee`) ou un jour sans cours (`horsTemps`), et en amont `edtCasesDuJour` (l. 22489) retient une case selon sa semaine A/B et sa période (`periodes`). Sur le faux hub (la grille papier T85), les sept créneaux hebdomadaires de la 3E Charles de Gaulle sont tous dans la vue (159 heures sur l'année).
+
+**Réponse (mot pour mot).**
+
+380. Je ne sais pas : ton hub n'est pas lisible d'ici, et sur le faux hub (ta grille papier) les sept créneaux de la semaine des De Gaulle sont tous dans la vue. Ce qui, dans ton site, fait tomber une heure d'une classe : une case pas appariée à la classe (« classe non encore importée »), un jour hors de tes dates d'année ou sans cours, une case d'une autre semaine (A/B) ou d'une autre période que celle du jour. Une capture écran entier de ce que tu vois — la semaine de l'emploi du temps où ça manque, et la vue « la classe » au même endroit — et je mesure.
+
+26/10/2026 10:34
+MEMO
+
+## Tour 183 — 26/10/2026 10:43 — Paul (10:41) : « je pense que c'est l'appariement. le hub doit être lisible d'ici. »
+
+**Paul (mot pour mot).** « je pense que c'est l'appariement. le hub doit être lisible d'ici. » — puis une capture du panneau prof, section Emploi du temps, « Classes de la grille et classes du site » : 3 FRANKLIN Aretha → 3 FRANKLIN ARETHA, 4 HUGO → 4 HUGO, 3 DYLAN Bob → 3 DYLAN BOB, 4 TURING → 4 TURING (pièce `T183-capture-Paul-appariement.png`).
+
+**Fait.** Le hub répond d'ici (200 ; le 403 du tour 172 ne tient plus) : lus `/site/edt/grille/2026-2027`, `/classes`, `/site/edt/periodes`, `/site/edt/decisions` (null), `/site/3e/chapitres/0/published`. Mesuré : les sept cases de 3e « 3 FRANKLIN Aretha » de la grille sont appariées à la classe du hub « 3 FRANKLIN ARETHA » (`3_franklin_aretha`, 30 élèves) ; « 3E Charles de Gaulle » (29 élèves, la classe pour laquelle le chapitre est publié) n'a aucune case ; le menu d'appariement (`edtClassesDuHub`, l. 21787) offre toutes les classes non archivées, dont « 3E Charles de Gaulle » ; le changement (`edtApparierNom`, l. 22076) écrit la grille pour toutes ses versions, l'état d'avant archivé. Pièce `T183-hub-grille-appariement.txt`.
+
+**Réponse (mot pour mot).**
+
+381. Tu as raison, et le hub répond d'ici (je corrige 380) : dans ta grille, les sept cases « 3 FRANKLIN Aretha » sont appariées à la classe du hub « 3 FRANKLIN ARETHA » (30 élèves), pas à « 3E Charles de Gaulle » (29 élèves, la classe pour laquelle ton chapitre est publié) — elle n'a aucune case, donc ni carte en bas de l'emploi du temps ni heure dans « la classe ». Le geste, dans ce panneau : au menu de « 3 FRANKLIN Aretha », choisir « 3E Charles de Gaulle » (le menu l'offre ; l'état d'avant est archivé). Ma lecture de ta grille papier (T85) les mettait là ; si tes De Gaulle sont les DYLAN Bob, c'est l'autre menu.
+
+26/10/2026 10:43
+MEMO
+
+## Tour 184 — 26/10/2026 10:45 — Paul (10:44) : « non mais c'est normal, les classes sont appariées correctement »
+
+**Paul (mot pour mot).** « non mais c'est normal, les classes sont appariées correctement, c'est juste qu'il n'y a pas la classe 3e de gaulle pour pouvoir apparier 3e de gaulle »
+
+**Fait.** Mesuré au hub : `/site/edt/grille/2026-2027/creneauxFictifs` porte quatre cases « 3E Charles de Gaulle (classe d'essai) », `classeMjpc` « 3E Charles de Gaulle », semaine AB : lundi 08:00, mardi 08:00, jeudi 10:07, vendredi 13:00 (`noteFictifs` : « posées le 01/09 par décision de Paul… lues QUE si le mode test du site est allumé »). Dans le code : `edtCasesA` (l. 20655) ne concatène `creneauxFictifs` que si `edtEnEssai()` (`m8TestOn()`, `M8_TEST`, tenu en `sessionStorage` : éteint à chaque ouverture du fichier, l. 1808-1815) ; `edtOuvrir` relit tout à la bascule du mode test (l. 22654).
+
+**Réponse (mot pour mot).**
+
+382. Oui, c'est normal, et c'est mesuré au hub : tes De Gaulle sont ta classe d'essai — quatre heures posées le 01/09 sur tes trous (lundi 08:00, mardi 08:00, jeudi 10:07, vendredi 13:00, A et B), lues seulement quand le mode test du site est allumé ; la maquette s'ouvre mode test éteint (il ne survit pas à l'ouverture d'un fichier). Le geste : « Mode test » en haut du panneau prof, puis rouvre l'emploi du temps — les quatre cases paraissent en couleur, leur carte aussi, et « la classe » s'ouvre dessus.
+
+26/10/2026 10:45
+MEMO
+
+## Tour 185 — 26/10/2026 10:48 — Paul (10:47) : « ok comment je fais pour attribuer un chapitre à une classe du coup? »
+
+**Paul (mot pour mot).** « ok comment je fais pour attribuer un chapitre à une classe du coup? »
+
+**Fait.** Mesuré dans `index.html` ③ : la publication par classe est `chapitre.published[<slug de classe>] = true` (`isPubFor`, l. 3565 ; l'EDT la lit dans `edtChapitreEnCours`, l. 22448) ; le geste est sur la page du niveau en session prof : la barre « Je publie pour : » (`_renderLensBar`, l. 3446 — Vue d'ensemble, puis une pastille par classe non archivée du niveau, `_lvlClasses`) et, sur chaque chapitre, les points de classe (`_pubCtrl`, l. 3447 : « Toutes » + un point par classe, `togglePublishChapterCls` ; avec une classe choisie dans la barre : un bouton « Publier » / « ✓ Publié »). Le nom affiché sur le point perd son préfixe de niveau (`_classTag`) : « CHARLES DE GAULLE ».
+
+**Réponse (mot pour mot).**
+
+383. Sur la page du niveau (3e), connecté en prof : en haut de la liste des chapitres, « Je publie pour : » Vue d'ensemble ou une de tes classes. En Vue d'ensemble, chaque chapitre porte un point par classe (FRANKLIN ARETHA, DYLAN BOB, CHARLES DE GAULLE, CLASSE TEST) : un clic publie le chapitre pour cette classe, le point prend sa couleur, un second clic retire ; « Toutes » publie pour toutes les classes du niveau. Si tu choisis une classe dans la barre, chaque chapitre a un bouton « Publier » / « ✓ Publié ». L'emploi du temps lit cette publication : dès qu'un chapitre est publié pour une classe, sa carte et ses heures le prennent (première séance pas jouée).
+
+26/10/2026 10:48
+MEMO
+
+## Tour 186 — 26/10/2026 11:03 — Paul (10:59) : « je suis perdu dans l'utilisation »
+
+**Paul (mot pour mot).** « j'ai publié pour la totalité de mes classes (je suis en mode test), mais je n'ai que de gaulle dont ça apparait correctement dans l'edt ensuite. par ailleurs pourquoi le site ne prend jamais la largeur d'une page complète, à part pour l'edt? tout est si petit! ce sont d'aillerus des dettes d'affichage (à aller chercher, je l'avais déjà dit) par ailleurs, je ne comprends pas à quoi correspond ce message (7 à décider??)  en fait ce qui me manque c'est que je ne sais pas dans quel ordre faire les choses, je suis perdu dans l'utilisation. Je ne sais pas où cliquer quand, quoi faire quand, etc. » — trois captures : le pilotage sur « Préparer le cahier de textes — étape 1 sur 7 » (en-tête « 3 DYLAN BOB  3E Charles de Gaulle · 08:00-08:55 · heure 1/3 »), la boîte « Il manque, avant de clore » (ce qui reste (7 à décider) · le récit relu · copié pour École Directe), la Relecture « Ce qu'on a fait aujourd'hui » (pièces `T186-capture-Paul-*.png`).
+
+**Fait.** Mesuré dans ③ : (a) mode test — la publication écrit au magasin par feuille (`/site/3e/chapitres/0/published/<slug>`, l. 14239-14244), l'EDT lit le sous-arbre `/site/3e/chapitres` (l. 22330 → `_siteGet` l. 1859-1862 : magasin à cette clé ou hub, jamais recomposé) → la publication de test est invisible à l'EDT ; (b) largeur — `.at-zone{max-width:1500px}`, `.tprof-box{max-width:1100px}` (12 · 87 ⏳ depuis le 01/10), `body{font-size:.92rem}`, `#edt-ecran` plein écran sans borne ; (c) l'en-tête du pilotage — `#hclasse` écrit une fois à `dr_demarrer` (l. 16052) avec la première classe du niveau, jamais réécrit au lancement ; (d) « ce qui reste (7 à décider) » — étape 2 des sept (l. 17686-17693 : l'échéance, ce qui reste, le travail à faire, le récit relu, avant de clore, copier pour École Directe, clore l'heure). Registre prod : dettes **13 · 37** (largeur et taille, avec 12 · 87, déclarée par Paul), **13 · 38** (classe de l'en-tête), **13 · 39** (publication en mode test invisible à l'EDT), **13 · 40** (« 7 à décider » pas compris) — commit `038d755`.
+
+**Réponse (mot pour mot).**
+
+384. L'emploi du temps : en mode test, rien ne s'écrit au hub — ta publication est dans le magasin de test, par classe, et l'emploi du temps relit tout le chapitre d'un bloc, sans y voir ces écritures : il ne montre que ce que le hub porte (les De Gaulle, publiées avant). C'est un défaut du mode test, pas de toi : dette 13 · 39. Pour voir les autres classes dans l'emploi du temps aujourd'hui, il faut publier hors mode test — et c'est alors une vraie publication, que leurs élèves voient.
+
+385. La largeur : mesuré, l'atelier est borné à 1500 px (`.at-zone`), le panneau prof à 1100 px (la dette 12 · 87 que tu as déjà dite, ouverte depuis le 01/10), le texte part de .92 rem ; seul l'emploi du temps est sans borne. Inscrit : dette 13 · 37 (avec 12 · 87). Sur ta capture aussi : l'en-tête du pilotage dit « 3 DYLAN BOB » pour une heure des De Gaulle — la première classe du niveau, écrite une fois et jamais changée au lancement : dette 13 · 38.
+
+386. « ce qui reste (7 à décider) » : sept activités prévues pour cette heure n'ont pas été jouées (Tableau 1 à 5, Les hypothèses, Question-bilan) ; à l'étape 2 des sept, tu dis pour chacune ce qu'elle devient — à l'heure suivante, à terminer, à préparer, abandonnée — et sans réponse elle glisse à l'heure suivante. Que tu ne l'aies pas compris est une dette (les mots sont pour toi) : 13 · 40.
+
+387. L'ordre des choses, tel que ton site est fait : avant — l'atelier pour le chapitre, puis sur la page du niveau le point de classe pour le publier, puis l'emploi du temps : la case → « ✎ Préparer » (et, à partir de l'heure 2, « ▶ » montre « Où en est la classe » sans rien lancer) ; en classe — l'emploi du temps : la case de l'heure → « ▶ Ouvrir le pilotage et lancer » → « Tableau » pour la fenêtre de l'écran 2 → « Dévoiler » diapo après diapo, les paroles, les notes ; à cinq minutes de la fin — « Fin de l'heure » : les sept étapes (l'échéance, ce qui reste, le travail à faire, le récit relu, avant de clore, copier pour École Directe) puis « Clore l'heure » ; après — la case devient verte : « Relire cette heure ». Que tu sois perdu est le vrai manque : je propose d'écrire ce fil en une page (`docs/MJPC6-LE-FIL.md`, tes mots) et, sur ton mot, de le cadrer dans le site — à chaque écran, ce qui vient avant et après.
+
+26/10/2026 11:03
+MEMO
+
+## Tour 187 — 26/10/2026 11:24 — Paul (11:20) : le « ? », ne pas quitter le pilotage, le lieu de la copie, la clôture automatique, le récit
+
+**Paul (mot pour mot).** « il faut que j'ai un ? sur lequel cliquer à chaque endroit où je suis et qui me dit ce qu'il faut faire à l'écran et dans quel ordre. Par ailleurs, j'ai pu fermer un pilotage d'heure sans garde, or c'est typiquement le genre de chose qui ne peut pas arriver en classe: je ne dois pas pouvoir quitter le pilotage. Si j'ai besoin d'aller autre part dans le site, ça doit s'ouvrir dans un nouvel onglet. mais le pilotage, une fois ouvert pour une classe ne peut pas être quitté. il peut être fermé par les boutons habituels de fin et de cloture, mais pas être quitté. pareil, si je ferme l'onglet, je dois avoir la garde google, et un message du site aussi: enfin, si vraiment je fermais l'onglet, instantanément l'onglet autre qui a été ouvert (ou qui est déjà ouvert) affiche un bouton "séance tant en cours avec les 4e X, reprendre" je clique et je retombe à l'endroit exact où je suis. Enfin, deux endroits m'affichent le pilotage de la COPIE de CLASSE. l'edt, et le profil de classe. L'atelier n'est jamais le lieu où je vois jouer la copie de classe. Sinon, c'est à coup sûr une cause de mélange pour moi (je ne sais plus si je joue le déroulé, la copie, une autre classe, bref). Enfin, il faut une garde à la cloture. Une heure terminée doit se fermer automatiquement et être considérée close (mesure le télescopage). Autre chose vue: dans le récit de l'heure, j'ai zappé les activités du début et n'ait fait que la fin. Du coup le récit affiche "Ce qu'on a fait aujourd'hui / 3E Charles de Gaulle · Poésie et peinture au XIXe siècle, Poésie et peinture : le Romantisme en question · lundi 26 octobre 2026 · heure 1 / Cette heure a commencé à 10 h 51 et s'est terminée à 10 h 57. / Enfin, à la fin de l'heure, on a fait l'activité 1 — Analyse d'images : la routine. / Activité 1 — Analyse d'images : la routine À 10 h 51, la consigne était : « Observe, discute, fais une hypothèse sur le Romantisme. » / Mais on ne l'a pas terminée. / Pour la prochaine séance (lundi 2 novembre) — Apprendre : Dire ce qu'on voit, avec les mots justes. / 6 activités n'ont pas été faites cette heure-ci : « Tableau 1 », qu'on fera à la prochaine séance ; « Tableau 2 », qu'on fera à la prochaine séance ; « Tableau 3 », qu'on fera à la prochaine séance ; « Tableau 4 », qu'on fera à la prochaine séance ; « Tableau 5 », qu'on fera à la prochaine séance ; « Les hypothèses de la classe », qu'on fera à la prochaine séance." en commençant son récit par "enfin", ce qui ne va pas. »
+
+**Fait.** Mesuré dans ③ (détail au sas `MANDATS/PILOTAGE-EN-CLASSE/CADRAGE-26-10.md` §2) : le « ? » n'existe que dans l'Atelier d'édition (`at-aide`, l. 16702) ; l'heure lancée se joue dans l'Atelier (`edtLancer`, l. 23191-23194) et `atelierFermer` (l. 10380) ferme sans garde, `beforeunload` ne fait que sauver (l. 15920), aucun bandeau « reprendre » ailleurs (`/site/cours_actif` l. 18101, reprise par `dr_lancer` l. 18133 et par la case de l'EDT) ; rien ne clôt d'elle-même (paliers T-5/T-3/T-1/zéro l. 17659-17663 ; l'heure reste pas close jusqu'au lancement suivant, l. 18155 ; R8 l. 18131 ; « une heure close ne se reprend plus » l. 15095) ; le récit choisit « Enfin » par la tranche d'horloge (`TEMPS`/`REP`, l. 19315). Le télescopage de la clôture automatique mesuré (§3, T-a à T-e). Registre prod : dettes **13 · 41** (quitter sans garde, reprise), **13 · 42** (récit « Enfin »), **13 · 43** (le « ? » par écran, règle du 13/10) — commit `12e837d`. Tranchages P1-P6 posés (§4).
+
+**Réponse (mot pour mot).**
+
+388. Tout est pris, mesuré contre ton site et posé au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PILOTAGE-EN-CLASSE/CADRAGE-26-10.md — tes mots, ce qui existe, le télescopage, six tranchages. Trois dettes inscrites : 13 · 41 (l'heure se quitte sans garde : l'heure se joue dans l'Atelier, « ✕ Fermer l'atelier » ferme sans rien demander, l'onglet se ferme sans garde du navigateur, aucun « reprendre » ailleurs — le pointeur de l'heure en cours existe, la reprise par la case de l'emploi du temps aussi), 13 · 42 (le récit : « Enfin » vient de la tranche d'horloge de l'activité, jamais de son rang parmi ce qui a été joué), 13 · 43 (le « ? » : seul l'Atelier d'édition en a un — ta règle du 13/10 n'est pas tenue).
+
+389. Le télescopage de la clôture automatique : aujourd'hui rien ne clôt tout seul, l'heure reste « pas close » jusqu'à ton geste ou jusqu'au lancement suivant de la classe, qui la clôt alors ; dépasser est ta décision (« le T-5 le redira, c'est toi qui décides ») ; les sept étapes te demandent (échéance, travail, École Directe) ; et « une heure close ne se reprend plus, par aucun chemin » — close d'elle-même, tu ne pourrais plus finir son cahier de textes. Tranchage P4 : l'heure se clôt d'elle-même 5 minutes après la fin du créneau (tout ce qui reste glisse, « pas de travail donné », la trace le dit, la réactivation de l'heure suivante se construit) ; si « Fin de l'heure » est ouvert, elle t'attend 5 minutes de plus ; et le cahier de textes se complète après, depuis la Relecture de l'heure (échéance, travail à faire, École Directe) — la seule écriture sur une heure close.
+
+390. Les autres tranchages, un mot chacun : P1 — « la classe en cours » est un écran à lui, ouvert par l'emploi du temps et par « la classe », pilote et Relecture de cette classe seulement, sans onglets Structure / Atelier ; l'onglet Pilotage de l'Atelier ne joue plus que la répétition et le dit. P2 — dans cet écran, aucun bouton pour sortir tant que l'heure n'est pas close, les liens vers le reste s'ouvrent dans un nouvel onglet, fermer l'onglet lève la garde du navigateur. P3 — tout onglet du site montre aussitôt « Heure en cours avec les <classe> — reprendre », qui rouvre exactement où tu en es. P5 — un « ? » par écran, au même endroit, qui dit ce qu'on y fait et dans quel ordre, avec l'avant et l'après ; la touche « ? » l'ouvre, rien d'autre. P6 — le récit suit le rang de ce qui a été joué. Ce que tu ne commentes pas est acquis ; sur ton mot, les maquettes, puis le contrat et les exécutants — et la maquette « la classe » attend toujours ton oui.
+
+26/10/2026 11:24
+MEMO
+
+## Tour 188 — 26/10/2026 11:28 — Paul (11:27) : « Je n'ai rien compris cest trop compliqué »
+
+**Paul (mot pour mot).** « Je n'ai rien compris cest trop compliqué »
+
+**Fait.** Faute de la conscience au tour 187 : trois pavés, six sujets d'un coup, en vocabulaire technique — contre la règle (un sujet à la fois, réponses courtes, les mots de Paul). Reprise : un sujet, une question à oui ou non.
+
+**Réponse (mot pour mot).**
+
+391. Trop d'un coup, c'est ma faute. Je reprends un sujet à la fois. Premier sujet : où se joue l'heure. Aujourd'hui, quand tu lances une heure depuis l'emploi du temps, elle s'ouvre dans l'Atelier, avec ses onglets et son bouton « Fermer l'atelier ». Je propose : l'heure s'ouvre dans son propre écran, « la classe en cours », sans onglets, sans bouton Fermer ; on y entre par l'emploi du temps ou par la classe ; l'Atelier ne sert plus qu'à préparer et à répéter. Oui ou non ?
+
+26/10/2026 11:28
+MEMO

@@ -14908,7 +14908,8 @@ function atVuesBarreHtml(){
   return '<div class="at-vues-barre">'+defs.map(function(d){
     return '<button class="at-onglet'+(ATVUES.vue===d[0]?' at-onglet-actif':'')+'" data-vue="'+d[0]+'"'+(ids[d[0]]?' id="'+ids[d[0]]+'"':'')+(d[0]==='atelier'?' data-atelier="1"':'')
       +' title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue,true)">'+d[1]+'</button>';
-  }).join('')+'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de la trame au hub : il se fait seul, moins d’une seconde après chaque modification"></span>'
+  }).join('')+'<span class="at-rep-ligne">Répétition : rien n’est écrit. Une heure avec une classe se lance depuis l’emploi du temps.</span>'   /* E1 (§12.28-3a) : sous l'onglet Pilotage de l'Atelier */
+    +'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de la trame au hub : il se fait seul, moins d’une seconde après chaque modification"></span>'
     +'<button class="at-btn at-fermer-onglets" onclick="atelierFermer()" title="Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd.">✕ Fermer l’atelier</button></div>';   /* E1 (§12.27-4) : « Fermer l’atelier » sur la rangée des onglets, à droite — la bande de 60 px au-dessus tombe quand la rangée existe */
 }
 
@@ -14937,13 +14938,21 @@ function atVuesMonter(){
 }
 
 
-function atVuesAller(v){
+function atVuesAller(v,depuisOnglet){
   if(v==='deroule')v='atelier'; if(v==='papier')v='relecture';   /* E1 : les vues d'avant la 96 */
   if(atClasseEnCours()&&v!=='pilotage'&&v!=='relecture')return;   /* E1 (§12.28-3a) : l'écran de la classe n'a ni Structure ni Atelier */
   ATVUES.vue=v; atVuesRetenir();
   if(v==='structure'){ if(typeof dr_parquer==='function')dr_parquer(); atEditerChapitreRendre(); return; }   /* E1 : lisait DR.dr_fermer() (le cadre) */
-  if(typeof dr_actif==='function'&&dr_actif()&&document.querySelector('.at-vues-dr')){ atVuesMarquer(v); dr_onglet(v); return; }   /* E1 : déjà monté — on change d'onglet, rien ne se redessine */
-  atVuesPoser(v);
+  if(typeof dr_actif==='function'&&dr_actif()&&document.querySelector('.at-vues-dr')){ atVuesMarquer(v); dr_onglet(v); }   /* E1 : déjà monté — on change d'onglet, rien ne se redessine */
+  else atVuesPoser(v);
+  if(depuisOnglet)atRepetitionSiPilotage(v);
+}
+/* E1 (§12.28-3a) : L'ATELIER NE LANCE PLUS. Son onglet « Pilotage » joue la répétition (la trame, rien d'écrit) ; une heure avec une classe
+   se lance depuis l'emploi du temps, dans « la classe en cours ». « ▶ Lancer » n'est montré que dans l'écran de la classe (dr.css). */
+function atRepetitionSiPilotage(v){
+  if(v!=='pilotage'||atClasseEnCours()||typeof lancerRepetition!=='function'||typeof S==='undefined')return;
+  if(S.repetition||(S.lancee&&!S.close))return;
+  try{ lancerRepetition(); }catch(e){}
 }
 
 
@@ -20190,6 +20199,8 @@ html #edt-ecran{padding-right:22px}   /* le bord droit de l'emploi du temps lais
 .aide-fil li.aide-ici{opacity:1;background:rgba(224,185,120,.16);border-radius:6px;padding:2px 6px;margin-left:-6px;outline:1px solid rgba(224,185,120,.5)}
 /* E1 (§12.28-3a/3b) : l'écran de la classe — ni Fermer l'atelier, ni la répétition ; « ✕ Fermer » seulement hors de l'heure ; ↗ et Fermer à droite */
 .at-vues-barre-classe .at-classe-site{margin-left:auto}
+.at-rep-ligne{display:none;font-size:.86rem;color:#d9c79f;font-style:italic}
+.at-vues-barre:not(.at-vues-barre-classe):has(.at-onglet-actif[data-vue="pilotage"]) .at-rep-ligne{display:inline}
 html.dr-heure-court .at-classe-fermer{display:none}
 #atelier-ecran:has(.at-onglets) .at-zone{padding-top:8px}
 .at-onglets{align-items:center}

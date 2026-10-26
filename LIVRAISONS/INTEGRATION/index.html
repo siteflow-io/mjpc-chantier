@@ -17335,17 +17335,33 @@ function edtPeindrePanneau(){
 
   /* les trois portes d'injection */
   var arrive=!(EDT.reglages&&EDT.reglages.arriverSurEdt===false);
-  h+='<div class="edt-actions edt-haut"><button class="edt-btn edt-btn-prim" onclick="edtOuvrir()">\ud83d\udcc5 Ouvrir l\u2019emploi du temps</button>'
-    +'<label class="edt-regl"><input type="checkbox"'+(arrive?' checked':'')
-    +' onchange="edtReglagePoser(\'arriverSurEdt\',this.checked)"> arriver sur l\u2019emploi du temps en me connectant</label>'
-    +EDT_OBJETS.filter(function(o){return !!EDT[o];}).map(function(o){
-      var edtD=(EDT[o]&&EDT[o].injecteLe)?(' — injecté le '+edtJourEnClair(EDT[o].injecteLe)):'';
-      return '<button class="edt-btn" onclick="edtSortirJson(\''+o+'\')" title="copier le JSON tel qu\u2019il est au hub'+escapeHtml(edtD)+'">\u2913 Sortir le JSON \u2014 '+o+escapeHtml(edtD)+'</button>';
-    }).join('')
+  /* E1 (§12.27-3, dette 12 · 212, validé par Paul le 11/10 — complément QCM-2 §4) : la rangée unique (dix éléments qui s'écrasaient
+     et défilaient de côté) devient trois groupes l'un sous l'autre, chacun son petit titre : ouvrir ; sortir le JSON (un sélecteur) ;
+     copier le prompt (un bouton par voie, nommé comme les voies d'« Injecter un objet »). Les gestes sont ceux d'aujourd'hui. */
+  var edtCoches=edtSortirJson.coches, edtPresents=EDT_OBJETS.filter(function(o){return !!EDT[o];});
+  Object.keys(edtCoches).forEach(function(o){ if(edtPresents.indexOf(o)<0) delete edtCoches[o]; });
+  h+='<div class="edt-groupes">'
+    +'<div class="edt-groupe" data-groupe="ouvrir"><div class="edt-groupe-t">\ud83d\udcc5 Ouvrir</div>'
+    +'<div class="edt-actions edt-haut"><button class="edt-btn edt-btn-prim" onclick="edtOuvrir()" title="Ouvre ton emploi du temps à la semaine en cours — rien n\u2019est écrit">\ud83d\udcc5 Ouvrir l\u2019emploi du temps</button>'
+    +'<label class="edt-regl" title="Coché : à ta connexion, le site t\u2019ouvre l\u2019emploi du temps. Le réglage s\u2019écrit au hub dès que tu cliques."><input type="checkbox"'+(arrive?' checked':'')
+    +' onchange="edtReglagePoser(\'arriverSurEdt\',this.checked)"> arriver sur l\u2019emploi du temps en me connectant</label></div></div>'
+    +'<div class="edt-groupe" data-groupe="json"><div class="edt-groupe-t">\u2913 Sortir le JSON</div>'
+    +(edtPresents.length
+      ?'<div class="edt-coches">'+edtPresents.map(function(o){
+          var edtD=(EDT[o]&&EDT[o].injecteLe)?(' — injecté le '+edtJourEnClair(EDT[o].injecteLe)):'';
+          return '<label class="edt-regl edt-coche" title="Coché, cet objet part dans le JSON que tu sors — tel qu\u2019il est au hub. Rien n\u2019est écrit."><input type="checkbox" data-objet="'+o+'"'+(edtCoches[o]?' checked':'')
+            +' onchange="edtSortirJson.coches[this.dataset.objet]=this.checked;edtSortirJson.majBouton()"> '+escapeHtml((edtSortirJson.noms[o]||o)+edtD)+'</label>';
+        }).join('')+'</div>'
+        +'<div class="edt-actions"><button class="edt-btn" onclick="edtSortirJson.toutCocher()" title="Coche tous les objets présents au hub — puis un seul bouton les sort ensemble">Tout cocher</button>'
+        +'<button class="edt-btn" id="edt-sortir-coches" onclick="edtSortirJson(edtSortirJson.choisis())">\u2913 Sortir les JSON cochés</button>'
+        +'<span class="edt-raison" id="edt-sortir-raison"></span></div>'
+      :'<p class="edt-p">Aucun objet au hub : rien à sortir.</p>')
+    +'</div>'
+    +'<div class="edt-groupe" data-groupe="prompt"><div class="edt-groupe-t">\ud83d\udccb Copier le prompt</div><div class="edt-actions">'
     /* [④a] un bouton par voie : la consigne ET le JSON en service, d'un seul geste */
     +Object.keys(EDT_PROMPTS).map(function(k){
-      return '<button class="edt-btn" onclick="edtCopierPrompt(\''+k+'\')" title="la consigne pour l\u2019IA et le JSON en service, en un seul bloc">\ud83d\udccb Copier le prompt \u2014 '+k+'</button>';
-    }).join('')+'</div>';
+      return '<button class="edt-btn" onclick="edtCopierPrompt(\''+k+'\')" title="Copie la consigne pour l\u2019IA et le JSON en service, en un seul bloc — un seul collage dans l\u2019IA. Rien n\u2019est écrit.">\ud83d\udccb '+escapeHtml((EDT_VOIES[k]&&EDT_VOIES[k].titre)||k)+'</button>';
+    }).join('')+'</div></div></div>';
   var edtAl=null; try{ edtAl=edtAlerteInjection(); }catch(e){}
   if(edtAl)
     h+='<div class="edt-bloc edt-rappel"><p class="edt-p">Le calendrier de l\u2019année a été injecté '
@@ -17467,7 +17483,7 @@ function edtPeindrePanneau(){
     });
     h+='</div></div>';
   }
-  el.innerHTML=h;
+  el.innerHTML=h; edtSortirJson.majBouton();
 }
 /* apparier toutes les cases qui portent le même nom de grille, d'un seul geste */
 function edtApparierNom(nomGrille,nomHub){
@@ -17549,7 +17565,9 @@ function edtPoserCss(){
    +'.edt-btn-actif{border-color:#e0b978;color:#e0b978}'
    +'.edt-btn-prim{background:rgba(52,211,153,.14);border-color:rgba(52,211,153,.35);color:#34d399}'
    +'.edt-zone{width:100%;min-height:120px;background:rgba(0,0,0,.25);color:#e8e0cf;border:1px solid rgba(255,255,255,.16);border-radius:9px;padding:9px;font-family:ui-monospace,monospace;font-size:.85rem}'
-   +'.edt-actions{display:flex;gap:8px;margin-top:8px}'
+   +'.edt-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px}'   /* E1 (§12.27-3) : la rangée passe à la ligne, jamais de défilement de côté */
+   +'.edt-groupes{display:flex;flex-direction:column;gap:10px;margin:8px 0}.edt-groupe{border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:8px 12px}.edt-groupe-t{font-size:.82rem;font-weight:700;color:#e0b978;margin-bottom:2px}'
+   +'.edt-coches{display:flex;flex-direction:column;gap:4px;margin-top:4px}.edt-coche{margin-left:0;font-size:.86rem}.edt-raison{font-size:.82rem;font-style:italic;color:#c9bfa4}.edt-btn:disabled{opacity:.45;cursor:not-allowed}'
    +'.edt-refus{border:1px solid rgba(248,113,113,.4);border-radius:9px;padding:9px 12px;margin-top:9px;color:#f8b4b4;font-size:.88rem}'
    +'.edt-refus ul{margin:6px 0 0 16px;padding:0}'
    +'.edt-apercu{border:1px solid rgba(52,211,153,.3);border-radius:9px;padding:9px 12px;margin-top:9px;color:#a8d8b0;font-size:.9rem}'
@@ -18344,6 +18362,19 @@ function edtCopierPrompt(voie){
 
 /* sortir l'état réel d'un objet, pour relire, archiver, ou le donner à une IA */
 function edtSortirJson(objet){
+  /* E1 (§12.27-3) : plusieurs objets cochés → un seul JSON, chacun rangé sous son identifiant ; un seul → le geste d'aujourd'hui, inchangé */
+  if(Object.prototype.toString.call(objet)==='[object Array]'){
+    var edtL=objet.filter(function(k){return !!EDT[k];});
+    if(!edtL.length){ if(typeof atInfo==='function')atInfo('Rien à sortir : coche au moins un objet.'); return ''; }
+    if(edtL.length===1) return edtSortirJson(edtL[0]);
+    var edtTout={}; edtL.forEach(function(k){ edtTout[k]=EDT[k]; });
+    var edtT=JSON.stringify(edtTout,null,1);
+    var edtMain=function(){ try{ var edtZ=document.createElement('textarea'); edtZ.value=edtT; document.body.appendChild(edtZ); edtZ.select(); document.execCommand('copy'); edtZ.remove(); }catch(e2){} };
+    try{ var edtP=navigator.clipboard.writeText(edtT); if(edtP&&edtP.catch) edtP.catch(edtMain); }catch(e){ edtMain(); }
+    var edtNoms=edtL.map(function(k){return '« '+k+' »';});
+    if(typeof atInfo==='function')atInfo('JSON de '+edtNoms.slice(0,-1).join(', ')+' et '+edtNoms[edtNoms.length-1]+' copié \u2014 '+edtT.length+' caractères.');
+    return edtT;
+  }
   var o=EDT[objet];
   if(!o){ if(typeof atInfo==='function')atInfo('Rien à sortir : aucun objet « '+objet+' » au hub.'); return ''; }
   var t=JSON.stringify(o,null,1);
@@ -18352,6 +18383,17 @@ function edtSortirJson(objet){
   if(typeof atInfo==='function')atInfo('JSON de « '+objet+' » copié \u2014 '+t.length+' caractères.');
   return t;
 }
+edtSortirJson.coches={};   /* E1 (§12.27-3) : les cases cochées du sélecteur « Sortir le JSON » (en mémoire, rien n'est écrit) */
+edtSortirJson.choisis=function(){ return EDT_OBJETS.filter(function(o){ return !!EDT[o] && !!edtSortirJson.coches[o]; }); };
+edtSortirJson.majBouton=function(){   /* le bouton fermé tant que rien n'est coché, sa raison à l'écran (sans redessiner le panneau : une saisie en cours n'est jamais touchée) */
+  var b=document.getElementById('edt-sortir-coches'), r=document.getElementById('edt-sortir-raison'); if(!b)return;
+  var n=edtSortirJson.choisis().length;
+  b.disabled=!n;
+  b.title=n?('Copie dans le presse-papiers '+(n===1?'le JSON de l\u2019objet coché, tel qu\u2019il est au hub':'un seul JSON où chacun des '+n+' objets cochés est rangé sous son nom')+'. Rien n\u2019est écrit.'):'Fermé : aucun objet n\u2019est coché. Coche un objet (ou « Tout cocher ») pour sortir son JSON.';
+  if(r) r.textContent=n?'':'Coche au moins un objet.';
+};
+edtSortirJson.noms={calendrier:'Calendrier de l\u2019année',grille:'Grille de l\u2019emploi du temps',creneaux:'Créneaux horaires',periodes:'Découpage en périodes',photos:'Photos du prévu',reglages:'Réglages de l\u2019emploi du temps',decisions:'Décisions horaires'};   /* E1 (§12.27-3) : les noms en clair du complément QCM-2 §4.3, pris dans index.html */
+edtSortirJson.toutCocher=function(){ EDT_OBJETS.forEach(function(o){ if(EDT[o]) edtSortirJson.coches[o]=true; }); var c=document.querySelectorAll('#edt-panneau .edt-coche input[data-objet]'); for(var i=0;i<c.length;i++) c[i].checked=true; edtSortirJson.majBouton(); };
 
 
 /* ═══ LA MODALE D'UNE CASE — décider de l'horaire, et lancer ════════════════

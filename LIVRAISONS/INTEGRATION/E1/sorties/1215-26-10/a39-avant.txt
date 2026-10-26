@@ -1,0 +1,23 @@
+banc E1 · 2026-10-26 11:03 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant.html · md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+A39 — §12.27 (3), dette 12 · 212 : la section « Emploi du temps » en trois groupes l'un sous l'autre (ouvrir · sortir le JSON avec le sélecteur · copier le prompt), sans défilement de côté ; le bouton fermé avec sa raison ; un objet = le geste d'aujourd'hui, plusieurs = un seul JSON
+  ÉCHEC  A39 · 1366 × 768 : trois groupes l'un sous l'autre, chacun son petit titre ; « Ouvrir l'emploi du temps » et sa case dans le premier — 
+  ok     A39 · 1366 × 768 : aucun défilement de côté, rien ne sort à droite du contenu — {"cote":0,"debord":0}
+  ÉCHEC  A39 · 1366 × 768 : une case par objet présent au hub, nommé en clair (et sa date quand il en a une) — 
+  ÉCHEC  A39 · 1366 × 768 : « ⤓ Sortir les JSON cochés » fermé tant que rien n'est coché, sa raison à l'écran et dans l'infobulle — {"raison":""}
+  ÉCHEC  A39 · 1366 × 768 : un bouton « Copier le prompt » par voie, nommé comme les voies d'« Injecter un objet » — 
+  ok     A39 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ÉCHEC  A39 · 1536 × 864 : trois groupes l'un sous l'autre, chacun son petit titre ; « Ouvrir l'emploi du temps » et sa case dans le premier — 
+  ok     A39 · 1536 × 864 : aucun défilement de côté, rien ne sort à droite du contenu — {"cote":0,"debord":0}
+  ÉCHEC  A39 · 1536 × 864 : une case par objet présent au hub, nommé en clair (et sa date quand il en a une) — 
+  ÉCHEC  A39 · 1536 × 864 : « ⤓ Sortir les JSON cochés » fermé tant que rien n'est coché, sa raison à l'écran et dans l'infobulle — {"raison":""}
+  ÉCHEC  A39 · 1536 × 864 : un bouton « Copier le prompt » par voie, nommé comme les voies d'« Injecter un objet » — 
+  ok     A39 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ÉCHEC  A39 · 1707 × 743 : trois groupes l'un sous l'autre, chacun son petit titre ; « Ouvrir l'emploi du temps » et sa case dans le premier — 
+  ok     A39 · 1707 × 743 : aucun défilement de côté, rien ne sort à droite du contenu — {"cote":0,"debord":0}
+  ÉCHEC  A39 · 1707 × 743 : une case par objet présent au hub, nommé en clair (et sa date quand il en a une) — 
+  ÉCHEC  A39 · 1707 × 743 : « ⤓ Sortir les JSON cochés » fermé tant que rien n'est coché, sa raison à l'écran et dans l'infobulle — {"raison":""}
+  ÉCHEC  A39 · 1707 × 743 : un bouton « Copier le prompt » par voie, nommé comme les voies d'« Injecter un objet » — 
+  ÉCHEC  A39 · le banc n'a pas pu aller au bout — page.click: Timeout 30000ms exceeded.
+
+18 vérifications, 13 échec(s) · 48 s

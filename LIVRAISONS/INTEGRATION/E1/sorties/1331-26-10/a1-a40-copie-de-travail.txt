@@ -1,0 +1,66 @@
+banc E1 · 2026-10-26 12:29 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/apres.html · md5 e6a5fa6e9cca1aa744174c89834d4282
+
+A1 — les collisions (contrat §7)
+  ok     A1 · collisions.mjs : aucune collision dans les fichiers d'E1 (dr.css, dr-gabarit.js, dr-socle.js, dr-atelier.js)
+      (collisions.mjs, tous modules : 0)
+
+A40 — §12.27 (4), dette 13 · 37 : l'Atelier à toute la largeur et toute la hauteur — « ✕ Fermer l'atelier » sur la rangée des onglets, la page ne défile plus quand la zone du déroulé est montrée, la zone touche le bas de la fenêtre ; la diapo du pilote inchangée (10)
+  ok     A40 · 1366 × 768 : Structure — « ✕ Fermer l'atelier » sur la rangée des onglets, à droite ; la bande du haut est tombée ; la rangée en haut de l'écran (8 px) — {"f":true,"droite":0,"memeRangee":true,"band":"none","haut":8,"titre":"Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd."}
+  ok     A40 · 1366 × 768 : Structure défile comme aujourd'hui, la rangée (et « Fermer ») reste en haut — {"t":0,"s2":70}
+  ok     A40 · 1366 × 768 : atelier — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1338,"W":1366,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1366 × 768 : atelier — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1338 / 1338
+  ok     A40 · 1366 × 768 : atelier — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1366 × 768 : pilotage — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1338,"W":1366,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1366 × 768 : pilotage — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1338 / 1338
+  ok     A40 · 1366 × 768 : pilotage — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1366 × 768 : relecture — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1338,"W":1366,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1366 × 768 : relecture — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1338 / 1338
+  ok     A40 · 1366 × 768 : relecture — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1366 × 768 : le clic sur « ✕ Fermer l'atelier » de la rangée ferme l'atelier et rouvre le panneau prof — {"at":false,"pan":true}
+  ok     A40 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ok     A40 · 1536 × 864 : Structure — « ✕ Fermer l'atelier » sur la rangée des onglets, à droite ; la bande du haut est tombée ; la rangée en haut de l'écran (8 px) — {"f":true,"droite":0,"memeRangee":true,"band":"none","haut":8,"titre":"Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd."}
+  ok     A40 · 1536 × 864 : Structure défile comme aujourd'hui, la rangée (et « Fermer ») reste en haut — {"t":0,"s2":70}
+  ok     A40 · 1536 × 864 : atelier — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1508,"W":1536,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1536 × 864 : atelier — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1508 / 1508
+  ok     A40 · 1536 × 864 : atelier — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1536 × 864 : pilotage — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1508,"W":1536,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1536 × 864 : pilotage — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1508 / 1508
+  ok     A40 · 1536 × 864 : pilotage — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1536 × 864 : relecture — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1508,"W":1536,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1536 × 864 : relecture — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1508 / 1508
+  ok     A40 · 1536 × 864 : relecture — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1536 × 864 : le clic sur « ✕ Fermer l'atelier » de la rangée ferme l'atelier et rouvre le panneau prof — {"at":false,"pan":true}
+  ok     A40 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ok     A40 · 1707 × 743 : Structure — « ✕ Fermer l'atelier » sur la rangée des onglets, à droite ; la bande du haut est tombée ; la rangée en haut de l'écran (8 px) — {"f":true,"droite":0,"memeRangee":true,"band":"none","haut":8,"titre":"Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd."}
+  ok     A40 · 1707 × 743 : Structure défile comme aujourd'hui, la rangée (et « Fermer ») reste en haut — {"t":0,"s2":70}
+  ok     A40 · 1707 × 743 : atelier — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1679,"W":1707,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1707 × 743 : atelier — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1679 / 1679
+  ok     A40 · 1707 × 743 : atelier — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1707 × 743 : pilotage — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1679,"W":1707,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1707 × 743 : pilotage — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1679 / 1679
+  ok     A40 · 1707 × 743 : pilotage — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1707 × 743 : relecture — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1679,"W":1707,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1707 × 743 : relecture — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1679 / 1679
+  ok     A40 · 1707 × 743 : relecture — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1707 × 743 : le pilote rend chacune des 21 diapos (lu pour la comparaison avant / après) — 21
+  ok     A40 · 1707 × 743 : le clic sur « ✕ Fermer l'atelier » de la rangée ferme l'atelier et rouvre le panneau prof — {"at":false,"pan":true}
+  ok     A40 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ok     A40 · 1920 × 1080 : Structure — « ✕ Fermer l'atelier » sur la rangée des onglets, à droite ; la bande du haut est tombée ; la rangée en haut de l'écran (8 px) — {"f":true,"droite":0,"memeRangee":true,"band":"none","haut":8,"titre":"Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd."}
+  ok     A40 · 1920 × 1080 : Structure défile comme aujourd'hui, la rangée (et « Fermer ») reste en haut — {"t":0,"s2":70}
+  ok     A40 · 1920 × 1080 : atelier — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1892,"W":1920,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1920 × 1080 : atelier — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1892 / 1892
+  ok     A40 · 1920 × 1080 : atelier — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1920 × 1080 : pilotage — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1892,"W":1920,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1920 × 1080 : pilotage — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1892 / 1892
+  ok     A40 · 1920 × 1080 : pilotage — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1920 × 1080 : relecture — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (4 px) — {"defile":0,"top":0,"bas":4,"largeur":1892,"W":1920,"cote":0,"som":{"bas":4,"oy":"auto","defile":true}}
+  ok     A40 · 1920 × 1080 : relecture — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1892 / 1892
+  ok     A40 · 1920 × 1080 : relecture — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":4,"oy":"auto","defile":true}
+  ok     A40 · 1920 × 1080 : le pilote rend chacune des 21 diapos (lu pour la comparaison avant / après) — 21
+  ok     A40 · 1920 × 1080 : le clic sur « ✕ Fermer l'atelier » de la rangée ferme l'atelier et rouvre le panneau prof — {"at":false,"pan":true}
+  ok     A40 · 1920 × 1080 : aucune erreur JS, aucune boîte
+  ok     A40 · « Mes chapitres » (l'accueil de l'atelier) : « ✕ Fermer l'atelier » sur sa rangée d'onglets (Mes feuilles · Mes chapitres), à droite ; plus de bande au-dessus — {"barre":false,"mesCh":true,"f":true,"droite":0,"band":"none"}
+  ok     A40 · « Mes chapitres » : le clic ferme l'atelier et rouvre le panneau prof
+  ok     A40 · (10) la diapo du pilote ne change pas avant / après (mêmes pages, mêmes lignes à la première page, même police à 0,001 près du cadre), à 1707 × 743 et 1920 × 1080
+
+58 vérifications, 0 échec(s) · 84 s

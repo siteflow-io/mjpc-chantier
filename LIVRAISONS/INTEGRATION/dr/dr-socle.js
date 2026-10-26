@@ -23,7 +23,7 @@ function dr_placerVolet(){
   if (hote) { if (v.parentNode !== hote) hote.appendChild(v); z.classList.add('dr-colonne-unique'); }
   else { const c = z.querySelector('.corps'); if (c && v.parentNode !== c) c.insertBefore(v, c.querySelector('.scene')); z.classList.remove('dr-colonne-unique'); }
 }
-function dr_dimensionnerZone(){ const z = dr_zone(); if (!z || z.classList.contains('dr-parque')) return; const haut = Math.max(0, z.getBoundingClientRect().top); const hz = Math.max(420, window.innerHeight - haut - 4); z.style.height = hz + 'px'; const ae = document.getElementById('atelier-ecran'); if (ae) ae.style.setProperty('--dr-zone-h', hz + 'px'); }   /* E1 (§12.27-4) : la colonne du chapitre (.ed2-som) prend la même hauteur que la zone — chacune défile chez elle, la page ne défile plus */
+function dr_dimensionnerZone(){ const z = dr_zone(); if (!z || z.classList.contains('dr-parque')) return; const haut = Math.max(0, z.getBoundingClientRect().top); const hz = Math.max(420, window.innerHeight - haut - 4); z.style.height = hz + 'px'; document.documentElement.style.setProperty('--dr-zone-h', hz + 'px'); }   /* sur la racine (la variable descend jusqu'à la colonne) : le module ne lit aucun id du site (collisions.mjs) */   /* E1 (§12.27-4) : la colonne du chapitre (.ed2-som) prend la même hauteur que la zone — chacune défile chez elle, la page ne défile plus */
 /* les écoutes globales de la maquette (clavier, souris, fenêtre) ne valent que quand le déroulé est à l'écran :
    ailleurs dans le site, ← → espace G N T L R n'appartiennent pas au déroulé */
 function dr_ecouteDoc(type, fn, opt){ document.addEventListener(type, function(ev){ if (!dr_actif()) return; return fn.call(this, ev); }, opt); }

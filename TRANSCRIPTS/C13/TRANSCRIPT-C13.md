@@ -3498,3 +3498,16 @@ MEMO
 
 26/10/2026 11:24
 MEMO
+
+## Tour 188 — 26/10/2026 11:28 — Paul (11:27) : « Je n'ai rien compris cest trop compliqué »
+
+**Paul (mot pour mot).** « Je n'ai rien compris cest trop compliqué »
+
+**Fait.** Faute de la conscience au tour 187 : trois pavés, six sujets d'un coup, en vocabulaire technique — contre la règle (un sujet à la fois, réponses courtes, les mots de Paul). Reprise : un sujet, une question à oui ou non.
+
+**Réponse (mot pour mot).**
+
+391. Trop d'un coup, c'est ma faute. Je reprends un sujet à la fois. Premier sujet : où se joue l'heure. Aujourd'hui, quand tu lances une heure depuis l'emploi du temps, elle s'ouvre dans l'Atelier, avec ses onglets et son bouton « Fermer l'atelier ». Je propose : l'heure s'ouvre dans son propre écran, « la classe en cours », sans onglets, sans bouton Fermer ; on y entre par l'emploi du temps ou par la classe ; l'Atelier ne sert plus qu'à préparer et à répéter. Oui ou non ?
+
+26/10/2026 11:28
+MEMO

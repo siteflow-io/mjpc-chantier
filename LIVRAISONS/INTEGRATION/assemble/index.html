@@ -14908,7 +14908,8 @@ function atVuesBarreHtml(){
   return '<div class="at-vues-barre">'+defs.map(function(d){
     return '<button class="at-onglet'+(ATVUES.vue===d[0]?' at-onglet-actif':'')+'" data-vue="'+d[0]+'"'+(ids[d[0]]?' id="'+ids[d[0]]+'"':'')+(d[0]==='atelier'?' data-atelier="1"':'')
       +' title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue,true)">'+d[1]+'</button>';
-  }).join('')+'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de la trame au hub : il se fait seul, moins d’une seconde après chaque modification"></span>'
+  }).join('')+'<span class="at-rep-ligne">Répétition : rien n’est écrit. Une heure avec une classe se lance depuis l’emploi du temps.</span>'   /* E1 (§12.28-3a) : sous l'onglet Pilotage de l'Atelier */
+    +'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de la trame au hub : il se fait seul, moins d’une seconde après chaque modification"></span>'
     +'<button class="at-btn at-fermer-onglets" onclick="atelierFermer()" title="Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd.">✕ Fermer l’atelier</button></div>';   /* E1 (§12.27-4) : « Fermer l’atelier » sur la rangée des onglets, à droite — la bande de 60 px au-dessus tombe quand la rangée existe */
 }
 
@@ -14937,13 +14938,21 @@ function atVuesMonter(){
 }
 
 
-function atVuesAller(v){
+function atVuesAller(v,depuisOnglet){
   if(v==='deroule')v='atelier'; if(v==='papier')v='relecture';   /* E1 : les vues d'avant la 96 */
   if(atClasseEnCours()&&v!=='pilotage'&&v!=='relecture')return;   /* E1 (§12.28-3a) : l'écran de la classe n'a ni Structure ni Atelier */
   ATVUES.vue=v; atVuesRetenir();
   if(v==='structure'){ if(typeof dr_parquer==='function')dr_parquer(); atEditerChapitreRendre(); return; }   /* E1 : lisait DR.dr_fermer() (le cadre) */
-  if(typeof dr_actif==='function'&&dr_actif()&&document.querySelector('.at-vues-dr')){ atVuesMarquer(v); dr_onglet(v); return; }   /* E1 : déjà monté — on change d'onglet, rien ne se redessine */
-  atVuesPoser(v);
+  if(typeof dr_actif==='function'&&dr_actif()&&document.querySelector('.at-vues-dr')){ atVuesMarquer(v); dr_onglet(v); }   /* E1 : déjà monté — on change d'onglet, rien ne se redessine */
+  else atVuesPoser(v);
+  if(depuisOnglet)atRepetitionSiPilotage(v);
+}
+/* E1 (§12.28-3a) : L'ATELIER NE LANCE PLUS. Son onglet « Pilotage » joue la répétition (la trame, rien d'écrit) ; une heure avec une classe
+   se lance depuis l'emploi du temps, dans « la classe en cours ». « ▶ Lancer » n'est montré que dans l'écran de la classe (dr.css). */
+function atRepetitionSiPilotage(v){
+  if(v!=='pilotage'||atClasseEnCours()||typeof lancerRepetition!=='function'||typeof S==='undefined')return;
+  if(S.repetition||(S.lancee&&!S.close))return;
+  try{ lancerRepetition(); }catch(e){}
 }
 
 
@@ -14980,6 +14989,7 @@ function atClasseMarquer(){   /* l'état de l'écran, sur la racine (les règles
   var r=document.documentElement; r.classList.toggle('dr-en-classe',atClasseEnCours()); r.classList.toggle('dr-heure-court',atClasseTient());
 }
 function dr_ouvrirClasse(niveau,chcle,snum,apres){
+  try{ if(typeof S!=='undefined'&&S&&S.repetition&&typeof arreterRepetition==='function')arreterRepetition(); }catch(e){}   /* une répétition laissée ouverte dans l'onglet Pilotage de l'Atelier s'arrête : la classe ne joue jamais par-dessus elle */
   if(typeof DR_MEM!=='undefined')DR_MEM.enClasse=true;
   atClasseMarquer();
   var ec=document.getElementById('atelier-ecran');
@@ -15533,6 +15543,7 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .recit{background:#fffdf8;color:#1f1a14;border-radius:8px;padding:22px 30px;font-size:1.05rem;line-height:1.6;max-width:900px}:is(#dr-zone,#ses-tab,.at-som-volet) .recit h2{margin:0 0 .2em;font-size:1.3rem;font-weight:600}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .sous{color:#6a5a48;font-size:.92rem;margin:0 0 .6em}:is(#dr-zone,#ses-tab,.at-som-volet) .recit p{margin:.55em 0}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .cadre{color:#6a5a48;font-size:.92rem}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .act-r{font-weight:600;color:#5a4a34;display:block;margin-top:.5em}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .devoirs{margin-top:1em;border-top:1px solid #e3dccd;padding-top:.6em}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .bilan{color:#5a4a34;font-style:italic}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .versee{background:#fff6d6}
 #dr-zone .rel,#dr-zone .recit{max-width:none} /* E1 (§12.27-5) : la Relecture à toute la largeur de sa colonne (avant : .rel 1120px, .recit 900px) — sous #dr-zone seulement : la fenêtre du tableau (#ses-tab) garde les siennes (point 27 (10)) */
 html.dr-en-classe #dr-zone .p8-rep-pre{display:none} /* E1 (§12.28-3a) : dans l'écran de la classe, pas de « Jouer en avance » (la répétition est à l'Atelier) */
+html:not(.dr-en-classe) #dr-zone #dr-lancer{display:none} /* E1 (§12.28-3a) : l'Atelier ne lance plus — « ▶ Lancer » n'est que dans l'écran de la classe */
 :is(#dr-zone,#ses-tab,.at-som-volet) .pasfil{padding:10px 14px;margin:8px 0;background:var(--carte);border:1px solid var(--bord);border-left:4px solid var(--joue);border-radius:6px}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil.retour{border-left-color:var(--rouge)}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil.saut{border-left-color:var(--ambre)}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil .dr-h{color:var(--or);font-variant-numeric:tabular-nums;font-weight:600;margin-right:8px}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil .dr-d{color:var(--texte2);margin-left:8px}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil .l{margin:3px 0 0 4px;color:var(--texte2)}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil .l.gel{color:var(--gel)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .rel table{border-collapse:collapse;width:100%}:is(#dr-zone,#ses-tab,.at-som-volet) .rel td,:is(#dr-zone,#ses-tab,.at-som-volet) .rel th{padding:6px 10px 6px 0;border-top:1px solid var(--bord);vertical-align:top;text-align:left}:is(#dr-zone,#ses-tab,.at-som-volet) .rel th{color:var(--sourd);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-top:0}:is(#dr-zone,#ses-tab,.at-som-volet) .rel tr.non td{color:var(--sourd)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .rel .puce{display:inline-block;border:1px solid var(--bord2);border-radius:14px;padding:2px 10px;margin:3px 6px 3px 0}:is(#dr-zone,#ses-tab,.at-som-volet) .rel .vide{color:var(--sourd);font-style:italic}
@@ -16941,7 +16952,7 @@ function gardeCahier(faire){ const E = seance().ecrans; const o = ordreHeure(S.h
   else { titre = 'Aller au cahier de textes — validation'; corps = `<div class="gc-l"><span class="gc-n">✔</span><span>Aucune activité restante prévue pour cette heure — tu es à l'heure.</span><span class="gc-r"></span></div><div class="gc-s">Tout a été fait : le cahier de textes n'aura que le travail à faire et le récit.</div>`; }
   $('gc-titre').textContent = titre; $('gc-corps').innerHTML = corps; $('gc-corps').querySelectorAll('.gc-l.cliquable').forEach(l => l.onclick = () => apercuOuvrir(l.dataset.diapos.split(',').map(Number).filter(n => !isNaN(n)), 0)); $('garde-cahier').classList.add('on'); $('gc-rester').onclick = () => { $('garde-cahier').classList.remove('on'); journal('cahier-garde', { choix: 'rester' }); }; $('gc-aller').onclick = () => { $('garde-cahier').classList.remove('on'); journal('cahier-garde', { choix: 'y-aller' }); faire(); if (!S.enFin) ouvrirFin(true); /* la séquence est là avant le cahier (Paul, 24/09) */ }; $('gc-aller').focus({ preventScroll: true }); }
 
-function dr_garde(faire, quoi){ if (S.gel || S.repetition) return faire(); /* (p6) aucune garde en répétition */ gardeEnAttente = faire; $('garde-titre').textContent = 'La classe te suivrait — ' + quoi + '.'; $('garde').classList.add('on'); $('garde-gel').focus({ preventScroll: true }); }
+function dr_garde(faire, quoi){ if (S.gel || S.repetition || !S.lancee) return faire(); /* (p6) aucune garde en répétition ; E1 (§12.28-3a) ni avant le lancement : dans l'écran de la classe, « Où en est la classe » montre les diapos sans que la classe suive — il n'y a pas encore d'heure */ gardeEnAttente = faire; $('garde-titre').textContent = 'La classe te suivrait — ' + quoi + '.'; $('garde').classList.add('on'); $('garde-gel').focus({ preventScroll: true }); }
 
 $('garde-gel').onclick = () => { $('garde').classList.remove('on'); if (!S.gel) gel(); const f = gardeEnAttente; gardeEnAttente = null; if (f) f(); };
 
@@ -17352,7 +17363,7 @@ function p8ReactAvantLancement(e){ try { if (S.atelier || S.repetition) return f
 function p8CopieDiapo(h, eid){ S.copie = S.copie || {}; const H = S.copie[h] = S.copie[h] || {}; return H[eid] = H[eid] || {}; }
 
 /* la frappe en classe va dans la copie, jamais dans la trame ; le pilote et le tableau la montrent (le texte qui a le focus n'est jamais touché par le redessin) */
-function p8EcrireCopie(el){ const b = blocDe(el); if (!b) return; const e = ecran(); const bloc = e.blocs[b.bi]; if (!bloc || !bloc.bid) return; const c = p8CopieDiapo(S.heure, e.eid); const cb = c[bloc.bid] = c[bloc.bid] || {}; const txt = el.textContent; if (b.ei === 't') cb.t = txt; else (cb.el = cb.el || {})[b.ei] = txt; { const der = J[J.length - 1]; if (der && der.type === 'copie-classe' && der.eid === e.eid && der.bid === bloc.bid && der.ei === b.ei) der.n = txt.length; else journal('copie-classe', { di: S.di, eid: e.eid, bid: bloc.bid, ei: b.ei, n: txt.length }); } /* E1 (réveil n°3, 2) : une frappe suivie dans le même texte = une entrée (sa longueur suit), plus une par touche */ dr_tout(); }
+function p8EcrireCopie(el){ const b = blocDe(el); if (!b) return; const e = ecran(); const bloc = e.blocs[b.bi]; if (!bloc || !bloc.bid) return; const c = p8CopieDiapo(S.heure, e.eid); const cb = c[bloc.bid] = c[bloc.bid] || {}; const txt = el.textContent; if (b.ei === 't') cb.t = txt; else (cb.el = cb.el || {})[b.ei] = txt; { const der = J[J.length - 1]; if (der && der.type === 'copie-classe' && der.eid === e.eid && der.bid === bloc.bid && der.ei === b.ei) der.n = txt.length; else journal('copie-classe', { di: S.di, eid: e.eid, bid: bloc.bid, ei: b.ei, n: txt.length }); } /* E1 (réveil n°3, 2) : une frappe suivie dans le même texte = une entrée (sa longueur suit), plus une par touche */ if (typeof dr_etatAuto === 'function') dr_etatAuto(); /* E1 (§12.28, vu en adaptant A29) : la retouche part dans C/etat 900 ms après la DERNIÈRE frappe — avant, seule la première frappe (l'entrée au journal) planifiait l'écriture, et la fin du texte pouvait manquer au hub */ dr_tout(); }
 
 /* E1 (réveil n°3, 2) : en classe, un appui sur un élément encore grisé le dévoile (jusqu'à lui) — il n'y écrit pas : la copie ne s'écrit que dans ce que la classe voit */
 dr_ecouteDoc('mousedown', ev => { if (S.atelier || S.preparation || !p8EnClasse() || ev.button !== 0) return; const x = ev.target.closest && ev.target.closest('#mur .pas[data-k]'); if (!x) return; const bl = x.closest('.bloc[data-bi]'); const bi = bl ? +bl.dataset.bi : -1; const bloc = bi >= 0 ? (ecran().blocs || [])[bi] : null; if (!bloc || bloc.t !== 'question') return; /* E1 (relecture continue E4, A5 16:15 ; C1 4.3) : une consigne, une fiche, des étapes grises restent grises au clic — seul ▶ avance ; seule la question s'ouvre (C1 4.2) */ ev.preventDefault(); ev.stopPropagation(); S._drPasClic = Date.now(); const k = +x.dataset.k; const d = etatDiapo(); if (k + 1 > d.nDev) { S.neuf = { di: S.di, k: d.nDev, t: now() }; d.nDev = k + 1; S.page = null; dr_tout(); } S._drPasBi = bi; dr_versReponse(bi); }, true);
@@ -24889,6 +24900,8 @@ html #edt-ecran{padding-right:22px}   /* le bord droit de l'emploi du temps lais
 .aide-fil li.aide-ici{opacity:1;background:rgba(224,185,120,.16);border-radius:6px;padding:2px 6px;margin-left:-6px;outline:1px solid rgba(224,185,120,.5)}
 /* E1 (§12.28-3a/3b) : l'écran de la classe — ni Fermer l'atelier, ni la répétition ; « ✕ Fermer » seulement hors de l'heure ; ↗ et Fermer à droite */
 .at-vues-barre-classe .at-classe-site{margin-left:auto}
+.at-rep-ligne{display:none;font-size:.86rem;color:#d9c79f;font-style:italic}
+.at-vues-barre:not(.at-vues-barre-classe):has(.at-onglet-actif[data-vue="pilotage"]) .at-rep-ligne{display:inline}
 html.dr-heure-court .at-classe-fermer{display:none}
 #atelier-ecran:has(.at-onglets) .at-zone{padding-top:8px}
 .at-onglets{align-items:center}

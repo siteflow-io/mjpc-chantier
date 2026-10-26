@@ -1,0 +1,56 @@
+banc E1 · 2026-10-26 21:09 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 3608f0217adcd945e6e224d45db441ed
+
+A24 — le réveil n°3 (15:14) : la question grisée, le témoin du hub, ▶ derrière un document projeté, la réponse qui dévoile sa question, « Activité n — » au récit, la taille au tableau
+  ok     A24 · 3 · aucune écriture du déroulé ne pose le bandeau du site (atelier, puis ▶ en classe) ; « Enregistré à … » dans l'entête ; les pastilles restent libres — {"t3a":{"bandeau":false,"enr":"Enregistré à 09:00"},"t3b":{"bandeau":false,"pastilles":true,"enr":"Enregistré à 09:00"}}
+  ok     A24 · 8 · une activité créée dans l'atelier porte son numéro au récit de l'heure jouée (« Activité 1 — … ») —  tableaux.Activité 1 — Observer les tableaux À 09 
+  ok     A24 · 4 · le geste exact : « Projeter au tableau » un document, ▶ ×3 et → : rien ne se dévoile ni ne se raconte derrière lui — {"n0":{"n":4,"d":4},"n1":{"n":4,"d":4,"doc":true}}
+  ok     A24 · 2 · un clic dans une question grisée la dévoile ; la frappe qui suit n'écrit pas dans l'énoncé, rien au journal — {"q0":true,"q1":{"pas":false,"txt":"Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours.","cc":0}}
+  ok     A24 · 2 · quatre touches dans la copie : une seule entrée au journal (sa longueur suit) — 1 entrée(s)
+  ok     A24 · 5 · « TB », Tab, la réponse : la question se dévoile, la réponse part au tableau au fil de la frappe — {"kq":0,"nDev":1,"murN":1,"murRep":true}
+  ok     A24 · 9 · à 52 pt, la donnée part au tableau : la taille demandée et la police réellement obtenue (13 · 12 : réduite plutôt que paginée — à Paul) — {"taille":4,"ratio":0.09099773242630387}
+  ok     A24 · aucune erreur JS, aucune boîte du navigateur
+
+A26 — le réveil n°5 et la relecture continue d'E4 (A4 14:50, B4 15:50, A5 16:15) : la page suit ▶, la question ouvre sa réponse, la consigne grise reste grise, l'atelier en classe tient à la reprise, Ctrl+B à la bonne occurrence, l'entête et l'image stables, le numéro du dégel, rien de « terminé » avant le lancement
+  ok     A26 · B4 · « Enregistré à … » paraît dans l'entête sans la faire descendre (46 → 46 px) — "Enregistré à 09:00"
+  ok     A26 · B4 · après une modification, l'image absente montre « image absente de mjpc-medias · … », jamais l'icône cassée — {"haut":46,"enr":"Enregistré à 09:00","casse":0,"vide":["image absente de mjpc-medias · poesie-pe"]}
+  ok     A26 · B4 · Ctrl+B sur la 2ᵉ occurrence de « que je » : la 2ᵉ passe en gras, pas la 1ʳᵉ (la position est gardée) — {"avant":"que je dis ","b":"que je","donnee":"[{\"p\":\"1.0\",\"txt\":\"que je\",\"n\":1}]"}
+  ok     A26 · B4 · la diapo 9 ouverte dans l'atelier, ▶ jusqu'au bout au Pilotage avant de lancer (2 dévoilé(s) sur la diapo 9) : au lancement, rien n'en reste — « pas jouée », rien au journal — {"av":{"di":8,"n":2},"ap":{"si":0,"n":0,"J":0}}
+  ok     A26 · A4 · une question-bilan à 2 pages : ▶ dévoile l'étape de la page 1 — la page reste la 1, l'élément montré est visible — {"qi":{"i":7,"pages":2,"page":1},"pa":{"nDev":2,"page":0,"pages":2,"vu":true}}
+  ok     A26 · A4 · clic dans une question grisée puis « EA » : la question dévoilée, la frappe dans les initiales de la réponse (pas d'espace qui dévoile, pas de loupe) — {"ini":true,"txt":"EA","q":false,"loupe":false}
+  ok     A26 · A5 · un clic dans la dernière ligne grise d'une consigne : le curseur y est (la saisie, dans la copie), rien ne se dévoile (0 → 0) — le reste à la flèche (C1 4.3, 2.2) — {"cg":{"i":0,"n":0},"cur":true}
+  ok     A26 · A5 · le dégel avec un écart : « La classe est sur la diapo 2, tu es à la diapo 8 » — le rang dans l'heure — La classe est sur la diapo 2, tu es à la diapo 8.
+  ok     A26 · réveil n°7 · 1366 × 768 : au Pilotage, « Enregistré à 09:00 » se lit en entier dans l'entête — {"txt":"Enregistré à 09:00","entier":true,"dans":true,"dessus":true}
+  ok     A26 · réveil n°7 · 1280 × 800 : au Pilotage, « Enregistré à 09:00 » se lit en entier dans l'entête — {"txt":"Enregistré à 09:00","entier":true,"dans":true,"dessus":true}
+  ok     A26 · aucune erreur JS, aucune boîte du navigateur
+  ok     A26 · la passe d'infobulles : aucun bouton visible sans infobulle, dans l'Atelier, le Pilotage en classe et la Relecture
+
+A29 — le réveil n°11 : la retouche de l'onglet Atelier pendant l'heure dans la copie de la classe (S.copie[h], versable à la clôture), le témoin à « enregistré » ; la garde de ◀ au rang de l'heure ; Entrée dans « + bloc » et « Envoyer vers… »
+  ok     A29 · 149 (a) · (§12.28 : au Pilotage de l'écran de la classe) une retouche de texte pendant l'heure va dans la copie de la classe (S.copie[h]), comme au Pilotage ; l'atelier la montre ; la trame ne bouge pas ; elle est au hub (C/etat) — {"hub":true,"temoin":"✔ enregistré","copie":". — retouche atelier"}
+  ok     A29 · 149 (b) · (§12.28 : au Pilotage) après l'écriture, le témoin dit « enregistré » (la vérité du hub) — ✔ enregistré
+  ok     A29 · 149 (a) · à la clôture, « verser dans la trame » propose la retouche faite dans l'atelier (C1 8.4) — {"liste":true,"diffère":true}
+  ok     A29 · 156 · ◀ hors du fil : « La classe te suivrait — revenir à la diapo 2 » — le rang dans l'heure, plus celui de la trame (6) — La classe te suivrait — revenir à la diapo 2.
+  ok     A29 · aucune erreur JS
+  ok     A29 · « + bloc », Entrée : le premier objet est choisi (un bloc posé, ou son formulaire ouvert) — plus « rien » — {"ouvert":true,"form":true,"blocs":0}
+  ok     A29 · « Envoyer vers… », ↓ puis Entrée : la diapo part vers la séance choisie au clavier — {"ouvert":false,"parti":1}
+  ok     A29 · aucune erreur JS, aucune boîte du navigateur
+
+A48 — §12.28 (3a)(3b), dette 13 · 41 : l'écran « la classe en cours » (dr_ouvrirClasse) — Pilotage · Relecture de la classe, ni Structure ni Atelier ni Mes chapitres ; aucune sortie tant que l'heure court (Fermer refusé, retour du navigateur sans effet) ; « ↗ » ouvre l'accueil du site dans un nouvel onglet ; « ✕ Fermer » avant le lancement et après « Clore » → l'emploi du temps
+  ok     A48 · 1366 × 768 : dr_ouvrirClasse → l'écran de la classe : Pilotage · Relecture, « ↗ », « ✕ Fermer » (avant le lancement) ; ni Structure, ni Atelier, ni Mes chapitres, ni la colonne du chapitre ; le volet de la séance dans la zone ; aucun défilement de côté — {"at":true,"onglets":["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"],"arbre":false,"mesCh":[],"volet":true,"lancee":false,"close":false,"enClasse":true,"edt":false,"cote":0}
+  ok     A48 · 1366 × 768 : aucune erreur JS
+  ok     A48 · 1536 × 864 : dr_ouvrirClasse → l'écran de la classe : Pilotage · Relecture, « ↗ », « ✕ Fermer » (avant le lancement) ; ni Structure, ni Atelier, ni Mes chapitres, ni la colonne du chapitre ; le volet de la séance dans la zone ; aucun défilement de côté — {"at":true,"onglets":["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"],"arbre":false,"mesCh":[],"volet":true,"lancee":false,"close":false,"enClasse":true,"edt":false,"cote":0}
+  ok     A48 · 1536 × 864 : aucune erreur JS
+  ok     A48 · 1707 × 743 : dr_ouvrirClasse → l'écran de la classe : Pilotage · Relecture, « ↗ », « ✕ Fermer » (avant le lancement) ; ni Structure, ni Atelier, ni Mes chapitres, ni la colonne du chapitre ; le volet de la séance dans la zone ; aucun défilement de côté — {"at":true,"onglets":["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"],"arbre":false,"mesCh":[],"volet":true,"lancee":false,"close":false,"enClasse":true,"edt":false,"cote":0}
+  ok     A48 · l'heure lancée : plus de « ✕ Fermer » — Pilotage · Relecture · ↗ seulement — ["Pilotage","Relecture","↗ Le site dans un nouvel onglet"]
+  ok     A48 · pendant l'heure, « Fermer l'atelier » (atelierFermer, d'où qu'il vienne) et « ✕ Fermer » refusent, et le disent ; l'écran reste — {"at":true,"msg":"L’heure est en cours : cet écran ne se quitte pas. Il se ferme par « Clore l’heu"}
+  ok     A48 · le retour du navigateur ne quitte pas l'écran de l'heure — {"at":true,"url":true}
+  ok     A48 · « ↗ Le site dans un nouvel onglet » : un nouvel onglet, l'accueil du site en session prof — pas l'écran de l'heure ; celui-ci reste — {"url":"","at":false,"classe":false,"prof":true}
+  ok     A48 · après « Clore l'heure » : « ✕ Fermer » revient — ["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"]
+  ok     A48 · « ✕ Fermer » → l'emploi du temps ; l'écran de la classe est fermé — {"at":false,"edt":true}
+  ok     A48 · l'atelier rouvert ensuite est l'atelier d'avant (Structure · Atelier · Pilotage · Relecture) — structure atelier pilotage relecture
+  ok     A48 · une répétition ouverte dans l'Atelier s'arrête quand l'écran de la classe s'ouvre (jamais une classe par-dessus une répétition) — {"avant":true,"apres":false}
+  ok     A48 · l'Atelier ne lance plus : ni « ▶ Lancer » dans l'Atelier ni dans son Pilotage ; l'onglet Pilotage joue la répétition et le dit en une ligne ; retour à l'onglet Atelier : la répétition s'arrête, rien n'a été écrit — {"r0":{"lancer":false},"r1":{"lancer":false,"rep":true,"lancee":false,"ligne":"Répétition : rien n’est écrit. Une heure avec une classe se lance depuis l’emploi du temps.","hub":21},"r2":{"rep":false,"hub":21}}
+  ok     A48 · 1707 × 743 : aucune erreur JS
+  ok     A48 · 1920 × 1080 : dr_ouvrirClasse → l'écran de la classe : Pilotage · Relecture, « ↗ », « ✕ Fermer » (avant le lancement) ; ni Structure, ni Atelier, ni Mes chapitres, ni la colonne du chapitre ; le volet de la séance dans la zone ; aucun défilement de côté — {"at":true,"onglets":["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"],"arbre":false,"mesCh":[],"volet":true,"lancee":false,"close":false,"enClasse":true,"edt":false,"cote":0}
+  ok     A48 · 1920 × 1080 : aucune erreur JS
+
+45 vérifications, 0 échec(s) · 116 s

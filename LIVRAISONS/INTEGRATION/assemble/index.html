@@ -9166,7 +9166,7 @@ function chInjecterConfirme(voie){
       var t='';
       if(ok&&!ko.length&&voie!=='completer'){
         t+='<b>Chapitre cr\u00e9\u00e9</b> : '+nSe+' s\u00e9ance'+(nSe>1?'s':'')+', '+nIt+' item'+(nIt>1?'s':'')+' \u2014 <b>non publi\u00e9</b>.<br>';
-        t+='<button class="at-btn at-btn-prim" onclick="atVoirPanneau(\''+CH.niveau+'\',\''+(CH.chapIdx!==null?CH.chapIdx:'')+'\')">Voir le chapitre</button><br>';
+        t+='<button class="at-btn at-btn-prim" onclick="atVoirPanneau(\''+CH.niveau+'\',\''+(CH.chapIdx!==null?CH.chapIdx:'')+'\')" title="Ferme l\u2019atelier \u2014 ce que tu as \u00e9crit est enregistr\u00e9 \u2014 et ouvre la page du niveau, ce chapitre d\u00e9pli\u00e9 en haut de l\u2019\u00e9cran. Le panneau prof ne se rouvre pas.">Voir dans l\u2019arborescence</button><br>';   /* E1 (§12.27-13) */
       }
       t+='\u00c9crit : <b>'+ok+'/'+ecritures.length+'</b>.';
       if(ok&&CH.chapIdx!==null)setTimeout(function(){atProposerSommaire(CH.niveau,CH.chapIdx,null);},400);   /* [C5-3a] proposé, jamais automatique */
@@ -10379,11 +10379,13 @@ function atelierOuvrir(){
   if(typeof loadClasses==='function'){loadClasses(function(){if(typeof loadCodes==='function')loadCodes(pret);else pret();});}
   else pret();
 }
-function atelierFermer(){
+function atelierFermer(sansPanneau,puis){
   atEnregistrerMaintenant(function(){
     var ec=document.getElementById('atelier-ecran');if(ec)ec.classList.remove('at-actif');
     document.body.classList.remove('at-corps-fige');
-    if(typeof openProfPanel==='function')openProfPanel();  /* retour d'où l'on vient */
+    if(sansPanneau){ if(typeof closeProfPanel==='function')closeProfPanel(); }   /* E1 (§12.27-13, dette 13 · 45) : « Voir dans l'arborescence » — rien par-dessus la page du niveau */
+    else if(typeof openProfPanel==='function')openProfPanel();  /* retour d'où l'on vient */
+    if(typeof puis==='function')puis();
   });
 }
 
@@ -11600,21 +11602,33 @@ function atRendreChapitres(){
       +'<div class="at-carte-st '+liCls+'">'+liTxt+'</div>'
       +'<div class="at-carte-b">'
       +'<button class="at-btn at-btn-prim" onclick="atEditerChapitre(\''+n+'\',\''+num+'\')" title="Ouvre le chapitre : sa structure, et l\u2019atelier o\u00f9 tu pr\u00e9pares ses s\u00e9ances diapo par diapo">\u00c9diter dans l\u2019atelier</button>'
-      +'<button class="at-btn" onclick="atVoirPanneau(\''+n+'\',\''+num+'\')">Voir dans le panneau prof</button>'
+      +'<button class="at-btn" onclick="atVoirPanneau(\''+n+'\',\''+num+'\')" title="Ferme l\u2019atelier \u2014 ce que tu as \u00e9crit est enregistr\u00e9 \u2014 et ouvre la page du niveau, ce chapitre d\u00e9pli\u00e9 en haut de l\u2019\u00e9cran. Le panneau prof ne se rouvre pas.">Voir dans l\u2019arborescence</button>'   /* E1 (§12.27-13) */
       +'<button class="at-btn" onclick="atDupliquerChapitre(\''+n+'\',\''+num+'\')">Dupliquer</button>'
       +'<button class="at-btn at-btn-danger" onclick="atSupprimerChapitre(\''+n+'\',\''+num+'\')">Supprimer</button>'
       +'</div></div>';
   });
   return h;
 }
-/* passerelle atelier → panneau : fermer l'atelier, déplier le chapitre, y aller */
+/* passerelle atelier → arborescence : fermer l'atelier (enregistré), ouvrir la page du niveau si on n'y est pas, déplier le chapitre, en haut de l'écran.
+   E1 (§12.27-13, dette 13 · 45 — Paul, 26/10 14:05) : avant, atelierFermer rouvrait le panneau prof PAR-DESSUS la page où le chapitre venait d'être déplié. */
 function atVoirPanneau(level,chnum){
-  atelierFermer();
-  UI_OPEN[level+'::'+chnum]=true;   /* la clé PLATE du panneau (mesurée), pas un objet emboîté */
-  renderChapitres(level);
-  requestAnimationFrame(function(){
-    var el=document.querySelector('.chapter-card[data-chapter="'+chnum+'"]');
-    if(el){el.scrollIntoView({block:'start',behavior:'smooth'});}
+  atelierFermer(true,function(){
+    var pl=document.getElementById('page-level');
+    var surLaPage=!!(pl&&pl.classList.contains('active')&&clickedLevel===level);
+    if(!surLaPage&&typeof openLevel==='function'){ clickedLevel=level; openLevel(level,(levelLabels&&levelLabels[level])||level,(levelColors&&levelColors[level])||''); }   /* clickedLevel posé : openLevel va droit à la page (sans l'écran d'intention de l'accueil) */
+    UI_OPEN[level+'::'+chnum]=true;   /* la clé PLATE du panneau (mesurée), pas un objet emboîté */
+    renderChapitres(level);
+    var bouge=false, arreter=function(){bouge=true;};   /* Paul fait défiler lui-même : on ne le ramène plus */
+    ['wheel','touchmove','keydown','mousedown'].forEach(function(t){window.addEventListener(t,arreter,{once:true,passive:true});});
+    var montrer=function(){
+      if(bouge)return;
+      var el=document.querySelector('.chapter-card[data-chapter="'+chnum+'"]'); if(!el)return;
+      var corps=el.querySelector('.chapter-body'); if(corps&&!corps.classList.contains('open'))corps.classList.add('open');
+      var lh=document.querySelector('#page-level .level-header'), pos=lh?getComputedStyle(lh).position:'';
+      var dessus=(lh&&(pos==='sticky'||pos==='fixed'))?Math.ceil(lh.getBoundingClientRect().bottom)+8:8;   /* l'en-tête collant du niveau ne couvre pas le chapitre */
+      window.scrollTo(0,Math.max(0,el.getBoundingClientRect().top+window.scrollY-dessus));
+    };
+    requestAnimationFrame(montrer); [400,900,1600,2600,4000].forEach(function(t){setTimeout(montrer,t);});   /* et après les rendus de la page du niveau (loadPublished, les blocs qui se remplissent au-dessus : mesuré, la carte descend encore après 700 ms) */
   });
 }
 /* ── L'ÉDITEUR DE CHAPITRE, EN PLACE — chaque champ écrit SON chemin précis,
@@ -12276,7 +12290,7 @@ function ctxOuvrir(x,y,titre,entrees){
   d.innerHTML='<div class="ctx-titre">'+atEsc(titre||'')+'</div>';
   vivantes.forEach(function(e){
     var b=document.createElement('button');
-    b.textContent=e.lib;if(e.danger)b.className='ctx-danger';
+    b.textContent=e.lib;if(e.danger)b.className='ctx-danger';if(e.titre)b.title=e.titre;   /* E1 (§12.27-13) : une entrée peut porter son infobulle */
     b.addEventListener('click',function(ev){ev.stopPropagation();ctxFermer();e.faire();});
     d.appendChild(b);
   });
@@ -12385,7 +12399,7 @@ function ctxEntreesChapitre(level,chnum){
   if(!dansEditeur)e.push({lib:'\u00c9diter dans l\u2019atelier',faire:function(){atEditerChapitre(level,chnum);}});   /* E1 (mandat point 6) */
   e.push({lib:'Ajouter une s\u00e9ance',faire:function(){addSeance(level,chnum);setTimeout(dansEditeur?atEditerChapitreRendre:atRendreListe,900);}});
   e.push({lib:'R\u00e9g\u00e9n\u00e9rer la page de garde\u2026',faire:function(){atProposerSommaire(level,chnum,dansEditeur?atEditerChapitreRendre:null);}});
-  e.push({lib:'Voir dans le panneau prof',faire:function(){atVoirPanneau(level,chnum);}});
+  e.push({lib:'Voir dans l\u2019arborescence',titre:'Ferme l\u2019atelier \u2014 ce que tu as \u00e9crit est enregistr\u00e9 \u2014 et ouvre la page du niveau, ce chapitre d\u00e9pli\u00e9 en haut de l\u2019\u00e9cran. Le panneau prof ne se rouvre pas.',faire:function(){atVoirPanneau(level,chnum);}});   /* E1 (§12.27-13) */
   e.push({lib:'O\u00f9 est-ce ? (contenu)',faire:function(){
     var ses=atSeances(ch);
     atInfo('\u00ab '+atEsc(ch.title||('Chapitre '+chnum))+' \u00bb contient '+(ses.length?(ses.length+' s\u00e9ance'+(ses.length>1?'s':'')+' : '+ses.map(function(p){return atEsc(p.se.title||('S\u00e9ance '+p.j));}).join(' \u00b7 ')):'\u2014 aucune s\u00e9ance pour l\u2019instant.'));

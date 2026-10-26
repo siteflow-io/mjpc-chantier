@@ -1,0 +1,47 @@
+banc E1 · 2026-10-26 16:02 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 a3f2d455effb76e16aaf2aaad0bfe9cf
+
+A42 — §12.27 (6) : l'accueil des niveaux et la page du niveau (prof, et vue élève) à toute la largeur — .home-inner sans borne, ses bords de 32 px gardés ; .hero garde sa mesure ; (6 bis) aucun texte de l'en-tête sous les boutons fixes du prof
+  ok     A42 · 1366 × 768 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1366,"cote":0,"hero":"700px","fixes":2,"sous":[]}
+  ok     A42 · 1366 × 768 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1366,"cote":0,"hero":"700px","fixes":2,"sous":[]}
+  ok     A42 · 1366 × 768 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1366,"cote":0,"hero":"700px","fixes":0,"sous":[]}
+  ok     A42 · 1366 × 768 : l'accueil des niveaux — rien sous le badge de version (en bas à droite), à toute hauteur de défilement — {"badge":true,"sous":[]}
+  ok     A42 · 1366 × 768 : aucune erreur JS
+  ok     A42 · 1536 × 864 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1536,"cote":0,"hero":"700px","fixes":2,"sous":[]}
+  ok     A42 · 1536 × 864 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1536,"cote":0,"hero":"700px","fixes":2,"sous":[]}
+  ok     A42 · 1536 × 864 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1536,"cote":0,"hero":"700px","fixes":0,"sous":[]}
+  ok     A42 · 1536 × 864 : l'accueil des niveaux — rien sous le badge de version (en bas à droite), à toute hauteur de défilement — {"badge":true,"sous":[]}
+  ok     A42 · 1536 × 864 : aucune erreur JS
+  ok     A42 · 1707 × 743 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1707,"cote":0,"hero":"700px","fixes":2,"sous":[]}
+  ok     A42 · 1707 × 743 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1707,"cote":0,"hero":"700px","fixes":2,"sous":[]}
+  ok     A42 · 1707 × 743 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1707,"cote":0,"hero":"700px","fixes":0,"sous":[]}
+  ok     A42 · 1707 × 743 : l'accueil des niveaux — rien sous le badge de version (en bas à droite), à toute hauteur de défilement — {"badge":true,"sous":[]}
+  ok     A42 · 1707 × 743 : aucune erreur JS
+  ok     A42 · 1920 × 1080 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1920,"cote":0,"hero":"700px","fixes":2,"sous":[]}
+  ok     A42 · 1920 × 1080 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1920,"cote":0,"hero":"700px","fixes":2,"sous":[]}
+  ok     A42 · 1920 × 1080 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1920,"cote":0,"hero":"700px","fixes":0,"sous":[]}
+  ok     A42 · 1920 × 1080 : l'accueil des niveaux — rien sous le badge de version (en bas à droite), à toute hauteur de défilement — {"badge":true,"sous":[]}
+  ok     A42 · 1920 × 1080 : aucune erreur JS
+
+A46 — §12.27 (14) : la page du niveau (l'arborescence des chapitres) à toute la largeur — .level-content sans borne, 32 px de bord gardés, l'en-tête collant inchangé, rien sous un bouton fixe ; prof et vue élève
+  ok     A46 · 1366 × 768 : la page du niveau (prof) — rien sous le badge de version ni sous les boutons fixes du prof, à toute hauteur de défilement (contrôles n°59-60) — {"badge":true,"sous":[]}
+  ok     A46 · 1366 × 768 : la page du niveau (prof) — .level-content de bord à bord (32 px à gauche ; à droite la colonne des boutons fixes : 182 px côté prof, 124 px pour le badge côté élève), l'en-tête collant inchangé (60 px), aucun défilement de côté, rien sous un bouton fixe — {"actif":true,"prof":true,"mw":"none","g":0,"d":0,"pl":"32px","pr":"182px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1366 × 768 : la page du niveau vue élève — rien sous le badge de version — {"badge":true,"sous":[]}
+  ok     A46 · 1366 × 768 : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe — {"actif":true,"prof":false,"mw":"none","g":0,"d":0,"pl":"32px","pr":"124px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1366 × 768 : aucune erreur JS
+  ok     A46 · 1536 × 864 : la page du niveau (prof) — rien sous le badge de version ni sous les boutons fixes du prof, à toute hauteur de défilement (contrôles n°59-60) — {"badge":true,"sous":[]}
+  ok     A46 · 1536 × 864 : la page du niveau (prof) — .level-content de bord à bord (32 px à gauche ; à droite la colonne des boutons fixes : 182 px côté prof, 124 px pour le badge côté élève), l'en-tête collant inchangé (60 px), aucun défilement de côté, rien sous un bouton fixe — {"actif":true,"prof":true,"mw":"none","g":0,"d":0,"pl":"32px","pr":"182px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1536 × 864 : la page du niveau vue élève — rien sous le badge de version — {"badge":true,"sous":[]}
+  ok     A46 · 1536 × 864 : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe — {"actif":true,"prof":false,"mw":"none","g":0,"d":0,"pl":"32px","pr":"124px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1536 × 864 : aucune erreur JS
+  ok     A46 · 1707 × 743 : la page du niveau (prof) — rien sous le badge de version ni sous les boutons fixes du prof, à toute hauteur de défilement (contrôles n°59-60) — {"badge":true,"sous":[]}
+  ok     A46 · 1707 × 743 : la page du niveau (prof) — .level-content de bord à bord (32 px à gauche ; à droite la colonne des boutons fixes : 182 px côté prof, 124 px pour le badge côté élève), l'en-tête collant inchangé (60 px), aucun défilement de côté, rien sous un bouton fixe — {"actif":true,"prof":true,"mw":"none","g":0,"d":0,"pl":"32px","pr":"182px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1707 × 743 : la page du niveau vue élève — rien sous le badge de version — {"badge":true,"sous":[]}
+  ok     A46 · 1707 × 743 : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe — {"actif":true,"prof":false,"mw":"none","g":0,"d":0,"pl":"32px","pr":"124px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1707 × 743 : aucune erreur JS
+  ok     A46 · 1920 × 1080 : la page du niveau (prof) — rien sous le badge de version ni sous les boutons fixes du prof, à toute hauteur de défilement (contrôles n°59-60) — {"badge":true,"sous":[]}
+  ok     A46 · 1920 × 1080 : la page du niveau (prof) — .level-content de bord à bord (32 px à gauche ; à droite la colonne des boutons fixes : 182 px côté prof, 124 px pour le badge côté élève), l'en-tête collant inchangé (60 px), aucun défilement de côté, rien sous un bouton fixe — {"actif":true,"prof":true,"mw":"none","g":0,"d":0,"pl":"32px","pr":"182px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1920 × 1080 : la page du niveau vue élève — rien sous le badge de version — {"badge":true,"sous":[]}
+  ok     A46 · 1920 × 1080 : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe — {"actif":true,"prof":false,"mw":"none","g":0,"d":0,"pl":"32px","pr":"124px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1920 × 1080 : aucune erreur JS
+
+40 vérifications, 0 échec(s) · 81 s

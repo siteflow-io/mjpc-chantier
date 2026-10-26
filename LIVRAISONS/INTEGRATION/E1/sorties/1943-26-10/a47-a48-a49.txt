@@ -1,0 +1,46 @@
+banc E1 · 2026-10-26 19:02 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 02604f9179122bc18374639e73b3cf67
+
+A47 — §12.28 (1), dette 13 · 39 : en mode test, ce qui a été écrit se lit — « Je publie pour » une classe → l'emploi du temps montre la séance dans ses cases ; dépublier → elle part ; aucune écriture au hub ; hors mode test, rien ne change
+  ok     A47 · mode test : « Je publie pour » 3A ESSAI → « Publier » le chapitre → l'emploi du temps montre la séance dans les 4 cases de 3A ESSAI (avant : « aucune séance prête ») — {"avant":"3A ESSAI aucune séance prête","apres":["3A ESSAI Poésie et peinture : le Romantisme en question heure 2/3","3A ESSAI Étude de texte accompagnée : « L'Albatros » heure 1/3"]}
+  ok     A47 · mode test : dépublier → les cases de 3A ESSAI reviennent à « aucune séance prête » — ["3A ESSAI aucune séance prête","3A ESSAI aucune séance prête"]
+  ok     A47 · mode test : le faux hub n'a reçu aucune écriture (K15) — hors la présence du prof (/presence, écrite par son propre fetch, l. 4963 : dit au JOURNAL)
+  ok     A47 · mode test : l'arbre — une feuille effacée reste effacée, PATCH fusionne, un parent écrit remplace ce qu'il contient, une clé jamais lue reste « pas encore lue » — ["{\"e\":{\"f\":4}}",4,null,true]
+  ok     A47 · mode test : aucune erreur JS
+  ok     A47 · hors mode test : rien ne change — la publication part au hub (PUT …/chapitres/0/published/3a_essai) et l'emploi du temps la montre — ["PUT /site/3e/chapitres/0/published/3a_essai",48]
+  ok     A47 · hors mode test : aucune erreur JS
+
+A48 — §12.28 (3a)(3b), dette 13 · 41 : l'écran « la classe en cours » (dr_ouvrirClasse) — Pilotage · Relecture de la classe, ni Structure ni Atelier ni Mes chapitres ; aucune sortie tant que l'heure court (Fermer refusé, retour du navigateur sans effet) ; « ↗ » ouvre l'accueil du site dans un nouvel onglet ; « ✕ Fermer » avant le lancement et après « Clore » → l'emploi du temps
+  ok     A48 · 1366 × 768 : dr_ouvrirClasse → l'écran de la classe : Pilotage · Relecture, « ↗ », « ✕ Fermer » (avant le lancement) ; ni Structure, ni Atelier, ni Mes chapitres, ni la colonne du chapitre ; le volet de la séance dans la zone ; aucun défilement de côté — {"at":true,"onglets":["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"],"arbre":false,"mesCh":[],"volet":true,"lancee":false,"close":false,"enClasse":true,"edt":false,"cote":0}
+  ok     A48 · 1366 × 768 : aucune erreur JS
+  ok     A48 · 1536 × 864 : dr_ouvrirClasse → l'écran de la classe : Pilotage · Relecture, « ↗ », « ✕ Fermer » (avant le lancement) ; ni Structure, ni Atelier, ni Mes chapitres, ni la colonne du chapitre ; le volet de la séance dans la zone ; aucun défilement de côté — {"at":true,"onglets":["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"],"arbre":false,"mesCh":[],"volet":true,"lancee":false,"close":false,"enClasse":true,"edt":false,"cote":0}
+  ok     A48 · 1536 × 864 : aucune erreur JS
+  ok     A48 · 1707 × 743 : dr_ouvrirClasse → l'écran de la classe : Pilotage · Relecture, « ↗ », « ✕ Fermer » (avant le lancement) ; ni Structure, ni Atelier, ni Mes chapitres, ni la colonne du chapitre ; le volet de la séance dans la zone ; aucun défilement de côté — {"at":true,"onglets":["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"],"arbre":false,"mesCh":[],"volet":true,"lancee":false,"close":false,"enClasse":true,"edt":false,"cote":0}
+  ok     A48 · l'heure lancée : plus de « ✕ Fermer » — Pilotage · Relecture · ↗ seulement — ["Pilotage","Relecture","↗ Le site dans un nouvel onglet"]
+  ok     A48 · pendant l'heure, « Fermer l'atelier » (atelierFermer, d'où qu'il vienne) et « ✕ Fermer » refusent, et le disent ; l'écran reste — {"at":true,"msg":"L’heure est en cours : cet écran ne se quitte pas. Il se ferme par « Clore l’heu"}
+  ok     A48 · le retour du navigateur ne quitte pas l'écran de l'heure — {"at":true,"url":true}
+  ok     A48 · « ↗ Le site dans un nouvel onglet » : un nouvel onglet, l'accueil du site en session prof — pas l'écran de l'heure ; celui-ci reste — {"url":"","at":false,"classe":false,"prof":true}
+  ok     A48 · après « Clore l'heure » : « ✕ Fermer » revient — ["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"]
+  ok     A48 · « ✕ Fermer » → l'emploi du temps ; l'écran de la classe est fermé — {"at":false,"edt":true}
+  ok     A48 · l'atelier rouvert ensuite est l'atelier d'avant (Structure · Atelier · Pilotage · Relecture) — structure atelier pilotage relecture
+  ok     A48 · 1707 × 743 : aucune erreur JS
+  ok     A48 · 1920 × 1080 : dr_ouvrirClasse → l'écran de la classe : Pilotage · Relecture, « ↗ », « ✕ Fermer » (avant le lancement) ; ni Structure, ni Atelier, ni Mes chapitres, ni la colonne du chapitre ; le volet de la séance dans la zone ; aucun défilement de côté — {"at":true,"onglets":["Pilotage","Relecture","↗ Le site dans un nouvel onglet","✕ Fermer"],"arbre":false,"mesCh":[],"volet":true,"lancee":false,"close":false,"enClasse":true,"edt":false,"cote":0}
+  ok     A48 · 1920 × 1080 : aucune erreur JS
+
+A49 — §12.28 (5), dette 13 · 43 : le « ? » de chaque écran du prof — visible au même endroit, rien dessous ; le clic et la touche « ? » ouvrent le texte de cet écran mot pour mot (et le fil, son étape en évidence) ; Échap ferme ; dans un champ, « ? » s'écrit ; rien dans la fenêtre du tableau ni dans la vue élève
+  ok     A49 · 1366 × 768 : 31 écrans du prof — le « ? » au même endroit (0,0,20x56 : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme
+  ok     A49 · 1366 × 768 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1366 × 768 : aucune erreur JS
+  ok     A49 · 1536 × 864 : 31 écrans du prof — le « ? » au même endroit (0,0,20x56 : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme
+  ok     A49 · 1536 × 864 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1536 × 864 : aucune erreur JS
+  ok     A49 · 1707 × 743 : dans un champ où l'on écrit, « ? » s'écrit et n'ouvre rien — {"v":"a?b","ouvert":false}
+  ok     A49 · 1707 × 743 : 31 écrans du prof — le « ? » au même endroit (0,0,20x56 : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme
+  ok     A49 · 1707 × 743 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1707 × 743 : aucune erreur JS
+  ok     A49 · 1920 × 1080 : 31 écrans du prof — le « ? » au même endroit (0,0,20x56 : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme
+  ok     A49 · 1920 × 1080 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1920 × 1080 : aucune erreur JS
+  ok     A49 · la fenêtre du tableau (session du prof) : ni « ? », ni volet, même à la touche — {"b":false,"v":false}
+  ok     A49 · côté élève (la page sans session du prof) : ni « ? », ni volet, même à la touche — {"b":false,"v":false}
+
+37 vérifications, 0 échec(s) · 287 s

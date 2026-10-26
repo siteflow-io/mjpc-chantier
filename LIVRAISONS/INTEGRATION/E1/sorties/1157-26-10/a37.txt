@@ -1,0 +1,21 @@
+banc E1 · 2026-10-26 11:05 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 11a76dff6da11f9ff5c9879570c3480a
+
+A37 — §12.27 (1), dette 12 · 87 : le panneau prof bord à bord, à toute la largeur et toute la hauteur de la fenêtre, sans coins, aux quatre tailles ; aucun défilement de côté, dans aucune section
+  ok     A37 · 1366 × 768 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":0,"t":0,"r":1366,"b":768,"coins":"0px","W":1366,"H":768}
+  ok     A37 · 1366 × 768 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ok     A37 · 1366 × 768 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":0,"menu":230,"oy":"auto"}
+  ok     A37 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ok     A37 · 1536 × 864 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":0,"t":0,"r":1536,"b":864,"coins":"0px","W":1536,"H":864}
+  ok     A37 · 1536 × 864 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ok     A37 · 1536 × 864 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":0,"menu":230,"oy":"auto"}
+  ok     A37 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ok     A37 · 1707 × 743 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":0,"t":0,"r":1707,"b":743,"coins":"0px","W":1707,"H":743}
+  ok     A37 · 1707 × 743 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ok     A37 · 1707 × 743 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":0,"menu":230,"oy":"auto"}
+  ok     A37 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ok     A37 · 1920 × 1080 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":0,"t":0,"r":1920,"b":1080,"coins":"0px","W":1920,"H":1080}
+  ok     A37 · 1920 × 1080 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ok     A37 · 1920 × 1080 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":0,"menu":230,"oy":"auto"}
+  ok     A37 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+16 vérifications, 0 échec(s) · 31 s

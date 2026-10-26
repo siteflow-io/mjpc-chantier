@@ -453,3 +453,10 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
   8. **(2)** : la production n'a pas « 🚫 Jamais avec… » dans la ligne (c'était la v6) : la grille aura **5** colonnes (`28px minmax(0,1fr) auto 96px auto`), une par enfant réel.
   9. **(10) un risque, pas une erreur** : élargir l'Atelier agrandit le cadre du mur au pilote ; la police de la diapo se calcule sur la hauteur du cadre (`policePx`). La largeur ne change pas la hauteur de la zone, mais la hauteur, si (la bande de 60 px tombe, les 40 px du bas aussi). Je mesure pilote / tableau avec `lire` / `pareil` de `E3/bancs/banc-1226.mjs` avant de pousser (4) ; s'il y a un écart, je l'écris ici avec la mesure.
 - **Reste** : (1)-(8), dans cet ordre, une poussée par morceau, `banc.sh` VERT avant chacune, gardes A37+. **Bloqué** : rien.
+
+## 26/10, 12:15 Paris (11:15 UTC) — §12.27 (1) poussé : le panneau prof bord à bord (dette 12 · 87) — commit `512f1dc2`
+- **Ce que ça change pour Paul** : le panneau prof prend toute sa fenêtre (avant : 1 100 px au milieu, 300 px vides de chaque côté chez lui) ; l'en-tête, le menu de 230 px et les sections ne changent pas ; le contenu défile en hauteur chez lui.
+- **Fait** : `index.html` — `.tprof-overlay` padding 30 → 0 (l. 223) et 12 → 0 sous 768 px (l. 496, audit point 4) ; `.tprof-box` sans `max-width`, sans coins, sans bord ni ombre, `height:100%` (l. 225). Rien d'autre.
+- **Garde A37** (par le geste, aux quatre tailles : le panneau ouvert par son bouton, ses 13 sections ouvertes une à une) : bords = la fenêtre à 1 px près, coins 0, aucune section ne défile de côté (contenu, page), en-tête en haut, menu 230 px, contenu `overflow-y:auto`. **Rouge avant 8 échecs** (`a37-avant.txt`), **vert après 16/0** (`a37.txt`).
+- **banc.sh VERT** sur `512f1dc2` (sorties `E1/sorties/1157-26-10/` : 108 vérifications, 0 échec ; fin : 0 défaut(s) ; parcours vert ×2).
+- **Reste** : (2)-(8). (2) et (3) sont codés (A38 16/0… et A39 28/0 sur l'assemblé de travail), leur banc suit. **Relances** : rien de nouveau (main fusionné : rien). E3 a poussé son audit (retour 38).

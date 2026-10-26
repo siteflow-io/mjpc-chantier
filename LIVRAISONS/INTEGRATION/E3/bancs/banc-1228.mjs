@@ -204,7 +204,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
         const close = await clore(pb, '2026-09-14T09:47:30+02:00'); verif('41', close, T + ' · l’heure se clôt');
         const retiree = await pb.evaluate(() => { const ev = new Event('beforeunload', { cancelable: true }); window.dispatchEvent(ev); return !(ev.defaultPrevented || (ev.returnValue !== undefined && ev.returnValue !== true && ev.returnValue !== '')); });
         verif('41', retiree, T + ' · 13 · 41 · après « Clore », la garde beforeunload est retirée');
-        { const b = await aideBouton(pb); aides.push({ nom: 'apres-clore', b, texte: b ? await lireVolet(pb, b) : null }); }
+        await capt(pb, W, H, '41-apres-clore'); { const b = await aideBouton(pb); aides.push({ nom: 'apres-clore', b, texte: b ? await lireVolet(pb, b) : null }); }
         const pc = await pb.context().newPage(); await pc.clock.setFixedTime(new Date('2026-09-14T09:48:00+02:00')); await entrerProf(pc); await pc.evaluate(() => { try { edtFermer(); } catch (e) {} }); await p(pc, 6000);
         verif('41', !(await bandeau(pc)), T + ' · 13 · 41 · après « Clore », aucun bandeau'); await pc.close().catch(() => {});
         const fermer = await pb.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /✕ Fermer$|^✕ Fermer/.test(b.innerText.trim()) && !/atelier/i.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(pb, 1500);
@@ -216,7 +216,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       const dessous = av.filter(a => !a.b.libre).map(a => a.nom + ' sous ' + a.b.dessus); if (av.length) verif('43', !dessous.length, T + ' · 13 · 43 · rien par-dessus le « ? »', dessous.slice(0, 4).join(', '));
       verif('43', !bEl, T + ' · 13 · 43 · aucun « ? » dans la vue élève');
       /* le texte du volet, mot pour mot (MANDATS/CINQ-DETTES/AIDE-PAR-ECRAN.md) */
-      if (BLOCS) { const manq = [], sansCle = []; aides.filter(a => a.b).forEach(a => { const cle = CLES[a.nom]; const bl = cle && BLOCS[cle]; if (!bl) { sansCle.push(a.nom); return; } const t = norm(a.texte || ''); const absentes = bl.filter(l => t.indexOf(l) < 0); const filAbs = (BLOCS.fil || []).filter(l => t.indexOf(l) < 0); if (absentes.length || filAbs.length) manq.push(a.nom + ' (' + cle + ') : ' + (absentes.concat(filAbs.map(x => '[fil] ' + x))[0] || '').slice(0, 110) + (absentes.length + filAbs.length ? ' / volet : « ' + norm(a.texte || '').slice(0, 160) + ' »' : '') + (absentes.length + filAbs.length > 1 ? ' … +' + (absentes.length + filAbs.length - 1) : '')); });
+      if (BLOCS) { const manq = [], sansCle = []; aides.filter(a => a.b).forEach(a => { let cle = CLES[a.nom]; if (a.nom === 'apres-clore' && BLOCS['chapitre-relecture'] && /^Le chapitre · Relecture/.test(norm(a.texte || ''))) cle = 'chapitre-relecture'; /* après « Clore », l'écran peut être la Relecture de la classe (le fichier : « La Relecture dans la classe en cours prend le texte de chapitre-relecture ») */ const bl = cle && BLOCS[cle]; if (!bl) { sansCle.push(a.nom); return; } const t = norm(a.texte || ''); const absentes = bl.filter(l => t.indexOf(l) < 0); const filAbs = (BLOCS.fil || []).filter(l => t.indexOf(l) < 0); if (absentes.length || filAbs.length) manq.push(a.nom + ' (' + cle + ') : ' + (absentes.concat(filAbs.map(x => '[fil] ' + x))[0] || '').slice(0, 110) + (absentes.length + filAbs.length ? ' / volet : « ' + norm(a.texte || '').slice(0, 160) + ' »' : '') + (absentes.length + filAbs.length > 1 ? ' … +' + (absentes.length + filAbs.length - 1) : '')); });
         if (aides.some(a => a.b)) verif('43', !manq.length, T + ' · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil', manq.slice(0, 4).join(' ; '));
         if (sansCle.length) info('43', T + ' · écrans sans clé dans le fichier : ' + sansCle.join(', ')); }
     } catch (e) { verif('41', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
@@ -242,6 +242,24 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
         if (fen) { verif('43', !(await aideBouton(fen)), T + ' · 13 · 43 · aucun « ? » dans la fenêtre du tableau'); await fen.keyboard.type('?'); await p(fen, 400); verif('43', !(await volet(fen)), T + ' · 13 · 43 · la touche « ? » ne fait rien dans la fenêtre du tableau'); await fen.close().catch(() => {}); } }
     } catch (e) { verif('43', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (43)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 46 (§12.28 (8), relance 20:40) : la garde « Aller au cahier » et l'étape 2 de « Fin de l'heure » disent le même nombre de ce qui reste ── */
+  { const o = await ouvrirCtx(W, H); const pg = o.pg;
+    try { await entrerProf(pg); const lance = await lancerParLaCase(pg); verif('46', lance, T + ' · l’heure se lance par la case (séance aux diapos sans numéro d’activité — toutes celles du faux hub)');
+      await dev(pg, 3); await p(pg, 400);
+      const iFin = await pg.evaluate(() => { try { const E = seance().ecrans; for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'fin' && ordreHeure(S.heure).includes(i)) return i; for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'fin') return i; } catch (e) {} return -1; });
+      const vg = iFin >= 0 && await pg.evaluate(i => { const v = document.querySelector('.vig[data-i="' + i + '"]'); if (!v) return false; v.click(); return true; }, iFin); await p(pg, 1200);
+      const g = await pg.evaluate(() => { const e = document.getElementById('garde-cahier'); if (!e || !e.classList.contains('on')) return null; return e.innerText.replace(/\s+/g, ' ').trim(); });
+      await capt(pg, W, H, '46-garde-aller-au-cahier');
+      const nG = g == null ? null : (/(Aucune activité restante|tu es à l.heure|Tout a été fait)/.test(g) ? 0 : +((/(\d+) (?:activités?|diapos?)/.exec(g) || [])[1] || -1));
+      verif('46', g != null, T + ' · la garde « Aller au cahier » paraît en allant à la diapo de fin de l’heure', vg ? (g ? '« ' + g.slice(0, 120) + ' »' : 'pas de garde') : 'pas de vignette de fin (' + iFin + ')');
+      await pg.click('#gc-rester').catch(() => {}); await p(pg, 500);
+      if (!(await vis(pg, '.pp-liste'))) { await pg.click('#bfin').catch(() => {}); await p(pg, 1200); } const L = await liste2(pg); const nE = /— rien/.test(L.l2) ? 0 : +((/— (?:encore )?(\d+) activités?/.exec(L.l2) || [])[1] || (/\((\d+) à décider\)/.exec(L.l2) || [])[1] || -1);
+      verif('46', g != null && nG === nE && nE >= 0, T + ' · 13 · 46 · la garde et l’étape 2 disent le même nombre de ce qui reste', 'garde ' + nG + ' (« ' + (g || '').slice(0, 90) + ' ») ; étape 2 ' + nE + ' (« ' + L.l2.slice(0, 80) + ' »)');
+      if (nE > 0) verif('46', g != null && !/tu es à l.heure|Tout a été fait/.test(g), T + ' · 13 · 46 · « tu es à l’heure » / « Tout a été fait » seulement quand il ne reste rien', '« ' + (g || '').slice(0, 90) + ' »');
+      info('46', T + ' · « une séance avec activités » : le faux hub n’en a pas (aucune diapo n’y porte de numéro d’activité) — mesurée par E1 / E2 (A50, B32)');
+    } catch (e) { verif('46', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (46)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── R (contrôle n°62) : une répétition jouée dans un autre onglet ne touche pas la fenêtre du tableau de la classe ── */
   { const o = await ouvrirCtx(W, H); const pg = o.pg;

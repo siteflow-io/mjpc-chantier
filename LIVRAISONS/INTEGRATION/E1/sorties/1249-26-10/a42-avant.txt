@@ -1,0 +1,21 @@
+banc E1 · 2026-10-26 11:41 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant.html · md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+A42 — §12.27 (6) : l'accueil des niveaux et la page du niveau (prof, et vue élève) à toute la largeur — .home-inner sans borne, ses bords de 32 px gardés ; .hero garde sa mesure
+  ÉCHEC  A42 · 1366 × 768 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"1100px","g":133,"d":133,"pl":"32px","W":1366,"cote":0,"hero":"700px"}
+  ÉCHEC  A42 · 1366 × 768 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"1100px","g":133,"d":133,"pl":"32px","W":1366,"cote":0,"hero":"700px"}
+  ÉCHEC  A42 · 1366 × 768 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"1100px","g":133,"d":133,"pl":"32px","W":1366,"cote":0,"hero":"700px"}
+  ok     A42 · 1366 × 768 : aucune erreur JS
+  ÉCHEC  A42 · 1536 × 864 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"1100px","g":218,"d":218,"pl":"32px","W":1536,"cote":0,"hero":"700px"}
+  ÉCHEC  A42 · 1536 × 864 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"1100px","g":218,"d":218,"pl":"32px","W":1536,"cote":0,"hero":"700px"}
+  ÉCHEC  A42 · 1536 × 864 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"1100px","g":218,"d":218,"pl":"32px","W":1536,"cote":0,"hero":"700px"}
+  ok     A42 · 1536 × 864 : aucune erreur JS
+  ÉCHEC  A42 · 1707 × 743 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"1100px","g":304,"d":304,"pl":"32px","W":1707,"cote":0,"hero":"700px"}
+  ÉCHEC  A42 · 1707 × 743 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"1100px","g":304,"d":304,"pl":"32px","W":1707,"cote":0,"hero":"700px"}
+  ÉCHEC  A42 · 1707 × 743 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"1100px","g":304,"d":304,"pl":"32px","W":1707,"cote":0,"hero":"700px"}
+  ok     A42 · 1707 × 743 : aucune erreur JS
+  ÉCHEC  A42 · 1920 × 1080 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"1100px","g":410,"d":410,"pl":"32px","W":1920,"cote":0,"hero":"700px"}
+  ÉCHEC  A42 · 1920 × 1080 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"1100px","g":410,"d":410,"pl":"32px","W":1920,"cote":0,"hero":"700px"}
+  ÉCHEC  A42 · 1920 × 1080 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"1100px","g":410,"d":410,"pl":"32px","W":1920,"cote":0,"hero":"700px"}
+  ok     A42 · 1920 × 1080 : aucune erreur JS
+
+16 vérifications, 12 échec(s) · 36 s

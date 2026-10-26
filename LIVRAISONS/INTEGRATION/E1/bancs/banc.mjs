@@ -925,6 +925,21 @@ await B('A41', '§12.27 (5) : la Relecture à toute la largeur de sa colonne —
     E.verif('A41', r.tab.rel === '1120px' && r.tab.recit === '900px', w + ' × ' + h + ' : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px', JSON.stringify(r.tab));
     E.verif('A41', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
 
+await B('A42', '§12.27 (6) : l\'accueil des niveaux et la page du niveau (prof, et vue élève) à toute la largeur — .home-inner sans borne, ses bords de 32 px gardés ; .hero garde sa mesure', async () => {
+  const mesHome = pg => pg.evaluate(() => { const x = Array.from(document.querySelectorAll('.home-inner')).find(e => e.getBoundingClientRect().width > 0 && e.offsetParent !== null); if (!x) return null; const R = x.getBoundingClientRect(); const cs = getComputedStyle(x); const de = document.scrollingElement; const hero = document.querySelector('.hero'); return { mw: cs.maxWidth, g: Math.round(R.left), d: Math.round(de.clientWidth - R.right), pl: cs.paddingLeft, W: de.clientWidth, cote: de.scrollWidth - de.clientWidth, hero: hero ? getComputedStyle(hero).maxWidth : 'absent' }; });
+  const okHome = r => !!r && r.mw === 'none' && Math.abs(r.g) <= 1 && Math.abs(r.d) <= 1 && r.pl === '32px' && r.cote <= 0 && r.hero === '700px';
+  for (const [w, h] of TAILLES_1227) {
+    const ctx = await b.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); const pg = await ctx.newPage(); const errs = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => d.dismiss().catch(() => {}));
+    await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, E.store()); await pg.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(2000);
+    await pg.evaluate(() => { try { loginAsProf(); } catch (e) {} }); await pg.waitForTimeout(2500);   /* l'entrée du prof, comme E3 (banc-1227) */
+    await pg.evaluate(() => { const o = document.getElementById('m8-regles-overlay'); if (o) o.remove(); try { edtFermer(); } catch (e) {} }); await pg.waitForTimeout(700); await sansVoile(pg);
+    const a = await mesHome(pg); E.verif('A42', okHome(a), w + ' × ' + h + ' : l\'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px', JSON.stringify(a));
+    await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await pg.waitForTimeout(1800); await sansVoile(pg);
+    const n = await mesHome(pg); E.verif('A42', okHome(n), w + ' × ' + h + ' : la page du niveau (prof) — .home-inner de bord à bord', JSON.stringify(n));
+    await pg.evaluate(() => { try { basculerVue(); } catch (e) {} }); await pg.waitForTimeout(1200); await sansVoile(pg);
+    const v = await mesHome(pg); E.verif('A42', okHome(v), w + ' × ' + h + ' : la page du niveau vue comme un élève — .home-inner de bord à bord', JSON.stringify(v));
+    E.verif('A42', !errs.length, w + ' × ' + h + ' : aucune erreur JS', errs.join(' ; ') || undefined); await ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

@@ -12,6 +12,7 @@
 // 43 : un « ? » au même endroit sur chaque écran du prof, rien dessous ; clic / touche « ? » ouvrent le volet (à droite, toute la hauteur),
 //      Échap le ferme ; dans un champ « ? » s'écrit ; rien dans la fenêtre du tableau ni dans la vue élève ; le texte mot pour mot quand
 //      MANDATS/CINQ-DETTES/AIDE-PAR-ECRAN.md existe.
+// R : (contrôle n°62) heure lancée, la fenêtre du tableau ouverte ; « ↗ » → l'Atelier → « ▶ Jouer en avance » → ▶ × 10 → le tableau de la classe ne change pas ; « ■ Arrêter » → pareil.
 // L' : les recouvrements, bandeau montré et volet d'aide ouvert (la garde L de banc-1227, la même sonde).
 // usage : MJPC_HUB=AUDITS/INTEGRATION-DEROULE/hub node banc-1228.mjs <assemble/index.html> [sortie.txt]
 //   MJPC_TAILLES (défaut les quatre), MJPC_CAPT=<dossier> MJPC_CAPT_SUFFIXE=avant|apres (1707 × 743 et 1920 × 1080). Code 1 si un échec.
@@ -197,7 +198,8 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
         const etAp = await finEtape(pb); verif('41', etAp === etAv, T + ' · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape', 'avant ' + etAv + ', après ' + etAp);
         await clicTexte(pb, 'button', 'Reprendre le cours'); await p(pb, 800); const dAp = await lire(pb); const chronoAp = await pb.evaluate(() => (document.getElementById('chrono') || document.querySelector('.chrono') || {}).textContent || '');
         verif('41', pareil(dAv, dAp), T + ' · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées', dD(dAv) + ' → ' + dD(dAp));
-        verif('41', !!chronoAp && chronoAp === chronoAv, T + ' · 13 · 41 · le chrono continu (l’horloge est figée : la même valeur, pas de remise à zéro)', '« ' + chronoAv + ' » → « ' + chronoAp + ' »');
+        const mmss = t => { const m = /(\d+):(\d\d)/.exec(t || ''); return m ? (+m[1]) * 60 + (+m[2]) : -1; };
+        verif('41', mmss(chronoAp) >= 0 && mmss(chronoAp) >= mmss(chronoAv), T + ' · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro)', '« ' + chronoAv.slice(0, 5) + ' » à la fermeture → « ' + chronoAp.slice(0, 5) + ' » à la reprise');
         /* après « Clore » : la garde retirée, aucun bandeau, « ✕ Fermer » → l'emploi du temps */
         const close = await clore(pb, '2026-09-14T09:47:30+02:00'); verif('41', close, T + ' · l’heure se clôt');
         const retiree = await pb.evaluate(() => { const ev = new Event('beforeunload', { cancelable: true }); window.dispatchEvent(ev); return !(ev.defaultPrevented || (ev.returnValue !== undefined && ev.returnValue !== true && ev.returnValue !== '')); });
@@ -214,7 +216,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       const dessous = av.filter(a => !a.b.libre).map(a => a.nom + ' sous ' + a.b.dessus); if (av.length) verif('43', !dessous.length, T + ' · 13 · 43 · rien par-dessus le « ? »', dessous.slice(0, 4).join(', '));
       verif('43', !bEl, T + ' · 13 · 43 · aucun « ? » dans la vue élève');
       /* le texte du volet, mot pour mot (MANDATS/CINQ-DETTES/AIDE-PAR-ECRAN.md) */
-      if (BLOCS) { const manq = [], sansCle = []; aides.filter(a => a.b).forEach(a => { const cle = CLES[a.nom]; const bl = cle && BLOCS[cle]; if (!bl) { sansCle.push(a.nom); return; } const t = norm(a.texte || ''); const absentes = bl.filter(l => t.indexOf(l) < 0); const filAbs = (BLOCS.fil || []).filter(l => t.indexOf(l) < 0); if (absentes.length || filAbs.length) manq.push(a.nom + ' (' + cle + ') : ' + (absentes.concat(filAbs.map(x => '[fil] ' + x))[0] || '').slice(0, 70) + (absentes.length + filAbs.length > 1 ? ' … +' + (absentes.length + filAbs.length - 1) : '')); });
+      if (BLOCS) { const manq = [], sansCle = []; aides.filter(a => a.b).forEach(a => { const cle = CLES[a.nom]; const bl = cle && BLOCS[cle]; if (!bl) { sansCle.push(a.nom); return; } const t = norm(a.texte || ''); const absentes = bl.filter(l => t.indexOf(l) < 0); const filAbs = (BLOCS.fil || []).filter(l => t.indexOf(l) < 0); if (absentes.length || filAbs.length) manq.push(a.nom + ' (' + cle + ') : ' + (absentes.concat(filAbs.map(x => '[fil] ' + x))[0] || '').slice(0, 110) + (absentes.length + filAbs.length ? ' / volet : « ' + norm(a.texte || '').slice(0, 160) + ' »' : '') + (absentes.length + filAbs.length > 1 ? ' … +' + (absentes.length + filAbs.length - 1) : '')); });
         if (aides.some(a => a.b)) verif('43', !manq.length, T + ' · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil', manq.slice(0, 4).join(' ; '));
         if (sansCle.length) info('43', T + ' · écrans sans clé dans le fichier : ' + sansCle.join(', ')); }
     } catch (e) { verif('41', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
@@ -230,17 +232,36 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
         if (v1) { const kv = []; for (const [nom, g] of [['accueil', async () => {}], ['page du niveau', async () => { await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 500); await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 1200); }], ['emploi du temps', async () => { await pg.evaluate(() => { try { goHome(); } catch (e) {} try { edtOuvrir(); } catch (e) {} }); await p(pg, 1500); }]]) { await g(); if (!(await marquer(pg, 'volet'))) { kv.push(nom + ' : le volet n’y est plus'); continue; } const k = await balayer(pg); if (k && k.length) kv.push(nom + ' : ' + k.slice(0, 3).join(', ')); }
           verif('L', !kv.length, T + ' · L′ · le volet d’aide ouvert ne cache rien (accueil, page du niveau, emploi du temps, défilés)', kv.join(' ; ')); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} try { goHome(); } catch (e) {} }); await p(pg, 600); if (!(await volet(pg))) { const b2 = await aideBouton(pg); if (b2) { await pg.mouse.click(b2.x + b2.w / 2, b2.y + 5); await p(pg, 500); } } }
         await pg.keyboard.press('Escape'); await p(pg, 400); verif('43', !(await volet(pg)), T + ' · 13 · 43 · Échap le ferme');
-        await pg.keyboard.press('Shift+Slash'); await pg.keyboard.type('?'); await p(pg, 500); const v2 = await volet(pg); verif('43', !!v2, T + ' · 13 · 43 · la touche « ? » l’ouvre');
+        await pg.keyboard.type('?'); await p(pg, 500); const v2 = await volet(pg); verif('43', !!v2, T + ' · 13 · 43 · la touche « ? » l’ouvre');
         await pg.keyboard.type('?'); await p(pg, 400); verif('43', !(await volet(pg)), T + ' · 13 · 43 · la touche « ? » le ferme');
         const champ = await pg.evaluate(() => { const i = Array.from(document.querySelectorAll('input[type=text], input[type=search], input:not([type]), textarea')).find(e => e.offsetParent); if (!i) return false; i.value = ''; i.focus(); return true; });
         if (champ) { await pg.keyboard.type('?'); await p(pg, 400); const val = await pg.evaluate(() => document.activeElement && document.activeElement.value); verif('43', /\?/.test(val || '') && !(await volet(pg)), T + ' · 13 · 43 · dans un champ, « ? » s’écrit (le volet ne s’ouvre pas)', '« ' + val + ' »'); }
-        if (fs.existsSync(AIDE)) info('43', T + ' · le fichier des textes existe : le « mot pour mot » se mesure à la prochaine version du banc');
       } else verif('43', false, T + ' · 13 · 43 · le « ? » est sur l’accueil du prof');
       /* la fenêtre du tableau : aucun « ? » */
       const lance = await lancerParLaCase(pg); if (lance) { let fen = null; try { [fen] = await Promise.all([pg.waitForEvent('popup', { timeout: 6000 }), pg.click('#bvideoproj')]); await fen.waitForLoadState(); await p(fen, 2500); } catch (e) { fen = null; }
         if (fen) { verif('43', !(await aideBouton(fen)), T + ' · 13 · 43 · aucun « ? » dans la fenêtre du tableau'); await fen.keyboard.type('?'); await p(fen, 400); verif('43', !(await volet(fen)), T + ' · 13 · 43 · la touche « ? » ne fait rien dans la fenêtre du tableau'); await fen.close().catch(() => {}); } }
     } catch (e) { verif('43', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (43)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── R (contrôle n°62) : une répétition jouée dans un autre onglet ne touche pas la fenêtre du tableau de la classe ── */
+  { const o = await ouvrirCtx(W, H); const pg = o.pg;
+    try { await entrerProf(pg); const lance = await lancerParLaCase(pg); verif('R', lance, T + ' · l’heure se lance par la case');
+      let fen = null; try { [fen] = await Promise.all([pg.waitForEvent('popup', { timeout: 6000 }), pg.click('#bvideoproj')]); await fen.waitForLoadState(); await p(fen, 2000); } catch (e) { fen = null; }
+      await dev(pg, 3); await p(pg, 1200);
+      const murT = q => q.evaluate(() => { const m = document.getElementById('mur2') || document.querySelector('.mur.tableau'); if (!m) return null; const c = m.querySelector('.corpsd') || m; const els = Array.from(c.querySelectorAll('li')).filter(l => !l.classList.contains('hors') && !l.classList.contains('pas') && l.getBoundingClientRect().height > 0 && getComputedStyle(l).visibility !== 'hidden' && getComputedStyle(l).opacity !== '0'); return { page: ((m.querySelector('.page') || {}).textContent || '').replace(/[‹›]/g, '').trim(), act: ((m.querySelector('.act') || {}).textContent || '').trim().slice(0, 60), lignes: els.map(l => l.getAttribute('data-p') || l.textContent.trim().slice(0, 24)) }; });
+      const t0 = fen ? await murT(fen) : null; verif('R', !!t0 && t0.lignes.length > 0, T + ' · la fenêtre du tableau montre la diapo de l’heure', dD(t0));
+      let pn = null; const nouvel = await pg.evaluate(() => !!Array.from(document.querySelectorAll('button, a')).find(e => e.offsetParent && /Le site dans un nouvel onglet/.test(e.innerText || '')));
+      if (nouvel) { try { [pn] = await Promise.all([pg.context().waitForEvent('page', { timeout: 5000 }), pg.evaluate(() => { Array.from(document.querySelectorAll('button, a')).find(e => e.offsetParent && /Le site dans un nouvel onglet/.test(e.innerText || '')).click(); })]); await pn.waitForLoadState(); await p(pn, 2500); await sansVoiles(pn); } catch (e) { pn = null; } }
+      verif('R', !!pn, T + ' · « ↗ Le site dans un nouvel onglet » ouvre le second onglet');
+      if (pn && fen) { await pn.evaluate(() => { try { edtFermer(); } catch (e) {} try { atelierOuvrir(); } catch (e) {} }); await p(pn, 1200); await sansVoiles(pn); await clicTexte(pn, 'button,[onclick]', "atOnglet('chapitres')"); await p(pn, 900); if (!(await clicTexte(pn, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(pn, 'button,[onclick]', 'Modifier'); await p(pn, 1800); await sansVoiles(pn);
+        await pn.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pn, 1500);
+        const joue = await pn.evaluate(() => { const b = document.getElementById('at-jouer'); if (!b || !b.offsetParent) return false; b.click(); return true; }); await p(pn, 1500); verif('R', joue, T + ' · dans le second onglet, « ▶ Jouer en avance » (la répétition)');
+        await dev(pn, 10); await p(pn, 2500); const t1 = await murT(fen);
+        verif('R', JSON.stringify(t0) === JSON.stringify(t1), T + ' · ▶ × 10 en répétition dans le second onglet : la fenêtre du tableau de la classe ne change pas', dD(t0) + ' → ' + dD(t1));
+        await pn.click('#rep-stop').catch(() => {}); await p(pn, 2500); const t2 = await murT(fen);
+        verif('R', JSON.stringify(t0) === JSON.stringify(t2), T + ' · « ■ Arrêter » : toujours pareil', dD(t0) + ' → ' + dD(t2)); }
+    } catch (e) { verif('R', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (R)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 13 · 42 : une seule activité jouée en fin de créneau → « Cette heure, on a fait » ── */
   { const o = await ouvrirCtx(W, H); const pg = o.pg;

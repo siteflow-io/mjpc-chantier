@@ -1,0 +1,1042 @@
+[
+ {
+  "taille": "1366x768",
+  "ecran": "accueil-connexion",
+  "id": "01-accueil-connexion",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "edt-semaine",
+  "id": "02-edt-semaine",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "edt-mois",
+  "id": "03-edt-mois",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "edt-annee",
+  "id": "04-edt-annee",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "edt-heures-perdues",
+  "id": "05-edt-heures-perdues",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "edt-case-modale",
+  "id": "06-edt-case-modale",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "accueil-niveaux",
+  "id": "07-accueil-niveaux",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e",
+  "id": "08-niveau-3e",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-chapitre-ouvert",
+  "id": "09-niveau-3e-chapitre-ouvert",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet-chapitres",
+  "id": "10-niveau-3e-onglet-chapitres",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet-fiches-transversales",
+  "id": "11-niveau-3e-onglet-fiches-transversales",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet-zone-autonomie",
+  "id": "12-niveau-3e-onglet-zone-autonomie",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet--dictée",
+  "id": "13-niveau-3e-onglet--dictée",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet--réécriture",
+  "id": "14-niveau-3e-onglet--réécriture",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet--valuation-des-connaissance",
+  "id": "15-niveau-3e-onglet--valuation-des-connaissance",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet--analyse-d-image",
+  "id": "16-niveau-3e-onglet--analyse-d-image",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet--tude-de-texte",
+  "id": "17-niveau-3e-onglet--tude-de-texte",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet--rédaction",
+  "id": "18-niveau-3e-onglet--rédaction",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-onglet--analyse-logique",
+  "id": "19-niveau-3e-onglet--analyse-logique",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "niveau-3e-vue-eleve",
+  "id": "20-niveau-3e-vue-eleve",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-dashboard",
+  "id": "21-panneau-dashboard",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-classes",
+  "id": "22-panneau-classes",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-eleves",
+  "id": "23-panneau-eleves",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-profil-test",
+  "id": "24-panneau-profil-test",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-archi",
+  "id": "25-panneau-archi",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-archives",
+  "id": "26-panneau-archives",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-corbeille",
+  "id": "27-panneau-corbeille",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-annonces",
+  "id": "28-panneau-annonces",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-brevet",
+  "id": "29-panneau-brevet",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-taxo",
+  "id": "30-panneau-taxo",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-edt",
+  "id": "31-panneau-edt",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-config",
+  "id": "32-panneau-config",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "panneau-presence",
+  "id": "33-panneau-presence",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "atelier-accueil",
+  "id": "34-atelier-accueil",
+  "recouvrements": [
+   {
+    "flottant": "button#aide-q.aide-q « ? »",
+    "cache": "div.at-vide « Aucune feuille pour l’instant. « Nouvell »",
+    "part": 0
+   }
+  ]
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "atelier-mes-chapitres",
+  "id": "35-atelier-mes-chapitres",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "chapitre-structure",
+  "id": "36-chapitre-structure",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "chapitre-atelier",
+  "id": "37-chapitre-atelier",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "chapitre-pilotage-avant-lancement",
+  "id": "38-chapitre-pilotage-avant-lancement",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "pilote-heure-lancee",
+  "id": "39-pilote-heure-lancee",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "pilote-fin-de-l-heure",
+  "id": "40-pilote-fin-de-l-heure",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "fenetre-du-tableau",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "chapitre-relecture",
+  "id": "42-chapitre-relecture",
+  "recouvrements": []
+ },
+ {
+  "taille": "1366x768",
+  "ecran": "visionneuse",
+  "id": "43-visionneuse",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "accueil-connexion",
+  "id": "01-accueil-connexion",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "edt-semaine",
+  "id": "02-edt-semaine",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "edt-mois",
+  "id": "03-edt-mois",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "edt-annee",
+  "id": "04-edt-annee",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "edt-heures-perdues",
+  "id": "05-edt-heures-perdues",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "edt-case-modale",
+  "id": "06-edt-case-modale",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "accueil-niveaux",
+  "id": "07-accueil-niveaux",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e",
+  "id": "08-niveau-3e",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-chapitre-ouvert",
+  "id": "09-niveau-3e-chapitre-ouvert",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet-chapitres",
+  "id": "10-niveau-3e-onglet-chapitres",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet-fiches-transversales",
+  "id": "11-niveau-3e-onglet-fiches-transversales",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet-zone-autonomie",
+  "id": "12-niveau-3e-onglet-zone-autonomie",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet--dictée",
+  "id": "13-niveau-3e-onglet--dictée",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet--réécriture",
+  "id": "14-niveau-3e-onglet--réécriture",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet--valuation-des-connaissance",
+  "id": "15-niveau-3e-onglet--valuation-des-connaissance",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet--analyse-d-image",
+  "id": "16-niveau-3e-onglet--analyse-d-image",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet--tude-de-texte",
+  "id": "17-niveau-3e-onglet--tude-de-texte",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet--rédaction",
+  "id": "18-niveau-3e-onglet--rédaction",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-onglet--analyse-logique",
+  "id": "19-niveau-3e-onglet--analyse-logique",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "niveau-3e-vue-eleve",
+  "id": "20-niveau-3e-vue-eleve",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-dashboard",
+  "id": "21-panneau-dashboard",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-classes",
+  "id": "22-panneau-classes",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-eleves",
+  "id": "23-panneau-eleves",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-profil-test",
+  "id": "24-panneau-profil-test",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-archi",
+  "id": "25-panneau-archi",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-archives",
+  "id": "26-panneau-archives",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-corbeille",
+  "id": "27-panneau-corbeille",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-annonces",
+  "id": "28-panneau-annonces",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-brevet",
+  "id": "29-panneau-brevet",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-taxo",
+  "id": "30-panneau-taxo",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-edt",
+  "id": "31-panneau-edt",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-config",
+  "id": "32-panneau-config",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "panneau-presence",
+  "id": "33-panneau-presence",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "atelier-accueil",
+  "id": "34-atelier-accueil",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "atelier-mes-chapitres",
+  "id": "35-atelier-mes-chapitres",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "chapitre-structure",
+  "id": "36-chapitre-structure",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "chapitre-atelier",
+  "id": "37-chapitre-atelier",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "chapitre-pilotage-avant-lancement",
+  "id": "38-chapitre-pilotage-avant-lancement",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "pilote-heure-lancee",
+  "id": "39-pilote-heure-lancee",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "pilote-fin-de-l-heure",
+  "id": "40-pilote-fin-de-l-heure",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "fenetre-du-tableau",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "chapitre-relecture",
+  "id": "42-chapitre-relecture",
+  "recouvrements": []
+ },
+ {
+  "taille": "1536x864",
+  "ecran": "visionneuse",
+  "id": "43-visionneuse",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "accueil-connexion",
+  "id": "01-accueil-connexion",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "edt-semaine",
+  "id": "02-edt-semaine",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "edt-mois",
+  "id": "03-edt-mois",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "edt-annee",
+  "id": "04-edt-annee",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "edt-heures-perdues",
+  "id": "05-edt-heures-perdues",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "edt-case-modale",
+  "id": "06-edt-case-modale",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "accueil-niveaux",
+  "id": "07-accueil-niveaux",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e",
+  "id": "08-niveau-3e",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-chapitre-ouvert",
+  "id": "09-niveau-3e-chapitre-ouvert",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet-chapitres",
+  "id": "10-niveau-3e-onglet-chapitres",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet-fiches-transversales",
+  "id": "11-niveau-3e-onglet-fiches-transversales",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet-zone-autonomie",
+  "id": "12-niveau-3e-onglet-zone-autonomie",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet--dictée",
+  "id": "13-niveau-3e-onglet--dictée",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet--réécriture",
+  "id": "14-niveau-3e-onglet--réécriture",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet--valuation-des-connaissance",
+  "id": "15-niveau-3e-onglet--valuation-des-connaissance",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet--analyse-d-image",
+  "id": "16-niveau-3e-onglet--analyse-d-image",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet--tude-de-texte",
+  "id": "17-niveau-3e-onglet--tude-de-texte",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet--rédaction",
+  "id": "18-niveau-3e-onglet--rédaction",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-onglet--analyse-logique",
+  "id": "19-niveau-3e-onglet--analyse-logique",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "niveau-3e-vue-eleve",
+  "id": "20-niveau-3e-vue-eleve",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-dashboard",
+  "id": "21-panneau-dashboard",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-classes",
+  "id": "22-panneau-classes",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-eleves",
+  "id": "23-panneau-eleves",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-profil-test",
+  "id": "24-panneau-profil-test",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-archi",
+  "id": "25-panneau-archi",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-archives",
+  "id": "26-panneau-archives",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-corbeille",
+  "id": "27-panneau-corbeille",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-annonces",
+  "id": "28-panneau-annonces",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-brevet",
+  "id": "29-panneau-brevet",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-taxo",
+  "id": "30-panneau-taxo",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-edt",
+  "id": "31-panneau-edt",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-config",
+  "id": "32-panneau-config",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "panneau-presence",
+  "id": "33-panneau-presence",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "atelier-accueil",
+  "id": "34-atelier-accueil",
+  "recouvrements": [
+   {
+    "flottant": "button#aide-q.aide-q « ? »",
+    "cache": "div.at-vide « Aucune feuille pour l’instant. « Nouvell »",
+    "part": 0
+   }
+  ]
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "atelier-mes-chapitres",
+  "id": "35-atelier-mes-chapitres",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "chapitre-structure",
+  "id": "36-chapitre-structure",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "chapitre-atelier",
+  "id": "37-chapitre-atelier",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "chapitre-pilotage-avant-lancement",
+  "id": "38-chapitre-pilotage-avant-lancement",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "pilote-heure-lancee",
+  "id": "39-pilote-heure-lancee",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "pilote-fin-de-l-heure",
+  "id": "40-pilote-fin-de-l-heure",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "fenetre-du-tableau",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "chapitre-relecture",
+  "id": "42-chapitre-relecture",
+  "recouvrements": []
+ },
+ {
+  "taille": "1707x743",
+  "ecran": "visionneuse",
+  "id": "43-visionneuse",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "accueil-connexion",
+  "id": "01-accueil-connexion",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "edt-semaine",
+  "id": "02-edt-semaine",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "edt-mois",
+  "id": "03-edt-mois",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "edt-annee",
+  "id": "04-edt-annee",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "edt-heures-perdues",
+  "id": "05-edt-heures-perdues",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "edt-case-modale",
+  "id": "06-edt-case-modale",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "accueil-niveaux",
+  "id": "07-accueil-niveaux",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e",
+  "id": "08-niveau-3e",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-chapitre-ouvert",
+  "id": "09-niveau-3e-chapitre-ouvert",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet-chapitres",
+  "id": "10-niveau-3e-onglet-chapitres",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet-fiches-transversales",
+  "id": "11-niveau-3e-onglet-fiches-transversales",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet-zone-autonomie",
+  "id": "12-niveau-3e-onglet-zone-autonomie",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet--dictée",
+  "id": "13-niveau-3e-onglet--dictée",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet--réécriture",
+  "id": "14-niveau-3e-onglet--réécriture",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet--valuation-des-connaissance",
+  "id": "15-niveau-3e-onglet--valuation-des-connaissance",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet--analyse-d-image",
+  "id": "16-niveau-3e-onglet--analyse-d-image",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet--tude-de-texte",
+  "id": "17-niveau-3e-onglet--tude-de-texte",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet--rédaction",
+  "id": "18-niveau-3e-onglet--rédaction",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-onglet--analyse-logique",
+  "id": "19-niveau-3e-onglet--analyse-logique",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "niveau-3e-vue-eleve",
+  "id": "20-niveau-3e-vue-eleve",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-dashboard",
+  "id": "21-panneau-dashboard",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-classes",
+  "id": "22-panneau-classes",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-eleves",
+  "id": "23-panneau-eleves",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-profil-test",
+  "id": "24-panneau-profil-test",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-archi",
+  "id": "25-panneau-archi",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-archives",
+  "id": "26-panneau-archives",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-corbeille",
+  "id": "27-panneau-corbeille",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-annonces",
+  "id": "28-panneau-annonces",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-brevet",
+  "id": "29-panneau-brevet",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-taxo",
+  "id": "30-panneau-taxo",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-edt",
+  "id": "31-panneau-edt",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-config",
+  "id": "32-panneau-config",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "panneau-presence",
+  "id": "33-panneau-presence",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "atelier-accueil",
+  "id": "34-atelier-accueil",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "atelier-mes-chapitres",
+  "id": "35-atelier-mes-chapitres",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "chapitre-structure",
+  "id": "36-chapitre-structure",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "chapitre-atelier",
+  "id": "37-chapitre-atelier",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "chapitre-pilotage-avant-lancement",
+  "id": "38-chapitre-pilotage-avant-lancement",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "pilote-heure-lancee",
+  "id": "39-pilote-heure-lancee",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "pilote-fin-de-l-heure",
+  "id": "40-pilote-fin-de-l-heure",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "fenetre-du-tableau",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "chapitre-relecture",
+  "id": "42-chapitre-relecture",
+  "recouvrements": []
+ },
+ {
+  "taille": "1920x1080",
+  "ecran": "visionneuse",
+  "id": "43-visionneuse",
+  "recouvrements": []
+ }
+]

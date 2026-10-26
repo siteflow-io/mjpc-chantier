@@ -916,6 +916,15 @@ await B('A40', '§12.27 (4), dette 13 · 37 : l\'Atelier à toute la largeur et 
   else E.verif('A40', false, '(10) avant / après : la tête d\'avant §12.27 (9c075358) est introuvable');
 });
 
+await B('A41', '§12.27 (5) : la Relecture à toute la largeur de sa colonne — .rel et .recit sans borne sous #dr-zone ; la fenêtre du tableau garde les siennes (10)', async () => {
+  for (const [w, h] of TAILLES_1227) { const o = await E.ouvrir(b, { w, h, vue: 'relecture' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(500);
+    const r = await pg.evaluate(() => { const z = document.getElementById('dr-zone'); const rel = z.querySelector('.rel'); const rc = z.querySelector('.recit'); const vis = x => !!x && x.getBoundingClientRect().width > 0; const par = rel && rel.parentElement; const cs = rel && getComputedStyle(par);
+      const t = document.createElement('div'); t.id = 'ses-tab'; t.innerHTML = '<div class="rel"><div class="recit">x</div></div>'; document.body.appendChild(t); const tab = { rel: getComputedStyle(t.querySelector('.rel')).maxWidth, recit: getComputedStyle(t.querySelector('.recit')).maxWidth }; t.remove();
+      return { rel: rel ? getComputedStyle(rel).maxWidth : 'absente', recit: rc ? getComputedStyle(rc).maxWidth : 'absente', visRel: vis(rel), visRecit: vis(rc), largeurRel: rel ? Math.round(rel.getBoundingClientRect().width) : 0, colonne: par ? Math.round(par.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) : 0, largeurRecit: rc ? Math.round(rc.getBoundingClientRect().width) : 0, tab }; });
+    E.verif('A41', r.rel === 'none' && r.recit === 'none' && r.visRel && Math.abs(r.largeurRel - r.colonne) <= 1 && (!r.visRecit || r.largeurRecit >= r.largeurRel - 80), w + ' × ' + h + ' : la Relecture prend sa colonne (' + r.largeurRel + ' px sur ' + r.colonne + '), .rel et .recit sans max-width', JSON.stringify(r));
+    E.verif('A41', r.tab.rel === '1120px' && r.tab.recit === '900px', w + ' × ' + h + ' : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px', JSON.stringify(r.tab));
+    E.verif('A41', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

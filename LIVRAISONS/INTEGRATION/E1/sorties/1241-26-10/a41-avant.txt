@@ -1,0 +1,17 @@
+banc E1 · 2026-10-26 11:33 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant.html · md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+A41 — §12.27 (5) : la Relecture à toute la largeur de sa colonne — .rel et .recit sans borne sous #dr-zone ; la fenêtre du tableau garde les siennes (10)
+  ÉCHEC  A41 · 1366 × 768 : la Relecture prend sa colonne (1006 px sur 1006), .rel et .recit sans max-width — {"rel":"1120px","recit":"900px","visRel":true,"visRecit":true,"largeurRel":1006,"colonne":1006,"largeurRecit":900,"tab":{"rel":"1120px","recit":"900px"}}
+  ok     A41 · 1366 × 768 : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px — {"rel":"1120px","recit":"900px"}
+  ok     A41 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ÉCHEC  A41 · 1536 × 864 : la Relecture prend sa colonne (1120 px sur 1140), .rel et .recit sans max-width — {"rel":"1120px","recit":"900px","visRel":true,"visRecit":true,"largeurRel":1120,"colonne":1140,"largeurRecit":900,"tab":{"rel":"1120px","recit":"900px"}}
+  ok     A41 · 1536 × 864 : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px — {"rel":"1120px","recit":"900px"}
+  ok     A41 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ÉCHEC  A41 · 1707 × 743 : la Relecture prend sa colonne (1120 px sur 1140), .rel et .recit sans max-width — {"rel":"1120px","recit":"900px","visRel":true,"visRecit":true,"largeurRel":1120,"colonne":1140,"largeurRecit":900,"tab":{"rel":"1120px","recit":"900px"}}
+  ok     A41 · 1707 × 743 : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px — {"rel":"1120px","recit":"900px"}
+  ok     A41 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ÉCHEC  A41 · 1920 × 1080 : la Relecture prend sa colonne (1120 px sur 1140), .rel et .recit sans max-width — {"rel":"1120px","recit":"900px","visRel":true,"visRecit":true,"largeurRel":1120,"colonne":1140,"largeurRecit":900,"tab":{"rel":"1120px","recit":"900px"}}
+  ok     A41 · 1920 × 1080 : sous #ses-tab (la fenêtre du tableau), .rel et .recit gardent 1120 / 900 px — {"rel":"1120px","recit":"900px"}
+  ok     A41 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+12 vérifications, 4 échec(s) · 36 s

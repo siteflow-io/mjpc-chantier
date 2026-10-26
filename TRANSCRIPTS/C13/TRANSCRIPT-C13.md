@@ -3380,3 +3380,18 @@ MEMO
 
 26/10/2026 10:21
 MEMO
+
+## Tour 180 — 26/10/2026 10:25 — Paul (10:24) : « donne moi la maquette »
+
+**Paul (mot pour mot).** « donne moi la maquette »
+
+**Fait.** Le fichier `MANDATS/PROFIL-CLASSE/maquette/maquette-8.75.0-3-la-classe.html` (2 374 547 o, md5 `b2b1c7823430c711b594edc4f3f5ce11`) envoyé dans la conversation.
+
+**Réponse (mot pour mot).**
+
+376. Le fichier est dans la conversation : `maquette-8.75.0-3-la-classe.html` — ton fichier de production ③ tel quel, le bloc « la classe » ajouté à la fin, rien d'autre. Il s'ouvre dans ton navigateur comme ton site et lit ton vrai hub (tes classes, tes chapitres, tes heures jouées — pas le faux hub des captures, donc ni « expérimentale » ni la réactivation du 15/9). Le geste : entre comme d'habitude en prof, ouvre l'emploi du temps, clique une carte de classe en bas ; ou une case à venir → « ✎ Préparer ». Aussi au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PROFIL-CLASSE/maquette/LISEZ-MOI.md
+
+377. Une seule chose y écrit au hub : un badge cliqué — une clé `decisions/<diapo>` dans la copie de la classe (`deroule_joue/<classe>`), que rien dans ton site ne lit aujourd'hui ; ni la trame ni les heures jouées ne sont touchées. Tout le reste (Relire, Le chapitre, ▶, Préparer) est ton site tel qu'il est.
+
+26/10/2026 10:25
+MEMO

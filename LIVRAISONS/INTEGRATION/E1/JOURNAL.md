@@ -497,3 +497,11 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **Garde A41** (par le geste, aux quatre tailles, la Relecture ouverte par son onglet) : `.rel` = la largeur de sa colonne à 1 px près, `.rel` et `.recit` sans `max-width` ; sous `#ses-tab` les deux bornes restent. **Rouge avant 4/12** (`a41-avant.txt`), **vert après 12/0** (`a41.txt`).
 - **banc.sh VERT** sur `a9916434` (sorties `LIVRAISONS/INTEGRATION/E1/sorties/1241-26-10/` : 108 vérifications, 0 échec ; fin : 0 défaut(s) ; parcours vert ×2).
 - **Reste** : (6) committé ensuite (A42 16/0, rouge avant 12/16), (7), (8). **Relances** : rien de nouveau.
+
+## 26/10, 13:55 Paris (12:55 UTC) — §12.27 (6) poussé : l'accueil des niveaux et la page du niveau à toute la largeur — commit `ecc2d644`
+- *(le commit de (5) est `78447c3b` après le rebase sur le retour 40 d'E3 (13 · 44, `dr-tableau.js`) : poussé après ce rebase sans banc rejoué — c'est ce banc-ci, sur la tête qui les porte tous deux, qui le vérifie : vert.)*
+- **Ce que ça change** : l'accueil des niveaux et la page du niveau prennent toute la largeur (les bords de 32 px gardés), côté prof comme côté élève ; le paragraphe d'en-tête (`.hero`) garde ses 700 px.
+- **Fait** : `index.html` l. 59 — `.home-inner` sans `max-width`. Rien d'autre.
+- **Garde A42** (par le geste, aux quatre tailles, l'entrée du prof par `loginAsProf` comme le banc-1227 d'E3, puis `openLevel`, puis « 👁 Voir comme un élève ») : `.home-inner` aux bords de la fenêtre à 1 px près avec ses 32 px dedans, aucun défilement de côté, `.hero` à 700 px — l'accueil des niveaux, la page du niveau prof, la page du niveau vue élève. **Rouge avant 12/16** (`a42-avant.txt`), **vert après 16/0** (`a42.txt`).
+- **banc.sh VERT** sur `ecc2d644` (avec E3 13 · 44) (sorties `LIVRAISONS/INTEGRATION/E1/sorties/1249-26-10/` : 108 vérifications, 0 échec ; fin : 0 défaut(s) ; parcours vert ×2).
+- **Reste** : (7) committé ensuite (A43 8/0, rouge avant 4/8), (8). **Relances** : rien de nouveau.

@@ -1,0 +1,21 @@
+banc E1 · 2026-10-26 11:56 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 f5b6ab49e6179d73877eac13ace34d27
+
+A42 — §12.27 (6) : l'accueil des niveaux et la page du niveau (prof, et vue élève) à toute la largeur — .home-inner sans borne, ses bords de 32 px gardés ; .hero garde sa mesure
+  ok     A42 · 1366 × 768 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1366,"cote":0,"hero":"700px"}
+  ok     A42 · 1366 × 768 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1366,"cote":0,"hero":"700px"}
+  ok     A42 · 1366 × 768 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1366,"cote":0,"hero":"700px"}
+  ok     A42 · 1366 × 768 : aucune erreur JS
+  ok     A42 · 1536 × 864 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1536,"cote":0,"hero":"700px"}
+  ok     A42 · 1536 × 864 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1536,"cote":0,"hero":"700px"}
+  ok     A42 · 1536 × 864 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1536,"cote":0,"hero":"700px"}
+  ok     A42 · 1536 × 864 : aucune erreur JS
+  ok     A42 · 1707 × 743 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1707,"cote":0,"hero":"700px"}
+  ok     A42 · 1707 × 743 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1707,"cote":0,"hero":"700px"}
+  ok     A42 · 1707 × 743 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1707,"cote":0,"hero":"700px"}
+  ok     A42 · 1707 × 743 : aucune erreur JS
+  ok     A42 · 1920 × 1080 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1920,"cote":0,"hero":"700px"}
+  ok     A42 · 1920 × 1080 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1920,"cote":0,"hero":"700px"}
+  ok     A42 · 1920 × 1080 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1920,"cote":0,"hero":"700px"}
+  ok     A42 · 1920 × 1080 : aucune erreur JS
+
+16 vérifications, 0 échec(s) · 35 s

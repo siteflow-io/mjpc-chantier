@@ -26,11 +26,8 @@ function installer(s) {
   window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase(); if (m === 'GET') return Promise.resolve(new Response(JSON.stringify(lire(c)), { status: 200 })); let bd = null; try { bd = JSON.parse((o && o.body) || 'null'); } catch (e) {} window.__ECR.push(m + ' ' + c); if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => pos(c + '/' + k, bd[k])); else pos(c, m === 'DELETE' ? null : bd); return Promise.resolve(new Response(JSON.stringify(bd), { status: 200 })); } return Promise.resolve(new Response('null', { status: 200 })); };
   window.WebSocket = function () { throw new Error('websocket bloqué'); };
 }
-export async function ouvrir(fichier, { quand = '2026-09-14T09:00:00+02:00', store = null, vue = { width: 1366, height: 768 }, nav = null, modeTest = false } = {}) {
-  const pw = playwright();
-  const navigateur = nav || await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'], headless: true });
-  const ctx = await navigateur.newContext({ viewport: vue, timezoneId: 'Europe/Paris' });
-  await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
+// une page du site dans un contexte donné (deux onglets d'un même navigateur = deux pages d'un même contexte : BroadcastChannel, localStorage partagés)
+export async function monter(ctx, fichier, { quand = '2026-09-14T09:00:00+02:00', store = null, modeTest = false } = {}) {
   const page = await ctx.newPage();
   await page.clock.install({ time: new Date(quand) });
   const errs = [], boites = [];
@@ -44,6 +41,14 @@ export async function ouvrir(fichier, { quand = '2026-09-14T09:00:00+02:00', sto
   await page.goto('file://' + path.resolve(fichier) + '?n=3e', { waitUntil: 'load' });
   await page.clock.runFor(1800);
   await page.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; });
+  return { page, errs, boites, ecrits: () => page.evaluate(() => window.__ECR.slice()), hub: () => page.evaluate(() => JSON.parse(JSON.stringify(window.__HUB))), attendre: ms => page.clock.runFor(ms) };
+}
+export async function ouvrir(fichier, { quand = '2026-09-14T09:00:00+02:00', store = null, vue = { width: 1366, height: 768 }, nav = null, modeTest = false } = {}) {
+  const pw = playwright();
+  const navigateur = nav || await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'], headless: true });
+  const ctx = await navigateur.newContext({ viewport: vue, timezoneId: 'Europe/Paris' });
+  await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
+  const { page, errs, boites } = await monter(ctx, fichier, { quand, store, modeTest });
   return { navigateur, ctx, page, errs, boites,
     ecrits: () => page.evaluate(() => window.__ECR.slice()),
     hub: () => page.evaluate(() => JSON.parse(JSON.stringify(window.__HUB))),

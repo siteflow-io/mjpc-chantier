@@ -471,3 +471,7 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 #dr-mk-menu{position:fixed;z-index:9000;display:none;flex-direction:column;gap:6px;background:#191411;border:1px solid var(--bord,#3a3129);border-radius:8px;padding:8px;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 #dr-mk-menu.on{display:flex}
 .choix-obj .dr-c.dr-pris,.choix-obj [data-si][data-h].dr-pris{outline:2px solid #c99a4e;outline-offset:2px;background:#fff1cf} /* E1 : le choix que prendra Entrée se voit */
+/* E2 · §12.28-3 (d) : le bandeau « Heure en cours avec les <classe> — Reprendre », en haut, ne recouvre rien — la page et les écrans pleins du prof descendent de sa hauteur */
+#ses-reprise{top:0;bottom:auto}
+html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
+html.ses-reprise-on #atelier-ecran,html.ses-reprise-on #edt-ecran,html.ses-reprise-on .tprof-overlay{top:var(--ses-reprise-h,44px)}

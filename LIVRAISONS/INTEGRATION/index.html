@@ -15966,57 +15966,57 @@ function sesOuvrirTableau(){ return dr_ouvrirTableau(); }   /* [E3] une seule fe
    la tait POUR CE COURS ; elle revient si un AUTRE cours est lanc\u00e9. */
 function sesRepriseRetirer(){
   var b=document.getElementById('ses-reprise'); if(b)b.remove(); SES._reprise=null;
+  try{ document.documentElement.classList.remove('ses-reprise-on'); }catch(e){}
 }
 function sesReprisePeindre(c){
-  var txt='Un cours est en cours avec <b>'+escapeHtml(c.classeNom||c.classeSlug)+'</b>.';
+  /* [E2] §12.28-3 (d) : « Heure en cours avec les <classe> — Reprendre », en haut, sur tous les écrans du prof ; « Plus tard » tombe ;
+     le bandeau ne recouvre rien : la page et les écrans pleins descendent de sa hauteur (`--ses-reprise-h`, dr.css bloc E2) */
+  var txt='Heure en cours avec les <b>'+escapeHtml(c.classeNom||c.classeSlug)+'</b> —';
   var b=document.getElementById('ses-reprise');
   if(!b){
-    b=document.createElement('div'); b.className='ses-reprise'; b.id='ses-reprise'; b.style.top='auto'; b.style.bottom='18px';   /* [E2] réveil n°3 : la bannière ne couvre plus « ✕ Fermer l'atelier » */
+    b=document.createElement('div'); b.className='ses-reprise'; b.id='ses-reprise';
     b.innerHTML='<span id="ses-reprise-txt">'+txt+'</span>'
-      +'<button class="at-btn at-btn-prim" title="Rouvre le Pilotage de cette heure là où la classe en est : la diapo, le chrono, les décisions, les paroles, les notes" onclick="sesReprendre()">Reprendre le cours</button>'
-      +'<button class="at-btn" title="Cache ce bandeau pour ce cours ; il reviendra si un autre cours est lancé" onclick="sesRepriseSilence()">Plus tard</button>';   /* [E2] mandat 12 */
+      +'<button class="at-btn at-btn-prim" id="ses-reprise-oui" title="Rouvre l’heure de cette classe dans cet onglet, là où elle en était : la diapo, sa page, les lignes dévoilées, le chrono (sans remise à zéro), les paroles, les notes, l’appel, et « Fin de l’heure » à son étape" onclick="sesReprendre()">Reprendre</button>';
     document.body.appendChild(b);
   } else { var t=document.getElementById('ses-reprise-txt'); if(t)t.innerHTML=txt; }
   SES._reprise=c;
+  try{ document.documentElement.classList.add('ses-reprise-on'); document.documentElement.style.setProperty('--ses-reprise-h',b.offsetHeight+'px'); }catch(e){}
 }
-function sesRepriseSilence(){ SES._repriseTue=_drSignatureCours(SES._reprise); sesRepriseRetirer(); }
 function sesReprisePoser(){
-  /* [E2] la bannière « un cours est en cours » d'aujourd'hui, lue par `dr_lire` (13 · 25 : en test, la copie) */
+  /* [E2] §12.28-3 (d) : le bandeau paraît dès qu'AUCUN onglet de ce navigateur ne tient l'heure. Dans ce navigateur : le signe de vie de
+     l'onglet de l'heure (`dr_heureTenueAilleurs`) et son départ (`dr_heurePartie`, dr-classe.js) ; d'un autre navigateur : `/site/cours_actif`
+     (lu par `dr_lire` : en test, la copie). Jamais deux pilotes d'une même heure dans un navigateur. */
   if(SES.mode)return;
-  setInterval(function(){
+  var veille=function(){
     var prof=document.body.classList.contains('admin-mode')||(window.TRACK&&TRACK.eleve&&TRACK.eleve.is_prof);
     if(!prof){ sesRepriseRetirer(); return; }
-    if(SES.actif||(typeof AT_DR_REGIME!=='undefined'&&AT_DR_REGIME==='classe')){ sesRepriseRetirer(); return; }   /* c'est déjà nous */
+    if(SES.actif||(typeof dr_heureTenue==='function'&&dr_heureTenue())){ sesRepriseRetirer(); return; }   /* c'est nous qui tenons l'heure */
+    var loc=(typeof dr_heurePartie==='function')?dr_heurePartie():null;
     dr_lire('/site/cours_actif',function(c){
-      if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000){ sesRepriseRetirer(); return; }
-      if(SES._repriseTue&&SES._repriseTue===_drSignatureCours(c))return;
-      _drHeureCloseAu(c,function(close){ if(close){ sesRepriseRetirer(); return; } sesReprisePeindre(c); });
+      var frais=function(x){ return x&&x.ts&&(Date.now()-x.ts)<=4*3600*1000; };
+      if(!frais(c)){ if(frais(loc)&&(typeof M8_TEST!=='undefined'&&M8_TEST))c=loc; else { sesRepriseRetirer(); return; } }   /* en mode test, le pointeur n'est que dans la copie de l'onglet parti : ce navigateur le sait */
+      if(typeof dr_heureTenueAilleurs==='function'&&dr_heureTenueAilleurs(_drSignatureCours(c))){ sesRepriseRetirer(); return; }   /* un autre onglet d'ici la tient */
+      _drHeureCloseAu(c,function(close){ if(close){ sesRepriseRetirer(); return; } if(typeof dr_heureTenue==='function'&&dr_heureTenue())return; sesReprisePeindre(c); });
     });
-  },5000);
+  };
+  setTimeout(veille,800);   /* l'onglet qui s'ouvre a demandé « qui tient l'heure ? » (dr-classe.js) : la réponse est arrivée */
+  setInterval(veille,5000);
 }
 function sesReprendre(){
-  /* [E2] « Reprendre le cours » : le pointeur et la trace font foi (comme aujourd'hui), puis `dr_reprendre` remonte L'HEURE
-     ENTIÈRE — la diapo, les dévoilements, le chrono, les décisions, les paroles, les notes — et le paquet repart (audit E2, M1 :
-     aujourd'hui `AT_DR_VECU` restait nul et l'heure n'avait plus de trace). */
+  /* [E2] « Reprendre » : le pointeur et la trace font foi (comme aujourd'hui), puis `dr_reprendreCours` ouvre la classe en cours et
+     `dr_reprendre` remonte L'HEURE ENTIÈRE à l'endroit exact (§12.28-3 e). Une seule voie de reprise (avant : deux copies). */
   var c=SES._reprise; if(!c)return;
+  if(typeof dr_heureTenueAilleurs==='function'&&dr_heureTenueAilleurs(_drSignatureCours(c))){ sesRepriseRetirer(); atInfo('Cette heure est ouverte dans un autre onglet de ce navigateur : continue-la là-bas.'); return; }
   dr_lire('/site/cours_actif',function(p){
+    var loc=(typeof dr_heurePartie==='function')?dr_heurePartie():null;
+    if((!p||!p.ts)&&loc&&typeof M8_TEST!=='undefined'&&M8_TEST)p=loc;
     if(!p||!p.ts||_drSignatureCours(p)!==_drSignatureCours(c)){ sesRepriseRetirer();
       atInfo('Ce cours n’est plus celui qui tourne : il a été clos ou remplacé par un autre. Rien n’est repris.'); return; }
     _drHeureCloseAu(c,function(close){
       if(close){ sesRepriseRetirer(); atInfo('Cette heure a été close : elle ne se reprend pas. Lance la classe pour ouvrir une heure neuve.'); return; }
       sesRepriseRetirer();
-      atelierOuvrir();
-      atChargerChapitres(c.niveau,function(){
-        atEditerChapitre(c.niveau,c.chapitre);
-        ATVUES.snum=c.seance;
-        AT_DR_COURS={debut:c.debut,fin:c.fin,classeSlug:c.classeSlug,classeNom:c.classeNom};
-        AT_DR_REGIME='classe';
-        atVuesAller('pilotage');
-        edtQuandPilotagePret(function(manque){
-          if(manque){ atInfo('Le pilotage ne s’ouvre pas (manque : '+manque+').'); return; }
-          dr_reprendre(function(ok){ if(!ok) atInfo('L’état de cette heure n’est pas au hub : relance-la depuis l’emploi du temps, sa trace sera reprise.'); });
-        });
-      });
+      try{ if(typeof edtFermer==='function')edtFermer(); if(typeof edtModaleFermer==='function')edtModaleFermer(); }catch(e){}
+      dr_reprendreCours(c);
     });
   });
 }
@@ -18746,17 +18746,14 @@ function edtLancer(cle,preparer){
   try{
     loadClasses(function(){
       atChargerChapitres(niv,function(){
+        var lancer=function(){ try{ dr_lancer(dr_slugDe(c.classeMjpc), c.creneau, dr_debutPropose(c.creneau), c.heure||1, c.sur||1); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); } };
+        if(!preparer){ dr_ouvrirLaClasse(niv,vise.ch.__cle,vise.snum,lancer); return; }   /* [E2] §12.28-3 (a) : l'heure se joue dans « la classe en cours » (E1) ; « Préparer » garde l'Atelier */
         try{
           try{ atelierOuvrir(); }catch(eo){}   /* dette 12 · 05 : le cours tournait, l'écran restait sur le panneau prof — l'atelier s'ouvre, le Pilotage se voit */
           atEditerChapitre(niv,vise.ch.__cle);
           ATVUES.snum=vise.snum;
-          atVuesAller(preparer?'atelier':'pilotage');
-        }catch(e){ if(typeof atInfo==='function')atInfo('Le pilotage ne s’ouvre pas : '+e.message+' — ouvre l’atelier.'); return; }
-        edtQuandPilotagePret(function(manque){
-          if(manque){ if(typeof atInfo==='function')atInfo('Pilotage indisponible — ouvre l’atelier. (manque : '+manque+')'); return; }
-          if(preparer)return;
-          try{ dr_lancer(dr_slugDe(c.classeMjpc), c.creneau, dr_debutPropose(c.creneau), c.heure||1, c.sur||1); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); }
-        });
+          atVuesAller('atelier');
+        }catch(e){ if(typeof atInfo==='function')atInfo('L’atelier ne s’ouvre pas : '+e.message); return; }
       });
     });
   }catch(e0){ if(typeof atInfo==='function')atInfo('Le pilotage ne s’ouvre pas : '+e0.message+' — ouvre l’atelier.'); }

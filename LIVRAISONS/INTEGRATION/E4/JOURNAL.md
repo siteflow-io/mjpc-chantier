@@ -1053,3 +1053,8 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **Bancs sur la tête `2518615a` + ce morceau** (assemblé md5 `cc2ceb22…`) : `banc.sh` **VERT** — 106 vérifications, 0 échec(s) ; --- fin : 0 défaut(s) ; parcours vert ×2 (`E4/sorties/1952-26-10/`) ; mon banc **149 ok · 0 échec · 0 absent** (RC1-RC22 ; `E4/sorties/1952-site-E4-26-10/`, le détail des récits dans `RC22-recits.json`).
 - **Correction de la 106** : la phrase « les mots « Au début de l'heure… » donnés à la *dernière* tranche » voulait dire : « Enfin, à la fin de l'heure » donné à la dernière tranche même quand elle commence tôt (ex. à 15 min s'il n'y a rien après) — c'est la règle, appliquée telle quelle.
 - **§12.28 E4 fini (code ; voir le commit de cette poussée)** — reste : le mot de Paul sur « Cette heure, on a fait » avant toute production. **Bloqué** : rien.
+
+## Poussée 108 — 19:35 UTC (20:35 Paris) · 13 · 42 rejouée sur la tête après E1 (5) — **§12.28 E4 fini (`fe825c57`)**
+- Ma poussée 107 s'est rebasée sur E1 (5) (`3a0c567a`, `ea597a14` : le « ? ») ; l'assemblé de la tête `fe825c57` (md5 `d6dcf54f…`, réassemblé à l'identique) rejoué : `banc.sh` **VERT** — 106 vérifications, 0 échec(s) ; --- fin : 0 défaut(s) (`E4/sorties/2014-26-10/`) ; mon banc **149 ok · 0 échec · 0 absent**, RC22 compris (`E4/sorties/2014-site-E4-26-10/`).
+- E3 (retour 54) compte encore « 42 (E4) » rouge : sa mesure est sur `509249ed`, d'avant ma poussée — à rejouer sur `fe825c57` ou après.
+- **§12.28 E4 fini (`fe825c57`).** Reste, hors de moi : **le mot de Paul sur « Cette heure, on a fait »** (captures `E4-RC22-AVANT-…` / `E4-RC22-APRES-une-activite-fin.png`) avant toute production. Je reste en veille (deux retours de 50 min sans rien de nouveau, puis arrêt).

@@ -1,0 +1,35 @@
+banc E1 · 2026-10-26 11:13 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 28c69147d83e33b77a103b828171ee62
+
+A37 — §12.27 (1), dette 12 · 87 : le panneau prof bord à bord, à toute la largeur et toute la hauteur de la fenêtre, sans coins, aux quatre tailles ; aucun défilement de côté, dans aucune section
+  ok     A37 · 1366 × 768 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":0,"t":0,"r":1366,"b":768,"coins":"0px","W":1366,"H":768}
+  ok     A37 · 1366 × 768 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ok     A37 · 1366 × 768 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":0,"menu":230,"oy":"auto"}
+  ok     A37 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ok     A37 · 1536 × 864 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":0,"t":0,"r":1536,"b":864,"coins":"0px","W":1536,"H":864}
+  ok     A37 · 1536 × 864 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ok     A37 · 1536 × 864 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":0,"menu":230,"oy":"auto"}
+  ok     A37 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ok     A37 · 1707 × 743 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":0,"t":0,"r":1707,"b":743,"coins":"0px","W":1707,"H":743}
+  ok     A37 · 1707 × 743 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ok     A37 · 1707 × 743 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":0,"menu":230,"oy":"auto"}
+  ok     A37 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ok     A37 · 1920 × 1080 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":0,"t":0,"r":1920,"b":1080,"coins":"0px","W":1920,"H":1080}
+  ok     A37 · 1920 × 1080 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ok     A37 · 1920 × 1080 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":0,"menu":230,"oy":"auto"}
+  ok     A37 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+A38 — §12.27 (2), dette 12 · 88 : ↻ et ✕ de chaque élève dans la carte, à droite, sur la ligne du nom — avec ou sans ◆, aux quatre tailles
+  ok     A38 · 1366 × 768 : 29 lignes d'élève (1 avec ◆) — ↻ ✕ dans la carte, à droite (≤ 16 px du bord), sur la ligne du nom, après lui
+  ok     A38 · 1366 × 768 : la grille de la ligne a une colonne par enfant (5) — 5
+  ok     A38 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ok     A38 · 1536 × 864 : 29 lignes d'élève (1 avec ◆) — ↻ ✕ dans la carte, à droite (≤ 16 px du bord), sur la ligne du nom, après lui
+  ok     A38 · 1536 × 864 : la grille de la ligne a une colonne par enfant (5) — 5
+  ok     A38 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ok     A38 · 1707 × 743 : 29 lignes d'élève (1 avec ◆) — ↻ ✕ dans la carte, à droite (≤ 16 px du bord), sur la ligne du nom, après lui
+  ok     A38 · 1707 × 743 : la grille de la ligne a une colonne par enfant (5) — 5
+  ok     A38 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ok     A38 · 1920 × 1080 : 29 lignes d'élève (1 avec ◆) — ↻ ✕ dans la carte, à droite (≤ 16 px du bord), sur la ligne du nom, après lui
+  ok     A38 · 1920 × 1080 : la grille de la ligne a une colonne par enfant (5) — 5
+  ok     A38 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+28 vérifications, 0 échec(s) · 50 s

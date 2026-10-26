@@ -460,3 +460,11 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **Garde A37** (par le geste, aux quatre tailles : le panneau ouvert par son bouton, ses 13 sections ouvertes une à une) : bords = la fenêtre à 1 px près, coins 0, aucune section ne défile de côté (contenu, page), en-tête en haut, menu 230 px, contenu `overflow-y:auto`. **Rouge avant 8 échecs** (`a37-avant.txt`), **vert après 16/0** (`a37.txt`).
 - **banc.sh VERT** sur `512f1dc2` (sorties `E1/sorties/1157-26-10/` : 108 vérifications, 0 échec ; fin : 0 défaut(s) ; parcours vert ×2).
 - **Reste** : (2)-(8). (2) et (3) sont codés (A38 16/0… et A39 28/0 sur l'assemblé de travail), leur banc suit. **Relances** : rien de nouveau (main fusionné : rien). E3 a poussé son audit (retour 38).
+
+## 26/10, 12:30 Paris (11:30 UTC) — §12.27 (2) poussé : ↻ ✕ dans la carte d'élève (dette 12 · 88) — commit `3230de04`
+- *(le commit de (1) est `514d88c8` après le rebase sur le retour 38 d'E3, pas `512f1dc2` — code identique.)*
+- **Ce que ça change pour Paul** : dans « Élèves & codes », ↻ (régénérer le code) et ✕ (retirer l'élève) sont dans la carte de l'élève, à droite, sur la ligne de son nom — avec ou sans ◆.
+- **Fait** : `index.html` l. 609 — `.el-row` : `28px minmax(0,1fr) auto 96px auto` (une colonne par enfant réel : numéro, nom, ◆, code, ↻ ✕ ; avant 4 colonnes pour 5 enfants). Rien d'autre.
+- **Garde A38** (par le geste, aux quatre tailles, codes déverrouillés au faux hub, une ligne avec ◆ posé comme `elfFleches` le pose, les 28 autres sans) : sur chacune des 29 lignes, ↻ et ✕ dans la ligne, à ≤ 16 px du bord droit, centrés sur la ligne du nom, après lui ; la grille a 5 colonnes. **Rouge avant 8 échecs** (`a38-avant.txt` : ↻ 20 px à gauche de la carte, 30 px plus bas — la mesure du complément), **vert après 12/0** (`a37-a38.txt`, avec A37 16/0).
+- **banc.sh VERT** sur `3230de04` (sorties `E1/sorties/1206-26-10/` : 108 vérifications, 0 échec ; fin : 0 défaut(s) ; parcours vert ×2).
+- **Reste** : (3) codé (A39 28/0 sur l'assemblé de travail), son banc suit ; (4)-(8) codés en patchs, pas encore appliqués. **Relances** : rien de nouveau.

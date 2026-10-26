@@ -91,6 +91,13 @@ const atelier = pg => pg.evaluate(() => { const W = document.documentElement.cli
 /* (d) une boîte sans borne : sa largeur = la largeur de contenu de son parent */
 const pleine = (pg, sel, racine) => pg.evaluate(({ s, rc }) => { const el = Array.from(document.querySelectorAll((rc ? rc + ' ' : '') + s)).find(e => e.getBoundingClientRect().width > 0); if (!el) return null; const pa = el.parentElement; const ps = getComputedStyle(pa); const pr = pa.getBoundingClientRect(); const dispo = pr.width - parseFloat(ps.paddingLeft) - parseFloat(ps.paddingRight) - parseFloat(ps.borderLeftWidth) - parseFloat(ps.borderRightWidth); const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return { larg: Math.round(r.width), dispo: Math.round(dispo), maxw: cs.maxWidth, W: document.documentElement.clientWidth }; }, { s: sel, rc: racine || '' });
 
+/* (e) un texte de la page recouvert par un élément fixe (un bouton flottant posé par-dessus quand la page s'élargit) */
+const recouvert = (pg, racine) => pg.evaluate(rc => { const W = innerWidth, H = innerHeight; const R0 = document.querySelector(rc); if (!R0) return null; const ko = [];
+  const fixe = e => { for (let a = e; a && a !== document.body; a = a.parentElement) if (getComputedStyle(a).position === 'fixed') return a; return null; };
+  const tw = document.createTreeWalker(R0, NodeFilter.SHOW_TEXT); while (tw.nextNode()) { const t = tw.currentNode; const txt = t.textContent.replace(/\s+/g, ' ').trim(); if (!txt) continue; const el = t.parentElement; if (el.closest('.level-bg-num,[aria-hidden="true"]')) continue; /* le grand chiffre décoratif d'une carte de niveau ne se lit pas */ const cs = getComputedStyle(el); if (cs.visibility === 'hidden' || cs.display === 'none' || +cs.opacity === 0) continue;
+    const rg = document.createRange(); rg.selectNodeContents(t); for (const r of Array.from(rg.getClientRects())) { if (r.width < 2 || r.height < 2 || r.bottom < 0 || r.top > H || r.right < 0 || r.left > W) continue;
+      for (const fx of [0.15, 0.5, 0.85]) { const x = r.left + r.width * fx, y = r.top + r.height / 2; if (x < 0 || x >= W || y < 0 || y >= H) continue; const top = document.elementFromPoint(x, y); if (!top || top === el || el.contains(top) || top.contains(el)) continue; const f = fixe(top); if (f && !f.contains(el)) { ko.push('« ' + txt.slice(0, 30) + ' » sous ' + top.tagName.toLowerCase() + (top.id ? '#' + top.id : '') + (typeof top.className === 'string' && top.className.trim() ? '.' + top.className.trim().split(/\s+/)[0] : '')); break; } } } if (ko.length > 4) break; }
+  return ko; }, racine);
 /* ce que montre une diapo : au pilote #mur, dans la fenêtre #mur2 (lire / pareil de banc-1226.mjs) */
 const lire = (ctx, quel) => ctx.evaluate(q => { const mur = q === 'pilote' ? document.getElementById('mur') : (document.getElementById('mur2') || document.querySelector('.mur.tableau')); if (!mur) return null; const mb = mur.getBoundingClientRect(); const c = mur.querySelector('.corpsd') || mur;
   const els = Array.from(c.querySelectorAll('li')).filter(l => !l.classList.contains('hors') && !l.classList.contains('pas') && l.getBoundingClientRect().height > 0 && getComputedStyle(l).visibility !== 'hidden' && getComputedStyle(l).opacity !== '0');
@@ -150,8 +157,10 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
     await pg.evaluate(() => edtFermer()); await p(pg, 600);
     /* C · l'accueil des niveaux, la page du niveau (côté prof) : .home-inner sans borne (12.27 (6)) */
     const g7 = await ecran('accueil-niveaux', 'C'); let hi = await pleine(pg, '.home-inner', '');
+    const rcv = async nom => { const k = await recouvert(pg, '.page.active .home-inner, .home-inner'); verif('C', k && !k.length, T + ' · ' + nom + ' · aucun texte de la page sous un bouton fixe', k ? k.join(' ; ') : 'pas de .home-inner'); };
+    await rcv('accueil des niveaux');
     verif('C', hi && hi.larg >= hi.W - 1, T + ' · accueil des niveaux · .home-inner à toute la largeur (les bords gardés dedans)', hi ? hi.larg + ' px sur ' + hi.W + ' (max-width ' + hi.maxw + ')' : 'absent');
-    await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 1800); await ecran('niveau-3e', 'C');
+    await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 1800); await ecran('niveau-3e', 'C'); await rcv('page du niveau');
     hi = await pleine(pg, '.home-inner', ''); verif('C', hi && hi.larg >= hi.W - 1, T + ' · page du niveau · .home-inner à toute la largeur', hi ? hi.larg + ' px sur ' + hi.W + ' (max-width ' + hi.maxw + ')' : 'absent');
     await pg.evaluate(() => { const h = Array.from(document.querySelectorAll('[onclick="toggleChapter(this)"]')).find(x => x.offsetParent !== null); if (h) h.click(); }); await p(pg, 900); await ecran('niveau-3e-chapitre-ouvert', 'C');
     /* la page du niveau vue comme un élève (« 👁 Voir comme un élève », basculerVue — audit C7 : le profil MENEY / MONSIEUR ne passe plus sans code) */

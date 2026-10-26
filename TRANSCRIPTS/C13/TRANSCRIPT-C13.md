@@ -3325,3 +3325,18 @@ MEMO
 
 26/10/2026 09:10
 MEMO
+
+## Tour 177 — 26/10/2026 09:30 — Paul (09:28)
+
+**Paul (mot pour mot).** « en fait je dis ça par rapport au profil longitudinal de classe que j'avais déjà largement cadré (va lire) »
+
+**Lu.** Prod `docs/MJPC6-DETTES.md` : « CADRAGE DU 25/08 — PROFIL DE CLASSE (lot 7) » (Paul : « je veux la relecture (onglet relecture) de chaque séance horaire jouée. je veux aussi les stats, mais à coté… tout copiable par un bouton… la participation, la couverture, la liste des heures ») ; tours 69-81 (le badge de classe — écrans à classe cible, validé avec le garde-fou de divergence ; l'EDT prévu calculé, modifiable, « RIEN » avec motif ; tour 79 : les cartes de progression par classe en bas de l'EDT = **une** entrée vers le profil de classe (« l'EDT d'une classe seule + mémoire des heures ») ; tour 80 : « l'edt… devrait permettre qu'on passe ensuite rapidement au profil classe, et donc enfin à mon déroulé par classe ») ; tours 98-101 (le badge se pose **depuis le déroulé de la vue de classe**, côté site ; la réactivation ; les heures de langue rituelles) ; C3b « LE PROFIL DE CLASSE » (`sas/PONT/LOT-C-CADRAGE.md` : « la VUE DU DÉROULÉ JOUÉ PAR CLASSE — création ; sa matière est déjà au hub : `deroule_joue/<classe>` ») ; sas `MANDATS/POINT-DEROULE-RESTE-A-CODER.md` n°35 (« le profil de classe et la revue du chapitre — cadrage 4 §0.3 : l'écran « Préparer » porte la revue de ce qui a été fait avec cette classe ; cadrage 3 §3 : la structure nommée par classe et par heure, « ici se branche le profil longitudinal » ») et n°23 (profil longitudinal et cockpit) ; `MANDATS/PLAN-10-JOURS.md` L6 PROFIL (J5-J9, « après cadrage avec Paul »). **Mesuré dans ③** : les cartes de classe en bas de l'EDT existent (`edtCartesHtml`, l. 22795 : classe, palier de divergence, barre, **titre du chapitre · séances jouées/total**, fil langue) et leur clic dit « Profil de la classe X — il arrive au lot suivant » (`edtCarteClic`, l. 22819) ; « Préparer » (`edtLancer(cle, true)`, l. 23167) s'arrête à l'Atelier du chapitre ; la Relecture par heure existe ; la donnée `pour:[classes]` et la vue du déroulé par classe n'existent pas. Correction du 363 : le nom du chapitre est affiché dans la carte de classe (bas de l'EDT), pas dans les cases.
+
+**Réponse (mot pour mot).**
+
+365. Lu. Ce que tu demandes est bien le profil de classe cadré le 25/08 et aux tours 69-101 : la relecture de chaque heure rangée d'elle-même, les stats à côté (participation, couverture, temps), la mémoire des heures, l'emploi du temps d'une classe seule, et « mon déroulé par classe » où tu poses les badges de classe et prépares en avance — entrée par les cartes de classe en bas de l'emploi du temps. Dans ton site aujourd'hui : les cartes existent (classe, chapitre en cours, séances jouées/total, retard) et leur clic répond « Profil de la classe — il arrive au lot suivant » ; la Relecture par heure existe ; la vue du déroulé par classe, les badges et la préparation par classe n'existent pas — c'est le lot L6 du plan (écrit « après cadrage avec toi »). Je corrige mon 363 : le nom du chapitre est bien affiché, dans la carte de classe en bas de l'emploi du temps, pas dans les cases.
+
+366. Ce que je propose : ouvrir ce cycle seul, sans le reste du plan. Sur ton « va », je relis tout le cadrage ligne à ligne contre le site d'aujourd'hui, je mesure ce qui existe déjà et ce qui manque, et je te propose les tranchages à valider avec une maquette (captures écran entier) avant tout mandat — rien ne part sans toi.
+
+26/10/2026 09:30
+MEMO

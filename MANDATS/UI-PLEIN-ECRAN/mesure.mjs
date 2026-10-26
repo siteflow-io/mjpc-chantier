@@ -79,7 +79,7 @@ for (const [W, H] of TAILLES) {
   if (await pg.evaluate(() => EDT_VUE.mode === 'classe')) { await ecran('edt-la-classe'); await pg.evaluate(() => edtVue('semaine')); await p(pg, 600); }
   await pg.evaluate(() => edtFermer()); await p(pg, 600); await ecran('accueil-niveaux');
   /* la page du niveau, un chapitre ouvert */
-  await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 1800); await ecran('niveau-3e');
+  await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 900); await pg.evaluate(() => { if (!document.getElementById('page-level').classList.contains('active')) openLevel('3e', '3ème', 'var(--3e)'); }); await p(pg, 1800); await ecran('niveau-3e');   /* le premier openLevel ne fait que choisir le niveau sur l'accueil (clickedLevel) ; la page du niveau s'ouvre au second — trouvé par E3 (F4, 26/10) */
   await pg.evaluate(() => { const h = Array.from(document.querySelectorAll('[onclick="toggleChapter(this)"]')).find(x => x.offsetParent !== null); if (h) h.click(); }); await p(pg, 900); await ecran('niveau-3e-chapitre-ouvert');
   /* le panneau prof, chaque section */
   await pg.evaluate(() => openProfPanel()); await p(pg, 900);

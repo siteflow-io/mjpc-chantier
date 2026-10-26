@@ -3295,3 +3295,88 @@ MEMO
 
 26/10/2026 08:12
 MEMO
+
+## Tour 175 — 26/10/2026 08:49 — Paul (08:48)
+
+**Paul (mot pour mot).** « Comment je fais pour voir la copie complète d'une classe? »
+
+**Mesuré (production ③, `index.html`).** L'entrée : la case d'une heure close dans l'emploi du temps porte le bouton « Relire cette heure » (l. 23339, `dr_edtRelire`, l. 18420 : ouvre le chapitre et la séance de la trace, relit la classe au hub par `dr_recitChargerClasse`, puis l'onglet Relecture ; « rien ne se rejoue, rien ne s'écrit » ; refusé si une heure est en cours). La Relecture a cinq faces (l. 19238 et suivantes) : « Le récit · heure n » (pour l'élève et École Directe), « Ce qui s'est passé · heure n » (pour Paul : diapo par diapo, ce qui a été dévoilé, qui a répondu quoi, les coupures — `passeHtml`, l. 19418), « Papier · heure n » (le papier du cahier, prêt à imprimer), « La séance » (les heures bout à bout, un seul bilan), « Le chapitre » (le tracé des travaux, ce qui a tenu, les notions — calculé des heures closes de cette classe). Les diapos de la copie de classe elles-mêmes (`C/ecrans`, avec ce qui a été écrit dedans) ne s'affichent que dans l'onglet Atelier **pendant l'heure** (régime classe) ou à « Reprendre » une heure non close ; pour une heure close, `dr_edtRelire` ouvre l'Atelier sans régime classe (la trame du chapitre, pas la copie) : aucune vue « diapo par diapo » de la copie close n'existe pour Paul. Côté élève : aucune vue de la copie de classe dans le portail (pas de « copie de classe » hors des modules du déroulé).
+
+**Réponse (mot pour mot).**
+
+361. Dans ton emploi du temps, clique la case d'une heure close de cette classe → « Relire cette heure » : la Relecture s'ouvre sur cette classe, avec cinq faces en haut — « Le récit · heure n » (le texte pour l'élève), « Ce qui s'est passé · heure n » (pour toi : diapo par diapo, ce qui a été dévoilé, qui a répondu quoi), « Papier · heure n » (le papier du cahier), « La séance » (toutes les heures de la séance bout à bout) et « Le chapitre » (le tracé des travaux, ce qui a tenu, les notions, sur toutes les heures closes de la classe). Rien ne se rejoue ni ne s'écrit depuis là.
+
+362. Si par « copie complète » tu veux les diapos telles que la classe les a remplies (ce qui a été écrit dedans, diapo par diapo), ça n'existe pas pour une heure close : tu ne les vois dans l'onglet Atelier que pendant l'heure, ou en reprenant une heure pas encore close. C'est un cadrage à ouvrir si tu le veux — dis-le.
+
+26/10/2026 08:49
+MEMO
+
+## Tour 176 — 26/10/2026 09:10 — Paul (09:07)
+
+**Paul (mot pour mot).** « En fait moi je veux une vue où j'ai le déroulé complet d'une classe précise et que je peux préparer en avance. Par ailleurs comment on corrèle un chapître avec une séance de l'edt ? Dans l'edt il faut que je puisse voir le programme prévu, tu vois? Cela se calcule grâce au temps des séances etc. Sinon l'edt reste comme actuellement, aucun chapitre. Mesure et réponds moi précisément »
+
+**Mesuré (production ③, `index.html`).** (1) La corrélation EDT ↔ chapitre n'est pas un geste de Paul, c'est un calcul : `edtChapitreEnCours(classe, fil)` (l. 22441) = le premier chapitre du niveau de la classe, dans l'ordre de la liste du niveau, sur le fil demandé (fil principal ou « langue »), **publié pour cette classe** (`isPubFor`, l. 3565 : `published === true` ou la classe cochée), qui a encore une séance non jouée ; ses séances triées par `ordre` ; `edtFileDAttente` (l. 22479) = la file des séances qui attendent, en reprenant les heures déjà jouées de la première ; `edtCasesDuJour`/le calcul des cellules (l. 22596-22625) : chaque case **à venir** de la classe prend l'heure suivante de la file — la case affiche le **titre de la séance** et « heure h/N » (`edtCelluleCorps`, l. 22763-22767), N = `edtHeuresPour` (l. 22427) : la frontière d'heures posée dans la trame (`heure` sur les diapos — le prompt d'injection §1.2 ou le geste de Paul dans l'Atelier) quand elle existe, sinon Σ `dur` des diapos (hors fin d'heure) ÷ temps utile du créneau (`edtTempsUtile`, l. 21277 : fin − début − 5 min) ; une heure jouée (`deroule_joue`) avance la file, une séance est jouée quand toutes ses heures le sont (`edtSeanceJouee`, l. 22412). Le **titre du chapitre est calculé (`cel.chapitre`, l. 22620) mais affiché nulle part** dans l'EDT (ni la case, ni la modale qui dit « Séance : … », l. 23339). Cases sans programme : « aucune séance prête » (`rienDePret`, l. 22612-22614 : aucun chapitre publié pour la classe sur ce fil, ou file vide) ; « classe non encore importée » (`nonImportee`, l. 22571). Le hub réel n'est pas lisible d'ici ce matin (le proxy refuse `firebasedatabase.app`, 403 ; WebFetch : hors liste) : l'état de publication des chapitres de Paul n'est pas mesuré. (2) Une vue « le déroulé complet d'une classe précise, préparable en avance » n'existe pas : l'Atelier est le déroulé du chapitre, commun aux classes du niveau ; par classe il existe la file de l'EDT, la copie de classe d'une heure une fois lancée, la Relecture (face « Le chapitre » : les heures closes de la classe calculées, les heures à venir lues dans la trame), et la seule préparation par classe avant lancement : la réactivation (§12.26).
+
+**Réponse (mot pour mot).**
+
+363. La corrélation chapitre ↔ emploi du temps existe déjà et c'est un calcul, pas un geste de toi : pour chaque classe, le site prend le premier chapitre de son niveau qui est publié pour elle et pas fini, met ses séances en file dans l'ordre, et donne à chaque case à venir de la classe l'heure suivante de la file ; la case affiche le titre de la séance et « heure h/N », N venant des heures posées dans le déroulé (le prompt ou ton geste dans l'Atelier), sinon de la somme des durées des diapos divisée par le temps utile du créneau (sa durée moins 5 minutes) ; une heure jouée fait avancer la file. Ce qui manque : le nom du chapitre est calculé mais affiché nulle part (ni dans la case, ni dans sa fenêtre qui dit seulement « Séance : … »). Si chez toi les cases disent « aucune séance prête », c'est qu'aucun chapitre n'est publié pour cette classe (ou qu'il n'a pas de séance avec un déroulé) ; « classe non encore importée » si la classe ne l'est pas. Je n'ai pas pu lire ton hub ce matin (le passage est bloqué d'ici) : je ne sais pas ce qui est publié pour tes classes — dis-moi ce qu'écrit exactement une case de ta 3e.
+
+364. La vue « le déroulé complet d'une classe précise, que je prépare en avance » n'existe pas : l'Atelier est le déroulé du chapitre, le même pour toutes les classes du niveau ; par classe tu as la file de l'emploi du temps, la copie de classe de chaque heure une fois lancée, et la Relecture ; la seule chose que tu prépares par classe avant de lancer, c'est la réactivation. C'est un cadrage à ouvrir : si tu dis « va », je te propose les tranchages (où elle vit, ce qu'on y prépare, ce qui reste commun au chapitre) avec une capture avant tout mandat.
+
+26/10/2026 09:10
+MEMO
+
+## Tour 177 — 26/10/2026 09:30 — Paul (09:28)
+
+**Paul (mot pour mot).** « en fait je dis ça par rapport au profil longitudinal de classe que j'avais déjà largement cadré (va lire) »
+
+**Lu.** Prod `docs/MJPC6-DETTES.md` : « CADRAGE DU 25/08 — PROFIL DE CLASSE (lot 7) » (Paul : « je veux la relecture (onglet relecture) de chaque séance horaire jouée. je veux aussi les stats, mais à coté… tout copiable par un bouton… la participation, la couverture, la liste des heures ») ; tours 69-81 (le badge de classe — écrans à classe cible, validé avec le garde-fou de divergence ; l'EDT prévu calculé, modifiable, « RIEN » avec motif ; tour 79 : les cartes de progression par classe en bas de l'EDT = **une** entrée vers le profil de classe (« l'EDT d'une classe seule + mémoire des heures ») ; tour 80 : « l'edt… devrait permettre qu'on passe ensuite rapidement au profil classe, et donc enfin à mon déroulé par classe ») ; tours 98-101 (le badge se pose **depuis le déroulé de la vue de classe**, côté site ; la réactivation ; les heures de langue rituelles) ; C3b « LE PROFIL DE CLASSE » (`sas/PONT/LOT-C-CADRAGE.md` : « la VUE DU DÉROULÉ JOUÉ PAR CLASSE — création ; sa matière est déjà au hub : `deroule_joue/<classe>` ») ; sas `MANDATS/POINT-DEROULE-RESTE-A-CODER.md` n°35 (« le profil de classe et la revue du chapitre — cadrage 4 §0.3 : l'écran « Préparer » porte la revue de ce qui a été fait avec cette classe ; cadrage 3 §3 : la structure nommée par classe et par heure, « ici se branche le profil longitudinal » ») et n°23 (profil longitudinal et cockpit) ; `MANDATS/PLAN-10-JOURS.md` L6 PROFIL (J5-J9, « après cadrage avec Paul »). **Mesuré dans ③** : les cartes de classe en bas de l'EDT existent (`edtCartesHtml`, l. 22795 : classe, palier de divergence, barre, **titre du chapitre · séances jouées/total**, fil langue) et leur clic dit « Profil de la classe X — il arrive au lot suivant » (`edtCarteClic`, l. 22819) ; « Préparer » (`edtLancer(cle, true)`, l. 23167) s'arrête à l'Atelier du chapitre ; la Relecture par heure existe ; la donnée `pour:[classes]` et la vue du déroulé par classe n'existent pas. Correction du 363 : le nom du chapitre est affiché dans la carte de classe (bas de l'EDT), pas dans les cases.
+
+**Réponse (mot pour mot).**
+
+365. Lu. Ce que tu demandes est bien le profil de classe cadré le 25/08 et aux tours 69-101 : la relecture de chaque heure rangée d'elle-même, les stats à côté (participation, couverture, temps), la mémoire des heures, l'emploi du temps d'une classe seule, et « mon déroulé par classe » où tu poses les badges de classe et prépares en avance — entrée par les cartes de classe en bas de l'emploi du temps. Dans ton site aujourd'hui : les cartes existent (classe, chapitre en cours, séances jouées/total, retard) et leur clic répond « Profil de la classe — il arrive au lot suivant » ; la Relecture par heure existe ; la vue du déroulé par classe, les badges et la préparation par classe n'existent pas — c'est le lot L6 du plan (écrit « après cadrage avec toi »). Je corrige mon 363 : le nom du chapitre est bien affiché, dans la carte de classe en bas de l'emploi du temps, pas dans les cases.
+
+366. Ce que je propose : ouvrir ce cycle seul, sans le reste du plan. Sur ton « va », je relis tout le cadrage ligne à ligne contre le site d'aujourd'hui, je mesure ce qui existe déjà et ce qui manque, et je te propose les tranchages à valider avec une maquette (captures écran entier) avant tout mandat — rien ne part sans toi.
+
+26/10/2026 09:30
+MEMO
+
+## Tour 178 — 26/10/2026 09:55 — Paul (09:52) : « ok pour 366 »
+
+**Paul (mot pour mot).** « ok pour 366 »
+
+**Fait.** Le cadrage relu ligne à ligne : prod `docs/MJPC6-DETTES.md` (25/08 lot 7 ; tours 69-81, 98-101) ; sas `PONT/LOT-C-CADRAGE.md`, `DEROULE/CADRAGE-4-LA-PREPARATION.md` §0.3, `DEROULE/CADRAGE-1-LA-CLASSE.md` §8 et §11b.5, `DEROULE/CADRAGE-3-LES-NOTIONS.md` §3.1, `MANDATS/POINT-DEROULE-RESTE-A-CODER.md` n°35, `MANDATS/PLAN-10-JOURS.md` L6. Mesuré dans ③ (lignes citées dans la note) : le programme prévu par classe (EDT), la carte de classe et son clic « il arrive au lot suivant », « Préparer » (l'Atelier, sans revue), « Où en est la classe » (une heure seulement), la Relecture (cinq faces), la copie de classe (visible comme diapos seulement pendant l'heure), la réactivation ; n'existent pas : la vue par classe, le badge et sa donnée, les stats à côté, la liste des heures, le cockpit. Note écrite au sas : `MANDATS/PROFIL-CLASSE/CADRAGE-RELU.md` (les décisions verbatim, l'existant, les tranchages T1-T7, la suite). Pas de maquette encore (elle suit les réponses de Paul aux tranchages ; par défaut T1-T6).
+
+**Réponse (mot pour mot).**
+
+367. Cadrage relu et mesuré, tout est dans une note : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PROFIL-CLASSE/CADRAGE-RELU.md — tes décisions datées, ce qui existe déjà dans ton site (ligne par ligne), ce qui manque, et sept tranchages. Les six qui demandent ton mot, en une ligne chacun :
+
+368. T1 — où : une vue « la classe » à part (pas dans l'Atelier), ouverte par le clic sur la carte de classe en bas de l'emploi du temps et par « Préparer » d'une case à venir.
+
+369. T2 — d'abord : l'emploi du temps de cette classe seule, ses heures dans l'ordre sur l'année, passées (jouée, passée, sans séance et son motif) et à venir (séance, heure h/N, chapitre) — le même calcul que l'emploi du temps, recalculé à chaque heure jouée.
+
+370. T3 — une heure à venir cliquée : le déroulé prévu de cette heure pour cette classe (la trame d'aujourd'hui, ce qui glisse, sa réactivation construite), et c'est là que tu prépares en avance en posant un badge sur une diapo (« pas pour cette classe » / « pour cette classe seulement ») ; le contenu reste celui du chapitre.
+
+371. T4 et T5 — une heure passée : « Relire cette heure » (existe) et la revue du chapitre pour cette classe (la face « Le chapitre » de la Relecture) rangée dans la vue ; les stats à côté, dans un second volet (participation, couverture, temps réel / prévu, heures sautées et motifs), tout copiable par un bouton.
+
+372. T6 — le badge est une décision de la copie de la classe (comme une décision de fin d'heure), lue à l'ouverture de l'heure ; la trame du chapitre ne change pas ; rien de nouveau n'est créé au hub. Ce que tu ne commentes pas est acquis ; sur tes réponses je fais la maquette (ton fichier de production sur le faux hub, la vue écrite dedans, captures écran entier).
+
+26/10/2026 09:55
+MEMO
+
+## Tour 179 — 26/10/2026 10:21 — Paul (09:56) : « je veux voir à quoi ça ressemble »
+
+**Paul (mot pour mot).** « je veux voir à quoi ça ressemble »
+
+**Fait.** La maquette : le fichier de production 8.75.0-③ (md5 `83adc8de…`), un bloc de 273 lignes ajouté avant le `</html>` final (`MANDATS/PROFIL-CLASSE/maquette/la-classe.js`, md5 `d7899894…`), rien du fichier réécrit, trois fonctions de l'EDT recouvertes (`edtCarteClic`, `edtPeindre` pour le mode `classe`, `edtLancer` en mode « Préparer ») ; tout le reste lu tel quel (`edtProjeter`, `edtFileDAttente`, `edtHeuresPour`, la copie `deroule_joue/<classe>`, `dr_edtRelire`, les traces). Jouée par le geste sur le faux hub (le dispositif d'E3, `banc-1226.mjs` : horloge au lundi 14/09/2026 09:00, entrée par le site) : heure 1 lancée, 14 ▶, close à 09:47 (la réactivation de l'heure 2 est dans la copie, `react-h2-s0`) → l'EDT → la carte → la vue → un badge → les stats → une heure jouée → la semaine → la case du 15/09 → « ✎ Préparer » → « ▶ Ouvrir le pilotage et lancer ». Neuf captures écran entier 1366 × 768, 0 erreur JS, le badge écrit au hub (`PUT …/deroule_joue/3E Charles de Gaulle/decisions/emt9v3yqobbdyt`). Pièces `TRANSCRIPTS/C13/pieces/T179-01…09-*.png` ; `MANDATS/PROFIL-CLASSE/maquette/` (bloc, maquette html, `capture.mjs`, captures, journal, LISEZ-MOI).
+
+**Réponse (mot pour mot).**
+
+373. La maquette est faite : ton fichier de production ③ sur le faux hub, la vue « la classe » écrite dedans, jouée par le geste (heure 1 lancée et close → l'emploi du temps → la carte de classe → la vue), neuf captures écran entier, zéro erreur. Ce que tu vois : (02) la vue — à gauche les heures de la 3E Charles de Gaulle sur l'année (passées · pas jouées, la jouée du 14/9, puis « heure 2/3 », « heure 3/3 », « L'Albatros » 1/3… le même calcul que l'EDT), à droite l'heure à venir choisie d'elle-même (mardi 15/9 15:07, heure 2/3) : la réactivation construite en tête, « Les hypothèses de la classe » glissée de l'heure 1, les diapos de l'heure dans l'ordre de « Où en est la classe », chacune avec ses deux badges ; (03) le badge « pas pour cette classe » posé sur « Les hypothèses » — écrit au hub dans la copie de la classe (`deroule_joue/<classe>/decisions/<diapo>`), la trame intacte ; (04-05) « Les stats » : les heures (joué / prévu, activités, reportées, paroles), la participation par élève, la couverture des notions, les heures sans séance, « Copier » ; (06) une heure jouée : sa trace (minutes, activités prévu / réel, le travail donné), « Relire cette heure », « Le chapitre » ; (07-08) l'autre entrée : la case du 15/9 → « ✎ Préparer » atterrit dans la vue sur cette heure, le badge y est encore ; (09) « ▶ » depuis la vue → « Où en est la classe », rien lancé.
+
+374. Ce que la maquette ne fait pas encore, pour ne pas te tromper : l'ouverture de l'heure ne lit pas le badge (en 09, « Les hypothèses » est toujours dans l'ordre de l'heure 2 — c'est le travail d'E2 au contrat) ; « Le chapitre » ouvre la Relecture sur sa face au lieu de la ranger dans la vue (E4) ; « expérimentale » et « 0/9 » viennent du faux hub. Un tranchage de plus : la liste des heures court jusqu'en juillet (124 lignes « aucune séance prête » après le chapitre) — je propose de l'arrêter à la dernière heure du chapitre publié, avec une ligne « après : aucune séance prête ».
+
+375. À toi : « oui » et j'écris le contrat §12.27 (E1 la vue, E2 le badge lu à l'ouverture, E3 les tailles, E4 Le chapitre et les stats dans la vue), je relance les quatre par des sessions neuves, le contrôle horaire reprend sur ton mot ; sinon dis ce qui ne va pas, un sujet à la fois.
+
+26/10/2026 10:21
+MEMO

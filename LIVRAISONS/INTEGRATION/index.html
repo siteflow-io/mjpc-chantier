@@ -10561,6 +10561,7 @@ function atRendreListe(){
     +'<div class="at-onglets">'
     +'<button class="at-onglet'+(AT.onglet!=='chapitres'?' at-onglet-actif':'')+'" onclick="atOnglet(\'feuilles\')">Mes feuilles</button>'
     +'<button class="at-onglet'+(AT.onglet==='chapitres'?' at-onglet-actif':'')+'" onclick="atOnglet(\'chapitres\')">Mes chapitres</button>'
+    +'<button class="at-btn at-fermer-onglets" onclick="atelierFermer()" title="Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd.">✕ Fermer l’atelier</button>'   /* E1 (§12.27-4) : sur la rangée des onglets de l'accueil aussi — la bande du haut tombe */
     +'</div>';
   if(AT.onglet==='chapitres'){h+=atRendreChapitres();document.getElementById('at-zone').innerHTML=h;atChapitresAssurer();return;}
   /* [PONT-F] la barre d'impression groupée — visible dès qu'il y a des feuilles */
@@ -19957,7 +19958,9 @@ else sesReprisePoser();
 /* E1 (§12.27-4, dette 13 · 37) : tout l'écran, tout le temps. Quand la rangée des onglets existe (un chapitre ouvert), « ✕ Fermer l'atelier » y est
    et la bande du haut (.at-fermer) tombe ; la rangée reste en haut quand Structure défile. Quand la zone du déroulé est montrée (Atelier, Pilotage,
    Relecture), rien ne défile : la zone va du dessous des onglets au bas de la fenêtre (dr_dimensionnerZone), la colonne du chapitre défile chez elle. */
-#atelier-ecran:has(.at-vues-barre)>.at-fermer{display:none}
+#atelier-ecran:has(.at-vues-barre)>.at-fermer,#atelier-ecran:has(.at-onglets)>.at-fermer{display:none}
+#atelier-ecran:has(.at-onglets) .at-zone{padding-top:8px}
+.at-onglets{align-items:center}
 #atelier-ecran:has(.at-vues-barre) .at-zone{padding-top:8px}
 #atelier-ecran:has(.at-vues-dr) .at-zone{padding-bottom:0}
 .at-vues-barre{position:sticky;top:0;z-index:5;background:#12100d;align-items:center}

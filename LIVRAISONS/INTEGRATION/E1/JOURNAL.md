@@ -551,3 +551,4 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **banc.sh VERT** sur `0154ef7a` (sorties `LIVRAISONS/INTEGRATION/E1/sorties/1655-26-10/` : collisions 0, parcours vert ×2, 108 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `a3f2d455…`).
 - **§12.27 E1 fini (`0154ef7a`)** de nouveau. Joignable : retour toutes les 50 min.
 - *(26/10, 17:11 Paris) Retour de veille n°1 depuis « fini (0154ef7a) » : rien de nouveau dans RELANCES/E1.md ; E3 n'a pas encore rejoué après le contrôle n°60. Tête ad6c6d3a. Prochain retour dans 50 min.*
+- *(26/10, 18:04 Paris) Retour de veille : lu « 17:17 » (0 recouvrement sur ma tête, « fini » tient) et « 17:51 » (candidat 8.75.0-④ = e2aee15f, même code que 0154ef7a, annoncé à Paul). Rien à coder. Du nouveau lu, donc le compte des retours vides repart : prochain retour dans 50 min.*

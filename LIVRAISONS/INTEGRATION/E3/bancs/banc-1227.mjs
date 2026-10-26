@@ -115,6 +115,12 @@ const ecransDuProf = pg => pg.evaluate(() => { const W = innerWidth, H = innerHe
   Array.from(document.querySelectorAll('body *')).forEach(e => { const s = getComputedStyle(e); if (s.position !== 'fixed' || !vis(e)) return; const r = e.getBoundingClientRect(); const a = Math.max(0, Math.min(r.right, W) - Math.max(r.left, 0)) * Math.max(0, Math.min(r.bottom, H) - Math.max(r.top, 0)); if (a < W * H / 5) return; if (mur && (e.contains(mur) || mur.contains(e))) return; if (e.closest('#ses-tab, #dr-tableau')) return; const top = document.elementFromPoint(Math.min(W - 1, Math.max(0, r.left + r.width / 2)), Math.min(H - 1, Math.max(0, r.top + r.height / 2))); if (!top || !(e === top || e.contains(top))) return; geo.push(e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/)[0] : '')); });
   return { vus, geo, admin: document.body.classList.contains('admin-mode'), titre: document.title, ecr: (window.SES && SES.ecrituresBloquees) || 0, refuses: (window.DR_TAB && DR_TAB.refuses) ? DR_TAB.refuses.slice() : null }; });
 
+/* §12.28 (3a), M6 : l'Atelier ne lance plus — l'heure se lance par la case de l'emploi du temps (« ▶ Ouvrir le pilotage et lancer ») */
+const lancerParLaCase = async pg => { await pg.evaluate(() => { try { atelierFermer(); } catch (e) {} try { closeProfPanel(); } catch (e) {} }); await pg.waitForTimeout(900);
+  await pg.evaluate(() => { const e = document.getElementById('edt-ecran'); if (!(e && e.style.display !== 'none')) edtOuvrir(); }); await pg.waitForTimeout(1800); await pg.evaluate(() => { try { edtVue('semaine'); } catch (e) {} }); await pg.waitForTimeout(600);
+  const ok = await pg.evaluate(() => { const cs = Array.from(document.querySelectorAll('#edt-ecran .edt-clic')).filter(e => e.offsetParent && /Charles/.test(e.innerText)); const c = cs.find(e => /heure 1\//.test(e.innerText)) || cs[0]; if (!c) return false; c.click(); return true; }); await pg.waitForTimeout(900);
+  const l = ok && await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Ouvrir le pilotage et lancer/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await pg.waitForTimeout(3500);
+  await pg.evaluate(() => { ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); }); await pg.keyboard.press('Escape'); await pg.waitForTimeout(400); return !!l && await pg.evaluate(() => !!(window.S && S.lancee)); };
 const NOMS_EDT = { calendrier: 'Calendrier de l’année', grille: 'Grille de l’emploi du temps', creneaux: 'Créneaux horaires', periodes: 'Découpage en périodes', photos: 'Photos du prévu', reglages: 'Réglages de l’emploi du temps', decisions: 'Décisions horaires' };
 
 dire('E3 · banc §12.27 par le geste (tout l’écran, tout le temps) · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC · fichier md5 ' + MD5 + (DREF ? ' · diapo comparée à la mesure « ' + (DREF.__md5 || '?').slice(0, 8) + ' »' : ''));
@@ -219,7 +225,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
     if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await p(pg, 1800); await sansVoile(pg); await police(pg);
     for (const v of ['structure', 'atelier', 'pilotage']) { await pg.evaluate(x => { const b = document.querySelector('.at-onglet[data-vue="' + x + '"]'); if (b) b.click(); }, v); await p(pg, 1800); await vAt('chapitre-' + v + (v === 'pilotage' ? '-avant-lancement' : ''), 'E', v !== 'structure'); }
     /* F · l'heure lancée : le pilote, la fin de l'heure, la fenêtre du tableau (13 · 44 ; la diapo pareille) */
-    if (await pg.$('[data-lancer="1"]')) { await pg.click('[data-lancer="1"]').catch(() => {}); await p(pg, 2500); await sansVoile(pg); await pg.keyboard.press('Escape'); await p(pg, 300);
+    if (await lancerParLaCase(pg)) {
       for (let i = 0; i < 4; i++) { await pg.click('#bdev').catch(() => {}); await p(pg, 120); }
       await vAt('pilote-heure-lancee', 'F', true);
       const hc = await pg.evaluate(() => ({ h: ((document.getElementById('hclasse') || {}).textContent || '').trim(), c: (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) ? AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug : null }));
@@ -248,7 +254,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
           verif('G', pareil(a.tableau, dt), T + ' · la diapo du tableau = celle de la mesure « avant »', 'avant ' + dD(a.tableau) + ' ; tête ' + dD(dt));
           verif('G', pareil(a.pilote, dp), T + ' · la diapo du pilote = celle de la mesure « avant » (audit C2)', 'avant ' + dD(a.pilote) + ' ; tête ' + dD(dp)); }
         await fen.close().catch(() => {}); }
-    } else verif('F', false, T + ' · le bouton « Lancer » est là');
+    } else verif('F', false, T + ' · l’heure se lance par la case de l’emploi du temps');
     await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="relecture"]'); if (b) b.click(); }); await p(pg, 2000);
     await vAt('chapitre-relecture', 'E', true);
     const rel = await pleine(pg, '.rel', '#dr-zone'), rec = await pleine(pg, '.recit', '#dr-zone');
@@ -272,7 +278,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
       await q.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await p(q, 2500); await sansVoile(q);
       const av = await q.evaluate(() => ({ h: ((document.getElementById('hclasse') || {}).textContent || '').trim(), prem: (typeof _lvlClasses === 'function' ? (_lvlClasses('3e')[0] || {}).nom : null), prop: typeof dr_proposer === 'function' ? (dr_proposer() || {}).classeNom : null }));
       verif('H2', !!av.prop && av.h === av.prop, T + ' · avant tout lancement, #hclasse = la classe proposée', '« ' + av.h + ' » ; proposée « ' + av.prop + ' » ; première du niveau « ' + av.prem + ' »');
-      await q.click('[data-lancer="1"]').catch(() => {}); await p(q, 2500); await sansVoile(q); await q.keyboard.press('Escape'); await p(q, 300);
+      await lancerParLaCase(q);
       const ap = await q.evaluate(() => ({ h: ((document.getElementById('hclasse') || {}).textContent || '').trim(), c: (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) ? AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug : null }));
       if (ap.c === '3A ESSAI') info('H2', T + ' · l’heure lancée est celle de la classe d’essai : la vérification ne discrimine pas ici');
       verif('H2', !!ap.c && ap.h === ap.c, T + ' · l’heure lancée, #hclasse = sa classe (la première du niveau est « ' + av.prem + ' »)', '« ' + ap.h + ' » pour « ' + ap.c + ' »');

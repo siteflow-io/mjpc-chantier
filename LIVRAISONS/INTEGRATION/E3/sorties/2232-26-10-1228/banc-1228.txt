@@ -1,0 +1,323 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-26 21:32 UTC · fichier md5 e3711ce9508cc9e0688d3014ad6facd3
+
+══ 1366×768 ══
+  ok     39 · 1366×768 · en mode test, « 3 DYLAN BOB » se publie depuis la page du niveau (le geste existe)
+  ok     39 · 1366×768 · 13 · 39 · après la publication, l’emploi du temps montre les heures de « 3 DYLAN Bob » avec leur séance — avant 0 / après 4 cases avec séance (3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3 | 3 DYLAN Bob aucune séance prête · fil « langue »)
+  ok     39 · 1366×768 · 13 · 39 · dépublié, elles partent — 0 cases avec séance
+  ok     39 · 1366×768 · 13 · 39 · mode test : aucune écriture au hub
+  info   39 · 1366×768 · en mode test, la présence du prof s’écrit au hub (1 × PUT /presence/prof, le battement de connexion) — dit à la conscience : K15-test la compte-t-il ?
+  ok     39 · 1366×768 · 0 erreur JS
+  ok     41 · 1366×768 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1366×768 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1366×768 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1366×768 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1366×768 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1366×768 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1366×768 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1366×768 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1366×768 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1366×768 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1366×768 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1366×768 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1366×768 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1366×768 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1366×768 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1366×768 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 109 ms
+  ok     41 · 1366×768 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ÉCHEC  L · 1366×768 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps) — accueil : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / button#tprof-btn « 🛠 Panneau prof » ; page du niveau : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / button#tprof-btn « 🛠 Panneau prof » ; emploi du temps : le bandeau n’y est plus
+  ÉCHEC  41 · 1366×768 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 0
+  ÉCHEC  41 · 1366×768 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → ? · 0 lignes · page «  »
+  ÉCHEC  41 · 1366×768 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:15 » à la fermeture → « — » à la reprise
+  ÉCHEC  41 · 1366×768 · l’heure se clôt
+  ok     41 · 1366×768 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1366×768 · 13 · 41 · après « Clore », aucun bandeau
+  ÉCHEC  41 · 1366×768 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1366×768 · 13 · 43 · un « ? » sur chaque écran du prof (29 écrans)
+  ok     43 · 1366×768 · 13 · 43 · au même endroit partout — référence 1346,356
+  ok     43 · 1366×768 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1366×768 · 13 · 43 · aucun « ? » dans la vue élève
+  ÉCHEC  43 · 1366×768 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil — edt-case (edt-case) : « ▶ Reprendre l'heure » (une heure lancée, pas close) : tu retrouves l'heure là où elle en était. / volet : « La case d'une heure ✕ Ici : ce que tu peux faire de cette heure. Dans l'ordre : « ▶ Ouvrir le pilotage et lancer » : l'heure commence avec cette classe ; le chr » ; panneau-eleves (panneau-eleves-codes) : « Générer … codes manquants » (le nombre est sur le bouton), puis « Imprimer » pour les distribuer. / volet : « Panneau prof · Élèves & codes ✕ Ici : la liste des élèves de chaque classe, et leurs codes de connexion. Dans l'ordre : Pour voir les codes : ta clé de chiffrem » ; chapitre-pilotage (chapitre-pilotage) : « ⧉ Ce que voit la classe » bascule la vue de droite : la diapo suivante, ou ce que le tableau afficherait. / volet : « Le chapitre · Pilotage, la répétition ✕ Ici : tu répètes l'heure comme en classe ; rien n'est écrit. Une heure avec une classe se lance depuis l'emploi du temps » ; heure-lancee (classe-heure) : « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau pour le vidéoprojecteur. / volet : « La classe en cours · l'heure ✕ Ici : tu joues l'heure avec la classe. On ne quitte pas cet écran avant « Clore l'heure ». Dans l'ordre : « 🖥 Écran 2 » ouvre la » … +1
+  ok     Z · 1366×768 · 0 erreur JS (40, 41, 43)
+  ok     43 · 1366×768 · 13 · 43 · le clic sur « ? » ouvre le volet à droite, toute la hauteur — 420 px · « L'accueil ✕ Ici : tu choisis un niveau. Dans l'ordre : Cliqu »
+  ÉCHEC  L · 1366×768 · L′ · le volet d’aide ouvert ne cache rien (accueil, page du niveau, emploi du temps, défilés) — accueil : « M. Meney (prof) · PROF », « → », « Le Moyen Âge, Molière, l'argum » ; accueil : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / aside#aide-volet « L'accueil ✕ Ici : tu » ; button#tprof-btn « 🛠 Panneau prof » / aside#aide-volet « L'accueil ✕ Ici : tu » ; page du niveau : « 3ème », « 🖼️ Analyse d'image », « ✅ Publié » ; page du niveau : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / aside#aide-volet « La page du niveau ✕  » ; button#tprof-btn « 🛠 Panneau prof » / aside#aide-volet « La page du niveau ✕  » ; emploi du temps : « M. Meney (prof) · PROF », « → », « Le Moyen Âge, Molière, l'argum » ; emploi du temps : flottants l’un sur l’autre — div#proto-badge « V8.74.0-③ » / aside#aide-volet « L'emploi du temps, l »
+  ok     43 · 1366×768 · 13 · 43 · Échap le ferme
+  ok     43 · 1366×768 · 13 · 43 · la touche « ? » l’ouvre
+  ok     43 · 1366×768 · 13 · 43 · la touche « ? » le ferme
+  ok     43 · 1366×768 · 13 · 43 · aucun « ? » dans la fenêtre du tableau
+  ok     43 · 1366×768 · 13 · 43 · la touche « ? » ne fait rien dans la fenêtre du tableau
+  ok     Z · 1366×768 · 0 erreur JS (43)
+  ok     46 · 1366×768 · l’heure se lance par la case (séance aux diapos sans numéro d’activité — toutes celles du faux hub)
+  ÉCHEC  46 · 1366×768 · 13 · 46 / §12.29 (2) · plus de garde « Aller au cahier » (aller à la diapo de fin n’ouvre plus de garde) — « Aller au cahier de textes — validation ✔ Aucune activité restante prévue pour cette heure — tu es à l'heure. T »
+  ÉCHEC  46 · 1366×768 · 13 · 46 · nulle part « Aucune activité restante… tu es à l’heure » pendant qu’il reste des activités
+  ÉCHEC  46 · 1366×768 · 13 · 46 · le seul compte, celui de l’étape 2 — «  »
+  ok     Z · 1366×768 · 0 erreur JS (46)
+  ÉCHEC  29 · 1366×768 · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation » — {"fin":false,"clore":false,"qui":true,"part":1,"tableau":false,"ligne":true}
+  ÉCHEC  29 · 1366×768 · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste — {"ligne":true,"tableau":false}
+  ok     29 · 1366×768 · l’heure se lance par la case
+  ÉCHEC  29 · 1366×768 · S4 · l’entête : « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe » — ⏱ | 📝 Notes | ⧉ Tableau | 🖥 Écran 2 | Adresse du tableau | Fin de l'heure | ■ Clore l’heure
+  ok     29 · 1366×768 · S2 · « Fin de l’heure » et « ■ Clore l’heure » restent dans l’entête
+  ÉCHEC  29 · 1366×768 · S1 · à T-5, la barre du bas ne s’ouvre pas
+  ÉCHEC  29 · 1366×768 · S1 · la séquence ouverte, le palier en tête — « Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprendre le cours »
+  ÉCHEC  29 · 1366×768 · S2 · la tête : « ❄ Préparer le cahier » et « Plus tard » — Préparer le cahier de textes | Reprendre le cours
+  ÉCHEC  29 · 1366×768 · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille — {"volet":[14,127,186,637],"mur":[216,162,784,441],"notes":[229,789,758,32]} → {"volet":[27,136,64,619],"mur":[315,171,465,261],"notes":null}
+  ÉCHEC  29 · 1366×768 · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours » — Revenir au cours
+  ÉCHEC  29 · 1366×768 · S2 · « Retour au cours » : l’écran d’avant, la tête « ❄ Préparer le cahier » / « Plus tard » — Revenir au cours
+  ÉCHEC  29 · 1366×768 · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé — {"role":"fin","gel":true}
+  ÉCHEC  29 · 1366×768 · S2 · « Plus tard » : la séquence se replie, la classe continue
+  ok     29 · 1366×768 · L · rien de flottant l’un sur l’autre dans l’écran de la classe
+  ÉCHEC  29 · 1366×768 · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » — ▶ Reprendre le cours
+  ok     Z · 1366×768 · 0 erreur JS (29)
+  ok     R · 1366×768 · l’heure se lance par la case
+  ok     R · 1366×768 · la fenêtre du tableau montre la diapo de l’heure — Analyse d'images : la routine · 3 lignes · page «  »
+  ok     R · 1366×768 · « ↗ Le site dans un nouvel onglet » ouvre le second onglet
+  ok     R · 1366×768 · dans le second onglet, « ▶ Jouer en avance » (la répétition)
+  ok     R · 1366×768 · ▶ × 10 en répétition dans le second onglet : la fenêtre du tableau de la classe ne change pas — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     R · 1366×768 · « ■ Arrêter » : toujours pareil — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     Z · 1366×768 · 0 erreur JS (R)
+  ok     42 · 1366×768 · l’heure se lance par la case à 09:44 (fin du créneau 08:57-09:52)
+  ok     42 · 1366×768 · 13 · 42 · une seule activité en fin de créneau : le récit commence par « Cette heure, on a fait » — « Cette heure, on a fait l'activité 1 — Analyse d'images : la routine. »
+  ok     42 · 1366×768 · 13 · 42 · jamais « Enfin » en tête du récit — « Cette heure, on a fait l'activité 1 — Analyse d'images : la  »
+  ok     41 · 1366×768 · 13 · 41 · le retour du navigateur ne quitte pas l’heure — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     Z · 1366×768 · 0 erreur JS (42)
+
+══ 1536×864 ══
+  ok     39 · 1536×864 · en mode test, « 3 DYLAN BOB » se publie depuis la page du niveau (le geste existe)
+  ok     39 · 1536×864 · 13 · 39 · après la publication, l’emploi du temps montre les heures de « 3 DYLAN Bob » avec leur séance — avant 0 / après 4 cases avec séance (3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3 | 3 DYLAN Bob aucune séance prête · fil « langue »)
+  ok     39 · 1536×864 · 13 · 39 · dépublié, elles partent — 0 cases avec séance
+  ok     39 · 1536×864 · 13 · 39 · mode test : aucune écriture au hub
+  info   39 · 1536×864 · en mode test, la présence du prof s’écrit au hub (1 × PUT /presence/prof, le battement de connexion) — dit à la conscience : K15-test la compte-t-il ?
+  ok     39 · 1536×864 · 0 erreur JS
+  ok     41 · 1536×864 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1536×864 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1536×864 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1536×864 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1536×864 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1536×864 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1536×864 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1536×864 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1536×864 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1536×864 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1536×864 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1536×864 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1536×864 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1536×864 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1536×864 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1536×864 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 109 ms
+  ok     41 · 1536×864 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ÉCHEC  L · 1536×864 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps) — accueil : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / button#tprof-btn « 🛠 Panneau prof » ; page du niveau : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / button#tprof-btn « 🛠 Panneau prof » ; emploi du temps : le bandeau n’y est plus
+  ÉCHEC  41 · 1536×864 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 0
+  ÉCHEC  41 · 1536×864 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → ? · 0 lignes · page «  »
+  ÉCHEC  41 · 1536×864 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:15 » à la fermeture → « — » à la reprise
+  ÉCHEC  41 · 1536×864 · l’heure se clôt
+  ok     41 · 1536×864 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ÉCHEC  41 · 1536×864 · 13 · 41 · après « Clore », aucun bandeau
+  ÉCHEC  41 · 1536×864 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1536×864 · 13 · 43 · un « ? » sur chaque écran du prof (29 écrans)
+  ok     43 · 1536×864 · 13 · 43 · au même endroit partout — référence 1516,404
+  ok     43 · 1536×864 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1536×864 · 13 · 43 · aucun « ? » dans la vue élève
+  ÉCHEC  43 · 1536×864 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil — edt-case (edt-case) : « ▶ Reprendre l'heure » (une heure lancée, pas close) : tu retrouves l'heure là où elle en était. / volet : « La case d'une heure ✕ Ici : ce que tu peux faire de cette heure. Dans l'ordre : « ▶ Ouvrir le pilotage et lancer » : l'heure commence avec cette classe ; le chr » ; panneau-eleves (panneau-eleves-codes) : « Générer … codes manquants » (le nombre est sur le bouton), puis « Imprimer » pour les distribuer. / volet : « Panneau prof · Élèves & codes ✕ Ici : la liste des élèves de chaque classe, et leurs codes de connexion. Dans l'ordre : Pour voir les codes : ta clé de chiffrem » ; chapitre-pilotage (chapitre-pilotage) : « ⧉ Ce que voit la classe » bascule la vue de droite : la diapo suivante, ou ce que le tableau afficherait. / volet : « Le chapitre · Pilotage, la répétition ✕ Ici : tu répètes l'heure comme en classe ; rien n'est écrit. Une heure avec une classe se lance depuis l'emploi du temps » ; heure-lancee (classe-heure) : « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau pour le vidéoprojecteur. / volet : « La classe en cours · l'heure ✕ Ici : tu joues l'heure avec la classe. On ne quitte pas cet écran avant « Clore l'heure ». Dans l'ordre : « 🖥 Écran 2 » ouvre la » … +1
+  ok     Z · 1536×864 · 0 erreur JS (40, 41, 43)
+  ok     43 · 1536×864 · 13 · 43 · le clic sur « ? » ouvre le volet à droite, toute la hauteur — 420 px · « L'accueil ✕ Ici : tu choisis un niveau. Dans l'ordre : Cliqu »
+  ÉCHEC  L · 1536×864 · L′ · le volet d’aide ouvert ne cache rien (accueil, page du niveau, emploi du temps, défilés) — accueil : « M. Meney (prof) · PROF », « → », « ⌕ Rechercher » ; accueil : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / aside#aide-volet « L'accueil ✕ Ici : tu » ; button#tprof-btn « 🛠 Panneau prof » / aside#aide-volet « L'accueil ✕ Ici : tu » ; page du niveau : « 3ème », « 📖 Étude de texte », « ✅ Publié » ; page du niveau : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / aside#aide-volet « La page du niveau ✕  » ; button#tprof-btn « 🛠 Panneau prof » / aside#aide-volet « La page du niveau ✕  » ; emploi du temps : « M. Meney (prof) · PROF », « → », « ⌕ Rechercher » ; emploi du temps : flottants l’un sur l’autre — div#proto-badge « V8.74.0-③ » / aside#aide-volet « L'emploi du temps, l »
+  ok     43 · 1536×864 · 13 · 43 · Échap le ferme
+  ok     43 · 1536×864 · 13 · 43 · la touche « ? » l’ouvre
+  ok     43 · 1536×864 · 13 · 43 · la touche « ? » le ferme
+  ok     43 · 1536×864 · 13 · 43 · aucun « ? » dans la fenêtre du tableau
+  ok     43 · 1536×864 · 13 · 43 · la touche « ? » ne fait rien dans la fenêtre du tableau
+  ok     Z · 1536×864 · 0 erreur JS (43)
+  ok     46 · 1536×864 · l’heure se lance par la case (séance aux diapos sans numéro d’activité — toutes celles du faux hub)
+  ÉCHEC  46 · 1536×864 · 13 · 46 / §12.29 (2) · plus de garde « Aller au cahier » (aller à la diapo de fin n’ouvre plus de garde) — « Aller au cahier de textes — validation ✔ Aucune activité restante prévue pour cette heure — tu es à l'heure. T »
+  ÉCHEC  46 · 1536×864 · 13 · 46 · nulle part « Aucune activité restante… tu es à l’heure » pendant qu’il reste des activités
+  ÉCHEC  46 · 1536×864 · 13 · 46 · le seul compte, celui de l’étape 2 — «  »
+  ok     Z · 1536×864 · 0 erreur JS (46)
+  ÉCHEC  29 · 1536×864 · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation » — {"fin":false,"clore":false,"qui":true,"part":1,"tableau":false,"ligne":true}
+  ÉCHEC  29 · 1536×864 · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste — {"ligne":true,"tableau":false}
+  ok     29 · 1536×864 · l’heure se lance par la case
+  ÉCHEC  29 · 1536×864 · S4 · l’entête : « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe » — ⏱ | 📝 Notes | ⧉ Tableau | 🖥 Écran 2 | Adresse du tableau | Fin de l'heure | ■ Clore l’heure
+  ok     29 · 1536×864 · S2 · « Fin de l’heure » et « ■ Clore l’heure » restent dans l’entête
+  ÉCHEC  29 · 1536×864 · S1 · à T-5, la barre du bas ne s’ouvre pas
+  ÉCHEC  29 · 1536×864 · S1 · la séquence ouverte, le palier en tête — « Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprendre le cours »
+  ÉCHEC  29 · 1536×864 · S2 · la tête : « ❄ Préparer le cahier » et « Plus tard » — Préparer le cahier de textes | Reprendre le cours
+  ÉCHEC  29 · 1536×864 · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille — {"volet":[14,110,186,750],"mur":[216,145,954,536],"notes":[229,836,928,32]} → {"volet":[27,119,64,732],"mur":[330,154,605,340],"notes":null}
+  ÉCHEC  29 · 1536×864 · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours » — Revenir au cours
+  ÉCHEC  29 · 1536×864 · S2 · « Retour au cours » : l’écran d’avant, la tête « ❄ Préparer le cahier » / « Plus tard » — Revenir au cours
+  ÉCHEC  29 · 1536×864 · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé — {"role":"fin","gel":true}
+  ÉCHEC  29 · 1536×864 · S2 · « Plus tard » : la séquence se replie, la classe continue
+  ok     29 · 1536×864 · L · rien de flottant l’un sur l’autre dans l’écran de la classe
+  ÉCHEC  29 · 1536×864 · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » — ▶ Reprendre le cours
+  ok     Z · 1536×864 · 0 erreur JS (29)
+  ok     R · 1536×864 · l’heure se lance par la case
+  ok     R · 1536×864 · la fenêtre du tableau montre la diapo de l’heure — Analyse d'images : la routine · 3 lignes · page «  »
+  ok     R · 1536×864 · « ↗ Le site dans un nouvel onglet » ouvre le second onglet
+  ok     R · 1536×864 · dans le second onglet, « ▶ Jouer en avance » (la répétition)
+  ok     R · 1536×864 · ▶ × 10 en répétition dans le second onglet : la fenêtre du tableau de la classe ne change pas — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     R · 1536×864 · « ■ Arrêter » : toujours pareil — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     Z · 1536×864 · 0 erreur JS (R)
+  ok     42 · 1536×864 · l’heure se lance par la case à 09:44 (fin du créneau 08:57-09:52)
+  ok     42 · 1536×864 · 13 · 42 · une seule activité en fin de créneau : le récit commence par « Cette heure, on a fait » — « Cette heure, on a fait l'activité 1 — Analyse d'images : la routine. »
+  ok     42 · 1536×864 · 13 · 42 · jamais « Enfin » en tête du récit — « Cette heure, on a fait l'activité 1 — Analyse d'images : la  »
+  ok     41 · 1536×864 · 13 · 41 · le retour du navigateur ne quitte pas l’heure — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     Z · 1536×864 · 0 erreur JS (42)
+
+══ 1707×743 ══
+  ok     39 · 1707×743 · en mode test, « 3 DYLAN BOB » se publie depuis la page du niveau (le geste existe)
+  ok     39 · 1707×743 · 13 · 39 · après la publication, l’emploi du temps montre les heures de « 3 DYLAN Bob » avec leur séance — avant 0 / après 4 cases avec séance (3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3 | 3 DYLAN Bob aucune séance prête · fil « langue »)
+  ok     39 · 1707×743 · 13 · 39 · dépublié, elles partent — 0 cases avec séance
+  ok     39 · 1707×743 · 13 · 39 · mode test : aucune écriture au hub
+  info   39 · 1707×743 · en mode test, la présence du prof s’écrit au hub (1 × PUT /presence/prof, le battement de connexion) — dit à la conscience : K15-test la compte-t-il ?
+  ok     39 · 1707×743 · 0 erreur JS
+  ok     41 · 1707×743 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1707×743 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1707×743 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1707×743 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1707×743 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1707×743 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1707×743 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1707×743 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1707×743 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1707×743 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1707×743 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1707×743 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1707×743 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1707×743 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1707×743 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1707×743 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 117 ms
+  ok     41 · 1707×743 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ÉCHEC  L · 1707×743 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps) — accueil : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / button#tprof-btn « 🛠 Panneau prof » ; page du niveau : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / button#tprof-btn « 🛠 Panneau prof » ; emploi du temps : le bandeau n’y est plus
+  ÉCHEC  41 · 1707×743 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 0
+  ÉCHEC  41 · 1707×743 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → ? · 0 lignes · page «  »
+  ÉCHEC  41 · 1707×743 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:15 » à la fermeture → « — » à la reprise
+  ÉCHEC  41 · 1707×743 · l’heure se clôt
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ÉCHEC  41 · 1707×743 · 13 · 41 · après « Clore », aucun bandeau
+  ÉCHEC  41 · 1707×743 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1707×743 · 13 · 43 · un « ? » sur chaque écran du prof (29 écrans)
+  ok     43 · 1707×743 · 13 · 43 · au même endroit partout — référence 1687,344
+  ok     43 · 1707×743 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1707×743 · 13 · 43 · aucun « ? » dans la vue élève
+  ÉCHEC  43 · 1707×743 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil — edt-case (edt-case) : « ▶ Reprendre l'heure » (une heure lancée, pas close) : tu retrouves l'heure là où elle en était. / volet : « La case d'une heure ✕ Ici : ce que tu peux faire de cette heure. Dans l'ordre : « ▶ Ouvrir le pilotage et lancer » : l'heure commence avec cette classe ; le chr » ; panneau-eleves (panneau-eleves-codes) : « Générer … codes manquants » (le nombre est sur le bouton), puis « Imprimer » pour les distribuer. / volet : « Panneau prof · Élèves & codes ✕ Ici : la liste des élèves de chaque classe, et leurs codes de connexion. Dans l'ordre : Pour voir les codes : ta clé de chiffrem » ; chapitre-pilotage (chapitre-pilotage) : « ⧉ Ce que voit la classe » bascule la vue de droite : la diapo suivante, ou ce que le tableau afficherait. / volet : « Le chapitre · Pilotage, la répétition ✕ Ici : tu répètes l'heure comme en classe ; rien n'est écrit. Une heure avec une classe se lance depuis l'emploi du temps » ; heure-lancee (classe-heure) : « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau pour le vidéoprojecteur. / volet : « La classe en cours · l'heure ✕ Ici : tu joues l'heure avec la classe. On ne quitte pas cet écran avant « Clore l'heure ». Dans l'ordre : « 🖥 Écran 2 » ouvre la » … +1
+  ok     Z · 1707×743 · 0 erreur JS (40, 41, 43)
+  ok     43 · 1707×743 · 13 · 43 · le clic sur « ? » ouvre le volet à droite, toute la hauteur — 420 px · « L'accueil ✕ Ici : tu choisis un niveau. Dans l'ordre : Cliqu »
+  ÉCHEC  L · 1707×743 · L′ · le volet d’aide ouvert ne cache rien (accueil, page du niveau, emploi du temps, défilés) — accueil : « M. Meney (prof) · PROF », « → », « ⌕ Rechercher » ; accueil : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / aside#aide-volet « L'accueil ✕ Ici : tu » ; button#tprof-btn « 🛠 Panneau prof » / aside#aide-volet « L'accueil ✕ Ici : tu » ; page du niveau : « 3ème », « ✏️ Rédaction », « ✅ Publié » ; page du niveau : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / aside#aide-volet « La page du niveau ✕  » ; button#tprof-btn « 🛠 Panneau prof » / aside#aide-volet « La page du niveau ✕  » ; emploi du temps : « M. Meney (prof) · PROF », « → », « ⌕ Rechercher » ; emploi du temps : flottants l’un sur l’autre — div#proto-badge « V8.74.0-③ » / aside#aide-volet « L'emploi du temps, l » ; div / aside#aide-volet « L'emploi du temps, l »
+  ok     43 · 1707×743 · 13 · 43 · Échap le ferme
+  ok     43 · 1707×743 · 13 · 43 · la touche « ? » l’ouvre
+  ok     43 · 1707×743 · 13 · 43 · la touche « ? » le ferme
+  ok     43 · 1707×743 · 13 · 43 · aucun « ? » dans la fenêtre du tableau
+  ok     43 · 1707×743 · 13 · 43 · la touche « ? » ne fait rien dans la fenêtre du tableau
+  ok     Z · 1707×743 · 0 erreur JS (43)
+  ok     46 · 1707×743 · l’heure se lance par la case (séance aux diapos sans numéro d’activité — toutes celles du faux hub)
+  ÉCHEC  46 · 1707×743 · 13 · 46 / §12.29 (2) · plus de garde « Aller au cahier » (aller à la diapo de fin n’ouvre plus de garde) — « Aller au cahier de textes — validation ✔ Aucune activité restante prévue pour cette heure — tu es à l'heure. T »
+  ÉCHEC  46 · 1707×743 · 13 · 46 · nulle part « Aucune activité restante… tu es à l’heure » pendant qu’il reste des activités
+  ÉCHEC  46 · 1707×743 · 13 · 46 · le seul compte, celui de l’étape 2 — «  »
+  ok     Z · 1707×743 · 0 erreur JS (46)
+  ÉCHEC  29 · 1707×743 · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation » — {"fin":false,"clore":false,"qui":true,"part":1,"tableau":false,"ligne":true}
+  ÉCHEC  29 · 1707×743 · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste — {"ligne":true,"tableau":false}
+  ok     29 · 1707×743 · l’heure se lance par la case
+  ÉCHEC  29 · 1707×743 · S4 · l’entête : « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe » — ⏱ | 📝 Notes | ⧉ Tableau | 🖥 Écran 2 | Adresse du tableau | Fin de l'heure | ■ Clore l’heure
+  ok     29 · 1707×743 · S2 · « Fin de l’heure » et « ■ Clore l’heure » restent dans l’entête
+  ÉCHEC  29 · 1707×743 · S1 · à T-5, la barre du bas ne s’ouvre pas
+  ÉCHEC  29 · 1707×743 · S1 · la séquence ouverte, le palier en tête — « Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprendre le cours »
+  ÉCHEC  29 · 1707×743 · S2 · la tête : « ❄ Préparer le cahier » et « Plus tard » — Préparer le cahier de textes | Reprendre le cours
+  ÉCHEC  29 · 1707×743 · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille — {"volet":[14,110,186,629],"mur":[349,145,860,484],"notes":[229,778,1099,32]} → {"volet":[27,119,64,611],"mur":[478,154,480,270],"notes":null}
+  ÉCHEC  29 · 1707×743 · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours » — Revenir au cours
+  ÉCHEC  29 · 1707×743 · S2 · « Retour au cours » : l’écran d’avant, la tête « ❄ Préparer le cahier » / « Plus tard » — Revenir au cours
+  ÉCHEC  29 · 1707×743 · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé — {"role":"fin","gel":true}
+  ÉCHEC  29 · 1707×743 · S2 · « Plus tard » : la séquence se replie, la classe continue
+  ok     29 · 1707×743 · L · rien de flottant l’un sur l’autre dans l’écran de la classe
+  ÉCHEC  29 · 1707×743 · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » — ▶ Reprendre le cours
+  ok     Z · 1707×743 · 0 erreur JS (29)
+  ok     R · 1707×743 · l’heure se lance par la case
+  ok     R · 1707×743 · la fenêtre du tableau montre la diapo de l’heure — Analyse d'images : la routine · 3 lignes · page «  »
+  ok     R · 1707×743 · « ↗ Le site dans un nouvel onglet » ouvre le second onglet
+  ok     R · 1707×743 · dans le second onglet, « ▶ Jouer en avance » (la répétition)
+  ok     R · 1707×743 · ▶ × 10 en répétition dans le second onglet : la fenêtre du tableau de la classe ne change pas — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     R · 1707×743 · « ■ Arrêter » : toujours pareil — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     Z · 1707×743 · 0 erreur JS (R)
+  ok     42 · 1707×743 · l’heure se lance par la case à 09:44 (fin du créneau 08:57-09:52)
+  ok     42 · 1707×743 · 13 · 42 · une seule activité en fin de créneau : le récit commence par « Cette heure, on a fait » — « Cette heure, on a fait l'activité 1 — Analyse d'images : la routine. »
+  ok     42 · 1707×743 · 13 · 42 · jamais « Enfin » en tête du récit — « Cette heure, on a fait l'activité 1 — Analyse d'images : la  »
+  ok     41 · 1707×743 · 13 · 41 · le retour du navigateur ne quitte pas l’heure — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     Z · 1707×743 · 0 erreur JS (42)
+
+══ 1920×1080 ══
+  ok     39 · 1920×1080 · en mode test, « 3 DYLAN BOB » se publie depuis la page du niveau (le geste existe)
+  ok     39 · 1920×1080 · 13 · 39 · après la publication, l’emploi du temps montre les heures de « 3 DYLAN Bob » avec leur séance — avant 0 / après 4 cases avec séance (3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3 | 3 DYLAN Bob aucune séance prête · fil « langue »)
+  ok     39 · 1920×1080 · 13 · 39 · dépublié, elles partent — 0 cases avec séance
+  ok     39 · 1920×1080 · 13 · 39 · mode test : aucune écriture au hub
+  info   39 · 1920×1080 · en mode test, la présence du prof s’écrit au hub (1 × PUT /presence/prof, le battement de connexion) — dit à la conscience : K15-test la compte-t-il ?
+  ok     39 · 1920×1080 · 0 erreur JS
+  ok     41 · 1920×1080 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1920×1080 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1920×1080 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1920×1080 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1920×1080 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1920×1080 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1920×1080 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1920×1080 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1920×1080 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1920×1080 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1920×1080 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1920×1080 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1920×1080 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1920×1080 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1920×1080 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1920×1080 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 114 ms
+  ok     41 · 1920×1080 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ÉCHEC  L · 1920×1080 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps) — accueil : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / button#tprof-btn « 🛠 Panneau prof » ; page du niveau : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / button#tprof-btn « 🛠 Panneau prof » ; emploi du temps : le bandeau n’y est plus
+  ÉCHEC  41 · 1920×1080 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 0
+  ÉCHEC  41 · 1920×1080 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → ? · 0 lignes · page «  »
+  ÉCHEC  41 · 1920×1080 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:15 » à la fermeture → « — » à la reprise
+  ÉCHEC  41 · 1920×1080 · l’heure se clôt
+  ok     41 · 1920×1080 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1920×1080 · 13 · 41 · après « Clore », aucun bandeau
+  ÉCHEC  41 · 1920×1080 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1920×1080 · 13 · 43 · un « ? » sur chaque écran du prof (29 écrans)
+  ok     43 · 1920×1080 · 13 · 43 · au même endroit partout — référence 1900,512
+  ok     43 · 1920×1080 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1920×1080 · 13 · 43 · aucun « ? » dans la vue élève
+  ÉCHEC  43 · 1920×1080 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil — edt-case (edt-case) : « ▶ Reprendre l'heure » (une heure lancée, pas close) : tu retrouves l'heure là où elle en était. / volet : « La case d'une heure ✕ Ici : ce que tu peux faire de cette heure. Dans l'ordre : « ▶ Ouvrir le pilotage et lancer » : l'heure commence avec cette classe ; le chr » ; panneau-eleves (panneau-eleves-codes) : « Générer … codes manquants » (le nombre est sur le bouton), puis « Imprimer » pour les distribuer. / volet : « Panneau prof · Élèves & codes ✕ Ici : la liste des élèves de chaque classe, et leurs codes de connexion. Dans l'ordre : Pour voir les codes : ta clé de chiffrem » ; chapitre-pilotage (chapitre-pilotage) : « ⧉ Ce que voit la classe » bascule la vue de droite : la diapo suivante, ou ce que le tableau afficherait. / volet : « Le chapitre · Pilotage, la répétition ✕ Ici : tu répètes l'heure comme en classe ; rien n'est écrit. Une heure avec une classe se lance depuis l'emploi du temps » ; heure-lancee (classe-heure) : « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau pour le vidéoprojecteur. / volet : « La classe en cours · l'heure ✕ Ici : tu joues l'heure avec la classe. On ne quitte pas cet écran avant « Clore l'heure ». Dans l'ordre : « 🖥 Écran 2 » ouvre la » … +1
+  ok     Z · 1920×1080 · 0 erreur JS (40, 41, 43)
+  ok     43 · 1920×1080 · 13 · 43 · le clic sur « ? » ouvre le volet à droite, toute la hauteur — 420 px · « L'accueil ✕ Ici : tu choisis un niveau. Dans l'ordre : Cliqu »
+  ÉCHEC  L · 1920×1080 · L′ · le volet d’aide ouvert ne cache rien (accueil, page du niveau, emploi du temps, défilés) — accueil : « M. Meney (prof) · PROF », « → », « ⌕ Rechercher » ; accueil : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / aside#aide-volet « L'accueil ✕ Ici : tu » ; button#tprof-btn « 🛠 Panneau prof » / aside#aide-volet « L'accueil ✕ Ici : tu » ; page du niveau : « 3ème », « ✅ Publié », « Publier pour les élèves » ; page du niveau : flottants l’un sur l’autre — button#admin-tools-btn « 📚 Mes applications » / aside#aide-volet « La page du niveau ✕  » ; button#tprof-btn « 🛠 Panneau prof » / aside#aide-volet « La page du niveau ✕  » ; emploi du temps : « M. Meney (prof) · PROF », « → », « ⌕ Rechercher » ; emploi du temps : flottants l’un sur l’autre — div#proto-badge « V8.74.0-③ » / aside#aide-volet « L'emploi du temps, l »
+  ok     43 · 1920×1080 · 13 · 43 · Échap le ferme
+  ok     43 · 1920×1080 · 13 · 43 · la touche « ? » l’ouvre
+  ok     43 · 1920×1080 · 13 · 43 · la touche « ? » le ferme
+  ok     43 · 1920×1080 · 13 · 43 · aucun « ? » dans la fenêtre du tableau
+  ok     43 · 1920×1080 · 13 · 43 · la touche « ? » ne fait rien dans la fenêtre du tableau
+  ok     Z · 1920×1080 · 0 erreur JS (43)
+  ok     46 · 1920×1080 · l’heure se lance par la case (séance aux diapos sans numéro d’activité — toutes celles du faux hub)
+  ÉCHEC  46 · 1920×1080 · 13 · 46 / §12.29 (2) · plus de garde « Aller au cahier » (aller à la diapo de fin n’ouvre plus de garde) — « Aller au cahier de textes — validation ✔ Aucune activité restante prévue pour cette heure — tu es à l'heure. T »
+  ÉCHEC  46 · 1920×1080 · 13 · 46 · nulle part « Aucune activité restante… tu es à l’heure » pendant qu’il reste des activités
+  ÉCHEC  46 · 1920×1080 · 13 · 46 · le seul compte, celui de l’étape 2 — «  »
+  ok     Z · 1920×1080 · 0 erreur JS (46)
+  ÉCHEC  29 · 1920×1080 · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation » — {"fin":false,"clore":false,"qui":true,"part":1,"tableau":false,"ligne":true}
+  ÉCHEC  29 · 1920×1080 · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste — {"ligne":true,"tableau":false}
+  ok     29 · 1920×1080 · l’heure se lance par la case
+  ÉCHEC  29 · 1920×1080 · S4 · l’entête : « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe » — ⏱ | 📝 Notes | ⧉ Tableau | 🖥 Écran 2 | Adresse du tableau | Fin de l'heure | ■ Clore l’heure
+  ok     29 · 1920×1080 · S2 · « Fin de l’heure » et « ■ Clore l’heure » restent dans l’entête
+  ÉCHEC  29 · 1920×1080 · S1 · à T-5, la barre du bas ne s’ouvre pas
+  ÉCHEC  29 · 1920×1080 · S1 · la séquence ouverte, le palier en tête — « Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprendre le cours »
+  ÉCHEC  29 · 1920×1080 · S2 · la tête : « ❄ Préparer le cahier » et « Plus tard » — Préparer le cahier de textes | Reprendre le cours
+  ÉCHEC  29 · 1920×1080 · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille — {"volet":[14,110,186,966],"mur":[216,145,1338,752],"notes":[229,1052,1312,32]} → {"volet":[27,119,64,948],"mur":[411,154,827,465],"notes":null}
+  ÉCHEC  29 · 1920×1080 · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours » — Revenir au cours
+  ÉCHEC  29 · 1920×1080 · S2 · « Retour au cours » : l’écran d’avant, la tête « ❄ Préparer le cahier » / « Plus tard » — Revenir au cours
+  ÉCHEC  29 · 1920×1080 · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé — {"role":"fin","gel":true}
+  ÉCHEC  29 · 1920×1080 · S2 · « Plus tard » : la séquence se replie, la classe continue
+  ok     29 · 1920×1080 · L · rien de flottant l’un sur l’autre dans l’écran de la classe
+  ÉCHEC  29 · 1920×1080 · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » — ▶ Ouvrir le pilotage et lancer | ✎ Préparer
+  ok     Z · 1920×1080 · 0 erreur JS (29)
+  ok     R · 1920×1080 · l’heure se lance par la case
+  ok     R · 1920×1080 · la fenêtre du tableau montre la diapo de l’heure — Analyse d'images : la routine · 3 lignes · page «  »
+  ok     R · 1920×1080 · « ↗ Le site dans un nouvel onglet » ouvre le second onglet
+  ok     R · 1920×1080 · dans le second onglet, « ▶ Jouer en avance » (la répétition)
+  ok     R · 1920×1080 · ▶ × 10 en répétition dans le second onglet : la fenêtre du tableau de la classe ne change pas — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     R · 1920×1080 · « ■ Arrêter » : toujours pareil — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     Z · 1920×1080 · 0 erreur JS (R)
+  ok     42 · 1920×1080 · l’heure se lance par la case à 09:44 (fin du créneau 08:57-09:52)
+  ok     42 · 1920×1080 · 13 · 42 · une seule activité en fin de créneau : le récit commence par « Cette heure, on a fait » — « Cette heure, on a fait l'activité 1 — Analyse d'images : la routine. »
+  ok     42 · 1920×1080 · 13 · 42 · jamais « Enfin » en tête du récit — « Cette heure, on a fait l'activité 1 — Analyse d'images : la  »
+  ok     41 · 1920×1080 · 13 · 41 · le retour du navigateur ne quitte pas l’heure — Analyse d'images : la routine · 3 lignes · page «  » → Analyse d'images : la routine · 3 lignes · page «  »
+  ok     Z · 1920×1080 · 0 erreur JS (42)
+
+BILAN banc-1228 : 214/308 vérifications — 94 ÉCHEC(S) · ROUGE

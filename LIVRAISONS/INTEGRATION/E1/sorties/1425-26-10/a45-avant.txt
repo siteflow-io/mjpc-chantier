@@ -1,0 +1,31 @@
+banc E1 · 2026-10-26 13:24 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant.html · md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+A45 — §12.27 (13), dette 13 · 45 : « Voir dans l'arborescence » — l'atelier se ferme (enregistré) sans rouvrir le panneau, la page du niveau s'ouvre, le chapitre déplié en haut de l'écran, rien par-dessus ; « ✕ Fermer l'atelier » garde son retour au panneau
+  ÉCHEC  A45 · 1366 × 768 : le bouton de « Mes chapitres » dit « Voir dans l'arborescence », son infobulle dit ce qu'il fait — {"t":"Voir dans le panneau prof"}
+  ÉCHEC  A45 · 1366 × 768 (depuis l'accueil) : l'atelier fermé, pas de panneau, la page du niveau 3e, le chapitre déplié en haut de l'écran (0 px), rien par-dessus son en-tête — {"sy":0,"max":0,"atelier":false,"panneau":true,"niveau":false,"lvl":null,"carte":true,"ouvert":true,"haut":0,"dessus":false,"quoi":"fi-overlay"}
+  ok     A45 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ÉCHEC  A45 · 1366 × 768 : le bouton de « Mes chapitres » dit « Voir dans l'arborescence », son infobulle dit ce qu'il fait — {"t":"Voir dans le panneau prof"}
+  ÉCHEC  A45 · 1366 × 768 (depuis la page du niveau) : l'atelier fermé, pas de panneau, la page du niveau 3e, le chapitre déplié en haut de l'écran (0 px), rien par-dessus son en-tête — {"sy":1614,"max":2075,"atelier":false,"panneau":true,"niveau":true,"lvl":"3e","carte":true,"ouvert":true,"haut":0,"dessus":false,"quoi":"fi-overlay"}
+  ok     A45 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ÉCHEC  A45 · 1536 × 864 : le bouton de « Mes chapitres » dit « Voir dans l'arborescence », son infobulle dit ce qu'il fait — {"t":"Voir dans le panneau prof"}
+  ÉCHEC  A45 · 1536 × 864 (depuis l'accueil) : l'atelier fermé, pas de panneau, la page du niveau 3e, le chapitre déplié en haut de l'écran (0 px), rien par-dessus son en-tête — {"sy":0,"max":0,"atelier":false,"panneau":true,"niveau":false,"lvl":null,"carte":true,"ouvert":true,"haut":0,"dessus":false,"quoi":"fi-overlay"}
+  ok     A45 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ÉCHEC  A45 · 1536 × 864 : le bouton de « Mes chapitres » dit « Voir dans l'arborescence », son infobulle dit ce qu'il fait — {"t":"Voir dans le panneau prof"}
+  ÉCHEC  A45 · 1536 × 864 (depuis la page du niveau) : l'atelier fermé, pas de panneau, la page du niveau 3e, le chapitre déplié en haut de l'écran (0 px), rien par-dessus son en-tête — {"sy":1710,"max":2075,"atelier":false,"panneau":true,"niveau":true,"lvl":"3e","carte":true,"ouvert":true,"haut":0,"dessus":false,"quoi":"fi-overlay"}
+  ok     A45 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ÉCHEC  A45 · 1707 × 743 : le bouton de « Mes chapitres » dit « Voir dans l'arborescence », son infobulle dit ce qu'il fait — {"t":"Voir dans le panneau prof"}
+  ÉCHEC  A45 · 1707 × 743 (depuis l'accueil) : l'atelier fermé, pas de panneau, la page du niveau 3e, le chapitre déplié en haut de l'écran (0 px), rien par-dessus son en-tête — {"sy":0,"max":0,"atelier":false,"panneau":true,"niveau":false,"lvl":null,"carte":true,"ouvert":true,"haut":0,"dessus":false,"quoi":"fi-overlay"}
+  ok     A45 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ÉCHEC  A45 · 1707 × 743 : le bouton de « Mes chapitres » dit « Voir dans l'arborescence », son infobulle dit ce qu'il fait — {"t":"Voir dans le panneau prof"}
+  ÉCHEC  A45 · 1707 × 743 (depuis la page du niveau) : l'atelier fermé, pas de panneau, la page du niveau 3e, le chapitre déplié en haut de l'écran (0 px), rien par-dessus son en-tête — {"sy":1589,"max":2075,"atelier":false,"panneau":true,"niveau":true,"lvl":"3e","carte":true,"ouvert":true,"haut":0,"dessus":false,"quoi":"fi-overlay"}
+  ok     A45 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ÉCHEC  A45 · 1920 × 1080 : le bouton de « Mes chapitres » dit « Voir dans l'arborescence », son infobulle dit ce qu'il fait — {"t":"Voir dans le panneau prof"}
+  ÉCHEC  A45 · 1920 × 1080 (depuis l'accueil) : l'atelier fermé, pas de panneau, la page du niveau 3e, le chapitre déplié en haut de l'écran (0 px), rien par-dessus son en-tête — {"sy":0,"max":0,"atelier":false,"panneau":true,"niveau":false,"lvl":null,"carte":true,"ouvert":true,"haut":0,"dessus":false,"quoi":"fi-overlay"}
+  ok     A45 · 1920 × 1080 : aucune erreur JS, aucune boîte
+  ÉCHEC  A45 · 1920 × 1080 : le bouton de « Mes chapitres » dit « Voir dans l'arborescence », son infobulle dit ce qu'il fait — {"t":"Voir dans le panneau prof"}
+  ÉCHEC  A45 · 1920 × 1080 (depuis la page du niveau) : l'atelier fermé, pas de panneau, la page du niveau 3e, le chapitre déplié en haut de l'écran (0 px), rien par-dessus son en-tête — {"sy":1926,"max":2075,"atelier":false,"panneau":true,"niveau":true,"lvl":"3e","carte":true,"ouvert":true,"haut":0,"dessus":false,"quoi":"fi-overlay"}
+  ok     A45 · 1920 × 1080 : aucune erreur JS, aucune boîte
+  ÉCHEC  A45 · le menu du chapitre (clic droit) dit aussi « Voir dans l'arborescence », avec son infobulle — null
+  ÉCHEC  A45 · le banc n'a pas pu aller au bout — page.evaluate: TypeError: Cannot read properties of undefined (reading 'click')
+
+26 vérifications, 18 échec(s) · 72 s

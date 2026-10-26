@@ -962,6 +962,26 @@ await B('A44', '§12.27 (8), dette 13 · 38 : #hclasse dit la classe de l\'heure
     E.verif('A44', ch === '3A ESSAI', w + ' × ' + h + ' : la classe de l\'heure change (AT_DR_COURS) → #hclasse la suit en moins d\'une seconde et demie, sans rechargement', ch);
     E.verif('A44', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
 
+await B('A45', '§12.27 (13), dette 13 · 45 : « Voir dans l\'arborescence » — l\'atelier se ferme (enregistré) sans rouvrir le panneau, la page du niveau s\'ouvre, le chapitre déplié en haut de l\'écran, rien par-dessus ; « ✕ Fermer l\'atelier » garde son retour au panneau', async () => {
+  for (const [w, h] of TAILLES_1227) { for (const depart of ['accueil', 'niveau']) {
+    const o = await ouvrirPanneau(w, h); const pg = o.pg;
+    if (depart === 'niveau') { await pg.evaluate(() => { closeProfPanel(); clickedLevel = '3e'; openLevel('3e', levelLabels['3e'], levelColors['3e']); }); await pg.waitForTimeout(1200); await sansVoile(pg); await pg.evaluate(() => openProfPanel()); await pg.waitForTimeout(400); }
+    await pg.evaluate(() => atelierOuvrir()); await pg.waitForTimeout(1000); await sansVoile(pg);   /* le panneau ouvert → l'atelier (le bouton « Atelier » du menu fait atelierOuvrir) */
+    await E.clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(900);
+    const lib = await pg.evaluate(() => { const b2 = Array.from(document.querySelectorAll('.at-carte button')).find(x => /atVoirPanneau/.test(x.getAttribute('onclick') || '')); return b2 ? { t: b2.textContent, ti: b2.title, ch: (b2.getAttribute('onclick').match(/'([^']*)','([^']*)'/) || [])[2] } : null; });
+    await pg.evaluate(() => Array.from(document.querySelectorAll('.at-carte button')).find(x => /atVoirPanneau/.test(x.getAttribute('onclick') || '')).click()); await pg.waitForTimeout(2300);
+    const r = await pg.evaluate(ch => { const card = document.querySelector('.chapter-card[data-chapter="' + ch + '"]'); const cb = card ? card.getBoundingClientRect() : null; const hd = card ? (card.querySelector('.chapter-header, [onclick="toggleChapter(this)"]') || card) : null; const hb = hd ? hd.getBoundingClientRect() : null;
+      const dessus = hb ? document.elementFromPoint(Math.round(hb.left + Math.min(hb.width / 2, 200)), Math.round(hb.top + Math.min(hb.height / 2, 12))) : null;
+      const de = document.scrollingElement; return { sy: Math.round(de.scrollTop), max: de.scrollHeight - de.clientHeight, atelier: document.getElementById('atelier-ecran').classList.contains('at-actif'), panneau: !!document.querySelector('.tprof-overlay.visible'), niveau: document.getElementById('page-level').classList.contains('active'), lvl: clickedLevel, carte: !!card, ouvert: !!(card && card.querySelector('.chapter-body.open')), haut: cb ? Math.round(cb.top) : null, dessus: !!(dessus && card && card.contains(dessus)), quoi: dessus ? (dessus.id || dessus.className || dessus.tagName) : null }; }, lib && lib.ch);
+    E.verif('A45', lib && lib.t === 'Voir dans l’arborescence' && /Le panneau prof ne se rouvre pas/.test(lib.ti), w + ' × ' + h + ' : le bouton de « Mes chapitres » dit « Voir dans l\'arborescence », son infobulle dit ce qu\'il fait', JSON.stringify(lib && { t: lib.t }));
+    E.verif('A45', !r.atelier && !r.panneau && r.niveau && r.lvl === '3e' && r.carte && r.ouvert && r.haut !== null && r.haut >= -2 && r.haut <= 150 && r.dessus, w + ' × ' + h + ' (depuis ' + (depart === 'accueil' ? 'l\'accueil' : 'la page du niveau') + ') : l\'atelier fermé, pas de panneau, la page du niveau 3e, le chapitre déplié en haut de l\'écran (' + r.haut + ' px), rien par-dessus son en-tête', JSON.stringify(r));
+    E.verif('A45', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } }
+  const o2 = await ouvrirPanneau(1707, 743); const p2 = o2.pg; await p2.evaluate(() => atelierOuvrir()); await p2.waitForTimeout(1000); await sansVoile(p2); await E.clicTexte(p2, 'button,[onclick]', "atOnglet('chapitres')"); await p2.waitForTimeout(900);
+  const menu = await p2.evaluate(() => { const c = document.querySelector('.at-carte[data-chctx]'); const [l, n] = c.dataset.chctx.split('|'); const e = ctxEntreesChapitre(l, n).find(x => /arborescence/.test(x.lib)); return e ? { lib: e.lib, titre: !!e.titre } : null; });
+  E.verif('A45', menu && menu.lib === 'Voir dans l’arborescence' && menu.titre, 'le menu du chapitre (clic droit) dit aussi « Voir dans l\'arborescence », avec son infobulle', JSON.stringify(menu));
+  await p2.evaluate(() => Array.from(document.querySelectorAll('.at-onglets button')).find(x => /Fermer l’atelier/.test(x.textContent)).click()); await p2.waitForTimeout(1200);
+  E.verif('A45', await p2.evaluate(() => !document.getElementById('atelier-ecran').classList.contains('at-actif') && !!document.querySelector('.tprof-overlay.visible')), '« ✕ Fermer l\'atelier » garde son retour au panneau prof'); await o2.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

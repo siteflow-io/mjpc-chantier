@@ -1,7 +1,7 @@
 # LE « ? » DE CHAQUE ÉCRAN — LES MOTS (dette 13 · 43, contrat §12 point 28 (5))
 *Conscience n°13, 26/10/2026. Paul, 26/10 11:20 : « il faut que j'ai un ? sur lequel cliquer à chaque endroit où je suis et qui me dit ce qu'il faut faire à l'écran et dans quel ordre ». Ces mots sont **de la conscience** : Paul les corrige sur les captures avant toute mise en ligne. Écrits d'après les écrans du candidat (captures 1707 × 743) et les infobulles du site.*
 
-**Pour E1** : chaque bloc `### clé` est le texte d'un écran, **mot pour mot** (le gras et les guillemets compris) ; rien d'ajouté, rien de retiré. Le volet montre : le titre, « Ici », « Dans l'ordre » (liste numérotée), « Avant / après », puis **le fil** (en bas de tout volet, l'étape où est Paul en évidence — la clé `fil-n` de chaque écran dit laquelle ; `fil-0` : aucune). Une phrase fausse contre l'écran : au JOURNAL, pas corrigée en silence (contrat §12.28 (5f)). Un écran du prof qui n'a pas de clé ici : au JOURNAL, la conscience l'écrit. La Relecture dans « la classe en cours » prend le texte de `chapitre-relecture` tant que l'heure n'est pas close ; l'heure close, l'écran de la classe prend `classe-close`, quel que soit l'onglet (contrôle n°63). `panneau-atelier` retiré (l'entrée « Atelier » du panneau ouvre l'Atelier : c'est `atelier-accueil`, mission 0 d'E1).
+**Pour E1** : chaque bloc `### clé` est le texte d'un écran, **mot pour mot** (le gras et les guillemets compris) ; rien d'ajouté, rien de retiré. Le volet montre : le titre, « Ici », « Dans l'ordre » (liste numérotée), « Avant / après », puis **le fil** (en bas de tout volet, l'étape où est Paul en évidence — la clé `fil-n` de chaque écran dit laquelle ; `fil-0` : aucune). Une phrase fausse contre l'écran : au JOURNAL, pas corrigée en silence (contrat §12.28 (5f)). Un écran du prof qui n'a pas de clé ici : au JOURNAL, la conscience l'écrit. Les noms des boutons sont ceux du point 29 du contrat (« Ouvrir le tableau », « Ce que voit la classe », « Reprendre l'heure », « ❄ Préparer le cahier », « Plus tard », « Montrer le cahier à la classe », « Retour au cours »). La Relecture dans « la classe en cours » prend le texte de `chapitre-relecture` tant que l'heure n'est pas close ; l'heure close, l'écran de la classe prend `classe-close`, quel que soit l'onglet (contrôle n°63). `panneau-atelier` retiré (l'entrée « Atelier » du panneau ouvre l'Atelier : c'est `atelier-accueil`, mission 0 d'E1).
 
 ---
 
@@ -65,7 +65,7 @@
 1. « ▶ Ouvrir le pilotage et lancer » : l'heure commence avec cette classe ; le chrono part ; tout s'enregistre.
 2. « ✎ Préparer » : l'Atelier s'ouvre sur cette séance ; rien n'est lancé, la classe ne voit rien.
 3. « Où en est la classe » (à partir de la 2e heure d'une séance) : ce que la classe a fait l'heure d'avant et ce que cette heure jouera — puis tu lances de là.
-4. « ▶ Reprendre le cours » (une heure lancée, pas close) : tu retrouves l'heure là où elle en était.
+4. « ▶ Reprendre l'heure » (une heure lancée, pas close) : tu retrouves l'heure là où elle en était.
 5. « Relire cette heure » (une heure close) : son récit, ce qui s'est passé, le papier.
 6. Plus bas : déplacer cette heure, en ajouter une, ou la banaliser (avec sa raison).
 
@@ -199,7 +199,7 @@
 **Ici** : tu répètes l'heure comme en classe ; rien n'est écrit. Une heure avec une classe se lance depuis l'emploi du temps.
 **Dans l'ordre** :
 1. « ▶ Dévoiler » (→ ou espace) montre l'élément suivant, puis passe à la diapo suivante.
-2. « ⧉ Tableau » bascule la vue de droite : la diapo suivante, ou ce que le tableau afficherait.
+2. « ⧉ Ce que voit la classe » bascule la vue de droite : la diapo suivante, ou ce que le tableau afficherait.
 3. « ■ Arrêter » revient à l'Atelier sur cette diapo.
 **Avant / après** : avant, « Atelier » ; pour jouer avec une classe : l'emploi du temps.
 
@@ -223,14 +223,14 @@
 ### classe-heure — La classe en cours · l'heure (fil-3)
 **Ici** : tu joues l'heure avec la classe. On ne quitte pas cet écran avant « Clore l'heure ».
 **Dans l'ordre** :
-1. « 🖥 Écran 2 » ouvre la fenêtre du tableau pour le vidéoprojecteur.
+1. « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau pour le vidéoprojecteur.
 2. « ▶ Dévoiler » (→ ou espace) montre l'élément suivant, puis passe à la diapo suivante ; ◀ revient.
 3. Pendant l'heure : la participation en bas à droite (les initiales de l'élève, puis 1, 2 ou 3, Entrée) ; « 📝 Notes » (N) pour toi ; « Où on en est » : ton avance ou ton retard.
-4. À la fin du créneau, le site te prévient : « Fin de l'heure ».
+4. À cinq minutes de la fin, « Fin de l'heure » s'ouvre d'elle-même à droite (T-5, puis T-3, T-1).
 **Avant / après** : avant, la case de l'emploi du temps ; après, « Fin de l'heure », puis « Clore l'heure ». Besoin d'autre chose du site : « ↗ Le site dans un nouvel onglet ».
 
 ### classe-fin — La classe en cours · Fin de l'heure (fil-4)
-**Ici** : le cahier de textes, en sept étapes, avant de clore.
+**Ici** : le cahier de textes, en sept étapes, avant de clore. Elle s'ouvre seule à T-5, ou par « Fin de l'heure ».
 **Dans l'ordre** :
 1. L'échéance : la date part au tableau (« Prenez vos agendas pour le… ») — ou « Sans échéance ».
 2. Ce qui n'a pas été fait : pour chaque activité, dis ce qu'elle devient.
@@ -239,7 +239,7 @@
 5. Le mot aux absents.
 6. Copier pour École Directe : le contenu de séance, puis le travail.
 7. « Clore l'heure ».
-« Étape suivante ▶ » avance ; la liste à droite se coche seule, un clic sur une ligne ouvre l'étape. « Préparer le cahier de textes » gèle le tableau ; « Reprendre le cours » revient à la diapo où la classe en était.
+« Étape suivante ▶ » avance ; la liste se coche seule, un clic sur une ligne ouvre l'étape. En haut : « ❄ Préparer le cahier » gèle le tableau sur la diapo de la classe et met le cahier devant toi ; « Plus tard » replie les étapes. Pendant la préparation : « Montrer le cahier à la classe » le passe au tableau ; « Retour au cours » te ramène à la diapo de la classe.
 **Avant / après** : après, l'heure close.
 
 ### classe-close — La classe en cours · l'heure close (fil-5)

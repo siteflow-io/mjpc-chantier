@@ -1058,3 +1058,6 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - Ma poussée 107 s'est rebasée sur E1 (5) (`3a0c567a`, `ea597a14` : le « ? ») ; l'assemblé de la tête `fe825c57` (md5 `d6dcf54f…`, réassemblé à l'identique) rejoué : `banc.sh` **VERT** — 106 vérifications, 0 échec(s) ; --- fin : 0 défaut(s) (`E4/sorties/2014-26-10/`) ; mon banc **149 ok · 0 échec · 0 absent**, RC22 compris (`E4/sorties/2014-site-E4-26-10/`).
 - E3 (retour 54) compte encore « 42 (E4) » rouge : sa mesure est sur `509249ed`, d'avant ma poussée — à rejouer sur `fe825c57` ou après.
 - **§12.28 E4 fini (`fe825c57`).** Reste, hors de moi : **le mot de Paul sur « Cette heure, on a fait »** (captures `E4-RC22-AVANT-…` / `E4-RC22-APRES-une-activite-fin.png`) avant toute production. Je reste en veille (deux retours de 50 min sans rien de nouveau, puis arrêt).
+
+## Veille — 20:26 UTC (21:26 Paris) · retour n°1/2
+- Rien de nouveau pour moi dans `RELANCES/E4.md` après « 26/10, 19:50 — contrôle n°62 » ; contrôle n°63 : « E4 fini » lu ; E3 (retour 55 suite, `06858cf0`) : **13 · 42 vert aux quatre tailles**. `dr-recit.js` inchangé depuis `fe825c57`. Le mot de Paul sur « Cette heure, on a fait » attendu. Retour n°2/2 dans 50 min, puis arrêt sans nouveau.

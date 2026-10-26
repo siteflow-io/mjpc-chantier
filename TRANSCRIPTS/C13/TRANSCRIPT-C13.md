@@ -3549,3 +3549,16 @@ MEMO
 
 26/10/2026 14:08
 MEMO
+
+## Tour 192 — 26/10/2026 14:41 — Paul (14:40) : « On en est où ? »
+
+**Paul (mot pour mot).** « On en est où ? »
+
+**Fait.** Lu au sas (`integration`, 14:40) : E1 « §12.27 fini (`30824229`) » — (8) `#hclasse` `9c66910f`, (6 bis) la pastille `266f80d9`, (4 ter) `aaad5851`, (13) 13 · 45 « Voir dans l'arborescence » `30824229` (A45 26/0, `banc.sh` VERT) ; E3 retour 44 (`18118d2e`) : `banc-1227` 608/624 sur `d740ecfe`, tout vert aux quatre tailles sauf la garde J (13 · 45), poussée par E1 après sa mesure — il rejoue. Mon contrôle n°58 à 14:50.
+
+**Réponse (mot pour mot).**
+
+398. E1 a fini : tout est dans le site — le panneau, l'Atelier, la Relecture, l'accueil, la visionneuse à toute la largeur et toute la hauteur, ↻ ✕ dans la carte, la rangée « Sortir le JSON », la pastille « M. Meney » qui ne passe plus sous le bouton, la bonne classe en haut du pilotage, et « Voir dans l'arborescence » qui ne rouvre plus le panneau. E3 a tout vérifié vert aux quatre tailles sauf ce dernier bouton, poussé juste après sa mesure : il le rejoue maintenant. Je contrôle à 14:50 ; si tout est vert, tu reçois les captures avant / après pour décider.
+
+26/10/2026 14:41
+MEMO

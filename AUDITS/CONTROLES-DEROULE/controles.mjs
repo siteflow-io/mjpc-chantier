@@ -37,6 +37,7 @@ const dire = s => { R.push(s); };
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });
 
 // --- les gestes communs ---
+// ── v3 (26/10, contrat §12.28 (3a)) : l'heure se lance par la case de l'emploi du temps ; la répétition se joue depuis l'Atelier, jamais pendant l'heure (K1, K2, K5, K9, K10).
 // ── v2 (21/10, intégration) : MJPC_ENTREE=site joue les MÊMES contrôles sur index.html intégré, par l'entrée du site (faux hub, gestes réels
 //    jusqu'à l'onglet Atelier) ; sans la variable, l'entrée est la maquette seule, comme avant (contrat des quatre, §7-§8).
 const ENTREE_SITE = process.env.MJPC_ENTREE === 'site';
@@ -63,7 +64,14 @@ const ouvrir = async (w = 1280, h = 800) => { const ctx = await nav.newContext({
   await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await pg.waitForTimeout(2500);
   return { ctx, pg, errs, boites }; };
 const atelier = async pg => { await pg.click('[data-atelier]'); await pg.waitForTimeout(400); if (await pg.$('#at-aide .x')) { await pg.click('#at-aide .x'); await pg.waitForTimeout(200); } };
-const lancer = async pg => { await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(500); };
+/* v3 (26/10, contrat §12.28 (3a), P1 validé par Paul) : l'heure d'une classe se lance par la case de l'emploi du temps — « ▶ Ouvrir le pilotage et lancer » — et se joue
+   dans l'écran « la classe en cours » (sans Atelier ni répétition) ; l'Atelier ne lance plus. Sur la maquette seule (sans MJPC_ENTREE=site), l'ancien bouton. */
+const lancer = async pg => { if (!ENTREE_SITE) { await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(500); return; }
+  await pg.evaluate(() => edtOuvrir()); await pg.waitForTimeout(1500);
+  const ok = await pg.evaluate(() => { const cs = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); const c = cs.find(e => (e.getAttribute('onclick') || '').indexOf('2026-09-14') >= 0) || cs[0]; if (!c) return false; c.click(); return true; });
+  if (!ok) throw new Error('aucune case de la 3E Charles de Gaulle dans l\'emploi du temps'); await pg.waitForTimeout(700);
+  if (!(await clicTexte(pg, 'button', 'Ouvrir le pilotage et lancer'))) throw new Error('« ▶ Ouvrir le pilotage et lancer » absent de la case'); await pg.waitForTimeout(3500);
+  if (await pg.$eval('#garde', g => g.classList.contains('on')).catch(() => false)) { await pg.click('#garde-devant').catch(() => {}); await pg.waitForTimeout(300); } };
 const garde = async pg => { if (await pg.$eval('#garde', g => g.classList.contains('on')).catch(() => false)) { await pg.click('#garde-devant'); await pg.waitForTimeout(300); return true; } return false; };
 const huitLignes = async pg => { await pg.click('#mur .p8-ecrire'); for (let i = 1; i <= 8; i++) { await pg.keyboard.type(`Ligne ajoutée numéro ${i}, assez longue pour prendre de la place dans la diapo.`, { delay: 2 }); if (i < 8) await pg.keyboard.press('Enter'); } await pg.keyboard.press('Escape'); await pg.waitForTimeout(500); };
 const ecrireNote = async (pg, k, texte) => { await pg.click(`#mur li[data-k="${k}"]`); await pg.waitForTimeout(120); const p = await pg.$$('#notesd [contenteditable]'); if (!p.length) throw new Error('aucun paragraphe de notes éditable (#notesd [contenteditable])'); await p[p.length - 1].click(); await pg.keyboard.press('End'); await pg.keyboard.press('Enter'); await pg.keyboard.type(texte); await pg.waitForTimeout(150); };
@@ -81,7 +89,7 @@ const K = async (k, titre, f) => { dire(''); dire(k + ' — ' + titre); try { aw
 
 // K1 — la répétition propre (p8-5c, points 3-4 : « Fin de l'heure » disparaît, « ■ Arrêter » à sa place ; « ⧉ Tableau » et « 🖥 Écran 2 » restent et fonctionnent ;
 //      point 15 : aucun élément position:fixed ajouté, elementFromPoint au centre des trois boutons rend le bouton lui-même ; à l'arrêt tout revient) — à 1280 et à 1920
-await K('K1', 'la répétition propre (n°13 · 9)', async () => { for (const W of [1280, 1920]) { const o = await ouvrir(W, 800); const pg = o.pg; await lancer(pg); const finAvant = (await rect(pg, '#bfin')).visible; await pg.click('#ong-atelier'); await pg.waitForTimeout(300); if (await pg.$('#at-aide .x')) { await pg.click('#at-aide .x'); await pg.waitForTimeout(200); }
+await K('K1', 'la répétition propre (n°13 · 9)', async () => { for (const W of [1280, 1920]) { const o = await ouvrir(W, 800); const pg = o.pg; /* v3 : la répétition se joue depuis l'Atelier, jamais pendant une heure lancée (§12.28 (3a)) */ await atelier(pg);
   const fixes = () => pg.$$eval('body *', l => l.filter(x => getComputedStyle(x).position === 'fixed').length);
   const avant = await fixes(); await pg.click('#at-jouer'); await pg.waitForTimeout(1200); /* le temps que le chrono de la répétition s'écrive dans l'entête */ const pendant = await fixes();
   const centre = id => pg.$eval('#' + id, b => { const r = b.getBoundingClientRect(); const e = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return { visible: r.width > 0, lui: !!(e && (e === b || b.contains(e))) }; }).catch(() => ({ visible: false, lui: false }));
@@ -89,10 +97,10 @@ await K('K1', 'la répétition propre (n°13 · 9)', async () => { for (const W 
   verif('K1', pendant === avant, `${W} px · en répétition, rien de posé en position:fixed`, `${avant} → ${pendant}`);
   verif('K1', t.visible && t.lui && e2.visible && e2.lui && st.visible && st.lui, `${W} px · « ⧉ Tableau », « 🖥 Écran 2 » et « ■ Arrêter » sont visibles et atteignables au clic (rien ne les recouvre)`, `Tableau ${t.lui} · Écran 2 ${e2.lui} · Arrêter ${st.lui}`);
   const horsCadre = await pg.$$eval('.haut *', l => { const R = l[0] ? l[0].closest('.haut').getBoundingClientRect().right : 0; return l.filter(e => e.getBoundingClientRect().width > 0 && e.getBoundingClientRect().right > R + 0.5).map(e => (e.textContent || '').trim().slice(0, 12) + ' → ' + Math.round(e.getBoundingClientRect().right)); });
-  verif('K1', finCache && !deborde && !horsCadre.length, `${W} px · « Fin de l'heure » n'est pas là pendant la répétition, l'entête ne déborde pas (heure lancée, chrono de répétition écrit)`, `Fin cachée ${finCache} · déborde ${deborde}${horsCadre.length ? ' · hors du cadre : ' + horsCadre.join(', ') : ''}`);
+  verif('K1', finCache && !deborde && !horsCadre.length, `${W} px · « Fin de l'heure » n'est pas là pendant la répétition, l'entête ne déborde pas (chrono de répétition écrit)`, `Fin cachée ${finCache} · déborde ${deborde}${horsCadre.length ? ' · hors du cadre : ' + horsCadre.join(', ') : ''}`);
   await pg.click('#btableau'); await pg.waitForTimeout(200); const bascule = await pg.evaluate(() => !!S.vueTableau); await pg.click('#btableau'); await pg.waitForTimeout(150);
-  await pg.click('#rep-stop'); await pg.waitForTimeout(400); const stopParti = !(await rect(pg, '#rep-stop')).visible; const apres = await fixes(); await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); const finRevenu = (await rect(pg, '#bfin')).visible;
-  verif('K1', bascule && finAvant && stopParti && finRevenu && apres === avant, `${W} px · « ⧉ Tableau » bascule la vue ; après « ■ Arrêter », « ■ Arrêter » est parti, rien ne reste, et au pilotage « Fin de l'heure » est revenu`, `bascule ${bascule} · Fin avant ${finAvant} · Arrêter parti ${stopParti} · Fin revenue ${finRevenu} · fixes ${apres}`);
+  await pg.click('#rep-stop'); await pg.waitForTimeout(400); const stopParti = !(await rect(pg, '#rep-stop')).visible; const apres = await fixes();
+  verif('K1', bascule && stopParti && apres === avant, `${W} px · « ⧉ Tableau » bascule la vue ; après « ■ Arrêter », « ■ Arrêter » est parti, rien ne reste`, `bascule ${bascule} · Arrêter parti ${stopParti} · fixes ${apres}`);
   await finK('K1', o); } });
 
 // K2 — les notes de présentateur (p8-5c : un paragraphe de notes s'accroche à une étape de la diapo ; en classe, ▶ fait avancer le « vif » dans le panneau, ◀ le ramène ;
@@ -108,10 +116,11 @@ await K('K2', 'les notes de présentateur, par étape (n°13 · 10)', async () =
   verif('K2', i3 >= 0 && /3/.test(v3[i3].rep) && v3.slice(0, i3).every(x => x.fait) && i2 >= 0 && /1/.test(v2[i2].rep), 'classe, heure lancée : ▶ ×3 → le paragraphe vif est celui de l\'étape 3 (ceux d\'avant sont faits) ; ◀ → celui de l\'étape 1', `à 3 : ${JSON.stringify(v3.map(x => x.rep + (x.vif ? '*' : '')))} · à 2 : ${JSON.stringify(v2.map(x => x.rep + (x.vif ? '*' : '')))}`);
   const edClasse = await pg.$$eval('#notesd [contenteditable="true"], #notesd [contenteditable="plaintext-only"]', l => l.length); const jNotes = await pg.evaluate(() => (typeof J !== 'undefined' ? J : []).filter(x => /note/.test(x.type)).length);
   verif('K2', edClasse > 0 && jNotes === 0, 'classe : les notes s\'écrivent (éditables), sans entrée de journal', `éditables ${edClasse} · journal ${jNotes}`);
-  await pg.click('#ong-atelier'); await pg.waitForTimeout(300); await pg.click('#at-jouer'); await pg.waitForTimeout(400);
-  const edRep = await pg.$$eval('#notesd [contenteditable="true"], #notesd [contenteditable="plaintext-only"]', l => l.length);
-  verif('K2', edRep === 0, 'répétition : les notes sont en lecture seule', `éditables ${edRep}`);
-  await finK('K2', o); });
+  await finK('K2', o);
+  /* v3 : la répétition se joue depuis l'Atelier (§12.28 (3a)) */ const o2 = await ouvrir(); const pg2 = o2.pg; await atelier(pg2); await pg2.click('#at-jouer'); await pg2.waitForTimeout(400);
+  const edRep = await pg2.$$eval('#notesd [contenteditable="true"], #notesd [contenteditable="plaintext-only"]', l => l.length);
+  verif('K2', edRep === 0, 'répétition (depuis l\'Atelier) : les notes sont en lecture seule', `éditables ${edRep}`);
+  await finK('K2', o2); });
 
 // K3 — la mise en forme (Paul, tour 43 : « un bouton pour le surlignage, un bouton pour le texte couleur, et quand je clique dessus, je sélectionne la couleur » ;
 //      les flèches de dévoilement ne bougent pas : ▶ et le compteur restent dans le cadre ; p8-5c points 10-14 : palette, teinte foncée au tableau, journal, Échap ferme)
@@ -148,9 +157,9 @@ await K('K5', 'la poignée des notes, en permanence (n°13 · 15)', async () => 
   const tirer = async dy => { const p = await rect(pg, '#poignee-mur'); const x = p.x + p.w / 2, y = p.y + p.h / 2; await pg.mouse.move(x, y); await pg.mouse.down(); await pg.mouse.move(x, y + dy / 2, { steps: 4 }); await pg.mouse.move(x, y + dy, { steps: 4 }); await pg.mouse.up(); await pg.waitForTimeout(250); };
   const a0 = await geo(); verif('K5', a0.poignee.visible, 'atelier : la poignée est visible', `${JSON.stringify(a0.poignee)}`);
   await tirer(-150); const a1 = await geo(); verif('K5', a1.notes.h > a0.notes.h + 60 && a1.mur.h < a0.mur.h - 60, 'atelier : tirée de 150 px vers le haut, les notes grandissent et la diapo rétrécit', `diapo ${a0.mur.h} → ${a1.mur.h} px, notes ${a0.notes.h} → ${a1.notes.h} px, part ${a0.part} → ${a1.part} %`);
+  /* v3 : la répétition depuis l'Atelier, avant le lancement (§12.28 (3a)) */ await pg.click('#at-jouer'); await pg.waitForTimeout(400); const r0 = await geo(); verif('K5', r0.poignee.visible, 'répétition (depuis l\'Atelier) : la poignée est visible'); await pg.click('#rep-stop'); await pg.waitForTimeout(400);
   await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg); const c0 = await geo(); verif('K5', c0.poignee.visible && c0.part === a1.part, 'pilotage, heure lancée : la poignée est là et la hauteur de l\'atelier est gardée', `part ${a1.part} → ${c0.part} %`);
   const p = await rect(pg, '#poignee-mur'); await pg.mouse.dblclick(p.x + p.w / 2, p.y + p.h / 2); await pg.waitForTimeout(300); const c1 = await geo(); verif('K5', c1.part === 100 && c1.mur.h > c0.mur.h + 60, 'double-clic : la diapo reprend toute sa place', `part ${c0.part} → ${c1.part} %, diapo ${c0.mur.h} → ${c1.mur.h} px`);
-  await pg.click('#ong-atelier'); await pg.waitForTimeout(300); await pg.click('#at-jouer'); await pg.waitForTimeout(400); const r0 = await geo(); verif('K5', r0.poignee.visible, 'répétition : la poignée est visible');
   await finK('K5', o); });
 
 // K6 — la diapo trop pleine se lit en pages (cadrage 1, 5.2 ; cadrage 4, 0.4 : le site ne coupe jamais seul ; p8-5f points 2-5 : avec plusieurs blocs, dans l'atelier aussi, jamais hors du cadre,
@@ -208,11 +217,9 @@ await K('K10', 'après « ■ Arrêter », la fenêtre du tableau revient à ce 
     await pg.click('#rep-stop'); await pg.waitForTimeout(700); const v = await videTableau(fen);
     verif('K10', r.lignes.length >= 1 && v.lis === 0 && v.page === '', 'rien au mur avant la répétition : après « ■ Arrêter », la fenêtre ne montre plus rien de la répétition (aucune ligne, aucun compteur)', `en répétition « ${r.page} » ${r.lignes.length} l. · après l'arrêt ${v.lis} ligne(s) visible(s), compteur « ${v.page} »`);
     await fen.close(); await finK('K10', o); }
-  { const o = await ouvrir(); const pg = o.pg; await lancer(pg); for (let i = 0; i < 3; i++) { await pg.click('#bdev'); await pg.waitForTimeout(100); } const fen = await ouvrirTableau(pg); const a = await lireMur(fen);
-    await pg.click('#ong-atelier'); await pg.waitForTimeout(300); if (await pg.$('#at-aide .x')) { await pg.click('#at-aide .x'); await pg.waitForTimeout(200); } await pg.click('#at-jouer'); await pg.waitForTimeout(500);
-    for (let i = 0; i < 10; i++) { await pg.click('#bdev'); await pg.waitForTimeout(60); } await pg.waitForTimeout(400); const r = await lireMur(fen); await pg.click('#rep-stop'); await pg.waitForTimeout(700); const b = await lireMur(fen);
-    verif('K10', a.lignes.length === 3 && !pareil(a, r) && pareil(a, b), 'la diapo 1 à 3 dévoilés au mur avant la répétition : après « ■ Arrêter », la fenêtre la remontre telle quelle', `avant ${a.lignes.length} l. « ${a.page} » · en répétition ${r.lignes.length} l. « ${r.page} » · après ${b.lignes.length} l. « ${b.page} »`);
-    await fen.close(); await finK('K10', o); } });
+  /* v3 (26/10, §12.28 (3a)) : le second cas — une heure lancée, puis la répétition dans le même écran — n'existe plus : l'écran « la classe en cours » n'a ni Atelier
+     ni répétition. Ce qui reste à craindre — la répétition d'un AUTRE onglet (« ↗ Le site dans un nouvel onglet » → Atelier → « Jouer en avance ») qui toucherait
+     la fenêtre du tableau de la classe — est mesuré par E3 (banc-1228, relance du contrôle n°62). */ });
 
 // K11 — la vue « ⧉ Tableau » de la colonne de droite porte le compteur « page i / n » et montre la même page que le mur (p8-5h, point 12 ; p8-5f, point 5 : le tableau montre la même page que le pilote)
 await K('K11', 'la vue « ⧉ Tableau » porte le compteur de page et montre la même page (n°13 · 20)', async () => { const o = await ouvrir(); const pg = o.pg; await atelier(pg); await huitLignes(pg); await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg);
@@ -268,11 +275,9 @@ await K('K9', 'le parcours fixe', async () => { const o = await ouvrir(); const 
   await pg.evaluate(() => { const li = document.querySelector('#mur li[data-k="1"]'); const tn = Array.from(li.childNodes).find(n => n.nodeType === 3 && n.textContent.trim().length > 8); const r = document.createRange(); r.setStart(tn, 2); r.setEnd(tn, 10); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
   await pg.click('#btxt'); await pg.waitForTimeout(100); await pg.click('#pal-txt .p8-p[data-c="rouge"]'); await pg.waitForTimeout(250);
   verif('K9', (await pg.$$eval('#mur li[data-k="1"] span[data-coul], #mur li[data-k="1"] .p8-ct', l => l.map(s => getComputedStyle(s).color))).some(c => /192, 57, 43/.test(c)), '7 · retour sur la diapo 1, « A » rouge sur l\'étape 2 → le texte est rouge');
-  await pg.click('#ong-atelier'); await pg.waitForTimeout(300); await pg.click('#at-jouer'); await pg.waitForTimeout(400);
-  verif('K9', (await rect(pg, '#rep-stop')).visible && !(await rect(pg, '#bfin')).visible, '8 · « Jouer en avance » : « ■ Arrêter » est là, « Fin de l\'heure » non');
-  for (let i = 0; i < 2; i++) { await pg.click('#bdev'); await pg.waitForTimeout(150); } await pg.click('#rep-stop'); await pg.waitForTimeout(400);
-  verif('K9', (await rect(pg, '#bfin')).visible || ((await pg.click('#ong-pilotage'), await pg.waitForTimeout(300)), (await rect(pg, '#bfin')).visible), '9 · ▶ ×2 puis « ■ Arrêter » : « Fin de l\'heure » est revenu');
-  await pg.click('#ong-pilotage').catch(() => {}); await pg.waitForTimeout(200); await pg.click('#bfin'); await pg.waitForTimeout(800); const fin = await pg.$eval('#fin', f => ({ visible: f.getBoundingClientRect().width > 0, texte: f.innerText.replace(/\s+/g, ' ').slice(0, 60) })).catch(() => ({ visible: false, texte: '' }));
+  /* v3 (§12.28 (3a)) : l'écran de la classe n'a ni Atelier ni répétition */ const ecranClasse = await pg.evaluate(() => ({ classe: document.documentElement.classList.contains('dr-en-classe'), atelier: !!Array.from(document.querySelectorAll('.at-onglet[data-vue="atelier"], .at-onglet[data-vue="structure"], #ong-atelier, #at-jouer')).find(b => b.offsetParent !== null) }));
+  verif('K9', ecranClasse.classe && !ecranClasse.atelier && (await rect(pg, '#bfin')).visible, '8 · l\'heure lancée se joue dans l\'écran de la classe : ni Atelier, ni « Jouer en avance » ; « Fin de l\'heure » est là', JSON.stringify(ecranClasse));
+  await pg.click('#bfin'); await pg.waitForTimeout(800); const fin = await pg.$eval('#fin', f => ({ visible: f.getBoundingClientRect().width > 0, texte: f.innerText.replace(/\s+/g, ' ').slice(0, 60) })).catch(() => ({ visible: false, texte: '' }));
   verif('K9', fin.visible && /étape 1 sur 7/.test(fin.texte), '10 · « Fin de l\'heure » : le panneau de fin, « étape 1 sur 7 : l\'échéance »', `« ${fin.texte} »`);
   await finK('K9', o); });
 

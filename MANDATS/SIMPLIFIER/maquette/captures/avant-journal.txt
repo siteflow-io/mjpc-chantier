@@ -1,0 +1,21 @@
+avant-5-la-repetition-dans-l-atelier · 32 commandes à l'écran
+(geste pas abouti : page.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#bdev')[22m
+[2m    - )
+(geste pas abouti : page.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#bdev')[22m
+[2m    - )
+(geste pas abouti : page.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#bdev')[22m
+[2m    - )
+avant-4-l-heure-lancee-les-noms-des-boutons · 31 commandes à l'écran
+avant-3-fin-de-l-heure-ouverte-au-milieu-de-l-heure · 28 commandes à l'écran
+avant-1-a-T-5 · 31 commandes à l'écran
+avant-2-etape-2-ce-qui-n-a-pas-ete-fait · 29 commandes à l'écran
+avant-6-preparer-le-cahier · 34 commandes à l'écran
+avant-7-la-case-d-une-heure-en-cours · 33 commandes à l'écran
+
+erreurs JS : aucune

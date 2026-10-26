@@ -1,0 +1,107 @@
+{
+ "__md5": "a8d3c59015ccee73b7d354dbfa9f0e3c",
+ "1366x768": {
+  "pilote": {
+   "page": "",
+   "act": "Analyse d'images : la routine",
+   "lignes": [
+    "0.0",
+    "0.1",
+    "0.2",
+    "0.3"
+   ],
+   "hors": 0,
+   "police": 21.6
+  },
+  "tableau": {
+   "page": "",
+   "act": "Analyse d'images : la routine",
+   "lignes": [
+    "0.0",
+    "0.1",
+    "0.2",
+    "0.3"
+   ],
+   "hors": 0,
+   "police": 43
+  }
+ },
+ "1536x864": {
+  "pilote": {
+   "page": "",
+   "act": "Analyse d'images : la routine",
+   "lignes": [
+    "0.0",
+    "0.1",
+    "0.2",
+    "0.3"
+   ],
+   "hors": 0,
+   "police": 26.4
+  },
+  "tableau": {
+   "page": "",
+   "act": "Analyse d'images : la routine",
+   "lignes": [
+    "0.0",
+    "0.1",
+    "0.2",
+    "0.3"
+   ],
+   "hors": 0,
+   "police": 48.4
+  }
+ },
+ "1707x743": {
+  "pilote": {
+   "page": "",
+   "act": "Analyse d'images : la routine",
+   "lignes": [
+    "0.0",
+    "0.1",
+    "0.2",
+    "0.3"
+   ],
+   "hors": 0,
+   "police": 21
+  },
+  "tableau": {
+   "page": "",
+   "act": "Analyse d'images : la routine",
+   "lignes": [
+    "0.0",
+    "0.1",
+    "0.2",
+    "0.3"
+   ],
+   "hors": 0,
+   "police": 41.6
+  }
+ },
+ "1920x1080": {
+  "pilote": {
+   "page": "",
+   "act": "Analyse d'images : la routine",
+   "lignes": [
+    "0.0",
+    "0.1",
+    "0.2",
+    "0.3"
+   ],
+   "hors": 0,
+   "police": 26.4
+  },
+  "tableau": {
+   "page": "",
+   "act": "Analyse d'images : la routine",
+   "lignes": [
+    "0.0",
+    "0.1",
+    "0.2",
+    "0.3"
+   ],
+   "hors": 0,
+   "police": 60.5
+  }
+ }
+}

@@ -1,0 +1,606 @@
+E3 · banc §12.27 par le geste (tout l’écran, tout le temps) · 2026-10-26 11:14 UTC · fichier md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+══ 1366×768 ══
+  ok     A · 1366×768 · accueil-connexion · aucun défilement de côté
+  ok     A · 1366×768 · accueil-connexion · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1366×768 · la page du prof garde l’alerte « Vérifier les règles Firebase » (J + 30) — 13 · 44
+  ok     B · 1366×768 · la page du prof garde l’arrivée sur l’EDT (edtArriveeProf)
+  ok     B · 1366×768 · edt-semaine · aucun défilement de côté
+  ok     B · 1366×768 · edt-semaine · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1366×768 · edt-mois · aucun défilement de côté
+  ok     B · 1366×768 · edt-mois · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1366×768 · edt-annee · aucun défilement de côté
+  ok     B · 1366×768 · edt-annee · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1366×768 · edt-heures-perdues · aucun défilement de côté
+  ok     B · 1366×768 · edt-heures-perdues · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1366×768 · edt-case-modale · aucun défilement de côté
+  ok     B · 1366×768 · edt-case-modale · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     C · 1366×768 · accueil-niveaux · aucun défilement de côté
+  ok     C · 1366×768 · accueil-niveaux · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1366×768 · accueil des niveaux · .home-inner à toute la largeur (les bords gardés dedans) — 1100 px sur 1366 (max-width 1100px)
+  ok     C · 1366×768 · niveau-3e · aucun défilement de côté
+  ok     C · 1366×768 · niveau-3e · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1366×768 · page du niveau · .home-inner à toute la largeur — 1100 px sur 1366 (max-width 1100px)
+  ok     C · 1366×768 · niveau-3e-chapitre-ouvert · aucun défilement de côté
+  ok     C · 1366×768 · niveau-3e-chapitre-ouvert · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     C · 1366×768 · niveau-3e-vue-eleve · aucun défilement de côté
+  ok     C · 1366×768 · niveau-3e-vue-eleve · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1366×768 · page du niveau, vue élève · .home-inner à toute la largeur — 1100 px sur 1366 (max-width 1100px)
+  ok     D · 1366×768 · panneau-dashboard · aucun défilement de côté
+  ok     D · 1366×768 · panneau-dashboard · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau dashboard · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ÉCHEC  D · 1366×768 · panneau · sans coins arrondis — 16px
+  ok     D · 1366×768 · panneau-classes · aucun défilement de côté
+  ok     D · 1366×768 · panneau-classes · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau classes · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · panneau-eleves · aucun défilement de côté
+  ok     D · 1366×768 · panneau-eleves · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau eleves · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · élèves & codes · les lignes et les codes déverrouillés sont là — 29 lignes, 29 codes en clair, 1 ◆
+  ÉCHEC  D · 1366×768 · élèves & codes · ↻ ✕ dans la carte, à droite, sur la ligne du nom (avec et sans ◆) — ligne 1 « ↻ » hors de la carte (140-161 / nom 109-130) ; ligne 1 « ✕ » pas sur la ligne du nom (140-161 / nom 109-130) ; ligne 2 « ↻ » hors de la carte (216-237 / nom 185-206) ; ligne 2 « ✕ » pas sur la ligne du nom (216-237 / nom 185-206)
+  ok     D · 1366×768 · panneau-profil-test · aucun défilement de côté
+  ok     D · 1366×768 · panneau-profil-test · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau profil-test · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · panneau-archi · aucun défilement de côté
+  ok     D · 1366×768 · panneau-archi · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau archi · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · panneau-archives · aucun défilement de côté
+  ok     D · 1366×768 · panneau-archives · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau archives · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · panneau-corbeille · aucun défilement de côté
+  ok     D · 1366×768 · panneau-corbeille · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau corbeille · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · panneau-annonces · aucun défilement de côté
+  ok     D · 1366×768 · panneau-annonces · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau annonces · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · panneau-brevet · aucun défilement de côté
+  ok     D · 1366×768 · panneau-brevet · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau brevet · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · panneau-taxo · aucun défilement de côté
+  ok     D · 1366×768 · panneau-taxo · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau taxo · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · panneau-edt · aucun défilement de côté
+  ok     D · 1366×768 · panneau-edt · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau edt · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ÉCHEC  D · 1366×768 · EDT · une case par objet présent, nommée en clair — 0/4 (calendrier, grille, creneaux, photos) ; 0 cases ; 4 boutons « Sortir le JSON — objet » d’aujourd’hui
+  ÉCHEC  D · 1366×768 · EDT · « Tout cocher »
+  ÉCHEC  D · 1366×768 · EDT · un seul « ⤓ Sortir les JSON cochés », fermé tant que rien n’est coché, avec sa raison — absent
+  ÉCHEC  D · 1366×768 · EDT · « 📋 Copier le prompt » : un bouton par voie, nommé comme la voie (audit C3 : deux) — 📋 Copier le prompt — calendrier | 📋 Copier le prompt — grille
+  ÉCHEC  D · 1366×768 · EDT · trois groupes l’un sous l’autre, chacun son petit titre — hauts 320 /  / 320 ; titres false, false
+  ok     D · 1366×768 · panneau-config · aucun défilement de côté
+  ok     D · 1366×768 · panneau-config · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau config · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     D · 1366×768 · panneau-presence · aucun défilement de côté
+  ok     D · 1366×768 · panneau-presence · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1366×768 · panneau presence · .tprof-box aux bords de la fenêtre (1 px) — 133,30 → 1233,738 dans 1366×768, coins 16px
+  ok     E · 1366×768 · atelier-accueil · aucun défilement de côté
+  ok     E · 1366×768 · atelier-accueil · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     E · 1366×768 · atelier-accueil · .at-zone = largeur − 2 × 14 px — contenu 14 → 1352 dans 1366
+  ok     E · 1366×768 · atelier-accueil · « ✕ Fermer l’atelier » visible dans l’écran — 1233,8
+  ok     E · 1366×768 · atelier-mes-chapitres · aucun défilement de côté
+  ok     E · 1366×768 · atelier-mes-chapitres · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     E · 1366×768 · atelier-mes-chapitres · .at-zone = largeur − 2 × 14 px — contenu 14 → 1352 dans 1366
+  ok     E · 1366×768 · atelier-mes-chapitres · « ✕ Fermer l’atelier » visible dans l’écran — 1233,8
+  ok     E · 1366×768 · chapitre-structure · aucun défilement de côté
+  ok     E · 1366×768 · chapitre-structure · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     E · 1366×768 · chapitre-structure · .at-zone = largeur − 2 × 14 px — contenu 14 → 1352 dans 1366
+  ok     E · 1366×768 · chapitre-structure · « ✕ Fermer l’atelier » visible dans l’écran — 1233,8
+  ÉCHEC  E · 1366×768 · chapitre-structure · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1233 ; rangée 60-104 ; dernier onglet → 365
+  ÉCHEC  E · 1366×768 · chapitre-structure · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ok     E · 1366×768 · chapitre-atelier · aucun défilement de côté
+  ok     E · 1366×768 · chapitre-atelier · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1366×768 · chapitre-atelier · texte coupé par son cadre (overflow:hidden, sans échec) : « H2 · mardi 15 septembre · 55 m » (span) ; « 48 + 5 = 53 min » (span) ; « +3 » (span.plus) ; « 1 » (span.dr-n)
+  ok     E · 1366×768 · chapitre-atelier · .at-zone = largeur − 2 × 14 px — contenu 14 → 1352 dans 1366
+  ok     E · 1366×768 · chapitre-atelier · « ✕ Fermer l’atelier » visible dans l’écran — 1233,8
+  ÉCHEC  E · 1366×768 · chapitre-atelier · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1233 ; rangée 60-104 ; dernier onglet → 365
+  ÉCHEC  E · 1366×768 · chapitre-atelier · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1366×768 · chapitre-atelier · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1366×768 · chapitre-atelier · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 764 pour 768
+  ok     E · 1366×768 · chapitre-pilotage-avant-lancement · aucun défilement de côté
+  ok     E · 1366×768 · chapitre-pilotage-avant-lancement · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1366×768 · chapitre-pilotage-avant-lancement · texte coupé par son cadre (overflow:hidden, sans échec) : « 4 » (span.dr-n) ; « Le Radeau de la Méduse, Théodo » (div.img-lg) ; « 5 » (span.dr-n) ; « Tableau 4 » (span.act)
+  ok     E · 1366×768 · chapitre-pilotage-avant-lancement · .at-zone = largeur − 2 × 14 px — contenu 14 → 1352 dans 1366
+  ok     E · 1366×768 · chapitre-pilotage-avant-lancement · « ✕ Fermer l’atelier » visible dans l’écran — 1233,8
+  ÉCHEC  E · 1366×768 · chapitre-pilotage-avant-lancement · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1233 ; rangée 60-104 ; dernier onglet → 365
+  ÉCHEC  E · 1366×768 · chapitre-pilotage-avant-lancement · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1366×768 · chapitre-pilotage-avant-lancement · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1366×768 · chapitre-pilotage-avant-lancement · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 764 pour 768
+  ok     F · 1366×768 · pilote-heure-lancee · aucun défilement de côté
+  ok     F · 1366×768 · pilote-heure-lancee · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   F · 1366×768 · pilote-heure-lancee · texte coupé par son cadre (overflow:hidden, sans échec) : « 4 » (span.dr-n) ; « Le Radeau de la Méduse, Théodo » (div.img-lg) ; « 5 » (span.dr-n) ; « Tableau 4 » (span.act)
+  ok     F · 1366×768 · pilote-heure-lancee · .at-zone = largeur − 2 × 14 px — contenu 14 → 1352 dans 1366
+  ok     F · 1366×768 · pilote-heure-lancee · « ✕ Fermer l’atelier » visible dans l’écran — 1233,8
+  ÉCHEC  F · 1366×768 · pilote-heure-lancee · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1233 ; rangée 60-104 ; dernier onglet → 365
+  ÉCHEC  F · 1366×768 · pilote-heure-lancee · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  F · 1366×768 · pilote-heure-lancee · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     F · 1366×768 · pilote-heure-lancee · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 764 pour 768
+  ok     F · 1366×768 · #hclasse = la classe de l’heure lancée — « 3E Charles de Gaulle » pour « 3E Charles de Gaulle »
+  ok     F · 1366×768 · pilote-fin-de-l-heure · aucun défilement de côté
+  ok     F · 1366×768 · pilote-fin-de-l-heure · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   F · 1366×768 · pilote-fin-de-l-heure · texte coupé par son cadre (overflow:hidden, sans échec) : « 4 » (span.dr-n) ; « Le Radeau de la Méduse, Théodo » (div.img-lg) ; « 5 » (span.dr-n) ; « Tableau 4 » (span.act)
+  ok     F · 1366×768 · pilote-fin-de-l-heure · .at-zone = largeur − 2 × 14 px — contenu 14 → 1352 dans 1366
+  ok     F · 1366×768 · pilote-fin-de-l-heure · « ✕ Fermer l’atelier » visible dans l’écran — 1233,8
+  ÉCHEC  F · 1366×768 · pilote-fin-de-l-heure · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1233 ; rangée 60-104 ; dernier onglet → 365
+  ÉCHEC  F · 1366×768 · pilote-fin-de-l-heure · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  F · 1366×768 · pilote-fin-de-l-heure · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     F · 1366×768 · pilote-fin-de-l-heure · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 764 pour 768
+  ok     G · 1366×768 · « ⧉ Ouvrir le tableau » ouvre la fenêtre
+  ÉCHEC  G · 1366×768 · fenêtre du tableau · aucun écran du prof (règles à J + 30) — 13 · 44 — #m8-regles-overlay, .m8-overlay#m8-regles-overlay, fixe div#m8-regles-overlay.m8-overlay · body.admin-mode
+  info   G · 1366×768 · fenêtre du tableau · gestes du prof refusés : pas de garde (DR_TAB.refuses absent) · écritures bloquées 1
+  ok     G · 1366×768 · fenêtre du tableau · aucun défilement de côté
+  ok     G · 1366×768 · la diapo identique pilote / tableau — pilote Analyse d'images : la routine · 4 lignes · page «  » · 21.6 px ; tableau Analyse d'images : la routine · 4 lignes · page «  » · 43 px
+  ok     G · 1366×768 · au tableau, aucune ligne hors du cadre — 0
+  ok     E · 1366×768 · chapitre-relecture · aucun défilement de côté
+  ok     E · 1366×768 · chapitre-relecture · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1366×768 · chapitre-relecture · texte coupé par son cadre (overflow:hidden, sans échec) : « 4 » (span.dr-n) ; « Le Radeau de la Méduse, Théodo » (div.img-lg) ; « 5 » (span.dr-n) ; « Tableau 4 » (span.act)
+  ok     E · 1366×768 · chapitre-relecture · .at-zone = largeur − 2 × 14 px — contenu 14 → 1352 dans 1366
+  ok     E · 1366×768 · chapitre-relecture · « ✕ Fermer l’atelier » visible dans l’écran — 1233,8
+  ÉCHEC  E · 1366×768 · chapitre-relecture · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1233 ; rangée 60-104 ; dernier onglet → 365
+  ÉCHEC  E · 1366×768 · chapitre-relecture · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1366×768 · chapitre-relecture · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1366×768 · chapitre-relecture · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 764 pour 768
+  ok     E · 1366×768 · Relecture · .rel à toute la largeur de sa colonne — 1006 / 1006 px (max-width 1120px)
+  ÉCHEC  E · 1366×768 · Relecture · .recit à toute la largeur de sa colonne — 900 / 1006 px (max-width 900px)
+  ok     H · 1366×768 · visionneuse · aucun défilement de côté
+  ok     H · 1366×768 · visionneuse · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  H · 1366×768 · visionneuse · .doc-viewer-box aux bords de la fenêtre (1 px) — 133,57.6 → 1233,710.4 dans 1366×768, coins 16px
+  ÉCHEC  H · 1366×768 · visionneuse · sans coins arrondis — 16px
+  ok     Z · 1366×768 · 0 erreur JS (page du prof et fenêtre du tableau)
+  ÉCHEC  H2 · 1366×768 · avant tout lancement, #hclasse = la classe proposée — « 3A ESSAI » ; proposée « 3E Charles de Gaulle » ; première du niveau « 3A ESSAI »
+  ÉCHEC  H2 · 1366×768 · l’heure lancée, #hclasse = sa classe (la première du niveau est « 3A ESSAI ») — « 3A ESSAI » pour « 3E Charles de Gaulle »
+  ok     H2 · 1366×768 · 0 erreur JS
+
+══ 1536×864 ══
+  ok     A · 1536×864 · accueil-connexion · aucun défilement de côté
+  ok     A · 1536×864 · accueil-connexion · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1536×864 · la page du prof garde l’alerte « Vérifier les règles Firebase » (J + 30) — 13 · 44
+  ok     B · 1536×864 · la page du prof garde l’arrivée sur l’EDT (edtArriveeProf)
+  ok     B · 1536×864 · edt-semaine · aucun défilement de côté
+  ok     B · 1536×864 · edt-semaine · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1536×864 · edt-mois · aucun défilement de côté
+  ok     B · 1536×864 · edt-mois · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1536×864 · edt-annee · aucun défilement de côté
+  ok     B · 1536×864 · edt-annee · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1536×864 · edt-heures-perdues · aucun défilement de côté
+  ok     B · 1536×864 · edt-heures-perdues · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1536×864 · edt-case-modale · aucun défilement de côté
+  ok     B · 1536×864 · edt-case-modale · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     C · 1536×864 · accueil-niveaux · aucun défilement de côté
+  ok     C · 1536×864 · accueil-niveaux · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1536×864 · accueil des niveaux · .home-inner à toute la largeur (les bords gardés dedans) — 1100 px sur 1536 (max-width 1100px)
+  ok     C · 1536×864 · niveau-3e · aucun défilement de côté
+  ok     C · 1536×864 · niveau-3e · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1536×864 · page du niveau · .home-inner à toute la largeur — 1100 px sur 1536 (max-width 1100px)
+  ok     C · 1536×864 · niveau-3e-chapitre-ouvert · aucun défilement de côté
+  ok     C · 1536×864 · niveau-3e-chapitre-ouvert · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     C · 1536×864 · niveau-3e-vue-eleve · aucun défilement de côté
+  ok     C · 1536×864 · niveau-3e-vue-eleve · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1536×864 · page du niveau, vue élève · .home-inner à toute la largeur — 1100 px sur 1536 (max-width 1100px)
+  ok     D · 1536×864 · panneau-dashboard · aucun défilement de côté
+  ok     D · 1536×864 · panneau-dashboard · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau dashboard · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ÉCHEC  D · 1536×864 · panneau · sans coins arrondis — 16px
+  ok     D · 1536×864 · panneau-classes · aucun défilement de côté
+  ok     D · 1536×864 · panneau-classes · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau classes · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · panneau-eleves · aucun défilement de côté
+  ok     D · 1536×864 · panneau-eleves · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau eleves · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · élèves & codes · les lignes et les codes déverrouillés sont là — 29 lignes, 29 codes en clair, 1 ◆
+  ÉCHEC  D · 1536×864 · élèves & codes · ↻ ✕ dans la carte, à droite, sur la ligne du nom (avec et sans ◆) — ligne 1 « ↻ » hors de la carte (140-161 / nom 109-130) ; ligne 1 « ✕ » pas sur la ligne du nom (140-161 / nom 109-130) ; ligne 2 « ↻ » hors de la carte (216-237 / nom 185-206) ; ligne 2 « ✕ » pas sur la ligne du nom (216-237 / nom 185-206)
+  ok     D · 1536×864 · panneau-profil-test · aucun défilement de côté
+  ok     D · 1536×864 · panneau-profil-test · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau profil-test · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · panneau-archi · aucun défilement de côté
+  ok     D · 1536×864 · panneau-archi · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau archi · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · panneau-archives · aucun défilement de côté
+  ok     D · 1536×864 · panneau-archives · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau archives · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · panneau-corbeille · aucun défilement de côté
+  ok     D · 1536×864 · panneau-corbeille · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau corbeille · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · panneau-annonces · aucun défilement de côté
+  ok     D · 1536×864 · panneau-annonces · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau annonces · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · panneau-brevet · aucun défilement de côté
+  ok     D · 1536×864 · panneau-brevet · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau brevet · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · panneau-taxo · aucun défilement de côté
+  ok     D · 1536×864 · panneau-taxo · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau taxo · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · panneau-edt · aucun défilement de côté
+  ok     D · 1536×864 · panneau-edt · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau edt · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ÉCHEC  D · 1536×864 · EDT · une case par objet présent, nommée en clair — 0/4 (calendrier, grille, creneaux, photos) ; 0 cases ; 4 boutons « Sortir le JSON — objet » d’aujourd’hui
+  ÉCHEC  D · 1536×864 · EDT · « Tout cocher »
+  ÉCHEC  D · 1536×864 · EDT · un seul « ⤓ Sortir les JSON cochés », fermé tant que rien n’est coché, avec sa raison — absent
+  ÉCHEC  D · 1536×864 · EDT · « 📋 Copier le prompt » : un bouton par voie, nommé comme la voie (audit C3 : deux) — 📋 Copier le prompt — calendrier | 📋 Copier le prompt — grille
+  ÉCHEC  D · 1536×864 · EDT · trois groupes l’un sous l’autre, chacun son petit titre — hauts 320 /  / 320 ; titres false, false
+  ok     D · 1536×864 · panneau-config · aucun défilement de côté
+  ok     D · 1536×864 · panneau-config · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau config · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     D · 1536×864 · panneau-presence · aucun défilement de côté
+  ok     D · 1536×864 · panneau-presence · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1536×864 · panneau presence · .tprof-box aux bords de la fenêtre (1 px) — 218,30 → 1318,834 dans 1536×864, coins 16px
+  ok     E · 1536×864 · atelier-accueil · aucun défilement de côté
+  ok     E · 1536×864 · atelier-accueil · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  E · 1536×864 · atelier-accueil · .at-zone = largeur − 2 × 14 px — contenu 32 → 1504 dans 1536
+  ok     E · 1536×864 · atelier-accueil · « ✕ Fermer l’atelier » visible dans l’écran — 1403,8
+  ok     E · 1536×864 · atelier-mes-chapitres · aucun défilement de côté
+  ok     E · 1536×864 · atelier-mes-chapitres · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  E · 1536×864 · atelier-mes-chapitres · .at-zone = largeur − 2 × 14 px — contenu 32 → 1504 dans 1536
+  ok     E · 1536×864 · atelier-mes-chapitres · « ✕ Fermer l’atelier » visible dans l’écran — 1403,8
+  ok     E · 1536×864 · chapitre-structure · aucun défilement de côté
+  ok     E · 1536×864 · chapitre-structure · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  E · 1536×864 · chapitre-structure · .at-zone = largeur − 2 × 14 px — contenu 32 → 1504 dans 1536
+  ok     E · 1536×864 · chapitre-structure · « ✕ Fermer l’atelier » visible dans l’écran — 1403,8
+  ÉCHEC  E · 1536×864 · chapitre-structure · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1403 ; rangée 60-104 ; dernier onglet → 383
+  ÉCHEC  E · 1536×864 · chapitre-structure · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ok     E · 1536×864 · chapitre-atelier · aucun défilement de côté
+  ok     E · 1536×864 · chapitre-atelier · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1536×864 · chapitre-atelier · texte coupé par son cadre (overflow:hidden, sans échec) : « 4 » (span.dr-n) ; « Placer les poètes » (span.t) ; « 9 min » (span.dr-h) ; « 5 » (span.dr-n)
+  ÉCHEC  E · 1536×864 · chapitre-atelier · .at-zone = largeur − 2 × 14 px — contenu 32 → 1504 dans 1536
+  ok     E · 1536×864 · chapitre-atelier · « ✕ Fermer l’atelier » visible dans l’écran — 1403,8
+  ÉCHEC  E · 1536×864 · chapitre-atelier · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1403 ; rangée 60-104 ; dernier onglet → 383
+  ÉCHEC  E · 1536×864 · chapitre-atelier · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1536×864 · chapitre-atelier · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1536×864 · chapitre-atelier · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 860 pour 864
+  ok     E · 1536×864 · chapitre-pilotage-avant-lancement · aucun défilement de côté
+  ok     E · 1536×864 · chapitre-pilotage-avant-lancement · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1536×864 · chapitre-pilotage-avant-lancement · texte coupé par son cadre (overflow:hidden, sans échec) : « 5 » (span.dr-n) ; « Tableau 4 » (span.act) ; « Ville médiévale au bord d'un f » (div.img-lg) ; « H1 » (span.dr-h)
+  ÉCHEC  E · 1536×864 · chapitre-pilotage-avant-lancement · .at-zone = largeur − 2 × 14 px — contenu 32 → 1504 dans 1536
+  ok     E · 1536×864 · chapitre-pilotage-avant-lancement · « ✕ Fermer l’atelier » visible dans l’écran — 1403,8
+  ÉCHEC  E · 1536×864 · chapitre-pilotage-avant-lancement · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1403 ; rangée 60-104 ; dernier onglet → 383
+  ÉCHEC  E · 1536×864 · chapitre-pilotage-avant-lancement · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1536×864 · chapitre-pilotage-avant-lancement · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1536×864 · chapitre-pilotage-avant-lancement · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 860 pour 864
+  ok     F · 1536×864 · pilote-heure-lancee · aucun défilement de côté
+  ok     F · 1536×864 · pilote-heure-lancee · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   F · 1536×864 · pilote-heure-lancee · texte coupé par son cadre (overflow:hidden, sans échec) : « 5 » (span.dr-n) ; « Tableau 4 » (span.act) ; « Ville médiévale au bord d'un f » (div.img-lg) ; « H1 » (span.dr-h)
+  ÉCHEC  F · 1536×864 · pilote-heure-lancee · .at-zone = largeur − 2 × 14 px — contenu 32 → 1504 dans 1536
+  ok     F · 1536×864 · pilote-heure-lancee · « ✕ Fermer l’atelier » visible dans l’écran — 1403,8
+  ÉCHEC  F · 1536×864 · pilote-heure-lancee · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1403 ; rangée 60-104 ; dernier onglet → 383
+  ÉCHEC  F · 1536×864 · pilote-heure-lancee · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  F · 1536×864 · pilote-heure-lancee · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     F · 1536×864 · pilote-heure-lancee · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 860 pour 864
+  ok     F · 1536×864 · #hclasse = la classe de l’heure lancée — « 3E Charles de Gaulle » pour « 3E Charles de Gaulle »
+  ok     F · 1536×864 · pilote-fin-de-l-heure · aucun défilement de côté
+  ok     F · 1536×864 · pilote-fin-de-l-heure · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   F · 1536×864 · pilote-fin-de-l-heure · texte coupé par son cadre (overflow:hidden, sans échec) : « 5 » (span.dr-n) ; « Tableau 4 » (span.act) ; « Ville médiévale au bord d'un f » (div.img-lg) ; « H1 » (span.dr-h)
+  ÉCHEC  F · 1536×864 · pilote-fin-de-l-heure · .at-zone = largeur − 2 × 14 px — contenu 32 → 1504 dans 1536
+  ok     F · 1536×864 · pilote-fin-de-l-heure · « ✕ Fermer l’atelier » visible dans l’écran — 1403,8
+  ÉCHEC  F · 1536×864 · pilote-fin-de-l-heure · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1403 ; rangée 60-104 ; dernier onglet → 383
+  ÉCHEC  F · 1536×864 · pilote-fin-de-l-heure · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  F · 1536×864 · pilote-fin-de-l-heure · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     F · 1536×864 · pilote-fin-de-l-heure · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 860 pour 864
+  ok     G · 1536×864 · « ⧉ Ouvrir le tableau » ouvre la fenêtre
+  ÉCHEC  G · 1536×864 · fenêtre du tableau · aucun écran du prof (règles à J + 30) — 13 · 44 — #m8-regles-overlay, .m8-overlay#m8-regles-overlay, fixe div#m8-regles-overlay.m8-overlay · body.admin-mode
+  info   G · 1536×864 · fenêtre du tableau · gestes du prof refusés : pas de garde (DR_TAB.refuses absent) · écritures bloquées 1
+  ok     G · 1536×864 · fenêtre du tableau · aucun défilement de côté
+  ok     G · 1536×864 · la diapo identique pilote / tableau — pilote Analyse d'images : la routine · 4 lignes · page «  » · 26.4 px ; tableau Analyse d'images : la routine · 4 lignes · page «  » · 48.4 px
+  ok     G · 1536×864 · au tableau, aucune ligne hors du cadre — 0
+  ok     E · 1536×864 · chapitre-relecture · aucun défilement de côté
+  ok     E · 1536×864 · chapitre-relecture · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1536×864 · chapitre-relecture · texte coupé par son cadre (overflow:hidden, sans échec) : « 5 » (span.dr-n) ; « Tableau 4 » (span.act) ; « Ville médiévale au bord d'un f » (div.img-lg) ; « H1 » (span.dr-h)
+  ÉCHEC  E · 1536×864 · chapitre-relecture · .at-zone = largeur − 2 × 14 px — contenu 32 → 1504 dans 1536
+  ok     E · 1536×864 · chapitre-relecture · « ✕ Fermer l’atelier » visible dans l’écran — 1403,8
+  ÉCHEC  E · 1536×864 · chapitre-relecture · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1403 ; rangée 60-104 ; dernier onglet → 383
+  ÉCHEC  E · 1536×864 · chapitre-relecture · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1536×864 · chapitre-relecture · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1536×864 · chapitre-relecture · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 860 pour 864
+  ÉCHEC  E · 1536×864 · Relecture · .rel à toute la largeur de sa colonne — 1120 / 1140 px (max-width 1120px)
+  ÉCHEC  E · 1536×864 · Relecture · .recit à toute la largeur de sa colonne — 900 / 1120 px (max-width 900px)
+  ok     H · 1536×864 · visionneuse · aucun défilement de côté
+  ok     H · 1536×864 · visionneuse · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  H · 1536×864 · visionneuse · .doc-viewer-box aux bords de la fenêtre (1 px) — 218,64.8 → 1318,799.2 dans 1536×864, coins 16px
+  ÉCHEC  H · 1536×864 · visionneuse · sans coins arrondis — 16px
+  ok     Z · 1536×864 · 0 erreur JS (page du prof et fenêtre du tableau)
+  ÉCHEC  H2 · 1536×864 · avant tout lancement, #hclasse = la classe proposée — « 3A ESSAI » ; proposée « 3E Charles de Gaulle » ; première du niveau « 3A ESSAI »
+  ÉCHEC  H2 · 1536×864 · l’heure lancée, #hclasse = sa classe (la première du niveau est « 3A ESSAI ») — « 3A ESSAI » pour « 3E Charles de Gaulle »
+  ok     H2 · 1536×864 · 0 erreur JS
+
+══ 1707×743 ══
+  ok     A · 1707×743 · accueil-connexion · aucun défilement de côté
+  ok     A · 1707×743 · accueil-connexion · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1707×743 · la page du prof garde l’alerte « Vérifier les règles Firebase » (J + 30) — 13 · 44
+  ok     B · 1707×743 · la page du prof garde l’arrivée sur l’EDT (edtArriveeProf)
+  ok     B · 1707×743 · edt-semaine · aucun défilement de côté
+  ok     B · 1707×743 · edt-semaine · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1707×743 · edt-mois · aucun défilement de côté
+  ok     B · 1707×743 · edt-mois · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1707×743 · edt-annee · aucun défilement de côté
+  ok     B · 1707×743 · edt-annee · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1707×743 · edt-heures-perdues · aucun défilement de côté
+  ok     B · 1707×743 · edt-heures-perdues · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1707×743 · edt-case-modale · aucun défilement de côté
+  ok     B · 1707×743 · edt-case-modale · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     C · 1707×743 · accueil-niveaux · aucun défilement de côté
+  ok     C · 1707×743 · accueil-niveaux · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1707×743 · accueil des niveaux · .home-inner à toute la largeur (les bords gardés dedans) — 1100 px sur 1707 (max-width 1100px)
+  ok     C · 1707×743 · niveau-3e · aucun défilement de côté
+  ok     C · 1707×743 · niveau-3e · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   C · 1707×743 · niveau-3e · texte coupé par son cadre (overflow:hidden, sans échec) : « 4 » (div.level-bg-num) ; « 3 » (div.level-bg-num)
+  ÉCHEC  C · 1707×743 · page du niveau · .home-inner à toute la largeur — 1100 px sur 1707 (max-width 1100px)
+  ok     C · 1707×743 · niveau-3e-chapitre-ouvert · aucun défilement de côté
+  ok     C · 1707×743 · niveau-3e-chapitre-ouvert · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   C · 1707×743 · niveau-3e-chapitre-ouvert · texte coupé par son cadre (overflow:hidden, sans échec) : « 4 » (div.level-bg-num) ; « 3 » (div.level-bg-num)
+  ok     C · 1707×743 · niveau-3e-vue-eleve · aucun défilement de côté
+  ok     C · 1707×743 · niveau-3e-vue-eleve · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   C · 1707×743 · niveau-3e-vue-eleve · texte coupé par son cadre (overflow:hidden, sans échec) : « 4 » (div.level-bg-num) ; « 3 » (div.level-bg-num)
+  ÉCHEC  C · 1707×743 · page du niveau, vue élève · .home-inner à toute la largeur — 1100 px sur 1707 (max-width 1100px)
+  ok     D · 1707×743 · panneau-dashboard · aucun défilement de côté
+  ok     D · 1707×743 · panneau-dashboard · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau dashboard · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ÉCHEC  D · 1707×743 · panneau · sans coins arrondis — 16px
+  ok     D · 1707×743 · panneau-classes · aucun défilement de côté
+  ok     D · 1707×743 · panneau-classes · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau classes · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · panneau-eleves · aucun défilement de côté
+  ok     D · 1707×743 · panneau-eleves · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau eleves · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · élèves & codes · les lignes et les codes déverrouillés sont là — 29 lignes, 29 codes en clair, 1 ◆
+  ÉCHEC  D · 1707×743 · élèves & codes · ↻ ✕ dans la carte, à droite, sur la ligne du nom (avec et sans ◆) — ligne 1 « ↻ » hors de la carte (140-161 / nom 109-130) ; ligne 1 « ✕ » pas sur la ligne du nom (140-161 / nom 109-130) ; ligne 2 « ↻ » hors de la carte (216-237 / nom 185-206) ; ligne 2 « ✕ » pas sur la ligne du nom (216-237 / nom 185-206)
+  ok     D · 1707×743 · panneau-profil-test · aucun défilement de côté
+  ok     D · 1707×743 · panneau-profil-test · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau profil-test · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · panneau-archi · aucun défilement de côté
+  ok     D · 1707×743 · panneau-archi · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau archi · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · panneau-archives · aucun défilement de côté
+  ok     D · 1707×743 · panneau-archives · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau archives · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · panneau-corbeille · aucun défilement de côté
+  ok     D · 1707×743 · panneau-corbeille · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau corbeille · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · panneau-annonces · aucun défilement de côté
+  ok     D · 1707×743 · panneau-annonces · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau annonces · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · panneau-brevet · aucun défilement de côté
+  ok     D · 1707×743 · panneau-brevet · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau brevet · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · panneau-taxo · aucun défilement de côté
+  ok     D · 1707×743 · panneau-taxo · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau taxo · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · panneau-edt · aucun défilement de côté
+  ok     D · 1707×743 · panneau-edt · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau edt · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ÉCHEC  D · 1707×743 · EDT · une case par objet présent, nommée en clair — 0/4 (calendrier, grille, creneaux, photos) ; 0 cases ; 4 boutons « Sortir le JSON — objet » d’aujourd’hui
+  ÉCHEC  D · 1707×743 · EDT · « Tout cocher »
+  ÉCHEC  D · 1707×743 · EDT · un seul « ⤓ Sortir les JSON cochés », fermé tant que rien n’est coché, avec sa raison — absent
+  ÉCHEC  D · 1707×743 · EDT · « 📋 Copier le prompt » : un bouton par voie, nommé comme la voie (audit C3 : deux) — 📋 Copier le prompt — calendrier | 📋 Copier le prompt — grille
+  ÉCHEC  D · 1707×743 · EDT · trois groupes l’un sous l’autre, chacun son petit titre — hauts 320 /  / 320 ; titres false, false
+  ok     D · 1707×743 · panneau-config · aucun défilement de côté
+  ok     D · 1707×743 · panneau-config · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau config · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     D · 1707×743 · panneau-presence · aucun défilement de côté
+  ok     D · 1707×743 · panneau-presence · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1707×743 · panneau presence · .tprof-box aux bords de la fenêtre (1 px) — 303.5,30 → 1403.5,713 dans 1707×743, coins 16px
+  ok     E · 1707×743 · atelier-accueil · aucun défilement de côté
+  ok     E · 1707×743 · atelier-accueil · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  E · 1707×743 · atelier-accueil · .at-zone = largeur − 2 × 14 px — contenu 117.5 → 1589.5 dans 1707
+  ok     E · 1707×743 · atelier-accueil · « ✕ Fermer l’atelier » visible dans l’écran — 1574,8
+  ok     E · 1707×743 · atelier-mes-chapitres · aucun défilement de côté
+  ok     E · 1707×743 · atelier-mes-chapitres · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  E · 1707×743 · atelier-mes-chapitres · .at-zone = largeur − 2 × 14 px — contenu 117.5 → 1589.5 dans 1707
+  ok     E · 1707×743 · atelier-mes-chapitres · « ✕ Fermer l’atelier » visible dans l’écran — 1574,8
+  ok     E · 1707×743 · chapitre-structure · aucun défilement de côté
+  ok     E · 1707×743 · chapitre-structure · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  E · 1707×743 · chapitre-structure · .at-zone = largeur − 2 × 14 px — contenu 117.5 → 1589.5 dans 1707
+  ok     E · 1707×743 · chapitre-structure · « ✕ Fermer l’atelier » visible dans l’écran — 1574,8
+  ÉCHEC  E · 1707×743 · chapitre-structure · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1574 ; rangée 60-104 ; dernier onglet → 469
+  ÉCHEC  E · 1707×743 · chapitre-structure · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ok     E · 1707×743 · chapitre-atelier · aucun défilement de côté
+  ok     E · 1707×743 · chapitre-atelier · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1707×743 · chapitre-atelier · texte coupé par son cadre (overflow:hidden, sans échec) : « H2 · mardi 15 septembre · 55 m » (span) ; « 48 + 5 = 53 min » (span) ; « +3 » (span.plus) ; « 1 » (span.dr-n)
+  ÉCHEC  E · 1707×743 · chapitre-atelier · .at-zone = largeur − 2 × 14 px — contenu 117.5 → 1589.5 dans 1707
+  ok     E · 1707×743 · chapitre-atelier · « ✕ Fermer l’atelier » visible dans l’écran — 1574,8
+  ÉCHEC  E · 1707×743 · chapitre-atelier · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1574 ; rangée 60-104 ; dernier onglet → 469
+  ÉCHEC  E · 1707×743 · chapitre-atelier · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1707×743 · chapitre-atelier · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1707×743 · chapitre-atelier · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 739 pour 743
+  ok     E · 1707×743 · chapitre-pilotage-avant-lancement · aucun défilement de côté
+  ok     E · 1707×743 · chapitre-pilotage-avant-lancement · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1707×743 · chapitre-pilotage-avant-lancement · texte coupé par son cadre (overflow:hidden, sans échec) : « Pêcheurs en mer, Joseph Mallor » (div.img-lg) ; « 4 » (span.dr-n) ; « Tableau 3 » (span.act) ; « Le Radeau de la Méduse, Théodo » (div.img-lg)
+  ÉCHEC  E · 1707×743 · chapitre-pilotage-avant-lancement · .at-zone = largeur − 2 × 14 px — contenu 117.5 → 1589.5 dans 1707
+  ok     E · 1707×743 · chapitre-pilotage-avant-lancement · « ✕ Fermer l’atelier » visible dans l’écran — 1574,8
+  ÉCHEC  E · 1707×743 · chapitre-pilotage-avant-lancement · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1574 ; rangée 60-104 ; dernier onglet → 469
+  ÉCHEC  E · 1707×743 · chapitre-pilotage-avant-lancement · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1707×743 · chapitre-pilotage-avant-lancement · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1707×743 · chapitre-pilotage-avant-lancement · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 739 pour 743
+  ok     F · 1707×743 · pilote-heure-lancee · aucun défilement de côté
+  ok     F · 1707×743 · pilote-heure-lancee · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   F · 1707×743 · pilote-heure-lancee · texte coupé par son cadre (overflow:hidden, sans échec) : « Pêcheurs en mer, Joseph Mallor » (div.img-lg) ; « 4 » (span.dr-n) ; « Tableau 3 » (span.act) ; « Le Radeau de la Méduse, Théodo » (div.img-lg)
+  ÉCHEC  F · 1707×743 · pilote-heure-lancee · .at-zone = largeur − 2 × 14 px — contenu 117.5 → 1589.5 dans 1707
+  ok     F · 1707×743 · pilote-heure-lancee · « ✕ Fermer l’atelier » visible dans l’écran — 1574,8
+  ÉCHEC  F · 1707×743 · pilote-heure-lancee · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1574 ; rangée 60-104 ; dernier onglet → 469
+  ÉCHEC  F · 1707×743 · pilote-heure-lancee · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  F · 1707×743 · pilote-heure-lancee · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     F · 1707×743 · pilote-heure-lancee · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 739 pour 743
+  ok     F · 1707×743 · #hclasse = la classe de l’heure lancée — « 3E Charles de Gaulle » pour « 3E Charles de Gaulle »
+  ok     F · 1707×743 · pilote-fin-de-l-heure · aucun défilement de côté
+  ok     F · 1707×743 · pilote-fin-de-l-heure · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   F · 1707×743 · pilote-fin-de-l-heure · texte coupé par son cadre (overflow:hidden, sans échec) : « Pêcheurs en mer, Joseph Mallor » (div.img-lg) ; « 4 » (span.dr-n) ; « Tableau 3 » (span.act) ; « Le Radeau de la Méduse, Théodo » (div.img-lg)
+  ÉCHEC  F · 1707×743 · pilote-fin-de-l-heure · .at-zone = largeur − 2 × 14 px — contenu 117.5 → 1589.5 dans 1707
+  ok     F · 1707×743 · pilote-fin-de-l-heure · « ✕ Fermer l’atelier » visible dans l’écran — 1574,8
+  ÉCHEC  F · 1707×743 · pilote-fin-de-l-heure · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1574 ; rangée 60-104 ; dernier onglet → 469
+  ÉCHEC  F · 1707×743 · pilote-fin-de-l-heure · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  F · 1707×743 · pilote-fin-de-l-heure · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     F · 1707×743 · pilote-fin-de-l-heure · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 739 pour 743
+  ok     G · 1707×743 · « ⧉ Ouvrir le tableau » ouvre la fenêtre
+  ÉCHEC  G · 1707×743 · fenêtre du tableau · aucun écran du prof (règles à J + 30) — 13 · 44 — #m8-regles-overlay, .m8-overlay#m8-regles-overlay, fixe div#m8-regles-overlay.m8-overlay · body.admin-mode
+  info   G · 1707×743 · fenêtre du tableau · gestes du prof refusés : pas de garde (DR_TAB.refuses absent) · écritures bloquées 1
+  ok     G · 1707×743 · fenêtre du tableau · aucun défilement de côté
+  ok     G · 1707×743 · la diapo identique pilote / tableau — pilote Analyse d'images : la routine · 4 lignes · page «  » · 21 px ; tableau Analyse d'images : la routine · 4 lignes · page «  » · 41.6 px
+  ok     G · 1707×743 · au tableau, aucune ligne hors du cadre — 0
+  ok     E · 1707×743 · chapitre-relecture · aucun défilement de côté
+  ok     E · 1707×743 · chapitre-relecture · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1707×743 · chapitre-relecture · texte coupé par son cadre (overflow:hidden, sans échec) : « Pêcheurs en mer, Joseph Mallor » (div.img-lg) ; « 4 » (span.dr-n) ; « Tableau 3 » (span.act) ; « Le Radeau de la Méduse, Théodo » (div.img-lg)
+  ÉCHEC  E · 1707×743 · chapitre-relecture · .at-zone = largeur − 2 × 14 px — contenu 117.5 → 1589.5 dans 1707
+  ok     E · 1707×743 · chapitre-relecture · « ✕ Fermer l’atelier » visible dans l’écran — 1574,8
+  ÉCHEC  E · 1707×743 · chapitre-relecture · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1574 ; rangée 60-104 ; dernier onglet → 469
+  ÉCHEC  E · 1707×743 · chapitre-relecture · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1707×743 · chapitre-relecture · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1707×743 · chapitre-relecture · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 739 pour 743
+  ÉCHEC  E · 1707×743 · Relecture · .rel à toute la largeur de sa colonne — 1120 / 1140 px (max-width 1120px)
+  ÉCHEC  E · 1707×743 · Relecture · .recit à toute la largeur de sa colonne — 900 / 1120 px (max-width 900px)
+  ok     H · 1707×743 · visionneuse · aucun défilement de côté
+  ok     H · 1707×743 · visionneuse · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  H · 1707×743 · visionneuse · .doc-viewer-box aux bords de la fenêtre (1 px) — 303.5,55.7 → 1403.5,687.3 dans 1707×743, coins 16px
+  ÉCHEC  H · 1707×743 · visionneuse · sans coins arrondis — 16px
+  ok     Z · 1707×743 · 0 erreur JS (page du prof et fenêtre du tableau)
+  ÉCHEC  H2 · 1707×743 · avant tout lancement, #hclasse = la classe proposée — « 3A ESSAI » ; proposée « 3E Charles de Gaulle » ; première du niveau « 3A ESSAI »
+  ÉCHEC  H2 · 1707×743 · l’heure lancée, #hclasse = sa classe (la première du niveau est « 3A ESSAI ») — « 3A ESSAI » pour « 3E Charles de Gaulle »
+  ok     H2 · 1707×743 · 0 erreur JS
+
+══ 1920×1080 ══
+  ok     A · 1920×1080 · accueil-connexion · aucun défilement de côté
+  ok     A · 1920×1080 · accueil-connexion · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1920×1080 · la page du prof garde l’alerte « Vérifier les règles Firebase » (J + 30) — 13 · 44
+  ok     B · 1920×1080 · la page du prof garde l’arrivée sur l’EDT (edtArriveeProf)
+  ok     B · 1920×1080 · edt-semaine · aucun défilement de côté
+  ok     B · 1920×1080 · edt-semaine · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1920×1080 · edt-mois · aucun défilement de côté
+  ok     B · 1920×1080 · edt-mois · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1920×1080 · edt-annee · aucun défilement de côté
+  ok     B · 1920×1080 · edt-annee · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1920×1080 · edt-heures-perdues · aucun défilement de côté
+  ok     B · 1920×1080 · edt-heures-perdues · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     B · 1920×1080 · edt-case-modale · aucun défilement de côté
+  ok     B · 1920×1080 · edt-case-modale · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     C · 1920×1080 · accueil-niveaux · aucun défilement de côté
+  ok     C · 1920×1080 · accueil-niveaux · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1920×1080 · accueil des niveaux · .home-inner à toute la largeur (les bords gardés dedans) — 1100 px sur 1920 (max-width 1100px)
+  ok     C · 1920×1080 · niveau-3e · aucun défilement de côté
+  ok     C · 1920×1080 · niveau-3e · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1920×1080 · page du niveau · .home-inner à toute la largeur — 1100 px sur 1920 (max-width 1100px)
+  ok     C · 1920×1080 · niveau-3e-chapitre-ouvert · aucun défilement de côté
+  ok     C · 1920×1080 · niveau-3e-chapitre-ouvert · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ok     C · 1920×1080 · niveau-3e-vue-eleve · aucun défilement de côté
+  ok     C · 1920×1080 · niveau-3e-vue-eleve · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  C · 1920×1080 · page du niveau, vue élève · .home-inner à toute la largeur — 1100 px sur 1920 (max-width 1100px)
+  ok     D · 1920×1080 · panneau-dashboard · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-dashboard · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau dashboard · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ÉCHEC  D · 1920×1080 · panneau · sans coins arrondis — 16px
+  ok     D · 1920×1080 · panneau-classes · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-classes · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau classes · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · panneau-eleves · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-eleves · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau eleves · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · élèves & codes · les lignes et les codes déverrouillés sont là — 29 lignes, 29 codes en clair, 1 ◆
+  ÉCHEC  D · 1920×1080 · élèves & codes · ↻ ✕ dans la carte, à droite, sur la ligne du nom (avec et sans ◆) — ligne 1 « ↻ » hors de la carte (140-161 / nom 109-130) ; ligne 1 « ✕ » pas sur la ligne du nom (140-161 / nom 109-130) ; ligne 2 « ↻ » hors de la carte (216-237 / nom 185-206) ; ligne 2 « ✕ » pas sur la ligne du nom (216-237 / nom 185-206)
+  ok     D · 1920×1080 · panneau-profil-test · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-profil-test · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau profil-test · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · panneau-archi · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-archi · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau archi · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · panneau-archives · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-archives · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau archives · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · panneau-corbeille · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-corbeille · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau corbeille · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · panneau-annonces · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-annonces · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau annonces · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · panneau-brevet · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-brevet · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau brevet · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · panneau-taxo · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-taxo · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau taxo · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · panneau-edt · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-edt · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau edt · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ÉCHEC  D · 1920×1080 · EDT · une case par objet présent, nommée en clair — 0/4 (calendrier, grille, creneaux, photos) ; 0 cases ; 4 boutons « Sortir le JSON — objet » d’aujourd’hui
+  ÉCHEC  D · 1920×1080 · EDT · « Tout cocher »
+  ÉCHEC  D · 1920×1080 · EDT · un seul « ⤓ Sortir les JSON cochés », fermé tant que rien n’est coché, avec sa raison — absent
+  ÉCHEC  D · 1920×1080 · EDT · « 📋 Copier le prompt » : un bouton par voie, nommé comme la voie (audit C3 : deux) — 📋 Copier le prompt — calendrier | 📋 Copier le prompt — grille
+  ÉCHEC  D · 1920×1080 · EDT · trois groupes l’un sous l’autre, chacun son petit titre — hauts 320 /  / 320 ; titres false, false
+  ok     D · 1920×1080 · panneau-config · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-config · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau config · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     D · 1920×1080 · panneau-presence · aucun défilement de côté
+  ok     D · 1920×1080 · panneau-presence · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  D · 1920×1080 · panneau presence · .tprof-box aux bords de la fenêtre (1 px) — 410,30 → 1510,1050 dans 1920×1080, coins 16px
+  ok     E · 1920×1080 · atelier-accueil · aucun défilement de côté
+  ok     E · 1920×1080 · atelier-accueil · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  E · 1920×1080 · atelier-accueil · .at-zone = largeur − 2 × 14 px — contenu 224 → 1696 dans 1920
+  ok     E · 1920×1080 · atelier-accueil · « ✕ Fermer l’atelier » visible dans l’écran — 1787,8
+  ok     E · 1920×1080 · atelier-mes-chapitres · aucun défilement de côté
+  ok     E · 1920×1080 · atelier-mes-chapitres · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  E · 1920×1080 · atelier-mes-chapitres · .at-zone = largeur − 2 × 14 px — contenu 224 → 1696 dans 1920
+  ok     E · 1920×1080 · atelier-mes-chapitres · « ✕ Fermer l’atelier » visible dans l’écran — 1787,8
+  ok     E · 1920×1080 · chapitre-structure · aucun défilement de côté
+  ok     E · 1920×1080 · chapitre-structure · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  E · 1920×1080 · chapitre-structure · .at-zone = largeur − 2 × 14 px — contenu 224 → 1696 dans 1920
+  ok     E · 1920×1080 · chapitre-structure · « ✕ Fermer l’atelier » visible dans l’écran — 1787,8
+  ÉCHEC  E · 1920×1080 · chapitre-structure · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1787 ; rangée 60-104 ; dernier onglet → 575
+  ÉCHEC  E · 1920×1080 · chapitre-structure · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ok     E · 1920×1080 · chapitre-atelier · aucun défilement de côté
+  ok     E · 1920×1080 · chapitre-atelier · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1920×1080 · chapitre-atelier · texte coupé par son cadre (overflow:hidden, sans échec) : « 1 » (span.dr-n) ; « Baudelaire, 1821-1867 » (span.t) ; « 4 min » (span.dr-h) ; « 2 » (span.dr-n)
+  ÉCHEC  E · 1920×1080 · chapitre-atelier · .at-zone = largeur − 2 × 14 px — contenu 224 → 1696 dans 1920
+  ok     E · 1920×1080 · chapitre-atelier · « ✕ Fermer l’atelier » visible dans l’écran — 1787,8
+  ÉCHEC  E · 1920×1080 · chapitre-atelier · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1787 ; rangée 60-104 ; dernier onglet → 575
+  ÉCHEC  E · 1920×1080 · chapitre-atelier · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1920×1080 · chapitre-atelier · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1920×1080 · chapitre-atelier · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 1076 pour 1080
+  ok     E · 1920×1080 · chapitre-pilotage-avant-lancement · aucun défilement de côté
+  ok     E · 1920×1080 · chapitre-pilotage-avant-lancement · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1920×1080 · chapitre-pilotage-avant-lancement · texte coupé par son cadre (overflow:hidden, sans échec) : « Le Lac de Whyte, Estes Park, C » (div.img-lg) ; « 7 » (span.dr-n) ; « Les hypothèses de la classe » (span.act) ; « 🗣️ » (span.pic)
+  ÉCHEC  E · 1920×1080 · chapitre-pilotage-avant-lancement · .at-zone = largeur − 2 × 14 px — contenu 224 → 1696 dans 1920
+  ok     E · 1920×1080 · chapitre-pilotage-avant-lancement · « ✕ Fermer l’atelier » visible dans l’écran — 1787,8
+  ÉCHEC  E · 1920×1080 · chapitre-pilotage-avant-lancement · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1787 ; rangée 60-104 ; dernier onglet → 575
+  ÉCHEC  E · 1920×1080 · chapitre-pilotage-avant-lancement · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1920×1080 · chapitre-pilotage-avant-lancement · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1920×1080 · chapitre-pilotage-avant-lancement · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 1076 pour 1080
+  ok     F · 1920×1080 · pilote-heure-lancee · aucun défilement de côté
+  ok     F · 1920×1080 · pilote-heure-lancee · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   F · 1920×1080 · pilote-heure-lancee · texte coupé par son cadre (overflow:hidden, sans échec) : « Le Lac de Whyte, Estes Park, C » (div.img-lg) ; « 7 » (span.dr-n) ; « Les hypothèses de la classe » (span.act) ; « 🗣️ » (span.pic)
+  ÉCHEC  F · 1920×1080 · pilote-heure-lancee · .at-zone = largeur − 2 × 14 px — contenu 224 → 1696 dans 1920
+  ok     F · 1920×1080 · pilote-heure-lancee · « ✕ Fermer l’atelier » visible dans l’écran — 1787,8
+  ÉCHEC  F · 1920×1080 · pilote-heure-lancee · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1787 ; rangée 60-104 ; dernier onglet → 575
+  ÉCHEC  F · 1920×1080 · pilote-heure-lancee · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  F · 1920×1080 · pilote-heure-lancee · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     F · 1920×1080 · pilote-heure-lancee · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 1076 pour 1080
+  ok     F · 1920×1080 · #hclasse = la classe de l’heure lancée — « 3E Charles de Gaulle » pour « 3E Charles de Gaulle »
+  ok     F · 1920×1080 · pilote-fin-de-l-heure · aucun défilement de côté
+  ok     F · 1920×1080 · pilote-fin-de-l-heure · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   F · 1920×1080 · pilote-fin-de-l-heure · texte coupé par son cadre (overflow:hidden, sans échec) : « Le Lac de Whyte, Estes Park, C » (div.img-lg) ; « 7 » (span.dr-n) ; « Les hypothèses de la classe » (span.act) ; « 🗣️ » (span.pic)
+  ÉCHEC  F · 1920×1080 · pilote-fin-de-l-heure · .at-zone = largeur − 2 × 14 px — contenu 224 → 1696 dans 1920
+  ok     F · 1920×1080 · pilote-fin-de-l-heure · « ✕ Fermer l’atelier » visible dans l’écran — 1787,8
+  ÉCHEC  F · 1920×1080 · pilote-fin-de-l-heure · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1787 ; rangée 60-104 ; dernier onglet → 575
+  ÉCHEC  F · 1920×1080 · pilote-fin-de-l-heure · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  F · 1920×1080 · pilote-fin-de-l-heure · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     F · 1920×1080 · pilote-fin-de-l-heure · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 1076 pour 1080
+  ok     G · 1920×1080 · « ⧉ Ouvrir le tableau » ouvre la fenêtre
+  ÉCHEC  G · 1920×1080 · fenêtre du tableau · aucun écran du prof (règles à J + 30) — 13 · 44 — #m8-regles-overlay, .m8-overlay#m8-regles-overlay, fixe div#m8-regles-overlay.m8-overlay · body.admin-mode
+  info   G · 1920×1080 · fenêtre du tableau · gestes du prof refusés : pas de garde (DR_TAB.refuses absent) · écritures bloquées 1
+  ok     G · 1920×1080 · fenêtre du tableau · aucun défilement de côté
+  ok     G · 1920×1080 · la diapo identique pilote / tableau — pilote Analyse d'images : la routine · 4 lignes · page «  » · 26.4 px ; tableau Analyse d'images : la routine · 4 lignes · page «  » · 60.5 px
+  ok     G · 1920×1080 · au tableau, aucune ligne hors du cadre — 0
+  ok     E · 1920×1080 · chapitre-relecture · aucun défilement de côté
+  ok     E · 1920×1080 · chapitre-relecture · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  info   E · 1920×1080 · chapitre-relecture · texte coupé par son cadre (overflow:hidden, sans échec) : « Le Lac de Whyte, Estes Park, C » (div.img-lg) ; « 7 » (span.dr-n) ; « Les hypothèses de la classe » (span.act) ; « 🗣️ » (span.pic)
+  ÉCHEC  E · 1920×1080 · chapitre-relecture · .at-zone = largeur − 2 × 14 px — contenu 224 → 1696 dans 1920
+  ok     E · 1920×1080 · chapitre-relecture · « ✕ Fermer l’atelier » visible dans l’écran — 1787,8
+  ÉCHEC  E · 1920×1080 · chapitre-relecture · « Fermer l’atelier » sur la rangée des onglets, à droite — bouton 8-52 x 1787 ; rangée 60-104 ; dernier onglet → 575
+  ÉCHEC  E · 1920×1080 · chapitre-relecture · plus de bande vide au-dessus des onglets — la rangée commence à 60 px du haut
+  ÉCHEC  E · 1920×1080 · chapitre-relecture · l’Atelier ne défile pas (la zone du déroulé montrée) — #atelier-ecran 36 px
+  ok     E · 1920×1080 · chapitre-relecture · la zone du déroulé touche le bas de la fenêtre (4 px) — bas 1076 pour 1080
+  ÉCHEC  E · 1920×1080 · Relecture · .rel à toute la largeur de sa colonne — 1120 / 1140 px (max-width 1120px)
+  ÉCHEC  E · 1920×1080 · Relecture · .recit à toute la largeur de sa colonne — 900 / 1120 px (max-width 900px)
+  ok     H · 1920×1080 · visionneuse · aucun défilement de côté
+  ok     H · 1920×1080 · visionneuse · rien de ce qui se lit hors de l’écran (hors d’un conteneur qui défile)
+  ÉCHEC  H · 1920×1080 · visionneuse · .doc-viewer-box aux bords de la fenêtre (1 px) — 410,81 → 1510,999 dans 1920×1080, coins 16px
+  ÉCHEC  H · 1920×1080 · visionneuse · sans coins arrondis — 16px
+  ok     Z · 1920×1080 · 0 erreur JS (page du prof et fenêtre du tableau)
+  ÉCHEC  H2 · 1920×1080 · avant tout lancement, #hclasse = la classe proposée — « 3A ESSAI » ; proposée « 3E Charles de Gaulle » ; première du niveau « 3A ESSAI »
+  ÉCHEC  H2 · 1920×1080 · l’heure lancée, #hclasse = sa classe (la première du niveau est « 3A ESSAI ») — « 3A ESSAI » pour « 3E Charles de Gaulle »
+  ok     H2 · 1920×1080 · 0 erreur JS
+
+BILAN banc-1227 : 357/568 vérifications — 211 ÉCHEC(S) · ROUGE

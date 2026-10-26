@@ -1154,6 +1154,38 @@ await B('A53', '§12.29 (5), S5 : la répétition ne montre que la répétition 
     E.verif('A53', !c.rep && c.bfin && c.clore && c.qui && c.vif && c.part, w + ' × ' + h + ' : dans l\'écran de la classe, tout revient (Fin de l\'heure, Clore, 👥, la participation) — §12.29 (6)', JSON.stringify(c));
     E.verif('A53', !o.errs.length, w + ' × ' + h + ' : aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); } });
 
+/* ── A54 · retour 58 d'E3 (L′) : volet d'aide ouvert, rien n'est dessous — ni un texte (« ⌕ Rechercher » de la barre du bas), ni un flottant (fixe) qui le chevauche — accueil, page du niveau, emploi du temps, en défilant ── */
+await B('A54', 'retour 58 d\'E3 (L′) : le volet d\'aide ouvert ne cache aucun texte et aucun flottant ne le chevauche (accueil, page du niveau, emploi du temps, défilés)', async () => {
+  const sous = pg => pg.evaluate(() => { const W = innerWidth, H = innerHeight; const C = document.getElementById('aide-volet'); if (!C || C.hidden) return ['pas de volet']; const ko = []; const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    while (tw.nextNode() && ko.length < 5) { const t = tw.currentNode; const txt = t.textContent.replace(/\s+/g, ' ').trim(); if (!txt) continue; const el = t.parentElement; if (!el || C.contains(el) || el.closest('script,style,noscript,.level-bg-num,[aria-hidden="true"]')) continue; const cs = getComputedStyle(el); if (cs.visibility === 'hidden' || cs.display === 'none' || +cs.opacity === 0) continue;
+      const rg = document.createRange(); rg.selectNodeContents(t); for (const r of Array.from(rg.getClientRects())) { if (r.width < 2 || r.height < 2 || r.bottom < 0 || r.top > H || r.right < 0 || r.left > W) continue; let hit = false; for (const fx of [0.15, 0.5, 0.85]) { const x = r.left + r.width * fx, y = r.top + r.height / 2; if (x < 0 || x >= W || y < 0 || y >= H) continue; const top = document.elementFromPoint(x, y); if (top && C.contains(top) && !top.contains(el)) { hit = true; break; } } if (hit) { ko.push('« ' + txt.slice(0, 30) + ' »'); break; } } }
+    const v = e => { const r = e.getBoundingClientRect(); const c = getComputedStyle(e); return r.width > 2 && r.height > 2 && r.bottom > 0 && r.top < H && c.display !== 'none' && c.visibility !== 'hidden' && +c.opacity > 0; };
+    const fl = Array.from(document.querySelectorAll('body *')).filter(e => getComputedStyle(e).position === 'fixed' && v(e) && e !== C && !C.contains(e) && !e.contains(C) && e.getBoundingClientRect().width < W * 0.5); const tops = fl.filter(e => !fl.some(o => o !== e && o.contains(e)));
+    const a = C.getBoundingClientRect(); tops.forEach(e => { const b = e.getBoundingClientRect(); const x = Math.min(a.right, b.right) - Math.max(a.left, b.left), y = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top); if (x > 2 && y > 2) ko.push('flottant ' + e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (e.className && typeof e.className === 'string' ? '.' + e.className.split(' ')[0] : '') + ' « ' + (e.innerText || '').trim().replace(/\s+/g, ' ').slice(0, 20) + ' »'); });
+    return ko; });
+  for (const [w, h] of TAILLES_1227) { const o = await ouvrirProf(w, h); const pg = o.pg; const ko = [];
+    await pg.evaluate(() => aideOuvrir()); await pg.waitForTimeout(500);
+    for (const [nom, g] of [['accueil', async () => {}], ['page du niveau', () => pg.evaluate(() => { clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); })], ['emploi du temps', () => pg.evaluate(() => { try { goHome(); } catch (e) {} edtOuvrir(); })]]) {
+      await g(); await pg.waitForTimeout(1300); await sansVoile(pg); const hh = await pg.evaluate(() => document.scrollingElement.scrollHeight); const vus = [];
+      for (let y = 0; y < Math.max(hh, 1) && vus.length < 5; y += 400) { await pg.evaluate(v => window.scrollTo(0, v), y); await pg.waitForTimeout(120); (await sous(pg)).forEach(x => { if (vus.indexOf(x) < 0) vus.push(x); }); }
+      await pg.evaluate(() => window.scrollTo(0, 0)); if (vus.length) ko.push(nom + ' : ' + vus.join(', ')); }
+    E.verif('A54', !ko.length, w + ' × ' + h + ' : volet ouvert, rien dessous ni par-dessus (accueil, page du niveau, emploi du temps)', ko.join(' ; ') || undefined);
+    await o.ctx.close(); }
+});
+
+/* ── A55 · retour 59 d'E3 (L) : le « ? » ne couvre aucune boîte qui porte du texte — l'accueil de l'Atelier (« Aucune feuille pour l'instant »), le site, l'emploi du temps ── */
+await B('A55', 'retour 59 d\'E3 (L) : le « ? » fermé ne couvre aucune boîte de texte (accueil, page du niveau, emploi du temps, accueil de l\'Atelier)', async () => {
+  const couvre = pg => pg.evaluate(() => { const q = document.getElementById('aide-q'); if (!q || q.hidden || !q.offsetWidth) return ['pas de « ? »']; const a = q.getBoundingClientRect(); const ko = [];
+    Array.from(document.querySelectorAll('body *')).forEach(e => { if (e === q || e.contains(q) || q.contains(e)) return; const c = getComputedStyle(e); if (c.display === 'none' || c.visibility === 'hidden' || +c.opacity === 0) return;
+      const t = Array.from(e.childNodes).filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim(); if (!t) return; const b = e.getBoundingClientRect(); const x = Math.min(a.right, b.right) - Math.max(a.left, b.left), y = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      if (x > 0.5 && y > 0.5) ko.push(e.tagName.toLowerCase() + (typeof e.className === 'string' && e.className ? '.' + e.className.split(' ')[0] : '') + ' « ' + t.slice(0, 30) + ' »'); }); return ko; });
+  for (const [w, h] of TAILLES_1227) { const o = await ouvrirProf(w, h); const pg = o.pg; const ko = [];
+    for (const [nom, g] of [['accueil', async () => {}], ['page du niveau', () => pg.evaluate(() => { clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); })], ['emploi du temps', () => pg.evaluate(() => { try { goHome(); } catch (e) {} edtOuvrir(); })], ['accueil de l\'Atelier', () => pg.evaluate(() => { try { edtFermer(); } catch (e) {} atelierOuvrir(); })]]) {
+      await g(); await pg.waitForTimeout(1300); await sansVoile(pg); const k = await couvre(pg); if (k.length) ko.push(nom + ' : ' + k.slice(0, 3).join(', ')); }
+    E.verif('A55', !ko.length, w + ' × ' + h + ' : le « ? » ne couvre aucune boîte de texte', ko.join(' ; ') || undefined);
+    await o.ctx.close(); }
+});
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

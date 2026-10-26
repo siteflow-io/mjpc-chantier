@@ -3536,3 +3536,16 @@ MEMO
 
 26/10/2026 11:48
 MEMO
+
+## Tour 191 — 26/10/2026 14:08 — Paul (14:05) : le panneau prof reste par-dessus l'arborescence
+
+**Paul (mot pour mot).** « Par ailleurs j'ai remarqué aussi quelque chose : quand le panneau prof est ouvert, et que je veux voir l'arborescence depuis l'atelier ( bouton "voir dans le chapitre" ou quelque chose comme ça ), le panneau prof reste en overlay et m'empêche dacceder directement au chapitre arborescence. Tu vois? »
+
+**Fait.** Mesuré (prod ③ l. 11608, `integration` l. 11609) : « Voir dans le panneau prof » (Mes chapitres), le menu du chapitre et « Voir le chapitre » appellent `atVoirPanneau`, qui ferme l'atelier par `atelierFermer` — lequel rouvre le panneau prof (`openProfPanel`) par-dessus la page du niveau où le chapitre vient d'être déplié. Dette **13 · 45** au registre prod (`d39a081`, réécrite `bbf10cf`) ; contrat §12 point 27 (13) ; relances E1 (à coder après (6) et (8), garde A45) et E3 (la garde dans `banc-1227`).
+
+**Réponse (mot pour mot).**
+
+397. Oui, je vois, et c'est mesuré : le bouton « Voir dans le panneau prof » ferme l'atelier en rouvrant le panneau prof — par-dessus l'arborescence où il vient de déplier ton chapitre. C'est la dette 13 · 45, ajoutée au chantier en cours : E1 la règle (l'atelier se ferme sans rouvrir le panneau, la page du niveau s'ouvre, ton chapitre déplié en haut, et le bouton dira « Voir dans l'arborescence »), E3 la vérifie avec le reste ; elle sera dans les captures avant / après.
+
+26/10/2026 14:08
+MEMO

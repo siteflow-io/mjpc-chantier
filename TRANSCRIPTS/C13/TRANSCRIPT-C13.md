@@ -3340,3 +3340,26 @@ MEMO
 
 26/10/2026 09:30
 MEMO
+
+## Tour 178 — 26/10/2026 09:55 — Paul (09:52) : « ok pour 366 »
+
+**Paul (mot pour mot).** « ok pour 366 »
+
+**Fait.** Le cadrage relu ligne à ligne : prod `docs/MJPC6-DETTES.md` (25/08 lot 7 ; tours 69-81, 98-101) ; sas `PONT/LOT-C-CADRAGE.md`, `DEROULE/CADRAGE-4-LA-PREPARATION.md` §0.3, `DEROULE/CADRAGE-1-LA-CLASSE.md` §8 et §11b.5, `DEROULE/CADRAGE-3-LES-NOTIONS.md` §3.1, `MANDATS/POINT-DEROULE-RESTE-A-CODER.md` n°35, `MANDATS/PLAN-10-JOURS.md` L6. Mesuré dans ③ (lignes citées dans la note) : le programme prévu par classe (EDT), la carte de classe et son clic « il arrive au lot suivant », « Préparer » (l'Atelier, sans revue), « Où en est la classe » (une heure seulement), la Relecture (cinq faces), la copie de classe (visible comme diapos seulement pendant l'heure), la réactivation ; n'existent pas : la vue par classe, le badge et sa donnée, les stats à côté, la liste des heures, le cockpit. Note écrite au sas : `MANDATS/PROFIL-CLASSE/CADRAGE-RELU.md` (les décisions verbatim, l'existant, les tranchages T1-T7, la suite). Pas de maquette encore (elle suit les réponses de Paul aux tranchages ; par défaut T1-T6).
+
+**Réponse (mot pour mot).**
+
+367. Cadrage relu et mesuré, tout est dans une note : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PROFIL-CLASSE/CADRAGE-RELU.md — tes décisions datées, ce qui existe déjà dans ton site (ligne par ligne), ce qui manque, et sept tranchages. Les six qui demandent ton mot, en une ligne chacun :
+
+368. T1 — où : une vue « la classe » à part (pas dans l'Atelier), ouverte par le clic sur la carte de classe en bas de l'emploi du temps et par « Préparer » d'une case à venir.
+
+369. T2 — d'abord : l'emploi du temps de cette classe seule, ses heures dans l'ordre sur l'année, passées (jouée, passée, sans séance et son motif) et à venir (séance, heure h/N, chapitre) — le même calcul que l'emploi du temps, recalculé à chaque heure jouée.
+
+370. T3 — une heure à venir cliquée : le déroulé prévu de cette heure pour cette classe (la trame d'aujourd'hui, ce qui glisse, sa réactivation construite), et c'est là que tu prépares en avance en posant un badge sur une diapo (« pas pour cette classe » / « pour cette classe seulement ») ; le contenu reste celui du chapitre.
+
+371. T4 et T5 — une heure passée : « Relire cette heure » (existe) et la revue du chapitre pour cette classe (la face « Le chapitre » de la Relecture) rangée dans la vue ; les stats à côté, dans un second volet (participation, couverture, temps réel / prévu, heures sautées et motifs), tout copiable par un bouton.
+
+372. T6 — le badge est une décision de la copie de la classe (comme une décision de fin d'heure), lue à l'ouverture de l'heure ; la trame du chapitre ne change pas ; rien de nouveau n'est créé au hub. Ce que tu ne commentes pas est acquis ; sur tes réponses je fais la maquette (ton fichier de production sur le faux hub, la vue écrite dedans, captures écran entier).
+
+26/10/2026 09:55
+MEMO

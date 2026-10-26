@@ -1,0 +1,43 @@
+{
+ "lance": true,
+ "R1": {
+  "tetes": [
+   "Cette heure, on a fait l'activité 1 — Analyse d'images : la routine."
+  ],
+  "ed": "<p class=\"rt rt-fin\">Cette heure, on a fait <b>l'activité 1 — Analyse d'images : la routine</b>.</p><p data-cle=\"r-emt9v3yqoecf9d\" data-t0=\"1789372200000\" data-t1=\"1789372200000\" data-titre=\"Activité 1 — Analyse d'images : la routine\"><span class=\"act-r\">Activité 1 — Analyse d'images : la routine</span> À <b>09 h 50</b>, la consigne était : « Observe, discute, fais une hypothèse sur le Romantisme.",
+  "rec": ""
+ },
+ "R2": {
+  "tetes": [
+   "Au début de l'heure, on a commencé par l'activité 1 — Analyse d'images : la routine.",
+   "Enfin, à la fin de l'heure, on a fait l'activité 2 — Tableau 1."
+  ],
+  "ed": "<p class=\"rt rt-entre2\">Au début de l'heure, on a commencé par <b>l'activité 1 — Analyse d'images : la routine</b>.</p><p data-cle=\"r-emt9v3yqoecf9d\" data-t0=\"1789371480000\" data-t1=\"1789371480000\" data-titre=\"Activité 1 — Analyse d'images : la routine\"><span class=\"act-r\">Activité 1 — Analyse d'images : la routine</span> À <b>09 h 38</b>, la consigne était : « Observe, discute, fais une hypothèse",
+  "rec": ""
+ },
+ "R5": {
+  "tetes": [
+   "Au début de l'heure, on a commencé par l'activité 1 — Analyse d'images : la routine.",
+   "Ensuite, on a fait l'activité 2 — Tableau 1.",
+   "Puis, au milieu de l'heure, on a fait l'activité 3 — Tableau 2.",
+   "Après cela, on a fait l'activité 4 — Tableau 3.",
+   "Enfin, à la fin de l'heure, on a fait l'activité 5 — Tableau 4."
+  ],
+  "ed": "<p class=\"rt rt-debut\">Au début de l'heure, on a commencé par <b>l'activité 1 — Analyse d'images : la routine</b>.</p><p data-cle=\"r-emt9v3yqoecf9d\" data-t0=\"1789369320000\" data-t1=\"1789369320000\" data-titre=\"Activité 1 — Analyse d'images : la routine\"><span class=\"act-r\">Activité 1 — Analyse d'images : la routine</span> À <b>09 h 02</b>, la consigne était : « Observe, discute, fais une hypothèse ",
+  "rec": ""
+ },
+ "R1t": {
+  "tetes": [
+   "Cette heure, on a fait l'activité 1 — Analyse d'images : la routine."
+  ],
+  "ed": "<p class=\"rt rt-fin\">Cette heure, on a fait <b>l'activité 1 — Analyse d'images : la routine</b>.</p><p data-cle=\"r-emt9v3yqoecf9d\" data-t0=\"1789372020000\" data-t1=\"1789372020000\" data-titre=\"Activité 1 — Analyse d'images : la routine\"><span class=\"act-r\">Activité 1 — Analyse d'images : la routine</span> À <b>09 h 47</b>, la consigne était : « Observe, discute, fais une hypothèse sur le Romantisme.",
+  "rec": ""
+ },
+ "R1l": {
+  "tetes": [
+   "Cette heure, on a fait l'activité 1 — Analyse d'images : la routine."
+  ],
+  "ed": "<p class=\"rt rt-milieu\">Cette heure, on a fait <b>l'activité 1 — Analyse d'images : la routine</b>.</p><p data-cle=\"r-emt9v3yqoecf9d\" data-t0=\"1789371120000\" data-t1=\"1789371120000\" data-titre=\"Activité 1 — Analyse d'images : la routine\"><span class=\"act-r\">Activité 1 — Analyse d'images : la routine</span> À <b>09 h 32</b>, la consigne était : « Observe, discute, fais une hypothèse sur le Romantis",
+  "rec": ""
+ }
+}

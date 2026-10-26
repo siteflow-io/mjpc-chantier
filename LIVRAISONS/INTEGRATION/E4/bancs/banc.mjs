@@ -60,7 +60,12 @@ async function ouvrir(o = {}) {
 const p = (pg, ms) => pg.waitForTimeout(ms);
 const cap = async (pg, nom) => { try { await pg.screenshot({ path: path.join(CAP, nom + '.png'), fullPage: false }); } catch (e) {} };
 const garde = async pg => { for (let i = 0; i < 3; i++) { const g = await pg.$('#garde.on, #garde-devant.on'); if (!g) return; await pg.keyboard.press('Escape'); await p(pg, 150); } };
-async function lancer(pg) { await pg.click('[data-lancer="1"]'); await p(pg, 700); }
+/* §12.28 (3a) : l'Atelier ne lance plus — sur le site, l'heure se lance par la case de l'emploi du temps (« ▶ Ouvrir le pilotage et lancer », le geste de lancerParLaCase d'E2) ; la maquette garde son « Lancer » */
+async function lancer(pg) { if (!SITE) { await pg.click('[data-lancer="1"]').catch(() => {}); await p(pg, 700); return true; }
+  await pg.evaluate(() => { if (typeof atelierFermer === 'function') try { atelierFermer(); } catch (e) {} }); await p(pg, 400);
+  if (!(await pg.evaluate(() => typeof edtOuvrir === 'function'))) return false; await pg.click('#tprof-btn').catch(() => {}); await p(pg, 600); await pg.evaluate(() => edtOuvrir()); await p(pg, 1500);
+  const c = await pg.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-clic')).find(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); if (!c) return false; c.click(); return true; }); await p(pg, 800);
+  const ok = c && await clicTexte(pg, '#edt-modale button', 'Ouvrir le pilotage et lancer'); await p(pg, 3500); return !!ok && await pg.evaluate(() => !!(window.S && S.lancee)); }
 async function devoiler(pg, n) { for (let i = 0; i < n; i++) { await pg.click('#bdev'); await p(pg, 90); } }
 async function parole(pg, ini) { await pg.keyboard.press('F2'); await p(pg, 100); await pg.keyboard.type(ini); await p(pg, 150); await pg.keyboard.press('1'); await p(pg, 80); await pg.keyboard.press('Enter'); await p(pg, 250); }
 async function jusquA(pg, cond, max = 90) { let n = 0; while (!(await pg.evaluate(cond)) && n < max) { if (await pg.$('.garde.on')) break; /* une garde (le cahier, un saut) : on ne force rien */ await pg.click('#bdev', { timeout: 3000 }).catch(() => {}); await p(pg, 60); n++; } return await pg.evaluate(cond); }
@@ -243,7 +248,7 @@ if (SITE) { const o = await ouvrir({ frais: true, heure1: true }); const pg = o.
     HUB_PERSISTANT = await pg.evaluate(() => window.__HUB); }
   await o.ctx.close();
   if (HUB_PERSISTANT) { for (const W of [1280, 1366]) { const o2 = await ouvrir({ largeur: W, hauteur: W === 1280 ? 800 : 768 }); const pg2 = o2.pg;
-    await pg2.click('[data-lancer="1"]').catch(() => {}); await p(pg2, 700); const atteint = await jusquA(pg2, () => ecran().act === 'Tableau 1'); await garde(pg2);
+    await lancer(pg2); const atteint = await jusquA(pg2, () => ecran().act === 'Tableau 1'); await garde(pg2);
     const vus = async () => pg2.evaluate(() => ({ dev: document.querySelectorAll('#mur .img-sup .mk:not(.pas)').length, tout: document.querySelectorAll('#mur .img-sup .mk').length }));
     const v0 = await vus(); let tab = null; if (W === 1366) { try { [tab] = await Promise.all([o2.ctx.waitForEvent('page', { timeout: 8000 }), pg2.click('#bvideoproj')]); await tab.waitForLoadState(); await p(pg2, 1500); } catch (e) { tab = null; } }
     const etapes = [v0]; const tabs = []; for (let i = 0; i < 3; i++) { await pg2.click('#bdev', { timeout: 4000 }).catch(e => { o2.errs.push('banc : ▶ inatteignable (' + String(e.message).split('\n')[0].slice(0, 120) + ')'); }); await p(pg2, 600); etapes.push(await vus()); if (tab) tabs.push(await tab.evaluate(() => document.querySelectorAll('#mur2 .img-sup .mk').length).catch(() => -1)); }
@@ -293,7 +298,7 @@ if (SITE) { const o = await ouvrir({ frais: true, heure1: true }); const pg = o.
   const hub = await pg.evaluate(() => { const e = window.__HUB.site['3e'].chapitres[0].seances[0].deroule.ecrans[0]; const b = e.blocs.find(x => x.t === 'fiche' && /registre lyrique/.test(x.titre || '')); return b ? b.rappel : null; });
   verif('RC2', hub && hub.motif === 'reviser', 'enregistré dans la trame au hub (b.rappel = {motif, libre})', JSON.stringify(hub));
   HUB_PERSISTANT = await pg.evaluate(() => window.__HUB); await o.ctx.close();
-  const o2 = await ouvrir(); const pg2 = o2.pg; await pg2.click('[data-lancer="1"]').catch(() => {}); await p(pg2, 700); await devoiler(pg2, 3);
+  const o2 = await ouvrir(); const pg2 = o2.pg; await lancer(pg2); await devoiler(pg2, 3);
   const tab = await pg2.evaluate(() => { const t = document.querySelector('#mur .dr-rap'); return t ? t.textContent : ''; });
   verif('RC2', /↻ Rappel — pour réviser avant l.évaluation/.test(tab), 'en classe, la classe voit « ↻ Rappel — pour réviser avant l\'évaluation » sur la fiche', tab);
   await relecture(pg2); const t = await texteRel(pg2); verif('RC2', /on a repris la fiche Le registre lyrique — pour réviser avant l.évaluation/.test(t), 'le récit : « on a repris la fiche Le registre lyrique — pour réviser avant l\'évaluation »', t.slice(0, 900));
@@ -536,11 +541,39 @@ if (SITE) { const o = await ouvrir({ frais: true, heure1: true }); const pg = o.
   const ae = await pg.evaluate(() => ({ t: ecran().aEcrire, hub: window.__HUB.site['3e'].chapitres[0].seances[0].deroule.ecrans[0].aEcrire }));
   verif('RC5', Array.isArray(ae.t) && ae.t.length === 1 && /\.0$/.test(ae.t[0]) && JSON.stringify(ae.hub) === JSON.stringify(ae.t), '« Marquer « à écrire » » : gardé dans la trame par identité (<bid>.<étape>) et au hub', JSON.stringify(ae));
   HUB_PERSISTANT = await pg.evaluate(() => window.__HUB); await o.ctx.close();
-  const o2 = await ouvrir(); const pg2 = o2.pg; await pg2.click('[data-lancer="1"]').catch(() => {}); await p(pg2, 700); await devoiler(pg2, 1);
+  const o2 = await ouvrir(); const pg2 = o2.pg; await lancer(pg2); await devoiler(pg2, 1);
   const cl = await pg2.evaluate(() => ({ li: !!document.querySelector('#mur li[data-p="0.0"].aecrire'), ecr: etatDiapo().ecr }));
   verif('RC5', cl.li, 'en classe, l\'étape préparée « à écrire » l\'est : ✍🏻 (et.ecr)', JSON.stringify(cl));
   verif('RC5', o.errs.length + o2.errs.length === 0, 'zéro erreur JS', JSON.stringify(o.errs.concat(o2.errs))); await o2.ctx.close(); HUB_PERSISTANT = null; }
 else verif('RC5', null, 'R5 la sélection multiple', 'se mesure sur le site');
+
+// ═════ RC22 · §12.28 (4), dette 13 · 42 : le récit suit l'ordre de ce qui a été joué — jamais « Enfin » en tête ═════
+/* l'heure lancée par la case de l'emploi du temps ; le journal de l'heure remplacé, le temps de la mesure, par des passages datés dans le créneau (une diapo par activité),
+   puis rendu tel quel ; le récit lu par troisTemps (la face « Le récit ») et par la copie École Directe (recitPourED0) */
+if (SITE) { const o = await ouvrir({ heure1: true }); const pg = o.pg; const lance = await lancer(pg);
+  const jouer = (mins, rendre, lanceA) => pg.evaluate(({ mins, rendre, lanceA }) => { const h = S.heure; const base = dr_recitHeure(h).base; const E = seance().ecrans; const vus = new Set(); const dis = [];
+    E.forEach((e, i) => { if (!e || e.role === 'fin' || e.role === 'reactivation' || e.role === 'bilan') return; const k = e.actId || ('r-' + e.eid); if (vus.has(k)) return; /* une diapo sans activité compte comme une (dr_recitAct, cadrage 2 · 1.1 bis) */ vus.add(k); dis.push(i); });
+    if (dis.length < mins.length) return { manque: dis.length };
+    const J0 = J.slice(); const lan = J0.find(x => x.type === 'lancement' && x.h === h) || { type: 'lancement', h, t: base };
+    J.length = 0; J.push(Object.assign({}, lan, { t: base + (lanceA || 0) * 60000 })); /* lanceA : l'heure lancée tard (en minutes après le début du créneau) */ mins.forEach((m, k) => J.push({ type: 'diapo', h, di: dis[k], eid: E[dis[k]].eid, t: base + m * 60000 }));
+    let tetes = [], ed = '', rec = '';
+    try { const d = document.createElement('div'); d.innerHTML = troisTemps(recitHtml0(base + 55 * 60000, h), h, base + 55 * 60000); tetes = Array.from(d.querySelectorAll('.recit p.rt:not(.verdict)')).map(p => p.textContent.replace(/\u00a0/g, ' ').trim());
+      ed = String((recitPourED0(h) || '')).replace(/\u00a0/g, ' '); if (rendre && typeof relecture === 'function') { relecture(); rec = ((document.querySelector('#rel') || {}).innerText || '').replace(/\u00a0/g, ' '); } } catch (e) { tetes = ['ERREUR ' + e.message]; }
+    if (!rendre) { J.length = 0; J0.forEach(x => J.push(x)); } return { tetes, ed: ed.slice(0, 400), rec: rec.slice(0, 600) }; }, { mins, rendre: !!rendre, lanceA: lanceA || 0 });
+  const R1 = await jouer([50]), R2 = await jouer([38, 50]), R5 = await jouer([2, 15, 30, 40, 50]), R1t = await jouer([47]), R1l = await jouer([32], false, 30);   /* contrôle n°62 (E3, retour 51) : une seule activité commencée tard (09:44 dans 08:57-09:52), l'heure lancée à l'heure ; une seule activité, l'heure lancée tard */
+  const D = ['Au début de l\'heure, on a commencé par', 'Ensuite, on a fait', 'Puis, au milieu de l\'heure, on a fait', 'Après cela, on a fait', 'Enfin, à la fin de l\'heure, on a fait'];
+  try { fs.writeFileSync(path.join(OUT, 'RC22-recits.json'), JSON.stringify({ lance, R1, R2, R5, R1t, R1l }, null, 1)); } catch (e) {}
+  verif('RC22', lance ? R1.manque == null : null, 'l\'heure lancée par la case de l\'emploi du temps (l\'Atelier ne lance plus)', JSON.stringify({ lance, R1 }));
+  verif('RC22', R1.manque == null ? R1.tetes.length === 1 && R1.tetes[0].startsWith('Cette heure, on a fait ') && !/Enfin/.test(R1.tetes[0]) : null, 'une activité jouée en fin de créneau → « Cette heure, on a fait … »', JSON.stringify(R1.tetes));
+  verif('RC22', R1.manque == null ? /Cette heure, on a fait/.test(R1.ed) && !/^\s*Enfin/.test(R1.ed) : null, 'la copie École Directe dit de même « Cette heure, on a fait … »', R1.ed);
+  verif('RC22', R1t.manque == null ? R1t.tetes.length === 1 && R1t.tetes[0].startsWith('Cette heure, on a fait ') : null, 'une seule activité commencée tard (47 min après le début du créneau), l\'heure lancée à l\'heure → « Cette heure, on a fait … » (contrôle n°62)', JSON.stringify(R1t.tetes));
+  verif('RC22', R1l.manque == null ? R1l.tetes.length === 1 && R1l.tetes[0].startsWith('Cette heure, on a fait ') : null, 'une seule activité, l\'heure lancée tard (30 min après le début du créneau) → « Cette heure, on a fait … » (contrôle n°62)', JSON.stringify(R1l.tetes));
+  verif('RC22', R2.manque == null ? R2.tetes.length === 2 && R2.tetes[0].startsWith(D[0] + ' ') && R2.tetes[1].startsWith(D[4] + ' ') : null, 'deux activités, « après cela » et « fin » → « Au début de l\'heure, on a commencé par … » puis « Enfin, à la fin de l\'heure, on a fait … »', JSON.stringify(R2.tetes));
+  verif('RC22', R5.manque == null ? R5.tetes.length === 5 && R5.tetes.every((t, i) => t.startsWith(D[i] + ' ')) : null, 'le récit de cinq tranches, inchangé (début · ensuite · milieu · après cela · enfin)', JSON.stringify(R5.tetes));
+  const RV = await jouer([50], true); await relecture(pg); await face(pg, 'Le récit').catch(() => {}); /* l'onglet Relecture (le geste), puis la face « Le récit » */ await p(pg, 600); await cap(pg, 'E4-RC22-une-activite-fin');
+  verif('RC22', await pg.evaluate(() => { const r = document.querySelector('#rel'); return !!r && r.offsetParent !== null && /Cette heure, on a fait/.test(r.innerText.replace(/\u00a0/g, ' ')) && !/Enfin, à la fin/.test(r.innerText.replace(/\u00a0/g, ' ')); }), 'la face « Le récit » de la Relecture l\'affiche (capture E4-RC22-une-activite-fin)', (await texteRel(pg)).slice(0, 300));
+  verif('RC22', o.errs.length === 0 && o.boites.length === 0, 'zéro erreur JS, aucune boîte', JSON.stringify(o.errs.concat(o.boites))); await o.ctx.close(); }
+else verif('RC22', null, '13 · 42 le récit par la place', 'se mesure sur le site');
 
 await nav.close();
 dire(`— fin : ${nbOk} ok · ${nbEchec} échec(s) · ${nbAbsent} absent(s) — ${nbEchec ? 'ROUGE' : 'VERT'}`);

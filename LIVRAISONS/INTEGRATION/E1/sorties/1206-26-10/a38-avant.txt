@@ -1,0 +1,17 @@
+banc E1 · 2026-10-26 10:58 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant.html · md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+A38 — §12.27 (2), dette 12 · 88 : ↻ et ✕ de chaque élève dans la carte, à droite, sur la ligne du nom — avec ou sans ◆, aux quatre tailles
+  ÉCHEC  A38 · 1366 × 768 : 29 lignes d'élève (1 avec ◆) — ↻ ✕ dans la carte, à droite (≤ 16 px du bord), sur la ligne du nom, après lui — AUDEBERT Elise {"R":[394,1202,835,903],"n":[845,863],"b":[[374,401,874],[409,435,874]]} ; AUGEREAU Gatien {"R":[394,1202,909,977],"n":[919,937],"b":[[374,401,948],[409,435,948]]}
+  ÉCHEC  A38 · 1366 × 768 : la grille de la ligne a une colonne par enfant (5) — 4
+  ok     A38 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ÉCHEC  A38 · 1536 × 864 : 29 lignes d'élève (1 avec ◆) — ↻ ✕ dans la carte, à droite (≤ 16 px du bord), sur la ligne du nom, après lui — AUDEBERT Elise {"R":[479,1287,835,903],"n":[845,863],"b":[[459,486,874],[494,520,874]]} ; AUGEREAU Gatien {"R":[479,1287,909,977],"n":[919,937],"b":[[459,486,948],[494,520,948]]}
+  ÉCHEC  A38 · 1536 × 864 : la grille de la ligne a une colonne par enfant (5) — 4
+  ok     A38 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ÉCHEC  A38 · 1707 × 743 : 29 lignes d'élève (1 avec ◆) — ↻ ✕ dans la carte, à droite (≤ 16 px du bord), sur la ligne du nom, après lui — AUDEBERT Elise {"R":[565,1373,835,903],"n":[845,863],"b":[[545,572,874],[580,606,874]]} ; AUGEREAU Gatien {"R":[565,1373,909,977],"n":[919,937],"b":[[545,572,948],[580,606,948]]}
+  ÉCHEC  A38 · 1707 × 743 : la grille de la ligne a une colonne par enfant (5) — 4
+  ok     A38 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ÉCHEC  A38 · 1920 × 1080 : 29 lignes d'élève (1 avec ◆) — ↻ ✕ dans la carte, à droite (≤ 16 px du bord), sur la ligne du nom, après lui — AUDEBERT Elise {"R":[671,1479,835,903],"n":[845,863],"b":[[651,678,874],[686,712,874]]} ; AUGEREAU Gatien {"R":[671,1479,909,977],"n":[919,937],"b":[[651,678,948],[686,712,948]]}
+  ÉCHEC  A38 · 1920 × 1080 : la grille de la ligne a une colonne par enfant (5) — 4
+  ok     A38 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+12 vérifications, 8 échec(s) · 20 s

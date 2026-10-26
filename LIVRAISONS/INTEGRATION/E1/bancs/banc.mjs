@@ -806,6 +806,7 @@ await B('A36', '§12.26, ma part : le geste d\'écriture du pilote sur la réact
 const TAILLES_1227 = [[1366, 768], [1536, 864], [1707, 743], [1920, 1080]];
 async function ouvrirPanneau(w, h, { hub = null } = {}) {   /* le site, le panneau prof ouvert par son bouton (comme E.ouvrir, sans aller à l'Atelier) */
   const ctx = await b.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
+  try { await ctx.grantPermissions(['clipboard-read', 'clipboard-write']); } catch (e) {}   /* le presse-papiers de Paul accepte la copie au clic ; sans permission, Chromium sans tête la refuse */
   const pg = await ctx.newPage(); const errs = [], boites = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
   await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, hub || E.store());
   await pg.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
@@ -827,6 +828,17 @@ await B('A37', '§12.27 (1), dette 12 · 87 : le panneau prof bord à bord, à t
     const hd = await pg.evaluate(() => { const hh = document.querySelector('.tprof-header').getBoundingClientRect(), sb = document.querySelector('.tprof-sidebar').getBoundingClientRect(); return { haut: Math.round(hh.top), menu: Math.round(sb.width), oy: getComputedStyle(document.getElementById('tprof-content')).overflowY }; });
     E.verif('A37', hd.haut <= 1 && hd.menu === 230 && hd.oy === 'auto', w + ' × ' + h + ' : l\'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui', JSON.stringify(hd));
     E.verif('A37', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
+
+await B('A38', '§12.27 (2), dette 12 · 88 : ↻ et ✕ de chaque élève dans la carte, à droite, sur la ligne du nom — avec ou sans ◆, aux quatre tailles', async () => {
+  for (const [w, h] of TAILLES_1227) { const o = await ouvrirPanneau(w, h); const pg = o.pg;
+    await pg.evaluate(() => showProfSection('eleves')); await pg.waitForTimeout(1500);
+    await pg.evaluate(() => { const f = document.querySelector('.el-row .elf-flag'); if (f) f.textContent = '◆'; });   /* la première ligne avec un ◆ (comme elfFleches le pose), les autres sans */
+    const r = await pg.evaluate(() => Array.from(document.querySelectorAll('.el-row')).filter(x => x.offsetParent !== null).map(row => { const R = row.getBoundingClientRect(), n = row.querySelector('.el-name').getBoundingClientRect(), a = row.querySelector('.el-acts'); const bs = a ? Array.from(a.querySelectorAll('button')).map(x => x.getBoundingClientRect()) : []; const ok = bs.length === 2 && bs.every(x => x.left >= R.left - 0.5 && x.right <= R.right + 0.5 && x.top >= R.top - 0.5 && x.bottom <= R.bottom + 0.5) && bs.every(x => Math.abs((x.top + x.bottom) / 2 - (n.top + n.bottom) / 2) <= 6) && R.right - bs[1].right <= 16 && bs[0].left > n.right; return { ok, flag: !!(row.querySelector('.elf-flag') || {}).textContent, enfants: row.children.length, nom: row.querySelector('.el-name').textContent.slice(0, 18), d: ok ? '' : JSON.stringify({ R: [R.left, R.right, R.top, R.bottom].map(Math.round), n: [n.top, n.bottom].map(Math.round), b: bs.map(x => [x.left, x.right, x.top].map(Math.round)) }) }; }));
+    const ko = r.filter(x => !x.ok); const avec = r.filter(x => x.flag).length;
+    E.verif('A38', r.length >= 20 && ko.length === 0 && avec >= 1 && r.length - avec >= 1 && r.every(x => x.enfants === 5), w + ' × ' + h + ' : ' + r.length + ' lignes d\'élève (' + avec + ' avec ◆) — ↻ ✕ dans la carte, à droite (≤ 16 px du bord), sur la ligne du nom, après lui', ko.slice(0, 2).map(x => x.nom + ' ' + x.d).join(' ; ') || undefined);
+    const cs = await pg.evaluate(() => { const row = document.querySelector('.el-row'); return getComputedStyle(row).gridTemplateColumns.split(' ').length; });
+    E.verif('A38', cs === 5, w + ' × ' + h + ' : la grille de la ligne a une colonne par enfant (5)', String(cs));
+    E.verif('A38', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

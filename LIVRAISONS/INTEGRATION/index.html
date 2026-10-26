@@ -58,7 +58,7 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 #page-home { z-index: 1; }
 .home-inner { position: relative; z-index: 1; max-width: none; margin: 0 auto; padding: 0 32px 80px; }   /* E1 (§12.27-6) : l'accueil et la page du niveau à toute la largeur, les bords de 32 px gardés (avant : max-width 1100px) ; .hero garde sa mesure */
 .home-header { padding: 32px 0 0; display: flex; align-items: flex-start; justify-content: space-between; }
-.admin-mode .home-header { padding-right: 150px; }   /* E1 (§12.27-6 bis, trouvé par E3 au retour 43) : .home-inner à toute la largeur poussait la pastille « M. Meney (prof) · PROF » sous les boutons fixes « 🛠 Panneau prof » / « 📚 Mes applications » (right 16 px, 150 px de large) — l'en-tête leur laisse leur place */
+.admin-mode .home-header { padding-right: 50px; }   /* (repris au contrôle n°59 : .home-inner réserve déjà 124 px à droite pour le badge de version — 124 + 50 laissent la place aux boutons fixes, 166 px du bord) */   /* E1 (§12.27-6 bis, trouvé par E3 au retour 43) : .home-inner à toute la largeur poussait la pastille « M. Meney (prof) · PROF » sous les boutons fixes « 🛠 Panneau prof » / « 📚 Mes applications » (right 16 px, 150 px de large) — l'en-tête leur laisse leur place */
 @media (max-width:480px){ .admin-mode .home-header { padding-right: 40px; } }
 .logo { font-weight: 800; font-size: clamp(1.67rem, 2.36vw, 2.23rem); letter-spacing: -0.03em; line-height: 1; color: #fff; text-shadow: 0 0 40px rgba(255,200,130,0.2), 0 0 80px rgba(255,180,100,0.08); }
 .logo span { color: #ffb86c; text-shadow: 0 0 25px rgba(255,184,108,0.5), 0 0 60px rgba(255,184,108,0.2); }
@@ -131,7 +131,8 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 .search-input { width: 100%; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 13px 16px 13px 46px; font-family: 'EB Garamond', serif; font-size: 1.06rem; color: #fff; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
 .search-input:focus { border-color: var(--level-accent); box-shadow: 0 0 20px var(--level-glow); }
 .search-input::placeholder { color: rgba(255,255,255,0.25); }
-.level-content { max-width: none; margin: 0 auto; padding: 36px 32px 80px; }   /* E1 (§12.27-14, F4 d'E3) : la page du niveau (l'arborescence, « Je publie pour », les onglets) à toute la largeur, ses 32 px de bord gardés (avant : max-width 900px) */
+.level-content { max-width: none; margin: 0 auto; padding: 36px 32px 80px; }
+@media (min-width:481px){ .home-inner, .level-content { padding-right: 124px; } }   /* E1 (§12.27-14, contrôle n°59 — E3 retour 47) : le badge de version (#proto-badge, fixe en bas à droite : 16 px du bord, ~92 px de large) couvrait ce qui longe le bord droit de la page élargie (« 🗑 Tout effacer (Firebase) », 📝 ✕ d'une séance) — la page lui laisse sa colonne (16 + 92 + 16 px) ; le bord gauche garde ses 32 px */   /* E1 (§12.27-14, F4 d'E3) : la page du niveau (l'arborescence, « Je publie pour », les onglets) à toute la largeur, ses 32 px de bord gardés (avant : max-width 900px) */
 .admin-mode .level-header { padding-right: 182px; }   /* E1 (§12.27-14) : le badge du niveau (« 3ème », à droite de l'en-tête collant) passait sous « 🛠 Panneau prof » (fixe, 16 px du bord, 150 px de large) — déjà avant ce chantier ; l'en-tête leur laisse leur place, pour le prof seulement */
 @media (max-width:480px){ .admin-mode .level-header { padding-right: 64px; } }
 .tabs { display: flex; flex-wrap: wrap; gap: 4px; background: rgba(255,255,255,0.06); border-radius: 12px; padding: 4px; margin-bottom: 24px; max-width: 100%; }

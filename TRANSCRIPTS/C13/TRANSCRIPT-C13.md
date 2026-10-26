@@ -3395,3 +3395,18 @@ MEMO
 
 26/10/2026 10:25
 MEMO
+
+## Tour 181 — 26/10/2026 10:29 — Paul (10:26) : « je ne peux pas la jouer à cause du code d'entrée. »
+
+**Paul (mot pour mot).** « je ne peux pas la jouer à cause du code d'entrée. »
+
+**Fait.** Mesuré : l'entrée du site (`doLogin`, l. 4810) ouvre la session prof par la clé du coffre ou l'empreinte de l'appareil (`secuValiderSecret`, `SECU_CH_PROF`), toutes deux absentes d'un fichier ouvert hors de son adresse habituelle (localStorage vide). Ajouté à la maquette seule un bloc `maquette-entree.js` (jamais à promouvoir) : à l'ouverture, `loginAsProf()` (l'entrée quotidienne de Paul, l. 4876) puis l'emploi du temps par `edtArriveeProf` ; le voile des fiches retiré. Essai sur le faux hub : prof vrai, admin vrai, EDT ouvert, carte → mode `classe`, 0 erreur JS (`$S/maquette-pc/entree/E1-ouverture.png`, `E2-la-classe.png`). Nouveau fichier `maquette-8.75.0-3-la-classe.html` (2 375 416 o, md5 `56f03254cf499a9786abf8492fba68d5`) envoyé ; LISEZ-MOI mis à jour.
+
+**Réponse (mot pour mot).**
+
+378. Mesuré : ton site ouvre la porte prof par la clé du coffre ou l'empreinte de ton appareil, et le fichier ouvert hors de son adresse habituelle n'a ni l'une ni l'autre. Nouveau fichier dans la conversation, le même plus une entrée propre à la maquette (jamais à promouvoir) : à l'ouverture tu es en prof et l'emploi du temps paraît, comme à ton arrivée ; la carte de classe en bas ouvre « la classe », une case à venir → « ✎ Préparer » aussi. Essayé sur le faux hub : prof, emploi du temps, la vue, zéro erreur.
+
+379. C'est ton site sur ton vrai hub : à l'ouverture il écrit ce qu'il écrit à chacune de tes arrivées (présence, manifeste, photo du prévu), rien d'autre ; et un badge cliqué écrit la clé `decisions` dans la copie de la classe (377).
+
+26/10/2026 10:29
+MEMO

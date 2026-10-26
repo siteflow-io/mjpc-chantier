@@ -10426,6 +10426,7 @@ function atelierOuvrir(){
   else pret();
 }
 function atelierFermer(sansPanneau,puis){
+  if(atClasseTient()){ if(typeof atInfo==='function')atInfo('L’heure est en cours : cet écran ne se quitte pas. Il se ferme par « Clore l’heure » ; pour aller ailleurs dans le site, « ↗ Le site dans un nouvel onglet ».'); return; }   /* E1 (§12.28-3b) */
   atEnregistrerMaintenant(function(){
     var ec=document.getElementById('atelier-ecran');if(ec)ec.classList.remove('at-actif');
     document.body.classList.remove('at-corps-fige');
@@ -14894,9 +14895,19 @@ function atVuesBarreHtml(){
     ['pilotage','Pilotage','L’écran de classe : la diapo, le tableau, la participation, le chrono'],
     ['relecture','Relecture','Le récit de l’heure, ce qui s’est passé, le chapitre — et le papier du cahier (R)']];
   var ids={atelier:'ong-atelier',pilotage:'ong-pilotage',relecture:'ong-relecture'};
+  if(atClasseEnCours()){   /* E1 (§12.28-3a, 13 · 41) : « la classe en cours » — le pilote et la Relecture de cette classe, rien d'autre */
+    defs=[['pilotage','Pilotage','L’heure avec la classe : la diapo, le tableau, la participation, le chrono'],['relecture','Relecture','Le récit de l’heure de cette classe, ce qui s’est passé — et le papier du cahier (R)']];
+    return '<div class="at-vues-barre at-vues-barre-classe">'
+      +'<button class="at-onglet" data-vue="atelier" id="ong-atelier" data-atelier="1" hidden tabindex="-1" aria-hidden="true"></button>'   /* le déroulé lit #ong-atelier : présent, jamais montré ni cliquable */
+      +defs.map(function(d){
+      return '<button class="at-onglet'+(ATVUES.vue===d[0]?' at-onglet-actif':'')+'" data-vue="'+d[0]+'" id="'+ids[d[0]]+'" title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue,true)">'+d[1]+'</button>';
+    }).join('')+'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de l’heure au hub : il se fait seul, moins d’une seconde après chaque geste"></span>'
+      +'<button class="at-btn at-classe-site" onclick="atClasseSiteAilleurs()" title="Ouvre l’accueil du site dans un nouvel onglet, pour aller ailleurs sans quitter l’heure : cet écran reste ouvert ici, l’heure continue.">↗ Le site dans un nouvel onglet</button>'
+      +'<button class="at-btn at-classe-fermer" id="at-classe-fermer" onclick="atClasseFermer()" title="Ferme l’écran de la classe et ramène à l’emploi du temps. Possible avant le lancement et après « Clore l’heure » ; pendant l’heure, l’écran ne se quitte pas.">✕ Fermer</button></div>';
+  }
   return '<div class="at-vues-barre">'+defs.map(function(d){
     return '<button class="at-onglet'+(ATVUES.vue===d[0]?' at-onglet-actif':'')+'" data-vue="'+d[0]+'"'+(ids[d[0]]?' id="'+ids[d[0]]+'"':'')+(d[0]==='atelier'?' data-atelier="1"':'')
-      +' title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue)">'+d[1]+'</button>';
+      +' title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue,true)">'+d[1]+'</button>';
   }).join('')+'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de la trame au hub : il se fait seul, moins d’une seconde après chaque modification"></span>'
     +'<button class="at-btn at-fermer-onglets" onclick="atelierFermer()" title="Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd.">✕ Fermer l’atelier</button></div>';   /* E1 (§12.27-4) : « Fermer l’atelier » sur la rangée des onglets, à droite — la bande de 60 px au-dessus tombe quand la rangée existe */
 }
@@ -14928,6 +14939,7 @@ function atVuesMonter(){
 
 function atVuesAller(v){
   if(v==='deroule')v='atelier'; if(v==='papier')v='relecture';   /* E1 : les vues d'avant la 96 */
+  if(atClasseEnCours()&&v!=='pilotage'&&v!=='relecture')return;   /* E1 (§12.28-3a) : l'écran de la classe n'a ni Structure ni Atelier */
   ATVUES.vue=v; atVuesRetenir();
   if(v==='structure'){ if(typeof dr_parquer==='function')dr_parquer(); atEditerChapitreRendre(); return; }   /* E1 : lisait DR.dr_fermer() (le cadre) */
   if(typeof dr_actif==='function'&&dr_actif()&&document.querySelector('.at-vues-dr')){ atVuesMarquer(v); dr_onglet(v); return; }   /* E1 : déjà monté — on change d'onglet, rien ne se redessine */
@@ -14943,7 +14955,7 @@ function atVuesPoser(v){
   if(ATVUES.snum===null||ATVUES.snum===undefined) ATVUES.snum=(typeof atArbrePremiereSeance==='function')?atArbrePremiereSeance():'0';
   if(typeof dr_parquer==='function') dr_parquer();   /* la zone sort avant que le site ne réécrive la sienne */
   var h=atVuesBarreHtml()
-    +'<div class="at-vues-corps">'+atSommaireNatifHtml()
+    +'<div class="at-vues-corps">'+(atClasseEnCours()?'':atSommaireNatifHtml())   /* E1 (§12.28-3a) : en classe, ni « Mes chapitres » ni les autres séances — le volet de la séance revient dans la zone */
     +'<div class="at-vues-zone at-vues-zone-dr" id="at-vues-zone"></div></div>';
   z.innerHTML='<div class="at-vues-cadre at-vues-dr">'+h+'</div>';
   if(typeof dr_monter==='function'){
@@ -14954,6 +14966,60 @@ function atVuesPoser(v){
 }
 
 
+/* ═══ E1 (§12.28-3a/3b, dette 13 · 41) — L'ÉCRAN « LA CLASSE EN COURS » (P1, validé par Paul le 26/10 11:29) ═══
+   Paul, 26/10 11:20 : « je ne dois pas pouvoir quitter le pilotage. Si j'ai besoin d'aller autre part dans le site, ça doit s'ouvrir dans un
+   nouvel onglet. » — L'heure d'une classe se joue dans un écran à elle : la zone du déroulé montée dans #atelier-ecran en MODE CLASSE
+   (html.dr-en-classe) : Pilotage · Relecture de cette classe, « ↗ Le site dans un nouvel onglet », « ✕ Fermer » (avant le lancement et après
+   « Clore » seulement) ; ni Structure, ni Atelier, ni « Mes chapitres ». Tant que l'heure est lancée et pas close, rien ne la quitte :
+   atelierFermer refuse, le retour du navigateur reste sur place.
+   L'ENTRÉE : dr_ouvrirClasse(niveau, chcle, snum, apres) — E2 l'appelle depuis edtLancer, dr_edtReprendre et la reprise, à la place de
+   atelierOuvrir / atEditerChapitre / ATVUES.snum / atVuesAller('pilotage') ; apres(manque) quand le pilote est monté (manque : null si tout est là). */
+function atClasseEnCours(){ return !!(typeof DR_MEM!=='undefined'&&DR_MEM&&DR_MEM.enClasse); }
+function atClasseTient(){ try{ return atClasseEnCours()&&typeof S!=='undefined'&&!!S.lancee&&!S.close&&!S.repetition; }catch(e){ return false; } }
+function atClasseMarquer(){   /* l'état de l'écran, sur la racine (les règles de pont-css le lisent) : appelé au rendu du déroulé et à la seconde */
+  var r=document.documentElement; r.classList.toggle('dr-en-classe',atClasseEnCours()); r.classList.toggle('dr-heure-court',atClasseTient());
+}
+function dr_ouvrirClasse(niveau,chcle,snum,apres){
+  if(typeof DR_MEM!=='undefined')DR_MEM.enClasse=true;
+  atClasseMarquer();
+  var ec=document.getElementById('atelier-ecran');
+  if(typeof closeProfPanel==='function')closeProfPanel();
+  if(typeof edtFermer==='function'){ try{ edtFermer(); }catch(e){} }
+  if(ec)ec.classList.add('at-actif'); document.body.classList.add('at-corps-fige');
+  AT.doc=null; AT.docId=null;
+  try{ if(!history.state||!history.state.drClasse)history.pushState({drClasse:1},''); }catch(e){}   /* une entrée d'historique : le retour du navigateur revient sur elle, pas hors de l'écran */
+  var monter=function(){
+    try{
+      ATVUES.vue='pilotage'; ATVUES.snum=String(snum);
+      atEditerChapitre(niveau,String(chcle));
+      ATVUES.snum=String(snum);
+      atVuesAller('pilotage');
+    }catch(e){ if(typeof atInfo==='function')atInfo('L’écran de la classe ne s’ouvre pas : '+e.message); if(apres)apres('écran'); return; }
+    if(typeof edtQuandPilotagePret==='function')edtQuandPilotagePret(function(m){ atClasseMarquer(); if(apres)apres(m); });
+    else if(apres)apres(null);
+  };
+  var classes=function(){ if(typeof atChargerChapitres==='function')atChargerChapitres(niveau,function(){ monter(); }); else monter(); };
+  if(typeof loadClasses==='function')loadClasses(function(){ if(typeof loadCodes==='function')loadCodes(classes); else classes(); });
+  else classes();
+}
+function atClasseFermer(){   /* « ✕ Fermer » : avant le lancement et après « Clore » — l'emploi du temps */
+  if(atClasseTient()){ if(typeof atInfo==='function')atInfo('L’heure est en cours : elle se ferme par « Clore l’heure ».'); return; }
+  atEnregistrerMaintenant(function(){
+    if(typeof DR_MEM!=='undefined')DR_MEM.enClasse=false; atClasseMarquer();
+    var ec=document.getElementById('atelier-ecran');if(ec)ec.classList.remove('at-actif');
+    document.body.classList.remove('at-corps-fige');
+    if(typeof dr_parquer==='function')dr_parquer();
+    var z=document.getElementById('at-zone'); if(z)z.innerHTML='';   /* la prochaine ouverture de l'atelier repart de sa porte */
+    if(typeof edtOuvrir==='function')edtOuvrir();
+  });
+}
+function atClasseSiteAilleurs(){   /* « ↗ Le site dans un nouvel onglet » : l'accueil du site, en session prof (sessionStorage copié par window.open), jamais cet écran */
+  var u=location.pathname; try{ window.open(u,'_blank'); }catch(e){}
+}
+window.addEventListener('popstate',function(){
+  if(atClasseTient()){ try{ history.pushState({drClasse:1},''); }catch(e){} if(typeof atInfo==='function')atInfo('L’heure est en cours : le retour ne quitte pas l’écran de la classe. Pour aller ailleurs : « ↗ Le site dans un nouvel onglet ».'); }
+});
+setInterval(function(){ try{ atClasseMarquer(); }catch(e){} },1000);
 function atSommaireNatifHtml(){
   var ec=AT.edChap||AT_FIL; if(!ec) return '<div class="at-vues-arbre" id="at-arbre"></div>';
   try{
@@ -15386,6 +15452,7 @@ body.gel :is(#dr-zone,#ses-tab,.at-som-volet) .mur{outline:2px solid var(--gel)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .rel .faces{display:flex;gap:4px;margin-bottom:14px}:is(#dr-zone,#ses-tab,.at-som-volet) .rel .faces .ong{border-color:var(--bord)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .recit{background:#fffdf8;color:#1f1a14;border-radius:8px;padding:22px 30px;font-size:1.05rem;line-height:1.6;max-width:900px}:is(#dr-zone,#ses-tab,.at-som-volet) .recit h2{margin:0 0 .2em;font-size:1.3rem;font-weight:600}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .sous{color:#6a5a48;font-size:.92rem;margin:0 0 .6em}:is(#dr-zone,#ses-tab,.at-som-volet) .recit p{margin:.55em 0}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .cadre{color:#6a5a48;font-size:.92rem}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .act-r{font-weight:600;color:#5a4a34;display:block;margin-top:.5em}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .devoirs{margin-top:1em;border-top:1px solid #e3dccd;padding-top:.6em}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .bilan{color:#5a4a34;font-style:italic}:is(#dr-zone,#ses-tab,.at-som-volet) .recit .versee{background:#fff6d6}
 #dr-zone .rel,#dr-zone .recit{max-width:none} /* E1 (§12.27-5) : la Relecture à toute la largeur de sa colonne (avant : .rel 1120px, .recit 900px) — sous #dr-zone seulement : la fenêtre du tableau (#ses-tab) garde les siennes (point 27 (10)) */
+html.dr-en-classe #dr-zone .p8-rep-pre{display:none} /* E1 (§12.28-3a) : dans l'écran de la classe, pas de « Jouer en avance » (la répétition est à l'Atelier) */
 :is(#dr-zone,#ses-tab,.at-som-volet) .pasfil{padding:10px 14px;margin:8px 0;background:var(--carte);border:1px solid var(--bord);border-left:4px solid var(--joue);border-radius:6px}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil.retour{border-left-color:var(--rouge)}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil.saut{border-left-color:var(--ambre)}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil .dr-h{color:var(--or);font-variant-numeric:tabular-nums;font-weight:600;margin-right:8px}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil .dr-d{color:var(--texte2);margin-left:8px}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil .l{margin:3px 0 0 4px;color:var(--texte2)}:is(#dr-zone,#ses-tab,.at-som-volet) .pasfil .l.gel{color:var(--gel)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .rel table{border-collapse:collapse;width:100%}:is(#dr-zone,#ses-tab,.at-som-volet) .rel td,:is(#dr-zone,#ses-tab,.at-som-volet) .rel th{padding:6px 10px 6px 0;border-top:1px solid var(--bord);vertical-align:top;text-align:left}:is(#dr-zone,#ses-tab,.at-som-volet) .rel th{color:var(--sourd);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border-top:0}:is(#dr-zone,#ses-tab,.at-som-volet) .rel tr.non td{color:var(--sourd)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .rel .puce{display:inline-block;border:1px solid var(--bord2);border-radius:14px;padding:2px 10px;margin:3px 6px 3px 0}:is(#dr-zone,#ses-tab,.at-som-volet) .rel .vide{color:var(--sourd);font-style:italic}
@@ -16785,9 +16852,9 @@ $('gc-ap-x').onclick = apercuFermer;
 dr_ecouteDoc('keydown', ev => { if (!$('gc-apercu').classList.contains('on')) return; if (ev.key === 'Escape') { apercuFermer(); ev.stopPropagation(); ev.preventDefault(); } if (ev.key === 'ArrowLeft') { $('gc-ap-prev').click(); ev.stopPropagation(); ev.preventDefault(); } if (ev.key === 'ArrowRight') { $('gc-ap-next').click(); ev.stopPropagation(); ev.preventDefault(); } }, true);
 
 function gardeCahier(faire){ const E = seance().ecrans; const o = ordreHeure(S.heure); const acts = {}; o.forEach(i => { const e = E[i]; if (e.role) return; const a = actDe(e); if (!a) return; const k = a.id; acts[k] = acts[k] || { a, diapos: [], restantes: 0, dur: 0, commencee: false }; acts[k].diapos.push(i); if (!finie(e, i)) acts[k].restantes++; else acts[k].commencee = true; acts[k].dur = dureeDe(a); }); const rest = Object.values(acts).filter(x => { const dec = decisionDe(E[x.diapos[0]]); return x.restantes > 0 && !(dec && !dec.defaut); }); /* une décision par défaut (posée par la séquence) n'est pas une décision de Paul */ const avance = E.map((e, i) => ({ e, i })).filter(x => x.e.heure > S.heure && !x.e.role && finie(x.e, x.i)); let titre, corps;
-  if (rest.length) { titre = 'Aller au cahier de textes — ce qui resterait non fait pour cette heure'; corps = rest.map(x => `<div class="gc-l cliquable" data-diapos="${x.diapos.filter(i => !finie(E[i], i)).join(',')}" title="Clique : l'aperçu des diapos restantes de cette activité"><span class="gc-n">A${x.a.num}</span><span>${dr_esc(x.a.titre || x.a.act || '')} — ${x.restantes} diapo${x.restantes > 1 ? 's' : ''} restante${x.restantes > 1 ? 's' : ''}</span><span class="gc-r">${x.dur} min prévues · ${x.commencee ? 'commencée' : 'pas commencée'}</span></div>`).join('') + `<div class="gc-s">${rest.length > 1 ? 'Ces ' + rest.length + ' activités seront à décider' : 'Cette activité sera à décider'} dans la colonne de droite (à l'heure suivante, à la maison, en réserve, non fait).</div>`; }
+  if (rest.length) { titre = 'Aller au cahier de textes — ce qui resterait non fait pour cette heure'; corps = rest.map(x => `<div class="gc-l cliquable" data-diapos="${x.diapos.filter(i => !finie(E[i], i)).join(',')}" title="Clique : l'aperçu des diapos restantes de cette activité"><span class="gc-n">A${x.a.num}</span><span>${dr_esc(x.a.titre || x.a.act || '')} — ${x.restantes} diapo${x.restantes > 1 ? 's' : ''} restante${x.restantes > 1 ? 's' : ''}</span><span class="gc-r">${x.dur} min prévues · ${x.commencee ? 'commencée' : 'pas commencée'}</span></div>`).join('') + `<div class="gc-s">${rest.length > 1 ? 'Pour ces ' + rest.length + ' activités, tu diras ce que chacune devient' : 'Pour cette activité, tu diras ce qu’elle devient'} dans la colonne de droite (à l'heure suivante, à la maison, en réserve, non fait).</div>`; }
   else if (avance.length) { const parH = {}; avance.forEach(x => { const k = 'heure ' + x.e.heure; parH[k] = (parH[k] || 0) + 1; }); titre = 'Aller au cahier de textes — tu es en avance'; corps = avance.map(x => `<div class="gc-l"><span class="gc-n">${numDe(x.e) ? 'A' + numDe(x.e) : ''}</span><span>${dr_esc(x.e.act)} — faite</span><span class="gc-r">prévue pour l'heure ${x.e.heure}</span></div>`).join('') + `<div class="gc-s">Tu as fait ${avance.length} diapo${avance.length > 1 ? 's' : ''} en avance (${Object.entries(parH).map(([k, n]) => n + ' pour l\'' + k).join(', ')}). L'ordre de l'heure suivante s'en souviendra.</div>`; }
-  else { titre = 'Aller au cahier de textes — validation'; corps = `<div class="gc-l"><span class="gc-n">✔</span><span>Aucune activité restante prévue pour cette heure — tu es à l'heure.</span><span class="gc-r"></span></div><div class="gc-s">Rien à décider : le cahier de textes n'aura que le travail à faire et le récit.</div>`; }
+  else { titre = 'Aller au cahier de textes — validation'; corps = `<div class="gc-l"><span class="gc-n">✔</span><span>Aucune activité restante prévue pour cette heure — tu es à l'heure.</span><span class="gc-r"></span></div><div class="gc-s">Tout a été fait : le cahier de textes n'aura que le travail à faire et le récit.</div>`; }
   $('gc-titre').textContent = titre; $('gc-corps').innerHTML = corps; $('gc-corps').querySelectorAll('.gc-l.cliquable').forEach(l => l.onclick = () => apercuOuvrir(l.dataset.diapos.split(',').map(Number).filter(n => !isNaN(n)), 0)); $('garde-cahier').classList.add('on'); $('gc-rester').onclick = () => { $('garde-cahier').classList.remove('on'); journal('cahier-garde', { choix: 'rester' }); }; $('gc-aller').onclick = () => { $('garde-cahier').classList.remove('on'); journal('cahier-garde', { choix: 'y-aller' }); faire(); if (!S.enFin) ouvrirFin(true); /* la séquence est là avant le cahier (Paul, 24/09) */ }; $('gc-aller').focus({ preventScroll: true }); }
 
 function dr_garde(faire, quoi){ if (S.gel || S.repetition) return faire(); /* (p6) aucune garde en répétition */ gardeEnAttente = faire; $('garde-titre').textContent = 'La classe te suivrait — ' + quoi + '.'; $('garde').classList.add('on'); $('garde-gel').focus({ preventScroll: true }); }
@@ -17429,7 +17496,7 @@ setInterval(() => { const sv = $('at-save'); if (!sv || !S.atelier) return; if (
 /* E1 (réveil n°3, 5) : une question qui reçoit une réponse (la case de participation, ou la ligne de réponse) se dévoile — la réponse part au tableau au fil de la frappe (C1 4.2) ; le rendu tait à raison les réponses d'une question grisée */
 function dr_devoilerQuestionsRepondues(){ if (S.atelier || S.preparation || !S.lancee) return; const e = ecran(); if (!e) return; const d = etatDiapo(); const reps = d.reps || {}; const els = elements(e);
   Object.keys(reps).forEach(bi => { if (!(reps[bi] || []).some(r => r && String(r.r || '').trim())) return; const k = els.findIndex(x => x.b === +bi && x.e === 'q'); if (k >= 0 && k + 1 > d.nDev) { d.nDev = k + 1; S.page = null; } }); }
-function dr_tout(){ dr_devoilerQuestionsRepondues(); dr_hclasseMaj(true); /* E1 (§12.27-8) : la classe de l'heure dans l'entête, à chaque rendu (la classe proposée, plus coûteuse, à la seconde) */ setTimeout(atSomSuivreCourant, 0); setTimeout(dr_imagesAbsentes, 0); /* E1 : la colonne du site suit la diapo (lisait DR.dr_ecranCourant par le pont) */ setTimeout(brancherDocs, 0); if (S.repetition || p8EnClasse() || p8ReactAvantLancement()) setTimeout(brancherAtelier, 0); /* (p8-4) en répétition aussi, tout texte s'écrit d'un clic ; (p8-5) et en classe, dans la copie ; E1 (§12.26) : la réactivation construite avant le lancement */ if (S.atelier) { observerMur(); setTimeout(brancherAtelier, 0); p8GardesBarre(); /* (p8-3) les gestes grisés d'une diapo à schéma */ const ab = $('at-bloc'); if (ab && !ab._ok) { ab._ok = true; ab.onclick = () => choixObjet(); } const ai = $('at-image'); if (ai && !ai._ok) { ai._ok = true; ai.onclick = () => choixObjet('image'); } const af = $('at-fiche'); if (af && !af._ok) { af._ok = true; af.onclick = () => choixObjet('fiche'); } const av = $('at-video'); if (av && !av._ok) { av._ok = true; av.onclick = () => { S.editerVideo = null; choixObjet('video'); }; } const ad = $('at-doc'); if (ad && !ad._ok) { ad._ok = true; ad.onclick = () => choixObjet('doc'); } const ae = $('at-etape'); if (ae && !ae._ok) { ae._ok = true; ae.onclick = () => { const e = ecran(); if (!e || e.role === 'fin') return; const b = document.activeElement && blocDe(document.activeElement); const bi = b ? b.bi : e.blocs.length - 1; const bloc = e.blocs[bi]; if (!bloc) return; bloc.el = bloc.el || []; bloc.el.push(''); marquerModif({ di: S.di, bi, ajout: bloc.el.length - 1 }); dr_tout(); setTimeout(() => { const nv = $('mur').querySelector('[data-p="' + bi + '.' + (bloc.el.length - 1) + '"]'); if (nv) { nv.setAttribute('data-vide', '1'); focaliser(nv); } }, 0); }; }  const v = $('volet'); if (v) { const hv = voletAtelier(); if (v.dataset.atelier !== hv) { v.innerHTML = hv; v.dataset.atelier = hv; if (typeof dr_reglageReactBrancher === 'function') dr_reglageReactBrancher(v); v.querySelectorAll('[data-at-di]').forEach(d => d.onclick = () => { S.di = +d.dataset.atDi; S.page = null; journal('atelier-diapo', { di: S.di }); dr_tout(); }); } } rendreDroiteAtelier(); const aj = $('at-jouer'); if (aj && !aj._ok) { aj._ok = true; aj.onclick = () => { journal('atelier-jouer-en-avance', { di: S.di }); lancerRepetition(); }; } } try { ligneSuite(); } catch (e) {} if (S.enFin && !S.preparation && ecran().role === 'fin' && S._finRenduPour !== 'fin') { S._finRenduPour = 'fin'; setTimeout(() => ouvrirFin(true), 0); } else if (S.enFin && ecran().role !== 'fin') S._finRenduPour = null; if (S.preparation) { try { dimensionner(); } catch (e) {} } $('droite').classList.toggle('cahier', ecran().role === 'fin'); if (S.t5 && !S.close) { if (ecran().role === 'fin') alerteFermer(); else if (!S.alerteOuverte && $('al-ligne').style.display === 'none' && S.palier) alerteOuvrir(); }
+function dr_tout(){ dr_devoilerQuestionsRepondues(); if (typeof atClasseMarquer === 'function') atClasseMarquer(); /* E1 (§12.28-3) l'état de l'écran de la classe */ dr_hclasseMaj(true); /* E1 (§12.27-8) : la classe de l'heure dans l'entête, à chaque rendu (la classe proposée, plus coûteuse, à la seconde) */ setTimeout(atSomSuivreCourant, 0); setTimeout(dr_imagesAbsentes, 0); /* E1 : la colonne du site suit la diapo (lisait DR.dr_ecranCourant par le pont) */ setTimeout(brancherDocs, 0); if (S.repetition || p8EnClasse() || p8ReactAvantLancement()) setTimeout(brancherAtelier, 0); /* (p8-4) en répétition aussi, tout texte s'écrit d'un clic ; (p8-5) et en classe, dans la copie ; E1 (§12.26) : la réactivation construite avant le lancement */ if (S.atelier) { observerMur(); setTimeout(brancherAtelier, 0); p8GardesBarre(); /* (p8-3) les gestes grisés d'une diapo à schéma */ const ab = $('at-bloc'); if (ab && !ab._ok) { ab._ok = true; ab.onclick = () => choixObjet(); } const ai = $('at-image'); if (ai && !ai._ok) { ai._ok = true; ai.onclick = () => choixObjet('image'); } const af = $('at-fiche'); if (af && !af._ok) { af._ok = true; af.onclick = () => choixObjet('fiche'); } const av = $('at-video'); if (av && !av._ok) { av._ok = true; av.onclick = () => { S.editerVideo = null; choixObjet('video'); }; } const ad = $('at-doc'); if (ad && !ad._ok) { ad._ok = true; ad.onclick = () => choixObjet('doc'); } const ae = $('at-etape'); if (ae && !ae._ok) { ae._ok = true; ae.onclick = () => { const e = ecran(); if (!e || e.role === 'fin') return; const b = document.activeElement && blocDe(document.activeElement); const bi = b ? b.bi : e.blocs.length - 1; const bloc = e.blocs[bi]; if (!bloc) return; bloc.el = bloc.el || []; bloc.el.push(''); marquerModif({ di: S.di, bi, ajout: bloc.el.length - 1 }); dr_tout(); setTimeout(() => { const nv = $('mur').querySelector('[data-p="' + bi + '.' + (bloc.el.length - 1) + '"]'); if (nv) { nv.setAttribute('data-vide', '1'); focaliser(nv); } }, 0); }; }  const v = $('volet'); if (v) { const hv = voletAtelier(); if (v.dataset.atelier !== hv) { v.innerHTML = hv; v.dataset.atelier = hv; if (typeof dr_reglageReactBrancher === 'function') dr_reglageReactBrancher(v); v.querySelectorAll('[data-at-di]').forEach(d => d.onclick = () => { S.di = +d.dataset.atDi; S.page = null; journal('atelier-diapo', { di: S.di }); dr_tout(); }); } } rendreDroiteAtelier(); const aj = $('at-jouer'); if (aj && !aj._ok) { aj._ok = true; aj.onclick = () => { journal('atelier-jouer-en-avance', { di: S.di }); lancerRepetition(); }; } } try { ligneSuite(); } catch (e) {} if (S.enFin && !S.preparation && ecran().role === 'fin' && S._finRenduPour !== 'fin') { S._finRenduPour = 'fin'; setTimeout(() => ouvrirFin(true), 0); } else if (S.enFin && ecran().role !== 'fin') S._finRenduPour = null; if (S.preparation) { try { dimensionner(); } catch (e) {} } $('droite').classList.toggle('cahier', ecran().role === 'fin'); if (S.t5 && !S.close) { if (ecran().role === 'fin') alerteFermer(); else if (!S.alerteOuverte && $('al-ligne').style.display === 'none' && S.palier) alerteOuvrir(); }
   dimensionner(); if (!S.mur || S.mur.di !== S.di || S.mur.si !== S.si) S.arrivee = { di: S.di }; const e = ecran(); const et = etatComplet(); et.pilote = true; et.ecrire = p8EcritureOuverte(); /* (p8-4) */ if (!S.repetition && (!S.atelier || dr_atelierEnClasse())) et.textes = p8TextesCopie(e, et.textes); /* E1 (réveil n°11) : l'atelier ouvert pendant l'heure montre la copie de la classe */ /* (p8-5) la copie de la classe, au pilote et au tableau */ rendre(mur, et); mur.className = 'mur pilote' + (S.mode === 'lum' ? ' mode-lum' : S.mode === 'ecr' ? ' mode-ecr' : '') + (et.bandeau ? ' avec-bandeau' : ''); et.pilote = false;
   S.page = et.page; S.pagesCourantes = et.pages; S.pagesPCourantes = et.pagesP; S.policeRatioCourante = et.policeRatio; /* (p8-5h) les vignettes de page de la diapo courante */ etatDiapo().fsBloc = Object.assign({}, et.fsBloc || {});
   if (!S.gel) pousser(et); else S.attente = et;
@@ -24639,6 +24706,9 @@ else sesReprisePoser();
    et la bande du haut (.at-fermer) tombe ; la rangée reste en haut quand Structure défile. Quand la zone du déroulé est montrée (Atelier, Pilotage,
    Relecture), rien ne défile : la zone va du dessous des onglets au bas de la fenêtre (dr_dimensionnerZone), la colonne du chapitre défile chez elle. */
 #atelier-ecran:has(.at-vues-barre)>.at-fermer,#atelier-ecran:has(.at-onglets)>.at-fermer{display:none}
+/* E1 (§12.28-3a/3b) : l'écran de la classe — ni Fermer l'atelier, ni la répétition ; « ✕ Fermer » seulement hors de l'heure ; ↗ et Fermer à droite */
+.at-vues-barre-classe .at-classe-site{margin-left:auto}
+html.dr-heure-court .at-classe-fermer{display:none}
 #atelier-ecran:has(.at-onglets) .at-zone{padding-top:8px}
 .at-onglets{align-items:center}
 #atelier-ecran:has(.at-vues-barre) .at-zone{padding-top:8px}

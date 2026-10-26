@@ -3562,3 +3562,16 @@ MEMO
 
 26/10/2026 14:41
 MEMO
+
+## Tour 193 — 26/10/2026 16:24 — Paul (16:16) : « controle maintenant »
+
+**Paul (mot pour mot).** « controle maintenant »
+
+**Fait.** Contrôle fait à la demande : E1 a réglé le badge (`773e027b`, 16:04 : la page laisse à droite la colonne du badge de version, 124 px, rien dessous ; A42 + A46 40/0 ; « §12.27 E1 fini (`773e027b`) ») ; mon `banc.sh` VERT 108/0 sur la tête `a8217089` (assemblé `a8754cf2…`, 2 364 564 o) ; ma mesure à 1707 × 743 : page du niveau, panneau, pilote, Relecture, visionneuse, tableau — ça va (capture de la page du niveau regardée). E3 réveillé (fire_trigger, 16:16) pour rejouer `banc-1227` aux quatre tailles ; contrôle n°60 à 16:49 pour le « VERT » et les captures.
+
+**Réponse (mot pour mot).**
+
+401. Contrôle fait : E1 a réglé le badge (la page lui laisse sa colonne à droite, plus rien dessous) ; chez moi le banc est vert et ta taille d'écran est bonne partout. E3 rejoue sa vérification complète aux quatre tailles (je l'ai réveillé à l'instant, une quinzaine de minutes) ; dès qu'il dit vert, tu reçois les captures avant / après pour décider — au plus tard à mon contrôle de 16:49.
+
+26/10/2026 16:24
+MEMO

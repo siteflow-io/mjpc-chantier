@@ -158,9 +158,9 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
     /* C · l'accueil des niveaux, la page du niveau (côté prof) : .home-inner sans borne (12.27 (6)) */
     const g7 = await ecran('accueil-niveaux', 'C'); let hi = await pleine(pg, '.home-inner', '');
     const rcv = async nom => { const k = await recouvert(pg, '.page.active .home-inner, .home-inner'); verif('C', k && !k.length, T + ' · ' + nom + ' · aucun texte de la page sous un bouton fixe', k ? k.join(' ; ') : 'pas de .home-inner'); };
-    await rcv('accueil des niveaux');
+    /* (les essais « rien sous un bouton fixe » écran par écran sont remplacés par la garde L, le balayage de tous les écrans) */
     verif('C', hi && hi.larg >= hi.W - 1, T + ' · accueil des niveaux · .home-inner à toute la largeur (les bords gardés dedans)', hi ? hi.larg + ' px sur ' + hi.W + ' (max-width ' + hi.maxw + ')' : 'absent');
-    await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 1800); await ecran('niveau-3e', 'C'); await rcv('page du niveau');
+    await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 1800); await ecran('niveau-3e', 'C');
     hi = await pleine(pg, '.home-inner', ''); verif('C', hi && hi.larg >= hi.W - 1, T + ' · page du niveau · .home-inner à toute la largeur', hi ? hi.larg + ' px sur ' + hi.W + ' (max-width ' + hi.maxw + ')' : 'absent');
     await pg.evaluate(() => { const h = Array.from(document.querySelectorAll('[onclick="toggleChapter(this)"]')).find(x => x.offsetParent !== null); if (h) h.click(); }); await p(pg, 900); await ecran('niveau-3e-chapitre-ouvert', 'C');
     /* la page du niveau vue comme un élève (« 👁 Voir comme un élève », basculerVue — audit C7 : le profil MENEY / MONSIEUR ne passe plus sans code) */
@@ -290,11 +290,9 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
         const r = await q.evaluate(() => { const pl = document.getElementById('page-level'); const W = document.documentElement.clientWidth; const e = pl && Array.from(pl.querySelectorAll('.level-content')).find(x => x.getBoundingClientRect().width > 0); if (!pl || !pl.classList.contains('active') || !e) return { ouverte: !!(pl && pl.classList.contains('active')), W }; const b = e.getBoundingClientRect(), s = getComputedStyle(e); return { ouverte: true, W, g: Math.round((b.left + parseFloat(s.paddingLeft)) * 10) / 10, d: Math.round((b.right - parseFloat(s.paddingRight)) * 10) / 10, mw: s.maxWidth }; });
         verif('K', r.ouverte, T + ' · ' + nom + ' · la page du niveau est ouverte (#page-level)');
         /* 32 px à gauche ; à droite 32 px, ou la colonne du badge de version (124 px, contrôle n°59 : « une marge à droite de la largeur du badge ») */
-        if (r.g != null) verif('K', Math.abs(r.g - 32) <= 1 && r.d >= r.W - 124 - 1 && r.d <= r.W - 32 + 1 && r.mw === 'none', T + ' · ' + nom + ' · .level-content à toute la largeur (32 px à gauche, à droite 32 px ou la colonne du badge)', 'contenu ' + r.g + ' → ' + r.d + ' dans ' + r.W + ' (marge droite ' + Math.round(r.W - r.d) + ' px, max-width ' + r.mw + ')');
+        if (r.g != null) verif('K', Math.abs(r.g - 32) <= 1 && r.d >= r.W - 200 && r.d <= r.W - 32 + 1 && r.mw === 'none', T + ' · ' + nom + ' · .level-content à toute la largeur (32 px à gauche ; à droite 32 px, ou côté prof la colonne des flottants — badge, boutons fixes, contrôles n°59-60 — au plus 200 px)', 'contenu ' + r.g + ' → ' + r.d + ' dans ' + r.W + ' (marge droite ' + Math.round(r.W - r.d) + ' px, max-width ' + r.mw + ')');
         const g = await geometrie(q); verif('K', !g.cote.length, T + ' · ' + nom + ' · aucun défilement de côté', g.cote.join(', ')); verif('K', !g.hors.length, T + ' · ' + nom + ' · rien de ce qui se lit hors de l’écran', g.hors.join(' ; '));
-        /* toute la page, de haut en bas : à chaque cran de défilement, aucun texte sous un bouton fixe (le badge, « Panneau prof », « Mes applications ») */
-        let kk = []; const hauteur = await q.evaluate(() => document.scrollingElement.scrollHeight); for (let y = 0; y < hauteur && kk.length < 5; y += Math.round(H * 0.6)) { await q.evaluate(v => window.scrollTo(0, v), y); await p(q, 150); const k = await recouvert(q, '#page-level'); if (k) k.forEach(x => { if (kk.indexOf(x) < 0) kk.push(x + ' (défilement ' + y + ')'); }); }
-        await q.evaluate(() => window.scrollTo(0, 0)); verif('K', !kk.length, T + ' · ' + nom + ' · aucun texte de la page sous un bouton fixe, toute la page défilée', kk.slice(0, 5).join(' ; ')); }
+        /* « rien sous un bouton fixe » : la garde L (le balayage de tous les écrans) */ }
     } catch (e) { verif('K', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('K', !o.errs.length, T + ' · 0 erreur JS', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
@@ -322,6 +320,23 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H, TT = W + 'x' + H; const 
     verif('J', !o.errs.length, T + ' · 0 erreur JS', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 }
 await nav.close();
+
+/* L · tous les recouvrements d'un coup (relance du 26/10 17:17 ; Paul, 17:03 : « on ne va pas faire les boutons un par un ») : le balayage de la
+   conscience (MANDATS/UI-PLEIN-ECRAN/recouvrements.mjs — 50 écrans, chaque page et chaque conteneur qui défile balayés de haut en bas, tout
+   flottant contre tout ce qui se lit ou se clique dessous) rejoué sur le même fichier aux mêmes tailles ; une vérification par écran et par taille. */
+{ const { spawnSync } = await import('node:child_process'); const SCRIPT = path.resolve(ici, '..', '..', '..', '..', 'MANDATS', 'UI-PLEIN-ECRAN', 'recouvrements.mjs');
+  const OUTL = process.env.MJPC_L_SORTIE || (SORTIE ? path.join(path.dirname(path.resolve(SORTIE)), 'recouvrements') : path.join(ici, '..', 'sorties', 'recouvrements-dernier'));
+  dire(''); dire('L — tous les recouvrements (recouvrements.mjs de la conscience) · ' + TAILLES.map(t => t.join('×')).join(', '));
+  if (!fs.existsSync(SCRIPT)) verif('L', false, 'le balayage de la conscience est là', SCRIPT);
+  else { const r = spawnSync(process.execPath, [SCRIPT, FICHIER, OUTL, TAILLES.map(t => t.join('x')).join(',')], { env: Object.assign({}, process.env, { MJPC_HUB: HUB }), encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, timeout: 40 * 60 * 1000 });
+    const out = String(r.stdout || '').split('\n'); const ecr = out.filter(l => / · (\d\d-[^·]+|fenêtre du tableau) · /.test(l) && /(aucun recouvrement|recouvrement\(s\))/.test(l));
+    const parTaille = {}; ecr.forEach(l => { const t = l.split(' · ')[0]; parTaille[t] = (parTaille[t] || 0) + 1; });
+    verif('L', r.status === 0 && ecr.length >= 40 * TAILLES.length, 'le balayage est allé au bout', ecr.length + ' écrans balayés (' + Object.keys(parTaille).map(t => t + ' : ' + parTaille[t]).join(', ') + '), code ' + r.status + (r.stderr ? ' · ' + String(r.stderr).slice(0, 120) : ''));
+    ecr.forEach(l => { const ok = /aucun recouvrement/.test(l); if (!ok) verif('L', false, l.split(' · ').slice(0, 2).join(' · ') + ' · rien de caché par un flottant', l.split(' · ').slice(2).join(' · ').slice(0, 300)); else { nb++; } });
+    const nk = ecr.filter(l => !/aucun recouvrement/.test(l)).length; dire('  ' + (nk ? 'ÉCHEC  ' : 'ok     ') + 'L · ' + (ecr.length - nk) + '/' + ecr.length + ' écrans sans recouvrement (détail : ' + OUTL + ')');
+    out.filter(l => / · erreurs JS : /.test(l)).forEach(l => verif('L', / · erreurs JS : aucune/.test(l), l.split(' · ')[0] + ' · le balayage sans erreur JS', l.split(' : ').slice(1).join(' : ').slice(0, 200)));
+    try { fs.mkdirSync(OUTL, { recursive: true }); fs.writeFileSync(path.join(OUTL, 'console.txt'), String(r.stdout || '') + '\n' + String(r.stderr || '')); } catch (e) {} } }
+
 if (process.env.MJPC_DIAPO_OUT) { let av = {}; try { av = JSON.parse(fs.readFileSync(process.env.MJPC_DIAPO_OUT, 'utf8')); if (av.__md5 !== MD5) av = {}; } catch (e) {} fs.writeFileSync(process.env.MJPC_DIAPO_OUT, JSON.stringify(Object.assign(av, DOUT), null, 1)); }
 dire(''); dire('BILAN banc-1227 : ' + (nb - echecs) + '/' + nb + ' vérifications' + (echecs ? ' — ' + echecs + ' ÉCHEC(S) · ROUGE' : ' · VERT'));
 if (SORTIE) { fs.mkdirSync(path.dirname(path.resolve(SORTIE)), { recursive: true }); fs.writeFileSync(SORTIE, R.join('\n') + '\n'); }

@@ -3410,3 +3410,16 @@ MEMO
 
 26/10/2026 10:29
 MEMO
+
+## Tour 182 — 26/10/2026 10:34 — Paul (10:32) : « pourquoi mes De gaulle ne s'affichent pas dans leur faux edt? »
+
+**Paul (mot pour mot).** « pourquoi mes De gaulle ne s'affichent pas dans leur faux edt? (sur les cases où je n'ai pas cours avec les autres) »
+
+**Fait.** Le vrai hub n'est pas lisible d'ici (proxy 403, mesuré au tour 172) : pas de mesure possible sur ce que Paul voit. Mesuré dans le code : les heures de la vue viennent d'`edtProjeter` (l. 22546) sur l'année, filtrées sur `classeMjpc === nom` ; une case tombe si elle n'est pas appariée à la classe (`nonImportee`), si le jour est hors des dates de l'année (`horsAnnee`) ou un jour sans cours (`horsTemps`), et en amont `edtCasesDuJour` (l. 22489) retient une case selon sa semaine A/B et sa période (`periodes`). Sur le faux hub (la grille papier T85), les sept créneaux hebdomadaires de la 3E Charles de Gaulle sont tous dans la vue (159 heures sur l'année).
+
+**Réponse (mot pour mot).**
+
+380. Je ne sais pas : ton hub n'est pas lisible d'ici, et sur le faux hub (ta grille papier) les sept créneaux de la semaine des De Gaulle sont tous dans la vue. Ce qui, dans ton site, fait tomber une heure d'une classe : une case pas appariée à la classe (« classe non encore importée »), un jour hors de tes dates d'année ou sans cours, une case d'une autre semaine (A/B) ou d'une autre période que celle du jour. Une capture écran entier de ce que tu vois — la semaine de l'emploi du temps où ça manque, et la vue « la classe » au même endroit — et je mesure.
+
+26/10/2026 10:34
+MEMO

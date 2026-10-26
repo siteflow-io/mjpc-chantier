@@ -3744,3 +3744,22 @@ MEMO
 
 26/10/2026 20:51
 MEMO
+
+## Tour 201 — 26/10/2026 21:49 — contrôle n°63 (20:53) et Paul (21:35) : « Ok c'est bon »
+
+**Contrôle n°63 (20:53, sans message de Paul).** Lu sur `integration` : E1 13 · 43 (le « ? », `3a0c567a`, A49 aux quatre tailles) et sa mission 0 sur les mots (trois corrections : « Générer … codes manquants », `panneau-atelier` jamais montré, `classe-close`) — fichier des mots corrigé ; E2 poussée 39 (l'heure s'ouvre par l'écran de la classe partout) et `dr_resteHeure()` ; E4 13 · 42 (`fe825c57`) — **§12.28 E4 fini**, vert chez E3 ; E3 retours 54-55 (la répétition d'un second onglet ne touche pas le tableau de la classe : vert). Tranché : le volet d'aide prend sa colonne (il ne recouvre rien) ; après « Clore », le « ? » montre `classe-close`. E1 réveillé. (Mon banc lancé par « & » est mort en route : relancé à 21:46 en tâche de fond, dans un worktree séparé.)
+
+**Paul (mot pour mot, 21:35).** « Ok c'est bon »
+
+**Fait.** S1-S5 validés tels que les images T200 les montrent (la question 439 : les étapes à droite, comme T200-2) → **contrat §12, point 29** « Simplifier l'existant » (E2 : à T-5 une seule chose s'ouvre, la tête de la séquence, « Reprendre l'heure » ; E1 : la préparation sans changer la forme de l'écran, « Ouvrir le tableau », « Ce que voit la classe », la répétition sans gestes de classe ; E3 : le cas « 29 » dans `banc-1228`, comparé aux images validées) ; **13 · 46 se règle par la chute de la garde « Aller au cahier »** (29 (2)) ; les mots du « ? » mis aux nouveaux noms ; relances E1, E2, E3 « 21:50 » ; le 29 entre dans le même candidat que le 28. Contrôle n°64 à 22:39 (`trig_01W5DBj9cbRWufQqiP7ZEX2W`).
+
+**Réponse (mot pour mot).**
+
+440. C'est lancé : la simplification se code tout de suite après les cinq dettes, et part avec elles dans la même mise en ligne. Les étapes restent à droite, comme sur l'image T200-2. Le double compte de « ce qui reste » (13 · 46) disparaît avec la garde « Aller au cahier ».
+
+441. Où en sont les cinq dettes : le récit et le mode test sont verts ; le « ? » est codé sur 31 écrans ; l'écran de l'heure, la garde de l'onglet et « Reprendre » sont presque verts — il reste deux boutons qui se chevauchent quand le bandeau paraît, et l'Atelier qui lance encore. Prochain contrôle à 22:39 ; je reviens avec les captures avant / après quand tout est vert.
+
+À tester : rien pour l'instant — rien n'est en ligne.
+
+26/10/2026 21:49
+MEMO

@@ -3776,3 +3776,16 @@ MEMO
 
 26/10/2026 22:46
 MEMO
+
+## Tour 203 — 26/10/2026 23:30 — contrôle n°65 (sans message de Paul depuis le tour 201)
+
+**Fait.** Mon banc sur `d51c57ee` : VERT, 106/0, et P5 « l'Atelier ne lance plus » vérifié (épreuve gardée). Lu sur `integration` depuis `19eac513` : E1 §12.29 S2-S5 (`539858ab` : la préparation du cahier dans la colonne de droite sans changer la forme de l'écran, la garde « Aller au cahier » retirée, les nouveaux noms de l'entête, la répétition sans gestes de classe ; A51-A53 41/0) ; E3 retour 57 (le cas 29 dans `banc-1228`, `banc-1227` lancé par la case ; 214/308 sur une tête d'avant) et « Plus tard puis T-3 rouvre la séquence » mesuré. Relancés chez E2 : le bandeau « Reprendre » disparaît après un passage par l'emploi du temps (E3), la séquence coupée dans la colonne de droite en préparation (E1). Banc relancé sur `9182a56b`. Contrôle n°66 à 00:18 (`trig_01ErtbVNttWS57Rr9wvAVQic`).
+
+**Réponse (mot pour mot).**
+
+443. Contrôle de 23:30. E1 a codé sa part de la simplification : le cahier se prépare sans que l'écran change de forme, la garde « Aller au cahier » a disparu, les boutons ont leurs nouveaux noms, la répétition ne montre plus de gestes de classe. E3 a trouvé chez E2 que le bandeau « Reprendre » disparaît quand on passe par l'emploi du temps : c'est relancé, avec la liste des étapes qui se coupe dans la colonne de droite. Prochain contrôle à 00:18.
+
+À tester : rien pour l'instant — rien n'est en ligne.
+
+26/10/2026 23:30
+MEMO

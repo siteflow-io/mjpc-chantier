@@ -76,7 +76,7 @@ await P('P5', 'lancer la séance (la classe)', async () => { let voie = null;
   /* v4 (26/10, contrat §12.28 (3a), P1 validé par Paul) : l'heure d'une classe se lance par la case de l'emploi du temps — « ▶ Ouvrir le pilotage et lancer » — et se joue
      dans l'écran « la classe en cours » ; l'Atelier ne lance plus. L'ancienne voie (Pilotage → [data-lancer=1]) ne reste qu'en repli, dite « absent » */
   if (neuf) { const aLanceur = await page.evaluate(() => Array.from(document.querySelectorAll('[data-lancer="1"]')).some(b => b.offsetParent !== null && !document.documentElement.classList.contains('dr-en-classe')));
-    pas('P5', aLanceur ? 'absent' : 'ok', 'l\'Atelier ne lance plus (aucun « ▶ Lancer » visible hors de l\'écran de la classe, §12.28 (3a))'); }
+    pas('P5', aLanceur ? 'ÉCHEC' : 'ok', 'l\'Atelier ne lance plus (aucun « ▶ Lancer » visible hors de l\'écran de la classe, §12.28 (3a))'); }
   if (neuf && await page.evaluate(() => typeof edtOuvrir === 'function')) { await page.evaluate(() => edtOuvrir()); await pause(1500);
     const cOk = await page.evaluate(() => { const cs = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); const c = cs.find(e => (e.getAttribute('onclick') || '').indexOf('2026-09-14') >= 0) || cs[0]; if (!c) return false; c.click(); return true; }); await pause(800);
     if (cOk && await clicTexte('button', 'Ouvrir le pilotage et lancer')) voie = 'la case de l\'emploi du temps → « ▶ Ouvrir le pilotage et lancer » (§12.28)';

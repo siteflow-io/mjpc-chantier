@@ -131,7 +131,9 @@ body { font-family: 'EB Garamond', Georgia, serif; background: #141024; color: #
 .search-input { width: 100%; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 13px 16px 13px 46px; font-family: 'EB Garamond', serif; font-size: 1.06rem; color: #fff; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
 .search-input:focus { border-color: var(--level-accent); box-shadow: 0 0 20px var(--level-glow); }
 .search-input::placeholder { color: rgba(255,255,255,0.25); }
-.level-content { max-width: 900px; margin: 0 auto; padding: 36px 32px 80px; }
+.level-content { max-width: none; margin: 0 auto; padding: 36px 32px 80px; }   /* E1 (§12.27-14, F4 d'E3) : la page du niveau (l'arborescence, « Je publie pour », les onglets) à toute la largeur, ses 32 px de bord gardés (avant : max-width 900px) */
+.admin-mode .level-header { padding-right: 182px; }   /* E1 (§12.27-14) : le badge du niveau (« 3ème », à droite de l'en-tête collant) passait sous « 🛠 Panneau prof » (fixe, 16 px du bord, 150 px de large) — déjà avant ce chantier ; l'en-tête leur laisse leur place, pour le prof seulement */
+@media (max-width:480px){ .admin-mode .level-header { padding-right: 64px; } }
 .tabs { display: flex; flex-wrap: wrap; gap: 4px; background: rgba(255,255,255,0.06); border-radius: 12px; padding: 4px; margin-bottom: 24px; max-width: 100%; }
 .tab { font-size: 0.97rem; font-weight: 500; padding: 8px 18px; border-radius: 9px; cursor: pointer; color: rgba(255,255,255,0.4); transition: all 0.2s; border: none; background: transparent; font-family: 'EB Garamond', serif; white-space: nowrap; flex-shrink: 0; }
 .tab.active { background: rgba(255,255,255,0.1); color: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); font-weight: 600; }

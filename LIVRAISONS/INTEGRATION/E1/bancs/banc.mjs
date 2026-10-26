@@ -982,6 +982,23 @@ await B('A45', '§12.27 (13), dette 13 · 45 : « Voir dans l\'arborescence » �
   await p2.evaluate(() => Array.from(document.querySelectorAll('.at-onglets button')).find(x => /Fermer l’atelier/.test(x.textContent)).click()); await p2.waitForTimeout(1200);
   E.verif('A45', await p2.evaluate(() => !document.getElementById('atelier-ecran').classList.contains('at-actif') && !!document.querySelector('.tprof-overlay.visible')), '« ✕ Fermer l\'atelier » garde son retour au panneau prof'); await o2.ctx.close(); });
 
+await B('A46', '§12.27 (14) : la page du niveau (l\'arborescence des chapitres) à toute la largeur — .level-content sans borne, 32 px de bord gardés, l\'en-tête collant inchangé, rien sous un bouton fixe ; prof et vue élève', async () => {
+  const mes = pg => pg.evaluate(() => { const pl = document.getElementById('page-level'); const x = document.querySelector('#page-level .level-content'); if (!pl || !pl.classList.contains('active') || !x) return { actif: !!(pl && pl.classList.contains('active')) }; const R = x.getBoundingClientRect(); const cs = getComputedStyle(x); const de = document.scrollingElement; const lh = document.querySelector('#page-level .level-header'); const lhs = lh ? getComputedStyle(lh) : null;
+    const fixes = ['tprof-btn', 'admin-tools-btn', 'vue-btn'].map(i => document.getElementById(i) || document.querySelector('.' + i)).filter(e => e && getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0).map(e => e.getBoundingClientRect());
+    const sous = Array.from(document.querySelectorAll('#page-level .level-content *, #page-level .level-header *')).filter(e => e.children.length === 0 && e.textContent.trim() && e.getBoundingClientRect().width > 0 && getComputedStyle(e).visibility !== 'hidden').filter(e => { const q = e.getBoundingClientRect(); return fixes.some(f => q.left < f.right && q.right > f.left && q.top < f.bottom && q.bottom > f.top); }).map(e => e.textContent.trim().slice(0, 30));
+    return { actif: true, mw: cs.maxWidth, g: Math.round(R.left), d: Math.round(de.clientWidth - R.right), pl: cs.paddingLeft, pr: cs.paddingRight, cote: de.scrollWidth - de.clientWidth, chap: document.querySelectorAll('#page-level .chapter-card').length, entete: lhs ? lhs.position + ' ' + lhs.height : 'absent', sous }; });
+  const ok = r => r.actif && r.mw === 'none' && Math.abs(r.g) <= 1 && Math.abs(r.d) <= 1 && r.pl === '32px' && r.pr === '32px' && r.cote <= 0 && r.chap >= 1 && r.entete === 'sticky 60px' && r.sous.length === 0;
+  for (const [w, h] of TAILLES_1227) {
+    const ctx = await b.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); const pg = await ctx.newPage(); const errs = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => d.dismiss().catch(() => {}));
+    await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, E.store()); await pg.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(2000);
+    await pg.evaluate(() => { try { loginAsProf(); } catch (e) {} }); await pg.waitForTimeout(2500);
+    await pg.evaluate(() => { const o = document.getElementById('m8-regles-overlay'); if (o) o.remove(); try { edtFermer(); } catch (e) {} }); await pg.waitForTimeout(700); await sansVoile(pg);
+    await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await pg.waitForTimeout(900); await pg.evaluate(() => { const s = document.getElementById('intent-overlay') || document.querySelector('.intent-overlay'); if (s) s.remove(); openLevel('3e', '3ème', 'var(--3e)'); }); await pg.waitForTimeout(1800); await sansVoile(pg);   /* deux openLevel : le premier montre l'accueil du niveau, le second ouvre la page (le geste réel : deux clics) */
+    const p = await mes(pg); E.verif('A46', ok(p), w + ' × ' + h + ' : la page du niveau (prof) — .level-content de bord à bord (32 px dedans), l\'en-tête collant inchangé (60 px), aucun défilement de côté, rien sous un bouton fixe', JSON.stringify(p));
+    await pg.evaluate(() => { try { basculerVue(); } catch (e) {} }); await pg.waitForTimeout(1200); await sansVoile(pg);
+    const v = await mes(pg); E.verif('A46', ok(v), w + ' × ' + h + ' : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe', JSON.stringify(v));
+    E.verif('A46', !errs.length, w + ' × ' + h + ' : aucune erreur JS', errs.join(' ; ') || undefined); await ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

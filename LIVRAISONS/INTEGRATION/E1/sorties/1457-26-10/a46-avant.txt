@@ -1,0 +1,17 @@
+banc E1 · 2026-10-26 13:55 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant14.html · md5 8204bd1515787cc0f9fae60356fd3609
+
+A46 — §12.27 (14) : la page du niveau (l'arborescence des chapitres) à toute la largeur — .level-content sans borne, 32 px de bord gardés, l'en-tête collant inchangé, rien sous un bouton fixe ; prof et vue élève
+  ÉCHEC  A46 · 1366 × 768 : la page du niveau (prof) — .level-content de bord à bord (32 px dedans), l'en-tête collant inchangé (60 px), aucun défilement de côté, rien sous un bouton fixe — {"actif":true,"mw":"900px","g":233,"d":233,"pl":"32px","pr":"32px","cote":0,"chap":5,"entete":"sticky 60px","sous":["3ème"]}
+  ÉCHEC  A46 · 1366 × 768 : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe — {"actif":true,"mw":"900px","g":233,"d":233,"pl":"32px","pr":"32px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1366 × 768 : aucune erreur JS
+  ÉCHEC  A46 · 1536 × 864 : la page du niveau (prof) — .level-content de bord à bord (32 px dedans), l'en-tête collant inchangé (60 px), aucun défilement de côté, rien sous un bouton fixe — {"actif":true,"mw":"900px","g":318,"d":318,"pl":"32px","pr":"32px","cote":0,"chap":5,"entete":"sticky 60px","sous":["3ème"]}
+  ÉCHEC  A46 · 1536 × 864 : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe — {"actif":true,"mw":"900px","g":318,"d":318,"pl":"32px","pr":"32px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1536 × 864 : aucune erreur JS
+  ÉCHEC  A46 · 1707 × 743 : la page du niveau (prof) — .level-content de bord à bord (32 px dedans), l'en-tête collant inchangé (60 px), aucun défilement de côté, rien sous un bouton fixe — {"actif":true,"mw":"900px","g":404,"d":404,"pl":"32px","pr":"32px","cote":0,"chap":5,"entete":"sticky 60px","sous":["3ème"]}
+  ÉCHEC  A46 · 1707 × 743 : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe — {"actif":true,"mw":"900px","g":404,"d":404,"pl":"32px","pr":"32px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1707 × 743 : aucune erreur JS
+  ÉCHEC  A46 · 1920 × 1080 : la page du niveau (prof) — .level-content de bord à bord (32 px dedans), l'en-tête collant inchangé (60 px), aucun défilement de côté, rien sous un bouton fixe — {"actif":true,"mw":"900px","g":510,"d":510,"pl":"32px","pr":"32px","cote":0,"chap":5,"entete":"sticky 60px","sous":["3ème"]}
+  ÉCHEC  A46 · 1920 × 1080 : la page du niveau vue comme un élève — .level-content de bord à bord, rien sous un bouton fixe — {"actif":true,"mw":"900px","g":510,"d":510,"pl":"32px","pr":"32px","cote":0,"chap":5,"entete":"sticky 60px","sous":[]}
+  ok     A46 · 1920 × 1080 : aucune erreur JS
+
+12 vérifications, 8 échec(s) · 39 s

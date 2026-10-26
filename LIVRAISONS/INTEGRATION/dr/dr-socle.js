@@ -321,7 +321,12 @@ function dr_jouerCopie(copie){ try {
   const Sv = n.etat && n.etat.S ? dh(n.etat.S) : {}; const cuit = JSON.parse(JSON.stringify(vieux)); dr_cuireCopie(cuit, Sv.copie || {}, Infinity);
   const f = typeof dr_fusionCopie === 'function' ? dr_fusionCopie(E.slice(), cuit, Jv) : cuit; E.splice(0, E.length, ...f); try { reindexer(); } catch (e) {} return f;
 } catch (e) { DR_COPIE_AVANT = null; return null; } }
-function dr_demarrer(){ dr_envelopperJouer(); dr_toutLire(); dr_classe(); dr_taxo(); dr_suivreSeance(); const hc = document.getElementById('hclasse'); if (hc) hc.textContent = dr_classe().nom; const ho = document.getElementById('hou'); if (ho && !S.lancee) ho.textContent = 'aucune heure lancée'; DR_MEM.demarre = true; }
+/* E1 (§12.27-8, dette 13 · 38) : #hclasse dit la classe de l'heure — celle d'AT_DR_COURS (posée par E2 au lancement, à la reprise, à l'ouverture
+   « Où en est la classe ») —, et avant tout lancement la classe proposée (celle que dit « ▶ Lancer avec … », dr_proposer d'E2) ; suivie au rendu et à la seconde */
+function dr_hclasseNom(leger){ try { if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug)) return AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug; } catch (e) {} if (leger) return null; try { if (typeof dr_proposer === 'function') { const p = dr_proposer(); if (p && p.classeNom) return p.classeNom; } } catch (e) {} return dr_classe().nom; }
+function dr_hclasseMaj(leger){ const hc = document.getElementById('hclasse'); if (!hc) return; const n = dr_hclasseNom(leger); if (n == null) return; if (hc.textContent !== n) hc.textContent = n; }
+setInterval(() => { try { if (dr_actif()) dr_hclasseMaj(); } catch (e) {} }, 1000);
+function dr_demarrer(){ dr_envelopperJouer(); dr_toutLire(); dr_classe(); dr_taxo(); dr_suivreSeance(); dr_hclasseMaj(); const ho = document.getElementById('hou'); if (ho && !S.lancee) ho.textContent = 'aucune heure lancée'; DR_MEM.demarre = true; }
 
 /* ── la surface d'inspection (lecture seule) pour les contrôles de la conscience ── */
 window.dr = { get S(){ return S; }, get J(){ return J; }, ctx: () => dr_ctx(), trame: () => dr_trame(), chapitre: () => dr_chapitre(), classe: () => dr_classe(), notes: () => dr_notes() };

@@ -947,6 +947,19 @@ await B('A43', '§12.27 (7) : la visionneuse d\'un document (openViewer) bord à
     E.verif('A43', r && Math.abs(r.l) <= 1 && Math.abs(r.t) <= 1 && Math.abs(r.r - r.W) <= 1 && Math.abs(r.b - r.H) <= 1 && r.coins === '0px' && r.cadre > r.H - 120 && r.ferme, w + ' × ' + h + ' : la visionneuse a les bords de la fenêtre (à 1 px près), sans coins ; le document prend la hauteur sous l\'en-tête ; le bouton de fermeture est là', JSON.stringify(r));
     E.verif('A43', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
 
+await B('A44', '§12.27 (8), dette 13 · 38 : #hclasse dit la classe de l\'heure (AT_DR_COURS) dès le lancement et change avec elle ; avant tout lancement, la classe proposée — avec une classe d\'essai qui se trie avant les De Gaulle (audit C4 d\'E3)', async () => {
+  const st = E.store(); st.classes['3A ESSAI'] = JSON.parse(JSON.stringify(st.classes['CLASSE TEST'] || st.classes['3E Charles de Gaulle'])); st.classes['3A ESSAI'].nom = '3A ESSAI'; st.classes['3A ESSAI'].niveau = '3e';   /* dans le magasin du banc seulement, pas dans AUDITS/…/hub */
+  for (const [w, h] of TAILLES_1227.filter(t => t[0] === 1366 || t[0] === 1707)) { const o = await E.ouvrir(b, { w, h, hub: st, vue: 'pilotage' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(1500);
+    const av = await pg.evaluate(() => ({ h: document.getElementById('hclasse').textContent, prop: (typeof dr_proposer === 'function') ? dr_proposer().classeNom : null, premiere: dr_classeDuNiveau(), lancer: (document.getElementById('dr-lancer') || {}).textContent || '' }));
+    E.verif('A44', av.prop && av.h === av.prop && av.lancer.indexOf(av.prop) >= 0, w + ' × ' + h + ' : avant tout lancement, #hclasse = la classe proposée (« ' + av.prop + ' », celle de « ▶ Lancer avec … »), pas la première du niveau (« ' + av.premiere + ' »)', JSON.stringify(av));
+    await pg.click('[data-lancer="1"]'); await pg.waitForTimeout(1500);
+    const ap = await pg.evaluate(() => ({ h: document.getElementById('hclasse').textContent, cours: (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) ? (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug) : null, lancee: !!S.lancee }));
+    E.verif('A44', ap.cours && ap.h === ap.cours, w + ' × ' + h + ' : l\'heure lancée (par le geste « Lancer ») — #hclasse = la classe de l\'heure (AT_DR_COURS : « ' + ap.cours + ' »)', JSON.stringify(ap));
+    await pg.evaluate(() => { AT_DR_COURS = Object.assign({}, AT_DR_COURS, { classeSlug: '3A ESSAI', classeNom: '3A ESSAI' }); }); await pg.waitForTimeout(1300);   /* E2 change la classe de l'heure (une autre case, une reprise) : l'entête suit, sans rechargement */
+    const ch = await pg.evaluate(() => document.getElementById('hclasse').textContent);
+    E.verif('A44', ch === '3A ESSAI', w + ' × ' + h + ' : la classe de l\'heure change (AT_DR_COURS) → #hclasse la suit en moins d\'une seconde et demie, sans rechargement', ch);
+    E.verif('A44', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

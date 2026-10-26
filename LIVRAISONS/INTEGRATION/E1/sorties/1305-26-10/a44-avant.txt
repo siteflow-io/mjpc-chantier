@@ -1,0 +1,13 @@
+banc E1 · 2026-10-26 11:58 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant.html · md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+A44 — §12.27 (8), dette 13 · 38 : #hclasse dit la classe de l'heure (AT_DR_COURS) dès le lancement et change avec elle ; avant tout lancement, la classe proposée — avec une classe d'essai qui se trie avant les De Gaulle (audit C4 d'E3)
+  ÉCHEC  A44 · 1366 × 768 : avant tout lancement, #hclasse = la classe proposée (« 3E Charles de Gaulle », celle de « ▶ Lancer avec … »), pas la première du niveau (« 3A ESSAI ») — {"h":"3A ESSAI","prop":"3E Charles de Gaulle","premiere":"3A ESSAI","lancer":"▶ Lancer avec 3E Charles de Gaulle · 08:57-09:52 · heure 1/3"}
+  ÉCHEC  A44 · 1366 × 768 : l'heure lancée (par le geste « Lancer ») — #hclasse = la classe de l'heure (AT_DR_COURS : « 3E Charles de Gaulle ») — {"h":"3A ESSAI","cours":"3E Charles de Gaulle","lancee":true}
+  ok     A44 · 1366 × 768 : la classe de l'heure change (AT_DR_COURS) → #hclasse la suit en moins d'une seconde et demie, sans rechargement — 3A ESSAI
+  ok     A44 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ÉCHEC  A44 · 1707 × 743 : avant tout lancement, #hclasse = la classe proposée (« 3E Charles de Gaulle », celle de « ▶ Lancer avec … »), pas la première du niveau (« 3A ESSAI ») — {"h":"3A ESSAI","prop":"3E Charles de Gaulle","premiere":"3A ESSAI","lancer":"▶ Lancer avec 3E Charles de Gaulle · 08:57-09:52 · heure 1/3"}
+  ÉCHEC  A44 · 1707 × 743 : l'heure lancée (par le geste « Lancer ») — #hclasse = la classe de l'heure (AT_DR_COURS : « 3E Charles de Gaulle ») — {"h":"3A ESSAI","cours":"3E Charles de Gaulle","lancee":true}
+  ok     A44 · 1707 × 743 : la classe de l'heure change (AT_DR_COURS) → #hclasse la suit en moins d'une seconde et demie, sans rechargement — 3A ESSAI
+  ok     A44 · 1707 × 743 : aucune erreur JS, aucune boîte
+
+8 vérifications, 4 échec(s) · 26 s

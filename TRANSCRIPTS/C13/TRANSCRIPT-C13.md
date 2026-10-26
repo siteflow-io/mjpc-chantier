@@ -3280,3 +3280,18 @@ MEMO
 
 25/10/2026 23:38
 MEMO
+
+## Tour 174 — 26/10/2026 08:12 — Paul (08:08) : « Promeus » — PROMEUS 8.75.0-③
+
+**Paul (mot pour mot).** « Promeus »
+
+**Fait.** Rien poussé au sas depuis `17bf3735` ; code identique à `2da707c9` (diff vide). `git archive 2da707c9` → assemblé md5 `a8d3c59015ccee73b7d354dbfa9f0e3c`, 2 348 450 o (= l'annonce du tour 173) ; prod `index.html` = l'assemblé avec `var APP_VERSION="8.75.0-③";` (l. 2967, à la place de `8.74.0-③`) → md5 `83adc8decc16ee4c51b8a68e3ceaa285`, 2 348 450 o ; commit prod `e7c70d279362` (blob `f0cbc31fe81f`), poussé 08:10 ; **bit à bit** : `curl …/index.html?v=8.75.0-3` → `7d121b51…` à 08:10, `83adc8de…` à 08:11 — identique. Suivi prod (`f7d1c21`) : `docs/MJPC6-journal.md` (entrée 26/10 08:10), `docs/MJPC6-DETTES.md` (ÉTAT DE PRODUCTION = v8.75.0-③ ; 13 · 36 « promue le 26/10 avec 8.75.0-③ » ; section H : 13 · 1 à 13 · 36 réglées et promues), `docs/MJPC6-restauration.md` (point de retour avant ③ : blob `ffbdab35fa43`), `docs/MJPC6-INDEX-FONCTIONS.md` (1886 fonctions), `docs/MJPC6-OU-TROUVER-QUOI.md` (ligne ③ sous la section ②). Sas : PROMU dans les quatre relances ; audit §0. Aucun réveil programmé.
+
+**Réponse (mot pour mot).**
+
+359. 8.75.0-③ est en production depuis 08:10 : le fichier en ligne est bit à bit celui que je t'ai annoncé (md5 `83adc8decc16ee4c51b8a68e3ceaa285`, 2 348 450 octets). Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.75.0-3 — la pastille dit v8.75.0-③. Journal, registre (13 · 36 promue ; toutes les dettes du déroulé réglées), point de retour vers ②, index des fonctions, où-trouver-quoi : à jour. Aucun réveil programmé, les exécutants sont en pause : tout repart sur ton mot.
+
+360. Tests geste par geste, sur une classe dont une heure est close : ouvrir la case de l'heure suivante → « Où en est la classe » → « 1. Où en sommes-nous ? » : la diapo s'ouvre dans ton pilote avec « page 1 / n » en bas à droite si elle dépasse une page (‹ › ou Maj+← / → pour tourner), la dernière ligne de chaque page entière, plus de zone « clique ici et écris » dessus ; écrire dans une ligne : « ta version » et ↩ ; « ↶ Où en est la classe » puis « Lancer » : la même diapo, les mêmes pages au tableau.
+
+26/10/2026 08:12
+MEMO

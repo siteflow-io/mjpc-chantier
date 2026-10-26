@@ -304,6 +304,9 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       await clicTexte(pg, '.pp-tete button', 'Retour au cours'); await p(pg, 1200);
       if (!(await vis(pg, '.pp-tete'))) { await pg.click('#bfin').catch(() => {}); await p(pg, 1000); }
       await clicTexte(pg, '.pp-tete button', 'Plus tard'); await p(pg, 1200); verif('29', !(await vis(pg, '.pp-tete')) && await pg.evaluate(() => !!(S.lancee && !S.close)), T + ' · S2 · « Plus tard » : la séquence se replie, la classe continue');
+      /* contrôle n°64 : « Plus tard » puis le palier suivant rouvre la séquence (T-3 à 09:44:20) */
+      await pg.clock.setFixedTime(new Date('2026-09-14T09:44:20+02:00')); await p(pg, 3500); const t3 = await pg.evaluate(() => { const e = document.querySelector('.pp-tete'); return e && e.offsetParent ? (e.innerText || '').replace(/\s+/g, ' ').trim() : null; });
+      verif('29', !!t3 && /^T-3/.test(t3), T + ' · S1 · après « Plus tard », le palier suivant (T-3) rouvre la séquence, le palier en tête', t3 ? '« ' + t3.slice(0, 100) + ' »' : 'séquence fermée');
       const ch = await chevauche(pg); verif('29', !ch.length, T + ' · L · rien de flottant l’un sur l’autre dans l’écran de la classe', ch.join(' ; '));
       /* S4 — la case d'une heure en cours */
       const ou = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button, a')).find(e => e.offsetParent && /Le site dans un nouvel onglet/.test(e.innerText || '')); return !!b; });

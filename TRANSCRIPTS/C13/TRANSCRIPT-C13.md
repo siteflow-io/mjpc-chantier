@@ -3588,3 +3588,18 @@ MEMO
 
 26/10/2026 17:18
 MEMO
+
+## Tour 195 — 26/10/2026 17:51 — contrôle n°61 : le candidat 8.75.0-④ (sans message de Paul depuis le tour 194)
+
+**Fait.** E3 retour 49 (`1811c216`) : « §12.27 VERT (`e2aee15f`) » — `banc-1227` 825/825 aux quatre tailles, dont la garde L (le balayage des recouvrements de la conscience, 172 écrans défilés, 0 recouvrement). Mon `banc.sh` VERT 108/0 sur le même code (`0154ef7a`), assemblé md5 `a3f2d455effb76e16aaf2aaad0bfe9cf`, 2 364 997 o. Onze paires avant / après à 1707 × 743 composées depuis les captures d'E3 (pièces `T195-avant-apres-*.png`), regardées, envoyées. Relances : candidat annoncé. Plus de contrôle programmé : on attend le mot de Paul.
+
+**Réponse (mot pour mot).**
+
+405. À jouer : les onze captures (en haut la production d'aujourd'hui, en bas le candidat, à la taille de ta fenêtre) · en cours chez les exécutants : rien · ouvert : ton mot. Le chantier est vert partout : quatre tailles d'écran, 50 écrans défilés, aucun bouton ne cache plus rien, le banc vert.
+
+406. Ce qui change, écran par écran : le panneau prof bord à bord (1, 2, 3 : ↻ ✕ dans la carte, la rangée « Sortir le JSON » rangée en trois groupes) ; l'accueil et la page du niveau à toute la largeur — elle garde à droite une colonne libre pour « Panneau prof », « Mes applications » et le badge, pour qu'ils ne cachent rien (4, 5) ; « Voir dans l'arborescence » ouvre ton chapitre sans rouvrir le panneau (6) ; l'Atelier et le pilote à toute la largeur et toute la hauteur, « Fermer l'atelier » au bout des onglets, la diapo plus grande (7, 8) ; la Relecture et la visionneuse en grand (9, 10) ; plus jamais d'alerte du prof sur le tableau devant la classe (11). Et la bonne classe en haut du pilotage.
+
+407. Ce qui reste ouvert au registre, pour le cycle suivant : 13 · 39 (le mode test et l'emploi du temps), 13 · 40 (« 7 à décider »), 13 · 41 (quitter le pilotage), 13 · 42 (le récit « Enfin »), 13 · 43 (le « ? »). Ta règle est « jamais de promotion sur dette » : dis « promeus » pour mettre ce chantier en ligne quand même, ou non et on règle d'abord ces cinq.
+
+26/10/2026 17:51
+MEMO

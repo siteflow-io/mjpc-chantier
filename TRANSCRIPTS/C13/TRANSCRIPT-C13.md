@@ -3673,3 +3673,47 @@ MEMO
 
 26/10/2026 20:12
 MEMO
+
+## Tour 199 — 26/10/2026 20:21 — Paul (20:11) : « peut-on simplifier l'existant tout en gardant sa finesse ? »
+
+**Paul (mot pour mot).** « D'abord avant de coder un nouveau dispositif, peut-on simplifier l'existant tout en gardant sa finesse ? Je parle surtout d'ui, de flux et d'ergonomie visuelle ET pratique »
+
+**Réponse d'attente (20:14, mot pour mot).**
+
+421. Oui — et c'est le bon ordre : simplifier d'abord, le mode dirigé deviendra peut-être inutile avec moins de choses à l'écran. La règle que je propose pour ne rien perdre de la finesse : rien de ce qui sert ne tombe. Ce qui fait double se fusionne (un geste, un bouton, un nom) ; ce qui ne sert pas à ce moment-là se range (à un clic, toujours à sa place) ; l'écran ne se réorganise jamais tout seul ; les messages ont une seule place.
+
+422. Déjà mesuré : l'heure lancée montre 22 boutons, dont dix icônes d'outils en permanence ; à T-5, 31, et cinq chemins mènent au cahier ; « Reprendre le cours » veut dire deux choses différentes (reprendre une heure depuis l'emploi du temps, et refermer la colonne du cahier).
+
+423. Je fais maintenant l'inventaire complet, écran par écran, sur tout le parcours (préparer, publier, lancer, jouer, finir, clore, relire) : chaque bouton, ce qu'il fait, quand il sert, ses doublons, à la taille de ta fenêtre. Je reviens avec les simplifications écran par écran, sur captures avant / après — rien n'est codé avant ton accord.
+
+À tester : rien pour l'instant.
+
+26/10/2026 20:14
+MEMO
+
+**Fait.** Inventaire par le geste (`MANDATS/SIMPLIFIER/inventaire.mjs`, sorties et 32 captures dans `MANDATS/SIMPLIFIER/inventaire/`), fichier intégré `2518615a`, 1707 × 743, l'horloge qui court. Cadrage : `MANDATS/SIMPLIFIER/CADRAGE-26-10.md` (S1-S5). Trouvé en mesurant : la dette **13 · 46** (la garde « Aller au cahier » et l'étape 2 comptent différemment ce qui reste) — inscrite au registre prod (`15c561a`), ajoutée au contrat §12.28 (8) (gardes A50, B32), relances E1, E2, E3 « 20:40 ».
+
+**Réponse (mot pour mot).**
+
+424. Je corrige mon 421 : « se range, à un clic » va contre ta règle « une fonctionnalité = un visuel, jamais cachée ». Rien ne se cache. Simplifier, c'est : ce qui fait double se fusionne, chaque geste a un seul nom, l'écran ne change jamais de forme, rien de ce qui sert ne tombe.
+
+425. L'inventaire est fait : 32 écrans du parcours, par le geste, à la taille de ta fenêtre, chaque bouton avec ce qu'il fait. Ce qui alourdit : à T-5, deux choses s'ouvrent ensemble ; cinq chemins mènent au cahier ; « Préparer » a trois sens, « Reprendre le cours » deux, et trois boutons parlent de « tableau » ; « Préparer » change la forme de l'écran ; en répétition, l'Atelier montre des gestes de classe (« Fin de l'heure », la participation).
+
+426. Trouvé en mesurant : « Aller au cahier » te dit « Aucune activité restante — tu es à l'heure, tout a été fait » pendant que l'étape 2 dit « 7 activités : dis ce que chacune devient ». Deux comptes qui se contredisent : dette 13 · 46, inscrite, réglée dans le cycle en cours avant toute mise en ligne.
+
+427. Ce que je propose (ce que tu ne commentes pas est acquis) — à T-5, une seule chose s'ouvre : les sept étapes à droite, comme tu l'as décidé le 24/09 ; T-5, T-3, T-1 s'écrivent en tête ; la barre du bas ne s'ouvre plus.
+
+428. Un seul chemin vers le cahier : les sept étapes. Tombent « Préparer », « Aller au cahier », « Plus tard », « Préparer le cahier de textes » et la garde « Aller au cahier ». « Fin de l'heure » et « Clore l'heure » restent en haut. Le moment où le cahier passe au tableau devient un bouton des étapes, là où il sert.
+
+429. L'écran ne change jamais de forme : les étapes vivent dans la colonne de droite, le reste ne bouge pas.
+
+430. Un nom par geste : « Préparer », seulement dans la case de l'emploi du temps ; « Reprendre », seulement pour reprendre une heure ; dans les étapes, « Retour au cours » ; « Écran 2 » devient « Ouvrir le tableau », « ⧉ Tableau » devient « Ce que voit la classe ».
+
+431. La répétition ne montre que la répétition : dans l'Atelier, plus de « Fin de l'heure » ni de participation.
+
+432. Ne change pas : tous tes outils de classe, la participation, les notes, le chrono, les minutes, le contenu des sept étapes, les gardes qui t'évitent une perte. Sur ton « oui », je le fais coder après les cinq dettes et tu juges sur captures avant / après.
+
+À tester : rien pour l'instant.
+
+26/10/2026 20:21
+MEMO

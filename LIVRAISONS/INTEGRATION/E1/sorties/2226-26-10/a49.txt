@@ -1,0 +1,20 @@
+banc E1 · 2026-10-26 21:19 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/apres.html · md5 c66af6c71f49265293d6aebb73535ce2
+
+A49 — §12.28 (5), dette 13 · 43 : le « ? » de chaque écran du prof — visible au même endroit, rien dessous ; le clic et la touche « ? » ouvrent le texte de cet écran mot pour mot (et le fil, son étape en évidence) ; Échap ferme ; dans un champ, « ? » s'écrit ; rien dans la fenêtre du tableau ni dans la vue élève
+  ok     A49 · 1366 × 768 : 31 écrans du prof — le « ? » au même endroit (0,0,20x56 : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme
+  ok     A49 · 1366 × 768 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1366 × 768 : aucune erreur JS
+  ok     A49 · 1536 × 864 : 31 écrans du prof — le « ? » au même endroit (0,0,20x56 : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme
+  ok     A49 · 1536 × 864 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1536 × 864 : aucune erreur JS
+  ok     A49 · 1707 × 743 : dans un champ où l'on écrit, « ? » s'écrit et n'ouvre rien — {"v":"a?b","ouvert":false}
+  ok     A49 · 1707 × 743 : 31 écrans du prof — le « ? » au même endroit (0,0,20x56 : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme
+  ok     A49 · 1707 × 743 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1707 × 743 : aucune erreur JS
+  ok     A49 · 1920 × 1080 : 31 écrans du prof — le « ? » au même endroit (0,0,20x56 : bord droit, mi-hauteur), rien dessous ; le clic ou la touche ouvrent le texte de cet écran mot pour mot, toute la hauteur, le fil à son étape ; Échap ferme
+  ok     A49 · 1920 × 1080 : « Voir comme un élève » — pas de « ? » — {"visible":false,"admin":false}
+  ok     A49 · 1920 × 1080 : aucune erreur JS
+  ok     A49 · la fenêtre du tableau (session du prof) : ni « ? », ni volet, même à la touche — {"b":false,"v":false}
+  ok     A49 · côté élève (la page sans session du prof) : ni « ? », ni volet, même à la touche — {"b":false,"v":false}
+
+15 vérifications, 0 échec(s) · 208 s

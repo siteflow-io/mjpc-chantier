@@ -479,3 +479,7 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 #ses-reprise{top:0;bottom:auto}
 html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
 /* les éléments fixes ou collants en haut descendent par `sesRepriseDecaler` (index.html) */
+/* E2 · §12.29 S3 (vu par E1) : la séquence en préparation vit dans la colonne de droite (#prep) — une seule colonne, comme #fin (la liste des étapes n'est plus coupée à droite) */
+#dr-zone #prep .dr-pp{grid-template-columns:1fr}
+#dr-zone #prep .pp-tete{flex-direction:column;align-items:flex-start}
+#dr-zone #prep .pp-liste{border-left:0;padding-left:0;border-top:1px dotted var(--bord2);padding-top:6px;margin-top:8px}

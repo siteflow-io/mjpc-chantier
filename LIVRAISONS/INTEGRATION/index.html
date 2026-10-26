@@ -16081,13 +16081,19 @@ function sesReprisePeindre(c){
    par `padding-top` (dr.css). Ce qui paraît ensuite est pris à la seconde. Tout revient quand le bandeau part. */
 function sesRepriseDecaler(){
   var b=document.getElementById('ses-reprise'); if(!b)return; var H=b.offsetHeight; if(!H)return;
-  Array.prototype.forEach.call(document.body.querySelectorAll('*'),function(el){
-    if(el===b||b.contains(el)||el.hasAttribute('data-ses-top'))return;
-    var cs=getComputedStyle(el); if(cs.position!=='fixed'&&cs.position!=='sticky')return;
-    var r=el.getBoundingClientRect(); if(!r.width||!r.height||r.top>=H||r.bottom<=0)return;
-    if(cs.position==='sticky'&&r.top>1)return;   /* un collant qui n'est pas collé en haut : la page le porte déjà plus bas */
-    el.setAttribute('data-ses-top',el.style.top||''); el.style.top=((parseFloat(cs.top)||0)+H)+'px';
+  var fixes=[]; Array.prototype.forEach.call(document.body.querySelectorAll('*'),function(el){
+    if(el===b||b.contains(el))return; var cs=getComputedStyle(el); if(cs.position!=='fixed'&&cs.position!=='sticky')return;
+    var r=el.getBoundingClientRect(); if(!r.width||!r.height||r.bottom<=0)return; fixes.push({el:el,cs:cs});
   });
+  var pousser=function(x){ if(x.el.hasAttribute('data-ses-top'))return false; x.el.setAttribute('data-ses-top',x.el.style.top||''); x.el.style.top=((parseFloat(x.cs.top)||0)+H)+'px'; return true; };
+  var bouges=[];
+  fixes.forEach(function(x){ var r=x.el.getBoundingClientRect(); if(x.el.hasAttribute('data-ses-top')){ bouges.push(x.el); return; } if(r.top>=H)return; if(x.cs.position==='sticky'&&r.top>1)return; if(pousser(x))bouges.push(x.el); });
+  /* ce qui était sous un élément fixe descendu descend avec lui (« 📚 Mes applications » sous « 🛠 Panneau prof ») : ils descendent ensemble, sans se chevaucher */
+  for(var tour=0;tour<4;tour++){ var neuf=false;
+    fixes.forEach(function(x){ if(x.el.hasAttribute('data-ses-top')||x.cs.position!=='fixed')return; var r=x.el.getBoundingClientRect();
+      var sous=bouges.some(function(o){ if(o.contains(x.el)||x.el.contains(o))return false; var q=o.getBoundingClientRect(); return q.width<window.innerWidth*0.5&&r.left<q.right&&q.left<r.right&&r.top<q.bottom&&q.top<r.bottom; });
+      if(sous&&pousser(x)){ bouges.push(x.el); neuf=true; } });
+    if(!neuf)break; }
 }
 function sesRepriseRemettre(){
   if(SES._repriseDec){ clearInterval(SES._repriseDec); SES._repriseDec=null; }
@@ -16105,7 +16111,7 @@ function sesReprisePoser(){
     var loc=(typeof dr_heurePartie==='function')?dr_heurePartie():null;
     dr_lire('/site/cours_actif',function(c){
       var frais=function(x){ return x&&x.ts&&(Date.now()-x.ts)<=4*3600*1000; };
-      if(!frais(c)){ if(frais(loc)&&(typeof M8_TEST!=='undefined'&&M8_TEST))c=loc; else { sesRepriseRetirer(); return; } }   /* en mode test, le pointeur n'est que dans la copie de l'onglet parti : ce navigateur le sait */
+      if(!frais(c)){ if(frais(loc))c=loc; else { sesRepriseRetirer(); return; } }   /* ce navigateur a vu partir l'onglet de l'heure (et pas sa clôture) : le pointeur absent ne suffit pas à la dire close — la trace en décide (`_drHeureCloseAu`, ci-dessous) ; contrôle n°65 (a) : le bandeau partait à la veille suivante quand le pointeur n'était pas lisible */
       if(typeof dr_heureTenueAilleurs==='function'&&dr_heureTenueAilleurs(_drSignatureCours(c))){ sesRepriseRetirer(); return; }   /* un autre onglet d'ici la tient */
       _drHeureCloseAu(c,function(close){ if(close){ sesRepriseRetirer(); return; } if(typeof dr_heureTenue==='function'&&dr_heureTenue())return; sesReprisePeindre(c); });
     });
@@ -16120,7 +16126,7 @@ function sesReprendre(){
   if(typeof dr_heureTenueAilleurs==='function'&&dr_heureTenueAilleurs(_drSignatureCours(c))){ sesRepriseRetirer(); atInfo('Cette heure est ouverte dans un autre onglet de ce navigateur : continue-la là-bas.'); return; }
   dr_lire('/site/cours_actif',function(p){
     var loc=(typeof dr_heurePartie==='function')?dr_heurePartie():null;
-    if((!p||!p.ts)&&loc&&typeof M8_TEST!=='undefined'&&M8_TEST)p=loc;
+    if((!p||!p.ts)&&loc)p=loc;
     if(!p||!p.ts||_drSignatureCours(p)!==_drSignatureCours(c)){ sesRepriseRetirer();
       atInfo('Ce cours n’est plus celui qui tourne : il a été clos ou remplacé par un autre. Rien n’est repris.'); return; }
     _drHeureCloseAu(c,function(close){
@@ -19002,7 +19008,7 @@ function edtPeindreModale(){
       h+='<p class="edt-p">Heure jouée \u2014 '+c.activites+' activité'+(c.activites>1?'s':'')
         +(c.reportees?(', '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'.'
         +(c.clos?' Close.':' Pas encore close.')+'</p>'
-        +(c.clos?'':'<button class="edt-btn edt-btn-prim edt-large" data-reprendre="1" title="L\u2019heure est en cours (la page s\u2019est fermée ?) : rouvrir le Pilotage là où la classe en est \u2014 la diapo, le chrono, les paroles, les notes" onclick="dr_edtReprendre('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Reprendre le cours</button>')   /* [E2] mandat 6 */
+        +(c.clos?'':'<button class="edt-btn edt-btn-prim edt-large" data-reprendre="1" title="L\u2019heure est en cours, pas close (l\u2019onglet s\u2019est fermé ?) : rouvre l\u2019heure de cette classe là où elle en était \u2014 la diapo, sa page, les lignes dévoilées, le chrono, les paroles, les notes, l\u2019appel" onclick="dr_edtReprendre('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Reprendre l\u2019heure</button>')   /* [E2] mandat 6 ; §12.29 (4) S4 : « Reprendre » = reprendre une heure — avant : « ▶ Reprendre le cours » */
         +(c.titre?'<p class="edt-p">Séance : <b>'+escapeHtml(c.titre)+'</b></p>':'')+(c.clos?'<button class="edt-btn edt-large" data-relire="1" title="Ouvre la Relecture de cette heure : son récit, ce qui s\u2019est passé, le papier \u2014 rien ne se rejoue, rien ne s\u2019écrit" onclick="dr_edtRelire('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Relire cette heure</button>':'')/* [E2] réveil n°5, A4-4 — avant : « La relecture de cette heure arrive avec le profil de classe. » */
         +edtAbsencesHtml(cle,c);
     } else if(c.nature==='deplacee'){

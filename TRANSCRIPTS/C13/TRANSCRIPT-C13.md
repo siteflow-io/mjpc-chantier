@@ -3575,3 +3575,16 @@ MEMO
 
 26/10/2026 16:24
 MEMO
+
+## Tour 194 — 26/10/2026 17:18 — Paul (17:03) : « on ne va pas faire les boutons un par un !!!! »
+
+**Paul (mot pour mot).** « ça commence à être pénible. tu dois faire l'ensemble des msures des boutons, on ne va pas faire les boutons un par un !!!! »
+
+**Fait.** Faute de méthode de la conscience : trois recouvrements trouvés l'un après l'autre (la pastille, le badge, « Mes applications »), parce que la mesure regardait le haut de chaque écran et pas la page défilée. Écrit `MANDATS/UI-PLEIN-ECRAN/recouvrements.mjs` : 50 écrans (le parcours + les dix onglets de la page du niveau + la vue élève), chaque page et chaque conteneur qui défile balayés de haut en bas, tout élément fixe flottant (bouton, badge, pastille) contre tout ce qui se lit ou se clique dessous, aux quatre tailles (1366 × 768, 1536 × 864, 1707 × 743, 1920 × 1080). Vérifié qu'il voit : sur la version d'avant la colonne du badge (`7aa989a3`), il trouve le badge sur les séances. **Sur la tête `ad6c6d3a` (E1 `0154ef7a`, « Mes applications » réglé) : 0 recouvrement sur 200 écrans**, `banc.sh` VERT. Sorties `MANDATS/UI-PLEIN-ECRAN/recouvrements-0154ef7a/`. Relances : E3 en fait une garde de son banc et rejoue (c'est le dernier pas avant le candidat) ; E1 : rien de plus.
+
+**Réponse (mot pour mot).**
+
+403. Tu as raison, c'était ma méthode : je regardais le haut de chaque écran, pas la page qu'on fait défiler — d'où un bouton à la fois. C'est fait d'un coup : tous les écrans (50, dont les dix onglets de la page du niveau et la vue élève), chaque page défilée de haut en bas, tout bouton ou badge fixe contre tout ce qu'il pourrait cacher, aux quatre tailles. Résultat sur la version d'E1 de 17:04 : plus aucun recouvrement, 200 écrans sur 200, banc vert. E3 rejoue sa vérification avec ce balayage en garde ; dès qu'il dit vert, tu reçois les captures.
+
+26/10/2026 17:18
+MEMO

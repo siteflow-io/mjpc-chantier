@@ -1,7 +1,7 @@
 # LE « ? » DE CHAQUE ÉCRAN — LES MOTS (dette 13 · 43, contrat §12 point 28 (5))
 *Conscience n°13, 26/10/2026. Paul, 26/10 11:20 : « il faut que j'ai un ? sur lequel cliquer à chaque endroit où je suis et qui me dit ce qu'il faut faire à l'écran et dans quel ordre ». Ces mots sont **de la conscience** : Paul les corrige sur les captures avant toute mise en ligne. Écrits d'après les écrans du candidat (captures 1707 × 743) et les infobulles du site.*
 
-**Pour E1** : chaque bloc `### clé` est le texte d'un écran, **mot pour mot** (le gras et les guillemets compris) ; rien d'ajouté, rien de retiré. Le volet montre : le titre, « Ici », « Dans l'ordre » (liste numérotée), « Avant / après », puis **le fil** (en bas de tout volet, l'étape où est Paul en évidence — la clé `fil-n` de chaque écran dit laquelle ; `fil-0` : aucune). Une phrase fausse contre l'écran : au JOURNAL, pas corrigée en silence (contrat §12.28 (5f)). Un écran du prof qui n'a pas de clé ici : au JOURNAL, la conscience l'écrit. La Relecture dans « la classe en cours » prend le texte de `chapitre-relecture`.
+**Pour E1** : chaque bloc `### clé` est le texte d'un écran, **mot pour mot** (le gras et les guillemets compris) ; rien d'ajouté, rien de retiré. Le volet montre : le titre, « Ici », « Dans l'ordre » (liste numérotée), « Avant / après », puis **le fil** (en bas de tout volet, l'étape où est Paul en évidence — la clé `fil-n` de chaque écran dit laquelle ; `fil-0` : aucune). Une phrase fausse contre l'écran : au JOURNAL, pas corrigée en silence (contrat §12.28 (5f)). Un écran du prof qui n'a pas de clé ici : au JOURNAL, la conscience l'écrit. La Relecture dans « la classe en cours » prend le texte de `chapitre-relecture` tant que l'heure n'est pas close ; l'heure close, l'écran de la classe prend `classe-close`, quel que soit l'onglet (contrôle n°63). `panneau-atelier` retiré (l'entrée « Atelier » du panneau ouvre l'Atelier : c'est `atelier-accueil`, mission 0 d'E1).
 
 ---
 
@@ -92,7 +92,7 @@
 1. Pour voir les codes : ta clé de chiffrement, puis « Afficher les codes ».
 2. Pour importer une classe : dépose le fichier .xlsx du logiciel de vie scolaire, ou colle le tableau (Ctrl + V).
 3. Ou choisis la classe, colle un élève par ligne (NOM Prénom), puis « + Importer / compléter ».
-4. « Générer les codes manquants », puis « Imprimer » pour les distribuer.
+4. « Générer … codes manquants » (le nombre est sur le bouton), puis « Imprimer » pour les distribuer.
 **Avant / après** : avant, « Classes » (la classe existe).
 
 ### panneau-profil-test — Panneau prof · Profil test (fil-0)
@@ -149,12 +149,6 @@
 2. Pour faire un objet : « Copier le prompt », puis « Injecter un objet » avec ce qu'il t'a rendu.
 3. « Sortir le JSON » : coche ce que tu veux garder, puis « Sortir les JSON cochés ».
 **Avant / après** : après, l'emploi du temps.
-
-### panneau-atelier — Panneau prof · Atelier (fil-1)
-**Ici** : l'entrée de l'Atelier, où tu prépares tes chapitres.
-**Dans l'ordre** :
-1. Ouvre l'Atelier.
-**Avant / après** : après, « Mes chapitres ».
 
 ### panneau-configuration — Panneau prof · Configuration & Firebase (fil-0)
 **Ici** : les réglages techniques du site et les gestes rares.
@@ -249,9 +243,10 @@
 **Avant / après** : après, l'heure close.
 
 ### classe-close — La classe en cours · l'heure close (fil-5)
-**Ici** : l'heure est close : tout est enregistré pour cette classe.
+**Ici** : l'heure est close : tout est enregistré pour cette classe. Sa Relecture est ouverte.
 **Dans l'ordre** :
-1. « ✕ Fermer » revient à l'emploi du temps.
-**Avant / après** : pour la relire : la case de cette heure → « Relire cette heure ».
+1. Relis le récit ; « Copier pour École Directe » si ce n'est pas fait.
+2. « ✕ Fermer » revient à l'emploi du temps.
+**Avant / après** : pour la relire plus tard : la case de cette heure → « Relire cette heure ».
 
 MEMO

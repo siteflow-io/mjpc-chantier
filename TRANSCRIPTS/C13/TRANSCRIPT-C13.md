@@ -3462,3 +3462,22 @@ MEMO
 
 26/10/2026 10:48
 MEMO
+
+## Tour 186 — 26/10/2026 11:03 — Paul (10:59) : « je suis perdu dans l'utilisation »
+
+**Paul (mot pour mot).** « j'ai publié pour la totalité de mes classes (je suis en mode test), mais je n'ai que de gaulle dont ça apparait correctement dans l'edt ensuite. par ailleurs pourquoi le site ne prend jamais la largeur d'une page complète, à part pour l'edt? tout est si petit! ce sont d'aillerus des dettes d'affichage (à aller chercher, je l'avais déjà dit) par ailleurs, je ne comprends pas à quoi correspond ce message (7 à décider??)  en fait ce qui me manque c'est que je ne sais pas dans quel ordre faire les choses, je suis perdu dans l'utilisation. Je ne sais pas où cliquer quand, quoi faire quand, etc. » — trois captures : le pilotage sur « Préparer le cahier de textes — étape 1 sur 7 » (en-tête « 3 DYLAN BOB  3E Charles de Gaulle · 08:00-08:55 · heure 1/3 »), la boîte « Il manque, avant de clore » (ce qui reste (7 à décider) · le récit relu · copié pour École Directe), la Relecture « Ce qu'on a fait aujourd'hui » (pièces `T186-capture-Paul-*.png`).
+
+**Fait.** Mesuré dans ③ : (a) mode test — la publication écrit au magasin par feuille (`/site/3e/chapitres/0/published/<slug>`, l. 14239-14244), l'EDT lit le sous-arbre `/site/3e/chapitres` (l. 22330 → `_siteGet` l. 1859-1862 : magasin à cette clé ou hub, jamais recomposé) → la publication de test est invisible à l'EDT ; (b) largeur — `.at-zone{max-width:1500px}`, `.tprof-box{max-width:1100px}` (12 · 87 ⏳ depuis le 01/10), `body{font-size:.92rem}`, `#edt-ecran` plein écran sans borne ; (c) l'en-tête du pilotage — `#hclasse` écrit une fois à `dr_demarrer` (l. 16052) avec la première classe du niveau, jamais réécrit au lancement ; (d) « ce qui reste (7 à décider) » — étape 2 des sept (l. 17686-17693 : l'échéance, ce qui reste, le travail à faire, le récit relu, avant de clore, copier pour École Directe, clore l'heure). Registre prod : dettes **13 · 37** (largeur et taille, avec 12 · 87, déclarée par Paul), **13 · 38** (classe de l'en-tête), **13 · 39** (publication en mode test invisible à l'EDT), **13 · 40** (« 7 à décider » pas compris) — commit `038d755`.
+
+**Réponse (mot pour mot).**
+
+384. L'emploi du temps : en mode test, rien ne s'écrit au hub — ta publication est dans le magasin de test, par classe, et l'emploi du temps relit tout le chapitre d'un bloc, sans y voir ces écritures : il ne montre que ce que le hub porte (les De Gaulle, publiées avant). C'est un défaut du mode test, pas de toi : dette 13 · 39. Pour voir les autres classes dans l'emploi du temps aujourd'hui, il faut publier hors mode test — et c'est alors une vraie publication, que leurs élèves voient.
+
+385. La largeur : mesuré, l'atelier est borné à 1500 px (`.at-zone`), le panneau prof à 1100 px (la dette 12 · 87 que tu as déjà dite, ouverte depuis le 01/10), le texte part de .92 rem ; seul l'emploi du temps est sans borne. Inscrit : dette 13 · 37 (avec 12 · 87). Sur ta capture aussi : l'en-tête du pilotage dit « 3 DYLAN BOB » pour une heure des De Gaulle — la première classe du niveau, écrite une fois et jamais changée au lancement : dette 13 · 38.
+
+386. « ce qui reste (7 à décider) » : sept activités prévues pour cette heure n'ont pas été jouées (Tableau 1 à 5, Les hypothèses, Question-bilan) ; à l'étape 2 des sept, tu dis pour chacune ce qu'elle devient — à l'heure suivante, à terminer, à préparer, abandonnée — et sans réponse elle glisse à l'heure suivante. Que tu ne l'aies pas compris est une dette (les mots sont pour toi) : 13 · 40.
+
+387. L'ordre des choses, tel que ton site est fait : avant — l'atelier pour le chapitre, puis sur la page du niveau le point de classe pour le publier, puis l'emploi du temps : la case → « ✎ Préparer » (et, à partir de l'heure 2, « ▶ » montre « Où en est la classe » sans rien lancer) ; en classe — l'emploi du temps : la case de l'heure → « ▶ Ouvrir le pilotage et lancer » → « Tableau » pour la fenêtre de l'écran 2 → « Dévoiler » diapo après diapo, les paroles, les notes ; à cinq minutes de la fin — « Fin de l'heure » : les sept étapes (l'échéance, ce qui reste, le travail à faire, le récit relu, avant de clore, copier pour École Directe) puis « Clore l'heure » ; après — la case devient verte : « Relire cette heure ». Que tu sois perdu est le vrai manque : je propose d'écrire ce fil en une page (`docs/MJPC6-LE-FIL.md`, tes mots) et, sur ton mot, de le cadrer dans le site — à chaque écran, ce qui vient avant et après.
+
+26/10/2026 11:03
+MEMO

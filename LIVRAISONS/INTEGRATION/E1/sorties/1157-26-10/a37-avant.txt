@@ -1,0 +1,21 @@
+banc E1 · 2026-10-26 10:57 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant.html · md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+A37 — §12.27 (1), dette 12 · 87 : le panneau prof bord à bord, à toute la largeur et toute la hauteur de la fenêtre, sans coins, aux quatre tailles ; aucun défilement de côté, dans aucune section
+  ÉCHEC  A37 · 1366 × 768 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":133,"t":30,"r":1233,"b":738,"coins":"16px","W":1366,"H":768}
+  ok     A37 · 1366 × 768 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ÉCHEC  A37 · 1366 × 768 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":31,"menu":230,"oy":"auto"}
+  ok     A37 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ÉCHEC  A37 · 1536 × 864 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":218,"t":30,"r":1318,"b":834,"coins":"16px","W":1536,"H":864}
+  ok     A37 · 1536 × 864 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ÉCHEC  A37 · 1536 × 864 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":31,"menu":230,"oy":"auto"}
+  ok     A37 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ÉCHEC  A37 · 1707 × 743 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":304,"t":30,"r":1404,"b":713,"coins":"16px","W":1707,"H":743}
+  ok     A37 · 1707 × 743 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ÉCHEC  A37 · 1707 × 743 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":31,"menu":230,"oy":"auto"}
+  ok     A37 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ÉCHEC  A37 · 1920 × 1080 : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis — {"l":410,"t":30,"r":1510,"b":1050,"coins":"16px","W":1920,"H":1080}
+  ok     A37 · 1920 × 1080 : aucune des 13 sections ne défile de côté (le contenu, la page)
+  ÉCHEC  A37 · 1920 × 1080 : l'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui — {"haut":31,"menu":230,"oy":"auto"}
+  ok     A37 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+16 vérifications, 8 échec(s) · 32 s

@@ -802,6 +802,32 @@ await B('A36', '§12.26, ma part : le geste d\'écriture du pilote sur la réact
   E.verif('A36', hub === 0, 'rien au hub : aucun B/deroule portant « reactivation »', String(hub));
   E.verif('A36', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
 
+// ── §12.27 « tout l'écran, tout le temps » (26/10) : mes gardes A37+, par le geste, aux quatre tailles du point 27 (1707 × 743 = la fenêtre de Paul) ──
+const TAILLES_1227 = [[1366, 768], [1536, 864], [1707, 743], [1920, 1080]];
+async function ouvrirPanneau(w, h, { hub = null } = {}) {   /* le site, le panneau prof ouvert par son bouton (comme E.ouvrir, sans aller à l'Atelier) */
+  const ctx = await b.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
+  const pg = await ctx.newPage(); const errs = [], boites = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, hub || E.store());
+  await pg.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
+  await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
+  await pg.click('#tprof-btn'); await pg.waitForTimeout(600); await sansVoile(pg);
+  return { ctx, pg, errs, boites };
+}
+const largeurDeCote = pg => pg.evaluate(() => { const d = document.scrollingElement || document.documentElement; return { doc: d.scrollWidth - d.clientWidth, body: document.body.scrollWidth - document.body.clientWidth }; });
+
+await B('A37', '§12.27 (1), dette 12 · 87 : le panneau prof bord à bord, à toute la largeur et toute la hauteur de la fenêtre, sans coins, aux quatre tailles ; aucun défilement de côté, dans aucune section', async () => {
+  for (const [w, h] of TAILLES_1227) { const o = await ouvrirPanneau(w, h); const pg = o.pg;
+    const r = await pg.evaluate(() => { const x = document.querySelector('.tprof-box').getBoundingClientRect(); const cs = getComputedStyle(document.querySelector('.tprof-box')); return { l: Math.round(x.left), t: Math.round(x.top), r: Math.round(x.right), b: Math.round(x.bottom), coins: cs.borderTopLeftRadius, W: innerWidth, H: innerHeight }; });
+    E.verif('A37', Math.abs(r.l) <= 1 && Math.abs(r.t) <= 1 && Math.abs(r.r - r.W) <= 1 && Math.abs(r.b - r.H) <= 1 && r.coins === '0px', w + ' × ' + h + ' : les bords du panneau sont ceux de la fenêtre (à 1 px près), sans coins arrondis', JSON.stringify(r));
+    const secs = await pg.evaluate(() => Array.from(document.querySelectorAll('.tprof-section-btn[data-section]')).map(x => x.dataset.section)); const debord = [];
+    for (const sct of secs) { await pg.evaluate(k => { try { showProfSection(k); } catch (e) {} }, sct); await pg.waitForTimeout(350);
+      const d = await pg.evaluate(() => { const c = document.getElementById('tprof-content'); const de = document.scrollingElement; return { c: c ? c.scrollWidth - c.clientWidth : 0, doc: de.scrollWidth - de.clientWidth, vis: getComputedStyle(document.getElementById('tprof-overlay') || document.querySelector('.tprof-overlay')).display }; });
+      if (d.c > 1 || d.doc > 1) debord.push(sct + ' (contenu ' + d.c + ' px, page ' + d.doc + ' px)'); }
+    E.verif('A37', debord.length === 0 && secs.length >= 12, w + ' × ' + h + ' : aucune des ' + secs.length + ' sections ne défile de côté (le contenu, la page)', debord.join(' ; ') || undefined);
+    const hd = await pg.evaluate(() => { const hh = document.querySelector('.tprof-header').getBoundingClientRect(), sb = document.querySelector('.tprof-sidebar').getBoundingClientRect(); return { haut: Math.round(hh.top), menu: Math.round(sb.width), oy: getComputedStyle(document.getElementById('tprof-content')).overflowY }; });
+    E.verif('A37', hd.haut <= 1 && hd.menu === 230 && hd.oy === 'auto', w + ' × ' + h + ' : l\'en-tête en haut de la fenêtre, le menu de gauche à 230 px (inchangé), le contenu défile en hauteur chez lui', JSON.stringify(hd));
+    E.verif('A37', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

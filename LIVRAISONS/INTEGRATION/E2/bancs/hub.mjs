@@ -27,12 +27,12 @@ function installer(s) {
   window.WebSocket = function () { throw new Error('websocket bloqué'); };
 }
 // une page du site dans un contexte donné (deux onglets d'un même navigateur = deux pages d'un même contexte : BroadcastChannel, localStorage partagés)
-export async function monter(ctx, fichier, { quand = '2026-09-14T09:00:00+02:00', store = null, modeTest = false } = {}) {
+export async function monter(ctx, fichier, { quand = '2026-09-14T09:00:00+02:00', store = null, modeTest = false, dialogue = 'dismiss' } = {}) {
   const page = await ctx.newPage();
   await page.clock.install({ time: new Date(quand) });
   const errs = [], boites = [];
   page.on('pageerror', e => errs.push(String(e.message).slice(0, 200)));
-  page.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); d.dismiss().catch(() => {}); });
+  page.on('dialog', d => { boites.push(d.type() + ' : ' + d.message()); (dialogue === 'accept' ? d.accept() : d.dismiss()).catch(() => {}); });   /* `accept` : la garde du navigateur acceptée (recharger l'onglet de l'heure, B30) */
   await page.addInitScript(installer, store || magasin());
   /* le voile « n fiches d'applications ne sont pas à jour » (#fi-overlay) : une lacune du faux hub (/manifestes absent — audit E1, F15) ;
      le parcours de la conscience le retire avant chaque pas (`nettoyer`) : ici, dès qu'il paraît */
@@ -43,12 +43,12 @@ export async function monter(ctx, fichier, { quand = '2026-09-14T09:00:00+02:00'
   await page.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; });
   return { page, errs, boites, ecrits: () => page.evaluate(() => window.__ECR.slice()), hub: () => page.evaluate(() => JSON.parse(JSON.stringify(window.__HUB))), attendre: ms => page.clock.runFor(ms) };
 }
-export async function ouvrir(fichier, { quand = '2026-09-14T09:00:00+02:00', store = null, vue = { width: 1366, height: 768 }, nav = null, modeTest = false } = {}) {
+export async function ouvrir(fichier, { quand = '2026-09-14T09:00:00+02:00', store = null, vue = { width: 1366, height: 768 }, nav = null, modeTest = false, dialogue = 'dismiss' } = {}) {
   const pw = playwright();
   const navigateur = nav || await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'], headless: true });
   const ctx = await navigateur.newContext({ viewport: vue, timezoneId: 'Europe/Paris' });
   await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
-  const { page, errs, boites } = await monter(ctx, fichier, { quand, store, modeTest });
+  const { page, errs, boites } = await monter(ctx, fichier, { quand, store, modeTest, dialogue });
   return { navigateur, ctx, page, errs, boites,
     ecrits: () => page.evaluate(() => window.__ECR.slice()),
     hub: () => page.evaluate(() => JSON.parse(JSON.stringify(window.__HUB))),

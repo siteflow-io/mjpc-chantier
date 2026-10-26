@@ -18625,7 +18625,7 @@ function dr_adopterIdentites(copie){
 /* §12.28-3 (a)(e) : l'heure d'une classe s'ouvre dans « la classe en cours » (E1, `dr_ouvrirClasse(niveau, chcle, snum, apres)`) ; tant qu'elle
    n'est pas dans le socle, le chemin d'aujourd'hui (l'Atelier sur son Pilotage). `apres()` quand le pilote est monté. */
 function dr_ouvrirLaClasse(niv, chcle, snum, apres){
-  if (typeof dr_ouvrirClasse === 'function') { dr_ouvrirClasse(niv, chcle, String(snum), apres); return; }
+  if (typeof dr_ouvrirClasse === 'function') { dr_ouvrirClasse(niv, chcle, String(snum), manque => { if (manque) { try { atInfo('Le pilotage ne s’ouvre pas (manque : ' + manque + ').'); } catch (x) {} return; } apres(); }); return; }   /* E1 : `apres(manque)`, null si tout est là ; elle charge les classes et les chapitres */
   try { atelierOuvrir(); } catch (e) {}
   try { atEditerChapitre(niv, chcle); ATVUES.snum = String(snum); atVuesAller('pilotage'); } catch (e) { try { atInfo('Le pilotage ne s’ouvre pas : ' + e.message); } catch (x) {} return; }
   edtQuandPilotagePret(manque => { if (manque) { try { atInfo('Le pilotage ne s’ouvre pas (manque : ' + manque + ').'); } catch (x) {} return; } apres(); });

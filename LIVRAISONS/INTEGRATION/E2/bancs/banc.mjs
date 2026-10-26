@@ -383,17 +383,15 @@ dire(''); dire('B14 — F2 sur un absent ; deux élèves aux mêmes initiales ; 
 dire(''); dire('B15 — en classe, retoucher dans l\'onglet Atelier : la copie de la classe part au hub, l\'état et le journal attendent le Pilotage');
 { const s = await session(); const p = s.page; const v = await lancerUnClic(s);
   if (v === 'absent' || !s.integre) pas('B15', 'absent', 'le Lancer du site intégré');
-  else { await s.attendre(2000); await p.click('#ong-atelier'); await s.attendre(600); if (await p.$('#at-aide .x')) { await p.click('#at-aide .x'); await s.attendre(200); }
-    const n0 = (await s.ecrits()).length; const at = await p.evaluate(() => !!S.atelier);
-    await p.evaluate(() => { const e = seance().ecrans.find(x => !x.role); e.act = e.act + ' — retouché dans l\'Atelier (B15)'; if (typeof dr_copieAuto === 'function') dr_copieAuto(); }); await s.attendre(2500);
-    const ec = depuis(await s.ecrits(), n0).map(x => x.replace(/\/site\/3e\/chapitres\/0\/seances\/0\/deroule_joue\/3E Charles de Gaulle/, 'C'));
-    const hub = await s.hub(); const copie = ((((hub.site['3e'].chapitres[0].seances[0].deroule_joue || {})[CLASSE] || {}).ecrans) || []);
-    pas('B15', at && ec.includes('PUT C/ecrans') && copie.some(e => /retouché dans l'Atelier \(B15\)/.test(e.act || '')) && !ec.some(x => /^PUT C\/(etat|journal)$/.test(x)) ? 'ok' : 'ÉCHEC', 'l\'onglet Atelier ouvert en classe : la retouche part dans `C/ecrans` en moins de 3 s ; ni `C/etat` ni `C/journal` pendant l\'Atelier (son `S` n\'est pas celui de la classe)', JSON.stringify({ atelier: at, ec }));
-    if (await p.$('#mur .p8-ecrire')) { await p.click('#mur .p8-ecrire'); await p.keyboard.type('Retouche de l Atelier (B15).'); await p.keyboard.press('Escape'); await s.attendre(800); }   /* le geste d'E4 (ligne 150) : un texte écrit dans l'Atelier, en classe */
-    await p.evaluate(() => { const b = document.getElementById('ong-pilotage'); if (b) b.click(); }); await s.attendre(1200);
+  else { await s.attendre(2000);
+    /* §12.28-3 (a) (P1, Paul 26/10 11:29) : l'heure se joue dans « la classe en cours » — ni Structure ni Atelier ; « l'Atelier n'est jamais le lieu où je
+       vois jouer la copie de classe ». La retouche de la copie par l'onglet Atelier pendant l'heure n'a plus d'entrée : ses deux pas deviennent « absent ». */
+    const ongA = await p.evaluate(() => { const b = document.getElementById('ong-atelier'); return !!(b && b.offsetParent !== null && !b.hidden); });
+    const enClasse = await p.evaluate(() => document.documentElement.classList.contains('dr-en-classe'));
+    if (enClasse) { pas('B15', !ongA ? 'ok' : 'ÉCHEC', 'en classe, pas d\'onglet Atelier (§12.28-3 a)', JSON.stringify({ ongA }));
+      pas('B15', 'absent', 'la retouche par l\'onglet Atelier en classe (l\'onglet n\'existe plus en classe — P1)'); pas('B15', 'absent', 'étape 5 : la retouche écrite dans l\'onglet Atelier (même raison)'); }
+    else pas('B15', 'absent', 'l\'écran « la classe en cours » (E1) — l\'ancien pas suppose l\'onglet Atelier en classe');
     await p.click('#dr-clore'); await s.attendre(500); await p.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="5"]'); if (e) e.click(); }); await s.attendre(400);
-    const l5 = await p.evaluate(() => ((document.getElementById('fin') || {}).innerText || '').replace(/\s+/g, ' '));
-    pas('B15', /Retouche de l Atelier \(B15\)/.test(l5) && /Verser dans la trame/.test(l5) ? 'ok' : 'ÉCHEC', 'étape 5 : la retouche écrite dans l\'onglet Atelier pendant l\'heure est proposée au versement, diapo par diapo (réveil n°12, E4 ligne 150 ; C1 8.4 — avec `S.copie[h]` posé par E1)', l5.slice(l5.indexOf('Diapos modifiées'), l5.indexOf('Diapos modifiées') + 260));
     const ord = await p.evaluate(() => { const E = seance().ecrans, o = ordreHeure(S.heure).filter(i => (E[i].blocs || []).some(b => b.bid && b.t !== 'image')); const h = S.heure; S.copie = S.copie || {}; S.copie[h] = S.copie[h] || {}; const pris = o.slice(0, 2).reverse();   /* deux retouches posées dans l'ordre inverse de l'heure */
       pris.forEach(i => { const b = E[i].blocs.find(x => x.bid && x.t !== 'image'); S.copie[h][E[i].eid] = Object.assign(S.copie[h][E[i].eid] || {}, { [b.bid]: { t: (b.txt || '') + ' (B15 ordre)' } }); }); ['4', '5'].forEach(k => { const e = document.querySelector('#fin .pp-liste [data-sec="' + k + '"]'); if (e) e.click(); }); const vu = Array.from(document.querySelectorAll('#fin .p8-verse')).map(x => o.indexOf(indexDe(x.dataset.p8eid))); return { vu, n: Object.keys(S.copie[h]).length, d: pris.map(i => p8DiffCopie(h, E[i]).length), sec: S.finSection, l: document.querySelectorAll('#fin .p8-verse-liste').length }; });
     pas('B15', ord.vu.length >= 2 && ord.vu.every((v, k) => k === 0 || v >= ord.vu[k - 1]) ? 'ok' : 'ÉCHEC', 'étape 5 : les diapos modifiées dans l\'ordre de l\'heure (réveil n°13, E4 ligne 165)', JSON.stringify(ord));
@@ -636,6 +634,9 @@ dire(''); dire('B29-B31 — une heure lancée ne se quitte pas ; le bandeau « H
       pas('B29', !g0 && g1 ? 'ok' : 'ÉCHEC', 'la garde du navigateur (`beforeunload`) : absente avant le lancement, posée pendant l\'heure', JSON.stringify({ avant: g0, pendant: g1 }));
       // l'heure avance : trois dévoilements, une parole, une note, un absent, « Fin de l'heure » ouverte à l'étape 3
       await devoiler(s, 3); for (let k = 0; k < 8 && !(await A.evaluate(() => ((parDiapo[K(S.di)] || {}).nDev || 0))); k++) await devoiler(s, 1);   /* des lignes dévoilées sur la diapo où l'on est */
+      /* une diapo qui tient sur plusieurs pages (la copie de la classe, retouchée en classe : quatorze lignes de plus), dévoilée jusqu'à une page > 0 */
+      await A.evaluate(() => { const b = (seance().ecrans[S.di].blocs || []).find(x => Array.isArray(x.etapes)); if (!b) return; for (let k = 1; k <= 14; k++) b.etapes.push('Ligne ajoutée pour la reprise ' + k + ' : une phrase assez longue pour prendre sa place dans la diapo au tableau.'); dr_copieAuto(); dr_tout(); }); await s.attendre(1500);
+      for (let k = 0; k < 10; k++) await devoiler(s, 1);
       await parole(s);
       await A.evaluate(() => { const e0 = ELEVES[1]; (S.appel[e0] = S.appel[e0] || []).push({ type: 'absent', t: now(), heure: S.heure, raison: 'B31' }); S.notesFil = S.notesFil || []; S.notesFil.push({ h: hhmm(), heure: S.heure, di: S.di + 1, eid: seance().ecrans[S.di].eid, t: 'B31 une note', versee: false, ts: now() }); });
       await A.click('#bfin'); await s.attendre(500); await A.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="3"]'); if (e) e.click(); }); await s.attendre(3000);
@@ -657,7 +658,7 @@ dire(''); dire('B29-B31 — une heure lancée ne se quitte pas ; le bandeau « H
       // « Reprendre » : l'endroit exact
       await PB.click('#ses-reprise-oui'); await PB.clock.runFor(7000); const info = await PB.evaluate(() => { const m = document.getElementById('at-modale'); const t = m && getComputedStyle(m).display !== 'none' ? m.innerText.replace(/\s+/g, ' ') : ''; const b = m && Array.from(m.querySelectorAll('button')).find(x => /Compris/.test(x.innerText)); if (b) b.click(); return t; }); await PB.clock.runFor(300); const apres = await lieu(PB); await cap(PB, 'B31-apres');
       pas('B31', apres.lancee && !apres.close && apres.regime === 'classe' && !(await bandeau(PB)) && /Heure reprise/.test(info) ? 'ok' : 'ÉCHEC', '« Reprendre » : l\'heure tourne dans cet onglet, le bandeau est parti, le site le dit', JSON.stringify({ lancee: apres.lancee, regime: apres.regime, info }));
-      pas('B31', apres.eid === avant.eid && apres.page === avant.page && apres.nDev === avant.nDev && avant.nDev > 0 ? 'ok' : 'ÉCHEC', 'la même diapo, la même page, le même nombre de lignes dévoilées', JSON.stringify({ avant: [avant.eid, avant.page, avant.nDev], apres: [apres.eid, apres.page, apres.nDev] }));
+      pas('B31', apres.eid === avant.eid && apres.page === avant.page && apres.nDev === avant.nDev && avant.nDev > 0 && avant.page > 0 ? 'ok' : 'ÉCHEC', 'la même diapo, la même page, le même nombre de lignes dévoilées', JSON.stringify({ avant: [avant.eid, avant.page, avant.nDev], apres: [apres.eid, apres.page, apres.nDev] }));
       pas('B31', apres.ecoule >= avant.ecoule + 10 && apres.ecoule <= avant.ecoule + 40 ? 'ok' : 'ÉCHEC', 'le chrono continue (le temps écoulé depuis le lancement, sans remise à zéro)', avant.ecoule + ' s → ' + apres.ecoule + ' s');
       pas('B31', apres.parts === avant.parts && apres.notes === avant.notes && apres.appel === avant.appel && apres.parts > 0 && apres.notes > 0 && apres.appel ? 'ok' : 'ÉCHEC', 'les paroles, les notes, l\'appel', JSON.stringify({ avant: [avant.parts, avant.notes, avant.appel], apres: [apres.parts, apres.notes, apres.appel] }));
       pas('B31', avant.finOuverte && avant.sec === '3' && apres.finOuverte && apres.sec === '3' && apres.finSection === 3 ? 'ok' : 'ÉCHEC', '« Fin de l\'heure » rouverte à son étape (3)', JSON.stringify({ avant: [avant.finOuverte, avant.sec], apres: [apres.finOuverte, apres.sec, apres.finSection] }));
@@ -669,6 +670,19 @@ dire(''); dire('B29-B31 — une heure lancée ne se quitte pas ; le bandeau « H
       await C2.page.evaluate(h => { window.__HUB = h; }, await B.hub()); await ensemble([PB, C2.page], 6500); const bc = await bandeau(C2.page), bb = await bandeau(PB);
       pas('B30', !bc && !bb ? 'ok' : 'ÉCHEC', 'après « Clore », aucun bandeau (ni dans l\'onglet de l\'heure, ni dans un autre)', JSON.stringify({ autre: bc, ici: bb }));
       pas('B31', !B.errs.length && !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS (les deux onglets)', B.errs.concat(s.errs).join(' ; ')); } }
+  // l'onglet de l'heure RECHARGÉ : la garde du navigateur paraît ; acceptée, l'onglet rechargé montre lui-même le bandeau, et « Reprendre » remet l'heure
+  { const r = await session({ dialogue: 'accept' }); const q = r.page; const v2 = s.integre ? await lancerUnClic(r) : 'absent';
+    if (v2 === 'absent') pas('B30', 'absent', 'recharger l\'onglet de l\'heure (le lancement par la case)');
+    else { await devoiler(r, 3); await r.attendre(3000); const av = await lieu(q); const hub = await r.hub(); const nb0 = r.boites.length;
+      await q.reload({ waitUntil: 'load' }).catch(() => {}); await q.evaluate(h => { window.__HUB = h; document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; }, hub);   /* le vrai hub garde ce qui a été écrit ; le faux hub se réinstalle au chargement : on lui rend ce qu'il avait */
+      await r.attendre(1500); const br = await bandeau(q); await cap(q, 'B30-recharge');
+      pas('B29', r.boites.slice(nb0).some(x => /^beforeunload/.test(x)) ? 'ok' : 'ÉCHEC', 'recharger l\'onglet de l\'heure : le navigateur demande d\'abord (la garde, acceptée ici)', JSON.stringify(r.boites.slice(nb0)));
+      pas('B30', br && br.txt === 'Heure en cours avec les 3E Charles de Gaulle — Reprendre' ? 'ok' : 'ÉCHEC', 'l\'onglet rechargé montre lui-même le bandeau (le message du site, §12.28-3 c)', JSON.stringify(br));
+      if (br) { await q.click('#ses-reprise-oui'); await r.attendre(7000); await q.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && Array.from(m.querySelectorAll('button')).find(x => /Compris/.test(x.innerText)); if (b) b.click(); }); await r.attendre(300); }
+      const ap = await lieu(q);
+      pas('B31', br && ap.lancee && !ap.close && ap.eid === av.eid && ap.nDev === av.nDev && ap.ecoule >= av.ecoule ? 'ok' : 'ÉCHEC', 'après le rechargement, « Reprendre » : la même diapo, les mêmes lignes, le chrono continu', JSON.stringify({ avant: [av.eid, av.nDev, av.ecoule], apres: [ap.eid, ap.nDev, ap.ecoule, ap.lancee] }));
+      pas('B31', !r.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS (rechargement)', r.errs.join(' ; ')); }
+    await r.ctx.close(); }
   await s.ctx.close(); }
 
 // ── B5 · deux créneaux = deux clés ──

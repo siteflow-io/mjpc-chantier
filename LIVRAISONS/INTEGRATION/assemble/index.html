@@ -18740,10 +18740,10 @@ const dr_tabLocal = () => /[?&]local=1(&|$)/.test(location.search);
 /* ─── 13 · 44 (contrat §12.27 (9)) : la fenêtre du tableau ne montre JAMAIS un écran du prof. Elle porte la session du prof (le
    `sessionStorage` de l'onglet du pilote, recopié par `window.open`) : sans `?n=`, `restoreSession` → `_atterrirProf` → `verifierAlerteRegles`
    y ouvrait, à J + 29, « ⚠️ Vérifier les règles Firebase » devant la classe, au vidéoprojecteur. Dans la page tableau (locale ou distante),
-   les gestes qui ouvrent un écran du prof ne font rien et sont comptés (`DR_TAB.refuses`) ; la page du prof (le pilote) les garde tous.
+   les gestes qui ouvrent un écran du prof (et `_initOutilsProf`, contrat §12.27 (12)) ne font rien et sont comptés (`DR_TAB.refuses`) ; la page du prof (le pilote) les garde tous.
    Deux temps : ceux déjà déclarés au chargement de ce module, puis ceux du site déclarés après lui (l'EDT), au DOMContentLoaded ; et une
    seconde ligne, le CSS : ces écrans restent cachés dans la page tableau même si un chemin oublié les posait. ─── */
-const DR_TAB_ECRANS_DU_PROF = ['verifierAlerteRegles', 'ouvrirOverlayRegles', 'simulerJ29', 'fichesVerifierAlerte', 'openProfPanel', 'showProfSection', 'atelierOuvrir', 'edtArriveeProf', 'edtOuvrir'];
+const DR_TAB_ECRANS_DU_PROF = ['verifierAlerteRegles', 'ouvrirOverlayRegles', '_initOutilsProf', 'simulerJ29', 'fichesVerifierAlerte', 'openProfPanel', 'showProfSection', 'atelierOuvrir', 'edtArriveeProf', 'edtOuvrir'];
 function dr_tabSansEcranDuProf(){
   DR_TAB.refuses = DR_TAB.refuses || [];
   DR_TAB_ECRANS_DU_PROF.forEach(nom => { const f = window[nom]; if (typeof f !== 'function' || f.__drTab) return;

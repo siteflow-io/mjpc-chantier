@@ -3436,3 +3436,16 @@ MEMO
 
 26/10/2026 10:43
 MEMO
+
+## Tour 184 — 26/10/2026 10:45 — Paul (10:44) : « non mais c'est normal, les classes sont appariées correctement »
+
+**Paul (mot pour mot).** « non mais c'est normal, les classes sont appariées correctement, c'est juste qu'il n'y a pas la classe 3e de gaulle pour pouvoir apparier 3e de gaulle »
+
+**Fait.** Mesuré au hub : `/site/edt/grille/2026-2027/creneauxFictifs` porte quatre cases « 3E Charles de Gaulle (classe d'essai) », `classeMjpc` « 3E Charles de Gaulle », semaine AB : lundi 08:00, mardi 08:00, jeudi 10:07, vendredi 13:00 (`noteFictifs` : « posées le 01/09 par décision de Paul… lues QUE si le mode test du site est allumé »). Dans le code : `edtCasesA` (l. 20655) ne concatène `creneauxFictifs` que si `edtEnEssai()` (`m8TestOn()`, `M8_TEST`, tenu en `sessionStorage` : éteint à chaque ouverture du fichier, l. 1808-1815) ; `edtOuvrir` relit tout à la bascule du mode test (l. 22654).
+
+**Réponse (mot pour mot).**
+
+382. Oui, c'est normal, et c'est mesuré au hub : tes De Gaulle sont ta classe d'essai — quatre heures posées le 01/09 sur tes trous (lundi 08:00, mardi 08:00, jeudi 10:07, vendredi 13:00, A et B), lues seulement quand le mode test du site est allumé ; la maquette s'ouvre mode test éteint (il ne survit pas à l'ouverture d'un fichier). Le geste : « Mode test » en haut du panneau prof, puis rouvre l'emploi du temps — les quatre cases paraissent en couleur, leur carte aussi, et « la classe » s'ouvre dessus.
+
+26/10/2026 10:45
+MEMO

@@ -1,0 +1,18 @@
+maquette « la classe » · 2026-10-26 09:20 UTC · fichier md5 b2b1c7823430c711b594edc4f3f5ce11 · 1366×768
+  heure 1 close : true · copie : /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle · 22 écrans · réactivation heure 2 · react-h2-s0
+  capture 01-edt-semaine-la-carte.png
+  carte cliquée : true · mode classe · 3E Charles de Gaulle · 2026-09-15|15:07-16:02|3 FRANKLIN Aretha · 159 heures
+  les heures : {"passee":11,"jouee":1,"prevu":23,"rienDePret":124}
+  capture 02-la-classe-heure-a-venir.png
+  badge posé sur « 2. Les hypothèses de la classe » · écritures : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/decisions/emt9v3yqobbdyt
+  capture 03-la-classe-un-badge.png
+  capture 04-la-classe-les-stats.png
+  capture 05-la-classe-les-stats-suite.png
+  capture 06-la-classe-heure-jouee.png
+  case du 15/09 cliquée : true
+  capture 07-edt-la-case-du-15-09.png
+  « ✎ Préparer » : true · mode classe · 2026-09-15|15:07-16:02|3 FRANKLIN Aretha
+  capture 08-preparer-atterrit-dans-la-vue.png
+  lancer : true · ouverture : true · lancée : false
+  capture 09-ou-en-est-la-classe.png
+  erreurs JS : aucune

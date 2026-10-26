@@ -3363,3 +3363,20 @@ MEMO
 
 26/10/2026 09:55
 MEMO
+
+## Tour 179 — 26/10/2026 10:21 — Paul (09:56) : « je veux voir à quoi ça ressemble »
+
+**Paul (mot pour mot).** « je veux voir à quoi ça ressemble »
+
+**Fait.** La maquette : le fichier de production 8.75.0-③ (md5 `83adc8de…`), un bloc de 273 lignes ajouté avant le `</html>` final (`MANDATS/PROFIL-CLASSE/maquette/la-classe.js`, md5 `d7899894…`), rien du fichier réécrit, trois fonctions de l'EDT recouvertes (`edtCarteClic`, `edtPeindre` pour le mode `classe`, `edtLancer` en mode « Préparer ») ; tout le reste lu tel quel (`edtProjeter`, `edtFileDAttente`, `edtHeuresPour`, la copie `deroule_joue/<classe>`, `dr_edtRelire`, les traces). Jouée par le geste sur le faux hub (le dispositif d'E3, `banc-1226.mjs` : horloge au lundi 14/09/2026 09:00, entrée par le site) : heure 1 lancée, 14 ▶, close à 09:47 (la réactivation de l'heure 2 est dans la copie, `react-h2-s0`) → l'EDT → la carte → la vue → un badge → les stats → une heure jouée → la semaine → la case du 15/09 → « ✎ Préparer » → « ▶ Ouvrir le pilotage et lancer ». Neuf captures écran entier 1366 × 768, 0 erreur JS, le badge écrit au hub (`PUT …/deroule_joue/3E Charles de Gaulle/decisions/emt9v3yqobbdyt`). Pièces `TRANSCRIPTS/C13/pieces/T179-01…09-*.png` ; `MANDATS/PROFIL-CLASSE/maquette/` (bloc, maquette html, `capture.mjs`, captures, journal, LISEZ-MOI).
+
+**Réponse (mot pour mot).**
+
+373. La maquette est faite : ton fichier de production ③ sur le faux hub, la vue « la classe » écrite dedans, jouée par le geste (heure 1 lancée et close → l'emploi du temps → la carte de classe → la vue), neuf captures écran entier, zéro erreur. Ce que tu vois : (02) la vue — à gauche les heures de la 3E Charles de Gaulle sur l'année (passées · pas jouées, la jouée du 14/9, puis « heure 2/3 », « heure 3/3 », « L'Albatros » 1/3… le même calcul que l'EDT), à droite l'heure à venir choisie d'elle-même (mardi 15/9 15:07, heure 2/3) : la réactivation construite en tête, « Les hypothèses de la classe » glissée de l'heure 1, les diapos de l'heure dans l'ordre de « Où en est la classe », chacune avec ses deux badges ; (03) le badge « pas pour cette classe » posé sur « Les hypothèses » — écrit au hub dans la copie de la classe (`deroule_joue/<classe>/decisions/<diapo>`), la trame intacte ; (04-05) « Les stats » : les heures (joué / prévu, activités, reportées, paroles), la participation par élève, la couverture des notions, les heures sans séance, « Copier » ; (06) une heure jouée : sa trace (minutes, activités prévu / réel, le travail donné), « Relire cette heure », « Le chapitre » ; (07-08) l'autre entrée : la case du 15/9 → « ✎ Préparer » atterrit dans la vue sur cette heure, le badge y est encore ; (09) « ▶ » depuis la vue → « Où en est la classe », rien lancé.
+
+374. Ce que la maquette ne fait pas encore, pour ne pas te tromper : l'ouverture de l'heure ne lit pas le badge (en 09, « Les hypothèses » est toujours dans l'ordre de l'heure 2 — c'est le travail d'E2 au contrat) ; « Le chapitre » ouvre la Relecture sur sa face au lieu de la ranger dans la vue (E4) ; « expérimentale » et « 0/9 » viennent du faux hub. Un tranchage de plus : la liste des heures court jusqu'en juillet (124 lignes « aucune séance prête » après le chapitre) — je propose de l'arrêter à la dernière heure du chapitre publié, avec une ligne « après : aucune séance prête ».
+
+375. À toi : « oui » et j'écris le contrat §12.27 (E1 la vue, E2 le badge lu à l'ouverture, E3 les tailles, E4 Le chapitre et les stats dans la vue), je relance les quatre par des sessions neuves, le contrôle horaire reprend sur ton mot ; sinon dis ce qui ne va pas, un sujet à la fois.
+
+26/10/2026 10:21
+MEMO

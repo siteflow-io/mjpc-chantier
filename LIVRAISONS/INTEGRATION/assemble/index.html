@@ -15919,7 +15919,7 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 /* E2 · §12.28-3 (d) : le bandeau « Heure en cours avec les <classe> — Reprendre », en haut, ne recouvre rien — la page et les écrans pleins du prof descendent de sa hauteur */
 #ses-reprise{top:0;bottom:auto}
 html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
-html.ses-reprise-on #atelier-ecran,html.ses-reprise-on #edt-ecran,html.ses-reprise-on .tprof-overlay{top:var(--ses-reprise-h,44px)}
+/* les éléments fixes ou collants en haut descendent par `sesRepriseDecaler` (index.html) */
 
 </style>
 <script>
@@ -17928,9 +17928,19 @@ function copierTexte(txt, ok){ const dire = m => { const z = $('f-copie-etat') |
 
 function manquesAvantDeClore(restantes){ return controleCahier(restantes).etapes.filter(e => !e.ok && e.n < 7); }
 
+/* §12.28 (8), 13 · 46 — LE compte de « ce qui reste » pour l'heure en cours, un seul : celui de l'étape 2 de « Fin de l'heure ». Rend une ligne par activité
+   (et par diapo sans activité, `dr_activitesOuDiapos`) qui a encore des diapos de cette heure (ou glissées vers elle) pas finies :
+   `{ a, diapos (rangs pas finis), restantes, dur (min prévues des diapos pas finies), commencee, decision, decidee }` — `decidee` = Paul a choisi (une décision
+   posée par défaut, « à l'heure suivante (si tu ne choisis rien) », ne compte pas). La garde du cahier (E1, `gardeCahier`) lit `dr_resteHeure().filter(x => !x.decidee)`. */
+function dr_resteHeure(acts, derniere){
+  const E = seance().ecrans; acts = acts || dr_activitesOuDiapos(); if (derniere == null) derniere = S.heure >= ((dr_heureJouee(S.heure) || {}).sur || 1);
+  return acts.map(a => { const diapos = a.diapos.filter(i => E[i].heure <= S.heure && !finie(E[i], i) && !(decisionDe(E[i]) && decisionDe(E[i]).choix === 'passee')); return { a, diapos, commencee: a.diapos.some(i => vuMax[K(i)]) }; })
+    .filter(x => x.diapos.length && (x.a.diapos.some(i => E[i].heure === S.heure) || x.a.diapos.some(i => glisseeDe(E[i], S.heure)) || (derniere && S.decisions[x.a.id] && S.decisions[x.a.id].choix === 'reserve')))
+    .map(x => { const d = (S.decisions || {})[x.a.id] || null; return Object.assign(x, { restantes: x.diapos.length, dur: x.diapos.reduce((t, i) => t + (+E[i].dur || 0), 0), decision: d, decidee: !!(d && !d.defaut) }); });
+}
 function ouvrirFin(cloture){ if ((document.getElementById('fin').parentElement === document.getElementById('ecran-fin') && document.getElementById('ecran-fin').classList.contains('on')) && !S._rattrapage) return; const derniere = S.heure >= ((dr_heureJouee(S.heure) || {}).sur || 1); /* E2 : la séance a N heures (edtHeuresPour) — avant : S.heure === 2 */ const E = seance().ecrans;
   const acts = dr_activitesOuDiapos(); /* E2 : les activités, et chaque diapo sans activité comme la sienne (réveil n°3, 3 ; C1 7.0-7.1) — avant : les activités seules */
-  const restantes = acts.map(a => { const diapos = a.diapos.filter(i => E[i].heure <= S.heure && !finie(E[i], i) && !(decisionDe(E[i]) && decisionDe(E[i]).choix === 'passee')); const dansHeure = a.diapos.some(i => E[i].heure === S.heure || glisseeDe(E[i], S.heure)); return { a, diapos, commencee: a.diapos.some(i => vuMax[K(i)]) }; }).filter(x => x.diapos.length && (x.a.diapos.some(i => E[i].heure === S.heure) || x.a.diapos.some(i => glisseeDe(E[i], S.heure)) || (derniere && S.decisions[x.a.id] && S.decisions[x.a.id].choix === 'reserve')));
+  const restantes = dr_resteHeure(acts, derniere);   /* §12.28 (8), 13 · 46 : le compte unique, exposé (la garde du cahier d'E1 le lit) */
   restantes.forEach(x => { if (!S.decisions[x.a.id] && !derniere) S.decisions[x.a.id] = { choix: 'suivante', moment: 'fin', defaut: true, heure: S.heure, t: now() }; });
   const bilan = E.find(e => e.role === 'bilan');
   const montrees = new Set(J.filter(x => x.type === 'diapo' && x.h === S.heure).map(x => x.di)); /* E2 : les diapos montrées DANS CETTE HEURE (vu par E4 : l'heure 2 donnait à apprendre les notions de l'heure 1) — avant : tout le journal */ const notionsHeure = new Set(); E.forEach((e, i) => { if (montrees.has(i) || vuMax[K(i)]) (e.comp || []).forEach(c => notionsHeure.add(c)); (S.notionsImprevues[e.eid] || []).forEach(c => notionsHeure.add(c)); });
@@ -18442,7 +18452,7 @@ function dr_reprendre(cb){
     DR_CL.sur = ((dr_heureJouee(S.heure) || {}).sur) || DR_CL.sur || 1;   /* N revient avec l'heure */
     const hc = dr_heureJouee(S.heure); if (hc && typeof HEURES_SIM === 'object') HEURES_SIM[S.heure] = hc; else dr_heurePoser(S.heure, AT_DR_COURS, t && t.debutReel);
     S.debutReel = (t && t.debutReel) || S.debutReel || Date.now();
-    S.ecoule = Math.max(0, Math.round((Date.now() - S.debutReel) / 1000)); S.lancee = true; S.close = false; S.mur = null;
+    S.ecoule = Math.max(0, Math.round((Date.now() - S.debutReel) / 1000), +S.ecoule || 0); S.lancee = true;   /* §12.28-3 (e) : le chrono ne recule jamais (E3, retour 54 : 00:15 → 00:05) — le temps compté par la page, gardé dans l'état, est un plancher */ S.close = false; S.mur = null;
     /* le temps où la page était fermée est une COUPURE (C1 1.3 bis) : mis à part tant que Paul n'a pas dit que le cours a continué */
     const vivant = Math.max(+etat.maj || 0, +(t && t.maj) || 0) || Date.now();   /* relecteur neuf n°3 (4) : la dernière trace de vie de la page (l'état, battu chaque minute, ou le paquet) — avant : `etat.maj` seul, écrit au dernier geste : le temps passé sur la diapo depuis comptait comme coupure */
     const trou = Date.now() - vivant;
@@ -18570,7 +18580,7 @@ const heureCahier = () => { /* E2 : la vraie fin de l'heure (la case, `AT_DR_COU
   const hj = dr_heureJouee(S.heure); if (hj && hj.base && hj.fin) { const d = new Date(hj.base); return new Date(d.getFullYear(), d.getMonth(), d.getDate(), dr_mn(hj.fin) / 60 | 0, dr_mn(hj.fin) % 60).getTime() - 5 * 60000; }
   return dr_heureDe(S.heure).base + 55 * 60000 - 5 * 60000; };
  /* 6.3 : le repère de la fin d'heure = la fin moins les cinq minutes réservées au cahier de textes */
-function tick(){ if ((document.getElementById('fin').parentElement === document.getElementById('ecran-fin') && document.getElementById('ecran-fin').classList.contains('on'))) { $('heure').textContent = hhmm(); return; } if (S.lancee && !S.close && S.ecoule % 15 === 0 && !(document.activeElement && document.activeElement.classList.contains('dur-in'))) { try { ouOnEnEst(); } catch (e) {} } if (!S.lancee) { $('chr').textContent = '—'; $('chr').className = ''; $('heure').textContent = ''; return; } if (S.close) { try { if (S.palier) alerteFermer(); } catch (e) {} return; } /* E2 : l'heure close, le chrono s'arrête (relecteur neuf n°2) */ try { if (dr_decisionsSuivre() && document.getElementById('fin') && document.getElementById('fin').offsetParent) ouvrirFin(); } catch (e) {} S.ecoule++; if (S.ecoule % 60 === 30) { try { dr_etatAuto(true); } catch (e) {} }   /* le battement de l'état (une écriture par minute) : la reprise sait jusqu'à quand la page vivait */ $('heure').textContent = hhmm(); const chr = $('chr'); const reste = heureCahier() - now();
+function tick(){ if ((document.getElementById('fin').parentElement === document.getElementById('ecran-fin') && document.getElementById('ecran-fin').classList.contains('on'))) { $('heure').textContent = hhmm(); return; } if (S.lancee && !S.close && S.ecoule % 15 === 0 && !(document.activeElement && document.activeElement.classList.contains('dur-in'))) { try { ouOnEnEst(); } catch (e) {} } if (!S.lancee) { $('chr').textContent = '—'; $('chr').className = ''; $('heure').textContent = ''; return; } if (S.close) { try { if (S.palier) alerteFermer(); } catch (e) {} return; } /* E2 : l'heure close, le chrono s'arrête (relecteur neuf n°2) */ try { if (dr_decisionsSuivre() && document.getElementById('fin') && document.getElementById('fin').offsetParent) ouvrirFin(!!document.getElementById('f-clore')); }   /* E2 (§12.28, B12) : le redessin garde le mode de la séquence (« Clore l'heure » reste) — avant : ouvrirFin() la repassait en « Garder ces décisions » */ catch (e) {} S.ecoule++; if (S.ecoule % 60 === 30) { try { dr_etatAuto(true); } catch (e) {} }   /* le battement de l'état (une écriture par minute) : la reprise sait jusqu'à quand la page vivait */ $('heure').textContent = hhmm(); const chr = $('chr'); const reste = heureCahier() - now();
   if (S.close || reste > 5 * 60000) { const m = Math.floor(S.ecoule / 60), s = S.ecoule % 60; chr.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); chr.className = ''; chr.title = 'Le temps écoulé depuis le lancement de l\'heure'; return; }
   const abs = Math.abs(reste); const m = Math.floor(abs / 60000), sec = Math.floor((abs % 60000) / 1000); chr.textContent = (reste >= 0 ? '−' : '+') + m + ':' + String(sec).padStart(2, '0'); chr.className = reste <= 0 ? 'cr-zero' : reste <= 60000 ? 'cr-t1' : reste <= 180000 ? 'cr-t3' : 'cr-t5'; chr.title = reste >= 0 ? 'Compte à rebours vers l\'heure du cahier de textes (' + hhmm(heureCahier()) + ')' : 'Le cahier de textes a commencé depuis ' + m + ' min ' + sec + ' s (l\'heure court jusqu\'à Clore)';
   S.paliers = S.paliers || {}; const kk = reste <= 0 ? 'zero' : reste <= 60000 ? 't1' : reste <= 180000 ? 't3' : 't5'; ['t5', 't3', 't1', 'zero'].forEach(k => { const seuil = { t5: 5 * 60000, t3: 3 * 60000, t1: 60000, zero: 0 }[k]; if (reste <= seuil && !S.paliers[k]) { S.paliers[k] = true; dr_palier(k); } }); }
@@ -20736,6 +20746,7 @@ function sesOuvrirTableau(){ return dr_ouvrirTableau(); }   /* [E3] une seule fe
 function sesRepriseRetirer(){
   var b=document.getElementById('ses-reprise'); if(b)b.remove(); SES._reprise=null;
   try{ document.documentElement.classList.remove('ses-reprise-on'); }catch(e){}
+  sesRepriseRemettre();
 }
 function sesReprisePeindre(c){
   /* [E2] §12.28-3 (d) : « Heure en cours avec les <classe> — Reprendre », en haut, sur tous les écrans du prof ; « Plus tard » tombe ;
@@ -20750,6 +20761,24 @@ function sesReprisePeindre(c){
   } else { var t=document.getElementById('ses-reprise-txt'); if(t)t.innerHTML=txt; }
   SES._reprise=c;
   try{ document.documentElement.classList.add('ses-reprise-on'); document.documentElement.style.setProperty('--ses-reprise-h',b.offsetHeight+'px'); }catch(e){}
+  sesRepriseDecaler(); if(!SES._repriseDec)SES._repriseDec=setInterval(sesRepriseDecaler,1000);
+}
+/* [E2] §12.28-3 (d), garde L d'E3 : le bandeau ne recouvre rien — tout ce qui est fixe ou collant en haut de l'écran (le bouton du panneau prof,
+   l'en-tête du niveau, les écrans pleins : panneau prof, emploi du temps, atelier) descend de sa hauteur tant qu'il est là ; la page descend
+   par `padding-top` (dr.css). Ce qui paraît ensuite est pris à la seconde. Tout revient quand le bandeau part. */
+function sesRepriseDecaler(){
+  var b=document.getElementById('ses-reprise'); if(!b)return; var H=b.offsetHeight; if(!H)return;
+  Array.prototype.forEach.call(document.body.querySelectorAll('*'),function(el){
+    if(el===b||b.contains(el)||el.hasAttribute('data-ses-top'))return;
+    var cs=getComputedStyle(el); if(cs.position!=='fixed'&&cs.position!=='sticky')return;
+    var r=el.getBoundingClientRect(); if(!r.width||!r.height||r.top>=H||r.bottom<=0)return;
+    if(cs.position==='sticky'&&r.top>1)return;   /* un collant qui n'est pas collé en haut : la page le porte déjà plus bas */
+    el.setAttribute('data-ses-top',el.style.top||''); el.style.top=((parseFloat(cs.top)||0)+H)+'px';
+  });
+}
+function sesRepriseRemettre(){
+  if(SES._repriseDec){ clearInterval(SES._repriseDec); SES._repriseDec=null; }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-ses-top]'),function(el){ el.style.top=el.getAttribute('data-ses-top'); el.removeAttribute('data-ses-top'); });
 }
 function sesReprisePoser(){
   /* [E2] §12.28-3 (d) : le bandeau paraît dès qu'AUCUN onglet de ce navigateur ne tient l'heure. Dans ce navigateur : le signe de vie de

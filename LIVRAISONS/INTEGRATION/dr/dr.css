@@ -474,4 +474,4 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 /* E2 · §12.28-3 (d) : le bandeau « Heure en cours avec les <classe> — Reprendre », en haut, ne recouvre rien — la page et les écrans pleins du prof descendent de sa hauteur */
 #ses-reprise{top:0;bottom:auto}
 html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
-html.ses-reprise-on #atelier-ecran,html.ses-reprise-on #edt-ecran,html.ses-reprise-on .tprof-overlay{top:var(--ses-reprise-h,44px)}
+/* les éléments fixes ou collants en haut descendent par `sesRepriseDecaler` (index.html) */

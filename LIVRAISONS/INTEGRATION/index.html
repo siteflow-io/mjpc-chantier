@@ -16047,6 +16047,7 @@ function sesOuvrirTableau(){ return dr_ouvrirTableau(); }   /* [E3] une seule fe
 function sesRepriseRetirer(){
   var b=document.getElementById('ses-reprise'); if(b)b.remove(); SES._reprise=null;
   try{ document.documentElement.classList.remove('ses-reprise-on'); }catch(e){}
+  sesRepriseRemettre();
 }
 function sesReprisePeindre(c){
   /* [E2] §12.28-3 (d) : « Heure en cours avec les <classe> — Reprendre », en haut, sur tous les écrans du prof ; « Plus tard » tombe ;
@@ -16061,6 +16062,24 @@ function sesReprisePeindre(c){
   } else { var t=document.getElementById('ses-reprise-txt'); if(t)t.innerHTML=txt; }
   SES._reprise=c;
   try{ document.documentElement.classList.add('ses-reprise-on'); document.documentElement.style.setProperty('--ses-reprise-h',b.offsetHeight+'px'); }catch(e){}
+  sesRepriseDecaler(); if(!SES._repriseDec)SES._repriseDec=setInterval(sesRepriseDecaler,1000);
+}
+/* [E2] §12.28-3 (d), garde L d'E3 : le bandeau ne recouvre rien — tout ce qui est fixe ou collant en haut de l'écran (le bouton du panneau prof,
+   l'en-tête du niveau, les écrans pleins : panneau prof, emploi du temps, atelier) descend de sa hauteur tant qu'il est là ; la page descend
+   par `padding-top` (dr.css). Ce qui paraît ensuite est pris à la seconde. Tout revient quand le bandeau part. */
+function sesRepriseDecaler(){
+  var b=document.getElementById('ses-reprise'); if(!b)return; var H=b.offsetHeight; if(!H)return;
+  Array.prototype.forEach.call(document.body.querySelectorAll('*'),function(el){
+    if(el===b||b.contains(el)||el.hasAttribute('data-ses-top'))return;
+    var cs=getComputedStyle(el); if(cs.position!=='fixed'&&cs.position!=='sticky')return;
+    var r=el.getBoundingClientRect(); if(!r.width||!r.height||r.top>=H||r.bottom<=0)return;
+    if(cs.position==='sticky'&&r.top>1)return;   /* un collant qui n'est pas collé en haut : la page le porte déjà plus bas */
+    el.setAttribute('data-ses-top',el.style.top||''); el.style.top=((parseFloat(cs.top)||0)+H)+'px';
+  });
+}
+function sesRepriseRemettre(){
+  if(SES._repriseDec){ clearInterval(SES._repriseDec); SES._repriseDec=null; }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-ses-top]'),function(el){ el.style.top=el.getAttribute('data-ses-top'); el.removeAttribute('data-ses-top'); });
 }
 function sesReprisePoser(){
   /* [E2] §12.28-3 (d) : le bandeau paraît dès qu'AUCUN onglet de ce navigateur ne tient l'heure. Dans ce navigateur : le signe de vie de

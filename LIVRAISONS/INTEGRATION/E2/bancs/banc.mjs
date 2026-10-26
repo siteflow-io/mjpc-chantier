@@ -619,6 +619,22 @@ dire(''); dire('B28 — « Fin de l\'heure », étape 2 : « ce qui n\'a pas ét
     pas('B28', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
 
+// ── B32 · 13 · 46 : un seul compte de « ce qui reste » — l'étape 2 et la garde du cahier disent le même nombre (§12.28 (8)) ──
+dire(''); dire('B32 — un seul compte de « ce qui reste » : `dr_resteHeure` (E2), l\'étape 2, la garde du cahier (E1)');
+{ const s = await session(); const p = s.page; const v = await lancerUnClic(s);
+  if (v === 'absent' || !s.integre) pas('B32', 'absent', 'le lancement du site intégré');
+  else { await devoiler(s, 3); await s.attendre(500);
+    const avant = await p.evaluate(() => typeof dr_resteHeure === 'function' ? dr_resteHeure().filter(x => !x.decidee).length : -1);
+    const g = await p.evaluate(() => { gardeCahier(() => {}); const n = document.querySelectorAll('#gc-corps .gc-l.cliquable').length; const t = (document.getElementById('gc-corps') || {}).innerText || ''; document.getElementById('garde-cahier').classList.remove('on'); return { n, alheure: /tu es à l'heure|Tout a été fait/.test(t), lit: String(gardeCahier).indexOf('dr_resteHeure') >= 0 }; });
+    await p.click('#bfin'); await s.attendre(600); await p.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="2"]'); if (e) e.click(); }); await s.attendre(400);
+    const l2 = await p.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="2"]'); return e ? e.innerText.replace(/\s+/g, ' ') : ''; }); const n2 = +((/— (\d+) activités? : dis ce qu/.exec(l2) || [])[1] || 0);
+    const cartes = await p.evaluate(() => document.querySelectorAll('#fin .carte[data-act]').length); const apres = await p.evaluate(() => dr_resteHeure().filter(x => !x.decidee).length);
+    pas('B32', avant > 0 && avant === n2 && n2 === cartes && apres === avant ? 'ok' : 'ÉCHEC', '`dr_resteHeure()` (sans décision de Paul) = le compte de l\'étape 2 = ses cartes, avant et après l\'ouverture (le défaut posé n\'est pas une décision)', JSON.stringify({ avant, n2, cartes, apres, l2 }));
+    if (!g.lit) pas('B32', 'absent', 'la garde du cahier lit `dr_resteHeure` (E1, A50) — pas encore : elle compte ' + g.n + (g.alheure ? ', et dit « tu es à l\'heure »' : ''));
+    else pas('B32', g.n === avant && !g.alheure ? 'ok' : 'ÉCHEC', 'la garde du cahier dit le même nombre (' + avant + ') et ne dit pas « tu es à l\'heure »', JSON.stringify(g));
+    pas('B32', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+
 // ── B29-B31 · §12.28-3 (c)(d)(e) : la garde du navigateur ; deux onglets d'un même navigateur ; « Reprendre » à l'endroit exact ──
 dire(''); dire('B29-B31 — une heure lancée ne se quitte pas ; le bandeau « Heure en cours avec les … — Reprendre » ; l\'endroit exact');
 { const s = await session(); const A = s.page;
@@ -653,6 +669,11 @@ dire(''); dire('B29-B31 — une heure lancée ne se quitte pas ; le bandeau « H
       await A.close(); await PB.clock.runFor(900); const b1 = await bandeau(PB); await cap(PB, 'B30-bandeau');
       pas('B30', b1 && b1.txt === 'Heure en cours avec les 3E Charles de Gaulle — Reprendre' && b1.top === 0 ? 'ok' : 'ÉCHEC', 'fermer l\'onglet de l\'heure → dans l\'autre onglet, en moins d\'une seconde, en haut : « Heure en cours avec les 3E Charles de Gaulle — Reprendre »', JSON.stringify(b1));
       pas('B30', b1 && b1.boutons.length === 1 && b1.boutons[0] === 'Reprendre' ? 'ok' : 'ÉCHEC', 'un seul bouton, « Reprendre » (« Plus tard » tombe)', JSON.stringify(b1 && b1.boutons));
+      const dessous = () => PB.evaluate(() => { const b = document.getElementById('ses-reprise'); if (!b) return ['pas de bandeau']; const R = b.getBoundingClientRect();
+        return Array.from(document.querySelectorAll('button, a[href], a[onclick], [onclick], input, h1, h2, h3, .level-header *')).filter(el => !b.contains(el) && el.offsetParent !== null || (el.getClientRects().length && getComputedStyle(el).position === 'fixed' && !b.contains(el))).filter(el => { const r = el.getBoundingClientRect(); if (!r.width || !r.height || getComputedStyle(el).visibility === 'hidden') return false; const ix = Math.min(r.right, R.right) - Math.max(r.left, R.left), iy = Math.min(r.bottom, R.bottom) - Math.max(r.top, R.top); if (ix <= 0 || iy <= 0) return false; const t = document.elementFromPoint(Math.max(r.left, R.left) + ix / 2, Math.max(r.top, R.top) + iy / 2); return t && b.contains(t); }).map(el => (el.id ? '#' + el.id : el.tagName.toLowerCase()) + ' « ' + (el.innerText || el.value || '').trim().slice(0, 30) + ' »').slice(0, 8); });
+      const d0 = await dessous(); await PB.click('#tprof-btn').catch(() => {}); await PB.clock.runFor(1500); const d1 = await dessous(); await PB.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await PB.clock.runFor(1500); const d2 = await dessous(); await cap(PB, 'B30-bandeau-edt'); await PB.evaluate(() => { try { edtFermer(); } catch (e) {} try { closeProfPanel(); } catch (e) {} try { openLevel('3e'); } catch (e) {} }); await PB.clock.runFor(1500); const d3 = await dessous(); await cap(PB, 'B30-bandeau-niveau');
+      pas('B30', !d0.length && !d1.length && !d2.length && !d3.length ? 'ok' : 'ÉCHEC', 'le bandeau ne recouvre rien : l\'accueil, le panneau prof, l\'emploi du temps, ce qu\'ouvre openLevel(\'3e\') sans élève connecté (tout ce qui est fixe ou collant en haut descend de sa hauteur)', JSON.stringify({ accueil: d0, panneau: d1, edt: d2, niveau: d3 }));
+      await PB.evaluate(() => { try { edtFermer(); } catch (e) {} try { closeProfPanel(); } catch (e) {} }); await PB.clock.runFor(500);
       await PB.clock.runFor(6000); const b2 = await bandeau(PB);
       pas('B30', !!b2 ? 'ok' : 'ÉCHEC', 'le bandeau reste à la veille suivante (le pointeur et la trace : l\'heure n\'est pas close)', JSON.stringify(b2));
       // « Reprendre » : l'endroit exact

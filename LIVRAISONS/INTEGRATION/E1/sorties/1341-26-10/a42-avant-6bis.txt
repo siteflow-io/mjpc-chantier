@@ -1,0 +1,21 @@
+banc E1 · 2026-10-26 12:39 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 e6a5fa6e9cca1aa744174c89834d4282
+
+A42 — §12.27 (6) : l'accueil des niveaux et la page du niveau (prof, et vue élève) à toute la largeur — .home-inner sans borne, ses bords de 32 px gardés ; .hero garde sa mesure ; (6 bis) aucun texte de l'en-tête sous les boutons fixes du prof
+  ÉCHEC  A42 · 1366 × 768 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1366,"cote":0,"hero":"700px","fixes":2,"sous":["M. Meney (prof) · PROF"]}
+  ÉCHEC  A42 · 1366 × 768 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1366,"cote":0,"hero":"700px","fixes":2,"sous":["M. Meney (prof) · PROF"]}
+  ok     A42 · 1366 × 768 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1366,"cote":0,"hero":"700px","fixes":0,"sous":[]}
+  ok     A42 · 1366 × 768 : aucune erreur JS
+  ÉCHEC  A42 · 1536 × 864 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1536,"cote":0,"hero":"700px","fixes":2,"sous":["M. Meney (prof) · PROF"]}
+  ÉCHEC  A42 · 1536 × 864 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1536,"cote":0,"hero":"700px","fixes":2,"sous":["M. Meney (prof) · PROF"]}
+  ok     A42 · 1536 × 864 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1536,"cote":0,"hero":"700px","fixes":0,"sous":[]}
+  ok     A42 · 1536 × 864 : aucune erreur JS
+  ÉCHEC  A42 · 1707 × 743 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1707,"cote":0,"hero":"700px","fixes":2,"sous":["M. Meney (prof) · PROF"]}
+  ÉCHEC  A42 · 1707 × 743 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1707,"cote":0,"hero":"700px","fixes":2,"sous":["M. Meney (prof) · PROF"]}
+  ok     A42 · 1707 × 743 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1707,"cote":0,"hero":"700px","fixes":0,"sous":[]}
+  ok     A42 · 1707 × 743 : aucune erreur JS
+  ÉCHEC  A42 · 1920 × 1080 : l'accueil des niveaux — .home-inner de bord à bord (ses bords de 32 px dedans), aucun défilement de côté, .hero à 700 px — {"mw":"none","g":0,"d":0,"pl":"32px","W":1920,"cote":0,"hero":"700px","fixes":2,"sous":["M. Meney (prof) · PROF"]}
+  ÉCHEC  A42 · 1920 × 1080 : la page du niveau (prof) — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1920,"cote":0,"hero":"700px","fixes":2,"sous":["M. Meney (prof) · PROF"]}
+  ok     A42 · 1920 × 1080 : la page du niveau vue comme un élève — .home-inner de bord à bord — {"mw":"none","g":0,"d":0,"pl":"32px","W":1920,"cote":0,"hero":"700px","fixes":0,"sous":[]}
+  ok     A42 · 1920 × 1080 : aucune erreur JS
+
+16 vérifications, 8 échec(s) · 35 s

@@ -3603,3 +3603,24 @@ MEMO
 
 26/10/2026 17:51
 MEMO
+
+## Tour 196 — 26/10/2026 18:49 — Paul (18:34) : « Règle les dettes »
+
+**Paul (mot pour mot).** « Règle les dettes »
+
+**Réponse d'attente (18:35, mot pour mot).** « Je règle les cinq. Je mesure d'abord ce qu'il faut pour écrire le chantier juste, puis je lance les quatre exécutants. »
+
+**Fait.** Mesuré dans le code intégré (`e2aee15f`) ce qu'il faut pour écrire juste : le magasin du mode test (`_siteGet` lit la clé exacte, jamais recomposée avec les feuilles écrites depuis) ; « (n à décider) » (`dr-classe.js` l. 250, `TITRES` l. 257 : n compte les choix encore par défaut) ; les connecteurs du récit (`dr-recit.js` l. 238, choisis par la tranche d'horloge) ; l'aide (seulement `droiteAtelier`, l'aide d'écriture) ; le lancement depuis l'Atelier (`dr_proposer`, `[data-lancer="1"]`, l. 1004-1034) ; aucune garde `beforeunload`, aucun `BroadcastChannel` ; le bandeau de reprise (`sesReprisePeindre`, veille de 5 s sur `/site/cours_actif`). Écrit le **contrat §12, point 28** (les cinq dettes : (1) 13 · 39 E1, exception nommée au transport pour le mode test ; (2) 13 · 40 E2 ; (3) 13 · 41 — l'écran « la classe en cours » (P1 validé 11:29) E1, la garde, le bandeau et la reprise à l'endroit exact E2 ; (4) 13 · 42 E4 ; (5) 13 · 43 E1, les mots de la conscience dans `MANDATS/CINQ-DETTES/AIDE-PAR-ECRAN.md` ; (6) E3 `banc-1228` par le geste ; gardes A47-A49, B28-B31, RC22) ; relances E1-E4 « 18:46 ». E1 et E3 réveillés (leurs rappels, `fire_trigger`) ; E2 et E4 relancés par des sessions neuves (`trig_01WF3RLBJsBVt73y3gDUirfW`, `trig_01BF3tF5gaWySrT4P1uNUbyh`, 18:50).
+
+**Réponse (mot pour mot).**
+
+408. Lancé : les quatre exécutants travaillent sur les cinq dettes, chacun sa part — en mode test, ce que tu publies se verra dans l'emploi du temps ; « 7 à décider » dit en clair ce qu'il attend ; l'heure lancée se joue dans un écran à elle, qu'on ne quitte que par « Clore l'heure », avec la garde à la fermeture de l'onglet et, dans l'autre onglet, « Heure en cours avec les … — Reprendre » qui te ramène à l'endroit exact ; le récit ne commence plus par « Enfin » ; un « ? » sur chaque écran.
+
+409. Deux choses à savoir. La garde de Chrome n'affiche plus de texte venu d'un site : le message du site, c'est ce bandeau « Reprendre ». Et l'Atelier ne lance plus d'heure : la copie de classe se joue depuis l'emploi du temps (ton « oui » de 11:29).
+
+410. Les mots nouveaux sont de moi : les textes des « ? », la phrase de « Fin de l'heure », et « Cette heure, on a fait » quand une seule activité a été jouée (les élèves le lisent dans École Directe). Tu les corriges sur les captures avant toute mise en ligne.
+
+411. Je contrôle toutes les 45 min et je reviens avec les captures avant / après quand tout est vert.
+
+26/10/2026 18:49
+MEMO

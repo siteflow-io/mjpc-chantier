@@ -73,9 +73,19 @@ await P('P4', 'le clic droit sur une étape', async () => { if (neuf) { const li
 if (MODE_TEST) magasinAvant = await magasin();
 const avant = MODE_TEST ? 0 : (await traces()).length;
 await P('P5', 'lancer la séance (la classe)', async () => { let voie = null;
-  if (neuf && await existe('.at-onglet[data-vue="pilotage"]')) { await clic('.at-onglet[data-vue="pilotage"]'); await pause(600); if (await existe('[data-lancer="1"]')) { await clic('[data-lancer="1"]'); voie = 'Pilotage → [data-lancer=1] (E2)'; } }
+  /* v4 (26/10, contrat §12.28 (3a), P1 validé par Paul) : l'heure d'une classe se lance par la case de l'emploi du temps — « ▶ Ouvrir le pilotage et lancer » — et se joue
+     dans l'écran « la classe en cours » ; l'Atelier ne lance plus. L'ancienne voie (Pilotage → [data-lancer=1]) ne reste qu'en repli, dite « absent » */
+  if (neuf) { const aLanceur = await page.evaluate(() => Array.from(document.querySelectorAll('[data-lancer="1"]')).some(b => b.offsetParent !== null && !document.documentElement.classList.contains('dr-en-classe')));
+    pas('P5', aLanceur ? 'absent' : 'ok', 'l\'Atelier ne lance plus (aucun « ▶ Lancer » visible hors de l\'écran de la classe, §12.28 (3a))'); }
+  if (neuf && await page.evaluate(() => typeof edtOuvrir === 'function')) { await page.evaluate(() => edtOuvrir()); await pause(1500);
+    const cOk = await page.evaluate(() => { const cs = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); const c = cs.find(e => (e.getAttribute('onclick') || '').indexOf('2026-09-14') >= 0) || cs[0]; if (!c) return false; c.click(); return true; }); await pause(800);
+    if (cOk && await clicTexte('button', 'Ouvrir le pilotage et lancer')) voie = 'la case de l\'emploi du temps → « ▶ Ouvrir le pilotage et lancer » (§12.28)';
+    else { await clicTexte('button', 'Fermer l’emploi du temps'); await pause(400); } }
+  if (!voie && neuf && await existe('.at-onglet[data-vue="pilotage"]')) { await clic('.at-onglet[data-vue="pilotage"]'); await pause(600); if (await existe('[data-lancer="1"]')) { await clic('[data-lancer="1"]'); voie = 'Pilotage → [data-lancer=1] (E2)'; } }
   if (!voie && await existe('#at-dr-classe')) { await page.selectOption('#at-dr-classe', '3E Charles de Gaulle'); await page.evaluate(() => { const cr = document.getElementById('at-dr-creneau'); for (let j = 0; j < cr.options.length; j++) if (cr.options[j].text.startsWith('08:57')) cr.selectedIndex = j; cr.dispatchEvent(new Event('change')); const d = document.getElementById('at-dr-debut'); if (d) d.value = '08:57'; }); await nettoyer(); await page.evaluate(() => atDrJouerClic()); voie = 'tête de préparation → atDrJouerClic (production)'; }
   await pause(3000); await page.keyboard.press('Escape'); await pause(300); await cap('P5-classe-lancee');
+  if (neuf && voie) { pas('P5', /case/.test(voie) ? 'ok' : 'absent', 'lancée par la case de l\'emploi du temps (§12.28 (3a))', voie);
+    pas('P5', await page.evaluate(() => document.documentElement.classList.contains('dr-en-classe')) ? 'ok' : 'absent', 'l\'heure se joue dans l\'écran « la classe en cours » (§12.28 (3a), E1)'); }
   if (!voie) { pas('P5', 'absent', 'aucune entrée de lancement (ni [data-lancer=1], ni #at-dr-classe)'); return; }
   const e = (await traces()).slice(avant); pas('P5', 'ok', 'lancée par ' + voie, e.length + (MODE_TEST ? ' écritures au magasin (mode test)' : ' écritures')); e.forEach(x => dire('      ' + x));
   const attendu = [/deroule_joue\/[^/]+$/, /cours_actif$/]; attendu.forEach(a => pas('P5', e.some(x => a.test(x)) ? 'ok' : 'ÉCHEC', 'écrit au lancement : ' + a.source)); });

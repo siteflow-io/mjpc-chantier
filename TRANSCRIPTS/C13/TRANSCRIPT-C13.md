@@ -3789,3 +3789,16 @@ MEMO
 
 26/10/2026 23:30
 MEMO
+
+## Tour 204 — 27/10/2026 00:20 — contrôle n°66 (sans message de Paul depuis le tour 201)
+
+**Fait.** Mon banc sur `9182a56b` : VERT, 106/0 (épreuve gardée). Lu sur `integration` depuis `d1c4ee64` : E1 `a5cd0dfd` (la diapo du cahier se prend comme toute diapo — ▶ y va, la vignette a la garde « La classe te suivrait » ; banc E1 566/0). E2 code sa poussée 41 (le reste du 28 et sa part du 29 ; rappel à 00:26), E1 attend E2 pour retirer la barre (rappel à 00:35), E3 rejoue ses bancs (depuis 23:49). Tous ont un rappel ou tournent : personne à relancer. Banc relancé sur `8202a883`. Contrôle n°67 à 01:09 (`trig_01R1gWusPLgqdgARTLK9tQFF`).
+
+**Réponse (mot pour mot).**
+
+444. Contrôle de minuit. Rien de neuf à te montrer : E2 code ses derniers morceaux (le bandeau, la tête des étapes), E1 attend ses retraits pour enlever la barre du bas, E3 rejoue toutes ses mesures. Les exécutants continuent la nuit ; je contrôle toutes les 50 minutes.
+
+À tester : rien pour l'instant — rien n'est en ligne.
+
+27/10/2026 00:20
+MEMO

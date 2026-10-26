@@ -3633,3 +3633,43 @@ MEMO
 
 26/10/2026 18:53
 MEMO
+
+## Tour 197 — 26/10/2026 20:02 — contrôle n°62 (sans message de Paul depuis le tour 196)
+
+**Fait.** Lu sur `integration` depuis `d1b2b009` : E1 13 · 39 (`0a0e26cc`, A47 7/0 ; E3 retour 52 : vert aux quatre tailles), E1 l'écran « la classe en cours » (`22e83c0e`, `dr_ouvrirClasse`, A48 15/0) et les mots de `gardeCahier` (`4e90ff49`) ; E2 mission 0 puis poussée 38 (`f46e30da` : 13 · 40, la garde `beforeunload`, le bandeau « Heure en cours avec les … — Reprendre » en haut, la reprise avec « Fin de l'heure » à son étape ; banc E2 181/0) ; E4 mission 0 (`ae2f8a19`) ; E3 missions et `banc-1228` (avant ROUGE 60/128, puis 64/128). Adapté mon banc au lancement par la case de l'emploi du temps (`parcours.mjs` v4, `controles.mjs` v3 : la répétition se joue depuis l'Atelier, jamais pendant l'heure) : `banc.sh` VERT sur `f46e30da` — 106 vérifications, 0 échec (`epreuves/banc-sur-integration-f46e30da.txt`). Tranché : la présence du prof en mode test reste (la vraie présence de Paul) ; deux pilotes depuis un autre navigateur, comme aujourd'hui. Ajouté à E3 : la répétition d'un autre onglet ne doit pas toucher la fenêtre du tableau de la classe. E1 réveillé (pousser « l'Atelier ne lance plus », puis le « ? »). Contrôle n°63 à 20:48 (`trig_01Rf7u4AAw3PQFBMmX2kJk2E`).
+
+**Réponse (mot pour mot).**
+
+413. Contrôle de 20:00. Le mode test : ce que tu publies se voit maintenant dans l'emploi du temps — vert, mesuré aux quatre tailles. Codés, en cours de mesure : l'écran à part pour l'heure lancée, la fin de l'heure qui dit en clair ce qu'elle attend, la garde à la fermeture de l'onglet et le bandeau « Reprendre ». Restent à coder : le récit et les « ? ». J'ai remis mon propre banc au lancement depuis l'emploi du temps : il est vert. Prochain contrôle à 20:48.
+
+À tester : rien pour l'instant — rien n'a changé sur ton site.
+
+26/10/2026 20:02
+MEMO
+
+## Tour 198 — 26/10/2026 20:12 — Paul (20:05) : « un mode dirigé »
+
+**Paul (mot pour mot).** « Je pensais à quelque chose: un mode dirigé. En gros, un bouton qui active une sorte de bot qui me dit quoi faire quand, tout en me laissant libre sur les moments où par exemple j'écris au tableau, etc. Tu vois l'idée ? Il y a déjà un peu ça avec la préparation du cahier de texte, en sachant que cette préparation est une usine à gaz actuellement. Mesure, audit et dis moi. Le but est de ne pas complexifier plus et surtout surtout de me décharger mentalement, et aussi de m'apprendre le flux. Une fois que je l'aurai en main, je pourrai désactiver le bouton. »
+
+**Fait.** Mesuré par le geste sur le fichier intégré d'aujourd'hui (`2518615a`, assemblé `b5b0fd8a…`), à 1707 × 743, l'horloge qui court : l'heure lancée par la case de l'emploi du temps, puis T-5, T-3, T-1, l'heure du cahier, puis « Préparer » (`MANDATS/MODE-DIRIGE/mesure-dirige.mjs`, sorties et captures dans `MANDATS/MODE-DIRIGE/mesure/`). Cadrage écrit : `MANDATS/MODE-DIRIGE/CADRAGE-26-10.md` (les mots de Paul, la mesure, l'audit, D1-D5). Capture envoyée : `05-T-3.png` (l'écran à T-5).
+
+**Réponse (mot pour mot).**
+
+414. Oui, je vois l'idée : un guide qui te dit le geste suivant, un seul à la fois, sans jamais te bloquer, et que tu éteins quand tu as le fil en main. Mesuré dans le site — une heure lancée depuis l'emploi du temps, l'horloge qui court, à la taille de ta fenêtre : le guidage existe déjà en morceaux (l'alerte T-5, les sept étapes de « Fin de l'heure », « Où on en est », le « ? » qu'on code en ce moment). Ce qui manque, c'est le fil d'un morceau à l'autre, au bon moment.
+
+415. L'usine à gaz, mesurée (la capture) : à T-5, 31 boutons à l'écran et deux choses ouvertes à la fois — la barre d'alerte en bas (« Préparer », « Aller au cahier », « Plus tard ») et les sept étapes à droite (« Préparer le cahier de textes », « Reprendre le cours »). Cinq boutons mènent au cahier de textes, dont deux « Préparer » qui ne font pas la même chose ; « Reprendre le cours » t'est proposé alors que tu n'as rien quitté ; et « Préparer » réorganise tout l'écran.
+
+416. Ce que je propose : un bouton « Mode dirigé », à côté du « ? », allumé ou éteint ; éteint, rien ne change.
+
+417. Allumé : une seule ligne, toujours au même endroit (là où est la barre d'alerte aujourd'hui), « Maintenant : … » et « ensuite : … », et le bouton dont elle parle s'allume. Jamais de fenêtre, jamais un bouton de plus, jamais au tableau. Elle ne coupe rien : tu écris au tableau, tu parles — elle attend, et change d'elle-même quand le geste est fait.
+
+418. Ses mots sont ceux du « ? » : un seul texte, que tu corriges une fois.
+
+419. Mais d'abord le cahier de textes, mode dirigé ou non : une seule entrée (« Fin de l'heure »), une seule sortie (« Reprendre le cours »), et « Clore l'heure » ; l'alerte T-5 devient la ligne, avec un seul bouton. Je mesure geste par geste ce que la classe voit à chaque bouton, et je te montre le chemin court sur captures avant tout code.
+
+420. Ça vient après les cinq dettes en cours. Dis-moi « oui », ou ce que tu changes.
+
+À tester : rien pour l'instant.
+
+26/10/2026 20:12
+MEMO

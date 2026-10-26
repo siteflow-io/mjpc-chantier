@@ -1,0 +1,30 @@
+# SIMPLIFIER L'EXISTANT EN GARDANT SA FINESSE — LES MOTS DE PAUL, L'INVENTAIRE, LES TRANCHAGES À VALIDER
+*Conscience n°13, 26/10/2026 20:40. Rien ici n'est codé. Vient avant le mode dirigé (`../MODE-DIRIGE/CADRAGE-26-10.md`, D1-D5 en attente) et après les cinq dettes de §12.28.*
+
+## 1 · Ce que Paul a dit (mot pour mot, 26/10 20:11)
+« D'abord avant de coder un nouveau dispositif, peut-on simplifier l'existant tout en gardant sa finesse ? Je parle surtout d'ui, de flux et d'ergonomie visuelle ET pratique »
+
+**Sa règle qui borne tout** (08/10) : « une fonctionnalité = un visuel : toute fonction a sa place visible dans la console du professeur, jamais cachée ». → Simplifier ne veut pas dire cacher : ce qui fait double se fusionne, chaque geste a un seul nom, l'écran ne change jamais de forme, rien de ce qui sert ne tombe.
+
+## 2 · L'inventaire (par le geste, `inventaire.mjs`, sorties dans `inventaire/`)
+Le fichier intégré d'aujourd'hui (`integration` `2518615a`, assemblé `b5b0fd8a…`) sur le faux hub, à 1707 × 743, l'horloge qui court : 32 écrans du parcours — l'emploi du temps, la case, l'accueil, la page du niveau, l'Atelier (accueil, Mes chapitres, Structure, Atelier, Pilotage, Relecture), l'heure lancée par la case, le milieu de l'heure, T-5, T-3, « Préparer le cahier de textes », les étapes 2 à 7, « Revenir au cours », l'heure du cahier, « Aller au cahier », la case de l'heure 2. Pour chaque écran : chaque élément cliquable (son nom, son infobulle), où il est, ce qui est plus bas, les noms en double, une capture. *La clôture n'a pas été mesurée : la garde « Aller au cahier » (« Rester » / « Y aller ») est restée ouverte (écrans 24-32), le script ne l'a pas passée.*
+- **L'heure lancée : 32 commandes** à l'écran — l'entête 10 (Pilotage, Relecture, ↗, ⏱, Notes, ⧉ Tableau, 🖥 Écran 2, Adresse du tableau, Fin de l'heure, ■ Clore l'heure), les outils 9 (✦ ✍ ⊞ ab A 🔍 ❄ 👥 ⋯), le texte au tableau, ◀ ▶ Dévoiler, la participation, les 8 minutes d'« Où on en est » (modifiables pendant le cours).
+- **T-5** : deux choses ouvertes à la fois (la barre du bas : « Préparer », « Aller au cahier », « Plus tard » ; la séquence à droite : « Préparer le cahier de textes », « Reprendre le cours », l'étape, ◀ ▶, la liste des sept) — la barre revient à T-3, T-1, à l'heure du cahier.
+- **Cinq chemins vers le cahier** : « Préparer », « Aller au cahier », « Préparer le cahier de textes », « Fin de l'heure », « ■ Clore l'heure » ; et une garde de plus (« Aller au cahier de textes — … », « Rester » / « Y aller »).
+- **Un nom pour plusieurs gestes** : « Préparer » (la case : ouvrir la séance dans l'Atelier ; la barre : geler et préparer le cahier ; la séquence : « Préparer le cahier de textes ») ; « Reprendre le cours » (la case : rouvrir une heure ; la séquence : refermer la colonne) ; trois « tableau » (« ⧉ Tableau » change la vue de droite, « 🖥 Écran 2 » ouvre la fenêtre du tableau, « Adresse du tableau »).
+- **L'écran change de forme** : « Préparer » réduit la colonne des diapos à 64 px, la diapo à 58 % de la hauteur, les notes, et la vue de droite passe au tableau (34 commandes).
+- **La répétition montre des gestes de classe** : dans l'Atelier, le Pilotage (rien d'écrit) porte « Fin de l'heure », la participation (« initiales — puis 1/2/3 »), « qui a participé ».
+- **Trouvé en mesurant — dette 13 · 46** : la garde « Aller au cahier » dit « Aucune activité restante… tu es à l'heure. Tout a été fait » quand l'étape 2 dit « 7 activités : dis ce que chacune devient » (deux comptes) ; inscrite au registre, réglée dans §12.28.
+
+## 3 · Les tranchages proposés (à valider ; « ce que je ne commente pas est acquis »)
+- **S1 — À T-5, une seule chose s'ouvre** : la séquence « Fin de l'heure », à droite (ta décision du 24/09 : la séquence s'ouvre par l'alerte) ; « T-5 », « T-3 », « T-1 », « c'est l'heure » s'écrivent en tête de la séquence ; la barre du bas ne s'ouvre plus.
+- **S2 — Un seul chemin vers le cahier** : la séquence. Tombent « Préparer », « Aller au cahier », « Plus tard » (la barre), « Préparer le cahier de textes » (la tête de la séquence) et la garde « Aller au cahier » (ce qu'elle disait est l'étape 2). « Fin de l'heure » et « ■ Clore l'heure » restent dans l'entête (« les boutons habituels de fin et de clôture »). Le moment où le cahier passe au tableau (aujourd'hui « Aller au cahier ») devient un bouton de la séquence, à l'étape où il sert — mesuré geste par geste (ce que la classe voit à chaque bouton) avant tout code.
+- **S3 — L'écran ne change jamais de forme** : la séquence vit dans la colonne de droite ; la colonne des diapos, la diapo et les notes ne bougent pas.
+- **S4 — Un nom par geste** : « Préparer » = la case de l'emploi du temps seulement ; « Reprendre » = reprendre une heure seulement (la case, le bandeau) — dans la séquence, « Retour au cours » ; « 🖥 Écran 2 » → « 🖥 Ouvrir le tableau », « ⧉ Tableau » → « ⧉ Ce que voit la classe ». (Les mots sont de la conscience, à corriger.)
+- **S5 — La répétition ne montre que la répétition** : dans l'Atelier, ni « Fin de l'heure », ni participation, ni « qui a participé » ; la fenêtre du tableau reste (répéter au vidéoprojecteur).
+- **Ce qui ne change pas** : tous les outils de classe (✦ ✍ ⊞ ab A 🔍 ❄ 👥 ⋯), la participation, les notes, le chrono, les minutes modifiables, le contenu des sept étapes, les gardes qui protègent d'une perte (clore avec un manque, quitter l'heure).
+
+## 4 · La suite
+Sur le mot de Paul : codé dans le site après les cinq dettes (§12.28) ; avant / après sur captures, même parcours, à la taille de sa fenêtre ; puis le mode dirigé s'il sert encore.
+
+MEMO

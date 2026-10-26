@@ -1,0 +1,35 @@
+mesure du mode dirigé · /tmp/claude-0/-home-claude/fbedd388-7b0c-5f43-87ab-077e6ae1db43/scratchpad/ui/assemble-2010.html · md5 b5b0fd8aae5801fb0edaaa7301758708 · 1707 × 743
+
+## 1 · emploi-du-temps — 9 boutons visibles · {"preparation":false,"gel":false}
+  [Semaine] [Mois] [Année] [Heures perdues…] [‹] [Aujourd’hui] [›] [📷 Photo du prévu] [✕ Fermer l’emploi du temps]
+
+## 2 · la-case — 15 boutons visibles · {"preparation":false,"gel":false}
+  [Semaine] [Mois] [Année] [Heures perdues…] [‹] [Aujourd’hui] [›] [📷 Photo du prévu] [✕ Fermer l’emploi du temps] [✕] [▶ Ouvrir le pilotage et lancer] [✎ Préparer] [— choisir parmi 785 créneaux — mar 15/9 · 08:00-08] [Événement d’établissement Évaluation hors séance S] [Banaliser cette heure]
+
+## 3 · heure-lancee — 22 boutons visibles · {"lancee":true,"palier":null,"preparation":false,"gel":false,"finSection":1}
+  [Pilotage] [Relecture] [↗ Le site dans un nouvel onglet] [⏱] [📝 Notes] [⧉ Tableau] [🖥 Écran 2] [Adresse du tableau] [Fin de l'heure] [■ Clore l’heure] [✦] [✍] [⊞] [ab] [A] [🔍] [❄] [👥] [⋯] [1] [◀] [▶ Dévoiler]
+
+## 4 · T-5 — 22 boutons visibles · {"lancee":true,"palier":null,"preparation":false,"gel":false,"finSection":1}
+  [Pilotage] [Relecture] [↗ Le site dans un nouvel onglet] [⏱] [📝 Notes] [⧉ Tableau] [🖥 Écran 2] [Adresse du tableau] [Fin de l'heure] [■ Clore l’heure] [✦] [✍] [⊞] [ab] [A] [🔍] [❄] [👥] [⋯] [1] [◀] [▶ Dévoiler]
+
+## 5 · T-3 — 31 boutons visibles · {"lancee":true,"palier":"t5","enFin":true,"preparation":false,"gel":false,"finSection":1}
+  ALERTE · ⠿ T-5 — le cahier de textes dans 5 minutes. L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +42 min. Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. Préparer Aller au cahier Plus tard
+  ALERTE · Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprendre le cours
+  [Pilotage] [Relecture] [↗ Le site dans un nouvel onglet] [⏱] [📝 Notes] [⧉ Tableau] [🖥 Écran 2] [Adresse du tableau] [Fin de l'heure] [■ Clore l’heure] [✦] [✍] [⊞] [ab] [A] [🔍] [❄] [👥] [⋯] [1] [◀] [▶ Dévoiler] [Préparer] [Aller au cahier] [Plus tard] [Préparer le cahier de textes] [Reprendre le cours] [aucune mardi 15 septembre, 15 h 07 mercredi 16 sep] [Sans échéance] [◀ Étape précédente] [Étape suivante ▶ (ce qui n'a pas été fait)]
+
+## 6 · T-1 — 31 boutons visibles · {"lancee":true,"palier":"t3","enFin":true,"preparation":false,"gel":false,"finSection":1}
+  ALERTE · ⠿ T-3 — le cahier de textes dans 3 minutes. L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +44 min. Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. Préparer Aller au cahier Plus tard
+  ALERTE · Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprendre le cours
+  [Pilotage] [Relecture] [↗ Le site dans un nouvel onglet] [⏱] [📝 Notes] [⧉ Tableau] [🖥 Écran 2] [Adresse du tableau] [Fin de l'heure] [■ Clore l’heure] [✦] [✍] [⊞] [ab] [A] [🔍] [❄] [👥] [⋯] [1] [◀] [▶ Dévoiler] [Préparer] [Aller au cahier] [Plus tard] [Préparer le cahier de textes] [Reprendre le cours] [aucune mardi 15 septembre, 15 h 07 mercredi 16 sep] [Sans échéance] [◀ Étape précédente] [Étape suivante ▶ (ce qui n'a pas été fait)]
+
+## 7 · heure-du-cahier — 31 boutons visibles · {"lancee":true,"palier":"t3","enFin":true,"preparation":false,"gel":false,"finSection":1}
+  ALERTE · ⠿ T-3 — le cahier de textes dans 3 minutes. L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +44 min. Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. Préparer Aller au cahier Plus tard
+  ALERTE · Fin de l'heure — étape 1 sur 7 : l'échéance Préparer le cahier de textes Reprendre le cours
+  [Pilotage] [Relecture] [↗ Le site dans un nouvel onglet] [⏱] [📝 Notes] [⧉ Tableau] [🖥 Écran 2] [Adresse du tableau] [Fin de l'heure] [■ Clore l’heure] [✦] [✍] [⊞] [ab] [A] [🔍] [❄] [👥] [⋯] [1] [◀] [▶ Dévoiler] [Préparer] [Aller au cahier] [Plus tard] [Préparer le cahier de textes] [Reprendre le cours] [aucune mardi 15 septembre, 15 h 07 mercredi 16 sep] [Sans échéance] [◀ Étape précédente] [Étape suivante ▶ (ce qui n'a pas été fait)]
+
+## 8 · preparer-le-cahier — 29 boutons visibles · {"lancee":true,"palier":"t3","enFin":false,"preparation":true,"gel":true,"finSection":1}
+  ALERTE · Préparer le cahier de textes — étape 1 sur 7 : l'échéance Revenir au cours Prenez vos agendas pour le… — la date part au tableau, dans le cahier de textes. Choisis-la, ou dis « sans échéance ». Échéance (si tu la donnes) : aucune mardi 15 septembre, 15 h 07 mercredi 16 septembre, 10 h 07 vendredi 18
+  ALERTE · Préparer le cahier de textes — étape 1 sur 7 : l'échéance Revenir au cours
+  [Pilotage] [Relecture] [↗ Le site dans un nouvel onglet] [⏱] [📝 Notes] [⧉ Tableau] [🖥 Écran 2] [Adresse du tableau] [Fin de l'heure] [■ Clore l’heure] [⤡ réduire] [✦] [✍] [⊞] [ab] [A] [🔍] [❄] [👥] [⋯] [1] [◀] [▶ Dévoiler] [Revenir au cours] [aucune mardi 15 septembre, 15 h 07 mercredi 16 sep] [Sans échéance] [◀ Étape précédente] [Étape suivante ▶ (ce qui n'a pas été fait)] [Montrer cette suite à la classe]
+
+erreurs JS : aucune

@@ -3633,3 +3633,16 @@ MEMO
 
 26/10/2026 18:53
 MEMO
+
+## Tour 197 — 26/10/2026 20:02 — contrôle n°62 (sans message de Paul depuis le tour 196)
+
+**Fait.** Lu sur `integration` depuis `d1b2b009` : E1 13 · 39 (`0a0e26cc`, A47 7/0 ; E3 retour 52 : vert aux quatre tailles), E1 l'écran « la classe en cours » (`22e83c0e`, `dr_ouvrirClasse`, A48 15/0) et les mots de `gardeCahier` (`4e90ff49`) ; E2 mission 0 puis poussée 38 (`f46e30da` : 13 · 40, la garde `beforeunload`, le bandeau « Heure en cours avec les … — Reprendre » en haut, la reprise avec « Fin de l'heure » à son étape ; banc E2 181/0) ; E4 mission 0 (`ae2f8a19`) ; E3 missions et `banc-1228` (avant ROUGE 60/128, puis 64/128). Adapté mon banc au lancement par la case de l'emploi du temps (`parcours.mjs` v4, `controles.mjs` v3 : la répétition se joue depuis l'Atelier, jamais pendant l'heure) : `banc.sh` VERT sur `f46e30da` — 106 vérifications, 0 échec (`epreuves/banc-sur-integration-f46e30da.txt`). Tranché : la présence du prof en mode test reste (la vraie présence de Paul) ; deux pilotes depuis un autre navigateur, comme aujourd'hui. Ajouté à E3 : la répétition d'un autre onglet ne doit pas toucher la fenêtre du tableau de la classe. E1 réveillé (pousser « l'Atelier ne lance plus », puis le « ? »). Contrôle n°63 à 20:48 (`trig_01Rf7u4AAw3PQFBMmX2kJk2E`).
+
+**Réponse (mot pour mot).**
+
+413. Contrôle de 20:00. Le mode test : ce que tu publies se voit maintenant dans l'emploi du temps — vert, mesuré aux quatre tailles. Codés, en cours de mesure : l'écran à part pour l'heure lancée, la fin de l'heure qui dit en clair ce qu'elle attend, la garde à la fermeture de l'onglet et le bandeau « Reprendre ». Restent à coder : le récit et les « ? ». J'ai remis mon propre banc au lancement depuis l'emploi du temps : il est vert. Prochain contrôle à 20:48.
+
+À tester : rien pour l'instant — rien n'a changé sur ton site.
+
+26/10/2026 20:02
+MEMO

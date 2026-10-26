@@ -1,0 +1,33 @@
+banc E1 · 2026-10-26 11:22 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 dacb236200997f4598e9d8f78f979631
+
+A39 — §12.27 (3), dette 12 · 212 : la section « Emploi du temps » en trois groupes l'un sous l'autre (ouvrir · sortir le JSON avec le sélecteur · copier le prompt), sans défilement de côté ; le bouton fermé avec sa raison ; un objet = le geste d'aujourd'hui, plusieurs = un seul JSON
+  ok     A39 · 1366 × 768 : trois groupes l'un sous l'autre, chacun son petit titre ; « Ouvrir l'emploi du temps » et sa case dans le premier — 📅 Ouvrir | ⤓ Sortir le JSON | 📋 Copier le prompt
+  ok     A39 · 1366 × 768 : aucun défilement de côté, rien ne sort à droite du contenu — {"cote":0,"debord":0}
+  ok     A39 · 1366 × 768 : une case par objet présent au hub, nommé en clair (et sa date quand il en a une) — Calendrier de l’année — injecté le jeudi 3 septembre | Grille de l’emploi du temps — injecté le lundi 14 septembre | Créneaux horaires — injecté le jeudi 3 septembre
+  ok     A39 · 1366 × 768 : « ⤓ Sortir les JSON cochés » fermé tant que rien n'est coché, sa raison à l'écran et dans l'infobulle — {"raison":"Coche au moins un objet."}
+  ok     A39 · 1366 × 768 : un bouton « Copier le prompt » par voie, nommé comme les voies d'« Injecter un objet » — 📋 Calendrier de l’année | 📋 Grille de l’emploi du temps
+  ok     A39 · 1366 × 768 : aucune erreur JS, aucune boîte
+  ok     A39 · 1536 × 864 : trois groupes l'un sous l'autre, chacun son petit titre ; « Ouvrir l'emploi du temps » et sa case dans le premier — 📅 Ouvrir | ⤓ Sortir le JSON | 📋 Copier le prompt
+  ok     A39 · 1536 × 864 : aucun défilement de côté, rien ne sort à droite du contenu — {"cote":0,"debord":0}
+  ok     A39 · 1536 × 864 : une case par objet présent au hub, nommé en clair (et sa date quand il en a une) — Calendrier de l’année — injecté le jeudi 3 septembre | Grille de l’emploi du temps — injecté le lundi 14 septembre | Créneaux horaires — injecté le jeudi 3 septembre
+  ok     A39 · 1536 × 864 : « ⤓ Sortir les JSON cochés » fermé tant que rien n'est coché, sa raison à l'écran et dans l'infobulle — {"raison":"Coche au moins un objet."}
+  ok     A39 · 1536 × 864 : un bouton « Copier le prompt » par voie, nommé comme les voies d'« Injecter un objet » — 📋 Calendrier de l’année | 📋 Grille de l’emploi du temps
+  ok     A39 · 1536 × 864 : aucune erreur JS, aucune boîte
+  ok     A39 · 1707 × 743 : trois groupes l'un sous l'autre, chacun son petit titre ; « Ouvrir l'emploi du temps » et sa case dans le premier — 📅 Ouvrir | ⤓ Sortir le JSON | 📋 Copier le prompt
+  ok     A39 · 1707 × 743 : aucun défilement de côté, rien ne sort à droite du contenu — {"cote":0,"debord":0}
+  ok     A39 · 1707 × 743 : une case par objet présent au hub, nommé en clair (et sa date quand il en a une) — Calendrier de l’année — injecté le jeudi 3 septembre | Grille de l’emploi du temps — injecté le lundi 14 septembre | Créneaux horaires — injecté le jeudi 3 septembre
+  ok     A39 · 1707 × 743 : « ⤓ Sortir les JSON cochés » fermé tant que rien n'est coché, sa raison à l'écran et dans l'infobulle — {"raison":"Coche au moins un objet."}
+  ok     A39 · 1707 × 743 : un bouton « Copier le prompt » par voie, nommé comme les voies d'« Injecter un objet » — 📋 Calendrier de l’année | 📋 Grille de l’emploi du temps
+  ok     A39 · un objet coché : le bouton s'ouvre ; c'est le geste d'aujourd'hui — le même JSON, le même message — {"u":{"ouvert":true,"raison":""},"msg":"JSON de « calendrier » copié — 19717 caractères."}
+  ok     A39 · « Tout cocher » puis « ⤓ Sortir les JSON cochés » (par le clic) : un seul JSON {calendrier, grille, creneaux}, le message qui les nomme — {"cles":"calendrier,grille,creneaux","msg":"JSON de « calendrier », « grille » et « creneaux » copié — 31614 caractères."}
+  ok     A39 · rien n'est écrit au hub par le sélecteur ni par la sortie — 0
+  ok     A39 · cocher ou décocher ne redessine pas le panneau (une saisie en cours reste, contrat §8.7)
+  ok     A39 · 1707 × 743 : aucune erreur JS, aucune boîte
+  ok     A39 · 1920 × 1080 : trois groupes l'un sous l'autre, chacun son petit titre ; « Ouvrir l'emploi du temps » et sa case dans le premier — 📅 Ouvrir | ⤓ Sortir le JSON | 📋 Copier le prompt
+  ok     A39 · 1920 × 1080 : aucun défilement de côté, rien ne sort à droite du contenu — {"cote":0,"debord":0}
+  ok     A39 · 1920 × 1080 : une case par objet présent au hub, nommé en clair (et sa date quand il en a une) — Calendrier de l’année — injecté le jeudi 3 septembre | Grille de l’emploi du temps — injecté le lundi 14 septembre | Créneaux horaires — injecté le jeudi 3 septembre
+  ok     A39 · 1920 × 1080 : « ⤓ Sortir les JSON cochés » fermé tant que rien n'est coché, sa raison à l'écran et dans l'infobulle — {"raison":"Coche au moins un objet."}
+  ok     A39 · 1920 × 1080 : un bouton « Copier le prompt » par voie, nommé comme les voies d'« Injecter un objet » — 📋 Calendrier de l’année | 📋 Grille de l’emploi du temps
+  ok     A39 · 1920 × 1080 : aucune erreur JS, aucune boîte
+
+28 vérifications, 0 échec(s) · 24 s

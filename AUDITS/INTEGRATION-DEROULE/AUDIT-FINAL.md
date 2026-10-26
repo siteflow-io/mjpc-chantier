@@ -91,6 +91,8 @@
 
 **Mise à jour 25/10, 23:38 (réveil n°55, tête `e3b103d7`, code = `520d81ed`) — LE CANDIDAT 8.75.0-③ : `2da707c9`.** E4 poussées 104-105 (`6fa8522f`, `e3b103d7` : **signal « 0 pas réglée (`2da707c9`) »**, banc.sh vert, banc 140 ok · 0 échec · 0 absent) ; E3 retour 37 (`ca36848e` : 13 · 36 remesurée verte après E2 37 — plus de débordement, zone « ✎ » absente, hub brut entier) ; E1, E2, E3 : retours de veille suspendus (relance par session neuve). Aucun module bougé depuis `2da707c9` (diff vide) : mon banc de 22:36 vaut (collisions 0, parcours vert ×2, K 108 / 0). **Candidat : `2da707c9` (= `e3b103d7` en code), assemblé 2 348 450 o, md5 `a8d3c59015ccee73b7d354dbfa9f0e3c`** = la ② + 13 · 36 (l'aperçu de la réactivation paginé comme le pilote). Annoncé à Paul avec la capture T172 ; le promeus se dit par Paul (« promeus » ou « oui ») ; rien n'est copié avant. Aucun réveil programmé.
 
+**26/10, 08:10 — PROMU : 8.75.0-③.** Paul (08:08) : « Promeus ». Rien poussé au sas depuis `17bf3735` ; code identique à `2da707c9` (diff vide). Assemblé par `git archive` → md5 `a8d3c59015ccee73b7d354dbfa9f0e3c`, 2 348 450 o ; prod `index.html` = l'assemblé avec `var APP_VERSION="8.75.0-③";` → md5 `83adc8decc16ee4c51b8a68e3ceaa285`, 2 348 450 o, commit prod `e7c70d279362`, blob `f0cbc31fe81f` ; **bit à bit contre le site en ligne à 08:11**. Suivi (`f7d1c21`) : journal, dettes (ÉTAT DE PRODUCTION v8.75.0-③ ; 13 · 36 promue), point de retour (blob ② `ffbdab35fa43`), index des fonctions (1886), où-trouver-quoi. PROMU aux quatre relances. Aucun réveil programmé ; cycle suivant sur le mot de Paul.
+
 ## 1 · (a) Le parcours fixe P0-P12, avant / après, écran par écran
 | pas | avant (8.74.0-④, T72-EX) | après (tête, T97-P) | changement | voulu ? |
 |---|---|---|---|---|

@@ -1,0 +1,24 @@
+banc E1 · 2026-10-26 18:03 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 fb1605de98155e19d5c1d38a83db2352
+
+A25 — la relecture continue d'E4 (13:35-14:05) : rien au journal hors heure, « + bloc » dont la frappe remplace l'attente, Échap ferme le menu d'une étape, le volet suit ▶, F2 + note : une seule pose
+  ok     A25 · parcourir des diapos dans l'atelier puis au Pilotage sans heure lancée : aucune entrée au journal (pas d'« heure 1 » fantôme) — {"j0":0,"j1":{"n":0,"h":[]}}
+  ok     A25 · « + bloc » → Consigne, puis la frappe : elle remplace « Nouvelle consigne » (pas « Nouvelle consigneRelis… ») — {"t":"consigne","txt":"Relis ton tableau."}
+  ok     A25 · réveil n°4, 1 (grave) : dans un bloc neuf, « Ligne A. » Entrée « Ligne B. » Entrée « Ligne C. » à 80 ms par touche, quatre fois : chaque ligne entière, aucune lettre sur la ligne d'avant — Ligne A.|Ligne B.|Ligne C. ; Ligne A.|Ligne B.|Ligne C. ; Ligne A.|Ligne B.|Ligne C. ; Ligne A.|Ligne B.|Ligne C.
+  ok     A25 · clic droit sur une étape, Échap : le menu se ferme (Échap renonce) — {"m0":true,"m1":false}
+  ok     A25 · ▶ jusqu'à la dernière diapo de l'heure (7) à 1366 × 768 : la vignette courante est en vue, au premier plan (le volet suit S.di) — {"di":6,"top":639,"bas":756,"h":768,"sous":true}
+  ok     A25 · F2, « EA », 2, une note, Entrée : une seule prise de parole, « a proposé une piste » avec la note ; le chiffre ne s'écrit pas — {"p0":0,"p1":{"n":1,"d":{"nom":"AUDEBERT Elise","m":"piste","note":"bonne idee"},"vif":"","pop":false}}
+  ok     A25 · F2, la note tapée vite juste après les initiales, quatre fois : jamais une lettre perdue (le curseur passe à la note dans la même tâche) — bien vu | bien vu | bien vu | bien vu
+  ok     A25 · F2, la note d'abord, puis 3, Entrée : « on y reviendra avec lui » avec la note « bien vu » — {"n":2,"d":{"m":"revenir","note":"bien vu"}}
+  ok     A25 · mode test du site : « mode test — rien n'est enregistré » en pastille dans l'entête (jamais « Enregistré à … ») ; elle part avec le mode test — {"mt":{"txt":"mode test — rien n'est enregistré","cl":true,"vu":true},"mt2":""}
+  ok     A25 · aucune erreur JS, aucune boîte du navigateur
+
+A47 — §12.28 (1), dette 13 · 39 : en mode test, ce qui a été écrit se lit — « Je publie pour » une classe → l'emploi du temps montre la séance dans ses cases ; dépublier → elle part ; aucune écriture au hub ; hors mode test, rien ne change
+  ok     A47 · mode test : « Je publie pour » 3A ESSAI → « Publier » le chapitre → l'emploi du temps montre la séance dans les 4 cases de 3A ESSAI (avant : « aucune séance prête ») — {"avant":"3A ESSAI aucune séance prête","apres":["3A ESSAI Poésie et peinture : le Romantisme en question heure 2/3","3A ESSAI Étude de texte accompagnée : « L'Albatros » heure 1/3"]}
+  ok     A47 · mode test : dépublier → les cases de 3A ESSAI reviennent à « aucune séance prête » — ["3A ESSAI aucune séance prête","3A ESSAI aucune séance prête"]
+  ok     A47 · mode test : le faux hub n'a reçu aucune écriture (K15) — hors la présence du prof (/presence, écrite par son propre fetch, l. 4963 : dit au JOURNAL)
+  ok     A47 · mode test : l'arbre — une feuille effacée reste effacée, PATCH fusionne, un parent écrit remplace ce qu'il contient, une clé jamais lue reste « pas encore lue » — ["{\"e\":{\"f\":4}}",4,null,true]
+  ok     A47 · mode test : aucune erreur JS
+  ok     A47 · hors mode test : rien ne change — la publication part au hub (PUT …/chapitres/0/published/3a_essai) et l'emploi du temps la montre — ["PUT /site/3e/chapitres/0/published/3a_essai",48]
+  ok     A47 · hors mode test : aucune erreur JS
+
+17 vérifications, 0 échec(s) · 156 s

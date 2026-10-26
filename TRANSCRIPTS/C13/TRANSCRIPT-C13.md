@@ -3763,3 +3763,16 @@ MEMO
 
 26/10/2026 21:49
 MEMO
+
+## Tour 202 — 26/10/2026 22:46 — contrôle n°64 (sans message de Paul depuis le tour 201)
+
+**Fait.** Mon banc sur `751ed7cd` (la tâche de fond) : VERT, 106/0 (épreuve gardée). Lu sur `integration` depuis `6316a157` : E1 « l'Atelier ne lance plus » (`9eb54d4f`, `2150097f`, `c00fd8ba`), le volet d'aide en colonne et `classe-close` (`2d262b93`), les mots du « ? » rejoués (30 écrans) — **§12.28 E1 fini** ; E1 et E2 missions 0 du §12.29 (E2 a mesuré ce que la classe voit à chaque geste du cahier) ; E4 veille close. Tranché : la barre du bas et la garde « Aller au cahier » sont retirées par E1 ; « Plus tard » ne fait pas perdre les rappels (chaque palier suivant rouvre la séquence). `parcours.mjs` P5 : « l'Atelier ne lance plus » devient une vérification. Banc relancé sur `d51c57ee`. Contrôle n°65 à 23:26 (`trig_0184CVeQNheX6vzK1asWJzoc`).
+
+**Réponse (mot pour mot).**
+
+442. Contrôle de 22:45. L'Atelier ne lance plus d'heure, l'aide ne cache plus rien quand elle est ouverte : la part d'E1 sur les cinq dettes est finie. Reste chez E2 le bandeau « Reprendre » qui fait chevaucher deux boutons. La simplification a commencé : les exécutants ont d'abord mesuré ce que la classe voit à chaque bouton du cahier de textes. Une précision de ma part : si tu cliques « Plus tard » à T-5, les étapes se rouvrent d'elles-mêmes à T-3, T-1 et à l'heure du cahier, comme la barre le faisait. Prochain contrôle à 23:26.
+
+À tester : rien pour l'instant — rien n'est en ligne.
+
+26/10/2026 22:46
+MEMO

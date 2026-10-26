@@ -2,7 +2,7 @@
 // usage : node banc.mjs [sortie.txt]        (env : MJPC_FICHIER = le fichier joué, par défaut LIVRAISONS/INTEGRATION/assemble/index.html)
 // E1-a : la barre fusionnée, la porte, le déroulé dans la page (sans iframe), la trame réelle de la séance 0, les interfaces,
 //        zéro écriture tant que rien n'est modifié, une modification → B/deroule seul, le rechargement, Structure ↔ Atelier, le clavier hors du déroulé.
-import fs from 'fs'; import path from 'path'; import { createHash } from 'crypto'; import { spawnSync } from 'child_process';
+import fs from 'fs'; import path from 'path'; import { createHash } from 'crypto'; import { spawnSync } from 'child_process'; import os from 'os';
 import * as E from './env.mjs';
 const SORTIE = process.argv[2] || null; const t0 = Date.now();
 const dire = s => { E.R.push(s); console.log(s); };
@@ -866,6 +866,53 @@ await B('A39', '§12.27 (3), dette 12 · 212 : la section « Emploi du temps » 
       await pg.evaluate(() => { const t = document.createElement('textarea'); t.id = 'saisie-banc'; t.value = 'en cours'; document.getElementById('edt-panneau').appendChild(t); }); await pg.evaluate(() => document.querySelector('.edt-coche input[data-objet="grille"]').click()); await pg.waitForTimeout(150);
       E.verif('A39', await pg.evaluate(() => !!document.getElementById('saisie-banc') && document.getElementById('saisie-banc').value === 'en cours'), 'cocher ou décocher ne redessine pas le panneau (une saisie en cours reste, contrat §8.7)'); }
     E.verif('A39', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); } });
+
+const PILOTE_1227 = {};
+async function ouvrirFichier(fichier, w, h) {   /* E.ouvrir sur un autre fichier (la tête d'avant), jusqu'à l'Atelier */
+  const ctx = await b.newContext({ viewport: { width: w, height: h }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
+  const pg = await ctx.newPage(); await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, E.store());
+  await pg.goto('file://' + fichier + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800);
+  await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
+  await pg.click('#tprof-btn'); await pg.waitForTimeout(500); await pg.evaluate(() => atelierOuvrir()); await pg.waitForTimeout(1000);
+  await E.clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(800); await E.clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'); await pg.waitForTimeout(1500);
+  await pg.evaluate(() => { const x = document.getElementById('fi-overlay'); if (x) x.remove(); const b2 = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b2) b2.click(); }); await pg.waitForTimeout(1500);
+  return { ctx, pg };
+}
+const AVANT_1227 = (() => { try { const f = path.join(os.tmpdir(), 'e1-avant-1227.html'); const r = spawnSync('git', ['-C', E.RACINE, 'show', '9c0753580:LIVRAISONS/INTEGRATION/assemble/index.html'], { maxBuffer: 1 << 28 }); if (r.status !== 0) return null; fs.writeFileSync(f, r.stdout); return f; } catch (e) { return null; } })();   /* la tête d'avant §12.27 (8.75.0-③ + relances), pour « avant / après » */
+const pagesDuPilote = async pg => { await pg.click('#ong-pilotage'); await pg.waitForTimeout(600);
+  const n = await pg.evaluate(() => document.querySelectorAll('#volet .vig[data-i]').length); const out = [];   /* au Pilotage, les vignettes du volet sont .vig[data-i] */
+  for (let i = 0; i < n; i++) { await pg.evaluate(k => { const v = document.querySelector('#volet .vig[data-i="' + k + '"]'); if (v) v.click(); }, i); await pg.waitForTimeout(120);
+    out.push(await pg.evaluate(() => ({ di: S.di, pages: JSON.stringify(S.pagesCourantes || null), ratio: S.policeRatioCourante, lignes: Array.from(document.querySelectorAll('#mur li[data-p]')).filter(l => !l.classList.contains('hors') && l.getBoundingClientRect().height > 0).map(l => l.dataset.p).join(' ') }))); }
+  return out; };
+await B('A40', '§12.27 (4), dette 13 · 37 : l\'Atelier à toute la largeur et toute la hauteur — « ✕ Fermer l\'atelier » sur la rangée des onglets, la page ne défile plus quand la zone du déroulé est montrée, la zone touche le bas de la fenêtre ; la diapo du pilote inchangée (10)', async () => {
+  for (const [w, h] of TAILLES_1227) { const o = await E.ouvrir(b, { w, h, vue: null }); const pg = o.pg; await sansVoile(pg);
+    const st = await pg.evaluate(() => { const ae = document.getElementById('atelier-ecran'); const bar = document.querySelector('.at-vues-barre'); const f = bar && Array.from(bar.querySelectorAll('button')).find(x => /Fermer l’atelier/.test(x.textContent)); const fb = f && f.getBoundingClientRect(), bb = bar.getBoundingClientRect(); const band = document.querySelector('#atelier-ecran > .at-fermer');
+      return { f: !!f, droite: fb ? Math.round(bb.right - fb.right) : null, memeRangee: fb ? Math.abs((fb.top + fb.bottom) / 2 - (bb.top + bb.bottom) / 2) < bb.height / 2 : false, band: band ? getComputedStyle(band).display : 'absente', haut: Math.round(bb.top), titre: f ? f.title : '' }; });
+    E.verif('A40', st.f && st.droite <= 2 && st.memeRangee && st.band === 'none' && st.haut <= 12 && /panneau prof/.test(st.titre), w + ' × ' + h + ' : Structure — « ✕ Fermer l\'atelier » sur la rangée des onglets, à droite ; la bande du haut est tombée ; la rangée en haut de l\'écran (' + st.haut + ' px)', JSON.stringify(st));
+    const sk = await pg.evaluate(async () => { const ae = document.getElementById('atelier-ecran'); ae.scrollTop = 600; await new Promise(r => setTimeout(r, 80)); const t = Math.round(document.querySelector('.at-vues-barre').getBoundingClientRect().top); const s2 = ae.scrollTop; ae.scrollTop = 0; return { t, s2 }; });
+    E.verif('A40', sk.s2 === 0 || Math.abs(sk.t) <= 1, w + ' × ' + h + ' : Structure défile comme aujourd\'hui, la rangée (et « Fermer ») reste en haut', JSON.stringify(sk));
+    for (const v of ['atelier', 'pilotage', 'relecture']) { await pg.evaluate(x => document.querySelector('.at-onglet[data-vue="' + x + '"]').click(), v); await pg.waitForTimeout(v === 'atelier' ? 1500 : 700); await sansVoile(pg);
+      const m = await pg.evaluate(async () => { const ae = document.getElementById('atelier-ecran'); ae.scrollTop = 999; await new Promise(r => setTimeout(r, 60)); const z = document.getElementById('dr-zone').getBoundingClientRect(); const az = document.getElementById('at-zone'); const cs = getComputedStyle(az); const som = document.querySelector('#at-arbre .ed2-som'); const sb = som ? som.getBoundingClientRect() : null; const de = document.scrollingElement;
+        return { defile: ae.scrollHeight - ae.clientHeight, top: ae.scrollTop, bas: Math.round(innerHeight - z.bottom), largeur: Math.round(az.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)), W: innerWidth, cote: Math.max(ae.scrollWidth - ae.clientWidth, de.scrollWidth - de.clientWidth), som: sb ? { bas: Math.round(innerHeight - sb.bottom), oy: getComputedStyle(som).overflowY, defile: som.scrollHeight > som.clientHeight } : null }; });
+      E.verif('A40', m.defile <= 0 && m.top === 0 && m.bas >= 0 && m.bas <= 4 && m.cote <= 0, w + ' × ' + h + ' : ' + v + ' — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (' + m.bas + ' px)', JSON.stringify(m));
+      E.verif('A40', m.largeur === m.W - 28, w + ' × ' + h + ' : ' + v + ' — la zone du site = la largeur de la fenêtre − 2 × 14 px', m.largeur + ' / ' + (m.W - 28));
+      E.verif('A40', !m.som || (m.som.bas >= 0 && m.som.bas <= 12 && m.som.oy === 'auto'), w + ' × ' + h + ' : ' + v + ' — la colonne du chapitre va jusqu\'au bas et défile chez elle', JSON.stringify(m.som)); }
+    if (w === 1707 || w === 1920) { const ap = await pagesDuPilote(pg);
+      E.verif('A40', ap.length >= 19 && ap.every(x => x.lignes.length > 0 || x.pages !== 'null'), w + ' × ' + h + ' : le pilote rend chacune des ' + ap.length + ' diapos (lu pour la comparaison avant / après)', String(ap.length));
+      PILOTE_1227[w] = ap; }
+    const fe = await pg.evaluate(() => { const b2 = Array.from(document.querySelectorAll('.at-vues-barre button')).find(x => /Fermer l’atelier/.test(x.textContent)); b2.click(); return true; }); await pg.waitForTimeout(1200);
+    const ferme = await pg.evaluate(() => ({ at: document.getElementById('atelier-ecran').classList.contains('at-actif'), pan: !!document.querySelector('.tprof-overlay.visible') }));
+    E.verif('A40', fe && !ferme.at && ferme.pan, w + ' × ' + h + ' : le clic sur « ✕ Fermer l\'atelier » de la rangée ferme l\'atelier et rouvre le panneau prof', JSON.stringify(ferme));
+    E.verif('A40', !o.errs.length && !o.boites.length, w + ' × ' + h + ' : aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); }
+  const o2 = await E.ouvrir(b, { vue: null }); const p2 = o2.pg; await sansVoile(p2); await E.clicTexte(p2, 'button', '← Mes chapitres'); await p2.waitForTimeout(1500);   /* « ← Mes chapitres » de Structure : l'accueil de l'atelier, sans rangée d'onglets */
+  const mc = await p2.evaluate(() => { const band = document.querySelector('#atelier-ecran > .at-fermer'); return { barre: !!document.querySelector('#atelier-ecran .at-vues-barre'), band: band ? getComputedStyle(band).display : 'absente', vis: band ? band.getBoundingClientRect().height > 0 : false }; });
+  E.verif('A40', !mc.barre && mc.band !== 'none' && mc.vis, '« Mes chapitres » (l\'accueil de l\'atelier, sans rangée d\'onglets) garde sa bande « ✕ Fermer l\'atelier »', JSON.stringify(mc)); await o2.ctx.close();
+  if (AVANT_1227) { const ecarts = []; for (const [w, h] of TAILLES_1227.filter(t => t[0] === 1707 || t[0] === 1920)) {
+      const oa = await ouvrirFichier(AVANT_1227, w, h); const av = await pagesDuPilote(oa.pg); await oa.ctx.close(); const ap = PILOTE_1227[w] || [];
+      av.forEach((x, i) => { const y = ap[i]; if (!y || x.pages !== y.pages || x.lignes !== y.lignes || Math.abs((x.ratio || 0) - (y.ratio || 0)) > 1e-3)   /* la police rapportée au cadre : l'arrondi au pixel du cadre bouge la 5ᵉ décimale (0,055989 → 0,055992), pas la police */ ecarts.push(w + ' diapo ' + (i + 1) + ' : avant ' + x.pages + ' / ' + x.ratio + ' · après ' + (y ? y.pages + ' / ' + y.ratio : '—')); }); }
+    E.verif('A40', ecarts.length === 0, '(10) la diapo du pilote ne change pas avant / après (mêmes pages, mêmes lignes à la première page, même police à 0,001 près du cadre), à 1707 × 743 et 1920 × 1080', ecarts.slice(0, 4).join(' ; ') || undefined); }
+  else E.verif('A40', false, '(10) avant / après : la tête d\'avant §12.27 (9c075358) est introuvable');
+});
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

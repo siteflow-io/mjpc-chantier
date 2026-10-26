@@ -1,0 +1,17 @@
+banc E1 · 2026-10-26 11:21 UTC · ../../../tmp/claude-0/-home-claude/b72dd1dc-29c2-50fe-824b-131fc0966e2c/scratchpad/avant.html · md5 a8d3c59015ccee73b7d354dbfa9f0e3c
+
+A40 — §12.27 (4), dette 13 · 37 : l'Atelier à toute la largeur et toute la hauteur — « ✕ Fermer l'atelier » sur la rangée des onglets, la page ne défile plus quand la zone du déroulé est montrée, la zone touche le bas de la fenêtre ; la diapo du pilote inchangée (10)
+  ÉCHEC  A40 · 1366 × 768 : Structure — « ✕ Fermer l'atelier » sur la rangée des onglets, à droite ; la bande du haut est tombée ; la rangée en haut de l'écran (60 px) — {"f":false,"droite":null,"memeRangee":false,"band":"flex","haut":60,"titre":""}
+  ÉCHEC  A40 · 1366 × 768 : Structure défile comme aujourd'hui, la rangée (et « Fermer ») reste en haut — {"t":-62,"s2":122}
+  ÉCHEC  A40 · 1366 × 768 : atelier — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (40 px) — {"defile":36,"top":36,"bas":40,"largeur":1338,"W":1366,"cote":0,"som":{"bas":40,"oy":"auto","defile":true}}
+  ok     A40 · 1366 × 768 : atelier — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1338 / 1338
+  ÉCHEC  A40 · 1366 × 768 : atelier — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":40,"oy":"auto","defile":true}
+  ÉCHEC  A40 · 1366 × 768 : pilotage — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (40 px) — {"defile":36,"top":36,"bas":40,"largeur":1338,"W":1366,"cote":0,"som":{"bas":40,"oy":"auto","defile":true}}
+  ok     A40 · 1366 × 768 : pilotage — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1338 / 1338
+  ÉCHEC  A40 · 1366 × 768 : pilotage — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":40,"oy":"auto","defile":true}
+  ÉCHEC  A40 · 1366 × 768 : relecture — rien ne défile (ni en hauteur ni de côté), la zone du déroulé touche le bas de la fenêtre (40 px) — {"defile":36,"top":36,"bas":40,"largeur":1338,"W":1366,"cote":0,"som":{"bas":40,"oy":"auto","defile":true}}
+  ok     A40 · 1366 × 768 : relecture — la zone du site = la largeur de la fenêtre − 2 × 14 px — 1338 / 1338
+  ÉCHEC  A40 · 1366 × 768 : relecture — la colonne du chapitre va jusqu'au bas et défile chez elle — {"bas":40,"oy":"auto","defile":true}
+  ÉCHEC  A40 · le banc n'a pas pu aller au bout — page.evaluate: TypeError: Cannot read properties of undefined (reading 'click')
+
+12 vérifications, 9 échec(s) · 11 s

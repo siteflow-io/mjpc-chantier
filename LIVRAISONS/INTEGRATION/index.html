@@ -1073,7 +1073,7 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
 .at-btn-plus{margin-top:6px;border-style:dashed}
 .at-btn-piston{border-radius:20px}
 .at-piston-actif{background:#5a4a20;border-color:#a8874a}
-.at-zone{padding:0 14px 40px;max-width:1500px;margin:0 auto}
+.at-zone{padding:0 14px 40px;max-width:none;margin:0 auto}   /* E1 (§12.27-4, dette 13 · 37) : toute la largeur, les 14 px de bord gardés (avant : max-width 1500px) */
 .at-attente,.at-vide{color:#b8ad93;padding:30px 10px;font-size:.95rem}
 .at-h2{color:#f0e8d8;font-size:1.3rem;margin:6px 0 14px}
 .at-h2-sub{color:#8a7f6a;font-size:.85rem;font-weight:400}
@@ -14844,7 +14844,8 @@ function atVuesBarreHtml(){
   return '<div class="at-vues-barre">'+defs.map(function(d){
     return '<button class="at-onglet'+(ATVUES.vue===d[0]?' at-onglet-actif':'')+'" data-vue="'+d[0]+'"'+(ids[d[0]]?' id="'+ids[d[0]]+'"':'')+(d[0]==='atelier'?' data-atelier="1"':'')
       +' title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue)">'+d[1]+'</button>';
-  }).join('')+'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de la trame au hub : il se fait seul, moins d’une seconde après chaque modification"></span></div>';
+  }).join('')+'<span class="at-dr-etat" id="at-dr-etat" title="L’enregistrement de la trame au hub : il se fait seul, moins d’une seconde après chaque modification"></span>'
+    +'<button class="at-btn at-fermer-onglets" onclick="atelierFermer()" title="Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer avant la fermeture : rien ne se perd.">✕ Fermer l’atelier</button></div>';   /* E1 (§12.27-4) : « Fermer l’atelier » sur la rangée des onglets, à droite — la bande de 60 px au-dessus tombe quand la rangée existe */
 }
 
 function atVuesMarquer(v){   /* E1 : l'onglet actif suit la vue, sans redessiner la colonne ni le déroulé */
@@ -19953,6 +19954,15 @@ else sesReprisePoser();
 .at-som-pli{cursor:pointer;margin-right:6px;user-select:none;color:#c9a25a;display:inline-block;width:14px}
 .ctx-menu{z-index:9000}
 .at-ecr[draggable]{cursor:grab}
+/* E1 (§12.27-4, dette 13 · 37) : tout l'écran, tout le temps. Quand la rangée des onglets existe (un chapitre ouvert), « ✕ Fermer l'atelier » y est
+   et la bande du haut (.at-fermer) tombe ; la rangée reste en haut quand Structure défile. Quand la zone du déroulé est montrée (Atelier, Pilotage,
+   Relecture), rien ne défile : la zone va du dessous des onglets au bas de la fenêtre (dr_dimensionnerZone), la colonne du chapitre défile chez elle. */
+#atelier-ecran:has(.at-vues-barre)>.at-fermer{display:none}
+#atelier-ecran:has(.at-vues-barre) .at-zone{padding-top:8px}
+#atelier-ecran:has(.at-vues-dr) .at-zone{padding-bottom:0}
+.at-vues-barre{position:sticky;top:0;z-index:5;background:#12100d;align-items:center}
+.at-fermer-onglets{margin-left:auto}
+.at-vues-dr .ed2-som{top:0;max-height:var(--dr-zone-h,calc(100vh - 120px))}
 </style>
 
 </html>

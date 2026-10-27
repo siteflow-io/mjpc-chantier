@@ -4336,3 +4336,27 @@ MEMO
 
 27/10/2026 11:50
 MEMO
+
+
+---
+
+## Tour 229 — 27/10/2026 11:54 → 12:11
+
+**Paul :** ok c'est bon
+
+**Claude :**
+
+À jouer : rien de nouveau (④ reste la production) · en cours chez les exécutants : E4 la Rédaction universelle (il audite le mandat), E1 la clé de l'heure jouée, E3 revérifie ⑤ · ouvert : 481, 458
+
+536. Le mandat est parti chez E4 (réveillé à 12:03). Il audite d'abord, puis code dans cet ordre : l'app sur le site (tes classes, l'enregistrement à chaque geste, le mode test) avec la grille Dugain rangée comme premier sujet ; puis « Nouveau sujet » et la relecture ; puis la lettre.
+
+537. La lettre est écrite : 12 points de grille, 432 phrases. Le thème et l'invention 14, la construction des phrases 14, l'organisation et la lettre 6, la langue 6. L'orthographe reprend tes phrases Dugain mot pour mot (sans la phrase sur le brevet) ; le lexique aussi, adapté là où il parlait de Marguerite. Tout le reste est neuf : tu le liras dans l'app, point par point, ou au moment où tu le choisis en corrigeant.
+
+538. Le compteur d'orthographe : je propose les seuils de Dugain divisés par deux (la lettre fait la moitié d'une copie double). Pour trente lignes : 0 à 3 erreurs Très satisfaisant, 4 à 7 Satisfaisant, 8 à 14 Fragile, 15 et plus Insuffisant. Oui ?
+
+539. Le candidat ⑤ (la phrase « L'activité en cours », le titre sans « (proposition) », « Nouveau chapitre » sans clé, tes classes trouvées par l'emploi du temps) : E1 finit la clé de l'heure jouée, E3 revérifie ensuite. Je te l'annonce dès que c'est vert ; l'heure, je ne la sais pas.
+
+À tester : rien pour l'instant.
+
+27/10/2026 12:11
+MEMO

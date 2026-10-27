@@ -769,3 +769,8 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - Un rouge : **13 · 41 « après Clore, aucun bandeau » à 1920**. Rejoué seul deux fois : **32/32 et 32/32**. C'est le même intermittent de ma mesure qu'à 1536 au retour 67 (quatre courses en parallèle chargent la machine). Je le laisse dit ici et je le regarde à part ; il n'est pas du §12.33.
 - `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2149-27-10-1233bis-vert/`.
 - **§12.33 VERT (`a2b1bdb9`)**. Le cas 34 attend les poussées d'E1 sur §12.34.
+
+## Retour 79 — 27/10, 22:10 — §12.32 : la capture de l'onglet refaite avec un item réaliste (relance 21:51)
+- Le magasin du banc donne à la séance 1 un item à Paul, « Rédaction : une lettre de la Grande Guerre ». Le cas 32 le lie au sujet de la lettre et l'ouvre par l'onglet.
+- Rejoué sur la tête `ea57573c` (1707 et 1920) : **18/18**. La capture `1707x743-32-3-l-onglet-redaction-apres.png` est regardée : l'onglet « ✏️ Rédaction — 3E » montre « Rédaction : une lettre de la Grande Guerre », puis « Ouvrir la Rédaction universelle ».
+- Les relances de 21:50 (N = 5 : j'ajoute au cas 34 le refus à 6 et l'acceptation à 5) et de 22:05 (cas 35) sont lues. Elles suivent.

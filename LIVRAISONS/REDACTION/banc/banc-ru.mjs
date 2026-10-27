@@ -39,10 +39,10 @@ const pret = (pg, quoi = 'classe') => pg.waitForFunction(q => { if (!window.RU) 
 const CONN = ["De plus, ", "Par ailleurs, ", "D'ailleurs, ", "Qui plus est, ", "En revanche, ", "Toutefois, ", "Cependant, ", "Reste que ", "Néanmoins, ", "Plus problématique encore, ", "Plus inquiétant, ", "Surtout, ", "Pour finir, ", "En définitive, ", "Au total, ", "Au bilan, "];
 const LISTES = [["De plus, ", "Par ailleurs, ", "D'ailleurs, ", "Qui plus est, "], ["En revanche, ", "Toutefois, ", "Cependant, ", "Reste que ", "Néanmoins, "], ["Plus problématique encore, ", "Plus inquiétant, ", "Surtout, ", "Pour finir, "], ["En définitive, ", "Au total, ", "Au bilan, "]];
 const ouvreurs = bloc => [...bloc.matchAll(/<p class="comm-para">([^<]*?, |Reste que )/g)].map(m => m[1].replace(/&#39;/g, "'"));
-const repetitions = html => html.split('<div class="critere">').slice(1).reduce((n, b) => { const o = ouvreurs(b); return n + o.filter((x, i) => i > 0 && x === o[i - 1] && CONN.includes(x)).length; }, 0);
+const repetitions = html => html.split('<div class="critere">').slice(1).reduce((n, b) => { const o = ouvreurs(b).filter(x => CONN.includes(x)); return n + o.filter((x, i) => o.indexOf(x) !== i).length; }, 0);   // un mot qui a déjà servi dans le critère
 // la règle appliquée à une fiche de la production (pour comparer « au mot de liaison près là où il se répétait »)
 const sansRepetition = html => { let n = 0; const out = html.split('<div class="critere">').map((b, j) => { if (!j) return b; let prec = null;
-  return b.replace(/<p class="comm-para">([^<]*?, |Reste que )/g, (m, c) => { const cc = c.replace(/&#39;/g, "'"); if (!CONN.includes(cc)) { prec = null; return m; } if (cc !== prec) { prec = cc; return m; } const l = LISTES.find(L => L.includes(cc)); const x = l[(l.indexOf(cc) + 1) % l.length]; n++; prec = x; return '<p class="comm-para">' + x; }); }).join('<div class="critere">'); return { html: out, n }; };
+  const servis = new Set(); return b.replace(/<p class="comm-para">([^<]*?, |Reste que )/g, (m, c) => { const cc = c.replace(/&#39;/g, "'"); if (!CONN.includes(cc)) return m; if (!servis.has(cc)) { servis.add(cc); return m; } const l = LISTES.find(L => L.includes(cc)); let j = l.indexOf(cc), t = 0; while (servis.has(l[j]) && t < l.length) { j = (j + 1) % l.length; t++; } const x = l[j]; servis.add(x); n++; return '<p class="comm-para">' + x; }); }).join('<div class="critere">'); return { html: out, n }; };
 const cap = (pg, nom) => pg.screenshot({ path: path.join(CAP, nom + '.png') }).catch(() => {});
 const ecr = pg => pg.evaluate(() => window.__ECR.slice());
 
@@ -79,7 +79,7 @@ const ctxA = await contexte(1707, 743, HUB0);
   verif('RU1', /^Réponse comprise/.test(md), 'la grille Dugain (sujets/dugain.json) passe « Vérifier »', md);
   await pg.waitForFunction(() => !document.getElementById('ruNvCreer').disabled, null, { timeout: 8000 }).catch(() => {});
   await pg.click('#ruNvCreer'); await pg.waitForURL(/vue=preparer/, { timeout: 10000 }).catch(() => {}); await att(pg, 1200);
-  const cfg = await pg.evaluate(() => window.__HUB.redactions && window.__HUB.redactions.dugain && window.__HUB.redactions.dugain.config);
+  const cfg = await pg.evaluate(() => window.__SUJ('dugain') && window.__SUJ('dugain').config);
   const n = c => { let d = 0, s = 0, k = 0; c.variantes.forEach(v => v.criteres.forEach(cr => { k += (cr.consignes || []).length; cr.indicateurs.forEach(i => { d += i.descripteurs.length; i.sous.forEach(e => e.forEach(x => { s += 2; })); }); })); return { d, s, k }; };
   verif('RU1', cfg && JSON.stringify(n(cfg)) === JSON.stringify({ d: 80, s: 640, k: 24 }) && /vue=preparer/.test(pg.url()), '« Créer » : /redactions/dugain/config au hub, 80 niveaux, 640 sous-niveaux, 24 consignes (zéro phrase perdue) ; « Préparer le sujet » s\'ouvre', JSON.stringify({ n: cfg ? n(cfg) : null, url: pg.url().split('?')[1], ecr: await ecr(pg), boites: pg.__boites, msg: await pg.evaluate(() => (document.getElementById('ruNvMsg') || {}).textContent) }));
   verif('RU1', pg.__errs.length === 0, 'zéro erreur JS', JSON.stringify(pg.__errs)); await pg.close(); }
@@ -102,7 +102,7 @@ let pgC = await page(ctxA, '?mode=prof&id=dugain&classe=3_franklin_aretha'); awa
 const cleA = await pgC.evaluate(() => eleveId('AUDEBERT Elise'));
 const ficheA = await corriger(pgC, COPIES[0], cleA); await att(pgC, 1500);
 await cap(pgC, 'RU-4-copie-interrogatif');
-{ const h = await pgC.evaluate(k => window.__HUB.redactions.dugain.copies && window.__HUB.redactions.dugain.copies['3_franklin_aretha'][k], cleA);
+{ const h = await pgC.evaluate(k => window.__SUJ('dugain').copies && window.__SUJ('dugain').copies['3_franklin_aretha'][k], cleA);
   verif('RU3', h && h.sujet === 'imagination' && Object.keys(h.echelons).length === 10 && h.compteurOrthoGram === 25 && h.citationsPar && Object.keys(h.citationsPar).length === 3 && h.sousEditesPar && Object.keys(h.sousEditesPar).length === 1 && h.erreursCitation && JSON.stringify(h.erreursCitation.enonciation) === '[7]' && h.nom === 'AUDEBERT Elise',
     'une copie corrigée au clavier (1-4, C + citation, une faute marquée, + ×25, ✏️) : /redactions/dugain/copies/3_franklin_aretha/audebert_elise au hub, entière', JSON.stringify(h).slice(0, 300));
   verif('RU3', /3 FRANKLIN Aretha · Sujet d'imagination · Brevet blanc/.test(ficheA) && !/De Gaulle/.test(ficheA), 'la fiche porte le nom de la classe choisie (plus jamais « 3e De Gaulle »)'); }
@@ -112,13 +112,13 @@ await cap(pgC, 'RU-4-copie-interrogatif');
   if (await pgC.evaluate(() => document.getElementById('interroOverlay').classList.contains('show'))) { await (await pgC.$$('.choix-sujet-btn'))[1].click(); await att(pgC, 300); await pgC.evaluate(() => basculerVersClassique()); await att(pgC, 400); }
   const avant = await pgC.evaluate(k => JSON.stringify(copieFor(k).echelons), cleB);
   const caseClassique = await pgC.$('#criteresContainer [onclick^="setEchelon"]'); if (caseClassique) { await caseClassique.click(); await att(pgC, 1300); }
-  const apres = await pgC.evaluate(k => ({ e: copieFor(k).echelons, h: window.__HUB.redactions.dugain.copies['3_franklin_aretha'][k] }), cleB);
+  const apres = await pgC.evaluate(k => ({ e: copieFor(k).echelons, h: window.__SUJ('dugain').copies['3_franklin_aretha'][k] }), cleB);
   verif('RU3', !!caseClassique && JSON.stringify(apres.e) !== avant && apres.h && apres.h.sujet === 'reflexion' && JSON.stringify(apres.h.echelons) === JSON.stringify(apres.e), 'le mode classique : un clic sur un échelon s\'enregistre au hub', JSON.stringify(apres).slice(0, 200)); }
 
 // ═════ RU4 · R4 bis : la fiche bloquée (des phrases pas lues), puis permise ═════
 { await pgC.evaluate(k => { if (document.getElementById('interroOverlay').classList.contains('show')) fermerInterrogatif(); ouvrirCopie(k); }, cleA); await att(pgC, 400);
   const nl = await pgC.evaluate(k => ruPhrasesNonLues(k), cleA);
-  const lues = await pgC.evaluate(() => Object.keys(window.__HUB.redactions.dugain.validations || {}).filter(k => /^[ds]~/.test(k)).length);
+  const lues = await pgC.evaluate(() => Object.keys(window.__SUJ('dugain').validations || {}).filter(k => /^[ds]~/.test(k)).length);
   verif('RU4', lues >= 10 && nl.some(x => /mots de liaison/.test(x)) && nl.some(x => /consignes/.test(x)) && !nl.some(x => /^« /.test(x)), 'R4 bis : les niveaux et sous-niveaux choisis en corrigeant sont lus (' + lues + ' au hub) ; restent les phrases jamais montrées (liaisons, phrases fixes, consignes, textes de la fiche)', JSON.stringify(nl));
   pgC.__boites.length = 0; let tel = null; pgC.once('download', d => { tel = d; });
   await pgC.evaluate(() => { state.current = state.current; exporterHTMLEleve(); }); await att(pgC, 600);
@@ -135,8 +135,9 @@ await cap(pgC, 'RU-4-copie-interrogatif');
   // corriger dans la case : enregistrée au hub, lue d'office ; « ✓ Je valide ce point » ; le compteur
   const c0 = await pgP.textContent('#ruPrepCompteur');
   await pgP.locator('.ru-case').nth(1).fill('Phrase réécrite par Paul dans la case.'); await pgP.mouse.click(800, 120); await att(pgP, 600);
-  const casePath = await pgP.evaluate(() => { const v = window.__HUB.redactions.dugain; return { t: v.config.variantes[0].criteres[0].indicateurs[0].sous[0][0].sans, lue: v.validations && Object.keys(v.validations).filter(k => /case/.test(JSON.stringify(v.validations[k]))) }; });
+  const casePath = await pgP.evaluate(() => { const v = window.__SUJ('dugain'); return { modifieLe: v.config.modifieLe, creeLe: v.config.creeLe, t: v.config.variantes[0].criteres[0].indicateurs[0].sous[0][0].sans, lue: v.validations && Object.keys(v.validations).filter(k => /case/.test(JSON.stringify(v.validations[k]))) }; });
   await pgP.click('#ruPrepValider'); await att(pgP, 400); const c1 = await pgP.textContent('#ruPrepCompteur');
+  verif('RU15', casePath.modifieLe > casePath.creeLe, 'une phrase corrigée dans « Préparer le sujet » : le modifieLe du sujet avance (13 · 58)', JSON.stringify({ creeLe: casePath.creeLe, modifieLe: casePath.modifieLe }));
   verif('RU4', casePath.t === 'Phrase réécrite par Paul dans la case.' && casePath.lue.length >= 1 && /^0 point/.test(c0) && /^1 point validé sur 20/.test(c1), '« Préparer le sujet » : corriger dans la case l\'enregistre au hub et la compte lue ; « ✓ Je valide ce point » → « 1 point validé sur 20 »', JSON.stringify({ casePath, c0, c1 }));
   await pgP.close();
   await pgC.reload(); await pret(pgC); await att(pgC, 300);
@@ -175,6 +176,33 @@ await cap(pgC, 'RU-4-copie-interrogatif');
   await pgC.evaluate(() => fermerModale('modalSujet'));
   await pgB.close(); }
 await pgC.close();
+
+// ═════ RU15 · 13 · 58 (Paul, 15:51-15:55) : la copie et le sujet sont des objets — l'id interne, les clés internes, l'horodatage ═════
+{ const pg = await page(ctxA, '?mode=prof&id=dugain&classe=3_franklin_aretha'); await pret(pg);
+  const lire = () => pg.evaluate(() => { const S = window.__SUJ('dugain'); const cles = Object.keys(window.__HUB.redactions); return { cle: cles.find(k => window.__HUB.redactions[k] === S), cfg: { idInterne: S.config.idInterne, nomCourt: S.config.nomCourt, creeLe: S.config.creeLe, modifieLe: S.config.modifieLe }, c: S.copies['3_franklin_aretha']['audebert_elise'] }; });
+  const a = await lire();
+  verif('RU15', a.cfg.idInterne && /^sujet_[0-9a-z]+_[0-9a-z]+$/.test(a.cfg.idInterne) && a.cle === a.cfg.idInterne && a.cfg.nomCourt === 'dugain' && a.cfg.creeLe && a.cfg.modifieLe && a.cfg.creeLe <= a.cfg.modifieLe,
+    'le sujet créé : son id interne « sujet_… » (né à « Créer », sa place au hub), l\'id du JSON gardé comme nom court (« dugain », pour l\'adresse), creeLe ≤ modifieLe', JSON.stringify(a.cfg));
+  verif('RU15', a.c && /^copie_[0-9a-z]+_[0-9a-z]+$/.test(a.c.id) && a.c.eleve === 'audebert_elise' && a.c.classe === '3_franklin_aretha' && a.c.sujetId === a.cfg.idInterne && a.c.creeLe && a.c.creeLe <= a.c.modifieLe,
+    'la copie : son id interne « copie_… », l\'élève et la classe par leurs clés internes (jamais les noms), l\'id du sujet, creeLe ≤ modifieLe', JSON.stringify(a.c && { id: a.c.id, eleve: a.c.eleve, classe: a.c.classe, sujetId: a.c.sujetId, creeLe: a.c.creeLe, modifieLe: a.c.modifieLe }));
+  await pg.waitForTimeout(1100);
+  await pg.evaluate(() => { ouvrirCopie(eleveId('AUDEBERT Elise')); }); await att(pg, 400); await pg.evaluate(() => { if (!document.getElementById('interroOverlay').classList.contains('show')) ouvrirInterrogatif('indicateur_sous', 0); });
+  await att(pg, 300); await pg.evaluate(() => { if (interroState.etape !== 'meilleure_citation') { interroState.etape = 'meilleure_citation'; renderInterro(); } }); await att(pg, 300);
+  await pg.fill('#meilleureCitationInput', 'Je comptais les lits vides chaque matin'); await pg.dispatchEvent('#meilleureCitationInput', 'input'); await att(pg, 1600);
+  const b = await lire();
+  verif('RU15', b.c.id === a.c.id && b.c.creeLe === a.c.creeLe && b.c.modifieLe > a.c.modifieLe, 'une seconde correction de la même copie : le même id interne, creeLe inchangé, modifieLe avancé', JSON.stringify({ avant: a.c.modifieLe, apres: b.c.modifieLe }));
+  const f = await pg.evaluate(() => genererHTMLEleve(eleveId('AUDEBERT Elise')));
+  verif('RU15', !/copie_|sujet_|creeLe|modifieLe|sujetId/.test(f), 'rien de cela sur la fiche de l\'élève');
+  // un nom corrigé au site : la copie n'a plus d'élève à sa clé — le tableau de bord la montre ; « Rattacher » la rend à l'élève, même id interne
+  await pg.evaluate(() => { const S = window.__SUJ('dugain'); const c = JSON.parse(JSON.stringify(S.copies['3_franklin_aretha']['audebert_elise'])); c.nom = 'AUDEBERT Élise-Marie'; c.eleve = 'audebert_elise_marie'; window.__HUBPOSER('/redactions/' + c.sujetId + '/copies/3_franklin_aretha/audebert_elise_marie', c); window.__HUBPOSER('/redactions/' + c.sujetId + '/copies/3_franklin_aretha/audebert_elise', null); });
+  await pg.reload(); await pret(pg); await att(pg, 500); await pg.evaluate(() => { if (document.getElementById('interroOverlay').classList.contains('show')) fermerInterrogatif(); showDashboard(); }); await att(pg, 400);
+  const o = await pg.evaluate(() => ({ orph: RU.orphelines, zone: (document.getElementById('ruOrphelines') || {}).innerText || '' }));
+  await cap(pg, 'RU-15-copie-a-rattacher');
+  await pg.selectOption('#ruOrph_audebert_elise_marie', 'audebert_elise'); await pg.click('#ruOrphelines button:has-text("Rattacher")'); await att(pg, 1400);
+  const c = await lire(); const vieux = await pg.evaluate(() => !!window.__SUJ('dugain').copies['3_franklin_aretha']['audebert_elise_marie']);
+  verif('RU15', o.orph.includes('audebert_elise_marie') && /sans élève/.test(o.zone) && c.c && c.c.id === a.c.id && c.c.eleve === 'audebert_elise' && !vieux && pg.__boites.some(x => /Rattacher la copie/.test(x)),
+    'une copie dont la clé d\'élève ne correspond plus (un nom corrigé) : le tableau de bord la montre ; « Rattacher » la rend à l\'élève, avec son id interne, et libère l\'ancienne place', JSON.stringify({ orph: o.orph, id: c.c && c.c.id, eleve: c.c && c.c.eleve, vieux }));
+  verif('RU15', pg.__errs.length === 0, 'zéro erreur JS', JSON.stringify(pg.__errs)); await pg.close(); }
 
 // ═════ RU10 · contrôle n°79 (A) : « {CIT} » ne sort jamais sur une fiche ═════
 { const pg = await page(ctxA, '?mode=prof&id=dugain&classe=3_franklin_aretha'); await pret(pg);
@@ -234,7 +262,7 @@ for (const [nom, P, id] of [['dugain', PLAN_DUGAIN, 'dugain'], ['lettre', PLAN_L
   const cits = attendus.filter(i => P.plan[i][2]).every(i => fiche.indexOf(P.plan[i][2].replace(/'/g, '&#39;')) >= 0 || fiche.indexOf(P.plan[i][2]) >= 0);
   const compteurJuste = c.sugg === c.e[Object.keys(P.plan).find(i => /orthographe/.test(i))];
   verif('RU12', ok && cits && compteurJuste && fiche.indexOf('{CIT}') < 0, nom + ' : une copie corrigée selon un plan cohérent (tous les points au même niveau, chaque citation à la place que la phrase annonce, le compteur d\'accord avec le niveau d\'orthographe)', JSON.stringify({ ok, cits, compteurJuste, c }).slice(0, 400));
-  verif('RU14', repetitions(fiche) === 0, nom + ' (la capture) : aucun mot de liaison deux fois de suite dans un critère (13 · 57)', fiche.split('<div class="critere">').slice(1).map(ouvreurs).map(o => o.join(' / ')).join(' || '));
+  verif('RU14', repetitions(fiche) === 0, nom + ' (la capture) : aucun mot de liaison deux fois dans un même critère (13 · 57)', fiche.split('<div class="critere">').slice(1).map(ouvreurs).map(o => o.join(' / ')).join(' || '));
   const p = path.join(OUT, 'fiche-capture-' + nom + '.html'); fs.writeFileSync(p, fiche);
   const pf = await ctx.newPage(); await pf.goto('file://' + p); await att(pf, 300); await cap(pf, 'RU-12-' + nom + '-fiche'); await pf.close();
   verif('RU12', pg.__errs.length === 0, nom + ' : zéro erreur JS', JSON.stringify(pg.__errs)); await ctx.close();
@@ -281,8 +309,8 @@ if (fs.existsSync(PROD)) { const ctx = await contexte(); const hub = ctx.__hub; 
     const enoncePres = h => h.replace(/<div class="sujet-rappel">[\s\S]*?<\/div>/, '<div class="sujet-rappel">[l’énoncé]</div>');   // contrôle n°79 (B) : l'énoncé de la fiche est désormais celui de la variante, entier
     const sr = sansRepetition(enoncePres(fa.split('3e De Gaulle').join('3 FRANKLIN Aretha'))); const fa2 = sr.html; const fb0 = fb; fs.writeFileSync(path.join(OUT, 'nonreg-prod-' + cp.eleve.split(' ')[0] + '.html'), fa2); fs.writeFileSync(path.join(OUT, 'nonreg-ru-' + cp.eleve.split(' ')[0] + '.html'), fb0); fb = enoncePres(fb0);
     let diff = ''; if (fa2 !== fb) { let i = 0; while (fa2[i] === fb[i]) i++; diff = 'premier écart au signe ' + i + ' : « ' + fa2.slice(i - 40, i + 60) + ' » / « ' + fb.slice(i - 40, i + 60) + ' »'; }
-    verif('RU8', fa2 === fb, cp.eleve + ' (' + (cp.variante ? 'réflexion' : 'imagination') + ') : la fiche, mot pour mot celle de redaction_dugain_v3 (au nom de classe près, à l\'énoncé près, et au mot de liaison près là où il se répétait : ' + sr.n + ')', diff);
-    verif('RU14', repetitions(fb) === 0, cp.eleve + ' : aucun mot de liaison deux fois de suite dans un critère (13 · 57)', ouvreurs(fb).join(' | '));
+    verif('RU8', fa2 === fb, cp.eleve + ' (' + (cp.variante ? 'réflexion' : 'imagination') + ') : la fiche, mot pour mot celle de redaction_dugain_v3 (au nom de classe près, à l\'énoncé près, et au mot de liaison près là où il avait déjà servi dans le critère : ' + sr.n + ')', diff);
+    verif('RU14', repetitions(fb) === 0, cp.eleve + ' : aucun mot de liaison deux fois dans un même critère (13 · 57)', ouvreurs(fb).join(' | '));
   }
   verif('RU8', a.errs.length + b.errs.length === 0, 'zéro erreur JS des deux côtés', JSON.stringify(a.errs.concat(b.errs))); await ctx.close(); }
 else verif('RU8', false, 'la non-régression', 'la production redaction_dugain_v3.html est introuvable : ' + PROD);

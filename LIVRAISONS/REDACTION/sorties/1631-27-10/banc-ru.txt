@@ -1,0 +1,64 @@
+banc RU · 2026-10-27 15:31 UTC · redaction.html md5 47e8dc65b74ab68d0e2b223109ec3a8f · production redaction_dugain_v3.html md5 f61f1ec0992946f36ad538bfe57f151f
+  ok     RU0 · sans session professeur : la porte (clé ou code), aucune copie montrée, aucune écriture
+  ok     RU1 · sans id dans l'adresse : la liste des sujets (vide au départ, le dit)
+  ok     RU1 · « Vérifier » sans rien : « Colle d'abord la réponse de l'IA. »
+  ok     RU1 · la lettre de la conscience (R10 bis) passe « Vérifier » : rien de refusé
+  ok     RU1 · une réponse cassée exprès : refusée, une phrase par refus (published, compétence inconnue, {prenom}, sous-niveau, {CIT}, poids ≠ critère), « Créer » grisé
+  ok     RU1 · une réponse coupée : « elle est incomplète ou mal fermée »
+  ok     RU1 · la grille Dugain (sujets/dugain.json) passe « Vérifier »
+  ok     RU1 · « Créer » : /redactions/dugain/config au hub, 80 niveaux, 640 sous-niveaux, 24 consignes (zéro phrase perdue) ; « Préparer le sujet » s'ouvre
+  ok     RU1 · zéro erreur JS
+  ok     RU2 · classe=« 3 FRANKLIN Aretha » (le nom) → la clé 3_franklin_aretha ; ses 12 élèves du site ; « Élèves — 3 FRANKLIN Aretha »
+  ok     RU2 · « 👥 Classe » : les classes du site (sans les internes « _… », sans celles sans élèves), plus de liste à coller
+  ok     RU2 · classe=3_franklin_aretha (la clé) → la même classe
+  ok     RU3 · une copie corrigée au clavier (1-4, C + citation, une faute marquée, + ×25, ✏️) : /redactions/dugain/copies/3_franklin_aretha/audebert_elise au hub, entière
+  ok     RU3 · la fiche porte le nom de la classe choisie (plus jamais « 3e De Gaulle »)
+  ok     RU3 · le mode classique : un clic sur un échelon s'enregistre au hub
+  ok     RU4 · R4 bis : les niveaux et sous-niveaux choisis en corrigeant sont lus (24 au hub) ; restent les phrases jamais montrées (liaisons, phrases fixes, consignes, textes de la fiche)
+  ok     RU4 · « 🖨️ Exporter HTML » : la fiche ne sort pas, et la boîte dit lesquelles
+  ok     RU4 · « Exporter tous HTML » grisé, son infobulle dit ce qui manque
+  ok     RU15 · une phrase corrigée dans « Préparer le sujet » : le modifieLe du sujet avance (13 · 58)
+  ok     RU4 · « Préparer le sujet » : corriger dans la case l'enregistre au hub et la compte lue ; « ✓ Je valide ce point » → « 1 point validé sur 20 »
+  ok     RU4 · les phrases lues : la fiche d'AUDEBERT Elise sort (téléchargée)
+  ok     RU5 · recharger : la même copie, le mode interrogatif, le même point, la même étape, les mêmes choix (lus au hub)
+  ok     RU5 · zéro erreur JS (correction, préparation, rechargements)
+  ok     RU6 · une autre page corrige la copie de CHAN Aymeric : ce tableau de bord la montre sans recharger
+  ok     RU6 · une saisie en cours n'est pas touchée quand un changement arrive (le redessin attend la fin de la saisie)
+  ok     RU15 · le sujet créé : son id interne « sujet_… » (né à « Créer », sa place au hub), l'id du JSON gardé comme nom court (« dugain », pour l'adresse), creeLe ≤ modifieLe
+  ok     RU15 · la copie : son id interne « copie_… », l'élève et la classe par leurs clés internes (jamais les noms), l'id du sujet, creeLe ≤ modifieLe
+  ok     RU15 · une seconde correction de la même copie : le même id interne, creeLe inchangé, modifieLe avancé
+  ok     RU15 · rien de cela sur la fiche de l'élève
+  ok     RU15 · une copie dont la clé d'élève ne correspond plus (un nom corrigé) : le tableau de bord la montre ; « Rattacher » la rend à l'élève, avec son id interne, et libère l'ancienne place
+  ok     RU15 · zéro erreur JS
+  ok     RU10 · une phrase réécrite au crayon qui garde « {CIT} », sans citation : la fiche ne sort pas, la boîte dit « la phrase réécrite de « … » attend une citation »
+  ok     RU10 · « Exporter tous HTML » grisé le dit aussi
+  ok     RU10 · la citation tapée : la fiche sort, la citation à la place de « {CIT} », plus aucun « {CIT} »
+  ok     RU10 · zéro erreur JS
+  ok     RU11 · Dugain, imagination : l'énoncé entier de la variante, mot pour mot, aucun « ou » pendant
+  ok     RU11 · Dugain, réflexion : l'énoncé entier de la variante, mot pour mot
+  ok     RU11 · la lettre (une seule grille : pas d'écran de choix) : l'énoncé entier, ses quatre paragraphes ; le titre du sujet ; ni « Brevet blanc » ni « De Gaulle »
+  ok     RU11 · zéro erreur JS (la lettre)
+  ok     RU12 · dugain : une copie corrigée selon un plan cohérent (tous les points au même niveau, chaque citation à la place que la phrase annonce, le compteur d'accord avec le niveau d'orthographe)
+  ok     RU14 · dugain (la capture) : aucun mot de liaison deux fois dans un même critère (13 · 57)
+  ok     RU12 · dugain : zéro erreur JS
+  ok     RU12 · lettre : une copie corrigée selon un plan cohérent (tous les points au même niveau, chaque citation à la place que la phrase annonce, le compteur d'accord avec le niveau d'orthographe)
+  ok     RU14 · lettre (la capture) : aucun mot de liaison deux fois dans un même critère (13 · 57)
+  ok     RU12 · lettre : zéro erreur JS
+  ok     RU13 · l'orthographe à Satisfaisant avec 9 erreurs, puis la longueur à Insuffisant (seuils [2, 5, 10] → Fragile) : la carte de l'élève le dit, la fiche ne sort pas et dit pourquoi
+  ok     RU13 · « Garder « Satisfaisant » » : le désaccord est tranché ; la fiche dit seulement « Tu as fait 9 erreurs d'orthographe et de grammaire dans ta copie. » (« correspond » ne sort que s'il est vrai)
+  ok     RU13 · « Prendre « Fragile » » (après la question, qui montre la phrase du niveau) : le niveau devient celui du compteur, la phrase dit « ce qui correspond au niveau fragile », et elle compte comme lue
+  ok     RU13 · zéro erreur JS
+  ok     RU7 · mode test (?test=1) : une copie corrigée, zéro écriture au hub ; le bandeau violet et le témoin le disent
+  ok     RU7 · mode test : recharger n'écrit rien non plus (ce qui a été fait s'efface avec la page)
+  ok     RU8 · AUDEBERT Elise (imagination) : la fiche, mot pour mot celle de redaction_dugain_v3 (au nom de classe près, à l'énoncé près, et au mot de liaison près là où il avait déjà servi dans le critère : 1)
+  ok     RU14 · AUDEBERT Elise : aucun mot de liaison deux fois dans un même critère (13 · 57)
+  ok     RU8 · BOIVIN Eden (réflexion) : la fiche, mot pour mot celle de redaction_dugain_v3 (au nom de classe près, à l'énoncé près, et au mot de liaison près là où il avait déjà servi dans le critère : 2)
+  ok     RU14 · BOIVIN Eden : aucun mot de liaison deux fois dans un même critère (13 · 57)
+  ok     RU8 · CESBRON Lili (imagination) : la fiche, mot pour mot celle de redaction_dugain_v3 (au nom de classe près, à l'énoncé près, et au mot de liaison près là où il avait déjà servi dans le critère : 2)
+  ok     RU14 · CESBRON Lili : aucun mot de liaison deux fois dans un même critère (13 · 57)
+  ok     RU8 · zéro erreur JS des deux côtés
+  ok     RU9 · 1366 × 743 : la liste, le mode interrogatif, « Préparer le sujet » tiennent en largeur (aucun défilement horizontal)
+  ok     RU9 · 1536 × 743 : la liste, le mode interrogatif, « Préparer le sujet » tiennent en largeur (aucun défilement horizontal)
+  ok     RU9 · 1707 × 743 : la liste, le mode interrogatif, « Préparer le sujet » tiennent en largeur (aucun défilement horizontal)
+  ok     RU9 · 1920 × 1080 : la liste, le mode interrogatif, « Préparer le sujet » tiennent en largeur (aucun défilement horizontal)
+— fin : 62 ok · 0 échec(s) — VERT

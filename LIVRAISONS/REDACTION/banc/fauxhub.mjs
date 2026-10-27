@@ -25,6 +25,8 @@ export const installer = (etat) => {
   const lire = s => { let n = window.__HUB; for (const k of s) { if (n == null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; };
   const poser = (s, v) => { if (!s.length) { window.__HUB = v; return; } let n = window.__HUB; for (const k of s.slice(0, -1)) { if (n[k] == null || typeof n[k] !== 'object') n[k] = {}; n = n[k]; } if (v === null) delete n[s[s.length - 1]]; else n[s[s.length - 1]] = v; };
   window.__FLUX = [];
+  // le sujet par son nom court (13 · 58 : au hub, il est rangé sous son id interne « sujet_… »)
+  window.__SUJ = n => { const r = window.__HUB.redactions || {}; const k = Object.keys(r).find(x => r[x] && r[x].config && (r[x].config.nomCourt === n || r[x].config.idInterne === n)) || n; return r[k]; };
   const prevenir = (s, v) => { window.__FLUX.forEach(f => { const k = Math.min(f.seg.length, s.length); if (f.seg.slice(0, k).join('/') !== s.slice(0, k).join('/')) return; const rel = s.length >= f.seg.length ? '/' + s.slice(f.seg.length).join('/') : '/'; const data = s.length >= f.seg.length ? v : lire(f.seg); f.emettre('put', { path: rel, data }); }); };
   window.__HUBPOSER = (c, v) => { const s = seg(c); poser(s, JSON.parse(JSON.stringify(v))); garder(); prevenir(s, v); };   // une écriture « d'ailleurs »
   window.fetch = function (u, o) {

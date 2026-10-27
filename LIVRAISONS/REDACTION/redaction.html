@@ -1343,6 +1343,7 @@
       📋 Classer le paquet
     </button>
   </div>
+  <div id="ruOrphelines"></div>
   <div class="grid-eleves" id="gridEleves"></div>
 </div>
 
@@ -2384,12 +2385,24 @@ function saveState() {   // à chaque geste : la sauvegarde de secours dans ce n
 }
 function loadState() {}   // l'état vient du site (ruOuvrirClasse)
 function planifierSync() { clearTimeout(RU.timer); RU.timer = setTimeout(synchroniser, 900); }
+// 13 · 58 (Paul, 27/10 15:51-15:55) : une copie et un sujet sont des objets — un id interne né une fois, gardé à vie, et l'horodatage ;
+// la copie désigne l'élève et la classe par leurs clés internes, jamais par leurs noms. Rien de cela ne paraît sur une fiche.
+function idCopie() { return "copie_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8); }   // la forme de correction_dictee
+function idSujet() { return "sujet_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8); }
+const RU_IDENTITE = ["id", "eleve", "classe", "sujetId", "creeLe", "modifieLe", "nom"];   // les champs d'objet d'une copie (hors de la correction elle-même)
 function ruVierge(c) { return !c || (!c.sujet && !Object.keys(c.echelons || {}).length && !Object.keys(c.citationsPar || {}).length && !Object.keys(c.sousEditesPar || {}).length && !c.compteurOrthoGram && !c.meilleureCitation && !c.meilleureCitationCommentaire && !c.telemetry); }
 function synchroniser() {
   if (!RU.id || !RU.classe) return;
   Object.keys(state.copies || {}).forEach(k => {
     if (!RU.sig[k] && ruVierge(state.copies[k])) return;   // une copie jamais touchée ne s'écrit pas (le tableau de bord en crée une par élève)
-    const v = Object.assign({}, state.copies[k], { nom: nomEleveDe(k) || (state.copies[k] && state.copies[k].nom) || "" });
+    const cp = state.copies[k];
+    const corps = Object.assign({}, cp); RU_IDENTITE.forEach(f => delete corps[f]);
+    const sgCorps = JSON.stringify(corps); if (RU.sigCorps && RU.sigCorps[k] === sgCorps && cp.id) return;   // rien de neuf dans la correction : pas d'écriture, l'horodatage ne bouge pas
+    RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[k] = sgCorps;
+    const maintenant = new Date().toISOString();
+    if (!cp.id) { cp.id = idCopie(); if (!cp.creeLe) cp.creeLe = maintenant; }   // une copie sans id (première écriture, ou déjà au hub avant 13 · 58) en reçoit un, une fois
+    cp.eleve = k; cp.classe = RU.classe; cp.sujetId = (SUJET && SUJET.idInterne) || RU.id; cp.modifieLe = maintenant;
+    const v = Object.assign({}, cp, { nom: nomEleveDe(k) || cp.nom || "" });
     const sg = JSON.stringify(v); if (RU.sig[k] === sg) return; RU.sig[k] = sg;
     ruEcrire(ruCheminCopies().concat(k), JSON.parse(sg), "la copie de " + (v.nom || k)).then(i => { if (i.etat !== MJPC_ISSUE.ACCEPTEE) delete RU.sig[k]; });
   });
@@ -2398,6 +2411,14 @@ function synchroniser() {
 }
 // ── l'abonnement (R6) : un changement fait ailleurs se voit sans recharger ; un redessin ne touche jamais le champ en cours ──
 function ruSaisieEnCours() { const a = document.activeElement; return !!a && (a.tagName === "TEXTAREA" || (a.tagName === "INPUT" && /^(text|search|)$/i.test(a.type || ""))); }
+function ruRattacher(ancienne) {
+  const sel = document.getElementById("ruOrph_" + ancienne); const nouvelle = sel && sel.value; if (!nouvelle) return;
+  const c = state.copies[ancienne]; if (!c || state.copies[nouvelle] && !ruVierge(state.copies[nouvelle])) { toast("Cet élève a déjà une copie."); return; }
+  if (!confirm("Rattacher la copie de « " + (c.nom || ancienne) + " » (" + c.id + ") à « " + nomEleveDe(nouvelle) + " » ?")) return;
+  state.copies[nouvelle] = c; delete state.copies[ancienne]; c.eleve = nouvelle; c.modifieLe = new Date().toISOString();
+  RU.orphelines = (RU.orphelines || []).filter(x => x !== ancienne); delete RU.sig[ancienne]; if (RU.sigCorps) delete RU.sigCorps[ancienne];
+  ruEcrire(ruCheminCopies().concat(ancienne), null, "l'ancienne place de la copie"); saveState(); renderDashboard(); toast("Copie rattachée (même id interne)");
+}
 function ruRedessiner() {
   if (ruSaisieEnCours()) { RU.aRedessiner = true; return; }
   RU.aRedessiner = false;
@@ -2420,6 +2441,7 @@ function ruAbonner() {
     Object.keys(RU.miroir || {}).forEach(k => {
       const sg = JSON.stringify(RU.miroir[k]); if (RU.sig[k] === sg) return;   // l'écho de notre écriture, ou rien de neuf
       RU.sig[k] = sg; const v = ruCopie(RU.miroir[k]); delete v.nom; state.copies[k] = v; change = true;
+      { const corps = Object.assign({}, v); RU_IDENTITE.forEach(f => delete corps[f]); RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[k] = JSON.stringify(corps); }   // reçue d'ailleurs : pas à réécrire d'ici
     });
     if (change) { try { localStorage.setItem(ruCleSecours(), JSON.stringify(state)); } catch (e) {} ruRedessiner(); }
   };
@@ -2472,6 +2494,7 @@ function sauverClasse() {
 function ouvrirGestionClasse() { ruChoisirClasse(false); }
 function sauverSujet() {
   const vs = Array.from(document.querySelectorAll("#ruEnoncesVar .ru-enonce-var"));
+  if (SUJET) { SUJET.modifieLe = new Date().toISOString(); ruEcrire(["redactions", RU.id, "config", "modifieLe"], SUJET.modifieLe, "l'heure du sujet"); }
   if (SUJET && vs.length) vs.forEach(t => { const vi = SUJET.variantes.findIndex(v => v.id === t.dataset.v); if (vi < 0 || SUJET.variantes[vi].enonce === t.value) return; SUJET.variantes[vi].enonce = t.value; ruEcrire(["redactions", RU.id, "config", "variantes", vi, "enonce"], t.value, "l'énoncé d'un sujet"); });
   else { state.sujet = document.getElementById("sujetEdit").value; if (SUJET) { SUJET.enonce = state.sujet; ruEcrire(["redactions", RU.id, "config", "enonce"], state.sujet, "l'énoncé du sujet"); } }
   saveState();
@@ -2491,7 +2514,10 @@ function ruOuvrirClasse(k) {
   state = { classe: extractEleves(RU.classes[k], []), sujet: SUJET.enonce || "", copies: {}, current: null, tri: "ordre", paquetOrdre: [], interroBookmark: {}, modeOuvert: null };
   ruEntete(); ruEcran("ruApp");
   return Promise.all([ruLire(ruCheminCopies()), ruLire(ruCheminSuivi())]).then(([cp, su]) => {
-    Object.keys(cp || {}).forEach(e => { RU.sig[e] = JSON.stringify(cp[e]); const v = ruCopie(cp[e]); delete v.nom; state.copies[e] = v; });
+    Object.keys(cp || {}).forEach(e => { RU.sig[e] = JSON.stringify(cp[e]); const v = ruCopie(cp[e]); delete v.nom; state.copies[e] = v;
+      const corps = Object.assign({}, v); RU_IDENTITE.forEach(f => delete corps[f]); RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[e] = JSON.stringify(corps); });
+    // une copie dont la clé d'élève n'est plus celle d'un élève de la classe (un nom corrigé au site) : elle n'est pas perdue — le tableau de bord la montre, et « Rattacher » la remet à un élève, avec son id interne
+    RU.orphelines = Object.keys(cp || {}).filter(e => !state.classe.some(n => eleveId(n) === e) && !ruVierge(cp[e]));
     if (su) { RU_SUIVI.forEach(f => { if (su[f] != null) state[f] = su[f]; }); RU.sigSuivi = JSON.stringify(su); }
     if (!Array.isArray(state.paquetOrdre)) state.paquetOrdre = Object.values(state.paquetOrdre || {});
     ruAbonner(); ruReprendre();
@@ -2512,8 +2538,9 @@ function ruDemarrer() {
   if (!ruProfOuvert()) { ruPorte(); return; }
   const id = ruParam("id");
   if (!id) { ruListeSujets(); return; }
-  RU.id = id;
-  Promise.all([ruLire(["redactions", id, "config"]), ruLire(["classes"])]).then(([cfg, cl]) => {
+  ruLire(["redactions"]).then(t => { const ks = Object.keys(t || {}); return ks.includes(id) ? id : (ks.find(k => t[k] && t[k].config && (t[k].config.nomCourt === id || t[k].config.idInterne === id)) || id); }, () => id).then(cle => {
+  RU.id = cle;
+  return Promise.all([ruLire(["redactions", cle, "config"]), ruLire(["classes"])]); }).then(([cfg, cl]) => {
     if (!cfg) { ruListeSujets(); toast("Ce sujet n'existe pas (ou plus) au site."); return; }
     appliquerSujet(cfg); RU.classes = cl || {}; RU.cfgRange = JSON.stringify(cfg) === JSON.stringify(SUJET);
     if (ruParam("vue") === "preparer" && typeof ruPreparer === "function") { ruPreparer(); return; }
@@ -2549,7 +2576,7 @@ function ruValiderSujet(o, taxo, existants) {
   if (!o || typeof o !== "object" || Array.isArray(o)) { V.exige(false, "La réponse doit être un sujet (un objet JSON entre accolades), pas une liste ni un texte."); return V; }
   if ("published" in o) V.exige(false, "La réponse contient « published » : un sujet ne se publie pas en le collant. Retire ce champ.");
   V.exige(typeof o.id === "string" && RU_ID_OK.test(o.id), "« id » manque ou n’est pas un identifiant simple (lettres minuscules sans accent, chiffres, tirets : par exemple « lettre-grande-guerre-3e »).");
-  if (typeof o.id === "string" && existants && existants[o.id]) V.exige(false, "Un sujet porte déjà l’identifiant « " + o.id + " » : change « id » dans la réponse (pour corriger ce sujet-là, ouvre « Préparer le sujet »).");
+  if (typeof o.id === "string" && existants && (existants[o.id] || Object.keys(existants).some(k => existants[k] && existants[k].config && existants[k].config.nomCourt === o.id))) V.exige(false, "Un sujet porte déjà l’identifiant « " + o.id + " » : change « id » dans la réponse (pour corriger ce sujet-là, ouvre « Préparer le sujet »).");
   V.exige(typeof o.titre === "string" && o.titre.trim(), "Il manque le titre du sujet (« titre »).");
   V.exige(typeof o.total === "number" && o.total > 0, "Il manque le total des points (« total », un nombre, par exemple 40).");
   V.exige(typeof o.enonce === "string" ? o.enonce.trim() : (Array.isArray(o.enonce) && o.enonce.length), "Il manque l’énoncé donné aux élèves (« enonce »).");
@@ -2630,10 +2657,11 @@ function ruVerifierNouveau() {
 }
 function ruCreerNouveau() {
   const c = RU.nouveau; if (!c) return; const b = document.getElementById("ruNvCreer"); b.disabled = true;
-  ruEcrire(["redactions", c.id, "config"], c, "le sujet " + c.id).then(i => {
+  const t0 = new Date().toISOString(); c.nomCourt = c.id; c.idInterne = idSujet(); c.id = c.idInterne; c.creeLe = t0; c.modifieLe = t0;   // l'id du JSON reste lisible (nomCourt), jamais l'identité
+  ruEcrire(["redactions", c.idInterne, "config"], c, "le sujet " + c.nomCourt).then(i => {
     if (i.etat !== MJPC_ISSUE.ACCEPTEE) { document.getElementById("ruNvMsg").className = "ru-msg ko"; document.getElementById("ruNvMsg").textContent = i.etat === MJPC_ISSUE.REFUSEE ? "Le site a refusé la création : rien n’est écrit." : "Le site ne répond pas : rien n’est écrit. Réessaie."; b.disabled = false; return; }
     fermerModale("modalNouveau"); toast("Sujet créé : " + c.titre);
-    location.href = ruAdresse({ id: c.id, vue: "preparer" });
+    location.href = ruAdresse({ id: c.idInterne, vue: "preparer" });
   });
 }
 // ── les phrases d'un sujet, et leur clé de validation ──
@@ -2787,7 +2815,8 @@ function ruPrepCase(t) {
   if (chemin[0] === "variantes" && chemin.indexOf("descripteurs") >= 0 && apres.indexOf("{prenom}") < 0) { if (!confirm("Ce niveau n’a plus « {prenom} » (le prénom de l’élève). L’enregistrer quand même ?")) { t.value = avant; return; } }
   n[der] = apres;
   const rangeAuHub = RU.cfgRange ? Promise.resolve() : ruEcrire(["redactions", RU.id, "config"], SUJET, "le sujet rangé").then(() => { RU.cfgRange = true; });
-  rangeAuHub.then(() => ruEcrire(["redactions", RU.id, "config"].concat(chemin), apres, "une phrase corrigée"));
+  SUJET.modifieLe = new Date().toISOString();
+  rangeAuHub.then(() => { ruEcrire(["redactions", RU.id, "config"].concat(chemin), apres, "une phrase corrigée"); ruEcrire(["redactions", RU.id, "config", "modifieLe"], SUJET.modifieLe, "l'heure du sujet"); });
   if (t.dataset.lue) ruMarquer(t.dataset.lue, "case");
   appliquerSujet(SUJET);
   t.classList.add("ru-case-ok"); setTimeout(() => t.classList.remove("ru-case-ok"), 900);
@@ -3988,6 +4017,9 @@ function ruMajBoutonsFiche() {
 }
 function renderDashboard() {
   setTimeout(ruMajBoutonsFiche, 0);
+  { const zone = document.getElementById("ruOrphelines"); if (zone) { const L = (RU.orphelines || []).filter(k => state.copies[k]);
+    const libres = state.classe.filter(n => ruVierge(state.copies[eleveId(n)]));
+    zone.innerHTML = L.length ? `<div class="ru-desaccord">⚠ ${L.length} copie${L.length > 1 ? "s" : ""} sans élève dans cette classe (un nom corrigé au site ?) : ` + L.map(k => `<span>« ${escapeHtml(state.copies[k].nom || k)} » <select id="ruOrph_${escapeAttr(k)}" title="L'élève à qui rendre cette copie">${libres.map(n => `<option value="${escapeAttr(eleveId(n))}">${escapeHtml(n)}</option>`).join("")}</select><button onclick="ruRattacher('${escapeAttr(k)}')" title="Rendre la copie à cet élève : elle garde son id interne, sa correction et son horodatage">Rattacher</button></span>`).join("") + `</div>` : ""; } }
   const btnP = document.getElementById("btnClasserPaquet");
   if (btnP) {
     if (state.paquetOrdre && state.paquetOrdre.length > 0) {
@@ -5808,7 +5840,7 @@ function genererHTMLEleve(id) {
     }
 
     let html = "";
-    let connPrec = null;   // le mot de liaison du paragraphe précédent, dans ce critère
+    const connServis = new Set();   // les mots de liaison qui ont déjà servi, dans ce critère
     blocs.forEach((b, i) => {
       let connecteur = "";
       let texteAvecMinuscule = b.texte.charAt(0).toLowerCase() + b.texte.slice(1);
@@ -5844,9 +5876,9 @@ function genererHTMLEleve(id) {
           typeConn = "concession";
         }
         connecteur = pickConnecteur(typeConn, b.ind.id, i);
-        // 13 · 57 (contrôle du 27/10, 15:03) : dans un même critère, un mot de liaison ne se répète pas — le même que le précédent → le suivant de la liste
-        if (connecteur === connPrec) { const l = CONNECTEURS[typeConn]; connecteur = l[(l.indexOf(connecteur) + 1) % l.length]; }
-        connPrec = connecteur;
+        // 13 · 57 (contrôle du 27/10, 15:45) : dans un critère, un mot de liaison ne sert qu'une fois — s'il a déjà servi, le suivant de la liste qui n'a pas servi
+        { const l = CONNECTEURS[typeConn]; let j = l.indexOf(connecteur), t = 0; while (connServis.has(l[j]) && t < l.length) { j = (j + 1) % l.length; t++; } connecteur = l[j]; }
+        connServis.add(connecteur);
         html += `<p class="comm-para">${escapeHtml(connecteur)}${blocHTML}${sousCommentaire}${mentionCompteur}</p>`;
       }
     });

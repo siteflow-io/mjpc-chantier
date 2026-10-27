@@ -18396,6 +18396,7 @@ function edtProjeter(isoDebut,nbJours){
       if(!s){ cel.nature='rienDePret'; cellules[cle]=cel; continue; }
       var total=edtHeuresPour(s,c.creneau);
       cel.titre=s.title||('Séance '+(f.i+1));
+      cel.snum=s.__i!=null?String(s.__i):null; cel.chCle=f.chapitre&&f.chapitre.__cle!=null?String(f.chapitre.__cle):null;   /* E1 (§12.35-7, 13 · 80) : la case retient QUELLE séance elle nomme — le lancement ouvre celle-là */
       cel.heure=f.faites+1; cel.sur=total;
       cel.chapitre=f.chapitre&&f.chapitre.title||'';
       cel.epingle=!!(dec&&dec.epingle);
@@ -18978,16 +18979,15 @@ function edtLancer(cle,preparer){
      (la première non jouée) : audit E2, F2, en attente de la conscience. */
   var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
   var niv=edtNiveauDe(c.classeMjpc), l=EDT_CHAP[niv]||[];
+  /* E1 (§12.35-7, registre 13 · 80 ; E3, retour 82) : le lancement ouvre la séance que la case nomme — une seule source, l'emploi du temps (§12.19).
+     Avant : la première séance non jouée dans l'ordre des CLÉS, ni l'`ordre` ni les classes de la séance (« Remédiation » à la case, « Étude de texte » au lancement).
+     La case porte `chCle`/`snum` (edtProjeter) ; sans eux (une case peinte avant), la file de la classe (edtFileDAttente : l'`ordre`, les classes). */
   var vise=null;
-  for(var i=0;i<l.length&&!vise;i++){
-    if((l[i].fil||null)!==(c.fil||null))continue;
-    var pub=false; try{ pub=isPubFor(l[i],c.classeMjpc); }catch(e){}
-    if(!pub)continue;
-    var se=edtListe(l[i].seances);
-    for(var k=0;k<se.length&&!vise;k++){
-      if(!edtSeanceJouee(se[k],c.classeMjpc))vise={ch:l[i],snum:String(se[k].__i)};
-    }
+  if(c.chCle!=null&&c.snum!=null){
+    var chx=l.filter(function(x){return x&&String(x.__cle)===String(c.chCle);})[0];
+    if(chx&&edtListe(chx.seances).some(function(x){return x&&String(x.__i)===String(c.snum);}))vise={ch:chx,snum:String(c.snum)};
   }
+  if(!vise){ var fa=edtFileDAttente(c.classeMjpc,c.fil||null); if(fa&&fa.seances.length&&fa.seances[0].__i!=null)vise={ch:fa.chapitre,snum:String(fa.seances[0].__i)}; }
   if(!vise){ edtRienDePret(c); return; }
   edtFermer(); edtModaleFermer();
   try{
@@ -19440,7 +19440,7 @@ function edtHeuresJustifiees(nomClasse){
 function edtAvancement(nomClasse){
   var f=edtFileDAttente(nomClasse,null);
   if(!f)return null;
-  var total=edtListe(f.chapitre.seances).length;
+  var total=edtListe(f.chapitre.seances).filter(function(s){return edtSeancePour(s,nomClasse);}).length;   /* E1 (§12.35) : les séances pour la classe */
   return {chapitre:f.chapitre.title||'',faites:total-f.seances.length,total:total};
 }
 function edtDivergence(nomClasse){

@@ -776,3 +776,15 @@ La veille s'était arrêtée à 04:10 ; un rappel en double (07:53 UTC) m'a fait
 - **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/2226-27-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `16b44c2d…`).
 - **§12.34 E1 fini.**
 - 27/10 22:35 — §12.35 et §12.34 traitées (91c903773 ; f3adbe9f4, 2c295d03e). E1 fini.
+
+## 27/10, 23:15 — §12.35 (7), le lancement ouvre la séance que la case nomme (registre 13 · 80 ; E3, retour 82)
+- **Mission 0** : `edtLancer` (« ▶ Ouvrir le pilotage et lancer » et « Préparer ») cherchait sa séance lui-même : la première non jouée dans l'ordre des **clés** (`edtListe` = `Object.keys`), sans l'`ordre` ni les `classes` ; la case, elle, vient d'`edtProjeter` → `edtFileDAttente` → `edtChapitreEnCours` (l'`ordre`, les classes). Deux sources : d'où « Remédiation » à la case, « Étude de texte » (ou la séance 0) au lancement.
+- **Les endroits qui parcourent les séances par leurs clés** (relevé) :
+  - `index.html` `edtLancer` — **corrigé** (le lancement, et donc l'heure suivante d'une séance, lancée de sa case).
+  - `dr-recit.js` `dr_reactivationCheminAvant` (`dr_cles()`, rang des clés) — **corrigé** : la séance d'avant dans l'`ordre`, pour la classe.
+  - `index.html` `edtAvancement` (le total : toutes les séances) — **corrigé** : les séances pour la classe.
+  - Sans effet sur la séance choisie (une recherche par trace ou par clé exacte, l'ordre n'y joue pas) : `edtChercherTrace`, `edtSeanceDeTrace`, `edtCheminTrace` (« Relire cette heure » passe par la trace de la case : la bonne séance), `edtTraceExiste`, `dr_joueeIci` (`dr-classe.js`, clé exacte), `dr_dejaPosee` (`dr-recyclage.js`, tout le chapitre), `dr_toutLire`/l. 200 (`dr-socle.js`, tout le chapitre).
+  - Restent dans l'ordre des clés, **non touchés** (affichage de l'Atelier, pas l'emploi du temps) : `dr_cles`/`dr_cleSeance`/`dr_rangSeance` (`dr-socle.js` — l'index `S.si` du volet de l'Atelier et de la répétition) ; `index.html` l. 3442, 3941, 11024, 11848, 12462 (numéros libres, listes du panneau prof). Les autres listes (l. 3715, 4237, 5159, 5300) trient déjà par `ordre`.
+- **Le correctif** : la case retient la séance qu'elle nomme (`cel.chCle`, `cel.snum`, dans `edtProjeter`) ; `edtLancer` ouvre celle-là ; sans eux, la file de la classe (`edtFileDAttente`). Une seule source : l'emploi du temps (§12.19). Rien de vu par l'élève ne change ; la numérotation « SÉANCE 1 / SÉANCE 3 » : pas touchée (Paul tranche).
+- **A83**, par le geste (la case cliquée, « ▶ Ouvrir le pilotage et lancer ») : « Remédiation » (clé 7) mise en tête par l'`ordre` — aux quatre tailles, la case dit « Remédiation », le lancement ouvre « Remédiation » ; réservée à 3 DYLAN Bob : Dylan lance « Remédiation », la 3E « Poésie et peinture » ; la réactivation de la séance 0 lit « Remédiation ». Rouge avant (la tête poussée : 6/11, le défaut d'E3 à l'identique), vert après. A56, A80, A82, A83 : 27/0.
+- **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/2307-27-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `a437cbd6…`).

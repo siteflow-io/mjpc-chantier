@@ -1615,6 +1615,28 @@ await B('A78', '§12.34 (7) : « Vérifier » dit, sans refuser, la diapo qui fe
   E.verif('A78', /at-ia-ok/.test(r.cls) && r.li.length === 1 && re.test(r.li[0]), '« Vérifier » ne refuse pas : la réponse est comprise, l\'avertissement dessous', JSON.stringify(r));
   E.verif('A78', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
 
+/* ── A83 · §12.35 (7), 13 · 80 (E3, retour 82) : le lancement ouvre la séance que la case nomme — l'`ordre`, pas les clés ── */
+const storeDeplace = reserve => { const st = storeCle(); const ch0 = st.site['3e'].chapitres[0]; ch0.published = Object.assign({}, typeof ch0.published === 'object' ? ch0.published : {}, { '3_dylan_bob': true, '3e_charles_de_gaulle': true });
+  delete ch0.seances[0].deroule_joue; const M = ch0.seances[7]; M.ordre = 0.5; M.published = true; if (reserve) M.classes = ['3_dylan_bob']; return st; };   /* « Remédiation » (clé 7) déplacée en tête ; réservée ou non à 3 DYLAN Bob */
+const lancerDeLaCase = async (pg, classe) => { await pg.evaluate(() => edtOuvrir()); await pg.waitForTimeout(2500);
+  const ok = await pg.evaluate(cl => { const c = Array.from(document.querySelectorAll('.edt-clic')).filter(x => x.offsetParent !== null && x.innerText.indexOf(cl) >= 0 && !/langue|passée|jouée/.test(x.innerText))[0]; if (!c) return false; c.click(); return true; }, classe); if (!ok) return { erreur: 'pas de case' };
+  await pg.waitForTimeout(800);
+  const tCase = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.edt-p')).find(p => /Séance :/.test(p.textContent) || p.querySelector('u')); return b ? (b.querySelector('b,u') || b).textContent.trim() : null; });
+  const bt = await pg.evaluate(() => { const x = Array.from(document.querySelectorAll('button')).find(z => z.offsetParent !== null && /edtLancer/.test(z.getAttribute('onclick') || '') && !z.hasAttribute('data-preparer')); if (!x) return false; x.click(); return true; }); if (!bt) return { tCase, erreur: 'pas de bouton' };
+  await pg.waitForTimeout(3500);
+  const lance = await pg.evaluate(() => { try { const x = dr_ctx(); return { snum: x.snum, titre: chapitresData[x.level][x.chnum].seances[x.snum].title }; } catch (e) { return { erreur: String(e.message) }; } });
+  return { tCase, lance }; };
+await B('A83', '§12.35 (7) : une séance déplacée (« Remédiation », clé 7, mise en tête par l\'ordre), réservée ou non — la case dit « Remédiation », « ▶ Ouvrir le pilotage et lancer » ouvre « Remédiation », aux quatre tailles, par le geste', async () => {
+  for (const [w, h] of TAILLES_1227) { const st = storeDeplace(false); const t7 = st.site['3e'].chapitres[0].seances[7].title; const o = await ouvrirProf(w, h, st); const r = await lancerDeLaCase(o.pg, '3 DYLAN Bob');
+    E.verif('A83', r.tCase === t7 && r.lance && r.lance.titre === t7 && r.lance.snum === '7', w + '×' + h + ', déplacée : la case dit « ' + t7 + ' », le lancement ouvre « ' + ((r.lance && r.lance.titre) || '?') + ' »', JSON.stringify(r).slice(0, 300));
+    E.verif('A83', !o.errs.length, w + '×' + h + ' : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
+  for (const [cl, attendu] of [['3 DYLAN Bob', 7], ['3E Charles de Gaulle', 0]]) { const st = storeDeplace(true); const tA = st.site['3e'].chapitres[0].seances[attendu].title; const o = await ouvrirProf(1707, 743, st); const r = await lancerDeLaCase(o.pg, cl);
+    E.verif('A83', r.tCase === tA && r.lance && r.lance.titre === tA && r.lance.snum === String(attendu), 'déplacée et réservée à 3 DYLAN Bob — ' + cl + ' : la case dit « ' + tA + ' », le lancement ouvre « ' + ((r.lance && r.lance.titre) || '?') + ' »', JSON.stringify(r).slice(0, 300));
+    await o.ctx.close(); }
+  { const pg0 = await ouvrirProf(1366, 768, storeDeplace(false)); const re = await pg0.pg.evaluate(() => { const c0 = window.dr_ctx, h0 = window.dr_chapitre; const ch = window.__HUB.site['3e'].chapitres[0]; window.dr_ctx = () => ({ level: '3e', chnum: '0', snum: '0', classeSlug: '3_dylan_bob' }); window.dr_chapitre = () => ch; try { return dr_reactivationCheminAvant(); } finally { window.dr_ctx = c0; window.dr_chapitre = h0; } });
+    E.verif('A83', /\/seances\/7\/deroule_joue\/3_dylan_bob$/.test(re || ''), 'la réactivation de la séance 0 (venue après « Remédiation » dans l\'ordre) lit « Remédiation », pas rien', JSON.stringify(re)); await pg0.ctx.close(); }
+});
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

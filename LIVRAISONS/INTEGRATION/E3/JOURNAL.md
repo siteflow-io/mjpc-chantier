@@ -895,3 +895,14 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - Bilan des cas 37 et 38 sur la ⑥ : 24/68 sur les quatre tailles, les rouges attendus.
 - Rien de neuf sur `integration` depuis le §12.35 d'E1. J'attends les poussées : E1 §12.39 et §12.38 (1)(3) ; E4 §12.36, §12.38 (2) et §12.37.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2338-27-10-avant6/`.
+
+## Retour 87 — 27/10, 23:55 — **§12.39 VERT (`9ff2f0f5`)**
+- E1 a poussé le §12.39 (`62827a19b`) : chaque séance garde sa clé comme identité et reçoit un rang de 1 à n. L'assemblé de la tête est `9ff2f0f5`.
+- **Les cas 39b et 35, aux quatre tailles : VERT 64/64.**
+  - **A90.** L'élève de Dylan lit « SÉANCE 1 », puis « SÉANCE 2 ». La remédiation lui est cachée, et la numérotation n'a plus de trou (capture `*-39-1-l-eleve-dylan-apres.png`, regardée). L'élève de Franklin lit « SÉANCE 1 », « SÉANCE 2 Remédiation », « SÉANCE 3 ».
+  - **A89.** Après le renommage, la séance garde ses heures jouées. Avec deux séances de même titre, la case ouvre la bonne.
+  - Le cas 35 (A83) reste vert sur cette tête.
+- `banc.sh` : **VERT** (106 vérifications, 0 défaut).
+- **§12.39 VERT (`9ff2f0f5`)**.
+- Il reste trois paragraphes : §12.36 (cas 36), §12.37 (cas 37), §12.38 (cas 38). Ils attendent E4 et E1.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2350-27-10-1239/`.

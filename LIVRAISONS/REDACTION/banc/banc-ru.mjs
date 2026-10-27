@@ -2,7 +2,7 @@
 // usage : node banc-ru.mjs [redaction.html] [redaction_dugain_v3.html de production] [dossier de sortie]
 // Attendus : le mandat RU (MANDATS/REDACTION-UNIVERSELLE/MANDAT-RU.md) et le cadrage du 27/10, jamais la version jouée.
 import path from 'node:path'; import fs from 'node:fs'; import { createHash } from 'node:crypto'; import { createRequire } from 'node:module';
-import { hubDeDepart, installer, sessionProf } from './fauxhub.mjs'; import { COPIES, corriger, pageProd, pageRU } from './nonreg.mjs'; import { PLAN_DUGAIN, PLAN_LETTRE, corrigerSelon } from './captures.mjs';
+import { hubDeDepart, installer, sessionProf } from './fauxhub.mjs'; import { COPIES, corriger, pageProd, pageRU } from './nonreg.mjs'; import { PLAN_DUGAIN, PLAN_LETTRE, corrigerSelon } from './captures.mjs'; import { hubPanneau } from './parcours-panneau.mjs';
 const ICI = path.dirname(new URL(import.meta.url).pathname);
 const F = path.resolve(process.argv[2] || path.join(ICI, '..', 'redaction.html'));
 const PROD = path.resolve(process.argv[3] || '/home/claude/monsieurjaipascompris/redaction_dugain_v3.html');
@@ -314,6 +314,87 @@ if (fs.existsSync(PROD)) { const ctx = await contexte(); const hub = ctx.__hub; 
   }
   verif('RU8', a.errs.length + b.errs.length === 0, 'zéro erreur JS des deux côtés', JSON.stringify(a.errs.concat(b.errs))); await ctx.close(); }
 else verif('RU8', false, 'la non-régression', 'la production redaction_dugain_v3.html est introuvable : ' + PROD);
+
+// ═════ RU16 · 13 · 60 : l'accueil « Mes rédactions » — par niveau, une ligne par rédaction et par classe ; Nouvelle, ⧉, ✏️, 🗑️ ═════
+{ const hub = hubPanneau(); hub.redactions.sujet_mh2a1x_k3p9qz.validations = { fiche: { le: '2026-10-27T15:00:00.000Z', par: 'point' }, 'p~unique~theme_tenu': { le: '2026-10-27T15:01:00.000Z', par: 'point' } };
+  const ctx = await contexte(1707, 743, hub); const pg = await page(ctx, '?mode=prof'); await att(pg, 600);
+  const v = await pg.evaluate(() => ({ niveaux: [...document.querySelectorAll('#ruListe .rp-niveau > summary b')].map(b => b.textContent), lignes: [...document.querySelectorAll('#ruListe .rp-niveau')].map(d => d.querySelectorAll('.rp-ligne').length), textes: [...document.querySelectorAll('#ruListe .rp-ligne-t')].map(x => x.innerText.replace(/\s+/g, ' ')), ecr: window.__ECR.length }));
+  await cap(pg, 'RU-16-accueil');
+  verif('RU16', JSON.stringify(v.niveaux) === '["3e","4e","5e","6e"]' && v.lignes[0] === 4 && v.lignes.slice(1).every(n => n === 0) && v.textes.some(t => /Écrire une lettre de la Grande Guerre 3 FRANKLIN Aretha · sur 40 · créée le 27\/10\/2026/.test(t)),
+    'l\'accueil « Mes rédactions » rangé par niveau (3e, 4e, 5e, 6e) ; une ligne par rédaction : le titre, la classe, « sur 40 », « créée le … »', JSON.stringify(v).slice(0, 400));
+  verif('RU16', v.textes.filter(t => /Chambre des officiers/.test(t)).length === 2 && v.textes.some(t => /3 FRANKLIN Aretha .*une des classes/.test(t)) && v.textes.some(t => /3E Charles de Gaulle .*une des classes/.test(t)) && v.ecr === 0,
+    'un sujet 1.0.0-RU qui porte les copies de deux classes : deux lignes, une par classe, et aucune écriture au hub', JSON.stringify(v.textes.filter(t => /Chambre/.test(t))));
+  // ＋ Nouvelle rédaction : le JSON, « Vérifier », la classe, « Créer »
+  const lettre = JSON.parse(fs.readFileSync(path.join(ICI, '..', 'sujets', 'lettre-grande-guerre.json'), 'utf8')); lettre.id = 'lettre-grande-guerre-3e-dylan';
+  await pg.click('text=＋ Nouvelle rédaction'); await pg.fill('#ruNvColler', JSON.stringify(lettre)); await pg.click('#modalNouveau button:has-text("Vérifier")'); await att(pg, 800);
+  const zone = await pg.evaluate(() => !document.getElementById('ruNvClasseZone').hidden);
+  await pg.click('#ruNvCreer'); await att(pg, 300); const sansClasse = await pg.textContent('#ruNvMsg');
+  await pg.selectOption('#ruNvClasse', '3_dylan_bob'); await pg.click('#ruNvCreer'); await pg.waitForURL(/vue=preparer/, { timeout: 10000 }).catch(() => {}); await att(pg, 800);
+  const cree = await pg.evaluate(() => { const r = window.__HUB.redactions; const k = Object.keys(r).find(x => r[x].config && r[x].config.nomCourt === 'lettre-grande-guerre-3e-dylan'); return k ? r[k].config : null; });
+  verif('RU16', zone && /Choisis la classe/.test(sansClasse) && cree && cree.classe === '3_dylan_bob' && /^sujet_/.test(cree.idInterne),
+    '« ＋ Nouvelle rédaction » : après « Vérifier », la classe se choisit (sans elle, « Créer » le dit) ; la rédaction est créée pour 3 DYLAN Bob (config.classe)', JSON.stringify(cree && { classe: cree.classe, id: cree.idInterne, msg: sansClasse }));
+  // ⧉ dupliquer
+  await pg.goto('file://' + F + '?mode=prof'); await att(pg, 1200);
+  const avant = await pg.evaluate(() => Object.keys(window.__HUB.redactions));
+  await pg.click('#ruListe .rp-ligne[data-id="sujet_mh2a1x_k3p9qz"] button[title^="Dupliquer"]'); await att(pg, 1500);
+  const dup = await pg.evaluate(av => { const r = window.__HUB.redactions; const k = Object.keys(r).find(x => !av.includes(x)); return k ? { k, cfg: r[k].config, val: r[k].validations, copies: r[k].copies || null } : null; }, avant);
+  verif('RU16', dup && /^sujet_/.test(dup.k) && dup.k === dup.cfg.idInterne && dup.cfg.titre === 'Copie de Écrire une lettre de la Grande Guerre' && dup.cfg.classe === '3_franklin_aretha' && dup.val && Object.keys(dup.val).length === 2 && !dup.copies && dup.cfg.nomCourt === 'lettre-grande-guerre-3e-copie-2' && pg.__boites.some(b => /Rédaction dupliquée/.test(b)),
+    '« ⧉ » : un nouvel id interne, « Copie de … », la grille, l\'énoncé et les phrases déjà lues (2 validations), aucune copie d\'élève, un nom court neuf', JSON.stringify(dup && { k: dup.k, titre: dup.cfg.titre, nc: dup.cfg.nomCourt, val: Object.keys(dup.val || {}).length, copies: dup.copies }));
+  // ✏️ : la classe se change sans copie ; elle ne se change plus quand une copie est commencée
+  await pg.click(`#ruListe .rp-ligne[data-id="${dup.k}"] button[title^="Changer le titre"]`); await att(pg, 300);
+  await pg.selectOption('#ruCrClasse', '3_dylan_bob'); await pg.fill('#ruCrTitre', 'La lettre de la Grande Guerre — 3 DYLAN Bob'); await pg.click('#modalCrayon button:has-text("Enregistrer")'); await att(pg, 1200);
+  const cr = await pg.evaluate(k => window.__HUB.redactions[k].config, dup.k);
+  await pg.click('#ruListe .rp-ligne[data-id="sujet_mh2a1x_k3p9qz"] button[title^="Changer le titre"]'); await att(pg, 300);
+  const bloque = await pg.evaluate(() => ({ dis: document.getElementById('ruCrClasse').disabled, note: document.getElementById('ruCrNote').textContent }));
+  await pg.evaluate(() => fermerModale('modalCrayon'));
+  verif('RU16', cr.classe === '3_dylan_bob' && cr.titre === 'La lettre de la Grande Guerre — 3 DYLAN Bob' && cr.modifieLe > cr.creeLe && bloque.dis && /1 copie est commencée/.test(bloque.note),
+    '« ✏️ » change le titre et la classe (modifieLe avance) ; une rédaction dont une copie est commencée garde sa classe et le dit (« ⧉ » pour une autre classe)', JSON.stringify({ classe: cr.classe, titre: cr.titre, bloque }));
+  // 🗑️ : l'export JSON, la corbeille MJPC, l'effacement
+  let tel = null; pg.once('download', d => { tel = d; });
+  await pg.click(`#ruListe .rp-ligne[data-id="${dup.k}"] button[title^="Supprimer"]`); await att(pg, 1500);
+  const sup = await pg.evaluate(k => { const c = window.__HUB.corbeille || {}; const ent = Object.values(c).flatMap(j => Object.keys(j).map(x => [x, j[x]])); const e = ent.find(([x, v]) => /^suppression-redaction_/.test(x) && v._meta && v._meta.redaction === k); return { reste: !!window.__HUB.redactions[k], corbeille: !!e, titre: e && e[1]._meta.titre, data: e && !!e[1].data.config }; }, dup.k);
+  verif('RU16', !sup.reste && sup.corbeille && sup.data && !!tel && pg.__boites.some(b => /corbeille MJPC/.test(b)), '« 🗑️ » : l\'export JSON téléchargé, la rédaction archivée dans la corbeille MJPC (avec ses données), puis effacée', JSON.stringify(sup));
+  verif('RU16', pg.__errs.length === 0, 'zéro erreur JS', JSON.stringify(pg.__errs)); await ctx.close(); }
+
+// ═════ RU17 · 13 · 60 : une rédaction ouverte — l'en-tête, les onglets, Snapshot / Restaurer, ← Retour, le « ? », le mode test ═════
+{ const ctx = await contexte(1707, 743, hubPanneau()); const pg = await page(ctx, '?mode=prof&id=sujet_mh2a1x_k3p9qz&classe=3_franklin_aretha'); await pret(pg); await att(pg, 400);
+  const e = await pg.evaluate(() => ({ t: document.getElementById('ruTitre').textContent, s: document.getElementById('ruSousTitre').textContent, o: [...document.querySelectorAll('#ruOnglets button')].map(b => b.textContent), sous: [...document.querySelectorAll('#ruSous button')].map(b => b.textContent + (b.classList.contains('on') ? '*' : '')), btn: [...document.querySelectorAll('.rp-entete-a button')].map(b => b.textContent.trim()) }));
+  verif('RU17', e.t === 'Écrire une lettre de la Grande Guerre' && e.s === '3 FRANKLIN Aretha · 0/12 · 0 %' && JSON.stringify(e.o) === '["Pilotage","Données","Réglages"]' && JSON.stringify(e.sous) === '["Préparation","Correction*"]' && JSON.stringify(e.btn) === '["📸 Snapshot","📤 Restaurer","← Retour"]',
+    'l\'en-tête (le titre, « 3 FRANKLIN Aretha · 0/12 · 0 % », la barre), « 📸 Snapshot », « 📤 Restaurer », « ← Retour » ; Pilotage (Préparation, Correction — ouverte) · Données · Réglages', JSON.stringify(e));
+  const vues = [];
+  for (const [o, so, attendu, aide] of [['pilotage', 'preparation', /Les phrases de la grille[\s\S]*Préparer le sujet[\s\S]*L’énoncé/, 'Pilotage — Préparation'], ['pilotage', 'correction', /Élèves — 3 FRANKLIN Aretha/, 'Pilotage — Correction'], ['donnees', 'bilan', /Bilan de la correction/, 'Données — Bilan'], ['donnees', 'fiches', /Fiches élèves[\s\S]*Exporter tous HTML/, 'Données — Fiches élèves'], ['reglages', null, /La grille du sujet[\s\S]*Le thème tenu[\s\S]*compteur/, 'Réglages — la grille']]) {
+    await pg.evaluate(([o, so]) => ruOnglet(o, so || undefined), [o, so]); await att(pg, 400);
+    const vis = await pg.evaluate(() => [...document.querySelectorAll('.rp-vue:not(.hidden), #dashboard:not(.hidden)')].map(x => x.innerText).join(' '));
+    await pg.click('.rp-aide-btn'); await att(pg, 200); const a = await pg.textContent('#ruAide'); await pg.keyboard.press('Escape'); await att(pg, 150);
+    vues.push({ v: so || o, ok: attendu.test(vis), aide: a.indexOf(aide) === 0, ferme: await pg.evaluate(() => document.getElementById('ruAide').hidden) });
+    if (so === 'preparation' || o === 'reglages' || so === 'fiches') await cap(pg, 'RU-17-' + (so || o));
+  }
+  verif('RU17', vues.every(x => x.ok && x.aide && x.ferme), 'chaque onglet montre ce qu\'il porte (Préparation, Correction, Bilan, Fiches élèves, Réglages) ; le « ? » y dit où l\'on est et ce qu\'on peut faire ; Échap le ferme', JSON.stringify(vues));
+  // 📸 Snapshot puis 📤 Restaurer : un aller-retour rend la même rédaction
+  let tel = null; pg.once('download', d => { tel = d; }); await pg.click('.rp-entete-a button:has-text("Snapshot")'); await att(pg, 1000);
+  const p = path.join(OUT, 'snapshot-lettre.json'); if (tel) await tel.saveAs(p);
+  const avant = await pg.evaluate(() => JSON.stringify(window.__HUB.redactions.sujet_mh2a1x_k3p9qz));
+  await pg.evaluate(() => { window.__HUBPOSER('/redactions/sujet_mh2a1x_k3p9qz/config/titre', 'TITRE ABÎMÉ'); window.__HUBPOSER('/redactions/sujet_mh2a1x_k3p9qz/copies/3_franklin_aretha/audebert_elise', null); });
+  await pg.setInputFiles('#importJson', p); await att(pg, 2500); await pret(pg);
+  const apres = await pg.evaluate(() => JSON.stringify(window.__HUB.redactions.sujet_mh2a1x_k3p9qz));
+  const corb = await pg.evaluate(() => Object.values(window.__HUB.corbeille || {}).some(j => Object.keys(j).some(x => /^restauration-redaction_/.test(x))));
+  verif('RU17', !!tel && apres === avant && corb && pg.__boites.some(b => /Écraser cette rédaction/.test(b)), '« 📸 Snapshot » puis « 📤 Restaurer » : la rédaction abîmée (titre, une copie effacée) revient à l\'identique ; l\'état d\'avant part dans la corbeille', JSON.stringify({ tel: !!tel, egal: apres === avant, corb }));
+  // l'ancienne sauvegarde (redaction_dugain_v3, « Exporter JSON ») : les copies rendues aux élèves par leur nom
+  const ancienne = { classe: ['AUGEREAU Gatien', 'ZZINCONNU Paul'], copies: { AUGEREAU_Gatien: { sujet: 'unique', echelons: { theme_tenu: 1 }, sousEchelons: { theme_tenu: 2 }, citationsPar: {}, sousEditesPar: {}, erreursCitation: {}, compteurOrthoGram: 0 }, ZZINCONNU_Paul: { sujet: 'unique', echelons: {} } } };
+  const pa = path.join(OUT, 'ancienne-sauvegarde.json'); fs.writeFileSync(pa, JSON.stringify(ancienne));
+  await pg.setInputFiles('#importJson', pa); await att(pg, 2500);
+  const imp = await pg.evaluate(() => ({ h: (window.__HUB.redactions.sujet_mh2a1x_k3p9qz.copies['3_franklin_aretha'] || {}).augereau_gatien || null }));
+  verif('RU17', imp.h && imp.h.echelons.theme_tenu === 1 && /^copie_/.test(imp.h.id) && pg.__boites.some(b => /Importer 1 copie\(s\) de l’ancienne sauvegarde/.test(b) && /ZZINCONNU_Paul/.test(b)),
+    '« 📤 Restaurer » lit aussi une sauvegarde de l\'ancienne app : la copie rendue à AUGEREAU Gatien (par son nom), au site, avec un id interne ; le nom introuvable est dit', JSON.stringify(imp.h && { e: imp.h.echelons, id: imp.h.id }));
+  // ← Retour
+  await pg.click('.rp-entete-a button:has-text("Retour")'); await att(pg, 1500);
+  verif('RU17', await pg.evaluate(() => !document.getElementById('ruSujets').classList.contains('hidden') && /Mes rédactions/.test(document.getElementById('ruSujets').innerText)), '« ← Retour » : « Mes rédactions »');
+  // la carte « Mode test »
+  await pg.click('#ruTestBtn'); await att(pg, 200);
+  const mt = await pg.evaluate(() => ({ ouvert: !document.getElementById('ruTestCorps').hidden, txt: document.getElementById('ruTestCorps').innerText }));
+  await pg.click('#ruTestBascule'); await att(pg, 1500);
+  verif('RU17', mt.ouvert && /sans rien envoyer au site/.test(mt.txt) && /test=1/.test(pg.url()) && await pg.evaluate(() => document.body.classList.contains('ru-test')), 'la carte « 🧪 Mode test » : « Ouvrir ▾ » dit ce qu\'il fait ; « Entrer en mode test » ouvre l\'app en mode test (le bandeau)', JSON.stringify(mt));
+  verif('RU17', pg.__errs.length === 0, 'zéro erreur JS', JSON.stringify(pg.__errs)); await ctx.close(); }
 
 // ═════ RU9 · les tailles : 1366, 1536, 1707 × 743, 1920 — rien ne déborde en largeur ═════
 for (const [w, h] of [[1366, 743], [1536, 743], [1707, 743], [1920, 1080]]) {

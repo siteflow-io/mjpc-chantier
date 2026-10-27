@@ -153,3 +153,11 @@ Mesuré sur `redaction_dugain_v3.html` (production, 349 982 o, 6 205 lignes, JS 
 - **Le « ? »** (en haut à droite, touche ? ou F1, Échap) suit l'écran : l'accueil, Préparation, Correction, une copie, Bilan, Fiches, Réglages, Préparer, la porte.
 - **L'aspect** : blanc et bleu pour le panneau, toute la largeur ; la vue classique d'une copie perd sa colonne de 1 100 px (13 · 61) ; l'énoncé garde ses paragraphes. La fiche de l'élève ne change pas (RU8).
 - RU0-RU15 adaptés aux nouveaux gestes (« ＋ Nouvelle rédaction » avec sa classe ; la liste des classes au ✏️ ; l'énoncé par Préparation ; « Exporter tous HTML » dans Fiches) : **62 ok · 0 échec**. **Reste** : RU16, RU17, les captures avant / après.
+
+## Complément panneau — poussée P3 — 27/10 18:59 (Paris) · RU16, RU17, les captures avant / après — **76 ok · 0 échec**
+- **RU16** (l'accueil) : « Mes rédactions » rangé par niveau ; une ligne par sujet et par classe — le sujet dugain de la forme 1.0.0-RU, qui porte des copies de 3 FRANKLIN Aretha et de 3 DYLAN Bob, donne deux lignes et **aucune écriture au hub** ; « ＋ Nouvelle rédaction » avec sa classe (`config.classe`) ; ⧉ (validations copiées, aucune copie, nouvel id interne `sujet_…`, « Copie de … ») ; ✏️ change la classe (refusé si une copie est commencée) ; 🗑️ (l'export JSON téléchargé, la corbeille MJPC, puis l'effacement).
+- **RU17** (une rédaction ouverte) : l'en-tête (titre, classe · n/N · %, la barre), Pilotage (Préparation, Correction) · Données (Bilan, Fiches élèves) · Réglages ; 📸 Snapshot puis 📤 Restaurer rend la même rédaction ; ← Retour ; le « ? » sur chaque écran ; la carte « Mode test ». Zéro erreur JS.
+- RU9 aux quatre tailles (1366, 1536, 1707 × 743 ; 1920 × 1080) : vert.
+- **Corrigé en route** : la fenêtre du crayon ✏️ était dans `#ruApp` (caché à l'accueil) — sortie de `#ruApp` ; le témoin du hub et le « ? » recouvraient les boutons de l'en-tête — replacés.
+- **Captures** (`captures/panneau/`, 1707 × 743, regardées) : avant (production 1.0.0-RU) 1 accueil, 2 rédaction ouverte, 7 une copie ; après 1 accueil, 2 rédaction ouverte, 3 Préparation, 4 Bilan, 5 Fiches, 6 Réglages, 7 une copie. Exemples : la lettre de la Grande Guerre pour 3 FRANKLIN Aretha (copie d'AUDEBERT Elise), sa copie pour 3 DYLAN Bob.
+- Sorties du banc : `sorties/1846-27-10/` (banc.log). redaction.html md5 4360a65c3089977e8a02663d090ab4e5.

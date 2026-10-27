@@ -1330,6 +1330,19 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="modalCrayon">
+  <div class="modal">
+    <h2>✏️ La rédaction</h2>
+    <label>Le titre <input type="text" id="ruCrTitre" style="width:100%" title="Le titre de la rédaction, tel qu’il paraît en tête des fiches"></label>
+    <label style="display:block;margin-top:10px;">La classe <select id="ruCrClasse" title="La classe de cette rédaction"></select></label>
+    <p id="ruCrNote" class="ru-msg"></p>
+    <div class="modal-actions">
+      <button onclick="fermerModale('modalCrayon')" title="Fermer sans rien changer">Annuler</button>
+      <button class="primary" onclick="ruCrayonOk()" title="Enregistrer le titre et la classe">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
 <div id="ruApp" class="hidden rp">
 <div class="rp-entete">
   <div class="rp-entete-g"><h1 id="ruTitre">Rédaction</h1><div class="rp-sous-t" id="ruSousTitre">—</div><div class="rp-barre rp-barre-l"><i id="ruBarreRed"></i></div></div>
@@ -1430,19 +1443,6 @@
 </div>
 
 <!-- Modales -->
-<div class="modal-overlay" id="modalCrayon">
-  <div class="modal">
-    <h2>✏️ La rédaction</h2>
-    <label>Le titre <input type="text" id="ruCrTitre" style="width:100%" title="Le titre de la rédaction, tel qu’il paraît en tête des fiches"></label>
-    <label style="display:block;margin-top:10px;">La classe <select id="ruCrClasse" title="La classe de cette rédaction"></select></label>
-    <p id="ruCrNote" class="ru-msg"></p>
-    <div class="modal-actions">
-      <button onclick="fermerModale('modalCrayon')" title="Fermer sans rien changer">Annuler</button>
-      <button class="primary" onclick="ruCrayonOk()" title="Enregistrer le titre et la classe">Enregistrer</button>
-    </div>
-  </div>
-</div>
-
 <div class="modal-overlay" id="modalClasse">
   <div class="modal">
     <h2>La classe</h2>

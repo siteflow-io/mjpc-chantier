@@ -2,7 +2,6 @@
 // usage : node parcours-panneau.mjs <redaction.html> <dossier> <prefixe>
 import { hubDeDepart, installer, sessionProf } from './fauxhub.mjs'; import path from 'node:path'; import fs from 'node:fs'; import { createRequire } from 'node:module';
 const pw = createRequire(import.meta.url)('/opt/node22/lib/node_modules/playwright');
-const [F, OUT, PRE] = [path.resolve(process.argv[2]), path.resolve(process.argv[3]), process.argv[4] || 'x']; fs.mkdirSync(OUT, { recursive: true });
 export function hubPanneau() {
   const h = hubDeDepart({ avecDugain: false }); const ICI = path.dirname(new URL(import.meta.url).pathname);
   const lettre = JSON.parse(fs.readFileSync(path.join(ICI, '..', 'sujets', 'lettre-grande-guerre.json'), 'utf8'));
@@ -19,6 +18,7 @@ export function hubPanneau() {
   return h;
 }
 if (process.argv[1] && process.argv[1].endsWith('parcours-panneau.mjs')) {
+  const [F, OUT, PRE] = [path.resolve(process.argv[2]), path.resolve(process.argv[3]), process.argv[4] || 'x']; fs.mkdirSync(OUT, { recursive: true });
   const nav = await pw.chromium.launch({ args: ['--no-sandbox'] }); const ctx = await nav.newContext({ viewport: { width: 1707, height: 743 } });
   await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
   const pg = await ctx.newPage(); const errs = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => d.accept());

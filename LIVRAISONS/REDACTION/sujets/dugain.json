@@ -1,0 +1,1952 @@
+{
+ "id": "dugain",
+ "format": "mjpc-redaction-1",
+ "titre": "Brevet blanc 3e — La Chambre des officiers (Marc Dugain)",
+ "niveau": "3e",
+ "total": 40,
+ "enonce": "Brevet blanc 3e — La Chambre des officiers, Marc Dugain. Sujet d'imagination (suite du récit de Marguerite) ou sujet de réflexion (apport des récits de vie).",
+ "fiche": {
+  "titre": "Rédaction brevet blanc",
+  "sousTitre": "Brevet blanc",
+  "aFaire": [
+   "Lis attentivement chaque appréciation et le passage à retravailler.",
+   "Sur le critère où tu as le moins de points, identifie au moins UNE chose concrète à améliorer pour la prochaine rédaction.",
+   "Recopie ci-dessous (ou au dos) les consignes 🎯 d'entraînement pour le brevet officiel, et entoure celle qui te paraît la plus urgente.",
+   "Conserve cette fiche : tu y reviendras avant la prochaine rédaction."
+  ],
+  "alerte": {
+   "indicateur": "orthographe",
+   "echelon": 0,
+   "titre": "Important pour le DNB officiel",
+   "contenu": "Le critère d'orthographe-grammaire pèse pour 4 points sur cette évaluation, et tu as obtenu le niveau Insuffisant. Sur la copie officielle du DNB, ce niveau d'orthographe pourrait conduire le correcteur à déclasser ta copie, c'est-à-dire à abaisser la note d'ensemble malgré la qualité de tes idées. D'ici la fin de l'année, concentre ton énergie sur les fautes les plus simples à éviter : les terminaisons verbales, les accords sujet-verbe, les homophones grammaticaux. Une copie au contenu intéressant mérite une langue qui lui rend justice."
+  }
+ },
+ "variantes": [
+  {
+   "id": "imagination",
+   "libelle": "Sujet d'imagination — Suite du récit de Marguerite",
+   "libelleCourt": "Imagination",
+   "libelleFiche": "Sujet d'imagination",
+   "etiquette": "🖋️ Imagination",
+   "abrege": "Imag.",
+   "repere": "sujet\\s*d['’\\s]*imagination",
+   "choix": {
+    "titre": "🖋️ Imagination",
+    "texte": "Suite du récit de Marguerite.",
+    "infobulle": "L'élève a choisi le sujet d'imagination : écrire la suite du récit de Marguerite."
+   },
+   "total": 40,
+   "compteur": {
+    "indicateur": "orthographe",
+    "selon": "longueur",
+    "seuils": {
+     "0": [
+      2,
+      5,
+      10
+     ],
+     "1": [
+      4,
+      10,
+      20
+     ],
+     "2": [
+      6,
+      15,
+      30
+     ],
+     "3": [
+      7,
+      17,
+      35
+     ]
+    },
+    "defaut": 2
+   },
+   "criteres": [
+    {
+     "id": "expression",
+     "titre": "Expression",
+     "points": 10,
+     "consignes": [
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : relire systématiquement ta copie en visant un seul type d'erreur à la fois (d'abord les accords sujet-verbe, puis les participes passés, puis les homophones), et varier la longueur de tes phrases.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : te garder cinq à sept minutes de relecture finale ciblée, chercher des mots plus précis que « truc », « chose », « faire », et complexifier au moins une phrase par paragraphe.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : enrichir ton lexique avec des termes plus rares ou plus imagés, oser des constructions syntaxiques plus ambitieuses, travailler le rythme de tes phrases.",
+      "Pour la rédaction du brevet officiel, garde cette exigence stylistique. Continue à oser, c'est ce qui fait l'écriture."
+     ],
+     "indicateurs": [
+      {
+       "id": "orthographe",
+       "libelle": "Orthographe et grammaire",
+       "poids": 4,
+       "competences": [
+        "c4-langue-01"
+       ],
+       "descripteurs": [
+        "{prenom}, ton orthographe et ta grammaire sont très fragiles. Les erreurs sont nombreuses et gênent la lecture. Attention : au DNB officiel, une copie comportant trop de fautes peut être déclassée et ne pas obtenir la moyenne.",
+        "{prenom}, ton orthographe et ta grammaire sont insuffisantes. Les erreurs sont fréquentes, surtout sur les accords et les conjugaisons, et révèlent un manque de relecture.",
+        "{prenom}, ton orthographe et ta grammaire sont correctes. Tu fais encore quelques erreurs mais l'ensemble est lisible sans accroc.",
+        "{prenom}, ton orthographe et ta grammaire sont maîtrisées. Les erreurs sont rares et marginales, ta langue est sûre."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Les erreurs d'orthographe sont si nombreuses qu'elles brouillent le sens : par endroits, le lecteur ne comprend plus ce que tu veux dire.",
+          "avec": "Les erreurs d'orthographe sont si nombreuses qu'elles brouillent le sens, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton orthographe est extrêmement fragile : les accords sujet-verbe, les pluriels, les terminaisons des verbes posent constamment problème.",
+          "avec": "Ton orthographe est extrêmement fragile, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Les homophones (ses/ces, à/a, ou/où, ce/se) sont systématiquement confondus, et les accords du participe passé sont absents.",
+          "avec": "Les homophones et les accords du participe passé sont systématiquement absents. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu sembles ne pas avoir relu ta copie : les fautes sont nombreuses, y compris sur des mots simples. Une relecture aurait évité beaucoup d'erreurs.",
+          "avec": "Tu sembles ne pas avoir relu ta copie, comme on le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tu fais beaucoup d'erreurs d'orthographe et de grammaire, surtout sur les accords sujet-verbe et les participes passés. Le sens passe, mais difficilement.",
+          "avec": "Tu fais beaucoup d'erreurs d'orthographe et de grammaire, surtout sur les accords. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tes erreurs sont nombreuses mais inégales : tu réussis certains accords difficiles et tu rates des accords simples. Une relecture ciblée te ferait gagner beaucoup.",
+          "avec": "Tes erreurs sont nombreuses mais inégales. On le voit quand tu écris {CIT} : ici c'est une erreur que tu sais éviter ailleurs."
+         },
+         {
+          "sans": "Tu butes essentiellement sur les homophones et les terminaisons verbales. La grammaire tient, mais l'orthographe lexicale est encore fragile.",
+          "avec": "Tu butes essentiellement sur les homophones et les terminaisons verbales, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton orthographe est presque correcte, à quelques erreurs près. Une relecture systématique en fin de devoir te ferait passer au satisfaisant.",
+          "avec": "Ton orthographe est presque correcte, à quelques erreurs près. On le voit quand tu écris {CIT} : une relecture rapide aurait suffi."
+         }
+        ],
+        [
+         {
+          "sans": "Ton orthographe et ta grammaire sont globalement correctes. Tu fais encore quelques erreurs, mais elles ne gênent pas la lecture.",
+          "avec": "Ton orthographe et ta grammaire sont globalement correctes. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu tiens les accords courants et tu maîtrises l'essentiel des conjugaisons. Les erreurs restantes concernent surtout les cas difficiles (homophones complexes, accords particuliers).",
+          "avec": "Tu tiens les accords courants et tu maîtrises l'essentiel des conjugaisons. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu écris correctement : ta langue est sûre sur la majorité des points, et tu te trompes seulement sur quelques difficultés ponctuelles.",
+          "avec": "Tu écris correctement : ta langue est sûre sur la majorité des points, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton orthographe est solide : il ne te reste que quelques rares erreurs sur des points pointus. La langue est assez sûre pour que le lecteur ne soit jamais gêné.",
+          "avec": "Ton orthographe est solide : il ne te reste que quelques rares erreurs sur des points pointus. On le voit quand tu écris {CIT}. La langue est assez sûre pour que le lecteur ne soit jamais gêné."
+         }
+        ],
+        [
+         {
+          "sans": "Ta langue est sûre : tu maîtrises les accords, les conjugaisons et l'orthographe lexicale. Les erreurs sont rares et marginales.",
+          "avec": "Ta langue est sûre : tu maîtrises les accords, les conjugaisons et l'orthographe lexicale, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu écris avec une vraie correction : ta copie se lit sans le moindre obstacle, et tu réussis même les difficultés rares (participes passés avec être pronominal, homophones piégeux).",
+          "avec": "Tu écris avec une vraie correction. On le voit quand tu écris {CIT} : tu réussis ici une difficulté que beaucoup ratent."
+         },
+         {
+          "sans": "Ta maîtrise orthographique est presque sans faille : tu emploies les bons accords, les bonnes terminaisons, les bons homophones, sans hésitation.",
+          "avec": "Ta maîtrise orthographique est presque sans faille. On le voit quand tu écris {CIT}, où chaque mot est exactement à sa place."
+         },
+         {
+          "sans": "Tu maîtrises l'orthographe et la grammaire de bout en bout : pas d'erreur, pas de doute, pas d'hésitation. Ta langue est entièrement sûre.",
+          "avec": "Tu maîtrises l'orthographe et la grammaire de bout en bout. Quand tu écris {CIT}, on sent que chaque mot a été pesé."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "syntaxe",
+       "libelle": "Structure des phrases",
+       "poids": 3,
+       "competences": [
+        "c4-langue-04"
+       ],
+       "descripteurs": [
+        "{prenom}, la structure de tes phrases est très maladroite : phrases incomplètes, ruptures syntaxiques, constructions incorrectes qui gênent souvent la lecture.",
+        "{prenom}, la structure de tes phrases est globalement correcte mais reste fragile : phrases trop courtes ou trop longues, constructions parfois bancales, peu de variété syntaxique.",
+        "{prenom}, la structure de tes phrases est correcte et variée. Tu alternes phrases courtes et longues, tu utilises subordination et coordination de manière appropriée.",
+        "{prenom}, la structure de tes phrases est maîtrisée. Tu joues du rythme, tu emploies des constructions complexes avec aisance, ta syntaxe sert l'effet recherché."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tes phrases sont souvent incomplètes ou cassées : il manque un verbe, un sujet, une articulation. Le lecteur doit deviner ce que tu veux dire.",
+          "avec": "Tes phrases sont souvent incomplètes ou cassées, comme quand tu écris {CIT}. Le lecteur doit deviner ce que tu veux dire."
+         },
+         {
+          "sans": "Tes constructions de phrases sont fausses : tu mets le sujet après le verbe sans raison, tu oublies les liaisons, tu inverses l'ordre des mots. Le sens passe difficilement.",
+          "avec": "Tes constructions de phrases sont fausses, comme quand tu écris {CIT}. Le sens passe difficilement."
+         },
+         {
+          "sans": "Tu écris des phrases interminables, sans ponctuation, où tu accumules les « et » et les « puis ». Le lecteur s'essouffle avant la fin.",
+          "avec": "Tu écris des phrases interminables, sans ponctuation, comme quand tu écris {CIT}. Le lecteur s'essouffle avant la fin."
+         },
+         {
+          "sans": "Tu enchaînes des phrases extrêmement courtes, sujet-verbe-complément, sans varier. Les phrases sont correctes mais le récit en devient mécanique.",
+          "avec": "Tu enchaînes des phrases extrêmement courtes, sans varier, comme quand tu écris {CIT}. Le récit en devient mécanique."
+         }
+        ],
+        [
+         {
+          "sans": "Tes phrases sont compréhensibles mais toutes faites sur le même modèle : sujet, verbe, complément. Aucune subordination, aucune variation, peu de relief.",
+          "avec": "Tes phrases sont compréhensibles mais toutes faites sur le même modèle : sujet, verbe, complément. On le voit quand tu écris {CIT} : trois phrases bâties à l'identique."
+         },
+         {
+          "sans": "Tu essaies par moments des phrases plus complexes mais elles tombent à plat : la subordonnée est mal articulée, ou le sens devient confus.",
+          "avec": "Tu essaies par moments des phrases plus complexes mais elles tombent à plat, comme quand tu écris {CIT}, où la construction n'est pas tenue jusqu'au bout."
+         },
+         {
+          "sans": "Tu écris correctement mais sans variété : la longueur de tes phrases reste constante, et le rythme du récit en pâtit.",
+          "avec": "Tu écris correctement mais sans variété : la longueur de tes phrases reste constante. On le voit quand tu écris {CIT}, où tout est sur le même tempo."
+         },
+         {
+          "sans": "Ta syntaxe est correcte sur l'ensemble mais il manque encore quelques constructions plus ambitieuses (subordonnées, incises, inversions) pour passer au satisfaisant.",
+          "avec": "Ta syntaxe est correcte sur l'ensemble mais il manque encore quelques constructions plus ambitieuses. On le voit quand tu écris {CIT} : la phrase aurait pu être enrichie d'une subordonnée."
+         }
+        ],
+        [
+         {
+          "sans": "Tu alternes phrases courtes et phrases longues : ta syntaxe n'est plus monotone. La variation de base est présente, sans encore se mettre au service d'un effet précis.",
+          "avec": "Tu alternes phrases courtes et phrases longues, comme quand tu écris {CIT} : ta syntaxe n'est plus monotone. La variation de base est présente."
+         },
+         {
+          "sans": "Tu construis des phrases solidement bâties : sujets et verbes en place, subordonnées qui fonctionnent, liaisons propres. Chaque phrase tient debout, sans accroc.",
+          "avec": "Tu construis des phrases solidement bâties : sujets et verbes en place, subordonnées qui fonctionnent. On le voit quand tu écris {CIT} : la phrase est complexe et pourtant impeccable."
+         },
+         {
+          "sans": "Tu joues du rythme avec à-propos : une phrase courte qui frappe après une longue qui développe, une cadence qui s'accélère dans un moment de tension. Le rythme commence à servir l'effet.",
+          "avec": "Tu joues du rythme avec à-propos, comme quand tu écris {CIT} : la coupure produit ici un effet précis."
+         },
+         {
+          "sans": "Tu maîtrises plusieurs outils syntaxiques (subordonnées, incises, coordinations, ruptures) et tu les emploies à bon escient. Pour basculer en Très satisfaisant, il manque encore que la forme de tes phrases devienne expressive par elle-même.",
+          "avec": "Tu maîtrises plusieurs outils syntaxiques et tu les emploies à bon escient. On le voit quand tu écris {CIT}. Pour basculer en Très satisfaisant, il manque encore que la forme de tes phrases devienne expressive par elle-même."
+         }
+        ],
+        [
+         {
+          "sans": "Tu maîtrises la construction de tes phrases sans faute : longueur, articulation, ponctuation, tout est en place. La base d'écriture est entièrement sûre, et c'est ce qui te permet de bâtir au-dessus.",
+          "avec": "Tu maîtrises la construction de tes phrases sans faute, comme quand tu écris {CIT}. Longueur, articulation, ponctuation, tout est en place."
+         },
+         {
+          "sans": "Tu joues du rythme avec aisance : tu accélères, tu ralentis, tu coupes ou tu prolonges selon l'effet recherché. Ta ponctuation devient un instrument musical.",
+          "avec": "Tu joues du rythme avec aisance, comme quand tu écris {CIT} : la coupure ou le prolongement créent ici exactement l'effet attendu."
+         },
+         {
+          "sans": "Tes constructions sont riches et variées : subordonnées complexes, incises bien placées, ruptures syntaxiques maîtrisées. Tu mobilises toute la palette sans jamais perdre le lecteur.",
+          "avec": "Tes constructions sont riches et variées. On le voit quand tu écris {CIT} : la phrase est complexe et pourtant parfaitement claire."
+         },
+         {
+          "sans": "Tu écris des phrases dont la construction est elle-même expressive : la forme accompagne le sens, la syntaxe porte l'émotion. Rien n'est laissé au hasard, chaque inversion, chaque mise en relief, chaque coupure produit un effet.",
+          "avec": "Tu écris des phrases dont la construction est elle-même expressive : la forme accompagne le sens. Quand tu écris {CIT}, on sent que rien n'est laissé au hasard."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "lexique",
+       "libelle": "Lexique",
+       "poids": 3,
+       "competences": [
+        "c4-langue-03"
+       ],
+       "descripteurs": [
+        "{prenom}, ton lexique est très pauvre. Tu emploies des mots vagues, tu répètes constamment les mêmes termes, ton vocabulaire ne te permet pas d'exprimer ce que tu veux dire.",
+        "{prenom}, ton lexique est juste mais pauvre. Tu emploies un vocabulaire courant sans recherche, avec des répétitions notables et peu de précision.",
+        "{prenom}, ton lexique est correct et globalement précis. Tu cherches le mot juste, tu varies ton vocabulaire, tu emploies parfois un terme recherché ou imagé.",
+        "{prenom}, ton lexique est riche, précis, nuancé. Tu emploies un vocabulaire varié et adapté au registre, tes images sont travaillées, ta langue a sa propre couleur."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu emploies des mots qui n'ont pas le bon sens : tu te trompes de terme et la phrase devient incompréhensible ou drôle malgré toi.",
+          "avec": "Tu emploies des mots qui n'ont pas le bon sens, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton vocabulaire est très pauvre : tu emploies sans cesse des mots vagues et passe-partout, et tu ne cherches pas à varier ni à préciser. Le récit reste flou.",
+          "avec": "Ton vocabulaire est très pauvre, comme quand tu écris {CIT}. Tu emploies des mots vagues qui ne disent rien de précis."
+         },
+         {
+          "sans": "Tu utilises un vocabulaire trop familier pour un récit écrit : termes de conversation, expressions du quotidien.",
+          "avec": "Tu utilises un vocabulaire trop familier pour un récit écrit, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Les répétitions sont nombreuses et rendent la lecture pesante : le même mot revient à chaque ligne sans que tu cherches de synonymes.",
+          "avec": "Les répétitions sont nombreuses et rendent la lecture pesante, comme quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Ton vocabulaire est juste mais pauvre : tu emploies un mot courant là où un mot plus précis ferait l'affaire. Le récit reste plat.",
+          "avec": "Ton vocabulaire est juste mais pauvre, comme quand tu écris {CIT} : un mot plus précis aurait donné plus de force à la phrase."
+         },
+         {
+          "sans": "Tu sais varier ton vocabulaire mais tu retombes souvent dans les mêmes répétitions. Quelques relectures te permettraient de les éviter.",
+          "avec": "Tu sais varier ton vocabulaire mais tu retombes souvent dans les mêmes répétitions, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu essaies des mots plus recherchés mais tu te trompes parfois sur leur sens ou leur emploi. L'effort est là, la maîtrise pas encore.",
+          "avec": "Tu essaies des mots plus recherchés mais tu te trompes parfois sur leur sens, comme quand tu écris {CIT} : le mot choisi ne dit pas exactement ce que tu voulais dire."
+         },
+         {
+          "sans": "Ton lexique est globalement correct mais il manque encore de précision sur les sensations, les sentiments et les détails du cadre. Quelques mots plus précis sur les émotions et les sensations enrichiraient nettement ton récit.",
+          "avec": "Ton lexique est globalement correct mais il manque encore de précision. On le voit quand tu écris {CIT} : un mot plus exact ferait toute la différence."
+         }
+        ],
+        [
+         {
+          "sans": "Ton vocabulaire est précis sur les choses courantes : tu nommes correctement ce que tu décris, sans rester dans le vague. La précision de base est là.",
+          "avec": "Ton vocabulaire est précis sur les choses courantes, comme quand tu écris {CIT}. La précision de base est là."
+         },
+         {
+          "sans": "Tu emploies un lexique adapté au sujet et à l'époque : ton vocabulaire de la guerre, de l'hôpital militaire, des soins est correct et juste. Le champ lexical est mobilisé.",
+          "avec": "Tu emploies un lexique adapté au sujet et à l'époque, comme quand tu écris {CIT}. Le champ lexical de la guerre et des soins est mobilisé."
+         },
+         {
+          "sans": "Ton vocabulaire est varié et tu places par endroits des mots recherchés ou imagés qui donnent du relief à ton récit. Tu cherches le mot juste plutôt que le mot habituel.",
+          "avec": "Ton vocabulaire est varié et tu places par endroits des mots recherchés ou imagés, comme quand tu écris {CIT}. Tu cherches le mot juste plutôt que le mot habituel."
+         },
+         {
+          "sans": "Ton lexique est riche pour une copie de 3e : précis sur les choses, adapté au sujet, varié sans préciosité. Pour basculer en Très satisfaisant, il manque encore que tes mots restituent finement les sensations et les émotions, pas seulement les choses.",
+          "avec": "Ton lexique est riche pour une copie de 3e : précis, adapté, varié sans préciosité. On le voit quand tu écris {CIT}. Pour basculer en Très satisfaisant, il manque encore la finesse sur les sensations et les émotions."
+         }
+        ],
+        [
+         {
+          "sans": "Ton vocabulaire est riche et précis sur tous les plans : tu nommes les choses, les sensations, les sentiments avec exactitude. Tu évites systématiquement les répétitions et les mots passe-partout.",
+          "avec": "Ton vocabulaire est riche et précis sur tous les plans, comme quand tu écris {CIT}. Les choses, les sensations, les sentiments sont nommés avec exactitude."
+         },
+         {
+          "sans": "Tu emploies un lexique nuancé qui restitue finement les sensations et les émotions : tu ne dis pas « peur » mais l'inquiétude ou l'effroi ; pas « bruit » mais le crissement ou le grondement. Le récit gagne en épaisseur sensorielle.",
+          "avec": "Tu emploies un lexique nuancé qui restitue finement les sensations, comme quand tu écris {CIT} : le mot choisi est exactement celui qui dit la sensation, pas le mot général."
+         },
+         {
+          "sans": "Tu sais varier les registres et tu places des images qui font mouche : tes formulations ne sont pas seulement justes, elles sont travaillées. Une métaphore bien placée, une comparaison qui éclaire, et le lecteur voit ce que tu décris.",
+          "avec": "Tu sais varier les registres et tu places des images qui font mouche. On le voit quand tu écris {CIT} : la formulation est travaillée et elle éclaire ce que tu décris."
+         },
+         {
+          "sans": "Ton vocabulaire est exactement celui qu'il fallait : précis, nuancé, parfois imagé, toujours adapté. Chaque mot est choisi, pas simplement employé. La langue est au service de ton récit de bout en bout.",
+          "avec": "Ton vocabulaire est exactement celui qu'il fallait : précis, nuancé, parfois imagé, toujours adapté. Quand tu écris {CIT}, on sent que chaque mot a été cherché et choisi."
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "organisation",
+     "titre": "Organisation et énonciation",
+     "points": 12,
+     "consignes": [
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : prévoir un plan en deux ou trois grandes parties avant d'écrire, et soigner les transitions entre paragraphes (connecteurs logiques ou narratifs).",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : veiller à ce que chaque paragraphe apporte une étape nouvelle, soigner ton ouverture et ta clôture, tenir la cohérence du pronom et du système temporel jusqu'au bout.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : viser un agencement plus surprenant ou plus tendu, et donner encore plus de force à ton ouverture et à ta chute.",
+      "Pour la rédaction du brevet officiel, garde cette exigence d'architecture. C'est rare et c'est ce qui distingue une copie aboutie."
+     ],
+     "indicateurs": [
+      {
+       "id": "enchainement",
+       "libelle": "Enchaînement cohérent",
+       "poids": 5,
+       "competences": [
+        "c4-ecrire-02"
+       ],
+       "descripteurs": [
+        "{prenom}, ton texte ne s'enchaîne pas. Les paragraphes manquent ou sont mal délimités, les épisodes se juxtaposent sans logique, le lecteur se perd.",
+        "{prenom}, ton texte progresse mais avec des ruptures ou des sauts. Certaines articulations manquent, le passage d'un moment à l'autre n'est pas toujours préparé.",
+        "{prenom}, ton récit s'enchaîne de manière cohérente et progressive. Les paragraphes sont bien délimités, les transitions fonctionnent, le lecteur est guidé sans effort.",
+        "{prenom}, ton récit est composé avec une vraie maîtrise : la progression est tenue de bout en bout, les transitions sont fines, ton texte a une véritable architecture."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu n'as pas construit de paragraphes : ton texte forme un seul bloc, ou les retours à la ligne sont placés au hasard. La structure du récit n'apparaît pas du tout.",
+          "avec": "Tu n'as pas construit de paragraphes, comme on le voit quand tu écris {CIT} : le récit forme un seul bloc, sans organisation visible."
+         },
+         {
+          "sans": "Les événements de ton récit s'enchaînent dans un ordre qui n'a pas de sens : ce qui devrait arriver avant arrive après, ou inversement. Le lecteur est perdu dans la chronologie.",
+          "avec": "Les événements de ton récit s'enchaînent dans un ordre qui n'a pas de sens, comme quand tu écris {CIT}. Le lecteur est perdu dans la chronologie."
+         },
+         {
+          "sans": "Les épisodes de ton récit se juxtaposent sans aucune logique apparente : tu sautes d'un moment à un autre sans connecteurs, sans transition. Le récit avance, mais le lecteur ne sait pas comment.",
+          "avec": "Les épisodes de ton récit se juxtaposent sans aucune logique, comme quand tu écris {CIT}. Aucun connecteur ne relie les moments."
+         },
+         {
+          "sans": "Ton récit a une structure interne mais ni début ni fin clairs : il commence brutalement, ou s'arrête sans qu'on comprenne pourquoi. Le milieu tient, le début et la fin manquent.",
+          "avec": "Ton récit a une structure interne mais ni début ni fin clairs, comme quand tu écris {CIT}. Le milieu tient, le début et la fin manquent."
+         }
+        ],
+        [
+         {
+          "sans": "Tu as fait des paragraphes mais ils sont déséquilibrés : certains sont très longs et concentrent tout, d'autres sont trop courts pour porter une étape du récit.",
+          "avec": "Tu as fait des paragraphes mais ils sont déséquilibrés : certains sont très longs et concentrent tout, d'autres sont trop courts. On le voit quand tu écris {CIT}, qui aurait mérité un paragraphe à part entière."
+         },
+         {
+          "sans": "Ton récit progresse mais les transitions manquent : on passe d'un moment à un autre sans connecteurs (« d'abord », « puis », « plus tard »), et le lecteur sent les ruptures.",
+          "avec": "Ton récit progresse mais les transitions manquent : on passe d'un moment à un autre sans connecteurs. On le sent quand tu écris {CIT} : il manque ici un petit mot pour faire le lien."
+         },
+         {
+          "sans": "Ton récit a un fil mais il se perd par endroits : à certains moments le lecteur ne sait plus où l'on est dans l'histoire ni combien de temps a passé.",
+          "avec": "Ton récit a un fil mais il se perd par endroits : à certains moments le lecteur ne sait plus où l'on est dans l'histoire, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton récit est globalement organisé mais l'ouverture ou la fin sont faibles : tu commences trop abruptement, ou tu arrêtes sans vraiment conclure. Une ouverture plus posée ou une chute mieux préparée donneraient au récit un cadre solide.",
+          "avec": "Ton récit est globalement organisé mais l'ouverture ou la fin sont faibles. On le voit quand tu écris {CIT} : ce passage aurait gagné à être travaillé pour mieux ouvrir ou fermer le récit."
+         }
+        ],
+        [
+         {
+          "sans": "Ton récit a des paragraphes bien délimités : chaque paragraphe correspond à une étape distincte, et le lecteur voit où il est dans l'histoire. La délimitation de base est tenue.",
+          "avec": "Ton récit a des paragraphes bien délimités, comme quand tu écris {CIT} : chaque paragraphe correspond à une étape distincte. Le lecteur voit où il est dans l'histoire."
+         },
+         {
+          "sans": "Tu construis un vrai cheminement narratif : tes connecteurs (« d'abord », « ensuite », « pendant ce temps », « enfin ») guident activement le lecteur d'un moment à l'autre. La progression est lisible.",
+          "avec": "Tu construis un vrai cheminement narratif : tes connecteurs guident activement le lecteur d'un moment à l'autre, comme quand tu écris {CIT}. La progression est lisible."
+         },
+         {
+          "sans": "Ton récit suit une vraie progression dramatique : amorce, montée en intensité au fil des péripéties, et fin assumée. Le lecteur sent que le récit avance vers quelque chose.",
+          "avec": "Ton récit suit une vraie progression dramatique : amorce, montée en intensité, et fin assumée, comme quand tu écris {CIT}. Le lecteur sent que le récit avance vers quelque chose."
+         },
+         {
+          "sans": "Ton récit est bien architecturé : étapes claires, transitions fluides, chute qui fonctionne. Pour basculer en Très satisfaisant, il manque encore le travail du rythme : varier la longueur des paragraphes, savoir ralentir et accélérer.",
+          "avec": "Ton récit est bien architecturé. On le sent quand tu écris {CIT} : les étapes sont claires, les transitions fluides. Pour basculer en Très satisfaisant, il manque encore le travail du rythme : varier la longueur des paragraphes, savoir ralentir et accélérer."
+         }
+        ],
+        [
+         {
+          "sans": "Tu composes ton récit avec précision : chaque paragraphe a sa place exacte, chaque transition est calculée. Le lecteur avance sans effort, sans jamais hésiter sur le sens d'un enchaînement.",
+          "avec": "Tu composes ton récit avec précision, comme quand tu écris {CIT} : chaque paragraphe a sa place exacte, chaque transition est calculée. Le lecteur avance sans effort."
+         },
+         {
+          "sans": "Tu tiens une vraie tension narrative de bout en bout : le début saisit le lecteur, le milieu monte en intensité, la fin laisse une impression durable. Le récit a une trajectoire dramatique tenue.",
+          "avec": "Tu tiens une vraie tension narrative de bout en bout : le début saisit, le milieu monte en intensité, la fin laisse une impression durable. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu joues du rythme avec maîtrise : paragraphes courts qui claquent, paragraphes longs qui prennent leur temps, ralentis pour faire monter l'attente, accélérations pour les moments forts. Ton récit respire.",
+          "avec": "Tu joues du rythme avec maîtrise : paragraphes courts qui claquent, paragraphes longs qui prennent leur temps, comme quand tu écris {CIT}. Ton récit respire."
+         },
+         {
+          "sans": "Ton récit est composé comme un vrai tout : les parties se répondent, l'ouverture annonce ce qui vient, la chute referme proprement l'ensemble. Rien n'est laissé au hasard, tout participe à l'effet final.",
+          "avec": "Ton récit est composé comme un vrai tout : les parties se répondent, l'ouverture annonce, la chute referme. Quand tu écris {CIT}, le lecteur sent que rien n'est laissé au hasard."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "enonciation",
+       "libelle": "1re personne et système temporel",
+       "poids": 3,
+       "competences": [
+        "c4-ecrire-01"
+       ],
+       "descripteurs": [
+        "{prenom}, tu ne tiens ni la 1re personne ni un système temporel cohérent. Tu glisses vers le « il/elle », ou tu mélanges présent, imparfait et passé simple sans logique.",
+        "{prenom}, tu tiens la 1re personne mais avec quelques glissements, et ton système temporel hésite par endroits.",
+        "{prenom}, tu tiens la 1re personne et le système temporel choisi avec cohérence sur l'ensemble du récit.",
+        "{prenom}, tu maîtrises parfaitement la 1re personne et le système temporel. Les temps sont employés à bon escient, le récit garde sa cohérence d'un bout à l'autre, et tu n'as aucune rupture."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu n'as pas tenu la 1re personne : tu écris « elle » au lieu de « je », alors que le sujet le demandait. Les temps changent aussi sans logique.",
+          "avec": "Tu n'as pas tenu la 1re personne, comme on le voit quand tu écris {CIT}. Les pronoms et les temps changent sans logique."
+         },
+         {
+          "sans": "Tu glisses sans cesse entre « je » et « elle » au fil du récit, et les temps changent aussi de manière imprévisible. Le lecteur ne sait jamais qui raconte ni quand.",
+          "avec": "Tu glisses sans cesse entre « je » et « elle », comme quand tu écris {CIT}. Les pronoms et les temps suivent le même flottement."
+         },
+         {
+          "sans": "Tu tiens la 1re personne mais tu mélanges tous les temps sans logique : présent, passé composé, imparfait, passé simple se côtoient au hasard. La voix est là, le temps non.",
+          "avec": "Tu tiens la 1re personne mais tu mélanges tous les temps, comme quand tu écris {CIT}. La voix est là, le temps non."
+         },
+         {
+          "sans": "Tu choisis un système temporel au départ mais tu le perds vite : tu passes du passé au présent en cours de récit. Les pronoms tiennent, les temps glissent.",
+          "avec": "Tu choisis un système temporel au départ mais tu le perds vite, comme quand tu écris {CIT}. Les pronoms tiennent, les temps glissent."
+         }
+        ],
+        [
+         {
+          "sans": "Tu tiens la 1re personne mais avec quelques glissements ponctuels : par moments un « il » ou un « elle » te revient et casse l'effet de récit autobiographique.",
+          "avec": "Tu tiens la 1re personne mais avec quelques glissements ponctuels, comme quand tu écris {CIT}, où un pronom de troisième personne apparaît brusquement."
+         },
+         {
+          "sans": "Tu emploies bien le passé simple et l'imparfait, mais tu hésites parfois entre les deux : tu utilises l'imparfait pour une action ponctuelle, ou le passé simple pour une description.",
+          "avec": "Tu emploies bien le passé simple et l'imparfait, mais tu hésites parfois entre les deux. On le voit quand tu écris {CIT} : ici, l'autre temps aurait été plus juste."
+         },
+         {
+          "sans": "Ton système temporel tient en gros mais il y a deux ou trois ruptures qui font tousser la lecture : un présent au milieu d'un récit au passé, ou l'inverse.",
+          "avec": "Ton système temporel tient en gros mais il y a deux ou trois ruptures qui font tousser la lecture, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu tiens la 1re personne et le système temporel sur l'ensemble du devoir, mais quelques erreurs ponctuelles te coûtent encore. Une relecture ciblée sur les pronoms et les temps suffirait à tenir l'ensemble.",
+          "avec": "Tu tiens la 1re personne et le système temporel sur l'ensemble du devoir, mais quelques erreurs ponctuelles te coûtent encore. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tu tiens la 1re personne tout au long du récit, et tu maintiens un système temporel cohérent. Le lecteur n'est jamais perdu.",
+          "avec": "Tu tiens la 1re personne tout au long du récit, et tu maintiens un système temporel cohérent, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu choisis le passé simple et l'imparfait avec à-propos : le passé simple pour les actions, l'imparfait pour le décor et l'analyse. Le récit avance proprement.",
+          "avec": "Tu choisis le passé simple et l'imparfait avec à-propos, comme quand tu écris {CIT} : le passé simple porte l'action, l'imparfait porte le décor."
+         },
+         {
+          "sans": "Tu maîtrises la 1re personne au point que Marguerite a une vraie voix : c'est elle qui raconte, pas toi à sa place. L'énonciation fonctionne pleinement.",
+          "avec": "Tu maîtrises la 1re personne au point que Marguerite a une vraie voix : c'est elle qui raconte, pas toi à sa place. On le sent quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu tiens parfaitement les pronoms et les temps, et tu commences même à varier ton système (un plus-que-parfait pour un retour en arrière, par exemple). L'énonciation est tenue de bout en bout et le lecteur reste avec Marguerite sans accroc.",
+          "avec": "Tu tiens parfaitement les pronoms et les temps, et tu commences même à varier ton système. On le voit quand tu écris {CIT}. L'énonciation est tenue de bout en bout et le lecteur reste avec Marguerite sans accroc."
+         }
+        ],
+        [
+         {
+          "sans": "Tu maîtrises la 1re personne et le système temporel sans la moindre faiblesse : la voix de Marguerite est tenue de bout en bout et les temps fonctionnent à plein. C'est la base sans faute, attendue à ce niveau.",
+          "avec": "Tu maîtrises la 1re personne et le système temporel sans la moindre faiblesse, comme quand tu écris {CIT}. La voix de Marguerite est tenue de bout en bout et les temps fonctionnent à plein."
+         },
+         {
+          "sans": "Tu emploies les temps avec finesse : plus-que-parfait pour un retour en arrière, conditionnel pour une hypothèse, présent de vérité générale dans une réflexion. Tu vas au-delà du simple respect du système, tu choisis chaque temps en fonction de l'effet.",
+          "avec": "Tu emploies les temps avec finesse, comme quand tu écris {CIT} : le choix du temps est exactement celui qu'il fallait pour l'effet recherché."
+         },
+         {
+          "sans": "Tu donnes à Marguerite une vraie voix singulière : le « je » a sa couleur, ses tournures, son rythme propre. Ce n'est pas seulement un pronom respecté, c'est une voix reconnaissable qui porte le récit.",
+          "avec": "Tu donnes à Marguerite une vraie voix singulière. On le sent quand tu écris {CIT} : le « je » a sa couleur, ses tournures, son rythme propre."
+         },
+         {
+          "sans": "Tu maîtrises l'énonciation au point que le lecteur oublie qu'il s'agit d'un exercice : Marguerite parle, et on l'écoute parler. L'art de l'énonciation devient transparent, c'est le récit qui prend toute la place.",
+          "avec": "Tu maîtrises l'énonciation au point que le lecteur oublie qu'il s'agit d'un exercice. Quand tu écris {CIT}, c'est Marguerite qui parle, et on l'écoute parler."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "longueur",
+       "libelle": "Longueur suffisante",
+       "poids": 4,
+       "competences": [
+        "c4-ecrire-02"
+       ],
+       "descripteurs": [
+        "{prenom}, ton devoir est nettement trop court (moins d'une demi-copie double). Le sujet ne peut pas être véritablement traité dans cette longueur.",
+        "{prenom}, ton devoir reste un peu court (autour d'une demi-copie double). Le sujet est traité mais sans avoir la place de se déployer pleinement.",
+        "{prenom}, ton devoir a une longueur suffisante (une copie double pleine) qui permet au sujet de se déployer correctement.",
+        "{prenom}, ton devoir a une longueur ample et bien employée. Tu prends le temps de développer chaque moment, sans délayer ni précipiter."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu n'as écrit que quelques lignes : le récit s'arrête presque avant d'avoir commencé. La consigne n'a pas pu être traitée.",
+          "avec": "Tu n'as écrit que quelques lignes, comme on le voit quand tu écris {CIT}. La consigne n'a pas pu être traitée."
+         },
+         {
+          "sans": "Ton devoir est beaucoup trop court : moins d'une demi-copie double. À cette longueur, le sujet ne peut pas être correctement traité.",
+          "avec": "Ton devoir est beaucoup trop court, comme on le voit quand tu écris {CIT} : à cette longueur, le sujet ne peut pas être correctement traité."
+         },
+         {
+          "sans": "Tu commences correctement puis tu t'arrêtes brusquement, sans aller jusqu'à l'accident final demandé. Une grosse partie du récit reste à écrire.",
+          "avec": "Tu commences correctement puis tu t'arrêtes brusquement, comme quand tu écris {CIT}, sans aller jusqu'à l'accident final demandé."
+         },
+         {
+          "sans": "Ton devoir frôle la longueur mais tu rallonges artificiellement : tu répètes ce que tu as déjà dit, ou tu remplis avec des phrases qui n'apportent rien.",
+          "avec": "Ton devoir frôle la longueur mais tu rallonges artificiellement, comme quand tu écris {CIT}, qui répète ce que tu avais déjà dit."
+         }
+        ],
+        [
+         {
+          "sans": "Tu as écrit autour d'une demi-copie double : le sujet est abordé mais sans avoir la place de se déployer pleinement. Plusieurs étapes du récit sont expédiées.",
+          "avec": "Tu as écrit autour d'une demi-copie double : plusieurs étapes du récit sont expédiées, comme quand tu écris {CIT}, qui aurait mérité quelques lignes de plus."
+         },
+         {
+          "sans": "Ton devoir est un peu court : tu as bien tout ce qu'il faut mais chaque épisode est traité en deux ou trois phrases au lieu d'être développé.",
+          "avec": "Ton devoir est un peu court : tu as bien tout ce qu'il faut mais chaque épisode est traité en deux ou trois phrases. On le voit quand tu écris {CIT}, qui passe trop vite."
+         },
+         {
+          "sans": "Tu as la longueur d'une demi-copie double mais ton récit se déséquilibre : tu développes longuement le début et tu boucles la fin en quelques lignes.",
+          "avec": "Tu as la longueur d'une demi-copie double mais ton récit se déséquilibre : tu boucles la fin en quelques lignes après tout un développement, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir frôle la longueur attendue mais il lui manque encore quelques paragraphes pour vraiment respirer. Un ou deux paragraphes de plus donneraient à ton récit la place dont il a besoin pour respirer.",
+          "avec": "Ton devoir frôle la longueur attendue mais il lui manque encore quelques paragraphes pour respirer. On le voit quand tu écris {CIT} : ce passage aurait gagné à être prolongé."
+         }
+        ],
+        [
+         {
+          "sans": "Tu as écrit une copie double pleine : la longueur permet au récit de se déployer correctement et chaque étape a la place qu'elle mérite.",
+          "avec": "Tu as écrit une copie double pleine : la longueur permet au récit de se déployer correctement, comme quand tu écris {CIT}, où tu prends le temps de raconter."
+         },
+         {
+          "sans": "Ta copie a une longueur juste : ni trop courte, ni délayée. Le sujet est traité dans toutes ses dimensions et chaque épisode peut respirer.",
+          "avec": "Ta copie a une longueur juste : ni trop courte, ni délayée. On le voit quand tu écris {CIT}, où tu donnes à l'épisode toute son ampleur."
+         },
+         {
+          "sans": "Tu as bien rempli ta copie double et chaque partie du récit est correctement développée. Aucun épisode n'est expédié.",
+          "avec": "Tu as bien rempli ta copie double et chaque partie du récit est correctement développée, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ta copie est ample et bien employée : tu prends le temps de raconter sans jamais perdre le lecteur. La copie a la place qu'il fallait et chaque épisode du récit s'y déploie comme il le mérite.",
+          "avec": "Ta copie est ample et bien employée : tu prends le temps de raconter sans jamais perdre le lecteur. On le sent quand tu écris {CIT}. La copie a la place qu'il fallait et chaque épisode du récit s'y déploie comme il le mérite."
+         }
+        ],
+        [
+         {
+          "sans": "Tu écris une copie longue et nourrie : chaque étape du récit est développée comme il faut, sans rien sacrifier ni délayer.",
+          "avec": "Tu écris une copie longue et nourrie, comme quand tu écris {CIT}, où l'épisode a toute la place qu'il mérite."
+         },
+         {
+          "sans": "Tu utilises toute la longueur disponible et tu la remplis utilement : pas une ligne pour rien, pas un paragraphe en moins.",
+          "avec": "Tu utilises toute la longueur disponible et tu la remplis utilement, comme quand tu écris {CIT} : chaque phrase apporte quelque chose."
+         },
+         {
+          "sans": "Ta copie est dense sans être bavarde : tu prends le temps qu'il faut pour les moments importants et tu accélères quand c'est nécessaire.",
+          "avec": "Ta copie est dense sans être bavarde : tu prends le temps qu'il faut pour les moments importants. On le voit quand tu écris {CIT}, qui ralentit le récit au bon endroit."
+         },
+         {
+          "sans": "Tu maîtrises la longueur de bout en bout : le récit a tout l'espace qu'il faut, chaque épisode est juste, rien ne manque, rien ne traîne.",
+          "avec": "Tu maîtrises la longueur de bout en bout : le récit a tout l'espace qu'il faut. Quand tu écris {CIT}, on sent que chaque mot est à sa place."
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "invention",
+     "titre": "Invention",
+     "points": 18,
+     "consignes": [
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : avant d'écrire, relis attentivement le texte source, souligne ce que tu sais du personnage et du contexte, et invente à partir de cette base.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : développer chaque épisode du récit avec des détails concrets, sensoriels, qui font voir la scène et entendre les pensées du personnage.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : oser sortir des chemins attendus, prendre des risques dans tes péripéties, donner plus d'intériorité encore à ton personnage.",
+      "Pour la rédaction du brevet officiel, garde cette exigence d'invention. C'est ce qui fait la différence entre une bonne et une excellente copie."
+     ],
+     "indicateurs": [
+      {
+       "id": "remobilisation",
+       "libelle": "Remobilisation du texte",
+       "poids": 5,
+       "competences": [
+        "c4-ecrire-03"
+       ],
+       "descripteurs": [
+        "{prenom}, tu ne remobilises pas les éléments du texte source. Marguerite, le front de 14-18, les jalons de son histoire restent absents ou très approximatifs : on ne reconnaît pas le personnage ni son contexte.",
+        "{prenom}, tu remobilises partiellement le texte source. Quelques éléments sont repris mais d'autres dimensions essentielles sont oubliées ou déformées.",
+        "{prenom}, tu remobilises bien les éléments du texte : le contexte du front 14-18, la personnalité déterminée de Marguerite, les jalons posés par Dugain. Ton récit s'inscrit cohéremment dans la continuité du texte.",
+        "{prenom}, tu remobilises le texte avec une grande finesse : tu intègres les détails du contexte historique, tu fais respirer le personnage de Marguerite avec sa complexité, tu prolonges Dugain sans le trahir. Le lecteur retrouve le texte source enrichi."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu n'as pas vu de quoi parlait le texte de départ : ni Marguerite, ni la guerre, ni le contexte ne sont reconnaissables dans ce que tu écris. Ton récit semble inventé sans aucun rapport avec le sujet.",
+          "avec": "Tu n'as pas vu de quoi parlait le texte de départ : ni Marguerite, ni la guerre, ni le contexte ne sont reconnaissables, comme quand tu écris {CIT}. Ton récit semble inventé sans aucun rapport avec le sujet."
+         },
+         {
+          "sans": "Tu as compris très vaguement qu'il s'agissait d'une guerre, mais tu n'as retenu ni le nom du personnage, ni l'époque, ni la situation précise. Le récit perd presque tout lien avec le texte source.",
+          "avec": "Tu as compris très vaguement qu'il s'agissait d'une guerre, mais tu n'as retenu ni le nom du personnage, ni l'époque, ni la situation précise, comme on le voit quand tu écris {CIT}. Le récit perd presque tout lien avec le texte source."
+         },
+         {
+          "sans": "Tu reprends le nom de Marguerite et l'idée d'une guerre, mais ces éléments restent isolés : tu ne dis rien du contexte 14-18, ni du caractère du personnage, ni de l'ambiance du roman.",
+          "avec": "Tu reprends le nom de Marguerite et l'idée d'une guerre, mais ces éléments restent isolés, comme quand tu écris {CIT}. Tu ne dis rien du contexte 14-18, ni du caractère du personnage."
+         },
+         {
+          "sans": "Tu reprends plusieurs éléments du texte (le nom, le contexte, l'époque) mais tu les déformes au point de contredire le texte de départ. La déformation pose plus de problème qu'un simple oubli : le lecteur qui connaît le roman ne reconnaît plus Marguerite.",
+          "avec": "Tu reprends plusieurs éléments du texte mais tu les déformes au point de contredire le texte de départ, comme quand tu écris {CIT}. La déformation pose plus de problème qu'un simple oubli : le lecteur qui connaît le roman ne reconnaît plus Marguerite."
+         }
+        ],
+        [
+         {
+          "sans": "Tu as retenu seulement le nom de Marguerite et l'idée d'une guerre, sans plus. Le reste du texte source n'apparaît pas dans ton récit.",
+          "avec": "Tu as retenu seulement le nom de Marguerite et l'idée d'une guerre, sans plus, comme quand tu écris {CIT}. Le reste du texte source n'apparaît pas dans ton récit."
+         },
+         {
+          "sans": "Tu reprends quelques éléments du texte (le nom, la guerre, peut-être l'époque) mais le caractère du personnage et l'ambiance du roman manquent encore. On reconnaît Marguerite par son nom, pas par ce qui la rend reconnaissable.",
+          "avec": "Tu reprends quelques éléments du texte (le nom, la guerre, peut-être l'époque) mais le caractère du personnage et l'ambiance du roman manquent encore, comme on le voit quand tu écris {CIT}. On reconnaît Marguerite par son nom, pas par ce qui la rend reconnaissable."
+         },
+         {
+          "sans": "Tu reprends correctement le contexte du front 14-18 et le nom du personnage, mais tu ne dis presque rien de son caractère ni de ce qu'elle a déjà vécu dans le texte. Le personnage reste vide.",
+          "avec": "Tu reprends correctement le contexte du front 14-18 et le nom du personnage, mais tu ne dis presque rien de son caractère ni de ce qu'elle a déjà vécu dans le texte, comme quand tu écris {CIT}. Le personnage reste vide."
+         },
+         {
+          "sans": "Tu remobilises plusieurs éléments du texte (le front, le nom, l'époque) mais une dimension entière manque encore — soit le caractère de Marguerite, soit son histoire avant le récit, soit l'ambiance du roman. C'est cette dimension absente qui te maintient en Fragile : il ne s'agit pas de préciser ce qui est là, mais d'ajouter ce qui n'y est pas.",
+          "avec": "Tu remobilises plusieurs éléments du texte (le front, le nom, l'époque) mais une dimension entière manque encore. On le sent quand tu écris {CIT} : il y a là un détail du texte qui n'a pas été repris. C'est cette dimension absente qui te maintient en Fragile : il ne s'agit pas de préciser ce qui est là, mais d'ajouter ce qui n'y est pas."
+         }
+        ],
+        [
+         {
+          "sans": "Tu remobilises toutes les dimensions du texte (front 14-18, Marguerite, son caractère, son histoire, l'ambiance du roman) mais certains détails sont approximatifs : la date qui flotte, le grade qui change, la situation qui se simplifie. Tu n'as rien oublié, tu as juste arrondi.",
+          "avec": "Tu remobilises toutes les dimensions du texte mais certains détails sont approximatifs, comme quand tu écris {CIT} : la date qui flotte, le grade qui change, la situation qui se simplifie. Tu n'as rien oublié, tu as juste arrondi."
+         },
+         {
+          "sans": "Tu reprends solidement le contexte du front, le nom du personnage et son caractère déterminé. Ton récit s'accroche bien au texte de Dugain.",
+          "avec": "Tu reprends solidement le contexte du front, le nom du personnage et son caractère déterminé, comme on le voit quand tu écris {CIT}. Ton récit s'accroche bien au texte de Dugain."
+         },
+         {
+          "sans": "Tu remobilises le texte avec précision et tu prolonges la situation avec cohérence : ce que Marguerite vit dans ton récit s'enchaîne naturellement avec ce qu'elle a vécu dans le roman. Le lien narratif entre le texte source et ton récit est tenu.",
+          "avec": "Tu remobilises le texte avec précision et tu prolonges la situation avec cohérence, comme quand tu écris {CIT} : ce que Marguerite vit dans ton récit s'enchaîne naturellement avec ce qu'elle a vécu dans le roman. Le lien narratif entre le texte source et ton récit est tenu."
+         },
+         {
+          "sans": "Tu remobilises de manière exhaustive : le front, Marguerite et son caractère, l'époque, l'esprit du roman, tout est là. Chaque élément repris donne du crédit à ce que tu imagines. Pour basculer dans le Très satisfaisant, il manque encore une qualité d'intégration : que ces éléments ne soient pas seulement présents mais qu'ils servent l'effet du récit.",
+          "avec": "Tu remobilises de manière exhaustive : tout est là, et chaque élément repris donne du crédit à ce que tu imagines. On le sent quand tu écris {CIT}. Pour basculer dans le Très satisfaisant, il manque encore une qualité d'intégration : que ces éléments ne soient pas seulement présents mais qu'ils servent l'effet du récit."
+         }
+        ],
+        [
+         {
+          "sans": "Tu remobilises le texte avec finesse : les éléments du roman ne sont plus simplement posés dans ton récit, ils sont intégrés au tissu narratif. Un lecteur de Dugain te suivrait sans difficulté et reconnaîtrait Marguerite dans ce que tu imagines, pas seulement par son nom.",
+          "avec": "Tu remobilises le texte avec finesse : les éléments du roman ne sont plus simplement posés dans ton récit, ils sont intégrés au tissu narratif, comme quand tu écris {CIT}. Un lecteur de Dugain te suivrait sans difficulté et reconnaîtrait Marguerite dans ce que tu imagines, pas seulement par son nom."
+         },
+         {
+          "sans": "Tu mobilises le texte de manière précise : non seulement les grands éléments, mais aussi des détails fins (une date juste, un grade exact, un trait de caractère secondaire) qui montrent une lecture attentive du roman.",
+          "avec": "Tu mobilises le texte de manière précise : non seulement les grands éléments, mais aussi des détails fins qui montrent une lecture attentive du roman, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu te sers du texte avec intelligence : tu reprends ce qui doit l'être et tu apportes une lecture personnelle au récit. Tu ne te contentes pas de prolonger, tu interprètes : ton Marguerite éclaire celle du roman.",
+          "avec": "Tu te sers du texte avec intelligence : tu reprends ce qui doit l'être et tu apportes une lecture personnelle au récit, comme quand tu écris {CIT}. Tu ne te contentes pas de prolonger, tu interprètes : ton Marguerite éclaire celle du roman."
+         },
+         {
+          "sans": "Tu remobilises tout ce qu'il fallait — contexte, caractère, jalons de l'histoire — et chaque élément repris sert ton récit. Rien n'est posé pour faire savant ou pour cocher des cases : tout est intégré au service de ce que tu racontes. Le récit s'inscrit pleinement dans la continuité du roman et tient son lecteur de bout en bout.",
+          "avec": "Tu remobilises tout ce qu'il fallait — contexte, caractère, jalons de l'histoire — et chaque élément repris sert ton récit. Quand tu écris {CIT}, tout est intégré au service de ce que tu racontes. Le récit s'inscrit pleinement dans la continuité du roman et tient son lecteur de bout en bout."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "cadre",
+       "libelle": "Description du cadre",
+       "poids": 5,
+       "competences": [
+        "c4-ecrire-01"
+       ],
+       "descripteurs": [
+        "{prenom}, tu ne décris pas le cadre, ou tes mentions du front restent vagues et stéréotypées. Le lecteur ne voit pas où se passe ton récit.",
+        "{prenom}, tu mentionnes le cadre du front mais sans vraiment le faire voir : peu de détails, peu de notations sensorielles, le décor reste plat.",
+        "{prenom}, tu décris le cadre avec quelques détails concrets et bien choisis qui rendent la scène présente au lecteur.",
+        "{prenom}, tu fais surgir le front par des notations précises, sensorielles, qui plongent le lecteur dans la scène. La description sert le récit et donne corps à l'horreur de la guerre."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu ne décris pas le lieu où se passe ton récit. Le lecteur ne sait pas où se trouve Marguerite : dans une tranchée, à l'arrière, dans une infirmerie ? Le cadre est absent.",
+          "avec": "Tu ne décris pas le lieu où se passe ton récit, comme on le voit quand tu écris {CIT}. Le lecteur ne sait pas où se trouve Marguerite."
+         },
+         {
+          "sans": "Tu décris un cadre qui ne correspond pas à 14-18 : voitures modernes, téléphones, vêtements d'aujourd'hui. Ton récit est situé dans un décor faux.",
+          "avec": "Tu décris un cadre qui ne correspond pas à 14-18, comme quand tu écris {CIT} : ce détail n'existait pas à l'époque du roman."
+         },
+         {
+          "sans": "Tu prononces les mots « la guerre » ou « le front » mais sans rien décrire derrière : ce sont des étiquettes posées sur ton récit, sans aucune image qui les remplisse.",
+          "avec": "Tu prononces les mots « la guerre » ou « le front » mais sans rien décrire derrière, comme quand tu écris {CIT} : ce sont des étiquettes posées sur ton récit, sans aucune image qui les remplisse."
+         },
+         {
+          "sans": "Tu mentionnes des éléments concrets du front (les soldats, les obus, les tranchées) mais sans les développer ni les relier entre eux. Le décor existe par îlots isolés, pas par scène.",
+          "avec": "Tu mentionnes des éléments concrets du front, comme quand tu écris {CIT}, mais sans les développer ni les relier entre eux. Le décor existe par îlots isolés, pas par scène."
+         }
+        ],
+        [
+         {
+          "sans": "Tu poses le cadre du front en deux ou trois mots (« la tranchée », « le bruit des obus ») mais tu n'en dis pas plus. Le lecteur devine le décor sans vraiment le voir.",
+          "avec": "Tu poses le cadre du front en deux ou trois mots (« la tranchée », « le bruit des obus ») mais tu n'en dis pas plus, comme quand tu écris {CIT}. Le lecteur devine le décor sans vraiment le voir."
+         },
+         {
+          "sans": "Tu décris le cadre mais en restant dans les clichés attendus : la boue, le froid, les rats. Les détails sont là, mais ils ne sont pas portés par tes sensations à toi.",
+          "avec": "Tu décris le cadre mais en restant dans les clichés attendus : la boue, le froid, les rats, comme on le voit quand tu écris {CIT}. Les détails sont là, mais ils ne sont pas portés par tes sensations à toi."
+         },
+         {
+          "sans": "Tu décris correctement le cadre par moments, mais tu oublies de le faire pendant de longs passages. Le récit s'enchaîne sans qu'on sache où on est.",
+          "avec": "Tu décris correctement le cadre par moments, mais tu oublies de le faire pendant de longs passages. On le sent quand tu écris {CIT} : à ce moment-là, le décor a disparu."
+         },
+         {
+          "sans": "Tu décris le cadre avec des détails visuels justes (un casque, un brancard, une route défoncée) mais tes notations restent purement visuelles. Il manque les autres sens — un bruit, une odeur, une sensation de froid — qui feraient passer ta scène de l'image à l'immersion.",
+          "avec": "Tu décris le cadre avec des détails visuels justes mais tes notations restent purement visuelles, comme quand tu écris {CIT}. Il manque les autres sens — un bruit, une odeur, une sensation de froid — qui feraient passer ta scène de l'image à l'immersion."
+         }
+        ],
+        [
+         {
+          "sans": "Tu décris le cadre avec des détails concrets et tu poses au moins une notation sensorielle non visuelle (un bruit, une odeur, une sensation tactile). Le lecteur commence à entrer dans la scène, sans y être pleinement plongé.",
+          "avec": "Tu décris le cadre avec des détails concrets et tu poses au moins une notation sensorielle non visuelle, comme quand tu écris {CIT}. Le lecteur commence à entrer dans la scène, sans y être pleinement plongé."
+         },
+         {
+          "sans": "Tu décris le cadre régulièrement et tu sollicites plusieurs sens (au moins deux parmi : ouïe, odorat, toucher, vue précise). Le front se dessine de manière cohérente d'un passage à l'autre.",
+          "avec": "Tu décris le cadre régulièrement et tu sollicites plusieurs sens, comme quand tu écris {CIT}. Le front se dessine de manière cohérente d'un passage à l'autre."
+         },
+         {
+          "sans": "Tu fais voir le front avec des détails précis et bien choisis, qui ne sont pas seulement des clichés mais des observations personnelles. La scène prend de l'épaisseur.",
+          "avec": "Tu fais voir le front avec des détails précis et bien choisis, qui ne sont pas seulement des clichés mais des observations personnelles, comme quand tu écris {CIT}. La scène prend de l'épaisseur."
+         },
+         {
+          "sans": "Tu décris le cadre avec une vraie attention : les sons, les odeurs, les images se répondent et plongent peu à peu le lecteur dans la scène. Le lecteur ne voit pas seulement le décor, il le sent : c'est ce qui rend ta scène présente.",
+          "avec": "Tu décris le cadre avec une vraie attention : les sons, les odeurs, les images se répondent et plongent peu à peu le lecteur dans la scène. On le sent quand tu écris {CIT}. Le lecteur ne voit pas seulement le décor, il le sent : c'est ce qui rend ta scène présente."
+         }
+        ],
+        [
+         {
+          "sans": "Tu fais surgir le front par des notations brèves mais frappantes : une phrase suffit pour planter la scène. Le lecteur entre dans le décor dès les premières lignes.",
+          "avec": "Tu fais surgir le front par des notations brèves mais frappantes, comme quand tu écris {CIT} : une phrase suffit pour planter la scène. Le lecteur entre dans le décor dès les premières lignes."
+         },
+         {
+          "sans": "Tu décris le cadre en croisant plusieurs sens (sons, odeurs, lumière, températures) qui se répondent dans la même scène. La description gagne en densité sans pour autant ralentir le récit.",
+          "avec": "Tu décris le cadre en croisant plusieurs sens qui se répondent dans la même scène. On le sent quand tu écris {CIT}, où plusieurs sens sont sollicités d'un coup. La description gagne en densité sans pour autant ralentir le récit."
+         },
+         {
+          "sans": "Tu fais voir le front d'une manière qui te ressemble : tes choix de détails sont personnels, parfois inattendus. Tu ne choisis pas les images attendues, tu choisis celles qui te frappent.",
+          "avec": "Tu fais voir le front d'une manière qui te ressemble. On le sent quand tu écris {CIT}, qui n'est pas une image attendue mais une qui te frappe. Tes choix de détails sont personnels et donnent à ta scène une vraie singularité."
+         },
+         {
+          "sans": "Tu décris le cadre au service du récit : chaque notation sensorielle ne sert pas seulement à montrer le décor, elle porte aussi l'émotion ou prépare l'action. Le cadre n'est plus un fond, il devient un acteur de ta scène.",
+          "avec": "Tu décris le cadre au service du récit : chaque notation sensorielle ne sert pas seulement à montrer le décor, elle porte aussi l'émotion ou prépare l'action. Quand tu écris {CIT}, le cadre n'est plus un fond mais un acteur de ta scène."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "peripeties",
+       "libelle": "Péripéties inventées",
+       "poids": 5,
+       "competences": [
+        "c4-ecrire-01"
+       ],
+       "descripteurs": [
+        "{prenom}, tu n'inventes pas vraiment de péripéties. Ton récit reste pauvre en événements, ou enchaîne des actions sans intérêt ni cohérence avec la suite attendue.",
+        "{prenom}, tu inventes quelques péripéties mais elles restent attendues, peu développées, ou peu cohérentes avec le personnage et son contexte. Le récit manque de relief.",
+        "{prenom}, tu inventes des péripéties intéressantes et cohérentes entre l'engagement et l'accident : rencontres, épreuves, montée vers le front. Ton récit avance et tient le lecteur.",
+        "{prenom}, tu inventes des péripéties à la fois inattendues et profondément cohérentes avec le personnage et son contexte. Ton récit a du souffle et fait sens."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu n'inventes presque rien : ton récit reste sur place ou se contente de répéter ce que dit déjà le texte source. Aucune nouvelle péripétie n'apparaît.",
+          "avec": "Tu n'inventes presque rien : ton récit reste sur place ou se contente de répéter ce que dit déjà le texte source, comme quand tu écris {CIT}. Aucune nouvelle péripétie n'apparaît."
+         },
+         {
+          "sans": "Tu enchaînes quelques actions mais sans construire de vraies péripéties : Marguerite va, vient, fait des choses ordinaires, sans qu'il se passe vraiment d'événements marquants.",
+          "avec": "Tu enchaînes quelques actions mais sans construire de vraies péripéties, comme quand tu écris {CIT}. Marguerite va, vient sans qu'il se passe vraiment d'événements marquants."
+         },
+         {
+          "sans": "Tu inventes des péripéties mais elles ne collent pas au contexte du front 14-18 : trop éloignées de l'époque ou peu crédibles pour une jeune infirmière.",
+          "avec": "Tu inventes des péripéties qui ne collent pas au contexte 14-18, comme quand tu écris {CIT} : ce passage paraît trop éloigné de l'époque."
+         },
+         {
+          "sans": "Tu poses quelques péripéties cohérentes (la mobilisation, le voyage, l'accident) mais sans rien développer entre les jalons. Le récit a des étapes, pas vraiment de matière.",
+          "avec": "Tu poses quelques péripéties cohérentes mais sans rien développer entre les jalons, comme quand tu écris {CIT}. Le récit a des étapes, pas vraiment de matière."
+         }
+        ],
+        [
+         {
+          "sans": "Tu inventes une ou deux péripéties mais elles restent attendues : on devine ce qui va arriver dès le début et il n'y a pas de surprise dans ton récit.",
+          "avec": "Tu inventes une ou deux péripéties mais elles restent attendues : on devine ce qui va arriver dès le début, comme quand tu écris {CIT}, où le lecteur sait déjà ce que tu vas raconter."
+         },
+         {
+          "sans": "Tu inventes des péripéties mais elles sont peu développées : tu les annonces en une phrase et tu passes à la suivante sans prendre le temps de les raconter vraiment.",
+          "avec": "Tu inventes des péripéties mais elles sont peu développées : tu les annonces en une phrase et tu passes à la suivante, comme quand tu écris {CIT}. L'épisode aurait mérité quelques lignes de plus."
+         },
+         {
+          "sans": "Tu inventes plusieurs péripéties mais elles s'enchaînent sans grande logique entre elles. Le lecteur a parfois du mal à comprendre pourquoi telle chose arrive après telle autre.",
+          "avec": "Tu inventes plusieurs péripéties mais elles s'enchaînent sans grande logique entre elles. On le sent quand tu écris {CIT} : la transition avec ce qui précède n'est pas claire."
+         },
+         {
+          "sans": "Tu inventes des péripéties correctes mais elles sont en nombre insuffisant : entre la mobilisation et l'accident, il y a la place pour plusieurs épisodes que tu n'as pas écrits. Ce n'est pas la qualité de ce qui est là qui pose problème, c'est ce qui manque.",
+          "avec": "Tu inventes des péripéties correctes mais elles sont en nombre insuffisant. On le voit quand tu écris {CIT} : entre cette étape et l'accident, il y aurait eu la place pour plusieurs épisodes. Ce n'est pas la qualité qui pose problème, c'est ce qui manque."
+         }
+        ],
+        [
+         {
+          "sans": "Tu inventes assez de péripéties pour que le récit avance bien : la quantité est là, et chacune est crédible. Le récit tient, sans encore se distinguer par sa variété ou son développement.",
+          "avec": "Tu inventes assez de péripéties pour que le récit avance bien, comme quand tu écris {CIT}. La quantité est là, et chacune est crédible. Le récit tient, sans encore se distinguer par sa variété ou son développement."
+         },
+         {
+          "sans": "Tu varies les types de péripéties : rencontres avec d'autres soldats, épreuves physiques, premiers soins, moments d'attente. Marguerite traverse des situations différentes, ce qui rend son parcours vivant.",
+          "avec": "Tu varies les types de péripéties, comme quand tu écris {CIT}. Marguerite traverse des situations différentes, ce qui rend son parcours vivant."
+         },
+         {
+          "sans": "Tu enchaînes tes péripéties avec une vraie logique : chaque épisode prépare ou explique le suivant. Le lecteur sent que tu sais où tu vas, et il a envie de connaître la suite.",
+          "avec": "Tu enchaînes tes péripéties avec une vraie logique, comme quand tu écris {CIT} : chaque épisode prépare ou explique le suivant. Le lecteur sent que tu sais où tu vas."
+         },
+         {
+          "sans": "Tu développes chaque péripétie avec de la matière : tu prends le temps de raconter au lieu d'enchaîner. Les épisodes ont de l'épaisseur, et chaque scène compte. Pour basculer en Très satisfaisant, il manque encore la surprise ou la montée en puissance.",
+          "avec": "Tu développes chaque péripétie avec de la matière. On le sent quand tu écris {CIT} : l'épisode prend le temps de se déployer. Les scènes ont de l'épaisseur. Pour basculer en Très satisfaisant, il manque encore la surprise ou la montée en puissance."
+         }
+        ],
+        [
+         {
+          "sans": "Tu inventes des péripéties que le lecteur n'attendait pas, mais qui collent parfaitement avec ce qu'on sait de Marguerite. La surprise n'est jamais gratuite : elle vient du caractère du personnage et de la logique de la situation.",
+          "avec": "Tu inventes des péripéties que le lecteur n'attendait pas, mais qui collent parfaitement avec ce qu'on sait de Marguerite, comme quand tu écris {CIT}. La surprise n'est jamais gratuite : elle vient du caractère du personnage et de la logique de la situation."
+         },
+         {
+          "sans": "Tu construis ton récit avec un vrai sens du rythme : les péripéties montent en puissance, l'attente s'installe, et l'accident final tombe au bon moment. Le récit a du souffle.",
+          "avec": "Tu construis ton récit avec un vrai sens du rythme : les péripéties montent en puissance, l'attente s'installe, et l'accident final tombe au bon moment, comme quand tu écris {CIT}. Le récit a du souffle."
+         },
+         {
+          "sans": "Tes péripéties ne sont pas seulement des événements : elles transforment Marguerite. À chaque épisode, elle apprend quelque chose sur elle ou sur la guerre. Le récit a une trajectoire intérieure autant qu'extérieure.",
+          "avec": "Tes péripéties ne sont pas seulement des événements : elles transforment Marguerite, comme quand tu écris {CIT}. À chaque épisode, elle apprend quelque chose sur elle ou sur la guerre. Le récit a une trajectoire intérieure autant qu'extérieure."
+         },
+         {
+          "sans": "Tu inventes un vrai trajet pour Marguerite : péripéties variées, bien enchaînées, développées avec de la matière, et porteuses de sens. Rien n'est posé pour faire long, tout sert le récit. L'accident final tombe comme une conclusion attendue et bouleversante à la fois.",
+          "avec": "Tu inventes un vrai trajet pour Marguerite : péripéties variées, bien enchaînées, développées et porteuses de sens. Quand tu écris {CIT}, on voit que tout sert le récit. L'accident final tombe comme une conclusion attendue et bouleversante à la fois."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "sensations",
+       "libelle": "Sensations, sentiments, réflexions du personnage",
+       "poids": 3,
+       "competences": [
+        "c4-langue-03"
+       ],
+       "descripteurs": [
+        "{prenom}, ton personnage reste extérieur à lui-même. On ne sait pas ce que ressent Marguerite, ni ce qu'elle pense, ni ce qu'elle traverse intérieurement.",
+        "{prenom}, tu donnes quelques sentiments à ton personnage mais ils restent généraux sans être vraiment incarnés ni développés.",
+        "{prenom}, tu fais vivre les sensations, sentiments et réflexions de Marguerite au fil du récit. Le lecteur entre dans son intériorité et la suit.",
+        "{prenom}, tu donnes à Marguerite une intériorité riche, nuancée, traversée par des émotions complexes et des questionnements profonds. Le lecteur ressent ce qu'elle ressent."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu ne dis pas un mot de ce que ressent Marguerite : elle agit, elle parle peut-être, mais aucun adjectif, aucune notation émotionnelle ne vient nous dire ce qui se passe en elle. L'intériorité est silencieuse.",
+          "avec": "Tu ne dis pas un mot de ce que ressent Marguerite, comme quand tu écris {CIT}. Aucune notation émotionnelle ne vient nous dire ce qui se passe en elle : l'intériorité est silencieuse."
+         },
+         {
+          "sans": "Tu donnes parfois une indication minimale (« elle eut peur », « elle était fatiguée ») mais sans développement. Tu traites l'intériorité comme un fait à signaler, pas comme quelque chose à faire vivre au lecteur.",
+          "avec": "Tu donnes parfois une indication minimale sur l'intériorité, comme quand tu écris {CIT}, mais sans développement. Tu traites l'intériorité comme un fait à signaler, pas comme quelque chose à faire vivre au lecteur."
+         },
+         {
+          "sans": "Tu prêtes à Marguerite des sentiments qui ne lui ressemblent pas : elle pense ou réagit comme une fille d'aujourd'hui, hors du cadre de 1914. Ses émotions sonnent faux.",
+          "avec": "Tu prêtes à Marguerite des sentiments qui ne lui ressemblent pas, comme quand tu écris {CIT} : on entend une voix d'aujourd'hui, pas celle d'une jeune femme de 1914."
+         },
+         {
+          "sans": "Tu glisses quelques mots sur ses émotions (« elle eut peur », « elle était triste ») mais sans les expliquer ni les développer. L'intériorité est là, mais à peine.",
+          "avec": "Tu glisses quelques mots sur ses émotions, comme quand tu écris {CIT}, mais sans les expliquer ni les développer. L'intériorité est là, mais à peine."
+         }
+        ],
+        [
+         {
+          "sans": "Tu donnes par moments accès à l'intériorité de Marguerite, mais c'est rare et trop court. Le récit retombe vite dans la pure action.",
+          "avec": "Tu donnes par moments accès à l'intériorité de Marguerite, mais c'est rare et trop court. On le sent quand tu écris {CIT} : après ce passage, on perd la voix intérieure du personnage."
+         },
+         {
+          "sans": "Tu prêtes des sentiments à Marguerite avec régularité, mais ils restent généraux (peur, tristesse, joie) sans être vraiment incarnés ni nuancés.",
+          "avec": "Tu prêtes des sentiments à Marguerite avec régularité, mais ils restent généraux (peur, tristesse, joie) sans être vraiment incarnés ni nuancés, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu fais sentir l'intériorité de Marguerite mais elle reste à la surface : on sait ce qu'elle ressent en gros, on ne perçoit pas vraiment comment elle le vit de l'intérieur.",
+          "avec": "Tu fais sentir l'intériorité de Marguerite mais elle reste à la surface : on sait ce qu'elle ressent en gros, on ne perçoit pas vraiment comment elle le vit, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu donnes une vraie intériorité à Marguerite par moments : un passage avec ses pensées, une scène avec ses sensations. Mais ces moments sont isolés, et entre eux le récit retombe dans la pure action. Il manque la régularité : il faut que l'intériorité accompagne le récit, pas qu'elle apparaisse par flashs.",
+          "avec": "Tu donnes une vraie intériorité à Marguerite par moments. On le sent quand tu écris {CIT} : tu commences quelque chose de fort. Mais ces moments sont isolés, et entre eux le récit retombe dans la pure action. Il manque la régularité."
+         }
+        ],
+        [
+         {
+          "sans": "Tu fais vivre l'intériorité de Marguerite régulièrement au fil du récit : on a accès à ses sensations, ses sentiments et ses réflexions tout du long, pas seulement à certains endroits. La présence est tenue, sans encore se distinguer par sa nuance ou sa profondeur.",
+          "avec": "Tu fais vivre l'intériorité de Marguerite régulièrement au fil du récit, comme quand tu écris {CIT}. On a accès à ses sensations et ses pensées tout du long. La présence est tenue, sans encore se distinguer par sa nuance ou sa profondeur."
+         },
+         {
+          "sans": "Tu fais marcher l'action et l'intériorité ensemble : chaque chose que fait Marguerite est accompagnée par ce qu'elle pense ou ressent. Le lecteur ne voit pas seulement les gestes, il en perçoit le sens intérieur.",
+          "avec": "Tu fais marcher l'action et l'intériorité ensemble, comme quand tu écris {CIT} : chaque chose que fait Marguerite est accompagnée par ce qu'elle pense ou ressent. Le lecteur ne voit pas seulement les gestes, il en perçoit le sens intérieur."
+         },
+         {
+          "sans": "Tu donnes à Marguerite des sentiments nuancés, qui dépassent les grandes émotions de base : pas seulement la peur, mais l'inquiétude qui s'installe ; pas seulement la tristesse, mais le poids du chagrin retenu. L'intériorité gagne en finesse.",
+          "avec": "Tu donnes à Marguerite des sentiments nuancés, comme quand tu écris {CIT} : pas seulement la peur, mais l'inquiétude qui s'installe ; pas seulement la tristesse, mais le poids du chagrin retenu. L'intériorité gagne en finesse."
+         },
+         {
+          "sans": "Tu fais exister Marguerite par ses doutes, ses décisions, ses choix intérieurs : elle ne réagit pas seulement, elle délibère. Sa conscience prend des positions, hésite, change d'avis. Pour basculer en Très satisfaisant, il manque encore la transformation : montrer comment ces choix la changent.",
+          "avec": "Tu fais exister Marguerite par ses doutes et ses choix intérieurs. On le sent quand tu écris {CIT} : elle ne réagit pas seulement, elle délibère. Pour basculer en Très satisfaisant, il manque encore la transformation : montrer comment ces choix la changent."
+         }
+        ],
+        [
+         {
+          "sans": "Tu donnes à Marguerite une intériorité riche : sensations physiques, émotions, pensées et souvenirs se répondent dans les mêmes scènes. Le personnage existe sur plusieurs plans à la fois.",
+          "avec": "Tu donnes à Marguerite une intériorité riche, comme quand tu écris {CIT} : sensations, émotions, pensées et souvenirs se répondent. Le personnage existe sur plusieurs plans à la fois."
+         },
+         {
+          "sans": "Tu fais entrer le lecteur dans la tête de Marguerite : il ne suit pas le personnage de l'extérieur, il pense avec elle. Les doutes, les peurs, les élans deviennent ceux du lecteur le temps de la lecture.",
+          "avec": "Tu fais entrer le lecteur dans la tête de Marguerite, comme quand tu écris {CIT} : il ne suit pas le personnage de l'extérieur, il pense avec elle."
+         },
+         {
+          "sans": "Tu fais évoluer l'intériorité de Marguerite au fil du récit : ce qu'elle pense, sent et croit au début n'est plus ce qu'elle pense à la fin. La transformation intérieure du personnage devient l'un des sujets du récit.",
+          "avec": "Tu fais évoluer l'intériorité de Marguerite au fil du récit. On le voit quand tu écris {CIT} : ce qu'elle pense maintenant n'est plus ce qu'elle pensait au début. La transformation intérieure devient l'un des sujets du récit."
+         },
+         {
+          "sans": "Tu donnes à Marguerite une vie intérieure complète et juste : présente du début à la fin, nuancée dans ses tonalités, riche dans ses registres, en évolution constante. La voix intérieure du personnage est tenue de bout en bout : le lecteur la suit comme on suit quelqu'un qu'on connaît.",
+          "avec": "Tu donnes à Marguerite une vie intérieure complète et juste : présente du début à la fin, nuancée, riche, en évolution constante. Quand tu écris {CIT}, le lecteur la suit comme on suit quelqu'un qu'on connaît."
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reflexion",
+   "libelle": "Sujet de réflexion — Apport des récits de vie",
+   "libelleCourt": "Réflexion",
+   "libelleFiche": "Sujet de réflexion",
+   "etiquette": "💭 Réflexion",
+   "abrege": "Réfl.",
+   "repere": "sujet\\s*de\\s*r[ée]flexion",
+   "choix": {
+    "titre": "💭 Réflexion",
+    "texte": "Apport des récits de vie.",
+    "infobulle": "L'élève a choisi le sujet de réflexion : argumenter sur l'apport des récits de vie."
+   },
+   "total": 40,
+   "compteur": {
+    "indicateur": "orthographe",
+    "selon": "longueur",
+    "seuils": {
+     "0": [
+      2,
+      5,
+      10
+     ],
+     "1": [
+      4,
+      10,
+      20
+     ],
+     "2": [
+      6,
+      15,
+      30
+     ],
+     "3": [
+      7,
+      17,
+      35
+     ]
+    },
+    "defaut": 2
+   },
+   "criteres": [
+    {
+     "id": "expression",
+     "titre": "Expression",
+     "points": 10,
+     "consignes": [
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : relire systématiquement ta copie en visant un seul type d'erreur à la fois (d'abord les accords sujet-verbe, puis les participes passés, puis les homophones), et varier la longueur de tes phrases.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : te garder cinq à sept minutes de relecture finale ciblée, chercher des mots plus précis que « truc », « chose », « faire », et complexifier au moins une phrase par paragraphe.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : enrichir ton lexique avec des termes plus rares ou plus imagés, oser des constructions syntaxiques plus ambitieuses, travailler le rythme de tes phrases.",
+      "Pour la rédaction du brevet officiel, garde cette exigence stylistique. Continue à oser, c'est ce qui fait l'écriture."
+     ],
+     "indicateurs": [
+      {
+       "id": "orthographe",
+       "libelle": "Orthographe et grammaire",
+       "poids": 4,
+       "competences": [
+        "c4-langue-01"
+       ],
+       "descripteurs": [
+        "{prenom}, ton orthographe et ta grammaire sont très fragiles. Les erreurs sont nombreuses et gênent la lecture. Attention : au DNB officiel, une copie comportant trop de fautes peut être déclassée et ne pas obtenir la moyenne.",
+        "{prenom}, ton orthographe et ta grammaire sont insuffisantes. Les erreurs sont fréquentes, surtout sur les accords et les conjugaisons, et révèlent un manque de relecture.",
+        "{prenom}, ton orthographe et ta grammaire sont correctes. Tu fais encore quelques erreurs mais l'ensemble est lisible sans accroc.",
+        "{prenom}, ton orthographe et ta grammaire sont maîtrisées. Les erreurs sont rares et marginales, ta langue est sûre."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Ton orthographe est extrêmement fragile : les accords sujet-verbe, les pluriels, les terminaisons des verbes posent constamment problème.",
+          "avec": "Ton orthographe est extrêmement fragile, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Les erreurs d'orthographe sont si nombreuses qu'elles brouillent le sens : par endroits, le lecteur ne comprend plus ce que tu veux dire.",
+          "avec": "Les erreurs d'orthographe sont si nombreuses qu'elles brouillent le sens, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Les homophones (ses/ces, à/a, ou/où, ce/se) sont systématiquement confondus, et les accords du participe passé sont absents.",
+          "avec": "Les homophones et les accords du participe passé sont systématiquement confondus. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu sembles ne pas avoir relu ta copie : les fautes sont nombreuses, y compris sur des mots simples, et certaines auraient pu être évitées avec une relecture rapide.",
+          "avec": "Tu sembles ne pas avoir relu ta copie : on le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tu fais beaucoup d'erreurs d'orthographe et de grammaire, surtout sur les accords sujet-verbe et les participes passés. Le sens passe, mais difficilement.",
+          "avec": "Tu fais beaucoup d'erreurs d'orthographe et de grammaire, surtout sur les accords. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tes erreurs sont nombreuses mais inégales : tu réussis certains accords difficiles et tu rates des accords simples. Une relecture ciblée te ferait gagner beaucoup.",
+          "avec": "Tes erreurs sont nombreuses mais inégales. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu butes essentiellement sur les homophones et les terminaisons verbales. La grammaire tient, mais l'orthographe lexicale est encore fragile.",
+          "avec": "Tu butes essentiellement sur les homophones et les terminaisons verbales, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton orthographe est presque correcte, à quelques erreurs près. Une relecture systématique en fin de devoir te ferait passer au satisfaisant.",
+          "avec": "Ton orthographe est presque correcte, à quelques erreurs près. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Ton orthographe et ta grammaire sont globalement correctes. Tu fais encore quelques erreurs, mais elles ne gênent pas la lecture.",
+          "avec": "Ton orthographe et ta grammaire sont globalement correctes. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu tiens les accords courants et tu maîtrises l'essentiel des conjugaisons. Les erreurs restantes concernent surtout les cas difficiles.",
+          "avec": "Tu tiens les accords courants et tu maîtrises l'essentiel des conjugaisons. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu écris correctement : ta langue est sûre sur la majorité des points, et tu te trompes seulement sur quelques difficultés ponctuelles.",
+          "avec": "Tu écris correctement : ta langue est sûre sur la majorité des points, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton orthographe est solide : il ne te reste que quelques rares erreurs sur des points pointus. La langue est assez sûre pour que le lecteur ne soit jamais gêné.",
+          "avec": "Ton orthographe est solide. On le voit quand tu écris {CIT}. La langue est assez sûre pour que le lecteur ne soit jamais gêné."
+         }
+        ],
+        [
+         {
+          "sans": "Ta langue est sûre : tu maîtrises les accords, les conjugaisons et l'orthographe lexicale. Les erreurs sont rares et marginales.",
+          "avec": "Ta langue est sûre, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu écris avec une vraie correction : ta copie se lit sans le moindre obstacle, et tu réussis même les difficultés rares.",
+          "avec": "Tu écris avec une vraie correction. On le voit quand tu écris {CIT} : tu réussis ici une difficulté que beaucoup ratent."
+         },
+         {
+          "sans": "Ta maîtrise orthographique est presque sans faille : tu emploies les bons accords, les bonnes terminaisons, les bons homophones, sans hésitation.",
+          "avec": "Ta maîtrise orthographique est presque sans faille. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu maîtrises l'orthographe et la grammaire de bout en bout : pas d'erreur, pas de doute, pas d'hésitation. Ta langue est entièrement sûre.",
+          "avec": "Tu maîtrises l'orthographe et la grammaire de bout en bout. Quand tu écris {CIT}, on sent que chaque mot a été pesé."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "syntaxe",
+       "libelle": "Structure des phrases",
+       "poids": 3,
+       "competences": [
+        "c4-langue-04"
+       ],
+       "descripteurs": [
+        "{prenom}, la structure de tes phrases est très maladroite : phrases incomplètes, ruptures syntaxiques, constructions incorrectes qui gênent souvent la lecture.",
+        "{prenom}, la structure de tes phrases est globalement correcte mais reste fragile : phrases trop courtes ou trop longues, constructions parfois bancales, peu de variété syntaxique.",
+        "{prenom}, la structure de tes phrases est correcte et variée. Tu alternes phrases courtes et longues, tu utilises subordination et coordination de manière appropriée.",
+        "{prenom}, la structure de tes phrases est maîtrisée. Tu joues du rythme, tu emploies des constructions complexes avec aisance, ta syntaxe sert l'effet recherché."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tes phrases sont souvent incomplètes ou cassées : il manque un verbe, un sujet, une articulation. Le lecteur doit deviner ce que tu veux dire.",
+          "avec": "Tes phrases sont souvent incomplètes ou cassées, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu enchaînes des phrases extrêmement courtes, sujet-verbe-complément, sans varier. Le raisonnement en devient haché et difficile à suivre.",
+          "avec": "Tu enchaînes des phrases extrêmement courtes, sans varier. On le voit quand tu écris {CIT} : trois phrases d'affilée sur le même moule."
+         },
+         {
+          "sans": "Tu écris des phrases interminables, sans ponctuation, où tu accumules les « et » et les « parce que ». Le lecteur s'essouffle avant la fin.",
+          "avec": "Tu écris des phrases interminables, sans ponctuation. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tes constructions de phrases sont fausses : tu mets le sujet après le verbe sans raison, tu oublies les liaisons, tu inverses l'ordre des mots.",
+          "avec": "Tes constructions de phrases sont fausses, comme quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tes phrases sont compréhensibles mais toutes faites sur le même modèle. Aucune subordination, aucune variation, peu de relief.",
+          "avec": "Tes phrases sont compréhensibles mais toutes faites sur le même modèle. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu essaies par moments des phrases plus complexes mais elles tombent à plat : la subordonnée est mal articulée, ou le sens devient confus.",
+          "avec": "Tu essaies par moments des phrases plus complexes mais elles tombent à plat, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu écris correctement mais sans variété : la longueur de tes phrases reste constante, et le raisonnement en pâtit.",
+          "avec": "Tu écris correctement mais sans variété. On le voit quand tu écris {CIT}, où tout est sur le même tempo."
+         },
+         {
+          "sans": "Ta syntaxe est correcte sur l'ensemble mais il manque encore quelques constructions plus ambitieuses (subordonnées, incises, inversions).",
+          "avec": "Ta syntaxe est correcte sur l'ensemble mais il manque encore quelques constructions plus ambitieuses. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tes phrases sont correctement construites et tu varies la syntaxe : tu alternes phrases courtes et longues, principales et subordonnées.",
+          "avec": "Tes phrases sont correctement construites et tu varies la syntaxe, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu construis des phrases solides : sujets et verbes sont en place, les subordonnées fonctionnent, les liaisons sont propres.",
+          "avec": "Tu construis des phrases solides. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu sais varier le rythme : une phrase courte qui frappe, puis une longue qui développe. Le lecteur ne s'ennuie pas à te lire.",
+          "avec": "Tu sais varier le rythme, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ta syntaxe est variée et juste : tu emploies subordonnées, incises, coordinations à bon escient. Le rythme de tes phrases sert ton propos et le lecteur avance sans accroc.",
+          "avec": "Ta syntaxe est variée et juste. On le voit quand tu écris {CIT}. Le rythme de tes phrases sert ton propos et le lecteur avance sans accroc."
+         }
+        ],
+        [
+         {
+          "sans": "Tu maîtrises la construction de tes phrases : longueur, articulation, ponctuation, tout est en place. Le lecteur avance sans le moindre accroc.",
+          "avec": "Tu maîtrises la construction de tes phrases, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu joues du rythme avec aisance : tu accélères, tu ralentis, tu coupes ou tu prolonges selon ce que tu veux faire entendre.",
+          "avec": "Tu joues du rythme avec aisance, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tes constructions sont riches et variées : subordonnées complexes, incises bien placées, ruptures maîtrisées. La syntaxe sert ta pensée.",
+          "avec": "Tes constructions sont riches et variées. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu écris des phrases dont la construction est elle-même expressive : la forme accompagne le sens et le lecteur sent que rien n'est laissé au hasard.",
+          "avec": "Tu écris des phrases dont la construction est elle-même expressive. Quand tu écris {CIT}, on sent que rien n'est laissé au hasard."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "lexique",
+       "libelle": "Lexique",
+       "poids": 3,
+       "competences": [
+        "c4-langue-03"
+       ],
+       "descripteurs": [
+        "{prenom}, ton lexique est très pauvre. Tu emploies des mots vagues, tu répètes constamment les mêmes termes, ton vocabulaire ne te permet pas d'exprimer ce que tu veux dire.",
+        "{prenom}, ton lexique est juste mais pauvre. Tu emploies un vocabulaire courant sans recherche, avec des répétitions notables et peu de précision.",
+        "{prenom}, ton lexique est correct et globalement précis. Tu cherches le mot juste, tu varies ton vocabulaire, tu emploies parfois un terme recherché.",
+        "{prenom}, ton lexique est riche, précis, nuancé. Tu emploies un vocabulaire varié et adapté à la dissertation, tes formulations sont travaillées."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Ton vocabulaire est très pauvre : tu emploies sans cesse les mêmes mots (« faire », « dire », « chose »), et tu ne cherches pas à varier.",
+          "avec": "Ton vocabulaire est très pauvre, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu emploies des mots qui n'ont pas le bon sens : tu te trompes de terme et la phrase devient incompréhensible ou drôle malgré toi.",
+          "avec": "Tu emploies des mots qui n'ont pas le bon sens, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu utilises un vocabulaire qui n'a pas sa place dans un devoir de réflexion : termes familiers, expressions de conversation, mots de la cour de récré.",
+          "avec": "Tu utilises un vocabulaire qui n'a pas sa place dans un devoir de réflexion, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Les répétitions sont si nombreuses qu'elles rendent la lecture pénible : le même mot revient à chaque ligne sans que tu cherches de synonymes.",
+          "avec": "Les répétitions sont si nombreuses qu'elles rendent la lecture pénible. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Ton vocabulaire est juste mais pauvre : tu emploies un mot courant là où un mot plus précis ferait l'affaire. Le devoir reste plat.",
+          "avec": "Ton vocabulaire est juste mais pauvre, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu sais varier ton vocabulaire mais tu retombes souvent dans les mêmes répétitions. Quelques relectures te permettraient de les éviter.",
+          "avec": "Tu sais varier ton vocabulaire mais tu retombes souvent dans les mêmes répétitions, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu essaies des mots plus recherchés mais tu te trompes parfois sur leur sens ou leur emploi. L'effort est là, la maîtrise pas encore.",
+          "avec": "Tu essaies des mots plus recherchés mais tu te trompes parfois, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton lexique est globalement correct mais il manque encore de précision sur les notions importantes du devoir.",
+          "avec": "Ton lexique est globalement correct mais il manque encore de précision. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Ton vocabulaire est précis et globalement approprié : tu cherches le mot juste et tu varies tes formulations.",
+          "avec": "Ton vocabulaire est précis et globalement approprié, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu emploies un lexique adapté au devoir de réflexion : ton vocabulaire sur les idées, les œuvres, les sentiments est correct et juste.",
+          "avec": "Tu emploies un lexique adapté au devoir de réflexion, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton vocabulaire est varié et tu places par endroits des mots précis ou recherchés qui donnent du relief à ton propos.",
+          "avec": "Ton vocabulaire est varié et tu places par endroits des mots précis ou recherchés, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton lexique est riche pour une copie de 3e : tu cherches le mot juste sans tomber dans la préciosité. Tes choix de mots donnent du relief à ton propos sans jamais sonner faux.",
+          "avec": "Ton lexique est riche pour une copie de 3e. On le voit quand tu écris {CIT}. Tes choix de mots donnent du relief à ton propos sans jamais sonner faux."
+         }
+        ],
+        [
+         {
+          "sans": "Ton vocabulaire est riche et précis : tu choisis chaque mot avec soin et tu évites systématiquement les répétitions.",
+          "avec": "Ton vocabulaire est riche et précis, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu emploies un lexique nuancé qui rend finement compte des idées : ta pensée gagne en justesse.",
+          "avec": "Tu emploies un lexique nuancé qui rend finement compte des idées, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu sais varier les registres et tu places des formules qui font mouche : tes mots ne sont pas seulement justes, ils sont travaillés.",
+          "avec": "Tu sais varier les registres et tu places des formules qui font mouche. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton vocabulaire est exactement celui qu'il fallait : précis, nuancé, parfois imagé, toujours adapté. La langue est au service de ta pensée.",
+          "avec": "Ton vocabulaire est exactement celui qu'il fallait. Quand tu écris {CIT}, on sent que tu as cherché le mot juste."
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "organisation",
+     "titre": "Organisation et énonciation",
+     "points": 18,
+     "consignes": [
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : prévoir un plan en deux ou trois grandes parties avant d'écrire, et soigner les transitions entre paragraphes (connecteurs logiques ou narratifs).",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : veiller à ce que chaque paragraphe apporte une étape nouvelle, soigner ton ouverture et ta clôture, tenir la cohérence du pronom et du système temporel jusqu'au bout.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : viser un agencement plus surprenant ou plus tendu, et donner encore plus de force à ton ouverture et à ta chute.",
+      "Pour la rédaction du brevet officiel, garde cette exigence d'architecture. C'est rare et c'est ce qui distingue une copie aboutie."
+     ],
+     "indicateurs": [
+      {
+       "id": "enchainement",
+       "libelle": "Enchaînement cohérent",
+       "poids": 7,
+       "competences": [
+        "c4-ecrire-02"
+       ],
+       "descripteurs": [
+        "{prenom}, ton texte ne s'enchaîne pas. Les paragraphes manquent ou sont mal délimités, les arguments se juxtaposent sans logique, le lecteur se perd.",
+        "{prenom}, ton texte progresse mais avec des ruptures ou des sauts. Certaines articulations manquent, le passage d'un argument à l'autre n'est pas toujours préparé.",
+        "{prenom}, ton argumentation s'enchaîne de manière cohérente et progressive. Les paragraphes sont bien délimités, les connecteurs logiques fonctionnent.",
+        "{prenom}, ton argumentation est composée avec une vraie maîtrise : la progression est tenue, chaque paragraphe apporte une étape nouvelle, ton texte a une vraie architecture dialectique."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu n'as pas construit de paragraphes : ton devoir forme un seul bloc, ou les retours à la ligne sont placés au hasard. Le raisonnement n'apparaît pas.",
+          "avec": "Tu n'as pas construit de paragraphes : ton devoir forme un seul bloc. On le voit quand tu écris {CIT} : un paragraphe nouveau aurait dû commencer ici."
+         },
+         {
+          "sans": "Tes idées s'enchaînent sans aucune logique : tu sautes d'un argument à un autre sans transition, et le lecteur ne suit pas ton raisonnement.",
+          "avec": "Tes idées s'enchaînent sans aucune logique : tu sautes d'un argument à un autre sans transition, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir n'a ni introduction, ni conclusion claires : il commence et s'arrête sans qu'on perçoive le mouvement de ta pensée.",
+          "avec": "Ton devoir n'a ni introduction, ni conclusion claires. On le voit quand tu écris {CIT}, qui ne joue ni l'un ni l'autre rôle."
+         },
+         {
+          "sans": "Tes paragraphes mélangent plusieurs idées à la fois : on ne sait jamais quel argument tu défends à quel moment. La pensée est embrouillée.",
+          "avec": "Tes paragraphes mélangent plusieurs idées à la fois, comme quand tu écris {CIT} : on ne sait plus quel argument tu défends."
+         }
+        ],
+        [
+         {
+          "sans": "Tu as fait des paragraphes mais ils sont déséquilibrés : certains regroupent trop d'idées, d'autres sont trop courts pour porter un argument.",
+          "avec": "Tu as fait des paragraphes mais ils sont déséquilibrés. On le voit quand tu écris {CIT}, qui aurait dû être un paragraphe à part entière."
+         },
+         {
+          "sans": "Ton devoir progresse mais les connecteurs logiques manquent : on passe d'une idée à une autre sans « d'abord », « ensuite », « cependant » pour faire le lien.",
+          "avec": "Ton devoir progresse mais les connecteurs logiques manquent. On le sent quand tu écris {CIT} : un connecteur aurait éclairé le lien."
+         },
+         {
+          "sans": "Ton raisonnement a un fil mais il se perd par endroits : à certains moments le lecteur ne sait plus où tu veux en venir.",
+          "avec": "Ton raisonnement a un fil mais il se perd par endroits, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir est globalement bien construit mais l'introduction ou la conclusion sont faibles. Une introduction plus posée ou une conclusion plus ferme donneraient à ton raisonnement un cadre solide.",
+          "avec": "Ton devoir est globalement bien construit mais l'introduction ou la conclusion sont faibles. On le voit quand tu écris {CIT}, qui aurait gagné à être retravaillé."
+         }
+        ],
+        [
+         {
+          "sans": "Ton devoir s'enchaîne de manière cohérente : les paragraphes sont délimités, les arguments se suivent logiquement, le lecteur est guidé.",
+          "avec": "Ton devoir s'enchaîne de manière cohérente, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu construis un raisonnement clair : chaque paragraphe porte un argument, et tes connecteurs logiques articulent bien les étapes.",
+          "avec": "Tu construis un raisonnement clair : chaque paragraphe porte un argument, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir a une vraie progression : une introduction qui pose, un développement qui avance, une conclusion qui referme.",
+          "avec": "Ton devoir a une vraie progression : une introduction qui pose, un développement qui avance, une conclusion qui referme, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton plan est solide : les arguments s'enchaînent, les transitions sont claires, la conclusion conclut vraiment. Le lecteur suit ton raisonnement de bout en bout sans jamais se perdre.",
+          "avec": "Ton plan est solide : les arguments s'enchaînent, les transitions sont claires. On le voit quand tu écris {CIT}. Le lecteur suit ton raisonnement de bout en bout sans jamais se perdre."
+         }
+        ],
+        [
+         {
+          "sans": "Tu composes ton devoir avec maîtrise : chaque paragraphe a sa place, les transitions sont précises, le lecteur avance sans effort.",
+          "avec": "Tu composes ton devoir avec maîtrise : chaque paragraphe a sa place, les transitions sont précises, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu tiens ta progression de bout en bout : l'introduction annonce, le développement déploie, la conclusion ouvre. Le lecteur sent la cohérence d'ensemble.",
+          "avec": "Tu tiens ta progression de bout en bout, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir a une vraie architecture : tu sais quand développer longuement, quand resserrer, quand articuler par une transition forte.",
+          "avec": "Ton devoir a une vraie architecture : tu sais quand développer, quand resserrer. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir est composé comme un raisonnement abouti : les parties se répondent, la pensée monte, la conclusion ferme avec netteté.",
+          "avec": "Ton devoir est composé comme un raisonnement abouti. Quand tu écris {CIT}, le lecteur sent que tout est en place."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "enonciation",
+       "libelle": "Posture d'énonciation",
+       "poids": 5,
+       "competences": [
+        "c4-ecrire-01"
+       ],
+       "descripteurs": [
+        "{prenom}, ta posture d'énonciation est instable. Tu glisses entre le « je », le « on », le « nous », le « tu » impersonnel sans logique, et le registre n'est pas tenu.",
+        "{prenom}, tu tiens globalement ta posture d'énonciation mais avec quelques glissements qui affaiblissent ton propos.",
+        "{prenom}, tu tiens ta posture d'énonciation avec cohérence : un « je » assumé ou un propos général tenu, dans un registre adapté à la dissertation.",
+        "{prenom}, tu maîtrises parfaitement ta posture d'énonciation. Tu choisis tes pronoms avec finesse, ton registre est soutenu et tenu, ton « je » réflexif convainc."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu mélanges les pronoms sans logique : tu passes du « je » au « on » au « nous » sans cohérence. Le lecteur ne sait jamais qui parle.",
+          "avec": "Tu mélanges les pronoms sans logique : tu passes du « je » au « on » au « nous » sans cohérence, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu emploies sans cesse des expressions familières (« en gros », « du coup », « franchement ») qui n'ont pas leur place dans un devoir de réflexion.",
+          "avec": "Tu emploies sans cesse des expressions familières qui n'ont pas leur place dans un devoir de réflexion, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu t'adresses directement au correcteur ou au lecteur (« tu vois », « comme vous savez »), ce qui n'est pas adapté à une réflexion écrite.",
+          "avec": "Tu t'adresses directement au correcteur ou au lecteur, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu mélanges les temps au hasard : présent et passé se côtoient sans raison, ce qui rend ton propos difficile à suivre.",
+          "avec": "Tu mélanges les temps au hasard : présent et passé se côtoient sans raison. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tu tiens en gros la 3e personne mais avec quelques glissements vers le « tu » ou le « nous » par moments.",
+          "avec": "Tu tiens en gros la 3e personne mais avec quelques glissements, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton registre n'est pas toujours tenu : tu mélanges le ton réflexif et le ton de conversation, ce qui affaiblit le devoir par endroits.",
+          "avec": "Ton registre n'est pas toujours tenu, comme quand tu écris {CIT} : ce ton est trop familier pour un devoir."
+         },
+         {
+          "sans": "Tu emploies parfois le présent de vérité générale, parfois d'autres temps qui sortent du registre attendu. La langue n'est pas encore stable.",
+          "avec": "Tu emploies parfois le présent de vérité générale, parfois d'autres temps qui sortent du registre attendu. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu tiens l'énonciation correctement mais avec quelques ruptures ponctuelles. Une relecture ciblée sur les pronoms, les temps et le registre suffirait à tenir l'ensemble.",
+          "avec": "Tu tiens l'énonciation correctement mais avec quelques ruptures ponctuelles, comme quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tu maintiens une énonciation cohérente tout au long du devoir : pronoms, temps, registre forment un ensemble stable.",
+          "avec": "Tu maintiens une énonciation cohérente tout au long du devoir, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu emploies un registre adapté au devoir de réflexion : ni trop familier, ni trop forcé, juste ce qu'il faut pour porter une pensée.",
+          "avec": "Tu emploies un registre adapté au devoir de réflexion, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu sais varier le « on », le « nous », le « je » selon ce que tu veux dire, et chaque emploi est intentionnel et justifié.",
+          "avec": "Tu sais varier le « on », le « nous », le « je » selon ce que tu veux dire, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton énonciation est tenue, ton registre est sûr. Le lecteur a affaire à une vraie voix réflexive qui sait où elle va.",
+          "avec": "Ton énonciation est tenue, ton registre est sûr. On le voit quand tu écris {CIT}. Le lecteur a affaire à une vraie voix réflexive qui sait où elle va."
+         }
+        ],
+        [
+         {
+          "sans": "Ton énonciation est maîtrisée : tu choisis le pronom, le temps et le registre avec à-propos selon ce que tu veux dire.",
+          "avec": "Ton énonciation est maîtrisée : tu choisis le pronom, le temps et le registre avec à-propos, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu écris avec une vraie voix réflexive : ton « je » a son rythme, son ton, sa manière. Le devoir te ressemble.",
+          "avec": "Tu écris avec une vraie voix réflexive. On le sent quand tu écris {CIT} : ton « je » a son rythme, son ton."
+         },
+         {
+          "sans": "Tu emploies les pronoms avec finesse : un « on » pour la vérité générale, un « je » pour l'engagement personnel, un « nous » pour associer le lecteur.",
+          "avec": "Tu emploies les pronoms avec finesse, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton énonciation porte ta pensée : le lecteur entend une voix qui sait où elle va et qui l'écoute.",
+          "avec": "Ton énonciation porte ta pensée. Quand tu écris {CIT}, le lecteur entend une voix qui sait où elle va."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "longueur",
+       "libelle": "Longueur suffisante",
+       "poids": 6,
+       "competences": [
+        "c4-ecrire-02"
+       ],
+       "descripteurs": [
+        "{prenom}, ton devoir est nettement trop court (moins d'une demi-copie double). Le sujet ne peut pas être véritablement traité dans cette longueur.",
+        "{prenom}, ton devoir reste un peu court (autour d'une demi-copie double). Le sujet est abordé mais sans avoir la place de se déployer pleinement.",
+        "{prenom}, ton devoir a une longueur suffisante (une copie double pleine) qui permet à ton argumentation de se déployer correctement.",
+        "{prenom}, ton devoir a une longueur ample et bien employée. Tu prends le temps de développer chaque argument, sans délayer ni précipiter."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Ton devoir est beaucoup trop court : moins d'une demi-copie double. À cette longueur, le sujet ne peut pas être traité.",
+          "avec": "Ton devoir est beaucoup trop court. Tu t'arrêtes après {CIT}, alors qu'il restait toute la réflexion à développer."
+         },
+         {
+          "sans": "Tu n'as écrit que quelques lignes : la réflexion s'arrête presque avant d'avoir commencé. La consigne n'a pas pu être traitée.",
+          "avec": "Tu n'as écrit que quelques lignes. Tu t'arrêtes après {CIT}, sans aller plus loin."
+         },
+         {
+          "sans": "Tu poses un ou deux arguments puis tu t'arrêtes brusquement, sans conclure et sans avoir vraiment réfléchi à la question.",
+          "avec": "Tu poses un ou deux arguments puis tu t'arrêtes brusquement. Tu t'arrêtes après {CIT}, sans conclure."
+         },
+         {
+          "sans": "Ton devoir est court et tu rallonges artificiellement : tu répètes ce que tu as déjà dit, ou tu remplis avec des phrases sans contenu.",
+          "avec": "Ton devoir est court et tu rallonges artificiellement, comme quand tu écris {CIT}, qui répète ce que tu avais déjà dit."
+         }
+        ],
+        [
+         {
+          "sans": "Tu as écrit autour d'une demi-copie double : le sujet est abordé mais sans avoir la place de se déployer. Plusieurs aspects sont expédiés.",
+          "avec": "Tu as écrit autour d'une demi-copie double : plusieurs aspects sont expédiés, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir est un peu court : tu as les arguments mais chacun est traité en deux ou trois phrases au lieu d'être développé.",
+          "avec": "Ton devoir est un peu court : chaque argument est traité en deux ou trois phrases. On le voit quand tu écris {CIT}, qui passe trop vite."
+         },
+         {
+          "sans": "Tu as la longueur d'une demi-copie double mais ton devoir se déséquilibre : tu développes longuement le début et tu boucles la fin en quelques lignes.",
+          "avec": "Tu as la longueur d'une demi-copie double mais ton devoir se déséquilibre, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir frôle la longueur attendue mais il lui manque encore quelques paragraphes pour vraiment respirer. Un ou deux paragraphes de plus donneraient à ton devoir la place dont il a besoin pour respirer.",
+          "avec": "Ton devoir frôle la longueur attendue mais il lui manque encore quelques paragraphes. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tu as écrit une copie double pleine : la longueur permet à la réflexion de se déployer correctement et chaque argument a la place qu'il mérite.",
+          "avec": "Tu as écrit une copie double pleine, comme quand tu écris {CIT}, où tu prends le temps de développer."
+         },
+         {
+          "sans": "Ta copie a une longueur juste : ni trop courte, ni délayée. Le sujet est traité dans ses différents aspects.",
+          "avec": "Ta copie a une longueur juste : ni trop courte, ni délayée. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu as bien rempli ta copie double et chaque argument est correctement développé. Aucun n'est expédié.",
+          "avec": "Tu as bien rempli ta copie double et chaque argument est correctement développé, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ta copie est ample et bien employée : tu prends le temps de raisonner sans jamais perdre le lecteur. La copie a la place qu'il fallait et chaque argument s'y développe comme il le mérite.",
+          "avec": "Ta copie est ample et bien employée. On le sent quand tu écris {CIT}. La copie a la place qu'il fallait et chaque argument s'y développe comme il le mérite."
+         }
+        ],
+        [
+         {
+          "sans": "Tu écris une copie longue et nourrie : chaque argument est développé comme il faut, sans rien sacrifier ni délayer.",
+          "avec": "Tu écris une copie longue et nourrie, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu utilises toute la longueur disponible et tu la remplis utilement : pas une ligne pour rien, pas un argument en moins.",
+          "avec": "Tu utilises toute la longueur disponible et tu la remplis utilement, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ta copie est dense sans être bavarde : tu prends le temps qu'il faut sur les moments importants et tu accélères quand c'est nécessaire.",
+          "avec": "Ta copie est dense sans être bavarde. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu maîtrises la longueur de bout en bout : le devoir a tout l'espace qu'il faut, chaque argument est juste, rien ne manque, rien ne traîne.",
+          "avec": "Tu maîtrises la longueur de bout en bout. Quand tu écris {CIT}, on sent que chaque mot est à sa place."
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "id": "argumentation",
+     "titre": "Argumentation",
+     "points": 12,
+     "consignes": [
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : avant d'écrire, formule clairement ta thèse en une phrase, et identifie deux ou trois arguments précis pour la défendre.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : appuyer chaque argument sur un exemple précis et développé (œuvre lue, fait historique, expérience), et envisager systématiquement une objection à laquelle tu réponds.",
+      "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : construire une vraie progression dialectique (thèse, antithèse nuancée, synthèse), et oser une voix plus personnelle.",
+      "Pour la rédaction du brevet officiel, garde cette exigence argumentative. Continue à oser des angles personnels et à dialoguer avec les objections."
+     ],
+     "indicateurs": [
+      {
+       "id": "these",
+       "libelle": "Position et enjeu",
+       "poids": 4,
+       "competences": [
+        "c4-ecrire-04"
+       ],
+       "descripteurs": [
+        "{prenom}, tu ne poses pas clairement de position sur le sujet. Le lecteur ne sait pas ce que tu défends ni quel est l'enjeu de la question pour toi.",
+        "{prenom}, tu poses une position mais elle reste floue ou peu engagée. L'enjeu du sujet n'est pas vraiment dégagé.",
+        "{prenom}, tu poses clairement ta position et tu dégages l'enjeu du sujet. Le lecteur sait dès le début ce que tu défends et pourquoi cela compte.",
+        "{prenom}, tu poses ta position avec finesse et tu fais véritablement émerger l'enjeu du sujet. Tu montres pourquoi la question mérite d'être posée."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu n'as pas posé de position dans ton devoir. Le lecteur ne sait pas si tu trouves les récits de vie utiles, ce que tu en penses, ce que tu défends.",
+          "avec": "Tu n'as pas posé de position dans ton devoir. On le voit quand tu écris {CIT} : aucune affirmation claire ne dit ce que tu défends."
+         },
+         {
+          "sans": "Tu te contentes de redire ce que dit le sujet, sans prendre position. Tu reformules la question au lieu d'y répondre.",
+          "avec": "Tu te contentes de redire ce que dit le sujet, sans prendre position, comme quand tu écris {CIT}. Tu reformules la question au lieu d'y répondre."
+         },
+         {
+          "sans": "Tu donnes plusieurs avis contradictoires sans choisir : le lecteur ne sait jamais quelle est vraiment ta position, ni ce que tu cherches à montrer.",
+          "avec": "Tu donnes plusieurs avis contradictoires sans choisir : le lecteur ne sait jamais quelle est vraiment ta position. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu prends position sur autre chose que la question posée : tu réponds à un sujet que tu as imaginé, pas à celui qui était donné. Ton devoir est hors sujet.",
+          "avec": "Tu prends position sur autre chose que la question posée : tu réponds à un sujet que tu as imaginé. On le voit quand tu écris {CIT}, qui n'est pas le sujet du devoir."
+         }
+        ],
+        [
+         {
+          "sans": "Tu poses une position mais elle reste très vague : on devine ce que tu penses, sans que tu l'affirmes clairement. L'enjeu du sujet n'est pas vraiment dégagé.",
+          "avec": "Tu poses une position mais elle reste très vague : on devine ce que tu penses, sans que tu l'affirmes clairement, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu prends position en une seule phrase au début, puis tu n'y reviens plus. Ton devoir tient mais on perd ton fil à mesure que tu avances.",
+          "avec": "Tu prends position en une seule phrase au début, puis tu n'y reviens plus. On le sent quand tu écris {CIT} : ici, ta position de départ aurait pu être rappelée."
+         },
+         {
+          "sans": "Tu poses une position correcte mais sans expliquer pourquoi le sujet est intéressant. L'enjeu n'apparaît pas : on ne voit pas ce qui se joue dans la question.",
+          "avec": "Tu poses une position correcte mais sans expliquer pourquoi le sujet est intéressant. On le voit quand tu écris {CIT}, où l'enjeu aurait pu être dégagé."
+         },
+         {
+          "sans": "Tu poses ta position et tu commences à dégager l'enjeu, mais l'amorce reste timide. Quelques phrases d'introduction plus fermes te feraient passer au satisfaisant.",
+          "avec": "Tu poses ta position et tu commences à dégager l'enjeu, mais l'amorce reste timide. On le voit quand tu écris {CIT} : ce passage gagnerait à être appuyé."
+         }
+        ],
+        [
+         {
+          "sans": "Tu poses clairement ta position au début du devoir et tu la tiens jusqu'à la fin. Le lecteur sait dès le départ ce que tu défends.",
+          "avec": "Tu poses clairement ta position au début du devoir et tu la tiens jusqu'à la fin, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu dégages l'enjeu de la question et tu expliques pourquoi le sujet vaut d'être traité. L'introduction prépare bien la réflexion qui suit.",
+          "avec": "Tu dégages l'enjeu de la question et tu expliques pourquoi le sujet vaut d'être traité, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu poses ta position avec netteté et tu montres ce qui se joue dans le sujet : pas seulement une opinion personnelle, mais une vraie réflexion ouverte.",
+          "avec": "Tu poses ta position avec netteté et tu montres ce qui se joue dans le sujet, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton introduction est solide : la position est ferme, l'enjeu est dégagé, le lecteur entre dans la réflexion sans hésitation. Le lecteur sait dès le départ ce que tu défends et pourquoi le sujet vaut d'être traité.",
+          "avec": "Ton introduction est solide : la position est ferme, l'enjeu est dégagé, le lecteur entre dans la réflexion sans hésitation. On le voit quand tu écris {CIT}. Le lecteur sait dès le départ ce que tu défends et pourquoi le sujet vaut d'être traité."
+         }
+        ],
+        [
+         {
+          "sans": "Tu poses ta position avec finesse et tu fais véritablement émerger l'enjeu du sujet. Tu montres pourquoi la question mérite d'être posée.",
+          "avec": "Tu poses ta position avec finesse et tu fais véritablement émerger l'enjeu du sujet, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton entrée en matière saisit le lecteur : tu poses ta position, tu nuances déjà ce que la question peut signifier, et tu annonces ta réflexion.",
+          "avec": "Ton entrée en matière saisit le lecteur : tu poses ta position, tu nuances déjà ce que la question peut signifier, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu reformules la question en l'approfondissant : tu montres qu'il ne s'agit pas d'un sujet plat mais d'une vraie interrogation qui demande qu'on y réfléchisse.",
+          "avec": "Tu reformules la question en l'approfondissant : tu montres qu'il ne s'agit pas d'un sujet plat. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu poses ta position et tu fais véritablement penser le lecteur dès l'introduction : il a envie de te suivre dans la suite du devoir.",
+          "avec": "Tu poses ta position et tu fais véritablement penser le lecteur dès l'introduction. Quand tu écris {CIT}, on a envie de te suivre dans la suite du devoir."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "exemples",
+       "libelle": "Exemples et références",
+       "poids": 3,
+       "competences": [
+        "c4-ecrire-03"
+       ],
+       "descripteurs": [
+        "{prenom}, tu n'apportes pas d'exemples ou de références pour appuyer ton propos. Tes affirmations restent en l'air, sans matière concrète.",
+        "{prenom}, tu apportes quelques exemples mais ils sont vagues, peu développés, ou peu liés à ton propos. Ils ne convainquent pas vraiment.",
+        "{prenom}, tu apportes des exemples précis et variés qui appuient solidement ton propos.",
+        "{prenom}, tu apportes des exemples particulièrement choisis et précis qui éclairent ton argumentation. Tu sais convoquer des références culturelles avec à-propos."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu n'apportes aucun exemple : tu donnes ton avis sans jamais montrer sur quoi il s'appuie. Ton devoir reste une suite d'affirmations en l'air.",
+          "avec": "Tu n'apportes aucun exemple : tu donnes ton avis sans jamais montrer sur quoi il s'appuie. On le voit quand tu écris {CIT}, qui reste une affirmation sans appui."
+         },
+         {
+          "sans": "Tu donnes un seul exemple pour tout le devoir, et tu y reviens sans cesse. Le lecteur a l'impression que tu ne connais qu'un récit de vie.",
+          "avec": "Tu donnes un seul exemple pour tout le devoir, et tu y reviens sans cesse, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu cites des œuvres mais sans dire de quoi elles parlent : tu donnes des titres ou des noms d'auteurs sans expliquer comment ils éclairent le sujet.",
+          "avec": "Tu cites des œuvres mais sans dire de quoi elles parlent : tu donnes des titres sans expliquer, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu inventes des exemples qui n'existent pas, ou tu déformes complètement ceux que tu prétends utiliser. Les références ne sont pas fiables.",
+          "avec": "Tu inventes des exemples qui n'existent pas, ou tu déformes ceux que tu prétends utiliser. On le voit quand tu écris {CIT} : ce détail est faux."
+         }
+        ],
+        [
+         {
+          "sans": "Tu donnes un ou deux exemples mais ils restent vagues : tu ne précises ni le titre, ni l'auteur, ni ce qu'on y trouve exactement.",
+          "avec": "Tu donnes un ou deux exemples mais ils restent vagues, comme quand tu écris {CIT} : sans précision, le lecteur ne peut pas vérifier."
+         },
+         {
+          "sans": "Tu apportes deux ou trois exemples mais ils viennent tous du même domaine (que des livres, ou que des films). Le devoir manque de variété.",
+          "avec": "Tu apportes deux ou trois exemples mais ils viennent tous du même domaine, comme quand tu écris {CIT}. Le devoir manque de variété."
+         },
+         {
+          "sans": "Tu présentes plusieurs exemples mais sans expliquer en quoi ils éclairent ta position. L'exemple est posé, mais on ne voit pas ce qu'il prouve.",
+          "avec": "Tu présentes plusieurs exemples mais sans expliquer en quoi ils éclairent ta position. On le voit quand tu écris {CIT} : il manque un commentaire pour relier l'exemple à ton idée."
+         },
+         {
+          "sans": "Tes exemples sont corrects mais ils manquent de variété ou de précision. Un peu plus de soin dans le choix et l'explication te ferait passer au satisfaisant.",
+          "avec": "Tes exemples sont corrects mais ils manquent de variété ou de précision. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tu apportes plusieurs exemples bien choisis pour appuyer ta réflexion. Tu cites titres et auteurs avec précision et tu expliques ce qu'on y trouve.",
+          "avec": "Tu apportes plusieurs exemples bien choisis pour appuyer ta réflexion, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tes références viennent de domaines variés : lectures, films, peintures, BD. Le devoir s'appuie sur une culture solide pour son âge.",
+          "avec": "Tes références viennent de domaines variés : lectures, films, peintures, BD, comme on le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu n'apportes pas seulement des exemples : tu les analyses, tu montres pourquoi ils éclairent ton propos. L'exemple n'est pas posé pour rien.",
+          "avec": "Tu n'apportes pas seulement des exemples : tu les analyses, tu montres pourquoi ils éclairent ton propos, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu choisis des exemples solides, variés, et tu les utilises avec à-propos. Le devoir tient bien sur ses appuis. Chaque exemple éclaire un aspect différent de la question et donne du poids à ta position.",
+          "avec": "Tu choisis des exemples solides, variés, et tu les utilises avec à-propos. On le voit quand tu écris {CIT}. Chaque exemple éclaire un aspect différent de la question et donne du poids à ta position."
+         }
+        ],
+        [
+         {
+          "sans": "Tes exemples sont précis, variés, et tu les choisis avec discernement. Chacun éclaire un aspect différent de la question.",
+          "avec": "Tes exemples sont précis, variés, et tu les choisis avec discernement, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu ne te contentes pas de citer : tu analyses tes exemples, tu en tires des conclusions précises, tu les confrontes parfois entre eux.",
+          "avec": "Tu ne te contentes pas de citer : tu analyses tes exemples, tu en tires des conclusions précises, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu mobilises une culture personnelle qui dépasse le cadre scolaire : on sent que tu as lu, vu, regardé, et que ces œuvres t'ont fait réfléchir.",
+          "avec": "Tu mobilises une culture personnelle qui dépasse le cadre scolaire. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tes exemples sont si bien choisis et expliqués que le lecteur a envie de les découvrir à son tour. Le devoir donne envie de lire ou regarder.",
+          "avec": "Tes exemples sont si bien choisis et expliqués que le lecteur a envie de les découvrir à son tour. Quand tu écris {CIT}, on a envie d'aller voir."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "nuance",
+       "libelle": "Nuance et concession",
+       "poids": 3,
+       "competences": [
+        "c4-ecrire-04"
+       ],
+       "descripteurs": [
+        "{prenom}, ton propos est entièrement à sens unique. Tu ne considères pas les objections possibles, tu n'envisages pas d'autre point de vue que le tien.",
+        "{prenom}, tu effleures quelques nuances mais sans vraiment les développer. Ton argumentation reste binaire.",
+        "{prenom}, tu nuances ton propos par concession ou contre-argument. Tu reconnais les limites de ta position et tu y réponds.",
+        "{prenom}, tu construis une argumentation dialectique : tu fais entendre les objections, tu les prends au sérieux, et tu réponds par des distinctions fines. Ton propos gagne en profondeur."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu défends une seule idée du début à la fin sans jamais la nuancer. Le devoir est unilatéral, comme si l'autre point de vue n'existait pas.",
+          "avec": "Tu défends une seule idée du début à la fin sans jamais la nuancer. On le voit quand tu écris {CIT} : il n'y a aucune réserve, aucune ouverture."
+         },
+         {
+          "sans": "Tu présentes ta position comme une évidence et tu écartes toute objection possible. Le lecteur n'a pas l'impression d'une vraie réflexion.",
+          "avec": "Tu présentes ta position comme une évidence et tu écartes toute objection, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu changes plusieurs fois d'avis sans le maîtriser : tu dis une chose, puis son contraire, sans signaler ces revirements. Le lecteur est perdu.",
+          "avec": "Tu changes plusieurs fois d'avis sans le maîtriser : tu dis une chose, puis son contraire, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu poses des objections mais elles ne sont pas pertinentes : elles n'ont pas vraiment de rapport avec ce que tu défends, ou elles sont trop faibles.",
+          "avec": "Tu poses des objections mais elles ne sont pas pertinentes, comme quand tu écris {CIT} : cette objection ne touche pas vraiment ta position."
+         }
+        ],
+        [
+         {
+          "sans": "Tu glisses une ou deux nuances mais elles arrivent trop tard, en fin de devoir, et tu ne prends pas le temps de les développer.",
+          "avec": "Tu glisses une ou deux nuances mais elles arrivent trop tard, comme quand tu écris {CIT} : c'est en toute fin, sans développement."
+         },
+         {
+          "sans": "Tu poses une objection mais tu la balayes immédiatement, sans vraiment lui laisser sa chance. La nuance est annoncée plus qu'elle n'est traitée.",
+          "avec": "Tu poses une objection mais tu la balayes immédiatement, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu nuances ton propos par moments mais sans toujours bien articuler concession et position : on sent que tu as réfléchi, mais le raisonnement reste fragile.",
+          "avec": "Tu nuances ton propos par moments mais sans toujours bien articuler concession et position. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu nuances correctement mais sans en faire un vrai mouvement de pensée. Une concession travaillée te ferait passer au satisfaisant.",
+          "avec": "Tu nuances correctement mais sans en faire un vrai mouvement de pensée. On le voit quand tu écris {CIT}, qui pourrait être développé."
+         }
+        ],
+        [
+         {
+          "sans": "Tu nuances ton propos par des objections ou des limites. Tu montres que tu as réfléchi à plusieurs aspects de la question.",
+          "avec": "Tu nuances ton propos par des objections ou des limites, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu construis un vrai mouvement de pensée : tu défends une position, tu admets ses limites, tu reprends ta position en l'ayant enrichie.",
+          "avec": "Tu construis un vrai mouvement de pensée : tu défends, tu admets les limites, tu reprends en ayant enrichi, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tes objections sont sérieuses : tu prends au sérieux l'avis contraire, tu lui donnes ses chances, puis tu expliques pourquoi tu maintiens ta position.",
+          "avec": "Tes objections sont sérieuses : tu prends au sérieux l'avis contraire, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu nuances avec finesse et tu fais avancer ta réflexion. Le devoir a la souplesse d'une vraie pensée. Tu reconnais les objections sans renoncer à ta position et c'est ce qui rend ton propos solide.",
+          "avec": "Tu nuances avec finesse et tu fais avancer ta réflexion. On le voit quand tu écris {CIT}. Tu reconnais les objections sans renoncer à ta position et c'est ce qui rend ton propos solide."
+         }
+        ],
+        [
+         {
+          "sans": "Tu construis un raisonnement nuancé qui prend en compte les positions opposées avec sérieux. Ton devoir n'est pas une plaidoirie, c'est une réflexion.",
+          "avec": "Tu construis un raisonnement nuancé qui prend en compte les positions opposées avec sérieux, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu fais avancer ta pensée par les concessions : chaque objection examinée fait progresser ta position au lieu de l'affaiblir.",
+          "avec": "Tu fais avancer ta pensée par les concessions : chaque objection examinée fait progresser ta position, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu distingues finement les cas : ce qui vaut ici ne vaut pas là, et tu sais pourquoi. Ton raisonnement est précis et discriminant.",
+          "avec": "Tu distingues finement les cas : ce qui vaut ici ne vaut pas là. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ta pensée est souple, nuancée, attentive aux limites de ce que tu défends. Le lecteur a affaire à un esprit qui réfléchit vraiment.",
+          "avec": "Ta pensée est souple, nuancée, attentive aux limites de ce que tu défends. Quand tu écris {CIT}, le lecteur a affaire à un esprit qui réfléchit vraiment."
+         }
+        ]
+       ]
+      },
+      {
+       "id": "engagement",
+       "libelle": "Réflexion personnelle",
+       "poids": 2,
+       "competences": [
+        "c4-ecrire-04"
+       ],
+       "descripteurs": [
+        "{prenom}, on ne sent pas ton engagement dans le sujet. Tu enchaînes des généralités sans qu'on sache ce que toi tu en penses vraiment.",
+        "{prenom}, on perçoit ton engagement par moments mais il reste timide. Tu n'oses pas vraiment prendre position personnellement.",
+        "{prenom}, tu construis une réflexion personnelle et engagée. On entend ta voix, ta façon de penser, ton rapport au sujet.",
+        "{prenom}, ta réflexion personnelle est forte et originale. Tu prends des risques intellectuels, tu proposes des angles inédits, ta voix singulière porte le propos."
+       ],
+       "sous": [
+        [
+         {
+          "sans": "Tu ne t'engages jamais personnellement : tu récites des idées générales qui pourraient être de n'importe qui. Le devoir n'a pas de voix.",
+          "avec": "Tu ne t'engages jamais personnellement : tu récites des idées générales, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu utilises uniquement des formules toutes faites (« il est important de », « on doit ») sans jamais dire ce que tu penses, toi.",
+          "avec": "Tu utilises uniquement des formules toutes faites sans jamais dire ce que tu penses, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu donnes l'impression de répéter ce que tu as entendu en classe sans l'avoir digéré. Le devoir manque de vie.",
+          "avec": "Tu donnes l'impression de répéter ce que tu as entendu en classe sans l'avoir digéré. On le voit quand tu écris {CIT}, qui sonne comme un cours appris."
+         },
+         {
+          "sans": "Tu fais semblant d'avoir un avis personnel, mais on sent que tu écris ce que tu crois que le correcteur attend. La sincérité manque.",
+          "avec": "Tu fais semblant d'avoir un avis personnel, mais on sent que tu écris ce que tu crois qu'on attend. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tu glisses quelques phrases personnelles mais elles sont rares, et tu retombes vite dans les généralités attendues.",
+          "avec": "Tu glisses quelques phrases personnelles mais elles sont rares, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu t'engages personnellement mais sans aller jusqu'au bout : tu donnes une opinion, tu n'oses pas vraiment l'argumenter ni la défendre.",
+          "avec": "Tu t'engages personnellement mais sans aller jusqu'au bout, comme quand tu écris {CIT} : l'opinion est posée, l'argumentation manque."
+         },
+         {
+          "sans": "Ton devoir mêle des passages personnels et des passages convenus : le lecteur sent où tu es vraiment toi, et où tu te contentes de remplir.",
+          "avec": "Ton devoir mêle des passages personnels et des passages convenus. On le voit quand tu écris {CIT}, qui sonne plus juste que le reste."
+         },
+         {
+          "sans": "Tu engages ta pensée personnelle par moments mais pas encore sur l'ensemble. Quelques affirmations plus assumées te feraient passer au satisfaisant.",
+          "avec": "Tu engages ta pensée personnelle par moments mais pas encore sur l'ensemble. On le voit quand tu écris {CIT}."
+         }
+        ],
+        [
+         {
+          "sans": "Tu engages ta pensée personnelle dans le devoir. On sent que tu as réfléchi par toi-même au sujet et que tu écris ce que tu penses.",
+          "avec": "Tu engages ta pensée personnelle dans le devoir, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu prends position avec sincérité et tu défends tes idées sans te cacher derrière des formules générales. On entend ta voix.",
+          "avec": "Tu prends position avec sincérité et tu défends tes idées sans te cacher derrière des formules générales, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu t'engages personnellement et tu sais le faire avec justesse : ton avis est argumenté, pas seulement affirmé.",
+          "avec": "Tu t'engages personnellement et tu sais le faire avec justesse, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir a une vraie voix : on sent un sujet qui pense, pas un élève qui répète. Tes affirmations sont assumées et défendues avec sincérité, sans formule toute faite.",
+          "avec": "Ton devoir a une vraie voix : on sent un sujet qui pense, pas un élève qui répète. On le voit quand tu écris {CIT}. Tes affirmations sont assumées et défendues avec sincérité, sans formule toute faite."
+         }
+        ],
+        [
+         {
+          "sans": "Tu engages ta pensée avec maturité : tu défends une vraie position personnelle, tu l'argumentes, tu en assumes les conséquences.",
+          "avec": "Tu engages ta pensée avec maturité : tu défends une position personnelle, tu l'argumentes, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu apportes une réflexion qui te ressemble : ton expérience, tes lectures, tes goûts nourrissent ce que tu dis sans tomber dans le récit personnel.",
+          "avec": "Tu apportes une réflexion qui te ressemble : ton expérience, tes lectures nourrissent ce que tu dis, comme quand tu écris {CIT}."
+         },
+         {
+          "sans": "Tu écris comme quelqu'un qui a vraiment réfléchi à la question : on sent une pensée qui s'est cherchée et qui a trouvé des choses justes.",
+          "avec": "Tu écris comme quelqu'un qui a vraiment réfléchi à la question. On le voit quand tu écris {CIT}."
+         },
+         {
+          "sans": "Ton devoir donne envie de te parler du sujet : il y a là une voix qui pense, qui ose, qui mérite d'être écoutée.",
+          "avec": "Ton devoir donne envie de te parler du sujet : il y a là une voix qui pense. Quand tu écris {CIT}, le lecteur a envie de prolonger la discussion."
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

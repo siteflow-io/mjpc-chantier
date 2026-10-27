@@ -1,3 +1,5 @@
-{"cas1": {"seuls_au_depart": [], "O_pendant": null, "X_au_retour": "ozzosix_lzzub", "autres": []}, "cas2": {"O_avec_V_pendant": true, "X_au_retour": "ozzosix_lzzub", "O_au_retour": "bzzekek_mzzix", "V_au_retour": null, "autres": []}, "erreurs2": [], "cas3": {"O_avec_V_pendant": true, "X_au_retour": null, "O_au_retour": "lzzubix_nzzam", "V_au_retour": "ozzosix_lzzub", "autres": []}, "erreurs3": []}
-cas : {'1': True, '2': True, '3': True}
-BANC REVIENT : VERT
+Traceback (most recent call last):
+  File "/home/claude/KIT/anon/bench/banc_revient.py", line 33, in <module>
+    X=[k for k in pres if k!=Z and P0.get(k)][0]; O=P0[X]
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range

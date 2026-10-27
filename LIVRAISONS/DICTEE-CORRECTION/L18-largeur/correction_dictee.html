@@ -121,7 +121,8 @@ textarea{resize:vertical;min-height:120px}
 .word-grid{line-height:2.2;padding:8px 0;position:relative}
 .word-line-pulse{position:absolute;left:-6px;right:-6px;background:rgba(37,99,235,.10);border-radius:6px;pointer-events:none;z-index:0;transition:top .25s ease,height .25s ease;animation:linePulse 2s ease-in-out infinite}
 @keyframes linePulse{0%,100%{background:rgba(37,99,235,.08)}50%{background:rgba(37,99,235,.20)}}
-.word-grid>.word-btn,.word-grid>.extra-word,.word-grid>.insert-zone{position:relative;z-index:1}
+.word-grid>.word-btn,.word-grid>.extra-word,.word-grid>.insert-zone,.mot-colle-l18>.word-btn,.mot-colle-l18>.extra-word,.mot-colle-l18>.insert-zone{position:relative;z-index:1}
+.mot-colle-l18{white-space:nowrap}   /* [L18] un mot et sa ponctuation : insécables ensemble */
 .word-btn{display:inline-block;padding:4px 6px;margin:3px 1px;border-radius:6px;font-size:1.1rem;line-height:1.5;cursor:pointer;border:2px solid transparent;background:transparent;color:var(--text);font-family:inherit;font-weight:400;transition:all .15s}
 .word-btn:hover{background:rgba(0,0,0,.04)}
 .word-btn.punct{padding:1px 2px;margin:0;font-size:.95rem}
@@ -1663,6 +1664,13 @@ function preselectionRapide(wt){if(!wt)return null;if(estApostrophe(wt.text))ret
 function motJuste(saisie,attendu){var a=String(saisie||"").trim(),b=String(attendu||"").trim();return !!a&&!!b&&a===b;}   /* [L15-0] casse comprise : « Empereur » pour « empereur » est une erreur de majuscule, acceptée */
 function estGuillemet(w){return/^["\u00ab\u00bb\u201c\u201d]$/.test(w)}
 function isPunct(w){return/^[.,;:!?\u2026\u00ab\u00bb\u201c\u201d\u2018\u2019'"()\-\u2013\u2014]+$/.test(w)}
+/* [L18] une ponctuation ne commence jamais une ligne : colle[i] = vrai si aucune coupure n'est permise entre le mot i-1 et le mot i
+   (la ponctuation reste avec le mot qui la précède ; « ( “ ‘ restent avec le mot qui suit ; l'apostrophe et le trait d'union lient les deux) */
+function collesL18(tokens){var c=[];for(var i=1;i<tokens.length;i++){var a=tokens[i-1],b=tokens[i];c[i]=(isPunct(b)&&!/^[\u00ab\u201c\u2018(]+$/.test(b))||(isPunct(a)&&/^[\u00ab\u201c\u2018(\u2019'\-]+$/.test(a));}return c}
+var collesCacheL18={t:null,c:null};function collesL18Cache(tokens){if(collesCacheL18.t!==tokens){collesCacheL18.t=tokens;collesCacheL18.c=collesL18(tokens);}return collesCacheL18.c}
+/* [L18] regroupe dans une même boîte insécable (.mot-colle-l18) ce qui est entre deux coupures permises ({__coupeL18}) */
+function grouperL18(liste,cle){var out=[],cur=[];function vide(){if(cur.length===1)out.push(cur[0]);else if(cur.length>1)out.push(h("span",{key:"g"+cle+(cur[0]&&cur[0].key),className:"mot-colle-l18"},cur));cur=[];}
+  liste.forEach(function(x){if(x&&x.__coupeL18){vide();return}cur.push(x)});vide();return out}
 // Espacement entre token courant et suivant — règles françaises :
 // pas d'espace avant ponctuation ; l'APOSTROPHE (désormais jeton) ne prend
 // d'espace d'aucun côté (« s » « ' » « approchèrent » → s'approchèrent).
@@ -4872,9 +4880,10 @@ function CorrEleve(p){
   var display=[];
   for(var i=0;i<tokens.length;i++){
     display.push({t:"ins",ai:i-1,k:"i"+i});
-    if(extraMap[i-1])extraMap[i-1].forEach(function(ex){display.push({t:"ex",w:ex.word,gi:ex.gi,k:"e"+(i-1)+"_"+ex.gi})});
+    if(extraMap[i-1])extraMap[i-1].forEach(function(ex){display.push({t:"ex",w:ex.word,gi:ex.gi,k:"e"+(i-1)+"_"+ex.gi,g:i})});
     display.push({t:"w",w:tokens[i],idx:i,k:"w"+i});
   }
+  var collesTexteL18=collesL18(tokens);   /* [L18] */
   display.push({t:"ins",ai:tokens.length-1,k:"iend"});
   if(extraMap[tokens.length-1])extraMap[tokens.length-1].forEach(function(ex){display.push({t:"ex",w:ex.word,gi:ex.gi,k:"eend"+ex.gi})});
 
@@ -5360,7 +5369,7 @@ function CorrEleve(p){
       h("div",{className:"word-grid",ref:wordGridRef,style:{fontSize:(fontScale*1).toFixed(3)+"rem"}},
         // Overlay pulsant de la ligne du dernier mot touché
         h("div",{className:"word-line-pulse","data-line-overlay":"1",style:{display:"none"}}),
-        display.map(function(d){
+        grouperL18(display.reduce(function(accL18,d){accL18.push((function(d){   /* [L18] le même rendu, regroupé : une ponctuation ne commence jamais une ligne */
         if(d.t==="ins")return h("span",{key:d.k,className:"insert-zone",onClick:function(){setInsertIdx(d.ai)}});
         if(d.t==="ex"){var exP=extras[d.gi]&&extras[d.gi].type==="P";return h("span",{key:d.k,className:"extra-word"+(exP?" extra-ponct":""),onClick:function(){removeExtra(d.gi)},title:exP?"Ponctuation en trop \u2014 compt\u00e9e au forfait ponctuation. Clic : la retirer.":"Mot en trop. Clic : le retirer."},"+"+d.w,exP?h("sup",{style:{fontSize:9,marginLeft:2}},"P"):null);}   /* [L5] */
         var cls="word-btn";if(isPunct(d.w))cls+=" punct";
@@ -5368,7 +5377,7 @@ function CorrEleve(p){
         if(d.idx===lastTouched)cls+=" last-touched";
         if(rechTexte&&candSetL8[d.idx])cls+=(d.idx===candIdx?" cand-courant":" cand-blink");else if(!rechTexte&&d.idx===curseur)cls+=" curseur-blink";   /* [L8] */
         return h("button",{key:d.k,"data-word-idx":d.idx,className:cls,onClick:function(){clickWord(d.idx)}},d.w,errMap[d.idx]?h("sup",{style:{fontSize:9,marginLeft:2}},errMap[d.idx]):null);
-      })),
+      })(d));var g=d.t==="w"?d.idx+1:d.t==="ins"?d.ai+1:(d.g!=null?d.g:tokens.length);if(!collesTexteL18[g])accL18.push({__coupeL18:1});return accL18},[]),"t")),
       rechTexte&&h("div",{id:"bande-recherche",style:{marginTop:10,padding:"6px 10px",borderTop:"1px dashed var(--border)",fontSize:".85rem",color:"var(--muted)"},title:"La recherche au clavier : tape les premi\u00e8res lettres d\u2019un mot. Les fl\u00e8ches passent d\u2019un mot propos\u00e9 \u00e0 l\u2019autre ; Entr\u00e9e ouvre le mot ; \u00c9chap efface."},   /* [L8] */
         h("b",null,"\u00ab "+rechTexte+" \u00bb : "),
         candListeL8.map(function(i){return h("span",{key:i,className:"bande-cand",style:{margin:"0 6px",fontWeight:i===candIdx?800:400,color:i===candIdx?"var(--text)":"var(--muted)"}},tokens[i])}),
@@ -11514,7 +11523,8 @@ function EleveCorrection(p){
         );
       })(),
       h("div",{className:"word-grid"},
-        tokens.reduce(function(acc,w,i){
+        grouperL18(tokens.reduce(function(acc,w,i){
+          if(i>0&&!collesL18Cache(tokens)[i])acc.push({__coupeL18:1});   /* [L18] une ponctuation ne commence jamais une ligne */
           // Insert extras before this token
           if(extraMapEleve[i-1])extraMapEleve[i-1].forEach(function(ex){
             acc.push(h("span",{key:"ex"+i+"_"+ex.gi,style:{textDecoration:"line-through",textDecorationThickness:"2px",color:typeCouleur("X"),fontWeight:600,padding:"2px 4px"}},ex.word))
@@ -11549,7 +11559,7 @@ function EleveCorrection(p){
             h("span",{style:{filter:isActive?"none":"blur(3px)",transition:"filter 0.2s"}},blanks,h("sub",{style:{fontSize:8,marginLeft:2}},err.type))
           ));
           return acc;
-        },[]).concat(
+        },[]),"e").concat(
           extraMapEleve[tokens.length-1]?extraMapEleve[tokens.length-1].map(function(ex){
             return h("span",{key:"exend"+ex.gi,style:{textDecoration:"line-through",textDecorationThickness:"2px",color:typeCouleur("X"),fontWeight:600,padding:"2px 4px"}},ex.word)
           }):[]

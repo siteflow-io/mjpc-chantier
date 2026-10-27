@@ -927,3 +927,14 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - Captures `*-36-*-apres.png`, regardées : la colonne à trois niveaux, la Structure ouverte, le liseré.
 - §12.36 n'est donc pas encore vert.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0020-28-10-1236c/` ; essais à une taille dans `0010-28-10-1236b/`.
+
+## Retour 89 — 28/10, 00:35 — poussée 111 d'E4 jouée : la colonne de droite retient sa largeur ; tous les rouges restants sont à E1
+- E4 a poussé §12.38 (2) et §12.36 (7) (`32bd4123a`). L'assemblé de la tête est `7e1d3687`. `banc.sh` : **VERT**.
+- **Cas 36, 10 vertes sur 12 par taille.** A85, la colonne de droite : 336 → 406 px, et **406 px au rechargement**, aux quatre tailles (vert). La poignée de gauche reste verte.
+- **Cas 38, 5 vertes sur 11 par taille.** A88 reste vert : les élèves de la répétition sont les quatre de CLASSE TEST, et rien n'est écrit au hub.
+- **Tous les rouges restants sont à E1 (§12.38 (1) et (3)) :**
+  - A84 (5)(6) : la ligne d'heure dit « pas encore à l'emploi du temps », et les diapos disent « +3′ » ;
+  - A87 : la répétition à 20 h dit encore « 3 DYLAN Bob » (capture `1707x743-38-4-la-repetition-sur-le-bilan-apres.png`, regardée) ; à 9 h il n'y a pas d'« heure n/N », et le nom de la classe ne propose rien ;
+  - A91 : la diapo du cahier en répétition ne montre ni l'échéance ni le travail à faire.
+- §12.36 sera vert quand §12.38 (1) donnera la source ; §12.38 aussi.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0030-28-10-111/`.

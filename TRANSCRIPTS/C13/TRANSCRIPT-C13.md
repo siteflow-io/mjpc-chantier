@@ -4707,3 +4707,129 @@ MEMO
 
 27/10/2026 15:01
 MEMO
+
+
+---
+
+## Tour 243 — 27/10/2026 15:37 → 15:46 (sans message de Paul : contrôle n°82 ; [une demande d'accord sur un réveil d'exécutant, à 15:03, interrompue par Paul : « Continue from where you left off. »])
+
+**Claude (15:41) :**
+
+Je vérifie la dernière version de la Rédaction universelle : mon banc tourne, et je relis les fiches en entier. E4 a aussi réglé le mot de liaison répété (13 · 57). Si c'est vert, je te la propose en ligne dans quelques minutes.
+
+Pour l'Atelier, E1 a poussé la poignée, les outils, les notes et l'import. J'ai adapté mes contrôles pour qu'il puisse retirer les onglets, et mon banc tourne dessus.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:41
+MEMO
+
+**Claude (15:46) :**
+
+À jouer : la Rédaction universelle, sur ton « promeus » · en cours chez les exécutants : E4 une dernière retouche (le mot de liaison), E1 et E3 l'Atelier · ouvert : 538, 553, 586, 481, 458
+
+591. La Rédaction universelle est prête : mon banc la rejoue verte (55 vérifications, 0 échec), et j'ai lu en entier une fiche Dugain et une fiche de la lettre. Les images T243 : la carte quand ton niveau d'orthographe et le compteur ne sont pas d'accord (« Garder » ou « Prendre », 561) ; une fiche Dugain ; une fiche de la lettre, avec l'énoncé entier et les cinq architectures ; le récapitulatif d'une copie de la lettre.
+
+592. Une seule retouche en cours chez E4 : sur la fiche de la lettre, « Par ailleurs » revient deux fois dans « Le thème et l'invention ». Un mot de liaison ne servira qu'une fois par critère.
+
+593. Si tu dis « promeus », je la mets en ligne dès cette retouche vérifiée : un fichier neuf sur le site, l'app d'aujourd'hui reste là. Adresse : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof (le bouton depuis le panneau prof viendra ensuite). Ce que je ne sais pas : si ton site accepte d'enregistrer les rédactions — le témoin « ✓ Enregistré au site » te le dira à la première copie ; en mode test, rien ne part.
+
+538. Le compteur d'orthographe : je propose les seuils de Dugain divisés par deux (la lettre fait la moitié d'une copie double). Pour trente lignes : 0 à 3 erreurs Très satisfaisant, 4 à 7 Satisfaisant, 8 à 14 Fragile, 15 et plus Insuffisant. Oui ?
+
+553. Les compétences : E4 rattache chaque point de la grille Dugain à une compétence du site (l'orthographe à « consolider l'orthographe », le lexique à « enrichir le lexique », la remobilisation à « exploiter des lectures », la thèse et la nuance à l'argumentation…). Les élèves ne les voient pas. Oui ?
+
+À tester (après la mise en ligne) :
+- ouvrir l'adresse, choisir « Écrire une lettre de la Grande Guerre », la classe 3 FRANKLIN Aretha : tes élèves sont là ;
+- corriger une copie en mode interrogatif, fermer, rouvrir : tout est là, le témoin dit « Enregistré au site » ;
+- exporter la fiche : elle porte le nom de la classe et l'énoncé entier.
+
+27/10/2026 15:46
+MEMO
+
+
+---
+
+## Tour 244 — 27/10/2026 15:47 → 15:53
+
+**Claude (15:47, sans message de Paul) :**
+
+Mon banc est vert sur l'Atelier tel qu'E1 l'a poussé, avec mes contrôles adaptés : 106 vérifications, 0 échec. E1 peut maintenant retirer les onglets. Rien de nouveau à décider pour toi : j'attends ton « promeus » pour la Rédaction universelle.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:47
+MEMO
+
+**Paul (15:51) :** Tu as vérifié que les copies et les sujets étaient bien des objets? Comme partout dans les autres app?
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 les objets et les mots de liaison, E1 et E3 l'Atelier · ouvert : 538, 553, 586, 481, 458
+
+594. Non, je ne l'avais pas vérifié. Mesuré maintenant : ce ne sont pas des objets. Une copie s'enregistre sans identité propre ni dates ; le sujet a son nom mais ni date de création ni date de modification. Dans la correction de dictée, chaque copie a son identité et ses dates. Dette 13 · 58 au registre.
+
+595. C'est ta règle, je la fais appliquer sans attendre : chaque copie aura son identité, née une fois et gardée à vie, l'élève, la classe, le sujet, sa date de création et de dernière modification ; chaque sujet, son identité et ses deux dates ; rien de cela ne se voit sur une fiche. E4 le fait avec la retouche des mots de liaison, en une seule poussée.
+
+596. La mise en ligne (593) attend donc cette poussée ; je te la repropose dès qu'elle est vérifiée.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:53
+MEMO
+
+
+---
+
+## Tour 245 — 27/10/2026 15:55 → 15:56
+
+**Paul :** Et l'id interne?
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 les objets (avec l'id interne) et les mots de liaison, E1 et E3 l'Atelier · ouvert : 538, 553, 586, 481, 458
+
+597. L'identité du 595, c'est l'id interne : rangé dans la copie elle-même, né une fois, et qui ne dépend ni du nom de l'élève ni du nom de la classe. La copie désigne l'élève et la classe par leurs clés internes, jamais par leurs noms affichés : si tu renommes une classe ou corriges l'orthographe d'un nom, la copie se retrouve par son id interne.
+
+598. Le sujet aussi : son id interne naît quand tu le crées, distinct de son titre et du nom écrit dans le JSON collé.
+
+599. Je l'ai précisé à E4 ; c'est dans la même poussée que la retouche des mots de liaison.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:56
+MEMO
+
+
+---
+
+## Tour 246 — 27/10/2026 15:57 → 16:02
+
+**Claude (15:57, sans message de Paul) :**
+
+E3 a vérifié l'Atelier par le geste : 64 vérifications sur 68 sont vertes. Il ne reste que les onglets, qu'E1 retire maintenant que mes contrôles sont adaptés.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:57
+MEMO
+
+**Paul (16:01) :** L'instance qui fait le chapitre me dit que le prompt et le site sont incohérents sur lhistoire du bilan qui accepte tant de choses ou pas. À mesurer
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 les objets et les mots de liaison, E1 et E3 l'Atelier · ouvert : 604, 538, 553, 586, 481, 458
+
+600. Mesuré : elle a raison. Le prompt est plus strict que le site, jamais l'inverse. Dette 13 · 59 au registre.
+
+601. Les mots-clés « À mettre dans le bilan » : le prompt en veut quatre ou cinq, de 10 à 45 signes chacun (mesuré au tableau) ; le site en accepte autant qu'on veut, jusqu'à douze mots par ligne. L'un compte en signes, l'autre en mots : c'est l'incohérence qu'elle a vue.
+
+602. La question du bilan : le prompt dit 90 signes au plus et aucune réponse attendue ; le site n'a pas de limite et accepte une réponse.
+
+603. Pour ton chapitre maintenant : dis à l'instance de suivre le prompt. Tout ce qu'il demande, le site l'accepte.
+
+604. Je propose que le site refuse exactement ce que le prompt interdit, avec les mots du prompt : six mots-clés ou plus, une ligne de plus de 45 signes, une question de plus de 90 signes, une réponse attendue sur la question du bilan. E1 l'ajoute à l'Atelier en cours. Oui ?
+
+À tester : rien pour l'instant.
+
+27/10/2026 16:02
+MEMO

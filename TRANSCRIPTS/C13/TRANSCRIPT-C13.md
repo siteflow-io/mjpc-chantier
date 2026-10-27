@@ -4545,7 +4545,7 @@ MEMO
 
 ---
 
-## Tour 237 — 27/10/2026 14:22 → 14:25
+## Tour 237 — 27/10/2026 14:22 → 14:23
 
 **Paul :** *(capture du téléphone : `pieces/T237-01-paul-le-telephone-sur-l-adresse-du-tableau-l-horloge.jpg` — « MONSIEURJAIPASCOMPRIS 14:21 mardi 27 octobre 2026 »)* Tu as testé ce qu'affichait sur une autre machine l'adresse de la vue tableau ? 
 J'ai ça, sur mon téléphone. Est ce du au téléphone?
@@ -4564,5 +4564,5 @@ J'ai ça, sur mon téléphone. Est ce du au téléphone?
 - sur l'ordinateur, hors mode test, lance une heure depuis l'emploi du temps : ton téléphone, sur l'adresse du tableau, passe de l'horloge à la diapo ;
 - avance d'une diapo, dévoile une ligne : le téléphone suit.
 
-27/10/2026 14:25
+27/10/2026 14:23
 MEMO

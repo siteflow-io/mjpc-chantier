@@ -3502,6 +3502,7 @@ function _renderLensBar(level){
 }
 function _pubCtrl(node,kind,level,chnum,snum,itemId){
  var cls=_lvlClasses(level);
+ try{ var _se=(kind==='sce')?node:((kind!=='ch'&&chapitresData[level]&&chapitresData[level][chnum]&&chapitresData[level][chnum].seances)?chapitresData[level][chnum].seances[snum]:null); if(_se&&Array.isArray(_se.classes)&&_se.classes.length)cls=cls.filter(function(c){return edtSeancePour(_se,c.slug);}); }catch(e){}   /* E1 (§12.35-5) : la publication d'une séance réservée ne propose que ses classes */
  if(cls.length===0)return '<span class="pub-none">+ classe ?</span>';
  function call(sg){if(kind==="ch")return "togglePublishChapterCls('"+level+"','"+chnum+"','"+sg+"')";if(kind==="sce")return "togglePublishSeanceCls('"+level+"','"+chnum+"','"+snum+"','"+sg+"')";return "togglePublishItemCls('"+level+"','"+chnum+"','"+snum+"','"+itemId+"','"+sg+"')";}
  if(ADMIN_LENS==='all'){return '<span class="pub-dots">'+_pubCtrlToutes(node,level,kind,chnum,snum,itemId)+cls.map(function(c){var on=isPubFor(node,c.slug);var st=on?(' style="background:'+c.couleur+';border-color:'+c.couleur+';color:#10071a"'):'';return '<span class="pub-dot clk"'+st+' onclick="event.stopPropagation();'+call(c.slug)+'">'+_classTag(c.nom)+'</span>';}).join('')+'</span>';}
@@ -3619,6 +3620,7 @@ function togglePublishItemCls(level,chnum,snum,itemId,slug){var d=chapitresData[
    INTERDICTION (doctrine §III) : plus aucun code ne teste .published directement. ═══ */
 function isPubFor(node,cls){if(!node)return false;var p=node.published;if(p===true)return true;if(!p||typeof p!=='object')return false;var s=_slugifyClass(cls||'');if(!s)return false;if(Object.prototype.hasOwnProperty.call(p,s))return !!p[s];var ks=Object.keys(p);for(var i=0;i<ks.length;i++){if(_slugifyClass(ks[i])===s)return !!p[ks[i]];}return false;}
 function _visiblePourSession(node,level){
+  if(TRACK.eleve&&!TRACK.eleve.is_prof&&node&&Array.isArray(node.classes)&&node.classes.length&&typeof edtSeancePour==='function'&&!edtSeancePour(node,_eleveClasse()))return false;   /* E1 (§12.35-5) : l'élève d'une classe pour qui la séance n'est pas ne la voit jamais, même publiée pour toutes */
   if(TRACK.eleve&&TRACK.eleve.is_prof){
     if(typeof ADMIN_LENS!=='undefined'&&ADMIN_LENS!=='all')return isPubFor(node,ADMIN_LENS);
     return _isPubAny(node,level);
@@ -8876,6 +8878,7 @@ function chValiderChapitre(o,taxo){
     if(!se.type||CH_TYPES_SEANCE.map(function(t){return t.id;}).indexOf(se.type)<0)
       V.cite(ref,'a un type de s\u00e9ance inconnu (\u00ab '+(se.type||'')+' \u00bb). Types possibles : '+CH_TYPES_SEANCE.map(function(t){return t.id;}).join(', ')+'.');
     verifTags(se,ref);
+    if(se.classes!==undefined){ (Array.isArray(se.classes)?se.classes:[se.classes]).forEach(function(c){ var k=(typeof edtCleClasse==='function')?edtCleClasse(String(c)):String(c); if(!(typeof classesData!=='undefined'&&classesData&&classesData[k]))V.cite(ref,': la classe \u00ab '+String(c)+' \u00bb n\u2019existe pas \u2014 reprends le nom d\u2019une classe du site.'); }); }   /* E1 (§12.35-4) */
     var it=se.items||{};
     if(typeof it!=='object'||Array.isArray(it)){V.cite(ref,'a des \u00e9l\u00e9ments mal form\u00e9s : il faut un ensemble de cl\u00e9s courtes.');return;}
     Object.keys(it).forEach(function(k){
@@ -13250,7 +13253,8 @@ function atEditerChapitreRendre(){
       +'</span></div>'
       +'<label class="at-edch-lib">Titre</label><input class="at-edch-in" value="'+atEsc(se.title||'')+'" onchange="atChampSeance('+j+',\'title\',this.value)">'
       +'<label class="at-edch-lib">Type</label><input class="at-edch-in" value="'+atEsc(se.type||'')+'" onchange="atChampSeance('+j+',\'type\',this.value)">'
-      +'<label class="at-edch-lib">Note \u00e9l\u00e8ve</label><textarea class="at-edch-ta at-edch-ta-p" onchange="atChampSeance('+j+',\'noteEleve\',this.value)">'+atEsc(se.noteEleve||'')+'</textarea>';
+      +'<label class="at-edch-lib">Note \u00e9l\u00e8ve</label><textarea class="at-edch-ta at-edch-ta-p" onchange="atChampSeance('+j+',\'noteEleve\',this.value)">'+atEsc(se.noteEleve||'')+'</textarea>'
+      +atSeancePourHtml(j,se,ec.level);   /* E1 (§12.35-2) : pour quelles classes */
     var _clesIt=Object.keys(se.items||{}).sort(function(a,b){return (se.items[a].ordre||0)-(se.items[b].ordre||0);});
     _clesIt.forEach(function(k,_rangIt){
       var it=se.items[k];if(!it)return;
@@ -13583,6 +13587,14 @@ function atChampChapitre(champ,val){
       function(v){atChampChapitre(champ,v);});
   });
 }
+/* E1 (§12.35-2, 13 · 67) : « Pour : toutes les classes » ou les classes cochées (celles du niveau) — l'emploi du temps ne joue la séance qu'à ces classes ; une seule écriture, `classes` (null = toutes) */
+function atSeancePourHtml(j,se,level){ var cls=(typeof _lvlClasses==='function'?_lvlClasses(level):[])||[]; if(!cls.length)return ''; var l=Array.isArray(se.classes)?se.classes:[]; var toutes=!l.length;
+  return '<label class="at-edch-lib" title="Les classes qui jouent cette séance : l’emploi du temps ne la joue qu’à elles, les autres passent à la séance suivante, sans trou ; leurs élèves ne la voient pas. Toutes cochées ou aucune : toutes les classes.">Pour</label><div class="at-edch-pour" data-pour="'+atEsc(j)+'">'
+    +'<label class="at-pour-t" title="Toutes les classes du niveau (le défaut)"><input type="checkbox" data-pour-toutes="1"'+(toutes?' checked':'')+' onchange="atSeancePour(\''+atEsc(j)+'\',null)"> toutes les classes</label>'
+    +cls.map(function(c){ var on=!toutes&&l.some(function(x){return (typeof edtCleClasse==='function'?edtCleClasse(x):x)===c.slug;}); return '<label class="at-pour-c" title="Seulement pour '+atEsc(c.nom||c.slug)+' (avec les autres classes cochées)"><input type="checkbox" data-pour-cl="'+atEsc(c.slug)+'"'+(on?' checked':'')+' onchange="atSeancePour(\''+atEsc(j)+'\',this)"> '+atEsc(c.nom||c.slug)+'</label>'; }).join('')+'</div>'; }
+function atSeancePour(j,cb){ var ec=AT.edChap; if(!ec)return; var z=document.querySelector('[data-pour="'+j+'"]'); var cls=(typeof _lvlClasses==='function'?_lvlClasses(ec.level):[])||[];
+  var l=[]; if(cb&&z)z.querySelectorAll('input[data-pour-cl]').forEach(function(x){ if(x.checked)l.push(x.getAttribute('data-pour-cl')); }); if(!cb||!l.length||l.length===cls.length)l=null;
+  atChampSeance(j,'classes',l); if(z){ var t=z.querySelector('[data-pour-toutes]'); if(t)t.checked=!l; if(!l)z.querySelectorAll('input[data-pour-cl]').forEach(function(x){x.checked=false;}); } }
 function atChampSeance(j,champ,val){
   var ec=AT.edChap;if(!ec)return;
   var chemin='/site/'+ec.level+'/chapitres/'+ec.chnum+'/seances/'+j+'/'+champ;
@@ -15908,7 +15920,8 @@ function atP2NotesParagraphes(html){
   vider(); return out;
 }
 function atP2NormaliserSeances(chap){
-  atSeances(chap).forEach(function(p){ var se=p.se; if(se&&se.deroule&&Array.isArray(se.deroule.ecrans)&&se.deroule.ecrans.length)se.deroule=atP2DerouleNormalise(se,null); });
+  atSeances(chap).forEach(function(p){ var se=p.se; if(se&&se.deroule&&Array.isArray(se.deroule.ecrans)&&se.deroule.ecrans.length)se.deroule=atP2DerouleNormalise(se,null);
+    if(se&&se.classes!==undefined){ var l=(Array.isArray(se.classes)?se.classes:[se.classes]).map(function(c){return (typeof edtCleClasse==='function')?edtCleClasse(String(c)):String(c);}).filter(Boolean); if(l.length)se.classes=l; else delete se.classes; } });   /* E1 (§12.35-4) : les classes d'une séance, rangées par leur clé */
   return chap;
 }
 
@@ -18184,6 +18197,9 @@ function edtHeuresPour(seance,creneau){
   return Math.max(1,Math.ceil(somme/utile));
 }
 /* le chapitre en cours d'une classe, pour un fil donné */
+/* E1 (§12.35-1, dette 13 · 67) : UNE SÉANCE RÉSERVÉE À UNE OU PLUSIEURS CLASSES — `classes` : la liste des clés qui la jouent ; absente ou vide = toutes les classes du niveau.
+   Les noms se résolvent par edtCleClasse (le nom de la grille comme la clé). */
+function edtSeancePour(se,nomClasse){ var l=se&&se.classes; if(!Array.isArray(l)||!l.length)return true; if(!nomClasse)return false; var k=edtCleClasse(nomClasse); return l.some(function(c){return edtCleClasse(c)===k;}); }
 function edtChapitreEnCours(nomClasse,fil){
   var niv=edtNiveauDe(nomClasse); if(!niv)return null;
   var l=EDT_CHAP[niv]||[];
@@ -18193,7 +18209,7 @@ function edtChapitreEnCours(nomClasse,fil){
     if((fil||null)!==sonFil)continue;
     var pub=false; try{ pub=isPubFor(ch,nomClasse); }catch(e){ pub=false; }
     if(!pub)continue;
-    var se=edtListe(ch.seances).slice().sort(function(a,b){return (Number(a.ordre)||0)-(Number(b.ordre)||0);});
+    var se=edtListe(ch.seances).filter(function(s){return edtSeancePour(s,nomClasse);}).sort(function(a,b){return (Number(a.ordre)||0)-(Number(b.ordre)||0);});   /* E1 (§12.35-3, 13 · 67) : la file d'une classe saute les séances qui ne sont pas pour elle */
     for(var k=0;k<se.length;k++){ if(!edtSeanceJouee(se[k],nomClasse))return {ch:ch,seances:se}; }
   }
   return null;

@@ -1550,6 +1550,44 @@ await B('A77', '§12.34 (6), dette 13 · 73 : la dictée manuscrite « Le Lac »
   E.verif('A77', el.viewer && el.src === 'correction_dictee.html?mode=eleve&dictee=dict_lac', 'l\'élève : l\'item ouvre sa dictée corrigée (correction_dictee.html?mode=eleve&dictee=dict_lac)', JSON.stringify(el));
   E.verif('A77', !errs.length, 'élève : aucune erreur JS', errs.slice(0, 2).join(' ; ') || undefined); await ctx.close(); });
 
+/* ── A79-A82 · §12.35, 13 · 67 : une séance réservée à une ou plusieurs classes ── */
+const storeReserve = () => { const st = storeCle(); const ch0 = st.site['3e'].chapitres[0]; ch0.published = Object.assign({}, typeof ch0.published === 'object' ? ch0.published : {}, { '3_dylan_bob': true, '3e_charles_de_gaulle': true });
+  const S0 = ch0.seances[0]; S0.classes = ['3E Charles de Gaulle']; S0.published = true; delete S0.deroule_joue; return st; };   /* la séance 0 (« Poésie et peinture ») pour la 3E seule ; 3 DYLAN Bob passe à la séance 1 */
+await B('A79', '§12.35 (2) : Structure — sur chaque séance « Pour : toutes les classes » ou les classes cochées, avec leur infobulle ; cocher une classe écrit `classes`, revenir à « toutes » l\'efface', async () => {
+  const o = await E.ouvrir(b, { w: 1707, h: 743, vue: 'structure', hub: storeCle() }); const pg = o.pg; await sansVoile(pg);
+  const z0 = await pg.evaluate(() => { const z = document.querySelector('[data-pour="1"]'); if (!z) return null; const lab = z.previousElementSibling; return { toutes: z.querySelector('[data-pour-toutes]').checked, cl: Array.from(z.querySelectorAll('input[data-pour-cl]')).map(x => x.getAttribute('data-pour-cl')), titre: !!(lab && lab.title) }; });
+  await pg.evaluate(() => { const x = document.querySelector('[data-pour="1"] input[data-pour-cl="3_dylan_bob"]'); x.checked = true; x.dispatchEvent(new Event('change')); }); await pg.waitForTimeout(1200);
+  const h1 = await pg.evaluate(() => window.__HUB.site['3e'].chapitres[0].seances[1].classes || null);
+  await pg.evaluate(() => { const x = document.querySelector('[data-pour="1"] [data-pour-toutes]'); x.checked = true; x.dispatchEvent(new Event('change')); }); await pg.waitForTimeout(1200);
+  const h2 = await pg.evaluate(() => window.__HUB.site['3e'].chapitres[0].seances[1].classes || null);
+  E.verif('A79', z0 && z0.toutes && z0.cl.includes('3_dylan_bob') && z0.titre && JSON.stringify(h1) === '["3_dylan_bob"]' && h2 === null, '« Pour » : toutes (le défaut), les classes du niveau à cocher, l\'infobulle ; cocher « 3 DYLAN Bob » → classes ["3_dylan_bob"] au hub ; « toutes » → effacé', JSON.stringify({ z0, h1, h2 }));
+  E.verif('A79', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
+await B('A80', '§12.35 (3) : l\'emploi du temps — la séance réservée à la 3E n\'est pas dans la file de 3 DYLAN Bob, qui passe à la séance suivante sans trou ; la 3E la joue', async () => {
+  const st = storeReserve(); const ch0 = st.site['3e'].chapitres[0]; const t0 = ch0.seances[0].title, t1 = ch0.seances[1].title;
+  const o = await ouvrirProf(1707, 743, st); const pg = o.pg; await pg.evaluate(() => edtOuvrir()); await pg.waitForTimeout(2500);
+  const r = await pg.evaluate(() => { const f = n => { const x = edtFileDAttente(n, null); return x ? x.seances.map(s => s.title) : null; }; return { dylan: f('3 DYLAN Bob'), gaulle: f('3E Charles de Gaulle') }; });
+  const cases = await pg.evaluate(() => Array.from(document.querySelectorAll('.edt-clic')).filter(c => c.offsetParent !== null && /3 DYLAN Bob/.test(c.innerText) && !/langue|passée/.test(c.innerText)).map(c => c.innerText.replace(/\s+/g, ' ').trim()));
+  E.verif('A80', r.dylan && r.dylan[0] === t1 && !r.dylan.includes(t0) && r.gaulle && r.gaulle[0] === t0, 'la file : 3 DYLAN Bob commence par « ' + t1 + ' » (sans « ' + t0 + ' ») ; la 3E par « ' + t0 + ' »', JSON.stringify(r).slice(0, 300));
+  E.verif('A80', cases.length > 0 && cases.every(c => !/aucune séance prête/.test(c) && c.indexOf(t0.slice(0, 20)) < 0), 'les cases de 3 DYLAN Bob : la séance suivante, sans trou (jamais « aucune séance prête »)', JSON.stringify(cases.slice(0, 2)));
+  const re = await pg.evaluate(() => { const c0 = window.dr_ctx, h0 = window.dr_chapitre; const ch = window.__HUB.site['3e'].chapitres[0]; const f = sl => { window.dr_ctx = () => ({ level: '3e', chnum: '0', snum: '1', classeSlug: sl }); window.dr_chapitre = () => ch; try { return dr_reactivationCheminAvant(); } finally { window.dr_ctx = c0; window.dr_chapitre = h0; } }; return { dylan: f('3_dylan_bob'), gaulle: f('3e_charles_de_gaulle') }; });
+  E.verif('A80', re.dylan === null && /\/seances\/0\/deroule_joue\/3e_charles_de_gaulle$/.test(re.gaulle || ''), 'la réactivation à la séance 1 : 3 DYLAN Bob ne lit pas la séance 0 (réservée à la 3E, jamais jouée par elle) ; la 3E la lit', JSON.stringify(re));
+  E.verif('A80', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
+await B('A81', '§12.35 (4) : l\'import accepte `classes` sur une séance (le nom se range sous la clé) et refuse une classe inconnue, avec les mots du contrat', async () => {
+  const { chapitreTest } = await import('./import-3e.mjs'); const st = storeCle(); const o = await ouvrirProf(1366, 768, st); const pg = o.pg;
+  const j = chapitreTest(st); j.chapitre.seances[0].classes = ['3 DYLAN Bob']; const j2 = chapitreTest(st); j2.chapitre.seances[0].classes = ['3 FANTÔME Zoé'];
+  const r = await pg.evaluate(([a, b2, tx]) => ({ ok: chValiderChapitre(a, tx).motifs(), ko: chValiderChapitre(b2, tx).motifs(), norm: (atP2NormaliserSeances(JSON.parse(JSON.stringify(a.chapitre))).seances[0] || {}).classes }), [j, j2, st.taxonomie]);
+  E.verif('A81', !r.ok.some(m => /classe/.test(m)) && JSON.stringify(r.norm) === '["3_dylan_bob"]', '« 3 DYLAN Bob » accepté, rangé sous sa clé « 3_dylan_bob »', JSON.stringify({ ok: r.ok.filter(m => /classe/.test(m)), norm: r.norm }));
+  E.verif('A81', r.ko.some(m => /: la classe « 3 FANTÔME Zoé » n’existe pas — reprends le nom d’une classe du site\.$/.test(m)), 'une classe inconnue est refusée : « … : la classe « 3 FANTÔME Zoé » n’existe pas — reprends le nom d’une classe du site. »', JSON.stringify(r.ko.filter(m => /classe/.test(m))));
+  await o.ctx.close(); });
+await B('A82', '§12.35 (5) : l\'élève de 3 DYLAN Bob ne voit pas la séance réservée à la 3E (publiée pour toutes) ; l\'élève de la 3E la voit ; la publication de la séance ne propose que la 3E', async () => {
+  const st = storeReserve(); const out = {};
+  for (const [qui, cl] of [['dylan', '3 DYLAN Bob'], ['gaulle', '3E Charles de Gaulle']]) { const ctx = await b.newContext({ viewport: { width: 1366, height: 768 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r2 => r2.abort()); const p2 = await ctx.newPage();
+    await p2.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await p2.addInitScript(E.fauxHub, st); await p2.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await p2.waitForTimeout(2000);
+    out[qui] = await p2.evaluate(c => { TRACK.eleve = { nom: 'DURAND', prenom: 'Alice', niveau: '3e', classe: c, is_prof: false }; document.body.classList.remove('admin-mode'); const se = window.__HUB.site['3e'].chapitres[0].seances[0]; return _visiblePourSession(se, '3e'); }, cl); await ctx.close(); }
+  const o = await ouvrirProf(1366, 768, st); const pg = o.pg; const pub = await pg.evaluate(() => { ADMIN_LENS = 'all'; const se = window.__HUB.site['3e'].chapitres[0].seances[0]; const z = document.createElement('div'); z.innerHTML = _pubCtrl(se, 'sce', '3e', '0', '0', ''); return Array.from(z.querySelectorAll('.pub-dot')).map(x => x.textContent.trim()); }); await o.ctx.close();
+  E.verif('A82', out.dylan === false && out.gaulle === true, 'l\'élève de 3 DYLAN Bob : ' + (out.dylan ? 'la voit' : 'ne la voit pas') + ' ; l\'élève de la 3E : ' + (out.gaulle ? 'la voit' : 'ne la voit pas'), JSON.stringify(out));
+  const pubCl = pub.filter(t => !/Toutes/.test(t)); E.verif('A82', pubCl.length === 1 && /GAULLE/.test(pubCl[0]), 'la publication de la séance ne propose que sa classe (une pastille, hors « Toutes »)', JSON.stringify(pub)); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

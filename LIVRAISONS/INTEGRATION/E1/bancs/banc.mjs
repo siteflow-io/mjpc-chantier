@@ -1051,7 +1051,7 @@ await B('A48', '§12.28 (3a)(3b), dette 13 · 41 : l\'écran « la classe en cou
     E.verif('A48', !e5.at && !e5.enClasse && e5.edt, '« ✕ Fermer » → l\'emploi du temps ; l\'écran de la classe est fermé', JSON.stringify({ at: e5.at, edt: e5.edt }));
     await pg.evaluate(() => { try { edtFermer(); } catch (e) {} atelierOuvrir(); }); await pg.waitForTimeout(1200); await E.clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(800); await E.clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'); await pg.waitForTimeout(1500);
     const e6 = await pg.evaluate(() => Array.from(document.querySelectorAll('.at-vues-barre .at-onglet')).filter(x => x.offsetParent !== null).map(x => x.dataset.vue).join(' '));
-    E.verif('A48', e6 === 'structure atelier pilotage relecture', 'l\'atelier rouvert ensuite est l\'atelier d\'avant (Structure · Atelier · Pilotage · Relecture)', e6);
+    E.verif('A48', e6 === 'structure atelier', 'l\'atelier rouvert ensuite est l\'Atelier (Structure · Atelier — §12.33 (2) : ni Pilotage ni Relecture, la vue de la classe ne le suit pas)', e6);
     await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="atelier"]').click()); await pg.waitForTimeout(800);
     const r0 = await pg.evaluate(() => { const l = document.querySelector('[data-lancer="1"]'); return { lancer: !!l && l.offsetParent !== null }; });
     await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="pilotage"]').click()); await pg.waitForTimeout(900);

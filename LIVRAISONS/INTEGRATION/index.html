@@ -15023,6 +15023,7 @@ function atClasseFermer(){   /* « ✕ Fermer » : avant le lancement et après 
     document.body.classList.remove('at-corps-fige');
     if(typeof dr_parquer==='function')dr_parquer();
     var z=document.getElementById('at-zone'); if(z)z.innerHTML='';   /* la prochaine ouverture de l'atelier repart de sa porte */
+    if(typeof ATVUES!=='undefined'&&(ATVUES.vue==='pilotage'||ATVUES.vue==='relecture'))ATVUES.vue='atelier';   /* E1 (§12.33-2) : la vue de l'écran de la classe (Pilotage, Relecture) ne suit pas dans l'Atelier ouvert ensuite */
     if(typeof edtOuvrir==='function')edtOuvrir();
   });
 }

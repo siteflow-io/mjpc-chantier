@@ -8897,8 +8897,7 @@ function chInventaire(existant,propose,taxo){
 }
 
 /* ── L'ÉCRAN — accès depuis la zone « Écrire avec une IA » ── */
-function chOuvrir(){
-  if(!secuExigeCle())return;
+function chOuvrir(){   /* E1 (§12.31-3, dette 13 · 50) : la garde de la clé tombe — mesuré, rien de chiffré n'est lu ni écrit d'ici à l'écriture du chapitre (JOURNAL E1, mission 0) */
   AT_IA.produit='chapitre';AT_IA.tpl=null;AT_IA.charge=false;
   chChargerTaxo(function(){ chChargerEtatAnnee(function(){ atIAChargerPrompt(function(){ chRendre(); }); }); });
 }
@@ -9146,7 +9145,7 @@ function chInjecterConfirme(voie){
     /* JUMEAU : un rang neuf en FIN de liste, jamais push, jamais la liste entière */
     if(voie==='jumeau'){
       var neuf=atP2NormaliserSeances(JSON.parse(JSON.stringify(o.chapitre)));   /* E1 (§12.21) : la trame au modèle du site */
-      neuf.title=String(neuf.title||'')+' (proposition)';
+      neuf.title=String(neuf.title||'')+(_neufIci?'':' (proposition)');   /* E1 (§12.31-2, dette 13 · 49) : « (proposition) » pour un double seulement ; « Créer ce chapitre » écrit le titre du JSON tel quel */
       neuf.ordre=ordSuivant(chaps);   /* [C5-ORD] \u2460 le rang, pas le compte */
       delete neuf.published;
       chNettoyerPublished(neuf);

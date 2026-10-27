@@ -1186,6 +1186,39 @@ await B('A55', 'retour 59 d\'E3 (L) : le « ? » fermé ne couvre aucune boîte 
     await o.ctx.close(); }
 });
 
+/* ── A57 · §12.31 (2), dette 13 · 49 : un chapitre neuf garde son titre — « (proposition) » pour un double seulement ── */
+await B('A57', '§12.31 (2), dette 13 · 49 : « Créer ce chapitre » (aucun chapitre de ce titre) écrit le titre du JSON tel quel ; « Créer un double » (le titre existe) le suffixe « (proposition) »', async () => {
+  const { chapitreTest } = await import('./import-3e.mjs');
+  const st = E.store(); const o = await ouvrirProf(1707, 743, st); const pg = o.pg;
+  const titres = () => pg.evaluate(() => secuLire('/site/3e/chapitres').then(c => (Array.isArray(c) ? c : Object.values(c || {})).filter(Boolean).map(x => x.title || '')));
+  const j = chapitreTest(st); j.chapitre.title = 'Chapitre neuf de la garde A57';
+  await pg.evaluate(() => { atelierOuvrir(); }); await pg.waitForTimeout(800);
+  await pg.evaluate(jj => { CH.json = jj; CH.niveau = '3e'; CH.chapIdx = null; CH.taxo = null; chInjecter('jumeau'); }, j); await pg.waitForTimeout(1200);
+  const mod = await pg.evaluate(() => { const m = document.getElementById('at-modale'); if (!m) return null; const b = Array.from(m.querySelectorAll('button')).find(x => /Créer ce chapitre/.test(x.textContent)); const t = m.innerText.replace(/\s+/g, ' ').slice(0, 220); if (b) b.click(); return { bouton: !!b, t }; }); await pg.waitForTimeout(2500);
+  const t1 = await titres();
+  E.verif('A57', mod && mod.bouton && !/proposition/.test(mod.t), 'la confirmation dit « Créer ce chapitre », sans « (proposition) »', JSON.stringify(mod));
+  E.verif('A57', t1.includes('Chapitre neuf de la garde A57') && !t1.some(x => /garde A57 \(proposition\)/.test(x)), '« Créer ce chapitre » : le titre du JSON tel quel au hub', JSON.stringify(t1.filter(x => /A57/.test(x))));
+  const orig = (st.site['3e'].chapitres[0] || {}).title; const j2 = chapitreTest(st); j2.chapitre.title = orig;
+  await pg.evaluate(jj => { CH.json = jj; CH.niveau = '3e'; CH.chapIdx = 0; CH.taxo = null; chInjecterConfirme('jumeau'); }, j2); await pg.waitForTimeout(2500);
+  const t2 = await titres();
+  E.verif('A57', t2.filter(x => x === orig + ' (proposition)').length === 1 && t2.filter(x => x === orig).length === 1, '« Créer un double » : l\'original intact, le double « ' + orig + ' (proposition) »', JSON.stringify(t2.filter(x => x.indexOf(orig) === 0)));
+  E.verif('A57', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined);
+  await o.ctx.close();
+});
+
+/* ── A58 · §12.31 (3), dette 13 · 50 : « 📚 Nouveau chapitre » ne lit ni n'écrit rien de chiffré — il ne demande plus la clé ; les codes, si ── */
+await B('A58', '§12.31 (3), dette 13 · 50 : sans la clé de chiffrement, « 📚 Nouveau chapitre » ouvre son écran (pas de « Clé requise ») ; les gestes des codes la demandent toujours', async () => {
+  for (const [w, h] of TAILLES_1227) { const o = await ouvrirProf(w, h); const pg = o.pg;
+    await pg.evaluate(() => { SECU.valide = false; SECU.cle = null; atelierOuvrir(); }); await pg.waitForTimeout(900); await sansVoile(pg);
+    const r = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-porte-ch')).find(x => x.offsetParent !== null); if (!b) return { porte: false }; b.click(); return { porte: true, libelle: b.innerText.replace(/\s+/g, ' ').trim().slice(0, 40) }; }); await pg.waitForTimeout(1500);
+    const s = await pg.evaluate(() => { const t = document.querySelector('.at-ia-titre'); const cm = Array.from(document.querySelectorAll('.console-modal, .cm-overlay, [id*="console-modal"]')).filter(x => x.offsetParent !== null).map(x => x.innerText).join(' '); return { titre: t ? t.textContent : null, cle: /Clé requise/.test(cm) || /Clé requise/.test(document.body.innerText), valide: SECU.valide }; });
+    E.verif('A58', r.porte && s.titre && /Construire un chapitre/.test(s.titre) && !s.cle && s.valide === false, w + ' × ' + h + ' : clé absente, « ' + (r.libelle || '?') + ' » ouvre « Construire un chapitre avec une IA », sans « Clé requise »', JSON.stringify(Object.assign(r, s)));
+    if (w === 1707) { const c = await pg.evaluate(() => { const ok = secuExigeCle(); const dit = /Clé requise/.test(document.body.innerText); return { ok, dit }; });
+      E.verif('A58', c.ok === false && c.dit, 'les codes demandent toujours la clé (secuExigeCle inchangée : « Clé requise »)', JSON.stringify(c)); }
+    E.verif('A58', !o.errs.length, w + ' × ' + h + ' : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined);
+    await o.ctx.close(); }
+});
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

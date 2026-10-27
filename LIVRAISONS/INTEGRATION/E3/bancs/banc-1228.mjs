@@ -26,6 +26,8 @@
 // 32 : (§12.32, R7) la Rédaction depuis le site : « ✏️ Rédactions » au menu des outils → redaction.html?mode=prof (&test=1 en mode test) ; la modale LIER
 //      propose le sujet du faux hub (/redactions/<id interne>/config : la lettre de la Grande Guerre) et rattache l'item {kind: 'redaction', ref} sans écrire
 //      dans /redactions ; l'onglet « ✏️ Rédaction » liste le sujet et l'ouvre (…&id=<ref>, &classe= si connue, &test=1 en mode test) ; l'élève : rien de neuf.
+// 63 : (mesure 13 · 63, seulement si MJPC_CAS le nomme) le bilan au tableau : question de 57 signes, 5 / 4 / 3 mots-clés de 30 à 45 signes, la consigne à
+//      3 étapes → combien de pages au tableau (répétition, « ▶ Jouer en avance » puis la fenêtre du tableau, tout dévoilé), « Diapo trop pleine » dans l'Atelier.
 // 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
 // usage : MJPC_HUB=AUDITS/INTEGRATION-DEROULE/hub node banc-1228.mjs <assemble/index.html> [sortie.txt]
 //   MJPC_TAILLES (défaut les quatre), MJPC_CAPT=<dossier> MJPC_CAPT_SUFFIXE=avant|apres (1707 × 743 et 1920 × 1080). Code 1 si un échec.
@@ -666,6 +668,41 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       verif('32', !app.length && !/Grande Guerre/.test(el.texte), T + ' · A68 · l’élève : rien de neuf (l’onglet ' + (vis ? 'tel qu’aujourd’hui' : 'absent, comme aujourd’hui') + ', aucune ouverture de redaction.html)', JSON.stringify({ onglet: vis, el, app }));
     } catch (e) { verif('32', false, T + ' · l’élève : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (32)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 63 (mesure 13 · 63) : la densité du bilan ── */
+  if (SEUL && SEUL.includes('63')) for (const N of [5, 4, 3]) { const st = hubStore(); const o = await ouvrirCtx(W, H, st); const pg = o.pg; const k = '63 · ' + N + ' mots-clés';
+    try { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await sansVoiles(pg);
+      const { chapitreTest } = await import(path.join(RACINE, 'LIVRAISONS', 'INTEGRATION', 'E1', 'bancs', 'import-3e.mjs')); const j = chapitreTest(st); const TIT = 'Le bilan à ' + N + ' mots-clés';
+      j.chapitre.title = TIT; j.chapitre.seances.forEach(se => ((se.deroule || {}).ecrans || []).forEach(e => { e.blocs = (e.blocs || []).filter(b => b.t !== 'fiche'); }));
+      const E0 = j.chapitre.seances[0].deroule.ecrans; const bi = E0.findIndex(e => e.role === 'bilan'); const B = E0[bi];
+      const Q = 'En quoi Géricault et Friedrich sont-ils des romantiques ?';   /* 57 signes */
+      const MOTS = ['le sublime de la nature chez Friedrich', 'le naufrage du Radeau de la Méduse', 'le spleen et l’idéal chez Baudelaire', 'le moi lyrique au centre du poème', 'la couleur plus forte que le dessin'].slice(0, N);
+      const qb = B.blocs.find(b => b.t === 'question'); qb.q = Q;
+      B.blocs.find(b => b.t === 'texte').el = MOTS;
+      const cons = B.blocs.find(b => b.t === 'consigne');
+      info('63', T + ' · ' + N + ' mots-clés · question ' + Q.length + ' signes · mots-clés ' + MOTS.map(m => m.length).join(', ') + ' signes · consigne à ' + cons.etapes.length + ' étapes');
+      await pg.evaluate(() => { atelierOuvrir(); }); await p(pg, 1000); await sansVoiles(pg);
+      await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-porte-ch')).find(x => x.offsetParent !== null); if (b) b.click(); }); await p(pg, 1500);
+      await pg.fill('#ch-coller', JSON.stringify(j)); await p(pg, 400); await clicTexte(pg, 'button', 'Vérifier'); await p(pg, 1500);
+      const cree = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Créer ce chapitre/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(pg, 1500);
+      await pg.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && m.getBoundingClientRect().height > 0 && Array.from(m.querySelectorAll('button')).find(x => /Créer/.test(x.textContent)); if (b) b.click(); }); await p(pg, 2500);
+      if (!cree) { verif(k, false, T + ' · le chapitre d’essai ne s’importe pas', await pg.evaluate(() => ((document.getElementById('ch-msg') || {}).innerText || '').slice(0, 160))); throw new Error('import'); }
+      await ouvrirAtelier(pg, TIT);
+      const aller = async q => { const di = await q.evaluate(a => { try { return seance().ecrans.findIndex(e => e && e.act === a); } catch (e) { return -1; } }, B.act); const sel = '#volet [data-at-di="' + di + '"], #volet .vig[data-i="' + di + '"]'; const ok = await q.evaluate(x => { const v = document.querySelector(x); if (v) { v.scrollIntoView({ block: 'center' }); return true; } return false; }, sel); if (ok) await q.click(sel, { timeout: 4000 }).catch(() => q.evaluate(x => document.querySelector(x).click(), sel)); else await q.evaluate(i => { try { aller(i); } catch (e) {} }, di); await p(q, 1500); return di; };
+      await aller(pg); await p(pg, 1500);
+      const plein = await pg.evaluate(() => /trop pleine/i.test(document.body.innerText)); await capt(pg, W, H, '63-' + N + '-atelier');
+      const rep = await entrerRepetition(pg); const diB = await pg.evaluate(a => { try { const i = seance().ecrans.findIndex(e => e && e.act === a); window.__e3diB = i; aller(i); return i; } catch (e) { return -1; } }, B.act); await p(pg, 1500);   /* en répétition, la vignette du volet ne porte pas le rang de la séance : aller(), la navigation du pilote */
+      const tr = []; for (let n = 0; n < 25; n++) { const e = await pg.evaluate(() => { try { const m = document.getElementById('mur'); const L = Array.from((m.querySelector('.corpsd') || m).querySelectorAll('li, .rep')); return { di: S.di, n: L.filter(l => !l.classList.contains('pas')).length, tot: L.length }; } catch (x) { return null; } }); tr.push(e && (e.di + '/' + e.n + '/' + e.tot)); if (!e || e.di !== diB || e.n >= e.tot) break;   /* « .pas » : pas encore dévoilé */ await pg.click('#bdev').catch(() => {}); await p(pg, 150); }   /* tout le bilan dévoilé, sans passer à la diapo suivante */
+      await p(pg, 800); const etatB = await pg.evaluate(() => { try { const m = document.getElementById('mur'); const L = Array.from((m.querySelector('.corpsd') || m).querySelectorAll('li, .rep')); return { di: S.di, n: L.filter(l => !l.classList.contains('pas')).length, tot: L.length, act: ecran().act, diB: window.__e3diB, acts: seance().ecrans.map((e, i) => i + ':' + (e.act || '').slice(0, 14)).slice(14, 22) }; } catch (x) { return String(x); } }); if (etatB && typeof etatB === 'object') etatB.trace = tr.join(' ');
+      let fen = null; try { [fen] = await Promise.all([pg.waitForEvent('popup', { timeout: 6000 }), pg.click('#bvideoproj')]); await fen.waitForLoadState(); await fen.setViewportSize({ width: W, height: H }); await p(fen, 3000); } catch (e) { fen = null; }   /* la fenêtre du tableau à la taille de l'écran projeté */
+      const tab = fen ? await fen.evaluate(() => { const m = document.getElementById('mur2'); if (!m) return null; const pgx = ((m.querySelector('.page') || {}).textContent || '').replace(/[‹›]/g, '').trim(); const mm = /\/\s*(\d+)/.exec(pgx); const f = getComputedStyle(m.querySelector('.corpsd') || m).fontFamily; return { pages: mm ? +mm[1] : 1, page: pgx, police: f.split(',')[0] }; }) : null;
+      if (fen) await fen.screenshot({ path: CAPT && (W === 1366 || W === 1920) ? path.join(CAPT, W + 'x' + H + '-63-' + N + '-mots-cles-au-tableau-' + SUFF + '.png') : undefined }).catch(() => {});
+      const pil = await pg.evaluate(() => { const m = document.getElementById('mur'); const pgx = ((m && m.querySelector('.page')) || {}).textContent || ''; const mm = /\/\s*(\d+)/.exec(pgx); return mm ? +mm[1] : 1; });
+      verif(k, rep && tab && etatB && etatB.act === B.act && etatB.n >= etatB.tot, T + ' · le bilan joué en répétition, tout dévoilé, la fenêtre du tableau ouverte', JSON.stringify({ rep, tab, etatB }));
+      info('63', T + ' · ' + N + ' mots-clés → au tableau : ' + (tab ? tab.pages + ' page' + (tab.pages > 1 ? 's' : '') + ' (« ' + tab.page + ' », ' + tab.police + ')' : '?') + ' ; au pilote : ' + pil + ' ; l’Atelier dit « Diapo trop pleine » : ' + (plein ? 'oui' : 'non'));
+      if (fen) await fen.close().catch(() => {});
+    } catch (e) { if (e.message !== 'import') verif(k, false, T + ' · la mesure n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    await o.ctx.close(); }
 
 }
 await nav.close();

@@ -698,3 +698,25 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - L'onglet montre le titre de l'item, comme pour les dictées, et non celui du sujet.
   - La lentille demande le mode admin et une page du niveau réellement ouverte.
 - **§12.32 VERT (`cea82c21`)**. Ensuite : la mesure 13 · 63 du bilan, demandée à 18:06.
+
+## Retour 75 — 27/10, 18:55 — la mesure 13 · 63 (le bilan au tableau) : 3 mots-clés tiennent sur une page partout ; 4, sur une page dans la ⑤ mais **deux sur la tête** à 1366 × 768
+- La mesure est faite par le geste, avec le cas « 63 » de `banc-1228`, joué seulement si `MJPC_CAS` le nomme.
+  - **Le chapitre d'essai** est importé par « 📚 Nouveau chapitre ». Son bilan a la question « En quoi Géricault et Friedrich sont-ils des romantiques ? » (57 signes), puis 5, 4 ou 3 mots-clés de 33 à 38 signes (Friedrich, le Radeau de la Méduse, Baudelaire, le moi lyrique, Delacroix), puis la consigne du prompt à 3 étapes.
+  - **Dans l'Atelier**, on va sur le bilan et on lit « Diapo trop pleine ».
+  - **En répétition** (« ▶ Jouer en avance »), on va au bilan et on le dévoile entièrement. La fenêtre du tableau est ouverte à la taille de l'écran, en EB Garamond, et on compte ses pages.
+  - *La répétition, et non une heure lancée avec une classe :* c'est le même `rendre` au tableau, mais un chapitre fraîchement importé n'a pas de case dans l'emploi du temps.
+- **Résultats.** Les nombres de pages lus au tableau et au pilote concordent.
+
+| | 5 mots-clés | 4 | 3 |
+|---|---|---|---|
+| la ⑤ (prod), 1366 × 768 | **2 pages** · trop pleine | 1 page · trop pleine | 1 page · non |
+| la ⑤, 1920 × 1080 | **2 pages** · trop pleine | 1 page · trop pleine | 1 page · non |
+| la tête `cea82c21`, 1366 × 768 | **2 pages** · trop pleine | **2 pages** · trop pleine | 1 page · non |
+| la tête, 1920 × 1080 | **2 pages** · trop pleine | 1 page · trop pleine | 1 page · non |
+
+- **En une ligne : avec des mots-clés de cette longueur, 3 tiennent sur une page partout, et 4 sur la ⑤.** Ma mesure T133 (5 sur une page) portait sur des mots-clés courts : elle ne vaut pas pour 30 à 45 signes.
+- **Trois choses vues sur les captures** (`*-63-*-prod5.png`, `*-63-*-tete.png`), à la conscience :
+  1. **Une régression de la tête sur la ⑤.** À 1366 × 768 avec 4 mots-clés, la ⑤ tient sur une page et il reste environ 110 px libres sous la dernière ligne. La tête coupe : la page 2 ne porte que « Souligne chaque mot-clé une fois placé. ». La pagination de la tête est plus serrée ; c'est à chercher du côté du dimensionnement changé au §12.33 (1).
+  2. **« Diapo trop pleine »** est dit à 4 mots-clés, même quand le tableau tient sur une page (la ⑤) : l'alerte et la pagination ne mesurent pas la même chose.
+  3. **Une ligne vide « › » sous la question du bilan.** C'est la question sans réponse attendue (§12.23), qui garde une puce vide et une ligne de hauteur.
+- Sorties dans `/` (`mesure-1363-prod5.txt`, `mesure-1363-tete.txt`).

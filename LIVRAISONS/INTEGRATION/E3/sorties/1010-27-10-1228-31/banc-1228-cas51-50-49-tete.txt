@@ -1,0 +1,127 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 08:56 UTC · fichier md5 bc505f9b44ccad9ada51c76eb5ae6890
+
+══ 1366×768 ══
+  ok     51 3e · 1366×768 · hors mode test (le chemin de Paul)
+  ok     51 3e · 1366×768 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 3 DYLAN Bob » avec ses ","modale":{"v":true,"nom":"3 DYLAN Bob","niv":"3e"}}
+  ok     51 3e · 1366×768 · la classe est rangée sous sa clé simplifiée « 3_dylan_bob », nom « 3 DYLAN Bob », 4 élèves — {"nom":"3 DYLAN Bob","niveau":"3e","eleves":4}
+  ok     51 3e · 1366×768 · le menu relie les cases de « 3 DYLAN Bob » à la classe du site — {"menu":{"val":"3 DYLAN Bob"},"cases":["3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob"]}
+  ok     51 3e · 1366×768 · le chapitre se publie pour « 3 DYLAN Bob » depuis la page du niveau — {"pastille":true,"hub":{"3e_charles_de_gaulle":true,"classe_test":true,"3_dylan_bob":true}}
+  ok     51 3e · 1366×768 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 3 DYLAN Bob » — « Classe attendue : 3 DYLAN Bob · 10:07 – 11:02 »
+  ÉCHEC  51 3e · 1366×768 · 13 · 51 · semaine du 2/11 : chaque case de « 3 DYLAN Bob » montre sa séance (« heure n/N ») — 0/3 · 3 DYLAN Bob aucune séance prête | 3 DYLAN Bob aucune séance prête
+  ÉCHEC  51 3e · 1366×768 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 3 DYLAN Bob aucun chapitre publié
+  ÉCHEC  51 3e · 1366×768 · 13 · 51 · la fenêtre de la case montre ses élèves — 0/4 · « mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Aucune séance prête pour cette classe. Ouvrir Mes chapitres…▶ Ouvrir le pilotage et lancer✎ Pré »
+  ÉCHEC  51 3e · 1366×768 · l’heure se lance par la case de « 3 DYLAN Bob » — {"bouton":true,"lancee":false}
+  ÉCHEC  51 3e · 1366×768 · 13 · 51 · l’heure lancée a ses élèves (la participation) — []
+  info   51 3e · 1366×768 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 3e · 1366×768 · 0 erreur JS
+  ok     51 4e · 1366×768 · hors mode test (le chemin de Paul)
+  ok     51 4e · 1366×768 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 4 HUGO » avec ses 4 élè","modale":{"v":true,"nom":"4 HUGO","niv":"4e"}}
+  ok     51 4e · 1366×768 · la classe est rangée sous sa clé simplifiée « 4_hugo », nom « 4 HUGO », 4 élèves — {"nom":"4 HUGO","niveau":"4e","eleves":4}
+  ok     51 4e · 1366×768 · le menu relie les cases de « 4 HUGO » à la classe du site — {"menu":{"val":"4 HUGO"},"cases":["4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO"]}
+  ok     51 4e · 1366×768 · le chapitre se publie pour « 4 HUGO » depuis la page du niveau — {"pastille":true,"hub":{"4_hugo":true}}
+  ok     51 4e · 1366×768 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 4 HUGO » — « Classe attendue : 4 HUGO · 13:00 – 13:55 »
+  ÉCHEC  51 4e · 1366×768 · 13 · 51 · semaine du 2/11 : chaque case de « 4 HUGO » montre sa séance (« heure n/N ») — 0/5 · 4 HUGO aucune séance prête · fil « langue » | 4 HUGO aucune séance prête
+  ÉCHEC  51 4e · 1366×768 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 4 HUGO aucun chapitre publié | 3 DYLAN Bob aucun chapitre publié
+  ÉCHEC  51 4e · 1366×768 · 13 · 51 · la fenêtre de la case montre ses élèves — 0/4 · « mercredi 4 novembre · 08:00-08:55 ✕ 4 HUGO Aucune séance prête pour cette classe. Ouvrir Mes chapitres…▶ Ouvrir le pilotage et lancer✎ Prépa »
+  ÉCHEC  51 4e · 1366×768 · l’heure se lance par la case de « 4 HUGO » — {"bouton":true,"lancee":false}
+  ÉCHEC  51 4e · 1366×768 · 13 · 51 · l’heure lancée a ses élèves (la participation) — []
+  info   51 4e · 1366×768 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 4e · 1366×768 · 0 erreur JS
+  ok     50 · 1366×768 · 13 · 50 · sans la clé, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"cle":false,"titre":"📚 Construire un chapitre avec une IA","coller":true}
+  ok     49 · 1366×768 · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub — {"verifier":"Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte.","bouton":true,"confirmation":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romanti","titres":["Le chapitre neuf du banc E3"],"tous":2,"boites":[],"apres":"Chapitre créé — non publié. Il apparaît dans la liste.","ecr":["PUT /site/3e/chapitres/1"]}
+  ok     Z · 1366×768 · 0 erreur JS (49-50)
+
+══ 1536×864 ══
+  ok     51 3e · 1536×864 · hors mode test (le chemin de Paul)
+  ok     51 3e · 1536×864 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 3 DYLAN Bob » avec ses ","modale":{"v":true,"nom":"3 DYLAN Bob","niv":"3e"}}
+  ok     51 3e · 1536×864 · la classe est rangée sous sa clé simplifiée « 3_dylan_bob », nom « 3 DYLAN Bob », 4 élèves — {"nom":"3 DYLAN Bob","niveau":"3e","eleves":4}
+  ok     51 3e · 1536×864 · le menu relie les cases de « 3 DYLAN Bob » à la classe du site — {"menu":{"val":"3 DYLAN Bob"},"cases":["3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob"]}
+  ok     51 3e · 1536×864 · le chapitre se publie pour « 3 DYLAN Bob » depuis la page du niveau — {"pastille":true,"hub":{"3e_charles_de_gaulle":true,"classe_test":true,"3_dylan_bob":true}}
+  ÉCHEC  51 3e · 1536×864 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 3 DYLAN Bob » — « Classe attendue : 3E Charles de Gaulle · 15:07 – 16:02 »
+  ÉCHEC  51 3e · 1536×864 · 13 · 51 · semaine du 2/11 : chaque case de « 3 DYLAN Bob » montre sa séance (« heure n/N ») — 0/3 · 3 DYLAN Bob aucune séance prête | 3 DYLAN Bob aucune séance prête
+  ÉCHEC  51 3e · 1536×864 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 3 DYLAN Bob aucun chapitre publié
+  ÉCHEC  51 3e · 1536×864 · 13 · 51 · la fenêtre de la case montre ses élèves — 0/4 · « mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Aucune séance prête pour cette classe. Ouvrir Mes chapitres…▶ Ouvrir le pilotage et lancer✎ Pré »
+  ÉCHEC  51 3e · 1536×864 · l’heure se lance par la case de « 3 DYLAN Bob » — {"bouton":true,"lancee":false}
+  ÉCHEC  51 3e · 1536×864 · 13 · 51 · l’heure lancée a ses élèves (la participation) — []
+  info   51 3e · 1536×864 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 3e · 1536×864 · 0 erreur JS
+  ok     51 4e · 1536×864 · hors mode test (le chemin de Paul)
+  ok     51 4e · 1536×864 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 4 HUGO » avec ses 4 élè","modale":{"v":true,"nom":"4 HUGO","niv":"4e"}}
+  ok     51 4e · 1536×864 · la classe est rangée sous sa clé simplifiée « 4_hugo », nom « 4 HUGO », 4 élèves — {"nom":"4 HUGO","niveau":"4e","eleves":4}
+  ok     51 4e · 1536×864 · le menu relie les cases de « 4 HUGO » à la classe du site — {"menu":{"val":"4 HUGO"},"cases":["4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO"]}
+  ok     51 4e · 1536×864 · le chapitre se publie pour « 4 HUGO » depuis la page du niveau — {"pastille":true,"hub":{"4_hugo":true}}
+  ok     51 4e · 1536×864 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 4 HUGO » — « Classe attendue : 4 HUGO · 13:00 – 13:55 »
+  ÉCHEC  51 4e · 1536×864 · 13 · 51 · semaine du 2/11 : chaque case de « 4 HUGO » montre sa séance (« heure n/N ») — 0/5 · 4 HUGO aucune séance prête · fil « langue » | 4 HUGO aucune séance prête
+  ÉCHEC  51 4e · 1536×864 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 4 HUGO aucun chapitre publié | 3 DYLAN Bob aucun chapitre publié
+  ÉCHEC  51 4e · 1536×864 · 13 · 51 · la fenêtre de la case montre ses élèves — 0/4 · « mercredi 4 novembre · 08:00-08:55 ✕ 4 HUGO Aucune séance prête pour cette classe. Ouvrir Mes chapitres…▶ Ouvrir le pilotage et lancer✎ Prépa »
+  ÉCHEC  51 4e · 1536×864 · l’heure se lance par la case de « 4 HUGO » — {"bouton":true,"lancee":false}
+  ÉCHEC  51 4e · 1536×864 · 13 · 51 · l’heure lancée a ses élèves (la participation) — []
+  info   51 4e · 1536×864 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 4e · 1536×864 · 0 erreur JS
+  ok     50 · 1536×864 · 13 · 50 · sans la clé, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"cle":false,"titre":"📚 Construire un chapitre avec une IA","coller":true}
+  ok     49 · 1536×864 · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub — {"verifier":"Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte.","bouton":true,"confirmation":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romanti","titres":["Le chapitre neuf du banc E3"],"tous":2,"boites":[],"apres":"Chapitre créé — non publié. Il apparaît dans la liste.","ecr":["PUT /site/3e/chapitres/1"]}
+  ok     Z · 1536×864 · 0 erreur JS (49-50)
+
+══ 1707×743 ══
+  ok     51 3e · 1707×743 · hors mode test (le chemin de Paul)
+  ok     51 3e · 1707×743 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 3 DYLAN Bob » avec ses ","modale":{"v":true,"nom":"3 DYLAN Bob","niv":"3e"}}
+  ok     51 3e · 1707×743 · la classe est rangée sous sa clé simplifiée « 3_dylan_bob », nom « 3 DYLAN Bob », 4 élèves — {"nom":"3 DYLAN Bob","niveau":"3e","eleves":4}
+  ok     51 3e · 1707×743 · le menu relie les cases de « 3 DYLAN Bob » à la classe du site — {"menu":{"val":"3 DYLAN Bob"},"cases":["3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob"]}
+  ok     51 3e · 1707×743 · le chapitre se publie pour « 3 DYLAN Bob » depuis la page du niveau — {"pastille":true,"hub":{"3e_charles_de_gaulle":true,"classe_test":true,"3_dylan_bob":true}}
+  ok     51 3e · 1707×743 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 3 DYLAN Bob » — « Classe attendue : 3 DYLAN Bob · 10:07 – 11:02 »
+  ÉCHEC  51 3e · 1707×743 · 13 · 51 · semaine du 2/11 : chaque case de « 3 DYLAN Bob » montre sa séance (« heure n/N ») — 0/3 · 3 DYLAN Bob aucune séance prête | 3 DYLAN Bob aucune séance prête
+  ÉCHEC  51 3e · 1707×743 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 3 DYLAN Bob aucun chapitre publié
+  ÉCHEC  51 3e · 1707×743 · 13 · 51 · la fenêtre de la case montre ses élèves — 0/4 · « mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Aucune séance prête pour cette classe. Ouvrir Mes chapitres…▶ Ouvrir le pilotage et lancer✎ Pré »
+  ÉCHEC  51 3e · 1707×743 · l’heure se lance par la case de « 3 DYLAN Bob » — {"bouton":true,"lancee":false}
+  ÉCHEC  51 3e · 1707×743 · 13 · 51 · l’heure lancée a ses élèves (la participation) — []
+  info   51 3e · 1707×743 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 3e · 1707×743 · 0 erreur JS
+  ok     51 4e · 1707×743 · hors mode test (le chemin de Paul)
+  ok     51 4e · 1707×743 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 4 HUGO » avec ses 4 élè","modale":{"v":true,"nom":"4 HUGO","niv":"4e"}}
+  ok     51 4e · 1707×743 · la classe est rangée sous sa clé simplifiée « 4_hugo », nom « 4 HUGO », 4 élèves — {"nom":"4 HUGO","niveau":"4e","eleves":4}
+  ok     51 4e · 1707×743 · le menu relie les cases de « 4 HUGO » à la classe du site — {"menu":{"val":"4 HUGO"},"cases":["4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO"]}
+  ok     51 4e · 1707×743 · le chapitre se publie pour « 4 HUGO » depuis la page du niveau — {"pastille":true,"hub":{"4_hugo":true}}
+  ok     51 4e · 1707×743 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 4 HUGO » — « Classe attendue : 4 HUGO · 13:00 – 13:55 »
+  ÉCHEC  51 4e · 1707×743 · 13 · 51 · semaine du 2/11 : chaque case de « 4 HUGO » montre sa séance (« heure n/N ») — 0/5 · 4 HUGO aucune séance prête · fil « langue » | 4 HUGO aucune séance prête
+  ÉCHEC  51 4e · 1707×743 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 4 HUGO aucun chapitre publié | 3 DYLAN Bob aucun chapitre publié
+  ÉCHEC  51 4e · 1707×743 · 13 · 51 · la fenêtre de la case montre ses élèves — 0/4 · « mercredi 4 novembre · 08:00-08:55 ✕ 4 HUGO Aucune séance prête pour cette classe. Ouvrir Mes chapitres…▶ Ouvrir le pilotage et lancer✎ Prépa »
+  ÉCHEC  51 4e · 1707×743 · l’heure se lance par la case de « 4 HUGO » — {"bouton":true,"lancee":false}
+  ÉCHEC  51 4e · 1707×743 · 13 · 51 · l’heure lancée a ses élèves (la participation) — []
+  info   51 4e · 1707×743 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 4e · 1707×743 · 0 erreur JS
+  ok     50 · 1707×743 · 13 · 50 · sans la clé, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"cle":false,"titre":"📚 Construire un chapitre avec une IA","coller":true}
+  ok     49 · 1707×743 · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub — {"verifier":"Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte.","bouton":true,"confirmation":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romanti","titres":["Le chapitre neuf du banc E3"],"tous":2,"boites":[],"apres":"Chapitre créé — non publié. Il apparaît dans la liste.","ecr":["PUT /site/3e/chapitres/1"]}
+  ok     Z · 1707×743 · 0 erreur JS (49-50)
+
+══ 1920×1080 ══
+  ok     51 3e · 1920×1080 · hors mode test (le chemin de Paul)
+  ok     51 3e · 1920×1080 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 3 DYLAN Bob » avec ses ","modale":{"v":true,"nom":"3 DYLAN Bob","niv":"3e"}}
+  ok     51 3e · 1920×1080 · la classe est rangée sous sa clé simplifiée « 3_dylan_bob », nom « 3 DYLAN Bob », 4 élèves — {"nom":"3 DYLAN Bob","niveau":"3e","eleves":4}
+  ok     51 3e · 1920×1080 · le menu relie les cases de « 3 DYLAN Bob » à la classe du site — {"menu":{"val":"3 DYLAN Bob"},"cases":["3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob"]}
+  ok     51 3e · 1920×1080 · le chapitre se publie pour « 3 DYLAN Bob » depuis la page du niveau — {"pastille":true,"hub":{"3e_charles_de_gaulle":true,"classe_test":true,"3_dylan_bob":true}}
+  ok     51 3e · 1920×1080 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 3 DYLAN Bob » — « Classe attendue : 3 DYLAN Bob · 10:07 – 11:02 »
+  ÉCHEC  51 3e · 1920×1080 · 13 · 51 · semaine du 2/11 : chaque case de « 3 DYLAN Bob » montre sa séance (« heure n/N ») — 0/3 · 3 DYLAN Bob aucune séance prête | 3 DYLAN Bob aucune séance prête
+  ÉCHEC  51 3e · 1920×1080 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 3 DYLAN Bob aucun chapitre publié
+  ÉCHEC  51 3e · 1920×1080 · 13 · 51 · la fenêtre de la case montre ses élèves — 0/4 · « mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Aucune séance prête pour cette classe. Ouvrir Mes chapitres…▶ Ouvrir le pilotage et lancer✎ Pré »
+  ÉCHEC  51 3e · 1920×1080 · l’heure se lance par la case de « 3 DYLAN Bob » — {"bouton":true,"lancee":false}
+  ÉCHEC  51 3e · 1920×1080 · 13 · 51 · l’heure lancée a ses élèves (la participation) — []
+  info   51 3e · 1920×1080 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 3e · 1920×1080 · 0 erreur JS
+  ok     51 4e · 1920×1080 · hors mode test (le chemin de Paul)
+  ok     51 4e · 1920×1080 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 4 HUGO » avec ses 4 élè","modale":{"v":true,"nom":"4 HUGO","niv":"4e"}}
+  ok     51 4e · 1920×1080 · la classe est rangée sous sa clé simplifiée « 4_hugo », nom « 4 HUGO », 4 élèves — {"nom":"4 HUGO","niveau":"4e","eleves":4}
+  ok     51 4e · 1920×1080 · le menu relie les cases de « 4 HUGO » à la classe du site — {"menu":{"val":"4 HUGO"},"cases":["4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO"]}
+  ok     51 4e · 1920×1080 · le chapitre se publie pour « 4 HUGO » depuis la page du niveau — {"pastille":true,"hub":{"4_hugo":true}}
+  ok     51 4e · 1920×1080 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 4 HUGO » — « Classe attendue : 4 HUGO · 13:00 – 13:55 »
+  ÉCHEC  51 4e · 1920×1080 · 13 · 51 · semaine du 2/11 : chaque case de « 4 HUGO » montre sa séance (« heure n/N ») — 0/5 · 4 HUGO aucune séance prête · fil « langue » | 4 HUGO aucune séance prête
+  ÉCHEC  51 4e · 1920×1080 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 4 HUGO aucun chapitre publié | 3 DYLAN Bob aucun chapitre publié
+  ÉCHEC  51 4e · 1920×1080 · 13 · 51 · la fenêtre de la case montre ses élèves — 0/4 · « mercredi 4 novembre · 08:00-08:55 ✕ 4 HUGO Aucune séance prête pour cette classe. Ouvrir Mes chapitres…▶ Ouvrir le pilotage et lancer✎ Prépa »
+  ÉCHEC  51 4e · 1920×1080 · l’heure se lance par la case de « 4 HUGO » — {"bouton":true,"lancee":false}
+  ÉCHEC  51 4e · 1920×1080 · 13 · 51 · l’heure lancée a ses élèves (la participation) — []
+  info   51 4e · 1920×1080 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 4e · 1920×1080 · 0 erreur JS
+  ok     50 · 1920×1080 · 13 · 50 · sans la clé, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"cle":false,"titre":"📚 Construire un chapitre avec une IA","coller":true}
+  ok     49 · 1920×1080 · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub — {"verifier":"Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte.","bouton":true,"confirmation":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romanti","titres":["Le chapitre neuf du banc E3"],"tous":2,"boites":[],"apres":"Chapitre créé — non publié. Il apparaît dans la liste.","ecr":["PUT /site/3e/chapitres/1"]}
+  ok     Z · 1920×1080 · 0 erreur JS (49-50)
+
+BILAN banc-1228 : 67/108 vérifications — 41 ÉCHEC(S) · ROUGE

@@ -1,0 +1,48 @@
+// E3 · sonde §12.31 : les écrans du chemin « Nouveau chapitre » et de l'import d'une liste (à lire, pas un banc)
+import path from 'node:path'; import fs from 'node:fs'; import { createRequire } from 'node:module';
+const req = createRequire(import.meta.url); const pw = req('playwright');
+const FICHIER = path.resolve(process.argv[2]); const HUB = path.resolve(process.env.MJPC_HUB);
+const J = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8'));
+const st = { classes: J('classes.json'), taxonomie: J('taxonomie.json'), site: { '3e': J('site_3e.json'), config: J('site_config.json'), edt: { grille: { '2026-2027': J('grille-appariee.json') }, calendrier: { '2026-2027': J('calendrier.json') }, creneaux: { '2026-2027': J('creneaux.json') } } } };
+const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); window.__ECR = []; const lire = c => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; };
+  const pos = (c, v) => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) n[q[k]] = {}; n = n[q[k]]; } if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v; };
+  window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase(); if (m === 'GET') return Promise.resolve(new Response(JSON.stringify(lire(c)), { status: 200 })); let bd = null; try { bd = JSON.parse((o && o.body) || 'null'); } catch (e) {} window.__ECR.push(m + ' ' + c); if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => pos(c + '/' + k, bd[k])); else pos(c, m === 'DELETE' ? null : bd); return Promise.resolve(new Response(JSON.stringify(bd), { status: 200 })); } return Promise.reject(new Error('hors')); }; window.WebSocket = function () { throw new Error('ws'); }; };
+const nav = await pw.chromium.launch({ args: ['--no-sandbox', '--allow-file-access-from-files'] });
+const ctx = await nav.newContext({ viewport: { width: 1707, height: 743 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); await ctx.addInitScript(fauxHub, st);
+const pg = await ctx.newPage(); const errs = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => { console.log('DIALOG', d.message().slice(0, 100)); d.dismiss(); });
+await pg.clock.setFixedTime(new Date('2026-10-27T08:30:00+01:00'));
+await pg.goto('file://' + FICHIER + '?n=3e'); await pg.waitForTimeout(1800); await pg.evaluate(() => { try { loginAsProf(); } catch (e) {} }); await pg.waitForTimeout(2200);
+await pg.evaluate(() => { ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); });
+const vus = () => pg.evaluate(() => ({ boutons: Array.from(document.querySelectorAll('button')).filter(b => b.offsetParent).map(b => (b.id ? '#' + b.id + ' ' : '') + b.innerText.replace(/\s+/g, ' ').trim().slice(0, 40)).slice(-30), champs: Array.from(document.querySelectorAll('textarea, input')).filter(b => b.offsetParent).map(b => b.tagName + (b.id ? '#' + b.id : '') + '.' + b.className) }));
+console.log('mode test', await pg.evaluate(() => m8TestOn()));
+// import
+await pg.evaluate(() => { try { edtFermer(); } catch (e) {} openProfPanel(); showProfSection('eleves'); }); await pg.waitForTimeout(2500);
+console.log('élèves :', JSON.stringify(await vus()));
+await pg.evaluate(() => { const dt = new DataTransfer(); dt.setData('text/plain', 'Classe : 3 DYLAN Bob\nDURAND Alice\nBERNARD Emma\nPETIT Thomas\nROBERT Chloé'); document.body.dispatchEvent(new ClipboardEvent('paste', { clipboardData: dt, bubbles: true })); }); await pg.waitForTimeout(1200);
+console.log('aperçu :', await pg.evaluate(() => (document.getElementById('eli-apercu') || {}).innerText));
+console.log('valider :', JSON.stringify(await pg.evaluate(() => { const b = document.getElementById('eli-valider'); if (!b) return 'absent'; const r = b.getBoundingClientRect(); const t = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return { dis: b.disabled, r: [r.left, r.top, r.width, r.height], dessus: t && (t.tagName + '#' + t.id + '.' + t.className).slice(0, 80), etat: ELI_ETAT && { slug: ELI_ETAT.choix.slug, lues: ELI_ETAT.sourcesLues } }; }))); const pt = await pg.evaluate(() => { ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); const b = document.getElementById('eli-valider'); b.scrollIntoView({ block: 'center' }); const r = b.getBoundingClientRect(); const t = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return { x: r.left + r.width / 2, y: r.top + r.height / 2, dessus: t && (t.tagName + '#' + t.id + '.' + t.className).slice(0, 80) }; }); console.log('point', JSON.stringify(pt)); await pg.mouse.click(pt.x, pt.y); await pg.waitForTimeout(900);
+console.log('modale :', await pg.evaluate(() => ({ v: document.getElementById('class-modal').classList.contains('visible'), nom: document.getElementById('class-modal-nom').value, niv: document.getElementById('class-modal-niveau').value, an: document.getElementById('class-modal-annee').value })));
+await pg.fill('#class-modal-annee', '2026-2027'); await pg.click('#class-modal button.primary'); await pg.waitForTimeout(2500);
+console.log('hub :', JSON.stringify(await pg.evaluate(() => Object.keys(window.__HUB.classes).filter(k => /dylan/i.test(k)).map(k => [k, window.__HUB.classes[k]]))).slice(0, 400));
+console.log('écritures :', await pg.evaluate(() => window.__ECR.join(', ')));
+console.log('aperçu après :', await pg.evaluate(() => (document.getElementById('eli-apercu') || {}).innerText.slice(0, 300)));
+await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} });
+// nouveau chapitre
+await pg.evaluate(() => { ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); atelierOuvrir(); }); await pg.waitForTimeout(1000);
+await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-porte-ch')).find(x => x.offsetParent); if (b) b.click(); }); await pg.waitForTimeout(1500);
+console.log('nouveau chapitre :', JSON.stringify(await vus()));
+console.log('texte :', await pg.evaluate(() => document.body.innerText.replace(/\s+/g, ' ').slice(0, 1)));
+const { chapitreTest } = await import(path.resolve('LIVRAISONS/INTEGRATION/E1/bancs/import-3e.mjs')); const j = chapitreTest(st); j.chapitre.title = 'Le chapitre neuf du banc E3'; j.chapitre.seances.forEach(se => ((se.deroule || {}).ecrans || []).forEach(e => { e.blocs = (e.blocs || []).filter(b => b.t !== 'fiche'); })); console.log('blocs', JSON.stringify(j.chapitre.seances[0].deroule.ecrans.slice(13,15)).slice(0,600));
+await pg.fill('#ch-coller', JSON.stringify(j)); await pg.waitForTimeout(400);
+await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /^Vérifier/.test(b.innerText.trim())); if (b) b.click(); }); await pg.waitForTimeout(1500);
+console.log('après vérifier :', JSON.stringify(await vus()));
+console.log('verdict :', await pg.evaluate(() => Array.from(document.querySelectorAll('[id^=ch-], .at-ia-verdict, .ch-verdict')).filter(e => e.offsetParent).map(e => e.id + ' ' + e.innerText.replace(/\s+/g, ' ').slice(0, 200)).join(' | ')));
+console.log('som :', await pg.evaluate(() => { const c = document.getElementById('ch-som-oui'); return c ? (c.closest('label') || c.parentElement).innerText.replace(/\s+/g, ' ').slice(0, 200) + ' · coché ' + c.checked : null; }));
+await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Créer ce chapitre/.test(b.innerText)); if (b) b.click(); }); await pg.waitForTimeout(1200);
+console.log('modale :', await pg.evaluate(() => { const m = document.getElementById('at-modale'); return m && m.offsetParent !== null ? m.innerText.replace(/\s+/g, ' ').slice(0, 300) + ' || ' + Array.from(m.querySelectorAll('button')).map(b => b.innerText.trim()).join(' / ') : 'pas de modale'; }));
+await pg.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && Array.from(m.querySelectorAll('button')).find(x => /Créer ce chapitre|Créer/.test(x.textContent)); if (b) b.click(); }); await pg.waitForTimeout(2500);
+console.log('titres :', JSON.stringify(await pg.evaluate(() => { const c = window.__HUB.site['3e'].chapitres; return (Array.isArray(c) ? c : Object.values(c || {})).filter(Boolean).map(x => x.title); })));
+console.log('écritures :', await pg.evaluate(() => window.__ECR.slice(-8).join(', ')));
+await pg.screenshot({ path: '/tmp/claude-0/sonde/nc.png' });
+console.log('erreurs', errs);
+await nav.close();

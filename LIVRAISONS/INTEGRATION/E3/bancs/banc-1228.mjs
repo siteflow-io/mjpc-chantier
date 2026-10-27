@@ -14,6 +14,13 @@
 //      MANDATS/CINQ-DETTES/AIDE-PAR-ECRAN.md existe.
 // R : (contrôle n°62) heure lancée, la fenêtre du tableau ouverte ; « ↗ » → l'Atelier → « ▶ Jouer en avance » → ▶ × 10 → le tableau de la classe ne change pas ; « ■ Arrêter » → pareil.
 // L' : les recouvrements, bandeau montré et volet d'aide ouvert (la garde L de banc-1227, la même sonde).
+// 30 : (§12.30) la phrase de l'activité en cours sous la tête de la séquence, aux paliers ; « tu dépasses · +n min » en place ; rien après « Clore », rien en répétition.
+// 51 : (§12.31, 13 · 51) une classe CRÉÉE PAR LE SITE (clé simplifiée « 3_dylan_bob », « 4_hugo » ; nom avec espaces et majuscules) : l'import de sa liste
+//      (panneau prof, Élèves & codes, le tableau collé → « nouvelle classe »), reliée par le menu de l'emploi du temps, le chapitre publié pour elle
+//      depuis la page du niveau → semaine du 2/11 : sa case montre la séance (« heure n/N »), la carte le chapitre, la fenêtre de la case ses élèves ;
+//      l'heure lancée par la case → ses élèves dans l'heure ; 3e et 4e.
+// 50 : (13 · 50) sans la clé de chiffrement, « 📚 Nouveau chapitre » ouvre « Construire un chapitre avec une IA », sans « Clé requise ».
+// 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
 // usage : MJPC_HUB=AUDITS/INTEGRATION-DEROULE/hub node banc-1228.mjs <assemble/index.html> [sortie.txt]
 //   MJPC_TAILLES (défaut les quatre), MJPC_CAPT=<dossier> MJPC_CAPT_SUFFIXE=avant|apres (1707 × 743 et 1920 × 1080). Code 1 si un échec.
 import path from 'node:path'; import fs from 'node:fs'; import { createRequire } from 'node:module'; import { createHash } from 'node:crypto';
@@ -33,7 +40,7 @@ const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log
 const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && detail !== '' ? ' — ' + detail : '')); return !!ok; };
 const info = (k, quoi) => dire('  info   ' + k + ' · ' + quoi);
 const p = (pg, ms) => pg.waitForTimeout(ms);
-/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42) */
+/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49) */
 const SEUL = process.env.MJPC_CAS ? process.env.MJPC_CAS.split(',') : null; const fait = k => !SEUL || SEUL.includes(k);
 
 /* ── le faux hub (celui de banc-1227), plus la classe « 3 DYLAN Bob » appariée à ses six cases (mission 0, M1) ── */
@@ -52,8 +59,8 @@ const fauxHub = s => { let sv = null; try { sv = localStorage.getItem('__E3HUB28
 const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });
 const sansVoiles = pg => pg.evaluate(() => { ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); }).catch(() => {});
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });
-const ouvrirCtx = async (W, H) => { const ctx = await nav.newContext({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }); const errs = [], boites = [];
-  await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => r.abort()); await ctx.addInitScript(fauxHub, hubStore());
+const ouvrirCtx = async (W, H, st) => { const ctx = await nav.newContext({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }); const errs = [], boites = [];
+  await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => r.abort()); await ctx.addInitScript(fauxHub, st || hubStore());
   ctx.on('page', q => { q.on('pageerror', e => errs.push(String(e.message).slice(0, 160))); q.on('dialog', d => { if (d.type() === 'beforeunload') { q.__beforeunload = (q.__beforeunload || 0) + 1; d.accept().catch(() => {}); return; } boites.push(d.type() + ' : ' + d.message().slice(0, 80)); d.dismiss().catch(() => {}); }); });
   const pg = await ctx.newPage(); await pg.clock.setFixedTime(HORLOGE); return { ctx, pg, errs, boites }; };
 const entrerProf = async pg => { await pg.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await p(pg, 1800); await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2200); await sansVoiles(pg); };
@@ -397,6 +404,90 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       verif('41', await pg.evaluate(() => !!(window.S && S.lancee && !S.close)).catch(() => false) && pareil(d0, d1), T + ' · 13 · 41 · le retour du navigateur ne quitte pas l’heure', dD(d0) + ' → ' + dD(d1));
     } catch (e) { verif('42', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (42)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+  /* ── 13 · 51 : une classe créée par le site, à clé simplifiée — l'emploi du temps, la case, la fenêtre de la case, l'heure lancée (3e, 4e) ── */
+  if (fait('51')) for (const C of [{ niv: '3e', lib: '3ème', nom: '3 DYLAN Bob', cle: '3_dylan_bob', quand: '2026-11-03T10:10:00+01:00' }, { niv: '4e', lib: '4ème', nom: '4 HUGO', cle: '4_hugo', quand: '2026-11-03T13:03:00+01:00' }]) {
+    const st = hubStore(); delete st.classes['3 DYLAN Bob']; ((st.site.edt.grille['2026-2027'] || {}).creneaux || []).forEach(x => { if (x.classe === C.nom) x.classeMjpc = ''; });
+    if (C.niv === '4e') { st.site['4e'] = JSON.parse(JSON.stringify(st.site['3e'])); (st.site['4e'].chapitres || []).forEach(ch => { if (ch) delete ch.published; }); }
+    const ELV = ['DURAND Alice', 'BERNARD Emma', 'PETIT Thomas', 'ROBERT Chloé']; const k = '51 ' + C.niv;
+    const o = await ouvrirCtx(W, H, st); const pg = o.pg;
+    try { await pg.clock.setFixedTime(new Date(C.quand)); await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await sansVoiles(pg);
+      verif(k, !(await pg.evaluate(() => m8TestOn())), T + ' · hors mode test (le chemin de Paul)');
+      /* 1 · la classe naît de l'import de sa liste (le tableau collé) → « nouvelle classe » → la fenêtre « Nouvelle classe » (nom, niveau, année) */
+      await pg.evaluate(() => { openProfPanel(); showProfSection('eleves'); }); await p(pg, 2500); await sansVoiles(pg);
+      await pg.evaluate(t => { const dt = new DataTransfer(); dt.setData('text/plain', t); document.body.dispatchEvent(new ClipboardEvent('paste', { clipboardData: dt, bubbles: true })); }, 'Classe : ' + C.nom + '\n' + ELV.join('\n')); await p(pg, 1200);
+      const pt = await pg.evaluate(() => { ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const v = document.getElementById(i); if (v) v.remove(); }); const b = document.getElementById('eli-valider'); if (!b) return null; b.scrollIntoView({ block: 'center' }); const r = b.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2, t: b.innerText.trim() }; });
+      if (pt) { await pg.mouse.click(pt.x, pt.y); await p(pg, 900); }
+      const mo = await pg.evaluate(() => ({ v: document.getElementById('class-modal').classList.contains('visible'), nom: document.getElementById('class-modal-nom').value, niv: document.getElementById('class-modal-niveau').value }));
+      if (mo.v) { if (!(await pg.inputValue('#class-modal-annee'))) await pg.fill('#class-modal-annee', '2026-2027'); if (mo.niv !== C.niv) await pg.selectOption('#class-modal-niveau', C.niv); await pg.click('#class-modal button.primary'); await p(pg, 2500); }
+      const cl = await pg.evaluate(c => window.__hubLire('/classes/' + c), C.cle);
+      verif(k, !!pt && mo.v && mo.nom === C.nom, T + ' · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu', JSON.stringify({ bouton: pt && pt.t.slice(0, 50), modale: mo }));
+      verif(k, cl && cl.nom === C.nom && cl.niveau === C.niv && Array.isArray(cl.eleves) && cl.eleves.length === 4, T + ' · la classe est rangée sous sa clé simplifiée « ' + C.cle + ' », nom « ' + C.nom + ' », 4 élèves', JSON.stringify(cl && { nom: cl.nom, niveau: cl.niveau, eleves: (cl.eleves || []).length }));
+      /* 2 · reliée par le menu « 🔗 Classes de la grille et classes du site » */
+      await pg.evaluate(() => { try { showProfSection('edt'); } catch (e) {} }); await p(pg, 2500);
+      const sel = await pg.evaluate(nom => { const s = Array.from(document.querySelectorAll('.edt-ap')).find(d => ((d.querySelector('span') || {}).textContent || '').trim() === nom);   /* le nom de la grille, pas une option d'une autre ligne */ if (!s) return null; const m = s.querySelector('select'); if (!m) return null; const op = Array.from(m.options).find(x => x.value === nom) || Array.from(m.options).find(x => x.textContent.trim() === nom); if (!op) return { opts: Array.from(m.options).map(x => x.value + '=' + x.textContent.trim()).slice(0, 12) }; m.value = op.value; m.dispatchEvent(new Event('change', { bubbles: true })); return { val: op.value }; }, C.nom); await p(pg, 2500);
+      const relie = await pg.evaluate(nom => ((window.__hubLire('/site/edt/grille/2026-2027/creneaux') || []).filter(c => c && c.classe === nom).map(c => c.classeMjpc)), C.nom);
+      verif(k, sel && sel.val && relie.length && relie.every(x => x === sel.val), T + ' · le menu relie les cases de « ' + C.nom + ' » à la classe du site', JSON.stringify({ menu: sel, cases: relie }));
+      await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} try { goHome(); } catch (e) {} }); await p(pg, 800);
+      /* 3 · le chapitre publié pour elle, page du niveau, hors mode test */
+      for (let n = 0; n < 2; n++) { await pg.evaluate(c => openLevel(c.niv, c.lib, 'var(--' + c.niv + ')'), C); await p(pg, 2500); if (await pg.evaluate(() => document.getElementById('page-level').classList.contains('active'))) break; }
+      await sansVoiles(pg);
+      const pub = await pg.evaluate(cle => { const el = Array.from(document.querySelectorAll('#page-level [onclick*="togglePublishChapterCls"]')).find(x => x.getAttribute('onclick').indexOf("'" + cle + "'") >= 0 && x.offsetParent); if (!el) return Array.from(document.querySelectorAll('#page-level [onclick*="togglePublishChapterCls"]')).map(x => x.getAttribute('onclick').replace('event.stopPropagation();', '')).slice(0, 6); el.click(); return true; }, C.cle); await p(pg, 2500);
+      const publie = await pg.evaluate(c => { const ch = window.__hubLire('/site/' + c.niv + '/chapitres/0') || {}; return ch.published || null; }, C);
+      verif(k, pub === true && publie && JSON.stringify(publie).indexOf(C.cle) >= 0, T + ' · le chapitre se publie pour « ' + C.nom + ' » depuis la page du niveau', JSON.stringify({ pastille: pub, hub: publie }));
+      await pg.evaluate(() => { try { goHome(); } catch (e) {} }); await p(pg, 600);
+      /* 3 bis · la page tableau sans cours (mon écran) : « Classe attendue : <nom> » — le niveau du prochain créneau lu par la clé (dr_tabCle) */
+      { const tb = await o.ctx.newPage(); await tb.clock.setFixedTime(new Date(C.quand)); await tb.goto(URL0 + '?vue=tableau&n=' + C.niv, { waitUntil: 'load' }); await p(tb, 4000);
+        const att = await tb.evaluate(() => { const e = document.getElementById('ses-tab-c'); return e && e.style.display !== 'none' ? e.textContent.trim() : ''; });
+        if (CAPT && (W === 1707 || W === 1920)) await tb.screenshot({ path: path.join(CAPT, W + 'x' + H + '-51-' + C.niv + '-tableau-attente-' + SUFF + '.png') }).catch(() => {});
+        const dbg = att.indexOf('Classe attendue : ' + C.nom) === 0 ? '' : ' · ' + JSON.stringify(await tb.evaluate(cle => { const cl = window.__hubLire('/classes') || {}; const g = window.__hubLire('/site/edt/grille/2026-2027'); let r = null; try { r = dr_tabCaseDuMoment(g, window.__hubLire('/site/edt/calendrier/2026-2027'), cl, new Date(), (location.search.match(/[?&]n=([^&]+)/) || [])[1]); } catch (e) { r = String(e); } return { a: !!cl[cle], maint: new Date().toString().slice(0, 24), r }; }, C.cle));
+        verif(k, att.indexOf('Classe attendue : ' + C.nom) === 0, T + ' · 13 · 51 · la page tableau sans cours dit « Classe attendue : ' + C.nom + ' »', '« ' + att + ' »' + dbg); await tb.close(); }
+      /* 4 · l'emploi du temps, semaine du 2/11 : la case, la carte */
+      await pg.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(pg, 1800); await pg.evaluate(() => { try { edtVue('semaine'); } catch (e) {} }); await p(pg, 1500); await sansVoiles(pg);
+      const r = await pg.evaluate(nom => { const re = new RegExp('^\\s*' + nom.replace(/ /g, '\\s+'), 'i'); return { cases: Array.from(document.querySelectorAll('#edt-ecran .edt-clic')).filter(e => e.offsetParent && re.test(e.innerText)).map(e => e.innerText.replace(/\s+/g, ' ').slice(0, 110)), cartes: Array.from(document.querySelectorAll('#edt-ecran [onclick*="edtCarteClic"]')).filter(e => e.offsetParent).map(e => e.innerText.replace(/\s+/g, ' ').slice(0, 80)) }; }, C.nom);
+      const avecSeance = r.cases.filter(t => /heure \d+\s*\/\s*\d+/.test(t) && !/aucune séance prête/.test(t));
+      await capt(pg, W, H, '51-' + C.niv + '-emploi-du-temps');
+      verif(k, r.cases.length > 0 && avecSeance.length === r.cases.length, T + ' · 13 · 51 · semaine du 2/11 : chaque case de « ' + C.nom + ' » montre sa séance (« heure n/N »)', avecSeance.length + '/' + r.cases.length + ' · ' + r.cases.slice(0, 2).join(' | '));
+      verif(k, r.cartes.some(t => t.indexOf(C.nom) >= 0 && /Poésie|peinture/i.test(t)), T + ' · 13 · 51 · la carte montre le chapitre publié', r.cartes.slice(0, 3).join(' | ') || 'aucune carte');
+      /* 5 · la fenêtre de la case de l'heure en cours : ses élèves ; puis lancer par la case */
+      const ouv = await pg.evaluate(nom => { const re = new RegExp('^\\s*' + nom.replace(/ /g, '\\s+'), 'i'); const cs = Array.from(document.querySelectorAll('#edt-ecran .edt-clic')).filter(e => e.offsetParent && re.test(e.innerText)); const c = cs.find(e => e.classList.contains('maintenant') || /en cours/i.test(e.innerText)) || cs[0]; if (!c) return false; c.click(); return true; }, C.nom); await p(pg, 1500);
+      const fen = await pg.evaluate(() => { const m = document.getElementById('edt-modale'); return m && m.getBoundingClientRect().height > 0 ? m.innerText.replace(/\s+/g, ' ') : ''; });
+      await capt(pg, W, H, '51-' + C.niv + '-la-case');
+      const vusFen = ELV.filter(n => fen.indexOf(n) >= 0 || fen.indexOf(n.split(' ')[1] + ' ' + n.split(' ')[0]) >= 0);
+      verif(k, ouv && vusFen.length === 4, T + ' · 13 · 51 · la fenêtre de la case montre ses élèves', vusFen.length + '/4 · « ' + fen.slice(0, 140) + ' »');
+      const lb = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Ouvrir le pilotage et lancer/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(pg, 3500); await sansVoiles(pg); await pg.keyboard.press('Escape'); await p(pg, 400);
+      const h = await pg.evaluate(() => ({ lancee: !!(window.S && S.lancee), eleves: (typeof ELEVES !== 'undefined' && Array.isArray(ELEVES)) ? ELEVES.slice() : null, slug: (window.S && (S.classeSlug || S.slug)) || (typeof dr_classe === 'function' ? (dr_classe() || {}).slug : null) }));
+      const visibles = []; for (const n of ELV) if (await texteVisible(pg, new RegExp(n.split(' ')[1] + '|' + n.split(' ')[0]))) visibles.push(n);
+      await capt(pg, W, H, '51-' + C.niv + '-l-heure-lancee');
+      verif(k, lb && h.lancee, T + ' · l’heure se lance par la case de « ' + C.nom + ' »', JSON.stringify({ bouton: lb, lancee: h.lancee }));
+      verif(k, h.eleves && ELV.every(n => h.eleves.indexOf(n) >= 0), T + ' · 13 · 51 · l’heure lancée a ses élèves (la participation)', JSON.stringify(h.eleves));
+      info(k, T + ' · élèves visibles à l’écran de l’heure : ' + visibles.length + '/4');
+    } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif(k, !o.errs.length, T + ' · 0 erreur JS', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 13 · 50 puis 13 · 49 : « 📚 Nouveau chapitre » sans la clé ; « Créer ce chapitre » garde le titre du JSON ── */
+  if (fait('50') || fait('49')) { const st = hubStore(); const o = await ouvrirCtx(W, H, st); const pg = o.pg;
+    try { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await sansVoiles(pg);
+      await pg.evaluate(() => { atelierOuvrir(); }); await p(pg, 1000); await sansVoiles(pg);
+      const cle0 = await pg.evaluate(() => !!(window.SECU && SECU.valide));
+      const porte = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-porte-ch')).find(x => x.offsetParent !== null); if (!b) return null; b.click(); return b.innerText.replace(/\s+/g, ' ').trim().slice(0, 40); }); await p(pg, 1500);
+      const ecran = await pg.evaluate(() => ({ titre: ((document.querySelector('.at-ia-titre') || {}).textContent || '').trim(), coller: !!(document.getElementById('ch-coller') && document.getElementById('ch-coller').offsetParent), cle: /Clé requise/.test(document.body.innerText) }));
+      if (fait('50')) { await capt(pg, W, H, '50-nouveau-chapitre');
+        verif('50', !cle0 && porte && /Construire un chapitre/.test(ecran.titre) && ecran.coller && !ecran.cle, T + ' · 13 · 50 · sans la clé, « ' + (porte || '?') + ' » ouvre « Construire un chapitre avec une IA », sans « Clé requise »', JSON.stringify(Object.assign({ cle: cle0 }, ecran))); }
+      if (fait('49')) {
+        if (!ecran.coller) verif('49', false, T + ' · 13 · 49 · l’écran « Nouveau chapitre » ne s’ouvre pas (la clé : 13 · 50) — « Créer ce chapitre » pas atteint');
+        else { const { chapitreTest } = await import(path.join(RACINE, 'LIVRAISONS', 'INTEGRATION', 'E1', 'bancs', 'import-3e.mjs')); const j = chapitreTest(st); const TIT = 'Le chapitre neuf du banc E3';
+          j.chapitre.title = TIT; j.chapitre.seances.forEach(se => ((se.deroule || {}).ecrans || []).forEach(e => { e.blocs = (e.blocs || []).filter(b => b.t !== 'fiche'); }));   /* le chapitre du faux hub a une fiche sans feuille : le site la refuse (1.7) */
+          await pg.fill('#ch-coller', JSON.stringify(j)); await p(pg, 400);
+          await clicTexte(pg, 'button', 'Vérifier'); await p(pg, 1500);
+          const msg = await pg.evaluate(() => ((document.getElementById('ch-msg') || {}).innerText || '').replace(/\s+/g, ' ').slice(0, 120));
+          const cree = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Créer ce chapitre/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(pg, 1500);
+          await pg.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && m.getBoundingClientRect().height > 0 && Array.from(m.querySelectorAll('button')).find(x => /Créer/.test(x.textContent)); if (b) { window.__E3MOD = m.innerText.replace(/\s+/g, ' ').slice(0, 200); b.click(); } });   /* la confirmation (fixe : offsetParent nul) */ await p(pg, 2500);
+          const tit = await pg.evaluate(() => { const c = window.__hubLire('/site/3e/chapitres'); return (Array.isArray(c) ? c : Object.values(c || {})).filter(Boolean).map(x => x.title || ''); });
+          await capt(pg, W, H, '49-chapitre-cree');
+          const conf = await pg.evaluate(() => window.__E3MOD || ''); verif('49', cree && !/proposition/.test(conf) && tit.indexOf(TIT) >= 0 && !tit.some(x => x.indexOf(TIT + ' (proposition)') === 0), T + ' · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub', JSON.stringify({ verifier: msg, bouton: cree, confirmation: await pg.evaluate(() => window.__E3MOD || null), titres: tit.filter(x => x.indexOf(TIT) === 0), tous: tit.length, boites: o.boites.slice(-2), apres: (await pg.evaluate(() => ((document.getElementById('ch-msg') || {}).innerText || '').replace(/\s+/g, ' ').slice(0, 160))), ecr: (await pg.evaluate(() => window.__ECR.filter(x => /chapitres/.test(x)).slice(-3))) })); } }
+    } catch (e) { verif('49', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (49-50)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
 }
 await nav.close();
 dire(''); dire('BILAN banc-1228 : ' + (nb - echecs) + '/' + nb + ' vérifications' + (echecs ? ' — ' + echecs + ' ÉCHEC(S) · ROUGE' : ' · VERT'));

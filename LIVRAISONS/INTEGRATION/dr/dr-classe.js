@@ -502,7 +502,8 @@ function dr_creneauPropose(){
 function dr_classeProposee(){
   try { if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && AT_DR_COURS.classeSlug) return AT_DR_COURS.classeSlug; } catch (e) {}
   try { const c = (typeof dr_classe === 'function') ? dr_classe() : null; if (c && c.slug) return c.slug; } catch (e) {}
-  try { const l = _lvlClasses((AT.edChap || {}).level) || []; if (l[0]) return l[0].slug; } catch (e) {}
+  try { const src = typeof dr_sourceSeance === 'function' ? dr_sourceSeance() : null; if (src) return src.classeSlug || ''; } catch (e) {}   /* E1 (§12.38-1) : la source unique — jamais « la première classe du niveau » en silence quand une séance est ouverte */
+  try { const l = _lvlClasses((AT.edChap || {}).level) || []; if (l[0]) return l[0].slug; } catch (e) {}   /* sans séance ouverte (rien à répéter) : l'ancien repli */
   return '';
 }
 /* le slug d'une classe depuis son nom (la case de l'EDT dit le nom) : la clé de `classesData` */

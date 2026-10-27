@@ -16412,8 +16412,42 @@ function dr_cotesTableau(){ return "var dr_seances = () => DATA.seances, dr_acti
 
 /* ── la classe : ses élèves (« NOM Prénom »), son École Directe, ses prochaines heures ── */
 function dr_classeDuNiveau(){ const c = (typeof AT !== 'undefined' && AT && AT.edChap) || null; if (!c || typeof _lvlClasses !== 'function') return null; const l = _lvlClasses(c.level) || []; const k = l[0]; return k == null ? null : (typeof k === 'object' ? (k.slug || k.id || k.nom) : k); }
+/* E1 (§12.38-1, registres 13 · 79, 13 · 81 ; Paul 27/10 23:03 « jouer en avance prend toujours les Dylan ») : LA SOURCE UNIQUE de la classe, de l'heure n/N
+   et de la date hors d'une heure lancée — la prochaine case de CETTE séance (par sa clé, §12.39) à l'emploi du temps, parmi les classes pour qui elle est (§12.35).
+   L'en-tête de l'Atelier et la répétition la disent ; E4 l'affiche dans la colonne (§12.36 (5)). Le nom de la classe se clique : `dr_choisirClasse(slug)` prend une autre
+   classe de la séance (sa prochaine case). Sans case dans la projection : la première classe pour qui la séance est, `aEdt: false` (« pas encore à l'emploi du temps »).
+   Jamais « la première classe du niveau » en silence. Rend { classeSlug, classeNom, iso, creneau, heure, sur, date, classes: [{slug, nom}], aEdt, choisie } ou null (pas de séance ouverte). */
+function dr_sourceSeance(){ try {
+  const ec = (typeof AT !== 'undefined' && AT && AT.edChap) || null; const sk = (typeof ATVUES !== 'undefined' && ATVUES && ATVUES.snum != null) ? String(ATVUES.snum) : null; if (!ec || sk == null || typeof chapitresData === 'undefined') return null;
+  const ch = (chapitresData[ec.level] || {})[ec.chnum]; const se = ch && ch.seances && ch.seances[sk]; if (!se) return null;
+  const cleS = ec.level + '|' + ec.chnum + '|' + sk; const ch0 = DR_MEM.classeChoisie && DR_MEM.classeChoisie.cle === cleS ? DR_MEM.classeChoisie.slug : null;
+  const edtPret = (typeof dr_edtPret === 'function' ? dr_edtPret() : (typeof EDT_CHAP !== 'undefined' && EDT_CHAP && !!EDT_CHAP[ec.level])) && typeof edtProjeter === 'function';
+  if (!edtPret && typeof dr_edtAssurer === 'function' && !DR_MEM.edtDemande) { DR_MEM.edtDemande = true; try { dr_edtAssurer(); } catch (e) {} }   /* l'emploi du temps se lit une fois ; la source se refait quand il est là */
+  const d = new Date(); const iso0 = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  const cle = cleS + '|' + (ch0 || '') + '|' + (edtPret ? 1 : 0) + '|' + iso0 + '|' + Math.floor(Date.now() / 30000) + '|' + JSON.stringify(se.classes || null);
+  const M = DR_MEM.source; if (M && M.cle === cle) return M.v;
+  const nomDe = sl => { try { return (classesData[sl] && classesData[sl].nom) || sl; } catch (e) { return sl; } };
+  const classes = (typeof _lvlClasses === 'function' ? (_lvlClasses(ec.level) || []) : []).map(k => typeof k === 'object' ? (k.slug || k.id) : k).filter(Boolean)
+    .filter(sl => typeof edtSeancePour !== 'function' || edtSeancePour(se, nomDe(sl))).map(sl => ({ slug: sl, nom: nomDe(sl) }));
+  let cs = []; if (edtPret) { try { cs = Object.values(edtProjeter(iso0, 70) || {}).filter(c => c && c.nature === 'prevu' && c.classeMjpc && String(c.chCle) === String(ec.chnum) && String(c.snum) === sk).sort((a, b) => (a.iso + a.creneau).localeCompare(b.iso + b.creneau)); } catch (e) { cs = []; } }
+  const slugDe = n => (typeof edtCleClasse === 'function' ? edtCleClasse(n) : n);
+  const c0 = ch0 ? cs.find(c => slugDe(c.classeMjpc) === ch0) : cs.find(c => classes.some(x => x.slug === slugDe(c.classeMjpc))) || cs[0];
+  let v;
+  if (c0) { const sl = slugDe(c0.classeMjpc); const [y, mo, j] = c0.iso.split('-').map(Number); const dt = new Date(y, mo - 1, j);
+    v = { classeSlug: sl, classeNom: nomDe(sl), iso: c0.iso, creneau: c0.creneau, heure: c0.heure || 1, sur: c0.sur || 1, date: dt.toLocaleDateString('fr-FR', { weekday: 'short' }) + ' ' + String(j).padStart(2, '0') + '/' + String(mo).padStart(2, '0') + ' ' + String(c0.creneau).split('-')[0], classes, aEdt: true, choisie: !!ch0 }; }
+  else { const sl = ch0 || (classes[0] && classes[0].slug) || null; v = { classeSlug: sl, classeNom: sl ? nomDe(sl) : '', iso: null, creneau: null, heure: null, sur: null, date: '', classes, aEdt: false, choisie: !!ch0 }; }
+  DR_MEM.source = { cle, v }; return v; } catch (e) { return null; } }
+function dr_sourceTexte(src){ src = src || dr_sourceSeance(); if (!src) return ''; return src.aEdt ? ('heure ' + src.heure + '/' + src.sur + ' · ' + src.date) : 'pas encore à l’emploi du temps'; }
+function dr_choisirClasse(slug){ const ec = (typeof AT !== 'undefined' && AT && AT.edChap) || null; if (!ec || typeof ATVUES === 'undefined' || ATVUES.snum == null) return; DR_MEM.classeChoisie = { cle: ec.level + '|' + ec.chnum + '|' + String(ATVUES.snum), slug }; DR_MEM.source = null; DR_MEM.heuresAVenir = {}; try { dr_hclasseMaj(); } catch (e) {} try { dr_tout(); } catch (e) {} }
+/* le nom de la classe se clique (hors d'une heure lancée) : les autres classes de la séance */
+function dr_hclasseMenu(ev){ try { if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && AT_DR_COURS.classeSlug) return; const src = dr_sourceSeance(); if (!src || src.classes.length < 2) return; if (ev) ev.stopPropagation();
+  let m = document.getElementById('dr-classes-choix'); if (m) { m.remove(); return; } m = document.createElement('div'); m.id = 'dr-classes-choix'; const r = (ev && ev.currentTarget || document.getElementById('hclasse')).getBoundingClientRect();
+  m.style.cssText = 'position:fixed;z-index:9999;left:' + Math.round(r.left) + 'px;top:' + Math.round(r.bottom + 4) + 'px;background:var(--carte2,#241e17);border:1px solid var(--bord2,#4a3d2f);border-radius:8px;padding:4px;display:flex;flex-direction:column;gap:2px';
+  m.innerHTML = src.classes.map(c => `<button class="btn" data-cl="${dr_esc(c.slug)}" title="Prend ${dr_esc(c.nom)} : sa prochaine heure de cette séance à l’emploi du temps — la classe, l’heure n/N et la date de l’Atelier et de la répétition"${c.slug === src.classeSlug ? ' style="font-weight:700"' : ''}>${dr_esc(c.nom)}</button>`).join('');
+  m.querySelectorAll('[data-cl]').forEach(b => b.onclick = e => { e.stopPropagation(); m.remove(); dr_choisirClasse(b.dataset.cl); });
+  document.body.appendChild(m); setTimeout(() => document.addEventListener('click', function f(){ document.removeEventListener('click', f); const x = document.getElementById('dr-classes-choix'); if (x) x.remove(); }), 0); } catch (e) {} }
 function dr_classe(){
-  const c = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) || null; const slug = (c && c.classeSlug) || DR_MEM.classeSlug || dr_classeDuNiveau();   /* la classe du niveau du chapitre (E2 propose la sienne par dr_classeProposee, qui lit dr_classe) */
+  const c = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) || null; const src = (c && c.classeSlug) ? null : dr_sourceSeance(); const slug = (c && c.classeSlug) || (src && src.classeSlug) || DR_MEM.classeSlug || dr_classeDuNiveau();   /* E1 (§12.38-1) : hors d'une heure lancée, la classe de la source unique (la prochaine case de la séance) — avant : la dernière vue, sinon la première du niveau */   /* la classe du niveau du chapitre (E2 propose la sienne par dr_classeProposee, qui lit dr_classe) */
   const cl = (slug && typeof classesData !== 'undefined' && (classesData[slug] || (typeof edtCleClasse === 'function' && classesData[edtCleClasse(slug)]))) || {};   /* E1 (§12.31-1 bis) : un nom passé pour une clé se résout comme dans l'emploi du temps */
   /* E4 (§12.38 (2), Paul 23:16) : en répétition, les gestes d'élève se jouent sur les élèves de « CLASSE TEST » (quatre élèves inventés), jamais sur ceux d'une vraie classe
      (ni « _TEST », copié d'une classe réelle) ; la classe de l'heure répétée (son nom, sa réactivation, ses heures) reste celle-ci */
@@ -16520,7 +16554,12 @@ function dr_jouerCopie(copie){ try {
 /* E1 (§12.27-8, dette 13 · 38) : #hclasse dit la classe de l'heure — celle d'AT_DR_COURS (posée par E2 au lancement, à la reprise, à l'ouverture
    « Où en est la classe ») —, et avant tout lancement la classe proposée (celle que dit « ▶ Lancer avec … », dr_proposer d'E2) ; suivie au rendu et à la seconde */
 function dr_hclasseNom(leger){ try { if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug)) return AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug; } catch (e) {} if (leger) return null; try { if (typeof dr_proposer === 'function') { const p = dr_proposer(); if (p && p.classeNom) return p.classeNom; } } catch (e) {} return dr_classe().nom; }
-function dr_hclasseMaj(leger){ const hc = document.getElementById('hclasse'); if (!hc) return; const n = dr_hclasseNom(leger); if (n == null) return; if (hc.textContent !== n) hc.textContent = n; }
+function dr_hclasseMaj(leger){ const hc = document.getElementById('hclasse'); if (!hc) return; const n = dr_hclasseNom(leger); if (n == null) return; if (hc.textContent !== n) hc.textContent = n;
+  /* E1 (§12.38-1) : hors d'une heure lancée, le nom se clique (les autres classes de la séance) et l'en-tête dit l'heure n/N et la date de la source */
+  const enCours = typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && AT_DR_COURS.classeSlug; const src = enCours ? null : dr_sourceSeance();
+  if (!enCours && src) { if (!hc._drMenu) { hc._drMenu = true; hc.onclick = dr_hclasseMenu; } const t = src.classes.length > 1 ? 'Les classes de cette séance : clique pour en prendre une autre — l’Atelier et la répétition prennent sa prochaine heure à l’emploi du temps' : 'La classe de cette séance : sa prochaine heure à l’emploi du temps'; if (hc.title !== t) hc.title = t; hc.style.cursor = src.classes.length > 1 ? 'pointer' : '';
+    const ho = document.getElementById('hou'); if (ho && typeof S !== 'undefined' && S && !S.lancee && ((S.atelier && document.body.classList.contains('vue-atelier')) || S.repetition) && !document.documentElement.classList.contains('dr-en-classe')) {   /* l'Atelier et la répétition seulement : l'écran de la classe garde son entête */ let tx = dr_sourceTexte(src); if (typeof S !== 'undefined' && S && S.repetition && src.aEdt) { const hv = dr_heureAVenir(S.heure || 1); tx = hv ? ('heure ' + (S.heure || 1) + '/' + (hv.sur || src.sur) + ' · ' + new Date(hv.base).toLocaleDateString('fr-FR', { weekday: 'short' }) + ' ' + new Date(hv.base).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }) + ' ' + hv.debut) : tx; } tx = ' · ' + tx; if (ho.textContent !== tx) ho.textContent = tx; } }
+  else if (hc._drMenu) { hc._drMenu = false; hc.onclick = null; hc.style.cursor = ''; } }
 setInterval(() => { try { if (dr_actif()) dr_hclasseMaj(); } catch (e) {} }, 1000);
 function dr_demarrer(){ dr_envelopperJouer(); dr_toutLire(); dr_classe(); dr_taxo(); dr_suivreSeance(); dr_hclasseMaj(); const ho = document.getElementById('hou'); if (ho && !S.lancee) ho.textContent = 'aucune heure lancée'; DR_MEM.demarre = true; }
 
@@ -18480,7 +18519,8 @@ function dr_creneauPropose(){
 function dr_classeProposee(){
   try { if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && AT_DR_COURS.classeSlug) return AT_DR_COURS.classeSlug; } catch (e) {}
   try { const c = (typeof dr_classe === 'function') ? dr_classe() : null; if (c && c.slug) return c.slug; } catch (e) {}
-  try { const l = _lvlClasses((AT.edChap || {}).level) || []; if (l[0]) return l[0].slug; } catch (e) {}
+  try { const src = typeof dr_sourceSeance === 'function' ? dr_sourceSeance() : null; if (src) return src.classeSlug || ''; } catch (e) {}   /* E1 (§12.38-1) : la source unique — jamais « la première classe du niveau » en silence quand une séance est ouverte */
+  try { const l = _lvlClasses((AT.edChap || {}).level) || []; if (l[0]) return l[0].slug; } catch (e) {}   /* sans séance ouverte (rien à répéter) : l'ancien repli */
   return '';
 }
 /* le slug d'une classe depuis son nom (la case de l'EDT dit le nom) : la clé de `classesData` */

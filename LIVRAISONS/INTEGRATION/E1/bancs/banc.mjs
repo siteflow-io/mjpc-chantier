@@ -1683,6 +1683,36 @@ await B('A90', '§12.39 (3) : la page de l\'élève de 3 DYLAN Bob (la séance d
   E.verif('A90', nums.length > 2 && nums.every((n, i) => n === String(i + 1)), 'Structure : « Séance 1, 2, 3… » le rang, même quand `ordre` vaut 1, 5, 9', JSON.stringify(nums));
   await o.ctx.close(); });
 
+/* ── A87 · §12.38 (1), 13 · 79, 13 · 81 : une seule source pour la classe, l'heure n/N et la date — la prochaine case de CETTE séance ── */
+await B('A87', '§12.38 (1) : à 9 h et à 20 h, séances 1 et 2 du chapitre 3e — l\'Atelier et la répétition disent la classe, l\'heure n/N et la date de la prochaine case de la séance ; jamais Dylan quand la séance n\'est pas pour lui ; le clic sur le nom change de classe', async () => {
+  for (const quand of ['2026-09-14T09:00:00+02:00', '2026-09-14T20:00:00+02:00']) for (const sk of ['1', '2']) { for (const reserve of [false, true]) {
+    const st = storeCle(); const ch0 = st.site['3e'].chapitres[0]; ch0.published = Object.assign({}, typeof ch0.published === 'object' ? ch0.published : {}, { '3_dylan_bob': true, '3e_charles_de_gaulle': true }); if (reserve) ch0.seances[sk].classes = ['3e_charles_de_gaulle'];
+    const o = await E.ouvrir(b, { w: 1707, h: 743, hub: st, quand }); const pg = o.pg;
+    const r = await pg.evaluate(sk => new Promise(res => { try { edtCharger(() => edtChargerClasses(() => edtChargerChapitres(['3e'], () => { ATVUES.snum = sk; try { dr_suivreSeance(); } catch (e) {} DR_MEM.source = null; dr_tout(); setTimeout(() => { try {
+      const d = new Date(); const iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+      const P = Object.values(edtProjeter(iso, 70)).filter(c => c.nature === 'prevu' && c.snum === sk && c.chCle === '0').sort((a, b) => (a.iso + a.creneau).localeCompare(b.iso + b.creneau));
+      dr_hclasseMaj(); const at = { cl: document.getElementById('hclasse').textContent, ou: document.getElementById('hou').textContent };
+      lancerRepetition(); dr_hclasseMaj(); const rep = { cl: document.getElementById('hclasse').textContent, ou: document.getElementById('hou').textContent, ctx: dr_ctx().classeNom, prop: dr_classeProposee() }; arreterRepetition();
+      res({ at, rep, attendu: P[0] ? { cl: P[0].classeMjpc, h: P[0].heure, sur: P[0].sur, iso: P[0].iso, cr: P[0].creneau } : null, src: typeof dr_sourceSeance === 'function' ? dr_sourceSeance() : null }); } catch (e2) { res({ erreur: String(e2.message), at: {}, rep: {} }); } }, 1200); }))); } catch (e) { res({ erreur: String(e.message), at: {}, rep: {} }); } }), sk);
+    const A = r.attendu; const dd = A ? A.iso.slice(8, 10) + '/' + A.iso.slice(5, 7) + ' ' + A.cr.split('-')[0] : '';
+    const okAt = A && r.at.cl === A.cl && r.at.ou.indexOf('heure ' + A.h + '/' + A.sur) >= 0 && r.at.ou.indexOf(dd) >= 0;
+    const okRep = A && r.rep.cl === A.cl && r.rep.ctx === A.cl && r.rep.ou.indexOf(dd.slice(0, 5)) >= 0;
+    E.verif('A87', okAt && okRep && !(reserve && /DYLAN/.test(r.at.cl + r.rep.cl)), quand.slice(11, 13) + ' h, séance ' + sk + (reserve ? ' (réservée à la 3E)' : '') + ' : Atelier « ' + r.at.cl + r.at.ou + ' », répétition « ' + r.rep.cl + r.rep.ou + ' » = la prochaine case (' + (A ? A.cl + ', heure ' + A.h + '/' + A.sur + ', ' + dd : 'aucune') + ')', JSON.stringify(r).slice(0, 400));
+    E.verif('A87', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); } }
+  { const st = storeCle(); const ch0 = st.site['3e'].chapitres[0]; ch0.published = Object.assign({}, typeof ch0.published === 'object' ? ch0.published : {}, { '3_dylan_bob': true, '3e_charles_de_gaulle': true });
+    const o = await E.ouvrir(b, { w: 1707, h: 743, hub: st }); const pg = o.pg;
+    await pg.evaluate(() => new Promise(res => edtCharger(() => edtChargerClasses(() => edtChargerChapitres(['3e'], () => { ATVUES.snum = '1'; try { dr_suivreSeance(); } catch (e) {} DR_MEM.source = null; dr_tout(); dr_hclasseMaj(); setTimeout(res, 800); })))));
+    const avant = await pg.evaluate(() => ({ cl: document.getElementById('hclasse').textContent, t: document.getElementById('hclasse').title }));
+    await sansVoile(pg); await pg.evaluate(() => { const v = document.getElementById('fi-overlay'); if (v) v.remove(); });   /* le voile du mode test, posé de nouveau par la lecture de l'emploi du temps */
+    const dessus = await pg.evaluate(() => { const r = document.getElementById('hclasse').getBoundingClientRect(); const x = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2); return x ? (x.id || x.className || x.tagName) : null; });
+    await pg.click('#hclasse', { timeout: 5000 }).catch(e => { throw new Error('clic #hclasse : dessus = ' + dessus); }); await pg.waitForTimeout(400);
+    const menu = await pg.evaluate(() => Array.from(document.querySelectorAll('#dr-classes-choix [data-cl]')).map(x => ({ cl: x.dataset.cl, t: x.textContent, title: x.title })));
+    const autre = menu.find(m => m.t !== avant.cl); if (autre) { await pg.click('#dr-classes-choix [data-cl="' + autre.cl + '"]'); await pg.waitForTimeout(600); }
+    const apres = await pg.evaluate(() => { dr_hclasseMaj(); return { cl: document.getElementById('hclasse').textContent, ou: document.getElementById('hou').textContent, ctx: dr_ctx().classeNom }; });
+    E.verif('A87', menu.length >= 2 && !!avant.t && menu.every(m => m.title) && autre && apres.cl === autre.t && apres.ctx === autre.t && /heure \d+\/\d+|pas encore/.test(apres.ou), 'le nom de la classe se clique (infobulle) : « ' + avant.cl + ' » → « ' + (autre ? autre.t : '?') + ' » ; l\'en-tête : « ' + apres.cl + apres.ou + ' »', JSON.stringify({ avant, menu: menu.map(m => m.t), apres }));
+    E.verif('A87', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
+});
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

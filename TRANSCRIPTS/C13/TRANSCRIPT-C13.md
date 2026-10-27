@@ -4887,3 +4887,12 @@ MEMO
 
 27/10/2026 17:36
 MEMO
+
+**Claude (17:40, sans message de Paul) :**
+
+617. Correction du 616, trouvée par E1 avant de coder : l'onglet « Rédaction » est celui de la page du niveau, pas d'une séance ouverte ; il n'y a donc pas toujours de « classe du cours ». Il ouvre le sujet sur la classe de l'heure ouverte, sinon sur celle de « Je publie pour », sinon il te la demande.
+
+À tester : le 611, toujours.
+
+27/10/2026 17:40
+MEMO

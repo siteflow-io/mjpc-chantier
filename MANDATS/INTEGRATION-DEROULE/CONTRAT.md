@@ -100,6 +100,7 @@ Ce que **personne** ne touche : l'EDT hors des fonctions nommées (229 fonctions
 
 - `JOURNAL.md` à chaque poussée : l'heure, fait · reste · bloqué · relances traitées.
 - `bancs/` par le geste (Playwright, Chromium — le global `/opt/node22/lib/node_modules/playwright` si présent, sinon `npm i playwright && npx playwright install chromium`), un **banc unique** `banc.mjs` qui rejoue tout le lot et échoue si un seul échoue ; `sorties/` (la sortie réelle, horodatée, md5 du fichier joué en tête) ; `captures/` écran entier, nommées par le geste.
+- **Un exemple de banc est toujours réaliste** (Paul, 27/10 14:12 : « un exemple pour le banc doit toujours etre réaliste ») : les données d'un banc (copies, niveaux choisis, citations, élèves, chapitres) sont celles qu'un vrai cours produirait — des niveaux qui se tiennent entre eux, une citation qui prouve ce que dit la phrase, un récit, une fiche qu'on pourrait rendre à un élève. Une capture montrée à Paul se lit en entier avant d'être envoyée.
 - `NOTE.md` à la fin : ce que ça change pour la classe ; le md5 de départ et d'arrivée ; chaque fonction touchée (nom, taille avant/après) ; ce qui tombe (compté) ; les bancs et leurs sorties ; les captures ; ce que les relecteurs neufs ont trouvé ; ce qui reste — **jamais une dette cachée** : ce qui n'est pas fait est écrit.
 
 ## 10 · CE QUI ARRÊTE UN EXÉCUTANT (et rien d'autre)

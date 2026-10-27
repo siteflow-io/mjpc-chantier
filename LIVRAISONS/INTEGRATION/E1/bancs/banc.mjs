@@ -1637,6 +1637,52 @@ await B('A83', '§12.35 (7) : une séance déplacée (« Remédiation », clé 7
     E.verif('A83', /\/seances\/7\/deroule_joue\/3_dylan_bob$/.test(re || ''), 'la réactivation de la séance 0 (venue après « Remédiation » dans l\'ordre) lit « Remédiation », pas rien', JSON.stringify(re)); await pg0.ctx.close(); }
 });
 
+/* ── A89 · §12.39 (1) : l'identité d'une séance est sa clé — renommée, ses cases, son heure jouée, sa réactivation la suivent ; deux titres égaux, chaque case ouvre la sienne ── */
+const lancerCellule = async (pg, choisir) => { await pg.evaluate(() => edtOuvrir()); await pg.waitForTimeout(2500);
+  const k = await pg.evaluate(f => { const C = EDT_VUE.cellules || {}; const ks = Object.keys(C).filter(x => (new Function('c', 'return ' + f))(C[x])).sort(); return ks[0] || null; }, choisir); if (!k) return { erreur: 'pas de case' };
+  const cel = await pg.evaluate(k => { const c = EDT_VUE.cellules[k]; return { titre: c.titre, snum: c.snum, chCle: c.chCle, nature: c.nature }; }, k);
+  const ok = await pg.evaluate(k => { const el = Array.from(document.querySelectorAll('.edt-clic')).find(x => (x.getAttribute('onclick') || '').indexOf(JSON.stringify(k).slice(1, -1)) >= 0 && x.offsetParent !== null); if (!el) return false; el.click(); return true; }, k); if (!ok) return { cel, erreur: 'case non cliquable' };
+  await pg.waitForTimeout(800); const bt = await pg.evaluate(() => { const x = Array.from(document.querySelectorAll('button')).find(z => z.offsetParent !== null && /edtLancer/.test(z.getAttribute('onclick') || '') && !z.hasAttribute('data-preparer')); if (!x) return false; x.click(); return true; }); if (!bt) return { cel, erreur: 'pas de bouton' };
+  await pg.waitForTimeout(3500); const lance = await pg.evaluate(() => { try { const x = dr_ctx(); return { snum: x.snum, titre: chapitresData[x.level][x.chnum].seances[x.snum].title }; } catch (e) { return { erreur: String(e.message) }; } });
+  return { cel, lance }; };
+await B('A89', '§12.39 (1) : une séance renommée — sa case jouée, ses cases prévues, le lancement et la réactivation la suivent par sa clé ; deux séances de même titre — chaque case ouvre la sienne', async () => {
+  { const st = storeCle(); const ch0 = st.site['3e'].chapitres[0]; ch0.published = Object.assign({}, typeof ch0.published === 'object' ? ch0.published : {}, { '3_dylan_bob': true }); ch0.seances[0].title = 'Poésie et peinture (renommée)';
+    const o = await ouvrirProf(1707, 743, st); const pg = o.pg; await pg.evaluate(() => edtOuvrir()); await pg.waitForTimeout(2500);
+    const cs = await pg.evaluate(() => Object.values(EDT_VUE.cellules || {}).filter(c => c.classeMjpc === '3 DYLAN Bob' && (c.nature === 'jouee' || c.nature === 'prevu')).sort((a, b) => (a.iso + a.creneau).localeCompare(b.iso + b.creneau)).slice(0, 3).map(c => ({ n: c.nature, t: c.titre, s: c.snum, ch: c.chCle, h: c.heure })));
+    E.verif('A89', cs.some(c => c.n === 'jouee') && cs.some(c => c.n === 'prevu' && c.h === 2) && cs.every(c => c.s === '0' && c.ch === '0' && c.t === 'Poésie et peinture (renommée)'), 'renommée : la case jouée et les cases prévues (« heure 2 », « heure 3 ») portent la clé 0 et le nouveau titre', JSON.stringify(cs));
+    const hs = await pg.evaluate(() => { try { edtFermer(); } catch (e) {} atEditerChapitre('3e', '0'); return new Promise(r => setTimeout(() => { ATVUES.snum = '0'; r(dr_heuresDeLaClasse('3_dylan_bob').map(x => ({ n: x.n, j: x.jouee }))); }, 1500)); });
+    E.verif('A89', hs.length >= 2 && hs[0].j === true && hs.some(x => !x.j && x.n === 2), 'renommée : les heures de la séance pour 3 DYLAN Bob (dr_heuresDeLaClasse) — la jouée, puis « heure 2 » prise à sa case par la clé', JSON.stringify(hs));
+    const re = await pg.evaluate(() => { const c0 = window.dr_ctx, h0 = window.dr_chapitre; const ch = window.__HUB.site['3e'].chapitres[0]; window.dr_ctx = () => ({ level: '3e', chnum: '0', snum: '1', classeSlug: '3_dylan_bob' }); window.dr_chapitre = () => ch; try { return dr_reactivationCheminAvant(); } finally { window.dr_ctx = c0; window.dr_chapitre = h0; } });
+    E.verif('A89', /\/seances\/0\/deroule_joue\/3_dylan_bob$/.test(re || ''), 'renommée : la réactivation de la séance 1 lit la séance 0 par sa clé', JSON.stringify(re));
+    E.verif('A89', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
+  for (const [w, h] of TAILLES_1227) { const st = storeCle(); const ch0 = st.site['3e'].chapitres[0]; delete ch0.seances[0].deroule_joue; ch0.published = Object.assign({}, typeof ch0.published === 'object' ? ch0.published : {}, { '3_dylan_bob': true }); const T = ch0.seances[0].title; ch0.seances[1].title = T;
+    const o = await ouvrirProf(w, h, st); const r = await lancerCellule(o.pg, "c.classeMjpc === '3 DYLAN Bob' && c.nature === 'prevu' && c.snum === '1'");
+    E.verif('A89', r.cel && r.cel.titre === T && r.lance && r.lance.snum === '1', w + '×' + h + ' : deux séances « ' + T.slice(0, 30) + '… » — la case de la séance 1 ouvre la séance 1', JSON.stringify(r).slice(0, 300)); await o.ctx.close(); }
+});
+
+await B('A89', '§12.39 (1) : deux séances de même titre — les heures de la séance 1 (l\'en-tête de l\'Atelier, dr_heuresDeLaClasse) ne prennent pas les cases de la séance 0', async () => {
+  const st = storeCle(); const ch0 = st.site['3e'].chapitres[0]; delete ch0.seances[0].deroule_joue; ch0.published = Object.assign({}, typeof ch0.published === 'object' ? ch0.published : {}, { '3_dylan_bob': true }); ch0.seances[1].title = ch0.seances[0].title;
+  const o = await ouvrirProf(1707, 743, st); const pg = o.pg;
+  const r = await pg.evaluate(() => new Promise(res => { atEditerChapitre('3e', '0'); setTimeout(() => { ATVUES.snum = '1'; const auj = new Date(); const iso = auj.getFullYear() + '-' + String(auj.getMonth() + 1).padStart(2, '0') + '-' + String(auj.getDate()).padStart(2, '0'); const P = Object.values(edtProjeter(iso, 21) || {}).filter(c => c.classeMjpc === '3 DYLAN Bob' && c.nature === 'prevu'); res({ h: dr_heuresDeLaClasse('3_dylan_bob').map(x => x.iso + ' ' + x.creneau), s1: P.filter(c => c.snum === '1').map(c => c.iso + ' ' + c.creneau), s0: P.filter(c => c.snum === '0').map(c => c.iso + ' ' + c.creneau) }); }, 1500); }));
+  E.verif('A89', r.s1.length > 0 && r.h.length === r.s1.length && r.h.every(x => r.s1.includes(x)) && !r.h.some(x => r.s0.includes(x)), 'les heures de la séance 1 : ses ' + r.s1.length + ' cases, aucune des ' + r.s0.length + ' de la séance 0 (même titre)', JSON.stringify(r).slice(0, 300));
+  await o.ctx.close(); });
+
+/* ── A90 · §12.39 (3) : le numéro affiché — l'élève, sans trou parmi les séances de sa classe ; Paul, le rang dans le chapitre ── */
+await B('A90', '§12.39 (3) : la page de l\'élève de 3 DYLAN Bob (la séance de la 3E cachée) et celle de la 3E — « Séance 1, 2, 3… » sans trou, chacune à sa classe ; Structure : le rang, même quand `ordre` a un trou', async () => {
+  const st = storeReserve(); const ch0 = st.site['3e'].chapitres[0]; Object.values(ch0.seances).forEach(se => { if (se) se.published = true; }); const t0 = ch0.seances[0].title; const out = {};
+  for (const [qui, cl] of [['dylan', '3 DYLAN Bob'], ['gaulle', '3E Charles de Gaulle']]) { const ctx = await b.newContext({ viewport: { width: 1366, height: 768 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r2 => r2.abort()); const p2 = await ctx.newPage();
+    await p2.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await p2.addInitScript(E.fauxHub, st); await p2.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await p2.waitForTimeout(1500);
+    await p2.evaluate(c => { TRACK.eleve = { nom: 'DURAND', prenom: 'Alice', niveau: '3e', classe: c, is_prof: false }; document.body.classList.remove('admin-mode'); clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); }, cl); await p2.waitForTimeout(2500);
+    out[qui] = await p2.evaluate(() => { const card = document.querySelector('.chapter-card') || document; const ch = Array.from(document.querySelectorAll('.chapter-body'))[0]; return Array.from((ch || document).querySelectorAll('.gc-ttl')).map(x => ({ n: (x.querySelector('.seance-disp-num') || {}).textContent, t: (x.querySelector('.seance-title-disp') || {}).textContent })); }); await ctx.close(); }
+  const suite = l => l.length > 0 && l.every((x, i) => x.n === 'Séance ' + (i + 1));
+  E.verif('A90', suite(out.dylan) && !out.dylan.some(x => x.t === t0), 'l\'élève de 3 DYLAN Bob : « Séance 1… ' + out.dylan.length + ' » sans trou, sans la séance de la 3E', JSON.stringify(out.dylan.map(x => x.n)));
+  E.verif('A90', suite(out.gaulle) && out.gaulle[0] && out.gaulle[0].t === t0, 'l\'élève de la 3E : « Séance 1… ' + out.gaulle.length + ' » sans trou, la sienne en 1', JSON.stringify(out.gaulle.map(x => x.n)));
+  const st2 = storeCle(); const c2 = st2.site['3e'].chapitres[0]; c2.seances[1].ordre = 5; c2.seances[2].ordre = 9;   /* un trou dans `ordre` (1, 5, 9…) et un doublon (5) */
+  const o = await E.ouvrir(b, { w: 1707, h: 743, vue: 'structure', hub: st2 }); const pg = o.pg; await sansVoile(pg);
+  const nums = await pg.evaluate(() => Array.from(document.querySelectorAll('.at-edch-se .at-edch-set')).map(x => (x.textContent.match(/S\u00e9ance (\d+)/) || [])[1]));
+  E.verif('A90', nums.length > 2 && nums.every((n, i) => n === String(i + 1)), 'Structure : « Séance 1, 2, 3… » le rang, même quand `ordre` vaut 1, 5, 9', JSON.stringify(nums));
+  await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

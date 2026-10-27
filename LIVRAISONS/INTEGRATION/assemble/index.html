@@ -3713,14 +3713,15 @@ function renderChapterCard(level,num,ch,dispNum,isAdmin){
   html+='<span class="gc-stat"></span><span class="gc-pub">'+pub+'</span><span class="gc-acts">'+acts+'</span></div>';
   var seances=ch.seances||{};
   var snums=Object.keys(seances).filter(function(k){return seances[k]&&typeof seances[k]==='object';}).sort(function(a,b){return (seances[a].ordre||0)-(seances[b].ordre||0);});
-  var bodyHtml='';
+  var bodyHtml='', rangVu=0;   /* E1 (§12.39-3, Paul « Ok » au 681) : l'élève voit ses séances numérotées sans trou (une séance cachée — réservée à une autre classe, non publiée — ne prend pas de numéro) ; Paul, le rang dans le chapitre */
   snums.forEach(function(snum,idx){
     var sce=seances[snum];if(!sce)return;
     if(!isAdmin && !_visiblePourSession(sce,level))return;   /* 8.4.2 */
+    rangVu++;
     var items=sce.items||{};
     /* M12 (d\u00e9cision Paul 22/07) : une s\u00e9ance PUBLI\u00c9E s'affiche TOUJOURS, m\u00eame sans item \u2014
        \u00ab On peut tr\u00e8s bien avoir fait une s\u00e9ance en classe, sans pour autant avoir de docs avec. \u00bb */
-    bodyHtml+=renderSeance(level,num,snum,sce,idx+1,isAdmin);
+    bodyHtml+=renderSeance(level,num,snum,sce,rangVu,isAdmin);
   });
   if(isAdmin){bodyHtml+='<div class="admin-add-row"><button class="admin-action-add" onclick="addSeance(\''+level+'\',\''+num+'\')">+ Nouvelle s\u00e9ance</button></div>';}
   html+='<div class="chapter-body'+(UI_OPEN[level+'::'+num]?' open':'')+'">'+bodyHtml+'</div></div>';
@@ -8436,8 +8437,8 @@ function atIAInjecterAvecDestination(o){
   }
   var l=atSeances(ch);
   ED_SEL.v=(AT_IA.adresse&&AT_IA.adresse.seance!=null&&l.some(function(p){return String(p.j)===String(AT_IA.adresse.seance);}))?String(AT_IA.adresse.seance):(l[0]&&l[0].j);
-  var choix=l.map(function(p){
-    return '<option value="'+atEsc(p.j)+'"'+((String(ED_SEL.v)===String(p.j))?' selected':'')+'>S\u00e9ance '+ordDe(p.se,p.j)+' \u2014 '+atEsc(p.se.title||'')+'</option>';
+  var choix=l.map(function(p,ip){
+    return '<option value="'+atEsc(p.j)+'"'+((String(ED_SEL.v)===String(p.j))?' selected':'')+'>S\u00e9ance '+(ip+1)+' \u2014 '+atEsc(p.se.title||'')+'</option>';
   }).join('');
   atModaleChoix('Dans quelle s\u00e9ance de \u00ab '+atEsc(ch.title||chn)+' \u00bb ('+atEsc(lvl)+') d\u00e9poser la feuille ?<br>'
     +'<select class="at-sel" id="at-inj-se" onchange="ED_SEL.v=this.value">'+choix+'</select>',
@@ -10172,7 +10173,7 @@ function atCtxAffichage(ctxVue,quoi){
   }
   if(!ctxVue.seance)return '';
   var s=atSeancesDe(ctxVue.niveau,ctxVue.chapitre).filter(function(x){return x.num===String(ctxVue.seance);})[0];
-  return s?('Séance '+s.ordre+' — '+s.titre):'';
+  return s?('Séance '+s.rang+' — '+s.titre):'';
 }
 function atelierDocumentHTML(doc,ctxEleve,options){
   options=options||{};
@@ -11021,8 +11022,8 @@ function atSeancesDe(niveau,chnum){
   var d=(niveau&&typeof chapitresData!=='undefined'&&chapitresData[niveau])||{};
   var ch=d[chnum];if(!ch||!ch.seances)return [];
   var out=[];
-  Object.keys(ch.seances).forEach(function(k){var s=ch.seances[k];if(!s)return;out.push({num:String(k),titre:s.title||('Séance '+k),ordre:(s.ordre!=null?Number(s.ordre):(parseInt(k,10)||0))});});
-  return out.sort(function(a,b){return a.ordre-b.ordre;});
+  ordPaires(ch.seances).forEach(function(p,i){var k=p.k,s=p.o;out.push({num:String(k),titre:s.title||('Séance '+k),ordre:(s.ordre!=null?Number(s.ordre):(parseInt(k,10)||0)),rang:i+1});});   /* E1 (§12.39) : l'ordre d'ordPaires (l'`ordre`, la clé départage) ; `rang`, le numéro affiché */
+  return out;
 }
 /* Poser ou effacer l'adresse : les libellés viennent du HUB, jamais retapés. */
 function atRattPoserChapitre(r,num){
@@ -11060,7 +11061,7 @@ function atAdresseAffichage(doc,quoi){
   }
   if(!r.seance)return '';
   var s=atSeancesDe(r.niveau,r.chapitre).filter(function(x){return x.num===String(r.seance);})[0];
-  if(s)return 'Séance '+s.ordre+' — '+s.titre;
+  if(s)return 'Séance '+s.rang+' — '+s.titre;
   return r.seanceTitre?('Séance '+r.seance+' — '+r.seanceTitre):'';
 }
 /* ── L'ADRESSE VENUE D'UNE IA SE VALIDE — refus NOMMÉS, libellés du hub ──
@@ -11258,7 +11259,7 @@ function atAdresseLisible(r){
     var ses=(cRes&&cRes.o&&cRes.o.seances)||null;
     var sRes=ses?uidResoudre(ses,r.seanceUid,r.seance):null;
     if(!sRes&&r.seanceUid)return out+' \u203a la s\u00e9ance a \u00e9t\u00e9 supprim\u00e9e';
-    out+=' \u203a S\u00e9ance '+(sRes?ordDe(sRes.o,sRes.k):r.seance);
+    out+=' \u203a S\u00e9ance '+(sRes?(seRangDe(ses,sRes.k)||ordDe(sRes.o,sRes.k)):r.seance);
   }
   return out;
 }
@@ -11631,6 +11632,8 @@ function atInfoInjection(voie){
    sont denses, en OBJET quand l'index 0 manque (le trou du chapitre 1 réel).
    Une seule lecture pour tout le morceau : des paires {j:index RÉEL, se:séance},
    parce que l'éditeur écrit /seances/<j>/… et que j doit être la clé vraie. */
+/* E1 (§12.39-3, 13 · 80) : le NUMÉRO AFFICHÉ d'une séance est un rang calculé (sa place dans l'`ordre`, 1, 2, 3… sans trou) — jamais la clé, jamais la valeur brute d'`ordre` */
+function seRangDe(coll,k){ var p=ordPaires(coll); for(var i=0;i<p.length;i++){ if(String(p[i].k)===String(k))return i+1; } return 0; }
 function atSeances(ch){
   /* [C5-ORD] ② le tri se fait sur `ordre` — comme renderChapitres. L'atelier et
      l'arborescence ne peuvent plus afficher deux ordres pour les mêmes séances.
@@ -12202,7 +12205,7 @@ function edDeplacerVersSeance(j,k){
   if(!autres.length){atInfo('Le chapitre n’a pas d’autre séance.');return;}
   ED_SEL.v=autres[0].j;
   var choix=autres.map(function(p){
-    return '<option value="'+atEsc(p.j)+'">Séance '+ordDe(p.se,p.j)+' — '+atEsc(p.se.title||'')+'</option>';
+    return '<option value="'+atEsc(p.j)+'">Séance '+(seRangDe(c.ch.seances,p.j)||ordDe(p.se,p.j))+' — '+atEsc(p.se.title||'')+'</option>';
   }).join('');
   atModaleChoix('Déplacer « '+atEsc(it.title||k)+' » vers :<br>'
     +'<select class="at-sel" id="ed-depl-se" onchange="ED_SEL.v=this.value">'+choix+'</select><br>'
@@ -13253,7 +13256,7 @@ function atEditerChapitreRendre(){
     var somNote=(se.type==='sommaire')?' <span class="ch-type">page de garde</span>':'';
     /* [C5-ED1] les gestes de la s\u00e9ance : monter, descendre, ajouter un item,
        supprimer (garde d'IDENTIT\u00c9S incluse : deleteSeance pr\u00e9vient qui pointe). */
-    var _ordSe=ordDe(se,j);
+    var _ordSe=_rangSe+1;   /* E1 (§12.39-3) : le rang dans le chapitre, pas la valeur brute d'`ordre` */
     h+='<div class="at-edch at-edch-se" data-sce="'+atEsc(j)+'" data-champ="'+ed2CleSe(j)+'" onclick="ed2ClicChamp(\''+ed2CleSe(j)+'\')"><div class="at-edch-set">S\u00e9ance '+_ordSe+somNote
       +'<span class="at-edch-actes">'
       +'<button class="at-btn at-btn-min" title="Monter"'+(_rangSe===0?' disabled':'')+' onclick="edDeplacerSeance(\''+j+'\',-1)">\u2191</button>'
@@ -16092,6 +16095,9 @@ function dr_cles(){ const c = dr_chapitre(); if (!c || !c.seances) return []; re
 function dr_seance(sk){ const c = dr_chapitre(); return (c && c.seances && c.seances[sk]) || null; }
 function dr_rangSeance(sk){ const i = dr_cles().indexOf(String(sk)); return i < 0 ? 0 : i; }
 function dr_cleSeance(si){ const k = dr_cles(); return k[si] != null ? k[si] : null; }
+/* E1 (§12.39, 13 · 80) : `dr_cles` est l'INDEX interne du volet (S.si ↔ clé, jamais écrit au hub, jamais montré) ; le numéro MONTRÉ est le rang dans l'`ordre` (`seRangDe`, le même que Structure) ; la clé désigne la séance, `dr_seanceDe(chCle, snum)` dit si c'est celle-ci */
+function dr_rangAffiche(si){ try { const c = dr_chapitre(), k = dr_cleSeance(si); if (c && k != null && typeof seRangDe === 'function') { const r = seRangDe(c.seances, k); if (r) return r; } } catch (e) {} return (si || 0) + 1; }
+function dr_estCetteSeance(chCle, snum){ const ec = (typeof AT !== 'undefined' && AT && AT.edChap) || null; const sk = (typeof ATVUES !== 'undefined' && ATVUES && ATVUES.snum != null) ? String(ATVUES.snum) : null; return !!(ec && sk != null && chCle != null && snum != null && String(chCle) === String(ec.chnum) && String(snum) === sk); }
 /* la trame d'une séance : B/deroule.ecrans, identifiée (eid) et lue par le rendu (dr_preparer) — jamais copiée */
 function dr_trameDe(sk){
   dr_toutLire(); const sce = dr_seance(sk); if (!sce) return [];
@@ -17063,7 +17069,7 @@ function creneauDe(di){ /* l'heure prévue d'une diapo : la base de son heure + 
 /* E1 (§12.25 (5)) : l'entête de l'Atelier dit le réglage de la séance — ouvrir chaque heure par la réactivation, oui (le défaut) ou non — par les deux fonctions d'E2 ; un clic le change */
 function dr_reglageReactHtml(){ if (typeof dr_reglageReactivationLu !== 'function') return ''; let v = null, brut; try { const sk = dr_cleSeance(S.si); v = dr_reglageReactivationLu(sk); brut = ((dr_seance(sk) || {}).deroule || {}).reactivation; } catch (e) {} const non = v === 'non'; /* « (par défaut) » : rien n'est posé pour la séance (E2 lit l'absent comme « oui ») */ return `<div class="sea2 dr-react" data-dr-react="${non ? 'oui' : 'non'}" title="Le réglage de cette séance : ce qui est proposé à l'ouverture de chaque heure (tu choisis encore à chaque heure). Clique pour le changer">Ouvrir chaque heure par la réactivation : <b>${non ? 'non' : 'oui'}</b>${brut === 'oui' || brut === 'non' ? '' : ' (par défaut)'}</div>`; }
 function dr_reglageReactBrancher(z){ const b = z && z.querySelector('[data-dr-react]'); if (!b || b._ok) return; b._ok = true; b.style.cursor = 'pointer'; b.onclick = () => { if (typeof dr_reglageReactivation !== 'function') return; try { dr_reglageReactivation(dr_cleSeance(S.si), b.dataset.drReact); } catch (e) {} dr_tout(); }; }
-function voletAtelier(){ const E = seance().ecrans; const heures = [...new Set(E.map(e => e.heure))].sort(); const acts = dr_activites()/* E1 : lisait DATA.activites */[String(S.si)] || []; const numA = i => { const a = actDe(E[i]); return a ? 'A' + a.num : ''; }; let h = `<div class="at-chap"><div class="sea">Chapitre · ${dr_esc(dr_chapitreTitre())}</div><div class="sea2">Séance ${(S.si || 0) + 1} — ${dr_esc(seance().titre)} (${heures.length} h)</div>${dr_reglageReactHtml()}`; heures.forEach(hh => { const o = ordreHeure(hh); const prevu = o.filter(i => E[i].role !== 'fin').reduce((t, i) => t + (E[i].dur || 0), 0); const sim = dr_heureDe(hh)/* E1 : lisait HEURES_SIM */; const dep = prevu + 5 - 50; h += `<div class="fr"><span>H${hh} · ${sim ? dr_esc(sim.jour.replace(/ \d{4}$/, '')) : ''}${dr_heureEstJouee(hh) ? ' · jouée' : ' · 55 min'}</span><span>${prevu} + 5 = ${prevu + 5} min ${dep > 0 ? '<span class="plus" title="Ce que l\'heure dépasse : réduis une durée ou déplace une diapo">+' + dep + '</span>' : '<span style="color:var(--joue)">✔</span>'}</span></div>`; o.forEach(i => { const e = E[i]; h += `<div class="dr-d${i === S.di ? ' on' : ''}" data-at-di="${i}" title="Ouvre cette diapo dans l'atelier"><span class="dr-n">${rangDe(i, hh)}</span><span class="t">${e.role === 'fin' ? 'Cahier de textes' : dr_esc(e.act)}${(function(){ const n = (p85hPages(i).pages || [0]).length; return n > 1 ? '<span class="p85h-pages" title="Cette diapo se lit en ' + n + ' pages au tableau (le texte ne tient pas au plancher lisible d\'une page) : en classe, une vignette par page"> · ' + n + ' pages</span>' : ''; })()}</span>${e.role === 'fin' ? '' : '<span class="a">' + numA(i) + '</span>'}<span class="dr-h">${e.role === 'fin' ? 5 : (e.dur || 0)} min</span></div>`; }); }); h += `<div class="aide">Ctrl + molette : zoom · clic droit : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer</div></div>`; return h; }
+function voletAtelier(){ const E = seance().ecrans; const heures = [...new Set(E.map(e => e.heure))].sort(); const acts = dr_activites()/* E1 : lisait DATA.activites */[String(S.si)] || []; const numA = i => { const a = actDe(E[i]); return a ? 'A' + a.num : ''; }; let h = `<div class="at-chap"><div class="sea">Chapitre · ${dr_esc(dr_chapitreTitre())}</div><div class="sea2">Séance ${dr_rangAffiche(S.si)} — ${dr_esc(seance().titre)} (${heures.length} h)</div>${dr_reglageReactHtml()}`; heures.forEach(hh => { const o = ordreHeure(hh); const prevu = o.filter(i => E[i].role !== 'fin').reduce((t, i) => t + (E[i].dur || 0), 0); const sim = dr_heureDe(hh)/* E1 : lisait HEURES_SIM */; const dep = prevu + 5 - 50; h += `<div class="fr"><span>H${hh} · ${sim ? dr_esc(sim.jour.replace(/ \d{4}$/, '')) : ''}${dr_heureEstJouee(hh) ? ' · jouée' : ' · 55 min'}</span><span>${prevu} + 5 = ${prevu + 5} min ${dep > 0 ? '<span class="plus" title="Ce que l\'heure dépasse : réduis une durée ou déplace une diapo">+' + dep + '</span>' : '<span style="color:var(--joue)">✔</span>'}</span></div>`; o.forEach(i => { const e = E[i]; h += `<div class="dr-d${i === S.di ? ' on' : ''}" data-at-di="${i}" title="Ouvre cette diapo dans l'atelier"><span class="dr-n">${rangDe(i, hh)}</span><span class="t">${e.role === 'fin' ? 'Cahier de textes' : dr_esc(e.act)}${(function(){ const n = (p85hPages(i).pages || [0]).length; return n > 1 ? '<span class="p85h-pages" title="Cette diapo se lit en ' + n + ' pages au tableau (le texte ne tient pas au plancher lisible d\'une page) : en classe, une vignette par page"> · ' + n + ' pages</span>' : ''; })()}</span>${e.role === 'fin' ? '' : '<span class="a">' + numA(i) + '</span>'}<span class="dr-h">${e.role === 'fin' ? 5 : (e.dur || 0)} min</span></div>`; }); }); h += `<div class="aide">Ctrl + molette : zoom · clic droit : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer</div></div>`; return h; }
 
 function droiteAtelier(){ const E = seance().ecrans; const e = ecran(); const aide = S.aideFermee ? '' : '<div class="at-d at-aide" id="at-aide"><span class="x" title="Ferme l\'aide">✕</span><b>Écrire dans la diapo</b> — un clic dans un bloc, tu tapes ; <b>Tab</b> passe à l\'élément suivant, <b>Maj + Tab</b> au précédent, <b>Entrée</b> en fin de ligne crée l\'élément suivant, <b>Échap</b> annule une ligne vide ; <b>Alt + ↑ / ↓</b> monte ou descend le bloc. Rien à sauver : c\'est enregistré quelques secondes après la frappe, et le témoin le dit.</div>'; return aide + droiteAtelier0(e, E); }
 
@@ -17298,7 +17304,7 @@ function couperDiapoIci(i, bi){ const E = seance().ecrans; const e = E[i]; if (!
 function dr_heuresParDurees(ecrans){ /* l'heure de chaque écran d'une séance, sans rien écrire : celle de sa trame si elle a une frontière, sinon par les durées (le calcul d'E2, le temps utile du créneau proposé) */
   const pleines = (ecrans || []).filter(e => e && e.role !== 'fin'); if (new Set(pleines.map(e => +e.heure || 1)).size > 1) return ecrans.map(e => +e.heure || 1);
   let utile = 50; try { const p = typeof dr_proposer === 'function' ? dr_proposer() : null; if (p && p.creneau && typeof dr_utileCreneau === 'function') utile = dr_utileCreneau(p.creneau) || 50; } catch (e) {} let cum = 0, der = 1; return ecrans.map(e => { if (e.role === 'fin') return der; der = 1 + Math.floor(cum / utile); cum += +e.dur || 0; return der; }); }
-function envoyerVersSeance(i){ const E = seance().ecrans; const e = E[i]; if (dr_seances()/* E1 : lisait DATA.seances */.length < 2) return dr_dire('Une seule séance dans le chapitre : rien où envoyer.'); fermerChoix(); const z = document.createElement('div'); z.className = 'choix-obj'; const dur = e.dur || 0; const HV = new Map(); const hv = sc => { if (!HV.has(sc)) HV.set(sc, dr_heuresParDurees(sc.ecrans)); return HV.get(sc); }; const compte = (sc, h) => sc.ecrans.filter((x, q) => hv(sc)[q] === h && x.role !== 'fin').reduce((t, x) => t + (x.dur || 0), 0); /* E1 (E4 ligne 173) : chaque séance ses heures — celles de sa trame, ou sa frontière par les durées, comme dans l'atelier */ const oH = ordreHeure(e.heure); const resteIci = oH.filter(q => q !== i && E[q].role !== 'fin').reduce((t, q) => t + (E[q].dur || 0), 0); z.innerHTML = `<h4><span>ENVOYER « ${dr_esc(e.act)} » VERS UNE AUTRE SÉANCE — identité inchangée, heure recalculée à l'arrivée</span><span class="x">✕</span></h4><div class="form">${dr_seances()/* E1 : lisait DATA.seances */.map((sc, k) => { if (k === S.si) return ''; const heures = [...new Set(hv(sc).filter((x, q) => sc.ecrans[q].role !== 'fin'))].sort((a, b) => a - b); return `<div class="fe"><b>Séance ${k + 1} — ${dr_esc(sc.titre || '')}</b> · ${heures.length} heure${heures.length > 1 ? 's' : ''}<br>${heures.map(h => { const c = compte(sc, h) + dur + 5; return `<span class="fi" data-si="${k}" data-h="${h}" style="${c <= 50 ? 'background:#fff7e0' : ''}" title="La diapo arrive avant la fin d'heure de H${h} ; ses notions et ses réponses d'élèves la suivent">à la fin de H${h} · ${compte(sc, h)} + ${dur} + 5 = ${c} min${c > 50 ? ' +' + (c - 50) : ' ✔'}</span>`; }).join('')}</div>`; }).join('')}<div class="dr-err" style="color:#6a5a48">Ici, elle sort du compte : l'heure ${e.heure} revient à ${resteIci} + 5 = ${resteIci + 5} min${resteIci + 5 > 50 ? ' +' + (resteIci + 5 - 50) : ' ✔'}.</div></div>`; document.querySelector('.scene').appendChild(z); z.querySelector('.x').onclick = fermerChoix; z.querySelectorAll('[data-si]').forEach(b => b.onclick = () => { const k = +b.dataset.si, h = +b.dataset.h; const cible = dr_seances()/* E1 : lisait DATA.seances */[k]; const hc = hv(cible); const posee = new Set(cible.ecrans.filter(x => x.role !== 'fin').map(x => +x.heure || 1)).size > 1; E.splice(i, 1); const anc = e.heure; e.heure = posee ? h : 1; /* une séance sans frontière posée la garde par les durées */ delete e.actId; let pos = cible.ecrans.length; for (let q = cible.ecrans.length - 1; q >= 0; q--) { if (hc[q] === h && cible.ecrans[q].role !== 'fin' && cible.ecrans[q].role !== 'bilan') { pos = q + 1; break; } if (hc[q] === h && cible.ecrans[q].role === 'fin') pos = q; } cible.ecrans.splice(pos, 0, e); fermerChoix(); apresTrame({ envoye: e.eid, vers: k, heure: h, de: anc }); S.di = Math.min(i, E.length - 1); toast('Diapo envoyée vers la séance ' + (k + 1) + ', à la fin de H' + h + ' — identité inchangée.'); dr_tout(); }); }
+function envoyerVersSeance(i){ const E = seance().ecrans; const e = E[i]; if (dr_seances()/* E1 : lisait DATA.seances */.length < 2) return dr_dire('Une seule séance dans le chapitre : rien où envoyer.'); fermerChoix(); const z = document.createElement('div'); z.className = 'choix-obj'; const dur = e.dur || 0; const HV = new Map(); const hv = sc => { if (!HV.has(sc)) HV.set(sc, dr_heuresParDurees(sc.ecrans)); return HV.get(sc); }; const compte = (sc, h) => sc.ecrans.filter((x, q) => hv(sc)[q] === h && x.role !== 'fin').reduce((t, x) => t + (x.dur || 0), 0); /* E1 (E4 ligne 173) : chaque séance ses heures — celles de sa trame, ou sa frontière par les durées, comme dans l'atelier */ const oH = ordreHeure(e.heure); const resteIci = oH.filter(q => q !== i && E[q].role !== 'fin').reduce((t, q) => t + (E[q].dur || 0), 0); z.innerHTML = `<h4><span>ENVOYER « ${dr_esc(e.act)} » VERS UNE AUTRE SÉANCE — identité inchangée, heure recalculée à l'arrivée</span><span class="x">✕</span></h4><div class="form">${dr_seances()/* E1 : lisait DATA.seances */.map((sc, k) => { if (k === S.si) return ''; const heures = [...new Set(hv(sc).filter((x, q) => sc.ecrans[q].role !== 'fin'))].sort((a, b) => a - b); return `<div class="fe"><b>Séance ${dr_rangAffiche(k)} — ${dr_esc(sc.titre || '')}</b> · ${heures.length} heure${heures.length > 1 ? 's' : ''}<br>${heures.map(h => { const c = compte(sc, h) + dur + 5; return `<span class="fi" data-si="${k}" data-h="${h}" style="${c <= 50 ? 'background:#fff7e0' : ''}" title="La diapo arrive avant la fin d'heure de H${h} ; ses notions et ses réponses d'élèves la suivent">à la fin de H${h} · ${compte(sc, h)} + ${dur} + 5 = ${c} min${c > 50 ? ' +' + (c - 50) : ' ✔'}</span>`; }).join('')}</div>`; }).join('')}<div class="dr-err" style="color:#6a5a48">Ici, elle sort du compte : l'heure ${e.heure} revient à ${resteIci} + 5 = ${resteIci + 5} min${resteIci + 5 > 50 ? ' +' + (resteIci + 5 - 50) : ' ✔'}.</div></div>`; document.querySelector('.scene').appendChild(z); z.querySelector('.x').onclick = fermerChoix; z.querySelectorAll('[data-si]').forEach(b => b.onclick = () => { const k = +b.dataset.si, h = +b.dataset.h; const cible = dr_seances()/* E1 : lisait DATA.seances */[k]; const hc = hv(cible); const posee = new Set(cible.ecrans.filter(x => x.role !== 'fin').map(x => +x.heure || 1)).size > 1; E.splice(i, 1); const anc = e.heure; e.heure = posee ? h : 1; /* une séance sans frontière posée la garde par les durées */ delete e.actId; let pos = cible.ecrans.length; for (let q = cible.ecrans.length - 1; q >= 0; q--) { if (hc[q] === h && cible.ecrans[q].role !== 'fin' && cible.ecrans[q].role !== 'bilan') { pos = q + 1; break; } if (hc[q] === h && cible.ecrans[q].role === 'fin') pos = q; } cible.ecrans.splice(pos, 0, e); fermerChoix(); apresTrame({ envoye: e.eid, vers: k, heure: h, de: anc }); S.di = Math.min(i, E.length - 1); toast('Diapo envoyée vers la séance ' + (k + 1) + ', à la fin de H' + h + ' — identité inchangée.'); dr_tout(); }); }
 
 function menuAtelierDiapo(i, x, y){ const E = seance().ecrans; const e = E[i]; const a = actDe(e); const rf = roleFixe(e); const h = e.heure; const o = ordreHeure(h); const enTete = `${e.role === 'fin' ? 'Cahier de textes (fin d\'heure)' : e.act}${a ? ' · A' + a.num : ''} · H${h}`;
   let noteDesc = ''; const j = i + 1; if (!rf && E[j] && E[j].role === 'fin') { const hS = E.slice(j + 1).find(z => z.heure !== h); if (hS) { const p1 = o.filter(k => E[k].role !== 'fin' && k !== i).reduce((t, k) => t + (E[k].dur || 0), 0); const p2 = ordreHeure(hS.heure).filter(k => E[k].role !== 'fin').reduce((t, k) => t + (E[k].dur || 0), 0) + (e.dur || 0); noteDesc = `↓ en descendant, elle passe en H${hS.heure} : l'heure ${h} revient à ${p1} + 5 = ${p1 + 5} min${p1 + 5 - 50 > 0 ? ' +' + (p1 + 5 - 50) : ' ✔'}, l'heure ${hS.heure} monte à ${p2 + 5} min${p2 + 5 - 50 > 0 ? ' +' + (p2 + 5 - 50) : ' ✔'}`; } }
@@ -18270,7 +18276,7 @@ function dr_heuresDeLaClasse(slug){ try { slug = slug || dr_classeProposee(); co
     try { const pre = dr_cheminB() + '/deroule_joue/' + slug + '/heures/'; Object.keys(DR_CL.joueesIci || {}).forEach(H => { if (H.startsWith(pre)) pousser(H.slice(pre.length), DR_CL.joueesIci[H]); }); } catch (e) {}   /* réveil n°16 (E4 ligne 178) : l'heure lancée ou close dans cette page est jouée tout de suite — la copie de la séance en page ne l'a qu'après un rechargement */
     out.sort((a, b) => (a.iso + a.creneau).localeCompare(b.iso + b.creneau)); let N = 1; try { N = edtHeuresPour(sce, null) || 1; } catch (e) {}
     const auj = new Date(); const iso0 = auj.getFullYear() + '-' + String(auj.getMonth() + 1).padStart(2, '0') + '-' + String(auj.getDate()).padStart(2, '0'); const titre = sce.title || sce.titre || '';
-    let cs = []; try { cs = Object.values(edtProjeter(iso0, 21) || {}).filter(c => c && c.classeMjpc === nom && c.nature === 'prevu' && c.titre === titre).sort((a, b) => (a.iso + a.creneau).localeCompare(b.iso + b.creneau)); } catch (e) {}   /* les cases de CETTE séance pour cette classe, avec leur heure n/N : la même projection que l'EDT */
+    let cs = []; try { cs = Object.values(edtProjeter(iso0, 21) || {}).filter(c => c && c.classeMjpc === nom && c.nature === 'prevu' && (c.snum != null ? dr_estCetteSeance(c.chCle, c.snum) : c.titre === titre)).sort((a, b) => (a.iso + a.creneau).localeCompare(b.iso + b.creneau)); } catch (e) {}   /* les cases de CETTE séance pour cette classe, avec leur heure n/N : la même projection que l'EDT */
     cs.forEach(c => { if (vues[c.iso + String(c.creneau).slice(0, 2) + String(c.creneau).slice(3, 5)]) return;   /* réveil n°16 (B17) : une heure jouée dans cette page que la projection croit encore à venir n'est pas deux fois */ out.push({ iso: c.iso, creneau: c.creneau, l: (typeof edtJourEnClair === 'function' ? edtJourEnClair(c.iso) : c.iso) + ', ' + c.creneau, jouee: false, nEdt: c.heure, surEdt: c.sur }); });
     return out.map((x, k) => Object.assign({ n: x.nEdt || (k + 1), sur: x.surEdt || Math.max(N, out.length) }, x)); } catch (e) { return []; } }
 function dr_ordreOuverture(h){ let o = ordreHeureCalc(h); try { if (dr_reactChoix(h) !== 'oui') { const E0 = seance().ecrans; o = o.filter(i => !(E0[i] && E0[i].role === 'reactivation')); } } catch (e) {}   /* §12.26 : « non » — la construite de la copie n'entre pas dans l'ordre (retirée au lancement) */ try { const E = seance().ecrans; const cles = Object.keys(S.decisions || {}); const gl = o.filter(i => E[i] && !E[i].role && glisseeDe(E[i], h)); if (gl.length < 2) return o;
@@ -18858,7 +18864,7 @@ function dr_proposer(){
     const cel = Object.values(edtProjeter(iso, 1) || {}).filter(c => c && c.classeMjpc && edtNiveauDe(c.classeMjpc) === niv && (c.nature === 'prevu' || c.nature === 'jouee') && dr_mn(String(c.creneau).split('-')[1]) > m)
       .sort((a, b) => String(a.creneau).localeCompare(String(b.creneau)))[0];
     const titre = (seance() || {}).titre || '';
-    if (cel && (cel.nature === 'jouee' || !cel.titre || cel.titre === titre)) { const sl = dr_slugDe(cel.classeMjpc);
+    if (cel && (cel.snum != null ? dr_estCetteSeance(cel.chCle, cel.snum) : (cel.nature === 'jouee' || !cel.titre || cel.titre === titre))) {   /* E1 (§12.39-1, 13 · 80) : la case est-elle À CETTE SÉANCE ? par sa clé (la projection la porte), jamais par son titre */ const sl = dr_slugDe(cel.classeMjpc);
       let N = cel.sur; if (!N) { try { N = edtHeuresPour(chapitresData[AT.edChap.level][AT.edChap.chnum].seances[ATVUES.snum], cel.creneau); } catch (e) {} }   /* relecteur neuf n°3 (7) : une case jouée ne porte pas `sur` — « heure 2/1 » */
       const hx = (dr_heuresDeLaClasse(sl) || []).find(x => x.iso === iso && x.creneau === cel.creneau);   /* réveil n°14 : la source unique de l'heure n/N (§12.18) — la même que l'Atelier */
       return { classeSlug: sl, classeNom: dr_nomClasse(sl), creneau: cel.creneau, debut: dr_debutPropose(cel.creneau), heure: (hx && hx.n) || cel.heure || dr_heureProposee(sl, cel.creneau), sur: (hx && hx.sur) || Math.max(1, N || 1, cel.heure || 1), depuis: 'edt', clos: !!(cel.nature === 'jouee' && cel.clos) }; }
@@ -23185,7 +23191,7 @@ function edtProjeter(isoDebut,nbJours){
       if(trouvee){
         cel.nature='jouee'; cel.activites=(trouvee.activites||[]).length;
         cel.reportees=(trouvee.activites||[]).filter(function(a){return a&&a.reel===0;}).length;
-        cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau); if(edtOu)cel.titre=edtOu.titre; /* [E2] la case close garde le titre de sa séance (réveil n°5, A4-4) */ cellules[cle]=cel; continue;
+        cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau); if(edtOu){ cel.titre=edtOu.titre; cel.chCle=edtOu.chapitre!=null?String(edtOu.chapitre):null; cel.snum=edtOu.seance!=null?String(edtOu.seance):null; }   /* E1 (§12.39-1) : la case jouée porte aussi la clé de sa séance */ /* [E2] la case close garde le titre de sa séance (réveil n°5, A4-4) */ cellules[cle]=cel; continue;
       }
       /* [2ter 14a] LA BORNE SE POSE ICI, ET PAS PLUS HAUT.
          Elle remplace LE PREVU, jamais le reel ni une decision de Paul :

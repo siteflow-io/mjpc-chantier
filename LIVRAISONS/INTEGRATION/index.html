@@ -3713,14 +3713,15 @@ function renderChapterCard(level,num,ch,dispNum,isAdmin){
   html+='<span class="gc-stat"></span><span class="gc-pub">'+pub+'</span><span class="gc-acts">'+acts+'</span></div>';
   var seances=ch.seances||{};
   var snums=Object.keys(seances).filter(function(k){return seances[k]&&typeof seances[k]==='object';}).sort(function(a,b){return (seances[a].ordre||0)-(seances[b].ordre||0);});
-  var bodyHtml='';
+  var bodyHtml='', rangVu=0;   /* E1 (§12.39-3, Paul « Ok » au 681) : l'élève voit ses séances numérotées sans trou (une séance cachée — réservée à une autre classe, non publiée — ne prend pas de numéro) ; Paul, le rang dans le chapitre */
   snums.forEach(function(snum,idx){
     var sce=seances[snum];if(!sce)return;
     if(!isAdmin && !_visiblePourSession(sce,level))return;   /* 8.4.2 */
+    rangVu++;
     var items=sce.items||{};
     /* M12 (d\u00e9cision Paul 22/07) : une s\u00e9ance PUBLI\u00c9E s'affiche TOUJOURS, m\u00eame sans item \u2014
        \u00ab On peut tr\u00e8s bien avoir fait une s\u00e9ance en classe, sans pour autant avoir de docs avec. \u00bb */
-    bodyHtml+=renderSeance(level,num,snum,sce,idx+1,isAdmin);
+    bodyHtml+=renderSeance(level,num,snum,sce,rangVu,isAdmin);
   });
   if(isAdmin){bodyHtml+='<div class="admin-add-row"><button class="admin-action-add" onclick="addSeance(\''+level+'\',\''+num+'\')">+ Nouvelle s\u00e9ance</button></div>';}
   html+='<div class="chapter-body'+(UI_OPEN[level+'::'+num]?' open':'')+'">'+bodyHtml+'</div></div>';
@@ -8436,8 +8437,8 @@ function atIAInjecterAvecDestination(o){
   }
   var l=atSeances(ch);
   ED_SEL.v=(AT_IA.adresse&&AT_IA.adresse.seance!=null&&l.some(function(p){return String(p.j)===String(AT_IA.adresse.seance);}))?String(AT_IA.adresse.seance):(l[0]&&l[0].j);
-  var choix=l.map(function(p){
-    return '<option value="'+atEsc(p.j)+'"'+((String(ED_SEL.v)===String(p.j))?' selected':'')+'>S\u00e9ance '+ordDe(p.se,p.j)+' \u2014 '+atEsc(p.se.title||'')+'</option>';
+  var choix=l.map(function(p,ip){
+    return '<option value="'+atEsc(p.j)+'"'+((String(ED_SEL.v)===String(p.j))?' selected':'')+'>S\u00e9ance '+(ip+1)+' \u2014 '+atEsc(p.se.title||'')+'</option>';
   }).join('');
   atModaleChoix('Dans quelle s\u00e9ance de \u00ab '+atEsc(ch.title||chn)+' \u00bb ('+atEsc(lvl)+') d\u00e9poser la feuille ?<br>'
     +'<select class="at-sel" id="at-inj-se" onchange="ED_SEL.v=this.value">'+choix+'</select>',
@@ -10172,7 +10173,7 @@ function atCtxAffichage(ctxVue,quoi){
   }
   if(!ctxVue.seance)return '';
   var s=atSeancesDe(ctxVue.niveau,ctxVue.chapitre).filter(function(x){return x.num===String(ctxVue.seance);})[0];
-  return s?('Séance '+s.ordre+' — '+s.titre):'';
+  return s?('Séance '+s.rang+' — '+s.titre):'';
 }
 function atelierDocumentHTML(doc,ctxEleve,options){
   options=options||{};
@@ -11021,8 +11022,8 @@ function atSeancesDe(niveau,chnum){
   var d=(niveau&&typeof chapitresData!=='undefined'&&chapitresData[niveau])||{};
   var ch=d[chnum];if(!ch||!ch.seances)return [];
   var out=[];
-  Object.keys(ch.seances).forEach(function(k){var s=ch.seances[k];if(!s)return;out.push({num:String(k),titre:s.title||('Séance '+k),ordre:(s.ordre!=null?Number(s.ordre):(parseInt(k,10)||0))});});
-  return out.sort(function(a,b){return a.ordre-b.ordre;});
+  ordPaires(ch.seances).forEach(function(p,i){var k=p.k,s=p.o;out.push({num:String(k),titre:s.title||('Séance '+k),ordre:(s.ordre!=null?Number(s.ordre):(parseInt(k,10)||0)),rang:i+1});});   /* E1 (§12.39) : l'ordre d'ordPaires (l'`ordre`, la clé départage) ; `rang`, le numéro affiché */
+  return out;
 }
 /* Poser ou effacer l'adresse : les libellés viennent du HUB, jamais retapés. */
 function atRattPoserChapitre(r,num){
@@ -11060,7 +11061,7 @@ function atAdresseAffichage(doc,quoi){
   }
   if(!r.seance)return '';
   var s=atSeancesDe(r.niveau,r.chapitre).filter(function(x){return x.num===String(r.seance);})[0];
-  if(s)return 'Séance '+s.ordre+' — '+s.titre;
+  if(s)return 'Séance '+s.rang+' — '+s.titre;
   return r.seanceTitre?('Séance '+r.seance+' — '+r.seanceTitre):'';
 }
 /* ── L'ADRESSE VENUE D'UNE IA SE VALIDE — refus NOMMÉS, libellés du hub ──
@@ -11258,7 +11259,7 @@ function atAdresseLisible(r){
     var ses=(cRes&&cRes.o&&cRes.o.seances)||null;
     var sRes=ses?uidResoudre(ses,r.seanceUid,r.seance):null;
     if(!sRes&&r.seanceUid)return out+' \u203a la s\u00e9ance a \u00e9t\u00e9 supprim\u00e9e';
-    out+=' \u203a S\u00e9ance '+(sRes?ordDe(sRes.o,sRes.k):r.seance);
+    out+=' \u203a S\u00e9ance '+(sRes?(seRangDe(ses,sRes.k)||ordDe(sRes.o,sRes.k)):r.seance);
   }
   return out;
 }
@@ -11631,6 +11632,8 @@ function atInfoInjection(voie){
    sont denses, en OBJET quand l'index 0 manque (le trou du chapitre 1 réel).
    Une seule lecture pour tout le morceau : des paires {j:index RÉEL, se:séance},
    parce que l'éditeur écrit /seances/<j>/… et que j doit être la clé vraie. */
+/* E1 (§12.39-3, 13 · 80) : le NUMÉRO AFFICHÉ d'une séance est un rang calculé (sa place dans l'`ordre`, 1, 2, 3… sans trou) — jamais la clé, jamais la valeur brute d'`ordre` */
+function seRangDe(coll,k){ var p=ordPaires(coll); for(var i=0;i<p.length;i++){ if(String(p[i].k)===String(k))return i+1; } return 0; }
 function atSeances(ch){
   /* [C5-ORD] ② le tri se fait sur `ordre` — comme renderChapitres. L'atelier et
      l'arborescence ne peuvent plus afficher deux ordres pour les mêmes séances.
@@ -12202,7 +12205,7 @@ function edDeplacerVersSeance(j,k){
   if(!autres.length){atInfo('Le chapitre n’a pas d’autre séance.');return;}
   ED_SEL.v=autres[0].j;
   var choix=autres.map(function(p){
-    return '<option value="'+atEsc(p.j)+'">Séance '+ordDe(p.se,p.j)+' — '+atEsc(p.se.title||'')+'</option>';
+    return '<option value="'+atEsc(p.j)+'">Séance '+(seRangDe(c.ch.seances,p.j)||ordDe(p.se,p.j))+' — '+atEsc(p.se.title||'')+'</option>';
   }).join('');
   atModaleChoix('Déplacer « '+atEsc(it.title||k)+' » vers :<br>'
     +'<select class="at-sel" id="ed-depl-se" onchange="ED_SEL.v=this.value">'+choix+'</select><br>'
@@ -13253,7 +13256,7 @@ function atEditerChapitreRendre(){
     var somNote=(se.type==='sommaire')?' <span class="ch-type">page de garde</span>':'';
     /* [C5-ED1] les gestes de la s\u00e9ance : monter, descendre, ajouter un item,
        supprimer (garde d'IDENTIT\u00c9S incluse : deleteSeance pr\u00e9vient qui pointe). */
-    var _ordSe=ordDe(se,j);
+    var _ordSe=_rangSe+1;   /* E1 (§12.39-3) : le rang dans le chapitre, pas la valeur brute d'`ordre` */
     h+='<div class="at-edch at-edch-se" data-sce="'+atEsc(j)+'" data-champ="'+ed2CleSe(j)+'" onclick="ed2ClicChamp(\''+ed2CleSe(j)+'\')"><div class="at-edch-set">S\u00e9ance '+_ordSe+somNote
       +'<span class="at-edch-actes">'
       +'<button class="at-btn at-btn-min" title="Monter"'+(_rangSe===0?' disabled':'')+' onclick="edDeplacerSeance(\''+j+'\',-1)">\u2191</button>'
@@ -18373,7 +18376,7 @@ function edtProjeter(isoDebut,nbJours){
       if(trouvee){
         cel.nature='jouee'; cel.activites=(trouvee.activites||[]).length;
         cel.reportees=(trouvee.activites||[]).filter(function(a){return a&&a.reel===0;}).length;
-        cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau); if(edtOu)cel.titre=edtOu.titre; /* [E2] la case close garde le titre de sa séance (réveil n°5, A4-4) */ cellules[cle]=cel; continue;
+        cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau); if(edtOu){ cel.titre=edtOu.titre; cel.chCle=edtOu.chapitre!=null?String(edtOu.chapitre):null; cel.snum=edtOu.seance!=null?String(edtOu.seance):null; }   /* E1 (§12.39-1) : la case jouée porte aussi la clé de sa séance */ /* [E2] la case close garde le titre de sa séance (réveil n°5, A4-4) */ cellules[cle]=cel; continue;
       }
       /* [2ter 14a] LA BORNE SE POSE ICI, ET PAS PLUS HAUT.
          Elle remplace LE PREVU, jamais le reel ni une decision de Paul :

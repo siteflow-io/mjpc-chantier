@@ -5108,3 +5108,31 @@ MEMO
 **Paul :** Ne me parle pas d'ici 23h
 
 *(La conscience ne lui écrit plus avant 23 h ; le travail continue, consigné ici et au sas.)*
+
+
+---
+
+## Tour 257 — 27/10/2026 22:29 → 22:30
+
+**Paul :** fais le point maintenant
+
+**Claude :**
+
+À jouer : deux candidats à promouvoir (649, 650) · en cours chez les exécutants : E3 vérifie §12.34 et §12.35 (651), E4 retouche la Correction de dictée (652) · ouvert : 649, 650, 641, 586, 538, 553, 481, 458
+
+649. L'Atelier et l'accès aux rédactions : candidat, vérifié. L'Atelier ne garde que ce qui sert à préparer : Pilotage, Relecture et « Notes » en sont sortis ; surligner, couleur et « À écrire » s'y posent à l'avance ; la poignée reste dans l'écran ; les notes de présentateur arrivent avec le chapitre importé. La régression trouvée à 18:55 est réglée : le bilan tient au tableau comme aujourd'hui, et la ligne vide « › » sous sa question a disparu, si bien que cinq mots-clés tiennent maintenant sur une page. Et « ✏️ Rédactions » est dans le menu des outils ; une rédaction se rattache à une séance par « Lier » et s'ouvre depuis l'onglet « Rédaction ». E3, par le geste : l'Atelier 68 sur 68, les rédactions 18 sur 18, les écrans voisins 431 sur 432 (le seul rouge, hors sujet, rejoué vert deux fois) ; mon banc : 106 sur 106. Images T258-01 à 07. Elle part en 8.75.0-⑥, avec le prompt d'injection 1.0. Les défauts du 651 n'y sont pas : ils partiront dans la suivante. Promeus ?
+
+650. La Rédaction avec le panneau de la Correction de dictée (1.1.0-RU) : candidat, vérifié — mon banc 84 sur 84, les fiches Dugain et lettre lues en entier, inchangées ; images T257-01 à 05. Ta lettre créée à 17:43 est au hub, donc le site enregistre bien les rédactions ; dans la 1.1, elle apparaît « classe à choisir », et tu lui donnes sa classe par ✏️ (essayé sur sa forme exacte : rien n'est écrit, rien ne se perd). Promeus ?
+
+651. Codé par E1, pas encore candidat : les défauts relevés par l'instance (l'œuvre entière au tableau, seuls les vers numérotés, le panneau de droite qui lit tout le chapitre, un double jamais du même titre, « […] » qui reste une coupure, la dictée manuscrite dans « Lier »), les refus du bilan (cinq mots-clés au plus, les mots du prompt) et la séance réservée à une classe. Mon banc est vert ; E3 les vérifie par le geste. Je te les propose dès qu'ils sont verts.
+
+652. La Correction de dictée en pleine largeur : faite par E4 ; je lui ai demandé une retouche (une ponctuation ne doit jamais commencer une ligne dans la grille des mots). Pas encore candidat.
+
+653. Le prompt d'injection 1.0 part avec l'Atelier : les notes de présentateur sur chaque diapo ; « moi », jamais « M. Meney » (sauf dans le récit) ; une image en pleine page seulement seule sur sa diapo ; les classes d'une séance ; cinq mots-clés au plus dans le bilan.
+
+654. Encore ouvert : la vidéo et les médias en local (586) ; le site sans réseau (587 — lu dans le code : il ne garde rien de ce qu'on écrit hors ligne, dette 13 · 77) ; l'import qui créerait les feuilles et ferait les liaisons (13 · 66) ; la taxonomie des mouvements, dont les phrases pour l'élève attendent ton mot (641) : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/TAXONOMIE/PROPOSITION-MOUVEMENTS-27-10.md ; et 538, 553, 481, 458.
+
+À tester, après tes promeus : 649, ouvrir l'Atelier sur ton chapitre (seulement Structure et Atelier en haut ; surligner un mot, le recharger) ; ouvrir le menu des outils (« ✏️ Rédactions ») ; 650, ouvrir https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof, donner sa classe à ta lettre par ✏️, puis ⧉ pour la deuxième classe.
+
+27/10/2026 22:30
+MEMO

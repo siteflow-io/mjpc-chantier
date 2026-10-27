@@ -131,3 +131,5 @@ Mesuré sur `redaction_dugain_v3.html` (production, 349 982 o, 6 205 lignes, JS 
 - Banc RU0-RU15 : **62 ok · 0 échec** (`sorties/1631-27-10/banc-ru.txt`).
 
 **RU fini (`5bac4fe75`)** — 27/10 16:40 (Paris), après 13 · 57 et 13 · 58. Banc RU0-RU15 : 62 ok, 0 échec.
+
+*Veille — 27/10 17:32 (Paris) · retour n°1 : rien de nouveau pour moi dans `RELANCES/E4.md` après « 15:55 — 13 · 58, précisé » ; la conscience annonce la Rédaction universelle candidate (C13 tour 247). Code inchangé depuis `5bac4fe75`. Retour dans 50 min.*

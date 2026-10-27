@@ -3815,3 +3815,16 @@ MEMO
 
 27/10/2026 01:16
 MEMO
+
+## Tour 206 — 27/10/2026 02:09 — contrôle n°68 (sans message de Paul depuis le tour 201)
+
+**Fait.** Mon banc sur `9c31f22c` (E2 fini) : VERT, 106/0 (épreuve gardée). Lu : E3 retour 60 (`fee5403d`, `banc-1228` 290/316 sur `7b28f65b`) — S1 à S5, le bandeau, 13 · 46 verts ; un rouge chez E2 : « Reprendre » à 1536 et 1920 rouvre l'écran de la classe sans l'heure. Relance E2 écrite avant sa veille de 02:18. E1 n'a pas encore poussé le retrait de la barre du gabarit. Contrôle n°69 à 02:58 (`trig_01991EAGVb1HZSm8b9T8fLvZ`).
+
+**Réponse (mot pour mot).**
+
+446. Contrôle de 02:05. Les mesures d'E3 passent pour toute la simplification (T-5, les boutons du cahier, l'écran qui ne bouge pas, les noms, la répétition) et pour le bandeau. Un défaut trouvé : à deux tailles d'écran sur quatre, « Reprendre » rouvre l'écran de la classe mais pas l'heure. Je l'ai renvoyé à E2. E1 a encore un dernier morceau. Prochain contrôle à 02:58.
+
+À tester : rien pour l'instant — rien n'est en ligne.
+
+27/10/2026 02:09
+MEMO

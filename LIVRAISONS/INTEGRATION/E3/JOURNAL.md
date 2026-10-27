@@ -844,3 +844,25 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2303-27-10-1228-34-vert/`.
 - **§12.34 VERT (`16b44c2d`)**. Restent dits à la conscience : la légende qui couvre le bas de l'œuvre au tableau (retour 81) ; l'apostrophe ’/' d'un refus.
 - §12.35 : un défaut à E1, le lancement d'une séance déplacée (retour 82).
+
+## Retour 84 — 27/10, 23:24 — la nuit : les cas 36, 38, 39b écrits ; avant sur la ⑥ (`a2b1bdb9`)
+- La relance du 23:12 est lue (la nuit, §12.35 (7) et §12.36 à §12.39). **La ⑥, c'est l'assemblé `a2b1bdb9`** (la production moins sa ligne de version).
+- **Cas 35 sur la ⑥** : **16/32**. Les rouges de §12.35, plus A83 (la case dit « Remédiation », le lancement ouvre « Étude de texte »).
+- **Cas « 39b »** (§12.39 ; « 39 » est déjà la dette 13 · 39) : **28/32 sur la ⑥**.
+  - **A90 rouge** : la page de l'élève de Dylan lit « SÉANCE 1, SÉANCE 2 Remédiation…, SÉANCE 3 ». Sur la ⑥, la remédiation n'est pas encore cachée ; sans §12.35, c'est le trou à venir.
+  - **A89 vert déjà sur la ⑥** :
+    - la séance 1 renommée par la Structure (le champ du titre, tapé) garde ses trois heures jouées : la case de Dylan du mar. 3/11 à 10:07 dit « Étude de texte… heure 1/3 », et le lancement ouvre la clé 1 ;
+    - deux séances de même titre : la case de Dylan ouvre la seconde (clé 1).
+  - Les rapprochements par titre que le contrat nomme (`dr_proposer`, `dr_heuresDeLaClasse`) ne se voient pas dans ce chemin. Ils relèvent de l'Atelier et de la répétition : je les cherche dans le cas 38.
+- **Cas 38** (§12.38) : **8/36 sur la ⑥**.
+  - **A87** : à 20 h, l'Atelier et la répétition des séances 1 et 2 disent « **3 DYLAN Bob** » (Paul le voyait). À 9 h, la séance 1 dit 3E Charles de Gaulle, mais **sans « heure n/N »**, et la séance 2 dit Dylan. Le nom de la classe ne se clique pas.
+  - **A88** : sur la diapo du bilan en répétition, « ☐ Les élèves ont écrit le bilan » est là. « ⋯ » a « Qui a participé (au tableau) » et « L'appel : clic droit sur un nom de la liste », et son infobulle les nomme.
+  - La diapo « Question-bilan » du faux hub n'a pas de `role` : le magasin du cas lui donne `role: 'bilan'`, comme un chapitre importé (§12.24).
+- **Cas 36** (§12.36) : **4/40 sur la ⑥**.
+  - La colonne (`.at-arbre`) a encore ses documents et ses attendus ; elle commence par « Le chapitre » ; elle a « Chapitre · … » et « Séance 1 — … (3 h) ».
+  - « 2 documents sur 35 attendus » ne fait rien. La séance ouverte ne se replie pas.
+  - La ligne d'heure dit « H1 · lundi 14 septembre · 55 min », et son clic ne mène pas à la première diapo.
+  - Les diapos sont numérotées, sans leur heure. « Ctrl + molette » est en bas. Il n'y a pas de poignée.
+  - La hauteur de la colonne est mesurée (info).
+- Sorties dans `/` ; captures `*-avant6.png`.
+- E1 a poussé §12.35 (7) (`6812ec83`) : je le joue maintenant (cas 35 et 39b), avec `banc.sh`.

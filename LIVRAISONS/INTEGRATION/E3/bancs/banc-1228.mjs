@@ -33,6 +33,14 @@
 // 35 : (§12.35) une heure de remédiation réservée à 3 FRANKLIN Aretha : les semaines du 2/11 et du 9/11 de Franklin la montrent, celles de 3 DYLAN Bob
 //      non et sans trou (Dylan passe de la séance 1 à la suivante) ; Franklin la joue ; la réactivation de Dylan ne la cite pas ; un élève de Dylan ne la
 //      voit pas, un élève de Franklin oui ; la publication de cette séance ne propose que Franklin.
+// 39b : (§12.39) une séance a une identité et un rang : la page de l'élève numérote sans trou (Dylan, Franklin) ; une séance renommée garde ses heures
+//      jouées (la file de Dylan ne recommence pas) ; deux séances de même titre : la case ouvre la sienne. (« 39b » : « 39 » est la dette 13 · 39.)
+// 38 : (§12.38) jouer en avance : à 20 h et à 9 h, séances 1 et 2 du chapitre 3e, l'Atelier et la répétition disent la classe de la prochaine case de la
+//      séance (3E Charles de Gaulle), jamais 3 DYLAN Bob ; le nom de la classe se clique et propose les autres ; en répétition, aucun geste d'élève (pas de
+//      « Les élèves ont écrit le bilan » sur le bilan, ni « Qui a participé » ni « L'appel » dans « ⋯ »).
+// 36 : (§12.36) la colonne de gauche de l'Atelier : trois niveaux (ni documents, ni attendus, ni « + insérer une séance ici ») ; en haut le titre du chapitre
+//      et « n documents sur m attendus » qui ouvre Structure ; pas de doublons ; la séance ouverte se replie et se rouvre ; la ligne d'heure « H1 · lun. 14/09 ·
+//      08:57 → 09:52 » ouvre la première diapo de l'heure ; chaque diapo dit son heure prévue ; la poignée : élargir, réduire, replier, rouvrir, retenue.
 // 63 : (mesure 13 · 63, seulement si MJPC_CAS le nomme) le bilan au tableau : question de 57 signes, 5 / 4 / 3 mots-clés de 30 à 45 signes, la consigne à
 //      3 étapes → combien de pages au tableau (répétition, « ▶ Jouer en avance » puis la fenêtre du tableau, tout dévoilé), « Diapo trop pleine » dans l'Atelier.
 // 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
@@ -55,7 +63,7 @@ const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log
 const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && detail !== '' ? ' — ' + detail : '')); return !!ok; };
 const info = (k, quoi) => dire('  info   ' + k + ' · ' + quoi);
 const p = (pg, ms) => pg.waitForTimeout(ms);
-/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33, 32, 34, 35 ; 63 seulement s'il est nommé) */
+/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33, 32, 34, 35, 39b, 38, 36 ; 63 seulement s'il est nommé) */
 const SEUL = process.env.MJPC_CAS ? process.env.MJPC_CAS.split(',') : null; const fait = k => !SEUL || SEUL.includes(k);
 
 /* ── le faux hub (celui de banc-1227), plus la classe « 3 DYLAN Bob » appariée à ses six cases (mission 0, M1) ── */
@@ -805,14 +813,17 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (34)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 35 (§12.35) : une heure de remédiation réservée à 3 FRANKLIN Aretha ── */
-  if (fait('35')) { const REM = 'Remédiation : décrire une image';
+  const REM = 'Remédiation : décrire une image';
+  const magasin35 = (f) => {
     const st = hubStore(); const C0 = st.site['3e'].chapitres[0]; const SE = C0.seances; const R = SE[7]; R.title = REM; R.classes = ['3_franklin_aretha']; SE.forEach((x, i) => { if (x && i >= 1 && i <= 6) x.ordre = (x.ordre || i + 1) + 1; }); R.ordre = 2;   /* la séance 7 du chapitre, déplacée juste après la séance 1 (les ordres d'un déplacement : des entiers) et réservée aux Franklin */
     st.classes['3_franklin_aretha'] = { nom: '3 FRANKLIN Aretha', niveau: '3e', annee: '2026-2027', archivee: false, eleves: ['DURAND Alice', 'BERNARD Emma', 'PETIT Thomas', 'ROBERT Chloé'] };
     ((st.site.edt.grille['2026-2027'] || {}).creneaux || []).forEach(x => { if (x.classe === '3 FRANKLIN Aretha') x.classeMjpc = '3 FRANKLIN Aretha'; });
     const PUB = { '3_franklin_aretha': true, '3 FRANKLIN Aretha': true, '3 DYLAN Bob': true }; C0.published = Object.assign({}, C0.published || {}, PUB);
     [SE[0], SE[1], R].forEach(x => { x.published = Object.assign({}, PUB); });   /* publiées pour toutes les classes — la remédiation aussi (« même publiée pour toutes ») */
-    /* la séance 1 déjà jouée par les deux classes (ses trois heures) : la file de chacune est à l'heure suivante */
-    { const s0 = SE[0]; s0.deroule_joue = s0.deroule_joue || {}; for (const [sl, nom, cr] of [['3_franklin_aretha', '3 FRANKLIN Aretha', '3_FRANKLIN_Aretha'], ['3 DYLAN Bob', '3 DYLAN Bob', '3_DYLAN_Bob']]) { const hh = {}; ['2026-10-12', '2026-10-13', '2026-10-14'].forEach((d, i) => { hh[d + '_10h07-11h02_' + (sl.replace(/\s/g, '_'))] = { ouverte: Date.parse(d + 'T10:07:00+02:00'), close: Date.parse(d + 'T11:00:00+02:00'), num: i + 1 }; }); s0.deroule_joue[sl] = { classe: nom, heures: hh }; } }
+    { const s0 = SE[0]; s0.deroule_joue = s0.deroule_joue || {}; for (const [sl, nom] of [['3_franklin_aretha', '3 FRANKLIN Aretha'], ['3 DYLAN Bob', '3 DYLAN Bob']]) { const hh = {}; ['2026-10-12', '2026-10-13', '2026-10-14'].forEach((d, i) => { hh[d + '_10h07-11h02_' + (sl.replace(/\s/g, '_'))] = { ouverte: Date.parse(d + 'T10:07:00+02:00'), close: Date.parse(d + 'T11:00:00+02:00'), num: i + 1 }; }); s0.deroule_joue[sl] = { classe: nom, heures: hh }; } }
+    if (f) f(st, SE); return st; };
+  if (fait('35')) { const st = magasin35(); const C0 = st.site['3e'].chapitres[0]; const SE = C0.seances; const R = SE[7];
+    /* (la séance 1 déjà jouée par les deux classes : dans magasin35) */
     const o = await ouvrirCtx(W, H, st); const pg = o.pg; const k = '35';
     const semaine = async (n) => { await pg.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(pg, 1800); await pg.evaluate(() => { try { edtVue('semaine'); } catch (e) {} }); await p(pg, 800); for (let i = 0; i < n; i++) { await pg.evaluate(() => { try { edtAller(1); } catch (e) {} }); await p(pg, 900); } await sansVoiles(pg);
       return pg.evaluate(() => Array.from(document.querySelectorAll('#edt-ecran .edt-case')).flatMap(z => Array.from(z.querySelectorAll('.edt-clic')).map(c => ({ iso: z.getAttribute('data-iso'), cr: z.getAttribute('data-creneau'), t: c.innerText.replace(/\s+/g, ' ').trim().slice(0, 140) }))).filter(x => /FRANKLIN|DYLAN/.test(x.t)).sort((a, b) => (a.iso + a.cr).localeCompare(b.iso + b.cr))); };
@@ -861,6 +872,120 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       verif(k, pub.length > 0 && pub.every(x => /franklin/i.test(x)), T + ' · A82 · la publication de « ' + REM + ' » ne propose que 3 FRANKLIN Aretha', JSON.stringify(pub));
     } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (35)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 39b (§12.39) : une séance a une identité et un rang ── */
+  if (fait('39b')) { const k = '39b';
+    /* lancer par la case d'une classe à un créneau donné ; rend la séance ouverte (sa clé) et la case lue */
+    const lancerCase = async (pg, classeRe, iso, cr) => { const deb = cr.split('-')[0]; await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await pg.clock.setFixedTime(new Date(new Date(iso + 'T' + deb + ':00+01:00').getTime() + 180000));
+      await pg.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(pg, 1800); await pg.evaluate(() => { try { edtVue('semaine'); } catch (e) {} }); await p(pg, 800); await clicTexte(pg, 'button', 'Aujourd’hui'); await p(pg, 900); await sansVoiles(pg);
+      const lue = await pg.evaluate(a => { const z = document.querySelector('#edt-ecran .edt-case[data-iso="' + a.iso + '"][data-creneau="' + a.cr + '"]'); const e = z && Array.from(z.querySelectorAll('.edt-clic')).find(x => new RegExp(a.re).test(x.innerText)); if (!e) return null; const t = e.innerText.replace(/\s+/g, ' ').trim(); e.click(); return t; }, { iso, cr, re: classeRe }); await p(pg, 1500);
+      const lb = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Ouvrir le pilotage et lancer/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(pg, 3500); await sansVoiles(pg); await pg.keyboard.press('Escape'); await p(pg, 500);
+      const h = await pg.evaluate(() => { try { const x = dr_ctx(); return { lancee: !!(window.S && S.lancee), snum: x.snum, titre: ((chapitresData[x.level][x.chnum].seances || {})[x.snum] || {}).title || '' }; } catch (e) { return { lancee: !!(window.S && S.lancee) }; } });
+      return { lue, lb, h }; };
+    /* A90 · les pages d'élève, numérotées sans trou */
+    { const st = magasin35(); const o = await ouvrirCtx(W, H, st); const pg = o.pg;
+      try { const nums = async (classe) => { const q = await o.ctx.newPage(); await q.clock.setFixedTime(new Date('2026-11-02T07:30:00+01:00')); await q.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await p(q, 2000); await sansVoiles(q);
+          await q.evaluate(c => { TRACK.eleve = { nom: 'PETIT', prenom: 'Thomas', niveau: '3e', classe: c, is_prof: false }; document.body.classList.remove('admin-mode'); clickedLevel = '3e'; }, classe); for (let n = 0; n < 3; n++) { await q.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(q, 2000); if (await q.evaluate(() => document.getElementById('page-level').classList.contains('active'))) break; } await sansVoiles(q);
+          await q.locator('#tab-chapitres').getByText('Poésie et peinture au XIXe siècle', { exact: false }).first().click({ timeout: 4000 }).catch(() => {}); await p(q, 1500);
+          const t = await q.evaluate(() => (document.getElementById('tab-chapitres') || document.body).innerText.replace(/\s+/g, ' '));
+          if (CAPT && (W === 1707 || W === 1920)) await q.screenshot({ path: path.join(CAPT, W + 'x' + H + '-39-1-l-eleve-' + (/DYLAN/.test(classe) ? 'dylan' : 'franklin') + '-' + SUFF + '.png') }).catch(() => {});
+          await q.close(); return (t.match(/SÉANCE \d+ [^▸]{0,40}/gi) || []).map(x => x.trim()); };
+        const nD = await nums('3 DYLAN Bob'), nF = await nums('3 FRANKLIN Aretha'); const suite = L => L.map(x => +(/SÉANCE (\d+)/i.exec(x) || [])[1]); const sansTrou = L => { const n = suite(L); return n.length > 0 && n.every((v, i) => v === i + 1); };
+        verif(k, sansTrou(nD) && !nD.some(x => x.indexOf('Remédiation') >= 0), T + ' · A90 · l’élève de 3 DYLAN Bob : ses séances numérotées sans trou (la remédiation de Franklin ne compte pas)', JSON.stringify(nD));
+        verif(k, sansTrou(nF) && nF.some(x => /SÉANCE 2 Remédiation/i.test(x)), T + ' · A90 · l’élève de 3 FRANKLIN Aretha : séance 1, séance 2 (sa remédiation), séance 3…', JSON.stringify(nF));
+      } catch (e) { verif(k, false, T + ' · A90 : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+      verif('Z', !o.errs.length, T + ' · 0 erreur JS (39b, A90)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+    /* A89 · une séance renommée (par la Structure) garde ses heures jouées : la file de Dylan ne recommence pas */
+    const sansRem = (st2, SE) => { delete SE[7].classes; SE.forEach((x, i) => { if (x) x.ordre = i + 1; }); };   /* A89 seul : l'ordre d'origine, aucune séance réservée (§12.35 à part) */
+    { const st = magasin35(sansRem); const o = await ouvrirCtx(W, H, st); const pg = o.pg; const NV = 'Le Romantisme en question : cinq tableaux';
+      try { await pg.clock.setFixedTime(new Date('2026-11-02T07:30:00+01:00')); await entrerProf(pg); await ouvrirAtelier(pg); await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="structure"]'); if (b) b.click(); }); await p(pg, 1500); await sansVoiles(pg);
+        const ren = await pg.evaluate(() => { const i = Array.from(document.querySelectorAll('input, textarea')).find(x => x.offsetParent && x.value === 'Poésie et peinture : le Romantisme en question'); if (!i) return false; i.scrollIntoView({ block: 'center' }); i.focus(); return true; });
+        if (ren) { await pg.keyboard.press('Control+A'); await pg.keyboard.type(NV); await pg.keyboard.press('Tab'); await p(pg, 2500); }
+        const t0 = await pg.evaluate(() => { const c = window.__hubLire('/site/3e/chapitres/0/seances/0'); return c ? c.title : null; });
+        await capt(pg, W, H, '39-2-la-seance-renommee');
+        verif(k, ren && t0 === NV, T + ' · A89 · la séance 1 renommée par la Structure : « ' + NV + ' » au hub', JSON.stringify({ champ: ren, titre: t0 }));
+        await pg.evaluate(() => { try { atelierFermer(); } catch (e) {} }); await p(pg, 600);
+        const r = await lancerCase(pg, 'DYLAN', '2026-11-03', '10:07-11:02'); await capt(pg, W, H, '39-3-dylan-apres-le-renommage');
+        verif(k, r.lue && /Étude de texte accompagnée/.test(r.lue) && /heure 1\/3/.test(r.lue) && r.h.lancee && r.h.snum === '1', T + ' · A89 · renommée, ses trois heures jouées la suivent : la case de Dylan (mar. 3/11, 10:07) dit « Étude de texte… heure 1/3 » et le lancement ouvre cette séance', JSON.stringify(r).slice(0, 300));
+      } catch (e) { verif(k, false, T + ' · A89 (renommée) : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+      verif('Z', !o.errs.length, T + ' · 0 erreur JS (39b, renommée)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+    /* A89 · deux séances de même titre : la case de Dylan ouvre la sienne (la séance 2), pas la première */
+    { const st = magasin35((st2, SE) => { sansRem(st2, SE); SE[1].title = SE[0].title; }); const o = await ouvrirCtx(W, H, st); const pg = o.pg;
+      try { await pg.clock.setFixedTime(new Date('2026-11-02T07:30:00+01:00')); await entrerProf(pg);
+        const r = await lancerCase(pg, 'DYLAN', '2026-11-03', '10:07-11:02'); await capt(pg, W, H, '39-4-deux-seances-de-meme-titre');
+        verif(k, r.lue && /heure 1\/3/.test(r.lue) && r.h.lancee && r.h.snum === '1', T + ' · A89 · deux séances de même titre : la case de Dylan (heure 1/3 de la seconde) ouvre la seconde (clé 1), pas la première', JSON.stringify(r).slice(0, 300));
+      } catch (e) { verif(k, false, T + ' · A89 (même titre) : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+      verif('Z', !o.errs.length, T + ' · 0 erreur JS (39b, même titre)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+  }
+
+  /* ── 38 (§12.38) : jouer en avance — la bonne classe, aucun geste d'élève ── */
+  if (fait('38')) { const k = '38';
+    const st38 = () => { const st = hubStore(); try { const E = st.site['3e'].chapitres[0].seances[0].deroule.ecrans; const b = E.find(e => /^Question-bilan/.test(e.act || '')); if (b) b.role = 'bilan'; } catch (e) {} return st; };   /* la diapo du bilan du faux hub porte son rôle (comme un chapitre importé, §12.24) */
+    for (const [heure, quand] of [['20 h', '2026-09-14T20:00:00+02:00'], ['9 h', '2026-09-15T09:00:00+02:00']]) { const o = await ouvrirCtx(W, H, st38()); const pg = o.pg;
+      try { await pg.clock.setFixedTime(new Date(quand)); await entrerProf(pg); await ouvrirAtelier(pg);
+        const tete = () => pg.evaluate(() => { const v = e => e && e.offsetParent && e.getBoundingClientRect().height > 0; const h = Array.from(document.querySelectorAll('#pilotage .haut, .p8-entete, .haut')).filter(v).map(e => e.innerText.replace(/\s+/g, ' ').trim()).join(' | '); return h.slice(0, 220); });
+        for (const si of ['0', '1']) { if (si === '1') { await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('[onclick]')).find(x => x.offsetParent && /atSomPlier\('1'\)/.test(x.getAttribute('onclick') || '')); if (b) b.click(); }); await p(pg, 1500); }
+          const at = await tete(); const rep = await entrerRepetition(pg); await p(pg, 800); const re = await tete(); await capt(pg, W, H, '38-' + (heure === '20 h' ? '1-20h' : '2-9h') + '-seance-' + (+si + 1) + '-repetition');
+          const bon = t => /Charles de Gaulle/.test(t) && !/DYLAN/.test(t);
+          verif(k, bon(at) && bon(re) && /heure \d\/\d/.test(re), T + ' · A87 · ' + heure + ', séance ' + (+si + 1) + ' : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan', JSON.stringify({ atelier: at.slice(0, 120), repetition: re.slice(0, 160) }));
+          /* le nom de la classe se clique : il propose les autres classes de la séance */
+          if (si === '0' && heure === '20 h') { const cl = await pg.evaluate(() => { const e = Array.from(document.querySelectorAll('#pilotage .haut *, .haut *')).filter(x => x.offsetParent && x.children.length === 0 && /Charles de Gaulle|DYLAN|FRANKLIN|CLASSE TEST/.test(x.textContent)).pop(); if (!e) return null; e.click(); return e.tagName + (e.title ? ' [' + e.title.slice(0, 60) + ']' : ''); }); await p(pg, 900);
+            const menu = await pg.evaluate(() => Array.from(document.querySelectorAll('body *')).filter(x => x.offsetParent && x.children.length < 3 && /CLASSE TEST|DYLAN|FRANKLIN/.test(x.textContent || '') && (getComputedStyle(x).position === 'absolute' || getComputedStyle(x).position === 'fixed' || x.closest('[role=menu], .menu, #menu, .p8-menu'))).map(x => x.textContent.trim().slice(0, 30)).slice(0, 5));
+            await capt(pg, W, H, '38-3-le-nom-de-la-classe-se-clique'); await pg.keyboard.press('Escape'); await p(pg, 300);
+            verif(k, !!cl && menu.length > 0, T + ' · A87 · le nom de la classe se clique et propose les autres classes', JSON.stringify({ nom: cl, propose: menu })); }
+          /* A88 · en répétition, la diapo du bilan et « ⋯ » : aucun geste d'élève */
+          if (si === '0' && heure === '20 h') { const ib = await pg.evaluate(() => { try { const E = seance().ecrans; const i = E.findIndex(e => e && e.role === 'bilan'); aller(i); return { i, n: E.length, di: S.di, acts: E.slice(-4).map(e => (e.role || '') + ':' + (e.act || '').slice(0, 20)) }; } catch (e) { return String(e); } }); await p(pg, 1500);
+            const g = await pg.evaluate(() => { const v = e => !!(e && e.offsetParent && e.getBoundingClientRect().width > 0); const bc = document.getElementById('bcoche'); const bp = document.getElementById('bplus'); const bq = document.getElementById('bqui'); return { role: (() => { try { return ecran().role; } catch (e) { return null; } })(), bilanCoche: v(bc) ? bc.textContent.trim() : null, quiBouton: v(bq), plusTitre: bp ? bp.title : null }; });
+            await capt(pg, W, H, '38-4-la-repetition-sur-le-bilan');
+            let menuPlus = []; if (await pg.evaluate(() => { const b = document.getElementById('bplus'); return !!(b && b.offsetParent); })) { await pg.click('#bplus').catch(() => {}); await p(pg, 700); menuPlus = await pg.evaluate(() => { const m = document.getElementById('menuplus'); return m ? Array.from(m.querySelectorAll('*')).filter(x => x.children.length === 0 && x.offsetParent).map(x => x.textContent.trim()).filter(Boolean) : []; }); await capt(pg, W, H, '38-5-le-menu-plus-en-repetition'); await pg.keyboard.press('Escape'); await p(pg, 300); }
+            const eleves = menuPlus.filter(x => /Qui a participé|L.appel|appel :/i.test(x)); const titreEl = /qui a participé|absents|appel/i.test(g.plusTitre || '');
+            verif(k, g.role === 'bilan' && !g.bilanCoche, T + ' · A88 · en répétition, sur la diapo du bilan : pas de « ☐ Les élèves ont écrit le bilan »', JSON.stringify(Object.assign({ ib }, g)));
+            verif(k, !eleves.length && !titreEl && !g.quiBouton, T + ' · A88 · en répétition, « ⋯ » sans « Qui a participé » ni « L’appel », son infobulle ne les nomme pas', JSON.stringify({ menu: menuPlus.slice(0, 12), infobulle: g.plusTitre, bqui: g.quiBouton })); }
+          await clicTexte(pg, 'button', 'Arrêter'); await p(pg, 1200); }
+      } catch (e) { verif(k, false, T + ' · ' + heure + ' : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+      verif('Z', !o.errs.length, T + ' · 0 erreur JS (38, ' + heure + ')', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+  }
+
+  /* ── 36 (§12.36) : la colonne de gauche de l'Atelier ── */
+  if (fait('36')) { const k = '36'; const o = await ouvrirCtx(W, H); const pg = o.pg;
+    /* la colonne : l'ancêtre commun du haut (« … attendus » ou le titre du chapitre) et des diapos ([data-at-di]) — pas seulement #volet, la liste des diapos */
+    const RACINE_COL = `(() => { const d = document.querySelector('[data-at-di]'); if (!d) return null; let a = d.parentElement; while (a && a !== document.body) { if (/attendus|Poésie et peinture au XIXe/.test(a.innerText || '') && a.getBoundingClientRect().width < innerWidth * 0.4) { const p = a.parentElement; if (!p || p.getBoundingClientRect().width >= innerWidth * 0.4) return a; } a = a.parentElement; } return document.getElementById('volet'); })()`;
+    const col = () => pg.evaluate(src => { const v = eval(src); if (!v) return null; const r = v.getBoundingClientRect(); const t = v.innerText.replace(/\s+/g, ' '); return { id: v.id + '.' + String(v.className).slice(0, 30), texte: t, largeur: Math.round(r.width), haut: Math.max(v.scrollHeight, ...Array.from(v.querySelectorAll('*')).map(x => x.scrollHeight)), vu: Math.round(r.height), ouvertes: Array.from(v.querySelectorAll('[data-at-di]')).filter(x => x.offsetParent).length }; }, RACINE_COL);
+    try { await entrerProf(pg); await ouvrirAtelier(pg); const c0 = await col(); await capt(pg, W, H, '36-1-la-colonne');
+      info(k, T + ' · la colonne (' + (c0 && c0.id) + ') : ' + (c0 ? c0.haut + ' px pour ' + c0.vu + ' visibles, ' + c0.largeur + ' px de large' : 'introuvable'));
+      verif(k, c0 && !/Les cinq tableaux à analyser|Fiche méthode : décrire une image|insérer une séance ici/.test(c0.texte), T + ' · A84 (1) · ni documents, ni attendus, ni « + insérer une séance ici » dans la colonne de l’Atelier', c0 ? (c0.texte.match(/Les cinq tableaux à analyser|Fiche méthode[^·]{0,30}|insérer une séance ici/g) || []).join(' | ') : '');
+      verif(k, c0 && !/Le chapitre\b/.test(c0.texte.slice(0, 40)) && /Poésie et peinture au XIXe siècle/.test(c0.texte.slice(0, 120)) && !/Chapitre · /.test(c0.texte) && !/Séance \d+ — .{0,80}\(\d+ h\)/.test(c0.texte), T + ' · A84 (2)(3) · en haut le titre du chapitre ; ni « Chapitre · … » ni « Séance n — … (n h) »', c0 ? c0.texte.slice(0, 160) : '');
+      /* « n documents sur m attendus » ouvre la Structure */
+      const docs = await pg.evaluate(src => { const R = eval(src); const e = Array.from(R.querySelectorAll('*')).find(x => x.offsetParent && x.children.length < 3 && /documents? sur \d+ attendus/.test(x.textContent)); if (!e) return null; e.click(); return e.textContent.trim().slice(0, 50); }, RACINE_COL); await p(pg, 1200);
+      const vue = await pg.evaluate(() => (window.ATVUES || {}).vue || null); await capt(pg, W, H, '36-2-documents-vers-structure');
+      verif(k, docs && vue === 'structure', T + ' · A84 (2) · « n documents sur m attendus » ouvre la Structure', JSON.stringify({ docs, vue }));
+      await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(pg, 1500);
+      /* la séance ouverte se replie (son titre) et se rouvre */
+      const plier = () => pg.evaluate(() => { const b = Array.from(document.querySelectorAll('[onclick]')).find(x => x.offsetParent && /atSomPlier\('0'\)/.test(x.getAttribute('onclick') || '')); if (!b) return false; b.click(); return true; });
+      const n0 = (await col()).ouvertes; const pl = await plier(); await p(pg, 900); const n1 = (await col()).ouvertes; const pl2 = await plier(); await p(pg, 900); const n2 = (await col()).ouvertes;
+      verif(k, pl && n0 > 0 && n1 === 0 && n2 > 0, T + ' · A84 (4) · la séance ouverte se replie par son titre (plus aucune diapo) et se rouvre', JSON.stringify({ avant: n0, replie: n1, rouvre: n2 }));
+      /* la ligne d'heure et les diapos à l'heure prévue */
+      const hl = await pg.evaluate(() => { const L = Array.from(document.querySelectorAll('#volet *')).filter(x => x.offsetParent && x.children.length < 4 && /^H1 ·/.test((x.innerText || '').trim())); const e = L[L.length - 1]; return e ? e.innerText.replace(/\s+/g, ' ').trim().slice(0, 120) : null; });
+      verif(k, hl && /^H1 · \S+\.? \d\d\/\d\d · \d\d:\d\d → \d\d:\d\d/.test(hl) && /min prévues pour \d+ utiles/.test(hl), T + ' · A84 (5) · la ligne d’heure « H1 · lun. 14/09 · 08:57 → 09:52 · … min prévues pour … utiles »', '« ' + hl + ' »');
+      await pg.evaluate(() => { try { aller(4); } catch (e) {} }); await p(pg, 800);
+      const clicH = await pg.evaluate(() => { const L = Array.from(document.querySelectorAll('#volet *')).filter(x => x.offsetParent && x.children.length < 4 && /^H1 ·/.test((x.innerText || '').trim())); const e = L[L.length - 1]; if (!e) return null; e.click(); return true; }); await p(pg, 900);
+      const di = await pg.evaluate(() => S.di);
+      verif(k, clicH && di === 0, T + ' · A84 (5) · un clic sur la ligne d’heure ouvre la première diapo de l’heure', JSON.stringify({ clic: clicH, di }));
+      const dia = await pg.evaluate(() => { const e = document.querySelector('#volet [data-at-di="1"]'); return e ? { t: e.innerText.replace(/\s+/g, ' ').trim().slice(0, 60), titre: e.title || (e.closest('[title]') || {}).title || '' } : null; });
+      verif(k, dia && /^\d\d:\d\d /.test(dia.t) && /min$/.test(dia.t) && /Clic : ouvre cette diapo/.test(dia.titre), T + ' · A84 (6) · chaque diapo dit son heure prévue et sa durée, avec l’infobulle', JSON.stringify(dia));
+      const aide = (await col()).texte; verif(k, !/Ctrl \+ molette/.test(aide), T + ' · A84 (6) · plus de ligne d’aide « Ctrl + molette » au bas de la colonne', (aide.match(/Ctrl \+ molette.{0,40}/) || [''])[0]);
+      /* A85 · la poignée */
+      const po = await pg.evaluate(() => { const v = document.getElementById('volet'); const vr = v.getBoundingClientRect(); const c = Array.from(document.querySelectorAll('body *')).find(e => /col-resize/.test(getComputedStyle(e).cursor) && e.getBoundingClientRect().width > 0 && Math.abs(e.getBoundingClientRect().left - vr.right) < 20); if (!c) return null; const r = c.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2, l0: Math.round(vr.width) }; });
+      if (!po) verif(k, false, T + ' · A85 · une poignée au bord droit de la colonne', 'aucune');
+      else { const tirer = async dx => { const c = await pg.evaluate(() => { const v = document.getElementById('volet').getBoundingClientRect(); const e = Array.from(document.querySelectorAll('body *')).find(e => /col-resize/.test(getComputedStyle(e).cursor) && e.getBoundingClientRect().width > 0 && Math.abs(e.getBoundingClientRect().left - v.right) < 20); if (!e) return null; const r = e.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }); if (!c) return null; await pg.mouse.move(c.x, c.y); await pg.mouse.down(); await pg.mouse.move(c.x + dx, c.y, { steps: 8 }); await pg.mouse.up(); await p(pg, 600); return (await col()).largeur; };
+        const l1 = await tirer(80), l2 = await tirer(-40); verif(k, l1 > po.l0 && l2 < l1, T + ' · A85 · la poignée élargit et réduit la colonne', po.l0 + ' → ' + l1 + ' → ' + l2 + ' px');
+        await pg.reload({ waitUntil: 'load' }); await p(pg, 1800); await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2200); await sansVoiles(pg); await ouvrirAtelier(pg);
+        const l3 = (await col()).largeur; verif(k, Math.abs(l3 - l2) <= 4, T + ' · A85 · la largeur est retenue au rechargement', l2 + ' → ' + l3 + ' px');
+        const l4 = await tirer(-600); const lis = await pg.evaluate(() => { const v = document.getElementById('volet'); const r = v.getBoundingClientRect(); return { l: Math.round(r.width) }; }); await capt(pg, W, H, '36-3-la-colonne-repliee');
+        const rouvre = await pg.evaluate(() => { const v = document.getElementById('volet'); const r = v.getBoundingClientRect(); const e = document.elementFromPoint(r.left + Math.max(2, r.width / 2), r.top + 200); if (e) e.click(); return true; }); await p(pg, 800); const l5 = (await col()).largeur;
+        verif(k, lis.l < 30 && l5 > 100, T + ' · A85 · tirée tout à gauche, la colonne se replie en un liseré ; un clic la rouvre', JSON.stringify({ replie: lis.l, rouverte: l5 })); }
+    } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (36)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 63 (mesure 13 · 63) : la densité du bilan ── */
   if (SEUL && SEUL.includes('63')) for (const N of [5, 4, 3]) { const st = hubStore(); const o = await ouvrirCtx(W, H, st); const pg = o.pg; const k = '63 · ' + N + ' mots-clés';

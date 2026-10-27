@@ -4566,3 +4566,35 @@ J'ai ça, sur mon téléphone. Est ce du au téléphone?
 
 27/10/2026 14:23
 MEMO
+
+
+---
+
+## Tour 238 — 27/10/2026 14:27 → 14:29
+
+**Paul :** *(deux captures : `pieces/T238-01-paul-l-atelier-diapo-2-onglets-pilotage-relecture-et-notes.png`, `pieces/T238-02-paul-les-outils-de-la-classe-surligner-couleur.png`)* Et en répétition alors? par ailleurs en répétition, j'ai deux boutons qui font la même chose: le clic sur pilotage lance en fait une répétition... en fiat les onglets pilotage et relecture n'ont rien à faire dans l'atelier, si? par ailleurs, je m'étonne de ne pas avoir tous mes outils quand je suis dans l'ateil. en effet, qu'est ce qui devrait m'empecher de surligner quelque chose en avance? enfin la partie notes ne s'écrit pas, si?
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 sur la Rédaction universelle · ouvert : 571, 572, 573, 538, 553, 481, 458
+
+569. En répétition, la fenêtre du tableau ouverte sur le même ordinateur (« 🖥 Ouvrir le tableau ») suit ; ton téléphone, non : il reste sur l'horloge, parce que la répétition n'écrit rien au site.
+
+570. Oui, deux boutons font la même chose : l'onglet « Pilotage » de l'Atelier lance une répétition, comme « ▶ Jouer en avance — répétition ».
+
+571. Je te suis : Pilotage et Relecture n'ont plus rien à faire dans l'Atelier. Depuis ④, une heure se lance depuis l'emploi du temps et se joue dans l'écran de la classe, qui a son Pilotage et sa Relecture ; une heure passée se relit depuis sa case (« Relire cette heure »). Je propose : l'Atelier garde Structure et Atelier, et « ▶ Jouer en avance » reste la seule entrée de la répétition. Avant de retirer la Relecture, je mesure ce qu'elle montre que la case ne montre pas, pour ne rien perdre. Oui ?
+
+572. Les outils : rien ne doit t'empêcher de préparer. Je propose que le surlignage, la couleur du texte et « ✍ À écrire » arrivent dans l'Atelier, enregistrés avec la diapo comme le gras et le souligné : la classe les voit dès que la diapo est projetée. Mettre en lumière, la loupe, le gel, la participation et « Dévoiler » sont des gestes du moment : ils restent à la classe et à la répétition. Oui ?
+
+573. Les notes, il y en a deux. Les notes de la diapo (le cadre sous la diapo) s'écrivent dans l'Atelier et restent avec la diapo ; en répétition, elles se lisent sans s'écrire. Le bouton « 📝 Notes » (les notes au fil de l'heure, à verser au récit) s'ouvre dans l'Atelier, mais rien ne s'y enregistre : ce que tu y tapes est perdu à la fermeture. Je propose de le retirer de l'Atelier ; il reste dans l'écran de la classe. Oui ?
+
+574. Ton chapitre s'appelle encore « Poésie et peinture au XIXe siècle (proposition) » : il a été créé avant ⑤, qui ne renomme pas l'existant. Pour retirer le mot : sur la page du niveau, le crayon ✏️ de la carte du chapitre, puis « Titre du chapitre ». Publié, ce titre se voit des élèves.
+
+569 à 573 : lu dans le code, pas rejoué par le geste.
+
+À tester :
+- sur la page du niveau, le crayon ✏️ du chapitre, « Titre du chapitre » : retire « (proposition) », reviens à la page : le titre a changé ;
+- dans l'Atelier, écris dans le cadre des notes sous une diapo, ferme l'Atelier, rouvre : la note est là.
+
+27/10/2026 14:29
+MEMO

@@ -1,0 +1,66 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 13:45 UTC · fichier md5 12accf681c6d69f85266146628c1a422
+
+══ 1366×768 ══
+  ok     33 · 1366×768 · zoom 100 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":654,"bas":666,"H":768,"cx":647,"cy":660,"prise":true,"notes":673}
+  ok     33 · 1366×768 · zoom 100 % · la poignée tirée de 60 px vers le haut : la diapo cède sa hauteur aux notes, la poignée reste dans l’écran — 397 → 338 px · {"haut":595,"bas":607,"H":768}
+  ok     Z · 1366×768 · zoom 100 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1366×768 · zoom 90 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":719,"bas":731,"H":853,"cx":723,"cy":725,"prise":true,"notes":738}
+  ok     Z · 1366×768 · zoom 90 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1366×768 · zoom 110 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":619,"bas":625,"H":698,"cx":585,"cy":622,"prise":true,"notes":632}
+  ok     Z · 1366×768 · zoom 110 % · 0 erreur JS (33, la poignée)
+  ÉCHEC  33 · 1366×768 · l’Atelier : « Structure » et « Atelier », ni « Pilotage » ni « Relecture » — ["structure","atelier","pilotage","relecture"]
+  ÉCHEC  33 · 1366×768 · pas de « 📝 Notes » dans l’Atelier (les notes au fil de l’eau sont de l’heure)
+  ÉCHEC  33 · 1366×768 · dans la barre de l’Atelier : surligner, couleur du texte, « ✍ À écrire », chacun avec son infobulle — {"surl":null,"coul":null,"ecr":null}
+  ok     33 · 1366×768 · « ▶ Jouer en avance — répétition » entre en répétition
+  ok     Z · 1366×768 · 0 erreur JS (33, l’Atelier)
+  ÉCHEC  33 · 1366×768 · 13 · 33 (5) · le chapitre aux notes sur trois diapos et le bilan est accepté — « Je ne peux pas utiliser cette réponse : « Poésie et peinture : le Romantisme en question · écran 1 » : « notes » sur une diapo qui n’est pas le bilan — les notes présentateur sont à Paul. « Poésie et  »
+  ok     Z · 1366×768 · 0 erreur JS (33, les notes)
+
+══ 1536×864 ══
+  ok     33 · 1536×864 · zoom 100 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":729,"bas":741,"H":864,"cx":732,"cy":735,"prise":true,"notes":748}
+  ok     33 · 1536×864 · zoom 100 % · la poignée tirée de 60 px vers le haut : la diapo cède sa hauteur aux notes, la poignée reste dans l’écran — 492 → 429 px · {"haut":666,"bas":678,"H":864}
+  ok     Z · 1536×864 · zoom 100 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1536×864 · zoom 90 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":825,"bas":837,"H":960,"cx":818,"cy":831,"prise":true,"notes":844}
+  ok     Z · 1536×864 · zoom 90 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1536×864 · zoom 110 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":671,"bas":683,"H":785,"cx":662,"cy":677,"prise":true,"notes":690}
+  ok     Z · 1536×864 · zoom 110 % · 0 erreur JS (33, la poignée)
+  ÉCHEC  33 · 1536×864 · l’Atelier : « Structure » et « Atelier », ni « Pilotage » ni « Relecture » — ["structure","atelier","pilotage","relecture"]
+  ÉCHEC  33 · 1536×864 · pas de « 📝 Notes » dans l’Atelier (les notes au fil de l’eau sont de l’heure)
+  ÉCHEC  33 · 1536×864 · dans la barre de l’Atelier : surligner, couleur du texte, « ✍ À écrire », chacun avec son infobulle — {"surl":null,"coul":null,"ecr":null}
+  ok     33 · 1536×864 · « ▶ Jouer en avance — répétition » entre en répétition
+  ok     Z · 1536×864 · 0 erreur JS (33, l’Atelier)
+  ÉCHEC  33 · 1536×864 · 13 · 33 (5) · le chapitre aux notes sur trois diapos et le bilan est accepté — « Je ne peux pas utiliser cette réponse : « Poésie et peinture : le Romantisme en question · écran 1 » : « notes » sur une diapo qui n’est pas le bilan — les notes présentateur sont à Paul. « Poésie et  »
+  ok     Z · 1536×864 · 0 erreur JS (33, les notes)
+
+══ 1707×743 ══
+  ÉCHEC  33 · 1707×743 · zoom 100 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":765,"bas":771,"H":743,"cx":818,"cy":768,"prise":false,"notes":778}
+  ok     Z · 1707×743 · zoom 100 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1707×743 · zoom 90 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":813,"bas":819,"H":826,"cx":913,"cy":816,"prise":true,"notes":826}
+  ok     Z · 1707×743 · zoom 90 % · 0 erreur JS (33, la poignée)
+  ÉCHEC  33 · 1707×743 · zoom 110 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":697,"bas":703,"H":675,"cx":740,"cy":700,"prise":false,"notes":710}
+  ok     Z · 1707×743 · zoom 110 % · 0 erreur JS (33, la poignée)
+  ÉCHEC  33 · 1707×743 · l’Atelier : « Structure » et « Atelier », ni « Pilotage » ni « Relecture » — ["structure","atelier","pilotage","relecture"]
+  ÉCHEC  33 · 1707×743 · pas de « 📝 Notes » dans l’Atelier (les notes au fil de l’eau sont de l’heure)
+  ÉCHEC  33 · 1707×743 · dans la barre de l’Atelier : surligner, couleur du texte, « ✍ À écrire », chacun avec son infobulle — {"surl":null,"coul":null,"ecr":null}
+  ok     33 · 1707×743 · « ▶ Jouer en avance — répétition » entre en répétition
+  ok     Z · 1707×743 · 0 erreur JS (33, l’Atelier)
+  ÉCHEC  33 · 1707×743 · 13 · 33 (5) · le chapitre aux notes sur trois diapos et le bilan est accepté — « Je ne peux pas utiliser cette réponse : « Poésie et peinture : le Romantisme en question · écran 1 » : « notes » sur une diapo qui n’est pas le bilan — les notes présentateur sont à Paul. « Poésie et  »
+  ok     Z · 1707×743 · 0 erreur JS (33, les notes)
+
+══ 1920×1080 ══
+  ok     33 · 1920×1080 · zoom 100 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":910,"bas":922,"H":1080,"cx":924,"cy":916,"prise":true,"notes":929}
+  ok     33 · 1920×1080 · zoom 100 % · la poignée tirée de 60 px vers le haut : la diapo cède sa hauteur aux notes, la poignée reste dans l’écran — 708 → 638 px · {"haut":840,"bas":852,"H":1080}
+  ok     Z · 1920×1080 · zoom 100 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1920×1080 · zoom 90 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":1030,"bas":1042,"H":1200,"cx":1031,"cy":1036,"prise":true,"notes":1049}
+  ok     Z · 1920×1080 · zoom 90 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1920×1080 · zoom 110 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":812,"bas":824,"H":982,"cx":837,"cy":818,"prise":true,"notes":831}
+  ok     Z · 1920×1080 · zoom 110 % · 0 erreur JS (33, la poignée)
+  ÉCHEC  33 · 1920×1080 · l’Atelier : « Structure » et « Atelier », ni « Pilotage » ni « Relecture » — ["structure","atelier","pilotage","relecture"]
+  ÉCHEC  33 · 1920×1080 · pas de « 📝 Notes » dans l’Atelier (les notes au fil de l’eau sont de l’heure)
+  ÉCHEC  33 · 1920×1080 · dans la barre de l’Atelier : surligner, couleur du texte, « ✍ À écrire », chacun avec son infobulle — {"surl":null,"coul":null,"ecr":null}
+  ok     33 · 1920×1080 · « ▶ Jouer en avance — répétition » entre en répétition
+  ok     Z · 1920×1080 · 0 erreur JS (33, l’Atelier)
+  ÉCHEC  33 · 1920×1080 · 13 · 33 (5) · le chapitre aux notes sur trois diapos et le bilan est accepté — « Je ne peux pas utiliser cette réponse : « Poésie et peinture : le Romantisme en question · écran 1 » : « notes » sur une diapo qui n’est pas le bilan — les notes présentateur sont à Paul. « Poésie et  »
+  ok     Z · 1920×1080 · 0 erreur JS (33, les notes)
+
+BILAN banc-1228 : 37/55 vérifications — 18 ÉCHEC(S) · ROUGE

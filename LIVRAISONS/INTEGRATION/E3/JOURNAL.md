@@ -626,3 +626,21 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - La tête `fa370a0d4` est assemblée en `12accf68`. J'ai d'abord joué le cas 51 seul, à 1707 : **24/24**. L'heure jouée et close de « 3 DYLAN Bob » et de « 4 HUGO » montre dans la fenêtre de sa case « Heure jouée — 1 activité. Close. », avec les 4 élèves.
 - Puis la vérification courte, `banc-1228` avec `MJPC_CAS=30,51,49,50,39` aux quatre tailles, captures après : **VERT 168/168**. `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/1239-27-10-1228-court-vert/`.
 - **§12.30-31 VERT (`12accf68`)**. Pour ma part, c'est le candidat 8.75.0-⑤ sur le mot de Paul.
+
+## Retour 70 — 27/10, 14:50 — §12.33 lu ; le cas « 33 » écrit ; avant sur la ⑤ : ROUGE 37/55 (attendu)
+- Lus : le contrôle n°78 (la ⑤ annoncée), PROMEUS 13:12 (8.75.0-⑤ en production, `499ae3a25e05`) et la relance de 14:40 (§12.33, l'Atelier). Rappel de 15 min posé (`trig_01Pcw6ZE…`).
+- **Le cas « 33 » dans `banc-1228`**, par le geste, aux quatre tailles :
+  - **A60, la poignée diapo / notes** (`#poignee-mur`). Je la mesure à 100 %, 90 % et 110 %. Le zoom du navigateur est rendu par une fenêtre de W/z × H/z pixels CSS, comme Ctrl + / Ctrl −. Elle doit être dans l'écran et prise sans viser (`elementFromPoint` en son milieu). À 100 %, elle est tirée de 60 px vers le haut : la diapo cède sa hauteur aux notes et la poignée reste dans l'écran.
+  - **A61, les onglets** : « Structure » et « Atelier » seulement, plus « ▶ Jouer en avance ».
+  - **A63** : pas de « 📝 Notes » (`#bnotes`).
+  - **A62, les marques.** Le banc cherche dans la barre surligner, couleur du texte et « ✍ À écrire », chacun avec son infobulle. Il pose un mot surligné, un mot en couleur et un élément « à écrire » sur la première diapo. Il les revoit après rechargement, puis au tableau ouvert en répétition (`#mur2`). *Ce geste est écrit à l'aveugle tant qu'E1 n'a pas poussé : je l'ajusterai à ce qu'il pose (`mark[data-coul]`, `span[data-coul]`, la marque « à écrire »).*
+  - **A64, les notes à l'import.** Le chapitre d'essai d'E1 reçoit des notes réalistes sur les diapos 0, 6 et 13. Il garde celle du bilan (16). Le chapitre est importé par « 📚 Nouveau chapitre » → « Vérifier » → « Créer ce chapitre ». Chaque note doit se lire dans le cadre de sa diapo dans l'Atelier.
+- **Ce qui change dans mes autres cas, en vue du §12.33.** La répétition passe par « ▶ Jouer en avance » (`entrerRepetition` : l'onglet « Pilotage » seulement s'il existe encore) dans les cas 29, 30 et 41/43. Le cas 43 ne passe plus par un onglet que l'Atelier n'a plus (une ligne d'info).
+- **Avant, sur l'assemblé de la ⑤** (`12accf68`, le code en production) : **ROUGE 37/55**, et ce sont les rouges attendus :
+  - la poignée **hors de l'écran à 1707 × 743**, à 100 % (765-771 pour 743 px) et à 110 % (697-703 pour 675). Elle est dans l'écran aux trois autres tailles et à 90 % partout ;
+  - « Pilotage » et « Relecture » dans l'Atelier ;
+  - « 📝 Notes » présent ;
+  - ni surligner, ni couleur, ni « À écrire » dans la barre ;
+  - l'import refusé : « « notes » sur une diapo qui n'est pas le bilan ».
+  « ▶ Jouer en avance » entre bien en répétition. 0 erreur JS. Captures `*-33-*-avant.png`.
+- J'attends « §12.33 E1 fini ». Puis : le cas 33 sur la tête, ajusté aux marques d'E1, la vérification courte et `banc.sh`.

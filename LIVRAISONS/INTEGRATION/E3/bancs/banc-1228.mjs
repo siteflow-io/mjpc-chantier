@@ -20,6 +20,9 @@
 //      depuis la page du niveau → semaine du 2/11 : sa case montre la séance (« heure n/N »), la carte le chapitre, la fenêtre de la case ses élèves ;
 //      l'heure lancée par la case → ses élèves dans l'heure ; 3e et 4e.
 // 50 : (13 · 50) sans la clé de chiffrement, « 📚 Nouveau chapitre » ouvre « Construire un chapitre avec une IA », sans « Clé requise ».
+// 33 : (§12.33) l'Atelier : la poignée diapo / notes dans l'écran (quatre tailles, zooms 90 % et 110 %), prise sans viser ; « Structure » et « Atelier »
+//      seulement ; la répétition par « ▶ Jouer en avance » ; pas de « 📝 Notes » ; surligner, couleur, « ✍ À écrire » posés dans l'Atelier → revus après
+//      rechargement, vus au tableau en répétition ; un chapitre importé avec des notes sur trois diapos et le bilan → chaque note dans le cadre de sa diapo.
 // 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
 // usage : MJPC_HUB=AUDITS/INTEGRATION-DEROULE/hub node banc-1228.mjs <assemble/index.html> [sortie.txt]
 //   MJPC_TAILLES (défaut les quatre), MJPC_CAPT=<dossier> MJPC_CAPT_SUFFIXE=avant|apres (1707 × 743 et 1920 × 1080). Code 1 si un échec.
@@ -40,7 +43,7 @@ const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log
 const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && detail !== '' ? ' — ' + detail : '')); return !!ok; };
 const info = (k, quoi) => dire('  info   ' + k + ' · ' + quoi);
 const p = (pg, ms) => pg.waitForTimeout(ms);
-/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49) */
+/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33) */
 const SEUL = process.env.MJPC_CAS ? process.env.MJPC_CAS.split(',') : null; const fait = k => !SEUL || SEUL.includes(k);
 
 /* ── le faux hub (celui de banc-1227), plus la classe « 3 DYLAN Bob » appariée à ses six cases (mission 0, M1) ── */
@@ -59,7 +62,7 @@ const fauxHub = s => { let sv = null; try { sv = localStorage.getItem('__E3HUB28
 const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });
 const sansVoiles = pg => pg.evaluate(() => { ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); }).catch(() => {});
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });
-const ouvrirCtx = async (W, H, st) => { const ctx = await nav.newContext({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }); const errs = [], boites = [];
+const ouvrirCtx = async (W, H, st, zoom) => { const z = zoom || 1; const ctx = await nav.newContext({ viewport: { width: Math.round(W / z), height: Math.round(H / z) }, deviceScaleFactor: z, timezoneId: 'Europe/Paris' });   /* zoom du navigateur z : la page voit W/z × H/z pixels CSS (comme Ctrl + / Ctrl -) */ const errs = [], boites = [];
   await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => r.abort()); await ctx.addInitScript(fauxHub, st || hubStore());
   ctx.on('page', q => { q.on('pageerror', e => errs.push(String(e.message).slice(0, 160))); q.on('dialog', d => { if (d.type() === 'beforeunload') { q.__beforeunload = (q.__beforeunload || 0) + 1; d.accept().catch(() => {}); return; } boites.push(d.type() + ' : ' + d.message().slice(0, 80)); d.dismiss().catch(() => {}); }); });
   const pg = await ctx.newPage(); await pg.clock.setFixedTime(HORLOGE);
@@ -73,6 +76,14 @@ const lancerParLaCase = async pg => { if (!(await edtOuvert(pg))) { await pg.eva
   const ok = await pg.evaluate(() => { const cs = Array.from(document.querySelectorAll('#edt-ecran .edt-clic')).filter(e => e.offsetParent && /Charles/.test(e.innerText)); const c = cs.find(e => /heure 1\//.test(e.innerText)) || cs[0]; if (!c) return false; c.click(); return true; }); await p(pg, 900);
   const l = ok && await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Ouvrir le pilotage et lancer/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(pg, 3500); await sansVoiles(pg); await pg.keyboard.press('Escape'); await p(pg, 400);
   return !!l && await pg.evaluate(() => !!(window.S && S.lancee)); };
+/* la répétition : depuis l'Atelier, « ▶ Jouer en avance » (§12.33 : la seule entrée) ; l'onglet « Pilotage » de l'Atelier, s'il existe encore (la ⑤) */
+const entrerRepetition = async q => { await q.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(q, 1200);
+  const j = await q.evaluate(() => { const b = document.getElementById('at-jouer'); if (!b || !b.offsetParent) return false; b.click(); return true; }); if (!j) await q.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await p(q, 1800); return q.evaluate(() => !!(window.S && S.repetition)); };
+/* ouvrir le chapitre (le premier, ou celui dont le titre est donné) dans l'Atelier */
+const ouvrirAtelier = async (q, titre) => { await q.evaluate(() => { try { edtFermer(); } catch (e) {} try { atelierOuvrir(); } catch (e) {} }); await p(q, 1200); await sansVoiles(q); await clicTexte(q, 'button,[onclick]', "atOnglet('chapitres')"); await p(q, 900);
+  if (titre) { const ok = await q.evaluate(t => { const c = Array.from(document.querySelectorAll('body *')).filter(e => e.offsetParent && e.children.length < 40 && (e.innerText || '').indexOf(t) >= 0 && Array.from(e.querySelectorAll('button,[onclick]')).some(b => /Éditer dans l’atelier|Modifier/.test(b.innerText || ''))); const e = c[c.length - 1]; if (!e) return false; const b = Array.from(e.querySelectorAll('button,[onclick]')).find(b => /Éditer dans l’atelier|Modifier/.test(b.innerText || '')); b.click(); return true; }, titre); if (!ok) return false; }
+  else if (!(await clicTexte(q, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(q, 'button,[onclick]', 'Modifier');
+  await p(q, 1800); await sansVoiles(q); await q.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(q, 1500); return q.evaluate(() => !!(window.S && S.atelier)); };
 const dev = async (pg, n) => { for (let i = 0; i < n; i++) { await pg.click('#bdev').catch(() => {}); await p(pg, 120); } };
 const lire = (pg) => pg.evaluate(() => { const mur = document.getElementById('mur'); if (!mur) return null; const c = mur.querySelector('.corpsd') || mur; const els = Array.from(c.querySelectorAll('li')).filter(l => !l.classList.contains('hors') && !l.classList.contains('pas') && l.getBoundingClientRect().height > 0 && getComputedStyle(l).visibility !== 'hidden' && getComputedStyle(l).opacity !== '0');
   return { page: ((mur.querySelector('.page') || {}).textContent || '').replace(/[‹›]/g, '').trim(), act: ((mur.querySelector('.act') || {}).textContent || '').trim().slice(0, 60), lignes: els.map(l => l.getAttribute('data-p') || l.textContent.trim().slice(0, 24)), di: window.S ? S.di : null, nDev: window.S ? S.nDev : null }; });
@@ -167,9 +178,10 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       await passe('atelier-accueil', () => pg.evaluate(() => atelierOuvrir()));
       await passe('atelier-mes-chapitres', () => clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"));
       await passe('chapitre-structure', async () => { if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await p(pg, 1500); });
-      for (const v of ['atelier', 'pilotage', 'relecture']) await passe('chapitre-' + v, () => pg.evaluate(x => { const b = document.querySelector('.at-onglet[data-vue="' + x + '"]'); if (b) b.click(); }, v));
-      /* l'Atelier ne lance plus : sur l'onglet Pilotage (répétition) — pas de « Lancer avec », la ligne de la répétition */
-      await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await p(pg, 1500);
+      for (const v of ['atelier', 'pilotage', 'relecture']) { const la = await pg.evaluate(x => { const b = document.querySelector('.at-onglet[data-vue="' + x + '"]'); return !!(b && b.offsetParent); }, v);   /* §12.33 : « Pilotage » et « Relecture » sortent de l'Atelier */
+        if (la) await passe('chapitre-' + v, () => pg.evaluate(x => { const b = document.querySelector('.at-onglet[data-vue="' + x + '"]'); if (b) b.click(); }, v)); else info('43', T + ' · l’onglet « ' + v + ' » n’est plus dans l’Atelier (§12.33)'); }
+      /* l'Atelier ne lance plus : dans la répétition (« ▶ Jouer en avance ») — pas de « Lancer avec », la ligne de la répétition */
+      await entrerRepetition(pg);
       const lanceur = await pg.evaluate(() => Array.from(document.querySelectorAll('[data-lancer="1"], #dr-lancer')).filter(e => e.offsetParent && /Lancer/.test(e.innerText || '')).map(e => e.innerText.trim().slice(0, 60)));
       verif('41', !lanceur.length, T + ' · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)', lanceur.join(' | '));
       verif('41', await texteVisible(pg, /Répétition : rien n.est écrit\. Une heure avec une classe se lance depuis l.emploi du temps\./), T + ' · 13 · 41 · la ligne de la répétition est là');
@@ -294,7 +306,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     try { await pg.clock.setFixedTime(new Date('2026-09-14T08:50:00+02:00')); await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} });
       /* S5 — la répétition dans l'Atelier */
       await pg.evaluate(() => atelierOuvrir()); await p(pg, 1200); await sansVoiles(pg); await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await p(pg, 900); if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await p(pg, 1800); await sansVoiles(pg);
-      await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await p(pg, 1800); await capt(pg, W, H, '29-4-la-repetition');
+      await entrerRepetition(pg); await capt(pg, W, H, '29-4-la-repetition');
       const rep = await pg.evaluate(() => { const v = e => e && e.offsetParent !== null && e.getBoundingClientRect().width > 0; const t = Array.from(document.querySelectorAll('button')).filter(v).map(b => b.innerText.trim()); const part = Array.from(document.querySelectorAll('#dr-zone *')).filter(e => v(e) && e.children.length < 3 && /^Participation/i.test((e.innerText || '').trim())).length; return { fin: t.some(x => /Fin de l.heure/.test(x)), clore: t.some(x => /Clore l.heure/.test(x)), qui: v(document.getElementById('bqui')) || t.some(x => /^👥/.test(x)), part, tableau: t.some(x => /Ouvrir le tableau/.test(x)), ligne: /Répétition : rien n.est écrit\. Une heure avec une classe se lance depuis l.emploi du temps\./.test(document.body.innerText) }; });
       verif('29', !rep.fin && !rep.clore && !rep.qui && !rep.part, T + ' · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation »', JSON.stringify(rep));
       verif('29', rep.ligne && rep.tableau, T + ' · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste', JSON.stringify({ ligne: rep.ligne, tableau: rep.tableau }));
@@ -372,7 +384,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       /* en répétition : rien */
       const pr = await pg.context().newPage(); await pr.clock.setFixedTime(new Date('2026-09-14T09:42:20+02:00')); await entrerProf(pr); await pr.evaluate(() => { try { edtFermer(); } catch (e) {} try { atelierOuvrir(); } catch (e) {} }); await p(pr, 1200); await sansVoiles(pr);
       await clicTexte(pr, 'button,[onclick]', "atOnglet('chapitres')"); await p(pr, 900); if (!(await clicTexte(pr, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(pr, 'button,[onclick]', 'Modifier'); await p(pr, 1800); await sansVoiles(pr);
-      await pr.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await p(pr, 1500); await dev(pr, 2); await p(pr, 3000);
+      await entrerRepetition(pr); await dev(pr, 2); await p(pr, 3000);
       const rep = await pr.evaluate(() => /L.activité en cours :/.test(document.body.innerText)); verif('30', !rep, T + ' · en répétition, pas de phrase'); await pr.close().catch(() => {});
     } catch (e) { verif('30', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (30)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
@@ -506,6 +518,86 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
           const conf = await pg.evaluate(() => window.__E3MOD || ''); verif('49', cree && !/proposition/.test(conf) && tit.indexOf(TIT) >= 0 && !tit.some(x => x.indexOf(TIT + ' (proposition)') === 0), T + ' · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub', JSON.stringify({ verifier: msg, bouton: cree, confirmation: await pg.evaluate(() => window.__E3MOD || null), titres: tit.filter(x => x.indexOf(TIT) === 0), tous: tit.length, boites: o.boites.slice(-2), apres: (await pg.evaluate(() => ((document.getElementById('ch-msg') || {}).innerText || '').replace(/\s+/g, ' ').slice(0, 160))), ecr: (await pg.evaluate(() => window.__ECR.filter(x => /chapitres/.test(x)).slice(-3))) })); } }
     } catch (e) { verif('49', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (49-50)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 33 (§12.33) : l'Atelier ne garde que ce qui sert à préparer ── */
+  if (fait('33')) {
+    /* A60 · la poignée entre la diapo et « Notes pour cette diapo » : dans l'écran, prise sans viser — 100 %, 90 %, 110 % */
+    for (const z of [1, 0.9, 1.1]) { const o = await ouvrirCtx(W, H, null, z); const pg = o.pg; const Z = T + ' · zoom ' + Math.round(z * 100) + ' %';
+      try { await entrerProf(pg); const ok = await ouvrirAtelier(pg);
+        const po = await pg.evaluate(() => { const e = document.getElementById('poignee-mur') || Array.from(document.querySelectorAll('body *')).find(x => /row-resize/.test(getComputedStyle(x).cursor) && x.getBoundingClientRect().width > 50); if (!e) return null; const r = e.getBoundingClientRect(); const cx = r.left + r.width / 2, cy = r.top + r.height / 2; const t = cy >= 0 && cy < innerHeight ? document.elementFromPoint(cx, cy) : null; const n = document.querySelector('.notes'); return { haut: Math.round(r.top), bas: Math.round(r.bottom), H: innerHeight, cx: Math.round(cx), cy: Math.round(cy), prise: !!(t && (t === e || e.contains(t))), notes: n ? Math.round(n.getBoundingClientRect().top) : null }; });
+        if (z === 1) await capt(pg, W, H, '33-1-la-poignee');
+        verif('33', ok && po && po.haut >= 0 && po.bas <= po.H && po.prise, Z + ' · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser', JSON.stringify(po));
+        if (z === 1 && po && po.prise) { const m0 = await pg.evaluate(() => Math.round((document.getElementById('mur') || document.body).getBoundingClientRect().height)); await pg.mouse.move(po.cx, po.cy); await pg.mouse.down(); await pg.mouse.move(po.cx, po.cy - 60, { steps: 6 }); await pg.mouse.up(); await p(pg, 500);
+          const m1 = await pg.evaluate(() => Math.round((document.getElementById('mur') || document.body).getBoundingClientRect().height)); const po2 = await pg.evaluate(() => { const r = document.getElementById('poignee-mur').getBoundingClientRect(); return { haut: Math.round(r.top), bas: Math.round(r.bottom), H: innerHeight }; });
+          verif('33', m1 < m0 && po2.bas <= po2.H, Z + ' · la poignée tirée de 60 px vers le haut : la diapo cède sa hauteur aux notes, la poignée reste dans l’écran', m0 + ' → ' + m1 + ' px · ' + JSON.stringify(po2)); }
+      } catch (e) { verif('33', false, Z + ' · la poignée : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+      verif('Z', !o.errs.length, Z + ' · 0 erreur JS (33, la poignée)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+    /* A61, A63, A62 · les onglets, la répétition, « 📝 Notes », les marques préparées */
+    { const o = await ouvrirCtx(W, H); const pg = o.pg;
+      try { await entrerProf(pg); const ok = await ouvrirAtelier(pg);
+        const ong = await pg.evaluate(() => Array.from(document.querySelectorAll('.at-onglet')).filter(b => b.offsetParent).map(b => b.getAttribute('data-vue')));
+        const notesB = await pg.evaluate(() => { const b = document.getElementById('bnotes') || Array.from(document.querySelectorAll('button')).find(x => /📝/.test(x.innerText || '')); return !!(b && b.offsetParent && b.getBoundingClientRect().width > 0); });
+        await capt(pg, W, H, '33-2-l-atelier');
+        verif('33', ok && ong.indexOf('structure') >= 0 && ong.indexOf('atelier') >= 0 && ong.indexOf('pilotage') < 0 && ong.indexOf('relecture') < 0, T + ' · l’Atelier : « Structure » et « Atelier », ni « Pilotage » ni « Relecture »', JSON.stringify(ong));
+        verif('33', !notesB, T + ' · pas de « 📝 Notes » dans l’Atelier (les notes au fil de l’eau sont de l’heure)');
+        /* les marques : trois gestes de la barre, chacun avec son infobulle */
+        const barre = await pg.evaluate(() => { const v = b => b.offsetParent && b.getBoundingClientRect().width > 0; const B = Array.from(document.querySelectorAll('button')).filter(v); const f = re => { const b = B.find(x => re.test((x.innerText || '') + ' ' + (x.title || ''))); return b ? { id: b.id, t: (b.innerText || '').trim().slice(0, 20), titre: (b.title || '').slice(0, 80) } : null; }; return { surl: f(/surlign/i), coul: f(/couleur du texte/i), ecr: f(/À écrire/) }; });
+        verif('33', barre.surl && barre.coul && barre.ecr && barre.surl.titre && barre.coul.titre && barre.ecr.titre, T + ' · dans la barre de l’Atelier : surligner, couleur du texte, « ✍ À écrire », chacun avec son infobulle', JSON.stringify(barre));
+        let marques = null;
+        if (barre.surl && barre.coul && barre.ecr) {
+          /* sélectionner un mot d'une étape de la diapo, puis le geste */
+          const choisir = n => pg.evaluate(k => { const L = Array.from(document.querySelectorAll('#mur li[data-p]')).filter(l => l.getBoundingClientRect().height > 0 && /\S{4,}/.test(l.textContent)); const li = L[k]; if (!li) return null; const tw = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); let t = null; while (tw.nextNode()) { if (/\S{4,}/.test(tw.currentNode.textContent)) { t = tw.currentNode; break; } } if (!t) return null; const m = /\S{4,}/.exec(t.textContent); const r = document.createRange(); r.setStart(t, m.index); r.setEnd(t, m.index + m[0].length); const s = getSelection(); s.removeAllRanges(); s.addRange(r); return { p: li.getAttribute('data-p'), mot: m[0] }; }, n);
+          const geste = async (b, couleur) => { await pg.evaluate(id => { const x = document.getElementById(id) || Array.from(document.querySelectorAll('button')).find(y => y.offsetParent && y.id === id); if (x) x.click(); }, b.id); await p(pg, 500);
+            if (couleur) await pg.evaluate(() => { const m = Array.from(document.querySelectorAll('[data-coul], .p8-coul, [data-c]')).find(x => x.offsetParent && x.tagName === 'BUTTON'); if (m) m.click(); }); await p(pg, 600); };
+          const s1 = await choisir(0); await geste(barre.surl, true); const s2 = await choisir(1); await geste(barre.coul, true);
+          const s3 = await pg.evaluate(() => { const L = Array.from(document.querySelectorAll('#mur li[data-p]')).filter(l => l.getBoundingClientRect().height > 0); const li = L[2] || L[L.length - 1]; if (!li) return null; li.click(); return li.getAttribute('data-p'); }); await p(pg, 400); await geste(barre.ecr, false);
+          await p(pg, 2500); await capt(pg, W, H, '33-3-les-marques-posees');
+          const lireMarques = q => q.evaluate(() => { const z = document.getElementById('mur2') || document.getElementById('mur'); if (!z) return null; return { surl: Array.from(z.querySelectorAll('mark')).filter(x => x.getBoundingClientRect().width > 0).map(x => x.textContent.trim()).slice(0, 3), coul: Array.from(z.querySelectorAll('span[data-coul], span[style*="color"]')).filter(x => x.getBoundingClientRect().width > 0 && x.closest('li')).map(x => x.textContent.trim()).slice(0, 3), ecr: Array.from(z.querySelectorAll('li')).filter(l => /ecri/.test(l.className) || /✍/.test(l.textContent)).map(l => l.getAttribute('data-p')).slice(0, 3) }; });
+          const m0 = await lireMarques(pg);
+          verif('33', m0 && m0.surl.indexOf(s1 && s1.mot) >= 0 && m0.coul.indexOf(s2 && s2.mot) >= 0 && m0.ecr.indexOf(s3) >= 0, T + ' · posées dans l’Atelier : « ' + (s1 && s1.mot) + ' » surligné, « ' + (s2 && s2.mot) + ' » en couleur, l’élément ' + s3 + ' « à écrire »', JSON.stringify(m0));
+          /* rechargement : elles sont dans la trame */
+          await pg.reload({ waitUntil: 'load' }); await p(pg, 1800); await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2200); await sansVoiles(pg); await ouvrirAtelier(pg);
+          const m1 = await lireMarques(pg);
+          verif('33', m1 && m1.surl.indexOf(s1 && s1.mot) >= 0 && m1.coul.indexOf(s2 && s2.mot) >= 0 && m1.ecr.indexOf(s3) >= 0, T + ' · après rechargement, les trois marques sont revues dans l’Atelier', JSON.stringify(m1));
+          /* la répétition et le tableau : la classe les verrait dès la diapo projetée */
+          const rep = await entrerRepetition(pg); await dev(pg, 4); await p(pg, 800);
+          let fen = null; try { [fen] = await Promise.all([pg.waitForEvent('popup', { timeout: 6000 }), pg.click('#bvideoproj')]); await fen.waitForLoadState(); await p(fen, 2500); } catch (e) { fen = null; }
+          const m2 = fen ? await lireMarques(fen) : null; if (fen) { await fen.screenshot({ path: CAPT && (W === 1707 || W === 1920) ? path.join(CAPT, W + 'x' + H + '-33-4-les-marques-au-tableau-' + SUFF + '.png') : undefined }).catch(() => {}); }
+          marques = { rep, m2 };
+          verif('33', rep && m2 && m2.surl.indexOf(s1 && s1.mot) >= 0 && m2.coul.indexOf(s2 && s2.mot) >= 0, T + ' · en répétition, le tableau montre le surlignage et la couleur préparés', JSON.stringify(marques));
+          if (fen) await fen.close().catch(() => {});
+        }
+        /* A61 · la répétition par le seul bouton : « ▶ Jouer en avance » */
+        if (!marques) { const r = await entrerRepetition(pg); verif('33', r && await pg.evaluate(() => !!document.getElementById('at-jouer')), T + ' · « ▶ Jouer en avance — répétition » entre en répétition'); }
+      } catch (e) { verif('33', false, T + ' · l’Atelier : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+      verif('Z', !o.errs.length, T + ' · 0 erreur JS (33, l’Atelier)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+    /* A64 · un chapitre importé avec des notes du présentateur sur trois diapos et le bilan → chaque note dans le cadre de sa diapo */
+    { const st = hubStore(); const o = await ouvrirCtx(W, H, st); const pg = o.pg;
+      try { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await sansVoiles(pg);
+        const { chapitreTest } = await import(path.join(RACINE, 'LIVRAISONS', 'INTEGRATION', 'E1', 'bancs', 'import-3e.mjs')); const j = chapitreTest(st); const TIT = 'Poésie et peinture — avec les notes du présentateur';
+        j.chapitre.title = TIT; j.chapitre.seances.forEach(se => ((se.deroule || {}).ecrans || []).forEach(e => { e.blocs = (e.blocs || []).filter(b => b.t !== 'fiche'); }));
+        const E0 = j.chapitre.seances[0].deroule.ecrans; const ib = E0.findIndex(e => e.role || e.notes);
+        const NOTES = { 0: '<p>Lumière éteinte, les cinq tableaux défilent <b>sans un mot</b> : cinq minutes de silence complet.</p><ul><li>Delacroix d’abord</li><li>Friedrich en dernier</li></ul>', 6: '<p>Noter au tableau <i>chaque</i> hypothèse, même fausse ; ne trancher qu’à la question-synthèse.</p>', 13: '<p>Les trois mots se recopient <b>dans la partie cours</b> du cahier, pas au brouillon.</p>' };
+        Object.keys(NOTES).forEach(k => { E0[+k].notes = NOTES[k]; });
+        const REPERES = { 0: 'sans un mot', 6: 'même fausse', 13: 'dans la partie cours' }; if (ib >= 0) REPERES[ib] = ((E0[ib].notes || '').replace(/<[^>]+>/g, ' ').match(/[A-Za-zÀ-ÿ’' ]{12,}/) || [''])[0].trim().slice(0, 20);
+        await pg.evaluate(() => { atelierOuvrir(); }); await p(pg, 1000); await sansVoiles(pg);
+        await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-porte-ch')).find(x => x.offsetParent !== null); if (b) b.click(); }); await p(pg, 1500);
+        await pg.fill('#ch-coller', JSON.stringify(j)); await p(pg, 400); await clicTexte(pg, 'button', 'Vérifier'); await p(pg, 1500);
+        const msg = await pg.evaluate(() => ((document.getElementById('ch-msg') || {}).innerText || '').replace(/\s+/g, ' ').slice(0, 200));
+        const cree = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Créer ce chapitre/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(pg, 1500);
+        await pg.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && m.getBoundingClientRect().height > 0 && Array.from(m.querySelectorAll('button')).find(x => /Créer/.test(x.textContent)); if (b) b.click(); }); await p(pg, 2500);
+        verif('33', cree, T + ' · 13 · 33 (5) · le chapitre aux notes sur trois diapos et le bilan est accepté', '« ' + msg + ' »');
+        if (cree) { const ok = await ouvrirAtelier(pg, TIT); const vu = {};
+          for (const k of Object.keys(REPERES)) { await pg.evaluate(i => { const v = document.querySelector('.vig[data-i="' + i + '"]'); if (v) v.click(); else if (typeof aller === 'function') aller(+i); }, k); await p(pg, 900);
+            vu[k] = await pg.evaluate(() => { const n = document.getElementById('notesd') || document.querySelector('.notes'); return n ? n.innerText.replace(/\s+/g, ' ').trim().slice(0, 160) : ''; });
+            if (+k === 0) await capt(pg, W, H, '33-5-les-notes-importees'); }
+          const bons = Object.keys(REPERES).filter(k => vu[k].indexOf(REPERES[k]) >= 0);
+          verif('33', ok && bons.length === Object.keys(REPERES).length, T + ' · 13 · 33 (5) · chaque note dans le cadre de sa diapo (diapos ' + Object.keys(REPERES).join(', ') + ')', bons.length + '/' + Object.keys(REPERES).length + ' · ' + JSON.stringify(vu).slice(0, 300)); }
+      } catch (e) { verif('33', false, T + ' · l’import des notes : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+      verif('Z', !o.errs.length, T + ' · 0 erreur JS (33, les notes)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+  }
 
 }
 await nav.close();

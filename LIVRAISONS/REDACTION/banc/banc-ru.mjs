@@ -2,7 +2,7 @@
 // usage : node banc-ru.mjs [redaction.html] [redaction_dugain_v3.html de production] [dossier de sortie]
 // Attendus : le mandat RU (MANDATS/REDACTION-UNIVERSELLE/MANDAT-RU.md) et le cadrage du 27/10, jamais la version jouée.
 import path from 'node:path'; import fs from 'node:fs'; import { createHash } from 'node:crypto'; import { createRequire } from 'node:module';
-import { hubDeDepart, installer, sessionProf } from './fauxhub.mjs'; import { COPIES, corriger, pageProd, pageRU } from './nonreg.mjs';
+import { hubDeDepart, installer, sessionProf } from './fauxhub.mjs'; import { COPIES, corriger, pageProd, pageRU } from './nonreg.mjs'; import { PLAN_DUGAIN, PLAN_LETTRE, corrigerSelon } from './captures.mjs';
 const ICI = path.dirname(new URL(import.meta.url).pathname);
 const F = path.resolve(process.argv[2] || path.join(ICI, '..', 'redaction.html'));
 const PROD = path.resolve(process.argv[3] || '/home/claude/monsieurjaipascompris/redaction_dugain_v3.html');
@@ -209,6 +209,23 @@ await pgC.close();
   const pf = await ctxL.newPage(); await pf.goto('file://' + pL); await att(pf, 300); await cap(pf, 'RU-5b-fiche-lettre'); await pf.close();
   const pd = await ctxL.newPage(); await pd.goto('file://' + path.join(OUT, 'fiche-dugain-audebert_elise.html')); await att(pd, 300); await cap(pd, 'RU-5a-fiche-dugain'); await pd.close();
   verif('RU11', pl.__errs.length === 0, 'zéro erreur JS (la lettre)', JSON.stringify(pl.__errs)); await ctxL.close(); }
+
+// ═════ RU12 · contrôle n°80 (E) : les captures pour Paul — des corrections vraisemblables (niveaux cohérents, citations qui prouvent la phrase) ═════
+for (const [nom, P, id] of [['dugain', PLAN_DUGAIN, 'dugain'], ['lettre', PLAN_LETTRE, 'lettre-grande-guerre-3e']]) {
+  const ctx = await contexte(1707, 743); if (id !== 'dugain') ctx.__hub.redactions[id] = { config: JSON.parse(fs.readFileSync(path.join(ICI, '..', 'sujets', 'lettre-grande-guerre.json'), 'utf8')) };
+  const pg = await page(ctx, '?mode=prof&id=' + id + '&classe=3_franklin_aretha'); await pret(pg);
+  const { cle, fiche } = await corrigerSelon(pg, P); await att(pg, 300);
+  await cap(pg, 'RU-12-' + nom + '-recapitulatif');
+  const c = await pg.evaluate(k => ({ e: copieFor(k).echelons, s: copieFor(k).sousEchelons, cit: copieFor(k).citationsPar, n: copieFor(k).compteurOrthoGram, sugg: niveauOrthoSuggere(k) }), cle);
+  const attendus = Object.keys(P.plan);
+  const ok = attendus.every(i => c.e[i] === P.plan[i][0] && c.s[i] === P.plan[i][1] && ((c.cit[i] || '') === (P.plan[i][2] || '')));
+  const cits = attendus.filter(i => P.plan[i][2]).every(i => fiche.indexOf(P.plan[i][2].replace(/'/g, '&#39;')) >= 0 || fiche.indexOf(P.plan[i][2]) >= 0);
+  const compteurJuste = c.sugg === c.e[Object.keys(P.plan).find(i => /orthographe/.test(i))];
+  verif('RU12', ok && cits && compteurJuste && fiche.indexOf('{CIT}') < 0, nom + ' : une copie corrigée selon un plan cohérent (tous les points au même niveau, chaque citation à la place que la phrase annonce, le compteur d\'accord avec le niveau d\'orthographe)', JSON.stringify({ ok, cits, compteurJuste, c }).slice(0, 400));
+  const p = path.join(OUT, 'fiche-capture-' + nom + '.html'); fs.writeFileSync(p, fiche);
+  const pf = await ctx.newPage(); await pf.goto('file://' + p); await att(pf, 300); await cap(pf, 'RU-12-' + nom + '-fiche'); await pf.close();
+  verif('RU12', pg.__errs.length === 0, nom + ' : zéro erreur JS', JSON.stringify(pg.__errs)); await ctx.close();
+}
 
 // ═════ RU7 · le mode test : rien ne part, et ça se voit ═════
 { const ctx = await contexte(); const pg = await page(ctx, '?mode=prof&id=dugain&classe=3_franklin_aretha&test=1'); await pret(pg);

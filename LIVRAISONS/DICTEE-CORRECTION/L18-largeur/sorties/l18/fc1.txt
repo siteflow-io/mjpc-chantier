@@ -1,0 +1,13 @@
+copie 1 ZZTEST Alpha passe 1 : 0 erreurs, 1 en trop, note 9,5 
+copie 1 ZZTEST Alpha passe 2 : 2 erreurs, 2 en trop, note 8 
+copie 2 ZZTEST Bravo passe 1 : 2 erreurs, 2 en trop, note 8 
+copie 2 ZZTEST Bravo passe 2 : 4 erreurs, 6 en trop, note 5 
+copie 3 ZZTEST Charlie passe 1 : 4 erreurs, 0 en trop, note 6,5 
+copie 3 ZZTEST Charlie passe 2 : 2 erreurs, 1 en trop, note 8 
+copie 4 ZZTEST Delta passe 1 : 4 erreurs, 2 en trop, note 6,5 
+copie 4 ZZTEST Delta passe 2 : 3 erreurs, 4 en trop, note 6,5 
+copie 5 ZZTEST Echo passe 1 : 1 erreurs, 3 en trop, note 8 
+copie 5 ZZTEST Echo passe 2 : 2 erreurs, 5 en trop, note 7 
+
+BILAN fuzzing correction classique graine 1 : 5 copies, 0 bugs
+réseau : accès au vrai hub 0 | erreurs de page []

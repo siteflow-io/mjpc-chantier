@@ -1,0 +1,2 @@
+{"deja_fait": true, "marques": [10, 4, 9, 2], "C_au_hub": [10, 4, 9, 2], "rayees_L": 2, "reouverture_C": [10, 10], "traits_en_C": 7, "erreurs": []}
+BANC L15h-2 PAR LE GESTE : VERT

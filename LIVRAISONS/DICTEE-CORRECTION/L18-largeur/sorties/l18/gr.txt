@@ -1,0 +1,6 @@
+1. menu du clic droit : ['\n:root {\n  --bg:#fafaf8;--card:#fff;--card2:#f5f4f', 'Clic droit sur un élève pour ouvrir le menu (absen', '❌ Marquer absent', '📘 Aménagé (cette dictée)', 'Sans choix ici, l’élève suit sa fiche (case pap-15', '\nvar h=React.createElement,useState=React.useState']
+   Pierre marqué absent : absent = True | sa copie existe encore : True | fenêtre : []
+2. Recalculer : fenêtres ['0 élève recalculé.'] | notes changées : 8 [('azzuram_ezzam', 2.5, 3), ('bzzetil_tzzix', 5, 5.5), ('dzzetos_azzub', 5, 5.5), ('hzzinos_czzov', 2.5, 3), ('jzzixal_azzos', 6, 6.5)]
+3. M→P : fenêtres [] | copies modifiées : 0
+4. recherche « CL » : 2 élèves | ['C. Lzzur', 'C. Lzzub']
+erreurs de page : []

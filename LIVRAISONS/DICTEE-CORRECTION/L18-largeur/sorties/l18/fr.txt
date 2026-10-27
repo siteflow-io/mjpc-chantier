@@ -1,0 +1,6 @@
+copie 1 ZZTEST Golf : 8 erreurs au modèle | barre en mode texte : ? 6 ZZTEST Golf /10 · 2G2L1∅1P1?1⚠ · −4 
+copie 2 ZZTEST Hotel : 12 erreurs au modèle | barre en mode texte : ? 5,5 ZZTEST Hotel /10 · 1G1E4L2∅2P2⚠ · −4,5 
+copie 3 ZZTEST India : 11 erreurs au modèle | barre en mode texte : ? 5 ZZTEST India /10 · 2G1E1L3∅1P1?2⚠ · −5 
+
+BILAN fuzzing mode rapide graine 2 : 3 copies, 0 bugs | fenêtres : []
+réseau : accès au vrai hub 0 | erreurs de page []

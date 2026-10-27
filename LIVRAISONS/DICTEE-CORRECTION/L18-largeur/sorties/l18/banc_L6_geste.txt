@@ -1,0 +1,2 @@
+{"fin": {"champ": true, "focus": true}, "zt": ["ZZTEST Sierra", "ZZTEST Tango\nabsent", "ZZTEST Uniform\n✔ corrigée"], "zu": ["ZZTEST Uniform\n✔ corrigée"], "lettres_sans_effet": [true, true], "zs": ["ZZTEST Sierra"], "apres_entree": ["rapide", ["ZZTEST Sierra"]], "sierra": [[0, "G"]], "romeo_intact": true, "fenetres": [], "erreurs": []}
+BANC L6 PAR LE GESTE : VERT

@@ -1,0 +1,3 @@
+{"reste_preparation": [true, true], "mode_B": ["B", "Mode par défaut : B (trou simple). 2 mots à compléter le suivent ; la consigne suit."], "mode_C": ["C", [[3, true, true], [7, true, true]]], "fenetre": true, "props": ["syllabes", "silabes", "syllabe"], "autres": ["syllabes", "syllabese", "sylabes"], "enregistre": ["A", ["syllabes", "syllabese", "sylabes"]], "echap": [true, false], "retire": true, "erreurs": []}
+conditions : {'reste_sur_preparation': True, 'mode_ecrit_et_suivi': True, 'fenetre': True, 'vraies_formes_d_abord': True, 'autres_formes': True, 'enregistrer_entree': True, 'echap': True, 'retirer': True, 'propre': True}
+BANC L15a PAR LE GESTE : VERT

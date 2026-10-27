@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/claude/KIT/anon/bench/banc_l17bisc.py", line 7, in <module>
+    T=json.load(open('/tmp/hugo.json')); DID=T['id']
+                ~~~~^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/hugo.json'

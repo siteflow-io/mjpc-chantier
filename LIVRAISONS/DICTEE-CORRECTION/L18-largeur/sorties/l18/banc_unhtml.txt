@@ -1,0 +1,2 @@
+{"bouton": true, "libelle": "📄 Toutes les copies en un fichier (30)", "sous_le_zip": true, "fichier": "copies_dictee_preparee_5e_grandes_decouvertes_5e_herge.html", "sections": 30, "scripts": 1, "body_class": ["mode-barre show-overlay show-badge show-points"], "attendu": 30, "noms_distincts": 30}
+BANC UN-HTML : VERT | erreurs : []

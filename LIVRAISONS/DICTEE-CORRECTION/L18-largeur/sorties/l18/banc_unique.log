@@ -1,0 +1,107 @@
+[modes] code 0 — 18 s
+[fc1] code 0 — 95 s
+[fc2] code 0 — 83 s
+[fr] code 0 — 52 s
+[gr] code 0 — 9 s
+[banc_L1_geste] code 0 — 15 s
+[banc_L2_geste] code 0 — 18 s
+[banc_L3_geste] code 0 — 23 s
+[banc_L5_geste] code 0 — 13 s
+[banc_L6_geste] code 0 — 13 s
+[banc_L6b_geste] code 0 — 15 s
+[banc_L7_geste] code 0 — 34 s
+[banc_L8_geste] code 0 — 16 s
+[banc_L10_geste] code 0 — 39 s
+[banc_L9_geste] code 0 — 52 s
+[banc_L11_geste] code 1 — 96 s
+[banc_L12_geste] code 1 — 44 s
+[banc_L13_geste] code 1 — 48 s
+[banc_L14_geste] code 0 — 69 s
+[banc_L150_geste] code 0 — 19 s
+[banc_L150b_geste] code 0 — 20 s
+[banc_L15a_geste] code 0 — 19 s
+[banc_L13b_geste] code 0 — 28 s
+[banc_L15b_geste] code 0 — 46 s
+[banc_L15c_geste] code 0 — 9 s
+[banc_L15cb_accueil] code 0 — 4 s
+[banc_L15cc_depliants] code 0 — 4 s
+[banc_L15cd_rapide_onglet] code 0 — 8 s
+[banc_L15d_geste] code 0 — 38 s
+[banc_L15e_geste] code 1 — 48 s
+[banc_L16a_geste] code 0 — 25 s
+[banc_L15fb_geste] code 0 — 76 s
+[banc_L15fb5_deconnexion] code 0 — 42 s
+[banc_L15g_geste] code 0 — 36 s
+[banc_L15h1_geste] code 0 — 21 s
+[banc_L151b1_geste] code 1 — 23 s
+[banc_L15h2_reel] code 0 — 10 s
+[banc_L151c_477] code 0 — 11 s
+[banc_L151d_geste] code 0 — 28 s
+[banc_L15ka_moities] code 0 — 15 s
+[banc_L15kc] code 0 — 17 s
+[banc_traitunion] code 1 — 0 s
+[banc_unhtml] code 0 — 6 s
+[banc_L171_geste] code 0 — 51 s
+[banc_L171_moities] code 0 — 11 s
+[banc_l17bis] code 1 — 0 s
+[banc_l17bisb] code 1 — 0 s
+[banc_l17bisc] code 1 — 0 s
+[banc_175] code 1 — 0 s
+[banc_177] code 1 — 0 s
+[banc_trouvees] code 1 — 0 s
+[banc_revient] code 0 — 37 s
+[eleve] code 0 — 8 s
+  OK    modes
+  OK    fc1
+  OK    fc2
+  OK    fr
+  OK    gr
+  OK    banc_L1_geste
+  OK    banc_L2_geste
+  OK    banc_L3_geste
+  OK    banc_L5_geste
+  OK    banc_L6_geste
+  OK    banc_L6b_geste
+  OK    banc_L7_geste
+  OK    banc_L8_geste
+  OK    banc_L10_geste
+  OK    banc_L9_geste
+  ÉCHEC banc_L11_geste
+  ÉCHEC banc_L12_geste
+  ÉCHEC banc_L13_geste
+  OK    banc_L14_geste
+  OK    banc_L150_geste
+  OK    banc_L150b_geste
+  OK    banc_L15a_geste
+  OK    banc_L13b_geste
+  OK    banc_L15b_geste
+  OK    banc_L15c_geste
+  OK    banc_L15cb_accueil
+  OK    banc_L15cc_depliants
+  OK    banc_L15cd_rapide_onglet
+  OK    banc_L15d_geste
+  ÉCHEC banc_L15e_geste
+  OK    banc_L16a_geste
+  OK    banc_L15fb_geste
+  OK    banc_L15fb5_deconnexion
+  OK    banc_L15g_geste
+  OK    banc_L15h1_geste
+  ÉCHEC banc_L151b1_geste
+  OK    banc_L15h2_reel
+  OK    banc_L151c_477
+  OK    banc_L151d_geste
+  OK    banc_L15ka_moities
+  OK    banc_L15kc
+  ÉCHEC banc_traitunion
+  OK    banc_unhtml
+  OK    banc_L171_geste
+  OK    banc_L171_moities
+  ÉCHEC banc_l17bis
+  ÉCHEC banc_l17bisb
+  ÉCHEC banc_l17bisc
+  ÉCHEC banc_175
+  ÉCHEC banc_177
+  ÉCHEC banc_trouvees
+  OK    banc_revient
+  OK    eleve
+BANC UNIQUE : ROUGE

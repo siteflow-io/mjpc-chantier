@@ -1,0 +1,19 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 23:11 UTC · fichier md5 79e6285a806cad7be026b7e6068a7902
+
+══ 1707×743 ══
+  info   36 · 1707×743 · la colonne (at-arbre.at-vues-arbre) : 1158 px pour 675 visibles, 250 px de large
+  ok     36 · 1707×743 · A84 (1) · ni documents, ni attendus, ni « + insérer une séance ici » dans la colonne de l’Atelier
+  ok     36 · 1707×743 · A84 (2)(3) · en haut le titre du chapitre ; ni « Chapitre · … » ni « Séance n — … (n h) » — Poésie et peinture au XIXe siècle (proposition) 2 documents sur 35 attendus → Structure ▾ Poésie et peinture : le Romantisme en question Ouvrir chaque heure par
+  ok     36 · 1707×743 · A84 (2) · « n documents sur m attendus » ouvre la Structure — {"docs":"2 documents sur 35 attendus → Structure","vue":"structure"}
+  ok     36 · 1707×743 · A84 (4) · la séance ouverte se replie par son titre (plus aucune diapo) et se rouvre — {"avant":21,"replie":0,"rouvre":21}
+  ÉCHEC  36 · 1707×743 · A84 (5) · la ligne d’heure « H1 · lun. 14/09 · 08:57 → 09:52 · … min prévues pour … utiles » — « H1 · pas encore à l’emploi du temps »
+  ok     36 · 1707×743 · A84 (5) · un clic sur la ligne d’heure ouvre la première diapo de l’heure — {"clic":true,"di":0}
+  ÉCHEC  36 · 1707×743 · A84 (6) · chaque diapo dit son heure prévue et sa durée, avec l’infobulle — {"t":"+3′ Tableau 1 6 min","titre":"Clic : ouvre cette diapo · clic droit : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer"}
+  ok     36 · 1707×743 · A84 (6) · plus de ligne d’aide « Ctrl + molette » au bas de la colonne
+  ok     36 · 1707×743 · A85 · la poignée élargit et réduit la colonne — 218 → 330 → 290 px
+  ok     36 · 1707×743 · A85 · la largeur est retenue au rechargement — 290 → 290 px
+  ok     36 · 1707×743 · A85 · tirée tout à gauche, la colonne se replie en un liseré ; un clic la rouvre — {"replie":0,"lisere":"at-arbre-poignee","rouverte":290}
+  ÉCHEC  36 · 1707×743 · A85 · la colonne de droite s’élargit et sa largeur est retenue au rechargement — {"avant":336,"tiree":406,"recharge":336}
+  ok     Z · 1707×743 · 0 erreur JS (36)
+
+BILAN banc-1228 : 10/13 vérifications — 3 ÉCHEC(S) · ROUGE

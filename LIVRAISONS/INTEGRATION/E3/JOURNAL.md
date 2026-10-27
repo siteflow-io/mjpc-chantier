@@ -906,3 +906,24 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - **§12.39 VERT (`9ff2f0f5`)**.
 - Il reste trois paragraphes : §12.36 (cas 36), §12.37 (cas 37), §12.38 (cas 38). Ils attendent E4 et E1.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2350-27-10-1239/`.
+
+## Retour 88 — 28/10, 00:25 — §12.36 joué sur la poussée 110 d'E4 : 3 rouges par taille (2 à E1, 1 à E4)
+- E4 a poussé le §12.36 (`a073ba449`). L'assemblé de la tête est `79e6285a`. `banc.sh` : **VERT**.
+- **Deux fautes de ma mesure, corrigées dans le cas 36 :**
+  - A84 (2) : la ligne « 2 documents sur 35 attendus → Structure » a trois enfants, et mon filtre en voulait moins de trois. Le cas clique maintenant le lien « → Structure » : la Structure s'ouvre (vert).
+  - A85, le liseré : la colonne repliée a 0 px. Mon clic tombait à côté, ou sur une icône SVG. Le cas clique maintenant `#at-arbre-poignee` à la souris : la colonne se rouvre à 290 px (vert).
+- **Un contrôle ajouté** (contrat §12.36 (7)) : la colonne de droite retient sa largeur au rechargement.
+- **Le cas 36, aux quatre tailles : 13 vérifications par taille, 10 vertes.**
+  - Vert :
+    - la colonne est à trois niveaux, sans documents ni attendus ;
+    - le titre du chapitre est en haut ; « → Structure » ouvre la Structure ;
+    - pas de doublons ;
+    - la séance se replie et se rouvre ;
+    - un clic sur la ligne d'heure ouvre la première diapo ;
+    - l'infobulle des diapos est là ; plus de ligne « Ctrl + molette » ;
+    - la poignée de gauche élargit et réduit la colonne, garde sa largeur au rechargement, se replie en liseré et se rouvre au clic.
+  - **A84 (5) et (6), rouges, à E1 (§12.38 (1)).** La colonne dit « H1 · pas encore à l'emploi du temps », et les diapos disent « +3′ » au lieu de « 08:57 ». C'est ce que la source répond tant qu'elle propose Dylan, qui n'a pas de case. Le JOURNAL d'E4 le dit aussi. Ces deux contrôles passeront avec le §12.38 (1).
+  - **A85, la colonne de droite, rouge, à E4.** Elle s'élargit de 336 à 406 px, mais revient à 336 px au rechargement. `dr-socle.js:995` pose `S.ld = 336` à chaque chargement, et rien ne garde cette largeur : seule la gauche a `mjpc_atelier_colonne_gauche`. Le contrat §12.36 (7) le demande (« La colonne de droite aussi retient sa largeur »).
+- Captures `*-36-*-apres.png`, regardées : la colonne à trois niveaux, la Structure ouverte, le liseré.
+- §12.36 n'est donc pas encore vert.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0020-28-10-1236c/` ; essais à une taille dans `0010-28-10-1236b/`.

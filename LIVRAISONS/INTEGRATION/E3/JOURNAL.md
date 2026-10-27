@@ -876,3 +876,22 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - A88 : les gestes d'élève restent en répétition, sur les quatre élèves de « CLASSE TEST » ;
   - A91 : la diapo du cahier de textes, en répétition, montre l'échéance, le travail à faire et le contenu de l'heure ; rien n'est écrit au hub.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2333-27-10-1235-vert/`.
+
+## Retour 86 — 27/10, 23:45 — cas 37 écrit ; cas 37 et 38 sur la ⑥ aux quatre tailles
+- **Cas 37** (§12.37, A86) écrit. Le magasin a deux feuilles réalistes :
+  - « Dictée classique : « Le port » », un texte libre avec le texte de Baudelaire ;
+  - « Les connecteurs logiques », un tableau.
+- Ce que le cas 37 vérifie :
+  - dans l'éditeur de la feuille : surligner, couleur du texte, G, S, la légende ;
+  - le sujet souligné, le verbe en gras, le participe en couleur, dans l'aperçu ;
+  - la forme gardée après rechargement, puis dans l'aperçu d'impression ;
+  - « car » en couleur dans les connecteurs.
+- **Le cas 37 sur la ⑥ : 1/6 par taille.** Seul le contrôle « 0 erreur JS » est vert. L'éditeur n'a aucun geste de mise en forme : la capture `*-37-2-le-port-mis-en-forme-avant6.png` montre le texte brut. C'est attendu avant le §12.37 d'E4.
+- **Le cas 38 sur la ⑥ : 5/11 par taille**, identique aux quatre tailles.
+  - **A87 rouge.** À 20 h, la répétition dit « 3 DYLAN Bob » (capture `*-38-1-20h-seance-2-repetition-avant6.png`). À 9 h, il n'y a pas d'« heure n/N ». Le nom de la classe ne propose rien.
+  - **A88 vert.** Les élèves sont les quatre de CLASSE TEST. Le bilan garde « Les élèves ont écrit le bilan » et « Qui a participé ».
+  - **A91 rouge.** La diapo du cahier ne dit que « FIN D'HEURE ».
+  - Rien n'est écrit au hub.
+- Bilan des cas 37 et 38 sur la ⑥ : 24/68 sur les quatre tailles, les rouges attendus.
+- Rien de neuf sur `integration` depuis le §12.35 d'E1. J'attends les poussées : E1 §12.39 et §12.38 (1)(3) ; E4 §12.36, §12.38 (2) et §12.37.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2338-27-10-avant6/`.

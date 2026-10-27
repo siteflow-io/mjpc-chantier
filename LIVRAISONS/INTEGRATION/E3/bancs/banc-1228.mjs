@@ -41,6 +41,8 @@
 // 36 : (§12.36) la colonne de gauche de l'Atelier : trois niveaux (ni documents, ni attendus, ni « + insérer une séance ici ») ; en haut le titre du chapitre
 //      et « n documents sur m attendus » qui ouvre Structure ; pas de doublons ; la séance ouverte se replie et se rouvre ; la ligne d'heure « H1 · lun. 14/09 ·
 //      08:57 → 09:52 » ouvre la première diapo de l'heure ; chaque diapo dit son heure prévue ; la poignée : élargir, réduire, replier, rouvrir, retenue.
+// 37 : (§12.37) la mise en forme des feuilles : « Dictée classique : « Le port » » — un sujet souligné, un verbe conjugué en gras, un participe en couleur,
+//      la légende — posés par les mêmes gestes que dans la diapo, revus après rechargement, gardés à l'aperçu d'impression ; « Les connecteurs logiques ».
 // 63 : (mesure 13 · 63, seulement si MJPC_CAS le nomme) le bilan au tableau : question de 57 signes, 5 / 4 / 3 mots-clés de 30 à 45 signes, la consigne à
 //      3 étapes → combien de pages au tableau (répétition, « ▶ Jouer en avance » puis la fenêtre du tableau, tout dévoilé), « Diapo trop pleine » dans l'Atelier.
 // 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
@@ -63,7 +65,7 @@ const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log
 const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && detail !== '' ? ' — ' + detail : '')); return !!ok; };
 const info = (k, quoi) => dire('  info   ' + k + ' · ' + quoi);
 const p = (pg, ms) => pg.waitForTimeout(ms);
-/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33, 32, 34, 35, 39b, 38, 36 ; 63 seulement s'il est nommé) */
+/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33, 32, 34, 35, 39b, 38, 36, 37 ; 63 seulement s'il est nommé) */
 const SEUL = process.env.MJPC_CAS ? process.env.MJPC_CAS.split(',') : null; const fait = k => !SEUL || SEUL.includes(k);
 
 /* ── le faux hub (celui de banc-1227), plus la classe « 3 DYLAN Bob » appariée à ses six cases (mission 0, M1) ── */
@@ -995,6 +997,46 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
         verif(k, lis.l < 30 && l5 > 100, T + ' · A85 · tirée tout à gauche, la colonne se replie en un liseré ; un clic la rouvre', JSON.stringify({ replie: lis.l, rouverte: l5 })); }
     } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (36)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 37 (§12.37) : la mise en forme des feuilles ── */
+  if (fait('37')) { const k = '37';
+    const PORT = 'Un port est un séjour charmant pour une âme fatiguée des luttes de la vie. L’ampleur du ciel, l’architecture mobile des nuages, les colorations changeantes de la mer, le scintillement des phares, sont un prisme merveilleusement propre à amuser les yeux sans jamais les lasser.';
+    const st = hubStore(); st.site.atelier = { documents: {
+      doc_port_e3: { titre: 'Dictée classique : « Le port »', cases: { titre: true, texte_libre: true }, valeurs: { titre: { texte: 'Dictée classique : « Le port »' } }, contenu: [{ id: 'texte_libre', valeurs: { texte: PORT } }], dates: { dateEdition: '2026-10-20' } },
+      doc_connecteurs_e3: { titre: 'Les connecteurs logiques', cases: { titre: true, tableau: true }, valeurs: { titre: { texte: 'Les connecteurs logiques' } }, contenu: [{ id: 'tableau', valeurs: { lignes: 'Rapport | Connecteurs\nAddition | et, de plus, en outre\nCause | car, en effet, puisque\nConséquence | donc, ainsi, c’est pourquoi\nOpposition | mais, pourtant, cependant' } }], dates: { dateEdition: '2026-10-20' } } } };
+    const o = await ouvrirCtx(W, H, st); const pg = o.pg;
+    const ouvrirFeuille = async titre => { await pg.evaluate(() => { try { atelierOuvrir(); } catch (e) {} }); await p(pg, 1000); await sansVoiles(pg);
+      if (await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="structure"]'); return !!(b && b.offsetParent); })) { await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="structure"]').click()); await p(pg, 800); await clicTexte(pg, 'button', '← Mes chapitres'); await p(pg, 800); }
+      await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('[onclick]')).find(x => x.offsetParent && /atOnglet\('feuilles'\)/.test(x.getAttribute('onclick') || '')); if (b) b.click(); }); await p(pg, 1500);
+      return pg.evaluate(t => { const rows = Array.from(document.querySelectorAll('body *')).filter(x => x.offsetParent && (x.innerText || '').indexOf(t) >= 0 && Array.from(x.querySelectorAll('button')).some(b => /^Ouvrir$/.test(b.innerText.trim()))); const r = rows.sort((a, b) => a.innerText.length - b.innerText.length)[0]; if (!r) return false; Array.from(r.querySelectorAll('button')).find(b => /^Ouvrir$/.test(b.innerText.trim())).click(); return true; }, titre); };
+    const apercu = async f => { const h = await pg.$('#at-apercu'); const fd = h ? await h.contentFrame() : null; return fd ? fd.evaluate(f) : null; };
+    try { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await sansVoiles(pg);
+      const ouv = await ouvrirFeuille('Dictée classique'); await p(pg, 2500); await sansVoiles(pg);
+      /* les gestes de la diapo dans l'éditeur de la feuille : la palette, la couleur du texte, G, S, la légende */
+      const barre = await pg.evaluate(() => { const B = Array.from(document.querySelectorAll('button')).filter(b => b.offsetParent && b.getBoundingClientRect().width > 0); const f = re => { const b = B.find(x => re.test((x.innerText || '') + ' ' + (x.title || ''))); return b ? (b.id || b.innerText.trim().slice(0, 12)) + (b.title ? ' [' + b.title.slice(0, 40) + ']' : '') : null; }; return { surl: f(/surlign/i), coul: f(/couleur du texte/i), gras: f(/^G\b|Gras/), soul: f(/^S\b|Souligné/), legende: f(/légende/i) }; });
+      await capt(pg, W, H, '37-1-l-editeur-de-la-feuille');
+      verif(k, ouv && barre.surl && barre.coul && barre.gras && barre.soul && barre.legende, T + ' · A86 · dans l’éditeur de la feuille, les gestes de la diapo : surligner, couleur du texte, G, S, la légende', JSON.stringify(Object.assign({ ouverte: ouv }, barre)));
+      /* poser : « Un port » (sujet) souligné, « est » (verbe conjugué) en gras, « fatiguée » (participe employé comme adjectif) en couleur */
+      const choisir = mot => pg.evaluate(m => { const zones = Array.from(document.querySelectorAll('[contenteditable="true"], textarea')).filter(z => z.offsetParent && (z.value || z.textContent || '').indexOf(m) >= 0); const z = zones[0]; if (!z) return false; if (z.tagName === 'TEXTAREA') { const i = z.value.indexOf(m); z.focus(); z.setSelectionRange(i, i + m.length); return 'textarea'; } const tw = document.createTreeWalker(z, NodeFilter.SHOW_TEXT); while (tw.nextNode()) { const t = tw.currentNode; const i = t.textContent.indexOf(m); if (i >= 0) { const r = document.createRange(); r.setStart(t, i); r.setEnd(t, i + m.length); const s = getSelection(); s.removeAllRanges(); s.addRange(r); return 'contenteditable'; } } return false; }, mot);
+      const cliquer = async re => { await pg.evaluate(src => { const b = Array.from(document.querySelectorAll('button')).find(x => x.offsetParent && new RegExp(src).test((x.innerText || '') + ' ' + (x.title || ''))); if (b) b.click(); }, re); await p(pg, 500); await pg.evaluate(() => { const m = Array.from(document.querySelectorAll('[data-coul], .p8-coul')).find(x => x.offsetParent && x.tagName === 'BUTTON'); if (m) m.click(); }); await p(pg, 500); };
+      const z1 = await choisir('Un port'); await cliquer('^S\\b|Souligné'); const z2 = await choisir(' est '); await cliquer('^G\\b|Gras'); const z3 = await choisir('fatiguée'); await cliquer('couleur du texte');
+      await p(pg, 2500);
+      const lire = () => apercu(() => { const d = document.querySelector('.feuille') || document.body; const q = s => Array.from(d.querySelectorAll(s)).map(x => x.textContent.trim()).filter(Boolean).slice(0, 4); return { u: q('u, [style*="underline"]'), b: q('b, strong'), c: q('span[data-coul], span[style*="color"], mark') }; });
+      const m0 = await lire(); await capt(pg, W, H, '37-2-le-port-mis-en-forme');
+      verif(k, m0 && m0.u.some(x => /Un port/.test(x)) && m0.b.some(x => /est/.test(x)) && m0.c.some(x => /fatiguée/.test(x)), T + ' · A86 · « Le port » mis en forme dans l’aperçu : sujet souligné, verbe en gras, participe en couleur', JSON.stringify({ zones: [z1, z2, z3], apercu: m0 }));
+      /* rechargé : la forme est gardée */
+      await pg.reload({ waitUntil: 'load' }); await p(pg, 1800); await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2200); await sansVoiles(pg); await ouvrirFeuille('Dictée classique'); await p(pg, 2500);
+      const m1 = await lire(); verif(k, m1 && m1.u.some(x => /Un port/.test(x)) && m1.b.some(x => /est/.test(x)) && m1.c.some(x => /fatiguée/.test(x)), T + ' · A86 · après rechargement, la forme est gardée', JSON.stringify(m1));
+      /* imprimée : l'aperçu d'impression (le rendu imprimé, fond blanc) */
+      const imp = await apercu(() => { const d = document.querySelector('.feuille') || document.body; return { fond: getComputedStyle(document.body).backgroundColor, u: d.querySelectorAll('u, [style*="underline"]').length, b: d.querySelectorAll('b, strong').length }; });
+      verif(k, imp && imp.u > 0 && imp.b > 0, T + ' · A86 · l’aperçu d’impression garde la forme', JSON.stringify(imp));
+      /* « Les connecteurs logiques » : les couleurs des colonnes et des cas */
+      const ouv2 = await ouvrirFeuille('Les connecteurs logiques'); await p(pg, 2500); await capt(pg, W, H, '37-3-les-connecteurs-logiques');
+      const z4 = await choisir('car'); await cliquer('couleur du texte'); await p(pg, 2000);
+      const m4 = await apercu(() => Array.from(document.querySelectorAll('span[data-coul], span[style*="color"], mark')).map(x => x.textContent.trim()).slice(0, 4));
+      verif(k, ouv2 && z4 && m4 && m4.some(x => /car/.test(x)), T + ' · A86 · « Les connecteurs logiques » : « car » en couleur dans le tableau', JSON.stringify({ zone: z4, apercu: m4 }));
+    } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (37)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 63 (mesure 13 · 63) : la densité du bilan ── */
   if (SEUL && SEUL.includes('63')) for (const N of [5, 4, 3]) { const st = hubStore(); const o = await ouvrirCtx(W, H, st); const pg = o.pg; const k = '63 · ' + N + ' mots-clés';

@@ -1,0 +1,79 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 22:37 UTC · fichier md5 a2b1bdb97d4c26d46d8f8a178918c4fa
+
+══ 1366×768 ══
+  ÉCHEC  38 · 1366×768 · A87 · 20 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ÉCHEC  38 · 1366×768 · A87 · le nom de la classe se clique et propose les autres classes — {"nom":"SPAN","propose":[]}
+  ok     38 · 1366×768 · A88 · en répétition, sur le bilan : « Les élèves ont écrit le bilan » et, dans « ⋯ », « Qui a participé » restent — {"bilan":"☐ Les élèves ont écrit le bilan","menu":["Chrono au tableau","Qui a participé (au tableau)","Réserve de la séance…","Documents de la séance…","Expliqué à l'oral…","Déclarer une notion imprévue…","L'appel : clic droit sur un nom de la liste"]}
+  ok     38 · 1366×768 · A88 · les élèves de la répétition sont les quatre de « CLASSE TEST », aucun d’une vraie classe — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  ÉCHEC  38 · 1366×768 · A91 · en répétition, la diapo du cahier de textes montre l’échéance, le travail à faire et le contenu de l’heure — « FIN D'HEURE »
+  ok     38 · 1366×768 · A88 / A91 · rien d’écrit au hub en répétition (la trame inchangée) — PUT /manifestes/index, PUT /corbeille/2026-09-14/edt-mise-a-niveau-grille_200000, PUT /site/edt/grille/2026-2027, PUT /site/edt/photos/2026-2027
+  ÉCHEC  38 · 1366×768 · A87 · 20 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ok     Z · 1366×768 · 0 erreur JS (38, 20 h)
+  ÉCHEC  38 · 1366×768 · A87 · 9 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3E Charles de Gaulle aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3E Charles de Gaulle · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ÉCHEC  38 · 1366×768 · A87 · 9 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ok     Z · 1366×768 · 0 erreur JS (38, 9 h)
+  ÉCHEC  37 · 1366×768 · A86 · dans l’éditeur de la feuille, les gestes de la diapo : surligner, couleur du texte, G, S, la légende — {"ouverte":true,"surl":null,"coul":null,"gras":null,"soul":null,"legende":null}
+  ÉCHEC  37 · 1366×768 · A86 · « Le port » mis en forme dans l’aperçu : sujet souligné, verbe en gras, participe en couleur — {"zones":[false,false,false],"apercu":{"u":[],"b":[],"c":[]}}
+  ÉCHEC  37 · 1366×768 · A86 · après rechargement, la forme est gardée — {"u":[],"b":[],"c":[]}
+  ÉCHEC  37 · 1366×768 · A86 · l’aperçu d’impression garde la forme — {"fond":"rgb(244, 241, 234)","u":0,"b":0}
+  ÉCHEC  37 · 1366×768 · A86 · « Les connecteurs logiques » : « car » en couleur dans le tableau — {"zone":false,"apercu":[]}
+  ok     Z · 1366×768 · 0 erreur JS (37)
+
+══ 1536×864 ══
+  ÉCHEC  38 · 1536×864 · A87 · 20 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ÉCHEC  38 · 1536×864 · A87 · le nom de la classe se clique et propose les autres classes — {"nom":"SPAN","propose":[]}
+  ok     38 · 1536×864 · A88 · en répétition, sur le bilan : « Les élèves ont écrit le bilan » et, dans « ⋯ », « Qui a participé » restent — {"bilan":"☐ Les élèves ont écrit le bilan","menu":["Chrono au tableau","Qui a participé (au tableau)","Réserve de la séance…","Documents de la séance…","Expliqué à l'oral…","Déclarer une notion imprévue…","L'appel : clic droit sur un nom de la liste"]}
+  ok     38 · 1536×864 · A88 · les élèves de la répétition sont les quatre de « CLASSE TEST », aucun d’une vraie classe — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  ÉCHEC  38 · 1536×864 · A91 · en répétition, la diapo du cahier de textes montre l’échéance, le travail à faire et le contenu de l’heure — « FIN D'HEURE »
+  ok     38 · 1536×864 · A88 / A91 · rien d’écrit au hub en répétition (la trame inchangée) — PUT /manifestes/index, PUT /corbeille/2026-09-14/edt-mise-a-niveau-grille_200000, PUT /site/edt/grille/2026-2027, PUT /site/edt/photos/2026-2027
+  ÉCHEC  38 · 1536×864 · A87 · 20 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ok     Z · 1536×864 · 0 erreur JS (38, 20 h)
+  ÉCHEC  38 · 1536×864 · A87 · 9 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3E Charles de Gaulle aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3E Charles de Gaulle · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ÉCHEC  38 · 1536×864 · A87 · 9 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ok     Z · 1536×864 · 0 erreur JS (38, 9 h)
+  ÉCHEC  37 · 1536×864 · A86 · dans l’éditeur de la feuille, les gestes de la diapo : surligner, couleur du texte, G, S, la légende — {"ouverte":true,"surl":null,"coul":null,"gras":null,"soul":null,"legende":null}
+  ÉCHEC  37 · 1536×864 · A86 · « Le port » mis en forme dans l’aperçu : sujet souligné, verbe en gras, participe en couleur — {"zones":[false,false,false],"apercu":{"u":[],"b":[],"c":[]}}
+  ÉCHEC  37 · 1536×864 · A86 · après rechargement, la forme est gardée — {"u":[],"b":[],"c":[]}
+  ÉCHEC  37 · 1536×864 · A86 · l’aperçu d’impression garde la forme — {"fond":"rgb(244, 241, 234)","u":0,"b":0}
+  ÉCHEC  37 · 1536×864 · A86 · « Les connecteurs logiques » : « car » en couleur dans le tableau — {"zone":false,"apercu":[]}
+  ok     Z · 1536×864 · 0 erreur JS (37)
+
+══ 1707×743 ══
+  ÉCHEC  38 · 1707×743 · A87 · 20 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ÉCHEC  38 · 1707×743 · A87 · le nom de la classe se clique et propose les autres classes — {"nom":"SPAN","propose":[]}
+  ok     38 · 1707×743 · A88 · en répétition, sur le bilan : « Les élèves ont écrit le bilan » et, dans « ⋯ », « Qui a participé » restent — {"bilan":"☐ Les élèves ont écrit le bilan","menu":["Chrono au tableau","Qui a participé (au tableau)","Réserve de la séance…","Documents de la séance…","Expliqué à l'oral…","Déclarer une notion imprévue…","L'appel : clic droit sur un nom de la liste"]}
+  ok     38 · 1707×743 · A88 · les élèves de la répétition sont les quatre de « CLASSE TEST », aucun d’une vraie classe — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  ÉCHEC  38 · 1707×743 · A91 · en répétition, la diapo du cahier de textes montre l’échéance, le travail à faire et le contenu de l’heure — « FIN D'HEURE »
+  ok     38 · 1707×743 · A88 / A91 · rien d’écrit au hub en répétition (la trame inchangée) — PUT /manifestes/index, PUT /corbeille/2026-09-14/edt-mise-a-niveau-grille_200000, PUT /site/edt/grille/2026-2027, PUT /site/edt/photos/2026-2027
+  ÉCHEC  38 · 1707×743 · A87 · 20 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ok     Z · 1707×743 · 0 erreur JS (38, 20 h)
+  ÉCHEC  38 · 1707×743 · A87 · 9 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3E Charles de Gaulle aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3E Charles de Gaulle · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ÉCHEC  38 · 1707×743 · A87 · 9 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ok     Z · 1707×743 · 0 erreur JS (38, 9 h)
+  ÉCHEC  37 · 1707×743 · A86 · dans l’éditeur de la feuille, les gestes de la diapo : surligner, couleur du texte, G, S, la légende — {"ouverte":true,"surl":null,"coul":null,"gras":null,"soul":null,"legende":null}
+  ÉCHEC  37 · 1707×743 · A86 · « Le port » mis en forme dans l’aperçu : sujet souligné, verbe en gras, participe en couleur — {"zones":[false,false,false],"apercu":{"u":[],"b":[],"c":[]}}
+  ÉCHEC  37 · 1707×743 · A86 · après rechargement, la forme est gardée — {"u":[],"b":[],"c":[]}
+  ÉCHEC  37 · 1707×743 · A86 · l’aperçu d’impression garde la forme — {"fond":"rgb(244, 241, 234)","u":0,"b":0}
+  ÉCHEC  37 · 1707×743 · A86 · « Les connecteurs logiques » : « car » en couleur dans le tableau — {"zone":false,"apercu":[]}
+  ok     Z · 1707×743 · 0 erreur JS (37)
+
+══ 1920×1080 ══
+  ÉCHEC  38 · 1920×1080 · A87 · 20 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ÉCHEC  38 · 1920×1080 · A87 · le nom de la classe se clique et propose les autres classes — {"nom":"SPAN","propose":[]}
+  ok     38 · 1920×1080 · A88 · en répétition, sur le bilan : « Les élèves ont écrit le bilan » et, dans « ⋯ », « Qui a participé » restent — {"bilan":"☐ Les élèves ont écrit le bilan","menu":["Chrono au tableau","Qui a participé (au tableau)","Réserve de la séance…","Documents de la séance…","Expliqué à l'oral…","Déclarer une notion imprévue…","L'appel : clic droit sur un nom de la liste"]}
+  ok     38 · 1920×1080 · A88 · les élèves de la répétition sont les quatre de « CLASSE TEST », aucun d’une vraie classe — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  ÉCHEC  38 · 1920×1080 · A91 · en répétition, la diapo du cahier de textes montre l’échéance, le travail à faire et le contenu de l’heure — « FIN D'HEURE »
+  ok     38 · 1920×1080 · A88 / A91 · rien d’écrit au hub en répétition (la trame inchangée) — PUT /manifestes/index, PUT /corbeille/2026-09-14/edt-mise-a-niveau-grille_200000, PUT /site/edt/grille/2026-2027, PUT /site/edt/photos/2026-2027
+  ÉCHEC  38 · 1920×1080 · A87 · 20 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ok     Z · 1920×1080 · 0 erreur JS (38, 20 h)
+  ÉCHEC  38 · 1920×1080 · A87 · 9 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3E Charles de Gaulle aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3E Charles de Gaulle · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ÉCHEC  38 · 1920×1080 · A87 · 9 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3 DYLAN Bob aucune heure lancée — Adresse du tableau","repetition":"RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter"}
+  ok     Z · 1920×1080 · 0 erreur JS (38, 9 h)
+  ÉCHEC  37 · 1920×1080 · A86 · dans l’éditeur de la feuille, les gestes de la diapo : surligner, couleur du texte, G, S, la légende — {"ouverte":true,"surl":null,"coul":null,"gras":null,"soul":null,"legende":null}
+  ÉCHEC  37 · 1920×1080 · A86 · « Le port » mis en forme dans l’aperçu : sujet souligné, verbe en gras, participe en couleur — {"zones":[false,false,false],"apercu":{"u":[],"b":[],"c":[]}}
+  ÉCHEC  37 · 1920×1080 · A86 · après rechargement, la forme est gardée — {"u":[],"b":[],"c":[]}
+  ÉCHEC  37 · 1920×1080 · A86 · l’aperçu d’impression garde la forme — {"fond":"rgb(244, 241, 234)","u":0,"b":0}
+  ÉCHEC  37 · 1920×1080 · A86 · « Les connecteurs logiques » : « car » en couleur dans le tableau — {"zone":false,"apercu":[]}
+  ok     Z · 1920×1080 · 0 erreur JS (37)
+
+BILAN banc-1228 : 24/68 vérifications — 44 ÉCHEC(S) · ROUGE

@@ -4946,3 +4946,87 @@ MEMO
 
 27/10/2026 17:52
 MEMO
+
+
+---
+
+## Tour 251 — 27/10/2026 17:59 → 18:06
+
+**Paul (17:59) :** Une rédac pour plusieurs classes non: actuellement en dictée je duplique une dictée pour la deuxième classe. on doit faire pareil pour la rédac. 
+L'instance a trouvé plusieurs dettes encore dans le site et dans le prompt d'injection
+
+**Paul (18:01) :** 
+
+De l'instance qui crée le chapitre 3e « Poésie et peinture au XIXe siècle » (27/10, 18:00).
+Mesures faites sur la production 8.75.0-⑤ (index.html md5 99500dc9d6a0557c6faafdd71cc15f01), jouée sur un faux hub : maquette v4, md5 5eca6faaa68bf6d9f6a93329bb3e14c3.
+Dettes encore ouvertes :
+
+PROMPT D'INJECTION 0.9
+1. §3 point 7 et §2 « La forme » : quand un texte nomme le professeur, le prompt écrit « M. Meney ». Règle de Paul : jamais « M. Meney » dans un texte vu par l'élève, toujours « moi » (« mon corrigé »).
+2. §1.3 bilan : le prompt dit que 5 mots-clés tiennent sur une page. Mesuré : les deux bilans du chapitre (questions de 29 et 57 signes, 5 mots-clés, consigne à 3 étapes) sont « Diapo trop pleine » dans l'Atelier et font 2 pages au tableau en 1366 × 768. Avec 4 mots-clés, toujours 2 pages. Cela contredit E3 et la mesure de la 0.9.
+3. §1.4 image : rien ne dit qu'une image ne passe en pleine page que si elle est seule sur sa diapo. Avec une question sur la même diapo, le site la réduit à une bande.
+4. §1.4 fiche : le crochet « les feuilles n'existent pas encore » tient toujours. dr_feuilles() rend []. L'import ne crée aucune feuille et ne fait pas les liaisons de « aLier » : il les liste seulement. La liaison item → feuille se fait au geste « Lier ».
+5. Une séance pour une seule classe n'est pas prévue. Exemple : Franklin a une heure de remédiation que Dylan n'a pas. Objet manquant, à déclarer dans le prompt.
+
+SITE
+6. Image en pleine page : le site la recadre pour remplir l'écran (object-fit: cover), donc elle perd le haut et le bas. Le Voyageur contemplant une mer de nuages perd son rocher sous la légende, la Méduse un peu du haut et du bas.
+7. Extrait numéroté (feuilles de l'Atelier) : la numérotation compte les lignes vides (bloc_extrait numérote toutes les lignes). Dans « L'Albatros » et « Parfum exotique », les numéros imprimés ne sont pas ceux des vers : « Le Poète est semblable » porte 16 au lieu de 13.
+8. Panneau de droite de l'Atelier (droiteAtelier : const E = seance().ecrans) : « Pour la classe » et « Le chapitre » ne lisent que la séance ouverte. Une notion reprise en séance 3 mais travaillée en séance 2 est dite « travaillée nulle part dans le chapitre ». C'est contraire au prompt §1.2.
+9. « Créer un double » nomme le double « … (proposition) », comme le chapitre existant : la liste montre deux chapitres de même titre.
+10. Aucune séance ne peut être réservée à une classe : l'emploi du temps joue le même chapitre aux deux classes (voir 5).
+11. Taxonomie : aucune notion pour les mouvements littéraires et artistiques (Romantisme, Parnasse). Les notes du bilan de la séance 1 le signalent.
+12. Texte à trous (feuilles) : « […] » devient un trou, car le crochet sert à marquer les trous. On ne peut pas écrire une coupure entre crochets.
+
+JE NE SAIS PAS (non mesuré)
+13. Si la production porte les refus « à ajouter à l'import » de l'annexe du prompt, et si « Vérifier » mesure la densité.
+
+**Claude :**
+
+À jouer : la Rédaction universelle (611) · en cours chez les exécutants : E4 le panneau commun (627), E3 vérifie l'accès depuis le site puis mesure le bilan (629) · ouvert : 632, 634, 635, 636, 615, 604, 538, 553, 586, 481, 458
+
+627. Une rédaction pour une classe, dupliquée pour la deuxième, comme une dictée : « ⧉ » donne « Copie de … », « ✏️ » change la classe. C'est écrit dans le complément d'E4, avec 623 à 626 ; il a déjà commencé.
+
+628. Les dettes de l'instance, vérifiées contre le code : justes, sauf la 2 et la 13. Au registre : 13 · 62 à 13 · 72.
+
+629. La 2 (le bilan sur deux pages) : je ne sais pas. Elle contredit la mesure d'E3 ; E3 la refait par le geste, à 3, 4 et 5 mots-clés, avant que je touche au prompt.
+
+630. La 13 (les refus de l'annexe, la densité dans « Vérifier ») : je ne sais pas encore ; je la mesure.
+
+631. Le prompt (1, 3, 4) : je le corrige dans la 1.0, celle qui part avec l'Atelier : « moi » au lieu de « M. Meney » ; l'image en pleine page seulement seule sur sa diapo ; les feuilles toujours liées au geste « Lier ».
+
+632. Le site (6, 7, 8, 9, 12), à E1 en une livraison : l'œuvre entière, jamais recadrée ; seuls les vers numérotés ; le panneau de droite qui lit tout le chapitre ; un double jamais du même titre qu'un chapitre existant ; « […] » reste une coupure, pas un trou. Oui ?
+
+633. La 4 côté site (l'import qui crée les feuilles et fait les liaisons) est un chantier à elle seule : je la cadre après.
+
+634. La 5 et la 10 (une séance pour une seule classe) : je propose qu'une séance porte les classes qui la jouent (toutes, par défaut) ; l'emploi du temps ne la joue qu'à elles ; le prompt l'apprend. Oui ?
+
+635. La 11 (la taxonomie) : je te propose les notions des mouvements (Romantisme, Parnasse, Symbolisme, Réalisme…), tu valides la liste. Oui ?
+
+636. Ta règle « moi » : le récit de la séance dit aussi « M. Meney » (choisi le 23/10). Même règle ?
+
+À tester : le 611, toujours.
+
+27/10/2026 18:06
+MEMO
+
+
+---
+
+## Tour 252 — 27/10/2026 18:09 → 18:12
+
+**Paul :** 14. Un item « dictée » ne peut ouvrir qu'une dictée de « Dictée coévaluée » : la fenêtre « Lier » ne propose que « Dictée existante », et l'item ouvre dictee_universelle.html. Aucun item ne peut ouvrir une dictée de Correction de dictée.
+
+**Claude :**
+
+À jouer : la Rédaction universelle (611) · en cours chez les exécutants : E4 le panneau commun (627), E3 l'accès depuis le site puis la mesure du bilan (629) · ouvert : 638, 632, 634, 635, 636, 615, 604, 538, 553, 586, 481, 458
+
+637. Juste, vérifié contre le code : « Lier » ne propose que les dictées coévaluées, et l'item ouvre la Dictée coévaluée. Dette 13 · 73.
+
+638. Je propose, dans la même livraison d'E1 que le 632 : « Lier » propose aussi les dictées de la Correction de dictée (leur titre et leur classe) ; l'élève qui clique ouvre sa dictée corrigée, toi la dictée dans ton panneau. Oui ?
+
+639. L'accès aux rédactions depuis le site (616) : E1 a fini, mon banc est vert (106 sur 106) ; E3 le vérifie par le geste.
+
+À tester : le 611, toujours.
+
+27/10/2026 18:12
+MEMO

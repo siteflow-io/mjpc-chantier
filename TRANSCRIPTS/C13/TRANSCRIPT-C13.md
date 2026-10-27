@@ -4521,3 +4521,23 @@ MEMO
 
 27/10/2026 14:10
 MEMO
+
+
+---
+
+## Tour 236 — 27/10/2026 14:12 → 14:15
+
+**Paul :** oui pour 561. et effectivement, un exemple pour le banc doit toujours etre réaliste
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 sur la Rédaction universelle (13 · 54 et des exemples réalistes) · ouvert : 538, 553, 481, 458
+
+564. Transmis à E4 : la phrase du compteur dira le niveau du compteur, calculé avec la longueur ; si ton niveau d'orthographe ne lui correspond plus, la carte te le dit et la fiche attend que tu tranches. Si tu gardes ton niveau, la phrase ne dit plus « ce qui correspond au niveau… », seulement le nombre d'erreurs.
+
+565. Ta règle est écrite au contrat des exécutants, pour tous les bancs : un exemple est toujours réaliste. Elle vaut aussi pour les copies d'essai du banc, pas seulement pour les images qu'on te montre.
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:15
+MEMO

@@ -5008,3 +5008,25 @@ JE NE SAIS PAS (non mesuré)
 
 27/10/2026 18:06
 MEMO
+
+
+---
+
+## Tour 252 — 27/10/2026 18:09 → 18:11
+
+**Paul :** 14. Un item « dictée » ne peut ouvrir qu'une dictée de « Dictée coévaluée » : la fenêtre « Lier » ne propose que « Dictée existante », et l'item ouvre dictee_universelle.html. Aucun item ne peut ouvrir une dictée de Correction de dictée.
+
+**Claude :**
+
+À jouer : la Rédaction universelle (611) · en cours chez les exécutants : E4 le panneau commun (627), E3 l'accès depuis le site puis la mesure du bilan (629) · ouvert : 638, 632, 634, 635, 636, 615, 604, 538, 553, 586, 481, 458
+
+637. Juste, vérifié contre le code : « Lier » ne propose que les dictées coévaluées, et l'item ouvre la Dictée coévaluée. Dette 13 · 73.
+
+638. Je propose, dans la même livraison d'E1 que le 632 : « Lier » propose aussi les dictées de la Correction de dictée (leur titre et leur classe) ; l'élève qui clique ouvre sa dictée corrigée, toi la dictée dans ton panneau. Oui ?
+
+639. L'accès aux rédactions depuis le site (616) : E1 a fini, mon banc est vert (106 sur 106) ; E3 le vérifie par le geste.
+
+À tester : le 611, toujours.
+
+27/10/2026 18:11
+MEMO

@@ -129,3 +129,5 @@ Mesuré sur `redaction_dugain_v3.html` (production, 349 982 o, 6 205 lignes, JS 
 - Les validations gardent `{ le, par }` ; l'export et l'import JSON gardent ces champs (ils sont dans l'état) ; **aucun n'est vu sur une fiche**.
 - Garde **RU15** (6 vérifications : le sujet — id interne, place au hub, nom court, horodatage ; la copie — id, clés internes, sujetId, creeLe ≤ modifieLe ; une seconde correction — même id, modifieLe avancé ; « Préparer » — modifieLe du sujet avancé ; rien sur la fiche ; un nom d'élève corrigé → la copie montrée, « Rattacher », même id). Capture **3c** (la copie à rattacher).
 - Banc RU0-RU15 : **62 ok · 0 échec** (`sorties/1631-27-10/banc-ru.txt`).
+
+**RU fini (`5bac4fe75`)** — 27/10 16:40 (Paris), après 13 · 57 et 13 · 58. Banc RU0-RU15 : 62 ok, 0 échec.

@@ -4245,3 +4245,40 @@ MEMO
 
 27/10/2026 11:33
 MEMO
+
+## Tour 226 — 27/10/2026 11:39 — Paul (11:37)
+
+**Paul (mot pour mot).** « donc justement, il faut terminer le cadrage pour cette app (suite du cadrage du 16 07). Par ailleurs, le cadrage va devoir se faire rapidement: je n'ai plus beaucoup de tokens pour cette semaine, et tu as déjà une très grande connaissance de ma manière de travailler. Donc ça doit aller vite. tu dois proposer (appuyé sur ma façon de travailler) et je dois valider ou non. »
+
+**Fait.** Relu DOCTRINE §K0 (16/07 : structure générique, textes par œuvre, échelles éditables au hub, cycle proposé → validé → cliquable → réutilisé), CHANTIER ①, la ceinture locale (30/07). Cadrage écrit : `MANDATS/REDACTION-UNIVERSELLE/CADRAGE-27-10.md` (R1-R9), commit `61f588bf`.
+
+**Réponse (mot pour mot).**
+
+À jouer : rien · en cours chez les exécutants : E3 vérifie la ⑤ · ouvert : 481, 458, 522, R1-R9
+
+523. Mes propositions, une ligne chacune ; dis oui, ou corrige celles qui ne vont pas (ce que tu ne commentes pas est acquis).
+
+R1 — Un moteur, des sujets : le code ne connaît plus aucun sujet ni aucune classe ; un sujet (énoncé, texte, grille) est rangé sur le site. La grille Dugain devient le premier sujet, reprise telle quelle.
+
+R2 — La finesse reste entière : les critères, les 4 niveaux au prénom, les sous-niveaux, le compteur de fautes, les touches 1-2-3-4, le paquet par initiales, le chrono, les statistiques, la fiche élève. Rien ne tombe.
+
+R3 — Un sujet naît comme un chapitre : tu prépares la grille avec Claude et un « prompt rédaction » (la grille Dugain pour modèle, ton texte, ton sujet) ; il te rend un JSON ; dans l'app : « Nouveau sujet » → coller → « Vérifier » → « Créer ».
+
+R4 — Tu valides chaque phrase avant qu'un élève la lise : le sujet créé arrive « à relire » ; tu lis, tu corriges dans la case, tu valides. Aucune fiche ne part avec une phrase non validée.
+
+R5 — La classe vient du site : tu la choisis dans la liste, plus de liste à coller ; la fiche porte son nom.
+
+R6 — Tout s'enregistre sur le site à chaque geste, avec la sauvegarde automatique gardée en secours, et le mode test comme partout.
+
+R7 — L'accès : depuis le panneau prof et depuis la séance du chapitre (l'onglet « Rédaction »). Côté élève, rien de nouveau : la fiche part comme aujourd'hui, imprimée ou par École Directe.
+
+R8 — Chaque point de la grille porte sa compétence (celle de tes listes) ; rien d'autre n'est attendu pour commencer.
+
+R9 — L'ordre : maquette sur l'app réelle et captures pour ton oui, puis un exécutant. L'étude de texte universelle : après.
+
+524. Pour ta rédaction d'avant les vacances, il me faut son sujet (522) : ce sera le premier sujet créé.
+
+À tester : rien.
+
+27/10/2026 11:39
+MEMO

@@ -4798,3 +4798,38 @@ MEMO
 
 27/10/2026 15:56
 MEMO
+
+
+---
+
+## Tour 246 — 27/10/2026 15:57 → 16:02
+
+**Claude (15:57, sans message de Paul) :**
+
+E3 a vérifié l'Atelier par le geste : 64 vérifications sur 68 sont vertes. Il ne reste que les onglets, qu'E1 retire maintenant que mes contrôles sont adaptés.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:57
+MEMO
+
+**Paul (16:01) :** L'instance qui fait le chapitre me dit que le prompt et le site sont incohérents sur lhistoire du bilan qui accepte tant de choses ou pas. À mesurer
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 les objets et les mots de liaison, E1 et E3 l'Atelier · ouvert : 604, 538, 553, 586, 481, 458
+
+600. Mesuré : elle a raison. Le prompt est plus strict que le site, jamais l'inverse. Dette 13 · 59 au registre.
+
+601. Les mots-clés « À mettre dans le bilan » : le prompt en veut quatre ou cinq, de 10 à 45 signes chacun (mesuré au tableau) ; le site en accepte autant qu'on veut, jusqu'à douze mots par ligne. L'un compte en signes, l'autre en mots : c'est l'incohérence qu'elle a vue.
+
+602. La question du bilan : le prompt dit 90 signes au plus et aucune réponse attendue ; le site n'a pas de limite et accepte une réponse.
+
+603. Pour ton chapitre maintenant : dis à l'instance de suivre le prompt. Tout ce qu'il demande, le site l'accepte.
+
+604. Je propose que le site refuse exactement ce que le prompt interdit, avec les mots du prompt : six mots-clés ou plus, une ligne de plus de 45 signes, une question de plus de 90 signes, une réponse attendue sur la question du bilan. E1 l'ajoute à l'Atelier en cours. Oui ?
+
+À tester : rien pour l'instant.
+
+27/10/2026 16:02
+MEMO

@@ -4108,3 +4108,26 @@ MEMO
 
 27/10/2026 09:03
 MEMO
+
+## Tour 219 — 27/10/2026 09:43 — Paul (09:41)
+
+**Paul (mot pour mot).** « On en est où »
+
+**Lu.** `integration` : E1 `ef92c32c` / `7f12a15b` (09:10) — §12.31 (2)(3) : 13 · 49 (« (proposition) » pour un double seulement) et 13 · 50 (« Nouveau chapitre » sans la clé, rien de chiffré), A57 + A58 rouges avant, vertes après (A33+A57+A58 75/0), `banc.sh` VERT ; reste (1 bis) l'inventaire puis (1) `edtCleClasse` + A56 ; rappel 09:45. E2 `92910ac5` (09:37) — §12.30 poussée 43 : `dr_phraseActivite`, la ligne sous la tête tenue à jour en place, `alerteTexte` tombée, B36, banc E2 213/0, `banc.sh` 106/0 — « §12.30 E2 fini » ; rappel §12.31 (10:28 : aligner `dr_slugDe` après E1). E3 : rien depuis 08:21 ; son rappel de 09:13 a tiré, aucun rappel actif — probablement en course (non tiré : le contrôle n°74 de 09:53 vérifie). Une course entière d'E3 (`banc-1228` + `banc-1227`) prend environ 80 minutes.
+
+**Réponse (mot pour mot).**
+
+À jouer : rien · en cours chez les exécutants : E1 les classes (13 · 51), E3 les mesures · ouvert : 481, 458
+
+501. La phrase de l'activité en cours (454) : faite par E2 à 09:37.
+
+502. Le titre sans « (proposition) » (13 · 49) et « Nouveau chapitre » sans demande de clé (13 · 50) : faits par E1 à 09:10, vérifiés par ses gardes.
+
+503. Reste le gros morceau : tes classes dans l'emploi du temps (13 · 51). E1 fait d'abord la liste de tous les endroits du site concernés, puis la correction. Ensuite E3 vérifie tout ; une vérification complète lui prend environ une heure et demie. Je ne sais pas encore à quelle heure la ⑤ sera prête : je te l'annonce avec les images dès qu'elle l'est.
+
+504. Tu peux déjà injecter ton chapitre et le publier pour tes classes, hors mode test : c'est enregistré, et la ⑤ le fera apparaître dans l'emploi du temps sans rien refaire.
+
+À tester : rien de nouveau avant la ⑤.
+
+27/10/2026 09:43
+MEMO

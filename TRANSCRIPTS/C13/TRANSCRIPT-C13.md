@@ -4481,7 +4481,7 @@ MEMO
 
 ---
 
-## Tour 234 — 27/10/2026 14:05 → 14:14
+## Tour 234 — 27/10/2026 14:05 → 14:08 (la réponse porte « 14:14 » : faux, il était 14:08 — faute de la conscience)
 
 **Paul :** tu as lu le bilan d'elise? le contenu je veux dire
 
@@ -4502,4 +4502,22 @@ MEMO
 À tester : rien pour l'instant.
 
 27/10/2026 14:14
+MEMO
+
+
+---
+
+## Tour 235 — 27/10/2026 14:08 → 14:10 (sans message de Paul : contrôle n°80)
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 refait les images de la Rédaction universelle · ouvert : 561, 538, 553, 481, 458
+
+562. E4 a réglé « {CIT} » et l'énoncé coupé (13 · 52, 13 · 53). Il m'a aussi signalé une erreur de ma part : l'énoncé de la lettre disait « les cinq architectures ci-dessous » sans la liste. Elle y est maintenant, mot pour mot depuis ta feuille.
+
+563. Mon message précédent portait 14:14 : il était 14:08. Je n'ai pas lu l'heure avant de l'écrire.
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:10
 MEMO

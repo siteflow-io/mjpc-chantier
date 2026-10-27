@@ -1,0 +1,51 @@
+banc E1 · 2026-10-27 11:00 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 12accf681c6d69f85266146628c1a422
+
+A47 — §12.28 (1), dette 13 · 39 : en mode test, ce qui a été écrit se lit — « Je publie pour » une classe → l'emploi du temps montre la séance dans ses cases ; dépublier → elle part ; aucune écriture au hub ; hors mode test, rien ne change
+  ok     A47 · mode test : « Je publie pour » 3A ESSAI → « Publier » le chapitre → l'emploi du temps montre la séance dans les 4 cases de 3A ESSAI (avant : « aucune séance prête ») — {"avant":"3A ESSAI aucune séance prête","apres":["3A ESSAI Poésie et peinture : le Romantisme en question heure 2/3","3A ESSAI Étude de texte accompagnée : « L'Albatros » heure 1/3"]}
+  ok     A47 · mode test : dépublier → les cases de 3A ESSAI reviennent à « aucune séance prête » — ["3A ESSAI aucune séance prête","3A ESSAI aucune séance prête"]
+  ok     A47 · mode test : le faux hub n'a reçu aucune écriture (K15) — hors la présence du prof (/presence, écrite par son propre fetch, l. 4963 : dit au JOURNAL)
+  ok     A47 · mode test : l'arbre — une feuille effacée reste effacée, PATCH fusionne, un parent écrit remplace ce qu'il contient, une clé jamais lue reste « pas encore lue » — ["{\"e\":{\"f\":4}}",4,null,true]
+  ok     A47 · mode test : aucune erreur JS
+  ok     A47 · hors mode test : rien ne change — la publication part au hub (PUT …/chapitres/0/published/3a_essai) et l'emploi du temps la montre — ["PUT /site/3e/chapitres/0/published/3a_essai",48]
+  ok     A47 · hors mode test : aucune erreur JS
+
+A57 — §12.31 (2), dette 13 · 49 : « Créer ce chapitre » (aucun chapitre de ce titre) écrit le titre du JSON tel quel ; « Créer un double » (le titre existe) le suffixe « (proposition) »
+  ok     A57 · la confirmation dit « Créer ce chapitre », sans « (proposition) » — {"bouton":true,"t":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romantisme en question » (1"}
+  ok     A57 · « Créer ce chapitre » : le titre du JSON tel quel au hub — ["Chapitre neuf de la garde A57"]
+  ok     A57 · « Créer un double » : l'original intact, le double « Poésie et peinture au XIXe siècle (proposition) (proposition) » — ["Poésie et peinture au XIXe siècle (proposition)","Poésie et peinture au XIXe siècle (proposition) (proposition)"]
+  ok     A57 · aucune erreur JS
+
+A58 — §12.31 (3), dette 13 · 50 : sans la clé de chiffrement, « 📚 Nouveau chapitre » ouvre son écran (pas de « Clé requise ») ; les gestes des codes la demandent toujours
+  ok     A58 · 1366 × 768 : clé absente, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"porte":true,"libelle":"📚 Nouveau chapitre Tu apportes tes docu","titre":"📚 Construire un chapitre avec une IA","cle":false,"valide":false}
+  ok     A58 · 1366 × 768 : aucune erreur JS
+  ok     A58 · 1536 × 864 : clé absente, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"porte":true,"libelle":"📚 Nouveau chapitre Tu apportes tes docu","titre":"📚 Construire un chapitre avec une IA","cle":false,"valide":false}
+  ok     A58 · 1536 × 864 : aucune erreur JS
+  ok     A58 · 1707 × 743 : clé absente, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"porte":true,"libelle":"📚 Nouveau chapitre Tu apportes tes docu","titre":"📚 Construire un chapitre avec une IA","cle":false,"valide":false}
+  ok     A58 · les codes demandent toujours la clé (secuExigeCle inchangée : « Clé requise ») — {"ok":false,"dit":true}
+  ok     A58 · 1707 × 743 : aucune erreur JS
+  ok     A58 · 1920 × 1080 : clé absente, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"porte":true,"libelle":"📚 Nouveau chapitre Tu apportes tes docu","titre":"📚 Construire un chapitre avec une IA","cle":false,"valide":false}
+  ok     A58 · 1920 × 1080 : aucune erreur JS
+
+A56 — §12.31 (1), dette 13 · 51 : une classe à clé simplifiée (créée par le site) reliée par le menu, le chapitre publié → la case montre la séance et « heure n/N », la fenêtre de la case ses élèves ; hors mode test et en mode test ; edtCleClasse résout nom, clé, slug
+  ok     A56 · le menu « 🔗 Classes de la grille et classes du site » propose le nom (« 3 DYLAN Bob ») : c'est ce que classeMjpc reçoit — ["3 DYLAN Bob","3E Charles de Gaulle","4E BANKSY","4E PYTHAGORE","5e HERGÉ","6e Saint-Michel","CLASSE TEST","_TEST","_test_pilotage_debat_s3"]
+  ok     A56 · hors mode test : avant, « aucune séance prête » ; « Je publie pour » 3 DYLAN Bob → « Publier » le chapitre → les 2 cases montrent la séance — {"pill":true,"pb":true,"avant":"3 DYLAN Bob aucune séance prête","apres":["3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 3/3","3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"]}
+  ok     A56 · hors mode test : chaque case dit « heure n/N » — ["3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 3/3","3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"]
+  ok     A56 · hors mode test : la fenêtre de l'heure jouée (mardi 15/09, 10:07) montre les élèves de la classe (les absents) — mardi 15 septembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 0 activité. Close. Séance : Poésie et peinture : le Romantisme en question Relire cette h
+  ok     A56 · edtCleClasse : le nom → la clé, la clé → elle-même, le nom écrit autrement → la clé par le slug, la 3E (clé = nom) → elle-même, l'inconnue → son nom ; edtNiveauDe, edtElevesDe, edtEstExperimentale la trouvent ; edtDecisionsOrphelines ne la dit plus orpheline — {"r":["3_dylan_bob","3_dylan_bob","3_dylan_bob","3E Charles de Gaulle","Inconnue X"],"niv":"3e","exp":false,"el":4,"orph":[]}
+  ok     A56 · hors mode test : aucune erreur JS
+  ok     A56 · mode test : avant, « aucune séance prête » ; « Je publie pour » 3 DYLAN Bob → « Publier » le chapitre → les 2 cases montrent la séance — {"pill":true,"pb":true,"avant":"3 DYLAN Bob aucune séance prête","apres":["3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 3/3","3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"]}
+  ok     A56 · mode test : chaque case dit « heure n/N » — ["3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 3/3","3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"]
+  ok     A56 · mode test : la fenêtre de l'heure jouée (mardi 15/09, 10:07) montre les élèves de la classe (les absents) — mardi 15 septembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 0 activité. Close. Séance : Poésie et peinture : le Romantisme en question Relire cette h
+  ok     A56 · mode test : aucune erreur JS
+
+A59 — §12.31 (1 ter) : une heure jouée d'une classe à clé simplifiée, rangée sous la clé (comme l'écrit le déroulé) — la case dit l'heure jouée, la case suivante « heure 2/3 » ; rangée sous le nom (trace ancienne) — de même ; la 3E (clé = nom) inchangée
+  ok     A59 · trace sous la clé (« …_3_dylan_bob », l'écrivain du déroulé) : la case du mardi 15/09 10:07 est l'heure jouée, sa fenêtre le dit, le chemin de la trace est le bon — {"jouee":"3 DYLAN Bob Poésie et peinture : le Romantisme en question · 0 activité","trace":true,"chemin":"/site/3e/chapitres/0/seances/0/deroule_joue/3_dylan_bob/heures/2026-09-15_10h07-11h02_3_dylan_bob","fen":"mardi 15 septembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 0 activit"}
+  ok     A59 · clé : la case suivante de la classe dit « heure 2/3 » de la même séance — "2026-09-17 15:07-16:02 : 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"
+  ok     A59 · clé : la 3E Charles de Gaulle (clé = nom) garde son heure jouée du 07/09 — true
+  ok     A59 · clé : aucune erreur JS
+  ok     A59 · trace sous la forme du nom (« …_3_DYLAN_Bob », trace ancienne) : la case du mardi 15/09 10:07 est l'heure jouée, sa fenêtre le dit, le chemin de la trace est le bon — {"jouee":"3 DYLAN Bob Poésie et peinture : le Romantisme en question · 0 activité","trace":true,"chemin":"/site/3e/chapitres/0/seances/0/deroule_joue/3_dylan_bob/heures/2026-09-15_10h07-11h02_3_DYLAN_Bob","fen":"mardi 15 septembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 0 activit"}
+  ok     A59 · nom : la case suivante de la classe dit « heure 2/3 » de la même séance — "2026-09-17 15:07-16:02 : 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"
+  ok     A59 · nom : la 3E Charles de Gaulle (clé = nom) garde son heure jouée du 07/09 — true
+  ok     A59 · nom : aucune erreur JS
+
+38 vérifications, 0 échec(s) · 135 s

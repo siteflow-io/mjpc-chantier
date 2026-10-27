@@ -4415,3 +4415,30 @@ MEMO
 
 27/10/2026 13:00
 MEMO
+
+
+---
+
+## Tour 232 — 27/10/2026 13:09 → 13:14
+
+**Paul :** Promeus. J'ai une question : si je banalisé une heure aujourd'hui dans le calendrier, est ce que si jinjecte un nouveau calendrier l'heure banalisee tient encore ? Ou Estelle effacée par l'import ?
+
+**Claude :**
+
+À jouer : la 8.75.0-⑤, en ligne · en cours chez les exécutants : E4 la Rédaction universelle · ouvert : 538, 481, 458
+
+548. C'est promu : la 8.75.0-⑤ est en ligne depuis 13:10, vérifiée octet pour octet contre le site. Le retour vers ④ est prêt si besoin. Le registre, le journal et l'index sont à jour.
+
+549. L'heure banalisée tient. Elle est rangée à part, avec tes autres décisions de l'emploi du temps ; injecter un calendrier ne réécrit que le calendrier (et la date du brevet), jamais tes décisions. Lu dans le code, pas encore rejoué par le geste.
+
+550. Un seul cas change l'affichage : si le nouveau calendrier met ce jour en vacances ou en férié, la case disparaît de la semaine. La banalisation reste rangée, mais tu ne la vois plus.
+
+À tester :
+- dans l'emploi du temps, la case d'une classe créée dans le panneau (3 FRANKLIN Aretha ou 3 DYLAN Bob) montre le chapitre publié pour elle ;
+- jouer et clore une heure de cette classe, rouvrir sa case : « Heure jouée — … Close. » ;
+- « Nouveau chapitre » dans l'Atelier : la page s'ouvre sans « Clé requise », et le chapitre créé n'a pas « (proposition) » ;
+- à T-5 d'une heure lancée : la phrase « L'activité en cours » sous la tête ;
+- banaliser une heure, réinjecter le même calendrier, rouvrir la case : elle est toujours banalisée.
+
+27/10/2026 13:14
+MEMO

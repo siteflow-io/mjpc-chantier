@@ -1,0 +1,79 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 18:37 UTC · fichier md5 12accf681c6d69f85266146628c1a422
+
+══ 1366×768 ══
+  ÉCHEC  34 · 1366×768 · A72 · dans l’Atelier, le Voyageur entier, la marque ① sur le rocher (46 % × 78 % de l’œuvre) — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1366×768 · A72 · au pilote (répétition), l’œuvre entière, la marque au même endroit de l’œuvre — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1366×768 · A72 · au tableau, l’œuvre entière, la marque au même endroit de l’œuvre — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1366×768 · A73 · « L’Albatros » : « Le Poète est semblable » porte 13, les trois blancs entre strophes sans numéro — {"ouvert":true,"vers13":"16|Le Poète est semblable au prin","blancs":["5|","10|","15|"],"n":19}
+  ÉCHEC  34 · 1366×768 · A76 · « […] » reste une coupure dans le texte à trous ; [prince] et [huées] restent deux trous — {"texte":"Le Poète est semblable au des nuées Exilé sur le sol au milieu des .","trous":3}
+  ÉCHEC  34 · 1366×768 · A75 · le double de « Poésie et peinture au XIXe siècle » quand « (proposition) » existe : « (proposition 2) » — {"boutons":["Compléter","Remplacer","Créer un double"],"titres":["Poésie et peinture au XIXe siècle (proposition)","Poésie et peinture au XIXe siècle","Poésie et peinture au XIXe siècle (proposition)"]}
+  ÉCHEC  34 · 1366×768 · A78 · refusé : huit mots-clés, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1366×768 · A78 · refusé : un mot-clé de plus de 45 signes, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1366×768 · A78 · refusé : une question de plus de 90 signes, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1366×768 · A78 · refusé : une réponse attendue, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ok     34 · 1366×768 · A78 · le bilan à trois mots-clés courts est accepté et le chapitre créé — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1366×768 · A78 · « Vérifier » dit la diapo qui ferait plus d’une page au tableau (sans refuser) — « Ce que tu as déjà — aucun chapitre à ce titre Rien pour l’instant. Ce que l’IA apporte Poésie et peinture : le Romantisme en question intro_image NOUVEAU Décrir »
+  ÉCHEC  34 · 1366×768 · A74 · en séance 2, la notion « c4-lire-02 » travaillée en séance 1 n’est pas « travaillée nulle part » — {"si":1,"nulle":true,"extrait":"⚠ « De la toile au poème » (H1) remobilise une notion que rien ne travaille avant"}
+  ÉCHEC  34 · 1366×768 · A77 · « 📋 Dictée manuscrite existante » dans « Lier » : la dictée des FRANKLIN se lie {kind: correction_dictee} — {"item":null}
+  ÉCHEC  34 · 1366×768 · A77 · l’onglet « Dictée » liste la dictée manuscrite ; le professeur l’ouvre dans la Correction de dictée — {"liste":false,"u":null}
+  ÉCHEC  34 · 1366×768 · A77 · l’élève l’ouvre : correction_dictee.html?mode=eleve&dictee=<id> — {"liste":false,"u":null}
+  ok     Z · 1366×768 · 0 erreur JS (34)
+
+══ 1536×864 ══
+  ÉCHEC  34 · 1536×864 · A72 · dans l’Atelier, le Voyageur entier, la marque ① sur le rocher (46 % × 78 % de l’œuvre) — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1536×864 · A72 · au pilote (répétition), l’œuvre entière, la marque au même endroit de l’œuvre — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1536×864 · A72 · au tableau, l’œuvre entière, la marque au même endroit de l’œuvre — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1536×864 · A73 · « L’Albatros » : « Le Poète est semblable » porte 13, les trois blancs entre strophes sans numéro — {"ouvert":true,"vers13":"16|Le Poète est semblable au prin","blancs":["5|","10|","15|"],"n":19}
+  ÉCHEC  34 · 1536×864 · A76 · « […] » reste une coupure dans le texte à trous ; [prince] et [huées] restent deux trous — {"texte":"Le Poète est semblable au des nuées Exilé sur le sol au milieu des .","trous":3}
+  ÉCHEC  34 · 1536×864 · A75 · le double de « Poésie et peinture au XIXe siècle » quand « (proposition) » existe : « (proposition 2) » — {"boutons":["Compléter","Remplacer","Créer un double"],"titres":["Poésie et peinture au XIXe siècle (proposition)","Poésie et peinture au XIXe siècle","Poésie et peinture au XIXe siècle (proposition)"]}
+  ÉCHEC  34 · 1536×864 · A78 · refusé : huit mots-clés, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1536×864 · A78 · refusé : un mot-clé de plus de 45 signes, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1536×864 · A78 · refusé : une question de plus de 90 signes, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1536×864 · A78 · refusé : une réponse attendue, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ok     34 · 1536×864 · A78 · le bilan à trois mots-clés courts est accepté et le chapitre créé — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1536×864 · A78 · « Vérifier » dit la diapo qui ferait plus d’une page au tableau (sans refuser) — « Ce que tu as déjà — aucun chapitre à ce titre Rien pour l’instant. Ce que l’IA apporte Poésie et peinture : le Romantisme en question intro_image NOUVEAU Décrir »
+  ÉCHEC  34 · 1536×864 · A74 · en séance 2, la notion « c4-lire-02 » travaillée en séance 1 n’est pas « travaillée nulle part » — {"si":1,"nulle":true,"extrait":"⚠ « De la toile au poème » (H1) remobilise une notion que rien ne travaille avant"}
+  ÉCHEC  34 · 1536×864 · A77 · « 📋 Dictée manuscrite existante » dans « Lier » : la dictée des FRANKLIN se lie {kind: correction_dictee} — {"item":null}
+  ÉCHEC  34 · 1536×864 · A77 · l’onglet « Dictée » liste la dictée manuscrite ; le professeur l’ouvre dans la Correction de dictée — {"liste":false,"u":null}
+  ÉCHEC  34 · 1536×864 · A77 · l’élève l’ouvre : correction_dictee.html?mode=eleve&dictee=<id> — {"liste":false,"u":null}
+  ok     Z · 1536×864 · 0 erreur JS (34)
+
+══ 1707×743 ══
+  ÉCHEC  34 · 1707×743 · A72 · dans l’Atelier, le Voyageur entier, la marque ① sur le rocher (46 % × 78 % de l’œuvre) — {"fit":"cover","entiere":false,"marque":[46,62.5]}
+  ÉCHEC  34 · 1707×743 · A72 · au pilote (répétition), l’œuvre entière, la marque au même endroit de l’œuvre — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1707×743 · A72 · au tableau, l’œuvre entière, la marque au même endroit de l’œuvre — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1707×743 · A73 · « L’Albatros » : « Le Poète est semblable » porte 13, les trois blancs entre strophes sans numéro — {"ouvert":true,"vers13":"16|Le Poète est semblable au prin","blancs":["5|","10|","15|"],"n":19}
+  ÉCHEC  34 · 1707×743 · A76 · « […] » reste une coupure dans le texte à trous ; [prince] et [huées] restent deux trous — {"texte":"Le Poète est semblable au des nuées Exilé sur le sol au milieu des .","trous":3}
+  ÉCHEC  34 · 1707×743 · A75 · le double de « Poésie et peinture au XIXe siècle » quand « (proposition) » existe : « (proposition 2) » — {"boutons":["Compléter","Remplacer","Créer un double"],"titres":["Poésie et peinture au XIXe siècle (proposition)","Poésie et peinture au XIXe siècle","Poésie et peinture au XIXe siècle (proposition)"]}
+  ÉCHEC  34 · 1707×743 · A78 · refusé : huit mots-clés, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1707×743 · A78 · refusé : un mot-clé de plus de 45 signes, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1707×743 · A78 · refusé : une question de plus de 90 signes, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1707×743 · A78 · refusé : une réponse attendue, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ok     34 · 1707×743 · A78 · le bilan à trois mots-clés courts est accepté et le chapitre créé — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1707×743 · A78 · « Vérifier » dit la diapo qui ferait plus d’une page au tableau (sans refuser) — « Ce que tu as déjà — aucun chapitre à ce titre Rien pour l’instant. Ce que l’IA apporte Poésie et peinture : le Romantisme en question intro_image NOUVEAU Décrir »
+  ÉCHEC  34 · 1707×743 · A74 · en séance 2, la notion « c4-lire-02 » travaillée en séance 1 n’est pas « travaillée nulle part » — {"si":1,"nulle":true,"extrait":"⚠ « De la toile au poème » (H1) remobilise une notion que rien ne travaille avant"}
+  ÉCHEC  34 · 1707×743 · A77 · « 📋 Dictée manuscrite existante » dans « Lier » : la dictée des FRANKLIN se lie {kind: correction_dictee} — {"item":null}
+  ÉCHEC  34 · 1707×743 · A77 · l’onglet « Dictée » liste la dictée manuscrite ; le professeur l’ouvre dans la Correction de dictée — {"liste":false,"u":null}
+  ÉCHEC  34 · 1707×743 · A77 · l’élève l’ouvre : correction_dictee.html?mode=eleve&dictee=<id> — {"liste":false,"u":null}
+  ok     Z · 1707×743 · 0 erreur JS (34)
+
+══ 1920×1080 ══
+  ÉCHEC  34 · 1920×1080 · A72 · dans l’Atelier, le Voyageur entier, la marque ① sur le rocher (46 % × 78 % de l’œuvre) — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1920×1080 · A72 · au pilote (répétition), l’œuvre entière, la marque au même endroit de l’œuvre — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1920×1080 · A72 · au tableau, l’œuvre entière, la marque au même endroit de l’œuvre — {"fit":"cover","entiere":false,"marque":[46,62.4]}
+  ÉCHEC  34 · 1920×1080 · A73 · « L’Albatros » : « Le Poète est semblable » porte 13, les trois blancs entre strophes sans numéro — {"ouvert":true,"vers13":"16|Le Poète est semblable au prin","blancs":["5|","10|","15|"],"n":19}
+  ÉCHEC  34 · 1920×1080 · A76 · « […] » reste une coupure dans le texte à trous ; [prince] et [huées] restent deux trous — {"texte":"Le Poète est semblable au des nuées Exilé sur le sol au milieu des .","trous":3}
+  ÉCHEC  34 · 1920×1080 · A75 · le double de « Poésie et peinture au XIXe siècle » quand « (proposition) » existe : « (proposition 2) » — {"boutons":["Compléter","Remplacer","Créer un double"],"titres":["Poésie et peinture au XIXe siècle (proposition)","Poésie et peinture au XIXe siècle","Poésie et peinture au XIXe siècle (proposition)"]}
+  ÉCHEC  34 · 1920×1080 · A78 · refusé : huit mots-clés, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1920×1080 · A78 · refusé : un mot-clé de plus de 45 signes, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1920×1080 · A78 · refusé : une question de plus de 90 signes, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1920×1080 · A78 · refusé : une réponse attendue, avec les mots du prompt — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ok     34 · 1920×1080 · A78 · le bilan à trois mots-clés courts est accepté et le chapitre créé — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ÉCHEC  34 · 1920×1080 · A78 · « Vérifier » dit la diapo qui ferait plus d’une page au tableau (sans refuser) — « Ce que tu as déjà — aucun chapitre à ce titre Rien pour l’instant. Ce que l’IA apporte Poésie et peinture : le Romantisme en question intro_image NOUVEAU Décrir »
+  ÉCHEC  34 · 1920×1080 · A74 · en séance 2, la notion « c4-lire-02 » travaillée en séance 1 n’est pas « travaillée nulle part » — {"si":1,"nulle":true,"extrait":"⚠ « De la toile au poème » (H1) remobilise une notion que rien ne travaille avant"}
+  ÉCHEC  34 · 1920×1080 · A77 · « 📋 Dictée manuscrite existante » dans « Lier » : la dictée des FRANKLIN se lie {kind: correction_dictee} — {"item":null}
+  ÉCHEC  34 · 1920×1080 · A77 · l’onglet « Dictée » liste la dictée manuscrite ; le professeur l’ouvre dans la Correction de dictée — {"liste":false,"u":null}
+  ÉCHEC  34 · 1920×1080 · A77 · l’élève l’ouvre : correction_dictee.html?mode=eleve&dictee=<id> — {"liste":false,"u":null}
+  ok     Z · 1920×1080 · 0 erreur JS (34)
+
+BILAN banc-1228 : 8/68 vérifications — 60 ÉCHEC(S) · ROUGE

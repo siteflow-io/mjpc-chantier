@@ -26,6 +26,10 @@
 // 32 : (§12.32, R7) la Rédaction depuis le site : « ✏️ Rédactions » au menu des outils → redaction.html?mode=prof (&test=1 en mode test) ; la modale LIER
 //      propose le sujet du faux hub (/redactions/<id interne>/config : la lettre de la Grande Guerre) et rattache l'item {kind: 'redaction', ref} sans écrire
 //      dans /redactions ; l'onglet « ✏️ Rédaction » liste le sujet et l'ouvre (…&id=<ref>, &classe= si connue, &test=1 en mode test) ; l'élève : rien de neuf.
+// 34 : (§12.34) l'œuvre entière et sa marque au même endroit de l'œuvre (Atelier, pilote, tableau) ; « L'Albatros » numéroté vers par vers (« Le Poète est
+//      semblable » = 13) ; la notion de la séance 1 reprise en séance 2 n'est plus « travaillée nulle part » ; un double d'un titre dont « (proposition) » existe
+//      → « (proposition 2) » ; « […] » reste une coupure dans un texte à trous ; une dictée manuscrite se lie et s'ouvre (élève, professeur) ; l'import
+//      refuse le bilan trop long avec les mots du prompt, accepte le bon, et « Vérifier » dit la diapo de plus d'une page.
 // 63 : (mesure 13 · 63, seulement si MJPC_CAS le nomme) le bilan au tableau : question de 57 signes, 5 / 4 / 3 mots-clés de 30 à 45 signes, la consigne à
 //      3 étapes → combien de pages au tableau (répétition, « ▶ Jouer en avance » puis la fenêtre du tableau, tout dévoilé), « Diapo trop pleine » dans l'Atelier.
 // 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
@@ -48,7 +52,7 @@ const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log
 const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && detail !== '' ? ' — ' + detail : '')); return !!ok; };
 const info = (k, quoi) => dire('  info   ' + k + ' · ' + quoi);
 const p = (pg, ms) => pg.waitForTimeout(ms);
-/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33, 32) */
+/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33, 32, 34 ; 63 seulement s'il est nommé) */
 const SEUL = process.env.MJPC_CAS ? process.env.MJPC_CAS.split(',') : null; const fait = k => !SEUL || SEUL.includes(k);
 
 /* ── le faux hub (celui de banc-1227), plus la classe « 3 DYLAN Bob » appariée à ses six cases (mission 0, M1) ── */
@@ -671,6 +675,122 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       verif('32', !app.length && !/Grande Guerre/.test(el.texte), T + ' · A68 · l’élève : rien de neuf (l’onglet ' + (vis ? 'tel qu’aujourd’hui' : 'absent, comme aujourd’hui') + ', aucune ouverture de redaction.html)', JSON.stringify({ onglet: vis, el, app }));
     } catch (e) { verif('32', false, T + ' · l’élève : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (32)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 34 (§12.34) : les défauts relevés par l'instance du chapitre 3e ── */
+  if (fait('34')) { const IMG = fs.readFileSync(path.join(ici, 'medias', 'voyageur-essai.png'));
+    const ALBATROS = ['Souvent, pour s’amuser, les hommes d’équipage', 'Prennent des albatros, vastes oiseaux des mers,', 'Qui suivent, indolents compagnons de voyage,', 'Le navire glissant sur les gouffres amers.', '', 'À peine les ont-ils déposés sur les planches,', 'Que ces rois de l’azur, maladroits et honteux,', 'Laissent piteusement leurs grandes ailes blanches', 'Comme des avirons traîner à côté d’eux.', '', 'Ce voyageur ailé, comme il est gauche et veule !', 'Lui, naguère si beau, qu’il est comique et laid !', 'L’un agace son bec avec un brûle-gueule,', 'L’autre mime, en boitant, l’infirme qui volait !', '', 'Le Poète est semblable au prince des nuées', 'Qui hante la tempête et se rit de l’archer ;', 'Exilé sur le sol au milieu des huées,', 'Ses ailes de géant l’empêchent de marcher.'];
+    const st34 = () => { const st = hubStore(); const ch = st.site['3e'].chapitres; const C0 = ch[0];
+      /* une marque « ① » sur le rocher, au pied du voyageur (46 % × 78 % de l'œuvre) */
+      try { const b = C0.seances[0].deroule.ecrans[1].blocs.find(x => x.t === 'image'); b.marques = [{ t: 'pt', x: 46, y: 78, txt: '1' }]; } catch (e) {}
+      /* le titre et son double : « X » existe, « X (proposition) » aussi */
+      const X = String(C0.title || '').replace(/ \(proposition\)$/, ''); const C1 = JSON.parse(JSON.stringify(C0)); C1.title = X; C1.ordre = (C0.ordre || 0) + 1; if (Array.isArray(ch)) ch.push(C1); else ch[String(Object.keys(ch).length)] = C1;
+      /* une feuille : « L'Albatros » en extrait numéroté, et un texte à trous de Baudelaire avec une coupure « […] » */
+      st.site.atelier = { documents: { doc_albatros_e3: { titre: '« L’Albatros », Charles Baudelaire', cases: { titre: true, extrait_numerote: true, numerotation_lignes: true, texte_a_trous: true }, valeurs: { titre: { texte: '« L’Albatros », Charles Baudelaire' } }, contenu: [{ id: 'extrait_numerote', valeurs: { texte: ALBATROS.join('\n') } }, { id: 'texte_a_trous', valeurs: { texte: 'Le Poète est semblable au [prince] des nuées […] Exilé sur le sol au milieu des [huées].' } }], dates: { dateEdition: '2026-10-20' } } } };
+      /* une dictée manuscrite des 3 FRANKLIN Aretha (la Correction de dictée) */
+      st.correction_dictee = { dm_port_franklin: { config: { titre: 'Dictée : « Le port »', classe: '3 FRANKLIN Aretha', niveau: '3e', date: '2026-10-15' } } };
+      return { st, X }; };
+    const { st, X } = st34(); const o = await ouvrirCtx(W, H, st); const pg = o.pg; await o.ctx.route(/mjpc-medias\/.*\.(webp|png|jpe?g)$/, r => r.fulfill({ status: 200, contentType: 'image/png', body: IMG }));
+    o.ctx.on('page', q => q.route(/mjpc-medias\/.*\.(webp|png|jpe?g)$/, r => r.fulfill({ status: 200, contentType: 'image/png', body: IMG })).catch(() => {}));
+    /* l'œuvre entière et la marque à sa place dans l'œuvre : la boîte de l'image, le rectangle de l'œuvre affichée (object-fit), le centre de la marque */
+    const oeuvre = (q, sel) => q.evaluate(sl => { const z = document.querySelector(sl); const sup = z && z.querySelector('.img-sup'); const im = sup && sup.querySelector('img'); if (!im || !im.naturalWidth) return { img: !!im, charge: !!(im && im.naturalWidth) };
+      const b = im.getBoundingClientRect(); const fit = getComputedStyle(im).objectFit; const nw = im.naturalWidth, nh = im.naturalHeight; const sc = fit === 'cover' ? Math.max(b.width / nw, b.height / nh) : (fit === 'contain' || fit === 'scale-down') ? Math.min(b.width / nw, b.height / nh) : null;
+      const cw = sc ? nw * sc : b.width, chh = sc ? nh * sc : b.height; const cl = b.left + (b.width - cw) / 2, ct = b.top + (b.height - chh) / 2;
+      const mk = sup.querySelector('.mk'); const r = mk ? mk.getBoundingClientRect() : null; const mx = r ? (r.left + r.width / 2 - cl) / cw : null, my = r ? (r.top + r.height / 2 - ct) / chh : null;
+      return { fit, entiere: cw <= b.width + 1 && chh <= b.height + 1, marque: mk ? [Math.round(mx * 1000) / 10, Math.round(my * 1000) / 10] : null }; }, sel);
+    try { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await sansVoiles(pg);
+      /* A72 · l'Atelier, puis la répétition (pilote) et le tableau */
+      await ouvrirAtelier(pg); await pg.evaluate(() => { const v = document.querySelector('#volet [data-at-di="1"]'); if (v) v.scrollIntoView({ block: 'center' }); }); await pg.click('#volet [data-at-di="1"]', { timeout: 4000 }).catch(() => {}); await p(pg, 2500);
+      const a1 = await oeuvre(pg, '#mur'); await capt(pg, W, H, '34-1-l-oeuvre-dans-l-atelier');
+      const bonne = x => x && x.fit !== 'cover' && x.entiere && x.marque && Math.abs(x.marque[0] - 46) <= 2 && Math.abs(x.marque[1] - 78) <= 2;
+      verif('34', bonne(a1), T + ' · A72 · dans l’Atelier, le Voyageur entier, la marque ① sur le rocher (46 % × 78 % de l’œuvre)', JSON.stringify(a1));
+      const rep = await entrerRepetition(pg); await pg.evaluate(() => { try { aller(1); } catch (e) {} }); await p(pg, 1500); for (let n = 0; n < 6; n++) { if (await pg.evaluate(() => !!document.querySelector('#mur .img-sup .mk'))) break; await pg.click('#bdev').catch(() => {}); await p(pg, 400); } await p(pg, 1200);   /* la marque se dévoile avec son élément */
+      const a2 = await oeuvre(pg, '#mur');
+      let fen = null; try { [fen] = await Promise.all([pg.waitForEvent('popup', { timeout: 6000 }), pg.click('#bvideoproj')]); await fen.waitForLoadState(); await fen.setViewportSize({ width: W, height: H }); await p(fen, 3500); } catch (e) { fen = null; }
+      const a3 = fen ? await oeuvre(fen, '#mur2') : null; if (fen && CAPT && (W === 1707 || W === 1920)) await fen.screenshot({ path: path.join(CAPT, W + 'x' + H + '-34-2-l-oeuvre-au-tableau-' + SUFF + '.png') }).catch(() => {}); if (fen) await fen.close().catch(() => {});
+      verif('34', rep && bonne(a2), T + ' · A72 · au pilote (répétition), l’œuvre entière, la marque au même endroit de l’œuvre', JSON.stringify(a2));
+      verif('34', bonne(a3), T + ' · A72 · au tableau, l’œuvre entière, la marque au même endroit de l’œuvre', JSON.stringify(a3));
+      /* A74 · la notion de la séance 1 reprise en séance 2 — sur le chapitre importé plus bas (A78, le bon) */
+      await clicTexte(pg, 'button', 'Arrêter'); await p(pg, 1200); await pg.evaluate(() => { try { atelierFermer(); } catch (e) {} }); await p(pg, 800);   /* sortir de la répétition, puis de l'Atelier */
+      /* A73, A76 · la feuille « L'Albatros » */
+      await pg.evaluate(() => { try { atelierOuvrir(); } catch (e) {} }); await p(pg, 1000); await sansVoiles(pg); await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="structure"]'); if (b) b.click(); }); await p(pg, 1000); await clicTexte(pg, 'button', '← Mes chapitres'); await p(pg, 1000);   /* l'Atelier rouvre le dernier chapitre : par la Structure, « ← Mes chapitres », l'accueil de l'Atelier */
+      await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('[onclick]')).find(x => x.offsetParent && /atOnglet\('feuilles'\)/.test(x.getAttribute('onclick') || '')); if (b) b.click(); else { const c = Array.from(document.querySelectorAll('button')).find(x => x.offsetParent && /^Mes feuilles$/.test(x.innerText.trim())); if (c) c.click(); } }); await p(pg, 1500);
+      if (process.env.MJPC_DBG) await pg.screenshot({ path: '/tmp/claude-0/r34/dbg-feuilles.png' });
+      const ouv = await pg.evaluate(() => { const rows = Array.from(document.querySelectorAll('body *')).filter(x => x.offsetParent && /Albatros/.test(x.innerText || '') && Array.from(x.querySelectorAll('button')).some(b => /^Ouvrir$/.test(b.innerText.trim()))); const r = rows.sort((a, b) => a.innerText.length - b.innerText.length)[0]; if (!r) return false; Array.from(r.querySelectorAll('button')).find(b => /^Ouvrir$/.test(b.innerText.trim())).click(); return true; }); await p(pg, 3000); await sansVoiles(pg);   /* « Ouvrir » sur la carte de la feuille ; l'aperçu vit dans l'iframe #at-apercu */
+      const fr = pg.frameLocator('#at-apercu'); const apercu = async f => { const h = await pg.$('#at-apercu'); const fd = h ? await h.contentFrame() : null; return fd ? fd.evaluate(f) : null; };
+      const alb = (await apercu(() => { const L = Array.from(document.querySelectorAll('.f-extrait .f-ext-l')).filter(x => x.getBoundingClientRect().height >= 0); return L.map(l => { const n = l.querySelector('.f-ext-n'); return (n ? n.textContent.trim() : '·') + '|' + (l.textContent.replace(n ? n.textContent : '', '').trim().slice(0, 30)); }); })) || [];
+      const v13 = alb.find(x => /Le Poète est semblable/.test(x)); const vides = alb.filter(x => /\|$/.test(x));
+      await apercu(() => { const e = document.querySelector('.f-extrait'); if (e) e.scrollIntoView({ block: 'start' }); }); await p(pg, 400); await capt(pg, W, H, '34-3-l-albatros-numerote');
+      if (!ouv) info('34', T + ' · les feuilles listées : ' + JSON.stringify(await pg.evaluate(() => ({ onglet: (window.AT || {}).onglet, liste: Object.keys((window.AT || {}).liste || {}), cartes: Array.from(document.querySelectorAll('.at-cartes, [class*=carte]')).filter(x => x.offsetParent).map(x => x.innerText.replace(/\s+/g, ' ').slice(0, 50)).slice(0, 5) }))));
+      verif('34', ouv && v13 && /^13\|/.test(v13) && vides.length === 3 && vides.every(x => /^·\|/.test(x)), T + ' · A73 · « L’Albatros » : « Le Poète est semblable » porte 13, les trois blancs entre strophes sans numéro', JSON.stringify({ ouvert: ouv, vers13: v13, blancs: vides, n: alb.length }));
+      const tr = await apercu(() => { const b = document.querySelector('.f-trous, [data-c="texte_a_trous"]'); if (!b) return null; return { texte: b.innerText.replace(/\s+/g, ' ').trim().slice(0, 160), trous: b.querySelectorAll('.f-trou, input, .trou, [class*="trou"]:not(.f-trous)').length }; });
+      await apercu(() => { const e = document.querySelector('.f-trous, [data-c="texte_a_trous"]'); if (e) e.scrollIntoView({ block: 'center' }); }); await p(pg, 400); await capt(pg, W, H, '34-4-la-coupure-dans-le-texte-a-trous');
+      verif('34', tr && /\[…\]/.test(tr.texte) && tr.trous === 2, T + ' · A76 · « […] » reste une coupure dans le texte à trous ; [prince] et [huées] restent deux trous', JSON.stringify(tr));
+      await pg.evaluate(() => { try { atelierFermer(); } catch (e) {} }); await p(pg, 800);
+      /* A75, A78, A74 · par « 📚 Nouveau chapitre » */
+      const { chapitreTest } = await import(path.join(RACINE, 'LIVRAISONS', 'INTEGRATION', 'E1', 'bancs', 'import-3e.mjs'));
+      const base = (titre, f) => { const j = chapitreTest(st); j.chapitre.title = titre; j.chapitre.seances.forEach(se => ((se.deroule || {}).ecrans || []).forEach(e => { e.blocs = (e.blocs || []).filter(b => b.t !== 'fiche'); })); if (f) f(j); return j; };
+      const bilanDe = j => { const E0 = j.chapitre.seances[0].deroule.ecrans; return E0.find(e => e.role === 'bilan'); };
+      const importer = async (j, choix) => { await pg.evaluate(() => { try { atelierOuvrir(); } catch (e) {} }); await p(pg, 1000); await sansVoiles(pg); await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-porte-ch')).find(x => x.offsetParent !== null); if (b) b.click(); }); await p(pg, 1500);
+        if (!(await pg.evaluate(() => { const c = document.getElementById('ch-coller'); return !!(c && c.offsetParent); }))) return { msg: '(l’écran « Nouveau chapitre » ne s’ouvre pas : « Clé requise », 13 · 50)', ver: '', boutons: [], cree: false };
+        await pg.fill('#ch-coller', JSON.stringify(j)); await p(pg, 300); await clicTexte(pg, 'button', 'Vérifier'); await p(pg, 1800);
+        const msg = await pg.evaluate(() => ((document.getElementById('ch-msg') || {}).innerText || '').replace(/\s+/g, ' ').trim());
+        const ver = await pg.evaluate(() => ((document.getElementById('ch-inv') || {}).innerText || '').replace(/\s+/g, ' ').trim().slice(0, 1200));
+        const boutons = await pg.evaluate(() => Array.from(document.querySelectorAll('button')).filter(b => b.offsetParent && /Créer|double|Remplacer|Compléter/.test(b.innerText)).map(b => b.innerText.trim()));
+        let cree = false; if (choix) { cree = await pg.evaluate(re => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && new RegExp(re).test(b.innerText)); if (!b) return false; b.click(); return true; }, choix); await p(pg, 1500);
+          await pg.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && m.getBoundingClientRect().height > 0 && Array.from(m.querySelectorAll('button')).find(x => /Créer|double/.test(x.textContent)); if (b) b.click(); }); await p(pg, 2500); }
+        return { msg, ver, boutons, cree }; };
+      const titres = () => pg.evaluate(() => { const c = window.__hubLire('/site/3e/chapitres'); return (Array.isArray(c) ? c : Object.values(c || {})).filter(Boolean).map(x => x.title || ''); });
+      /* A75 · le double d'un titre dont « (proposition) » existe déjà */
+      const r75 = await importer(base(X), 'double'); const t75 = await titres(); await capt(pg, W, H, '34-5-le-double');
+      verif('34', t75.filter(t => t === X + ' (proposition 2)').length === 1 && t75.filter(t => t === X + ' (proposition)').length === 1 && t75.filter(t => t === X).length === 1, T + ' · A75 · le double de « ' + X + ' » quand « (proposition) » existe : « (proposition 2) »', JSON.stringify({ boutons: r75.boutons, titres: t75.filter(t => t.indexOf(X) === 0) }));
+      /* A78 · les refus du bilan, avec les mots du prompt */
+      const refus = [
+        ['huit mots-clés', j => { bilanDe(j).blocs.find(b => b.t === 'texte').el = ['le sublime', 'le naufrage', 'le spleen', 'l’idéal', 'le moi lyrique', 'la couleur', 'la nature', 'l’exil']; }],
+        ['un mot-clé de plus de 45 signes', j => { bilanDe(j).blocs.find(b => b.t === 'texte').el[0] = 'le sublime de la nature chez Caspar David Friedrich en 1818'; }],
+        ['une question de plus de 90 signes', j => { bilanDe(j).blocs.find(b => b.t === 'question').q = 'En quoi Géricault, Friedrich et Delacroix, chacun à sa manière, sont-ils des peintres romantiques de leur siècle ?'; }],
+        ['une réponse attendue', j => { bilanDe(j).blocs.find(b => b.t === 'question').reps = [{ i: '', r: 'Ils peignent l’émotion avant la règle.' }]; }]];
+      for (const [nom, f] of refus) { const r = await importer(base('Le bilan refusé — ' + nom, f), null);
+        verif('34', /^Je ne peux pas utiliser cette réponse/.test(r.msg) && /bilan/i.test(r.msg), T + ' · A78 · refusé : ' + nom + ', avec les mots du prompt', '« ' + r.msg.slice(0, 220) + ' »'); }
+      /* A78 + A74 · le bon : trois mots-clés courts ; une diapo trop longue dite par « Vérifier » ; une notion de la séance 1 reprise en séance 2 */
+      let NOT = null; const bon = base('Le bilan accepté', j => { bilanDe(j).blocs.find(b => b.t === 'texte').el = ['le sublime de la nature', 'le naufrage romantique', 'le spleen et l’idéal'];
+        const E0 = j.chapitre.seances[0].deroule.ecrans, E1 = j.chapitre.seances[1].deroule.ecrans; const c1 = new Set(E1.flatMap(e => e.comp || [])); NOT = (E0.flatMap(e => e.comp || [])).find(x => !c1.has(x)) || null;
+        if (NOT) { E1[0].remob = [NOT]; }
+        const longue = E0.find(e => e.actId && (e.blocs || []).some(b => Array.isArray(b.etapes))); if (longue) { const b = longue.blocs.find(b => Array.isArray(b.etapes)); while (b.etapes.length < 16) b.etapes.push('Relis ta phrase et vérifie l’accord du verbe avec son sujet, puis recopie-la.'); } });
+      const r78 = await importer(bon, 'Créer ce chapitre'); await capt(pg, W, H, '34-6-verifier-et-le-bon-bilan');
+      verif('34', /Réponse comprise/.test(r78.msg) && r78.cree && (await titres()).indexOf('Le bilan accepté') >= 0, T + ' · A78 · le bilan à trois mots-clés courts est accepté et le chapitre créé', '« ' + r78.msg.slice(0, 120) + ' »');
+      verif('34', /plus d.une page|deux pages|2 pages/i.test(r78.ver + ' ' + r78.msg), T + ' · A78 · « Vérifier » dit la diapo qui ferait plus d’une page au tableau (sans refuser)', '« ' + (r78.ver.match(/.{0,80}(page).{0,80}/i) || [r78.ver.slice(0, 160)])[0] + ' »');
+      /* A74 · la séance 2 du chapitre accepté, sa première diapo : la notion de la séance 1 n'est pas « travaillée nulle part » */
+      if (!r78.cree) verif('34', false, T + ' · A74 · la notion reprise : pas atteinte (le chapitre d’essai n’a pas pu être importé)');
+      else if (NOT) { await ouvrirAtelier(pg, 'Le bilan accepté'); await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('[onclick]')).find(x => x.offsetParent && /atSomPlier\('1'\)/.test(x.getAttribute('onclick') || '')); if (b) b.click(); }); await p(pg, 1500);
+        await pg.evaluate(() => { const v = document.querySelector('#volet [data-at-di="0"]'); if (v) v.scrollIntoView({ block: 'center' }); }); await pg.click('#volet [data-at-di="0"]', { timeout: 4000 }).catch(() => {}); await p(pg, 2000);
+        const dr = await pg.evaluate(() => ({ si: S.si, nulle: /travaillée nulle part|rien ne travaille avant/.test(document.body.innerText), extrait: ((document.body.innerText.match(/.{0,60}(nulle part|rien ne travaille avant).{0,60}/) || [''])[0]) }));
+        await capt(pg, W, H, '34-7-la-notion-reprise');
+        verif('34', dr.si === 1 && !dr.nulle, T + ' · A74 · en séance 2, la notion « ' + NOT + ' » travaillée en séance 1 n’est pas « travaillée nulle part »', JSON.stringify(dr));
+        await pg.evaluate(() => { try { atelierFermer(); } catch (e) {} }); await p(pg, 800); }
+      /* A77 · une dictée manuscrite liée, ouverte par le professeur et par l'élève */
+      await ouvrirAtelier(pg); await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="structure"]'); if (b) b.click(); }); await p(pg, 1500); await sansVoiles(pg);
+      const lier = await pg.evaluate(() => { const L = Array.from(document.querySelectorAll('.at-edch-it button')).filter(x => x.offsetParent && /^Lier/.test(x.innerText.trim())); const b = L.find(x => !Array.from(x.closest('.at-edch-it').querySelectorAll('button')).some(y => /^Ouvrir/.test(y.innerText.trim()))) || L[0]; if (!b) return null; const m = /openLinkModal\('([^']*)','([^']*)','([^']*)','([^']*)'\)/.exec(b.getAttribute('onclick') || ''); b.click(); return m ? { level: m[1], chnum: m[2], snum: m[3], item: m[4] } : null; }); await p(pg, 2500);
+      const sec = await pg.evaluate(() => { const m = document.getElementById('link-modal'); if (!m || !m.classList.contains('visible')) return { modale: false }; const S = Array.from(m.querySelectorAll('.link-modal-section')).find(x => /manuscrite/i.test((x.querySelector('.link-modal-section-title') || {}).textContent || '')); if (!S) return { modale: true, section: null }; const sl = S.querySelector('select'); S.scrollIntoView({ block: 'center' }); return { modale: true, section: (S.querySelector('.link-modal-section-title') || {}).textContent.trim(), options: sl ? Array.from(sl.options).map(o => o.value + '=' + o.textContent.trim()).slice(0, 6) : null }; });
+      if (sec.options) { await pg.evaluate(() => { const S = Array.from(document.querySelectorAll('#link-modal .link-modal-section')).find(x => /manuscrite/i.test((x.querySelector('.link-modal-section-title') || {}).textContent || '')); const sl = S.querySelector('select'); sl.value = 'dm_port_franklin'; sl.dispatchEvent(new Event('change', { bubbles: true })); }); await p(pg, 500); await capt(pg, W, H, '34-8-lier-une-dictee-manuscrite');
+        await pg.evaluate(() => { const S = Array.from(document.querySelectorAll('#link-modal .link-modal-section')).find(x => /manuscrite/i.test((x.querySelector('.link-modal-section-title') || {}).textContent || '')); const b = S.querySelector('button'); if (b) b.click(); }); await p(pg, 2500); }
+      const it = lier ? await pg.evaluate(l => window.__hubLire('/site/' + l.level + '/chapitres/' + l.chnum + '/seances/' + l.snum + '/items/' + l.item), lier) : null;
+      verif('34', sec.options && sec.options.some(x => /^dm_port_franklin=/.test(x) && /port/i.test(x)) && it && it.kind === 'correction_dictee' && it.ref === 'dm_port_franklin', T + ' · A77 · « 📋 Dictée manuscrite existante » dans « Lier » : la dictée des FRANKLIN se lie {kind: correction_dictee}', JSON.stringify({ section: sec.section, options: sec.options, item: it && { kind: it.kind, ref: it.ref } }));
+      await pg.evaluate(() => { try { document.getElementById('link-modal').classList.remove('visible'); } catch (e) {} try { atelierFermer(); } catch (e) {} }); await p(pg, 800);
+      /* l'onglet « 📝 Dictée » : la dictée manuscrite listée ; le professeur l'ouvre */
+      const ouvre = async () => { await pg.evaluate(() => { window.__OUV = []; if (!window.open.__e3) { const o = window.open; window.open = function (u) { window.__OUV.push(String(u)); return o.apply(this, arguments); }; window.open.__e3 = true; } }); await pg.evaluate(() => { try { goHome(); } catch (e) {} }); await p(pg, 400);
+        for (let n = 0; n < 3; n++) { await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 2000); if (await pg.evaluate(() => document.getElementById('page-level').classList.contains('active'))) break; } await sansVoiles(pg);
+        await pg.evaluate(() => { const b = document.getElementById('tab-btn-dictee'); if (b) b.click(); }); await p(pg, 1500);
+        const t = await pg.evaluate(() => ((document.getElementById('tab-dictee') || {}).innerText || '').replace(/\s+/g, ' '));
+        const tt = it && it.title ? it.title : 'port'; await pg.evaluate(x => { const e = document.getElementById('tab-dictee'); const c = e && Array.from(e.querySelectorAll('[onclick], a, button')).filter(y => y.offsetParent && (y.innerText || '').indexOf(x) >= 0).pop(); if (c) { c.scrollIntoView({ block: 'center' }); c.click(); } }, tt); await p(pg, 1800);
+        const u = await pg.evaluate(() => { const f = document.getElementById('doc-viewer-frame'); const v = document.getElementById('doc-viewer'); return (window.__OUV || []).slice(-1)[0] || (v && v.classList.contains('visible') && f ? f.getAttribute('src') : null); }); await pg.evaluate(() => { try { closeViewer(); } catch (e) {} });
+        return { liste: t.indexOf(tt) >= 0, u }; };
+      const pr = await ouvre(); await capt(pg, W, H, '34-9-l-onglet-dictee');
+      verif('34', pr.liste && pr.u && /correction_dictee\.html/.test(pr.u) && /dm_port_franklin/.test(pr.u), T + ' · A77 · l’onglet « Dictée » liste la dictée manuscrite ; le professeur l’ouvre dans la Correction de dictée', JSON.stringify(pr));
+      await pg.evaluate(() => { try { basculerVue(); } catch (e) {} }); await p(pg, 1500);
+      const el = await ouvre(); await pg.evaluate(() => { try { basculerVue(); } catch (e) {} }); await p(pg, 800);
+      verif('34', el.u && /correction_dictee\.html\?mode=eleve&dictee=dm_port_franklin/.test(el.u), T + ' · A77 · l’élève l’ouvre : correction_dictee.html?mode=eleve&dictee=<id>', JSON.stringify(el));
+    } catch (e) { verif('34', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (34)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 63 (mesure 13 · 63) : la densité du bilan ── */
   if (SEUL && SEUL.includes('63')) for (const N of [5, 4, 3]) { const st = hubStore(); const o = await ouvrirCtx(W, H, st); const pg = o.pg; const k = '63 · ' + N + ' mots-clés';

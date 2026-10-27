@@ -729,3 +729,24 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - `32-3` et `32-3b` : l'onglet défilé jusqu'à l'item « Fiche méthode : décrire une image » et la porte « Ouvrir la Rédaction universelle ».
 - Rejoué à 1707 et 1920 sur `cea82c21` : **18/18**. Les trois captures 1707 sont regardées et montrent ce qu'elles nomment. Sortie : `banc-1228-cas32-captures.txt` dans `LIVRAISONS/INTEGRATION/E3/sorties/1834-27-10-1228-32-vert/`.
 - *L'ordre demandé était les captures avant la mesure 13 · 63. La mesure était déjà poussée (retour 75) quand j'ai lu la relance ; elle n'en dépend pas.*
+
+## Retour 77 — 27/10, 19:46 — §12.34 : le cas « 34 » écrit ; avant sur la ⑤ : ROUGE 8/68, chaque défaut reproduit par le geste
+- Relance du 19:16 lue : Paul a dit « Règle tout » ; écrire le cas 34 pendant qu'E1 règle 33 bis. Rappel de 15 min posé.
+- **Le cas « 34 » dans `banc-1228`**, par le geste, aux quatre tailles. Le magasin du banc reçoit :
+  - une marque ① (46 % × 78 %) sur le rocher du Voyageur (Tableau 1). L'œuvre est servie au banc par une image d'essai au format portrait : `E3/bancs/medias/voyageur-essai.png`, avec un cadre rouge qui doit se voir entier et une cible rouge sous la marque ;
+  - un chapitre « Poésie et peinture au XIXe siècle » à côté de son « (proposition) » ;
+  - la feuille « L'Albatros », avec ses quatre strophes en extrait numéroté et un texte à trous « … au [prince] des nuées […] … des [huées]. » ;
+  - une dictée manuscrite `/correction_dictee/dm_port_franklin` (« Le port », 3 FRANKLIN Aretha).
+- **Ce que le cas vérifie, et ce que la ⑤ fait aujourd'hui** :
+  - **A72, l'œuvre et sa marque** — Atelier, pilote (répétition), tableau. La ⑤ fait `object-fit: cover` : le Voyageur est recadré, et la marque tombe à 46 % × **62 %** de l'œuvre au lieu de 78 %.
+  - **A73, « L'Albatros »** — ouvert par « Mes feuilles » → « Ouvrir », lu dans l'aperçu. La ⑤ numérote les blancs (5, 10, 15) : « Le Poète est semblable » porte **16** au lieu de 13.
+  - **A76, « […] »** — la ⑤ en fait un trou : 3 trous au lieu de 2, et la coupure disparaît.
+  - **A75, le double** — importer « Poésie et peinture au XIXe siècle » puis « Créer un double ». La ⑤ écrit un **second** « (proposition) » : deux chapitres portent alors le même titre.
+  - **A78, les refus** — par « 📚 Nouveau chapitre » : huit mots-clés, un mot-clé de plus de 45 signes, une question de plus de 90 signes, une réponse attendue. La ⑤ accepte les quatre. Le bon bilan, à trois mots-clés courts, est accepté. « Vérifier » ne dit rien d'une diapo de 16 étapes.
+  - **A74, la notion reprise** — dans le chapitre accepté, la notion `c4-lire-02` travaillée en séance 1 est remobilisée en séance 2. La ⑤ dit « remobilise une notion que rien ne travaille avant ».
+  - **A77, la dictée manuscrite** — la ⑤ n'a pas de section « Dictée manuscrite » dans « Lier » ; l'onglet « Dictée » et l'élève n'ouvrent rien.
+- **Avant, sur l'assemblé de la ⑤** (`12accf68`) : **ROUGE 8/68**. Verts : le bon bilan accepté, et 0 erreur JS. Les captures `*-34-*-avant.png` montrent l'œuvre recadrée, l'Albatros mal numéroté et la coupure perdue.
+- **À dire à la conscience** :
+  - le nombre N de mots-clés du refus A78 n'est pas encore écrit au contrat (« après 33 bis ») ; mon cas refuse 8, qui dépasse tout N raisonnable ;
+  - les phrases mot pour mot du prompt seront comparées quand E1 les aura écrites ; pour l'instant le cas vérifie « Je ne peux pas utiliser cette réponse » et le mot « bilan ».
+- J'attends 33 bis (E1), puis chaque poussée §12.34.

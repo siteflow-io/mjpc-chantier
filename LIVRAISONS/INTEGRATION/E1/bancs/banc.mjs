@@ -702,7 +702,7 @@ await B('A33', 'l\'import des déroulés (§12.21, dettes 13 · 30 et 13 · 31 ;
   E.verif('A33', sch && sch.titre && sch.devoilerTout === false, 'Compléter : le schéma garde son titre (« titre ») et « Un à un » (devoilerTout false)', sch && JSON.stringify({ titre: sch.titre, d: sch.devoilerTout }));
   await voie('remplacer'); const dR = await lire('/site/3e/chapitres/0/seances/0/deroule');
   E.verif('A33', dR && dR.ecrans.length === nJ, 'Remplacer : la trame du fichier seule, normalisée', dR && dR.ecrans.length); juger(dR, nJ, 'Remplacer'); const filR = await lire('/site/3e/chapitres/0/fil'); E.verif('A33', filR === 'langue', 'Remplacer : « fil » écrit avec le chapitre', JSON.stringify(filR));
-  await voie('jumeau'); const chs = await lire('/site/3e/chapitres'); const jum = (Array.isArray(chs) ? chs : Object.values(chs)).filter(Boolean).find(c => / \(proposition\)$/.test(c.title || '') && c.title !== st.site['3e'].chapitres[0].title);
+  await voie('jumeau'); const chs = await lire('/site/3e/chapitres'); const jum = (Array.isArray(chs) ? chs : Object.values(chs)).filter(Boolean).find(c => / \(proposition(?: \d+)?\)$/.test(c.title || '') && c.title !== st.site['3e'].chapitres[0].title);   /* §12.34 (4) : « (proposition 2) » quand « (proposition) » existe */
   const dJ = jum && (Array.isArray(jum.seances) ? jum.seances : Object.values(jum.seances))[0].deroule; juger(dJ || {}, nJ, 'Jumeau'); E.verif('A33', jum && jum.fil === 'langue', 'Jumeau : « fil » écrit avec le chapitre', JSON.stringify(jum && jum.fil));
   const src = fs.readFileSync(path.join(E.RACINE, 'LIVRAISONS/INTEGRATION/index.html'), 'utf8');
   E.verif('A33', !/mjpcPutJson\(FB\b/.test(src) && !/\bFB\+/.test(src), 'plus de `FB` (l\'écriture qui échouait en silence)');
@@ -1500,6 +1500,7 @@ await B('A76', '§12.34 (5), dette 13 · 72 : dans un texte à trous, « […] �
   const r = await pg.evaluate(() => { const z = document.createElement('div'); z.innerHTML = ATELIER_FORMES.bloc_trous('c1', {}, { texte: "« Souvent, pour s'amuser, […] les hommes d'équipage » : le [poète] ressemble à l'[albatros] [...] maladroit sur le pont." }, {}, {}); const aide = (typeof ATELIER_COMPOSANTES !== 'undefined' && ATELIER_COMPOSANTES.texte_a_trous) ? JSON.stringify(ATELIER_COMPOSANTES.texte_a_trous.champs) : ''; return { txt: z.textContent, trous: z.querySelectorAll('.f-trou').length, aide: /« \[…\] » reste une coupure/.test(aide) }; });
   E.verif('A76', r.trous === 2 && /\[…\] les hommes/.test(r.txt) && /\[\.\.\.\] maladroit/.test(r.txt) && !/poète|albatros\]/.test(r.txt) && r.aide, '2 trous ([poète], [albatros]) ; « […] » et « [...] » tels quels ; l\'aide du champ le dit', JSON.stringify(r));
   await o.ctx.close(); });
+
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

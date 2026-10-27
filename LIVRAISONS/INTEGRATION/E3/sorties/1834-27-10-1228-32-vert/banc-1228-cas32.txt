@@ -1,0 +1,47 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 17:26 UTC · fichier md5 cea82c219c20ed4befdddb5a8b379ab5
+
+══ 1366×768 ══
+  ok     32 · 1366×768 · A65 · « ✏️ Rédactions » au menu des outils ouvre redaction.html?mode=prof — {"ligne":"✏️ Rédactions — panneau prof","u":"redaction.html?mode=prof","q":{"page":"redaction.html","mode":"prof","id":null,"classe":null,"test":null}}
+  ok     32 · 1366×768 · A66 · la modale LIER propose le sujet du hub (son titre) — {"item":{"level":"3e","chnum":"0","snum":"0","item":"fiche-methode-image","titre":"• Fiche méthode : décrire une image non lié doc · lecture se"},"modale":true,"section":"✏️ Sujet de rédaction existant","options":["=— Choisir —","sujet_mh2k7q_x4f9=Écrire une lettre de la Grande Guerre"],"confirmation":null}
+  ok     32 · 1366×768 · A66 · l’item est rattaché {kind: « redaction », ref: l’id interne}, rien écrit dans /redactions — {"item":{"kind":"redaction","ref":"sujet_mh2k7q_x4f9","source":"firebase_app"},"ecritures":[]}
+  ok     32 · 1366×768 · A67 · l’onglet « ✏️ Rédaction » liste le sujet rattaché et l’ouvre (redaction.html?mode=prof&id=<id interne>) — {"texte":"RÉDACTION — 3E Le sujet rattaché à chaque séance s’ouvre dans un nouvel onglet ; l’app te demande la classe (ou reprend la dernière ouverte). POÉSIE ET PEINTURE AU XIXE SIÈCLE (PROPOSITION) ✏️ Fiche méthode : décrire une image Poésie et pei","u":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9","q":{"page":"redaction.html","mode":"prof","id":"sujet_mh2k7q_x4f9","classe":null,"test":null}}
+  ok     32 · 1366×768 · A67 · sans heure ouverte ni lentille, pas de &classe= (l’app choisit) — redaction.html?mode=prof&id=sujet_mh2k7q_x4f9
+  ok     32 · 1366×768 · A67 · la lentille « Je publie pour » sur « 3E Charles de Gaulle » → &classe= sa clé — {"lentille":true,"u":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9&classe=3E%20Charles%20de%20Gaulle"}
+  ok     32 · 1366×768 · en mode test, le menu et l’onglet ajoutent &test=1 — {"menu":"redaction.html?mode=prof&test=1","onglet":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9&test=1"}
+  ok     32 · 1366×768 · A68 · l’élève : rien de neuf (l’onglet absent, comme aujourd’hui, aucune ouverture de redaction.html) — {"onglet":false,"el":{"texte":"","cadre":"about:blank","vue":"prof"},"app":[]}
+  ok     Z · 1366×768 · 0 erreur JS (32)
+
+══ 1536×864 ══
+  ok     32 · 1536×864 · A65 · « ✏️ Rédactions » au menu des outils ouvre redaction.html?mode=prof — {"ligne":"✏️ Rédactions — panneau prof","u":"redaction.html?mode=prof","q":{"page":"redaction.html","mode":"prof","id":null,"classe":null,"test":null}}
+  ok     32 · 1536×864 · A66 · la modale LIER propose le sujet du hub (son titre) — {"item":{"level":"3e","chnum":"0","snum":"0","item":"fiche-methode-image","titre":"• Fiche méthode : décrire une image non lié doc · lecture se"},"modale":true,"section":"✏️ Sujet de rédaction existant","options":["=— Choisir —","sujet_mh2k7q_x4f9=Écrire une lettre de la Grande Guerre"],"confirmation":null}
+  ok     32 · 1536×864 · A66 · l’item est rattaché {kind: « redaction », ref: l’id interne}, rien écrit dans /redactions — {"item":{"kind":"redaction","ref":"sujet_mh2k7q_x4f9","source":"firebase_app"},"ecritures":[]}
+  ok     32 · 1536×864 · A67 · l’onglet « ✏️ Rédaction » liste le sujet rattaché et l’ouvre (redaction.html?mode=prof&id=<id interne>) — {"texte":"RÉDACTION — 3E Le sujet rattaché à chaque séance s’ouvre dans un nouvel onglet ; l’app te demande la classe (ou reprend la dernière ouverte). POÉSIE ET PEINTURE AU XIXE SIÈCLE (PROPOSITION) ✏️ Fiche méthode : décrire une image Poésie et pei","u":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9","q":{"page":"redaction.html","mode":"prof","id":"sujet_mh2k7q_x4f9","classe":null,"test":null}}
+  ok     32 · 1536×864 · A67 · sans heure ouverte ni lentille, pas de &classe= (l’app choisit) — redaction.html?mode=prof&id=sujet_mh2k7q_x4f9
+  ok     32 · 1536×864 · A67 · la lentille « Je publie pour » sur « 3E Charles de Gaulle » → &classe= sa clé — {"lentille":true,"u":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9&classe=3E%20Charles%20de%20Gaulle"}
+  ok     32 · 1536×864 · en mode test, le menu et l’onglet ajoutent &test=1 — {"menu":"redaction.html?mode=prof&test=1","onglet":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9&test=1"}
+  ok     32 · 1536×864 · A68 · l’élève : rien de neuf (l’onglet absent, comme aujourd’hui, aucune ouverture de redaction.html) — {"onglet":false,"el":{"texte":"","cadre":"about:blank","vue":"prof"},"app":[]}
+  ok     Z · 1536×864 · 0 erreur JS (32)
+
+══ 1707×743 ══
+  ok     32 · 1707×743 · A65 · « ✏️ Rédactions » au menu des outils ouvre redaction.html?mode=prof — {"ligne":"✏️ Rédactions — panneau prof","u":"redaction.html?mode=prof","q":{"page":"redaction.html","mode":"prof","id":null,"classe":null,"test":null}}
+  ok     32 · 1707×743 · A66 · la modale LIER propose le sujet du hub (son titre) — {"item":{"level":"3e","chnum":"0","snum":"0","item":"fiche-methode-image","titre":"• Fiche méthode : décrire une image non lié doc · lecture se"},"modale":true,"section":"✏️ Sujet de rédaction existant","options":["=— Choisir —","sujet_mh2k7q_x4f9=Écrire une lettre de la Grande Guerre"],"confirmation":null}
+  ok     32 · 1707×743 · A66 · l’item est rattaché {kind: « redaction », ref: l’id interne}, rien écrit dans /redactions — {"item":{"kind":"redaction","ref":"sujet_mh2k7q_x4f9","source":"firebase_app"},"ecritures":[]}
+  ok     32 · 1707×743 · A67 · l’onglet « ✏️ Rédaction » liste le sujet rattaché et l’ouvre (redaction.html?mode=prof&id=<id interne>) — {"texte":"RÉDACTION — 3E Le sujet rattaché à chaque séance s’ouvre dans un nouvel onglet ; l’app te demande la classe (ou reprend la dernière ouverte). POÉSIE ET PEINTURE AU XIXE SIÈCLE (PROPOSITION) ✏️ Fiche méthode : décrire une image Poésie et pei","u":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9","q":{"page":"redaction.html","mode":"prof","id":"sujet_mh2k7q_x4f9","classe":null,"test":null}}
+  ok     32 · 1707×743 · A67 · sans heure ouverte ni lentille, pas de &classe= (l’app choisit) — redaction.html?mode=prof&id=sujet_mh2k7q_x4f9
+  ok     32 · 1707×743 · A67 · la lentille « Je publie pour » sur « 3E Charles de Gaulle » → &classe= sa clé — {"lentille":true,"u":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9&classe=3E%20Charles%20de%20Gaulle"}
+  ok     32 · 1707×743 · en mode test, le menu et l’onglet ajoutent &test=1 — {"menu":"redaction.html?mode=prof&test=1","onglet":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9&test=1"}
+  ok     32 · 1707×743 · A68 · l’élève : rien de neuf (l’onglet absent, comme aujourd’hui, aucune ouverture de redaction.html) — {"onglet":false,"el":{"texte":"","cadre":"about:blank","vue":"prof"},"app":[]}
+  ok     Z · 1707×743 · 0 erreur JS (32)
+
+══ 1920×1080 ══
+  ok     32 · 1920×1080 · A65 · « ✏️ Rédactions » au menu des outils ouvre redaction.html?mode=prof — {"ligne":"✏️ Rédactions — panneau prof","u":"redaction.html?mode=prof","q":{"page":"redaction.html","mode":"prof","id":null,"classe":null,"test":null}}
+  ok     32 · 1920×1080 · A66 · la modale LIER propose le sujet du hub (son titre) — {"item":{"level":"3e","chnum":"0","snum":"0","item":"fiche-methode-image","titre":"• Fiche méthode : décrire une image non lié doc · lecture se"},"modale":true,"section":"✏️ Sujet de rédaction existant","options":["=— Choisir —","sujet_mh2k7q_x4f9=Écrire une lettre de la Grande Guerre"],"confirmation":null}
+  ok     32 · 1920×1080 · A66 · l’item est rattaché {kind: « redaction », ref: l’id interne}, rien écrit dans /redactions — {"item":{"kind":"redaction","ref":"sujet_mh2k7q_x4f9","source":"firebase_app"},"ecritures":[]}
+  ok     32 · 1920×1080 · A67 · l’onglet « ✏️ Rédaction » liste le sujet rattaché et l’ouvre (redaction.html?mode=prof&id=<id interne>) — {"texte":"RÉDACTION — 3E Le sujet rattaché à chaque séance s’ouvre dans un nouvel onglet ; l’app te demande la classe (ou reprend la dernière ouverte). POÉSIE ET PEINTURE AU XIXE SIÈCLE (PROPOSITION) ✏️ Fiche méthode : décrire une image Poésie et pei","u":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9","q":{"page":"redaction.html","mode":"prof","id":"sujet_mh2k7q_x4f9","classe":null,"test":null}}
+  ok     32 · 1920×1080 · A67 · sans heure ouverte ni lentille, pas de &classe= (l’app choisit) — redaction.html?mode=prof&id=sujet_mh2k7q_x4f9
+  ok     32 · 1920×1080 · A67 · la lentille « Je publie pour » sur « 3E Charles de Gaulle » → &classe= sa clé — {"lentille":true,"u":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9&classe=3E%20Charles%20de%20Gaulle"}
+  ok     32 · 1920×1080 · en mode test, le menu et l’onglet ajoutent &test=1 — {"menu":"redaction.html?mode=prof&test=1","onglet":"redaction.html?mode=prof&id=sujet_mh2k7q_x4f9&test=1"}
+  ok     32 · 1920×1080 · A68 · l’élève : rien de neuf (l’onglet absent, comme aujourd’hui, aucune ouverture de redaction.html) — {"onglet":false,"el":{"texte":"","cadre":"about:blank","vue":"prof"},"app":[]}
+  ok     Z · 1920×1080 · 0 erreur JS (32)
+
+BILAN banc-1228 : 36/36 vérifications · VERT

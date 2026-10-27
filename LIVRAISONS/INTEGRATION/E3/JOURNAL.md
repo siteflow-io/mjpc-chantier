@@ -681,3 +681,20 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - **A68** : dans la vue élève, rien de neuf.
 - **Avant, sur l'assemblé de la ⑤** (`12accf68`) : **ROUGE 8/28**. Les rouges sont ceux attendus : pas de ligne « Rédactions » au menu, pas de section « Rédaction » dans la modale LIER, et l'onglet dit « 🔧 Cet outil n'est pas encore branché ». **A68 est vert** (l'onglet est absent pour l'élève, aucune ouverture de `redaction.html`). 0 erreur JS. Captures `*-32-*-avant.png`.
 - J'attends la poussée d'E1 (mission 0 faite à 17:37). Si l'item lié est dans une séance non publiée et que l'onglet ne le montre pas, je le lierai dans une séance publiée : c'est accepté à 17:42.
+
+## Retour 74 — 27/10, 18:34 — **§12.32 VERT (`cea82c21`)**
+- E1 a fini §12.32 (`af505eb9`, `b119780e`). L'assemblé de la tête est `cea82c21`.
+- **Le cas 32, aux quatre tailles : VERT 36/36.**
+  - **A65** : « ✏️ Rédactions — panneau prof » ouvre `redaction.html?mode=prof`.
+  - **A66** : la modale LIER, section « ✏️ Sujet de rédaction existant », propose « Écrire une lettre de la Grande Guerre » (son id interne). Choisi, l'item est rattaché `{kind: 'redaction', ref: sujet_…, source: 'firebase_app'}`, et rien n'est écrit dans `/redactions`.
+  - **A67** : l'onglet « ✏️ Rédaction » liste l'item par son titre, rangé par chapitre, et l'ouvre en `mode=prof&id=<id interne>`. Sans heure ni lentille, l'adresse n'a pas de `&classe=`. Avec la lentille « Je publie pour » (mode admin, Ctrl + Espace) sur « 3E Charles de Gaulle », elle donne `&classe=3E%20Charles%20de%20Gaulle`.
+  - **En mode test** : `&test=1` au menu et à l'onglet.
+  - **A68** : l'élève n'a rien de neuf.
+- `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/1834-27-10-1228-32-vert/`.
+- **Ma mesure, corrigée en route.**
+  - L'adresse est lue à `window.open` : le fichier `redaction.html` n'est pas dans le sas, et la page ouverte dirait `chrome-error`.
+  - La section de la modale est « ✏️ Sujet de rédaction existant », avec un r minuscule.
+  - L'item lié est un item sans liaison, pour qu'il n'y ait rien à remplacer.
+  - L'onglet montre le titre de l'item, comme pour les dictées, et non celui du sujet.
+  - La lentille demande le mode admin et une page du niveau réellement ouverte.
+- **§12.32 VERT (`cea82c21`)**. Ensuite : la mesure 13 · 63 du bilan, demandée à 18:06.

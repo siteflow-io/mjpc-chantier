@@ -1,0 +1,11 @@
+  info   A86 · le rendu de « Le port » sans forme : {"long":7732,"empreinte":-1616191195} (à comparer avant / après)
+  ÉCHEC  A86 · dans l'éditeur de la feuille : G (Ctrl+B), S (Ctrl+U), « ab » et sa palette, « A » et sa palette, « Légende de surlignage » — les palettes sont celles de la diapo, couleur pour couleur — {"gras":null,"soul":null,"surl":null,"txt":null,"leg":null,"palSurl":[],"palTxt":[],"palSurlD":["jaune:rgb(255, 233, 74)","vert:rgb(182, 240, 194)","rose:rgb(255, 201, 214)","bleu:rgb(188, 217, 255)","✕:"],"palTxtD":["rouge:rgb(255, 123, 107)","vert:rgb(125, 220, 154)","bleu:rgb(138, 184, 255)","or:rgb(227, 185, 78)","✕:"]}
+  ÉCHEC  A86 · « Le port » à l'aperçu : « Un port » souligné et surligné en jaune, « est » et « sont » en gras, « fatiguée » en vert, la légende — {"u":[],"b":[],"c":[],"m":[],"leg":""}
+  info   A86 · la donnée : {}
+  ÉCHEC  A86 · un second geste retire le gras (« sont »), le reste demeure — []
+  ÉCHEC  A86 · après rechargement, la forme et la légende sont relues — {"u":[],"b":[],"c":[],"m":[],"leg":""}
+  ÉCHEC  A86 · à l'impression (média print de l'aperçu) : fond blanc, le souligné, le gras, la couleur, le surlignage et la légende — {"fond":"rgb(255, 255, 255)","fondFeuille":"rgb(255, 255, 255)","u":0,"b":0,"c":[],"m":[],"leg":false}
+  info   A86 · le rendu des connecteurs sans forme : {"long":7728,"empreinte":-1768528880} (à comparer avant / après)
+  ÉCHEC  A86 · « Les connecteurs logiques » : « Cause » en rouge, « car » surligné en vert, dans les cases du tableau — {"m4":{"u":[],"b":[],"c":[],"m":[],"leg":""},"cellule":[]}
+  ok     A86 · zéro erreur JS — []
+— fin : 7 vérifications · 6 échec(s) — ROUGE · asm-1237-avant.html md5 7e1d36879f606e819bafde51104887a2

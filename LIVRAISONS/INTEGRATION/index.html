@@ -10144,7 +10144,113 @@ function atelierIntitule(doc,id){
 function atelierRenduComposante(doc,id,vals,refs,ctx){
   var c=ATELIER_COMPOSANTES[id];if(!c||c.reserve)return '';
   var f=ATELIER_FORMES[c.forme];if(!f)return '';
-  return f(id,c,vals||{},ctx,refs||{},atelierIntitule(doc,id));
+  var h=f(id,c,vals||{},ctx,refs||{},atelierIntitule(doc,id));
+  return (doc&&doc.forme)?atFormeAppliquer(h,doc.forme,atFormeCle(doc,id,vals)):h;   /* E4 (§12.37) : la mise en forme de la feuille, comme celle de la diapo */
+}
+/* ═══ E4 (§12.37, A86) — LA MISE EN FORME D'UNE FEUILLE, comme celle d'une diapo ═══
+   La donnée : doc.forme = { gras, soul, surl, coulTxt } — chaque marque { p, txt, n, couleur } comme e.forme dans la trame : p désigne la zone
+   (« v:<composante> » pour une composante unique, « b:<fid> » pour un bloc du contenu, identité gardée par le bloc), txt le texte sélectionné,
+   n son rang parmi les occurrences de la zone (dr_occurrence). Le rendu : les mêmes balises et les mêmes couleurs que surligne() (dr-socle.js) ;
+   la feuille imprimée les garde (fond blanc). doc.legende = la légende de surlignage, écrite comme celle de la diapo (« jaune = … · vert = … »). */
+function atFormeCle(doc,id,vals){
+  if(!doc)return null;
+  if(doc.valeurs&&vals&&doc.valeurs[id]===vals)return 'v:'+id;
+  var b=(doc.contenu||[]).filter(function(x){return x&&vals&&x.valeurs===vals;})[0];
+  return (b&&b.fid)?'b:'+b.fid:null;
+}
+function atFormeAppliquer(html,forme,p){
+  if(!p||!forme)return html;
+  var M=[];['surl','coulTxt','gras','soul'].forEach(function(g){(forme[g]||[]).forEach(function(m){if(m&&m.p===p&&m.txt)M.push({g:g,m:m});});});
+  if(!M.length)return html;
+  var t=document.createElement('template');t.innerHTML=html;var racine=t.content,doc=racine.ownerDocument;
+  var COUL=(typeof COULEURS!=='undefined')?COULEURS:{},TX=(typeof DR_TEXTE_COULEURS!=='undefined')?DR_TEXTE_COULEURS:{};
+  M.forEach(function(x){
+    var ns=[],w=doc.createTreeWalker(racine,NodeFilter.SHOW_TEXT),tout='';
+    while(w.nextNode()){ns.push({n:w.currentNode,d:tout.length});tout+=w.currentNode.nodeValue;}
+    var i=-1;for(var k=0;k<=(x.m.n||0);k++){i=tout.indexOf(x.m.txt,i+1);if(i<0)return;}
+    var j=i+x.m.txt.length,a=null,b=null;
+    ns.forEach(function(o){var f=o.d+o.n.nodeValue.length;if(!a&&i>=o.d&&i<f)a={n:o.n,o:i-o.d};if(!b&&j>o.d&&j<=f)b={n:o.n,o:j-o.d};});
+    if(!a||!b)return;
+    var r=doc.createRange();r.setStart(a.n,a.o);r.setEnd(b.n,b.o);
+    var el;
+    if(x.g==='surl'){el=doc.createElement('mark');el.setAttribute('style','background:'+(COUL[x.m.couleur]||'#fff1a8'));}
+    else if(x.g==='coulTxt'){el=doc.createElement('span');el.className='p8-ct';el.setAttribute('data-coul',x.m.couleur||'');el.setAttribute('style','color:'+(TX[x.m.couleur]||'inherit'));}
+    else if(x.g==='gras'){el=doc.createElement('b');el.className='p8-gras';}
+    else{el=doc.createElement('u');el.className='p8-soul';}
+    el.appendChild(r.extractContents());r.insertNode(el);
+  });
+  return t.innerHTML;
+}
+/* la barre : les boutons de la barre de l'Atelier (dr_gabarit : at-gras, at-soul, at-surl et sa palette, at-txt et sa palette) — repris tels quels,
+   leurs infobulles dites pour la feuille ; « Légende de surlignage », comme le champ de « Ce que la diapo déclare ». */
+var AT_FORME={champ:null,legende:false};
+function atFormeBarreHtml(){
+  var h='';
+  try{
+    var g=new DOMParser().parseFromString('<div>'+String(typeof dr_gabarit!=='undefined'?dr_gabarit:'')+'</div>','text/html');
+    var pris=['at-gras','at-soul'].map(function(i){return g.getElementById(i);}).concat(['at-surl','at-txt'].map(function(i){var b=g.getElementById(i);return b&&b.parentElement;}));
+    pris.forEach(function(el){
+      if(!el)return; el=el.cloneNode(true);
+      el.querySelectorAll('[id]').forEach(function(x){x.id='atf-'+x.id.replace(/^at-/,'');}); if(el.id)el.id='atf-'+el.id.replace(/^at-/,'');
+      [el].concat(Array.prototype.slice.call(el.querySelectorAll('[title]'))).forEach(function(x){ var t=x.getAttribute('title'); if(!t)return;
+        x.setAttribute('title',t.replace(/dans la diapo/g,'dans la feuille (dans le champ, à gauche)').replace(/ au tableau/g,' sur la feuille').replace(/la classe la voit dès que la diapo est projetée/g,'elle est sur la feuille, à l’aperçu et à l’impression').replace(/dès que la diapo est projetée/g,'à l’aperçu et à l’impression').replace(/enregistrée? avec la trame/g,function(m){return m.replace('la trame','la feuille');})); });
+      el.querySelectorAll('.p8-p').forEach(function(x){x.setAttribute('data-coul',x.getAttribute('data-c')||'');});
+      h+=el.outerHTML;
+    });
+  }catch(e){}
+  if(!h)return '';
+  return '<div class="at-forme-barre p8-mfw-hote" id="at-forme-barre" title="La mise en forme de la feuille : sélectionne du texte dans un champ, à gauche, puis un geste — comme dans la diapo">'
+    +'<span class="at-forme-t">Mise en forme</span>'+h
+    +'<button class="btn at-gs" id="atf-legende" type="button" title="Légende de surlignage : « jaune = … · vert = … » — sous le contenu de la feuille (facultatif)">Légende de surlignage</button>'
+    +(AT_FORME.legende?'<input class="at-in at-forme-leg" id="atf-leg-in" placeholder="jaune = sujet · vert = verbe conjugué (facultatif)" title="jaune = … · vert = … (facultatif)" value="'+atEsc(atFormeLegendeTexte())+'" oninput="atFormeLegende(this.value)">':'')
+    +'</div>';
+}
+function atFormeLegendeTexte(){ var L=AT.doc&&AT.doc.legende; if(!L)return ''; return Object.keys(L).map(function(k){return L[k]===true?k:k+' = '+L[k];}).join(' · '); }
+function atFormeLegende(t){ if(!AT.doc)return; var leg={}; String(t).split('·').map(function(x){return x.trim();}).filter(Boolean).forEach(function(x){ var m=/^(\S+)\s*=\s*(.+)$/.exec(x); if(m)leg[m[1]]=m[2]; else leg[x]=true; });
+  if(Object.keys(leg).length)AT.doc.legende=leg; else delete AT.doc.legende; atMarquerModifie(); }
+function atFormeDire(t){ if(typeof atInfo==='function')atInfo(atEsc(t)); }
+/* la sélection : le dernier champ de la feuille où Paul a sélectionné ; la zone et le rang de l'occurrence (comme dr_occurrence) */
+function atFormeSel(){
+  var el=AT_FORME.champ; if(!el||!el.isConnected||!AT.doc)return null;
+  var a=el.selectionStart,b=el.selectionEnd; if(a==null||b==null||a===b)return null;
+  var txt=el.value.slice(a,b); if(!txt.trim())return null;
+  var z=el.getAttribute('data-forme-z')||'', p=z;
+  if(z.indexOf('i:')===0){ var bl=(AT.doc.contenu||[])[+z.slice(2)]; if(!bl)return null; if(!bl.fid)bl.fid='f'+Date.now().toString(36)+Math.random().toString(36).slice(2,6); p='b:'+bl.fid; }
+  var avant=''; var L=Array.prototype.slice.call(document.querySelectorAll('[data-forme-z="'+z+'"]')); for(var k=0;k<L.length&&L[k]!==el;k++)avant+=L[k].value;
+  avant+=el.value.slice(0,a); var tout=avant+el.value.slice(a);
+  var n=0,i=tout.indexOf(txt); while(i>=0&&i<avant.length){n++;i=tout.indexOf(txt,i+1);}
+  return {p:p,txt:txt,n:n,el:el,a:a,b:b};
+}
+function atFormeGeste(genre,couleur){
+  var m=atFormeSel(); if(!m){ atFormeDire('Sélectionne d’abord le texte dans un champ de la feuille (à gauche), puis le geste.'); return; }
+  var f=AT.doc.forme=(AT.doc.forme&&typeof AT.doc.forme==='object')?AT.doc.forme:{}; f[genre]=f[genre]||[];
+  var recouvre=function(x){return x.p===m.p&&(x.n||0)===(m.n||0)&&(x.txt.indexOf(m.txt)>=0||m.txt.indexOf(x.txt)>=0);};
+  if(genre==='gras'||genre==='soul'){ if(f[genre].some(recouvre))f[genre]=f[genre].filter(function(x){return !recouvre(x);}); else f[genre].push({p:m.p,txt:m.txt,n:m.n}); }
+  else { f[genre]=f[genre].filter(function(x){return !recouvre(x);}); if(couleur)f[genre].push({p:m.p,txt:m.txt,n:m.n,couleur:couleur}); }
+  try{m.el.focus();m.el.setSelectionRange(m.a,m.b);}catch(e){}
+  atMarquerModifie();
+}
+function atFormeBrancher(){
+  var z=document.getElementById('at-forme-barre'); if(!z||z._ok)return; z._ok=true;
+  z.addEventListener('mousedown',function(ev){ if(ev.target.closest('button'))ev.preventDefault(); });   /* le champ garde sa sélection */
+  z.addEventListener('click',function(ev){ var b=ev.target.closest('button'); if(!b)return; ev.stopPropagation();
+    var fermer=function(){z.querySelectorAll('.p8-palette.on').forEach(function(x){x.classList.remove('on');});};
+    if(b.id==='atf-gras'){fermer();atFormeGeste('gras');return;}
+    if(b.id==='atf-soul'){fermer();atFormeGeste('soul');return;}
+    if(b.id==='atf-surl'||b.id==='atf-txt'){ var pal=document.getElementById(b.id==='atf-surl'?'atf-pal-surl':'atf-pal-txt'); var ouv=pal&&pal.classList.contains('on'); fermer(); if(pal&&!ouv)pal.classList.add('on'); return; }
+    if(b.classList.contains('p8-p')){ var surl=!!b.closest('#atf-pal-surl'); fermer(); atFormeGeste(surl?'surl':'coulTxt',b.getAttribute('data-c')||''); return; }
+    if(b.id==='atf-legende'){ AT_FORME.legende=!AT_FORME.legende; atRendreEditeur(); var i=document.getElementById('atf-leg-in'); if(i)i.focus(); return; }
+  });
+}
+document.addEventListener('focusin',function(ev){ var t=ev.target; if(t&&t.getAttribute&&t.getAttribute('data-forme-z'))AT_FORME.champ=t; });
+document.addEventListener('keydown',function(ev){ var t=ev.target; if(!(t&&t.getAttribute&&t.getAttribute('data-forme-z'))||!(ev.ctrlKey||ev.metaKey))return; var k=(ev.key||'').toLowerCase();
+  if(k==='b'){ev.preventDefault();atFormeGeste('gras');} else if(k==='u'){ev.preventDefault();atFormeGeste('soul');} else if(k==='h'){ev.preventDefault();atFormeGeste('surl','jaune');} });   /* Ctrl+B, Ctrl+U, Ctrl+H : comme dans la diapo */
+function atFormeLegendeHtml(doc){
+  var L=doc&&doc.legende;if(!L||typeof L!=='object'||!Object.keys(L).length)return '';
+  var COUL=(typeof COULEURS!=='undefined')?COULEURS:{};
+  return '<div class="f-legende" data-c="legende" style="margin:8px 0 4px;font-size:.88em;display:flex;flex-wrap:wrap;gap:4px 16px;color:#333">'+Object.keys(L).map(function(k){
+    var c=COUL[k];return '<span>'+(c?'<i style="display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px;background:'+c+'"></i>'+atEsc(L[k]):atEsc(k+(L[k]===true?'':' = '+L[k])))+'</span>';
+  }).join('')+'</div>';
 }
 /* ═══ [PONT-D] L'ANCRAGE CONTEXTUEL — quand une feuille est rendue DEPUIS un
    contexte (niveau/chapitre/séance de la navigation), l'en-tête se résout DU
@@ -10251,6 +10357,7 @@ function atelierDocumentHTML(doc,ctxEleve,options){
       return atelierRenduComposante(doc,b.id,b.valeurs,b.reformulations,ctx);
     }).join('')+'</div>';
   }
+  h+=atFormeLegendeHtml(doc);   /* E4 (§12.37) : la légende de surlignage, sous le contenu */
 
   /* Places réservées cochées : rien ne sort côté feuille (elles n'existent qu'à l'éditeur, grisées) */
 
@@ -10940,6 +11047,7 @@ function atRendreEditeur(){
     +'<button class="at-btn" onclick="atEnvoyerClic()">\ud83d\udce4 Envoyer aux \u00e9l\u00e8ves</button>'
     +'<input class="at-titre-doc" value="'+atEsc(AT.doc.titre||'')+'" oninput="atSetTitre(this.value)" placeholder="Titre de la feuille (pour toi)">'
     +'<span id="at-etat" class="at-etat"></span></div>';
+  h+=atFormeBarreHtml();   /* E4 (§12.37) : les gestes de la diapo — surligner, couleur du texte, G, S, la légende */
   /* produits (pistons) */
   h+='<div class="at-produits"><span class="at-prod-lib">Pr\u00e9parer d\u2019un clic :</span>';
   Object.keys(ATELIER_PRODUITS).forEach(function(pid){
@@ -10972,6 +11080,7 @@ function atRendreEditeur(){
     +'</div><iframe id="at-apercu" class="at-apercu" title="Aper\u00e7u de la feuille"></iframe></div>';
   h+='</div>';
   z.innerHTML=h;
+  atFormeBrancher();   /* E4 (§12.37) */
   atEtat(AT.etat||'');
   atRendreApercu();
 }
@@ -14014,14 +14123,15 @@ function atHtmlChampsUnique(id,c){
 function atHtmlChamp(id,ch,vals,fn,idx){
   var v=vals[ch.k];
   var app=(idx===undefined)?('\''+id+'\',\''+ch.k+'\',this.value'):(idx+',\''+ch.k+'\',this.value');
+  var zf=' data-forme-z="'+((idx===undefined||idx===null)?('v:'+atEsc(id)):('i:'+idx))+'" data-forme-k="'+atEsc(ch.k)+'"';   /* E4 (§12.37) : la zone de la feuille que ce champ écrit */
   if(ch.kind==='area'||ch.kind==='list'){
     var txt=Array.isArray(v)?v.join('\n'):(v||'');
-    return '<div class="at-champ"><label class="at-ch-l">'+atEsc(ch.l)+'</label><textarea class="at-in at-area" oninput="'+fn+'('+app+')">'+atEsc(txt)+'</textarea></div>';
+    return '<div class="at-champ"><label class="at-ch-l">'+atEsc(ch.l)+'</label><textarea class="at-in at-area"'+zf+' oninput="'+fn+'('+app+')">'+atEsc(txt)+'</textarea></div>';
   }
   if(ch.kind==='date'){
     return '<div class="at-champ"><label class="at-ch-l">'+atEsc(ch.l)+'</label><input type="date" class="at-in" value="'+atEsc(v||'')+'" oninput="'+fn+'('+app+')"></div>';
   }
-  return '<div class="at-champ"><label class="at-ch-l">'+atEsc(ch.l)+'</label><input class="at-in" value="'+atEsc(v||'')+'" oninput="'+fn+'('+app+')"></div>';
+  return '<div class="at-champ"><label class="at-ch-l">'+atEsc(ch.l)+'</label><input class="at-in"'+zf+' value="'+atEsc(v||'')+'" oninput="'+fn+'('+app+')"></div>';
 }
 /* Q6 (décision de la conscience) : un champ de type liste stocke un TABLEAU de
    valeurs, jamais un texte à lignes — la Concordance n'aura rien à reparser. */

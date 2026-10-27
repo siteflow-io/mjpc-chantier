@@ -3906,3 +3906,79 @@ MEMO
 
 27/10/2026 06:10
 MEMO
+
+## Tour 211 — 27/10/2026 07:44 — Paul (07:36)
+
+**Paul (mot pour mot).** « Je ne vois pas le ? Sur les écrans ( sauf l'accueil oui j'ai vu). Par ailleurs, les ? Prennent ils en compte exactement ce que je vois? ( S'adaptent ils au contenu du chapitre affiché ?). De plus, as tu réglé la dette du chargement du chapitre pour Dylan Franklin Hugo Turing ? »
+
+**Fait.** Mesuré dans l'assemblé `2db8b6c5` : `.aide-q` = languette 20 × 56 px, `right:0`, mi-hauteur, fond `#2a2218` (l. 24915) — présente sur les paires T210-02 à 12 (bord droit), invisible à l'œil sur fond sombre. `aideRendre` : le texte = `AIDE_ECRANS[aideCle()]`, clé par écran (30) et, pour la classe, par moment (`classe-ouverture`, `classe-heure`, `classe-fin`, `classe-close`) ; aucun contenu du chapitre lu. `banc-1228` cas 39 : seul « 3 DYLAN Bob » est publié et mesuré (classe créée et reliée par le banc) ; dans `grille-appariee.json` du faux hub (fabriqué, semaine du 14/09) : 3 FRANKLIN Aretha → 3E Charles de Gaulle ; 4 HUGO, 4 TURING, 3 DYLAN Bob → rien ; aucun chapitre de 4e. Le vrai hub n'est pas joignable d'ici (403 au proxy, pas d'autre essai). Vu dans les sorties d'E3 (05:26) et manqué à l'annonce : « en mode test, la présence du prof s'écrit au hub (1 × PUT /presence/prof) » — même code en production ③ (l. 4957). Maquette du « ? » en or sur le fichier réel (style posé dans le candidat, faux hub du banc) : `pieces/T211-01-le-point-d-interrogation-en-or-sur-l-emploi-du-temps.png`, `pieces/T211-02-le-point-d-interrogation-en-or-sur-l-atelier.png`, envoyées. Registre (prod `f178d53`) : 13 · 39 annotée (Dylan seulement), 13 · 47 (le « ? » ne se voit pas), 13 · 48 (présence au hub en mode test). Exécutants non réveillés : attente du mot de Paul.
+
+**Réponse (mot pour mot).**
+
+À jouer : rien, le candidat attend · en cours chez les exécutants : rien · ouvert : 458, 460, 463
+
+457. Le « ? » est bien sur chaque écran, mais tu ne le vois pas : c'est une petite languette sombre collée au bord droit, à mi-hauteur (sur les images 02 à 12, tout à droite, au milieu). Ça ne va pas : une fonction cachée. Dette 13 · 47.
+
+458. Proposé : la même place, en or et plus grande (T211-01 sur l'emploi du temps, T211-02 sur l'Atelier). Oui ?
+
+459. Non, les textes du « ? » ne s'adaptent pas au chapitre. Chaque écran a son texte (30 en tout), et l'heure a le sien à chaque moment (ouverture, heure lancée, fin, close). Mais le texte est le même pour tous les chapitres.
+
+460. Une aide qui lit ce que tu as à l'écran (ce chapitre, cette classe, ce qui vient ensuite), c'est le mode dirigé dont tu parlais hier, mis après la simplification. Proposé : dans ④, le « ? » reste fixe ; l'aide qui s'adapte entre dans le mode dirigé. Oui ?
+
+461. La dette du chargement (13 · 39) n'est pas réglée. Le code est corrigé, de la même façon pour toutes les classes. Mais E3 n'a mesuré que Dylan (image 01 : ses heures montrent le chapitre). Franklin, dans le banc, c'est « 3E Charles de Gaulle », celle qui paraissait déjà. Hugo et Turing n'ont jamais été mesurés : le banc n'a pas de chapitre de 4e. Donc pour eux, je ne sais pas.
+
+462. Pour ton écran réel : une case n'affiche un chapitre que si la classe de l'emploi du temps est reliée à une classe du site (panneau prof → Emploi du temps → « 🔗 Classes de la grille et classes du site »). Sinon elle dit « classe non encore importée », publié ou pas. Je ne vois pas ton site réel d'ici.
+
+463. Une question : sur ton emploi du temps, les cases de Dylan, Hugo et Turing disent-elles « classe non encore importée » ?
+
+464. J'ai manqué une ligne d'E3 en t'annonçant le candidat : en mode test, le site envoie quand même au vrai site le signal « le prof est connecté ». La production le fait déjà ; ce n'est aucune donnée, et personne ne le lit. Mais le mode test promet que rien ne sort : dette 13 · 48.
+
+465. Donc ④ ne se promeut pas : trois dettes ouvertes (13 · 39, 13 · 47, 13 · 48). Sur ton « oui » à 458 : E1 met le « ? » en or et coupe le signal en mode test ; E3 mesure Hugo et Turing avec un chapitre de 4e, puis rejoue tout. Ensuite, de nouvelles images.
+
+À tester : rien, rien n'est en ligne.
+
+27/10/2026 07:44
+MEMO
+
+## Tour 212 — 27/10/2026 07:56 — Paul (07:48)
+
+**Paul (mot pour mot).** « Non promeus ainsi, je mesurerai moi même. Tu me fais juste un rappel des choses à mesurer après la promotion. Pour le prof connecté on s'en fiche »
+
+**Fait.** Code du sas identique depuis `4ac663c7` (tête `integration` `4e3fc230` : relances et transcripts seulement) ; assemblé → md5 `2db8b6c5ee9fea1a79e0dae2786038c3`, 2 420 064 o ; prod `index.html` = l'assemblé avec `var APP_VERSION="8.75.0-④";` (l. 3015, à la place de `8.74.0-③`) → md5 `0fb126a79e7e580ac9fb9bd7382b61f3`, 2 420 064 o ; commit prod `a017558786d3` (blob `a8251813942b`), poussé 07:51:02 ; **bit à bit** : `curl …/index.html?v=8.75.0-4` → `83adc8de…` de 07:51:13 à 07:51:45, `0fb126a7…` à 07:51:56 — identique. Suivi prod (`5403275`) : journal (entrée 27/10 07:51), dettes (ÉTAT DE PRODUCTION v8.75.0-④ ; 12 · 87, 12 · 88, 12 · 212, 13 · 37, 13 · 38, 13 · 40 à 13 · 46 promues ; 13 · 39 et 13 · 47 promues en l'état, Paul mesure ; 13 · 48 classée par Paul), point de retour avant ④ (blob ③ `f0cbc31fe81f`), index des fonctions (1923 fonctions), où-trouver-quoi (section ④). Sas : PROMU aux quatre relances, `AUDIT-FINAL.md` §0. Aucun réveil programmé.
+
+**Réponse (mot pour mot).**
+
+À jouer : tes mesures sur 8.75.0-④ · en cours chez les exécutants : rien · ouvert : 454, 458, 460
+
+466. 8.75.0-④ est en production depuis 07:51 : le fichier en ligne est bit à bit le candidat annoncé (md5 `0fb126a79e7e580ac9fb9bd7382b61f3`, 2 420 064 octets). Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.75.0-4 — la pastille dit v8.75.0-④.
+
+467. Registre : 13 · 39 (le chargement) et 13 · 47 (le « ? ») restent ouvertes jusqu'à ta mesure ; 13 · 48 (le prof connecté) est classée, comme tu l'as dit. Journal, point de retour vers ③, index des fonctions, où-trouver-quoi : à jour. Aucun réveil programmé.
+
+468. Toujours ouverts, tels quels : 454 (la phrase « L'activité en cours : … tu dépasses de n min », tombée avec la barre : la veux-tu en tête de la séquence ?), 458 (le « ? » en or), 460 (l'aide qui s'adapte au chapitre, dans le mode dirigé).
+
+À tester, geste par geste :
+
+469. Le chargement (13 · 39). En mode test : page 3e → « Je publie pour » Dylan, puis Franklin → Emploi du temps : leurs cases montrent le chapitre et « heure n/3 ». Hugo et Turing : le même geste sur un chapitre de 4e. Si une case dit « classe non encore importée » : panneau prof → Emploi du temps → « 🔗 Classes de la grille et classes du site », relie-la, puis regarde de nouveau.
+
+470. Le « ? » (13 · 43, 13 · 47). Sur chaque écran (accueil, page du niveau, panneau prof, emploi du temps, case, Atelier, pilote, Fin de l'heure, Relecture) : la languette au bord droit, à mi-hauteur. Clic, ou touche « ? » : le volet à droite, le texte de cet écran, le fil du chapitre en bas ; Échap le ferme. Dans la fenêtre du tableau : rien.
+
+471. L'heure en classe (13 · 41). Case de l'heure → « ▶ Ouvrir le pilotage et lancer » : l'écran de la classe seule, sans Structure ni Atelier ; le retour du navigateur ne sort pas ; « ↗ Le site dans un nouvel onglet » ouvre le reste à côté.
+
+472. Fermer l'onglet de l'heure (13 · 41). Le navigateur demande confirmation. Dans un autre onglet du site, le bandeau « Heure en cours avec les … — Reprendre » paraît en haut ; « Reprendre » : la même diapo, le chrono continue. Après « Clore l'heure » : plus de bandeau.
+
+473. À T-5 (S1). La séquence « Fin de l'heure » s'ouvre seule, dans la colonne de droite ; plus de barre en bas.
+
+474. Fin de l'heure, étape 2 (13 · 40). La phrase dit combien d'activités attendent ta décision, puis « tout est décidé ».
+
+475. Préparer le cahier (S2, S3). « ❄ Préparer le cahier » : la diapo du cahier au centre, le tableau gelé, l'écran ne change pas de forme ; puis « Montrer le cahier à la classe », « Retour au cours », « Plus tard ».
+
+476. Le récit d'une heure à une seule activité (13 · 42). Relecture → « Le récit » commence par « Cette heure, on a fait » (vu des élèves sur École Directe).
+
+477. La répétition (S5). Atelier → Pilotage : « Répétition », « ■ Arrêter » ; ni « Fin de l'heure », ni participation.
+
+478. Les noms (S4). « ⧉ Ce que voit la classe », « 🖥 Ouvrir le tableau » ; la case d'une heure en cours : « Reprendre l'heure ».
+
+479. Tout l'écran (§12.27). Panneau prof bord à bord ; « Élèves & codes » : ↻ ✕ dans la ligne de l'élève ; « Emploi du temps » du panneau : trois groupes rangés ; la page du niveau à toute la largeur ; l'en-tête du pilote dit la classe de l'heure (13 · 38) ; « Voir dans l'arborescence » : rien par-dessus (13 · 45) ; la fenêtre du tableau : jamais un message du prof (13 · 44).
+
+27/10/2026 07:56
+MEMO

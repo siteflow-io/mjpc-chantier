@@ -621,3 +621,10 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **banc.sh VERT** sur `198d475e` (sorties `LIVRAISONS/INTEGRATION/E1/sorties/0050-27-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `26bea101…`).
 - **Pas à moi, tel que je le lis** : au retour 58, « 43 après Clore » (le volet montre `classe-fin`) — E3 écrit lui-même « à revoir quand ma clôture marche » ; je le reprends s'il reste rouge une fois sa clôture corrigée. S1-S3 et le bandeau : E2.
 - **Reste** : la barre du bas du gabarit, après la poussée d'E2 (`dr-classe.js` : 11 références `al-` à 00:58).
+
+## 27/10, 02:25 — §12.29, le dernier morceau (contrôle n°67) : la barre du bas tombe
+- **Fait** (`6aa2d0fb`) : E2 a fini (`d82b60f4`, la barre ne s'ouvre plus ; `alerteFermer` tolère son absence). Retirés du gabarit : `#al-boite` (avec `#al-poignee`, `#al-txt`, `#al-preparer`, `#al-aller`, `#al-tard`) et `#al-ligne`. Dans `dr_tout`, l'appel à `alerteOuvrir` tombe — il lisait `$('al-ligne').style.display`, qui aurait planté sans la barre ; reste `alerteFermer()` sur la diapo du cahier à T-5 (tolérant). Les règles CSS `.al-boite` / `.al-ligne` de `dr.css` ne sont pas dans ma part : mortes, sans effet, je les laisse.
+- Rien dans les bancs ne cherche la barre autrement qu'absente (E2 B10 « absent », E3 29 « barre » faux si absente).
+- **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/0152-27-10/` : collisions 0, 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `fe072964…`). **Mon banc complet : 575 vérifications, 0 échec** (`LIVRAISONS/INTEGRATION/E1/sorties/0152-27-10/banc-E1.txt`). Joués avant le rebase ; ce que le rebase a apporté (contrôle n°68, retour 60 d'E3, épreuves) ne touche ni `index.html` ni `dr/`.
+- **§12.29 E1 fini.**
+- Veille : send_later toutes les 50 min ; STOP dans les relances = arrêt ; deux retours vides de suite = une ligne ici et arrêt.

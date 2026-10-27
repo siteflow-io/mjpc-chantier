@@ -798,9 +798,10 @@ function dr_traceReprendre(cb){
 }
 
 /* ─── reprendre en pleine heure : `C/etat` + `C/journal` + `H` (la règle de `_drTraceReprendre`) ─── */
+function dr_lireTous(chemins, cb){ const r = new Array(chemins.length); let n = chemins.length; chemins.forEach((c, k) => dr_lire(c, v => { r[k] = v; if (--n === 0) cb(...r); })); }
 function dr_reprendre(cb){
   const C = dr_cheminC(), ch = dr_cheminH(); if (!C || !ch) { if (cb) cb(false); return; }
-  dr_lire(C + '/ecrans', copie => dr_lire(C + '/etat', etat => dr_lire(C + '/journal', jr => dr_lire(ch, t => {
+  dr_lireTous([C + '/ecrans', C + '/etat', C + '/journal', ch], (copie, etat, jr, t) => {   /* les quatre lectures ensemble (contrôle n°68) — avant : l'une après l'autre */
     { const loc = dr_heureLocaleLire(C); if (loc && loc.etat && loc.etat.S && (+loc.etat.maj || 0) > (+(etat || {}).maj || 0)) { etat = loc.etat; if (Array.isArray(loc.journal)) jr = loc.journal; } }   /* §12.28-3 (e) : ce que l'onglet fermé n'avait pas encore envoyé au hub (≤ 2 s), gardé dans ce navigateur au départ */
     if (!etat || !etat.S) { if (cb) cb(false); return; }
     dr_adopterIdentites(copie); if (Array.isArray(copie) && copie.length && copie.every(x => x && typeof x === 'object')) { const E0 = seance().ecrans; E0.splice(0, E0.length, ...copie); try { reindexer(); } catch (e) {} }   /* réveil n°6 (E4 ligne 110, ma part) : la reprise relit la copie de la classe (C/ecrans) telle qu'elle est au hub, sans recalcul — ce qui a été écrit en classe revient */
@@ -827,7 +828,7 @@ function dr_reprendre(cb){
     try { atInfo('Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus.'); } catch (e) {}
     DR_CL.ouverte = { C, H: ch, creneau: dr_creneauDuCours(AT_DR_COURS) }; dr_joueeIci(ch, false); dr_absentsDeLaCase();
     if (cb) cb(true);
-  }))));
+  });
 }
 /* remettre dans la page l'état d'une heure jouée, décodé (`dr_lireJoue`) : S, les dévoilements, le journal ; les rangs refaits */
 function dr_restaurer(j){ DR_CL.etatRestaure = true;   /* réveil n°8 : l'état relu prime sur les paquets (`dr_marquerJoues`) */
@@ -999,12 +1000,18 @@ function dr_ouvrirLaClasse(niv, chcle, snum, apres){
   try { atEditerChapitre(niv, chcle); ATVUES.snum = String(snum); atVuesAller('pilotage'); } catch (e) { try { atInfo('Le pilotage ne s’ouvre pas : ' + e.message); } catch (x) {} return; }
   edtQuandPilotagePret(manque => { if (manque) { try { atInfo('Le pilotage ne s’ouvre pas (manque : ' + manque + ').'); } catch (x) {} return; } apres(); });
 }
+/* contrôle n°68 (E3 retour 60 : « Reprendre » sans l'heure à 1536 / 1920) : mesuré, la reprise aboutit, mais 5 à 10 s après le clic quand la machine
+   est chargée (l'écran de la classe charge classes et chapitres, puis quatre lectures au hub) — le banc regardait à 4 s. Les quatre lectures partent
+   ensemble (`dr_reprendre`) ; et si un montage tardif remettait l'heure à zéro derrière elle (S.lancee retombé sans clôture), elle se refait une fois. */
+function dr_reprendreQuandPret(cb, essai){ essai = essai || 0;
+  dr_reprendre(ok => { if (cb) cb(ok); if (!ok) return; const sig = _drSignatureCours(Object.assign(dr_coursActif(), {}));
+    setTimeout(() => { try { if (!S.lancee && !S.close && AT_DR_REGIME === 'classe' && _drSignatureCours(dr_coursActif()) === sig) { journal('reprise-refaite'); dr_reprendre(() => {}); } } catch (e) {} }, 1500); }); }
 function dr_reprendreCours(c){
   const cours = { debut: c.debut, fin: c.fin, classeSlug: c.classeSlug, classeNom: c.classeNom };
   atChargerChapitres(c.niveau, () => {
     AT_DR_COURS = cours; AT_DR_REGIME = 'classe';
     dr_ouvrirLaClasse(c.niveau, c.chapitre, c.seance, () => { AT_DR_COURS = cours; AT_DR_REGIME = 'classe';
-      dr_reprendre(ok => { if (!ok) atInfo('L’état de cette heure n’est pas au hub : elle ne peut pas être reprise telle quelle.'); }); });
+      dr_reprendreQuandPret(ok => { if (!ok) atInfo('L’état de cette heure n’est pas au hub : elle ne peut pas être reprise telle quelle.'); }); });
   });
 }
 /* réveil n°5, A4-4 (C1 6.5, 8.6) : la case close ouvre la Relecture de CETTE heure — la séance, la classe et l'heure de sa trace ; l'atelier
@@ -1318,19 +1325,24 @@ function dr_coursIci(){ try { return Object.assign(dr_coursActif(), { ts: (DR_CL
 window.addEventListener('beforeunload', ev => { if (!dr_heureTenue()) return; try { dr_heureLocaleEcrire(); } catch (e) {} ev.preventDefault(); ev.returnValue = ''; return ''; });
 /* (e) le miroir local de l'heure : un seul, l'heure tenue dans ce navigateur */
 const DR_LOC_ETAT = 'mjpc-heure-etat', DR_LOC_PARTIE = 'mjpc-heure-partie';
-function dr_heureLocaleEcrire(){ if (!dr_heureTenue()) return; const C = dr_cheminC(); if (!C) return; try { localStorage.setItem(DR_LOC_ETAT, JSON.stringify({ C, etat: dr_etatHeure(), journal: dr_journalHub(), maj: Date.now() })); } catch (e) {} }
-function dr_heureLocaleLire(C){ try { const x = JSON.parse(localStorage.getItem(DR_LOC_ETAT) || 'null'); return x && x.C === C && (Date.now() - (+x.maj || 0)) < 4 * 3600 * 1000 ? x : null; } catch (e) { return null; } }
+function dr_heureLocaleEcrire(){ if (!dr_heureTenue()) return; const x = dr_heureLocaleObjet(); if (!x) return; try { localStorage.setItem(DR_LOC_ETAT, JSON.stringify(x)); } catch (e) {} }
+function dr_heureLocaleObjet(){ const C = dr_cheminC(); return C ? { C, etat: dr_etatHeure(), journal: dr_journalHub(), maj: Date.now() } : null; }
+/* (e) l'état de l'heure tel que ce navigateur le connaît : le miroir `localStorage` et le dernier état reçu de l'onglet de l'heure par le canal
+   (son signe de vie et son départ le portent — contrôle n°68 : un `localStorage` écrit à la fermeture d'un onglet n'est pas toujours lu à temps par l'autre) */
+function dr_heureLocaleLire(C){ const ok = x => x && x.C === C && x.etat && (Date.now() - (+x.maj || 0)) < 4 * 3600 * 1000; let ls = null; try { ls = JSON.parse(localStorage.getItem(DR_LOC_ETAT) || 'null'); } catch (e) {}
+  const mem = (DR_CL.onglet && DR_CL.onglet.etats || {})[C] || null; const c = [ls, mem].filter(ok); if (!c.length) return null; return c.length === 1 ? c[0] : ((+c[0].maj || 0) > (+c[1].maj || 0) ? c[0] : c[1]); }
 /* (d) les onglets entre eux */
-DR_CL.onglet = { id: Math.random().toString(36).slice(2), tenus: {}, partis: {}, clos: {} };
+DR_CL.onglet = { id: Math.random().toString(36).slice(2), tenus: {}, partis: {}, clos: {}, etats: {} };
 DR_CL.canal = null; try { if (typeof BroadcastChannel === 'function') DR_CL.canal = new BroadcastChannel('mjpc-heure'); } catch (e) {}
 function dr_ongletDire(m){ m.de = DR_CL.onglet.id; m.n = Date.now() + Math.random(); try { if (DR_CL.canal) { DR_CL.canal.postMessage(m); return; } } catch (e) {} try { localStorage.setItem('mjpc-heure-msg', JSON.stringify(m)); } catch (e) {} }
 function dr_ongletProf(){ try { return document.body.classList.contains('admin-mode') || !!(window.TRACK && TRACK.eleve && TRACK.eleve.is_prof); } catch (e) { return false; } }   /* le bandeau n'est que pour la session prof (jamais côté élève) */
 function dr_ongletEntendre(m){
   if (!m || m.de === DR_CL.onglet.id || (typeof SES === 'object' && SES && SES.mode)) return; const O = DR_CL.onglet;
-  if (m.t === 'qui') { if (dr_heureTenue()) { const c = dr_coursIci(); if (c) dr_ongletDire({ t: 'tiens', sig: _drSignatureCours(c), c }); } return; }
+  if (m.t === 'qui') { if (dr_heureTenue()) { const c = dr_coursIci(); if (c) dr_ongletDire({ t: 'tiens', sig: _drSignatureCours(c), c, etat: dr_heureLocaleObjet() }); } return; }
+  if (m.etat && m.etat.C) O.etats[m.etat.C] = m.etat;   /* (e) l'état porté par le message */
   if (m.t === 'tiens') { O.tenus[m.sig] = Date.now(); delete O.partis[m.sig]; try { if (SES._reprise && _drSignatureCours(SES._reprise) === m.sig) sesRepriseRetirer(); } catch (e) {} return; }
   if (m.t === 'part') { delete O.tenus[m.sig]; if (O.clos[m.sig]) return; O.partis[m.sig] = m.c; if (!dr_heureTenue() && dr_ongletProf()) try { sesReprisePeindre(m.c); } catch (e) {} return; }
-  if (m.t === 'clos') { delete O.tenus[m.sig]; delete O.partis[m.sig]; O.clos[m.sig] = true; try { if (SES._reprise && _drSignatureCours(SES._reprise) === m.sig) sesRepriseRetirer(); } catch (e) {} }
+  if (m.t === 'clos') { delete O.tenus[m.sig]; delete O.partis[m.sig]; O.clos[m.sig] = true; O.etats = {}; try { if (SES._reprise && _drSignatureCours(SES._reprise) === m.sig) sesRepriseRetirer(); } catch (e) {} }
 }
 if (DR_CL.canal) DR_CL.canal.onmessage = ev => dr_ongletEntendre(ev.data);
 window.addEventListener('storage', ev => { if (ev.key === 'mjpc-heure-msg' && ev.newValue) { try { dr_ongletEntendre(JSON.parse(ev.newValue)); } catch (e) {} } });
@@ -1340,9 +1352,9 @@ function dr_heureTenueAilleurs(sig){ const t = DR_CL.onglet.tenus[sig]; return !
 function dr_heurePartie(){ const O = DR_CL.onglet; const k = Object.keys(O.partis).find(s => !O.clos[s] && !dr_heureTenueAilleurs(s)); if (k) return O.partis[k];
   try { const x = JSON.parse(localStorage.getItem(DR_LOC_PARTIE) || 'null'); if (x && x.c && (Date.now() - (+x.t || 0)) < 4 * 3600 * 1000) { const sg = _drSignatureCours(x.c); if (!O.clos[sg] && !dr_heureTenueAilleurs(sg)) return x.c; } } catch (e) {} return null; }
 /* l'onglet de l'heure : un signe de vie toutes les 2 s ; au départ, « je pars » et la marque */
-setInterval(() => { try { if (!dr_heureTenue()) return; const c = dr_coursIci(); if (!c) return; const sg = _drSignatureCours(c); dr_ongletDire({ t: 'tiens', sig: sg, c });
+setInterval(() => { try { if (!dr_heureTenue()) return; const c = dr_coursIci(); if (!c) return; const sg = _drSignatureCours(c); dr_ongletDire({ t: 'tiens', sig: sg, c, etat: dr_heureLocaleObjet() });
   try { const x = JSON.parse(localStorage.getItem(DR_LOC_PARTIE) || 'null'); if (x && x.c && _drSignatureCours(x.c) === sg) localStorage.removeItem(DR_LOC_PARTIE); } catch (e) {} } catch (e) {} }, 2000);
-window.addEventListener('pagehide', () => { try { if (!dr_heureTenue()) return; dr_heureLocaleEcrire(); const c = dr_coursIci(); if (!c) return; try { localStorage.setItem(DR_LOC_PARTIE, JSON.stringify({ c, t: Date.now() })); } catch (e) {} dr_ongletDire({ t: 'part', sig: _drSignatureCours(c), c }); } catch (e) {} });
+window.addEventListener('pagehide', () => { try { if (!dr_heureTenue()) return; dr_heureLocaleEcrire(); const c = dr_coursIci(); if (!c) return; try { localStorage.setItem(DR_LOC_PARTIE, JSON.stringify({ c, t: Date.now() })); } catch (e) {} dr_ongletDire({ t: 'part', sig: _drSignatureCours(c), c, etat: dr_heureLocaleObjet() }); } catch (e) {} });
 function dr_ongletClos(){ const c = dr_coursIci(); if (!c) return; const sg = _drSignatureCours(c); DR_CL.onglet.clos[sg] = true; dr_ongletDire({ t: 'clos', sig: sg });
   try { localStorage.removeItem(DR_LOC_ETAT); const x = JSON.parse(localStorage.getItem(DR_LOC_PARTIE) || 'null'); if (x && x.c && _drSignatureCours(x.c) === sg) localStorage.removeItem(DR_LOC_PARTIE); } catch (e) {} }
 /* un onglet qui s'ouvre demande qui tient l'heure (la réponse arrive avant la première veille du bandeau) */

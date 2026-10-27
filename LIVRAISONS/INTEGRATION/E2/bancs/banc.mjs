@@ -737,6 +737,22 @@ dire(''); dire('B29-B31 — une heure lancée ne se quitte pas ; le bandeau « H
     await r.ctx.close(); }
   await s.ctx.close(); }
 
+// ── B31 aux quatre tailles (contrôle n°68 : « Reprendre » sans l'heure à 1536 / 1920, E3 retour 60) — l'onglet de l'heure fermé, l'autre reprend ──
+dire(''); dire('B31-tailles — « Reprendre » aux quatre tailles (1366 × 768, 1536 × 864, 1707 × 743, 1920 × 1080), le hub de l\'autre onglet sans les écritures de l\'heure (comme le faux hub d\'E3)');
+for (const [W, Hh] of [[1366, 768], [1536, 864], [1707, 743], [1920, 1080]]) {
+  const s = await session({ vue: { width: W, height: Hh } }); const A = s.page;
+  if (!s.integre) { pas('B31', 'absent', W + '×' + Hh + ' · le site intégré'); await s.ctx.close(); continue; }
+  const v = await lancerUnClic(s); if (v === 'absent') { pas('B31', 'absent', W + '×' + Hh + ' · le lancement'); await s.ctx.close(); continue; }
+  const lieu = q => q.evaluate(() => ({ eid: (seance().ecrans[S.di] || {}).eid, nDev: (parDiapo[K(S.di)] || {}).nDev || 0, lancee: !!S.lancee, close: !!S.close, fin: S.enFin ? S.finSection : 0, ecoule: S.ecoule }));
+  await devoiler(s, 3); for (let k = 0; k < 8 && !(await A.evaluate(() => ((parDiapo[K(S.di)] || {}).nDev || 0))); k++) await devoiler(s, 1);
+  await A.click('#bfin'); await s.attendre(500); await A.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="2"]'); if (e) e.click(); }); await s.attendre(2500); const av = await lieu(A);
+  const B = await monter(s.ctx, F, { quand: new Date(await A.evaluate(() => Date.now())).toISOString() }); const PB = B.page;   /* son propre hub, sans les écritures de l'heure */
+  await A.close(); await PB.clock.runFor(900);
+  const vu = await PB.evaluate(() => !!document.getElementById('ses-reprise-oui')); if (vu) { await PB.click('#ses-reprise-oui'); await PB.clock.runFor(6000); await PB.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && Array.from(m.querySelectorAll('button')).find(x => /Compris/.test(x.innerText)); if (b) b.click(); }); await PB.clock.runFor(300); }
+  const ap = await lieu(PB); const reste = await PB.evaluate(() => !!document.getElementById('ses-reprise'));
+  pas('B31', vu && ap.lancee && !ap.close && ap.eid === av.eid && ap.nDev === av.nDev && av.nDev > 0 && ap.fin === av.fin && ap.ecoule >= av.ecoule && !reste ? 'ok' : 'ÉCHEC', W + '×' + Hh + ' · « Reprendre » : l\'heure tourne, la même diapo, les mêmes lignes, « Fin de l\'heure » à son étape, le chrono continu, plus de bandeau', JSON.stringify({ bandeau: vu, avant: av, apres: ap, reste }));
+  pas('B31', !B.errs.length ? 'ok' : 'ÉCHEC', W + '×' + Hh + ' · aucune erreur JS', B.errs.join(' ; ')); await s.ctx.close(); }
+
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');
 { const s = await session(); const ok = s.integre ? await s.page.evaluate(() => { const a = { niveau: '3e', chapitre: '0', seance: '0', classeSlug: '3E Charles de Gaulle', debut: '08:57', fin: '09:52' }, b = Object.assign({}, a, { debut: '10:07', fin: '11:02' }); return [_drCleHeureDe(a), _drCleHeureDe(b)]; }) : null;

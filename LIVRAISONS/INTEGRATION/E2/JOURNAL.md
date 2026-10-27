@@ -639,3 +639,5 @@ Relances « 06:07 — contrôle n°72 », « 07:52 — PROMEUS 8.75.0-④ », «
 - **Sorties** (`LIVRAISONS/INTEGRATION/E2/sorties/2710-1029`, assemblé md5 `d35756b1…`) : `banc.sh` **VERT** (« 106 vérifications, 0 échec(s) », « --- fin : 0 défaut(s) ») ; **banc E2 entier VERT — 215 ok, 0 échec**.
 
 ## 27/10 11:12 (Paris) — retour 50 : veille n°1 après « §12.31 E2 fini » (6644ba7e) — aucune relance nouvelle.
+
+## 27/10 12:08 (Paris) — retour 51 : **veille n°2, arrêt** — relance « 11:15 — la cadence » lue (15 min quand j'attends un autre exécutant, 50 en veille) : rien à attendre ni à coder pour moi. §12.28-31 E2 finis (dernier : 6644ba7e). Plus de réveil programmé ; une relance nouvelle me fera repartir.

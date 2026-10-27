@@ -3802,3 +3802,16 @@ MEMO
 
 27/10/2026 00:20
 MEMO
+
+## Tour 205 — 27/10/2026 01:16 — contrôle n°67 (sans message de Paul depuis le tour 201)
+
+**Fait.** Mon banc sur `8202a883` : VERT, 106/0 (épreuve gardée). Lu sur `integration` depuis `8202a883` : **E2 fini sur §12.28 et §12.29** (`d82b60f4`, `9c31f22c` : la barre ne s'ouvre plus, le palier en tête des étapes, « Plus tard » puis le palier suivant rouvre, « ❄ Préparer le cahier » / « Plus tard », « Montrer le cahier à la classe » / « Retour au cours » avec ce que la classe voit mesuré au hub, « ▶ Reprendre l'heure », le bandeau qui ne pousse rien et reste après l'emploi du temps ; banc E2 198/0) ; E1 a réglé les retours 58-59 d'E3 (le volet ne cache plus rien, le « ? » non plus) ; E3 retours 58-59 (`banc-1228` 245/316 avant E2 ; `banc-1227` en régression 799/801). Reste : E1 retire la barre du gabarit (01:50), E3 rejoue (01:36). Banc relancé sur la tête. Contrôle n°68 à 02:04 (`trig_014urZhiDoSStyj1fA4u4r77`).
+
+**Réponse (mot pour mot).**
+
+445. Contrôle de 01:15. E2 a fini sa part des deux chantiers : à T-5, une seule chose s'ouvre, les étapes à droite, et les nouveaux boutons du cahier fonctionnent. Je l'ai vérifié : ce que la classe voit à chaque bouton est mesuré. Il reste un dernier morceau chez E1 (enlever la barre du bas du code), puis E3 refait toutes ses mesures. Ensuite je t'annonce la mise en ligne, avec les captures.
+
+À tester : rien pour l'instant — rien n'est en ligne.
+
+27/10/2026 01:16
+MEMO

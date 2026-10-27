@@ -1,0 +1,191 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 11:25 UTC · fichier md5 12accf681c6d69f85266146628c1a422
+
+══ 1366×768 ══
+  ok     39 · 1366×768 · en mode test, « 3 DYLAN BOB » se publie depuis la page du niveau (le geste existe)
+  ok     39 · 1366×768 · 13 · 39 · après la publication, l’emploi du temps montre les heures de « 3 DYLAN Bob » avec leur séance — avant 0 / après 4 cases avec séance (3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3 | 3 DYLAN Bob aucune séance prête · fil « langue »)
+  ok     39 · 1366×768 · 13 · 39 · dépublié, elles partent — 0 cases avec séance
+  ok     39 · 1366×768 · 13 · 39 · mode test : aucune écriture au hub
+  info   39 · 1366×768 · en mode test, la présence du prof s’écrit au hub (1 × PUT /presence/prof, le battement de connexion) — dit à la conscience : K15-test la compte-t-il ?
+  ok     39 · 1366×768 · 0 erreur JS
+  ok     30 · 1366×768 · l’heure se lance par la case (09:41)
+  ok     30 · 1366×768 · à T-5, la phrase de l’activité en cours, mot pour mot — « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » ; la ③ : « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. »
+  ok     30 · 1366×768 · sous la tête de la séquence, entière — {"sous":true,"entiere":true}
+  ok     30 · 1366×768 · l’heure avance au-delà du prévu : « tu dépasses · +n min » — « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » → « L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +3 min. »
+  ok     30 · 1366×768 · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence) — {"actif":"SELECT#f-ech","tete":false,"fin":true}
+  ok     30 · 1366×768 · le champ de l’étape 1 garde son focus — SELECT#f-ech → SELECT#f-ech
+  ok     30 · 1366×768 · en préparation (« ❄ Préparer le cahier »), la phrase reste sous la tête — {"bouton":true,"texte":"L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +3 min.","sous":true}
+  ok     30 · 1366×768 · après « Clore l’heure », plus de phrase
+  ok     30 · 1366×768 · en répétition, pas de phrase
+  ok     Z · 1366×768 · 0 erreur JS (30)
+  ok     51 3e · 1366×768 · hors mode test (le chemin de Paul)
+  ok     51 3e · 1366×768 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 3 DYLAN Bob » avec ses ","modale":{"v":true,"nom":"3 DYLAN Bob","niv":"3e"}}
+  ok     51 3e · 1366×768 · la classe est rangée sous sa clé simplifiée « 3_dylan_bob », nom « 3 DYLAN Bob », 4 élèves — {"nom":"3 DYLAN Bob","niveau":"3e","eleves":4}
+  ok     51 3e · 1366×768 · le menu relie les cases de « 3 DYLAN Bob » à la classe du site — {"menu":{"val":"3 DYLAN Bob"},"cases":["3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob"]}
+  ok     51 3e · 1366×768 · le chapitre se publie pour « 3 DYLAN Bob » depuis la page du niveau — {"pastille":true,"hub":{"3e_charles_de_gaulle":true,"classe_test":true,"3_dylan_bob":true}}
+  ok     51 3e · 1366×768 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 3 DYLAN Bob » — « Classe attendue : 3 DYLAN Bob · 10:07 – 11:02 »
+  ok     51 3e · 1366×768 · 13 · 51 · semaine du 2/11 : chaque case de « 3 DYLAN Bob » montre sa séance (« heure n/N ») — 3 avec séance, 0 sans, sur 3 · 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1/3
+  ok     51 3e · 1366×768 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 3 DYLAN Bob dans les temps Poésie et peinture au XIXe siè · 0/9
+  ok     51 3e · 1366×768 · l’heure se lance par la case de « 3 DYLAN Bob » (10:07-11:02) — {"case":true,"bouton":true,"lancee":true,"fenetre":"mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pi"}
+  ok     51 3e · 1366×768 · 13 · 51 · l’heure lancée a ses élèves (la participation) — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  info   51 3e · 1366×768 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 3e · 1366×768 · 13 · 51 · l’heure jouée, la fenêtre de sa case montre ses élèves — 4/4 · close true · « mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 1 activité. Close. Séance : Poésie et peinture : le »
+  ok     51 3e · 1366×768 · 0 erreur JS
+  ok     51 4e · 1366×768 · hors mode test (le chemin de Paul)
+  ok     51 4e · 1366×768 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 4 HUGO » avec ses 4 élè","modale":{"v":true,"nom":"4 HUGO","niv":"4e"}}
+  ok     51 4e · 1366×768 · la classe est rangée sous sa clé simplifiée « 4_hugo », nom « 4 HUGO », 4 élèves — {"nom":"4 HUGO","niveau":"4e","eleves":4}
+  ok     51 4e · 1366×768 · le menu relie les cases de « 4 HUGO » à la classe du site — {"menu":{"val":"4 HUGO"},"cases":["4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO"]}
+  ok     51 4e · 1366×768 · le chapitre se publie pour « 4 HUGO » depuis la page du niveau — {"pastille":true,"hub":{"4_hugo":true}}
+  ok     51 4e · 1366×768 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 4 HUGO » — « Classe attendue : 4 HUGO · 13:00 – 13:55 »
+  ok     51 4e · 1366×768 · 13 · 51 · semaine du 2/11 : chaque case de « 4 HUGO » montre sa séance (« heure n/N ») — 3 avec séance, 0 sans, sur 4 · 4 HUGO Poésie et peinture : le Romantisme en question heure 3/3
+  ok     51 4e · 1366×768 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 4 HUGO dans les temps Poésie et peinture au XIXe siè · 0/9 | 3 DYLAN Bob aucun chapitre publié
+  ok     51 4e · 1366×768 · l’heure se lance par la case de « 4 HUGO » (13:00-13:55) — {"case":true,"bouton":true,"lancee":true,"fenetre":"mardi 3 novembre · 13:00-13:55 ✕ 4 HUGO Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pilotag"}
+  ok     51 4e · 1366×768 · 13 · 51 · l’heure lancée a ses élèves (la participation) — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  info   51 4e · 1366×768 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 4e · 1366×768 · 13 · 51 · l’heure jouée, la fenêtre de sa case montre ses élèves — 4/4 · close true · « mardi 3 novembre · 13:00-13:55 ✕ 4 HUGO Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 1 activité. Close. Séance : Poésie et peinture : le Roma »
+  ok     51 4e · 1366×768 · 0 erreur JS
+  ok     50 · 1366×768 · 13 · 50 · sans la clé, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"cle":false,"titre":"📚 Construire un chapitre avec une IA","coller":true}
+  ok     49 · 1366×768 · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub — {"verifier":"Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte.","bouton":true,"confirmation":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romanti","titres":["Le chapitre neuf du banc E3"],"tous":2,"boites":[],"apres":"Chapitre créé — non publié. Il apparaît dans la liste.","ecr":["PUT /site/3e/chapitres/1"]}
+  ok     Z · 1366×768 · 0 erreur JS (49-50)
+
+══ 1536×864 ══
+  ok     39 · 1536×864 · en mode test, « 3 DYLAN BOB » se publie depuis la page du niveau (le geste existe)
+  ok     39 · 1536×864 · 13 · 39 · après la publication, l’emploi du temps montre les heures de « 3 DYLAN Bob » avec leur séance — avant 0 / après 4 cases avec séance (3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3 | 3 DYLAN Bob aucune séance prête · fil « langue »)
+  ok     39 · 1536×864 · 13 · 39 · dépublié, elles partent — 0 cases avec séance
+  ok     39 · 1536×864 · 13 · 39 · mode test : aucune écriture au hub
+  info   39 · 1536×864 · en mode test, la présence du prof s’écrit au hub (1 × PUT /presence/prof, le battement de connexion) — dit à la conscience : K15-test la compte-t-il ?
+  ok     39 · 1536×864 · 0 erreur JS
+  ok     30 · 1536×864 · l’heure se lance par la case (09:41)
+  ok     30 · 1536×864 · à T-5, la phrase de l’activité en cours, mot pour mot — « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » ; la ③ : « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. »
+  ok     30 · 1536×864 · sous la tête de la séquence, entière — {"sous":true,"entiere":true}
+  ok     30 · 1536×864 · l’heure avance au-delà du prévu : « tu dépasses · +n min » — « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » → « L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +3 min. »
+  ok     30 · 1536×864 · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence) — {"actif":"SELECT#f-ech","tete":false,"fin":true}
+  ok     30 · 1536×864 · le champ de l’étape 1 garde son focus — SELECT#f-ech → SELECT#f-ech
+  ok     30 · 1536×864 · en préparation (« ❄ Préparer le cahier »), la phrase reste sous la tête — {"bouton":true,"texte":"L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +3 min.","sous":true}
+  ok     30 · 1536×864 · après « Clore l’heure », plus de phrase
+  ok     30 · 1536×864 · en répétition, pas de phrase
+  ok     Z · 1536×864 · 0 erreur JS (30)
+  ok     51 3e · 1536×864 · hors mode test (le chemin de Paul)
+  ok     51 3e · 1536×864 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 3 DYLAN Bob » avec ses ","modale":{"v":true,"nom":"3 DYLAN Bob","niv":"3e"}}
+  ok     51 3e · 1536×864 · la classe est rangée sous sa clé simplifiée « 3_dylan_bob », nom « 3 DYLAN Bob », 4 élèves — {"nom":"3 DYLAN Bob","niveau":"3e","eleves":4}
+  ok     51 3e · 1536×864 · le menu relie les cases de « 3 DYLAN Bob » à la classe du site — {"menu":{"val":"3 DYLAN Bob"},"cases":["3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob"]}
+  ok     51 3e · 1536×864 · le chapitre se publie pour « 3 DYLAN Bob » depuis la page du niveau — {"pastille":true,"hub":{"3e_charles_de_gaulle":true,"classe_test":true,"3_dylan_bob":true}}
+  ok     51 3e · 1536×864 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 3 DYLAN Bob » — « Classe attendue : 3 DYLAN Bob · 10:07 – 11:02 »
+  ok     51 3e · 1536×864 · 13 · 51 · semaine du 2/11 : chaque case de « 3 DYLAN Bob » montre sa séance (« heure n/N ») — 3 avec séance, 0 sans, sur 3 · 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1/3
+  ok     51 3e · 1536×864 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 3 DYLAN Bob dans les temps Poésie et peinture au XIXe siè · 0/9
+  ok     51 3e · 1536×864 · l’heure se lance par la case de « 3 DYLAN Bob » (10:07-11:02) — {"case":true,"bouton":true,"lancee":true,"fenetre":"mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pi"}
+  ok     51 3e · 1536×864 · 13 · 51 · l’heure lancée a ses élèves (la participation) — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  info   51 3e · 1536×864 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 3e · 1536×864 · 13 · 51 · l’heure jouée, la fenêtre de sa case montre ses élèves — 4/4 · close true · « mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 1 activité. Close. Séance : Poésie et peinture : le »
+  ok     51 3e · 1536×864 · 0 erreur JS
+  ok     51 4e · 1536×864 · hors mode test (le chemin de Paul)
+  ok     51 4e · 1536×864 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 4 HUGO » avec ses 4 élè","modale":{"v":true,"nom":"4 HUGO","niv":"4e"}}
+  ok     51 4e · 1536×864 · la classe est rangée sous sa clé simplifiée « 4_hugo », nom « 4 HUGO », 4 élèves — {"nom":"4 HUGO","niveau":"4e","eleves":4}
+  ok     51 4e · 1536×864 · le menu relie les cases de « 4 HUGO » à la classe du site — {"menu":{"val":"4 HUGO"},"cases":["4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO"]}
+  ok     51 4e · 1536×864 · le chapitre se publie pour « 4 HUGO » depuis la page du niveau — {"pastille":true,"hub":{"4_hugo":true}}
+  ok     51 4e · 1536×864 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 4 HUGO » — « Classe attendue : 4 HUGO · 13:00 – 13:55 »
+  ok     51 4e · 1536×864 · 13 · 51 · semaine du 2/11 : chaque case de « 4 HUGO » montre sa séance (« heure n/N ») — 3 avec séance, 0 sans, sur 4 · 4 HUGO Poésie et peinture : le Romantisme en question heure 3/3
+  ok     51 4e · 1536×864 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 4 HUGO dans les temps Poésie et peinture au XIXe siè · 0/9 | 3 DYLAN Bob aucun chapitre publié
+  ok     51 4e · 1536×864 · l’heure se lance par la case de « 4 HUGO » (13:00-13:55) — {"case":true,"bouton":true,"lancee":true,"fenetre":"mardi 3 novembre · 13:00-13:55 ✕ 4 HUGO Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pilotag"}
+  ok     51 4e · 1536×864 · 13 · 51 · l’heure lancée a ses élèves (la participation) — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  info   51 4e · 1536×864 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 4e · 1536×864 · 13 · 51 · l’heure jouée, la fenêtre de sa case montre ses élèves — 4/4 · close true · « mardi 3 novembre · 13:00-13:55 ✕ 4 HUGO Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 1 activité. Close. Séance : Poésie et peinture : le Roma »
+  ok     51 4e · 1536×864 · 0 erreur JS
+  ok     50 · 1536×864 · 13 · 50 · sans la clé, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"cle":false,"titre":"📚 Construire un chapitre avec une IA","coller":true}
+  ok     49 · 1536×864 · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub — {"verifier":"Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte.","bouton":true,"confirmation":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romanti","titres":["Le chapitre neuf du banc E3"],"tous":2,"boites":[],"apres":"Chapitre créé — non publié. Il apparaît dans la liste.","ecr":["PUT /site/3e/chapitres/1"]}
+  ok     Z · 1536×864 · 0 erreur JS (49-50)
+
+══ 1707×743 ══
+  ok     39 · 1707×743 · en mode test, « 3 DYLAN BOB » se publie depuis la page du niveau (le geste existe)
+  ok     39 · 1707×743 · 13 · 39 · après la publication, l’emploi du temps montre les heures de « 3 DYLAN Bob » avec leur séance — avant 0 / après 4 cases avec séance (3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3 | 3 DYLAN Bob aucune séance prête · fil « langue »)
+  ok     39 · 1707×743 · 13 · 39 · dépublié, elles partent — 0 cases avec séance
+  ok     39 · 1707×743 · 13 · 39 · mode test : aucune écriture au hub
+  info   39 · 1707×743 · en mode test, la présence du prof s’écrit au hub (1 × PUT /presence/prof, le battement de connexion) — dit à la conscience : K15-test la compte-t-il ?
+  ok     39 · 1707×743 · 0 erreur JS
+  ok     30 · 1707×743 · l’heure se lance par la case (09:41)
+  ok     30 · 1707×743 · à T-5, la phrase de l’activité en cours, mot pour mot — « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » ; la ③ : « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. »
+  ok     30 · 1707×743 · sous la tête de la séquence, entière — {"sous":true,"entiere":true}
+  ok     30 · 1707×743 · l’heure avance au-delà du prévu : « tu dépasses · +n min » — « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » → « L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +3 min. »
+  ok     30 · 1707×743 · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence) — {"actif":"SELECT#f-ech","tete":false,"fin":true}
+  ok     30 · 1707×743 · le champ de l’étape 1 garde son focus — SELECT#f-ech → SELECT#f-ech
+  ok     30 · 1707×743 · en préparation (« ❄ Préparer le cahier »), la phrase reste sous la tête — {"bouton":true,"texte":"L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +3 min.","sous":true}
+  ok     30 · 1707×743 · après « Clore l’heure », plus de phrase
+  ok     30 · 1707×743 · en répétition, pas de phrase
+  ok     Z · 1707×743 · 0 erreur JS (30)
+  ok     51 3e · 1707×743 · hors mode test (le chemin de Paul)
+  ok     51 3e · 1707×743 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 3 DYLAN Bob » avec ses ","modale":{"v":true,"nom":"3 DYLAN Bob","niv":"3e"}}
+  ok     51 3e · 1707×743 · la classe est rangée sous sa clé simplifiée « 3_dylan_bob », nom « 3 DYLAN Bob », 4 élèves — {"nom":"3 DYLAN Bob","niveau":"3e","eleves":4}
+  ok     51 3e · 1707×743 · le menu relie les cases de « 3 DYLAN Bob » à la classe du site — {"menu":{"val":"3 DYLAN Bob"},"cases":["3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob"]}
+  ok     51 3e · 1707×743 · le chapitre se publie pour « 3 DYLAN Bob » depuis la page du niveau — {"pastille":true,"hub":{"3e_charles_de_gaulle":true,"classe_test":true,"3_dylan_bob":true}}
+  ok     51 3e · 1707×743 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 3 DYLAN Bob » — « Classe attendue : 3 DYLAN Bob · 10:07 – 11:02 »
+  ok     51 3e · 1707×743 · 13 · 51 · semaine du 2/11 : chaque case de « 3 DYLAN Bob » montre sa séance (« heure n/N ») — 3 avec séance, 0 sans, sur 3 · 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1/3
+  ok     51 3e · 1707×743 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 3 DYLAN Bob dans les temps Poésie et peinture au XIXe siè · 0/9
+  ok     51 3e · 1707×743 · l’heure se lance par la case de « 3 DYLAN Bob » (10:07-11:02) — {"case":true,"bouton":true,"lancee":true,"fenetre":"mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pi"}
+  ok     51 3e · 1707×743 · 13 · 51 · l’heure lancée a ses élèves (la participation) — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  info   51 3e · 1707×743 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 3e · 1707×743 · 13 · 51 · l’heure jouée, la fenêtre de sa case montre ses élèves — 4/4 · close true · « mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 1 activité. Close. Séance : Poésie et peinture : le »
+  ok     51 3e · 1707×743 · 0 erreur JS
+  ok     51 4e · 1707×743 · hors mode test (le chemin de Paul)
+  ok     51 4e · 1707×743 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 4 HUGO » avec ses 4 élè","modale":{"v":true,"nom":"4 HUGO","niv":"4e"}}
+  ok     51 4e · 1707×743 · la classe est rangée sous sa clé simplifiée « 4_hugo », nom « 4 HUGO », 4 élèves — {"nom":"4 HUGO","niveau":"4e","eleves":4}
+  ok     51 4e · 1707×743 · le menu relie les cases de « 4 HUGO » à la classe du site — {"menu":{"val":"4 HUGO"},"cases":["4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO"]}
+  ok     51 4e · 1707×743 · le chapitre se publie pour « 4 HUGO » depuis la page du niveau — {"pastille":true,"hub":{"4_hugo":true}}
+  ok     51 4e · 1707×743 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 4 HUGO » — « Classe attendue : 4 HUGO · 13:00 – 13:55 »
+  ok     51 4e · 1707×743 · 13 · 51 · semaine du 2/11 : chaque case de « 4 HUGO » montre sa séance (« heure n/N ») — 3 avec séance, 0 sans, sur 4 · 4 HUGO Poésie et peinture : le Romantisme en question heure 3/3
+  ok     51 4e · 1707×743 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 4 HUGO dans les temps Poésie et peinture au XIXe siè · 0/9 | 3 DYLAN Bob aucun chapitre publié
+  ok     51 4e · 1707×743 · l’heure se lance par la case de « 4 HUGO » (13:00-13:55) — {"case":true,"bouton":true,"lancee":true,"fenetre":"mardi 3 novembre · 13:00-13:55 ✕ 4 HUGO Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pilotag"}
+  ok     51 4e · 1707×743 · 13 · 51 · l’heure lancée a ses élèves (la participation) — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  info   51 4e · 1707×743 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 4e · 1707×743 · 13 · 51 · l’heure jouée, la fenêtre de sa case montre ses élèves — 4/4 · close true · « mardi 3 novembre · 13:00-13:55 ✕ 4 HUGO Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 1 activité. Close. Séance : Poésie et peinture : le Roma »
+  ok     51 4e · 1707×743 · 0 erreur JS
+  ok     50 · 1707×743 · 13 · 50 · sans la clé, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"cle":false,"titre":"📚 Construire un chapitre avec une IA","coller":true}
+  ok     49 · 1707×743 · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub — {"verifier":"Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte.","bouton":true,"confirmation":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romanti","titres":["Le chapitre neuf du banc E3"],"tous":2,"boites":[],"apres":"Chapitre créé — non publié. Il apparaît dans la liste.","ecr":["PUT /site/3e/chapitres/1"]}
+  ok     Z · 1707×743 · 0 erreur JS (49-50)
+
+══ 1920×1080 ══
+  ok     39 · 1920×1080 · en mode test, « 3 DYLAN BOB » se publie depuis la page du niveau (le geste existe)
+  ok     39 · 1920×1080 · 13 · 39 · après la publication, l’emploi du temps montre les heures de « 3 DYLAN Bob » avec leur séance — avant 0 / après 4 cases avec séance (3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3 | 3 DYLAN Bob aucune séance prête · fil « langue »)
+  ok     39 · 1920×1080 · 13 · 39 · dépublié, elles partent — 0 cases avec séance
+  ok     39 · 1920×1080 · 13 · 39 · mode test : aucune écriture au hub
+  info   39 · 1920×1080 · en mode test, la présence du prof s’écrit au hub (1 × PUT /presence/prof, le battement de connexion) — dit à la conscience : K15-test la compte-t-il ?
+  ok     39 · 1920×1080 · 0 erreur JS
+  ok     30 · 1920×1080 · l’heure se lance par la case (09:41)
+  ok     30 · 1920×1080 · à T-5, la phrase de l’activité en cours, mot pour mot — « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » ; la ③ : « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. »
+  ok     30 · 1920×1080 · sous la tête de la séquence, entière — {"sous":true,"entiere":true}
+  ok     30 · 1920×1080 · l’heure avance au-delà du prévu : « tu dépasses · +n min » — « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » → « L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +3 min. »
+  ok     30 · 1920×1080 · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence) — {"actif":"SELECT#f-ech","tete":false,"fin":true}
+  ok     30 · 1920×1080 · le champ de l’étape 1 garde son focus — SELECT#f-ech → SELECT#f-ech
+  ok     30 · 1920×1080 · en préparation (« ❄ Préparer le cahier »), la phrase reste sous la tête — {"bouton":true,"texte":"L'activité en cours : Diapo 1 — Analyse d'images : la routine, tu dépasses · +3 min.","sous":true}
+  ok     30 · 1920×1080 · après « Clore l’heure », plus de phrase
+  ok     30 · 1920×1080 · en répétition, pas de phrase
+  ok     Z · 1920×1080 · 0 erreur JS (30)
+  ok     51 3e · 1920×1080 · hors mode test (le chemin de Paul)
+  ok     51 3e · 1920×1080 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 3 DYLAN Bob » avec ses ","modale":{"v":true,"nom":"3 DYLAN Bob","niv":"3e"}}
+  ok     51 3e · 1920×1080 · la classe est rangée sous sa clé simplifiée « 3_dylan_bob », nom « 3 DYLAN Bob », 4 élèves — {"nom":"3 DYLAN Bob","niveau":"3e","eleves":4}
+  ok     51 3e · 1920×1080 · le menu relie les cases de « 3 DYLAN Bob » à la classe du site — {"menu":{"val":"3 DYLAN Bob"},"cases":["3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob","3 DYLAN Bob"]}
+  ok     51 3e · 1920×1080 · le chapitre se publie pour « 3 DYLAN Bob » depuis la page du niveau — {"pastille":true,"hub":{"3e_charles_de_gaulle":true,"classe_test":true,"3_dylan_bob":true}}
+  ok     51 3e · 1920×1080 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 3 DYLAN Bob » — « Classe attendue : 3 DYLAN Bob · 10:07 – 11:02 »
+  ok     51 3e · 1920×1080 · 13 · 51 · semaine du 2/11 : chaque case de « 3 DYLAN Bob » montre sa séance (« heure n/N ») — 3 avec séance, 0 sans, sur 3 · 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1/3
+  ok     51 3e · 1920×1080 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 3 DYLAN Bob dans les temps Poésie et peinture au XIXe siè · 0/9
+  ok     51 3e · 1920×1080 · l’heure se lance par la case de « 3 DYLAN Bob » (10:07-11:02) — {"case":true,"bouton":true,"lancee":true,"fenetre":"mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pi"}
+  ok     51 3e · 1920×1080 · 13 · 51 · l’heure lancée a ses élèves (la participation) — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  info   51 3e · 1920×1080 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 3e · 1920×1080 · 13 · 51 · l’heure jouée, la fenêtre de sa case montre ses élèves — 4/4 · close true · « mardi 3 novembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 1 activité. Close. Séance : Poésie et peinture : le »
+  ok     51 3e · 1920×1080 · 0 erreur JS
+  ok     51 4e · 1920×1080 · hors mode test (le chemin de Paul)
+  ok     51 4e · 1920×1080 · l’import de la liste propose « nouvelle classe » et ouvre « Nouvelle classe » au nom lu — {"bouton":"Valider l’import — créer « 4 HUGO » avec ses 4 élè","modale":{"v":true,"nom":"4 HUGO","niv":"4e"}}
+  ok     51 4e · 1920×1080 · la classe est rangée sous sa clé simplifiée « 4_hugo », nom « 4 HUGO », 4 élèves — {"nom":"4 HUGO","niveau":"4e","eleves":4}
+  ok     51 4e · 1920×1080 · le menu relie les cases de « 4 HUGO » à la classe du site — {"menu":{"val":"4 HUGO"},"cases":["4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO","4 HUGO"]}
+  ok     51 4e · 1920×1080 · le chapitre se publie pour « 4 HUGO » depuis la page du niveau — {"pastille":true,"hub":{"4_hugo":true}}
+  ok     51 4e · 1920×1080 · 13 · 51 · la page tableau sans cours dit « Classe attendue : 4 HUGO » — « Classe attendue : 4 HUGO · 13:00 – 13:55 »
+  ok     51 4e · 1920×1080 · 13 · 51 · semaine du 2/11 : chaque case de « 4 HUGO » montre sa séance (« heure n/N ») — 3 avec séance, 0 sans, sur 4 · 4 HUGO Poésie et peinture : le Romantisme en question heure 3/3
+  ok     51 4e · 1920×1080 · 13 · 51 · la carte montre le chapitre publié — 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè | 4 HUGO dans les temps Poésie et peinture au XIXe siè · 0/9 | 3 DYLAN Bob aucun chapitre publié
+  ok     51 4e · 1920×1080 · l’heure se lance par la case de « 4 HUGO » (13:00-13:55) — {"case":true,"bouton":true,"lancee":true,"fenetre":"mardi 3 novembre · 13:00-13:55 ✕ 4 HUGO Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pilotag"}
+  ok     51 4e · 1920×1080 · 13 · 51 · l’heure lancée a ses élèves (la participation) — ["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"]
+  info   51 4e · 1920×1080 · élèves visibles à l’écran de l’heure : 0/4
+  ok     51 4e · 1920×1080 · 13 · 51 · l’heure jouée, la fenêtre de sa case montre ses élèves — 4/4 · close true · « mardi 3 novembre · 13:00-13:55 ✕ 4 HUGO Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 1 activité. Close. Séance : Poésie et peinture : le Roma »
+  ok     51 4e · 1920×1080 · 0 erreur JS
+  ok     50 · 1920×1080 · 13 · 50 · sans la clé, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"cle":false,"titre":"📚 Construire un chapitre avec une IA","coller":true}
+  ok     49 · 1920×1080 · 13 · 49 · « Créer ce chapitre » : le titre du JSON tel quel au hub — {"verifier":"Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte.","bouton":true,"confirmation":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romanti","titres":["Le chapitre neuf du banc E3"],"tous":2,"boites":[],"apres":"Chapitre créé — non publié. Il apparaît dans la liste.","ecr":["PUT /site/3e/chapitres/1"]}
+  ok     Z · 1920×1080 · 0 erreur JS (49-50)
+
+BILAN banc-1228 : 168/168 vérifications · VERT

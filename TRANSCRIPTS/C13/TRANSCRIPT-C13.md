@@ -4525,7 +4525,7 @@ MEMO
 
 ---
 
-## Tour 236 — 27/10/2026 14:12 → 14:15
+## Tour 236 — 27/10/2026 14:12 → 14:13
 
 **Paul :** oui pour 561. et effectivement, un exemple pour le banc doit toujours etre réaliste
 
@@ -4539,5 +4539,30 @@ MEMO
 
 À tester : rien pour l'instant.
 
-27/10/2026 14:15
+27/10/2026 14:13
+MEMO
+
+
+---
+
+## Tour 237 — 27/10/2026 14:22 → 14:23
+
+**Paul :** *(capture du téléphone : `pieces/T237-01-paul-le-telephone-sur-l-adresse-du-tableau-l-horloge.jpg` — « MONSIEURJAIPASCOMPRIS 14:21 mardi 27 octobre 2026 »)* Tu as testé ce qu'affichait sur une autre machine l'adresse de la vue tableau ? 
+J'ai ça, sur mon téléphone. Est ce du au téléphone?
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 sur la Rédaction universelle · ouvert : 538, 553, 481, 458
+
+566. Ce n'est pas ton téléphone. C'est l'écran d'attente du tableau : le nom du site, l'heure, la date. Il reste là tant qu'aucune heure n'est lancée ; dès que tu lances une heure depuis l'emploi du temps, le tableau montre ce que voit la classe, et il suit quand tu avances.
+
+567. Il reste aussi sur l'horloge en mode test (rien ne part au site, donc l'autre appareil ne reçoit rien) et pendant une répétition dans l'Atelier.
+
+568. Non, je ne l'ai pas testé sur une autre machine réelle. Les bancs le testent sur un faux site, dans un deuxième navigateur : l'horloge d'attente, puis la diapo. Sur le vrai site et un autre appareil, je ne sais pas.
+
+À tester :
+- sur l'ordinateur, hors mode test, lance une heure depuis l'emploi du temps : ton téléphone, sur l'adresse du tableau, passe de l'horloge à la diapo ;
+- avance d'une diapo, dévoile une ligne : le téléphone suit.
+
+27/10/2026 14:23
 MEMO

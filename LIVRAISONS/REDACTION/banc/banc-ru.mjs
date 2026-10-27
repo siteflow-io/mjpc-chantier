@@ -338,8 +338,8 @@ else verif('RU8', false, 'la non-régression', 'la production redaction_dugain_v
   const avant = await pg.evaluate(() => Object.keys(window.__HUB.redactions));
   await pg.click('#ruListe .rp-ligne[data-id="sujet_mh2a1x_k3p9qz"] button[title^="Dupliquer"]'); await att(pg, 1500);
   const dup = await pg.evaluate(av => { const r = window.__HUB.redactions; const k = Object.keys(r).find(x => !av.includes(x)); return k ? { k, cfg: r[k].config, val: r[k].validations, copies: r[k].copies || null } : null; }, avant);
-  verif('RU16', dup && /^sujet_/.test(dup.k) && dup.k === dup.cfg.idInterne && dup.cfg.titre === 'Copie de Écrire une lettre de la Grande Guerre' && dup.cfg.classe === '3_franklin_aretha' && dup.val && Object.keys(dup.val).length === 2 && !dup.copies && dup.cfg.nomCourt === 'lettre-grande-guerre-3e-copie-2' && pg.__boites.some(b => /Rédaction dupliquée/.test(b)),
-    '« ⧉ » : un nouvel id interne, « Copie de … », la grille, l\'énoncé et les phrases déjà lues (2 validations), aucune copie d\'élève, un nom court neuf', JSON.stringify(dup && { k: dup.k, titre: dup.cfg.titre, nc: dup.cfg.nomCourt, val: Object.keys(dup.val || {}).length, copies: dup.copies }));
+  verif('RU16', dup && /^sujet_/.test(dup.k) && dup.k === dup.cfg.idInterne && dup.cfg.titre === 'Copie d’Écrire une lettre de la Grande Guerre' && dup.cfg.classe === '3_franklin_aretha' && dup.val && Object.keys(dup.val).length === 2 && !dup.copies && dup.cfg.nomCourt === 'lettre-grande-guerre-3e-copie-2' && pg.__boites.some(b => /Rédaction dupliquée/.test(b)),
+    '« ⧉ » : un nouvel id interne, « Copie d’Écrire … » (l\'élision), la grille, l\'énoncé et les phrases déjà lues (2 validations), aucune copie d\'élève, un nom court neuf', JSON.stringify(dup && { k: dup.k, titre: dup.cfg.titre, nc: dup.cfg.nomCourt, val: Object.keys(dup.val || {}).length, copies: dup.copies }));
   // ✏️ : la classe se change sans copie ; elle ne se change plus quand une copie est commencée
   await pg.click(`#ruListe .rp-ligne[data-id="${dup.k}"] button[title^="Changer le titre"]`); await att(pg, 300);
   await pg.selectOption('#ruCrClasse', '3_dylan_bob'); await pg.fill('#ruCrTitre', 'La lettre de la Grande Guerre — 3 DYLAN Bob'); await pg.click('#modalCrayon button:has-text("Enregistrer")'); await att(pg, 1200);
@@ -395,6 +395,23 @@ else verif('RU8', false, 'la non-régression', 'la production redaction_dugain_v
   await pg.click('#ruTestBascule'); await att(pg, 1500);
   verif('RU17', mt.ouvert && /sans rien envoyer au site/.test(mt.txt) && /test=1/.test(pg.url()) && await pg.evaluate(() => document.body.classList.contains('ru-test')), 'la carte « 🧪 Mode test » : « Ouvrir ▾ » dit ce qu\'il fait ; « Entrer en mode test » ouvre l\'app en mode test (le bandeau)', JSON.stringify(mt));
   verif('RU17', pg.__errs.length === 0, 'zéro erreur JS', JSON.stringify(pg.__errs)); await ctx.close(); }
+// ═════ RU17 · relance 19:12 : la grille visible à l'ouverture d'une copie ; le nom des compétences ; pas de « sujet non choisi » à une variante ═════
+for (const [w, h] of [[1366, 743], [1707, 743]]) { const ctx = await contexte(w, h, hubPanneau()); const pg = await page(ctx, '?mode=prof&id=sujet_mh2a1x_k3p9qz&classe=3_franklin_aretha'); await pret(pg); await att(pg, 400);
+  const cartes = await pg.evaluate(() => document.getElementById('gridEleves').innerText + (document.querySelectorAll('#gridEleves .eleve-sujet-tag').length ? ' [étiquette de sujet]' : ''));
+  await pg.evaluate(() => ouvrirCopie(eleveId(state.classe.find(n => /AUDEBERT/.test(n))))); await att(pg, 500);
+  const o = await pg.evaluate(() => { const r = document.getElementById('sujetRappel'), c = document.querySelector('#criteresContainer > *'); return { replie: r.classList.contains('replie'), hR: r.getBoundingClientRect().height, haut: c ? c.getBoundingClientRect().top : 9999, H: innerHeight, entier: /Les cinq architectures[\s\S]*entraînement 8, fait en classe/.test(document.getElementById('sujetTexte').textContent) }; });
+  if (w === 1707) await cap(pg, 'RU-17-copie-1707');
+  await pg.click('#sujetRappel'); await att(pg, 200); const deplie = await pg.evaluate(() => ({ replie: document.getElementById('sujetRappel').classList.contains('replie'), hR: document.getElementById('sujetRappel').getBoundingClientRect().height }));
+  verif('RU17', o.replie && o.hR < 60 && o.haut < o.H * 0.6 && o.entier && !deplie.replie && deplie.hR > 200,
+    w + ' × ' + h + ' : une copie ouverte — l\'énoncé replié en une ligne (« Sujet : … ▸ »), la grille se voit sans défiler ; un clic le déplie, entier', JSON.stringify({ o, deplie }));
+  verif('RU17', !/sujet non choisi|étiquette de sujet/i.test(cartes) && /AUDEBERT/.test(cartes), w + ' × ' + h + ' : la lettre (un seul sujet) — aucune carte d\'élève ne dit « sujet non choisi » ni le sujet (même AUDEBERT, commencée)', cartes.slice(0, 300));
+  if (w === 1707) { await pg.evaluate(() => ruOnglet('reglages')); await pg.waitForFunction(() => /Écrire|grammaire|vocabulaire/.test(document.getElementById('ruVue_reglages').innerText), null, { timeout: 5000 }).catch(() => {}); await att(pg, 200);
+    const r = await pg.evaluate(() => ({ ids: (document.body.innerText.match(/\b(c[1-4]|tr)-[a-z]+-\d\d\b/g) || []), col: [...document.querySelectorAll('#ruVue_reglages td:nth-child(4)')].map(t => t.textContent).filter(Boolean) }));
+    verif('RU17', r.ids.length === 0 && r.col.length > 0 && r.col.every(t => t.length > 12 && t !== '…'), 'Réglages : la colonne « Compétence » dit le nom de la compétence (le libellé de la taxonomie), jamais l\'identifiant', JSON.stringify(r).slice(0, 400)); }
+  verif('RU17', pg.__errs.length === 0, w + ' × ' + h + ' : zéro erreur JS', JSON.stringify(pg.__errs)); await ctx.close(); }
+{ const ctx = await contexte(1707, 743, hubPanneau()); const pg = await page(ctx, '?mode=prof&id=dugain&classe=3_franklin_aretha'); await pret(pg); await att(pg, 400);
+  const cartes = await pg.evaluate(() => ({ n: SUJET.variantes.length, t: document.getElementById('gridEleves').innerText }));
+  verif('RU17', cartes.n > 1 && /sujet non choisi/i.test(cartes.t), 'Dugain (deux sujets au choix) : « — Sujet non choisi — » reste sur une copie pas encore commencée', JSON.stringify({ n: cartes.n })); await ctx.close(); }
 
 // ═════ RU9 · les tailles : 1366, 1536, 1707 × 743, 1920 — rien ne déborde en largeur ═════
 for (const [w, h] of [[1366, 743], [1536, 743], [1707, 743], [1920, 1080]]) {

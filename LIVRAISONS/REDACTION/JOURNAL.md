@@ -163,3 +163,10 @@ Mesuré sur `redaction_dugain_v3.html` (production, 349 982 o, 6 205 lignes, JS 
 - Sorties du banc : `sorties/1846-27-10/` (banc.log). redaction.html md5 4360a65c3089977e8a02663d090ab4e5.
 
 **RU panneau fini (2d6570e42)** — 27/10 18:59 (Paris) · RU0-RU17 76 / 0, captures avant / après regardées.
+
+## Complément panneau — poussée P4 — 27/10 19:27 (Paris) · les quatre retouches de la relance 19:12 — **84 ok · 0 échec**
+- **Une copie ouverte** : l'énoncé est replié en une ligne (« Sujet : … ▸ », un clic le déplie, entier) ; à l'ouverture de chaque copie il se replie : la grille se voit sans défiler à 1366 × 743 et 1707 × 743. La fiche de l'élève garde l'énoncé entier (RU11 vert).
+- **Réglages** : la colonne « Compétence » dit le libellé de `/taxonomie` (« Exploiter les principales fonctions de l'écrit »…), jamais l'identifiant. Le rattachement attend toujours Paul (553).
+- **Les cartes des élèves** : un sujet à une variante (la lettre) — la carte ne dit rien du sujet (ni « sujet non choisi », ni le titre, même commencée) ; Dugain (deux sujets au choix) garde « — Sujet non choisi — ».
+- **⧉** : « Copie d’Écrire une lettre… » — l'élision devant une voyelle ou un h muet (une courte liste de h aspirés : « Copie de Héros »). Le modèle n'est pas touché.
+- Gardes : RU16 (« Copie d’… ») ; RU17 étendue (grille visible aux deux tailles, énoncé replié puis déplié entier, aucun identifiant de compétence à l'écran, pas d'étiquette de sujet à une variante, « Sujet non choisi » pour Dugain). Captures après refaites (1, 2, 6, 7) et regardées. Sorties `sorties/1918-27-10/`. redaction.html md5 f7c2c85e05468c7dd74d785eb9aa707c.

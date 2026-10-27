@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><title>AUDEBERT Elise — Rédaction brevet blanc</title>
+<style>
+body { font-family: 'EB Garamond', Georgia, serif; max-width: 760px; margin: 0 auto; padding: 24px 32px; color: #2b2520; background: #fdfbf7; line-height: 1.55; font-size: 12pt; }
+header { border-bottom: 2px solid #6b1a2a; padding-bottom: 12px; margin-bottom: 18px; }
+header h1 { margin: 0; color: #6b1a2a; font-size: 1.4em; font-variant: small-caps; letter-spacing: 1px; }
+header .meta { color: #888; font-size: 0.9em; font-style: italic; margin-top: 4px; }
+.sujet-rappel { background: #f5f1ea; border-left: 3px solid #d4b87a; padding: 10px 14px; margin-bottom: 20px; font-size: 0.92em; font-style: italic; color: #555; }
+.critere { margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px dotted #d6cfc1; }
+.critere:last-of-type { border-bottom: none; }
+.critere-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.critere-head h2 { color: #6b1a2a; font-size: 1.15em; margin: 0; font-variant: small-caps; letter-spacing: 0.7px; }
+.pts { background: #ede4d3; color: #6b1a2a; padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.95em; }
+.ind-block { border-left: 3px solid #c08a4a; padding: 6px 12px; margin: 8px 0; }
+.ind-libelle { font-weight: 600; margin-bottom: 4px; font-size: 0.95em; }
+.ind-niveau { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 0.78em; font-variant: small-caps; letter-spacing: 0.5px; margin-right: 6px; font-weight: 600; }
+.ind-desc { margin: 4px 0 0 0; text-align: justify; }
+.ind-non-eval { color: #aaa; font-size: 0.92em; }
+.commentaire-assemble { margin: 10px 0; }
+.comm-para { text-align: justify; margin: 0 0 10px 0; line-height: 1.6; text-indent: 1.5em; }
+.comm-para:first-child { text-indent: 0; }
+.comm-para strong { color: #6b1a2a; }
+.erreur-citation { color: #b8261c; font-weight: 600; text-decoration: underline wavy #b8261c; text-decoration-skip-ink: none; }
+.sous-comm-langue { font-size: 0.9em; color: #8a3a2a; font-style: italic; }
+.mention-compteur { font-size: 0.92em; color: #6b1a2a; background: #f5e9d3; padding: 1px 6px; border-radius: 3px; }
+.consigne { background: #ede4d3; border-left: 4px solid #6b1a2a; padding: 8px 12px; margin-top: 10px; font-size: 0.93em; line-height: 1.4; }
+.citation-bloc { background: #fdf6ec; border: 1px solid #d4b87a; border-radius: 6px; padding: 12px 16px; margin: 18px 0; }
+.citation-titre { font-size: 0.85em; color: #6b1a2a; font-variant: small-caps; letter-spacing: 0.7px; font-weight: 600; margin-bottom: 8px; }
+blockquote { background: white; border-left: 3px solid #c08a4a; padding: 6px 12px; margin: 0 0 6px 0; font-style: italic; font-size: 0.94em; color: #555; }
+.citation-remarque { margin: 0; padding: 2px 14px; font-size: 0.92em; color: #444; line-height: 1.45; }
+.bandeau-langue-dnb { background: #fff5f5; border: 1px solid #a23a3a; border-radius: 6px; padding: 12px 16px; margin: 18px 0; }
+.bandeau-langue-dnb h3 { margin: 0 0 6px 0; color: #6b1a2a; font-size: 1em; font-variant: small-caps; letter-spacing: 0.7px; }
+.bandeau-langue-dnb p { margin: 4px 0; font-size: 0.9em; }
+.meilleure-citation { background: #f7f2e7; border-left: 4px solid #c08a4a; padding: 14px 20px; margin: 22px 0; }
+.meilleure-citation-intro { margin: 0 0 8px 0; color: #6b1a2a; font-style: italic; font-size: 0.96em; }
+.meilleure-citation-bloc { margin: 0; padding: 6px 14px; font-style: italic; font-size: 1em; color: #3a2f24; border-left: 2px solid #c08a4a; background: rgba(255,255,255,0.5); }
+.meilleure-citation-comm { margin: 12px 0 0 0; padding: 0 4px; color: #4a3f34; font-size: 0.95em; line-height: 1.55; text-align: justify; }
+.non-evalues { margin: 16px 0; padding: 10px 14px; border-top: 1px dotted #d6cfc1; }
+.non-evalues p { margin: 0; color: #888; font-size: 0.88em; }
+.recap { background: #f5f1ea; border: 1px solid #d4b87a; border-radius: 6px; padding: 14px 18px; margin-top: 22px; }
+.recap h3 { margin: 0 0 8px 0; color: #6b1a2a; font-variant: small-caps; letter-spacing: 0.8px; }
+.recap table { width: 100%; border-collapse: collapse; }
+.recap td { padding: 3px 6px; font-size: 0.95em; }
+.recap td.val { text-align: right; font-weight: 600; color: #6b1a2a; }
+.recap .total { border-top: 2px solid #d4b87a; padding-top: 6px; font-size: 1.1em; }
+.autocorrection { margin-top: 24px; background: #f5f1ea; border: 2px dashed #6b1a2a; border-radius: 6px; padding: 14px 20px; }
+.autocorrection h3 { margin: 0 0 10px 0; color: #6b1a2a; font-variant: small-caps; letter-spacing: 0.8px; font-size: 1.05em; }
+.autocorrection ol { margin: 0; padding-left: 20px; font-size: 0.93em; line-height: 1.55; }
+.autocorrection li { margin-bottom: 6px; }
+@media print { body { background: white; } .critere { page-break-inside: avoid; } }
+</style></head><body>
+<header>
+  <h1>AUDEBERT Elise — Rédaction brevet blanc</h1>
+  <div class="meta">3 FRANKLIN Aretha · Sujet d'imagination · Brevet blanc</div>
+</header>
+<div class="sujet-rappel"><strong>Sujet :</strong><br>Brevet blanc 3e — La Chambre des officiers, Marc Dugain. Sujet d'imagination (suite du récit de Marguerite)</div>
+
+
+      <div class="critere">
+        <div class="critere-head">
+          <h2>Expression</h2>
+          <span class="pts">3.5 / 10</span>
+        </div>
+        <div class="commentaire-assemble"><p class="comm-para"><strong>Elise</strong>, tu écris correctement mais sans variété : la longueur de tes phrases reste constante. On le voit quand tu écris « Elle marchait. Il pleuvait. Elle avait froid. », où tout est sur le même tempo.</p><p class="comm-para">Qui plus est, ton vocabulaire est juste mais pauvre : tu emploies un mot courant là où un mot plus précis ferait l'affaire. Le récit reste plat.</p><p class="comm-para">Surtout, tu sembles ne pas avoir relu ta copie : les fautes sont nombreuses, y compris sur des mots simples. Une relecture aurait évité beaucoup d'erreurs. <span class="mention-compteur" title="Justification du niveau attribué au critère orthographe">Tu as fait 25 erreurs d'orthographe et de grammaire dans ta copie, ce qui correspond au niveau insuffisant.</span></p></div>
+        <div class="consigne">🎯 Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : te garder cinq à sept minutes de relecture finale ciblée, chercher des mots plus précis que « truc », « chose », « faire », et complexifier au moins une phrase par paragraphe.</div>
+      </div>
+    
+      <div class="critere">
+        <div class="critere-head">
+          <h2>Organisation et énonciation</h2>
+          <span class="pts">5 / 12</span>
+        </div>
+        <div class="commentaire-assemble"><p class="comm-para"><strong>Elise</strong>, ton récit progresse mais les transitions manquent : on passe d'un moment à un autre sans connecteurs (« d'abord », « puis », « plus tard »), et le lecteur sent les ruptures.</p><p class="comm-para">Qui plus est, ton système temporel tient en gros mais il y a deux ou trois ruptures qui font tousser la lecture, comme quand tu écris « Marguerite entra dans la salle et elle <span class="erreur-citation">voit</span> les blessés ». <span class="sous-comm-langue" title="Sous-commentaire ajouté automatiquement quand des erreurs ont été marquées dans la citation">Attention aussi à la langue dans ce passage.</span></p><p class="comm-para">D'ailleurs, ton devoir est un peu court : tu as bien tout ce qu'il faut mais chaque épisode est traité en deux ou trois phrases au lieu d'être développé.</p></div>
+        <div class="consigne">🎯 Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : veiller à ce que chaque paragraphe apporte une étape nouvelle, soigner ton ouverture et ta clôture, tenir la cohérence du pronom et du système temporel jusqu'au bout.</div>
+      </div>
+    
+      <div class="critere">
+        <div class="critere-head">
+          <h2>Invention</h2>
+          <span class="pts">8 / 18</span>
+        </div>
+        <div class="commentaire-assemble"><p class="comm-para"><strong>Elise</strong>, tu remobilises plusieurs éléments du texte (le front, le nom, l'époque) mais une dimension entière manque encore — soit le caractère de Marguerite, soit son histoire avant le récit, soit l'ambiance du roman. C'est cette dimension absente qui te maintient en Fragile : il ne s'agit pas de préciser ce qui est là, mais d'ajouter ce qui n'y est pas.</p><p class="comm-para">Qui plus est, tu décris le cadre mais en restant dans les clichés attendus : la boue, le froid, les rats, comme on le voit quand tu écris « il y avait de la boue partout et des rats dans la tranchée ». Les détails sont là, mais ils ne sont pas portés par tes sensations à toi.</p><p class="comm-para">Par ailleurs, tu inventes plusieurs péripéties, mais le départ vers le front arrive sans explication : on ne sait pas pourquoi Marguerite quitte l'hôpital.</p><p class="comm-para">De plus, tu donnes par moments accès à l'intériorité de Marguerite, mais c'est rare et trop court. Le récit retombe vite dans la pure action.</p></div>
+        <div class="consigne">🎯 Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : développer chaque épisode du récit avec des détails concrets, sensoriels, qui font voir la scène et entendre les pensées du personnage.</div>
+      </div>
+    
+
+
+
+
+      <div class="bandeau-langue-dnb">
+        <h3>⚠️ Important pour le DNB officiel</h3>
+        <p>Le critère d'orthographe-grammaire pèse pour 4 points sur cette évaluation, et tu as obtenu le niveau Insuffisant. Sur la copie officielle du DNB, ce niveau d'orthographe pourrait conduire le correcteur à déclasser ta copie, c'est-à-dire à abaisser la note d'ensemble malgré la qualité de tes idées. D'ici la fin de l'année, concentre ton énergie sur les fautes les plus simples à éviter : les terminaisons verbales, les accords sujet-verbe, les homophones grammaticaux. Une copie au contenu intéressant mérite une langue qui lui rend justice.</p>
+      </div>
+    
+
+
+
+<div class="recap">
+  <h3>Note finale</h3>
+  <table>
+    <tr><td>Expression</td><td class="val">3.5 / 10</td></tr><tr><td>Organisation et énonciation</td><td class="val">5 / 12</td></tr><tr><td>Invention</td><td class="val">8 / 18</td></tr>
+    <tr class="total"><td><strong>Total</strong></td><td class="val"><strong>16.5 / 40</strong></td></tr>
+  </table>
+</div>
+
+<div class="autocorrection">
+  <h3>À faire avec cette correction</h3>
+  <ol>
+    <li>Lis attentivement chaque appréciation et le passage à retravailler.</li>
+    <li>Sur le critère où tu as le moins de points, identifie au moins UNE chose concrète à améliorer pour la prochaine rédaction.</li>
+    <li>Recopie ci-dessous (ou au dos) les consignes 🎯 d'entraînement pour le brevet officiel, et entoure celle qui te paraît la plus urgente.</li>
+    <li>Conserve cette fiche : tu y reviendras avant la prochaine rédaction.</li>
+  </ol>
+</div>
+
+</body></html>

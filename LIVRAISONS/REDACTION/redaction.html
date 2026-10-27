@@ -1175,6 +1175,10 @@
   .rp-entete { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 56px 8px 24px; background: #fafaf9; }   /* à droite, la place du « ? » */
   .interro-header { padding-right: 56px !important; }
   #sujetTexte { white-space: pre-line; }
+  .sujet-rappel { cursor: pointer; display: flex; gap: 6px; align-items: baseline; }
+  .sujet-rappel #sujetTexte { flex: 1; min-width: 0; }
+  .sujet-rappel.replie #sujetTexte { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sujet-fleche { color: #2563eb; font-style: normal; flex: none; }
   .rp .dashboard h2 { color: #111827; }
   .rp-entete h1 { margin: 0; font-size: 1.6em; } .rp-sous-t { color: var(--rp-gris); } .rp-entete-a { display: flex; gap: 8px; }
   .rp-onglets { display: flex; gap: 4px; padding: 6px 24px 0; border-bottom: 1px solid var(--rp-trait); background: #fafaf9; }
@@ -1393,8 +1397,8 @@
 
 <!-- VUE CORRECTION CLASSIQUE -->
 <div class="correction-view hidden" id="correctionView">
-  <div class="sujet-rappel">
-    <strong>Sujet :</strong> <span id="sujetTexte">—</span>
+  <div class="sujet-rappel replie" id="sujetRappel" onclick="ruSujetBasculer()" title="Cliquer pour déplier ou replier l’énoncé">
+    <strong>Sujet :</strong> <span id="sujetTexte">—</span> <span class="sujet-fleche" id="sujetFleche">▸</span>
   </div>
   <div id="criteresContainer"></div>
 
@@ -2592,6 +2596,21 @@ function ruDemarrer() {
 const RU_SUJET_MSG_VIDE = "Colle d’abord la réponse de l’IA.";
 const RU_ID_OK = /^[a-z0-9][a-z0-9_-]{1,60}$/;
 let RU_VALID = {}, RU_VALID_COMMUNES = {};
+// ── les noms des compétences (le libellé de /taxonomie) : Paul ne voit jamais l'identifiant (relance 19:12) ──
+function ruLibellesTaxonomie(taxo) {
+  const m = {}; const t = taxo && taxo.competences; if (!t) return m;
+  Object.keys(t).forEach(k => { const grp = t[k]; (Array.isArray(grp) ? grp : Object.values(grp || {})).forEach(d => { if (!d) return; if (d.id && d.libelle) m[d.id] = d.libelle; (Array.isArray(d.items) ? d.items : Object.values(d.items || {})).forEach(i => { if (i && i.id && i.libelle) m[i.id] = i.libelle; }); }); });
+  return m;
+}
+function ruNomCompetence(id) { return (RU.taxoLib && RU.taxoLib[id]) || "…"; }
+// « Copie de … » / « Copie d'… » devant une voyelle ou un h muet
+const RU_H_ASPIRE = /^h(ache|aine|aïr|all|amac|ameau|anche|andicap|angar|ant|arcel|ardi|aricot|arpe|asard|âte|aut|auss|éros|érisson|ibou|iérarch|ockey|olland|omard|onte|ors|ublot|uit|url|utte)/i;
+function ruCopieDe(t) { const x = String(t).trim(); return /^[aeiouyàâäéèêëîïôöùûüœæ]/i.test(x) || (/^h/i.test(x) && !RU_H_ASPIRE.test(x)) ? "Copie d’" + x : "Copie de " + x; }
+function ruSujetBasculer(replier) {
+  const r = document.getElementById("sujetRappel"); if (!r) return;
+  const rep = replier === true ? true : !r.classList.contains("replie");
+  r.classList.toggle("replie", rep); document.getElementById("sujetFleche").textContent = rep ? "▸" : "▾";
+}
 // ── les identifiants de compétence de /taxonomie (R8) ──
 function ruIdsTaxonomie(taxo) {
   const ids = new Set(); const t = taxo && taxo.competences; if (!t) return ids;
@@ -2932,7 +2951,7 @@ function ruDupliquer(id) {
   const cfg = JSON.parse(JSON.stringify(n.config)); const maint = new Date().toISOString(); const nid = idSujet();
   const pris = new Set(Object.keys(RU.arbre).map(k => (RU.arbre[k].config || {}).nomCourt).filter(Boolean));
   let nc = (cfg.nomCourt || cfg.id || "redaction") + "-copie", i = 2; while (pris.has(nc)) nc = (cfg.nomCourt || cfg.id || "redaction") + "-copie-" + (i++);
-  Object.assign(cfg, { idInterne: nid, id: nid, nomCourt: nc, titre: "Copie de " + (cfg.titre || ""), creeLe: maint, modifieLe: maint });
+  Object.assign(cfg, { idInterne: nid, id: nid, nomCourt: nc, titre: ruCopieDe(cfg.titre || ""), creeLe: maint, modifieLe: maint });
   const copie = { config: cfg }; if (n.validations) copie.validations = JSON.parse(JSON.stringify(n.validations));
   ruEcrire(["redactions", nid], copie, "la rédaction dupliquée").then(i => {
     if (i.etat !== MJPC_ISSUE.ACCEPTEE) { alert("La duplication n’a pas pu s’écrire au site : rien n’a changé."); return; }
@@ -3007,10 +3026,11 @@ function ruRendreFiches() {
   ruMajBoutonsFiche();
 }
 function ruRendreReglages() {
+  if (!RU.taxoLib) { RU.taxoLib = {}; ruLire(["taxonomie"]).then(t => { RU.taxoLib = ruLibellesTaxonomie(t); ruRendreReglages(); }, () => {}); }
   document.getElementById("ruVue_reglages").innerHTML = `<div class="rp-carte"><h2>La grille du sujet</h2><p>Telle qu’elle se lit aujourd’hui. Ses phrases se relisent et se corrigent dans « Préparer le sujet » ; les poids et les seuils du compteur sont ceux du sujet créé.</p>
     <button onclick="location.href=ruAdresse({id:RU.id,vue:'preparer'})">✓ Préparer le sujet</button>` +
     (SUJET.variantes || []).map(v => `<h3>${SUJET.variantes.length > 1 ? escapeHtml(v.libelle || v.id) + " — " : ""}sur ${v.total}</h3><table class="rp-table"><thead><tr><th>Critère</th><th>Point</th><th>Poids</th><th>Compétence</th></tr></thead><tbody>` +
-      v.criteres.map(cr => cr.indicateurs.map((i, k) => `<tr><td>${k ? "" : escapeHtml(cr.titre) + " (" + cr.pts_max + ")"}</td><td>${escapeHtml(i.libelle)}</td><td>${i.poids}</td><td>${escapeHtml((i.competences || []).join(", "))}</td></tr>`).join("")).join("") + `</tbody></table>` +
+      v.criteres.map(cr => cr.indicateurs.map((i, k) => `<tr><td>${k ? "" : escapeHtml(cr.titre) + " (" + cr.pts_max + ")"}</td><td>${escapeHtml(i.libelle)}</td><td>${i.poids}</td><td>${escapeHtml((i.competences || []).map(ruNomCompetence).join(" · "))}</td></tr>`).join("")).join("") + `</tbody></table>` +
       (v.compteur ? `<p><b>Le compteur d’orthographe</b> (« ${escapeHtml(v.compteur.indicateur)} »${v.compteur.selon ? ", selon « " + escapeHtml(v.compteur.selon) + " »" : ""}) : ` + [3, 2, 1, 0].map(e => ECHELON_COULEUR[e].label + " → " + (v.compteur.seuils[e] || []).join(" / ")).join(" · ") + ` (jusqu’à combien d’erreurs : très satisfaisant / satisfaisant / fragile).</p>` : "")).join("") + `</div>`;
 }
 // ── 📸 Snapshot et 📤 Restaurer (le patron du modèle) ; Restaurer lit aussi une sauvegarde de l'ancienne app ──
@@ -4294,8 +4314,8 @@ function renderDashboard() {
                   : pct < 100 ? "#a4b87a"
                   : "#4a7a3a";
     const sujetClass = c.sujet || "";
-    const sujetTag = c.sujet ? libVariante(c.sujet, "etiquette")
-                   : "— Sujet non choisi —";
+    const sujetTag = (SUJET.variantes || []).length < 2 ? ""   // un sujet à une variante : rien à choisir, la carte n'en dit rien (relance 19:12)
+                   : c.sujet ? libVariante(c.sujet, "etiquette") : "— Sujet non choisi —";
     // L21d — Bouton "Bilan" accessible directement depuis le dashboard si la copie a des
     // données de télémétrie. Évite que Paul ouvre le mode interrogatif juste pour consulter
     // (ce qui relancerait le chrono et fausserait les métriques). stopPropagation pour ne pas
@@ -4310,7 +4330,7 @@ function renderDashboard() {
       <div class="eleve-card ${sujetClass}" onclick="ouvrirCopie('${id}')" style="position:relative;"
            title="Cliquer pour corriger la copie de ${escapeAttr(nom)}${c.sujet ? ' (sujet de ' + c.sujet + ' déjà choisi)' : ' — le sujet sera demandé au démarrage'}">
         ${boutonBilanCarte}
-        <div class="eleve-sujet-tag">${sujetTag}</div>
+        ${sujetTag ? `<div class="eleve-sujet-tag">${sujetTag}</div>` : ""}
         ${(() => { const d = ruDesaccordCompteur(id); if (!d) return ""; return `<div class="ru-desaccord" onclick="event.stopPropagation()" title="Le compteur juge avec la longueur notée : les deux ne s'accordent plus. La fiche attend que tu tranches.">⚠ Orthographe : choisi « ${ECHELON_COULEUR[d.choisi].label} », le compteur dit « ${ECHELON_COULEUR[d.compteur].label} » (${d.n} erreurs)
           <span><button onclick="event.stopPropagation(); ruTrancherCompteur('${id}','garder')" title="Garder ton niveau : la fiche dira seulement « Tu as fait ${d.n} erreurs d'orthographe et de grammaire dans ta copie. »">Garder « ${ECHELON_COULEUR[d.choisi].label} »</button>
           <button onclick="event.stopPropagation(); ruTrancherCompteur('${id}','prendre')" title="Prendre le niveau du compteur : la fiche dira « … ce qui correspond au niveau ${ECHELON_COULEUR[d.compteur].label.toLowerCase()} »">Prendre « ${ECHELON_COULEUR[d.compteur].label} »</button></span></div>`; })()}
@@ -4335,7 +4355,7 @@ function ouvrirCopie(id) {
   document.getElementById("dashboard").classList.add("hidden");
   document.getElementById("correctionView").classList.remove("hidden");
   document.getElementById("bandeauEleve").classList.remove("hidden");
-  document.getElementById("sujetTexte").textContent = extraireSujet(state.sujet, copieFor(id).sujet);
+  document.getElementById("sujetTexte").textContent = extraireSujet(state.sujet, copieFor(id).sujet); ruSujetBasculer(true);   // à l'ouverture d'une copie : l'énoncé replié en une ligne, la grille se voit (relance 19:12)
   const c = copieFor(id);
   if (!c.sujet) {
     ouvrirInterrogatif();

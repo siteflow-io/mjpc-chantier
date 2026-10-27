@@ -5030,3 +5030,25 @@ MEMO
 
 27/10/2026 18:12
 MEMO
+
+
+---
+
+## Tour 253 — 27/10/2026 18:25 → 18:27
+
+**Paul :** 635. C'est à dire? 636. Non c'est le seul endroit où c'est m.meney
+
+**Claude :**
+
+À jouer : la Rédaction universelle (611) · en cours chez les exécutants : E4 le panneau commun (627), E3 l'accès depuis le site puis la mesure du bilan (629) · ouvert : 641, 638, 632, 634, 615, 604, 538, 553, 586, 481, 458
+
+640. 635, concrètement : les « Notions travaillées » d'une diapo viennent de ta taxonomie. Dans « Le texte et ses formes », il y a les genres, l'énonciation, la construction du récit, les registres, les figures de style, l'argumentation, l'analyse de l'image ; aucune famille pour les mouvements. Une diapo sur le Romantisme ne peut donc déclarer aucune notion juste : c'est ce que les notes du bilan de la séance 1 signalent.
+
+641. Je propose une famille neuve dans « Le texte et ses formes » : « Les mouvements littéraires et artistiques », une notion par mouvement (le romantisme, le Parnasse, le symbolisme, le réalisme et le naturalisme, le surréalisme). Chaque notion a, comme les autres, son nom pour toi, sa phrase pour l'élève, un exemple et ses niveaux : je te les écris, tu les valides mot pour mot, puisque l'élève lit sa phrase. Oui ?
+
+642. 636 : noté. « M. Meney » reste dans le récit, et seulement là ; partout ailleurs, dans un texte vu par l'élève, c'est « moi ». C'est écrit dans le prompt 1.0, avec l'image seule sur sa diapo (631) ; il part avec l'Atelier.
+
+À tester : le 611, toujours.
+
+27/10/2026 18:27
+MEMO

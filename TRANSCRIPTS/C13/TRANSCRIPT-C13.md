@@ -5034,7 +5034,7 @@ MEMO
 
 ---
 
-## Tour 253 — 27/10/2026 18:25 → 18:27
+## Tour 253 — 27/10/2026 18:25 → 18:26
 
 **Paul :** 635. C'est à dire? 636. Non c'est le seul endroit où c'est m.meney
 
@@ -5050,5 +5050,5 @@ MEMO
 
 À tester : le 611, toujours.
 
-27/10/2026 18:27
+27/10/2026 18:26
 MEMO

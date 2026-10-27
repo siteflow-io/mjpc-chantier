@@ -1706,6 +1706,10 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
     <div class="link-modal-row"><select class="link-modal-select" id="link-modal-dictee"><option value="">Chargement…</option></select><button class="link-modal-btn" onclick="linkModalApplyApp('dictee')">Lier</button></div>
   </div>
   <div class="link-modal-section">
+    <div class="link-modal-section-title">📋 Dictée manuscrite existante</div>
+    <div class="link-modal-row"><select class="link-modal-select" id="link-modal-correction_dictee" title="Les dictées de la Correction de dictée (leur titre, leur classe) : l’élève retrouvera sa dictée corrigée, toi la dictée dans ton panneau. Rien n’est lu des copies."><option value="">Chargement…</option></select><button class="link-modal-btn" onclick="linkModalApplyApp('correction_dictee')">Lier</button></div>
+  </div>
+  <div class="link-modal-section">
     <div class="link-modal-section-title">✍️ Réécriture existante</div>
     <div class="link-modal-row"><select class="link-modal-select" id="link-modal-reecriture"><option value="">Chargement…</option></select><button class="link-modal-btn" onclick="linkModalApplyApp('reecriture')">Lier</button></div>
   </div>
@@ -3852,6 +3856,7 @@ function openItem(level,chnum,snum,itemId){
   var src=item.source;
   if(!ref){alert('Item non li\u00e9. Utilise le bouton \ud83d\udd17 en mode admin pour associer une ressource.');return;}
   if(item.kind==='diaporama')return;   /* [LOT12] donnée historique : visible, muette */
+  if(item.kind==='correction_dictee'&&src==='firebase_app'){ _openCorrectionDicteeFromList(ref,item.title); return; }   /* E1 (§12.34-6, 13 · 73) */
   if(item.kind==='redaction'&&src==='firebase_app'){ if(redactionProf())window.open(redactionAdresse(ref,redactionClasseDuCours(level)),'_blank'); return; }   /* E1 (§12.32-3, -4) : le professeur ouvre le sujet (onglet neuf) ; l'élève, rien de nouveau — l'item reste visible et muet, la fiche part comme aujourd'hui */
   if(item.kind==='dictee' && src==='firebase_app'){if(typeof openDicteeById==='function')openDicteeById(ref);return;}
   if(item.kind==='reecriture' && src==='firebase_app'){if(typeof openReecriture==='function')openReecriture(ref,item.title);return;}
@@ -4287,6 +4292,7 @@ function openLinkModal(level,chnum,snum,itemId){
   loadAppList('dictee');
   loadAppList('reecriture');
   loadAppList('redaction');   /* E1 (§12.32-2) : les sujets de /redactions, en lecture seule */
+  loadAppList('correction_dictee');   /* E1 (§12.34-6) : les dictées de la Correction, en lecture seule (jamais les copies) */
   loadAppList('qcm');
   loadAppList('debat');
   loadAppList('analyse_logique');
@@ -4357,10 +4363,11 @@ function loadAppList(kind){
   else if(kind==='applaudimetre')url=FIREBASE_BASE+'/applaudimetre/seances.json';
   else if(kind==='worktrack')url=FIREBASE_BASE+'/plan_de_travail/chapitres.json';
   else if(kind==='redaction')url=FIREBASE_BASE+'/redactions.json?shallow=true';
+  else if(kind==='correction_dictee')url=FIREBASE_BASE+'/correction_dictee.json?shallow=true';
   /* E1 (§12.32-2) : /redactions porte les copies des élèves — on ne lit que les clés, puis la config de chaque sujet (jamais les copies) */
-  var lire=kind!=='redaction'?fetch(url).then(function(r){return r.json();}):fetch(url).then(function(r){return r.json();}).then(function(cles){
-    var ks=Object.keys(cles||{});
-    return Promise.all(ks.map(function(k){return fetch(FIREBASE_BASE+'/redactions/'+encodeURIComponent(k)+'/config.json').then(function(r){return r.json();}).catch(function(){return null;});})).then(function(cs){var o={};ks.forEach(function(k,i){o[k]={config:cs[i]||{}};});return o;});
+  var lire=(kind!=='redaction'&&kind!=='correction_dictee')?fetch(url).then(function(r){return r.json();}):fetch(url).then(function(r){return r.json();}).then(function(cles){
+    var ks=Object.keys(cles||{}).filter(function(k){return String(k).charAt(0)!=='_';});
+    return Promise.all(ks.map(function(k){return fetch(FIREBASE_BASE+'/'+(kind==='redaction'?'redactions':'correction_dictee')+'/'+encodeURIComponent(k)+'/config.json').then(function(r){return r.json();}).catch(function(){return null;});})).then(function(cs){var o={};ks.forEach(function(k,i){o[k]={config:cs[i]||{}};});return o;});
   });
   lire.catch(function(){return null;}).then(function(data){
     sel.innerHTML='<option value="">\u2014 Choisir \u2014</option>';
@@ -4369,6 +4376,7 @@ function loadAppList(kind){
         var cfg=(data[id]&&data[id].config)||data[id]||{};
         var title=cfg.title||cfg.titre||cfg.libelle||id;
         if(kind==='redaction')title=cfg.titre||cfg.nomCourt||id;   /* le titre, puis le nom court */
+        if(kind==='correction_dictee'){var _cl=cfg.classe||cfg.className||'';title=(cfg.title||cfg.titre||id)+(_cl?' \u2014 '+((typeof classesData!=='undefined'&&classesData&&classesData[_cl]&&classesData[_cl].nom)||_cl):'');}   /* E1 (§12.34-6) : le titre, la classe */
         if(kind==='worktrack'&&data[id]&&data[id].meta){var _m=data[id].meta;title=((_m.oeuvre&&_m.oeuvre.titre)||id)+(_m.niveau?(' \u2014 '+_m.niveau):'');}
         if(kind==='applaudimetre'&&cfg.demarreLe){try{title=(cfg.libelle||id)+' \u2014 '+new Date(cfg.demarreLe).toLocaleDateString('fr-FR');}catch(e){}}
         var opt=document.createElement('option');
@@ -5339,6 +5347,8 @@ function renderItemListByChapter(items,onclickFn,bgColor,icon){
   return html;
 }
 
+/* E1 (§12.34-6, 13 · 73) : une dictée de la Correction de dictée liée à une séance — l'élève, sa dictée corrigée (dans la visionneuse, comme « Mes dictées corrigées ») ; le professeur, la dictée dans son panneau (onglet neuf) */
+function _openCorrectionDicteeFromList(ref,titre){ var prof=false; try{ prof=!!(TRACK&&TRACK.eleve&&TRACK.eleve.is_prof)||document.body.classList.contains('admin-mode'); }catch(e){} if(prof){ window.open('correction_dictee.html?mode=prof&dictee='+encodeURIComponent(ref)+'&onglet=correction','_blank'); return; } openViewer(titre||'Mes dict\u00e9es corrig\u00e9es','correction_dictee.html?mode=eleve&dictee='+encodeURIComponent(ref)); }
 function _openDicteeFromList(ref){if(typeof openDicteeById==='function')openDicteeById(ref);}
 function _openReecritureFromList(ref){if(typeof openReecriture==='function')openReecriture(ref,'');}
 function _openAnalyseFromList(ref){ if(typeof openAnalyseById==='function')openAnalyseById(ref); else openViewer('Analyse logique','analyse_logique.html?mode=eleve&analyse='+encodeURIComponent(ref)); }   /* [C5-AR] */
@@ -5346,7 +5356,7 @@ function _openQcmFromList(ref){openViewer('\u00c9valuation QCM','evaluation-qcm.
 
 function gotoDictee(){var level=clickedLevel||currentLevel||'';var dictees=collectChapterItems(level,'dictee');showDicteeList(dictees,level);}   /* M8-IDENTITÉ (I2) : le site navigue dans le CONTENU — les corrections nominatives s'atteignent par l'identité, dans l'app */
 function openReecriture(id,title){openViewer(title||'Réécriture','reecriture.html?mode=eleve&reecriture='+encodeURIComponent(id));}
-function showDicteeList(dictees,level){var dicteeEl=document.getElementById('tab-dictee');hideAllTabs();dicteeEl.style.display='block';var btn=document.getElementById('tab-btn-dictee');if(btn)btn.classList.add('active');var html='';html+='<div class="section-label">Dict\u00e9es co\u00e9valu\u00e9es '+(level?'\u2014 '+level.toUpperCase():'')+'</div>';html+='<div style="padding:0 4px 10px;color:rgba(255,255,255,0.4);font-size:0.78rem;font-style:italic;">Ton voisin dicte, tu \u00e9cris. Puis vous \u00e9changez les r\u00f4les et corrigez ensemble.</div>';html+=renderItemListByChapter(dictees,'_openDicteeFromList','var(--level-accent)','\ud83d\udcdd');html+='<div class="section-label" style="margin-top:28px">Correction de ma dict\u00e9e manuscrite</div>';html+='<div style="padding:0 4px 10px;color:rgba(255,255,255,0.4);font-size:0.78rem;font-style:italic;">J\u2019ai corrig\u00e9 ta dict\u00e9e sur papier. Retrouve tes erreurs, tape la bonne orthographe et gagne jusqu\u2019\u00e0 5 points bonus.</div>';html+='<div class="chapters-list"><div class="chapter-card" onclick="openMesDictees()" style="cursor:pointer"><div class="chapter-header"><div class="chapter-num" style="background:#d4a017;color:#1a1030;">\ud83d\udccb</div><div class="chapter-info"><div class="chapter-title">Mes dict\u00e9es corrig\u00e9es</div><div style="font-size:0.78rem;opacity:0.5;margin-top:2px">Identifie-toi et retrouve tes corrections</div></div><div class="doc-action" style="font-size:0.85rem;">\u2192 Ouvrir</div></div></div></div>';dicteeEl.innerHTML=html;}
+function showDicteeList(dictees,level){var dicteeEl=document.getElementById('tab-dictee');hideAllTabs();dicteeEl.style.display='block';var btn=document.getElementById('tab-btn-dictee');if(btn)btn.classList.add('active');var html='';html+='<div class="section-label">Dict\u00e9es co\u00e9valu\u00e9es '+(level?'\u2014 '+level.toUpperCase():'')+'</div>';html+='<div style="padding:0 4px 10px;color:rgba(255,255,255,0.4);font-size:0.78rem;font-style:italic;">Ton voisin dicte, tu \u00e9cris. Puis vous \u00e9changez les r\u00f4les et corrigez ensemble.</div>';html+=renderItemListByChapter(dictees,'_openDicteeFromList','var(--level-accent)','\ud83d\udcdd');html+='<div class="section-label" style="margin-top:28px">Correction de ma dict\u00e9e manuscrite</div>';html+='<div style="padding:0 4px 10px;color:rgba(255,255,255,0.4);font-size:0.78rem;font-style:italic;">J\u2019ai corrig\u00e9 ta dict\u00e9e sur papier. Retrouve tes erreurs, tape la bonne orthographe et gagne jusqu\u2019\u00e0 5 points bonus.</div>';var _man=collectChapterItems(level,'correction_dictee');if(_man.length)html+=renderItemListByChapter(_man,'_openCorrectionDicteeFromList','#d4a017','\ud83d\udccb');   /* E1 (§12.34-6) : les dictées manuscrites liées aux séances, rangées par chapitre, avant la porte */html+='<div class="chapters-list"><div class="chapter-card" onclick="openMesDictees()" style="cursor:pointer"><div class="chapter-header"><div class="chapter-num" style="background:#d4a017;color:#1a1030;">\ud83d\udccb</div><div class="chapter-info"><div class="chapter-title">Mes dict\u00e9es corrig\u00e9es</div><div style="font-size:0.78rem;opacity:0.5;margin-top:2px">Identifie-toi et retrouve tes corrections</div></div><div class="doc-action" style="font-size:0.85rem;">\u2192 Ouvrir</div></div></div></div>';dicteeEl.innerHTML=html;}
 function openDicteeById(id){openViewer('Dictée coévaluée','dictee_universelle.html?dictee='+encodeURIComponent(id));}
 function openMesReecritures(){openViewer('Mes réécritures','reecriture.html?mode=eleve');}   /* porte de l'outil, patron openMesDictees */
 function openMesDictees(){openViewer('Mes dict\u00e9es corrig\u00e9es','correction_dictee.html?mode=eleve');}   /* M8-IDENTITÉ (I2) */

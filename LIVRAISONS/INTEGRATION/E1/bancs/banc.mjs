@@ -1502,6 +1502,54 @@ await B('A76', '§12.34 (5), dette 13 · 72 : dans un texte à trous, « […] �
   await o.ctx.close(); });
 
 
+/* ── A74 · §12.34 (3), 13 · 69 : le panneau de droite lit tout le chapitre — une notion travaillée en séance 0 et reprise en séance 1 n'est plus « travaillée nulle part » ni « rien ne la travaille avant » ── */
+await B('A74', '§12.34 (3), dette 13 · 69 : « Pour la classe » et « Le chapitre » jugent une notion sur toutes les séances jusqu\'à la diapo ouverte — travaillée en séance 0 (« l\'expression du moi lyrique »), reprise en séance 1 : aucune alerte', async () => {
+  const st = E.store(); const ch0 = st.site['3e'].chapitres[0] || st.site['3e'].chapitres['0']; const S0 = (ch0.seances[0] || ch0.seances['0']).deroule.ecrans, S1 = (ch0.seances[1] || ch0.seances['1']).deroule.ecrans; const N = 'litt-990';
+  S0[1].comp = (S0[1].comp || []).concat([N]); S1.forEach(e => { e.comp = (e.comp || []).filter(x => x !== N); e.remob = (e.remob || []).filter(x => x !== N); }); const iR = S1.findIndex((e, i) => i > 0 && e.role !== 'fin'); S1[iR].remob = (S1[iR].remob || []).concat([N]);
+  if (st.taxonomie && typeof st.taxonomie === 'object') { try { (st.taxonomie.notions || (st.taxonomie.notions = {}))[N] = { id: N, nom: 'l\'expression du moi lyrique', lib: 'l\'expression du moi lyrique' }; } catch (e) {} }
+  const o = await E.ouvrir(b, { w: 1707, h: 743, vue: 'atelier', hub: st }); const pg = o.pg; await sansVoile(pg);
+  await pg.evaluate(() => Array.from(document.querySelectorAll('#at-arbre .at-som-pli'))[1].click()); await pg.waitForTimeout(1500); await sansVoile(pg);
+  const r = await pg.evaluate(i => { S.di = i; dr_tout(); return new Promise(res => setTimeout(() => { const t = (document.getElementById('droite-atelier') || {}).innerText || ''; res({ si: S.si, di: S.di, remob: (ecran().remob || []), pourClasse: (t.split('POUR LA CLASSE')[1] || '').split('LE CHAPITRE')[0].replace(/\s+/g, ' ').slice(0, 400), chapitre: (t.split('LE CHAPITRE')[1] || '').replace(/\s+/g, ' ').slice(0, 220) }); }, 700)); }, iR);
+  const mot = /litt-990|moi lyrique/;
+  E.verif('A74', r.si === 1 && r.remob.includes(N) && !(/rien ne travaille avant|nulle part|aucune activité/.test(r.pourClasse) && mot.test(r.pourClasse)), 'séance 1, la diapo qui remobilise la notion de la séance 0 : « Pour la classe » ne la dit ni « travaillée nulle part » ni « rien ne la travaille avant »', JSON.stringify(r).slice(0, 600));
+  E.verif('A74', !/jamais travaillées/.test(r.chapitre), '« Le chapitre » ne la compte pas « jamais travaillée »', r.chapitre);
+  E.verif('A74', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
+
+/* ── A77 · §12.34 (6), 13 · 73 : une dictée de la Correction de dictée se lie — « Lier » propose « 📋 Dictée manuscrite existante » (le titre, la classe ; jamais les copies), l'item ouvre la dictée corrigée de l'élève, la dictée dans le panneau du professeur ; l'onglet « Dictée » la liste ── */
+const storeCorr = () => { const st = E.store(); st.correction_dictee = { dict_lac: { config: { title: 'Dictée n°3 — « Le Lac », Lamartine', classe: '3E Charles de Gaulle', text: 'Ô temps, suspends ton vol !' }, copy: { durand_alice: { texte: 'O temps suspend ton vol' } }, results: { durand_alice: { note: 14 } } } };
+  const ch0 = st.site['3e'].chapitres[0]; const se0 = ch0.seances[0]; se0.published = true; return st; };
+await B('A77', '§12.34 (6), dette 13 · 73 : la dictée manuscrite « Le Lac » liée à une séance — la modale (titre — classe, sans lire les copies), l\'item au hub, l\'élève sur sa dictée corrigée (correction_dictee.html?mode=eleve&dictee=…), le professeur sur la dictée de son panneau (?mode=prof&dictee=…&onglet=correction), l\'onglet « Dictée » la liste', async () => {
+  const st = storeCorr(); const o = await ouvrirProf(1707, 743, st); const pg = o.pg; await pg.evaluate(() => { document.body.classList.add('admin-mode'); window.__LUS = []; const f0 = window.fetch; window.fetch = function (u) { window.__LUS.push(String(u)); return f0.apply(this, arguments); }; });
+  await pg.evaluate(() => { clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); }); await pg.waitForTimeout(1500); await sansVoile(pg);
+  const it = await pg.evaluate(() => { const its = chapitresData['3e']['0'].seances['0'].items || {}; return Object.keys(its).find(x => its[x] && !its[x].ref) || Object.keys(its)[0]; });
+  await pg.evaluate(k => openLinkModal('3e', '0', '0', k), it); await pg.waitForTimeout(1500);
+  const opts = await pg.evaluate(() => Array.from(document.querySelectorAll('#link-modal-correction_dictee option')).map(o => [o.value, o.textContent]));
+  const e0 = await pg.evaluate(() => window.__ECR.length);
+  await pg.evaluate(() => { const s = document.getElementById('link-modal-correction_dictee'); s.value = 'dict_lac'; linkModalApplyApp('correction_dictee'); }); await pg.waitForTimeout(800);
+  await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).filter(x => x.offsetParent !== null && /^(Remplacer|Confirmer|Lier|Oui)/.test(x.textContent.trim()) && !/link-modal-btn/.test(x.className)); if (b[0]) b[0].click(); }); await pg.waitForTimeout(1500);
+  const r = await pg.evaluate(k => { const x = window.__HUB.site['3e'].chapitres[0].seances[0].items[k]; return x ? { source: x.source, kind: x.kind, ref: x.ref } : null; }, it);
+  const ecr = await pg.evaluate(e0 => window.__ECR.slice(e0), e0); const lus = await pg.evaluate(() => window.__LUS.filter(u => /correction_dictee/.test(u)).map(u => u.replace(/^.*firebasedatabase\.app/, '')));
+  E.verif('A77', opts.some(([v, t]) => v === 'dict_lac' && t === 'Dictée n°3 — « Le Lac », Lamartine — 3E Charles de Gaulle'), 'la modale propose « Dictée n°3 — « Le Lac », Lamartine — 3E Charles de Gaulle »', JSON.stringify(opts));
+  E.verif('A77', lus.length && lus.every(u => /shallow=true|\/config\.json/.test(u)) && !lus.some(u => /copy|results/.test(u)), 'lus : les clés de /correction_dictee et la config de chaque dictée — jamais les copies ni les résultats', JSON.stringify(lus));
+  E.verif('A77', r && r.source === 'firebase_app' && r.kind === 'correction_dictee' && r.ref === 'dict_lac' && !ecr.some(x => /\/correction_dictee/.test(x)), 'l\'item porte {kind: correction_dictee, ref: dict_lac} au hub ; rien n\'est écrit dans /correction_dictee', JSON.stringify({ r, ecr: ecr.slice(0, 3) }));
+  await pg.evaluate(() => { window.__OUV = []; window.open = u => { window.__OUV.push(String(u)); return null; }; }); await pg.evaluate(k => openItem('3e', '0', '0', k), it); await pg.waitForTimeout(400);
+  const prof = await pg.evaluate(() => window.__OUV.map(decodeURIComponent));
+  E.verif('A77', prof.length === 1 && prof[0] === 'correction_dictee.html?mode=prof&dictee=dict_lac&onglet=correction', 'le professeur : la dictée dans son panneau, onglet Correction (onglet neuf)', JSON.stringify(prof));
+  E.verif('A77', !o.errs.length, 'professeur : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined);
+  const snap = await pg.evaluate(() => { const h = JSON.parse(JSON.stringify(window.__HUB)); return h; }); await o.ctx.close();
+  /* l'élève de la 3E Charles de Gaulle, l'item publié pour sa classe */
+  const k2 = it; snap.site['3e'].chapitres[0].seances[0].items[k2].published = true;
+  const ctx = await b.newContext({ viewport: { width: 1707, height: 743 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r2 => r2.abort()); const p2 = await ctx.newPage(); const errs = []; p2.on('pageerror', e => errs.push(e.message)); p2.on('dialog', d => d.dismiss().catch(() => {}));
+  await p2.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await p2.addInitScript(E.fauxHub, snap); await p2.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await p2.waitForTimeout(2000);
+  await p2.evaluate(() => { TRACK.eleve = { nom: 'DURAND', prenom: 'Alice', niveau: '3e', classe: '3E Charles de Gaulle', is_prof: false }; document.body.classList.remove('admin-mode'); clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); }); await p2.waitForTimeout(1500); await sansVoile(p2);
+  await p2.evaluate(() => gotoDictee()); await p2.waitForTimeout(300);
+  const tab = await p2.evaluate(() => { const t = document.getElementById('tab-dictee'); return { carte: !!t.querySelector('[onclick*="_openCorrectionDicteeFromList(\'dict_lac\')"]'), porte: !!t.querySelector('[onclick*="openMesDictees"]') }; });
+  await p2.evaluate(k => openItem('3e', '0', '0', k), k2); await p2.waitForTimeout(600);
+  const el = await p2.evaluate(() => ({ viewer: document.getElementById('doc-viewer').classList.contains('visible'), src: (document.getElementById('doc-viewer-frame') || {}).getAttribute ? document.getElementById('doc-viewer-frame').getAttribute('src') : null }));
+  E.verif('A77', tab.carte && tab.porte, 'l\'élève : l\'onglet « Dictée » liste la dictée manuscrite (avant « Mes dictées corrigées »)', JSON.stringify(tab));
+  E.verif('A77', el.viewer && el.src === 'correction_dictee.html?mode=eleve&dictee=dict_lac', 'l\'élève : l\'item ouvre sa dictée corrigée (correction_dictee.html?mode=eleve&dictee=dict_lac)', JSON.stringify(el));
+  E.verif('A77', !errs.length, 'élève : aucune erreur JS', errs.slice(0, 2).join(' ; ') || undefined); await ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

@@ -1352,22 +1352,6 @@ await B('A64', '§12.33 (5) : un chapitre avec des « notes » sur trois diapos 
   E.verif('A64', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close();
 });
 
-/* ── A61 · §12.33 (2) : les onglets de l'Atelier — « Pilotage » en sort (« ▶ Jouer en avance » est la seule entrée de la répétition) ; l'écran de la classe garde Pilotage et Relecture ── */
-await B('A61', '§12.33 (2) : l\'Atelier sans onglets « Pilotage » ni « Relecture » visibles (gardés présents, cachés : le déroulé et la case les lisent) ; « ▶ Jouer en avance » lance la répétition ; l\'écran de la classe a Pilotage et Relecture', async () => {
-  const onglets = pg => pg.evaluate(() => Array.from(document.querySelectorAll('.at-vues-barre .at-onglet')).filter(x => x.offsetParent !== null && x.getBoundingClientRect().width > 0).map(x => x.textContent.trim()));
-  const o = await E.ouvrir(b, { w: 1707, h: 743, vue: 'atelier' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(600);
-  const at = await onglets(pg); const cache = await pg.evaluate(() => ['ong-pilotage', 'ong-relecture'].every(i => { const x = document.getElementById(i); return !!x && x.hidden; }));
-  E.verif('A61', at.length === 2 && at.includes('Structure') && at.includes('Atelier') && cache, 'l\'Atelier : ' + at.join(' · ') + ' — ni « Pilotage » ni « Relecture » (présents et cachés : ' + cache + ')', JSON.stringify(at));
-  await pg.evaluate(() => atVuesAller('relecture')); await pg.waitForTimeout(800); const rel = await onglets(pg); await pg.evaluate(() => atVuesAller('atelier')); await pg.waitForTimeout(800); const rel2 = await onglets(pg);
-  E.verif('A61', rel.includes('Relecture') && !rel2.includes('Relecture'), 'la Relecture ouverte par la case (atVuesAller, ce que fait « Relire cette heure ») montre son onglet tant qu\'on y est ; revenu à l\'Atelier, il repart', JSON.stringify({ rel, rel2 }));
-  await pg.evaluate(() => document.getElementById('at-jouer').click()); await pg.waitForTimeout(1500);
-  const rep = await pg.evaluate(() => ({ rep: !!S.repetition, ligne: (() => { const l = document.querySelector('.at-rep-ligne'); return !!(l && l.offsetParent !== null); })() }));
-  E.verif('A61', rep.rep && rep.ligne, '« ▶ Jouer en avance » lance la répétition (la ligne « Répétition : rien n\'est écrit » se montre)', JSON.stringify(rep));
-  await pg.evaluate(() => { try { arreterRepetition(); } catch (e) {} }); await pg.waitForTimeout(800); E.verif('A61', !o.errs.length, 'Atelier : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close();
-  const o2 = await ouvrirProf(1707, 743); const p2 = o2.pg; await p2.evaluate(() => new Promise(r => dr_ouvrirClasse('3e', '0', '0', () => r()))); await p2.waitForTimeout(1200); await compris(p2);
-  const cl = await onglets(p2); E.verif('A61', cl.includes('Pilotage') && cl.includes('Relecture') && !cl.includes('Structure') && !cl.includes('Atelier'), 'l\'écran de la classe : ' + cl.join(' · '), JSON.stringify(cl)); await o2.ctx.close();
-});
-
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

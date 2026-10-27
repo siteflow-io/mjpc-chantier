@@ -1,0 +1,11 @@
+  ÉCHEC  A88 · en répétition, les élèves sont les quatre de « CLASSE TEST » — {"rep":true,"eleves":["AUDEBERT Elise","AUGEREAU Gatien","BOIVIN Eden","BOURREAU Céleste","BRESSIN Titouan"],"n":29}
+  ok     A88 · la classe de l'heure répétée reste la sienne (son nom en haut) — 3E Charles de Gaulle
+  ok     A88 · les gestes d'élève restent : « ☐ Les élèves ont écrit le bilan » sur la diapo de bilan ; « Qui a participé » et « L'appel » dans « ⋯ » — {"di":7,"bcoche":true,"plus":["Chrono au tableau","Qui a participé (au tableau)","Réserve de la séance…","Documents de la séance…","Expliqué à l'oral…","Déclarer une notion imprévue…","L'appel : clic droit sur un nom de la liste"]}
+  ÉCHEC  A88 · la mise en commun : « DA » puis la réponse → DURAND Alice (un élève de la classe test) — {"attrib":["DESBOIS Auriane"]}
+  ok     A88 · aucun nom d'élève d'une vraie classe à l'écran (bilan, question) — [[],[]]
+  ok     A88 · rien d'écrit au hub pendant la répétition (hors le battement de présence du professeur, posé par le site) — {"ecritures":["PUT /presence/prof"]}
+  ÉCHEC  A88 · « ■ Arrêter » : les élèves de la classe reviennent (ceux de sa liste au hub) — {"rep":false,"slug":"3 DYLAN Bob","memes":true,"n":29}
+  ok     A88 · zéro erreur JS (répétition) — []
+  ok     A88 · témoin — l'heure lancée avec la classe : ses vrais élèves ; « ☐ Les élèves ont écrit le bilan » sur la diapo de bilan — {"lancee":true,"n":29,"bcoche":true}
+  ok     A88 · zéro erreur JS (heure lancée) — []
+— fin : 10 vérifications · 3 échec(s) — ROUGE · asm-1238-avant.html md5 79e6285a806cad7be026b7e6068a7902

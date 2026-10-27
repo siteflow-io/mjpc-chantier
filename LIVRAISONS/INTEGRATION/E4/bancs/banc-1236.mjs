@@ -1,7 +1,8 @@
 // E4 · LE BANC §12.36 PAR LE GESTE — la colonne de gauche de l'Atelier (contrat §12.36, relance du 27/10 23:12).
 // A84 : chaque élément de l'image T259-01 cliqué par le geste, ce qu'il fait écrit et vérifié (aucun élément sans effet) ; la hauteur de la colonne
 //       mesurée sur le chapitre 3e du faux hub.
-// A85 : la poignée — élargir, réduire, replier, rouvrir, retenue au rechargement, aux quatre tailles ; dans l'Atelier et en répétition.
+// A85 : les deux poignées — à gauche : élargir, réduire, replier, rouvrir, retenue au rechargement ; à droite : élargir, retenue au rechargement (Paul 23:22) ;
+//       aux quatre tailles ; dans l'Atelier et en répétition.
 // usage : node banc-1236.mjs <assemble/index.html> [dossier-de-sortie]   (MJPC_TAILLES, MJPC_CAPT=<dossier> MJPC_CAPT_SUFFIXE=avant|apres). Code 1 si un échec.
 // Le harnais (faux hub, entrée prof, ouverture de l'Atelier, répétition) est celui d'E3 (banc-1228.mjs), repris tel quel.
 // 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
@@ -151,12 +152,21 @@ if (fait('A85')) for (const [W, H] of TAILLES) { const { ctx, pg, errs } = await
   verif('A85', !e4.repliee && Math.abs(e4.larg - e2.larg) <= 2, W + ' × ' + H + ' : un clic sur le liseré la rouvre, à sa largeur d\'avant', JSON.stringify({ larg: [e2.larg, e4.larg] }));
   await pg.dblclick('#at-arbre-poignee'); await p(pg, 400); const e5 = await etat(pg); await pg.dblclick('#at-arbre-poignee'); await p(pg, 400); const e6 = await etat(pg);
   verif('A85', e5.repliee && !e6.repliee && Math.abs(e6.larg - e2.larg) <= 2, W + ' × ' + H + ' : double-clic : replie, puis rouvre', JSON.stringify({ r: [e5.repliee, e6.repliee] }));
+  /* la poignée de droite (Paul 23:22, « Oui 697 ») : tirer vers la gauche élargit la colonne de droite ; sa largeur est retenue au rechargement */
+  await pg.evaluate(() => { try { localStorage.removeItem('mjpc_atelier_colonne_droite'); } catch (e) {} });
+  const ld0 = await pg.evaluate(() => ({ ld: S.ld, rep: !!S.sansDroite, w: Math.round(document.getElementById('droite').getBoundingClientRect().width) }));
+  const bd = await pg.evaluate(() => { const g = document.getElementById('pd'); if (!g || !g.offsetParent) return null; const r = g.getBoundingClientRect(); return { x: r.x + r.width / 2, y: Math.min(r.y + r.height / 2, innerHeight / 2) }; });
+  if (bd) { await pg.mouse.move(bd.x, bd.y); await pg.mouse.down(); for (let k = 1; k <= 8; k++) { await pg.mouse.move(bd.x - 90 * k / 8, bd.y); await p(pg, 30); } await pg.mouse.up(); await p(pg, 600); }
+  const ld1 = await pg.evaluate(() => ({ ld: S.ld, rep: !!S.sansDroite, w: Math.round(document.getElementById('droite').getBoundingClientRect().width), garde: localStorage.getItem('mjpc_atelier_colonne_droite') }));
+  verif('A85', !!bd && ld1.ld >= ld0.ld + 70 && ld1.w >= ld0.w + 60 && !!ld1.garde, W + ' × ' + H + ' : la poignée de droite élargit la colonne de droite, et la largeur est rangée', JSON.stringify({ avant: ld0, apres: ld1 }));
   await pg.reload({ waitUntil: 'load' }); await p(pg, 1800); await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2000); await sansVoiles(pg); await ouvrirAtelier(pg); await p(pg, 1200); const e7 = await etat(pg);
   verif('A85', Math.abs(e7.larg - e2.larg) <= 2, W + ' × ' + H + ' : la largeur est retenue au rechargement (ce navigateur)', JSON.stringify({ larg: [e2.larg, e7.larg] }));
+  const ld2 = await pg.evaluate(() => ({ ld: S.ld, w: Math.round(document.getElementById('droite').getBoundingClientRect().width) }));
+  verif('A85', ld2.ld === ld1.ld && Math.abs(ld2.w - ld1.w) <= 2, W + ' × ' + H + ' : la largeur de la colonne de droite est retenue au rechargement', JSON.stringify({ avant: ld1.ld, apres: ld2.ld, w: [ld1.w, ld2.w] }));
   const rep = await entrerRepetition(pg); await p(pg, 1200); const e8 = await etat(pg); let e9 = null; if (rep && e8.poignee) { await tire(60); e9 = await etat(pg); }
   verif('A85', rep && e8.poignee && e9 && e9.larg >= e8.larg + 40, W + ' × ' + H + ' : en répétition, la colonne a la même poignée et la même largeur', JSON.stringify({ rep, poignee: e8.poignee, larg: [e8.larg, e9 && e9.larg] }));
   if (CAPT && W === 1707) await pg.screenshot({ path: path.join(CAPT, 'A85-1707-' + SUFF + '-repetition.png') });
-  await pg.evaluate(() => { try { localStorage.removeItem('mjpc_atelier_colonne_gauche'); } catch (e) {} });
+  await pg.evaluate(() => { try { localStorage.removeItem('mjpc_atelier_colonne_gauche'); localStorage.removeItem('mjpc_atelier_colonne_droite'); } catch (e) {} });
   verif('A85', errs.length === 0, W + ' × ' + H + ' : zéro erreur JS', JSON.stringify(errs.slice(0, 3))); await ctx.close(); }
 
 await nav.close();

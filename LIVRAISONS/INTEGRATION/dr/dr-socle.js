@@ -226,8 +226,12 @@ function dr_classeDuNiveau(){ const c = (typeof AT !== 'undefined' && AT && AT.e
 function dr_classe(){
   const c = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) || null; const slug = (c && c.classeSlug) || DR_MEM.classeSlug || dr_classeDuNiveau();   /* la classe du niveau du chapitre (E2 propose la sienne par dr_classeProposee, qui lit dr_classe) */
   const cl = (slug && typeof classesData !== 'undefined' && (classesData[slug] || (typeof edtCleClasse === 'function' && classesData[edtCleClasse(slug)]))) || {};   /* E1 (§12.31-1 bis) : un nom passé pour une clé se résout comme dans l'emploi du temps */
-  const eleves = (typeof extractEleves === 'function' && cl && Object.keys(cl).length) ? (extractEleves(cl) || []) : ((cl.eleves) || []);
-  if (slug !== DR_MEM.classeSlug || ELEVES.length !== eleves.length) { DR_MEM.classeSlug = slug; ELEVES.length = 0; eleves.forEach(n => ELEVES.push(n)); dr_initiales(); }
+  /* E4 (§12.38 (2), Paul 23:16) : en répétition, les gestes d'élève se jouent sur les élèves de « CLASSE TEST » (quatre élèves inventés), jamais sur ceux d'une vraie classe
+     (ni « _TEST », copié d'une classe réelle) ; la classe de l'heure répétée (son nom, sa réactivation, ses heures) reste celle-ci */
+  const rep = typeof S !== 'undefined' && S && S.repetition; const clEl = rep ? ((typeof classesData !== 'undefined' && classesData['CLASSE TEST']) || {}) : cl;
+  const eleves = (typeof extractEleves === 'function' && clEl && Object.keys(clEl).length) ? (extractEleves(clEl) || []) : ((clEl.eleves) || []);
+  const cleEl = (rep ? 'CLASSE TEST|' : '') + slug;
+  if (slug !== DR_MEM.classeSlug || cleEl !== DR_MEM.elevesDe || ELEVES.length !== eleves.length) { DR_MEM.classeSlug = slug; DR_MEM.elevesDe = cleEl; ELEVES.length = 0; eleves.forEach(n => ELEVES.push(n)); dr_initiales(); }
   const ed = cl.ed || {};
   return { slug: slug || '', nom: cl.nom || slug || '', eleves: ELEVES, ed, espaceED: ed.espace != null ? ed.espace : null, lienED: ed.lien || '', prochaines: (typeof edtProchainesDe === 'function' && slug) ? (edtProchainesDe(slug, 3) || []) : [] };
 }
@@ -993,13 +997,17 @@ dr_ecouteWin('resize', () => { dimensionner(); dr_tout(); });
 
 S.lg = 186;
  S.ld = 336;
+/* E4 (§12.36 (7), Paul 23:22 « Oui 697 ») : la colonne de droite retient sa largeur pour ce navigateur, comme celle de gauche (une clé chacune, sous try) */
+function dr_ldLire(){ try { const v = JSON.parse(localStorage.getItem('mjpc_atelier_colonne_droite') || 'null'); if (v && typeof v.l === 'number') { S.ld = Math.max(60, Math.min(1200, v.l)); S.sansDroite = !!v.rep; } } catch (e) {} }
+function dr_ldGarder(){ try { localStorage.setItem('mjpc_atelier_colonne_droite', JSON.stringify({ l: S.ld, rep: !!S.sansDroite })); } catch (e) {} }
+dr_ldLire();
 
 function poserColonnes(){ const c = $('corps'); c.style.setProperty('--lg', (S.sansGauche ? 0 : S.lg) + 'px'); c.style.setProperty('--ld', (S.sansDroite ? 0 : S.ld) + 'px'); c.classList.toggle('sans-gauche', !!S.sansGauche); c.classList.toggle('sans-droite', !!S.sansDroite); }
 
 function dr_tirer(poignee, cote){ let dep = null; poignee.addEventListener('mousedown', ev => { ev.preventDefault(); dep = { x: ev.clientX, lg: S.sansGauche ? 0 : S.lg, ld: S.sansDroite ? 0 : S.ld }; poignee.classList.add('tire'); document.body.style.cursor = 'col-resize'; });
   dr_ecouteDoc('mousemove', ev => { if (!dep) return; const max = Math.floor(innerWidth * 0.45); if (cote === 'g') { const l = Math.max(0, Math.min(max, dep.lg + (ev.clientX - dep.x))); S.sansGauche = l < 60; if (!S.sansGauche) S.lg = l; } else { const l = Math.max(0, Math.min(max, dep.ld - (ev.clientX - dep.x))); S.sansDroite = l < 60; if (!S.sansDroite) S.ld = l; } poserColonnes(); dimensionner(); });
-  dr_ecouteDoc('mouseup', () => { if (!dep) return; /* repliée par le geste : elle rouvrira à sa largeur d'avant le geste */ if (cote === 'g' && S.sansGauche && dep.lg >= 60) S.lg = dep.lg; if (cote === 'd' && S.sansDroite && dep.ld >= 60) S.ld = dep.ld; dep = null; poignee.classList.remove('tire'); document.body.style.cursor = ''; dr_tout(); });
-  poignee.addEventListener('dblclick', () => { if (cote === 'g') S.sansGauche = !S.sansGauche; else S.sansDroite = !S.sansDroite; poserColonnes(); dr_tout(); }); }
+  dr_ecouteDoc('mouseup', () => { if (!dep) return; /* repliée par le geste : elle rouvrira à sa largeur d'avant le geste */ if (cote === 'g' && S.sansGauche && dep.lg >= 60) S.lg = dep.lg; if (cote === 'd' && S.sansDroite && dep.ld >= 60) S.ld = dep.ld; if (cote === 'd') dr_ldGarder(); dep = null; poignee.classList.remove('tire'); document.body.style.cursor = ''; dr_tout(); });
+  poignee.addEventListener('dblclick', () => { if (cote === 'g') S.sansGauche = !S.sansGauche; else { S.sansDroite = !S.sansDroite; dr_ldGarder(); } poserColonnes(); dr_tout(); }); }
 
 dr_tirer($('pg'), 'g');
  dr_tirer($('pd'), 'd');

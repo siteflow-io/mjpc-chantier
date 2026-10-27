@@ -4745,3 +4745,34 @@ MEMO
 
 27/10/2026 15:46
 MEMO
+
+
+---
+
+## Tour 244 — 27/10/2026 15:47 → 15:53
+
+**Claude (15:47, sans message de Paul) :**
+
+Mon banc est vert sur l'Atelier tel qu'E1 l'a poussé, avec mes contrôles adaptés : 106 vérifications, 0 échec. E1 peut maintenant retirer les onglets. Rien de nouveau à décider pour toi : j'attends ton « promeus » pour la Rédaction universelle.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:47
+MEMO
+
+**Paul (15:51) :** Tu as vérifié que les copies et les sujets étaient bien des objets? Comme partout dans les autres app?
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 les objets et les mots de liaison, E1 et E3 l'Atelier · ouvert : 538, 553, 586, 481, 458
+
+594. Non, je ne l'avais pas vérifié. Mesuré maintenant : ce ne sont pas des objets. Une copie s'enregistre sans identité propre ni dates ; le sujet a son nom mais ni date de création ni date de modification. Dans la correction de dictée, chaque copie a son identité et ses dates. Dette 13 · 58 au registre.
+
+595. C'est ta règle, je la fais appliquer sans attendre : chaque copie aura son identité, née une fois et gardée à vie, l'élève, la classe, le sujet, sa date de création et de dernière modification ; chaque sujet, son identité et ses deux dates ; rien de cela ne se voit sur une fiche. E4 le fait avec la retouche des mots de liaison, en une seule poussée.
+
+596. La mise en ligne (593) attend donc cette poussée ; je te la repropose dès qu'elle est vérifiée.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:53
+MEMO

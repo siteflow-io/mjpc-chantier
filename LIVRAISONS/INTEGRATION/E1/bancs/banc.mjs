@@ -1368,6 +1368,71 @@ await B('A61', '§12.33 (2) : l\'Atelier sans onglets « Pilotage » ni « Relec
   const cl = await onglets(p2); E.verif('A61', cl.includes('Pilotage') && cl.includes('Relecture') && !cl.includes('Structure') && !cl.includes('Atelier'), 'l\'écran de la classe : ' + cl.join(' · '), JSON.stringify(cl)); await o2.ctx.close();
 });
 
+/* ── A65-A68 · §12.32 : la Rédaction universelle depuis le site (R7) — le menu des outils, la modale LIER (kind « redaction »), l'onglet « ✏️ Rédaction » du professeur, l'élève inchangé ── */
+const storeRedac = () => { const st = E.store(); st.redactions = {
+    dugain: { config: { id: 'dugain', format: 'mjpc-redaction-sujet/1', titre: 'Brevet blanc 3e — La Chambre des officiers (Marc Dugain)', nomCourt: 'dugain', niveau: '3e', total: 40, variantes: [] }, copies: { '3E Charles de Gaulle': { durand_alice: { texte: 'Marguerite ouvrit la porte…', nom: 'DURAND Alice' } } } },
+    'imagination-4e': { config: { id: 'imagination-4e', format: 'mjpc-redaction-sujet/1', nomCourt: 'imagination-4e', niveau: '4e', variantes: [] } } };
+  return st; };   /* un sujet réel (celui d'E4, dugain.json) avec une copie, et un sujet sans titre (son nom court) */
+const popup = async (o, f) => { await o.pg.evaluate(() => { window.__OUV = []; if (!window.__ouvOrig) { window.__ouvOrig = window.open; window.open = (u, t) => { window.__OUV.push(String(u)); return null; }; } }); await f(); await o.pg.waitForTimeout(200); const l = await o.pg.evaluate(() => window.__OUV.slice()); return l.length === 1 ? decodeURIComponent(l[0]) : (l.length ? 'plusieurs : ' + l.join(' | ') : null); };   /* l'onglet neuf : l'adresse passée à window.open (redaction.html n'est pas dans le dossier du banc) */
+await B('A65', '§12.32 (1) : le menu des outils a « ✏️ Rédactions — panneau prof », qui ouvre redaction.html?mode=prof (+ &test=1 en mode test) dans un nouvel onglet', async () => {
+  const o = await ouvrirProf(1707, 743, storeRedac()); const pg = o.pg; await pg.evaluate(() => { document.body.classList.add('admin-mode'); });
+  const ligne = await pg.evaluate(() => { const a = Array.from(document.querySelectorAll('#admin-tools-menu a')).find(x => /Rédactions — panneau prof/.test(x.textContent)); return a ? { txt: a.textContent.trim(), title: !!a.title } : null; });
+  await pg.evaluate(() => toggleAdminTools()); await pg.waitForTimeout(300);
+  const u1 = await popup(o, () => pg.evaluate(() => Array.from(document.querySelectorAll('#admin-tools-menu a')).find(x => /Rédactions/.test(x.textContent)).click()));
+  await pg.evaluate(() => m8BasculerModeTest()); await pg.waitForTimeout(400); await pg.evaluate(() => toggleAdminTools()); await pg.waitForTimeout(300);
+  const u2 = await popup(o, () => pg.evaluate(() => Array.from(document.querySelectorAll('#admin-tools-menu a')).find(x => /Rédactions/.test(x.textContent)).click()));
+  E.verif('A65', ligne && ligne.title && u1 === 'redaction.html?mode=prof' && u2 === 'redaction.html?mode=prof&test=1', 'la ligne « ' + (ligne && ligne.txt) + ' » (infobulle) ; ouvre ' + u1 + ' ; en mode test ' + u2, JSON.stringify({ ligne, u1, u2 }));
+  E.verif('A65', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
+
+await B('A66', '§12.32 (2) : la modale LIER propose les sujets de /redactions (le titre, puis le nom court), sans lire les copies ; « Lier » pose {kind: redaction, ref: <clé>} ; rien n\'est écrit dans /redactions', async () => {
+  const o = await ouvrirProf(1707, 743, storeRedac()); const pg = o.pg; await pg.evaluate(() => { document.body.classList.add('admin-mode'); window.__LUS = []; const f0 = window.fetch; window.fetch = function (u, x) { window.__LUS.push(String(u)); return f0.apply(this, arguments); }; });
+  await pg.evaluate(() => { clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); }); await pg.waitForTimeout(1500); await sansVoile(pg);
+  const it = await pg.evaluate(() => { const its = chapitresData['3e']['0'].seances['0'].items || {}; const k = Object.keys(its).find(x => its[x] && !its[x].ref) || Object.keys(its)[0]; return k; });
+  await pg.evaluate(k => openLinkModal('3e', '0', '0', k), it); await pg.waitForTimeout(1500);
+  const opts = await pg.evaluate(() => Array.from(document.querySelectorAll('#link-modal-redaction option')).map(o => [o.value, o.textContent]));
+  const e0 = await pg.evaluate(() => window.__ECR.length);
+  await pg.evaluate(() => { const s = document.getElementById('link-modal-redaction'); s.value = 'dugain'; linkModalApplyApp('redaction'); }); await pg.waitForTimeout(800);
+  await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).filter(x => x.offsetParent !== null && /^(Remplacer|Confirmer|Lier|Oui)/.test(x.textContent.trim()) && !/link-modal-btn/.test(x.className)); if (b[0]) b[0].click(); }); await pg.waitForTimeout(1500);
+  const r = await pg.evaluate(k => { const x = window.__HUB.site['3e'].chapitres[0].seances[0].items[k]; return x ? { source: x.source, kind: x.kind, ref: x.ref } : null; }, it);
+  const ecr = await pg.evaluate(e0 => window.__ECR.slice(e0), e0); const lus = await pg.evaluate(() => window.__LUS.filter(u => /redactions/.test(u)));
+  E.verif('A66', JSON.stringify(opts.slice(1)) === JSON.stringify([['dugain', 'Brevet blanc 3e — La Chambre des officiers (Marc Dugain)'], ['imagination-4e', 'imagination-4e']]), 'la modale propose les deux sujets : le titre, sinon le nom court', JSON.stringify(opts));
+  E.verif('A66', lus.length && lus.every(u => /shallow=true|\/config\.json/.test(u)) && !lus.some(u => /copies/.test(u)), 'lus : les clés de /redactions (shallow) et la config de chaque sujet — jamais les copies', JSON.stringify(lus.map(u => u.replace(/^.*firebasedatabase\.app/, ''))));
+  E.verif('A66', r && r.source === 'firebase_app' && r.kind === 'redaction' && r.ref === 'dugain' && !ecr.some(x => /\/redactions/.test(x)), '« Lier » : l\'item de la séance porte {kind: redaction, ref: dugain} au hub ; aucune écriture dans /redactions', JSON.stringify({ r, ecr: ecr.slice(0, 4) }));
+  E.verif('A66', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
+
+await B('A67', '§12.32 (3) : l\'onglet « ✏️ Rédaction » du professeur — sans sujet rattaché, il le dit et donne la liste ; avec, la carte du sujet (rangée par chapitre) ouvre redaction.html?mode=prof&id=<sujet>, &classe=<clé> quand la lentille nomme une classe, &test=1 en mode test', async () => {
+  const st = storeRedac(); const o = await ouvrirProf(1707, 743, st); const pg = o.pg; await pg.evaluate(() => { document.body.classList.add('admin-mode'); });
+  await pg.evaluate(() => { clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); }); await pg.waitForTimeout(1500); await sansVoile(pg);
+  await pg.evaluate(() => gotoRedaction()); await pg.waitForTimeout(300);
+  const vide = await pg.evaluate(() => { const t = document.getElementById('tab-redaction'); return { txt: t.innerText.replace(/\s+/g, ' '), cartes: t.querySelectorAll('[onclick*="_openRedactionFromList"]').length, porte: !!t.querySelector('[onclick*="openAdminTool(\'redaction\')"]') }; });
+  E.verif('A67', vide.cartes === 0 && vide.porte && /Aucun sujet n’est rattaché/.test(vide.txt) && !/pas encore branché/.test(vide.txt), 'sans sujet rattaché : l\'onglet le dit et donne la porte (la liste des sujets)', vide.txt.slice(0, 160));
+  const it = await pg.evaluate(() => { const its = chapitresData['3e']['0'].seances['0'].items || {}; return Object.keys(its)[0]; });
+  await pg.evaluate(k => { const x = chapitresData['3e']['0'].seances['0'].items[k]; x.source = 'firebase_app'; x.kind = 'redaction'; x.ref = 'dugain'; }, it);   /* le rattachement de A66, posé directement */
+  await pg.evaluate(() => gotoRedaction()); await pg.waitForTimeout(300);
+  const carte = await pg.evaluate(() => { const t = document.getElementById('tab-redaction'); return { n: t.querySelectorAll('[onclick*="_openRedactionFromList(\'dugain\')"]').length, chap: /POÉSIE|Poésie/i.test(t.innerText) }; });   /* la séance 0 du faux hub n'est pas publiée : le prof voit quand même son sujet */
+  const clic = () => pg.evaluate(() => document.querySelector('#tab-redaction [onclick*="_openRedactionFromList"]').click());
+  const u1 = await popup(o, clic);
+  await pg.evaluate(() => setAdminLens('3E Charles de Gaulle')); await pg.waitForTimeout(800); await pg.evaluate(() => gotoRedaction()); await pg.waitForTimeout(300); const u2 = await popup(o, clic);
+  await pg.evaluate(() => m8BasculerModeTest()); await pg.waitForTimeout(400); await pg.evaluate(() => gotoRedaction()); await pg.waitForTimeout(300); const u3 = await popup(o, clic);
+  const arbre = await popup(o, () => pg.evaluate(k => openItem('3e', '0', '0', k), it));
+  E.verif('A67', carte.n === 1 && carte.chap, 'avec un sujet rattaché : une carte, rangée sous son chapitre', JSON.stringify(carte));
+  E.verif('A67', u1 === 'redaction.html?mode=prof&id=dugain' && u2 === 'redaction.html?mode=prof&id=dugain&classe=3E Charles de Gaulle' && u3 === 'redaction.html?mode=prof&id=dugain&classe=3E Charles de Gaulle&test=1', 'le clic ouvre ' + u1 + ' ; la lentille « 3E Charles de Gaulle » → ' + u2 + ' ; en mode test → ' + u3, JSON.stringify({ u1, u2, u3 }));
+  E.verif('A67', arbre === 'redaction.html?mode=prof&id=dugain&classe=3E Charles de Gaulle&test=1', 'l\'item de la séance, cliqué dans l\'arbre par le professeur, ouvre la même adresse (plus « Type d\'item non supporté »)', JSON.stringify(arbre));
+  E.verif('A67', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte', (o.errs.concat(o.boites)).slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
+
+await B('A68', '§12.32 (4) : côté élève rien ne change — l\'onglet « ✏️ Rédaction » reste celui d\'aujourd\'hui, l\'item « redaction » de la séance ne lui ouvre rien (ni l\'app, ni une boîte)', async () => {
+  const st = storeRedac(); const ch0 = st.site['3e'].chapitres[0]; const se0 = ch0.seances[0]; const k = Object.keys(se0.items || {})[0]; Object.assign(se0.items[k], { source: 'firebase_app', kind: 'redaction', ref: 'dugain' });
+  const ctx = await b.newContext({ viewport: { width: 1707, height: 743 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); const pg = await ctx.newPage(); const errs = [], boites = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => { boites.push(d.message()); d.dismiss().catch(() => {}); });
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, st); await pg.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(2000);
+  await pg.evaluate(() => { TRACK.eleve = { nom: 'DURAND', prenom: 'Alice', niveau: '3e', classe: '3E Charles de Gaulle', is_prof: false }; document.body.classList.remove('admin-mode'); clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); }); await pg.waitForTimeout(1500); await sansVoile(pg);
+  await pg.evaluate(() => gotoRedaction()); await pg.waitForTimeout(300);
+  const t = await pg.evaluate(() => document.getElementById('tab-redaction').innerText.replace(/\s+/g, ' ').trim());
+  await pg.evaluate(() => { window.__OUV = []; window.open = u => { window.__OUV.push(String(u)); return null; }; }); await pg.evaluate(k => openItem('3e', '0', '0', k), k); await pg.waitForTimeout(500); const pop = (await pg.evaluate(() => window.__OUV.length)) > 0;
+  const viewer = await pg.evaluate(() => document.getElementById('doc-viewer').classList.contains('visible'));
+  E.verif('A68', /^\S* ?Cet outil ouvrira plus tard\.$/.test(t), 'l\'onglet de l\'élève : « ' + t + ' » (comme aujourd\'hui)', t);
+  E.verif('A68', !pop && !viewer && !boites.length, 'l\'item « redaction » cliqué par l\'élève : ni onglet, ni visionneuse, ni boîte', JSON.stringify({ pop: !!pop, viewer, boites }));
+  E.verif('A68', !errs.length, 'aucune erreur JS', errs.slice(0, 2).join(' ; ') || undefined); await ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

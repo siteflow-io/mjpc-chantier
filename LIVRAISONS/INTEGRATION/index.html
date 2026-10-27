@@ -1683,6 +1683,7 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
   <a href="#" onclick="openAdminTool('dictee');return false"><span class="atm-icon">📝</span> Dictées coévaluées — panneau prof</a>
   <a href="#" onclick="openAdminTool('correction');return false"><span class="atm-icon">📋</span> Correction dictée manuscrite — panneau prof</a>
   <a href="#" onclick="openAdminTool('reecriture');return false"><span class="atm-icon">✍️</span> Réécriture — panneau prof</a>
+  <a href="#" onclick="openAdminTool('redaction');return false" title="La Rédaction universelle : la liste de tes sujets (ouvrir, préparer, nouveau sujet), dans un nouvel onglet ; en mode test, l’app le reste"><span class="atm-icon">✏️</span> Rédactions — panneau prof</a>
   <a href="#" onclick="openAdminTool('reecriture_bb4e');return false"><span class="atm-icon">🎯</span> Réécriture BB4E (déconstruction note)</a>
   <a href="#" onclick="openAdminTool('evaluation_qcm');return false"><span class="atm-icon">🗳️</span> Évaluation QCM live — panneau prof</a>
   <a href="#" onclick="openAdminTool('applause');return false"><span class="atm-icon">👏</span> Applaudimètre — lecture coévaluée</a>
@@ -1707,6 +1708,10 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
   <div class="link-modal-section">
     <div class="link-modal-section-title">✍️ Réécriture existante</div>
     <div class="link-modal-row"><select class="link-modal-select" id="link-modal-reecriture"><option value="">Chargement…</option></select><button class="link-modal-btn" onclick="linkModalApplyApp('reecriture')">Lier</button></div>
+  </div>
+  <div class="link-modal-section">
+    <div class="link-modal-section-title">✏️ Sujet de rédaction existant</div>
+    <div class="link-modal-row"><select class="link-modal-select" id="link-modal-redaction" title="Les sujets de la Rédaction universelle (leur titre, puis leur nom court) : l’onglet « Rédaction » de la séance ouvrira celui-ci. Rien n’est écrit dans les sujets."><option value="">Chargement…</option></select><button class="link-modal-btn" onclick="linkModalApplyApp('redaction')">Lier</button></div>
   </div>
   <div class="link-modal-section">
     <div class="link-modal-section-title">🗳️ Évaluation QCM existante</div>
@@ -3847,6 +3852,7 @@ function openItem(level,chnum,snum,itemId){
   var src=item.source;
   if(!ref){alert('Item non li\u00e9. Utilise le bouton \ud83d\udd17 en mode admin pour associer une ressource.');return;}
   if(item.kind==='diaporama')return;   /* [LOT12] donnée historique : visible, muette */
+  if(item.kind==='redaction'&&src==='firebase_app'){ if(redactionProf())window.open(redactionAdresse(ref,redactionClasseDuCours(level)),'_blank'); return; }   /* E1 (§12.32-3, -4) : le professeur ouvre le sujet (onglet neuf) ; l'élève, rien de nouveau — l'item reste visible et muet, la fiche part comme aujourd'hui */
   if(item.kind==='dictee' && src==='firebase_app'){if(typeof openDicteeById==='function')openDicteeById(ref);return;}
   if(item.kind==='reecriture' && src==='firebase_app'){if(typeof openReecriture==='function')openReecriture(ref,item.title);return;}
   if(item.kind==='qcm' && src==='firebase_app'){openViewer(item.title||'\u00c9valuation QCM','evaluation-qcm.html?mode=eleve&eval='+encodeURIComponent(ref));return;}
@@ -4280,6 +4286,7 @@ function openLinkModal(level,chnum,snum,itemId){
   document.getElementById('link-modal-url').value='';
   loadAppList('dictee');
   loadAppList('reecriture');
+  loadAppList('redaction');   /* E1 (§12.32-2) : les sujets de /redactions, en lecture seule */
   loadAppList('qcm');
   loadAppList('debat');
   loadAppList('analyse_logique');
@@ -4349,12 +4356,19 @@ function loadAppList(kind){
   else if(kind==='analyse_logique')url=FIREBASE_BASE+'/analyse_logique/travaux.json';
   else if(kind==='applaudimetre')url=FIREBASE_BASE+'/applaudimetre/seances.json';
   else if(kind==='worktrack')url=FIREBASE_BASE+'/plan_de_travail/chapitres.json';
-  fetch(url).then(function(r){return r.json();}).catch(function(){return null;}).then(function(data){
+  else if(kind==='redaction')url=FIREBASE_BASE+'/redactions.json?shallow=true';
+  /* E1 (§12.32-2) : /redactions porte les copies des élèves — on ne lit que les clés, puis la config de chaque sujet (jamais les copies) */
+  var lire=kind!=='redaction'?fetch(url).then(function(r){return r.json();}):fetch(url).then(function(r){return r.json();}).then(function(cles){
+    var ks=Object.keys(cles||{});
+    return Promise.all(ks.map(function(k){return fetch(FIREBASE_BASE+'/redactions/'+encodeURIComponent(k)+'/config.json').then(function(r){return r.json();}).catch(function(){return null;});})).then(function(cs){var o={};ks.forEach(function(k,i){o[k]={config:cs[i]||{}};});return o;});
+  });
+  lire.catch(function(){return null;}).then(function(data){
     sel.innerHTML='<option value="">\u2014 Choisir \u2014</option>';
     if(data){
       Object.keys(data).forEach(function(id){
         var cfg=(data[id]&&data[id].config)||data[id]||{};
         var title=cfg.title||cfg.titre||cfg.libelle||id;
+        if(kind==='redaction')title=cfg.titre||cfg.nomCourt||id;   /* le titre, puis le nom court */
         if(kind==='worktrack'&&data[id]&&data[id].meta){var _m=data[id].meta;title=((_m.oeuvre&&_m.oeuvre.titre)||id)+(_m.niveau?(' \u2014 '+_m.niveau):'');}
         if(kind==='applaudimetre'&&cfg.demarreLe){try{title=(cfg.libelle||id)+' \u2014 '+new Date(cfg.demarreLe).toLocaleDateString('fr-FR');}catch(e){}}
         var opt=document.createElement('option');
@@ -7604,7 +7618,27 @@ function gotoImage(){showEmptyTab('image','🖼️ Analyse d\'image');}
 function gotoEtude(){showEmptyTab('etude','📖 Étude de texte');}
 /* [C5-AR] À BRANCHER — RÉDACTION. Même patron (showDicteeList),
    collectChapterItems(level,'redaction'), ouvreur _openRedactionFromList, porte en dernier. */
-function gotoRedaction(){showEmptyTab('redaction','✏️ Rédaction');}
+function gotoRedaction(){
+  /* E1 (§12.32-3, -4) : pour le professeur, le patron de showDicteeList — les sujets rattachés aux séances, rangés par chapitre, la porte (la liste des sujets) en dernier ;
+     pour l'élève, rien ne change (l'onglet reste celui d'aujourd'hui, aucun item « redaction » ne lui ouvre l'app). */
+  if(!redactionProf()){showEmptyTab('redaction','✏️ Rédaction');return;}
+  var level=clickedLevel||currentLevel||'';var el=document.getElementById('tab-redaction');hideAllTabs();el.style.display='block';var btn=document.getElementById('tab-btn-redaction');if(btn)btn.classList.add('active');
+  var items=collectChapterItems(level,'redaction',true);var cl=redactionClasseDuCours(level);   /* le 3e argument, réservé au prof : un sujet rattaché à une séance pas encore publiée s'ouvre aussi pour corriger */
+  var html='<div class="section-label">Rédaction '+(level?'\u2014 '+level.toUpperCase():'')+'</div>';
+  html+='<div style="padding:0 4px 10px;color:rgba(255,255,255,0.4);font-size:0.78rem;font-style:italic;">'+(items.length?('Le sujet rattaché à chaque séance s’ouvre dans un nouvel onglet'+(cl?(', sur la classe '+escapeHtml((classesData&&classesData[cl]&&classesData[cl].nom)||cl)+'.'):' ; l’app te demande la classe (ou reprend la dernière ouverte).')):'Aucun sujet n’est rattaché à une séance de ce niveau : rattache-en un par « Lier » sur un item de séance, ou ouvre la liste de tes sujets.')+'</div>';
+  if(items.length)html+=renderItemListByChapter(items,'_openRedactionFromList','var(--level-accent)','\u270f\ufe0f');
+  html+='<div class="section-label" style="margin-top:28px">La liste de mes sujets</div>';
+  html+='<div class="chapters-list"><div class="chapter-card" onclick="openAdminTool(\'redaction\')" style="cursor:pointer" title="La Rédaction universelle, panneau prof : ouvrir, préparer, nouveau sujet — dans un nouvel onglet"><div class="chapter-header"><div class="chapter-num" style="background:var(--level-accent);color:#1a1030;">\u270f\ufe0f</div><div class="chapter-info"><div class="chapter-title">Ouvrir la Rédaction universelle</div><div style="font-size:0.78rem;opacity:0.5;margin-top:2px">Tes sujets : ouvrir, préparer, nouveau sujet</div></div><div class="doc-action" style="font-size:0.85rem;">\u2192 Ouvrir</div></div></div></div>';
+  el.innerHTML=html;}
+function redactionProf(){ try{ if(typeof TRACK!=='undefined'&&TRACK.eleve&&TRACK.eleve.is_prof)return true; }catch(e){} return document.body.classList.contains('admin-mode'); }
+/* la classe du cours, quand le site la connaît : l'heure ouverte (si de ce niveau), sinon la lentille « Je publie pour » ; sinon rien (l'app choisit) */
+function redactionClasseDuCours(level){
+  try{ if(typeof AT_DR_COURS!=='undefined'&&AT_DR_COURS&&AT_DR_COURS.classeSlug&&typeof S!=='undefined'&&S&&S.lancee&&!S.close){ var k=(typeof edtCleClasse==='function')?edtCleClasse(AT_DR_COURS.classeSlug):AT_DR_COURS.classeSlug; var c=classesData&&classesData[k]; if(c&&(!level||c.niveau===level))return k; } }catch(e){}
+  try{ if(typeof ADMIN_LENS!=='undefined'&&ADMIN_LENS&&ADMIN_LENS!=='all'&&ADMIN_LENS!=='__all__'){ var k2=(typeof edtCleClasse==='function')?edtCleClasse(ADMIN_LENS):ADMIN_LENS; var c2=classesData&&classesData[k2]; if(!c2||!level||c2.niveau===level)return k2; } }catch(e){}
+  return null; }
+/* l'adresse de l'app (LIVRAISONS/REDACTION/NOTE.md, « Pour E1 ») : mode=prof, id=<sujet>, classe=<clé>, test=1 en mode test */
+function redactionAdresse(id,classe){ var q='mode=prof'; if(id)q+='&id='+encodeURIComponent(id); if(classe)q+='&classe='+encodeURIComponent(classe); try{ if(typeof m8TestOn==='function'&&m8TestOn())q+='&test=1'; }catch(e){} return 'redaction.html?'+q; }
+function _openRedactionFromList(ref){ if(!redactionProf())return; var level=clickedLevel||currentLevel||''; window.open(redactionAdresse(ref,redactionClasseDuCours(level)),'_blank'); }
 function gotoEvalConn(){var level=clickedLevel||currentLevel||'';var qcms=collectChapterItems(level,'qcm');var el=document.getElementById('tab-evalconn');hideAllTabs();el.style.display='block';var btn=document.getElementById('tab-btn-evalconn');if(btn)btn.classList.add('active');var html='';html+='<div class="section-label">Évaluation des connaissances '+(level?'— '+level.toUpperCase():'')+'</div>';html+='<div style="padding:0 4px 10px;color:rgba(255,255,255,0.4);font-size:0.78rem;font-style:italic;">QCM en classe avec ton prof, puis consultation de tes résultats à la maison.</div>';html+=renderItemListByChapter(qcms,'_openQcmFromList','var(--level-accent)','🧠');html+='<div class="section-label" style="margin-top:28px">Rejoindre une session en cours</div>';html+='<div style="padding:0 4px 10px;color:rgba(255,255,255,0.4);font-size:0.78rem;font-style:italic;">Si ton prof vient de lancer un QCM, ouvre l’app pour rejoindre.</div>';html+='<div class="chapter-card" onclick="openEvalConn()" style="cursor:pointer"><div class="chapter-header"><div class="chapter-num" style="background:var(--level-accent);color:#1a1030;">🧠</div><div class="chapter-info"><div class="chapter-title">Ouvrir l’app QCM</div><div style="font-size:0.78rem;opacity:0.5;margin-top:2px">Connexion par classe + nom + prénom</div></div><div class="doc-action" style="font-size:0.85rem;">→ Ouvrir</div></div>';el.innerHTML=html;}
 function openEvalConn(){openViewer('\u00c9valuation des connaissances','evaluation-qcm.html?mode=eleve');}
 function gotoAnalyse(){var level=clickedLevel||currentLevel||'';var el=document.getElementById('tab-analyse');hideAllTabs();el.style.display='block';var btn=document.getElementById('tab-btn-analyse');if(btn)btn.classList.add('active');var dyn=document.getElementById('analyse-dyn');var html='';html+='<div class="section-label">Analyse logique '+(level?'\u2014 '+level.toUpperCase():'')+'</div>';html+='<div style="padding:0 4px 10px;color:rgba(255,255,255,0.4);font-size:0.78rem;font-style:italic;">Tu analyses des phrases sur papier avec ton prof, puis tu retrouves ici tes travaux corrig\u00e9s.</div>';
@@ -7616,7 +7650,7 @@ function openAnalyse(){openViewer('Analyse logique','analyse_logique.html');}
 function openBB4E(){openViewer('Brevet Blanc 4e \u2014 R\u00e9\u00e9criture','reecriture_bb4e.html?mode=eleve');}
 function publishBB4E(){togglePublishExtra('4e','bb4e');}
 function showEmptyTab(tabId,label){var el=document.getElementById('tab-'+tabId);hideAllTabs();el.style.display='block';var btn=document.getElementById('tab-btn-'+tabId);if(btn)btn.classList.add('active');el.innerHTML='<div style="padding:40px 20px;text-align:center"><div style="font-size:3rem;margin-bottom:16px;opacity:0.3">🔧</div><div style="color:rgba(255,255,255,0.4);font-size:1rem;line-height:1.8">'+(document.body.classList.contains('admin-mode')?'Cet outil n’est pas encore branché.<br>Il faut le brancher avant de le publier.':'Cet outil ouvrira plus tard.')+'</div></div>';}
-function openAdminTool(tool){document.getElementById('admin-tools-menu').classList.remove('visible');var level=clickedLevel||currentLevel||'';if(tool==='dictee'){window.open('dictee_universelle.html'+(level?'?n='+level:''),'_blank');}if(tool==='correction'){window.open('correction_dictee.html?mode=prof','_blank');}if(tool==='reecriture'){window.open('reecriture.html','_blank');}if(tool==='reecriture_bb4e'){window.open('reecriture_bb4e.html','_blank');}if(tool==='evaluation_qcm'){window.open('evaluation-qcm.html?mode=prof','_blank');}if(tool==='applause'){window.open('applause_meter.html'+(level?'?n='+level:''),'_blank');}if(tool==='debat_s3'){window.open('pilotage_debat_s3.html'+(level?'?n='+level:''),'_blank');}}
+function openAdminTool(tool){document.getElementById('admin-tools-menu').classList.remove('visible');var level=clickedLevel||currentLevel||'';if(tool==='dictee'){window.open('dictee_universelle.html'+(level?'?n='+level:''),'_blank');}if(tool==='correction'){window.open('correction_dictee.html?mode=prof','_blank');}if(tool==='reecriture'){window.open('reecriture.html','_blank');}if(tool==='redaction'){window.open(redactionAdresse(null,null),'_blank');}if(tool==='reecriture_bb4e'){window.open('reecriture_bb4e.html','_blank');}if(tool==='evaluation_qcm'){window.open('evaluation-qcm.html?mode=prof','_blank');}if(tool==='applause'){window.open('applause_meter.html'+(level?'?n='+level:''),'_blank');}if(tool==='debat_s3'){window.open('pilotage_debat_s3.html'+(level?'?n='+level:''),'_blank');}}
 function closeViewer(){document.getElementById('doc-viewer').classList.remove('visible');var f=document.getElementById('doc-viewer-frame');f.removeAttribute('srcdoc');f.src='about:blank';var _nt=document.getElementById('doc-viewer-newtab');if(_nt){_nt.style.display='none';_nt.removeAttribute('href');}trackClose();}   /* [LOT8-\u2460] le srcdoc r\u00e9siduel primerait sur src */
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('doc-viewer').classList.contains('visible'))closeViewer();});
 document.addEventListener('click',function(e){var menu=document.getElementById('admin-tools-menu');var btn=document.getElementById('admin-tools-btn');if(menu&&btn&&!menu.contains(e.target)&&!btn.contains(e.target))menu.classList.remove('visible');});

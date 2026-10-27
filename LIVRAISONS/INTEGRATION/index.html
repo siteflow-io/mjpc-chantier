@@ -14905,6 +14905,8 @@ function atVuesBarreHtml(){
       +'<button class="at-btn at-classe-fermer" id="at-classe-fermer" onclick="atClasseFermer()" title="Ferme l’écran de la classe et ramène à l’emploi du temps. Possible avant le lancement et après « Clore l’heure » ; pendant l’heure, l’écran ne se quitte pas.">✕ Fermer</button></div>';
   }
   return '<div class="at-vues-barre">'+defs.map(function(d){
+    if(d[0]==='relecture'&&ATVUES.vue!=='relecture')return '<button class="at-onglet" data-vue="relecture" id="ong-relecture" hidden tabindex="-1" aria-hidden="true" onclick="atVuesAller(this.dataset.vue,true)"></button>';   /* E1 (§12.33-2, tranché 14:59) : la Relecture sort de l'Atelier — la vue reste, ouverte par la case (« Relire cette heure ») ; l'onglet ne se montre que si l'on y est */
+    if(d[0]==='pilotage')return '<button class="at-onglet'+(ATVUES.vue==='pilotage'?' at-onglet-actif':'')+'" data-vue="pilotage" id="ong-pilotage" hidden tabindex="-1" aria-hidden="true" onclick="atVuesAller(this.dataset.vue,true)"></button>';   /* E1 (§12.33-2) : « Pilotage » sort de l'Atelier — il y lançait la répétition, comme « ▶ Jouer en avance », seule entrée qui reste ; l'onglet est gardé présent, jamais montré ni cliquable (le déroulé et l'emploi du temps lisent #ong-pilotage, contrat §7), et il marque la répétition (la ligne « Répétition : rien n'est écrit ») */
     return '<button class="at-onglet'+(ATVUES.vue===d[0]?' at-onglet-actif':'')+'" data-vue="'+d[0]+'"'+(ids[d[0]]?' id="'+ids[d[0]]+'"':'')+(d[0]==='atelier'?' data-atelier="1"':'')
       +' title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue,true)">'+d[1]+'</button>';
   }).join('')+'<span class="at-rep-ligne">Répétition : rien n’est écrit. Une heure avec une classe se lance depuis l’emploi du temps.</span>'   /* E1 (§12.28-3a) : sous l'onglet Pilotage de l'Atelier */
@@ -14915,6 +14917,8 @@ function atVuesBarreHtml(){
 function atVuesMarquer(v){   /* E1 : l'onglet actif suit la vue, sans redessiner la colonne ni le déroulé */
   var b=document.querySelectorAll('.at-vues-barre .at-onglet');
   for(var i=0;i<b.length;i++) b[i].classList.toggle('at-onglet-actif', b[i].dataset.vue===v);
+  var r=document.querySelector('.at-vues-barre:not(.at-vues-barre-classe) #ong-relecture');   /* E1 (§12.33-2) : dans l'Atelier, l'onglet Relecture ne se montre que si l'on y est (ouverte par la case) */
+  if(r){ var on=(v==='relecture'); r.hidden=!on; r.tabIndex=on?0:-1; if(on){ r.removeAttribute('aria-hidden'); r.textContent='Relecture'; r.title='Le récit de l’heure ouverte depuis sa case, ce qui s’est passé, le chapitre — et le papier du cahier (R)'; } else r.setAttribute('aria-hidden','true'); }
 }
 
 

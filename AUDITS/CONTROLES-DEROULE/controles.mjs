@@ -72,6 +72,9 @@ const lancer = async pg => { if (!ENTREE_SITE) { await pg.click('[data-lancer="1
   if (!ok) throw new Error('aucune case de la 3E Charles de Gaulle dans l\'emploi du temps'); await pg.waitForTimeout(700);
   if (!(await clicTexte(pg, 'button', 'Ouvrir le pilotage et lancer'))) throw new Error('« ▶ Ouvrir le pilotage et lancer » absent de la case'); await pg.waitForTimeout(3500);
   if (await pg.$eval('#garde', g => g.classList.contains('on')).catch(() => false)) { await pg.click('#garde-devant').catch(() => {}); await pg.waitForTimeout(300); } };
+/* v5 (27/10, contrat §12.33 (2), Paul 14:27 : « les onglets pilotage et relecture n'ont rien à faire dans l'atelier ») : l'onglet « Pilotage » sort de l'Atelier ;
+   l'heure se lance par la case (`lancer`) — on ne clique l'onglet que s'il est encore montré (la maquette seule). */
+const ongPilotage = async pg => { await pg.evaluate(() => { const b = document.getElementById('ong-pilotage'); if (b && b.offsetParent !== null && !b.hidden) b.click(); }); };
 const garde = async pg => { if (await pg.$eval('#garde', g => g.classList.contains('on')).catch(() => false)) { await pg.click('#garde-devant'); await pg.waitForTimeout(300); return true; } return false; };
 const huitLignes = async pg => { await pg.click('#mur .p8-ecrire'); for (let i = 1; i <= 8; i++) { await pg.keyboard.type(`Ligne ajoutée numéro ${i}, assez longue pour prendre de la place dans la diapo.`, { delay: 2 }); if (i < 8) await pg.keyboard.press('Enter'); } await pg.keyboard.press('Escape'); await pg.waitForTimeout(500); };
 const ecrireNote = async (pg, k, texte) => { await pg.click(`#mur li[data-k="${k}"]`); await pg.waitForTimeout(120); const p = await pg.$$('#notesd [contenteditable]'); if (!p.length) throw new Error('aucun paragraphe de notes éditable (#notesd [contenteditable])'); await p[p.length - 1].click(); await pg.keyboard.press('End'); await pg.keyboard.press('Enter'); await pg.keyboard.type(texte); await pg.waitForTimeout(150); };
@@ -109,7 +112,7 @@ await K('K2', 'les notes de présentateur, par étape (n°13 · 10)', async () =
   await ecrireNote(pg, 0, 'Note pour la première étape.'); await ecrireNote(pg, 2, 'Note pour la troisième étape.'); await pg.keyboard.press('Escape'); await pg.waitForTimeout(400);
   const notes = await noteDe(pg, await pg.evaluate(() => cle()));
   verif('K2', notes.includes('0.0 | ') && notes.includes('0.2 | ') && notes.includes('première') && notes.includes('troisième'), 'atelier : deux paragraphes écrits, accrochés aux étapes 1 et 3', notes.slice(0, 120));
-  await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg);
+  await ongPilotage(pg); await pg.waitForTimeout(300); await lancer(pg);
   const vifs = () => pg.$$eval('#notesd > *', l => l.map(x => ({ vif: /vif/.test(x.className), fait: /fait/.test(x.className), rep: ((x.querySelector('button, .k, [class*=rep]') || {}).textContent || '').trim() })));
   for (let i = 0; i < 3; i++) { await pg.click('#bdev'); await pg.waitForTimeout(150); } const v3 = await vifs(); await pg.click('#bprec'); await pg.waitForTimeout(150); await garde(pg); const v2 = await vifs();
   const i3 = v3.findIndex(x => x.vif), i2 = v2.findIndex(x => x.vif);
@@ -158,7 +161,7 @@ await K('K5', 'la poignée des notes, en permanence (n°13 · 15)', async () => 
   const a0 = await geo(); verif('K5', a0.poignee.visible, 'atelier : la poignée est visible', `${JSON.stringify(a0.poignee)}`);
   await tirer(-150); const a1 = await geo(); verif('K5', a1.notes.h > a0.notes.h + 60 && a1.mur.h < a0.mur.h - 60, 'atelier : tirée de 150 px vers le haut, les notes grandissent et la diapo rétrécit', `diapo ${a0.mur.h} → ${a1.mur.h} px, notes ${a0.notes.h} → ${a1.notes.h} px, part ${a0.part} → ${a1.part} %`);
   /* v3 : la répétition depuis l'Atelier, avant le lancement (§12.28 (3a)) */ await pg.click('#at-jouer'); await pg.waitForTimeout(400); const r0 = await geo(); verif('K5', r0.poignee.visible, 'répétition (depuis l\'Atelier) : la poignée est visible'); await pg.click('#rep-stop'); await pg.waitForTimeout(400);
-  await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg); const c0 = await geo(); verif('K5', c0.poignee.visible && c0.part === a1.part, 'pilotage, heure lancée : la poignée est là et la hauteur de l\'atelier est gardée', `part ${a1.part} → ${c0.part} %`);
+  await ongPilotage(pg); await pg.waitForTimeout(300); await lancer(pg); const c0 = await geo(); verif('K5', c0.poignee.visible && c0.part === a1.part, 'pilotage, heure lancée : la poignée est là et la hauteur de l\'atelier est gardée', `part ${a1.part} → ${c0.part} %`);
   const p = await rect(pg, '#poignee-mur'); await pg.mouse.dblclick(p.x + p.w / 2, p.y + p.h / 2); await pg.waitForTimeout(300); const c1 = await geo(); verif('K5', c1.part === 100 && c1.mur.h > c0.mur.h + 60, 'double-clic : la diapo reprend toute sa place', `part ${c0.part} → ${c1.part} %, diapo ${c0.mur.h} → ${c1.mur.h} px`);
   await finK('K5', o); });
 
@@ -168,7 +171,7 @@ await K('K6', 'la diapo trop pleine se lit en pages, jamais hors du cadre (n°13
   const a = await lireMur(pg); const nbDiapos = await pg.$$eval('#volet [data-at-di]', l => l.length);
   verif('K6', /page 2 \/ 2/.test(a.page) && a.hors === 0, `${W} px · atelier : huit lignes tapées sous le dernier bloc → « page 2 / 2 », rien hors du cadre`, `compteur « ${a.page} », hors ${a.hors}`);
   verif('K6', nbDiapos === nbAvant, `${W} px · atelier : aucune diapo créée (le site ne coupe jamais seul)`, `${nbAvant} → ${nbDiapos} diapos`);
-  await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg); const p0 = await lireMur(pg);
+  await ongPilotage(pg); await pg.waitForTimeout(300); await lancer(pg); const p0 = await lireMur(pg);
   verif('K6', /page 1 \/ 2/.test(p0.page) && p0.hors === 0, `${W} px · pilote, heure lancée : « page 1 / 2 » à 0 dévoilé`, `« ${p0.page} », hors ${p0.hors}`);
   let horsMax = 0, pageA13 = ''; for (let i = 0; i < 13; i++) { await pg.click('#bdev'); await pg.waitForTimeout(80); const l = await lireMur(pg); horsMax = Math.max(horsMax, l.hors); pageA13 = l.page; }
   verif('K6', /page 2 \/ 2/.test(pageA13) && horsMax === 0, `${W} px · ▶ ×13 : la page suit le dernier dévoilé (« page 2 / 2 »), rien hors du cadre à aucune étape`, `« ${pageA13} », hors max ${horsMax}`);
@@ -178,7 +181,7 @@ await K('K6', 'la diapo trop pleine se lit en pages, jamais hors du cadre (n°13
 
 // K7 — la fenêtre du tableau reçoit les pages dès son ouverture (p8-5g, point 1 : à l'ouverture comme à chaque ▶, même page, même compteur, aussitôt ; page suivie ou choisie à la molette)
 await K('K7', 'la fenêtre du tableau reçoit les pages dès son ouverture (n°13 · 17)', async () => { for (const cas of [{ nDev: 0 }, { nDev: 9 }, { nDev: 13 }, { nDev: 9, molette: true }]) { const o = await ouvrir(); const pg = o.pg; await atelier(pg); await huitLignes(pg);
-  await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg); for (let i = 0; i < cas.nDev; i++) { await pg.click('#bdev'); await pg.waitForTimeout(60); }
+  await ongPilotage(pg); await pg.waitForTimeout(300); await lancer(pg); for (let i = 0; i < cas.nDev; i++) { await pg.click('#bdev'); await pg.waitForTimeout(60); }
   if (cas.molette) { const m = await rect(pg, '#mur'); await pg.mouse.move(m.x + m.w / 2, m.y + m.h / 2); await pg.mouse.wheel(0, 300); await pg.waitForTimeout(500); } await pg.waitForTimeout(300);
   const pil = await lireMur(pg); const fen = await ouvrirTableau(pg); const t0 = await lireMur(fen); const nom = `ouvert à ${cas.nDev} dévoilés${cas.molette ? ', page 2 choisie à la molette' : ''}`;
   if (cas.molette) verif('K7', /page 2/.test(pil.page), 'la molette a choisi la page 2 au pilote', `« ${pil.page} »`);
@@ -191,7 +194,7 @@ await K('K7', 'la fenêtre du tableau reçoit les pages dès son ouverture (n°1
 //      chaque vignette montre ce que sa page projette, pas un écran de plus, « · 2 pages » dans l'atelier)
 await K('K8', 'une vignette par page dans la colonne de gauche (n°13 · 18)', async () => { const o = await ouvrir(); const pg = o.pg; await atelier(pg); await huitLignes(pg);
   const ligneAtelier = await pg.$eval('#volet [data-at-di="0"]', e => e.textContent.replace(/\s+/g, ' ').trim()); verif('K8', /2 pages/.test(ligneAtelier), 'atelier : la ligne de la diapo 1 dit « · 2 pages »', `« ${ligneAtelier.slice(0, 80)} »`);
-  await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg);
+  await ongPilotage(pg); await pg.waitForTimeout(300); await lancer(pg);
   const vigs = () => pg.$$eval('#volet .vig', l => l.map(v => ({ i: v.dataset.i, cour: /\bcour\b/.test(v.className), etiq: (v.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 12), lignes: Array.from(v.querySelectorAll('li')).filter(x => !x.classList.contains('hors')).map(x => x.getAttribute('data-p')) })));
   const v0 = await vigs(); const d1 = v0.filter(v => v.i === '0'); const norm = s => s.replace(/\s/g, '');
   verif('K8', d1.length === 2 && /^1·1\/2/.test(norm(d1[0].etiq)) && /^1·2\/2/.test(norm(d1[1].etiq)), 'classe : la diapo 1 a deux vignettes, « 1 · 1/2 » puis « 1 · 2/2 »', `${d1.length} vignette(s) pour la diapo 1 : ${JSON.stringify(d1.map(v => v.etiq))}`);
@@ -222,7 +225,7 @@ await K('K10', 'après « ■ Arrêter », la fenêtre du tableau revient à ce 
      la fenêtre du tableau de la classe — est mesuré par E3 (banc-1228, relance du contrôle n°62). */ });
 
 // K11 — la vue « ⧉ Tableau » de la colonne de droite porte le compteur « page i / n » et montre la même page que le mur (p8-5h, point 12 ; p8-5f, point 5 : le tableau montre la même page que le pilote)
-await K('K11', 'la vue « ⧉ Tableau » porte le compteur de page et montre la même page (n°13 · 20)', async () => { const o = await ouvrir(); const pg = o.pg; await atelier(pg); await huitLignes(pg); await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg);
+await K('K11', 'la vue « ⧉ Tableau » porte le compteur de page et montre la même page (n°13 · 20)', async () => { const o = await ouvrir(); const pg = o.pg; await atelier(pg); await huitLignes(pg); await ongPilotage(pg); await pg.waitForTimeout(300); await lancer(pg);
   await pg.click('#btableau'); await pg.waitForTimeout(400);
   const lireVue = () => pg.evaluate(() => { const mur = Array.from(document.querySelectorAll('.mur.tableau')).find(m => !m.closest('#volet') && m.id !== 'p8-banc' && m.getBoundingClientRect().width > 0); if (!mur) return null; const c = mur.querySelector('.corpsd') || mur; return { page: ((mur.querySelector('.page') || {}).textContent || '').replace(/[‹›]/g, '').trim(), lignes: Array.from(c.querySelectorAll('li')).filter(l => !l.classList.contains('hors') && !l.classList.contains('pas') && l.getBoundingClientRect().height > 0).map(l => l.getAttribute('data-p')) }; });
   const v0 = await lireVue(), m0 = await lireMur(pg);
@@ -263,7 +266,7 @@ await K('K9', 'le parcours fixe', async () => { const o = await ouvrir(); const 
   verif('K9', await pg.$eval('#mur', m => m.textContent.includes('Ligne du parcours fixe.')), '1 · atelier : une ligne écrite dans la diapo 1 y est');
   await ecrireNote(pg, 0, 'Note du parcours fixe.'); await pg.keyboard.press('Escape'); await pg.waitForTimeout(400);
   verif('K9', (await noteDe(pg, await pg.evaluate(() => cle()))).includes('Note du parcours fixe.'), '2 · atelier : une note écrite sur l\'étape 1 est gardée');
-  await pg.click('#ong-pilotage'); await pg.waitForTimeout(300); await lancer(pg); const c0 = await pg.$eval('#compte', e => e.textContent.trim());
+  await ongPilotage(pg); await pg.waitForTimeout(300); await lancer(pg); const c0 = await pg.$eval('#compte', e => e.textContent.trim());
   verif('K9', /^0 \/ 7 dévoilés/.test(c0) && /\d\d:\d\d/.test(await pg.$eval('.haut', h => h.textContent)), '3 · l\'heure lancée : « 0 / 7 dévoilés » (6 éléments + la ligne écrite), le chrono tourne', `« ${c0} »`);
   for (let i = 0; i < 3; i++) { await pg.click('#bdev'); await pg.waitForTimeout(150); } const c3 = await pg.$eval('#compte', e => e.textContent.trim()); const notes3 = await pg.$eval('#notesd', d => d.textContent);
   verif('K9', /^3 \/ 7/.test(c3) && notes3.includes('Note du parcours fixe.'), '4 · ▶ ×3 : « 3 / 7 dévoilés », le panneau montre la note de la diapo 1', `« ${c3} »`);

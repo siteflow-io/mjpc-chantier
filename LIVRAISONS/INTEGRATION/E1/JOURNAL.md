@@ -628,3 +628,6 @@ Je ne réécris pas la pièce ; la conscience corrige. Lignes : `index.html` de 
 - **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/0152-27-10/` : collisions 0, 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `fe072964…`). **Mon banc complet : 575 vérifications, 0 échec** (`LIVRAISONS/INTEGRATION/E1/sorties/0152-27-10/banc-E1.txt`). Joués avant le rebase ; ce que le rebase a apporté (contrôle n°68, retour 60 d'E3, épreuves) ne touche ni `index.html` ni `dr/`.
 - **§12.29 E1 fini.**
 - Veille : send_later toutes les 50 min ; STOP dans les relances = arrêt ; deux retours vides de suite = une ligne ici et arrêt.
+
+## 27/10, 04:10 — veille : deux retours vides de suite, arrêt
+- Après « §12.29 E1 fini » (`2619511c`) : rien à moi aux veilles de 03:18 et 04:10 Paris (contrôles n°68-69, retours 61-62 d'E3 — banc-1227 VERT 801/801 —, E2 poussée 42 ; rien de nouveau dans RELANCES/E1.md). Je m'arrête sans reprogrammer ; une relance dans RELANCES/E1.md me rappellera si elle me relance.

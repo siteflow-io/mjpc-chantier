@@ -62,7 +62,10 @@ const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM
 const ouvrirCtx = async (W, H, st) => { const ctx = await nav.newContext({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }); const errs = [], boites = [];
   await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => r.abort()); await ctx.addInitScript(fauxHub, st || hubStore());
   ctx.on('page', q => { q.on('pageerror', e => errs.push(String(e.message).slice(0, 160))); q.on('dialog', d => { if (d.type() === 'beforeunload') { q.__beforeunload = (q.__beforeunload || 0) + 1; d.accept().catch(() => {}); return; } boites.push(d.type() + ' : ' + d.message().slice(0, 80)); d.dismiss().catch(() => {}); }); });
-  const pg = await ctx.newPage(); await pg.clock.setFixedTime(HORLOGE); return { ctx, pg, errs, boites }; };
+  const pg = await ctx.newPage(); await pg.clock.setFixedTime(HORLOGE);
+  /* un second onglet lit le même hub : une page file:// neuve voit parfois un localStorage vide (3 fois sur 16 mesurées) — on lui donne le hub du premier à sa création */
+  const np = ctx.newPage.bind(ctx); ctx.newPage = async () => { const q = await np(); const v = await pg.evaluate(() => localStorage.getItem('__E3HUB28')).catch(() => null); if (v) await q.addInitScript(x => { try { if (!localStorage.getItem('__E3HUB28')) localStorage.setItem('__E3HUB28', x); } catch (e) {} }, v); return q; };
+  return { ctx, pg, errs, boites }; };
 const entrerProf = async pg => { await pg.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await p(pg, 1800); await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2200); await sansVoiles(pg); };
 const edtOuvert = pg => pg.evaluate(() => { const e = document.getElementById('edt-ecran'); return !!(e && e.style.display !== 'none' && e.getBoundingClientRect().height > 0); });
 /* lancer par la case de l'emploi du temps (la case des De Gaulle « heure 1/3 ») : « ▶ Ouvrir le pilotage et lancer » */
@@ -343,6 +346,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     /* la ligne : un élément de la séquence (hors de .pp-tete) dont le texte commence par « L'activité en cours : » ; la référence mot pour mot : la phrase d'alerteTexte (la ③) tant qu'elle existe */
     const ligne = () => pg.evaluate(() => { const v = e => e && e.offsetParent !== null && e.getBoundingClientRect().height > 0; const c = Array.from(document.querySelectorAll('#fin *, #prep *, .pp *')).filter(e => v(e) && /^L.activité en cours :/.test((e.innerText || '').trim()) && !Array.from(e.children).some(k => /^L.activité en cours :/.test((k.innerText || '').trim()))); const e = c[0] || null;
       let ref = null; try { if (typeof alerteTexte === 'function') { const d = document.createElement('div'); d.innerHTML = alerteTexte(); const sp = d.querySelector('span'); ref = sp ? sp.textContent.replace(/\s+/g, ' ').trim() : null; if (ref) { const m = /^L.activité en cours : .*?, (dans les temps|il te reste peu de temps|tu dépasses · \+\d+ min|terminée|faite à l.oral)\./.exec(ref); ref = m ? m[0] : ref; } /* la phrase seule : celle qui la suivait dans la barre attend le mot de Paul (§12.30 (3)) */ } } catch (x) {}
+      if (!ref) ref = "L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps.";   /* alerteTexte tombée (E2, poussée 43) : la phrase que la ③ disait dans ce même geste, relevée sur l'assemblé de la production (retour 65) */
       const r = e ? e.getBoundingClientRect() : null; const t = document.querySelector('.pp-tete'); const tr = t ? t.getBoundingClientRect() : null;
       return e ? { texte: e.innerText.replace(/\s+/g, ' ').trim(), ref, sous: !!(tr && r.top >= tr.bottom - 2), entiere: r.right <= innerWidth && e.scrollWidth <= e.clientWidth + 1 } : { texte: null, ref }; });
     const RE = /^L.activité en cours : (Activité|Diapo) \d+ — .+, (dans les temps|il te reste peu de temps|tu dépasses · \+\d+ min|terminée|faite à l.oral)\.$/;
@@ -359,6 +363,10 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       verif('30', !!l2.texte && /tu dépasses · \+\d+ min\.$/.test(l2.texte) && l2.texte !== l1.texte, T + ' · l’heure avance au-delà du prévu : « tu dépasses · +n min »', '« ' + (l1.texte || '') + ' » → « ' + (l2.texte || 'absente') + ' »');
       verif('30', apres.fin, T + ' · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence)', JSON.stringify(apres));
       if (champ) verif('30', apres.actif === champ, T + ' · le champ de l’étape 1 garde son focus', champ + ' → ' + apres.actif); else info('30', T + ' · pas de champ visible à l’étape 1 pour mesurer le focus');
+      /* en préparation aussi (§12.30 (1)) : « ❄ Préparer le cahier » → la phrase reste, celle de la diapo gelée ; puis « Retour au cours » */
+      const prep = await clicTexte(pg, 'button', 'Préparer le cahier'); await p(pg, 2500); const lp = await ligne(); await capt(pg, W, H, '30-3-en-preparation');
+      verif('30', prep && !!lp.texte && RE.test(lp.texte) && lp.sous, T + ' · en préparation (« ❄ Préparer le cahier »), la phrase reste sous la tête', JSON.stringify({ bouton: prep, texte: lp.texte, sous: lp.sous }));
+      if (prep) { await clicTexte(pg, 'button', 'Retour au cours'); await p(pg, 1200); }
       /* après « Clore l'heure » : rien */
       const close = await clore(pg, '2026-09-14T09:48:00+02:00'); const l3 = await ligne(); verif('30', close && !l3.texte, T + ' · après « Clore l’heure », plus de phrase', l3.texte || '');
       /* en répétition : rien */
@@ -405,7 +413,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     } catch (e) { verif('42', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (42)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
   /* ── 13 · 51 : une classe créée par le site, à clé simplifiée — l'emploi du temps, la case, la fenêtre de la case, l'heure lancée (3e, 4e) ── */
-  if (fait('51')) for (const C of [{ niv: '3e', lib: '3ème', nom: '3 DYLAN Bob', cle: '3_dylan_bob', quand: '2026-11-03T10:10:00+01:00' }, { niv: '4e', lib: '4ème', nom: '4 HUGO', cle: '4_hugo', quand: '2026-11-03T13:03:00+01:00' }]) {
+  if (fait('51')) for (const C of [{ niv: '3e', lib: '3ème', nom: '3 DYLAN Bob', cle: '3_dylan_bob', quand: '2026-11-03T10:10:00+01:00', iso: '2026-11-03', cr: '10:07-11:02', fin: '2026-11-03T10:58:00+01:00', apres: '2026-11-03T11:10:00+01:00' }, { niv: '4e', lib: '4ème', nom: '4 HUGO', cle: '4_hugo', quand: '2026-11-03T13:03:00+01:00', iso: '2026-11-03', cr: '13:00-13:55', fin: '2026-11-03T13:51:00+01:00', apres: '2026-11-03T14:05:00+01:00' }]) {
     const st = hubStore(); delete st.classes['3 DYLAN Bob']; ((st.site.edt.grille['2026-2027'] || {}).creneaux || []).forEach(x => { if (x.classe === C.nom) x.classeMjpc = ''; });
     if (C.niv === '4e') { st.site['4e'] = JSON.parse(JSON.stringify(st.site['3e'])); (st.site['4e'].chapitres || []).forEach(ch => { if (ch) delete ch.published; }); }
     const ELV = ['DURAND Alice', 'BERNARD Emma', 'PETIT Thomas', 'ROBERT Chloé']; const k = '51 ' + C.niv;
@@ -436,31 +444,42 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       verif(k, pub === true && publie && JSON.stringify(publie).indexOf(C.cle) >= 0, T + ' · le chapitre se publie pour « ' + C.nom + ' » depuis la page du niveau', JSON.stringify({ pastille: pub, hub: publie }));
       await pg.evaluate(() => { try { goHome(); } catch (e) {} }); await p(pg, 600);
       /* 3 bis · la page tableau sans cours (mon écran) : « Classe attendue : <nom> » — le niveau du prochain créneau lu par la clé (dr_tabCle) */
-      { const tb = await o.ctx.newPage(); await tb.clock.setFixedTime(new Date(C.quand)); await tb.goto(URL0 + '?vue=tableau&n=' + C.niv, { waitUntil: 'load' }); await p(tb, 4000);
+      { const tb = await o.ctx.newPage(); await tb.clock.setFixedTime(new Date(C.quand));
+        /* le même hub que le pilote : une page file:// neuve voit parfois un localStorage vide (mesuré : 3 fois sur 16, `localStorage` sans aucune clé) — on le lui donne */
+        const hubNow = await pg.evaluate(() => localStorage.getItem('__E3HUB28')); await tb.addInitScript(v => { try { if (v && !localStorage.getItem('__E3HUB28')) localStorage.setItem('__E3HUB28', v); } catch (e) {} try { if (v) window.__HUB = JSON.parse(localStorage.getItem('__E3HUB28') || v); } catch (e) {} }, hubNow); await tb.goto(URL0 + '?vue=tableau&n=' + C.niv, { waitUntil: 'load' }); await p(tb, 4000);
         const att = await tb.evaluate(() => { const e = document.getElementById('ses-tab-c'); return e && e.style.display !== 'none' ? e.textContent.trim() : ''; });
         if (CAPT && (W === 1707 || W === 1920)) await tb.screenshot({ path: path.join(CAPT, W + 'x' + H + '-51-' + C.niv + '-tableau-attente-' + SUFF + '.png') }).catch(() => {});
-        const dbg = att.indexOf('Classe attendue : ' + C.nom) === 0 ? '' : ' · ' + JSON.stringify(await tb.evaluate(cle => { const cl = window.__hubLire('/classes') || {}; const g = window.__hubLire('/site/edt/grille/2026-2027'); let r = null; try { r = dr_tabCaseDuMoment(g, window.__hubLire('/site/edt/calendrier/2026-2027'), cl, new Date(), (location.search.match(/[?&]n=([^&]+)/) || [])[1]); } catch (e) { r = String(e); } return { a: !!cl[cle], maint: new Date().toString().slice(0, 24), r }; }, C.cle));
+        const dbg = att.indexOf('Classe attendue : ' + C.nom) === 0 ? '' : ' · ' + JSON.stringify(await tb.evaluate(cle => { const cl = window.__hubLire('/classes') || {}; const g = window.__hubLire('/site/edt/grille/2026-2027'); let r = null; try { r = dr_tabCaseDuMoment(g, window.__hubLire('/site/edt/calendrier/2026-2027'), cl, new Date(), (location.search.match(/[?&]n=([^&]+)/) || [])[1]); } catch (e) { r = String(e); } let ls = null; try { ls = { n: (localStorage.getItem('__E3HUB28') || '').length, cles: Object.keys(localStorage).slice(0, 8), aLS: !!((JSON.parse(localStorage.getItem('__E3HUB28') || '{}').classes || {})[cle]), aMem: !!((window.__HUB || {}).classes || {})[cle] }; } catch (e) { ls = String(e); } return { ls, a: !!cl[cle], maint: new Date().toString().slice(0, 24), r }; }, C.cle)) + ' · le pilote : ' + JSON.stringify(await pg.evaluate(cle => ({ a: !!(window.__hubLire('/classes') || {})[cle], ecr: window.__ECR.filter(x => /classes|\/site\/edt\/grille/.test(x)).slice(-6), taille: (localStorage.getItem('__E3HUB28') || '').length }), C.cle));
         verif(k, att.indexOf('Classe attendue : ' + C.nom) === 0, T + ' · 13 · 51 · la page tableau sans cours dit « Classe attendue : ' + C.nom + ' »', '« ' + att + ' »' + dbg); await tb.close(); }
       /* 4 · l'emploi du temps, semaine du 2/11 : la case, la carte */
       await pg.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(pg, 1800); await pg.evaluate(() => { try { edtVue('semaine'); } catch (e) {} }); await p(pg, 1500); await sansVoiles(pg);
       const r = await pg.evaluate(nom => { const re = new RegExp('^\\s*' + nom.replace(/ /g, '\\s+'), 'i'); return { cases: Array.from(document.querySelectorAll('#edt-ecran .edt-clic')).filter(e => e.offsetParent && re.test(e.innerText)).map(e => e.innerText.replace(/\s+/g, ' ').slice(0, 110)), cartes: Array.from(document.querySelectorAll('#edt-ecran [onclick*="edtCarteClic"]')).filter(e => e.offsetParent).map(e => e.innerText.replace(/\s+/g, ' ').slice(0, 80)) }; }, C.nom);
+      r.cases = r.cases.filter(t => !/fil « langue »/.test(t));   /* une case du fil « langue » attend un chapitre de langue : le faux hub n'en a pas */
       const avecSeance = r.cases.filter(t => /heure \d+\s*\/\s*\d+/.test(t) && !/aucune séance prête/.test(t));
       await capt(pg, W, H, '51-' + C.niv + '-emploi-du-temps');
-      verif(k, r.cases.length > 0 && avecSeance.length === r.cases.length, T + ' · 13 · 51 · semaine du 2/11 : chaque case de « ' + C.nom + ' » montre sa séance (« heure n/N »)', avecSeance.length + '/' + r.cases.length + ' · ' + r.cases.slice(0, 2).join(' | '));
+      const sansSeance = r.cases.filter(t => /aucune séance prête|non encore importée|aucun chapitre/.test(t));   /* une case passée et pas jouée (« passée · pas jouée ») dit vrai : elle ne compte ni pour ni contre */
+      verif(k, avecSeance.length > 0 && sansSeance.length === 0, T + ' · 13 · 51 · semaine du 2/11 : chaque case de « ' + C.nom + ' » montre sa séance (« heure n/N »)', avecSeance.length + ' avec séance, ' + sansSeance.length + ' sans, sur ' + r.cases.length + ' · ' + (sansSeance[0] || r.cases[0] || ''));
       verif(k, r.cartes.some(t => t.indexOf(C.nom) >= 0 && /Poésie|peinture/i.test(t)), T + ' · 13 · 51 · la carte montre le chapitre publié', r.cartes.slice(0, 3).join(' | ') || 'aucune carte');
-      /* 5 · la fenêtre de la case de l'heure en cours : ses élèves ; puis lancer par la case */
-      const ouv = await pg.evaluate(nom => { const re = new RegExp('^\\s*' + nom.replace(/ /g, '\\s+'), 'i'); const cs = Array.from(document.querySelectorAll('#edt-ecran .edt-clic')).filter(e => e.offsetParent && re.test(e.innerText)); const c = cs.find(e => e.classList.contains('maintenant') || /en cours/i.test(e.innerText)) || cs[0]; if (!c) return false; c.click(); return true; }, C.nom); await p(pg, 1500);
-      const fen = await pg.evaluate(() => { const m = document.getElementById('edt-modale'); return m && m.getBoundingClientRect().height > 0 ? m.innerText.replace(/\s+/g, ' ') : ''; });
-      await capt(pg, W, H, '51-' + C.niv + '-la-case');
-      const vusFen = ELV.filter(n => fen.indexOf(n) >= 0 || fen.indexOf(n.split(' ')[1] + ' ' + n.split(' ')[0]) >= 0);
-      verif(k, ouv && vusFen.length === 4, T + ' · 13 · 51 · la fenêtre de la case montre ses élèves', vusFen.length + '/4 · « ' + fen.slice(0, 140) + ' »');
+      /* 5 · la case de l'heure en cours → « ▶ Ouvrir le pilotage et lancer » : l'heure a ses élèves */
+      const caseDe = () => pg.evaluate(c => { const z = document.querySelector('#edt-ecran .edt-case[data-iso="' + c.iso + '"][data-creneau="' + c.cr + '"]'); const e = z && Array.from(z.querySelectorAll('.edt-clic')).find(x => x.innerText.indexOf(c.nom) >= 0); if (!e) return false; e.click(); return true; }, C);
+      const fenetre = () => pg.evaluate(() => { const m = document.getElementById('edt-modale'); return m && m.getBoundingClientRect().height > 0 ? m.innerText.replace(/\s+/g, ' ') : ''; });
+      const ouv = await caseDe(); await p(pg, 1500); const fen0 = await fenetre();
       const lb = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Ouvrir le pilotage et lancer/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(pg, 3500); await sansVoiles(pg); await pg.keyboard.press('Escape'); await p(pg, 400);
-      const h = await pg.evaluate(() => ({ lancee: !!(window.S && S.lancee), eleves: (typeof ELEVES !== 'undefined' && Array.isArray(ELEVES)) ? ELEVES.slice() : null, slug: (window.S && (S.classeSlug || S.slug)) || (typeof dr_classe === 'function' ? (dr_classe() || {}).slug : null) }));
+      const h = await pg.evaluate(() => ({ lancee: !!(window.S && S.lancee), eleves: (typeof ELEVES !== 'undefined' && Array.isArray(ELEVES)) ? ELEVES.slice() : null }));
       const visibles = []; for (const n of ELV) if (await texteVisible(pg, new RegExp(n.split(' ')[1] + '|' + n.split(' ')[0]))) visibles.push(n);
       await capt(pg, W, H, '51-' + C.niv + '-l-heure-lancee');
-      verif(k, lb && h.lancee, T + ' · l’heure se lance par la case de « ' + C.nom + ' »', JSON.stringify({ bouton: lb, lancee: h.lancee }));
+      verif(k, ouv && lb && h.lancee, T + ' · l’heure se lance par la case de « ' + C.nom + ' » (' + C.cr + ')', JSON.stringify({ case: ouv, bouton: lb, lancee: h.lancee, fenetre: fen0.slice(0, 120) }));
       verif(k, h.eleves && ELV.every(n => h.eleves.indexOf(n) >= 0), T + ' · 13 · 51 · l’heure lancée a ses élèves (la participation)', JSON.stringify(h.eleves));
       info(k, T + ' · élèves visibles à l’écran de l’heure : ' + visibles.length + '/4');
+      /* 6 · l'heure jouée puis close → la fenêtre de sa case montre les élèves de la classe (les absents) */
+      if (h.lancee) { await dev(pg, 2); const cl2 = await clore(pg, C.fin);
+        await pg.clock.setFixedTime(new Date(C.apres)); await p(pg, 1500);   /* le créneau fini : la case est celle d'une heure jouée */
+        await pg.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(pg, 1800); await pg.evaluate(() => { try { edtVue('semaine'); } catch (e) {} }); await p(pg, 1200); await sansVoiles(pg);
+        const ouv2 = await caseDe(); await p(pg, 1500); const fen = await fenetre(); await capt(pg, W, H, '51-' + C.niv + '-la-case');
+        const vusFen = ELV.filter(n => fen.indexOf(n) >= 0 || fen.indexOf(n.split(' ')[1] + ' ' + n.split(' ')[0]) >= 0);
+        if (vusFen.length !== 4) info(k, T + ' · ce que le hub garde de l’heure jouée : ' + JSON.stringify(await pg.evaluate(c => { const ch = window.__hubLire('/site/' + c.niv + '/chapitres/0/seances') || []; const o = {}; (Array.isArray(ch) ? ch : Object.values(ch)).forEach((se, i) => { const d = (se || {}).deroule_joue || {}; Object.keys(d).forEach(sl => { o[i + '/' + sl] = { classe: d[sl].classe, heures: Object.keys(d[sl].heures || {}) }; }); }); return o; }, C)).slice(0, 500));
+        verif(k, cl2 && ouv2 && vusFen.length === 4, T + ' · 13 · 51 · l’heure jouée, la fenêtre de sa case montre ses élèves', vusFen.length + '/4 · close ' + cl2 + ' · « ' + fen.slice(0, 160) + ' »'); }
+      else verif(k, false, T + ' · 13 · 51 · la fenêtre de la case avec ses élèves : pas atteinte (l’heure ne s’est pas lancée)');
     } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif(k, !o.errs.length, T + ' · 0 erreur JS', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 

@@ -588,3 +588,30 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - **Ouvert, à moi** : une fois sur cinq (1536, 3e), la page tableau a dit « 3E Charles de Gaulle · 15:07 » sur la même tête — non reproduit en trois reprises ; le banc écrit désormais, en cas d'échec, ce que la page lit (`/classes`, le calcul refait) pour trancher.
 - `banc.sh` : **VERT** (`LIVRAISONS/INTEGRATION/E3/sorties/1010-27-10-1228-31/`).
 - §12.30 : E2 n'a poussé que sa mission 0. J'attends « §12.30 E2 fini » et `edtCleClasse` (E1) ; reprogrammée (50 min).
+
+## Retour 67 — 27/10, 11:24 — §12.30 VERT (`a4d5df8e`) ; §12.31 : un reste de 13 · 51 trouvé (l'heure jouée d'une classe à clé simplifiée), à E1 / E2
+- Correction du retour 66 : « §12.30 E2 fini » était déjà poussé (92910ac5, poussée 43) et E1 avait fini §12.31 (2e94c419, `edtCleClasse`, inventaire 1 bis). Je ne l'avais pas vu avant d'écrire.
+- **Tête assemblée** `a4d5df8e` (sur 15016dae9 ; E2 poussée 43, E1 §12.31 fini, ma ligne de `dr-tableau.js`).
+- **Cas 30** : `alerteTexte` est tombée (E2). La référence mot pour mot est donc la phrase que la ③ disait dans ce même geste, relevée au retour 65 sur l'assemblé de la production : « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » J'ajoute la vérification « en préparation aussi » (§12.30 (1)) : après « ❄ Préparer le cahier », la phrase reste sous la tête ; puis « Retour au cours ». **Aux quatre tailles, 40/40 vert** : la phrase mot pour mot, sous la tête, entière ; « tu dépasses · +3 min » en place ; `#fin` jamais redessiné ; `SELECT#f-ech` garde son focus ; la phrase en préparation ; plus rien après « Clore » ; rien en répétition ; 0 erreur JS. Captures `*-30-*-apres.png` regardées (1707 : la phrase passe à la ligne, entière, sous « T-5 — le cahier de textes dans 5 minutes »).
+- **§12.30 VERT (`a4d5df8e`)** — pour ma part : `banc-1228` cas 30 vert, et `banc-1227` entier **VERT 801/801** sur la même tête.
+- **Cas 51 sur la tête** — vert pour 3e et 4e, aux quatre tailles :
+  - la classe créée par l'import de sa liste, sous sa clé ;
+  - le menu, la publication ;
+  - la page tableau « Classe attendue » ;
+  - chaque case de la semaine avec sa séance, la carte avec le chapitre ;
+  - l'heure lancée par la case, avec ses 4 élèves dans `ELEVES`.
+- **Rouge, 8 sur 8 : l'heure jouée et close, la fenêtre de sa case**. Le créneau fini, la case dit « Case passée sans heure jouée : la séance n'y a pas eu lieu. Elle continue à la case suivante », sans les élèves.
+  - Ce que le hub garde : `deroule_joue/3_dylan_bob = { classe: "3 DYLAN Bob", heures: ["2026-11-03_10h07-11h02_3_dylan_bob"] }`.
+  - **La cause** : `_drCleHeureDe` (index.html l. 15286) fabrique la clé de l'heure avec `c.classeSlug` (la clé, « 3_dylan_bob »). `edtCleHeure(iso, creneau, nomClasse)` (l. 18066), lu par `edtTraceDe` et ses voisins, la cherche avec le nom (« 3_DYLAN_Bob »).
+  - La 3E Charles de Gaulle échappe au défaut : sa clé est son nom. `edtHeuresJouees` compte bien l'heure (la case suivante dit « heure 2 sur 3 »), seule la trace manque.
+  - Lecture par le nom contre écriture par la clé : c'est la famille du 1 bis, absente de l'inventaire. **À E1 / E2** (`index.html`, pas mon territoire), une seule règle : `edtCleClasse` des deux côtés, sans réécrire les heures déjà au hub.
+  - Ma mesure, refaite en entier par le geste (lancer → deux dévoilements → clore → le créneau passé → la case) : `LIVRAISONS/INTEGRATION/E3/sorties/1124-27-10-1228-30-31-apres/banc-1228-final.txt`.
+- **Ma mesure, corrigée en route** :
+  - le menu de l'appariement se trouve par le nom de sa ligne. Une ligne contient toutes les classes en options, et j'avais relié Franklin à Dylan.
+  - la fenêtre de la case est fixe : `offsetParent` est nul, je teste donc la hauteur.
+  - les élèves ne se montrent que dans la fenêtre d'une heure jouée (les absents), comme dans A56. Je joue et clos l'heure avant de rouvrir la case.
+  - les cases du fil « langue » et les cases « passée · pas jouée » ne comptent pas pour la séance.
+  - **un second onglet `file://` voit parfois un `localStorage` vide** (aucune clé, 3 fois sur 16 mesurées), donc un faux hub neuf. C'était la cause de mes rouges intermittents : la page tableau (1536 et 1920, 3e), 13 · 41 « aucun bandeau » et 29 « Reprendre » à 1536. Chaque nouvel onglet d'un contexte reçoit maintenant le hub du premier à sa création, et le défaut ne s'est plus produit.
+- **Le dernier passage** sur `a4d5df8e`, cas 30, 51, 50, 49, 41, 29 aux quatre tailles : **336/344**. Les 8 rouges sont tous l'heure jouée de 13 · 51. Captures `*-5[01]-*-apres.png`, `*-49-*`, `*-30-*`.
+- `banc-1228` entier, joué à 11 h avec l'ancien cas 51 : 440/464. Les rouges venaient de ma mesure (corrigée depuis) et de l'onglet vide. Je le rejoue en entier avec le banc final quand l'heure jouée sera réglée.
+- Paul prévenu (notification). §12.31 reste ouvert : « §12.30-31 VERT » attend la poussée d'E1 / E2 sur la clé de l'heure. Je suis reprogrammée (50 min).

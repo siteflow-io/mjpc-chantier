@@ -1,0 +1,106 @@
+[
+ {
+  "nom": "le titre « Le chapitre »",
+  "trouve": true,
+  "change": {}
+ },
+ {
+  "nom": "« n documents sur m attendus »",
+  "trouve": true,
+  "change": {}
+ },
+ {
+  "nom": "une séance (pas l’ouverte)",
+  "trouve": true,
+  "change": {}
+ },
+ {
+  "nom": "un document (item)",
+  "trouve": true,
+  "change": {}
+ },
+ {
+  "nom": "un attendu (document manquant)",
+  "trouve": true,
+  "change": {}
+ },
+ {
+  "nom": "« Chapitre · … »",
+  "trouve": true,
+  "change": {}
+ },
+ {
+  "nom": "« Séance n — … (n h) »",
+  "trouve": true,
+  "change": {}
+ },
+ {
+  "nom": "« Ouvrir chaque heure par la réactivation »",
+  "trouve": true,
+  "change": {
+   "scrollCol": [
+    0,
+    20
+   ],
+   "colH": [
+    2680,
+    2667
+   ]
+  }
+ },
+ {
+  "nom": "une ligne d’heure « H1 · … »",
+  "trouve": true,
+  "change": {
+   "scrollCol": [
+    20,
+    63
+   ]
+  }
+ },
+ {
+  "nom": "une diapo de la liste",
+  "trouve": true,
+  "change": {
+   "di": [
+    0,
+    3
+   ],
+   "titreMur": [
+    "Atelier · Diapo 1 sur 8 · heure 1 · Analyse d'images : la routine · prévue 3 min · H1 lundi 14 septembre · 09 h 00 → 09 h 03",
+    "Atelier · Diapo 4 sur 8 · heure 1 · Tableau 3 · prévue 5 min · H1 lundi 14 septembre · 09 h 14 → 09 h 19"
+   ],
+   "scrollCol": [
+    63,
+    172
+   ],
+   "halo": [
+    [
+     "Les cinq tableaux à analyser",
+     "1\nAnalyse d'images : la routin"
+    ],
+    [
+     "Les cinq tableaux à analyser",
+     "4\nTableau 3\n5 min"
+    ]
+   ]
+  }
+ },
+ {
+  "nom": "la ligne d’aide du bas",
+  "trouve": true,
+  "change": {
+   "scrollCol": [
+    172,
+    724
+   ]
+  }
+ },
+ {
+  "nom": "clic droit sur une diapo",
+  "menu": [
+   "Dupliquer",
+   "Insérer une diapo après"
+  ]
+ }
+]

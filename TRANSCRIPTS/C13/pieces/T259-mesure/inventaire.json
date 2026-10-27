@@ -1,0 +1,1557 @@
+{
+ "largeur": 250,
+ "hauteur": 675,
+ "scrollH": 2646,
+ "items": [
+  {
+   "tag": "H3",
+   "cl": "",
+   "txt": "Le chapitre",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 77,
+   "h": 18
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-prog",
+   "txt": "2 documents sur 35 attendus",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 99,
+   "h": 15
+  },
+  {
+   "tag": "B",
+   "cl": "",
+   "txt": "2",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 99,
+   "h": 14
+  },
+  {
+   "tag": "B",
+   "cl": "",
+   "txt": "35",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 99,
+   "h": 14
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-sce",
+   "txt": "▾ Poésie et peinture : le Romantisme en question",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 126,
+   "h": 32
+  },
+  {
+   "tag": "SPAN",
+   "cl": "at-som-pli",
+   "txt": "▾",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Replier cette séance",
+   "y": 134,
+   "h": 16
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-ici",
+   "txt": "Les cinq tableaux à analyser",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 162,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche méthode : décrire une image",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 196,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it",
+   "txt": "La frise du XIXe siècle",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 230,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche notion : les mouvements du XIXe siècle",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 264,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "sea",
+   "txt": "Chapitre · Poésie et peinture au XIXe siècle (proposition)",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 322,
+   "h": 33
+  },
+  {
+   "tag": "DIV",
+   "cl": "sea2",
+   "txt": "Séance 1 — Poésie et peinture : le Romantisme en question (3 h)",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 363,
+   "h": 33
+  },
+  {
+   "tag": "DIV",
+   "cl": "sea2 dr-react",
+   "txt": "Ouvrir chaque heure par la réactivation : oui (par défaut)",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Le réglage de cette séance : ce qui est proposé à l'ouverture de chaque heure (tu choisis ",
+   "y": 405,
+   "h": 33
+  },
+  {
+   "tag": "B",
+   "cl": "",
+   "txt": "oui",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 422,
+   "h": 14
+  },
+  {
+   "tag": "SPAN",
+   "cl": "",
+   "txt": "H1 · lundi 14 septembre · 55 min",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 450,
+   "h": 31
+  },
+  {
+   "tag": "SPAN",
+   "cl": "",
+   "txt": "52 + 5 = 57 min +7",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 450,
+   "h": 31
+  },
+  {
+   "tag": "SPAN",
+   "cl": "plus",
+   "txt": "+7",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "Ce que l'heure dépasse : réduis une durée ou déplace une diapo",
+   "y": 465,
+   "h": 14
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d on",
+   "txt": "1 Analyse d'images : la routine 3 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 488,
+   "h": 26
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "1",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 492,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Analyse d'images : la routine",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 492,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "3 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 493,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "2 Tableau 1 6 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 514,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "2",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 517,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Tableau 1",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 517,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "6 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 518,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "3 Tableau 2 5 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 538,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "3",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 541,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Tableau 2",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 541,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "5 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 542,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "4 Tableau 3 5 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 562,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "4",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 565,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Tableau 3",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 565,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "5 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 566,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "5 Tableau 4 5 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 586,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "5",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 589,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Tableau 4",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 589,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "5 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 590,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "6 Tableau 5 6 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 609,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "6",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 612,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Tableau 5",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 612,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "6 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 614,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "7 Les hypothèses de la classe 22 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 633,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "7",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 636,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Les hypothèses de la classe",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 636,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "22 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 638,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "8 Cahier de textes 5 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 657,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "8",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 660,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Cahier de textes",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 660,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "5 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 662,
+   "h": 15
+  },
+  {
+   "tag": "SPAN",
+   "cl": "",
+   "txt": "H2 · lundi 14 septembre · 55 min",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 693,
+   "h": 31
+  },
+  {
+   "tag": "SPAN",
+   "cl": "",
+   "txt": "48 + 5 = 53 min +3",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 693,
+   "h": 31
+  },
+  {
+   "tag": "SPAN",
+   "cl": "plus",
+   "txt": "+3",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "Ce que l'heure dépasse : réduis une durée ou déplace une diapo",
+   "y": 709,
+   "h": 14
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "1 Où en sommes-nous ? 3 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 731,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "1",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 734,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Où en sommes-nous ?",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 734,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "3 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 736,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "2 Les règles héritées 10 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 755,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "2",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 758,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Les règles héritées",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 758,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "10 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 760,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "3 La frise du siècle 5 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 779,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "3",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 782,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "La frise du siècle",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 782,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "5 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 783,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "4 Placer les poètes 9 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 803,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "4",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 806,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Placer les poètes",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 806,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "9 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 807,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "5 Le siècle des inventions 4 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 827,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "5",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 830,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Le siècle des inventions",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 830,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "4 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 831,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "6 Les mouvements du siècle 8 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 851,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "6",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 854,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Les mouvements du siècle",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 854,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "8 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 855,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "7 Trois mots pour la frise 2 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 875,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "7",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 878,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Trois mots pour la frise",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 878,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "2 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 879,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "8 Un poète spécial… 4 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 898,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "8",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 901,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Un poète spécial…",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 901,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "4 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 903,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "9 Question-bilan 3 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 922,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "9",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 925,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Question-bilan",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 925,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "3 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 927,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "10 Cahier de textes 5 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 946,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "10",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 949,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Cahier de textes",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 949,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "5 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 951,
+   "h": 15
+  },
+  {
+   "tag": "SPAN",
+   "cl": "",
+   "txt": "H3 · lundi 14 septembre · 55 min",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 982,
+   "h": 31
+  },
+  {
+   "tag": "SPAN",
+   "cl": "",
+   "txt": "10 + 5 = 15 min ✔",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 982,
+   "h": 31
+  },
+  {
+   "tag": "SPAN",
+   "cl": "",
+   "txt": "✔",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 998,
+   "h": 14
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "1 Baudelaire, 1821-1867 4 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 1020,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "1",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1023,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Baudelaire, 1821-1867",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1023,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "4 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1025,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "2 Question-bilan et travail à faire 6 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 1044,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "2",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1047,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Question-bilan et travail à faire",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1047,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "6 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1049,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "dr-d",
+   "txt": "3 Cahier de textes 5 min",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Ouvre cette diapo dans l'atelier",
+   "y": 1068,
+   "h": 24
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-n",
+   "txt": "3",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1071,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "t",
+   "txt": "Cahier de textes",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1071,
+   "h": 18
+  },
+  {
+   "tag": "SPAN",
+   "cl": "dr-h",
+   "txt": "5 min",
+   "onclick": false,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1073,
+   "h": 15
+  },
+  {
+   "tag": "DIV",
+   "cl": "aide",
+   "txt": "Ctrl + molette : zoom · clic droit : dupliquer, insérer, déplacer, env",
+   "onclick": false,
+   "cursor": "auto",
+   "title": "",
+   "y": 1102,
+   "h": 47
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-sce",
+   "txt": "▸ Étude de texte accompagnée : « L'Albatros »",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1165,
+   "h": 32
+  },
+  {
+   "tag": "SPAN",
+   "cl": "at-som-pli",
+   "txt": "▸",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Déplier cette séance",
+   "y": 1173,
+   "h": 16
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche texte : « L'Albatros »",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1201,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche notion : Rappel sur la versification",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1235,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche notion : Les figures de style",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1279,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche notion : Les genres littéraires",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1313,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche notion : Les registres littéraires",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1357,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-sce",
+   "txt": "▸ Interro de cours et analyse logique — les bases (1)",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1413,
+   "h": 32
+  },
+  {
+   "tag": "SPAN",
+   "cl": "at-som-pli",
+   "txt": "▸",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Déplier cette séance",
+   "y": 1421,
+   "h": 16
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche de révision : réviser l'interro de cours",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1449,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Interro de cours",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1493,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche méthode : l'analyse logique en 4 étapes",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1527,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche notion : les propositions",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1571,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Analyse logique : exercice en autonomie",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1605,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Analyse logique : le corrigé de l'exercice",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1649,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-sce",
+   "txt": "▸ Le poème sans vers : dictée et réécriture",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1705,
+   "h": 32
+  },
+  {
+   "tag": "SPAN",
+   "cl": "at-som-pli",
+   "txt": "▸",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Déplier cette séance",
+   "y": 1713,
+   "h": 16
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche texte : « Les Fenêtres »",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1741,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "La dictée préparée",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1775,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Dictée 1 : « Le port »",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1809,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Dictée à trous : « Le port »",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1843,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Réécriture notée : « Les Fenêtres »",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1877,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-sce",
+   "txt": "▸ Atelier d'écriture : le sonnet et le paragraphe",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 1923,
+   "h": 32
+  },
+  {
+   "tag": "SPAN",
+   "cl": "at-som-pli",
+   "txt": "▸",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Déplier cette séance",
+   "y": 1931,
+   "h": 16
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche texte : « À une passante »",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1959,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche méthode : lire et réciter un poème à voix haute",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 1993,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche méthode : le paragraphe citation-justification",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2037,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Ton paragraphe corrigé",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2081,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche notion : rappel sur la versification",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2115,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-sce",
+   "txt": "▸ Brevet blanc n°1 : un sonnet, « Parfum exotique »",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 2171,
+   "h": 32
+  },
+  {
+   "tag": "SPAN",
+   "cl": "at-som-pli",
+   "txt": "▸",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Déplier cette séance",
+   "y": 2179,
+   "h": 16
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Le sujet du brevet blanc",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2207,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Ta copie corrigée",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2241,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-sce",
+   "txt": "▸ Récitation : « À une passante »",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 2287,
+   "h": 16
+  },
+  {
+   "tag": "SPAN",
+   "cl": "at-som-pli",
+   "txt": "▸",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Déplier cette séance",
+   "y": 2287,
+   "h": 16
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Récitation : « À une passante »",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2307,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Fiche méthode : lire et réciter un poème à voix haute",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2341,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-sce",
+   "txt": "▸ Remédiation",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 2397,
+   "h": 16
+  },
+  {
+   "tag": "SPAN",
+   "cl": "at-som-pli",
+   "txt": "▸",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Déplier cette séance",
+   "y": 2397,
+   "h": 16
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Correction de la dictée",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2417,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Reprise de la réécriture",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2451,
+   "h": 34
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Entraînement sur mes points faibles",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2485,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-sce",
+   "txt": "▸ Tâche finale : un poème en prose inconnu, « L'Étranger »",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "",
+   "y": 2541,
+   "h": 32
+  },
+  {
+   "tag": "SPAN",
+   "cl": "at-som-pli",
+   "txt": "▸",
+   "onclick": true,
+   "cursor": "pointer",
+   "title": "Déplier cette séance",
+   "y": 2549,
+   "h": 16
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Sujet de la tâche finale : « L'Étranger »",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2577,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Sujet de la tâche finale : « L'Étranger » — version aménagée",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2621,
+   "h": 44
+  },
+  {
+   "tag": "DIV",
+   "cl": "ed2-it ed2-attendu",
+   "txt": "Ta copie corrigée",
+   "onclick": true,
+   "cursor": "default",
+   "title": "",
+   "y": 2665,
+   "h": 34
+  }
+ ]
+}

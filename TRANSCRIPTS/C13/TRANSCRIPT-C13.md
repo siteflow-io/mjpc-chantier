@@ -5147,3 +5147,79 @@ MEMO
 *(Promus à 22:35 : `index.html` 8.75.0-⑥, commit prod `928350e98194`, md5 `231ffca589c8033ad62b7ecc213a460f` ; `redaction.html` 1.1.0-RU, commit `dc045e5a54ef`, md5 `f7c2c85e05468c7dd74d785eb9aa707c` ; bit à bit ; suivi fait. Le prompt d'injection 1.0 est en place.)*
 
 **Paul (22:36) :** la colonne de gauche là, mesure ce qu'elle fait, ce qu'elle ne fait pas, l'organisation qu'elle a. Je veux qu'elle soit opérationnelle, logique, simple, que chaque clic fasse quelque chose etc. j'attends tes propositions (ce qui va, ce qui ne va pas, tes remédiations). avant ça tu iras lire son cadrage sur github. *(capture jointe : l'Atelier de la ⑤ sur un écran étroit, la colonne « Le chapitre » à gauche — `pieces/T258-08-capture-de-paul-la-colonne-de-gauche.png`)*
+
+---
+
+## Tour 259 — 27/10/2026 22:44 → 22:57
+
+**Paul (22:44, en interrompant la mesure) :** De plus : 16. Atelier (feuilles) : il manque la mise en forme du texte. Une feuille de l'Atelier n'imprime que du texte brut (atEsc / atMultiligne) : ni gras, ni souligné, ni surlignage, ni couleur. Paul demande les mêmes fonctions que dans le diapo : la palette « A » (surligner en jaune, vert, bleu…, « Sans surlignage »), la couleur du texte, G gras (Ctrl+B), S souligné (Ctrl+U), et la légende de surlignage. La mise en forme doit être enregistrée avec la feuille, comme e.forme dans la trame, et rester à l'impression.
+Cas réel : la « Dictée classique : « Le port » » de Paul (sujets soulignés, verbes conjugués en gras, participes employés comme adjectifs en couleur, avec la légende « Sujet souligné · verbe conjugué en gras »). En attendant, la feuille est faite sans cette mise en forme : le texte et l'explication des accords seulement. Même manque pour sa fiche « Les connecteurs logiques » (couleurs des colonnes et des cas).
+
+**Claude** *(réponse à 22:36 et à 22:44 ; images : `pieces/T259-01-aujourdhui-ce-que-fait-chaque-clic-de-la-colonne.png`, `pieces/T259-02-la-colonne-entiere-aujourdhui-et-proposee.png`, `pieces/T259-03-propose-la-colonne-de-gauche-ecran-entier.png` ; les scripts et les relevés dans `pieces/T259-mesure/`)* :
+
+À jouer : rien de neuf (la ⑥ et la Rédaction 1.1 sont en production) · en cours chez les exécutants : E1, le lancement qui suit l'ordre des clés (670) ; E3 vérifie §12.34 et §12.35 ; E4, la retouche de L18 · ouvert : 656, 680, 681 ; 641, 538, 553, 586, 481, 458.
+
+655. Ton 16 : vérifié dans le code de la ⑥. Une feuille de l'Atelier s'imprime en texte brut (`atEsc`, `atMultiligne`) ; son éditeur n'enregistre aucune mise en forme. Registre 13 · 78, avec tes deux cas (« Le port », « Les connecteurs logiques »).
+
+656. Remédiation : la palette de la diapo (A, la couleur, G, S, la légende) reprise telle quelle sur la feuille ; la forme enregistrée avec la feuille, comme `e.forme` dans la trame ; l'impression la garde. Contrat §12.37, à E1 ; E3 le vérifie sur « Le port » imprimé (sujets soulignés, verbes en gras, participes en couleur, la légende). Je l'écris sur ton mot.
+
+657. La colonne de gauche, mesurée par le geste sur la ⑥, à 1707 × 743, sur le faux hub d'E3 (le chapitre 3e, 9 séances) : 14 sortes d'éléments cliquées. Cadrage relu : CADRAGE-INTEGRATION (« UNE seule colonne, un arbre » : chapitre / séances repliables / écrans sous la SEULE séance dépliée), contrat §8.3, cadrage 1 §0.1 (« la colonne de gauche et la colonne de droite se replient d'une poignée »), cadrage 4 §1.1 (« séances, diapos, l'heure prévue de chacune, les frontières d'heure »). Image 1 : chaque clic.
+
+Ce qui va :
+
+658. Un clic sur une séance repliée (titre ou ▸) : elle se déplie, l'autre se replie, sa diapo 1 s'ouvre au centre. C'est le cadrage.
+
+659. Un clic sur une diapo : elle s'ouvre au centre, encadrée dans la liste. Le clic droit : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer.
+
+660. « Ouvrir chaque heure par la réactivation » : un clic bascule oui ↔ non, enregistré.
+
+661. Les frontières d'heure (H1, H2, H3) et le dépassement en rouge.
+
+Ce qui ne va pas :
+
+662. 11 sortes d'éléments sur 14 ne font rien au clic : « Le chapitre », « 2 documents sur 35 attendus », le titre de la séance ouverte, son ▾ (son infobulle dit pourtant « Replier cette séance »), chaque document (le curseur montre une main), chaque attendu, « Chapitre · … », « Séance 1 — … », la ligne d'heure, « +7 », la ligne d'aide.
+
+663. Quatre niveaux au lieu de trois : les documents s'intercalent entre la séance et ses diapos, et une séance repliée garde tous ses documents affichés. La colonne fait 2 646 px pour 675 visibles, presque quatre écrans ; la séance 5 est au troisième. Image 2, à gauche.
+
+664. Les doublons : le chapitre deux fois (« Le chapitre », puis « Chapitre · Poésie et peinture… »), la séance deux fois.
+
+665. Un document reste surligné dans la séance 1 quand la séance 2 est ouverte (« Les cinq tableaux à analyser » ; sur ta capture, deux).
+
+666. La ligne d'heure se lit mal : « 55 min », puis « 52 + 5 = 57 min », puis « +7 ». Le « pour 50 utiles » qui explique le 7 n'est écrit qu'à droite.
+
+667. Chaque diapo a sa durée, pas son heure prévue (cadrage 4 §1.1).
+
+668. Pas de poignée : la colonne ne se replie pas et ne s'élargit pas (250 px sur 1 707) ; les titres sont coupés (« Analyse d'images : la r… »).
+
+669. La ligne d'aide est sous la dernière diapo de la séance, à 600 px du haut : on ne la voit pas.
+
+670. E3 (retour 82, 22:54) : dès qu'une séance a été déplacée, le lancement par la case ouvre une autre séance que celle que la case nomme (la case dit « Remédiation », le lancement ouvre « Étude de texte »). Déjà en production. Registre 13 · 80 ; à E1, contrat §12.35 (7), garde A83 : relancé, c'est dans ton « Règle tout » (§12.35).
+
+671. Mesuré aussi : la colonne date H1, H2 et H3 « lundi 14 septembre », chaque heure à 09 h 00. L'emploi du temps met cette séance le lun. 14/09 à 08:57, le mar. 15/09 à 15:07 et le ven. 18/09 à 10:07 pour la classe écrite en haut. La colonne prend les heures de 3 DYLAN Bob, qui n'a pas cette séance, et met alors aujourd'hui partout, sans le dire. Registre 13 · 79.
+
+Mes remédiations (image 3 : la proposition écrite dans la vraie page, sur le faux hub, rien d'enregistré ; image 2 à droite : la colonne entière) :
+
+672. Dans l'Atelier, la colonne n'a que les trois niveaux du cadrage : le chapitre, les séances, et sous la seule séance ouverte ses heures et ses diapos. Les documents et les attendus en sortent : leur place est Structure, où un clic les ouvre. 2 646 px deviennent 1 155.
+
+673. En haut, le vrai titre du chapitre à la place de « Le chapitre » ; « 2 documents sur 35 attendus → Structure » : un clic ouvre Structure.
+
+674. Plus de « Chapitre · … » ni de « Séance 1 — … » : sous la séance ouverte, son réglage de réactivation, puis ses heures.
+
+675. Le ▾ et le titre de la séance ouverte la replient, comme l'infobulle le dit ; un second clic la rouvre.
+
+676. La ligne d'heure : « H1 · lun. 14/09 · 08:57 → 09:52 », puis « 57 min prévues pour 50 utiles +7 ». Un clic ouvre sa première diapo.
+
+677. Chaque diapo : son heure prévue à la place du numéro (08:57, 09:00…), sa durée à droite ; clic et clic droit inchangés. L'aide du bas passe dans l'infobulle de chaque diapo : « Clic : ouvre cette diapo · clic droit : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer ».
+
+678. Une poignée au bord droit de la colonne, comme celle de droite : tirer l'élargit ou la réduit ; tout à gauche, elle se replie.
+
+679. 13 · 79 réglée en même temps : les heures viennent de l'emploi du temps de la classe écrite en haut ; une heure qui n'y est pas encore le dit (« H3 · pas encore à l'emploi du temps ») au lieu d'une fausse date.
+
+680. Qui code : E1 (la colonne est au socle), contrat §12.36 ; E3 vérifie par le geste chaque élément de l'image 1, ce qu'il fait écrit. Sur ton mot.
+
+681. Ta décision (E3, retour 82) : chez l'élève de Dylan, la remédiation de Franklin est cachée mais garde son numéro ; sa page dit « SÉANCE 1 », puis « SÉANCE 3 ». Je propose : chaque classe numérote ses séances sans trou (Dylan : 1, 2, 3…) ; ta Structure et ton Atelier gardent les numéros du chapitre. Oui ?
+
+À tester, dans l'Atelier de la ⑥ : clique le ▾ de la séance ouverte, puis un document, puis la ligne « H1 · … » : rien ne bouge (662). Clique une séance repliée : elle s'ouvre, l'autre se replie (658).
+
+27/10/2026 22:57
+MEMO

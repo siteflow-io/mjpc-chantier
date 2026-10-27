@@ -4158,3 +4158,16 @@ MEMO
 
 27/10/2026 09:46
 MEMO
+
+## Tour 221 — 27/10/2026 09:56 — contrôle n°74 (sans message de Paul depuis le tour 220)
+
+**Fait.** Lu sur `integration` : E2 `2c92e43e` (09:47) — `banc.sh` VERT sur la tête rebasée, §12.31 (1) en attente d'`edtCleClasse` ; E1 : rien depuis `7f12a15b` (09:10), son rappel de 09:45 a tiré (en course : l'inventaire puis `edtCleClasse`) ; E3 : rien depuis 08:21, son rappel a tiré à 09:21, aucun rappel actif → fire_trigger `trig_018aoca2Js1FYkCJivCL2VZi` (09:54). Le code du site a bougé (E1 49-50, E2 la phrase) : mon banc lancé à 09:55 sur la tête (`$S/banc-0955.log`). Contrôle n°75 à 10:45 (`trig_01KaoaG8bnCs5m375nb3F27c`).
+
+**Réponse (mot pour mot).**
+
+512. Contrôle de 09:54. E1 fait la liste des endroits du site qui confondent les deux étiquettes, puis la correction ; E2 attend sa correction pour aligner la sienne. J'ai relancé E3 (il ne s'était pas reprogrammé) et je vérifie moi-même ce qui est déjà fait. Prochain contrôle à 10:45.
+
+À tester : rien de nouveau avant la ⑤.
+
+27/10/2026 09:56
+MEMO

@@ -720,3 +720,12 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   2. **« Diapo trop pleine »** est dit à 4 mots-clés, même quand le tableau tient sur une page (la ⑤) : l'alerte et la pagination ne mesurent pas la même chose.
   3. **Une ligne vide « › » sous la question du bilan.** C'est la question sans réponse attendue (§12.23), qui garde une puce vide et une ligne de hauteur.
 - Sorties dans `/` (`mesure-1363-prod5.txt`, `mesure-1363-tete.txt`).
+
+## Retour 76 — 27/10, 18:58 — §12.32 : les trois captures « après » refaites (relance 18:37)
+- La relance de 18:37 est lue, et elle est juste : mes trois « après » étaient prises un temps trop tard, menu refermé, fenêtre « Lier » fermée, item sous le bas de l'écran.
+- Le cas 32 prend maintenant chaque capture à l'instant que montre l'« avant » :
+  - `32-1` : le menu des outils ouvert, avec « ✏️ Rédactions — panneau prof » ;
+  - `32-2` : la fenêtre « Lier » ouverte et défilée jusqu'à « ✏️ Sujet de rédaction existant », avec « Écrire une lettre de la Grande Guerre » choisi ;
+  - `32-3` et `32-3b` : l'onglet défilé jusqu'à l'item « Fiche méthode : décrire une image » et la porte « Ouvrir la Rédaction universelle ».
+- Rejoué à 1707 et 1920 sur `cea82c21` : **18/18**. Les trois captures 1707 sont regardées et montrent ce qu'elles nomment. Sortie : `banc-1228-cas32-captures.txt` dans `LIVRAISONS/INTEGRATION/E3/sorties/1834-27-10-1228-32-vert/`.
+- *L'ordre demandé était les captures avant la mesure 13 · 63. La mesure était déjà poussée (retour 75) quand j'ai lu la relance ; elle n'en dépend pas.*

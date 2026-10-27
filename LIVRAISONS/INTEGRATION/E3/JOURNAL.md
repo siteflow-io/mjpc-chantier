@@ -644,3 +644,18 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - l'import refusé : « « notes » sur une diapo qui n'est pas le bilan ».
   « ▶ Jouer en avance » entre bien en répétition. 0 erreur JS. Captures `*-33-*-avant.png`.
 - J'attends « §12.33 E1 fini ». Puis : le cas 33 sur la tête, ajusté aux marques d'E1, la vérification courte et `banc.sh`.
+
+## Retour 71 — 27/10, 15:57 — §12.33 sur la tête `677edc1b` (E1 (1)(3)(4)(5)) : 64/68 ; seul rouge, les onglets ((2) en attente des contrôles K)
+- E1 a poussé (1), (3), (4) et (5) (`8ec8b6bd`, `aa7c1234`). (2) attend : les onglets restent dans l'Atelier tant que les contrôles K les cliquent. Contrôles v5 et relance E1 à 15:38.
+- **Le cas 33 sur la tête, aux quatre tailles : 64/68.**
+  - **La poignée** est dans l'écran et se prend sans viser, partout, aux zooms 90 %, 100 % et 110 %. À 1707 × 743, elle passe de 765-771 (hors de l'écran) à 640-652. Tirée de 60 px vers le haut, elle reste dans l'écran.
+  - **« 📝 Notes »** est sorti de l'Atelier.
+  - **Les marques** : `#at-surl`, `#at-txt` et `#at-ecr` sont dans la barre, chacun avec son infobulle. Un mot surligné, un mot en couleur et un élément « à écrire » se posent. Ils sont revus après rechargement et vus au tableau en répétition.
+  - **L'import** : un chapitre avec des notes sur trois diapos et le bilan est accepté, et chaque note est dans le cadre de sa diapo.
+  - **Rouge, 4 sur 4 : « Pilotage » et « Relecture » encore dans l'Atelier.** C'est attendu jusqu'au (2) d'E1.
+- **Ma mesure, corrigée en route.**
+  - Le geste « à écrire » se fait en plaçant le curseur dans l'élément, comme le dit l'infobulle, et non par un clic.
+  - Le mot marqué est le plus long de l'élément, parce que « Étape » ouvre chaque élément.
+  - La vignette du volet se clique à la souris : le focus quitte alors les notes.
+  - **La diapo se retrouve par son titre et non par son rang** : l'Atelier intercale ses diapos de fin d'heure (la diapo 6 du JSON y est la 7).
+- J'attends « §12.33 (2) » d'E1, puis je joue le cas 33 entier et la vérification courte, et `banc.sh`.

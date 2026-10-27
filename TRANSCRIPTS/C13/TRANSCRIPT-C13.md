@@ -4776,3 +4776,25 @@ MEMO
 
 27/10/2026 15:53
 MEMO
+
+
+---
+
+## Tour 245 — 27/10/2026 15:55 → 15:56
+
+**Paul :** Et l'id interne?
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 les objets (avec l'id interne) et les mots de liaison, E1 et E3 l'Atelier · ouvert : 538, 553, 586, 481, 458
+
+597. L'identité du 595, c'est l'id interne : rangé dans la copie elle-même, né une fois, et qui ne dépend ni du nom de l'élève ni du nom de la classe. La copie désigne l'élève et la classe par leurs clés internes, jamais par leurs noms affichés : si tu renommes une classe ou corriges l'orthographe d'un nom, la copie se retrouve par son id interne.
+
+598. Le sujet aussi : son id interne naît quand tu le crées, distinct de son titre et du nom écrit dans le JSON collé.
+
+599. Je l'ai précisé à E4 ; c'est dans la même poussée que la retouche des mots de liaison.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:56
+MEMO

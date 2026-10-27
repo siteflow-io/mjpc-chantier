@@ -161,3 +161,5 @@ Mesuré sur `redaction_dugain_v3.html` (production, 349 982 o, 6 205 lignes, JS 
 - **Corrigé en route** : la fenêtre du crayon ✏️ était dans `#ruApp` (caché à l'accueil) — sortie de `#ruApp` ; le témoin du hub et le « ? » recouvraient les boutons de l'en-tête — replacés.
 - **Captures** (`captures/panneau/`, 1707 × 743, regardées) : avant (production 1.0.0-RU) 1 accueil, 2 rédaction ouverte, 7 une copie ; après 1 accueil, 2 rédaction ouverte, 3 Préparation, 4 Bilan, 5 Fiches, 6 Réglages, 7 une copie. Exemples : la lettre de la Grande Guerre pour 3 FRANKLIN Aretha (copie d'AUDEBERT Elise), sa copie pour 3 DYLAN Bob.
 - Sorties du banc : `sorties/1846-27-10/` (banc.log). redaction.html md5 4360a65c3089977e8a02663d090ab4e5.
+
+**RU panneau fini (2d6570e42)** — 27/10 18:59 (Paris) · RU0-RU17 76 / 0, captures avant / après regardées.

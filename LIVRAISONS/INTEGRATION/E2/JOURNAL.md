@@ -598,3 +598,5 @@ Relances « 22:45 — contrôle n°64 » et « 23:30 — contrôle n°65 » lues
 
 ## 27/10 01:22 (Paris) — retour 43 : **§12.28 E2 fini (d82b60f4)** · **§12.29 E2 fini (d82b60f4)**
 - §12.28, ma part : 13 · 40 (B28), 13 · 41 (c) la garde, (d) le bandeau, (e) la reprise à l'endroit exact (B29-B31), 13 · 46 (`dr_resteHeure`, réglée par la chute de la garde, B32), et les retours d'E3 / contrôles n°63-65 (le bandeau ne recouvre rien, ne pousse rien, ne part pas ; le chrono ne recule pas). §12.29, ma part : S1 (B33), S2 la tête et `dr_montrerCahier` (B34), S4 la case (B35). Tout est poussé, banc E2 198 / 0, `banc.sh` VERT. **Laissé à E1** (dit plus haut) : la barre du bas dans le gabarit et l'appel `alerteOuvrir` de `dr_tout` ; `dr_versLaSequence` ouvre la séquence par `ouvrirFin()` sans argument — en mode « Garder ces décisions » à l'étape 7, pas « Clore l'heure » : `ouvrirFin(true)` serait juste (à E1). E3 mesure (banc-1228). Deux retours de veille, puis arrêt.
+
+## 27/10 01:27 (Paris) — retour 44 : veille n°1 — contrôle n°67 lu (§12.28 et §12.29 E2 finis, juste ; la phrase de l'ancienne boîte nommée à Paul par la conscience). Rien de nouveau pour moi.

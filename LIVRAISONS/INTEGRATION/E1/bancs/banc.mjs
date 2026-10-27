@@ -79,7 +79,7 @@ await B('A5', 'Structure ↔ Atelier : la zone se gare et revient, intacte ; le 
   await pg.click('#ong-atelier'); await pg.waitForTimeout(1500); await sansVoile(pg);
   const r = await pg.evaluate(() => ({ actif: dr_actif(), di: S.di, cour: (document.querySelector('#volet [data-at-di].cour, #volet [data-at-di].on, #volet .cour') || {}).dataset || null, lignes: document.getElementById('mur').innerText.trim().length }));
   E.verif('A5', r.actif && r.di === di && r.lignes > 0, 'retour à l\'Atelier : la même diapo (S.di ' + di + '), le mur rendu', JSON.stringify(r));
-  await pg.click('#ong-pilotage'); await pg.waitForTimeout(500); const v = await pg.evaluate(() => ({ at: S.atelier, act: (document.querySelector('.at-onglet-actif') || {}).dataset.vue, vue: ATVUES.vue }));
+  await pg.evaluate(() => document.getElementById('ong-pilotage').click()); /* §12.33 (2) : l'onglet est caché dans l'Atelier, gardé pour les scripts */ await pg.waitForTimeout(500); const v = await pg.evaluate(() => ({ at: S.atelier, act: (document.querySelector('.at-onglet-actif') || {}).dataset.vue, vue: ATVUES.vue }));
   E.verif('A5', v.at === false && v.act === 'pilotage' && v.vue === 'pilotage', 'Pilotage : la vue de la maquette et l\'onglet actif du site suivent', JSON.stringify(v));
   await lancerEnClasse(pg); await pg.waitForTimeout(600);   /* (§12.28-3a) l'heure se joue dans l'écran de la classe : l'onglet Atelier n'y est pas, atVuesAller('atelier') n'y fait rien */
   const cl = await pg.evaluate(() => { const a = document.getElementById('ong-atelier'); const vis = !!a && a.offsetParent !== null; atVuesAller('atelier'); return { vis, vue: ATVUES.vue, at: !!S.atelier, lancee: !!S.lancee }; });
@@ -96,7 +96,7 @@ await B('A6', 'la colonne unique (point 13, contrat §8.3) : sous la séance dé
   const n1 = await pg.evaluate(() => ({ n: dr_trame().length, p: dr_trame().filter(e => e.role !== 'fin').length })); E.verif('A6', e1.snum === '1' && e1.si === 1 && e1.seance === '1' && e1.ouvertes === 1 && n1.p === 17 && e1.lignes === n1.n, 'déplier la séance 1 : elle devient celle du déroulé (ATVUES.snum, S.si), son volet (ses 17 diapos et ses fins d\'heure), la séance 0 se replie', JSON.stringify(e1));
   await pg.click('.at-onglet[data-vue="structure"]'); await pg.waitForTimeout(1200); await sansVoile(pg);
   E.verif('A6', await pg.evaluate(() => document.getElementById('volet').parentNode.classList.contains('corps')), 'en Structure : le volet est rentré dans la zone du déroulé (garée)');
-  await pg.click('#ong-pilotage'); await pg.waitForTimeout(1200); await sansVoile(pg); const e2 = await etat();
+  await pg.evaluate(() => document.getElementById('ong-pilotage').click()); /* §12.33 (2) : l'onglet est caché dans l'Atelier, gardé pour les scripts */ await pg.waitForTimeout(1200); await sansVoile(pg); const e2 = await etat();
   E.verif('A6', e2.hote === 'at-som-volet' && e2.seance === '1' && e2.lignes === n1.n, 'retour au Pilotage : le volet revient sous la séance 1', JSON.stringify(e2));
   E.verif('A6', await pg.evaluate(() => window.__ECR.filter(x => /\/chapitres\//.test(x)).length === 0), 'K15 : rien d\'écrit en dépliant, en changeant de séance, en changeant d\'onglet');
   E.verif('A6', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
@@ -895,7 +895,7 @@ await B('A40', '§12.27 (4), dette 13 · 37 : l\'Atelier à toute la largeur et 
   E.verif('A40', await p2.evaluate(() => !document.getElementById('atelier-ecran').classList.contains('at-actif') && !!document.querySelector('.tprof-overlay.visible')), '« Mes chapitres » : le clic ferme l\'atelier et rouvre le panneau prof'); await o2.ctx.close();
   if (AVANT_1227) { const ecarts = []; for (const [w, h] of TAILLES_1227.filter(t => t[0] === 1707 || t[0] === 1920)) {
       const oa = await ouvrirFichier(AVANT_1227, w, h); const av = await pagesDuPilote(oa.pg); await oa.ctx.close(); const ap = PILOTE_1227[w] || [];
-      av.forEach((x, i) => { const y = ap[i]; if (!y || x.pages !== y.pages || x.lignes !== y.lignes || Math.abs((x.ratio || 0) - (y.ratio || 0)) > 1e-3)   /* la police rapportée au cadre : l'arrondi au pixel du cadre bouge la 5ᵉ décimale (0,055989 → 0,055992), pas la police */ ecarts.push(w + ' diapo ' + (i + 1) + ' : avant ' + x.pages + ' / ' + x.ratio + ' · après ' + (y ? y.pages + ' / ' + y.ratio : '—')); }); }
+      av.forEach((x, i) => { const y = ap[i]; const un = p => p === '[[]]' ? 'null' : p; /* [[]] (une page sans ligne : l'ancienne pagination d'une diapo sans étape) = null : une page, pas de compteur */ if (!y || un(x.pages) !== un(y.pages) || x.lignes !== y.lignes || Math.abs((x.ratio || 0) - (y.ratio || 0)) > 1e-3)   /* la police rapportée au cadre : l'arrondi au pixel du cadre bouge la 5ᵉ décimale (0,055989 → 0,055992), pas la police */ ecarts.push(w + ' diapo ' + (i + 1) + ' : avant ' + x.pages + ' / ' + x.ratio + ' · après ' + (y ? y.pages + ' / ' + y.ratio : '—')); }); }
     E.verif('A40', ecarts.length === 0, '(10) la diapo (au mur de l\'Atelier) ne change pas avant / après (mêmes pages, mêmes lignes à la première page, même police à 0,001 près du cadre), à 1707 × 743 et 1920 × 1080', ecarts.slice(0, 4).join(' ; ') || undefined); }
   else E.verif('A40', false, '(10) avant / après : la tête d\'avant §12.27 (9c075358) est introuvable');
 });

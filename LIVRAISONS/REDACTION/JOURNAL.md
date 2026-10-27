@@ -109,3 +109,5 @@ Mesuré sur `redaction_dugain_v3.html` (production, 349 982 o, 6 205 lignes, JS 
 - **Le banc lui-même** : une page neuve reçoit maintenant, avant de démarrer, le faux hub le plus récent gardé côté banc (une page ouverte juste après qu'une autre a écrit relisait parfois un hub ancien — défaut du banc, pas de l'app).
 - **Captures** (`captures/`, à 1707 × 743) : + **3b « le compteur et le niveau à trancher »** (la carte) ; les autres rejouées.
 - **Banc** `banc-ru.mjs` RU0-RU13 : **50 ok · 0 échec** (`sorties/1454-27-10/banc-ru.txt`).
+
+**RU fini (`a292246ae`)** — 27/10 15:02 (Paris), après la relance de 14:13. Banc RU0-RU13 : 50 ok, 0 échec. Captures à 1707 × 743 dans `LIVRAISONS/REDACTION/captures/`. Restent au mot de Paul : les seuils du compteur de la lettre, les compétences de Dugain.

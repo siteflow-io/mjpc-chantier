@@ -99,3 +99,5 @@ Mesuré sur `redaction_dugain_v3.html` (production, 349 982 o, 6 205 lignes, JS 
 - **La lettre corrigée par la conscience** (`8e334076`, l'énoncé porte les cinq architectures) : repassée dans « Vérifier » au banc — **« Réponse comprise », rien de refusé** ; sa fiche montre l'énoncé entier.
 - **(D) 13 · 54** (la phrase du compteur dit le niveau choisi, pas le barème de la longueur) : **rien codé**, j'attends la règle de Paul (point 561).
 - **Banc** `banc-ru.mjs` RU0-RU12 : **46 ok · 0 échec** (`sorties/1417-27-10/banc-ru.txt`) ; `redaction.html` inchangée (md5 `231519ef…`).
+
+**RU fini (`dee469878`)** — 27/10 14:25 (Paris), après le contrôle n°80. Banc RU0-RU12 : 46 ok, 0 échec. Captures vraisemblables à 1707 × 743 dans `LIVRAISONS/REDACTION/captures/`. Restent au mot de Paul : 13 · 54 (point 561), les seuils du compteur de la lettre, les compétences de Dugain.

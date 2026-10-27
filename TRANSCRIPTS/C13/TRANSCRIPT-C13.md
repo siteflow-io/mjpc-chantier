@@ -4059,3 +4059,24 @@ MEMO
 
 27/10/2026 08:55
 MEMO
+
+## Tour 216 — 27/10/2026 09:00 — Paul (08:58)
+
+**Paul (mot pour mot).** « Je n'ai pas compris le problème mais je croyais que ces histoires de noms de classe et d'id interne avaient été réglées depuis longtemps !!!! »
+
+**Mesuré.** Registre prod : **12 · 90** (01/10, « la correction de dictée et la réécriture ne proposent pas les nouvelles classes ») — la même confusion (clé contre nom), mesurée au hub ce jour-là : les quatre vraies classes ont pour clés `3_dylan_bob`, `3_franklin_aretha`, `4_hugo`, `4_turing` ; seule « 3E Charles de Gaulle » a son nom pour clé ; réglée dans la dictée (6.6.1) et la réécriture (2.4.1) seulement, promue le 01/10. Aucune recherche des autres lectures par le nom dans le site à ce moment-là. Registre (13 · 51 annotée), contrat §12.31 (1 bis) : l'inventaire entier des lectures d'une classe par son nom (`index.html`, `dr-*.js`), compté, une seule résolution ; E3 joue chaque écran qui montre une classe ; relances E1, E2, E3 (08:59).
+
+**Réponse (mot pour mot).**
+
+À jouer : rien · en cours chez les exécutants : E1 13 · 51 sur tout le site, 13 · 49, 13 · 50 ; E2 la phrase (454) ; E3 les mesures · ouvert : 481, 458
+
+496. Le problème, simplement : chaque classe a deux étiquettes — son nom, « 3 FRANKLIN Aretha », et son étiquette de rangement, « 3_franklin_aretha ». Le menu de l'emploi du temps retient le nom ; puis l'emploi du temps va chercher la classe sur les étiquettes de rangement avec ce nom : il ne la trouve pas. Pour la 3E Charles de Gaulle, les deux étiquettes sont identiques : il la trouve.
+
+497. Tu as raison, c'était réglé — mais seulement en partie. Le 01/10 (dette 12 · 90), la même confusion a été réglée dans la correction de dictée et la réécriture ; c'est même ce jour-là qu'on a mesuré sur ton site que tes quatre classes ont ces étiquettes « 3_dylan_bob », « 3_franklin_aretha », « 4_hugo », « 4_turing ». Personne n'a alors cherché les autres endroits du site qui font la même confusion : l'emploi du temps en était un. C'est ma faute.
+
+498. Cette fois, pas endroit par endroit : E1 dresse la liste de tous les endroits du site qui cherchent une classe par son nom, les compte, et les fait tous passer par la même règle ; E3 joue chaque écran qui montre une classe (l'emploi du temps, la case, l'heure lancée, la participation, la Relecture, le récit, le téléphone) avec une classe rangée comme les tiennes. Dans la ⑤, avec le reste.
+
+À tester : rien de nouveau avant la ⑤.
+
+27/10/2026 09:00
+MEMO

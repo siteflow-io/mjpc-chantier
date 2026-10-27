@@ -22811,12 +22811,21 @@ function edtRattacherGeste(ancien,nouveau){
 function edtCleHeure(iso,creneau,nomClasse){
   return iso+'_'+String(creneau).replace(/:/g,'h')+'_'+String(nomClasse).replace(/\s/g,'_');
 }
+/* E1 (§12.31-1 ter) : LA CLÉ D'UNE HEURE JOUÉE — le déroulé l'écrit sous la CLÉ de la classe (`_drCleHeureDe` : `classeSlug`, [.#$[]/ et blancs] → « _ ») ;
+   on la cherche donc par `edtCleClasse(nom)` avec la même transformation, puis — pour les traces anciennes — sous la forme par le nom (`edtCleHeure`).
+   Les DÉCISIONS de l'emploi du temps gardent `edtCleHeure` (elles s'écrivent et se lisent ici, sous le nom : les déplacer les perdrait). Rien n'est réécrit. */
+function edtClesHeureTrace(iso,creneau,nomClasse){
+  var cr=String(creneau).replace(/:/g,'h').replace(/[.#$\[\]\/\s]/g,'');
+  var a=iso+'_'+cr+'_'+String(edtCleClasse(nomClasse)).replace(/[.#$\[\]\/\s]/g,'_'), b=edtCleHeure(iso,creneau,nomClasse);
+  return a===b?[a]:[a,b];
+}
+function edtHeureTrouvee(h,ks){ if(!h)return null; for(var i=0;i<ks.length;i++){ if(h[ks[i]])return ks[i]; } return null; }
 function edtTraceDe(seance,nomClasse,iso,creneau){
-  var d=(seance&&seance.deroule_joue)||{},k=edtCleHeure(iso,creneau,nomClasse);
+  var d=(seance&&seance.deroule_joue)||{},ks=edtClesHeureTrace(iso,creneau,nomClasse);   /* E1 (1 ter) */
   var res=null;
   Object.keys(d).forEach(function(sl){
     var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
-    var h=b.heures||{}; if(h[k])res=h[k];
+    var h=b.heures||{}, k=edtHeureTrouvee(h,ks); if(k)res=h[k];
   });
   return res;
 }
@@ -22879,10 +22888,10 @@ function edtChercherTrace(nomClasse,iso,creneau){
   return res;
 }
 function edtSeanceDeTrace(nomClasse,iso,creneau){   /* [E2] la séance d'une heure jouée (son titre) : où edtTraceDe la trouve (réveil n°5, A4-4) */
-  var niv=edtNiveauDe(nomClasse); if(!niv)return null; var l=EDT_CHAP[niv]||[], cle=edtCleHeure(iso,creneau,nomClasse);
+  var niv=edtNiveauDe(nomClasse); if(!niv)return null; var l=EDT_CHAP[niv]||[], cles=edtClesHeureTrace(iso,creneau,nomClasse);   /* E1 (1 ter) */
   for(var i=0;i<l.length;i++){ var se=edtListe(l[i]&&l[i].seances);
     for(var k=0;k<se.length;k++){ var d=(se[k]&&se[k].deroule_joue)||{};
-      if(Object.keys(d).some(function(sl){ var b=d[sl]; return b&&!(b.classe&&b.classe!==nomClasse)&&(b.heures||{})[cle]; }))return {titre:se[k].titre||se[k].title||'', chapitre:l[i].__cle, seance:se[k].__i}; } }
+      if(Object.keys(d).some(function(sl){ var b=d[sl]; return b&&!(b.classe&&b.classe!==nomClasse)&&edtHeureTrouvee(b.heures,cles); }))return {titre:se[k].titre||se[k].title||'', chapitre:l[i].__cle, seance:se[k].__i}; } }
   return null;
 }
 /* la file des séances qui attendent, pour une classe et un fil */
@@ -24006,14 +24015,14 @@ function edtCheminTrace(nomClasse,iso,creneau){
   for(var i=0;i<l.length;i++){
     var se=edtListe(l[i]&&l[i].seances);
     for(var k=0;k<se.length;k++){
-      var d=(se[k]&&se[k].deroule_joue)||{},cle=edtCleHeure(iso,creneau,nomClasse);
+      var d=(se[k]&&se[k].deroule_joue)||{},cles=edtClesHeureTrace(iso,creneau,nomClasse);   /* E1 (1 ter) : sous la clé, puis sous le nom */
       var trouve=null;
       Object.keys(d).forEach(function(sl){
         var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
-        if((b.heures||{})[cle])trouve={slug:sl,trace:b.heures[cle]};
+        var kk=edtHeureTrouvee(b.heures,cles); if(kk)trouve={slug:sl,trace:b.heures[kk],cle:kk};
       });
       if(trouve)return {chemin:'/site/'+niv+'/chapitres/'+l[i].__cle+'/seances/'+se[k].__i
-                        +'/deroule_joue/'+trouve.slug+'/heures/'+cle,trace:trouve.trace};
+                        +'/deroule_joue/'+trouve.slug+'/heures/'+trouve.cle,trace:trouve.trace};
     }
   }
   return null;

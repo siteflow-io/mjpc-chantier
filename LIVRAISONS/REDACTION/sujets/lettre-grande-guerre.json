@@ -1,0 +1,1108 @@
+{
+ "format": "mjpc-redaction-sujet/1",
+ "id": "lettre-grande-guerre-3e",
+ "titre": "Écrire une lettre de la Grande Guerre",
+ "niveau": "3e",
+ "chapitre": "Chapitre 1 — J'ai été dans les tranchées · tâche finale",
+ "competences_sujet": [
+  "c4-ecrire-03",
+  "c4-langue-04"
+ ],
+ "enonce": [
+  "Une lettre de trente lignes, notée sur 40 points comme la rédaction du brevet. Tu l'écris en classe, en une heure.",
+  "Tu choisis : la lettre de l'homme au front, ou celle de la personne qui lui répond depuis la maison. Le choix est libre — un garçon peut écrire la lettre de celle qui attend, une fille celle du soldat.",
+  "Toutes tes phrases sont des phrases complexes.",
+  "Les cinq architectures ci-dessous apparaissent chacune au moins une fois. Si tu utilises ces architectures plusieurs fois, ce sera valorisé (la valorisation = ce qui démarque ta copie d'une copie qui fait le strict minimum)."
+ ],
+ "total": 40,
+ "longueur": "trente_lignes",
+ "compteur": {
+  "indicateur": "orthographe",
+  "selon": "trente_lignes",
+  "seuils": {
+   "3": [
+    3,
+    8,
+    16
+   ],
+   "2": [
+    3,
+    7,
+    14
+   ],
+   "1": [
+    2,
+    5,
+    9
+   ],
+   "0": [
+    1,
+    2,
+    5
+   ]
+  },
+  "lecture": "pour chaque niveau de « Trente lignes » : [jusqu'à n erreurs = Très satisfaisant, jusqu'à n = Satisfaisant, jusqu'à n = Fragile] ; au-delà = Insuffisant — les seuils de Dugain ramenés à une lettre deux fois plus courte"
+ },
+ "criteres": [
+  {
+   "id": "theme_invention",
+   "titre": "Le thème et l'invention",
+   "pts_max": 14,
+   "indicateurs": [
+    {
+     "id": "theme_tenu",
+     "libelle": "Le thème tenu : la Grande Guerre, la lettre, le personnage",
+     "poids": 6,
+     "competence": "c4-ecrire-01",
+     "descripteurs": [
+      "{prenom}, tu ne tiens pas le thème. On ne reconnaît ni la Grande Guerre, ni une lettre écrite du front ou de la maison, ni la personne qui écrit : ton texte pourrait se passer n'importe où, n'importe quand.",
+      "{prenom}, tu poses le thème mais il reste flou. La guerre est là sans être vraiment celle de 14-18, ou la personne qui écrit n'a ni nom, ni métier, ni histoire : on ne sait pas bien qui parle, d'où, ni depuis quand il est séparé de l'autre.",
+      "{prenom}, tu tiens le thème du début à la fin. On sait qui écrit, d'où — la tranchée ou la maison —, à qui et depuis combien de temps ; la guerre est bien celle de 14-18.",
+      "{prenom}, tu tiens le thème avec une vraie justesse. Ton personnage existe : son âge, son métier d'avant, sa place dans la guerre se sentent dans chaque ligne, et l'époque est rendue sans une fausse note. On croit lire une vraie lettre de 14-18."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Ton texte n'est pas une lettre de la Grande Guerre : il raconte autre chose, une autre guerre ou une autre époque. Le sujet n'est pas traité.",
+        "avec": "Ton texte n'est pas une lettre de la Grande Guerre, comme on le voit quand tu écris {CIT} : il raconte autre chose, une autre guerre ou une autre époque. Le sujet n'est pas traité."
+       },
+       {
+        "sans": "Tu parles de la guerre, mais pas sous la forme d'une lettre : c'est un récit, ou un texte qui ne s'adresse à personne.",
+        "avec": "Tu parles de la guerre, mais pas sous la forme d'une lettre, comme quand tu écris {CIT} : ton texte ne s'adresse à personne."
+       },
+       {
+        "sans": "Tu écris bien une lettre de guerre, mais des objets et des façons de vivre d'aujourd'hui s'y glissent sans cesse : la Grande Guerre disparaît.",
+        "avec": "Tu écris bien une lettre de guerre, mais des objets et des façons de vivre d'aujourd'hui s'y glissent, comme quand tu écris {CIT} : la Grande Guerre disparaît."
+       },
+       {
+        "sans": "Tu écris une lettre de 14-18, mais on ne sait jamais qui l'écrit : ni le front ni la maison ne sont reconnaissables, et la personne qui parle n'a aucune identité.",
+        "avec": "Tu écris une lettre de 14-18, mais on ne sait jamais qui l'écrit, comme quand tu écris {CIT} : ni le front ni la maison ne sont reconnaissables."
+       }
+      ],
+      [
+       {
+        "sans": "On devine la Grande Guerre, mais elle reste générale : des combats, des soldats, sans rien qui la rattache à 14-18, à la tranchée ou à la maison.",
+        "avec": "On devine la Grande Guerre, mais elle reste générale, comme quand tu écris {CIT} : rien ne la rattache vraiment à 14-18."
+       },
+       {
+        "sans": "On sait d'où tu écris, mais pas qui tu es : ton personnage n'a ni nom, ni âge, ni métier d'avant la guerre. Ta lettre parle, mais personne ne la signe vraiment.",
+        "avec": "On sait d'où tu écris, mais pas qui tu es, comme on le voit quand tu écris {CIT} : ton personnage n'a ni âge ni métier d'avant la guerre."
+       },
+       {
+        "sans": "Ton personnage est posé au début, puis il s'efface : la lettre devient un exposé sur la guerre, et on oublie qui l'écrit et à qui.",
+        "avec": "Ton personnage est posé au début, puis il s'efface, comme quand tu écris {CIT} : la lettre devient un exposé sur la guerre."
+       },
+       {
+        "sans": "Ton personnage est là, la guerre aussi, mais la séparation ne tient pas : on ne sait pas depuis combien de temps vous êtes loin l'un de l'autre, et c'est pourtant ce qui fait écrire une lettre.",
+        "avec": "Ton personnage est là, la guerre aussi, mais la séparation ne tient pas, comme on le voit quand tu écris {CIT} : on ne sait pas depuis combien de temps vous êtes loin l'un de l'autre."
+       }
+      ],
+      [
+       {
+        "sans": "Tu tiens le thème : 14-18, la lettre, la personne qui écrit et celle qui la lira. Une ou deux fausses notes de l'époque t'échappent encore.",
+        "avec": "Tu tiens le thème, mais une ou deux fausses notes de l'époque t'échappent encore, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu tiens le thème sans fausse note : on sait qui écrit, d'où, à qui et depuis quand. Ton personnage reste pourtant un peu général : il pourrait être n'importe quel soldat, n'importe quelle personne qui attend.",
+        "avec": "Tu tiens le thème sans fausse note, comme quand tu écris {CIT}. Ton personnage reste pourtant un peu général : il pourrait être n'importe qui."
+       },
+       {
+        "sans": "Tu tiens le thème et ton personnage a une identité : son nom, son âge ou son métier d'avant reviennent dans la lettre et la rendent crédible.",
+        "avec": "Tu tiens le thème et ton personnage a une identité, comme on le voit quand tu écris {CIT} : sa vie d'avant rend la lettre crédible."
+       },
+       {
+        "sans": "Tu tiens le thème de bout en bout et ton personnage est crédible. Pour aller plus loin, il manque que sa vie d'avant la guerre colore vraiment ce qu'il voit et ce qu'il dit.",
+        "avec": "Tu tiens le thème de bout en bout et ton personnage est crédible, comme quand tu écris {CIT}. Pour aller plus loin, il manque que sa vie d'avant colore vraiment ce qu'il voit et ce qu'il dit."
+       }
+      ],
+      [
+       {
+        "sans": "Ton personnage existe vraiment : son métier d'avant, son âge, sa place dans la guerre se sentent dans sa façon de voir et de dire. On croit lire une vraie lettre.",
+        "avec": "Ton personnage existe vraiment, comme quand tu écris {CIT} : son métier d'avant et son âge se sentent dans sa façon de voir et de dire."
+       },
+       {
+        "sans": "Tu rends l'époque avec justesse : les détails de la vie de 14-18 sont choisis, jamais plaqués, et ils servent ce que ton personnage vit.",
+        "avec": "Tu rends l'époque avec justesse, comme on le voit quand tu écris {CIT} : les détails de 14-18 sont choisis, jamais plaqués."
+       },
+       {
+        "sans": "Le personnage, l'époque et la séparation ne font qu'un : chaque ligne dit à la fois qui écrit, où il est et ce que l'absence de l'autre lui coûte.",
+        "avec": "Le personnage, l'époque et la séparation ne font qu'un, comme quand tu écris {CIT} : chaque ligne dit qui écrit, où il est et ce que l'absence lui coûte."
+       },
+       {
+        "sans": "Tu tiens le thème avec une vérité rare : ta lettre pourrait avoir été retrouvée dans un grenier. Rien n'est inventé pour faire joli, tout sonne juste.",
+        "avec": "Tu tiens le thème avec une vérité rare, comme quand tu écris {CIT} : ta lettre pourrait avoir été retrouvée dans un grenier. Tout sonne juste."
+       }
+      ]
+     ]
+    },
+    {
+     "id": "trois_paragraphes",
+     "libelle": "Les trois paragraphes : le concret, le plus dur, l'inquiétude pour l'autre",
+     "poids": 4,
+     "competence": "c4-ecrire-02",
+     "descripteurs": [
+      "{prenom}, ta lettre n'a pas les trois paragraphes demandés. Les contenus prévus — ce que tu vois, ce qui est le plus dur, l'inquiétude pour l'autre — manquent ou se mélangent sans ordre.",
+      "{prenom}, ta lettre a des paragraphes, mais l'un des trois contenus manque ou se perd dans un autre : le concret, le plus dur ou l'inquiétude pour l'autre n'a pas sa place.",
+      "{prenom}, ta lettre suit les trois paragraphes décidés : le concret de ce que tu vois, ce qui est le plus dur, puis l'inquiétude pour l'autre. Chacun porte son contenu.",
+      "{prenom}, tes trois paragraphes sont pleins et justes : le concret se voit, le plus dur surprend parce que ce n'est pas ce qu'on croyait, et l'inquiétude pour l'autre touche. La lettre avance d'un paragraphe à l'autre."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Ta lettre est d'un seul bloc : aucun paragraphe ne la découpe, et le lecteur ne sait pas où commence ni où finit chaque idée.",
+        "avec": "Ta lettre est d'un seul bloc, comme on le voit quand tu écris {CIT} : aucun paragraphe ne la découpe."
+       },
+       {
+        "sans": "Tu fais des paragraphes, mais aucun ne porte les contenus prévus : ni le concret de ce que tu vois, ni le plus dur, ni l'inquiétude pour l'autre.",
+        "avec": "Tu fais des paragraphes, mais aucun ne porte les contenus prévus, comme quand tu écris {CIT} : ni le concret, ni le plus dur, ni l'inquiétude pour l'autre."
+       },
+       {
+        "sans": "Un seul des trois contenus est vraiment là ; les deux autres manquent.",
+        "avec": "Un seul des trois contenus est vraiment là, comme quand tu écris {CIT} ; les deux autres manquent."
+       },
+       {
+        "sans": "Les trois contenus apparaissent par moments, mais mêlés dans tous les paragraphes : le brouillon d'idées n'a pas été suivi.",
+        "avec": "Les trois contenus apparaissent par moments, mais mêlés, comme quand tu écris {CIT} : le brouillon d'idées n'a pas été suivi."
+       }
+      ],
+      [
+       {
+        "sans": "Deux des trois contenus sont là ; le troisième manque entièrement.",
+        "avec": "Deux des trois contenus sont là, comme quand tu écris {CIT} ; le troisième manque entièrement."
+       },
+       {
+        "sans": "Les trois contenus sont là, mais pas dans leur paragraphe : le concret déborde sur le plus dur, ou l'inquiétude pour l'autre arrive au milieu.",
+        "avec": "Les trois contenus sont là, mais pas dans leur paragraphe, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Les trois paragraphes sont là, mais l'un d'eux tient en une ou deux lignes : son contenu est annoncé, pas écrit.",
+        "avec": "Les trois paragraphes sont là, mais l'un d'eux tient en une ou deux lignes, comme quand tu écris {CIT} : son contenu est annoncé, pas écrit."
+       },
+       {
+        "sans": "Les trois paragraphes sont là, dans l'ordre, mais l'un d'eux s'éloigne de son contenu en route et finit par parler d'autre chose.",
+        "avec": "Les trois paragraphes sont là, dans l'ordre, mais l'un d'eux s'éloigne de son contenu en route, comme quand tu écris {CIT}."
+       }
+      ],
+      [
+       {
+        "sans": "Les trois paragraphes portent leur contenu, mais le deuxième dit ce que tout le monde attend : le plus dur, dans la consigne, n'est pas ce qu'on croit, et ta lettre ne le montre pas encore.",
+        "avec": "Les trois paragraphes portent leur contenu, mais le deuxième dit ce que tout le monde attend, comme quand tu écris {CIT} : le plus dur n'est pas ce qu'on croit, et ta lettre ne le montre pas encore."
+       },
+       {
+        "sans": "Les trois paragraphes portent leur contenu et le plus dur n'est pas ce qu'on attendait. Le concret du premier reste pourtant général : on ne voit pas encore vraiment où tu es.",
+        "avec": "Les trois paragraphes portent leur contenu et le plus dur n'est pas ce qu'on attendait. Le concret reste pourtant général, comme quand tu écris {CIT} : on ne voit pas encore vraiment où tu es."
+       },
+       {
+        "sans": "Les trois paragraphes portent leur contenu, le concret se voit, le plus dur surprend. Le troisième reste plus court : l'inquiétude pour l'autre est dite, pas encore ressentie.",
+        "avec": "Le concret se voit, le plus dur surprend, mais le troisième paragraphe reste plus court, comme quand tu écris {CIT} : l'inquiétude pour l'autre est dite, pas encore ressentie."
+       },
+       {
+        "sans": "Les trois paragraphes sont pleins et chacun tient son contenu jusqu'au bout. Pour aller plus loin, il manque que la lettre avance de l'un à l'autre, comme une pensée qui se suit.",
+        "avec": "Les trois paragraphes sont pleins, comme on le voit quand tu écris {CIT}. Pour aller plus loin, il manque que la lettre avance de l'un à l'autre, comme une pensée qui se suit."
+       }
+      ],
+      [
+       {
+        "sans": "Tes trois paragraphes sont pleins et la lettre avance de l'un à l'autre : on passe de ce que tu vois à ce qui te pèse, puis à celui ou celle à qui tu penses.",
+        "avec": "Tes trois paragraphes sont pleins et la lettre avance de l'un à l'autre, comme quand tu écris {CIT} : on passe de ce que tu vois à ce qui te pèse, puis à l'autre."
+       },
+       {
+        "sans": "Le concret de ton premier paragraphe se voit, se sent, s'entend : le lecteur est là où tu es.",
+        "avec": "Le concret de ton premier paragraphe se voit, se sent, s'entend, comme quand tu écris {CIT} : le lecteur est là où tu es."
+       },
+       {
+        "sans": "Ton deuxième paragraphe surprend juste : le plus dur n'est pas ce qu'on attendait, et c'est ce qui le rend vrai.",
+        "avec": "Ton deuxième paragraphe surprend juste, comme quand tu écris {CIT} : le plus dur n'est pas ce qu'on attendait, et c'est ce qui le rend vrai."
+       },
+       {
+        "sans": "Tes trois paragraphes forment une seule lettre : le concret prépare le plus dur, et le plus dur rend l'inquiétude pour l'autre plus forte. Rien n'est là pour cocher la consigne.",
+        "avec": "Tes trois paragraphes forment une seule lettre, comme on le sent quand tu écris {CIT} : le concret prépare le plus dur, et le plus dur rend l'inquiétude pour l'autre plus forte."
+       }
+      ]
+     ]
+    },
+    {
+     "id": "lectures",
+     "libelle": "Les lectures reprises : Jean Déléage et le chapitre",
+     "poids": 2,
+     "competence": "c4-ecrire-03",
+     "descripteurs": [
+      "{prenom}, ta lettre ne reprend rien de nos lectures. Ni la lettre de Jean Déléage ni les textes du chapitre ne nourrissent ce que tu écris.",
+      "{prenom}, ta lettre reprend nos lectures de loin, ou au contraire les recopie : un mot, une scène reviennent, sans devenir les tiens.",
+      "{prenom}, tes lectures nourrissent ta lettre : comme Jean Déléage, tu fais voir le concret, et des détails du chapitre reviennent à leur place.",
+      "{prenom}, tu as fait tiennes tes lectures : ce que tu as lu chez Jean Déléage et dans le chapitre est transformé, au service de ta propre lettre. On sent les lectures sans jamais les voir recopiées."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Ta lettre ne reprend rien de ce que nous avons lu : elle aurait pu être écrite sans le chapitre.",
+        "avec": "Ta lettre ne reprend rien de ce que nous avons lu, comme quand tu écris {CIT} : elle aurait pu être écrite sans le chapitre."
+       },
+       {
+        "sans": "Ta lettre contredit ce que nos lectures montraient de la guerre : la vie du front ou de la maison y est inventée à l'opposé de ce que tu as lu.",
+        "avec": "Ta lettre contredit ce que nos lectures montraient de la guerre, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu recopies des passages entiers de nos lectures : ce n'est plus ta lettre, c'est celle d'un autre.",
+        "avec": "Tu recopies des passages de nos lectures, comme quand tu écris {CIT} : ce n'est plus ta lettre, c'est celle d'un autre."
+       },
+       {
+        "sans": "Tu cites nos lectures pour en parler, comme dans un exposé : ton personnage n'a pas lu Jean Déléage, il vit ce que Jean Déléage a vécu.",
+        "avec": "Tu cites nos lectures pour en parler, comme quand tu écris {CIT} : ton personnage n'a pas lu Jean Déléage, il vit ce qu'il a vécu."
+       }
+      ],
+      [
+       {
+        "sans": "Un seul détail de nos lectures revient, isolé, sans que la lettre s'en nourrisse.",
+        "avec": "Un seul détail de nos lectures revient, isolé, quand tu écris {CIT}, sans que la lettre s'en nourrisse."
+       },
+       {
+        "sans": "Plusieurs détails de nos lectures reviennent, mais recopiés presque mot pour mot : ils ne sont pas encore devenus les tiens.",
+        "avec": "Plusieurs détails de nos lectures reviennent, mais presque mot pour mot, comme quand tu écris {CIT} : ils ne sont pas encore devenus les tiens."
+       },
+       {
+        "sans": "Tu reprends l'esprit de nos lectures — la guerre vue de l'intérieur — mais sans le concret : les choses vues que Jean Déléage note si précisément manquent.",
+        "avec": "Tu reprends l'esprit de nos lectures, mais sans le concret, comme quand tu écris {CIT} : les choses vues que Jean Déléage note si précisément manquent."
+       },
+       {
+        "sans": "Tu reprends le concret de nos lectures, mais dans un seul paragraphe : le reste de la lettre ne s'en nourrit plus.",
+        "avec": "Tu reprends le concret de nos lectures, comme quand tu écris {CIT}, mais dans un seul paragraphe : le reste de la lettre ne s'en nourrit plus."
+       }
+      ],
+      [
+       {
+        "sans": "Tes lectures nourrissent ta lettre : comme Jean Déléage, tu fais voir le concret. Quelques détails restent pourtant trop proches du texte lu.",
+        "avec": "Tes lectures nourrissent ta lettre : comme Jean Déléage, tu fais voir le concret. Quelques détails restent pourtant trop proches du texte lu, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Comme Jean Déléage, tu fais voir le concret, avec tes propres mots : on reconnaît la leçon de la lettre lue sans la retrouver recopiée.",
+        "avec": "Comme Jean Déléage, tu fais voir le concret avec tes propres mots, comme quand tu écris {CIT} : on reconnaît la leçon de la lettre lue sans la retrouver recopiée."
+       },
+       {
+        "sans": "Tes lectures reviennent dans toute la lettre, à leur place : le concret, mais aussi ce qui pèse vraiment et qui n'est pas ce qu'on croit.",
+        "avec": "Tes lectures reviennent dans toute la lettre, à leur place, comme quand tu écris {CIT} : le concret, mais aussi ce qui pèse vraiment et qui n'est pas ce qu'on croit."
+       },
+       {
+        "sans": "Tes lectures nourrissent toute la lettre. Pour aller plus loin, il manque que tu les transformes : qu'un détail lu devienne un détail à toi, que tu n'aurais pas trouvé sans elles.",
+        "avec": "Tes lectures nourrissent toute la lettre, comme on le voit quand tu écris {CIT}. Pour aller plus loin, il manque que tu les transformes : qu'un détail lu devienne un détail à toi."
+       }
+      ],
+      [
+       {
+        "sans": "Tu as fait tiennes tes lectures : un détail lu devient chez toi un détail neuf, qui porte ta lettre.",
+        "avec": "Tu as fait tiennes tes lectures, comme quand tu écris {CIT} : un détail lu devient chez toi un détail neuf, qui porte ta lettre."
+       },
+       {
+        "sans": "Tu reprends de Jean Déléage sa façon de regarder, pas ses phrases : on sent la lecture sans jamais la voir.",
+        "avec": "Tu reprends de Jean Déléage sa façon de regarder, pas ses phrases, comme quand tu écris {CIT} : on sent la lecture sans jamais la voir."
+       },
+       {
+        "sans": "Tes lectures sont transformées au service de ton personnage : ce qu'il voit, ce qu'il tait, ce qui lui pèse doivent à ce que tu as lu, et pourtant tout est à lui.",
+        "avec": "Tes lectures sont transformées au service de ton personnage, comme quand tu écris {CIT} : tout doit à ce que tu as lu, et pourtant tout est à lui."
+       },
+       {
+        "sans": "Tes lectures sont fondues dans ta lettre : un lecteur du chapitre les reconnaîtrait, un autre lecteur ne verrait qu'une lettre vraie.",
+        "avec": "Tes lectures sont fondues dans ta lettre, comme quand tu écris {CIT} : un lecteur du chapitre les reconnaîtrait, un autre ne verrait qu'une lettre vraie."
+       }
+      ]
+     ]
+    },
+    {
+     "id": "ce_qu_on_tait",
+     "libelle": "Ce qu'on tait, et pourquoi",
+     "poids": 2,
+     "competence": "c4-ecrire-01",
+     "descripteurs": [
+      "{prenom}, ta lettre ne tait rien : tu dis tout à la personne qui te lira, sans te demander ce qu'elle peut entendre. Le silence décidé avant d'écrire n'apparaît pas.",
+      "{prenom}, tu tais quelque chose, mais maladroitement : tu annonces que tu ne diras pas, au lieu de le faire sentir, ou le silence ne s'explique par rien.",
+      "{prenom}, on sent ce que tu tais : ta lettre contourne un sujet, et le lecteur devine pourquoi tu le tais.",
+      "{prenom}, ce que tu tais fait la force de ta lettre : le silence s'entend derrière les mots, et il en dit plus que ce qui est écrit."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Tu racontes tout, y compris le pire, sans te demander ce que la personne qui te lira peut entendre.",
+        "avec": "Tu racontes tout, y compris le pire, comme quand tu écris {CIT}, sans te demander ce que la personne qui te lira peut entendre."
+       },
+       {
+        "sans": "Ta lettre ne tait rien : aucun sujet n'est évité, aucun silence ne se devine.",
+        "avec": "Ta lettre ne tait rien, comme on le voit quand tu écris {CIT} : aucun sujet n'est évité, aucun silence ne se devine."
+       },
+       {
+        "sans": "Tu écris que tu caches quelque chose, puis tu le racontes : ce que tu voulais taire est écrit noir sur blanc.",
+        "avec": "Tu écris que tu caches quelque chose, puis tu le racontes, comme quand tu écris {CIT} : ce que tu voulais taire est écrit noir sur blanc."
+       },
+       {
+        "sans": "Un silence se devine par endroits, mais il est contredit ailleurs : ce que tu tais ici, tu le dis là.",
+        "avec": "Un silence se devine par endroits, mais il est contredit ailleurs, comme quand tu écris {CIT} : ce que tu tais ici, tu le dis là."
+       }
+      ],
+      [
+       {
+        "sans": "Tu tais quelque chose, mais on ne sait ni quoi ni pourquoi : le silence reste une phrase de plus.",
+        "avec": "Tu tais quelque chose, mais on ne sait ni quoi ni pourquoi, comme quand tu écris {CIT} : le silence reste une phrase de plus."
+       },
+       {
+        "sans": "Tu annonces ce que tu tais au lieu de le faire sentir : le silence est expliqué, pas entendu.",
+        "avec": "Tu annonces ce que tu tais au lieu de le faire sentir, comme quand tu écris {CIT} : le silence est expliqué, pas entendu."
+       },
+       {
+        "sans": "On devine ce que tu tais, mais pas pourquoi : rien dans la lettre ne fait comprendre la raison de ce silence.",
+        "avec": "On devine ce que tu tais, mais pas pourquoi, comme quand tu écris {CIT} : rien ne fait comprendre la raison de ce silence."
+       },
+       {
+        "sans": "On devine ce que tu tais et pourquoi, mais une phrase en dit trop et brise le silence.",
+        "avec": "On devine ce que tu tais et pourquoi, mais une phrase en dit trop et brise le silence, comme quand tu écris {CIT}."
+       }
+      ],
+      [
+       {
+        "sans": "On sent ce que tu tais : ta lettre contourne un sujet. La raison du silence reste pourtant un peu floue.",
+        "avec": "On sent ce que tu tais, comme quand tu écris {CIT} : ta lettre contourne un sujet. La raison du silence reste pourtant un peu floue."
+       },
+       {
+        "sans": "On sent ce que tu tais et pourquoi : ta lettre protège l'autre sans le lui dire.",
+        "avec": "On sent ce que tu tais et pourquoi, comme quand tu écris {CIT} : ta lettre protège l'autre sans le lui dire."
+       },
+       {
+        "sans": "Ton silence est tenu de bout en bout : jamais tu ne dis ce que tu as décidé de taire, et le lecteur le devine.",
+        "avec": "Ton silence est tenu de bout en bout, comme on le sent quand tu écris {CIT} : jamais tu ne dis ce que tu as décidé de taire, et le lecteur le devine."
+       },
+       {
+        "sans": "Ton silence est tenu et compris. Pour aller plus loin, il manque qu'il travaille la lettre : qu'une litote, un détour, un mot trop calme fasse entendre ce qui n'est pas écrit.",
+        "avec": "Ton silence est tenu et compris, comme quand tu écris {CIT}. Pour aller plus loin, il manque qu'une litote, un détour, un mot trop calme fasse entendre ce qui n'est pas écrit."
+       }
+      ],
+      [
+       {
+        "sans": "Ce que tu tais s'entend derrière tes mots : une litote, un détour, un mot trop calme le font comprendre.",
+        "avec": "Ce que tu tais s'entend derrière tes mots, comme quand tu écris {CIT} : un détour, un mot trop calme le font comprendre."
+       },
+       {
+        "sans": "Ton silence dit qui tu es : on comprend ce que tu caches, et on comprend aussi que tu aimes assez l'autre pour le lui cacher.",
+        "avec": "Ton silence dit qui tu es, comme quand tu écris {CIT} : on comprend ce que tu caches, et que tu aimes assez l'autre pour le lui cacher."
+       },
+       {
+        "sans": "Ce que tu tais pèse plus que ce que tu dis : le lecteur lit deux lettres, celle qui est écrite et celle qui est tue.",
+        "avec": "Ce que tu tais pèse plus que ce que tu dis, comme quand tu écris {CIT} : le lecteur lit deux lettres, celle qui est écrite et celle qui est tue."
+       },
+       {
+        "sans": "Ton silence fait la force de ta lettre : rien n'est dit, tout est entendu.",
+        "avec": "Ton silence fait la force de ta lettre, comme quand tu écris {CIT} : rien n'est dit, tout est entendu."
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "construction",
+   "titre": "La construction des phrases",
+   "pts_max": 14,
+   "indicateurs": [
+    {
+     "id": "phrases_complexes",
+     "libelle": "Toutes les phrases sont complexes",
+     "poids": 5,
+     "competence": "c4-langue-04",
+     "descripteurs": [
+      "{prenom}, tes phrases ne sont pas des phrases complexes. La plupart n'ont qu'un verbe conjugué, ou bien les propositions se suivent sans être reliées.",
+      "{prenom}, tu écris des phrases complexes, mais pas toutes : plusieurs phrases simples restent, ou certaines phrases longues ne tiennent pas à l'analyse logique.",
+      "{prenom}, toutes tes phrases, ou presque, sont complexes et logiquement construites : chaque subordonnée dépend d'une principale, chaque relatif est le bon.",
+      "{prenom}, toutes tes phrases sont complexes, et chacune tient à l'analyse logique sans une faille : relatifs justes, ponctuation sûre, propositions bien emboîtées. Même tes phrases les plus longues restent claires."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Presque toutes tes phrases sont simples : un verbe conjugué, un point, et on recommence.",
+        "avec": "Presque toutes tes phrases sont simples, comme quand tu écris {CIT} : un verbe conjugué, un point, et on recommence."
+       },
+       {
+        "sans": "Tes phrases s'allongent, mais par des virgules et des « et » : les propositions se suivent sans qu'aucune dépende d'une autre.",
+        "avec": "Tes phrases s'allongent, mais par des virgules et des « et », comme quand tu écris {CIT} : les propositions se suivent sans qu'aucune dépende d'une autre."
+       },
+       {
+        "sans": "Tu tentes des phrases complexes, mais elles se cassent : une subordonnée reste seule, sans principale, entre deux points.",
+        "avec": "Tu tentes des phrases complexes, mais elles se cassent, comme quand tu écris {CIT} : une subordonnée reste seule, sans principale, entre deux points."
+       },
+       {
+        "sans": "Moins de la moitié de tes phrases sont complexes, et plusieurs d'entre elles ne tiennent pas à l'analyse logique.",
+        "avec": "Moins de la moitié de tes phrases sont complexes, et plusieurs ne tiennent pas à l'analyse logique, comme quand tu écris {CIT}."
+       }
+      ],
+      [
+       {
+        "sans": "La moitié de tes phrases environ sont complexes ; les autres restent simples.",
+        "avec": "La moitié de tes phrases environ sont complexes ; les autres restent simples, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "La plupart de tes phrases sont complexes, mais plusieurs ne tiennent pas : une proposition n'a pas de principale, ou deux principales sont soudées par une virgule.",
+        "avec": "La plupart de tes phrases sont complexes, mais plusieurs ne tiennent pas, comme quand tu écris {CIT} : une proposition n'a pas de principale, ou deux principales sont soudées par une virgule."
+       },
+       {
+        "sans": "La plupart de tes phrases sont complexes et tiennent, mais tes relatifs hésitent : « que » à la place de « dont », « où » à la place de « que ».",
+        "avec": "La plupart de tes phrases sont complexes et tiennent, mais tes relatifs hésitent, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Toutes tes phrases sont complexes sauf quelques-unes, mais l'analyse logique n'a pas été faite au brouillon : deux ou trois phrases restent bancales.",
+        "avec": "Toutes tes phrases sont complexes sauf quelques-unes, mais deux ou trois restent bancales, comme quand tu écris {CIT} : l'analyse logique au brouillon les aurait sauvées."
+       }
+      ],
+      [
+       {
+        "sans": "Toutes tes phrases sont complexes sauf une ou deux, et elles tiennent à l'analyse logique.",
+        "avec": "Toutes tes phrases sont complexes sauf une ou deux, comme quand tu écris {CIT}, et elles tiennent à l'analyse logique."
+       },
+       {
+        "sans": "Toutes tes phrases sont complexes et tiennent à l'analyse logique ; un relatif ou une virgule hésite encore ici ou là.",
+        "avec": "Toutes tes phrases sont complexes et tiennent à l'analyse logique ; un relatif ou une virgule hésite encore, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Toutes tes phrases sont complexes, logiquement construites, et tes relatifs sont justes, y compris « dont » et « où ».",
+        "avec": "Toutes tes phrases sont complexes, logiquement construites, et tes relatifs sont justes, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Toutes tes phrases sont complexes et sans faille. Pour aller plus loin, il manque que leur longueur serve ce que tu dis : une phrase qui s'étire pour l'attente, une phrase plus resserrée pour le choc.",
+        "avec": "Toutes tes phrases sont complexes et sans faille, comme quand tu écris {CIT}. Pour aller plus loin, il manque que leur longueur serve ce que tu dis."
+       }
+      ],
+      [
+       {
+        "sans": "Toutes tes phrases sont complexes et tiennent à l'analyse logique sans une faille, même les plus longues.",
+        "avec": "Toutes tes phrases sont complexes et tiennent à l'analyse logique sans une faille, même les plus longues, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tes phrases complexes restent claires même quand elles s'allongent : la ponctuation guide le lecteur d'une proposition à l'autre.",
+        "avec": "Tes phrases complexes restent claires même quand elles s'allongent, comme quand tu écris {CIT} : la ponctuation guide le lecteur d'une proposition à l'autre."
+       },
+       {
+        "sans": "Tes phrases complexes sont variées : tu choisis la construction selon ce que tu veux dire.",
+        "avec": "Tes phrases complexes sont variées, comme quand tu écris {CIT} : tu choisis la construction selon ce que tu veux dire."
+       },
+       {
+        "sans": "Tes phrases complexes servent ta lettre : leur longueur, leur rythme, leur coupe font sentir l'attente, la fatigue ou l'inquiétude. On ne voit plus l'exercice, on entend une voix.",
+        "avec": "Tes phrases complexes servent ta lettre, comme quand tu écris {CIT} : leur longueur, leur rythme, leur coupe font sentir ce que tu vis. On ne voit plus l'exercice, on entend une voix."
+       }
+      ]
+     ]
+    },
+    {
+     "id": "architectures",
+     "libelle": "Les cinq architectures, valorisées au-delà",
+     "poids": 7,
+     "competence": "c4-langue-04",
+     "descripteurs": [
+      "{prenom}, les cinq architectures n'apparaissent pas dans ta lettre, ou une seule est construite correctement.",
+      "{prenom}, une partie seulement des cinq architectures apparaît : deux, trois ou quatre sont construites, les autres manquent ou ne sont pas les bonnes.",
+      "{prenom}, les cinq architectures apparaissent chacune au moins une fois, construites correctement, avec leur numéro dans la marge : tu fais ce qui est demandé.",
+      "{prenom}, les cinq architectures sont là, et tu en reprends plusieurs, bien construites, au service de ta lettre. C'est ce qui démarque ta copie d'une copie qui fait le strict minimum."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Aucune des cinq architectures n'apparaît dans ta lettre.",
+        "avec": "Aucune des cinq architectures n'apparaît dans ta lettre : même une phrase comme {CIT} n'en reprend aucune."
+       },
+       {
+        "sans": "Tu as noté des numéros dans la marge, mais les phrases ne suivent pas l'architecture annoncée : il manque des relatives, ou la principale n'est pas coupée.",
+        "avec": "Tu as noté des numéros dans la marge, mais les phrases ne suivent pas l'architecture annoncée, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Une seule architecture est construite correctement ; les autres tentatives ne tiennent pas à l'analyse logique.",
+        "avec": "Une seule architecture est construite correctement ; les autres tentatives ne tiennent pas, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Une architecture est construite correctement, et une autre presque : il lui manque une relative ou la fin de la principale.",
+        "avec": "Une architecture est construite correctement, et une autre presque, comme quand tu écris {CIT} : il lui manque une relative ou la fin de la principale."
+       }
+      ],
+      [
+       {
+        "sans": "Deux architectures sur cinq sont construites correctement ; les trois autres manquent.",
+        "avec": "Deux architectures sur cinq sont construites correctement, comme quand tu écris {CIT} ; les trois autres manquent."
+       },
+       {
+        "sans": "Trois architectures sur cinq sont là, mais l'une d'elles ne tient pas : une relative manque, ou la principale coupée ne reprend jamais.",
+        "avec": "Trois architectures sur cinq sont là, mais l'une d'elles ne tient pas, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Trois architectures sur cinq sont construites correctement ; deux manquent.",
+        "avec": "Trois architectures sur cinq sont construites correctement, comme quand tu écris {CIT} ; deux manquent."
+       },
+       {
+        "sans": "Quatre architectures sur cinq sont construites correctement ; il en manque une pour faire ce qui est demandé.",
+        "avec": "Quatre architectures sur cinq sont construites correctement, comme quand tu écris {CIT} ; il en manque une pour faire ce qui est demandé."
+       }
+      ],
+      [
+       {
+        "sans": "Les cinq architectures apparaissent, mais l'une d'elles reste fragile : une relative est mal reliée, ou la principale coupée reprend mal.",
+        "avec": "Les cinq architectures apparaissent, mais l'une d'elles reste fragile, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Les cinq architectures apparaissent, construites correctement, mais leurs numéros ne sont pas tous dans la marge.",
+        "avec": "Les cinq architectures apparaissent, construites correctement, comme quand tu écris {CIT}, mais leurs numéros ne sont pas tous dans la marge."
+       },
+       {
+        "sans": "Les cinq architectures apparaissent, construites correctement, chacune avec son numéro dans la marge : le travail demandé est fait.",
+        "avec": "Les cinq architectures apparaissent, construites correctement et numérotées, comme quand tu écris {CIT} : le travail demandé est fait."
+       },
+       {
+        "sans": "Les cinq architectures sont là, correctes et numérotées, et tu en reprends une une seconde fois : c'est le début de la valorisation.",
+        "avec": "Les cinq architectures sont là, correctes et numérotées, et tu en reprends une une seconde fois, comme quand tu écris {CIT} : c'est le début de la valorisation."
+       }
+      ],
+      [
+       {
+        "sans": "Les cinq architectures sont là, et tu en reprends plusieurs une seconde fois, toujours correctement construites.",
+        "avec": "Les cinq architectures sont là, et tu en reprends plusieurs, toujours correctement construites, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu reprends les architectures souvent et tu varies tes relatives : « qui », « que », « dont », « où », et « et qui », « et dont » quand elles se suivent.",
+        "avec": "Tu reprends les architectures souvent et tu varies tes relatives, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu reprends les architectures et tu les places là où elles servent : la plus longue pour ce qui déborde, la principale coupée pour ce qui retient le souffle.",
+        "avec": "Tu reprends les architectures et tu les places là où elles servent, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Les architectures sont si bien reprises qu'on ne voit plus l'exercice : elles font la voix de ta lettre, et chacune tient à l'analyse logique.",
+        "avec": "Les architectures sont si bien reprises qu'on ne voit plus l'exercice, comme quand tu écris {CIT} : elles font la voix de ta lettre."
+       }
+      ]
+     ]
+    },
+    {
+     "id": "modalisation_litote",
+     "libelle": "Une modalisation par paragraphe, une litote",
+     "poids": 2,
+     "competence": "c4-langue-04",
+     "descripteurs": [
+      "{prenom}, ta lettre n'a ni modalisation ni litote : rien ne montre ton degré de certitude, et rien n'est dit en moins pour faire entendre plus.",
+      "{prenom}, tu modalises dans un ou deux paragraphes, pas dans les trois, ou ta litote n'en est pas une : elle dit la chose au lieu de la faire entendre.",
+      "{prenom}, chacun de tes trois paragraphes a sa modalisation, et ta litote dit moins pour faire entendre plus : ce qui est demandé est fait.",
+      "{prenom}, tes modalisations sont variées et justes, et ta litote porte : elle fait entendre ce que ta lettre tait. Ce n'est plus un procédé, c'est ta voix."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Ta lettre n'a ni modalisation ni litote.",
+        "avec": "Ta lettre n'a ni modalisation ni litote : même quand tu écris {CIT}, tu affirmes sans nuance."
+       },
+       {
+        "sans": "Tu affirmes tout avec la même certitude : aucun mot ne montre ce dont tu doutes, ce que tu espères, ce que tu crains.",
+        "avec": "Tu affirmes tout avec la même certitude, comme quand tu écris {CIT} : aucun mot ne montre ce dont tu doutes, ce que tu espères, ce que tu crains."
+       },
+       {
+        "sans": "Une modalisation apparaît une fois ; aucune litote.",
+        "avec": "Une modalisation apparaît une fois, quand tu écris {CIT} ; aucune litote."
+       },
+       {
+        "sans": "Tu tentes une litote, mais elle dit l'inverse de ce que tu veux faire entendre ; aucune modalisation ailleurs.",
+        "avec": "Tu tentes une litote, mais elle dit l'inverse de ce que tu veux faire entendre, comme quand tu écris {CIT} ; aucune modalisation ailleurs."
+       }
+      ],
+      [
+       {
+        "sans": "Tu modalises dans un seul paragraphe ; aucune litote.",
+        "avec": "Tu modalises dans un seul paragraphe, comme quand tu écris {CIT} ; aucune litote."
+       },
+       {
+        "sans": "Tu modalises dans deux paragraphes sur trois ; ta litote manque.",
+        "avec": "Tu modalises dans deux paragraphes sur trois, comme quand tu écris {CIT} ; ta litote manque."
+       },
+       {
+        "sans": "Tu modalises dans les trois paragraphes, mais ta litote n'en est pas une : elle dit la chose au lieu de la faire entendre.",
+        "avec": "Tu modalises dans les trois paragraphes, mais ta litote n'en est pas une, comme quand tu écris {CIT} : elle dit la chose au lieu de la faire entendre."
+       },
+       {
+        "sans": "Ta litote fonctionne, mais tes modalisations ne sont que dans un ou deux paragraphes.",
+        "avec": "Ta litote fonctionne, comme quand tu écris {CIT}, mais tes modalisations ne sont que dans un ou deux paragraphes."
+       }
+      ],
+      [
+       {
+        "sans": "Chaque paragraphe a sa modalisation et ta litote fonctionne, mais tes modalisations se répètent : toujours le même adverbe, toujours le même verbe.",
+        "avec": "Chaque paragraphe a sa modalisation et ta litote fonctionne, mais tes modalisations se répètent, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Chaque paragraphe a sa modalisation, variée, et ta litote dit moins pour faire entendre plus.",
+        "avec": "Chaque paragraphe a sa modalisation, variée, et ta litote dit moins pour faire entendre plus, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tes modalisations sont variées et justes, et ta litote est bien placée.",
+        "avec": "Tes modalisations sont variées et justes, et ta litote est bien placée, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Modalisations et litote sont là, variées et justes. Pour aller plus loin, il manque que ta litote serve ce que tu tais.",
+        "avec": "Modalisations et litote sont là, variées et justes, comme quand tu écris {CIT}. Pour aller plus loin, il manque que ta litote serve ce que tu tais."
+       }
+      ],
+      [
+       {
+        "sans": "Ta litote fait entendre ce que ta lettre tait : elle dit peu, on entend beaucoup.",
+        "avec": "Ta litote fait entendre ce que ta lettre tait, comme quand tu écris {CIT} : elle dit peu, on entend beaucoup."
+       },
+       {
+        "sans": "Tes modalisations dessinent ton personnage : ce dont il doute, ce qu'il n'ose pas croire, ce qu'il espère malgré tout.",
+        "avec": "Tes modalisations dessinent ton personnage, comme quand tu écris {CIT} : ce dont il doute, ce qu'il n'ose pas croire, ce qu'il espère malgré tout."
+       },
+       {
+        "sans": "Tu modalises et tu atténues avec finesse : chaque nuance compte, aucune n'est là pour cocher la consigne.",
+        "avec": "Tu modalises et tu atténues avec finesse, comme quand tu écris {CIT} : chaque nuance compte, aucune n'est là pour cocher la consigne."
+       },
+       {
+        "sans": "Modalisations et litote sont devenues ta voix : le lecteur ne voit plus le procédé, il entend quelqu'un qui pèse chaque mot pour l'autre.",
+        "avec": "Modalisations et litote sont devenues ta voix, comme quand tu écris {CIT} : le lecteur ne voit plus le procédé, il entend quelqu'un qui pèse chaque mot pour l'autre."
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lettre",
+   "titre": "L'organisation et la lettre",
+   "pts_max": 6,
+   "indicateurs": [
+    {
+     "id": "codes",
+     "libelle": "Les codes de la lettre : lieu, date, adresse, signature",
+     "poids": 2,
+     "competence": "c4-ecrire-01",
+     "descripteurs": [
+      "{prenom}, ton texte n'a pas les codes de la lettre : ni lieu, ni date, ni formule d'adresse, ni signature.",
+      "{prenom}, ta lettre n'a qu'une partie de ses codes : il manque le lieu, la date, l'adresse ou la signature, ou l'un d'eux est faux.",
+      "{prenom}, ta lettre a ses quatre codes : le lieu, la date, l'adresse à celui ou celle qui la lira, la signature.",
+      "{prenom}, ta lettre a ses quatre codes, et ils disent déjà qui tu es : une date de 14-18 juste, un lieu vrai, une adresse et une signature qui disent votre lien."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Ton texte n'a aucun des codes de la lettre.",
+        "avec": "Ton texte n'a aucun des codes de la lettre : il commence par {CIT}, comme un récit."
+       },
+       {
+        "sans": "Un seul code apparaît : la signature, ou une formule d'adresse.",
+        "avec": "Un seul code apparaît, quand tu écris {CIT}."
+       },
+       {
+        "sans": "Deux codes apparaissent, mais mal placés : la date au milieu, la signature sans formule pour finir.",
+        "avec": "Deux codes apparaissent, mais mal placés, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Deux codes sont à leur place ; les deux autres manquent.",
+        "avec": "Deux codes sont à leur place, comme quand tu écris {CIT} ; les deux autres manquent."
+       }
+      ],
+      [
+       {
+        "sans": "Trois codes sur quatre sont là ; il en manque un.",
+        "avec": "Trois codes sur quatre sont là, comme quand tu écris {CIT} ; il en manque un."
+       },
+       {
+        "sans": "Les quatre codes sont là, mais l'un d'eux est faux pour l'époque : une date hors de la guerre, un lieu qui ne peut pas être le tien.",
+        "avec": "Les quatre codes sont là, mais l'un d'eux est faux pour l'époque, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Les quatre codes sont là, mais l'un d'eux est mal placé : la date en bas, le lieu oublié en tête.",
+        "avec": "Les quatre codes sont là, mais l'un d'eux est mal placé, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Les quatre codes sont là et à leur place, mais la lettre s'arrête d'un coup : la signature arrive sans formule pour prendre congé.",
+        "avec": "Les quatre codes sont là et à leur place, mais la lettre s'arrête d'un coup, comme quand tu écris {CIT} : la signature arrive sans formule pour prendre congé."
+       }
+      ],
+      [
+       {
+        "sans": "Ta lettre a ses quatre codes, à leur place ; l'adresse et la signature restent pourtant toutes faites.",
+        "avec": "Ta lettre a ses quatre codes, à leur place ; l'adresse et la signature restent pourtant toutes faites, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre a ses quatre codes, et la date et le lieu sont justes pour 14-18.",
+        "avec": "Ta lettre a ses quatre codes, et la date et le lieu sont justes pour 14-18, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre a ses quatre codes, justes pour l'époque, et ta formule de fin prend vraiment congé de l'autre.",
+        "avec": "Ta lettre a ses quatre codes, justes pour l'époque, et ta formule de fin prend vraiment congé de l'autre, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre a ses quatre codes, justes et bien placés. Pour aller plus loin, il manque que l'adresse et la signature disent votre lien.",
+        "avec": "Ta lettre a ses quatre codes, justes et bien placés, comme quand tu écris {CIT}. Pour aller plus loin, il manque que l'adresse et la signature disent votre lien."
+       }
+      ],
+      [
+       {
+        "sans": "Tes codes disent votre lien : l'adresse et la signature suffisent à faire comprendre qui vous êtes l'un pour l'autre.",
+        "avec": "Tes codes disent votre lien, comme quand tu écris {CIT} : ils suffisent à faire comprendre qui vous êtes l'un pour l'autre."
+       },
+       {
+        "sans": "Ta date et ton lieu sont justes et parlants : on sait où en est la guerre, et où tu es dedans.",
+        "avec": "Ta date et ton lieu sont justes et parlants, comme quand tu écris {CIT} : on sait où en est la guerre, et où tu es dedans."
+       },
+       {
+        "sans": "Tes codes sont justes et vivants : la formule de fin et la signature portent la séparation.",
+        "avec": "Tes codes sont justes et vivants, comme quand tu écris {CIT} : la formule de fin et la signature portent la séparation."
+       },
+       {
+        "sans": "Tes codes font partie de la lettre : on les lit comme le reste, et ils disent déjà tout ce qui va suivre.",
+        "avec": "Tes codes font partie de la lettre, comme quand tu écris {CIT} : on les lit comme le reste, et ils disent déjà tout ce qui va suivre."
+       }
+      ]
+     ]
+    },
+    {
+     "id": "personne_destinataire",
+     "libelle": "La 1re personne et le destinataire",
+     "poids": 2,
+     "competence": "c4-ecrire-01",
+     "descripteurs": [
+      "{prenom}, tu ne tiens pas la 1re personne, ou tu oublies à qui tu écris : ton texte raconte, il ne parle à personne.",
+      "{prenom}, tu tiens la 1re personne, mais le destinataire disparaît par moments, ou les temps glissent sans raison.",
+      "{prenom}, tu tiens la 1re personne et tu écris vraiment à quelqu'un : tu t'adresses à lui, et tes temps sont cohérents — le présent de la lettre, le passé de ce que tu racontes, le futur de ce que tu espères.",
+      "{prenom}, ta lettre est un vrai dialogue avec l'absent : tu réponds à sa dernière lettre, tu le questionnes, tu l'appelles, et tes temps disent exactement où vous en êtes."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Tu écris à la 3e personne : ce n'est pas toi qui parles, c'est un narrateur qui raconte.",
+        "avec": "Tu écris à la 3e personne, comme quand tu écris {CIT} : ce n'est pas toi qui parles, c'est un narrateur qui raconte."
+       },
+       {
+        "sans": "Tu dis « je », mais tu ne t'adresses jamais à personne : aucun « tu », aucun « vous ».",
+        "avec": "Tu dis « je », mais tu ne t'adresses jamais à personne, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu passes du « je » au « il » sans raison, et le lecteur ne sait plus qui parle.",
+        "avec": "Tu passes du « je » au « il » sans raison, comme quand tu écris {CIT}, et le lecteur ne sait plus qui parle."
+       },
+       {
+        "sans": "Tu tiens le « je », mais tes temps se mélangent si souvent qu'on ne sait plus ce qui est passé, présent ou à venir.",
+        "avec": "Tu tiens le « je », mais tes temps se mélangent si souvent, comme quand tu écris {CIT}, qu'on ne sait plus ce qui est passé, présent ou à venir."
+       }
+      ],
+      [
+       {
+        "sans": "Tu tiens le « je », mais le destinataire n'apparaît qu'au début et à la fin.",
+        "avec": "Tu tiens le « je », mais le destinataire n'apparaît qu'au début et à la fin ; entre les deux, tu écris {CIT} comme pour personne."
+       },
+       {
+        "sans": "Tu tiens le « je » et le destinataire, mais tu hésites entre « tu » et « vous » pour la même personne.",
+        "avec": "Tu tiens le « je » et le destinataire, mais tu hésites entre « tu » et « vous » pour la même personne, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu tiens le « je » et le destinataire, mais tes temps glissent : le présent de la lettre et le passé de ce que tu racontes se mélangent.",
+        "avec": "Tu tiens le « je » et le destinataire, mais tes temps glissent, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu tiens le « je », le destinataire et les temps, sauf dans un passage qui redevient un récit.",
+        "avec": "Tu tiens le « je », le destinataire et les temps, sauf dans un passage qui redevient un récit, comme quand tu écris {CIT}."
+       }
+      ],
+      [
+       {
+        "sans": "Tu tiens le « je » et tu écris à quelqu'un d'un bout à l'autre ; un temps hésite encore ici ou là.",
+        "avec": "Tu tiens le « je » et tu écris à quelqu'un d'un bout à l'autre ; un temps hésite encore, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu tiens le « je », le destinataire et les temps : le présent de la lettre, le passé de ce que tu racontes, le futur de ce que tu espères.",
+        "avec": "Tu tiens le « je », le destinataire et les temps, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu tiens tout, et tu t'adresses à l'autre au fil de la lettre, pas seulement au début : on sent qu'il est là.",
+        "avec": "Tu tiens tout, et tu t'adresses à l'autre au fil de la lettre, comme quand tu écris {CIT} : on sent qu'il est là."
+       },
+       {
+        "sans": "Tu tiens tout. Pour aller plus loin, il manque que ta lettre réponde à l'autre : à sa dernière lettre, à ses questions, à ce qu'il t'a demandé.",
+        "avec": "Tu tiens tout, comme quand tu écris {CIT}. Pour aller plus loin, il manque que ta lettre réponde à l'autre : à sa dernière lettre, à ses questions."
+       }
+      ],
+      [
+       {
+        "sans": "Ta lettre répond à l'autre : on devine ce qu'il t'avait écrit, et la conversation continue.",
+        "avec": "Ta lettre répond à l'autre, comme quand tu écris {CIT} : on devine ce qu'il t'avait écrit, et la conversation continue."
+       },
+       {
+        "sans": "Tu questionnes l'autre, tu l'appelles, tu lui demandes : l'absent est présent à chaque paragraphe.",
+        "avec": "Tu questionnes l'autre, tu l'appelles, tu lui demandes, comme quand tu écris {CIT} : l'absent est présent à chaque paragraphe."
+       },
+       {
+        "sans": "Tes temps disent exactement la séparation : ce qui était avant, ce qui est maintenant, ce que tu n'oses plus promettre.",
+        "avec": "Tes temps disent exactement la séparation, comme quand tu écris {CIT} : ce qui était avant, ce qui est maintenant, ce que tu n'oses plus promettre."
+       },
+       {
+        "sans": "Ta lettre est un vrai dialogue avec l'absent : en la lisant, on entend aussi celui ou celle à qui elle est écrite.",
+        "avec": "Ta lettre est un vrai dialogue avec l'absent, comme quand tu écris {CIT} : en la lisant, on entend aussi celui ou celle à qui elle est écrite."
+       }
+      ]
+     ]
+    },
+    {
+     "id": "trente_lignes",
+     "libelle": "Trente lignes",
+     "poids": 2,
+     "competence": "c4-ecrire-02",
+     "descripteurs": [
+      "{prenom}, ta lettre est nettement trop courte (moins de quinze lignes) : le sujet ne peut pas se déployer.",
+      "{prenom}, ta lettre reste courte (entre quinze et vingt-cinq lignes) : les trois paragraphes n'ont pas la place de se développer.",
+      "{prenom}, ta lettre fait ses trente lignes : chacun des trois paragraphes a sa place.",
+      "{prenom}, ta lettre fait ses trente lignes, pleines et bien employées : chaque paragraphe se déploie, sans délayer ni précipiter."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Ta lettre tient en quelques lignes : elle commence et s'arrête aussitôt.",
+        "avec": "Ta lettre tient en quelques lignes : elle commence et s'arrête aussitôt, sur {CIT}."
+       },
+       {
+        "sans": "Ta lettre fait moins de dix lignes : un seul paragraphe a eu le temps d'exister.",
+        "avec": "Ta lettre fait moins de dix lignes : un seul paragraphe a eu le temps d'exister, celui où tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre fait une dizaine de lignes : les trois paragraphes sont à peine esquissés.",
+        "avec": "Ta lettre fait une dizaine de lignes : les trois paragraphes sont à peine esquissés, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre approche les quinze lignes, mais s'arrête avant d'avoir dit l'essentiel.",
+        "avec": "Ta lettre approche les quinze lignes, mais s'arrête avant d'avoir dit l'essentiel, sur {CIT}."
+       }
+      ],
+      [
+       {
+        "sans": "Ta lettre fait une quinzaine de lignes : chaque paragraphe tient en quelques phrases.",
+        "avec": "Ta lettre fait une quinzaine de lignes : chaque paragraphe tient en quelques phrases, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre fait une vingtaine de lignes, mais l'un des paragraphes est sacrifié.",
+        "avec": "Ta lettre fait une vingtaine de lignes, mais l'un des paragraphes est sacrifié, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre fait une vingtaine de lignes, bien réparties, mais chaque paragraphe s'arrête tôt.",
+        "avec": "Ta lettre fait une vingtaine de lignes, bien réparties, mais chaque paragraphe s'arrête tôt, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre approche les vingt-cinq lignes : il manque quelques lignes pour que tout se déploie.",
+        "avec": "Ta lettre approche les vingt-cinq lignes : il manque quelques lignes pour que tout se déploie, comme on le voit quand tu écris {CIT}."
+       }
+      ],
+      [
+       {
+        "sans": "Ta lettre fait ses trente lignes, mais un paragraphe en prend la moitié et les autres se serrent.",
+        "avec": "Ta lettre fait ses trente lignes, mais un paragraphe en prend la moitié et les autres se serrent, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre fait ses trente lignes, mais quelques lignes répètent ce qui est déjà dit.",
+        "avec": "Ta lettre fait ses trente lignes, mais quelques lignes répètent ce qui est déjà dit, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre fait ses trente lignes, bien réparties entre les trois paragraphes.",
+        "avec": "Ta lettre fait ses trente lignes, bien réparties entre les trois paragraphes, comme on le voit quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ta lettre fait ses trente lignes, bien réparties. Pour aller plus loin, il manque que chaque ligne soit nécessaire.",
+        "avec": "Ta lettre fait ses trente lignes, bien réparties. Pour aller plus loin, il manque que chaque ligne soit nécessaire, ce que n'est pas encore {CIT}."
+       }
+      ],
+      [
+       {
+        "sans": "Ta lettre fait ses trente lignes, et aucune n'est de trop.",
+        "avec": "Ta lettre fait ses trente lignes, et aucune n'est de trop, pas même {CIT}."
+       },
+       {
+        "sans": "Tes trente lignes sont pleines : chaque paragraphe prend le temps de se déployer.",
+        "avec": "Tes trente lignes sont pleines : chaque paragraphe prend le temps de se déployer, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tes trente lignes sont bien employées : le concret, le plus dur et l'inquiétude pour l'autre ont chacun la place qu'ils méritent.",
+        "avec": "Tes trente lignes sont bien employées, comme quand tu écris {CIT} : le concret, le plus dur et l'inquiétude pour l'autre ont chacun la place qu'ils méritent."
+       },
+       {
+        "sans": "Tes trente lignes sont tenues de bout en bout, sans délayer ni précipiter : la lettre a la longueur juste de ce qu'elle a à dire.",
+        "avec": "Tes trente lignes sont tenues de bout en bout, sans délayer ni précipiter, comme quand tu écris {CIT} : la lettre a la longueur juste de ce qu'elle a à dire."
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "langue",
+   "titre": "La langue",
+   "pts_max": 6,
+   "indicateurs": [
+    {
+     "id": "orthographe",
+     "libelle": "Orthographe et grammaire",
+     "poids": 4,
+     "competence": "c4-langue-01",
+     "descripteurs": [
+      "{prenom}, ton orthographe et ta grammaire sont très fragiles. Les erreurs sont nombreuses et gênent la lecture de ta lettre.",
+      "{prenom}, ton orthographe et ta grammaire sont insuffisantes. Les erreurs sont fréquentes, surtout sur les accords et les conjugaisons, et révèlent un manque de relecture.",
+      "{prenom}, ton orthographe et ta grammaire sont correctes. Tu fais encore quelques erreurs mais l'ensemble est lisible sans accroc.",
+      "{prenom}, ton orthographe et ta grammaire sont maîtrisées. Les erreurs sont rares et marginales, ta langue est sûre."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Les erreurs d'orthographe sont si nombreuses qu'elles brouillent le sens : par endroits, le lecteur ne comprend plus ce que tu veux dire.",
+        "avec": "Les erreurs d'orthographe sont si nombreuses qu'elles brouillent le sens, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ton orthographe est extrêmement fragile : les accords sujet-verbe, les pluriels, les terminaisons des verbes posent constamment problème.",
+        "avec": "Ton orthographe est extrêmement fragile, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Les homophones (ses/ces, à/a, ou/où, ce/se) sont systématiquement confondus, et les accords du participe passé sont absents.",
+        "avec": "Les homophones et les accords du participe passé sont systématiquement absents. On le voit quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu sembles ne pas avoir relu ta copie : les fautes sont nombreuses, y compris sur des mots simples. Une relecture aurait évité beaucoup d'erreurs.",
+        "avec": "Tu sembles ne pas avoir relu ta copie, comme on le voit quand tu écris {CIT}."
+       }
+      ],
+      [
+       {
+        "sans": "Tu fais beaucoup d'erreurs d'orthographe et de grammaire, surtout sur les accords sujet-verbe et les participes passés. Le sens passe, mais difficilement.",
+        "avec": "Tu fais beaucoup d'erreurs d'orthographe et de grammaire, surtout sur les accords. On le voit quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tes erreurs sont nombreuses mais inégales : tu réussis certains accords difficiles et tu rates des accords simples. Une relecture ciblée te ferait gagner beaucoup.",
+        "avec": "Tes erreurs sont nombreuses mais inégales. On le voit quand tu écris {CIT} : ici c'est une erreur que tu sais éviter ailleurs."
+       },
+       {
+        "sans": "Tu butes essentiellement sur les homophones et les terminaisons verbales. La grammaire tient, mais l'orthographe lexicale est encore fragile.",
+        "avec": "Tu butes essentiellement sur les homophones et les terminaisons verbales, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ton orthographe est presque correcte, à quelques erreurs près. Une relecture systématique en fin de devoir te ferait passer au satisfaisant.",
+        "avec": "Ton orthographe est presque correcte, à quelques erreurs près. On le voit quand tu écris {CIT} : une relecture rapide aurait suffi."
+       }
+      ],
+      [
+       {
+        "sans": "Ton orthographe et ta grammaire sont globalement correctes. Tu fais encore quelques erreurs, mais elles ne gênent pas la lecture.",
+        "avec": "Ton orthographe et ta grammaire sont globalement correctes. On le voit quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu tiens les accords courants et tu maîtrises l'essentiel des conjugaisons. Les erreurs restantes concernent surtout les cas difficiles (homophones complexes, accords particuliers).",
+        "avec": "Tu tiens les accords courants et tu maîtrises l'essentiel des conjugaisons. On le voit quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu écris correctement : ta langue est sûre sur la majorité des points, et tu te trompes seulement sur quelques difficultés ponctuelles.",
+        "avec": "Tu écris correctement : ta langue est sûre sur la majorité des points, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ton orthographe est solide : il ne te reste que quelques rares erreurs sur des points pointus. La langue est assez sûre pour que le lecteur ne soit jamais gêné.",
+        "avec": "Ton orthographe est solide : il ne te reste que quelques rares erreurs sur des points pointus. On le voit quand tu écris {CIT}. La langue est assez sûre pour que le lecteur ne soit jamais gêné."
+       }
+      ],
+      [
+       {
+        "sans": "Ta langue est sûre : tu maîtrises les accords, les conjugaisons et l'orthographe lexicale. Les erreurs sont rares et marginales.",
+        "avec": "Ta langue est sûre : tu maîtrises les accords, les conjugaisons et l'orthographe lexicale, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu écris avec une vraie correction : ta copie se lit sans le moindre obstacle, et tu réussis même les difficultés rares (participes passés avec être pronominal, homophones piégeux).",
+        "avec": "Tu écris avec une vraie correction. On le voit quand tu écris {CIT} : tu réussis ici une difficulté que beaucoup ratent."
+       },
+       {
+        "sans": "Ta maîtrise orthographique est presque sans faille : tu emploies les bons accords, les bonnes terminaisons, les bons homophones, sans hésitation.",
+        "avec": "Ta maîtrise orthographique est presque sans faille. On le voit quand tu écris {CIT}, où chaque mot est exactement à sa place."
+       },
+       {
+        "sans": "Tu maîtrises l'orthographe et la grammaire de bout en bout : pas d'erreur, pas de doute, pas d'hésitation. Ta langue est entièrement sûre.",
+        "avec": "Tu maîtrises l'orthographe et la grammaire de bout en bout. Quand tu écris {CIT}, on sent que chaque mot a été pesé."
+       }
+      ]
+     ]
+    },
+    {
+     "id": "lexique",
+     "libelle": "Lexique",
+     "poids": 2,
+     "competence": "c4-langue-03",
+     "descripteurs": [
+      "{prenom}, ton lexique est très pauvre. Tu emploies des mots vagues, tu répètes constamment les mêmes termes, ton vocabulaire ne te permet pas d'exprimer ce que tu veux dire.",
+      "{prenom}, ton lexique est juste mais pauvre. Tu emploies un vocabulaire courant sans recherche, avec des répétitions notables et peu de précision.",
+      "{prenom}, ton lexique est correct et globalement précis. Tu cherches le mot juste, tu varies ton vocabulaire, tu emploies parfois un terme recherché ou imagé.",
+      "{prenom}, ton lexique est riche, précis, nuancé. Tu emploies un vocabulaire varié et adapté au registre, tes images sont travaillées, ta langue a sa propre couleur."
+     ],
+     "sous": [
+      [
+       {
+        "sans": "Tu emploies des mots qui n'ont pas le bon sens : tu te trompes de terme et la phrase devient incompréhensible ou drôle malgré toi.",
+        "avec": "Tu emploies des mots qui n'ont pas le bon sens, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Ton vocabulaire est très pauvre : tu emploies sans cesse des mots vagues et passe-partout, et tu ne cherches pas à varier ni à préciser. Ta lettre reste floue.",
+        "avec": "Ton vocabulaire est très pauvre, comme quand tu écris {CIT}. Tu emploies des mots vagues qui ne disent rien de précis."
+       },
+       {
+        "sans": "Tu utilises un vocabulaire trop familier pour une lettre écrite : termes de conversation, expressions d'aujourd'hui.",
+        "avec": "Tu utilises un vocabulaire trop familier pour une lettre écrite, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Les répétitions sont nombreuses et rendent la lecture pesante : le même mot revient à chaque ligne sans que tu cherches de synonymes.",
+        "avec": "Les répétitions sont nombreuses et rendent la lecture pesante, comme quand tu écris {CIT}."
+       }
+      ],
+      [
+       {
+        "sans": "Ton vocabulaire est juste mais pauvre : tu emploies un mot courant là où un mot plus précis ferait l'affaire. Ta lettre reste plate.",
+        "avec": "Ton vocabulaire est juste mais pauvre, comme quand tu écris {CIT} : un mot plus précis aurait donné plus de force à la phrase."
+       },
+       {
+        "sans": "Tu sais varier ton vocabulaire mais tu retombes souvent dans les mêmes répétitions. Quelques relectures te permettraient de les éviter.",
+        "avec": "Tu sais varier ton vocabulaire mais tu retombes souvent dans les mêmes répétitions, comme quand tu écris {CIT}."
+       },
+       {
+        "sans": "Tu essaies des mots plus recherchés mais tu te trompes parfois sur leur sens ou leur emploi. L'effort est là, la maîtrise pas encore.",
+        "avec": "Tu essaies des mots plus recherchés mais tu te trompes parfois sur leur sens, comme quand tu écris {CIT} : le mot choisi ne dit pas exactement ce que tu voulais dire."
+       },
+       {
+        "sans": "Ton lexique est globalement correct mais il manque encore de précision sur ce que tu vois et ce que tu ressens. Quelques mots plus exacts enrichiraient nettement ta lettre.",
+        "avec": "Ton lexique est globalement correct mais il manque encore de précision. On le voit quand tu écris {CIT} : un mot plus exact ferait toute la différence."
+       }
+      ],
+      [
+       {
+        "sans": "Ton vocabulaire est précis sur les choses courantes : tu nommes correctement ce que tu décris, sans rester dans le vague. La précision de base est là.",
+        "avec": "Ton vocabulaire est précis sur les choses courantes, comme quand tu écris {CIT}. La précision de base est là."
+       },
+       {
+        "sans": "Tu emploies un lexique adapté au sujet et à l'époque : ton vocabulaire de la guerre, du front ou de la vie à l'arrière est correct et juste. Le champ lexical est mobilisé.",
+        "avec": "Tu emploies un lexique adapté au sujet et à l'époque, comme quand tu écris {CIT}. Le champ lexical de la guerre est mobilisé."
+       },
+       {
+        "sans": "Ton vocabulaire est varié et tu places par endroits des mots recherchés ou imagés qui donnent du relief à ta lettre. Tu cherches le mot juste plutôt que le mot habituel.",
+        "avec": "Ton vocabulaire est varié et tu places par endroits des mots recherchés ou imagés, comme quand tu écris {CIT}. Tu cherches le mot juste plutôt que le mot habituel."
+       },
+       {
+        "sans": "Ton lexique est riche pour une copie de 3e : précis sur les choses, adapté au sujet, varié sans préciosité. Pour basculer en Très satisfaisant, il manque encore que tes mots restituent finement les sensations et les émotions, pas seulement les choses.",
+        "avec": "Ton lexique est riche pour une copie de 3e : précis, adapté, varié sans préciosité. On le voit quand tu écris {CIT}. Pour basculer en Très satisfaisant, il manque encore la finesse sur les sensations et les émotions."
+       }
+      ],
+      [
+       {
+        "sans": "Ton vocabulaire est riche et précis sur tous les plans : tu nommes les choses, les sensations, les sentiments avec exactitude. Tu évites systématiquement les répétitions et les mots passe-partout.",
+        "avec": "Ton vocabulaire est riche et précis sur tous les plans, comme quand tu écris {CIT}. Les choses, les sensations, les sentiments sont nommés avec exactitude."
+       },
+       {
+        "sans": "Tu emploies un lexique nuancé qui restitue finement les sensations et les émotions : tu ne dis pas « peur » mais l'inquiétude ou l'effroi ; pas « bruit » mais le crissement ou le grondement. Ta lettre gagne en épaisseur.",
+        "avec": "Tu emploies un lexique nuancé qui restitue finement les sensations, comme quand tu écris {CIT} : le mot choisi est exactement celui qui dit la sensation, pas le mot général."
+       },
+       {
+        "sans": "Tu sais varier les registres et tu places des images qui font mouche : tes formulations ne sont pas seulement justes, elles sont travaillées. Une métaphore bien placée, une comparaison qui éclaire, et le lecteur voit ce que tu décris.",
+        "avec": "Tu sais varier les registres et tu places des images qui font mouche. On le voit quand tu écris {CIT} : la formulation est travaillée et elle éclaire ce que tu décris."
+       },
+       {
+        "sans": "Ton vocabulaire est exactement celui qu'il fallait : précis, nuancé, parfois imagé, toujours adapté. Chaque mot est choisi, pas simplement employé. La langue est au service de ta lettre de bout en bout.",
+        "avec": "Ton vocabulaire est exactement celui qu'il fallait : précis, nuancé, parfois imagé, toujours adapté. Quand tu écris {CIT}, on sent que chaque mot a été cherché et choisi."
+       }
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -659,3 +659,14 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - La vignette du volet se clique à la souris : le focus quitte alors les notes.
   - **La diapo se retrouve par son titre et non par son rang** : l'Atelier intercale ses diapos de fin d'heure (la diapo 6 du JSON y est la 7).
 - J'attends « §12.33 (2) » d'E1, puis je joue le cas 33 entier et la vérification courte, et `banc.sh`.
+
+## Retour 72 — 27/10, 17:28 — **§12.33 VERT (`fd54cc90`)**
+- E1 a fini §12.33 : le (2) avec `f80de8a9` et `6e750550`, puis `9aef3a3b` (« §12.33 fini »). L'assemblé de la tête est `fd54cc90`.
+- **Le cas 33, aux quatre tailles : VERT 68/68.** Les captures après sont regardées (1707 : l'Atelier montre « Structure » et « Atelier » ; « ab », « A » et « ✍ À écrire » sont dans la barre ; la poignée et « Notes pour cette diapo » sont dans l'écran).
+  - **La poignée** est dans l'écran, à 90 %, 100 % et 110 %, et se tire.
+  - **Les onglets** : seulement « Structure » et « Atelier ».
+  - **« 📝 Notes »** n'est plus dans l'Atelier.
+  - **Les trois marques** sont posées, revues après rechargement et vues au tableau en répétition.
+  - **Les notes de trois diapos et du bilan**, importées, sont chacune dans le cadre de sa diapo.
+- **La vérification courte**, avec les cas voisins de l'Atelier et de la répétition (30, 51, 49, 50, 39, 41, 29, 43), aux quatre tailles : **VERT 396/396**. `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/1728-27-10-1228-33-vert/`.
+- **§12.33 VERT (`fd54cc90`)**.

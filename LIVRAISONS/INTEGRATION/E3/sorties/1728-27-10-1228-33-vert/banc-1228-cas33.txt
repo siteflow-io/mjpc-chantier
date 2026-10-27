@@ -1,0 +1,79 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 16:01 UTC · fichier md5 fd54cc90bfbef0351ac4b6333632a3bf
+
+══ 1366×768 ══
+  ok     33 · 1366×768 · zoom 100 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":654,"bas":666,"H":768,"cx":647,"cy":660,"prise":true,"notes":673}
+  ok     33 · 1366×768 · zoom 100 % · la poignée tirée de 60 px vers le haut : la diapo cède sa hauteur aux notes, la poignée reste dans l’écran — 397 → 338 px · {"haut":595,"bas":607,"H":768}
+  ok     Z · 1366×768 · zoom 100 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1366×768 · zoom 90 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":719,"bas":731,"H":853,"cx":723,"cy":725,"prise":true,"notes":738}
+  ok     Z · 1366×768 · zoom 90 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1366×768 · zoom 110 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":595,"bas":607,"H":698,"cx":585,"cy":601,"prise":true,"notes":614}
+  ok     Z · 1366×768 · zoom 110 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1366×768 · l’Atelier : « Structure » et « Atelier », ni « Pilotage » ni « Relecture » — ["structure","atelier"]
+  ok     33 · 1366×768 · pas de « 📝 Notes » dans l’Atelier (les notes au fil de l’eau sont de l’heure)
+  ok     33 · 1366×768 · dans la barre de l’Atelier : surligner, couleur du texte, « ✍ À écrire », chacun avec son infobulle — {"surl":{"id":"at-surl","t":"ab","titre":"Surligner — sélectionne du texte dans la diapo, puis choisis la couleur : il ser"},"coul":{"id":"at-txt","t":"A","titre":"Couleur du texte — sélectionne du texte dans la diapo, puis choisis la couleur :"},"ecr":{"id":"at-ecr","t":"✍ À écrire","titre":"À écrire — place le curseur dans un élément de la diapo (une étape, ou le titre "}}
+  ok     33 · 1366×768 · posées dans l’Atelier : « J'observe » surligné, « discute » en couleur, l’élément 0.2 « à écrire » — {"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}
+  ok     33 · 1366×768 · après rechargement, les trois marques sont revues dans l’Atelier — {"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}
+  ok     33 · 1366×768 · en répétition, le tableau montre le surlignage et la couleur préparés — {"rep":true,"m2":{"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}}
+  ok     Z · 1366×768 · 0 erreur JS (33, l’Atelier)
+  ok     33 · 1366×768 · 13 · 33 (5) · le chapitre aux notes sur trois diapos et le bilan est accepté — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ok     33 · 1366×768 · 13 · 33 (5) · chaque note dans le cadre de sa diapo (diapos 0, 6, 13, 16) — 4/4 · {"0":"di 0 · ⌂ Lumière éteinte, les cinq tableaux défilent sans un mot : cinq minutes de silence complet. ⌂ • Delacroix d’abord ⌂ • Friedrich en dernier","6":"di 7 · ⌂ Noter au tableau chaque hypothèse, même fausse ; ne trancher qu’à la question-synthèse.","13":"di 15 · ⌂ Les trois mots se recopient
+  ok     Z · 1366×768 · 0 erreur JS (33, les notes)
+
+══ 1536×864 ══
+  ok     33 · 1536×864 · zoom 100 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":729,"bas":741,"H":864,"cx":732,"cy":735,"prise":true,"notes":748}
+  ok     33 · 1536×864 · zoom 100 % · la poignée tirée de 60 px vers le haut : la diapo cède sa hauteur aux notes, la poignée reste dans l’écran — 492 → 429 px · {"haut":666,"bas":678,"H":864}
+  ok     Z · 1536×864 · zoom 100 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1536×864 · zoom 90 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":825,"bas":837,"H":960,"cx":818,"cy":831,"prise":true,"notes":844}
+  ok     Z · 1536×864 · zoom 90 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1536×864 · zoom 110 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":671,"bas":683,"H":785,"cx":662,"cy":677,"prise":true,"notes":690}
+  ok     Z · 1536×864 · zoom 110 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1536×864 · l’Atelier : « Structure » et « Atelier », ni « Pilotage » ni « Relecture » — ["structure","atelier"]
+  ok     33 · 1536×864 · pas de « 📝 Notes » dans l’Atelier (les notes au fil de l’eau sont de l’heure)
+  ok     33 · 1536×864 · dans la barre de l’Atelier : surligner, couleur du texte, « ✍ À écrire », chacun avec son infobulle — {"surl":{"id":"at-surl","t":"ab","titre":"Surligner — sélectionne du texte dans la diapo, puis choisis la couleur : il ser"},"coul":{"id":"at-txt","t":"A","titre":"Couleur du texte — sélectionne du texte dans la diapo, puis choisis la couleur :"},"ecr":{"id":"at-ecr","t":"✍ À écrire","titre":"À écrire — place le curseur dans un élément de la diapo (une étape, ou le titre "}}
+  ok     33 · 1536×864 · posées dans l’Atelier : « J'observe » surligné, « discute » en couleur, l’élément 0.2 « à écrire » — {"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}
+  ok     33 · 1536×864 · après rechargement, les trois marques sont revues dans l’Atelier — {"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}
+  ok     33 · 1536×864 · en répétition, le tableau montre le surlignage et la couleur préparés — {"rep":true,"m2":{"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}}
+  ok     Z · 1536×864 · 0 erreur JS (33, l’Atelier)
+  ok     33 · 1536×864 · 13 · 33 (5) · le chapitre aux notes sur trois diapos et le bilan est accepté — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ok     33 · 1536×864 · 13 · 33 (5) · chaque note dans le cadre de sa diapo (diapos 0, 6, 13, 16) — 4/4 · {"0":"di 0 · ⌂ Lumière éteinte, les cinq tableaux défilent sans un mot : cinq minutes de silence complet. ⌂ • Delacroix d’abord ⌂ • Friedrich en dernier","6":"di 7 · ⌂ Noter au tableau chaque hypothèse, même fausse ; ne trancher qu’à la question-synthèse.","13":"di 15 · ⌂ Les trois mots se recopient
+  ok     Z · 1536×864 · 0 erreur JS (33, les notes)
+
+══ 1707×743 ══
+  ok     33 · 1707×743 · zoom 100 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":640,"bas":652,"H":743,"cx":818,"cy":646,"prise":true,"notes":659}
+  ok     33 · 1707×743 · zoom 100 % · la poignée tirée de 60 px vers le haut : la diapo cède sa hauteur aux notes, la poignée reste dans l’écran — 403 → 342 px · {"haut":579,"bas":591,"H":743}
+  ok     Z · 1707×743 · zoom 100 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1707×743 · zoom 90 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":723,"bas":735,"H":826,"cx":913,"cy":729,"prise":true,"notes":742}
+  ok     Z · 1707×743 · zoom 90 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1707×743 · zoom 110 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":572,"bas":584,"H":675,"cx":740,"cy":578,"prise":true,"notes":591}
+  ok     Z · 1707×743 · zoom 110 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1707×743 · l’Atelier : « Structure » et « Atelier », ni « Pilotage » ni « Relecture » — ["structure","atelier"]
+  ok     33 · 1707×743 · pas de « 📝 Notes » dans l’Atelier (les notes au fil de l’eau sont de l’heure)
+  ok     33 · 1707×743 · dans la barre de l’Atelier : surligner, couleur du texte, « ✍ À écrire », chacun avec son infobulle — {"surl":{"id":"at-surl","t":"ab","titre":"Surligner — sélectionne du texte dans la diapo, puis choisis la couleur : il ser"},"coul":{"id":"at-txt","t":"A","titre":"Couleur du texte — sélectionne du texte dans la diapo, puis choisis la couleur :"},"ecr":{"id":"at-ecr","t":"✍ À écrire","titre":"À écrire — place le curseur dans un élément de la diapo (une étape, ou le titre "}}
+  ok     33 · 1707×743 · posées dans l’Atelier : « J'observe » surligné, « discute » en couleur, l’élément 0.2 « à écrire » — {"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}
+  ok     33 · 1707×743 · après rechargement, les trois marques sont revues dans l’Atelier — {"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}
+  ok     33 · 1707×743 · en répétition, le tableau montre le surlignage et la couleur préparés — {"rep":true,"m2":{"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}}
+  ok     Z · 1707×743 · 0 erreur JS (33, l’Atelier)
+  ok     33 · 1707×743 · 13 · 33 (5) · le chapitre aux notes sur trois diapos et le bilan est accepté — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ok     33 · 1707×743 · 13 · 33 (5) · chaque note dans le cadre de sa diapo (diapos 0, 6, 13, 16) — 4/4 · {"0":"di 0 · ⌂ Lumière éteinte, les cinq tableaux défilent sans un mot : cinq minutes de silence complet. ⌂ • Delacroix d’abord ⌂ • Friedrich en dernier","6":"di 7 · ⌂ Noter au tableau chaque hypothèse, même fausse ; ne trancher qu’à la question-synthèse.","13":"di 15 · ⌂ Les trois mots se recopient
+  ok     Z · 1707×743 · 0 erreur JS (33, les notes)
+
+══ 1920×1080 ══
+  ok     33 · 1920×1080 · zoom 100 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":910,"bas":922,"H":1080,"cx":924,"cy":916,"prise":true,"notes":929}
+  ok     33 · 1920×1080 · zoom 100 % · la poignée tirée de 60 px vers le haut : la diapo cède sa hauteur aux notes, la poignée reste dans l’écran — 708 → 638 px · {"haut":840,"bas":852,"H":1080}
+  ok     Z · 1920×1080 · zoom 100 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1920×1080 · zoom 90 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":1030,"bas":1042,"H":1200,"cx":1031,"cy":1036,"prise":true,"notes":1049}
+  ok     Z · 1920×1080 · zoom 90 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1920×1080 · zoom 110 % · 13 · 55 · la poignée diapo / notes est dans l’écran et se prend sans viser — {"haut":847,"bas":859,"H":982,"cx":837,"cy":853,"prise":true,"notes":866}
+  ok     Z · 1920×1080 · zoom 110 % · 0 erreur JS (33, la poignée)
+  ok     33 · 1920×1080 · l’Atelier : « Structure » et « Atelier », ni « Pilotage » ni « Relecture » — ["structure","atelier"]
+  ok     33 · 1920×1080 · pas de « 📝 Notes » dans l’Atelier (les notes au fil de l’eau sont de l’heure)
+  ok     33 · 1920×1080 · dans la barre de l’Atelier : surligner, couleur du texte, « ✍ À écrire », chacun avec son infobulle — {"surl":{"id":"at-surl","t":"ab","titre":"Surligner — sélectionne du texte dans la diapo, puis choisis la couleur : il ser"},"coul":{"id":"at-txt","t":"A","titre":"Couleur du texte — sélectionne du texte dans la diapo, puis choisis la couleur :"},"ecr":{"id":"at-ecr","t":"✍ À écrire","titre":"À écrire — place le curseur dans un élément de la diapo (une étape, ou le titre "}}
+  ok     33 · 1920×1080 · posées dans l’Atelier : « J'observe » surligné, « discute » en couleur, l’élément 0.2 « à écrire » — {"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}
+  ok     33 · 1920×1080 · après rechargement, les trois marques sont revues dans l’Atelier — {"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}
+  ok     33 · 1920×1080 · en répétition, le tableau montre le surlignage et la couleur préparés — {"rep":true,"m2":{"surl":["J'observe"],"coul":["discute"],"ecr":["0.2"]}}
+  ok     Z · 1920×1080 · 0 erreur JS (33, l’Atelier)
+  ok     33 · 1920×1080 · 13 · 33 (5) · le chapitre aux notes sur trois diapos et le bilan est accepté — « Réponse comprise. Voici ce que tu as déjà, et ce qu’elle apporte. »
+  ok     33 · 1920×1080 · 13 · 33 (5) · chaque note dans le cadre de sa diapo (diapos 0, 6, 13, 16) — 4/4 · {"0":"di 0 · ⌂ Lumière éteinte, les cinq tableaux défilent sans un mot : cinq minutes de silence complet. ⌂ • Delacroix d’abord ⌂ • Friedrich en dernier","6":"di 7 · ⌂ Noter au tableau chaque hypothèse, même fausse ; ne trancher qu’à la question-synthèse.","13":"di 15 · ⌂ Les trois mots se recopient
+  ok     Z · 1920×1080 · 0 erreur JS (33, les notes)
+
+BILAN banc-1228 : 68/68 vérifications · VERT

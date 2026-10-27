@@ -4095,3 +4095,16 @@ MEMO
 
 27/10/2026 09:01
 MEMO
+
+## Tour 218 — 27/10/2026 09:03 — contrôle n°73 (sans message de Paul depuis le tour 217)
+
+**Fait.** Lu sur `integration` depuis `26333f52` : E1 mission 0 du §12.31 (`401bb98f`, 08:57) — 13 · 51 juste, plus une quatrième lecture par `classeMjpc` (`edtDecisionsOrphelines`) ; 13 · 49 juste ; **13 · 50 mesuré : rien de chiffré** de « Nouveau chapitre » à l'écriture → `secuExigeCle()` tombe de `chOuvrir`, aucune phrase nouvelle ; ordre : 49+50 puis 51. E2 mission 0 du §12.30 (`ca7d3cb5`) : en préparation, la phrase se calcule sur la diapo gelée ; après « Montrer le cahier à la classe », pas de ligne ; `alerteTexte` tombe ; la phrase suivante non remise (481). E3 retour 65 (`705b5fae`) : le cas « 30 » écrit, l'avant sur la ④ ROUGE 24/36 comme attendu. Rappels actifs : E1 09:45, E2 09:04, E3 09:13. Aucun code du site poussé depuis la ④ : pas de banc. Le mode dirigé (460) attend l'annonce de la ⑤ (un sujet à la fois). Contrôle n°74 à 09:53 (`trig_018qryhaNVBjjiZaR7zPMwT4`).
+
+**Réponse (mot pour mot).**
+
+500. Contrôle de 09:02. E1 a vérifié : « Nouveau chapitre » n'a pas besoin de la clé (rien n'y est chiffré) — la demande tombe, sans phrase nouvelle. Il code maintenant le titre sans « (proposition) », puis les classes. E2 code la phrase de l'activité en cours ; E3 a déjà écrit sa mesure. Prochain contrôle à 09:53.
+
+À tester : rien de nouveau avant la ⑤.
+
+27/10/2026 09:03
+MEMO

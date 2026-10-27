@@ -7750,7 +7750,7 @@ zone_lignee:      AC('E','structure','travail',"Ajouter une zone lignée pour é
 zone_quadrillee:  AC('E','structure','travail',"Ajouter une zone quadrillée",{multiple:true,forme:'bloc_zone_quadri',champs:[CH('hauteur','Hauteur (en lignes, 5 par défaut)')]}),
 zone_vierge:      AC('E','structure','travail',"Ajouter une zone vierge",{multiple:true,forme:'bloc_zone_vierge',champs:[CH('hauteur','Hauteur (en lignes, 5 par défaut)')]}),
 cases_a_cocher:   AC('E','structure','travail',"Ajouter des cases à cocher",{multiple:true,forme:'bloc_cases',champs:[CH('items','Une ligne par case','list')]}),
-texte_a_trous:    AC('E','structure','travail',"Ajouter un texte à trous",{multiple:true,forme:'bloc_trous',allegeable:true,champs:[CH('texte','Texte — note chaque trou entre crochets : [réponse]','area')],info:"Sur le papier, chaque trou devient un blanc à compléter. La réponse entre crochets reste pour toi."}),
+texte_a_trous:    AC('E','structure','travail',"Ajouter un texte à trous",{multiple:true,forme:'bloc_trous',allegeable:true,champs:[CH('texte','Texte — note chaque trou entre crochets : [réponse] ; « […] » reste une coupure','area')],info:"Sur le papier, chaque trou devient un blanc à compléter. La réponse entre crochets reste pour toi."}),
 appariement:      AC('E','structure','travail',"Ajouter un appariement (relier les paires)",{multiple:true,forme:'bloc_appariement',allegeable:true,champs:[CH('paires','Paires (gauche = droite, une par ligne)','list')]}),
 tableau_completer:AC('E','structure','travail',"Ajouter un tableau à compléter",{multiple:true,forme:'bloc_tableau_vide',champs:[CH('lignes','Lignes (cellules séparées par | ; laisse vide ce que l\u2019élève remplit)','list')]}),
 brouillon:        AC('E','structure','travail',"Ajouter une zone de brouillon",{multiple:true,forme:'bloc_brouillon',champs:[CH('hauteur','Hauteur (en lignes, 6 par défaut)')]}),
@@ -9167,6 +9167,9 @@ function chApresEcriture(){
     });
   }catch(e){}
 }
+/* E1 (§12.34-4, 13 · 70) : le titre d'un double — le titre suffixé « (proposition) », ou « (proposition n) » s'il existe déjà (le patron de _chSouche) */
+function chTitreDouble(t,chaps){ var pris={}; (Array.isArray(chaps)?chaps:Object.keys(chaps||{}).map(function(k){return chaps[k];})).forEach(function(c){ if(c&&c.title!=null)pris[edTitreNorm(c.title)]=true; });
+  var base=t.replace(/\s*\(proposition(?:\s*\d+)?\)\s*$/,''); var c=base+' (proposition)'; for(var n=2;pris[edTitreNorm(c)]&&n<100;n++)c=base+' (proposition '+n+')'; return c; }
 function chInjecterConfirme(voie){
   var _neufIci=(CH.chapIdx===null||CH.chapIdx===undefined);   /* [LOT B \u2463b] le geste r\u00e9ellement demand\u00e9 */
   var o=CH.json;var msg=document.getElementById('ch-msg');
@@ -9179,7 +9182,7 @@ function chInjecterConfirme(voie){
     /* JUMEAU : un rang neuf en FIN de liste, jamais push, jamais la liste entière */
     if(voie==='jumeau'){
       var neuf=atP2NormaliserSeances(JSON.parse(JSON.stringify(o.chapitre)));   /* E1 (§12.21) : la trame au modèle du site */
-      neuf.title=String(neuf.title||'')+(_neufIci?'':' (proposition)');   /* E1 (§12.31-2, dette 13 · 49) : « (proposition) » pour un double seulement ; « Créer ce chapitre » écrit le titre du JSON tel quel */
+      neuf.title=_neufIci?String(neuf.title||''):chTitreDouble(String(neuf.title||''),chaps);   /* E1 (§12.31-2, 13 · 49) ; (§12.34-4, 13 · 70) : un double ne porte jamais le titre d'un chapitre existant — « (proposition) », sinon « (proposition 2) », 3… */   /* E1 (§12.31-2, dette 13 · 49) : « (proposition) » pour un double seulement ; « Créer ce chapitre » écrit le titre du JSON tel quel */
       neuf.ordre=ordSuivant(chaps);   /* [C5-ORD] \u2460 le rang, pas le compte */
       delete neuf.published;
       chNettoyerPublished(neuf);
@@ -9964,8 +9967,10 @@ ATELIER_FORMES.bloc_citation=function(id,c,vals){
 ATELIER_FORMES.bloc_extrait=function(id,c,vals,ctx){
   var lignes=atLignes(vals.texte||'');
   var num=ctx.numLignes;
-  return '<div class="f-bloc f-extrait" data-c="'+id+'">'+lignes.map(function(l,i){
-    return '<div class="f-ext-l">'+(num?'<span class="f-ext-n">'+(i+1)+'</span>':'')+atEsc(l)+'</div>';
+  var n=0;   /* E1 (§12.34-2, 13 · 68) : seuls les vers sont numérotés — une ligne vide (un blanc entre strophes) garde sa place, sans numéro */
+  return '<div class="f-bloc f-extrait" data-c="'+id+'">'+lignes.map(function(l){
+    var vide=!String(l).trim(); if(!vide)n++;
+    return '<div class="f-ext-l">'+(num?'<span class="f-ext-n">'+(vide?'':n)+'</span>':'')+atEsc(l)+'</div>';
   }).join('')+'</div>';
 };
 ATELIER_FORMES.bloc_tableau=function(id,c,vals){
@@ -10014,7 +10019,7 @@ ATELIER_FORMES.bloc_cases=function(id,c,vals){
 };
 ATELIER_FORMES.bloc_trous=function(id,c,vals,ctx,refs){
   var t=(ctx.allegeOn&&String((refs&&refs.allege)||'').trim())?refs.allege:(vals.texte||'');
-  var html=atEsc(t).replace(/\[([^\]]*)\]/g,'<span class="f-trou"></span>');
+  var html=atEsc(t).replace(/\[([^\]]*)\]/g,function(m,x){ return /^\s*(\u2026|\.\.\.)\s*$/.test(x)?m:'<span class="f-trou"></span>'; });   /* E1 (§12.34-5, 13 · 72) : « […] » ou « [...] » reste une coupure, écrite telle quelle ; tout autre [...] est un trou */
   return '<div class="f-bloc f-trous" data-c="'+id+'">'+html.split(/\n/).join('<br>')+'</div>';
 };
 ATELIER_FORMES.bloc_appariement=function(id,c,vals,ctx,refs){

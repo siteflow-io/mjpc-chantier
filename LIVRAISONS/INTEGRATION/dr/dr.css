@@ -127,7 +127,7 @@ html:not(.dr-en-classe) #dr-zone #bnotes{display:none}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .sch th{background:#f3ede2;font-size:.82em;text-transform:uppercase}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .img{display:flex;flex-direction:column;min-height:0;max-height:100%;width:100%}:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img.img-plein{flex:1 1 0;min-height:0;width:100%}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup{position:relative;width:100%;aspect-ratio:16/9;max-height:100%;margin:0 auto;line-height:0;overflow:hidden}
-:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup img{display:block;width:100%;height:100%;object-fit:cover}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-sup img{display:block;width:100%;height:100%;object-fit:contain}   /* E1 (§12.34-1, 13 · 65) : l'œuvre entière (avant : cover, recadrée) ; la boîte prend la forme de l'image (dr_imagesEntieres) */
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-vide{position:absolute;inset:0;background:repeating-linear-gradient(45deg,#f0ece3,#f0ece3 10px,#e8e2d6 10px,#e8e2d6 20px);display:flex;align-items:center;justify-content:center;color:#a99a86;font-size:.5em;text-align:center}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .img-lg{font-size:.4em;font-style:italic;text-align:center;margin-top:.4em;flex:0 0 auto;color:#5c7186}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .img .mk{position:absolute;transform:translate(-50%,-50%);font-size:.42em;line-height:1.25}

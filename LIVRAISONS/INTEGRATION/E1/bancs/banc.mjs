@@ -1201,7 +1201,8 @@ await B('A57', '§12.31 (2), dette 13 · 49 : « Créer ce chapitre » (aucun ch
   const orig = (st.site['3e'].chapitres[0] || {}).title; const j2 = chapitreTest(st); j2.chapitre.title = orig;
   await pg.evaluate(jj => { CH.json = jj; CH.niveau = '3e'; CH.chapIdx = 0; CH.taxo = null; chInjecterConfirme('jumeau'); }, j2); await pg.waitForTimeout(2500);
   const t2 = await titres();
-  E.verif('A57', t2.filter(x => x === orig + ' (proposition)').length === 1 && t2.filter(x => x === orig).length === 1, '« Créer un double » : l\'original intact, le double « ' + orig + ' (proposition) »', JSON.stringify(t2.filter(x => x.indexOf(orig) === 0)));
+  const base57 = orig.replace(/\s*\(proposition(?:\s*\d+)?\)\s*$/, ''); const dbl = /\(proposition\)$/.test(orig) ? base57 + ' (proposition 2)' : orig + ' (proposition)';   /* §12.34 (4) : le chapitre 0 du faux hub s'appelle déjà « … (proposition) » */
+  E.verif('A57', t2.filter(x => x === dbl).length === 1 && t2.filter(x => x === orig).length === 1, '« Créer un double » : l\'original intact, le double « ' + dbl + ' »', JSON.stringify(t2.filter(x => x.indexOf(base57) === 0)));
   E.verif('A57', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined);
   await o.ctx.close();
 });
@@ -1461,6 +1462,44 @@ await B('A70', '§12.33 bis, 13 · 76 : la question du bilan sans réponse atten
 await B('A71', '§12.33 bis, 13 · 75 : « Diapo trop pleine » dans l\'Atelier ⇔ la diapo fait plus d\'une page au tableau — 3, 4, 5 et 7 mots-clés, à 1366 × 768, 1707 × 743, 1920 × 1080 (et au moins un cas à deux pages)', async () => {
   let deux = 0; for (const [W, H] of [[1366, 768], [1707, 743], [1920, 1080]]) for (const N of [3, 4, 5, 7]) { const r = await bilan(W, H, N); if (r.tab > 1) deux++; E.verif('A71', r.tab != null && r.at.plein === (r.tab > 1) && r.at.pages === r.tab, W + ' × ' + H + ' · ' + N + ' mots-clés : au tableau ' + r.tab + ' page(s), l\'Atelier ' + (r.at.plein ? 'dit' : 'ne dit pas') + ' « trop pleine » (ses pages : ' + r.at.pages + ')', JSON.stringify({ tab: r.tab, at: r.at })); }
   E.verif('A71', deux > 0, 'la mesure couvre aussi une diapo à plusieurs pages (' + deux + ' cas)', undefined); });
+
+/* ── A72 · §12.34 (1), dette 13 · 65 : l'œuvre entière, jamais recadrée — le Voyageur (portrait, 1000 × 1280) et une marque posée sur le rocher (51 % · 89 % de l'œuvre) : l'image se voit entière, la marque reste sur le rocher, dans l'Atelier et au tableau ── */
+const VOYAGEUR = 'data:image/svg+xml,' + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='1280'><rect width='1000' height='1280' fill='#8fa3b8'/><rect y='0' width='1000' height='120' fill='#5d6f84'/><rect x='300' y='1000' width='420' height='280' fill='#4a3a2a'/></svg>");
+const storeVoyageur = () => { const st = E.store(); const ch0 = st.site['3e'].chapitres[0] || st.site['3e'].chapitres['0']; const se0 = ch0.seances[0] || ch0.seances['0']; const b0 = se0.deroule.ecrans[1].blocs[0]; b0.ref = VOYAGEUR; b0.marques = [{ t: 'pt', x: 51, y: 89, txt: 'le rocher' }]; return st; };
+const mesureOeuvre = (q, murSel) => q.evaluate(s => { const m = document.querySelector(s); const sup = m && m.querySelector('.img-sup'); const img = sup && sup.querySelector(':scope > img'); const mk = sup && sup.querySelector('.mk'); if (!sup || !img || !mk) return null; const a = sup.getBoundingClientRect(), k = mk.getBoundingClientRect(), mr = m.getBoundingClientRect();
+  return { ratio: +(a.width / a.height).toFixed(3), fit: getComputedStyle(img).objectFit, mkX: +(((k.left + k.width / 2) - a.left) / a.width * 100).toFixed(1), mkY: +(((k.top + k.height / 2) - a.top) / a.height * 100).toFixed(1), dedans: a.left >= mr.left - 1 && a.right <= mr.right + 1 && a.top >= mr.top - 1 && a.bottom <= mr.bottom + 1 }; }, murSel);
+const oeuvreOk = r => r && Math.abs(r.ratio - 1000 / 1280) < 0.02 && Math.abs(r.mkX - 51) < 1.5 && Math.abs(r.mkY - 89) < 1.5 && r.dedans;
+await B('A72', '§12.34 (1), dette 13 · 65 : l\'œuvre entière (le Voyageur, portrait) et sa marque sur le rocher — dans l\'Atelier et dans la fenêtre du tableau, à 1366 × 768, 1707 × 743, 1920 × 1080', async () => {
+  for (const [W, H] of [[1366, 768], [1707, 743], [1920, 1080]]) { const o = await E.ouvrir(b, { w: W, h: H, vue: 'atelier', hub: storeVoyageur() }); const pg = o.pg; await sansVoile(pg);
+    await pg.evaluate(() => { S.di = 1; dr_tout(); }); await pg.waitForTimeout(1200); const at = await mesureOeuvre(pg, '#mur');
+    E.verif('A72', oeuvreOk(at), W + ' × ' + H + ' · l\'Atelier : l\'image entière (la boîte à la forme de l\'œuvre, 0,781), la marque à 51 % · 89 % de l\'œuvre', JSON.stringify(at));
+    await pg.evaluate(() => lancerRepetition()); await pg.waitForTimeout(1000); await pg.evaluate(() => aller(1)); await pg.waitForTimeout(800);   /* l'image (« tout ensemble ») se montre à l'arrivée sur la diapo */
+    let tab = null; try { const [fen] = await Promise.all([o.ctx.waitForEvent('page', { timeout: 6000 }), pg.evaluate(() => dr_ouvrirTableau())]); await fen.waitForLoadState(); await fen.setViewportSize({ width: W, height: H }); await fen.waitForTimeout(2500); tab = await mesureOeuvre(fen, '#mur2'); await fen.close(); } catch (e) {}
+    E.verif('A72', oeuvreOk(tab), W + ' × ' + H + ' · la fenêtre du tableau : l\'image entière, la marque sur le rocher', JSON.stringify(tab));
+    E.verif('A72', !o.errs.length, W + ' × ' + H + ' : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); } });
+
+/* ── A73 · §12.34 (2), 13 · 68 : seuls les vers sont numérotés — « L'Albatros » (Baudelaire), quatre strophes séparées d'une ligne vide : « Le Poète est semblable… » porte 13 ── */
+const ALBATROS = ["Souvent, pour s'amuser, les hommes d'équipage", "Prennent des albatros, vastes oiseaux des mers,", "Qui suivent, indolents compagnons de voyage,", "Le navire glissant sur les gouffres amers.", "", "À peine les ont-ils déposés sur les planches,", "Que ces rois de l'azur, maladroits et honteux,", "Laissent piteusement leurs grandes ailes blanches", "Comme des avirons traîner à côté d'eux.", "", "Ce voyageur ailé, comme il est gauche et veule !", "Lui, naguère si beau, qu'il est comique et laid !", "L'un agace son bec avec un brûle-gueule,", "L'autre mime, en boitant, l'infirme qui volait !", "", "Le Poète est semblable au prince des nuées", "Qui hante la tempête et se rit de l'archer ;", "Exilé sur le sol au milieu des huées,", "Ses ailes de géant l'empêchent de marcher."].join('\n');
+await B('A73', '§12.34 (2), dette 13 · 68 : l\'extrait numéroté — les vers seuls portent un numéro, les lignes vides gardent leur place sans numéro ; « Le Poète est semblable » porte 13', async () => {
+  const o = await ouvrirProf(1366, 768); const pg = o.pg;
+  const r = await pg.evaluate(t => { const z = document.createElement('div'); z.innerHTML = ATELIER_FORMES.bloc_extrait('c1', {}, { texte: t }, { numLignes: true }); const L = Array.from(z.querySelectorAll('.f-ext-l')).map(l => ({ n: (l.querySelector('.f-ext-n') || {}).textContent || '', t: l.textContent.replace(/^\d+/, '') })); return { lignes: L.length, poete: (L.find(l => /^Le Poète est semblable/.test(l.t)) || {}).n, vides: L.filter(l => !l.t.trim()).map(l => l.n), dernier: L[L.length - 1].n }; }, ALBATROS);
+  E.verif('A73', r.lignes === 19 && r.poete === '13' && r.vides.length === 3 && r.vides.every(n => n === '') && r.dernier === '16', '19 lignes, 3 vides sans numéro, « Le Poète est semblable » = ' + r.poete + ', le dernier vers = ' + r.dernier, JSON.stringify(r));
+  await o.ctx.close(); });
+/* ── A75 · §12.34 (4), 13 · 70 : un double ne porte jamais le titre d'un chapitre existant — « (proposition) » existe déjà → « (proposition 2) », puis « (proposition 3) » ── */
+await B('A75', '§12.34 (4), dette 13 · 70 : doubler « Poésie et peinture au XIXe siècle (proposition) » (un chapitre de ce titre existe) donne « … (proposition 2) », puis « … (proposition 3) » ; jamais un titre existant', async () => {
+  const { chapitreTest } = await import('./import-3e.mjs'); const st = E.store(); const o = await ouvrirProf(1707, 743, st); const pg = o.pg;
+  const titres = () => pg.evaluate(() => secuLire('/site/3e/chapitres').then(c => (Array.isArray(c) ? c : Object.values(c || {})).filter(Boolean).map(x => x.title || '')));
+  const orig = (st.site['3e'].chapitres[0] || {}).title; const base = orig.replace(/\s*\(proposition(?:\s*\d+)?\)\s*$/, ''); const j = chapitreTest(st); j.chapitre.title = orig;
+  for (let i = 0; i < 2; i++) { await pg.evaluate(jj => { CH.json = jj; CH.niveau = '3e'; CH.chapIdx = 0; CH.taxo = null; chInjecterConfirme('jumeau'); }, j); await pg.waitForTimeout(2200); }
+  const t = await titres(); const dupl = t.filter((x, i) => t.indexOf(x) !== i);
+  E.verif('A75', t.includes(base + ' (proposition 2)') && t.includes(base + ' (proposition 3)') && !dupl.length && !t.some(x => /\(proposition\) \(proposition\)/.test(x)), 'au hub : « ' + base + ' (proposition 2) » puis « (proposition 3) », aucun titre en double', JSON.stringify(t.filter(x => x.indexOf(base) === 0)));
+  await o.ctx.close(); });
+/* ── A76 · §12.34 (5), 13 · 72 : « […] » reste une coupure dans un texte à trous ; tout autre [...] est un trou ; l'aide du champ le dit ── */
+await B('A76', '§12.34 (5), dette 13 · 72 : dans un texte à trous, « […] » et « [...] » s\'écrivent tels quels ; [poète], [albatros] restent des trous ; l\'aide du champ le dit', async () => {
+  const o = await ouvrirProf(1366, 768); const pg = o.pg;
+  const r = await pg.evaluate(() => { const z = document.createElement('div'); z.innerHTML = ATELIER_FORMES.bloc_trous('c1', {}, { texte: "« Souvent, pour s'amuser, […] les hommes d'équipage » : le [poète] ressemble à l'[albatros] [...] maladroit sur le pont." }, {}, {}); const aide = (typeof ATELIER_COMPOSANTES !== 'undefined' && ATELIER_COMPOSANTES.texte_a_trous) ? JSON.stringify(ATELIER_COMPOSANTES.texte_a_trous.champs) : ''; return { txt: z.textContent, trous: z.querySelectorAll('.f-trou').length, aide: /« \[…\] » reste une coupure/.test(aide) }; });
+  E.verif('A76', r.trous === 2 && /\[…\] les hommes/.test(r.txt) && /\[\.\.\.\] maladroit/.test(r.txt) && !/poète|albatros\]/.test(r.txt) && r.aide, '2 trous ([poète], [albatros]) ; « […] » et « [...] » tels quels ; l\'aide du champ le dit', JSON.stringify(r));
+  await o.ctx.close(); });
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

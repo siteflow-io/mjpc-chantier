@@ -1,0 +1,18 @@
+L18 · les sept bancs de la dictée sur les données réelles du hub (lues en GET le 27/10 vers 23:15, jamais déposées : elles portent des noms d'élèves), joués par la conscience sur la production 6.7.0-L17-1q3 (md5 9d5dcfb6…) et sur 6.7.0-L18 (md5 a4f2c283…).
+Codes de sortie (0 = vert) :
+prod banc_traitunion code 0
+prod banc_l17bis code 1
+prod banc_l17bisb code 0
+prod banc_l17bisc code 0
+prod banc_175 code 0
+prod banc_177 code 0
+prod banc_trouvees code 0
+l18 banc_traitunion code 0
+l18 banc_l17bis code 1
+l18 banc_l17bisb code 0
+l18 banc_l17bisc code 0
+l18 banc_175 code 0
+l18 banc_177 code 0
+l18 banc_trouvees code 0
+Comparaison des sorties production / L18 (durées retirées) : identiques pour les sept.
+banc_l17bis : rouge sur les deux, même endroit (attente de #exclusion-compris-l17 : l'état des données a changé depuis L17).

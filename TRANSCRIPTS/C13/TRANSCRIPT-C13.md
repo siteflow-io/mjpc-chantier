@@ -5320,6 +5320,8 @@ MEMO
 
 698. Noté : la colonne de droite gardera aussi sa largeur. C'est ajouté au contrat de la colonne, et E4 le fait cette nuit avec la poignée de gauche.
 
+699. L18, les sept bancs de la dictée sur tes vraies données (lues au hub, rien écrit) : 6 sur 7 verts, sur la production comme sur L18, et des sorties identiques entre les deux. Le septième (banc_l17bis) échoue pareil sur la production : il attend un état de tes données d'il y a quelques semaines. L18 ne casse rien de ce côté.
+
 À tester : rien.
 
 27/10/2026 23:22

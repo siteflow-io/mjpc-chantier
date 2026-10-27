@@ -33,6 +33,8 @@ const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log
 const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && detail !== '' ? ' — ' + detail : '')); return !!ok; };
 const info = (k, quoi) => dire('  info   ' + k + ' · ' + quoi);
 const p = (pg, ms) => pg.waitForTimeout(ms);
+/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, R, 42) */
+const SEUL = process.env.MJPC_CAS ? process.env.MJPC_CAS.split(',') : null; const fait = k => !SEUL || SEUL.includes(k);
 
 /* ── le faux hub (celui de banc-1227), plus la classe « 3 DYLAN Bob » appariée à ses six cases (mission 0, M1) ── */
 const hubStore = () => { const J = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8')); const st = { classes: J('classes.json'), taxonomie: fs.existsSync(path.join(HUB, 'taxonomie.json')) ? J('taxonomie.json') : null, site: { '3e': J('site_3e.json'), config: J('site_config.json'), edt: { grille: { '2026-2027': J('grille-appariee.json') }, calendrier: { '2026-2027': J('calendrier.json') }, creneaux: { '2026-2027': J('creneaux.json') } } } };
@@ -118,7 +120,7 @@ dire('E3 · banc §12.28 par le geste (les cinq dettes) · ' + new Date().toISOS
 for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ ' + T + ' ══');
 
   /* ── 13 · 39 : en mode test, publier pour « 3 DYLAN Bob » → l'emploi du temps montre ses heures ; dépublier → elles partent ; rien au hub ── */
-  { const o = await ouvrirCtx(W, H); const pg = o.pg;
+  if (fait('39')) { const o = await ouvrirCtx(W, H); const pg = o.pg;
     try { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await pg.evaluate(() => { if (!m8TestOn()) m8BasculerModeTest(); }); await p(pg, 600);
       const e0 = await pg.evaluate(() => window.__ECR.length);
       const casesDylan = () => pg.evaluate(() => new Promise(r => { try { edtOuvrir(); } catch (e) {} setTimeout(() => { try { edtVue('semaine'); } catch (e) {} setTimeout(() => { const cs = Array.from(document.querySelectorAll('#edt-ecran .edt-clic')).filter(e => /DYLAN/.test(e.innerText)).map(e => e.innerText.replace(/\s+/g, ' ')); try { edtFermer(); } catch (e) {} r(cs); }, 700); }, 1500); }));
@@ -138,7 +140,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     verif('39', !o.errs.length, T + ' · 0 erreur JS', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 13 · 40, 13 · 41, 13 · 43 (écrans de l'heure) : l'heure lancée par la case ; deux onglets ── */
-  { const o = await ouvrirCtx(W, H); const pg = o.pg; let pb = null;
+  if (fait('41')) { const o = await ouvrirCtx(W, H); const pg = o.pg; let pb = null;
     try { await entrerProf(pg);
       /* 13 · 43 d'abord, sur les écrans du prof avant l'heure (l'EDT est ouvert à l'arrivée) */
       const aides = []; const passe = async (nom, geste) => { await geste(); await p(pg, 700); await sansVoiles(pg); const b = await aideBouton(pg); aides.push({ nom, b, texte: b ? await lireVolet(pg, b) : null }); };
@@ -237,7 +239,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (40, 41, 43)', o.errs.slice(0, 3).join(' ; ')); if (o.boites.length) info('Z', T + ' · boîtes : ' + o.boites.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 13 · 43 : le volet (clic, touche, Échap, champ) et la fenêtre du tableau ; L' : volet ouvert ── */
-  { const o = await ouvrirCtx(W, H); const pg = o.pg;
+  if (fait('43')) { const o = await ouvrirCtx(W, H); const pg = o.pg;
     try { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await p(pg, 500);
       const b = await aideBouton(pg);
       if (b) { await pg.mouse.click(b.x + b.w / 2, b.y + 5); await p(pg, 600); const v1 = await volet(pg); verif('43', !!v1, T + ' · 13 · 43 · le clic sur « ? » ouvre le volet à droite, toute la hauteur', v1 ? v1.larg + ' px · « ' + v1.texte.slice(0, 60) + ' »' : 'pas de volet');
@@ -258,7 +260,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (43)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 46 (§12.28 (8) ; réglée par §12.29 (2)) : plus de garde « Aller au cahier » ; un seul compte de ce qui reste, celui de l'étape 2 ── */
-  { const o = await ouvrirCtx(W, H); const pg = o.pg;
+  if (fait('46')) { const o = await ouvrirCtx(W, H); const pg = o.pg;
     try { await entrerProf(pg); const lance = await lancerParLaCase(pg); verif('46', lance, T + ' · l’heure se lance par la case (séance aux diapos sans numéro d’activité — toutes celles du faux hub)');
       await dev(pg, 3); await p(pg, 400);
       /* le compte de l'étape 2 d'abord (la séquence ouverte puis repliée), puis la diapo de fin */
@@ -275,7 +277,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (46)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 29 (§12.29, S1-S5, les images T200) : la répétition, l'entête, T-5, « ❄ Préparer le cahier », « Montrer le cahier à la classe », « Retour au cours », « Plus tard », la case d'une heure en cours ── */
-  { const o = await ouvrirCtx(W, H); const pg = o.pg;
+  if (fait('29')) { const o = await ouvrirCtx(W, H); const pg = o.pg;
     const boutons = (q, sel) => q.evaluate(s => Array.from(document.querySelectorAll(s)).filter(b => b.offsetParent && b.getBoundingClientRect().width > 0).map(b => (b.innerText || '').replace(/\s+/g, ' ').trim()).filter(Boolean), sel);
     const forme = q => q.evaluate(() => { const r = sel => { const e = document.querySelector(sel); if (!e || !e.offsetParent) return null; const b = e.getBoundingClientRect(); return [Math.round(b.left), Math.round(b.top), Math.round(b.width), Math.round(b.height)]; }; return { volet: r('#volet'), mur: r('#mur'), notes: r('#notesd') }; });
     const memeForme = (a, b) => ['volet', 'mur', 'notes'].every(k => !a[k] || (b[k] && a[k].every((v, i) => Math.abs(v - b[k][i]) <= 2)));
@@ -319,14 +321,18 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       const ch = await chevauche(pg); verif('29', !ch.length, T + ' · L · rien de flottant l’un sur l’autre dans l’écran de la classe', ch.join(' ; '));
       /* S4 — la case d'une heure en cours */
       const ou = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button, a')).find(e => e.offsetParent && /Le site dans un nouvel onglet/.test(e.innerText || '')); return !!b; });
-      const pc = await pg.context().newPage(); await pc.clock.setFixedTime(new Date('2026-09-14T09:43:00+02:00')); await entrerProf(pc); if (!(await edtOuvert(pc))) { await pc.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(pc, 1800); }
-      await pc.evaluate(() => { const cs = Array.from(document.querySelectorAll('#edt-ecran .edt-clic')).filter(e => e.offsetParent && /Charles/.test(e.innerText)); const c = cs.find(e => /2026-09-14/.test(e.getAttribute('onclick') || '')) || cs.find(e => /heure 1\//.test(e.innerText)) || cs[0]; if (c) c.click(); }); await p(pc, 1000); await capt(pc, W, H, '29-5-la-case-d-une-heure-en-cours');
-      const bc = await boutons(pc, 'button'); verif('29', bc.some(x => /▶ Reprendre l.heure/.test(x)) && !bc.some(x => /Reprendre le cours/.test(x)), T + ' · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure »', bc.filter(x => /Reprendre|lancer|Préparer/.test(x)).join(' | ')); await pc.close().catch(() => {});
+      const pc = await pg.context().newPage(); await pc.clock.setFixedTime(new Date('2026-09-14T09:45:00+02:00'));   /* la même heure que l'onglet de l'heure (09:44:20) ou après : un onglet ne vit pas avant l'autre */ await entrerProf(pc); if (!(await edtOuvert(pc))) { await pc.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(pc, 1800); }
+      /* la case relue toutes les 500 ms jusqu'à 8 s après l'arrivée sur l'emploi du temps : ce qu'elle dit d'abord, et quand elle dit « ▶ Reprendre l'heure » */
+      const t0c = Date.now(); let bc = [], dtc = -1, premier = null;
+      for (let k = 0; k < 16; k++) { await pc.evaluate(() => { const cs = Array.from(document.querySelectorAll('#edt-ecran .edt-clic')).filter(e => e.offsetParent && /Charles/.test(e.innerText)); const c = cs.find(e => /2026-09-14/.test(e.getAttribute('onclick') || '')) || cs.find(e => /heure 1\//.test(e.innerText)) || cs[0]; if (c) c.click(); }); await p(pc, 400);
+        bc = await boutons(pc, 'button'); if (premier == null) premier = bc.filter(x => /Reprendre|lancer/.test(x)).join(' | '); if (bc.some(x => /▶ Reprendre l.heure/.test(x))) { dtc = Date.now() - t0c; break; } await pc.keyboard.press('Escape'); await p(pc, 300); }
+      await capt(pc, W, H, '29-5-la-case-d-une-heure-en-cours');
+      verif('29', dtc >= 0 && dtc <= 3000 && !bc.some(x => /Reprendre le cours/.test(x)), T + ' · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » (en moins de 3 s après l’arrivée sur l’emploi du temps)', (dtc >= 0 ? 'en ' + dtc + ' ms' : 'jamais en 8 s') + ' ; d’abord : « ' + premier + ' »'); await pc.close().catch(() => {});
     } catch (e) { verif('29', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (29)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── R (contrôle n°62) : une répétition jouée dans un autre onglet ne touche pas la fenêtre du tableau de la classe ── */
-  { const o = await ouvrirCtx(W, H); const pg = o.pg;
+  if (fait('R')) { const o = await ouvrirCtx(W, H); const pg = o.pg;
     try { await entrerProf(pg); const lance = await lancerParLaCase(pg); verif('R', lance, T + ' · l’heure se lance par la case');
       let fen = null; try { [fen] = await Promise.all([pg.waitForEvent('popup', { timeout: 6000 }), pg.click('#bvideoproj')]); await fen.waitForLoadState(); await p(fen, 2000); } catch (e) { fen = null; }
       await dev(pg, 3); await p(pg, 1200);
@@ -346,7 +352,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (R)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 13 · 42 : une seule activité jouée en fin de créneau → « Cette heure, on a fait » ── */
-  { const o = await ouvrirCtx(W, H); const pg = o.pg;
+  if (fait('42')) { const o = await ouvrirCtx(W, H); const pg = o.pg;
     try { await pg.clock.setFixedTime(new Date('2026-09-14T09:44:00+02:00')); await entrerProf(pg); const lance = await lancerParLaCase(pg); verif('42', lance, T + ' · l’heure se lance par la case à 09:44 (fin du créneau 08:57-09:52)');
       await dev(pg, 3); await pg.clock.setFixedTime(new Date('2026-09-14T09:46:00+02:00')); await p(pg, 1500);
       await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="relecture"]') || Array.from(document.querySelectorAll('button')).find(x => x.offsetParent && /^Relecture$/.test(x.innerText.trim())); if (b) b.click(); }); await p(pg, 2500);

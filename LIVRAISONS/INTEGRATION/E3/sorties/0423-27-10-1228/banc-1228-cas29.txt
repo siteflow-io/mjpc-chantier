@@ -1,0 +1,79 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 03:42 UTC · fichier md5 2db8b6c5ee9fea1a79e0dae2786038c3
+
+══ 1366×768 ══
+  ok     29 · 1366×768 · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation » — {"fin":false,"clore":false,"qui":false,"part":0,"tableau":true,"ligne":true}
+  ok     29 · 1366×768 · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste — {"ligne":true,"tableau":true}
+  ok     29 · 1366×768 · l’heure se lance par la case
+  ok     29 · 1366×768 · S4 · l’entête : « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe » — ⏱ | 📝 Notes | ⧉ Ce que voit la classe | 🖥 Ouvrir le tableau | Adresse du tableau | Fin de l'heure | ■ Clore l’heure
+  ok     29 · 1366×768 · S2 · « Fin de l’heure » et « ■ Clore l’heure » restent dans l’entête
+  ok     29 · 1366×768 · S1 · à T-5, la barre du bas ne s’ouvre pas
+  ok     29 · 1366×768 · S1 · la séquence ouverte, le palier en tête — « T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le cahier Plus tard »
+  ok     29 · 1366×768 · S2 · la tête : « ❄ Préparer le cahier » et « Plus tard » — ❄ Préparer le cahier | Plus tard
+  ok     29 · 1366×768 · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille — {"volet":[14,144,186,620],"mur":[220,179,776,437],"notes":[229,753,758,32]} → {"volet":[14,144,186,620],"mur":[220,179,776,437],"notes":[229,753,758,32]}
+  ok     29 · 1366×768 · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours » — Montrer le cahier à la classe | Retour au cours
+  ok     29 · 1366×768 · S2 · « Retour au cours » : la préparation se ferme, l’écran d’avant (la séquence repliée, ou sa tête « ❄ Préparer le cahier » / « Plus tard ») — séquence repliée ; préparation false
+  ok     29 · 1366×768 · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé — {"di":20,"role":"fin","gel":false,"finDansLHeure":[20],"finsDeLaSeance":[16,19,20],"heure":1}
+  ok     29 · 1366×768 · S2 · « Plus tard » : la séquence se replie, la classe continue
+  ok     29 · 1366×768 · S1 · après « Plus tard », le palier suivant (T-3) rouvre la séquence, le palier en tête — « T-3 — le cahier de textes dans 3 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le »
+  ok     29 · 1366×768 · L · rien de flottant l’un sur l’autre dans l’écran de la classe
+  ok     29 · 1366×768 · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » — ▶ Reprendre l’heure
+  ok     Z · 1366×768 · 0 erreur JS (29)
+
+══ 1536×864 ══
+  ok     29 · 1536×864 · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation » — {"fin":false,"clore":false,"qui":false,"part":0,"tableau":true,"ligne":true}
+  ok     29 · 1536×864 · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste — {"ligne":true,"tableau":true}
+  ok     29 · 1536×864 · l’heure se lance par la case
+  ok     29 · 1536×864 · S4 · l’entête : « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe » — ⏱ | 📝 Notes | ⧉ Ce que voit la classe | 🖥 Ouvrir le tableau | Adresse du tableau | Fin de l'heure | ■ Clore l’heure
+  ok     29 · 1536×864 · S2 · « Fin de l’heure » et « ■ Clore l’heure » restent dans l’entête
+  ok     29 · 1536×864 · S1 · à T-5, la barre du bas ne s’ouvre pas
+  ok     29 · 1536×864 · S1 · la séquence ouverte, le palier en tête — « T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le cahier Plus tard »
+  ok     29 · 1536×864 · S2 · la tête : « ❄ Préparer le cahier » et « Plus tard » — ❄ Préparer le cahier | Plus tard
+  ok     29 · 1536×864 · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille — {"volet":[14,127,186,733],"mur":[216,162,954,536],"notes":[229,803,928,32]} → {"volet":[14,127,186,733],"mur":[216,162,954,536],"notes":[229,803,928,32]}
+  ok     29 · 1536×864 · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours » — Montrer le cahier à la classe | Retour au cours
+  ok     29 · 1536×864 · S2 · « Retour au cours » : la préparation se ferme, l’écran d’avant (la séquence repliée, ou sa tête « ❄ Préparer le cahier » / « Plus tard ») — séquence repliée ; préparation false
+  ok     29 · 1536×864 · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé — {"di":20,"role":"fin","gel":false,"finDansLHeure":[20],"finsDeLaSeance":[16,19,20],"heure":1}
+  ok     29 · 1536×864 · S2 · « Plus tard » : la séquence se replie, la classe continue
+  ok     29 · 1536×864 · S1 · après « Plus tard », le palier suivant (T-3) rouvre la séquence, le palier en tête — « T-3 — le cahier de textes dans 3 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le »
+  ok     29 · 1536×864 · L · rien de flottant l’un sur l’autre dans l’écran de la classe
+  ok     29 · 1536×864 · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » — ▶ Reprendre l’heure
+  ok     Z · 1536×864 · 0 erreur JS (29)
+
+══ 1707×743 ══
+  ok     29 · 1707×743 · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation » — {"fin":false,"clore":false,"qui":false,"part":0,"tableau":true,"ligne":true}
+  ok     29 · 1707×743 · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste — {"ligne":true,"tableau":true}
+  ok     29 · 1707×743 · l’heure se lance par la case
+  ok     29 · 1707×743 · S4 · l’entête : « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe » — ⏱ | 📝 Notes | ⧉ Ce que voit la classe | 🖥 Ouvrir le tableau | Adresse du tableau | Fin de l'heure | ■ Clore l’heure
+  ok     29 · 1707×743 · S2 · « Fin de l’heure » et « ■ Clore l’heure » restent dans l’entête
+  ok     29 · 1707×743 · S1 · à T-5, la barre du bas ne s’ouvre pas
+  ok     29 · 1707×743 · S1 · la séquence ouverte, le palier en tête — « T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le cahier Plus tard »
+  ok     29 · 1707×743 · S2 · la tête : « ❄ Préparer le cahier » et « Plus tard » — ❄ Préparer le cahier | Plus tard
+  ok     29 · 1707×743 · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille — {"volet":[14,110,186,629],"mur":[349,145,860,484],"notes":[229,729,1099,32]} → {"volet":[14,110,186,629],"mur":[349,145,860,484],"notes":[229,729,1099,32]}
+  ok     29 · 1707×743 · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours » — Montrer le cahier à la classe | Retour au cours
+  ok     29 · 1707×743 · S2 · « Retour au cours » : la préparation se ferme, l’écran d’avant (la séquence repliée, ou sa tête « ❄ Préparer le cahier » / « Plus tard ») — séquence repliée ; préparation false
+  ok     29 · 1707×743 · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé — {"di":20,"role":"fin","gel":false,"finDansLHeure":[20],"finsDeLaSeance":[16,19,20],"heure":1}
+  ok     29 · 1707×743 · S2 · « Plus tard » : la séquence se replie, la classe continue
+  ok     29 · 1707×743 · S1 · après « Plus tard », le palier suivant (T-3) rouvre la séquence, le palier en tête — « T-3 — le cahier de textes dans 3 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le »
+  ok     29 · 1707×743 · L · rien de flottant l’un sur l’autre dans l’écran de la classe
+  ok     29 · 1707×743 · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » — ▶ Reprendre l’heure
+  ok     Z · 1707×743 · 0 erreur JS (29)
+
+══ 1920×1080 ══
+  ok     29 · 1920×1080 · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation » — {"fin":false,"clore":false,"qui":false,"part":0,"tableau":true,"ligne":true}
+  ok     29 · 1920×1080 · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste — {"ligne":true,"tableau":true}
+  ok     29 · 1920×1080 · l’heure se lance par la case
+  ok     29 · 1920×1080 · S4 · l’entête : « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe » — ⏱ | 📝 Notes | ⧉ Ce que voit la classe | 🖥 Ouvrir le tableau | Adresse du tableau | Fin de l'heure | ■ Clore l’heure
+  ok     29 · 1920×1080 · S2 · « Fin de l’heure » et « ■ Clore l’heure » restent dans l’entête
+  ok     29 · 1920×1080 · S1 · à T-5, la barre du bas ne s’ouvre pas
+  ok     29 · 1920×1080 · S1 · la séquence ouverte, le palier en tête — « T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le cahier Plus tard »
+  ok     29 · 1920×1080 · S2 · la tête : « ❄ Préparer le cahier » et « Plus tard » — ❄ Préparer le cahier | Plus tard
+  ok     29 · 1920×1080 · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille — {"volet":[14,110,186,966],"mur":[216,145,1338,752],"notes":[229,1003,1312,32]} → {"volet":[14,110,186,966],"mur":[216,145,1338,752],"notes":[229,1003,1312,32]}
+  ok     29 · 1920×1080 · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours » — Montrer le cahier à la classe | Retour au cours
+  ok     29 · 1920×1080 · S2 · « Retour au cours » : la préparation se ferme, l’écran d’avant (la séquence repliée, ou sa tête « ❄ Préparer le cahier » / « Plus tard ») — séquence repliée ; préparation false
+  ok     29 · 1920×1080 · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé — {"di":20,"role":"fin","gel":false,"finDansLHeure":[20],"finsDeLaSeance":[16,19,20],"heure":1}
+  ok     29 · 1920×1080 · S2 · « Plus tard » : la séquence se replie, la classe continue
+  ok     29 · 1920×1080 · S1 · après « Plus tard », le palier suivant (T-3) rouvre la séquence, le palier en tête — « T-3 — le cahier de textes dans 3 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le »
+  ok     29 · 1920×1080 · L · rien de flottant l’un sur l’autre dans l’écran de la classe
+  ÉCHEC  29 · 1920×1080 · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » — ▶ Ouvrir le pilotage et lancer | ✎ Préparer
+  ok     Z · 1920×1080 · 0 erreur JS (29)
+
+BILAN banc-1228 : 67/68 vérifications — 1 ÉCHEC(S) · ROUGE

@@ -4184,3 +4184,16 @@ MEMO
 
 27/10/2026 10:03
 MEMO
+
+## Tour 223 — 27/10/2026 11:12 — contrôle n°75 (sans message de Paul depuis le tour 220)
+
+**Fait.** Lu sur `integration` : **E1 §12.31 fini** — `2e94c419` (`edtCleClasse` : `edtNiveauDe`, `edtElevesDe`, `edtEstExperimentale`, `edtDecisionsOrphelines`, `dr_classe` ; aucune donnée réécrite ; A56 rouge avant, verte après ; A56-A58 23/0 ; banc E1 598/0 ; l'inventaire (1 bis) au JOURNAL E1), clôture `e59c9afc` / `b370fd65` ; **E3 retour 66** (`15016dae`) — `dr-tableau.js` lit la classe par sa clé (`dr_tabCle`), cas 51/50/49 écrits ; avant sur la ④ ROUGE 52/108 ; sur la tête d'avant `edtCleClasse` 67/108 (50 et 49 verts) ; E3 sans rappel actif. E2 : poussée 44 (`dr_slugDe` = `edtCleClasse`) pas encore partie. Mon rejeu `T214-banc/cle.mjs` sur `15016dae` (assemblé `a4d5df8e…`) : **les cinq cases de « 3 FRANKLIN Aretha » montrent « Poésie et peinture : le Romantisme en question heure 1/3 … », la carte « dans les temps · Poésie et peinture au XIXe siè · 0/9 »**, 0 erreur. Relance E3 (« joue ; reprogramme-toi ») ; E2 et E3 réveillés (fire_trigger) ; mon banc lancé à 11:10 sur la tête (`$S/banc-1051.log`). Contrôle n°76 à 12:02 (`trig_01L4RkTacSCzgmf2HT6uPbge`).
+
+**Réponse (mot pour mot).**
+
+514. Contrôle de 10:45-11:10. E1 a fini : tes classes sont trouvées sous leurs deux étiquettes. Je l'ai rejoué moi-même : une classe créée comme les tiennes, « Poésie et peinture » publié pour elle → l'emploi du temps montre maintenant « Poésie et peinture : le Romantisme en question, heure 1/3 » sur ses cases. Reste une petite retouche d'E2, puis la vérification complète d'E3. Prochain contrôle à 12:02.
+
+À tester : rien de nouveau avant la ⑤.
+
+27/10/2026 11:12
+MEMO

@@ -4282,3 +4282,28 @@ R9 — L'ordre : maquette sur l'app réelle et captures pour ton oui, puis un ex
 
 27/10/2026 11:39
 MEMO
+
+## Tour 227 — 27/10/2026 11:44 — Paul (11:42)
+
+**Paul (mot pour mot), avec le sujet `Sujet-ecriture-lettre-30-lignes-3e.pdf`.** « R4 précise. R9. attention à la dérive maquette (bien qu'ici, rédaction dugain actuelle est en soi une maquette). Donc je pense qu'il faut commencer par l'intégration au site, à mon avis. Pour la rédaction, voici le sujet. »
+
+**Lu.** Le sujet (2 pages, la seconde identique à la première) : « Chapitre 1 — J'ai été dans les tranchées — Tâche finale » ; « Écrire une lettre de la Grande Guerre » ; trente lignes, notée sur 40 comme la rédaction du brevet, en classe en une heure ; la lettre de l'homme au front ou celle de la personne qui répond depuis la maison ; toutes les phrases complexes ; les cinq architectures (relatives) chacune au moins une fois, valorisées au-delà ; le brouillon (qui tu es, où, à qui, ce que tu tais ; trois paragraphes : le concret comme Jean Déléage, le plus dur, l'inquiétude pour l'autre) ; pendant l'heure : l'analyse logique au brouillon, les codes de la lettre, une modalisation par paragraphe, une litote, le numéro de l'architecture en marge. Grille Dugain relue (imagination : Invention 18, Organisation et énonciation 12, Expression 10). Cadrage complété (`2ea9578d`) : R4 précisé, R9 corrigé, R10 ; le sujet rangé dans `MANDATS/REDACTION-UNIVERSELLE/`.
+
+**Réponse (mot pour mot).**
+
+À jouer : rien · en cours chez les exécutants : E3 vérifie la ⑤ · ouvert : 481, 458, R4, R9, R10
+
+525. J'ai lu ton sujet : la lettre de la Grande Guerre, sur 40, le front ou la maison, toutes les phrases complexes, les cinq architectures, les codes de la lettre, une modalisation par paragraphe, une litote.
+
+526. R4, précisé : dans « Préparer le sujet », tu relis un point de la grille à la fois (ses 4 niveaux et leurs sous-niveaux sur un seul écran), tu corriges dans la case, puis « ✓ Je valide ce point » ; un compteur dit « 7 points validés sur 13 ». Tu peux commencer à corriger les copies avant d'avoir tout validé ; mais la fiche d'un élève ne sort pas tant qu'une de ses phrases n'est pas validée — le bouton grisé dit lesquelles. Une phrase que tu modifies toi-même est validée d'office.
+
+527. R9, corrigé : pas de maquette à part, l'app actuelle en est une. Un seul mandat, dans cet ordre : d'abord l'intégration au site (la classe du site, l'enregistrement au site, le mode test, l'accès par le panneau et par la séance), avec la grille Dugain rangée sur le site ; puis « Nouveau sujet » et la relecture ; puis ta lettre, premier nouveau sujet. Les captures de l'app intégrée pour ton promeus.
+
+528. R10 — ta lettre : pour économiser tes messages, j'écris moi-même sa grille (ton sujet, la grille Dugain pour modèle, sur 40) ; tu la relis et la valides dans l'app (526). Le squelette : Invention 16 — le personnage tenu, front ou maison (4), les trois paragraphes (6), les lectures reprises, Jean Déléage (3), ce qu'on tait (3). Organisation et énonciation 10 — les codes de la lettre (3), la première personne et le destinataire (3), les trente lignes (4). Langue 14 — toutes les phrases complexes (2), les cinq architectures (4), modalisation et litote (2), orthographe avec le compteur (4), lexique (2).
+
+529. Oui à 526, 527 et 528 ? Le mandat part dès ton oui.
+
+À tester : rien.
+
+27/10/2026 11:44
+MEMO

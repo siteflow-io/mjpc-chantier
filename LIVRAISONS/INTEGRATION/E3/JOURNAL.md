@@ -795,3 +795,14 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - la dictée a un item à Paul, « Dictée manuscrite : « Le port » (corrigée) », dans la séance de la dictée. La séance et la ligne sont publiées dans le magasin, pour le 3E Charles de Gaulle, CLASSE TEST et 3 FRANKLIN Aretha : les onglets ne listent que le publié, et sans publication la ligne était écartée (« ligne ») ;
   - **l'élève** : sa connexion passe par l'Apps Script, hors du sas. Je la pose comme le fait A77 d'E1 (`TRACK.eleve`, DURAND Alice, 3 FRANKLIN Aretha). La « vue élève » du prof (`basculerVue`) reste une session de prof.
 - Le cas 34 sera rejoué aux quatre tailles dès le (7) d'E1. Le cas 35 suit.
+
+## Retour 81 — 27/10, 22:38 — §12.34 sur la tête `c4ce640a` (E1 (7), `f3adbe9f`) : **73/76** aux quatre tailles ; seul rouge, « Vérifier » (le reste annoncé par E1)
+- Le cas 34 aux quatre tailles : 1707 18/19, les trois autres 54/57. Les captures après sont regardées.
+- **Vert** : A72, A73, A74, A75, A76, A77 (professeur et élève), et A78 pour les refus.
+  - Les refus : 8 et 6 mots-clés, une ligne de plus de 45 signes, une question de plus de 90 signes, une réponse attendue.
+  - Les acceptés : 5 mots-clés de 33 à 38 signes, et le bon bilan.
+  - Les phrases sont **mot pour mot celles de l'annexe** du prompt (`PROMPT-INJECTION-1.0-apres-12-33.md`), à une apostrophe près : le site écrit « s’écrit » (’), l'annexe « s'écrit » (').
+- **Rouge, 4 sur 4** : « Vérifier » ne dit pas la diapo de 16 étapes qui ferait plus d'une page au tableau. E1 l'écrit comme son **reste** (`f3adbe9f`).
+- `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2238-27-10-1228-34-tete/`.
+- **Vu sur la capture du tableau** (`1707x743-34-2-l-oeuvre-au-tableau-apres.png`), à la conscience : l'œuvre est entière (le cadre rouge se voit tout autour) et la marque ① est sur la cible. Mais **la légende, en bandeau, couvre le bas de l'œuvre** (à peu près le sixième inférieur, le pied du rocher) : l'œuvre est entière dans son cadre, sans être entièrement visible au tableau.
+- **§12.34 n'est pas VERT** tant que « Vérifier » manque. Le cas 35 vient ensuite.

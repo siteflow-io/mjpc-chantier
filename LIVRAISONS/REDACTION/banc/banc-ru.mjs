@@ -57,8 +57,8 @@ const HUB0 = hubDeDepart({ avecDugain: false });
 const ctxA = await contexte(1707, 743, HUB0);
 { const pg = await page(ctxA, '?mode=prof'); await cap(pg, 'RU-1-liste-vide');
   const vide = await pg.textContent('#ruListe');
-  verif('RU1', /Aucun sujet/.test(vide), 'sans id dans l\'adresse : la liste des sujets (vide au départ, le dit)', vide);
-  await pg.click('text=➕ Nouveau sujet'); await att(pg, 200);
+  verif('RU1', /vide pour l’instant/.test(vide) && !(await pg.$('#ruListe .rp-ligne')), 'sans id dans l\'adresse : « Mes rédactions » (vide au départ, le dit par niveau)', vide);
+  await pg.click('text=＋ Nouvelle rédaction'); await att(pg, 200);
   await pg.click('#modalNouveau button:has-text("Vérifier")'); await att(pg, 200);
   verif('RU1', (await pg.textContent('#ruNvMsg')) === 'Colle d’abord la réponse de l’IA.', '« Vérifier » sans rien : « Colle d\'abord la réponse de l\'IA. »');
   const lettre = fs.readFileSync(path.join(ICI, '..', 'sujets', 'lettre-grande-guerre.json'), 'utf8');
@@ -78,7 +78,7 @@ const ctxA = await contexte(1707, 743, HUB0);
   const md = await pg.innerText('#ruNvMsg'); await cap(pg, 'RU-1-verifier-dugain');
   verif('RU1', /^Réponse comprise/.test(md), 'la grille Dugain (sujets/dugain.json) passe « Vérifier »', md);
   await pg.waitForFunction(() => !document.getElementById('ruNvCreer').disabled, null, { timeout: 8000 }).catch(() => {});
-  await pg.click('#ruNvCreer'); await pg.waitForURL(/vue=preparer/, { timeout: 10000 }).catch(() => {}); await att(pg, 1200);
+  await pg.selectOption('#ruNvClasse', '3_franklin_aretha'); await pg.click('#ruNvCreer'); await pg.waitForURL(/vue=preparer/, { timeout: 10000 }).catch(() => {}); await att(pg, 1200);
   const cfg = await pg.evaluate(() => window.__SUJ('dugain') && window.__SUJ('dugain').config);
   const n = c => { let d = 0, s = 0, k = 0; c.variantes.forEach(v => v.criteres.forEach(cr => { k += (cr.consignes || []).length; cr.indicateurs.forEach(i => { d += i.descripteurs.length; i.sous.forEach(e => e.forEach(x => { s += 2; })); }); })); return { d, s, k }; };
   verif('RU1', cfg && JSON.stringify(n(cfg)) === JSON.stringify({ d: 80, s: 640, k: 24 }) && /vue=preparer/.test(pg.url()), '« Créer » : /redactions/dugain/config au hub, 80 niveaux, 640 sous-niveaux, 24 consignes (zéro phrase perdue) ; « Préparer le sujet » s\'ouvre', JSON.stringify({ n: cfg ? n(cfg) : null, url: pg.url().split('?')[1], ecr: await ecr(pg), boites: pg.__boites, msg: await pg.evaluate(() => (document.getElementById('ruNvMsg') || {}).textContent) }));
@@ -90,10 +90,10 @@ if (process.env.RU_SEUL === '1') { await nav.close(); dire(`— fin : ${nOk} ok 
   const v = await pg.evaluate(() => ({ cle: RU.classe, nom: RU.classeNom, eleves: document.querySelectorAll('#gridEleves .eleve-card, #gridEleves > div[onclick]').length, n: state.classe.length, titre: document.getElementById('ruDashTitre').textContent }));
   verif('RU2', v.cle === '3_franklin_aretha' && v.n === 12 && /3 FRANKLIN Aretha/.test(v.titre), 'classe=« 3 FRANKLIN Aretha » (le nom) → la clé 3_franklin_aretha ; ses 12 élèves du site ; « Élèves — 3 FRANKLIN Aretha »', JSON.stringify(v));
   await cap(pg, 'RU-3-tableau-de-bord');
-  await pg.click('button:has-text("👥 Classe")'); await att(pg, 300);
-  const opts = await pg.$$eval('#ruClasseSel option', o => o.map(x => x.value));
-  verif('RU2', opts.includes('3_franklin_aretha') && opts.includes('3E Charles de Gaulle') && !opts.some(o => o.startsWith('_')) && !opts.includes('6e_saint_michel'), '« 👥 Classe » : les classes du site (sans les internes « _… », sans celles sans élèves), plus de liste à coller', JSON.stringify(opts));
-  await pg.click('#ruClasseAnnuler'); await pg.close(); }
+  await pg.goto('file://' + F + '?mode=prof'); await att(pg, 1500); await pg.click('#ruListe .rp-ligne button[title^="Changer le titre"]'); await att(pg, 300);   // 13 · 60 : la classe d'une rédaction se change au crayon ✏️ de l'accueil
+  const opts = await pg.$$eval('#ruCrClasse option', o => o.map(x => x.value));
+  verif('RU2', opts.includes('3_franklin_aretha') && opts.includes('3E Charles de Gaulle') && !opts.some(o => o.startsWith('_')) && !opts.includes('6e_saint_michel'), '« ✏️ » de l\'accueil : les classes du site (sans les internes « _… », sans celles sans élèves), plus de liste à coller', JSON.stringify(opts));
+  await pg.evaluate(() => fermerModale('modalCrayon')); await pg.close(); }
 { const pg = await page(ctxA, '?mode=prof&id=dugain&classe=3_franklin_aretha'); await pret(pg);
   verif('RU2', await pg.evaluate(() => RU.classe === '3_franklin_aretha'), 'classe=3_franklin_aretha (la clé) → la même classe'); await pg.close(); }
 
@@ -123,7 +123,7 @@ await cap(pgC, 'RU-4-copie-interrogatif');
   pgC.__boites.length = 0; let tel = null; pgC.once('download', d => { tel = d; });
   await pgC.evaluate(() => { state.current = state.current; exporterHTMLEleve(); }); await att(pgC, 600);
   verif('RU4', !tel && pgC.__boites.some(b => /ne sort pas encore/.test(b) && /mots de liaison/.test(b)), '« 🖨️ Exporter HTML » : la fiche ne sort pas, et la boîte dit lesquelles', JSON.stringify(pgC.__boites).slice(0, 300));
-  await pgC.evaluate(() => showDashboard()); await att(pgC, 300);
+  await pgC.evaluate(() => ruOnglet('donnees', 'fiches')); await att(pgC, 300);
   const g = await pgC.evaluate(() => ({ cls: document.getElementById('ruBtnToutHTML').className, t: document.getElementById('ruBtnToutHTML').title }));
   verif('RU4', /ru-grise/.test(g.cls) && /ne sortent pas encore/.test(g.t), '« Exporter tous HTML » grisé, son infobulle dit ce qui manque', JSON.stringify(g));
   // Paul lit dans « Préparer le sujet » : les phrases communes, la fiche, les consignes des critères de la variante
@@ -169,7 +169,7 @@ await cap(pgC, 'RU-4-copie-interrogatif');
   const vu = await pgC.evaluate(k => ({ s: copieFor(k).sujet, e: copieFor(k).echelons }), kD);
   verif('RU6', vu.s === 'reflexion' && Object.keys(vu.e).length === 1 && carte1 !== carte0, 'une autre page corrige la copie de CHAN Aymeric : ce tableau de bord la montre sans recharger', JSON.stringify(vu));
   // le champ en cours : une saisie dans « Sujet » (modale) n'est pas touchée par un redessin
-  await pgC.click('button:has-text("📝 Sujet")'); await att(pgC, 200); await pgC.click('#ruEnoncesVar .ru-enonce-var'); await pgC.keyboard.type(' ESSAI-SAISIE');
+  await pgC.evaluate(() => ouvrirSujet()); await att(pgC, 200); await pgC.click('#ruEnoncesVar .ru-enonce-var'); await pgC.keyboard.type(' ESSAI-SAISIE');
   await pgB.keyboard.press('2'); await att(pgB, 1800);
   const sa = await pgC.evaluate(() => ({ v: document.querySelector('#ruEnoncesVar .ru-enonce-var').value, focus: document.activeElement && document.activeElement.className }));
   verif('RU6', /ESSAI-SAISIE$/.test(sa.v) && sa.focus === 'ru-enonce-var', 'une saisie en cours n\'est pas touchée quand un changement arrive (le redessin attend la fin de la saisie)', JSON.stringify(sa));
@@ -213,7 +213,7 @@ await pgC.close();
   const nl = await pg.evaluate(k => ruPhrasesNonLues(k), k);
   pg.__boites.length = 0; let t1 = null; pg.once('download', d => { t1 = d; }); await pg.evaluate(() => { document.activeElement && document.activeElement.blur(); exporterHTMLEleve(); }); await att(pg, 600);
   verif('RU10', nl.some(x => /la phrase réécrite de « Orthographe et grammaire » attend une citation/.test(x)) && !t1 && pg.__boites.some(b => /attend une citation/.test(b)), 'une phrase réécrite au crayon qui garde « {CIT} », sans citation : la fiche ne sort pas, la boîte dit « la phrase réécrite de « … » attend une citation »', JSON.stringify({ nl, boites: pg.__boites }).slice(0, 400));
-  await pg.evaluate(() => showDashboard()); await att(pg, 300);
+  await pg.evaluate(() => ruOnglet('donnees', 'fiches')); await att(pg, 300);
   const g = await pg.evaluate(() => document.getElementById('ruBtnToutHTML').title);
   verif('RU10', /attend une citation/.test(g), '« Exporter tous HTML » grisé le dit aussi', g);
   await pg.evaluate(k => ouvrirCopie(k), k); await att(pg, 500); if (!(await pg.evaluate(() => document.getElementById('interroOverlay').classList.contains('show')))) { await pg.evaluate(() => ouvrirInterrogatif('indicateur_sous', 0)); await att(pg, 400); }

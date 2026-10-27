@@ -7,6 +7,7 @@ export function hubDeDepart({ avecDugain = true } = {}) {
   const classes = JSON.parse(fs.readFileSync(path.join(H, 'classes.json'), 'utf8'));
   // une classe à clé simplifiée (13 · 51) : la forme des vraies classes de Paul — élèves du faux hub (De Gaulle), pour le banc seulement
   classes['3_franklin_aretha'] = { nom: '3 FRANKLIN Aretha', niveau: '3e', archivee: false, eleves: classes['3E Charles de Gaulle'].eleves.slice(0, 12) };
+  classes['3_dylan_bob'] = { nom: '3 DYLAN Bob', niveau: '3e', archivee: false, eleves: classes['3E Charles de Gaulle'].eleves.slice(12, 24) };   // la deuxième classe de 3e (13 · 60), élèves de la classe d'essai
   const taxonomie = JSON.parse(fs.readFileSync(path.join(H, 'taxonomie.json'), 'utf8'));
   const hub = { classes, taxonomie, redactions: {} };
   if (avecDugain) hub.redactions.dugain = { config: JSON.parse(fs.readFileSync(path.join(ICI, '..', 'sujets', 'dugain.json'), 'utf8')) };

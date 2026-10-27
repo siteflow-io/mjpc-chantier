@@ -250,8 +250,7 @@
   /* Vue correction (mode classique conservé) */
   .correction-view {
     padding: 16px 24px;
-    max-width: 1100px;
-    margin: 0 auto;
+    margin: 0 auto;   /* 13 · 61 : toute la largeur (plus de colonne de 1100 px) */
   }
   .sujet-rappel {
     background: var(--beige-clair);
@@ -1152,7 +1151,44 @@
   .ru-case { width: 100%; min-height: 4.2em; font-family: inherit; font-size: 0.9em; line-height: 1.35; border: 1px solid var(--gris); border-radius: 4px; padding: 5px 7px; resize: vertical; background: #fffefb; }
   .ru-case-ok { outline: 2px solid var(--vert); }
   .ru-aide { color: #777; } .ru-ok { color: var(--vert); font-size: 0.8em; font-weight: normal; } .ru-commune { background: #fff; border-radius: 6px; padding: 8px 14px; margin-bottom: 10px; }
-  .ru-temoin:empty { display: none; } .ru-temoin.ko { color: #a23a3a; border-color: #e3b6b6; } .ru-temoin.test { color: #7a4bb0; border-color: #cdb8e6; }
+  .ru-temoin:empty { display: none; }
+  /* 13 · 60 — le panneau commun : l'aspect de la correction de dictée (blanc, bleu), toute la largeur et toute la hauteur */
+  .rp { --rp-bleu: #2563eb; --rp-bleu-c: #eff6ff; --rp-trait: #e5e7eb; --rp-gris: #6b7280; font-family: Georgia, 'EB Garamond', serif; }
+  body:has(#ruSujets:not(.hidden)), body:has(#ruApp:not(.hidden)) { background: #fafaf9; }
+  .rp-page { padding: 18px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .rp-carte { background: #fff; border: 1px solid var(--rp-trait); border-radius: 12px; padding: 16px 20px; }
+  .rp-carte h2 { margin: 0 0 10px; font-size: 1.25em; } .rp-carte h3 { margin: 14px 0 6px; font-size: 1.05em; }
+  .rp-tete { display: flex; justify-content: space-between; align-items: flex-start; } .rp-tete h1 { margin: 0; font-size: 1.5em; } .rp-tete p { margin: 4px 0 0; color: var(--rp-gris); }
+  .rp-version { font-size: 0.75em; color: var(--rp-gris); border: 1px solid var(--rp-trait); border-radius: 10px; padding: 1px 8px; background: #f9fafb; }
+  .rp-niveau { margin: 4px 0 8px; } .rp-niveau > summary { cursor: pointer; margin: 6px 0; } .rp-niveau > summary span { color: var(--rp-gris); font-size: 0.85em; margin-left: 6px; }
+  .rp-vide { color: #9ca3af; font-style: italic; margin: 4px 12px 10px; }
+  .rp-ligne { border: 1px solid var(--rp-trait); border-radius: 10px; padding: 10px 14px; margin: 6px 0; cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+  .rp-ligne:hover { border-color: #93c5fd; } .rp-ligne-t span { color: var(--rp-gris); font-size: 0.88em; margin-left: 8px; }
+  .rp-ligne-a { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .rp-barre { display: inline-block; width: 90px; height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden; vertical-align: middle; } .rp-barre i { display: block; height: 100%; background: #4a8a32; }
+  .rp-barre-l { width: 300px; margin-top: 8px; } .rp-pct { color: var(--rp-gris); font-size: 0.88em; }
+  .rp button, .rp-aide-btn { font-family: inherit; font-size: 0.95em; border: 1px solid var(--rp-trait); background: #fff; border-radius: 8px; padding: 5px 12px; cursor: pointer; color: #111827; }
+  .rp button:hover { border-color: #93c5fd; } .rp .rp-ic { padding: 3px 9px; }
+  .rp .rp-ouvrir, .rp .rp-lien { border: none; background: none; color: var(--rp-bleu); font-weight: 600; }
+  .rp .rp-prim { background: var(--rp-bleu); color: #fff; border-color: var(--rp-bleu); font-weight: 600; padding: 9px 16px; }
+  .rp-test-t { display: flex; justify-content: space-between; align-items: center; font-weight: 600; } .rp-test p { color: var(--rp-gris); font-weight: normal; }
+  .rp-entete { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 56px 8px 24px; background: #fafaf9; }   /* à droite, la place du « ? » */
+  .interro-header { padding-right: 56px !important; }
+  #sujetTexte { white-space: pre-line; }
+  .rp .dashboard h2 { color: #111827; }
+  .rp-entete h1 { margin: 0; font-size: 1.6em; } .rp-sous-t { color: var(--rp-gris); } .rp-entete-a { display: flex; gap: 8px; }
+  .rp-onglets { display: flex; gap: 4px; padding: 6px 24px 0; border-bottom: 1px solid var(--rp-trait); background: #fafaf9; }
+  .rp-onglets button { border: none; background: none; border-radius: 8px 8px 0 0; padding: 8px 16px; color: var(--rp-gris); }
+  .rp-onglets button.on { background: #f3f4f6; color: #111827; font-weight: 600; }
+  .rp-sous { display: flex; gap: 6px; padding: 10px 24px; background: #fafaf9; } .rp-sous:empty { display: none; }
+  .rp-sous button { border: none; background: none; color: var(--rp-gris); } .rp-sous button.on { background: var(--rp-bleu); color: #fff; border-radius: 8px; }
+  .rp-vue { padding: 12px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .rp-enonce { background: #f9fafb; border-left: 3px solid #d1d5db; padding: 8px 12px; }
+  .rp-table { border-collapse: collapse; width: 100%; margin-top: 10px; font-size: 0.92em; } .rp-table th, .rp-table td { border-bottom: 1px solid var(--rp-trait); padding: 5px 8px; text-align: left; vertical-align: top; }
+  .rp-ok { color: #3a6e1c; } .rp-ko { color: #a23a3a; }
+  .rp-aide-btn { position: fixed; top: 10px; right: 12px; z-index: 960; width: 30px; height: 30px; border-radius: 50%; padding: 0; font-weight: 700; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+  .rp-aide { position: fixed; top: 46px; right: 12px; z-index: 961; width: 420px; max-height: 70vh; overflow: auto; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px 16px; box-shadow: 0 6px 24px rgba(0,0,0,.15); font-size: 0.92em; }
+  .rp-aide dt { font-weight: 600; margin-top: 6px; } .rp-aide dd { margin: 0 0 0 12px; color: #374151; } .ru-temoin.ko { color: #a23a3a; border-color: #e3b6b6; } .ru-temoin.test { color: #7a4bb0; border-color: #cdb8e6; }
 
   .toast {
     position: fixed;
@@ -1242,15 +1278,14 @@
 </div>
 
 <!-- LA LISTE DES SUJETS (sans id dans l'adresse) -->
-<div class="ru-ecran hidden" id="ruSujets">
-  <header>
-    <h1>Rédaction — les sujets</h1>
-    <div class="subhead">Un sujet = une grille ; il se corrige pour n'importe quelle classe du site</div>
-  </header>
-  <div class="toolbar">
-    <button class="primary" onclick="if(typeof ruNouveauSujet==='function')ruNouveauSujet()" title="Coller le JSON d'un sujet préparé avec Claude (le « prompt rédaction »), le vérifier, puis le créer">➕ Nouveau sujet</button>
+<div class="ru-ecran hidden rp" id="ruSujets">
+  <div class="rp-page">
+    <div class="rp-carte rp-tete"><div><h1>Rédaction</h1><p>Corrige les rédactions avec ta grille : chaque fiche se compose de phrases que tu as lues.</p></div><span class="rp-version" title="Version de l’application">v<span id="ruVersion"></span></span></div>
+    <div class="rp-carte"><h2>Mes rédactions</h2><div id="ruListe"></div></div>
+    <div class="rp-actions"><button class="rp-prim" onclick="ruNouveauSujet()" title="Coller le JSON du sujet préparé avec Claude (le « prompt rédaction »), le vérifier, choisir la classe, créer">＋ Nouvelle rédaction</button></div>
+    <div class="rp-carte rp-test"><div class="rp-test-t"><span>🧪 Mode test</span><button class="rp-lien" id="ruTestBtn" onclick="ruModeTestCarte()">Ouvrir ▾</button></div>
+      <div id="ruTestCorps" hidden><p>Le mode test laisse tout essayer — corriger, préparer, créer — sans rien envoyer au site ; ce qui est fait s’efface en fermant la page. Le bandeau violet le rappelle.</p><button onclick="ruModeTestBasculer()" id="ruTestBascule">Entrer en mode test</button></div></div>
   </div>
-  <div class="ru-liste" id="ruListe"></div>
 </div>
 
 <!-- PRÉPARER LE SUJET (R4) -->
@@ -1281,11 +1316,12 @@
 <!-- NOUVEAU SUJET (R3) -->
 <div class="modal-overlay" id="modalNouveau">
   <div class="modal" style="max-width:900px;">
-    <h2>➕ Nouveau sujet</h2>
+    <h2>＋ Nouvelle rédaction</h2>
     <p style="font-size:0.9em;color:#666;">Colle ici la réponse de Claude (le JSON du sujet, préparé avec le « prompt rédaction »). « Vérifier » dit en clair ce qui ne va pas ; « Créer » range le sujet au site, « à relire ».</p>
     <textarea id="ruNvColler" rows="12" style="width:100%;font-family:monospace;font-size:0.85em;" title="La réponse de Claude, telle quelle (les ``` autour sont acceptés)"></textarea>
     <div id="ruNvMsg" class="ru-msg"></div>
     <div id="ruNvInv" class="ru-inv"></div>
+    <div id="ruNvClasseZone" hidden><label for="ruNvClasse">La classe de cette rédaction</label> <select id="ruNvClasse" title="Une rédaction est pour une classe ; pour une autre classe, tu la dupliqueras (⧉)"></select></div>
     <div class="modal-actions">
       <button onclick="fermerModale('modalNouveau')" title="Fermer sans rien créer">Annuler</button>
       <button onclick="ruVerifierNouveau()" title="Lire la réponse et dire ce qui ne va pas, sans rien écrire">Vérifier</button>
@@ -1294,12 +1330,18 @@
   </div>
 </div>
 
-<div id="ruApp" class="hidden">
-<header>
-  <h1 id="ruTitre">Rédaction</h1>
-  <div class="subhead" id="ruSousTitre">—</div>
-</header>
-
+<div id="ruApp" class="hidden rp">
+<div class="rp-entete">
+  <div class="rp-entete-g"><h1 id="ruTitre">Rédaction</h1><div class="rp-sous-t" id="ruSousTitre">—</div><div class="rp-barre rp-barre-l"><i id="ruBarreRed"></i></div></div>
+  <div class="rp-entete-a">
+    <button onclick="ruSnapshot()" title="Télécharger toute la rédaction (le sujet, les copies, le suivi, les phrases lues) en un fichier JSON">📸 Snapshot</button>
+    <button onclick="document.getElementById('importJson').click()" title="Remettre un snapshot (l’état d’aujourd’hui part d’abord dans la corbeille), ou importer une sauvegarde de l’ancienne app">📤 Restaurer</button>
+    <input type="file" id="importJson" accept=".json" style="display:none" onchange="ruRestaurer(event)">
+    <button onclick="location.href=ruAdresse({})" title="Revenir à « Mes rédactions » (tout est déjà enregistré au site)">← Retour</button>
+  </div>
+</div>
+<nav class="rp-onglets" id="ruOnglets"><button data-o="pilotage" onclick="ruOnglet('pilotage')">Pilotage</button><button data-o="donnees" onclick="ruOnglet('donnees')">Données</button><button data-o="reglages" onclick="ruOnglet('reglages')">Réglages</button></nav>
+<nav class="rp-sous" id="ruSous"></nav>
 <div class="bandeau-eleve hidden" id="bandeauEleve">
   <div class="bandeau-gauche">
     <span class="bandeau-eleve-nom" id="bandeauNom" title="Nom de l'élève dont tu corriges la copie">—</span>
@@ -1311,21 +1353,10 @@
   </div>
 </div>
 
-<div class="toolbar">
-  <button onclick="location.href=ruAdresse({})" title="Revenir à la liste des sujets (la correction en cours est enregistrée)">← Les sujets</button>
-  <button onclick="showDashboard()" title="Revenir à la liste de tous les élèves de la classe">📋 Tableau de bord</button>
-  <button onclick="ouvrirGestionClasse()" title="Choisir la classe du site dont tu corriges les copies (ses élèves sont ceux du site)">👥 Classe</button>
-  <button onclick="location.href=ruAdresse({id:RU.id,vue:'preparer'})" title="Relire et valider les phrases de la grille, point par point, avant qu'un élève les lise (une phrase choisie en corrigeant compte déjà comme lue)">✓ Préparer le sujet</button>
-  <button onclick="ouvrirSujet()" title="Saisir l'énoncé exact du sujet donné aux élèves (apparaîtra sur chaque fiche)">📝 Sujet</button>
-  <span class="sep"></span>
-  <button onclick="exporterJSON()" title="Télécharger une sauvegarde de toutes les corrections en cours. À faire entre deux sessions ou pour changer d'ordinateur.">💾 Exporter JSON</button>
-  <button id="btnAutoSave" onclick="basculerAutoSave()" title="Active ou désactive l'auto-sauvegarde JSON à chaque copie terminée">💾 Auto-sauvegarde</button>
-  <button onclick="document.getElementById('importJson').click()" title="Recharger une sauvegarde téléchargée précédemment (remplacera l'état actuel)">📥 Importer JSON</button>
-  <input type="file" id="importJson" accept=".json" style="display:none" onchange="importerJSON(event)">
-  <button onclick="exporterToutHTML()" id="ruBtnToutHTML" class="primary" title="Générer une fiche HTML par élève (un fichier par élève, prêt à imprimer ou à envoyer via École Directe)">🖨️ Exporter tous HTML</button>
-  <span class="sep"></span>
-  <button onclick="ouvrirStatsProf()" title="Tableau de bord de tes statistiques de correction : temps par copie, par critère, par indicateur, détection des copies anormalement longues. Cette base de données alimentera à terme ton profil longitudinal de prof dans l'écosystème MJPC.">📊 Stats prof</button>
-</div>
+<section class="rp-vue hidden" id="ruVue_preparation"></section>
+<section class="rp-vue hidden" id="ruVue_bilan"></section>
+<section class="rp-vue hidden" id="ruVue_fiches"></section>
+<section class="rp-vue hidden" id="ruVue_reglages"></section>
 
 <!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
@@ -1399,6 +1430,19 @@
 </div>
 
 <!-- Modales -->
+<div class="modal-overlay" id="modalCrayon">
+  <div class="modal">
+    <h2>✏️ La rédaction</h2>
+    <label>Le titre <input type="text" id="ruCrTitre" style="width:100%" title="Le titre de la rédaction, tel qu’il paraît en tête des fiches"></label>
+    <label style="display:block;margin-top:10px;">La classe <select id="ruCrClasse" title="La classe de cette rédaction"></select></label>
+    <p id="ruCrNote" class="ru-msg"></p>
+    <div class="modal-actions">
+      <button onclick="fermerModale('modalCrayon')" title="Fermer sans rien changer">Annuler</button>
+      <button class="primary" onclick="ruCrayonOk()" title="Enregistrer le titre et la classe">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modalClasse">
   <div class="modal">
     <h2>La classe</h2>
@@ -1486,6 +1530,8 @@
 
 </div><!-- /ruApp -->
 <span class="ru-temoin" id="ruTemoin" title="L'état de l'enregistrement au site"></span>
+<button class="rp-aide-btn" onclick="aideBasculer()" title="L’aide de cet écran : ce que tu peux faire ici (touche ? ou F1)">?</button>
+<div class="rp-aide" id="ruAide" hidden></div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -2297,7 +2343,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.0.0-RU";
+var APP_VERSION = "1.1.0-RU";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -2454,30 +2500,12 @@ function ruEcran(id) {
 }
 function ruProfOuvert() { const s = lireSessionMJPC(); return !!(s && s.is_prof); }
 function ruPorte() {
-  ruEcran("ruPorte");
+  ruEcran("ruPorte"); aidePoser("porte");
   const b = document.getElementById("ruPorteOk"), ch = document.getElementById("ruPorteCode"), m = document.getElementById("ruPorteMsg");
   b.onclick = () => { m.textContent = "Vérification…"; mjpcVerifierProf(ch.value).then(r => { if (r && r.ok) { mjpcOuvrirSessionProfParDefaut(); return; } m.textContent = mjpcMessageRefusEleve(r && r.voie) || "Ce code n'ouvre pas l'espace professeur."; }); };
   ch.onkeydown = e => { if (e.key === "Enter") b.click(); };
 }
 function ruAdresse(o) { const p = new URLSearchParams(); p.set("mode", "prof"); Object.keys(o).forEach(k => { if (o[k] != null && o[k] !== "") p.set(k, o[k]); }); if (RU.test) p.set("test", "1"); return location.pathname + "?" + p.toString(); }
-function ruListeSujets() {
-  ruEcran("ruSujets");
-  const l = document.getElementById("ruListe"); l.innerHTML = "<p class=\"ru-vide\">Lecture des sujets…</p>";
-  ruLire(["redactions"]).then(t => {
-    const ids = Object.keys(t || {}).filter(k => t[k] && t[k].config);
-    if (!ids.length) { l.innerHTML = "<p class=\"ru-vide\">Aucun sujet pour l'instant. « ➕ Nouveau sujet » en crée un à partir du JSON préparé avec Claude.</p>"; return; }
-    l.innerHTML = ids.sort((a, b) => String(t[a].config.titre || a).localeCompare(String(t[b].config.titre || b), "fr")).map(id => {
-      const c = normaliserSujet(t[id].config), nv = (c.variantes || []).length, nCl = Object.keys((t[id].copies) || {}).length;
-      const st = typeof etatValidationSujet === "function" ? etatValidationSujet(c, (t[id].validations) || {}) : null;
-      return `<div class="ru-sujet" data-id="${escapeAttr(id)}">
-        <div class="ru-sujet-t"><strong>${escapeHtml(c.titre || id)}</strong><span>${escapeHtml(c.niveau || "")} · sur ${c.total || "?"} · ${nv > 1 ? nv + " sujets au choix" : "un sujet"}${nCl ? " · " + nCl + " classe" + (nCl > 1 ? "s" : "") + " en cours" : ""}${st ? " · " + st.valides + " points validés sur " + st.total : ""}</span></div>
-        <div class="ru-sujet-a">
-          <button class="primary" onclick="location.href=ruAdresse({id:'${escapeAttr(id)}'})" title="Ouvrir ce sujet pour corriger les copies d'une classe du site">Ouvrir</button>
-          <button onclick="location.href=ruAdresse({id:'${escapeAttr(id)}',vue:'preparer'})" title="Relire et valider les phrases de la grille, point par point, avant qu'un élève les lise">Préparer le sujet</button>
-        </div></div>`;
-    }).join("");
-  }, () => { l.innerHTML = "<p class=\"ru-vide\">⚠ Le site ne répond pas : les sujets n'ont pas pu être lus. Vérifie la connexion et recharge la page.</p>"; });
-}
 function ruChoisirClasse(obligatoire) {
   const sel = document.getElementById("ruClasseSel"); const ks = ruClassesProposees();
   sel.innerHTML = ks.map(k => `<option value="${escapeAttr(k)}"${k === RU.classe ? " selected" : ""}>${escapeHtml((RU.classes[k] && RU.classes[k].nom) || k)} — ${extractEleves(RU.classes[k], []).length} élèves</option>`).join("");
@@ -2502,9 +2530,8 @@ function sauverSujet() {
   toast("Sujet enregistré");
 }
 function ruEntete() {
-  document.getElementById("ruTitre").textContent = SUJET.titre || "Rédaction";
-  document.getElementById("ruSousTitre").textContent = [SUJET.niveau, RU.classeNom || "aucune classe choisie", "sur " + SUJET.total].filter(Boolean).join(" · ");
-  document.getElementById("ruDashTitre").textContent = "Élèves — " + (RU.classeNom || "");
+  ruEnteteRedaction();
+  const d = document.getElementById("ruDashTitre"); if (d) d.textContent = "Élèves — " + (RU.classeNom || "");
   document.title = (SUJET.titre || "Rédaction") + (RU.classeNom ? " — " + RU.classeNom : "");
 }
 function ruOuvrirClasse(k) {
@@ -2520,7 +2547,7 @@ function ruOuvrirClasse(k) {
     RU.orphelines = Object.keys(cp || {}).filter(e => !state.classe.some(n => eleveId(n) === e) && !ruVierge(cp[e]));
     if (su) { RU_SUIVI.forEach(f => { if (su[f] != null) state[f] = su[f]; }); RU.sigSuivi = JSON.stringify(su); }
     if (!Array.isArray(state.paquetOrdre)) state.paquetOrdre = Object.values(state.paquetOrdre || {});
-    ruAbonner(); ruReprendre();
+    ruAbonner(); RU.dansCorrection = true; ruReprendre(); ruOnglet("pilotage", "correction");
   }, () => { toast("⚠ Le site ne répond pas : les copies de cette classe n'ont pas pu être lues."); showDashboard(); });
 }
 function ruReprendre() {   // la reprise exacte (l'INIT de l'app d'origine, inchangé)
@@ -2534,6 +2561,7 @@ function ruReprendre() {   // la reprise exacte (l'INIT de l'app d'origine, inch
 }
 function ruDemarrer() {
   RU.test = ruModeTest();
+  { const v = document.getElementById("ruVersion"); if (v) v.textContent = APP_VERSION; const b = document.getElementById("ruTestBascule"); if (b && RU.test) b.textContent = "Sortir du mode test"; }
   if (RU.test) { document.body.classList.add("ru-test"); ruTemoin("test"); }
   if (!ruProfOuvert()) { ruPorte(); return; }
   const id = ruParam("id");
@@ -2544,7 +2572,7 @@ function ruDemarrer() {
     if (!cfg) { ruListeSujets(); toast("Ce sujet n'existe pas (ou plus) au site."); return; }
     appliquerSujet(cfg); RU.classes = cl || {}; RU.cfgRange = JSON.stringify(cfg) === JSON.stringify(SUJET);
     if (ruParam("vue") === "preparer" && typeof ruPreparer === "function") { ruPreparer(); return; }
-    let k = ruCleClasse(ruParam("classe"));
+    let k = ruCleClasse(ruParam("classe")) || ruCleClasse(SUJET.classe);
     if (!k) { try { k = ruCleClasse(localStorage.getItem("mjpc_redaction_classe_" + id)); } catch (e) {} }
     if (!k || !ruClassesProposees().includes(k)) { ruEcran("ruApp"); state.classe = []; ruEntete(); renderDashboard(); ruChoisirClasse(true); return; }
     ruChargerValidations().then(() => ruOuvrirClasse(k));
@@ -2633,6 +2661,8 @@ function ruValiderSujet(o, taxo, existants) {
 }
 // ── l'écran « Nouveau sujet » ──
 function ruNouveauSujet() {
+  document.getElementById("ruNvClasseZone").hidden = true;
+  if (!RU.classes) ruLire(["classes"]).then(c => { RU.classes = c || {}; });
   document.getElementById("ruNvColler").value = ""; document.getElementById("ruNvMsg").innerHTML = ""; document.getElementById("ruNvInv").innerHTML = "";
   document.getElementById("ruNvCreer").disabled = true; document.getElementById("ruNvCreer").title = "Vérifie d’abord la réponse";
   RU.nouveau = null; document.getElementById("modalNouveau").classList.add("show"); setTimeout(() => document.getElementById("ruNvColler").focus(), 50);
@@ -2652,16 +2682,19 @@ function ruVerifierNouveau() {
     msg.className = "ru-msg ok"; msg.textContent = "Réponse comprise. Voici le sujet qu’elle apporte.";
     inv.innerHTML = `<p><strong>${escapeHtml(c.titre)}</strong> — ${escapeHtml(c.niveau || "")} · sur ${c.total}</p>` + c.variantes.map(v => `<div class="ru-inv-v">${c.variantes.length > 1 ? `<em>${escapeHtml(v.libelle || v.id)}</em>` : ""}<ul>${v.criteres.map(cr => `<li>${escapeHtml(cr.titre)} — ${cr.pts_max} pts : ${cr.indicateurs.map(i => escapeHtml(i.libelle) + " (" + i.poids + ")").join(" · ")}</li>`).join("")}</ul></div>`).join("") +
       `<p>${n.points} points de grille, ${n.phrases} phrases. À la création, le sujet arrive « à relire » : tu peux corriger des copies tout de suite, mais la fiche d’un élève ne sort pas tant qu’une phrase qu’elle porte n’est pas lue (« Préparer le sujet », ou choisie en corrigeant).</p>`;
-    b.disabled = false; b.title = "Créer ce sujet au site (" + c.id + ")"; return true;
+    const sc = document.getElementById("ruNvClasse"); sc.innerHTML = '<option value="">— la classe —</option>' + ruClassesProposees().map(k => `<option value="${escapeAttr(k)}">${escapeHtml(ruNomClasse(k))}</option>`).join(""); document.getElementById("ruNvClasseZone").hidden = false;
+    b.disabled = false; b.title = "Créer cette rédaction au site pour la classe choisie"; return true;
   }, () => { msg.className = "ru-msg ko"; msg.textContent = "Le site ne répond pas : la vérification n’a pas pu lire la taxonomie. Réessaie dans un instant."; return false; });
 }
 function ruCreerNouveau() {
   const c = RU.nouveau; if (!c) return; const b = document.getElementById("ruNvCreer"); b.disabled = true;
+  const kc = document.getElementById("ruNvClasse").value; if (!kc) { document.getElementById("ruNvMsg").className = "ru-msg ko"; document.getElementById("ruNvMsg").textContent = "Choisis la classe de cette rédaction."; b.disabled = false; return; }
+  c.classe = kc;   // 13 · 60 : une rédaction = un sujet pour une classe
   const t0 = new Date().toISOString(); c.nomCourt = c.id; c.idInterne = idSujet(); c.id = c.idInterne; c.creeLe = t0; c.modifieLe = t0;   // l'id du JSON reste lisible (nomCourt), jamais l'identité
   ruEcrire(["redactions", c.idInterne, "config"], c, "le sujet " + c.nomCourt).then(i => {
     if (i.etat !== MJPC_ISSUE.ACCEPTEE) { document.getElementById("ruNvMsg").className = "ru-msg ko"; document.getElementById("ruNvMsg").textContent = i.etat === MJPC_ISSUE.REFUSEE ? "Le site a refusé la création : rien n’est écrit." : "Le site ne répond pas : rien n’est écrit. Réessaie."; b.disabled = false; return; }
     fermerModale("modalNouveau"); toast("Sujet créé : " + c.titre);
-    location.href = ruAdresse({ id: c.idInterne, vue: "preparer" });
+    location.href = ruAdresse({ id: c.idInterne, classe: c.classe, vue: "preparer" });
   });
 }
 // ── les phrases d'un sujet, et leur clé de validation ──
@@ -2742,7 +2775,7 @@ function ruChargerValidations() {
 }
 // ── « Préparer le sujet » (R4) : un point par écran ──
 function ruPreparer() {
-  ruEcran("ruPrep"); document.title = "Préparer — " + (SUJET.titre || "");
+  ruEcran("ruPrep"); aidePoser("preparer"); document.title = "Préparer — " + (SUJET.titre || "");
   document.getElementById("ruPrepTitre").textContent = "Préparer le sujet — " + (SUJET.titre || "");
   ruChargerValidations().then(() => { RU.prep = RU.prep || { k: 0 }; ruPrepRendre(); });
 }
@@ -2821,6 +2854,217 @@ function ruPrepCase(t) {
   appliquerSujet(SUJET);
   t.classList.add("ru-case-ok"); setTimeout(() => t.classList.remove("ru-case-ok"), 900);
 }
+
+// =====================================================================
+// RU — LE PANNEAU COMMUN (13 · 60, complément du 27/10) : le panneau de la correction de dictée
+// =====================================================================
+// Une rédaction = un sujet pour une classe (config.classe, sa clé interne) ; pour une autre classe, on la duplique.
+// L'accueil « Mes rédactions » (par niveau, ✏️ ⧉ 🗑️, « Ouvrir → », « ＋ Nouvelle rédaction », la carte « Mode test », le « ? »),
+// une rédaction ouverte (l'en-tête, 📸 Snapshot, 📤 Restaurer, ← Retour ; Pilotage · Données · Réglages).
+// Ce qui est déjà au hub ne bouge jamais : un sujet de la forme 1.0.0-RU, qui porte des copies de plusieurs classes, s'affiche en une ligne par classe.
+const RU_NIVEAUX = ["3e", "4e", "5e", "6e"];
+// ── les lignes de l'accueil : une par sujet et par classe ──
+function ruLignes(t) {
+  const L = [];
+  Object.keys(t || {}).forEach(id => {
+    const n = t[id]; if (!n || !n.config) return;
+    const c = normaliserSujet(n.config);
+    const classes = c.classe ? [c.classe] : Object.keys(n.copies || {});
+    (classes.length ? classes : [null]).forEach(k => L.push({ id, cfg: c, classe: k, copies: (n.copies || {})[k] || {}, ancienne: !c.classe && classes.length > 1 }));
+  });
+  return L;
+}
+function ruCopieFinie(cfg, cp) {   // « corrigée » : tous les points de sa grille notés (« non évalué » compte), comme progressionPct à 100 %
+  const v = (cfg.variantes || []).find(x => x.id === cp.sujet) || ((cfg.variantes || []).length === 1 ? cfg.variantes[0] : null); if (!v) return false;
+  return (v.criteres || []).every(cr => (cr.indicateurs || []).every(i => cp.echelons && cp.echelons[i.id] !== undefined));
+}
+function ruNiveauLigne(l) { const k = l.classe && RU.classes && RU.classes[l.classe]; const n = String((k && k.niveau) || l.cfg.niveau || "").toLowerCase(); return RU_NIVEAUX.find(x => n.indexOf(x) === 0) || ""; }
+function ruNomClasse(k) { return k ? ((RU.classes && RU.classes[k] && RU.classes[k].nom) || k) : "classe à choisir"; }
+function ruDate(iso) { if (!iso) return ""; try { return new Date(iso).toLocaleDateString("fr-FR"); } catch (e) { return ""; } }
+function ruListeSujets() {   // l'accueil « Mes rédactions »
+  ruEcran("ruSujets"); aidePoser("accueil");
+  const l = document.getElementById("ruListe"); l.innerHTML = "<p class=\"ru-vide\">Lecture des rédactions…</p>";
+  Promise.all([ruLire(["redactions"]), ruLire(["classes"])]).then(([t, cl]) => {
+    RU.classes = cl || {}; RU.arbre = t || {};
+    const L = ruLignes(t);
+    l.innerHTML = RU_NIVEAUX.concat([""]).map(nv => {
+      const G = L.filter(x => ruNiveauLigne(x) === nv).sort((a, b) => String(b.cfg.creeLe || "").localeCompare(String(a.cfg.creeLe || "")) || String(a.cfg.titre).localeCompare(String(b.cfg.titre), "fr"));
+      if (!nv && !G.length) return "";
+      return `<details class="rp-niveau" open><summary><b>${nv || "Autres"}</b> <span>${G.length ? G.length + " rédaction" + (G.length > 1 ? "s" : "") : "vide pour l’instant"}</span></summary>` +
+        (G.length ? G.map(x => {
+          const eleves = x.classe && RU.classes[x.classe] ? extractEleves(RU.classes[x.classe], []).length : 0;
+          const finies = Object.keys(x.copies).filter(e => ruCopieFinie(x.cfg, x.copies[e])).length;
+          const pct = eleves ? Math.round(100 * finies / eleves) : 0;
+          const ref = escapeAttr(x.id), cl = escapeAttr(x.classe || "");
+          return `<div class="rp-ligne" data-id="${ref}" data-classe="${cl}" onclick="if(!event.target.closest('button'))location.href=ruAdresse({id:'${ref}'${x.classe ? `,classe:'${cl}'` : ""}})">
+            <div class="rp-ligne-t"><strong>${escapeHtml(x.cfg.titre || x.id)}</strong> <span>${escapeHtml(ruNomClasse(x.classe))} · sur ${x.cfg.total}${x.cfg.creeLe ? " · créée le " + ruDate(x.cfg.creeLe) : ""}${x.ancienne ? " · une des classes de ce sujet" : ""}</span></div>
+            <div class="rp-ligne-a"><span class="rp-barre" title="${finies} copie${finies > 1 ? "s" : ""} corrigée${finies > 1 ? "s" : ""} sur ${eleves} élève${eleves > 1 ? "s" : ""}"><i style="width:${pct}%"></i></span><span class="rp-pct">${finies}/${eleves} · ${pct} %</span>
+              <button class="rp-ic" onclick="ruCrayon('${ref}','${cl}')" title="Changer le titre ou la classe de cette rédaction">✏️</button>
+              <button class="rp-ic" onclick="ruDupliquer('${ref}')" title="Dupliquer pour une autre classe : la grille, l’énoncé et les phrases déjà lues ; aucune copie d’élève">⧉</button>
+              <button class="rp-ic" onclick="ruSupprimer('${ref}','${cl}')" title="Supprimer (archivée dans la corbeille MJPC, avec un export JSON téléchargé)">🗑️</button>
+              <button class="rp-ouvrir" onclick="location.href=ruAdresse({id:'${ref}'${x.classe ? `,classe:'${cl}'` : ""}})" title="Ouvrir cette rédaction : préparer le sujet, corriger les copies de la classe, les fiches">Ouvrir →</button></div></div>`;
+        }).join("") : `<p class="rp-vide">vide pour l’instant</p>`) + `</details>`;
+    }).join("");
+  }, () => { l.innerHTML = "<p class=\"ru-vide\">⚠ Le site ne répond pas : les rédactions n'ont pas pu être lues. Vérifie la connexion et recharge la page.</p>"; });
+}
+// ── ✏️ le titre et la classe (comme le crayon du modèle) ; une classe ne change plus quand des copies sont commencées ──
+function ruCrayon(id, classe) {
+  const n = RU.arbre[id]; if (!n) return; const c = n.config;
+  document.getElementById("ruCrTitre").value = c.titre || "";
+  const sel = document.getElementById("ruCrClasse"); const ks = ruClassesProposees();
+  sel.innerHTML = ks.map(k => `<option value="${escapeAttr(k)}"${k === (c.classe || classe) ? " selected" : ""}>${escapeHtml(ruNomClasse(k))}</option>`).join("");
+  const commencees = Object.keys((n.copies || {})[c.classe || classe] || {}).length;
+  sel.disabled = !!commencees || (!c.classe && Object.keys(n.copies || {}).length > 1);
+  document.getElementById("ruCrNote").textContent = sel.disabled ? (commencees ? "La classe ne change plus : " + commencees + " copie" + (commencees > 1 ? "s sont commencées" : " est commencée") + ". Pour une autre classe, « ⧉ Dupliquer »." : "Ce sujet porte les copies de plusieurs classes : la classe ne se change pas ici.") : "";
+  RU.crayon = { id, classe }; document.getElementById("modalCrayon").classList.add("show");
+}
+function ruCrayonOk() {
+  const { id } = RU.crayon; const n = RU.arbre[id]; const t = document.getElementById("ruCrTitre").value.trim(); const sel = document.getElementById("ruCrClasse");
+  const maint = new Date().toISOString(); const P = [];
+  if (t && t !== n.config.titre) P.push(ruEcrire(["redactions", id, "config", "titre"], t, "le titre"));
+  if (!sel.disabled && sel.value && sel.value !== n.config.classe) P.push(ruEcrire(["redactions", id, "config", "classe"], sel.value, "la classe"));
+  if (P.length) P.push(ruEcrire(["redactions", id, "config", "modifieLe"], maint, "l'heure du sujet"));
+  fermerModale("modalCrayon"); Promise.all(P).then(() => { toast("Rédaction modifiée"); ruListeSujets(); });
+}
+// ── ⧉ dupliquer (comme dupliquerDicteeEntiere : tous les réglages, jamais l'état des élèves) ──
+function ruDupliquer(id) {
+  const n = RU.arbre[id]; if (!n) return;
+  const cfg = JSON.parse(JSON.stringify(n.config)); const maint = new Date().toISOString(); const nid = idSujet();
+  const pris = new Set(Object.keys(RU.arbre).map(k => (RU.arbre[k].config || {}).nomCourt).filter(Boolean));
+  let nc = (cfg.nomCourt || cfg.id || "redaction") + "-copie", i = 2; while (pris.has(nc)) nc = (cfg.nomCourt || cfg.id || "redaction") + "-copie-" + (i++);
+  Object.assign(cfg, { idInterne: nid, id: nid, nomCourt: nc, titre: "Copie de " + (cfg.titre || ""), creeLe: maint, modifieLe: maint });
+  const copie = { config: cfg }; if (n.validations) copie.validations = JSON.parse(JSON.stringify(n.validations));
+  ruEcrire(["redactions", nid], copie, "la rédaction dupliquée").then(i => {
+    if (i.etat !== MJPC_ISSUE.ACCEPTEE) { alert("La duplication n’a pas pu s’écrire au site : rien n’a changé."); return; }
+    alert("Rédaction dupliquée : " + cfg.titre + " (la grille, l’énoncé, " + Object.keys(copie.validations || {}).length + " phrase(s) déjà lue(s) ; aucune copie d’élève). Réaffecte-la à une classe avec le crayon ✏️.");
+    ruListeSujets();
+  });
+}
+// ── 🗑️ supprimer (comme supprimerDicteeAvecCorbeille : un export JSON téléchargé, puis la corbeille MJPC, puis l'effacement) ──
+function ruTelecharger(obj, nom) { try { const b = new Blob([JSON.stringify(obj, null, 2)], { type: "application/json" }); const u = URL.createObjectURL(b); const a = document.createElement("a"); a.href = u; a.download = nom; a.click(); URL.revokeObjectURL(u); } catch (e) {} }
+function ruCorbeille(motif, source, data, meta) {
+  const now = new Date(); const an = now.getMonth() < 7 ? (now.getFullYear() - 1) + "-" + now.getFullYear() : now.getFullYear() + "-" + (now.getFullYear() + 1);
+  const jour = now.toISOString().slice(0, 10), hh = ("0" + now.getHours()).slice(-2) + ("0" + now.getMinutes()).slice(-2) + ("0" + now.getSeconds()).slice(-2);
+  return ruEcrire(["corbeille", jour, motif + "_" + hh], { _meta: Object.assign({ motif, annee: an, source, le: Date.now() }, meta || {}), data }, "la corbeille");
+}
+function ruSupprimer(id, classe) {
+  const n = RU.arbre[id]; if (!n) return; const tout = !!n.config.classe || Object.keys(n.copies || {}).length <= 1 || !classe;
+  const titre = n.config.titre + (tout ? "" : " — " + ruNomClasse(classe));
+  if (!confirm("Supprimer " + titre + " ?\n\nElle sera archivée dans la corbeille MJPC (récupérable un an) et un export JSON sera téléchargé.\n\nContinuer ?")) return;
+  const chemin = tout ? ["redactions", id] : ["redactions", id, "copies", classe];
+  const data = tout ? n : { copies: n.copies[classe], suivi: (n.suivi || {})[classe] || null };
+  ruTelecharger({ _meta: { source: chemin.join("/"), exportedAt: new Date().toISOString(), exportedBy: "suppression_auto", version: 1 }, data }, "redaction_" + id + (tout ? "" : "_" + classe) + "_" + new Date().toISOString().slice(0, 10) + ".json");
+  ruCorbeille("suppression-redaction", chemin.join("/"), data, { redaction: id, titre }).then(i => {
+    if (i.etat !== MJPC_ISSUE.ACCEPTEE && !confirm("L’archivage dans la corbeille MJPC a échoué.\n\nL’export JSON, lui, est bien téléchargé.\n\nSupprimer quand même ?")) return;
+    const P = [ruEcrire(chemin, null, "la rédaction supprimée")]; if (!tout) P.push(ruEcrire(["redactions", id, "suivi", classe], null, "le suivi"));
+    Promise.all(P).then(() => { toast("Rédaction supprimée (corbeille MJPC)"); ruListeSujets(); });
+  });
+}
+// ── la carte « Mode test » ──
+function ruModeTestCarte() { const d = document.getElementById("ruTestCorps"); d.hidden = !d.hidden; document.getElementById("ruTestBtn").textContent = d.hidden ? "Ouvrir ▾" : "Fermer ▴"; }
+function ruModeTestBasculer() { const p = new URLSearchParams(location.search); if (RU.test) p.delete("test"); else p.set("test", "1"); location.href = location.pathname + "?" + p.toString(); }
+// ── une rédaction ouverte : l'en-tête, les onglets ──
+const RU_ONGLETS = { pilotage: [["preparation", "Préparation"], ["correction", "Correction"]], donnees: [["bilan", "Bilan"], ["fiches", "Fiches élèves"]], reglages: [] };
+function ruEnteteRedaction() {
+  const n = state.classe.length; const finies = state.classe.filter(nm => progressionPct(eleveId(nm)) === 100).length; const pct = n ? Math.round(100 * finies / n) : 0;
+  const t = document.getElementById("ruTitre"); if (t) t.textContent = (SUJET && SUJET.titre) || "Rédaction";
+  const s = document.getElementById("ruSousTitre"); if (s) s.textContent = (RU.classeNom || "aucune classe choisie") + " · " + finies + "/" + n + " · " + pct + " %";
+  const b = document.getElementById("ruBarreRed"); if (b) b.style.width = pct + "%";
+}
+function ruOnglet(o, sous) {
+  RU.onglet = o; RU.sous = sous || (RU_ONGLETS[o][0] || [])[0] || null;
+  document.querySelectorAll("#ruOnglets [data-o]").forEach(b => b.classList.toggle("on", b.dataset.o === o));
+  document.getElementById("ruSous").innerHTML = RU_ONGLETS[o].map(([k, lib]) => `<button data-s="${k}" class="${k === RU.sous ? "on" : ""}" onclick="ruOnglet('${o}','${k}')">${lib}</button>`).join("");
+  const vue = RU.sous || o;
+  ["preparation", "bilan", "fiches", "reglages"].forEach(v => { const e = document.getElementById("ruVue_" + v); if (e) e.classList.toggle("hidden", v !== vue); });
+  const corr = vue === "correction";
+  ["dashboard", "correctionView", "bandeauEleve"].forEach(x => { const e = document.getElementById(x); if (e && !corr) e.classList.add("hidden"); });
+  if (corr) { if (!RU.dansCorrection) { RU.dansCorrection = true; showDashboard(); } else if (document.getElementById("correctionView").classList.contains("hidden")) showDashboard(); }
+  else RU.dansCorrection = false;
+  if (vue === "preparation") ruRendrePreparation();
+  if (vue === "bilan") document.getElementById("ruVue_bilan").innerHTML = `<div class="rp-carte"><h2>Bilan de la correction</h2>${genererContenuStatsProf()}</div>`;
+  if (vue === "fiches") ruRendreFiches();
+  if (vue === "reglages") ruRendreReglages();
+  aidePoser(vue);
+}
+function ruRendrePreparation() {
+  const st = etatValidationSujet(SUJET, RU_VALID);
+  const vs = (SUJET.variantes || []).filter(v => v.enonce != null);
+  document.getElementById("ruVue_preparation").innerHTML = `<div class="rp-carte"><h2>Les phrases de la grille</h2>
+    <p>${st.valides} point${st.valides > 1 ? "s" : ""} validé${st.valides > 1 ? "s" : ""} sur ${st.total}. Une phrase choisie en corrigeant compte déjà comme lue ; une fiche ne sort pas tant qu’une phrase qu’elle porte n’est pas lue.</p>
+    <button class="rp-prim" onclick="location.href=ruAdresse({id:RU.id,vue:'preparer'})" title="Relire et valider les phrases, un point de la grille par écran">✓ Préparer le sujet</button></div>
+    <div class="rp-carte"><h2>L’énoncé</h2><p>Il paraît en tête de chaque fiche${vs.length > 1 ? " (celui du sujet que l’élève a traité)" : ""}.</p>${vs.length ? vs.map(v => `<p class="rp-enonce"><b>${escapeHtml(v.libelle || v.id)}</b><br>${escapeHtml(v.enonce).replace(/\n/g, "<br>")}</p>`).join("") : `<p class="rp-enonce">${escapeHtml(state.sujet || SUJET.enonce || "").replace(/\n/g, "<br>")}</p>`}
+    <button onclick="ouvrirSujet()" title="Corriger l’énoncé tel que distribué aux élèves">📝 Corriger l’énoncé</button></div>`;
+}
+function ruRendreFiches() {
+  const lignes = state.classe.map(nm => { const id = eleveId(nm); const g = getGrille(id); const nl = g ? ruPhrasesNonLues(id) : []; const { total, complete } = noteTotale(id);
+    const etat = !g ? "pas commencée" : nl.length ? "ne sort pas encore : " + nl.slice(0, 2).join(" ; ") + (nl.length > 2 ? "…" : "") : (complete ? "prête" : "prête (copie en cours)");
+    return `<tr><td>${escapeHtml(nm)}</td><td>${g && complete ? total + " / " + totalPour(id) : "—"}</td><td class="${nl.length ? "rp-ko" : g ? "rp-ok" : ""}">${escapeHtml(etat)}</td>
+      <td>${g ? `<button onclick="state.current='${escapeAttr(id)}';apercuHTML()" title="Voir la fiche dans un nouvel onglet">👁 Aperçu</button> <button onclick="state.current='${escapeAttr(id)}';exporterHTMLEleve()" title="Télécharger la fiche de cet élève">🖨️ Exporter</button>` : ""}</td></tr>`; }).join("");
+  document.getElementById("ruVue_fiches").innerHTML = `<div class="rp-carte"><h2>Fiches élèves</h2><p>Une fiche par élève, à imprimer ou à envoyer par École Directe.</p>
+    <button onclick="exporterToutHTML()" id="ruBtnToutHTML" class="rp-prim">🖨️ Exporter tous HTML</button>
+    <table class="rp-table"><thead><tr><th>Élève</th><th>Note</th><th>La fiche</th><th></th></tr></thead><tbody>${lignes}</tbody></table></div>`;
+  ruMajBoutonsFiche();
+}
+function ruRendreReglages() {
+  document.getElementById("ruVue_reglages").innerHTML = `<div class="rp-carte"><h2>La grille du sujet</h2><p>Telle qu’elle se lit aujourd’hui. Ses phrases se relisent et se corrigent dans « Préparer le sujet » ; les poids et les seuils du compteur sont ceux du sujet créé.</p>
+    <button onclick="location.href=ruAdresse({id:RU.id,vue:'preparer'})">✓ Préparer le sujet</button>` +
+    (SUJET.variantes || []).map(v => `<h3>${SUJET.variantes.length > 1 ? escapeHtml(v.libelle || v.id) + " — " : ""}sur ${v.total}</h3><table class="rp-table"><thead><tr><th>Critère</th><th>Point</th><th>Poids</th><th>Compétence</th></tr></thead><tbody>` +
+      v.criteres.map(cr => cr.indicateurs.map((i, k) => `<tr><td>${k ? "" : escapeHtml(cr.titre) + " (" + cr.pts_max + ")"}</td><td>${escapeHtml(i.libelle)}</td><td>${i.poids}</td><td>${escapeHtml((i.competences || []).join(", "))}</td></tr>`).join("")).join("") + `</tbody></table>` +
+      (v.compteur ? `<p><b>Le compteur d’orthographe</b> (« ${escapeHtml(v.compteur.indicateur)} »${v.compteur.selon ? ", selon « " + escapeHtml(v.compteur.selon) + " »" : ""}) : ` + [3, 2, 1, 0].map(e => ECHELON_COULEUR[e].label + " → " + (v.compteur.seuils[e] || []).join(" / ")).join(" · ") + ` (jusqu’à combien d’erreurs : très satisfaisant / satisfaisant / fragile).</p>` : "")).join("") + `</div>`;
+}
+// ── 📸 Snapshot et 📤 Restaurer (le patron du modèle) ; Restaurer lit aussi une sauvegarde de l'ancienne app ──
+function ruSnapshot() {
+  ruLire(["redactions", RU.id]).then(d => { if (!d) { alert("Aucune donnée à exporter."); return; }
+    ruTelecharger({ _meta: { source: "redactions/" + RU.id, exportedAt: new Date().toISOString(), exportedBy: "snapshot_tool", version: 1, titre: SUJET.titre }, data: d }, "redaction_" + (SUJET.nomCourt || RU.id) + "_" + new Date().toISOString().slice(0, 10) + ".json");
+    toast("Snapshot téléchargé"); });
+}
+function ruRestaurer(ev) {
+  const f = ev.target.files[0]; ev.target.value = ""; if (!f) return;
+  const r = new FileReader(); r.onload = e => {
+    let p; try { p = JSON.parse(e.target.result); } catch (x) { alert("Fichier invalide : " + x.message); return; }
+    if (p && p.data && p._meta && /^redactions\//.test(String(p._meta.source || ""))) {   // un snapshot de cette app
+      if (!confirm("⚠️ Écraser cette rédaction (« " + SUJET.titre + " ») avec le snapshot du " + (p._meta.exportedAt || "?") + " ?\n\nL’état d’aujourd’hui part d’abord dans la corbeille MJPC.")) return;
+      ruLire(["redactions", RU.id]).then(avant => ruCorbeille("restauration-redaction", "redactions/" + RU.id, avant, { redaction: RU.id }))
+        .then(() => ruEcrire(["redactions", RU.id], p.data, "la rédaction restaurée")).then(i => { if (i.etat === MJPC_ISSUE.ACCEPTEE) { alert("✅ Snapshot restauré."); location.reload(); } else alert("La restauration n’a pas pu s’écrire au site : rien n’a changé."); });
+      return;
+    }
+    if (p && p.copies && typeof p.copies === "object") {   // une sauvegarde de l'ancienne app (redaction_dugain_v3 : « Exporter JSON »)
+      const vus = [], perdus = [];
+      Object.keys(p.copies).forEach(k => { const nm = state.classe.find(n => eleveIdAncien(n) === k || eleveId(n) === k); if (nm) vus.push([nm, k]); else perdus.push(k); });
+      if (!vus.length) { alert("Aucune copie de ce fichier ne correspond à un élève de " + RU.classeNom + "."); return; }
+      if (!confirm("Importer " + vus.length + " copie(s) de l’ancienne sauvegarde dans " + RU.classeNom + " ?" + (perdus.length ? "\n\nSans élève dans cette classe (non importées) : " + perdus.join(", ") : "") + "\n\nUne copie déjà commencée ici est remplacée (l’état d’avant part dans la corbeille MJPC).")) return;
+      ruCorbeille("import-ancienne-sauvegarde", "redactions/" + RU.id + "/copies/" + RU.classe, JSON.parse(JSON.stringify(state.copies)), { redaction: RU.id }).then(() => {
+        vus.forEach(([nm, k]) => { const c = JSON.parse(JSON.stringify(p.copies[k])); RU_IDENTITE.forEach(x => delete c[x]); state.copies[eleveId(nm)] = c; if (RU.sigCorps) delete RU.sigCorps[eleveId(nm)]; });
+        if (p.sujet && !SUJET.variantes.some(v => v.enonce)) { /* l'énoncé de l'ancienne app reste celui du sujet */ }
+        saveState(); synchroniser(); showDashboard(); alert("✅ " + vus.length + " copie(s) importée(s)" + (perdus.length ? " ; " + perdus.length + " sans élève" : "") + ".");
+      });
+      return;
+    }
+    alert("Ce fichier n’est ni un snapshot de la Rédaction, ni une sauvegarde de l’ancienne app.");
+  }; r.readAsText(f);
+}
+// ── le « ? » qui suit l'écran (comme AIDES du modèle) ──
+const RU_AIDES = {
+  accueil: { ou: "Accueil — Mes rédactions", l: [["« Ouvrir → » (ou clic sur une ligne)", "ouvrir la rédaction : Préparation, Correction, Bilan, Fiches élèves, Réglages"], ["✏️", "changer le titre, ou la classe tant qu’aucune copie n’est commencée"], ["⧉", "dupliquer pour une autre classe : la grille, l’énoncé, les phrases déjà lues — sans les copies"], ["🗑️", "supprimer (archivée dans la corbeille MJPC, avec un export JSON téléchargé)"], ["« ＋ Nouvelle rédaction »", "coller le JSON du sujet préparé avec Claude, « Vérifier », choisir la classe, « Créer »"], ["🧪 Mode test", "essayer sans rien enregistrer au site"]] },
+  preparation: { ou: "Pilotage — Préparation", l: [["« ✓ Préparer le sujet »", "lire et valider les phrases, un point de la grille par écran"], ["« 📝 Corriger l’énoncé »", "l’énoncé tel que distribué, en tête de chaque fiche"]] },
+  correction: { ou: "Pilotage — Correction", l: [["clic sur un élève", "ouvrir sa copie"], ["« 📋 Classer le paquet »", "taper les initiales dans l’ordre des copies du bureau"], ["le tri", "ordre du paquet, alphabétique, par sujet, par progression"], ["⚠ sur une carte", "le compteur et le niveau d’orthographe ne s’accordent plus : « Garder » ou « Prendre »"], ["« ⌨️ Mode interrogatif »", "un point par écran : 1-2-3-4 le niveau puis le sous-niveau, C la citation, + / − le compteur, N puis E non évalué, Entrée suivant"]] },
+  bilan: { ou: "Données — Bilan", l: [["le tableau", "le temps passé par copie, par critère, par point ; les copies anormalement longues"]] },
+  fiches: { ou: "Données — Fiches élèves", l: [["👁 Aperçu", "la fiche dans un nouvel onglet"], ["🖨️ Exporter", "la fiche d’un élève en HTML"], ["« 🖨️ Exporter tous HTML »", "un zip des fiches prêtes ; une fiche qui porte une phrase pas lue ne part pas (la raison est dite)"]] },
+  reglages: { ou: "Réglages — la grille", l: [["le tableau", "critères, points, poids, compétences, seuils du compteur"], ["« ✓ Préparer le sujet »", "corriger les phrases"]] },
+  copie: { ou: "Une copie", l: [["1-2-3-4", "le niveau, puis le sous-niveau"], ["C", "taper une citation de la copie"], ["✏️ éditer", "réécrire la phrase pour cette copie (validée d’office)"], ["Entrée / ←", "point suivant / précédent"], ["Échap", "quitter le mode interrogatif"]] },
+  preparer: { ou: "Préparer le sujet", l: [["une case", "corriger la phrase : en sortant de la case, elle est enregistrée et lue"], ["« ✓ Je valide ce point »", "toutes les phrases de l’écran sont lues"], ["à gauche", "les écrans : ✓ validé, ○ à relire"]] },
+  porte: { ou: "La porte", l: [["la clé ou le code professeur", "ceux du site"]] }
+};
+const AIDE = { courant: "accueil" };
+function aidePoser(cle) { AIDE.courant = cle; const p = document.getElementById("ruAide"); if (p && !p.hidden) aideRendre(); }
+function aideRendre() { const a = RU_AIDES[AIDE.courant] || RU_AIDES.accueil; document.getElementById("ruAide").innerHTML = `<h3>${escapeHtml(a.ou)}</h3><dl>${a.l.concat([["? ou F1", "cette aide ; Échap la ferme"]]).map(([k, v]) => `<dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd>`).join("")}</dl>`; }
+function aideBasculer() { const p = document.getElementById("ruAide"); p.hidden = !p.hidden; if (!p.hidden) aideRendre(); }
+document.addEventListener("keydown", e => {
+  const a = document.activeElement; const champ = a && (a.tagName === "INPUT" || a.tagName === "TEXTAREA" || a.tagName === "SELECT");
+  if ((e.key === "?" && !champ) || e.key === "F1") { e.preventDefault(); aideBasculer(); }
+  else if (e.key === "Escape") { const p = document.getElementById("ruAide"); if (p && !p.hidden) { p.hidden = true; e.stopPropagation(); } }
+}, true);
 
 // =====================================================================
 // ÉTAT
@@ -3962,6 +4206,8 @@ function indicateursNonEvalues(id) {
 // DASHBOARD
 // =====================================================================
 function showDashboard() {
+  if (RU.onglet !== "pilotage" || RU.sous !== "correction") { RU.onglet = "pilotage"; RU.sous = "correction"; document.querySelectorAll("#ruOnglets [data-o]").forEach(b => b.classList.toggle("on", b.dataset.o === "pilotage")); const sb = document.getElementById("ruSous"); if (sb) sb.innerHTML = RU_ONGLETS.pilotage.map(([k, l]) => `<button data-s="${k}" class="${k === "correction" ? "on" : ""}" onclick="ruOnglet('pilotage','${k}')">${l}</button>`).join(""); ["preparation", "bilan", "fiches", "reglages"].forEach(v => { const e = document.getElementById("ruVue_" + v); if (e) e.classList.add("hidden"); }); }
+  RU.dansCorrection = true; aidePoser("correction");
   document.getElementById("dashboard").classList.remove("hidden");
   document.getElementById("correctionView").classList.add("hidden");
   document.getElementById("bandeauEleve").classList.add("hidden");
@@ -4016,7 +4262,7 @@ function ruMajBoutonsFiche() {
   b.title = bl.length ? bl.length + " fiche" + (bl.length > 1 ? "s" : "") + " ne sortent pas encore (des phrases pas lues : " + [...new Set(bl.flatMap(n => ruPhrasesNonLues(eleveId(n))))].slice(0, 6).join(" ; ") + "\u2026). « Pr\u00e9parer le sujet » pour les lire ; les autres fiches partent dans le zip." : "Générer une fiche HTML par élève (un fichier par élève, prêt à imprimer ou à envoyer via École Directe)";
 }
 function renderDashboard() {
-  setTimeout(ruMajBoutonsFiche, 0);
+  setTimeout(ruMajBoutonsFiche, 0); try { ruEnteteRedaction(); } catch (e) {}
   { const zone = document.getElementById("ruOrphelines"); if (zone) { const L = (RU.orphelines || []).filter(k => state.copies[k]);
     const libres = state.classe.filter(n => ruVierge(state.copies[eleveId(n)]));
     zone.innerHTML = L.length ? `<div class="ru-desaccord">⚠ ${L.length} copie${L.length > 1 ? "s" : ""} sans élève dans cette classe (un nom corrigé au site ?) : ` + L.map(k => `<span>« ${escapeHtml(state.copies[k].nom || k)} » <select id="ruOrph_${escapeAttr(k)}" title="L'élève à qui rendre cette copie">${libres.map(n => `<option value="${escapeAttr(eleveId(n))}">${escapeHtml(n)}</option>`).join("")}</select><button onclick="ruRattacher('${escapeAttr(k)}')" title="Rendre la copie à cet élève : elle garde son id interne, sa correction et son horodatage">Rattacher</button></span>`).join("") + `</div>` : ""; } }
@@ -4083,6 +4329,7 @@ function renderDashboard() {
 // VUE CLASSIQUE
 // =====================================================================
 function ouvrirCopie(id) {
+  aidePoser("copie");
   state.current = id;
   state.modeOuvert = "classique";
   document.getElementById("dashboard").classList.add("hidden");
@@ -5545,7 +5792,9 @@ function autoSauverJSON(raison) {
 }
 
 // Déclenche l'auto-save si la copie courante est entièrement terminée et l'option est ON
-function autoSaveSiCopieTerminee() {
+function autoSaveSiCopieTerminee() { return;   // 13 · 60 : le site enregistre chaque geste ; plus de fichier téléchargé à chaque copie
+}
+function autoSaveSiCopieTermineeAvant() {
   if (!isAutoSaveOnValidate()) return;
   if (!state.current) return;
   const c = copieFor(state.current);
@@ -5645,7 +5894,9 @@ function setupGuillemetsFrancais() {
 }
 
 // Setup des garde-fous à l'ouverture de l'app
-function setupGardeFousJSON() {
+function setupGardeFousJSON() { return;   // 13 · 60 : plus de téléchargement ni de question à la fermeture — tout est au site
+}
+function setupGardeFousJSONAvant() {
   // 1. beforeunload : tentative de téléchargement avant fermeture
   window.addEventListener("beforeunload", (e) => {
     if (!_stateAModifie()) return;

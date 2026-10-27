@@ -4003,3 +4003,32 @@ MEMO
 
 27/10/2026 08:12
 MEMO
+
+## Tour 214 — 27/10/2026 08:42 — Paul (08:23)
+
+**Paul (mot pour mot), avec la capture de son téléphone (emploi du temps, semaine du 2/11 : ses quatre classes « aucune séance prête », les quatre cartes « aucun chap… »).** « Le problème de l'affichage de la séance n'est pas réglé. Mesure d'abord si ce n' est pas moi qui n'ait pas activé quelque chose quelque part. Par ailleurs tu vois ici le mode mobile, ça fait longtemps qu'on ne l'a pas repris. Mais on laisse pour l'instant, c'est le cadet de mes soucis. Mon but est que aujourd'hui je puisse enfin injecter un chapître avec mon nouveau prompt et prévoir ainsi mes séances à partir de lundi. »
+
+**Mesuré.** Le vrai hub n'est pas joignable d'ici (proxy 403 ; l'ordinateur de Paul n'est pas relié ; Chrome non connecté) : rien lu chez lui. Dans le code de la ④ : `M8_TEST = false` à chaque chargement (l. 1814), le drapeau `mjpc_m8_test` écrit en sessionStorage mais jamais relu ; le magasin du mode test (`M8T`) vit en mémoire et se vide en quittant le mode test (l. 1874). La capture : quatre classes reliées (« aucune séance prête », pas « classe non encore importée »), cartes « aucun chapitre publié ». Rejeu par le geste sur la ④ (faux hub du banc, horloge 27/10 08:30, `TRANSCRIPTS/C13/pieces/T214-banc/`) : un chapitre au format du prompt 0.9 (tiré du chapitre 3e du consultant, titre « Chapitre d'essai du banc », activités et `remob` posés, « Où en sommes-nous ? » et fiches sans feuille retirés) → « 📚 Nouveau chapitre » → « Vérifier » (« Réponse comprise ») → « Créer ce chapitre » → page du niveau → la pastille de la classe → emploi du temps, semaine du 2/11. Hors mode test : 3 DYLAN Bob « Poésie et peinture : le Romantisme en question » heure 1/3 (mar 10:07), 2/3 (mar 16:04), 3/3 (ven 11:04), la carte « dans les temps · Chapitre d'essai du banc (prop · 0/9 » ; après rechargement, identique ; en 4e (4 HUGO), pareil, la case du fil « langue » (mer 08:00) « aucune séance prête · fil « langue » ». En mode test : même affichage dans l'onglet, puis après rechargement plus rien — ni la publication, ni le chapitre. Trouvé : le titre reçoit « (proposition) » même pour un chapitre neuf (`chInjecterConfirme`, l. 9149) → 13 · 49 ; « Nouveau chapitre » exige la clé de l'appareil (`secuExigeCle`), dont la fenêtre parle des codes des élèves → 13 · 50 (registre prod `1f50d5b`, `e540f02`). Paire `pieces/T214-01-publier-en-mode-test-ne-reste-pas-hors-mode-test-reste.png`, envoyée.
+
+**Réponse (mot pour mot).**
+
+À jouer : ton chapitre, aujourd'hui · en cours chez les exécutants : E2 remet la phrase (454), E3 la mesure · ouvert : 481, 487
+
+483. Mesuré : ce n'est pas le site, c'est le mode test. Tout ce que tu fais en mode test (publier, créer un chapitre) n'existe que dans cet onglet et disparaît quand tu recharges la page ou quittes le mode test ; rien ne part au vrai site. Tes publications du 26/10, faites en mode test, n'ont donc jamais existé ailleurs — ton téléphone ne pouvait pas les voir. Image T214-01 : en haut, en mode test, publié pour Dylan puis rechargé, plus rien ; en bas, hors mode test, les heures restent.
+
+484. Ta capture le confirme : tes quatre classes sont bien reliées (« aucune séance prête », pas « classe non encore importée ») ; il leur manque seulement un chapitre publié pour de vrai (« aucun chap… » sur les quatre cartes).
+
+485. J'ai rejoué ton chemin par le geste, sur la ④, hors mode test (sur un faux site, rien chez toi) : un chapitre au format de ton prompt → « Vérifier » → « Créer ce chapitre » → la pastille de la classe → emploi du temps, semaine du 2/11 : les cases de la classe montrent les séances, « heure 1/3, 2/3, 3/3 », dans l'ordre, et elles y sont encore après rechargement. Pareil en 3e (Dylan) et en 4e (Hugo).
+
+486. Ton chemin aujourd'hui, sur ton ordinateur, sans la pastille « Mode test actif » : tu travailles le chapitre avec Claude et ton prompt (la version 0.9) → Atelier → « 📚 Nouveau chapitre » → tu colles le JSON → « Vérifier » (s'il refuse, il dit quoi : tu le redonnes à Claude) → « Créer ce chapitre » → la page du niveau → sur la ligne du chapitre, la pastille de chaque classe → l'emploi du temps : dès lundi, les cases montrent tes séances. Si une de tes classes n'est pas dans « Je publie pour », dis-le-moi.
+
+487. Trouvé en le faisant : « Créer ce chapitre » ajoute « (proposition) » au titre, même pour un chapitre neuf — et les élèves voient ce titre dès que tu publies. Dette 13 · 49. Je propose qu'E1 la règle aujourd'hui, dans la ⑤ avec la phrase (454). D'ici là, il existe dans l'Atelier un champ « Titre du chapitre » pour le corriger avant de publier ; je ne l'ai pas rejoué. Oui pour E1 ?
+
+488. Trouvé aussi : « Nouveau chapitre » demande la clé de chiffrement de l'appareil ; si elle n'y est pas, la fenêtre « Clé requise » parle des codes des élèves, ce qui n'a rien à voir. Dette 13 · 50. Si la clé est sur ton ordinateur, tu ne verras rien ; je ne peux pas le vérifier d'ici.
+
+489. Les heures du fil « langue » (le mercredi) restent vides tant qu'aucun chapitre ne porte « fil : langue » : ton chapitre de littérature ne les remplit pas (mesuré sur Hugo, mercredi 8:00).
+
+À tester : 486, sur ton ordinateur, hors mode test ; puis l'emploi du temps sur ton téléphone : les mêmes séances.
+
+27/10/2026 08:42
+MEMO

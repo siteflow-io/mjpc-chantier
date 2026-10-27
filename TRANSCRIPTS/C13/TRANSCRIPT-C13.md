@@ -4171,3 +4171,16 @@ MEMO
 
 27/10/2026 09:56
 MEMO
+
+## Tour 222 — 27/10/2026 10:03 — mon banc (sans message de Paul depuis le tour 220)
+
+**Fait.** Mon banc sur `2c92e43e` (E1 13 · 49-50, E2 la phrase) : VERT — PARCOURS VERT ×2, 106 vérifications, 0 échec, fin : 0 défaut ; assemblé md5 `2c3a4970aff996265006cb2b64ab8842`, 2 375 671 o. Épreuve `AUDITS/INTEGRATION-DEROULE/epreuves/banc-sur-integration-2c92e43e.txt`.
+
+**Réponse (mot pour mot).**
+
+513. Ma vérification est verte sur ce qui est déjà fait (la phrase, le titre, la clé) : 106 vérifications, 0 échec. Reste les classes (E1), puis la vérification complète d'E3.
+
+À tester : rien de nouveau avant la ⑤.
+
+27/10/2026 10:03
+MEMO

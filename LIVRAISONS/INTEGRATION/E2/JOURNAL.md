@@ -610,3 +610,5 @@ Relance « 27/10, 02:08 — contrôle n°68 » lue.
 - **Garde B31 aux quatre tailles** (B31-tailles : l'autre onglet avec son propre hub, **sans** les écritures de l'heure — comme le faux hub d'E3 ; « Fin de l'heure » ouverte à l'étape 2) : 1366 × 768, 1536 × 864, 1707 × 743, 1920 × 1080 — l'heure tourne, la même diapo, les mêmes lignes, l'étape, le chrono continu, plus de bandeau, aucune erreur JS.
 - **Mesuré avec le banc d'E3 sur le fichier corrigé** : 1536 × 864 ×3 et 1920 × 1080 ×1 → « Reprendre rouvre Fin de l'heure à son étape » vert à chaque course quand une ou deux courses tournent ensemble ; à trois ensemble, la reprise dépasse encore 4 s (la charge, cf. plus haut).
 - **Sorties** (`LIVRAISONS/INTEGRATION/E2/sorties/2710-0318`, assemblé md5 `2db8b6c5…`) : `banc.sh` **VERT** (« 106 vérifications, 0 échec(s) », « --- fin : 0 défaut(s) ») ; **banc E2 entier VERT — 206 ok, 0 échec**.
+
+## 27/10 03:52 (Paris) — retour 45 : **§12.28 E2 fini (e8f0519e)** — de nouveau, après le contrôle n°68 (« Reprendre » : poussée 42). §12.29 E2 fini (d82b60f4) inchangé. Veille : deux retours sans rien de nouveau, puis arrêt.

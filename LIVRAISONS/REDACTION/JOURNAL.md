@@ -117,3 +117,5 @@ Mesuré sur `redaction_dugain_v3.html` (production, 349 982 o, 6 205 lignes, JS 
 - `redaction.html` (`assemblerCommentaireCritere`) : dans un même critère, si le mot tiré (`pickConnecteur`, par empreinte, inchangé) est celui du paragraphe précédent, l'app prend **le suivant de la même liste**. Garde **RU14** (aucune répétition dans les fiches des captures ni dans les trois fiches de la non-régression).
 - **La non-régression devient « au nom de classe près, à l'énoncé près, et au mot de liaison près là où il se répétait »** : la fiche de la production passe par la même règle avant la comparaison (AUDEBERT : 0 mot changé, BOIVIN : 2, CESBRON : 1) ; tout le reste mot pour mot.
 - Captures rejouées (5a : la fiche Dugain sans le « Par ailleurs » doublé). Banc RU0-RU14 : **55 ok · 0 échec** (`sorties/1511-27-10/banc-ru.txt`).
+
+**RU fini (`4c811f97c`)** — 27/10 15:19 (Paris), après 13 · 57. Banc RU0-RU14 : 55 ok, 0 échec.

@@ -3841,3 +3841,16 @@ MEMO
 
 27/10/2026 03:02
 MEMO
+
+## Tour 208 — 27/10/2026 03:56 — contrôle n°70 (sans message de Paul depuis le tour 201)
+
+**Fait.** Mon banc sur `2619511c` (E1 fini) : VERT, 106/0 (épreuve gardée). Lu sur `integration` : **E2 a réglé « Reprendre »** (`e8f0519e`, poussée 42 : les lectures ensemble, la reprise refaite si un montage tardif l'efface ; B31 aux quatre tailles) et s'est redit fini (`a5f49a45`) ; E3 retour 61 (`banc-1228` 308/316 : la simplification en entier, la clôture verts ; restaient « Reprendre » à 1536 et une ligne de son lecteur) et retour 62 (`banc-1227` en régression : VERT 801/801, 172 écrans sans recouvrement). E3 rejoue à 04:23 pour le verdict. Banc relancé sur `a5f49a45`. Contrôle n°71 à 04:55 (`trig_01WvQfgmfRuGxJH1Zc5WAr6j`).
+
+**Réponse (mot pour mot).**
+
+448. Contrôle de 03:55. E2 a réglé « Reprendre » aux quatre tailles d'écran : les trois exécutants qui codaient ont fini. E3 refait maintenant la dernière série complète de mesures ; l'ancienne série, elle, passe en entier (801 sur 801). Si la nouvelle passe aussi, je t'annonce la mise en ligne au réveil, avec les captures.
+
+À tester : rien pour l'instant — rien n'est en ligne.
+
+27/10/2026 03:56
+MEMO

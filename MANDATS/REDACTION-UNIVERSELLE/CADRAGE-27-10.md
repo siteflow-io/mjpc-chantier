@@ -23,4 +23,13 @@
 ## 4 · Ce qu'il faut de Paul pour le premier sujet
 Le sujet de la rédaction des 3e d'avant les vacances (le texte ; imagination et/ou réflexion) — question 522.
 
+## 5 · Le mot de Paul (11:42) et les tranchages repris
+Paul, 11:42 (avec le sujet `Sujet-ecriture-lettre-30-lignes-3e.pdf`) : « R4 précise. R9. attention à la dérive maquette (bien qu'ici, rédaction dugain actuelle est en soi une maquette). Donc je pense qu'il faut commencer par l'intégration au site, à mon avis. Pour la rédaction, voici le sujet. » → R1-R3, R5-R8 acquis.
+- **R4 (précisé)** — Dans « Préparer le sujet », Paul relit un point de la grille à la fois (ses 4 niveaux et leurs sous-niveaux sur un écran), corrige dans la case, puis « ✓ Je valide ce point » ; un compteur « n points validés sur N ». Il peut corriger des copies avant d'avoir tout validé ; la fiche d'un élève ne sort pas tant qu'une phrase qu'elle porte n'est pas validée (le bouton grisé dit lesquelles). Une phrase modifiée par Paul est validée d'office.
+- **R9 (corrigé)** — Pas de maquette à part : l'app actuelle est la maquette. Un seul mandat, dans cet ordre : ① l'intégration au site (la classe du site, l'enregistrement au site, le mode test, l'accès par le panneau prof et la séance), la grille Dugain rangée sur le site ; ② « Nouveau sujet » et la relecture (R3, R4) ; ③ la lettre, premier nouveau sujet. Captures de l'app intégrée pour le promeus.
+- **R10 — la lettre, premier nouveau sujet** : la conscience écrit elle-même son JSON (le sujet de Paul, la grille Dugain pour modèle : mêmes trois critères, sur 40), Paul relit et valide dans l'app (R4). Squelette proposé :
+  - Invention (16) : le personnage tenu — le front ou la maison, qui il est, depuis quand la séparation (4) ; les trois paragraphes — le concret, le plus dur, l'inquiétude pour l'autre (6) ; les lectures remobilisées — Jean Déléage et le chapitre (3) ; ce qu'on tait (3).
+  - Organisation et énonciation (10) : les codes de la lettre — lieu, date, adresse, signature (3) ; la 1re personne, le destinataire présent, les temps (3) ; trente lignes (4).
+  - Langue (14) : toutes les phrases complexes (2) ; les cinq architectures, chacune au moins une fois, valorisées au-delà (4) ; une modalisation par paragraphe et une litote (2) ; orthographe et grammaire, avec le compteur (4) ; lexique (2).
+
 MEMO

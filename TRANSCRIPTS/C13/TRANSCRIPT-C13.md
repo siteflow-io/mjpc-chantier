@@ -5345,3 +5345,27 @@ MEMO
 
 27/10/2026 23:24
 MEMO
+
+---
+
+## Tour 265 — 27/10/2026 23:25 → 23:28
+
+**Paul :** Ok ça me va. Promeus alors
+
+*(Promu à 23:27 : `correction_dictee.html` 6.7.0-L18, commit prod `789c8fb7bbb2`, md5 `a4f2c28329f2020f1afc5d4f09bdd014`, bit à bit ; suivi fait.)*
+
+**Claude :**
+
+703. C'est promu : Correction de dictée 6.7.0-L18 est en production depuis 23:27, et le site public sert exactement le fichier vérifié. Ce qui change : l'accueil, la dictée ouverte et la correction d'une copie prennent toute la largeur ; dans la grille des mots, une ponctuation ne commence plus jamais une ligne ; ↑ et ↓ en mode texte vont bien vers la ligne visée. Côté élève, rien ne bouge, sauf la ponctuation qui reste collée à son mot.
+
+704. Le suivi est fait : registre (13 · 61 réglée), journal, point de retour vers la version d'avant, « où trouver quoi ».
+
+À tester, sur https://siteflow-io.github.io/monsieurjaipascompris/correction_dictee.html?mode=prof&v=6.7.0-L18 :
+- l'accueil « Mes dictées » va d'un bord à l'autre de l'écran ;
+- ouvre une dictée : Pilotage, Données et Réglages sur toute la largeur ;
+- corrige une copie en mode texte : aucune ligne ne commence par « . », « , » ou « ; » ;
+- au clavier, ↑ puis ↓ remontent puis redescendent d'une ligne ;
+- le « ? » en haut à droite ne cache aucun bouton.
+
+27/10/2026 23:28
+MEMO

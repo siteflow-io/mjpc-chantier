@@ -5226,7 +5226,7 @@ MEMO
 
 ---
 
-## Tour 260 — 27/10/2026 23:03 → 23:12
+## Tour 260 — 27/10/2026 23:03 → 23:13
 
 **Paul :** Ok. Attention à l'histoire des rangs et des ids internes, je le rappelle. Tout doit être codé cette nuit. Demain matin tout ce qui est en cours doit être fini ainsi que cette histoire de colonne. Autre chose aussi à mesurer: jouer en avance prend toujours les Dylan actuellement j'ai l'impression et il y a encore des gestes élèves dans le jeu en avance ( attestation de bilan écrit par exemple).
 
@@ -5263,5 +5263,5 @@ Registre 13 · 82.
 
 À tester : rien de neuf en production ce soir ; demain matin, les captures avant / après de la ⑦ et de L18.
 
-27/10/2026 23:12
+27/10/2026 23:13
 MEMO

@@ -4672,3 +4672,38 @@ MEMO
 
 27/10/2026 14:45
 MEMO
+
+
+---
+
+## Tour 242 — 27/10/2026 14:46 → 15:01 (14:46 : contrôle n°81, sans message de Paul ; 14:58 : Paul)
+
+**Claude (14:46) :**
+
+Rien de nouveau pour toi. E4 a refait les images de la Rédaction universelle avec des corrections vraisemblables, et la lettre corrigée passe la vérification. Je l'ai relancé à 14:45 pour qu'il code ta règle du compteur (561). E1 et E3 travaillent sur l'Atelier depuis 14:41.
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:46
+MEMO
+
+**Paul (14:58) :** Il faut que ça aille plus vite.
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 ta règle du compteur (561), E1 l'Atelier (§12.33), E3 le vérifie · ouvert : 590, 538, 553, 586, 481, 458
+
+588. D'accord. Ce que je change tout de suite : je ne passe plus toutes les trente minutes, je guette les poussées des exécutants minute par minute et je vérifie dès qu'une arrive ; et je tranche leurs questions aussitôt — celle d'E1 sur la Relecture est tranchée (l'onglet sort de l'Atelier).
+
+589. Où on en est. La Rédaction universelle : tout est réglé sauf ta règle du compteur (561), qu'E4 code depuis 14:45. L'Atelier : E1 a fini son audit à 14:48 et code ; le banc d'E3 est prêt.
+
+590. Si tu veux corriger les lettres plus tôt : je peux te proposer la Rédaction universelle en ligne dans un quart d'heure, sans attendre 561 ; d'ici là, une fiche peut dire « ce qui correspond au niveau satisfaisant » quand le compteur dit Fragile — tu le verrais sur la fiche. Maintenant, ou avec 561 ?
+
+538. Le compteur d'orthographe : je propose les seuils de Dugain divisés par deux (la lettre fait la moitié d'une copie double). Pour trente lignes : 0 à 3 erreurs Très satisfaisant, 4 à 7 Satisfaisant, 8 à 14 Fragile, 15 et plus Insuffisant. Oui ?
+
+553. Les compétences : E4 rattache chaque point de la grille Dugain à une compétence du site (l'orthographe à « consolider l'orthographe », le lexique à « enrichir le lexique », la remobilisation à « exploiter des lectures », la thèse et la nuance à l'argumentation…). Les élèves ne les voient pas. Oui ?
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:01
+MEMO

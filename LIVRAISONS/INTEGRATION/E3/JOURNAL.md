@@ -829,3 +829,18 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - **Vu, à la conscience** : la page de l'élève de Dylan numérote « SÉANCE 1 », puis « **SÉANCE 3** ». La séance 2, la remédiation, lui est cachée, mais son numéro reste : un trou visible pour l'élève, alors que le contrat dit « sans trou ni décalage » pour l'emploi du temps.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2254-27-10-1228-35/` ; les captures `*-35-*` sont avant / après.
 - Je n'écris pas « §12.35 VERT » tant que le lancement ouvre une autre séance que sa case.
+
+## Retour 83 — 27/10, 23:03 — **§12.34 VERT (`16b44c2d`)**
+- E1 a poussé le reste : « Vérifier » dit la diapo qui ferait plus d'une page (`2c295d03`). L'assemblé de la tête est `16b44c2d`.
+- **Le cas 34, aux quatre tailles : VERT 76/76** (38/38 et 38/38) :
+  - l'œuvre entière, sa marque sur le rocher (Atelier, pilote, tableau) ;
+  - « L'Albatros » numéroté (13) ;
+  - la notion reprise ;
+  - « (proposition 2) » ;
+  - « […] » ;
+  - la dictée manuscrite (lier, professeur, élève) ;
+  - les refus du bilan mot pour mot (8 et 6 mots-clés, plus de 45 signes, plus de 90 signes, une réponse attendue), 5 mots-clés acceptés ;
+  - « Vérifier » qui dit la diapo trop longue sans refuser.
+- `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2303-27-10-1228-34-vert/`.
+- **§12.34 VERT (`16b44c2d`)**. Restent dits à la conscience : la légende qui couvre le bas de l'œuvre au tableau (retour 81) ; l'apostrophe ’/' d'un refus.
+- §12.35 : un défaut à E1, le lancement d'une séance déplacée (retour 82).

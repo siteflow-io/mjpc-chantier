@@ -4307,3 +4307,32 @@ MEMO
 
 27/10/2026 11:44
 MEMO
+
+## Tour 228 — 27/10/2026 11:50 — contrôle n°76 et Paul (11:48)
+
+**Contrôle n°76 (11:47).** Lu : E3 retour 67 (`26d4ea64`) — **§12.30 VERT** (`a4d5df8e`) ; retour 68 (`4e5e274b`) — la vérification courte (30, 51, 49, 50, 39) sur `d35756b1` : 160/168, `banc.sh` VERT ; seul rouge, **l'heure jouée d'une classe à clé simplifiée** : le hub garde la clé de l'heure par `classeSlug` (`_drCleHeureDe`, l. 15283), l'emploi du temps la cherche par le nom (`edtCleHeure`, l. 22772) → « Case passée sans heure jouée ». Tranché à E1 (relance 11:50 : `edtCleHeure` par `edtCleClasse`, essai par le nom en second, garde A59) ; E1 réveillé (`trig_01FqLntAvjE6R9xQuXtdHArc`) ; E3 rejoue dès la poussée (rappel 11:58, toutes les 15 min). Contrôle n°77 à 12:19 (`trig_01LMfP4c5J4RvXGcGYHorpfF`).
+
+**Paul (mot pour mot), 11:48.** « ok pour R4, mais je veux savoir l'impact sur la composition auto des commentaires (je crois qu'il y a cette fonctionnalité, mesure). ok pour R10, mais attention, pour cette rédaction c'est la construction des phrases et le respect du thème qui comptent le plus. »
+
+**Mesuré.** `assemblerCommentaireCritere` (l. 5742), `sousDescripteurRendu` (l. 5668), `CONNECTEURS` (l. 2726), `c.sousEditesPar` (le crayon, par copie). Cadrage complété (`984df95e`) : R4 bis, R10 bis.
+
+**Réponse (mot pour mot).**
+
+À jouer : rien · en cours chez les exécutants : E1 la dernière retouche des classes, E3 vérifie · ouvert : 481, 458, 533, 535
+
+530. Point d'étape sur la ⑤ : la phrase de l'activité en cours est vérifiée et verte. Pour tes classes, tout est vert sauf un cas que E3 a trouvé : une heure jouée avec une de tes classes ne serait pas comptée par l'emploi du temps — lundi, la case suivante aurait redonné la même séance. E1 le corrige maintenant.
+
+531. Mesuré, la composition automatique : la fiche s'écrit critère par critère. Pour chaque point de la grille, la phrase du niveau (ou du sous-niveau) que tu as choisi ; rangées du meilleur au moins bon ; reliées par des mots de liaison pris dans une liste fixe (« De plus », « En revanche », « Plus problématique encore », « En définitive »…) ; le prénom en tête ; ta citation de la copie si tu en tapes une ; « Attention aussi à… » si tu marques des fautes dans la citation ; « Tu as fait N erreurs… » pour l'orthographe ; un point non évalué se tait. Le crayon te laisse réécrire la phrase d'un point pour une seule copie.
+
+532. L'impact de R4 : la composition ne change pas ; elle n'assemble que des phrases que tu as lues. Les phrases du sujet se valident point par point. Les mots de liaison et les phrases fixes sont les mêmes pour tous les sujets : tu les valides une seule fois. Une phrase réécrite au crayon est la tienne : validée d'office.
+
+533. Le poids : pour ta lettre, environ 430 phrases (chaque point a 4 niveaux, 4 sous-niveaux chacun, avec et sans citation). Pour ne pas te les faire toutes relire avant de corriger, je propose : une phrase que tu choisis en corrigeant compte comme lue, puisque tu la lis sur la carte à ce moment-là ; la relecture avant devient facultative. La fiche ne sort qu'avec des phrases lues — validées avant, ou choisies en corrigeant. Oui ?
+
+534. R10, repesé selon ton mot — quatre critères, sur 40 : le thème et l'invention 14 (le thème tenu : la Grande Guerre, la lettre du front ou de la maison, le personnage — 6 ; les trois paragraphes — 4 ; les lectures reprises — 2 ; ce qu'on tait — 2) ; la construction des phrases 14 (toutes complexes — 5 ; les cinq architectures, valorisées au-delà — 7 ; modalisation et litote — 2) ; l'organisation et la lettre 6 (les codes — 2 ; la première personne et le destinataire — 2 ; trente lignes — 2) ; la langue 6 (orthographe avec le compteur — 4 ; lexique — 2). Le thème et les phrases pèsent 26 sur 40.
+
+535. Oui à 533 et 534 ? Le mandat part dès ton oui.
+
+À tester : rien.
+
+27/10/2026 11:50
+MEMO

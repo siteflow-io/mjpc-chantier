@@ -4833,3 +4833,27 @@ MEMO
 
 27/10/2026 16:02
 MEMO
+
+
+---
+
+## Tour 247 — 27/10/2026 16:50
+
+**Claude (16:50, sans message de Paul) :**
+
+À jouer : la Rédaction universelle (607) · en cours chez les exécutants : E3 vérifie l'Atelier · ouvert : 607, 604, 538, 553, 586, 481, 458
+
+605. La Rédaction universelle est prête. E4 a fait les deux retouches en une poussée : un mot de liaison ne sert qu'une fois par critère ; chaque copie et chaque sujet a son id interne, ses clés et ses deux dates, rangés comme dans la correction de dictée. Mon banc la rejoue verte : 62 vérifications, 0 échec. J'ai lu en entier une fiche Dugain et une fiche de la lettre : aucun mot de liaison répété, rien de l'id interne n'y paraît.
+
+606. Ce qui se voit de neuf (image T247-01) : si tu corriges l'orthographe d'un nom au site, la copie de l'élève n'est pas perdue. Le tableau de bord la montre en haut, « 1 copie sans élève dans cette classe », avec la liste des élèves et « Rattacher » ; elle garde son id, sa correction et ses dates.
+
+607. Mise en ligne : un fichier neuf, redaction.html ; redaction_dugain_v3.html ne bouge pas. Adresse : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof. Retour : retirer le fichier. Promeus ?
+
+608. L'Atelier : E1 a fini ; Pilotage et Relecture sont sortis, « ▶ Jouer en avance » est la seule entrée de la répétition. Mon banc est vert (106 vérifications, 0 échec). E3 le vérifie par le geste à 16:53 ; je te le propose dès qu'il est vert.
+
+609. Pour aller plus vite : si tu dis oui au 604, il passera dans la livraison suivante ; l'Atelier ne l'attend pas.
+
+À tester : rien avant ta réponse au 607.
+
+27/10/2026 16:50
+MEMO

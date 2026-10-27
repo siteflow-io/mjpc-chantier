@@ -4896,3 +4896,23 @@ MEMO
 
 27/10/2026 17:40
 MEMO
+
+
+---
+
+## Tour 249 — 27/10/2026 17:42
+
+**Paul :** Pourquoi n'y a-t-il que les classes de 3e? ( Je me fie à ce que tu dis, je n'ai pas expérimenté le site)
+
+**Claude :**
+
+À jouer : la Rédaction universelle (611) · en cours chez les exécutants : E1 et E3 l'accès depuis le site (616, 617) · ouvert : 615, 604, 538, 553, 586, 481, 458
+
+618. Ce n'est pas le site, c'est ma phrase : au 611, j'ai nommé tes deux 3e parce que la lettre est un sujet de 3e. « 👥 Classe » propose toutes les classes du site qui ont des élèves, de la 6e à la 3e. Je l'ai mesuré dans le code (la liste ne filtre que les classes sans élèves et les classes internes) et le banc le vérifie.
+
+619. Le sujet ne trie donc pas les classes par niveau : la liste de la lettre montre aussi tes 4e.
+
+À tester : le 611 ; dans « 👥 Classe », tu dois voir toutes tes classes.
+
+27/10/2026 17:42
+MEMO

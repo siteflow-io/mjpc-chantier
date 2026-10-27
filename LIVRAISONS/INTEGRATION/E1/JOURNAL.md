@@ -775,3 +775,4 @@ La veille s'était arrêtée à 04:10 ; un rappel en double (07:53 UTC) m'a fait
 - **A78** (suite) : le chapitre de test, rien ; une diapo de 24 lignes, « … ferait 4 pages … » ; « Vérifier » ne refuse pas — rouge avant (`head-33bis` : 5/6 échecs), vert après. A33, A64, A69-A72, A81 : 97/0.
 - **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/2226-27-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `16b44c2d…`).
 - **§12.34 E1 fini.**
+- 27/10 22:35 — §12.35 et §12.34 traitées (91c903773 ; f3adbe9f4, 2c295d03e). E1 fini.

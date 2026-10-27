@@ -637,3 +637,5 @@ Relances « 06:07 — contrôle n°72 », « 07:52 — PROMEUS 8.75.0-④ », «
 - Lu chez E1 (`e59c9afc`, inventaire (1 bis), point 6) : `dr_slugDe` (`dr-classe.js`) résolvait la clé ou le nom égal, **sans le slug** ; il rend désormais `edtCleClasse(nom)` (une seule règle : la clé, le nom égal, le slug, sinon le nom) ; l'ancienne résolution reste en repli si `edtCleClasse` manque. Points 8-9 (`dr_nomClasse`, `dr-recit.js`) : des clés, rien à changer (E1).
 - **B37** : `dr_slugDe(n) === edtCleClasse(n)` pour « 3E Charles de Gaulle », « 3_dylan_bob », « 3 DYLAN Bob », « 3 dylan bob », une inconnue ; « 3 DYLAN Bob » → « 3_dylan_bob ». B36 inchangé (vert).
 - **Sorties** (`LIVRAISONS/INTEGRATION/E2/sorties/2710-1029`, assemblé md5 `d35756b1…`) : `banc.sh` **VERT** (« 106 vérifications, 0 échec(s) », « --- fin : 0 défaut(s) ») ; **banc E2 entier VERT — 215 ok, 0 échec**.
+
+## 27/10 11:12 (Paris) — retour 50 : veille n°1 après « §12.31 E2 fini » (6644ba7e) — aucune relance nouvelle.

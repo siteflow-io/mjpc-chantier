@@ -1,0 +1,378 @@
+{
+ "atelierS1": {
+  "classeProposee": "3 DYLAN Bob",
+  "cours": null,
+  "prop": {
+   "classeSlug": "3E Charles de Gaulle",
+   "classeNom": "3E Charles de Gaulle",
+   "creneau": "08:57-09:52",
+   "debut": "09:00",
+   "heure": 1,
+   "sur": 3,
+   "depuis": "edt",
+   "clos": false
+  },
+  "rep": false,
+  "si": 0,
+  "di": 0,
+  "haut": "3E Charles de Gaulle aucune heure lancée — Adresse du tableau",
+  "numero": "Atelier · Diapo 1 sur 8 · heure 1 · Analyse d'images : la routine · prévue 3 min · H1 lundi 14 septembre · 09 h 00 → 09 "
+ },
+ "repetitionEntree": true,
+ "repS1": {
+  "classeProposee": "3 DYLAN Bob",
+  "cours": null,
+  "prop": {
+   "classeSlug": "3E Charles de Gaulle",
+   "classeNom": "3E Charles de Gaulle",
+   "creneau": "08:57-09:52",
+   "debut": "09:00",
+   "heure": 1,
+   "sur": 3,
+   "depuis": "edt",
+   "clos": false
+  },
+  "rep": true,
+  "si": 0,
+  "di": 0,
+  "haut": "RÉPÉTITION · 3E Charles de Gaulle · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau ■ Arrêter",
+  "numero": "Diapo 1 sur 8 · heure 1"
+ },
+ "nbVignettes": 21,
+ "parDiapo": [
+  {
+   "i": 0,
+   "numero": "Diapo 1 sur 8 · heure 1",
+   "di": 0,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 1,
+   "numero": "Diapo 2 sur 8 · heure 1",
+   "di": 1,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 2,
+   "numero": "Diapo 3 sur 8 · heure 1",
+   "di": 2,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 3,
+   "numero": "Diapo 4 sur 8 · heure 1",
+   "di": 3,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 4,
+   "numero": "Diapo 5 sur 8 · heure 1",
+   "di": 4,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 5,
+   "numero": "Diapo 6 sur 8 · heure 1",
+   "di": 5,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 6,
+   "numero": "Diapo 7 sur 8 · heure 1",
+   "di": 6,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 7,
+   "numero": "Diapo 8 sur 8 · heure 1 · Cahier de textes",
+   "di": 20,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 8,
+   "numero": "Hors de l'heure 1",
+   "di": 7,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 9,
+   "numero": "Hors de l'heure 1",
+   "di": 8,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 10,
+   "numero": "Hors de l'heure 1",
+   "di": 9,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 11,
+   "numero": "Hors de l'heure 1",
+   "di": 10,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 12,
+   "numero": "Hors de l'heure 1",
+   "di": 11,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 13,
+   "numero": "Hors de l'heure 1",
+   "di": 12,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 14,
+   "numero": "Hors de l'heure 1",
+   "di": 13,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 15,
+   "numero": "Hors de l'heure 1",
+   "di": 14,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 16,
+   "numero": "Hors de l'heure 1",
+   "di": 15,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 17,
+   "numero": "Hors de l'heure 1 · Cahier de textes",
+   "di": 16,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 18,
+   "numero": "Hors de l'heure 1",
+   "di": 17,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 19,
+   "numero": "Hors de l'heure 1",
+   "di": 18,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  },
+  {
+   "i": 20,
+   "numero": "Hors de l'heure 1 · Cahier de textes",
+   "di": 19,
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  }
+ ],
+ "tousBoutonsDerniere": [
+  "monsieurj'aipascompris",
+  "6 → 6ÈME Sixième Le récit, la poésie, le théâtre. Les premières grande",
+  "5 → 5ÈME Cinquième Le Moyen Âge, Molière, l'argumentation. La langue s",
+  "4 → 4ÈME Quatrième Le roman, la satire, la presse. Lire entre les lign",
+  "3 → 3ÈME Troisième Le brevet, l'essai, la littérature engagée. L'année",
+  "Structure {Le chapitre : son titre, ses séances, ses documents — là où tu le conçois}",
+  "Atelier {La préparation de la séance, diapo par diapo : tu écris, tu ranges, tu joues en avance — r}",
+  "✕ Fermer l’atelier {Ferme l’atelier et te ramène au panneau prof. Ce que tu as écrit finit de s’enregistrer av}",
+  "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+  "🖥 Ouvrir le tableau {Ouvre le tableau dans une nouvelle fenêtre, à envoyer sur le vidéoprojecteur (Win+K ou Win}",
+  "Adresse du tableau {Le tableau sur un autre appareil : montre l’adresse à ouvrir dans Chrome sur l’ordinateur }",
+  "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+  "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+  "✍ {À écrire : clic puis un élément — marqué à recopier}",
+  "⊞ {Toutes les diapos (T)}",
+  "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+  "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+  "🔍 {Loupe (L) : trace un cadre sur la diapo — cette zone remplit le tableau ; un second clic r}",
+  "❄ {Gel (G) : le tableau ne bouge plus, tu es libre}",
+  "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}",
+  "◀ {◀ revoile le dernier élément ; en début de diapo, revient à la précédente}",
+  "▶ Dévoiler {▶ (→, espace) dévoile l'élément suivant, puis passe à la diapo suivante}"
+ ],
+ "finVisible": false,
+ "fin": [
+  {
+   "k": 0,
+   "tete": "",
+   "eleves": [
+    "⧉ Ce que voit la classe {Ce que voit la classe : la colonne de droite montre ce que le tableau affiche en ce moment}",
+    "■ Arrêter {Retour à l'atelier sur cette diapo ; tout ce qui a été dévoilé en répétition est oublié}",
+    "✦ {Mettre en lumière : clic puis un élément — dix pulsations dorées au tableau, puis rien ; l}",
+    "✍ {À écrire : clic puis un élément — marqué à recopier}",
+    "ab {Surligner le texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes }",
+    "A {Couleur du texte sélectionné — dans la diapo : au tableau, la classe le voit ; dans tes no}",
+    "⋯ {Chrono au tableau · qui a participé · absents · réserve · documents · notion imprévue}"
+   ]
+  }
+ ]
+}

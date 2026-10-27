@@ -8987,6 +8987,16 @@ function chAlerteGraphies(){
       +'). Rien n\u2019est cass\u00e9, et cette op\u00e9ration n\u2019y touche pas \u2014 c\u2019est \u00e0 revoir quand tu voudras.</div>'+d.innerHTML;
   });
 }
+function chDiaposTropPleines(o){
+  var out=[]; if(typeof dr_pagesImport!=='function')return out;
+  var ses=(o&&o.chapitre&&o.chapitre.seances)||[];
+  (Array.isArray(ses)?ses:[]).forEach(function(se){
+    var E=se&&se.deroule&&Array.isArray(se.deroule.ecrans)?se.deroule.ecrans:null; if(!E)return;
+    var n=null; try{ n=dr_pagesImport(E); }catch(e){ n=null; } if(!n)return;
+    n.forEach(function(p,i){ if(p>1)out.push('Attention : la diapo \u00ab '+String((E[i]&&E[i].act)||('n\u00b0 '+(i+1)))+' \u00bb (s\u00e9ance \u00ab '+String(se.title||'')+' \u00bb) ferait '+p+' pages au tableau \u2014 elle est trop pleine ; all\u00e8ge-la ou coupe-la en deux.'); });
+  });
+  return out;
+}
 function chVerifier(){
   var brut=(document.getElementById('ch-coller')||{}).value||'';
   var msg=document.getElementById('ch-msg'),inv=document.getElementById('ch-inv');
@@ -9010,7 +9020,9 @@ function chVerifier(){
     msg.innerHTML='Je ne peux pas utiliser cette r\u00e9ponse :<ul>'+V.motifs().map(function(x){return '<li>'+atEsc(x)+'</li>';}).join('')+'</ul>';}
     return; }
   CH.json=o;if(o.niveau)CH.niveau=String(o.niveau);
-  if(msg){msg.className='at-ia-msg at-ia-ok';msg.textContent='R\u00e9ponse comprise. Voici ce que tu as d\u00e9j\u00e0, et ce qu\u2019elle apporte.';}
+  if(msg){msg.className='at-ia-msg at-ia-ok';msg.textContent='R\u00e9ponse comprise. Voici ce que tu as d\u00e9j\u00e0, et ce qu\u2019elle apporte.';
+    /* E1 (§12.34 (7), 13 · 59) : « Vérifier » dit, sans refuser, chaque diapo qui ferait plus d'une page au tableau (la mesure de l'Atelier, à la taille de la classe) */
+    var att=chDiaposTropPleines(o); if(att.length)msg.innerHTML=atEsc(msg.textContent)+'<ul>'+att.map(function(x){return '<li>'+atEsc(x)+'</li>';}).join('')+'</ul>';}
   chAfficherInventaire();
 }
 /* L'INVENTAIRE FACE À FACE, puis les trois voies */

@@ -1603,6 +1603,18 @@ await B('A78', '§12.34 (7) : cinq mots-clés de 45 signes et une question de 90
   for (const k in att) E.verif('A78', r[k].length === 1 && r[k][0].endsWith(att[k]), k + ' : « …' + att[k] + ' »', JSON.stringify(r[k]));
   await o.ctx.close(); });
 
+await B('A78', '§12.34 (7) : « Vérifier » dit, sans refuser, la diapo qui ferait plus d\'une page au tableau (avec la phrase de l\'annexe) ; rien pour le chapitre de test', async () => {
+  const { chapitreTest } = await import('./import-3e.mjs'); const st = E.store(); const o = await E.ouvrir(b, { w: 1707, h: 743, vue: null, hub: st }); const pg = o.pg; await sansVoile(pg);
+  const j0 = chapitreTest(st); const j1 = chapitreTest(st); const EE = j1.chapitre.seances[0].deroule.ecrans; const d = EE.find(e => !e.role && e.blocs.length && !e.blocs.some(b => ['image', 'schema', 'video', 'page', 'doc', 'cahier', 'fiche'].includes(b.t)));
+  const tx = { t: 'texte', txt: 'Ce qu\'on observe', el: [] }; d.blocs.push(tx); tx.el = Array.from({ length: 24 }, (_, i) => 'Une ligne longue de la diapo, pour la remplir au-delà d\'une page, numéro ' + (i + 1) + '.');
+  const r = await pg.evaluate(([a, b2, tx]) => { const z = document.createElement('div'); z.innerHTML = '<textarea id="ch-coller"></textarea><div id="ch-msg"></div><div id="ch-inv"></div>'; if (!document.getElementById('ch-coller')) document.body.appendChild(z);
+    CH.taxo = tx; const ok = chDiaposTropPleines(a), ko = chDiaposTropPleines(b2); document.getElementById('ch-coller').value = JSON.stringify(b2); chVerifier(); const m = document.getElementById('ch-msg'); return { ok, ko, cls: m.className, li: Array.from(m.querySelectorAll('li')).map(x => x.textContent) }; }, [j0, j1, st.taxonomie]);
+  const re = /^Attention : la diapo « .+ » \(séance « .+ »\) ferait \d+ pages au tableau — elle est trop pleine ; allège-la ou coupe-la en deux\.$/;
+  E.verif('A78', r.ok.length === 0, 'le chapitre de test : aucune diapo de plus d\'une page', JSON.stringify(r.ok).slice(0, 300));
+  E.verif('A78', r.ko.length === 1 && re.test(r.ko[0]) && r.ko[0].includes(d.act), 'une diapo de 24 lignes : « Attention : la diapo « … » (séance « … ») ferait n pages au tableau — elle est trop pleine ; allège-la ou coupe-la en deux. »', JSON.stringify(r.ko));
+  E.verif('A78', /at-ia-ok/.test(r.cls) && r.li.length === 1 && re.test(r.li[0]), '« Vérifier » ne refuse pas : la réponse est comprise, l\'avertissement dessous', JSON.stringify(r));
+  E.verif('A78', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

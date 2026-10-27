@@ -63,7 +63,7 @@ function dr_trameDe(sk){
   dr_preparer(E); return E;
 }
 /* la vue d'une séance telle que la maquette la lisait (DATA.seances[si] = {titre, ecrans}) : un regard, pas une copie */
-function dr_seances(){ if (dr_pageTableau()) { const s = []; s[(typeof DR_TAB !== 'undefined' && DR_TAB.si) || 0] = { titre: '', ecrans: dr_preparer(dr_tabTrame()) }; return s; } return dr_cles().map(k => dr_vueSeance(k)); }
+function dr_seances(){ if (DR_SEANCES_MESURE) return DR_SEANCES_MESURE; if (dr_pageTableau()) { const s = []; s[(typeof DR_TAB !== 'undefined' && DR_TAB.si) || 0] = { titre: '', ecrans: dr_preparer(dr_tabTrame()) }; return s; } return dr_cles().map(k => dr_vueSeance(k)); }
 /* la page tableau (?vue=tableau, E3) n'a pas de chapitre ouvert : elle rend les écrans qu'elle reçoit (DR_TAB.ecrans, posés par dr_tabPoserEcran d'E3) */
 function dr_pageTableau(){ return /[?&]vue=tableau(&|$)/.test(location.search); }
 function dr_tabTrame(){ return (typeof DR_TAB !== 'undefined' && Array.isArray(DR_TAB.ecrans)) ? DR_TAB.ecrans : []; }
@@ -878,6 +878,20 @@ function surligne(htmlTexte, p, et){ (et.surl || []).filter(x => x.p === p).forE
 /* E1 (§12.33 bis, dettes 13 · 74-75) : DANS L'ATELIER, LA PAGINATION SE FAIT À LA TAILLE QU'AURA LA DIAPO DANS L'ÉCRAN DE LA CLASSE (S._tailleClasse, dimensionner) — celle d'où partent les pages du tableau ;
    l'Atelier réserve plus de place (sa barre, la poignée, les notes) et sa diapo est plus petite : rendue telle quelle, elle paginerait autrement que la classe ne verra.
    La diapo est rendue dans un mur caché à cette taille ; ses pages (par identité, pagesP) et sa police (rapportée à la hauteur) reviennent à l'Atelier, comme le tableau les reçoit. */
+/* E1 (§12.34 (7), 13 · 59) : « Vérifier » (l'import d'un chapitre) — combien de pages ferait au tableau chaque diapo d'une séance pas encore au hub.
+   La même mesure que la vignette de l'Atelier (`p85hPages`) : la diapo rendue telle que la classe la voit, à la taille de l'écran de la classe (`dr_tailleRef`).
+   `dr_seances()` rend, le temps de la mesure, la séance importée (DR_SEANCES_MESURE) ; rien n'est écrit. Rend un nombre de pages par diapo (null : pas mesurée). */
+var DR_SEANCES_MESURE = null;
+function dr_pagesImport(ecrans){ if (!Array.isArray(ecrans)) return null; let E; try { E = dr_preparer(JSON.parse(JSON.stringify(ecrans))); } catch (x) { return null; }
+  const R = dr_tailleRef(); const z = document.createElement('div'); z.className = 'mur tableau'; z.setAttribute('aria-hidden', 'true'); z.style.cssText = 'position:fixed;left:-20000px;top:0;opacity:0;pointer-events:none;width:' + R.W + 'px;height:' + R.H + 'px';
+  let hote = null; if (dr_actif()) dr_zone().appendChild(z); else { hote = document.createElement('div'); hote.className = 'at-som-volet'; hote.setAttribute('aria-hidden', 'true'); hote.style.cssText = 'position:fixed;left:-20000px;top:0;opacity:0;pointer-events:none;width:' + R.W + 'px;height:' + R.H + 'px;margin:0'; hote.appendChild(z); document.body.appendChild(hote); }   /* hors du déroulé ouvert : un hôte qui reçoit les règles de la diapo (dr.css, `:is(#dr-zone,#ses-tab,.at-som-volet)`) */
+  const out = []; const sauf = { si: S.si, di: S.di };
+  DR_SEANCES_MESURE = [{ titre: '', ecrans: E }];
+  try { E.forEach((e, i) => { if (!e || typeof e !== 'object' || e.role === 'fin' || e.role === 'reactivation') { out.push(null); return; }
+      const et = { si: 0, di: i, nDev: elements(e).length, lum: [], ecr: [], taille: S.taille, page: 0, reps: {}, tailles: {}, textes: {}, fsBloc: {}, pilote: false, _ref: true };
+      try { rendre(z, et); out.push(et.pages && et.pages.length > 1 ? et.pages.length : 1); } catch (x) { out.push(null); } }); }
+  finally { DR_SEANCES_MESURE = null; S.si = sauf.si; S.di = sauf.di; z.remove(); if (hote) hote.remove(); }
+  return out; }
 function dr_tailleRef(){ return (S && S._tailleClasse && S._tailleClasse.H) ? S._tailleClasse : { W: 1096, H: 616 }; }
 function dr_paginerReference(mur, et){ if (!(S.atelier && !S.repetition)) return false; const R = dr_tailleRef(); const H0 = mur.clientHeight; if (!H0 || Math.abs(H0 - R.H) < 1) return false;
   let z = $('mur-ref'); if (!z) { z = document.createElement('div'); z.id = 'mur-ref'; z.setAttribute('aria-hidden', 'true'); (typeof dr_zone === 'function' ? dr_zone() : document.body).appendChild(z); } z.className = mur.className; z.style.cssText = 'position:fixed;left:-20000px;top:0;opacity:0;pointer-events:none;width:' + R.W + 'px;height:' + R.H + 'px';

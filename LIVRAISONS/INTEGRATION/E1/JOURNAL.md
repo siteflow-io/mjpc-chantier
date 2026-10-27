@@ -768,3 +768,10 @@ La veille s'était arrêtée à 04:10 ; un rappel en double (07:53 UTC) m'a fait
 - **A78** : la limite passe (5 mots-clés de 45 signes, une question de 90, une réponse vide) ; les quatre refus, mot pour mot — rouge avant (`head-33bis` : 4/5 échecs), vert après. `import-3e.mjs` : mutations `bilanSix`, `bilanQ91`, `bilanRep` ; « bilanLong » à 47 signes ; la question du bilan du chapitre de test prise au faux hub si elle a 90 signes au plus. A33, A64, A78, A81 : 75/0.
 - **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/2207-27-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s)).
 - **Reste** : « Vérifier » dit, sans refuser, la diapo qui ferait plus d'une page au tableau.
+
+## 27/10, 22:34 — §12.34 (7), « Vérifier » dit la diapo trop pleine
+- `dr_pagesImport(ecrans)` (`dr-socle.js`) : chaque diapo d'une séance importée, rendue comme la vignette de l'Atelier (`p85hPages`) — vue classe, à la taille de l'écran de la classe (`dr_tailleRef`), dans un hôte caché qui reçoit les règles de la diapo ; `dr_seances()` rend la séance importée le temps de la mesure ; rien n'est écrit.
+- `chVerifier` : la réponse reste « comprise » ; dessous, pour chaque diapo de plus d'une page, « Attention : la diapo « … » (séance « … ») ferait n pages au tableau — elle est trop pleine ; allège-la ou coupe-la en deux. » (l'annexe, mot pour mot) — `chDiaposTropPleines`.
+- **A78** (suite) : le chapitre de test, rien ; une diapo de 24 lignes, « … ferait 4 pages … » ; « Vérifier » ne refuse pas — rouge avant (`head-33bis` : 5/6 échecs), vert après. A33, A64, A69-A72, A81 : 97/0.
+- **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/2226-27-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `16b44c2d…`).
+- **§12.34 E1 fini.**

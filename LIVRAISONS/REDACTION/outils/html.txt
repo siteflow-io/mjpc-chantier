@@ -1,0 +1,131 @@
+Les remplacements du HTML (deriver.py, étape 14). Chaque bloc : <<<AVANT, le texte exact, ===, le nouveau, >>>. « BLOC début ... fin » remplace de début (inclus) à fin (exclu).
+
+<<<AVANT
+<title>Brevet blanc 3e — Rédaction · 3e De Gaulle</title>
+===
+<title>Rédaction</title>
+>>>
+
+<<<AVANT
+<header>
+  <h1>Brevet blanc 3e — Rédaction</h1>
+  <div class="subhead">Marc Dugain, La Chambre des officiers · 3e De Gaulle · Grille DNB officielle</div>
+</header>
+===
+<div class="ru-bandeau-test" title="Mode test : tu peux tout essayer, rien n'est envoyé au site. Ferme la page et tout s'efface.">🧪 MODE TEST — rien n'est enregistré au site</div>
+
+<!-- LA PORTE (sans session professeur) -->
+<div class="ru-ecran hidden" id="ruPorte">
+  <div class="ru-carte">
+    <h2>Rédaction — espace professeur</h2>
+    <p>Cette app sert à corriger les copies : elle s'ouvre avec ta clé ou ton code professeur (ceux du site).</p>
+    <input type="password" id="ruPorteCode" placeholder="Clé ou code professeur" title="Ta clé de chiffrement ou ton code professeur, comme sur le site" autocomplete="off">
+    <button class="primary" id="ruPorteOk" title="Vérifie le code et ouvre l'espace professeur">Ouvrir</button>
+    <p id="ruPorteMsg" class="ru-msg"></p>
+  </div>
+</div>
+
+<!-- LA LISTE DES SUJETS (sans id dans l'adresse) -->
+<div class="ru-ecran hidden" id="ruSujets">
+  <header>
+    <h1>Rédaction — les sujets</h1>
+    <div class="subhead">Un sujet = une grille ; il se corrige pour n'importe quelle classe du site</div>
+  </header>
+  <div class="toolbar">
+    <button class="primary" onclick="if(typeof ruNouveauSujet==='function')ruNouveauSujet()" title="Coller le JSON d'un sujet préparé avec Claude (le « prompt rédaction »), le vérifier, puis le créer">➕ Nouveau sujet</button>
+  </div>
+  <div class="ru-liste" id="ruListe"></div>
+</div>
+
+<div id="ruApp" class="hidden">
+<header>
+  <h1 id="ruTitre">Rédaction</h1>
+  <div class="subhead" id="ruSousTitre">—</div>
+</header>
+>>>
+
+<<<AVANT
+<span class="bandeau-sujet" id="bandeauSujet" title="Type de sujet choisi par cet élève (imagination ou réflexion)">—</span>
+    <span class="bandeau-note" id="bandeauNote" title="Note totale sur 40 — recalculée en direct à chaque clic sur un échelon">— / 40</span>
+===
+<span class="bandeau-sujet" id="bandeauSujet" title="Le sujet traité par cet élève (quand le sujet en propose plusieurs)">—</span>
+    <span class="bandeau-note" id="bandeauNote" title="Note totale — recalculée en direct à chaque clic sur un échelon">—</span>
+>>>
+
+<<<AVANT
+  <button onclick="showDashboard()" title="Revenir à la liste de tous les élèves de la classe">📋 Tableau de bord</button>
+  <button onclick="ouvrirGestionClasse()" title="Coller ou modifier la liste des élèves (un par ligne, format : Prénom NOM)">👥 Gérer la classe</button>
+===
+  <button onclick="location.href=ruAdresse({})" title="Revenir à la liste des sujets (la correction en cours est enregistrée)">← Les sujets</button>
+  <button onclick="showDashboard()" title="Revenir à la liste de tous les élèves de la classe">📋 Tableau de bord</button>
+  <button onclick="ouvrirGestionClasse()" title="Choisir la classe du site dont tu corriges les copies (ses élèves sont ceux du site)">👥 Classe</button>
+>>>
+
+<<<AVANT
+<h2>Élèves — 3e De Gaulle</h2>
+===
+<h2 id="ruDashTitre">Élèves</h2>
+>>>
+
+<<<AVANT
+<option value="sujet" title="Regroupe les imaginations d'abord, puis les réflexions">Par sujet</option>
+===
+<option value="sujet" title="Regroupe les copies par sujet traité (quand le sujet en propose plusieurs)">Par sujet</option>
+>>>
+
+<<<AVANT
+BLOC <div class="modal-overlay" id="modalClasse"> ... <div class="modal-overlay" id="modalSujet">
+===
+<div class="modal-overlay" id="modalClasse">
+  <div class="modal">
+    <h2>La classe</h2>
+    <p style="font-size:0.9em;color:#666;">Les classes du site : choisis celle dont tu corriges les copies. Ses élèves sont ceux du site ; chaque classe a ses copies, rien ne se mélange.</p>
+    <select id="ruClasseSel" size="8" style="width:100%;font-size:1em;" title="Les classes du site (hors classes archivées et classes de test)" ondblclick="sauverClasse()"></select>
+    <div class="modal-actions">
+      <button id="ruClasseAnnuler" onclick="fermerModale('modalClasse')" title="Fermer sans changer de classe">Annuler</button>
+      <button class="primary" onclick="sauverClasse()" title="Ouvrir les copies de cette classe pour ce sujet">Choisir</button>
+    </div>
+  </div>
+</div>
+
+>>>
+
+<<<AVANT
+<div class="toast" id="toast"></div>
+===
+</div><!-- /ruApp -->
+<span class="ru-temoin" id="ruTemoin" title="L'état de l'enregistrement au site"></span>
+<div class="toast" id="toast"></div>
+>>>
+
+<<<AVANT
+  .hidden { display: none !important; }
+===
+  .hidden { display: none !important; }
+  /* RU — les écrans d'entrée, le témoin, le mode test */
+  .ru-bandeau-test { display: none; position: sticky; top: 0; z-index: 900; background: #7a4bb0; color: #fff; text-align: center; padding: 4px 10px; font-size: 0.9em; letter-spacing: 0.5px; }
+  body.ru-test .ru-bandeau-test { display: block; }
+  .ru-ecran { min-height: 100vh; }
+  .ru-carte { max-width: 520px; margin: 12vh auto; background: #fff; border-radius: 10px; padding: 28px 32px; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+  .ru-carte input { width: 100%; padding: 8px 10px; font-size: 1em; margin: 10px 0; }
+  .ru-msg { color: var(--bordeaux); min-height: 1.2em; }
+  .ru-liste { padding: 16px 24px; display: grid; gap: 10px; }
+  .ru-sujet { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #fff; border: 1px solid var(--gris); border-radius: 8px; padding: 12px 16px; }
+  .ru-sujet-t { display: flex; flex-direction: column; } .ru-sujet-t span { color: #777; font-size: 0.9em; }
+  .ru-sujet-a { display: flex; gap: 8px; flex-shrink: 0; }
+  .ru-vide { color: #777; font-style: italic; }
+  .ru-temoin { position: fixed; right: 12px; bottom: 10px; z-index: 950; font-size: 0.85em; padding: 3px 10px; border-radius: 12px; background: rgba(255,255,255,.92); color: #4a7a3a; border: 1px solid #cbd9bf; }
+  .ru-temoin:empty { display: none; } .ru-temoin.ko { color: #a23a3a; border-color: #e3b6b6; } .ru-temoin.test { color: #7a4bb0; border-color: #cdb8e6; }
+>>>
+
+<<<AVANT
+    let notifHTML = notif ? `<tr><td colspan="2" style="font-style:italic;color:var(--bordeaux);padding-top:10px;font-size:0.92em;">⚠️ ${notif.titre} : au DNB officiel, ce niveau d'orthographe pourrait entraîner un déclassement de la copie.</td></tr>` : "";
+===
+    let notifHTML = notif ? `<tr><td colspan="2" style="font-style:italic;color:var(--bordeaux);padding-top:10px;font-size:0.92em;">⚠️ ${escapeHtml(notif.titre)} — cet encart paraîtra sur la fiche de l'élève.</td></tr>` : "";
+>>>
+
+<<<AVANT
+<div class="interro-critere" title="Critère DNB auquel appartient cet indicateur, et points qu'il pèse dans la note totale">
+===
+<div class="interro-critere" title="Critère auquel appartient cet indicateur, et points qu'il pèse dans la note totale">
+>>>

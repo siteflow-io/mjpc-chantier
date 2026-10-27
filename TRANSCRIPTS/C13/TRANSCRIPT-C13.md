@@ -4131,3 +4131,30 @@ MEMO
 
 27/10/2026 09:43
 MEMO
+
+## Tour 220 — 27/10/2026 09:46 — Paul (09:43)
+
+**Paul (mot pour mot).** « 504 c'est-à-dire »
+
+**Mesuré.** Le chemin rejoué au tour 214 (sur la ④) ; dans la ④, 13 · 49 et 13 · 50 ne sont pas encore réglés (la ⑤ les porte) ; `_applyPubCascade` (l. 3575) : publier un chapitre pour une classe n'écrit que `published/<clé>` du chapitre (ni ses séances, ni ses documents) — c'est ce que l'emploi du temps lit (`isPubFor` du chapitre, rejeu du tour 214). Côté élève : non rejoué.
+
+**Réponse (mot pour mot).**
+
+505. Concrètement, sur ton ordinateur, aujourd'hui : d'abord, vérifie que tu n'es pas en mode test (la pastille « Mode test actif » en haut du panneau prof ne doit pas être là ; sinon, « Quitter le mode test »). Tout ce que tu fais en mode test disparaît.
+
+506. Tu prépares le chapitre avec Claude, dans une conversation à part : tu lui colles le prompt https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PROMPT-INJECTION/PROMPT-INJECTION.md, tu lui donnes tes documents ; il te demandera tes chapitres précédents comme modèles. À la fin, il te rend un JSON.
+
+507. Sur le site : Atelier → « 📚 Nouveau chapitre » → tu choisis le niveau → tu colles le JSON dans la grande case → « Vérifier ». S'il refuse, il dit pourquoi : tu donnes le message à Claude, il corrige, tu recolles.
+
+508. Quand il dit « Réponse comprise » : « Créer ce chapitre », puis tu confirmes. Le chapitre se met en fin de liste, non publié.
+
+509. Tu le publies : page du niveau → sur la ligne du chapitre, tu cliques la pastille de chaque classe (elle s'allume). Publier montre le chapitre aux élèves de cette classe sur le site ; ce que voit l'élève exactement, je ne l'ai pas rejoué.
+
+510. Deux défauts sont encore en ligne jusqu'à la ⑤ : le titre prendra « (proposition) » à la fin (corrige-le dans l'Atelier, champ « Titre du chapitre », avant de publier — ou attends la ⑤) ; et si ton ordinateur n'a pas la clé, « Nouveau chapitre » s'arrête sur « Clé requise » (alors attends la ⑤).
+
+511. L'emploi du temps montrera les séances sur les cases de tes classes dès que la ⑤ sera en ligne, sans rien refaire.
+
+À tester : 505 à 509, si tu veux avancer avant la ⑤.
+
+27/10/2026 09:46
+MEMO

@@ -5326,3 +5326,22 @@ MEMO
 
 27/10/2026 23:22
 MEMO
+
+---
+
+## Tour 264 — 27/10/2026 23:24 → 23:24
+
+**Paul :** Pourquoi es tu sur correction dictée d'ailleurs?
+
+**Claude :**
+
+700. Je suis tombé dessus à 17:50. En comparant le panneau de la Rédaction universelle à celui de Correction de dictée (le modèle que tu as donné), j'ai mesuré que Correction de dictée n'utilise pas toute la largeur de l'écran : une colonne d'environ 1 270 px au milieu, à 1707 de large. C'est contre ta règle du 26/10. Je l'ai inscrit au registre (13 · 61), avec cette raison : « à régler dans le modèle lui-même, avant qu'une autre app ne le recopie ».
+
+701. À 19:14, tu as dit « Règle tout ». Je l'ai compris comme couvrant aussi 13 · 61, et je l'ai confié à E4, qui venait de finir la Rédaction universelle. C'est une lecture de ma part : tu ne l'as pas nommée.
+
+702. C'est fini (L18), et rien n'a changé en production : correction_dictee.html n'est promu que sur ton « promeus ». E4 est maintenant sur la colonne de l'Atelier. Si tu ne veux pas de L18, dis-le et je la laisse au sas.
+
+À tester : rien.
+
+27/10/2026 23:24
+MEMO

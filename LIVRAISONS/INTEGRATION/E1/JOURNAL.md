@@ -760,3 +760,11 @@ La veille s'était arrêtée à 04:10 ; un rappel en double (07:53 UTC) m'a fait
 - A79-A82 : rouges avant (`head-33bis`, 7/8 échecs ; la réactivation rouge avant), vertes après. A5, A33, A40, A57, A62, A79-A82 : 144/0.
 - **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/2152-27-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `ea57573c…`).
 - **§12.35 E1 fini.** Ensuite : §12.34 (7) (phrases dans l'annexe, N = 5 — relance lue).
+
+## 27/10, 22:09 — §12.34 (7), les refus du bilan (N = 5)
+- **Lu** : relances 21:46 (les phrases dans l'annexe du prompt 1.0) et 21:50 (N = 5).
+- **Mission 0** : l'import ne refusait au bilan que la ligne qui finit par un point ou dépasse douze mots ; ni le nombre de mots-clés, ni la longueur de la question, ni une réponse attendue.
+- **(7)** `chValiderChapitre` : plus de cinq mots-clés ; une ligne qui finit par un point ou dépasse 45 signes (remplace « douze mots ») ; une question de plus de 90 signes ; une réponse attendue non vide — chacun avec la phrase de l'annexe, mot pour mot (l'apostrophe typographique du site). Les signes se comptent en caractères.
+- **A78** : la limite passe (5 mots-clés de 45 signes, une question de 90, une réponse vide) ; les quatre refus, mot pour mot — rouge avant (`head-33bis` : 4/5 échecs), vert après. `import-3e.mjs` : mutations `bilanSix`, `bilanQ91`, `bilanRep` ; « bilanLong » à 47 signes ; la question du bilan du chapitre de test prise au faux hub si elle a 90 signes au plus. A33, A64, A78, A81 : 75/0.
+- **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/2207-27-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s)).
+- **Reste** : « Vérifier » dit, sans refuser, la diapo qui ferait plus d'une page au tableau.

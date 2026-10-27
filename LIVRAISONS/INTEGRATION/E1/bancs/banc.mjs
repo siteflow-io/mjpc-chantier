@@ -1588,6 +1588,21 @@ await B('A82', '§12.35 (5) : l\'élève de 3 DYLAN Bob ne voit pas la séance r
   E.verif('A82', out.dylan === false && out.gaulle === true, 'l\'élève de 3 DYLAN Bob : ' + (out.dylan ? 'la voit' : 'ne la voit pas') + ' ; l\'élève de la 3E : ' + (out.gaulle ? 'la voit' : 'ne la voit pas'), JSON.stringify(out));
   const pubCl = pub.filter(t => !/Toutes/.test(t)); E.verif('A82', pubCl.length === 1 && /GAULLE/.test(pubCl[0]), 'la publication de la séance ne propose que sa classe (une pastille, hors « Toutes »)', JSON.stringify(pub)); });
 
+/* ── A78 · §12.34 (7), 13 · 59 : l'import refuse ce que le prompt interdit au bilan, avec les mots de l'annexe (N = 5) ── */
+await B('A78', '§12.34 (7) : cinq mots-clés de 45 signes et une question de 90 signes passent ; un sixième mot-clé, une ligne de 46 signes, une question de 91 signes, une réponse attendue : refusés, mot pour mot', async () => {
+  const { chapitreTest } = await import('./import-3e.mjs'); const st = storeCle(); const o = await ouvrirProf(1366, 768, st); const pg = o.pg;
+  const bil = j => { const E = j.chapitre.seances[0].deroule.ecrans; return E[E.length - 1].blocs; };
+  const mk = f => { const j = chapitreTest(st); f(bil(j)); return j; };
+  const l45 = 'x'.repeat(40) + ' abcd', q90 = 'Q'.repeat(89) + '?';
+  const cas = { limite: mk(B2 => { B2[1].el = [1, 2, 3, 4, 5].map(i => l45.slice(0, 44) + i); B2[0].q = q90; B2[0].reps = [{ i: '', r: '' }]; }),
+    six: mk(B2 => { B2[1].el = [1, 2, 3, 4, 5, 6].map(i => 'mot-clé ' + i); }), l46: mk(B2 => { B2[1].el[0] = l45 + 'e'; }),
+    q91: mk(B2 => { B2[0].q = q90 + '!'; }), rep: mk(B2 => { B2[0].reps = [{ i: '', r: 'Le poète est exilé.' }]; }) };
+  const r = await pg.evaluate(([c, tx]) => { const o2 = {}; for (const k in c) o2[k] = chValiderChapitre(c[k], tx).motifs().filter(m => /bilan/.test(m)); return o2; }, [cas, st.taxonomie]);
+  E.verif('A78', r.limite.length === 0, 'cinq mots-clés de 45 signes, une question de 90 signes, une réponse vide : acceptés', JSON.stringify(r.limite));
+  const att = { six: ': plus de cinq mots-clés dans « À mettre dans le bilan » — cinq au plus, pour que le bilan tienne au tableau.', l46: ': une ligne « À mettre dans le bilan » finit par un point ou dépasse 45 signes — des mots-clés, pas la réponse.', q91: ': la question du bilan dépasse 90 signes — deux lignes au plus.', rep: ': la question du bilan a une réponse attendue — sa réponse s’écrit en classe, dans la copie.' };
+  for (const k in att) E.verif('A78', r[k].length === 1 && r[k][0].endsWith(att[k]), k + ' : « …' + att[k] + ' »', JSON.stringify(r[k]));
+  await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

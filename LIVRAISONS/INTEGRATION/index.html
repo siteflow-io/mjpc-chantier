@@ -15804,8 +15804,16 @@ function atP2ValiderDeroule(o,V,taxo){
       if(e.role==='bilan'){
         if(!(bl.length===3&&bl[0]&&bl[0].t==='question'&&bl[1]&&bl[1].t==='texte'&&String(bl[1].txt||'').trim()==='À mettre dans le bilan'&&bl[2]&&bl[2].t==='consigne'))
           V.cite(r2,': le bilan n’a pas ses trois blocs (question, texte « À mettre dans le bilan », consigne) — dans cet ordre.');
-        else if((Array.isArray(bl[1].el)?bl[1].el:[]).some(function(l){ l=String(l||'').trim(); return /\.$/.test(l)||l.split(/\s+/).filter(Boolean).length>12; }))
-          V.cite(r2,': une ligne « À mettre dans le bilan » finit par un point ou dépasse douze mots — des mots-clés, pas la réponse.');
+        else {
+          /* E1 (§12.34 (7), registre 13 · 59 ; N = 5, la conscience 27/10 21:50, mesure d'E3) : ce que le prompt 1.0 interdit au bilan, refusé avec ses mots (l'annexe) */
+          var bmc=(Array.isArray(bl[1].el)?bl[1].el:[]).map(function(l){ return String(l==null?'':(typeof l==='object'?(l.txt||''):l)).trim(); }).filter(Boolean);
+          if(bmc.length>5)V.cite(r2,': plus de cinq mots-clés dans « À mettre dans le bilan » — cinq au plus, pour que le bilan tienne au tableau.');
+          if(bmc.some(function(l){ return /\.$/.test(l)||Array.from(l).length>45; }))
+            V.cite(r2,': une ligne « À mettre dans le bilan » finit par un point ou dépasse 45 signes — des mots-clés, pas la réponse.');
+          if(Array.from(String(bl[0].q||'').trim()).length>90)V.cite(r2,': la question du bilan dépasse 90 signes — deux lignes au plus.');
+          if((Array.isArray(bl[0].reps)?bl[0].reps:[]).some(function(x){ return x&&String(x.r==null?'':x.r).trim(); }))
+            V.cite(r2,': la question du bilan a une réponse attendue — sa réponse s’écrit en classe, dans la copie.');
+        }
       }
       var vus=[e.act].concat.apply([e.act],bl.map(function(b){ return b?[b.txt,b.q].concat(Array.isArray(b.el)?b.el:[],Array.isArray(b.etapes)?b.etapes:[]):[]; }));
       if(vus.some(function(x){return /copie de (la )?classe/i.test(String(x==null?'':x));}))V.cite(r2,': un texte vu par les élèves dit « copie de classe ».');

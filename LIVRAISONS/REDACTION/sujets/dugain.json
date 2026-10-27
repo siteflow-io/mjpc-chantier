@@ -1,6 +1,6 @@
 {
  "id": "dugain",
- "format": "mjpc-redaction-1",
+ "format": "mjpc-redaction-sujet/1",
  "titre": "Brevet blanc 3e — La Chambre des officiers (Marc Dugain)",
  "niveau": "3e",
  "total": 40,
@@ -67,7 +67,7 @@
     {
      "id": "expression",
      "titre": "Expression",
-     "points": 10,
+     "pts_max": 10,
      "consignes": [
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : relire systématiquement ta copie en visant un seul type d'erreur à la fois (d'abord les accords sujet-verbe, puis les participes passés, puis les homophones), et varier la longueur de tes phrases.",
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : te garder cinq à sept minutes de relecture finale ciblée, chercher des mots plus précis que « truc », « chose », « faire », et complexifier au moins une phrase par paragraphe.",
@@ -344,7 +344,7 @@
     {
      "id": "organisation",
      "titre": "Organisation et énonciation",
-     "points": 12,
+     "pts_max": 12,
      "consignes": [
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : prévoir un plan en deux ou trois grandes parties avant d'écrire, et soigner les transitions entre paragraphes (connecteurs logiques ou narratifs).",
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : veiller à ce que chaque paragraphe apporte une étape nouvelle, soigner ton ouverture et ta clôture, tenir la cohérence du pronom et du système temporel jusqu'au bout.",
@@ -621,7 +621,7 @@
     {
      "id": "invention",
      "titre": "Invention",
-     "points": 18,
+     "pts_max": 18,
      "consignes": [
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : avant d'écrire, relis attentivement le texte source, souligne ce que tu sais du personnage et du contexte, et invente à partir de cette base.",
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : développer chaque épisode du récit avec des détails concrets, sensoriels, qui font voir la scène et entendre les pensées du personnage.",
@@ -1030,7 +1030,7 @@
     {
      "id": "expression",
      "titre": "Expression",
-     "points": 10,
+     "pts_max": 10,
      "consignes": [
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : relire systématiquement ta copie en visant un seul type d'erreur à la fois (d'abord les accords sujet-verbe, puis les participes passés, puis les homophones), et varier la longueur de tes phrases.",
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : te garder cinq à sept minutes de relecture finale ciblée, chercher des mots plus précis que « truc », « chose », « faire », et complexifier au moins une phrase par paragraphe.",
@@ -1307,7 +1307,7 @@
     {
      "id": "organisation",
      "titre": "Organisation et énonciation",
-     "points": 18,
+     "pts_max": 18,
      "consignes": [
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : prévoir un plan en deux ou trois grandes parties avant d'écrire, et soigner les transitions entre paragraphes (connecteurs logiques ou narratifs).",
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : veiller à ce que chaque paragraphe apporte une étape nouvelle, soigner ton ouverture et ta clôture, tenir la cohérence du pronom et du système temporel jusqu'au bout.",
@@ -1584,7 +1584,7 @@
     {
      "id": "argumentation",
      "titre": "Argumentation",
-     "points": 12,
+     "pts_max": 12,
      "consignes": [
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : avant d'écrire, formule clairement ta thèse en une phrase, et identifie deux ou trois arguments précis pour la défendre.",
       "Pour la rédaction du brevet officiel, tu dois t'entraîner sur ce point précis : appuyer chaque argument sur un exemple précis et développé (œuvre lue, fait historique, expérience), et envisager systématiquement une objection à laquelle tu réponds.",

@@ -34,14 +34,14 @@ if (Object.keys(seuils).length !== 4) { console.error('seuils du compteur incomp
 
 const SOUS = { imagination: o.SOUS_IMAGINATION, reflexion: o.SOUS_REFLEXION };
 const config = {
-  id: 'dugain', format: 'mjpc-redaction-1',
+  id: 'dugain', format: 'mjpc-redaction-sujet/1',
   titre: 'Brevet blanc 3e — La Chambre des officiers (Marc Dugain)', niveau: '3e', total: 40, enonce,
   fiche: { titre: titreFiche, sousTitre, aFaire: [...aFaire.matchAll(/<li>([\s\S]*?)<\/li>/g)].map(m => m[1].trim()), alerte: Object.assign({ indicateur: 'orthographe', echelon: 0 }, alerte) },
   variantes: Object.keys(o.GRILLE).map(v => {
     const g = o.GRILLE[v];
     return Object.assign({ id: v, libelle: g.label }, VAR[v], { total: g.total,
       compteur: { indicateur: 'orthographe', selon: 'longueur', seuils, defaut: 2 },
-      criteres: g.criteres.map(cr => ({ id: cr.id, titre: cr.titre, points: cr.pts_max, consignes: [0, 1, 2, 3].map(e => o.CONSIGNES[cr.id][e]),
+      criteres: g.criteres.map(cr => ({ id: cr.id, titre: cr.titre, pts_max: cr.pts_max, consignes: [0, 1, 2, 3].map(e => o.CONSIGNES[cr.id][e]),
         indicateurs: cr.indicateurs.map(ind => ({ id: ind.id, libelle: ind.libelle, poids: ind.poids, competences: COMP[ind.id] || [],
           descripteurs: ind.descripteurs.slice(), sous: SOUS[v][cr.id][ind.id].map(ech => ech.map(x => ({ sans: x.sans, avec: x.avec }))) })) })) });
   })

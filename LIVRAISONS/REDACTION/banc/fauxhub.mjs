@@ -13,13 +13,17 @@ export function hubDeDepart({ avecDugain = true } = {}) {
   return hub;
 }
 export const installer = (etat) => {
-  window.__HUB = etat; window.__ECR = window.__ECR || [];
+  // le faux hub vit dans le stockage de la page (même contexte = même hub) : il survit aux navigations, et deux pages le partagent
+  let m = null; try { m = localStorage.getItem('__FAUXHUB'); } catch (e) {}
+  window.__HUB = m ? JSON.parse(m) : etat; window.__ECR = []; try { window.__ECR = JSON.parse(localStorage.getItem('__FAUXECR') || '[]'); } catch (e) {}
+  const garder = () => { try { localStorage.setItem('__FAUXHUB', JSON.stringify(window.__HUB)); localStorage.setItem('__FAUXECR', JSON.stringify(window.__ECR)); } catch (e) {} };
+  garder();
   const seg = c => c.split('/').filter(Boolean).map(decodeURIComponent);
   const lire = s => { let n = window.__HUB; for (const k of s) { if (n == null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; };
   const poser = (s, v) => { if (!s.length) { window.__HUB = v; return; } let n = window.__HUB; for (const k of s.slice(0, -1)) { if (n[k] == null || typeof n[k] !== 'object') n[k] = {}; n = n[k]; } if (v === null) delete n[s[s.length - 1]]; else n[s[s.length - 1]] = v; };
   window.__FLUX = [];
   const prevenir = (s, v) => { window.__FLUX.forEach(f => { const k = Math.min(f.seg.length, s.length); if (f.seg.slice(0, k).join('/') !== s.slice(0, k).join('/')) return; const rel = s.length >= f.seg.length ? '/' + s.slice(f.seg.length).join('/') : '/'; const data = s.length >= f.seg.length ? v : lire(f.seg); f.emettre('put', { path: rel, data }); }); };
-  window.__HUBPOSER = (c, v) => { const s = seg(c); poser(s, JSON.parse(JSON.stringify(v))); prevenir(s, v); };   // une écriture « d'ailleurs »
+  window.__HUBPOSER = (c, v) => { const s = seg(c); poser(s, JSON.parse(JSON.stringify(v))); garder(); prevenir(s, v); };   // une écriture « d'ailleurs »
   window.fetch = function (u, o) {
     const s2 = String(u); if (s2.indexOf('firebasedatabase.app') < 0) return Promise.reject(new Error('réseau coupé (banc)'));
     const c = s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, ''); const m = ((o && o.method) || 'GET').toUpperCase(); const s = seg(c);
@@ -27,7 +31,7 @@ export const installer = (etat) => {
     let bd = null; try { bd = o && o.body ? JSON.parse(o.body) : null; } catch (e) {}
     window.__ECR.push(m + ' ' + s.join('/'));
     if (m === 'PUT') poser(s, bd); else if (m === 'DELETE') poser(s, null); else if (m === 'PATCH') Object.keys(bd || {}).forEach(k => poser(s.concat(seg(k)), bd[k]));
-    prevenir(s, m === 'DELETE' ? null : bd);
+    garder(); prevenir(s, m === 'DELETE' ? null : bd);
     return Promise.resolve(new Response(JSON.stringify(bd), { status: 200 }));
   };
   window.EventSource = function (u) { const self = this; const L = {}; this.addEventListener = (t, f) => { (L[t] = L[t] || []).push(f); }; this.close = () => { window.__FLUX = window.__FLUX.filter(x => x !== rec); };

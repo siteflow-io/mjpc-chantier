@@ -4648,3 +4648,27 @@ MEMO
 
 27/10/2026 14:41
 MEMO
+
+
+---
+
+## Tour 241 — 27/10/2026 14:43 → 14:45
+
+**Paul :** pour l'objet vidéo: je ne peux jamais finaliser l'adressage sur ma clef, parce que le type de fichier n'est jamais cherché (mp4 etc ). et donc je ne les vois jamais affichés. MEsure pour les autres objets en local. D'ailleurs, pour toutes les images etc, il faudrait faire la même chose. ainsi j'ai deux possibilités: soit mjpc medias, soit du local. si internet tombe, je peux continuer à travailler sur du local de ce fait.
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E1 sur l'Atelier (§12.33), E3 le vérifie, E4 sur la Rédaction universelle · ouvert : 586, 538, 553, 481, 458
+
+584. C'est pire que ça, et je l'ai mesuré dans le code : l'objet vidéo n'a jamais joué de vidéo. « Désigner le dossier de la clé… » ouvre un choix de dossier — le navigateur n'y montre que des dossiers, jamais les mp4, c'est ce que tu as vu —, et le site ne garde que les noms et les durées, pas les fichiers. Au tableau, la « vidéo » est une barre de progression dessinée, sans image : un reste de la maquette. Dette 13 · 56 au registre.
+
+585. Les autres objets : l'image ne prend qu'une adresse dans mjpc-medias (une adresse sur ton disque est refusée) ; le document se joint à la séance dans la Structure et part sur le site ; la page HTML est un fichier du site. Rien n'est en local aujourd'hui.
+
+586. Je propose, pour tous les médias (image, vidéo, document) : un seul geste « Choisir le fichier », avec deux sources — mjpc-medias, ou ton dossier de cours (sur l'ordinateur ou la clé). Le dossier se désigne une fois ; Chrome le retient et te redemande seulement ton accord à chaque ouverture du site. La diapo garde le nom du fichier dans ce dossier ; la vidéo joue vraiment, avec ses repères. Deux limites : cela marche dans Chrome et Edge, pas dans Firefox ni Safari ; et un fichier local ne se voit que sur l'ordinateur qui l'a — la fenêtre du tableau ouverte depuis ton ordinateur le montre, ton téléphone ou un autre ordinateur par l'adresse du tableau, non. Oui ?
+
+587. Sans internet : je ne sais pas encore ce que fait le site quand le réseau tombe (ce qu'il affiche, ce qu'il garde de ce que tu écris). Je le mesure avant de cadrer cette partie.
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:45
+MEMO

@@ -1,0 +1,79 @@
+{
+ "soir_atelier_s1": {
+  "classeProposee": "3 DYLAN Bob",
+  "prop": "3 DYLAN Bob 10:07-11:02 aucune",
+  "rep": false,
+  "di": 0,
+  "haut": "3 DYLAN Bob aucune heure lancée — Adresse du tableau",
+  "bandeau": "",
+  "numero": "Atelier · Diapo 1 sur 8 · heure 1 · Analyse d'images : la routine · prévue 3 min · H1 lundi 14 septe"
+ },
+ "soir_rep_s1": {
+  "classeProposee": "3 DYLAN Bob",
+  "prop": "3 DYLAN Bob 10:07-11:02 aucune",
+  "rep": true,
+  "di": 0,
+  "haut": "RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau",
+  "bandeau": "",
+  "numero": "Diapo 1 sur 8 · heure 1"
+ },
+ "soir_atelier_s2": {
+  "classeProposee": "3 DYLAN Bob",
+  "prop": "3 DYLAN Bob 10:07-11:02 aucune",
+  "rep": false,
+  "di": 0,
+  "haut": "3 DYLAN Bob aucune heure lancée — Adresse du tableau",
+  "bandeau": "",
+  "numero": "Atelier · Diapo 1 sur 8 · heure 1 · De la toile au poème · prévue 5 min · H1 lundi 14 septembre · 20"
+ },
+ "soir_rep_s2": {
+  "classeProposee": "3 DYLAN Bob",
+  "prop": "3 DYLAN Bob 10:07-11:02 aucune",
+  "rep": true,
+  "di": 0,
+  "haut": "RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau",
+  "bandeau": "",
+  "numero": "Diapo 1 sur 8 · heure 1"
+ },
+ "diapoBilan": "9Question-bilan3 min",
+ "atelierBilan": {
+  "classeProposee": "3 DYLAN Bob",
+  "prop": "3 DYLAN Bob 10:07-11:02 aucune",
+  "rep": false,
+  "di": 7,
+  "haut": "3 DYLAN Bob aucune heure lancée — Adresse du tableau",
+  "bandeau": "",
+  "numero": "Atelier · Diapo 9 sur 10 · heure 2 · Question-bilan · prévue 3 min · H2 lundi 14 septembre · 20 h 45"
+ },
+ "repBilan": {
+  "classeProposee": "3 DYLAN Bob",
+  "prop": "3 DYLAN Bob 10:07-11:02 aucune",
+  "rep": true,
+  "di": 7,
+  "haut": "RÉPÉTITION · 3 DYLAN Bob · répét. 00:00 · diapo 9, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau",
+  "bandeau": "",
+  "numero": "Hors de l'heure 1"
+ },
+ "bcoche": {
+  "visible": false,
+  "texte": "☐ Les élèves ont écrit le bilan"
+ },
+ "bcocheApres": {
+  "visible": false,
+  "texte": "☐ Les élèves ont écrit le bilan"
+ },
+ "menu": [
+  "Fiche notion : les mouvements du XIXe siècle",
+  "Fiche notion : Rappel sur la versification",
+  "Fiche notion : Les figures de style",
+  "Fiche notion : Les genres littéraires",
+  "Fiche notion : Les registres littéraires",
+  "Fiche notion : les propositions",
+  "Fiche notion : rappel sur la versification",
+  "Chrono au tableau",
+  "Qui a participé (au tableau)",
+  "Réserve de la séance…",
+  "Documents de la séance…",
+  "Déclarer une notion imprévue…"
+ ]
+}

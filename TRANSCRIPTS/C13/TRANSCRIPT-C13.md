@@ -5223,3 +5223,45 @@ Mes remédiations (image 3 : la proposition écrite dans la vraie page, sur le f
 
 27/10/2026 22:59
 MEMO
+
+---
+
+## Tour 260 — 27/10/2026 23:03 → 23:12
+
+**Paul :** Ok. Attention à l'histoire des rangs et des ids internes, je le rappelle. Tout doit être codé cette nuit. Demain matin tout ce qui est en cours doit être fini ainsi que cette histoire de colonne. Autre chose aussi à mesurer: jouer en avance prend toujours les Dylan actuellement j'ai l'impression et il y a encore des gestes élèves dans le jeu en avance ( attestation de bilan écrit par exemple).
+
+**Claude** *(images : `pieces/T260-01-a-20h-la-repetition-de-la-seance-1-prend-dylan.png`, `pieces/T260-02-en-repetition-le-menu-propose-qui-a-participe.png` ; scripts et relevés : `pieces/T260-mesure/` ; contrat §12.36 à §12.40 ; relances E1, E3, E4)* :
+
+À jouer : rien de neuf · en cours chez les exécutants : E1 (683, 686), E4 (la colonne, 687, les feuilles), E3 vérifie chaque morceau · ouvert : 641, 538, 553, 586, 481, 458.
+
+682. Ton « Ok » : je le prends pour oui à 656 (les feuilles), 680 (la colonne) et 681 (la numérotation sans trou, classe par classe).
+
+683. Les rangs et les identifiants internes : mesuré dans la ⑥. Deux endroits retrouvent la séance d'une case par son titre ; dix parcourent les séances dans l'ordre de leurs clés. C'est la cause de 670. La règle est écrite au contrat (§12.39) :
+- l'identité d'une séance, c'est sa clé interne, partout ;
+- l'ordre, c'est son rang ;
+- le numéro affiché est un rang calculé, sans trou pour l'élève dans sa classe ;
+- le titre n'est jamais une identité, et la clé ne s'affiche jamais.
+
+684. « Jouer en avance prend Dylan » : mesuré, tu as raison. À 20 h, quand il ne reste plus de case dans la journée, l'Atelier et la répétition prennent la première classe du niveau, 3 DYLAN Bob. C'est vrai pour la séance 1 comme pour la 2, alors que l'emploi du temps les donne à 3E Charles de Gaulle (image T260-01). Même cause que 671. Registre 13 · 81.
+
+685. Les gestes d'élève en répétition :
+- « ☐ Les élèves ont écrit le bilan » paraît sur toute diapo du bilan, répétition comprise. Je l'ai lu dans le code : sur le faux hub, la diapo du bilan n'est pas dans l'heure répétée.
+- Le menu « ⋯ » propose « Qui a participé (au tableau) » et « L'appel : clic droit sur un nom de la liste » (mesuré, image T260-02).
+Registre 13 · 82.
+
+686. Remédiation pour 684 : la répétition, l'en-tête de l'Atelier et la colonne prennent une seule source, la prochaine case de cette séance (par sa clé) à l'emploi du temps. Exemple : « RÉPÉTITION · 3E Charles de Gaulle · heure 2/3 · mar. 15/09 15:07 ». Le nom de la classe se clique pour passer à une autre classe de la séance. S'il n'y a pas de case : la première classe pour qui la séance est, avec « pas encore à l'emploi du temps ».
+
+687. Remédiation pour 685 : en répétition, aucun geste qui suppose des élèves. E4 fait d'abord la liste de tous ces gestes et dit lesquels paraissent en répétition.
+
+688. La nuit (contrat §12.40) :
+- E1 : 670 avec les rangs et les identifiants (683), puis la classe de la répétition (686) ;
+- E4 : la colonne, puis les gestes d'élève (687), puis les feuilles ;
+- E3 vérifie chaque morceau à sa poussée ;
+- moi : la candidate ⑦ sur la dernière tête verte, mon banc et les captures avant / après, pour ton promeus du matin.
+
+689. Déjà fini ce soir : §12.34 est vert (E3, 23:05) ; la retouche de L18 est poussée par E4. Je la relis cette nuit, pour une candidate correction_dictee 6.7.0-L18 au matin.
+
+À tester : rien de neuf en production ce soir ; demain matin, les captures avant / après de la ⑦ et de L18.
+
+27/10/2026 23:12
+MEMO

@@ -4916,3 +4916,33 @@ MEMO
 
 27/10/2026 17:42
 MEMO
+
+
+---
+
+## Tour 250 — 27/10/2026 17:45 → 17:52
+
+**Paul :** Normalement les apps ont toutes le même panneau de configuration et de contrôle. Le modele est correction dictée. Vérifie en quoi on peut adapter rédac universelle pour ça
+
+**Claude :**
+
+À jouer : la Rédaction universelle (611) · en cours chez les exécutants : E1 et E3 l'accès depuis le site (616, 617) · ouvert : 626, 615, 604, 538, 553, 586, 481, 458
+
+620. Mesuré par le geste, sur un faux hub : non, la Rédaction universelle n'a pas ce panneau. Elle a gardé la barre de l'ancienne app de Dugain, dix boutons à plat (images T250-01 et T250-02). Dette 13 · 60 au registre.
+
+621. Ce qui lui manque du modèle : l'accueil « Mes dictées » rangé par niveau, chaque ligne avec sa classe, sa date, la barre des copies corrigées, ✏️ ⧉ 🗑️ et « Ouvrir → » ; dans une dictée ouverte, l'en-tête (titre, classe, 9/29, la barre), « Snapshot », « Restaurer », « Retour », et les trois onglets Pilotage, Données, Réglages ; le « ? » d'aide ; la carte « Mode test ».
+
+622. Une seule différence de fond : une dictée appartient à une classe, un sujet de rédaction se corrige dans plusieurs classes. Je propose une ligne par sujet et par classe sur l'accueil, comme une dictée (« Écrire une lettre de la Grande Guerre — 3 FRANKLIN Aretha », sa barre, son statut), et « ＋ Nouvelle rédaction » : tu choisis le sujet, ou tu en colles un nouveau, puis la classe.
+
+623. La correspondance. Pilotage : Préparation = « Préparer le sujet » et l'énoncé ; Correction = la grille des élèves et la copie. Données : Bilan = « Stats prof » ; Fiches élèves = l'aperçu et « Exporter tous HTML ». Réglages = la grille du sujet (critères, seuils du compteur). Dans l'en-tête, « Snapshot » et « Restaurer » remplacent « Exporter JSON » et « Importer JSON ». « Rapide », « Copies », « Suivi » et « Exercices » n'ont rien derrière côté rédaction (l'élève ne reçoit rien en ligne, ton R7) : pas d'onglet tant qu'il n'y a rien.
+
+624. « Auto-sauvegarde » disparaît : elle téléchargeait un fichier à chaque copie ; le site enregistre maintenant chaque geste, et « Snapshot » garde l'export.
+
+625. Ce qui ne bouge pas : la correction elle-même (classique, interrogatif, compteur, citations) et la fiche de l'élève, mot pour mot ; toute la largeur de l'écran. Le panneau prend l'aspect du modèle (blanc et bleu, au lieu du bordeaux). Le modèle, lui, n'utilise pas toute la largeur : une colonne d'environ 1 270 px au milieu de tes 1707 (dette 13 · 61).
+
+626. E4 l'écrit dans la Rédaction universelle, sur le sas ; tu juges sur les images avant/après ; rien ne part en ligne sans ton « promeus ». Tes lettres corrigées d'ici là restent où elles sont : le changement de panneau ne touche pas aux copies. Oui pour 622 à 626 ?
+
+À tester : le 611, toujours.
+
+27/10/2026 17:52
+MEMO

@@ -1,0 +1,11 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 23:50 UTC · fichier md5 4d2e0b2d84691cb1c6a383cd97d60b51
+
+══ 1707×743 ══
+  ok     37 · 1707×743 · A86 · dans l’éditeur de la feuille, les gestes de la diapo : surligner, couleur du texte, G, S, la légende — {"ouverte":true,"surl":"atf-surl [Surligner — sélectionne du texte dans la]","coul":"atf-txt [Couleur du texte — sélectionne du texte ]","gras":"atf-gras [Gras (Ctrl+B) — sélectionne du texte dan]","soul":"atf-soul [Souligné (Ctrl+U) — sélectionne du texte]","legende":"atf-legende [Légende de surlignage : « jaune = … · ve]"}
+  ok     37 · 1707×743 · A86 · « Le port » mis en forme dans l’aperçu : sujet souligné, verbe en gras, participe en couleur — {"zones":["textarea","textarea","textarea"],"apercu":{"u":["Un port"],"b":["est"],"c":["fatiguée"]}}
+  ok     37 · 1707×743 · A86 · après rechargement, la forme est gardée — {"u":["Un port"],"b":["est"],"c":["fatiguée"]}
+  ok     37 · 1707×743 · A86 · l’aperçu d’impression (média print) garde la forme, sur fond blanc — {"fond":"rgb(255, 255, 255)","u":1,"b":1}
+  ok     37 · 1707×743 · A86 · « Les connecteurs logiques » : « car » en couleur dans le tableau — {"zone":"textarea","apercu":["car"]}
+  ok     Z · 1707×743 · 0 erreur JS (37)
+
+BILAN banc-1228 : 6/6 vérifications · VERT

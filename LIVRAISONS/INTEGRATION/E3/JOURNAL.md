@@ -938,3 +938,22 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - A91 : la diapo du cahier en répétition ne montre ni l'échéance ni le travail à faire.
 - §12.36 sera vert quand §12.38 (1) donnera la source ; §12.38 aussi.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0030-28-10-111/`.
+
+## Retour 90 — 28/10, 00:58 — **§12.37 VERT (`4d2e0b2d`)**
+- E4 a poussé le §12.37 (`78af4bf1f`) : la barre « Mise en forme » de l'éditeur de feuille prend les boutons de la diapo (G, S, « ab », « A » et leurs palettes, la légende). L'assemblé de la tête est `4d2e0b2d`.
+- **Trois fautes de ma mesure, corrigées dans le cas 37 :**
+  - Le texte de la feuille est dans un champ d'une section repliée, « Ce que la feuille contient ». Le cas ouvre maintenant la section d'un clic sur son titre, comme Paul le fait.
+  - Le bouton s'appelle « Couleur du texte », avec une majuscule, et mon motif ne le trouvait pas. La palette est `.p8-p`.
+  - La couleur est lue par le style calculé, et non plus par un attribut.
+  - Le contrôle d'impression passe maintenant **en média print** et exige un fond blanc.
+- **Le cas 37, aux quatre tailles : VERT 24/24.**
+  - Dans « Le port », « Un port » est souligné, « est » en gras, « fatiguée » en couleur, dans l'aperçu (capture `1707x743-37-2-le-port-mis-en-forme-apres.png`, regardée).
+  - La forme est gardée au rechargement.
+  - En impression, les marques restent, sur fond blanc.
+  - Dans « Les connecteurs logiques », « car » est en couleur.
+  - Aucune erreur JS.
+- Le surlignage et la légende sont vérifiés par geste dans le banc d'E4 (`banc-1237`). Mon cas vérifie que leurs boutons sont là.
+- `banc.sh` : **VERT** (0 défaut).
+- **§12.37 VERT (`4d2e0b2d`)**.
+- Sont VERTS : §12.35, §12.37, §12.39. §12.36 et §12.38 attendent E1 (§12.38 (1)(3) : A84 (5)(6), A87, A91).
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0050-28-10-1237/`.

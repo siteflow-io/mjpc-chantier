@@ -3809,7 +3809,7 @@ MEMO
 
 **Réponse (mot pour mot).**
 
-445. Contrôle de 01:15. E2 a fini sa part des deux chantiers : à T-5, une seule chose s'ouvre, les étapes à droite, et les nouveaux boutons du cahier fonctionnent. Je l'ai vérifié : ce que la classe voit à chaque bouton est mesuré. Il reste un dernier morceau chez E1 (enlever la barre du bas du code), puis E3 refait toutes ses mesures. Ensuite je t'annonce la mise en ligne, avec les captures.
+445. Contrôle de 01:15. E2 a fini sa part des deux chantiers : à T-5, une seule chose s'ouvre, les étapes à droite, et les nouveaux boutons du cahier sont en place ; E2 a mesuré ce que la classe voit à chaque bouton. Il reste un dernier morceau chez E1 (enlever la barre du bas du code), puis E3 refait toutes ses mesures. Ensuite je t'annonce la mise en ligne, avec les captures.
 
 À tester : rien pour l'instant — rien n'est en ligne.
 

@@ -3982,3 +3982,24 @@ MEMO
 
 27/10/2026 07:56
 MEMO
+
+## Tour 213 — 27/10/2026 08:12 — Paul (08:05)
+
+**Paul (mot pour mot).** « 454 oui remets la c'était une fonctionnalité justement 460 à faire »
+
+**Fait.** Mesuré dans la ③ (`e7c70d2:index.html`) : la phrase est celle d'`alerteTexte` (l. 17661) — « L'activité en cours : Activité N — <titre>, <état>. », l'état d'`etatWorktrack` (« dans les temps », « il te reste peu de temps », « tu dépasses · +n min », « terminée », « faite à l'oral ») ; suivie de « Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. » (à l'heure : « Va au cahier de textes : l'heure court (<fin>). »). Dans la ④ : `alerteTexte` existe encore (l. 17887) mais n'est appelée par personne ; la tête de la séquence (`.pp-tete`, l. 17934) porte `dr_palierTete()` + « Fin de l'heure — étape n sur 7 ». Contrat §12 point 30 (E2 : la phrase mot pour mot sous la tête, aux moments du palier, tenue à jour en place, garde B36 ; E3 : cas « 30 » de `banc-1228`, captures avant/après ; la phrase suivante attend le point 481) ; relances E2, E3 ; `MANDATS/MODE-DIRIGE/CADRAGE-26-10.md` §5 (« 460 à faire », à reprendre sur la ④). Commits main `f04218242` (contrat, relances, cadrage ; heure des relances corrigée 08:20 → 08:10), merge `integration`. E2 et E3 réveillés (fire_trigger `trig_01SXwqAHyCiZwXah5uvxrfpV`, `trig_016XBbxXnigp1HToc2RvoCBp`, 08:10). Contrôle horaire n°73 programmé à 09:01 (`trig_01LsTVniUHkavKcXDMBbjg7R`).
+
+**Réponse (mot pour mot).**
+
+À jouer : rien · en cours chez les exécutants : E2 remet la phrase, E3 la mesure · ouvert : 481
+
+480. 454 : E2 remet la phrase, mot pour mot comme avant, sous la tête de la séquence « Fin de l'heure » — par exemple « L'activité en cours : Activité 2 — Tableau 1, tu dépasses · +3 min. » (ou « dans les temps », « il te reste peu de temps », « terminée »). Elle paraît aux mêmes moments qu'avant (T-5, T-3, T-1, l'heure du cahier) et se met à jour toute seule, sans toucher ce que tu es en train d'écrire. E3 la mesure, puis je t'envoie les images avant / après. Ce sera la 8.75.0-⑤.
+
+481. La barre disait aussi, juste après : « Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. » (et à l'heure du cahier : « Va au cahier de textes : l'heure court (09:52). »). Je la remets aussi ? Oui ou non.
+
+482. 460 : noté dans le cadrage du mode dirigé. C'est le sujet suivant : pendant qu'E2 code, je reprends ce cadrage sur la ④ (le cahier de textes simplifié, qui en faisait partie, est déjà fait) et je te l'apporte avec des images.
+
+À tester : rien de nouveau — la ④ en ligne, avec les tests 469 à 479.
+
+27/10/2026 08:12
+MEMO

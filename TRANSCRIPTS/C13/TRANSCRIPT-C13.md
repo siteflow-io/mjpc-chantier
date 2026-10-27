@@ -5136,3 +5136,14 @@ MEMO
 
 27/10/2026 22:30
 MEMO
+
+
+---
+
+## Tour 258 — 27/10/2026 22:34
+
+**Paul :** promeus
+
+*(Promus à 22:35 : `index.html` 8.75.0-⑥, commit prod `928350e98194`, md5 `231ffca589c8033ad62b7ecc213a460f` ; `redaction.html` 1.1.0-RU, commit `dc045e5a54ef`, md5 `f7c2c85e05468c7dd74d785eb9aa707c` ; bit à bit ; suivi fait. Le prompt d'injection 1.0 est en place.)*
+
+**Paul (22:36) :** la colonne de gauche là, mesure ce qu'elle fait, ce qu'elle ne fait pas, l'organisation qu'elle a. Je veux qu'elle soit opérationnelle, logique, simple, que chaque clic fasse quelque chose etc. j'attends tes propositions (ce qui va, ce qui ne va pas, tes remédiations). avant ça tu iras lire son cadrage sur github. *(capture jointe : l'Atelier de la ⑤ sur un écran étroit, la colonne « Le chapitre » à gauche — `pieces/T258-08-capture-de-paul-la-colonne-de-gauche.png`)*

@@ -114,7 +114,7 @@
     flex-wrap: wrap;
     border-bottom: 1px solid var(--gris);
   }
-  .toolbar button, .toolbar select {
+  .toolbar button, .toolbar select, .ru-sujet-a button, .ru-carte button {
     background: white;
     color: var(--texte);
     border: 1px solid var(--gris);
@@ -133,14 +133,14 @@
     transition: background 0.12s, border-color 0.12s;
     user-select: none;
   }
-  .toolbar button:hover:not(:disabled) {
+  .toolbar button:hover:not(:disabled), .ru-sujet-a button:hover {
     background: var(--beige);
     border-color: var(--accent);
   }
   .toolbar button:active:not(:disabled) {
     transform: translateY(1px);
   }
-  .toolbar button.primary {
+  .toolbar button.primary, .ru-sujet-a button.primary, .ru-carte button.primary {
     background: var(--bordeaux);
     color: white;
     border-color: var(--bordeaux);
@@ -1130,7 +1130,7 @@
   .ru-sujet-t { display: flex; flex-direction: column; } .ru-sujet-t span { color: #777; font-size: 0.9em; }
   .ru-sujet-a { display: flex; gap: 8px; flex-shrink: 0; }
   .ru-vide { color: #777; font-style: italic; }
-  .ru-temoin { position: fixed; right: 12px; top: 10px; z-index: 950; font-size: 0.85em; padding: 3px 10px; border-radius: 12px; background: rgba(255,255,255,.92); color: #4a7a3a; border: 1px solid #cbd9bf; }
+  .ru-temoin { position: fixed; right: 12px; top: 64px; z-index: 950; font-size: 0.85em; padding: 3px 10px; border-radius: 12px; background: rgba(255,255,255,.92); color: #4a7a3a; border: 1px solid #cbd9bf; }
   .ru-msg.ko { color: var(--bordeaux); } .ru-msg.ok { color: var(--vert); } .ru-msg ul { margin: 6px 0; }
   .ru-inv { font-size: 0.92em; max-height: 30vh; overflow: auto; } .ru-inv ul { margin: 4px 0 8px; }
   .ru-grise { opacity: .55; }
@@ -2442,10 +2442,10 @@ function ruListeSujets() {
     const ids = Object.keys(t || {}).filter(k => t[k] && t[k].config);
     if (!ids.length) { l.innerHTML = "<p class=\"ru-vide\">Aucun sujet pour l'instant. « ➕ Nouveau sujet » en crée un à partir du JSON préparé avec Claude.</p>"; return; }
     l.innerHTML = ids.sort((a, b) => String(t[a].config.titre || a).localeCompare(String(t[b].config.titre || b), "fr")).map(id => {
-      const c = t[id].config, nv = (c.variantes || []).length, nCl = Object.keys((t[id].copies) || {}).length;
+      const c = normaliserSujet(t[id].config), nv = (c.variantes || []).length, nCl = Object.keys((t[id].copies) || {}).length;
       const st = typeof etatValidationSujet === "function" ? etatValidationSujet(c, (t[id].validations) || {}) : null;
       return `<div class="ru-sujet" data-id="${escapeAttr(id)}">
-        <div class="ru-sujet-t"><strong>${escapeHtml(c.titre || id)}</strong><span>${escapeHtml(c.niveau || "")} · sur ${c.total || "?"} · ${nv} sujet${nv > 1 ? "s" : ""} au choix${nCl ? " · " + nCl + " classe" + (nCl > 1 ? "s" : "") + " en cours" : ""}${st ? " · " + st.valides + " points validés sur " + st.total : ""}</span></div>
+        <div class="ru-sujet-t"><strong>${escapeHtml(c.titre || id)}</strong><span>${escapeHtml(c.niveau || "")} · sur ${c.total || "?"} · ${nv > 1 ? nv + " sujets au choix" : "un sujet"}${nCl ? " · " + nCl + " classe" + (nCl > 1 ? "s" : "") + " en cours" : ""}${st ? " · " + st.valides + " points validés sur " + st.total : ""}</span></div>
         <div class="ru-sujet-a">
           <button class="primary" onclick="location.href=ruAdresse({id:'${escapeAttr(id)}'})" title="Ouvrir ce sujet pour corriger les copies d'une classe du site">Ouvrir</button>
           <button onclick="location.href=ruAdresse({id:'${escapeAttr(id)}',vue:'preparer'})" title="Relire et valider les phrases de la grille, point par point, avant qu'un élève les lise">Préparer le sujet</button>
@@ -2734,6 +2734,8 @@ function ruPrepRendre() {
       </div>`).join("")}</div>`;
   }
   corps.innerHTML = h; corps.scrollTop = 0;
+  const ajuster = t => { t.style.height = "auto"; t.style.height = (t.scrollHeight + 2) + "px"; };   // chaque case montre sa phrase entière
+  corps.querySelectorAll(".ru-case").forEach(t => { ajuster(t); t.addEventListener("input", () => ajuster(t)); });
   const b = document.getElementById("ruPrepValider"); const fait = ruPrepValide(cur);
   b.textContent = fait ? "✓ Validé" : (cur.type === "point" ? "✓ Je valide ce point" : "✓ Je les ai lues"); b.disabled = fait;
   b.title = fait ? "Déjà validé — une correction dans une case reste enregistrée et lue" : "Tu as lu toutes les phrases de cet écran : elles peuvent partir sur les fiches";

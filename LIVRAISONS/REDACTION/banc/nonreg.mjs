@@ -38,5 +38,5 @@ export async function pageProd(ctx, F, noms) {
 export async function pageRU(ctx, F, hub, q) {
   const pg = await ctx.newPage(); const errs = []; pg.on('pageerror', e => errs.push(e.message));
   await pg.addInitScript(installer, hub); await pg.addInitScript(sessionProf); await pg.addInitScript(() => { try { localStorage.setItem('redaction_dugain_autosave_on_validate', 'false'); } catch (e) {} });
-  await pg.goto('file://' + F + (q || '?mode=prof&id=dugain&classe=3_franklin_aretha')); await att(pg, 1200); return { pg, errs };
+  await pg.goto('file://' + F + (q || '?mode=prof&id=dugain&classe=3_franklin_aretha')); await pg.waitForFunction(() => window.RU && RU.classe && state.classe.length > 0, null, { timeout: 12000 }).catch(() => {}); await att(pg, 400); return { pg, errs };
 }

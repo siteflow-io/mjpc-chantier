@@ -14,9 +14,12 @@ export function hubDeDepart({ avecDugain = true } = {}) {
 }
 export const installer = (etat) => {
   // le faux hub vit dans le stockage de la page (même contexte = même hub) : il survit aux navigations, et deux pages le partagent
-  let m = null; try { m = localStorage.getItem('__FAUXHUB'); } catch (e) {}
-  window.__HUB = m ? JSON.parse(m) : etat; window.__ECR = []; try { window.__ECR = JSON.parse(localStorage.getItem('__FAUXECR') || '[]'); } catch (e) {}
-  const garder = () => { try { localStorage.setItem('__FAUXHUB', JSON.stringify(window.__HUB)); localStorage.setItem('__FAUXECR', JSON.stringify(window.__ECR)); } catch (e) {} };
+  // deux mémoires, la plus récente gagne (un compteur v) : window.name (synchrone, suit l'onglet d'une page à la suivante — le stockage
+  // de Chrome se recopie entre processus avec un temps de retard, une navigation immédiate pouvait relire l'ancien) et localStorage (partagé entre onglets)
+  let a = null, b = null; try { const n = JSON.parse(window.name || 'null'); if (n && n.__faux) a = n; } catch (e) {} try { b = JSON.parse(localStorage.getItem('__FAUX') || 'null'); } catch (e) {}
+  const m = [a, b].filter(Boolean).sort((x, y) => y.v - x.v)[0];
+  window.__HUB = m ? m.hub : etat; window.__ECR = m ? m.ecr : []; window.__FAUXV = m ? m.v : 0;
+  const garder = () => { window.__FAUXV++; const p = JSON.stringify({ __faux: 1, v: window.__FAUXV, hub: window.__HUB, ecr: window.__ECR }); try { window.name = p; } catch (e) {} try { localStorage.setItem('__FAUX', p); } catch (e) {} };
   garder();
   const seg = c => c.split('/').filter(Boolean).map(decodeURIComponent);
   const lire = s => { let n = window.__HUB; for (const k of s) { if (n == null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; };
@@ -38,5 +41,7 @@ export const installer = (etat) => {
     const c = String(u).split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, ''); const rec = { seg: seg(c), emettre: (t, d) => (L[t] || []).forEach(f => f({ data: JSON.stringify(d) })) }; window.__FLUX.push(rec);
     setTimeout(() => rec.emettre('put', { path: '/', data: lire(rec.seg) }), 30); };
   window.WebSocket = function () { throw new Error('websocket bloqué'); };
+  // une autre page du même navigateur a écrit : l'abonnement de celle-ci le reçoit (comme le flux du vrai hub)
+  window.addEventListener('storage', e => { if (e.key !== '__FAUX' || !e.newValue) return; const n = JSON.parse(e.newValue); if (n.v <= window.__FAUXV) return; window.__HUB = n.hub; window.__ECR = n.ecr; window.__FAUXV = n.v; try { window.name = e.newValue; } catch (x) {} window.__FLUX.forEach(f => f.emettre('put', { path: '/', data: lire(f.seg) })); });
 };
 export const sessionProf = () => { const s = JSON.stringify({ is_prof: true, display: 'Professeur', ts: Date.now() }); try { sessionStorage.setItem('mjpc_eleve', s); localStorage.setItem('mjpc_eleve', s); } catch (e) {} };

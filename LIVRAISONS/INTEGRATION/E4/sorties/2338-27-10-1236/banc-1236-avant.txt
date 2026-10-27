@@ -1,0 +1,21 @@
+  ok     A84 · l'Atelier ouvert sur le premier chapitre 3e du faux hub — {"vue":"atelier","snum":"0"}
+  info   A84 · colonne : 2646 px de haut pour 673 visibles (la ⑥ : 2 646 pour 675) ; 3 lignes d'heure, 21 diapos
+  ÉCHEC  A84 · (1)(2)(3)(6) en haut le titre du chapitre ; ni documents, ni attendus, ni « + insérer », ni « Chapitre · … », ni « Séance n — … », ni la ligne d'aide — {"titre":null,"attendu":"Poésie et peinture au XIXe siècle (proposition)","its":35,"ins":0,"sea":1,"sea2":1,"aide":1}
+  ÉCHEC  A84 · ① le titre du chapitre : ouvre Structure sur ce chapitre — {"vue":"atelier"}
+  ÉCHEC  A84 · ② « n documents sur m attendus → Structure » écrit
+  ÉCHEC  A84 · ② un clic ouvre Structure sur ce chapitre — {"vue":"atelier"}
+  ok     A84 · ⑨ « Ouvrir chaque heure par la réactivation » : un clic bascule — ["Ouvrir chaque heure par la réactivation : oui (par défaut)","Ouvrir chaque heure par la réactivation : non"]
+  ÉCHEC  A84 · ⑫ chaque diapo dit son heure prévue (« 08:57 ») ; l'infobulle ; un clic ouvre la diapo — {"heures":["1","2","3","4"],"di":2,"attendu":"2"}
+  ok     A84 · ⑫ clic droit sur une diapo : le menu (dupliquer, insérer, déplacer…) — Tableau 1 · H1 Ouvrir Dupliquer Insérer une diapo après Monter Descendre Envoyer vers une autre séance… Couper la diapo ici… Supprimer
+  ÉCHEC  A84 · ⑩ la ligne d'heure dit ce que la source de l'heure (E1) donne — sa date et sa case, ou « pas encore à l'emploi du temps » ; « … min prévues pour 50 utiles » — {"lignes":["H1 · lundi 14 septembre · 55 min 52 + 5 = 57 min +7","H2 · lundi 14 septembre · 55 min 48 + 5 = 53 min +3","H3 · lundi 14 septembre · 55 min 10 + 5 = 15 min ✔"],"source":[null,null,null]}
+  ÉCHEC  A84 · ⑩ ⑥ avec la source qui donne la case (3E Charles de Gaulle) : « H1 · lun. 14/09 · 08:57 → 09:52 · 57 min prévues pour 50 utiles +7 », H2 mar. 15/09, H3 ven. 18/09 ; les diapos à 08:57, 09:00, 09:06 — {"lignes":["H1 · lundi 14 septembre · 55 min 52 + 5 = 57 min +7","H2 · mardi 15 septembre · 55 min 48 + 5 = 53 min +3","H3 · vendredi 18 septembre · 55 min 10 + 5 = 15 min ✔"],"diapos":["1","2","3"]}
+  ÉCHEC  A84 · ⑩ un clic sur la ligne d'heure H2 ouvre sa première diapo — {"di":2}
+  ok     A84 · ⑪ « +n » : le clic ouvre la première diapo de son heure (il garde son infobulle) — {"di":2}
+  ÉCHEC  A84 · ④ le ▾ de la séance ouverte la replie ; le centre ne change pas (la même diapo) — {"avant":true,"apres":true,"dansCol":true,"di":[2,2]}
+  ok     A84 · ④ un second clic la rouvre — {"vu":true}
+  ÉCHEC  A84 · ③ le titre de la séance ouverte la replie, puis la rouvre — {"replieTitre":false,"rouverte":true}
+  ok     A84 · ⑭ une séance repliée : un clic l'ouvre, sa diapo 1 au centre, l'autre se replie — {"snum":"1","di":0}
+  ÉCHEC  A84 · ⑬ « Ctrl + molette : zoom » et le clic droit dans le « ? » de l'Atelier — Le chapitre · Atelier ✕  Ici : les diapos de chaque heure, telles qu'elles passeront au tableau.  Dans l'ordre :  À gauc
+  info   A84 · colonne après : 2646 px de haut pour 673 visibles
+  ok     A84 · zéro erreur JS — []
+— fin : 18 vérifications · 11 échec(s) — ROUGE · asm-avant.html md5 a437cbd696b10583b6817bb5eb46c9f1

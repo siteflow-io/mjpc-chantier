@@ -189,7 +189,7 @@
 ### chapitre-atelier — Le chapitre · Atelier (fil-1)
 **Ici** : les diapos de chaque heure, telles qu'elles passeront au tableau.
 **Dans l'ordre** :
-1. À gauche, choisis l'heure et la diapo.
+1. À gauche, choisis l'heure et la diapo (clic droit sur une diapo : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer ; Ctrl + molette : zoom).
 2. Écris directement dans la diapo (l'aide d'écriture est à droite) ; « + bloc », « + étape », « + image », « + vidéo », « + document » ajoutent un objet.
 3. À droite : ce que la diapo déclare (son activité, son heure, ses notions), et ce qui peut casser en classe — corrige ce qui est en rouge.
 4. « ▶ Jouer en avance — répétition » : tu joues la diapo comme en classe ; rien n'est écrit.

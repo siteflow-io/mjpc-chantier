@@ -491,3 +491,5 @@ html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
 /* E2 · §12.30 : la phrase de l'activité en cours, sous la tête de la séquence — elle passe à la ligne, entière, dans la colonne */
 #dr-zone .dr-pp-act{font-size:.82rem;line-height:1.35;color:var(--texte2);margin:2px 0 6px;white-space:normal;overflow-wrap:anywhere}
 #dr-zone .dr-pp-act[hidden]{display:none}
+/* E4 (§12.36 (5)(6)) : la ligne d'heure sur deux lignes, cliquable ; l'heure prévue de chaque diapo à la place de son numéro */
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .fr.dr-fr{display:block;cursor:pointer;line-height:1.35}:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .fr.dr-fr:hover{color:var(--texte)}:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .fr.dr-fr .dr-fr-l2{opacity:.85}:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d .dr-n.dr-quand{width:36px;font-size:11px;text-align:left;font-variant-numeric:tabular-nums}

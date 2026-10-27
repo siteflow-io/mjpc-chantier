@@ -1,0 +1,49 @@
+  ok     A84 · l'Atelier ouvert sur le premier chapitre 3e du faux hub — {"vue":"atelier","snum":"0"}
+  info   A84 · colonne : 1158 px de haut pour 673 visibles (la ⑥ : 2 646 pour 675) ; 3 lignes d'heure, 21 diapos
+  ok     A84 · (1)(2)(3)(6) en haut le titre du chapitre ; ni documents, ni attendus, ni « + insérer », ni « Chapitre · … », ni « Séance n — … », ni la ligne d'aide — {"titre":"Poésie et peinture au XIXe siècle (proposition)","attendu":"Poésie et peinture au XIXe siècle (proposition)","its":0,"ins":0,"sea":0,"sea2":0,"aide":0}
+  ok     A84 · ① le titre du chapitre : ouvre Structure sur ce chapitre — {"vue":"structure"}
+  ok     A84 · ② « n documents sur m attendus → Structure » écrit — 2 documents sur 35 attendus → Structure
+  ok     A84 · ② un clic ouvre Structure sur ce chapitre — {"vue":"structure"}
+  ok     A84 · ⑨ « Ouvrir chaque heure par la réactivation » : un clic bascule — ["Ouvrir chaque heure par la réactivation : oui (par défaut)","Ouvrir chaque heure par la réactivation : non"]
+  ok     A84 · ⑫ chaque diapo dit son heure prévue (« 08:57 ») ; l'infobulle ; un clic ouvre la diapo — {"heures":["+0′","+3′","+9′","+14′"],"di":2,"attendu":"2"}
+  ok     A84 · ⑫ clic droit sur une diapo : le menu (dupliquer, insérer, déplacer…) — Tableau 1 · H1 Ouvrir Dupliquer Insérer une diapo après Monter Descendre Envoyer vers une autre séance… Couper la diapo ici… Supprimer
+  ok     A84 · ⑩ la ligne d'heure dit ce que la source de l'heure (E1) donne — sa date et sa case, ou « pas encore à l'emploi du temps » ; « … min prévues pour 50 utiles » — {"lignes":["H1 · pas encore à l’emploi du temps 57 min prévues pour 50 utiles +7","H2 · pas encore à l’emploi du temps 53 min prévues pour 50 utiles +3","H3 · pas encore à l’emploi du temps 15 min prévues pour 50 utiles ✔"],"source":[null,null,null]}
+  ok     A84 · ⑩ ⑥ avec la source qui donne la case (3E Charles de Gaulle) : « H1 · lun. 14/09 · 08:57 → 09:52 · 57 min prévues pour 50 utiles +7 », H2 mar. 15/09, H3 ven. 18/09 ; les diapos à 08:57, 09:00, 09:06 — {"lignes":["H1 · lun. 14/09 · 08:57 → 09:52 57 min prévues pour 50 utiles +7","H2 · mar. 15/09 · 15:07 → 16:02 53 min prévues pour 50 utiles +3","H3 · ven. 18/09 · 10:07 → 11:02 15 min prévues pour 50 utiles ✔"],"diapos":["08:57","09:00","09:06"]}
+  ok     A84 · ⑩ un clic sur la ligne d'heure H2 ouvre sa première diapo — {"di":8,"attendu":"8"}
+  ok     A84 · ⑪ « +n » : le clic ouvre la première diapo de son heure (il garde son infobulle) — {"plus":"0","di":0}
+  ok     A84 · ④ le ▾ de la séance ouverte la replie ; le centre ne change pas (la même diapo) — {"avant":true,"apres":false,"dansCol":true,"di":[0,0]}
+  ok     A84 · ④ un second clic la rouvre — {"vu":true}
+  ok     A84 · ③ le titre de la séance ouverte la replie, puis la rouvre — {"replieTitre":true,"rouverte":true}
+  ok     A84 · ⑭ une séance repliée : un clic l'ouvre, sa diapo 1 au centre, l'autre se replie — {"snum":"1","di":0}
+  ok     A84 · ⑬ « Ctrl + molette : zoom » et le clic droit dans le « ? » de l'Atelier — Le chapitre · Atelier ✕  Ici : les diapos de chaque heure, telles qu'elles passeront au tableau.  Dans l'ordre :  À gauc
+  info   A84 · colonne après : 1158 px de haut pour 673 visibles
+  ok     A84 · zéro erreur JS — []
+  ok     A85 · 1366 × 768 : tirer la poignée élargit la colonne (le centre se resserre), puis la réduit — {"l":[250,370,290],"zone":[1074,954]}
+  ok     A85 · 1366 × 768 : tout à gauche, elle se replie en un liseré (le centre prend la place) — {"repliee":true,"larg":0,"zone":[1034,1311]}
+  ok     A85 · 1366 × 768 : un clic sur le liseré la rouvre, à sa largeur d'avant — {"larg":[290,290]}
+  ok     A85 · 1366 × 768 : double-clic : replie, puis rouvre — {"r":[true,false]}
+  ok     A85 · 1366 × 768 : la largeur est retenue au rechargement (ce navigateur) — {"larg":[290,290]}
+  ok     A85 · 1366 × 768 : en répétition, la colonne a la même poignée et la même largeur — {"rep":true,"poignee":true,"larg":[290,350]}
+  ok     A85 · 1366 × 768 : zéro erreur JS — []
+  ok     A85 · 1536 × 864 : tirer la poignée élargit la colonne (le centre se resserre), puis la réduit — {"l":[250,370,290],"zone":[1244,1124]}
+  ok     A85 · 1536 × 864 : tout à gauche, elle se replie en un liseré (le centre prend la place) — {"repliee":true,"larg":0,"zone":[1204,1481]}
+  ok     A85 · 1536 × 864 : un clic sur le liseré la rouvre, à sa largeur d'avant — {"larg":[290,290]}
+  ok     A85 · 1536 × 864 : double-clic : replie, puis rouvre — {"r":[true,false]}
+  ok     A85 · 1536 × 864 : la largeur est retenue au rechargement (ce navigateur) — {"larg":[290,290]}
+  ok     A85 · 1536 × 864 : en répétition, la colonne a la même poignée et la même largeur — {"rep":true,"poignee":true,"larg":[290,350]}
+  ok     A85 · 1536 × 864 : zéro erreur JS — []
+  ok     A85 · 1707 × 743 : tirer la poignée élargit la colonne (le centre se resserre), puis la réduit — {"l":[250,370,290],"zone":[1415,1295]}
+  ok     A85 · 1707 × 743 : tout à gauche, elle se replie en un liseré (le centre prend la place) — {"repliee":true,"larg":0,"zone":[1375,1652]}
+  ok     A85 · 1707 × 743 : un clic sur le liseré la rouvre, à sa largeur d'avant — {"larg":[290,290]}
+  ok     A85 · 1707 × 743 : double-clic : replie, puis rouvre — {"r":[true,false]}
+  ok     A85 · 1707 × 743 : la largeur est retenue au rechargement (ce navigateur) — {"larg":[290,290]}
+  ok     A85 · 1707 × 743 : en répétition, la colonne a la même poignée et la même largeur — {"rep":true,"poignee":true,"larg":[290,350]}
+  ok     A85 · 1707 × 743 : zéro erreur JS — []
+  ok     A85 · 1920 × 1080 : tirer la poignée élargit la colonne (le centre se resserre), puis la réduit — {"l":[250,370,290],"zone":[1628,1508]}
+  ok     A85 · 1920 × 1080 : tout à gauche, elle se replie en un liseré (le centre prend la place) — {"repliee":true,"larg":0,"zone":[1588,1865]}
+  ok     A85 · 1920 × 1080 : un clic sur le liseré la rouvre, à sa largeur d'avant — {"larg":[290,290]}
+  ok     A85 · 1920 × 1080 : double-clic : replie, puis rouvre — {"r":[true,false]}
+  ok     A85 · 1920 × 1080 : la largeur est retenue au rechargement (ce navigateur) — {"larg":[290,290]}
+  ok     A85 · 1920 × 1080 : en répétition, la colonne a la même poignée et la même largeur — {"rep":true,"poignee":true,"larg":[290,350]}
+  ok     A85 · 1920 × 1080 : zéro erreur JS — []
+— fin : 46 vérifications · 0 échec(s) — VERT · asm.html md5 1c438f704ba19afae5dec423cea655fe

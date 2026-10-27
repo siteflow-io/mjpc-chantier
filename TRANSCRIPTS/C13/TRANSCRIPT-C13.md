@@ -4857,3 +4857,92 @@ MEMO
 
 27/10/2026 16:50
 MEMO
+
+
+---
+
+## Tour 248 — 27/10/2026 17:27 → 17:36
+
+**Paul :** Promeus
+
+**Claude :**
+
+À jouer : la Rédaction universelle en ligne (611) · en cours chez les exécutants : E1 et E3 l'accès aux rédactions depuis le site (616) · ouvert : 615, 604, 538, 553, 586, 481, 458
+
+610. Promue. redaction.html est en ligne : l'adresse rend le fichier bit à bit depuis 17:29. redaction_dugain_v3.html n'a pas bougé. Registre, journal, point de retour et où-trouver-quoi sont faits.
+
+611. Pour tes lettres : ouvre https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof, puis « ➕ Nouveau sujet ». Colle la lettre, copiée ici avec le bouton « copier » : https://github.com/siteflow-io/mjpc-chantier/blob/main/LIVRAISONS/REDACTION/sujets/lettre-grande-guerre.json. « Vérifier », puis « Créer » : « Préparer le sujet » s'ouvre, tu y lis les phrases ; aucune fiche ne sort avec une phrase que tu n'as pas lue. Puis « 👥 Classe » : 3 FRANKLIN Aretha ou 3 DYLAN Bob. Le compteur d'orthographe suit les seuils du 538 tant que tu n'as pas dit autre chose.
+
+612. Ce que je ne sais pas : si ton site accepte d'enregistrer les rédactions. Le témoin « ✓ Enregistré au site » te le dira à la première copie ; s'il ne vient pas, dis-le-moi avant la suite (la copie reste gardée dans ce navigateur).
+
+613. L'Atelier est candidat. E3 l'a vérifié par le geste aux quatre tailles : 68 sur 68 pour l'Atelier, 396 sur 396 pour les écrans voisins ; mon banc est vert (106 sur 106). Images T248-01 à 04 : l'Atelier avant et après, à ta taille d'écran ; les marques posées dans l'Atelier ; les mêmes au tableau en répétition ; un chapitre importé avec ses notes de présentateur, chacune dans sa diapo.
+
+614. À la promotion, le prompt d'injection passe en 1.0 : il fait écrire les notes de présentateur de chaque diapo (comment lancer, la réponse attendue, l'erreur fréquente, le passage à la suite).
+
+615. Restent ouvertes au registre, hors de ce candidat : 13 · 47 (le « ? » d'aide), 13 · 48 (la présence du prof écrite en mode test), 13 · 56 (la vidéo, attend ton 586), 13 · 59 (le bilan, attend ton 604). Ta règle dit : jamais de promotion sur dette. À la ⑤, tu as promu avec 13 · 47 et 13 · 48 ouvertes. Promeus, ou on règle d'abord ?
+
+616. L'accès depuis le site (ton R7) est lancé : une ligne « ✏️ Rédactions » dans le menu des outils ; dans la séance, l'onglet « Rédaction » ouvre le sujet rattaché à la séance, par « Lier » comme tes autres documents, sur la classe du cours ; rien ne change pour l'élève. E1 code, E3 vérifie ; je les ai réveillés à 17:35.
+
+À tester : 611, créer la lettre, la préparer, corriger une copie, et regarder le témoin « ✓ Enregistré au site ».
+
+27/10/2026 17:36
+MEMO
+
+**Claude (17:40, sans message de Paul) :**
+
+617. Correction du 616, trouvée par E1 avant de coder : l'onglet « Rédaction » est celui de la page du niveau, pas d'une séance ouverte ; il n'y a donc pas toujours de « classe du cours ». Il ouvre le sujet sur la classe de l'heure ouverte, sinon sur celle de « Je publie pour », sinon il te la demande.
+
+À tester : le 611, toujours.
+
+27/10/2026 17:40
+MEMO
+
+
+---
+
+## Tour 249 — 27/10/2026 17:42
+
+**Paul :** Pourquoi n'y a-t-il que les classes de 3e? ( Je me fie à ce que tu dis, je n'ai pas expérimenté le site)
+
+**Claude :**
+
+À jouer : la Rédaction universelle (611) · en cours chez les exécutants : E1 et E3 l'accès depuis le site (616, 617) · ouvert : 615, 604, 538, 553, 586, 481, 458
+
+618. Ce n'est pas le site, c'est ma phrase : au 611, j'ai nommé tes deux 3e parce que la lettre est un sujet de 3e. « 👥 Classe » propose toutes les classes du site qui ont des élèves, de la 6e à la 3e. Je l'ai mesuré dans le code (la liste ne filtre que les classes sans élèves et les classes internes) et le banc le vérifie.
+
+619. Le sujet ne trie donc pas les classes par niveau : la liste de la lettre montre aussi tes 4e.
+
+À tester : le 611 ; dans « 👥 Classe », tu dois voir toutes tes classes.
+
+27/10/2026 17:42
+MEMO
+
+
+---
+
+## Tour 250 — 27/10/2026 17:45 → 17:52
+
+**Paul :** Normalement les apps ont toutes le même panneau de configuration et de contrôle. Le modele est correction dictée. Vérifie en quoi on peut adapter rédac universelle pour ça
+
+**Claude :**
+
+À jouer : la Rédaction universelle (611) · en cours chez les exécutants : E1 et E3 l'accès depuis le site (616, 617) · ouvert : 626, 615, 604, 538, 553, 586, 481, 458
+
+620. Mesuré par le geste, sur un faux hub : non, la Rédaction universelle n'a pas ce panneau. Elle a gardé la barre de l'ancienne app de Dugain, dix boutons à plat (images T250-01 et T250-02). Dette 13 · 60 au registre.
+
+621. Ce qui lui manque du modèle : l'accueil « Mes dictées » rangé par niveau, chaque ligne avec sa classe, sa date, la barre des copies corrigées, ✏️ ⧉ 🗑️ et « Ouvrir → » ; dans une dictée ouverte, l'en-tête (titre, classe, 9/29, la barre), « Snapshot », « Restaurer », « Retour », et les trois onglets Pilotage, Données, Réglages ; le « ? » d'aide ; la carte « Mode test ».
+
+622. Une seule différence de fond : une dictée appartient à une classe, un sujet de rédaction se corrige dans plusieurs classes. Je propose une ligne par sujet et par classe sur l'accueil, comme une dictée (« Écrire une lettre de la Grande Guerre — 3 FRANKLIN Aretha », sa barre, son statut), et « ＋ Nouvelle rédaction » : tu choisis le sujet, ou tu en colles un nouveau, puis la classe.
+
+623. La correspondance. Pilotage : Préparation = « Préparer le sujet » et l'énoncé ; Correction = la grille des élèves et la copie. Données : Bilan = « Stats prof » ; Fiches élèves = l'aperçu et « Exporter tous HTML ». Réglages = la grille du sujet (critères, seuils du compteur). Dans l'en-tête, « Snapshot » et « Restaurer » remplacent « Exporter JSON » et « Importer JSON ». « Rapide », « Copies », « Suivi » et « Exercices » n'ont rien derrière côté rédaction (l'élève ne reçoit rien en ligne, ton R7) : pas d'onglet tant qu'il n'y a rien.
+
+624. « Auto-sauvegarde » disparaît : elle téléchargeait un fichier à chaque copie ; le site enregistre maintenant chaque geste, et « Snapshot » garde l'export.
+
+625. Ce qui ne bouge pas : la correction elle-même (classique, interrogatif, compteur, citations) et la fiche de l'élève, mot pour mot ; toute la largeur de l'écran. Le panneau prend l'aspect du modèle (blanc et bleu, au lieu du bordeaux). Le modèle, lui, n'utilise pas toute la largeur : une colonne d'environ 1 270 px au milieu de tes 1707 (dette 13 · 61).
+
+626. E4 l'écrit dans la Rédaction universelle, sur le sas ; tu juges sur les images avant/après ; rien ne part en ligne sans ton « promeus ». Tes lettres corrigées d'ici là restent où elles sont : le changement de panneau ne touche pas aux copies. Oui pour 622 à 626 ?
+
+À tester : le 611, toujours.
+
+27/10/2026 17:52
+MEMO

@@ -3828,3 +3828,16 @@ MEMO
 
 27/10/2026 02:09
 MEMO
+
+## Tour 207 — 27/10/2026 03:02 — contrôle n°69 (sans message de Paul depuis le tour 201)
+
+**Fait.** Lu sur `integration` depuis `05c34437` : **E1 fini sur §12.28 et §12.29** (`6aa2d0fb` : la barre du bas retirée du gabarit, `dr_tout` n'appelle plus `alerteOuvrir` ; `2619511c` ; banc E1 575/0). E2 a lu la relance de 02:08 et la traite (rappel 03:10 : reproduire « Reprendre » à 1920, régler). E3 rejoue depuis 02:47. Banc relancé sur la tête. Contrôle n°70 à 03:52 (`trig_01T8bTv3sgJdNzYNREMoicmd`).
+
+**Réponse (mot pour mot).**
+
+447. Contrôle de 03:00. E1 a fini ses deux chantiers : la barre du bas n'existe plus dans le code. Il reste le défaut de « Reprendre » à deux tailles d'écran (E2 y travaille), puis la dernière série de mesures d'E3. Prochain contrôle à 03:52.
+
+À tester : rien pour l'instant — rien n'est en ligne.
+
+27/10/2026 03:02
+MEMO

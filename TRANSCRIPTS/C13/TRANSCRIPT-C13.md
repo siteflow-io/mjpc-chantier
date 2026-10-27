@@ -4197,3 +4197,24 @@ MEMO
 
 27/10/2026 11:12
 MEMO
+
+## Tour 224 — 27/10/2026 11:18 — Paul (11:14)
+
+**Paul (mot pour mot).** « Ça prend beaucoup de temps »
+
+**Mesuré.** Depuis « règle les dettes » (08:47) : E1 a codé 49-50 en 25 min et 51 en 1 h (fini 11:02) ; E2 la phrase en 50 min (09:37) ; mais E2 a attendu `edtCleClasse` 35 min sur un rappel de 50 min (poussée 44 à 11:12), et E3 ne s'était pas reprogrammé deux fois (rien de 08:21 à 10:10). Une vérification complète d'E3 (`banc-1228` + `banc-1227` entiers) prend environ 80 à 90 min. Fait : relance E3 — tout est poussé, la vérification courte (`MJPC_CAS=30,51,49,50,39` aux quatre tailles, puis `banc.sh`), sans les deux bancs entiers (la règle de Paul du 12/10 : les écrans changés et voisins, et un parcours fixe) ; relances E1, E2, E3 — rappel toutes les 15 min quand on attend un autre ; E3 réveillé ; contrôle n°76 avancé à 11:45.
+
+**Réponse (mot pour mot).**
+
+À jouer : rien · en cours chez les exécutants : E3 vérifie · ouvert : 481, 458
+
+515. Oui. Le code lui-même a pris peu de temps ; le reste est parti en attentes : chaque exécutant ne se réveille que toutes les 50 minutes, E2 a attendu E1 plus d'une demi-heure, et E3 a oublié deux fois de se reprogrammer. Tout est codé depuis 11:12.
+
+516. J'ai raccourci la vérification : E3 ne vérifie que ce qui a changé (la phrase, tes classes, le titre, la clé), aux quatre tailles d'écran, plus mon parcours fixe — ta règle du 12/10. Environ une demi-heure au lieu d'une heure et demie. Puis je t'envoie les images.
+
+517. Pour la suite : quand un exécutant en attend un autre, il se réveille toutes les 15 minutes, plus toutes les 50.
+
+À tester : rien de nouveau avant la ⑤.
+
+27/10/2026 11:18
+MEMO

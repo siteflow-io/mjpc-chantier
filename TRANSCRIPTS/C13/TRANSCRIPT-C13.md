@@ -3906,3 +3906,36 @@ MEMO
 
 27/10/2026 06:10
 MEMO
+
+## Tour 211 — 27/10/2026 07:44 — Paul (07:36)
+
+**Paul (mot pour mot).** « Je ne vois pas le ? Sur les écrans ( sauf l'accueil oui j'ai vu). Par ailleurs, les ? Prennent ils en compte exactement ce que je vois? ( S'adaptent ils au contenu du chapitre affiché ?). De plus, as tu réglé la dette du chargement du chapitre pour Dylan Franklin Hugo Turing ? »
+
+**Fait.** Mesuré dans l'assemblé `2db8b6c5` : `.aide-q` = languette 20 × 56 px, `right:0`, mi-hauteur, fond `#2a2218` (l. 24915) — présente sur les paires T210-02 à 12 (bord droit), invisible à l'œil sur fond sombre. `aideRendre` : le texte = `AIDE_ECRANS[aideCle()]`, clé par écran (30) et, pour la classe, par moment (`classe-ouverture`, `classe-heure`, `classe-fin`, `classe-close`) ; aucun contenu du chapitre lu. `banc-1228` cas 39 : seul « 3 DYLAN Bob » est publié et mesuré (classe créée et reliée par le banc) ; dans `grille-appariee.json` du faux hub (fabriqué, semaine du 14/09) : 3 FRANKLIN Aretha → 3E Charles de Gaulle ; 4 HUGO, 4 TURING, 3 DYLAN Bob → rien ; aucun chapitre de 4e. Le vrai hub n'est pas joignable d'ici (403 au proxy, pas d'autre essai). Vu dans les sorties d'E3 (05:26) et manqué à l'annonce : « en mode test, la présence du prof s'écrit au hub (1 × PUT /presence/prof) » — même code en production ③ (l. 4957). Maquette du « ? » en or sur le fichier réel (style posé dans le candidat, faux hub du banc) : `pieces/T211-01-le-point-d-interrogation-en-or-sur-l-emploi-du-temps.png`, `pieces/T211-02-le-point-d-interrogation-en-or-sur-l-atelier.png`, envoyées. Registre (prod `f178d53`) : 13 · 39 annotée (Dylan seulement), 13 · 47 (le « ? » ne se voit pas), 13 · 48 (présence au hub en mode test). Exécutants non réveillés : attente du mot de Paul.
+
+**Réponse (mot pour mot).**
+
+À jouer : rien, le candidat attend · en cours chez les exécutants : rien · ouvert : 458, 460, 463
+
+457. Le « ? » est bien sur chaque écran, mais tu ne le vois pas : c'est une petite languette sombre collée au bord droit, à mi-hauteur (sur les images 02 à 12, tout à droite, au milieu). Ça ne va pas : une fonction cachée. Dette 13 · 47.
+
+458. Proposé : la même place, en or et plus grande (T211-01 sur l'emploi du temps, T211-02 sur l'Atelier). Oui ?
+
+459. Non, les textes du « ? » ne s'adaptent pas au chapitre. Chaque écran a son texte (30 en tout), et l'heure a le sien à chaque moment (ouverture, heure lancée, fin, close). Mais le texte est le même pour tous les chapitres.
+
+460. Une aide qui lit ce que tu as à l'écran (ce chapitre, cette classe, ce qui vient ensuite), c'est le mode dirigé dont tu parlais hier, mis après la simplification. Proposé : dans ④, le « ? » reste fixe ; l'aide qui s'adapte entre dans le mode dirigé. Oui ?
+
+461. La dette du chargement (13 · 39) n'est pas réglée. Le code est corrigé, de la même façon pour toutes les classes. Mais E3 n'a mesuré que Dylan (image 01 : ses heures montrent le chapitre). Franklin, dans le banc, c'est « 3E Charles de Gaulle », celle qui paraissait déjà. Hugo et Turing n'ont jamais été mesurés : le banc n'a pas de chapitre de 4e. Donc pour eux, je ne sais pas.
+
+462. Pour ton écran réel : une case n'affiche un chapitre que si la classe de l'emploi du temps est reliée à une classe du site (panneau prof → Emploi du temps → « 🔗 Classes de la grille et classes du site »). Sinon elle dit « classe non encore importée », publié ou pas. Je ne vois pas ton site réel d'ici.
+
+463. Une question : sur ton emploi du temps, les cases de Dylan, Hugo et Turing disent-elles « classe non encore importée » ?
+
+464. J'ai manqué une ligne d'E3 en t'annonçant le candidat : en mode test, le site envoie quand même au vrai site le signal « le prof est connecté ». La production le fait déjà ; ce n'est aucune donnée, et personne ne le lit. Mais le mode test promet que rien ne sort : dette 13 · 48.
+
+465. Donc ④ ne se promeut pas : trois dettes ouvertes (13 · 39, 13 · 47, 13 · 48). Sur ton « oui » à 458 : E1 met le « ? » en or et coupe le signal en mode test ; E3 mesure Hugo et Turing avec un chapitre de 4e, puis rejoue tout. Ensuite, de nouvelles images.
+
+À tester : rien, rien n'est en ligne.
+
+27/10/2026 07:44
+MEMO

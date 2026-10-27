@@ -14905,6 +14905,7 @@ function atVuesBarreHtml(){
       +'<button class="at-btn at-classe-fermer" id="at-classe-fermer" onclick="atClasseFermer()" title="Ferme l’écran de la classe et ramène à l’emploi du temps. Possible avant le lancement et après « Clore l’heure » ; pendant l’heure, l’écran ne se quitte pas.">✕ Fermer</button></div>';
   }
   return '<div class="at-vues-barre">'+defs.map(function(d){
+    if(d[0]==='pilotage')return '<button class="at-onglet'+(ATVUES.vue==='pilotage'?' at-onglet-actif':'')+'" data-vue="pilotage" id="ong-pilotage" hidden tabindex="-1" aria-hidden="true" onclick="atVuesAller(this.dataset.vue,true)"></button>';   /* E1 (§12.33-2) : « Pilotage » sort de l'Atelier — il y lançait la répétition, comme « ▶ Jouer en avance », seule entrée qui reste ; l'onglet est gardé présent, jamais montré ni cliquable (le déroulé et l'emploi du temps lisent #ong-pilotage, contrat §7), et il marque la répétition (la ligne « Répétition : rien n'est écrit ») */
     return '<button class="at-onglet'+(ATVUES.vue===d[0]?' at-onglet-actif':'')+'" data-vue="'+d[0]+'"'+(ids[d[0]]?' id="'+ids[d[0]]+'"':'')+(d[0]==='atelier'?' data-atelier="1"':'')
       +' title="'+d[2]+'" onclick="atVuesAller(this.dataset.vue,true)">'+d[1]+'</button>';
   }).join('')+'<span class="at-rep-ligne">Répétition : rien n’est écrit. Une heure avec une classe se lance depuis l’emploi du temps.</span>'   /* E1 (§12.28-3a) : sous l'onglet Pilotage de l'Atelier */
@@ -15733,7 +15734,7 @@ function atP2ValiderDeroule(o,V,taxo){
       else if(e.role!==undefined&&e.role!=='bilan')V.cite(r2,': rôle « '+e.role+' » inconnu — seul « bilan » s’écrit.');
       var bil=atP2EstBilan(e); if(bil)bilans.push(n);
       /* §12.24 (prompt v0.7 §1.2, §1.3) : la diapo du bilan — trois blocs dans l'ordre, des mots-clés, ses notes présentateur ; rien « copie de classe » sous les yeux des élèves */
-      if(e.notes!==undefined&&e.role!=='bilan')V.cite(r2,': « notes » sur une diapo qui n’est pas le bilan — les notes présentateur sont à Paul.');
+      /* E1 (§12.33-5) : « notes » est accepté sur toute diapo (les notes présentateur que le prompt d'injection 1.0 rédige pour chacune) — le refus « pas le bilan » tombe */
       var bl=Array.isArray(e.blocs)?e.blocs:[];
       if(e.role==='bilan'){
         if(!(bl.length===3&&bl[0]&&bl[0].t==='question'&&bl[1]&&bl[1].t==='texte'&&String(bl[1].txt||'').trim()==='À mettre dans le bilan'&&bl[2]&&bl[2].t==='consigne'))
@@ -15819,11 +15820,11 @@ function atP2DerouleNormalise(se,avant){
     if(String(e.actId||'').trim())x.actId=String(e.actId);
     if(e.legende&&typeof e.legende==='object'&&!Array.isArray(e.legende))x.legende=JSON.parse(JSON.stringify(e.legende));
     if(e.role==='bilan')x.role='bilan';
-    if(e.role==='bilan'&&String(e.notes||'').trim())Object.defineProperty(x,'_notes',{value:String(e.notes),enumerable:false});   /* §12.24 : rangées en notes présentateur à l'eid, plus bas */
+    if(typeof e.notes==='string'&&e.notes.trim())Object.defineProperty(x,'_notes',{value:e.notes,enumerable:false});   /* §12.24, §12.33-5 (E1) : sur toute diapo, rangées en notes présentateur à l'eid, plus bas */
     return x;
   });
   _drIdentifierEcrans(ecr);
-  var notes={}; ecr.forEach(function(x){ if(x._notes)notes[x.eid]=[{p:null,html:x._notes}]; });   /* le format que lit p8NotesDe (dr-atelier.js) : [{p, html}] — une chaîne y serait échappée */   /* les eid, pour que les activités nomment leurs diapos (jamais un rang) */
+  var notes={}; ecr.forEach(function(x){ if(x._notes){ var L=atP2NotesParagraphes(x._notes); if(L.length)notes[x.eid]=L; } });   /* E1 (§12.33-5) : un paragraphe de note par <p> / <li> (avant : une seule chaîne, que la première frappe de Paul recollait bout à bout) */   /* le format que lit p8NotesDe (dr-atelier.js) : [{p, html}] — une chaîne y serait échappée */   /* les eid, pour que les activités nomment leurs diapos (jamais un rang) */
   var acts=(Array.isArray(src.activites)?src.activites:[]).map(function(a){
     return {id:String(a.id),num:parseInt(a.num,10),titre:String(a.titre||''),
       diapos:ecr.filter(function(x){return x.actId===String(a.id);}).map(function(x){return x.eid;})};
@@ -15836,6 +15837,23 @@ function atP2DerouleNormalise(se,avant){
   return Object.assign({},av,{ecrans:av.ecrans.concat(ecr),activites:avActs.concat(acts),travail:avTrav,notes:Object.assign({},av.notes||{},notes),maj:Date.now()});
 }
 /* le chapitre JSON dont chaque séance porte sa trame normalisée (Remplacer, Jumeau, séance nouvelle de Compléter) */
+/* E1 (§12.33-5) : les notes présentateur d'un chapitre importé — HTML simple (<p>, <ul>, <li>, <b>, <i>) → un paragraphe de note par <p> ou <li>
+   (« • » devant un <li>), au format que lit p8NotesDe : [{p:null, html}] ; seuls <b> et <i> passent, tout le reste devient du texte. */
+function atP2NotesParagraphes(html){
+  var t=document.createElement('template'); t.innerHTML=String(html||''); var out=[];
+  var esc=function(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};
+  var enLigne=function(n){ return Array.prototype.map.call(n.childNodes,function(c){ if(c.nodeType===3)return esc(c.textContent); if(c.nodeType!==1)return ''; var g=c.tagName; if(g==='B'||g==='STRONG')return '<b>'+enLigne(c)+'</b>'; if(g==='I'||g==='EM')return '<i>'+enLigne(c)+'</i>'; if(g==='BR')return ' '; return enLigne(c); }).join(''); };
+  var pousser=function(h){ h=h.replace(/\s+/g,' ').trim(); if(h)out.push({p:null,html:h}); };
+  var ligne=[];
+  var vider=function(){ if(ligne.length){ pousser(ligne.join('')); ligne=[]; } };
+  Array.prototype.forEach.call(t.content.childNodes,function(c){
+    if(c.nodeType===1&&(c.tagName==='UL'||c.tagName==='OL')){ vider(); Array.prototype.forEach.call(c.querySelectorAll('li'),function(li){ pousser('\u2022 '+enLigne(li)); }); return; }
+    if(c.nodeType===1&&(c.tagName==='P'||c.tagName==='DIV'||c.tagName==='LI')){ vider(); pousser((c.tagName==='LI'?'\u2022 ':'')+enLigne(c)); return; }
+    if(c.nodeType===3){ ligne.push(esc(c.textContent)); return; }
+    if(c.nodeType===1){ var w=document.createElement('div'); w.appendChild(c.cloneNode(true)); ligne.push(enLigne(w)); }
+  });
+  vider(); return out;
+}
 function atP2NormaliserSeances(chap){
   atSeances(chap).forEach(function(p){ var se=p.se; if(se&&se.deroule&&Array.isArray(se.deroule.ecrans)&&se.deroule.ecrans.length)se.deroule=atP2DerouleNormalise(se,null); });
   return chap;

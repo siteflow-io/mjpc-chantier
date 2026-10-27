@@ -46,7 +46,7 @@ export const MUTATIONS = [
   ['heureEntier', '« heure » non entière', ': « heure » n’est pas un nombre entier.', j => { E0(j)[1].heure = 1.5; }],
   ['schemaSansTitre', 'un schéma sans le champ « titre » (le « txt » de la v0.2)', 'un schéma sans « titre ».', j => { const b = blocDe(E1(j), 'schema'); b.txt = b.titre; delete b.titre; }],
   ['fil', 'un « fil » autre que « langue »', ': « fil » ne vaut que « langue », ou s’omet.', j => { j.chapitre.fil = 'grammaire'; }],
-  ['notesHorsBilan', '« notes » sur une diapo d\'activité', ': « notes » sur une diapo qui n’est pas le bilan — les notes présentateur sont à Paul.', j => { E0(j)[1].notes = '<p>pour moi</p>'; }],
+  /* §12.33 (5) : le refus « notes » hors du bilan est tombé — A64 vérifie qu'elles sont acceptées partout */
   ['bilanBlocs', 'un bilan à deux blocs (la consigne manque)', ': le bilan n’a pas ses trois blocs (question, texte « À mettre dans le bilan », consigne) — dans cet ordre.', j => { E0(j)[E0(j).length - 1].blocs.pop(); }],
   ['bilanOrdre', 'un bilan dont les blocs ne sont pas dans l\'ordre', ': le bilan n’a pas ses trois blocs (question, texte « À mettre dans le bilan », consigne) — dans cet ordre.', j => { const B = E0(j)[E0(j).length - 1].blocs; B.push(B.shift()); }],
   ['bilanPoint', 'une ligne « À mettre dans le bilan » qui finit par un point', ': une ligne « À mettre dans le bilan » finit par un point ou dépasse douze mots — des mots-clés, pas la réponse.', j => { E0(j)[E0(j).length - 1].blocs[1].el[0] = 'Le poète est comme l\'albatros.'; }],

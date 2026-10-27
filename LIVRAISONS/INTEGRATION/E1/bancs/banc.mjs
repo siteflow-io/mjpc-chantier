@@ -692,7 +692,7 @@ await B('A33', 'l\'import des déroulés (§12.21, dettes 13 · 30 et 13 · 31 ;
     E.verif('A33', im && im.ref.startsWith('https://siteflow-io.github.io/mjpc-medias/') && im.devoilerTout === false, quoi + ' : l\'image a son adresse complète au hub (le site la lit telle quelle) et garde devoilerTout', im && (im.ref + ' · ' + im.devoilerTout));
     E.verif('A33', vi && vi.reperes.map(r => r.t).join() === '0,80' && pa && pa.contrat === true && pa.etapes === 4 && (!fi || fi.feuille), quoi + ' : vidéo (repères triés), page (contrat, étapes) et fiche (feuille) gardées', JSON.stringify({ r: vi && vi.reperes, pa, f: fi && fi.feuille }).slice(0, 160));
     const bil = E0[E0.length - 1]; const nt = d.notes && bil && d.notes[bil.eid];
-    E.verif('A33', bil && bil.role === 'bilan' && Array.isArray(nt) && nt[0] && nt[0].p === null && /copie de la classe/.test(nt[0].html) && !('notes' in bil), quoi + ' : les notes du bilan rangées en notes présentateur à son eid (deroule.notes, [{p, html}]), pas dans la diapo (§12.24)', JSON.stringify(nt || null).slice(0, 120));
+    E.verif('A33', bil && bil.role === 'bilan' && Array.isArray(nt) && nt.length && nt.every(n => n.p === null) && nt.some(n => /copie de la classe/.test(n.html)) && !('notes' in bil), quoi + ' : les notes du bilan rangées en notes présentateur à son eid (deroule.notes, [{p, html}], un paragraphe par <p> / <li> depuis §12.33), pas dans la diapo (§12.24)', JSON.stringify(nt || null).slice(0, 120));
     E.verif('A33', acts.length && acts.every(a => a.num > 0 && a.diapos.length && a.diapos.every(x => eids.has(x))) && d.travail && Object.keys(d.travail).length, quoi + ' : les activités (numéro, diapos par eid) et le travail à faire sont écrits', JSON.stringify(acts.slice(-1)) + ' · ' + JSON.stringify(d.travail)); };
   await voie('completer'); const dC = await lire('/site/3e/chapitres/0/seances/0/deroule'); const nJ = j.chapitre.seances[0].deroule.ecrans.length;
   E.verif('A33', dC && dC.ecrans.length === nAv + nJ && (dC.ecrans[0].eid || dC.ecrans[0].id) === eid0, 'Compléter (séance appariée par son titre) : la trame s\'écrit au hub, à la suite de l\'existante, sans rien écraser', (dC ? dC.ecrans.length : 0) + ' = ' + nAv + ' + ' + nJ);
@@ -1273,6 +1273,98 @@ await B('A59', '§12.31 (1 ter) : une heure jouée d\'une classe à clé simplif
     E.verif('A59', r.suivante && /heure 2\s*\/\s*3/.test(r.suivante) && /Poésie et peinture/.test(r.suivante), (forme === 'cle' ? 'clé' : 'nom') + ' : la case suivante de la classe dit « heure 2/3 » de la même séance', JSON.stringify(r.suivante));
     E.verif('A59', r.gaulle === true, (forme === 'cle' ? 'clé' : 'nom') + ' : la 3E Charles de Gaulle (clé = nom) garde son heure jouée du 07/09', JSON.stringify(r.gaulle));
     E.verif('A59', !errs.length, (forme === 'cle' ? 'clé' : 'nom') + ' : aucune erreur JS', errs.join(' ; ') || undefined); await ctx.close(); } });
+
+/* ── A60 · §12.33 (1), dette 13 · 55 : la poignée entre la diapo et « Notes pour cette diapo » ne sort jamais de l'écran — l'Atelier, la répétition, l'écran de la classe ; quatre tailles, zoom 90 / 100 / 110 % (la fenêtre en pixels CSS) ── */
+const poigneeMesure = pg => pg.evaluate(() => { const g = document.getElementById('poignee-mur'), n = document.querySelector('#dr-zone .notes'); if (!g || !n) return null; const a = g.getBoundingClientRect(), b = n.getBoundingClientRect(); const H = innerHeight;
+  return { H, haut: Math.round(a.top), bas: Math.round(a.bottom), h: Math.round(a.height), notesHaut: Math.round(b.top), notesVues: Math.round(Math.max(0, Math.min(b.bottom, H) - b.top)), defile: document.scrollingElement.scrollHeight - H }; });
+const poigneeOk = m => m && m.h >= 10 && m.haut >= 0 && m.bas <= m.H && m.notesVues >= 40 && m.defile <= 0;
+await B('A60', '§12.33 (1), dette 13 · 55 : la poignée dans l\'écran, haute d\'au moins 10 px, et au moins 40 px de notes visibles — l\'Atelier aux quatre tailles × zoom 90/100/110 %, la répétition et l\'écran de la classe aux quatre tailles', async () => {
+  for (const [w, h] of TAILLES_1227) for (const z of [1, 0.9, 1.1]) { const W = Math.round(w / z), H = Math.round(h / z);
+    const o = await E.ouvrir(b, { w: W, h: H, vue: 'atelier' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(700);
+    const m = await poigneeMesure(pg); E.verif('A60', poigneeOk(m), w + ' × ' + h + ' zoom ' + Math.round(z * 100) + ' % (' + W + ' × ' + H + ') · l\'Atelier : la poignée et les notes dans l\'écran', JSON.stringify(m));
+    if (z === 1) { await pg.evaluate(() => { try { lancerRepetition(); } catch (e) {} }); await pg.waitForTimeout(1200); const r = await poigneeMesure(pg); E.verif('A60', poigneeOk(r), w + ' × ' + h + ' · la répétition : la poignée et les notes dans l\'écran', JSON.stringify(r)); }
+    await o.ctx.close(); }
+  for (const [w, h] of TAILLES_1227) { const o = await ouvrirProf(w, h); const pg = o.pg;
+    await pg.evaluate(() => new Promise(r => dr_ouvrirClasse('3e', '0', '0', () => r()))); await pg.waitForTimeout(1200); await compris(pg);
+    const m = await poigneeMesure(pg); E.verif('A60', poigneeOk(m), w + ' × ' + h + ' · l\'écran de la classe : la poignée et les notes dans l\'écran', JSON.stringify(m)); await o.ctx.close(); }
+});
+
+/* ── A63 · §12.33 (4) : « 📝 Notes » (les notes au fil de l'eau) n'est pas dans l'Atelier ni en répétition ; il est dans l'écran de la classe ── */
+await B('A63', '§12.33 (4) : « 📝 Notes » absent de l\'Atelier (et de la répétition), présent dans l\'écran de la classe', async () => {
+  const vu = pg => pg.evaluate(() => { const x = document.getElementById('bnotes'); return !!(x && x.offsetParent !== null && x.getBoundingClientRect().width > 0); });
+  const o = await E.ouvrir(b, { w: 1707, h: 743, vue: 'atelier' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(600);
+  const at = await vu(pg); await pg.evaluate(() => { try { lancerRepetition(); } catch (e) {} }); await pg.waitForTimeout(1000); const rep = await vu(pg); await o.ctx.close();
+  const o2 = await ouvrirProf(1707, 743); const p2 = o2.pg; await p2.evaluate(() => new Promise(r => dr_ouvrirClasse('3e', '0', '0', () => r()))); await p2.waitForTimeout(1200); await compris(p2); const cl = await vu(p2); await o2.ctx.close();
+  E.verif('A63', !at && !rep && cl, '« 📝 Notes » : Atelier ' + (at ? 'visible' : 'absent') + ', répétition ' + (rep ? 'visible' : 'absent') + ', écran de la classe ' + (cl ? 'visible' : 'absent'), JSON.stringify({ at, rep, cl }));
+});
+
+/* ── A62 · §12.33 (3) : surligner, couleur du texte, « ✍ À écrire » dans la barre de l'Atelier → enregistrés avec la diapo (la trame au hub), revus après rechargement, vus dans la fenêtre du tableau en répétition ── */
+await B('A62', '§12.33 (3) : dans l\'Atelier, surligner (vert), couleur du texte (rouge), « ✍ À écrire » → la trame au hub (forme.surl, forme.coulTxt, aEcrire) ; rechargé, l\'Atelier les montre ; en répétition, la fenêtre du tableau aussi ; un second « ✍ » retire', async () => {
+  const o = await E.ouvrir(b, { w: 1707, h: 743, vue: 'atelier' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(700);
+  const barre = await pg.evaluate(() => ['at-surl', 'at-txt', 'at-ecr'].map(i => { const x = document.getElementById(i); return !!(x && x.offsetParent !== null) && !!x.title; }));
+  E.verif('A62', barre.every(Boolean), 'la barre de l\'Atelier a surligner, couleur du texte et « ✍ À écrire », chacun avec son infobulle', JSON.stringify(barre));
+  /* trois éléments de texte de la diapo : un mot sélectionné dans chacun des deux premiers, le curseur dans le troisième */
+  const choisir = (k, mot) => pg.evaluate(([k, mot]) => { const L = Array.from(document.querySelectorAll('#mur li[data-p]')).filter(x => /\S{4,}/.test(x.textContent)); const li = L[k]; if (!li) return null; const tw = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); let t; while ((t = tw.nextNode())) { const m = /\S{4,}/.exec(t.textContent); if (m) { const r = document.createRange(); if (mot) { r.setStart(t, m.index); r.setEnd(t, m.index + m[0].length); } else { r.setStart(t, m.index); r.collapse(true); } const s = getSelection(); s.removeAllRanges(); s.addRange(r); return { p: li.dataset.p, txt: mot ? m[0] : '' }; } } return null; }, [k, mot]);
+  const clic = sel => pg.evaluate(s => document.querySelector(s).click(), sel);
+  const a = await choisir(0, true); await clic('#at-surl'); await clic('#at-pal-surl .p8-p[data-c="vert"]'); await pg.waitForTimeout(300);
+  const c = await choisir(1, true); await clic('#at-txt'); await clic('#at-pal-txt .p8-p[data-c="rouge"]'); await pg.waitForTimeout(300);
+  const d = await choisir(2, false); await clic('#at-ecr'); await pg.waitForTimeout(1800);
+  const hub = await pg.evaluate(() => { const B = window.__HUB.site['3e'].chapitres[0].seances[0].deroule; const e = B.ecrans[S.di]; return { forme: e.forme || null, aEcrire: e.aEcrire || null, di: S.di, eid: e.eid }; });
+  const okHub = hub.forme && (hub.forme.surl || []).some(x => x.p === a.p && x.txt === a.txt && x.couleur === 'vert') && (hub.forme.coulTxt || []).some(x => x.p === c.p && x.txt === c.txt && x.couleur === 'rouge') && Array.isArray(hub.aEcrire) && hub.aEcrire.length === 1;
+  E.verif('A62', a && c && d && okHub, 'au hub, dans la diapo (la trame) : le surlignage vert de « ' + (a && a.txt) + ' », la couleur rouge de « ' + (c && c.txt) + ' », « à écrire » de l\'élément ' + (d && d.p), JSON.stringify(hub).slice(0, 300));
+  const snap = await pg.evaluate(() => JSON.parse(JSON.stringify(window.__HUB))); await o.ctx.close();
+  const o2 = await E.ouvrir(b, { w: 1707, h: 743, vue: 'atelier', hub: snap }); const p2 = o2.pg; await sansVoile(p2); await p2.waitForTimeout(700);
+  await p2.evaluate(di => { try { aller(di); } catch (e) { S.di = di; dr_tout(); } }, hub.di); await p2.waitForTimeout(600);
+  const vu = pg2 => pg2.evaluate(([ap, cp, dp]) => { const li = p => document.querySelector('#mur [data-p="' + p + '"]'); const A = li(ap), C = li(cp), D = li(dp); return { surl: !!(A && A.querySelector('mark')), coul: !!(C && Array.from(C.querySelectorAll('span[style]')).some(s => /color/.test(s.getAttribute('style')))), ecr: !!(D && (D.classList.contains('aecrire') || (D.closest('.bloc') && D.closest('.bloc').classList.contains('aecrire')))) }; }, [a.p, c.p, d.p]);
+  const r1 = await vu(p2); E.verif('A62', r1.surl && r1.coul && r1.ecr, 'rechargé : l\'Atelier montre le surlignage, la couleur et « à écrire »', JSON.stringify(r1));
+  await p2.evaluate(() => lancerRepetition()); await p2.waitForTimeout(1200);
+  const [tab] = await Promise.all([o2.ctx.waitForEvent('page', { timeout: 6000 }).catch(() => null), p2.evaluate(() => { try { dr_ouvrirTableau(); } catch (e) {} })]);
+  let r2 = null; if (tab) { await tab.waitForTimeout(2500); r2 = await tab.evaluate(([at, ct]) => { const t = document.body.innerText; const m = Array.from(document.querySelectorAll('mark')).map(x => x.textContent); const sp = Array.from(document.querySelectorAll('span[style]')).filter(s => /color/.test(s.getAttribute('style'))).map(x => x.textContent); return { mark: m.includes(at), coul: sp.includes(ct), ecr: document.querySelectorAll('.aecrire').length > 0 }; }, [a.txt, c.txt]); }
+  E.verif('A62', r2 && r2.mark && r2.coul && r2.ecr, 'en répétition, la fenêtre du tableau montre le surlignage, la couleur et « à écrire » dès la diapo projetée', JSON.stringify(r2));
+  if (tab) await tab.close().catch(() => {}); await p2.evaluate(() => { try { arreterRepetition(); } catch (e) {} }); await p2.waitForTimeout(800);
+  await p2.evaluate(p => { const li = document.querySelector('#mur [data-p="' + p + '"]'); const tw = document.createTreeWalker(li, NodeFilter.SHOW_TEXT); const t = tw.nextNode(); const r = document.createRange(); r.setStart(t, 0); r.collapse(true); getSelection().removeAllRanges(); getSelection().addRange(r); }, d.p); await p2.evaluate(() => document.getElementById('at-ecr').click()); await p2.waitForTimeout(1500);
+  const r3 = await p2.evaluate(() => { const e = window.__HUB.site['3e'].chapitres[0].seances[0].deroule.ecrans[S.di]; return e.aEcrire || []; });
+  E.verif('A62', Array.isArray(r3) && r3.length === 0, 'un second « ✍ » sur le même élément le retire de la trame', JSON.stringify(r3));
+  E.verif('A62', !o2.errs.length, 'aucune erreur JS', o2.errs.slice(0, 2).join(' ; ') || undefined); await o2.ctx.close();
+});
+
+/* ── A64 · §12.33 (5) : l'import accepte « notes » sur toute diapo (HTML simple) et les range en notes présentateur à l'identité de la diapo — un paragraphe par <p> / <li> ; chacune paraît dans le cadre de sa diapo, dans l'Atelier ── */
+await B('A64', '§12.33 (5) : un chapitre avec des « notes » sur trois diapos et le bilan → accepté par le validateur, importé (Remplacer), chaque note dans le cadre « Notes pour cette diapo » de sa diapo, un paragraphe par <p> / <li>', async () => {
+  const { chapitreTest } = await import('./import-3e.mjs');
+  const st = E.store(); const j = chapitreTest(st); const ec = j.chapitre.seances[0].deroule.ecrans; const bil = ec.findIndex(e => e.role === 'bilan');
+  /* des notes comme les rédige le prompt d'injection 1.0 : lancer la diapo, la réponse attendue, l'erreur fréquente, le passage à la suivante */
+  const N = [
+    '<p><b>Lancer :</b> « Regardez le tableau de Friedrich : que voit-on au premier plan ? »</p><p><b>Attendu :</b> un homme de dos, face à une mer de brume.</p><ul><li><i>Erreur fréquente :</i> décrire le paysage sans le personnage.</li><li>Suite : « Et ce personnage, que ressent-il ? »</li></ul>',
+    '<p><b>Lancer :</b> lecture à voix haute de la première strophe de « L\'Albatros ».</p><p><b>Attendu :</b> l\'albatros est maladroit sur le pont, majestueux dans le ciel.</p>',
+    '<p><b>Lancer :</b> « Quel lien entre le poète et l\'oiseau ? »</p><ul><li><i>Erreur fréquente :</i> prendre l\'albatros au sens propre seulement.</li><li>Suite : la dernière strophe, la comparaison.</li></ul>'];
+  [0, 1, 2].forEach(k => { ec[k].notes = N[k]; }); if (bil >= 0 && !ec[bil].notes) ec[bil].notes = '<p>Mots-clés : <b>romantisme</b>, <b>sublime</b>.</p><p>La copie de la classe se fait au cahier.</p>';
+  const o = await E.ouvrir(b, { w: 1707, h: 743, vue: 'atelier', hub: st }); const pg = o.pg; await sansVoile(pg);
+  const mot = await pg.evaluate(([jj, tx]) => chValiderChapitre(jj, tx).motifs(), [j, st.taxonomie]);
+  E.verif('A64', !mot.some(m => /notes/.test(m)), 'le validateur accepte « notes » sur les diapos 1, 2, 3 (le refus « pas le bilan » est tombé)', mot.filter(m => /notes/.test(m)).join(' | ') || (mot.length ? 'autres refus : ' + mot.slice(0, 2).join(' | ') : undefined));
+  await pg.evaluate(jj => { CH.json = jj; CH.niveau = '3e'; CH.chapIdx = 0; CH.taxo = null; chInjecterConfirme('remplacer'); }, j); await pg.waitForTimeout(3000);
+  const hub = await pg.evaluate(() => { const d = window.__HUB.site['3e'].chapitres[0].seances[0].deroule; return { eids: d.ecrans.map(e => e.eid), notes: d.notes || {} }; });
+  const L = k => hub.notes[hub.eids[k]] || []; const bilK = bil;
+  E.verif('A64', L(0).length === 4 && L(1).length === 2 && L(2).length === 3 && (bilK < 0 || L(bilK).length >= 1) && L(0).every(n => n.p === null) && /^• /.test(L(0)[2].html) && /<b>Lancer :<\/b>/.test(L(0)[0].html), 'au hub, deroule.notes à l\'eid de chaque diapo : 4, 2, 3 paragraphes (un par <p> / <li>, « • » devant un <li>, <b> gardé) et ceux du bilan', JSON.stringify([0, 1, 2, bilK].map(k => L(k).map(n => n.html.slice(0, 30)))).slice(0, 300));
+  await pg.evaluate(() => new Promise(r => atChargerChapitres('3e', () => { atEditerChapitre('3e', '0'); r(); }))); await pg.waitForTimeout(1200);
+  await pg.evaluate(() => { const x = document.querySelector('.at-onglet[data-vue="atelier"]'); if (x) x.click(); else atVuesAller('atelier'); }); await pg.waitForTimeout(1500);
+  const cadres = []; for (const k of [0, 1, 2, bilK]) { if (k < 0) continue; await pg.evaluate(eid => { const i = seance().ecrans.findIndex(e => e.eid === eid); if (i >= 0) { S.di = i; dr_tout(); } }, hub.eids[k]); await pg.waitForTimeout(500); cadres.push(await pg.evaluate(() => (document.getElementById('notesd') || {}).innerText || '')); }
+  E.verif('A64', /premier plan/.test(cadres[0]) && /Erreur fréquente/.test(cadres[0]) && /première strophe/.test(cadres[1]) && /sens propre/.test(cadres[2]) && (bilK < 0 || /romantisme|copie/i.test(cadres[3])), 'dans l\'Atelier, chaque note dans le cadre de sa diapo (diapos 1, 2, 3 et le bilan)', JSON.stringify(cadres.map(c => c.replace(/\s+/g, ' ').slice(0, 70))));
+  E.verif('A64', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close();
+});
+
+/* ── A61 · §12.33 (2) : les onglets de l'Atelier — « Pilotage » en sort (« ▶ Jouer en avance » est la seule entrée de la répétition) ; l'écran de la classe garde Pilotage et Relecture ── */
+await B('A61', '§12.33 (2) : l\'Atelier sans onglet « Pilotage » visible (gardé présent, caché : le déroulé le lit) ; « ▶ Jouer en avance » lance la répétition ; l\'écran de la classe a Pilotage et Relecture', async () => {
+  const onglets = pg => pg.evaluate(() => Array.from(document.querySelectorAll('.at-vues-barre .at-onglet')).filter(x => x.offsetParent !== null && x.getBoundingClientRect().width > 0).map(x => x.textContent.trim()));
+  const o = await E.ouvrir(b, { w: 1707, h: 743, vue: 'atelier' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(600);
+  const at = await onglets(pg); const cache = await pg.evaluate(() => { const x = document.getElementById('ong-pilotage'); return !!x && x.hidden; });
+  E.verif('A61', at.includes('Structure') && at.includes('Atelier') && !at.includes('Pilotage') && cache, 'l\'Atelier : ' + at.join(' · ') + ' — pas de « Pilotage » (présent et caché : ' + cache + ')', JSON.stringify(at));
+  await pg.evaluate(() => document.getElementById('at-jouer').click()); await pg.waitForTimeout(1500);
+  const rep = await pg.evaluate(() => ({ rep: !!S.repetition, ligne: (() => { const l = document.querySelector('.at-rep-ligne'); return !!(l && l.offsetParent !== null); })() }));
+  E.verif('A61', rep.rep && rep.ligne, '« ▶ Jouer en avance » lance la répétition (la ligne « Répétition : rien n\'est écrit » se montre)', JSON.stringify(rep));
+  await pg.evaluate(() => { try { arreterRepetition(); } catch (e) {} }); await pg.waitForTimeout(800); E.verif('A61', !o.errs.length, 'Atelier : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close();
+  const o2 = await ouvrirProf(1707, 743); const p2 = o2.pg; await p2.evaluate(() => new Promise(r => dr_ouvrirClasse('3e', '0', '0', () => r()))); await p2.waitForTimeout(1200); await compris(p2);
+  const cl = await onglets(p2); E.verif('A61', cl.includes('Pilotage') && cl.includes('Relecture') && !cl.includes('Structure') && !cl.includes('Atelier'), 'l\'écran de la classe : ' + cl.join(' · '), JSON.stringify(cl)); await o2.ctx.close();
+});
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

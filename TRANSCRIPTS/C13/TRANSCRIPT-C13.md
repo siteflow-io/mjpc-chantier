@@ -5265,3 +5265,28 @@ Registre 13 · 82.
 
 27/10/2026 23:13
 MEMO
+
+---
+
+## Tour 261 — 27/10/2026 23:16 → 23:20
+
+**Paul :** 687. En fait c'est utile d'avoir des élèves mais dans ce cas ce doit être ceux de la classe test tant qu'à faire. Par ailleurs, les diapos de cahier de texte sont vides j'ai l'impression
+
+**Claude** *(image : `pieces/T261-01-la-diapo-du-cahier-de-textes-est-vide-dans-l-atelier.png` ; mesure : `pieces/T260-mesure/cahier-de-textes.mjs`, `cahier.json` ; contrat §12.38 (2) réécrit, (3) ajouté ; relances E1, E4)* :
+
+À jouer : rien de neuf · en cours chez les exécutants : E1 (670, 683, 686, 692), E4 (la colonne, 690, les feuilles), E3 vérifie · ouvert : 693 ; 641, 538, 553, 586, 481, 458.
+
+690. Ton 687 corrigé : en répétition, les gestes d'élève restent, avec les élèves de la classe test. Au hub, c'est « CLASSE TEST » (3e, quatre élèves inventés : DURAND Alice, BERNARD Emma, PETIT Thomas, ROBERT Chloé). Je ne prends pas « _TEST », qui porte trente noms copiés d'une vraie classe. La classe de l'heure répétée (686) donne la réactivation, l'heure et la date ; seuls les élèves viennent de la classe test. Rien n'est écrit. C'est à E4.
+
+691. Les diapos du cahier de textes : mesuré, tu as raison. Dans l'Atelier et en répétition, elles n'ont que l'étiquette « FIN D'HEURE » (image T261-01). Le site ne met le cahier dans la diapo qu'au lancement d'une heure avec une classe. Registre 13 · 83.
+
+692. Remédiation : dans l'Atelier et en répétition, la diapo montre le cahier comme en classe — l'échéance, le travail à faire prévu, le contenu de l'heure. « Qui a participé » : en répétition, les élèves de la classe test ; dans l'Atelier, vide. Aucune phrase nouvelle : c'est le même rendu qu'en classe. C'est à E1.
+
+693. Une erreur de ma part, relevée par E4 : j'avais écrit que la colonne de droite garde sa largeur d'une fois sur l'autre ; elle ne la garde pas. La gauche la gardera. La droite aussi ? Oui ou non.
+
+694. En route : E1 a poussé la correction de 670 (le lancement), E3 la vérifie ; E4 a relu le contrat de la colonne et la code. Cette nuit, je fais aussi tourner les sept bancs de la dictée qu'E4 ne pouvait pas jouer, sur tes vraies données lues au hub sans rien y écrire, sur la production et sur L18.
+
+À tester : rien de neuf en production ce soir.
+
+27/10/2026 23:20
+MEMO

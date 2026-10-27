@@ -938,9 +938,18 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
             const g = await pg.evaluate(() => { const v = e => !!(e && e.offsetParent && e.getBoundingClientRect().width > 0); const bc = document.getElementById('bcoche'); const bp = document.getElementById('bplus'); const bq = document.getElementById('bqui'); return { role: (() => { try { return ecran().role; } catch (e) { return null; } })(), bilanCoche: v(bc) ? bc.textContent.trim() : null, quiBouton: v(bq), plusTitre: bp ? bp.title : null }; });
             await capt(pg, W, H, '38-4-la-repetition-sur-le-bilan');
             let menuPlus = []; if (await pg.evaluate(() => { const b = document.getElementById('bplus'); return !!(b && b.offsetParent); })) { await pg.click('#bplus').catch(() => {}); await p(pg, 700); menuPlus = await pg.evaluate(() => { const m = document.getElementById('menuplus'); return m ? Array.from(m.querySelectorAll('*')).filter(x => x.children.length === 0 && x.offsetParent).map(x => x.textContent.trim()).filter(Boolean) : []; }); await capt(pg, W, H, '38-5-le-menu-plus-en-repetition'); await pg.keyboard.press('Escape'); await p(pg, 300); }
-            const eleves = menuPlus.filter(x => /Qui a participé|L.appel|appel :/i.test(x)); const titreEl = /qui a participé|absents|appel/i.test(g.plusTitre || '');
-            verif(k, g.role === 'bilan' && !g.bilanCoche, T + ' · A88 · en répétition, sur la diapo du bilan : pas de « ☐ Les élèves ont écrit le bilan »', JSON.stringify(Object.assign({ ib }, g)));
-            verif(k, !eleves.length && !titreEl && !g.quiBouton, T + ' · A88 · en répétition, « ⋯ » sans « Qui a participé » ni « L’appel », son infobulle ne les nomme pas', JSON.stringify({ menu: menuPlus.slice(0, 12), infobulle: g.plusTitre, bqui: g.quiBouton })); }
+            /* A88 (contrat 23:16) : les gestes d'élève restent en répétition, sur les quatre élèves de « CLASSE TEST », jamais ceux d'une vraie classe ; rien d'écrit */
+            const CT = ['DURAND Alice', 'BERNARD Emma', 'PETIT Thomas', 'ROBERT Chloé'];
+            const el = await pg.evaluate(() => { let L = null; try { L = (typeof ELEVES !== 'undefined' && Array.isArray(ELEVES)) ? ELEVES.slice() : null; } catch (e) {} return { L, ecr: (window.__ECR || []).filter(x => !/presence/.test(x)).slice(-5) }; });
+            verif(k, g.role === 'bilan' && !!g.bilanCoche && menuPlus.some(x => /Qui a participé/.test(x)), T + ' · A88 · en répétition, sur le bilan : « Les élèves ont écrit le bilan » et, dans « ⋯ », « Qui a participé » restent', JSON.stringify({ bilan: g.bilanCoche, menu: menuPlus.slice(0, 8) }));
+            verif(k, el.L && el.L.length === 4 && el.L.every(n => CT.indexOf(n) >= 0), T + ' · A88 · les élèves de la répétition sont les quatre de « CLASSE TEST », aucun d’une vraie classe', JSON.stringify(el.L && el.L.slice(0, 6)));
+            /* A91 · la diapo du cahier de textes, en répétition : l'échéance, le travail à faire prévu, le contenu de l'heure */
+            const fin = await pg.evaluate(() => { try { const E = seance().ecrans; const i = E.findIndex(e => e && e.role === 'fin'); aller(i); return i; } catch (e) { return -1; } }); await p(pg, 1500);
+            const cah = await pg.evaluate(() => { const m = document.getElementById('mur'); const t = m ? m.innerText.replace(/\s+/g, ' ').trim() : ''; return { t: t.slice(0, 200), n: t.length }; });
+            await capt(pg, W, H, '38-6-le-cahier-en-repetition');
+            verif(k, fin >= 0 && cah.n > 40 && /chéance|travail|à faire/i.test(cah.t), T + ' · A91 · en répétition, la diapo du cahier de textes montre l’échéance, le travail à faire et le contenu de l’heure', '« ' + cah.t + ' »');
+            const ecrRep = await pg.evaluate(() => (window.__ECR || []).filter(x => !/presence/.test(x)));
+            verif(k, !ecrRep.some(x => /chapitres/.test(x)), T + ' · A88 / A91 · rien d’écrit au hub en répétition (la trame inchangée)', ecrRep.slice(-4).join(', ')); }
           await clicTexte(pg, 'button', 'Arrêter'); await p(pg, 1200); }
       } catch (e) { verif(k, false, T + ' · ' + heure + ' : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
       verif('Z', !o.errs.length, T + ' · 0 erreur JS (38, ' + heure + ')', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }

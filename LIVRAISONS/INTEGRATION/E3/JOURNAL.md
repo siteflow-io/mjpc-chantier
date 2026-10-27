@@ -866,3 +866,13 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - La hauteur de la colonne est mesurée (info).
 - Sorties dans `/` ; captures `*-avant6.png`.
 - E1 a poussé §12.35 (7) (`6812ec83`) : je le joue maintenant (cas 35 et 39b), avec `banc.sh`.
+
+## Retour 85 — 27/10, 23:33 — **§12.35 VERT (`a437cbd6`)** ; §12.39 : A90 encore rouge
+- E1 a poussé §12.35 (7) (`6812ec83`) : le lancement ouvre la séance que la case nomme. L'assemblé de la tête est `a437cbd6`.
+- **Le cas 35, aux quatre tailles : VERT 32/32.** La case de Franklin du lun. 2/11 à 08:57 dit « Remédiation : décrire une image », et le lancement l'ouvre (A83). Le reste est vert comme au retour 82. `banc.sh` : **VERT**.
+- **§12.35 VERT (`a437cbd6`)**.
+- **Le cas 39b : 28/32.** A89 vert ; **A90 rouge** : l'élève de Dylan lit « SÉANCE 1 », puis « SÉANCE 3 ». La remédiation lui est maintenant cachée, mais la numérotation garde son rang (le trou du retour 82). C'est le §12.39 (3) d'E1, attendu.
+- Le cas 38 est ajusté au contrat de 23:16 :
+  - A88 : les gestes d'élève restent en répétition, sur les quatre élèves de « CLASSE TEST » ;
+  - A91 : la diapo du cahier de textes, en répétition, montre l'échéance, le travail à faire et le contenu de l'heure ; rien n'est écrit au hub.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2333-27-10-1235-vert/`.

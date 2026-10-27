@@ -4032,3 +4032,30 @@ MEMO
 
 27/10/2026 08:42
 MEMO
+
+## Tour 215 — 27/10/2026 08:55 — Paul (08:47)
+
+**Paul (mot pour mot).** « Non mais ma question est pourquoi je ne vois pas le chapitre poésie et peinture pour les Franklin et Dylan? Sinon règle les dettes oui mais réponds à ma question d'abord »
+
+**Mesuré.** `edtChapitreEnCours` → `edtNiveauDe(nomClasse)` = `EDT_CLASSES[nomClasse].niveau` (l. 22693, par clé) ; le menu d'appariement propose `c.nom || k` et range le nom (`edtClassesDuHub`, l. 22436 ; `edtApparierNom`) ; une classe créée dans le panneau prof a pour clé `_slugifyClass(nom)` (`submitCreateClass`, l. 7486). Rejeu par le geste sur la ④ (faux hub, `pieces/T214-banc/cle.mjs`) : classe « 3 FRANKLIN Aretha » sous la clé « 3_franklin_aretha », reliée par le menu (valeurs : les noms), « Poésie et peinture » publié par sa pastille (hub : `published/3_franklin_aretha: true`) → emploi du temps semaine du 2/11 : cinq cases « aucune séance prête », carte « aucun chapitre publié » ; `edtNiveauDe('3 FRANKLIN Aretha')` = null, par la clé = « 3e », `isPubFor` vrai ; la fenêtre de la case : « Aucune séance prête pour cette classe. ». `edtElevesDe`, `edtEstExperimentale` (index.html) et le `niv` de `dr-tableau.js` lisent de même ; `dr_slugDe` (E2) résout déjà. → 13 · 51 (registre prod `d44e889`), 13 · 39 rouverte ; contrat §12.31 (13 · 51, 13 · 49, 13 · 50 ; gardes A56-A58, cas E3 « 51 », « 49 », « 50 ») ; relances E1, E2, E3 (heure corrigée 08:58 → 08:52) ; E1 réveillé (`trig_01UFKpJPtj5Tfp7oZLq2s4xe`). Image `pieces/T215-01-publie-pour-une-classe-creee-dans-le-panneau-l-emploi-du-temps-ne-le-voit-pas.png`, envoyée. Le contrôle n°73 (09:01) suit les deux points, 30 et 31.
+
+**Réponse (mot pour mot).**
+
+À jouer : rien · en cours chez les exécutants : E2 la phrase (454) ; E1 13 · 51, 13 · 49, 13 · 50 ; E3 les mesures · ouvert : 481, 458
+
+490. Ta question : tu ne vois pas « Poésie et peinture » pour Franklin et Dylan à cause du site, pas de toi. Je me suis trompé en 483 (« ce n'est pas le site ») : le mode test efface bien tout au rechargement, mais ce n'est pas la cause ici.
+
+491. La cause : l'emploi du temps cherche la classe par son nom, « 3 FRANKLIN Aretha ». Or une classe créée dans le panneau prof est rangée sous un nom simplifié, « 3_franklin_aretha ». Il ne la trouve pas, ne sait donc pas qu'elle est en 3e, et répond « aucune séance prête » et « aucun chapitre publié » — même quand le chapitre est publié pour elle. La 3E Charles de Gaulle marche parce qu'elle est rangée sous son nom exact : c'est pour ça que tu ne voyais qu'elle.
+
+492. Je l'ai reproduit par le geste sur la version en ligne (sur un faux site, rien chez toi) : une classe créée comme les tiennes, reliée par le menu « 🔗 Classes de la grille et classes du site », « Poésie et peinture » publié pour elle → exactement ta capture (image T215-01). Je ne peux pas lire ton site d'ici pour voir comment tes classes sont rangées ; mais tes quatre classes ont été créées dans le panneau, et le symptôme est le même.
+
+493. La même cause vide aussi la liste des élèves dans la fenêtre de la case (lu dans le code, pas encore joué) : à régler avant lundi.
+
+494. « Règle les dettes » : c'est lancé. E1 règle 13 · 51 (l'emploi du temps trouvera la classe sous ses deux noms ; rien de tes données n'est réécrit), 13 · 49 (le titre sans « (proposition) ») et 13 · 50 (la clé). E3 mesure sur une classe créée comme les tiennes : le chapitre dans les cases, les élèves dans la case et dans l'heure lancée, en 3e et en 4e. Tout part dans la ⑤, avec la phrase (454). Ensuite, les images.
+
+495. Dès maintenant, tu peux injecter ton chapitre et le publier pour tes classes, hors mode test : c'est enregistré, et l'emploi du temps le montrera dès que la ⑤ sera en ligne, sans rien refaire. Ne publie pour une classe que le chapitre que tu joues à partir de lundi : l'emploi du temps prend le premier chapitre publié de la liste.
+
+À tester : rien de nouveau avant la ⑤. Si tu veux voir si « Poésie et peinture » est vraiment publié pour Franklin et Dylan : page 3e, hors mode test, après avoir rechargé — leurs pastilles sur la ligne du chapitre sont-elles allumées ?
+
+27/10/2026 08:55
+MEMO

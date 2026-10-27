@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><title>CHOUTEAU Baptistine — Écrire une lettre de la Grande Guerre</title>
+<style>
+body { font-family: 'EB Garamond', Georgia, serif; max-width: 760px; margin: 0 auto; padding: 24px 32px; color: #2b2520; background: #fdfbf7; line-height: 1.55; font-size: 12pt; }
+header { border-bottom: 2px solid #6b1a2a; padding-bottom: 12px; margin-bottom: 18px; }
+header h1 { margin: 0; color: #6b1a2a; font-size: 1.4em; font-variant: small-caps; letter-spacing: 1px; }
+header .meta { color: #888; font-size: 0.9em; font-style: italic; margin-top: 4px; }
+.sujet-rappel { background: #f5f1ea; border-left: 3px solid #d4b87a; padding: 10px 14px; margin-bottom: 20px; font-size: 0.92em; font-style: italic; color: #555; }
+.critere { margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px dotted #d6cfc1; }
+.critere:last-of-type { border-bottom: none; }
+.critere-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.critere-head h2 { color: #6b1a2a; font-size: 1.15em; margin: 0; font-variant: small-caps; letter-spacing: 0.7px; }
+.pts { background: #ede4d3; color: #6b1a2a; padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.95em; }
+.ind-block { border-left: 3px solid #c08a4a; padding: 6px 12px; margin: 8px 0; }
+.ind-libelle { font-weight: 600; margin-bottom: 4px; font-size: 0.95em; }
+.ind-niveau { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 0.78em; font-variant: small-caps; letter-spacing: 0.5px; margin-right: 6px; font-weight: 600; }
+.ind-desc { margin: 4px 0 0 0; text-align: justify; }
+.ind-non-eval { color: #aaa; font-size: 0.92em; }
+.commentaire-assemble { margin: 10px 0; }
+.comm-para { text-align: justify; margin: 0 0 10px 0; line-height: 1.6; text-indent: 1.5em; }
+.comm-para:first-child { text-indent: 0; }
+.comm-para strong { color: #6b1a2a; }
+.erreur-citation { color: #b8261c; font-weight: 600; text-decoration: underline wavy #b8261c; text-decoration-skip-ink: none; }
+.sous-comm-langue { font-size: 0.9em; color: #8a3a2a; font-style: italic; }
+.mention-compteur { font-size: 0.92em; color: #6b1a2a; background: #f5e9d3; padding: 1px 6px; border-radius: 3px; }
+.consigne { background: #ede4d3; border-left: 4px solid #6b1a2a; padding: 8px 12px; margin-top: 10px; font-size: 0.93em; line-height: 1.4; }
+.citation-bloc { background: #fdf6ec; border: 1px solid #d4b87a; border-radius: 6px; padding: 12px 16px; margin: 18px 0; }
+.citation-titre { font-size: 0.85em; color: #6b1a2a; font-variant: small-caps; letter-spacing: 0.7px; font-weight: 600; margin-bottom: 8px; }
+blockquote { background: white; border-left: 3px solid #c08a4a; padding: 6px 12px; margin: 0 0 6px 0; font-style: italic; font-size: 0.94em; color: #555; }
+.citation-remarque { margin: 0; padding: 2px 14px; font-size: 0.92em; color: #444; line-height: 1.45; }
+.bandeau-langue-dnb { background: #fff5f5; border: 1px solid #a23a3a; border-radius: 6px; padding: 12px 16px; margin: 18px 0; }
+.bandeau-langue-dnb h3 { margin: 0 0 6px 0; color: #6b1a2a; font-size: 1em; font-variant: small-caps; letter-spacing: 0.7px; }
+.bandeau-langue-dnb p { margin: 4px 0; font-size: 0.9em; }
+.meilleure-citation { background: #f7f2e7; border-left: 4px solid #c08a4a; padding: 14px 20px; margin: 22px 0; }
+.meilleure-citation-intro { margin: 0 0 8px 0; color: #6b1a2a; font-style: italic; font-size: 0.96em; }
+.meilleure-citation-bloc { margin: 0; padding: 6px 14px; font-style: italic; font-size: 1em; color: #3a2f24; border-left: 2px solid #c08a4a; background: rgba(255,255,255,0.5); }
+.meilleure-citation-comm { margin: 12px 0 0 0; padding: 0 4px; color: #4a3f34; font-size: 0.95em; line-height: 1.55; text-align: justify; }
+.non-evalues { margin: 16px 0; padding: 10px 14px; border-top: 1px dotted #d6cfc1; }
+.non-evalues p { margin: 0; color: #888; font-size: 0.88em; }
+.recap { background: #f5f1ea; border: 1px solid #d4b87a; border-radius: 6px; padding: 14px 18px; margin-top: 22px; }
+.recap h3 { margin: 0 0 8px 0; color: #6b1a2a; font-variant: small-caps; letter-spacing: 0.8px; }
+.recap table { width: 100%; border-collapse: collapse; }
+.recap td { padding: 3px 6px; font-size: 0.95em; }
+.recap td.val { text-align: right; font-weight: 600; color: #6b1a2a; }
+.recap .total { border-top: 2px solid #d4b87a; padding-top: 6px; font-size: 1.1em; }
+.autocorrection { margin-top: 24px; background: #f5f1ea; border: 2px dashed #6b1a2a; border-radius: 6px; padding: 14px 20px; }
+.autocorrection h3 { margin: 0 0 10px 0; color: #6b1a2a; font-variant: small-caps; letter-spacing: 0.8px; font-size: 1.05em; }
+.autocorrection ol { margin: 0; padding-left: 20px; font-size: 0.93em; line-height: 1.55; }
+.autocorrection li { margin-bottom: 6px; }
+@media print { body { background: white; } .critere { page-break-inside: avoid; } }
+</style></head><body>
+<header>
+  <h1>CHOUTEAU Baptistine — Écrire une lettre de la Grande Guerre</h1>
+  <div class="meta">3 FRANKLIN Aretha</div>
+</header>
+<div class="sujet-rappel"><strong>Sujet :</strong><br>Une lettre de trente lignes, notée sur 40 points comme la rédaction du brevet. Tu l'écris en classe, en une heure.<br><br>Tu choisis : la lettre de l'homme au front, ou celle de la personne qui lui répond depuis la maison. Le choix est libre — un garçon peut écrire la lettre de celle qui attend, une fille celle du soldat.<br><br>Toutes tes phrases sont des phrases complexes.<br><br>Les cinq architectures ci-dessous apparaissent chacune au moins une fois. Si tu utilises ces architectures plusieurs fois, ce sera valorisé (la valorisation = ce qui démarque ta copie d'une copie qui fait le strict minimum).<br><br>Les cinq architectures. Ce sont des architectures de ton cahier d'entraînement. Toutes les subordonnées sont des Propositions Subordonnées Relatives.<br><br>1 — P.P + PSR 1 + PSR 2 — entraînement 1 · deux relatives à la file<br><br>2 — DPP + PSR 1 + PSR 2 + FPP : P.I — entraînement 2 · la principale coupée<br><br>3 — P.P 1 + PSR 1 + PSR 2 ; P.P 2 + PSR 3 — entraînement 5<br><br>4 — P.I 1 , P.I 2 : P.P + PSR 1 + PSR 2 + PSR 3 — entraînement 7, fait en classe<br><br>5 — DPP 1 + PSR 1 + PSR 2 + PSR 3 + PSR 4 + PSR 5 + FPP 1 — entraînement 8, fait en classe</div>
+
+
+      <div class="critere">
+        <div class="critere-head">
+          <h2>Le thème et l'invention</h2>
+          <span class="pts">11 / 14</span>
+        </div>
+        <div class="commentaire-assemble"><p class="comm-para"><strong>Baptistine</strong>, tu tiens le thème et ton personnage a une identité, comme on le voit quand tu écris « moi qui rabotais encore des portes à Tulle l'été dernier » : sa vie d'avant rend la lettre crédible.</p><p class="comm-para">Par ailleurs, les trois paragraphes portent leur contenu, le concret se voit, le plus dur surprend. Le troisième reste plus court : l'inquiétude pour l'autre est dite, pas encore ressentie.</p><p class="comm-para">Par ailleurs, comme Jean Déléage, tu fais voir le concret, avec tes propres mots : on reconnaît la leçon de la lettre lue sans la retrouver recopiée.</p><p class="comm-para">Par ailleurs, on sent ce que tu tais et pourquoi, comme quand tu écris « Ne t'inquiète pas pour le froid, nous avons tout ce qu'il faut » : ta lettre protège l'autre sans le lui dire.</p></div>
+        
+      </div>
+    
+      <div class="critere">
+        <div class="critere-head">
+          <h2>La construction des phrases</h2>
+          <span class="pts">11 / 14</span>
+        </div>
+        <div class="commentaire-assemble"><p class="comm-para"><strong>Baptistine</strong>, toutes tes phrases sont complexes, logiquement construites, et tes relatifs sont justes, comme quand tu écris « la tranchée dont je t'ai parlé, où nous dormons à six, est plus sèche depuis lundi ».</p><p class="comm-para">Par ailleurs, les cinq architectures apparaissent, construites correctement, chacune avec son numéro dans la marge : le travail demandé est fait.</p><p class="comm-para">De plus, tes modalisations sont variées et justes, et ta litote est bien placée.</p></div>
+        
+      </div>
+    
+      <div class="critere">
+        <div class="critere-head">
+          <h2>L'organisation et la lettre</h2>
+          <span class="pts">4.5 / 6</span>
+        </div>
+        <div class="commentaire-assemble"><p class="comm-para"><strong>Baptistine</strong>, ta lettre a ses quatre codes, justes pour l'époque, et ta formule de fin prend vraiment congé de l'autre, comme quand tu écris « Je t'embrasse comme avant, quand je rentrais de l'atelier ».</p><p class="comm-para">Par ailleurs, tu tiens tout, et tu t'adresses à l'autre au fil de la lettre, pas seulement au début : on sent qu'il est là.</p><p class="comm-para">Qui plus est, ta lettre fait ses trente lignes, mais quelques lignes répètent ce qui est déjà dit.</p></div>
+        
+      </div>
+    
+      <div class="critere">
+        <div class="critere-head">
+          <h2>La langue</h2>
+          <span class="pts">4 / 6</span>
+        </div>
+        <div class="commentaire-assemble"><p class="comm-para"><strong>Baptistine</strong>, ton orthographe et ta grammaire sont globalement correctes. Tu fais encore quelques erreurs, mais elles ne gênent pas la lecture. <span class="mention-compteur" title="Justification du niveau attribué au critère orthographe">Tu as fait 6 erreurs d'orthographe et de grammaire dans ta copie, ce qui correspond au niveau satisfaisant.</span></p><p class="comm-para">D'ailleurs, tu emploies un lexique adapté au sujet et à l'époque : ton vocabulaire de la guerre, du front ou de la vie à l'arrière est correct et juste. Le champ lexical est mobilisé.</p></div>
+        
+      </div>
+    
+
+
+
+
+
+
+
+<div class="recap">
+  <h3>Note finale</h3>
+  <table>
+    <tr><td>Le thème et l'invention</td><td class="val">11 / 14</td></tr><tr><td>La construction des phrases</td><td class="val">11 / 14</td></tr><tr><td>L'organisation et la lettre</td><td class="val">4.5 / 6</td></tr><tr><td>La langue</td><td class="val">4 / 6</td></tr>
+    <tr class="total"><td><strong>Total</strong></td><td class="val"><strong>30.5 / 40</strong></td></tr>
+  </table>
+</div>
+
+
+
+</body></html>

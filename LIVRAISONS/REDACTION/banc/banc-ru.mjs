@@ -17,11 +17,15 @@ const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM
 const att = (pg, ms) => pg.waitForTimeout(ms);
 async function contexte(w = 1707, h = 743, hub) {
   const ctx = await nav.newContext({ viewport: { width: w, height: h }, acceptDownloads: true }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort());
-  ctx.__hub = hub || hubDeDepart(); return ctx;
+  ctx.__hub = hub || hubDeDepart();
+  // le faux hub le plus récent, gardé côté banc : une page neuve le reçoit avant de démarrer (le stockage de Chrome se recopie entre onglets avec retard)
+  await ctx.exposeBinding('__fauxGarder', (src, p) => { try { const v = JSON.parse(p).v; if (!ctx.__faux || v > ctx.__fauxV) { ctx.__faux = p; ctx.__fauxV = v; } } catch (e) {} });
+  return ctx;
 }
 async function page(ctx, q, opts = {}) {
   const pg = await ctx.newPage(); pg.__errs = []; pg.__boites = []; pg.on('pageerror', e => pg.__errs.push(e.message));
   pg.on('dialog', d => { pg.__boites.push(d.message()); (opts.refuser ? d.dismiss() : d.accept()).catch(() => {}); });
+  if (ctx.__faux) await pg.addInitScript(p => { try { const cur = JSON.parse(window.name || 'null'); if (!cur || !cur.__faux || cur.v < JSON.parse(p).v) window.name = p; } catch (e) { window.name = p; } }, ctx.__faux);
   await pg.addInitScript(installer, ctx.__hub); if (!opts.sansProf) await pg.addInitScript(sessionProf);
   await pg.addInitScript(() => { try { localStorage.setItem('redaction_dugain_autosave_on_validate', 'false'); } catch (e) {} });
   await pg.goto('file://' + F + q); await att(pg, 1200); return pg;
@@ -91,8 +95,8 @@ const cleA = await pgC.evaluate(() => eleveId('AUDEBERT Elise'));
 const ficheA = await corriger(pgC, COPIES[0], cleA); await att(pgC, 1500);
 await cap(pgC, 'RU-4-copie-interrogatif');
 { const h = await pgC.evaluate(k => window.__HUB.redactions.dugain.copies && window.__HUB.redactions.dugain.copies['3_franklin_aretha'][k], cleA);
-  verif('RU3', h && h.sujet === 'imagination' && Object.keys(h.echelons).length === 10 && h.compteurOrthoGram === 9 && h.citationsPar && h.sousEditesPar && Object.keys(h.sousEditesPar).length === 1 && h.meilleureCitation && h.nom === 'AUDEBERT Elise',
-    'une copie corrigée au clavier (1-4, C, +, ✏️, la meilleure citation) : /redactions/dugain/copies/3_franklin_aretha/audebert_elise au hub, entière', JSON.stringify(h).slice(0, 300));
+  verif('RU3', h && h.sujet === 'imagination' && Object.keys(h.echelons).length === 10 && h.compteurOrthoGram === 25 && h.citationsPar && Object.keys(h.citationsPar).length === 3 && h.sousEditesPar && Object.keys(h.sousEditesPar).length === 1 && h.erreursCitation && JSON.stringify(h.erreursCitation.enonciation) === '[7]' && h.nom === 'AUDEBERT Elise',
+    'une copie corrigée au clavier (1-4, C + citation, une faute marquée, + ×25, ✏️) : /redactions/dugain/copies/3_franklin_aretha/audebert_elise au hub, entière', JSON.stringify(h).slice(0, 300));
   verif('RU3', /3 FRANKLIN Aretha · Sujet d'imagination · Brevet blanc/.test(ficheA) && !/De Gaulle/.test(ficheA), 'la fiche porte le nom de la classe choisie (plus jamais « 3e De Gaulle »)'); }
 { const cleB = await pgC.evaluate(() => eleveId('BOIVIN Eden'));
   await pgC.evaluate(() => fermerInterrogatif && document.getElementById('interroOverlay').classList.contains('show') && fermerInterrogatif()); await att(pgC, 300);
@@ -226,6 +230,29 @@ for (const [nom, P, id] of [['dugain', PLAN_DUGAIN, 'dugain'], ['lettre', PLAN_L
   const pf = await ctx.newPage(); await pf.goto('file://' + p); await att(pf, 300); await cap(pf, 'RU-12-' + nom + '-fiche'); await pf.close();
   verif('RU12', pg.__errs.length === 0, nom + ' : zéro erreur JS', JSON.stringify(pg.__errs)); await ctx.close();
 }
+
+// ═════ RU13 · 13 · 54 (Paul, 14:12, point 561) : le compteur et le niveau d'orthographe — rien ne change en silence ═════
+{ const ctx = await contexte(1707, 743); const pg = await page(ctx, '?mode=prof&id=dugain&classe=3_franklin_aretha'); await pret(pg);
+  // une copie solide mais beaucoup trop courte : l'orthographe notée d'abord (9 erreurs → Satisfaisant, la longueur pas encore notée), puis la longueur à Insuffisant
+  const scenario = async nom => { const k = await pg.evaluate(n => eleveId(n), nom); await pg.evaluate(k => ouvrirCopie(k), k); await att(pg, 400); await (await pg.$$('.choix-sujet-btn'))[0].click(); await att(pg, 400);
+    for (let i = 0; i < 9; i++) { await pg.keyboard.press('+'); await att(pg, 15); }
+    for (const [e, sb] of [[3, 1], [3, 2], [3, 2], [3, 1], [3, 1], [1, 1]]) { await pg.keyboard.press(String(e)); await att(pg, 420); await pg.keyboard.press(String(sb)); await att(pg, 200); await pg.keyboard.press('Enter'); await att(pg, 300); }
+    await pg.evaluate(() => { fermerInterrogatif(); showDashboard(); }); await att(pg, 500); return k; };
+  const k1 = await scenario('CHOLET Pierre');
+  const d1 = await pg.evaluate(k => ({ d: ruDesaccordCompteur(k), nl: ruPhrasesNonLues(k), carte: ((document.querySelector('#gridEleves .ru-desaccord') || {}).innerText || '').replace(/\u00a0/g, ' ') }), k1);
+  await cap(pg, 'RU-13-desaccord-carte');
+  verif('RU13', d1.d && d1.d.choisi === 2 && d1.d.compteur === 1 && d1.d.n === 9 && /choisi « Satisfaisant », le compteur dit « Fragile » \(9 erreurs\)/.test(d1.carte) && d1.nl.some(x => /l’orthographe : tu as choisi « Satisfaisant », le compteur dit « Fragile »/.test(x)),
+    'l\'orthographe à Satisfaisant avec 9 erreurs, puis la longueur à Insuffisant (seuils [2, 5, 10] → Fragile) : la carte de l\'élève le dit, la fiche ne sort pas et dit pourquoi', JSON.stringify(d1).slice(0, 400));
+  await pg.click('#gridEleves .ru-desaccord button:has-text("Garder")'); await att(pg, 600);
+  const g = await pg.evaluate(k => ({ d: ruDesaccordCompteur(k), e: copieFor(k).echelons.orthographe, f: genererHTMLEleve(k) }), k1);
+  verif('RU13', !g.d && g.e === 2 && /Tu as fait 9 erreurs d'orthographe et de grammaire dans ta copie\.<\/span>/.test(g.f) && !/ce qui correspond au niveau/.test(g.f),
+    '« Garder « Satisfaisant » » : le désaccord est tranché ; la fiche dit seulement « Tu as fait 9 erreurs d\'orthographe et de grammaire dans ta copie. » (« correspond » ne sort que s\'il est vrai)', (g.f.match(/Tu as fait[^<]*/) || [''])[0]);
+  const k2 = await scenario('CHOUTEAU Baptistine');
+  await pg.click('#gridEleves .ru-desaccord button:has-text("Prendre")'); await att(pg, 600);
+  const p = await pg.evaluate(k => ({ d: ruDesaccordCompteur(k), e: copieFor(k).echelons.orthographe, f: genererHTMLEleve(k), lu: ruPhrasesNonLues(k).some(x => /Orthographe et grammaire/.test(x)) }), k2);
+  verif('RU13', !p.d && p.e === 1 && /Tu as fait 9 erreurs d'orthographe et de grammaire dans ta copie, ce qui correspond au niveau fragile\./.test(p.f) && !p.lu && pg.__boites.some(b => /Prendre le niveau du compteur, « Fragile »/.test(b)),
+    '« Prendre « Fragile » » (après la question, qui montre la phrase du niveau) : le niveau devient celui du compteur, la phrase dit « ce qui correspond au niveau fragile », et elle compte comme lue', JSON.stringify({ d: p.d, e: p.e, lu: p.lu, m: (p.f.match(/Tu as fait[^<]*/) || [''])[0] }));
+  verif('RU13', pg.__errs.length === 0, 'zéro erreur JS', JSON.stringify(pg.__errs)); await ctx.close(); }
 
 // ═════ RU7 · le mode test : rien ne part, et ça se voit ═════
 { const ctx = await contexte(); const pg = await page(ctx, '?mode=prof&id=dugain&classe=3_franklin_aretha&test=1'); await pret(pg);

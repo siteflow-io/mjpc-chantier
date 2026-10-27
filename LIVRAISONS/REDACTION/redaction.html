@@ -1134,6 +1134,8 @@
   .ru-msg.ko { color: var(--bordeaux); } .ru-msg.ok { color: var(--vert); } .ru-msg ul { margin: 6px 0; }
   .ru-inv { font-size: 0.92em; max-height: 30vh; overflow: auto; } .ru-inv ul { margin: 4px 0 8px; }
   .ru-grise { opacity: .55; }
+  .ru-desaccord { margin: 6px 0; padding: 6px 8px; background: #fde9b8; border-left: 4px solid #c47820; color: #5a3010; font-size: 0.85em; border-radius: 4px; }
+  .ru-desaccord span { display: flex; gap: 6px; margin-top: 4px; } .ru-desaccord button { font-family: inherit; font-size: 0.95em; padding: 2px 8px; border: 1px solid #c47820; background: #fff; border-radius: 4px; cursor: pointer; }
   .ru-prep { display: flex; height: calc(100vh - 140px); }
   .ru-prep-nav { width: 290px; flex-shrink: 0; overflow-y: auto; border-right: 1px solid var(--gris); padding: 10px; background: var(--beige-clair); }
   .ru-prep-cr { font-variant: small-caps; color: var(--bordeaux); margin: 10px 0 4px; font-size: 0.92em; }
@@ -2663,6 +2665,8 @@ function ruPhrasesNonLues(id) {
   if (!RU_VALID_COMMUNES.liaisons) L.push("les mots de liaison (écran « Phrases communes »)");
   if (!RU_VALID_COMMUNES.fixes) L.push("les phrases fixes de la fiche (écran « Phrases communes »)");
   const vd = varianteDe(v) || {};
+  const dc = ruDesaccordCompteur(id);
+  if (dc) L.push("l’orthographe : tu as choisi « " + ECHELON_COULEUR[dc.choisi].label + " », le compteur dit « " + ECHELON_COULEUR[dc.compteur].label + " » (" + dc.n + " erreurs, avec la longueur notée) — tranche sur la carte de l’élève");
   if ((SUJET.fiche && (SUJET.fiche.alerte || (SUJET.fiche.aFaire || []).length || SUJET.fiche.sousTitre)) && !RU_VALID["fiche"]) L.push("les textes de la fiche du sujet (écran « La fiche »)");
   (vd.criteres || []).forEach(cr => {
     if ((cr.consignes || []).length && !RU_VALID[ruCleC(v, cr.id)]) L.push("les consignes « " + cr.titre + " »");
@@ -2678,6 +2682,27 @@ function ruPhrasesNonLues(id) {
     });
   });
   return L;
+}
+// 13 · 54 — le niveau d'orthographe choisi et celui du compteur (seuils de la variante selon la longueur notée) ne s'accordent plus : rien ne change en silence
+function ruDesaccordCompteur(id) {
+  const c = copieFor(id); const k = compteurDe(id); if (!k) return null;
+  const e = c.echelons[k.indicateur]; const n = c.compteurOrthoGram || 0;
+  if (e === undefined || e === "NE" || n <= 0) return null;
+  const sg = niveauOrthoSuggere(id); if (sg === e) return null;
+  const g = c.compteurGarde; if (g && g.ech === e && g.n === n && g.sugg === sg) return null;   // Paul a gardé son niveau, pour ces chiffres-là
+  return { ind: k.indicateur, choisi: e, compteur: sg, n };
+}
+function ruTrancherCompteur(id, voie) {
+  const d = ruDesaccordCompteur(id); if (!d) return;
+  const c = copieFor(id); const ind = (getGrille(id).criteres.flatMap(cr => cr.indicateurs).find(i => i.id === d.ind) || {});
+  if (voie === "garder") { c.compteurGarde = { ech: d.choisi, n: d.n, sugg: d.compteur, le: new Date().toISOString() }; }
+  else {
+    const txt = personnaliser((ind.descripteurs || [])[d.compteur] || "", id);
+    if (!confirm("Prendre le niveau du compteur, « " + ECHELON_COULEUR[d.compteur].label + " », pour « " + (ind.libelle || d.ind) + " » ?\n\nLa fiche dira :\n" + txt + "\n\n(Tu pourras choisir un sous-niveau en rouvrant la copie.)")) return;
+    c.echelons[d.ind] = d.compteur; delete c.sousEchelons[d.ind]; delete c.compteurGarde;
+    ruMarquer(ruCleD(c.sujet, d.ind, d.compteur), "choix");   // la phrase du niveau, lue dans la question
+  }
+  saveState(); renderDashboard(); toast(voie === "garder" ? "Niveau gardé : la fiche dira seulement le nombre d’erreurs" : "Niveau du compteur pris");
 }
 function ruFicheBloquee(id, quoi) {
   const L = ruPhrasesNonLues(id); if (!L.length) return false;
@@ -4008,6 +4033,9 @@ function renderDashboard() {
            title="Cliquer pour corriger la copie de ${escapeAttr(nom)}${c.sujet ? ' (sujet de ' + c.sujet + ' déjà choisi)' : ' — le sujet sera demandé au démarrage'}">
         ${boutonBilanCarte}
         <div class="eleve-sujet-tag">${sujetTag}</div>
+        ${(() => { const d = ruDesaccordCompteur(id); if (!d) return ""; return `<div class="ru-desaccord" onclick="event.stopPropagation()" title="Le compteur juge avec la longueur notée : les deux ne s'accordent plus. La fiche attend que tu tranches.">⚠ Orthographe : choisi « ${ECHELON_COULEUR[d.choisi].label} », le compteur dit « ${ECHELON_COULEUR[d.compteur].label} » (${d.n} erreurs)
+          <span><button onclick="event.stopPropagation(); ruTrancherCompteur('${id}','garder')" title="Garder ton niveau : la fiche dira seulement « Tu as fait ${d.n} erreurs d'orthographe et de grammaire dans ta copie. »">Garder « ${ECHELON_COULEUR[d.choisi].label} »</button>
+          <button onclick="event.stopPropagation(); ruTrancherCompteur('${id}','prendre')" title="Prendre le niveau du compteur : la fiche dira « … ce qui correspond au niveau ${ECHELON_COULEUR[d.compteur].label.toLowerCase()} »">Prendre « ${ECHELON_COULEUR[d.compteur].label} »</button></span></div>`; })()}
         <div class="eleve-nom">${escapeHtml(nom)}</div>
         <div class="eleve-statut">
           <span>${pct === 0 ? "Non commencé" : pct === 100 ? "Corrigé" : "En cours"}</span>
@@ -5791,7 +5819,11 @@ function genererHTMLEleve(id) {
       if (estIndCompteur(id, b.ind.id) && (c.compteurOrthoGram || 0) > 0) {
         const nb = c.compteurOrthoGram;
         const labelNiveau = ECHELON_COULEUR[b.ech].label.toLowerCase();
-        mentionCompteur = ` <span class="mention-compteur" title="Justification du niveau attribué au critère orthographe">Tu as fait ${nb} erreur${nb > 1 ? 's' : ''} d'orthographe et de grammaire dans ta copie, ce qui correspond au niveau ${labelNiveau}.</span>`;
+        // 13 · 54 (Paul, 27/10 14:12, point 561) : « ce qui correspond au niveau … » ne sort que si c'est vrai — le niveau choisi est celui du compteur
+        // (calculé avec la longueur notée) ; Paul a gardé un autre niveau exprès : la phrase dit seulement le nombre d'erreurs
+        mentionCompteur = b.ech === niveauOrthoSuggere(id)
+          ? ` <span class="mention-compteur" title="Justification du niveau attribué au critère orthographe">Tu as fait ${nb} erreur${nb > 1 ? 's' : ''} d'orthographe et de grammaire dans ta copie, ce qui correspond au niveau ${labelNiveau}.</span>`
+          : ` <span class="mention-compteur" title="Le niveau d'orthographe a été gardé par le professeur, différent de celui du compteur">Tu as fait ${nb} erreur${nb > 1 ? 's' : ''} d'orthographe et de grammaire dans ta copie.</span>`;
       }
 
       if (i === 0) {

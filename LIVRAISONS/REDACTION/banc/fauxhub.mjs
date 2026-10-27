@@ -19,7 +19,7 @@ export const installer = (etat) => {
   let a = null, b = null; try { const n = JSON.parse(window.name || 'null'); if (n && n.__faux) a = n; } catch (e) {} try { b = JSON.parse(localStorage.getItem('__FAUX') || 'null'); } catch (e) {}
   const m = [a, b].filter(Boolean).sort((x, y) => y.v - x.v)[0];
   window.__HUB = m ? m.hub : etat; window.__ECR = m ? m.ecr : []; window.__FAUXV = m ? m.v : 0;
-  const garder = () => { window.__FAUXV++; const p = JSON.stringify({ __faux: 1, v: window.__FAUXV, hub: window.__HUB, ecr: window.__ECR }); try { window.name = p; } catch (e) {} try { localStorage.setItem('__FAUX', p); } catch (e) {} };
+  const garder = () => { window.__FAUXV++; const p = JSON.stringify({ __faux: 1, v: window.__FAUXV, hub: window.__HUB, ecr: window.__ECR }); try { window.name = p; } catch (e) {} try { localStorage.setItem('__FAUX', p); } catch (e) {} try { if (typeof window.__fauxGarder === 'function') window.__fauxGarder(p).catch(() => {}); } catch (e) {} };   // et une copie côté banc (une page neuve la reçoit avant de démarrer)
   garder();
   const seg = c => c.split('/').filter(Boolean).map(decodeURIComponent);
   const lire = s => { let n = window.__HUB; for (const k of s) { if (n == null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; };

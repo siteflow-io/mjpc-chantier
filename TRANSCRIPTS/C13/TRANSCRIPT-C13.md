@@ -5012,7 +5012,7 @@ MEMO
 
 ---
 
-## Tour 252 — 27/10/2026 18:09 → 18:11
+## Tour 252 — 27/10/2026 18:09 → 18:12
 
 **Paul :** 14. Un item « dictée » ne peut ouvrir qu'une dictée de « Dictée coévaluée » : la fenêtre « Lier » ne propose que « Dictée existante », et l'item ouvre dictee_universelle.html. Aucun item ne peut ouvrir une dictée de Correction de dictée.
 
@@ -5028,5 +5028,5 @@ MEMO
 
 À tester : le 611, toujours.
 
-27/10/2026 18:11
+27/10/2026 18:12
 MEMO

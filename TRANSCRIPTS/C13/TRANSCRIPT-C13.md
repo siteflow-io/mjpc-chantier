@@ -4387,3 +4387,31 @@ MEMO
 
 27/10/2026 12:26
 MEMO
+
+
+---
+
+## Tour 231 — 27/10/2026 12:53 → 13:00 (sans message de Paul : contrôle n°78)
+
+**Claude :**
+
+À jouer : le candidat 8.75.0-⑤ (sur ton « promeus ») · en cours chez les exécutants : E4 la Rédaction universelle (session neuve à 13:00) · ouvert : 538, 481, 458
+
+543. Le candidat 8.75.0-⑤ est prêt. E3 : vert partout (168 vérifications sur 168, aux quatre tailles d'écran) ; mon banc : vert (106 sur 106). Version `23b4884f` du sas, empreinte `12accf68…`, 2 425 558 octets.
+
+544. Les cinq images (en haut aujourd'hui, en bas proposé) : la phrase « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. » sous la tête de « Fin de l'heure » (T231-01) ; 3 DYLAN Bob, classe créée dans le panneau, voit son chapitre dans l'emploi du temps (T231-02) ; sa case, une fois l'heure jouée, dit « Heure jouée — 1 activité. Close. » (T231-03) ; le chapitre créé par « Nouveau chapitre » n'a plus « (proposition) » (T231-04) ; « Nouveau chapitre » ouvre sa page sans demander la clé (T231-05).
+
+545. Mots nouveaux, vus par toi seul : « L'activité en cours : …, dans les temps. » (ou « tu dépasses de n min ») — c'est la phrase de l'ancienne barre que tu as voulu remettre (454). Rien de nouveau pour les élèves.
+
+546. Le petit « V8.74.0-③ » en bas à droite de T231-04 est le numéro d'avant la promotion : il deviendra ⑤.
+
+547. E4 : sa session d'hier était close ; une session neuve démarre à 13:00 sur le mandat de la Rédaction universelle.
+
+À tester (après « promeus ») :
+- dans l'emploi du temps, la case d'une classe créée dans le panneau (3 FRANKLIN Aretha ou 3 DYLAN Bob) montre le chapitre publié pour elle ;
+- jouer et clore une heure de cette classe, rouvrir sa case : « Heure jouée — … Close. » ;
+- « Nouveau chapitre » dans l'Atelier : la page s'ouvre sans « Clé requise », et le chapitre créé n'a pas « (proposition) » ;
+- à T-5 d'une heure lancée : la phrase « L'activité en cours » sous la tête.
+
+27/10/2026 13:00
+MEMO

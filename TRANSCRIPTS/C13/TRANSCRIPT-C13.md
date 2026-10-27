@@ -4626,3 +4626,25 @@ MEMO
 
 27/10/2026 14:36
 MEMO
+
+
+---
+
+## Tour 240 — 27/10/2026 14:38 → 14:41
+
+**Paul :** en fait c'est juste que la poignée du bas ne doit jamais sortir de l'écran c'est tout. j'ai effectivement réussi à les retrouver en dézoomant un peu et mon curseur est arrivé à le prendre pile sur la ligne supérieur de la barre des taches. ok oui pour les notes et le prompt
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E1 l'Atelier (§12.33), E3 le vérifie, E4 la Rédaction universelle · ouvert : 538, 553, 481, 458
+
+581. Compris : la règle est que la poignée du bas ne sort jamais de l'écran, à toutes les tailles et à tous les zooms. C'est noté au registre (13 · 55).
+
+582. C'est parti chez E1, en un seul complément (contrat §12.33) : la poignée ; « Pilotage » et « Relecture » hors de l'Atelier (E1 mesure d'abord ce que la Relecture montre et que « Relire cette heure » ne montre pas, pour ne rien perdre) ; surligner, la couleur et « ✍ À écrire » dans l'Atelier, enregistrés avec la diapo ; « 📝 Notes » hors de l'Atelier ; et l'import qui accepte les notes du présentateur sur toutes les diapos. E3 vérifie par le geste, avec des exemples réalistes.
+
+583. Le prompt d'injection 1.0 est écrit : l'instance rédige les notes du présentateur de chaque diapo (lancer la diapo, réponse attendue, erreur fréquente, passage à la suivante). Il attend la mise en ligne de §12.33, parce que le site d'aujourd'hui refuse ces notes hors du bilan. Pour injecter avant, garde le prompt actuel.
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:41
+MEMO

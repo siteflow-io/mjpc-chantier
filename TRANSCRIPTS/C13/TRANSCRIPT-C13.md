@@ -5290,3 +5290,22 @@ MEMO
 
 27/10/2026 23:20
 MEMO
+
+---
+
+## Tour 262 — 27/10/2026 23:21 → 23:21
+
+**Paul :** Pas compris 693
+
+**Claude :**
+
+695. Dans l'Atelier, tu peux déjà tirer le bord de la colonne de droite pour l'élargir ou la rétrécir. Mais quand tu fermes l'Atelier ou recharges la page, elle revient à sa largeur de départ : ton réglage est perdu.
+
+696. La colonne de gauche aura cette nuit sa poignée, et elle gardera la largeur que tu lui donnes, même après rechargement, sur cet ordinateur.
+
+697. Ma question : la colonne de droite doit-elle aussi garder sa largeur ? Je propose oui, pour que les deux colonnes se comportent pareil.
+
+À tester : rien.
+
+27/10/2026 23:21
+MEMO

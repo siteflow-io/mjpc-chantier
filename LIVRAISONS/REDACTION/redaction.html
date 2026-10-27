@@ -1412,6 +1412,7 @@
     <h2>Sujet de rédaction</h2>
     <p style="font-size:0.9em;color:#666;">Colle ici l'énoncé exact du sujet donné aux élèves. Il apparaîtra en tête de chaque fiche de correction.</p>
     <textarea id="sujetEdit" title="Énoncé du sujet tel que distribué aux élèves"></textarea>
+    <div id="ruEnoncesVar"></div>
     <div class="modal-actions">
       <button onclick="fermerModale('modalSujet')" title="Fermer sans enregistrer">Annuler</button>
       <button class="primary" onclick="sauverSujet()" title="Enregistrer le sujet">Enregistrer</button>
@@ -2468,8 +2469,9 @@ function sauverClasse() {
 }
 function ouvrirGestionClasse() { ruChoisirClasse(false); }
 function sauverSujet() {
-  state.sujet = document.getElementById("sujetEdit").value;
-  if (SUJET) { SUJET.enonce = state.sujet; ruEcrire(["redactions", RU.id, "config", "enonce"], state.sujet, "l'énoncé du sujet"); }
+  const vs = Array.from(document.querySelectorAll("#ruEnoncesVar .ru-enonce-var"));
+  if (SUJET && vs.length) vs.forEach(t => { const vi = SUJET.variantes.findIndex(v => v.id === t.dataset.v); if (vi < 0 || SUJET.variantes[vi].enonce === t.value) return; SUJET.variantes[vi].enonce = t.value; ruEcrire(["redactions", RU.id, "config", "variantes", vi, "enonce"], t.value, "l'énoncé d'un sujet"); });
+  else { state.sujet = document.getElementById("sujetEdit").value; if (SUJET) { SUJET.enonce = state.sujet; ruEcrire(["redactions", RU.id, "config", "enonce"], state.sujet, "l'énoncé du sujet"); } }
   saveState();
   fermerModale("modalSujet");
   toast("Sujet enregistré");
@@ -2666,7 +2668,10 @@ function ruPhrasesNonLues(id) {
     if ((cr.consignes || []).length && !RU_VALID[ruCleC(v, cr.id)]) L.push("les consignes « " + cr.titre + " »");
     (cr.indicateurs || []).forEach(ind => {
       const e = c.echelons[ind.id]; if (e === undefined || e === "NE") return;
-      if (c.sousEditesPar && c.sousEditesPar[ind.id]) return;                      // réécrite au crayon : lue d'office
+      if (c.sousEditesPar && c.sousEditesPar[ind.id]) {                            // réécrite au crayon : lue d'office…
+        if (c.sousEditesPar[ind.id].indexOf("{CIT}") >= 0 && !(c.citationsPar[ind.id] || "").trim()) L.push("la phrase réécrite de « " + ind.libelle + " » attend une citation");   // …mais « {CIT} » ne sort jamais sur une fiche (contrôle n°79, A)
+        return;
+      }
       const P = ruCleP(v, ind.id); const k = c.sousEchelons[ind.id];
       const cle = k === undefined ? ruCleD(v, ind.id, e) : ruCleS(v, ind.id, e, k, (c.citationsPar[ind.id] || "").trim() ? "avec" : "sans");
       if (!ruLue(cle, P)) L.push("« " + ind.libelle + " » (" + ECHELON_COULEUR[e].label.toLowerCase() + (k !== undefined ? ", sous-niveau " + (k + 1) : "") + ")");
@@ -2676,7 +2681,7 @@ function ruPhrasesNonLues(id) {
 }
 function ruFicheBloquee(id, quoi) {
   const L = ruPhrasesNonLues(id); if (!L.length) return false;
-  alert("La fiche de " + (nomEleveDe(id) || "cet élève") + " ne sort pas encore" + (quoi ? " (" + quoi + ")" : "") + " : elle porte des phrases que tu n’as pas lues.\n\n• " + L.join("\n• ") + "\n\nLis-les dans « Préparer le sujet » (ou choisis-les en corrigeant).");
+  alert("La fiche de " + (nomEleveDe(id) || "cet élève") + " ne sort pas encore" + (quoi ? " (" + quoi + ")" : "") + " : elle porte des phrases que tu n’as pas lues, ou pas finies.\n\n• " + L.join("\n• ") + "\n\nLis-les dans « Préparer le sujet » (ou choisis-les en corrigeant).");
   return true;
 }
 function ruChargerValidations() {
@@ -4023,7 +4028,7 @@ function ouvrirCopie(id) {
   document.getElementById("dashboard").classList.add("hidden");
   document.getElementById("correctionView").classList.remove("hidden");
   document.getElementById("bandeauEleve").classList.remove("hidden");
-  document.getElementById("sujetTexte").textContent = state.sujet;
+  document.getElementById("sujetTexte").textContent = extraireSujet(state.sujet, copieFor(id).sujet);
   const c = copieFor(id);
   if (!c.sujet) {
     ouvrirInterrogatif();
@@ -4036,6 +4041,7 @@ function ouvrirCopie(id) {
 function renderClassique() {
   const id = state.current;
   const c = copieFor(id);
+  document.getElementById("sujetTexte").textContent = extraireSujet(state.sujet, c.sujet);   // l'énoncé de la variante, une fois choisie
   const nom = state.classe.find(n => eleveId(n) === id) || "—";
   document.getElementById("bandeauNom").textContent = nom;
   const i = state.classe.findIndex(n => eleveId(n) === id);
@@ -5267,8 +5273,11 @@ function navigerEleve(delta) {
   }
 }
 
-function ouvrirSujet() {
+function ouvrirSujet() {   // l'énoncé du sujet, ou celui de chaque variante quand le sujet en a (c'est lui que porte la fiche)
+  const vs = (SUJET && SUJET.variantes || []).filter(v => v.enonce != null);
+  document.getElementById("sujetEdit").style.display = vs.length ? "none" : "";
   document.getElementById("sujetEdit").value = state.sujet;
+  document.getElementById("ruEnoncesVar").innerHTML = vs.map(v => `<label style="display:block;font-size:0.85em;color:#888;margin-top:8px;">${escapeHtml(v.libelle || v.id)}</label><textarea class="ru-enonce-var" data-v="${escapeAttr(v.id)}" rows="5" style="width:100%;" title="L'énoncé de ce sujet, tel que distribué : il paraît en tête de la fiche des élèves qui l'ont traité">${escapeHtml(v.enonce)}</textarea>`).join("");
   document.getElementById("modalSujet").classList.add("show");
 }
 function fermerModale(id) { document.getElementById(id).classList.remove("show"); }
@@ -5924,7 +5933,7 @@ blockquote { background: white; border-left: 3px solid #c08a4a; padding: 6px 12p
 </style></head><body>
 <header>
   <h1>${escapeHtml(nom)} — ${escapeHtml(ficheTexte("titre"))}</h1>
-  <div class="meta">${[escapeHtml(nomClasseCourante()), escapeHtml(libVariante(c.sujet, "libelleFiche")), escapeHtml(ficheTexte("sousTitre"))].filter(Boolean).join(" · ")}</div>
+  <div class="meta">${[escapeHtml(nomClasseCourante()), escapeHtml(libVariante(c.sujet, "libelleFiche", "")), escapeHtml(ficheTexte("sousTitre"))].filter(Boolean).join(" · ")}</div>
 </header>
 <div class="sujet-rappel"><strong>Sujet :</strong><br>${escapeHtml(extraireSujet(state.sujet, c.sujet)).replace(/\n/g,"<br>")}</div>
 
@@ -6141,20 +6150,10 @@ function escapeAttr(s) {
 // accepte "Sujet d imagination" sans apostrophe. Si aucun marqueur n'est trouvé, on retourne
 // le texte intégral (fallback : ancien comportement, pas de régression sur les sujets
 // au format ancien stockés dans le localStorage).
-function extraireSujet(texteSujet, typeSujet) {
-  if (!texteSujet) return "";
+function extraireSujet(texteSujet, typeSujet) {   // contrôle n°79 (B) : l'énoncé de la fiche est celui de la variante choisie, mot pour mot, tiré de la donnée ; sinon l'énoncé du sujet entier — plus de découpe
   const v = varianteDe(typeSujet);
-  if (v && v.enonce) return v.enonce;          // une variante qui porte son énoncé
-  // Repères des variantes dans l'énoncé commun (ex. « Sujet d'imagination » / « Sujet de réflexion »).
-  const reps = (SUJET.variantes || []).filter(w => w.repere).map(w => { const m = texteSujet.match(new RegExp(w.repere, "i")); return m ? { id: w.id, debut: m.index, fin: m.index + m[0].length } : null; }).filter(Boolean);
-  // Si aucun repère trouvé : texte intégral
-  if (!reps.length) return texteSujet;
-  const moi = reps.find(x => x.id === typeSujet);
-  // Si le repère de cette variante est absent : le texte intégral (probable que le texte ne fasse que l'autre sujet)
-  if (!moi) return texteSujet;
-  // On coupe du repère de la variante jusqu'au repère suivant.
-  const suivants = reps.filter(x => x.debut > moi.debut).sort((x, y) => x.debut - y.debut);
-  return texteSujet.substring(moi.fin, suivants.length ? suivants[0].debut : texteSujet.length).trim();
+  if (v && v.enonce) return v.enonce;
+  return texteSujet || "";
 }
 
 function toast(msg) {

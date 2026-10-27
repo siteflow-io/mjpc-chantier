@@ -156,13 +156,59 @@ await cap(pgC, 'RU-4-copie-interrogatif');
   const vu = await pgC.evaluate(k => ({ s: copieFor(k).sujet, e: copieFor(k).echelons }), kD);
   verif('RU6', vu.s === 'reflexion' && Object.keys(vu.e).length === 1 && carte1 !== carte0, 'une autre page corrige la copie de CHAN Aymeric : ce tableau de bord la montre sans recharger', JSON.stringify(vu));
   // le champ en cours : une saisie dans « Sujet » (modale) n'est pas touchée par un redessin
-  await pgC.click('button:has-text("📝 Sujet")'); await att(pgC, 200); await pgC.click('#sujetEdit'); await pgC.keyboard.type(' ESSAI-SAISIE');
+  await pgC.click('button:has-text("📝 Sujet")'); await att(pgC, 200); await pgC.click('#ruEnoncesVar .ru-enonce-var'); await pgC.keyboard.type(' ESSAI-SAISIE');
   await pgB.keyboard.press('2'); await att(pgB, 1800);
-  const sa = await pgC.evaluate(() => ({ v: document.getElementById('sujetEdit').value, focus: document.activeElement && document.activeElement.id }));
-  verif('RU6', /ESSAI-SAISIE$/.test(sa.v) && sa.focus === 'sujetEdit', 'une saisie en cours n\'est pas touchée quand un changement arrive (le redessin attend la fin de la saisie)', JSON.stringify(sa));
+  const sa = await pgC.evaluate(() => ({ v: document.querySelector('#ruEnoncesVar .ru-enonce-var').value, focus: document.activeElement && document.activeElement.className }));
+  verif('RU6', /ESSAI-SAISIE$/.test(sa.v) && sa.focus === 'ru-enonce-var', 'une saisie en cours n\'est pas touchée quand un changement arrive (le redessin attend la fin de la saisie)', JSON.stringify(sa));
   await pgC.evaluate(() => fermerModale('modalSujet'));
   await pgB.close(); }
 await pgC.close();
+
+// ═════ RU10 · contrôle n°79 (A) : « {CIT} » ne sort jamais sur une fiche ═════
+{ const pg = await page(ctxA, '?mode=prof&id=dugain&classe=3_franklin_aretha'); await pret(pg);
+  const k = await pg.evaluate(() => eleveId('CHARRIER Line'));
+  await pg.evaluate(k => ouvrirCopie(k), k); await att(pg, 400); await (await pg.$$('.choix-sujet-btn'))[0].click(); await att(pg, 400);
+  await pg.keyboard.press('3'); await att(pg, 450); await pg.keyboard.press('2'); await att(pg, 300);
+  await pg.click('.descripteur-case.selected .case-editer'); await att(pg, 200); await pg.fill('.descripteur-textarea', 'Tu écris juste : « {CIT} » le montre.'); await pg.mouse.click(5, 5); await att(pg, 1200);
+  const nl = await pg.evaluate(k => ruPhrasesNonLues(k), k);
+  pg.__boites.length = 0; let t1 = null; pg.once('download', d => { t1 = d; }); await pg.evaluate(() => { document.activeElement && document.activeElement.blur(); exporterHTMLEleve(); }); await att(pg, 600);
+  verif('RU10', nl.some(x => /la phrase réécrite de « Orthographe et grammaire » attend une citation/.test(x)) && !t1 && pg.__boites.some(b => /attend une citation/.test(b)), 'une phrase réécrite au crayon qui garde « {CIT} », sans citation : la fiche ne sort pas, la boîte dit « la phrase réécrite de « … » attend une citation »', JSON.stringify({ nl, boites: pg.__boites }).slice(0, 400));
+  await pg.evaluate(() => showDashboard()); await att(pg, 300);
+  const g = await pg.evaluate(() => document.getElementById('ruBtnToutHTML').title);
+  verif('RU10', /attend une citation/.test(g), '« Exporter tous HTML » grisé le dit aussi', g);
+  await pg.evaluate(k => ouvrirCopie(k), k); await att(pg, 500); if (!(await pg.evaluate(() => document.getElementById('interroOverlay').classList.contains('show')))) { await pg.evaluate(() => ouvrirInterrogatif('indicateur_sous', 0)); await att(pg, 400); }
+  await pg.evaluate(() => { if (interroState.etape !== 'indicateur_sous' || interroState.k !== 0) ouvrirInterrogatif('indicateur_sous', 0); }); await att(pg, 300);
+  await pg.keyboard.press('c'); await att(pg, 150); await pg.keyboard.type('les poilus attendait la lettre'); await pg.keyboard.press('Enter'); await att(pg, 1200);
+  let t2 = null; pg.once('download', d => { t2 = d; }); await pg.evaluate(() => { document.activeElement && document.activeElement.blur(); exporterHTMLEleve(); }); await att(pg, 800);
+  let fiche = ''; if (t2) { const p = path.join(OUT, 'fiche-charrier_line.html'); await t2.saveAs(p); fiche = fs.readFileSync(p, 'utf8'); }
+  verif('RU10', !!t2 && fiche.indexOf('{CIT}') < 0 && /les poilus attendait la lettre/.test(fiche) && /Tu écris juste|tu écris juste/.test(fiche), 'la citation tapée : la fiche sort, la citation à la place de « {CIT} », plus aucun « {CIT} »', fiche ? (fiche.match(/[^.]*écris juste[^.]*\./i) || [''])[0] : 'pas de fiche');
+  verif('RU10', pg.__errs.length === 0, 'zéro erreur JS', JSON.stringify(pg.__errs)); await pg.close(); }
+
+// ═════ RU11 · contrôle n°79 (B) : l'énoncé de la fiche, entier — celui de la variante, mot pour mot ═════
+{ const dg = JSON.parse(fs.readFileSync(path.join(ICI, '..', 'sujets', 'dugain.json'), 'utf8'));
+  const enonceDe = h => { const m = h.match(/<div class="sujet-rappel"><strong>Sujet :<\/strong><br>([\s\S]*?)<\/div>/); return m ? m[1] : null; };
+  const pg = await page(ctxA, '?mode=prof&id=dugain&classe=3_franklin_aretha'); await pret(pg);
+  const esc = t => pg.evaluate(t => escapeHtml(t).replace(/\n/g, '<br>'), String(t));   // l'échappement de l'app elle-même
+  const fi = await pg.evaluate(() => genererHTMLEleve(eleveId('AUDEBERT Elise'))), fr = await pg.evaluate(() => genererHTMLEleve(eleveId('BOIVIN Eden')));
+  const ei = enonceDe(fi), er = enonceDe(fr);
+  verif('RU11', ei === await esc(dg.variantes[0].enonce) && !/\sou\s*$/.test(ei), 'Dugain, imagination : l\'énoncé entier de la variante, mot pour mot, aucun « ou » pendant', ei);
+  verif('RU11', er === await esc(dg.variantes[1].enonce) && !/\sou\s*$/.test(er), 'Dugain, réflexion : l\'énoncé entier de la variante, mot pour mot', er);
+  fs.writeFileSync(path.join(OUT, 'fiche-dugain-audebert_elise.html'), fi); const enonceLettre = await esc(JSON.parse(fs.readFileSync(path.join(ICI, '..', 'sujets', 'lettre-grande-guerre.json'), 'utf8')).enonce.join('\n\n')); await pg.close();
+  const ctxL = await contexte(1707, 743); const lettre = JSON.parse(fs.readFileSync(path.join(ICI, '..', 'sujets', 'lettre-grande-guerre.json'), 'utf8'));
+  ctxL.__hub.redactions['lettre-grande-guerre-3e'] = { config: lettre };
+  const pl = await page(ctxL, '?mode=prof&id=lettre-grande-guerre-3e&classe=3_franklin_aretha'); await pret(pl);
+  await pl.evaluate(() => ouvrirCopie(eleveId('AUDEBERT Elise'))); await att(pl, 500);
+  const choix = await pl.$$('.choix-sujet-btn');
+  for (const t of ['3', '3', 'Enter', '4', '2', 'Enter', '2', '1']) { await pl.keyboard.press(t); await att(pl, 400); }
+  await pl.evaluate(() => { document.activeElement && document.activeElement.blur(); }); await att(pl, 300);
+  await cap(pl, 'RU-11-lettre-interrogatif');
+  const fl = await pl.evaluate(() => genererHTMLEleve(eleveId('AUDEBERT Elise'))); const el = enonceDe(fl);
+  verif('RU11', choix.length === 0 && el === enonceLettre && /Écrire une lettre de la Grande Guerre/.test(fl) && !/Brevet blanc|brevet blanc|De Gaulle/.test(fl) && fl.indexOf('{CIT}') < 0,
+    'la lettre (une seule grille : pas d\'écran de choix) : l\'énoncé entier, ses quatre paragraphes ; le titre du sujet ; ni « Brevet blanc » ni « De Gaulle »', el ? el.slice(0, 200) : fl.slice(0, 300));
+  const pL = path.join(OUT, 'fiche-lettre-audebert_elise.html'); fs.writeFileSync(pL, fl);
+  const pf = await ctxL.newPage(); await pf.goto('file://' + pL); await att(pf, 300); await cap(pf, 'RU-5b-fiche-lettre'); await pf.close();
+  const pd = await ctxL.newPage(); await pd.goto('file://' + path.join(OUT, 'fiche-dugain-audebert_elise.html')); await att(pd, 300); await cap(pd, 'RU-5a-fiche-dugain'); await pd.close();
+  verif('RU11', pl.__errs.length === 0, 'zéro erreur JS (la lettre)', JSON.stringify(pl.__errs)); await ctxL.close(); }
 
 // ═════ RU7 · le mode test : rien ne part, et ça se voit ═════
 { const ctx = await contexte(); const pg = await page(ctx, '?mode=prof&id=dugain&classe=3_franklin_aretha&test=1'); await pret(pg);
@@ -178,10 +224,11 @@ await pgC.close();
 if (fs.existsSync(PROD)) { const ctx = await contexte(); const hub = ctx.__hub; const noms = hub.classes['3_franklin_aretha'].eleves;
   const a = await pageProd(ctx, PROD, noms); const b = await pageRU(ctx, F, hub);
   for (const cp of COPIES) {
-    const fa = await corriger(a.pg, cp, await a.pg.evaluate(n => eleveId(n), cp.eleve)); const fb = await corriger(b.pg, cp, await b.pg.evaluate(n => eleveId(n), cp.eleve));
-    const fa2 = fa.split('3e De Gaulle').join('3 FRANKLIN Aretha'); fs.writeFileSync(path.join(OUT, 'nonreg-prod-' + cp.eleve.split(' ')[0] + '.html'), fa2); fs.writeFileSync(path.join(OUT, 'nonreg-ru-' + cp.eleve.split(' ')[0] + '.html'), fb);
+    const fa = await corriger(a.pg, cp, await a.pg.evaluate(n => eleveId(n), cp.eleve)); let fb = await corriger(b.pg, cp, await b.pg.evaluate(n => eleveId(n), cp.eleve));
+    const enoncePres = h => h.replace(/<div class="sujet-rappel">[\s\S]*?<\/div>/, '<div class="sujet-rappel">[l’énoncé]</div>');   // contrôle n°79 (B) : l'énoncé de la fiche est désormais celui de la variante, entier
+    const fa2 = enoncePres(fa.split('3e De Gaulle').join('3 FRANKLIN Aretha')); const fb0 = fb; fs.writeFileSync(path.join(OUT, 'nonreg-prod-' + cp.eleve.split(' ')[0] + '.html'), fa2); fs.writeFileSync(path.join(OUT, 'nonreg-ru-' + cp.eleve.split(' ')[0] + '.html'), fb0); fb = enoncePres(fb0);
     let diff = ''; if (fa2 !== fb) { let i = 0; while (fa2[i] === fb[i]) i++; diff = 'premier écart au signe ' + i + ' : « ' + fa2.slice(i - 40, i + 60) + ' » / « ' + fb.slice(i - 40, i + 60) + ' »'; }
-    verif('RU8', fa2 === fb, cp.eleve + ' (' + (cp.variante ? 'réflexion' : 'imagination') + ') : la fiche, mot pour mot celle de redaction_dugain_v3 (au nom de classe près)', diff);
+    verif('RU8', fa2 === fb, cp.eleve + ' (' + (cp.variante ? 'réflexion' : 'imagination') + ') : la fiche, mot pour mot celle de redaction_dugain_v3 (au nom de classe près et à l\'énoncé près)', diff);
   }
   verif('RU8', a.errs.length + b.errs.length === 0, 'zéro erreur JS des deux côtés', JSON.stringify(a.errs.concat(b.errs))); await ctx.close(); }
 else verif('RU8', false, 'la non-régression', 'la production redaction_dugain_v3.html est introuvable : ' + PROD);

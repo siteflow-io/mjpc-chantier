@@ -16,6 +16,12 @@ const COMP = { orthographe: ['c4-langue-01'], syntaxe: ['c4-langue-04'], lexique
   remobilisation: ['c4-ecrire-03'], cadre: ['c4-ecrire-01'], peripeties: ['c4-ecrire-01'], sensations: ['c4-langue-03'], these: ['c4-ecrire-04'], exemples: ['c4-ecrire-03'], nuance: ['c4-ecrire-04'], engagement: ['c4-ecrire-04'] };
 
 const enonce = prendre(/let state = \{[\s\S]*?sujet: "([^"]+)"/, 'l\'énoncé par défaut (state.sujet)');
+// contrôle n°79 (B) : l'énoncé de chaque variante, découpé UNE FOIS dans l'énoncé de l'app, sans un mot ajouté (seule la majuscule de « Sujet de réflexion », en tête de phrase)
+const iI = enonce.indexOf("Sujet d'imagination"), iR = enonce.indexOf(' ou sujet de réflexion');
+if (iI < 0 || iR < 0) { console.error('INTROUVABLE : les deux sujets dans l\'énoncé'); process.exit(1); }
+const ENONCES = { imagination: enonce.slice(0, iR), reflexion: enonce.slice(0, iI) + 'S' + enonce.slice(iR + ' ou s'.length) };
+const mots = t => t.toLowerCase().match(/[\p{L}\p{N}'’-]+/gu) || [];
+for (const v in ENONCES) { const ajoutes = mots(ENONCES[v]).filter(m => !mots(enonce).includes(m)); if (ajoutes.length) { console.error('ÉCHEC : mots ajoutés à l\'énoncé ' + v + ' : ' + ajoutes); process.exit(1); } }
 const alerte = { titre: prendre(/titre: "(Important pour le DNB officiel)"/, 'le titre de l\'alerte DNB'), contenu: prendre(/contenu: "(Le critère d'orthographe-grammaire[^"]+)"/, 'le contenu de l\'alerte DNB') };
 const aFaire = (s.slice(s.indexOf('<h3>À faire avec cette correction</h3>')).match(/<ol>([\s\S]*?)<\/ol>/) || [])[1];
 if (!aFaire) { console.error('INTROUVABLE : « À faire avec cette correction »'); process.exit(1); }
@@ -39,7 +45,7 @@ const config = {
   fiche: { titre: titreFiche, sousTitre, aFaire: [...aFaire.matchAll(/<li>([\s\S]*?)<\/li>/g)].map(m => m[1].trim()), alerte: Object.assign({ indicateur: 'orthographe', echelon: 0 }, alerte) },
   variantes: Object.keys(o.GRILLE).map(v => {
     const g = o.GRILLE[v];
-    return Object.assign({ id: v, libelle: g.label }, VAR[v], { total: g.total,
+    return Object.assign({ id: v, libelle: g.label }, VAR[v], { enonce: ENONCES[v], total: g.total,
       compteur: { indicateur: 'orthographe', selon: 'longueur', seuils, defaut: 2 },
       criteres: g.criteres.map(cr => ({ id: cr.id, titre: cr.titre, pts_max: cr.pts_max, consignes: [0, 1, 2, 3].map(e => o.CONSIGNES[cr.id][e]),
         indicateurs: cr.indicateurs.map(ind => ({ id: ind.id, libelle: ind.libelle, poids: ind.poids, competences: COMP[ind.id] || [],

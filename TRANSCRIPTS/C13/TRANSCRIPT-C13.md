@@ -4566,3 +4566,144 @@ J'ai ça, sur mon téléphone. Est ce du au téléphone?
 
 27/10/2026 14:23
 MEMO
+
+
+---
+
+## Tour 238 — 27/10/2026 14:27 → 14:29
+
+**Paul :** *(deux captures : `pieces/T238-01-paul-l-atelier-diapo-2-onglets-pilotage-relecture-et-notes.png`, `pieces/T238-02-paul-les-outils-de-la-classe-surligner-couleur.png`)* Et en répétition alors? par ailleurs en répétition, j'ai deux boutons qui font la même chose: le clic sur pilotage lance en fait une répétition... en fiat les onglets pilotage et relecture n'ont rien à faire dans l'atelier, si? par ailleurs, je m'étonne de ne pas avoir tous mes outils quand je suis dans l'ateil. en effet, qu'est ce qui devrait m'empecher de surligner quelque chose en avance? enfin la partie notes ne s'écrit pas, si?
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 sur la Rédaction universelle · ouvert : 571, 572, 573, 538, 553, 481, 458
+
+569. En répétition, la fenêtre du tableau ouverte sur le même ordinateur (« 🖥 Ouvrir le tableau ») suit ; ton téléphone, non : il reste sur l'horloge, parce que la répétition n'écrit rien au site.
+
+570. Oui, deux boutons font la même chose : l'onglet « Pilotage » de l'Atelier lance une répétition, comme « ▶ Jouer en avance — répétition ».
+
+571. Je te suis : Pilotage et Relecture n'ont plus rien à faire dans l'Atelier. Depuis ④, une heure se lance depuis l'emploi du temps et se joue dans l'écran de la classe, qui a son Pilotage et sa Relecture ; une heure passée se relit depuis sa case (« Relire cette heure »). Je propose : l'Atelier garde Structure et Atelier, et « ▶ Jouer en avance » reste la seule entrée de la répétition. Avant de retirer la Relecture, je mesure ce qu'elle montre que la case ne montre pas, pour ne rien perdre. Oui ?
+
+572. Les outils : rien ne doit t'empêcher de préparer. Je propose que le surlignage, la couleur du texte et « ✍ À écrire » arrivent dans l'Atelier, enregistrés avec la diapo comme le gras et le souligné : la classe les voit dès que la diapo est projetée. Mettre en lumière, la loupe, le gel, la participation et « Dévoiler » sont des gestes du moment : ils restent à la classe et à la répétition. Oui ?
+
+573. Les notes, il y en a deux. Les notes de la diapo (le cadre sous la diapo) s'écrivent dans l'Atelier et restent avec la diapo ; en répétition, elles se lisent sans s'écrire. Le bouton « 📝 Notes » (les notes au fil de l'heure, à verser au récit) s'ouvre dans l'Atelier, mais rien ne s'y enregistre : ce que tu y tapes est perdu à la fermeture. Je propose de le retirer de l'Atelier ; il reste dans l'écran de la classe. Oui ?
+
+574. Ton chapitre s'appelle encore « Poésie et peinture au XIXe siècle (proposition) » : il a été créé avant ⑤, qui ne renomme pas l'existant. Pour retirer le mot : sur la page du niveau, le crayon ✏️ de la carte du chapitre, puis « Titre du chapitre ». Publié, ce titre se voit des élèves.
+
+569 à 573 : lu dans le code, pas rejoué par le geste.
+
+À tester :
+- sur la page du niveau, le crayon ✏️ du chapitre, « Titre du chapitre » : retire « (proposition) », reviens à la page : le titre a changé ;
+- dans l'Atelier, écris dans le cadre des notes sous une diapo, ferme l'Atelier, rouvre : la note est là.
+
+27/10/2026 14:29
+MEMO
+
+
+---
+
+## Tour 239 — 27/10/2026 14:34 → 14:36
+
+**Paul :** pour les notes, elles n'apparaissent pas dans l'atelier. Il faut distinguer notes au fil de l'eau, et notes de présentateur. pour l'atelier évidemment ce bouton n'a rien à y faire, en revanche, encore une fois les notes du présentateur doivent absolument y être éditables et préparables à l'avance, d'ailleurs l'instance qui exécute le prompt d'injection doit les rédiger aussi. Pour le chapitre actuellement au hub, je sais qu'il est obsolète.
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 sur la Rédaction universelle · ouvert : 576, 578, 538, 553, 481, 458
+
+575. Tu as raison, et je me suis trompé au 573. Les notes du présentateur existent dans l'Atelier, sous la barre d'outils, mais sur ton écran la diapo prend toute la hauteur et les pousse dehors : on ne les voit qu'à 1920 × 1080 (images T239-01 et T239-02). Dette 13 · 55 au registre.
+
+576. Je propose : dans l'Atelier, les notes du présentateur ont toujours leur place à l'écran, sous la diapo — la diapo se réduit pour la leur laisser —, quelle que soit la taille de l'écran ; tu les écris et les corriges là, elles restent avec la diapo. Oui ?
+
+577. « 📝 Notes », les notes au fil de l'eau, sort de l'Atelier (573).
+
+578. Le prompt d'injection disait jusqu'ici à l'instance de ne pas écrire les notes du présentateur, sauf au bilan. Je le change : elle les rédige pour chaque diapo. Je propose qu'elles disent, en quelques lignes : ce que tu dis pour lancer la diapo, ce que tu attends des élèves (la réponse attendue, jamais montrée à la classe), l'erreur fréquente à guetter, et le passage à la diapo suivante. Oui ?
+
+579. 571 et 572, tu ne les as pas commentés : je les prends comme acquis. Ils partiront avec 576 et 578 dans un même complément pour E1 (l'Atelier) ; E3 vérifiera par le geste.
+
+580. Le chapitre au hub : noté, il est obsolète (574 tombe).
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:36
+MEMO
+
+
+---
+
+## Tour 240 — 27/10/2026 14:38 → 14:41
+
+**Paul :** en fait c'est juste que la poignée du bas ne doit jamais sortir de l'écran c'est tout. j'ai effectivement réussi à les retrouver en dézoomant un peu et mon curseur est arrivé à le prendre pile sur la ligne supérieur de la barre des taches. ok oui pour les notes et le prompt
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E1 l'Atelier (§12.33), E3 le vérifie, E4 la Rédaction universelle · ouvert : 538, 553, 481, 458
+
+581. Compris : la règle est que la poignée du bas ne sort jamais de l'écran, à toutes les tailles et à tous les zooms. C'est noté au registre (13 · 55).
+
+582. C'est parti chez E1, en un seul complément (contrat §12.33) : la poignée ; « Pilotage » et « Relecture » hors de l'Atelier (E1 mesure d'abord ce que la Relecture montre et que « Relire cette heure » ne montre pas, pour ne rien perdre) ; surligner, la couleur et « ✍ À écrire » dans l'Atelier, enregistrés avec la diapo ; « 📝 Notes » hors de l'Atelier ; et l'import qui accepte les notes du présentateur sur toutes les diapos. E3 vérifie par le geste, avec des exemples réalistes.
+
+583. Le prompt d'injection 1.0 est écrit : l'instance rédige les notes du présentateur de chaque diapo (lancer la diapo, réponse attendue, erreur fréquente, passage à la suivante). Il attend la mise en ligne de §12.33, parce que le site d'aujourd'hui refuse ces notes hors du bilan. Pour injecter avant, garde le prompt actuel.
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:41
+MEMO
+
+
+---
+
+## Tour 241 — 27/10/2026 14:43 → 14:45
+
+**Paul :** pour l'objet vidéo: je ne peux jamais finaliser l'adressage sur ma clef, parce que le type de fichier n'est jamais cherché (mp4 etc ). et donc je ne les vois jamais affichés. MEsure pour les autres objets en local. D'ailleurs, pour toutes les images etc, il faudrait faire la même chose. ainsi j'ai deux possibilités: soit mjpc medias, soit du local. si internet tombe, je peux continuer à travailler sur du local de ce fait.
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E1 sur l'Atelier (§12.33), E3 le vérifie, E4 sur la Rédaction universelle · ouvert : 586, 538, 553, 481, 458
+
+584. C'est pire que ça, et je l'ai mesuré dans le code : l'objet vidéo n'a jamais joué de vidéo. « Désigner le dossier de la clé… » ouvre un choix de dossier — le navigateur n'y montre que des dossiers, jamais les mp4, c'est ce que tu as vu —, et le site ne garde que les noms et les durées, pas les fichiers. Au tableau, la « vidéo » est une barre de progression dessinée, sans image : un reste de la maquette. Dette 13 · 56 au registre.
+
+585. Les autres objets : l'image ne prend qu'une adresse dans mjpc-medias (une adresse sur ton disque est refusée) ; le document se joint à la séance dans la Structure et part sur le site ; la page HTML est un fichier du site. Rien n'est en local aujourd'hui.
+
+586. Je propose, pour tous les médias (image, vidéo, document) : un seul geste « Choisir le fichier », avec deux sources — mjpc-medias, ou ton dossier de cours (sur l'ordinateur ou la clé). Le dossier se désigne une fois ; Chrome le retient et te redemande seulement ton accord à chaque ouverture du site. La diapo garde le nom du fichier dans ce dossier ; la vidéo joue vraiment, avec ses repères. Deux limites : cela marche dans Chrome et Edge, pas dans Firefox ni Safari ; et un fichier local ne se voit que sur l'ordinateur qui l'a — la fenêtre du tableau ouverte depuis ton ordinateur le montre, ton téléphone ou un autre ordinateur par l'adresse du tableau, non. Oui ?
+
+587. Sans internet : je ne sais pas encore ce que fait le site quand le réseau tombe (ce qu'il affiche, ce qu'il garde de ce que tu écris). Je le mesure avant de cadrer cette partie.
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:45
+MEMO
+
+
+---
+
+## Tour 242 — 27/10/2026 14:46 → 15:01 (14:46 : contrôle n°81, sans message de Paul ; 14:58 : Paul)
+
+**Claude (14:46) :**
+
+Rien de nouveau pour toi. E4 a refait les images de la Rédaction universelle avec des corrections vraisemblables, et la lettre corrigée passe la vérification. Je l'ai relancé à 14:45 pour qu'il code ta règle du compteur (561). E1 et E3 travaillent sur l'Atelier depuis 14:41.
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:46
+MEMO
+
+**Paul (14:58) :** Il faut que ça aille plus vite.
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 ta règle du compteur (561), E1 l'Atelier (§12.33), E3 le vérifie · ouvert : 590, 538, 553, 586, 481, 458
+
+588. D'accord. Ce que je change tout de suite : je ne passe plus toutes les trente minutes, je guette les poussées des exécutants minute par minute et je vérifie dès qu'une arrive ; et je tranche leurs questions aussitôt — celle d'E1 sur la Relecture est tranchée (l'onglet sort de l'Atelier).
+
+589. Où on en est. La Rédaction universelle : tout est réglé sauf ta règle du compteur (561), qu'E4 code depuis 14:45. L'Atelier : E1 a fini son audit à 14:48 et code ; le banc d'E3 est prêt.
+
+590. Si tu veux corriger les lettres plus tôt : je peux te proposer la Rédaction universelle en ligne dans un quart d'heure, sans attendre 561 ; d'ici là, une fiche peut dire « ce qui correspond au niveau satisfaisant » quand le compteur dit Fragile — tu le verrais sur la fiche. Maintenant, ou avec 561 ?
+
+538. Le compteur d'orthographe : je propose les seuils de Dugain divisés par deux (la lettre fait la moitié d'une copie double). Pour trente lignes : 0 à 3 erreurs Très satisfaisant, 4 à 7 Satisfaisant, 8 à 14 Fragile, 15 et plus Insuffisant. Oui ?
+
+553. Les compétences : E4 rattache chaque point de la grille Dugain à une compétence du site (l'orthographe à « consolider l'orthographe », le lexique à « enrichir le lexique », la remobilisation à « exploiter des lectures », la thèse et la nuance à l'argumentation…). Les élèves ne les voient pas. Oui ?
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:01
+MEMO

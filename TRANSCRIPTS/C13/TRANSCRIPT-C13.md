@@ -3939,3 +3939,46 @@ MEMO
 
 27/10/2026 07:44
 MEMO
+
+## Tour 212 — 27/10/2026 07:56 — Paul (07:48)
+
+**Paul (mot pour mot).** « Non promeus ainsi, je mesurerai moi même. Tu me fais juste un rappel des choses à mesurer après la promotion. Pour le prof connecté on s'en fiche »
+
+**Fait.** Code du sas identique depuis `4ac663c7` (tête `integration` `4e3fc230` : relances et transcripts seulement) ; assemblé → md5 `2db8b6c5ee9fea1a79e0dae2786038c3`, 2 420 064 o ; prod `index.html` = l'assemblé avec `var APP_VERSION="8.75.0-④";` (l. 3015, à la place de `8.74.0-③`) → md5 `0fb126a79e7e580ac9fb9bd7382b61f3`, 2 420 064 o ; commit prod `a017558786d3` (blob `a8251813942b`), poussé 07:51:02 ; **bit à bit** : `curl …/index.html?v=8.75.0-4` → `83adc8de…` de 07:51:13 à 07:51:45, `0fb126a7…` à 07:51:56 — identique. Suivi prod (`5403275`) : journal (entrée 27/10 07:51), dettes (ÉTAT DE PRODUCTION v8.75.0-④ ; 12 · 87, 12 · 88, 12 · 212, 13 · 37, 13 · 38, 13 · 40 à 13 · 46 promues ; 13 · 39 et 13 · 47 promues en l'état, Paul mesure ; 13 · 48 classée par Paul), point de retour avant ④ (blob ③ `f0cbc31fe81f`), index des fonctions (1923 fonctions), où-trouver-quoi (section ④). Sas : PROMU aux quatre relances, `AUDIT-FINAL.md` §0. Aucun réveil programmé.
+
+**Réponse (mot pour mot).**
+
+À jouer : tes mesures sur 8.75.0-④ · en cours chez les exécutants : rien · ouvert : 454, 458, 460
+
+466. 8.75.0-④ est en production depuis 07:51 : le fichier en ligne est bit à bit le candidat annoncé (md5 `0fb126a79e7e580ac9fb9bd7382b61f3`, 2 420 064 octets). Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.75.0-4 — la pastille dit v8.75.0-④.
+
+467. Registre : 13 · 39 (le chargement) et 13 · 47 (le « ? ») restent ouvertes jusqu'à ta mesure ; 13 · 48 (le prof connecté) est classée, comme tu l'as dit. Journal, point de retour vers ③, index des fonctions, où-trouver-quoi : à jour. Aucun réveil programmé.
+
+468. Toujours ouverts, tels quels : 454 (la phrase « L'activité en cours : … tu dépasses de n min », tombée avec la barre : la veux-tu en tête de la séquence ?), 458 (le « ? » en or), 460 (l'aide qui s'adapte au chapitre, dans le mode dirigé).
+
+À tester, geste par geste :
+
+469. Le chargement (13 · 39). En mode test : page 3e → « Je publie pour » Dylan, puis Franklin → Emploi du temps : leurs cases montrent le chapitre et « heure n/3 ». Hugo et Turing : le même geste sur un chapitre de 4e. Si une case dit « classe non encore importée » : panneau prof → Emploi du temps → « 🔗 Classes de la grille et classes du site », relie-la, puis regarde de nouveau.
+
+470. Le « ? » (13 · 43, 13 · 47). Sur chaque écran (accueil, page du niveau, panneau prof, emploi du temps, case, Atelier, pilote, Fin de l'heure, Relecture) : la languette au bord droit, à mi-hauteur. Clic, ou touche « ? » : le volet à droite, le texte de cet écran, le fil du chapitre en bas ; Échap le ferme. Dans la fenêtre du tableau : rien.
+
+471. L'heure en classe (13 · 41). Case de l'heure → « ▶ Ouvrir le pilotage et lancer » : l'écran de la classe seule, sans Structure ni Atelier ; le retour du navigateur ne sort pas ; « ↗ Le site dans un nouvel onglet » ouvre le reste à côté.
+
+472. Fermer l'onglet de l'heure (13 · 41). Le navigateur demande confirmation. Dans un autre onglet du site, le bandeau « Heure en cours avec les … — Reprendre » paraît en haut ; « Reprendre » : la même diapo, le chrono continue. Après « Clore l'heure » : plus de bandeau.
+
+473. À T-5 (S1). La séquence « Fin de l'heure » s'ouvre seule, dans la colonne de droite ; plus de barre en bas.
+
+474. Fin de l'heure, étape 2 (13 · 40). La phrase dit combien d'activités attendent ta décision, puis « tout est décidé ».
+
+475. Préparer le cahier (S2, S3). « ❄ Préparer le cahier » : la diapo du cahier au centre, le tableau gelé, l'écran ne change pas de forme ; puis « Montrer le cahier à la classe », « Retour au cours », « Plus tard ».
+
+476. Le récit d'une heure à une seule activité (13 · 42). Relecture → « Le récit » commence par « Cette heure, on a fait » (vu des élèves sur École Directe).
+
+477. La répétition (S5). Atelier → Pilotage : « Répétition », « ■ Arrêter » ; ni « Fin de l'heure », ni participation.
+
+478. Les noms (S4). « ⧉ Ce que voit la classe », « 🖥 Ouvrir le tableau » ; la case d'une heure en cours : « Reprendre l'heure ».
+
+479. Tout l'écran (§12.27). Panneau prof bord à bord ; « Élèves & codes » : ↻ ✕ dans la ligne de l'élève ; « Emploi du temps » du panneau : trois groupes rangés ; la page du niveau à toute la largeur ; l'en-tête du pilote dit la classe de l'heure (13 · 38) ; « Voir dans l'arborescence » : rien par-dessus (13 · 45) ; la fenêtre du tableau : jamais un message du prof (13 · 44).
+
+27/10/2026 07:56
+MEMO

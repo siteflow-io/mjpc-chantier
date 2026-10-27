@@ -483,3 +483,6 @@ html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
 #dr-zone #prep .dr-pp{grid-template-columns:1fr}
 #dr-zone #prep .pp-tete{flex-direction:column;align-items:flex-start}
 #dr-zone #prep .pp-liste{border-left:0;padding-left:0;border-top:1px dotted var(--bord2);padding-top:6px;margin-top:8px}
+/* E2 · §12.30 : la phrase de l'activité en cours, sous la tête de la séquence — elle passe à la ligne, entière, dans la colonne */
+#dr-zone .dr-pp-act{font-size:.82rem;line-height:1.35;color:var(--texte2);margin:2px 0 6px;white-space:normal;overflow-wrap:anywhere}
+#dr-zone .dr-pp-act[hidden]{display:none}

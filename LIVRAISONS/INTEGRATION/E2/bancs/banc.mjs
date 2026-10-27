@@ -753,6 +753,39 @@ for (const [W, Hh] of [[1366, 768], [1536, 864], [1707, 743], [1920, 1080]]) {
   pas('B31', vu && ap.lancee && !ap.close && ap.eid === av.eid && ap.nDev === av.nDev && av.nDev > 0 && ap.fin === av.fin && ap.ecoule >= av.ecoule && !reste ? 'ok' : 'ÉCHEC', W + '×' + Hh + ' · « Reprendre » : l\'heure tourne, la même diapo, les mêmes lignes, « Fin de l\'heure » à son étape, le chrono continu, plus de bandeau', JSON.stringify({ bandeau: vu, avant: av, apres: ap, reste }));
   pas('B31', !B.errs.length ? 'ok' : 'ÉCHEC', W + '×' + Hh + ' · aucune erreur JS', B.errs.join(' ; ')); await s.ctx.close(); }
 
+// ── B36 · §12.30 : la phrase de l'activité en cours sous la tête de la séquence, mot pour mot, tenue à jour en place ──
+dire(''); dire('B36 — « L\'activité en cours : Activité N — …, <état>. » sous la tête de la séquence (T-5), à jour sans redessin ; un champ en frappe garde son focus ; rien après « Clore »');
+{ const s = await session(); const p = s.page; const v = await lancerUnClic(s);
+  if (v === 'absent' || !s.integre) pas('B36', 'absent', 'le lancement du site intégré');
+  else { await devoiler(s, 2); const t0 = await p.evaluate(() => Date.now());
+    await s.attendre(new Date('2026-09-14T09:41:30+02:00').getTime() - t0);
+    { const d0 = await p.evaluate(() => S.di); for (let k = 0; k < 10 && (await p.evaluate(() => S.di)) === d0; k++) await devoiler(s, 1); await devoiler(s, 1); await p.evaluate(() => { seance().ecrans[S.di].dur = 5; }); }   /* une diapo neuve juste avant T-5, prévue 5 min (posé pour le banc) : son activité est « dans les temps », puis la dépasse */
+    const t1 = await p.evaluate(() => Date.now()); await s.attendre(Math.max(0, new Date('2026-09-14T09:42:10+02:00').getTime() - t1)); await s.attendre(800);
+    const lit = () => p.evaluate(() => { const l = document.querySelector('#dr-zone .dr-pp-act'); const t = document.querySelector('#dr-zone .pp-tete'); return { txt: l && !l.hidden ? l.innerText.replace(/\s+/g, ' ').trim() : '', sous: !!(l && t && t.nextElementSibling === l), entiere: l ? l.scrollWidth <= l.clientWidth + 1 : false, fs: S.finSection }; });
+    const a = await lit(); await cap(p, 'B36-T5');
+    const att = await p.evaluate(() => dr_phraseActivite().replace(/<[^>]+>/g, ''));
+    pas('B36', /^L'activité en cours : (Activité|Diapo) \d+ — .+, (dans les temps|il te reste peu de temps|tu dépasses · \+\d+ min|terminée|faite à l'oral)\.$/.test(a.txt) && a.sous && a.entiere && a.txt === att.trim() ? 'ok' : 'ÉCHEC', 'T-5 : la phrase mot pour mot, sur sa ligne sous la tête, entière', JSON.stringify(a));
+    /* un champ de l'étape en frappe : le texte d'« Autre travail » ou tout champ de la séquence */
+    await p.evaluate(() => { const e = document.querySelector('#fin .pp-liste [data-sec="3"]'); if (e) e.click(); }); await s.attendre(500);
+    const champ = await p.evaluate(() => { const f = Array.from(document.querySelectorAll('#fin textarea, #fin input[type=text], #fin [contenteditable="true"]')).find(x => x.offsetParent !== null); if (!f) return null; f.focus(); f.id = f.id || 'b36-champ'; return f.id; });
+    if (champ) await p.keyboard.type('B36 en frappe');
+    const avant = await p.evaluate(() => { const s0 = document.querySelector('#fin .dr-seq'); window.__b36 = s0; return 1; });
+    await s.attendre(10 * 60000);   /* dix minutes de plus sur la même diapo : l'état passe à « tu dépasses » */
+    const b = await lit(); const meme = await p.evaluate(id => ({ seq: window.__b36 === document.querySelector('#fin .dr-seq'), focus: !!id && document.activeElement && document.activeElement.id === id, val: id ? ((document.getElementById(id) || {}).value || (document.getElementById(id) || {}).innerText || '') : '' }), champ);
+    pas('B36', /, (dans les temps|il te reste peu de temps)\.$/.test(a.txt) && /tu dépasses · \+\d+ min\.$/.test(b.txt) ? 'ok' : 'ÉCHEC', 'la phrase suit le temps : « dans les temps » → « tu dépasses · +n min. »', a.txt + ' → ' + b.txt);
+    pas('B36', !champ ? 'absent' : meme.seq && meme.focus && /B36 en frappe/.test(meme.val) ? 'ok' : 'ÉCHEC', 'à jour en place : la séquence n\'est pas redessinée, le champ en frappe garde son focus et son texte', JSON.stringify(Object.assign({ champ }, meme)));
+    await p.evaluate(() => { const b = document.getElementById('f-preparer'); if (b) b.click(); }); await s.attendre(1500); const pr = await p.evaluate(() => { const l = document.querySelector('#dr-zone #prep .dr-pp-act'); return { prep: !!S.preparation, txt: l && !l.hidden ? l.innerText.replace(/\s+/g, ' ').trim() : '' }; }); await cap(p, 'B36-preparation');
+    const nomA = (/^L'activité en cours : ([^,]+),/.exec(b.txt) || [])[1];
+    pas('B36', pr.prep && nomA && pr.txt.indexOf(nomA) > 0 ? 'ok' : 'ÉCHEC', 'en préparation (moi sur le cahier) : la phrase nomme l\'activité de la classe (la diapo gelée)', JSON.stringify(pr));
+    await p.evaluate(() => { const b = document.getElementById('f-revenir'); if (b) b.click(); }); await s.attendre(800);
+    await p.click('#dr-clore'); await s.attendre(400); await p.click('#f-clore'); await s.attendre(300); if (await p.evaluate(() => !!document.querySelector('#garde-clore.on'))) await p.click('#gclore-oui'); await s.attendre(2500);
+    const c = await p.evaluate(() => ({ close: !!S.close, phrase: dr_phraseActivite(), vue: Array.from(document.querySelectorAll('#dr-zone .dr-pp-act')).filter(l => !l.hidden && l.offsetParent !== null).length }));
+    pas('B36', c.close && !c.phrase && !c.vue ? 'ok' : 'ÉCHEC', 'après « Clore l\'heure » : plus de phrase', JSON.stringify(c));
+    const r = await p.evaluate(() => { const s0 = S.repetition; S.repetition = true; const x = dr_phraseActivite(); S.repetition = s0; return x; });
+    pas('B36', !r ? 'ok' : 'ÉCHEC', 'en répétition : jamais de phrase', r);
+    pas('B36', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
+  await s.ctx.close(); }
+
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');
 { const s = await session(); const ok = s.integre ? await s.page.evaluate(() => { const a = { niveau: '3e', chapitre: '0', seance: '0', classeSlug: '3E Charles de Gaulle', debut: '08:57', fin: '09:52' }, b = Object.assign({}, a, { debut: '10:07', fin: '11:02' }); return [_drCleHeureDe(a), _drCleHeureDe(b)]; }) : null;

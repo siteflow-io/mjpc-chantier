@@ -111,3 +111,9 @@ Mesuré sur `redaction_dugain_v3.html` (production, 349 982 o, 6 205 lignes, JS 
 - **Banc** `banc-ru.mjs` RU0-RU13 : **50 ok · 0 échec** (`sorties/1454-27-10/banc-ru.txt`).
 
 **RU fini (`a292246ae`)** — 27/10 15:02 (Paris), après la relance de 14:13. Banc RU0-RU13 : 50 ok, 0 échec. Captures à 1707 × 743 dans `LIVRAISONS/REDACTION/captures/`. Restent au mot de Paul : les seuils du compteur de la lettre, les compétences de Dugain.
+
+## Poussée 9 — 27/10 15:19 (Paris) · 13 · 57 : un mot de liaison ne se répète pas dans un critère — banc **55 / 0**
+- **Ce que ça change pour la classe** : plus de « Par ailleurs, … » suivi de « Par ailleurs, … » sur une fiche.
+- `redaction.html` (`assemblerCommentaireCritere`) : dans un même critère, si le mot tiré (`pickConnecteur`, par empreinte, inchangé) est celui du paragraphe précédent, l'app prend **le suivant de la même liste**. Garde **RU14** (aucune répétition dans les fiches des captures ni dans les trois fiches de la non-régression).
+- **La non-régression devient « au nom de classe près, à l'énoncé près, et au mot de liaison près là où il se répétait »** : la fiche de la production passe par la même règle avant la comparaison (AUDEBERT : 0 mot changé, BOIVIN : 2, CESBRON : 1) ; tout le reste mot pour mot.
+- Captures rejouées (5a : la fiche Dugain sans le « Par ailleurs » doublé). Banc RU0-RU14 : **55 ok · 0 échec** (`sorties/1511-27-10/banc-ru.txt`).

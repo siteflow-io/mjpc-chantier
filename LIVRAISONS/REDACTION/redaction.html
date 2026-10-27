@@ -5808,6 +5808,7 @@ function genererHTMLEleve(id) {
     }
 
     let html = "";
+    let connPrec = null;   // le mot de liaison du paragraphe précédent, dans ce critère
     blocs.forEach((b, i) => {
       let connecteur = "";
       let texteAvecMinuscule = b.texte.charAt(0).toLowerCase() + b.texte.slice(1);
@@ -5843,6 +5844,9 @@ function genererHTMLEleve(id) {
           typeConn = "concession";
         }
         connecteur = pickConnecteur(typeConn, b.ind.id, i);
+        // 13 · 57 (contrôle du 27/10, 15:03) : dans un même critère, un mot de liaison ne se répète pas — le même que le précédent → le suivant de la liste
+        if (connecteur === connPrec) { const l = CONNECTEURS[typeConn]; connecteur = l[(l.indexOf(connecteur) + 1) % l.length]; }
+        connPrec = connecteur;
         html += `<p class="comm-para">${escapeHtml(connecteur)}${blocHTML}${sousCommentaire}${mentionCompteur}</p>`;
       }
     });

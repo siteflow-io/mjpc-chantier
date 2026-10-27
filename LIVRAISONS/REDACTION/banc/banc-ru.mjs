@@ -35,6 +35,14 @@ const pret = (pg, quoi = 'classe') => pg.waitForFunction(q => { if (!window.RU) 
   if (q === 'classe') return !!RU.classe && vis('ruApp') && Array.isArray(state.classe) && state.classe.length > 0 && RU.sigSuivi !== undefined && (RU.flux || RU.test);
   if (q === 'interro') return document.getElementById('interroOverlay').classList.contains('show') && !!interroState && !!state.current;
   return vis(q); }, quoi, { timeout: 12000 }).then(() => true, () => false);
+// 13 · 57 : les mots de liaison d'un critère, dans l'ordre des paragraphes ; une répétition = deux paragraphes de suite qui ouvrent par le même
+const CONN = ["De plus, ", "Par ailleurs, ", "D'ailleurs, ", "Qui plus est, ", "En revanche, ", "Toutefois, ", "Cependant, ", "Reste que ", "Néanmoins, ", "Plus problématique encore, ", "Plus inquiétant, ", "Surtout, ", "Pour finir, ", "En définitive, ", "Au total, ", "Au bilan, "];
+const LISTES = [["De plus, ", "Par ailleurs, ", "D'ailleurs, ", "Qui plus est, "], ["En revanche, ", "Toutefois, ", "Cependant, ", "Reste que ", "Néanmoins, "], ["Plus problématique encore, ", "Plus inquiétant, ", "Surtout, ", "Pour finir, "], ["En définitive, ", "Au total, ", "Au bilan, "]];
+const ouvreurs = bloc => [...bloc.matchAll(/<p class="comm-para">([^<]*?, |Reste que )/g)].map(m => m[1].replace(/&#39;/g, "'"));
+const repetitions = html => html.split('<div class="critere">').slice(1).reduce((n, b) => { const o = ouvreurs(b); return n + o.filter((x, i) => i > 0 && x === o[i - 1] && CONN.includes(x)).length; }, 0);
+// la règle appliquée à une fiche de la production (pour comparer « au mot de liaison près là où il se répétait »)
+const sansRepetition = html => { let n = 0; const out = html.split('<div class="critere">').map((b, j) => { if (!j) return b; let prec = null;
+  return b.replace(/<p class="comm-para">([^<]*?, |Reste que )/g, (m, c) => { const cc = c.replace(/&#39;/g, "'"); if (!CONN.includes(cc)) { prec = null; return m; } if (cc !== prec) { prec = cc; return m; } const l = LISTES.find(L => L.includes(cc)); const x = l[(l.indexOf(cc) + 1) % l.length]; n++; prec = x; return '<p class="comm-para">' + x; }); }).join('<div class="critere">'); return { html: out, n }; };
 const cap = (pg, nom) => pg.screenshot({ path: path.join(CAP, nom + '.png') }).catch(() => {});
 const ecr = pg => pg.evaluate(() => window.__ECR.slice());
 
@@ -226,6 +234,7 @@ for (const [nom, P, id] of [['dugain', PLAN_DUGAIN, 'dugain'], ['lettre', PLAN_L
   const cits = attendus.filter(i => P.plan[i][2]).every(i => fiche.indexOf(P.plan[i][2].replace(/'/g, '&#39;')) >= 0 || fiche.indexOf(P.plan[i][2]) >= 0);
   const compteurJuste = c.sugg === c.e[Object.keys(P.plan).find(i => /orthographe/.test(i))];
   verif('RU12', ok && cits && compteurJuste && fiche.indexOf('{CIT}') < 0, nom + ' : une copie corrigée selon un plan cohérent (tous les points au même niveau, chaque citation à la place que la phrase annonce, le compteur d\'accord avec le niveau d\'orthographe)', JSON.stringify({ ok, cits, compteurJuste, c }).slice(0, 400));
+  verif('RU14', repetitions(fiche) === 0, nom + ' (la capture) : aucun mot de liaison deux fois de suite dans un critère (13 · 57)', fiche.split('<div class="critere">').slice(1).map(ouvreurs).map(o => o.join(' / ')).join(' || '));
   const p = path.join(OUT, 'fiche-capture-' + nom + '.html'); fs.writeFileSync(p, fiche);
   const pf = await ctx.newPage(); await pf.goto('file://' + p); await att(pf, 300); await cap(pf, 'RU-12-' + nom + '-fiche'); await pf.close();
   verif('RU12', pg.__errs.length === 0, nom + ' : zéro erreur JS', JSON.stringify(pg.__errs)); await ctx.close();
@@ -270,9 +279,10 @@ if (fs.existsSync(PROD)) { const ctx = await contexte(); const hub = ctx.__hub; 
   for (const cp of COPIES) {
     const fa = await corriger(a.pg, cp, await a.pg.evaluate(n => eleveId(n), cp.eleve)); let fb = await corriger(b.pg, cp, await b.pg.evaluate(n => eleveId(n), cp.eleve));
     const enoncePres = h => h.replace(/<div class="sujet-rappel">[\s\S]*?<\/div>/, '<div class="sujet-rappel">[l’énoncé]</div>');   // contrôle n°79 (B) : l'énoncé de la fiche est désormais celui de la variante, entier
-    const fa2 = enoncePres(fa.split('3e De Gaulle').join('3 FRANKLIN Aretha')); const fb0 = fb; fs.writeFileSync(path.join(OUT, 'nonreg-prod-' + cp.eleve.split(' ')[0] + '.html'), fa2); fs.writeFileSync(path.join(OUT, 'nonreg-ru-' + cp.eleve.split(' ')[0] + '.html'), fb0); fb = enoncePres(fb0);
+    const sr = sansRepetition(enoncePres(fa.split('3e De Gaulle').join('3 FRANKLIN Aretha'))); const fa2 = sr.html; const fb0 = fb; fs.writeFileSync(path.join(OUT, 'nonreg-prod-' + cp.eleve.split(' ')[0] + '.html'), fa2); fs.writeFileSync(path.join(OUT, 'nonreg-ru-' + cp.eleve.split(' ')[0] + '.html'), fb0); fb = enoncePres(fb0);
     let diff = ''; if (fa2 !== fb) { let i = 0; while (fa2[i] === fb[i]) i++; diff = 'premier écart au signe ' + i + ' : « ' + fa2.slice(i - 40, i + 60) + ' » / « ' + fb.slice(i - 40, i + 60) + ' »'; }
-    verif('RU8', fa2 === fb, cp.eleve + ' (' + (cp.variante ? 'réflexion' : 'imagination') + ') : la fiche, mot pour mot celle de redaction_dugain_v3 (au nom de classe près et à l\'énoncé près)', diff);
+    verif('RU8', fa2 === fb, cp.eleve + ' (' + (cp.variante ? 'réflexion' : 'imagination') + ') : la fiche, mot pour mot celle de redaction_dugain_v3 (au nom de classe près, à l\'énoncé près, et au mot de liaison près là où il se répétait : ' + sr.n + ')', diff);
+    verif('RU14', repetitions(fb) === 0, cp.eleve + ' : aucun mot de liaison deux fois de suite dans un critère (13 · 57)', ouvreurs(fb).join(' | '));
   }
   verif('RU8', a.errs.length + b.errs.length === 0, 'zéro erreur JS des deux côtés', JSON.stringify(a.errs.concat(b.errs))); await ctx.close(); }
 else verif('RU8', false, 'la non-régression', 'la production redaction_dugain_v3.html est introuvable : ' + PROD);

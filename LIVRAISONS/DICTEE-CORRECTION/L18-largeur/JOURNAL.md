@@ -6,3 +6,5 @@
 - Mesures (`bancs/cap_l18.py`, 12 écrans × 4 tailles) : cadre = largeur de l'écran à 1366, 1536, 1707, 1920 ; aucun défilement de côté ; zéro erreur ; zéro accès au hub. Captures avant / après à 1707 × 743 et 1366 × 768, regardées.
 - Banc unique : **42 / 53 vertes ; les 11 rouges sont rouges à l'identique sur la production** (3 conditions anciennes, 8 données hors sas) — rien de rouge n'est dû à la L18. `banc_L7_geste.py` accordé (la largeur de l'écran au lieu de 1 100 px).
 - `correction_dictee.html` : 1 012 323 o, md5 e032d0ac3ed20afe262557687f0631b6. Rien n'est promu.
+
+**L18 largeur fini (457140d59)** — 27/10 20:50 (Paris) · branche `l18-largeur`.

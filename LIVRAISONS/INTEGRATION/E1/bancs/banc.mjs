@@ -1277,8 +1277,8 @@ await B('A59', '§12.31 (1 ter) : une heure jouée d\'une classe à clé simplif
 /* ── A60 · §12.33 (1), dette 13 · 55 : la poignée entre la diapo et « Notes pour cette diapo » ne sort jamais de l'écran — l'Atelier, la répétition, l'écran de la classe ; quatre tailles, zoom 90 / 100 / 110 % (la fenêtre en pixels CSS) ── */
 const poigneeMesure = pg => pg.evaluate(() => { const g = document.getElementById('poignee-mur'), n = document.querySelector('#dr-zone .notes'); if (!g || !n) return null; const a = g.getBoundingClientRect(), b = n.getBoundingClientRect(); const H = innerHeight;
   return { H, haut: Math.round(a.top), bas: Math.round(a.bottom), h: Math.round(a.height), notesHaut: Math.round(b.top), notesVues: Math.round(Math.max(0, Math.min(b.bottom, H) - b.top)), defile: document.scrollingElement.scrollHeight - H }; });
-const poigneeOk = m => m && m.h >= 10 && m.haut >= 0 && m.bas <= m.H && m.notesVues >= 40 && m.defile <= 0;
-await B('A60', '§12.33 (1), dette 13 · 55 : la poignée dans l\'écran, haute d\'au moins 10 px, et au moins 40 px de notes visibles — l\'Atelier aux quatre tailles × zoom 90/100/110 %, la répétition et l\'écran de la classe aux quatre tailles', async () => {
+const poigneeOk = m => m && m.h >= 10 && m.haut >= 0 && m.bas <= m.H && m.notesVues >= 24 && m.defile <= 0;   /* §12.33 bis : la règle de Paul est la poignée dans l'écran ; des notes, au moins une ligne (l'écran de la classe et la répétition gardent la taille de diapo de la ⑤ — 13 · 74) */
+await B('A60', '§12.33 (1), dette 13 · 55 : la poignée dans l\'écran, haute d\'au moins 10 px, et au moins une ligne de notes visible (24 px) — l\'Atelier aux quatre tailles × zoom 90/100/110 %, la répétition et l\'écran de la classe aux quatre tailles', async () => {
   for (const [w, h] of TAILLES_1227) for (const z of [1, 0.9, 1.1]) { const W = Math.round(w / z), H = Math.round(h / z);
     const o = await E.ouvrir(b, { w: W, h: H, vue: 'atelier' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(700);
     const m = await poigneeMesure(pg); E.verif('A60', poigneeOk(m), w + ' × ' + h + ' zoom ' + Math.round(z * 100) + ' % (' + W + ' × ' + H + ') · l\'Atelier : la poignée et les notes dans l\'écran', JSON.stringify(m));
@@ -1432,6 +1432,35 @@ await B('A68', '§12.32 (4) : côté élève rien ne change — l\'onglet « ✏
   E.verif('A68', /^\S* ?Cet outil ouvrira plus tard\.$/.test(t), 'l\'onglet de l\'élève : « ' + t + ' » (comme aujourd\'hui)', t);
   E.verif('A68', !pop && !viewer && !boites.length, 'l\'item « redaction » cliqué par l\'élève : ni onglet, ni visionneuse, ni boîte', JSON.stringify({ pop: !!pop, viewer, boites }));
   E.verif('A68', !errs.length, 'aucune erreur JS', errs.slice(0, 2).join(' ; ') || undefined); await ctx.close(); });
+
+/* ── A69-A71 · §12.33 bis (13 · 74-76) : le bilan d'E3 (question de 57 signes sans réponse attendue, N mots-clés de 33 à 38 signes, consigne à 3 étapes) — importé, joué en répétition, tout dévoilé, la fenêtre du tableau à la taille de l'écran ── */
+const bilanEssai = async (W, H, N) => { const { chapitreTest } = await import('./import-3e.mjs');
+  const st = E.store(); const j = chapitreTest(st); j.chapitre.seances.forEach(se => ((se.deroule || {}).ecrans || []).forEach(e => { e.blocs = (e.blocs || []).filter(b => b.t !== 'fiche'); }));
+  const B = j.chapitre.seances[0].deroule.ecrans.find(e => e.role === 'bilan'); B.blocs.find(b => b.t === 'question').q = 'En quoi Géricault et Friedrich sont-ils des romantiques ?'; delete B.blocs.find(b => b.t === 'question').reps;
+  B.blocs.find(b => b.t === 'texte').el = ['le sublime de la nature chez Friedrich', 'le naufrage du Radeau de la Méduse', 'le spleen et l’idéal chez Baudelaire', 'le moi lyrique au centre du poème', 'la couleur plus forte que le dessin', 'la mélancolie du voyageur solitaire', 'la nature comme reflet de l’âme'].slice(0, N);
+  const o = await E.ouvrir(b, { w: W, h: H, vue: 'atelier', hub: st }); const pg = o.pg; await sansVoile(pg);
+  await pg.evaluate(jj => { CH.json = jj; CH.niveau = '3e'; CH.chapIdx = 0; CH.taxo = null; chInjecterConfirme('remplacer'); }, j); await pg.waitForTimeout(2500);
+  await pg.evaluate(() => new Promise(r => atChargerChapitres('3e', () => { atEditerChapitre('3e', '0'); r(); }))); await pg.waitForTimeout(1000);
+  await pg.evaluate(() => { const x = document.querySelector('.at-onglet[data-vue="atelier"]'); if (x) x.click(); }); await pg.waitForTimeout(1500);
+  const di = await pg.evaluate(() => { const i = seance().ecrans.findIndex(e => e.role === 'bilan'); S.di = i; dr_tout(); return i; }); await pg.waitForTimeout(900);
+  const sousQ = (sel) => pg.evaluate(s => { const m = document.querySelector(s); const q = m && m.querySelector('.q'); if (!q) return null; const bloc = q.closest('.bloc') || q.parentElement; return { li: bloc.querySelectorAll('ul.etapes li').length, rep: Array.from(bloc.querySelectorAll('.rep')).filter(x => getComputedStyle(x).display !== 'none').length }; }, sel);
+  const at = await pg.evaluate(() => ({ plein: alertesForme().some(a => a.k === 'pleine' && a.di === S.di), pages: S.pagesCourantes ? S.pagesCourantes.length : 1 })); const qAt = await sousQ('#mur');
+  await pg.evaluate(() => lancerRepetition()); await pg.waitForTimeout(1200); await pg.evaluate(i => { aller(i); }, di); await pg.waitForTimeout(800);
+  for (let n = 0; n < 25; n++) { const e = await pg.evaluate(() => { const L = Array.from(document.querySelectorAll('#mur .corpsd li, #mur .corpsd .rep')); return { n: L.filter(l => !l.classList.contains('pas')).length, tot: L.length, di: S.di }; }); if (e.di !== di || e.n >= e.tot) break; await pg.evaluate(() => document.getElementById('bdev').click()); await pg.waitForTimeout(120); }
+  await pg.waitForTimeout(600); const rep = await pg.evaluate(() => ({ pages: S.mur && S.mur.pages ? S.mur.pages.length : 1, murH: document.getElementById('mur').clientHeight })); const qPil = await sousQ('#mur');
+  let tab = null, qTab = null; try { const [fen] = await Promise.all([o.ctx.waitForEvent('page', { timeout: 6000 }), pg.evaluate(() => dr_ouvrirTableau())]); await fen.waitForLoadState(); await fen.setViewportSize({ width: W, height: H }); await fen.waitForTimeout(3000);
+    tab = await fen.evaluate(() => { const m = document.getElementById('mur2'); if (!m) return null; const t = ((m.querySelector('.page') || {}).textContent || '').replace(/[‹›]/g, ''); const mm = /\/\s*(\d+)/.exec(t); return mm ? +mm[1] : 1; });
+    qTab = await fen.evaluate(() => { const m = document.getElementById('mur2'); const q = m && m.querySelector('.q'); if (!q) return null; const bloc = q.closest('.bloc') || q.parentElement; return { li: Array.from(bloc.querySelectorAll('ul.etapes li')).filter(x => getComputedStyle(x).display !== 'none').length, rep: Array.from(bloc.querySelectorAll('.rep')).filter(x => getComputedStyle(x).display !== 'none').length }; }); await fen.close(); } catch (e) {}
+  const errs = o.errs.slice(); await o.ctx.close(); return { at, qAt, rep, qPil, tab, qTab, errs }; };
+const BILANS = {}; const bilan = async (W, H, N) => { const k = W + 'x' + H + ':' + N; if (!BILANS[k]) BILANS[k] = await bilanEssai(W, H, N); return BILANS[k]; };
+await B('A69', '§12.33 bis, 13 · 74 : le bilan à 4 mots-clés fait une page au tableau à 1366 × 768, comme sur la ⑤ (la diapo du pilote garde la taille de la ⑤ dans l\'écran de la classe et la répétition)', async () => {
+  for (const [W, H] of [[1366, 768], [1920, 1080]]) { const r = await bilan(W, H, 4); E.verif('A69', r.tab === 1 && r.rep.pages === 1, W + ' × ' + H + ' : 4 mots-clés → au tableau ' + r.tab + ' page, au pilote ' + r.rep.pages + ' (diapo du pilote ' + r.rep.murH + ' px de haut)', JSON.stringify({ tab: r.tab, rep: r.rep })); E.verif('A69', !r.errs.length, W + ' × ' + H + ' : aucune erreur JS', r.errs.slice(0, 2).join(' ; ') || undefined); } });
+await B('A70', '§12.33 bis, 13 · 76 : la question du bilan sans réponse attendue n\'a ni puce « › » ni ligne sous elle — au tableau, au pilote, dans l\'Atelier', async () => {
+  const r = await bilan(1366, 768, 4); const z = q => q && q.li === 0 && q.rep === 0;
+  E.verif('A70', z(r.qAt) && z(r.qPil) && z(r.qTab), 'sous la question : Atelier ' + JSON.stringify(r.qAt) + ', pilote ' + JSON.stringify(r.qPil) + ', tableau ' + JSON.stringify(r.qTab) + ' (li = puce, rep = ligne)', undefined); });
+await B('A71', '§12.33 bis, 13 · 75 : « Diapo trop pleine » dans l\'Atelier ⇔ la diapo fait plus d\'une page au tableau — 3, 4, 5 et 7 mots-clés, à 1366 × 768, 1707 × 743, 1920 × 1080 (et au moins un cas à deux pages)', async () => {
+  let deux = 0; for (const [W, H] of [[1366, 768], [1707, 743], [1920, 1080]]) for (const N of [3, 4, 5, 7]) { const r = await bilan(W, H, N); if (r.tab > 1) deux++; E.verif('A71', r.tab != null && r.at.plein === (r.tab > 1) && r.at.pages === r.tab, W + ' × ' + H + ' · ' + N + ' mots-clés : au tableau ' + r.tab + ' page(s), l\'Atelier ' + (r.at.plein ? 'dit' : 'ne dit pas') + ' « trop pleine » (ses pages : ' + r.at.pages + ')', JSON.stringify({ tab: r.tab, at: r.at })); }
+  E.verif('A71', deux > 0, 'la mesure couvre aussi une diapo à plusieurs pages (' + deux + ' cas)', undefined); });
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

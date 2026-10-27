@@ -33,7 +33,7 @@ const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log
 const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && detail !== '' ? ' — ' + detail : '')); return !!ok; };
 const info = (k, quoi) => dire('  info   ' + k + ' · ' + quoi);
 const p = (pg, ms) => pg.waitForTimeout(ms);
-/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, R, 42) */
+/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42) */
 const SEUL = process.env.MJPC_CAS ? process.env.MJPC_CAS.split(',') : null; const fait = k => !SEUL || SEUL.includes(k);
 
 /* ── le faux hub (celui de banc-1227), plus la classe « 3 DYLAN Bob » appariée à ses six cases (mission 0, M1) ── */
@@ -330,6 +330,37 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       verif('29', dtc >= 0 && dtc <= 3000 && !bc.some(x => /Reprendre le cours/.test(x)), T + ' · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » (en moins de 3 s après l’arrivée sur l’emploi du temps)', (dtc >= 0 ? 'en ' + dtc + ' ms' : 'jamais en 8 s') + ' ; d’abord : « ' + premier + ' »'); await pc.close().catch(() => {});
     } catch (e) { verif('29', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (29)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 30 (§12.30) : la phrase de l'activité en cours, sous la tête de la séquence, aux paliers ── */
+  if (fait('30')) { const o = await ouvrirCtx(W, H); const pg = o.pg;
+    /* la ligne : un élément de la séquence (hors de .pp-tete) dont le texte commence par « L'activité en cours : » ; la référence mot pour mot : la phrase d'alerteTexte (la ③) tant qu'elle existe */
+    const ligne = () => pg.evaluate(() => { const v = e => e && e.offsetParent !== null && e.getBoundingClientRect().height > 0; const c = Array.from(document.querySelectorAll('#fin *, #prep *, .pp *')).filter(e => v(e) && /^L.activité en cours :/.test((e.innerText || '').trim()) && !Array.from(e.children).some(k => /^L.activité en cours :/.test((k.innerText || '').trim()))); const e = c[0] || null;
+      let ref = null; try { if (typeof alerteTexte === 'function') { const d = document.createElement('div'); d.innerHTML = alerteTexte(); const sp = d.querySelector('span'); ref = sp ? sp.textContent.replace(/\s+/g, ' ').trim() : null; if (ref) { const m = /^L.activité en cours : .*?, (dans les temps|il te reste peu de temps|tu dépasses · \+\d+ min|terminée|faite à l.oral)\./.exec(ref); ref = m ? m[0] : ref; } /* la phrase seule : celle qui la suivait dans la barre attend le mot de Paul (§12.30 (3)) */ } } catch (x) {}
+      const r = e ? e.getBoundingClientRect() : null; const t = document.querySelector('.pp-tete'); const tr = t ? t.getBoundingClientRect() : null;
+      return e ? { texte: e.innerText.replace(/\s+/g, ' ').trim(), ref, sous: !!(tr && r.top >= tr.bottom - 2), entiere: r.right <= innerWidth && e.scrollWidth <= e.clientWidth + 1 } : { texte: null, ref }; });
+    const RE = /^L.activité en cours : (Activité|Diapo) \d+ — .+, (dans les temps|il te reste peu de temps|tu dépasses · \+\d+ min|terminée|faite à l.oral)\.$/;
+    try { await pg.clock.setFixedTime(new Date('2026-09-14T09:41:00+02:00')); await entrerProf(pg); const lance = await lancerParLaCase(pg); verif('30', lance, T + ' · l’heure se lance par la case (09:41)');
+      await dev(pg, 2); await p(pg, 400);
+      await pg.clock.setFixedTime(new Date('2026-09-14T09:42:20+02:00')); await p(pg, 3500); await capt(pg, W, H, '30-1-T-5-la-phrase');
+      const l1 = await ligne();
+      verif('30', !!l1.texte && RE.test(l1.texte) && (!l1.ref || l1.texte.replace(/’/g, "'") === l1.ref.replace(/’/g, "'")), T + ' · à T-5, la phrase de l’activité en cours, mot pour mot', '« ' + (l1.texte || 'absente') + ' »' + (l1.ref ? ' ; la ③ : « ' + l1.ref + ' »' : ''));
+      verif('30', !!l1.texte && l1.sous && l1.entiere, T + ' · sous la tête de la séquence, entière', JSON.stringify({ sous: l1.sous, entiere: l1.entiere }));
+      /* le focus d'un champ de l'étape 1, et la séquence pas redessinée, quand la minute passe et que l'état change */
+      const champ = await pg.evaluate(() => { const f = Array.from(document.querySelectorAll('#fin input, #fin select, #fin textarea')).find(e => e.offsetParent && !e.disabled); if (!f) return null; f.focus(); const s = document.querySelector('#fin .pp-tete') || document.querySelector('.pp-tete'); if (s) s.setAttribute('data-e3-tete', '1'); const z = document.getElementById('fin'); if (z) z.setAttribute('data-e3-fin', '1'); return f.tagName + (f.id ? '#' + f.id : ''); });
+      await pg.clock.setFixedTime(new Date('2026-09-14T09:46:30+02:00')); await p(pg, 3500); await capt(pg, W, H, '30-2-tu-depasses');
+      const l2 = await ligne(); const apres = await pg.evaluate(() => ({ actif: document.activeElement ? document.activeElement.tagName + (document.activeElement.id ? '#' + document.activeElement.id : '') : null, tete: !!document.querySelector('[data-e3-tete]'), fin: !!document.querySelector('[data-e3-fin]') }));
+      verif('30', !!l2.texte && /tu dépasses · \+\d+ min\.$/.test(l2.texte) && l2.texte !== l1.texte, T + ' · l’heure avance au-delà du prévu : « tu dépasses · +n min »', '« ' + (l1.texte || '') + ' » → « ' + (l2.texte || 'absente') + ' »');
+      verif('30', apres.fin, T + ' · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence)', JSON.stringify(apres));
+      if (champ) verif('30', apres.actif === champ, T + ' · le champ de l’étape 1 garde son focus', champ + ' → ' + apres.actif); else info('30', T + ' · pas de champ visible à l’étape 1 pour mesurer le focus');
+      /* après « Clore l'heure » : rien */
+      const close = await clore(pg, '2026-09-14T09:48:00+02:00'); const l3 = await ligne(); verif('30', close && !l3.texte, T + ' · après « Clore l’heure », plus de phrase', l3.texte || '');
+      /* en répétition : rien */
+      const pr = await pg.context().newPage(); await pr.clock.setFixedTime(new Date('2026-09-14T09:42:20+02:00')); await entrerProf(pr); await pr.evaluate(() => { try { edtFermer(); } catch (e) {} try { atelierOuvrir(); } catch (e) {} }); await p(pr, 1200); await sansVoiles(pr);
+      await clicTexte(pr, 'button,[onclick]', "atOnglet('chapitres')"); await p(pr, 900); if (!(await clicTexte(pr, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(pr, 'button,[onclick]', 'Modifier'); await p(pr, 1800); await sansVoiles(pr);
+      await pr.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await p(pr, 1500); await dev(pr, 2); await p(pr, 3000);
+      const rep = await pr.evaluate(() => /L.activité en cours :/.test(document.body.innerText)); verif('30', !rep, T + ' · en répétition, pas de phrase'); await pr.close().catch(() => {});
+    } catch (e) { verif('30', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (30)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── R (contrôle n°62) : une répétition jouée dans un autre onglet ne touche pas la fenêtre du tableau de la classe ── */
   if (fait('R')) { const o = await ouvrirCtx(W, H); const pg = o.pg;

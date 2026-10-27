@@ -1,0 +1,47 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 07:16 UTC · fichier md5 2db8b6c5ee9fea1a79e0dae2786038c3
+
+══ 1366×768 ══
+  ok     30 · 1366×768 · l’heure se lance par la case (09:41)
+  ÉCHEC  30 · 1366×768 · à T-5, la phrase de l’activité en cours, mot pour mot — « absente » ; la ③ : « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. »
+  ÉCHEC  30 · 1366×768 · sous la tête de la séquence, entière — {}
+  ÉCHEC  30 · 1366×768 · l’heure avance au-delà du prévu : « tu dépasses · +n min » — «  » → « absente »
+  ok     30 · 1366×768 · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence) — {"actif":"SELECT#f-ech","tete":false,"fin":true}
+  ok     30 · 1366×768 · le champ de l’étape 1 garde son focus — SELECT#f-ech → SELECT#f-ech
+  ok     30 · 1366×768 · après « Clore l’heure », plus de phrase
+  ok     30 · 1366×768 · en répétition, pas de phrase
+  ok     Z · 1366×768 · 0 erreur JS (30)
+
+══ 1536×864 ══
+  ok     30 · 1536×864 · l’heure se lance par la case (09:41)
+  ÉCHEC  30 · 1536×864 · à T-5, la phrase de l’activité en cours, mot pour mot — « absente » ; la ③ : « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. »
+  ÉCHEC  30 · 1536×864 · sous la tête de la séquence, entière — {}
+  ÉCHEC  30 · 1536×864 · l’heure avance au-delà du prévu : « tu dépasses · +n min » — «  » → « absente »
+  ok     30 · 1536×864 · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence) — {"actif":"SELECT#f-ech","tete":false,"fin":true}
+  ok     30 · 1536×864 · le champ de l’étape 1 garde son focus — SELECT#f-ech → SELECT#f-ech
+  ok     30 · 1536×864 · après « Clore l’heure », plus de phrase
+  ok     30 · 1536×864 · en répétition, pas de phrase
+  ok     Z · 1536×864 · 0 erreur JS (30)
+
+══ 1707×743 ══
+  ok     30 · 1707×743 · l’heure se lance par la case (09:41)
+  ÉCHEC  30 · 1707×743 · à T-5, la phrase de l’activité en cours, mot pour mot — « absente » ; la ③ : « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. »
+  ÉCHEC  30 · 1707×743 · sous la tête de la séquence, entière — {}
+  ÉCHEC  30 · 1707×743 · l’heure avance au-delà du prévu : « tu dépasses · +n min » — «  » → « absente »
+  ok     30 · 1707×743 · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence) — {"actif":"SELECT#f-ech","tete":false,"fin":true}
+  ok     30 · 1707×743 · le champ de l’étape 1 garde son focus — SELECT#f-ech → SELECT#f-ech
+  ok     30 · 1707×743 · après « Clore l’heure », plus de phrase
+  ok     30 · 1707×743 · en répétition, pas de phrase
+  ok     Z · 1707×743 · 0 erreur JS (30)
+
+══ 1920×1080 ══
+  ok     30 · 1920×1080 · l’heure se lance par la case (09:41)
+  ÉCHEC  30 · 1920×1080 · à T-5, la phrase de l’activité en cours, mot pour mot — « absente » ; la ③ : « L'activité en cours : Diapo 1 — Analyse d'images : la routine, dans les temps. »
+  ÉCHEC  30 · 1920×1080 · sous la tête de la séquence, entière — {}
+  ÉCHEC  30 · 1920×1080 · l’heure avance au-delà du prévu : « tu dépasses · +n min » — «  » → « absente »
+  ok     30 · 1920×1080 · la séquence n’est pas redessinée (la ligne et la tête changent, pas la séquence) — {"actif":"SELECT#f-ech","tete":false,"fin":true}
+  ok     30 · 1920×1080 · le champ de l’étape 1 garde son focus — SELECT#f-ech → SELECT#f-ech
+  ok     30 · 1920×1080 · après « Clore l’heure », plus de phrase
+  ok     30 · 1920×1080 · en répétition, pas de phrase
+  ok     Z · 1920×1080 · 0 erreur JS (30)
+
+BILAN banc-1228 : 24/36 vérifications — 12 ÉCHEC(S) · ROUGE

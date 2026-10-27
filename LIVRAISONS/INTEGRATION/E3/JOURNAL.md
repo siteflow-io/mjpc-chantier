@@ -670,3 +670,14 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - **Les notes de trois diapos et du bilan**, importées, sont chacune dans le cadre de sa diapo.
 - **La vérification courte**, avec les cas voisins de l'Atelier et de la répétition (30, 51, 49, 50, 39, 41, 29, 43), aux quatre tailles : **VERT 396/396**. `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/1728-27-10-1228-33-vert/`.
 - **§12.33 VERT (`fd54cc90`)**.
+
+## Retour 73 — 27/10, 17:41 — §12.32 lu ; le cas « 32 » écrit ; avant sur la ⑤ : ROUGE 8/28 (attendu)
+- Relance du 17:33 lue (§12.33 VERT lu ; §12.32, R7). Rappel de 15 min posé.
+- **Le cas « 32 » dans `banc-1228`**, par le geste, aux quatre tailles. Le faux hub reçoit `/redactions/sujet_mh2k7q_x4f9/config` : la lettre de la Grande Guerre, avec un id interne né à « Créer » (13 · 58) et le nom court gardé.
+  - **A65** : « ✏️ Rédactions » au menu des outils ouvre `redaction.html?mode=prof`.
+  - **A66** : on passe par la Structure du chapitre, puis « Lier » sur un item. La section « Rédaction » de la modale doit proposer le sujet par son titre. Choisi, il rattache l'item `{kind: 'redaction', ref: <id interne>}` sans aucune écriture dans `/redactions`.
+  - **A67** : l'onglet « ✏️ Rédaction » de la page du niveau liste le sujet et l'ouvre (`mode=prof&id=<id interne>`). La classe dans l'adresse est relevée pour l'instant en info ; la règle est tranchée à 17:42 (l'heure ouverte, sinon la lentille), et je la mesurerai par le geste quand E1 aura poussé.
+  - **En mode test** : `&test=1` au menu et à l'onglet.
+  - **A68** : dans la vue élève, rien de neuf.
+- **Avant, sur l'assemblé de la ⑤** (`12accf68`) : **ROUGE 8/28**. Les rouges sont ceux attendus : pas de ligne « Rédactions » au menu, pas de section « Rédaction » dans la modale LIER, et l'onglet dit « 🔧 Cet outil n'est pas encore branché ». **A68 est vert** (l'onglet est absent pour l'élève, aucune ouverture de `redaction.html`). 0 erreur JS. Captures `*-32-*-avant.png`.
+- J'attends la poussée d'E1 (mission 0 faite à 17:37). Si l'item lié est dans une séance non publiée et que l'onglet ne le montre pas, je le lierai dans une séance publiée : c'est accepté à 17:42.

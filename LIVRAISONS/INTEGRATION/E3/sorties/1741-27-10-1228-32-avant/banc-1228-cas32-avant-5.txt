@@ -1,0 +1,43 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 16:38 UTC · fichier md5 12accf681c6d69f85266146628c1a422
+
+══ 1366×768 ══
+  ÉCHEC  32 · 1366×768 · A65 · « ✏️ Rédactions » au menu des outils ouvre redaction.html?mode=prof — {"ligne":null,"u":null,"q":null}
+  ÉCHEC  32 · 1366×768 · A66 · la modale LIER propose le sujet du hub (son titre) — {"item":{"level":"3e","chnum":"0","snum":"0","item":"tableaux","titre":"• Les cinq tableaux à analyser pas encore ouverte aux élèves"},"modale":true,"section":null}
+  ÉCHEC  32 · 1366×768 · A66 · l’item est rattaché {kind: « redaction », ref: l’id interne}, rien écrit dans /redactions — {"item":{"kind":"doc","ref":"1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc","source":"drive"},"ecritures":[]}
+  ÉCHEC  32 · 1366×768 · A67 · l’onglet « ✏️ Rédaction » liste le sujet rattaché et l’ouvre (redaction.html?mode=prof&id=<id interne>) — {"texte":"🔧 Cet outil n’est pas encore branché. Il faut le brancher avant de le publier.","u":null,"q":null}
+  info   32 · 1366×768 · la classe dans l’adresse : absente (aucun cours connu ici)
+  ÉCHEC  32 · 1366×768 · en mode test, le menu et l’onglet ajoutent &test=1 — {"menu":null,"onglet":null}
+  ok     32 · 1366×768 · A68 · l’élève : rien de neuf (l’onglet absent, comme aujourd’hui, aucune ouverture de redaction.html) — {"onglet":false,"el":{"texte":"","cadre":"about:blank","vue":"prof"},"app":[]}
+  ok     Z · 1366×768 · 0 erreur JS (32)
+
+══ 1536×864 ══
+  ÉCHEC  32 · 1536×864 · A65 · « ✏️ Rédactions » au menu des outils ouvre redaction.html?mode=prof — {"ligne":null,"u":null,"q":null}
+  ÉCHEC  32 · 1536×864 · A66 · la modale LIER propose le sujet du hub (son titre) — {"item":{"level":"3e","chnum":"0","snum":"0","item":"tableaux","titre":"• Les cinq tableaux à analyser pas encore ouverte aux élèves"},"modale":true,"section":null}
+  ÉCHEC  32 · 1536×864 · A66 · l’item est rattaché {kind: « redaction », ref: l’id interne}, rien écrit dans /redactions — {"item":{"kind":"doc","ref":"1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc","source":"drive"},"ecritures":[]}
+  ÉCHEC  32 · 1536×864 · A67 · l’onglet « ✏️ Rédaction » liste le sujet rattaché et l’ouvre (redaction.html?mode=prof&id=<id interne>) — {"texte":"🔧 Cet outil n’est pas encore branché. Il faut le brancher avant de le publier.","u":null,"q":null}
+  info   32 · 1536×864 · la classe dans l’adresse : absente (aucun cours connu ici)
+  ÉCHEC  32 · 1536×864 · en mode test, le menu et l’onglet ajoutent &test=1 — {"menu":null,"onglet":null}
+  ok     32 · 1536×864 · A68 · l’élève : rien de neuf (l’onglet absent, comme aujourd’hui, aucune ouverture de redaction.html) — {"onglet":false,"el":{"texte":"","cadre":"about:blank","vue":"prof"},"app":[]}
+  ok     Z · 1536×864 · 0 erreur JS (32)
+
+══ 1707×743 ══
+  ÉCHEC  32 · 1707×743 · A65 · « ✏️ Rédactions » au menu des outils ouvre redaction.html?mode=prof — {"ligne":null,"u":null,"q":null}
+  ÉCHEC  32 · 1707×743 · A66 · la modale LIER propose le sujet du hub (son titre) — {"item":{"level":"3e","chnum":"0","snum":"0","item":"tableaux","titre":"• Les cinq tableaux à analyser pas encore ouverte aux élèves"},"modale":true,"section":null}
+  ÉCHEC  32 · 1707×743 · A66 · l’item est rattaché {kind: « redaction », ref: l’id interne}, rien écrit dans /redactions — {"item":{"kind":"doc","ref":"1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc","source":"drive"},"ecritures":[]}
+  ÉCHEC  32 · 1707×743 · A67 · l’onglet « ✏️ Rédaction » liste le sujet rattaché et l’ouvre (redaction.html?mode=prof&id=<id interne>) — {"texte":"🔧 Cet outil n’est pas encore branché. Il faut le brancher avant de le publier.","u":null,"q":null}
+  info   32 · 1707×743 · la classe dans l’adresse : absente (aucun cours connu ici)
+  ÉCHEC  32 · 1707×743 · en mode test, le menu et l’onglet ajoutent &test=1 — {"menu":null,"onglet":null}
+  ok     32 · 1707×743 · A68 · l’élève : rien de neuf (l’onglet absent, comme aujourd’hui, aucune ouverture de redaction.html) — {"onglet":false,"el":{"texte":"","cadre":"about:blank","vue":"prof"},"app":[]}
+  ok     Z · 1707×743 · 0 erreur JS (32)
+
+══ 1920×1080 ══
+  ÉCHEC  32 · 1920×1080 · A65 · « ✏️ Rédactions » au menu des outils ouvre redaction.html?mode=prof — {"ligne":null,"u":null,"q":null}
+  ÉCHEC  32 · 1920×1080 · A66 · la modale LIER propose le sujet du hub (son titre) — {"item":{"level":"3e","chnum":"0","snum":"0","item":"tableaux","titre":"• Les cinq tableaux à analyser pas encore ouverte aux élèves"},"modale":true,"section":null}
+  ÉCHEC  32 · 1920×1080 · A66 · l’item est rattaché {kind: « redaction », ref: l’id interne}, rien écrit dans /redactions — {"item":{"kind":"doc","ref":"1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc","source":"drive"},"ecritures":[]}
+  ÉCHEC  32 · 1920×1080 · A67 · l’onglet « ✏️ Rédaction » liste le sujet rattaché et l’ouvre (redaction.html?mode=prof&id=<id interne>) — {"texte":"🔧 Cet outil n’est pas encore branché. Il faut le brancher avant de le publier.","u":null,"q":null}
+  info   32 · 1920×1080 · la classe dans l’adresse : absente (aucun cours connu ici)
+  ÉCHEC  32 · 1920×1080 · en mode test, le menu et l’onglet ajoutent &test=1 — {"menu":null,"onglet":null}
+  ok     32 · 1920×1080 · A68 · l’élève : rien de neuf (l’onglet absent, comme aujourd’hui, aucune ouverture de redaction.html) — {"onglet":false,"el":{"texte":"","cadre":"about:blank","vue":"prof"},"app":[]}
+  ok     Z · 1920×1080 · 0 erreur JS (32)
+
+BILAN banc-1228 : 8/28 vérifications — 20 ÉCHEC(S) · ROUGE

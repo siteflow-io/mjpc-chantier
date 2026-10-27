@@ -23,6 +23,9 @@
 // 33 : (§12.33) l'Atelier : la poignée diapo / notes dans l'écran (quatre tailles, zooms 90 % et 110 %), prise sans viser ; « Structure » et « Atelier »
 //      seulement ; la répétition par « ▶ Jouer en avance » ; pas de « 📝 Notes » ; surligner, couleur, « ✍ À écrire » posés dans l'Atelier → revus après
 //      rechargement, vus au tableau en répétition ; un chapitre importé avec des notes sur trois diapos et le bilan → chaque note dans le cadre de sa diapo.
+// 32 : (§12.32, R7) la Rédaction depuis le site : « ✏️ Rédactions » au menu des outils → redaction.html?mode=prof (&test=1 en mode test) ; la modale LIER
+//      propose le sujet du faux hub (/redactions/<id interne>/config : la lettre de la Grande Guerre) et rattache l'item {kind: 'redaction', ref} sans écrire
+//      dans /redactions ; l'onglet « ✏️ Rédaction » liste le sujet et l'ouvre (…&id=<ref>, &classe= si connue, &test=1 en mode test) ; l'élève : rien de neuf.
 // 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
 // usage : MJPC_HUB=AUDITS/INTEGRATION-DEROULE/hub node banc-1228.mjs <assemble/index.html> [sortie.txt]
 //   MJPC_TAILLES (défaut les quatre), MJPC_CAPT=<dossier> MJPC_CAPT_SUFFIXE=avant|apres (1707 × 743 et 1920 × 1080). Code 1 si un échec.
@@ -43,7 +46,7 @@ const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log
 const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && detail !== '' ? ' — ' + detail : '')); return !!ok; };
 const info = (k, quoi) => dire('  info   ' + k + ' · ' + quoi);
 const p = (pg, ms) => pg.waitForTimeout(ms);
-/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33) */
+/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33, 32) */
 const SEUL = process.env.MJPC_CAS ? process.env.MJPC_CAS.split(',') : null; const fait = k => !SEUL || SEUL.includes(k);
 
 /* ── le faux hub (celui de banc-1227), plus la classe « 3 DYLAN Bob » appariée à ses six cases (mission 0, M1) ── */
@@ -600,6 +603,59 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       } catch (e) { verif('33', false, T + ' · l’import des notes : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
       verif('Z', !o.errs.length, T + ' · 0 erreur JS (33, les notes)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
   }
+
+  /* ── 32 (§12.32, R7) : la Rédaction universelle depuis le site ── */
+  if (fait('32')) { const st = hubStore(); const SUJ = JSON.parse(fs.readFileSync(path.join(RACINE, 'LIVRAISONS', 'REDACTION', 'sujets', 'lettre-grande-guerre.json'), 'utf8'));
+    const SID = 'sujet_mh2k7q_x4f9'; st.redactions = { [SID]: { config: Object.assign({}, SUJ, { nomCourt: SUJ.id, id: SID }) } };   /* l'id interne né à « Créer » (13 · 58), le nom court gardé */
+    const o = await ouvrirCtx(W, H, st); const pg = o.pg; const ouvertes = []; o.ctx.on('page', q => ouvertes.push(q));
+    const adresse = async geste => { const n0 = ouvertes.length; await geste(); await p(pg, 1500); const q = ouvertes.slice(n0).pop(); const u = q ? q.url() : null; if (q) await q.close().catch(() => {});
+      const fr = await pg.evaluate(() => { const f = document.getElementById('doc-viewer-frame'); const v = document.getElementById('doc-viewer'); return v && v.classList.contains('visible') && f ? f.getAttribute('src') : null; }); if (fr) await pg.evaluate(() => { try { closeViewer(); } catch (e) {} });
+      return u || fr || null; };
+    const q = u => { try { const x = new URL(u, 'file:///'); return { page: x.pathname.split('/').pop(), mode: x.searchParams.get('mode'), id: x.searchParams.get('id'), classe: x.searchParams.get('classe'), test: x.searchParams.get('test') }; } catch (e) { return null; } };
+    try { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await sansVoiles(pg); const e0 = await pg.evaluate(() => window.__ECR.length);
+      /* A65 · le menu des outils */
+      const menu = async () => { await pg.evaluate(() => { try { goHome(); } catch (e) {} }); await p(pg, 500); await sansVoiles(pg); await pg.evaluate(() => { const b = document.getElementById('admin-tools-btn'); if (b) b.click(); else toggleAdminTools(); }); await p(pg, 500);
+        const l = await pg.evaluate(() => { const a = Array.from(document.querySelectorAll('#admin-tools-menu a')).find(x => /Rédaction/.test(x.innerText)); return a ? a.innerText.replace(/\s+/g, ' ').trim() : null; });
+        const u = l ? await adresse(() => pg.evaluate(() => { Array.from(document.querySelectorAll('#admin-tools-menu a')).find(x => /Rédaction/.test(x.innerText)).click(); })) : null; return { ligne: l, u, q: u && q(u) }; };
+      const m1 = await menu(); await capt(pg, W, H, '32-1-le-menu-des-outils');
+      verif('32', m1.ligne && /Rédactions/.test(m1.ligne) && m1.q && m1.q.page === 'redaction.html' && m1.q.mode === 'prof' && !m1.q.test, T + ' · A65 · « ✏️ Rédactions » au menu des outils ouvre redaction.html?mode=prof', JSON.stringify(m1));
+      /* A66 · la modale LIER, depuis la Structure du chapitre */
+      await ouvrirAtelier(pg); await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="structure"]'); if (b) b.click(); }); await p(pg, 1500); await sansVoiles(pg);
+      const lier = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-edch-it button')).find(x => x.offsetParent && /^Lier/.test(x.innerText.trim())); if (!b) return null; const it = b.closest('.at-edch-it'); const m = /openLinkModal\('([^']*)','([^']*)','([^']*)','([^']*)'\)/.exec(b.getAttribute('onclick') || ''); b.click(); return m ? { level: m[1], chnum: m[2], snum: m[3], item: m[4], titre: it.innerText.split('\n')[0].slice(0, 60) } : null; }); await p(pg, 1500);
+      const sec = await pg.evaluate(() => { const m = document.getElementById('link-modal'); if (!m || !m.classList.contains('visible')) return { modale: false }; const S = Array.from(m.querySelectorAll('.link-modal-section')).find(x => /Rédaction/.test((x.querySelector('.link-modal-section-title') || {}).textContent || '')); if (!S) return { modale: true, section: null }; const sl = S.querySelector('select'); return { modale: true, section: (S.querySelector('.link-modal-section-title') || {}).textContent.trim(), options: sl ? Array.from(sl.options).map(o => o.value + '=' + o.textContent.trim()).slice(0, 6) : null }; });
+      if (sec.options) { await pg.evaluate(sid => { const m = document.getElementById('link-modal'); const S = Array.from(m.querySelectorAll('.link-modal-section')).find(x => /Rédaction/.test((x.querySelector('.link-modal-section-title') || {}).textContent || '')); const sl = S.querySelector('select'); sl.value = sid; sl.dispatchEvent(new Event('change', { bubbles: true })); const b = S.querySelector('button'); if (b) b.click(); }, SID); await p(pg, 2500); }
+      await capt(pg, W, H, '32-2-la-modale-lier');
+      const it = lier ? await pg.evaluate(l => window.__hubLire('/site/' + l.level + '/chapitres/' + l.chnum + '/seances/' + l.snum + '/items/' + l.item), lier) : null;
+      const ecrRed = await pg.evaluate(n => window.__ECR.slice(n).filter(x => /\/redactions/.test(x)), e0);
+      verif('32', sec.options && sec.options.some(x => x.indexOf(SID + '=') === 0 && /Grande Guerre/.test(x)), T + ' · A66 · la modale LIER propose le sujet du hub (son titre)', JSON.stringify(Object.assign({ item: lier }, sec)));
+      verif('32', it && it.kind === 'redaction' && it.ref === SID && !ecrRed.length, T + ' · A66 · l’item est rattaché {kind: « redaction », ref: l’id interne}, rien écrit dans /redactions', JSON.stringify({ item: it && { kind: it.kind, ref: it.ref, source: it.source }, ecritures: ecrRed }));
+      await pg.evaluate(() => { try { document.getElementById('link-modal').classList.remove('visible'); } catch (e) {} try { atelierFermer(); } catch (e) {} try { closeProfPanel(); } catch (e) {} }); await p(pg, 800);
+      /* A67 · l'onglet « ✏️ Rédaction » de la page du niveau */
+      const onglet = async () => { await pg.evaluate(() => { try { goHome(); } catch (e) {} }); await p(pg, 400); for (let n = 0; n < 2; n++) { await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 2000); if (await pg.evaluate(() => document.getElementById('page-level').classList.contains('active'))) break; } await sansVoiles(pg);
+        await pg.evaluate(() => { const b = document.getElementById('tab-btn-redaction'); if (b) b.click(); }); await p(pg, 1500);
+        const t = await pg.evaluate(() => { const e = document.getElementById('tab-redaction'); return e ? e.innerText.replace(/\s+/g, ' ').trim().slice(0, 240) : null; });
+        const u = await adresse(() => pg.evaluate(() => { const e = document.getElementById('tab-redaction'); const c = e && Array.from(e.querySelectorAll('[onclick], a, button')).find(x => x.offsetParent && /Grande Guerre/.test(x.innerText || '')); if (c) c.click(); }));
+        return { texte: t, u, q: u && q(u) }; };
+      const o1 = await onglet(); await capt(pg, W, H, '32-3-l-onglet-redaction');
+      verif('32', o1.texte && /Grande Guerre/.test(o1.texte) && o1.q && o1.q.page === 'redaction.html' && o1.q.mode === 'prof' && o1.q.id === SID && !o1.q.test, T + ' · A67 · l’onglet « ✏️ Rédaction » liste le sujet rattaché et l’ouvre (redaction.html?mode=prof&id=<id interne>)', JSON.stringify(o1).slice(0, 400));
+      info('32', T + ' · la classe dans l’adresse : ' + (o1.q && o1.q.classe ? '« ' + o1.q.classe + ' »' : 'absente (aucun cours connu ici)'));
+      /* en mode test : &test=1, au menu et à l'onglet */
+      await pg.evaluate(() => { if (!m8TestOn()) m8BasculerModeTest(); }); await p(pg, 800);
+      const m2 = await menu(); const o2 = await onglet();
+      verif('32', m2.q && m2.q.test === '1' && o2.q && o2.q.test === '1' && o2.q.id === SID, T + ' · en mode test, le menu et l’onglet ajoutent &test=1', JSON.stringify({ menu: m2.u, onglet: o2.u }));
+      await pg.evaluate(() => { if (m8TestOn()) m8BasculerModeTest(); }); await p(pg, 800);
+    } catch (e) { verif('32', false, T + ' · le professeur : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    /* A68 · l'élève : l'onglet reste ce qu'il est, aucun item « redaction » ne lui ouvre l'app */
+    try { await pg.evaluate(() => { try { goHome(); } catch (e) {} try { basculerVue(); } catch (e) {} }); await p(pg, 1500); await sansVoiles(pg);
+      for (let n = 0; n < 2; n++) { await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 2000); if (await pg.evaluate(() => document.getElementById('page-level').classList.contains('active'))) break; }
+      const vis = await pg.evaluate(() => { const b = document.getElementById('tab-btn-redaction'); return !!(b && b.offsetParent); });
+      const n0 = ouvertes.length; if (vis) { await pg.evaluate(() => document.getElementById('tab-btn-redaction').click()); await p(pg, 1200); await pg.evaluate(() => { const e = document.getElementById('tab-redaction'); Array.from((e && e.querySelectorAll('[onclick], a, button')) || []).filter(x => x.offsetParent).forEach(x => x.click()); }); await p(pg, 1500); }
+      const el = await pg.evaluate(() => { const e = document.getElementById('tab-redaction'); const f = document.getElementById('doc-viewer-frame'); return { texte: e && e.offsetParent ? e.innerText.replace(/\s+/g, ' ').trim().slice(0, 160) : '', cadre: f ? f.getAttribute('src') : null, vue: (window.TRACK && TRACK.eleve && TRACK.eleve.is_prof) ? 'prof' : 'élève' }; });
+      const app = ouvertes.slice(n0).map(x => x.url()).concat(el.cadre ? [el.cadre] : []).filter(u => /redaction\.html/.test(u));
+      await capt(pg, W, H, '32-4-l-eleve');
+      verif('32', !app.length && !/Grande Guerre/.test(el.texte), T + ' · A68 · l’élève : rien de neuf (l’onglet ' + (vis ? 'tel qu’aujourd’hui' : 'absent, comme aujourd’hui') + ', aucune ouverture de redaction.html)', JSON.stringify({ onglet: vis, el, app }));
+    } catch (e) { verif('32', false, T + ' · l’élève : le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (32)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
 }
 await nav.close();

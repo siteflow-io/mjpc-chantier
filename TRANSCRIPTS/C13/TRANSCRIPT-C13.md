@@ -5150,7 +5150,7 @@ MEMO
 
 ---
 
-## Tour 259 — 27/10/2026 22:44 → 22:57
+## Tour 259 — 27/10/2026 22:44 → 22:59
 
 **Paul (22:44, en interrompant la mesure) :** De plus : 16. Atelier (feuilles) : il manque la mise en forme du texte. Une feuille de l'Atelier n'imprime que du texte brut (atEsc / atMultiligne) : ni gras, ni souligné, ni surlignage, ni couleur. Paul demande les mêmes fonctions que dans le diapo : la palette « A » (surligner en jaune, vert, bleu…, « Sans surlignage »), la couleur du texte, G gras (Ctrl+B), S souligné (Ctrl+U), et la légende de surlignage. La mise en forme doit être enregistrée avec la feuille, comme e.forme dans la trame, et rester à l'impression.
 Cas réel : la « Dictée classique : « Le port » » de Paul (sujets soulignés, verbes conjugués en gras, participes employés comme adjectifs en couleur, avec la légende « Sujet souligné · verbe conjugué en gras »). En attendant, la feuille est faite sans cette mise en forme : le texte et l'explication des accords seulement. Même manque pour sa fiche « Les connecteurs logiques » (couleurs des colonnes et des cas).
@@ -5221,5 +5221,5 @@ Mes remédiations (image 3 : la proposition écrite dans la vraie page, sur le f
 
 À tester, dans l'Atelier de la ⑥ : clique le ▾ de la séance ouverte, puis un document, puis la ligne « H1 · … » : rien ne bouge (662). Clique une séance repliée : elle s'ouvre, l'autre se replie (658).
 
-27/10/2026 22:57
+27/10/2026 22:59
 MEMO

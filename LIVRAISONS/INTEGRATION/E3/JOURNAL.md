@@ -806,3 +806,26 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2238-27-10-1228-34-tete/`.
 - **Vu sur la capture du tableau** (`1707x743-34-2-l-oeuvre-au-tableau-apres.png`), à la conscience : l'œuvre est entière (le cadre rouge se voit tout autour) et la marque ① est sur la cible. Mais **la légende, en bandeau, couvre le bas de l'œuvre** (à peu près le sixième inférieur, le pied du rocher) : l'œuvre est entière dans son cadre, sans être entièrement visible au tableau.
 - **§12.34 n'est pas VERT** tant que « Vérifier » manque. Le cas 35 vient ensuite.
+
+## Retour 82 — 27/10, 22:54 — §12.35 : le cas « 35 » écrit et joué ; ⑤ ROUGE 16/32, tête `c4ce640a` **28/32** — un défaut : la case dit « Remédiation », le lancement ouvre la séance suivante
+- **Le cas « 35 » dans `banc-1228`**, par le geste, aux quatre tailles. Le magasin du banc prépare la situation :
+  - la séance « Remédiation » du chapitre 3e s'appelle « Remédiation : décrire une image » ;
+  - elle est **réservée à 3 FRANKLIN Aretha** (`classes: ['3_franklin_aretha']`) et **déplacée** juste après la séance 1 : les `ordre` deviennent 1, 2, 3…, des entiers, comme après un déplacement ;
+  - elle est publiée pour toutes les classes, comme les séances 1 et 2 ;
+  - la séance 1 est déjà jouée par les deux classes (3 heures chacune) ;
+  - les cases de Franklin sont reliées à sa classe.
+- **Sur la tête** (`c4ce640a`), **28/32** :
+  - les semaines du 2/11 et du 9/11 de **Franklin** montrent la remédiation (lundi 2/11 08:57, mardi 3/11 15:07) ;
+  - celles de **Dylan** ne la montrent pas, et sans trou : séance 1, puis « Étude de texte accompagnée » heures 1/3 à 3/3, puis « Interro de cours »… ;
+  - l'heure de **Dylan** le mardi 3/11 à 10:07, lancée par sa case, a sa réactivation, et elle ne cite pas la remédiation ;
+  - un **élève de Dylan** voit le chapitre et sa séance 1, jamais la remédiation ; un **élève de Franklin** la voit ;
+  - la **publication** de la remédiation ne propose que 3 FRANKLIN Aretha.
+- **Le défaut (4 sur 4), à E1** :
+  - la case de Franklin du lundi 2/11 à 08:57 dit « Remédiation : décrire une image » ;
+  - mais « ▶ Ouvrir le pilotage et lancer » ouvre **la séance « Étude de texte accompagnée »** (`3e/0/1`) ;
+  - **le lancement prend les séances dans l'ordre de leurs clés**, alors que l'emploi du temps (et la page de l'élève) suit l'`ordre` ;
+  - **il est déjà là sur la ⑤**, pour toute séance déplacée, réservée ou non : il a fallu §12.35 et une séance déplacée pour le voir.
+- **Sur la ⑤**, **16/32**, les rouges attendus : Dylan voit la remédiation dans sa semaine et sur sa page d'élève, et la publication propose toutes les classes ; plus le même défaut du lancement.
+- **Vu, à la conscience** : la page de l'élève de Dylan numérote « SÉANCE 1 », puis « **SÉANCE 3** ». La séance 2, la remédiation, lui est cachée, mais son numéro reste : un trou visible pour l'élève, alors que le contrat dit « sans trou ni décalage » pour l'emploi du temps.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2254-27-10-1228-35/` ; les captures `*-35-*` sont avant / après.
+- Je n'écris pas « §12.35 VERT » tant que le lancement ouvre une autre séance que sa case.

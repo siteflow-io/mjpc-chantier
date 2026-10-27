@@ -1,0 +1,47 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 21:47 UTC · fichier md5 12accf681c6d69f85266146628c1a422
+
+══ 1366×768 ══
+  ok     35 · 1366×768 · A80 · les semaines du 2/11 et du 9/11 de 3 FRANKLIN Aretha montrent « Remédiation : décrire une image » — 2026-11-02 08:57-09:52, 2026-11-03 15:07-16:02
+  ÉCHEC  35 · 1366×768 · A80 · celles de 3 DYLAN Bob ne la montrent pas, sans trou (de la séance 1 à l’« Étude de texte ») — ["Remédiation : décrire une image heure 1/2","Remédiation : décrire une image heure 2/2","Étude de texte accompagnée : « L'Albatros » heure 1/3","Étude de texte accompagnée : « L'Albatros » heure 2/3","Étude de texte accompagnée : « L'Albatros » heure 3/3","Interro de cours et analyse logique — les bases (1) heure 1/3","Interro de cours et analyse logique — les bases (1) heure 2/3"]
+  info   35 · 1366×768 · la vue Année : « Remédiation : décrire une image » sous rien
+  ÉCHEC  35 · 1366×768 · A80 · 3 FRANKLIN Aretha joue l’heure de remédiation par sa case — {"case":true,"bouton":true,"h":{"lancee":true,"ctx":"3e/0/1","seance":"Étude de texte accompagnée : « L'Albatros »","classe":"3_franklin_aretha"}}
+  ok     35 · 1366×768 · A80 · l’heure de 3 DYLAN Bob (mardi 3/11, 10:07) : sa réactivation ne cite jamais « Remédiation : décrire une image » — {"case":true,"bouton":true,"lancee":true,"snum":"1","cite":false,"reactivation":true}
+  ÉCHEC  35 · 1366×768 · A82 · un élève de 3 DYLAN Bob voit le chapitre et sa séance 1, jamais « Remédiation : décrire une image » — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1366×768 · A82 · un élève de 3 FRANKLIN Aretha la voit — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ÉCHEC  35 · 1366×768 · A82 · la publication de « Remédiation : décrire une image » ne propose que 3 FRANKLIN Aretha — ["3 DYLAN Bob","3_franklin_aretha","3E Charles de Gaulle","CLASSE TEST"]
+  ok     Z · 1366×768 · 0 erreur JS (35)
+
+══ 1536×864 ══
+  ok     35 · 1536×864 · A80 · les semaines du 2/11 et du 9/11 de 3 FRANKLIN Aretha montrent « Remédiation : décrire une image » — 2026-11-02 08:57-09:52, 2026-11-03 15:07-16:02
+  ÉCHEC  35 · 1536×864 · A80 · celles de 3 DYLAN Bob ne la montrent pas, sans trou (de la séance 1 à l’« Étude de texte ») — ["Remédiation : décrire une image heure 1/2","Remédiation : décrire une image heure 2/2","Étude de texte accompagnée : « L'Albatros » heure 1/3","Étude de texte accompagnée : « L'Albatros » heure 2/3","Étude de texte accompagnée : « L'Albatros » heure 3/3","Interro de cours et analyse logique — les bases (1) heure 1/3","Interro de cours et analyse logique — les bases (1) heure 2/3"]
+  info   35 · 1536×864 · la vue Année : « Remédiation : décrire une image » sous rien
+  ÉCHEC  35 · 1536×864 · A80 · 3 FRANKLIN Aretha joue l’heure de remédiation par sa case — {"case":true,"bouton":true,"h":{"lancee":true,"ctx":"3e/0/1","seance":"Étude de texte accompagnée : « L'Albatros »","classe":"3_franklin_aretha"}}
+  ok     35 · 1536×864 · A80 · l’heure de 3 DYLAN Bob (mardi 3/11, 10:07) : sa réactivation ne cite jamais « Remédiation : décrire une image » — {"case":true,"bouton":true,"lancee":true,"snum":"1","cite":false,"reactivation":true}
+  ÉCHEC  35 · 1536×864 · A82 · un élève de 3 DYLAN Bob voit le chapitre et sa séance 1, jamais « Remédiation : décrire une image » — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1536×864 · A82 · un élève de 3 FRANKLIN Aretha la voit — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ÉCHEC  35 · 1536×864 · A82 · la publication de « Remédiation : décrire une image » ne propose que 3 FRANKLIN Aretha — ["3 DYLAN Bob","3_franklin_aretha","3E Charles de Gaulle","CLASSE TEST"]
+  ok     Z · 1536×864 · 0 erreur JS (35)
+
+══ 1707×743 ══
+  ok     35 · 1707×743 · A80 · les semaines du 2/11 et du 9/11 de 3 FRANKLIN Aretha montrent « Remédiation : décrire une image » — 2026-11-02 08:57-09:52, 2026-11-03 15:07-16:02
+  ÉCHEC  35 · 1707×743 · A80 · celles de 3 DYLAN Bob ne la montrent pas, sans trou (de la séance 1 à l’« Étude de texte ») — ["Remédiation : décrire une image heure 1/2","Remédiation : décrire une image heure 2/2","Étude de texte accompagnée : « L'Albatros » heure 1/3","Étude de texte accompagnée : « L'Albatros » heure 2/3","Étude de texte accompagnée : « L'Albatros » heure 3/3","Interro de cours et analyse logique — les bases (1) heure 1/3","Interro de cours et analyse logique — les bases (1) heure 2/3"]
+  info   35 · 1707×743 · la vue Année : « Remédiation : décrire une image » sous rien
+  ÉCHEC  35 · 1707×743 · A80 · 3 FRANKLIN Aretha joue l’heure de remédiation par sa case — {"case":true,"bouton":true,"h":{"lancee":true,"ctx":"3e/0/1","seance":"Étude de texte accompagnée : « L'Albatros »","classe":"3_franklin_aretha"}}
+  ok     35 · 1707×743 · A80 · l’heure de 3 DYLAN Bob (mardi 3/11, 10:07) : sa réactivation ne cite jamais « Remédiation : décrire une image » — {"case":true,"bouton":true,"lancee":true,"snum":"1","cite":false,"reactivation":true}
+  ÉCHEC  35 · 1707×743 · A82 · un élève de 3 DYLAN Bob voit le chapitre et sa séance 1, jamais « Remédiation : décrire une image » — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1707×743 · A82 · un élève de 3 FRANKLIN Aretha la voit — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ÉCHEC  35 · 1707×743 · A82 · la publication de « Remédiation : décrire une image » ne propose que 3 FRANKLIN Aretha — ["3 DYLAN Bob","3_franklin_aretha","3E Charles de Gaulle","CLASSE TEST"]
+  ok     Z · 1707×743 · 0 erreur JS (35)
+
+══ 1920×1080 ══
+  ok     35 · 1920×1080 · A80 · les semaines du 2/11 et du 9/11 de 3 FRANKLIN Aretha montrent « Remédiation : décrire une image » — 2026-11-02 08:57-09:52, 2026-11-03 15:07-16:02
+  ÉCHEC  35 · 1920×1080 · A80 · celles de 3 DYLAN Bob ne la montrent pas, sans trou (de la séance 1 à l’« Étude de texte ») — ["Remédiation : décrire une image heure 1/2","Remédiation : décrire une image heure 2/2","Étude de texte accompagnée : « L'Albatros » heure 1/3","Étude de texte accompagnée : « L'Albatros » heure 2/3","Étude de texte accompagnée : « L'Albatros » heure 3/3","Interro de cours et analyse logique — les bases (1) heure 1/3","Interro de cours et analyse logique — les bases (1) heure 2/3"]
+  info   35 · 1920×1080 · la vue Année : « Remédiation : décrire une image » sous rien
+  ÉCHEC  35 · 1920×1080 · A80 · 3 FRANKLIN Aretha joue l’heure de remédiation par sa case — {"case":true,"bouton":true,"h":{"lancee":true,"ctx":"3e/0/1","seance":"Étude de texte accompagnée : « L'Albatros »","classe":"3_franklin_aretha"}}
+  ok     35 · 1920×1080 · A80 · l’heure de 3 DYLAN Bob (mardi 3/11, 10:07) : sa réactivation ne cite jamais « Remédiation : décrire une image » — {"case":true,"bouton":true,"lancee":true,"snum":"1","cite":false,"reactivation":true}
+  ÉCHEC  35 · 1920×1080 · A82 · un élève de 3 DYLAN Bob voit le chapitre et sa séance 1, jamais « Remédiation : décrire une image » — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1920×1080 · A82 · un élève de 3 FRANKLIN Aretha la voit — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ÉCHEC  35 · 1920×1080 · A82 · la publication de « Remédiation : décrire une image » ne propose que 3 FRANKLIN Aretha — ["3 DYLAN Bob","3_franklin_aretha","3E Charles de Gaulle","CLASSE TEST"]
+  ok     Z · 1920×1080 · 0 erreur JS (35)
+
+BILAN banc-1228 : 16/32 vérifications — 16 ÉCHEC(S) · ROUGE

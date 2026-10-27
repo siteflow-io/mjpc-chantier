@@ -30,6 +30,9 @@
 //      semblable » = 13) ; la notion de la séance 1 reprise en séance 2 n'est plus « travaillée nulle part » ; un double d'un titre dont « (proposition) » existe
 //      → « (proposition 2) » ; « […] » reste une coupure dans un texte à trous ; une dictée manuscrite se lie et s'ouvre (élève, professeur) ; l'import
 //      refuse le bilan trop long avec les mots du prompt, accepte le bon, et « Vérifier » dit la diapo de plus d'une page.
+// 35 : (§12.35) une heure de remédiation réservée à 3 FRANKLIN Aretha : les semaines du 2/11 et du 9/11 de Franklin la montrent, celles de 3 DYLAN Bob
+//      non et sans trou (Dylan passe de la séance 1 à la suivante) ; Franklin la joue ; la réactivation de Dylan ne la cite pas ; un élève de Dylan ne la
+//      voit pas, un élève de Franklin oui ; la publication de cette séance ne propose que Franklin.
 // 63 : (mesure 13 · 63, seulement si MJPC_CAS le nomme) le bilan au tableau : question de 57 signes, 5 / 4 / 3 mots-clés de 30 à 45 signes, la consigne à
 //      3 étapes → combien de pages au tableau (répétition, « ▶ Jouer en avance » puis la fenêtre du tableau, tout dévoilé), « Diapo trop pleine » dans l'Atelier.
 // 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
@@ -52,7 +55,7 @@ const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log
 const verif = (k, ok, quoi, detail) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (detail != null && detail !== '' ? ' — ' + detail : '')); return !!ok; };
 const info = (k, quoi) => dire('  info   ' + k + ' · ' + quoi);
 const p = (pg, ms) => pg.waitForTimeout(ms);
-/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33, 32, 34 ; 63 seulement s'il est nommé) */
+/* MJPC_CAS=29,41 : ne jouer que ces cas (39, 41 — avec 40 et 43 —, 43, 46, 29, 30, R, 42, 51, 50, 49, 33, 32, 34, 35 ; 63 seulement s'il est nommé) */
 const SEUL = process.env.MJPC_CAS ? process.env.MJPC_CAS.split(',') : null; const fait = k => !SEUL || SEUL.includes(k);
 
 /* ── le faux hub (celui de banc-1227), plus la classe « 3 DYLAN Bob » appariée à ses six cases (mission 0, M1) ── */
@@ -800,6 +803,64 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       verif('34', el.u && /correction_dictee\.html\?mode=eleve&dictee=dm_port_franklin/.test(el.u), T + ' · A77 · l’élève l’ouvre : correction_dictee.html?mode=eleve&dictee=<id>', JSON.stringify(el));
     } catch (e) { verif('34', false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (34)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 35 (§12.35) : une heure de remédiation réservée à 3 FRANKLIN Aretha ── */
+  if (fait('35')) { const REM = 'Remédiation : décrire une image';
+    const st = hubStore(); const C0 = st.site['3e'].chapitres[0]; const SE = C0.seances; const R = SE[7]; R.title = REM; R.classes = ['3_franklin_aretha']; SE.forEach((x, i) => { if (x && i >= 1 && i <= 6) x.ordre = (x.ordre || i + 1) + 1; }); R.ordre = 2;   /* la séance 7 du chapitre, déplacée juste après la séance 1 (les ordres d'un déplacement : des entiers) et réservée aux Franklin */
+    st.classes['3_franklin_aretha'] = { nom: '3 FRANKLIN Aretha', niveau: '3e', annee: '2026-2027', archivee: false, eleves: ['DURAND Alice', 'BERNARD Emma', 'PETIT Thomas', 'ROBERT Chloé'] };
+    ((st.site.edt.grille['2026-2027'] || {}).creneaux || []).forEach(x => { if (x.classe === '3 FRANKLIN Aretha') x.classeMjpc = '3 FRANKLIN Aretha'; });
+    const PUB = { '3_franklin_aretha': true, '3 FRANKLIN Aretha': true, '3 DYLAN Bob': true }; C0.published = Object.assign({}, C0.published || {}, PUB);
+    [SE[0], SE[1], R].forEach(x => { x.published = Object.assign({}, PUB); });   /* publiées pour toutes les classes — la remédiation aussi (« même publiée pour toutes ») */
+    /* la séance 1 déjà jouée par les deux classes (ses trois heures) : la file de chacune est à l'heure suivante */
+    { const s0 = SE[0]; s0.deroule_joue = s0.deroule_joue || {}; for (const [sl, nom, cr] of [['3_franklin_aretha', '3 FRANKLIN Aretha', '3_FRANKLIN_Aretha'], ['3 DYLAN Bob', '3 DYLAN Bob', '3_DYLAN_Bob']]) { const hh = {}; ['2026-10-12', '2026-10-13', '2026-10-14'].forEach((d, i) => { hh[d + '_10h07-11h02_' + (sl.replace(/\s/g, '_'))] = { ouverte: Date.parse(d + 'T10:07:00+02:00'), close: Date.parse(d + 'T11:00:00+02:00'), num: i + 1 }; }); s0.deroule_joue[sl] = { classe: nom, heures: hh }; } }
+    const o = await ouvrirCtx(W, H, st); const pg = o.pg; const k = '35';
+    const semaine = async (n) => { await pg.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(pg, 1800); await pg.evaluate(() => { try { edtVue('semaine'); } catch (e) {} }); await p(pg, 800); for (let i = 0; i < n; i++) { await pg.evaluate(() => { try { edtAller(1); } catch (e) {} }); await p(pg, 900); } await sansVoiles(pg);
+      return pg.evaluate(() => Array.from(document.querySelectorAll('#edt-ecran .edt-case')).flatMap(z => Array.from(z.querySelectorAll('.edt-clic')).map(c => ({ iso: z.getAttribute('data-iso'), cr: z.getAttribute('data-creneau'), t: c.innerText.replace(/\s+/g, ' ').trim().slice(0, 140) }))).filter(x => /FRANKLIN|DYLAN/.test(x.t)).sort((a, b) => (a.iso + a.cr).localeCompare(b.iso + b.cr))); };
+    try { await pg.clock.setFixedTime(new Date('2026-11-02T07:30:00+01:00')); await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await sansVoiles(pg);
+      const s1 = await semaine(0); await capt(pg, W, H, '35-1-la-semaine-du-2-11'); const s2 = await semaine(1); await capt(pg, W, H, '35-2-la-semaine-du-9-11');
+      const toutes = s1.concat(s2); const F = toutes.filter(x => /FRANKLIN/.test(x.t)), D = toutes.filter(x => /DYLAN/.test(x.t));
+      const fRem = F.filter(x => x.t.indexOf(REM) >= 0), dRem = D.filter(x => x.t.indexOf(REM) >= 0);
+      const trou = D.filter(x => /aucune séance prête|non encore importée/.test(x.t));
+      const seqD = D.map(x => (x.t.match(/(Poésie et peinture : le Romantisme en question|Étude de texte accompagnée|Interro de cours|Remédiation)[^·]*?heure \d+\/\d+/) || [x.t.slice(0, 60)])[0]);
+      verif(k, fRem.length >= 1, T + ' · A80 · les semaines du 2/11 et du 9/11 de 3 FRANKLIN Aretha montrent « ' + REM + ' »', fRem.map(x => x.iso + ' ' + x.cr).join(', ') || F.slice(0, 6).map(x => x.t.slice(0, 70)).join(' | '));
+      verif(k, D.length > 0 && dRem.length === 0 && trou.length === 0, T + ' · A80 · celles de 3 DYLAN Bob ne la montrent pas, sans trou (de la séance 1 à l’« Étude de texte »)', JSON.stringify(seqD).slice(0, 400));
+      /* la vue Année : la remédiation n'apparaît que pour Franklin */
+      await pg.evaluate(() => { try { edtVue('annee'); } catch (e) {} }); await p(pg, 1500); await capt(pg, W, H, '35-3-l-annee');
+      const an = await pg.evaluate(rem => { const z = document.getElementById('edt-ecran'); const L = Array.from(z.querySelectorAll('*')).filter(e => e.children.length < 6 && (e.innerText || '').indexOf(rem) >= 0 && e.offsetParent); return L.slice(-6).map(e => { let a = e; let cl = ''; for (let i = 0; i < 6 && a; i++, a = a.parentElement) { const m = (a.innerText || '').match(/3 FRANKLIN Aretha|3 DYLAN Bob/); if (m) { cl = m[0]; break; } } return cl || '?'; }); }, REM);
+      info(k, T + ' · la vue Année : « ' + REM + ' » sous ' + (an.length ? an.join(', ') : 'rien'));
+      /* Franklin la joue : la case de la remédiation, à son heure, « ▶ Ouvrir le pilotage et lancer » */
+      if (fRem.length) { const c = fRem[0]; const deb = c.cr.split('-')[0]; await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }); await pg.clock.setFixedTime(new Date(new Date(c.iso + 'T' + deb + ':00+01:00').getTime() + 180000));
+        await pg.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(pg, 1800); await pg.evaluate(() => { try { edtVue('semaine'); } catch (e) {} }); await p(pg, 800); await clicTexte(pg, 'button', 'Aujourd’hui'); await p(pg, 900); await sansVoiles(pg);   /* la semaine de l'heure, pas celle où le banc s'était arrêté */
+        const ok = await pg.evaluate(cc => { const z = document.querySelector('#edt-ecran .edt-case[data-iso="' + cc.iso + '"][data-creneau="' + cc.cr + '"]'); const e = z && Array.from(z.querySelectorAll('.edt-clic')).find(x => /FRANKLIN/.test(x.innerText)); if (!e) return false; e.click(); return true; }, c); await p(pg, 1500);
+        const lb = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Ouvrir le pilotage et lancer/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(pg, 3500); await sansVoiles(pg); await pg.keyboard.press('Escape'); await p(pg, 500);
+        const h = await pg.evaluate(() => ({ lancee: !!(window.S && S.lancee), ctx: (() => { try { const x = dr_ctx(); return x.level + '/' + x.chnum + '/' + x.snum; } catch (e) { return null; } })(), seance: (() => { try { const x = dr_ctx(); return ((chapitresData[x.level][x.chnum].seances || {})[x.snum] || {}).title || ''; } catch (e) { return document.body.innerText.match(/Remédiation[^\n]{0,60}/) ? 'texte : ' + document.body.innerText.match(/Remédiation[^\n]{0,60}/)[0] : ''; } })(), classe: (window.AT_DR_COURS || {}).classeSlug || (window.AT_DR_COURS || {}).classeNom || '' }));
+        await capt(pg, W, H, '35-4-franklin-joue-la-remediation');
+        verif(k, ok && lb && h.lancee && (/Remédiation/.test(h.seance) || /\/7$/.test(h.ctx || '')), T + ' · A80 · 3 FRANKLIN Aretha joue l’heure de remédiation par sa case', JSON.stringify({ case: ok, bouton: lb, h })); }
+      /* la réactivation de Dylan : son heure du mardi 3/11, 10:07 (l'« Étude de texte », après la séance 1) ne cite pas la remédiation qu'il n'a pas jouée */
+      { const q = await o.ctx.newPage(); await q.clock.setFixedTime(new Date('2026-11-03T10:10:00+01:00')); await entrerProf(q); await q.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); await p(q, 1800); await q.evaluate(() => { try { edtVue('semaine'); } catch (e) {} }); await p(q, 800); await sansVoiles(q);
+        const okD = await q.evaluate(() => { const z = document.querySelector('#edt-ecran .edt-case[data-iso="2026-11-03"][data-creneau="10:07-11:02"]'); const e = z && Array.from(z.querySelectorAll('.edt-clic')).find(x => /DYLAN/.test(x.innerText)); if (!e) return false; e.click(); return true; }); await p(q, 1500);
+        const lbD = await q.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Ouvrir le pilotage et lancer/.test(b.innerText)); if (!b) return false; b.click(); return true; }); await p(q, 3500); await sansVoiles(q); await q.keyboard.press('Escape'); await p(q, 500);
+        const rD = await q.evaluate(rem => { let t = ''; try { const E = seance().ecrans; t = E.slice(0, 3).map(e => JSON.stringify(e)).join(' '); } catch (e) {} const ctx = (() => { try { const x = dr_ctx(); return x.snum; } catch (e) { return null; } })(); return { lancee: !!(window.S && S.lancee), snum: ctx, cite: (t + ' ' + document.body.innerText).indexOf(rem) >= 0 || /Remédiation/.test(t), reactivation: /réactiv|La dernière fois|Rappel/i.test(t + ' ' + document.body.innerText.slice(0, 4000)) }; }, REM);
+        await capt(q, W, H, '35-6-la-reactivation-de-dylan');
+        verif(k, okD && lbD && rD.lancee && !rD.cite, T + ' · A80 · l’heure de 3 DYLAN Bob (mardi 3/11, 10:07) : sa réactivation ne cite jamais « ' + REM + ' »', JSON.stringify(Object.assign({ case: okD, bouton: lbD }, rD))); await q.close(); }
+      /* un élève de Dylan ne la voit pas ; un élève de Franklin la voit (la page du niveau) */
+      const vue = async (classe) => { const q = await o.ctx.newPage(); await q.clock.setFixedTime(new Date('2026-11-02T07:30:00+01:00')); await q.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await p(q, 2000); await sansVoiles(q);
+        await q.evaluate(c => { TRACK.eleve = { nom: 'PETIT', prenom: 'Thomas', niveau: '3e', classe: c, is_prof: false }; document.body.classList.remove('admin-mode'); clickedLevel = '3e'; }, classe); for (let n = 0; n < 3; n++) { await q.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(q, 2000); if (await q.evaluate(() => document.getElementById('page-level').classList.contains('active'))) break; } await sansVoiles(q);
+        await q.locator('#tab-chapitres').getByText('Poésie et peinture au XIXe siècle', { exact: false }).first().click({ timeout: 4000 }).catch(() => {}); await p(q, 1500);   /* ouvrir le chapitre (▸) */
+        const r = await q.evaluate(rem => { const t = (document.getElementById('tab-chapitres') || document.body).innerText; return { voit: t.indexOf(rem) >= 0, chapitre: /Poésie et peinture/.test(t), autre: /Romantisme en question/.test(t), extrait: t.replace(/\s+/g, ' ').slice(0, 300) }; }, REM);
+        if (process.env.MJPC_DBG) await q.screenshot({ path: '/tmp/claude-0/r35-eleve-' + (/DYLAN/.test(classe) ? 'd' : 'f') + '.png' });
+        if (CAPT && (W === 1707 || W === 1920)) await q.screenshot({ path: path.join(CAPT, W + 'x' + H + '-35-5-l-eleve-' + (/DYLAN/.test(classe) ? 'dylan' : 'franklin') + '-' + SUFF + '.png') }).catch(() => {}); await q.close(); return r; };
+      const vD = await vue('3 DYLAN Bob'), vF = await vue('3 FRANKLIN Aretha');
+      verif(k, vD.chapitre && vD.autre && !vD.voit, T + ' · A82 · un élève de 3 DYLAN Bob voit le chapitre et sa séance 1, jamais « ' + REM + ' »', JSON.stringify(vD));
+      verif(k, vF.chapitre && vF.voit, T + ' · A82 · un élève de 3 FRANKLIN Aretha la voit', JSON.stringify(vF));
+      /* la publication de cette séance ne propose que Franklin (mode admin, page du niveau) */
+      await pg.evaluate(() => { try { edtFermer(); } catch (e) {} try { goHome(); } catch (e) {} }); await p(pg, 600);
+      if (!(await pg.evaluate(() => document.body.classList.contains('admin-mode')))) { await pg.keyboard.press('Control+Space'); await p(pg, 1000); }
+      for (let n = 0; n < 3; n++) { await pg.evaluate(() => openLevel('3e', '3ème', 'var(--3e)')); await p(pg, 2000); if (await pg.evaluate(() => document.getElementById('page-level').classList.contains('active'))) break; } await sansVoiles(pg);
+      const pub = await pg.evaluate(() => Array.from(document.querySelectorAll('#page-level [onclick*="togglePublishSeanceCls"]')).map(x => /togglePublishSeanceCls\('([^']*)','([^']*)','([^']*)','([^']*)'\)/.exec(x.getAttribute('onclick') || '')).filter(Boolean).filter(m => m[2] === '0' && m[3] === '7').map(m => m[4]));
+      verif(k, pub.length > 0 && pub.every(x => /franklin/i.test(x)), T + ' · A82 · la publication de « ' + REM + ' » ne propose que 3 FRANKLIN Aretha', JSON.stringify(pub));
+    } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (35)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 63 (mesure 13 · 63) : la densité du bilan ── */
   if (SEUL && SEUL.includes('63')) for (const N of [5, 4, 3]) { const st = hubStore(); const o = await ouvrirCtx(W, H, st); const pg = o.pg; const k = '63 · ' + N + ' mots-clés';

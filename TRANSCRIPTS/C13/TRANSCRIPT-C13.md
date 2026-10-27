@@ -4218,3 +4218,30 @@ MEMO
 
 27/10/2026 11:18
 MEMO
+
+## Tour 225 — 27/10/2026 11:33 — Paul (11:18)
+
+**Paul (mot pour mot).** « Ok. Les 3e ont fait une rédaction avant les vacances j'aimerais utiliser l'App rédaction dugain dessus. Mesure cette app et voit ce qui a été cadré pour elle »
+
+**Réponse intermédiaire (11:21, mot pour mot).** « J'ai essayé l'app et elle fonctionne. Je cherche encore ce qui a été cadré pour elle dans les échanges passés. Je te réponds dès que j'ai tout. » — puis, à 11:28 : « J'ai vérifié tout le code de la ⑤ de mon côté, et tout passe : 106 contrôles, aucun échec. J'attends maintenant la vérification d'E3, et je termine la recherche sur l'app de rédaction. » (banc VERT sur `d88d920d`, E2 poussée 44 comprise ; épreuve `88a3e500`).
+
+**Mesuré.** `redaction_dugain_v3.html` (production, 349 982 o, inchangé depuis le 22/10 ; en-tête « À CODER » des binômes du 10/10) : « Brevet blanc 3e — Rédaction · 3e De Gaulle » ; outil du professeur pour corriger des copies papier : « 👥 Gérer la classe » (coller la liste, « Prénom NOM »), « 📝 Sujet », par copie le choix du sujet (imagination / réflexion), la grille DNB (sur 40 : critères, 10 indicateurs, 4 niveaux, sous-descripteurs au prénom, compteur d'erreurs d'orthographe), le mode clavier 1-2-3-4, le chrono et les statistiques du correcteur, « 🖨️ Exporter tous HTML » (une fiche par élève, pour imprimer ou École Directe), sauvegarde dans le navigateur + JSON. Aucun lien au site (ni hub, ni socle, ni mode test) ; `index.html` ne la nomme pas, l'onglet « Rédaction » affiche « Cet outil ouvrira plus tard ». Écrite pour un seul sujet : 87 mentions de Dugain / Marguerite / La Chambre des officiers (corrigé DNB 2024), les descripteurs de « Remobilisation du texte » parlent de Marguerite et du front de 14-18 ; « 3e De Gaulle » écrit en dur sur chaque fiche élève (l. 5925). Rejeu par le geste (`pieces/T225-banc/d.mjs`) : trois élèves collés, une copie, le sujet, la correction — 0 erreur ; captures `pieces/T225-01…`, `T225-02…`, envoyées. Le cadrage (recherche dans les registres de la production et les transcripts C10-C13, vérifiée par sondage) : 28/05 la grille et les sous-descripteurs (« 4 niveaux sur un critère, ce n'est pas personnalisé du tout ») ; 16/07, Paul : « ce sont les SOUCHES à universaliser : ils doivent devenir « Étude de texte universelle » et « Rédaction universelle » […] la Concordance est leur prérequis » ; « pour rédaction c'est pareil » (même structure, textes propres à chaque œuvre, échelles éditables au hub) ; MD « branchement des universalisations Dugain » jamais lancé ; dettes ouvertes : pas de mode test, pas d'identité élève MJPC, « hors socle » à trancher par Paul depuis le 31/08 (11 · 03 ④), l'export des copies (dette 16, 14/07) sans trace de fermeture ; le lot L4 du plan 10 jours (mesure seulement) non lancé.
+
+**Réponse (mot pour mot).**
+
+À jouer : rien · en cours chez les exécutants : E3 vérifie la ⑤ · ouvert : 481, 458, 522
+
+518. L'app, mesurée en la jouant (images T225-01 et T225-02) : c'est ton outil de correction de copies papier. Tu colles la liste de la classe, puis pour chaque copie tu choisis le sujet (imagination ou réflexion) et tu corriges avec la grille du brevet sur 40 — 10 points de la grille, 4 niveaux chacun, des phrases adressées à l'élève par son prénom, un compteur de fautes, les touches 1 à 4. À la fin, une fiche par élève, à imprimer ou à envoyer par École Directe. Elle garde tout dans ton navigateur, avec une sauvegarde à télécharger. Elle marche : aucun défaut au rejeu.
+
+519. Mais elle est écrite pour un seul sujet : le brevet 2024 sur Dugain, « La Chambre des officiers ». Les phrases de la grille parlent de Marguerite et du front de 14-18, et chaque fiche élève porte « 3e De Gaulle » écrit en dur. Elle n'est pas reliée au site : l'onglet « Rédaction » dit toujours « Cet outil ouvrira plus tard ».
+
+520. Ce qui a été cadré : le 16/07, tu as dit que c'était une « souche à universaliser » pour en faire la « Rédaction universelle » — la même grille pour toutes les œuvres, les phrases propres à chaque texte, modifiables par toi, et la Concordance (tes compétences et notions) avant. Tu la fabriquais toi-même ; le branchement au site devait suivre ta version. Rien de cela n'a été fait depuis.
+
+521. Restent ouverts sur elle : pas de mode test ; les élèves pas reconnus comme ceux du site ; « hors du site », à trancher par toi depuis le 31/08 ; l'export des copies déclaré urgent le 14/07, sans trace de règlement.
+
+522. Une question, pour savoir si tu peux t'en servir tel quel : quel était le sujet de la rédaction de tes 3e (le texte, et imagination ou réflexion) ? Si c'est Dugain, elle marche aujourd'hui ; sinon, les phrases de la grille sont à réécrire pour ton texte avant de la donner aux élèves.
+
+À tester : si tu veux la voir : ouvre redaction_dugain_v3.html sur ton site → « 👥 Gérer la classe » → colle tes élèves → clique un élève → choisis le sujet → corrige avec 1-2-3-4.
+
+27/10/2026 11:33
+MEMO

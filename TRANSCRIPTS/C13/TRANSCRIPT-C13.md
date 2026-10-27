@@ -4442,3 +4442,38 @@ MEMO
 
 27/10/2026 13:14
 MEMO
+
+
+---
+
+## Tour 233 — 27/10/2026 13:34 → 13:43 (sans message de Paul : contrôle n°79)
+
+**Claude (envoyé vers 13:39 ; l'horodatage écrit « 13:50 » était faux, faute de la conscience) :**
+
+E4 a livré la Rédaction universelle plus vite que prévu. Je la vérifie maintenant : je rejoue son banc moi-même et je regarde ses images. Je reviens vers toi avec le verdict et les images dans une quinzaine de minutes.
+
+À tester : rien pour l'instant.
+
+27/10/2026 13:50
+MEMO
+
+**Claude (13:43) :**
+
+À jouer : rien de nouveau (⑤ en ligne) · en cours chez les exécutants : E4 règle deux défauts de la Rédaction universelle · ouvert : 538, 553, 481, 458
+
+551. Je me suis trompé au 547 : la session d'E4 n'était pas close. Il a travaillé d'une traite : la Rédaction universelle est codée, et son banc est vert chez moi aussi (34 vérifications par le geste, 0 échec). Mon message précédent portait 13:50 : il était 13:39.
+
+552. Les six images T233 : la liste des sujets (Dugain et ta lettre) ; « Préparer le sujet », un point de la grille par écran ; le tableau de bord avec une classe du site (3 FRANKLIN Aretha, élèves d'essai) ; une copie en mode interrogatif ; une fiche ; le mode test. Pour trois copies corrigées avec les mêmes gestes, les fiches sont mot pour mot celles de l'app d'aujourd'hui.
+
+553. Les compétences : E4 rattache chaque point de la grille Dugain à une compétence du site (l'orthographe à « consolider l'orthographe », le lexique à « enrichir le lexique », la remobilisation à « exploiter des lectures », la thèse et la nuance à l'argumentation…). Les élèves ne les voient pas. Oui ?
+
+554. Deux défauts viennent de l'app d'aujourd'hui ; je les ai notés au registre (13 · 52, 13 · 53) et E4 les règle avant que je te propose la mise en ligne : une phrase réécrite au crayon pouvait sortir avec « {CIT} » sur la fiche ; l'énoncé de la fiche est coupé (« (suite du récit de Marguerite) ou », image T233-05).
+
+555. La mise en ligne, ce sera la page de l'app posée sur le site, avec son adresse ; l'accès depuis le panneau prof et depuis la séance viendra ensuite (E1).
+
+556. Toujours ouvert : 538.
+
+À tester : rien pour l'instant (la Rédaction universelle n'est pas en ligne).
+
+27/10/2026 13:43
+MEMO

@@ -4328,7 +4328,7 @@ MEMO
 
 533. Le poids : pour ta lettre, environ 430 phrases (chaque point a 4 niveaux, 4 sous-niveaux chacun, avec et sans citation). Pour ne pas te les faire toutes relire avant de corriger, je propose : une phrase que tu choisis en corrigeant compte comme lue, puisque tu la lis sur la carte à ce moment-là ; la relecture avant devient facultative. La fiche ne sort qu'avec des phrases lues — validées avant, ou choisies en corrigeant. Oui ?
 
-534. R10, repesé selon ton mot — quatre critères, sur 40 : le thème et l'invention 14 (le thème tenu : la Grande Guerre, la lettre du front ou de la maison, le personnage — 6 ; les trois paragraphes — 4 ; les lectures reprises — 2 ; ce qu'on tait — 2) ; la construction des phrases 14 (toutes complexes — 5 ; les cinq architectures, valorisées au-delà — 7 ; modalisation et litote — 2) ; l'organisation et la lettre 6 (les codes — 2 ; la première personne et le destinataire — 2 ; trente lignes — 2) ; la langue 6 (orthographe avec le compteur — 4 ; lexique — 2). Le thème et les phrases pèsent 26 sur 40.
+534. R10, repesé selon ton mot — quatre critères, sur 40 : le thème et l'invention 14 (le thème tenu : la Grande Guerre, la lettre du front ou de la maison, le personnage — 6 ; les trois paragraphes — 4 ; les lectures reprises — 2 ; ce qu'on tait — 2) ; la construction des phrases 14 (toutes complexes — 5 ; les cinq architectures, valorisées au-delà — 7 ; modalisation et litote — 2) ; l'organisation et la lettre 6 (les codes — 2 ; la première personne et le destinataire — 2 ; trente lignes — 2) ; la langue 6 (orthographe avec le compteur — 4 ; lexique — 2). Le thème et les phrases pèsent 28 sur 40.
 
 535. Oui à 533 et 534 ? Le mandat part dès ton oui.
 

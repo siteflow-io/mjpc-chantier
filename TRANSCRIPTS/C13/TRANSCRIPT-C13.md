@@ -4477,3 +4477,29 @@ MEMO
 
 27/10/2026 13:43
 MEMO
+
+
+---
+
+## Tour 234 — 27/10/2026 14:05 → 14:14
+
+**Paul :** tu as lu le bilan d'elise? le contenu je veux dire
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 règle « {CIT} » et l'énoncé coupé (13 · 52, 13 · 53) · ouvert : 561, 538, 553, 481, 458
+
+557. Non. J'avais regardé le haut de la fiche (l'énoncé coupé), pas le bilan. Je viens de le lire en entier : il ne va pas.
+
+558. Il se contredit : il dit à Elise que son devoir est « beaucoup trop court : moins d'une demi-copie double », et en même temps que son récit a « une chute qui fonctionne » et qu'elle maîtrise l'énonciation « au point que le lecteur oublie qu'il s'agit d'un exercice ». Ce sont des niveaux choisis par le banc d'E4 sans lien entre eux, pas une correction. Une image qu'on te montre doit être une correction vraisemblable : c'est ma faute de te l'avoir envoyée sans la lire. E4 refait les images.
+
+559. Même cause : il cite « Le soleil tombait sur les tranchées » comme preuve d'une phrase complexe ; c'est une phrase simple. La citation a été tapée par le banc.
+
+560. Un vrai défaut, déjà dans l'app d'aujourd'hui (13 · 54 au registre) : « Tu as fait 9 erreurs…, ce qui correspond au niveau satisfaisant ». Pour un devoir de moins d'une demi-copie double, le barème de l'app met 9 erreurs en Fragile. La phrase reprend le niveau que tu as choisi, et le compteur ne connaît pas encore la longueur quand tu corriges l'orthographe (elle vient avant).
+
+561. Je propose : la phrase dit le niveau du compteur, calculé avec la longueur notée ; si ton niveau d'orthographe ne lui correspond plus, la carte te le dit et la fiche attend que tu tranches. Oui ?
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:14
+MEMO

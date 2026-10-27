@@ -774,3 +774,24 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - Le magasin du banc donne à la séance 1 un item à Paul, « Rédaction : une lettre de la Grande Guerre ». Le cas 32 le lie au sujet de la lettre et l'ouvre par l'onglet.
 - Rejoué sur la tête `ea57573c` (1707 et 1920) : **18/18**. La capture `1707x743-32-3-l-onglet-redaction-apres.png` est regardée : l'onglet « ✏️ Rédaction — 3E » montre « Rédaction : une lettre de la Grande Guerre », puis « Ouvrir la Rédaction universelle ».
 - Les relances de 21:50 (N = 5 : j'ajoute au cas 34 le refus à 6 et l'acceptation à 5) et de 22:05 (cas 35) sont lues. Elles suivent.
+
+## Retour 80 — 27/10, 22:29 — §12.34 sur la tête `ea57573c` (E1 (1)-(6)) : 13/19 à 1707 ; seul rouge, le (7) qu'E1 code encore
+- Le cas 34, joué à 1707 sur la tête :
+  - **A72** : l'œuvre est en `contain`, entière, et la marque tombe à **46 % × 78 %** de l'œuvre dans l'Atelier, au pilote et au tableau.
+  - **A73** : « Le Poète est semblable » porte **13**, et les trois blancs n'ont pas de numéro.
+  - **A76** : « […] » reste une coupure, et il y a 2 trous.
+  - **A75** : le double s'appelle « (proposition 2) ».
+  - **A74** : la notion reprise en séance 2 n'est plus « travaillée nulle part ».
+  - **A77** :
+    - « 📋 Dictée manuscrite existante » propose « Dictée : « Le port » — 3 FRANKLIN Aretha », et l'item `{kind: correction_dictee}` est posé ;
+    - l'onglet « Dictée » liste « Dictée manuscrite : « Le port » (corrigée) » ;
+    - le professeur ouvre `correction_dictee.html?mode=prof&dictee=dm_port_franklin&onglet=correction` ;
+    - l'élève ouvre `correction_dictee.html?mode=eleve&dictee=dm_port_franklin`.
+  - **A78** : cinq mots-clés de 33 à 38 signes sont acceptés (N = 5), et le bon bilan aussi.
+  - **Rouges, attendus** : le (7) n'est pas encore poussé. Les refus (8 et **6** mots-clés, plus de 45 signes, plus de 90 signes, une réponse attendue) passent encore, et « Vérifier » ne dit pas la diapo de plus d'une page.
+- **Ma mesure, corrigée en route** :
+  - un blanc rendu avec un numéro vide compte comme « sans numéro » ;
+  - l'Atelier rouvre le dernier chapitre : `ouvrirAtelier` revient d'abord à « Mes chapitres » ;
+  - la dictée a un item à Paul, « Dictée manuscrite : « Le port » (corrigée) », dans la séance de la dictée. La séance et la ligne sont publiées dans le magasin, pour le 3E Charles de Gaulle, CLASSE TEST et 3 FRANKLIN Aretha : les onglets ne listent que le publié, et sans publication la ligne était écartée (« ligne ») ;
+  - **l'élève** : sa connexion passe par l'Apps Script, hors du sas. Je la pose comme le fait A77 d'E1 (`TRACK.eleve`, DURAND Alice, 3 FRANKLIN Aretha). La « vue élève » du prof (`basculerVue`) reste une session de prof.
+- Le cas 34 sera rejoué aux quatre tailles dès le (7) d'E1. Le cas 35 suit.

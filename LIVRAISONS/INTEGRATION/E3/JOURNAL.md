@@ -750,3 +750,22 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - le nombre N de mots-clés du refus A78 n'est pas encore écrit au contrat (« après 33 bis ») ; mon cas refuse 8, qui dépasse tout N raisonnable ;
   - les phrases mot pour mot du prompt seront comparées quand E1 les aura écrites ; pour l'instant le cas vérifie « Je ne peux pas utiliser cette réponse » et le mot « bilan ».
 - J'attends 33 bis (E1), puis chaque poussée §12.34.
+
+## Retour 78 — 27/10, 21:49 — **§12.33 VERT (`a2b1bdb9`)**, 33 bis compris
+- E1 a fini 33 bis : `dec2a051`, `6cc86c5c` et `d69cb89d`. L'assemblé de la tête est `a2b1bdb9`.
+- **Le cas 33, aux quatre tailles : VERT 68/68.**
+- **Le cas 63 rejoué sur la tête** (le bilan : question de 57 signes, mots-clés de 33 à 38 signes, consigne à 3 étapes ; répétition, tout dévoilé, tableau à la taille de l'écran) :
+
+| | 5 mots-clés | 4 | 3 |
+|---|---|---|---|
+| la tête `a2b1bdb9`, 1366 × 768 | **1 page** · pas « trop pleine » | 1 page · non | 1 page · non |
+| la tête, 1920 × 1080 | **1 page** · non | 1 page · non | 1 page · non |
+
+  - **13 · 74 réglé** : 4 mots-clés tiennent sur une page à 1366, comme sur la ⑤.
+  - **13 · 76 réglé** : la ligne vide « › » sous la question n'est plus là. Avec elle, la ligne gagnée fait tenir **5** mots-clés sur une page, aux deux tailles (capture `1366x768-63-5-mots-cles-au-tableau-tete2.png` regardée : la question, « À mettre dans le bilan », les cinq mots-clés, la consigne et ses 3 étapes, sur une page).
+  - **13 · 75 réglé** : « Diapo trop pleine » n'est plus dit quand le tableau tient sur une page.
+  - **Pour le N du §12.34 (7) : avec des mots-clés de 30 à 45 signes, une question de 57 signes et la consigne à 3 étapes, 5 mots-clés tiennent sur une page** à 1366 × 768 et à 1920 × 1080.
+- **La vérification courte** (cas 30, 51, 49, 50, 39, 41, 29, 43, 32, aux quatre tailles) : **431/432**.
+  - Un rouge : **13 · 41 « après Clore, aucun bandeau » à 1920**. Rejoué seul deux fois : **32/32 et 32/32**. C'est le même intermittent de ma mesure qu'à 1536 au retour 67 (quatre courses en parallèle chargent la machine). Je le laisse dit ici et je le regarde à part ; il n'est pas du §12.33.
+- `banc.sh` : **VERT**. Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/2149-27-10-1233bis-vert/`.
+- **§12.33 VERT (`a2b1bdb9`)**. Le cas 34 attend les poussées d'E1 sur §12.34.

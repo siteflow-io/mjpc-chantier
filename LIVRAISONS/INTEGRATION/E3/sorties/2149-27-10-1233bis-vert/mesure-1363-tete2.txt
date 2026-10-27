@@ -1,0 +1,25 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-27 20:13 UTC · fichier md5 a2b1bdb97d4c26d46d8f8a178918c4fa
+
+══ 1366×768 ══
+  info   63 · 1366×768 · 5 mots-clés · question 57 signes · mots-clés 38, 34, 36, 33, 35 signes · consigne à 3 étapes
+  ok     63 · 5 mots-clés · 1366×768 · le bilan joué en répétition, tout dévoilé, la fenêtre du tableau ouverte — {"rep":true,"tab":{"pages":1,"page":"","police":"\"EB Garamond\""},"etatB":{"di":18,"n":8,"tot":8,"act":"Question-bilan et travail à faire","diB":18,"acts":["14:Les mouvements","15:Trois mots pou","16:Un poète spéci","17:Baudelaire, 18","18:Question-bilan","19:Fin d'heure"],"trace":"18/0/8 18/0/8 18/1/8 18/2/8 18/3/8 18/4/8 18/5/8 18/6/8 18/7/8 18/8/8"}}
+  info   63 · 1366×768 · 5 mots-clés → au tableau : 1 page («  », "EB Garamond") ; au pilote : 1 ; l’Atelier dit « Diapo trop pleine » : non
+  info   63 · 1366×768 · 4 mots-clés · question 57 signes · mots-clés 38, 34, 36, 33 signes · consigne à 3 étapes
+  ok     63 · 4 mots-clés · 1366×768 · le bilan joué en répétition, tout dévoilé, la fenêtre du tableau ouverte — {"rep":true,"tab":{"pages":1,"page":"","police":"\"EB Garamond\""},"etatB":{"di":18,"n":7,"tot":7,"act":"Question-bilan et travail à faire","diB":18,"acts":["14:Les mouvements","15:Trois mots pou","16:Un poète spéci","17:Baudelaire, 18","18:Question-bilan","19:Fin d'heure"],"trace":"18/0/7 18/0/7 18/1/7 18/2/7 18/3/7 18/4/7 18/5/7 18/6/7 18/7/7"}}
+  info   63 · 1366×768 · 4 mots-clés → au tableau : 1 page («  », "EB Garamond") ; au pilote : 1 ; l’Atelier dit « Diapo trop pleine » : non
+  info   63 · 1366×768 · 3 mots-clés · question 57 signes · mots-clés 38, 34, 36 signes · consigne à 3 étapes
+  ok     63 · 3 mots-clés · 1366×768 · le bilan joué en répétition, tout dévoilé, la fenêtre du tableau ouverte — {"rep":true,"tab":{"pages":1,"page":"","police":"\"EB Garamond\""},"etatB":{"di":18,"n":6,"tot":6,"act":"Question-bilan et travail à faire","diB":18,"acts":["14:Les mouvements","15:Trois mots pou","16:Un poète spéci","17:Baudelaire, 18","18:Question-bilan","19:Fin d'heure"],"trace":"18/0/6 18/0/6 18/1/6 18/2/6 18/3/6 18/4/6 18/5/6 18/6/6"}}
+  info   63 · 1366×768 · 3 mots-clés → au tableau : 1 page («  », "EB Garamond") ; au pilote : 1 ; l’Atelier dit « Diapo trop pleine » : non
+
+══ 1920×1080 ══
+  info   63 · 1920×1080 · 5 mots-clés · question 57 signes · mots-clés 38, 34, 36, 33, 35 signes · consigne à 3 étapes
+  ok     63 · 5 mots-clés · 1920×1080 · le bilan joué en répétition, tout dévoilé, la fenêtre du tableau ouverte — {"rep":true,"tab":{"pages":1,"page":"","police":"\"EB Garamond\""},"etatB":{"di":18,"n":8,"tot":8,"act":"Question-bilan et travail à faire","diB":18,"acts":["14:Les mouvements","15:Trois mots pou","16:Un poète spéci","17:Baudelaire, 18","18:Question-bilan","19:Fin d'heure"],"trace":"18/0/8 18/0/8 18/1/8 18/2/8 18/3/8 18/4/8 18/5/8 18/6/8 18/7/8 18/8/8"}}
+  info   63 · 1920×1080 · 5 mots-clés → au tableau : 1 page («  », "EB Garamond") ; au pilote : 1 ; l’Atelier dit « Diapo trop pleine » : non
+  info   63 · 1920×1080 · 4 mots-clés · question 57 signes · mots-clés 38, 34, 36, 33 signes · consigne à 3 étapes
+  ok     63 · 4 mots-clés · 1920×1080 · le bilan joué en répétition, tout dévoilé, la fenêtre du tableau ouverte — {"rep":true,"tab":{"pages":1,"page":"","police":"\"EB Garamond\""},"etatB":{"di":18,"n":7,"tot":7,"act":"Question-bilan et travail à faire","diB":18,"acts":["14:Les mouvements","15:Trois mots pou","16:Un poète spéci","17:Baudelaire, 18","18:Question-bilan","19:Fin d'heure"],"trace":"18/0/7 18/0/7 18/1/7 18/2/7 18/3/7 18/4/7 18/5/7 18/6/7 18/7/7"}}
+  info   63 · 1920×1080 · 4 mots-clés → au tableau : 1 page («  », "EB Garamond") ; au pilote : 1 ; l’Atelier dit « Diapo trop pleine » : non
+  info   63 · 1920×1080 · 3 mots-clés · question 57 signes · mots-clés 38, 34, 36 signes · consigne à 3 étapes
+  ok     63 · 3 mots-clés · 1920×1080 · le bilan joué en répétition, tout dévoilé, la fenêtre du tableau ouverte — {"rep":true,"tab":{"pages":1,"page":"","police":"\"EB Garamond\""},"etatB":{"di":18,"n":6,"tot":6,"act":"Question-bilan et travail à faire","diB":18,"acts":["14:Les mouvements","15:Trois mots pou","16:Un poète spéci","17:Baudelaire, 18","18:Question-bilan","19:Fin d'heure"],"trace":"18/0/6 18/0/6 18/1/6 18/2/6 18/3/6 18/4/6 18/5/6 18/6/6"}}
+  info   63 · 1920×1080 · 3 mots-clés → au tableau : 1 page («  », "EB Garamond") ; au pilote : 1 ; l’Atelier dit « Diapo trop pleine » : non
+
+BILAN banc-1228 : 6/6 vérifications · VERT

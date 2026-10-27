@@ -4857,3 +4857,33 @@ MEMO
 
 27/10/2026 16:50
 MEMO
+
+
+---
+
+## Tour 248 — 27/10/2026 17:27 → 17:36
+
+**Paul :** Promeus
+
+**Claude :**
+
+À jouer : la Rédaction universelle en ligne (611) · en cours chez les exécutants : E1 et E3 l'accès aux rédactions depuis le site (616) · ouvert : 615, 604, 538, 553, 586, 481, 458
+
+610. Promue. redaction.html est en ligne : l'adresse rend le fichier bit à bit depuis 17:29. redaction_dugain_v3.html n'a pas bougé. Registre, journal, point de retour et où-trouver-quoi sont faits.
+
+611. Pour tes lettres : ouvre https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof, puis « ➕ Nouveau sujet ». Colle la lettre, copiée ici avec le bouton « copier » : https://github.com/siteflow-io/mjpc-chantier/blob/main/LIVRAISONS/REDACTION/sujets/lettre-grande-guerre.json. « Vérifier », puis « Créer » : « Préparer le sujet » s'ouvre, tu y lis les phrases ; aucune fiche ne sort avec une phrase que tu n'as pas lue. Puis « 👥 Classe » : 3 FRANKLIN Aretha ou 3 DYLAN Bob. Le compteur d'orthographe suit les seuils du 538 tant que tu n'as pas dit autre chose.
+
+612. Ce que je ne sais pas : si ton site accepte d'enregistrer les rédactions. Le témoin « ✓ Enregistré au site » te le dira à la première copie ; s'il ne vient pas, dis-le-moi avant la suite (la copie reste gardée dans ce navigateur).
+
+613. L'Atelier est candidat. E3 l'a vérifié par le geste aux quatre tailles : 68 sur 68 pour l'Atelier, 396 sur 396 pour les écrans voisins ; mon banc est vert (106 sur 106). Images T248-01 à 04 : l'Atelier avant et après, à ta taille d'écran ; les marques posées dans l'Atelier ; les mêmes au tableau en répétition ; un chapitre importé avec ses notes de présentateur, chacune dans sa diapo.
+
+614. À la promotion, le prompt d'injection passe en 1.0 : il fait écrire les notes de présentateur de chaque diapo (comment lancer, la réponse attendue, l'erreur fréquente, le passage à la suite).
+
+615. Restent ouvertes au registre, hors de ce candidat : 13 · 47 (le « ? » d'aide), 13 · 48 (la présence du prof écrite en mode test), 13 · 56 (la vidéo, attend ton 586), 13 · 59 (le bilan, attend ton 604). Ta règle dit : jamais de promotion sur dette. À la ⑤, tu as promu avec 13 · 47 et 13 · 48 ouvertes. Promeus, ou on règle d'abord ?
+
+616. L'accès depuis le site (ton R7) est lancé : une ligne « ✏️ Rédactions » dans le menu des outils ; dans la séance, l'onglet « Rédaction » ouvre le sujet rattaché à la séance, par « Lier » comme tes autres documents, sur la classe du cours ; rien ne change pour l'élève. E1 code, E3 vérifie ; je les ai réveillés à 17:35.
+
+À tester : 611, créer la lettre, la préparer, corriger une copie, et regarder le témoin « ✓ Enregistré au site ».
+
+27/10/2026 17:36
+MEMO

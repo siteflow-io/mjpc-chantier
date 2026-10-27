@@ -786,6 +786,16 @@ dire(''); dire('B36 — « L\'activité en cours : Activité N — …, <état>.
     pas('B36', !s.errs.length ? 'ok' : 'ÉCHEC', 'aucune erreur JS', s.errs.join(' ; ')); }
   await s.ctx.close(); }
 
+// ── B37 · §12.31 (1) : une seule règle nom → clé — `dr_slugDe` rend ce que rend `edtCleClasse` (E1) ──
+dire(''); dire('B37 — `dr_slugDe` = `edtCleClasse` : la clé, le nom, le slug (« 3 DYLAN Bob » → « 3_dylan_bob »), la 3E (clé = nom), l\'inconnue');
+{ const s = await session(); const p = s.page;
+  const r = s.integre ? await p.evaluate(() => { if (typeof edtCleClasse !== 'function') return null; try { classesData['3_dylan_bob'] = classesData['3_dylan_bob'] || { nom: '3 DYLAN Bob', eleves: [] }; } catch (e) {}
+    return ['3E Charles de Gaulle', '3_dylan_bob', '3 DYLAN Bob', '3 dylan bob', 'Classe inconnue'].map(n => [n, dr_slugDe(n), edtCleClasse(n)]); }) : null;
+  if (!r) pas('B37', 'absent', '`edtCleClasse` (E1)');
+  else { pas('B37', r.every(x => x[1] === x[2]) ? 'ok' : 'ÉCHEC', 'une seule règle : `dr_slugDe(n)` === `edtCleClasse(n)` pour chaque nom', JSON.stringify(r));
+    pas('B37', r[2][1] === '3_dylan_bob' && r[0][1] === '3E Charles de Gaulle' && r[4][1] === 'Classe inconnue' ? 'ok' : 'ÉCHEC', '« 3 DYLAN Bob » → « 3_dylan_bob » ; la 3E → elle-même ; l\'inconnue → son nom', JSON.stringify(r)); }
+  await s.ctx.close(); }
+
 // ── B5 · deux créneaux = deux clés ──
 dire(''); dire('B5 — deux créneaux dans la journée = deux clés = deux traces');
 { const s = await session(); const ok = s.integre ? await s.page.evaluate(() => { const a = { niveau: '3e', chapitre: '0', seance: '0', classeSlug: '3E Charles de Gaulle', debut: '08:57', fin: '09:52' }, b = Object.assign({}, a, { debut: '10:07', fin: '11:02' }); return [_drCleHeureDe(a), _drCleHeureDe(b)]; }) : null;

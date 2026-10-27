@@ -506,7 +506,7 @@ function dr_classeProposee(){
   return '';
 }
 /* le slug d'une classe depuis son nom (la case de l'EDT dit le nom) : la clé de `classesData` */
-const dr_slugDe = nom => { try { if (classesData[nom]) return nom; const k = Object.keys(classesData || {}).find(k => (classesData[k] || {}).nom === nom); return k || nom; } catch (e) { return nom; } };
+const dr_slugDe = nom => { try { if (typeof edtCleClasse === 'function') return edtCleClasse(nom); if (classesData[nom]) return nom; const k = Object.keys(classesData || {}).find(k => (classesData[k] || {}).nom === nom); return k || nom; } catch (e) { return nom; } };   /* §12.31 (1) : UNE règle nom → clé, celle de l'emploi du temps (`edtCleClasse`, E1 : la clé, le nom égal, le slug) — avant : la clé ou le nom égal, sans le slug */
 const dr_nomClasse = slug => { try { const c = classesData && classesData[slug]; return (c && c.nom) || slug; } catch (e) { return slug; } };
 /* le nombre d'heures de la séance : la MÊME fonction que la case de l'EDT (`edtHeuresPour`), jamais un calcul à part */
 function dr_nbHeures(creneau){

@@ -18170,7 +18170,7 @@ function dr_classeProposee(){
   return '';
 }
 /* le slug d'une classe depuis son nom (la case de l'EDT dit le nom) : la clé de `classesData` */
-const dr_slugDe = nom => { try { if (classesData[nom]) return nom; const k = Object.keys(classesData || {}).find(k => (classesData[k] || {}).nom === nom); return k || nom; } catch (e) { return nom; } };
+const dr_slugDe = nom => { try { if (typeof edtCleClasse === 'function') return edtCleClasse(nom); if (classesData[nom]) return nom; const k = Object.keys(classesData || {}).find(k => (classesData[k] || {}).nom === nom); return k || nom; } catch (e) { return nom; } };   /* §12.31 (1) : UNE règle nom → clé, celle de l'emploi du temps (`edtCleClasse`, E1 : la clé, le nom égal, le slug) — avant : la clé ou le nom égal, sans le slug */
 const dr_nomClasse = slug => { try { const c = classesData && classesData[slug]; return (c && c.nom) || slug; } catch (e) { return slug; } };
 /* le nombre d'heures de la séance : la MÊME fonction que la case de l'EDT (`edtHeuresPour`), jamais un calcul à part */
 function dr_nbHeures(creneau){
@@ -19300,13 +19300,27 @@ function dr_tabPoser(){
 const DR_TAB_JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 function dr_tabAnnee(d){ const y = d.getFullYear(); return d.getMonth() >= 7 ? y + '-' + (y + 1) : (y - 1) + '-' + y; }
 function dr_tabIso(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+/* §12.31 (13 · 51) : une classe se trouve par son nom comme par sa clé. Une seule règle, celle d'`edtCleClasse` (E1) : le nom s'il est
+   une clé ; sinon la clé dont `nom` est égal ; sinon la clé dont `_slugifyClass` est égale ; sinon le nom. Ici sur les `classes` lues
+   au hub (la page tableau ne charge pas l'EDT) ; `edtCleClasse` fait foi quand elle existe et donne une clé de ces classes. */
+function dr_tabCle(classes, nom){
+  if (nom == null || nom === '') return nom; const n = String(nom);
+  if (!classes || typeof classes !== 'object') return n;
+  if (Object.prototype.hasOwnProperty.call(classes, n)) return n;
+  try { if (typeof edtCleClasse === 'function') { const k = edtCleClasse(n); if (k != null && Object.prototype.hasOwnProperty.call(classes, k)) return k; } } catch (e) {}
+  const ks = Object.keys(classes);
+  const parNom = ks.find(k => classes[k] && classes[k].nom === n); if (parNom) return parNom;
+  const slug = s => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+  const sl = (typeof _slugifyClass === 'function') ? (() => { try { return _slugifyClass(n); } catch (e) { return slug(n); } })() : slug(n);
+  return ks.indexOf(sl) >= 0 ? sl : n;
+}
 function dr_tabCaseDuMoment(grille, cal, classes, d, niveau){
   if (!grille || !Array.isArray(grille.creneaux)) return null;
   const iso = dr_tabIso(d), lundi = dr_tabIso(new Date(d.getFullYear(), d.getMonth(), d.getDate() - ((d.getDay() + 6) % 7)));
   if (cal && ((cal.vacances || []).some(v => v && iso >= v.debut && iso <= v.fin) || (cal.feries || []).some(f => f && f.date === iso))) return null;   /* comme edtJourSansCours */
   const sem = ((cal && cal.semaines) || []).find(x => x && x.lundi === lundi); const lettre = sem ? (sem.lettre || null) : null;   /* comme edtSemaineLettre */
   const mn = h => { const p = String(h || '').split(':'); return (+p[0] || 0) * 60 + (+p[1] || 0); }; const m = d.getHours() * 60 + d.getMinutes();
-  const niv = c => { const k = c.classeMjpc || c.classe; const x = classes && classes[k]; return (x && x.niveau) || null; };
+  const niv = c => { const k = dr_tabCle(classes, c.classeMjpc || c.classe); const x = classes && classes[k]; return (x && x.niveau) || null; };
   const l = grille.creneaux.filter(c => c && c.mjpc && c.jour === DR_TAB_JOURS[d.getDay()] && (!lettre || !c.semaine || String(c.semaine).indexOf(lettre) >= 0)
       && (!niveau || niv(c) === niveau) && mn(String(c.creneau).split('-')[1]) > m)
     .sort((a, b) => String(a.creneau).localeCompare(String(b.creneau)));

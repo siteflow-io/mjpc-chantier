@@ -631,3 +631,9 @@ Relances « 06:07 — contrôle n°72 », « 07:52 — PROMEUS 8.75.0-④ », «
 - **§12.30 E2 fini** (ce commit). Ensuite : §12.31 (1) — aligner `dr_slugDe` sur `edtCleClasse` d'E1, après sa poussée ; (1 bis) lu.
 
 ## 27/10 09:47 (Paris) — retour 49 : `banc.sh` rejoué sur la tête rebasée (`92910ac5` : ma 43 + E1 §12.31 (2)(3)) : **VERT** (« 106 vérifications, 0 échec(s) », « --- fin : 0 défaut(s) » — `LIVRAISONS/INTEGRATION/E2/sorties/2710-0937-tete`). §12.31 (1) : `edtCleClasse` d'E1 pas encore poussée ; `dr_slugDe` s'aligne dès qu'elle l'est.
+
+## 27/10 11:12 (Paris) — poussée 44 : §12.31 (1) — `dr_slugDe` sur la règle d'E1 (`edtCleClasse`) ; B37 — **§12.31 E2 fini**
+**Ce que ça change pour la classe** : une vraie classe de Paul (créée par le panneau prof : clé « 3_dylan_bob », nom « 3 DYLAN Bob ») se lance depuis sa case avec ses élèves, son paquet, sa copie, sous sa clé — la même résolution que l'emploi du temps. Rien au tableau.
+- Lu chez E1 (`e59c9afc`, inventaire (1 bis), point 6) : `dr_slugDe` (`dr-classe.js`) résolvait la clé ou le nom égal, **sans le slug** ; il rend désormais `edtCleClasse(nom)` (une seule règle : la clé, le nom égal, le slug, sinon le nom) ; l'ancienne résolution reste en repli si `edtCleClasse` manque. Points 8-9 (`dr_nomClasse`, `dr-recit.js`) : des clés, rien à changer (E1).
+- **B37** : `dr_slugDe(n) === edtCleClasse(n)` pour « 3E Charles de Gaulle », « 3_dylan_bob », « 3 DYLAN Bob », « 3 dylan bob », une inconnue ; « 3 DYLAN Bob » → « 3_dylan_bob ». B36 inchangé (vert).
+- **Sorties** (`LIVRAISONS/INTEGRATION/E2/sorties/2710-1029`, assemblé md5 `d35756b1…`) : `banc.sh` **VERT** (« 106 vérifications, 0 échec(s) », « --- fin : 0 défaut(s) ») ; **banc E2 entier VERT — 215 ok, 0 échec**.

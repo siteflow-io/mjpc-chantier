@@ -27,4 +27,7 @@ Le fichier intégré d'aujourd'hui (`integration` `2518615a`, assemblé md5 `b5b
 - **D4 — Le cahier de textes simplifié, mode dirigé ou non** : une entrée (« Fin de l'heure »), une sortie (« Reprendre le cours »), « Clore l'heure » ; l'alerte T-5 devient la ligne de D2 avec un seul bouton ; ce qui fait double tombe. Le détail (ce que la classe voit à chaque geste, le moment où le cahier passe au tableau) se mesure geste par geste et se montre sur captures avant tout code.
 - **D5 — L'ordre** : après les cinq dettes de §12.28 ; codé dans le site ; Paul juge sur les captures.
 
+## 5 · Le mot de Paul du 27/10 (08:05)
+Question 460 (après « les « ? » s'adaptent-ils au contenu du chapitre affiché ? », 07:36) : « Une aide qui lit ce que tu as à l'écran (ce chapitre, cette classe, ce qui vient ensuite), c'est le mode dirigé […]. Proposé : dans ④, le « ? » reste fixe ; l'aide qui s'adapte entre dans le mode dirigé. Oui ? » — Paul : « 460 à faire ». **À reprendre sur la ④** (production 27/10 07:51) : D4 est déjà fait par la simplification (S1-S4 : une entrée, la barre tombée, un nom par geste) ; D2 n'a plus sa place (la barre du bas n'existe plus) ; D3 change (« ses mots ceux du « ? » » → l'aide lit l'écran : le chapitre, la classe, ce qui vient ensuite). Nouveaux tranchages et images avant tout mandat.
+
 MEMO

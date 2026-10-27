@@ -72,7 +72,10 @@ const texteVisible = (pg, re) => pg.evaluate(src => { const re = new RegExp(src)
 const clore = async (pg, quand) => { await pg.clock.setFixedTime(new Date(quand)); await p(pg, 2500);
   if (!(await vis(pg, '.pp-tete'))) { await pg.click('#bfin').catch(() => {}); await p(pg, 900); }
   for (let n = 1; n <= 7; n++) { const t = await pg.evaluate(() => (document.querySelector('.pp-tete') || {}).innerText || ''); if (/étape 7 sur 7/.test(t)) break; const b = await pg.$('#f-suivante:not([disabled])'); if (!b) break; await b.click().catch(() => {}); await p(pg, 700); }
-  await pg.locator('#f-clore:visible').first().click().catch(() => {}); await p(pg, 1200); if (await pg.$('#gclore-oui:visible')) { await pg.click('#gclore-oui'); await p(pg, 1500); } await p(pg, 1500); return pg.evaluate(() => !!(window.S && S.close)); };
+  /* à l'étape 7, quand des décisions ont été prises, la séquence demande d'abord « Garder ces décisions » ; sinon « ■ Clore l'heure » de l'entête */
+  if (!(await vis(pg, '#f-clore'))) { await clicTexte(pg, '#fin button, .pp button', 'Garder ces décisions'); await p(pg, 900); }
+  if (await vis(pg, '#f-clore')) { await pg.locator('#f-clore:visible').first().click().catch(() => {}); } else { await pg.click('#dr-clore').catch(() => {}); } await p(pg, 1200);
+  if (await pg.$('#gclore-oui:visible')) { await pg.click('#gclore-oui'); await p(pg, 1500); } await p(pg, 1500); return pg.evaluate(() => !!(window.S && S.close)); };
 /* replier la séquence et revenir au cours : « Plus tard » (§12.29), « Reprendre le cours » avant */
 const revenirCours = async q => (await clicTexte(q, '.pp-tete button', 'Plus tard')) || (await clicTexte(q, 'button', 'Reprendre le cours')) || (await clicTexte(q, 'button', 'Retour au cours'));
 const finEtape = pg => pg.evaluate(() => { const t = (document.querySelector('.pp-tete') || {}).innerText || ''; const m = /étape (\d) sur 7/.exec(t); return m ? +m[1] : 0; });
@@ -300,9 +303,11 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       const f1 = await forme(pg); verif('29', memeForme(f0, f1), T + ' · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille', JSON.stringify(f0) + ' → ' + JSON.stringify(f1));
       const b2 = await boutons(pg, '.pp-tete button'); verif('29', b2.length <= 2 && b2.some(x => /Montrer le cahier à la classe/.test(x)) && b2.some(x => /^Retour au cours$/.test(x)), T + ' · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours »', b2.join(' | '));
       await clicTexte(pg, '.pp-tete button', 'Retour au cours'); await p(pg, 1500); const f2 = await forme(pg); const b3 = await boutons(pg, '.pp-tete button');
-      verif('29', memeForme(f0, f2) && b3.some(x => /❄ Préparer le cahier/.test(x)), T + ' · S2 · « Retour au cours » : l’écran d’avant, la tête « ❄ Préparer le cahier » / « Plus tard »', b3.join(' | '));
+      const prep = await pg.evaluate(() => !!(window.S && S.preparation));
+      verif('29', memeForme(f0, f2) && !prep && (!b3.length || b3.some(x => /❄ Préparer le cahier/.test(x))), T + ' · S2 · « Retour au cours » : la préparation se ferme, l’écran d’avant (la séquence repliée, ou sa tête « ❄ Préparer le cahier » / « Plus tard »)', (b3.join(' | ') || 'séquence repliée') + ' ; préparation ' + prep);
+      if (!(await vis(pg, '.pp-tete'))) { await pg.click('#bfin').catch(() => {}); await p(pg, 1000); }
       await clicTexte(pg, '.pp-tete button', 'Préparer le cahier'); await p(pg, 2000); await clicTexte(pg, '.pp-tete button', 'Montrer le cahier à la classe'); await p(pg, 2000);
-      const mo = await pg.evaluate(() => { try { const e = seance().ecrans[S.di]; return { role: e && e.role, gel: !!S.gel }; } catch (x) { return null; } });
+      const mo = await pg.evaluate(() => { try { const E = seance().ecrans; const e = E[S.di]; const o = ordreHeure(S.heure); return { di: S.di, role: e && e.role, gel: !!S.gel, finDansLHeure: o.filter(k => E[k] && E[k].role === 'fin'), finsDeLaSeance: E.map((x, k) => x && x.role === 'fin' ? k : -1).filter(k => k >= 0), heure: S.heure }; } catch (x) { return { err: x.message }; } });
       verif('29', mo && mo.role === 'fin' && !mo.gel, T + ' · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé', JSON.stringify(mo));
       await clicTexte(pg, '.pp-tete button', 'Retour au cours'); await p(pg, 1200);
       if (!(await vis(pg, '.pp-tete'))) { await pg.click('#bfin').catch(() => {}); await p(pg, 1000); }

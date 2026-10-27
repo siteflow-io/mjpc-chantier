@@ -14,3 +14,5 @@
 - Garde aux quatre tailles (1366, 1536, 1707, 1920) : aucune ligne qui commence par une ponctuation (elle trouvait « . Elle » à 1536 et 1707 avant). Captures après refaites (toutes, à 1707 et 1366), regardées ; aucun défilement de côté.
 - Banc unique : 41 / 53 vertes ; les 12 rouges identiques sur la production (dont `banc_revient`, qui dépend de l'heure : rouge à 23:00 sur la production aussi). `banc_L5_geste.py` accordé (le sélecteur des cases d'insertion).
 - `correction_dictee.html` : 1 014 115 o, md5 a4f2c28329f2020f1afc5d4f09bdd014.
+
+**L18 largeur fini (7c6087d69)** — 27/10 23:08 (Paris) · avec la retouche « ponctuation » de 21:42 · branche `l18-largeur`.

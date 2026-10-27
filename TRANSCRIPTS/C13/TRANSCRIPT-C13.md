@@ -3867,3 +3867,42 @@ MEMO
 
 27/10/2026 04:58
 MEMO
+
+## Tour 210 — 27/10/2026 06:10 — contrôle n°72 (sans message de Paul depuis le tour 201) : candidat 8.75.0-④ annoncé
+
+**Fait.** Lu : E3 retour 64 (`e37b537f`) : « §12.28-29 VERT (`6cc30a80`) » — `banc-1228` 316/316 et `banc-1227` 801/801 aux quatre tailles, assemblé `2db8b6c5…` ; même assemblé que mon banc VERT sur `a5f49a45` et que la tête `4ac663c7`. Regardé les douze paires `pieces/T210-01…12-*.png` (01 refaite sur de vraies captures de l'emploi du temps ; 05 renommée : l'ancien récit disait « Au début… », pas « Enfin »). Mesuré dans l'assemblé contre la production ③ : « Cette heure, on a fait » est nouveau (0 → 2) ; « Enfin, à la fin de l'heure, on a continué », « qu'on ne fera pas » (composé par `tourn`), « aucune séance prête » existent déjà en ③ ; « Répétition : rien n'est écrit… » est nouveau (0 → 1). Taille mesurée : 2 420 064 o. Pièces et relances « candidat annoncé » (E1-E4 en veille, ne se reprogramment pas) : `fe0efc0b` sur `main`, `9cccaab7` sur `integration` (même assemblé `2db8b6c5`, vérifié). Envoyés : les douze paires et `AIDE-PAR-ECRAN.md`. Aucun contrôle reprogrammé.
+
+**Réponse (mot pour mot).**
+
+À jouer : le candidat 8.75.0-④ · en cours chez les exécutants : rien · ouvert : ton mot
+
+450. Le candidat 8.75.0-④ est prêt. Il règle les dettes 13 · 39 à 13 · 46 et apporte la simplification que tu as validée hier à 21:35. Tête `4ac663c7`, md5 `2db8b6c5ee9fea1a79e0dae2786038c3`, 2 420 064 octets. E3 : 316 sur 316 et 801 sur 801, aux quatre tailles d'écran. Mon banc : vert.
+
+451. Les douze images (en haut aujourd'hui, en bas proposé) :
+- 01 — Mode test : ce que tu publies se voit dans l'emploi du temps.
+- 02 — Fin de l'heure : l'étape 2 dit ce qu'elle attend.
+- 03 — L'heure lancée a son écran à elle, sans sortie vers l'Atelier.
+- 04 — L'onglet de l'heure fermé : l'autre onglet propose « Reprendre l'heure » (proposé seul).
+- 05 — Une seule activité : le récit dit « Cette heure, on a fait ».
+- 06 — Le « ? » ouvert sur l'accueil (proposé seul).
+- 07 — À T-5, une seule chose s'ouvre : la séquence, à droite.
+- 08 — Préparer le cahier : l'écran garde sa forme.
+- 09 — Un nom par bouton : « Ce que voit la classe », « Ouvrir le tableau ».
+- 10 — La répétition dans l'Atelier : ni « Fin de l'heure », ni participation ; « ■ Arrêter ».
+- 11 — La case d'une heure en cours : « Reprendre l'heure ».
+- 12 — L'heure close : la relecture (proposé seul).
+
+452. Une phrase vue des élèves attend ton mot : « Cette heure, on a fait » (image 05, elle part sur École Directe). Dis oui ou donne ta phrase. Le reste du récit (« Au début de l'heure… », « Enfin, à la fin de l'heure, on a continué ») est déjà en ligne aujourd'hui.
+
+453. Mots nouveaux, vus de toi seul, à corriger si tu veux : les textes du « ? » (fichier AIDE-PAR-ECRAN.md) ; « Répétition : rien n'est écrit. Une heure avec une classe se lance depuis l'emploi du temps. » ; les comptes de l'étape 2 de Fin de l'heure (image 02) ; les boutons « Ce que voit la classe », « Ouvrir le tableau », « Reprendre l'heure », « ❄ Préparer le cahier », « Plus tard », « Montrer le cahier à la classe », « Retour au cours ».
+
+454. Une phrase est tombée avec la barre du bas : « L'activité en cours : … tu dépasses de n min ». Tes images validées ne l'avaient pas. Tu la veux en tête de la séquence ? Oui ou non.
+
+455. Pas mesuré par E3 : la 13 · 46 avec une séance qui a des activités, et le bandeau « Reprendre » vu depuis un autre navigateur. Les gardes d'E1 et E2 les couvrent, mais en vrai, je ne sais pas.
+
+456. « promeus » est ton geste. Les exécutants sont en veille ; aucun contrôle n'est programmé.
+
+À tester : rien avant « promeus » — rien n'est en ligne. Après, je te donne les gestes un par un.
+
+27/10/2026 06:10
+MEMO

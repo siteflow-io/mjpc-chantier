@@ -4525,7 +4525,7 @@ MEMO
 
 ---
 
-## Tour 236 — 27/10/2026 14:12 → 14:15
+## Tour 236 — 27/10/2026 14:12 → 14:13
 
 **Paul :** oui pour 561. et effectivement, un exemple pour le banc doit toujours etre réaliste
 
@@ -4539,5 +4539,5 @@ MEMO
 
 À tester : rien pour l'instant.
 
-27/10/2026 14:15
+27/10/2026 14:13
 MEMO

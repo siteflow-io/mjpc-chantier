@@ -4707,3 +4707,41 @@ MEMO
 
 27/10/2026 15:01
 MEMO
+
+
+---
+
+## Tour 243 — 27/10/2026 15:37 → 15:46 (sans message de Paul : contrôle n°82 ; [une demande d'accord sur un réveil d'exécutant, à 15:03, interrompue par Paul : « Continue from where you left off. »])
+
+**Claude (15:41) :**
+
+Je vérifie la dernière version de la Rédaction universelle : mon banc tourne, et je relis les fiches en entier. E4 a aussi réglé le mot de liaison répété (13 · 57). Si c'est vert, je te la propose en ligne dans quelques minutes.
+
+Pour l'Atelier, E1 a poussé la poignée, les outils, les notes et l'import. J'ai adapté mes contrôles pour qu'il puisse retirer les onglets, et mon banc tourne dessus.
+
+À tester : rien pour l'instant.
+
+27/10/2026 15:41
+MEMO
+
+**Claude (15:46) :**
+
+À jouer : la Rédaction universelle, sur ton « promeus » · en cours chez les exécutants : E4 une dernière retouche (le mot de liaison), E1 et E3 l'Atelier · ouvert : 538, 553, 586, 481, 458
+
+591. La Rédaction universelle est prête : mon banc la rejoue verte (55 vérifications, 0 échec), et j'ai lu en entier une fiche Dugain et une fiche de la lettre. Les images T243 : la carte quand ton niveau d'orthographe et le compteur ne sont pas d'accord (« Garder » ou « Prendre », 561) ; une fiche Dugain ; une fiche de la lettre, avec l'énoncé entier et les cinq architectures ; le récapitulatif d'une copie de la lettre.
+
+592. Une seule retouche en cours chez E4 : sur la fiche de la lettre, « Par ailleurs » revient deux fois dans « Le thème et l'invention ». Un mot de liaison ne servira qu'une fois par critère.
+
+593. Si tu dis « promeus », je la mets en ligne dès cette retouche vérifiée : un fichier neuf sur le site, l'app d'aujourd'hui reste là. Adresse : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof (le bouton depuis le panneau prof viendra ensuite). Ce que je ne sais pas : si ton site accepte d'enregistrer les rédactions — le témoin « ✓ Enregistré au site » te le dira à la première copie ; en mode test, rien ne part.
+
+538. Le compteur d'orthographe : je propose les seuils de Dugain divisés par deux (la lettre fait la moitié d'une copie double). Pour trente lignes : 0 à 3 erreurs Très satisfaisant, 4 à 7 Satisfaisant, 8 à 14 Fragile, 15 et plus Insuffisant. Oui ?
+
+553. Les compétences : E4 rattache chaque point de la grille Dugain à une compétence du site (l'orthographe à « consolider l'orthographe », le lexique à « enrichir le lexique », la remobilisation à « exploiter des lectures », la thèse et la nuance à l'argumentation…). Les élèves ne les voient pas. Oui ?
+
+À tester (après la mise en ligne) :
+- ouvrir l'adresse, choisir « Écrire une lettre de la Grande Guerre », la classe 3 FRANKLIN Aretha : tes élèves sont là ;
+- corriger une copie en mode interrogatif, fermer, rouvrir : tout est là, le témoin dit « Enregistré au site » ;
+- exporter la fiche : elle porte le nom de la classe et l'énoncé entier.
+
+27/10/2026 15:46
+MEMO

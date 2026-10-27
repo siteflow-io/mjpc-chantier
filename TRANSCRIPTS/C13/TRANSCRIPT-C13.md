@@ -3854,3 +3854,16 @@ MEMO
 
 27/10/2026 03:56
 MEMO
+
+## Tour 209 — 27/10/2026 04:58 — contrôle n°71 (sans message de Paul depuis le tour 201)
+
+**Fait.** Mon banc sur `a5f49a45` (E2 poussée 42) : VERT, 106/0, assemblé `2db8b6c5…` (épreuve gardée). Lu : E1 veille close (deux retours vides), E2 veille ; E3 retour 63 (`d7d75984`) : `banc-1228` 314/316 sur le même assemblé — « Reprendre » vert aux quatre tailles, les mots du « ? » verts ; les deux échecs venaient de son banc (l'horloge du second onglet), corrigé, le cas rejoué 34/34. E3 fait la course entière (`banc-1227` puis `banc-1228`) pour écrire le verdict. Le site n'a pas bougé depuis `a5f49a45`. Contrôle n°72 à 05:58 (`trig_01C5qyCT586XQArgiaNKpFGk`).
+
+**Réponse (mot pour mot).**
+
+449. Contrôle de 04:55. Le site ne bouge plus : tout est codé. La dernière série de mesures d'E3 passe, à deux mesures près qui venaient de son propre outil (corrigé, elles passent). Il fait la course entière une dernière fois pour écrire le verdict. Ensuite, l'annonce avec les captures.
+
+À tester : rien pour l'instant — rien n'est en ligne.
+
+27/10/2026 04:58
+MEMO

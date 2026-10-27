@@ -1,0 +1,65 @@
+{
+ "cahiers": [
+  7,
+  17,
+  20
+ ],
+ "atelier": [
+  {
+   "numero": "Atelier · Diapo 8 sur 8 · heure 1 · Cahier de textes · prévue 5 min · H1 lundi 14 septembre · 09 h 52 → 09 h 5",
+   "texte": "FIN D'HEURE",
+   "long": 11,
+   "role": "fin",
+   "blocs": 0,
+   "travail": "null",
+   "droite": "✕ Écrire dans la diapo — un clic dans un bloc, tu tapes ; Tab passe à l'élément suivant, Maj + Tab au précédent, Entrée en fin de ligne crée l'élément suivant, Échap annule une ligne vide ; Alt + ↑ / ↓ monte ou descend le bloc. Rien à sauver : c'est enregistré quelques secondes après la frappe, et l"
+  },
+  {
+   "numero": "Atelier · Diapo 10 sur 10 · heure 2 · Cahier de textes · prévue 5 min · H2 lundi 14 septembre · 09 h 48 → 09 h",
+   "texte": "FIN D'HEURE",
+   "long": 11,
+   "role": "fin",
+   "blocs": 0,
+   "travail": "null",
+   "droite": "✕ Écrire dans la diapo — un clic dans un bloc, tu tapes ; Tab passe à l'élément suivant, Maj + Tab au précédent, Entrée en fin de ligne crée l'élément suivant, Échap annule une ligne vide ; Alt + ↑ / ↓ monte ou descend le bloc. Rien à sauver : c'est enregistré quelques secondes après la frappe, et l"
+  },
+  {
+   "numero": "Atelier · Diapo 3 sur 3 · heure 3 · Cahier de textes · prévue 5 min · H3 lundi 14 septembre · 09 h 10 → 09 h 1",
+   "texte": "FIN D'HEURE",
+   "long": 11,
+   "role": "fin",
+   "blocs": 0,
+   "travail": "null",
+   "droite": "✕ Écrire dans la diapo — un clic dans un bloc, tu tapes ; Tab passe à l'élément suivant, Maj + Tab au précédent, Entrée en fin de ligne crée l'élément suivant, Échap annule une ligne vide ; Alt + ↑ / ↓ monte ou descend le bloc. Rien à sauver : c'est enregistré quelques secondes après la frappe, et l"
+  }
+ ],
+ "rep": {
+  "numero": "Diapo 8 sur 8 · heure 1 · Cahier de textes",
+  "texte": "FIN D'HEURE",
+  "long": 11,
+  "role": "fin",
+  "blocs": 0,
+  "travail": "null",
+  "droite": "DIAPO SUIVANTE — fin de l'heure — OÙ ON EN EST Fin d'heure — en cours H1 · 57 min prévues / 50 utiles l'heure dépasse de 7 min 09:00 A1 · Analyse d'images : la routine 09:03 A2 · Tableau 1 09:09 A3 · Tableau 2 09:14 A4 · Tableau 3 09:19 A5 · Tableau 4 09:24 A6 · Tableau 5 09:30 A7 · Les hypothèses d"
+ },
+ "trame": [
+  {
+   "role": "fin",
+   "heure": 2,
+   "blocs": 0,
+   "b0": "null"
+  },
+  {
+   "role": "fin",
+   "heure": 3,
+   "blocs": 0,
+   "b0": "null"
+  },
+  {
+   "role": "fin",
+   "heure": 1,
+   "blocs": 0,
+   "b0": "null"
+  }
+ ]
+}

@@ -1,0 +1,167 @@
+[
+ {
+  "nom": "départ",
+  "etat": {
+   "si": 0,
+   "di": 0,
+   "mur": "Atelier · Diapo 1 sur 8 · heure 1 · Analyse d'images : la ro",
+   "depliees": [
+    "Poésie et peinture : le Roma"
+   ],
+   "volet": "Séance 1 — Poésie et peinture : le Romantisme en q",
+   "items": 35,
+   "ecrans": 21,
+   "haut": 2646,
+   "nouveau": ""
+  }
+ },
+ {
+  "nom": "clic sur le titre d’une séance repliée (« L’Albatros »)",
+  "change": {
+   "si": [
+    0,
+    1
+   ],
+   "mur": [
+    "Atelier · Diapo 1 sur 8 · heure 1 · Analyse d'images : la ro",
+    "Atelier · Diapo 1 sur 8 · heure 1 · De la toile au poème · p"
+   ],
+   "depliees": [
+    [
+     "Poésie et peinture : le Roma"
+    ],
+    [
+     "Étude de texte accompagnée :"
+    ]
+   ],
+   "volet": [
+    "Séance 1 — Poésie et peinture : le Romantisme en q",
+    "Séance 2 — Étude de texte accompagnée : « L'Albatr"
+   ],
+   "ecrans": [
+    21,
+    20
+   ],
+   "haut": [
+    2646,
+    2622
+   ]
+  }
+ },
+ {
+  "nom": "clic sur le chevron ▾ de la séance ouverte",
+  "change": {}
+ },
+ {
+  "nom": "clic sur le chevron ▸ de « Interro de cours »",
+  "change": {
+   "si": [
+    1,
+    2
+   ],
+   "mur": [
+    "Atelier · Diapo 1 sur 8 · heure 1 · De la toile au poème · p",
+    "Atelier · Diapo 1 sur 7 · heure 1 · Interro de cours · prévu"
+   ],
+   "depliees": [
+    [
+     "Étude de texte accompagnée :"
+    ],
+    [
+     "Interro de cours et analyse "
+    ]
+   ],
+   "volet": [
+    "Séance 2 — Étude de texte accompagnée : « L'Albatr",
+    "Séance 3 — Interro de cours et analyse logique — l"
+   ],
+   "ecrans": [
+    20,
+    18
+   ],
+   "haut": [
+    2622,
+    2574
+   ]
+  }
+ },
+ {
+  "nom": "clic sur le titre de la séance 1 (« Poésie et peinture »)",
+  "change": {
+   "si": [
+    2,
+    0
+   ],
+   "mur": [
+    "Atelier · Diapo 1 sur 7 · heure 1 · Interro de cours · prévu",
+    "Atelier · Diapo 1 sur 8 · heure 1 · Analyse d'images : la ro"
+   ],
+   "depliees": [
+    [
+     "Interro de cours et analyse "
+    ],
+    [
+     "Poésie et peinture : le Roma"
+    ]
+   ],
+   "volet": [
+    "Séance 3 — Interro de cours et analyse logique — l",
+    "Séance 1 — Poésie et peinture : le Romantisme en q"
+   ],
+   "ecrans": [
+    18,
+    21
+   ],
+   "haut": [
+    2574,
+    2646
+   ]
+  }
+ },
+ {
+  "nom": "clic sur un document (« La frise du XIXe siècle »)",
+  "change": {}
+ },
+ {
+  "nom": "clic sur un attendu (« Fiche méthode : décrire une image »)",
+  "change": {}
+ },
+ {
+  "nom": "double-clic sur une diapo de la liste",
+  "change": {
+   "di": [
+    0,
+    2
+   ],
+   "mur": [
+    "Atelier · Diapo 1 sur 8 · heure 1 · Analyse d'images : la ro",
+    "Atelier · Diapo 3 sur 8 · heure 1 · Tableau 2 · prévue 5 min"
+   ]
+  }
+ },
+ {
+  "nom": "méta",
+  "meta": {
+   "col": [
+    14,
+    250,
+    675
+   ],
+   "dragDiapo": false,
+   "dragItem": false,
+   "aide": "Ctrl + molette : zoom · clic droit : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer",
+   "poignees": [
+    "Replier cette séance @x27",
+    "Tire pour élargir ou réduire la colonne de droite ; tout à droite, elle se repli @x1353",
+    "Tire vers le haut pour agrandir tes notes (la diapo rétrécit), vers le bas pour  @x294",
+    "Un clic pour ouvrir ou replier @x1383",
+    "Un clic pour ouvrir ou replier @x1383"
+   ],
+   "structureCol": null
+  }
+ },
+ {
+  "nom": "Structure",
+  "etat": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'querySelectorAll')\n    at eval (eval at evaluate (:290:30), <anonymous>:1:229)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+ }
+]

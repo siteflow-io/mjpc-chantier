@@ -5072,3 +5072,30 @@ MEMO
 
 27/10/2026 18:59
 MEMO
+
+
+---
+
+## Tour 255 — 27/10/2026 19:14
+
+**Paul :** Je n'ai plus la possibilité de contrôler d'ici 23h donc débrouille toi d'ici là. Règle tout.
+
+**Claude** *(envoyé à 19:14 ; l'horodatage du message dit 19:15 : une minute d'avance, ma faute)* **:**
+
+À jouer : rien jusqu'à 23 h · en cours chez les exécutants : E1 la régression de l'Atelier, E4 les retouches de la Rédaction, E3 les vérifie · ouvert : rien que tu doives trancher avant 23 h
+
+646. Compris. Je prends ton « Règle tout » comme un oui à mes propositions en attente : 604, 626, 632, 634, 638.
+
+647. D'ici 23 h, dans cet ordre :
+- l'Atelier, sans sa régression ;
+- la Rédaction avec son panneau commun ;
+- les défauts du site relevés par l'instance (632, 638) ;
+- les refus du bilan alignés sur le prompt (604) ;
+- puis une séance réservée à une classe (634).
+
+Chaque morceau est vérifié par E3 et par moi, et le prompt est mis à jour en même temps.
+
+648. Ce qui reste à toi à 23 h : tes « promeus », sur des images avant et après que j'aurai regardées ; et les phrases que l'élève lira dans la taxonomie des mouvements (641) — je te les prépare, rien n'entre au site sans ton mot.
+
+27/10/2026 19:15
+MEMO

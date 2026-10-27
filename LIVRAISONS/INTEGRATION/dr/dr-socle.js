@@ -222,7 +222,7 @@ function dr_cotesTableau(){ return "var dr_seances = () => DATA.seances, dr_acti
 function dr_classeDuNiveau(){ const c = (typeof AT !== 'undefined' && AT && AT.edChap) || null; if (!c || typeof _lvlClasses !== 'function') return null; const l = _lvlClasses(c.level) || []; const k = l[0]; return k == null ? null : (typeof k === 'object' ? (k.slug || k.id || k.nom) : k); }
 function dr_classe(){
   const c = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) || null; const slug = (c && c.classeSlug) || DR_MEM.classeSlug || dr_classeDuNiveau();   /* la classe du niveau du chapitre (E2 propose la sienne par dr_classeProposee, qui lit dr_classe) */
-  const cl = (slug && typeof classesData !== 'undefined' && classesData[slug]) || {};
+  const cl = (slug && typeof classesData !== 'undefined' && (classesData[slug] || (typeof edtCleClasse === 'function' && classesData[edtCleClasse(slug)]))) || {};   /* E1 (§12.31-1 bis) : un nom passé pour une clé se résout comme dans l'emploi du temps */
   const eleves = (typeof extractEleves === 'function' && cl && Object.keys(cl).length) ? (extractEleves(cl) || []) : ((cl.eleves) || []);
   if (slug !== DR_MEM.classeSlug || ELEVES.length !== eleves.length) { DR_MEM.classeSlug = slug; ELEVES.length = 0; eleves.forEach(n => ELEVES.push(n)); dr_initiales(); }
   const ed = cl.ed || {};

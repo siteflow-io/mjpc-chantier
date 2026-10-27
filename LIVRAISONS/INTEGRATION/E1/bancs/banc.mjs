@@ -1219,6 +1219,40 @@ await B('A58', '§12.31 (3), dette 13 · 50 : sans la clé de chiffrement, « �
     await o.ctx.close(); }
 });
 
+/* ── A56 · §12.31 (1), dette 13 · 51 : une classe créée par le site (clé simplifiée « 3_dylan_bob », nom « 3 DYLAN Bob ») reliée par le menu (classeMjpc = le nom, ce qu'écrit edtClassesDuHub) — l'emploi du temps la trouve par son nom ── */
+const storeCle = () => { const st = E.store(); const c = JSON.parse(JSON.stringify(st.classes['CLASSE TEST'])); c.nom = '3 DYLAN Bob'; c.niveau = '3e'; c.annee = '2026-2027'; st.classes['3_dylan_bob'] = c;
+  st.site.edt.grille['2026-2027'].creneaux.forEach(x => { if (x.classe === '3 DYLAN Bob') x.classeMjpc = '3 DYLAN Bob'; });
+  const ch0 = st.site['3e'].chapitres[0] || st.site['3e'].chapitres['0']; const se0 = ch0.seances[0] || ch0.seances['0']; se0.deroule_joue = se0.deroule_joue || {};   /* une heure jouée (mardi 15/09, 10:07) : sa fenêtre montre les élèves (les absents) */
+  se0.deroule_joue['3_dylan_bob'] = { classe: '3 DYLAN Bob', demarreLe: 1789459620000, heures: { '2026-09-15_10h07-11h02_3_DYLAN_Bob': { classe: '3 DYLAN Bob', creneau: '10:07-11:02', clos: true, debutReel: 1789459620000, finReel: 1789462920000, fin: '11:02', lanceA: '10:07', minutesJouees: 55, tempsUtilePrevu: 50, activites: [] } } };
+  return st; };   /* dans le magasin du banc seulement : les clés réelles de Paul (hub, 01/10) — 3_dylan_bob, 3_franklin_aretha, 4_hugo, 4_turing */
+await B('A56', '§12.31 (1), dette 13 · 51 : une classe à clé simplifiée (créée par le site) reliée par le menu, le chapitre publié → la case montre la séance et « heure n/N », la fenêtre de la case ses élèves ; hors mode test et en mode test ; edtCleClasse résout nom, clé, slug', async () => {
+  for (const test of [false, true]) { const st = storeCle();
+    const ctx = await b.newContext({ viewport: { width: 1707, height: 743 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('file:'), r => r.abort()); const pg = await ctx.newPage(); const errs = []; pg.on('pageerror', e => errs.push(e.message)); pg.on('dialog', d => d.dismiss().catch(() => {}));
+    await pg.clock.setFixedTime(new Date('2026-09-15T12:00:00+02:00')); await pg.addInitScript(E.fauxHub, st); await pg.goto('file://' + E.FICHIER + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(2000);
+    await pg.evaluate(() => { try { loginAsProf(); } catch (e) {} }); await pg.waitForTimeout(2500);
+    await pg.evaluate(() => { const o = document.getElementById('m8-regles-overlay'); if (o) o.remove(); try { edtFermer(); } catch (e) {} }); await sansVoile(pg);
+    if (test) { await pg.evaluate(() => m8BasculerModeTest()); await pg.waitForTimeout(500); }
+    const T = test ? 'mode test' : 'hors mode test';
+    const menu = await pg.evaluate(() => { try { return edtClassesDuHub(); } catch (e) { return String(e); } });
+    if (!test) E.verif('A56', Array.isArray(menu) && menu.includes('3 DYLAN Bob') && !menu.includes('3_dylan_bob'), 'le menu « 🔗 Classes de la grille et classes du site » propose le nom (« 3 DYLAN Bob ») : c\'est ce que classeMjpc reçoit', JSON.stringify(menu));
+    const cases = async () => { await pg.evaluate(() => edtOuvrir()); await pg.waitForTimeout(2500); const r = await pg.evaluate(() => Array.from(document.querySelectorAll('.edt-clic')).filter(c => c.offsetParent !== null && /3 DYLAN Bob/.test(c.innerText) && !/langue/.test(c.innerText) && !c.closest('.edt-case[data-iso="2026-09-15"][data-creneau="10:07-11:02"]')).map(c => c.innerText.replace(/\s+/g, ' ').trim()).filter(t => !/passée/.test(t))); return r; };   /* les cases à venir (une heure passée dit « passée · pas jouée ») */
+    const avant = await cases(); await pg.evaluate(() => edtFermer()); await pg.waitForTimeout(400);
+    await pg.evaluate(() => { clickedLevel = '3e'; openLevel('3e', '3ème', 'var(--3e)'); }); await pg.waitForTimeout(1800); await sansVoile(pg);
+    const pill = await pg.evaluate(() => { const p = Array.from(document.querySelectorAll('.lens-pill')).find(x => /3 DYLAN Bob/.test(x.textContent)); if (!p) return false; p.click(); return true; }); await pg.waitForTimeout(800);
+    const pb = await pg.evaluate(() => { const b = document.querySelector('[onclick*="togglePublishChapterCls(\'3e\',\'0\',\'3_dylan_bob\')"]'); if (!b) return false; b.click(); return true; }); await pg.waitForTimeout(1500); await pg.evaluate(() => { try { goHome(); } catch (e) {} });
+    const apres = await cases();
+    const fen = await pg.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-case[data-iso="2026-09-15"][data-creneau="10:07-11:02"] .edt-clic')).find(x => /3 DYLAN Bob/.test(x.innerText)); if (!c) return null; c.click(); return true; }); await pg.waitForTimeout(1200);
+    const fenetre = await pg.evaluate(() => { const m = document.getElementById('edt-modale'); return m ? m.innerText.replace(/\s+/g, ' ') : ''; });
+    await pg.evaluate(() => { try { edtModaleFermer(); } catch (e) {} try { edtFermer(); } catch (e) {} });
+    const seance = l => l.length > 0 && l.every(t => /Poésie et peinture|Albatros/.test(t) && !/aucune séance prête/.test(t));
+    E.verif('A56', pill && pb && avant.length > 0 && avant.every(t => /aucune séance prête/.test(t)) && seance(apres), T + ' : avant, « aucune séance prête » ; « Je publie pour » 3 DYLAN Bob → « Publier » le chapitre → les ' + apres.length + ' cases montrent la séance', JSON.stringify({ pill, pb, avant: avant[0], apres: apres.slice(0, 2) }));
+    E.verif('A56', apres.length > 0 && apres.every(t => /heure \d+\s*\/\s*\d+|\b\d+\s*\/\s*\d+\b/.test(t)), T + ' : chaque case dit « heure n/N »', JSON.stringify(apres.slice(0, 2)));
+    E.verif('A56', fen && /DURAND Alice/.test(fenetre) && /PETIT Thomas/.test(fenetre), T + ' : la fenêtre de l\'heure jouée (mardi 15/09, 10:07) montre les élèves de la classe (les absents)', fenetre.slice(0, 200));
+    if (!test) { const u = await pg.evaluate(() => { const d = edtDecisions(); const avant = d['3 DYLAN Bob']; d['3 DYLAN Bob'] = { heures: { x: 1 }, journal: [] }; const orph = edtDecisionsOrphelines().map(o => o.ancien); if (avant === undefined) delete d['3 DYLAN Bob']; else d['3 DYLAN Bob'] = avant;
+        return { r: ['3 DYLAN Bob', '3_dylan_bob', '3 dylan  BOB', '3E Charles de Gaulle', 'Inconnue X'].map(n => edtCleClasse(n)), niv: edtNiveauDe('3 DYLAN Bob'), exp: edtEstExperimentale('3 DYLAN Bob'), el: edtElevesDe('3 DYLAN Bob').length, orph }; });
+      E.verif('A56', JSON.stringify(u.r) === JSON.stringify(['3_dylan_bob', '3_dylan_bob', '3_dylan_bob', '3E Charles de Gaulle', 'Inconnue X']) && u.niv === '3e' && u.el === 4 && u.exp === false && !u.orph.includes('3 DYLAN Bob'), 'edtCleClasse : le nom → la clé, la clé → elle-même, le nom écrit autrement → la clé par le slug, la 3E (clé = nom) → elle-même, l\'inconnue → son nom ; edtNiveauDe, edtElevesDe, edtEstExperimentale la trouvent ; edtDecisionsOrphelines ne la dit plus orpheline', JSON.stringify(u)); }
+    E.verif('A56', !errs.length, T + ' : aucune erreur JS', errs.join(' ; ') || undefined); await ctx.close(); } });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

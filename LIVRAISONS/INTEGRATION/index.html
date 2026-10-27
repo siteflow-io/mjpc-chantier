@@ -17969,10 +17969,25 @@ function edtListe(x){
   if(Array.isArray(x))return x.filter(function(v){return !!v;});
   return Object.keys(x).map(function(k){return x[k];}).filter(function(v){return !!v;});
 }
+/* E1 (§12.31-1, dette 13 · 51) : UNE résolution du nom d'une classe en sa clé — le menu de la grille range le NOM dans `classeMjpc`,
+   une classe créée par le site est rangée sous `_slugifyClass(nom)` (« 3_dylan_bob » pour « 3 DYLAN Bob ») : le nom s'il est une clé ;
+   sinon la clé dont `nom` est égal ; sinon la clé dont le slug est égal ; sinon le nom. Rien n'est réécrit. */
+function edtCleClasse(nom){
+  if(nom==null||nom==='')return nom;
+  var t=EDT_CLASSES; if(!t){ try{ t=classesData; }catch(e){ t=null; } }
+  if(!t||typeof t!=='object')return nom;
+  var n=String(nom),has=Object.prototype.hasOwnProperty,ks=Object.keys(t),i;
+  if(has.call(t,n))return n;
+  for(i=0;i<ks.length;i++){ if(t[ks[i]]&&t[ks[i]].nom===n)return ks[i]; }
+  var s=_slugifyClass(n); if(!s)return nom;
+  if(has.call(t,s))return s;
+  for(i=0;i<ks.length;i++){ if(_slugifyClass(ks[i])===s||(t[ks[i]]&&t[ks[i]].nom&&_slugifyClass(String(t[ks[i]].nom))===s))return ks[i]; }
+  return nom;
+}
 function edtNiveauDe(nomClasse){
   var t=EDT_CLASSES;
   if(!t){ try{ t=classesData; }catch(e){ t=null; } }
-  var c=t&&t[nomClasse];
+  var c=t&&t[edtCleClasse(nomClasse)];   /* E1 (13 · 51) */
   return (c&&c.niveau)||null;
 }
 function edtChargerChapitres(niveaux,apres){
@@ -18005,7 +18020,7 @@ function edtDecisionsOrphelines(){
     return !Object.keys(((d[n]||{}).heures)||{}).length; });
   Object.keys(d).forEach(function(n){
     var h=Object.keys(((d[n]||{}).heures)||{});
-    if(!h.length||connues[n])return;            /* la classe existe toujours : rien à dire */
+    if(!h.length||connues[edtCleClasse(n)])return;            /* la classe existe toujours : rien à dire — E1 (13 · 51) : par sa clé, le nom résolu */
     out.push({ancien:n,heures:h.length,candidates:libres});
   });
   return out;
@@ -19259,7 +19274,7 @@ function edtCheminTrace(nomClasse,iso,creneau){
   return null;
 }
 function edtElevesDe(nomClasse){
-  var t=EDT_CLASSES||{},c=t[nomClasse];
+  var t=EDT_CLASSES||{},c=t[edtCleClasse(nomClasse)];   /* E1 (13 · 51) */
   return (c&&Array.isArray(c.eleves))?c.eleves.slice().sort(function(a,b){return String(a).localeCompare(String(b),'fr');}):[];
 }
 function edtSlugEleve(nom){
@@ -19334,7 +19349,7 @@ function edtDivergence(nomClasse){
   return {ecart:net,brut:brut,heuresJustifiees:just,justifieEcart:justeEcart,reference:ref,palier:palier,avance:a};
 }
 function edtEstExperimentale(nomClasse){
-  var t=EDT_CLASSES||{},c=t[nomClasse];
+  var t=EDT_CLASSES||{},c=t[edtCleClasse(nomClasse)];   /* E1 (13 · 51) */
   return !!(c&&c.experimentale);
 }
 var EDT_MENTION_EXP='classe expérimentale \u2014 si cette classe était réelle, voilà ce que ça donnerait';

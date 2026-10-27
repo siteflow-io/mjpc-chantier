@@ -4598,3 +4598,31 @@ MEMO
 
 27/10/2026 14:29
 MEMO
+
+
+---
+
+## Tour 239 — 27/10/2026 14:34 → 14:36
+
+**Paul :** pour les notes, elles n'apparaissent pas dans l'atelier. Il faut distinguer notes au fil de l'eau, et notes de présentateur. pour l'atelier évidemment ce bouton n'a rien à y faire, en revanche, encore une fois les notes du présentateur doivent absolument y être éditables et préparables à l'avance, d'ailleurs l'instance qui exécute le prompt d'injection doit les rédiger aussi. Pour le chapitre actuellement au hub, je sais qu'il est obsolète.
+
+**Claude :**
+
+À jouer : rien de nouveau · en cours chez les exécutants : E4 sur la Rédaction universelle · ouvert : 576, 578, 538, 553, 481, 458
+
+575. Tu as raison, et je me suis trompé au 573. Les notes du présentateur existent dans l'Atelier, sous la barre d'outils, mais sur ton écran la diapo prend toute la hauteur et les pousse dehors : on ne les voit qu'à 1920 × 1080 (images T239-01 et T239-02). Dette 13 · 55 au registre.
+
+576. Je propose : dans l'Atelier, les notes du présentateur ont toujours leur place à l'écran, sous la diapo — la diapo se réduit pour la leur laisser —, quelle que soit la taille de l'écran ; tu les écris et les corriges là, elles restent avec la diapo. Oui ?
+
+577. « 📝 Notes », les notes au fil de l'eau, sort de l'Atelier (573).
+
+578. Le prompt d'injection disait jusqu'ici à l'instance de ne pas écrire les notes du présentateur, sauf au bilan. Je le change : elle les rédige pour chaque diapo. Je propose qu'elles disent, en quelques lignes : ce que tu dis pour lancer la diapo, ce que tu attends des élèves (la réponse attendue, jamais montrée à la classe), l'erreur fréquente à guetter, et le passage à la diapo suivante. Oui ?
+
+579. 571 et 572, tu ne les as pas commentés : je les prends comme acquis. Ils partiront avec 576 et 578 dans un même complément pour E1 (l'Atelier) ; E3 vérifiera par le geste.
+
+580. Le chapitre au hub : noté, il est obsolète (574 tombe).
+
+À tester : rien pour l'instant.
+
+27/10/2026 14:36
+MEMO

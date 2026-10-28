@@ -6961,3 +6961,33 @@ En fait le tableau distant doit absolument marcher pour le mode test et les de g
 
 28/10/2026 18:32
 MEMO
+
+## Tour 338 — 28/10/2026 18:33 → 18:35
+
+**Paul :** [capture : le tableau distant, `?vue=tableau` : « monsieurjaipascompris », 18:30, mercredi 28 octobre 2026, « ✔ Clé USB « \ » · 10 fichiers » au centre]
+voilà le tableau distant. C'est impossible d'avoir la mention de la clef usb, les élèves voient cet écran avant que l'heure commence, et après. il faut le rendre plus discret, dans un coin par exemple.
+
+**Claude :**
+
+À jouer : rien · en cours : la rédaction (son banc tourne), la ⑨ (l'Atelier) · ouvert : 905 à 917 (les questions), 929.
+
+922. Ce qui ne va pas dans ta première capture, lu dans le code. L'heure est close : l'en-tête dit « close ». Une fois l'heure close, « Fin de l'heure » est grisé, donc le clic ne fait rien, et la raison n'est que dans l'infobulle. Le pilotage reste pourtant comme en pleine heure : la diapo 1, « Dévoiler », « tu dépasses +26 min », la participation. Enfin « close · 18:28 » donne l'heure de ta montre, alors que la case dit 08:45.
+
+923. Le tableau distant ne suit pas le mode test, parce qu'en mode test rien ne part au hub, pas même l'image du tableau. C'est pareil pour la répétition quand le mode test est allumé. Le tableau distant reste donc sur son horloge.
+
+924. Je propose qu'en mode test une seule chose parte : l'image du tableau, à une adresse à elle, comme la répétition aujourd'hui. Rien ne part pour la classe : ni la copie, ni le journal, ni le récit, ni le cahier, ni la présence. La raison du mode test tient donc. Le témoin devient « mode test — rien n'est enregistré pour la classe ». À l'arrêt, l'image est retirée et le tableau distant revient à l'horloge.
+
+925. Pendant une heure des De Gaulle, tout donne l'heure de la case : « close · 08:45 » dans l'en-tête, et l'horloge du tableau distant.
+
+926. À la clôture, le site t'emmène à l'emploi du temps, parce que c'est de là que tu lances l'heure suivante. En haut, une confirmation : « L'heure des 3E Charles de Gaulle est close à 08:45 », avec « Relire l'heure ». Le profil de classe n'existe pas encore.
+
+927. Si tu reviens au pilotage d'une heure close, « Fin de l'heure » devient « Relire l'heure » : plus de bouton grisé.
+
+928. La clé USB : sur l'écran d'attente du tableau distant, sa ligne passe en bas à droite, petite et pâle. Elle reste cliquable pour autoriser la clé. Ça, tu l'as demandé : je le fais.
+
+929. Oui à 924 à 927 ? Dès que la ⑨ a poussé l'Atelier, un exécutant neuf code 924 à 928, et tout ça entre dans la ⑨.
+
+À tester : rien de neuf depuis la ⑧ (la liste de 17:33 tient).
+
+28/10/2026 18:35
+MEMO

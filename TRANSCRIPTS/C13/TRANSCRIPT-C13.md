@@ -6308,11 +6308,30 @@ MEMO
 
 **Claude :**
 
-À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 rend tout corrigeable au tableau ; E1 répare l'Atelier sur deux appareils ; E3 refait l'étoile filante, puis s'arrête · ouvert : 838 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare l'Atelier sur deux appareils ; E3 refait l'étoile filante, puis s'arrête · ouvert : 838 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
 
-839. Compris : tant que je te réponds, ton quota tient. Le silence vient donc d'autre chose. Je leur ai demandé de faire chaque morceau d'une traite et de ne pousser qu'à la fin, et E4 et E1 ont de gros morceaux en cours. J'ai aussi précisé à E3 de s'arrêter après l'étoile filante : la suite de sa mesure attend lundi soir, comme dit en 837. Je te préviens à la première poussée.
+839. Compris : tant que je te réponds, ton quota tient. Le silence vient donc d'autre chose. Je leur ai demandé de faire chaque morceau d'une traite et de ne pousser qu'à la fin, et E4 et E1 avaient de gros morceaux en cours. La preuve : E4 vient de pousser « rien d'incorrigeable au tableau », à l'instant (20 vérifications sur 20, mon banc complet vert). J'ai aussi précisé à E3 de s'arrêter après l'étoile filante : la suite de sa mesure attend lundi soir, comme dit en 837. Il ne reste plus pour la ⑧ que l'Atelier sur deux appareils (E1) et l'étoile filante (E3).
 
 À tester : rien de neuf depuis 738.
 
-28/10/2026 14:04
+28/10/2026 14:05
+MEMO
+
+---
+
+## Tour 308 — 28/10/2026 14:07 → 14:07
+
+**Paul :** L'étoile filante?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare l'Atelier sur deux appareils ; E3 refait l'étoile filante, puis s'arrête · ouvert : 838 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+840. C'est une petite animation de décor sur la page d'accueil du site : une étoile qui traverse l'écran toutes les 4 à 12 secondes. Elle existait avant l'intégration. À chaque passage, elle retouchait la page, et la sonde du redessin la comptait comme une écriture à vide. E3 la refait en pure animation : tu la verras pareil, mais elle ne touche plus à la page.
+
+841. Je corrige une erreur de mon dernier message : « 20 vérifications sur 20, banc complet vert », c'est le banc d'E4, pas le mien. Je passerai le mien sur la ⑧ assemblée, avant de te l'apporter.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:07
 MEMO

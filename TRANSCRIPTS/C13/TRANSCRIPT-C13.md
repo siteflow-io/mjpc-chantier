@@ -5871,3 +5871,30 @@ MEMO
 
 28/10/2026 08:35
 MEMO
+
+---
+
+## Tour 286 — 28/10/2026 09:07 (message de Claude, sans message de Paul : les poussées d'E4 et d'E3)
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 sur la vidéo de la clé, le dernier morceau avant la ⑧ ; E4 retouche « Déposer en ligne » ; la taxonomie est faite (E3) · ouvert : 785 ; 538, 553, 481, 458.
+
+779. E4 a fini « Déposer en ligne » et retiré le Drive. E3 a fini la taxonomie, et a vérifié le « ? » en or et les notes : verts. J'ai relu le relais : il est sûr. Il n'écrit que des images et des PDF, ne laisse aucune clé dans ton navigateur, et refuse tout autre compte que le tien. J'ai demandé à E4 trois retouches : retirer les galeries Drive qui restaient, un message plus clair si Google te demande ton compte, et un projet Google à part.
+
+780. Ton geste unique, à faire quand tu as dix minutes, avant un cours et jamais pendant. Sur script.google.com, crée un nouveau projet nommé « MJPC relais », et colles-y le fichier du relais à la place de ce qu'il contient. Je te donne l'adresse du fichier dès qu'E4 a fini ses retouches.
+
+781. Sur GitHub, crée une clé : ton profil → Settings → Developer settings → Fine-grained tokens → Generate new token. Propriétaire : siteflow-io. Dépôt : seulement mjpc-medias. Droit : Contents en lecture et écriture. Copie-la, sans me l'envoyer.
+
+782. Dans le projet Google, ouvre la roue dentée (Paramètres du projet) → Propriétés du script → ajoute GITHUB_CLE, avec la clé comme valeur.
+
+783. Déployer → Nouveau déploiement → Application Web. Exécuter en tant que : moi. Qui a accès : moi uniquement. Google te demandera d'autoriser le projet ; s'il dit « application non validée », clique sur « Paramètres avancés », puis sur le nom du projet.
+
+784. Envoie-moi l'adresse qui finit par /exec. Elle n'est pas secrète : sans ton compte Google, elle ne s'ouvre pas. Je la pose dans le site, et tu essaies un premier dépôt avant ton prochain cours.
+
+785. Le jour où mjpc-medias approchera de 900 Mo, je créerai mjpc-medias-2, et tu ajouteras ce dépôt à ta clé. Ça va ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 09:07
+MEMO

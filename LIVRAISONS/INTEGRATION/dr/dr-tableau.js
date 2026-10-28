@@ -136,6 +136,7 @@ function dr_scene(et){
   sc.origine = (typeof SES === 'object' && SES) ? SES.id : 'pilote';
   sc.ts = Math.max(Date.now(), (DR_TAB.dernierTs || 0) + 1); DR_TAB.dernierTs = sc.ts;   /* toujours croissant : deux scènes dans la même milliseconde (ou une horloge figée) restent ordonnées */
   sc.trameMaj = DR_TAB.trameMaj || 0;
+  try { const hc = (typeof dr_horlogeCase === 'function') ? dr_horlogeCase() : null; sc.hdec = hc ? hc.dec + hc.saut : 0; } catch (e) { sc.hdec = 0; }   /* §12.66 (2) : l'écart de l'horloge de la case (les De Gaulle) — l'horloge du tableau distant le suit */
   return sc;
 }
 function dr_sceneAuto(vite){
@@ -143,10 +144,63 @@ function dr_sceneAuto(vite){
   DR_TAB.emT = setTimeout(() => {
     if (!dr_tabPeutEcrire() || !S.mur) return;
     const sc = dr_scene(S.mur); if (!sc) return;
+    if (dr_ttOn()) { dr_ecrire(dr_cheminC() + '/scene', sc, 'La scène du tableau (ce que voit la classe)', () => {}); return; }   /* §12.66 (1) : en mode test, ce dépôt reste au magasin du mode test ; le témoin « ● session » suit l'adresse du mode test (dr_ttEmettre) */
     clearTimeout(DR_TAB.ecrT); DR_TAB.ecrT = setTimeout(() => dr_sessionEtat(false), 5000);   /* sans accusé en 5 s : la session est coupée */
     dr_ecrire(dr_cheminC() + '/scene', sc, 'La scène du tableau (ce que voit la classe)', () => { clearTimeout(DR_TAB.ecrT); dr_sessionEtat(true); });
   }, vite ? 0 : 250);   /* le débounce de `sesEmettre` */
 }
+
+/* ═══ §12.66 (1) — LE TABLEAU DISTANT EN MODE TEST (Paul, 28/10 18:32) ═══════════════════════════════════════════════════════════════
+   En mode test (`m8TestOn`), tout le transport du site va au magasin du mode test : rien ne part au hub, et le tableau distant (l'ordinateur
+   de la classe, `?vue=tableau`) ne voyait rien. Une seule chose part désormais, l'IMAGE DU TABLEAU, à une adresse à elle, `/site/tableau_test`
+   ({ pointeur, scene, ecrans }, le format de `/site/repetition`), pour une heure lancée en mode test comme pour une répétition en mode test.
+   Rien d'autre : ni la copie (`deroule_joue`), ni le journal, ni le récit, ni le cahier, ni la présence, ni `/site/cours_actif` — ceux-là restent
+   au magasin. L'écriture est un `fetch` direct (le transport du site la garderait au magasin), et elle refuse toute adresse hors de `/site/tableau_test`.
+   À l'arrêt de la répétition ou à la clôture de l'heure, le pointeur et la scène sont retirés s'ils sont encore les nôtres → le tableau
+   distant revient à l'horloge. Le tableau distant lit une heure lancée d'abord, puis la répétition, puis le mode test (`dr_tabLirePointeur`). */
+const DR_TT = { chemin: '/site/tableau_test', quoi: null, sig: null, emis: '', trame: '', trameMaj: 0, T: null, n: 0 };
+function dr_ttOn(){ try { return !dr_estTableau() && typeof m8TestOn === 'function' && !!m8TestOn(); } catch (e) { return false; } }
+function dr_ttEcrire(sous, valeur, retrait){
+  if (dr_estTableau() || (!retrait && !dr_ttOn()) || typeof FIREBASE_BASE === 'undefined' || typeof sous !== 'string' || sous.indexOf('..') >= 0) return Promise.resolve(false);
+  DR_TT.n++;
+  try { return fetch(FIREBASE_BASE + DR_TT.chemin + sous + '.json', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(valeur) }).then(r => !!(r && r.ok), () => false); }
+  catch (e) { return Promise.resolve(false); }
+}
+/* une lecture du hub lui-même (un GET), pas du magasin du mode test : savoir si le pointeur est encore le nôtre, si une heure tourne ailleurs */
+function dr_ttLireHub(chemin, cb){
+  try { fetch(FIREBASE_BASE + chemin + '.json').then(r => (r && r.ok) ? r.json() : undefined, () => undefined).then(v => cb(v), () => cb(undefined)); } catch (e) { cb(undefined); }
+}
+/* quoi : 'heure' (l'heure lancée en mode test) ou 'repetition' ; p : { niveau, chapitre, seance, classeSlug, classeNom } */
+function dr_ttDebut(quoi, p){
+  clearInterval(DR_TT.T); DR_TT.T = null;
+  if (!dr_ttOn() || !p) return;
+  const ptr = Object.assign({}, p, { seance: String(p.seance), test: true, quoi, chemin: DR_TT.chemin, ts: Date.now() });
+  DR_TT.quoi = quoi; DR_TT.sig = ptr.ts + '|' + ptr.seance; DR_TT.emis = ''; DR_TT.trame = '';
+  dr_ttEcrire('/scene', null); dr_ttTrame(true); dr_ttEcrire('/pointeur', ptr);
+  DR_TT.T = setInterval(dr_ttEmettre, 250);
+}
+function dr_ttTrame(force){ try { const E = JSON.parse(JSON.stringify(seance().ecrans)); const em = JSON.stringify(E); if (!force && em === DR_TT.trame) return false; DR_TT.trame = em; DR_TT.trameMaj = Date.now(); dr_ttEcrire('/ecrans', E); return true; } catch (e) { return false; } }
+function dr_ttEmettre(){
+  if (!DR_TT.sig) { clearInterval(DR_TT.T); DR_TT.T = null; return; }
+  if (!dr_ttOn()) { dr_ttFin(); return; }   /* le mode test s'éteint : ce qui est à nous se retire */
+  if (typeof S !== 'object' || !S) return;
+  if (DR_TT.quoi === 'repetition' ? !S.repetition : !(S.lancee && !S.close && !S.repetition)) return;
+  if (S.atelier || document.body.classList.contains('vue-relecture')) return;   /* comme une heure lancée : rien depuis l'Atelier ni la Relecture */
+  dr_ttTrame(false);
+  if (!S.mur || typeof dr_scene !== 'function') return;
+  const sc = dr_scene(S.mur); if (!sc) return; sc.trameMaj = DR_TT.trameMaj || 0;
+  const cle = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); if (cle === DR_TT.emis) return; DR_TT.emis = cle;
+  const heure = DR_TT.quoi === 'heure';
+  dr_ttEcrire('/scene', sc).then(ok => { if (heure) try { dr_sessionEtat(ok); } catch (e) {} });
+}
+function dr_ttFin(){
+  clearInterval(DR_TT.T); DR_TT.T = null; const sig = DR_TT.sig; DR_TT.sig = null; DR_TT.quoi = null; DR_TT.emis = ''; DR_TT.trame = '';
+  if (!sig) return;
+  dr_ttLireHub(DR_TT.chemin + '/pointeur', c => { if (c && (c.ts + '|' + c.seance) === sig) { dr_ttEcrire('/pointeur', null, true); dr_ttEcrire('/scene', null, true); } });   /* seulement s'il est encore le nôtre */
+}
+/* l'heure lancée en mode test : son pointeur part avec celui du cours (`dr_coursEcrire`), il se retire à la clôture (`dr_coursFermer`) */
+function dr_ttHeureDebut(c){ if (!dr_ttOn() || !c) return; dr_ttDebut('heure', { niveau: c.niveau, chapitre: c.chapitre, seance: c.seance, classeSlug: c.classeSlug || '', classeNom: c.classeNom || '' }); }
+function dr_ttHeureFin(){ if (DR_TT.quoi === 'heure') dr_ttFin(); }
 /* le témoin « ● session » (relance F8 : `sesBandeau`/`sesBandeauEtat` tombent ; E1 pose `#dr-session` dans `.haut`, je le remplis) */
 function dr_sessionEtat(ok){
   const s = document.getElementById('dr-session'); if (!s) return;
@@ -243,21 +297,24 @@ function dr_tabPoser(){
   const z = document.createElement('div'); z.id = 'ses-tab'; z.className = 'ses-tab';
   z.innerHTML = '<div class="ses-tab-attente" id="ses-tab-att">'
     + '<div class="n">monsieurjaipascompris</div><div class="h" id="ses-tab-h">--:--</div>'
-    + '<div class="d" id="ses-tab-d"></div><div class="c" id="ses-tab-c" style="display:none"></div>' + (dr_tabLocal() ? '' : '<button class="c" id="ses-tab-cle" style="cursor:pointer;background:transparent;color:inherit;font:inherit;font-size:2.2vh"></button>') + '</div>'
+    + '<div class="d" id="ses-tab-d"></div><div class="c" id="ses-tab-c" style="display:none"></div>' + (dr_tabLocal() ? '' : '<button class="c" id="ses-tab-cle"></button>') + '</div>'
     + '<div class="mur tableau" id="mur2"></div>'
     + '<div class="ses-tab-perdu" id="ses-tab-perdu"></div>';
   [].slice.call(document.body.children).forEach(el => { el.style.display = 'none'; });
   document.body.appendChild(z); document.body.classList.add('ses-corps-tab');
   if (!document.getElementById('dr-tab-style')) {
     const st = document.createElement('style'); st.id = 'dr-tab-style';
-    st.textContent = '#ses-tab #mur2{position:absolute;inset:0;margin:auto;width:min(100vw,calc(100vh * 16 / 9));height:auto;aspect-ratio:16/9;border-radius:0;box-shadow:none}';
+    st.textContent = '#ses-tab #mur2{position:absolute;inset:0;margin:auto;width:min(100vw,calc(100vh * 16 / 9));height:auto;aspect-ratio:16/9;border-radius:0;box-shadow:none}'
+      /* §12.66 (5) : la ligne de la clé USB quitte le centre — en bas à droite, petite et pâle, toujours cliquable ; l'horloge et la date restent seules au centre */
+      + '#ses-tab #ses-tab-cle{position:absolute;right:1.6vh;bottom:1.4vh;max-width:46vw;cursor:pointer;background:transparent;color:inherit;font:inherit;font-size:1.5vh;line-height:1.3;padding:.4vh 1.2vh;border-color:#3a322b;opacity:.42;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+      + '#ses-tab #ses-tab-cle:hover,#ses-tab #ses-tab-cle:focus-visible{opacity:.9}';
     document.head.appendChild(st);
   }
-  const horloge = () => { const d = new Date(), J = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'], M = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  const horloge = () => { const d = new Date(Date.now() + ((SES && SES.ctx && isFinite(DR_TAB.hdec)) ? DR_TAB.hdec : 0)), J = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'], M = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
     const h = document.getElementById('ses-tab-h'), dd = document.getElementById('ses-tab-d');
-    if (h) h.textContent = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
-    if (dd) dd.textContent = J[d.getDay()] + ' ' + d.getDate() + ' ' + M[d.getMonth()] + ' ' + d.getFullYear(); };
-  horloge(); setInterval(horloge, 1000);
+    const th = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2), td = J[d.getDay()] + ' ' + d.getDate() + ' ' + M[d.getMonth()] + ' ' + d.getFullYear();
+    if (h && h.textContent !== th) h.textContent = th; if (dd && dd.textContent !== td) dd.textContent = td; };   /* §12.56 (1)(d) : seulement le chiffre qui change */
+  DR_TAB.horloge = horloge; horloge(); setInterval(horloge, 1000);
   if (!dr_tabLocal()) { dr_tabCleMaj(); setInterval(dr_tabCleMaj, 3000); const bc = document.getElementById('ses-tab-cle'); if (bc) bc.onclick = async () => { const e = DR_CLE.etat; if (e === 'a-autoriser') await dr_cleAutoriser(); else if (e === 'vu') await dr_cleScanner(); else await dr_cleDesigner(); dr_tabCleMaj(); }; }
   window.addEventListener('resize', () => { if (DR_TAB.montre) dr_rendreMur(DR_TAB.montre); });
 }
@@ -340,15 +397,17 @@ function dr_tabDemarrer(){
 }
 
 /* le distant : le cours trouvé, on lit la copie jouée, puis la scène toutes les 900 ms et le pointeur toutes les 3 s */
-function dr_tabCheminC(c){ if (c && c.repetition && typeof c.chemin === 'string' && c.chemin.indexOf('/site/repetition') === 0) return c.chemin; return '/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug; }   /* E1 (§12.41) : une répétition se lit sous son chemin à elle, jamais dans la copie d'une classe */
+function dr_tabCheminC(c){ if (c && c.repetition && typeof c.chemin === 'string' && (c.chemin === '/site/repetition' || c.chemin === '/site/tableau_test')) return c.chemin;   /* §12.66 (1) : le mode test a son adresse */ return '/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug; }   /* E1 (§12.41) : une répétition se lit sous son chemin à elle, jamais dans la copie d'une classe */
 /* E1 (§12.41) : le pointeur d'une répétition retiré (« ■ Arrêter ») → l'horloge d'attente ; une heure lancée retirée garde son image (relance C3, inchangé) */
-function dr_tabRetourAttente(){ clearInterval(DR_TAB.sondeT); DR_TAB.sondeT = null; clearInterval(DR_TAB.pointeurT); DR_TAB.pointeurT = null; SES.ctx = null; SES.tabPointeur = null; DR_TAB.montre = null; DR_TAB.ts = 0; DR_TAB.ecrans = null;
-  const m = document.getElementById('mur2'); if (m) m.innerHTML = ''; const a = document.getElementById('ses-tab-att'); if (a) a.style.display = ''; dr_tabDireClasse(''); try { sesTabChercherCours(); } catch (e) {} try { dr_tabAttendre(); } catch (e) {} }
+function dr_tabRetourAttente(){ DR_TAB.hdec = 0; clearInterval(DR_TAB.sondeT); DR_TAB.sondeT = null; clearInterval(DR_TAB.pointeurT); DR_TAB.pointeurT = null; SES.ctx = null; SES.tabPointeur = null; DR_TAB.montre = null; DR_TAB.ts = 0; DR_TAB.ecrans = null;
+  const m = document.getElementById('mur2'); if (m) m.innerHTML = ''; const a = document.getElementById('ses-tab-att'); if (a) a.style.display = ''; try { if (DR_TAB.horloge) DR_TAB.horloge(); } catch (e) {} dr_tabDireClasse(''); try { sesTabChercherCours(); } catch (e) {} try { dr_tabAttendre(); } catch (e) {} }
 /* la règle (relance F2/I1) : une scène n'est acceptée que si la clé de cours de `cours_actif` est celle de ce cours ;
    le « pilote présent » n'existe pas — sans scène neuve, l'image reste */
 /* E1 (§12.41) : le pointeur que suit le tableau distant — une heure lancée (`/site/cours_actif`, frais) prime ; sinon une répétition (`/site/repetition/pointeur`) */
+/* §12.66 (1) : puis le mode test (`/site/tableau_test/pointeur`) — il se suit comme une répétition (rien n'y est d'une classe ; retiré → l'horloge) */
 function dr_tabLirePointeur(cb){ const frais = x => x && x.ts && (Date.now() - x.ts) <= 4 * 3600 * 1000;
-  dr_tabLire('/site/cours_actif', c => { if (frais(c)) { cb(c); return; } dr_tabLire('/site/repetition/pointeur', r => { if (frais(r)) cb(Object.assign({}, r, { repetition: true, chemin: '/site/repetition' })); else cb(c === undefined && r === undefined ? undefined : null); }); }); }
+  dr_tabLire('/site/cours_actif', c => { if (frais(c)) { cb(c); return; } dr_tabLire('/site/repetition/pointeur', r => { if (frais(r)) { cb(Object.assign({}, r, { repetition: true, chemin: '/site/repetition' })); return; }
+    dr_tabLire('/site/tableau_test/pointeur', t => { if (frais(t)) cb(Object.assign({}, t, { repetition: true, test: true, chemin: '/site/tableau_test' })); else cb(c === undefined && r === undefined && t === undefined ? undefined : null); }); }); }); }
 function dr_tabPointeur(){
   dr_tabLirePointeur(c => { if (c === undefined) return;   /* lecture échouée : on ne conclut rien */
     DR_TAB.pilotePresent = !!(c && sesTabCle(c) === SES.tabPointeur); });
@@ -363,7 +422,7 @@ function dr_tabLireSeance(c){
 }
 function dr_tabMonter(){
   if (!SES.ctx) return;
-  DR_TAB.ts = 0; DR_TAB.trameMaj = 0; DR_TAB.pilotePresent = true;   /* le cours vient d'être trouvé au pointeur */
+  DR_TAB.ts = 0; DR_TAB.trameMaj = 0; DR_TAB.pilotePresent = true; DR_TAB.hdec = 0;   /* le cours vient d'être trouvé au pointeur */
   dr_tabLireSeance(SES.ctx);
   dr_tabLire(dr_tabCheminC(SES.ctx) + '/ecrans', ecr => {
     if (Array.isArray(ecr)) DR_TAB.ecrans = ecr;
@@ -388,7 +447,7 @@ function dr_tabSonder(){
     if (!(o.ts > DR_TAB.ts) && !futur) return;                       /* jamais une scène plus ancienne que la dernière montrée */
     if (c.ts && o.ts < c.ts - 2000) return;                          /* la scène d'une heure précédente ne ressuscite jamais */
     if (o.si == null && o.di == null && !o.eid) return;              /* la scène « à neuf » du lancement : rien à montrer encore (audit C6) */
-    DR_TAB.ts = o.ts;
+    DR_TAB.ts = o.ts; DR_TAB.hdec = isFinite(o.hdec) ? +o.hdec : 0;   /* §12.66 (2) : l'horloge de la case, pendant l'heure */
     if (o.trameMaj && o.trameMaj > DR_TAB.trameMaj) {
       DR_TAB.trameMaj = o.trameMaj;
       dr_tabLire(base + '/ecrans', ecr => { if (Array.isArray(ecr)) DR_TAB.ecrans = ecr; dr_tabMontrer(o); });

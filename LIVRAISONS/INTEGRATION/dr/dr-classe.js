@@ -366,7 +366,7 @@ function ouvrirFin(cloture){ if ((document.getElementById('fin').parentElement =
   const fb = $('f-bilan'); if (fb) fb.onclick = () => { $('ecran-fin').classList.remove('on'); $('droite').classList.remove('fin'); S.enFin = false; const bi = E.indexOf(bilan); S.di = bi; S.page = null; dr_tout(); journal('aller-bilan', { di: bi }); };
   const frp = $('f-reprendre'); if (frp) frp.onclick = () => { $('ecran-fin').classList.remove('on'); $('droite').classList.remove('fin'); S.enFin = false; dr_tout(); };   /* E2 : un id par bouton (relecteur neuf n°2 : deux #f-fermer) */
   const ffm = $('f-fermer'); if (ffm) ffm.onclick = () => { $('ecran-fin').classList.remove('on'); $('droite').classList.remove('fin'); S.enFin = false; dr_tout(); };
-  const fc = $('f-clore'); if (fc) fc.onclick = () => { if (S.preparation) { $('gclore-corps').innerHTML = `<div class="gc-l"><span class="gc-n">❄</span><span>Tu prépares le cahier : la classe est encore sur la diapo ${rangDe(S.preparation.di)} — <b>reviens au cours</b> (« Revenir au cours »), puis clos.</span></div>`; $('garde-clore').classList.add('on'); $('gclore-oui').style.display = 'none'; $('gclore-non').textContent = 'Compris'; $('gclore-non').onclick = () => { $('garde-clore').classList.remove('on'); $('gclore-oui').style.display = ''; $('gclore-non').textContent = 'Y retourner'; }; return; } const manques = manquesAvantDeClore(restantes); if (manques.length && !S._cloreQuandMeme) { $('gclore-corps').innerHTML = manques.map(m => `<div class="gc-l"><span class="gc-n">○</span><span><b>${dr_esc(m.lib)}</b>${m.facultatif ? ' (facultatif)' : ''} — ${dr_esc(m.risque)}</span></div>`).join(''); $('garde-clore').classList.add('on'); $('gclore-non').onclick = () => { $('garde-clore').classList.remove('on'); S.finSection = manques[0].n; ouvrirFin(cloture); }; $('gclore-oui').onclick = () => { $('garde-clore').classList.remove('on'); journal('clore-quand-meme', { manques: manques.map(m => m.lib) }); S._cloreQuandMeme = true; fc.click(); S._cloreQuandMeme = false; }; $('gclore-non').focus(); return; } S.motAbsents = ($('f-mot') || {}).value || S.motAbsents || ''; /* E2 : le mot tapé à l'étape 5 est gardé (relecteur neuf n°2) */ S.mots = S.mots || {}; S.mots[S.heure] = S.motAbsents; S.travailHeure = S.travailHeure || {}; S.travailHeure[S.heure] = texteTravailED(); S.echeanceHeure = S.echeanceHeure || {}; S.echeanceHeure[S.heure] = S.echeance; S.apprendreHeure = S.apprendreHeure || {}; S.apprendreHeure[S.heure] = (S.travail && S.travail.apprendre) ? S.travail.apprendre.slice() : []; if (S.travailEdite && S.travailEdite[S.heure] != null) journal('travail-edite-final', { texte: S.travailEdite[S.heure] }); journal('cloture', { bilanAtteste: !!S.bilanCoche }); S.close = true; S.closes = S.closes || {}; S.closes[S.heure] = now(); try { dr_cloreFin(); } catch (e) {} /* E2 : H clos, finReel, cours_actif nul, le journal et l'état (atDrCloreFin) */ S.enFin = false; if (S.gel) degeler(); dr_tout(); /* le tableau passe en attente */ $('ecran-fin').classList.remove('on'); $('droite').classList.remove('fin'); voir('relecture'); }; /* E2 : la clôture amène à la relecture (C1 11.2) — avant : l'EDT simulé pour l'heure 2 */
+  const fc = $('f-clore'); if (fc) fc.onclick = () => { if (S.preparation) { $('gclore-corps').innerHTML = `<div class="gc-l"><span class="gc-n">❄</span><span>Tu prépares le cahier : la classe est encore sur la diapo ${rangDe(S.preparation.di)} — <b>reviens au cours</b> (« Revenir au cours »), puis clos.</span></div>`; $('garde-clore').classList.add('on'); $('gclore-oui').style.display = 'none'; $('gclore-non').textContent = 'Compris'; $('gclore-non').onclick = () => { $('garde-clore').classList.remove('on'); $('gclore-oui').style.display = ''; $('gclore-non').textContent = 'Y retourner'; }; return; } const manques = manquesAvantDeClore(restantes); if (manques.length && !S._cloreQuandMeme) { $('gclore-corps').innerHTML = manques.map(m => `<div class="gc-l"><span class="gc-n">○</span><span><b>${dr_esc(m.lib)}</b>${m.facultatif ? ' (facultatif)' : ''} — ${dr_esc(m.risque)}</span></div>`).join(''); $('garde-clore').classList.add('on'); $('gclore-non').onclick = () => { $('garde-clore').classList.remove('on'); S.finSection = manques[0].n; ouvrirFin(cloture); }; $('gclore-oui').onclick = () => { $('garde-clore').classList.remove('on'); journal('clore-quand-meme', { manques: manques.map(m => m.lib) }); S._cloreQuandMeme = true; fc.click(); S._cloreQuandMeme = false; }; $('gclore-non').focus(); return; } S.motAbsents = ($('f-mot') || {}).value || S.motAbsents || ''; /* E2 : le mot tapé à l'étape 5 est gardé (relecteur neuf n°2) */ S.mots = S.mots || {}; S.mots[S.heure] = S.motAbsents; S.travailHeure = S.travailHeure || {}; S.travailHeure[S.heure] = texteTravailED(); S.echeanceHeure = S.echeanceHeure || {}; S.echeanceHeure[S.heure] = S.echeance; S.apprendreHeure = S.apprendreHeure || {}; S.apprendreHeure[S.heure] = (S.travail && S.travail.apprendre) ? S.travail.apprendre.slice() : []; if (S.travailEdite && S.travailEdite[S.heure] != null) journal('travail-edite-final', { texte: S.travailEdite[S.heure] }); journal('cloture', { bilanAtteste: !!S.bilanCoche }); S.close = true; S.closes = S.closes || {}; S.closes[S.heure] = now(); try { dr_cloreFin(); } catch (e) {} /* E2 : H clos, finReel, cours_actif nul, le journal et l'état (atDrCloreFin) */ S.enFin = false; if (S.gel) degeler(); dr_tout(); /* le tableau passe en attente */ $('ecran-fin').classList.remove('on'); $('droite').classList.remove('fin'); dr_apresCloture(); }; /* §12.66 (3) : la clôture emmène à l'emploi du temps, avec la confirmation et « Relire l'heure » — avant : la Relecture (C1 11.2) */
   edTexte();
 }
 
@@ -732,10 +732,11 @@ function dr_coursEcrire(){
   if (!AT_DR_COURS || !ATVUES.snum) return;
   try { SES.ctx = dr_coursActif(); SES.actif = true; } catch (e) {}
   DR_CL.coursTs = Date.now(); dr_ecrire('/site/cours_actif', Object.assign(dr_coursActif(), { ts: DR_CL.coursTs }), 'Le cours annoncé aux autres appareils', () => {});
+  try { if (typeof dr_ttHeureDebut === 'function') dr_ttHeureDebut(dr_coursActif()); } catch (e) {}   /* §12.66 (1) : en mode test, le cours reste au magasin ; l'image du tableau part à l'adresse du mode test */
   /* la scène du cours précédent ne doit jamais ressusciter : la scène neuve, au format d'E3 (`et`), tout de suite (audit F10) */
   try { if (typeof dr_sceneAuto === 'function') dr_sceneAuto(true); } catch (e) {}
 }
-function dr_coursFermer(){ dr_ecrire('/site/cours_actif', null, 'Le cours est clos', () => {}); try { SES.actif = false; } catch (e) {} }
+function dr_coursFermer(){ dr_ecrire('/site/cours_actif', null, 'Le cours est clos', () => {}); try { SES.actif = false; } catch (e) {} try { if (typeof dr_ttHeureFin === 'function') dr_ttHeureFin(); } catch (e) {} }   /* §12.66 (1) : le pointeur et la scène du mode test se retirent s'ils sont encore les nôtres → le tableau distant revient à l'horloge */
 /* efface le pointeur SEULEMENT s'il désigne encore l'heure close (`_drCoursActifEffacerSi`, par `dr_lire`) */
 function dr_coursActifEffacerSi(sig){ if (!sig) return; dr_lire('/site/cours_actif', c => { if (!c || _drSignatureCours(c) !== sig) return; dr_ecrire('/site/cours_actif', null, 'Le pointeur de l’heure close', () => {}); }); }
 /* la clôture CERTAINE de l'heure précédente (`_drCloreHeureRestee`, par `dr_lire` : le mode test lit sa copie) */
@@ -1068,12 +1069,17 @@ function dr_reprendreCours(c){
    s'ouvre sans régime « classe » (rien ne s'écrit), la Relecture d'E4 relit la classe au hub (`dr_recitChargerClasse`), puis l'heure n. */
 function dr_edtRelire(cle){
   const cel = edtCellule(cle); if (!cel) return; const t = edtCheminTrace(cel.classeMjpc, cel.iso, cel.creneau); if (!t || !t.trace) { atInfo('La trace de cette heure est introuvable.'); return; }
-  const m = /^\/site\/([^/]+)\/chapitres\/([^/]+)\/seances\/([^/]+)\/deroule_joue\/([^/]+)\//.exec(t.chemin); if (!m) return; const h = +t.trace.heure || null;
-  if (typeof S === 'object' && S && S.lancee && !S.close) { atInfo('Une heure est en cours : relis celle-ci une fois l’heure en cours close.'); return; }
+  dr_relireTrace(t.chemin, +t.trace.heure || null);
+}
+/* §12.66 (3) : la même Relecture, pour la bande de clôture — `chemin` : celui de la copie de la classe (…/deroule_joue/<classe>/…), `h` : l'heure */
+function dr_relireTrace(chemin, h){
+  const m = /^\/site\/([^/]+)\/chapitres\/([^/]+)\/seances\/([^/]+)\/deroule_joue\/([^/]+)\//.exec(String(chemin || '')); if (!m) return false;
+  if (typeof S === 'object' && S && S.lancee && !S.close) { atInfo('Une heure est en cours : relis celle-ci une fois l’heure en cours close.'); return true; }
   try { edtFermer(); edtModaleFermer(); } catch (e) {} try { atelierOuvrir(); } catch (e) {}
   atChargerChapitres(m[1], () => { atEditerChapitre(m[1], m[2]); ATVUES.snum = String(m[3]);
     edtQuandPilotagePret(manque => { if (manque) { atInfo('La Relecture ne s’ouvre pas (manque : ' + manque + ').'); return; } try { atVuesAller('relecture'); } catch (e) {}
       dr_recitChargerClasse(decodeURIComponent(m[4]), () => { S.face = 'recit'; if (h) S.faceH = h; try { relecture(); } catch (e) {} }); }); });
+  return true;
 }
 function dr_edtReprendre(cle){
   const cel = edtCellule(cle); if (!cel) return; const t = edtCheminTrace(cel.classeMjpc, cel.iso, cel.creneau); if (!t || !t.trace) { atInfo('La trace de cette heure est introuvable.'); return; }
@@ -1176,12 +1182,55 @@ function dr_edtPret(){ try { const niv = (AT.edChap || {}).level; return !!(type
 /* réveil n°4, point 5 (C1 11t.3) : le mode test se voit dans le pilotage — la pastille du site (classe `tprof-testpill on`) posée dans l'entête,
    et `data-mode-test` sur #dr-zone pour qu'E1 l'affiche à sa façon (le témoin « Enregistré à … », #dr-enr, est à E1) */
 setInterval(() => { try { const on = typeof m8TestOn === 'function' ? !!m8TestOn() : !!(typeof M8_TEST !== 'undefined' && M8_TEST); const z = document.getElementById('dr-zone'); if (z) { if (on) z.dataset.modeTest = '1'; else delete z.dataset.modeTest; }
-  let p = document.getElementById('dr-test'); const hou = document.getElementById('hou'); if (!p && hou && on) { p = document.createElement('span'); p.id = 'dr-test'; p.className = 'tprof-testpill on dr-test'; p.title = 'Mode test : rien de cette heure ne part au hub — ni le journal, ni l’état, ni la clôture'; p.innerHTML = '<span class="tprof-testpill-dot"></span>Mode test'; hou.insertAdjacentElement('afterend', p); }
+  let p = document.getElementById('dr-test'); const hou = document.getElementById('hou'); if (!p && hou && on) { p = document.createElement('span'); p.id = 'dr-test'; p.className = 'tprof-testpill on dr-test'; p.title = 'Mode test : rien de cette heure n’est enregistré pour la classe — ni la copie, ni le journal, ni l’état, ni la clôture. Seule l’image du tableau part, à une adresse à elle, pour que le tableau distant suive ce que tu joues.'; p.innerHTML = '<span class="tprof-testpill-dot"></span>Mode test'; hou.insertAdjacentElement('afterend', p); }
   if (p) p.style.display = on ? '' : 'none'; } catch (e) {} }, 1000);
 /* réveil n°12 (E4 ligne 107) : l'heure close n'offre plus la fin de l'heure, et le chrono de la tête ne reste pas en compte à rebours rouge — il dit « close · hh:mm » */
+/* §12.66 (4) : une heure close au pilotage — « Fin de l'heure » devient « Relire l'heure » (plus de bouton grisé) ; (2) « close · hh:mm » est l'heure de la case
+   (`S.closes[h]` = `now()` au geste de clôture ; à défaut, `finReel` lu à l'horloge de la case), pas celle de la montre */
+const DR_BFIN_RELIRE = 'L’heure est close : ouvre sa Relecture — son récit, ce qui s’est passé, le papier. Rien ne se rejoue, rien ne s’écrit.';
 setInterval(() => { try { const bf = document.getElementById('bfin'), ch = document.getElementById('chr'); const close = typeof S === 'object' && S && S.lancee && S.close;
-  if (bf) { if (close && !bf.disabled) { bf.disabled = true; bf.dataset.drTitre = bf.title; bf.title = 'L’heure est close : la fin de l’heure est faite (relis-la dans l’onglet Relecture)'; } else if (!close && bf.disabled && bf.dataset.drTitre != null) { bf.disabled = false; bf.title = bf.dataset.drTitre; delete bf.dataset.drTitre; } }
-  if (ch && close) { const t2 = 'close · ' + hhmm(S.finReel || ((S.closes || {})[S.heure]) || now()); if (ch.textContent !== t2) { ch.textContent = t2; ch.className = 'dr-chr-close'; } } } catch (e) {} }, 500);
+  if (bf) { if (close) { if (bf.dataset.drTxt == null) { bf.dataset.drTxt = bf.textContent; bf.dataset.drTitre = bf.dataset.drT0 != null ? bf.dataset.drT0 : bf.title; } if (bf.disabled) bf.disabled = false; if (bf.textContent !== 'Relire l’heure') bf.textContent = 'Relire l’heure'; if (bf.title !== DR_BFIN_RELIRE) bf.title = DR_BFIN_RELIRE; }
+    else if (bf.dataset.drTxt != null) { bf.textContent = bf.dataset.drTxt; bf.title = bf.dataset.drTitre || ''; delete bf.dataset.drTxt; delete bf.dataset.drTitre; } }
+  if (ch && close) { const t2 = 'close · ' + hhmm(((S.closes || {})[S.heure]) || (typeof dr_heureCase === 'function' ? dr_heureCase(S.finReel) : S.finReel) || now()); if (ch.textContent !== t2) { ch.textContent = t2; ch.className = 'dr-chr-close'; } } } catch (e) {} }, 500);
+document.addEventListener('click', ev => { try { const b = ev.target && ev.target.closest && ev.target.closest('#bfin'); if (!b || typeof S !== 'object' || !S || !S.lancee || !S.close || S.atelier) return;
+  ev.preventDefault(); ev.stopImmediatePropagation(); dr_relireIci(); } catch (e) {} }, true);
+/* « Relire l'heure » au pilotage : la Relecture de l'heure close, sur place (l'onglet Relecture, le récit de cette heure) */
+function dr_relireIci(){ try { if (typeof atVuesAller === 'function') atVuesAller('relecture', true); else voir('relecture'); } catch (e) { try { voir('relecture'); } catch (e2) {} }
+  try { S.face = 'recit'; S.faceH = S.heure; if (typeof relecture === 'function') relecture(); } catch (e) {} }
+
+/* §12.66 (3) : À LA CLÔTURE, l'emploi du temps — en haut, « L'heure des <classe> est close à <hh:mm> » (l'heure de la case) et « Relire l'heure »,
+   qui ouvre la Relecture de cette heure (le chemin de « Relire cette heure » de la case, `dr_relireTrace`). La bande est posée une fois, hors de
+   l'emploi du temps (qui se redessine), puis seul son texte change ; elle part avec l'emploi du temps, au « ✕ », ou à « Relire l'heure ». */
+function dr_apresCloture(){
+  let R = null; try { const C = dr_cheminC(); R = { classe: (AT_DR_COURS && (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug)) || '', h: hhmm(((S.closes || {})[S.heure]) || now()), chemin: C ? C + '/' : null, heure: S.heure }; } catch (e) {}
+  try { if (typeof atClasseFermer === 'function') atClasseFermer(); else if (typeof edtOuvrir === 'function') edtOuvrir(); } catch (e) { try { voir('relecture'); } catch (e2) {} return; }
+  if (R) dr_closConfPoser(R);
+}
+function dr_closConfPoser(R){
+  let b = document.getElementById('dr-clos-conf');
+  if (!b) {
+    if (!document.getElementById('dr-clos-conf-style')) { const st = document.createElement('style'); st.id = 'dr-clos-conf-style';
+      st.textContent = '#dr-clos-conf{position:fixed;top:0;left:0;right:0;height:46px;z-index:8600;display:flex;align-items:center;gap:14px;padding:0 18px;background:#1f3a2a;color:#e8f2ea;border-bottom:1px solid #3d6b4f;font-size:15px;box-sizing:border-box}'
+        + '#dr-clos-conf .dr-clos-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#dr-clos-conf button{font:inherit;cursor:pointer;border-radius:6px}'
+        + '#dr-clos-conf .dr-clos-relire{background:#e8f2ea;color:#1f3a2a;border:0;padding:5px 14px;font-weight:600}#dr-clos-conf .dr-clos-x{background:transparent;color:inherit;border:1px solid #3d6b4f;padding:3px 10px}'
+        + 'html.dr-clos-conf-on #edt-ecran{top:46px}';
+      document.head.appendChild(st); }
+    b = document.createElement('div'); b.id = 'dr-clos-conf'; b.setAttribute('role', 'status');
+    b.innerHTML = '<span class="dr-clos-t" id="dr-clos-conf-t"></span>'
+      + '<button type="button" class="dr-clos-relire" id="dr-clos-relire" title="Ouvre la Relecture de cette heure : son récit, ce qui s’est passé, le papier — rien ne se rejoue, rien ne s’écrit">Relire l’heure</button>'
+      + '<button type="button" class="dr-clos-x" id="dr-clos-x" title="Ferme ce message. L’heure reste close ; tu la relis aussi depuis sa case de l’emploi du temps (« Relire cette heure »)">✕</button>';
+    b.addEventListener('click', ev => { const t = ev.target && ev.target.closest && ev.target.closest('button'); if (!t) return; const r = DR_CL.closConf;
+      dr_closConfRetirer(); if (t.id === 'dr-clos-relire' && r) { if (!(r.chemin && dr_relireTrace(r.chemin, r.heure))) { try { atInfo('La Relecture de cette heure ne s’ouvre pas d’ici : ouvre sa case dans l’emploi du temps, « Relire cette heure ».'); } catch (e) {} } } });
+    document.body.appendChild(b);
+  }
+  DR_CL.closConf = R; DR_CL.closConfEdt = false;
+  const txt = 'L’heure des ' + R.classe + ' est close à ' + R.h; const t = document.getElementById('dr-clos-conf-t'); if (t && t.textContent !== txt) t.textContent = txt;
+  if (b.style.display === 'none') b.style.display = ''; document.documentElement.classList.add('dr-clos-conf-on');
+}
+function dr_closConfRetirer(){ const b = document.getElementById('dr-clos-conf'); if (b && b.style.display !== 'none') b.style.display = 'none'; document.documentElement.classList.remove('dr-clos-conf-on'); DR_CL.closConf = null; }
+setInterval(() => { try { if (!DR_CL.closConf) return; const e = document.querySelector('#edt-ecran'); /* l'écran du site (lu, jamais déclaré ici) */ const ouvert = !!(e && e.style.display !== 'none' && e.getBoundingClientRect().height > 0);
+  if (ouvert) DR_CL.closConfEdt = true; else if (DR_CL.closConfEdt) dr_closConfRetirer();   /* l'emploi du temps se ferme : la bande part avec lui */
+  if (typeof S === 'object' && S && S.lancee && !S.close) dr_closConfRetirer(); } catch (e) {} }, 1000);
 setInterval(() => { try { const t = { 'gclore-oui': 'Clore l’heure malgré ce qui manque : tout ce qui est fait est enregistré ; ce qui manque restera à faire plus tard', 'gclore-non': 'Revenir à l’étape qui manque, sans rien fermer', 'f-fermer': 'Referme la fin de l’heure sans rien clore : tes choix restent', 'garde-devant': 'Change de diapo sans geler : la classe voit ce que tu ouvres' };
   Object.keys(t).forEach(id => { const b = document.getElementById(id); if (b && !b.title) b.title = t[id]; }); } catch (e) {} }, 1000);
 

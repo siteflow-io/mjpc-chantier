@@ -701,7 +701,8 @@ function temoin(){ $('temoin-mini').textContent = S.gel ? '❄ tableau gelé' : 
    répétition y faisait paraître « Reprendre »). Le tableau distant lit `cours_actif` d'abord (une heure lancée prime), puis `/site/repetition/pointeur`.
    - Une heure lancée ailleurs (un pointeur frais sans `repetition`) : la répétition ne l'écrase jamais ; l'en-tête dit que le tableau distant est pris.
    - « ■ Arrêter » : le pointeur de répétition est retiré s'il est encore le nôtre → le tableau distant revient à l'horloge d'attente (dr-tableau.js, `dr_tabRetourAttente`).
-   - Mode test : rien ne part (la règle du mode test ne change pas). `dr_ecrire` refuse tout en répétition ; seules ces écritures-là passent, par `dr_repEcrire`. */
+   - Mode test : rien ne part ici ; §12.66 (1) : l'image du tableau part à l'adresse du mode test, `/site/tableau_test` (`dr_ttDebut`/`dr_ttFin`, dr-tableau.js), et rien d'autre.
+     `dr_ecrire` refuse tout en répétition ; seules ces écritures-là passent, par `dr_repEcrire` (hors mode test) ou `dr_ttEcrire` (en mode test). */
 const DR_REP = { chemin: '/site/repetition', sig: null, emis: '', trame: '', T: null, pris: null, n: 0 };
 function dr_repTest(){ return typeof m8TestOn === 'function' && m8TestOn(); }
 function dr_repEcrire(chemin, valeur){ if (dr_repTest() || typeof mjpcPutJson !== 'function') return; if (chemin.indexOf(DR_REP.chemin) !== 0) return; DR_REP.n++; mjpcPutJson(FIREBASE_BASE + chemin + '.json', valeur, 'Répétition — le tableau distant', () => { try { const bd = document.querySelector('.mjpc-bandeau-ok'); if (bd) bd.style.display = 'none'; } catch (e) {} }); }   /* le bandeau « Enregistré » du site se referme, et le témoin « Enregistré à … » de l'en-tête ne bouge pas : rien n'est enregistré pour la classe */
@@ -710,16 +711,17 @@ function dr_repEntete(){ let z = document.getElementById('rep-tab'); const o = d
   else { z.textContent = ''; z.title = ''; } }
 function dr_repTableauDebut(){
   DR_REP.sig = null; DR_REP.pris = null; DR_REP.emis = ''; DR_REP.trame = ''; clearInterval(DR_REP.T);
-  if (dr_repTest()) { dr_repEntete(); return; }
-  const ec = (typeof AT !== 'undefined' && AT && AT.edChap) || null; if (!ec || typeof ATVUES === 'undefined' || ATVUES.snum == null) return;
-  dr_lire('/site/cours_actif', c => { if (!S.repetition) return;
+  const test = dr_repTest();
+  const ec = (typeof AT !== 'undefined' && AT && AT.edChap) || null; if (!ec || typeof ATVUES === 'undefined' || ATVUES.snum == null) { dr_repEntete(); return; }
+  (test && typeof dr_ttLireHub === 'function' ? dr_ttLireHub : dr_lire)('/site/cours_actif', c => { if (!S.repetition) return;   /* en mode test, le hub lui-même (le magasin garde l'heure d'essai) */
     if (c && !c.repetition && c.ts && (Date.now() - c.ts) < 4 * 3600 * 1000) { DR_REP.pris = c; dr_repEntete(); return; }   /* une heure en cours ailleurs : son tableau n'est pas à nous */
     const src = typeof dr_sourceSeance === 'function' ? dr_sourceSeance() : null; const cl = (typeof dr_classe === 'function' ? dr_classe() : {}) || {};
     const p = { repetition: true, chemin: DR_REP.chemin, niveau: ec.level, chapitre: ec.chnum, seance: String(ATVUES.snum), classeSlug: (src && src.classeSlug) || cl.slug || '', classeNom: (src && src.classeNom) || cl.nom || '', ts: Date.now() };
+    if (test) { try { dr_ttDebut('repetition', p); } catch (e) {} dr_repEntete(); return; }   /* §12.66 (1) : l'image du tableau, à l'adresse du mode test */
     DR_REP.sig = p.ts + '|' + p.seance; dr_repEcrire(DR_REP.chemin + '/scene', null); dr_repTrame(true); dr_repEcrire(DR_REP.chemin + '/pointeur', p); dr_repEntete();
     DR_REP.T = setInterval(dr_repEmettre, 250); }); }
 function dr_repTrame(force){ try { const E = JSON.parse(JSON.stringify(seance().ecrans)); const em = JSON.stringify(E); if (!force && em === DR_REP.trame) return false; DR_REP.trame = em; DR_REP.trameMaj = Date.now(); dr_repEcrire(DR_REP.chemin + '/ecrans', E); return true; } catch (e) { return false; } }
 function dr_repEmettre(){ if (!S.repetition || !DR_REP.sig) { clearInterval(DR_REP.T); return; } dr_repTrame(false); if (!S.mur || typeof dr_scene !== 'function') return;
   const sc = dr_scene(S.mur); if (!sc) return; sc.trameMaj = DR_REP.trameMaj || 0; const cle = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); if (cle === DR_REP.emis) return; DR_REP.emis = cle; dr_repEcrire(DR_REP.chemin + '/scene', sc); }
-function dr_repTableauFin(){ clearInterval(DR_REP.T); try { if (S.gel && typeof degeler === 'function') degeler(); } catch (e) {}   /* un gel de répétition ne survit pas à « ■ Arrêter » */ const sig = DR_REP.sig; DR_REP.sig = null; DR_REP.pris = null; try { const z = document.getElementById('rep-tab'); if (z) { z.textContent = ''; z.title = ''; } } catch (e) {}
+function dr_repTableauFin(){ clearInterval(DR_REP.T); try { if (typeof DR_TT !== 'undefined' && DR_TT.quoi === 'repetition') dr_ttFin(); } catch (e) {}   /* §12.66 (1) : l'adresse du mode test se retire aussi, si elle est encore à nous */ try { if (S.gel && typeof degeler === 'function') degeler(); } catch (e) {}   /* un gel de répétition ne survit pas à « ■ Arrêter » */ const sig = DR_REP.sig; DR_REP.sig = null; DR_REP.pris = null; try { const z = document.getElementById('rep-tab'); if (z) { z.textContent = ''; z.title = ''; } } catch (e) {}
   if (!sig || dr_repTest()) return; dr_lire(DR_REP.chemin + '/pointeur', c => { if (c && (c.ts + '|' + c.seance) === sig) { dr_repEcrire(DR_REP.chemin + '/pointeur', null); dr_repEcrire(DR_REP.chemin + '/scene', null); } }); }   /* le pointeur n'est retiré que s'il est encore le nôtre */

@@ -6683,3 +6683,24 @@ MEMO
 
 28/10/2026 15:33
 MEMO
+
+---
+
+## Tour 326 — 28/10/2026 15:49 → 15:50
+
+**Paul :** problème de corrélation.... J'ai cliqué dans la colonne de gauche sur "écrire avec une Ia", et après je suis tombé sur la zone de prompt de création de feuille, j'ai fermé, et voilà ensuite ce que j'ai eu. Par aillleurs, la croix rouge n'a pas d'infobulle, on ne sait pas si c'est fermer ou supprimer. Pour le 8, j'attends, ça commence à devenir pressant! *(avec une capture de la Structure)*
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours : un exécutant neuf finit les derniers rouges de la ⑧ (le tableau distant, le lancement par la case) ; un autre répare la Structure et le ✕ · ouvert : 878 ; 843 (à cadrer) ; 538, 553 (après lundi).
+
+876. Ta capture, inscrite au registre (13 · 85) : après « Écrire avec une IA » puis la fermeture, les trois colonnes de la Structure ne parlent plus de la même feuille. La liste montre « Dictée : « Le port » », le milieu mélange ses champs avec les « Éléments » d'une autre feuille, et l'aperçu en montre une troisième. Le ✕ rouge sans infobulle aussi (13 · 86). Un exécutant neuf les répare maintenant, à part : il reproduit ton geste, cherche la cause et pose l'infobulle. Il passe aussi toute la barre de l'élément au même crible.
+
+877. La ⑧ : le premier exécutant a fini (le « ? » hors de la vue élève, l'aide à jour). Le second finit le tableau distant et le lancement par la case. Je te l'apporte dès qu'il pousse et que mon banc complet est vert.
+
+878. Ces deux défauts de la Structure existent déjà dans la ⑦, en production. Ta règle dit : pas de promotion sur dette. Je propose de promouvoir la ⑧ sans eux, puisqu'elle ne les aggrave pas, et de les mettre dans la ⑨ dès ce soir. Ou bien je les attends, mais la ⑧ glisse d'une heure environ. Laquelle ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:50
+MEMO

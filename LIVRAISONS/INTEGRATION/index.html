@@ -5351,7 +5351,7 @@ function renderZoneAutonomie(){
     +'<div style="padding:0 4px 10px;color:rgba(255,255,255,0.4);font-size:0.78rem;font-style:italic;">Ces activit\u00e9s viennent de tes chapitres : tu peux les faire en autonomie, dans l\u2019ordre que tu veux.</div>';
   ordre.forEach(function(chnum){
     var g=parChap[chnum];
-    html+='<div class="chapter-card"><div class="chapter-header" onclick="toggleChapter(this)"><div class="chapter-num" style="background:var(--level-accent);color:#1a1030;">\ud83d\ude80</div><div class="chapter-info"><div class="chapter-title">'+escapeHtml(g.titre||('Chapitre '+chnum))+'</div><div class="chapter-meta"><span class="chip chip-fiche">'+g.items.length+' activit\u00e9'+(g.items.length>1?'s':'')+'</span></div></div></div>';
+    html+='<div class="chapter-card"><div class="chapter-header" onclick="toggleChapter(this)"><div class="chapter-num" style="background:var(--level-accent);color:#1a1030;">\ud83d\ude80</div><div class="chapter-info"><div class="chapter-title">'+escapeHtml(g.titre||('Chapitre '+ordDe((chapitresData[level]||{})[chnum],chnum)))+'</div><div class="chapter-meta"><span class="chip chip-fiche">'+g.items.length+' activit\u00e9'+(g.items.length>1?'s':'')+'</span></div></div></div>';
     html+='<div class="chapter-body open"><div class="doc-list">';
     g.items.forEach(function(x){
       var it=x.item;
@@ -11289,7 +11289,7 @@ function atRattRecharger(niveau){AT_CHAP_ETAT[niveau]='';atChargerChapitres(nive
 /* Les chapitres d'un niveau, triés par ordre — [{num,titre,ordre}] */
 function atChapitresDe(niveau){
   var d=(niveau&&typeof chapitresData!=='undefined'&&chapitresData[niveau])||{};
-  return Object.keys(d).map(function(k){var c=d[k]||{};return {num:String(k),uid:c.uid||'',titre:c.title||('Chapitre '+k),ordre:(c.ordre!=null?Number(c.ordre):(parseInt(k,10)||0))};})   /* [C5-UID] \u2462 */
+  return Object.keys(d).map(function(k){var c=d[k]||{};var _o=(c.ordre!=null?Number(c.ordre):(parseInt(k,10)||0));return {num:String(k),uid:c.uid||'',titre:c.title||('Chapitre '+_o),ordre:_o};})   /* [C5-UID] \u2462 */
     .sort(function(a,b){return a.ordre-b.ordre;});
 }
 /* Les séances d'un chapitre, triées par ordre — [{num,titre,ordre}] */
@@ -11332,7 +11332,7 @@ function atAdresseAffichage(doc,quoi){
     if(!r.chapitre)return '';
     var c=atChapitresDe(r.niveau).filter(function(x){return x.num===String(r.chapitre);})[0];
     if(c)return 'Chapitre '+c.ordre+' — '+c.titre;
-    return r.chapitreTitre?('Chapitre '+r.chapitre+' — '+r.chapitreTitre):'';
+    return r.chapitreTitre?('Chapitre '+((r.chapitreOrdre!==undefined&&r.chapitreOrdre!==null&&r.chapitreOrdre!=='')?r.chapitreOrdre:r.chapitre)+' — '+r.chapitreTitre):'';
   }
   if(!r.seance)return '';
   var s=atSeancesDe(r.niveau,r.chapitre).filter(function(x){return x.num===String(r.seance);})[0];
@@ -11528,7 +11528,7 @@ function atAdresseLisible(r){
   if(r.chapitre||r.chapitreUid){
     cRes=uidResoudre(data,r.chapitreUid,r.chapitre);
     if(!cRes&&r.chapitreUid)return out+' \u203a le chapitre a \u00e9t\u00e9 supprim\u00e9';
-    out+=' \u203a Chapitre '+(cRes?ordDe(cRes.o,cRes.k):r.chapitre);
+    out+=' \u203a Chapitre '+(cRes?ordDe(cRes.o,cRes.k):((r.chapitreOrdre!==undefined&&r.chapitreOrdre!==null&&r.chapitreOrdre!=='')?r.chapitreOrdre:r.chapitre));
   }
   if(r.seance||r.seanceUid){
     var ses=(cRes&&cRes.o&&cRes.o.seances)||null;
@@ -11980,7 +11980,7 @@ function atRendreChapitres(){
     var li0=atChapitreLiaisons(ch);   /* [C5-3a-c] ⑤ */
     var liTxt=(li0.total===0)?'Aucun item pour l\u2019instant.':(li0.sans?(li0.sans+' liaison'+(li0.sans>1?'s':'')+' restante'+(li0.sans>1?'s':'')):'Tout est li\u00e9.');
     var liCls=(li0.total===0)?'at-st-flou':(li0.sans?'at-st-adresse':'at-st-depose');
-    h+='<div class="at-carte" data-chctx="'+atEsc(n)+'|'+atEsc(num)+'"><div class="at-carte-t">'+atEsc(ch.title||('Chapitre '+num))+'</div>'
+    h+='<div class="at-carte" data-chctx="'+atEsc(n)+'|'+atEsc(num)+'"><div class="at-carte-t">'+atEsc(ch.title||('Chapitre '+ordDe(ch,num)))+'</div>'
       +'<div class="at-carte-m">'+(ch.ordre?('n\u00b0'+ch.ordre+' \u00b7 '):'')+nbSe+' s\u00e9ance'+(nbSe>1?'s':'')+' \u00b7 '+nbIt+' item'+(nbIt>1?'s':'')+' \u00b7 '+(pub?'publi\u00e9 (au moins une classe)':'non publi\u00e9')+'</div>'
       +'<div class="at-carte-st '+liCls+'">'+liTxt+'</div>'
       +'<div class="at-carte-b">'
@@ -12529,7 +12529,7 @@ function edDupliquerVers(j,k){
   var paires=ordPaires(data);
   ED_SEL.v=paires.length?paires[0].k:null;
   var choix=paires.map(function(p){
-    return '<option value="'+p.k+'"'+((String(ED_SEL.v)===String(p.k))?' selected':'')+'>'+atEsc(p.o.title||('Chapitre '+p.k))+'</option>';
+    return '<option value="'+p.k+'"'+((String(ED_SEL.v)===String(p.k))?' selected':'')+'>'+atEsc(p.o.title||('Chapitre '+ordDe(p.o,p.k)))+'</option>';
   }).join('');
   atModaleChoix('Dupliquer \u00ab '+atEsc(it.title||k)+' \u00bb vers un autre chapitre :<br>'
     +'<select class="at-sel" id="ed-dup-ch" onchange="ED_SEL.v=this.value">'+choix+'</select><br>'
@@ -12785,7 +12785,7 @@ function ctxEntreesChapitre(level,chnum){
   e.push({lib:'Voir dans l\u2019arborescence',titre:'Ferme l\u2019atelier \u2014 ce que tu as \u00e9crit est enregistr\u00e9 \u2014 et ouvre la page du niveau, ce chapitre d\u00e9pli\u00e9 en haut de l\u2019\u00e9cran. Le panneau prof ne se rouvre pas.',faire:function(){atVoirPanneau(level,chnum);}});   /* E1 (§12.27-13) */
   e.push({lib:'O\u00f9 est-ce ? (contenu)',faire:function(){
     var ses=atSeances(ch);
-    atInfo('\u00ab '+atEsc(ch.title||('Chapitre '+chnum))+' \u00bb contient '+(ses.length?(ses.length+' s\u00e9ance'+(ses.length>1?'s':'')+' : '+ses.map(function(p){return atEsc(p.se.title||('S\u00e9ance '+p.j));}).join(' \u00b7 ')):'\u2014 aucune s\u00e9ance pour l\u2019instant.'));
+    atInfo('\u00ab '+atEsc(ch.title||('Chapitre '+ordDe(ch,chnum)))+' \u00bb contient '+(ses.length?(ses.length+' s\u00e9ance'+(ses.length>1?'s':'')+' : '+ses.map(function(p){return atEsc(p.se.title||('S\u00e9ance '+p.j));}).join(' \u00b7 ')):'\u2014 aucune s\u00e9ance pour l\u2019instant.'));
   }});
   e.push({lib:'Dupliquer le chapitre',faire:function(){atDupliquerChapitre(level,chnum);}});
   e.push({lib:'Supprimer\u2026',danger:true,faire:function(){atSupprimerChapitre(level,chnum);}});
@@ -12796,7 +12796,7 @@ function ctxSommaireOuvrir(x,y,cible){
     var pc=cible.id.split('|');
     var chx=chapitresData[pc[0]]&&chapitresData[pc[0]][pc[1]];
     if(!chx)return;
-    ctxOuvrir(x,y,chx.title||('Chapitre '+pc[1]),ctxEntreesChapitre(pc[0],pc[1]));
+    ctxOuvrir(x,y,chx.title||('Chapitre '+ordDe(chx,pc[1])),ctxEntreesChapitre(pc[0],pc[1]));
     return;
   }
   var c=_edCh();if(!c)return;
@@ -13077,7 +13077,9 @@ function ed2Papier(level,chnum,docs){
          carte d'avant. */
       var _doc=(d.feuille&&typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&d.ref)?LINK_ATELIER_DOCS[d.ref]:null;
       h+='<div class="ed2-pdoc'+(ED2.courant===d.item?' ed2-halo':'')+'" data-item="'+d.item+'" onclick="ed2ClicPapier(event,\''+d.item+'\')">'
-        +'<div class="ed2-pref">Ch. '+atEsc(chnum)+' · S. '+atEsc(String(d.rang+1))+'</div>';
+        /* EX (13·89) : le RANG du chapitre (ordre), comme « Déposée dans »
+           (edFeuilleDepots) — jamais sa clé au hub. */
+        +'<div class="ed2-pref">Ch. '+atEsc(String(ordDe((chapitresData[level]||{})[chnum],chnum)))+' · S. '+atEsc(String(d.rang+1))+'</div>';
       if(_doc){
         h+='<div class="ed2-fcadre" data-ref="'+atEsc(d.ref)+'">'+ed2FeuilleHtml(_doc,d.ref)+'</div>';
       }else{
@@ -14104,7 +14106,7 @@ function uidRenouveler(ch){
 function atDupliquerChapitre(level,chnum){
   var ch=chapitresData[level]&&chapitresData[level][chnum];if(!ch)return;
   var copie=uidRenouveler(JSON.parse(JSON.stringify(ch)));   /* [C5-UID] ① identités neuves, jamais celles de l'original */
-  copie.title=(copie.title||('Chapitre '+chnum))+' (copie)';
+  copie.title=(copie.title||('Chapitre '+ordDe(ch,chnum)))+' (copie)';
   delete copie.published;chNettoyerPublished(copie);
   var maxO=0,maxK=0;
   Object.keys(chapitresData[level]).forEach(function(k){

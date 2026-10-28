@@ -1063,3 +1063,35 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - **Sur la ⑦ : 1/3 par taille.** En mode test partent 2 × `PUT /presence/prof` et, à la fermeture, une balise `/presence/prof.json?x-http-method-override=PATCH`. C'est le défaut que le §12.43 corrige.
 - **Remarque, pour la conscience (pas dans le contrat) :** le mode test ne survit pas à un rechargement de la page. `m8BasculerModeTest` écrit `sessionStorage['mjpc_m8_test']`, mais rien ne le relit. Paul en mode test qui recharge repasse en vrai mode sans le voir.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0730-28-10-avant7/` ; captures `*-41-*`, `*-42-*`, `*-43-*-avant7.png`.
+
+## Retour 96 — 28/10, 07:55 — §12.42 joué sur la poussée 116 d'E4 : 28/32, un rouge à E4 ; cas 45a, 46c, 47n, 48x écrits ; avant sur la ⑦
+- **§12.42 sur `a0512a7f`** (poussée 116 d'E4, `071e5bf44`). `banc.sh` : **VERT**.
+- **Le cas 42i, aux quatre tailles : 28/32 (7/8 par taille).**
+  - Vert :
+    - les **21 feuilles** existent, une par clé d'item, sans doublon ;
+    - chacune est liée depuis chaque séance qui a l'item ;
+    - le compte rendu (une boîte, une puce par item, capture `1707x743-42-1-…-apres.png`, regardée) dit « feuille créée avec le contenu du chapitre » (3), « feuille créée **sans contenu : à écrire** » (18), « liée dans … », « déjà liée (son adresse est dans le chapitre) » pour la frise, et la raison des autres outils ;
+    - « Fiche notion : Les registres littéraires » s'ouvre avec sa définition et s'imprime sur fond blanc.
+  - **Rouge, à E4 : réinjecter réécrit 4 feuilles.**
+    - Ce sont les trois feuilles avec contenu et « Fiche méthode : décrire une image ».
+    - `rattachement.chapitre` et `depot.chapitre` passent du nombre `1` à la chaîne `"1"`. Rien d'autre ne change : même séance, même `chapitreUid`, même `itemId`.
+    - Le contrat (§12.42 (5)) dit « réinjecter retrouve la même feuille et ne la réécrit pas ».
+  - Deux fautes de ma mesure, corrigées : le compte rendu est une boîte sans `li`, il est maintenant lu par ses puces ; l'aperçu était coupé à 160 signes.
+- **Cas écrits pour la relance de 07:08** (le cas 44 viendra après la mission 0 d'E1) :
+  - **45a (§12.45, A96).** Il reprend les 27 écrans du prof de 13 · 43. Il mesure le « ? » : en or `#e0b978`, 24 × 88 px, contraste ≥ 4,5, aucun bouton dessous ni dessus (recouvrement mesuré), il ouvre l'aide.
+    - Sur la ⑦ : le « ? » fait 20 × 56 px, brun (`rgb(42, 34, 24)`) avec un « ? » clair (contraste 11,3) — pas l'or demandé. Il ne cache rien et ouvre l'aide (vert).
+  - **46c (§12.46, A97).** La diapo du cahier, dans l'Atelier, en répétition (sans « Dévoiler », qui ouvrirait l'onglet « Contenus de séances ») et en classe (« ❄ Préparer le cahier » puis « Montrer le cahier à la classe »).
+    - Sur la ⑦ : « Donné le 14 septembre par M. MENEY P. » partout (rouge, attendu).
+  - **47n (§12.47, A98).** Une note tapée dans « Notes pour cette diapo » ; « albatros » mis en G, « poète » en S, « Insister » en « A » ; relue au rechargement ; en répétition chez Paul, absente du mur.
+    - Sur la ⑦ : « A » marche (`<span data-coul="rouge">`), G et S ne font rien (rouge, attendu).
+  - **48x (§12.48, A99).**
+    - Le geste : le panneau prof → Taxonomie → « Ouvrir l'éditeur » ; la boîte « 9 fiches d'applications ne sont pas à jour », qui couvre l'écran, est écartée comme les autres voiles.
+    - Les contrôles :
+      - les trois boutons ;
+      - le fragment v2 validé par Paul (`fam-52`, `litt-040`, `litt-041`, pris tel quel dans `MANDATS/TAXONOMIE/PROPOSITION-MOUVEMENTS-27-10.md`), au hub mot pour mot ;
+      - « Le romantisme » déclaré sur une diapo (« Ce que la diapo déclare » → ＋ → tout le programme) ;
+      - réimporter ne double rien ;
+      - un fragment qui réutilise un id existant (`ortho-lex-001`) est refusé en clair, sans écriture.
+    - Sur la ⑦ : aucun des trois boutons (rouge, attendu).
+- **Le cas 44 (§12.44) est préparé :** `E3/bancs/medias/port-de-honfleur.mp4`, un vrai mp4 de 12 s (H.264 + AAC, que le Chromium du banc lit). Le dossier de la clé sera un dossier réel du navigateur (OPFS), rendu par un `showDirectoryPicker` du banc. Deux navigateurs : l'ordi de classe, qui désigne et lit, et l'ordi portable, qui pilote (§12.44 (4 bis)). Je l'écris sur la mission 0 d'E1.
+- Sorties : `sorties/0740-28-10-1242/` (§12.42) et `sorties/0730-28-10-avant7/` (avant 45a-48x). Captures `*-avant7.png` et `*-42-*-apres.png`.

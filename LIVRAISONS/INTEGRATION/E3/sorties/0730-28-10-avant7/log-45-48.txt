@@ -1,0 +1,223 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-28 06:47 UTC · fichier md5 b01f1a39e2b6d923295c31baf7f9de9b
+
+══ 1366×768 ══
+  info   43 · 1366×768 · l’onglet « pilotage » n’est plus dans l’Atelier (§12.33)
+  info   43 · 1366×768 · l’onglet « relecture » n’est plus dans l’Atelier (§12.33)
+  ok     41 · 1366×768 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1366×768 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1366×768 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1366×768 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1366×768 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1366×768 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1366×768 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1366×768 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1366×768 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1366×768 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1366×768 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1366×768 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1366×768 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1366×768 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1366×768 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1366×768 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 117 ms
+  ok     41 · 1366×768 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     L · 1366×768 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps)
+  ok     41 · 1366×768 · 13 · 41 (d) · le bandeau est toujours là après l’accueil, la page du niveau et l’emploi du temps (« sur tous les écrans »)
+  ok     41 · 1366×768 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 2
+  ok     41 · 1366×768 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → Analyse d'images : la routine · 4 lignes · page «  »
+  ok     41 · 1366×768 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:16 » à la fermeture → « 00:22 » à la reprise
+  ok     41 · 1366×768 · l’heure se clôt
+  ok     41 · 1366×768 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1366×768 · 13 · 41 · après « Clore », aucun bandeau
+  ok     41 · 1366×768 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1366×768 · 13 · 43 · un « ? » sur chaque écran du prof (27 écrans)
+  ok     43 · 1366×768 · 13 · 43 · au même endroit partout — référence 1346,356
+  ok     43 · 1366×768 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1366×768 · 13 · 43 · aucun « ? » dans la vue élève
+  ÉCHEC  45a · 1366×768 · A96 · sur les 27 écrans du prof, le « ? » est en or (#e0b978), 24 × 88 px, « ? » sombre (contraste ≥ 4,5) — edt-semaine 20×56 rgb(42, 34, 24) / rgb(240, 217, 168) (11.3) ; edt-mois 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5) ; edt-annee 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5) ; edt-calendrier 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5)
+  ok     45a · 1366×768 · A96 · le « ? » ne cache aucun bouton et rien ne le cache
+  ok     45a · 1366×768 · A96 · le « ? » ouvre l’aide de son écran
+  ok     43 · 1366×768 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil
+  ok     Z · 1366×768 · 0 erreur JS (40, 41, 43)
+  ÉCHEC  46c · 1366×768 · A97 · atelier : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1366×768 · 0 erreur JS (46c, atelier)
+  ÉCHEC  46c · 1366×768 · A97 · répétition : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1366×768 · 0 erreur JS (46c, répétition)
+  ÉCHEC  46c · 1366×768 · A97 · classe : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1366×768 · 0 erreur JS (46c, classe)
+  ÉCHEC  47n · 1366×768 · A98 · dans « Notes pour cette diapo », G, S et « A » agissent sur la sélection comme dans la diapo — {"gestes":[true,true,true],"note":{"b":[],"u":[],"c":["Insister"]},"html":"<span data-coul=\"rouge\">Insister</span> sur le mot albatros et sur le poète"}
+  ÉCHEC  47n · 1366×768 · A98 · la forme de la note est gardée au rechargement — {"b":[],"u":[],"c":["Insister"]}
+  ÉCHEC  47n · 1366×768 · A98 · en répétition : la note mise en forme chez Paul, jamais au tableau — {"rep":true,"note":{"b":[],"u":[],"c":["Insister"]},"auTableau":false}
+  ok     Z · 1366×768 · 0 erreur JS (47n)
+  ÉCHEC  48x · 1366×768 · A99 · l’écran de la taxonomie a « ＋ Ajouter une famille », « ＋ Ajouter une notion » et « Importer des notions » — []
+  ÉCHEC  48x · 1366×768 · A99 · le fragment v2 collé et validé : la famille fam-52 et ses deux notions existent au hub, les phrases pour l’élève mot pour mot — {"import":{"ok":false},"romantisme":false,"realiste":false,"famille":false,"eleve":false}
+  ÉCHEC  48x · 1366×768 · A99 · « Le romantisme » (litt-040) se déclare sur une diapo — {"choisi":null,"comp":["litt-036","litt-037","litt-038","c4-lire-02","tr-personne-02"]}
+  ÉCHEC  48x · 1366×768 · A99 · réimporter le même fragment ne double rien — {"import":{"ok":false},"fam":0,"n40":0,"n41":0}
+  ÉCHEC  48x · 1366×768 · A99 · un fragment qui réutilise un id (« ortho-lex-001 ») est refusé en clair, rien n’est écrit — {"import":{"ok":false},"ecrit":false}
+  ok     Z · 1366×768 · 0 erreur JS (48x)
+
+══ 1536×864 ══
+  info   43 · 1536×864 · l’onglet « pilotage » n’est plus dans l’Atelier (§12.33)
+  info   43 · 1536×864 · l’onglet « relecture » n’est plus dans l’Atelier (§12.33)
+  ok     41 · 1536×864 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1536×864 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1536×864 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1536×864 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1536×864 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1536×864 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1536×864 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1536×864 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1536×864 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1536×864 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1536×864 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1536×864 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1536×864 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1536×864 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1536×864 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1536×864 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 123 ms
+  ok     41 · 1536×864 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     L · 1536×864 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps)
+  ok     41 · 1536×864 · 13 · 41 (d) · le bandeau est toujours là après l’accueil, la page du niveau et l’emploi du temps (« sur tous les écrans »)
+  ok     41 · 1536×864 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 2
+  ok     41 · 1536×864 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → Analyse d'images : la routine · 4 lignes · page «  »
+  ok     41 · 1536×864 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:15 » à la fermeture → « 00:21 » à la reprise
+  ok     41 · 1536×864 · l’heure se clôt
+  ok     41 · 1536×864 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1536×864 · 13 · 41 · après « Clore », aucun bandeau
+  ok     41 · 1536×864 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1536×864 · 13 · 43 · un « ? » sur chaque écran du prof (27 écrans)
+  ok     43 · 1536×864 · 13 · 43 · au même endroit partout — référence 1516,404
+  ok     43 · 1536×864 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1536×864 · 13 · 43 · aucun « ? » dans la vue élève
+  ÉCHEC  45a · 1536×864 · A96 · sur les 27 écrans du prof, le « ? » est en or (#e0b978), 24 × 88 px, « ? » sombre (contraste ≥ 4,5) — edt-semaine 20×56 rgb(42, 34, 24) / rgb(240, 217, 168) (11.3) ; edt-mois 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5) ; edt-annee 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5) ; edt-calendrier 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5)
+  ok     45a · 1536×864 · A96 · le « ? » ne cache aucun bouton et rien ne le cache
+  ok     45a · 1536×864 · A96 · le « ? » ouvre l’aide de son écran
+  ok     43 · 1536×864 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil
+  ok     Z · 1536×864 · 0 erreur JS (40, 41, 43)
+  ÉCHEC  46c · 1536×864 · A97 · atelier : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1536×864 · 0 erreur JS (46c, atelier)
+  ÉCHEC  46c · 1536×864 · A97 · répétition : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1536×864 · 0 erreur JS (46c, répétition)
+  ÉCHEC  46c · 1536×864 · A97 · classe : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1536×864 · 0 erreur JS (46c, classe)
+  ÉCHEC  47n · 1536×864 · A98 · dans « Notes pour cette diapo », G, S et « A » agissent sur la sélection comme dans la diapo — {"gestes":[true,true,true],"note":{"b":[],"u":[],"c":["Insister"]},"html":"<span data-coul=\"rouge\">Insister</span> sur le mot albatros et sur le poète"}
+  ÉCHEC  47n · 1536×864 · A98 · la forme de la note est gardée au rechargement — {"b":[],"u":[],"c":["Insister"]}
+  ÉCHEC  47n · 1536×864 · A98 · en répétition : la note mise en forme chez Paul, jamais au tableau — {"rep":true,"note":{"b":[],"u":[],"c":["Insister"]},"auTableau":false}
+  ok     Z · 1536×864 · 0 erreur JS (47n)
+  ÉCHEC  48x · 1536×864 · A99 · l’écran de la taxonomie a « ＋ Ajouter une famille », « ＋ Ajouter une notion » et « Importer des notions » — []
+  ÉCHEC  48x · 1536×864 · A99 · le fragment v2 collé et validé : la famille fam-52 et ses deux notions existent au hub, les phrases pour l’élève mot pour mot — {"import":{"ok":false},"romantisme":false,"realiste":false,"famille":false,"eleve":false}
+  ÉCHEC  48x · 1536×864 · A99 · « Le romantisme » (litt-040) se déclare sur une diapo — {"choisi":null,"comp":["litt-036","litt-037","litt-038","c4-lire-02","tr-personne-02"]}
+  ÉCHEC  48x · 1536×864 · A99 · réimporter le même fragment ne double rien — {"import":{"ok":false},"fam":0,"n40":0,"n41":0}
+  ÉCHEC  48x · 1536×864 · A99 · un fragment qui réutilise un id (« ortho-lex-001 ») est refusé en clair, rien n’est écrit — {"import":{"ok":false},"ecrit":false}
+  ok     Z · 1536×864 · 0 erreur JS (48x)
+
+══ 1707×743 ══
+  info   43 · 1707×743 · l’onglet « pilotage » n’est plus dans l’Atelier (§12.33)
+  info   43 · 1707×743 · l’onglet « relecture » n’est plus dans l’Atelier (§12.33)
+  ok     41 · 1707×743 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1707×743 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1707×743 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1707×743 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1707×743 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1707×743 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1707×743 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1707×743 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1707×743 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1707×743 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1707×743 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1707×743 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1707×743 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1707×743 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1707×743 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1707×743 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 117 ms
+  ok     41 · 1707×743 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     L · 1707×743 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps)
+  ok     41 · 1707×743 · 13 · 41 (d) · le bandeau est toujours là après l’accueil, la page du niveau et l’emploi du temps (« sur tous les écrans »)
+  ok     41 · 1707×743 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 2
+  ok     41 · 1707×743 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → Analyse d'images : la routine · 4 lignes · page «  »
+  ok     41 · 1707×743 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:16 » à la fermeture → « 00:22 » à la reprise
+  ok     41 · 1707×743 · l’heure se clôt
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », aucun bandeau
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1707×743 · 13 · 43 · un « ? » sur chaque écran du prof (27 écrans)
+  ok     43 · 1707×743 · 13 · 43 · au même endroit partout — référence 1687,344
+  ok     43 · 1707×743 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1707×743 · 13 · 43 · aucun « ? » dans la vue élève
+  ÉCHEC  45a · 1707×743 · A96 · sur les 27 écrans du prof, le « ? » est en or (#e0b978), 24 × 88 px, « ? » sombre (contraste ≥ 4,5) — edt-semaine 20×56 rgb(42, 34, 24) / rgb(240, 217, 168) (11.3) ; edt-mois 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5) ; edt-annee 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5) ; edt-calendrier 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5)
+  ok     45a · 1707×743 · A96 · le « ? » ne cache aucun bouton et rien ne le cache
+  ok     45a · 1707×743 · A96 · le « ? » ouvre l’aide de son écran
+  ok     43 · 1707×743 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil
+  ok     Z · 1707×743 · 0 erreur JS (40, 41, 43)
+  ÉCHEC  46c · 1707×743 · A97 · atelier : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P.","Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1707×743 · 0 erreur JS (46c, atelier)
+  ÉCHEC  46c · 1707×743 · A97 · répétition : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1707×743 · 0 erreur JS (46c, répétition)
+  ÉCHEC  46c · 1707×743 · A97 · classe : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1707×743 · 0 erreur JS (46c, classe)
+  ÉCHEC  47n · 1707×743 · A98 · dans « Notes pour cette diapo », G, S et « A » agissent sur la sélection comme dans la diapo — {"gestes":[true,true,true],"note":{"b":[],"u":[],"c":["Insister"]},"html":"<span data-coul=\"rouge\">Insister</span> sur le mot albatros et sur le poète"}
+  ÉCHEC  47n · 1707×743 · A98 · la forme de la note est gardée au rechargement — {"b":[],"u":[],"c":["Insister"]}
+  ÉCHEC  47n · 1707×743 · A98 · en répétition : la note mise en forme chez Paul, jamais au tableau — {"rep":true,"note":{"b":[],"u":[],"c":["Insister"]},"auTableau":false}
+  ok     Z · 1707×743 · 0 erreur JS (47n)
+  ÉCHEC  48x · 1707×743 · A99 · l’écran de la taxonomie a « ＋ Ajouter une famille », « ＋ Ajouter une notion » et « Importer des notions » — []
+  ÉCHEC  48x · 1707×743 · A99 · le fragment v2 collé et validé : la famille fam-52 et ses deux notions existent au hub, les phrases pour l’élève mot pour mot — {"import":{"ok":false},"romantisme":false,"realiste":false,"famille":false,"eleve":false}
+  ÉCHEC  48x · 1707×743 · A99 · « Le romantisme » (litt-040) se déclare sur une diapo — {"choisi":null,"comp":["litt-036","litt-037","litt-038","c4-lire-02","tr-personne-02"]}
+  ÉCHEC  48x · 1707×743 · A99 · réimporter le même fragment ne double rien — {"import":{"ok":false},"fam":0,"n40":0,"n41":0}
+  ÉCHEC  48x · 1707×743 · A99 · un fragment qui réutilise un id (« ortho-lex-001 ») est refusé en clair, rien n’est écrit — {"import":{"ok":false},"ecrit":false}
+  ok     Z · 1707×743 · 0 erreur JS (48x)
+
+══ 1920×1080 ══
+  info   43 · 1920×1080 · l’onglet « pilotage » n’est plus dans l’Atelier (§12.33)
+  info   43 · 1920×1080 · l’onglet « relecture » n’est plus dans l’Atelier (§12.33)
+  ok     41 · 1920×1080 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1920×1080 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1920×1080 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1920×1080 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1920×1080 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1920×1080 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1920×1080 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1920×1080 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1920×1080 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1920×1080 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1920×1080 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1920×1080 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1920×1080 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1920×1080 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1920×1080 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1920×1080 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 112 ms
+  ok     41 · 1920×1080 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     L · 1920×1080 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps)
+  ok     41 · 1920×1080 · 13 · 41 (d) · le bandeau est toujours là après l’accueil, la page du niveau et l’emploi du temps (« sur tous les écrans »)
+  ok     41 · 1920×1080 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 2
+  ok     41 · 1920×1080 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → Analyse d'images : la routine · 4 lignes · page «  »
+  ok     41 · 1920×1080 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:16 » à la fermeture → « 00:22 » à la reprise
+  ok     41 · 1920×1080 · l’heure se clôt
+  ok     41 · 1920×1080 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1920×1080 · 13 · 41 · après « Clore », aucun bandeau
+  ok     41 · 1920×1080 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1920×1080 · 13 · 43 · un « ? » sur chaque écran du prof (27 écrans)
+  ok     43 · 1920×1080 · 13 · 43 · au même endroit partout — référence 1900,512
+  ok     43 · 1920×1080 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1920×1080 · 13 · 43 · aucun « ? » dans la vue élève
+  ÉCHEC  45a · 1920×1080 · A96 · sur les 27 écrans du prof, le « ? » est en or (#e0b978), 24 × 88 px, « ? » sombre (contraste ≥ 4,5) — edt-semaine 20×56 rgb(42, 34, 24) / rgb(240, 217, 168) (11.3) ; edt-mois 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5) ; edt-annee 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5) ; edt-calendrier 20×56 rgb(58, 47, 32) / rgb(240, 217, 168) (9.5)
+  ok     45a · 1920×1080 · A96 · le « ? » ne cache aucun bouton et rien ne le cache
+  ok     45a · 1920×1080 · A96 · le « ? » ouvre l’aide de son écran
+  ok     43 · 1920×1080 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil
+  ok     Z · 1920×1080 · 0 erreur JS (40, 41, 43)
+  ÉCHEC  46c · 1920×1080 · A97 · atelier : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1920×1080 · 0 erreur JS (46c, atelier)
+  ÉCHEC  46c · 1920×1080 · A97 · répétition : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1920×1080 · 0 erreur JS (46c, répétition)
+  ÉCHEC  46c · 1920×1080 · A97 · classe : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre par M. MENEY P."]}
+  ok     Z · 1920×1080 · 0 erreur JS (46c, classe)
+  ÉCHEC  47n · 1920×1080 · A98 · dans « Notes pour cette diapo », G, S et « A » agissent sur la sélection comme dans la diapo — {"gestes":[true,true,true],"note":{"b":[],"u":[],"c":["Insister"]},"html":"<span data-coul=\"rouge\">Insister</span> sur le mot albatros et sur le poète"}
+  ÉCHEC  47n · 1920×1080 · A98 · la forme de la note est gardée au rechargement — {"b":[],"u":[],"c":["Insister"]}
+  ÉCHEC  47n · 1920×1080 · A98 · en répétition : la note mise en forme chez Paul, jamais au tableau — {"rep":true,"note":{"b":[],"u":[],"c":["Insister"]},"auTableau":false}
+  ok     Z · 1920×1080 · 0 erreur JS (47n)
+  ÉCHEC  48x · 1920×1080 · A99 · l’écran de la taxonomie a « ＋ Ajouter une famille », « ＋ Ajouter une notion » et « Importer des notions » — []
+  ÉCHEC  48x · 1920×1080 · A99 · le fragment v2 collé et validé : la famille fam-52 et ses deux notions existent au hub, les phrases pour l’élève mot pour mot — {"import":{"ok":false},"romantisme":false,"realiste":false,"famille":false,"eleve":false}
+  ÉCHEC  48x · 1920×1080 · A99 · « Le romantisme » (litt-040) se déclare sur une diapo — {"choisi":null,"comp":["litt-036","litt-037","litt-038","c4-lire-02","tr-personne-02"]}
+  ÉCHEC  48x · 1920×1080 · A99 · réimporter le même fragment ne double rien — {"import":{"ok":false},"fam":0,"n40":0,"n41":0}
+  ÉCHEC  48x · 1920×1080 · A99 · un fragment qui réutilise un id (« ortho-lex-001 ») est refusé en clair, rien n’est écrit — {"import":{"ok":false},"ecrit":false}
+  ok     Z · 1920×1080 · 0 erreur JS (48x)
+
+BILAN banc-1228 : 156/204 vérifications — 48 ÉCHEC(S) · ROUGE

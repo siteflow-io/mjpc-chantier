@@ -1,0 +1,6 @@
+  ÉCHEC  A97 · dans l’Atelier : « Donné le 15 septembre par M. MENEY P. » — la date sans « par M. MENEY P. », le travail à faire reste — {"fin":true,"donne":"Donné le 15 septembre par M. MENEY P.","meney":true,"travail":true}
+  ÉCHEC  A97 · en répétition : « Donné le 15 septembre par M. MENEY P. » — la date sans « par M. MENEY P. », le travail à faire reste — {"fin":true,"donne":"Donné le 15 septembre par M. MENEY P.","meney":true,"travail":true,"rep":true}
+  ok     A97 · zéro erreur JS (Atelier, répétition) — []
+  ÉCHEC  A97 · en classe (l’heure lancée par la case) : « Donné le 14 septembre par M. MENEY P. » — la date sans « par M. MENEY P. », le travail à faire reste — {"fin":true,"donne":"Donné le 14 septembre par M. MENEY P.","meney":true,"travail":true,"lancee":true}
+  ok     A97 · zéro erreur JS (classe) — []
+— fin : 5 vérifications · 3 échec(s) — ROUGE · x43.html md5 ba69dd4434e82e152e8bbdd9b1ec415d

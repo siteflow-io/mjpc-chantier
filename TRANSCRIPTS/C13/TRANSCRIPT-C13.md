@@ -6244,3 +6244,20 @@ MEMO
 
 28/10/2026 12:31
 MEMO
+
+---
+
+## Tour 304 — 28/10/2026 12:34 → 12:34
+
+**Paul :** Oui
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 rend tout corrigeable au tableau ; E1 répare la reprise d'heure ; E3 fait les coupes du redessin, puis mesure l'intégration · ouvert : 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+832. C'est au contrat (§12.59) et parti chez E4, dans la ⑧. En direct, tu pourras corriger l'étiquette d'activité, les mots du schéma, la vidéo, la fiche, et le cahier dans sa diapo. Il y aura aussi « retirer du tableau » sur n'importe quel élément. Le journal gardera le texte d'avant et le texte corrigé, et le titre d'une page paraîtra dans le récit. E4 mesure aussi la réactivation, en jouant une vraie heure 1 puis l'heure 2.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 12:34
+MEMO

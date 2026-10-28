@@ -5808,3 +5808,28 @@ Sources :
 
 28/10/2026 08:10
 MEMO
+
+---
+
+## Tour 283 — 28/10/2026 08:13 → 08:23
+
+**Paul :** Ok donc il faut enlever toute fonctionnalité drive je pense. C'est inutile du coup
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 a fini le cahier sans « par M. MENEY P. », le « ? » en or et la mise en forme des notes (§12.46, §12.45, §12.47), mon banc tourne ; E1 sur la vidéo de la clé (§12.44) ; E3 a vérifié 717, la présence en mode test et le cahier : verts · ouvert : 773, 774 ; 538, 553, 481, 458.
+
+770. Oui, on peut tout enlever : rien ne serait perdu. Je l'ai mesuré au hub, en lecture seule : aucun fichier Drive dans tes chapitres (3e, 4e, 5e, 6e) ni dans l'atelier, et les images de tes diapos viennent toutes de mjpc-medias. Seul index.html porte encore du Drive, aucune autre app.
+
+771. Ce que le Drive fait encore dans le site. Un fichier glissé sur une séance de l'arborescence part sur ton Drive, et les galeries d'images y vont aussi. « Lier » accepte un lien Drive, et la visionneuse transforme une adresse Drive.
+
+772. Ce que je garderais, selon ta règle du 21/10 (recycler ce qui marchait) : le geste de glisser un fichier sur une séance, et les messages d'erreur dans tes mots. Ils serviront à « Déposer en ligne », qui écrira dans mjpc-medias au lieu du Drive. « Lier » garde les adresses web, et la visionneuse garde les PDF et les pages. Le reste part.
+
+773. Je confie ce retrait à E4, après « Déposer en ligne », puisque c'est le même geste. Oui ?
+
+774. E4 attend aussi ton mot sur « Déposer en ligne » : comment le relais saura que c'est toi, sans aucune clé dans le navigateur. Je retiens sa réponse : par ton compte Google. Au dépôt, une petite fenêtre Google s'ouvre et se referme seule. Il faut que tu sois connecté à ton compte Google sur l'ordi où tu déposes ; si le navigateur est sur un autre compte (ton souci de juillet avec les profils), Google te demande de choisir le tien. Sans ça, n'importe qui trouvant l'adresse du relais pourrait écrire sur ton site public. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 08:23
+MEMO

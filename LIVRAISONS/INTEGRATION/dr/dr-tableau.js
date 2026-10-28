@@ -83,6 +83,11 @@ function dr_versMur(et, x){
 /* la fenêtre dit `pret` à l'ouverture (comme la maquette) : on lui pousse ce que la classe voit, gel compris (p8-5g, point 1).
    Elle redit `ici` toutes les 3 s : un pilote RECHARGÉ (réveil n°6 : écrire, recharger, « Reprendre le cours ») ne connaît plus la fenêtre
    qu'il avait ouverte ; il l'adopte à ce signe et lui renvoie ce que voit la classe. Un pilote qui la connaît déjà ignore `ici`. */
+/* EX ⑧ (K7) : ce renvoi remontre ce que la classe voit DÉJÀ — sans les marques d'entrée du dernier geste. `S.mur` garde `neuf` (la ligne
+   que le dernier ▶ a dévoilée), `arrivee` (la diapo qui vient d'arriver) et `ficheEntre` (la fiche qui s'ouvre) : renvoyées telles quelles,
+   la fenêtre qui s'ouvre rejouait l'entrée (`.neuf-vu`, opacité 0 → 1 en 0,62 s) — la dernière ligne dévoilée y était invisible à
+   l'instant de la réception (pilote « page 2 / 2 » 4 l. · tableau 3 l.). Le pointeur `flash` reste : c'est un état, pas une entrée. */
+function dr_tabSansEntree(et){ return et ? Object.assign({}, et, { neuf: null, arrivee: false, ficheEntre: false }) : et; }
 window.addEventListener('message', ev => {
   if (dr_estTableau() || !ev.data || !(ev.data.pret || ev.data.ici)) return;
   const connue = DR_TAB.fen && !DR_TAB.fen.closed;
@@ -92,10 +97,10 @@ window.addEventListener('message', ev => {
   if (ev.data.ici && !(typeof S === 'object' && S && S.lancee)) return;   /* rien à montrer tant que l'heure n'est pas (re)lancée */
   try {
     if (typeof S !== 'object' || !S) return;
-    if (!S.atelier) { pousser(S.mur || S.gel || etatComplet()); return; }
+    if (!S.atelier) { pousser(dr_tabSansEntree(S.mur || S.gel || etatComplet())); return; }
     /* Paul est dans l'Atelier en pleine heure (`pousser` n'y pousse rien, p1) : la fenêtre rouverte ou rechargée remontre quand même
        ce que voit la classe, sans rien écrire ni journaliser (relecteur 2, n° 3) */
-    const et = S.gel || S.mur; if (!et || !DR_TAB.fen || DR_TAB.fen.closed) return;
+    const et = dr_tabSansEntree(S.gel || S.mur); if (!et || !DR_TAB.fen || DR_TAB.fen.closed) return;
     let ecran = null; try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) {}
     DR_TAB.fen.postMessage({ et, ecran }, '*');   /* directement : pas de scène au hub depuis l'Atelier */
   } catch (e) {}

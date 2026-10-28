@@ -6488,7 +6488,7 @@ MEMO
 
 855. Ce que tu pourras faire ce week-end, une fois la ⑧ promue : ouvre l'adresse du tableau sur ton téléphone, puis lance « ▶ Jouer en avance » dans l'Atelier. Ton téléphone doit suivre chaque diapo et chaque dévoilement. Attention : pas en mode test, car le mode test n'envoie rien au site, par principe. C'est donc la répétition qui sert à essayer le tableau distant, pas l'heure des De Gaulle en mode test.
 
-856. Ce que je ne sais pas : je ne l'ai jamais vu sur un vrai téléphone. Les bancs le jouent dans deux navigateurs, sur un faux site, et c'est vert (E1, puis E3 : 56 vérifications sur 56).
+856. Ce que je ne sais pas : je ne l'ai jamais vu sur un vrai téléphone. Les bancs le jouent dans deux navigateurs, sur un faux site, et c'est vert : le banc d'E1 et le cas d'E3.
 
 À tester : à la promotion de la ⑧, 855.
 

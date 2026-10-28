@@ -3974,7 +3974,7 @@ function openItem(level,chnum,snum,itemId){
   if(item.kind==='worktrack' && src==='firebase_app'){var _lw=clickedLevel||currentLevel||'';openViewer(item.title||'Plan de travail','worktrack.html'+(_lw?'?n='+_lw:''));return;}
   if(item.kind==='tache' && src==='firebase_app'){openViewer(item.title||'T\u00e2che',ref);return;} /* M12 : r\u00e9paration \u2014 tombait sur \u00ab type non support\u00e9 \u00bb */
   if(src==='atelier'){openAtelierItem(ref,item.title,{niveau:level,chapitre:chnum,seance:snum,classeNom:(typeof TRACK!=='undefined'&&TRACK.eleve&&!TRACK.eleve.is_prof)?_eleveClasse():''});return;}   /* [PONT-D] le contexte de navigation voyage avec l'item */
-  if(src==='drive'){showUploadToast('\u26a0 Ce document n\u2019est plus li\u00e9 \u2014 d\u00e9pose-le en ligne (glisse le fichier sur la ligne) ou relie-le (\ud83d\udd17).','err');return;}   /* E4 (§12.50) : plus de visionneuse Drive */
+  if(src==='drive'){openViewer(item.title,'https://drive.google.com/file/d/'+ref+'/preview');return;}   /* EX (13·88) : les anciennes lignes Drive du hub s'ouvrent de nouveau en lecture, comme dans la ⑦ (aucun dépôt, aucun lien Drive neuf) */
   if(src==='external'){openViewer(item.title,ref);return;}
   if(src==='html'){openViewer(item.title,ref);return;}
   alert('Type d\u2019item non support\u00e9 : '+item.kind+' / '+src);
@@ -5280,6 +5280,15 @@ function renderRayons(level){
      aucun bloc d'administration. Causes et \u00e9crivains inchang\u00e9s. */
   return r;
 }
+/* EX (13·88) : vrai si une ligne source:'drive' de ce ref existe déjà dans les chapitres chargés (lecture seule, aucune écriture) */
+function _ligneDriveExiste(ref){
+  var vu=false;
+  Object.keys(chapitresData||{}).forEach(function(lv){ var d=chapitresData[lv]||{};
+    Object.keys(d).forEach(function(c){ var se=(d[c]&&d[c].seances)||{};
+      Object.keys(se).forEach(function(s){ var its=(se[s]&&se[s].items)||{};
+        Object.keys(its).forEach(function(i){ var it=its[i]; if(it&&it.source==='drive'&&it.ref===ref)vu=true; }); }); }); });
+  return vu;
+}
 function _openAtelierFromList(ref){
   /* [LOT8-\u2460] LE CHEMIN SAIN : openAtelierItem lit la VERSION ENVOY\u00c9E et pose
      TOUJOURS un srcdoc (feuille, message prof, message \u00e9l\u00e8ve). L'ancien repli
@@ -5292,7 +5301,8 @@ function _openAtelierFromList(ref){
      elle s'ouvre par openViewer (la garde \u2460 et l'issue \u00ab Ouvrir dans un onglet \u00bb
      s'appliquent). URL http(s) \u2192 telle quelle ; id Drive \u2192 preview. */
   if(/^https?:\/\//i.test(ref)){openViewer('Ressource',ref);return;}
-  /* E4 (§12.50) : l'id Drive → preview est retiré */
+  /* EX (13·88) : l'id Drive → preview, comme dans la ⑦, seulement pour une ligne source:'drive' qui existe déjà */
+  if(/^[A-Za-z0-9_-]{20,}$/.test(ref)&&_ligneDriveExiste(ref)){openViewer('Document','https://drive.google.com/file/d/'+ref+'/preview');return;}
   openAtelierItem(ref,'Feuille');
 }
 function gotoFiches(level){
@@ -5480,7 +5490,7 @@ function openViewer(title,url){
     document.getElementById('doc-viewer').classList.add('visible');
     return;
   }
-  /* E4 (§12.50) : la réécriture Drive /view → /preview est retirée ; la visionneuse garde les PDF et les pages */
+  if(u.indexOf('drive.google.com/file/d/')>=0){u=u.replace(/\/view(\?|$)/,'/preview$1');}   /* EX (13·88) : rendue, comme dans la ⑦ */
   f.removeAttribute('srcdoc');   /* un srcdoc r\u00e9siduel PRIME sur src */
   f.src=u;
   /* [LOT8c-②] JAMAIS UN CUL-DE-SAC : un site peut refuser l'embarquement
@@ -13090,8 +13100,8 @@ function ed2Papier(level,chnum,docs){
            (jamais une page blanche) + aper\u00e7u, et le clic sur la barre l'ouvre EN
            MODALE (openViewer, le chemin \u00e9l\u00e8ve existant). Le papier imprim\u00e9 ne
            l'imprime pas (r\u00e8gle @media print, avec les trous). */
-        if(d.ref&&d.src==='external'){   /* E4 (§12.50) : plus d'aperçu Drive */
-          var _xurl=d.ref;
+        if(d.ref&&(d.src==='drive'||d.src==='external')){   /* EX (13·88) : l'aperçu d'une ancienne ligne Drive, comme dans la ⑦ */
+          var _xurl=(d.src==='drive')?('https://drive.google.com/file/d/'+d.ref+'/preview'):d.ref;
           var _xlib=(d.src==='drive')?('Ancien fichier \u00b7 '+d.ref):d.ref;
           h+='<div class="ed2-xcadre">'
             +'<div class="ed2-xbarre" onclick="event.stopPropagation();openViewer(\''+atEsc((d.titre||'Document').replace(/'/g,''))+'\',\''+atEsc(_xurl)+'\')">'

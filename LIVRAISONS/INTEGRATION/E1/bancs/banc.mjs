@@ -662,7 +662,7 @@ await B('A32', 'E4 (03:30, §12.18) : une heure close dans la page est « jouée
   await pg.evaluate(() => { S.closes = S.closes || {}; S.closes[S.heure] = Date.now(); S.close = true; });   /* la clôture, telle qu'elle se pose en page */
   await pg.evaluate(() => { atClasseFermer(); }); await pg.waitForTimeout(1500); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} atelierOuvrir(); }); await pg.waitForTimeout(1200);   /* (§12.28-3a) l'heure close : « ✕ Fermer » → l'emploi du temps → l'atelier, la même page */
   await E.clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(800); await E.clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'); await pg.waitForTimeout(1500); await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="atelier"]').click()); await pg.waitForTimeout(1200);
-  const r = await pg.evaluate(h => { const i = ordreHeure(h).find(k => seance().ecrans[k].role !== 'fin'); S.di = i; dr_tout(); return { fr: Array.from(document.querySelectorAll('#volet .fr span:first-child')).map(x => x.textContent).filter(x => x.startsWith('H' + h + ' ')), num: (document.getElementById('numero') || {}).textContent || '' }; }, h);
+  const r = await pg.evaluate(h => { const i = ordreHeure(h).find(k => seance().ecrans[k].role !== 'fin'); S.di = i; dr_tout(); return { fr: Array.from(document.querySelectorAll('#volet .fr span:first-child, #volet .dr-fr')).map(x => x.textContent).filter(x => x.startsWith('H' + h + ' '))   /* §12.36 (E4) : la ligne d'heure est `.dr-fr` */, num: (document.getElementById('numero') || {}).textContent || '' }; }, h);
   E.verif('A32', h === 2 && /jouée/.test(r.fr[0] || '') && /jouée/.test(r.num), 'l\'heure ' + h + ' close, puis l\'onglet Atelier : « ' + (r.fr[0] || '') + ' » et l\'entête de sa diapo disent « jouée », sans rechargement', JSON.stringify(r).slice(0, 220));
   E.verif('A32', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); });
 
@@ -1743,6 +1743,50 @@ await B('A87', '§12.38 (1), E3 retour 91 : en répétition, aux quatre tailles,
     E.verif('A87', r.pre && r.pre.vis && r.pre.t === s.classeNom && okT && r.hou.plein && /répét\./.test(r.chr || '') && r.defile <= 0, w + '×' + h + ' · répétition : « ' + (r.pre0 || '').trim() + ' ' + (r.pre && r.pre.t) + (r.hou && r.hou.t) + ' ' + String(r.chr || '').replace(/\s+/g, ' ').trim() + ' » — classe et heure n/N · date visibles, entières, sans défilement', JSON.stringify({ pre: r.pre, hou: r.hou, defile: r.defile, src: s.classeNom }));
     E.verif('A87', !o.errs.length, w + '×' + h + ' : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
 });
+
+/* ── A92 · §12.41 (Paul 28/10 06:50) : la répétition envoie au tableau distant — deux navigateurs, le faux hub relayé ── */
+await B('A92', '§12.41 : répétition dans un navigateur, `?vue=tableau` dans l\'autre — la diapo, chaque élément dévoilé, la loupe, le gel suivent ; « ■ Arrêter » → l\'horloge ; seules les écritures du canal du tableau ; une heure lancée ailleurs n\'est pas écrasée ; mode test : rien ne part', async () => {
+  const st = storeCle(); const o = await E.ouvrir(b, { w: 1366, h: 768, hub: st }); const pg = o.pg; await sansVoile(pg);
+  const c2 = await b.newContext({ viewport: { width: 1280, height: 720 }, timezoneId: 'Europe/Paris' }); await c2.route(u => !String(u).startsWith('file:'), r => r.abort()); const tb = await c2.newPage(); const errsT = []; tb.on('pageerror', e => errsT.push(e.message));
+  await tb.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await tb.addInitScript(E.fauxHub, st); await tb.goto('file://' + E.FICHIER + '?vue=tableau&n=3e', { waitUntil: 'load' }); await tb.waitForTimeout(1500);
+  const relais = async () => { const h = await pg.evaluate(() => ({ c: (window.__HUB.site || {}).cours_actif || null, r: (window.__HUB.site || {}).repetition || null })); await tb.evaluate(h => { window.__HUB.site = window.__HUB.site || {}; if (h.c) window.__HUB.site.cours_actif = h.c; else delete window.__HUB.site.cours_actif; if (h.r) window.__HUB.site.repetition = h.r; else delete window.__HUB.site.repetition; }, h); };
+  const distant = () => tb.evaluate(() => { const m = DR_TAB.montre; const a = document.getElementById('ses-tab-att'); return { att: !!(a && a.style.display !== 'none'), eid: m && m.eid, di: m && m.di, nDev: m && m.nDev, loupe: !!(m && m.loupe), gel: !!(m && m.gel), act: ((document.querySelector('#mur2 .act') || {}).textContent || '').trim() }; });
+  const pilote = () => pg.evaluate(() => { const sc = dr_scene(S.mur) || {}; return { eid: sc.eid, nDev: sc.nDev, loupe: !!sc.loupe, gel: !!S.gel, act: ((document.querySelector('#mur .act') || {}).textContent || '').trim() }; });
+  const attendre = async (f, ms = 6000) => { const t0 = Date.now(); let d = null; while (Date.now() - t0 < ms) { await relais(); d = await distant(); if (f(d)) return d; await tb.waitForTimeout(150); } return d; };
+  const att0 = await distant();
+  const E0 = await pg.evaluate(() => window.__ECR.length);
+  await pg.evaluate(() => lancerRepetition()); await pg.waitForTimeout(800);
+  const p1 = await pilote(); const d1 = await attendre(d => !d.att && d.eid === p1.eid);
+  E.verif('A92', att0.att && d1 && !d1.att && d1.eid === p1.eid && d1.act === p1.act, '« ▶ Jouer en avance » : le tableau distant quitte l\'horloge et montre la diapo de la répétition (« ' + p1.act + ' »)', JSON.stringify({ att0: att0.att, d1, p1 }));
+  const pas = []; for (let k = 0; k < 3; k++) { await pg.click('#bdev'); await pg.waitForTimeout(400); const pk = await pilote(); const dk = await attendre(d => d.eid === pk.eid && d.nDev === pk.nDev); pas.push({ p: [pk.eid, pk.nDev], d: [dk.eid, dk.nDev] }); }
+  E.verif('A92', pas.every(x => x.p[0] === x.d[0] && x.p[1] === x.d[1]), 'trois ▶ Dévoiler : chaque élément dévoilé suit au tableau distant', JSON.stringify(pas));
+  await pg.click('#bgel'); await pg.waitForTimeout(400); const pg1 = await pilote(); const dg = await attendre(d => d.gel === true || d.nDev === pg1.nDev, 3000);
+  const nAvant = (await distant()).nDev; await pg.click('#bdev'); await pg.waitForTimeout(500); await attendre(() => false, 1500); const dGel = await distant();
+  await pg.click('#bgel'); await pg.waitForTimeout(400); const pDegel = await pilote(); const dDegel = await attendre(d => d.eid === pDegel.eid && d.nDev === pDegel.nDev);
+  E.verif('A92', pg1.gel && dGel.nDev === nAvant && dDegel.eid === pDegel.eid && dDegel.nDev === pDegel.nDev, 'le gel : le tableau distant ne bouge plus pendant le gel (' + nAvant + ' dévoilé(s)), puis rattrape au dégel (' + pDegel.nDev + ')', JSON.stringify({ gel: pg1.gel, nAvant, dGel: dGel.nDev, pDegel, dDegel }));
+  await pg.click('#bloupe'); await pg.waitForTimeout(300); const bx = await pg.evaluate(() => { const r = document.getElementById('mur').getBoundingClientRect(); return { x: r.x, y: r.y, w: r.width, h: r.height }; });
+  await pg.mouse.move(bx.x + bx.w * 0.2, bx.y + bx.h * 0.2); await pg.mouse.down(); await pg.mouse.move(bx.x + bx.w * 0.6, bx.y + bx.h * 0.6, { steps: 8 }); await pg.mouse.up(); await pg.waitForTimeout(500);
+  const pl = await pilote(); const dl = await attendre(d => d.loupe === pl.loupe && pl.loupe);
+  E.verif('A92', pl.loupe && dl.loupe, 'la loupe tracée à la répétition : le tableau distant la reçoit', JSON.stringify({ pl: pl.loupe, dl: dl.loupe }));
+  const ecr = await pg.evaluate(E0 => window.__ECR.slice(E0), E0);
+  E.verif('A92', ecr.length > 0 && ecr.every(x => /^(PUT|DELETE) \/site\/repetition\//.test(x)), 'pendant la répétition, les écritures au hub : le canal du tableau seulement (' + ecr.length + ', `/site/repetition/…`) — rien dans la copie, le journal, le récit, le cahier, la présence, ni `cours_actif`', JSON.stringify([...new Set(ecr)]).slice(0, 300));
+  await pg.evaluate(() => arreterRepetition()); await pg.waitForTimeout(800); const dFin = await attendre(d => d.att, 8000);
+  const hFin = await pg.evaluate(() => ({ c: ((window.__HUB.site || {}).repetition || {}).pointeur || null }));
+  E.verif('A92', dFin.att && !hFin.c, '« ■ Arrêter » : le pointeur retiré, le tableau distant revient à l\'horloge d\'attente', JSON.stringify({ dFin, hFin }));
+  /* une heure lancée ailleurs : la répétition ne l'écrase pas, l'en-tête le dit */
+  const cours = { niveau: '3e', chapitre: '0', seance: '1', classeSlug: '3e_charles_de_gaulle', classeNom: '3E Charles de Gaulle', ts: Date.parse('2026-09-14T08:58:00+02:00') };
+  await pg.evaluate(c => { window.__HUB.site.cours_actif = c; }, cours); const E1n = await pg.evaluate(() => window.__ECR.length);
+  await pg.evaluate(() => lancerRepetition()); await pg.waitForTimeout(1500); await pg.click('#bdev'); await pg.waitForTimeout(800);
+  const pris = await pg.evaluate(E1n => ({ c: window.__HUB.site.cours_actif, ecr: window.__ECR.slice(E1n), z: (document.getElementById('rep-tab') || {}).textContent || '', t: (document.getElementById('rep-tab') || {}).title || '', vis: !!(document.getElementById('rep-tab') || {}).offsetParent }), E1n);
+  E.verif('A92', JSON.stringify(pris.c) === JSON.stringify(cours) && pris.ecr.length === 0 && /tableau distant pris/.test(pris.z) && pris.vis && pris.t, 'une heure lancée ailleurs (3E Charles de Gaulle) : son pointeur intact, aucune écriture ; l\'en-tête : « ' + pris.z.trim() + ' » (infobulle)', JSON.stringify(pris).slice(0, 300));
+  await pg.evaluate(() => arreterRepetition()); await pg.waitForTimeout(500);
+  const apres = await pg.evaluate(() => JSON.stringify(window.__HUB.site.cours_actif)); E.verif('A92', apres === JSON.stringify(cours), '« ■ Arrêter » ne retire pas le pointeur d\'une heure lancée ailleurs', apres);
+  /* le mode test : rien ne part */
+  await pg.evaluate(() => { delete window.__HUB.site.cours_actif; M8_TEST = true; }); const E2n = await pg.evaluate(() => window.__ECR.length);
+  await pg.evaluate(() => lancerRepetition()); await pg.waitForTimeout(1200); await pg.click('#bdev'); await pg.waitForTimeout(800); const ecrT = await pg.evaluate(E2n => window.__ECR.slice(E2n), E2n); await pg.evaluate(() => { arreterRepetition(); M8_TEST = false; });
+  E.verif('A92', ecrT.length === 0, 'en mode test : rien ne part (aucune écriture pendant la répétition)', JSON.stringify(ecrT));
+  E.verif('A92', !o.errs.length && !errsT.length, 'aucune erreur JS (le pilote, le tableau distant)', o.errs.concat(errsT).slice(0, 2).join(' ; ') || undefined);
+  await c2.close(); await o.ctx.close(); });
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

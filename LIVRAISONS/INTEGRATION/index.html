@@ -16546,10 +16546,10 @@ function sesBootTableau(){
    d'elle-m\u00eame. Il revient sur UN AUTRE cours (autre s\u00e9ance, autre classe) ? le tableau
    se rattache au nouveau \u2014 sans quoi il resterait fig\u00e9 sur l'ancien, et Paul devrait
    actualiser, ce qui est pr\u00e9cis\u00e9ment ce qu'il ne veut plus faire. */
-function sesTabCle(c){ return c?[c.niveau,c.chapitre,c.seance,c.classeSlug].join('|'):''; }
+function sesTabCle(c){ return c?[c.niveau,c.chapitre,c.seance,c.classeSlug].join('|')+(c.repetition?'|repetition|'+c.ts:''):''; }   /* E1 (§12.41) : une répétition n'est jamais « le même cours » qu'une heure lancée */
 function sesTabVeillePointeur(){
-  dr_tabLire('/site/cours_actif',function(c){                /* [E3] par dr_lire (sesGet tombe, relance C5) */
-    if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000)return;   /* plus de cours : l'image RESTE (relance C3) */
+  (typeof dr_tabLirePointeur==='function'?dr_tabLirePointeur:function(f){dr_tabLire('/site/cours_actif',f);})(function(c){   /* [E3] par dr_lire (sesGet tombe, relance C5) ; E1 (§12.41) : l'heure lancée, sinon la répétition */
+    if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000){ if(!c&&c!==undefined&&SES.ctx&&SES.ctx.repetition&&typeof dr_tabRetourAttente==='function')dr_tabRetourAttente(); return; }   /* plus de cours : l'image RESTE (relance C3) — sauf la fin d'une répétition (E1, §12.41) : l'horloge d'attente */
     var cle=sesTabCle(c);
     if(!cle||cle===SES.tabPointeur)return;                /* même cours : rien à faire */
     SES.tabPointeur=cle; SES.ctx=c;
@@ -16559,7 +16559,7 @@ function sesTabVeillePointeur(){
 }
 function sesTabChercherCours(){
   var t=setInterval(function(){
-    dr_tabLire('/site/cours_actif',function(c){             /* [E3] par dr_lire (sesGet tombe, relance C5) */
+    (typeof dr_tabLirePointeur==='function'?dr_tabLirePointeur:function(f){dr_tabLire('/site/cours_actif',f);})(function(c){   /* [E3] par dr_lire ; E1 (§12.41) : l'heure lancée, sinon la répétition */
       if(!c||!c.ts||(Date.now()-c.ts)>4*3600*1000)return;   /* [E3] l'attente est tenue par dr_tabAttendre */
       clearInterval(t);
       SES.ctx=c; SES.tabPointeur=sesTabCle(c);

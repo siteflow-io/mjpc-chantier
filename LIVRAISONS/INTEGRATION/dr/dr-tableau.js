@@ -329,11 +329,17 @@ function dr_tabDemarrer(){
 }
 
 /* le distant : le cours trouvé, on lit la copie jouée, puis la scène toutes les 900 ms et le pointeur toutes les 3 s */
-function dr_tabCheminC(c){ return '/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug; }
+function dr_tabCheminC(c){ if (c && c.repetition && typeof c.chemin === 'string' && c.chemin.indexOf('/site/repetition') === 0) return c.chemin; return '/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug; }   /* E1 (§12.41) : une répétition se lit sous son chemin à elle, jamais dans la copie d'une classe */
+/* E1 (§12.41) : le pointeur d'une répétition retiré (« ■ Arrêter ») → l'horloge d'attente ; une heure lancée retirée garde son image (relance C3, inchangé) */
+function dr_tabRetourAttente(){ clearInterval(DR_TAB.sondeT); DR_TAB.sondeT = null; clearInterval(DR_TAB.pointeurT); DR_TAB.pointeurT = null; SES.ctx = null; SES.tabPointeur = null; DR_TAB.montre = null; DR_TAB.ts = 0; DR_TAB.ecrans = null;
+  const m = document.getElementById('mur2'); if (m) m.innerHTML = ''; const a = document.getElementById('ses-tab-att'); if (a) a.style.display = ''; dr_tabDireClasse(''); try { sesTabChercherCours(); } catch (e) {} try { dr_tabAttendre(); } catch (e) {} }
 /* la règle (relance F2/I1) : une scène n'est acceptée que si la clé de cours de `cours_actif` est celle de ce cours ;
    le « pilote présent » n'existe pas — sans scène neuve, l'image reste */
+/* E1 (§12.41) : le pointeur que suit le tableau distant — une heure lancée (`/site/cours_actif`, frais) prime ; sinon une répétition (`/site/repetition/pointeur`) */
+function dr_tabLirePointeur(cb){ const frais = x => x && x.ts && (Date.now() - x.ts) <= 4 * 3600 * 1000;
+  dr_tabLire('/site/cours_actif', c => { if (frais(c)) { cb(c); return; } dr_tabLire('/site/repetition/pointeur', r => { if (frais(r)) cb(Object.assign({}, r, { repetition: true, chemin: '/site/repetition' })); else cb(c === undefined && r === undefined ? undefined : null); }); }); }
 function dr_tabPointeur(){
-  dr_tabLire('/site/cours_actif', c => { if (c === undefined) return;   /* lecture échouée : on ne conclut rien */
+  dr_tabLirePointeur(c => { if (c === undefined) return;   /* lecture échouée : on ne conclut rien */
     DR_TAB.pilotePresent = !!(c && sesTabCle(c) === SES.tabPointeur); });
 }
 /* la séance du chapitre (relance M2), lue par `dr_lire(B)` : ses `items` (les documents par référence d'E4) ; rangée en mémoire de la

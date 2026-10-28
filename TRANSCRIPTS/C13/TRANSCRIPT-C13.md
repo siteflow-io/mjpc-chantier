@@ -6842,7 +6842,7 @@ MEMO
 
 892. Ce qu'elle change pour préparer. La répétition envoie au tableau distant, ton téléphone compris, avec à droite les élèves de 3E Charles de Gaulle. Les De Gaulle ont l'horloge de leur case et « aller à 5 minutes de la fin ». La vidéo, les images et les PDF se lisent depuis ta clé USB, et la garde vérifie vraiment, même avec plusieurs clés. L'Atelier suit le chapitre en direct sur deux appareils, et le menu de « Ce que la diapo déclare » ne se referme plus. L'aperçu donne le bon numéro de chapitre. La taxonomie s'enrichit (ajouter, importer). L'import d'un chapitre crée ses feuilles et les relie, sans rien réécrire au réimport.
 
-893. Partout : le site travaille deux à trois fois moins au repos, sur un ordi portable lent. Le « ? » d'aide est en or, et le cahier ne dit plus « par M. MENEY P. ». Le Drive est retiré, sauf l'ouverture de tes trois anciens fichiers. « Déposer en ligne » est prêt, mais attend ton geste de dimanche.
+893. Partout : au repos, le site travaille une fois et demie à deux fois et demie moins, sur un ordi portable lent. Le « ? » d'aide est en or, et le cahier ne dit plus « par M. MENEY P. ». Le Drive est retiré, sauf l'ouverture de tes trois anciens fichiers. « Déposer en ligne » est prêt, mais attend ton geste de dimanche.
 
 894. Ce qui n'est pas dedans. Dans la ⑨, ce soir ou demain : la Structure (les trois colonnes, le ✕, la ligne de la dictée, le bandeau des feuilles), déjà réparée sur une branche à part, et l'Atelier (793 à 796). Dimanche à 8 h : mjpc-medias-2, ton relais, et tes trois fichiers Drive. Après lundi : la rédaction.
 

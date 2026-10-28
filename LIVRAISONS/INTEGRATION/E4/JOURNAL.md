@@ -1303,3 +1303,5 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **(5)** mesuré : heure 1 close, case « heure 2 », écran d'ouverture (réactivation « oui », « Lancer l'heure 2 ») : la réactivation de l'heure 2 n'a rien de fixe (12 éléments, tous corrigeables).
 - **(6)** A105 (`E4/bancs/banc-1259.mjs`) : **20/0** (md5 `54748744…`) ; avant (md5 `d7e4978f…`) : plante dès (1), l'étiquette n'est pas corrigeable. `banc.sh` **VERT** (K 106/0, `E4/sorties/1259-28-10/`). Sonde E3 56s : 26 échecs, **aucun venu de §12.59** : 25 `#shooting-star` (relance E3) et `#mur-ref .p8-ecrire` à 1366 — identique sur la tête d'avant (le clone de mesure hors écran, pas un champ de Paul). Captures `E4/captures/1259/`.
 - Banc : sans clé USB, `videoAtteignable` est forcé dans A105 (la vidéo passait seule).
+
+- 28/10 14:23 Paris : veille close (rien de neuf aux relances après la poussée 129).

@@ -6623,7 +6623,7 @@ MEMO
 
 870. Non, ça n'irait pas vingt fois plus vite, pour trois raisons. La première, ton quota : vingt exécutants font le même travail que deux, au même prix en tokens, mais ils le dépensent vingt fois plus vite. Avec ce qui te reste cette semaine, ce serait épuisé avant lundi.
 
-871. La deuxième : presque tout le déroulé vit dans le même fichier. Deux exécutants qui touchent la même zone se marchent dessus ; la reprise d'heure de ce matin, qui dévoilait une ligne de trop, venait déjà de deux morceaux codés en même temps. À vingt, je passerais mon temps à réparer leurs croisements.
+871. La deuxième : presque tout le déroulé vit dans le même fichier. Deux exécutants qui touchent la même zone se marchent dessus : chacun casse ce que l'autre vient de poser, sans le savoir. À vingt, je passerais mon temps à réparer leurs croisements.
 
 872. La troisième : ce qui freine n'est pas le code, ce sont les décisions et les vérifications. Il faut ton mot sur chaque cadrage, et mon banc complet avant chaque promotion. Vingt exécutants attendraient surtout.
 

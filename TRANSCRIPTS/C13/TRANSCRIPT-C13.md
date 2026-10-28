@@ -5534,3 +5534,31 @@ MEMO
 
 28/10/2026 07:09
 MEMO
+
+---
+
+## Tour 272 — 28/10/2026 07:12 → 07:16
+
+**Paul :** La taxo doit s'appuyer sur eduscol, va voir là bas pour les dénominations
+
+**Claude** *(proposition de taxonomie v2 ; contrat §12.48 et relance E1)* :
+
+À jouer : la ⑦ (captures T268-01 à T268-09) · en cours chez les exécutants : E1 sur 717, puis la vidéo, puis la taxonomie ; E4 sur l'import, puis la présence en mode test, le cahier, le « ? », les notes ; E3 vérifie · ouvert : 724, 734, 735, 732 ; 538, 553, 481, 458.
+
+733. Relu sur les programmes. Pour ta 4e et ta 3e cette année, c'est le programme du cycle 4 de 2015 qui s'applique. Le nouveau programme (BO n° 10 du 5 mars 2026) entre en 5e cette année, en 4e en 2027 et en 3e en 2028. L'ancien dit « tel ou tel mouvement littéraire et artistique », et il ne nomme que deux mouvements : en 3e, « Visions poétiques du monde » : « la poésie lyrique du romantisme à nos jours » ; en 4e, « La fiction pour interroger le réel » : « l'esthétique réaliste ou naturaliste ». Le Parnasse, le symbolisme et le surréalisme n'y sont pas. Le nouveau programme parle de « périodes et courants » et n'en nomme aucun. J'ai lu le texte de 2015 ; l'ajustement de 2020, je ne l'ai pas relu mot pour mot.
+
+734. Ma proposition, refaite sur ces mots : une famille, « Les mouvements littéraires et artistiques », et deux notions, « Le romantisme » (3e) et « L'esthétique réaliste ou naturaliste » (4e), chacune avec sa source dans le programme. Je retire le Parnasse, le symbolisme et le surréalisme. En 2028, quand ta 3e passera au nouveau programme, la famille pourra devenir « Les périodes et courants littéraires et artistiques ». Oui ?
+
+735. Les phrases que l'élève lira, à valider mot pour mot. Pour la famille : « Les grands mouvements de l'art et des lettres ». Pour le romantisme : « Un art qui place l'émotion, la nature et le « je » au premier plan ». Pour l'esthétique réaliste ou naturaliste : « Un récit ou un tableau qui montre la société telle qu'elle est ».
+
+La proposition, en entier : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/TAXONOMIE/PROPOSITION-MOUVEMENTS-27-10.md
+
+À tester : rien de neuf en production.
+
+Sources :
+- [Programme de français du cycle 4 (texte de 2015, culture littéraire et artistique)](https://www.snes.edu/IMG/pdf/programmes_francais_cycle_4.pdf)
+- [Annexe 1 – Programme de français pour le cycle 4 (nouveau programme)](https://www.education.gouv.fr/sites/default/files/document/Annexe%201%20%E2%80%93%20Programme%20de%20fran%C3%A7ais%20pour%20le%20cycle%204-480713.pdf)
+- [Nouveaux programmes au collège : ce qui change à la rentrée 2026 (calendrier par niveau, BO n° 10 du 5 mars 2026)](https://www.digischool.fr/articles/college/nouveaux-programmes-college-2026/)
+
+28/10/2026 07:16
+MEMO

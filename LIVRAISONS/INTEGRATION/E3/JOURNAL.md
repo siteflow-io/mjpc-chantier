@@ -1137,3 +1137,18 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - §12.44 et §12.48 : à E1 ;
   - §12.49 : la mission 0 d'E4 seulement.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0845-28-10-1245-1247/`.
+
+## Retour 100 — 28/10, 09:55 — **§12.48 codé par E3** (relance de 08:35) ; cas 48x VERT
+- `index.html`, éditeur de la taxonomie : trois boutons, « ＋ Ajouter une famille », « ＋ Ajouter une notion », « Importer des notions ».
+  - « Ajouter une famille » : un domaine, deux libellés. L'identifiant `fam-NN` est le suivant libre.
+  - « Ajouter une notion » : on choisit la famille, puis le formulaire existant « Nouvelle notion ».
+  - « Importer des notions » : coller un fragment, Vérifier, puis « Importer ces notions ». L'écriture est ciblée sous `/taxonomie/domaines/<d>/familles/<n>`. Le `meta` passe à la version suivante, avec une note de l'import.
+- Vérifié avant d'écrire :
+  - forme des identifiants, libellés, niveaux ;
+  - un identifiant déjà écrit **n'importe où** dans le référentiel (notion, famille, alias, note d'un retrait comme `ortho-lex-009`) est refusé : jamais réutilisé ;
+  - un refus dit chaque raison en clair, et le prochain `fam-` libre.
+- Le domaine est déduit du préfixe des notions (`litt-` → « Le texte et ses formes ») ; on peut le changer avant d'importer.
+- Le cache de l'Atelier est oublié après l'écriture : la notion se déclare tout de suite.
+- **Cas 48x, aux quatre tailles : VERT 24/24** (tête `eb5d5bcf`). Les boutons sont là. Le fragment v2 est au hub mot pour mot. « Le romantisme » se déclare sur une diapo. Réimporter est refusé en clair, sans double. `ortho-lex-001` réutilisé est refusé, sans écriture. Capture `1707x743-48-2-import-du-fragment-apres.png`, regardée.
+- `banc.sh` : **VERT**.
+- J'ai corrigé deux fautes de mon banc : l'éditeur refermé par un second clic, et le message lu ailleurs que dans `#m8tx-imp-msg`.

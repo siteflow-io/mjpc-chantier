@@ -2285,7 +2285,7 @@ function ouvrirConsoleM8(){
 
 /* ─── État d'interface. Le cache mémorise le MODE dans lequel il a été
    chargé : si le mode test bascule, le cache est invalide et se recharge. ─── */
-var TAXO_UI = { ouvert:false, doms:{}, fams:{}, edit:null, creation:null };
+var TAXO_UI = { ouvert:false, doms:{}, fams:{}, edit:null, creation:null, outil:null, impTexte:'', impOk:false, impMsg:null, impDom:-1 };
 var TAXO_CACHE = null;
 var TAXO_CACHE_MODE = null;
 
@@ -2639,7 +2639,124 @@ function _taxoHtml(t){
   h += '<div class="m8tx-etat">Version ' + escapeHtml((t.meta && t.meta.version) || '?')
     + ' \u00b7 ' + escapeHtml((t.meta && t.meta.date) || '') + ' \u00b7 ' + t.domaines.length + ' domaines \u00b7 ' + total + ' notions</div>'
     + '<p class="m8tx-regle">Une notion ne se supprime jamais et son identifiant ne change jamais : le travail des élèves est étiqueté par ces identifiants, une étiquette qui disparaît ou change de numéro décrocherait des années de travail. Une notion qui ne sert plus se <strong>désactive</strong> — elle sort des choix des applications, l\u2019historique reste lisible.</p>';
+  h += _taxoOutilsHtml(t);   /* §12.48 */
   for(var d = 0; d < t.domaines.length; d++){ h += _taxoLigneDomaine(t.domaines[d]); }
+  return h;
+}
+/* ═══ §12.48 (A99, E3 sur la relance du 28/10 08:35) — ajouter une famille, ajouter une notion, importer des notions ═══
+   « Importer des notions » : Paul colle un fragment au format de la proposition (MANDATS/TAXONOMIE/PROPOSITION-MOUVEMENTS-27-10.md) :
+   { id: "fam-NN", libelleProf, libelleEleve, notions: [ { id, actif, libelleProf, libelleEleve, niveaux, source } ] }.
+   Vérifié AVANT d'écrire : des ids neufs, jamais réutilisés (un id déjà écrit quelque part dans le référentiel — notion, famille,
+   alias ou note d'un retrait — est refusé), chaque libellé présent ; sinon un refus en clair, rien n'est écrit. ═══ */
+function _taxoIdPris(t, id){ var s = JSON.stringify(t || {}); return new RegExp('(^|[^a-z0-9-])' + String(id).replace(/[-]/g, '\\-') + '([^a-z0-9-]|$)').test(s); }
+function _taxoFamNeuve(t){ var max = 0; (JSON.stringify(t || {}).match(/fam-\d+/g) || []).forEach(function(x){ var n = parseInt(x.slice(4), 10); if(n > max) max = n; }); return 'fam-' + (max + 1 < 10 ? '0' : '') + (max + 1); }
+function _taxoDomaineDuPrefixe(t, ids){
+  for(var di = 0; di < (t.domaines || []).length; di++){ var p = _taxoPrefixeDomaine(t, di); if(p && ids.some(function(id){ return String(id).indexOf(p + '-') === 0; })) return di; }
+  return -1;
+}
+function _taxoVerifierFragment(t, texte){
+  var f = null, err = [];
+  try { f = JSON.parse(String(texte || '').trim()); } catch(e){ return { ok:false, erreurs:['Ce texte n’est pas un fragment lisible : ' + e.message + '. Colle le fragment entier, de la première accolade à la dernière.'] }; }
+  if(!f || typeof f !== 'object' || Array.isArray(f)) return { ok:false, erreurs:['Le fragment doit être une famille : { "id": "fam-…", "libelleProf", "libelleEleve", "notions": [ … ] }.'] };
+  if(!/^fam-\d+$/.test(String(f.id || ''))) err.push('L’identifiant de la famille doit avoir la forme « fam-52 » (lu : « ' + (f.id || '') + ' »).');
+  else if(_taxoIdPris(t, f.id)) err.push('La famille « ' + f.id + ' » existe déjà, ou cet identifiant a déjà servi : un identifiant ne se réutilise jamais. Le prochain libre est « ' + _taxoFamNeuve(t) + ' ».');
+  if(!f.libelleProf) err.push('La famille n’a pas de « libelleProf » (ce que tu lis).');
+  if(!f.libelleEleve) err.push('La famille n’a pas de « libelleEleve » (ce que lisent les élèves).');
+  var N = Array.isArray(f.notions) ? f.notions : [];
+  if(!N.length) err.push('La famille n’a aucune notion (« notions »: [ … ]).');
+  var vus = {};
+  N.forEach(function(n, i){ var q = 'Notion ' + (i + 1) + (n && n.id ? ' (« ' + n.id + ' »)' : '');
+    if(!n || typeof n !== 'object'){ err.push(q + ' : illisible.'); return; }
+    if(!/^[a-z]+(-[a-z]+)*-\d{3}$/.test(String(n.id || ''))) err.push(q + ' : l’identifiant doit avoir la forme « litt-040 ».');
+    else if(vus[n.id]) err.push(q + ' : cet identifiant est deux fois dans le fragment.');
+    else if(_taxoIdPris(t, n.id)) err.push(q + ' : cet identifiant existe déjà, ou a déjà servi (un identifiant ne se réutilise jamais).');
+    vus[n.id] = 1;
+    if(!n.libelleProf) err.push(q + ' : il manque « libelleProf ».');
+    if(!n.libelleEleve) err.push(q + ' : il manque « libelleEleve ».');
+    if(!n.niveaux) err.push(q + ' : il manque « niveaux » (par exemple « 3e » ou « 6e-3e »).');
+  });
+  var di = err.length ? -1 : _taxoDomaineDuPrefixe(t, N.map(function(n){ return n.id; }));
+  return { ok: !err.length, erreurs: err, famille: f, di: di };
+}
+function _taxoGesteImporter(texte, diChoisi, cb){
+  taxoCharger(function(t){
+    var v = _taxoVerifierFragment(t, texte); if(!v.ok){ cb(false, v.erreurs); return; }
+    var di = (diChoisi != null && diChoisi !== '' && +diChoisi >= 0) ? +diChoisi : v.di;
+    if(!(di >= 0 && t.domaines[di])){ cb(false, ['Choisis le domaine où ranger la famille.']); return; }
+    var fam = JSON.parse(JSON.stringify(v.famille)); fam.notions = fam.notions.map(function(n){ if(n.actif === undefined) n.actif = true; return n; });
+    var index = (t.domaines[di].familles || []).length;
+    _taxoEcrire('/domaines/' + di + '/familles/' + index, fam, function(ok){
+      if(!ok){ cb(false, ['La famille n’a pas pu être écrite. Réessaie : rien d’autre n’a changé.']); return; }
+      var meta = _taxoMetaSuivant(t); meta.notes = (meta.notes || []).concat(['v' + meta.version + ' (' + meta.date + ') — import : ' + fam.id + ' « ' + fam.libelleProf + ' » (' + fam.notions.map(function(n){ return n.id; }).join(', ') + '), dans « ' + (t.domaines[di].libelleProf || t.domaines[di].id) + ' ».']);
+      _taxoEcrire('/meta', meta, function(){ _taxoOublierCache(); cb(true, [fam.notions.length + ' notion' + (fam.notions.length > 1 ? 's' : '') + ' importée' + (fam.notions.length > 1 ? 's' : '') + ' dans la famille « ' + fam.libelleProf + ' » (' + fam.id + '), domaine « ' + (t.domaines[di].libelleProf || '') + ' ».'], { di: di, fam: fam.id }); });
+    });
+  });
+}
+function _taxoGesteFamille(di, valeurs, cb){
+  taxoCharger(function(t){
+    if(!(t && t.domaines && t.domaines[di])){ cb(false, 'Choisis le domaine.'); return; }
+    if(!valeurs.libelleProf || !valeurs.libelleEleve){ cb(false, 'Écris les deux libellés de la famille.'); return; }
+    var fam = { id: _taxoFamNeuve(t), libelleProf: valeurs.libelleProf, libelleEleve: valeurs.libelleEleve, notions: [] };
+    _taxoEcrire('/domaines/' + di + '/familles/' + (t.domaines[di].familles || []).length, fam, function(ok){
+      if(!ok){ cb(false, 'La famille n’a pas pu être créée. Réessaie.'); return; }
+      _taxoEcrire('/meta', _taxoMetaSuivant(t), function(){ _taxoOublierCache(); cb(true, null, fam.id); });
+    });
+  });
+}
+function _taxoOublierCache(){ try { if(typeof CH === 'object' && CH) CH.taxo = null; if(typeof DR_MEM === 'object' && DR_MEM) DR_MEM.taxoDemande = false; } catch(e){} }   /* l'Atelier relit le référentiel : la notion importée se déclare tout de suite */
+function taxoOutil(quoi){ TAXO_UI.outil = (TAXO_UI.outil === quoi ? null : quoi); TAXO_UI.impMsg = null; TAXO_UI.impOk = false; taxoRender(); }
+function taxoFamilleCreer(){
+  var di = (document.getElementById('m8tx-af-dom') || {}).value; var lire = function(i){ var e = document.getElementById(i); return e ? e.value.trim() : ''; };
+  _taxoGesteFamille(+di, { libelleProf: lire('m8tx-af-prof'), libelleEleve: lire('m8tx-af-eleve') }, function(ok, msg, id){
+    if(!ok){ alert(msg); return; }
+    var d = TAXO_CACHE && TAXO_CACHE.domaines[+di]; if(d) TAXO_UI.doms[d.id] = true; TAXO_UI.fams[id] = true; TAXO_UI.creation = id; TAXO_UI.outil = null; taxoRafraichir(true);
+  });
+}
+function taxoNotionOuvrir(){
+  var idFam = (document.getElementById('m8tx-an-fam') || {}).value; if(!_taxoIdSur(idFam)) return;
+  var pos = TAXO_CACHE ? _taxoTrouverFamille(TAXO_CACHE, idFam) : null; if(pos) TAXO_UI.doms[TAXO_CACHE.domaines[pos.di].id] = true;
+  TAXO_UI.fams[idFam] = true; TAXO_UI.outil = null; taxoCreerOuvrir(idFam);
+}
+function taxoImporterVerifier(){
+  var txt = (document.getElementById('m8tx-imp-zone') || {}).value || ''; TAXO_UI.impTexte = txt;
+  var v = _taxoVerifierFragment(TAXO_CACHE, txt); TAXO_UI.impOk = v.ok;
+  if(v.ok){ TAXO_UI.impDom = v.di; TAXO_UI.impMsg = { ok:true, l:['Le fragment est bon : la famille « ' + v.famille.libelleProf + ' » (' + v.famille.id + ') et ' + v.famille.notions.length + ' notion(s) : ' + v.famille.notions.map(function(n){ return n.id + ' « ' + n.libelleProf + ' »'; }).join(', ') + '. Rien n’est encore écrit : « Importer ces notions » l’écrit.'] }; }
+  else TAXO_UI.impMsg = { ok:false, l:['Refusé, rien n’est écrit :'].concat(v.erreurs) };
+  taxoRender();
+}
+function taxoImporterEcrire(){
+  if(!TAXO_UI.impOk) return; var di = (document.getElementById('m8tx-imp-dom') || {}).value;
+  _taxoGesteImporter(TAXO_UI.impTexte, di, function(ok, lignes, ou){
+    TAXO_UI.impOk = false; TAXO_UI.impMsg = { ok:ok, l: ok ? lignes : ['Refusé, rien n’est écrit :'].concat(lignes) };
+    if(ok && ou){ var d = TAXO_CACHE && TAXO_CACHE.domaines[ou.di]; if(d) TAXO_UI.doms[d.id] = true; TAXO_UI.fams[ou.fam] = true; TAXO_UI.impTexte = ''; }
+    taxoRafraichir(true);
+  });
+}
+function _taxoOutilsHtml(t){
+  var o = TAXO_UI.outil, h = '<div class="m8tx-outils" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">'
+    + '<button class="m8-btn m8-btn-min' + (o === 'famille' ? ' on' : '') + '" onclick="taxoOutil(\'famille\')" title="Une famille neuve dans un domaine ; son identifiant est fabriqué (le suivant libre) et ne change jamais">＋ Ajouter une famille</button>'
+    + '<button class="m8-btn m8-btn-min' + (o === 'notion' ? ' on' : '') + '" onclick="taxoOutil(\'notion\')" title="Une notion neuve dans la famille que tu choisis ; son identifiant est fabriqué et ne change jamais">＋ Ajouter une notion</button>'
+    + '<button class="m8-btn m8-btn-min' + (o === 'import' ? ' on' : '') + '" onclick="taxoOutil(\'import\')" title="Colle une famille et ses notions (le format de la proposition) : vérifié avant d’écrire, refusé en clair sinon">Importer des notions</button></div>';
+  var domOpts = function(sel){ return t.domaines.map(function(d, i){ return '<option value="' + i + '"' + (i === sel ? ' selected' : '') + '>' + escapeHtml(d.libelleProf || d.id) + '</option>'; }).join(''); };
+  if(o === 'famille') h += '<div class="m8tx-form"><div class="m8tx-form-titre">Nouvelle famille</div><div class="m8tx-champ"><label class="m8tx-lab">Domaine</label><select class="m8-input" id="m8tx-af-dom">' + domOpts(0) + '</select></div>'
+    + _taxoChampForm('m8tx-af', '-prof', 'Libellé professeur', '', '') + _taxoChampForm('m8tx-af', '-eleve', 'Libellé élève', '', 'Ce que liront les élèves')
+    + '<div class="m8tx-actions"><button class="m8-btn m8-btn-min" onclick="taxoFamilleCreer()">Créer la famille</button><button class="m8-btn m8-btn-min" onclick="taxoOutil(null)">Annuler</button></div>'
+    + '<p class="m8tx-note">Son identifiant sera « ' + escapeHtml(_taxoFamNeuve(t)) + ' » et ne changera jamais. Ses notions s’ajoutent ensuite.</p></div>';
+  if(o === 'notion') h += '<div class="m8tx-form"><div class="m8tx-form-titre">Nouvelle notion — dans quelle famille ?</div><div class="m8tx-champ"><select class="m8-input" id="m8tx-an-fam">'
+    + t.domaines.map(function(d){ return '<optgroup label="' + escapeHtml(d.libelleProf || d.id) + '">' + (d.familles || []).map(function(f){ return _taxoIdSur(f.id) ? '<option value="' + f.id + '">' + escapeHtml(f.libelleProf || f.id) + '</option>' : ''; }).join('') + '</optgroup>'; }).join('')
+    + '</select></div><div class="m8tx-actions"><button class="m8-btn m8-btn-min" onclick="taxoNotionOuvrir()">Continuer</button><button class="m8-btn m8-btn-min" onclick="taxoOutil(null)">Annuler</button></div></div>';
+  if(o === 'import'){
+    var m = TAXO_UI.impMsg;
+    h += '<div class="m8tx-form"><div class="m8tx-form-titre">Importer des notions</div>'
+      + '<p class="m8tx-note">Colle une famille et ses notions, au format de la proposition (« id », « libelleProf », « libelleEleve », « notions » : « id », « actif », « libelleProf », « libelleEleve », « niveaux », « source »). Les phrases pour l’élève entrent telles que tu les colles.</p>'
+      + '<textarea class="m8-input" id="m8tx-imp-zone" rows="8" style="width:100%;font-family:monospace;font-size:.8rem">' + escapeHtml(TAXO_UI.impTexte || '') + '</textarea>'
+      + (TAXO_UI.impOk ? '<div class="m8tx-champ"><label class="m8tx-lab">Rangée dans le domaine</label><select class="m8-input" id="m8tx-imp-dom">' + domOpts(TAXO_UI.impDom >= 0 ? TAXO_UI.impDom : 0) + '</select></div>' : '')
+      + '<div class="m8tx-actions"><button class="m8-btn m8-btn-min" onclick="taxoImporterVerifier()">Vérifier</button>'
+      + (TAXO_UI.impOk ? '<button class="m8-btn m8-btn-min" onclick="taxoImporterEcrire()">Importer ces notions</button>' : '')
+      + '<button class="m8-btn m8-btn-min" onclick="taxoOutil(null)">Fermer</button></div>'
+      + (m ? '<div id="m8tx-imp-msg" class="m8tx-note" style="color:' + (m.ok ? '#8fd19e' : '#ff8a8e') + '">' + m.l.map(function(x){ return '<div>' + escapeHtml(x) + '</div>'; }).join('') + '</div>' : '')
+      + '</div>';
+  }
   return h;
 }
 function taxoRender(){

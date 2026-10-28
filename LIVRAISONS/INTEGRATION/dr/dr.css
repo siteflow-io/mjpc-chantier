@@ -502,3 +502,21 @@ html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
 #mur .dr-retire{opacity:.38;outline:2px dashed #c0392b;outline-offset:2px}
 #mur .dr-retire-tab,.mur .dr-retire-tab{visibility:hidden}
 .dr-sch-corr textarea,.dr-sch-corr input{width:100%;box-sizing:border-box;font:inherit}
+/* EX (§12.62 (1)) : « Ce que la diapo déclare » — chaque champ se voit comme un champ (un cadre, le curseur de texte) */
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-declare .dr-champ{border:1px solid #8a6a3a;background:#151109;color:var(--texte);border-radius:6px;padding:1px 7px;min-height:1.35em;box-sizing:border-box}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-declare span.dr-champ{display:inline-block;min-width:8em;max-width:100%;vertical-align:middle;cursor:text;border-bottom:1px solid #8a6a3a}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-declare span.dr-champ:hover,:is(#dr-zone,#ses-tab,.at-som-volet) .at-declare .dr-champ:hover{border-color:var(--or)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-declare span.dr-champ:focus,:is(#dr-zone,#ses-tab,.at-som-volet) .at-declare .dr-champ:focus{border-color:var(--or);background:#2a2114;outline:none}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-declare select.dr-champ{cursor:pointer;max-width:100%}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-declare .dr-masq-l{color:var(--texte)}
+/* EX (§12.62 (4)) : la colonne — masquée, choisie, sans titre, renommée, glissée */
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-masq{opacity:.55}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-masq .t{text-decoration:line-through;text-decoration-color:var(--sourd)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d .dr-tag{font-size:.66rem;color:var(--sourd);border:1px solid var(--bord2);border-radius:8px;padding:0 5px;flex:none}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-sel-d{background:#3a2c14;color:var(--texte);box-shadow:inset 3px 0 0 var(--or)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d .dr-sans-titre{color:var(--sourd)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-inv .t{font-style:italic}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d .t.dr-renomme{white-space:normal;overflow:visible;cursor:text;border:1px solid var(--or);background:#151109;border-radius:4px;padding:0 4px;outline:none;color:var(--texte)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-glisse-avant{box-shadow:inset 0 3px 0 var(--or)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-glisse-apres{box-shadow:inset 0 -3px 0 var(--or)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-glisse-src{opacity:.4}

@@ -5957,3 +5957,28 @@ MEMO
 
 28/10/2026 10:32
 MEMO
+
+---
+
+## Tour 290 — 28/10/2026 10:35 (message de Claude, sans message de Paul : la mesure de l'Atelier par E4, poussée 125)
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 sur « Fin de l'heure », le clic sur une diapo, puis le chrono et 👥 (le reste de la ⑧ est prêt, le rouge d'E4 est corrigé) ; E3 mesure la lenteur · ouvert : 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+E4 a mesuré l'Atelier geste par geste (§12.53). Ce qu'il en ressort, et ce que je propose.
+
+793. « Ce que la diapo déclare » : elle est fermée par défaut et rien ne dit qu'on peut y écrire. « Hors activité » est proposé, puis compté comme une faute dans « À régler ». « Réactivation » t'est proposé alors que le site la pose seul. Une fois ouverte, la carte pousse le reste hors de l'écran. Je propose : la carte ouverte, seule en haut de la colonne de droite ; chaque champ se voit comme un champ ; « hors activité » permis sans faute ; « réactivation » retiré de la liste.
+
+794. La diapo vierge : « Insérer une diapo après » existe (clic droit), mais la diapo n'est pas vierge. Elle écrit « Nouvelle diapo » au mur, ajoute 5 minutes à l'heure sans le dire, et prend l'activité de la diapo d'avant. Je propose : « Insérer avant » et « Insérer après » donnent une diapo vraiment vierge, hors activité, à 0 minute ; tu lui donnes une durée si tu veux qu'elle compte.
+
+795. Tes quatre diapos invariables : la trame n'a aucun rôle pour elles, mais ton JSON porte déjà leur matière (titre, entrée, compétences, plan des séances, problématique), et la feuille sommaire s'en sert. Je propose : le site les pose seul, comme la fin d'heure. Au début de la première séance du chapitre : présentation du chapitre, puis plan. Au début de chaque séance : présentation de la séance, puis problématique. Elles sont remplies depuis le JSON, avec les mots de la feuille sommaire, hors activité, à 0 minute, et tu peux en retirer une.
+
+796. La colonne de gauche : il manque « Renommer », « Insérer avant », « Masquer » (garder une diapo sans la montrer), le glisser-déposer, la sélection de plusieurs diapos, et copier-coller vers une autre séance ou un autre chapitre. Annuler existe déjà (Ctrl + Z). Je propose de tout ajouter : « Renommer » au clic droit et au double-clic.
+
+Oui à 793, 794, 795, 796 ? Ce serait la ⑨, juste après la ⑧.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 10:35
+MEMO

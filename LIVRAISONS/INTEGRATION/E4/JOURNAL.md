@@ -1123,3 +1123,5 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **Garde A91** (ajoutée à `E4/bancs/banc-1238.mjs`) : Atelier — l'échéance (la date de la source, à l'écran), le travail à faire, les contenus ; répétition — quatre éléments dévoilés, « 0 élève sur 4 » ; la trame enregistrée inchangée (les blocs de la diapo identiques avant / après). **Avant (tête `ae0f6cba`) : 2 échecs ; après : 14 / 0** (A88 compris).
 - **Bancs** (assemblé md5 `718155ba…`) : `banc.sh` **VERT** (`E4/sorties/0149-28-10-A91/`). Captures : `E4/captures/E4-1238-A91-1707-avant-atelier.png`, `…-apres-atelier.png`, `…-apres-repetition.png` (regardées).
 - **A91 (rendu) E4 fini** (le commit de cette poussée).
+
+**A91 (rendu) E4 fini (`d65bf9df2`).**

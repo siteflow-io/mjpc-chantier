@@ -1305,3 +1305,7 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - Banc : sans clé USB, `videoAtteignable` est forcé dans A105 (la vidéo passait seule).
 
 - 28/10 14:23 Paris : veille close (rien de neuf aux relances après la poussée 129).
+
+## 28/10 14:50 Paris — poussée 130 : §12.61 (1), la suite de la phrase de fin d'heure (A107)
+- `dr-classe.js` (le morceau confié à E4 par §12.61 (1)) : `dr_phraseActivite` + `dr_phraseSuite` — la seconde moitié de l'ex-`alerteTexte` de la ③ (`e7c70d2:index.html` l. 17661), mot pour mot : aux paliers T-5/T-3/T-1 « Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. », à l'heure du cahier « Va au cahier de textes : l'heure court (09:52). » (la fin de la case). Même ligne, tenue en place par la minuterie existante (compare avant d'écrire).
+- A107 (`E4/bancs/banc-1261.mjs`, T-5 par le geste ⏩, l'heure du cahier par l'horloge de la case) : **7/0** (md5 `981dab91…`) ; avant (md5 `d04ad16e…`) 2 échecs. Au repos 3 s : 0 mutation de la ligne. `banc.sh` **VERT** (K 106/0, `E4/sorties/1261-28-10/`).

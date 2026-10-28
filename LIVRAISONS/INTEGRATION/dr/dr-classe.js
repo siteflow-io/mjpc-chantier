@@ -227,7 +227,9 @@ function palier0(k){ if (S.close) return; S.t5 = true; S.palier = k; journal(k =
    tête de la séquence, aux moments du palier ; en préparation, l'activité en cours est celle de la classe (la diapo gelée). '' quand il n'y a rien à dire. */
 function dr_phraseActivite(){ if (!S.palier || !S.t5 || S.close || S.repetition || !S.lancee) return ''; let et = null; const di0 = S.di;
   try { if (S.preparation && S.preparation.di != null) S.di = S.preparation.di; et = etatActivite(); } catch (e) { et = null; } finally { S.di = di0; }
-  return et ? 'L\'activité en cours : <b style="color:var(--texte)">' + (et.a.pseudo ? 'Diapo ' : 'Activité ') + et.a.num + ' — ' + dr_esc(et.a.titre) + '</b>, ' + et.txt + '.' : ''; }
+  return (et ? 'L\'activité en cours : <b style="color:var(--texte)">' + (et.a.pseudo ? 'Diapo ' : 'Activité ') + et.a.num + ' — ' + dr_esc(et.a.titre) + '</b>, ' + et.txt + '. ' : '') + dr_phraseSuite(); }
+/* E4 (§12.61 (1), Paul 28/10 14:36, point 481 « oui ») : la seconde moitié de l'ex-`alerteTexte` de la ③, mot pour mot, aux mêmes moments (les paliers) ; à l'heure du cahier, l'heure de la case */
+function dr_phraseSuite(){ const k = S.palier; if (!k) return ''; if (k !== 'zero') return 'Le cahier de textes attend — le tableau ne bouge pas tant que tu n\'y vas pas.'; let fin = ''; try { const x = dr_heureDe(S.heure) || {}; fin = x.fin || hhmm(x.base + 55 * 60000); } catch (e) {} return 'Va au cahier de textes : l\'heure court (' + fin + ').'; }
 function dr_phraseLigne(){ const p = dr_phraseActivite(); return `<div class="dr-pp-act"${p ? '' : ' hidden'} title="L'activité où la classe en est, et son temps (comme le chrono d'« Où on en est »)">${p}</div>`; }
 /* tenue à jour EN PLACE (la minute, la diapo) : seulement le texte de cette ligne, jamais un redessin de la séquence (un champ en frappe garde son focus) */
 setInterval(() => { try { const L = document.querySelectorAll('#dr-zone .dr-pp-act'); if (!L.length) return; const p = dr_phraseActivite(); L.forEach(l => { if (l.innerHTML !== p) l.innerHTML = p; dr_poseSi(l, 'hidden', !p); }); } catch (e) {} }, 1000);   /* §12.56 (4) : comparer avant d'écrire */

@@ -6189,3 +6189,20 @@ MEMO
 
 28/10/2026 11:49
 MEMO
+
+---
+
+## Tour 301 — 28/10/2026 11:52 → 11:52
+
+**Paul :** Il faut mesurer ce que ça modifie dans la structure, l'atelier, et également savoir ce qui s'inscrit au journal, et en quoi ça impacte la relecture
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure ; E3 fait les coupes du redessin et le menu de « Ce que la diapo déclare » ; E4 mesure ce que la correction en direct change ailleurs · ouvert : 825 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+826. Oui. Ton cadrage de septembre le dit déjà (§8). Ce que tu corriges en classe vit dans la copie de la classe, et ne touche pas l'Atelier. À la clôture, le site te propose de verser la correction dans le chapitre, diapo par diapo, jamais tout seul. Ce qui a été au tableau reste tel quel pour cette classe, sauf le cahier de textes. Et le journal note ce que le tableau a montré et ce que tu as saisi. E4 vérifie maintenant que le code fait bien ça, pour chaque correction en direct : la correction, puis l'heure close, puis la relecture. Il regarde ce qui change dans la copie, l'Atelier, la Structure, le journal et le récit. Il dit aussi ce que 823 et « retirer du tableau » devront y faire. 825 attend sa mesure.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:52
+MEMO

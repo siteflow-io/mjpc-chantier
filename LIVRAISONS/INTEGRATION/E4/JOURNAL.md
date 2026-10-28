@@ -1254,3 +1254,5 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - Les minutes s'ajoutent sans le dire au moment du geste (on l'apprend par « l'heure dépasse »).
 - La colonne de droite mélange la carte de la diapo, l'aide et le chapitre : la carte devrait être seule en haut, ouverte.
 - « À régler (101) » sur un chapitre importé avant le prompt 1.0 : aucun moyen, dans l'Atelier, de recréer ses activités à partir des `actId` (elles existent dans la trame, `a1`, `a2`…, sans titre).
+
+- 28/10 10:50 Paris : veille close (rien de neuf aux relances après la poussée 125).

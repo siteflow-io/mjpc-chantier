@@ -992,7 +992,10 @@ function morph(a, b){
   if (a.nodeType === 3) { if (a.nodeValue !== b.nodeValue) a.nodeValue = b.nodeValue; return; }
   if (a.nodeType !== 1) return;
   const actif = document.activeElement; const estActif = !!(actif && a === actif && (actif.isContentEditable || /INPUT|TEXTAREA/.test(actif.tagName)));
-  if (!estActif) for (const at of Array.from(a.attributes)) if (!b.hasAttribute(at.name)) a.removeAttribute(at.name); /* (p8-4) le texte où l'on écrit garde ses attributs (contenteditable) : un redessin ne le touche pas */
+  if (!estActif) { /* EX (§12.56 (1) b, §12.59) : l'écriture posée par le branchement (brancherAtelier : contenteditable, spellcheck, title) n'est pas dans le rendu ; le redessin la garde
+       sur une ligne qui s'écrit toujours — mesuré : la diapo d'ouverture « plan », remplie de nouveau par une minuterie, perdait ses neuf lignes éditables et Paul ne pouvait plus y taper */
+    const garder = a.hasAttribute('contenteditable') && !b.hasAttribute('contenteditable') && /^[^.]+\.[^.]+$/.test(b.getAttribute('data-p') || '') && typeof dr_murEcrit === 'function' && dr_murEcrit(a);
+    for (const at of Array.from(a.attributes)) if (!b.hasAttribute(at.name) && !(garder && DR_ECRIT_ATTR[at.name])) a.removeAttribute(at.name); } /* (p8-4) le texte où l'on écrit garde ses attributs (contenteditable) : un redessin ne le touche pas */
   for (const at of Array.from(b.attributes)) if (a.getAttribute(at.name) !== at.value) { if (at.name === 'class' && a.classList.contains('grand')) a.setAttribute('class', at.value + ' grand'); else a.setAttribute(at.name, at.value); }
   if (estActif) return; /* le champ où Paul écrit garde son contenu ; ses attributs (la classe « reformulée », le titre) suivent */
   if (/INPUT|TEXTAREA|SELECT/.test(a.tagName)) return;
@@ -1187,6 +1190,7 @@ function paginer(mur, et){ if (mur.id === 'mur' && !et._ref && dr_paginerReferen
 
 function pageDeSuivi(et, els, pages){ let cible = -1; els.forEach((l, i) => { if (l.classList.contains('libre') && et._blocActif != null && +l.dataset.bi === et._blocActif) cible = i; });
   if (et.atelier) { const f = (S._p85fCible != null && $('mur').querySelector(`[data-p="${S._p85fCible}"]`)) || document.activeElement; const fi = f ? els.findIndex(l => l === f || l.contains(f)) : -1; if (fi < 0) return et.page != null && et.page < pages.length ? et.page : 0; cible = fi; } /* (p8-5f) l'atelier : la page de la ligne qui a le curseur, ou de celle qui va le recevoir */
+  else if (S.repetition) { const f = (S._p85fCible != null && $('mur').querySelector(`[data-p="${S._p85fCible}"]`)) || document.activeElement; const fi = f && (f.isContentEditable || S._p85fCible != null) ? els.findIndex(l => l === f || l.contains(f)) : -1; if (fi >= 0) cible = fi; } /* EX (§12.56 (1) c, §12.59) : en répétition aussi, la page suit la ligne où Paul écrit — mesuré par la sonde 56s : sur la diapo d'ouverture (la présentation du chapitre, la première de la répétition), la frappe qui faisait passer la ligne en page 2 ramenait la page du dévoilé, la ligne partait « hors » et Paul perdait le focus et la suite de sa frappe */
   if (cible < 0 && !et.atelier && S.neuf && S.neuf.di === S.di && S.neuf.k === et.nDev - 1) { const ni = els.findIndex(l => l.dataset.k != null && +l.dataset.k === S.neuf.k); if (ni >= 0) cible = ni; } /* E1 (relecture continue E4, A4 14:50 ; C1 5.2) : la page suit ce que ▶ vient de montrer — plus la page de la dernière réponse écrite */
   if (cible < 0) { let last = -1; els.forEach((l, i) => { if (l.dataset.k != null && +l.dataset.k < et.nDev) last = i; if (l.dataset.r != null && !l.classList.contains('pas')) last = i; }); /* (p8-5f) un champ de réponse ne compte que dévoilé */ cible = Math.max(0, last); }
   const pi = pages.findIndex(p => p.includes(cible)); return pi < 0 ? 0 : pi; }

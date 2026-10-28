@@ -5833,3 +5833,22 @@ MEMO
 
 28/10/2026 08:23
 MEMO
+
+---
+
+## Tour 284 — 28/10/2026 08:24 → 08:25
+
+**Paul :** Ok
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 code « Déposer en ligne », puis retire le Drive ; E1 sur la vidéo de la clé (§12.44) ; E3 écrit les cas · ouvert : 538, 553, 481, 458.
+
+775. C'est au contrat. « Déposer en ligne » (§12.49 (6)) passe par ton compte Google, avec la petite fenêtre, et reprend le geste de glisser un fichier sur une séance. Le Drive retiré du site (§12.50) vient juste après, chez E4. E4 et E3 sont relancés.
+
+776. Ce qui te reviendra, une seule fois : coller le relais dans ton programme Google, créer le déploiement « moi uniquement », et ranger la clé GitHub dans ses réglages. Je relis le relais d'E4 avant, puis je te guide pas à pas.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 08:25
+MEMO

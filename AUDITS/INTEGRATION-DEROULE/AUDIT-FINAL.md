@@ -171,3 +171,11 @@ MEMO
 ## 28/10, 17:33 — PROMU ⑧
 - Paul (17:28) : « Promeus ». Production : commit `20c3f3d`, blob `9c7935a03892`, md5 `6cd16508381fdf36d3cf866b3f5cc672`, 2 593 520 o ; bit à bit au dépôt et à l'adresse publique. Point de retour : ⑦ (blob `c18274d14127`). Docs de production à jour (`5331803`).
 - Suite (§12.64) : la ⑨ = §12.65 (branche `ex10`, déjà codée) + §12.62 (l'Atelier) par des exécutants neufs ; les sessions E1, E3, E4 ne sont plus réveillées.
+
+
+## CANDIDATE ⑨ VERTE — 29/10/2026 00:17
+
+- integration `29f0533b5` (ex-atelier §12.62 + ex10 §12.65 + ex-tableau §12.66 + ex-e3), assemblée + `APP_VERSION="8.76.0-⑨"` : md5 `2ef1eba96d82078089e92cff22659c3f`, 2 671 556 o. Copie gelée : scratchpad `cand9/candidate-9-29f0533b5.html`.
+- Banc complet par la conscience (une fois) : assemblage, 0 collision, parcours VERT, parcours en mode test VERT, contrôles K1-K13 106/0, sonde-1262 52/52, sonde-1266 27/0 — VERT.
+- Cas E3 (41, 41d, 42i, 43t, 45a, 46c, 47n, 48x, 56s ; 1707×743) : 112/112 VERT. (Premier passage sur 7e7fcec2d : 100/105 ; 4 cas ajustés au contrat §12.62, §12.66 ; 2 défauts réparés : le redessin des lignes du plan dans l'Atelier, la page qui sautait en répétition.)
+- Contrôles de la conscience ajustés : le chapitre des contrôles retire ses diapos d'ouverture (K6, K9) ; K15-test : aucune écriture hors de `/site/tableau_test`.

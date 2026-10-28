@@ -6261,3 +6261,20 @@ MEMO
 
 28/10/2026 12:34
 MEMO
+
+---
+
+## Tour 305 — 28/10/2026 13:09 (message de Claude, sans message de Paul : le retour 103 d'E3)
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 rend tout corrigeable au tableau ; E1 répare la reprise d'heure ; E3 mesure l'intégration · ouvert : 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+833. E3 a fait les coupes du redessin, et trouvé ton menu. C'était bien le redessin : quand tu quittais le titre dans « Ce que la diapo déclare », toute la carte se redessinait, et le menu Activité que tu venais d'ouvrir était remplacé sous ta souris. Désormais, la carte attend que tu aies fini ton geste. Mesuré avant et après sur la ⑦ : réparé.
+
+834. La lenteur, mesurée sur un ordi portable lent. Au repos, le travail du site passe de 124 à 51 millisecondes par seconde dans l'Atelier, et de 180-210 à 67-73 en répétition. Il passe de 152 à 97 en heure, et de 121 à 78 sur l'accueil. Les menus, les champs, les boutons et les vignettes tiennent sur tous les écrans. Il restait l'étoile filante décorative de l'accueil : E3 la refait sans toucher à l'écran.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 13:09
+MEMO

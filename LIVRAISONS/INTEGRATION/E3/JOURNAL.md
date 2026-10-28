@@ -1152,3 +1152,4 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - **Cas 48x, aux quatre tailles : VERT 24/24** (tête `eb5d5bcf`). Les boutons sont là. Le fragment v2 est au hub mot pour mot. « Le romantisme » se déclare sur une diapo. Réimporter est refusé en clair, sans double. `ortho-lex-001` réutilisé est refusé, sans écriture. Capture `1707x743-48-2-import-du-fragment-apres.png`, regardée.
 - `banc.sh` : **VERT**.
 - J'ai corrigé deux fautes de mon banc : l'éditeur refermé par un second clic, et le message lu ailleurs que dans `#m8tx-imp-msg`.
+- 28/10, 09:25 UTC — veille close : trois contrôles sans correction de la réinjection (§12.42, cas 42i 7/8 sur `18d54336`, relancée à E4 à 10:09). §12.44 fini par E1 (sans cas 44, relance de 08:35). Reprise sur relance.

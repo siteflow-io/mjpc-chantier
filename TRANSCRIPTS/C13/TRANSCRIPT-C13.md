@@ -6116,7 +6116,7 @@ MEMO
 
 **Claude :**
 
-À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure (dernier rouge de la ⑧) ; E4 mesure ce qui ne se corrige pas au tableau ; E3 a fini ses mesures · ouvert : 814, 815 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure (dernier rouge de la ⑧) ; E4 mesure ce qui ne se corrige pas au tableau ; E3 a fini ses mesures · ouvert : 815, 816 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
 
 814. E3 a mesuré, et ta piste était la bonne. La lenteur ne vient pas du réseau, qui fait passer quelques Ko par minute. Elle vient du redessin à vide : au repos, sans rien faire, le site occupe 12 à 21 % du processeur d'un ordi portable ordinaire. Des minuteries réécrivent l'écran 7 à 9 fois par seconde, pour y remettre la même chose.
 

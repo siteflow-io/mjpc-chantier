@@ -446,6 +446,20 @@ setTimeout(() => { ['preparerCahier', 'revenirAuCours'].forEach(nom => { const o
    la classe est gelée sur sa diapo ; l'état du cahier (dévoilés, vus) est mis de côté et rendu tel quel à « Revenir au cours » */
 /* réveil n°12 (E4 ligne 162) : la diapo « fin » de chaque heure porte le cahier de textes (le bloc « cahier », ses quatre éléments) — comme la maquette (`normaliserTrame` :
    blocs: [{ t: 'cahier' }]) ; celle que pose le socle (`dr_normaliserTrame`, E1) a `blocs: []` : rien à montrer, ni en préparation ni en classe. Posé en classe, dans la copie */
+/* E1 (§12.38-3, registre 13 · 83 ; Paul 23:16 « les diapos de cahier de texte sont vides ») : la diapo « Cahier de textes » HORS DE LA CLASSE (l'Atelier, la répétition).
+   Les DONNÉES pour le rendu d'E4 (`dr-socle.js`, `b0.t === 'cahier'`) : rien n'est écrit dans la trame (le bloc `cahier` ne s'ajoute qu'au lancement, `dr_finAvecCahier`).
+   `dr_cahierHorsClasse(e)` → null en classe (heure lancée hors répétition), hors d'une diapo de fin, ou quand la diapo a déjà son bloc ; sinon
+   { montrer: true, heure, date, echeanceIso, travail, qui, classe } — `date` : l'échéance, la prochaine heure de la classe de la source (§12.38 (1), `dr_sourceSeance`)
+   après l'heure répétée (`dr_heureAVenir`) ; `travail` : le travail à faire prévu de l'heure (B/deroule/travail) ; `qui` : null en répétition (les élèves de la classe test,
+   §12.38 (2), E4), [] dans l'Atelier (vide). E4 : `const b0 = e.blocs[0] || (dr_cahierHorsClasse(e) ? { t: 'cahier' } : null)`, et `cahier.date` / `cahier.travail` repris d'ici quand `S.echeance` / `S.travail` sont vides. */
+function dr_echeanceHorsClasse(h){ try { const src = typeof dr_sourceSeance === 'function' ? dr_sourceSeance() : null; const sl = src && src.classeSlug; if (!sl || typeof edtProchainesDe !== 'function') return null;
+  const hv = typeof dr_heureAVenir === 'function' ? dr_heureAVenir(h) : null; const apres = (hv && hv.base) || Date.now();
+  const x = (edtProchainesDe(sl, 20) || []).find(p => { const [y, mo, d] = p.iso.split('-').map(Number); const [hh, mm] = String(p.creneau).split('-')[0].split(':').map(Number); return new Date(y, mo - 1, d, hh || 0, mm || 0).getTime() > apres; });
+  return x ? { iso: x.iso, creneau: x.creneau, l: x.l } : null; } catch (e) { return null; } }
+function dr_cahierHorsClasse(e){ try { if (!e || e.role !== 'fin') return null; if (S.lancee && !S.repetition) return null; if ((e.blocs || []).some(b => b && b.t === 'cahier')) return null;
+  const h = +e.heure || S.heure || 1; const ech = dr_echeanceHorsClasse(h); const src = typeof dr_sourceSeance === 'function' ? dr_sourceSeance() : null;
+  const tv = (typeof dr_travail === 'function' ? dr_travail() : {})[S.si + '|' + h] || '';
+  return { montrer: true, heure: h, date: ech ? ech.l : null, echeanceIso: ech ? ech.iso : null, travail: tv, qui: S.repetition ? null : [], classe: src ? src.classeNom : '' }; } catch (x) { return null; } }
 function dr_finAvecCahier(){ try { let n = 0; seance().ecrans.forEach(e => { if (e && e.role === 'fin' && !(e.blocs || []).some(b => b && b.t === 'cahier')) { e.blocs = (e.blocs || []).concat([{ t: 'cahier' }]); n++; } }); return n; } catch (x) { return 0; } }
 function dr_prepCahierVoir(){ try { if (!S.preparation) return; const e = ecran(); if (!e || e.role !== 'fin') return; const k = K(S.di); const d = etatDiapo(); S._prepCahier = { k, nDev: d.nDev, vu: vuMax[k] }; d.nDev = elements(e).length; dr_tout(); } catch (x) {} }
 function dr_prepCahierRendre(){ try { const p = S._prepCahier; if (!p) return; S._prepCahier = null; if (parDiapo[p.k]) parDiapo[p.k].nDev = p.nDev; if (p.vu == null) delete vuMax[p.k]; else vuMax[p.k] = p.vu; } catch (x) {} }   /* « Où on en est » se redit tout de suite en entrant et en sortant de la préparation */

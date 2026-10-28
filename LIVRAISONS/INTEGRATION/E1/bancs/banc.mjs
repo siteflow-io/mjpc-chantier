@@ -1713,6 +1713,24 @@ await B('A87', '§12.38 (1) : à 9 h et à 20 h, séances 1 et 2 du chapitre 3e 
     E.verif('A87', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
 });
 
+/* ── A91 · §12.38 (3), 13 · 83 : la diapo du cahier de textes hors de la classe — les données (E1) ; le rendu est à E4 ── */
+await B('A91', '§12.38 (3), les données : dans l\'Atelier et en répétition, la diapo « Cahier de textes » reçoit l\'échéance (la prochaine heure de la classe de la source après l\'heure), le travail prévu de l\'heure, « qui a participé » (vide dans l\'Atelier) ; rien n\'est écrit dans la trame', async () => {
+  const st = storeCle(); const ch0 = st.site['3e'].chapitres[0]; ch0.published = Object.assign({}, typeof ch0.published === 'object' ? ch0.published : {}, { '3_dylan_bob': true, '3e_charles_de_gaulle': true }); delete ch0.seances[0].deroule_joue; ch0.seances[0].deroule.travail = Object.assign({}, ch0.seances[0].deroule.travail || {}, { 1: 'Relis « L’Albatros » deux fois.' });
+  const o = await E.ouvrir(b, { w: 1707, h: 743, hub: st }); const pg = o.pg;
+  const r = await pg.evaluate(() => new Promise(res => edtCharger(() => edtChargerClasses(() => edtChargerChapitres(['3e'], () => { ATVUES.snum = '0'; try { dr_suivreSeance(); } catch (e) {} DR_MEM.source = null; dr_tout(); setTimeout(() => { try {
+    const E0 = seance().ecrans; const i = E0.findIndex(e => e && e.role === 'fin' && +e.heure === 1); const e = E0[i]; const avant = JSON.stringify(e.blocs);
+    const src = dr_sourceSeance(); const hv = dr_heureAVenir(1); const d = new Date(); const iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    const P = Object.values(edtProjeter(iso, 60)).filter(c => edtCleClasse(c.classeMjpc) === src.classeSlug && ['prevu', 'rienDePret'].includes(c.nature)).map(c => ({ iso: c.iso, cr: c.creneau, t: new Date(c.iso + 'T' + c.creneau.split('-')[0] + ':00').getTime() })).filter(c => c.t > hv.base).sort((a, b) => a.t - b.t);
+    const at = dr_cahierHorsClasse(e); lancerRepetition(); const rep = dr_cahierHorsClasse(e); arreterRepetition();
+    const tv = ((ch => ch && ch.seances[0].deroule.travail)(chapitresData['3e']['0']) || {})['1'] || '';
+    res({ at, rep, attendu: P[0] || null, tv, apres: JSON.stringify(e.blocs), avant, src: src.classeNom }); } catch (x) { res({ erreur: String(x.message) }); } }, 1200); })))));
+  const A = r.attendu; const jour = A ? String(+A.iso.slice(8, 10)) : '?'; const heure = A ? A.cr.split('-')[0].replace(':', ' h ') : '?';
+  E.verif('A91', r.at && r.at.montrer && A && r.at.echeanceIso === A.iso && (r.at.date || '').indexOf(heure) >= 0 && (r.at.date || '').indexOf(' ' + jour + ' ') >= 0, 'l\'Atelier : l\'échéance est la prochaine heure de ' + r.src + ' après l\'heure 1 (« ' + ((r.at && r.at.date) || '?') + ' »)', JSON.stringify(r).slice(0, 400));
+  E.verif('A91', r.at && r.at.travail === r.tv && r.tv && Array.isArray(r.at.qui) && r.at.qui.length === 0, 'l\'Atelier : le travail prévu de l\'heure 1 (« ' + String(r.tv).slice(0, 40) + ' »), « qui a participé » vide', JSON.stringify(r.at));
+  E.verif('A91', r.rep && r.rep.montrer && r.rep.qui === null && r.rep.date === r.at.date, 'la répétition : la même échéance ; « qui a participé » laissé aux élèves de la classe test (E4)', JSON.stringify(r.rep));
+  E.verif('A91', r.avant != null && r.avant === r.apres && !/cahier/.test(r.apres), 'rien n\'est écrit dans la trame : la diapo de fin garde ses blocs (' + r.apres + ')', r.apres);
+  E.verif('A91', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

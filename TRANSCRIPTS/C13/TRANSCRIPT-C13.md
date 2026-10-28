@@ -6335,3 +6335,22 @@ MEMO
 
 28/10/2026 14:07
 MEMO
+
+---
+
+## Tour 309 — 28/10/2026 14:17 → 14:18
+
+**Paul :** En attendant je reviens sur rédaction. Le mode interrogatif n'est pas du tout interrogatif, si? Point sur l'utilisation : 81 pourcent
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare l'Atelier sur deux appareils ; E3 refait l'étoile filante, puis s'arrête · ouvert : 843 ; 838 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+842. Non, il ne l'est pas, et je l'ai vérifié dans le code. Le « mode interrogatif » de la rédaction te fait passer d'un critère à l'autre, en plein écran. Pour chaque critère, il affiche « Critère … / points » et ses quatre descripteurs côte à côte. Tu choisis le niveau (1 à 4), puis le sous-niveau, et il passe au critère suivant. Il ne te pose aucune question : c'est une correction guidée en plein écran. Il est identique dans l'app Dugain d'origine, d'où il vient.
+
+843. Ce que je crois que tu attendais : qu'il te pose une question par critère, dans tes mots, par exemple « Prend-il clairement position ? », et que tes réponses donnent le niveau. Je ne le lance pas sans toi. Est-ce bien ça ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:18
+MEMO

@@ -1,0 +1,23 @@
+  info   A93 · le chapitre : 34 demandes · 23 vers l'atelier (21 feuilles, 3 avec un contenu écrit) · 10 vers d'autres outils · 1 externe
+  ok     A93 · l’injection : « Créer ce chapitre » écrit le chapitre (un de plus au hub) — {"boutons":["Créer ce chapitre"],"chapitres":["Chapitre témoin","Poésie et peinture au XIXe siècle"]}
+  ok     A93 · les feuilles existent : une par clé d’item vers l’atelier (21), aucune de plus — 21 feuille(s) d’import au hub
+  ok     A93 · chaque item vers l’atelier est lié (source, ref, kind « atelier »), la même clé d’item à la même feuille (23) — 23/23
+  ok     A93 · chaque feuille porte le titre de son item — 21/21
+  ok     A93 · le contenu : ce que le chapitre écrit (fiche → définition + texte, sans balises), sinon rien d’inventé — 21/21 · fiche-registres : 2 blocs · fiche-notion-propositions : 8 blocs · fiche-versification : 2 blocs
+  ok     A93 · chaque feuille est rattachée à sa séance (niveau, chapitre, séance) et porte son dépôt (la liaison) — 21/21
+  ok     A93 · le compte rendu dit chaque item d’un autre outil, non lié, avec sa raison (10) — 10/10
+  ok     A93 · le compte rendu : « sans contenu : à écrire » (18), « avec le contenu du chapitre » (3) — 18 · 3
+  ok     A93 · le compte rendu : l’externe « déjà liée » — • « La frise du XIXe siècle » : déjà liée (son adresse est dans le chapitre).
+  info   A93 · le compte rendu : Chapitre créé — non publié. Il apparaît dans la liste. Feuilles et liaisons • « Interro de cours » : non lié — un QCM de l’outil QCM, qui n’existe pas encore : à créer dans l’outil, puis à lier. • « Dictée 1 : « Le port » » : non lié — une dictée de l’outil Correction de dictée, à créer dans l’outil, puis à lier. • « Réécriture notée : « Les Fenêtres » » : non lié — une réécriture de l’outil Réécriture, à créer dans l’outil, puis à lier. • « Ton paragraphe corrigé » : non lié — une rédaction de l’outil Rédaction, à créer dans l’outil, puis à lier. • « Ta copie corrigée » : non lié — une étude de texte de l’outil Étude, à créer dans l’outil, puis à lier. • « Récitation : « À une passante » » 
+  ok     A93 · la feuille « Fiche notion : les propositions » s’ouvre par le geste (« Éditer ») : son titre et ses 4 définitions dans l’aperçu — {"editeurChapitre":true,"editer":true,"doc":"feuille_ch_3e_ch-mu0w7z40-wdgq4_fiche-notion-propositions","apercu":"SÉANCE Séance 3 — Interro de cours et analyse logique — les bases (1) DATE DE LA SÉANCE Fiche notion : les propositions Objectif : DÉFINITIO"}
+  ok     A93 · la feuille « Fiche notion : les propositions » s’imprime (« 🖨 Imprimer » : l’impression part) — {"bouton":true,"impressions":1}
+  ok     A93 · la feuille « Fiche méthode : décrire une image » s’ouvre par le geste (« Éditer ») : son titre dans l’aperçu — {"editeurChapitre":true,"editer":true,"doc":"feuille_ch_3e_ch-mu0w7z40-wdgq4_fiche-methode-image","apercu":"SÉANCE Séance 1 — Poésie et peinture : le Romantisme en question DATE DE LA SÉANCE Fiche méthode : décrire une image Objectif : Éditée le 14"}
+  ok     A93 · la feuille « Fiche méthode : décrire une image » s’imprime (« 🖨 Imprimer » : l’impression part) — {"bouton":true,"impressions":1}
+  ok     A93 · l’item « fiche-versification » (deux séances, une feuille) s’ouvre depuis chaque séance (openItem → la feuille) — {"seances":["1","4"],"ouvert":["Fiche notion : Rappel sur la versification","Fiche notion : rappel sur la versification"]}
+  ok     A93 · réinjecter (« Compléter ») ne double rien : ni chapitre, ni feuille ; aucune feuille réécrite (dépôt et rattachement compris) — {"boutons":["Compléter","Remplacer","Créer un double"],"chapitres":2,"feuilles":21,"feuillesEcrites":0,"intactes":true}
+  ok     A93 · après « Compléter » : les items sont liés aux mêmes feuilles — 23/23
+  ok     A93 · après « Compléter » : aucune liaison reposée ; le compte rendu (fenêtre) dit « déjà là », « déjà liée » — {"liaisonsEcrites":0,"msg":"Écrit : 10/10. Rien de ce qui existait n’a été modifié. Feuilles et liaisons • « Interro de cours » : non lié — un QCM de l’outil QCM, qui n’existe pas encore : à créer dans l’outil, puis à lier. • « "}
+  ok     A93 · réinjecter (« Remplacer ») ne double rien : ni chapitre, ni feuille ; aucune feuille réécrite (dépôt et rattachement compris) — {"boutons":["Compléter","Remplacer","Créer un double"],"chapitres":2,"feuilles":21,"feuillesEcrites":0,"intactes":true}
+  ok     A93 · après « Remplacer » : les items sont liés aux mêmes feuilles — 23/23
+  ok     A93 · zéro erreur JS, aucune boîte du navigateur — {"errs":[],"boites":[]}
+— fin : 20 vérifications · 0 échec(s) — VERT · x42c.html md5 0d42ad411fe0925f80f4aa6f83a5b6d6

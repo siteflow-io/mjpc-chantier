@@ -9359,7 +9359,9 @@ function chFeuilleId(niveau,chUid,item){
   var p=function(x){return String(x||'').replace(/[^A-Za-z0-9_-]/g,'_');};
   return 'feuille_ch_'+p(niveau)+'_'+p(chUid)+'_'+p(item);
 }
+var CH_FEUILLES_LUES={}, CH_DEPOT_GARDER={};
 function chFeuillesEtLiaisons(o,niveau,chKey,fin){
+  chKey=String(chKey);   /* E4 (§12.42, 10:09) : une seule forme du numéro de chapitre */
   var base='/site/'+niveau+'/chapitres/'+chKey;
   var lignes=[];var dit=function(t){lignes.push(t);};
   var finir=function(){ fin(lignes.length?'<div class="ch-feuilles-cr"><b>Feuilles et liaisons</b><br>'+lignes.join('<br>')+'</div>':''); };
@@ -9409,7 +9411,7 @@ function chFeuillesEtLiaisons(o,niveau,chKey,fin){
         var x0=parItem[item][0];
         var id=chFeuilleId(niveau,chap.uid,item);feuilleDe[item]=id;
         return secuLire(AT_NOEUD+'/'+id).then(function(deja){
-          if(deja){x0.etat='deja';return;}
+          if(deja){x0.etat='deja';CH_FEUILLES_LUES[id]=deja;return;}
           var doc=atDocNeuf();
           var titre=String(x0.it.title||item);
           doc.titre=titre;
@@ -9420,12 +9422,12 @@ function chFeuillesEtLiaisons(o,niveau,chKey,fin){
             if(corps){doc.cases.texte_libre=true;doc.contenu.push({id:'texte_libre',valeurs:{texte:corps},reformulations:{}});}
           });
           var p=x0.p;
-          doc.rattachement={niveau:niveau,classe:'',classeNom:'',eleve:'',chapitre:String(chKey),seance:String(p.j),
+          doc.rattachement={niveau:niveau,classe:'',classeNom:'',eleve:'',chapitre:chKey,seance:String(p.j),
                             chapitreTitre:chap.title||'',seanceTitre:p.se.title||'',chapitreUid:chap.uid||'',seanceUid:p.se.uid||''};
           doc.origine={import:true,chapitreUid:chap.uid,item:item};
           return secuEcrire(AT_NOEUD+'/'+id,doc).then(function(r){
             if(!r.ok){x0.etat='ko';return;}
-            x0.etat=doc.contenu.length?'neuve':'vide';
+            x0.etat=doc.contenu.length?'neuve':'vide';CH_FEUILLES_LUES[id]=doc;
             [typeof LINK_ATELIER_DOCS!=='undefined'?LINK_ATELIER_DOCS:null,typeof AT_DOCS!=='undefined'?AT_DOCS:null,(typeof AT!=='undefined'&&AT&&AT.liste)?AT.liste:null]
               .forEach(function(c){ if(c&&!c[id])c[id]=JSON.parse(JSON.stringify(doc)); });
           });
@@ -9447,6 +9449,7 @@ function chFeuillesEtLiaisons(o,niveau,chKey,fin){
             dit('   liée dans '+sTit+'.');
           });
         });
+        items.forEach(function(item){ CH_DEPOT_GARDER[feuilleDe[item]]=parItem[item].map(function(x){return String(x.p.j);}); });   /* E4 (§12.42, 10:09) */
         if(!aLierIci.length){finir();return;}
         _edLierEcrire(niveau,chKey,aLierIci,function(faits){
           if(faits<aLierIci.length)dit('⚠ '+(aLierIci.length-faits)+' liaison'+(aLierIci.length-faits>1?'s':'')+' n’'+(aLierIci.length-faits>1?'ont':'a')+' pas abouti — réinjecte : seuls les manques seront repris.');
@@ -13811,16 +13814,22 @@ function _edLierEcrire(level,chnum,lignes,apres,silencieux){   /* E4 (§12.42) :
    reste dite par atStatutFeuille, jamais \u00e9cras\u00e9e). Les caches suivent. */
 function atFeuilleDepotPoser(docId,level,chnum,snum,itemId,cb){
   var d=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)?LINK_ATELIER_DOCS[docId]:null;
-  if(!d&&AT.docId===docId)d=AT.doc;   /* [LOT11-\u2460] depuis l'ATELIER, la feuille vivante est la source \u2014 sans elle, la garde anti-\u00e9crasement du rattachement ne voyait pas l'adresse existante et la r\u00e9\u00e9crivait (mesur\u00e9 au banc : champs classe/\u00e9l\u00e8ve perdus) */
+  if(!d&&AT.docId===docId)d=AT.doc;
+  if(!d&&typeof CH_FEUILLES_LUES!=='undefined')d=CH_FEUILLES_LUES[docId];   /* E4 (§12.42, 10:09) : la feuille que l'import vient de lire ou d'écrire */
+  chnum=String(chnum);snum=String(snum);   /* E4 (§12.42, 10:09) : une seule forme du numéro — la chaîne, comme la liste déroulante du rattachement */   /* [LOT11-\u2460] depuis l'ATELIER, la feuille vivante est la source \u2014 sans elle, la garde anti-\u00e9crasement du rattachement ne voyait pas l'adresse existante et la r\u00e9\u00e9crivait (mesur\u00e9 au banc : champs classe/\u00e9l\u00e8ve perdus) */
   var ch=(chapitresData[level]||{})[chnum]||{};
   var se=(ch.seances||{})[snum]||{};
   var depot={niveau:level,chapitre:chnum,seance:snum,
              chapitreUid:ch.uid||'',seanceUid:se.uid||'',   /* [C5-UID] l'identit\u00e9 \u00e0 c\u00f4t\u00e9 du rang */
              itemId:itemId,le:Date.now()};
-  var ecrits=[secuEcrire(AT_NOEUD+'/'+docId+'/depot',depot)];
+  /* E4 (§12.42, 10:09) : un dépôt déjà posé au même endroit n'est pas réécrit (comparé sans tenir compte du type du numéro) */
+  var dAv=d&&d.depot, garde=(typeof CH_DEPOT_GARDER!=='undefined'&&CH_DEPOT_GARDER[docId])||null;
+  var memeDepot=!!(dAv&&String(dAv.niveau)===String(level)&&String(dAv.chapitre)===chnum&&String(dAv.itemId)===String(itemId)&&(String(dAv.seance)===snum||(garde&&garde.indexOf(String(dAv.seance))>=0)));   /* une feuille liée depuis deux séances garde le dépôt qu'elle a */
+  var ecrits=memeDepot?[]:[secuEcrire(AT_NOEUD+'/'+docId+'/depot',depot)];
+  if(memeDepot)depot=dAv;
   var ratt=null;
   var rAv=d&&d.rattachement;
-  if(!rAv||!rAv.niveau||!rAv.chapitre||!rAv.seance){
+  if(!rAv||!rAv.niveau||rAv.chapitre==null||rAv.chapitre===''||rAv.seance==null||rAv.seance===''){
     ratt={niveau:level,chapitre:chnum,seance:snum,
           chapitreTitre:ch.title||'',seanceTitre:se.title||'',
           chapitreUid:ch.uid||'',seanceUid:se.uid||''};
@@ -13831,7 +13840,8 @@ function atFeuilleDepotPoser(docId,level,chnum,snum,itemId,cb){
     if(ok){
       [typeof LINK_ATELIER_DOCS!=='undefined'?LINK_ATELIER_DOCS:null,
        typeof AT_DOCS!=='undefined'?AT_DOCS:null,
-       (AT&&AT.liste)?AT.liste:null].forEach(function(cache){
+       (AT&&AT.liste)?AT.liste:null,
+       typeof CH_FEUILLES_LUES!=='undefined'?CH_FEUILLES_LUES:null].forEach(function(cache){
         if(cache&&cache[docId]){cache[docId].depot=depot;if(ratt)cache[docId].rattachement=ratt;}
       });
       if(AT.docId===docId&&AT.doc){AT.doc.depot=depot;if(ratt)AT.doc.rattachement=ratt;}

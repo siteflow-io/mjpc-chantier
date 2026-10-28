@@ -1220,3 +1220,9 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - banc-1249 15/0 (md5 `18d54336…`) ; `banc.sh` **VERT** (K 106/0 ; `E4/sorties/1250b-28-10/`).
 
 - 28/10 09:35 Paris : veille close (rien de neuf aux relances après la poussée 123).
+
+## Poussée 124 — 09:26 UTC (10:26 Paris) · §12.42 : réinjecter ne réécrit plus aucune feuille (relance 10:09)
+- **Cause** : le numéro du chapitre arrivait en nombre (« Créer ce chapitre ») puis en chaîne (« Compléter », « Remplacer ») ; et une feuille liée depuis deux séances voyait son dépôt réécrit par la dernière liaison.
+- **Code** (`index.html`) : une seule forme, la chaîne (`chFeuillesEtLiaisons`, `atFeuilleDepotPoser`, comme la liste du rattachement) ; `atFeuilleDepotPoser` ne réécrit pas un dépôt déjà posé au même endroit (comparé sans tenir compte du type), ni celui d'une feuille liée depuis une autre de ses séances du même chapitre ; il lit la feuille que l'import vient de lire ou d'écrire (`CH_FEUILLES_LUES`) ; un rattachement « 0 » n'est plus pris pour absent.
+- A93 (`banc-1242`, la comparaison stricte, dépôt et rattachement compris) **20/0** ; cas 42i d'E3 **32/32** ; `banc.sh` **VERT** (K 106/0 ; `E4/sorties/1242b-28-10/`).
+- **§12.42 E4 fini.**

@@ -5407,3 +5407,41 @@ MEMO
 
 27/10/2026 23:37
 MEMO
+
+---
+
+## Tour 268 — 28/10/2026, la nuit → 03:58 (rapport du matin, sans message de Paul)
+
+*(La nuit : E1 §12.35 (7), §12.39, §12.38 (1), §12.38 (3) ; E4 §12.36, §12.38 (2), §12.37, A91 ; E3 retours 83 à 94 ; la conscience : relances, tranchage du contenu prévu (02:25), rejeu des bancs, candidate ⑦ assemblée et jouée, paires `pieces/T268-01` à `09`.)*
+
+**Claude :**
+
+À jouer : la ⑦ (captures T268-01 à T268-09) · en cours chez les exécutants : rien, tout est validé · ouvert : 712 ; 641, 538, 553, 586, 481, 458.
+
+709. Bonjour. Tout ce qui était en cours est fini et vérifié cette nuit. E3 a validé les six morceaux, et mon banc passe en entier sur la même version (106 vérifications, 0 échec). Les six morceaux :
+- §12.34 : les défauts relevés par l'instance du chapitre 3e, et le bilan ;
+- §12.35 : une séance réservée à une classe, et le lancement qui ouvre la séance que la case nomme (670) ;
+- §12.36 : la colonne de gauche de l'Atelier (tes « Ok » de 672 à 680), et la colonne de droite qui garde sa largeur (697) ;
+- §12.37 : la mise en forme des feuilles, ton point 16 ;
+- §12.38 : la répétition — la classe de la prochaine case avec son heure et sa date (684), les élèves de la classe test (687), le cahier de textes rempli (691) ;
+- §12.39 : chaque séance a son identité et son rang ; chaque classe voit ses séances numérotées sans trou (681, 683).
+
+710. La ⑦ est prête : index.html 8.75.0-⑦. Les neuf paires de captures avant / après sont dans ce message (T268-01 à T268-09), toutes faites sur le même faux hub. Elle part en production sur ton « promeus ».
+
+711. Une décision prise cette nuit sans toi, à corriger si tu veux. Hors de la classe, la partie « Contenus de séances » du cahier montre le contenu prévu de l'heure : ses diapos dans l'ordre, écrites comme pour une heure jouée (« Cette heure, on a fait l'activité 8 — Où en sommes-nous ?, puis… »). C'est l'image T268-07.
+
+712. Une question, avant ou après le promeus. Le cahier de textes projeté en classe écrit « Donné le 18 septembre par M. MENEY P. », comme École Directe (image T268-06). C'est déjà ainsi en production, mais c'est vu par l'élève, alors que ta règle veut « moi », jamais « M. Meney », sauf dans le récit. Je propose de retirer « par M. MENEY P. ». Oui ?
+
+713. À savoir pour la répétition : à 20 h le 14/09, si l'heure du matin n'a pas été jouée, l'emploi du temps lui-même renumérote le cours suivant. La répétition dit alors « heure 1/3 · mar. 15/09 15:07 », comme l'emploi du temps : les deux sont d'accord.
+
+714. Correction de dictée L18 a été promue hier soir à 23:27 (toute la largeur).
+
+À tester, après ton « promeus », sur ton vrai chapitre :
+- l'Atelier : la colonne de gauche (le titre du chapitre, les heures avec leur date, l'heure de chaque diapo, la poignée qu'on tire puis qu'on recharge) ;
+- clique chaque élément de la colonne : chacun fait quelque chose ;
+- une feuille : mets un mot en gras, souligne-le, change sa couleur, surligne-le, ajoute la légende, puis l'aperçu d'impression ;
+- « Jouer en avance » le soir : la classe annoncée est celle de la prochaine case ; « ⋯ » montre les élèves de la classe test ; la diapo du cahier de textes est remplie ;
+- côté élève : les séances sont numérotées sans trou.
+
+28/10/2026 03:58
+MEMO

@@ -957,3 +957,25 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - **§12.37 VERT (`4d2e0b2d`)**.
 - Sont VERTS : §12.35, §12.37, §12.39. §12.36 et §12.38 attendent E1 (§12.38 (1)(3) : A84 (5)(6), A87, A91).
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0050-28-10-1237/`.
+
+## Retour 91 — 28/10, 01:25 — **§12.36 VERT (`52539adc`)** ; §12.38 : la répétition ne dit pas son heure (E1), le cahier attend son rendu (E4)
+- E1 a poussé le §12.38 (1) (`a45213fcf`) : une seule source pour la classe, l'heure n/N et la date. Il a aussi poussé les données du §12.38 (3) (`630f480cb`). L'assemblé de la tête est `52539adc`. `banc.sh` : **VERT**.
+- **Trois fautes de ma mesure, corrigées :**
+  - Cas 36, A84 (5) : la ligne d'heure tient sur deux lignes, dans deux éléments. Mon contrôle ne lisait que la première. Il lit maintenant les deux.
+  - Cas 38, A87 : le choix de la classe est un menu `#dr-classes-choix`, et mon filtre ne le reconnaissait pas.
+  - Ajouté au cas 38 : on choisit 3 DYLAN Bob dans ce menu, et l'en-tête le dit.
+- **Le cas 36, aux quatre tailles : VERT 52/52.**
+  - La ligne d'heure dit « H1 · lun. 14/09 · 08:57 → 09:52 » puis « 57 min prévues pour 50 utiles +7 ».
+  - Les diapos disent leur heure (08:57, 09:00, 09:06…) et leur durée.
+  - H2 dit « mar. 15/09 · 15:07 → 16:02 ».
+  - Capture `1707x743-36-1-la-colonne-apres.png`, regardée.
+- **§12.36 VERT (`52539adc`)**.
+- **Le cas 38 : 7 vertes sur 12 par taille.**
+  - Vert :
+    - l'Atelier dit « 3E Charles de Gaulle · heure 1/3 · mar. 15/09 15:07 » à 20 h comme à 9 h ; la séance 2 dit mar. 22/09 ; Dylan n'est plus nulle part ;
+    - le nom de la classe se clique et propose « 3 DYLAN Bob » et « CLASSE TEST » (capture `*-38-3-…-apres.png`, regardée) ; une classe choisie passe dans l'en-tête ;
+    - A88 : les élèves de CLASSE TEST ; rien n'est écrit au hub.
+  - **A87, rouge, à E1.** En répétition, l'en-tête dit « RÉPÉTITION · 3E Charles de Gaulle · répét. 00:00 · diapo 1, dévoilée 0 / 6 », **sans « heure 1/3 · mar. 15/09 15:07 »**. Le contrat donne pour exemple « RÉPÉTITION · 3E Charles de Gaulle · heure 2/3 · mar. 15/09 15:07 ». `dr-socle.js:372` écrit bien ce texte dans `#hou` en répétition. À vérifier côté E1 : le compteur « répét. … · diapo n, dévoilée » semble écrire au même endroit et effacer l'heure.
+  - **A91, rouge, à E4.** La diapo du cahier en répétition dit seulement « FIN D'HEURE ». E1 a poussé les données (`dr_cahierHorsClasse`). Le rendu est à E4, comme E1 le dit dans RELANCES/E1.md.
+- Verts : §12.35, §12.36, §12.37, §12.39. Reste §12.38.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0115-28-10-1238/`.

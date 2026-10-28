@@ -6494,3 +6494,20 @@ MEMO
 
 28/10/2026 14:43
 MEMO
+
+---
+
+## Tour 316 — 28/10/2026 14:45 → 14:45
+
+**Paul :** Quand est ce que c'est fini la 8?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 remet la suite de la phrase de fin d'heure ; E1 retire le second bouton de lancement · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+857. Tout est codé, sauf deux petits morceaux lancés il y a dix minutes : la phrase de fin d'heure (E4) et le second bouton de lancement à retirer (E1). Après, c'est mon tour : j'assemble, je passe mon banc complet et les cas d'E3, puis je fais les paires d'images avant / après des écrans changés. Mon estimation, pas une mesure : la ⑧ devant toi vers 16 h 30, pour que tu la promeuves sur captures. Je te préviens si ça glisse.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:45
+MEMO

@@ -1148,7 +1148,7 @@ await B('A53', '§12.29 (5), S5 : la répétition ne montre que la répétition 
   for (const [w, h] of TAILLES_1227) { const o = await E.ouvrir(b, { w, h }); const pg = o.pg; await sansVoile(pg);
     await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="pilotage"]').click()); await pg.waitForTimeout(900);
     const r = await pg.evaluate(() => { const vis = s => { const e = document.querySelector(s); return !!e && e.offsetParent !== null && e.getBoundingClientRect().width > 0; }; const h5 = Array.from(document.querySelectorAll('#droite .suivi h5')).find(x => /Participation/.test(x.textContent)); return { rep: !!S.repetition, bfin: vis('#bfin'), clore: vis('#dr-clore'), qui: vis('#bqui'), vif: vis('#vif'), part: vis('#part'), titre: !!h5 && h5.offsetParent !== null, ouvrir: vis('#bvideoproj'), ligne: vis('.at-rep-ligne'), ecr: window.__ECR.length }; });
-    E.verif('A53', r.rep && !r.bfin && !r.clore && !r.qui && !r.vif && !r.part && !r.titre && r.ouvrir && r.ligne, w + ' × ' + h + ' : en répétition (l\'onglet Pilotage de l\'Atelier) : ni « Fin de l\'heure », ni « ■ Clore », ni 👥, ni « Participation » (titre, saisie, initiales) ; « 🖥 Ouvrir le tableau » et la ligne de la répétition sont là', JSON.stringify(r));
+    E.verif('A53', r.rep && !r.bfin && !r.clore && r.qui && !r.vif && r.part && r.titre && r.ouvrir && r.ligne, w + ' × ' + h + ' : en répétition (l\'onglet Pilotage de l\'Atelier) : ni « Fin de l\'heure », ni « ■ Clore » ; 👥 et « Participation » (titre, initiales) là, comme en heure (§12.51, Paul 28/10 10:17 — avant §12.29-5 les cachait) ; « 🖥 Ouvrir le tableau » et la ligne de la répétition sont là', JSON.stringify(r));
     await lancerEnClasse(pg); await pg.waitForTimeout(900);
     const c = await pg.evaluate(() => { const vis = s => { const e = document.querySelector(s); return !!e && e.offsetParent !== null; }; return { rep: !!S.repetition, bfin: vis('#bfin'), clore: vis('#dr-clore'), qui: vis('#bqui'), vif: vis('#vif'), part: vis('#part') }; });
     E.verif('A53', !c.rep && c.bfin && c.clore && c.qui && c.vif && c.part, w + ' × ' + h + ' : dans l\'écran de la classe, tout revient (Fin de l\'heure, Clore, 👥, la participation) — §12.29 (6)', JSON.stringify(c));
@@ -1863,6 +1863,30 @@ await B('A95', '§12.44 : désigner le dossier de la clé, poser la vidéo et se
   E.verif('A95', cl.ok && cl.ou === 'classe' && /branchée sur l’ordi de classe/.test(cl.texte), 'chez Paul, la garde se lit sur l\'ordi qui projette : « ' + cl.texte + ' »', JSON.stringify(cl));
   E.verif('A95', !errs.length && !errsT.length, 'aucune erreur JS', errs.concat(errsT).slice(0, 2).join(' ; ') || undefined);
   await c2.close(); await ctx.close(); srv.close(); });
+
+/* ── A102 · §12.51 (Paul 28/10 10:17) : ⏱ et 👥 sous la diapo, en heure et en répétition ; en répétition, la colonne d'une heure avec les élèves de 3E Charles de Gaulle ── */
+await B('A102', '§12.51 : aux quatre tailles, ⏱ et 👥 sous la diapo en répétition et en heure, chacun publie au tableau distant ; en répétition, la colonne montre les élèves de 3E Charles de Gaulle, une participation par les initiales s\'y inscrit, rien d\'écrit au hub hors du canal du tableau', async () => {
+  for (const [w, h] of TAILLES_1227) { const st = E.store(); const o = await E.ouvrir(b, { w, h, hub: st }); const pg = o.pg; await sansVoile(pg);
+    const vus = () => pg.evaluate(() => { const H = innerHeight, W = innerWidth; const v = id => { const x = document.getElementById(id); if (!x || !x.offsetParent) return false; const r = x.getBoundingClientRect(); return r.width > 0 && r.top >= 0 && r.bottom <= H && r.left >= 0 && r.right <= W; }; const pl = document.getElementById('bplus'); return { chrono: v('bchrono'), qui: v('bqui'), tChrono: (document.getElementById('bchrono') || {}).title || '', tQui: (document.getElementById('bqui') || {}).title || '' }; });
+    const E0 = await pg.evaluate(() => window.__ECR.length);
+    await pg.evaluate(() => lancerRepetition()); await pg.waitForTimeout(1200);
+    const vr = await vus();
+    await pg.click('#bchrono'); await pg.waitForTimeout(600); await pg.click('#bqui'); await pg.waitForTimeout(800);
+    const sr = await pg.evaluate(() => { const sc = ((window.__HUB.site || {}).repetition || {}).scene || {}; return { bandeau: !!sc.bandeau, qui: Array.isArray(sc.qui) }; });
+    const nCdG = await pg.evaluate(() => { const c = dr_classeTest(); return (extractEleves(c) || []).length; });
+    const col0 = await pg.evaluate(() => ({ n: document.querySelectorAll('#part span[data-ini]').length, pres: (document.getElementById('presents') || {}).textContent || '', vis: !!(document.getElementById('part') || {}).offsetParent, eleves: ELEVES.slice(0, 2) }));
+    await pg.click('#part span[data-ini]'); await pg.waitForTimeout(300); await pg.click('#ppop button.m[data-pose]'); await pg.waitForTimeout(500);
+    const col1 = await pg.evaluate(() => ({ parts: S.parts.length, pres: (document.getElementById('presents') || {}).textContent || '' }));
+    const ecr = await pg.evaluate(E0 => window.__ECR.slice(E0), E0);
+    E.verif('A102', vr.chrono && vr.qui && /Chrono au tableau/.test(vr.tChrono) && vr.tQui && sr.bandeau && sr.qui, w + '×' + h + ' · répétition : ⏱ et 👥 sous la diapo (infobulles), chacun publie au tableau distant (bandeau du chrono, qui a participé)', JSON.stringify({ vr: { chrono: vr.chrono, qui: vr.qui }, sr }));
+    E.verif('A102', nCdG > 4 && col0.vis && col0.n === nCdG && /^0 sur \d+ présents$/.test(col0.pres.trim()) && col1.parts === 1 && /^1 sur \d+ présents$/.test(col1.pres.trim()) && ecr.every(x => /^(PUT|DELETE) \/site\/repetition\//.test(x)), w + '×' + h + ' · répétition : la colonne montre les ' + nCdG + ' élèves de 3E Charles de Gaulle (« ' + col0.pres.trim() + ' »), une participation par les initiales → « ' + col1.pres.trim() + ' » ; écritures : le canal du tableau seulement (' + ecr.length + ')', JSON.stringify({ col0, col1, ecr: [...new Set(ecr)] }));
+    await pg.evaluate(() => arreterRepetition()); await pg.waitForTimeout(500);
+    await lancerEnClasse(pg); await pg.waitForTimeout(1500);
+    const vh = await vus(); await pg.click('#bchrono'); await pg.waitForTimeout(900);
+    const sh = await pg.evaluate(() => { const sc = dr_scene(S.mur) || {}; let hub = null; try { const c = dr_cheminC().split('/').filter(Boolean); let n = window.__HUB; c.forEach(k => { n = n && n[k]; }); hub = n && n.scene ? !!n.scene.bandeau : null; } catch (e) {} return { scene: !!sc.bandeau, hub }; });
+    E.verif('A102', vh.chrono && vh.qui && sh.scene && sh.hub, w + '×' + h + ' · en heure : ⏱ et 👥 sous la diapo ; ⏱ publie le chrono au tableau distant (la scène au hub)', JSON.stringify({ vh: { chrono: vh.chrono, qui: vh.qui }, sh }));
+    E.verif('A102', !o.errs.length, w + '×' + h + ' : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
+});
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

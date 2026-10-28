@@ -5605,3 +5605,33 @@ MEMO
 
 28/10/2026 07:24
 MEMO
+
+---
+
+## Tour 275 — 28/10/2026 07:29 → 07:31
+
+**Paul :** 739. Oui parce que la clef est branchée sur l'ordi qui projette, pas sur mon ordi à moi. Relis ce que j'ai expliqué sur mon flux. Par ailleurs, je rappelle que cette fonctionnalité concerne en priorité les vidéos. Pour les pdf images etc, oui, évidemment. Mais en revanche il me faut une alerte: si j'affiche un pdf ou une image avec ma clef, le site doit me dire où je peux déposer directement. D'ailleurs, est ce que le site pourrait être directement l'endroit où jupload mes fichiers? Il y a lupload drive mais il me semble que j'ai laissé tomber ça parce que trop fastidieux et pas assez d'espace et requiert une connexion.
+
+**Claude** *(contrat §12.44 (4 bis), (4 ter) ; relance E1)* :
+
+À jouer : rien de neuf depuis la ⑦ (tests de 738) · en cours chez les exécutants : E1 sur 717, puis la vidéo et les fichiers de la clé, puis la taxonomie ; E4 sur l'import, puis la présence en mode test, le cahier, le « ? », les notes ; E3 vérifie · ouvert : 742 ; 538, 553, 481, 458.
+
+740. Tu as raison, je me suis trompé de flux. La clé est sur l'ordi de classe, qui projette, et tu pilotes depuis ton ordi : c'est ce que disent tes cadrages de septembre. L'« inconvénient » de 739 ne tient donc pas : le fichier est là où il faut, sur l'ordi qui projette. C'est écrit au contrat. Le dossier de la clé se désigne sur l'ordi de classe et c'est lui qui lit le fichier ; ton ordi lui dit quand lire ; la garde te dit, chez toi, si l'ordi de classe voit la clé.
+
+741. Les images et les PDF depuis la clé : c'est lancé, avec la vidéo en premier. L'alerte aussi : quand une diapo montre une image ou un PDF de ta clé, l'Atelier et « À régler » te le disent, avec l'endroit où le déposer en ligne.
+
+742. Le site comme endroit de dépôt : oui, c'est possible pour les images et les PDF. Ils iraient dans mjpc-medias, là où vivent déjà tes images : un bouton « Déposer en ligne » dans l'Atelier y enverrait le fichier, sans passer par moi ni par Drive. Le fichier se voit en ligne environ une minute après. Il y a deux limites et une condition :
+- mjpc-medias tient 1 Go en tout : c'est large pour des images et des PDF, pas pour des vidéos, qui restent sur la clé ;
+- il faut internet au moment du dépôt ; sans internet, la clé reste ton chemin ;
+- le site a besoin d'une clé d'accès GitHub qui n'ouvre que mjpc-medias. Tu la tapes une fois sur ton ordi ; elle reste dans ton navigateur, jamais dans un fichier. Si elle fuyait, quelqu'un pourrait écrire dans mjpc-medias, et seulement là.
+
+Le stockage de fichiers de Firebase, là où vit ton site, n'est plus possible gratuitement : depuis septembre 2024, il demande le forfait payant Blaze, avec une carte bancaire, et ta règle dit jamais de service payant. Je propose donc le bouton « Déposer en ligne » vers mjpc-medias, pour les images et les PDF. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+Sources :
+- [FAQ Firebase sur les changements de Cloud Storage annoncés en septembre 2024](https://firebase.google.cn/docs/storage/faqs-storage-changes-announced-sept-2024?hl=en)
+- [Les limites de GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)
+
+28/10/2026 07:31
+MEMO

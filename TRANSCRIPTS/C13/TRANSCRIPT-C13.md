@@ -5656,3 +5656,24 @@ MEMO
 
 28/10/2026 07:38
 MEMO
+
+---
+
+## Tour 277 — 28/10/2026 07:40 → 07:41
+
+**Paul :** Ok. En revanche 1 go c'est très limite.
+
+**Claude** *(mesuré : mjpc-medias, 1,7 Mo, 18 fichiers ; contrat §12.49 ; relance E4)* :
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 sur 717, puis la vidéo et les fichiers de la clé, puis la taxonomie ; E4 sur la présence en mode test, le cahier, le « ? », les notes, puis « Déposer en ligne » ; E3 vérifie l'import des feuilles · ouvert : 538, 553, 481, 458.
+
+746. J'ai mesuré : mjpc-medias tient aujourd'hui 1,7 Mo pour tes onze images du chapitre (environ 200 Ko chacune). À cette taille, 1 Go fait environ cinq mille images. Le site réduira chaque image avant de l'envoyer, sans changement au tableau. Un PDF de cours pèse de 0,2 à 2 Mo : cela fait entre cinq cents et cinq mille PDF.
+
+747. Et quand le premier mjpc-medias approchera du plein, le relais écrira dans un second, que je crée d'avance, puis un troisième. Chacun a 1 Go, c'est gratuit, et rien ne change pour toi. En pratique, il n'y a pas de limite. Les vidéos, elles, restent sur ta clé.
+
+748. Le relais est lancé (E4, après ses morceaux en cours). Deux gestes seront à toi, une fois : coller le programme du relais dans ton programme Google, puis la clé GitHub dans ses réglages. Je relis le programme avant, et je te guide pas à pas.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 07:41
+MEMO

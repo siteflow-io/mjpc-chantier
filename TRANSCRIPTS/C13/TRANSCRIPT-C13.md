@@ -6802,7 +6802,18 @@ MEMO
 
 ## Tour 332 — 28/10/2026 16:24 → 16:25
 
-**Paul :** Message pour la conscience n°13, de la conversation des chapitres (4e « Le Horla », 3e « Poésie et peinture »), 28/10/2026, relayé par Paul. […] *(le message entier : l'aperçu des feuilles annonce « Ch. 0 » pour le chapitre 2 de 4e ; `ed2Papier` écrit la clé du chapitre au lieu de son rang ; proposition : `ordDe` comme `edFeuilleDepots` ; banc : créer un chapitre et le monter)* Par ailleurs je m'en vais là. tu es en autonomie, je ne peux pas te relancer, donc débrouille toi. Tout doit être ok pour la 8 quand je rentre à 18H30.
+**Paul :** Message pour la conscience n°13, de la conversation des chapitres (4e « Le Horla », 3e « Poésie et peinture »), 28/10/2026, relayé par Paul.
+
+Ce que ça change pour la classe : dans l'éditeur de chapitre, l'aperçu des feuilles annonce un faux numéro de chapitre. Le chapitre 2 de 4e s'affiche « Ch. 0 ». Paul ne peut pas se fier à ce repère quand il relit ou imprime un chapitre.
+
+Mesuré en production 8.75.0-⑦ (index.html, md5 e3a92022920c0cca559cfa1edb356961) :
+1. Atelier → Mes chapitres → 4e → « Le Horla, de Guy de Maupassant » (n°2) → Éditer dans l'atelier : chaque feuille de l'aperçu porte « Ch. 0 · S. n ». En 3e, « Poésie et peinture au XIXe siècle » (n°2) porte « Ch. 1 · S. n ».
+2. Cause, lue dans le code : ed2Papier, l. 12914, écrit 'Ch. '+atEsc(chnum), c'est-à-dire la clé du chapitre au hub (/site/4e/chapitres/0) et non son rang (ordre).
+3. Le même écran lit déjà le rang ailleurs : edFeuilleDepots (l. 12192, ordDe(pc.o,pc.k)) affiche « Déposée dans : 4e › Ch.2 › S.1 », et atAdresseAffichage / atCtxAffichage (l. 11168, 10278) affichent « Chapitre 2 — Le Horla » sur la feuille. Sur un même écran, on lit donc « Ch. 0 » et « Chapitre 2 ».
+4. La règle d'impression de l'éditeur (l. 1050) ne cache pas .ed2-pref. Je n'ai pas imprimé : je ne sais pas si « Ch. 0 » sort sur le papier.
+5. Pourquoi c'est visible aujourd'hui : sur ordre de Paul, cette conversation a créé les vrais chapitres 1 (« Paris à la barre » en 4e, « J'ai été dans les tranchées » en 3e) avec « + Nouveau chapitre » dans l'arborescence, puis les a montés en n°1 avec « Monter ». Depuis, clés et rangs ne coïncident plus. Relu au hub : en 4e, la clé 0 a le rang 2 (Le Horla) et la clé 1 le rang 1 ; en 3e, la clé 1 a le rang 2 et la clé 2 le rang 1.
+
+Proposition : l. 12914, afficher le rang comme le fait edFeuilleDepots (ordDe(chapitresData[level][chnum], chnum)). Banc par le geste : créer un chapitre et le monter, pour que clé et rang divergent. L'aperçu doit alors donner le même numéro que « Déposée dans » et que la ligne CHAPITRE de la feuille. À déclarer au registre docs/MJPC6-DETTES.md si tu la retiens. Par ailleurs je m'en vais là. tu es en autonomie, je ne peux pas te relancer, donc débrouille toi. Tout doit être ok pour la 8 quand je rentre à 18H30.
 
 **Claude :**
 

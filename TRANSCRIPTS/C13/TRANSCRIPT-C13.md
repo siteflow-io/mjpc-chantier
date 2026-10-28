@@ -6593,3 +6593,20 @@ MEMO
 
 28/10/2026 15:02
 MEMO
+
+---
+
+## Tour 321 — 28/10/2026 15:03 → 15:03
+
+**Paul :** Ok
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 retire le second bouton de lancement, le dernier morceau de la ⑧ · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+869. C'est écrit au contrat (§12.64), avec 860 à 863 que je prends dans le même mouvement ; arrête-moi si ce n'était pas ça. Après la ⑧, chaque morceau part chez un exécutant neuf que je lance moi-même, puis je vérifie et je passe le banc complet avant chaque promotion. Ce qui est fini part en archive. Et je ne t'écris plus que pour décider, promouvoir ou tester.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:03
+MEMO

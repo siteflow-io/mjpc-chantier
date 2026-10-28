@@ -1,0 +1,1226 @@
+{
+ "diapos": [
+  {
+   "nom": "H1",
+   "di": 0,
+   "e": {
+    "act": "Analyse d'images : la routine",
+    "role": "",
+    "blocs": "consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 1 — Analyse d'images : la routine",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "•",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t span.txt",
+     "texte": "Observe, discute, fais une hypothèse sur le Romantisme.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Étape 1 : J'observe les images en silence (5 min).",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 li..",
+     "texte": "Étape 2 : Je discute en groupe de ce que je vois (5 min).",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.2 li..",
+     "texte": "Étape 3 : Au brouillon, dans un tableau à trois colonnes — ce que je v",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.3 li..",
+     "texte": "Étape 4 : Je choisis de quel élément je vais parler (2 min).",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.4 li..",
+     "texte": "Étape 5 : À partir de cet élément, je fais une hypothèse sur ce que pe",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.5 li..",
+     "texte": "Étape 6 : J'expose mon hypothèse à l'oral.",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t span.txt"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 1,
+   "e": {
+    "act": "Tableau 1",
+    "role": "",
+    "blocs": "image"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Tableau 1",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "div.img-vide",
+     "texte": "image absente de mjpc-medias · poesie-peinture-xixe/tableau-5-friedric",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t div.img-lg",
+     "texte": "Le Voyageur contemplant une mer de nuages, Caspar David Friedrich, ver",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t div.img-lg"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 2,
+   "e": {
+    "act": "Un schéma",
+    "role": "",
+    "blocs": "schema"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Un schéma",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "svg",
+     "texte": "[svg]",
+     "editable": false,
+     "ce": null
+    }
+   ],
+   "corr": null
+  },
+  {
+   "nom": "H1",
+   "di": 3,
+   "e": {
+    "act": "Une fiche",
+    "role": "",
+    "blocs": "fiche"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Une fiche",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "button.dr-fiche-ouvrir",
+     "texte": "⤢ Ouvrir la fiche",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "div.tt",
+     "texte": "Fiche notion",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t h3",
+     "texte": "Le registre lyrique",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 div.def",
+     "texte": "Le registre d'un texte, c'est l'effet qu'il produit sur le lecteur.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 p",
+     "texte": "Le lyrique exprime des sentiments personnels par des rythmes et des im",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t h3"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 4,
+   "e": {
+    "act": "Une vidéo",
+    "role": "",
+    "blocs": "video"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Une vidéo",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "div.lb",
+     "texte": "Le voyageur, filmé — 0:00 / 1:00 · pause",
+     "editable": false,
+     "ce": null
+    }
+   ],
+   "corr": null
+  },
+  {
+   "nom": "H1",
+   "di": 5,
+   "e": {
+    "act": "Une page",
+    "role": "",
+    "blocs": "page"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Une page",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t div.page-t",
+     "texte": "Une page web",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "div.page-v",
+     "texte": "page HTML — https://exemple-de-page.fr/page.html ·",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "b",
+     "texte": "sans contrat de pilotage : jouée comme une image",
+     "editable": false,
+     "ce": null
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t div.page-t"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 6,
+   "e": {
+    "act": "Tableau 2",
+    "role": "",
+    "blocs": "image"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Tableau 2",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "div.img-vide",
+     "texte": "image absente de mjpc-medias · poesie-peinture-xixe/tableau-3-turner-p",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t div.img-lg",
+     "texte": "Pêcheurs en mer, Joseph Mallord William Turner, 1796",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t div.img-lg"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 7,
+   "e": {
+    "act": "Tableau 3",
+    "role": "",
+    "blocs": "image"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Tableau 3",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "div.img-vide",
+     "texte": "image absente de mjpc-medias · poesie-peinture-xixe/tableau-1-gericaul",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t div.img-lg",
+     "texte": "Le Radeau de la Méduse, Théodore Géricault, 1818-1819",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t div.img-lg"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 8,
+   "e": {
+    "act": "Tableau 4",
+    "role": "",
+    "blocs": "image"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Tableau 4",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "div.img-vide",
+     "texte": "image absente de mjpc-medias · poesie-peinture-xixe/tableau-4-schinkel",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t div.img-lg",
+     "texte": "Ville médiévale au bord d'un fleuve, Karl Friedrich Schinkel, 1815",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t div.img-lg"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 9,
+   "e": {
+    "act": "Tableau 5",
+    "role": "",
+    "blocs": "image"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Tableau 5",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "div.img-vide",
+     "texte": "image absente de mjpc-medias · poesie-peinture-xixe/tableau-2-bierstad",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t div.img-lg",
+     "texte": "Le Lac de Whyte, Estes Park, Colorado, Albert Bierstadt, 1877",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t div.img-lg"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 10,
+   "e": {
+    "act": "Les hypothèses de la classe",
+    "role": "",
+    "blocs": "consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Les hypothèses de la classe",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "🗣️",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t span.txt",
+     "texte": "Chaque groupe présente son tableau et son hypothèse en quatre minutes.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Je note pour chaque tableau : le titre et le peintre, ce que le groupe",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 li..",
+     "texte": "Je note à ma façon, sans recopier mot à mot : des mots, des flèches, d",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.2 li..",
+     "texte": "À la fin, j'ai cinq blocs de notes — un par tableau.",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t span.txt"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 11,
+   "e": {
+    "act": "Récap' de l'heure",
+    "role": "",
+    "blocs": "question"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 2 — Récap' de l'heure",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t p.q",
+     "texte": "Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée d",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Une nature immense face à un homme petit ; l'émotion avant la règle.",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t p.q"
+   }
+  },
+  {
+   "nom": "H1",
+   "di": 12,
+   "e": {
+    "act": "Fin d'heure",
+    "role": "fin",
+    "blocs": "cahier"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Cahier de textes — lundi 14 septembre 2026, 08 h 57 – 09 h 52",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.ed-etab",
+     "texte": "Collège Saint-Joseph",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "div.ed-titre",
+     "texte": "Cahier de textes",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.ed-classe",
+     "texte": "(3 Charles de Gaulle)",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.0 div.ed-date",
+     "texte": "PRENEZ VOS AGENDAS — POUR LA PROCHAINE FOIS",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "button.ed-agrandir",
+     "texte": "⤡ réduire",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.on",
+     "texte": "Travail à faire",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span",
+     "texte": "Contenus de séances",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.1 div.ed-matiere",
+     "texte": "FRANCAIS",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.1 div.ed-donne",
+     "texte": "Donné le 14 septembre",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.3 span.dr-g",
+     "texte": "0 élève sur 29 a participé",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.3 span",
+     "texte": "personne pour l'instant",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.3 span.m",
+     "texte": "0 réponse écrite · 0 prise de parole · il reste 29 à passer",
+     "editable": false,
+     "ce": null
+    }
+   ],
+   "corr": null
+  },
+  {
+   "nom": "H2",
+   "di": 13,
+   "e": {
+    "act": "Les règles héritées",
+    "role": "",
+    "blocs": "consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 3 — Les règles héritées",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "•",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t span.txt",
+     "texte": "Au XVIIe siècle, écrire un poème, c'est suivre des règles strictes, hé",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Une forme fixe : le sonnet.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 li..",
+     "texte": "Un vers régulier : l'alexandrin, 12 syllabes.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.2 li..",
+     "texte": "Des rimes disposées selon des schémas précis.",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t span.txt"
+   }
+  },
+  {
+   "nom": "H2",
+   "di": 14,
+   "e": {
+    "act": "La frise du siècle",
+    "role": "",
+    "blocs": "consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 4 — La frise du siècle",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "🗺️",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t span.txt",
+     "texte": "La frise est projetée : elle se remplit devant vous, l'Histoire d'abor",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Je recopie la ligne du temps sur une double page de mon cahier, en for",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 li..",
+     "texte": "Je laisse trois bandes : les poètes au-dessus, l'Histoire et les inven",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t span.txt"
+   }
+  },
+  {
+   "nom": "H2",
+   "di": 15,
+   "e": {
+    "act": "Placer les poètes",
+    "role": "",
+    "blocs": "consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 5 — Placer les poètes",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "✍",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t span.txt",
+     "texte": "À chaque apparition, je reporte sur ma frise ce qui vient de s'affiche",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Une période de l'Histoire : je la reporte sous ma ligne.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 li..",
+     "texte": "Un poète : son nom et ses dates au-dessus de ma ligne, à la bonne plac",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.2 li..",
+     "texte": "Sa citation : une ligne sous son nom, avec ce qu'elle montre.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.3 li..",
+     "texte": "Bleu : le poète fait entendre son cœur, c'est le romantisme. Violet : ",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t span.txt"
+   }
+  },
+  {
+   "nom": "H2",
+   "di": 16,
+   "e": {
+    "act": "Le siècle des inventions",
+    "role": "",
+    "blocs": "consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 6 — Le siècle des inventions",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "⚙",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t span.txt",
+     "texte": "Regarde la troisième bande de la frise : la photographie en 1816, le t",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Presque tout ce que tu utilises aujourd'hui a été inventé pendant que ",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 li..",
+     "texte": "Le monde change plus vite qu'il n'a jamais changé.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.2 li..",
+     "texte": "C'est là que naît la question du chapitre : quand tout change, l'art d",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t span.txt"
+   }
+  },
+  {
+   "nom": "H2",
+   "di": 17,
+   "e": {
+    "act": "Les mouvements du siècle",
+    "role": "",
+    "blocs": "consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 7 — Les mouvements du siècle",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "•",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t span.txt",
+     "texte": "Un mouvement, c'est une manière partagée de voir l'art à une époque do",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Le classicisme (XVIIe siècle) : les règles strictes héritées.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 li..",
+     "texte": "Le romantisme : les sentiments personnels, la nature sauvage.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.2 li..",
+     "texte": "Le Parnasse : la forme parfaite, l'art pour l'art.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.3 li..",
+     "texte": "Le symbolisme : suggérer par des images et des sonorités.",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t span.txt"
+   }
+  },
+  {
+   "nom": "H2",
+   "di": 18,
+   "e": {
+    "act": "Trois mots pour la frise",
+    "role": "",
+    "blocs": "consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 8 — Trois mots pour la frise",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "📖",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t span.txt",
+     "texte": "Trois mots à retenir, à écrire dans la partie cours du cahier.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Un mouvement : une manière de voir l'art que plusieurs artistes partag",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 li..",
+     "texte": "Le romantisme : le poète met ses sentiments au centre du poème. Le « j",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.2 li..",
+     "texte": "Le Parnasse : le poète refuse de parler de lui. Il travaille la forme,",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t span.txt"
+   }
+  },
+  {
+   "nom": "H2",
+   "di": 19,
+   "e": {
+    "act": "Un poète spécial…",
+    "role": "",
+    "blocs": "question"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 9 — Un poète spécial…",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t p.q",
+     "texte": "Où avons-nous placé Baudelaire sur la frise ? À quel mouvement apparti",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "Inclassable : il traverse le romantisme, le Parnasse, et ouvre le symb",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t p.q"
+   }
+  },
+  {
+   "nom": "H2",
+   "di": 20,
+   "e": {
+    "act": "Baudelaire, 1821-1867",
+    "role": "",
+    "blocs": "consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Activité 10 — Baudelaire, 1821-1867",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "•",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t span.txt",
+     "texte": "« Chaque jour vers l'enfer nous descendons d'un pas. » (« Au Lecteur »",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.0 li..",
+     "texte": "1857 : première édition des Fleurs du mal. Le livre fait scandale : pr",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p0.1 li..",
+     "texte": "1861 : deuxième édition, augmentée de trente-deux poèmes — dont « L'Al",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t span.txt"
+   }
+  },
+  {
+   "nom": "H2",
+   "di": 21,
+   "e": {
+    "act": "Question-bilan et travail à faire",
+    "role": "bilan",
+    "blocs": "question,texte,consigne"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Question-bilan et travail à faire",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.t p.q",
+     "texte": "Qu'est-ce que le Romantisme ?",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p1.t span.txt",
+     "texte": "À mettre dans le bilan",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p1.0 li..",
+     "texte": "une nature immense face à un homme petit",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p1.1 li..",
+     "texte": "l'émotion avant la règle",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p1.2 li..",
+     "texte": "les règles héritées",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p1.3 li..",
+     "texte": "la frise du siècle",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p1.4 li..",
+     "texte": "les mouvements du siècle",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "span.pic",
+     "texte": "✎",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p2.t span.txt",
+     "texte": "Rédige le bilan au brouillon.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p2.0 li..",
+     "texte": "Cinq à huit lignes, au présent.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p2.1 li..",
+     "texte": "Chaque mot-clé y est, dans une phrase à toi.",
+     "editable": true,
+     "ce": "plaintext-only"
+    },
+    {
+     "sorte": "p2.2 li..",
+     "texte": "Souligne chaque mot-clé une fois placé.",
+     "editable": true,
+     "ce": "plaintext-only"
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.t p.q"
+   }
+  },
+  {
+   "nom": "H2",
+   "di": 22,
+   "e": {
+    "act": "Fin d'heure",
+    "role": "fin",
+    "blocs": "cahier"
+   },
+   "cat": [
+    {
+     "sorte": "span.act",
+     "texte": "Cahier de textes — lundi 14 septembre 2026, 15 h 07 – 16 h 02",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.ed-etab",
+     "texte": "Collège Saint-Joseph",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "div.ed-titre",
+     "texte": "Cahier de textes",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.ed-classe",
+     "texte": "(3 Charles de Gaulle)",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.0 div.ed-date",
+     "texte": "PRENEZ VOS AGENDAS — POUR LA PROCHAINE FOIS",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "button.ed-agrandir",
+     "texte": "⤡ réduire",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span.on",
+     "texte": "Travail à faire",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "span",
+     "texte": "Contenus de séances",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.1 div.ed-matiere",
+     "texte": "FRANCAIS",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.w div.ed-texte",
+     "texte": "Pour la prochaine séance — Pour la prochaine fois : lis « L'Albatros »",
+     "editable": true,
+     "ce": "true"
+    },
+    {
+     "sorte": "p0.c.1 div.ed-donne",
+     "texte": "Donné le 14 septembre",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.3 span.dr-g",
+     "texte": "0 élève sur 29 a participé",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.3 span",
+     "texte": "personne pour l'instant",
+     "editable": false,
+     "ce": null
+    },
+    {
+     "sorte": "p0.c.3 span.m",
+     "texte": "0 réponse écrite · 0 prise de parole · il reste 29 à passer",
+     "editable": false,
+     "ce": null
+    }
+   ],
+   "corr": {
+    "trouve": true,
+    "pilote": true,
+    "trame": false,
+    "tableau": true,
+    "sorte": "p0.w div.ed-texte"
+   }
+  }
+ ],
+ "import H1": {
+  "cree": true,
+  "boutons": [
+   "Compléter",
+   "Remplacer",
+   "Créer un double"
+  ],
+  "msg": "Chapitre remplacé. L’ancien est à la corbeille.\nFeuilles et liaisons\n• « Interro de cours » : non lié — un QCM de l’outil QCM, qui n’existe pas encore : à créer dans l’outil, puis à lier.\n• « Dictée 1 : « Le port » » : non lié — une dictée de l’outil Correction de dictée, à créer dans l’outil, puis à lier.\n• « Réécriture notée : « Les Fenêtres » » : non lié — une réécriture de l’outil Réécriture, "
+ },
+ "lance H1": {
+  "case": true,
+  "lancee": true,
+  "titre": "Poésie et peinture : le Romantisme en question",
+  "heure": 1
+ },
+ "ecr H1": 120,
+ "errs H1": [],
+ "import H2": {
+  "cree": true,
+  "boutons": [
+   "Compléter",
+   "Remplacer",
+   "Créer un double"
+  ],
+  "msg": "Chapitre remplacé. L’ancien est à la corbeille.\nFeuilles et liaisons\n• « Interro de cours » : non lié — un QCM de l’outil QCM, qui n’existe pas encore : à créer dans l’outil, puis à lier.\n• « Dictée 1 : « Le port » » : non lié — une dictée de l’outil Correction de dictée, à créer dans l’outil, puis à lier.\n• « Réécriture notée : « Les Fenêtres » » : non lié — une réécriture de l’outil Réécriture, "
+ },
+ "lance H2": {
+  "case": true,
+  "lancee": true,
+  "titre": "Poésie et peinture : le Romantisme en question",
+  "heure": 2
+ },
+ "ecr H2": 120,
+ "errs H2": []
+}

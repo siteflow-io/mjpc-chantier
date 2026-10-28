@@ -1263,3 +1263,21 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **A104** (`E4/bancs/banc-1255.mjs`) : 16/0 (md5 `81ab1839…`) ; avant (md5 `da560f4b…`) 10 échecs. `banc.sh` **VERT** (K 106/0 ; `E4/sorties/1255-28-10/`).
 - **§12.55 E4 fini.**
 - 11:25 Paris : poussée 126 rejouée sur la tête rebasée (E1 §12.44, §12.51, §12.54 sous moi ; md5 `45369441…`) : A104 16/0, `banc.sh` VERT (`E4/sorties/1255b-28-10/`).
+
+## Poussée 127 — 10:47 UTC (11:47 Paris) · **§12.57 — ce qui s'affiche au tableau et ne se corrige pas en direct** (mesure, rien de codé)
+*Tête `integration` (md5 `45369441…`), 3E Charles de Gaulle, mode test, l'heure lancée par sa case (montre 07:30) ; le chapitre réaliste injecté (« Remplacer »), plus, pour la mesure seulement, une diapo de schéma, une de fiche, une de vidéo, une de page en heure 1. Heure 1 (13 diapos) et heure 2 (10 diapos), chaque diapo entièrement dévoilée ; la fenêtre du tableau ouverte (« 🖥 Ouvrir le tableau »). Une correction jouée par diapo : un caractère tapé à la fin du premier élément corrigeable. Sonde `E4/bancs/sonde-1257.mjs`, relevé `E4/sorties/1257-28-10/sonde-1257.json`, captures de l'écran entier `E4/captures/1257/57-H1-diapo-NN.png`, `57-H2-diapo-NN.png`.*
+- **Se corrigent en direct** (on clique dans le texte et on tape, au pilotage ; **la correction arrive au tableau** à chaque essai, 19 sur 19 ; elle va à la copie de la classe, pas à la trame) : la consigne et ses étapes ; la question et ses lignes ; les lignes du texte du bilan ; la légende d'une image ; la fiche — son titre, sa définition, son corps ; le titre d'une page ; à la diapo du cahier de la 2e heure, le texte du travail (`ed-texte`).
+- **Ne se corrigent pas en direct** :
+
+| Sorte | Où | Capture |
+|---|---|---|
+| L'étiquette d'activité en haut de **chaque** diapo (« Activité 2 — Tableau 1 », « Question-bilan et travail à faire ») | 23 diapos sur 23 | `57-H1-diapo-00` |
+| Le pictogramme de la consigne (•, 🗣️, 🗺️, ✍, ⚙, 📖, ✎) | toutes les consignes | `57-H1-diapo-10` |
+| **Le schéma entier** : rien ne s'y corrige (le dessin et ses mots, en SVG) | `Un schéma` | `57-H1-diapo-02` |
+| L'étiquette de la fiche (« Fiche notion ») | la fiche | `57-H1-diapo-03` |
+| **La vidéo** : son libellé (« Le voyageur, filmé ») et ses repères | la vidéo | `57-H1-diapo-04` |
+| Le contenu de la page (dans son cadre) ; la mention « sans contrat de pilotage : jouée comme une image » | la page | `57-H1-diapo-05` |
+| L'image elle-même (ici absente : le banc ne sert pas mjpc-medias ; la mention « image absente de mjpc-medias · … » paraît alors au tableau) | les 5 tableaux | `57-H1-diapo-01` |
+| **La diapo du cahier de textes** : 13 éléments (en-tête daté, collège, classe, « PRENEZ VOS AGENDAS… », matière, « Donné le … », la participation) ; le travail et l'échéance passent par « Fin de l'heure » ; seul le texte du travail, quand il existe, se corrige en direct | les deux fins d'heure | `57-H1-diapo-12`, `57-H2-diapo-22` |
+- **Non mesuré** : la **réactivation** — l'heure 2 lancée seule (l'heure 1 non jouée dans ce contexte) n'en a pas posé ; la mesurer demande l'heure 1 jouée puis close avant l'heure 2. Les images réelles (le banc ne sert pas mjpc-medias).
+- La mesure de la conscience (faux hub) est confirmée sur le chapitre réaliste ; ce que le faux hub n'avait pas : le schéma (rien), la vidéo (rien), la page (son titre seulement), la fiche (tout sauf l'étiquette), le bilan (tout sauf l'étiquette).

@@ -6898,3 +6898,44 @@ MEMO
 
 28/10/2026 17:49
 MEMO
+
+## Tour 336 — 28/10/2026 18:00 → 18:02
+
+**Paul :** Non pas de maquette
+
+**Claude :**
+
+À jouer : corriger les douze questions ci-dessous · en cours : la rédaction (seuils de la lettre, compétences de la grille) et la ⑨ (l'Atelier) · ouvert : relier « Dictée : « Le port » », coller le fragment taxo v2, le relais dimanche.
+
+904. Pas de maquette. Le reste de 902 est acquis : une question par point, quatre boutons « Pleinement / Oui / En partie / Non » pour les niveaux 4, 3, 2, 1, le sous-niveau et la citation comme aujourd'hui, le mode classique inchangé. Voici les douze questions de la lettre, tirées de tes libellés et de tes descripteurs.
+
+905. Le thème tenu : « Sait-on qui écrit, d'où, à qui, depuis combien de temps, et est-ce bien la guerre de 14-18 ? »
+
+906. Les trois paragraphes : « La lettre suit-elle les trois paragraphes : le concret, le plus dur, l'inquiétude pour l'autre ? »
+
+907. Les lectures reprises : « Retrouve-t-on Jean Déléage et des détails du chapitre ? »
+
+908. Ce qu'on tait : « Sent-on ce que la lettre tait, et devine-t-on pourquoi ? »
+
+909. Les phrases complexes : « Toutes les phrases sont-elles complexes et logiquement construites ? »
+
+910. Les cinq architectures : « Les cinq architectures sont-elles là, correctes, numérotées dans la marge ? »
+
+911. Modalisation et litote : « Chaque paragraphe a-t-il sa modalisation, et la litote est-elle là ? »
+
+912. Les codes : « La lettre a-t-elle ses quatre codes : lieu, date, adresse, signature ? »
+
+913. La 1re personne et le destinataire : « La 1re personne est-elle tenue, écrit-on vraiment à quelqu'un, les temps sont-ils cohérents ? »
+
+914. Trente lignes : « La lettre fait-elle ses trente lignes ? »
+
+915. Orthographe et grammaire : « L'orthographe et la grammaire sont-elles correctes ? »
+
+916. Lexique : « Le lexique est-il juste et varié ? »
+
+917. Tu corriges celles qui ne vont pas ; ce que tu ne commentes pas est acquis. Dès ta réponse, un exécutant neuf code le mode sur la branche de la rédaction, banc vert, sans maquette. Pour un autre sujet, je rédige ses questions de la même façon et tu les corriges.
+
+À tester : rien de neuf depuis la ⑧ (la liste de 17:33 tient).
+
+28/10/2026 18:02
+MEMO

@@ -1118,3 +1118,22 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - « Rien d'autre ne change » : le cas 38 (le cahier hors de la classe : échéance, travail, contenu prévu) reste **13/13** sur cette tête.
 - **§12.46 VERT (`62897bf0`)**.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0830-28-10-1246/`.
+
+## Retour 99 — 28/10, 09:15 — **§12.45 VERT** et **§12.47 VERT (`940a1f94`)**
+- E4 a poussé le §12.45 (`6d3ca9f5b`, poussée 120) et le §12.47 (`5be713e82`, poussée 121). L'assemblé de la tête est `940a1f94`. `banc.sh` : **VERT**.
+- **Le cas 45a, aux quatre tailles : VERT.**
+  - Sur les 27 écrans du prof, le « ? » est en `#e0b978` (`rgb(224, 185, 120)`), 24 × 88 px, avec un « ? » `rgb(42, 34, 24)`, contraste 8,5.
+  - Aucun bouton ne le recouvre, il n'en recouvre aucun, et il ouvre l'aide de son écran.
+  - Une faute de ma mesure, corrigée : la souris restait sur le « ? » après l'avoir cliqué, et je lisais sa couleur de survol (`rgb(236, 202, 143)`). Elle est maintenant écartée avant chaque mesure.
+- **Le cas 47n, aux quatre tailles : VERT.**
+  - Dans « Notes pour cette diapo » : `<span data-coul="rouge">Insister</span> sur le mot <b>albatros</b> et sur le <u>poète</u>`.
+  - La forme est relue au rechargement.
+  - En répétition, la note mise en forme est chez Paul, sous la diapo, et absente du mur (capture `1707x743-47-2-…-apres.png`, regardée).
+- Le même passage rejoue 13 · 40, 13 · 41 et 13 · 43 : 156/156.
+- **§12.45 VERT et §12.47 VERT (`940a1f94`)**.
+- **Où en est la ⑧ :**
+  - verts : §12.41, §12.43, §12.45, §12.46, §12.47 ;
+  - §12.42 : 7/8, à E4 (réinjecter réécrit 4 feuilles) ;
+  - §12.44 et §12.48 : à E1 ;
+  - §12.49 : la mission 0 d'E4 seulement.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0845-28-10-1245-1247/`.

@@ -1,0 +1,175 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-28 07:27 UTC · fichier md5 940a1f94fdf1126be8870ff574108470
+
+══ 1366×768 ══
+  info   43 · 1366×768 · l’onglet « pilotage » n’est plus dans l’Atelier (§12.33)
+  info   43 · 1366×768 · l’onglet « relecture » n’est plus dans l’Atelier (§12.33)
+  ok     41 · 1366×768 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1366×768 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1366×768 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1366×768 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1366×768 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1366×768 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1366×768 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1366×768 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1366×768 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1366×768 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1366×768 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1366×768 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1366×768 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1366×768 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1366×768 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1366×768 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 122 ms
+  ok     41 · 1366×768 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     L · 1366×768 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps)
+  ok     41 · 1366×768 · 13 · 41 (d) · le bandeau est toujours là après l’accueil, la page du niveau et l’emploi du temps (« sur tous les écrans »)
+  ok     41 · 1366×768 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 2
+  ok     41 · 1366×768 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → Analyse d'images : la routine · 4 lignes · page «  »
+  ok     41 · 1366×768 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:17 » à la fermeture → « 00:24 » à la reprise
+  ok     41 · 1366×768 · l’heure se clôt
+  ok     41 · 1366×768 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1366×768 · 13 · 41 · après « Clore », aucun bandeau
+  ok     41 · 1366×768 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1366×768 · 13 · 43 · un « ? » sur chaque écran du prof (27 écrans)
+  ok     43 · 1366×768 · 13 · 43 · au même endroit partout — référence 1342,340
+  ok     43 · 1366×768 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1366×768 · 13 · 43 · aucun « ? » dans la vue élève
+  ok     45a · 1366×768 · A96 · sur les 27 écrans du prof, le « ? » est en or (#e0b978), 24 × 88 px, « ? » sombre (contraste ≥ 4,5) — ex. {"w":24,"h":88,"fond":"rgb(224, 185, 120)","texte":"rgb(42, 34, 24)","contraste":8.5}
+  ok     45a · 1366×768 · A96 · le « ? » ne cache aucun bouton et rien ne le cache
+  ok     45a · 1366×768 · A96 · le « ? » ouvre l’aide de son écran
+  ok     43 · 1366×768 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil
+  ok     Z · 1366×768 · 0 erreur JS (40, 41, 43)
+  ok     47n · 1366×768 · A98 · dans « Notes pour cette diapo », G, S et « A » agissent sur la sélection comme dans la diapo — {"gestes":[true,true,true],"note":{"b":["albatros"],"u":["poète"],"c":["Insister"]},"html":"<span data-coul=\"rouge\">Insister</span> sur le mot <b>albatros</b> et sur le <u>poète</u>"}
+  ok     47n · 1366×768 · A98 · la forme de la note est gardée au rechargement — {"b":["albatros"],"u":["poète"],"c":["Insister"]}
+  ok     47n · 1366×768 · A98 · en répétition : la note mise en forme chez Paul, jamais au tableau — {"rep":true,"note":{"b":["albatros"],"u":["poète"],"c":["Insister"]},"auTableau":false}
+  ok     Z · 1366×768 · 0 erreur JS (47n)
+
+══ 1536×864 ══
+  info   43 · 1536×864 · l’onglet « pilotage » n’est plus dans l’Atelier (§12.33)
+  info   43 · 1536×864 · l’onglet « relecture » n’est plus dans l’Atelier (§12.33)
+  ok     41 · 1536×864 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1536×864 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1536×864 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1536×864 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1536×864 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1536×864 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1536×864 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1536×864 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1536×864 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1536×864 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1536×864 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1536×864 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1536×864 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1536×864 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1536×864 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1536×864 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 134 ms
+  ok     41 · 1536×864 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     L · 1536×864 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps)
+  ok     41 · 1536×864 · 13 · 41 (d) · le bandeau est toujours là après l’accueil, la page du niveau et l’emploi du temps (« sur tous les écrans »)
+  ok     41 · 1536×864 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 2
+  ok     41 · 1536×864 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → Analyse d'images : la routine · 4 lignes · page «  »
+  ok     41 · 1536×864 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:16 » à la fermeture → « 00:22 » à la reprise
+  ok     41 · 1536×864 · l’heure se clôt
+  ok     41 · 1536×864 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1536×864 · 13 · 41 · après « Clore », aucun bandeau
+  ok     41 · 1536×864 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1536×864 · 13 · 43 · un « ? » sur chaque écran du prof (27 écrans)
+  ok     43 · 1536×864 · 13 · 43 · au même endroit partout — référence 1512,388
+  ok     43 · 1536×864 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1536×864 · 13 · 43 · aucun « ? » dans la vue élève
+  ok     45a · 1536×864 · A96 · sur les 27 écrans du prof, le « ? » est en or (#e0b978), 24 × 88 px, « ? » sombre (contraste ≥ 4,5) — ex. {"w":24,"h":88,"fond":"rgb(224, 185, 120)","texte":"rgb(42, 34, 24)","contraste":8.5}
+  ok     45a · 1536×864 · A96 · le « ? » ne cache aucun bouton et rien ne le cache
+  ok     45a · 1536×864 · A96 · le « ? » ouvre l’aide de son écran
+  ok     43 · 1536×864 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil
+  ok     Z · 1536×864 · 0 erreur JS (40, 41, 43)
+  ok     47n · 1536×864 · A98 · dans « Notes pour cette diapo », G, S et « A » agissent sur la sélection comme dans la diapo — {"gestes":[true,true,true],"note":{"b":["albatros"],"u":["poète"],"c":["Insister"]},"html":"<span data-coul=\"rouge\">Insister</span> sur le mot <b>albatros</b> et sur le <u>poète</u>"}
+  ok     47n · 1536×864 · A98 · la forme de la note est gardée au rechargement — {"b":["albatros"],"u":["poète"],"c":["Insister"]}
+  ok     47n · 1536×864 · A98 · en répétition : la note mise en forme chez Paul, jamais au tableau — {"rep":true,"note":{"b":["albatros"],"u":["poète"],"c":["Insister"]},"auTableau":false}
+  ok     Z · 1536×864 · 0 erreur JS (47n)
+
+══ 1707×743 ══
+  info   43 · 1707×743 · l’onglet « pilotage » n’est plus dans l’Atelier (§12.33)
+  info   43 · 1707×743 · l’onglet « relecture » n’est plus dans l’Atelier (§12.33)
+  ok     41 · 1707×743 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1707×743 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1707×743 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1707×743 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1707×743 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1707×743 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1707×743 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1707×743 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1707×743 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1707×743 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1707×743 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1707×743 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1707×743 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1707×743 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1707×743 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1707×743 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 113 ms
+  ok     41 · 1707×743 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     L · 1707×743 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps)
+  ok     41 · 1707×743 · 13 · 41 (d) · le bandeau est toujours là après l’accueil, la page du niveau et l’emploi du temps (« sur tous les écrans »)
+  ok     41 · 1707×743 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 2
+  ok     41 · 1707×743 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → Analyse d'images : la routine · 4 lignes · page «  »
+  ok     41 · 1707×743 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:16 » à la fermeture → « 00:22 » à la reprise
+  ok     41 · 1707×743 · l’heure se clôt
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », aucun bandeau
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1707×743 · 13 · 43 · un « ? » sur chaque écran du prof (27 écrans)
+  ok     43 · 1707×743 · 13 · 43 · au même endroit partout — référence 1683,328
+  ok     43 · 1707×743 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1707×743 · 13 · 43 · aucun « ? » dans la vue élève
+  ok     45a · 1707×743 · A96 · sur les 27 écrans du prof, le « ? » est en or (#e0b978), 24 × 88 px, « ? » sombre (contraste ≥ 4,5) — ex. {"w":24,"h":88,"fond":"rgb(224, 185, 120)","texte":"rgb(42, 34, 24)","contraste":8.5}
+  ok     45a · 1707×743 · A96 · le « ? » ne cache aucun bouton et rien ne le cache
+  ok     45a · 1707×743 · A96 · le « ? » ouvre l’aide de son écran
+  ok     43 · 1707×743 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil
+  ok     Z · 1707×743 · 0 erreur JS (40, 41, 43)
+  ok     47n · 1707×743 · A98 · dans « Notes pour cette diapo », G, S et « A » agissent sur la sélection comme dans la diapo — {"gestes":[true,true,true],"note":{"b":["albatros"],"u":["poète"],"c":["Insister"]},"html":"<span data-coul=\"rouge\">Insister</span> sur le mot <b>albatros</b> et sur le <u>poète</u>"}
+  ok     47n · 1707×743 · A98 · la forme de la note est gardée au rechargement — {"b":["albatros"],"u":["poète"],"c":["Insister"]}
+  ok     47n · 1707×743 · A98 · en répétition : la note mise en forme chez Paul, jamais au tableau — {"rep":true,"note":{"b":["albatros"],"u":["poète"],"c":["Insister"]},"auTableau":false}
+  ok     Z · 1707×743 · 0 erreur JS (47n)
+
+══ 1920×1080 ══
+  info   43 · 1920×1080 · l’onglet « pilotage » n’est plus dans l’Atelier (§12.33)
+  info   43 · 1920×1080 · l’onglet « relecture » n’est plus dans l’Atelier (§12.33)
+  ok     41 · 1920×1080 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1920×1080 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1920×1080 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1920×1080 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1920×1080 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1920×1080 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1920×1080 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1920×1080 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1920×1080 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1920×1080 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1920×1080 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1920×1080 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1920×1080 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1920×1080 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1920×1080 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1920×1080 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 116 ms
+  ok     41 · 1920×1080 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     L · 1920×1080 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps)
+  ok     41 · 1920×1080 · 13 · 41 (d) · le bandeau est toujours là après l’accueil, la page du niveau et l’emploi du temps (« sur tous les écrans »)
+  ok     41 · 1920×1080 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 2
+  ok     41 · 1920×1080 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → Analyse d'images : la routine · 4 lignes · page «  »
+  ok     41 · 1920×1080 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:16 » à la fermeture → « 00:23 » à la reprise
+  ok     41 · 1920×1080 · l’heure se clôt
+  ok     41 · 1920×1080 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1920×1080 · 13 · 41 · après « Clore », aucun bandeau
+  ok     41 · 1920×1080 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1920×1080 · 13 · 43 · un « ? » sur chaque écran du prof (27 écrans)
+  ok     43 · 1920×1080 · 13 · 43 · au même endroit partout — référence 1896,496
+  ok     43 · 1920×1080 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1920×1080 · 13 · 43 · aucun « ? » dans la vue élève
+  ok     45a · 1920×1080 · A96 · sur les 27 écrans du prof, le « ? » est en or (#e0b978), 24 × 88 px, « ? » sombre (contraste ≥ 4,5) — ex. {"w":24,"h":88,"fond":"rgb(224, 185, 120)","texte":"rgb(42, 34, 24)","contraste":8.5}
+  ok     45a · 1920×1080 · A96 · le « ? » ne cache aucun bouton et rien ne le cache
+  ok     45a · 1920×1080 · A96 · le « ? » ouvre l’aide de son écran
+  ok     43 · 1920×1080 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil
+  ok     Z · 1920×1080 · 0 erreur JS (40, 41, 43)
+  ok     47n · 1920×1080 · A98 · dans « Notes pour cette diapo », G, S et « A » agissent sur la sélection comme dans la diapo — {"gestes":[true,true,true],"note":{"b":["albatros"],"u":["poète"],"c":["Insister"]},"html":"<span data-coul=\"rouge\">Insister</span> sur le mot <b>albatros</b> et sur le <u>poète</u>"}
+  ok     47n · 1920×1080 · A98 · la forme de la note est gardée au rechargement — {"b":["albatros"],"u":["poète"],"c":["Insister"]}
+  ok     47n · 1920×1080 · A98 · en répétition : la note mise en forme chez Paul, jamais au tableau — {"rep":true,"note":{"b":["albatros"],"u":["poète"],"c":["Insister"]},"auTableau":false}
+  ok     Z · 1920×1080 · 0 erreur JS (47n)
+
+BILAN banc-1228 : 156/156 vérifications · VERT

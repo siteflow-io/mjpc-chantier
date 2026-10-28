@@ -6456,3 +6456,20 @@ MEMO
 
 28/10/2026 14:40
 MEMO
+
+---
+
+## Tour 314 — 28/10/2026 14:42 → 14:42
+
+**Paul :** Non tu le mets en tâche planifiée pour dimanche 8h
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 remet la suite de la phrase de fin d'heure ; E1 retire le second bouton de lancement · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+853. C'est planifié : dimanche 1er novembre à 8 h, je crée mjpc-medias-2, vide, en ligne comme mjpc-medias. Le message arrivera dans cette conversation. Je te reproposerai alors ton geste unique (le programme Google, la clé avec les deux dépôts cochés), sans rien lancer sans ton mot.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:42
+MEMO

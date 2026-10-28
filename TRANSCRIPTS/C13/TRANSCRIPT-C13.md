@@ -6759,3 +6759,24 @@ MEMO
 
 28/10/2026 15:59
 MEMO
+
+---
+
+## Tour 330 — 28/10/2026 16:05 → 16:07
+
+**Paul :** voilà ce que vois un élève actuellement, alors qu'il voit par ailleurs la fiche des connecteurs logiques qui est aussi sur le drive...à mettre en dette pour dimanche, sauf si la suppression de drive règle le problème. *(avec deux captures en navigation privée : « Les cinq tableaux à analyser » → « Impossible d'accéder à votre compte Google » ; « Fiche grammaire : les connecteurs logiques » affichée)*
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours : trois exécutants neufs — les derniers rouges de la ⑧, l'ouverture des anciens fichiers Drive dans la ⑧, et la Structure pour la ⑨ · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+884. Je dois d'abord corriger une erreur : en 770, je t'ai dit qu'il n'y avait aucun fichier Drive au hub. C'est faux, j'avais mal cherché. Il y en a trois : « Les cinq tableaux à analyser » et « Fiche grammaire : les connecteurs logiques », dans ton chapitre de lundi, et « Questionnaire sur Lewis Carroll », en 5e.
+
+885. La suppression du Drive ne règle donc pas ton problème. Elle l'aggravait : dans la ⑧ telle quelle, ces trois lignes ne s'ouvraient plus du tout, la fiche des connecteurs comprise. Un exécutant neuf leur rend leur ouverture, exactement comme aujourd'hui, avant que je te présente la ⑧. Rien d'autre du Drive ne revient.
+
+886. Le problème des tableaux est inscrit au registre (13 · 88) et planifié pour dimanche, à 8 h 05. Il vient de ce que le Drive demande un compte Google à l'élève. Dimanche, je te proposerai de copier les trois fichiers dans mjpc-medias, de relier les trois lignes à leur adresse en ligne, puis de retirer le Drive pour de bon.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 16:07
+MEMO

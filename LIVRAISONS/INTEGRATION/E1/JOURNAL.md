@@ -879,3 +879,4 @@ La veille s'était arrêtée à 04:10 ; un rappel en double (07:53 UTC) m'a fait
 - **Prouvé** : le cas 41 d'E3, 10 fois de suite sur l'assemblé réparé — la reprise verte 10/10 (`LIVRAISONS/INTEGRATION/E1/sorties`… et `b41` ci-dessous) ; A103 10/10. **A103** gagne la règle du redessin (l'entête à 80 px avec l'horloge de la case : la poignée et 25 px de notes dans l'écran) — rouge avant (3 px), vert après.
 - **Un autre rouge, intermittent, pas celui-ci** : « 13 · 41 · après « Clore », aucun bandeau » — 1 fois sur 10 ici, 1 fois sur 4 sur la ⑧ avant ma réparation : l'onglet ouvert 6 s après la clôture montre encore « Reprendre » (la reprise, `sesRepriseVeille` → `_drHeureCloseAu`, lit l'heure que le marqueur « heure partie » désigne). Hors de mes gestes ; dit à la conscience.
 - **banc.sh VERT** (`LIVRAISONS/INTEGRATION/E1/sorties/1221-28-10/`) ; A51, A60, A103 : 56/0.
+- 28/10 12:31 — commit dd7776c8e.

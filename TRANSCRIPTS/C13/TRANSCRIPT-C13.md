@@ -6035,3 +6035,20 @@ Il faut mesurer partout dans le site où le redessin fait bugger quelque chose .
 
 28/10/2026 10:59
 MEMO
+
+---
+
+## Tour 293 — 28/10/2026 11:05 → 11:05
+
+**Paul :** Je me demande si le lag ne vient pas de là aussi
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare le clic sur une diapo ; E4 code l'horloge de la case ; E3 mesure le redessin et la lenteur · ouvert : 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+807. C'est probable, mais je ne l'ai pas encore mesuré. Ce que j'ai mesuré ce matin : une trentaine de redessins et de relectures par seconde, au repos, sur chaque écran. Ici, sur une machine rapide, ça ne pèse rien. Sur ton ordi portable, ça peut suffire à ralentir. C'est pour ça qu'E3 mesure les deux ensemble, avec un processeur ralenti quatre fois comme un ordi portable ordinaire. Il dira combien de lenteur vient du redessin, et combien du réseau. La règle du redessin (802 à 805) en retirera une grande part dans tous les cas.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:05
+MEMO

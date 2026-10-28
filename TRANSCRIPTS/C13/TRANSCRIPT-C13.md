@@ -6528,3 +6528,30 @@ MEMO
 
 28/10/2026 14:46
 MEMO
+
+---
+
+## Tour 318 — 28/10/2026 14:50 → 14:50
+
+**Paul :** Comment peut-on gagner encore plus de temps et de tokens?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 remet la suite de la phrase de fin d'heure ; E1 retire le second bouton de lancement · ouvert : 864 ; 843 (à cadrer) ; 538, 553 (après lundi).
+
+859. Le plus gros poste, ce sont les sessions elles-mêmes. Les trois exécutants et moi traînons chacun une conversation de plusieurs jours, et à chaque réveil tout cet historique est relu. Après la promotion de la ⑧, je propose de fermer les quatre sessions et de repartir avec des sessions neuves, chacune sur une passation d'une page. C'est de loin le plus gros gain.
+
+860. Les fichiers qu'on relit sans cesse sont devenus énormes, je viens de les mesurer : le contrat fait 155 Ko, et chaque journal d'exécutant entre 220 et 260 Ko. Je propose de ranger dans une archive tout ce qui est fini : le contrat ne garderait que ce qui reste à faire, et chaque journal repartirait à zéro.
+
+861. Les bancs : chaque exécutant passe aujourd'hui le banc complet (106 vérifications et deux parcours) avant chaque poussée. Je propose qu'il ne passe que sa propre garde, et que je passe le banc complet une seule fois, avant chaque promotion.
+
+862. Moi : je ne t'écris plus pour les événements de routine (une surveillance qui expire, une poussée intermédiaire), seulement quand tu dois décider, promouvoir ou tester.
+
+863. Pour la ⑨ (l'Atelier) : un seul exécutant au lieu de deux.
+
+864. Oui à 859 à 863 ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:50
+MEMO

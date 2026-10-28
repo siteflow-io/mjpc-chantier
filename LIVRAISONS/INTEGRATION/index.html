@@ -16260,7 +16260,7 @@ function atP2ValiderDeroule(o,V,taxo){
     dr.ecrans.forEach(function(e,n){
       var r2=ref+' · écran '+(n+1);
       if(!e||!String(e.act||'').trim())V.cite(r2,'n’a pas de titre (« act »).');
-      if(!(+(e&&e.dur)>0))V.cite(r2,'n’a pas de durée en minutes (« dur »).');
+      if(!(+(e&&e.dur)>0)&&!(e&&e.horsActivite===true&&+e.dur===0))V.cite(r2,'n’a pas de durée en minutes (« dur »).');   /* EX (§12.62 (2)) : une diapo « hors activité » peut compter 0 minute */
       if(!e)return;
       if(e.comp!==undefined){
         if(!Array.isArray(e.comp)||e.comp.some(function(x){return !String(x||'').trim();}))
@@ -16272,6 +16272,8 @@ function atP2ValiderDeroule(o,V,taxo){
       /* §12.22 : seul le bilan s'écrit ; la réactivation et la fin d'heure, le site les pose */
       if(e.role==='reactivation'||e.role==='fin'||(!e.role&&/o[uù] en sommes[- ]nous|r[ée]activation/i.test(String(e.act||''))))   /* §12.25 (6) : dr_estRituel tombe chez E2 ; la règle de la pièce reste à l'import (§3.5 « aucune diapo « Où en sommes-nous ? » ») */
         V.cite(r2,': rôle « reactivation » ou « fin » — le site pose ces diapos lui-même, retire-les.');
+      else if(e.role==='presentation-chapitre'||e.role==='plan'||e.role==='presentation-seance'||e.role==='problematique')   /* EX (§12.62 (3)) : les quatre diapos d'ouverture, le site les pose lui-même depuis le chapitre */
+        V.cite(r2,': rôle « '+e.role+' » — le site pose lui-même la présentation du chapitre, le plan, la présentation de la séance et la problématique (depuis le chapitre), retire-la.');
       else if(e.role!==undefined&&e.role!=='bilan')V.cite(r2,': rôle « '+e.role+' » inconnu — seul « bilan » s’écrit.');
       var bil=atP2EstBilan(e); if(bil)bilans.push(n);
       /* §12.24 (prompt v0.7 §1.2, §1.3) : la diapo du bilan — trois blocs dans l'ordre, des mots-clés, ses notes présentateur ; rien « copie de classe » sous les yeux des élèves */
@@ -16293,7 +16295,7 @@ function atP2ValiderDeroule(o,V,taxo){
       }
       var vus=[e.act].concat.apply([e.act],bl.map(function(b){ return b?[b.txt,b.q].concat(Array.isArray(b.el)?b.el:[],Array.isArray(b.etapes)?b.etapes:[]):[]; }));
       if(vus.some(function(x){return /copie de (la )?classe/i.test(String(x==null?'':x));}))V.cite(r2,': un texte vu par les élèves dit « copie de classe ».');
-      if(!bil&&e.role!=='reactivation'&&e.role!=='fin'){
+      if(!bil&&e.role!=='reactivation'&&e.role!=='fin'&&e.horsActivite!==true){   /* EX (§12.62 (1)) : « hors activité » voulu (horsActivite: true) n'est pas refusé */
         if(!String(e.actId||'').trim()||!acts[String(e.actId)])V.cite(r2,': une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis).');
         if(!Array.isArray(e.remob))V.cite(r2,': « remob » manque sur une diapo d’activité.');
       }
@@ -16361,12 +16363,12 @@ if(typeof chValiderChapitre==='function'&&!window.__p2ValPose){
 function atP2DerouleNormalise(se,avant){
   var src=(se&&se.deroule)||{};
   var ecr=(Array.isArray(src.ecrans)?src.ecrans:[]).map(function(e){
-    var x={id:atP2Uid(),act:String(e.act||''),dur:+e.dur||5,h:'',
+    var x={id:atP2Uid(),act:String(e.act||''),dur:(e.horsActivite===true&&+e.dur===0)?0:(+e.dur||5),h:'',
       comp:(Array.isArray(e.comp)?e.comp.map(String).filter(Boolean):[]),   /* les notions de l'écran, décidées en AMONT */
       blocs:(Array.isArray(e.blocs)?e.blocs:[]).map(atP2NormaliserBloc).filter(Boolean),vues:0,rev:0};
     if(Array.isArray(e.remob))x.remob=e.remob.map(String).filter(Boolean);
     if(parseInt(e.heure,10)>0)x.heure=parseInt(e.heure,10);
-    if(String(e.actId||'').trim())x.actId=String(e.actId);
+    if(String(e.actId||'').trim())x.actId=String(e.actId); else if(e.horsActivite===true)x.horsActivite=true;   /* EX (§12.62 (1)) */
     if(e.legende&&typeof e.legende==='object'&&!Array.isArray(e.legende))x.legende=JSON.parse(JSON.stringify(e.legende));
     if(e.role==='bilan')x.role='bilan';
     if(typeof e.notes==='string'&&e.notes.trim())Object.defineProperty(x,'_notes',{value:e.notes,enumerable:false});   /* §12.24, §12.33-5 (E1) : sur toute diapo, rangées en notes présentateur à l'eid, plus bas */

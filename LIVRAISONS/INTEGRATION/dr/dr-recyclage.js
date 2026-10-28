@@ -1,3 +1,5 @@
+/* §12.56 (1)(d) : une mutation qui n'est qu'un chiffre d'horloge (le chrono, l'heure, le chrono et « Où on en est » de la répétition, l'horloge du tableau) */
+function dr_mutHorloge(m){ const e = m && m.target && (m.target.nodeType === 1 ? m.target : m.target.parentElement); return !!(e && e.closest && e.closest('#chr, #heure, #rep-chrono, #rep-ou, #ses-tab-h, #hou')); }
 /* ═══════════════════════════════════════════════════════════════════════════════════════════════════════
    dr-recyclage.js — E4, LE RECYCLAGE DE L'ANCIEN DÉROULÉ (relance E4-2, A : R1, R4, R2, R6, R5)
    Les gestes qui marchaient dans l'ancien moteur (deroule86, tel qu'il est embarqué dans la production 8.74.0-③ :
@@ -57,7 +59,7 @@ function dr_editeMarque(mk, posee){ const sp = mk.querySelector('span'); if (!sp
 /* le panneau des marques (l'ancien « réglages » du bloc image), dans l'atelier, sur une diapo qui a une image */
 function dr_mkPanneau(){
   let z = document.getElementById('dr-mk-panneau'); const actif = (typeof dr_actif !== 'function' || dr_actif()) && typeof S !== 'undefined' && S.atelier; const o = actif ? dr_mkBloc() : null;
-  if (!o) { if (z) z.remove(); DR_MK.outil = null; document.body.classList.remove('dr-pose-mk'); return; }
+  if (!o) { if (z) z.remove(); DR_MK.outil = null; dr_classeSi(document.body, 'dr-pose-mk', false); return; }
   const hote = document.getElementById('droite-atelier') || document.getElementById('droite') || (document.getElementById('mur') || {}).parentElement; if (!hote) return; if (!z || z.parentElement !== hote) { if (z) z.remove(); z = document.createElement('div'); z.id = 'dr-mk-panneau'; hote.insertBefore(z, hote.firstChild); }   /* en tête de la colonne de droite : jamais sur l'image */
   const b = o.b; let h = `<div class="dr-mk-t">Image · bloc ${o.bi + 1}</div><div class="dr-mk-l"><button class="btn${b.support ? ' on' : ''}" data-mk-a="support" title="Un document que la classe analyse : on y pose des marques (numéros, étiquettes, flèches, cadres, légendes)">Document analysé</button><button class="btn${b.support ? '' : ' on'}" data-mk-a="illustration" title="Une image qui illustre : pas de marques (passer en illustration retire les marques posées)">Illustration</button></div>`;
   if (b.support) {
@@ -90,7 +92,7 @@ document.addEventListener('contextmenu', ev => { try { if (typeof S === 'undefin
 window.addEventListener('keydown', ev => { const m = document.getElementById('dr-mk-menu'); if (ev.key === 'Escape' && m && m.classList.contains('on')) { m.classList.remove('on'); ev.stopImmediatePropagation(); } }, true);
 /* après chaque rendu (pilote, atelier, tableau, vignettes) : calibrer ; le panneau suit la diapo de l'atelier */
 (function(){ let attente = false; const apres = () => { attente = false; dr_calibreMarques(document); dr_mkPanneau(); };
-  const obs = new MutationObserver(ms => { if (attente) return; if (ms.every(m => m.target && m.target.closest && m.target.closest('#dr-mk-panneau'))) return; attente = true; requestAnimationFrame(apres); });
+  const obs = new MutationObserver(ms => { if (attente) return; if (ms.every(m => m.target && m.target.closest && m.target.closest('#dr-mk-panneau'))) return; if (ms.every(dr_mutHorloge)) return;   /* §12.56 (1)(d) : un chiffre d'horloge ne recalibre rien */ attente = true; requestAnimationFrame(apres); });
   const brancher = () => { obs.observe(document.body, { childList: true, subtree: true }); window.addEventListener('resize', () => dr_calibreMarques(document)); };
   if (document.body) brancher(); else document.addEventListener('DOMContentLoaded', brancher); })();
 
@@ -120,9 +122,9 @@ function dr_ecrResynchro(avant){ try { if (typeof etatDiapo !== 'function') retu
 /* le bouton ↶ dans la barre de l'atelier, grisé avec sa raison quand il n'y a rien à annuler */
 function dr_annulerBouton(){ const bar = document.getElementById('at-bloc'); if (!bar || !bar.parentElement) return; let b = document.getElementById('dr-annuler');
   if (!b) { b = document.createElement('button'); b.id = 'dr-annuler'; b.className = 'btn'; b.textContent = '↶ Annuler'; b.onclick = () => dr_annuler(); bar.parentElement.insertBefore(b, bar); }
-  const n = DR_PILE.l.length; b.disabled = !n; const t = n ? `Annule la dernière modification de la trame (${n} en mémoire, 40 au plus) — Ctrl+Z hors d'un champ de texte` : 'Rien à annuler : aucune modification de la trame depuis l’ouverture de cette séance dans l’atelier'; if (b.title !== t) b.title = t; }
+  const n = DR_PILE.l.length; dr_poseSi(b, 'disabled', !n); const t = n ? `Annule la dernière modification de la trame (${n} en mémoire, 40 au plus) — Ctrl+Z hors d'un champ de texte` : 'Rien à annuler : aucune modification de la trame depuis l’ouverture de cette séance dans l’atelier'; if (b.title !== t) b.title = t; }
 window.addEventListener('keydown', ev => { try { if (typeof S === 'undefined' || !S.atelier || S.repetition) return; if (!(ev.ctrlKey || ev.metaKey) || ev.shiftKey || ev.altKey || (ev.key !== 'z' && ev.key !== 'Z')) return; const a = document.activeElement; if (a && (a.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(a.tagName))) return; /* dans un champ : le Ctrl+Z du navigateur */ ev.preventDefault(); ev.stopImmediatePropagation(); dr_annuler(); } catch (e) {} }, true);
-(function(){ const t = () => { dr_annulerSuivre(); dr_annulerBouton(); }; const obs = new MutationObserver(() => { if (t._a) return; t._a = true; requestAnimationFrame(() => { t._a = false; t(); }); }); const go = () => obs.observe(document.body, { childList: true, subtree: true }); if (document.body) go(); else document.addEventListener('DOMContentLoaded', go); })();
+(function(){ const t = () => { dr_annulerSuivre(); dr_annulerBouton(); }; const obs = new MutationObserver(ms => { if (t._a) return; if (ms.every(dr_mutHorloge)) return; t._a = true; requestAnimationFrame(() => { t._a = false; t(); }); }); const go = () => obs.observe(document.body, { childList: true, subtree: true }); if (document.body) go(); else document.addEventListener('DOMContentLoaded', go); })();
 
 /* ══ R2 · LE RAPPEL D'UNE FICHE ══
    L'ancien (moteur L1858-1882, L2246-2270, rendu L595-598) : quand une fiche déjà posée dans le chapitre est reposée (dejaPosee ≥ 1),

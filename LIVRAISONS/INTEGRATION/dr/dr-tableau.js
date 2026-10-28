@@ -194,7 +194,7 @@ function dr_tabVeiller(){
   if (!dr_tabPeutEcrire()) return;
   /* M4 : une parole n'appelle pas `pousser` — « qui a participé », s'il est au tableau, se recalcule ici et repart par `pousser` (dr_tout) */
   if (S.qui && !S.gel && typeof quiAParticipe === 'function') { try { const q = quiAParticipe(); if (JSON.stringify(q) !== JSON.stringify(S.qui)) { S.qui = q; dr_tout(); } } catch (e) {} }
-  if ((DR_TAB.tic++ % 8) === 0) {   /* une fois par seconde : la copie jouée a-t-elle changé ? */
+  if (true) {   /* chaque tour (une fois par seconde) : la copie jouée a-t-elle changé ? */
     let ts = ''; try { const t = (typeof dr_trame === 'function') ? dr_trame() : null; ts = t ? JSON.stringify(t) : ''; } catch (e) {}
     if (ts && ts !== DR_TAB.trameSig) {
       const premier = DR_TAB.trameSig === ''; DR_TAB.trameSig = ts;
@@ -204,7 +204,7 @@ function dr_tabVeiller(){
     }
   }
 }
-if (!dr_estTableau()) DR_TAB.veilleT = setInterval(dr_tabVeiller, 125);
+if (!dr_estTableau()) DR_TAB.veilleT = setInterval(dr_tabVeiller, 1000);   /* §12.56 (4) : une fois par seconde (était 125 ms, huit fois par seconde) */
 
 /* ═══ CÔTÉ TABLEAU (`?vue=tableau`, `&local=1`) ═══════════════════════════════════════════════════ */
 

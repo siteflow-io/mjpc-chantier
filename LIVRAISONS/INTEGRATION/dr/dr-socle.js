@@ -1,3 +1,7 @@
+/* §12.56 (1) (a)(d) — la règle du redessin : on ne pose que ce qui change. dr_poseSi(el, 'textContent' | 'className' | 'title' | 'disabled' | 'hidden', v) ;
+   dr_classeSi(el, nom, oui) n'ajoute ou ne retire une classe que si elle n'y est pas déjà (classList.remove/add réécrit l'attribut même quand rien ne change). */
+function dr_poseSi(el, quoi, v){ if (el && el[quoi] !== v) el[quoi] = v; return el; }
+function dr_classeSi(el, nom, oui){ if (el && el.classList.contains(nom) !== !!oui) el.classList.toggle(nom, !!oui); return el; }
 /* ═══════════════════════════════════════════════════════════════════════════
    dr-socle.js — LE SOCLE DU DÉROULÉ (E1, contrat des quatre §5)
    Première partie : les interfaces, ce qui remplace la simulation de la maquette

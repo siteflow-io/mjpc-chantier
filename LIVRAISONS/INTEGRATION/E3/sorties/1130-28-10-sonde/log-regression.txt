@@ -1,0 +1,85 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-28 11:58 UTC · fichier md5 d7e4978fe9522b46b1e32d36963cf656
+
+══ 1707×743 ══
+  info   43 · 1707×743 · l’onglet « pilotage » n’est plus dans l’Atelier (§12.33)
+  info   43 · 1707×743 · l’onglet « relecture » n’est plus dans l’Atelier (§12.33)
+  ok     41 · 1707×743 · 13 · 41 · l’Atelier ne lance plus (aucun « ▶ Lancer avec … » dans son Pilotage)
+  ok     41 · 1707×743 · 13 · 41 · la ligne de la répétition est là
+  ok     41 · 1707×743 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     41 · 1707×743 · 13 · 41 · la classe en cours : ni Structure, ni Atelier — Pilotage · Relecture
+  ok     41 · 1707×743 · 13 · 41 · aucune sortie tant que l’heure n’est pas close
+  ok     41 · 1707×743 · 13 · 41 · « ↗ Le site dans un nouvel onglet » est là
+  ok     41 · 1707×743 · 13 · 41 · « ↗ » ouvre un onglet du site qui n’est pas l’écran de l’heure — {"mur":false,"lancee":false}
+  ok     40 · 1707×743 · 13 · 40 · la liste : « 2 · ce qui n’a pas été fait — N activités : dis ce que chacune devient » — « 2 · ce qui n'a pas été fait — 7 activités : dis ce que chacune devient »
+  ok     40 · 1707×743 · 13 · 40 · le choix par défaut se lit « À l’heure suivante (si tu ne choisis rien) »
+  ok     40 · 1707×743 · 13 · 40 · trois choix → « encore 4 » — « 2 · ce qui n'a pas été fait — encore 4 activités : dis ce que chacune devient » (7 cartes)
+  ok     40 · 1707×743 · 13 · 40 · tout choisi → « tout est décidé » — « 2 · ce qui n'a pas été fait — tout est décidé »
+  ok     40 · 1707×743 · 13 · 40 · plus aucun « à décider » dans le pilote
+  ok     41 · 1707×743 · 13 · 41 · la garde beforeunload est posée pendant l’heure (preventDefault / returnValue)
+  ok     41 · 1707×743 · 13 · 41 · tant que l’onglet de l’heure vit, l’autre onglet ne montre rien
+  ok     41 · 1707×743 · 13 · 41 · fermer l’onglet de l’heure lève la garde du navigateur — boîtes beforeunload : 1
+  ok     41 · 1707×743 · 13 · 41 · le bandeau « Heure en cours avec les … — Reprendre » paraît dans l’autre onglet en moins d’une seconde — « Heure en cours avec les 3E Charles de Gaulle — Reprendre » en 184 ms
+  ok     41 · 1707×743 · 13 · 41 · le bandeau nomme la classe, un seul bouton (« Plus tard » tombé) — « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     L · 1707×743 · L′ · le bandeau montré ne cache rien, page en haut (c’est une barre : ce qui défile dessous revient en haut), et ne pousse aucun bouton fixe sur un autre (accueil, page du niveau, emploi du temps)
+  ok     41 · 1707×743 · 13 · 41 (d) · le bandeau est toujours là après l’accueil, la page du niveau et l’emploi du temps (« sur tous les écrans »)
+  ok     41 · 1707×743 · 13 · 41 · « Reprendre » rouvre « Fin de l’heure » à son étape — avant 2, après 2
+  ok     41 · 1707×743 · 13 · 41 · « Reprendre » → la même diapo, la même page, les mêmes lignes dévoilées — Analyse d'images : la routine · 4 lignes · page «  » → Analyse d'images : la routine · 4 lignes · page «  »
+  ok     41 · 1707×743 · 13 · 41 · le chrono continue (jamais moins qu’à la fermeture de l’onglet : pas de remise à zéro) — « 00:17 » à la fermeture → « 00:24 » à la reprise
+  ok     41 · 1707×743 · l’heure se clôt
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », la garde beforeunload est retirée
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », aucun bandeau
+  ok     41 · 1707×743 · 13 · 41 · après « Clore », « ✕ Fermer » ramène à l’emploi du temps
+  ok     43 · 1707×743 · 13 · 43 · un « ? » sur chaque écran du prof (27 écrans)
+  ok     43 · 1707×743 · 13 · 43 · au même endroit partout — référence 1683,328
+  ok     43 · 1707×743 · 13 · 43 · rien par-dessus le « ? »
+  ok     43 · 1707×743 · 13 · 43 · aucun « ? » dans la vue élève
+  ok     45a · 1707×743 · A96 · sur les 27 écrans du prof, le « ? » est en or (#e0b978), 24 × 88 px, « ? » sombre (contraste ≥ 4,5) — ex. {"w":24,"h":88,"fond":"rgb(224, 185, 120)","texte":"rgb(42, 34, 24)","contraste":8.5}
+  ok     45a · 1707×743 · A96 · le « ? » ne cache aucun bouton et rien ne le cache
+  ok     45a · 1707×743 · A96 · le « ? » ouvre l’aide de son écran
+  ok     43 · 1707×743 · 13 · 43 · le volet de chaque écran montre son texte mot pour mot, et le fil
+  ok     Z · 1707×743 · 0 erreur JS (40, 41, 43)
+  ÉCHEC  29 · 1707×743 · S5 · la répétition : ni « Fin de l’heure », ni « ■ Clore l’heure », ni 👥, ni « Participation » — {"fin":false,"clore":false,"qui":true,"part":1,"tableau":true,"ligne":true}
+  ok     29 · 1707×743 · S5 · la ligne de la répétition, et « 🖥 Ouvrir le tableau » reste — {"ligne":true,"tableau":true}
+  ok     29 · 1707×743 · l’heure se lance par la case
+  ok     29 · 1707×743 · S4 · l’entête : « 🖥 Ouvrir le tableau », « ⧉ Ce que voit la classe » — ⏱ | ⏩ aller à 5 minutes de la fin | 📝 Notes | ⧉ Ce que voit la classe | 🖥 Ouvrir le tableau | Adresse du tableau | Fin de l'heure | ■ Clore l’heure
+  ok     29 · 1707×743 · S2 · « Fin de l’heure » et « ■ Clore l’heure » restent dans l’entête
+  ok     29 · 1707×743 · S1 · à T-5, la barre du bas ne s’ouvre pas
+  ÉCHEC  29 · 1707×743 · S1 · la séquence ouverte, le palier en tête — «  »
+  ÉCHEC  29 · 1707×743 · S2 · la tête : « ❄ Préparer le cahier » et « Plus tard »
+  ok     29 · 1707×743 · S3 · en préparation, la colonne des diapos, la diapo et les notes gardent leur place et leur taille — {"volet":[14,144,186,595],"mur":[379,179,800,450],"notes":[229,735,1099,32]} → {"volet":[14,144,186,595],"mur":[379,179,800,450],"notes":[229,735,1099,32]}
+  ÉCHEC  29 · 1707×743 · S2 · en préparation : « Montrer le cahier à la classe » et « Retour au cours »
+  ok     29 · 1707×743 · S2 · « Retour au cours » : la préparation se ferme, l’écran d’avant (la séquence repliée, ou sa tête « ❄ Préparer le cahier » / « Plus tard ») — séquence repliée ; préparation false
+  ok     29 · 1707×743 · S2 · « Montrer le cahier à la classe » : la classe passe sur la diapo du cahier de textes, le tableau n’est pas gelé — {"di":20,"role":"fin","gel":false,"finDansLHeure":[20],"finsDeLaSeance":[16,19,20],"heure":1}
+  ok     29 · 1707×743 · S2 · « Plus tard » : la séquence se replie, la classe continue
+  ÉCHEC  29 · 1707×743 · S1 · après « Plus tard », le palier suivant (T-3) rouvre la séquence, le palier en tête — « T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le »
+  ok     29 · 1707×743 · L · rien de flottant l’un sur l’autre dans l’écran de la classe
+  ok     29 · 1707×743 · S4 · la case d’une heure en cours : « ▶ Reprendre l’heure » (en moins de 3 s après l’arrivée sur l’emploi du temps) — en 417 ms ; d’abord : « ▶ Reprendre l’heure »
+  ok     Z · 1707×743 · 0 erreur JS (29)
+  ok     38 · 1707×743 · A87 · 20 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3E Charles de Gaulle · heure 1/3 · mar. 15/09 15:07 — Adresse du tableau","repetition":"RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · mar. 15/09 15:07 · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse d"}
+  ok     38 · 1707×743 · A87 · le nom de la classe se clique et propose les autres classes — {"nom":"SPAN [Les classes de cette séance : clique pour en prendre une aut]","propose":["3 DYLAN Bob","CLASSE TEST"]}
+  ok     38 · 1707×743 · A87 · une autre classe choisie : l’en-tête la dit — {"pris":"3 DYLAN Bob","tete":"RÉPÉTITION · 3 DYLAN Bob · pas encore à l’emploi du temps · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tabl"}
+  ÉCHEC  38 · 1707×743 · A88 · en répétition, sur le bilan : « Les élèves ont écrit le bilan » et, dans « ⋯ », « Qui a participé » restent — {"bilan":"☐ Les élèves ont écrit le bilan","menu":["Réserve de la séance…","Documents de la séance…","Expliqué à l'oral…","Déclarer une notion imprévue…","L'appel : clic droit sur un nom de la liste"]}
+  ÉCHEC  38 · 1707×743 · A88 · les élèves de la répétition sont les quatre de « CLASSE TEST », aucun d’une vraie classe — ["AUDEBERT Elise","AUGEREAU Gatien","BOIVIN Eden","BOURREAU Céleste","BRESSIN Titouan","CALDEIRA Tiago"]
+  ok     38 · 1707×743 · A91 · en répétition, la diapo du cahier de textes montre l’échéance, le travail à faire et le contenu de l’heure — « CAHIER DE TEXTES — VENDREDI 18 SEPTEMBRE 2026, 10 H 07 – 11 H 02 Collège Saint-Joseph Cahier de textes (3 Charles de Gaulle) PRENEZ VOS AGENDAS — POUR LUNDI 21 SEPTEMBRE, 08 H 57 ⤡ réduire Travail à faire Contenus de séances FRANCAIS Relire « L’Albatros » et souligner les mots de la mer Donné le 18 septembre 0 élève sur 29 a participé personne pour l'instant 0 réponse écrite · 0 prise de parole · il reste 29 à passer »
+  ok     38 · 1707×743 · A91 · en répétition, l’onglet « Contenus de séances » montre le contenu prévu de l’heure (sa première diapo : « Où en sommes-nous ? ») — {"heure":2,"prevu":["Où en sommes-nous ?","Les règles héritées","La frise du siècle"]} · « CAHIER DE TEXTES — VENDREDI 18 SEPTEMBRE 2026, 10 H 07 – 11 H 02 Collège Saint-Joseph Cahier de textes (3 Charles de Gaulle) PRENEZ VOS AGENDAS — POUR LUNDI 21 SEPTEMBRE, 08 H 57 ⤡ réduire Travail à faire Contenus de séances composé par le site ma version (modifier) ↶ ↷ FRANCAIS — contenu de la séance Cette heure, on a fait l'activité 8 — Où en sommes-nous ? »
+  ok     38 · 1707×743 · A88 / A91 · rien d’écrit au hub en répétition (la trame inchangée) — PUT /site/repetition/scene, PUT /site/repetition/scene, PUT /site/repetition/scene, PUT /site/repetition/scene
+  ok     38 · 1707×743 · A87 · 20 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3E Charles de Gaulle · heure 1/3 · mar. 22/09 15:07 — Adresse du tableau","repetition":"RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · mar. 22/09 15:07 · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse d"}
+  ok     Z · 1707×743 · 0 erreur JS (38, 20 h)
+  ok     38 · 1707×743 · A87 · 9 h, séance 1 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3E Charles de Gaulle · heure 1/3 · mar. 15/09 15:07 — Adresse du tableau","repetition":"RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · mar. 15/09 15:07 · répét. 00:00 · diapo 1, dévoilée 0 / 6 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse d"}
+  ok     38 · 1707×743 · A87 · 9 h, séance 2 : l’Atelier et la répétition disent 3E Charles de Gaulle et son heure n/N (la prochaine case de la séance), jamais Dylan — {"atelier":"3E Charles de Gaulle · heure 1/3 · mar. 22/09 15:07 — Adresse du tableau","repetition":"RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · mar. 22/09 15:07 · répét. 00:00 · diapo 1, dévoilée 0 / 2 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse d"}
+  ok     Z · 1707×743 · 0 erreur JS (38, 9 h)
+  info   41d · 1707×743 · le tableau distant, avant : l’horloge d’attente
+  ok     41d · 1707×743 · A92 · la répétition : le tableau distant montre la diapo de la répétition — {"rep":true,"pilote":{"di":0,"eid":"emt9v3yqoecf9d","nDev":0,"loupe":null,"flash":null},"tableau":{"di":0,"eid":"emt9v3yqoecf9d","nDev":0,"loupe":null,"flash":null},"attente":false}
+  ok     41d · 1707×743 · A92 · chaque élément dévoilé en répétition paraît au tableau distant — [[1,1],[2,2]]
+  ok     41d · 1707×743 · A92 · la loupe de la répétition paraît au tableau distant — {"pilote":{"x0":0.24941860465116278,"y0":0.249192923553719,"w":0.45,"h":0.34917355371900827},"tableau":{"x0":0.24941860465116278,"y0":0.249192923553719,"w":0.45,"h":0.34917355371900827}}
+  ok     41d · 1707×743 · A92 · la mise en lumière de la répétition paraît au tableau distant — {"pilote":0,"tableau":0}
+  ok     41d · 1707×743 · A92 · le gel en répétition tient l’image du tableau distant, le dégel la reprend — {"gel":true,"avant":{"di":0,"eid":"emt9v3yqoecf9d","nDev":2,"loupe":null,"flash":0},"pendant":{"di":0,"eid":"emt9v3yqoecf9d","nDev":2,"loupe":null,"flash":0},"pilote":{"di":0,"eid":"emt9v3yqoecf9d","nDev":3,"loupe":null,"flash":0},"apres":{"di":0,"eid":"emt9v3yqoecf9d","nDev":3,"loupe":null,"flash":0}}
+  info   41d · 1707×743 · le battement de présence du prof (`/presence/prof`, hors répétition aussi : 1 avant) : 1 pendant la répétition — pas une donnée de la classe ; le §12.43 le traite en mode test
+  ok     41d · 1707×743 · A92 · pendant la répétition, le hub ne reçoit que le canal du tableau (ni copie, ni journal, ni récit, ni cahier, ni présence) — 10 écritures ; hors canal : [] ; canal : ["/site/repetition/scene","/site/repetition/ecrans","/site/repetition/pointeur"]
+  ok     41d · 1707×743 · A92 · « ■ Arrêter » : le tableau distant revient à l’horloge d’attente — {"attente":true,"montre":null}
+  ok     41d · 1707×743 · A92 · (le témoin) une heure lancée par une autre classe paraît au tableau distant — {"lance":true,"classe":{"di":0,"eid":"emt9v3yqoecf9d","nDev":1,"loupe":null,"flash":null},"tableau":{"di":0,"eid":"emt9v3yqoecf9d","nDev":1,"loupe":null,"flash":null}}
+  ok     41d · 1707×743 · A92 · une répétition pendant une heure lancée ailleurs n’écrase pas son tableau (ni la scène, ni `cours_actif`) — {"classe":"emt9v3yqoecf9d","repetition":"emu0w7z40z5z1h","tableau":"emt9v3yqoecf9d","coursInchange":true}
+  ok     41d · 1707×743 · A92 · l’en-tête de la répétition dit en clair que le tableau distant est pris — « RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · lun. 21/09 08:57 · répét. 00:00 · diapo 1, dévoilée 2 / 2 · tableau distant pris : 3E Charles de Gaulle est en cours ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du »
+  ok     Z · 1707×743 · 0 erreur JS (41, deux navigateurs)
+
+BILAN banc-1228 : 69/76 vérifications — 7 ÉCHEC(S) · ROUGE

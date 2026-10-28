@@ -1212,3 +1212,33 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
     - `tick` et `#rep-ou` qui ne posent que leurs chiffres : −3 recalculs/s ;
     - le rAF de calibrage et les boucles d'1 s qui comparent avant d'écrire : −2 à 3 recalculs/s.
     - Ensemble, on attend le travail au repos divisé par deux à trois.
+
+## Retour 103 — 28/10, 13:05 — §12.56 (4) les quatre coupes et (5) le menu de « Ce que la diapo déclare », codés ; prouvés par 52m et 56s
+- **Code (E3, sur la relance de 11:43).**
+  - `dr-socle.js` : `dr_poseSi(el, prop, v)` et `dr_classeSi(el, nom, oui)`, la fonction commune de §12.56 (1)(a). Elles ne posent que ce qui change.
+  - `tick` (`dr-classe.js`) : le chrono et l'heure ne posent que leurs chiffres, leur classe et leur infobulle quand elles changent.
+  - `#rep-ou` et `#rep-chrono` (`dr-atelier.js`) : de même.
+  - Les boucles d'une seconde comparent avant d'écrire : `.dr-pp-act[hidden]`, `#dr-lancer.dr-cache`, et dans `dr-recyclage.js` `#dr-annuler[disabled]` et `body.dr-pose-mk`.
+  - `dr-recyclage.js` : les deux observateurs (le calibrage et « Annuler ») ignorent une mutation qui n'est qu'un chiffre d'horloge (`dr_mutHorloge`).
+  - `dr_tabVeiller` (`dr-tableau.js`) : une fois par seconde, au lieu de huit.
+  - `aideSuivre` (`index.html`) : au changement d'écran — après chaque clic, touche ou retour (tout de suite, puis 450 ms après), avec un filet toutes les 2,5 s — au lieu de toutes les 400 ms ; `hidden` comparé.
+- **§12.56 (5), le menu de « Ce que la diapo déclare » — trouvé.** Le geste : modifier un champ de la carte (« Titre »), puis ouvrir le menu « Activité ».
+  - Le `blur` du titre enregistrait et redessinait toute la carte (`innerHTML`). Le menu qu'on venait d'ouvrir était remplacé sous la souris, et sa liste se refermait. C'est reproduit sur la ⑦.
+  - Ce n'est pas un écho du hub : rien ne relit le chapitre ici (ni abonnement ni minuterie). C'est le redessin de la carte au `blur`.
+  - Réparé selon la règle (1)(c), dans `rendreDroiteAtelier` : un menu ou un champ de la carte pris à la souris (`pointerdown`, qui vient avant le `blur`) ou qui a le focus est le geste en cours. La carte attend sa fin (`change` ou `blur`) pour se redessiner.
+  - La sonde 56s gagne ce cas (b bis) : chaque champ de la carte modifié, puis chaque menu de la carte ouvert à la souris, 3 s. Sur la ⑦ : rouge (`#dc-titre` puis `#dc-act`, nœud remplacé). Après : **vert (4 sur 4)**.
+- **La preuve, 52m (processeur ÷4, le travail au repos par seconde, avant → après) :**
+  - accueil : 121 → 78 ms ;
+  - Atelier : 124 → 51 ms ;
+  - répétition : 180-210 → 67-73 ms ;
+  - heure en mode test : 152 → 97 ms ;
+  - les recalculs de styles passent de 7 à 9 par seconde à 2 à 4 par seconde.
+  - Aucune fuite : 5 008 nœuds au début et à la fin de la minute, ramassage forcé.
+- **La preuve, 56s (1707 × 743, tous les écrans) :**
+  - menus, champs, boutons et vignettes : vert partout ;
+  - au repos, il ne reste que `#shooting-star`, l'étoile filante décorative de l'accueil (`doShoot`, toutes les 4 à 12 s, `style` et `class`). Pour que 56s soit vert au repos, il faut la passer en animation CSS (aucune mutation) ou l'exempter : à trancher par la conscience, ce n'est pas dans les quatre coupes.
+- **`banc.sh` VERT** sur la tête avec ces changements (`d7e4978f`). Non-régression : 45a (le « ? », 13 · 40/41/43) et 41d (le tableau distant) verts.
+- **À signaler, rouge déjà sur la tête sans mes changements** (vérifié sur `b55d8394`, l'intégration avant moi) :
+  - le cas 38, A88 : les élèves de la répétition sont ceux d'une vraie classe (AUDEBERT Elise…), plus ceux de CLASSE TEST ; « Qui a participé » est sorti du menu « ⋯ » ;
+  - le cas 29 : S1, S2 (la séquence de fin d'heure à T-5) et S5.
+  - Cela vient probablement d'une poussée récente sur la répétition (§12.41, A103) : à voir par E1.

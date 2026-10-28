@@ -15466,7 +15466,7 @@ function aideRelayer(){ try{ window.dispatchEvent(new Event('resize')); }catch(e
 function aideBasculer(){ if(AIDE.ouvert)aideFermer(); else aideOuvrir(); }
 function aideSuivre(){   /* le bouton paraît sur les écrans du prof ; volet ouvert, le texte suit l'écran */
   aidePoser(); var b=document.getElementById('aide-q'); var k=aideCle();
-  if(b)b.hidden=!k;
+  if(b&&b.hidden!==!k)b.hidden=!k;   /* §12.56 (1)(a) : rien ne se pose s'il n'a pas changé */
   if(!k&&AIDE.ouvert){ aideFermer(); return; }
   if(AIDE.ouvert&&k!==AIDE.cle)aideRendre();
 }
@@ -15479,7 +15479,10 @@ document.addEventListener('keydown',function(ev){
   }
   if(ev.key==='Escape'&&AIDE.ouvert){ ev.preventDefault(); ev.stopImmediatePropagation(); aideFermer(); }
 },true);
-setInterval(function(){ try{ aideSuivre(); }catch(e){} },400);
+/* §12.56 (4) : l'aide suit l'écran au changement d'écran — après chaque geste (clic, touche, retour), deux fois (tout de suite, puis
+   quand l'écran s'est posé) — et un filet toutes les 2,5 s pour un écran qui change tout seul (T-5, la fin de l'heure) ; avant : toutes les 400 ms */
+(function(){ var t1=null,t2=null; var suivre=function(){ try{ aideSuivre(); }catch(e){} }; var apres=function(){ clearTimeout(t1); clearTimeout(t2); t1=setTimeout(suivre,30); t2=setTimeout(suivre,450); };
+  ['click','keyup','popstate','hashchange'].forEach(function(n){ window.addEventListener(n,apres,true); }); setInterval(suivre,2500); })();
 function atSommaireNatifHtml(){
   var ec=AT.edChap||AT_FIL; if(!ec) return '<div class="at-vues-arbre" id="at-arbre"></div>';
   try{

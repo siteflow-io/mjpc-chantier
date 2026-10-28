@@ -817,3 +817,9 @@ La veille s'était arrêtée à 04:10 ; un rappel en double (07:53 UTC) m'a fait
 - **A91 (les données)** : l'Atelier — l'échéance est la prochaine heure de 3E Charles de Gaulle après l'heure 1 (« mardi 15 septembre, 15 h 07 »), le travail prévu de l'heure 1, « qui » vide ; la répétition — la même échéance, `qui` laissé à E4 ; la trame inchangée. Rouge avant (4/5), vert après. La partie « par le geste » (la diapo montrée) suit le rendu d'E4.
 - **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/0058-28-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `52539adc…`).
 - **§12.38 (3), part E1 (les données) finie** ; le rendu attend E4.
+
+## 28/10, 01:53 — §12.38 (1), l'en-tête de la répétition (E3, retour 91)
+- **Lu** : relance 01:37. **La cause** : `dr_hclasseMaj` écrivait bien « · heure n/N · date » dans `#hou` en répétition, mais `dr.css` (l. 53, `.haut.p8-rep #hou{display:none}`) cachait `#hou` en répétition ; ma garde lisait le texte, pas ce qui se voit. Le compteur « répét. … » n'écrit pas dans `#hou` (il a ses `#rep-chrono`/`#rep-ou`).
+- **Le correctif** (`dr.css`, le mien) : `#dr-zone .haut.p8-rep #hou` visible, sur une ligne, à côté du compteur. Rien dans `dr-socle.js` cette fois (E4 : pas de conflit avec le rendu du cahier).
+- **A87** (suite) : aux quatre tailles, en répétition, « RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · lun. 21/09 08:57 · répét. 00:00 · diapo 1… » — la classe et « heure n/N · date » **visibles**, entières, sans défilement. Rouge avant (4/4), vert après ; A53, A60 (la répétition garde ses notes) : 32/0.
+- **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/0144-28-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `2bda74f8…`).

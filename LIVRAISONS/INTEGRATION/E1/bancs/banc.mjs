@@ -1731,6 +1731,17 @@ await B('A91', '§12.38 (3), les données : dans l\'Atelier et en répétition, 
   E.verif('A91', r.avant != null && r.avant === r.apres && !/cahier/.test(r.apres), 'rien n\'est écrit dans la trame : la diapo de fin garde ses blocs (' + r.apres + ')', r.apres);
   E.verif('A91', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
 
+await B('A87', '§12.38 (1), E3 retour 91 : en répétition, aux quatre tailles, l\'en-tête montre « RÉPÉTITION · classe · heure n/N · date » à côté du compteur — visible, pas seulement écrit', async () => {
+  for (const [w, h] of TAILLES_1227) { const st = storeCle(); const ch0 = st.site['3e'].chapitres[0]; ch0.published = Object.assign({}, typeof ch0.published === 'object' ? ch0.published : {}, { '3_dylan_bob': true, '3e_charles_de_gaulle': true }); ch0.seances[1].classes = ['3e_charles_de_gaulle'];
+    const o = await E.ouvrir(b, { w, h, hub: st }); const pg = o.pg;
+    const r = await pg.evaluate(() => new Promise(res => edtCharger(() => edtChargerClasses(() => edtChargerChapitres(['3e'], () => { ATVUES.snum = '1'; try { dr_suivreSeance(); } catch (e) {} DR_MEM.source = null; dr_tout(); setTimeout(() => { try { lancerRepetition(); dr_hclasseMaj(); setTimeout(() => {
+      const vu = id => { const x = document.getElementById(id); if (!x) return null; const r = x.getBoundingClientRect(); const cs = getComputedStyle(x); return { t: x.textContent, w: Math.round(r.width), vis: cs.display !== 'none' && cs.visibility !== 'hidden' && r.width > 0, plein: x.scrollWidth <= x.clientWidth + 1, droite: Math.round(r.right) }; };
+      const out = { pre: vu('hclasse'), hou: vu('hou'), chr: (document.querySelector('.p8-rep-chr') || {}).textContent, pre0: (document.querySelector('.p8-rep-pre') || {}).textContent, src: dr_sourceSeance(), W: innerWidth, defile: document.scrollingElement.scrollWidth - innerWidth }; arreterRepetition(); res(out); }, 900); } catch (x) { res({ erreur: String(x.message) }); } }, 1200); })))));
+    const s = r.src || {}; const okT = r.hou && r.hou.vis && r.hou.t.indexOf('heure ' + (1) + '/' + s.sur) >= 0 && /\d\d\/\d\d \d\d:\d\d/.test(r.hou.t);
+    E.verif('A87', r.pre && r.pre.vis && r.pre.t === s.classeNom && okT && r.hou.plein && /répét\./.test(r.chr || '') && r.defile <= 0, w + '×' + h + ' · répétition : « ' + (r.pre0 || '').trim() + ' ' + (r.pre && r.pre.t) + (r.hou && r.hou.t) + ' ' + String(r.chr || '').replace(/\s+/g, ' ').trim() + ' » — classe et heure n/N · date visibles, entières, sans défilement', JSON.stringify({ pre: r.pre, hou: r.hou, defile: r.defile, src: s.classeNom }));
+    E.verif('A87', !o.errs.length, w + '×' + h + ' : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
+});
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

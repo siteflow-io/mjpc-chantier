@@ -979,3 +979,23 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - **A91, rouge, à E4.** La diapo du cahier en répétition dit seulement « FIN D'HEURE ». E1 a poussé les données (`dr_cahierHorsClasse`). Le rendu est à E4, comme E1 le dit dans RELANCES/E1.md.
 - Verts : §12.35, §12.36, §12.37, §12.39. Reste §12.38.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0115-28-10-1238/`.
+
+## Retour 92 — 28/10, 02:20 — §12.38 : A87, A88 verts ; A91 vert sauf « le contenu de l'heure » (« rien encore »)
+- E1 a poussé l'en-tête de la répétition (`a020ba759`, A87). E4 a poussé le cahier hors de la classe (`d65bf9df2`, A91). L'assemblé de la tête est `015122f8`. `banc.sh` : **VERT**.
+- **A91, le contrôle était trop faible ; je l'ai durci :**
+  - « travail à faire » se trouvait déjà dans l'étiquette de l'onglet, même vide ;
+  - le magasin du cas 38 porte maintenant un travail prévu par heure (« Relire « L'Albatros » et souligner les mots de la mer ») ;
+  - le contrôle exige ce travail et l'échéance « pour <jour> <n> ».
+- **Un contrôle ajouté**, comme Paul le ferait : jouer le début de l'heure en répétition (deux diapos, trois éléments dévoilés chacune, l'horloge qui avance de 30 min), puis, sur le cahier, dévoiler jusqu'à ce que l'onglet « Contenus de séances » s'ouvre, et le lire.
+- **Le cas 38, aux quatre tailles : 12 vertes sur 13 par taille.**
+  - **A87 vert.** La répétition dit « RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · mar. 15/09 15:07 », à 20 h et à 9 h, pour les séances 1 et 2. Le nom de la classe propose 3 DYLAN Bob et CLASSE TEST. Une classe choisie passe dans l'en-tête.
+  - **A88 vert.** Les élèves sont les quatre de CLASSE TEST. Rien n'est écrit dans la trame.
+    - Les quatre PUT listés (`/site/edt/grille`, `/corbeille/…edt-mise-a-niveau-grille…`, `/manifestes/index`, `/site/edt/photos`) sont les mêmes sur la ⑥. C'est la mise à niveau de la grille au chargement, pas la répétition.
+  - **A91, ce qui est vert.** La diapo du cahier montre « Cahier de textes — vendredi 18 septembre 2026, 10 h 07 – 11 h 02 » et « Prenez vos agendas — pour lundi 21 septembre, 08 h 57 ». Elle montre le travail prévu « Relire « L'Albatros » et souligner les mots de la mer » et « 0 élève sur 4 a participé » (capture `1707x743-38-6-…-apres.png`, regardée).
+  - **A91, ce qui est rouge : le contenu de l'heure.** L'onglet « Contenus de séances » dit « contenu de la séance — **rien encore** », même après deux diapos jouées et 30 min passées (capture `*-38-7-le-cahier-contenus-apres.png`).
+    - Le récit (`recitPourED` → `recitHtml`, `dr-recit.js`) semble ne se composer que d'une heure réellement lancée.
+    - Le contrat §12.38 (3) demande, hors de la classe, « le contenu de l'heure ».
+    - À trancher : soit le récit des diapos jouées en répétition, soit, dans l'Atelier, le contenu prévu (les activités de l'heure). `dr-recit.js` est chez E4 ; les données de `dr_cahierHorsClasse` chez E1, qui ne portent pas de contenu.
+- **Non-régression sur `015122f8` : cas 35, 36, 37 et 39b VERT 140/140.**
+- §12.38 n'est donc **pas encore VERT**, à ce seul point près. Verts : §12.35, §12.36, §12.37, §12.39.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0205-28-10-1238-vert/`.

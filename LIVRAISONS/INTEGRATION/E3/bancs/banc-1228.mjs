@@ -922,7 +922,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
 
   /* ── 38 (§12.38) : jouer en avance — la bonne classe, aucun geste d'élève ── */
   if (fait('38')) { const k = '38';
-    const st38 = () => { const st = hubStore(); try { const E = st.site['3e'].chapitres[0].seances[0].deroule.ecrans; const b = E.find(e => /^Question-bilan/.test(e.act || '')); if (b) b.role = 'bilan'; } catch (e) {} return st; };   /* la diapo du bilan du faux hub porte son rôle (comme un chapitre importé, §12.24) */
+    const st38 = () => { const st = hubStore(); try { const E = st.site['3e'].chapitres[0].seances[0].deroule.ecrans; const b = E.find(e => /^Question-bilan/.test(e.act || '')); if (b) b.role = 'bilan'; st.site['3e'].chapitres[0].seances[0].deroule.travail = { 1: 'Relire « L’Albatros » et souligner les mots de la mer', 2: 'Relire « L’Albatros » et souligner les mots de la mer', 3: 'Relire « L’Albatros » et souligner les mots de la mer' }; } catch (e) {} return st; };   /* A91 : un travail à faire prévu, que la diapo du cahier doit montrer */   /* la diapo du bilan du faux hub porte son rôle (comme un chapitre importé, §12.24) */
     for (const [heure, quand] of [['20 h', '2026-09-14T20:00:00+02:00'], ['9 h', '2026-09-15T09:00:00+02:00']]) { const o = await ouvrirCtx(W, H, st38()); const pg = o.pg;
       try { await pg.clock.setFixedTime(new Date(quand)); await entrerProf(pg); await ouvrirAtelier(pg);
         const tete = () => pg.evaluate(() => { const v = e => e && e.offsetParent && e.getBoundingClientRect().height > 0; const h = Array.from(document.querySelectorAll('#pilotage .haut, .p8-entete, .haut')).filter(v).map(e => e.innerText.replace(/\s+/g, ' ').trim()).join(' | '); return h.slice(0, 220); });
@@ -950,10 +950,18 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
             verif(k, g.role === 'bilan' && !!g.bilanCoche && menuPlus.some(x => /Qui a participé/.test(x)), T + ' · A88 · en répétition, sur le bilan : « Les élèves ont écrit le bilan » et, dans « ⋯ », « Qui a participé » restent', JSON.stringify({ bilan: g.bilanCoche, menu: menuPlus.slice(0, 8) }));
             verif(k, el.L && el.L.length === 4 && el.L.every(n => CT.indexOf(n) >= 0), T + ' · A88 · les élèves de la répétition sont les quatre de « CLASSE TEST », aucun d’une vraie classe', JSON.stringify(el.L && el.L.slice(0, 6)));
             /* A91 · la diapo du cahier de textes, en répétition : l'échéance, le travail à faire prévu, le contenu de l'heure */
+            /* jouer d'abord le début de l'heure en répétition, comme Paul : diapo 1 puis 2, quelques éléments dévoilés */
+            for (const d of [0, 1]) { await pg.clock.setFixedTime(new Date(new Date(quand).getTime() + (d + 1) * 12 * 60000)); await pg.evaluate(x => { try { aller(x); } catch (e) {} }, d); await p(pg, 800); for (let i = 0; i < 3; i++) { await clicTexte(pg, 'button', 'Dévoiler'); await p(pg, 400); } }
+            await pg.clock.setFixedTime(new Date(new Date(quand).getTime() + 30 * 60000));   /* le temps passe pendant la répétition : le récit se compose avec lui */
             const fin = await pg.evaluate(() => { try { const E = seance().ecrans; const i = E.findIndex(e => e && e.role === 'fin'); aller(i); return i; } catch (e) { return -1; } }); await p(pg, 1500);
-            const cah = await pg.evaluate(() => { const m = document.getElementById('mur'); const t = m ? m.innerText.replace(/\s+/g, ' ').trim() : ''; return { t: t.slice(0, 200), n: t.length }; });
+            const cah = await pg.evaluate(() => { const m = document.getElementById('mur'); const t = m ? m.innerText.replace(/\s+/g, ' ').trim() : ''; return { t: t.slice(0, 600), n: t.length }; });
             await capt(pg, W, H, '38-6-le-cahier-en-repetition');
-            verif(k, fin >= 0 && cah.n > 40 && /chéance|travail|à faire/i.test(cah.t), T + ' · A91 · en répétition, la diapo du cahier de textes montre l’échéance, le travail à faire et le contenu de l’heure', '« ' + cah.t + ' »');
+            verif(k, fin >= 0 && cah.n > 40 && /pour (lundi|mardi|mercredi|jeudi|vendredi) \d+/i.test(cah.t) && /souligner les mots de la mer/.test(cah.t), T + ' · A91 · en répétition, la diapo du cahier de textes montre l’échéance, le travail à faire et le contenu de l’heure', '« ' + cah.t + ' »');
+            /* A91 · l'onglet « Contenus de séances » : le contenu de l'heure (les activités de la trame) */
+            for (let i = 0; i < 4; i++) { await clicTexte(pg, 'button', 'Dévoiler'); await p(pg, 500); }   /* l'onglet s'ouvre au troisième élément dévoilé, comme en classe */
+            const cont = await pg.evaluate(() => { const m = document.getElementById('mur'); const o = m && m.querySelector('[data-onglet="contenu"]'); if (!o) return null; o.click(); return true; }); await p(pg, 800);
+            const ct = await pg.evaluate(() => { const m = document.getElementById('mur'); return m ? m.innerText.replace(/\s+/g, ' ').trim().slice(0, 600) : ''; }); await capt(pg, W, H, '38-7-le-cahier-contenus');
+            verif(k, cont && /Analyse d.images|Tableau 1|hypoth|Romantisme|Baudelaire|Albatros/.test(ct.replace(/Relire « L’Albatros »[^.]*mer/, '')), T + ' · A91 · en répétition, l’onglet « Contenus de séances » du cahier montre le contenu de l’heure', '« ' + ct.slice(0, 400) + ' »');
             const ecrRep = await pg.evaluate(() => (window.__ECR || []).filter(x => !/presence/.test(x)));
             verif(k, !ecrRep.some(x => /chapitres/.test(x)), T + ' · A88 / A91 · rien d’écrit au hub en répétition (la trame inchangée)', ecrRep.slice(-4).join(', ')); }
           await clicTexte(pg, 'button', 'Arrêter'); await p(pg, 1200); }

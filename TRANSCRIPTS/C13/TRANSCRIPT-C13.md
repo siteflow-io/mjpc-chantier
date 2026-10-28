@@ -5445,3 +5445,24 @@ MEMO
 
 28/10/2026 03:58
 MEMO
+
+---
+
+## Tour 269 — 28/10/2026 06:45 → 06:46
+
+**Paul :** L'adresse du tableau distant ça a été réglé ? Ce que je voyais sur mon téléphone tu sais
+
+**Claude :**
+
+À jouer : la ⑦ (rapport de 03:58, captures T268-01 à T268-09) · en cours chez les exécutants : rien · ouvert : 712, 717 ; 641, 538, 553, 586, 481, 458.
+
+715. Non, rien n'a changé là-dessus. Ce que tu voyais sur ton téléphone (le nom du site, l'heure, la date), c'est l'écran d'attente du tableau. À 14:23 hier, je t'avais répondu que ce n'était pas un défaut : le tableau distant reste sur cette horloge tant qu'aucune heure n'est lancée depuis l'emploi du temps. Il y reste aussi en mode test, et pendant une répétition, parce que la répétition n'envoie rien au site. Je ne l'ai donc pas inscrit comme dette.
+
+716. Ce que je ne sais toujours pas : je ne l'ai jamais vu marcher sur un vrai second appareil. Les bancs le jouent dans un deuxième navigateur, sur un faux site, où il passe bien de l'horloge à la diapo. Le vrai test se fait au début d'une heure réelle : ton téléphone sur l'adresse du tableau, puis tu lances l'heure depuis l'emploi du temps, hors mode test. Il doit passer de l'horloge à la diapo et suivre quand tu avances. Pendant ce test, je peux lire le hub sans rien y écrire pour vérifier que le site envoie bien la diapo.
+
+717. Ma proposition, si c'est ce que tu attendais : que la répétition envoie aussi au tableau distant ce que voit la classe, pour que tu puisses essayer ton téléphone ou le vidéoprojecteur la veille. Seule l'image du tableau partirait au site ; rien ne serait écrit dans la séance, le récit ou le cahier. Oui ?
+
+À tester : au début de ta prochaine heure, le téléphone sur l'adresse du tableau, puis le lancement depuis l'emploi du temps (716).
+
+28/10/2026 06:46
+MEMO

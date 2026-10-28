@@ -6610,3 +6610,26 @@ MEMO
 
 28/10/2026 15:03
 MEMO
+
+---
+
+## Tour 322 — 28/10/2026 15:06 → 15:06
+
+**Paul :** Ok et du coup pourquoi ne pas lancer 20 exécutants en parallèle comme ça on divise le temps de codage par vingt et on va 20 fois plus vite ?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 retire le second bouton de lancement, le dernier morceau de la ⑧ · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+870. Non, ça n'irait pas vingt fois plus vite, pour trois raisons. La première, ton quota : vingt exécutants font le même travail que deux, au même prix en tokens, mais ils le dépensent vingt fois plus vite. Avec ce qui te reste cette semaine, ce serait épuisé avant lundi.
+
+871. La deuxième : presque tout le déroulé vit dans le même fichier. Deux exécutants qui touchent la même zone se marchent dessus ; la reprise d'heure de ce matin, qui dévoilait une ligne de trop, venait déjà de deux morceaux codés en même temps. À vingt, je passerais mon temps à réparer leurs croisements.
+
+872. La troisième : ce qui freine n'est pas le code, ce sont les décisions et les vérifications. Il faut ton mot sur chaque cadrage, et mon banc complet avant chaque promotion. Vingt exécutants attendraient surtout.
+
+873. Ce qui marche : trois ou quatre exécutants en même temps, chacun sur un fichier ou une zone à lui (le déroulé, l'Atelier, la rédaction, la dictée), quand ton quota le permet. Cette semaine, un ou deux à la fois.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:06
+MEMO

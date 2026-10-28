@@ -6854,3 +6854,24 @@ MEMO
 
 28/10/2026 17:25
 MEMO
+
+---
+
+## Tour 334 — 28/10/2026 17:28 → 17:33
+
+**Paul :** Promeus
+
+**Claude :**
+
+À jouer : la ⑧ est en production · en cours : rien · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+897. C'est promu. La production est la 8.75.0-⑧ : 2 593 520 octets, md5 `6cd16508…`. J'ai vérifié bit à bit au dépôt à 17:29, puis à l'adresse publique à 17:31 : le site sert bien la ⑧. Le point de retour, si besoin, est la ⑦ (`docs/MJPC6-restauration.md`).
+
+898. Les documents de suivi sont à jour. Le registre a sept dettes réglées (13 · 11, 47, 48, 56, 66, 84 et 89) ; 13 · 71 attend ton collage du fragment des mouvements littéraires. Le journal, le point de retour, « où trouver quoi » et l'index des fonctions (2 063) sont faits aussi. Les trois sessions d'exécutants sont arrêtées.
+
+899. La suite : la ⑨, ce soir, avec des exécutants neufs. La Structure est déjà codée et attend mon banc ; l'Atelier (793 à 796) reste à faire. Dimanche 8 h : mjpc-medias-2, ton relais et tes trois fichiers Drive.
+
+À tester (siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8) : lance « ▶ Jouer en avance », ton téléphone sur l'adresse du tableau, et vérifie qu'il suit. Lance une heure des De Gaulle en mode test, puis vérifie l'heure de la case, « aller à 5 minutes de la fin », ⏱ et 👥 sous la diapo, et le clic sur une diapo. Corrige une étiquette d'activité en direct, retire une image du tableau et remets-la. Ouvre « Fiche grammaire : les connecteurs logiques » en vue élève. Relie ta ligne « Dictée : « Le port » » à la vraie dictée par « Lier… ».
+
+28/10/2026 17:33
+MEMO

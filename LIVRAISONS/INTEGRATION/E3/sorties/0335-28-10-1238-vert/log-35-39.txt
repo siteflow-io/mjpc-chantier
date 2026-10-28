@@ -1,0 +1,145 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-28 02:34 UTC · fichier md5 b01f1a39e2b6d923295c31baf7f9de9b
+
+══ 1366×768 ══
+  ok     35 · 1366×768 · A80 · les semaines du 2/11 et du 9/11 de 3 FRANKLIN Aretha montrent « Remédiation : décrire une image » — 2026-11-02 08:57-09:52, 2026-11-03 15:07-16:02
+  ok     35 · 1366×768 · A80 · celles de 3 DYLAN Bob ne la montrent pas, sans trou (de la séance 1 à l’« Étude de texte ») — ["Étude de texte accompagnée : « L'Albatros » heure 1/3","Étude de texte accompagnée : « L'Albatros » heure 2/3","Étude de texte accompagnée : « L'Albatros » heure 3/3","Interro de cours et analyse logique — les bases (1) heure 1/3","Interro de cours et analyse logique — les bases (1) heure 2/3","Interro de cours et analyse logique — les bases (1) heure 3/3","3 DYLAN Bob Le poème sans vers : dicté
+  info   35 · 1366×768 · la vue Année : « Remédiation : décrire une image » sous rien
+  ok     35 · 1366×768 · A80 · 3 FRANKLIN Aretha joue l’heure de remédiation par sa case — {"case":true,"bouton":true,"h":{"lancee":true,"ctx":"3e/0/7","seance":"Remédiation : décrire une image","classe":"3_franklin_aretha"}}
+  ok     35 · 1366×768 · A80 · l’heure de 3 DYLAN Bob (mardi 3/11, 10:07) : sa réactivation ne cite jamais « Remédiation : décrire une image » — {"case":true,"bouton":true,"lancee":true,"snum":"1","cite":false,"reactivation":true}
+  ok     35 · 1366×768 · A82 · un élève de 3 DYLAN Bob voit le chapitre et sa séance 1, jamais « Remédiation : décrire une image » — {"voit":false,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1366×768 · A82 · un élève de 3 FRANKLIN Aretha la voit — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1366×768 · A82 · la publication de « Remédiation : décrire une image » ne propose que 3 FRANKLIN Aretha — ["3_franklin_aretha"]
+  ok     Z · 1366×768 · 0 erreur JS (35)
+  ok     39b · 1366×768 · A90 · l’élève de 3 DYLAN Bob : ses séances numérotées sans trou (la remédiation de Franklin ne compte pas) — ["SÉANCE 1 Poésie et peinture : le Romantisme en qu","SÉANCE 2 Étude de texte accompagnée : « L'Albatro"]
+  ok     39b · 1366×768 · A90 · l’élève de 3 FRANKLIN Aretha : séance 1, séance 2 (sa remédiation), séance 3… — ["SÉANCE 1 Poésie et peinture : le Romantisme en qu","SÉANCE 2 Remédiation : décrire une image","SÉANCE 3 Étude de texte accompagnée : « L'Albatro"]
+  ok     Z · 1366×768 · 0 erreur JS (39b, A90)
+  ok     39b · 1366×768 · A89 · la séance 1 renommée par la Structure : « Le Romantisme en question : cinq tableaux » au hub — {"champ":true,"titre":"Le Romantisme en question : cinq tableaux"}
+  ok     39b · 1366×768 · A89 · renommée, ses trois heures jouées la suivent : la case de Dylan (mar. 3/11, 10:07) dit « Étude de texte… heure 1/3 » et le lancement ouvre cette séance — {"lue":"3 DYLAN Bob Étude de texte accompagnée : « L'Albatros » heure 1/3","lb":true,"h":{"lancee":true,"snum":"1","titre":"Étude de texte accompagnée : « L'Albatros »"}}
+  ok     Z · 1366×768 · 0 erreur JS (39b, renommée)
+  ok     39b · 1366×768 · A89 · deux séances de même titre : la case de Dylan (heure 1/3 de la seconde) ouvre la seconde (clé 1), pas la première — {"lue":"3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1/3","lb":true,"h":{"lancee":true,"snum":"1","titre":"Poésie et peinture : le Romantisme en question"}}
+  ok     Z · 1366×768 · 0 erreur JS (39b, même titre)
+  info   36 · 1366×768 · la colonne (at-arbre.at-vues-arbre) : 1158 px pour 700 visibles, 250 px de large
+  ok     36 · 1366×768 · A84 (1) · ni documents, ni attendus, ni « + insérer une séance ici » dans la colonne de l’Atelier
+  ok     36 · 1366×768 · A84 (2)(3) · en haut le titre du chapitre ; ni « Chapitre · … » ni « Séance n — … (n h) » — Poésie et peinture au XIXe siècle (proposition) 2 documents sur 35 attendus → Structure ▾ Poésie et peinture : le Romantisme en question Ouvrir chaque heure par
+  ok     36 · 1366×768 · A84 (2) · « n documents sur m attendus » ouvre la Structure — {"docs":"2 documents sur 35 attendus → Structure","vue":"structure"}
+  ok     36 · 1366×768 · A84 (4) · la séance ouverte se replie par son titre (plus aucune diapo) et se rouvre — {"avant":21,"replie":0,"rouvre":21}
+  ok     36 · 1366×768 · A84 (5) · la ligne d’heure « H1 · lun. 14/09 · 08:57 → 09:52 · … min prévues pour … utiles » — « H1 · lun. 14/09 · 08:57 → 09:52 57 min prévues pour 50 utiles +7 »
+  ok     36 · 1366×768 · A84 (5) · un clic sur la ligne d’heure ouvre la première diapo de l’heure — {"clic":true,"di":0}
+  ok     36 · 1366×768 · A84 (6) · chaque diapo dit son heure prévue et sa durée, avec l’infobulle — {"t":"09:00 Tableau 1 6 min","titre":"Clic : ouvre cette diapo · clic droit : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer"}
+  ok     36 · 1366×768 · A84 (6) · plus de ligne d’aide « Ctrl + molette » au bas de la colonne
+  ok     36 · 1366×768 · A85 · la poignée élargit et réduit la colonne — 218 → 330 → 290 px
+  ok     36 · 1366×768 · A85 · la largeur est retenue au rechargement — 290 → 290 px
+  ok     36 · 1366×768 · A85 · tirée tout à gauche, la colonne se replie en un liseré ; un clic la rouvre — {"replie":0,"lisere":"at-arbre-poignee","rouverte":290}
+  ok     36 · 1366×768 · A85 · la colonne de droite s’élargit et sa largeur est retenue au rechargement — {"avant":336,"tiree":406,"recharge":406}
+  ok     Z · 1366×768 · 0 erreur JS (36)
+  ok     37 · 1366×768 · A86 · dans l’éditeur de la feuille, les gestes de la diapo : surligner, couleur du texte, G, S, la légende — {"ouverte":true,"surl":"atf-surl [Surligner — sélectionne du texte dans la]","coul":"atf-txt [Couleur du texte — sélectionne du texte ]","gras":"atf-gras [Gras (Ctrl+B) — sélectionne du texte dan]","soul":"atf-soul [Souligné (Ctrl+U) — sélectionne du texte]","legende":"atf-legende [Légende de surlignage : « jaune = … · ve]"}
+  ok     37 · 1366×768 · A86 · « Un port » surligné en jaune et la légende de surlignage visibles dans l’aperçu — {"gestes":[true,true],"apercu":{"surl":["Un port"],"legende":true}}
+  ok     37 · 1366×768 · A86 · « Le port » mis en forme dans l’aperçu : sujet souligné, verbe en gras, participe en couleur — {"zones":["textarea","textarea","textarea"],"apercu":{"u":["Un port"],"b":["est"],"c":["Un port","fatiguée"]}}
+  ok     37 · 1366×768 · A86 · après rechargement, la forme est gardée — {"u":["Un port"],"b":["est"],"c":["Un port","fatiguée"]}
+  ok     37 · 1366×768 · A86 · l’aperçu d’impression (média print) garde la forme, sur fond blanc — {"fond":"rgb(255, 255, 255)","u":1,"b":1}
+  ok     37 · 1366×768 · A86 · « Les connecteurs logiques » : « car » en couleur dans le tableau — {"zone":"textarea","apercu":["car"]}
+  ok     Z · 1366×768 · 0 erreur JS (37)
+
+══ 1536×864 ══
+  ok     35 · 1536×864 · A80 · les semaines du 2/11 et du 9/11 de 3 FRANKLIN Aretha montrent « Remédiation : décrire une image » — 2026-11-02 08:57-09:52, 2026-11-03 15:07-16:02
+  ok     35 · 1536×864 · A80 · celles de 3 DYLAN Bob ne la montrent pas, sans trou (de la séance 1 à l’« Étude de texte ») — ["Étude de texte accompagnée : « L'Albatros » heure 1/3","Étude de texte accompagnée : « L'Albatros » heure 2/3","Étude de texte accompagnée : « L'Albatros » heure 3/3","Interro de cours et analyse logique — les bases (1) heure 1/3","Interro de cours et analyse logique — les bases (1) heure 2/3","Interro de cours et analyse logique — les bases (1) heure 3/3","3 DYLAN Bob Le poème sans vers : dicté
+  info   35 · 1536×864 · la vue Année : « Remédiation : décrire une image » sous rien
+  ok     35 · 1536×864 · A80 · 3 FRANKLIN Aretha joue l’heure de remédiation par sa case — {"case":true,"bouton":true,"h":{"lancee":true,"ctx":"3e/0/7","seance":"Remédiation : décrire une image","classe":"3_franklin_aretha"}}
+  ok     35 · 1536×864 · A80 · l’heure de 3 DYLAN Bob (mardi 3/11, 10:07) : sa réactivation ne cite jamais « Remédiation : décrire une image » — {"case":true,"bouton":true,"lancee":true,"snum":"1","cite":false,"reactivation":true}
+  ok     35 · 1536×864 · A82 · un élève de 3 DYLAN Bob voit le chapitre et sa séance 1, jamais « Remédiation : décrire une image » — {"voit":false,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1536×864 · A82 · un élève de 3 FRANKLIN Aretha la voit — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1536×864 · A82 · la publication de « Remédiation : décrire une image » ne propose que 3 FRANKLIN Aretha — ["3_franklin_aretha"]
+  ok     Z · 1536×864 · 0 erreur JS (35)
+  ok     39b · 1536×864 · A90 · l’élève de 3 DYLAN Bob : ses séances numérotées sans trou (la remédiation de Franklin ne compte pas) — ["SÉANCE 1 Poésie et peinture : le Romantisme en qu","SÉANCE 2 Étude de texte accompagnée : « L'Albatro"]
+  ok     39b · 1536×864 · A90 · l’élève de 3 FRANKLIN Aretha : séance 1, séance 2 (sa remédiation), séance 3… — ["SÉANCE 1 Poésie et peinture : le Romantisme en qu","SÉANCE 2 Remédiation : décrire une image","SÉANCE 3 Étude de texte accompagnée : « L'Albatro"]
+  ok     Z · 1536×864 · 0 erreur JS (39b, A90)
+  ok     39b · 1536×864 · A89 · la séance 1 renommée par la Structure : « Le Romantisme en question : cinq tableaux » au hub — {"champ":true,"titre":"Le Romantisme en question : cinq tableaux"}
+  ok     39b · 1536×864 · A89 · renommée, ses trois heures jouées la suivent : la case de Dylan (mar. 3/11, 10:07) dit « Étude de texte… heure 1/3 » et le lancement ouvre cette séance — {"lue":"3 DYLAN Bob Étude de texte accompagnée : « L'Albatros » heure 1/3","lb":true,"h":{"lancee":true,"snum":"1","titre":"Étude de texte accompagnée : « L'Albatros »"}}
+  ok     Z · 1536×864 · 0 erreur JS (39b, renommée)
+  ok     39b · 1536×864 · A89 · deux séances de même titre : la case de Dylan (heure 1/3 de la seconde) ouvre la seconde (clé 1), pas la première — {"lue":"3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1/3","lb":true,"h":{"lancee":true,"snum":"1","titre":"Poésie et peinture : le Romantisme en question"}}
+  ok     Z · 1536×864 · 0 erreur JS (39b, même titre)
+  info   36 · 1536×864 · la colonne (at-arbre.at-vues-arbre) : 1158 px pour 796 visibles, 250 px de large
+  ok     36 · 1536×864 · A84 (1) · ni documents, ni attendus, ni « + insérer une séance ici » dans la colonne de l’Atelier
+  ok     36 · 1536×864 · A84 (2)(3) · en haut le titre du chapitre ; ni « Chapitre · … » ni « Séance n — … (n h) » — Poésie et peinture au XIXe siècle (proposition) 2 documents sur 35 attendus → Structure ▾ Poésie et peinture : le Romantisme en question Ouvrir chaque heure par
+  ok     36 · 1536×864 · A84 (2) · « n documents sur m attendus » ouvre la Structure — {"docs":"2 documents sur 35 attendus → Structure","vue":"structure"}
+  ok     36 · 1536×864 · A84 (4) · la séance ouverte se replie par son titre (plus aucune diapo) et se rouvre — {"avant":21,"replie":0,"rouvre":21}
+  ok     36 · 1536×864 · A84 (5) · la ligne d’heure « H1 · lun. 14/09 · 08:57 → 09:52 · … min prévues pour … utiles » — « H1 · lun. 14/09 · 08:57 → 09:52 57 min prévues pour 50 utiles +7 »
+  ok     36 · 1536×864 · A84 (5) · un clic sur la ligne d’heure ouvre la première diapo de l’heure — {"clic":true,"di":0}
+  ok     36 · 1536×864 · A84 (6) · chaque diapo dit son heure prévue et sa durée, avec l’infobulle — {"t":"09:00 Tableau 1 6 min","titre":"Clic : ouvre cette diapo · clic droit : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer"}
+  ok     36 · 1536×864 · A84 (6) · plus de ligne d’aide « Ctrl + molette » au bas de la colonne
+  ok     36 · 1536×864 · A85 · la poignée élargit et réduit la colonne — 218 → 330 → 290 px
+  ok     36 · 1536×864 · A85 · la largeur est retenue au rechargement — 290 → 290 px
+  ok     36 · 1536×864 · A85 · tirée tout à gauche, la colonne se replie en un liseré ; un clic la rouvre — {"replie":0,"lisere":"at-arbre-poignee","rouverte":290}
+  ok     36 · 1536×864 · A85 · la colonne de droite s’élargit et sa largeur est retenue au rechargement — {"avant":336,"tiree":406,"recharge":406}
+  ok     Z · 1536×864 · 0 erreur JS (36)
+  ok     37 · 1536×864 · A86 · dans l’éditeur de la feuille, les gestes de la diapo : surligner, couleur du texte, G, S, la légende — {"ouverte":true,"surl":"atf-surl [Surligner — sélectionne du texte dans la]","coul":"atf-txt [Couleur du texte — sélectionne du texte ]","gras":"atf-gras [Gras (Ctrl+B) — sélectionne du texte dan]","soul":"atf-soul [Souligné (Ctrl+U) — sélectionne du texte]","legende":"atf-legende [Légende de surlignage : « jaune = … · ve]"}
+  ok     37 · 1536×864 · A86 · « Un port » surligné en jaune et la légende de surlignage visibles dans l’aperçu — {"gestes":[true,true],"apercu":{"surl":["Un port"],"legende":true}}
+  ok     37 · 1536×864 · A86 · « Le port » mis en forme dans l’aperçu : sujet souligné, verbe en gras, participe en couleur — {"zones":["textarea","textarea","textarea"],"apercu":{"u":["Un port"],"b":["est"],"c":["Un port","fatiguée"]}}
+  ok     37 · 1536×864 · A86 · après rechargement, la forme est gardée — {"u":["Un port"],"b":["est"],"c":["Un port","fatiguée"]}
+  ok     37 · 1536×864 · A86 · l’aperçu d’impression (média print) garde la forme, sur fond blanc — {"fond":"rgb(255, 255, 255)","u":1,"b":1}
+  ok     37 · 1536×864 · A86 · « Les connecteurs logiques » : « car » en couleur dans le tableau — {"zone":"textarea","apercu":["car"]}
+  ok     Z · 1536×864 · 0 erreur JS (37)
+
+══ 1707×743 ══
+  ok     35 · 1707×743 · A80 · les semaines du 2/11 et du 9/11 de 3 FRANKLIN Aretha montrent « Remédiation : décrire une image » — 2026-11-02 08:57-09:52, 2026-11-03 15:07-16:02
+  ok     35 · 1707×743 · A80 · celles de 3 DYLAN Bob ne la montrent pas, sans trou (de la séance 1 à l’« Étude de texte ») — ["Étude de texte accompagnée : « L'Albatros » heure 1/3","Étude de texte accompagnée : « L'Albatros » heure 2/3","Étude de texte accompagnée : « L'Albatros » heure 3/3","Interro de cours et analyse logique — les bases (1) heure 1/3","Interro de cours et analyse logique — les bases (1) heure 2/3","Interro de cours et analyse logique — les bases (1) heure 3/3","3 DYLAN Bob Le poème sans vers : dicté
+  info   35 · 1707×743 · la vue Année : « Remédiation : décrire une image » sous rien
+  ok     35 · 1707×743 · A80 · 3 FRANKLIN Aretha joue l’heure de remédiation par sa case — {"case":true,"bouton":true,"h":{"lancee":true,"ctx":"3e/0/7","seance":"Remédiation : décrire une image","classe":"3_franklin_aretha"}}
+  ok     35 · 1707×743 · A80 · l’heure de 3 DYLAN Bob (mardi 3/11, 10:07) : sa réactivation ne cite jamais « Remédiation : décrire une image » — {"case":true,"bouton":true,"lancee":true,"snum":"1","cite":false,"reactivation":true}
+  ok     35 · 1707×743 · A82 · un élève de 3 DYLAN Bob voit le chapitre et sa séance 1, jamais « Remédiation : décrire une image » — {"voit":false,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1707×743 · A82 · un élève de 3 FRANKLIN Aretha la voit — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1707×743 · A82 · la publication de « Remédiation : décrire une image » ne propose que 3 FRANKLIN Aretha — ["3_franklin_aretha"]
+  ok     Z · 1707×743 · 0 erreur JS (35)
+  ok     39b · 1707×743 · A90 · l’élève de 3 DYLAN Bob : ses séances numérotées sans trou (la remédiation de Franklin ne compte pas) — ["SÉANCE 1 Poésie et peinture : le Romantisme en qu","SÉANCE 2 Étude de texte accompagnée : « L'Albatro"]
+  ok     39b · 1707×743 · A90 · l’élève de 3 FRANKLIN Aretha : séance 1, séance 2 (sa remédiation), séance 3… — ["SÉANCE 1 Poésie et peinture : le Romantisme en qu","SÉANCE 2 Remédiation : décrire une image","SÉANCE 3 Étude de texte accompagnée : « L'Albatro"]
+  ok     Z · 1707×743 · 0 erreur JS (39b, A90)
+  ok     39b · 1707×743 · A89 · la séance 1 renommée par la Structure : « Le Romantisme en question : cinq tableaux » au hub — {"champ":true,"titre":"Le Romantisme en question : cinq tableaux"}
+  ok     39b · 1707×743 · A89 · renommée, ses trois heures jouées la suivent : la case de Dylan (mar. 3/11, 10:07) dit « Étude de texte… heure 1/3 » et le lancement ouvre cette séance — {"lue":"3 DYLAN Bob Étude de texte accompagnée : « L'Albatros » heure 1/3","lb":true,"h":{"lancee":true,"snum":"1","titre":"Étude de texte accompagnée : « L'Albatros »"}}
+  ok     Z · 1707×743 · 0 erreur JS (39b, renommée)
+  ok     39b · 1707×743 · A89 · deux séances de même titre : la case de Dylan (heure 1/3 de la seconde) ouvre la seconde (clé 1), pas la première — {"lue":"3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 1/3","lb":true,"h":{"lancee":true,"snum":"1","titre":"Poésie et peinture : le Romantisme en question"}}
+  ok     Z · 1707×743 · 0 erreur JS (39b, même titre)
+  info   36 · 1707×743 · la colonne (at-arbre.at-vues-arbre) : 1158 px pour 675 visibles, 250 px de large
+  ok     36 · 1707×743 · A84 (1) · ni documents, ni attendus, ni « + insérer une séance ici » dans la colonne de l’Atelier
+  ok     36 · 1707×743 · A84 (2)(3) · en haut le titre du chapitre ; ni « Chapitre · … » ni « Séance n — … (n h) » — Poésie et peinture au XIXe siècle (proposition) 2 documents sur 35 attendus → Structure ▾ Poésie et peinture : le Romantisme en question Ouvrir chaque heure par
+  ok     36 · 1707×743 · A84 (2) · « n documents sur m attendus » ouvre la Structure — {"docs":"2 documents sur 35 attendus → Structure","vue":"structure"}
+  ok     36 · 1707×743 · A84 (4) · la séance ouverte se replie par son titre (plus aucune diapo) et se rouvre — {"avant":21,"replie":0,"rouvre":21}
+  ok     36 · 1707×743 · A84 (5) · la ligne d’heure « H1 · lun. 14/09 · 08:57 → 09:52 · … min prévues pour … utiles » — « H1 · lun. 14/09 · 08:57 → 09:52 57 min prévues pour 50 utiles +7 »
+  ok     36 · 1707×743 · A84 (5) · un clic sur la ligne d’heure ouvre la première diapo de l’heure — {"clic":true,"di":0}
+  ok     36 · 1707×743 · A84 (6) · chaque diapo dit son heure prévue et sa durée, avec l’infobulle — {"t":"09:00 Tableau 1 6 min","titre":"Clic : ouvre cette diapo · clic droit : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer"}
+  ok     36 · 1707×743 · A84 (6) · plus de ligne d’aide « Ctrl + molette » au bas de la colonne
+  ok     36 · 1707×743 · A85 · la poignée élargit et réduit la colonne — 218 → 330 → 290 px
+  ok     36 · 1707×743 · A85 · la largeur est retenue au rechargement — 290 → 290 px
+  ok     36 · 1707×743 · A85 · tirée tout à gauche, la colonne se replie en un liseré ; un clic la rouvre — {"replie":0,"lisere":"at-arbre-poignee","rouverte":290}
+  ok     36 · 1707×743 · A85 · la colonne de droite s’élargit et sa largeur est retenue au rechargement — {"avant":336,"tiree":406,"recharge":406}
+  ok     Z · 1707×743 · 0 erreur JS (36)
+  ok     37 · 1707×743 · A86 · dans l’éditeur de la feuille, les gestes de la diapo : surligner, couleur du texte, G, S, la légende — {"ouverte":true,"surl":"atf-surl [Surligner — sélectionne du texte dans la]","coul":"atf-txt [Couleur du texte — sélectionne du texte ]","gras":"atf-gras [Gras (Ctrl+B) — sélectionne du texte dan]","soul":"atf-soul [Souligné (Ctrl+U) — sélectionne du texte]","legende":"atf-legende [Légende de surlignage : « jaune = … · ve]"}
+  ok     37 · 1707×743 · A86 · « Un port » surligné en jaune et la légende de surlignage visibles dans l’aperçu — {"gestes":[true,true],"apercu":{"surl":["Un port"],"legende":true}}
+  ok     37 · 1707×743 · A86 · « Le port » mis en forme dans l’aperçu : sujet souligné, verbe en gras, participe en couleur — {"zones":["textarea","textarea","textarea"],"apercu":{"u":["Un port"],"b":["est"],"c":["Un port","fatiguée"]}}
+  ok     37 · 1707×743 · A86 · après rechargement, la forme est gardée — {"u":["Un port"],"b":["est"],"c":["Un port","fatiguée"]}
+  ok     37 · 1707×743 · A86 · l’aperçu d’impression (média print) garde la forme, sur fond blanc — {"fond":"rgb(255, 255, 255)","u":1,"b":1}
+  ok     37 · 1707×743 · A86 · « Les connecteurs logiques » : « car » en couleur dans le tableau — {"zone":"textarea","apercu":["car"]}
+  ok     Z · 1707×743 · 0 erreur JS (37)
+
+══ 1920×1080 ══
+  ok     35 · 1920×1080 · A80 · les semaines du 2/11 et du 9/11 de 3 FRANKLIN Aretha montrent « Remédiation : décrire une image » — 2026-11-02 08:57-09:52, 2026-11-03 15:07-16:02
+  ok     35 · 1920×1080 · A80 · celles de 3 DYLAN Bob ne la montrent pas, sans trou (de la séance 1 à l’« Étude de texte ») — ["Étude de texte accompagnée : « L'Albatros » heure 1/3","Étude de texte accompagnée : « L'Albatros » heure 2/3","Étude de texte accompagnée : « L'Albatros » heure 3/3","Interro de cours et analyse logique — les bases (1) heure 1/3","Interro de cours et analyse logique — les bases (1) heure 2/3","Interro de cours et analyse logique — les bases (1) heure 3/3","3 DYLAN Bob Le poème sans vers : dicté
+  info   35 · 1920×1080 · la vue Année : « Remédiation : décrire une image » sous rien
+  ok     35 · 1920×1080 · A80 · 3 FRANKLIN Aretha joue l’heure de remédiation par sa case — {"case":true,"bouton":true,"h":{"lancee":true,"ctx":"3e/0/7","seance":"Remédiation : décrire une image","classe":"3_franklin_aretha"}}
+  ok     35 · 1920×1080 · A80 · l’heure de 3 DYLAN Bob (mardi 3/11, 10:07) : sa réactivation ne cite jamais « Remédiation : décrire une image » — {"case":true,"bouton":true,"lancee":true,"snum":"1","cite":false,"reactivation":true}
+  ok     35 · 1920×1080 · A82 · un élève de 3 DYLAN Bob voit le chapitre et sa séance 1, jamais « Remédiation : décrire une image » — {"voit":false,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1920×1080 · A82 · un élève de 3 FRANKLIN Aretha la voit — {"voit":true,"chapitre":true,"autre":true,"extrait":"CHAPITRES 1 ▸ Poésie et peinture au XIXe siècle (proposition) ▸ SÉANCE 1 Poésie et peinture : le Romantisme en question ▸ SÉANCE 2 Remédiation : décrire une image ▸ SÉANCE 3 Étude de texte accompagnée : « L'Albatros »"}
+  ok     35 · 1920×1080 · A82 · la publication de « Remédiation : décrire une image » ne propose que 3 FRANKLIN Aretha — ["3_franklin_aretha"]
+  ok     Z · 1920×1080 · 0 erreur JS (35)
+  ÉCHEC  39b · 1920×1080 · A90 : le cas n’a pas pu aller au bout — page.waitForTimeout: Target page, context or browser has been closed
+  ok     Z · 1920×1080 · 0 erreur JS (39b, A90)
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+browserContext.close: Protocol error (Target.disposeBrowserContext): Failed to find context with id 4FA38D544DFF52A3AA17439634D36D86
+    at async file:///home/claude/mjpc-chantier/LIVRAISONS/INTEGRATION/E3/bancs/banc-1228.mjs:899:100 {
+  log: [],
+  name: 'Error'
+}
+
+Node.js v22.23.4

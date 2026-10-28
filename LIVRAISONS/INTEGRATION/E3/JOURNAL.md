@@ -1004,3 +1004,28 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - Contrat §12.38 (3), ajout de 02:25 : hors de la classe, la diapo montre le contenu **prévu** de l'heure (ses diapos dans l'ordre, sans le cahier), par le rendu du récit. E1 fournit les données, E4 l'affichage.
 - Le cas 38 est adapté. L'onglet « Contenus de séances » doit montrer la première diapo de l'heure du cahier, prise dans l'ordre de jeu (`ordreHeure`), et ne plus dire « rien encore ».
 - Sur `015122f8`, l'heure 2 doit montrer « Où en sommes-nous ? » (puis « Les règles héritées », « La frise du siècle »). On lit « rien encore » : rouge, comme attendu, jusqu'aux poussées d'E1 et d'E4.
+
+## Retour 94 — 28/10, 03:50 — **§12.38 VERT (`b01f1a39`)** — les cinq sont verts
+- E4 a poussé le contenu prévu de l'heure dans le cahier hors de la classe (`c673b6940`, poussée 114), sur les données d'E1 (`e23866904`). L'assemblé de la tête est `b01f1a39`. `banc.sh` : **VERT**.
+- **Le cas 38, aux quatre tailles : VERT 52/52.**
+  - A87 : « RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · mar. 15/09 15:07 » ; le nom de la classe propose les autres classes, et une classe choisie passe dans l'en-tête.
+  - A88 : les élèves de CLASSE TEST ; rien n'est écrit dans la trame.
+  - A91 :
+    - l'échéance (« Pour lundi 21 septembre, 08 h 57 ») ;
+    - le travail prévu (« Relire « L'Albatros » et souligner les mots de la mer ») ;
+    - dans « Contenus de séances », le contenu prévu de l'heure 2 dans l'ordre de jeu : « Cette heure, on a fait l'activité 8 — Où en sommes-nous ?, puis l'activité 9 — Les règles héritées… et enfin Question-bilan » (capture `1707x743-38-7-le-cahier-contenus-apres.png`, regardée).
+- **§12.38 VERT (`b01f1a39`)**.
+- **Non-régression sur `b01f1a39`, aux quatre tailles : cas 35, 36, 37 et 39b VERT.**
+  - Mon premier passage a été coupé par ma limite de 10 min à 1920 × 1080. J'ai rejoué 36 et 37 (20/20), puis 39b (8/8), à cette taille.
+- **Cas 37, la relance de 03:14 :**
+  - la capture `37-3-les-connecteurs-logiques` est maintenant prise **après** la couleur : « car » est en couleur dans le tableau ;
+  - le cas de Paul est ajouté au contrôle et à la capture `37-2-le-port-mis-en-forme`. « Un port » est surligné en jaune et souligné, « est » en gras, « fatiguée » en couleur, avec la légende « sujet · Sujet souligné · verbe conjugué en gras » sous le texte, dans l'aperçu. Ces gestes passent par les boutons `#atf-surl` et `#atf-legende`.
+  - Les deux captures sont regardées. Le cas 37 a 7 contrôles par taille, tous verts.
+- **Les cinq sont verts :**
+  - §12.35 (`a437cbd6`) ;
+  - §12.36 (`52539adc`) ;
+  - §12.37 (`4d2e0b2d`) ;
+  - §12.38 (`b01f1a39`) ;
+  - §12.39 (`9ff2f0f5`).
+- Tous les cas tiennent sur la dernière tête `b01f1a39`, qui peut servir de candidate ⑦.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0335-28-10-1238-vert/`.

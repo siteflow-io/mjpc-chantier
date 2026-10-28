@@ -6435,3 +6435,24 @@ MEMO
 
 28/10/2026 14:37
 MEMO
+
+---
+
+## Tour 313 — 28/10/2026 14:40 → 14:40
+
+**Paul :** Comment ça quand je crée ma clef github?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 remet la suite de la phrase de fin d'heure ; E1 retire le second bouton de lancement · ouvert : 849 ; 843 (à cadrer) ; 538, 553 (après lundi).
+
+850. Pour que « Déposer en ligne » puisse écrire tes images dans mjpc-medias, le petit programme Google qui fait le relais a besoin d'une permission de GitHub. C'est ça, « la clé » : un code que GitHub fabrique pour toi, que tu crées une seule fois sur ton compte GitHub. Tu le colles ensuite dans les réglages de ce programme Google, jamais dans ton navigateur ni dans un fichier. C'est ton geste unique des points 780 à 784, que je t'ai détaillés ce matin. Je te guide pas à pas le moment venu.
+
+851. Quand GitHub fabrique cette clé, il te demande quels dépôts elle ouvre. Si mjpc-medias-2 existe déjà, tu coches les deux, et c'est fini pour toujours. Sinon, il faudrait revenir l'ajouter le jour où le premier sera plein.
+
+852. Rien de tout ça n'est nécessaire pour lundi : tes images sont déjà en ligne, et les fichiers de ta clé USB se lisent sans relais. 849 tient : je crée mjpc-medias-2 maintenant ? Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:40
+MEMO

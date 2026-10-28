@@ -6004,3 +6004,34 @@ Donc proposes moi un trick horaire qui permette de faire comme si , à n'importe
 
 28/10/2026 10:54
 MEMO
+
+---
+
+## Tour 292 — 28/10/2026 10:58 → 10:59
+
+**Paul :** Ok. Et oui pour les de Gaulle, un geste aller à t-5, toujours avec info bulle. 
+Pour le redessin putain mais c'est systématique, c'est une erreur que tu fais encore et encore et encore. Il y a le même problème dans ce que la diapo déclare, j'en suis sûr. Le menu déroulant bug à cause de ça. 
+Il faut mesurer partout dans le site où le redessin fait bugger quelque chose . Et dis moi la solution technique que Claude doit dorénavant employer pour ne plus jamais tomber dans le piège du redessin
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare le clic sur une diapo ; E4 code l'horloge de la case et « aller à 5 minutes de la fin » ; E3 mesure le redessin et la lenteur sur tout le site · ouvert : 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+800. C'est au contrat (§12.55, chez E4) : l'horloge de la case pour les De Gaulle, et le bouton « aller à 5 minutes de la fin », avec son infobulle.
+
+801. Tu as raison : c'est la même erreur, encore. Ta règle existe depuis le 04/10, mais aucun banc ne la vérifiait, alors elle revient à chaque nouveau morceau. Voici la solution technique que Claude emploie dorénavant. Elle tient en cinq gestes.
+
+802. Rien ne se redessine s'il n'a pas changé. Chaque zone compare ce qu'elle afficherait à ce qu'elle affiche ; si c'est pareil, elle ne touche à rien. Aujourd'hui, des minuteries redessinent des zones entières jusqu'à huit fois par seconde, même quand rien n'a bougé.
+
+803. Quand quelque chose change, on retouche, on ne remplace pas. Une seule fonction commune garde les mêmes éléments à l'écran et ne change que le texte ou la couleur qui diffèrent. Un menu ouvert, un champ, un bouton qu'on clique restent donc les mêmes et ne disparaissent plus sous ta souris.
+
+804. Pendant un geste, la zone attend. Tant qu'un bouton est appuyé, qu'un menu déroulant est ouvert, qu'un champ est en cours de frappe ou qu'un glisser est en cours, rien ne bouge. La mise à jour se pose quand tu as fini, à la même place dans la page.
+
+805. Une horloge ne redessine que son chiffre, jamais la zone autour. Et chaque zone n'a qu'un seul écouteur de clic, posé une fois, au lieu d'en reposer un à chaque dessin.
+
+806. Le garde-fou, pour que ça ne revienne plus. Un test entre dans mon banc, sur chaque écran et aux quatre tailles, le site vivant. Il ouvre chaque menu déroulant (il doit rester ouvert), écrit dans chaque champ (rien ne se perd), et appuie dix fois sur chaque bouton et chaque diapo (dix gestes sur dix). Au repos, rien ne doit bouger à l'écran. Un seul échec, et rien n'est promu. E3 écrit ce test maintenant et le joue sur tout le site, « Ce que la diapo déclare » compris. Il me rend la liste de tout ce que le redessin casse, écran par écran ; ensuite, les exécutants réparent avec cette règle.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 10:59
+MEMO

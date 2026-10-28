@@ -6147,3 +6147,24 @@ MEMO
 
 28/10/2026 11:43
 MEMO
+
+---
+
+## Tour 299 — 28/10/2026 11:47 → 11:48
+
+**Paul :** Est ce que pour le site la meilleure solution est le html?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure ; E3 fait les quatre coupes du redessin et répare le menu de « Ce que la diapo déclare » ; E4 mesure ce qui ne se corrige pas au tableau · ouvert : 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+819. Oui, le web reste la bonne solution. Ton site doit marcher sur l'ordi de classe, ton ordi portable, ton téléphone et les tablettes des élèves, sans rien installer et sans rien payer : seul le web fait ça. Le poids du fichier n'est pas en cause non plus : il s'ouvre en une seconde, même sur un ordi portable lent (mesuré par E3).
+
+820. Ce qui ne va pas, c'est la façon dont le site dessine. Il réécrit des zones entières à la main, plus de 300 fois dans le code, sans comparer avec ce qui est déjà à l'écran. D'où le redessin à vide et les clics perdus.
+
+821. Avant lundi, la règle du redessin suffit : les coupes d'E3 et une seule fonction commune qui retouche au lieu de remplacer. Après lundi, si des bugs de ce genre reviennent, on pourra confier le dessin des zones vivantes (la colonne, le pilotage, la carte de la diapo) à une petite bibliothèque faite pour ça. Elle est gratuite, sans rien à installer, et c'est elle qui garantirait la règle, au lieu de notre vigilance. Je te le proposerai alors, chiffré, sans le lancer de moi-même.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:48
+MEMO

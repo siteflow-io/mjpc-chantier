@@ -5562,3 +5562,20 @@ Sources :
 
 28/10/2026 07:16
 MEMO
+
+---
+
+## Tour 273 — 28/10/2026 07:17 → 07:18
+
+**Paul :** Ok
+
+**Claude :**
+
+736. Noté : la taxonomie est validée. La famille « Les mouvements littéraires et artistiques », le romantisme (3e), l'esthétique réaliste ou naturaliste (4e) et les trois phrases pour l'élève, mot pour mot. Le fragment est prêt au sas. Dès qu'E1 aura posé « Importer des notions », c'est toi qui le colles et le valides dans l'écran de la taxonomie : je n'écris rien au site.
+
+737. Encore ouverts : 732 (la ⑦ attend ton « promeus ») et 724 (les images et documents de ton dossier, en plus des vidéos).
+
+À tester : rien de neuf en production.
+
+28/10/2026 07:18
+MEMO

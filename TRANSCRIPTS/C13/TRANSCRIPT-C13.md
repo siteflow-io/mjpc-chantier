@@ -5774,3 +5774,37 @@ Sources :
 
 28/10/2026 07:57
 MEMO
+
+---
+
+## Tour 282 — 28/10/2026 08:01 → 08:10
+
+**Paul :** Ok. Pour ce qui est du drive, qu'est ce que j'avais dit à son sujet ?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 a fini la répétition vers le tableau distant (§12.41, ton 717), mon banc tourne dessus ; E4 a fini la présence en mode test (§12.43), mon banc est vert (106/0) ; E3 vérifie · ouvert : 538, 553, 481, 458.
+
+763. Ton « Ok » à 762 est écrit au contrat : l'alerte ne parle que pour un fichier donné à la maison ou à l'absent (§12.44 (4 ter)), et plusieurs clés, une par ordi (§12.44 (4 quater)). E1 est relancé. Pour l'hébergement, rien ne change : GitHub, un dépôt après l'autre.
+
+764. Ce que tu as dit du Drive, mot pour mot. En juin, quand mjpc-medias est né, tu as répondu à la proposition d'un dépôt GitHub à part pour les images : « ok et tu me dis quoi faire sur github du coup. Sachant que je vais probablement utiliser cette même technique pour d'autres apps, donc on organise propre dès le départ. » Le Drive, c'est la conscience qui l'avait écarté ce jour-là, pas toi.
+
+765. En juillet, sur l'affichage des documents : « selon le profil gmail sur lequel je suis dans mon navigateur, ça sélectionne le drive du moment, et non pas un drive défini. »
+
+766. Le 20/07 : « Quand c'est une image, une vraie illustration, ça passe par le drive. » C'était alors la règle retenue, avec le partage par lien.
+
+767. Le 31/07 : « Plus de gros fichiers énormes sur le Drive. » Ce jour-là, tu as aussi décidé que le Drive serait vidé : tes documents sont sur ta clé, et tu les remettrais proprement.
+
+768. Ce matin, à 07:29 : « Il y a l'upload drive mais il me semble que j'ai laissé tomber ça parce que trop fastidieux et pas assez d'espace et requiert une connexion. »
+
+769. En août, les images des diapos sont passées du Drive à mjpc-medias. Je n'ai pas retrouvé tes mots sur ce passage, seulement la décision écrite par la conscience n°6.
+
+À tester : rien de neuf depuis 738.
+
+Sources :
+- [La doctrine du site, §X (le profil Google) et §XIII.3 (les images par le Drive)](https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-doctrine-du-site.md)
+- [Le chantier, 31/07 (« Plus de gros fichiers énormes sur le Drive »)](https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-3-CHANTIER.md)
+- [La conversation de juin où mjpc-medias est né](https://claude.ai/chat/4c47a4dd-d03a-46dd-94ed-221894911e1c)
+
+28/10/2026 08:10
+MEMO

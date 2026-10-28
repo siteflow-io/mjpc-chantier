@@ -1242,3 +1242,45 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - le cas 38, A88 : les élèves de la répétition sont ceux d'une vraie classe (AUDEBERT Elise…), plus ceux de CLASSE TEST ; « Qui a participé » est sorti du menu « ⋯ » ;
   - le cas 29 : S1, S2 (la séquence de fin d'heure à T-5) et S5.
   - Cela vient probablement d'une poussée récente sur la répétition (§12.41, A103) : à voir par E1.
+
+## Retour 104 — 28/10, 13:30 — §12.58, première passe : le parcours de la classe (mesure, rien de codé)
+- La comparaison se fait avec la maquette jouée par Paul : `LIVRAISONS/DEROULE/p8-5g/maquette-pilotage-ordi-v9c15p8-manipulable.html`, branche `deroule/p8-5g`.
+- **(6) Les minuteries et les réécritures : venues de l'intégration, pas de la maquette.**
+  - La maquette p8-5g a 4 minuteries permanentes et 89 `innerHTML =` :
+    - `tick` à 1 s ;
+    - le chrono de la répétition à 500 ms ;
+    - le témoin « enregistré » à 1 s ;
+    - l'animation.
+  - Le déroulé intégré (`dr/*.js`) a 30 `setInterval` et 121 `innerHTML =`. Ils viennent de :
+    - `dr-classe` : 13 et 38 ;
+    - `dr-tableau` : 7 et 5 ;
+    - `dr-socle` : 6 et 22 ;
+    - `dr-atelier` : 3 et 24 ;
+    - `dr-recit` : 1 et 27.
+  - Le site (`index.html`) a 10 `setInterval`.
+  - Les permanentes mesurées par 52m qui ne viennent pas de la maquette :
+    - la boucle de `#dr-lancer` (1 s), `dr_hclasseMaj` (1 s), `dr_tabVeiller` (125 ms, maintenant 1 s), `.dr-pp-act` (1 s) ;
+    - en classe : `garde-clore` (250 ms), `dr_clorePose` (500 ms), `dr_recitAuto` (900 ms), `dr_temoinTest` (1,5 s), et celle de 2 s (`dr_heureTenue`) ;
+    - `dr_repEmettre` (250 ms, §12.41) ;
+    - venues du site : `aideSuivre` (400 ms, maintenant au geste) et l'étoile filante.
+  - Le redessin à vide n'est donc pas « importé avec la maquette » : c'est l'intégration qui a empilé des boucles de surveillance.
+- **(1) Encore simulé, ou mort, de la maquette :**
+  - `S.cle: 'portable'` et `S.tab: 'fenetre'` (`dr-socle.js:797`) : posés à l'état initial, lus nulle part. C'est du mort, sans effet.
+  - `HEURES_SIM` (`dr-classe.js:574`, `:861`) et `DATA` (`dr-recit.js:18`, `:42`) : écrits ou lus s'ils existent ; sur le site, ils n'existent pas. C'est du mort, sans effet.
+  - `dr_lancerClic` (`dr-socle.js:348`) : si `dr_lancer` manquait, il lancerait encore l'heure 1 « à la maquette » (`journal('lancement')`, `S.heure = 1`). C'est mort tant que `dr_lancer` existe.
+  - **`now()` (`dr-socle.js:316`) n'est plus l'heure réelle :** l'heure réelle, plus le décalage « de la case des De Gaulle » (§12.55, `dr_horlogeCase`). C'est voulu par le contrat, mais c'est le seul « comme si » qui tourne en classe : à vérifier qu'il vaut zéro hors de cette case.
+- **(2) Ce qui suppose un monde de maquette :**
+  - **Un seul appareil, aucun écho du hub.** L'Atelier ne relit jamais le chapitre : ni abonnement, ni minuterie (cherché : aucun `on('value')`, aucun `EventSource`, aucune relecture de `chapitresData`).
+    - Chaque enregistrement écrit le `deroule` entier de la séance (`dr-socle.js:211`, PUT `…/deroule`).
+    - Effet pour Paul : l'Atelier ouvert sur deux appareils (son ordi portable et l'ordi de classe), le dernier qui enregistre efface sans le dire ce que l'autre a fait. C'est le risque le plus grave de cette passe.
+  - **Une seule classe** : la note `dr-atelier.js:247` (« la maquette n'a qu'une classe ») ; les écritures sont ancrées par classe et par heure. Pas de casse mesurée dans les cas 35, 38, 39b.
+  - **Une horloge fixe** : les bancs figent l'horloge, le site non. Le récit hors de la classe ne se compose qu'à partir d'une heure lancée (§12.38, A91, retour 92).
+- **(3) Les doublons :**
+  - **Deux boutons pour lancer.** « ▶ Ouvrir le pilotage et lancer » (la case de l'EDT, `index.html:19496`) et `#dr-lancer` du Pilotage (`dr-socle.js:354` → `dr_lancer()` sans argument, la case proposée par `dr_proposer`). Le second est surveillé par une boucle d'1 s et se grise avec sa raison. Le premier fait foi (§12.33).
+  - **L'aide dit encore un geste disparu** : `AIDE_FIL` (`index.html:15412`) : « « Pilotage » pour répéter ». Depuis §12.33, la répétition est « ▶ Jouer en avance » et l'onglet Pilotage n'est plus dans l'Atelier.
+  - **Trois traces d'une heure** : le journal de la maquette (`journal()`, en page), la copie jouée au hub (`deroule_joue/…`) et la télémétrie du site (`TRACK`, Apps Script). Ce sont trois sources pour « ce qui s'est passé ». Le récit lit le journal en page, la reprise lit le hub.
+- **(4) ce qui s'est perdu et (5) les gestes de la maquette joués autrement : pas encore mesurés.** Il faut le site d'avant l'intégration et les cadrages 1 à 4 en regard. C'est la passe suivante, si la conscience la veut.
+- **Pour lundi, d'abord :**
+  1. Le « dernier qui enregistre gagne » de l'Atelier à deux appareils.
+  2. L'aide qui dit « Pilotage pour répéter ».
+  3. `now()` décalé à vérifier hors de la case des De Gaulle.

@@ -5913,3 +5913,28 @@ MEMO
 
 28/10/2026 09:18
 MEMO
+
+---
+
+## Tour 288 — 28/10/2026 10:17 et 10:22 → 10:25
+
+**Paul (10:17) :** le "chrono" et "qui a participé" étaient censés être dans les boutons rapides en bas de la diapo, pourquoi ils sont repartis derrière le ... ? et ils doivent être disponible en répétition aussi. et en répétition, je dois bien évidemment voir mes élèves de la classe test (charles de gaulle) à droite, comme quand je fais une heure normale. Par ailleurs je trouve que le site ralentit beaucoup ces derniers temps.
+
+**Paul (10:22) :** par ailleurs, test "ce que la diapo déclare". inutilisable en l'état, et notamment je ne sais pas si je peux insérer une diapo vierge et ne pas lui attribuer d'activité. De fait il faut que je puisse insérer des diapos vierges, notamment pour la diapo de présentation de chapitre, de plan, la diapo de présentation de séance et de problématique. Elles peuvent être remplies automatiquement depuis le json évidemment. Ce sont des diapos invariables qui reviennent tout le temps.  je ne peux pas renommer mes diapos non plus dans la colonne de gauche (clic droit). Il y a probablement d'autres manques, à mesurer.
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 corrige le dernier rouge de la ⑧ (réinjecter un chapitre réécrit 4 feuilles), puis mesure l'Atelier ; E1 met le chrono et « qui a participé » sous la diapo ; E3 mesure la lenteur · ouvert : 785 ; 538, 553, 481, 458.
+
+787. Pourquoi ils sont derrière ⋯ : le chrono n'a jamais eu de bouton sous la diapo, il est dans ⋯ depuis septembre. « Qui a participé » a bien son bouton 👥 en classe, mais une règle d'avant ton 687 le cache en répétition, avec la colonne de participation à droite. Je ne l'ai pas fait retirer : c'est mon erreur. Et j'avais pris « la classe test » pour la classe CLASSE TEST, quatre élèves inventés ; c'est Charles de Gaulle.
+
+788. E1 le fait dans la ⑧ (§12.51). Le chrono ⏱ et 👥 seront sous la diapo, en classe et en répétition. En répétition, la colonne de droite sera celle d'une heure, avec les élèves de 3E Charles de Gaulle, et rien ne sera écrit.
+
+789. La lenteur, mesurée ici sur un faux hub : le site met 4,5 s à s'ouvrir, et 23 minuteries tournent en permanence, dont 10 chaque seconde et une huit fois par seconde. Au repos, aucun calcul lourd. Ce que je ne sais pas, c'est le poids du vrai réseau et le coût de ces minuteries sur un ordi portable ordinaire. E3 le mesure sur le vrai hub, en lecture seule, sans rien coder (§12.52) ; je t'apporte ensuite ce qu'on peut retirer ou espacer, chiffré.
+
+790. L'Atelier : E4 le mesure geste par geste, sans rien coder (§12.53), dès qu'il a fini la ⑧. Il mesure « Ce que la diapo déclare » champ par champ, la diapo vierge sans activité, tes quatre diapos invariables (présentation du chapitre, plan, présentation de la séance, problématique) et ce que le JSON porte déjà pour les remplir, et renommer une diapo par clic droit dans la colonne de gauche. Il mesure aussi tes gestes habituels de diaporama, et les autres manques en préparant une séance comme toi. Je t'apporte ensuite les propositions à trancher.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 10:25
+MEMO

@@ -6555,3 +6555,22 @@ MEMO
 
 28/10/2026 14:50
 MEMO
+
+---
+
+## Tour 319 — 28/10/2026 15:00 → 15:00
+
+**Paul :** Les exécutantz n'ont pas besoin de relire leur historique si? Toi oui mais eux non
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 retire le second bouton de lancement, le dernier morceau de la ⑧ · ouvert : 864 ; 843 (à cadrer) ; 538, 553 (après lundi).
+
+865. Tu as raison : ils n'en ont pas besoin. Tout ce qui leur sert est écrit au sas : le contrat, les relances, le code. Mais tant qu'on réveille la même session, elle relit tout son fil à chaque réveil, parce que c'est ainsi qu'une session fonctionne. Leur historique ne leur sert à rien, et il te coûte à chaque réveil.
+
+866. Donc, après la promotion de la ⑧ : j'écris pour chaque exécutant une passation d'une page au sas, et je lance moi-même ses sessions neuves, par une tâche planifiée qui démarre aussitôt. Tu n'as rien à coller. Les anciennes sessions ne sont plus réveillées. Moi, je garde le fil, comme tu le dis. Ça remplace 859 pour les exécutants ; 860 à 863 restent à ton mot (864).
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:00
+MEMO

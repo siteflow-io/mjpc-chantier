@@ -6069,3 +6069,22 @@ MEMO
 
 28/10/2026 11:11
 MEMO
+
+---
+
+## Tour 295 — 28/10/2026 11:13 → 11:13
+
+**Paul :** Je dois me servir du diaporama en classe lundi
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare le clic sur une diapo ; E4 code l'horloge de la case ; E3 mesure le redessin et la lenteur · ouvert : 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+809. Alors 808 change : la seule priorité devient ce qui te sert en classe lundi, testé avant. D'abord la ⑧ (le clic sur une diapo, « Fin de l'heure », l'horloge de la case, le chrono et 👥), à promouvoir au plus tard demain soir. Ensuite, la réparation du redessin sur les seuls écrans de la classe : l'heure, la répétition, le tableau. E3 mesure ces écrans-là d'abord, E1 répare, et ce serait la ⑨, à promouvoir vendredi soir. Tu as le week-end pour tester avec les De Gaulle sur l'horloge de leur case. Tout le reste attend lundi soir. Oui ?
+
+810. Une seule question pour l'Atelier : la séance de lundi, tu la prépares par le JSON du prompt, ou à la main dans l'Atelier ? Si c'est à la main, je fais passer avant lundi ce qui te bloque pour la préparer : la diapo vierge, renommer, et « Ce que la diapo déclare ».
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:13
+MEMO

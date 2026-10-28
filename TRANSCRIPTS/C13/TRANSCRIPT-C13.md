@@ -5635,3 +5635,24 @@ Sources :
 
 28/10/2026 07:31
 MEMO
+
+---
+
+## Tour 276 — 28/10/2026 07:37 → 07:38
+
+**Paul :** Je ne suis pas fan de la clef d'accès  qui se promène dans le navigateur
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 sur 717, puis la vidéo et les fichiers de la clé, puis la taxonomie ; E4 a poussé l'import des feuilles (13 · 66), E3 le vérifie ; puis la présence en mode test, le cahier, le « ? », les notes · ouvert : 745 ; 538, 553, 481, 458.
+
+743. Compris : pas de clé d'accès dans le navigateur.
+
+744. L'autre voie est un relais. Le site a déjà un petit programme Google (Apps Script) à lui : c'est lui qui vérifie la connexion des élèves. On lui ajoute « déposer dans mjpc-medias ». Le site lui envoie le fichier, et c'est lui qui le met en ligne, avec la clé GitHub rangée dans ses propres réglages : jamais dans ton navigateur, jamais dans un fichier. Il n'accepte qu'une image ou un PDF, dans un seul dossier, et seulement si ta session de prof le demande, avec ton code de prof vérifié comme à l'entrée. Les limites restent les mêmes : 1 Go en tout pour mjpc-medias, environ 50 Mo par fichier, et internet au moment du dépôt. Une chose à faire par toi, une seule fois : coller la clé GitHub dans les réglages du programme Google. Je te guide, c'est deux minutes.
+
+745. Je propose ce relais pour le bouton « Déposer en ligne ». Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 07:38
+MEMO

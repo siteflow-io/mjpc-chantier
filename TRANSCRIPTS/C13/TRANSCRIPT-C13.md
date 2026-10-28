@@ -6939,3 +6939,25 @@ MEMO
 
 28/10/2026 18:02
 MEMO
+
+## Tour 337 — 28/10/2026 18:32 → 18:32
+
+**Paul :** [capture : le pilotage en mode test, 3E Charles de Gaulle, « close · 18:28 », « horloge de la case : 08:45 (il est 18:28) », au centre une horloge 08:45]
+En fait le tableau distant doit absolument marcher pour le mode test et les de gaulle aussi, sachant que cet affichage que j'ai là est absurde, et que le clic sur fin de l'heure ne fait rien, ça devrait me renvoyer quelque part (l'edt? le profil de classe? la relecture? ). ET que j'ai une confirmation. Par ailleurs, attends ma prochaine capture
+
+**Claude :**
+
+À jouer : rien · en cours : la rédaction (son banc tourne), la ⑨ (l'Atelier) · ouvert : 905 à 917 (les questions), ta prochaine capture.
+
+918. Noté : le tableau distant doit marcher en mode test et pour les De Gaulle.
+
+919. Noté : cet affichage ne va pas.
+
+920. Noté : « Fin de l'heure » ne fait rien. Il faut d'abord une confirmation, puis le clic doit t'envoyer quelque part. Je mesure et je te propose où aller quand tu auras tout envoyé.
+
+921. J'attends ta prochaine capture.
+
+À tester : rien de neuf depuis la ⑧ (la liste de 17:33 tient).
+
+28/10/2026 18:32
+MEMO

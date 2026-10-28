@@ -5938,3 +5938,22 @@ MEMO
 
 28/10/2026 10:25
 MEMO
+
+---
+
+## Tour 289 — 28/10/2026 10:31 → 10:32
+
+**Paul :** dans le mode test pour les de gaulle, la fin de l'heure n'est pas cliquable, cliquer sur une diapo ne marche pas à n'importe quel moment (donc pas de déclenchement de la garde "geler puis y aller") bref. Beaucoup de choses qui manquent quoi.... Ras le bol.
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare « Fin de l'heure » et le clic sur une diapo, puis met le chrono et 👥 sous la diapo ; E4 corrige le dernier rouge de la ⑧, puis mesure l'Atelier ; E3 mesure la lenteur · ouvert : 785 ; 538, 553, 481, 458.
+
+791. Tu as raison d'en avoir assez : ces deux gestes sont la base d'une heure, et mon banc ne les jouait pas. Je l'ai rejoué tout de suite sur la ⑦, l'heure lancée par la case dans son créneau. « Fin de l'heure » s'ouvre, mais un clic sur une diapo de la colonne ne fait rien, sans garde : c'est confirmé. Toi, tu as lancé à 10:31 une heure dont la case est 08:57-09:52. Je ne sais pas encore si c'est ce qui bloque « Fin de l'heure » chez toi.
+
+792. E1 le fait en premier, dans la ⑧ (§12.54). Il reproduit ta situation exacte : mode test, De Gaulle, heure lancée après son créneau, au début, après des dévoilements, pendant le gel. Ensuite, il répare « Fin de l'heure », cliquable à tout moment. Il répare aussi le clic sur une diapo, avec la garde « geler puis y aller » quand le tableau bougerait. J'ajoute ces gestes à mon banc, pour qu'ils ne reviennent plus.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 10:32
+MEMO

@@ -6652,3 +6652,34 @@ MEMO
 
 28/10/2026 15:16
 MEMO
+
+---
+
+## Tour 324 — 28/10/2026 15:21 (message de Claude, sans message de Paul : le banc de la ⑧)
+
+**Claude :**
+
+Mon banc complet a trouvé deux rouges de plus sur la ⑧. Le tableau distant montre 3 lignes quand ton pilote en montre 4, à la même page : c'est vert ce matin, rouge maintenant. Et dans un cas d'E3, l'heure ne s'est pas lancée par la case. Je les ai confiés au même exécutant neuf, à la suite des deux premiers, avec la liste des poussées entre ce matin et maintenant pour qu'il trouve vite la cause. La ⑧ ne te sera apportée que toute verte.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:21
+MEMO
+
+
+---
+
+## Tour 325 — 28/10/2026 15:32 → 15:33
+
+**Paul :** accélère
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours : deux exécutants neufs en parallèle sur les quatre rouges de la ⑧ · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+875. Fait : deux exécutants neufs en parallèle au lieu d'un. Le premier répare le « ? » visible dans la vue élève et le texte d'aide de référence. Le second répare le tableau distant qui montre une ligne de moins que ton pilote, et l'heure qui ne se lance pas dans un cas. Ils touchent des parties différentes du site et ne se gênent pas.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:33
+MEMO

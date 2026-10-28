@@ -6827,3 +6827,30 @@ Proposition : l. 12914, afficher le rang comme le fait edFeuilleDepots (ordDe(ch
 
 28/10/2026 16:25
 MEMO
+
+---
+
+## Tour 333 — 28/10/2026 17:25 (message de Claude, sans message de Paul : la ⑧ verte, pour son retour à 18 h 30)
+
+**Claude :**
+
+À jouer : la ⑧ (8.75.0-⑧), prête pour ton « promeus » · en cours : rien · ouvert : 896 ; 843 (à cadrer) ; 538, 553 (après lundi).
+
+890. La ⑧ est verte. Mon banc complet passe sans échec : 106 vérifications et les deux parcours, dont le parcours en mode test. Les cas d'E3 passent aussi sans échec, et la reprise d'heure a été rejouée cinq fois, verte à chaque fois. Le fichier est figé : 2 593 520 octets, sas `d02bc7673`.
+
+891. Ce qu'elle change en classe. Le chrono ⏱ et « qui a participé » 👥 sont sous la diapo, en heure comme en répétition. Le clic sur une diapo de la colonne ne rate plus, avec la garde « geler puis y aller ». « Fin de l'heure » se clique à tout moment, et sa phrase « Le cahier de textes attend… » est revenue. On ne lance plus une heure que par l'emploi du temps. Tout ce qui s'affiche au tableau se corrige en direct, ou se retire d'un clic droit. Le journal garde le texte d'avant et le texte corrigé. Le tableau distant suit tes lignes à l'identique.
+
+892. Ce qu'elle change pour préparer. La répétition envoie au tableau distant, ton téléphone compris, avec à droite les élèves de 3E Charles de Gaulle. Les De Gaulle ont l'horloge de leur case et « aller à 5 minutes de la fin ». La vidéo, les images et les PDF se lisent depuis ta clé USB, et la garde vérifie vraiment, même avec plusieurs clés. L'Atelier suit le chapitre en direct sur deux appareils, et le menu de « Ce que la diapo déclare » ne se referme plus. L'aperçu donne le bon numéro de chapitre. La taxonomie s'enrichit (ajouter, importer). L'import d'un chapitre crée ses feuilles et les relie, sans rien réécrire au réimport.
+
+893. Partout : le site travaille deux à trois fois moins au repos, sur un ordi portable lent. Le « ? » d'aide est en or, et le cahier ne dit plus « par M. MENEY P. ». Le Drive est retiré, sauf l'ouverture de tes trois anciens fichiers. « Déposer en ligne » est prêt, mais attend ton geste de dimanche.
+
+894. Ce qui n'est pas dedans. Dans la ⑨, ce soir ou demain : la Structure (les trois colonnes, le ✕, la ligne de la dictée, le bandeau des feuilles), déjà réparée sur une branche à part, et l'Atelier (793 à 796). Dimanche à 8 h : mjpc-medias-2, ton relais, et tes trois fichiers Drive. Après lundi : la rédaction.
+
+895. Un geste pour toi, après la promotion. Ta ligne « Dictée : « Le port » » est restée liée, au hub, à une feuille vide créée par erreur : le site ne peut pas savoir que c'était une dictée. Il faudra la relier à la vraie dictée par « Lier… ».
+
+896. Promeus ?
+
+À tester, après la promotion (sur siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8) : lance « ▶ Jouer en avance » avec ton téléphone sur l'adresse du tableau, et vérifie qu'il suit. Lance une heure des De Gaulle en mode test, puis vérifie l'heure de la case, « aller à 5 minutes de la fin », ⏱ et 👥 sous la diapo, et le clic sur une diapo. Corrige une étiquette d'activité en direct, puis retire une image du tableau et remets-la. Ouvre « Fiche grammaire : les connecteurs logiques » en vue élève.
+
+28/10/2026 17:25
+MEMO

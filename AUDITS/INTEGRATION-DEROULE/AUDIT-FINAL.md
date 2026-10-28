@@ -162,3 +162,8 @@ Les ✔ se posent au registre dans le tour du promeus, pas avant.
 - **À Paul, telles quelles** : le mot « promeus » ; 152 (l'heure de fin dans le récit : le créneau ou l'heure close), 144 (l'animation en accéléré tombe), 13 · 12 (la police réduite avant les pages), §12.17 (« à la maison » revient fléché « à reprendre »), 198 (la trame à deux bilans), le « go » du plan 10 jours ; **sa carte « Les figures de style » à couper dans l'Atelier** (clic droit sur une famille → « Couper le schéma ici », jusqu'à ce que chaque morceau tienne — la maquette disait 5 morceaux) et le réglage « Un à un » à remettre, tant que l'import ne les porte pas (plan L5) ; **le chapitre 3e du hub porte 19 lignes « À régler »** (la carte, la fiche « Le registre lyrique » non liée à une feuille, 17 diapos sans numéro d'activité — ce que la garde 3.2 bis refuserait à l'import) : c'est la donnée, pas le site.
 
 MEMO
+
+## 28/10, 17:25 — CANDIDATE ⑧ VERTE
+- Sas `integration` `d02bc7673` ; assemblée + `APP_VERSION` « 8.75.0-⑧ » : 2 593 520 o, md5 `6cd16508381fdf36d3cf866b3f5cc672`.
+- `banc.sh` VERT (106/0, parcours ×2) ; cas d'E3 41, 41d, 42i, 43t, 45a, 46c, 47n, 48x, 56s : 106/106 ; cas 41 rejoué 5 fois : 32/32 chaque fois.
+- Hors de la ⑧ : §12.62 (l'Atelier), §12.63 (la rédaction), §12.65 (branche `ex10`), 13·88 (dimanche).

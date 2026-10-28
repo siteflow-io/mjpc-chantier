@@ -1,0 +1,9 @@
+  ok     A94 · témoin — hors mode test : le battement (PUT /presence) et la balise de départ partent au hub, le banc les voit — {"avant":{"put":1,"bal":0,"tout":5},"apres16s":{"put":2,"bal":0,"tout":6},"apresDepart":{"put":2,"bal":1,"tout":6}}
+  ok     A94 · zéro erreur JS (témoin) — []
+  ok     A94 · le mode test posé par la pastille du panneau prof — {"pastille":true,"modeTest":true}
+  ÉCHEC  A94 · mode test : 35 s (deux battements) — zéro écriture au hub, présence comprise — {"avant":{"put":1,"bal":0,"tout":5},"apres35s":{"put":3,"bal":0,"tout":7}}
+  ÉCHEC  A94 · mode test : à la fermeture de l’onglet, la balise de départ (sendBeacon) ne part pas — {"apresDepart":{"put":3,"bal":1,"tout":7}}
+  ÉCHEC  A94 · mode test : le battement reste au magasin du mode test — []
+  ok     A94 · le mode test quitté : le battement repart au hub — {"avant":{"put":3,"bal":1,"tout":7},"apres16s":{"put":4,"bal":1,"tout":8}}
+  ok     A94 · zéro erreur JS (mode test) — []
+— fin : 8 vérifications · 3 échec(s) — ROUGE · x.html md5 a0512a7fcb392caf6a5c78447e925612

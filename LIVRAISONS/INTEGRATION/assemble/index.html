@@ -5001,6 +5001,7 @@ function startHeartbeat(){
   updatePresence();
   HEARTBEAT_INTERVAL=setInterval(updatePresence,15000);
   window.addEventListener('beforeunload',function(){
+    if(m8TestOn())return;   /* E4 (§12.43, 13 · 48) : en mode test, la présence ne part pas au vrai hub — ni battement, ni balise de départ */
     if(TRACK.eleve&&TRACK.eleve.uuid&&navigator.sendBeacon){
       var key=TRACK.eleve.uuid;
       var data={last_seen:Date.now(),offline:true};
@@ -5026,6 +5027,7 @@ function updatePresence(){
     current_seance:(window.PRESENCE_CONTEXT&&PRESENCE_CONTEXT.seance)||'',
     current_item:(window.PRESENCE_CONTEXT&&PRESENCE_CONTEXT.item)||''
   };
+  if(m8TestOn()){ M8_TEST_STORE['/presence/'+key]=data; return; }   /* E4 (§12.43, 13 · 48) : en mode test, le battement reste au magasin du mode test — rien ne part au vrai hub */
   fetch(FIREBASE_BASE+'/presence/'+key+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){});
 }
 

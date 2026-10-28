@@ -559,8 +559,9 @@ sujet = {
   "compteur": {
     "indicateur": "orthographe",
     "selon": "trente_lignes",
-    "seuils": {"3": [3, 8, 16], "2": [3, 7, 14], "1": [2, 5, 9], "0": [1, 2, 5]},
-    "lecture": "pour chaque niveau de « Trente lignes » : [jusqu'à n erreurs = Très satisfaisant, jusqu'à n = Satisfaisant, jusqu'à n = Fragile] ; au-delà = Insuffisant — les seuils de Dugain ramenés à une lettre deux fois plus courte"
+    "seuils": {"3": [3, 8, 16], "2": [3, 7, 14], "1": [2, 5, 9], "0": [1, 2, 4]},
+    "defaut": 2,
+    "lecture": "pour chaque niveau de « Trente lignes » : [jusqu'à n erreurs = Très satisfaisant, jusqu'à n = Satisfaisant, jusqu'à n = Fragile] ; au-delà = Insuffisant — les seuils de Dugain divisés par deux (Paul, 28/10) : chaque nombre de Dugain divisé par deux, arrondi en dessous, et Insuffisant dès la moitié du dernier (trente lignes : Dugain 6 / 15 / 30 → 0 à 3, 4 à 7, 8 à 14, 15 et plus) ; tant que « Trente lignes » n'est pas noté, la ligne de trente lignes"
   },
   "criteres": [
     {"id": "theme_invention", "titre": "Le thème et l'invention", "pts_max": 14, "indicateurs": [theme, paragraphes, lectures, tait]},

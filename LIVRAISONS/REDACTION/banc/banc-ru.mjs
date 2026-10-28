@@ -413,6 +413,114 @@ for (const [w, h] of [[1366, 743], [1707, 743]]) { const ctx = await contexte(w,
   const cartes = await pg.evaluate(() => ({ n: SUJET.variantes.length, t: document.getElementById('gridEleves').innerText }));
   verif('RU17', cartes.n > 1 && /sujet non choisi/i.test(cartes.t), 'Dugain (deux sujets au choix) : « — Sujet non choisi — » reste sur une copie pas encore commencée', JSON.stringify({ n: cartes.n })); await ctx.close(); }
 
+// ═════ RU18 · §12.63 (1)(2) (Paul, 28/10) : la lettre compte avec les seuils de Dugain divisés par deux ; chaque point de la grille porte sa
+//        compétence du site, écrite au hub avec la copie corrigée { competence, point, niveau } ; aucun identifiant de compétence à l'écran ═════
+{ const L18 = JSON.parse(fs.readFileSync(path.join(ICI, '..', 'sujets', 'lettre-grande-guerre.json'), 'utf8'));
+  const DG18 = JSON.parse(fs.readFileSync(path.join(ICI, '..', 'sujets', 'dugain.json'), 'utf8'));
+  // ce qu'on voit : le texte affiché, les infobulles, le contenu des cases
+  const idsEcran = pg => pg.evaluate(() => { const t = [document.body.innerText, ...[...document.querySelectorAll('[title]')].map(e => e.title), ...[...document.querySelectorAll('input, textarea')].map(e => e.value || '')].join(' \n '); return t.match(/\b(c[1-4]|tr)-[a-z]+-\d\d\b/g) || []; });
+  const bandeau = pg => pg.evaluate(() => { const q = s => document.querySelector('#interroOverlay ' + s); const v = q('.compteur-suggestion-valeur'), p = q('.compteur-suggestion-plage'), n = q('.compteur-valeur'), b = q('.compteur-bandeau');
+    return v && p && n ? { n: +n.textContent, niveau: v.textContent.trim(), plage: p.textContent.trim().replace(/\s+/g, ' '), titre: b ? b.title : '' } : null; });
+  const compter = async (pg, n) => { const b0 = await bandeau(pg); for (let i = b0 ? b0.n : 0; i < n; i++) { await pg.keyboard.press('+'); await att(pg, 30); } await att(pg, 150); return bandeau(pg); };   // la touche + de Paul
+  // le geste de Paul : la copie ouverte en mode interrogatif, chaque point noté au clavier (niveau, sous-niveau, Entrée ; N puis E = non évalué), jusqu'au point « arret »
+  const noterJusqua = async (pg, eleve, plan, arret) => {
+    const cle = await pg.evaluate(n => eleveId(n), eleve);
+    await pg.evaluate(k => { if (document.getElementById('interroOverlay').classList.contains('show')) fermerInterrogatif(); ouvrirCopie(k); }, cle); await att(pg, 400);
+    if (!(await pg.evaluate(() => document.getElementById('interroOverlay').classList.contains('show')))) { await pg.click('button[onclick="ouvrirInterrogatif()"]'); await att(pg, 400); }
+    for (let n = 0; n < 30; n++) {
+      const st = await pg.evaluate(() => ({ etape: interroState.etape, id: interroState.indicateurs && interroState.indicateurs[interroState.k] && interroState.indicateurs[interroState.k].id }));
+      if (st.etape !== 'indicateur_niveau' || st.id === arret) return { cle, ici: st.etape === 'indicateur_niveau' ? st.id : st.etape };
+      const p = plan[st.id] || [2, 0];
+      if (p === 'NE') { await pg.keyboard.press('n'); await pg.keyboard.press('e'); await att(pg, 400); }
+      else { await pg.keyboard.press(String(p[0] + 1)); await att(pg, 350); await pg.keyboard.press(String(p[1] + 1)); await att(pg, 200); }
+      if (await pg.evaluate(id => !!(interroState.indicateurs && interroState.indicateurs[interroState.k] && interroState.indicateurs[interroState.k].id === id), st.id)) {   // encore sur ce point : Entrée
+        await pg.evaluate(() => document.activeElement && document.activeElement.blur()); await pg.keyboard.press('Enter'); await att(pg, 300); }
+    }
+    return { cle, ici: null };
+  };
+  // ce que la copie doit porter : pour chaque point noté (0-3) de sa grille, une ligne par compétence du point, dans l'ordre de la grille
+  const attendues = (cfg, vid, echelons) => { const v = cfg.variantes ? cfg.variantes.find(x => x.id === vid) : cfg; const out = [];
+    v.criteres.forEach(cr => cr.indicateurs.forEach(i => { const e = echelons[i.id]; if (typeof e !== 'number') return; (i.competences || [i.competence]).forEach(k => out.push({ competence: k, point: i.id, niveau: e })); })); return out; };
+  const ctx = await contexte(1707, 743); ctx.__hub.redactions['lettre-grande-guerre-3e'] = { config: L18 };
+  const pg = await page(ctx, '?mode=prof&id=lettre-grande-guerre-3e&classe=3_franklin_aretha'); await pret(pg);
+  const hubCopie = k => pg.evaluate(k => { const s = window.__SUJ('lettre-grande-guerre-3e'); return (s && s.copies && s.copies['3_franklin_aretha'] && s.copies['3_franklin_aretha'][k]) || null; }, k);
+  const ids = []; const relever = async (ou) => { const x = await idsEcran(pg); if (x.length) ids.push(ou + ' : ' + x.join(', ')); };
+  await relever('le tableau de bord');
+  // (1) « Trente lignes » noté Satisfaisant (« ta lettre fait ses trente lignes ») : la ligne de Paul
+  const a = await noterJusqua(pg, 'BOIVIN Eden', { trente_lignes: [2, 1] }, 'orthographe');
+  const r30 = []; for (const n of [3, 4, 7, 8, 14, 15]) r30.push(await compter(pg, n));
+  await relever('une copie, le compteur'); await cap(pg, 'RU-18-lettre-compteur-30-lignes');
+  verif('RU18', a.ici === 'orthographe' && JSON.stringify(r30.map(b => b && [b.n, b.niveau, b.plage])) === JSON.stringify([[3, 'Très satisfaisant', '0 à 3 erreurs'], [4, 'Satisfaisant', '4 à 7 erreurs'], [7, 'Satisfaisant', '4 à 7 erreurs'], [8, 'Fragile', '8 à 14 erreurs'], [14, 'Fragile', '8 à 14 erreurs'], [15, 'Insuffisant', '15 et + erreurs']]),
+    'la lettre, « Trente lignes » noté Satisfaisant (« ta lettre fait ses trente lignes ») : la touche + amène le compteur à 0 à 3 Très satisfaisant, 4 à 7 Satisfaisant, 8 à 14 Fragile, 15 et plus Insuffisant — la ligne de Paul (28/10)', JSON.stringify({ a, r30 }));
+  await att(pg, 1300); const h0 = await hubCopie(a.cle);
+  // la copie finie : l'orthographe Insuffisant (ce que dit le compteur à 15), le lexique Satisfaisant
+  const b = await noterJusqua(pg, 'BOIVIN Eden', { orthographe: [0, 0], lexique: [2, 1] }, null); await att(pg, 1600);
+  await relever('une copie, le récapitulatif');
+  const e1 = await pg.evaluate(k => ({ e: copieFor(k).echelons, pct: progressionPct(k) }), a.cle); const h1 = await hubCopie(a.cle); const att1 = attendues(L18, null, e1.e);
+  verif('RU18', !!h0 && !('competences' in h0) && e1.pct === 100 && !!h1 && JSON.stringify(h1.competences) === JSON.stringify(att1) && att1.length === 12 && JSON.stringify(att1.find(x => x.point === 'orthographe')) === '{"competence":"c4-langue-01","point":"orthographe","niveau":0}',
+    'une copie de la lettre : commencée, rien sur les compétences au hub ; corrigée (12 points), elle porte au hub, à côté de sa correction, ses 12 { compétence, point, niveau } (orthographe → c4-langue-01, niveau 0)', JSON.stringify({ b: b.ici, h0: h0 && Object.keys(h0), h1: h1 && h1.competences }).slice(0, 500));
+  // un niveau changé après coup (le mode classique) : la compétence suit, avec la copie
+  await pg.evaluate(() => document.activeElement && document.activeElement.blur()); await pg.keyboard.press('Escape'); await att(pg, 500);
+  const caseLex = await pg.$(`#criteresContainer [onclick="setEchelon('lexique', 3)"]`); if (caseLex) { await caseLex.click(); await att(pg, 1500); }
+  await relever('une copie, le mode classique');
+  const h2 = await hubCopie(a.cle); const lx = h2 && (h2.competences || []).find(x => x.point === 'lexique');
+  verif('RU18', !!caseLex && !!lx && lx.competence === 'c4-langue-03' && lx.niveau === 3 && h2.competences.length === 12 && h2.id === h1.id && h2.modifieLe > h1.modifieLe,
+    'le lexique repassé à Très satisfaisant en mode classique (un clic) : au hub, sa compétence (c4-langue-03) passe au niveau 3 ; même copie (même id), horodatage avancé', JSON.stringify({ lx, n: h2 && (h2.competences || []).length }));
+  const fi = await pg.evaluate(k => { const avec = genererHTMLEleve(k); const c = copieFor(k), sauve = c.competences; delete c.competences; const sans = genererHTMLEleve(k); c.competences = sauve; return { egal: avec === sans, ids: avec.match(/\b(c[1-4]|tr)-[a-z]+-\d\d\b/g) || [] }; }, a.cle);
+  verif('RU18', fi.egal && fi.ids.length === 0, 'la fiche de l\'élève ne change pas (la même avec et sans la liste des compétences) et ne porte aucun identifiant de compétence', JSON.stringify(fi));
+  // (1) « Trente lignes » noté Insuffisant (moins de quinze lignes) : la ligne Dugain 2 / 5 / 10 divisée par deux
+  const c2 = await noterJusqua(pg, 'CHOUTEAU Baptistine', { trente_lignes: [0, 0] }, 'orthographe');
+  const r0 = []; for (const n of [1, 2, 3, 4, 5]) r0.push(await compter(pg, n));
+  verif('RU18', c2.ici === 'orthographe' && JSON.stringify(r0.map(b => b && [b.n, b.niveau, b.plage])) === JSON.stringify([[1, 'Très satisfaisant', '0 à 1 erreurs'], [2, 'Satisfaisant', '2 à 2 erreurs'], [3, 'Fragile', '3 à 4 erreurs'], [4, 'Fragile', '3 à 4 erreurs'], [5, 'Insuffisant', '5 et + erreurs']]),
+    'la lettre, « Trente lignes » noté Insuffisant (moins de quinze lignes) : 0 à 1, 2, 3 à 4, 5 et plus (Dugain 2 / 5 / 10, divisé par deux comme la ligne de Paul)', JSON.stringify(r0));
+  // (1) « Trente lignes » non évalué (N puis E) : la ligne de trente lignes, par défaut
+  const c3 = await noterJusqua(pg, 'CALDEIRA Tiago', { trente_lignes: 'NE' }, 'orthographe');
+  const rd = [await compter(pg, 3), await compter(pg, 4)];
+  verif('RU18', c3.ici === 'orthographe' && JSON.stringify(rd.map(b => b && [b.n, b.niveau, b.plage])) === JSON.stringify([[3, 'Très satisfaisant', '0 à 3 erreurs'], [4, 'Satisfaisant', '4 à 7 erreurs']]) && /défaut/.test(rd[0].titre),
+    'la lettre, « Trente lignes » non évalué : le compteur prend la ligne de trente lignes (0 à 3, 4 à 7…), et son infobulle le dit (« Seuils par défaut »)', JSON.stringify(rd));
+  await pg.evaluate(() => document.activeElement && document.activeElement.blur()); await pg.keyboard.press('Escape'); await att(pg, 400);
+  // les onglets : Préparation, Correction, Bilan, Fiches élèves, Réglages — et les quatre lignes de seuils de la lettre dans Réglages
+  for (const [o, s] of [['pilotage', 'preparation'], ['pilotage', 'correction'], ['donnees', 'bilan'], ['donnees', 'fiches'], ['reglages', null]]) {
+    await pg.click(`#ruOnglets [data-o="${o}"]`); await att(pg, 300); if (s) { await pg.click(`#ruSous [data-s="${s}"]`); await att(pg, 300); }
+    if (o === 'reglages') await pg.waitForFunction(() => /Exploiter|Consolider/.test(document.getElementById('ruVue_reglages').innerText), null, { timeout: 5000 }).catch(() => {});
+    await relever(s || o);
+  }
+  const reg = await pg.evaluate(() => document.getElementById('ruVue_reglages').innerText.replace(/\s+/g, ' '));
+  verif('RU18', /Très satisfaisant → 3 \/ 8 \/ 16 · Satisfaisant → 3 \/ 7 \/ 14 · Fragile → 2 \/ 5 \/ 9 · Insuffisant → 1 \/ 2 \/ 4/.test(reg), 'Réglages : les seuils de la lettre, une ligne par niveau de « Trente lignes » — 3 / 8 / 16 · 3 / 7 / 14 · 2 / 5 / 9 · 1 / 2 / 4', (reg.match(/Le compteur[^.]*\./) || [reg.slice(0, 200)])[0]);
+  verif('RU18', pg.__errs.length === 0, 'la lettre : zéro erreur JS', JSON.stringify(pg.__errs)); await pg.close();
+  // « Préparer le sujet », chaque écran (un clic dans la liste de gauche) : le nom de la compétence, jamais l'identifiant — la lettre puis Dugain
+  const tetes = {}; let nPoints = 0;   // (Dugain est dans le faux hub de départ)
+  for (const id of ['lettre-grande-guerre-3e', 'dugain']) { const pp = await page(ctx, '?mode=prof&id=' + id + '&vue=preparer'); await pp.waitForSelector('#ruPrepNav button.ru-prep-i', { timeout: 8000 }).catch(() => {});
+    const n = await pp.$$eval('#ruPrepNav button.ru-prep-i', x => x.length);
+    for (let i = 0; i < n; i++) { await pp.click('#ruPrepNav button.ru-prep-i >> nth=' + i); await att(pp, 120);
+      const x = await idsEcran(pp); if (x.length) ids.push('Préparer ' + id + ' écran ' + (i + 1) + ' : ' + x.join(', '));
+      const t = await pp.evaluate(() => { const c = document.querySelector('#ruPrepCorps .ru-prep-crit'), h = document.querySelector('#ruPrepCorps .ru-prep-tete h2'); return c && h ? [h.textContent, c.textContent] : null; }); if (t) { nPoints++; tetes[id + ' · ' + t[0]] = t[1]; } }
+    if (id === 'lettre-grande-guerre-3e') await cap(pp, 'RU-18-preparer-lettre'); await pp.close(); }
+  const tl = tetes['lettre-grande-guerre-3e · Orthographe et grammaire'] || '', td = tetes['dugain · Remobilisation du texte'] || '';
+  verif('RU18', /Consolider l'orthographe lexicale et grammaticale/.test(tl) && /Exploiter des lectures pour enrichir son écrit/.test(td) && nPoints === 32,
+    '« Préparer le sujet » : les 32 écrans de points (12 de la lettre, 2 × 10 de Dugain) ; l\'en-tête d\'un point dit le nom de sa compétence (la lettre, « Orthographe et grammaire » → « Consolider l\'orthographe lexicale et grammaticale » ; Dugain, « Remobilisation du texte » → « Exploiter des lectures pour enrichir son écrit »)', JSON.stringify({ tl, td, nPoints }));
+  verif('RU18', ids.length === 0, 'aucun identifiant de compétence à l\'écran (texte, infobulles, cases) : le tableau de bord, une copie (compteur, récapitulatif, mode classique), Préparation, Correction, Bilan, Fiches élèves, Réglages, chaque écran de « Préparer le sujet » (la lettre et Dugain)', ids.join(' || '));
+  // une copie corrigée avant aujourd'hui (au hub sans ses compétences) : à l'ouverture de sa classe, elle les reçoit — même id, horodatage inchangé
+  const vieille = JSON.parse(JSON.stringify(h2)); delete vieille.competences; vieille.modifieLe = '2026-10-27T15:00:00.000Z';
+  for (const test of [false, true]) {
+    const orph = Object.assign({}, vieille, { id: 'copie_mh1zz9_q7w8e9', eleve: 'zz_ancien_nom', nom: 'ZZANCIEN Nom' });   // une copie corrigée dont l'élève a changé de nom au site
+    const hv0 = hubDeDepart(); hv0.redactions['lettre-grande-guerre-3e'] = { config: L18, copies: { '3_franklin_aretha': { [a.cle]: vieille, zz_ancien_nom: orph } } };
+    const cv = await contexte(1707, 743, hv0); const pv = await page(cv, '?mode=prof&id=lettre-grande-guerre-3e&classe=3_franklin_aretha' + (test ? '&test=1' : '')); await pret(pv); await att(pv, 1800);
+    const hv = await pv.evaluate(k => window.__SUJ('lettre-grande-guerre-3e').copies['3_franklin_aretha'][k], a.cle); const ev = await ecr(pv);
+    const ho = await pv.evaluate(() => window.__SUJ('lettre-grande-guerre-3e').copies['3_franklin_aretha'].zz_ancien_nom);
+    if (!test) verif('RU18', JSON.stringify(hv.competences) === JSON.stringify(attendues(L18, null, vieille.echelons)) && hv.modifieLe === '2026-10-27T15:00:00.000Z' && hv.id === vieille.id && ev.filter(x => /^PUT redactions\/lettre-grande-guerre-3e\/copies\//.test(x)).length === 1 && ho && ho.nom === 'ZZANCIEN Nom' && !ho.competences,
+      'une copie corrigée avant (au hub sans ses compétences) : à l\'ouverture de sa classe, elle les reçoit au hub — même id, horodatage inchangé (27/10 15:00), une seule écriture de copie ; une copie sans élève (nom changé au site) n\'est pas réécrite et garde son nom', JSON.stringify({ n: (hv.competences || []).length, m: hv.modifieLe, ev, ho: ho && ho.nom }));
+    else verif('RU18', ev.length === 0 && !hv.competences && await pv.evaluate(() => RU.ecritsTest.some(e => e.v && Array.isArray(e.v.competences))), 'la même, en mode test : les compétences restent dans la page, rien n\'est écrit au hub', JSON.stringify(ev));
+    await cv.close(); }
+  await ctx.close();
+  // Dugain : une copie corrigée (imagination) porte ses dix compétences
+  const ctxD = await contexte(1707, 743); const pd = await page(ctxD, '?mode=prof&id=dugain&classe=3_franklin_aretha'); await pret(pd);
+  const { cle: cd } = await corrigerSelon(pd, PLAN_DUGAIN); await att(pd, 1600);
+  const hd = await pd.evaluate(k => window.__SUJ('dugain').copies['3_franklin_aretha'][k], cd); const attD = hd ? attendues(DG18, hd.sujet, hd.echelons) : [];
+  verif('RU18', !!hd && hd.sujet === 'imagination' && attD.length === 10 && JSON.stringify(hd.competences) === JSON.stringify(attD) && ['orthographe:c4-langue-01', 'lexique:c4-langue-03', 'remobilisation:c4-ecrire-03'].every(s => hd.competences.some(x => x.point + ':' + x.competence === s)),
+    'Dugain (imagination) : la copie corrigée porte au hub ses 10 { compétence, point, niveau } (orthographe → c4-langue-01, lexique → c4-langue-03, remobilisation → c4-ecrire-03…)', JSON.stringify(hd && hd.competences).slice(0, 400));
+  verif('RU18', pd.__errs.length === 0, 'Dugain : zéro erreur JS', JSON.stringify(pd.__errs)); await ctxD.close(); }
+
 // ═════ RU9 · les tailles : 1366, 1536, 1707 × 743, 1920 — rien ne déborde en largeur ═════
 for (const [w, h] of [[1366, 743], [1536, 743], [1707, 743], [1920, 1080]]) {
   const ctx = await contexte(w, h, JSON.parse(await (async () => { const c = await contexte(); const pg = await page(c, '?mode=prof'); const s = await pg.evaluate(() => JSON.stringify(window.__HUB)); await c.close(); return s; })()));

@@ -2439,7 +2439,20 @@ function planifierSync() { clearTimeout(RU.timer); RU.timer = setTimeout(synchro
 // la copie désigne l'élève et la classe par leurs clés internes, jamais par leurs noms. Rien de cela ne paraît sur une fiche.
 function idCopie() { return "copie_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8); }   // la forme de correction_dictee
 function idSujet() { return "sujet_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8); }
-const RU_IDENTITE = ["id", "eleve", "classe", "sujetId", "creeLe", "modifieLe", "nom"];   // les champs d'objet d'une copie (hors de la correction elle-même)
+const RU_IDENTITE = ["id", "eleve", "classe", "sujetId", "creeLe", "modifieLe", "nom", "competences"];   // les champs d'objet d'une copie (hors de la correction elle-même ; « competences » en est tiré)
+// §12.63 (2) (Paul, 28/10 : « On alimente déjà le profil longitudinal même s'il n'existe pas encore ») : une copie corrigée porte, à côté de sa
+// correction, ce qu'elle dit de chaque compétence du site — { competence (l'identifiant de /taxonomie), point (l'id du point de la grille),
+// niveau (0 Insuffisant · 1 Fragile · 2 Satisfaisant · 3 Très satisfaisant) } ; un point « non évalué » n'y entre pas. Jamais à l'écran, jamais sur une fiche.
+function ruCompetencesCopie(cp) {
+  if (!SUJET || !cp || !ruCopieFinie(SUJET, cp)) return null;
+  const v = varianteDe(cp.sujet) || ((SUJET.variantes || []).length === 1 ? SUJET.variantes[0] : null); if (!v) return null;
+  const L = [];
+  (v.criteres || []).forEach(cr => (cr.indicateurs || []).forEach(i => { const e = cp.echelons[i.id]; if (typeof e !== "number") return; (i.competences || []).forEach(k => L.push({ competence: k, point: i.id, niveau: e })); }));
+  return L.length ? L : null;
+}
+function ruSigCompetences(L) { return JSON.stringify((Array.isArray(L) ? L : Object.values(L || {})).map(x => [x && x.competence, x && x.point, x && x.niveau])); }   // l'ordre des clés rendu par le hub ne compte pas
+// la liste que la copie de la clé k doit porter ; une copie sans élève dans la classe (un nom corrigé au site) garde la sienne jusqu'à « Rattacher »
+function ruCompetencesPour(k) { const cp = state.copies[k]; return nomEleveDe(k) ? ruCompetencesCopie(cp) : ((cp && cp.competences) || null); }
 function ruVierge(c) { return !c || (!c.sujet && !Object.keys(c.echelons || {}).length && !Object.keys(c.citationsPar || {}).length && !Object.keys(c.sousEditesPar || {}).length && !c.compteurOrthoGram && !c.meilleureCitation && !c.meilleureCitationCommentaire && !c.telemetry); }
 function synchroniser() {
   if (!RU.id || !RU.classe) return;
@@ -2447,11 +2460,14 @@ function synchroniser() {
     if (!RU.sig[k] && ruVierge(state.copies[k])) return;   // une copie jamais touchée ne s'écrit pas (le tableau de bord en crée une par élève)
     const cp = state.copies[k];
     const corps = Object.assign({}, cp); RU_IDENTITE.forEach(f => delete corps[f]);
-    const sgCorps = JSON.stringify(corps); if (RU.sigCorps && RU.sigCorps[k] === sgCorps && cp.id) return;   // rien de neuf dans la correction : pas d'écriture, l'horodatage ne bouge pas
+    const comp = ruCompetencesPour(k), compNeuves = ruSigCompetences(comp) !== ruSigCompetences(cp.competences);   // §12.63 (2)
+    const sgCorps = JSON.stringify(corps); if (RU.sigCorps && RU.sigCorps[k] === sgCorps && cp.id && !compNeuves) return;   // rien de neuf dans la correction : pas d'écriture, l'horodatage ne bouge pas
+    const correctionNeuve = !(RU.sigCorps && RU.sigCorps[k] === sgCorps) || !cp.id;
     RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[k] = sgCorps;
     const maintenant = new Date().toISOString();
     if (!cp.id) { cp.id = idCopie(); if (!cp.creeLe) cp.creeLe = maintenant; }   // une copie sans id (première écriture, ou déjà au hub avant 13 · 58) en reçoit un, une fois
-    cp.eleve = k; cp.classe = RU.classe; cp.sujetId = (SUJET && SUJET.idInterne) || RU.id; cp.modifieLe = maintenant;
+    cp.eleve = k; cp.classe = RU.classe; cp.sujetId = (SUJET && SUJET.idInterne) || RU.id; if (correctionNeuve) cp.modifieLe = maintenant;   // les compétences seules (tirées de la correction) n'avancent pas l'horodatage
+    if (comp) cp.competences = comp; else delete cp.competences;
     const v = Object.assign({}, cp, { nom: nomEleveDe(k) || cp.nom || "" });
     const sg = JSON.stringify(v); if (RU.sig[k] === sg) return; RU.sig[k] = sg;
     ruEcrire(ruCheminCopies().concat(k), JSON.parse(sg), "la copie de " + (v.nom || k)).then(i => { if (i.etat !== MJPC_ISSUE.ACCEPTEE) delete RU.sig[k]; });
@@ -2551,6 +2567,8 @@ function ruOuvrirClasse(k) {
     RU.orphelines = Object.keys(cp || {}).filter(e => !state.classe.some(n => eleveId(n) === e) && !ruVierge(cp[e]));
     if (su) { RU_SUIVI.forEach(f => { if (su[f] != null) state[f] = su[f]; }); RU.sigSuivi = JSON.stringify(su); }
     if (!Array.isArray(state.paquetOrdre)) state.paquetOrdre = Object.values(state.paquetOrdre || {});
+    // §12.63 (2) : une copie corrigée avant que la copie porte ses compétences (ou dont la grille a changé) les reçoit maintenant — son horodatage ne bouge pas
+    if (Object.keys(state.copies).some(e => ruSigCompetences(ruCompetencesPour(e)) !== ruSigCompetences(state.copies[e].competences))) planifierSync();
     ruAbonner(); RU.dansCorrection = true; ruReprendre(); ruOnglet("pilotage", "correction");
   }, () => { toast("⚠ Le site ne répond pas : les copies de cette classe n'ont pas pu être lues."); showDashboard(); });
 }
@@ -2796,7 +2814,9 @@ function ruChargerValidations() {
 function ruPreparer() {
   ruEcran("ruPrep"); aidePoser("preparer"); document.title = "Préparer — " + (SUJET.titre || "");
   document.getElementById("ruPrepTitre").textContent = "Préparer le sujet — " + (SUJET.titre || "");
-  ruChargerValidations().then(() => { RU.prep = RU.prep || { k: 0 }; ruPrepRendre(); });
+  // le nom de la compétence d'un point (le libellé de /taxonomie), jamais l'identifiant : lu avant le premier rendu
+  const taxo = RU.taxoLib ? Promise.resolve() : ruLire(["taxonomie"]).then(t => { RU.taxoLib = ruLibellesTaxonomie(t); }, () => {});
+  Promise.all([ruChargerValidations(), taxo]).then(() => { RU.prep = RU.prep || { k: 0 }; ruPrepRendre(); });
 }
 function ruPrepEcrans() {
   const E = [{ type: "communes" }];
@@ -2836,7 +2856,7 @@ function ruPrepRendre() {
       cur.cr.consignes.map((t, e) => `<label style="color:${ECHELON_COULEUR[e].text}">${ECHELON_COULEUR[e].label}</label>${ta(["variantes", cur.vi, "criteres", cur.ci, "consignes", e], t, ruCleC(cur.v.id, cur.cr.id))}`).join("");
   } else {
     const ind = cur.ind, base = ["variantes", cur.vi, "criteres", cur.ci, "indicateurs", cur.ii];
-    h = `<div class="ru-prep-tete"><div class="ru-prep-crit">${escapeHtml(cur.cr.titre)} — /${ind.poids}${ind.competences && ind.competences.length ? " · " + ind.competences.map(escapeHtml).join(", ") : ""}</div><h2>${escapeHtml(ind.libelle)}</h2></div>
+    h = `<div class="ru-prep-tete"><div class="ru-prep-crit">${escapeHtml(cur.cr.titre)} — /${ind.poids}${ind.competences && ind.competences.length ? " · " + ind.competences.map(k => escapeHtml(ruNomCompetence(k))).join(" · ") : ""}</div><h2>${escapeHtml(ind.libelle)}</h2></div>
       <div class="ru-prep-grille">${[0, 1, 2, 3].map(e => `<div class="ru-prep-col" style="border-top:6px solid ${ECHELON_COULEUR[e].border}">
         <h3 style="color:${ECHELON_COULEUR[e].text}">${ECHELON_COULEUR[e].label}</h3>
         <label title="Le niveau, tel que la carte de correction le montre (étage 1)">Le niveau</label>${ta(base.concat(["descripteurs", e]), ind.descripteurs[e], ruCleD(cur.v.id, ind.id, e))}

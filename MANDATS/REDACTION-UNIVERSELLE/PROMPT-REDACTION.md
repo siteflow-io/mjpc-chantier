@@ -42,7 +42,7 @@ Tu travailles avec M. Meney, professeur de français au collège (Paul). Il corr
           ] }
       ] }
   ],
-  "compteur": { "indicateur": "orthographe", "selon": "trente_lignes", "seuils": { "0": [1, 2, 5], "1": [2, 5, 9], "2": [3, 7, 14], "3": [3, 8, 16] } },
+  "compteur": { "indicateur": "orthographe", "selon": "trente_lignes", "seuils": { "0": [1, 2, 4], "1": [2, 5, 9], "2": [3, 7, 14], "3": [3, 8, 16] }, "defaut": 2 },
   "fiche": { "titre": "…", "sousTitre": "…", "aFaire": ["…", "…"], "alerte": { "indicateur": "orthographe", "echelon": 0, "titre": "…", "contenu": "…" } }
 }
 ```

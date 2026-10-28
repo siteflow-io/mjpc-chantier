@@ -1133,3 +1133,6 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **Bancs** (assemblé md5 `b01f1a39…`) : `banc.sh` **VERT** (`E4/sorties/0327-28-10-A91b/`). Captures : `E4/captures/E4-1238-A91-1707-avant-atelier-contenu.png`, `…-apres-atelier-contenu.png` (regardées).
 
 **A91 (contenu prévu) E4 fini (`c673b6940`).**
+
+## Veille close — 04:11 UTC (05:11 Paris) · retour n°2/2
+- Rien de nouveau pour moi dans `RELANCES/E4.md` après « 28/10, 02:20 » (traitée, `c673b694`). La nuit d'E4 : §12.36 (`a073ba44`), §12.38 (2) (`32bd4123`), §12.37 (`78af4bf1`), A91 (`d65bf9df`, contenu `c673b694`) ; E3 : §12.36, §12.37, §12.38 verts ; la candidate ⑦ est assemblée (banc 106/0). **Veille close** ; reprise sur relance.

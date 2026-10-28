@@ -1,0 +1,13 @@
+  info   A98 · la diapo 0 ; la note : Relire lentement chaque tableau avant de questionner
+  ok     A98 · G sur « Relire », sélectionné dans les notes : la forme est dans la note — {"mot":"Relire","note":true,"murIntact":true}
+  ok     A98 · S sur « lentement », sélectionné dans les notes : la forme est dans la note — {"mot":"lentement","note":true,"murIntact":true}
+  ok     A98 · « ab » (jaune) sur « chaque », sélectionné dans les notes : la forme est dans la note — {"mot":"chaque","note":true,"murIntact":true}
+  ok     A98 · « A » (rouge) sur « tableau », sélectionné dans les notes : la forme est dans la note — {"mot":"tableau","note":true,"murIntact":true}
+  ok     A98 · la forme est enregistrée avec la note, au hub (le gras, le souligné) — {"gras":"Relire","soul":"lentement"}
+  ok     A98 · au rechargement, la note se relit avec sa forme (gras, souligné, surligné, couleur), à l’écran — <div class="p8-mn" data-i="0"><button class="p8-k" data-p8k="0" title="À l'arrivée sur la diapo (⌂) : elle s'éclaire dès la diapo ouverte — clic : l'accrocher à un autre élément">⌂</button><div class=
+  ok     A98 · un second G sur « Relire » retire le gras — Relire <u>lentement</u> <mark data-coul="jaune">chaque</mark> <span data-coul="rouge">tableau</span> avant de questionner
+  ok     A98 · en répétition, la note se montre chez Paul avec sa forme — <div class="p8-mn p8-vif" data-i="0"><span class="p8-k" title="À l'arrivée sur la diapo (⌂) : elle s'éclaire dès la diapo ouverte">⌂</span><div class="p8-mt" co
+  ok     A98 · la diapo (ce que voit la classe) ne reçoit rien des notes
+  ok     A98 · témoin — le G de la diapo met toujours le mot de la diapo en gras (dans la trame) — {"mot":"Observe","gras":"[{\"p\":\"0.t\",\"txt\":\"Observe\"}]"}
+  ok     A98 · zéro erreur JS — []
+— fin : 11 vérifications · 0 échec(s) — VERT · x47.html md5 940a1f94fdf1126be8870ff574108470

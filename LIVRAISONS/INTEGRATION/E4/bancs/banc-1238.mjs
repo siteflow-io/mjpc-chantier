@@ -3,6 +3,8 @@
 //       d'une vraie classe, jamais « _TEST » ; la classe de l'heure (son nom) reste la sienne ; « ☐ Les élèves ont écrit le bilan » sur la diapo de rôle bilan,
 //       « Qui a participé » et « L'appel » dans « ⋯ » ; une réponse tapée « DA » va à DURAND Alice ; aucun nom d'une vraie classe à l'écran ; rien d'écrit au hub.
 //       « ■ Arrêter » : les élèves de la classe reviennent. Témoin : l'heure lancée avec la classe a ses vrais élèves.
+// A91 : (§12.38 (3), le rendu) dans l'Atelier et en répétition, la diapo du cahier de textes montre le cahier (l'échéance, le travail à faire, les contenus) ;
+//       en répétition, ses quatre éléments se dévoilent et « qui a participé » compte les élèves de la classe test ; la trame enregistrée ne change pas.
 // usage : node banc-1238.mjs <assemble/index.html> [dossier-de-sortie]   (MJPC_CAPT=<dossier> MJPC_CAPT_SUFFIXE=avant|apres). Code 1 si un échec.
 // 49 : (13 · 49) « Créer ce chapitre » (le JSON collé, aucun chapitre de ce titre) → le titre du JSON tel quel au hub, sans « (proposition) ».
 // usage : MJPC_HUB=AUDITS/INTEGRATION-DEROULE/hub node banc-1228.mjs <assemble/index.html> [sortie.txt]
@@ -93,6 +95,20 @@ const gestes = q => q.evaluate(async VRAIS => { const vis = e => !!(e && e.offse
   await pg.evaluate(() => { const b = document.getElementById('rep-stop'); if (b) b.click(); }); await p(pg, 1200); const apres = await pg.evaluate(() => { const slug = DR_MEM.classeSlug; const cl = classesData[slug] || (typeof edtCleClasse === 'function' && classesData[edtCleClasse(slug)]) || {}; const siens = extractEleves(cl) || []; return { rep: !!S.repetition, slug, de: DR_MEM.elevesDe, memes: JSON.stringify(ELEVES) === JSON.stringify(siens), n: ELEVES.length }; });
   verif('A88', !apres.rep && apres.de === apres.slug && apres.memes, '« ■ Arrêter » : les élèves de la classe reviennent (ceux de sa liste au hub)', JSON.stringify(apres));
   verif('A88', errs.length === 0, 'zéro erreur JS (répétition)', JSON.stringify(errs.slice(0, 3))); await ctx.close(); }
+/* ═════ A91 — la diapo du cahier de textes hors de la classe : Atelier, puis répétition (le rendu d'E4 sur les données d'E1, §12.38 (3)) ═════ */
+{ const { ctx, pg, errs } = await ouvrirCtx(1707, 743, stBilan()); await entrerProf(pg); await ouvrirAtelier(pg); await p(pg, 1200);
+  const fin = await pg.evaluate(() => { const E = seance().ecrans; const i = E.findIndex(e => e.role === 'fin'); return { i, blocs: JSON.stringify(E[i].blocs || []) }; });
+  await pg.evaluate(i => { const d = document.querySelector('#at-arbre [data-at-di="' + i + '"]'); if (d) d.click(); }, fin.i); await p(pg, 900);
+  const lire = () => pg.evaluate(() => { const m = document.getElementById('mur'); const t = (m && m.innerText) || ''; const hc = typeof dr_cahierHorsClasse === 'function' ? dr_cahierHorsClasse(ecran()) : null; return { di: S.di, fin: ecran().role === 'fin', agenda: /PRENEZ VOS AGENDAS — POUR/.test(t), date: hc && hc.date, dateVue: hc && hc.date ? t.toUpperCase().indexOf(String(hc.date).replace(/, \d{2}:\d{2}$/, '').toUpperCase()) >= 0 : null, travail: /Travail à faire/.test(t), contenu: /Contenus de séances/.test(t), part: (/(\d+) élèves? sur (\d+)/.exec(t) || []).slice(1), seul: /^\s*FIN D.HEURE\s*$/i.test(t.trim()), blocs: JSON.stringify(ecran().blocs || []) }; });
+  const a1 = await lire(); if (CAPT) await pg.screenshot({ path: path.join(CAPT, 'A91-1707-' + SUFF + '-atelier.png') });
+  verif('A91', a1.fin && a1.agenda && a1.dateVue && a1.travail && a1.contenu && !a1.seul, 'dans l\'Atelier, la diapo du cahier de textes montre le cahier : l\'échéance (« PRENEZ VOS AGENDAS — POUR … », la date de la source), le travail à faire, les contenus de séance', JSON.stringify(a1));
+  const rep = await entrerRepetition(pg); await p(pg, 900); await pg.evaluate(i => { S.di = i; dr_tout(); }, fin.i); await p(pg, 600);
+  for (let k = 0; k < 4; k++) { await pg.evaluate(() => { const d = etatDiapo(); const n = elements(ecran()).length; if (d.nDev < n) document.getElementById('bdev').click(); }); await p(pg, 300); }
+  const r1 = await lire(); const nDev = await pg.evaluate(() => ({ n: etatDiapo().nDev, tot: elements(ecran()).length })); if (CAPT) await pg.screenshot({ path: path.join(CAPT, 'A91-1707-' + SUFF + '-repetition.png') });
+  verif('A91', rep && r1.fin && r1.agenda && r1.travail && r1.part.length === 2 && r1.part[1] === '4' && nDev.tot === 4 && nDev.n === 4, 'en répétition : le cahier se dévoile en ses quatre éléments ; « qui a participé » compte les quatre élèves de « CLASSE TEST »', JSON.stringify({ r1, nDev }));
+  await pg.evaluate(() => { const b = document.getElementById('rep-stop'); if (b) b.click(); }); await p(pg, 900); const apres = await pg.evaluate(i => JSON.stringify(seance().ecrans[i].blocs || []), fin.i);
+  verif('A91', apres === fin.blocs && a1.blocs === fin.blocs, 'la trame enregistrée n\'a pas changé (la diapo du cahier garde ses blocs)', JSON.stringify({ avant: fin.blocs, apres }));
+  verif('A91', errs.length === 0, 'zéro erreur JS (A91)', JSON.stringify(errs.slice(0, 3))); await ctx.close(); }
 /* ═════ le témoin : l'heure lancée avec la classe a ses vrais élèves ═════ */
 { const { ctx, pg, errs } = await ouvrirCtx(1707, 743, stBilan()); await entrerProf(pg); const l = await lancerParLaCase(pg); await p(pg, 1200);
   const iB = await aller(pg, 'bilan'); const gB = await gestes(pg);

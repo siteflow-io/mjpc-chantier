@@ -1,0 +1,15 @@
+  ok     A88 · en répétition, les élèves sont les quatre de « CLASSE TEST » — {"rep":true,"eleves":["DURAND Alice","BERNARD Emma","PETIT Thomas","ROBERT Chloé"],"n":4}
+  ok     A88 · la classe de l'heure répétée reste la sienne (son nom en haut) — 3E Charles de Gaulle
+  ok     A88 · les gestes d'élève restent : « ☐ Les élèves ont écrit le bilan » sur la diapo de bilan ; « Qui a participé » et « L'appel » dans « ⋯ » — {"di":7,"bcoche":true,"plus":["Chrono au tableau","Qui a participé (au tableau)","Réserve de la séance…","Documents de la séance…","Expliqué à l'oral…","Déclarer une notion imprévue…","L'appel : clic droit sur un nom de la liste"]}
+  ok     A88 · la mise en commun : « DA » puis la réponse → DURAND Alice (un élève de la classe test) — {"attrib":["DURAND Alice"]}
+  ok     A88 · aucun nom d'élève d'une vraie classe à l'écran (bilan, question) — [[],[]]
+  ok     A88 · rien d'écrit au hub pendant la répétition (hors le battement de présence du professeur, posé par le site) — {"ecritures":["PUT /presence/prof"]}
+  ok     A88 · « ■ Arrêter » : les élèves de la classe reviennent (ceux de sa liste au hub) — {"rep":false,"slug":"3E Charles de Gaulle","de":"3E Charles de Gaulle","memes":true,"n":29}
+  ok     A88 · zéro erreur JS (répétition) — []
+  ÉCHEC  A91 · dans l'Atelier, la diapo du cahier de textes montre le cahier : l'échéance (« PRENEZ VOS AGENDAS — POUR … », la date de la source), le travail à faire, les contenus de séance — {"di":16,"fin":true,"agenda":false,"date":"mercredi 16 septembre, 10 h 07","dateVue":false,"travail":false,"contenu":false,"part":[],"seul":true,"blocs":"[]"}
+  ÉCHEC  A91 · en répétition : le cahier se dévoile en ses quatre éléments ; « qui a participé » compte les quatre élèves de « CLASSE TEST » — {"r1":{"di":16,"fin":true,"agenda":false,"date":"mercredi 16 septembre, 10 h 07","dateVue":false,"travail":false,"contenu":false,"part":[],"seul":true,"blocs":"[]"},"nDev":{"n":0,"tot":0}}
+  ok     A91 · la trame enregistrée n'a pas changé (la diapo du cahier garde ses blocs) — {"avant":"[]","apres":"[]"}
+  ok     A91 · zéro erreur JS (A91) — []
+  ok     A88 · témoin — l'heure lancée avec la classe : ses vrais élèves ; « ☐ Les élèves ont écrit le bilan » sur la diapo de bilan — {"lancee":true,"n":29,"bcoche":true}
+  ok     A88 · zéro erreur JS (heure lancée) — []
+— fin : 14 vérifications · 2 échec(s) — ROUGE · asm-d-avant.html md5 52539adc6aeb84f8940f4ae860f1369c

@@ -1,0 +1,545 @@
+{
+ "corr": [
+  {
+   "nom": "consigne",
+   "di": 0,
+   "avant": "Observe, discute, fais une hypothèse sur le Romantisme.",
+   "mot": "Ж0con",
+   "apres": {
+    "S": [
+     "S.mur.textes.0.t",
+     "S.copie.1.emu0t08g0c11tp.bb99d5qn.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "étape",
+   "di": 0,
+   "avant": "Étape 1 : J'observe les images en silence (5 min).",
+   "mot": "Ж0éta",
+   "apres": {
+    "S": [
+     "S.mur.textes.0.0",
+     "S.copie.1.emu0t08g0c11tp.bb99d5qn.el.0"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "légende d’image",
+   "di": 1,
+   "avant": "Le Voyageur contemplant une mer de nuages, Caspar David Frie",
+   "mot": "Ж1lég",
+   "apres": {
+    "S": [
+     "S.mur.textes.0.t",
+     "S.copie.1.emu0t08g01ir91.bg0tcfkj.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "fiche (titre)",
+   "di": 3,
+   "avant": "Le registre lyrique",
+   "mot": "Ж3fic",
+   "apres": {
+    "S": [
+     "S.mur.textes.0.t",
+     "S.copie.1.emu0t08g038r32.b1ss5f90.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "titre de page",
+   "di": 5,
+   "avant": "Une page web",
+   "mot": "Ж5tit",
+   "apres": {
+    "S": [
+     "S.mur.textes.0.t",
+     "S.copie.1.emu0t08g09p0gh.bku5q2qq.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "question",
+   "di": 11,
+   "avant": "Qu'ont en commun ces cinq tableaux ? La réponse validée est ",
+   "mot": "Ж11que",
+   "apres": {
+    "S": [
+     "S.mur.textes.0.t",
+     "S.copie.1.emu0t08g0jn4o1.boejgj9s.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  }
+ ],
+ "import": true,
+ "lancee": true,
+ "versement": {
+  "texte": "Diapo 1 · « Analyse d'images : la routine » — 2 textes écrits en classe :\nla classe a vu « Observe, discute, fais une hypothèse sur le Romantisme.Ж0con » — la trame dit « Observe, discute, fais une hypothèse sur le Romantisme. »\nla classe a vu « Étape 1 : J'observe les images en silence (5 min).Ж0éta » — la trame dit « Étape 1 : J'observe les images en silence (5 min). »\nVerser dans la trame ? Oui, verser Non, garder la trame\nDiapo 2 · « Tableau 1 » — 1 texte écrit en classe :\nla classe a vu « Le Voyageur contemplant une mer de nuages, Caspar David Friedrich, vers 1818Ж1lég » — la trame dit « Le Voyageur contemplant une mer de nuages, Caspar David Friedrich, vers 1818 »\nVerser dans la trame ? Oui, verser Non, garder la trame\nDiapo 4 · « Une fiche » — 1 texte écrit en classe :\nla classe a vu « Le registre lyriqueЖ3fic » — la trame dit « Le registre lyrique »\nVerser dans la trame ? Oui, verser Non, garder la trame\nDiapo 6 · « Une page » — 1 texte écrit en classe :\nla classe a vu « Une page webЖ5tit » — la trame dit « Une page web »\nVerser dans la trame ? Oui, verser Non, garder la trame\nDiapo 12 · « Récap' de l'heure » — 1 texte écrit en classe :\nla classe a vu « Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours.Ж11que » — la trame dit « Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours. »\nVerser dans la trame ? Oui, verser Non, garder la trame\nSans réponse, la trame ne change pas.",
+  "boutons": [
+   "Oui, verser",
+   "Non, garder la trame",
+   "Oui, verser",
+   "Non, garder la trame",
+   "Oui, verser",
+   "Non, garder la trame",
+   "Oui, verser",
+   "Non, garder la trame",
+   "Oui, verser",
+   "Non, garder la trame"
+  ]
+ },
+ "verseOui": "emu0t08g0c11tp",
+ "apresOui": {
+  "trame0": "{\"id\":\"bpwlb8ux\",\"act\":\"Analyse d'images : la routine\",\"dur\":3,\"h\":\"\",\"comp\":[\"litt-036\",\"c4-lire-02\"],\"blocs\":[{\"id\":\"bb99d5qn\",\"t\":\"consigne\",\"pic\":\"•\",\"txt\":\"Observe, discute, fais une hypothèse sur le Romantisme.Ж0con\",\"etapes\":[\"Étape 1 : J'observe les images en silence (5 min).Ж0éta\",\"Étape 2 : Je discute en groupe de ce que je vois (5 min).\",\"Étape 3 : Au brouillon, dans un tableau à trois ",
+  "liste": "Diapo 1 · « Analyse d'images : la routine » — 2 textes écrits en classe :\nla classe a vu « Observe, discute, fais une hypothèse sur le Romantisme.Ж0con » — la trame dit « Observe, discute, fais une hypothèse sur le Romantisme. »\nla classe a vu « Étape 1 : J'observe les images en silence (5 min).Ж0éta » — la trame dit « Étape 1 : J'observe les images en silence (5 min). »\nVerser dans la trame ? Oui, verser Non, garder la trame Versé dans la trame (2 textes).\nDiapo 2 · « Tableau 1 » — 1 texte écrit en classe :\nla classe a vu « Le Voyageur contemplant une mer de nuages, Caspar David Friedrich, vers 1818Ж1lég » — la trame dit « Le Voyageur contemplant une mer de nuages, Caspar David Friedrich, vers 1818 »\nVerser dans la trame ? Oui, verser Non, garder la trame\nDiapo 4 · « Une fiche » — 1 texte"
+ },
+ "corrApresVersement": [
+  {
+   "nom": "consigne",
+   "apres": {
+    "S": [
+     "S.versements.1.emu0t08g0c11tp.sig",
+     "S.copie.1.emu0t08g0c11tp.bb99d5qn.t"
+    ],
+    "trame": true,
+    "structure": false,
+    "trameHubMemoire": true,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "étape",
+   "apres": {
+    "S": [
+     "S.versements.1.emu0t08g0c11tp.sig",
+     "S.copie.1.emu0t08g0c11tp.bb99d5qn.el.0"
+    ],
+    "trame": true,
+    "structure": false,
+    "trameHubMemoire": true,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "légende d’image",
+   "apres": {
+    "S": [
+     "S.copie.1.emu0t08g01ir91.bg0tcfkj.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "fiche (titre)",
+   "apres": {
+    "S": [
+     "S.copie.1.emu0t08g038r32.b1ss5f90.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "titre de page",
+   "apres": {
+    "S": [
+     "S.copie.1.emu0t08g09p0gh.bku5q2qq.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "question",
+   "apres": {
+    "S": [
+     "S.mur.textes.0.t",
+     "S.copie.1.emu0t08g0jn4o1.boejgj9s.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  }
+ ],
+ "close": true,
+ "corrApresCloture": [
+  {
+   "nom": "consigne",
+   "apres": {
+    "S": [
+     "S.versements.1.emu0t08g0c11tp.sig",
+     "S.copie.1.emu0t08g0c11tp.bb99d5qn.t"
+    ],
+    "trame": true,
+    "structure": false,
+    "trameHubMemoire": true,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "étape",
+   "apres": {
+    "S": [
+     "S.versements.1.emu0t08g0c11tp.sig",
+     "S.copie.1.emu0t08g0c11tp.bb99d5qn.el.0"
+    ],
+    "trame": true,
+    "structure": false,
+    "trameHubMemoire": true,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "légende d’image",
+   "apres": {
+    "S": [
+     "S.copie.1.emu0t08g01ir91.bg0tcfkj.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "fiche (titre)",
+   "apres": {
+    "S": [
+     "S.copie.1.emu0t08g038r32.b1ss5f90.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "titre de page",
+   "apres": {
+    "S": [
+     "S.copie.1.emu0t08g09p0gh.bku5q2qq.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  },
+  {
+   "nom": "question",
+   "apres": {
+    "S": [
+     "S.mur.textes.0.t",
+     "S.copie.1.emu0t08g0jn4o1.boejgj9s.t"
+    ],
+    "trame": false,
+    "structure": false,
+    "trameHubMemoire": false,
+    "magasin": [
+     "/site/3e/chapitres",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene",
+     "/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat"
+    ],
+    "journal": [],
+    "ecrHub": [
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_sujet-tache-finale-amenage/depot",
+     "PUT /site/atelier/documents/feuille_ch_3e_ch-mu0t08g0-83c8n_fiche-notion-mouvements/depot"
+    ]
+   }
+  }
+ ],
+ "relecture": [
+  {
+   "nom": "consigne",
+   "corrige": true,
+   "avant": true
+  },
+  {
+   "nom": "étape",
+   "corrige": true,
+   "avant": false
+  },
+  {
+   "nom": "légende d’image",
+   "corrige": true,
+   "avant": true
+  },
+  {
+   "nom": "fiche (titre)",
+   "corrige": true,
+   "avant": true
+  },
+  {
+   "nom": "titre de page",
+   "corrige": false,
+   "avant": false
+  },
+  {
+   "nom": "question",
+   "corrige": true,
+   "avant": true
+  }
+ ],
+ "relFaces": [
+  "Le récit · heure 1",
+  "Ce qui s'est passé · heure 1",
+  "Papier · heure 1",
+  "Le chapitre"
+ ],
+ "face Le récit · heure 1": [
+  "consigne : corrigé",
+  "étape : corrigé",
+  "légende d’image : corrigé",
+  "fiche (titre) : corrigé",
+  "titre de page : absent",
+  "question : corrigé"
+ ],
+ "face Ce qui s'est passé · heure 1": [
+  "consigne : absent",
+  "étape : absent",
+  "légende d’image : absent",
+  "fiche (titre) : absent",
+  "titre de page : absent",
+  "question : absent"
+ ],
+ "face Papier · heure 1": [
+  "consigne : corrigé",
+  "étape : corrigé",
+  "légende d’image : corrigé",
+  "fiche (titre) : corrigé",
+  "titre de page : absent",
+  "question : corrigé"
+ ],
+ "face Le chapitre": [
+  "consigne : absent",
+  "étape : absent",
+  "légende d’image : absent",
+  "fiche (titre) : absent",
+  "titre de page : absent",
+  "question : absent"
+ ],
+ "ecrHub": [],
+ "errs": []
+}

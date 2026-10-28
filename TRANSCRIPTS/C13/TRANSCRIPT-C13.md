@@ -6635,3 +6635,20 @@ E1 vient de pousser le dernier morceau : la ⑧ est complète. Je l'assemble et 
 
 28/10/2026 15:06
 MEMO
+
+---
+
+## Tour 323 — 28/10/2026 15:15 → 15:16
+
+**Paul :** accélère
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours : un exécutant neuf répare les deux rouges de la ⑧ ; mon banc complet tourne · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+874. Les cas d'E3 sur la ⑧ assemblée ont trouvé deux rouges. Le « ? » d'aide reste visible dans la vue élève : il était caché ce matin, donc c'est une régression d'aujourd'hui. Et le texte d'aide de référence dit encore « Pilotage pour répéter », alors que le site dit maintenant « ▶ Jouer en avance ». J'ai lancé un exécutant neuf, sans historique, sur ces deux points seulement. Mon banc complet continue en même temps, pour ne pas perdre de temps. Dès qu'il pousse, je repasse ces cas, puis je t'apporte la ⑧.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:16
+MEMO

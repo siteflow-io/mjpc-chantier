@@ -5744,3 +5744,33 @@ MEMO
 
 28/10/2026 07:52
 MEMO
+
+---
+
+## Tour 281 — 28/10/2026 07:55 → 07:57
+
+**Paul :** Comment on peut renforcer alors ça ? Une exclusion uniquement pour les fichiers des élèves à la maison? Ou alors une alerte qui me dit de les déposer sur école directe ? ( 2 go de stockage sur le cloud école directe...). Et en classe, plusieurs clefs? 
+Ou alors un hébergement en ligne mais gratuit et autre que github?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 a poussé la présence en mode test (§12.43), mon banc tourne dessus ; E1 sur 717 ; E3 vérifie · ouvert : 762 ; 538, 553, 481, 458.
+
+758. Une exclusion pour la maison, c'est la meilleure des quatre. Tout reste sur la clé par défaut. L'alerte de §12.44 (4 ter) ne sonne que pour un fichier que tu donnes « à la maison » ou au mot de l'absent ; pour le reste, elle se tait. Ce fichier-là part en ligne d'un bouton, par le relais de §12.49. C'est ce qui prend le moins de place, et avec un dépôt après l'autre, la place n'est plus une question.
+
+759. École Directe, non comme voie principale. Le site ne peut ni y déposer ni y lire : il faudrait ta connexion École Directe, et je ne saisis jamais tes identifiants. Ce serait donc toi, fichier par fichier, comme le Drive que tu as abandonné, et l'image ne s'afficherait toujours pas dans la diapo. Les 2 Go, je ne sais pas, je ne les ai pas vérifiés.
+
+760. Plusieurs clés, oui. Chaque ordi désigne le dossier de sa clé une fois. Les clés doivent porter les mêmes noms de fichiers. La garde vérifie fichier par fichier sur l'ordi qui projette, donc un fichier qui manque sur une clé t'est dit avant l'heure, dès que cet ordi a ouvert le tableau. Ce que je ne sais pas : si un même ordi reconnaît une deuxième clé sans qu'on redésigne le dossier. C'est à mesurer par E1 dans §12.44.
+
+761. Un autre hébergement gratuit, je n'en vois pas de meilleur que GitHub. Ton Google Drive (15 Go gratuits, partagés avec ta messagerie) aurait un avantage : ton programme Google y écrirait sans aucune clé. Mais Google ne prévoit pas d'afficher une image du Drive dans une page. Cet affichage a cassé d'un coup en janvier 2024, et Google a répondu que cet usage n'avait jamais été prévu. Pour les PDF, l'affichage du Drive est prévu, et ton site s'en sert déjà. Les autres hébergements que je connais demandent une carte bancaire, ou une clé pour déposer, comme GitHub.
+
+762. Je propose 758 et 760 : l'alerte seulement pour la maison et l'absent, plusieurs clés mesurées par E1, et GitHub pour ce qui part en ligne, un dépôt après l'autre. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+Sources :
+- [Les images du Drive cassées dans les pages en janvier 2024 (PiunikaWeb)](https://piunikaweb.com/2024/01/23/this-hack-might-save-your-broken-google-drive-embeds/)
+- [Les 15 Go gratuits de Google, partagés entre Drive, Gmail et Photos](https://drive.googleblog.com/2013/05/bringing-it-all-together-15-gb-now.html)
+
+28/10/2026 07:57
+MEMO

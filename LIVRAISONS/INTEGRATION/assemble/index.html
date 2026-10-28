@@ -16354,6 +16354,9 @@ html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
 /* E4 (§12.37) : la barre de mise en forme de l'éditeur de feuille — les boutons et les palettes de la diapo */.at-forme-barre{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0 8px;padding:6px 8px;border:1px solid #3a352c;border-radius:8px;position:relative}.at-forme-t{font-size:.8rem;color:#c9b568;margin-right:4px}.at-forme-barre .p8-mfw{position:relative;display:inline-flex}.at-forme-barre .p8-palette{display:none;position:absolute;top:100%;left:0;z-index:40;gap:4px;padding:6px;background:#1c1712;border:1px solid #c99a4e;border-radius:8px}.at-forme-barre .p8-palette.on{display:flex}.at-forme-barre .p8-p{width:22px;height:22px;border-radius:4px;border:1px solid #6b5a3e;cursor:pointer}.at-forme-barre .btn{font:inherit;font-size:.85rem;padding:3px 9px;border-radius:7px;border:1px solid #4a4438;background:#241f18;color:#e8e0d0;cursor:pointer}.at-forme-barre .p8-trait{display:block;height:3px;border-radius:2px;margin-top:1px}.at-forme-leg{flex:1 1 260px;min-width:200px}
 #dr-zone .haut.p8-rep #hou{display:inline;min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c99a4e} /* E1 (§12.38-1, E3 retour 91) : en répétition, l'en-tête garde « · heure n/N · date » de la source, à côté du compteur — avant, #hou y était caché */
 #dr-zone .haut.p8-rep #rep-tab{min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#e0a09a} /* E1 (§12.41) : « tableau distant pris » tient sur la ligne de l'en-tête */
+/* E4 (§12.55) : l'horloge de la case (classe test 3E Charles de Gaulle) et la fin du créneau */
+#dr-zone .haut .dr-hcase{margin-left:8px;font-size:.78rem;color:#d9b36a;white-space:nowrap}
+#dr-zone .haut #bfin.dr-creneau-fini{background:#c9a04a;color:#1d1810;border-color:#e0b978;box-shadow:0 0 0 2px rgba(224,185,120,.45)}
 
 </style>
 <script>
@@ -16665,7 +16668,32 @@ function dr_heureDe(h){ { const av = h != null ? dr_heureAVenir(h) : null; if (a
   const [fh, fm] = fin.split(':').map(Number); const utiles = Math.max(0, ((fh * 60 + fm) - (hh * 60 + mm)) - 5);
   return { jour: d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), debut, fin, base, utiles };
 }
-function now(){ return Date.now(); }   /* E1 : l'horloge réelle (la maquette : HEURES_SIM[S.heure].base + DECALAGE) */
+/* E4 (§12.55) : L'HORLOGE DE LA CASE, pour la classe test 3E Charles de Gaulle seulement. Lancée à n'importe quel moment, l'heure part
+   de l'horaire de sa case (08:57 pour 08:57-09:52) puis avance avec la montre : now() porte le décalage, et tout ce qui vit du temps
+   dans l'heure le suit (l'heure affichée, le compte à rebours, le T-5, « l'heure dépasse », l'échéance proposée). Toutes les autres
+   classes, la répétition et l'Atelier : l'horloge vraie. « aller à 5 minutes de la fin » fait sauter cette horloge à T-5. */
+const DR_HC = { cle: null, dec: 0, saut: 0 };
+function dr_horlogeCase(){ try {
+  if (typeof S === 'undefined' || !S || !S.lancee || S.repetition || S.atelier && !S.lancee) return null;
+  const c = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) || null; if (!c || !/charles\s+de\s+gaulle/i.test(String(c.classeNom || c.classeSlug || ''))) return null;
+  const hj = (S.heuresCours || {})[S.heure] || null; const deb = String((hj && hj.debut) || String(c.creneau || '').split('-')[0] || c.debut || ''); const m = /^(\d{1,2}):(\d{2})/.exec(deb); if (!m) return null;
+  const t0r = +S.debutReel || 0; if (!t0r) return null; const cle = [c.classeSlug, S.heure, deb, t0r].join('|');
+  if (DR_HC.cle !== cle) { const d = new Date(t0r); DR_HC.cle = cle; DR_HC.dec = new Date(d.getFullYear(), d.getMonth(), d.getDate(), +m[1], +m[2]).getTime() - t0r; DR_HC.saut = 0; DR_HC.debut = deb; }
+  return DR_HC; } catch (e) { return null; } }
+function now(){ const h = dr_horlogeCase(); return Date.now() + (h ? h.dec + h.saut : 0); }   /* E1 : l'horloge réelle (la maquette : HEURES_SIM[S.heure].base + DECALAGE) ; E4 (§12.55) : + le décalage de la case des De Gaulle */
+function dr_allerT5(){ const h = dr_horlogeCase(); if (!h || S.close || typeof heureCahier !== 'function') return; const cible = heureCahier() - 5 * 60000 + 1500; const ici = now(); if (cible > ici) h.saut += cible - ici; }
+/* l'en-tête des De Gaulle : « horloge de la case : 08:57 (il est 10:53) » et le bouton — posés une fois, puis seul leur texte change (la règle du redessin, §12.56 (1)) */
+function dr_horlogeCaseAfficher(){ try {
+  const ch = document.querySelector('#dr-zone .haut .chrono'); if (!ch) return; const h = dr_horlogeCase();
+  let t = document.getElementById('dr-hcase'), b = document.getElementById('dr-t5'), f = document.getElementById('bfin');
+  if (!h) { if (t && t.style.display !== 'none') t.style.display = 'none'; if (b && b.style.display !== 'none') b.style.display = 'none'; if (f && f.classList.contains('dr-creneau-fini')) f.classList.remove('dr-creneau-fini'); return; }
+  if (!t) { t = document.createElement('span'); t.id = 'dr-hcase'; t.className = 'dr-hcase'; t.title = 'Classe test : l’heure suit l’horloge de sa case, pas celle de ta montre — tu essaies le flux de la classe à n’importe quel moment. Toutes les autres classes : l’heure vraie.'; ch.insertAdjacentElement('afterend', t); }
+  if (!b) { b = document.createElement('button'); b.id = 'dr-t5'; b.className = 'btn'; b.textContent = '⏩ aller à 5 minutes de la fin'; b.title = 'Classe test seulement : l’horloge de la case saute à 5 minutes avant le cahier de textes — l’alerte de fin d’heure part comme en classe, la séquence de fin s’ouvre. Rien n’est écrit pour une vraie classe.'; b.addEventListener('click', dr_allerT5); t.insertAdjacentElement('afterend', b); }
+  const txt = 'horloge de la case : ' + hhmm(now()) + ' (il est ' + new Date().toLocaleTimeString('fr-FR', { timeZone: TZ, hour: '2-digit', minute: '2-digit' }) + ')';
+  if (t.textContent !== txt) t.textContent = txt; if (t.style.display === 'none') t.style.display = ''; const vb = S.close ? 'none' : ''; if (b.style.display !== vb) b.style.display = vb;
+  if (f && typeof heureCahier === 'function') { const fini = !S.close && now() >= heureCahier() + 5 * 60000; if (fini !== f.classList.contains('dr-creneau-fini')) { f.classList.toggle('dr-creneau-fini', fini); if (fini) { f.dataset.drT0 = f.title; f.title = 'Le créneau de la case est fini (' + String((((S.heuresCours || {})[S.heure]) || {}).fin || '') + ') : fais la fin de l’heure, puis clos-la.'; } else if (f.dataset.drT0 != null) { f.title = f.dataset.drT0; delete f.dataset.drT0; } } }
+} catch (e) {} }
+setInterval(dr_horlogeCaseAfficher, 1000);
 
 /* ── le transport : lecture par secuLire, écriture par mjpcPutJson (chemin sans FIREBASE_BASE, sans .json) ── */
 function dr_lire(chemin, cb){ if (typeof secuLire !== 'function') { cb && cb(null); return; } secuLire(chemin).then(v => cb && cb(v)); }

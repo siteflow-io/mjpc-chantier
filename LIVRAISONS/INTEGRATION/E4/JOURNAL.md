@@ -1256,3 +1256,9 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - « À régler (101) » sur un chapitre importé avant le prompt 1.0 : aucun moyen, dans l'Atelier, de recréer ses activités à partir des `actId` (elles existent dans la trame, `a1`, `a2`…, sans titre).
 
 - 28/10 10:50 Paris : veille close (rien de neuf aux relances après la poussée 125).
+
+## Poussée 126 — 10:16 UTC (11:16 Paris) · **§12.55** — l'horloge de la case et « aller à 5 minutes de la fin » (3E Charles de Gaulle)
+- **Code** (`dr/dr-socle.js`, `dr/dr.css`). `now()` porte le décalage de la case pour une heure lancée des 3E Charles de Gaulle (ni répétition, ni autre classe) : l'heure part de l'horaire de sa case puis avance avec la montre ; l'heure affichée, le compte à rebours, le T-5, « l'heure dépasse », l'échéance suivent (ils lisent `now()`). L'en-tête : « horloge de la case : 08:57 (il est 07:30) » ; le bouton « ⏩ aller à 5 minutes de la fin » (infobulle) fait sauter l'horloge de la case à T-5 ; à la fin du créneau de la case, « Fin de l'heure » passe en or (`dr-creneau-fini`). La règle du redessin : l'en-tête et le bouton sont posés une fois ; la minuterie ne change que leur texte et une classe.
+- **À dire** : à 10:53, la case 08:57-09:52 du lundi est « passée · pas jouée » et **ne se lance pas** (règle de l'emploi du temps : « la séance continue à la case suivante ») ; « lancer par la case » lance alors la case suivante des De Gaulle (15:07-16:02), et l'horloge part de 15:07. A104 est donc joué deux fois : à 10:53 (case 15:07) et à 07:30 (case 08:57).
+- **A104** (`E4/bancs/banc-1255.mjs`) : 16/0 (md5 `81ab1839…`) ; avant (md5 `da560f4b…`) 10 échecs. `banc.sh` **VERT** (K 106/0 ; `E4/sorties/1255-28-10/`).
+- **§12.55 E4 fini.**

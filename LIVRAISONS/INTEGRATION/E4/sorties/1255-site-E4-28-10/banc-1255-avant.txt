@@ -1,0 +1,17 @@
+  ÉCHEC  A104 · 10h53 (montre 10:53, case 15:07-16:02) · mode test, l’heure des De Gaulle lancée par sa case affiche 15:07 ; l’en-tête : « null » — {"heure":"10:53","hcase":null,"t5":false,"t5titre":"","chr":"00:06","palier":null,"fin":false,"bfin":"btn fin","ecr":5,"test":true}
+  ÉCHEC  A104 · 10h53 (montre 10:53, case 15:07-16:02) · deux minutes de montre plus tard : 15:09 — l’horloge de la case avance avec la montre, pas d’alerte — {"heure":"10:55","hcase":null,"t5":false,"t5titre":"","chr":"00:07","palier":null,"fin":false,"bfin":"btn fin","ecr":5,"test":true}
+  ÉCHEC  A104 · 10h53 (montre 10:53, case 15:07-16:02) · « ⏩ aller à 5 minutes de la fin » est là, avec son infobulle
+  ÉCHEC  A104 · 10h53 (montre 10:53, case 15:07-16:02) · « aller à 5 minutes de la fin » : l’horloge de la case saute à 15:52, l’alerte T-5 part, la fin de l’heure s’ouvre — comme en classe — {"heure":"10:55","hcase":null,"t5":false,"t5titre":"","chr":"00:12","palier":null,"fin":false,"bfin":"btn fin","ecr":5,"test":true}
+  ÉCHEC  A104 · 10h53 (montre 10:53, case 15:07-16:02) · à 16:02 de la case, « Fin de l’heure » change d’aspect — {"heure":"11:06","hcase":null,"t5":false,"t5titre":"","chr":"00:14","palier":null,"fin":false,"bfin":"btn fin","ecr":5,"test":true}
+  ok     A104 · 10h53 (montre 10:53, case 15:07-16:02) · mode test : aucune écriture au hub (du lancement à la fin du créneau)
+  ok     A104 · 10h53 (montre 10:53, case 15:07-16:02) · une autre classe (le même cours sous le nom « 3 DYLAN Bob ») garde l’heure vraie (11:06), sans horloge de case ni bouton — {"ecart":0,"hcase":false,"t5":false,"heure":"11:06"}
+  ok     A104 · 10h53 (montre 10:53, case 15:07-16:02) · zéro erreur JS — []
+  ÉCHEC  A104 · 07h30 (montre 07:30, case 08:57-09:52) · mode test, l’heure des De Gaulle lancée par sa case affiche 08:57 ; l’en-tête : « null » — {"heure":"07:30","hcase":null,"t5":false,"t5titre":"","chr":"00:05","palier":null,"fin":false,"bfin":"btn fin","ecr":5,"test":true}
+  ÉCHEC  A104 · 07h30 (montre 07:30, case 08:57-09:52) · deux minutes de montre plus tard : 08:59 — l’horloge de la case avance avec la montre, pas d’alerte — {"heure":"07:32","hcase":null,"t5":false,"t5titre":"","chr":"00:07","palier":null,"fin":false,"bfin":"btn fin","ecr":5,"test":true}
+  ÉCHEC  A104 · 07h30 (montre 07:30, case 08:57-09:52) · « ⏩ aller à 5 minutes de la fin » est là, avec son infobulle
+  ÉCHEC  A104 · 07h30 (montre 07:30, case 08:57-09:52) · « aller à 5 minutes de la fin » : l’horloge de la case saute à 09:42, l’alerte T-5 part, la fin de l’heure s’ouvre — comme en classe — {"heure":"07:32","hcase":null,"t5":false,"t5titre":"","chr":"00:11","palier":null,"fin":false,"bfin":"btn fin","ecr":5,"test":true}
+  ÉCHEC  A104 · 07h30 (montre 07:30, case 08:57-09:52) · à 09:52 de la case, « Fin de l’heure » change d’aspect — {"heure":"07:43","hcase":null,"t5":false,"t5titre":"","chr":"00:13","palier":null,"fin":false,"bfin":"btn fin","ecr":5,"test":true}
+  ok     A104 · 07h30 (montre 07:30, case 08:57-09:52) · mode test : aucune écriture au hub (du lancement à la fin du créneau)
+  ok     A104 · 07h30 (montre 07:30, case 08:57-09:52) · une autre classe (le même cours sous le nom « 3 DYLAN Bob ») garde l’heure vraie (07:43), sans horloge de case ni bouton — {"ecart":0,"hcase":false,"t5":false,"heure":"07:43"}
+  ok     A104 · 07h30 (montre 07:30, case 08:57-09:52) · zéro erreur JS — []
+— fin : 16 vérifications · 10 échec(s) — ROUGE · avant55.html md5 da560f4b4b328c3f9b7e5c30507b8461

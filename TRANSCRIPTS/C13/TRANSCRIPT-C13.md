@@ -6410,3 +6410,28 @@ Le plus utile pour lundi : 810.
 
 28/10/2026 14:31
 MEMO
+
+---
+
+## Tour 312 — 28/10/2026 14:36 → 14:37
+
+**Paul :** 459 oui. 60. Oui. 61. Oui évidemment ! On alimente déjà le profil longitudinal même s'il n'existe pas encore. 62. Ça suppose une dépendance à toi... Quelle forme ça prendrait? 93 à 96 oui.  810. Le nouveau chapitre est injecté. Va regarder. 811. Oui toujours edt. 812. Oui, mais attention c'est à cadrer.
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 remet la suite de la phrase de fin d'heure ; E1 retire le second bouton de lancement ; E3 supprime l'étoile filante · ouvert : 849 ; 843 (à cadrer) ; 538, 553 (après lundi).
+
+845. Je lis tes réponses ainsi (tu as numéroté à la suite) : 481 oui, 538 oui, 553 oui, 785 une question, 793 à 796 oui, 810 le chapitre injecté, 838 oui, 843 oui, à cadrer. Dis-moi si je me trompe.
+
+846. C'est au contrat. Dans la ⑧ : la suite de la phrase de fin d'heure revient, mot pour mot (E4), et le second bouton de lancement est retiré, une heure se lance toujours par l'emploi du temps (E1). La ⑨, juste après la ⑧ : l'Atelier (793 à 796, la réactivation gardée à ton choix). Après lundi : la rédaction, avec les seuils du compteur et les compétences pour le profil longitudinal. Le mode interrogatif sera cadré avec toi avant tout code.
+
+847. Ton chapitre de lundi, regardé au hub, en lecture seule. C'est « Poésie et peinture au XIXe siècle », en 3e : 4 séances et 49 diapos, toutes rattachées à une activité. Il y a 2 bilans et 2 cahiers de textes. Les 5 tableaux sont bien dans mjpc-medias, et le site les affiche à leur adresse. Il contient des consignes, des questions, des textes, des fiches et des images, sans schéma, sans vidéo, sans page. Avec la ⑧, tout ce qui s'y affiche au tableau se corrige en direct, sauf l'image elle-même, les pictogrammes et l'en-tête du cahier. Et pour ceux-là, il y aura « retirer du tableau ».
+
+848. 785, la forme que ça prendrait : aucune dépendance à moi, si on le fait maintenant. Je crée mjpc-medias-2 tout de suite, vide (un seul dépôt, pas 250), et tu le coches avec mjpc-medias quand tu crées ta clé GitHub (point 781). Ensuite, le relais passe seul de l'un à l'autre quand le premier est plein, sans toi ni moi.
+
+849. Je crée mjpc-medias-2 maintenant ? Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:37
+MEMO

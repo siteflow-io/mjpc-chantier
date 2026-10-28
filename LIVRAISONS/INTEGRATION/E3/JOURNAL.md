@@ -1153,3 +1153,7 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - `banc.sh` : **VERT**.
 - J'ai corrigé deux fautes de mon banc : l'éditeur refermé par un second clic, et le message lu ailleurs que dans `#m8tx-imp-msg`.
 - 28/10, 09:25 UTC — veille close : trois contrôles sans correction de la réinjection (§12.42, cas 42i 7/8 sur `18d54336`, relancée à E4 à 10:09). §12.44 fini par E1 (sans cas 44, relance de 08:35). Reprise sur relance.
+
+## Retour 101 — 28/10, 11:10 — **§12.42 VERT (`da560f4b`)**
+- E4 (poussée 124, `e2b609590`) : réinjecter ne réécrit plus aucune feuille. Le cas 42i, aux quatre tailles : **VERT 32/32**. `banc.sh` : **VERT**.
+- Sorties dans `sorties/1100-28-10-1242/`. Suite : §12.56 (la sonde du redessin) avec §12.52 (la lenteur), mesure seulement.

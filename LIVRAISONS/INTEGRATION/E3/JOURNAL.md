@@ -1157,3 +1157,58 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 ## Retour 101 — 28/10, 11:10 — **§12.42 VERT (`da560f4b`)**
 - E4 (poussée 124, `e2b609590`) : réinjecter ne réécrit plus aucune feuille. Le cas 42i, aux quatre tailles : **VERT 32/32**. `banc.sh` : **VERT**.
 - Sorties dans `sorties/1100-28-10-1242/`. Suite : §12.56 (la sonde du redessin) avec §12.52 (la lenteur), mesure seulement.
+
+## Retour 102 — 28/10, 11:55 — §12.56 (3) la sonde du redessin et §12.52 la lenteur : mesures (rien de codé)
+- **Les outils.** Deux nouveaux cas dans `banc-1228.mjs` :
+  - **56s**, la sonde de §12.56 (2). Elle prend chaque écran : accueil, emploi du temps, Atelier avec « Ce que la diapo déclare », répétition, heure lancée, fin de l'heure, relecture, panneau prof. Elle mesure :
+    - 5 s au repos : chaque mutation, rangée par zone et par la minuterie qui tournait ; les réécritures à l'identique comptées à part ;
+    - chaque `<select>` ouvert à la souris 3 s, juste après une frappe dans le premier champ : même nœud, focus gardé ;
+    - chaque champ cliqué, « xyz » tapé, 3 s ;
+    - chaque bouton et chaque vignette, dix fenêtres de 400 ms : le nœud n'est pas remplacé. Il n'y a pas d'appui réel, pour ne rien déclencher ; un nœud remplacé entre l'appui et le relâché perd le clic.
+    - `MJPC_ECRANS` choisit les écrans.
+  - **52m**, la lenteur de §12.52, processeur ralenti ÷4 : l'ouverture ; puis, par écran, 60 s pour le hub, le coût par seconde et chaque minuterie.
+  - Les deux sont joués sur la ⑦ (`b01f1a39`) et sur la tête (`da560f4b`), à 1707 × 743. Sorties : `sorties/1130-28-10-sonde/`.
+- **Le vrai hub n'a pas été lu.** La lecture de la production a été refusée à ce banc (permission). Le faux hub a la même donnée de 3e et le même code ; les fréquences sont donc justes, les poids approchés. Pour lire le vrai hub, il faut l'accord de Paul.
+- **§12.56 — ce que le redessin casse, écran par écran (la ⑦ et la tête, mêmes constats) :**
+  - **Menus, champs, boutons : rien de cassé mesuré.**
+    - Les menus `#dc-act` et `#dc-role` (« Ce que la diapo déclare »), puis `#f-ech` (fin de l'heure), tiennent 3 s, même avec une frappe juste avant.
+    - Les champs (notes, durées) gardent le focus et le texte.
+    - 22 à 74 boutons et vignettes par écran, × 10 fenêtres : aucun remplacé.
+    - **Le menu de « Ce que la diapo déclare » que Paul voit buguer n'est pas reproduit.** Limite de la sonde : le navigateur sans écran ne dessine pas la liste native du `<select>`, donc une liste qui se referme sans que le nœud change ne s'y voit pas. Il me faut le geste exact de Paul (quel menu, après quoi), ou un essai avec écran.
+  - **Au repos, des zones redessinées sans rien changer pour Paul :**
+    - `#chr` (le chrono, toutes les vues du pilotage) : ses enfants sont remplacés chaque seconde par `tick` (`dr-socle.js`). La règle (d) veut seulement son `textContent`.
+    - `#rep-ou` (« Où on en est », répétition) : la zone entière est réécrite toutes les 500 ms (la minuterie qui calcule `S.repT0`).
+    - `#dr-lancer` (sa classe, toutes les 500 ms) et `#fin .dr-pp-act` (`hidden`, chaque seconde), en relecture.
+    - `#shooting-star` : une animation décorative, toutes les 4 à 12 s.
+    - Sur la tête seulement, des réécritures à l'identique : le rAF « apres » (`dr_calibreMarques`, `dr_mkPanneau`) une fois par seconde, sur la classe de `body` et `#dr-annuler[disabled]` ; la classe de `#chr`.
+- **§12.52 — la lenteur, processeur ÷4 :**
+  - **L'ouverture** : 0,9 à 1,2 s jusqu'à `load`, sur la ⑦ comme sur la tête ; 130 à 230 ms de script ; fichier de 2,5 Mo.
+  - **Au repos, par seconde** :
+
+    | écran | tâches | styles | script |
+    |---|---|---|---|
+    | accueil | 120-140 ms | 58-68 ms, 7-8 recalculs | ~10 ms |
+    | Atelier | 120 ms | 51-53 ms | 17 ms |
+    | répétition | 157-210 ms | 70-86 ms, 9 recalculs | 19-34 ms |
+    | heure, mode test | 135-152 ms | 51-66 ms | 19 ms |
+
+    Soit 12 à 21 % d'un processeur lent, sans rien faire.
+  - **Le classement de ce qui coûte :**
+    1. **Les recalculs de styles (7 à 9 par seconde, 40 à 55 % du temps).** Les minuteries touchent le DOM même pour y remettre la même chose.
+    2. `aideSuivre`, toutes les 400 ms : le script le plus lourd, environ 22 ms/s, sur tous les écrans.
+    3. La boucle de `#dr-lancer`, toutes les 1 s : 5 à 12 ms/s.
+    4. `dr_hclasseMaj`, toutes les 1 s : 6 à 9 ms/s (Atelier, répétition).
+    5. `dr_repEmettre` (250 ms) et `#rep-ou` (500 ms), en répétition : environ 11 ms/s ensemble.
+    6. `dr_tabVeiller` (`dr_tabPoserBoutons`), toutes les 125 ms : 8 appels par seconde partout, jusqu'à 10 ms/s en classe.
+    7. `tick`, toutes les 1 s : il remplace les enfants de `#chr`.
+  - **Le hub (faux), en 60 s :**
+    - `GET /site/cours_actif`, toutes les 5 s ;
+    - `PUT /presence/prof`, toutes les 15 s ;
+    - `GET /site/cle_vue`, toutes les 15 s, sur la tête (§12.44).
+    - Ce sont quelques Ko : le réseau n'est pas la cause.
+  - **Ce que la conscience peut proposer, chiffré à la louche** (à vérifier par la sonde après) :
+    - `aideSuivre` au changement d'écran au lieu de 400 ms : environ −22 ms/s ;
+    - `dr_tabVeiller` à 1 s, ou sur un événement : −7 appels/s ;
+    - `tick` et `#rep-ou` qui ne posent que leurs chiffres : −3 recalculs/s ;
+    - le rAF de calibrage et les boucles d'1 s qui comparent avant d'écrire : −2 à 3 recalculs/s.
+    - Ensemble, on attend le travail au repos divisé par deux à trois.

@@ -52,6 +52,9 @@
 // 47n : (§12.47, A98) G, S, « A » sur une sélection dans « Notes pour cette diapo » ; gardés au rechargement ; en répétition chez Paul, jamais au tableau.
 // 48x : (§12.48, A99) la taxonomie : « Importer des notions » avec le fragment v2 (fam-52, litt-040, litt-041) ; la notion se déclare sur une diapo ;
 //      réimporter ne double rien ; un id déjà pris est refusé en clair.
+// 56s : (§12.56 (2)(3), §12.52 (2)) la sonde du redessin, écran par écran : au repos, menus, champs, boutons et vignettes (dix fenêtres de 400 ms),
+//      les minuteries et leur coût — mesure seulement (MJPC_CAS=56s).
+// 52m : (§12.52) la lenteur, processeur ÷4, faux hub : l'ouverture ; par écran (accueil, Atelier, répétition, heure en mode test), 60 s : le hub, le coût, les minuteries.
 // 37 : (§12.37) la mise en forme des feuilles : « Dictée classique : « Le port » » — un sujet souligné, un verbe conjugué en gras, un participe en couleur,
 //      la légende — posés par les mêmes gestes que dans la diapo, revus après rechargement, gardés à l'aperçu d'impression ; « Les connecteurs logiques ».
 // 63 : (mesure 13 · 63, seulement si MJPC_CAS le nomme) le bilan au tableau : question de 57 signes, 5 / 4 / 3 mots-clés de 30 à 45 signes, la consigne à
@@ -1268,6 +1271,102 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       verif(k, !/fam-53/.test(t3) && t3 === t2 && /refus|déjà|existe|pris|utilisé/i.test(r3.msg || ''), T + ' · A99 · un fragment qui réutilise un id (« ' + pris1 + ' ») est refusé en clair, rien n’est écrit', JSON.stringify({ import: r3, ecrit: t3 !== t2 }));
     } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (48x)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 56s (§12.56 (2)(3), avec §12.52 (2)) : la sonde du redessin, écran par écran — mesure seulement ──
+     Dans la page : chaque minuterie (setInterval, setTimeout, requestAnimationFrame) est étiquetée par sa source et son délai, son temps
+     d'exécution compté ; un MutationObserver range chaque mutation par zone (le premier ancêtre à id) et par la minuterie qui tournait.
+     Par écran : (a) au repos 5 s : les mutations hors chiffres d'horloge ; (b) chaque menu déroulant (<select>) pris, 3 s : même nœud,
+     focus gardé ; (c) chaque champ (input, textarea, contenteditable) : un clic, « xyz » tapé, 3 s : même nœud, focus et texte gardés ;
+     (d) chaque bouton et vignette, dix fenêtres de 400 ms : le nœud reste le même (un nœud remplacé entre l'appui et le relâché perd le
+     clic) — sans appuyer pour de vrai, pour ne rien déclencher ; (e) les minuteries : qui, toutes les combien, le coût par seconde. */
+  if (fait('56s')) { const k = '56s';
+    const INSTR = () => { const C = window.__SONDE = { t: {}, enCours: null, mut: [], obs: null };
+      const src = f => { try { const s = String(f); const m = /^function\s*([\w$]*)/.exec(s); return ((f && f.name) || (m && m[1]) || '') + ' ' + s.replace(/\s+/g, ' ').slice(0, 70); } catch (e) { return '?'; } };
+      const pile = () => { try { const l = (new Error().stack || '').split('\n').slice(3, 5).map(x => x.trim().replace(/^at /, '').replace(/\(?file:\/\/[^)]*\/([^/)]+)\)?/, '$1')).join(' ← '); return l.slice(0, 110); } catch (e) { return ''; } };
+      const envelopper = (nom, orig) => function (f, d, ...a) { if (typeof f !== 'function') return orig.call(this, f, d, ...a); const tag = nom + ' ' + (d | 0) + ' ms · ' + src(f); const ou = pile(); const T = C.t[tag] = C.t[tag] || { tag, ou, n: 0, ms: 0, poses: 0, delai: d | 0, nom }; T.poses++;
+        return orig.call(this, function (...b) { const t0 = performance.now(); C.enCours = tag; try { return f.apply(this, b); } finally { T.n++; T.ms += performance.now() - t0; queueMicrotask(() => { if (C.enCours === tag) C.enCours = null; }); } }, d, ...a); };
+      window.setInterval = envelopper('setInterval', window.setInterval); window.setTimeout = envelopper('setTimeout', window.setTimeout);
+      const raf = window.requestAnimationFrame; window.requestAnimationFrame = function (f) { const tag = 'rAF · ' + src(f); const T = C.t[tag] = C.t[tag] || { tag, ou: pile(), n: 0, ms: 0, poses: 0, delai: 16, nom: 'rAF' }; T.poses++; return raf.call(this, function (ts) { const t0 = performance.now(); C.enCours = tag; try { return f(ts); } finally { T.n++; T.ms += performance.now() - t0; queueMicrotask(() => { if (C.enCours === tag) C.enCours = null; }); } }); };
+      C.zone = n => { let e = n && (n.nodeType === 1 ? n : n.parentElement); const z = e; while (e && !e.id) e = e.parentElement; return (e ? '#' + e.id : 'body') + (z && z !== e && z.className && typeof z.className === 'string' ? ' .' + z.className.split(' ')[0] : ''); };
+      C.chiffre = r => { const e = r.target.nodeType === 1 ? r.target : r.target.parentElement; if (!e) return false; if (r.type === 'attributes') return false; const t = (e.textContent || '').trim(); return e.children.length === 0 && t.length <= 14 && /\d/.test(t) && !(r.addedNodes && Array.from(r.addedNodes).some(x => x.nodeType === 1)); };
+      C.demarrer = () => { C.mut = []; C.obs && C.obs.disconnect(); C.obs = new MutationObserver(L => L.forEach(r => { if (r.target.closest && r.target.closest('#e3-sonde')) return; const nouv = r.type === 'attributes' ? r.target.getAttribute(r.attributeName) : (r.type === 'characterData' ? r.target.data : null); const pareil = (r.type === 'attributes' || r.type === 'characterData') && r.oldValue === nouv; C.mut.push({ pareil, z: C.zone(r.target), ty: r.type + (r.type === 'attributes' ? ':' + r.attributeName : ''), m: C.enCours || 'hors minuterie', chiffre: C.chiffre(r), ret: Array.from(r.removedNodes || []).filter(x => x.nodeType === 1) }); })); C.obs.observe(document.documentElement, { subtree: true, childList: true, attributes: true, characterData: true, attributeOldValue: true, characterDataOldValue: true }); };
+      C.arreter = () => { C.obs && C.obs.disconnect(); }; };
+    const ecrans = [
+      ['accueil', async pg => { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} try { goHome(); } catch (e) {} }); }],
+      ['emploi du temps', async pg => { await entrerProf(pg); await pg.evaluate(() => { try { edtOuvrir(); } catch (e) {} }); }],
+      ['Atelier · Ce que la diapo déclare', async pg => { await entrerProf(pg); await ouvrirAtelier(pg); await pg.evaluate(() => { try { aller(1); } catch (e) {} }); await p(pg, 600); await pg.evaluate(() => { const b = document.querySelector('[data-declare="ouvrir"]'); if (b) b.click(); }); }],
+      ['répétition', async pg => { await entrerProf(pg); await ouvrirAtelier(pg); await entrerRepetition(pg); }],
+      ['heure lancée', async pg => { await entrerProf(pg); await lancerParLaCase(pg); await dev(pg, 2); }],
+      ['fin de l’heure', async pg => { await entrerProf(pg); await lancerParLaCase(pg); await pg.clock.setFixedTime(new Date('2026-09-14T09:47:30+02:00')); await p(pg, 3000); await sansVoiles(pg); }],
+      ['relecture', async pg => { await entrerProf(pg); await lancerParLaCase(pg); await clore(pg, '2026-09-14T09:52:30+02:00'); await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button, .at-onglet, [data-vue]')).find(x => x.offsetParent && /Relecture/.test(x.innerText || '')); if (b) b.click(); }); }],
+      ['panneau prof', async pg => { await entrerProf(pg); await pg.evaluate(() => { try { edtFermer(); } catch (e) {} const b = document.getElementById('tprof-btn'); if (b) b.click(); }); }]];
+    const RES = []; const QUELS = process.env.MJPC_ECRANS ? process.env.MJPC_ECRANS.split(',') : null;
+    for (const [nom, aller2] of ecrans.filter(([n]) => !QUELS || QUELS.some(q => n.indexOf(q) >= 0))) { const o = await ouvrirCtx(W, H); const pg = o.pg; await o.ctx.addInitScript(INSTR); const r = { ecran: nom };
+      try { await aller2(pg); await p(pg, 2500); await sansVoiles(pg); await pg.mouse.move(1, 1);
+        /* (a) au repos */
+        await pg.evaluate(() => { window.__SONDE.t0 = JSON.parse(JSON.stringify(window.__SONDE.t)); window.__SONDE.demarrer(); }); await p(pg, 5000);
+        r.repos = await pg.evaluate(() => { const C = window.__SONDE; C.arreter(); const g = {}; const h = {}; C.mut.filter(x => !x.chiffre && !x.pareil).forEach(x => { const c = x.z + ' · ' + x.ty + ' · ' + x.m; g[c] = (g[c] || 0) + 1; }); C.mut.filter(x => x.pareil).forEach(x => { const c = x.z + ' · ' + x.ty + ' · ' + x.m; h[c] = (h[c] || 0) + 1; }); return { change: Object.entries(g).sort((a, b) => b[1] - a[1]).slice(0, 8), pareil: Object.entries(h).sort((a, b) => b[1] - a[1]).slice(0, 6) }; });
+        r.minuteries = await pg.evaluate(() => { const C = window.__SONDE; return Object.values(C.t).map(T => { const a = (C.t0 || {})[T.tag] || { n: 0, ms: 0 }; return { tag: T.tag, ou: T.ou, parSeconde: Math.round((T.n - a.n) / 5 * 10) / 10, msParSeconde: Math.round((T.ms - a.ms) / 5 * 100) / 100 }; }).filter(x => x.parSeconde > 0).sort((a, b) => b.msParSeconde - a.msParSeconde).slice(0, 12); });
+        /* (b) les menus déroulants */
+        const nSel = await pg.evaluate(() => Array.from(document.querySelectorAll('select')).filter(s => s.offsetParent && s.getBoundingClientRect().width > 0).map((s, i) => { s.dataset.e3sonde = 's' + i; return 's' + i; }));
+        r.menus = []; for (const id of nSel.slice(0, 6)) {
+          /* le site vivant pendant le geste : une frappe dans le premier champ de l'écran juste avant (son enregistrement arrive menu ouvert) */
+          const z0 = await pg.evaluate(() => { const e = Array.from(document.querySelectorAll('#mur [contenteditable="true"], [contenteditable="true"], textarea, input[type="text"]')).find(x => x.offsetParent && x.getBoundingClientRect().width > 20); if (!e) return null; const q = e.getBoundingClientRect(); return { x: q.left + Math.min(20, q.width / 2), y: q.top + Math.min(10, q.height / 2) }; });
+          if (z0) { await pg.mouse.click(z0.x, z0.y); await p(pg, 150); await pg.keyboard.type('m'); }
+          const c = await pg.evaluate(i => { const s = document.querySelector('[data-e3sonde="' + i + '"]'); window.__SONDE.el = s; s.scrollIntoView({ block: 'center' }); const q = s.getBoundingClientRect(); window.__SONDE.demarrer(); return { x: q.left + q.width / 2, y: q.top + q.height / 2 }; }, id); await pg.mouse.click(c.x, c.y); await p(pg, 3000);   /* le menu ouvert à la souris, comme Paul : 3 s */
+          const ok = await pg.evaluate(() => { const C = window.__SONDE; C.arreter(); const s = C.el; const touche = C.mut.filter(x => !x.pareil && (x.ret.some(n => n === s || n.contains(s)) || (x.z && s.closest('#' + (x.z.split(' ')[0] || '#x').slice(1)) && x.ty === 'childList' && false))); const dans = C.mut.filter(x => !x.pareil && x.ret.length === 0 && x.ty === 'childList' && (x.zEl === s)); return { garde: s.isConnected && (document.activeElement === s) && !touche.length, par: Array.from(new Set(touche.map(x => x.m))).join(' | ').slice(0, 140), nom: C.zone(s) + ' ' + (s.id || s.name || '') }; }); r.menus.push(ok); await pg.keyboard.press('Escape'); await p(pg, 300); }
+        /* (c) les champs */
+        const nCh = await pg.evaluate(() => Array.from(document.querySelectorAll('input[type="text"], input:not([type]), input[type="search"], textarea, [contenteditable="true"]')).filter(s => s.offsetParent && s.getBoundingClientRect().width > 20 && s.getBoundingClientRect().height > 8).map((s, i) => { s.dataset.e3sonde = 'c' + i; return 'c' + i; }));
+        r.champs = []; for (const id of nCh.slice(0, 6)) { const c = await pg.evaluate(i => { const s = document.querySelector('[data-e3sonde="' + i + '"]'); if (!s) return null; s.scrollIntoView({ block: 'center' }); const q = s.getBoundingClientRect(); return { x: q.left + Math.min(10, q.width / 2), y: q.top + Math.min(8, q.height / 2) }; }, id); if (!c) continue; await pg.mouse.click(c.x, c.y); await p(pg, 200);
+          await pg.evaluate(i => { window.__SONDE.el = document.querySelector('[data-e3sonde="' + i + '"]'); }, id); await pg.keyboard.type('xyz'); await p(pg, 3000);
+          const ok = await pg.evaluate(() => { const s = window.__SONDE.el; const v = s.value != null ? s.value : s.textContent; return { garde: s.isConnected && (document.activeElement === s || s.contains(document.activeElement)) && /xyz/.test(v || ''), nom: window.__SONDE.zone(s) + ' ' + (s.id || s.name || s.placeholder || '').slice(0, 30) }; }); r.champs.push(ok);
+          await pg.keyboard.press('Backspace'); await pg.keyboard.press('Backspace'); await pg.keyboard.press('Backspace'); await pg.keyboard.press('Escape'); await p(pg, 300); }
+        await pg.mouse.move(1, 1); await pg.evaluate(() => { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); });
+        /* (d) boutons et vignettes : dix fenêtres de 400 ms */
+        r.boutons = await pg.evaluate(async () => { const C = window.__SONDE; const B = Array.from(document.querySelectorAll('button, [data-at-di], [data-di], [onclick], [data-action]')).filter(e => e.offsetParent && e.getBoundingClientRect().width > 4 && e.getBoundingClientRect().height > 4).slice(0, 120); const perdus = new Map();
+          for (let f = 0; f < 10; f++) { C.demarrer(); await new Promise(r => setTimeout(r, 400)); C.arreter(); const ret = C.mut.flatMap(x => x.ret.map(n => ({ n, m: x.m }))); B.forEach(b => { const h = ret.find(x => x.n === b || x.n.contains(b)); if (h || !b.isConnected) { const k = C.zone(b) + ' « ' + ((b.innerText || b.title || b.getAttribute('aria-label') || b.tagName).trim().replace(/\s+/g, ' ').slice(0, 24)) + ' »'; const v = perdus.get(k) || { n: 0, m: new Set() }; v.n++; if (h) v.m.add(h.m); perdus.set(k, v); } }); }
+          return { vus: B.length, perdus: Array.from(perdus.entries()).map(([k, v]) => [k, v.n + '/10', Array.from(v.m).join(' | ').slice(0, 120)]).slice(0, 15) }; });
+        await capt(pg, W, H, '56-' + nom.replace(/[^a-zà-ÿ]+/gi, '-').toLowerCase());
+      } catch (e) { r.erreur = String(e.message).split('\n')[0]; }
+      r.errs = o.errs.slice(0, 3); RES.push(r); await o.ctx.close(); }
+    /* le rapport, écran par écran */
+    for (const r of RES) { dire('  ── ' + r.ecran + (r.erreur ? ' · ERREUR ' + r.erreur : ''));
+      const menusCasses = (r.menus || []).filter(x => !x.garde), champsCasses = (r.champs || []).filter(x => !x.garde), bout = (r.boutons || { perdus: [], vus: 0 });
+      verif(k, !r.erreur && !((r.repos || {}).change || []).length, T + ' · ' + r.ecran + ' · au repos 5 s : aucune mutation hors chiffres d’horloge', ((r.repos || {}).change || []).map(x => x[1] + '× ' + x[0]).join(' ; ').slice(0, 700));
+      info(k, T + ' · ' + r.ecran + ' · menus essayés : ' + (r.menus || []).map(x => x.nom + (x.garde ? ' ✔' : ' ✘')).join(' ; ') + ' · champs : ' + (r.champs || []).map(x => x.nom + (x.garde ? ' ✔' : ' ✘')).join(' ; '));
+      if (((r.repos || {}).pareil || []).length) info(k, T + ' · ' + r.ecran + ' · au repos, réécrit à l’identique (pas un changement, un travail) : ' + r.repos.pareil.map(x => x[1] + '× ' + x[0]).join(' ; ').slice(0, 500));
+      verif(k, !r.erreur && !menusCasses.length, T + ' · ' + r.ecran + ' · chaque menu déroulant tenu 3 s reste le même, avec le focus (' + (r.menus || []).length + ')', menusCasses.map(x => x.nom + (x.par ? ' (par ' + x.par + ')' : '')).join(' ; '));
+      verif(k, !r.erreur && !champsCasses.length, T + ' · ' + r.ecran + ' · chaque champ garde son focus et ce qu’on y tape (' + (r.champs || []).length + ')', champsCasses.map(x => x.nom).join(' ; '));
+      verif(k, !r.erreur && !bout.perdus.length, T + ' · ' + r.ecran + ' · aucun bouton ni vignette remplacé dans une fenêtre de 400 ms (' + bout.vus + ' vus × 10)', bout.perdus.map(x => x[0] + ' ' + x[1] + ' (' + x[2] + ')').join(' ; ').slice(0, 900));
+      info(k, T + ' · ' + r.ecran + ' · minuteries actives (par seconde, ms par seconde) : ' + (r.minuteries || []).map(x => x.parSeconde + '/s ' + x.msParSeconde + ' ms · ' + x.tag.slice(0, 90) + (x.ou ? ' [' + x.ou.slice(0, 80) + ']' : '')).join(' ¶ ').slice(0, 2500));
+      if (r.errs && r.errs.length) info(k, T + ' · ' + r.ecran + ' · erreurs JS : ' + r.errs.join(' ; ')); } }
+
+  /* ── 52m (§12.52 (1)(2)(3)) : la lenteur, mesurée — le processeur ralenti quatre fois (un ordi portable ordinaire), le faux hub
+     (le vrai hub en lecture n'a pas été permis à ce banc) : l'ouverture ; par écran, 60 s : chaque demande au hub (chemin, poids, fréquence),
+     le coût du processeur par seconde, chaque minuterie (qui, combien de fois, combien de ms). Mesure seulement. ── */
+  if (fait('52m')) { const k = '52m';
+    const INSTR2 = () => { const C = window.__M52 = { t: {}, req: [] };
+      const src = f => { try { const s = String(f); const m = /^function\s*([\w$]*)/.exec(s); return ((f && f.name) || (m && m[1]) || '') + ' ' + s.replace(/\s+/g, ' ').slice(0, 60); } catch (e) { return '?'; } };
+      const env = (nom, orig) => function (f, d, ...a) { if (typeof f !== 'function') return orig.call(this, f, d, ...a); const tag = nom + ' ' + (d | 0) + ' ms · ' + src(f); const T = C.t[tag] = C.t[tag] || { tag, n: 0, ms: 0 }; return orig.call(this, function (...b) { const t0 = performance.now(); try { return f.apply(this, b); } finally { T.n++; T.ms += performance.now() - t0; } }, d, ...a); };
+      window.setInterval = env('setInterval', window.setInterval); window.setTimeout = env('setTimeout', window.setTimeout);
+      const raf = window.requestAnimationFrame; window.requestAnimationFrame = function (f) { const tag = 'rAF · ' + src(f); const T = C.t[tag] = C.t[tag] || { tag, n: 0, ms: 0 }; return raf.call(this, function (ts) { const t0 = performance.now(); try { return f(ts); } finally { T.n++; T.ms += performance.now() - t0; } }); };
+      const f0 = window.fetch; window.fetch = function (u, o) { const m = ((o && o.method) || 'GET').toUpperCase(); const c = String(u).indexOf('firebasedatabase.app') >= 0 ? decodeURIComponent(String(u).split('firebasedatabase.app')[1].split('?')[0]) : String(u).slice(0, 60); return f0.apply(this, arguments).then(r => { try { r.clone().text().then(t => C.req.push({ m, c, o: t.length, t: Date.now() })); } catch (e) {} return r; }); }; };
+    const metr = async cdp => { const r = await cdp.send('Performance.getMetrics'); const o = {}; r.metrics.forEach(x => { o[x.name] = x.value; }); return o; };
+    const ecrans52 = [['accueil', async pg => { await pg.evaluate(() => { try { edtFermer(); } catch (e) {} try { goHome(); } catch (e) {} }); }],
+      ['Atelier', async pg => { await ouvrirAtelier(pg); }], ['répétition', async pg => { await ouvrirAtelier(pg); await entrerRepetition(pg); }],
+      ['heure (mode test)', async pg => { await pg.evaluate(() => { try { if (!m8TestOn()) m8BasculerModeTest(); } catch (e) {} }); await lancerParLaCase(pg); await dev(pg, 2); }]];
+    for (const [nom, aller3] of ecrans52) { const o = await ouvrirCtx(W, H); const pg = o.pg; await o.ctx.addInitScript(INSTR2); const cdp = await o.ctx.newCDPSession(pg); await cdp.send('Performance.enable'); await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+      try { const t0 = Date.now(); await pg.goto(URL0 + '?n=3e', { waitUntil: 'load' }); const tLoad = Date.now() - t0; const nav = await pg.evaluate(() => { const n = performance.getEntriesByType('navigation')[0]; return n ? { dcl: Math.round(n.domContentLoadedEventEnd), load: Math.round(n.loadEventEnd) } : null; }); const mLoad = await metr(cdp);
+        await p(pg, 1800); await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2500); await sansVoiles(pg); await aller3(pg); await p(pg, 3000); await sansVoiles(pg); await pg.mouse.move(1, 1);
+        if (nom === 'accueil') info(k, T + ' · l’ouverture, processeur ÷4 : load ' + tLoad + ' ms (DOMContentLoaded ' + (nav && nav.dcl) + ' ms) ; script ' + Math.round(mLoad.ScriptDuration * 1000) + ' ms, tâches ' + Math.round(mLoad.TaskDuration * 1000) + ' ms, styles ' + Math.round(mLoad.RecalcStyleDuration * 1000) + ' ms, mise en page ' + Math.round(mLoad.LayoutDuration * 1000) + ' ms ; tas JS ' + Math.round(mLoad.JSHeapUsedSize / 1e6) + ' Mo ; nœuds ' + mLoad.Nodes);
+        await pg.evaluate(() => { const C = window.__M52; C.t0 = JSON.parse(JSON.stringify(C.t)); C.req = []; }); const a = await metr(cdp); await p(pg, 60000); const b = await metr(cdp);
+        const d = x => Math.round((b[x] - a[x]) * 1000 / 60 * 10) / 10;
+        info(k, T + ' · ' + nom + ' · 60 s au repos, processeur ÷4 : par seconde, tâches ' + d('TaskDuration') + ' ms, script ' + d('ScriptDuration') + ' ms, styles ' + d('RecalcStyleDuration') + ' ms (' + Math.round((b.RecalcStyleCount - a.RecalcStyleCount) / 60 * 10) / 10 + ' fois), mise en page ' + d('LayoutDuration') + ' ms (' + Math.round((b.LayoutCount - a.LayoutCount) / 60 * 10) / 10 + ' fois) ; nœuds ' + b.Nodes + ' ; écouteurs ' + b.JSEventListeners);
+        const z = await pg.evaluate(() => { const C = window.__M52; const tm = Object.values(C.t).map(T => { const a = C.t0[T.tag] || { n: 0, ms: 0 }; return { tag: T.tag, n: T.n - a.n, ms: Math.round((T.ms - a.ms) * 10) / 10 }; }).filter(x => x.n > 0).sort((x, y) => y.ms - x.ms); const rq = {}; C.req.forEach(r => { const c = r.m + ' ' + r.c.replace(/\/-?[A-Za-z0-9_]{15,}/g, '/<id>').replace(/\d{4}-\d\d-\d\d[^/]*/g, '<date>'); const v = rq[c] = rq[c] || { n: 0, o: 0 }; v.n++; v.o += r.o; }); return { tm: tm.slice(0, 14), rq: Object.entries(rq).sort((x, y) => y[1].o - x[1].o).slice(0, 12), nreq: C.req.length, oreq: C.req.reduce((s, r) => s + r.o, 0) }; });
+        info(k, T + ' · ' + nom + ' · minuteries en 60 s (fois · ms en tout, processeur ÷4) : ' + z.tm.map(x => x.n + '× · ' + x.ms + ' ms · ' + x.tag.slice(0, 80)).join(' ¶ ').slice(0, 2200));
+        info(k, T + ' · ' + nom + ' · le hub en 60 s : ' + z.nreq + ' demandes, ' + Math.round(z.oreq / 1024) + ' Ko — ' + z.rq.map(([c, v]) => v.n + '× ' + c + ' (' + Math.round(v.o / 1024 * 10) / 10 + ' Ko)').join(' ; ').slice(0, 1500));
+      } catch (e) { info(k, T + ' · ' + nom + ' · ERREUR ' + String(e.message).split('\n')[0]); }
+      await o.ctx.close(); } }
 
   /* ── 37 (§12.37) : la mise en forme des feuilles ── */
   if (fait('37')) { const k = '37';

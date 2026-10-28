@@ -6875,3 +6875,26 @@ MEMO
 
 28/10/2026 17:33
 MEMO
+
+---
+
+## Tour 335 — 28/10/2026 17:46 → 17:49
+
+**Paul :** Il faut lancer la suite. Rédaction
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑧ · en cours : deux exécutants neufs, la rédaction (les seuils de la lettre, les compétences de la grille) et la ⑨ (l'Atelier, avec la Structure déjà réparée) · ouvert : 903 ; 843 (à cadrer).
+
+900. C'est lancé. La rédaction : les seuils du compteur de la lettre divisés par deux (538), et chaque point de la grille rattaché à une compétence du site, écrite avec le niveau à chaque copie corrigée, pour ton futur profil longitudinal (553). Rien ne change à l'écran. Si les seuils ne changent qu'en réimportant le sujet, je te dirai le geste exact.
+
+901. En parallèle, la ⑨ : l'Atelier (793 à 796) part chez un autre exécutant. J'y ai déjà fondu la Structure réparée cet après-midi (les trois colonnes, le ✕, la ligne de la dictée, le bandeau des feuilles).
+
+902. Pour cadrer le mode interrogatif (843), je propose ceci. Ta grille a des points : par exemple, pour la lettre, « Le thème tenu », « Les trois paragraphes », « Les lectures reprises », « Ce qu'on tait, et pourquoi ». Pour chaque point, le mode interrogatif te pose une seule question, dans tes mots, par exemple « La lettre tient-elle la Grande Guerre, la lettre et le personnage ? ». Tu réponds par quatre boutons : « Pleinement », « Oui », « En partie », « Non ». Ils donnent les niveaux 4, 3, 2 et 1. Le sous-niveau et la citation restent comme aujourd'hui. Les questions s'écrivent dans le sujet, à côté de chaque point. Je te les rédige à partir des libellés de ta grille, et tu les corriges avant tout code. Le mode classique ne change pas. Avant de coder, je te montre la maquette sur la vraie app.
+
+903. Oui à 902 ?
+
+À tester : rien de neuf depuis la ⑧ (la liste de 17:33 tient).
+
+28/10/2026 17:49
+MEMO

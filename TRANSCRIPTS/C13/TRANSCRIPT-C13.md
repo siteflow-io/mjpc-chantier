@@ -6991,3 +6991,22 @@ voilà le tableau distant. C'est impossible d'avoir la mention de la clef usb, l
 
 28/10/2026 18:35
 MEMO
+
+## Tour 339 — 28/10/2026 20:35 → 20:37
+
+**Paul :** C'est codé ?
+
+**Claude :**
+
+À jouer : rien · en cours : rien, les deux exécutants sont arrêtés · ouvert : 905 à 917 (les questions), 932.
+
+930. Non. 924 à 928 ne sont pas codés : j'attendais que la ⑨ ait poussé l'Atelier, et ton oui à 929.
+
+931. Les deux exécutants ont été arrêtés depuis l'interface, la rédaction vers 18:20, la ⑨ à 18:30. Ce n'est pas moi, et l'outil refuse que je les relance sans ton mot. Leur travail est gardé, non poussé. La ⑨ a modifié cinq fichiers et écrit sa sonde, sans banc passé. La rédaction avait 97 contrôles verts à son dernier message, et rejouait le banc entier.
+
+932. Je relance ? Un exécutant neuf reprend la ⑨ (l'Atelier) là où elle est, un autre la rédaction, puis un troisième code 924 à 928 dès que l'Atelier est poussé. Un oui vaut aussi pour 924 à 927.
+
+À tester : rien de neuf depuis la ⑧ (la liste de 17:33 tient).
+
+28/10/2026 20:37
+MEMO

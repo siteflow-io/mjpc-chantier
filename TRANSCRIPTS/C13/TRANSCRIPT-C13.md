@@ -5702,3 +5702,26 @@ Sources :
 
 28/10/2026 07:44
 MEMO
+
+---
+
+## Tour 279 — 28/10/2026 07:48 → 07:50
+
+**Paul :** Et si on ne gardait que le local?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 sur 717, puis la vidéo et les fichiers de la clé, puis la taxonomie ; E4 sur la présence en mode test, le cahier, le « ? », les notes ; E3 vérifie · ouvert : 755 (remplace 751) ; 538, 553, 481, 458.
+
+752. Oui, ça va pour la classe. C'est l'ordi de classe qui projette et ta clé y est branchée : il lit les images, les PDF et les vidéos. Tu prépares avec la clé dans ton ordi portable, le dossier désigné une fois. Ce que tu y gagnes : plus de relais, rien à coller dans ton programme Google, aucune clé GitHub nulle part, plus de question de place (la clé tient ce qu'elle tient), et ça marche sans internet.
+
+753. Ce que tu perds, d'après le cadrage : un fichier de la clé ne se voit que sur l'appareil où elle est branchée. Il ne s'affichera donc pas sur ton téléphone quand tu répètes : pour répéter, tu ouvres le tableau sur ton portable, avec la clé dedans. Il ne s'affichera pas non plus sur ton portable quand tu pilotes depuis l'ordi de classe : tu y lis « clé vue », sans voir l'image. Côté élèves, « à la maison » et le mot de l'absent restent grisés pour ce fichier, comme pour une vidéo (ton choix du 15/09), sauf s'il est dans l'espace de travail de la classe sur École Directe.
+
+754. Les 11 images déjà en ligne y restent, rien n'est retiré.
+
+755. On ne garde que le local. Je retire « Déposer en ligne » (§12.49) du contrat. E4 ne l'a pas commencé, donc rien n'est perdu. L'alerte de §12.44 (4 ter) devient, chez toi seulement : « Ce fichier est sur ta clé : il ne se verra que sur l'ordi où elle est branchée, ni sur ton téléphone ni chez les élèves. Pour qu'ils l'aient à la maison : l'espace de travail de la classe sur École Directe. » Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 07:50
+MEMO

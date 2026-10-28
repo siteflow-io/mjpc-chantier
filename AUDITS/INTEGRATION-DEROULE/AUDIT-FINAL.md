@@ -167,3 +167,7 @@ MEMO
 - Sas `integration` `d02bc7673` ; assemblée + `APP_VERSION` « 8.75.0-⑧ » : 2 593 520 o, md5 `6cd16508381fdf36d3cf866b3f5cc672`.
 - `banc.sh` VERT (106/0, parcours ×2) ; cas d'E3 41, 41d, 42i, 43t, 45a, 46c, 47n, 48x, 56s : 106/106 ; cas 41 rejoué 5 fois : 32/32 chaque fois.
 - Hors de la ⑧ : §12.62 (l'Atelier), §12.63 (la rédaction), §12.65 (branche `ex10`), 13·88 (dimanche).
+
+## 28/10, 17:33 — PROMU ⑧
+- Paul (17:28) : « Promeus ». Production : commit `20c3f3d`, blob `9c7935a03892`, md5 `6cd16508381fdf36d3cf866b3f5cc672`, 2 593 520 o ; bit à bit au dépôt et à l'adresse publique. Point de retour : ⑦ (blob `c18274d14127`). Docs de production à jour (`5331803`).
+- Suite (§12.64) : la ⑨ = §12.65 (branche `ex10`, déjà codée) + §12.62 (l'Atelier) par des exécutants neufs ; les sessions E1, E3, E4 ne sont plus réveillées.

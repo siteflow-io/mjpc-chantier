@@ -66,7 +66,7 @@ function dr_trameDe(sk){
   if (!sce.deroule || typeof sce.deroule !== 'object') sce.deroule = { ecrans: [], maj: 0 };
   if (!Array.isArray(sce.deroule.ecrans)) sce.deroule.ecrans = [];
   const E = sce.deroule.ecrans;
-  if (!DR_MEM.prepares.has(E)) { DR_MEM.prepares.add(E); if (typeof _drIdentifierEcrans === 'function') _drIdentifierEcrans(E); dr_normaliserTrame(E, sk); dr_preparer(E); dr_lireSousObjets(sk); return E; }   /* l'empreinte se prend après la lecture : rien ne s'écrit tant que Paul n'a rien modifié */
+  if (!DR_MEM.prepares.has(E)) { DR_MEM.prepares.add(E); dr_syncHubLu(sk, sce.deroule); if (typeof _drIdentifierEcrans === 'function') _drIdentifierEcrans(E); dr_normaliserTrame(E, sk); dr_preparer(E); dr_lireSousObjets(sk); return E; }   /* l'empreinte se prend après la lecture : rien ne s'écrit tant que Paul n'a rien modifié */
   dr_preparer(E); return E;
 }
 /* la vue d'une séance telle que la maquette la lisait (DATA.seances[si] = {titre, ecrans}) : un regard, pas une copie */
@@ -169,6 +169,7 @@ function dr_lireSousObjets(sk){
   Object.keys(DR_MEM.travail).forEach(k => { if (k.startsWith(si + '|')) delete DR_MEM.travail[k]; });
   Object.keys(d.travail || {}).forEach(h => { DR_MEM.travail[si + '|' + h] = d.travail[h]; });
   DR_MEM.empreintes[sk] = JSON.stringify(dr_derouleDe(sk, true));
+  DR_MEM.base = DR_MEM.base || {}; DR_MEM.base[sk] = dr_syncBase(dr_derouleDe(sk, true));   /* E1 (§12.60) : la séance telle qu'elle est ici après la lecture — ce qui change ici se compare à elle ; ce qui change ailleurs se compare au hub tel qu'on l'a lu (DR_MEM.hubLu) */
 }
 function dr_activites(){ dr_toutLire(); return DR_MEM.activites; }
 function dr_notes(){ dr_toutLire(); return DR_MEM.notes; }
@@ -195,20 +196,84 @@ function dr_derouleDe(sk, brut){
 /* ── l'écriture : dr_sauve (débounce 900 ms, comme atDrEnrAuto), témoin « Enregistré à … » (atDrEnrConfirme) ── */
 function dr_sauve(){ if (typeof S !== 'undefined' && S.repetition) return; clearTimeout(DR_MEM.minuteur); DR_MEM.minuteur = setTimeout(dr_sauveMaintenant, 900); }
 /* E1 (relecteur neuf n°2) : une frappe faite moins de 900 ms avant de quitter la page partait avec elle — quand la page se cache ou se ferme, l'enregistrement en attente part tout de suite (toujours par dr_ecrire) */
-function dr_sauveAvantDepart(){ if (DR_MEM.minuteur) { clearTimeout(DR_MEM.minuteur); dr_sauveMaintenant(); } }
+function dr_sauveAvantDepart(){ if (DR_MEM.minuteur) { clearTimeout(DR_MEM.minuteur); dr_sauveMaintenant(true); } }
 window.addEventListener('pagehide', dr_sauveAvantDepart); window.addEventListener('beforeunload', dr_sauveAvantDepart); document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') dr_sauveAvantDepart(); });
 function dr_copieDepuisAtelier(){ /* E1 (relecture continue E4, 20:50, grave — perte de données) : en heure lancée, une retouche faite dans l'onglet Atelier part au hub en 900 ms, dans la copie de la classe (C/ecrans), sans attendre le retour au Pilotage ; jamais dans la trame */
   try { if (typeof dr_cheminC !== 'function' || !dr_cheminC() || typeof AT_DR_REGIME === 'undefined' || AT_DR_REGIME !== 'classe') return; const ecr = JSON.parse(JSON.stringify(seance().ecrans));
     dr_ecrire(dr_cheminC() + '/ecrans', ecr, 'Séance en classe — retouche dans l’atelier', () => { if (typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre(); if (typeof DR_CL === 'object' && DR_CL && typeof dr_empreinte === 'function') DR_CL.empreinteEcrite = dr_empreinte(ecr); }); } catch (e) {} }
-function dr_sauveMaintenant(){
+/* ═══ E1 (§12.60, E3 retour 104 ; la règle de Paul du 04/10 : « un html doit toujours s'actualiser en interne ») : L'ATELIER SUR DEUX APPAREILS ═══
+   Avant : l'Atelier ne relisait jamais le chapitre et chaque enregistrement réécrivait le `deroule` entier de la séance — le dernier appareil effaçait l'autre sans le dire.
+   Désormais : (1) la séance ouverte est relue toutes les 3 s (le site lit le hub par `dr_lire`, sans flux) et ce qui a changé ailleurs paraît aussitôt — sauf sous un
+   geste en cours (un texte où Paul écrit, un menu ouvert, un appui) : alors au tour suivant. (2) L'enregistrement relit le hub, puis n'écrit que les diapos changées ici,
+   à leur place (`deroule/ecrans/<n>`, retrouvée par l'`eid`), et les sous-objets changés (activités, notes, travail) ; si la même diapo a changé ici ET ailleurs depuis la
+   dernière lecture, rien n'est écrit pour elle : le site le dit à Paul, en clair, avec « Garder la mienne » / « Prendre celle de l'autre appareil ». Un changement de
+   structure (diapo ajoutée, retirée, déplacée) écrit la liste entière, après avoir repris d'abord les diapos changées ailleurs. */
+function dr_canon(x){ if (Array.isArray(x)) return '[' + x.map(dr_canon).join(',') + ']'; if (x && typeof x === 'object') return '{' + Object.keys(x).filter(k => x[k] !== undefined).sort().map(k => JSON.stringify(k) + ':' + dr_canon(x[k])).join(',') + '}'; return JSON.stringify(x === undefined ? null : x); }
+function dr_syncListe(v){ return Array.isArray(v) ? v.filter(Boolean) : (v && typeof v === 'object') ? Object.keys(v).sort((a, b) => (+a) - (+b)).map(k => v[k]).filter(Boolean) : []; }
+/* l'heure d'une diapo que le hub ne porte pas se déduit ici (le partage par les durées) : la base et le hub la prennent de l'appareil, sinon chaque diapo paraîtrait changée */
+const dr_syncAH = e => Object.prototype.propertyIsEnumerable.call(e, 'heure') && e.heure != null;   /* l'heure par défaut (dr_heureParDefaut) n'est pas une donnée : elle ne s'écrit pas */
+function dr_syncH(o){ const m = {}; dr_syncListe(o && o.ecrans).forEach(e => { if (e && e.eid && dr_syncAH(e)) m[e.eid] = e.heure; }); return m; }
+function dr_syncBaseVue(B, H){ Object.keys(B.sansH || {}).forEach(eid => { if (H[eid] == null || B.el[eid] == null) return; const x = JSON.parse(B.el[eid]); if (x.heure == null) x.heure = H[eid]; B.el[eid] = dr_canon(x); delete B.sansH[eid]; }); }
+function dr_syncBase(o, H){ const E = dr_syncListe(o && o.ecrans); const el = {}, sansH = {}; E.forEach(e => { if (!e || !e.eid) return; let x = e; if (!dr_syncAH(e)) { if (H && H[e.eid] != null) x = Object.assign({}, e, { heure: H[e.eid] }); else sansH[e.eid] = true; } el[e.eid] = dr_canon(x); }); return { sansH, ordre: E.map(e => e && e.eid).join('|'), el, activites: dr_canon((o && o.activites) || null), notes: dr_canon((o && o.notes) || null), travail: dr_canon((o && o.travail) || null) }; }
+const DR_SYNC = { conflits: {}, T: null, lecture: false };
+function dr_syncGeste(){ const a = document.activeElement; if (a && a.closest && a.closest('#dr-zone') && (a.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(a.tagName))) return true; if (document.querySelector('.choix-obj, #menuplus.on, .menu-at.on, .ctx-menu, #at-ctx, .dr-menu.on')) return true; return !!(typeof DR_VOLET !== 'undefined' && DR_VOLET.vig); }
+function dr_syncConflit(k, eid, distante){ DR_SYNC.conflits[eid] = { k, distante }; dr_syncDire(); }
+function dr_syncDire(){ let z = document.getElementById('dr-conflit'); const l = Object.keys(DR_SYNC.conflits); if (!l.length) { if (z) z.remove(); return; }
+  if (!z) { z = document.createElement('div'); z.id = 'dr-conflit'; z.style.cssText = 'position:fixed;left:50%;top:70px;transform:translateX(-50%);z-index:99999;max-width:640px;background:#2a2014;color:#f0e7db;border:1px solid #c9a04a;border-radius:10px;padding:10px 14px;font:14px/1.4 system-ui,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.4)'; document.body.appendChild(z); }
+  z.innerHTML = l.map(eid => { const c = DR_SYNC.conflits[eid]; const E = (dr_seance(c.k) || {}).deroule ? dr_seance(c.k).deroule.ecrans : []; const e = (E || []).find(x => x && x.eid === eid) || c.distante || {}; return `<div data-cf="${dr_esc(eid)}" style="margin:4px 0">⚠ La diapo « ${dr_esc(e.act || '')} » a été modifiée sur un autre appareil pendant que tu la modifiais ici : rien n’est effacé, ta version n’est pas encore enregistrée. <button class="btn" data-cf-moi="${dr_esc(eid)}" title="Enregistre ta version : celle de l’autre appareil est remplacée">Garder la mienne</button> <button class="btn" data-cf-autre="${dr_esc(eid)}" title="Prend la version de l’autre appareil : ta modification de cette diapo est abandonnée">Prendre celle de l’autre appareil</button></div>`; }).join('');
+  z.querySelectorAll('[data-cf-moi]').forEach(b => b.onclick = () => { const eid = b.dataset.cfMoi, c = DR_SYNC.conflits[eid]; delete DR_SYNC.conflits[eid]; const Hl = DR_MEM.hubLu && DR_MEM.hubLu[c.k]; if (Hl && c.distante) Hl.el[eid] = dr_canon(c.distante); DR_MEM.empreintes[c.k] = ''; dr_syncDire(); dr_sauve(); });
+  z.querySelectorAll('[data-cf-autre]').forEach(b => b.onclick = () => { const eid = b.dataset.cfAutre, c = DR_SYNC.conflits[eid]; delete DR_SYNC.conflits[eid]; dr_syncPoser(c.k, eid, c.distante); dr_syncDire(); try { dr_tout(); } catch (e) {} }); }
+/* deux références par séance : DR_MEM.hubLu[k] (le hub tel qu'on l'a lu ou écrit — ce qui change ailleurs s'y compare) et DR_MEM.base[k] (la séance ici après lecture — ce qui change ici s'y compare). La lecture range et complète la séance (fins d'heure, heures) : les deux formes ne se comparent jamais entre elles. */
+function dr_syncHubLu(k, d){ try { DR_MEM.hubLu = DR_MEM.hubLu || {}; DR_MEM.hubLu[k] = dr_syncBase(JSON.parse(JSON.stringify(d || {}))); DR_MEM.hubLu[k].cles = dr_syncCles(d); } catch (e) {} }
+function dr_syncCles(d){ const E = d && d.ecrans, m = {}; if (!E || typeof E !== 'object') return m; (Array.isArray(E) ? E.map((x, i) => i) : Object.keys(E)).forEach(q => { if (E[q] && E[q].eid) m[E[q].eid] = String(q); }); return m; }
+/* pose une diapo venue du hub à la place de la nôtre (même eid) */
+function dr_syncPoser(k, eid, distante){ const sce = dr_seance(k); if (!sce || !sce.deroule || !distante) return false; const E = sce.deroule.ecrans; const i = E.findIndex(e => e && e.eid === eid); if (i < 0) return false;
+  E[i] = JSON.parse(JSON.stringify(distante)); dr_preparer(E); const B = DR_MEM.base[k]; if (B) { B.el[eid] = dr_canon(E[i]); if (!dr_syncAH(E[i])) (B.sansH = B.sansH || {})[eid] = true; else delete (B.sansH || {})[eid]; } const Hl = DR_MEM.hubLu && DR_MEM.hubLu[k]; if (Hl) Hl.el[eid] = dr_canon(distante); DR_MEM.empreintes[k] = JSON.stringify(dr_derouleDe(k, true)); return true; }
+/* la lecture : ce que le hub a de neuf pour la séance k (comparé au hub lu), et ce qu'on a changé ici (comparé à la base) */
+function dr_syncComparer(k, rv, appliquer){ const B = DR_MEM.base && DR_MEM.base[k], Hl = DR_MEM.hubLu && DR_MEM.hubLu[k]; if (!B || !Hl || !rv) return { change: false };
+  const lo = dr_derouleDe(k, true); dr_syncBaseVue(B, dr_syncH(lo)); const R = dr_syncBase(rv), L = dr_syncBase(lo); const RE = dr_syncListe(rv.ecrans); let change = false;
+  const localTouche = L.ordre !== B.ordre || Object.keys(L.el).some(eid => L.el[eid] !== B.el[eid]);
+  if (R.ordre !== Hl.ordre) { /* la structure a changé ailleurs */
+    if (!localTouche && appliquer) { const sce = dr_seance(k); sce.deroule.ecrans.splice(0, sce.deroule.ecrans.length, ...JSON.parse(JSON.stringify(RE))); ['activites', 'notes', 'travail'].forEach(n => { if (rv[n] !== undefined) sce.deroule[n] = JSON.parse(JSON.stringify(rv[n])); else delete sce.deroule[n]; }); const E = sce.deroule.ecrans; if (typeof _drIdentifierEcrans === 'function') _drIdentifierEcrans(E); dr_normaliserTrame(E, k); dr_preparer(E); dr_lireSousObjets(k); DR_MEM.hubLu[k] = R; R.cles = dr_syncCles(rv); return { change: true }; }
+    return { change: false, structure: true }; }
+  RE.forEach(e => { const eid = e && e.eid; if (!eid || R.el[eid] === Hl.el[eid]) return;
+    if (L.el[eid] === B.el[eid]) { if (appliquer && dr_syncPoser(k, eid, e)) change = true; }
+    else if (!DR_SYNC.conflits[eid]) dr_syncConflit(k, eid, e); });
+  ['activites', 'notes', 'travail'].forEach(n => { if (R[n] !== Hl[n] && L[n] === B[n] && appliquer) { const sce = dr_seance(k); if (rv[n] !== undefined) sce.deroule[n] = JSON.parse(JSON.stringify(rv[n])); else delete sce.deroule[n]; const d = DR_MEM.hubLu[k]; dr_lireSousObjets(k); d[n] = R[n]; DR_MEM.hubLu[k] = d; change = true; } });
+  return { change }; }
+function dr_syncLire(){ try { if (DR_SYNC.lecture || typeof S === 'undefined' || !S.atelier || S.repetition || !dr_actif() || dr_ctx().regime === 'classe') return; const k = (typeof ATVUES !== 'undefined' && ATVUES.snum != null) ? String(ATVUES.snum) : null; if (k == null || !DR_MEM.base || !DR_MEM.base[k]) return;
+  if (DR_MEM.minuteur || dr_syncGeste()) return;   /* un enregistrement en attente, ou un geste en cours : au tour suivant (rien sous le geste) */
+  DR_SYNC.lecture = true; dr_lire(dr_cheminBDe(k) + '/deroule', rv => { DR_SYNC.lecture = false; if (!rv || DR_MEM.minuteur || dr_syncGeste()) return; const r = dr_syncComparer(k, rv, true); if (r.change) { try { dr_tout(); } catch (e) {} } }); } catch (e) { DR_SYNC.lecture = false; } }
+setInterval(dr_syncLire, 3000);
+/* la place d'une diapo au hub (le hub n'est pas rangé comme ici : la lecture range) */
+function dr_syncCleHub(rv, eid){ const q = dr_syncCles(rv)[eid]; return q == null ? null : q; }
+/* l'écriture : relire, reprendre ce qui a changé ailleurs, puis n'écrire que nos changements */
+function dr_syncEcrire(k, o, depart){ const B = DR_MEM.base && DR_MEM.base[k]; const chemin = dr_cheminBDe(k) + '/deroule'; const fini = () => { if (typeof atDrEnrConfirme === 'function') atDrEnrConfirme(true); if (typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre(); };
+  const tout = () => { const sce = dr_seance(k); const o2 = dr_derouleDe(k, true); const val = Object.assign({}, sce.deroule, o2, { maj: Date.now() }); if (!o2.activites) delete val.activites; if (!o2.notes) delete val.notes; if (!o2.travail) delete val.travail; sce.deroule.maj = val.maj;
+    const ecrit = JSON.parse(JSON.stringify(val)); dr_ecrire(chemin, ecrit, 'Trame du déroulé — séance ' + k, fini); DR_MEM.base[k] = dr_syncBase(o2); DR_MEM.hubLu = DR_MEM.hubLu || {}; DR_MEM.hubLu[k] = dr_syncBase(ecrit); DR_MEM.hubLu[k].cles = dr_syncCles(ecrit); DR_MEM.empreintes[k] = JSON.stringify(o2); };
+  if (!B || !DR_MEM.hubLu || !DR_MEM.hubLu[k]) { DR_MEM.base = DR_MEM.base || {}; tout(); return; }
+  const ecrire = rv => { const Hl = DR_MEM.hubLu[k]; const o2 = dr_derouleDe(k, true); dr_syncBaseVue(B, dr_syncH(o2)); const R = rv ? dr_syncBase(rv) : Hl; const cles = rv ? dr_syncCles(rv) : (Hl.cles || {}); if (rv) Hl.cles = cles;
+    if (rv) dr_syncComparer(k, rv, false);   /* les conflits se disent ; rien n'est posé pendant l'écriture */
+    const L = dr_syncBase(o2); const LE = dr_syncListe(o2.ecrans);
+    if (L.ordre !== B.ordre) { /* réorganisée ici : la séance entière, après avoir repris ce qui a changé ailleurs, diapo par diapo */
+      if (R.ordre !== Hl.ordre) { dr_syncDireStructure(); return; }
+      if (rv) dr_syncListe(rv.ecrans).forEach(e => { const eid = e && e.eid; if (eid && R.el[eid] !== Hl.el[eid] && L.el[eid] === B.el[eid]) dr_syncPoser(k, eid, e); }); tout(); return; }
+    let n = 0, manque = false; LE.forEach(e => { const eid = e && e.eid; if (!eid || L.el[eid] === B.el[eid] || DR_SYNC.conflits[eid]) return; if (R.el[eid] !== Hl.el[eid]) return;   /* changée ailleurs aussi : le conflit est dit, rien n'est écrit */
+      const q = cles[eid]; if (q == null) { manque = true; return; } const ecrit = JSON.parse(JSON.stringify(e)); dr_ecrire(chemin + '/ecrans/' + q, ecrit, 'Trame du déroulé — séance ' + k + ', une diapo', () => {}); B.el[eid] = L.el[eid]; delete (B.sansH || {})[eid]; Hl.el[eid] = dr_canon(ecrit); n++; });
+    if (manque) { tout(); return; }   /* une diapo d'ici que le hub n'a pas (la fin d'heure où Paul a écrit) : la séance entière */
+    ['activites', 'notes', 'travail'].forEach(nm => { if (L[nm] !== B[nm] && R[nm] === Hl[nm]) { const v = o2[nm] ? JSON.parse(JSON.stringify(o2[nm])) : null; dr_ecrire(chemin + '/' + nm, v, 'Trame du déroulé — séance ' + k + ', ' + nm, () => {}); B[nm] = L[nm]; Hl[nm] = dr_canon(v); n++; } });
+    if (n) { const m = Date.now(); const sce = dr_seance(k); if (sce && sce.deroule) sce.deroule.maj = m; dr_ecrire(chemin + '/maj', m, 'Trame du déroulé — séance ' + k, fini); } else fini();
+    DR_MEM.empreintes[k] = JSON.stringify(o2); };
+  if (depart) ecrire(undefined); else dr_lire(chemin, v => ecrire(v || undefined)); }   /* la page part : pas le temps de relire — le hub tel qu'on l'a lu en dernier */
+function dr_syncDireStructure(){ try { toast('La séance a changé de forme sur un autre appareil pendant que tu la réorganisais ici : rien n’est effacé — recharge la page pour voir l’autre version, ta réorganisation reste ici tant que tu ne recharges pas.'); } catch (e) {} }
+function dr_sauveMaintenant(depart){
   DR_MEM.minuteur = null; if (typeof S !== 'undefined' && S.repetition) return;
   if (dr_ctx().regime === 'classe') { if (S.atelier && S.lancee && !S.close) { dr_copieDepuisAtelier(); return; } if (typeof dr_copieAuto === 'function') dr_copieAuto(); return; }   /* en classe : la copie jouée (E2) ; l'atelier ouvert pendant l'heure l'écrit lui-même (dr_copieAuto se tait tant que l'atelier est ouvert) */
   if (!dr_chapitre()) return;
   let n = 0; dr_cles().forEach(k => { const sce = dr_seance(k); if (!sce || !sce.deroule || !DR_MEM.prepares.has(sce.deroule.ecrans)) return;
     const o = dr_derouleDe(k); const j = JSON.stringify(o); if (DR_MEM.empreintes[k] === j) return; DR_MEM.empreintes[k] = j; n++;
-    const val = Object.assign({}, sce.deroule, o, { maj: Date.now() }); if (!o.activites) delete val.activites; if (!o.notes) delete val.notes; if (!o.travail) delete val.travail;
-    sce.deroule.maj = val.maj; if (o.activites) sce.deroule.activites = o.activites; if (o.notes) sce.deroule.notes = o.notes; if (o.travail) sce.deroule.travail = o.travail;
-    dr_ecrire(dr_cheminBDe(k) + '/deroule', JSON.parse(JSON.stringify(val)), 'Trame du déroulé — séance ' + k, () => { if (typeof atDrEnrConfirme === 'function') atDrEnrConfirme(true); if (typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre(); });
+    if (o.activites) sce.deroule.activites = o.activites; if (o.notes) sce.deroule.notes = o.notes; if (o.travail) sce.deroule.travail = o.travail;
+    dr_syncEcrire(k, o, depart);   /* E1 (§12.60) : seulement ce qui a changé, diapo par diapo (à son eid), après avoir relu le hub — jamais la séance entière par-dessus un autre appareil */
   });
   if (!n && typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre();   /* E1 (relecteur neuf 1) : rien à écrire, le hub a déjà cet état */
 }

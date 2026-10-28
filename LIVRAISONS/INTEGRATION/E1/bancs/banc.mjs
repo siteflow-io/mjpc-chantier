@@ -59,10 +59,11 @@ await B('A3', 'la porte, la barre fusionnée, le déroulé dans la page (P2-P3)'
 
 await B('A4', 'une modification → B/deroule de la séance 0, et rien d\'autre ; le rechargement la retrouve (points 11, K15)', async () => { const o = await E.ouvrir(b); const pg = o.pg; await sansVoile(pg);
   await pg.click('#volet [data-at-di="0"]'); await pg.waitForTimeout(300); await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('Ligne du banc E1.'); await pg.keyboard.press('Escape'); await pg.waitForTimeout(1600);
-  const e = await pg.evaluate(() => window.__CORPS.filter(x => /\/chapitres\//.test(x.c)).map(x => ({ m: x.m, c: x.c, n: (x.bd && x.bd.ecrans || []).length, txt: JSON.stringify(x.bd).includes('Ligne du banc E1.'), rang: JSON.stringify(x.bd).includes('"di"') })));
-  E.verif('A4', e.length === 1 && e[0].m === 'PUT' && e[0].c === '/site/3e/chapitres/0/seances/0/deroule', 'une seule écriture : PUT /site/3e/chapitres/0/seances/0/deroule', e.map(x => x.m + ' ' + x.c).join(' ; '));
-  E.verif('A4', e[0] && e[0].txt && e[0].n === 18, 'elle porte la ligne écrite et les 18 diapos de la trame (la fin d\'heure posée à la lecture ne s\'écrit pas)', e[0] && e[0].n);
-  const corps = await pg.evaluate(() => { const x = window.__CORPS.find(y => /seances\/0\/deroule$/.test(y.c)); const b0 = x.bd.ecrans[0].blocs; return { blocs: b0.map(z => Object.keys(z).sort().join(',')), maj: typeof x.bd.maj }; });
+  const e = await pg.evaluate(() => { const w = window.__CORPS.filter(x => /\/chapitres\//.test(x.c)); const d = window.__DER.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); return { chemins: w.map(x => x.m + ' ' + x.c), d: d ? [{ n: (d.bd.ecrans || []).length, txt: JSON.stringify(d.bd).includes('Ligne du banc E1.') }] : [] }; });
+  E.verif('A4', JSON.stringify(e.chemins) === JSON.stringify(['PUT /site/3e/chapitres/0/seances/0/deroule/ecrans/0', 'PUT /site/3e/chapitres/0/seances/0/deroule/maj']), '§12.60 : B/deroule de la séance 0, la diapo changée seulement (`…/deroule/ecrans/0`, puis `maj`)', e.chemins.join(' ; '));
+  e.length = 1; e[0] = e.d[0];
+  E.verif('A4', e[0] && e[0].txt && e[0].n === 18, 'le déroulé au hub porte la ligne écrite et les 18 diapos de la trame (la fin d\'heure posée à la lecture ne s\'écrit pas)', e[0] && e[0].n);
+  const corps = await pg.evaluate(() => { const x = window.__DER.filter(y => /seances\/0\/deroule$/.test(y.c)).pop(); const b0 = x.bd.ecrans[0].blocs; return { blocs: b0.map(z => Object.keys(z).sort().join(',')), maj: typeof x.bd.maj }; });
   E.verif('A4', corps.blocs[1] === 'el,id,t,txt' && corps.blocs[0] === 'etapes,id,pic,t,txt,vues' && corps.maj === 'number', 'au hub, le modèle du site (consigne : etapes ; le bloc neuf « texte » garde txt/el, son bid devient id), maj posé', JSON.stringify(corps.blocs));
   hubApres = await pg.evaluate(() => window.__HUB); E.verif('A4', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close();
   const o2 = await E.ouvrir(b, { hub: hubApres }); const p2 = o2.pg; await sansVoile(p2);
@@ -147,8 +148,8 @@ await B('A9', 'l\'écriture complète (point 11) : une activité, une note, le t
   { const l0 = await pg.$eval('#volet [data-at-di="0"]', x => Array.from(x.querySelectorAll('*')).some(y => y.children.length === 0 && y.textContent.trim() === 'A1') ? 'A1 · ' + x.textContent.replace(/\s+/g, ' ') : x.textContent.replace(/\s+/g, ' ')); E.verif('A9', /^A1 · /.test(l0), 'relecteur d\'E4 (« activités sans numéro ») : l\'activité créée porte son numéro dans la colonne (« A1 ») — la trame réelle n\'en a aucune (0 actId sur 95 écrans : F8)', l0.slice(0, 60)); }
   await pg.click('#mur li[data-k="1"]'); await pg.waitForTimeout(150); const pn = await pg.$$('#notesd [contenteditable]'); await pn[pn.length - 1].click(); await pg.keyboard.press('End'); await pg.keyboard.press('Enter'); await pg.keyboard.type('Note du banc E1.'); await pg.keyboard.press('Escape'); await pg.waitForTimeout(200);
   await ouvrirPli('tp'); await pg.waitForTimeout(200); await pg.click('#dc-tp'); await pg.keyboard.type('Relire la fiche.'); await pg.mouse.click(5, 5); await pg.waitForTimeout(1800);
-  const e = await pg.evaluate(() => { const w = window.__CORPS.filter(x => /\/chapitres\//.test(x.c)); const der = w.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const bd = der && der.bd; const e0 = bd && bd.ecrans[0]; return { chemins: [...new Set(w.map(x => x.m + ' ' + x.c))], acts: bd && bd.activites, actId: e0 && e0.actId, eid0: e0 && e0.eid, notes: bd && bd.notes, travail: bd && bd.travail }; });
-  E.verif('A9', e.chemins.length === 1 && e.chemins[0] === 'PUT /site/3e/chapitres/0/seances/0/deroule', 'K15 : les écritures vont toutes à B/deroule de la séance 0', e.chemins.join(' ; '));
+  const e = await pg.evaluate(() => { const w = window.__CORPS.filter(x => /\/chapitres\//.test(x.c)); const der = window.__DER.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const bd = der && der.bd; const e0 = bd && bd.ecrans[0]; return { chemins: [...new Set(w.map(x => x.m + ' ' + x.c))], acts: bd && bd.activites, actId: e0 && e0.actId, eid0: e0 && e0.eid, notes: bd && bd.notes, travail: bd && bd.travail }; });
+  E.verif('A9', e.chemins.length > 0 && e.chemins.every(c => /^PUT \/site\/3e\/chapitres\/0\/seances\/0\/deroule\/(ecrans\/\d+|activites|notes|travail|maj)$/.test(c)), 'K15 : les écritures vont toutes à B/deroule de la séance 0 — ce qui a changé seulement (§12.60)', e.chemins.join(' ; '));
   const a = (e.acts || [])[0] || {}; E.verif('A9', a.titre === 'Le Romantisme en images' && a.num === 1 && e.actId === a.id && (a.diapos || []).every(x => typeof x === 'string'), 'l\'activité : B/deroule/activites (titre, numéro), la diapo 1 la porte (actId) ; ses diapos jamais par rang', JSON.stringify(e.acts));
   E.verif('A9', e.notes && e.notes[e.eid0] && JSON.stringify(e.notes[e.eid0]).includes('Note du banc E1.'), 'la note : B/deroule/notes/<eid de la diapo 1>', JSON.stringify(e.notes || null).slice(0, 120));
   E.verif('A9', e.travail && e.travail['1'] === 'Relire la fiche.', 'le travail prévu de l\'heure 1 : B/deroule/travail/1', JSON.stringify(e.travail || null));
@@ -171,11 +172,11 @@ await B('A10', 'l\'Atelier entier (point 12) : dupliquer, insérer, déplacer, s
   const eidEnvoye = await pg.evaluate(() => dr_trame()[2].eid);
   await pg.click('#volet [data-at-di="2"]', { button: 'right' }); await pg.waitForTimeout(300); await E.clicTexte(pg, '#menu *', 'Envoyer vers une autre séance'); await pg.waitForTimeout(300);
   await pg.click('.choix-obj [data-si="1"]'); await pg.waitForTimeout(1600);
-  const w = await pg.evaluate(id => { const W = window.__CORPS.filter(x => /\/chapitres\//.test(x.c)); const der = c => (W.filter(x => x.c === c).pop() || {}).bd; const b0 = der('/site/3e/chapitres/0/seances/0/deroule'), b1 = der('/site/3e/chapitres/0/seances/1/deroule'); return { chemins: [...new Set(W.map(x => x.m + ' ' + x.c))].sort(), dans0: b0 && b0.ecrans.some(e => e.eid === id), dans1: b1 && b1.ecrans.some(e => e.eid === id), n0: b0 && b0.ecrans.length, n1: b1 && b1.ecrans.length, rang: JSON.stringify(b0 || {}).includes('"di":') }; }, eidEnvoye);
+  const w = await pg.evaluate(id => { const W = window.__CORPS.filter(x => /\/chapitres\//.test(x.c)); const der = c => (window.__DER.filter(x => x.c === c).pop() || {}).bd; const b0 = der('/site/3e/chapitres/0/seances/0/deroule'), b1 = der('/site/3e/chapitres/0/seances/1/deroule'); return { chemins: [...new Set(W.map(x => x.m + ' ' + x.c.replace(/(\/deroule)\/.*$/, '$1')))].sort(), dans0: b0 && b0.ecrans.some(e => e.eid === id), dans1: b1 && b1.ecrans.some(e => e.eid === id), n0: b0 && b0.ecrans.length, n1: b1 && b1.ecrans.length, rang: JSON.stringify(b0 || {}).includes('"di":') }; }, eidEnvoye);
   E.verif('A10', JSON.stringify(w.chemins) === JSON.stringify(['PUT /site/3e/chapitres/0/seances/0/deroule', 'PUT /site/3e/chapitres/0/seances/1/deroule']), 'K15 : seules B/deroule de la séance 0 et B\'/deroule de la séance 1 (la cible de l\'envoi) sont écrites', w.chemins.join(' ; '));
   E.verif('A10', w.dans1 && !w.dans0 && w.n0 === 18 && w.n1 === 18 && !w.rang, 'envoyer vers la séance 2 : l\'écran (même eid) quitte la séance 1 et arrive dans la 2 ; jamais un rang au hub', JSON.stringify(w));
   const avantRep = await pg.evaluate(() => window.__ECR.length); await pg.evaluate(() => lancerRepetition()); await pg.waitForTimeout(300); for (let i = 0; i < 3; i++) { await pg.click('#bdev'); await pg.waitForTimeout(100); } await pg.click('#rep-stop'); await pg.waitForTimeout(1500);
-  E.verif('A10', (await pg.evaluate(() => window.__ECR.length)) === avantRep && (await pg.evaluate(() => S.atelier && !S.repetition)), '« Jouer en avance », trois ▶, « ■ Arrêter » : rien d\'écrit, retour à l\'atelier');
+  E.verif('A10', (await pg.evaluate(n => window.__ECR.slice(n).every(x => /^(PUT|DELETE) \/site\/repetition(\/|$)/.test(x)), avantRep)) && (await pg.evaluate(() => S.atelier && !S.repetition)), '« Jouer en avance », trois ▶, « ■ Arrêter » : rien d\'écrit hors du canal du tableau (`/site/repetition`, §12.51), retour à l\'atelier', JSON.stringify(await pg.evaluate(n => window.__ECR.slice(n), avantRep)));
   const hub = await pg.evaluate(() => window.__HUB); E.verif('A10', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close();
   const o2 = await E.ouvrir(b, { hub }); const p2 = o2.pg; await sansVoile(p2); await p2.evaluate(() => Array.from(document.querySelectorAll('#at-arbre .at-som-pli'))[1].click()); await p2.waitForTimeout(1200);
   const r = await p2.evaluate(id => ({ la: dr_trame().some(e => e.eid === id), n: document.querySelectorAll('#volet [data-at-di]').length, p: dr_trame().filter(e => e.role !== 'fin').length, t: dr_trame().length }), eidEnvoye);
@@ -190,7 +191,7 @@ await B('A11', 'la mise en forme de la trame (recyclage R13, R18) : gras, soulig
   const surl1 = await pg.evaluate(() => (dr_trame()[0].forme && dr_trame()[0].forme.surl || []).length);
   await choisir(2, 0, 7); await pg.keyboard.press('Control+h'); await pg.waitForTimeout(200);
   await choisir(3, 0, 7); await pg.click('#at-gras'); await pg.waitForTimeout(1600);
-  const f = await pg.evaluate(() => { const der = window.__CORPS.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); return { forme: dr_trame()[0].forme, ecrit: der && der.bd.ecrans[0].forme }; });
+  const f = await pg.evaluate(() => { const der = window.__DER.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); return { forme: dr_trame()[0].forme, ecrit: der && der.bd.ecrans[0].forme }; });
   const ok = x => x && JSON.stringify(x.gras) === JSON.stringify([{ p: '0.0', txt: 'Étape 1' }, { p: '0.3', txt: 'Étape 4' }]) && JSON.stringify(x.soul) === JSON.stringify([{ p: '0.1', txt: 'Étape 2' }]) && !(x.surl || []).length;
   E.verif('A11', surl1 === 1 && ok(f.forme), 'les boutons G et S de l\'atelier : gras et souligné posés ; Ctrl+H deux fois : le surlignage posé puis ôté (Ctrl+B / Ctrl+U : R6, à E4)', JSON.stringify(f.forme));
   E.verif('A11', ok(f.ecrit), 'la mise en forme s\'écrit dans B/deroule (ecrans[0].forme)', JSON.stringify(f.ecrit || null));
@@ -206,7 +207,7 @@ await B('A13', 'les blocs au clavier (recyclage R17, R20) : Ctrl+C, Ctrl+V, Ctrl
   await pg.click('#mur [data-p]'); await pg.waitForTimeout(200); await pg.keyboard.press('Escape'); await pg.keyboard.press('Control+c'); await pg.waitForTimeout(200);
   E.verif('A13', (await pg.evaluate(() => S.pressePapiers && S.pressePapiers.id)) === b0[0], 'clic sur le bloc 1, Échap, Ctrl+C : le bloc est dans le presse-papiers');
   await pg.keyboard.press('Control+v'); await pg.waitForTimeout(1500); const b1 = await blocs();
-  const w = await pg.evaluate(() => { const d = window.__CORPS.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); return d && d.bd.ecrans[0].blocs.map(x => x.id); });
+  const w = await pg.evaluate(() => { const d = window.__DER.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); return d && d.bd.ecrans[0].blocs.map(x => x.id); });
   E.verif('A13', b1.length === b0.length + 1 && b1[0] === b0[0] && b1[1] !== b0[0] && JSON.stringify(w) === JSON.stringify(b1), 'Ctrl+V : collé juste après, nouvelle identité ; écrit dans B/deroule', b1.join(' | '));
   await pg.keyboard.press('Control+x'); await pg.waitForTimeout(300); const b2 = await blocs();
   E.verif('A13', JSON.stringify(b2) === JSON.stringify(b0), 'Ctrl+X : le bloc collé (devenu le bloc touché) est coupé', b2.join(' | '));
@@ -226,7 +227,7 @@ await B('A14', 'changer l\'adresse d\'une image posée (recyclage R21) : l\'aper
   await pg.fill('#dr-saisie', 'dossier/nouvelle.jpg'); await pg.waitForTimeout(800); const m2 = await pg.textContent('.dr-saisie-manque');
   E.verif('A14', d0 === v0.split(' · ')[1] && /jamais complète/.test(m1) && m2 === 'image absente de mjpc-medias · dossier/nouvelle.jpg', 'la modale du site propose l\'adresse relative ; une adresse complète est refusée à la frappe ; l\'aperçu suit la frappe', m1 + ' | ' + m2);
   await pg.keyboard.press('Enter'); await pg.waitForTimeout(1500);
-  const r = await pg.evaluate(k => { const d = window.__CORPS.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); return { ref: dr_trame()[S.di].blocs[k].ref, ecrit: !!d && JSON.stringify(d.bd).includes('mjpc-medias/dossier/nouvelle.jpg') }; }, im.k);
+  const r = await pg.evaluate(k => { const d = window.__DER.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); return { ref: dr_trame()[S.di].blocs[k].ref, ecrit: !!d && JSON.stringify(d.bd).includes('mjpc-medias/dossier/nouvelle.jpg') }; }, im.k);
   E.verif('A14', r.ref === 'https://siteflow-io.github.io/mjpc-medias/dossier/nouvelle.jpg' && r.ecrit, 'Entrée : l\'adresse change dans la trame et s\'écrit dans B/deroule', r.ref);
   E.verif('A14', !o.errs.length && !o.boites.length, 'aucune erreur JS, aucune boîte du navigateur', (o.errs.concat(o.boites)).join(' ; ') || undefined); await o.ctx.close(); });
 
@@ -242,7 +243,7 @@ await B('A18', 'les dettes du territoire : 13 · 4 et 13 · 5 (le bloc question 
   E.verif('A18', !q[0].q2vue && q[1].q2vue, '13 · 5 : au tableau, la deuxième question ne paraît qu\'à son tour (▶ ×1 : cachée ; ▶ ×3 : là)', JSON.stringify(q.slice(0, 2)));
   E.verif('A18', q[2].repBas != null && q[2].repBas <= q[2].q2Haut, '13 · 4 : la ligne de réponse vide (son chevron) n\'est pas recouverte par la question suivante', Math.round(q[2].repBas) + ' ≤ ' + Math.round(q[2].q2Haut));
   const n0 = await pg.evaluate(() => dr_trame()[S.di].blocs.length); await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('Écrit dans la diapo'); await pg.waitForTimeout(1500);
-  const w = await pg.evaluate(n0 => { const e = dr_trame()[S.di]; const d = window.__CORPS.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); return { n: e.blocs.length, t: e.blocs[n0] ? JSON.stringify(dr_blocVu(e.blocs[n0])) : '', ecrit: !!d && JSON.stringify(d.bd).includes('Écrit dans la diapo') }; }, n0);
+  const w = await pg.evaluate(n0 => { const e = dr_trame()[S.di]; const d = window.__DER.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); return { n: e.blocs.length, t: e.blocs[n0] ? JSON.stringify(dr_blocVu(e.blocs[n0])) : '', ecrit: !!d && JSON.stringify(d.bd).includes('Écrit dans la diapo') }; }, n0);
   E.verif('A18', w.n === n0 + 1 && w.t.includes('Écrit dans la diapo') && w.ecrit, '13 · 6 (vérifiée) : on clique sous le dernier bloc et on écrit — un bloc naît, sans menu, et s\'écrit', JSON.stringify(w));
   const t = await pg.evaluate(() => { S.di = 1; S.taille = 1; dr_tout(); return $('taille-l').textContent; });
   E.verif('A18', /^32 pt → \d+$/.test(t), '13 · 12 : quand la diapo pleine ne peut pas grossir, le libellé dit la taille obtenue', t);
@@ -309,7 +310,7 @@ await B('A21', 'les trouvailles du relecteur neuf n°1 (contrat §8) : chacune c
   E.verif('A21', jA === 0, '2 · contrat §5 : rien ne se journalise dans l\'atelier (une ligne écrite, l\'enregistrement)', jA + ' entrée(s)');
   // 11 · l'activité : identité sans rang, diapos par eid
   await pg.evaluate(() => { const h = document.querySelector('#droite-atelier h5[data-pli="acts"]'); if (h && h.parentElement.classList.contains('pli')) h.click(); }); await pg.waitForTimeout(200); await pg.click('#droite-atelier [data-nouvelle-act]'); await pg.waitForTimeout(300); await pg.fill('#dr-saisie', 'Activité du banc'); await pg.keyboard.press('Enter'); await pg.waitForTimeout(1600);
-  const ac = await pg.evaluate(() => { const d = window.__CORPS.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const a = d && (d.bd.activites || [])[0]; return { a, eid: dr_trame()[S.di].eid }; });
+  const ac = await pg.evaluate(() => { const d = window.__DER.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const a = d && (d.bd.activites || [])[0]; return { a, eid: dr_trame()[S.di].eid }; });
   E.verif('A21', ac.a && /^a-[a-z0-9]+$/.test(ac.a.id) && (ac.a.diapos || []).includes(ac.eid), '11 · l\'activité au hub : une identité sans rang de séance, ses diapos par eid (celle qui la porte)', JSON.stringify(ac.a));
   // 12 · « + fiche… » sans feuille : la fiche s'écrit ici
   const n0 = await pg.evaluate(() => dr_trame()[S.di].blocs.length); await pg.evaluate(() => choixObjet('fiche')); await pg.waitForTimeout(300);
@@ -358,14 +359,14 @@ await B('A22', 'les trouvailles du relecteur neuf n°2 (contrat §8) : chacune c
       await pg.click('#volet [data-at-di="0"]'); await pg.waitForTimeout(300); await pg.evaluate(() => choixObjet('manque')); await pg.waitForTimeout(200); await pg.fill('#of-m', 'un tableau à deux colonnes'); await pg.click('#of-ok'); await pg.waitForTimeout(1600);
       // 19 · rien d'ajouté que Paul n'a pas touché
       await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('x'); await pg.keyboard.press('Escape'); await pg.waitForTimeout(1600);
-      const w16 = await pg.evaluate(() => { const d = window.__CORPS.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const bd = d && d.bd; const ori = window.__HUB.site['3e'].chapitres[0].seances[0].deroule; return { manque: bd && JSON.stringify(bd.ecrans[0].manques || null), ajoutes: bd ? bd.ecrans.slice(1).reduce((n, e, i) => n + (e.blocs || []).filter(b => (('etapes' in b && !b.etapes.length) || ('el' in b && !(b.el || []).length))).length, 0) : -1 }; });
+      const w16 = await pg.evaluate(() => { const d = window.__DER.filter(x => /seances\/0\/deroule$/.test(x.c)).pop(); const bd = d && d.bd; const ori = window.__HUB.site['3e'].chapitres[0].seances[0].deroule; return { manque: bd && JSON.stringify(bd.ecrans[0].manques || null), ajoutes: bd ? bd.ecrans.slice(1).reduce((n, e, i) => n + (e.blocs || []).filter(b => (('etapes' in b && !b.etapes.length) || ('el' in b && !(b.el || []).length))).length, 0) : -1 }; });
       E.verif('A22', /deux colonnes/.test(w16.manque || ''), '16 : l\'objet manquant déclaré s\'écrit avec sa diapo (B/deroule, ecrans[i].manques)', w16.manque);
       E.verif('A22', w16.ajoutes === 0, '19 : une frappe dans la diapo 1 n\'écrit aucun « etapes: [] » ni « el: [] » dans les autres diapos', w16.ajoutes + ' champ(s) vide(s)');
       // 13 · une deuxième heure se crée depuis l'atelier
       const t13 = await pg.evaluate(() => { const E = dr_trame(); const hM = Math.max(...E.filter(e => !e.role).map(e => +e.heure || 1)); const der = E.map((e, i) => ({ e, i })).filter(o => o.e.heure === hM && !o.e.role).pop(); S.di = der.i; dr_tout(); const ouv = document.querySelector('#droite-atelier [data-declare="ouvrir"]'); if (ouv) ouv.click(); const offre = !!document.querySelector('#droite-atelier [data-heure="' + (hM + 1) + '"]'); passerEnHeure(hM + 1); const T = dr_trame(); return { hM, offre, h2: T.filter(e => e.heure === hM + 1 && !e.role).length, fin2: T.some(e => e.heure === hM + 1 && e.role === 'fin') }; });
       E.verif('A22', t13.offre && t13.h2 === 1 && t13.fin2, '13 : sur la dernière diapo de la dernière heure, « modifier » offre l\'heure d\'après ; la diapo y passe, et elle reçoit sa fin d\'heure', JSON.stringify(t13));
       // 15 · une frappe juste avant de quitter part quand même
-      await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('ultime'); const n0 = await pg.evaluate(() => window.__CORPS.length); await pg.evaluate(() => { Object.defineProperty(document, 'visibilityState', { value: 'hidden', configurable: true }); document.dispatchEvent(new Event('visibilitychange')); }); const n1 = await pg.evaluate(() => ({ n: window.__CORPS.length, ok: JSON.stringify(window.__CORPS[window.__CORPS.length - 1] || {}).includes('ultime') }));
+      await pg.click('#mur .p8-ecrire'); await pg.keyboard.type('ultime'); const n0 = await pg.evaluate(() => window.__CORPS.length); await pg.evaluate(() => { Object.defineProperty(document, 'visibilityState', { value: 'hidden', configurable: true }); document.dispatchEvent(new Event('visibilitychange')); }); const n1 = await pg.evaluate(n0 => ({ n: window.__CORPS.length, ok: JSON.stringify(window.__CORPS.slice(n0)).includes('ultime') }), n0);   /* §12.60 : la diapo, puis `maj` */
       E.verif('A22', n1.n > n0 && n1.ok, '15 : la page se cache moins de 900 ms après la frappe — l\'enregistrement en attente part tout de suite', JSON.stringify(n1));
       // 3 · la note de la fin d'heure survit au déplacement de la première diapo
       const hub = await pg.evaluate(() => { Object.defineProperty(document, 'visibilityState', { value: 'visible', configurable: true }); const T = dr_trame(); const fin = T.find(e => e.role === 'fin' && +e.heure === 1); return { fin: fin && fin.eid }; });
@@ -1915,6 +1916,56 @@ await B('A103', '§12.54 : 3E Charles de Gaulle, l\'heure lancée dans son crén
     if (test) E.verif('A103', ecr.length === 0, lib + ' : aucune écriture au hub', JSON.stringify([...new Set(ecr)]).slice(0, 200));
     E.verif('A103', !o.errs.length, lib + ' : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
 });
+
+/* ── A106 · §12.60 (E3, retour 104) : l'Atelier sur deux appareils — le faux hub relayé d'un navigateur à l'autre, comme un seul hub ── */
+await B('A106', '§12.60 : deux navigateurs sur le même chapitre (le faux hub relayé) — une diapo modifiée dans l\'un paraît dans l\'autre sans recharger ; deux diapos différentes en même temps : les deux restent ; la même diapo : le second appareil le dit, rien n\'est perdu ; un menu ouvert reste ouvert quand une écriture arrive ; on n\'écrit que la diapo changée', async () => {
+  const st = E.store(); const oA = await E.ouvrir(b, { w: 1366, h: 768, hub: st }); const oB = await E.ouvrir(b, { w: 1366, h: 768, hub: st }); const A = oA.pg, Bp = oB.pg; await sansVoile(A); await sansVoile(Bp);
+  const vus = { A: 0, B: 0 }; let pause = false;
+  const relayer = async () => { if (pause) return; for (const [de, vers, k] of [[A, Bp, 'A'], [Bp, A, 'B']]) { const ops = await de.evaluate(n => window.__CORPS.slice(n), vus[k]).catch(() => []); if (!ops.length) continue; vus[k] += ops.length;
+    await vers.evaluate(ops => { const pos = (c, v) => { const q = c.split('/').filter(Boolean); let n = window.__HUB; for (let i = 0; i < q.length - 1; i++) { if (typeof n[q[i]] !== 'object' || n[q[i]] === null) n[q[i]] = {}; n = n[q[i]]; } if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v; }; ops.forEach(o => { if (o.m === 'PATCH' && o.bd && typeof o.bd === 'object') Object.keys(o.bd).forEach(k => pos(o.c + '/' + k, o.bd[k])); else pos(o.c, o.m === 'DELETE' ? null : o.bd); }); }, ops).catch(() => {}); } };
+  let tourne = true; const boucle = (async () => { while (tourne) { await relayer(); await new Promise(r => setTimeout(r, 150)); } })();
+  await A.evaluate(() => { window.__pasRecharge = 1; }); await Bp.evaluate(() => { window.__pasRecharge = 1; });
+  const aller = (pg, i) => pg.evaluate(i => { fermerChoix(); S.di = i; S.page = null; dr_tout(); }, i);
+  const taper = async (pg, txt, quitter = true) => { const p = await pg.evaluate(() => { const x = Array.from(document.querySelectorAll('#mur [data-p]')).find(z => z.textContent.trim().length > 3); return x ? x.dataset.p : null; }); await pg.click('#mur [data-p="' + p + '"]'); await pg.keyboard.press('End'); await pg.keyboard.type(txt, { delay: 15 }); if (quitter) await pg.mouse.click(5, 400); return p; };
+  const contient = (pg, i, txt) => pg.evaluate(([i, t]) => JSON.stringify(seance().ecrans[i]).includes(t), [i, txt]);
+  const voit = (pg, txt) => pg.evaluate(t => (document.getElementById('mur') || {}).innerText.includes(t), txt);
+  const attendre = async (f, ms = 9000) => { const t = Date.now(); while (Date.now() - t < ms) { if (await f()) return true; await new Promise(r => setTimeout(r, 250)); } return !!(await f()); };
+  const hubDe = (pg, i) => pg.evaluate(i => JSON.stringify(window.__HUB.site['3e'].chapitres[0].seances[0].deroule.ecrans[i]), i);
+  const eA0 = await A.evaluate(() => window.__CORPS.length);
+  /* 1 · une diapo modifiée sur A paraît sur B (qui la regarde), sans recharger */
+  await aller(Bp, 6); await aller(A, 6); await taper(A, ' ⟪A-un⟫');
+  const v1 = await attendre(async () => (await contient(Bp, 6, '⟪A-un⟫')) && (await voit(Bp, '⟪A-un⟫')));
+  const ecrA = await A.evaluate(n => window.__CORPS.slice(n).map(x => x.m + ' ' + x.c.replace(/^.*\/seances\/0\//, '…/')), eA0);
+  E.verif('A106', v1 && await Bp.evaluate(() => window.__pasRecharge === 1), 'une diapo modifiée sur l\'appareil A paraît sur B, qui la regarde, sans recharger', JSON.stringify({ v1 }));
+  E.verif('A106', ecrA.some(x => /^PUT …\/deroule\/ecrans\/6$/.test(x)) && !ecrA.some(x => /\/deroule$/.test(x)), 'A n\'écrit que la diapo changée (`…/deroule/ecrans/6` et `/maj`), jamais la séance entière', JSON.stringify([...new Set(ecrA)]));
+  /* 2 · deux diapos différentes, en même temps */
+  await aller(A, 9); await aller(Bp, 10); await Promise.all([taper(A, ' ⟪A-deux⟫'), taper(Bp, ' ⟪B-trois⟫')]);
+  const v2 = await attendre(async () => (await contient(A, 10, '⟪B-trois⟫')) && (await contient(Bp, 9, '⟪A-deux⟫')) && (await contient(A, 9, '⟪A-deux⟫')) && (await contient(Bp, 10, '⟪B-trois⟫')));
+  const h2 = [await hubDe(A, 9), await hubDe(A, 10), await hubDe(Bp, 9), await hubDe(Bp, 10)];
+  E.verif('A106', v2 && h2[0].includes('⟪A-deux⟫') && h2[1].includes('⟪B-trois⟫') && h2[2].includes('⟪A-deux⟫') && h2[3].includes('⟪B-trois⟫') && h2[0].includes('⟪A-un⟫') === false, 'deux diapos différentes modifiées en même temps (A la 10, B la 11) : les deux restent, sur les deux appareils et au hub', JSON.stringify({ v2 }));
+  /* 3 · la même diapo : B la modifie pendant que A l'enregistre */
+  /* A enregistre ; son écriture n'a pas encore atteint B (le relais retenu) quand B se met à taper dans la même diapo, le curseur y reste */
+  await aller(A, 12); await aller(Bp, 12); pause = true; await taper(A, ' ⟪A-quatre⟫'); await attendre(async () => (await hubDe(A, 12)).includes('⟪A-quatre⟫'), 6000);
+  await taper(Bp, ' ⟪B-quatre⟫', false); pause = false; await relayer();
+  const cf = await attendre(() => Bp.evaluate(() => { const z = document.getElementById('dr-conflit'); return !!(z && z.getBoundingClientRect().width > 0); }), 6000);
+  const sousGeste = await Bp.evaluate(() => (document.getElementById('mur') || {}).innerText.includes('⟪B-quatre⟫') && !(document.getElementById('mur') || {}).innerText.includes('⟪A-quatre⟫'));
+  await Bp.mouse.click(5, 400);
+  const t3 = await Bp.evaluate(() => (document.getElementById('dr-conflit') || {}).innerText || '');
+  await new Promise(r => setTimeout(r, 1500));
+  const r3 = { hubA: (await hubDe(A, 12)).includes('⟪A-quatre⟫'), hubB: (await hubDe(Bp, 12)).includes('⟪A-quatre⟫') && !(await hubDe(Bp, 12)).includes('⟪B-quatre⟫'), ici: await contient(Bp, 12, '⟪B-quatre⟫'), vu: await voit(Bp, '⟪B-quatre⟫'), aGarde: await contient(A, 12, '⟪A-quatre⟫') };
+  E.verif('A106', sousGeste && cf && /modifiée sur un autre appareil/.test(t3) && r3.hubA && r3.hubB && r3.ici && r3.vu && r3.aGarde, 'la même diapo : A enregistre, B la modifiait avant de la recevoir (rien n\'est posé sous son geste) ; B le dit en clair — « ' + t3.split('\n')[0].slice(0, 110) + '… » — le hub garde la version de A, B garde la sienne à l\'écran : rien n\'est perdu', JSON.stringify({ sousGeste, cf, r3 }));
+  await Bp.evaluate(() => { const x = document.querySelector('#dr-conflit [data-cf-moi]'); if (x) x.click(); });
+  const v3 = await attendre(async () => (await contient(A, 12, '⟪B-quatre⟫')) && !(await Bp.evaluate(() => !!document.getElementById('dr-conflit'))));
+  E.verif('A106', v3, '« Garder la mienne » sur B : sa version part au hub et paraît sur A ; le bandeau se ferme', JSON.stringify({ v3 }));
+  /* 4 · un menu ouvert sur B quand une écriture de A arrive */
+  await aller(Bp, 13); await aller(A, 13); await Bp.evaluate(() => { choixObjet(); document.querySelector('.choix-obj').__marque = 1; });
+  await taper(A, ' ⟪A-cinq⟫'); await attendre(async () => (await hubDe(Bp, 13)).includes('⟪A-cinq⟫'), 6000); await new Promise(r => setTimeout(r, 4000));
+  const m4 = await Bp.evaluate(() => { const z = document.querySelector('.choix-obj'); return !!(z && z.__marque === 1 && z.offsetParent); });
+  await Bp.evaluate(() => fermerChoix()); const v4 = await attendre(() => contient(Bp, 13, '⟪A-cinq⟫'), 12000);
+  E.verif('A106', m4 && v4, 'un menu ouvert sur B (« ajouter un objet ») reste ouvert, le même, pendant qu\'une écriture de A arrive ; refermé, la diapo de A paraît', JSON.stringify({ m4, v4 }));
+  tourne = false; await boucle;
+  E.verif('A106', !oA.errs.length && !oB.errs.length && !oA.boites.length && !oB.boites.length, 'aucune erreur JS, aucune boîte du navigateur', oA.errs.concat(oB.errs, oA.boites, oB.boites).slice(0, 2).join(' ; ') || undefined);
+  await oA.ctx.close(); await oB.ctx.close(); });
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

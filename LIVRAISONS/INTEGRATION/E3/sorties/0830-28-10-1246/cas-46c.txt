@@ -1,0 +1,35 @@
+E3 · banc §12.28 par le geste (les cinq dettes) · 2026-10-28 07:13 UTC · fichier md5 62897bf09ffe83a0b0c9b1753cebab4c
+
+══ 1366×768 ══
+  ok     46c · 1366×768 · A97 · atelier : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1366×768 · 0 erreur JS (46c, atelier)
+  ok     46c · 1366×768 · A97 · répétition : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1366×768 · 0 erreur JS (46c, répétition)
+  ok     46c · 1366×768 · A97 · classe : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1366×768 · 0 erreur JS (46c, classe)
+
+══ 1536×864 ══
+  ok     46c · 1536×864 · A97 · atelier : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1536×864 · 0 erreur JS (46c, atelier)
+  ok     46c · 1536×864 · A97 · répétition : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1536×864 · 0 erreur JS (46c, répétition)
+  ok     46c · 1536×864 · A97 · classe : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1536×864 · 0 erreur JS (46c, classe)
+
+══ 1707×743 ══
+  ok     46c · 1707×743 · A97 · atelier : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre","Donné le 14 septembre"]}
+  ok     Z · 1707×743 · 0 erreur JS (46c, atelier)
+  ok     46c · 1707×743 · A97 · répétition : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1707×743 · 0 erreur JS (46c, répétition)
+  ok     46c · 1707×743 · A97 · classe : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1707×743 · 0 erreur JS (46c, classe)
+
+══ 1920×1080 ══
+  ok     46c · 1920×1080 · A97 · atelier : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1920×1080 · 0 erreur JS (46c, atelier)
+  ok     46c · 1920×1080 · A97 · répétition : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1920×1080 · 0 erreur JS (46c, répétition)
+  ok     46c · 1920×1080 · A97 · classe : la diapo du cahier dit « Donné le <date> », sans « par M. MENEY P. » — {"entre":true,"diapo":20,"lu":["Donné le 14 septembre"]}
+  ok     Z · 1920×1080 · 0 erreur JS (46c, classe)
+
+BILAN banc-1228 : 24/24 vérifications · VERT

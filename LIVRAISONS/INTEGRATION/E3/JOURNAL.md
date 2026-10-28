@@ -1111,3 +1111,10 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - **Cas 43t (A94), aux quatre tailles : VERT.** En mode test, une heure lancée par la case, dévoilée, et 32 s de battements : 0 écriture au hub, 0 balise `sendBeacon`, à la fermeture de la page comprise. Hors mode test, la connexion écrit toujours sa présence (info).
 - **§12.43 VERT (`c02a115a`)**.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0800-28-10-1241-1243/`.
+
+## Retour 98 — 28/10, 08:40 — **§12.46 VERT (`62897bf0`)**
+- E4 a poussé le §12.46 (`18697f31b`, poussée 118). L'assemblé de la tête est `62897bf0`. `banc.sh` : **VERT**.
+- **Le cas 46c, aux quatre tailles : VERT 24/24.** La diapo du cahier dit « Donné le 14 septembre », sans « par M. MENEY P. », dans l'Atelier, en répétition et en classe.
+- « Rien d'autre ne change » : le cas 38 (le cahier hors de la classe : échéance, travail, contenu prévu) reste **13/13** sur cette tête.
+- **§12.46 VERT (`62897bf0`)**.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0830-28-10-1246/`.

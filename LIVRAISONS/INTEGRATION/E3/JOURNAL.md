@@ -1095,3 +1095,19 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
     - Sur la ⑦ : aucun des trois boutons (rouge, attendu).
 - **Le cas 44 (§12.44) est préparé :** `E3/bancs/medias/port-de-honfleur.mp4`, un vrai mp4 de 12 s (H.264 + AAC, que le Chromium du banc lit). Le dossier de la clé sera un dossier réel du navigateur (OPFS), rendu par un `showDirectoryPicker` du banc. Deux navigateurs : l'ordi de classe, qui désigne et lit, et l'ordi portable, qui pilote (§12.44 (4 bis)). Je l'écris sur la mission 0 d'E1.
 - Sorties : `sorties/0740-28-10-1242/` (§12.42) et `sorties/0730-28-10-avant7/` (avant 45a-48x). Captures `*-avant7.png` et `*-42-*-apres.png`.
+
+## Retour 97 — 28/10, 08:25 — **§12.41 VERT** et **§12.43 VERT (`c02a115a`)**
+- La tête porte E1 §12.41 (`3d14df946`) et E4 §12.43 (`5f08e3243`, poussée 117). L'assemblé est `c02a115a`. `banc.sh` : **VERT**.
+- **Cas 41d (A92), deux navigateurs, aux quatre tailles : VERT.**
+  - Le tableau distant montre la diapo de la répétition, chaque élément dévoilé (1, 2), la loupe (le même cadre ; capture `1707x743-41-3-la-loupe-suit-apres.png`, regardée), la mise en lumière (l'élément 0).
+  - Le gel tient l'image pendant que Paul dévoile, et le dégel la reprend.
+  - « ■ Arrêter » ramène l'horloge.
+  - Au hub, pendant la répétition, il n'y a que le canal du tableau, sur un chemin à part : `/site/repetition/{scene,ecrans,pointeur}`. Rien dans la copie d'une classe, ni journal, ni récit, ni cahier, ni présence d'élève ; le battement du prof est compté à part.
+  - Une heure lancée ailleurs n'est pas écrasée (sa scène et `cours_actif` restent). L'en-tête dit « tableau distant pris : 3E Charles de Gaulle est en cours ».
+  - Deux fautes de ma mesure, corrigées :
+    - la mise en lumière porte l'indice de l'élément, et 0 est un élément ;
+    - `/site/repetition/pointeur` fait partie du canal du tableau.
+- **§12.41 VERT (`c02a115a`)**.
+- **Cas 43t (A94), aux quatre tailles : VERT.** En mode test, une heure lancée par la case, dévoilée, et 32 s de battements : 0 écriture au hub, 0 balise `sendBeacon`, à la fermeture de la page comprise. Hors mode test, la connexion écrit toujours sa présence (info).
+- **§12.43 VERT (`c02a115a`)**.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0800-28-10-1241-1243/`.

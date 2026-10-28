@@ -1082,8 +1082,9 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       await A.pg.click('#bloupe').catch(() => {}); await p(A.pg, 600);   /* la loupe retirée */
       /* la mise en lumière */
       await A.pg.click('#blum').catch(() => {}); await p(A.pg, 300); await A.pg.click('#mur li[data-k]').catch(() => {}); await p(A.pg, 500);
-      a = await vuA(A.pg); b = await attendreB(async v => !!(v.montre && v.montre.flash), 6000); await captB('4-la-lumiere-suit');
-      verif(k, a && a.flash && b && b.montre && b.montre.flash && JSON.stringify(b.montre.flash.k) === JSON.stringify(a.flash.k), T + ' · A92 · la mise en lumière de la répétition paraît au tableau distant', JSON.stringify({ pilote: a && a.flash, tableau: b && b.montre && b.montre.flash }));
+      const lum = x => x == null ? null : (typeof x === 'object' ? JSON.stringify(x.k) : JSON.stringify(x));   /* la mise en lumière : l'élément allumé (0 est un élément) */
+      a = await vuA(A.pg); b = await attendreB(async v => !!(v.montre && lum(v.montre.flash) !== null), 6000); await captB('4-la-lumiere-suit');
+      verif(k, a && lum(a.flash) !== null && b && b.montre && lum(b.montre.flash) === lum(a.flash), T + ' · A92 · la mise en lumière de la répétition paraît au tableau distant', JSON.stringify({ pilote: a && a.flash, tableau: b && b.montre && b.montre.flash }));
       /* le gel : le tableau garde l'image pendant que Paul avance, puis la reprend au dégel */
       await A.pg.click('#bgel').catch(() => {}); await p(A.pg, 800); const geleA = await A.pg.evaluate(() => !!(window.S && S.gel)); const avantGel = (await vuB()).montre;
       await dev(A.pg, 1); await p(B.pg, 3000); const pendant = (await vuB()).montre;
@@ -1092,7 +1093,7 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
       /* les écritures au hub pendant la répétition : seulement le canal du tableau */
       const presProf = J.slice(t0).filter(x => x.qui === 'pilote' && x.c === '/presence/prof').length; const avantRep = J.slice(0, t0).filter(x => x.qui === 'pilote' && x.c === '/presence/prof').length;
       info(k, T + ' · le battement de présence du prof (`/presence/prof`, hors répétition aussi : ' + avantRep + ' avant) : ' + presProf + ' pendant la répétition — pas une donnée de la classe ; le §12.43 le traite en mode test');
-      const ecr = J.slice(t0).filter(x => x.qui === 'pilote' && x.c !== '/presence/prof'); const hors = ecr.filter(x => !/\/scene$|\/ecrans$|^\/site\/cours_actif$|\/tableau(\/|$)/.test(x.c)); const interdits = ecr.filter(x => /journal|recit|cahier|presence|eleves|bilan|notes/.test(x.c));   /* la présence des élèves (qui a participé), pas le battement du prof */
+      const ecr = J.slice(t0).filter(x => x.qui === 'pilote' && x.c !== '/presence/prof'); const hors = ecr.filter(x => !/\/scene$|\/ecrans$|\/pointeur$|^\/site\/cours_actif$|\/tableau(\/|$)/.test(x.c));   /* le canal du tableau : la scène, les écrans, le pointeur (« /site/repetition/… » chez E1) */ const interdits = ecr.filter(x => /journal|recit|cahier|presence|eleves|bilan|notes/.test(x.c));   /* la présence des élèves (qui a participé), pas le battement du prof */
       verif(k, ecr.length > 0 && hors.length === 0 && interdits.length === 0, T + ' · A92 · pendant la répétition, le hub ne reçoit que le canal du tableau (ni copie, ni journal, ni récit, ni cahier, ni présence)', ecr.length + ' écritures ; hors canal : ' + JSON.stringify(hors.slice(0, 6).map(x => x.m + ' ' + x.c)) + ' ; canal : ' + JSON.stringify(Array.from(new Set(ecr.map(x => x.c))).slice(0, 6)));
       /* « ■ Arrêter » : l'horloge d'attente */
       await clicTexte(A.pg, 'button', 'Arrêter'); await p(A.pg, 1200); b = await attendreB(async v => v.attente, 40000); await captB('6-arreter-l-horloge');

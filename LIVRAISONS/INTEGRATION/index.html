@@ -8504,12 +8504,22 @@ function atIAInjecterAvecDestination(o){
 /* [LOT4-⑤] la sortie du mode chapitre : même place (position de pile reprise) */
 function edIARetourChapitre(){
   var sc=(AT_IA.chap&&AT_IA.chap.sc)||0;
+  /* EX (§12.65 (1)) : LA CAUSE DE LA CORRÉLATION PERDUE. Le retour reposait la position du papier (celle du trou cliqué, où la feuille
+     neuve est maintenant) sans rien dire aux deux autres colonnes : ED2.courant restait la première feuille du chapitre (la colonne de
+     gauche l'allumait, le milieu restait en haut) — trois colonnes, trois objets (mesuré au faux hub). Le retour pose désormais la ligne
+     de départ comme LA ligne courante, AVANT le rendu (il l'allume à gauche et au papier), puis y va dans les trois colonnes ; sans
+     ligne connue, la position mémorisée comme avant. */
+  var dep=(AT_IA.chap&&AT_IA.chap.item)?{seance:String(AT_IA.chap.seance),item:String(AT_IA.chap.item)}:null;
   AT_IA.chap=null;
   AT.doc=null;AT.docId=null;
+  var id=null,ec=AT.edChap;
+  if(dep&&ec){var docs=ed2Documents(ec.level,ec.chnum);id=ed2IdDe(docs,dep.seance,dep.item);
+    if(docs.some(function(d){return d.id===id&&!d.attendu;}))ED2.courant=id;}
   atEditerChapitreRendre();
   /* [LOT4-⑤c] l'écran IA n'a pas de pile : le rendu ne peut pas reprendre la
      position tout seul — elle a été mémorisée à l'aller, on la repose ici. */
   requestAnimationFrame(function(){
+    if(id&&(document.querySelector('.ed2-pdoc[data-item="'+id+'"]')||document.querySelector('.ed2-trou[data-item="'+id+'"]'))){ed2Aller(id,'retour');return;}
     var p=document.querySelector('.ed2-papier');
     if(p){ED2.gel=Date.now()+400;p.scrollTop=sc;}
   });
@@ -11495,7 +11505,7 @@ function openAtelierItem(ref,titre,ctxVue){
       }
       return;
     }
-    if(envoi.meta&&envoi.meta.message){
+    if(envoi.meta&&envoi.meta.message&&envoi.meta.change){   /* EX (§12.65 (4)) : seulement une vraie modification (meta.change) */
       var bd=document.createElement('div');bd.className='atdoc-bandeau';
       bd.textContent=envoi.meta.message;   /* daté à l'envoi ; écran seulement, ne s'imprime pas */
       ov.insertBefore(bd,f);
@@ -11693,20 +11703,29 @@ function atEnvoyerClic(){
 function atEnvoyer(){
   if(!AT.doc||!AT.docId)return;
   if(!AT.doc.depot&&!atFeuilleDeposee(AT.docId,AT.doc)){try{console.warn('[envoi] refus\u00e9 : la feuille n\u2019est pas d\u00e9pos\u00e9e');}catch(e){}return;}   /* [LOT11-\u2460\u24d0] la v\u00e9rit\u00e9 unique */
+  var _docId=AT.docId,_doc=AT.doc;
+  _siteGet(AT_ENVOIS_NOEUD+'/'+_docId,function(prec,errPrec){   /* EX (§12.65 (4)) : la modale dit si les élèves verront un bandeau */
+  if(errPrec){atInfo('⚠ Je n’ai pas pu relire la version que les élèves ont reçue — rien n’a été envoyé. Réessaie.');return;}
+  if(AT.docId!==_docId)return;   /* la feuille a changé entre-temps : rien sous un autre geste */
+  var change=atEnvoiChange(_doc,prec);
   atEnvoiDefautLire(function(defaut){
     var dateFr=new Date().toLocaleDateString('fr-FR');
     var prerempli=defaut.split('<date>').join(dateFr);
     var old=document.getElementById('at-modale');if(old)old.parentNode.removeChild(old);
     var d=document.createElement('div');d.id='at-modale';d.className='at-modale';
-    d.innerHTML='<div class="at-modale-c"><div class="at-modale-m"><b>Envoyer aux élèves</b> — ils verront cette version de la fiche, avec ce message daté :</div>'
-      +'<textarea id="at-envoi-msg" class="at-envoi-zone">'+atEsc(prerempli)+'</textarea>'
-      +'<label class="at-envoi-case"><input type="checkbox" id="at-envoi-defaut"> Faire de ce texte le nouveau message par défaut</label>'
+    d.innerHTML='<div class="at-modale-c">'+(change
+      ?('<div class="at-modale-m"><b>Envoyer aux élèves</b> — la fiche a changé depuis la version qu’ils ont reçue : ils verront cette version, avec ce message daté :</div>'
+        +'<textarea id="at-envoi-msg" class="at-envoi-zone">'+atEsc(prerempli)+'</textarea>'
+        +'<label class="at-envoi-case"><input type="checkbox" id="at-envoi-defaut"> Faire de ce texte le nouveau message par défaut</label>')
+      :('<div class="at-modale-m"><b>Envoyer aux élèves</b> — ils verront cette version de la fiche. '
+        +((prec&&prec.doc)?'Rien n’a changé depuis la version qu’ils ont reçue : aucun nouveau message.':'C’est son premier envoi : aucun message.')+'</div>'))
       +'<div class="at-modale-b"><button class="at-btn at-btn-prim" id="at-envoi-ok">Envoyer</button><button class="at-btn" id="at-envoi-non">Annuler</button></div></div>';
     document.body.appendChild(d);
     document.getElementById('at-envoi-non').onclick=function(){d.parentNode.removeChild(d);};
     document.getElementById('at-envoi-ok').onclick=function(){
-      var msg=(document.getElementById('at-envoi-msg').value||'').trim();
-      var garderDefaut=document.getElementById('at-envoi-defaut').checked;
+      var _zm=document.getElementById('at-envoi-msg'),_cd=document.getElementById('at-envoi-defaut');
+      var msg=_zm?(_zm.value||'').trim():prerempli;
+      var garderDefaut=!!(_cd&&_cd.checked);
       d.parentNode.removeChild(d);
       atEnvoyerVersion(AT.docId,AT.doc,msg,false,function(ok){
         if(!ok){atInfo('⚠ La fiche n’a pas été envoyée aux élèves — ils voient toujours l’ancienne version. Réessaie.');return;}
@@ -11719,6 +11738,7 @@ function atEnvoyer(){
       });
     };
   });
+  });   /* EX (§12.65 (4)) */
 }
 /* [LOT7b-②④] L'ÉCRIVAIN UNIQUE DE L'ENVOI, extrait d'atEnvoyer : la modale à
    message (atEnvoyer), l'envoi initial proposé (②), « Envoyer maintenant » du
@@ -11726,9 +11746,22 @@ function atEnvoyer(){
    FIGÉE à /site/atelier/envois/<id>, doc.envoi sur la feuille vivante, les
    caches à jour (AT.liste, LINK_ATELIER_DOCS, AT_DOCS, AT.envoiDoc si la
    feuille est ouverte). */
+/* EX (§12.65 (4), Paul 28/10 15:58 : « ce message doit apparaître dans un seul cas : si je modifie quelque chose dans mes documents ») :
+   LE BANDEAU NE DIT QU'UN VRAI CHANGEMENT. L'écrivain unique relit la version que les élèves avaient reçue et compare le CONTENU
+   (atEcartDetail : valeurs, cases, blocs — la mesure d'écart unique), jamais la date. Premier envoi : pas de bandeau. Même contenu
+   (un dépôt, un envoi en masse, un import qui renvoie la feuille) : pas de nouveau bandeau — celui d'une vraie modification d'avant
+   garde son texte et SA date. Contenu changé : le message (texte inchangé, daté du jour), meta.change = l'heure du changement.
+   L'élève ne voit un bandeau que si meta.change existe : ceux posés avant, sans preuve de changement, ne s'affichent plus.
+   La relecture échoue : rien n'est envoyé (cb(false) — l'appelant le dit), jamais un bandeau deviné. */
+function atEnvoiChange(doc,prec){ return !!(prec&&prec.doc&&atEcartDetail(doc,prec.doc).nb>0); }
 function atEnvoyerVersion(docId,doc,msg,premier,cb){
-  var envoi={meta:{envoyeLe:Date.now(),versionDoc:(doc.dates&&doc.dates.modifieLe)||Date.now(),message:msg||'',premier:!!premier},
-             doc:JSON.parse(JSON.stringify(doc))};
+  _siteGet(AT_ENVOIS_NOEUD+'/'+docId,function(prec,err){
+  if(err){if(cb)cb(false);return;}
+  var pm=(prec&&prec.meta)||{},change=atEnvoiChange(doc,prec);
+  var meta={envoyeLe:Date.now(),versionDoc:(doc.dates&&doc.dates.modifieLe)||Date.now(),message:'',premier:!(prec&&prec.doc)};
+  if(change){meta.message=msg||'';meta.change=Date.now();}
+  else if(pm.change&&pm.message){meta.message=pm.message;meta.change=pm.change;}
+  var envoi={meta:meta,doc:JSON.parse(JSON.stringify(doc))};
   atSitePut(AT_ENVOIS_NOEUD+'/'+docId,envoi,function(ok){
     if(!ok){if(cb)cb(false);return;}
     doc.envoi={envoyeLe:envoi.meta.envoyeLe,versionDoc:envoi.meta.versionDoc};
@@ -11740,6 +11773,7 @@ function atEnvoyerVersion(docId,doc,msg,premier,cb){
       if(cb)cb(true);
     });
   });
+  });   /* EX (§12.65 (4)) : fin de la relecture de la version reçue */
 }
 /* La proposition de dépôt (①) — jamais automatique, jamais insistante. */
 function atProposerDepot(suite){
@@ -12201,7 +12235,7 @@ function edOuvrirItem(j,k){
   var c=_edCh();if(!c)return;
   var it=((c.ch.seances[j]||{}).items||{})[k];if(!it||!it.ref)return;
   if(it.kind==='diaporama')return;   /* [LOT12] donnée historique : visible, muette */
-  if(it.kind==='atelier'||it.source==='atelier'){atOuvrirDoc(it.ref);return;}
+  if(it.kind==='atelier'||it.source==='atelier'){edEditerFeuille(j,k);return;}   /* EX (§12.65 (2)) : par le chemin d'« Éditer » — atOuvrirDoc seul quittait le chapitre sans « ← Le chapitre » (AT_FIL non posé) */
   atInfo('Ce document s\u2019ouvre du c\u00f4t\u00e9 \u00e9l\u00e8ve : il n\u2019est pas modifiable ici.');
 }
 /* [LOT7b-③] le « i » des états : une phrase par cas, là où ça se règle. */
@@ -12331,6 +12365,7 @@ function edCreerFeuilleIci(j){
     var id='feuille_'+Date.now();
     var doc=atDocNeuf();
     doc.titre=titre;
+    if(doc.cases.titre){doc.valeurs.titre={texte:titre};}   /* EX (§12.65 (1)) : le titre donné se lit aussi au papier (pas « Sans titre ») */
     edHeriterSeance(doc,se);   /* [LOT2-⑨] */
     doc.rattachement={niveau:c.ec.level,chapitre:c.ec.chnum,seance:j,
                       chapitreTitre:c.ch.title||'',seanceTitre:se.title||'',
@@ -12373,6 +12408,7 @@ function edFeuilleDepots(level,ref){
 }
 function edPrendreFeuille(j,k){
   var c=_edCh();if(!c)return;
+  if(edLigneAppli(j,k))return;   /* EX (§12.65 (3)) : une ligne d'application ne prend pas une feuille */
   var pret=(typeof LINK_ATELIER_DOCS!=='undefined')&&LINK_ATELIER_DOCS&&Object.keys(LINK_ATELIER_DOCS).length;
   if(!pret){
     atInfo('Je relis les feuilles de l’atelier…');
@@ -12426,8 +12462,18 @@ function edPrendreFeuille(j,k){
 function edProduitDeclare(se){
   return (se&&se.type==='notions')?'fiche_notion':'fiche_seance';
 }
+/* EX (§12.65 (3)) : la garde des lignes d'application — une feuille de l'atelier ne remplit jamais une dictée, une réécriture… :
+   vrai = la ligne attend une activité d'application (le geste ne fait rien et dit la marche à suivre) */
+function edLigneAppli(j,k){
+  var c=_edCh();if(!c||!k)return false;
+  var it=((c.ch.seances[j]||{}).items||{})[k];
+  if(!it||it.ref||!ED2_APPLIS[it.kind])return false;
+  atInfo('« '+atEsc(it.title||k)+' » attend '+ED2_APPLIS[it.kind]+' : à créer dans l’application, puis à rattacher par « Lier… ». Une feuille de l’atelier ne la remplace pas — rien n’a été écrit.');
+  return true;
+}
 function edIAdepuisTrou(j,k){
   var c=_edCh();if(!c)return;
+  if(edLigneAppli(j,k))return;   /* EX (§12.65 (3)) */
   edUndoVider();
   var se=c.ch.seances[j]||{};
   var it=k?(((se.items||{})[k])||null):null;
@@ -12437,6 +12483,7 @@ function edIAdepuisTrou(j,k){
     var id='feuille_'+Date.now();
     var doc=atDocNeuf();
     doc.titre=titre;
+    if(doc.cases.titre){doc.valeurs.titre={texte:titre};}   /* EX (§12.65 (1)) : la feuille porte son titre à l'écran (« Sans titre » au papier quand la colonne de gauche disait le titre) — comme l'import */
     doc.produit=edProduitDeclare(se);
     edHeriterSeance(doc,se);                      /* [LOT2-⑨] */
     doc.rattachement={niveau:lvl,chapitre:chn,seance:j,
@@ -12450,8 +12497,9 @@ function edIAdepuisTrou(j,k){
       if(AT&&AT.liste)AT.liste[id]=doc;
       var _pile=document.querySelector('.ed2-papier');
       var _scMemo=_pile?_pile.scrollTop:0;   /* [LOT4-⑤c] la place de Paul, à l'aller */
+      var _ligne={seance:j,item:k||''};   /* EX (§12.65 (1)) : la ligne de départ — le retour y pose les trois colonnes */
       var ouvrirIA=function(){
-        AT_IA.chap={level:lvl,chnum:chn,sc:_scMemo};
+        AT_IA.chap={level:lvl,chnum:chn,sc:_scMemo,seance:_ligne.seance,item:_ligne.item};
         AT.docId=id;AT.doc=doc;
         AT_IA.produit=doc.produit;AT_IA.tpl=null;AT_IA.charge=false;
         atIAChargerPrompt(function(){atIARendre();});
@@ -12461,7 +12509,7 @@ function edIAdepuisTrou(j,k){
          mesurée au banc à taille réelle). */
       if(it)edLierConfirme(lvl,chn,[{seance:j,item:k,doc:id}],ouvrirIA);   /* l'écrivain existant, sortie séquencée */
       else itemCreer(lvl,chn,j,titre,{kind:'atelier',source:'atelier',ref:id,published:false},function(itemId){
-        if(itemId)atFeuilleDepotPoser(id,lvl,chn,j,itemId,function(){ouvrirIA();});   /* [LOT8-\u2469] */
+        if(itemId){_ligne.item=itemId;atFeuilleDepotPoser(id,lvl,chn,j,itemId,function(){ouvrirIA();});}   /* [LOT8-\u2469] ; EX (§12.65) : la ligne née ici */
         else ouvrirIA();
       });
       /* [LOT4-⑤] ON NE QUITTE PLUS L'ÉDITEUR : AT.edChap reste posé, l'écran IA
@@ -12562,6 +12610,39 @@ function edDupliquerVers(j,k){
    courante puis cases de la feuille courante, par sections), la pile des documents.
    On entre par \u00ab Mes chapitres \u2192 Modifier \u00bb, et par l\u00e0 seulement. \u2550\u2550\u2550 */
 var ED2={courant:null,caseSel:null,index:[]};
+/* EX (§12.65 (2), registre 13 · 86) : LES INFOBULLES DES BARRES DE LA STRUCTURE — écrites pour Paul : ce que le geste fait, ce qu'il coûte.
+   Mesuré dans le code : le ✕ d'un élément appelle deleteItem (confirmation, corbeille « site-item » d'abord — restaurable à sa place par
+   Panneau prof › Corbeille — puis retrait de la ligne au hub ; la ressource liée n'est pas touchée ; edUndoVider vide « ↩ Annuler ») ;
+   le ✕ d'une séance appelle deleteSeance (la séance entière : éléments, diapos, heures jouées — corbeille « site-seance » d'abord). */
+var ED2_BULLES={
+  itHaut:'Monter cet élément d’un cran dans la séance — c’est l’ordre que lisent les élèves. Rien d’autre ne change.',
+  itHautNon:'Déjà en tête de la séance : il ne peut pas monter.',
+  itBas:'Descendre cet élément d’un cran dans la séance — c’est l’ordre que lisent les élèves. Rien d’autre ne change.',
+  itBasNon:'Déjà en fin de séance : il ne peut pas descendre.',
+  itEditer:'Ouvrir cette feuille dans l’éditeur de feuille pour la composer ; « ← Le chapitre » te ramène ici. Ce que tu changes s’enregistre ; les élèves ne le voient qu’après « Envoyer aux élèves ».',
+  itOuvrirF:'Ouvrir cette feuille dans l’éditeur de feuille, comme « Éditer » ; « ← Le chapitre » te ramène ici.',
+  itOuvrirDiapo:'Un ancien diaporama : il ne s’ouvre plus. Rien ne change.',
+  itOuvrirAutre:'Rien ne s’ouvre ici : ce document se lit du côté élève (un message te le rappelle). Rien ne change.',
+  itLier:'Rattacher à cet élément ce qu’il ouvre : une feuille de l’atelier, une dictée, une réécriture, un fichier, une adresse web… Rien n’est écrit avant ton choix ; s’il ouvre déjà quelque chose, on te demande avant de le remplacer (l’ancien reste noté sous l’élément).',
+  itDeplacer:'Envoyer cet élément dans une autre séance de ce chapitre (tu la choisis) : il arrive en fin de séance, tel quel — même liaison, même publication. Rien n’est supprimé.',
+  itPublier:'Choisir pour quelles classes cet élément est ouvert aux élèves : un clic sur une classe l’ouvre ou le retire. Une feuille jamais envoyée : on te propose d’abord de l’envoyer.',
+  itDupliquer:'Copier cet élément dans un chapitre du niveau (tu le choisis) : la copie arrive en fin de sa première séance, non publiée, et ouvre la même feuille (rien n’est recopié). Cet élément-ci ne change pas.',
+  itSuppr:'Supprimer cet élément de la séance — on te demande de confirmer. Il part d’abord à la corbeille : Panneau prof › Corbeille › « Restaurer » le remet à sa place. Les élèves ne le voient plus ; ce qu’il ouvre (feuille, dictée, document) n’est pas supprimé. « ↩ Annuler » ne le reprend pas.',
+  seHaut:'Monter cette séance d’un cran dans le chapitre. Rien d’autre ne change.',
+  seHautNon:'Déjà la première séance du chapitre : elle ne peut pas monter.',
+  seBas:'Descendre cette séance d’un cran dans le chapitre. Rien d’autre ne change.',
+  seBasNon:'Déjà la dernière séance du chapitre : elle ne peut pas descendre.',
+  seItem:'Ajouter un élément à la fin de cette séance : tu donnes son titre, puis « Lier » lui donne ce qu’il ouvre. Il n’est pas ouvert aux élèves.',
+  seFeuille:'Créer une feuille vierge de l’atelier, au titre que tu donnes, adressée à cette séance et ajoutée à sa fin. Pas encore ouverte aux élèves.',
+  sePrendre:'Prendre une feuille existante de l’atelier et l’ajouter à la fin de cette séance. Elle n’est pas copiée : c’est la même feuille, liée ici aussi. Pas encore ouverte aux élèves.',
+  seSuppr:'Supprimer cette séance avec tout ce qu’elle contient — ses éléments, ses diapos, ses heures jouées — on te demande de confirmer. Elle part d’abord à la corbeille : Panneau prof › Corbeille › « Restaurer » la remet. Les feuilles de l’atelier restent dans l’atelier. « ↩ Annuler » ne la reprend pas.'
+};
+/* EX (§12.65 (3)) : les lignes qui attendent l'activité d'une application (les sections de la fenêtre « Lier », link-modal-<kind>) —
+   ce qu'elles attendent, dit à Paul sous le trou ; une feuille de l'atelier ne les remplit pas */
+var ED2_APPLIS={dictee:'une dictée de l’application Dictée ou Correction de dictée',correction_dictee:'une dictée de l’application Correction de dictée',
+  reecriture:'une réécriture de l’application Réécriture',redaction:'un sujet de l’application Rédaction',qcm:'une évaluation de l’application QCM',
+  debat:'un débat de l’application Débat',analyse_logique:'un travail de l’application Analyse logique',applaudimetre:'une séance de l’application Applaudimètre',
+  worktrack:'un chapitre de l’application Plan de travail'};
 /* les teintes de s\u00e9ance : une couleur stable par rang, comme la maquette */
 var ED2_TEINTES=['#d4a017','#7ec8a9','#c78ec7','#e88b6a','#8ab4e8','#c9b568','#9ad0c2','#e0a3b8'];
 function ed2Teinte(rang){return ED2_TEINTES[(parseInt(rang,10)||0)%ED2_TEINTES.length];}
@@ -12589,7 +12670,19 @@ function ed2Documents(level,chnum){
                 attendu:!it.ref});     /* d\u00e9clar\u00e9 par l'injection, pas encore li\u00e9 */
     });
   });
+  /* EX (\u00a712.65 (1)) : L'IDENTIT\u00c9 D'UNE LIGNE \u2014 `id`, port\u00e9e par les trois colonnes (data-item, ED2.courant, cl\u00e9s du panneau).
+     La cl\u00e9 d'un item n'est unique que dans SA s\u00e9ance : le chapitre r\u00e9el en a deux fois (\u00ab fiche-versification \u00bb en S2 et S5,
+     \u00ab fiche-methode-reciter \u00bb en S5 et S7 \u2014 mesur\u00e9 sur le chapitre au contrat) et le premier trouv\u00e9 gagnait partout. Unique :
+     la cl\u00e9 telle quelle ; en double : cl\u00e9@s\u00e9ance. `item` reste la cl\u00e9 au hub (les \u00e9crivains la lisent). */
+  var _nb={};
+  out.forEach(function(r){if(r.item)_nb[r.item]=(_nb[r.item]||0)+1;});
+  out.forEach(function(r){r.id=!r.item?'':(_nb[r.item]>1?r.item+'@'+r.seance:r.item);});
   return out;
+}
+/* EX (\u00a712.65 (1)) : l'identit\u00e9 de la ligne (s\u00e9ance j, cl\u00e9 k) \u2014 la m\u00eame que celle d'ed2Documents */
+function ed2IdDe(docs,j,k){
+  for(var i=0;i<docs.length;i++)if(docs[i].item===String(k)&&String(docs[i].seance)===String(j))return docs[i].id;
+  return String(k);
 }
 /* le sommaire : pastille teint\u00e9e par s\u00e9ance, point plein (existant) ou creux
    (attendu, gris\u00e9 italique), et l'avancement en t\u00eate. */
@@ -12610,8 +12703,8 @@ function ed2Sommaire(level,chnum,docs){
        et au panneau comme les autres (son bloc d'item existe) ; la s\u00e9ance VIDE
        (aucun item) m\u00e8ne \u00e0 sa s\u00e9ance au panneau. L'ancien code RETIRAIT le clic
        aux attendus \u2014 mesur\u00e9 : (d.attendu?'':onclick). */
-    var _clic=d.item?('ed2Aller(\''+d.item+'\')'):('ed2SelectionnerSeance(\''+atEsc(d.seance)+'\',\'sommaire\')');
-    h+='<div class="ed2-it'+(d.attendu?' ed2-attendu':'')+(ED2.courant===d.item&&d.item?' ed2-ici':'')+'" data-item="'+atEsc(d.item)+'"'
+    var _clic=d.item?('ed2Aller(\''+d.id+'\')'):('ed2SelectionnerSeance(\''+atEsc(d.seance)+'\',\'sommaire\')');
+    h+='<div class="ed2-it'+(d.attendu?' ed2-attendu':'')+(ED2.courant===d.id&&d.id?' ed2-ici':'')+'" data-item="'+atEsc(d.id)+'"'
       +' onclick="'+_clic+'">'
       +'<span class="ed2-p'+(d.attendu?' ed2-creux':'')+'"></span>'+atEsc(d.titre)+'</div>';
   });
@@ -12626,7 +12719,7 @@ function ed2Poser(item){
   ED2.courant=item;
   var ec=AT.edChap;
   if(ec){
-    var _cd=ed2Documents(ec.level,ec.chnum).filter(function(d){return d.item===item;})[0];
+    var _cd=ed2Documents(ec.level,ec.chnum).filter(function(d){return d.id===item;})[0];   /* EX (§12.65) : l'identité de la ligne */
     ED2.refCourant=_cd?_cd.ref:'';
   }
   document.querySelectorAll('.ed2-halo').forEach(function(x){x.classList.remove('ed2-halo');});
@@ -12635,7 +12728,7 @@ function ed2Poser(item){
   var _li=document.querySelector('.ed2-som .ed2-it[data-item="'+item+'"]');
   if(_li)_li.classList.add('ed2-ici');
 }
-function ed2Aller(item){
+function ed2Aller(item,depuis){   /* EX (§12.65 (1)) : depuis='retour' (le retour de l'écran IA) — les trois colonnes vont sur la ligne, la colonne de gauche défile jusqu'à elle, aucun curseur n'est posé ; sans `depuis` : le clic au sommaire */
   /* [LOT9-\u2460] l'attendu (trou) se rejoint comme un document : sa cible au papier
      est le cadre .ed2-trou. Le \u00ab courant \u00bb (halo dor\u00e9, impression) reste r\u00e9serv\u00e9
      aux documents R\u00c9ELS \u2014 la garde [C5-ED2] interdit un courant-attendu. */
@@ -12644,7 +12737,16 @@ function ed2Aller(item){
   else el=document.querySelector('.ed2-trou[data-item="'+item+'"]');
   var pile=document.querySelector('.ed2-papier');
   ED2.gel=Date.now()+400;   /* [LOT1-①] un défilement POSÉ ne vaut pas un suivi */
-  if(el&&pile)pile.scrollTop=pile.scrollTop+el.getBoundingClientRect().top-pile.getBoundingClientRect().top-24;
+  /* EX (§12.65 (1)) : sous la barre du papier (collée en haut, deux rangs de boutons) — à -24 seulement, le haut de la ligne passait DESSOUS :
+     d'un trou, on ne voyait plus que « Lier… » (mesuré à 1707 × 743) */
+  var _barre=pile&&pile.querySelector('.ed2-pbarre');
+  if(el&&pile)pile.scrollTop=pile.scrollTop+el.getBoundingClientRect().top-pile.getBoundingClientRect().top-(_barre?_barre.offsetHeight+10:0)-14;
+  if(depuis==='retour'){
+    var som=document.querySelector('.ed2-som'),li=document.querySelector('.ed2-som .ed2-it[data-item="'+item+'"]');
+    if(som&&li){var rs=som.getBoundingClientRect(),rl=li.getBoundingClientRect();if(rl.top<rs.top||rl.bottom>rs.bottom){ED2.gel=Date.now()+400;som.scrollTop=som.scrollTop+rl.top-rs.top-(som.clientHeight/2)+(rl.height/2);}}
+    ed2Selectionner(item,'item-'+item,'retour');
+    return;
+  }
   /* [LOT6-①] LE TROISIÈME TRAJET COMPLÉTÉ (sommaire → milieu + droite) : le clic
      au sommaire posait le halo et défilait le papier, mais le panneau restait
      sur l'ancienne ligne (mesuré : aucune sélection posée). Même chemin que les
@@ -12704,7 +12806,7 @@ function ctxEntreesItem(d){
   return [
     {lib:'Ouvrir / Modifier',faire:function(){
       if(feuille)edEditerFeuille(j,k);
-      else ed2Aller(k);   /* sa ligne d'édition : le panneau, sélection posée ([LOT6-①]) */
+      else ed2Aller(d.id||k);   /* EX (§12.65) : l'identité de la ligne ; sa ligne d'édition : le panneau, sélection posée ([LOT6-①]) */
     }},
     {lib:'Renommer\u2026',faire:function(){editTitle(c.ec.level,c.ec.chnum,j,k);}},
     {lib:'Dupliquer vers\u2026',dispo:function(){return !!it.ref;},faire:function(){edDupliquerVers(j,k);}},
@@ -12722,7 +12824,7 @@ function ctxEntreesSeance(j){
     {lib:'\u00c9diter dans l\u2019atelier',faire:function(){ ATVUES.snum=String(j); AT_SOM_ETAT[String(j)]=true; atVuesPoser('atelier'); }},   /* E1 (mandat point 6, relecteur neuf 1) : sur une séance aussi */
     {lib:'Ouvrir dans la Structure',faire:function(){
       var prem=ordPaires(se.items||{})[0];
-      if(prem){ed2Aller(prem.k);return;}
+      if(prem){ed2Aller(ed2IdDe(ed2Documents(c.ec.level,c.ec.chnum),j,prem.k));return;}   /* EX (§12.65) : l'identité de la ligne (séance + clé) */
       var bloc=document.querySelector('#ed2-pan [data-sce="'+j+'"]');
       if(bloc)ed2PanVers(bloc);   /* séance vide : sa section du panneau */
     }},
@@ -12811,7 +12913,7 @@ function ctxSommaireOuvrir(x,y,cible){
   }
   var c=_edCh();if(!c)return;
   if(cible.type==='item'){
-    var d=ed2Documents(c.ec.level,c.ec.chnum).filter(function(q){return q.item===cible.id&&!q.attendu;})[0];
+    var d=ed2Documents(c.ec.level,c.ec.chnum).filter(function(q){return q.id===cible.id&&!q.attendu;})[0];   /* EX (§12.65) : data-item porte l'identité */
     if(!d)return;
     ctxOuvrir(x,y,d.titre||cible.id,ctxEntreesItem(d));
   }else{
@@ -12900,12 +13002,12 @@ function ed2PagPoser(mode){
 var ED2_MESURES={};
 function ed2Mesurer(){
   document.querySelectorAll('.ed2-pdoc').forEach(function(el){
-    var it=el.getAttribute('data-item');
+    var it=el.getAttribute('data-item');   /* EX (§12.65) : l'identité de la ligne — deux séances, deux hauteurs */
     if(it)ED2_MESURES[it]=el.offsetHeight;
   });
 }
 function ed2PagSignature(docs,mode){
-  return ed2Pages(docs,mode).map(function(p){return p.map(function(d){return d.item;}).join(',');}).join('|');
+  return ed2Pages(docs,mode).map(function(p){return p.map(function(d){return d.id;}).join(',');}).join('|');   /* EX (§12.65) */
 }
 /* la repagination MESURÉE : si la découpe réelle diffère de celle à l'écran,
    UN rendu (changement de données de mise en page) — garde anti-boucle par
@@ -12923,7 +13025,7 @@ function ed2Repaginer(){
 }
 /* estimation de hauteur : PREMIER JET avant mesure (patron maquette) */
 function ed2HauteurDoc(d){
-  if(ED2_MESURES[d.item])return ED2_MESURES[d.item];   /* [LOT3] le rendu fait foi */
+  if(ED2_MESURES[d.id])return ED2_MESURES[d.id];   /* [LOT3] le rendu fait foi ; EX (§12.65) : par l'identité de la ligne */
   var h=76;   /* référence + titre + sous-titre */
   var doc=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&d.ref)?LINK_ATELIER_DOCS[d.ref]:null;
   var cases=(doc&&doc.cases)||{};
@@ -12980,7 +13082,7 @@ function ed2CoupeRetirer(a,b,ev){
    les lignes de partage et les emplacements toujours proposables. */
 function ed2Papier(level,chnum,docs){
   var mode=ed2PagModeLu(),pages=ed2Pages(docs,mode),total=pages.length;
-  ED2_PAG.affichee=pages.map(function(p){return p.map(function(d){return d.item;}).join(',');}).join('|');   /* [LOT3] */
+  ED2_PAG.affichee=pages.map(function(p){return p.map(function(d){return d.id;}).join(',');}).join('|');   /* [LOT3] ; EX (§12.65) : l'identité */
   var couts={serre:ed2CoutFeuilles(docs,'serre'),seance:ed2CoutFeuilles(docs,'seance'),document:ed2CoutFeuilles(docs,'document')};
   /* [LOT9-8.55.1-\u2460] LE TITRE IMPRIM\u00c9 EST UN INTERCALAIRE : il organise une
      LIASSE, il n'a pas de sens sur une feuille isol\u00e9e (doublon avec la ligne
@@ -13011,8 +13113,16 @@ function ed2Papier(level,chnum,docs){
   function _trou(d){
     /* [LOT9-\u2460] le cadre du trou S'ALLUME et R\u00c9POND : clic hors boutons \u2192 la
        s\u00e9lection (item \u2192 son bloc au panneau ; s\u00e9ance vide \u2192 sa s\u00e9ance). */
-    return '<div class="ed2-trou" data-item="'+(d.item||'')+'" data-seance="'+atEsc(d.seance)+'" onclick="ed2ClicTrou(event,\''+(d.item||'')+'\',\''+atEsc(d.seance)+'\')">'
-      +'<div class="ed2-trou-t">'+atEsc(d.titre)+'</div>'
+    var _tete='<div class="ed2-trou" data-item="'+(d.id||'')+'" data-seance="'+atEsc(d.seance)+'" onclick="ed2ClicTrou(event,\''+(d.id||'')+'\',\''+atEsc(d.seance)+'\')">'   /* EX (§12.65) : l'identité de la ligne */
+      +'<div class="ed2-trou-t">'+atEsc(d.titre)+'</div>';
+    /* EX (§12.65 (3)) : UNE LIGNE D'APPLICATION (dictée, réécriture, QCM…) ATTEND SON ACTIVITÉ, JAMAIS UNE FEUILLE. « Écrire avec une IA »
+       et « Prendre une feuille existante… » liaient une feuille de l'atelier à la ligne (kind → atelier, mesuré : la dictée de la séance
+       « Le poème sans vers » devenait une feuille « Sans titre » dès le clic). Elle dit ce qu'elle attend et la marche à suivre ; « Lier… » seul. */
+    if(d.item&&ED2_APPLIS[d.kind])return _tete
+      +'<div class="ed2-trou-q">attendu — '+ED2_APPLIS[d.kind]+' : à créer dans l’application, puis à rattacher ici par « Lier… »</div>'
+      +'<button class="at-btn at-btn-min" title="Choisir l’activité de l’application à rattacher à cette ligne. Rien n’est écrit avant ton choix." onclick="openLinkModal(\''+level+'\',\''+chnum+'\',\''+d.seance+'\',\''+d.item+'\')">Lier…</button>'
+      +'</div>';
+    return _tete
       +'<div class="ed2-trou-q">'+(d.item?'attendu — aucun document lié':'rien à imprimer pour l’instant')+'</div>'
       +'<button class="at-btn at-btn-min" onclick="edCreerFeuilleIci(\''+d.seance+'\')">+ Feuille ici</button>'
       +'<button class="at-btn at-btn-min at-btn-ia" onclick="edIAdepuisTrou(\''+d.seance+'\',\''+(d.item||'')+'\')">✨ Écrire avec une IA</button>'
@@ -13022,7 +13132,7 @@ function ed2Papier(level,chnum,docs){
       +'</div>';
   }
   var mapPage={};
-  pages.forEach(function(pg,ip){pg.forEach(function(d){mapPage[d.item]=ip;});});
+  pages.forEach(function(pg,ip){pg.forEach(function(d){mapPage[d.id]=ip;});});   /* EX (§12.65) : l'identité de la ligne */
   var derSeance=null,pageOuverte=-1,precDePage=null;
   function _fermer(){
     if(pageOuverte>=0){h+='<div class="ed2-folio">feuille '+(pageOuverte+1)+' / '+total+'</div></div>';pageOuverte=-1;precDePage=null;}
@@ -13064,16 +13174,16 @@ function ed2Papier(level,chnum,docs){
       }
       h+=_trou(d);return;
     }
-    var ip=mapPage[d.item];
+    var ip=mapPage[d.id];   /* EX (§12.65) : l'identité de la ligne (la page, les coupes) */
     if(ip!==pageOuverte){_fermer();h+='<div class="ed2-a4">';pageOuverte=ip;}
     if(precDePage){
-      var kc=ed2CoupeCle(precDePage.item,d.item);
+      var kc=ed2CoupeCle(precDePage.id,d.id);
       var doree=!!ED2_COUPES.ajout[kc],retiree=!!ED2_COUPES.retire[kc];
       if(!retiree){
-        h+='<div class="ed2-coupe'+(doree?' ed2-coupe-or':'')+'" onclick="ed2CoupeBasculer(\''+precDePage.item+'\',\''+d.item+'\')">'
-          +'<span class="ed2-cis">✂</span><span class="ed2-cx" onclick="ed2CoupeRetirer(\''+precDePage.item+'\',\''+d.item+'\',event)">✕</span></div>';
+        h+='<div class="ed2-coupe'+(doree?' ed2-coupe-or':'')+'" onclick="ed2CoupeBasculer(\''+precDePage.id+'\',\''+d.id+'\')">'
+          +'<span class="ed2-cis">✂</span><span class="ed2-cx" onclick="ed2CoupeRetirer(\''+precDePage.id+'\',\''+d.id+'\',event)">✕</span></div>';
       }else{
-        h+='<div class="ed2-coupe ed2-coupe-off" onclick="ed2CoupeBasculer(\''+precDePage.item+'\',\''+d.item+'\')"><span class="ed2-cis">✂ couper ici</span></div>';
+        h+='<div class="ed2-coupe ed2-coupe-off" onclick="ed2CoupeBasculer(\''+precDePage.id+'\',\''+d.id+'\')"><span class="ed2-cis">✂ couper ici</span></div>';
       }
     }
     /* [LOT9-\u2461] le titre s'\u00e9met APR\u00c8S la ligne de coupe : la coupe s\u00e9pare les
@@ -13086,7 +13196,7 @@ function ed2Papier(level,chnum,docs){
          deviennent le point de clic (ed2ClicPapier). Documents non éditables :
          carte d'avant. */
       var _doc=(d.feuille&&typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS&&d.ref)?LINK_ATELIER_DOCS[d.ref]:null;
-      h+='<div class="ed2-pdoc'+(ED2.courant===d.item?' ed2-halo':'')+'" data-item="'+d.item+'" onclick="ed2ClicPapier(event,\''+d.item+'\')">'
+      h+='<div class="ed2-pdoc'+(ED2.courant===d.id?' ed2-halo':'')+'" data-item="'+d.id+'" onclick="ed2ClicPapier(event,\''+d.id+'\')">'   /* EX (§12.65) : l'identité de la ligne */
         /* EX (13·89) : le RANG du chapitre (ordre), comme « Déposée dans »
            (edFeuilleDepots) — jamais sa clé au hub. */
         +'<div class="ed2-pref">Ch. '+atEsc(String(ordDe((chapitresData[level]||{})[chnum],chnum)))+' · S. '+atEsc(String(d.rang+1))+'</div>';
@@ -13168,6 +13278,11 @@ function ed2PanVers(el){
   var pan=document.getElementById('ed2-pan');
   if(!pan||!el)return;
   var r=el.getBoundingClientRect(),rp=pan.getBoundingClientRect();
+  /* EX (§12.65 (1)) : le BLOC d'une ligne (ou d'une séance) se cale EN HAUT du panneau, sa barre et son titre visibles. Centré, sa moitié
+     haute montrait la fin du bloc d'au-dessus — les champs d'une AUTRE feuille au-dessus du titre de la ligne choisie (capture de Paul,
+     28/10 15:49 : « Éléments » d'une autre feuille au-dessus de « Dictée : « Le port » ») ; un long bloc perdait même sa barre. Un champ
+     seul reste centré (le reste de sa ligne l'entoure). */
+  if(el.classList&&(el.classList.contains('at-edch-it')||el.classList.contains('at-edch-se'))){pan.scrollTop=pan.scrollTop+(r.top-rp.top)-8;return;}
   pan.scrollTop=pan.scrollTop+(r.top-rp.top)-(pan.clientHeight/2)+(r.height/2);
 }
 function ed2PapierVers(el){
@@ -13184,6 +13299,7 @@ function ed2SelectionnerSeance(j,depuis){
      \u00ab Titre \u00bb de sa s\u00e9ance au panneau re\u00e7oit le focus \u2014 la loi de Paul du 12/08. */
   ED2.caseSel={item:null,champ:ed2CleSe(j)};
   document.querySelectorAll('.ed2-sel,.ed2-zsel').forEach(function(x){x.classList.remove('ed2-sel');x.classList.remove('ed2-zsel');});
+  document.querySelectorAll('.ed2-som .ed2-ici').forEach(function(x){x.classList.remove('ed2-ici');});   /* EX (§12.65 (1)) : à gauche, la séance seule */
   var bloc=document.querySelector('#ed2-pan [data-champ="'+ed2CleSe(j)+'"]');
   if(bloc){
     bloc.classList.add('ed2-sel');
@@ -13211,6 +13327,7 @@ function ed2SelectionnerSeance(j,depuis){
 function ed2SelectionnerChap(champ,depuis){
   ED2.caseSel={item:null,champ:'ch-'+champ};
   document.querySelectorAll('.ed2-sel,.ed2-zsel').forEach(function(x){x.classList.remove('ed2-sel');x.classList.remove('ed2-zsel');});
+  document.querySelectorAll('.ed2-som .ed2-ici').forEach(function(x){x.classList.remove('ed2-ici');});   /* EX (§12.65 (1)) : aucune ligne d'élément allumée à gauche */
   var ligne=document.querySelector('#ed2-pan [data-champ="ch-'+champ+'"]');
   if(ligne){
     ligne.classList.add('ed2-sel');
@@ -13240,9 +13357,13 @@ function ed2Selectionner(item,champ,depuis){
     if(depuis!=='panneau'){
       ed2PanVers(ligne);
       var ch=ligne.querySelector('input,textarea,select');
-      if(ch)try{ch.focus();}catch(e){}
+      if(ch&&depuis!=='retour')try{ch.focus();}catch(e){}   /* EX (§12.65) : au retour de l'écran IA, la ligne se montre, aucun curseur */
     }
   }
+  /* EX (§12.65 (1)) : la colonne de gauche dit la MÊME ligne — un attendu choisi (une dictée à lier…) s'y allume, l'ancienne ligne s'éteint
+     (ED2.courant, réservé aux documents réels pour l'impression, ne bouge pas) */
+  var _li=document.querySelector('.ed2-som .ed2-it[data-item="'+item+'"]');
+  if(_li&&!_li.classList.contains('ed2-ici')){document.querySelectorAll('.ed2-som .ed2-ici').forEach(function(x){x.classList.remove('ed2-ici');});_li.classList.add('ed2-ici');}
   var zone=document.querySelector('.ed2-pdoc[data-item="'+item+'"]')
         ||document.querySelector('.ed2-trou[data-item="'+item+'"]');   /* [LOT9-\u2460] le trou s'allume aussi */
   if(zone){
@@ -13503,9 +13624,9 @@ function atEditerChapitreRendre(){
   var _scSom=_somAvant?_somAvant.scrollTop:null;
   /* [C5-ED2] l'\u00e9cran du chapitre : une t\u00eate, puis TROIS colonnes. */
   var _docs=ed2Documents(ec.level,ec.chnum);
-  if(!ED2.courant||!_docs.some(function(d){return d.item===ED2.courant&&!d.attendu;})){
+  if(!ED2.courant||!_docs.some(function(d){return d.id===ED2.courant&&!d.attendu;})){   /* EX (§12.65) : l'identité de la ligne */
     var _pr=_docs.filter(function(d){return !d.attendu;})[0];
-    ED2.courant=_pr?_pr.item:null;
+    ED2.courant=_pr?_pr.id:null;
   }
   var h='<div class="at-ia-haut"><button class="at-btn" onclick="atEditerChapitreSortie()">\u2190 Mes chapitres</button>'
     +'<h3 class="at-ia-titre" data-chctx="'+atEsc(ec.level)+'|'+atEsc(ec.chnum)+'">'+atEsc(ch.title||'')+'<small> \u00b7 '+atEsc(ec.level)+' \u00b7 '+(_estPublieItem(ch)?'publi\u00e9':'non publi\u00e9')+'</small></h3></div>'
@@ -13546,12 +13667,14 @@ function atEditerChapitreRendre(){
     var _ordSe=_rangSe+1;   /* E1 (§12.39-3) : le rang dans le chapitre, pas la valeur brute d'`ordre` */
     h+='<div class="at-edch at-edch-se" data-sce="'+atEsc(j)+'" data-champ="'+ed2CleSe(j)+'" onclick="ed2ClicChamp(\''+ed2CleSe(j)+'\')"><div class="at-edch-set">S\u00e9ance '+_ordSe+somNote
       +'<span class="at-edch-actes">'
-      +'<button class="at-btn at-btn-min" title="Monter"'+(_rangSe===0?' disabled':'')+' onclick="edDeplacerSeance(\''+j+'\',-1)">\u2191</button>'
-      +'<button class="at-btn at-btn-min" title="Descendre"'+(_rangSe===_nbSe-1?' disabled':'')+' onclick="edDeplacerSeance(\''+j+'\',1)">\u2193</button>'
-      +'<button class="at-btn at-btn-min" onclick="edAjouterItem(\''+j+'\')">+ Item</button>'
-      +'<button class="at-btn at-btn-min" onclick="edCreerFeuilleIci(\''+j+'\')">+ Feuille</button>'
-      +'<button class="at-btn at-btn-min" onclick="edPrendreFeuille(\''+j+'\',\'\')">Prendre une feuille…</button>'
-      +'<button class="at-btn at-btn-min at-btn-danger" onclick="edSupprimerSeance(\''+j+'\')">\u2715</button>'
+      /* EX (§12.65 (2)) : chaque geste de la barre porte son infobulle, écrite pour Paul — ce qu'il fait, ce qu'il coûte (mesuré dans le code) ;
+         un bouton grisé dit pourquoi */
+      +'<button class="at-btn at-btn-min" title="'+(_rangSe===0?ED2_BULLES.seHautNon:ED2_BULLES.seHaut)+'"'+(_rangSe===0?' disabled':'')+' onclick="edDeplacerSeance(\''+j+'\',-1)">\u2191</button>'
+      +'<button class="at-btn at-btn-min" title="'+(_rangSe===_nbSe-1?ED2_BULLES.seBasNon:ED2_BULLES.seBas)+'"'+(_rangSe===_nbSe-1?' disabled':'')+' onclick="edDeplacerSeance(\''+j+'\',1)">\u2193</button>'
+      +'<button class="at-btn at-btn-min" title="'+ED2_BULLES.seItem+'" onclick="edAjouterItem(\''+j+'\')">+ Item</button>'
+      +'<button class="at-btn at-btn-min" title="'+ED2_BULLES.seFeuille+'" onclick="edCreerFeuilleIci(\''+j+'\')">+ Feuille</button>'
+      +'<button class="at-btn at-btn-min" title="'+ED2_BULLES.sePrendre+'" onclick="edPrendreFeuille(\''+j+'\',\'\')">Prendre une feuille…</button>'
+      +'<button class="at-btn at-btn-min at-btn-danger" title="'+ED2_BULLES.seSuppr+'" aria-label="Supprimer la séance" onclick="edSupprimerSeance(\''+j+'\')">\u2715</button>'
       +'</span></div>'
       +'<label class="at-edch-lib">Titre</label><input class="at-edch-in" value="'+atEsc(se.title||'')+'" onchange="atChampSeance('+j+',\'title\',this.value)">'
       +'<label class="at-edch-lib">Type</label><input class="at-edch-in" value="'+atEsc(se.type||'')+'" onchange="atChampSeance('+j+',\'type\',this.value)">'
@@ -13560,6 +13683,7 @@ function atEditerChapitreRendre(){
     var _clesIt=Object.keys(se.items||{}).sort(function(a,b){return (se.items[a].ordre||0)-(se.items[b].ordre||0);});
     _clesIt.forEach(function(k,_rangIt){
       var it=se.items[k];if(!it)return;
+      var _id=ed2IdDe(_docs,j,k);   /* EX (§12.65) : l'identité de la ligne — la même au sommaire et au papier */
       /* [C5-ED1] LE FIL COMPLET : tout item est VISIBLE. Les feuilles de l'atelier
          s'\u00e9ditent (bouton Ouvrir l'\u00e9diteur) ; les documents Drive
          et les activit\u00e9s d'apps s'affichent en LECTURE \u2014 fig\u00e9s, mais l\u00e0. */
@@ -13592,31 +13716,32 @@ function atEditerChapitreRendre(){
       if((it.source==='drive'||it.source==='external')&&it.ref){
         _stat+=' '+itemProduitMenu(ec.level,ec.chnum,j,k,it.produit||'');
       }
-      h+='<div class="at-edch-it" data-champ="item-'+k+'" onclick="ed2ClicChamp(\'item-'+k+'\')"><div class="at-edch-itt">\u2022 '+atEsc(it.title||k)+' '+_stat
+      h+='<div class="at-edch-it" data-champ="item-'+_id+'" onclick="ed2ClicChamp(\'item-'+_id+'\')"><div class="at-edch-itt">\u2022 '+atEsc(it.title||k)+' '+_stat
         +' <span class="ch-type">'+atEsc(it.kind||'doc')+(_edtb?'':' \u00b7 lecture seule')+'</span>'
         +'<span class="at-edch-actes">'
-        +'<button class="at-btn at-btn-min" title="Monter"'+(_rangIt===0?' disabled':'')+' onclick="edDeplacerItem(\''+j+'\',\''+k+'\',-1)">\u2191</button>'
-        +'<button class="at-btn at-btn-min" title="Descendre"'+(_rangIt===_clesIt.length-1?' disabled':'')+' onclick="edDeplacerItem(\''+j+'\',\''+k+'\',1)">\u2193</button>'
-        +(((it.kind==='atelier'||it.source==='atelier')&&it.ref)?('<button class="at-btn at-btn-min at-btn-prim" onclick="edEditerFeuille(\''+j+'\',\''+k+'\')">\u00c9diter</button>'):'')
-        +(it.ref?('<button class="at-btn at-btn-min" onclick="edOuvrirItem(\''+j+'\',\''+k+'\')">Ouvrir</button>'):'')
-        +'<button class="at-btn at-btn-min" onclick="openLinkModal(\''+ec.level+'\',\''+ec.chnum+'\',\''+j+'\',\''+k+'\')">Lier</button>'
-        +'<button class="at-btn at-btn-min" onclick="edDeplacerVersSeance(\''+j+'\',\''+k+'\')">Déplacer vers…</button>'
-        +'<button class="at-btn at-btn-min" onclick="edPublierItem(\''+j+'\',\''+k+'\')">Publier\u2026</button>'
-        +(_edtb&&it.ref?('<button class="at-btn at-btn-min" onclick="edDupliquerVers(\''+j+'\',\''+k+'\')">Dupliquer vers\u2026</button>'):'')
-        +'<button class="at-btn at-btn-min at-btn-danger" onclick="edSupprimerItem(\''+j+'\',\''+k+'\')">\u2715</button>'
+        /* EX (§12.65 (2)) : la barre d'un élément au même crible — le ✕ dit qu'il SUPPRIME (corbeille, « Restaurer »), pas qu'il ferme */
+        +'<button class="at-btn at-btn-min" title="'+(_rangIt===0?ED2_BULLES.itHautNon:ED2_BULLES.itHaut)+'"'+(_rangIt===0?' disabled':'')+' onclick="edDeplacerItem(\''+j+'\',\''+k+'\',-1)">\u2191</button>'
+        +'<button class="at-btn at-btn-min" title="'+(_rangIt===_clesIt.length-1?ED2_BULLES.itBasNon:ED2_BULLES.itBas)+'"'+(_rangIt===_clesIt.length-1?' disabled':'')+' onclick="edDeplacerItem(\''+j+'\',\''+k+'\',1)">\u2193</button>'
+        +(((it.kind==='atelier'||it.source==='atelier')&&it.ref)?('<button class="at-btn at-btn-min at-btn-prim" title="'+ED2_BULLES.itEditer+'" onclick="edEditerFeuille(\''+j+'\',\''+k+'\')">\u00c9diter</button>'):'')
+        +(it.ref?('<button class="at-btn at-btn-min" title="'+((it.kind==='atelier'||it.source==='atelier')?ED2_BULLES.itOuvrirF:(it.kind==='diaporama'?ED2_BULLES.itOuvrirDiapo:ED2_BULLES.itOuvrirAutre))+'" onclick="edOuvrirItem(\''+j+'\',\''+k+'\')">Ouvrir</button>'):'')
+        +'<button class="at-btn at-btn-min" title="'+ED2_BULLES.itLier+'" onclick="openLinkModal(\''+ec.level+'\',\''+ec.chnum+'\',\''+j+'\',\''+k+'\')">Lier</button>'
+        +'<button class="at-btn at-btn-min" title="'+ED2_BULLES.itDeplacer+'" onclick="edDeplacerVersSeance(\''+j+'\',\''+k+'\')">Déplacer vers…</button>'
+        +'<button class="at-btn at-btn-min" title="'+ED2_BULLES.itPublier+'" onclick="edPublierItem(\''+j+'\',\''+k+'\')">Publier\u2026</button>'
+        +(_edtb&&it.ref?('<button class="at-btn at-btn-min" title="'+ED2_BULLES.itDupliquer+'" onclick="edDupliquerVers(\''+j+'\',\''+k+'\')">Dupliquer vers\u2026</button>'):'')
+        +'<button class="at-btn at-btn-min at-btn-danger" title="'+ED2_BULLES.itSuppr+'" aria-label="Supprimer cet élément" onclick="edSupprimerItem(\''+j+'\',\''+k+'\')">\u2715</button>'
         +'</span></div>'
         +(it.remplace&&it.remplace.ref?('<div class="at-edch-rempl">Ancien document : '+atEsc(_resLibelle(it.remplace.source,it.remplace.ref,it.remplace.kind))+' \u2014 remplac\u00e9 le '+new Date(it.remplace.le||0).toLocaleDateString('fr-FR')+'.</div>'):'')   /* [LOT8-\u2466] l'ancien couple reste lisible */
         +'<label class="at-edch-lib">Titre</label><input class="at-edch-in" value="'+atEsc(it.title||'')+'" onchange="atChampItem('+j+',\''+k+'\',\'title\',this.value)">'
         +'<label class="at-edch-lib">Sous-titre</label><input class="at-edch-in" value="'+atEsc(it.subtitle||'')+'" onchange="atChampItem('+j+',\''+k+'\',\'subtitle\',this.value)">'
         +'<label class="at-edch-lib">Type (kind)</label><input class="at-edch-in" value="'+atEsc(it.kind||'')+'" onchange="atChampItem('+j+',\''+k+'\',\'kind\',this.value)">'
         +'<label class="at-edch-lib">Ordre</label><input class="at-edch-in at-edch-num" type="number" value="'+(it.ordre||0)+'" onchange="atChampItem('+j+',\''+k+'\',\'ordre\',parseInt(this.value,10)||0)">'
-        +(((it.kind==='atelier'||it.source==='atelier')&&it.ref)?ed2PanneauFeuille(k,it.ref):'')   /* [LOT3] [LOT4-①] la clé porte l'item */
+        +(((it.kind==='atelier'||it.source==='atelier')&&it.ref)?ed2PanneauFeuille(_id,it.ref):'')   /* [LOT3] [LOT4-①] la clé porte l'item */
         +'</div>';
     });
     h+='</div>';
   });
   /* [C5-ED2] ④ la 3e colonne EST l'atelier papier : la visionneuse est l'impression */
-  var _cd=_docs.filter(function(d){return d.item===ED2.courant;})[0];
+  var _cd=_docs.filter(function(d){return d.id===ED2.courant;})[0];
   ED2.refCourant=_cd?_cd.ref:'';
   h+='</div>'+ed2Papier(ec.level,ec.chnum,_docs)+'</div>';
   z.innerHTML=h;

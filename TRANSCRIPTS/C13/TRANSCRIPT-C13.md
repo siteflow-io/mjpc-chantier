@@ -6088,3 +6088,24 @@ MEMO
 
 28/10/2026 11:13
 MEMO
+
+---
+
+## Tour 296 — 28/10/2026 11:32 → 11:34
+
+**Paul :** Pour lundi il faut surtout auditer ce qui apparaît au tableau et que je ne peux pas modifier. Tu comprends? Je ne veux pas être bloqué par quelque chose au tableau qui s'affiche en non modifiable en live. Mesure
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure (dernier rouge de la ⑧) ; E4 mesure ce qui ne se corrige pas au tableau ; E3 mesure le redessin · ouvert : 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+811. Oui, je comprends : tout ce qui s'affiche au tableau doit pouvoir se corriger en direct depuis ton pilotage, sinon tu es bloqué devant la classe.
+
+812. Mesuré sur la ⑧, en heure, avec les De Gaulle en mode test, sur un chapitre de 21 diapos. Se corrigent en direct : les consignes, les étapes, les questions et les légendes d'image. Ne se corrigent pas : l'étiquette d'activité en haut de chaque diapo (« ANALYSE D'IMAGES : LA ROUTINE », sur les 21), toute la diapo du cahier de textes (son travail à faire et son échéance ne se règlent que par « Fin de l'heure », pas dans la diapo), l'image elle-même et l'icône 🗣️.
+
+813. Pas encore mesuré, parce que ce chapitre n'en a pas : les textes, les schémas, les fiches, le bilan, la réactivation, la vidéo et les pages. E4 les mesure maintenant sur le chapitre réaliste du prompt. Il vérifie aussi, pour chaque correction, qu'elle arrive bien au tableau. Ensuite, je t'apporte ce qu'il faut rendre corrigeable avant lundi.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:34
+MEMO

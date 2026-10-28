@@ -5499,3 +5499,38 @@ C'est ma faute : hier à 22:30, je te les avais dites « encore ouvertes » et j
 
 28/10/2026 06:53
 MEMO
+
+---
+
+## Tour 271 — 28/10/2026 07:04 → 07:09
+
+**Paul :** 720 normalement on avait codé tout une fonctionnalité de reconnaissance clef branchée etc, c'est passé où ça? Pour le reste oui à te propositions
+
+**Claude** *(registre 13 · 84, 13 · 11 remesurée ; contrat §12.44-§12.48 ; relances E1, E3, E4)* :
+
+À jouer : la ⑦ (captures T268-01 à T268-09) · en cours chez les exécutants : E1 sur 717, puis la vidéo, puis la taxonomie ; E4 sur l'import, puis la présence en mode test, le cahier sans « M. MENEY », le « ? », les notes ; E3 vérifie · ouvert : 724, 726 à 731, 732 ; 538, 553, 481, 458.
+
+723. 720 : la reconnaissance de la clé branchée n'a jamais été codée pour de vrai. Ton cadrage du 14-15/09 (4 bis) la décrit, et les maquettes la jouaient, mais l'endroit de la clé s'y choisissait à la main, dans un panneau de simulation. Le site a gardé les phrases (« ✔ … clé USB branchée sur ton ordi portable », « Revérifier ») sans la détection : il croit la clé toujours branchée sur ton ordi portable. La ligne « ✔ » peut donc mentir. C'est au registre sous 13 · 84.
+
+724. Le remède est ton cadrage 4 bis, déjà décidé : tu désignes le dossier de la clé une fois, le site garde l'accès, la vidéo joue vraiment avec ses repères, et la garde vérifie pour de vrai (si le dossier répond, la clé est branchée ; « Revérifier » refait la lecture). C'est lancé chez E1, après 717. Ce qui attend encore ton mot dans 720, c'est seulement l'extension aux images et aux documents de ton dossier. Oui ?
+
+725. « Oui à tes propositions » : c'est lancé pour 712 (« par M. MENEY P. » retiré du cahier), 722 (le « ? » en or) et 641 (E1 ajoute à l'écran de la taxonomie « ＋ Ajouter une notion » et « Importer des notions » ; c'est toi qui colles et valides). J'ai aussi mesuré 13 · 11 : « G » sur un mot des notes de présentateur ne fait rien. C'est lancé aussi, chez E4.
+
+726. Les phrases que l'élève lira (641), à valider mot pour mot. La famille : « Les grands mouvements de l'art et des lettres ».
+
+727. Le romantisme : « Un art qui place l'émotion, la nature et le « je » au premier plan ».
+
+728. Le Parnasse : « Une poésie qui cherche la beauté parfaite de la forme, sans dire ses sentiments ».
+
+729. Le symbolisme : « Une poésie qui suggère par des images et des sons plutôt que de dire ».
+
+730. Le réalisme et le naturalisme : « Un récit ou un tableau qui montre la société telle qu'elle est ».
+
+731. Le surréalisme : « Un art qui laisse parler le rêve et le hasard ».
+
+732. La ⑦ règle quatorze dettes et n'en ajoute aucune. Restent en production 712, 13 · 11, 13 · 47, 13 · 48, 13 · 56, 13 · 66, 13 · 71, 13 · 77 et 13 · 84, réglées dans la ⑧. Ta règle dit : jamais de promotion sur dette. Je propose de promouvoir la ⑦ maintenant et de faire la ⑧ dans la journée. Oui ?
+
+À tester : rien de neuf en production.
+
+28/10/2026 07:09
+MEMO

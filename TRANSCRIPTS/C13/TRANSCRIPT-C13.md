@@ -5466,3 +5466,36 @@ MEMO
 
 28/10/2026 06:46
 MEMO
+
+---
+
+## Tour 270 — 28/10/2026 06:50 → 06:53
+
+**Paul :** Évidemment pour 717! Aucun test ne se fait au moment du cours, tout doit être testé avant. Les dettes vidéo etc tout est fait ?
+
+**Claude** *(contrat §12.41-§12.43 ; relances E1, E3, E4 ; les trois réveillés)* :
+
+À jouer : la ⑦ (rapport de 03:58) · en cours chez les exécutants : E1 sur 717 ; E4 sur 13 · 66 puis 13 · 48 ; E3 les vérifie · ouvert : 712, 720, 721, 722 ; 538, 553, 481, 458.
+
+718. 717 est lancé (E1, contrat §12.41) : la répétition enverra au tableau distant ce que voit la classe. Je retire mon 716, qui proposait de tester au début d'une vraie heure : tout se teste avant le cours. Avec 717, ton téléphone ou le vidéoprojecteur s'essaient la veille, en répétition.
+
+719. Non, les dettes ne sont pas toutes faites. La nuit a réglé ce qui était en cours : quatorze dettes (13 · 59, 65, 67 à 70, 72, 73, 78 à 83), qui seront cochées à la promotion de la ⑦. Restent ouvertes :
+- 13 · 56, la vidéo, et plus largement les médias pris dans ton dossier : elle attend ton oui à 586, que je repose en 720 ;
+- 13 · 77, travailler sans réseau : même chantier que 586 (les fichiers sur ton ordinateur), à cadrer avec lui ;
+- 13 · 66, l'import qui crée les feuilles et fait les liaisons : lancé maintenant (E4) ;
+- 13 · 48, la présence du prof écrite au vrai site en mode test : lancé maintenant (E4, après 13 · 66) ;
+- 13 · 71, la taxonomie des mouvements littéraires : attend ton oui à 641, reposé en 721 ;
+- 13 · 47, le « ? » d'aide qui ne se voit pas : tu devais le mesurer ; je repose ma proposition en 722 ;
+- 13 · 11, la mise en forme dans les notes de présentateur : pas mesurée cette nuit ; je la mesure ce matin.
+C'est ma faute : hier à 22:30, je te les avais dites « encore ouvertes » et je ne les ai pas lancées, en attendant tes réponses.
+
+720. (586, reposé tel quel) Je propose, pour tous les médias (image, vidéo, document) : un seul geste « Choisir le fichier », avec deux sources — mjpc-medias, ou ton dossier de cours (sur l'ordinateur ou la clé). Le dossier se désigne une fois ; Chrome le retient et te redemande seulement ton accord à chaque ouverture du site. La diapo garde le nom du fichier dans ce dossier ; la vidéo joue vraiment, avec ses repères. Deux limites : cela marche dans Chrome et Edge, pas dans Firefox ni Safari ; et un fichier local ne se voit que sur l'ordinateur qui l'a — la fenêtre du tableau ouverte depuis ton ordinateur le montre, ton téléphone ou un autre ordinateur par l'adresse du tableau, non. Oui ?
+
+721. (641, reposé tel quel) Je propose une famille neuve dans « Le texte et ses formes » : « Les mouvements littéraires et artistiques », une notion par mouvement (le romantisme, le Parnasse, le symbolisme, le réalisme et le naturalisme, le surréalisme). Chaque notion a, comme les autres, son nom pour toi, sa phrase pour l'élève, un exemple et ses niveaux : je te les écris, tu les valides mot pour mot, puisque l'élève lit sa phrase. Oui ?
+
+722. (13 · 47) Le « ? » d'aide est sur chaque écran, mais c'est une languette sombre de 20 × 56 px collée au bord droit. Je propose la même place, en or, 24 × 88 px, avec un « ? » sombre (image T211-01). Oui ?
+
+À tester : rien de neuf en production ; la ⑦ attend ton « promeus » (captures T268-01 à T268-09).
+
+28/10/2026 06:53
+MEMO

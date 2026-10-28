@@ -6168,3 +6168,24 @@ MEMO
 
 28/10/2026 11:48
 MEMO
+
+---
+
+## Tour 300 — 28/10/2026 11:49 (message de Claude, sans message de Paul : la mesure d'E4, poussée 127)
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure ; E3 fait les coupes du redessin et le menu de « Ce que la diapo déclare » ; E4 a fini sa mesure · ouvert : 825 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+822. E4 a mesuré, sur le chapitre réaliste, en heure avec les De Gaulle. Ce qui se corrige en direct arrive bien au tableau, vingt fois sur vingt : la consigne et ses étapes, la question, le bilan, la légende d'image, la fiche, le titre d'une page, et le texte du travail sur la diapo du cahier. Ne se corrigent pas : l'étiquette d'activité en haut de chaque diapo, le schéma entier (ni le dessin ni ses mots), le libellé et les repères de la vidéo, l'étiquette « Fiche notion », le contenu d'une page, l'image, les pictogrammes des consignes, et presque toute la diapo du cahier. La réactivation n'est pas encore mesurée : il faut jouer l'heure 1 et la clore avant l'heure 2.
+
+823. Je propose de rendre corrigeables en direct, d'ici lundi : l'étiquette d'activité ; les mots du schéma (le dessin reste) ; le libellé de la vidéo et l'étiquette de la fiche ; et, sur la diapo du cahier, le travail à faire, l'échéance et le contenu de séance, les mêmes que dans « Fin de l'heure ».
+
+824. Restent fixes, parce que ce sont des documents ou des données : l'image, le contenu d'une page, l'en-tête du cahier (date, collège, classe, matière, « Donné le »), la participation et les pictogrammes.
+
+825. Et pour que rien ne te bloque jamais : un clic droit « retirer du tableau » sur n'importe quel élément, corrigeable ou non. La classe ne le voit plus, et il revient d'un clic. E4 le code dans la ⑧ avec 823, et mesure la réactivation en jouant une vraie heure 1 puis l'heure 2. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:49
+MEMO

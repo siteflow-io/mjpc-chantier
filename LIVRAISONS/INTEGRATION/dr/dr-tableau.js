@@ -238,7 +238,7 @@ function dr_tabPoser(){
   const z = document.createElement('div'); z.id = 'ses-tab'; z.className = 'ses-tab';
   z.innerHTML = '<div class="ses-tab-attente" id="ses-tab-att">'
     + '<div class="n">monsieurjaipascompris</div><div class="h" id="ses-tab-h">--:--</div>'
-    + '<div class="d" id="ses-tab-d"></div><div class="c" id="ses-tab-c" style="display:none"></div></div>'
+    + '<div class="d" id="ses-tab-d"></div><div class="c" id="ses-tab-c" style="display:none"></div>' + (dr_tabLocal() ? '' : '<button class="c" id="ses-tab-cle" style="cursor:pointer;background:transparent;color:inherit;font:inherit;font-size:2.2vh"></button>') + '</div>'
     + '<div class="mur tableau" id="mur2"></div>'
     + '<div class="ses-tab-perdu" id="ses-tab-perdu"></div>';
   [].slice.call(document.body.children).forEach(el => { el.style.display = 'none'; });
@@ -253,9 +253,15 @@ function dr_tabPoser(){
     if (h) h.textContent = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
     if (dd) dd.textContent = J[d.getDay()] + ' ' + d.getDate() + ' ' + M[d.getMonth()] + ' ' + d.getFullYear(); };
   horloge(); setInterval(horloge, 1000);
+  if (!dr_tabLocal()) { dr_tabCleMaj(); setInterval(dr_tabCleMaj, 3000); const bc = document.getElementById('ses-tab-cle'); if (bc) bc.onclick = async () => { const e = DR_CLE.etat; if (e === 'a-autoriser') await dr_cleAutoriser(); else if (e === 'vu') await dr_cleScanner(); else await dr_cleDesigner(); dr_tabCleMaj(); }; }
   window.addEventListener('resize', () => { if (DR_TAB.montre) dr_rendreMur(DR_TAB.montre); });
 }
 
+/* E1 (§12.44, 4 bis) : sur l'ordi de classe (la vue du tableau, sur l'écran d'attente seulement — jamais devant la classe pendant l'heure), la clé USB des vidéos :
+   la désigner une fois, l'autoriser à chaque ouverture (le navigateur redemande l'accord), la voir. L'état part au site par `dr_cleRapporter` (la seule écriture de la vue). */
+function dr_tabCleMaj(){ const b = document.getElementById('ses-tab-cle'); if (!b || typeof DR_CLE === 'undefined') return; const e = DR_CLE.etat, n = DR_CLE.nom;
+  const t = e === 'vu' ? '✔ Clé USB « ' + n + ' » · ' + DR_CLE.fichiers.length + ' fichier' + (DR_CLE.fichiers.length > 1 ? 's' : '') : e === 'a-autoriser' ? 'Clé USB « ' + n + ' » : autoriser la lecture' : e === 'pas-vu' ? '✘ Clé USB « ' + n + ' » : branche la clé, ou désigne son dossier' : 'Clé USB des vidéos : désigner son dossier (une fois sur cet ordi)';
+  if (b.textContent !== t) b.textContent = t; b.title = e === 'vu' ? 'Cet ordi lit les vidéos de la clé ; un clic relit la clé' : 'Les vidéos se lisent depuis la clé branchée sur cet ordi : un clic pour ' + (e === 'a-autoriser' ? 'donner l’accord du navigateur' : 'choisir le dossier de la clé'); }
 /* la classe attendue (réveil n°3 : tranché) — en page tableau sans cours actif, la grille de l'EDT est lue EN LECTURE SEULE (`dr_lire` :
    grille, calendrier, classes ; jamais le module EDT, qui écrit à son ouverture) et la case du moment se calcule pour le niveau de la page
    (`?n=`) avec la règle de `dr_proposer` (E2) : aujourd'hui, une heure MJPC de la bonne semaine (A/B), en cours ou la prochaine, hors vacances

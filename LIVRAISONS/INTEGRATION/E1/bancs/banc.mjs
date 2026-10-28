@@ -1788,6 +1788,62 @@ await B('A92', '§12.41 : répétition dans un navigateur, `?vue=tableau` dans l
   E.verif('A92', !o.errs.length && !errsT.length, 'aucune erreur JS (le pilote, le tableau distant)', o.errs.concat(errsT).slice(0, 2).join(' ; ') || undefined);
   await c2.close(); await o.ctx.close(); });
 
+/* ── A95 · §12.44 (13 · 56, 13 · 84 ; cadrage 4 bis) : la vidéo depuis la clé, pour de vrai — servi en http (le dossier d'une clé n'existe pas en file://) ── */
+await B('A95', '§12.44 : désigner le dossier de la clé, poser la vidéo et ses repères, recharger (le dossier est retenu), jouer en répétition (▶ s\'arrête au repère) ; clé retirée → « ✘ … branche la clé USB … », « Revérifier » après remise → « ✔ » ; une deuxième clé sans le fichier → la garde le nomme ; l\'ordi de classe dit ce qu\'il voit', async () => {
+  const http = await import('http'); const DIR = path.dirname(E.FICHIER); const srv = http.createServer((q, r) => { const f = path.join(DIR, decodeURIComponent(q.url.split('?')[0]).replace(/^\/+/, '') || 'index.html'); if (!f.startsWith(DIR) || !fs.existsSync(f)) { r.writeHead(404); r.end(); return; } r.writeHead(200, { 'Content-Type': f.endsWith('.html') ? 'text/html; charset=utf-8' : 'application/octet-stream' }); fs.createReadStream(f).pipe(r); });
+  await new Promise(res => srv.listen(0, '127.0.0.1', res)); const port = srv.address().port; const URL0 = 'http://127.0.0.1:' + port + '/' + path.basename(E.FICHIER);
+  const mp4 = fs.readFileSync(path.join(E.ICI, 'medias', 'court.mp4')).toString('base64');
+  const st = E.store(); const S0 = st.site['3e'].chapitres[0].seances[0]; const EE = S0.deroule.ecrans; const k = EE.findIndex((e, i) => i > 0 && e && !e.role && (e.heure == null || +e.heure === 1)); EE[k].blocs = []; EE[k].act = 'La vidéo de la clé';
+  const stub = () => { window.showDirectoryPicker = async () => { const d = await navigator.storage.getDirectory(); return d.getDirectoryHandle(window.__drDossierStub || 'CLE_PAUL', { create: true }); };
+    window.__drCleIdbBanc = async (op, v) => { if (op === 'put') { sessionStorage.setItem('__drCle', v.name); return true; } const n = sessionStorage.getItem('__drCle'); return n ? (await navigator.storage.getDirectory()).getDirectoryHandle(n) : null; }; };   /* le dossier retenu, rendu au rechargement (IndexedDB de Chromium sans écran plante sur un dossier) */
+  const remplir = (pg, nom, avec) => pg.evaluate(async ([nom, b64, avec]) => { const d = await navigator.storage.getDirectory(); const s = await d.getDirectoryHandle(nom, { create: true }); const ecr = async (n, data) => { const f = await s.getFileHandle(n, { create: true }); const w = await f.createWritable(); await w.write(data); await w.close(); }; if (avec) await ecr('court.mp4', Uint8Array.from(atob(b64), c => c.charCodeAt(0))); await ecr('note.txt', 'les vidéos de la séance'); }, [nom, mp4, avec]);
+  const ctx = await b.newContext({ viewport: { width: 1366, height: 768 }, timezoneId: 'Europe/Paris' }); await ctx.route(u => !String(u).startsWith('http://127.0.0.1:' + port), r => r.abort()); const pg = await ctx.newPage(); const errs = []; pg.on('pageerror', e => errs.push(e.message));
+  await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await pg.addInitScript(E.fauxHub, st); await pg.addInitScript(stub);
+  const ouvrir = async () => { await pg.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await pg.waitForTimeout(1800); await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await pg.waitForTimeout(300);
+    await pg.click('#tprof-btn', { timeout: 8000 }).catch(e => { throw new Error('A95 #tprof-btn : ' + e.message.split('\n')[0]); }); await pg.waitForTimeout(500); await pg.evaluate(() => atelierOuvrir()); await pg.waitForTimeout(1000); await E.clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await pg.waitForTimeout(800); await E.clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'); await pg.waitForTimeout(1500);
+    await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await pg.waitForTimeout(1500); await sansVoile(pg); };
+  await ouvrir(); await remplir(pg, 'CLE_PAUL', true);
+  await pg.evaluate(k => { S.di = k; dr_tout(); choixObjet(); }, k); await pg.waitForTimeout(300); await pg.click('.choix-obj .dr-c[data-t="video"]'); await pg.waitForTimeout(400);
+  await pg.click('#of-cle', { timeout: 8000 }).catch(async e => { const d = await pg.evaluate(() => { const x = document.getElementById('of-cle'); if (!x) return 'absent'; const r = x.getBoundingClientRect(); const t = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2); return [x.offsetParent ? 'visible' : 'caché', Math.round(r.x), Math.round(r.y), t ? (t.id || t.className) : null].join(' '); }); throw new Error('A95 #of-cle : ' + d); }); await pg.waitForTimeout(2500);
+  const etat1 = await pg.evaluate(() => (document.getElementById('of-cle-etat') || {}).textContent || '');
+  E.verif('A95', /✔ dossier « CLE_PAUL »/.test(etat1) && /retenu pour ce navigateur/.test(etat1), '« Désigner le dossier de la clé… » : « ' + etat1.trim() + ' »', etat1);
+  await pg.click('#choix-obj [data-f="court.mp4"], [data-f="court.mp4"]'); await pg.waitForTimeout(400); await pg.fill('#of-lg', 'Le Radeau de la Méduse — extrait'); await pg.click('#of-plus'); await pg.waitForTimeout(150); await pg.click('#of-plus'); await pg.waitForTimeout(150);
+  await pg.evaluate(() => { const v = [['0:00', 'début'], ['0:01', 'premier repère'], ['0:03', 'second repère']]; document.querySelectorAll('[data-rt]').forEach((x, i) => { if (v[i]) x.value = v[i][0]; }); document.querySelectorAll('[data-rl]').forEach((x, i) => { if (v[i]) x.value = v[i][1]; }); });
+  await pg.click('#of-ok'); await pg.waitForTimeout(800);
+  const bloc = await pg.evaluate(() => { const b = ecran().blocs[0]; return b && { t: b.t, fichier: b.fichier, dossier: b.dossier, duree: b.duree, reperes: (b.reperes || []).map(r => r.t), chemin: /[\\/:]/.test(String(b.fichier) + String(b.dossier)) }; });
+  E.verif('A95', bloc && bloc.t === 'video' && bloc.fichier === 'court.mp4' && bloc.dossier === 'CLE_PAUL' && bloc.duree === 5 && JSON.stringify(bloc.reperes) === '[0,1,3]' && !bloc.chemin, 'la diapo retient le nom du fichier et le dossier, jamais un chemin de disque ; durée lue dans le fichier (5 s) ; trois repères', JSON.stringify(bloc));
+  const der = await pg.evaluate(() => JSON.stringify(chapitresData['3e']['0'].seances[0].deroule));   /* le hub du banc ne survit pas au rechargement : la trame posée y est recopiée */
+  await pg.addInitScript(d => { try { window.__HUB.site['3e'].chapitres[0].seances[0].deroule = JSON.parse(d); } catch (e) {} }, der);
+  pg.on('dialog', d => d.accept().catch(() => {}));
+  await ouvrir(); await pg.waitForTimeout(800);
+  const apres = await pg.evaluate(() => ({ etat: DR_CLE.etat, nom: DR_CLE.nom, retenu: DR_CLE.retenu, f: DR_CLE.fichiers }));
+  E.verif('A95', apres.etat === 'vu' && apres.nom === 'CLE_PAUL' && apres.retenu && apres.f.includes('court.mp4'), 'recharger : le dossier de la clé est retenu (sans le redésigner)', JSON.stringify(apres));
+  await pg.evaluate(k => { S.di = k; dr_tout(); lancerRepetition(); S.di = k; dr_tout(); }, k); await pg.waitForTimeout(800);
+  const jouer = async () => { await pg.click('#bdev'); await pg.waitForTimeout(3200); return pg.evaluate(() => { const v = document.querySelector('#mur video.dr-vid'); return v ? { t: Math.round(v.currentTime * 10) / 10, pause: v.paused, src: /^blob:/.test(v.src) } : null; }); };
+  const j1 = await jouer(); const j2 = await jouer();
+  E.verif('A95', j1 && j1.src && j1.pause && Math.abs(j1.t - 1) <= 0.35 && j2 && j2.pause && Math.abs(j2.t - 3) <= 0.35, 'en répétition, le vrai lecteur : ▶ lit et s\'arrête au premier repère (' + (j1 && j1.t) + ' s), ▶ encore → au second (' + (j2 && j2.t) + ' s)', JSON.stringify({ j1, j2 }));
+  await pg.evaluate(() => arreterRepetition()); await pg.waitForTimeout(400);
+  await pg.evaluate(async () => { const d = await navigator.storage.getDirectory(); await d.removeEntry('CLE_PAUL', { recursive: true }); await dr_cleScanner(); dr_tout(); }); await pg.waitForTimeout(500);   /* la clé retirée ; la relecture des 15 s, tout de suite */
+  const ko = await pg.evaluate(() => { const a = document.getElementById('alerte-video'); return { vis: !!(a && a.offsetParent), t: a ? a.textContent : '', btn: !!document.getElementById('a-reverif') }; });
+  E.verif('A95', ko.vis && /✘/.test(ko.t) && /branche la clé USB/.test(ko.t) && ko.btn, 'clé retirée : « ' + ko.t.replace(/\s+/g, ' ').trim().slice(0, 140) + ' » (avec « Revérifier »)', JSON.stringify(ko));
+  await remplir(pg, 'CLE_PAUL', true); await pg.click('#a-reverif'); await pg.waitForTimeout(1500);
+  const ok = await pg.evaluate(() => ({ t: dr_cleEtatFichier('court.mp4').texte, alerte: !!(document.getElementById('alerte-video') || {}).offsetParent }));
+  E.verif('A95', /^✔ « court\.mp4 » — clé USB branchée sur ton ordi portable/.test(ok.t) && !ok.alerte, '« Revérifier » après remise : « ' + ok.t + ' », l\'alerte se tait', JSON.stringify(ok));
+  await remplir(pg, 'CLE_2', false); await pg.evaluate(() => { window.__drDossierStub = 'CLE_2'; choixObjet(); }); await pg.waitForTimeout(300); await pg.click('.choix-obj .dr-c[data-t="video"]'); await pg.waitForTimeout(300); await pg.click('#of-cle'); await pg.waitForTimeout(1500);
+  const deux = await pg.evaluate(() => { try { fermerChoix(); } catch (e) {} dr_tout(); return { t: dr_cleEtatFichier('court.mp4').texte, alerte: ((document.getElementById('alerte-video') || {}).textContent || '').replace(/\s+/g, ' ').trim() }; });
+  E.verif('A95', /✘ le fichier « court\.mp4 » manque sur la clé de ton ordi portable/.test(deux.t) && /manque sur la clé/.test(deux.alerte), 'une deuxième clé aux mêmes noms, privée de court.mp4 : la garde nomme le fichier — « ' + deux.t + ' »', JSON.stringify(deux));
+  /* l'ordi de classe : la vue du tableau désigne sa clé (écran d'attente), dit ce qu'elle voit — sa seule écriture */
+  const c2 = await b.newContext({ viewport: { width: 1280, height: 720 }, timezoneId: 'Europe/Paris' }); await c2.route(u => !String(u).startsWith('http://127.0.0.1:' + port), r => r.abort()); const tb = await c2.newPage(); const errsT = []; tb.on('pageerror', e => errsT.push(e.message));
+  await tb.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00')); await tb.addInitScript(E.fauxHub, st); await tb.addInitScript(stub); await tb.goto(URL0 + '?vue=tableau&n=3e', { waitUntil: 'load' }); await tb.waitForTimeout(1500);
+  await tb.evaluate(() => { window.__drDossierStub = 'CLE_CLASSE'; }); await remplir(tb, 'CLE_CLASSE', true); const t0 = await tb.evaluate(() => (document.getElementById('ses-tab-cle') || {}).textContent || '');
+  await tb.click('#ses-tab-cle'); await tb.waitForTimeout(1500); const t1 = await tb.evaluate(() => ({ t: (document.getElementById('ses-tab-cle') || {}).textContent || '', ecr: window.__ECR.slice(), bloquees: SES.ecrituresBloquees || 0, cv: (window.__HUB.site || {}).cle_vue || null }));
+  E.verif('A95', /désigner son dossier/.test(t0) && /✔ Clé USB « CLE_CLASSE »/.test(t1.t) && t1.ecr.length > 0 && t1.ecr.every(x => x === 'PUT /site/cle_vue') && t1.cv && t1.cv.fichiers.includes('court.mp4') && Object.keys(t1.cv).sort().join() === 'appareil,etat,fichiers,nom,ts', 'l\'ordi de classe : « ' + t0 + ' » → « ' + t1.t + ' » ; il dit au site ce qu\'il voit (`/site/cle_vue` : le dossier, l\'état, les noms — rien d\'autre ; sa seule écriture)', JSON.stringify({ ecr: t1.ecr, cv: t1.cv && Object.assign({}, t1.cv, { fichiers: t1.cv.fichiers.length }) }));
+  await pg.evaluate(cv => { window.__HUB.site.cle_vue = cv; }, t1.cv); await pg.evaluate(() => new Promise(r => dr_cleLireDistant(r)));
+  const cl = await pg.evaluate(() => dr_cleEtatFichier('court.mp4'));
+  E.verif('A95', cl.ok && cl.ou === 'classe' && /branchée sur l’ordi de classe/.test(cl.texte), 'chez Paul, la garde se lit sur l\'ordi qui projette : « ' + cl.texte + ' »', JSON.stringify(cl));
+  E.verif('A95', !errs.length && !errsT.length, 'aucune erreur JS', errs.concat(errsT).slice(0, 2).join(' ; ') || undefined);
+  await c2.close(); await ctx.close(); srv.close(); });
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

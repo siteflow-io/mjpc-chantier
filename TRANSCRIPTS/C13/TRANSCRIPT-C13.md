@@ -6780,3 +6780,20 @@ MEMO
 
 28/10/2026 16:07
 MEMO
+
+---
+
+## Tour 331 — 28/10/2026 16:13 → 16:13
+
+**Paul :** Bon on en est où sur 8 là?????
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours : deux exécutants neufs sur les derniers points de la ⑧ · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+887. Où en est la ⑧, exactement. Tout le reste est codé. Il reste deux morceaux. Le premier : le tableau distant qui montre une ligne de moins que ton pilote, rouge par moments seulement, en cours depuis 15 h 33. Je viens de lui donner un quart d'heure, au-delà duquel il me dit ce qu'il a trouvé. Le second : l'ouverture des trois anciens fichiers Drive, lancée à 16 h 06. Dès que les deux sont poussés, je passe mon banc complet, environ dix minutes, et je te l'apporte. Mon estimation, pas une mesure : vers 17 h.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 16:13
+MEMO

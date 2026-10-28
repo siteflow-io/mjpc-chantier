@@ -7010,3 +7010,22 @@ MEMO
 
 28/10/2026 20:37
 MEMO
+
+## Tour 340 — 28/10/2026 20:53 → 20:54
+
+**Paul :** Oui relance mais j'ai 84 pourcent d'utilisation
+
+**Claude :**
+
+À jouer : rien · en cours : la ⑨ (l'Atelier) et la rédaction, deux exécutants neufs, consigne d'économie · ouvert : 905 à 917 (les questions).
+
+933. C'est relancé. Les deux reprennent le travail gardé, sans captures, avec un seul banc complet chacun.
+
+934. 924 à 928 sont écrits au contrat (§12.66). Le troisième exécutant part dès que l'Atelier est poussé.
+
+935. Pour tes 16 % restants, ce qui sert lundi passe d'abord : la ⑨, puis 924 à 928. Je ne t'écris plus que pour la ⑨ à promouvoir.
+
+À tester : rien de neuf depuis la ⑧ (la liste de 17:33 tient).
+
+28/10/2026 20:54
+MEMO

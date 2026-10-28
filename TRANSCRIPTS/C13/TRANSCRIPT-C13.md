@@ -6225,3 +6225,22 @@ MEMO
 
 28/10/2026 11:55
 MEMO
+
+---
+
+## Tour 303 — 28/10/2026 12:31 (message de Claude, sans message de Paul : la mesure d'E4, poussée 128)
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure ; E3 fait les coupes du redessin, puis mesure l'intégration ; E4 a fini sa mesure · ouvert : 831 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+829. E4 a mesuré ce que tes corrections en direct changent ailleurs, et c'est conforme à ton cadrage. La correction va dans la copie de la classe et arrive au tableau. L'Atelier et la Structure ne bougent pas. À « Fin de l'heure », le site te propose de verser chaque diapo corrigée dans le chapitre, une par une (« Oui, verser » ou « Non, garder la trame »), jamais tout seul. Le récit et la version papier montrent le texte corrigé, ce que la classe a vu. Deux écarts : le journal note quand et où tu as écrit, mais pas ce que tu as écrit ; et le titre d'une page n'apparaît pas du tout dans le récit.
+
+830. Pour 823 et 825, le cadrage dit déjà ce qu'ils doivent faire. Une correction de l'étiquette, du schéma, de la vidéo ou de la fiche suit le même chemin : la copie, le tableau, puis le versement proposé à la clôture. Sur la diapo du cahier, ce que tu écris est le travail, l'échéance et le contenu de l'heure eux-mêmes, les mêmes que dans « Fin de l'heure », sans deuxième copie. « Retirer du tableau » est noté dans la copie et au journal (retiré à telle heure, remis à telle heure). La relecture montre ce que le tableau a montré à chaque moment. À la clôture, le site te propose « le retirer aussi du chapitre ? », jamais tout seul.
+
+831. Je propose qu'E4 code 823 et 825 ainsi, dans la ⑧. Il réparerait aussi les deux écarts : le journal garde le texte d'avant et le texte corrigé, et le titre d'une page paraît dans le récit. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 12:31
+MEMO

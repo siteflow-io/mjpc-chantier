@@ -961,7 +961,10 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
             for (let i = 0; i < 4; i++) { await clicTexte(pg, 'button', 'Dévoiler'); await p(pg, 500); }   /* l'onglet s'ouvre au troisième élément dévoilé, comme en classe */
             const cont = await pg.evaluate(() => { const m = document.getElementById('mur'); const o = m && m.querySelector('[data-onglet="contenu"]'); if (!o) return null; o.click(); return true; }); await p(pg, 800);
             const ct = await pg.evaluate(() => { const m = document.getElementById('mur'); return m ? m.innerText.replace(/\s+/g, ' ').trim().slice(0, 600) : ''; }); await capt(pg, W, H, '38-7-le-cahier-contenus');
-            verif(k, cont && /Analyse d.images|Tableau 1|hypoth|Romantisme|Baudelaire|Albatros/.test(ct.replace(/Relire « L’Albatros »[^.]*mer/, '')), T + ' · A91 · en répétition, l’onglet « Contenus de séances » du cahier montre le contenu de l’heure', '« ' + ct.slice(0, 400) + ' »');
+            /* contrat §12.38 (3), 02:25 : hors de la classe, le contenu PRÉVU de l'heure (ses diapos dans l'ordre, sans le cahier) — au moins le titre de sa première diapo */
+            const prem = await pg.evaluate(() => { try { const E = seance().ecrans; const f = E[S.di]; const h = f && f.heure; const L = (typeof ordreHeure === 'function' ? ordreHeure(h).map(i => E[i]) : E.filter(e => e && e.heure === h)).filter(e => e && e.role !== 'fin');   /* l'ordre de jeu de l'heure */ return { h, acts: L.slice(0, 3).map(e => (e.act || '').trim()) }; } catch (e) { return null; } });
+            const t1 = prem && prem.acts[0] ? prem.acts[0].slice(0, 22) : '§§';
+            verif(k, cont && ct.indexOf(t1) >= 0 && !/rien encore/.test(ct), T + ' · A91 · en répétition, l’onglet « Contenus de séances » montre le contenu prévu de l’heure (sa première diapo : « ' + t1 + ' »)', JSON.stringify({ heure: prem && prem.h, prevu: prem && prem.acts }) + ' · « ' + ct.slice(0, 360) + ' »');
             const ecrRep = await pg.evaluate(() => (window.__ECR || []).filter(x => !/presence/.test(x)));
             verif(k, !ecrRep.some(x => /chapitres/.test(x)), T + ' · A88 / A91 · rien d’écrit au hub en répétition (la trame inchangée)', ecrRep.slice(-4).join(', ')); }
           await clicTexte(pg, 'button', 'Arrêter'); await p(pg, 1200); }

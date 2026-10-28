@@ -999,3 +999,8 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
 - **Non-régression sur `015122f8` : cas 35, 36, 37 et 39b VERT 140/140.**
 - §12.38 n'est donc **pas encore VERT**, à ce seul point près. Verts : §12.35, §12.36, §12.37, §12.39.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0205-28-10-1238-vert/`.
+
+## Retour 93 — 28/10, 02:45 — A91 : le contrôle suit le contrat tranché (le contenu prévu de l'heure)
+- Contrat §12.38 (3), ajout de 02:25 : hors de la classe, la diapo montre le contenu **prévu** de l'heure (ses diapos dans l'ordre, sans le cahier), par le rendu du récit. E1 fournit les données, E4 l'affichage.
+- Le cas 38 est adapté. L'onglet « Contenus de séances » doit montrer la première diapo de l'heure du cahier, prise dans l'ordre de jeu (`ordreHeure`), et ne plus dire « rien encore ».
+- Sur `015122f8`, l'heure 2 doit montrer « Où en sommes-nous ? » (puis « Les règles héritées », « La frise du siècle »). On lit « rien encore » : rouge, comme attendu, jusqu'aux poussées d'E1 et d'E4.

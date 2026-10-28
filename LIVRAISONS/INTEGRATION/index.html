@@ -1698,9 +1698,9 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
   <div class="link-modal-sub" id="link-modal-sub"></div>
   <div class="link-modal-current" id="link-modal-current"></div>
   <div class="link-modal-section">
-    <div class="link-modal-section-title">📎 Fichier Drive ou URL externe</div>
-    <div id="link-modal-droprow" class="link-drop-zone"><span class="link-drop-ico">⬇</span><span class="link-drop-txt"><b>Glisse un fichier ici</b> — il part sur Drive, rangé dans le dossier du chapitre, et l'item est lié aussitôt.</span></div>
-    <div class="link-modal-row"><span class="link-drop-ou">ou colle un lien :</span><input type="text" class="link-modal-input" id="link-modal-url" placeholder="Lien Drive, URL https://… ou ID Drive"><button class="link-modal-btn" onclick="linkModalApplyUrl()">Lier</button></div>
+    <div class="link-modal-section-title">📎 Fichier ou adresse web</div>
+    <div id="link-modal-droprow" class="link-drop-zone"><span class="link-drop-ico">⬇</span><span class="link-drop-txt"><b>Glisse un fichier ici</b> (image ou PDF, 25 Mo au plus) — il part en ligne, et l'item est lié aussitôt. La première fois, une petite fenêtre Google s'ouvre : choisis le compte de Paul.</span></div>
+    <div class="link-modal-row"><span class="link-drop-ou">ou colle un lien :</span><input type="text" class="link-modal-input" id="link-modal-url" placeholder="Adresse https://…"><button class="link-modal-btn" onclick="linkModalApplyUrl()">Lier</button></div>
   </div>
   <div class="link-modal-section">
     <div class="link-modal-section-title">📝 Dictée existante</div>
@@ -1793,7 +1793,7 @@ var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbP97xcYCGP9imEG
    supprimer). Constante DÉDIÉE : le suivi de présence historique (sendToBackend,
    trackOpen/trackClose) garde l'ancienne URL et son comportement, quel que soit
    son avenir — hors périmètre de ce lot, observation consignée au rapport. */
-var APPS_SCRIPT_DEPOT_URL = 'https://script.google.com/macros/s/AKfycbx6GptLK1g5_p9BDEF1Fp8vbUFJZ_4h03WR3CSpz6_ogwncxAFHN77tB-YzKDtSCOc8oA/exec';
+/* E4 (§12.50) : APPS_SCRIPT_DEPOT_URL (le dépôt vers le Drive) est retiré — le dépôt passe par « Déposer en ligne » (MJPC_RELAIS_URL). */
 var timerInterval=null,clickedLevel=null,lastSec=-1;
 var brevetDates={'3e':new Date('2026-06-26T08:00:00'),'4e':new Date('2027-06-25T08:00:00'),'5e':new Date('2028-06-23T08:00:00'),'6e':new Date('2029-06-22T08:00:00')};
 var levelLabels={'3e':'3ème','4e':'4ème','5e':'5ème','6e':'6ème'};
@@ -3990,7 +3990,7 @@ function openItem(level,chnum,snum,itemId){
   if(item.kind==='worktrack' && src==='firebase_app'){var _lw=clickedLevel||currentLevel||'';openViewer(item.title||'Plan de travail','worktrack.html'+(_lw?'?n='+_lw:''));return;}
   if(item.kind==='tache' && src==='firebase_app'){openViewer(item.title||'T\u00e2che',ref);return;} /* M12 : r\u00e9paration \u2014 tombait sur \u00ab type non support\u00e9 \u00bb */
   if(src==='atelier'){openAtelierItem(ref,item.title,{niveau:level,chapitre:chnum,seance:snum,classeNom:(typeof TRACK!=='undefined'&&TRACK.eleve&&!TRACK.eleve.is_prof)?_eleveClasse():''});return;}   /* [PONT-D] le contexte de navigation voyage avec l'item */
-  if(src==='drive'){openViewer(item.title,'https://drive.google.com/file/d/'+ref+'/preview');return;}
+  if(src==='drive'){showUploadToast('\u26a0 Ce document n\u2019est plus li\u00e9 \u2014 d\u00e9pose-le en ligne (glisse le fichier sur la ligne) ou relie-le (\ud83d\udd17).','err');return;}   /* E4 (§12.50) : plus de visionneuse Drive */
   if(src==='external'){openViewer(item.title,ref);return;}
   if(src==='html'){openViewer(item.title,ref);return;}
   alert('Type d\u2019item non support\u00e9 : '+item.kind+' / '+src);
@@ -4081,7 +4081,7 @@ function itemCreer(level,chnum,snum,title,props,cb){
   var slug=title.toLowerCase().replace(/[\u00e0-\u00e6]/g,'a').replace(/[\u00e8-\u00eb]/g,'e').replace(/[\u00ec-\u00ef]/g,'i').replace(/[\u00f2-\u00f6]/g,'o').replace(/[\u00f9-\u00fc]/g,'u').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').substring(0,40)||'item';
   var itemId=slug;var i=2;
   while(items[itemId]){itemId=slug+'-'+i;i++;}
-  var newItem={kind:'doc',uid:uidNeuf('itm'),title:title,subtitle:'',icon:'\ud83d\udcc4',source:'drive',ref:'',ordre:newOrdre,published:false};   /* [C5-UID] ① */
+  var newItem={kind:'doc',uid:uidNeuf('itm'),title:title,subtitle:'',icon:'\ud83d\udcc4',source:'external',ref:'',ordre:newOrdre,published:false};   /* [C5-UID] ① */
   if(props)Object.keys(props).forEach(function(k){newItem[k]=props[k];});
   mjpcPutJson(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'.json',newItem,'Cr\u00e9ation de l\u2019item \u00ab '+title+' \u00bb',function(){
     if(!sce.items)sce.items={};
@@ -4392,11 +4392,11 @@ function openLinkModal(level,chnum,snum,itemId){
   var item=chapitresData[level][chnum].seances[snum].items[itemId];if(!item)return;
   LINK_MODAL_CONTEXT={level:level,chnum:chnum,snum:snum,itemId:itemId};
   document.getElementById('link-modal-title').textContent='Lier : '+(item.title||'');
-  document.getElementById('link-modal-sub').textContent='Lie cet item \u00e0 une ressource : un fichier Drive ou une adresse web, un travail d\u2019une application (dict\u00e9e, r\u00e9\u00e9criture, QCM, d\u00e9bat\u2026), ou un document de l\u2019atelier. La nouvelle liaison remplace l\u2019ancienne.';
+  document.getElementById('link-modal-sub').textContent='Lie cet item \u00e0 une ressource : un fichier d\u00e9pos\u00e9 en ligne ou une adresse web, un travail d\u2019une application (dict\u00e9e, r\u00e9\u00e9criture, QCM, d\u00e9bat\u2026), ou un document de l\u2019atelier. La nouvelle liaison remplace l\u2019ancienne.';
   var currentEl=document.getElementById('link-modal-current');
   if(item.ref){
     var label='';
-    if(item.source==='drive')label='\ud83d\udcce Drive : '+item.ref;
+    if(item.source==='drive')label='\ud83d\udcce Ancien fichier : '+item.ref;   /* E4 (§12.50) */
     else if(item.source==='external')label='\ud83c\udf10 '+item.ref;
     else if(item.source==='firebase_app')label=(item.kind||'App')+' : '+item.ref;
     else if(item.source==='atelier')label='\ud83d\udcc4 Feuille : '+item.ref; /* le titre remplace la r\u00e9f\u00e9rence d\u00e8s que la liste est charg\u00e9e */
@@ -4527,12 +4527,12 @@ function driveExtraireId(texte){
 function linkModalApplyUrl(){
   if(!LINK_MODAL_CONTEXT)return;
   var input=document.getElementById('link-modal-url').value.trim();
-  if(!input){alert('Colle un lien Drive ou une URL.');return;}
+  if(!input){atInfo('Colle une adresse web (https://\u2026), ou glisse le fichier dans la zone au-dessus.');return;}
   var newSource='',newRef='';
-  var idD=driveExtraireId(input);
-  if(idD){newSource='drive';newRef=idD;}
-  else if(/^https?:\/\//i.test(input)){newSource='external';newRef=input;}
-  else{alert('Format non reconnu. Colle un lien Drive ou une URL http(s)://.');return;}
+  /* E4 (§12.50) : un lien du Drive ne se lie plus — il est refusé, en le disant */
+  if(/(^|\/\/|\.)(drive|docs)\.google\.com\//i.test(input)||driveExtraireId(input)&&!/^https?:\/\//i.test(input)){atInfo('Ce lien vient du Drive : le site ne lie plus le Drive. Glisse le fichier dans la zone au-dessus : il part en ligne et la ligne est li\u00e9e aussit\u00f4t.');return;}
+  if(/^https?:\/\//i.test(input)){newSource='external';newRef=input;}
+  else{atInfo('Format non reconnu. Colle une adresse web qui commence par https://');return;}
   applyLinkChanges(newSource,newRef,null);
 }
 
@@ -4556,7 +4556,7 @@ function linkModalUnlink(){
 function _resLibelle(source,ref,kind){
   if(!ref)return '(aucune)';
   if(source==='atelier'){var d=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)?LINK_ATELIER_DOCS[ref]:null;return 'feuille \u00ab '+((d&&d.titre)||ref)+' \u00bb';}
-  if(source==='drive')return 'fichier Drive '+ref;
+  if(source==='drive')return 'ancien fichier '+ref;
   if(source==='external')return 'site '+ref;
   if(source==='firebase_app')return (kind||'activit\u00e9')+' '+ref;
   return (source||'?')+' '+ref;
@@ -4613,53 +4613,111 @@ function showUploadToast(msg,kind){
   if(kind==='ok'||kind==='err'){setTimeout(function(){if(el&&el.parentNode)el.remove();},2500);}
 }
 
-/* [LOT7-①] LE CHEMIN LISIBLE : niveau · titre du chapitre · « Séance N — titre ».
-   Le nom du dossier sert à Paul quand il ouvre son Drive ; LE SITE NE RETIENT
-   QUE l'id (ref) et ne cherche JAMAIS par chemin — renommer un chapitre ou
-   déplacer un dossier à la main ne casse rien, les deux repères sont
-   indépendants. Une seule fonction compose ce chemin. */
-function _cheminDriveLisible(level,chnum,snum){
-  var ch=(chapitresData[level]||{})[chnum]||{};
-  var chemin=[String(level||'').trim()||'divers'];
-  chemin.push((ch.title&&String(ch.title).trim())||('Chapitre '+chnum));
-  if(snum!==undefined&&snum!==null&&snum!==''){
-    var se=(ch.seances||{})[snum]||{};
-    var rang=ordDe(se,snum);
-    chemin.push('S\u00e9ance '+rang+((se.title&&String(se.title).trim())?(' \u2014 '+String(se.title).trim()):''));
-  }
-  return chemin;
+/* E4 (§12.49, §12.50) : « DÉPOSER EN LIGNE » — le seul dépôt du site. Le fichier va dans mjpc-medias
+   (`depots/<niveau>/…`) par le RELAIS : le second déploiement du programme Google de Paul, « moi uniquement »
+   (la preuve que c'est Paul : sa connexion Google ; aucune clé dans le navigateur). Une petite fenêtre
+   s'ouvre (elle porte la connexion), le site lui passe le fichier par postMessage, elle l'écrit et répond
+   le chemin, le site la ferme. Recycle le dépôt Drive d'avant : le geste (glisser un fichier sur une séance
+   ou sur un item, coller), la limite dite en clair, la cause et le geste pour chaque échec (LOT8-⑤). */
+var MJPC_RELAIS_URL='MJPC_RELAIS_URL_A_POSER';   /* l'adresse /exec du déploiement « moi uniquement » — posée par la conscience avec Paul */
+var MJPC_DEPOT_MAX=25*1024*1024;
+function mjpcDepotType(octets){
+  var b=octets, s=function(i,n){return String.fromCharCode.apply(null,Array.prototype.slice.call(b,i,i+n));};
+  if(b.length>=3&&b[0]===0xFF&&b[1]===0xD8&&b[2]===0xFF)return 'jpg';
+  if(b.length>=8&&b[0]===0x89&&s(1,3)==='PNG')return 'png';
+  if(b.length>=6&&(s(0,6)==='GIF87a'||s(0,6)==='GIF89a'))return 'gif';
+  if(b.length>=12&&s(0,4)==='RIFF'&&s(8,4)==='WEBP')return 'webp';
+  if(b.length>=5&&s(0,5)==='%PDF-')return 'pdf';
+  return null;
 }
-function _uploadBlobToDrive(blob,fileName,level,chnum,snum){
-  /* [LOT7-①] LE SEUL POINT D'ENTRÉE du dépôt Drive — nouveau script, action
-     « deposer », chemin en NOMS LISIBLES (_cheminDriveLisible). Résout un objet
-     COMPATIBLE avec les quatre appelants historiques (ils lisent
-     res.drive_file_id) : {drive_file_id:id, file_name, ext, url, affichage}.
-     L'ancienne action upload_drive_only et son target_path en clés Firebase
-     (« 3e/ch10/s1 », illisible au Drive) n'existent plus. */
-  return new Promise(function(resolve,reject){
-    if(blob.size>30*1024*1024){console.error('MJPC d\u00e9p\u00f4t \u2014 fichier trop lourd :',blob.size,'octets');reject(new Error('Fichier trop lourd (plus de 30 Mo) \u2014 d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
-    var reader=new FileReader();
-    reader.onload=function(e){
-      var b64=e.target.result.split(',')[1];
-      mjpcFetchOk(APPS_SCRIPT_DEPOT_URL,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({
-        action:'deposer',fichier:b64,nom:fileName,type:blob.type||'application/octet-stream',
-        chemin:_cheminDriveLisible(level,chnum,snum)
-      })}).then(function(r){return r.json();}).then(function(res){
-        /* [LOT8c-53\u2460] LA R\u00c8GLE : la cause dans le langage de Paul \u00e0 l'\u00e9cran,
-           le d\u00e9tail technique en console \u2014 jamais de jargon dans un toast. */
-        if(!res||res.error||res.status==='erreur'){console.error('MJPC d\u00e9p\u00f4t \u2014 script muet ou en erreur :',res);reject(new Error('Le fichier n\u2019est pas arriv\u00e9 sur Drive. R\u00e9essaie ; si \u00e7a continue, d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
-        if(!res.id){console.error('MJPC d\u00e9p\u00f4t \u2014 r\u00e9ponse sans identifiant :',res);reject(new Error('Drive n\u2019a pas confirm\u00e9 le d\u00e9p\u00f4t \u2014 le fichier n\u2019est pas li\u00e9 \u00e0 la ligne. R\u00e9essaie ; si \u00e7a continue, d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
-        resolve({drive_file_id:res.id,file_name:res.nom||fileName,ext:res.ext||'',url:res.url||'',affichage:res.affichage||'',dossier:res.dossier||'',dossier_url:res.dossier_url||''});
-      }).catch(function(err){
-        /* [LOT8-\u2464] la cause ET le geste, pour chaque famille d'\u00e9chec */
-        if(err&&err.mjpcIssue&&err.mjpcIssue.etat===MJPC_ISSUE.PANNE){console.error('MJPC d\u00e9p\u00f4t \u2014 panne de liaison :',err.mjpcIssue);reject(new Error('Pas de connexion internet \u2014 le fichier n\u2019est pas parti sur Drive. V\u00e9rifie ta connexion, puis reglisse le fichier.'));return;}
-        if(err&&err.mjpcIssue&&err.mjpcIssue.etat===MJPC_ISSUE.REFUSEE){console.error('MJPC d\u00e9p\u00f4t \u2014 refus HTTP '+err.mjpcIssue.status+' :',err.mjpcIssue);reject(new Error('Le fichier n\u2019est pas arriv\u00e9 sur Drive. R\u00e9essaie ; si \u00e7a continue, d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
-        reject(err);
-      });
-    };
-    reader.onerror=function(e){console.error('MJPC d\u00e9p\u00f4t \u2014 lecture du fichier impossible :',e);reject(new Error('Impossible de lire ce fichier \u2014 reprends-le depuis ton ordinateur et reglisse-le.'));};
-    reader.readAsDataURL(blob);
+function mjpcDepotLire(blob,n){ return new Promise(function(res,rej){ var r=new FileReader(); r.onload=function(){res(new Uint8Array(r.result));}; r.onerror=function(){rej(new Error('Impossible de lire ce fichier — reprends-le depuis ton ordinateur et reglisse-le.'));}; r.readAsArrayBuffer(n?blob.slice(0,n):blob); }); }
+/* l'image réduite avant l'envoi : 1920 px de large au plus (le même rendu au tableau) ; un GIF reste tel quel (il peut être animé) */
+function mjpcDepotReduire(blob,type){
+  if(type==='pdf'||type==='gif')return Promise.resolve({blob:blob,type:type});
+  return new Promise(function(res){
+    var u=URL.createObjectURL(blob), im=new Image();
+    im.onload=function(){ URL.revokeObjectURL(u); if(im.naturalWidth<=1920){res({blob:blob,type:type});return;}
+      var c=document.createElement('canvas'); c.width=1920; c.height=Math.round(im.naturalHeight*1920/im.naturalWidth); c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+      var t2=(type==='png')?'png':(type==='webp'?'webp':'jpg'), mime=t2==='jpg'?'image/jpeg':'image/'+t2;
+      c.toBlob(function(b2){res(b2?{blob:b2,type:t2}:{blob:blob,type:type});},mime,0.9); };
+    im.onerror=function(){ URL.revokeObjectURL(u); res({blob:blob,type:type}); };
+    im.src=u; });
+}
+function mjpcDepotB64(blob){ return new Promise(function(res,rej){ var r=new FileReader(); r.onload=function(){res(String(r.result).split(',')[1]||'');}; r.onerror=function(){rej(new Error('Impossible de lire ce fichier — reprends-le depuis ton ordinateur et reglisse-le.'));}; r.readAsDataURL(blob); }); }
+/* la vérification d'avant l'envoi : le type par les premiers octets, 25 Mo au plus, internet, le relais posé */
+function mjpcDepotVerifier(f){
+  var nom=f.name||'fichier';
+  if(f.size>MJPC_DEPOT_MAX)return Promise.reject(new Error('« '+nom+' » est trop lourd ('+Math.round(f.size/1048576)+' Mo) : 25 Mo au plus. Une vidéo reste sur la clé ; un PDF, enregistre-le plus léger.'));
+  return mjpcDepotLire(f,16).then(function(o){ var t=mjpcDepotType(o);
+    if(!t)throw new Error('« '+nom+' » n’est ni une image (JPG, PNG, WebP, GIF) ni un PDF : il ne se dépose pas en ligne.');
+    return t; });
+}
+function mjpcDeposerEnLigne(fichiers,niveau){
+  fichiers=Array.prototype.slice.call(fichiers||[]);
+  if(!fichiers.length)return Promise.reject(new Error('Aucun fichier reçu.'));
+  if(typeof navigator!=='undefined'&&navigator.onLine===false)return Promise.reject(new Error('Pas de connexion internet — le fichier ne peut pas partir en ligne. Vérifie ta connexion, puis recommence ; d’ici là, il reste sur la clé.'));
+  if(!/^https:\/\/script\.google\.com\//.test(MJPC_RELAIS_URL))return Promise.reject(new Error('Le dépôt en ligne n’est pas encore installé dans ton programme Google : rien n’est parti.'));
+  var paquet;
+  return Promise.all(fichiers.map(function(f){ return mjpcDepotVerifier(f).then(function(t){ return mjpcDepotReduire(f,t); }).then(function(r){ return mjpcDepotB64(r.blob).then(function(b64){ return {nom:(f.name||'fichier').replace(/\.[^.]*$/,''),type:r.type,b64:b64}; }); }); }))
+  .then(function(liste){ paquet={action:'deposer',niveau:String(niveau||'divers'),fichiers:liste}; return mjpcRelais(paquet); });
+}
+/* la petite fenêtre du relais : elle dit « prêt », reçoit le paquet, répond « fait » (ou une erreur en clair) ; le site la ferme */
+function mjpcRelais(paquet){
+  return new Promise(function(res,rej){
+    var w=window.open(MJPC_RELAIS_URL,'mjpc-relais','width=460,height=380');
+    if(!w){rej(new Error('La fenêtre du dépôt n’a pas pu s’ouvrir : autorise les fenêtres de ce site (l’icône dans la barre d’adresse), puis recommence.'));return;}
+    var fini=false, origineOk=function(o){return /^https:\/\/([a-z0-9-]+\.)*(google\.com|googleusercontent\.com)$/.test(String(o||''));};
+    var finir=function(err,val){ if(fini)return; fini=true; window.removeEventListener('message',ecoute); clearTimeout(tm); clearInterval(ferme); try{w.close();}catch(e){} if(err)rej(err); else res(val); };
+    var ecoute=function(ev){ var d=ev.data; if(!d||typeof d!=='object'||!d.mjpcRelais||!origineOk(ev.origin))return;
+      if(d.mjpcRelais==='pret'){ try{ev.source.postMessage({mjpcRelais:'paquet',paquet:paquet},ev.origin);}catch(e){finir(new Error('La fenêtre du dépôt ne répond pas — recommence.'));} return; }
+      if(d.mjpcRelais==='fait'){ var l=Array.isArray(d.depots)?d.depots:[]; if(!l.length){finir(new Error('Le dépôt n’a pas confirmé l’arrivée du fichier — recommence.'));return;} finir(null,l.map(function(x){return {chemin:String(x.chemin||''),url:(typeof dr_mediasAdresse==='function'?dr_mediasAdresse(x.chemin):String(x.chemin||'')),nom:x.nom||''};})); return; }
+      if(d.mjpcRelais==='refus'){ console.error('MJPC dépôt — refus du relais :',d); finir(new Error(String(d.raison||'Le dépôt a refusé ce fichier.'))); } };
+    window.addEventListener('message',ecoute);
+    var tm=setTimeout(function(){finir(new Error('Le dépôt n’a pas répondu en trois minutes — si Google demande un compte, choisis celui de Paul, puis recommence.'));},180000);
+    var ferme=setInterval(function(){ if(w.closed)finir(new Error('La fenêtre du dépôt a été fermée avant la fin — rien n’est parti.')); },700);
   });
+}
+/* le fichier répond-il ? GitHub Pages le sert environ une minute après le dépôt : on regarde toutes les 10 s, trois minutes au plus */
+function mjpcAttendreEnLigne(url,cb){
+  var n=0, essai=function(){ n++; fetch(url,{method:'HEAD',cache:'no-store'}).then(function(r){ if(r.ok){cb(true);return;} encore(); }).catch(encore); },
+      encore=function(){ if(n>=18){cb(false);return;} setTimeout(essai,10000); };
+  essai();
+}
+var MJPC_ICONE_EXT={pdf:'📄',jpg:'🖼',jpeg:'🖼',png:'🖼',webp:'🖼',gif:'🖼'};
+function _itemDeposeEcrire(level,chnum,snum,itemId,obj){
+  var base='/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId;
+  return Promise.all(Object.keys(obj).map(function(k){return secuEcrire(base+'/'+k,obj[k]);})).then(function(rs){ if(!rs.every(function(r){return r.ok;}))throw new Error('Le fichier est en ligne, mais la ligne n’a pas pu être liée — relie-la (🔗) avec son adresse.'); });
+}
+function uploadFileForChapterItem(file,level,chnum,snum,itemId){
+  var sce=chapitresData[level]&&chapitresData[level][chnum]&&chapitresData[level][chnum].seances&&chapitresData[level][chnum].seances[snum];
+  var item=sce&&sce.items&&sce.items[itemId];
+  if(!item){showUploadToast('⚠ Item introuvable','err');return;}
+  if(item.ref){showUploadToast('⚠ Item déjà lié à une ressource. Délie d’abord (🔗) ou crée un nouvel item.','err');return;}
+  showUploadToast('⏳ Dépôt en ligne…');
+  mjpcDeposerEnLigne([file],level).then(function(l){ var d=l[0];
+    return _itemDeposeEcrire(level,chnum,snum,itemId,{source:'external',ref:d.url,published:true}).then(function(){
+      item.source='external';item.ref=d.url;_markPub(item,'*',true);
+      showUploadToast('✅ Document lié : '+(file.name||item.title||'')+' — en ligne dans une minute environ','ok');
+      renderChapitres(level); if(AT.edChap)atEditerChapitreRendre(); });
+  }).catch(function(err){showUploadToast('⚠ '+err.message,'err');});
+}
+function uploadFileForNewItem(file,level,chnum,snum){
+  var sce=chapitresData[level][chnum].seances[snum];
+  var existingItems=sce.items||{};
+  var fileName=file.name||('depot-'+Date.now());
+  var slug=fileName.toLowerCase().replace(/\.[a-z0-9]+$/,'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').substring(0,40)||'item';
+  var itemId=slug;var i=2;while(existingItems[itemId]){itemId=slug+'-'+i;i++;}
+  var ordres=Object.keys(existingItems).map(function(k){return existingItems[k].ordre||0;});
+  var newOrdre=(ordres.length?Math.max.apply(null,ordres):0)+1;
+  showUploadToast('⏳ Dépôt en ligne…');
+  mjpcDeposerEnLigne([file],level).then(function(l){ var d=l[0]; var ext=(d.chemin.split('.').pop()||'').toLowerCase();
+    var newItem={kind:'doc',uid:uidNeuf('itm'),title:fileName.replace(/\.[^.]+$/,''),subtitle:'',icon:MJPC_ICONE_EXT[ext]||'📄',source:'external',ref:d.url,ordre:newOrdre,published:true};
+    return secuEcrire('/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId,newItem).then(function(r){
+      if(!r.ok)throw new Error('Le fichier est en ligne, mais la ligne n’a pas pu être créée — crée-la et relie-la (🔗) avec son adresse.');
+      if(!sce.items)sce.items={}; sce.items[itemId]=newItem;
+      showUploadToast('✅ Nouvel item créé — en ligne dans une minute environ','ok');
+      renderChapitres(level); });
+  }).catch(function(err){showUploadToast('⚠ '+err.message,'err');});
 }
 
 function _isImage(file){
@@ -4676,114 +4734,6 @@ function _nextImageId(images){
   var imgId='img'+newOrdre;
   while(images&&images[imgId])imgId='img'+newOrdre+'-'+Math.random().toString(36).slice(2,5);
   return {imgId:imgId,ordre:newOrdre};
-}
-
-function uploadFileForChapterItem(file,level,chnum,snum,itemId){
-  var sce=chapitresData[level]&&chapitresData[level][chnum]&&chapitresData[level][chnum].seances&&chapitresData[level][chnum].seances[snum];
-  var item=sce&&sce.items&&sce.items[itemId];
-  if(!item){showUploadToast('\u26a0 Item introuvable','err');return;}
-  var isImg=_isImage(file);
-  var isGallery=item.kind==='gallery';
-  if(isImg){
-    if(isGallery)return addImageToGallery(file,level,chnum,snum,itemId);
-    if(!item.ref)return convertItemToGalleryAndAdd(file,level,chnum,snum,itemId);
-    showUploadToast('\u26a0 Item d\u00e9j\u00e0 li\u00e9 \u00e0 une ressource. D\u00e9lie d\u2019abord (\ud83d\udd17) ou cr\u00e9e un nouvel item.','err');
-    return;
-  }
-  if(isGallery){showUploadToast('\u26a0 Cet item est une galerie d\u2019images. Cr\u00e9e un nouvel item pour un PDF.','err');return;}
-  showUploadToast('\u23f3 Upload en cours\u2026');
-  _uploadBlobToDrive(file,file.name||('upload-'+Date.now()),level,chnum,snum).then(function(res){
-    var basePath='/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId;
-    return Promise.all([
-      mjpcFetchOk(FIREBASE_BASE+basePath+'/source.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify('drive')}),
-      mjpcFetchOk(FIREBASE_BASE+basePath+'/ref.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(res.drive_file_id)}),
-      mjpcFetchOk(FIREBASE_BASE+basePath+'/published.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(true)})
-    ]).then(function(){
-      item.source='drive';item.ref=res.drive_file_id;_markPub(item,'*',true);   /* M8-IDENTITÉ : routé — comportement conservé (publié pour toutes les classes) ; l'opportunité de ce défaut reste à arbitrer par Paul */
-      showUploadToast('\u2705 Document li\u00e9 : '+(file.name||item.title||''),'ok');   /* [LOT6-③] le résultat est nommé */
-      renderChapitres(level);
-      if(AT.edChap)atEditerChapitreRendre();   /* [LOT6-③] déposé depuis la modale Lier de l'éditeur : le fil suit */
-    });
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
-}
-
-function addImageToGallery(file,level,chnum,snum,itemId){
-  showUploadToast('\u23f3 Ajout image\u2026');
-  var item=chapitresData[level][chnum].seances[snum].items[itemId];
-  var images=item.images||{};
-  var ids=_nextImageId(images);
-  _uploadBlobToDrive(file,file.name||('image-'+Date.now()+'.png'),level,chnum,snum).then(function(res){
-    var newImage={ref:res.drive_file_id,titre:'Image '+ids.ordre,ordre:ids.ordre};
-    return mjpcFetchOk(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'/images/'+ids.imgId+'.json',{
-      method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newImage)
-    }).then(function(){
-      if(!item.images)item.images={};
-      item.images[ids.imgId]=newImage;
-      showUploadToast('\u2705 Image ajout\u00e9e (galerie)','ok');
-      renderChapitres(level);
-    });
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
-}
-
-function convertItemToGalleryAndAdd(file,level,chnum,snum,itemId){
-  // Item sans ref : on le bascule en galerie puis on ajoute la première image
-  var item=chapitresData[level][chnum].seances[snum].items[itemId];
-  var basePath='/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId;
-  showUploadToast('\u23f3 Cr\u00e9ation galerie\u2026');
-  Promise.all([
-    mjpcFetchOk(FIREBASE_BASE+basePath+'/kind.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify('gallery')}),
-    mjpcFetchOk(FIREBASE_BASE+basePath+'/icon.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify('\ud83d\uddbc')})
-  ]).then(function(){
-    item.kind='gallery';item.icon='\ud83d\uddbc';
-    addImageToGallery(file,level,chnum,snum,itemId);
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
-}
-
-function uploadFileForNewItem(file,level,chnum,snum){
-  if(_isImage(file))return _createGalleryItemWithFirstImage(file,level,chnum,snum);
-  showUploadToast('\u23f3 Upload en cours\u2026');
-  var sce=chapitresData[level][chnum].seances[snum];
-  var existingItems=sce.items||{};
-  var fileName=file.name||('upload-'+Date.now());
-  var slug=fileName.toLowerCase().replace(/\.[a-z0-9]+$/,'').replace(/[\u00e0-\u00e6]/g,'a').replace(/[\u00e8-\u00eb]/g,'e').replace(/[\u00ec-\u00ef]/g,'i').replace(/[\u00f2-\u00f6]/g,'o').replace(/[\u00f9-\u00fc]/g,'u').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').substring(0,40)||'item';
-  var itemId=slug;var i=2;while(existingItems[itemId]){itemId=slug+'-'+i;i++;}
-  var ordres=Object.keys(existingItems).map(function(k){return existingItems[k].ordre||0;});
-  var newOrdre=(ordres.length?Math.max.apply(null,ordres):0)+1;
-  _uploadBlobToDrive(file,fileName,level,chnum,snum).then(function(res){
-    var ext=res.ext||(fileName.split('.').pop()||'').toLowerCase();
-    var iconByExt={pdf:'\ud83d\udcc4',pptx:'\ud83d\udcca',ppt:'\ud83d\udcca',docx:'\ud83d\udcdd',doc:'\ud83d\udcdd',html:'\ud83d\udd27',htm:'\ud83d\udd27'};
-    var newItem={kind:'doc',title:fileName.replace(/\.[^.]+$/,''),subtitle:'',icon:iconByExt[ext]||'\ud83d\udcc4',source:'drive',ref:res.drive_file_id,ordre:newOrdre,published:true};
-    return mjpcFetchOk(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'.json',{
-      method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newItem)
-    }).then(function(){
-      if(!sce.items)sce.items={};
-      sce.items[itemId]=newItem;
-      showUploadToast('\u2705 Nouvel item cr\u00e9\u00e9','ok');
-      renderChapitres(level);
-    });
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
-}
-
-function _createGalleryItemWithFirstImage(file,level,chnum,snum){
-  showUploadToast('\u23f3 Cr\u00e9ation galerie\u2026');
-  var sce=chapitresData[level][chnum].seances[snum];
-  var existingItems=sce.items||{};
-  var fileName=file.name||('image-'+Date.now()+'.png');
-  var itemId='gallery-'+Date.now().toString(36);
-  while(existingItems[itemId])itemId='gallery-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,5);
-  var ordres=Object.keys(existingItems).map(function(k){return existingItems[k].ordre||0;});
-  var newOrdre=(ordres.length?Math.max.apply(null,ordres):0)+1;
-  _uploadBlobToDrive(file,fileName,level,chnum,snum).then(function(res){
-    var newItem={kind:'gallery',title:'Galerie',subtitle:'',icon:'\ud83d\uddbc',ordre:newOrdre,published:true,images:{img1:{ref:res.drive_file_id,titre:'Image 1',ordre:1}}};
-    return mjpcFetchOk(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'.json',{
-      method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newItem)
-    }).then(function(){
-      if(!sce.items)sce.items={};
-      sce.items[itemId]=newItem;
-      showUploadToast('\u2705 Galerie cr\u00e9\u00e9e (1 image)','ok');
-      renderChapitres(level);
-    });
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
 }
 
 // ============ Pilotage des images d'une galerie (mode admin) ============
@@ -4832,7 +4782,7 @@ function moveImageInGallery(level,chnum,snum,itemId,imgId,dir){
 function deleteImageInGallery(level,chnum,snum,itemId,imgId){
   var item=chapitresData[level][chnum].seances[snum].items[itemId];
   var img=item&&item.images&&item.images[imgId];if(!img)return;
-  _modaleConfirme('Supprimer cette image','\u00ab '+escapeHtml(img.titre||imgId)+' \u00bb<br><br>Le fichier Drive reste, seule la liaison est retir\u00e9e de la galerie.',function(){
+  _modaleConfirme('Supprimer cette image','\u00ab '+escapeHtml(img.titre||imgId)+' \u00bb<br><br>Le fichier reste, seule la liaison est retir\u00e9e de la galerie.',function(){
   mjpcDeleteJson(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'/images/'+imgId+'.json','Retrait de l\u2019image',
     function(){
     delete item.images[imgId];
@@ -5388,7 +5338,7 @@ function _openAtelierFromList(ref){
      elle s'ouvre par openViewer (la garde \u2460 et l'issue \u00ab Ouvrir dans un onglet \u00bb
      s'appliquent). URL http(s) \u2192 telle quelle ; id Drive \u2192 preview. */
   if(/^https?:\/\//i.test(ref)){openViewer('Ressource',ref);return;}
-  if(/^[A-Za-z0-9_-]{20,}$/.test(ref)){openViewer('Document','https://drive.google.com/file/d/'+ref+'/preview');return;}
+  /* E4 (§12.50) : l'id Drive → preview est retiré */
   openAtelierItem(ref,'Feuille');
 }
 function gotoFiches(level){
@@ -5576,7 +5526,7 @@ function openViewer(title,url){
     document.getElementById('doc-viewer').classList.add('visible');
     return;
   }
-  if(u.indexOf('drive.google.com/file/d/')>=0){u=u.replace(/\/view(\?|$)/,'/preview$1');}
+  /* E4 (§12.50) : la réécriture Drive /view → /preview est retirée ; la visionneuse garde les PDF et les pages */
   f.removeAttribute('srcdoc');   /* un srcdoc r\u00e9siduel PRIME sur src */
   f.src=u;
   /* [LOT8c-②] JAMAIS UN CUL-DE-SAC : un site peut refuser l'embarquement
@@ -7872,7 +7822,7 @@ tableau:          AC('D','structure','contenu',"Ajouter un tableau",{multiple:tr
 colonnes_comp:    AC('D','structure','contenu',"Ajouter deux colonnes comparatives",{multiple:true,forme:'bloc_colonnes',champs:[CH('titre_g','Titre de gauche'),CH('texte_g','Colonne de gauche','area'),CH('titre_d','Titre de droite'),CH('texte_d','Colonne de droite','area')]}),
 frise:            AC('D','structure','contenu',"Ajouter une frise chronologique",{multiple:true,forme:'bloc_frise',champs:[CH('items','Repères (date = événement)','list')]}),
 schema:           AC('D','structure','contenu',"Ajouter une zone de schéma (à dessiner à la main)",{multiple:true,forme:'bloc_schema',champs:[CH('legende','Légende du schéma'),CH('hauteur','Hauteur (en lignes, 6 par défaut)')]}),
-image_drive:      AC('D','structure','contenu',"Ajouter une image (lien Drive existant)",{multiple:true,forme:'bloc_image',champs:[CH('url','Adresse de l\u2019image (lien public)'),CH('legende','Légende')],info:"Colle l’adresse d’une image déjà partagée. Le dépôt et le redimensionnement arriveront dans un prochain chantier."}),
+image_drive:      AC('D','structure','contenu',"Ajouter une image (adresse web existante)",{multiple:true,forme:'bloc_image',champs:[CH('url','Adresse de l\u2019image (lien public)'),CH('legende','Légende')],info:"Colle l’adresse d’une image déjà partagée. Le dépôt et le redimensionnement arriveront dans un prochain chantier."}),
 diapositive_json: AC('D','structure','contenu',"Ajouter une diapositive convertie",{reserve:true,mention:"Cette partie arrivera avec le chantier des diapositives : tes PowerPoint entreront ici."}),
 consigne:         AC('D','structure','contenu',"Ajouter une consigne",{multiple:true,forme:'bloc_consigne',reforme:true,champs:[CH('texte','Consigne','area')]}),
 question:         AC('D','structure','contenu',"Ajouter une question",{multiple:true,forme:'bloc_question',reforme:true,champs:[CH('texte','Question','area')]}),
@@ -13181,9 +13131,9 @@ function ed2Papier(level,chnum,docs){
            (jamais une page blanche) + aper\u00e7u, et le clic sur la barre l'ouvre EN
            MODALE (openViewer, le chemin \u00e9l\u00e8ve existant). Le papier imprim\u00e9 ne
            l'imprime pas (r\u00e8gle @media print, avec les trous). */
-        if(d.ref&&(d.src==='drive'||d.src==='external')){
-          var _xurl=(d.src==='drive')?('https://drive.google.com/file/d/'+d.ref+'/preview'):d.ref;
-          var _xlib=(d.src==='drive')?('Fichier Drive \u00b7 '+d.ref):d.ref;
+        if(d.ref&&d.src==='external'){   /* E4 (§12.50) : plus d'aperçu Drive */
+          var _xurl=d.ref;
+          var _xlib=(d.src==='drive')?('Ancien fichier \u00b7 '+d.ref):d.ref;
           h+='<div class="ed2-xcadre">'
             +'<div class="ed2-xbarre" onclick="event.stopPropagation();openViewer(\''+atEsc((d.titre||'Document').replace(/'/g,''))+'\',\''+atEsc(_xurl)+'\')">'
             +(d.src==='drive'?'\ud83d\udcce ':'\ud83c\udf10 ')+'<span class="ed2-xadr">'+atEsc(_xlib)+'</span>'
@@ -16160,7 +16110,7 @@ function atP2NormaliserBloc(b){
   if(t==='fiche'){ var f={id:atP2Uid(),t:'fiche',tt:S2(b.tt||'Fiche'),titre:S2(b.titre),def:S2(b.def),corps:S2(b.corps||'<p>—</p>'),vues:0}; if(String(b.feuille||'').trim())f.feuille=S2(b.feuille).trim(); return f; }
   if(t==='question')return {id:atP2Uid(),t:'question',q:S2(b.q),reps:(Array.isArray(b.reps)&&b.reps.length?b.reps:[{i:'',r:''}]).map(function(r){return {i:S2(r&&r.i),r:S2(r&&r.r),refo:false};}),vues:0};
   if(t==='schema'){ var s={id:atP2Uid(),t:'schema',forme:S2(b.forme||'carte'),titre:S2(b.titre!=null?b.titre:b.txt),z:1,pos:{},src:S2(b.src),devoilerTout:b.devoilerTout===true,vues:0}; if(b.echelle)s.echelle=S2(b.echelle); return s; }
-  if(t==='image')return {id:atP2Uid(),t:'image',support:true,ref:AT_P2_MEDIAS+S2(b.ref).trim().replace(/^\/+/,''),src:'',legende:S2(b.legende),marques:[],devoilerTout:b.devoilerTout===undefined?true:!!b.devoilerTout,vues:0};
+  if(t==='image')return {id:atP2Uid(),t:'image',support:true,ref:(typeof dr_mediasAdresse==='function'?dr_mediasAdresse(S2(b.ref)):AT_P2_MEDIAS+S2(b.ref).trim().replace(/^\/+/,'')),   /* E4 (§12.49) : le préfixe m2: */src:'',legende:S2(b.legende),marques:[],devoilerTout:b.devoilerTout===undefined?true:!!b.devoilerTout,vues:0};
   if(t==='video')return {id:atP2Uid(),t:'video',txt:S2(b.txt),fichier:S2(b.fichier),duree:+b.duree||0,reperes:(Array.isArray(b.reperes)?b.reperes:[]).filter(function(r){return r&&String(r.l||'').trim();}).map(function(r){return {t:+r.t||0,l:S2(r.l)};}).sort(function(a,c){return a.t-c.t;}),vues:0};
   if(t==='page')return {id:atP2Uid(),t:'page',txt:S2(b.txt),src:S2(b.src),contrat:!!b.contrat,etapes:b.contrat?(Math.max(1,parseInt(b.etapes,10)||1)):null,vues:0};
   if(t==='doc')return {id:atP2Uid(),t:'doc',doc:S2(b.doc),txt:S2(b.txt),vues:0};

@@ -1698,9 +1698,9 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
   <div class="link-modal-sub" id="link-modal-sub"></div>
   <div class="link-modal-current" id="link-modal-current"></div>
   <div class="link-modal-section">
-    <div class="link-modal-section-title">📎 Fichier Drive ou URL externe</div>
-    <div id="link-modal-droprow" class="link-drop-zone"><span class="link-drop-ico">⬇</span><span class="link-drop-txt"><b>Glisse un fichier ici</b> — il part sur Drive, rangé dans le dossier du chapitre, et l'item est lié aussitôt.</span></div>
-    <div class="link-modal-row"><span class="link-drop-ou">ou colle un lien :</span><input type="text" class="link-modal-input" id="link-modal-url" placeholder="Lien Drive, URL https://… ou ID Drive"><button class="link-modal-btn" onclick="linkModalApplyUrl()">Lier</button></div>
+    <div class="link-modal-section-title">📎 Fichier ou adresse web</div>
+    <div id="link-modal-droprow" class="link-drop-zone"><span class="link-drop-ico">⬇</span><span class="link-drop-txt"><b>Glisse un fichier ici</b> (image ou PDF, 25 Mo au plus) — il part en ligne, et l'item est lié aussitôt. La première fois, une petite fenêtre Google s'ouvre : choisis le compte de Paul.</span></div>
+    <div class="link-modal-row"><span class="link-drop-ou">ou colle un lien :</span><input type="text" class="link-modal-input" id="link-modal-url" placeholder="Adresse https://…"><button class="link-modal-btn" onclick="linkModalApplyUrl()">Lier</button></div>
   </div>
   <div class="link-modal-section">
     <div class="link-modal-section-title">📝 Dictée existante</div>
@@ -1793,7 +1793,7 @@ var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbP97xcYCGP9imEG
    supprimer). Constante DÉDIÉE : le suivi de présence historique (sendToBackend,
    trackOpen/trackClose) garde l'ancienne URL et son comportement, quel que soit
    son avenir — hors périmètre de ce lot, observation consignée au rapport. */
-var APPS_SCRIPT_DEPOT_URL = 'https://script.google.com/macros/s/AKfycbx6GptLK1g5_p9BDEF1Fp8vbUFJZ_4h03WR3CSpz6_ogwncxAFHN77tB-YzKDtSCOc8oA/exec';
+/* E4 (§12.50) : APPS_SCRIPT_DEPOT_URL (le dépôt vers le Drive) est retiré — le dépôt passe par « Déposer en ligne » (MJPC_RELAIS_URL). */
 var timerInterval=null,clickedLevel=null,lastSec=-1;
 var brevetDates={'3e':new Date('2026-06-26T08:00:00'),'4e':new Date('2027-06-25T08:00:00'),'5e':new Date('2028-06-23T08:00:00'),'6e':new Date('2029-06-22T08:00:00')};
 var levelLabels={'3e':'3ème','4e':'4ème','5e':'5ème','6e':'6ème'};
@@ -2285,7 +2285,7 @@ function ouvrirConsoleM8(){
 
 /* ─── État d'interface. Le cache mémorise le MODE dans lequel il a été
    chargé : si le mode test bascule, le cache est invalide et se recharge. ─── */
-var TAXO_UI = { ouvert:false, doms:{}, fams:{}, edit:null, creation:null };
+var TAXO_UI = { ouvert:false, doms:{}, fams:{}, edit:null, creation:null, outil:null, impTexte:'', impOk:false, impMsg:null, impDom:-1 };
 var TAXO_CACHE = null;
 var TAXO_CACHE_MODE = null;
 
@@ -2639,7 +2639,124 @@ function _taxoHtml(t){
   h += '<div class="m8tx-etat">Version ' + escapeHtml((t.meta && t.meta.version) || '?')
     + ' \u00b7 ' + escapeHtml((t.meta && t.meta.date) || '') + ' \u00b7 ' + t.domaines.length + ' domaines \u00b7 ' + total + ' notions</div>'
     + '<p class="m8tx-regle">Une notion ne se supprime jamais et son identifiant ne change jamais : le travail des élèves est étiqueté par ces identifiants, une étiquette qui disparaît ou change de numéro décrocherait des années de travail. Une notion qui ne sert plus se <strong>désactive</strong> — elle sort des choix des applications, l\u2019historique reste lisible.</p>';
+  h += _taxoOutilsHtml(t);   /* §12.48 */
   for(var d = 0; d < t.domaines.length; d++){ h += _taxoLigneDomaine(t.domaines[d]); }
+  return h;
+}
+/* ═══ §12.48 (A99, E3 sur la relance du 28/10 08:35) — ajouter une famille, ajouter une notion, importer des notions ═══
+   « Importer des notions » : Paul colle un fragment au format de la proposition (MANDATS/TAXONOMIE/PROPOSITION-MOUVEMENTS-27-10.md) :
+   { id: "fam-NN", libelleProf, libelleEleve, notions: [ { id, actif, libelleProf, libelleEleve, niveaux, source } ] }.
+   Vérifié AVANT d'écrire : des ids neufs, jamais réutilisés (un id déjà écrit quelque part dans le référentiel — notion, famille,
+   alias ou note d'un retrait — est refusé), chaque libellé présent ; sinon un refus en clair, rien n'est écrit. ═══ */
+function _taxoIdPris(t, id){ var s = JSON.stringify(t || {}); return new RegExp('(^|[^a-z0-9-])' + String(id).replace(/[-]/g, '\\-') + '([^a-z0-9-]|$)').test(s); }
+function _taxoFamNeuve(t){ var max = 0; (JSON.stringify(t || {}).match(/fam-\d+/g) || []).forEach(function(x){ var n = parseInt(x.slice(4), 10); if(n > max) max = n; }); return 'fam-' + (max + 1 < 10 ? '0' : '') + (max + 1); }
+function _taxoDomaineDuPrefixe(t, ids){
+  for(var di = 0; di < (t.domaines || []).length; di++){ var p = _taxoPrefixeDomaine(t, di); if(p && ids.some(function(id){ return String(id).indexOf(p + '-') === 0; })) return di; }
+  return -1;
+}
+function _taxoVerifierFragment(t, texte){
+  var f = null, err = [];
+  try { f = JSON.parse(String(texte || '').trim()); } catch(e){ return { ok:false, erreurs:['Ce texte n’est pas un fragment lisible : ' + e.message + '. Colle le fragment entier, de la première accolade à la dernière.'] }; }
+  if(!f || typeof f !== 'object' || Array.isArray(f)) return { ok:false, erreurs:['Le fragment doit être une famille : { "id": "fam-…", "libelleProf", "libelleEleve", "notions": [ … ] }.'] };
+  if(!/^fam-\d+$/.test(String(f.id || ''))) err.push('L’identifiant de la famille doit avoir la forme « fam-52 » (lu : « ' + (f.id || '') + ' »).');
+  else if(_taxoIdPris(t, f.id)) err.push('La famille « ' + f.id + ' » existe déjà, ou cet identifiant a déjà servi : un identifiant ne se réutilise jamais. Le prochain libre est « ' + _taxoFamNeuve(t) + ' ».');
+  if(!f.libelleProf) err.push('La famille n’a pas de « libelleProf » (ce que tu lis).');
+  if(!f.libelleEleve) err.push('La famille n’a pas de « libelleEleve » (ce que lisent les élèves).');
+  var N = Array.isArray(f.notions) ? f.notions : [];
+  if(!N.length) err.push('La famille n’a aucune notion (« notions »: [ … ]).');
+  var vus = {};
+  N.forEach(function(n, i){ var q = 'Notion ' + (i + 1) + (n && n.id ? ' (« ' + n.id + ' »)' : '');
+    if(!n || typeof n !== 'object'){ err.push(q + ' : illisible.'); return; }
+    if(!/^[a-z]+(-[a-z]+)*-\d{3}$/.test(String(n.id || ''))) err.push(q + ' : l’identifiant doit avoir la forme « litt-040 ».');
+    else if(vus[n.id]) err.push(q + ' : cet identifiant est deux fois dans le fragment.');
+    else if(_taxoIdPris(t, n.id)) err.push(q + ' : cet identifiant existe déjà, ou a déjà servi (un identifiant ne se réutilise jamais).');
+    vus[n.id] = 1;
+    if(!n.libelleProf) err.push(q + ' : il manque « libelleProf ».');
+    if(!n.libelleEleve) err.push(q + ' : il manque « libelleEleve ».');
+    if(!n.niveaux) err.push(q + ' : il manque « niveaux » (par exemple « 3e » ou « 6e-3e »).');
+  });
+  var di = err.length ? -1 : _taxoDomaineDuPrefixe(t, N.map(function(n){ return n.id; }));
+  return { ok: !err.length, erreurs: err, famille: f, di: di };
+}
+function _taxoGesteImporter(texte, diChoisi, cb){
+  taxoCharger(function(t){
+    var v = _taxoVerifierFragment(t, texte); if(!v.ok){ cb(false, v.erreurs); return; }
+    var di = (diChoisi != null && diChoisi !== '' && +diChoisi >= 0) ? +diChoisi : v.di;
+    if(!(di >= 0 && t.domaines[di])){ cb(false, ['Choisis le domaine où ranger la famille.']); return; }
+    var fam = JSON.parse(JSON.stringify(v.famille)); fam.notions = fam.notions.map(function(n){ if(n.actif === undefined) n.actif = true; return n; });
+    var index = (t.domaines[di].familles || []).length;
+    _taxoEcrire('/domaines/' + di + '/familles/' + index, fam, function(ok){
+      if(!ok){ cb(false, ['La famille n’a pas pu être écrite. Réessaie : rien d’autre n’a changé.']); return; }
+      var meta = _taxoMetaSuivant(t); meta.notes = (meta.notes || []).concat(['v' + meta.version + ' (' + meta.date + ') — import : ' + fam.id + ' « ' + fam.libelleProf + ' » (' + fam.notions.map(function(n){ return n.id; }).join(', ') + '), dans « ' + (t.domaines[di].libelleProf || t.domaines[di].id) + ' ».']);
+      _taxoEcrire('/meta', meta, function(){ _taxoOublierCache(); cb(true, [fam.notions.length + ' notion' + (fam.notions.length > 1 ? 's' : '') + ' importée' + (fam.notions.length > 1 ? 's' : '') + ' dans la famille « ' + fam.libelleProf + ' » (' + fam.id + '), domaine « ' + (t.domaines[di].libelleProf || '') + ' ».'], { di: di, fam: fam.id }); });
+    });
+  });
+}
+function _taxoGesteFamille(di, valeurs, cb){
+  taxoCharger(function(t){
+    if(!(t && t.domaines && t.domaines[di])){ cb(false, 'Choisis le domaine.'); return; }
+    if(!valeurs.libelleProf || !valeurs.libelleEleve){ cb(false, 'Écris les deux libellés de la famille.'); return; }
+    var fam = { id: _taxoFamNeuve(t), libelleProf: valeurs.libelleProf, libelleEleve: valeurs.libelleEleve, notions: [] };
+    _taxoEcrire('/domaines/' + di + '/familles/' + (t.domaines[di].familles || []).length, fam, function(ok){
+      if(!ok){ cb(false, 'La famille n’a pas pu être créée. Réessaie.'); return; }
+      _taxoEcrire('/meta', _taxoMetaSuivant(t), function(){ _taxoOublierCache(); cb(true, null, fam.id); });
+    });
+  });
+}
+function _taxoOublierCache(){ try { if(typeof CH === 'object' && CH) CH.taxo = null; if(typeof DR_MEM === 'object' && DR_MEM) DR_MEM.taxoDemande = false; } catch(e){} }   /* l'Atelier relit le référentiel : la notion importée se déclare tout de suite */
+function taxoOutil(quoi){ TAXO_UI.outil = (TAXO_UI.outil === quoi ? null : quoi); TAXO_UI.impMsg = null; TAXO_UI.impOk = false; taxoRender(); }
+function taxoFamilleCreer(){
+  var di = (document.getElementById('m8tx-af-dom') || {}).value; var lire = function(i){ var e = document.getElementById(i); return e ? e.value.trim() : ''; };
+  _taxoGesteFamille(+di, { libelleProf: lire('m8tx-af-prof'), libelleEleve: lire('m8tx-af-eleve') }, function(ok, msg, id){
+    if(!ok){ alert(msg); return; }
+    var d = TAXO_CACHE && TAXO_CACHE.domaines[+di]; if(d) TAXO_UI.doms[d.id] = true; TAXO_UI.fams[id] = true; TAXO_UI.creation = id; TAXO_UI.outil = null; taxoRafraichir(true);
+  });
+}
+function taxoNotionOuvrir(){
+  var idFam = (document.getElementById('m8tx-an-fam') || {}).value; if(!_taxoIdSur(idFam)) return;
+  var pos = TAXO_CACHE ? _taxoTrouverFamille(TAXO_CACHE, idFam) : null; if(pos) TAXO_UI.doms[TAXO_CACHE.domaines[pos.di].id] = true;
+  TAXO_UI.fams[idFam] = true; TAXO_UI.outil = null; taxoCreerOuvrir(idFam);
+}
+function taxoImporterVerifier(){
+  var txt = (document.getElementById('m8tx-imp-zone') || {}).value || ''; TAXO_UI.impTexte = txt;
+  var v = _taxoVerifierFragment(TAXO_CACHE, txt); TAXO_UI.impOk = v.ok;
+  if(v.ok){ TAXO_UI.impDom = v.di; TAXO_UI.impMsg = { ok:true, l:['Le fragment est bon : la famille « ' + v.famille.libelleProf + ' » (' + v.famille.id + ') et ' + v.famille.notions.length + ' notion(s) : ' + v.famille.notions.map(function(n){ return n.id + ' « ' + n.libelleProf + ' »'; }).join(', ') + '. Rien n’est encore écrit : « Importer ces notions » l’écrit.'] }; }
+  else TAXO_UI.impMsg = { ok:false, l:['Refusé, rien n’est écrit :'].concat(v.erreurs) };
+  taxoRender();
+}
+function taxoImporterEcrire(){
+  if(!TAXO_UI.impOk) return; var di = (document.getElementById('m8tx-imp-dom') || {}).value;
+  _taxoGesteImporter(TAXO_UI.impTexte, di, function(ok, lignes, ou){
+    TAXO_UI.impOk = false; TAXO_UI.impMsg = { ok:ok, l: ok ? lignes : ['Refusé, rien n’est écrit :'].concat(lignes) };
+    if(ok && ou){ var d = TAXO_CACHE && TAXO_CACHE.domaines[ou.di]; if(d) TAXO_UI.doms[d.id] = true; TAXO_UI.fams[ou.fam] = true; TAXO_UI.impTexte = ''; }
+    taxoRafraichir(true);
+  });
+}
+function _taxoOutilsHtml(t){
+  var o = TAXO_UI.outil, h = '<div class="m8tx-outils" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">'
+    + '<button class="m8-btn m8-btn-min' + (o === 'famille' ? ' on' : '') + '" onclick="taxoOutil(\'famille\')" title="Une famille neuve dans un domaine ; son identifiant est fabriqué (le suivant libre) et ne change jamais">＋ Ajouter une famille</button>'
+    + '<button class="m8-btn m8-btn-min' + (o === 'notion' ? ' on' : '') + '" onclick="taxoOutil(\'notion\')" title="Une notion neuve dans la famille que tu choisis ; son identifiant est fabriqué et ne change jamais">＋ Ajouter une notion</button>'
+    + '<button class="m8-btn m8-btn-min' + (o === 'import' ? ' on' : '') + '" onclick="taxoOutil(\'import\')" title="Colle une famille et ses notions (le format de la proposition) : vérifié avant d’écrire, refusé en clair sinon">Importer des notions</button></div>';
+  var domOpts = function(sel){ return t.domaines.map(function(d, i){ return '<option value="' + i + '"' + (i === sel ? ' selected' : '') + '>' + escapeHtml(d.libelleProf || d.id) + '</option>'; }).join(''); };
+  if(o === 'famille') h += '<div class="m8tx-form"><div class="m8tx-form-titre">Nouvelle famille</div><div class="m8tx-champ"><label class="m8tx-lab">Domaine</label><select class="m8-input" id="m8tx-af-dom">' + domOpts(0) + '</select></div>'
+    + _taxoChampForm('m8tx-af', '-prof', 'Libellé professeur', '', '') + _taxoChampForm('m8tx-af', '-eleve', 'Libellé élève', '', 'Ce que liront les élèves')
+    + '<div class="m8tx-actions"><button class="m8-btn m8-btn-min" onclick="taxoFamilleCreer()">Créer la famille</button><button class="m8-btn m8-btn-min" onclick="taxoOutil(null)">Annuler</button></div>'
+    + '<p class="m8tx-note">Son identifiant sera « ' + escapeHtml(_taxoFamNeuve(t)) + ' » et ne changera jamais. Ses notions s’ajoutent ensuite.</p></div>';
+  if(o === 'notion') h += '<div class="m8tx-form"><div class="m8tx-form-titre">Nouvelle notion — dans quelle famille ?</div><div class="m8tx-champ"><select class="m8-input" id="m8tx-an-fam">'
+    + t.domaines.map(function(d){ return '<optgroup label="' + escapeHtml(d.libelleProf || d.id) + '">' + (d.familles || []).map(function(f){ return _taxoIdSur(f.id) ? '<option value="' + f.id + '">' + escapeHtml(f.libelleProf || f.id) + '</option>' : ''; }).join('') + '</optgroup>'; }).join('')
+    + '</select></div><div class="m8tx-actions"><button class="m8-btn m8-btn-min" onclick="taxoNotionOuvrir()">Continuer</button><button class="m8-btn m8-btn-min" onclick="taxoOutil(null)">Annuler</button></div></div>';
+  if(o === 'import'){
+    var m = TAXO_UI.impMsg;
+    h += '<div class="m8tx-form"><div class="m8tx-form-titre">Importer des notions</div>'
+      + '<p class="m8tx-note">Colle une famille et ses notions, au format de la proposition (« id », « libelleProf », « libelleEleve », « notions » : « id », « actif », « libelleProf », « libelleEleve », « niveaux », « source »). Les phrases pour l’élève entrent telles que tu les colles.</p>'
+      + '<textarea class="m8-input" id="m8tx-imp-zone" rows="8" style="width:100%;font-family:monospace;font-size:.8rem">' + escapeHtml(TAXO_UI.impTexte || '') + '</textarea>'
+      + (TAXO_UI.impOk ? '<div class="m8tx-champ"><label class="m8tx-lab">Rangée dans le domaine</label><select class="m8-input" id="m8tx-imp-dom">' + domOpts(TAXO_UI.impDom >= 0 ? TAXO_UI.impDom : 0) + '</select></div>' : '')
+      + '<div class="m8tx-actions"><button class="m8-btn m8-btn-min" onclick="taxoImporterVerifier()">Vérifier</button>'
+      + (TAXO_UI.impOk ? '<button class="m8-btn m8-btn-min" onclick="taxoImporterEcrire()">Importer ces notions</button>' : '')
+      + '<button class="m8-btn m8-btn-min" onclick="taxoOutil(null)">Fermer</button></div>'
+      + (m ? '<div id="m8tx-imp-msg" class="m8tx-note" style="color:' + (m.ok ? '#8fd19e' : '#ff8a8e') + '">' + m.l.map(function(x){ return '<div>' + escapeHtml(x) + '</div>'; }).join('') + '</div>' : '')
+      + '</div>';
+  }
   return h;
 }
 function taxoRender(){
@@ -3873,7 +3990,7 @@ function openItem(level,chnum,snum,itemId){
   if(item.kind==='worktrack' && src==='firebase_app'){var _lw=clickedLevel||currentLevel||'';openViewer(item.title||'Plan de travail','worktrack.html'+(_lw?'?n='+_lw:''));return;}
   if(item.kind==='tache' && src==='firebase_app'){openViewer(item.title||'T\u00e2che',ref);return;} /* M12 : r\u00e9paration \u2014 tombait sur \u00ab type non support\u00e9 \u00bb */
   if(src==='atelier'){openAtelierItem(ref,item.title,{niveau:level,chapitre:chnum,seance:snum,classeNom:(typeof TRACK!=='undefined'&&TRACK.eleve&&!TRACK.eleve.is_prof)?_eleveClasse():''});return;}   /* [PONT-D] le contexte de navigation voyage avec l'item */
-  if(src==='drive'){openViewer(item.title,'https://drive.google.com/file/d/'+ref+'/preview');return;}
+  if(src==='drive'){showUploadToast('\u26a0 Ce document n\u2019est plus li\u00e9 \u2014 d\u00e9pose-le en ligne (glisse le fichier sur la ligne) ou relie-le (\ud83d\udd17).','err');return;}   /* E4 (§12.50) : plus de visionneuse Drive */
   if(src==='external'){openViewer(item.title,ref);return;}
   if(src==='html'){openViewer(item.title,ref);return;}
   alert('Type d\u2019item non support\u00e9 : '+item.kind+' / '+src);
@@ -3964,7 +4081,7 @@ function itemCreer(level,chnum,snum,title,props,cb){
   var slug=title.toLowerCase().replace(/[\u00e0-\u00e6]/g,'a').replace(/[\u00e8-\u00eb]/g,'e').replace(/[\u00ec-\u00ef]/g,'i').replace(/[\u00f2-\u00f6]/g,'o').replace(/[\u00f9-\u00fc]/g,'u').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').substring(0,40)||'item';
   var itemId=slug;var i=2;
   while(items[itemId]){itemId=slug+'-'+i;i++;}
-  var newItem={kind:'doc',uid:uidNeuf('itm'),title:title,subtitle:'',icon:'\ud83d\udcc4',source:'drive',ref:'',ordre:newOrdre,published:false};   /* [C5-UID] ① */
+  var newItem={kind:'doc',uid:uidNeuf('itm'),title:title,subtitle:'',icon:'\ud83d\udcc4',source:'external',ref:'',ordre:newOrdre,published:false};   /* [C5-UID] ① */
   if(props)Object.keys(props).forEach(function(k){newItem[k]=props[k];});
   mjpcPutJson(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'.json',newItem,'Cr\u00e9ation de l\u2019item \u00ab '+title+' \u00bb',function(){
     if(!sce.items)sce.items={};
@@ -4275,11 +4392,11 @@ function openLinkModal(level,chnum,snum,itemId){
   var item=chapitresData[level][chnum].seances[snum].items[itemId];if(!item)return;
   LINK_MODAL_CONTEXT={level:level,chnum:chnum,snum:snum,itemId:itemId};
   document.getElementById('link-modal-title').textContent='Lier : '+(item.title||'');
-  document.getElementById('link-modal-sub').textContent='Lie cet item \u00e0 une ressource : un fichier Drive ou une adresse web, un travail d\u2019une application (dict\u00e9e, r\u00e9\u00e9criture, QCM, d\u00e9bat\u2026), ou un document de l\u2019atelier. La nouvelle liaison remplace l\u2019ancienne.';
+  document.getElementById('link-modal-sub').textContent='Lie cet item \u00e0 une ressource : un fichier d\u00e9pos\u00e9 en ligne ou une adresse web, un travail d\u2019une application (dict\u00e9e, r\u00e9\u00e9criture, QCM, d\u00e9bat\u2026), ou un document de l\u2019atelier. La nouvelle liaison remplace l\u2019ancienne.';
   var currentEl=document.getElementById('link-modal-current');
   if(item.ref){
     var label='';
-    if(item.source==='drive')label='\ud83d\udcce Drive : '+item.ref;
+    if(item.source==='drive')label='\ud83d\udcce Ancien fichier : '+item.ref;   /* E4 (§12.50) */
     else if(item.source==='external')label='\ud83c\udf10 '+item.ref;
     else if(item.source==='firebase_app')label=(item.kind||'App')+' : '+item.ref;
     else if(item.source==='atelier')label='\ud83d\udcc4 Feuille : '+item.ref; /* le titre remplace la r\u00e9f\u00e9rence d\u00e8s que la liste est charg\u00e9e */
@@ -4410,12 +4527,12 @@ function driveExtraireId(texte){
 function linkModalApplyUrl(){
   if(!LINK_MODAL_CONTEXT)return;
   var input=document.getElementById('link-modal-url').value.trim();
-  if(!input){alert('Colle un lien Drive ou une URL.');return;}
+  if(!input){atInfo('Colle une adresse web (https://\u2026), ou glisse le fichier dans la zone au-dessus.');return;}
   var newSource='',newRef='';
-  var idD=driveExtraireId(input);
-  if(idD){newSource='drive';newRef=idD;}
-  else if(/^https?:\/\//i.test(input)){newSource='external';newRef=input;}
-  else{alert('Format non reconnu. Colle un lien Drive ou une URL http(s)://.');return;}
+  /* E4 (§12.50) : un lien du Drive ne se lie plus — il est refusé, en le disant */
+  if(/(^|\/\/|\.)(drive|docs)\.google\.com\//i.test(input)||driveExtraireId(input)&&!/^https?:\/\//i.test(input)){atInfo('Ce lien vient du Drive : le site ne lie plus le Drive. Glisse le fichier dans la zone au-dessus : il part en ligne et la ligne est li\u00e9e aussit\u00f4t.');return;}
+  if(/^https?:\/\//i.test(input)){newSource='external';newRef=input;}
+  else{atInfo('Format non reconnu. Colle une adresse web qui commence par https://');return;}
   applyLinkChanges(newSource,newRef,null);
 }
 
@@ -4439,7 +4556,7 @@ function linkModalUnlink(){
 function _resLibelle(source,ref,kind){
   if(!ref)return '(aucune)';
   if(source==='atelier'){var d=(typeof LINK_ATELIER_DOCS!=='undefined'&&LINK_ATELIER_DOCS)?LINK_ATELIER_DOCS[ref]:null;return 'feuille \u00ab '+((d&&d.titre)||ref)+' \u00bb';}
-  if(source==='drive')return 'fichier Drive '+ref;
+  if(source==='drive')return 'ancien fichier '+ref;
   if(source==='external')return 'site '+ref;
   if(source==='firebase_app')return (kind||'activit\u00e9')+' '+ref;
   return (source||'?')+' '+ref;
@@ -4496,53 +4613,111 @@ function showUploadToast(msg,kind){
   if(kind==='ok'||kind==='err'){setTimeout(function(){if(el&&el.parentNode)el.remove();},2500);}
 }
 
-/* [LOT7-①] LE CHEMIN LISIBLE : niveau · titre du chapitre · « Séance N — titre ».
-   Le nom du dossier sert à Paul quand il ouvre son Drive ; LE SITE NE RETIENT
-   QUE l'id (ref) et ne cherche JAMAIS par chemin — renommer un chapitre ou
-   déplacer un dossier à la main ne casse rien, les deux repères sont
-   indépendants. Une seule fonction compose ce chemin. */
-function _cheminDriveLisible(level,chnum,snum){
-  var ch=(chapitresData[level]||{})[chnum]||{};
-  var chemin=[String(level||'').trim()||'divers'];
-  chemin.push((ch.title&&String(ch.title).trim())||('Chapitre '+chnum));
-  if(snum!==undefined&&snum!==null&&snum!==''){
-    var se=(ch.seances||{})[snum]||{};
-    var rang=ordDe(se,snum);
-    chemin.push('S\u00e9ance '+rang+((se.title&&String(se.title).trim())?(' \u2014 '+String(se.title).trim()):''));
-  }
-  return chemin;
+/* E4 (§12.49, §12.50) : « DÉPOSER EN LIGNE » — le seul dépôt du site. Le fichier va dans mjpc-medias
+   (`depots/<niveau>/…`) par le RELAIS : le second déploiement du programme Google de Paul, « moi uniquement »
+   (la preuve que c'est Paul : sa connexion Google ; aucune clé dans le navigateur). Une petite fenêtre
+   s'ouvre (elle porte la connexion), le site lui passe le fichier par postMessage, elle l'écrit et répond
+   le chemin, le site la ferme. Recycle le dépôt Drive d'avant : le geste (glisser un fichier sur une séance
+   ou sur un item, coller), la limite dite en clair, la cause et le geste pour chaque échec (LOT8-⑤). */
+var MJPC_RELAIS_URL='MJPC_RELAIS_URL_A_POSER';   /* l'adresse /exec du déploiement « moi uniquement » — posée par la conscience avec Paul */
+var MJPC_DEPOT_MAX=25*1024*1024;
+function mjpcDepotType(octets){
+  var b=octets, s=function(i,n){return String.fromCharCode.apply(null,Array.prototype.slice.call(b,i,i+n));};
+  if(b.length>=3&&b[0]===0xFF&&b[1]===0xD8&&b[2]===0xFF)return 'jpg';
+  if(b.length>=8&&b[0]===0x89&&s(1,3)==='PNG')return 'png';
+  if(b.length>=6&&(s(0,6)==='GIF87a'||s(0,6)==='GIF89a'))return 'gif';
+  if(b.length>=12&&s(0,4)==='RIFF'&&s(8,4)==='WEBP')return 'webp';
+  if(b.length>=5&&s(0,5)==='%PDF-')return 'pdf';
+  return null;
 }
-function _uploadBlobToDrive(blob,fileName,level,chnum,snum){
-  /* [LOT7-①] LE SEUL POINT D'ENTRÉE du dépôt Drive — nouveau script, action
-     « deposer », chemin en NOMS LISIBLES (_cheminDriveLisible). Résout un objet
-     COMPATIBLE avec les quatre appelants historiques (ils lisent
-     res.drive_file_id) : {drive_file_id:id, file_name, ext, url, affichage}.
-     L'ancienne action upload_drive_only et son target_path en clés Firebase
-     (« 3e/ch10/s1 », illisible au Drive) n'existent plus. */
-  return new Promise(function(resolve,reject){
-    if(blob.size>30*1024*1024){console.error('MJPC d\u00e9p\u00f4t \u2014 fichier trop lourd :',blob.size,'octets');reject(new Error('Fichier trop lourd (plus de 30 Mo) \u2014 d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
-    var reader=new FileReader();
-    reader.onload=function(e){
-      var b64=e.target.result.split(',')[1];
-      mjpcFetchOk(APPS_SCRIPT_DEPOT_URL,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({
-        action:'deposer',fichier:b64,nom:fileName,type:blob.type||'application/octet-stream',
-        chemin:_cheminDriveLisible(level,chnum,snum)
-      })}).then(function(r){return r.json();}).then(function(res){
-        /* [LOT8c-53\u2460] LA R\u00c8GLE : la cause dans le langage de Paul \u00e0 l'\u00e9cran,
-           le d\u00e9tail technique en console \u2014 jamais de jargon dans un toast. */
-        if(!res||res.error||res.status==='erreur'){console.error('MJPC d\u00e9p\u00f4t \u2014 script muet ou en erreur :',res);reject(new Error('Le fichier n\u2019est pas arriv\u00e9 sur Drive. R\u00e9essaie ; si \u00e7a continue, d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
-        if(!res.id){console.error('MJPC d\u00e9p\u00f4t \u2014 r\u00e9ponse sans identifiant :',res);reject(new Error('Drive n\u2019a pas confirm\u00e9 le d\u00e9p\u00f4t \u2014 le fichier n\u2019est pas li\u00e9 \u00e0 la ligne. R\u00e9essaie ; si \u00e7a continue, d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
-        resolve({drive_file_id:res.id,file_name:res.nom||fileName,ext:res.ext||'',url:res.url||'',affichage:res.affichage||'',dossier:res.dossier||'',dossier_url:res.dossier_url||''});
-      }).catch(function(err){
-        /* [LOT8-\u2464] la cause ET le geste, pour chaque famille d'\u00e9chec */
-        if(err&&err.mjpcIssue&&err.mjpcIssue.etat===MJPC_ISSUE.PANNE){console.error('MJPC d\u00e9p\u00f4t \u2014 panne de liaison :',err.mjpcIssue);reject(new Error('Pas de connexion internet \u2014 le fichier n\u2019est pas parti sur Drive. V\u00e9rifie ta connexion, puis reglisse le fichier.'));return;}
-        if(err&&err.mjpcIssue&&err.mjpcIssue.etat===MJPC_ISSUE.REFUSEE){console.error('MJPC d\u00e9p\u00f4t \u2014 refus HTTP '+err.mjpcIssue.status+' :',err.mjpcIssue);reject(new Error('Le fichier n\u2019est pas arriv\u00e9 sur Drive. R\u00e9essaie ; si \u00e7a continue, d\u00e9pose-le toi-m\u00eame sur Drive puis colle son lien (bouton Lier\u2026).'));return;}
-        reject(err);
-      });
-    };
-    reader.onerror=function(e){console.error('MJPC d\u00e9p\u00f4t \u2014 lecture du fichier impossible :',e);reject(new Error('Impossible de lire ce fichier \u2014 reprends-le depuis ton ordinateur et reglisse-le.'));};
-    reader.readAsDataURL(blob);
+function mjpcDepotLire(blob,n){ return new Promise(function(res,rej){ var r=new FileReader(); r.onload=function(){res(new Uint8Array(r.result));}; r.onerror=function(){rej(new Error('Impossible de lire ce fichier — reprends-le depuis ton ordinateur et reglisse-le.'));}; r.readAsArrayBuffer(n?blob.slice(0,n):blob); }); }
+/* l'image réduite avant l'envoi : 1920 px de large au plus (le même rendu au tableau) ; un GIF reste tel quel (il peut être animé) */
+function mjpcDepotReduire(blob,type){
+  if(type==='pdf'||type==='gif')return Promise.resolve({blob:blob,type:type});
+  return new Promise(function(res){
+    var u=URL.createObjectURL(blob), im=new Image();
+    im.onload=function(){ URL.revokeObjectURL(u); if(im.naturalWidth<=1920){res({blob:blob,type:type});return;}
+      var c=document.createElement('canvas'); c.width=1920; c.height=Math.round(im.naturalHeight*1920/im.naturalWidth); c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+      var t2=(type==='png')?'png':(type==='webp'?'webp':'jpg'), mime=t2==='jpg'?'image/jpeg':'image/'+t2;
+      c.toBlob(function(b2){res(b2?{blob:b2,type:t2}:{blob:blob,type:type});},mime,0.9); };
+    im.onerror=function(){ URL.revokeObjectURL(u); res({blob:blob,type:type}); };
+    im.src=u; });
+}
+function mjpcDepotB64(blob){ return new Promise(function(res,rej){ var r=new FileReader(); r.onload=function(){res(String(r.result).split(',')[1]||'');}; r.onerror=function(){rej(new Error('Impossible de lire ce fichier — reprends-le depuis ton ordinateur et reglisse-le.'));}; r.readAsDataURL(blob); }); }
+/* la vérification d'avant l'envoi : le type par les premiers octets, 25 Mo au plus, internet, le relais posé */
+function mjpcDepotVerifier(f){
+  var nom=f.name||'fichier';
+  if(f.size>MJPC_DEPOT_MAX)return Promise.reject(new Error('« '+nom+' » est trop lourd ('+Math.round(f.size/1048576)+' Mo) : 25 Mo au plus. Une vidéo reste sur la clé ; un PDF, enregistre-le plus léger.'));
+  return mjpcDepotLire(f,16).then(function(o){ var t=mjpcDepotType(o);
+    if(!t)throw new Error('« '+nom+' » n’est ni une image (JPG, PNG, WebP, GIF) ni un PDF : il ne se dépose pas en ligne.');
+    return t; });
+}
+function mjpcDeposerEnLigne(fichiers,niveau){
+  fichiers=Array.prototype.slice.call(fichiers||[]);
+  if(!fichiers.length)return Promise.reject(new Error('Aucun fichier reçu.'));
+  if(typeof navigator!=='undefined'&&navigator.onLine===false)return Promise.reject(new Error('Pas de connexion internet — le fichier ne peut pas partir en ligne. Vérifie ta connexion, puis recommence ; d’ici là, il reste sur la clé.'));
+  if(!/^https:\/\/script\.google\.com\//.test(MJPC_RELAIS_URL))return Promise.reject(new Error('Le dépôt en ligne n’est pas encore installé dans ton programme Google : rien n’est parti.'));
+  var paquet;
+  return Promise.all(fichiers.map(function(f){ return mjpcDepotVerifier(f).then(function(t){ return mjpcDepotReduire(f,t); }).then(function(r){ return mjpcDepotB64(r.blob).then(function(b64){ return {nom:(f.name||'fichier').replace(/\.[^.]*$/,''),type:r.type,b64:b64}; }); }); }))
+  .then(function(liste){ paquet={action:'deposer',niveau:String(niveau||'divers'),fichiers:liste}; return mjpcRelais(paquet); });
+}
+/* la petite fenêtre du relais : elle dit « prêt », reçoit le paquet, répond « fait » (ou une erreur en clair) ; le site la ferme */
+function mjpcRelais(paquet){
+  return new Promise(function(res,rej){
+    var w=window.open(MJPC_RELAIS_URL,'mjpc-relais','width=460,height=380');
+    if(!w){rej(new Error('La fenêtre du dépôt n’a pas pu s’ouvrir : autorise les fenêtres de ce site (l’icône dans la barre d’adresse), puis recommence.'));return;}
+    var fini=false, origineOk=function(o){return /^https:\/\/([a-z0-9-]+\.)*(google\.com|googleusercontent\.com)$/.test(String(o||''));};
+    var finir=function(err,val){ if(fini)return; fini=true; window.removeEventListener('message',ecoute); clearTimeout(tm); clearInterval(ferme); try{w.close();}catch(e){} if(err)rej(err); else res(val); };
+    var ecoute=function(ev){ var d=ev.data; if(!d||typeof d!=='object'||!d.mjpcRelais||!origineOk(ev.origin))return;
+      if(d.mjpcRelais==='pret'){ try{ev.source.postMessage({mjpcRelais:'paquet',paquet:paquet},ev.origin);}catch(e){finir(new Error('La fenêtre du dépôt ne répond pas — recommence.'));} return; }
+      if(d.mjpcRelais==='fait'){ var l=Array.isArray(d.depots)?d.depots:[]; if(!l.length){finir(new Error('Le dépôt n’a pas confirmé l’arrivée du fichier — recommence.'));return;} finir(null,l.map(function(x){return {chemin:String(x.chemin||''),url:(typeof dr_mediasAdresse==='function'?dr_mediasAdresse(x.chemin):String(x.chemin||'')),nom:x.nom||''};})); return; }
+      if(d.mjpcRelais==='refus'){ console.error('MJPC dépôt — refus du relais :',d); finir(new Error(String(d.raison||'Le dépôt a refusé ce fichier.'))); } };
+    window.addEventListener('message',ecoute);
+    var tm=setTimeout(function(){finir(new Error('Le dépôt n’a pas répondu en trois minutes — si Google demande un compte, choisis celui de Paul, puis recommence.'));},180000);
+    var ferme=setInterval(function(){ if(w.closed)finir(new Error('La fenêtre du dépôt a été fermée avant la fin — rien n’est parti.')); },700);
   });
+}
+/* le fichier répond-il ? GitHub Pages le sert environ une minute après le dépôt : on regarde toutes les 10 s, trois minutes au plus */
+function mjpcAttendreEnLigne(url,cb){
+  var n=0, essai=function(){ n++; fetch(url,{method:'HEAD',cache:'no-store'}).then(function(r){ if(r.ok){cb(true);return;} encore(); }).catch(encore); },
+      encore=function(){ if(n>=18){cb(false);return;} setTimeout(essai,10000); };
+  essai();
+}
+var MJPC_ICONE_EXT={pdf:'📄',jpg:'🖼',jpeg:'🖼',png:'🖼',webp:'🖼',gif:'🖼'};
+function _itemDeposeEcrire(level,chnum,snum,itemId,obj){
+  var base='/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId;
+  return Promise.all(Object.keys(obj).map(function(k){return secuEcrire(base+'/'+k,obj[k]);})).then(function(rs){ if(!rs.every(function(r){return r.ok;}))throw new Error('Le fichier est en ligne, mais la ligne n’a pas pu être liée — relie-la (🔗) avec son adresse.'); });
+}
+function uploadFileForChapterItem(file,level,chnum,snum,itemId){
+  var sce=chapitresData[level]&&chapitresData[level][chnum]&&chapitresData[level][chnum].seances&&chapitresData[level][chnum].seances[snum];
+  var item=sce&&sce.items&&sce.items[itemId];
+  if(!item){showUploadToast('⚠ Item introuvable','err');return;}
+  if(item.ref){showUploadToast('⚠ Item déjà lié à une ressource. Délie d’abord (🔗) ou crée un nouvel item.','err');return;}
+  showUploadToast('⏳ Dépôt en ligne…');
+  mjpcDeposerEnLigne([file],level).then(function(l){ var d=l[0];
+    return _itemDeposeEcrire(level,chnum,snum,itemId,{source:'external',ref:d.url,published:true}).then(function(){
+      item.source='external';item.ref=d.url;_markPub(item,'*',true);
+      showUploadToast('✅ Document lié : '+(file.name||item.title||'')+' — en ligne dans une minute environ','ok');
+      renderChapitres(level); if(AT.edChap)atEditerChapitreRendre(); });
+  }).catch(function(err){showUploadToast('⚠ '+err.message,'err');});
+}
+function uploadFileForNewItem(file,level,chnum,snum){
+  var sce=chapitresData[level][chnum].seances[snum];
+  var existingItems=sce.items||{};
+  var fileName=file.name||('depot-'+Date.now());
+  var slug=fileName.toLowerCase().replace(/\.[a-z0-9]+$/,'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').substring(0,40)||'item';
+  var itemId=slug;var i=2;while(existingItems[itemId]){itemId=slug+'-'+i;i++;}
+  var ordres=Object.keys(existingItems).map(function(k){return existingItems[k].ordre||0;});
+  var newOrdre=(ordres.length?Math.max.apply(null,ordres):0)+1;
+  showUploadToast('⏳ Dépôt en ligne…');
+  mjpcDeposerEnLigne([file],level).then(function(l){ var d=l[0]; var ext=(d.chemin.split('.').pop()||'').toLowerCase();
+    var newItem={kind:'doc',uid:uidNeuf('itm'),title:fileName.replace(/\.[^.]+$/,''),subtitle:'',icon:MJPC_ICONE_EXT[ext]||'📄',source:'external',ref:d.url,ordre:newOrdre,published:true};
+    return secuEcrire('/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId,newItem).then(function(r){
+      if(!r.ok)throw new Error('Le fichier est en ligne, mais la ligne n’a pas pu être créée — crée-la et relie-la (🔗) avec son adresse.');
+      if(!sce.items)sce.items={}; sce.items[itemId]=newItem;
+      showUploadToast('✅ Nouvel item créé — en ligne dans une minute environ','ok');
+      renderChapitres(level); });
+  }).catch(function(err){showUploadToast('⚠ '+err.message,'err');});
 }
 
 function _isImage(file){
@@ -4559,114 +4734,6 @@ function _nextImageId(images){
   var imgId='img'+newOrdre;
   while(images&&images[imgId])imgId='img'+newOrdre+'-'+Math.random().toString(36).slice(2,5);
   return {imgId:imgId,ordre:newOrdre};
-}
-
-function uploadFileForChapterItem(file,level,chnum,snum,itemId){
-  var sce=chapitresData[level]&&chapitresData[level][chnum]&&chapitresData[level][chnum].seances&&chapitresData[level][chnum].seances[snum];
-  var item=sce&&sce.items&&sce.items[itemId];
-  if(!item){showUploadToast('\u26a0 Item introuvable','err');return;}
-  var isImg=_isImage(file);
-  var isGallery=item.kind==='gallery';
-  if(isImg){
-    if(isGallery)return addImageToGallery(file,level,chnum,snum,itemId);
-    if(!item.ref)return convertItemToGalleryAndAdd(file,level,chnum,snum,itemId);
-    showUploadToast('\u26a0 Item d\u00e9j\u00e0 li\u00e9 \u00e0 une ressource. D\u00e9lie d\u2019abord (\ud83d\udd17) ou cr\u00e9e un nouvel item.','err');
-    return;
-  }
-  if(isGallery){showUploadToast('\u26a0 Cet item est une galerie d\u2019images. Cr\u00e9e un nouvel item pour un PDF.','err');return;}
-  showUploadToast('\u23f3 Upload en cours\u2026');
-  _uploadBlobToDrive(file,file.name||('upload-'+Date.now()),level,chnum,snum).then(function(res){
-    var basePath='/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId;
-    return Promise.all([
-      mjpcFetchOk(FIREBASE_BASE+basePath+'/source.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify('drive')}),
-      mjpcFetchOk(FIREBASE_BASE+basePath+'/ref.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(res.drive_file_id)}),
-      mjpcFetchOk(FIREBASE_BASE+basePath+'/published.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(true)})
-    ]).then(function(){
-      item.source='drive';item.ref=res.drive_file_id;_markPub(item,'*',true);   /* M8-IDENTITÉ : routé — comportement conservé (publié pour toutes les classes) ; l'opportunité de ce défaut reste à arbitrer par Paul */
-      showUploadToast('\u2705 Document li\u00e9 : '+(file.name||item.title||''),'ok');   /* [LOT6-③] le résultat est nommé */
-      renderChapitres(level);
-      if(AT.edChap)atEditerChapitreRendre();   /* [LOT6-③] déposé depuis la modale Lier de l'éditeur : le fil suit */
-    });
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
-}
-
-function addImageToGallery(file,level,chnum,snum,itemId){
-  showUploadToast('\u23f3 Ajout image\u2026');
-  var item=chapitresData[level][chnum].seances[snum].items[itemId];
-  var images=item.images||{};
-  var ids=_nextImageId(images);
-  _uploadBlobToDrive(file,file.name||('image-'+Date.now()+'.png'),level,chnum,snum).then(function(res){
-    var newImage={ref:res.drive_file_id,titre:'Image '+ids.ordre,ordre:ids.ordre};
-    return mjpcFetchOk(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'/images/'+ids.imgId+'.json',{
-      method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newImage)
-    }).then(function(){
-      if(!item.images)item.images={};
-      item.images[ids.imgId]=newImage;
-      showUploadToast('\u2705 Image ajout\u00e9e (galerie)','ok');
-      renderChapitres(level);
-    });
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
-}
-
-function convertItemToGalleryAndAdd(file,level,chnum,snum,itemId){
-  // Item sans ref : on le bascule en galerie puis on ajoute la première image
-  var item=chapitresData[level][chnum].seances[snum].items[itemId];
-  var basePath='/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId;
-  showUploadToast('\u23f3 Cr\u00e9ation galerie\u2026');
-  Promise.all([
-    mjpcFetchOk(FIREBASE_BASE+basePath+'/kind.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify('gallery')}),
-    mjpcFetchOk(FIREBASE_BASE+basePath+'/icon.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify('\ud83d\uddbc')})
-  ]).then(function(){
-    item.kind='gallery';item.icon='\ud83d\uddbc';
-    addImageToGallery(file,level,chnum,snum,itemId);
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
-}
-
-function uploadFileForNewItem(file,level,chnum,snum){
-  if(_isImage(file))return _createGalleryItemWithFirstImage(file,level,chnum,snum);
-  showUploadToast('\u23f3 Upload en cours\u2026');
-  var sce=chapitresData[level][chnum].seances[snum];
-  var existingItems=sce.items||{};
-  var fileName=file.name||('upload-'+Date.now());
-  var slug=fileName.toLowerCase().replace(/\.[a-z0-9]+$/,'').replace(/[\u00e0-\u00e6]/g,'a').replace(/[\u00e8-\u00eb]/g,'e').replace(/[\u00ec-\u00ef]/g,'i').replace(/[\u00f2-\u00f6]/g,'o').replace(/[\u00f9-\u00fc]/g,'u').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').substring(0,40)||'item';
-  var itemId=slug;var i=2;while(existingItems[itemId]){itemId=slug+'-'+i;i++;}
-  var ordres=Object.keys(existingItems).map(function(k){return existingItems[k].ordre||0;});
-  var newOrdre=(ordres.length?Math.max.apply(null,ordres):0)+1;
-  _uploadBlobToDrive(file,fileName,level,chnum,snum).then(function(res){
-    var ext=res.ext||(fileName.split('.').pop()||'').toLowerCase();
-    var iconByExt={pdf:'\ud83d\udcc4',pptx:'\ud83d\udcca',ppt:'\ud83d\udcca',docx:'\ud83d\udcdd',doc:'\ud83d\udcdd',html:'\ud83d\udd27',htm:'\ud83d\udd27'};
-    var newItem={kind:'doc',title:fileName.replace(/\.[^.]+$/,''),subtitle:'',icon:iconByExt[ext]||'\ud83d\udcc4',source:'drive',ref:res.drive_file_id,ordre:newOrdre,published:true};
-    return mjpcFetchOk(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'.json',{
-      method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newItem)
-    }).then(function(){
-      if(!sce.items)sce.items={};
-      sce.items[itemId]=newItem;
-      showUploadToast('\u2705 Nouvel item cr\u00e9\u00e9','ok');
-      renderChapitres(level);
-    });
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
-}
-
-function _createGalleryItemWithFirstImage(file,level,chnum,snum){
-  showUploadToast('\u23f3 Cr\u00e9ation galerie\u2026');
-  var sce=chapitresData[level][chnum].seances[snum];
-  var existingItems=sce.items||{};
-  var fileName=file.name||('image-'+Date.now()+'.png');
-  var itemId='gallery-'+Date.now().toString(36);
-  while(existingItems[itemId])itemId='gallery-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,5);
-  var ordres=Object.keys(existingItems).map(function(k){return existingItems[k].ordre||0;});
-  var newOrdre=(ordres.length?Math.max.apply(null,ordres):0)+1;
-  _uploadBlobToDrive(file,fileName,level,chnum,snum).then(function(res){
-    var newItem={kind:'gallery',title:'Galerie',subtitle:'',icon:'\ud83d\uddbc',ordre:newOrdre,published:true,images:{img1:{ref:res.drive_file_id,titre:'Image 1',ordre:1}}};
-    return mjpcFetchOk(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'.json',{
-      method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(newItem)
-    }).then(function(){
-      if(!sce.items)sce.items={};
-      sce.items[itemId]=newItem;
-      showUploadToast('\u2705 Galerie cr\u00e9\u00e9e (1 image)','ok');
-      renderChapitres(level);
-    });
-  }).catch(function(err){showUploadToast('\u26a0 '+err.message,'err');});
 }
 
 // ============ Pilotage des images d'une galerie (mode admin) ============
@@ -4715,7 +4782,7 @@ function moveImageInGallery(level,chnum,snum,itemId,imgId,dir){
 function deleteImageInGallery(level,chnum,snum,itemId,imgId){
   var item=chapitresData[level][chnum].seances[snum].items[itemId];
   var img=item&&item.images&&item.images[imgId];if(!img)return;
-  _modaleConfirme('Supprimer cette image','\u00ab '+escapeHtml(img.titre||imgId)+' \u00bb<br><br>Le fichier Drive reste, seule la liaison est retir\u00e9e de la galerie.',function(){
+  _modaleConfirme('Supprimer cette image','\u00ab '+escapeHtml(img.titre||imgId)+' \u00bb<br><br>Le fichier reste, seule la liaison est retir\u00e9e de la galerie.',function(){
   mjpcDeleteJson(FIREBASE_BASE+'/site/'+level+'/chapitres/'+chnum+'/seances/'+snum+'/items/'+itemId+'/images/'+imgId+'.json','Retrait de l\u2019image',
     function(){
     delete item.images[imgId];
@@ -5271,7 +5338,7 @@ function _openAtelierFromList(ref){
      elle s'ouvre par openViewer (la garde \u2460 et l'issue \u00ab Ouvrir dans un onglet \u00bb
      s'appliquent). URL http(s) \u2192 telle quelle ; id Drive \u2192 preview. */
   if(/^https?:\/\//i.test(ref)){openViewer('Ressource',ref);return;}
-  if(/^[A-Za-z0-9_-]{20,}$/.test(ref)){openViewer('Document','https://drive.google.com/file/d/'+ref+'/preview');return;}
+  /* E4 (§12.50) : l'id Drive → preview est retiré */
   openAtelierItem(ref,'Feuille');
 }
 function gotoFiches(level){
@@ -5459,7 +5526,7 @@ function openViewer(title,url){
     document.getElementById('doc-viewer').classList.add('visible');
     return;
   }
-  if(u.indexOf('drive.google.com/file/d/')>=0){u=u.replace(/\/view(\?|$)/,'/preview$1');}
+  /* E4 (§12.50) : la réécriture Drive /view → /preview est retirée ; la visionneuse garde les PDF et les pages */
   f.removeAttribute('srcdoc');   /* un srcdoc r\u00e9siduel PRIME sur src */
   f.src=u;
   /* [LOT8c-②] JAMAIS UN CUL-DE-SAC : un site peut refuser l'embarquement
@@ -7755,7 +7822,7 @@ tableau:          AC('D','structure','contenu',"Ajouter un tableau",{multiple:tr
 colonnes_comp:    AC('D','structure','contenu',"Ajouter deux colonnes comparatives",{multiple:true,forme:'bloc_colonnes',champs:[CH('titre_g','Titre de gauche'),CH('texte_g','Colonne de gauche','area'),CH('titre_d','Titre de droite'),CH('texte_d','Colonne de droite','area')]}),
 frise:            AC('D','structure','contenu',"Ajouter une frise chronologique",{multiple:true,forme:'bloc_frise',champs:[CH('items','Repères (date = événement)','list')]}),
 schema:           AC('D','structure','contenu',"Ajouter une zone de schéma (à dessiner à la main)",{multiple:true,forme:'bloc_schema',champs:[CH('legende','Légende du schéma'),CH('hauteur','Hauteur (en lignes, 6 par défaut)')]}),
-image_drive:      AC('D','structure','contenu',"Ajouter une image (lien Drive existant)",{multiple:true,forme:'bloc_image',champs:[CH('url','Adresse de l\u2019image (lien public)'),CH('legende','Légende')],info:"Colle l’adresse d’une image déjà partagée. Le dépôt et le redimensionnement arriveront dans un prochain chantier."}),
+image_drive:      AC('D','structure','contenu',"Ajouter une image (adresse web existante)",{multiple:true,forme:'bloc_image',champs:[CH('url','Adresse de l\u2019image (lien public)'),CH('legende','Légende')],info:"Colle l’adresse d’une image déjà partagée. Le dépôt et le redimensionnement arriveront dans un prochain chantier."}),
 diapositive_json: AC('D','structure','contenu',"Ajouter une diapositive convertie",{reserve:true,mention:"Cette partie arrivera avec le chantier des diapositives : tes PowerPoint entreront ici."}),
 consigne:         AC('D','structure','contenu',"Ajouter une consigne",{multiple:true,forme:'bloc_consigne',reforme:true,champs:[CH('texte','Consigne','area')]}),
 question:         AC('D','structure','contenu',"Ajouter une question",{multiple:true,forme:'bloc_question',reforme:true,champs:[CH('texte','Question','area')]}),
@@ -13064,9 +13131,9 @@ function ed2Papier(level,chnum,docs){
            (jamais une page blanche) + aper\u00e7u, et le clic sur la barre l'ouvre EN
            MODALE (openViewer, le chemin \u00e9l\u00e8ve existant). Le papier imprim\u00e9 ne
            l'imprime pas (r\u00e8gle @media print, avec les trous). */
-        if(d.ref&&(d.src==='drive'||d.src==='external')){
-          var _xurl=(d.src==='drive')?('https://drive.google.com/file/d/'+d.ref+'/preview'):d.ref;
-          var _xlib=(d.src==='drive')?('Fichier Drive \u00b7 '+d.ref):d.ref;
+        if(d.ref&&d.src==='external'){   /* E4 (§12.50) : plus d'aperçu Drive */
+          var _xurl=d.ref;
+          var _xlib=(d.src==='drive')?('Ancien fichier \u00b7 '+d.ref):d.ref;
           h+='<div class="ed2-xcadre">'
             +'<div class="ed2-xbarre" onclick="event.stopPropagation();openViewer(\''+atEsc((d.titre||'Document').replace(/'/g,''))+'\',\''+atEsc(_xurl)+'\')">'
             +(d.src==='drive'?'\ud83d\udcce ':'\ud83c\udf10 ')+'<span class="ed2-xadr">'+atEsc(_xlib)+'</span>'
@@ -16657,7 +16724,9 @@ function dr_lancerClic(){
 /* ── les boîtes du site (atModaleChoix) à la place de celles du navigateur (cadrage n°7, T1 : « les confirm() natifs → modales MJPC ») ── */
 /* E1 (R21) les images vivent dans mjpc-medias ; la trame garde l'adresse complète, Paul ne voit et ne tape que la relative (3.2) */
 const DR_MEDIAS = 'https://siteflow-io.github.io/mjpc-medias/';
-function dr_refRelative(ref){ return String(ref || '').replace(DR_MEDIAS, ''); }
+const DR_MEDIAS_2 = 'https://siteflow-io.github.io/mjpc-medias-2/';   /* E4 (§12.49 (4), (6)) : le deuxième dépôt, dit par le préfixe « m2: » du chemin relatif */
+function dr_mediasAdresse(rel){ const r = String(rel || '').trim().replace(/^\/+/, ''); const m = /^m2:\/*(.*)$/.exec(r); return m ? DR_MEDIAS_2 + m[1] : DR_MEDIAS + r; }   /* la SEULE fonction qui écrit l'adresse de mjpc-medias (l'Atelier, l'import, le site) */
+function dr_refRelative(ref){ const r = String(ref || ''); if (r.indexOf(DR_MEDIAS_2) === 0) return 'm2:' + r.slice(DR_MEDIAS_2.length); return r.replace(DR_MEDIAS, ''); }
 /* E1 (relecteur neuf n°2) : les objets manquants déclarés vivent dans leur diapo (e.manques), donc au hub avec la trame */
 function dr_manques(){ const E = (typeof seance === 'function' && seance()) ? seance().ecrans : []; const out = []; E.forEach((e, di) => (Array.isArray(e && e.manques) ? e.manques : []).forEach(m => out.push({ si: S.si, di, texte: m.texte, t: m.t }))); return out; }
 function dr_dire(msg){ if (typeof atModaleChoix !== 'function') { try { console.warn(msg); } catch (e) {} return; } atModaleChoix(dr_esc(msg), [{ lib: 'Compris', prim: true }]); }
@@ -17683,7 +17752,7 @@ function formulaireObjet(t){ const f = $('obj-form'); if (!f) return; const e = 
     $('of-ok').onclick = () => { const ti = $('of-ft').value.trim(), de = $('of-fd').value.trim(); if (!ti) { $('of-err').textContent = 'Refus : une fiche a un titre.'; return; } if (!de) { $('of-err').textContent = 'Refus : une fiche a sa définition (la phrase à retenir).'; return; } const corps = $('of-fc').value.split('\n').map(x => x.trim()).filter(Boolean).map(x => '<p>' + dr_esc(x) + '</p>').join(''); ajouterBloc({ t: 'fiche', tt: $('of-tt').value, txt: ti, el: [dr_esc(de)].concat(corps ? [corps] : []) }, false); }; return; }
   if (t === 'fiche') { f.innerHTML = `<label>Quelle fiche ? — une fiche vit dans une feuille du chapitre (1.7) ; le bloc ne fait que la montrer</label>${dr_feuilles()/* E1 : lisait DATA.feuilles */.map(fe => `<div class="fe"><b>Feuille « ${dr_esc(fe.titre)} »</b> · ${fe.fiches.length} fiche${fe.fiches.length > 1 ? 's' : ''}<br>${fe.fiches.map(fi => `<span class="fi" data-fe="${fe.id}" data-fi="${fi.id}" title="Lie cette fiche : le bloc la montre, elle s'agrandit d'un clic en classe">${dr_esc(fi.titre)}</span>`).join('')}</div>`).join('')}<div class="dr-err">Pas de fiche qui convienne ? Écris-la d'abord dans une feuille du chapitre (l'éditeur de feuilles), puis reviens la lier ici. Le bloc n'existe pas sans fiche liée.</div>`; f.querySelectorAll('.fi').forEach(x => x.onclick = () => { const fe = dr_feuilles()/* E1 : lisait DATA.feuilles */.find(z => z.id === x.dataset.fe); const fi = fe.fiches.find(z => z.id === x.dataset.fi); if (S.lierFiche != null) { const b = e.blocs[S.lierFiche]; b.feuille = fe.id; b.fiche = fi.id; b.txt = fi.titre; b.el = fi.el.slice(); S.lierFiche = null; marquerModif({ di: S.di, bi: e.blocs.indexOf(b), lie: fi.id }); fermerChoix(); dr_tout(); } else ajouterBloc({ t: 'fiche', txt: fi.titre, feuille: fe.id, fiche: fi.id, el: fi.el.slice() }, false); }); return; }
   if (t === 'schema') { const CONV = { carte: 'une ligne par branche : « Branche : a, b » — le titre au centre', frise: 'une ligne par repère : « date = événement »', arbre: 'une ligne par nœud ; deux espaces devant pour descendre d\'un niveau', cycle: 'une étape par ligne, dans le sens des aiguilles', tableau: 'une ligne par rangée, les colonnes séparées par « | » ; la première ligne = les en-têtes' }; f.innerHTML = `<label>La forme du schéma — le format existant : une source texte, une ligne par élément ; échelle « plein » par défaut ; se dévoile ligne par ligne</label><select id="of-forme"><option value="carte">carte</option><option value="frise">frise</option><option value="arbre">arbre</option><option value="cycle">cycle</option><option value="tableau">tableau</option></select> <span class="at-note" id="of-conv">${CONV.carte}</span><label>Le titre</label><input id="of-t" placeholder="Les figures de style"><label>La source — une ligne par élément</label><textarea id="of-src" rows="4" style="width:100%;font:inherit;border:1px solid #c99a4e;border-radius:6px;padding:5px 8px;box-sizing:border-box" placeholder="Figures d'analogie : comparaison, métaphore"></textarea><div class="dr-err" id="of-err"></div><div class="dr-ok"><button class="btn or" id="of-ok">Ajouter le schéma</button></div>`; $('of-forme').onchange = () => { $('of-conv').textContent = CONV[$('of-forme').value]; }; $('of-ok').onclick = () => { const tt = $('of-t').value.trim(); const src = $('of-src').value.replace(/\r/g, ''); const lignes = src.split('\n').map(x => x.replace(/\s+$/, '')).filter(x => x.trim()); if (!tt) { $('of-err').textContent = 'Refus : un schéma a un titre.'; return; } if (!lignes.length) { $('of-err').textContent = 'Refus : un schéma a au moins un élément (une ligne).'; return; } p8PoserSchema({ t: 'schema', txt: tt, forme: $('of-forme').value, echelle: 'plein', src: lignes.join('\n'), el: lignes.map(x => x.trim()), devoilerTout: false /* (p8-2) décision 6 ter : créé par « Schéma… », il part « Un à un » */ }); /* (p8-3) décision 1 : sur une diapo qui a déjà du contenu, il part dans une diapo nouvelle, juste après */ }; return; }
-  if (t === 'image') { f.innerHTML = `<label>L'adresse dans mjpc-medias — relative (jamais complète)</label><input id="of-src" placeholder="poesie-peinture-xixe/tableau-6.jpg"><label>La légende</label><input id="of-lg" placeholder="Le Radeau de la Méduse, Géricault, 1819"><div class="dr-err" id="of-err"></div><div class="dr-ok"><button class="btn or" id="of-ok">Ajouter l'image</button></div>`; $('of-ok').onclick = () => { const src = $('of-src').value.trim(), lg = $('of-lg').value.trim(); if (!src) { $('of-err').textContent = 'Refus : une image a une adresse.'; return; } if (/^(https?:)?\/\//i.test(src) || /^[a-z]:\\/i.test(src)) { $('of-err').textContent = 'Refus : l\'adresse doit être relative dans mjpc-medias, jamais complète (3.2).'; return; } ajouterBloc({ t: 'image', txt: lg, ref: 'https://siteflow-io.github.io/mjpc-medias/' + src.replace(/^\/+/, '') }, false); }; return; }
+  if (t === 'image') { f.innerHTML = `<label>L'adresse dans mjpc-medias — relative (jamais complète)</label><input id="of-src" placeholder="poesie-peinture-xixe/tableau-6.jpg"><div class="dr-ok" style="justify-content:flex-start"><button class="btn" id="of-depot" title="Choisis une image sur ton ordinateur ou sur la clé : elle part en ligne dans mjpc-medias (réduite à 1920 px de large), et son adresse s'écrit ici. La première fois, une petite fenêtre Google s'ouvre : choisis le compte de Paul.">⇪ Déposer en ligne…</button><input type="file" id="of-fichier" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none"></div><label>La légende</label><input id="of-lg" placeholder="Le Radeau de la Méduse, Géricault, 1819"><div class="dr-err" id="of-err"></div><div class="dr-ok"><button class="btn or" id="of-ok">Ajouter l'image</button></div>`; $('of-ok').onclick = () => { const src = $('of-src').value.trim(), lg = $('of-lg').value.trim(); if (!src) { $('of-err').textContent = 'Refus : une image a une adresse.'; return; } if (/^(https?:)?\/\//i.test(src) || /^[a-z]:\\/i.test(src)) { $('of-err').textContent = 'Refus : l\'adresse doit être relative dans mjpc-medias, jamais complète (3.2).'; return; } ajouterBloc({ t: 'image', txt: lg, ref: dr_mediasAdresse(src) }, false); }; dr_brancherDepotImage(); return; }
   if (t === 'page') { const manques = dr_manques(); f.innerHTML = `<label>Une page HTML ne se fait que si aucun objet ne convient, après un manque déclaré, et sur ton mot (4.1)</label>${manques.length ? `<div class="dr-err" style="color:#1a7a3e">Manque déclaré : ${manques.map(m => '« ' + dr_esc(m.texte) + ' »').join(', ')}</div>` : '<div class="err">Aucun manque d\'objet déclaré dans ce chapitre : déclare-le d\'abord, ou attends l\'objet (un mandat court sur l\'éditeur).</div>'}<label>Le fichier de la page</label><input id="of-src" placeholder="placer-les-poetes.html" ${manques.length ? '' : 'disabled'}><label>Le titre</label><input id="of-t" placeholder="Placer les poètes" ${manques.length ? '' : 'disabled'}><label><input type="checkbox" id="of-contrat" style="width:auto" ${manques.length ? '' : 'disabled'}> La page porte son contrat de pilotage (elle annonce ses étapes, reçoit suivante / précédente, répond où elle en est — 4.2)</label><div class="dr-err" id="of-err"></div><div class="dr-ok"><button class="btn or" id="of-ok" ${manques.length ? '' : 'disabled'}>Ajouter la page</button></div>`; if (manques.length) $('of-ok').onclick = () => { const src = $('of-src').value.trim(), tt = $('of-t').value.trim(); const contrat = $('of-contrat').checked; if (!src || !tt) { $('of-err').textContent = 'Refus : un fichier et un titre.'; return; } ajouterBloc({ t: 'page', txt: tt, src, contrat, etapes: contrat ? 3 : null }, false); if (!contrat) toast('Page sans contrat de pilotage : elle sera jouée comme une image ; « À régler » porte le texte pour l\'instance (4.3).'); }; return; }
   if (t === 'video') { const b = S.editerVideo != null ? e.blocs[S.editerVideo] : null; const cle = S.cleDossier; const reps = b ? (b.reperes || []).slice() : [{ t: 0, l: '' }]; const mmss = t => Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); const lignes = () => reps.map((r, k) => `<div class="rl" style="display:flex;gap:8px;margin:3px 0"><input style="width:90px" data-rt="${k}" value="${mmss(r.t)}" title="m:ss"><input data-rl="${k}" value="${dr_esc(r.l)}" placeholder="le libellé du repère"><button class="btn" data-rx="${k}" style="padding:2px 8px" title="Retire ce repère">✕</button></div>`).join('');
     const dessiner = () => { f.innerHTML = `<label>Le fichier sur ta clé USB — jamais hébergé (4b.1) : désigne le dossier de la clé une fois, le site retient le nom du fichier et le dossier, jamais un chemin de disque</label><div style="display:flex;gap:8px;align-items:center"><button class="btn" id="of-cle" title="Une fenêtre du navigateur : tu choisis le dossier de la clé ; le site retient le nom du dossier et des fichiers, jamais un chemin de disque">Désigner le dossier de la clé…</button><span id="of-cle-etat" style="color:${cle ? '#1a7a3e' : '#b3261e'}">${cle ? '✔ dossier « ' + dr_esc(cle.nom) + ' » désigné sur cet ordi portable · ' + cle.fichiers.length + ' fichiers' : 'aucun dossier désigné'}</span></div>${cle ? `<div class="fe" style="margin-top:6px">${cle.fichiers.map(x => `<span class="fi ${S._ofFichier === x.nom ? 'on' : ''}" data-f="${dr_esc(x.nom)}" data-d="${x.duree}" style="${S._ofFichier === x.nom ? 'background:#fff2c7' : ''}">${dr_esc(x.nom)} · ${mmss(x.duree)}</span>`).join('')}</div>` : ''}<label>La légende</label><input id="of-lg" value="${dr_esc(b ? b.txt : (S._ofLg || ''))}" placeholder="Le Radeau de la Méduse, Géricault — extrait commenté"><label>Les repères — posés en préparation, ils rendent la vidéo dévoilable comme un bloc : ▶ lance jusqu'au repère suivant et s'arrête, ◀ revient au précédent (4b.2)</label><div class="fe" id="of-reps">${lignes()}<button class="btn" id="of-plus" style="font-size:.85rem">+ repère</button></div><div class="dr-err" id="of-err" style="color:#6a5a48">Sans repère, la vidéo est acceptée mais signalée dans « Sur la forme » : ▶ lance / met en pause, rien ne se dévoile par étapes (4b.5).</div><div class="dr-ok"><button class="btn or" id="of-ok">${b ? 'Enregistrer les repères' : 'Ajouter la vidéo'}</button></div>`;
@@ -17694,6 +17763,13 @@ function formulaireObjet(t){ const f = $('obj-form'); if (!f) return; const e = 
     f.querySelectorAll('[data-doc]').forEach(x => x.onclick = () => ajouterBloc({ t: 'doc', doc: x.dataset.doc, txt: (docs.find(d => d.id === x.dataset.doc) || {}).titre || '' }, false)); $('of-ok').onclick = () => { fermerChoix(); if (typeof atVuesPoser === 'function') atVuesPoser('structure'); /* E1 (relecteur neuf n°2) : le « joindre » de la maquette n'écrivait qu'en mémoire — au rechargement, « document introuvable » ; un document se joint là où il s'enregistre */ }; return; }
   if (t === 'manque') { f.innerHTML = `<label>Quel objet manque à l'éditeur ? — dis-le en un mot ou deux : la ligne restera visible dans « À régler », avec le chapitre qui l'attend (3.3)</label><input id="of-m" placeholder="un tableau à deux colonnes remplissable en classe"><div class="dr-err" id="of-err"></div><div class="dr-ok"><button class="btn or" id="of-ok">Déclarer le manque</button></div>`; $('of-ok').onclick = () => { const m = $('of-m').value.trim(); if (!m) { $('of-err').textContent = 'Dis ce qui manque.'; return; } { const e = ecran(); e.manques = (Array.isArray(e.manques) ? e.manques : []).concat([{ texte: m, t: now() }]); } /* E1 (relecteur neuf n°2) : dans la diapo, donc dans B/deroule — il restait en mémoire et disparaissait au rechargement */ marquerModif({ di: S.di, manque: m }); fermerChoix(); toast('Objet manquant déclaré : « ' + m + ' » — visible dans « À régler » ; ce chapitre l\'attend.'); dr_tout(); }; $('of-m').focus(); return; } }
 
+/* E4 (§12.49) : « ⇪ Déposer en ligne… » dans « + image » — l'image choisie (l'ordinateur ou la clé) part en ligne par le relais (mjpcDeposerEnLigne, index.html), son chemin relatif s'écrit dans le champ ; la diapo la montre dès que le fichier répond */
+function dr_brancherDepotImage(){ const b = $('of-depot'), f = $('of-fichier'), e = $('of-err'); if (!b || !f) return;
+  b.onclick = () => { if (typeof mjpcDeposerEnLigne !== 'function') { e.textContent = 'Le dépôt en ligne n\'est pas disponible ici.'; return; } if (navigator.onLine === false) { e.textContent = 'Pas de connexion internet — l\'image ne peut pas partir en ligne. Vérifie ta connexion, puis recommence.'; return; } f.value = ''; f.click(); };
+  f.onchange = () => { const x = f.files && f.files[0]; if (!x) return; e.textContent = '⏳ Dépôt en ligne de « ' + x.name + ' »…'; b.disabled = true;
+    mjpcDeposerEnLigne([x], (dr_ctx() || {}).level || 'divers').then(l => { const d = l[0]; $('of-src').value = d.chemin; e.textContent = '✔ Déposé : ' + d.chemin + ' — en ligne dans une minute environ (« Ajouter l\'image » peut se faire tout de suite).'; b.disabled = false;
+      if (typeof mjpcAttendreEnLigne === 'function') mjpcAttendreEnLigne(d.url, ok => { const e2 = $('of-err'); if (e2 && $('of-src') && $('of-src').value === d.chemin) e2.textContent = ok ? '✔ En ligne : ' + d.chemin : 'Le fichier ne répond pas encore — il apparaîtra dans quelques minutes.'; }); })
+    .catch(er => { e.textContent = '⚠ ' + er.message; b.disabled = false; }); }; }
 function alertesForme(autre){ /* tout ce qui peut casser en classe dans la séance S.si : sa part de la liste de « À régler » (6.1), avec le texte prêt à copier ; autre = une séance qui n'est pas celle ouverte (la mesure de la diapo affichée ne la concerne pas) — le chapitre entier : alertesChapitre */ const E = seance().ecrans; const out = []; E.forEach((e, i) => (e.blocs || []).forEach((b, bi) => { const ou = `diapo ${i + 1} · « ${e.act} » · bloc ${bi + 1}`; const TYPES = ['consigne', 'texte', 'question', 'fiche', 'schema', 'image', 'video', 'page', 'doc', 'cahier']; /* (p8-3c) le cahier de textes a son rendu */ if (!TYPES.includes(b.t)) out.push({ di: i, bi, k: 'nonlisible', l: `Objet non lisible « ${b.t} »`, ou, faire: 'déclare un objet manquant, ou remplace-le par un objet connu (3.1)', copier: `Dans le chapitre « ${seance().titre} », ${ou} : l'objet « ${b.t} » n'est pas dans le contrat de l'éditeur MJPC. Remplace-le par un objet du contrat (texte, consigne, question, fiche, schéma, image, vidéo, page avec contrat) ou déclare-le comme objet manquant.` }); if (b.t === 'fiche' && !b.feuille) out.push({ di: i, bi, k: 'fiche', l: `Fiche « ${b.txt || ''} » non liée à une feuille`, ou, faire: 'lie-la à une fiche d\'une feuille du chapitre (clic droit → Lier à une fiche…), sinon le bloc ne s\'affiche pas (1.7)', copier: `Dans le chapitre « ${seance().titre} », ${ou} : la fiche « ${b.txt || ''} » doit être écrite dans une feuille du chapitre et liée par son identifiant (feuille + fiche).` }); if (b.t === 'page' && !b.contrat) out.push({ di: i, bi, k: 'page', l: `Page HTML « ${b.txt || ''} » sans contrat de pilotage`, ou, faire: 'ajoute le contrat (la page annonce ses étapes, reçoit suivante / précédente, répond où elle en est — 4.2) ; jouée comme une image en attendant', copier: `Page « ${b.src || ''}» (${ou}) : ajoute le contrat de pilotage MJPC — au chargement, envoie postMessage({type:'mjpc-page', etapes:n}) ; réponds à {type:'mjpc-etape', aller:k} en affichant l'étape k et en renvoyant {type:'mjpc-ou', etape:k}.` }); if (b.t === 'video' && !(b.reperes || []).length) out.push({ di: i, bi, k: 'video', l: `Vidéo « ${b.txt || ''} » sans repère`, ou, faire: 'acceptée ; ▶ lance / met en pause, rien ne se dévoile par étapes — pose des repères (clic droit → Repères…) (4b.5)', copier: `Vidéo « ${b.fichier || ''} » (${ou}) : ajoute des repères (temps + libellé) dans la trame.` }); if (b.t === 'doc') { const d = (dr_documents()/* E1 : lisait DATA.documents */[String(S.si)] || []).find(x => x.id === b.doc); if (!d) out.push({ di: i, bi, k: 'doc', l: `Document introuvable dans la séance`, ou, faire: 'rejoins le document ou retire le bloc', copier: `Bloc document (${ou}) : l'identifiant « ${b.doc} » ne correspond à aucun document de la séance.` }); else if (d.type === 'autre') out.push({ di: i, bi, k: 'doc', l: `Document « ${d.titre} » (.${(d.fichier || '').split('.').pop()}) non projetable tel quel`, ou, faire: 'convertis-le en PDF (4 ter)', copier: `Document « ${d.fichier || d.titre} » (${ou}) : à convertir en PDF pour être projeté.` }); else if (d.type === 'docx') out.push({ di: i, bi, k: 'doc', l: `Document Word « ${d.titre} » — lu par le site`, ou, faire: 'si la lecture échoue en classe, convertis-le en PDF (4 ter)', copier: `Document Word « ${d.fichier || d.titre} » (${ou}) : lu par une bibliothèque libre ; en cas d'échec, PDF.` }); } if (b.t === 'image' && b.ref && !/mjpc-medias/.test(b.ref)) out.push({ di: i, bi, k: 'image', l: `Image « ${b.txt || ''} » hors de mjpc-medias`, ou, faire: 'range-la dans mjpc-medias et donne son adresse relative (3.2)', copier: `Image « ${b.ref} » (${ou}) : à ranger dans mjpc-medias, adresse relative.` }); })); E.forEach((e, i) => (e.blocs || []).forEach((b, bi) => { if (b.t === 'video' && b.fichier) { const cle = S.cleDossier; const ok = cle && cle.fichiers.some(f => f.nom === b.fichier); if (!ok) out.push({ di: i, bi, k: 'video-fichier', l: `Vidéo « ${b.txt || b.fichier} » : fichier non atteignable — « ${b.fichier} » ${cle ? 'n\'est pas dans le dossier « ' + cle.nom + ' » désigné' : 'et aucun dossier de clé n\'est désigné'}`, ou: `diapo ${i + 1} · « ${e.act} » · bloc ${bi + 1}`, faire: 'remets le fichier sur la clé, ou redésigne le dossier (« + vidéo… » → Désigner le dossier de la clé…) ; en classe, la diapo passerait toute seule et le récit dirait « qu\'on regardera à la prochaine séance » (4b.4)', copier: `Vidéo « ${b.fichier} » (${e.act}) : fichier absent du dossier de la clé.` }); } })); E.forEach((e2, i2) => { if (!p8AvecTexte(e2) || e2.role === 'fin') return; const bi2 = e2.blocs.findIndex(b => b.t === 'schema'); out.push({ di: i2, bi: bi2, k: 'texte', l: 'Schéma avec du texte : donne-lui sa diapo — clic droit sur le bloc → Couper la diapo ici', ou: `diapo ${i2 + 1} · « ${e2.act} » · bloc ${bi2 + 1}`, faire: 'un schéma par diapo : ' + P8_UNE + ' (cadrage 4, 3.2)', copier: `Diapo « ${e2.act} » : le schéma « ${e2.blocs[bi2].txt || ''} » doit avoir sa diapo (son titre, le schéma, au plus une consigne d'une ligne).` }); }); /* (p8-3) la trame d'avant la règle */ if (S.atelier && !S.repetition) { E.forEach((e2, i2) => (e2.blocs || []).forEach((b2, bi2) => { if (b2.t !== 'schema' || e2.role === 'fin') return; const r = (p8MesureDiapo(i2).blocs || {})[bi2]; if (!r || !r.total) return; out.push({ di: i2, bi: bi2, k: 'dense', l: `Schéma « ${b2.txt || ''} » : il ne tient pas lisible — coupe-le : clic droit sur une famille → Couper le schéma ici`, ou: `diapo ${i2 + 1} · « ${e2.act} » · bloc ${bi2 + 1}`, faire: `mesuré au tableau : ${r.chevauchements} chevauchement${r.chevauchements > 1 ? 's' : ''}, ${r.horsCadre} hors du cadre visible, ${r.traits} trait${r.traits > 1 ? 's' : ''} à travers un mot, ${r.deuxLignes} libellé${r.deuxLignes > 1 ? 's' : ''} sur deux lignes, ${r.sousPlancher} police${r.sousPlancher > 1 ? 's' : ''} sous 26 pt — la police ne descend jamais sous 26 pt : c'est le schéma qu'on coupe`, copier: `Schéma « ${b2.txt || ''} » (${e2.act}) : il ne tient pas lisible au tableau (${r.total} défaut${r.total > 1 ? 's' : ''} de lecture) ; à couper en deux schémas, chacun sur sa diapo.` }); })); const c = autre ? null : document.querySelector('#mur .corpsd'); const pages = S.pagesCourantes ? S.pagesCourantes.length : 1; const vue85h = (!autre && S.atelier && typeof p85hPages === 'function') ? p85hPages(S.di) : {}; if (!autre && (pages > 1 || (vue85h.pages || []).length > 1 || (c && c.querySelector('.p85h-defile')))) {   /* E1 (§12.33 bis, dette 13 · 75) : « trop pleine » ⇔ la diapo fera plus d'une page au tableau — la même mesure que la pagination (à la taille de l'écran de la classe), plus le débordement de la diapo de l'Atelier ni celui du rendu ; reste le cas d'une ligne seule qui défile en elle-même */   /* (p8-5h, 13) la ligne qui défile en elle-même, ou la diapo telle que la classe la verra : trop pleine (règle 0.4 : rien ne se coupe seul) */ const e = E[S.di]; const px = policePx ? Math.round(policePx()) : 0; out.push({ di: S.di, k: 'pleine', l: `Diapo trop pleine : le texte passe sous le plancher lisible du fond${px ? ' (' + px + ' px de police)' : ''}`, ou: `diapo ${S.di + 1} · « ${e.act} »`, faire: 'coupe la diapo : clic droit sur le bloc ou l\'étape où couper → « Couper la diapo ici » (une seconde diapo « (suite) », même heure, mêmes notions) ; ou retire un bloc ; ou mets-en un en « petit ». Le site ne coupe jamais seul (0.4)', copier: `Diapo « ${e.act} » : trop pleine pour le tableau, à couper en deux.` }); } } E.forEach((e, i) => { if (!e.role && !actDe(e)) out.push({ di: i, k: 'activite', l: `Diapo « ${e.act} » sans numéro d'activité`, ou: `diapo ${i + 1}`, faire: 'rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l\'import (3.2 bis)', copier: `Diapo « ${e.act} » (chapitre « ${seance().titre} ») : à rattacher à une activité numérotée (numéro continu sur le chapitre).` }); }); dr_manques().forEach(m => out.push({ di: m.di, k: 'manque', l: `Objet à ajouter à l'éditeur : « ${m.texte} »`, ou: `diapo ${m.di + 1} · « ${E[m.di] ? E[m.di].act : ''} »`, faire: 'un mandat court sur l\'éditeur, ou une page HTML pour cette fois, sur ton mot (4.1)', copier: `Mandat : ajouter à l'éditeur MJPC l'objet « ${m.texte} » (attendu par le chapitre « ${seance().titre} », ${E[m.di] ? E[m.di].act : ''}) avec son contrat aux trois endroits : prompt d'injection, validation à l'import, formulaire de l'éditeur.` })); return out; }
 
 function p8MesureDiapo(i){ /* (p8-2) la mesure d'une diapo du chapitre, rendue telle que la classe la voit (hors de l'écran, à la taille du tableau du pilote) */ const E = seance().ecrans; const e = E[i]; const m0 = $('mur'); const W = m0.clientWidth || 1096, H = m0.clientHeight || 616; const st = parDiapo[K(i)] || {}; const cle0 = JSON.stringify([S.si, e.eid, e.blocs, S.taille, W, H, st.reps || {}, st.textes || {}]); window.P8_ALERTES = window.P8_ALERTES || {}; if (P8_ALERTES[cle0]) return P8_ALERTES[cle0]; if (Object.keys(P8_ALERTES).length > 200) window.P8_ALERTES = {}; let z = $('p8-banc'); if (!z) { z = document.createElement('div'); z.id = 'p8-banc'; z.setAttribute('aria-hidden', 'true'); dr_zone()/* E1 : lisait document.body */.appendChild(z); } z.className = 'mur tableau'; z.style.cssText = 'position:fixed;left:-20000px;top:0;opacity:0;pointer-events:none;width:' + W + 'px;height:' + H + 'px'; rendre(z, { si: S.si, di: i, nDev: elements(e).length, lum: [], ecr: [], taille: S.taille, page: 0, reps: st.reps || {}, tailles: st.tailles || {}, textes: st.textes || {}, fsBloc: {}, pilote: false }); const r = p8MesureLisible(z); P8_ALERTES[cle0] = r; return r; }
@@ -18088,7 +18164,7 @@ dr_ecouteDoc('pointerdown', ev => { if (!S.atelier) return; const x = ev.target.
 
 /* E1 (R21) changer l'adresse d'une image posée — l'ancien moteur (reglages, setRef) : l'aperçu suit la frappe, « image absente de mjpc-medias · ref » ; mêmes refus qu'à la pose (3.2) */
 function dr_imageAdresse(bi){ const b = ecran().blocs[bi]; if (!b || b.t !== 'image') return; const complete = v => /^(https?:)?\/\//i.test(v) || /^[a-z]:\\/i.test(v);
-  dr_saisir('L\'adresse dans mjpc-medias — relative (jamais complète)', dr_refRelative(b.ref), v => { if (complete(v)) return dr_dire('Refus : l\'adresse doit être relative dans mjpc-medias, jamais complète (3.2).'); b.ref = DR_MEDIAS + v.replace(/^\/+/, ''); marquerModif({ di: S.di, bi, image: true }); dr_tout(); toast('Adresse de l\'image changée.'); }, 'Changer l\'adresse');
+  dr_saisir('L\'adresse dans mjpc-medias — relative (jamais complète)', dr_refRelative(b.ref), v => { if (complete(v)) return dr_dire('Refus : l\'adresse doit être relative dans mjpc-medias, jamais complète (3.2).'); b.ref = dr_mediasAdresse(v); marquerModif({ di: S.di, bi, image: true }); dr_tout(); toast('Adresse de l\'image changée.'); }, 'Changer l\'adresse');
   setTimeout(() => { const i = document.getElementById('dr-saisie'); if (!i) return; const a = document.createElement('img'), m = document.createElement('div'); a.className = 'dr-saisie-apercu'; a.alt = ''; m.className = 'dr-saisie-manque'; i.after(a, m);
     const voir = () => { const v = i.value.trim(); m.textContent = complete(v) ? 'Refus : l\'adresse doit être relative, jamais complète (3.2).' : ''; a.style.display = 'none'; if (!v || complete(v)) return; a.onload = () => { a.style.display = 'block'; }; a.onerror = () => { m.textContent = 'image absente de mjpc-medias · ' + v; }; a.src = DR_MEDIAS + v.replace(/^\/+/, ''); };
     i.addEventListener('input', voir); voir(); }, 0); }
@@ -20988,7 +21064,7 @@ function atP2NormaliserBloc(b){
   if(t==='fiche'){ var f={id:atP2Uid(),t:'fiche',tt:S2(b.tt||'Fiche'),titre:S2(b.titre),def:S2(b.def),corps:S2(b.corps||'<p>—</p>'),vues:0}; if(String(b.feuille||'').trim())f.feuille=S2(b.feuille).trim(); return f; }
   if(t==='question')return {id:atP2Uid(),t:'question',q:S2(b.q),reps:(Array.isArray(b.reps)&&b.reps.length?b.reps:[{i:'',r:''}]).map(function(r){return {i:S2(r&&r.i),r:S2(r&&r.r),refo:false};}),vues:0};
   if(t==='schema'){ var s={id:atP2Uid(),t:'schema',forme:S2(b.forme||'carte'),titre:S2(b.titre!=null?b.titre:b.txt),z:1,pos:{},src:S2(b.src),devoilerTout:b.devoilerTout===true,vues:0}; if(b.echelle)s.echelle=S2(b.echelle); return s; }
-  if(t==='image')return {id:atP2Uid(),t:'image',support:true,ref:AT_P2_MEDIAS+S2(b.ref).trim().replace(/^\/+/,''),src:'',legende:S2(b.legende),marques:[],devoilerTout:b.devoilerTout===undefined?true:!!b.devoilerTout,vues:0};
+  if(t==='image')return {id:atP2Uid(),t:'image',support:true,ref:(typeof dr_mediasAdresse==='function'?dr_mediasAdresse(S2(b.ref)):AT_P2_MEDIAS+S2(b.ref).trim().replace(/^\/+/,'')),   /* E4 (§12.49) : le préfixe m2: */src:'',legende:S2(b.legende),marques:[],devoilerTout:b.devoilerTout===undefined?true:!!b.devoilerTout,vues:0};
   if(t==='video')return {id:atP2Uid(),t:'video',txt:S2(b.txt),fichier:S2(b.fichier),duree:+b.duree||0,reperes:(Array.isArray(b.reperes)?b.reperes:[]).filter(function(r){return r&&String(r.l||'').trim();}).map(function(r){return {t:+r.t||0,l:S2(r.l)};}).sort(function(a,c){return a.t-c.t;}),vues:0};
   if(t==='page')return {id:atP2Uid(),t:'page',txt:S2(b.txt),src:S2(b.src),contrat:!!b.contrat,etapes:b.contrat?(Math.max(1,parseInt(b.etapes,10)||1)):null,vues:0};
   if(t==='doc')return {id:atP2Uid(),t:'doc',doc:S2(b.doc),txt:S2(b.txt),vues:0};

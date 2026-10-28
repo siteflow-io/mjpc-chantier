@@ -324,7 +324,9 @@ function dr_lancerClic(){
 /* ── les boîtes du site (atModaleChoix) à la place de celles du navigateur (cadrage n°7, T1 : « les confirm() natifs → modales MJPC ») ── */
 /* E1 (R21) les images vivent dans mjpc-medias ; la trame garde l'adresse complète, Paul ne voit et ne tape que la relative (3.2) */
 const DR_MEDIAS = 'https://siteflow-io.github.io/mjpc-medias/';
-function dr_refRelative(ref){ return String(ref || '').replace(DR_MEDIAS, ''); }
+const DR_MEDIAS_2 = 'https://siteflow-io.github.io/mjpc-medias-2/';   /* E4 (§12.49 (4), (6)) : le deuxième dépôt, dit par le préfixe « m2: » du chemin relatif */
+function dr_mediasAdresse(rel){ const r = String(rel || '').trim().replace(/^\/+/, ''); const m = /^m2:\/*(.*)$/.exec(r); return m ? DR_MEDIAS_2 + m[1] : DR_MEDIAS + r; }   /* la SEULE fonction qui écrit l'adresse de mjpc-medias (l'Atelier, l'import, le site) */
+function dr_refRelative(ref){ const r = String(ref || ''); if (r.indexOf(DR_MEDIAS_2) === 0) return 'm2:' + r.slice(DR_MEDIAS_2.length); return r.replace(DR_MEDIAS, ''); }
 /* E1 (relecteur neuf n°2) : les objets manquants déclarés vivent dans leur diapo (e.manques), donc au hub avec la trame */
 function dr_manques(){ const E = (typeof seance === 'function' && seance()) ? seance().ecrans : []; const out = []; E.forEach((e, di) => (Array.isArray(e && e.manques) ? e.manques : []).forEach(m => out.push({ si: S.si, di, texte: m.texte, t: m.t }))); return out; }
 function dr_dire(msg){ if (typeof atModaleChoix !== 'function') { try { console.warn(msg); } catch (e) {} return; } atModaleChoix(dr_esc(msg), [{ lib: 'Compris', prim: true }]); }

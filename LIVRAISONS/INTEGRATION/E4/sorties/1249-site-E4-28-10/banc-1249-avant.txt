@@ -1,0 +1,16 @@
+  ok     A100 · le faux relais du banc est posé (MJPC_RELAIS_URL) — true
+  ÉCHEC  A100 · « ⇪ Déposer en ligne… » dans « + image » : l’image (2414 px) part par le relais, réduite à 1920 px, son chemin s’écrit («  ») — {"bouton":false,"chemin":"","dim":null,"msg":""}
+  ÉCHEC  A100 · la diapo montre l’image à son adresse en ligne (mjpc-medias), chargée — null
+  ÉCHEC  A100 · le PDF réaliste glissé sur une séance part par le relais : une ligne « Livret QCM » liée à son adresse en ligne, le PDF intact — {"toast":"⚠ Pas de connexion internet — le fichier n’est pas parti sur Drive. Vérifie ta connexion, puis reglisse le fichier.","item":null}
+  ÉCHEC  A101 · la visionneuse ouvre le PDF en ligne — {"vis":false,"src":"about:blank"}
+  ok     A101 · la visionneuse ouvre une page web — {"vis":true,"src":"https://exemple-de-page.fr/page.html","t":"(autre origine)"}
+  ÉCHEC  A100 · un .exe glissé : refusé en le disant, rien n’est parti — ⚠ Pas de connexion internet — le fichier n’est pas parti sur Drive. Vérifie ta connexion, puis reglisse le fichier.
+  ÉCHEC  A100 · un fichier de 60 Mo glissé : refusé en le disant (25 Mo au plus), rien n’est parti — ⚠ Fichier trop lourd (plus de 30 Mo) — dépose-le toi-même sur Drive puis colle son lien (bouton Lier…).
+  ÉCHEC  A100 · sans réseau : le glisser et le bouton « ⇪ Déposer en ligne… » disent pourquoi, rien ne part — {"glisser":"⚠ Pas de connexion internet — le fichier n’est pas parti sur Drive. Vérifie ta connexion, puis reglisse le fichier.","bouton":""}
+  ok     A100 · aucune clé GitHub ni du relais dans le stockage du navigateur, la page, le fichier du site, le relais .gs — {"navigateur":[],"fichiers":false}
+  ÉCHEC  A101 · « Lier » refuse un lien Drive en le disant ; rien n’est écrit — {"refus":"","hub1":"1AbCdEfGhIjKlMnOpQrStUvWxYz012345","hub2":{"source":"drive","ref":"1AbCdEfGhIjKlMnOpQrStUvWxYz012345"},"motDrive":true}
+  ÉCHEC  A101 · « Lier » accepte une adresse web ; la fenêtre « Lier » ne dit plus « Drive » — {"refus":"","hub1":"1AbCdEfGhIjKlMnOpQrStUvWxYz012345","hub2":{"source":"drive","ref":"1AbCdEfGhIjKlMnOpQrStUvWxYz012345"},"motDrive":true}
+  ok     A101 · zéro erreur JS, aucune boîte du navigateur — {"errs":[],"boites":[]}
+  ÉCHEC  A101 · 1707 × 743 · aucun mot « Drive » sur les écrans du prof — emploi du temps · accueil · page du niveau · panneau prof · Atelier · Mes chapitres · chapitre, vue Atelier · chapitre, vue Structure ✘ « Fichier Drive · 1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc » · « + image »
+  ÉCHEC  A101 · aucune demande vers drive.google.com ni googleusercontent.com dans le réseau du banc (45 demandes) — https://drive.google.com/file/d/1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc/preview https://drive.google.com/file/d/1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc/preview https://drive.google.com/file/d/1NJgOv-C6AqMDKTuOd9yNO5I_pq3n4mhc/preview
+— fin : 15 vérifications · 11 échec(s) — ROUGE · avant49.html md5 940a1f94fdf1126be8870ff574108470

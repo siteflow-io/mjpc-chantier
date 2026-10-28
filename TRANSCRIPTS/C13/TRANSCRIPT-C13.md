@@ -5725,3 +5725,22 @@ MEMO
 
 28/10/2026 07:50
 MEMO
+
+---
+
+## Tour 280 — 28/10/2026 07:52 → 07:52
+
+**Paul :** Ah non non je n'ai pas dit de retirer j'ai dit de mesurer!!
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 a poussé la présence en mode test (§12.43) à 07:50, je la vérifie ; E1 sur 717 ; E3 vérifie · ouvert : 538, 553, 481, 458.
+
+756. Rien n'est retiré. « Déposer en ligne » (§12.49) est toujours au contrat, tel que poussé à 07:41, et E4 le fera après §12.47. Le 755 n'était qu'une proposition qui attendait ton oui. Je la retire.
+
+757. La mesure que tu demandais, ce sont les points 752 à 754. Avec la clé seule, la classe marche : l'ordi de classe lit tout. Mais un fichier de la clé ne se voit pas ailleurs : ni sur ton téléphone quand tu répètes, ni sur ton portable quand tu pilotes, ni chez les élèves à la maison (sauf par École Directe). Les 11 images déjà en ligne ne bougent pas.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 07:52
+MEMO

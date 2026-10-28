@@ -831,3 +831,4 @@ La veille s'était arrêtée à 04:10 ; un rappel en double (07:53 UTC) m'a fait
 - **A91** (suite) : `contenu` de l'heure 1 — 8 paragraphes (« Cette heure, on a fait l'activité 1 — Analyse d'images : la routine, puis… »), le même en répétition, le journal inchangé. Rouge avant (pas de `contenu`), vert après.
 - **banc.sh VERT** (sorties `LIVRAISONS/INTEGRATION/E1/sorties/0257-28-10/` : 106 vérifications, 0 échec ; fin : 0 défaut(s) ; assemblé md5 `38bf699f…`).
 - 28/10 03:06 — relance 02:20 traitée, commit e23866904. **§12.38 (3) part E1 finie (e23866904)** ; l'affichage du contenu attend E4.
+- 28/10 04:50 — veille : deuxième retour vide de suite (origin/integration à 179859547 ; candidate 8.75.0-⑦ assemblée par la conscience, banc 106/0). Rien à E1 dans RELANCES. **E1 fini pour la nuit** ; je ne me reprogramme plus.

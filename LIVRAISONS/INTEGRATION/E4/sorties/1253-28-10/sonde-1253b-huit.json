@@ -1,0 +1,143 @@
+{
+ "import": {
+  "cree": true,
+  "msg": "Chapitre créé — non publié. Il apparaît dans la liste.\nFeuilles et liaisons\n• « Interro de cours » : non lié — un QCM de l’outil QCM, qui n’existe pas encore : à créer dans l’outil, puis à lier.\n• « Dictée 1 : « Le port » » : non lié — une dictée de l’outil Correction de dictée, à créer dans l’outil"
+ },
+ "atelier": true,
+ "ecrans": [
+  "0 - H1 a1 « Analyse d'images : la routine » 3 min",
+  "1 - H1 a2 « Tableau 1 » 6 min",
+  "2 - H1 a2 « Tableau 2 » 5 min",
+  "3 - H1 a2 « Tableau 3 » 5 min",
+  "4 - H1 a2 « Tableau 4 » 5 min",
+  "5 - H1 a2 « Tableau 5 » 6 min",
+  "6 - H1 a2 « Les hypothèses de la classe » 17 min",
+  "7 - H1 a2 « Récap' de l'heure » 3 min",
+  "8 fin H1 ∅ « Fin d'heure » 5 min",
+  "9 - H2 a3 « Les règles héritées » 8 min",
+  "10 - H2 a4 « La frise du siècle » 5 min",
+  "11 - H2 a5 « Placer les poètes » 9 min",
+  "12 - H2 a6 « Le siècle des inventions » 4 min",
+  "13 - H2 a7 « Les mouvements du siècle » 8 min",
+  "14 - H2 a8 « Trois mots pour la frise » 2 min",
+  "15 - H2 a9 « Un poète spécial… » 4 min",
+  "16 - H2 a10 « Baudelaire, 1821-1867 » 4 min",
+  "17 bilan H2 ∅ « Question-bilan et travail à faire » 6 min",
+  "18 fin H2 ∅ « Fin d'heure » 5 min"
+ ],
+ "activites": [
+  "1 Analyse d'images : la routine",
+  "2 Les cinq tableaux à analyser",
+  "3 Les règles héritées",
+  "4 La frise du siècle",
+  "5 Placer les poètes",
+  "6 Le siècle des inventions",
+  "7 Les mouvements du siècle",
+  "8 Trois mots pour la frise",
+  "9 Un poète spécial…",
+  "10 Baudelaire, 1821-1867"
+ ],
+ "carte": {
+  "texte": "✕\nÉcrire dans la diapo — un clic dans un bloc, tu tapes ; Tab passe à l'élément suivant, Maj + Tab au précédent, Entrée en fin de ligne crée l'élément suivant, Échap annule une ligne vide ; Alt + ↑ / ↓ monte ou descend le bloc. Rien à sauver : c'est enregistré quelques secondes après la frappe, et le témoin le dit.\nCE QUE LA DIAPO DÉCLARE\nmodifier\nA1 · Analyse d'images : la routine — diapo 1 sur 1 de l'activité\nHeure prévue : H1 (lundi 14 septembre) · 09:00 → 09:03 · 3 min\nNotions travaillées : Décrire une image fixe ou mobile, c4-lire-02\nRemobilise : rien\nL'HEURE 1 — le travail à faire prévu\nLES ACTIVITÉS DU CHAPITRE (10)\nPOUR LA CLASSE — le temps et les notions\n⚠ L'heure 1 dépasse de 5 min\n50 min d'activités + 5 min de cahier pour 50 utiles — le T-5 le redira ; réduis une durée ou déplace une diapo\nLE CHAPITRE\n9 séances dans le chapitre · 2 h · 19 diapos · 10 activités · notions : 2, travaillées : 2\nPages HTML : 0 · objets manquants à l'éditeur : 0 (à faire tendre vers zéro, 4.4)\nÀ régler (0) — la seule liste de ce que tu as à faire ; chaque ligne dit le geste",
+  "champs": [
+   {
+    "tag": "BUTTON",
+    "id": "at-regler",
+    "type": "submit",
+    "val": "À régler (0)",
+    "title": "La liste complète de ce qui peut casser en classe dans ce chapitre, avec la marche à suivre et le texte prêt à copier pour l'instance (6.1)"
+   }
+  ]
+ },
+ "modifier": {
+  "clic": true,
+  "apres": {
+   "texte": "✕\nÉcrire dans la diapo — un clic dans un bloc, tu tapes ; Tab passe à l'élément suivant, Maj + Tab au précédent, Entrée en fin de ligne crée l'élément suivant, Échap annule une ligne vide ; Alt + ↑ / ↓ monte ou descend le bloc. Rien à sauver : c'est enregistré quelques secondes après la frappe, et le témoin le dit.\nCE QUE LA DIAPO DÉCLARE\nfermer\nActivité : \nA1 · Analyse d'images : la routine\nA2 · Les cinq tableaux à analyser\nA3 · Les règles héritées\nA4 · La frise du siècle\nA5 · Placer les poètes\nA6 · Le siècle des inventions\nA7 · Les mouvements du siècle\nA8 · Trois mots pour la frise\nA9 · Un poète spécial…\nA10 · Baudelaire, 1821-1867\n— hors activité (rituel)\n+ nouvelle activité…\nTitre de l'activité : Analyse d'images : la routine · 1 diapo · diapo 1 sur 1\nDiapo : Analyse d'images : la routine · durée  min · rôle : \naucun\nréactivation (première de son heure)\nbilan (dernier de la séance)\nfin d'heure (posée par le site)\nHeure prévue : H1 (lundi 14 septembre) · 09:00 → 09:03 — proposée d'après les durées · ↓ passer en H2\nNotions travaillées : Décrire une image fixe ou mobile✕c4-lire-02✕ + notion…\nRemobilise : + notion… · proposer\nLégende de surlignage :  (facultatif)\nÉléments : 6 · dévoilés un par un\nL'HEURE 1 — le travail à faire prévu\nLES ACTIVITÉS DU CHAPITRE (10)\nPOUR LA CLASSE — le temps et les notions\n⚠ L'heure 1 dépasse de 5 min\n50 min d'activités + 5 min de cahier pour 50 utiles — le T-5 le redira ; réduis une durée ou déplace une diapo\nLE CHAPITRE\n9 séances dans le chapitre · 2 h · 19 diapos · 10 activités · notions : 2, travaillées : 2\nPages HTML : 0 · objets manquants à l'éditeur : 0 (à faire tendre vers zéro, 4.4)\nÀ régler (0) — la seule liste de ce que tu as à faire ; chaque ligne dit le geste",
+   "champs": [
+    {
+     "tag": "SELECT",
+     "id": "dc-act",
+     "type": "select-one",
+     "val": "a1",
+     "title": "L'activité de cette diapo — une activité a un numéro continu sur le chapitre, un titre, une ou plusieurs diapos (3.2 bis)",
+     "opts": [
+      "A1 · Analyse d'images : la routine",
+      "A2 · Les cinq tableaux à analyser",
+      "A3 · Les règles héritées",
+      "A4 · La frise du siècle",
+      "A5 · Placer les poètes",
+      "A6 · Le siècle des inventions",
+      "A7 · Les mouvements du siècle",
+      "A8 · Trois mots pour la frise",
+      "A9 · Un poète spécial…",
+      "A10 · Baudelaire, 1821-1867",
+      "— hors activité (rituel)",
+      "+ nouvelle activité…"
+     ]
+    },
+    {
+     "tag": "INPUT",
+     "id": "dc-dur",
+     "type": "number",
+     "val": "3",
+     "title": "Les minutes prévues : l'heure prévue de la suite se recalcule"
+    },
+    {
+     "tag": "SELECT",
+     "id": "dc-role",
+     "type": "select-one",
+     "val": "aucun\nréactivation (première de son heure)\nbilan (dernier de",
+     "title": "réactivation : première de son heure · bilan : dernier de la séance, unique · fin d'heure : posée par le site",
+     "opts": [
+      "aucun",
+      "réactivation (première de son heure)",
+      "bilan (dernier de la séance)",
+      "fin d'heure (posée par le site)"
+     ]
+    },
+    {
+     "tag": "BUTTON",
+     "id": "at-regler",
+     "type": "submit",
+     "val": "À régler (0)",
+     "title": "La liste complète de ce qui peut casser en classe dans ce chapitre, avec la marche à suivre et le texte prêt à copier pour l'instance (6.1)"
+    }
+   ]
+  },
+  "choix": null
+ },
+ "horsAct": {
+  "actId": null,
+  "alertes": [
+   "Diapo « Analyse d'images : la routine » sans numéro d'activité"
+  ],
+  "regler": "À régler (1)"
+ },
+ "editables": [
+  "numero ce=false « Atelier · Diapo 1 sur 9 · heure 1 · Anal »",
+  "dtitre ce=false « · Analyse d'images : la routine · prévue »"
+ ],
+ "cycleAct": null,
+ "diapoLigne": "<div class=\"l\">Diapo : <span class=\"ed\" id=\"dc-titre\" contenteditable=\"plaintext-only\" title=\"Le titre de la diapo\" style=\"\">Analyse d'images : la routine</span> · durée <input id=\"dc-dur\" type=\"number\" min=\"1\" value=\"3\" style=\"width: 52px;\" title=\"Les minutes prévues : l'heure prévue de la suite se recalcule\"> min · rôle : <select id=\"dc-role\" title=\"réactivation : première de son heure · bilan : dernier de la séance, unique · fin d'heure : posée par le site\"><option value=\"\" selected=\"\">aucun</option><option value=\"reactivation\">réactivation (première de son heure)</option><option value=\"bilan\">bilan (dernier de la séance)</option><option value=\"fin\" disabled=\"\">fin d'heure (posée par le site)</option></select></div>",
+ "inseree": {
+  "act": "Nouvelle diapo",
+  "actId": null,
+  "role": null,
+  "dur": 5,
+  "blocs": [
+   "consigne:Nouvelle diapo"
+  ],
+  "mur": "NOUVELLE DIAPO\n•\nNouvelle diapo",
+  "h1": 55,
+  "avant": {
+   "n": 19,
+   "h1": 50
+  }
+ },
+ "repetition": {
+  "rep": true,
+  "mur": "NOUVELLE DIAPO\n•\nNouvelle diapo",
+  "suivi": "09:00\nA1 · Analyse d'images : la routine\n09:03\nA2 · Nouvelle diapo\n09:08\nA2 · Les cinq tableaux à analyser\n09:50\nCahier de textes"
+ },
+ "errs": []
+}

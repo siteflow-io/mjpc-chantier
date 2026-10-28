@@ -1,0 +1,270 @@
+{
+ "ecrans": [
+  {
+   "i": 0,
+   "act": "Analyse d'images : la routine",
+   "role": "",
+   "heure": 1,
+   "actId": "",
+   "blocs": "consigne",
+   "dur": 3
+  },
+  {
+   "i": 1,
+   "act": "Tableau 1",
+   "role": "",
+   "heure": 1,
+   "actId": "",
+   "blocs": "image",
+   "dur": 6
+  },
+  {
+   "i": 2,
+   "act": "Tableau 2",
+   "role": "",
+   "heure": 1,
+   "actId": "",
+   "blocs": "image",
+   "dur": 5
+  },
+  {
+   "i": 3,
+   "act": "Tableau 3",
+   "role": "",
+   "heure": 1,
+   "actId": "",
+   "blocs": "image",
+   "dur": 5
+  },
+  {
+   "i": 4,
+   "act": "Tableau 4",
+   "role": "",
+   "heure": 1,
+   "actId": "",
+   "blocs": "image",
+   "dur": 5
+  },
+  {
+   "i": 5,
+   "act": "Tableau 5",
+   "role": "",
+   "heure": 1,
+   "actId": "",
+   "blocs": "image",
+   "dur": 6
+  },
+  {
+   "i": 6,
+   "act": "Les hypothèses de la classe",
+   "role": "",
+   "heure": 1,
+   "actId": "",
+   "blocs": "consigne",
+   "dur": 22
+  },
+  {
+   "i": 7,
+   "act": "Question-bilan",
+   "role": "bilan",
+   "heure": 2,
+   "actId": "",
+   "blocs": "question",
+   "dur": 3
+  },
+  {
+   "i": 8,
+   "act": "Où en sommes-nous ?",
+   "role": "",
+   "heure": 2,
+   "actId": "",
+   "blocs": "question",
+   "dur": 3
+  },
+  {
+   "i": 9,
+   "act": "Les règles héritées",
+   "role": "",
+   "heure": 2,
+   "actId": "",
+   "blocs": "consigne",
+   "dur": 10
+  },
+  {
+   "i": 10,
+   "act": "La frise du siècle",
+   "role": "",
+   "heure": 2,
+   "actId": "",
+   "blocs": "consigne",
+   "dur": 5
+  },
+  {
+   "i": 11,
+   "act": "Placer les poètes",
+   "role": "",
+   "heure": 2,
+   "actId": "",
+   "blocs": "consigne",
+   "dur": 9
+  },
+  {
+   "i": 12,
+   "act": "Le siècle des inventions",
+   "role": "",
+   "heure": 2,
+   "actId": "",
+   "blocs": "consigne",
+   "dur": 4
+  },
+  {
+   "i": 13,
+   "act": "Les mouvements du siècle",
+   "role": "",
+   "heure": 2,
+   "actId": "",
+   "blocs": "consigne",
+   "dur": 8
+  },
+  {
+   "i": 14,
+   "act": "Trois mots pour la frise",
+   "role": "",
+   "heure": 2,
+   "actId": "",
+   "blocs": "consigne",
+   "dur": 2
+  },
+  {
+   "i": 15,
+   "act": "Un poète spécial…",
+   "role": "",
+   "heure": 2,
+   "actId": "",
+   "blocs": "question",
+   "dur": 4
+  },
+  {
+   "i": 16,
+   "act": "Fin d'heure",
+   "role": "fin",
+   "heure": 2,
+   "actId": "",
+   "blocs": "",
+   "dur": 5
+  },
+  {
+   "i": 17,
+   "act": "Baudelaire, 1821-1867",
+   "role": "",
+   "heure": 3,
+   "actId": "",
+   "blocs": "consigne",
+   "dur": 4
+  },
+  {
+   "i": 18,
+   "act": "Question-bilan et travail à faire",
+   "role": "",
+   "heure": 3,
+   "actId": "",
+   "blocs": "question,consigne",
+   "dur": 6
+  },
+  {
+   "i": 19,
+   "act": "Fin d'heure",
+   "role": "fin",
+   "heure": 3,
+   "actId": "",
+   "blocs": "",
+   "dur": 5
+  },
+  {
+   "i": 20,
+   "act": "Fin d'heure",
+   "role": "fin",
+   "heure": 1,
+   "actId": "",
+   "blocs": "",
+   "dur": 5
+  }
+ ],
+ "declare": {
+  "texte": "✕\nÉcrire dans la diapo — un clic dans un bloc, tu tapes ; Tab passe à l'élément suivant, Maj + Tab au précédent, Entrée en fin de ligne crée l'élément suivant, Échap annule une ligne vide ; Alt + ↑ / ↓ monte ou descend le bloc. Rien à sauver : c'est enregistré quelques secondes après la frappe, et le témoin le dit.\nCE QUE LA DIAPO DÉCLARE\nmodifier\nhors activité — sans numéro : le chapitre est refusé à l'import (3.2 bis)\nHeure prévue : H1 (lundi 14 septembre) · 08:57 → 09:00 · 3 min\nNotions travaillées : Décrire une image fixe ou mobile, c4-lire-02\nRemobilise : rien\nL'HEURE 1 — le travail à faire prévu\nLES ACTIVITÉS DU CHAPITRE (0)\nPOUR LA CLASSE — le temps et les notions\n⚠ L'heure 1 dépasse de 7 min\n52 min d'activités + 5 min de cahier pour 50 utiles — le T-5 le redira ; réduis une durée ou déplace une diapo\nSUR LA FORME — ce qui peut casser en classe\n⚠ Diapo « Analyse d'images : la routine » sans numéro d'activité\nrattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\nCes alertes ne s'affichent jamais pendant une heure réelle : elles se règlent ici, ou dans « À régler » du chapitre.\nLE CHAPITRE\n9 séances dans le chapitre · 3 h · 21 diapos · 0 activités · notions : 2, travaillées : 2\nPages HTML : 0 · objets manquants à l'éditeur : 0 (à faire tendre vers zéro, 4.4)\nÀ régler (101) — la seule liste de ce que tu as à faire ; chaque ligne dit le geste",
+  "champs": [
+   {
+    "tag": "BUTTON",
+    "id": "at-regler",
+    "cls": "",
+    "type": "submit",
+    "val": "À régler (101)",
+    "title": "La liste complète de ce qui peut casser en classe dans ce chapitre, avec la marche à suivre et le texte prêt à copier pour l'instance (6.1)"
+   }
+  ]
+ },
+ "clicDroit #at-arbre [data-at-di=\"1\"]": [
+  "(grisé) Tableau 1 · H1",
+  "Ouvrir — Entrée — la diapo dans l'atelier",
+  "Dupliquer — Ctrl + D — une nouvelle diapo juste après, mêmes blocs, nouvelle identité (les réponses d'élèves n'y sont pas), notions copiées, heure hérit",
+  "Insérer une diapo après — Ctrl + Entrée — une diapo vide juste après, dans la même heure, sans rôle",
+  "Monter — Alt + ↑ — l'ordre change, pas l'identité : ce que la classe a fait sur cette diapo la suit",
+  "Descendre — Alt + ↓ — si elle franchit la frontière d'heure, elle change d'heure prévue et le site le dit",
+  "Envoyer vers une autre séance… — identité inchangée, heure recalculée à l'arrivée",
+  "(grisé) Couper la diapo ici… — un seul bloc : rien à couper",
+  "Supprimer — Suppr — une classe qui l'a déjà vue la garde dans sa copie ; les notions du chapitre se recalculent"
+ ],
+ "clicDroit #volet [data-at-di=\"1\"]": [
+  "(grisé) Tableau 1 · H1",
+  "Ouvrir — Entrée — la diapo dans l'atelier",
+  "Dupliquer — Ctrl + D — une nouvelle diapo juste après, mêmes blocs, nouvelle identité (les réponses d'élèves n'y sont pas), notions copiées, heure hérit",
+  "Insérer une diapo après — Ctrl + Entrée — une diapo vide juste après, dans la même heure, sans rôle",
+  "Monter — Alt + ↑ — l'ordre change, pas l'identité : ce que la classe a fait sur cette diapo la suit",
+  "Descendre — Alt + ↓ — si elle franchit la frontière d'heure, elle change d'heure prévue et le site le dit",
+  "Envoyer vers une autre séance… — identité inchangée, heure recalculée à l'arrivée",
+  "(grisé) Couper la diapo ici… — un seul bloc : rien à couper",
+  "Supprimer — Suppr — une classe qui l'a déjà vue la garde dans sa copie ; les notions du chapitre se recalculent"
+ ],
+ "clicDroit #volet .vig[data-i=\"1\"]": "absent",
+ "dblclic": {
+  "focus": "BODY#.admin-mode est-prof at-corps-fige vue-atelier",
+  "editable": false
+ },
+ "inseree": {
+  "n": 22,
+  "e": {
+   "act": "Nouvelle diapo",
+   "role": "",
+   "heure": 1,
+   "actId": "",
+   "blocs": [
+    {
+     "t": "consigne",
+     "txt": "Nouvelle diapo",
+     "id": "bmu0w7z404ogk",
+     "etapes": [
+      ""
+     ]
+    }
+   ],
+   "dur": 5,
+   "eid": true
+  },
+  "act": null,
+  "di": 2,
+  "droite": "✕\nÉcrire dans la diapo — un clic dans un bloc, tu tapes ; Tab passe à l'élément suivant, Maj + Tab au précédent, Entrée en fin de ligne crée l'élément suivant, Échap annule une ligne vide ; Alt + ↑ / ↓ monte ou descend le bloc. Rien à sauver : c'est enregistré quelques secondes après la frappe, et le témoin le dit.\nCE QUE LA DIAPO DÉCLARE\nmodifier\nhors activité — sans numéro : le chapitre est refusé à l'import (3.2 bis)\nHeure prévue : H1 (lundi 14 septembre) · 09:06 → 09:11 · 5 min\nNotions travaillées : aucune\nRemobilise : rien\nL'HEURE 1 — le travail à faire prévu\nLES ACTIVITÉS DU CHAPITRE (0)\nPOUR LA CLASSE — le temps et les notions\n⚠ L'heure 1 dépasse de 12 min\n57 min d'activités + 5 min de cahier pour 50 utiles — le T-5 le redira ; réduis une durée ou déplace une diapo\nSUR LA FORME — ce qui peut casser en classe\n⚠ Diapo « Nouvelle diapo » sans numéro d'activité\nrattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\nCes alertes ne s'affichent jamais pendant une heure réelle : elles se règlent ici, ou dans « À régler » du chapitre.\nLE CHAPITRE\n9 séances dans le chapitre · 3 h · 22 diapos · 0 activités · notions : 5, travaillées : 5\nPages HTML : 0 · objets manquants à l'éditeur : 0 (à faire tendre vers zéro, 4.4)\nÀ régler (102) — la seule liste de ce que tu as à faire ; chaque ligne dit le geste",
+  "alertes": [
+   "{\"di\":0,\"k\":\"activite\",\"l\":\"Diapo « Analyse d'images : la routine » sans numéro d'activité\",\"ou\":\"diapo 1\",\"faire\":\"rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\",\"copier\":\"Diapo « Analyse d'images : la routine » (chapitre « Poésie et peinture : le Romantisme en question ») : à rattacher à une activité numérotée (numéro continu sur le chapitre).\"}",
+   "{\"di\":1,\"k\":\"activite\",\"l\":\"Diapo « Tableau 1 » sans numéro d'activité\",\"ou\":\"diapo 2\",\"faire\":\"rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\",\"copier\":\"Diapo « Tableau 1 » (chapitre « Poésie et peinture : le Romantisme en question ») : à rattacher à une activité numérotée (numéro continu sur le chapitre).\"}",
+   "{\"di\":2,\"k\":\"activite\",\"l\":\"Diapo « Nouvelle diapo » sans numéro d'activité\",\"ou\":\"diapo 3\",\"faire\":\"rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\",\"copier\":\"Diapo « Nouvelle diapo » (chapitre « Poésie et peinture : le Romantisme en question ») : à rattacher à une activité numérotée (numéro continu sur le chapitre).\"}",
+   "{\"di\":3,\"k\":\"activite\",\"l\":\"Diapo « Tableau 2 » sans numéro d'activité\",\"ou\":\"diapo 4\",\"faire\":\"rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\",\"copier\":\"Diapo « Tableau 2 » (chapitre « Poésie et peinture : le Romantisme en question ») : à rattacher à une activité numérotée (numéro continu sur le chapitre).\"}",
+   "{\"di\":4,\"k\":\"activite\",\"l\":\"Diapo « Tableau 3 » sans numéro d'activité\",\"ou\":\"diapo 5\",\"faire\":\"rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\",\"copier\":\"Diapo « Tableau 3 » (chapitre « Poésie et peinture : le Romantisme en question ») : à rattacher à une activité numérotée (numéro continu sur le chapitre).\"}",
+   "{\"di\":5,\"k\":\"activite\",\"l\":\"Diapo « Tableau 4 » sans numéro d'activité\",\"ou\":\"diapo 6\",\"faire\":\"rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\",\"copier\":\"Diapo « Tableau 4 » (chapitre « Poésie et peinture : le Romantisme en question ») : à rattacher à une activité numérotée (numéro continu sur le chapitre).\"}",
+   "{\"di\":6,\"k\":\"activite\",\"l\":\"Diapo « Tableau 5 » sans numéro d'activité\",\"ou\":\"diapo 7\",\"faire\":\"rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\",\"copier\":\"Diapo « Tableau 5 » (chapitre « Poésie et peinture : le Romantisme en question ») : à rattacher à une activité numérotée (numéro continu sur le chapitre).\"}",
+   "{\"di\":7,\"k\":\"activite\",\"l\":\"Diapo « Les hypothèses de la classe » sans numéro d'activité\",\"ou\":\"diapo 8\",\"faire\":\"rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé à l'import (3.2 bis)\",\"copier\":\"Diapo « Les hypothèses de la classe » (chapitre « Poésie et peinture : le Romantisme en question ») : à rattacher à une activité numérotée (numéro continu sur le chapitre).\"}"
+  ],
+  "avant": 21
+ },
+ "essais": [],
+ "errs": []
+}

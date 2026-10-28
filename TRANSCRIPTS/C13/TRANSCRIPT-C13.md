@@ -6299,3 +6299,20 @@ MEMO
 
 28/10/2026 13:12
 MEMO
+
+---
+
+## Tour 307 — 28/10/2026 14:04 → 14:04
+
+**Paul :** Non j'ai encore de l'utilisation tant que tu réponds, évidemment
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 rend tout corrigeable au tableau ; E1 répare l'Atelier sur deux appareils ; E3 refait l'étoile filante, puis s'arrête · ouvert : 838 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+839. Compris : tant que je te réponds, ton quota tient. Le silence vient donc d'autre chose. Je leur ai demandé de faire chaque morceau d'une traite et de ne pousser qu'à la fin, et E4 et E1 ont de gros morceaux en cours. J'ai aussi précisé à E3 de s'arrêter après l'étoile filante : la suite de sa mesure attend lundi soir, comme dit en 837. Je te préviens à la première poussée.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:04
+MEMO

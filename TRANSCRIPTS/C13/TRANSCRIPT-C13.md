@@ -6109,3 +6109,22 @@ MEMO
 
 28/10/2026 11:34
 MEMO
+
+---
+
+## Tour 297 — 28/10/2026 11:39 (message de Claude, sans message de Paul : le retour 102 d'E3)
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure (dernier rouge de la ⑧) ; E4 mesure ce qui ne se corrige pas au tableau ; E3 a fini ses mesures · ouvert : 814, 815 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+814. E3 a mesuré, et ta piste était la bonne. La lenteur ne vient pas du réseau, qui fait passer quelques Ko par minute. Elle vient du redessin à vide : au repos, sans rien faire, le site occupe 12 à 21 % du processeur d'un ordi portable ordinaire. Des minuteries réécrivent l'écran 7 à 9 fois par seconde, pour y remettre la même chose.
+
+815. Je propose quatre coupes. L'aide, qui se recalcule toutes les 0,4 seconde, ne le fera plus qu'au changement d'écran. Le tableau distant vérifiera ses boutons une fois par seconde au lieu de huit. Le chrono et « Où on en est » ne changeront plus que leurs chiffres. Les autres boucles compareront avant d'écrire. On attend un travail au repos divisé par deux à trois. Je propose qu'E3 le fasse maintenant, dans la ⑧. Oui ?
+
+816. Le menu de « Ce que la diapo déclare » : la sonde ne le voit pas casser. Sur tous les écrans, les menus restent ouverts, les champs gardent ce qu'on tape, les boutons ne sont jamais remplacés. Mais le navigateur du banc n'a pas d'écran, et il ne dessine pas la liste qui se déroule. Dis-moi ton geste exact : quel menu, et après quoi il se referme ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:39
+MEMO

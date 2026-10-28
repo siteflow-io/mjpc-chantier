@@ -6354,3 +6354,20 @@ MEMO
 
 28/10/2026 14:18
 MEMO
+
+---
+
+## Tour 310 — 28/10/2026 14:25 → 14:25
+
+**Paul :** Ok. Pour l'étoile filante il suffit de la supprimer.
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E3 supprime l'étoile filante, le dernier morceau avant la ⑧ · ouvert : 843 ; 838 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+844. Entendu : E3 la supprime, au lieu de la refaire. Ensuite, j'assemble la ⑧.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:25
+MEMO

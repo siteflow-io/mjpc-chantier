@@ -1131,3 +1131,5 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **Code** (`dr-socle.js`, une ligne) : l'état du cahier prend `contenu` hors de la classe pour l'onglet « Contenus de séances » ; en classe, rien ne change (`recitPourED`).
 - **Garde A91** étendue (`banc-1238.mjs`) : Atelier — un clic sur l'onglet « Contenus de séances », le texte lu est le contenu prévu ; répétition — dévoilé jusqu'à l'onglet, le même. **Avant (tête `38bf699f`) : 2 échecs (« rien encore ») ; après : 16 / 0.**
 - **Bancs** (assemblé md5 `b01f1a39…`) : `banc.sh` **VERT** (`E4/sorties/0327-28-10-A91b/`). Captures : `E4/captures/E4-1238-A91-1707-avant-atelier-contenu.png`, `…-apres-atelier-contenu.png` (regardées).
+
+**A91 (contenu prévu) E4 fini (`c673b6940`).**

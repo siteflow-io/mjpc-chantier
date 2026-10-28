@@ -6723,3 +6723,22 @@ MEMO
 
 28/10/2026 15:52
 MEMO
+
+---
+
+## Tour 328 — 28/10/2026 15:54 → 15:54
+
+**Paul :** Non on promeut 8 sans eux. autre dette trouvée: la dictée s'affiche encore dans l'arborescence et plus dans la structure... *(avec une capture de la ligne « Dictée : « Le port » » ouverte)*
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours : un exécutant neuf finit les derniers rouges de la ⑧ ; un autre répare la Structure, le ✕ et la ligne de la dictée, pour la ⑨ · ouvert : 880 ; 843 (à cadrer) ; 538, 553 (après lundi).
+
+881. Entendu : la ⑧ sera promue sans les défauts de la Structure ; ils entrent dans la ⑨.
+
+882. Ta nouvelle capture, inscrite au registre (13 · 87). La ligne « Dictée : « Le port » », ouverte depuis l'arborescence, montre une feuille « Sans titre » (les objectifs de la séance 3) au lieu de la dictée, avec le bandeau du message par défaut. Elle est liée à la mauvaise chose, et ne se retrouve pas comme dictée dans la Structure. C'est probablement le même désordre que 876, venu de l'import de ce matin : l'exécutant de la Structure le mesure et le répare avec le reste, dans la ⑨. Le message par défaut (880) attend ton mot ; il ne le touche pas avant.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:54
+MEMO

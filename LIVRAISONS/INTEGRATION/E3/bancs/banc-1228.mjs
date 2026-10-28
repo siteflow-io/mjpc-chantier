@@ -41,6 +41,12 @@
 // 36 : (§12.36) la colonne de gauche de l'Atelier : trois niveaux (ni documents, ni attendus, ni « + insérer une séance ici ») ; en haut le titre du chapitre
 //      et « n documents sur m attendus » qui ouvre Structure ; pas de doublons ; la séance ouverte se replie et se rouvre ; la ligne d'heure « H1 · lun. 14/09 ·
 //      08:57 → 09:52 » ouvre la première diapo de l'heure ; chaque diapo dit son heure prévue ; la poignée : élargir, réduire, replier, rouvrir, retenue.
+// 41d : (§12.41, A92, « le cas 41 » de la relance du 28/10 06:52 ; « 41 » est déjà la clé de 13 · 41) deux navigateurs, un hub partagé : la répétition dans l'un, `?vue=tableau` dans l'autre — la diapo, chaque élément dévoilé,
+//      la loupe, la lumière, le gel suivent ; « ■ Arrêter » → l'horloge ; au hub, seulement le canal du tableau ; une heure lancée ailleurs n'est pas écrasée.
+// 42i : (§12.42, A93, tranché 28/10 07:00) le chapitre 3e au contrat (E4/prompt/chapitre-3e-au-contrat.json) collé dans « Nouveau chapitre » : une feuille par
+//      clé d'item (aLier → atelier, blocs « fiche »), liée depuis chaque séance ; contenu écrit ou « créée sans contenu : à écrire » ; autres outils dits ; réinjecter ne réécrit rien.
+// 43t : (§12.43, A94) en mode test : une heure lancée par la case, dévoilée, 32 s de battements, la page fermée — aucune écriture au hub
+//      (fetch) ni aucune balise (sendBeacon), présence comprise.
 // 37 : (§12.37) la mise en forme des feuilles : « Dictée classique : « Le port » » — un sujet souligné, un verbe conjugué en gras, un participe en couleur,
 //      la légende — posés par les mêmes gestes que dans la diapo, revus après rechargement, gardés à l'aperçu d'impression ; « Les connecteurs logiques ».
 // 63 : (mesure 13 · 63, seulement si MJPC_CAS le nomme) le bilan au tableau : question de 57 signes, 5 / 4 / 3 mots-clés de 30 à 45 signes, la consigne à
@@ -1022,6 +1028,154 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
         verif(k, d1 && d2 && d1.ld > d0.ld && Math.abs(d2.ld - d1.ld) <= 4, T + ' · A85 · la colonne de droite s’élargit et sa largeur est retenue au rechargement', JSON.stringify({ avant: d0.ld, tiree: d1 && d1.ld, recharge: d2 && d2.ld })); }
     } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
     verif('Z', !o.errs.length, T + ' · 0 erreur JS (36)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 41 (§12.41) : la répétition envoie au tableau distant ce que voit la classe — deux navigateurs, un hub partagé (A92) ── */
+  if (fait('41d')) { const k = '41d';
+    const ST = hubStore(); const J = [];   /* le hub « serveur » : un seul objet côté banc, lu et écrit par les deux navigateurs (comme le vrai, à travers le réseau) */
+    const relais = async (src, m, c, bd) => { const q = String(c).split('/').filter(Boolean);
+      if (m === 'GET') { let n = ST; for (const x of q) { if (n === null || typeof n !== 'object' || !(x in n)) return null; n = n[x]; } return n === undefined ? null : JSON.parse(JSON.stringify(n)); }
+      J.push({ qui: (src.page && src.page.__qui) || '?', m, c, t: Date.now() });
+      const poser = (cc, v) => { const qq = String(cc).split('/').filter(Boolean); let n = ST; for (let i = 0; i < qq.length - 1; i++) { if (typeof n[qq[i]] !== 'object' || n[qq[i]] === null) n[qq[i]] = {}; n = n[qq[i]]; } if (v === null || v === undefined) delete n[qq[qq.length - 1]]; else n[qq[qq.length - 1]] = JSON.parse(JSON.stringify(v)); };
+      if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(x => poser(c + '/' + x, bd[x])); else poser(c, m === 'DELETE' ? null : bd); return bd; };
+    const navig = async (qui, Wn, Hn) => { const ctx = await nav.newContext({ viewport: { width: Wn, height: Hn }, timezoneId: 'Europe/Paris' }); const errs = [];
+      await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => r.abort()); await ctx.exposeBinding('__relais', relais);
+      await ctx.addInitScript(() => { window.__ECR = []; window.WebSocket = function () { throw new Error('websocket bloqué'); };
+        window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase(); let bd = null; try { bd = JSON.parse((o && o.body) || 'null'); } catch (e) {} if (m !== 'GET') window.__ECR.push(m + ' ' + c); return window.__relais(m, c, bd).then(v => new Response(JSON.stringify(v), { status: 200 })); } return Promise.reject(new Error('hors du faux hub : ' + s2.slice(0, 60))); }; });
+      ctx.on('page', q => { q.__qui = qui; q.on('pageerror', e => errs.push(qui + ' : ' + String(e.message).slice(0, 140))); q.on('dialog', d => d.dismiss().catch(() => {})); });
+      const pg = await ctx.newPage(); pg.__qui = qui; await pg.clock.setFixedTime(HORLOGE); return { ctx, pg, errs }; };
+    const A = await navig('pilote', W, H), B = await navig('tableau', 1366, 768); let C = null;   /* B : le téléphone ou le vidéoprojecteur sur l'adresse du tableau */
+    const tete = q => q.evaluate(() => Array.from(document.querySelectorAll('#pilotage .haut')).filter(e => e.offsetParent).map(e => e.innerText.replace(/\s+/g, ' ').trim()).join(' | ').slice(0, 220));
+    const vuA = q => q.evaluate(() => { const m = (window.S && S.mur) || null; if (!m) return null; const o = {}; ['di', 'eid', 'nDev', 'loupe', 'flash', 'gel'].forEach(x => { if (m[x] !== undefined) o[x] = m[x]; }); if (!o.eid) try { o.eid = eidDe(m.di); } catch (e) {} return o; });
+    const vuB = () => B.pg.evaluate(() => { const att = document.getElementById('ses-tab-att'); const m = (window.DR_TAB && DR_TAB.montre) || null; const o = m ? {} : null; if (m) ['di', 'eid', 'nDev', 'loupe', 'flash', 'gel'].forEach(x => { if (m[x] !== undefined) o[x] = m[x]; }); return { attente: !!(att && att.style.display !== 'none' && att.offsetParent !== null), montre: o, texte: ((document.getElementById('mur2') || {}).innerText || '').replace(/\s+/g, ' ').slice(0, 120) }; });
+    const egal = (a, b, cles) => !!(a && b) && cles.every(x => JSON.stringify(a[x] === undefined ? null : a[x]) === JSON.stringify(b[x] === undefined ? null : b[x]));
+    const attendreB = async (cond, ms) => { const t = Date.now(); let v = null; while (Date.now() - t < ms) { v = await vuB(); if (await cond(v)) return v; await p(B.pg, 500); } return v; };
+    const captB = async nom => { if (CAPT && (W === 1707 || W === 1920)) await B.pg.screenshot({ path: path.join(CAPT, W + 'x' + H + '-41-' + nom + '-' + SUFF + '.png') }).catch(() => {}); };
+    try {
+      await B.pg.goto(URL0 + '?vue=tableau&n=3e', { waitUntil: 'load' }); await p(B.pg, 4000); const b0 = await vuB(); await captB('0-tableau-attente');
+      info(k, T + ' · le tableau distant, avant : ' + (b0.attente ? 'l’horloge d’attente' : 'autre : ' + b0.texte));
+      await entrerProf(A.pg); await ouvrirAtelier(A.pg); const t0 = J.length; const rep = await entrerRepetition(A.pg); await p(A.pg, 1500);
+      let a = await vuA(A.pg);
+      /* la diapo */
+      let b = await attendreB(async v => egal(await vuA(A.pg), v.montre, ['eid']), 40000); await captB('1-la-diapo-suit');
+      verif(k, rep && b && egal(a, b.montre, ['eid']) && !b.attente, T + ' · A92 · la répétition : le tableau distant montre la diapo de la répétition', JSON.stringify({ rep, pilote: a, tableau: b && b.montre, attente: b && b.attente }));
+      /* chaque élément dévoilé */
+      const devs = []; for (let i = 0; i < 2; i++) { await dev(A.pg, 1); await p(A.pg, 400); a = await vuA(A.pg); b = await attendreB(async v => egal(a, v.montre, ['eid', 'nDev']), 6000); devs.push([a && a.nDev, b && b.montre && b.montre.nDev]); }
+      await captB('2-le-devoilement-suit');
+      verif(k, devs.every(x => x[0] != null && x[0] === x[1]), T + ' · A92 · chaque élément dévoilé en répétition paraît au tableau distant', JSON.stringify(devs));
+      /* la loupe */
+      await A.pg.click('#bloupe').catch(() => {}); const r = await A.pg.evaluate(() => { const m = document.getElementById('mur').getBoundingClientRect(); return { x: m.left, y: m.top, w: m.width, h: m.height }; });
+      await A.pg.mouse.move(r.x + r.w * 0.25, r.y + r.h * 0.25); await A.pg.mouse.down(); await A.pg.mouse.move(r.x + r.w * 0.7, r.y + r.h * 0.6, { steps: 6 }); await A.pg.mouse.up(); await p(A.pg, 600);
+      a = await vuA(A.pg); b = await attendreB(async v => egal(a, v.montre, ['eid', 'loupe']), 6000); await captB('3-la-loupe-suit');
+      verif(k, a && a.loupe && b && egal(a, b.montre, ['loupe']), T + ' · A92 · la loupe de la répétition paraît au tableau distant', JSON.stringify({ pilote: a && a.loupe, tableau: b && b.montre && b.montre.loupe }));
+      await A.pg.click('#bloupe').catch(() => {}); await p(A.pg, 600);   /* la loupe retirée */
+      /* la mise en lumière */
+      await A.pg.click('#blum').catch(() => {}); await p(A.pg, 300); await A.pg.click('#mur li[data-k]').catch(() => {}); await p(A.pg, 500);
+      a = await vuA(A.pg); b = await attendreB(async v => !!(v.montre && v.montre.flash), 6000); await captB('4-la-lumiere-suit');
+      verif(k, a && a.flash && b && b.montre && b.montre.flash && JSON.stringify(b.montre.flash.k) === JSON.stringify(a.flash.k), T + ' · A92 · la mise en lumière de la répétition paraît au tableau distant', JSON.stringify({ pilote: a && a.flash, tableau: b && b.montre && b.montre.flash }));
+      /* le gel : le tableau garde l'image pendant que Paul avance, puis la reprend au dégel */
+      await A.pg.click('#bgel').catch(() => {}); await p(A.pg, 800); const geleA = await A.pg.evaluate(() => !!(window.S && S.gel)); const avantGel = (await vuB()).montre;
+      await dev(A.pg, 1); await p(B.pg, 3000); const pendant = (await vuB()).montre;
+      await A.pg.click('#bgel').catch(() => {}); await p(A.pg, 600); a = await vuA(A.pg); const apres = await attendreB(async v => egal(a, v.montre, ['eid', 'nDev']), 6000); await captB('5-le-degel');
+      verif(k, geleA && egal(avantGel, pendant, ['eid', 'nDev']) && apres && egal(a, apres.montre, ['eid', 'nDev']), T + ' · A92 · le gel en répétition tient l’image du tableau distant, le dégel la reprend', JSON.stringify({ gel: geleA, avant: avantGel, pendant, pilote: a, apres: apres && apres.montre }));
+      /* les écritures au hub pendant la répétition : seulement le canal du tableau */
+      const presProf = J.slice(t0).filter(x => x.qui === 'pilote' && x.c === '/presence/prof').length; const avantRep = J.slice(0, t0).filter(x => x.qui === 'pilote' && x.c === '/presence/prof').length;
+      info(k, T + ' · le battement de présence du prof (`/presence/prof`, hors répétition aussi : ' + avantRep + ' avant) : ' + presProf + ' pendant la répétition — pas une donnée de la classe ; le §12.43 le traite en mode test');
+      const ecr = J.slice(t0).filter(x => x.qui === 'pilote' && x.c !== '/presence/prof'); const hors = ecr.filter(x => !/\/scene$|\/ecrans$|^\/site\/cours_actif$|\/tableau(\/|$)/.test(x.c)); const interdits = ecr.filter(x => /journal|recit|cahier|presence|eleves|bilan|notes/.test(x.c));   /* la présence des élèves (qui a participé), pas le battement du prof */
+      verif(k, ecr.length > 0 && hors.length === 0 && interdits.length === 0, T + ' · A92 · pendant la répétition, le hub ne reçoit que le canal du tableau (ni copie, ni journal, ni récit, ni cahier, ni présence)', ecr.length + ' écritures ; hors canal : ' + JSON.stringify(hors.slice(0, 6).map(x => x.m + ' ' + x.c)) + ' ; canal : ' + JSON.stringify(Array.from(new Set(ecr.map(x => x.c))).slice(0, 6)));
+      /* « ■ Arrêter » : l'horloge d'attente */
+      await clicTexte(A.pg, 'button', 'Arrêter'); await p(A.pg, 1200); b = await attendreB(async v => v.attente, 40000); await captB('6-arreter-l-horloge');
+      verif(k, b && b.attente, T + ' · A92 · « ■ Arrêter » : le tableau distant revient à l’horloge d’attente', JSON.stringify({ attente: b && b.attente, montre: b && b.montre }));
+      /* une heure lancée ailleurs (une classe en cours) : la répétition n'écrase pas son tableau */
+      C = await navig('classe', 1366, 768); await entrerProf(C.pg); const lance = await lancerParLaCase(C.pg); await dev(C.pg, 1); await p(C.pg, 1200); const c = await vuA(C.pg);
+      b = await attendreB(async v => egal(c, v.montre, ['eid']), 40000); const coursAvant = JSON.stringify(ST.site.cours_actif || null);
+      await A.pg.evaluate(() => { const x = Array.from(document.querySelectorAll('[onclick]')).find(e => e.offsetParent && /atSomPlier\('1'\)/.test(e.getAttribute('onclick') || '')); if (x) x.click(); }); await p(A.pg, 1200);
+      const rep2 = await entrerRepetition(A.pg); await dev(A.pg, 2); await p(A.pg, 4000); const a2 = await vuA(A.pg); const b2 = await vuB(); const t2 = await tete(A.pg); await captB('7-une-heure-lancee-ailleurs-tableau'); await capt(A.pg, W, H, '41-7-une-heure-lancee-ailleurs-repetition');
+      verif(k, lance && b && egal(c, b.montre, ['eid']), T + ' · A92 · (le témoin) une heure lancée par une autre classe paraît au tableau distant', JSON.stringify({ lance, classe: c, tableau: b && b.montre }));
+      verif(k, rep2 && egal(c, b2.montre, ['eid']) && (!a2 || a2.eid !== b2.montre.eid || a2.eid === c.eid) && JSON.stringify(ST.site.cours_actif || null) === coursAvant, T + ' · A92 · une répétition pendant une heure lancée ailleurs n’écrase pas son tableau (ni la scène, ni `cours_actif`)', JSON.stringify({ classe: c && c.eid, repetition: a2 && a2.eid, tableau: b2.montre && b2.montre.eid, coursInchange: JSON.stringify(ST.site.cours_actif || null) === coursAvant }));
+      verif(k, /tableau[^|]{0,60}(pris|occup|utilis)|(pris|occup)[^|]{0,40}tableau/i.test(t2), T + ' · A92 · l’en-tête de la répétition dit en clair que le tableau distant est pris', '« ' + t2 + ' »');
+      await clicTexte(A.pg, 'button', 'Arrêter'); await p(A.pg, 800);
+    } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    const errs = A.errs.concat(B.errs, C ? C.errs : []); verif('Z', !errs.length, T + ' · 0 erreur JS (41, deux navigateurs)', errs.slice(0, 3).join(' ; '));
+    await A.ctx.close(); await B.ctx.close(); if (C) await C.ctx.close(); }
+
+  /* ── 42i (§12.42, A93) : l'import crée les feuilles et fait les liaisons — le chapitre 3e « Poésie et peinture » au contrat ── */
+  if (fait('42i')) { const k = '42i'; const st = hubStore(); const o = await ouvrirCtx(W, H, st); const pg = o.pg;
+    const J0 = JSON.parse(fs.readFileSync(path.join(RACINE, 'LIVRAISONS', 'INTEGRATION', 'E4', 'prompt', 'chapitre-3e-au-contrat.json'), 'utf8'));
+    J0.chapitre.title = 'Poésie et peinture au XIXe siècle — import E3';
+    /* le fichier date du 22/10 : un mot-clé du bilan dépasse aujourd'hui les 45 signes (« le registre lyrique : l'émotion avant la règle ») — coupé à son « : », comme Paul le ferait ; rien d'autre ne change */
+    J0.chapitre.seances.forEach(se => ((se.deroule || {}).ecrans || []).forEach(e => { if (e && e.role === 'bilan') (e.blocs || []).forEach(b => { if (b && Array.isArray(b.el)) b.el = b.el.map(x => { x = String(x).replace(/\.$/, ''); return x.length > 45 ? x.split(' : ')[0].slice(0, 45) : x; }); }); }));   /* un titre neuf : le chapitre du faux hub reste à côté */
+    /* ce que le chapitre décrit (contrat §12.42, tranché le 28/10 07:00 sur la mission 0 d'E4) : une feuille par clé d'item du chapitre — toute entrée
+       « aLier » vers l'atelier et toute feuille nommée par un bloc « fiche » —, liée depuis chaque séance qui a l'item ; son contenu : ce que le chapitre en écrit
+       (le bloc « fiche »), sinon son titre seul, et le compte rendu dit « créée sans contenu : à écrire » ; les autres outils : dits avec la raison ; « externe » : déjà liée */
+    const ALIER = J0.aLier || []; const ITEM = {}; const CONTENU = {};
+    J0.chapitre.seances.forEach(se => { Object.keys(se.items || {}).forEach(x => { ITEM[x] = ITEM[x] || { titre: se.items[x].title || x, seances: [] }; ITEM[x].seances.push(se.cle); });
+      ((se.deroule || {}).ecrans || []).forEach(e => (e.blocs || []).forEach(b => { if (b && b.t === 'fiche' && b.feuille) { CONTENU[b.feuille] = CONTENU[b.feuille] || []; CONTENU[b.feuille].push(String(b.def || b.titre || '').replace(/<[^>]+>/g, '').slice(0, 40)); } })); });
+    const CLES = Array.from(new Set(Object.keys(CONTENU).concat(ALIER.filter(a => a.outil === 'atelier').map(a => a.item)))).filter(x => ITEM[x]);
+    const FEUILLES = CLES.map(x => ({ item: x, titre: ITEM[x].titre, seances: ITEM[x].seances, contenu: CONTENU[x] || null }));
+    const AUTRES = ALIER.filter(a => a.outil !== 'atelier');
+    const importer = async () => { await pg.evaluate(() => { try { edtFermer(); } catch (e) {} try { atelierOuvrir(); } catch (e) {} }); await p(pg, 1000); await sansVoiles(pg); await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await p(pg, 800);
+      const porte = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-porte-ch')).find(x => x.offsetParent !== null); if (!b) return false; b.click(); return true; }); await p(pg, 1500);
+      if (!porte || !(await pg.evaluate(() => !!(document.getElementById('ch-coller') && document.getElementById('ch-coller').offsetParent)))) return { porte, msg: 'pas d’écran « Nouveau chapitre »' };
+      await pg.fill('#ch-coller', JSON.stringify(J0)); await p(pg, 400); await clicTexte(pg, 'button', 'Vérifier'); await p(pg, 1800);
+      const lire = () => pg.evaluate(() => ({ cr: Array.from(document.querySelectorAll('#ch-msg, .ch-travail, .ch-rapport, .ch-compte-rendu, #at-modale')).filter(e => e.getBoundingClientRect().height > 0).map(e => e.innerText.replace(/\s+/g, ' ').trim()).join(' | ').slice(0, 1500), lignes: Array.from(document.querySelectorAll('#ch-msg li, .ch-travail li, .ch-rapport li, .ch-compte-rendu li, #at-modale li, #ch-msg p')).filter(e => e.getBoundingClientRect().height > 0).map(e => e.innerText.replace(/\s+/g, ' ').trim()) }));
+      const l0 = await lire();
+      const cree = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('button')).find(b => b.offsetParent && /Créer ce chapitre|Remplacer|Mettre à jour/.test(b.innerText)); if (!b) return null; const t = b.innerText.trim(); b.click(); return t; }); await p(pg, 1500);
+      const conf = await pg.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && m.getBoundingClientRect().height > 0 && Array.from(m.querySelectorAll('button')).find(x => /Créer|Remplacer|Mettre à jour|Réinjecter|Continuer/.test(x.textContent)); if (!b) return null; const t = m.innerText.replace(/\s+/g, ' ').slice(0, 200); b.click(); return t; }); await p(pg, 3000);   /* la confirmation (fixe : offsetParent nul) */
+      const l1 = await lire();   /* le compte rendu : avant la confirmation (l'inventaire) et après (le rapport de l'import) */
+      return { porte, cree, conf, cr: l0.cr + ' ¶ ' + l1.cr, lignes: l0.lignes.concat(l1.lignes) }; };
+    const lireHub = () => pg.evaluate(t => { const L = window.__hubLire; const ch = L('/site/3e/chapitres') || {}; const cle = Object.keys(ch).find(x => ch[x] && ch[x].title === t); const docs = L('/site/atelier/documents') || {}; return { cle, chap: cle != null ? ch[cle] : null, docs: Object.keys(docs).map(id => ({ id, titre: (docs[id] || {}).titre || '', json: JSON.stringify(docs[id]) })) }; }, J0.chapitre.title);
+    try { await entrerProf(pg); const docs0 = (await lireHub()).docs.length;
+      const r1 = await importer(); await capt(pg, W, H, '42-1-le-compte-rendu-de-l-import'); const h1 = await lireHub();
+      info(k, T + ' · l’import : ' + JSON.stringify({ porte: r1.porte, bouton: r1.cree, confirmation: r1.conf, chapitre: h1.cle }) + ' · compte rendu « ' + (r1.cr || '').slice(0, 300) + ' »');
+      verif(k, h1.cle != null, T + ' · A93 · le chapitre au contrat (9 séances, ' + FEUILLES.length + ' feuilles décrites, ' + ALIER.length + ' liaisons) s’importe', JSON.stringify({ chapitre: h1.cle, bouton: r1.cree }));
+      /* (2) une feuille par clé d'item, sans doublon ; liée depuis chaque séance qui a l'item (comme après « Lier » : ref, source atelier) */
+      const seanceDe = cleSe => { const S2 = (h1.chap || {}).seances || {}; return Object.keys(S2).find(i => S2[i] && S2[i].cle === cleSe); };
+      const itemDe = (cleSe, x) => { const si = seanceDe(cleSe); return si != null ? ((((h1.chap.seances[si] || {}).items) || {})[x] || null) : null; };
+      const docDe = f => h1.docs.filter(d => d.titre === f.titre || new RegExp('_' + f.item.replace(/[-]/g, '[-_]') + '$').test(d.id));
+      const parFeuille = FEUILLES.map(f => { const D = docDe(f); const liens = f.seances.map(cs => { const it = itemDe(cs, f.item); return { seance: cs, ref: it && it.ref ? String(it.ref) : '', source: it && it.source }; }); return { item: f.item, docs: D.map(d => d.id), liens }; });
+      const manquantes = parFeuille.filter(x => x.docs.length !== 1);
+      verif(k, FEUILLES.length > 0 && manquantes.length === 0, T + ' · A93 · une feuille par clé d’item (' + FEUILLES.length + ' : les entrées « aLier » vers l’atelier et les feuilles des blocs « fiche »), sans doublon', 'pas exactement une : ' + JSON.stringify(manquantes.slice(0, 6).map(x => x.item + ' ×' + x.docs.length)));
+      const nonLiees = parFeuille.filter(x => x.docs.length === 1 && !x.liens.every(l => l.ref && (l.ref.indexOf(x.docs[0]) >= 0 || l.source === 'atelier')));
+      verif(k, manquantes.length === 0 && nonLiees.length === 0, T + ' · A93 · chaque feuille est liée à son item, depuis chaque séance qui l’a (« fiche-versification » : séances 2 et 5)', JSON.stringify(nonLiees.slice(0, 5)));
+      /* le contenu : celui que le chapitre écrit, sinon « créée sans contenu : à écrire » au compte rendu */
+      const cr1 = (r1.lignes || []).join(' ¶ ') + ' ¶ ' + (r1.cr || '');
+      const sansContenu = FEUILLES.filter(f => !f.contenu).filter(f => !(r1.lignes || []).some(l => (l.indexOf(f.titre) >= 0 || l.indexOf(f.item) >= 0) && /sans contenu/i.test(l)) && !new RegExp('sans contenu[^¶]{0,200}' + f.titre.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').slice(0, 30)).test(cr1));
+      verif(k, sansContenu.length === 0, T + ' · A93 · le compte rendu dit « créée sans contenu : à écrire » pour chaque feuille dont le chapitre n’écrit rien (' + FEUILLES.filter(f => !f.contenu).length + ')', 'non dites : ' + JSON.stringify(sansContenu.slice(0, 5).map(f => f.titre)));
+      /* les autres outils : dits en clair avec la raison ; « externe » : déjà liée */
+      const muets = AUTRES.filter(a => { const it = itemDe(a.seance_cle, a.item); const t = it && it.title; return !(r1.lignes || []).some(l => (l.indexOf(a.item) >= 0 || (t && l.indexOf(t) >= 0)) && (a.outil === 'externe' ? /déjà liée/i.test(l) : /dette|à créer|n’existe pas|n'existe pas|pas encore|ne peut|impossible|introuvable|aucun/i.test(l))) && !(a.outil === 'externe' && it && it.ref && /déjà liée/i.test(cr1)); });
+      verif(k, muets.length === 0, T + ' · A93 · les ' + AUTRES.length + ' liaisons vers un autre outil sont dites en clair avec leur raison (« externe » : déjà liée)', 'muettes : ' + JSON.stringify(muets.slice(0, 5).map(a => a.seance_cle + '/' + a.item + ' → ' + a.outil)));
+      /* une feuille créée s'ouvre et s'imprime (l'aperçu est le document imprimé) */
+      const f0 = FEUILLES.find(f => f.contenu) || FEUILLES[0]; let ouv = null;
+      if (f0 && !manquantes.length) { await pg.evaluate(() => { try { atOnglet('feuilles'); } catch (e) {} }); await p(pg, 1200);
+        ouv = await pg.evaluate(t => { const c = Array.from(document.querySelectorAll('body *')).filter(e => e.offsetParent && e.children.length < 30 && (e.innerText || '').indexOf(t) >= 0 && Array.from(e.querySelectorAll('button')).some(b => /Ouvrir/.test(b.innerText))); const e = c[c.length - 1]; if (!e) return false; Array.from(e.querySelectorAll('button')).find(b => /Ouvrir/.test(b.innerText)).click(); return true; }, f0.titre); await p(pg, 2500); }
+      await pg.emulateMedia({ media: 'print' }); const ap = await pg.evaluate(() => { const f = document.getElementById('at-apercu'); const d = f && (f.contentDocument || null); return d ? { texte: d.body.innerText.replace(/\s+/g, ' ').slice(0, 160), fond: getComputedStyle(d.body).backgroundColor } : null; }); await pg.emulateMedia({ media: 'screen' }); await capt(pg, W, H, '42-2-une-feuille-creee');
+      verif(k, ouv && ap && f0 && ap.texte.indexOf(f0.titre.slice(0, 20)) >= 0 && (f0.contenu || []).some(c => c && ap.texte.indexOf(c.slice(0, 25)) >= 0) && /255, 255, 255|rgba\(0, 0, 0, 0\)/.test(ap.fond), T + ' · A93 · une feuille créée avec le contenu du chapitre (« ' + (f0 ? f0.titre : '?') + ' ») s’ouvre et s’imprime (l’aperçu en média print, fond blanc)', JSON.stringify({ ouverte: ouv, attendu: f0 && f0.contenu, apercu: ap }));
+      /* réinjecter ne double rien */
+      const r2 = await importer(); const h2 = await lireHub(); const nCh = await pg.evaluate(t => Object.values(window.__hubLire('/site/3e/chapitres') || {}).filter(c => c && c.title === t).length, J0.chapitre.title);
+      const doubles = FEUILLES.filter(f => h2.docs.filter(d => d.titre === f.titre).length > 1).map(f => f.titre); const reecrites = h1.docs.filter(d => { const d2 = h2.docs.find(x => x.id === d.id); return !d2 || d2.json !== d.json; }).map(d => d.titre);
+      verif(k, nCh === 1 && h1.docs.length > docs0 && doubles.length === 0 && h2.docs.length === h1.docs.length && reecrites.length === 0, T + ' · A93 · réinjecter le même chapitre ne double rien et ne réécrit aucune feuille', JSON.stringify({ chapitres: nCh, feuilles: [docs0, h1.docs.length, h2.docs.length], doubles, reecrites: reecrites.slice(0, 4), bouton: r2.cree }));
+    } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (42i)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
+
+  /* ── 43t (§12.43, A94) : en mode test, aucune écriture au vrai hub, présence comprise (fetch et sendBeacon) ── */
+  if (fait('43t')) { const k = '43t'; const o = await ouvrirCtx(W, H); const pg = o.pg; const BAL = [];
+    await o.ctx.exposeBinding('__balise', (src, u) => { BAL.push({ u: String(u).replace(/^https?:\/\/[^/]+/, '').slice(0, 90), t: Date.now() }); });
+    await o.ctx.addInitScript(() => { try { navigator.sendBeacon = function (u) { try { window.__balise(String(u)); } catch (e) {} return true; }; } catch (e) {} });   /* chaque balise comptée (rien ne sort du banc) */
+    const ecrHub = () => pg.evaluate(() => (window.__ECR || []).slice());
+    try { await entrerProf(pg); await p(pg, 1500); const avant = await ecrHub(); const presAvant = avant.filter(x => /\/presence\//.test(x)).length;
+      info(k, T + ' · hors mode test, à la connexion : ' + avant.length + ' écritures dont ' + presAvant + ' de présence (`' + (avant.find(x => /\/presence\//.test(x)) || '—') + '`)');
+      /* Paul passe en mode test (la pastille de l'en-tête / la console : la même bascule) */
+      await pg.evaluate(() => { if (!m8TestOn()) m8BasculerModeTest(); }); await p(pg, 800); const n0 = (await ecrHub()).length; const b0 = BAL.length;
+      const lance = await lancerParLaCase(pg); await dev(pg, 2); await p(pg, 1000);
+      await p(pg, 32000);   /* deux battements de présence (15 s) */
+      const e1 = (await ecrHub()).slice(n0); await capt(pg, W, H, '43-1-mode-test-une-heure');
+      verif(k, lance && e1.length === 0, T + ' · A94 · en mode test, une heure lancée par la case, dévoilée, et 32 s de battements : aucune écriture au hub (présence comprise)', e1.length + ' : ' + JSON.stringify(e1.slice(0, 6)));
+      /* fermer la page en mode test : la balise de départ (beforeunload) ne part pas non plus */
+      await pg.close({ runBeforeUnload: true }); await new Promise(r => setTimeout(r, 1500));
+      const bal = BAL.slice(b0);
+      verif(k, lance && bal.length === 0, T + ' · A94 · en mode test, aucune balise (`sendBeacon`) vers le hub, ni pendant l’heure ni à la fermeture de la page', bal.length + ' : ' + JSON.stringify(bal.slice(0, 4).map(x => x.u)));
+    } catch (e) { verif(k, false, T + ' · le cas n’a pas pu aller au bout', String(e.message).split('\n')[0]); }
+    verif('Z', !o.errs.length, T + ' · 0 erreur JS (43t)', o.errs.slice(0, 3).join(' ; ')); await o.ctx.close(); }
 
   /* ── 37 (§12.37) : la mise en forme des feuilles ── */
   if (fait('37')) { const k = '37';

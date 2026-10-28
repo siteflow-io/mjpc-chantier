@@ -1029,3 +1029,37 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   - §12.39 (`9ff2f0f5`).
 - Tous les cas tiennent sur la dernière tête `b01f1a39`, qui peut servir de candidate ⑦.
 - Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0335-28-10-1238-vert/`.
+
+## Retour 95 — 28/10, 07:35 — cas 41d, 42i, 43t écrits (§12.41 à §12.43) ; avant sur la ⑦
+- La relance de 06:52 est lue. La ⑦ est l'assemblé de `ab1c39b5d`, md5 `b01f1a39`. Les clés `41`, `42`, `43` existaient déjà (13 · 41, 13 · 43). Les nouveaux cas s'appellent donc **41d**, **42i**, **43t**.
+- **Cas 41d (§12.41, A92) — deux navigateurs.**
+  - Le montage : deux contextes Playwright séparés, sans stockage commun. Ils partagent un hub tenu côté banc : `exposeBinding('__relais')`, que le `fetch` du faux hub appelle, comme le vrai hub à travers le réseau. Chaque écriture est notée avec sa source (pilote, tableau, classe).
+  - Le premier navigateur joue la répétition. Le second ouvre `?vue=tableau&n=3e`, comme un téléphone ou un vidéoprojecteur sur l'adresse du tableau.
+  - Contrôlé :
+    - la diapo, chaque élément dévoilé (`#bdev`), la loupe (`#bloupe` puis un cadre tiré à la souris), la mise en lumière (`#blum` puis un clic sur un élément), comparés entre le `S.mur` du pilote et le `DR_TAB.montre` du tableau ;
+    - le gel (`#bgel`) : le tableau garde son image pendant que Paul avance, et le dégel la reprend ;
+    - au hub, pendant la répétition, seulement le canal du tableau (scène, écrans, `cours_actif`) ;
+    - « ■ Arrêter » ramène l'horloge d'attente ;
+    - avec une heure lancée ailleurs (un troisième navigateur lance l'heure de 3E Charles de Gaulle par sa case), une répétition n'écrase ni sa scène ni `cours_actif`, et l'en-tête de la répétition dit que le tableau distant est pris.
+  - Le battement de présence du prof (`PUT /presence/prof`) part aussi hors de la répétition. Il est compté à part (info), pas comme une donnée de la classe ; le §12.43 s'en occupe en mode test.
+  - **Sur la ⑦ : 3/10 par taille.**
+    - Vert : « ■ Arrêter » laisse l'horloge ; l'heure lancée ailleurs paraît au tableau ; la répétition ne l'écrase pas.
+    - Rouge, attendu : le tableau distant reste à l'horloge pendant toute la répétition (`dr_tabPeutEcrire` refuse `S.repetition`). Capture `1707x743-41-1-la-diapo-suit-avant7.png`, regardée : « 09:00 · Classe attendue : 3E Charles de Gaulle ».
+    - Rouge aussi : le gel est refusé en répétition (« aucun gel »), et l'en-tête ne dit rien du tableau pris.
+- **Cas 42i (§12.42, A93) — le chapitre au contrat** (`E4/prompt/chapitre-3e-au-contrat.json`).
+  - Le geste : le chapitre est collé dans « Nouveau chapitre », puis Vérifier, « Créer ce chapitre » et la confirmation.
+  - Le fichier date du 22/10. Un mot-clé du bilan dépasse aujourd'hui 45 signes ; il est coupé à son « : » dans le banc, rien d'autre ne change.
+  - Les attentes suivent le contrat tranché à 07:00 sur la mission 0 d'E4 :
+    - **21 feuilles**, une par clé d'item (les entrées `aLier` vers l'atelier et les feuilles des blocs `fiche`), sans doublon ;
+    - chaque feuille liée depuis chaque séance qui a l'item (`fiche-versification` : séances 2 et 5) ;
+    - le contenu du chapitre quand il l'écrit ; sinon « créée sans contenu : à écrire » au compte rendu (18 feuilles) ;
+    - les **11** liaisons vers un autre outil dites avec leur raison, et `externe` « déjà liée » ;
+    - une feuille avec contenu (« Fiche notion : Les registres littéraires ») qui s'ouvre et s'imprime en média print, fond blanc ;
+    - réinjecter ne double rien et ne réécrit aucune feuille.
+  - **Sur la ⑦ : 2/8 par taille.** Le chapitre s'importe. Aucune feuille n'est créée. Le compte rendu ne donne que la liste « À lier toi-même (33) ».
+- **Cas 43t (§12.43, A94) — le mode test.**
+  - Toutes les balises (`sendBeacon`) sont comptées côté banc.
+  - Paul passe en mode test, lance l'heure par la case et dévoile ; on attend 32 s (deux battements de 15 s) ; puis la page se ferme (beforeunload).
+  - **Sur la ⑦ : 1/3 par taille.** En mode test partent 2 × `PUT /presence/prof` et, à la fermeture, une balise `/presence/prof.json?x-http-method-override=PATCH`. C'est le défaut que le §12.43 corrige.
+- **Remarque, pour la conscience (pas dans le contrat) :** le mode test ne survit pas à un rechargement de la page. `m8BasculerModeTest` écrit `sessionStorage['mjpc_m8_test']`, mais rien ne le relit. Paul en mode test qui recharge repasse en vrai mode sans le voir.
+- Sorties dans `LIVRAISONS/INTEGRATION/E3/sorties/0730-28-10-avant7/` ; captures `*-41-*`, `*-42-*`, `*-43-*-avant7.png`.

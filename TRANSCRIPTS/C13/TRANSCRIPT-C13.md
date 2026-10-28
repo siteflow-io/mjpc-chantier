@@ -6742,3 +6742,20 @@ MEMO
 
 28/10/2026 15:54
 MEMO
+
+---
+
+## Tour 329 — 28/10/2026 15:58 → 15:59
+
+**Paul :** Pour 880, ce message doit apparaître dans un seul cas: si je modifie quelque chose dans mes documents. mais là, il apparaît tout le temps.
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours : un exécutant neuf finit les derniers rouges de la ⑧ ; un autre répare la Structure, le ✕, la ligne de la dictée et le bandeau, pour la ⑨ · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+883. Compris, et transmis à l'exécutant de la Structure. Le bandeau ne paraîtra chez l'élève que si tu as vraiment modifié le contenu de la feuille depuis la version qu'il avait reçue. Il ne paraîtra jamais au premier envoi, ni quand un import ou un dépôt renvoie la même feuille sans changement. Les bandeaux posés sans vrai changement, comme ceux de ce matin, disparaissent. Ce sera dans la ⑨.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:59
+MEMO

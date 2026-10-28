@@ -6511,3 +6511,20 @@ MEMO
 
 28/10/2026 14:45
 MEMO
+
+---
+
+## Tour 317 — 28/10/2026 14:46 → 14:46
+
+**Paul :** Pas besoin des captures
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 remet la suite de la phrase de fin d'heure ; E1 retire le second bouton de lancement · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+858. Entendu : pas de paires d'images pour la ⑧. Dès que les deux morceaux sont poussés, j'assemble, je passe mon banc complet et les cas d'E3, et je te l'apporte pour ton « promeus », avec la liste de ce qu'elle change. Ça gagne une bonne demi-heure.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:46
+MEMO

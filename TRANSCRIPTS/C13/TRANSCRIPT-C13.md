@@ -5898,3 +5898,18 @@ MEMO
 
 28/10/2026 09:07
 MEMO
+
+---
+
+## Tour 287 — 28/10/2026 09:18 (message de Claude, sans message de Paul : la poussée 123 d'E4)
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 sur la vidéo de la clé, le dernier morceau avant la ⑧ · ouvert : 785 ; 538, 553, 481, 458.
+
+786. E4 a fini ses trois retouches : plus aucune adresse Drive dans le site, et le relais est prêt. Le fichier à coller pour le point 780 est ici : https://github.com/siteflow-io/mjpc-chantier/blob/integration/LIVRAISONS/INTEGRATION/E4/relais/depot.gs. Le bouton « Copy raw file », en haut à droite du fichier, copie tout d'un coup. Les étapes sont aussi écrites en tête du fichier.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 09:18
+MEMO

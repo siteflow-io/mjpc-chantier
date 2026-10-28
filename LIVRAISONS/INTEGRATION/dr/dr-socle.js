@@ -1137,6 +1137,12 @@ function dr_hauteurAutour(sc, cadre, alerte){ const cs = getComputedStyle(sc); c
   return vis.reduce((t, e) => t + e.offsetHeight, 0) + alerte + (parseFloat(cs.paddingTop) || 0) + (parseFloat(cs.paddingBottom) || 0) + gap * Math.max(0, n - 1) + notesMin; }
 
 dr_ecouteWin('resize', () => { dimensionner(); dr_tout(); });
+/* E1 (§12.54, la ⑧, cas 41 d'E3 rouge 2 fois sur 3 : « Reprendre » → 3 lignes → 4 lignes) : la règle du redessin — la diapo prend la taille de la scène À CHAQUE fois que la
+   scène change de taille, pas seulement au rendu ou au redimensionnement de la fenêtre. Mesuré : depuis l'horloge de la case (§12.55, `#dr-hcase` et `#dr-t5` posés dans
+   l'entête par une minuterie), l'entête passe à deux lignes à 1707 × 743 (46 → 80 px) APRÈS le dernier rendu : la scène rétrécit de 34 px, la diapo garde son ancienne taille
+   (les notes sortent de l'écran) — et sa pagination dépend alors de l'instant du dernier rendu : avant la reprise une page, après la reprise une autre. */
+(function(){ try { let raf = 0, dim = ''; const ro = new ResizeObserver(() => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; const sc = document.querySelector('.scene'); if (!sc || !dr_actif()) return; const d = sc.clientWidth + 'x' + sc.clientHeight; if (d === dim) return; const avant = dim; dim = d; if (!avant) return; try { dimensionner(); dr_tout(); } catch (e) {} }); });
+  const brancher = () => { const sc = document.querySelector('#dr-zone .scene') || document.querySelector('.scene'); if (sc && !sc._drRo) { sc._drRo = true; ro.observe(sc); } }; brancher(); setInterval(brancher, 2000); } catch (e) {} })();
 
 S.lg = 186;
  S.ld = 336;

@@ -6574,3 +6574,22 @@ MEMO
 
 28/10/2026 15:00
 MEMO
+
+---
+
+## Tour 320 — 28/10/2026 15:02 → 15:02
+
+**Paul :** Pourquoi tu ne peux pas créer toi même des exécutants Claude code?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 retire le second bouton de lancement, le dernier morceau de la ⑧ · ouvert : 867 ; 864 ; 843 (à cadrer) ; 538, 553 (après lundi).
+
+867. Je le peux, et de deux façons. La première : lancer des exécutants depuis ma propre session. Chacun part neuf, sans historique, ne lit que son morceau au sas, code, passe sa garde, pousse sur la branche du sas (jamais en production), puis me rend compte quand il a fini. La seconde : des sessions neuves, lancées par une tâche planifiée (866). Si on fait encore autrement, c'est une habitude prise quand ta conscience vivait dans le chat, sans pouvoir rien lancer. Ce n'est plus le cas.
+
+868. Je propose la première pour la suite. Un exécutant neuf par morceau, un seul à la fois sur un même fichier. Moi, je vérifie, je passe le banc complet avant chaque promotion, et je ne t'écris que pour décider, promouvoir ou tester. Les trois sessions d'aujourd'hui ne seraient plus réveillées après la ⑧. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:02
+MEMO

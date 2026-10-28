@@ -6278,3 +6278,24 @@ MEMO
 
 28/10/2026 13:09
 MEMO
+
+---
+
+## Tour 306 — 28/10/2026 13:12 (message de Claude, sans message de Paul : le retour 104 d'E3)
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 rend tout corrigeable au tableau ; E1 répare l'Atelier sur deux appareils ; E3 refait l'étoile filante · ouvert : 838 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+835. Je dois corriger 827 : E3 a comparé avec la maquette que tu as jouée, et elle n'avait que 4 minuteries. Les 30 du déroulé intégré, c'est nous qui les avons empilées pendant l'intégration, pour surveiller le site. Le redessin à vide vient de notre intégration, pas de ta maquette.
+
+836. Le plus grave de sa mesure, pour lundi : l'Atelier ne suit pas le chapitre en direct, et chaque enregistrement réécrit toute la séance. Ouvert sur deux appareils, ton ordi portable et l'ordi de classe par exemple, le dernier qui enregistre efface l'autre sans le dire. C'est contraire à ta règle du 04/10, donc c'est une dette : E1 la répare dans la ⑧ (§12.60). L'Atelier suivra le chapitre en direct et n'écrira que la diapo touchée. Si la même diapo a changé ailleurs, il te le dira au lieu d'effacer.
+
+837. Deux petites choses du même ordre. L'aide dit encore « Pilotage pour répéter », alors que c'est « ▶ Jouer en avance » depuis la ⑥ : E1 corrige ce texte. Et le reste de ce que je t'avais annoncé en 828 (ce qui s'est perdu à l'intégration, et chaque geste de ta maquette joué autrement) attend lundi soir, pour garder tes 20 %.
+
+838. Il existe deux boutons pour lancer une heure : celui de la case de l'emploi du temps, qui fait foi depuis la ⑥, et un second dans le Pilotage. Je propose de retirer le second. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 13:12
+MEMO

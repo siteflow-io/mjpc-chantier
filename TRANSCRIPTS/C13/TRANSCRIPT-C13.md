@@ -6128,3 +6128,22 @@ MEMO
 
 28/10/2026 11:39
 MEMO
+
+---
+
+## Tour 298 — 28/10/2026 11:42 → 11:43
+
+**Paul :** 816 quand je clique sur modifier
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure ; E3 fait les quatre coupes du redessin et répare le menu de « Ce que la diapo déclare » ; E4 mesure ce qui ne se corrige pas au tableau · ouvert : 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+817. J'ai rejoué « modifier » sur la ⑦, comme toi : la carte s'ouvre et reste ouverte, et le menu Activité garde sa place. Ça ne casse pas chez moi, sur un faux hub. La différence avec chez toi : sur le vrai hub, ce que tu écris te revient aussitôt, et peut redessiner la carte pendant que la liste est déroulée. E3 le rejoue avec ce retour et répare selon la règle du redessin (§12.56).
+
+818. Tu n'as pas commenté 815, donc je le prends comme acquis : E3 fait les quatre coupes dans la ⑧. Arrête-moi si ce n'était pas ça.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:43
+MEMO

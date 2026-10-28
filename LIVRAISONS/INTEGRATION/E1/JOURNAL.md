@@ -895,3 +895,4 @@ La veille s'était arrêtée à 04:10 ; un rappel en double (07:53 UTC) m'a fait
 - **A108** : aucun « ▶ Lancer » dans l'Atelier, la répétition, l'écran de la classe avant le lancement, ni après « Clore » ; la case lance l'heure. Rouge avant (le bouton dans l'écran de la classe, et « ▶ Lancer — l'heure … est close » après Clore), vert après. Le banc lance par la case (`lancerParCase`) ; A3, A27, A44, A48 suivent ; A48 admet le canal du tableau à l'arrêt de la répétition.
 - **banc.sh VERT** (`LIVRAISONS/INTEGRATION/E1/sorties/1458-28-10/`) ; A3-A53 qui lancent une heure, A102, A108 verts.
 - 28/10 15:06 — commit 726004648. **§12.61 (2) E1 fini.**
+- 28/10 16:21 — veille : deux retours vides de suite (15:24, 16:21) après §12.61 (2) ; E1 ne se reprogramme plus — la prochaine relance me réveillera.

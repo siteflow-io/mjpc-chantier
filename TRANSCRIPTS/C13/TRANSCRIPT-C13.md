@@ -6052,3 +6052,20 @@ MEMO
 
 28/10/2026 11:05
 MEMO
+
+---
+
+## Tour 294 — 28/10/2026 11:10 → 11:11
+
+**Paul :** Je n'ai plus que 20 pourcent d'utilisation
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare le clic sur une diapo ; E4 code l'horloge de la case ; E3 mesure le redessin et la lenteur · ouvert : 808 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+808. Alors on garde ces 20 % pour finir la ⑧ et te la faire promouvoir. Voici ce que je propose. E1 finit le clic sur une diapo, E4 finit l'horloge de la case, puis ils s'arrêtent. E3 réduit sa mesure du redessin à ta taille d'écran et aux trois écrans où tu travailles (l'Atelier, l'heure, la répétition), rend sa liste, puis s'arrête. Moi, j'assemble la ⑧, je passe un seul banc, et je fais les paires d'images des seuls écrans changés. Tout le reste attend que ton compteur reparte : l'Atelier (793 à 796), la réparation du redessin partout, et la lenteur. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:11
+MEMO

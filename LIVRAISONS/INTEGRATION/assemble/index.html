@@ -1324,6 +1324,7 @@ select.at-sel option,select.cm-input option,#link-modal select option,select.at-
 .at-lier-pulse{animation:atLierPulse 1.8s ease-in-out infinite;border-color:rgba(212,160,23,.7)}
 @keyframes atLierPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,160,23,0)}50%{box-shadow:0 0 0 4px rgba(212,160,23,.45)}}
 .ch-atterrissage{margin-top:8px;font-size:.86rem;line-height:1.5;color:#d8cfba;text-align:left}
+.ch-feuilles-cr{margin-top:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,.15);font-size:.84rem;line-height:1.5;text-align:left}   /* E4 (§12.42) */
 .at-edch{border:1px solid #3a3428;border-radius:10px;padding:12px;margin:0 0 12px;background:rgba(255,255,255,.02)}
 .at-edch-se{border-color:#46402f}
 .at-edch-set{font-weight:700;color:#f0e8d8;margin-bottom:6px}
@@ -9176,7 +9177,7 @@ function chInjecter(voie){
 /* [LOT B \u2463d] APR\u00c8S L'\u00c9CRITURE : la liste dit vrai, sans rechargement de page.
    Le LOT A avait trait\u00e9 `addChapter` (le bouton du panneau prof) ; ce chemin-ci \u2014
    l'injection de JSON \u2014 est celui que Paul emprunte r\u00e9ellement. M\u00eame patron. */
-function chApresEcriture(){
+function chApresEcriture(puis){   /* E4 (§12.42) : puis() après le redessin */
   try{
     var niv=CH&&CH.niveau; if(!niv)return;
     if(typeof AT_CHAP_ETAT!=='undefined')AT_CHAP_ETAT[niv]='';
@@ -9190,8 +9191,17 @@ function chApresEcriture(){
       if(typeof renderChapitres==='function')renderChapitres(niv);
       if(typeof AT!=='undefined'&&AT&&AT.onglet==='chapitres'&&!AT.edChap&&typeof atRendreListe==='function')atRendreListe();
       if(typeof chAfficherInventaire==='function'&&document.getElementById('ch-inv'))chAfficherInventaire();
+      if(typeof puis==='function')puis();
     });
   }catch(e){}
+}
+/* E4 (§12.42) : le compte rendu de l'import survit au redessin — dans « Nouveau chapitre » s'il est encore à l'écran, sinon dans une fenêtre */
+function chCompteRenduGarder(t,ok,puis){   /* puis() : après le compte rendu lu (la fenêtre fermée) */
+  var m=document.getElementById('ch-msg');
+  if(m){m.className='at-ia-msg '+(ok?'at-ia-ok':'at-ia-ko');m.innerHTML=t;if(puis)puis();return;}
+  if(typeof atModaleChoix!=='function'){if(puis)puis();return;}
+  var n=0,montrer=function(){ var md=document.getElementById('at-modale'); if(md&&n++<120){setTimeout(montrer,500);return;} atModaleChoix(t,[{lib:'Compris',prim:true,fn:function(){if(puis)setTimeout(puis,0);}}]); };   /* une fenêtre déjà ouverte (« régénérer la feuille sommaire ? ») n'est jamais remplacée : le compte rendu attend sa fermeture */
+  montrer();
 }
 /* E1 (§12.34-4, 13 · 70) : le titre d'un double — le titre suffixé « (proposition) », ou « (proposition n) » s'il existe déjà (le patron de _chSouche) */
 function chTitreDouble(t,chaps){ var pris={}; (Array.isArray(chaps)?chaps:Object.keys(chaps||{}).map(function(k){return chaps[k];})).forEach(function(c){ if(c&&c.title!=null)pris[edTitreNorm(c.title)]=true; });
@@ -9214,8 +9224,9 @@ function chInjecterConfirme(voie){
       chNettoyerPublished(neuf);
       var _cleNeuve=(function(){var m=-1;(Array.isArray(chaps)?chaps.map(function(_,i){return i;}):Object.keys(chaps).map(Number)).forEach(function(n){if(n>m)m=n;});return m+1;})();
       secuEcrire(base+'/'+_cleNeuve,neuf).then(function(r){
-        dire(r.ok?((_neufIci?'Chapitre cr\u00e9\u00e9':'Double cr\u00e9\u00e9')+' \u2014 <b>non publi\u00e9</b>. Il appara\u00eet dans la liste.'):'L\u2019\u00e9criture n\u2019a pas abouti \u2014 rien n\u2019a chang\u00e9.',r.ok);
-        if(r.ok)chApresEcriture();   /* [LOT B \u2463d] */
+        var _t=r.ok?((_neufIci?'Chapitre cr\u00e9\u00e9':'Double cr\u00e9\u00e9')+' \u2014 <b>non publi\u00e9</b>. Il appara\u00eet dans la liste.'):'L\u2019\u00e9criture n\u2019a pas abouti \u2014 rien n\u2019a chang\u00e9.';
+        dire(_t,r.ok);
+        if(r.ok)chFeuillesEtLiaisons(o,CH.niveau,_cleNeuve,function(cr){ dire(_t+cr,true); chApresEcriture(function(){ chCompteRenduGarder(_t+cr,true); }); });   /* E4 (§12.42) ; [LOT B \u2463d] */
       });
       return;
     }
@@ -9229,10 +9240,12 @@ function chInjecterConfirme(voie){
         var neuf=atP2NormaliserSeances(JSON.parse(JSON.stringify(o.chapitre)));   /* E1 (§12.21) : la trame au modèle du site */
         neuf.ordre=(ancien&&ancien.ordre)||neuf.ordre;
         if(ancien&&ancien.published)neuf.published=ancien.published;   /* la publication existante est CONSERVÉE, jamais décidée ici */
+        if(ancien&&ancien.uid)neuf.uid=ancien.uid;   /* E4 (§12.42) : le chapitre remplacé reste le même chapitre — ses feuilles d'import se retrouvent */
         chNettoyerPublished(neuf,true);
         secuEcrire(base+'/'+idx,neuf).then(function(r){
-          dire(r.ok?('Chapitre remplac\u00e9. L\u2019ancien est \u00e0 la corbeille.'):'L\u2019\u00e9criture n\u2019a pas abouti \u2014 l\u2019ancien est \u00e0 la corbeille, rien n\u2019a \u00e9t\u00e9 perdu.',r.ok);
-          if(r.ok)chApresEcriture();   /* E1 (§12.21) : la mémoire suit le hub (la trame remplacée se relit) */
+          var _t=r.ok?('Chapitre remplac\u00e9. L\u2019ancien est \u00e0 la corbeille.'):'L\u2019\u00e9criture n\u2019a pas abouti \u2014 l\u2019ancien est \u00e0 la corbeille, rien n\u2019a \u00e9t\u00e9 perdu.';
+          dire(_t,r.ok);
+          if(r.ok)chFeuillesEtLiaisons(o,CH.niveau,idx,function(cr){ dire(_t+cr,true); chApresEcriture(function(){ chCompteRenduGarder(_t+cr,true); }); });   /* E4 (§12.42) */   /* E1 (§12.21) : la mémoire suit le hub (la trame remplacée se relit) */
         });
       });
       return;
@@ -9252,7 +9265,9 @@ function chInjecterConfirme(voie){
       var somObj=chSommaireObjet(chSommaire(Object.assign({},cible,o.chapitre),CH.niveau,CH.taxo,o.chapitre));
       ecritures.push({chemin:base+'/'+idx+'/seances/'+rangSom,val:somObj,quoi:'feuille sommaire'});
     }
-    if(!ecritures.length){dire('Rien \u00e0 ajouter : tout ce que l\u2019IA propose existe d\u00e9j\u00e0.',true);return;}
+    if(!ecritures.length){var _t0='Rien \u00e0 ajouter : tout ce que l\u2019IA propose existe d\u00e9j\u00e0.';dire(_t0,true);
+      if(cible)chFeuillesEtLiaisons(o,CH.niveau,idx,function(cr){ dire(_t0+cr,true); });   /* E4 (§12.42) : les feuilles et liaisons manquantes se reprennent aussi */
+      return;}
     Promise.allSettled(ecritures.map(function(e){
       return secuEcrire(e.chemin,e.val).then(function(r){ if(!r.ok)throw e; return e; });
     })).then(function(vs){
@@ -9277,15 +9292,140 @@ function chInjecterConfirme(voie){
         t+='<button class="at-btn at-btn-prim" onclick="atVoirPanneau(\''+CH.niveau+'\',\''+(CH.chapIdx!==null?CH.chapIdx:'')+'\')" title="Ferme l\u2019atelier \u2014 ce que tu as \u00e9crit est enregistr\u00e9 \u2014 et ouvre la page du niveau, ce chapitre d\u00e9pli\u00e9 en haut de l\u2019\u00e9cran. Le panneau prof ne se rouvre pas.">Voir dans l\u2019arborescence</button><br>';   /* E1 (§12.27-13) */
       }
       t+='\u00c9crit : <b>'+ok+'/'+ecritures.length+'</b>.';
-      if(ok&&CH.chapIdx!==null)setTimeout(function(){atProposerSommaire(CH.niveau,CH.chapIdx,null);},400);   /* [C5-3a] proposé, jamais automatique */
+      var _somProp=function(){ if(ok&&CH.chapIdx!==null)setTimeout(function(){atProposerSommaire(CH.niveau,CH.chapIdx,null);},400); };   /* [C5-3a] proposé, jamais automatique — E4 (§12.42) : après le compte rendu des feuilles, jamais par-dessus */
       if(ko.length){
         t+='<br>\u26a0 '+ko.length+' \u00e9criture(s) n\u2019ont pas abouti \u2014 <b>le geste n\u2019est pas termin\u00e9</b>. Relance : seuls les manques seront repris.';
       }else{
         t+=' Rien de ce qui existait n\u2019a \u00e9t\u00e9 modifi\u00e9.';
       }
-      if(CH.inventaire&&CH.inventaire.aLier.length)t+='<br>Il te reste <b>'+CH.inventaire.aLier.length+'</b> \u00e9l\u00e9ment(s) \u00e0 lier \u00e0 la main (liste ci-dessus).';
+      /* E4 (§12.42) : « Il te reste n éléments à lier à la main » tombe — l'import lie ce qui va à l'atelier ; le compte rendu « Feuilles et liaisons » dit chaque reste, avec sa raison */
       dire(t,!ko.length);
-      if(ok)chApresEcriture();   /* [LOT B \u2463d] compl\u00e9ter / remplacer : la liste dit vrai tout de suite */
+      if(ok)chFeuillesEtLiaisons(o,CH.niveau,(cible?idx:chaps.length),function(cr){ dire(t+cr,!ko.length); chApresEcriture(function(){ chCompteRenduGarder(t+cr,!ko.length,_somProp); }); });   /* E4 (§12.42) ; [LOT B \u2463d] compl\u00e9ter / remplacer : la liste dit vrai tout de suite */
+    });
+  });
+}
+/* E4 (§12.42, 13 · 66) : L'IMPORT CRÉE LES FEUILLES ET FAIT LES LIAISONS.
+   Après l'écriture du chapitre (les trois voies), chaque entrée `aLier` vers l'atelier
+   et chaque feuille nommée par un bloc `fiche` (`feuille` = clé d'item) donnent UNE
+   feuille de l'Atelier, rattachée à sa séance, liée à son item par le geste « Lier »
+   (`_edLierEcrire`, silencieux). Contenu : ce que le chapitre en écrit — pour une
+   fiche, son titre et sa définition (« définition ») puis son corps (« texte libre ») ;
+   sinon le titre de l'item seul, rien d'inventé. Identité : chapitre + clé d'item
+   (`feuille_ch_<niveau>_<uid du chapitre>_<item>`) — une feuille déjà là n'est ni
+   recréée ni réécrite, une liaison déjà posée n'est pas reposée. Ce qui ne peut pas
+   être lié est dit, avec sa raison, dans le compte rendu de l'import. */
+var CH_OUTIL_RAISON={
+  qcm:'un QCM de l’outil QCM, qui n’existe pas encore : à créer dans l’outil, puis à lier',
+  correction_dictee:'une dictée de l’outil Correction de dictée, à créer dans l’outil, puis à lier',
+  reecriture:'une réécriture de l’outil Réécriture, à créer dans l’outil, puis à lier',
+  redaction:'une rédaction de l’outil Rédaction, à créer dans l’outil, puis à lier',
+  etude_texte:'une étude de texte de l’outil Étude, à créer dans l’outil, puis à lier',
+  applaudimetre:'une séance d’applaudimètre, à créer dans l’outil, puis à lier',
+  entrainement:'un entraînement personnalisé, à créer dans l’outil, puis à lier'
+};
+function chHtmlEnTexte(h){
+  var s=String(h||'').replace(/<\s*br\s*\/?>/gi,'\n').replace(/<\/\s*(p|div|li|h\d)\s*>/gi,'\n').replace(/<[^>]*>/g,'');
+  try{var t=document.createElement('textarea');t.innerHTML=s;s=t.value;}catch(e){}
+  return s.split('\n').map(function(l){return l.trim();}).filter(Boolean).join('\n');
+}
+function chFeuilleId(niveau,chUid,item){
+  var p=function(x){return String(x||'').replace(/[^A-Za-z0-9_-]/g,'_');};
+  return 'feuille_ch_'+p(niveau)+'_'+p(chUid)+'_'+p(item);
+}
+function chFeuillesEtLiaisons(o,niveau,chKey,fin){
+  var base='/site/'+niveau+'/chapitres/'+chKey;
+  var lignes=[];var dit=function(t){lignes.push(t);};
+  var finir=function(){ fin(lignes.length?'<div class="ch-feuilles-cr"><b>Feuilles et liaisons</b><br>'+lignes.join('<br>')+'</div>':''); };
+  secuLire(base).then(function(chap){
+    if(!chap){dit('⚠ Le chapitre écrit ne se relit pas : aucune feuille créée, rien lié.');finir();return;}
+    var prete=chap.uid?Promise.resolve(true):(function(){chap.uid=uidNeuf('ch');return secuEcrire(base+'/uid',chap.uid).then(function(r){return r.ok;});})();
+    prete.then(function(uidOk){
+      if(!uidOk){dit('⚠ L’identité du chapitre ne s’écrit pas : aucune feuille créée, rien lié.');finir();return;}
+      var ses=atSeances(chap);   /* [{j, se}] — la clé au hub */
+      var seDe=function(cle){
+        var t=ses.filter(function(p){return p.se&&p.se.cle&&p.se.cle===cle;})[0];
+        if(!t)t=ses.filter(function(p){return p.se&&edTitreNorm(p.se.title||'')===edTitreNorm(cle||'');})[0];
+        return t||null;
+      };
+      /* 1. les demandes : (séance, item) → outil ; les fiches qui nomment leur feuille */
+      var dem=[],vu={};
+      var poser=function(scle,item,outil,pourquoi){ var k=scle+'\u0001'+item; if(vu[k])return; vu[k]=true; dem.push({scle:scle,item:item,outil:outil,pourquoi:pourquoi||''}); };
+      var fiches={};   /* item → [blocs fiche], dans l'ordre du chapitre */
+      ((o.chapitre||{}).seances||[]).forEach(function(s){
+        var scle=s.cle||s.title||'';
+        (((s.deroule||{}).ecrans)||[]).forEach(function(e){ (e.blocs||[]).forEach(function(b){
+          if(b&&b.t==='fiche'&&b.feuille){ (fiches[b.feuille]=fiches[b.feuille]||[]).push(b); poser(scle,b.feuille,'atelier',''); }
+        }); });
+      });
+      (o.aLier||[]).forEach(function(a){ poser(a.seance_cle||a.seance||'',a.item,a.outil||'?',a.pourquoi); });
+      /* 2. ce qui ne passe pas par l'atelier : dit, avec sa raison */
+      var aFaire=[];
+      dem.forEach(function(d){
+        var p=seDe(d.scle);
+        var it=p&&p.se&&p.se.items&&p.se.items[d.item];
+        var nom='« '+atEsc((it&&it.title)||d.item)+' »';
+        if(!p){dit('• '+nom+' : non lié — la séance « '+atEsc(d.scle)+' » n’est pas dans le chapitre.');return;}
+        if(!it){dit('• '+nom+' : non lié — cet item n’est pas dans la séance « '+atEsc(p.se.title||d.scle)+' ».');return;}
+        if(d.outil==='externe'){dit('• '+nom+' : '+(it.ref?'déjà liée (son adresse est dans le chapitre).':'non liée — une ressource externe : colle son adresse dans l’éditeur.'));return;}
+        if(d.outil!=='atelier'){dit('• '+nom+' : non lié — '+(CH_OUTIL_RAISON[d.outil]||('l’outil « '+atEsc(d.outil)+' » n’est pas une feuille de l’atelier : à lier à la main'))+'.');return;}
+        aFaire.push({p:p,it:it,d:d,nom:nom});
+      });
+      /* 3. les feuilles : une par clé d'item */
+      var parItem={};
+      aFaire.forEach(function(x){ (parItem[x.d.item]=parItem[x.d.item]||[]).push(x); });
+      var rang=function(x){ for(var q=0;q<ses.length;q++)if(ses[q].j===x.p.j)return q; return 999; };
+      Object.keys(parItem).forEach(function(k){ parItem[k].sort(function(a,b){return rang(a)-rang(b);}); });   /* la feuille prend le titre et la séance de sa première apparition dans le chapitre */
+      var items=Object.keys(parItem);
+      if(!items.length){finir();return;}
+      var feuilleDe={};
+      Promise.all(items.map(function(item){
+        var x0=parItem[item][0];
+        var id=chFeuilleId(niveau,chap.uid,item);feuilleDe[item]=id;
+        return secuLire(AT_NOEUD+'/'+id).then(function(deja){
+          if(deja){x0.etat='deja';return;}
+          var doc=atDocNeuf();
+          var titre=String(x0.it.title||item);
+          doc.titre=titre;
+          doc.cases.titre=true;doc.valeurs.titre={texte:titre};
+          (fiches[item]||[]).forEach(function(b){
+            if(b.titre||b.def){doc.cases.definition=true;doc.contenu.push({id:'definition',valeurs:{terme:String(b.titre||''),texte:String(b.def||'')},reformulations:{}});}
+            var corps=chHtmlEnTexte(b.corps);
+            if(corps){doc.cases.texte_libre=true;doc.contenu.push({id:'texte_libre',valeurs:{texte:corps},reformulations:{}});}
+          });
+          var p=x0.p;
+          doc.rattachement={niveau:niveau,classe:'',classeNom:'',eleve:'',chapitre:String(chKey),seance:String(p.j),
+                            chapitreTitre:chap.title||'',seanceTitre:p.se.title||'',chapitreUid:chap.uid||'',seanceUid:p.se.uid||''};
+          doc.origine={import:true,chapitreUid:chap.uid,item:item};
+          return secuEcrire(AT_NOEUD+'/'+id,doc).then(function(r){
+            if(!r.ok){x0.etat='ko';return;}
+            x0.etat=doc.contenu.length?'neuve':'vide';
+            [typeof LINK_ATELIER_DOCS!=='undefined'?LINK_ATELIER_DOCS:null,typeof AT_DOCS!=='undefined'?AT_DOCS:null,(typeof AT!=='undefined'&&AT&&AT.liste)?AT.liste:null]
+              .forEach(function(c){ if(c&&!c[id])c[id]=JSON.parse(JSON.stringify(doc)); });
+          });
+        });
+      })).then(function(){
+        /* 4. les liaisons, par le geste « Lier » — sur la vérité relue du hub */
+        if(typeof chapitresData!=='undefined'){ chapitresData[niveau]=chapitresData[niveau]||{}; chapitresData[niveau][chKey]=chap; }
+        var aLierIci=[];
+        items.forEach(function(item){
+          var x0=parItem[item][0];var id=feuilleDe[item];
+          var lib='• '+x0.nom+' : ';
+          if(x0.etat==='ko'){dit(lib+'⚠ la feuille ne s’est pas écrite — non liée. Réinjecte : seuls les manques seront repris.');return;}
+          dit(lib+(x0.etat==='deja'?'feuille déjà là (rien réécrit)':(x0.etat==='vide'?'feuille créée <b>sans contenu : à écrire</b>':'feuille créée avec le contenu du chapitre')));
+          parItem[item].forEach(function(x){
+            var sTit='« '+atEsc(x.p.se.title||x.d.scle)+' »';
+            if(String(x.it.source||'')==='atelier'&&x.it.ref===id){dit('   déjà liée dans '+sTit+'.');return;}
+            if(x.it.ref){dit('   non liée dans '+sTit+' — l’item porte déjà une ressource, laissée telle quelle.');return;}
+            aLierIci.push({seance:x.p.j,item:x.d.item,doc:id});
+            dit('   liée dans '+sTit+'.');
+          });
+        });
+        if(!aLierIci.length){finir();return;}
+        _edLierEcrire(niveau,chKey,aLierIci,function(faits){
+          if(faits<aLierIci.length)dit('⚠ '+(aLierIci.length-faits)+' liaison'+(aLierIci.length-faits>1?'s':'')+' n’'+(aLierIci.length-faits>1?'ont':'a')+' pas abouti — réinjecte : seuls les manques seront repris.');
+          finir();
+        },true);
+      });
     });
   });
 }
@@ -13607,7 +13747,7 @@ function edLierConfirme(level,chnum,lignes,apres){
   }
   _ecrire();
 }
-function _edLierEcrire(level,chnum,lignes,apres){
+function _edLierEcrire(level,chnum,lignes,apres,silencieux){   /* E4 (§12.42) : silencieux = l'import fait son propre compte rendu ; apres(faits) */
   var base='/site/'+level+'/chapitres/'+chnum+'/seances/';
   var restent=lignes.length,faits=0;
   lignes.forEach(function(l){
@@ -13632,8 +13772,8 @@ function _edLierEcrire(level,chnum,lignes,apres){
         atFeuilleDepotPoser(l.doc,level,chnum,l.seance,l.item);
       }
       if(--restent===0){
-        atInfo(faits+' liaison'+(faits>1?'s':'')+' pos\u00e9e'+(faits>1?'s':'')+(faits<lignes.length?(' \u2014 '+(lignes.length-faits)+' n\u2019ont pas abouti'):'')+'.');
-        if(apres)apres();else atEditerChapitreRendre();
+        if(!silencieux)atInfo(faits+' liaison'+(faits>1?'s':'')+' pos\u00e9e'+(faits>1?'s':'')+(faits<lignes.length?(' \u2014 '+(lignes.length-faits)+' n\u2019ont pas abouti'):'')+'.');
+        if(apres)apres(faits);else atEditerChapitreRendre();
       }
     });
   });

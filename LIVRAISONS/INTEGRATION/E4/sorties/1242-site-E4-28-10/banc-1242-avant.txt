@@ -1,0 +1,25 @@
+  info   A93 · le chapitre : 34 demandes · 23 vers l'atelier (21 feuilles, 3 avec un contenu écrit) · 10 vers d'autres outils · 1 externe
+  info   A93 · pas de compte rendu : {"chmsg":"Chapitre créé — non publié. Il apparaît dans la liste.","modale":null,"ecr":["PUT /site/edt/grille/2026-2027","PUT /site/edt/photos/2026-2027","PUT /site/3e/chapitres/1","PUT /presence/prof","PUT /presence/prof","PUT /presence/prof"]}
+  ok     A93 · l’injection : « Créer ce chapitre » écrit le chapitre (un de plus au hub) — {"boutons":["Créer ce chapitre"],"chapitres":["Chapitre témoin","Poésie et peinture au XIXe siècle"]}
+  ÉCHEC  A93 · les feuilles existent : une par clé d’item vers l’atelier (21), aucune de plus — 0 feuille(s) d’import au hub
+  ÉCHEC  A93 · chaque item vers l’atelier est lié (source, ref, kind « atelier »), la même clé d’item à la même feuille (23) — 0/23 · etude-albatros/fiche-registres → {"source":"firebase_app","ref":"","kind":"doc"} ; interro-analyse/fiche-notion-propositions → {"source":"firebase_app","ref":"","kind":"doc"} ; atelier-paragraphe/fiche-versification → {"source":"firebase_app","ref":"","kind":"doc"} ; intro-peinture/fiche-methode-image → {"source":"firebase_app","ref":"","kind":"doc"}
+  ÉCHEC  A93 · chaque feuille porte le titre de son item — 0/21
+  ÉCHEC  A93 · le contenu : ce que le chapitre écrit (fiche → définition + texte, sans balises), sinon rien d’inventé — 0/21 · fiche-registres : 0 blocs · fiche-notion-propositions : 0 blocs · fiche-versification : 0 blocs
+  info   A93 · rattachement/dépôt : {"k":"1"}
+  ÉCHEC  A93 · chaque feuille est rattachée à sa séance (niveau, chapitre, séance) et porte son dépôt (la liaison) — 0/21
+  ÉCHEC  A93 · le compte rendu dit chaque item d’un autre outil, non lié, avec sa raison (10) — 0/10
+  ÉCHEC  A93 · le compte rendu : « sans contenu : à écrire » (18), « avec le contenu du chapitre » (3) — 0 · 0
+  ÉCHEC  A93 · le compte rendu : l’externe « déjà liée »
+  info   A93 · le compte rendu : 
+  ÉCHEC  A93 · la feuille « fiche-notion-propositions » s’ouvre — absente
+  ÉCHEC  A93 · la feuille « fiche-methode-image » s’ouvre — absente
+  ÉCHEC  A93 · l’item « fiche-versification » (deux séances, une feuille) s’ouvre depuis chaque séance (openItem → la feuille) — {"seances":["1","4"],"ouvert":[null,null]}
+  info   A93 · pas de compte rendu : {"chmsg":"Écrit : 10/10. Rien de ce qui existait n’a été modifié.\nIl te reste 33 élément(s) à lier à la main (liste ci-dessus).","modale":null,"ecr":["PUT /site/3e/chapitres/1/seances/7/deroule","PUT /site/3e/chapitres/1/seances/8/deroule","PUT /site/3e/chapitres/1/seances/9","PUT /presence/prof","PUT /presence/prof","PUT /presence/prof"]}
+  ok     A93 · réinjecter (« Compléter ») ne double rien : ni chapitre, ni feuille ; aucune feuille réécrite — {"boutons":["Compléter","Remplacer","Créer un double"],"chapitres":2,"feuilles":0,"feuillesEcrites":0,"intactes":true}
+  ÉCHEC  A93 · après « Compléter » : les items sont liés aux mêmes feuilles — 0/23 · etude-albatros/fiche-registres → {"source":"firebase_app","ref":"","kind":"doc"} ; interro-analyse/fiche-notion-propositions → {"source":"firebase_app","ref":"","kind":"doc"} ; atelier-paragraphe/fiche-versification → {"source":"firebase_app","ref":"","kind":"doc"}
+  ÉCHEC  A93 · après « Compléter » : aucune liaison reposée ; le compte rendu () dit « déjà là », « déjà liée » — {"liaisonsEcrites":0,"msg":""}
+  info   A93 · pas de compte rendu : {"chmsg":"Chapitre remplacé. L’ancien est à la corbeille.","modale":null,"ecr":["PUT /presence/prof","PUT /corbeille/2026-09-14/site-chapitre_090000","PUT /site/3e/chapitres/1","PUT /presence/prof","PUT /presence/prof","PUT /presence/prof"]}
+  ok     A93 · réinjecter (« Remplacer ») ne double rien : ni chapitre, ni feuille ; aucune feuille réécrite — {"boutons":["Compléter","Remplacer","Créer un double"],"chapitres":2,"feuilles":0,"feuillesEcrites":0,"intactes":true}
+  ÉCHEC  A93 · après « Remplacer » : les items sont liés aux mêmes feuilles — 0/23 · etude-albatros/fiche-registres → {"source":"firebase_app","ref":"","kind":"doc"} ; interro-analyse/fiche-notion-propositions → {"source":"firebase_app","ref":"","kind":"doc"} ; atelier-paragraphe/fiche-versification → {"source":"firebase_app","ref":"","kind":"doc"}
+  ÉCHEC  A93 · zéro erreur JS, aucune boîte du navigateur — {"errs":[],"boites":["alert : Item non lié. Utilise le bouton 🔗 en mode admin pour associer une ressource.","alert : Item non lié. Utilise le bouton 🔗 en mode admin pour associer une ressource."]}
+— fin : 18 vérifications · 15 échec(s) — ROUGE · avant.html md5 b01f1a39e2b6d923295c31baf7f9de9b

@@ -6473,3 +6473,24 @@ MEMO
 
 28/10/2026 14:42
 MEMO
+
+---
+
+## Tour 315 — 28/10/2026 14:43 → 14:43
+
+**Paul :** L'adresse du tableau distant ça en est où ?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E4 remet la suite de la phrase de fin d'heure ; E1 retire le second bouton de lancement · ouvert : 843 (à cadrer) ; 538, 553 (après lundi).
+
+854. C'est codé, et ce sera dans la ⑧ (§12.41, ton 717 de ce matin). La répétition envoie maintenant au tableau distant ce que voit la classe : la diapo, ce qui est dévoilé, la loupe, le gel. « ■ Arrêter » ramène le tableau à l'horloge. Une heure lancée ailleurs n'est jamais écrasée, et rien n'est écrit dans la séance, le récit ou le cahier.
+
+855. Ce que tu pourras faire ce week-end, une fois la ⑧ promue : ouvre l'adresse du tableau sur ton téléphone, puis lance « ▶ Jouer en avance » dans l'Atelier. Ton téléphone doit suivre chaque diapo et chaque dévoilement. Attention : pas en mode test, car le mode test n'envoie rien au site, par principe. C'est donc la répétition qui sert à essayer le tableau distant, pas l'heure des De Gaulle en mode test.
+
+856. Ce que je ne sais pas : je ne l'ai jamais vu sur un vrai téléphone. Les bancs le jouent dans deux navigateurs, sur un faux site, et c'est vert (E1, puis E3 : 56 vérifications sur 56).
+
+À tester : à la promotion de la ⑧, 855.
+
+28/10/2026 14:43
+MEMO

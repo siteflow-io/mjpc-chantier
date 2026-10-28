@@ -6704,3 +6704,22 @@ MEMO
 
 28/10/2026 15:50
 MEMO
+
+---
+
+## Tour 327 — 28/10/2026 15:50 → 15:52
+
+**Paul :** pourquoi l'élève a toujours ça d'aillleurs? Cette fiche a changé le 28/10/2026 — reporte les changements sur ta fiche du cahier."
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours : un exécutant neuf finit les derniers rouges de la ⑧ ; un autre répare la Structure et le ✕ · ouvert : 880 ; 878 ; 843 (à cadrer) ; 538, 553 (après lundi).
+
+879. Mesuré dans la ⑦ : c'est le message par défaut de l'envoi d'une feuille aux élèves, codé en juillet. Il t'avait été soumis à validation ce jour-là, et tu ne l'as jamais donné. Par ta règle, l'élève ne devrait donc pas le lire. Pourquoi tu le vois aujourd'hui : déposer une feuille l'envoie aussitôt, avec ce message. L'import de ton chapitre ce matin a déposé les feuilles, donc chacune dit « a changé le 28/10/2026 », même une feuille neuve qui n'a jamais changé.
+
+880. Je propose : plus aucun message par défaut. Une feuille envoyée pour la première fois arrive sans phrase. Après un changement, l'élève ne lit que ce que tu écris toi-même dans la fenêtre d'envoi, et rien si tu n'écris rien. L'ancienne phrase disparaît aussi des feuilles déjà envoyées. Je le confie à l'exécutant de la Structure, dans la ⑨. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 15:52
+MEMO

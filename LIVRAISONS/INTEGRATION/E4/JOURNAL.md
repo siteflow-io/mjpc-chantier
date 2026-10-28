@@ -1262,3 +1262,4 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **À dire** : à 10:53, la case 08:57-09:52 du lundi est « passée · pas jouée » et **ne se lance pas** (règle de l'emploi du temps : « la séance continue à la case suivante ») ; « lancer par la case » lance alors la case suivante des De Gaulle (15:07-16:02), et l'horloge part de 15:07. A104 est donc joué deux fois : à 10:53 (case 15:07) et à 07:30 (case 08:57).
 - **A104** (`E4/bancs/banc-1255.mjs`) : 16/0 (md5 `81ab1839…`) ; avant (md5 `da560f4b…`) 10 échecs. `banc.sh` **VERT** (K 106/0 ; `E4/sorties/1255-28-10/`).
 - **§12.55 E4 fini.**
+- 11:25 Paris : poussée 126 rejouée sur la tête rebasée (E1 §12.44, §12.51, §12.54 sous moi ; md5 `45369441…`) : A104 16/0, `banc.sh` VERT (`E4/sorties/1255b-28-10/`).

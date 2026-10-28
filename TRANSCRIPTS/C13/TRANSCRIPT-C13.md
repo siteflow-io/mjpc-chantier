@@ -6371,3 +6371,42 @@ MEMO
 
 28/10/2026 14:25
 MEMO
+
+---
+
+## Tour 311 — 28/10/2026 14:31 → 14:31
+
+**Paul :** Tout ce qui est ouvert c'est quoi?
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E3 supprime l'étoile filante, le dernier morceau avant la ⑧ · ouvert : 843 ; 838 ; 810 ; 793 à 796 ; 785 ; 553, 538, 481.
+
+Voici tout ce qui est ouvert, chaque question reposée telle quelle, sous son numéro.
+
+458. Le « ? » d'aide en or et plus grand : c'est fait (§12.45, dans la ⑧). Je le retire de la liste.
+
+481. La barre disait aussi : « Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. » (et à l'heure du cahier : « Va au cahier de textes : l'heure court (09:52). »). Je la remets aussi ? Oui ou non.
+
+538. Rédaction, le compteur d'orthographe : je propose les seuils de Dugain divisés par deux (la lettre fait la moitié d'une copie double). Pour trente lignes : 0 à 3 erreurs Très satisfaisant, 4 à 7 Satisfaisant, 8 à 14 Fragile, 15 et plus Insuffisant. Oui ?
+
+553. Rédaction, les compétences : chaque point de la grille Dugain rattaché à une compétence du site (l'orthographe à « consolider l'orthographe », le lexique à « enrichir le lexique », la remobilisation à « exploiter des lectures », la thèse et la nuance à l'argumentation…). Les élèves ne les voient pas. Oui ?
+
+785. Le jour où mjpc-medias approchera de 900 Mo, je créerai mjpc-medias-2, et tu ajouteras ce dépôt à ta clé. Ça va ?
+
+793 à 796. L'Atelier, pour la ⑨ : la carte « Ce que la diapo déclare » ouverte, seule en haut, « hors activité » sans faute, la réactivation gardée (797) ; la diapo vraiment vierge, avant ou après ; tes quatre diapos invariables posées par le site depuis le JSON ; renommer, insérer avant, masquer, glisser, sélectionner plusieurs, copier-coller. Oui ?
+
+809. Ce que j'avais proposé pour lundi est fait ou en cours : la ⑧ avant demain soir, le redessin réparé sur les écrans de la classe. Je le retire de la liste.
+
+810. La séance de lundi, tu la prépares par le JSON du prompt, ou à la main dans l'Atelier ? Si c'est à la main, je fais passer avant lundi la diapo vierge, renommer et « Ce que la diapo déclare ».
+
+838. Il existe deux boutons pour lancer une heure : celui de la case de l'emploi du temps, qui fait foi, et un second dans le Pilotage. Je propose de retirer le second. Oui ?
+
+843. Rédaction, le mode interrogatif : tu attendais qu'il te pose une question par critère, dans tes mots (« Prend-il clairement position ? »), et que tes réponses donnent le niveau. Est-ce bien ça ?
+
+Le plus utile pour lundi : 810.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 14:31
+MEMO

@@ -1888,6 +1888,32 @@ await B('A102', '§12.51 : aux quatre tailles, ⏱ et 👥 sous la diapo en rép
     E.verif('A102', !o.errs.length, w + '×' + h + ' : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
 });
 
+/* ── A103 · §12.54 (Paul 28/10 10:31, 10:53) : en heure, « Fin de l'heure » et le clic sur une diapo de la colonne — aux deux horloges, normal et mode test ── */
+await B('A103', '§12.54 : 3E Charles de Gaulle, l\'heure lancée dans son créneau (09:10) et après (10:31), normal et mode test — « Fin de l\'heure » s\'ouvre à tout moment ; un clic sur une diapo de la colonne marche à chaque fois, même si la colonne se redessine pendant l\'appui (la garde, puis la diapo), pendant le gel, après des dévoilements ; aucune écriture au hub en mode test', async () => {
+  for (const quand of ['2026-09-14T09:10:00+02:00', '2026-09-14T10:31:00+02:00']) for (const test of [false, true]) {
+    const o = await E.ouvrir(b, { w: 1707, h: 743, quand }); const pg = o.pg; await sansVoile(pg);
+    if (test) await pg.evaluate(() => { M8_TEST = true; });
+    const E0 = await pg.evaluate(() => window.__ECR.length);
+    await pg.evaluate(() => new Promise(r => { const ec = AT.edChap; dr_ouvrirClasse(ec.level, ec.chnum, String(ATVUES.snum), () => r()); })); await pg.waitForTimeout(600); await compris(pg);
+    await pg.evaluate(() => dr_lancer(dr_slugDe('3E Charles de Gaulle'), '08:57-09:52', dr_debutPropose('08:57-09:52'), 1, 3)); await pg.waitForTimeout(1500); await compris(pg);
+    const fin = []; for (let k = 0; k < 2; k++) { await pg.evaluate(() => { const x = document.getElementById('f-fermer'); if (x && x.offsetParent) x.click(); }); await pg.waitForTimeout(300); await pg.click('#bfin'); await pg.waitForTimeout(500); fin.push(await pg.evaluate(() => document.getElementById('droite').classList.contains('fin') && /Fin de l.heure/.test(document.getElementById('droite').innerText))); }
+    await pg.evaluate(() => { const x = document.getElementById('f-fermer'); if (x && x.offsetParent) x.click(); }); await pg.waitForTimeout(400);
+    /* le clic, avec un redessin de la colonne pendant l'appui (la colonne se recentrait sur la diapo courante) */
+    const clic = async (i, redessin) => { const bx = await pg.evaluate(i => { const v = document.getElementById('volet'); const g = v.querySelector(`.vig[data-i="${i}"]`); v.scrollTop = Math.max(0, g.offsetTop - 10); const r = g.getBoundingClientRect(); return { x: r.x + r.width / 2, y: r.y + Math.min(20, r.height / 2) }; }, i);
+      await pg.mouse.move(bx.x, bx.y); await pg.mouse.down(); await pg.waitForTimeout(120); if (redessin) await pg.evaluate(() => { if (typeof DR_VOLET !== 'undefined') DR_VOLET.scrollT = 0; dr_tout(); }); await pg.waitForTimeout(80); await pg.mouse.up(); await pg.waitForTimeout(400);
+      const g = await pg.evaluate(() => { const x = document.getElementById('garde-devant'); return !!(x && x.offsetParent); }); if (g) { await pg.click('#garde-devant'); await pg.waitForTimeout(400); } return { garde: g, di: await pg.evaluate(() => S.di) }; };
+    const loin = await pg.evaluate(() => seance().ecrans.length - 2);
+    const c1 = await clic(loin, true); const c2 = await clic(1, true);
+    await pg.click('#bdev'); await pg.click('#bdev'); await pg.waitForTimeout(300); const c3 = await clic(loin - 1, false);
+    await pg.click('#bgel'); await pg.waitForTimeout(300); const gele = await pg.evaluate(() => !!S.gel); const c4 = await clic(2, true); await pg.evaluate(() => { if (S.gel) degeler(); });
+    const ecr = await pg.evaluate(E0 => window.__ECR.slice(E0), E0);
+    const lib = quand.slice(11, 16) + (test ? ' · mode test' : '');
+    E.verif('A103', fin.every(Boolean), lib + ' : « Fin de l\'heure » s\'ouvre au clic, puis encore après l\'avoir refermée', JSON.stringify(fin));
+    E.verif('A103', c1.di === loin && c2.di === 1 && c3.di === loin - 1 && gele && c4.di === 2, lib + ' : le clic sur une diapo de la colonne — loin (redessin pendant l\'appui) → ' + c1.di + (c1.garde ? ' (garde)' : '') + ', 1 → ' + c2.di + ', après deux dévoilements → ' + c3.di + ', pendant le gel → ' + c4.di, JSON.stringify({ loin, c1, c2, c3, gele, c4 }));
+    if (test) E.verif('A103', ecr.length === 0, lib + ' : aucune écriture au hub', JSON.stringify([...new Set(ecr)]).slice(0, 200));
+    E.verif('A103', !o.errs.length, lib + ' : aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); }
+});
+
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');
 if (SORTIE) fs.writeFileSync(SORTIE, E.R.join('\n') + '\n');

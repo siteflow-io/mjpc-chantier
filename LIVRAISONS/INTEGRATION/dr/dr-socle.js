@@ -1266,7 +1266,16 @@ $('bgel').onclick = gel;
 
 $('bcoche').onclick = () => { S.bilanCoche = !S.bilanCoche; journal(S.bilanCoche ? 'bilan-atteste' : 'bilan-decoche'); dr_tout(); };
 
-$('volet').addEventListener('click', ev => { const v = ev.target.closest('.vig'); if (v) p85hAllerPage(+v.dataset.i, v.dataset.pg); });   /* (p8-5h, 2) la vignette d'une page va à cette page */
+/* E1 (§12.54, Paul 28/10 10:53 : « le clic sur une diapo de la colonne de gauche est aléatoire ; clic droit et "y aller" fonctionne bien ») : le clic est un appui puis un
+   relâché ; entre les deux, un redessin pouvait déplacer la colonne (`volet` la ramène sur la diapo courante — `scrollTop` — dès qu'elle sort de la vue, par exemple quand
+   l'appui fait perdre le focus au texte de la diapo), et le relâché tombait ailleurs : pas de clic sur la vignette. Désormais la vignette est celle de l'APPUI, et la
+   colonne ne se recentre ni pendant un appui ni dans les 4 s qui suivent un défilement de Paul. */
+var DR_VOLET = { vig: null, t: 0, scrollT: 0, auto: false };
+$('volet').addEventListener('pointerdown', ev => { if (ev.button !== 0) return; const v = ev.target.closest('.vig'); DR_VOLET.vig = v ? { i: v.dataset.i, pg: v.dataset.pg } : null; DR_VOLET.t = Date.now(); }, true);
+$('volet').addEventListener('scroll', () => { if (DR_VOLET.auto) { DR_VOLET.auto = false; return; } DR_VOLET.scrollT = Date.now(); }, { passive: true });
+/* le geste se joue au relâché, avec la vignette de l'appui : un redessin pendant l'appui peut remplacer la vignette sous le pointeur, et le navigateur ne donne alors aucun « click » */
+$('volet').addEventListener('pointerup', ev => { if (ev.button !== 0) return; const x = DR_VOLET.vig; DR_VOLET.vig = null; if (!x || x.i == null) return; DR_VOLET.fait = true; setTimeout(() => { DR_VOLET.fait = false; }, 0); p85hAllerPage(+x.i, x.pg); }, true);
+$('volet').addEventListener('click', ev => { if (DR_VOLET.fait) { DR_VOLET.fait = false; return; } const v = ev.target.closest('.vig'); if (v) p85hAllerPage(+v.dataset.i, v.dataset.pg); });   /* (p8-5h, 2) la vignette d'une page va à cette page — un « click » sans appui (clavier, script) passe ici */
 
 function pageMain(d){ if (!S.pagesCourantes || S.pagesCourantes.length < 2) return; S.page = Math.max(0, Math.min(S.pagesCourantes.length - 1, (S.page || 0) + d)); S.pageManuelle = true; dr_tout(); }
 

@@ -6206,3 +6206,22 @@ MEMO
 
 28/10/2026 11:52
 MEMO
+
+---
+
+## Tour 302 — 28/10/2026 11:54 → 11:55
+
+**Paul :** Tous ces problèmes sont dû à mon avis à l'intégration de la maquette dans mjpc, et donc au fait que toi et les exécutant n'avait pas fait votre travail d'intégration jusqu'au bout parce qu'à mon avis le redescend et typiquement quelque chose qui a été importé avec la maquette, mais il faut mesurer tout le reste aussi
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare la reprise d'heure ; E3 fait les coupes du redessin, puis mesure toute l'intégration ; E4 mesure ce que la correction en direct change ailleurs · ouvert : 825 ; 809, 810 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+
+827. Je pense que tu as raison, et un chiffre le montre : l'ancien moteur du déroulé avait 2 minuteries, le déroulé intégré en a 29. On a intégré la maquette en la faisant marcher dans le site, sans finir de la faire vivre comme le site : avec ses vraies classes, sa vraie heure, plusieurs appareils et le hub qui répond. La clé USB fixée « branchée » de ce matin venait de là aussi.
+
+828. E3 mesure tout le reste, sans rien coder (§12.58), d'abord sur le parcours de la classe (préparer, répéter, lancer, l'heure, la fin d'heure, clore, relire), puis sur le reste du site. Il cherche six choses. Un : ce qui est encore simulé, comme dans une maquette. Deux : ce qui suppose une seule classe, une horloge fixe, un seul appareil ou aucun retour du hub. Trois : les doublons entre la maquette et le site. Quatre : ce que le site faisait avant et qui s'est perdu. Cinq : chaque geste que tu as joué dans la maquette et que le site ne joue pas pareil. Six : d'où vient chaque minuterie. Je t'apporte la liste, avec d'abord ce qui sert lundi.
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 11:55
+MEMO

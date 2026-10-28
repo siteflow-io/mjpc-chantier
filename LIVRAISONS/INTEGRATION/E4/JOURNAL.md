@@ -1294,3 +1294,12 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
   - **825** (« retirer du tableau », clic droit, réversible) : la classe ne voit plus l'élément — c'est un fait de l'heure, pas une préparation : il vit dans la copie de la classe (élément retiré, à son identité, à telle heure), au journal (« retiré du tableau à hh:mm », « remis à hh:mm »), et la relecture montre ce que le tableau a montré à chaque moment ; la trame ne change pas ; à la clôture, comme pour une diapo retirée (9.2), le site **propose** « le retirer aussi de la trame ? », jamais automatique.
 
 - 28/10 12:27 Paris : veille close (rien de neuf aux relances après la poussée 128).
+
+## 28/10 14:03 Paris — poussée 129 : §12.59, rien d'incorrigeable au tableau (A105) — **§12.59 E4 fini**
+- **(1)** au clic, comme la consigne : l'étiquette d'activité (`-1.act`, `c.__act`), les mots du schéma (titre et texte, clic droit « Corriger les mots du schéma… » ; le dessin reste), le libellé de la vidéo, l'étiquette de la fiche (`tt`). Tout vit dans la copie de la classe, arrive au tableau, entre au versement diapo par diapo (jamais automatique).
+- **(2)** la diapo du cahier : travail et contenu au clic ; l'échéance au clic (menu des prochaines heures, « Sans échéance ») = les données de « Fin de l'heure ». En-tête, participation, pictos : fixes.
+- **(3)** clic droit « Retirer du tableau » / « Remettre au tableau » sur tout élément (bloc, ligne, image, schéma, page, vidéo, étiquette) : copie de la classe (`c.__ret`), journal « retiré / remis », barré au pilote, absent au tableau ; à la clôture : « retiré du tableau en classe : « … » — le retirer aussi du chapitre ? » (Oui / Non).
+- **(4)** le journal garde avant → après de chaque correction ; « Ce qui s'est passé » les cite ; le récit nomme la page ouverte.
+- **(5)** mesuré : heure 1 close, case « heure 2 », écran d'ouverture (réactivation « oui », « Lancer l'heure 2 ») : la réactivation de l'heure 2 n'a rien de fixe (12 éléments, tous corrigeables).
+- **(6)** A105 (`E4/bancs/banc-1259.mjs`) : **20/0** (md5 `54748744…`) ; avant (md5 `d7e4978f…`) : plante dès (1), l'étiquette n'est pas corrigeable. `banc.sh` **VERT** (K 106/0, `E4/sorties/1259-28-10/`). Sonde E3 56s : 26 échecs, **aucun venu de §12.59** : 25 `#shooting-star` (relance E3) et `#mur-ref .p8-ecrire` à 1366 — identique sur la tête d'avant (le clone de mesure hors écran, pas un champ de Paul). Captures `E4/captures/1259/`.
+- Banc : sans clé USB, `videoAtteignable` est forcé dans A105 (la vidéo passait seule).

@@ -499,3 +499,7 @@ html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
 /* E4 (§12.55) : l'horloge de la case (classe test 3E Charles de Gaulle) et la fin du créneau */
 #dr-zone .haut .dr-hcase{margin-left:8px;font-size:.78rem;color:#d9b36a;white-space:nowrap}
 #dr-zone .haut #bfin.dr-creneau-fini{background:#c9a04a;color:#1d1810;border-color:#e0b978;box-shadow:0 0 0 2px rgba(224,185,120,.45)}
+/* E4 (§12.59 (3)) : retiré du tableau — au pilote, visible et barré d'un liseré ; au tableau, absent (sa place reste) */
+#mur .dr-retire{opacity:.38;outline:2px dashed #c0392b;outline-offset:2px}
+#mur .dr-retire-tab,.mur .dr-retire-tab{visibility:hidden}
+.dr-sch-corr textarea,.dr-sch-corr input{width:100%;box-sizing:border-box;font:inherit}

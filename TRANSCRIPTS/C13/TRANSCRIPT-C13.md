@@ -5852,3 +5852,22 @@ MEMO
 
 28/10/2026 08:25
 MEMO
+
+---
+
+## Tour 285 — 28/10/2026 08:34 → 08:35
+
+**Paul :** Il faut accélèrer les exécutants. Je n'ai plus bcp de tokens pour la semaine
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 sur la vidéo de la clé ; E4 sur « Déposer en ligne » puis le Drive retiré ; E3 prend la taxonomie · ouvert : 538, 553, 481, 458.
+
+777. C'est fait, en trois gestes. Un : la taxonomie passe d'E1 à E3, qui la code en parallèle au lieu d'attendre que E1 ait fini la vidéo. Deux : E3 n'écrit plus de nouveaux cas, puisque les gardes des exécutants et mon banc suffisent ; c'est une session qui cesse de dépenser pour vérifier. Trois : chaque exécutant fait son morceau d'une traite, avec un seul banc complet avant sa poussée finale.
+
+778. Moi aussi, je dépense moins : je ne vérifie plus à chaque poussée, mais une seule fois, sur la ⑧ assemblée, avant de te l'apporter. Ce qui reste avant la ⑧ : la vidéo de la clé (E1), « Déposer en ligne » et le Drive retiré (E4), la taxonomie (E3).
+
+À tester : rien de neuf depuis 738.
+
+28/10/2026 08:35
+MEMO

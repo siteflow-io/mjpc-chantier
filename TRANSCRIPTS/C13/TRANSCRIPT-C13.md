@@ -5992,13 +5992,13 @@ Donc proposes moi un trick horaire qui permette de faire comme si , à n'importe
 
 **Claude :**
 
-À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare le clic sur une diapo et mesure « Fin de l'heure » (le chrono, 👥 et la répétition avec De Gaulle sont faits) ; E3 mesure la lenteur · ouvert : 797 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 répare le clic sur une diapo et mesure « Fin de l'heure » (le chrono, 👥 et la répétition avec De Gaulle sont faits) ; E3 mesure la lenteur · ouvert : 799 ; 793 à 796 ; 785 ; 538, 553, 481, 458.
 
-793 bis. Tu as raison pour la réactivation : c'est toi qui choisis de l'intégrer (ta version, ou ↩), c'était cadré. Je retire ce morceau de 793 : « réactivation » reste dans la liste. Le reste de 793 tient.
+797. Tu as raison pour la réactivation : c'est toi qui choisis de l'intégrer (ta version, ou ↩), c'était cadré. Je retire ce morceau de 793 : « réactivation » reste dans la liste. Le reste de 793 tient.
 
-794 bis. Le clic aléatoire est transmis à E1, avec ce que tu as vu : « y aller » marche, le clic seul non. Ma piste, non mesurée : la colonne se redessine plusieurs fois par seconde, et le clic tombe parfois entre l'appui et le relâché. Il cherche, et répare pour que le clic marche à chaque fois.
+798. Le clic aléatoire est transmis à E1, avec ce que tu as vu : « y aller » marche, le clic seul non. Ma piste, non mesurée : la colonne se redessine plusieurs fois par seconde, et le clic tombe parfois entre l'appui et le relâché. Il cherche, et répare pour que le clic marche à chaque fois.
 
-797. Oui, je comprends. Je propose l'horloge de la case. Quand tu lances une heure des 3E Charles de Gaulle, ta classe test, l'heure part de l'horaire de sa case (08:57) au lieu de l'heure vraie, puis elle avance avec ta montre. Tout ce qui vit du temps dans l'heure la suit : l'heure affichée, le chrono, l'alerte de 5 minutes avant la fin, « l'heure dépasse », « Fin de l'heure » qui change d'aspect à 09:52, et l'échéance proposée. L'en-tête le dit : « horloge de la case : 08:57 (il est 10:53) ». Pour toutes les autres classes, rien ne change. Oui ? Et veux-tu aussi, pour De Gaulle seulement, un geste « aller à 5 minutes de la fin », pour tester la fin de l'heure sans attendre 50 minutes ?
+799. Oui, je comprends. Je propose l'horloge de la case. Quand tu lances une heure des 3E Charles de Gaulle, ta classe test, l'heure part de l'horaire de sa case (08:57) au lieu de l'heure vraie, puis elle avance avec ta montre. Tout ce qui vit du temps dans l'heure la suit : l'heure affichée, le chrono, l'alerte de 5 minutes avant la fin, « l'heure dépasse », « Fin de l'heure » qui change d'aspect à 09:52, et l'échéance proposée. L'en-tête le dit : « horloge de la case : 08:57 (il est 10:53) ». Pour toutes les autres classes, rien ne change. Oui ? Et veux-tu aussi, pour De Gaulle seulement, un geste « aller à 5 minutes de la fin », pour tester la fin de l'heure sans attendre 50 minutes ?
 
 À tester : rien de neuf depuis 738.
 

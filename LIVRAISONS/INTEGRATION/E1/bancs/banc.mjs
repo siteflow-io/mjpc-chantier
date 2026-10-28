@@ -1721,13 +1721,15 @@ await B('A91', '§12.38 (3), les données : dans l\'Atelier et en répétition, 
     const E0 = seance().ecrans; const i = E0.findIndex(e => e && e.role === 'fin' && +e.heure === 1); const e = E0[i]; const avant = JSON.stringify(e.blocs);
     const src = dr_sourceSeance(); const hv = dr_heureAVenir(1); const d = new Date(); const iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
     const P = Object.values(edtProjeter(iso, 60)).filter(c => edtCleClasse(c.classeMjpc) === src.classeSlug && ['prevu', 'rienDePret'].includes(c.nature)).map(c => ({ iso: c.iso, cr: c.creneau, t: new Date(c.iso + 'T' + c.creneau.split('-')[0] + ':00').getTime() })).filter(c => c.t > hv.base).sort((a, b) => a.t - b.t);
-    const at = dr_cahierHorsClasse(e); lancerRepetition(); const rep = dr_cahierHorsClasse(e); arreterRepetition();
+    const J0 = J.length; const at = dr_cahierHorsClasse(e); lancerRepetition(); const rep = dr_cahierHorsClasse(e); const Jrep = J.length; arreterRepetition();
+    const titres = ordreHeure(1).filter(k => E0[k].role !== 'fin').map(k => E0[k]); const vu = (() => { const z = document.createElement('div'); z.innerHTML = (at && at.contenu) || ''; return z.textContent; })();
     const tv = ((ch => ch && ch.seances[0].deroule.travail)(chapitresData['3e']['0']) || {})['1'] || '';
-    res({ at, rep, attendu: P[0] || null, tv, apres: JSON.stringify(e.blocs), avant, src: src.classeNom }); } catch (x) { res({ erreur: String(x.message) }); } }, 1200); })))));
+    res({ at, rep, attendu: P[0] || null, tv, apres: JSON.stringify(e.blocs), avant, src: src.classeNom, J0, J1: J.length, nDiapos: titres.length, vu: vu.slice(0, 400), paras: ((at && at.contenu) || '').split('<p').length - 1 }); } catch (x) { res({ erreur: String(x.message) }); } }, 1200); })))));
   const A = r.attendu; const jour = A ? String(+A.iso.slice(8, 10)) : '?'; const heure = A ? A.cr.split('-')[0].replace(':', ' h ') : '?';
   E.verif('A91', r.at && r.at.montrer && A && r.at.echeanceIso === A.iso && (r.at.date || '').indexOf(heure) >= 0 && (r.at.date || '').indexOf(' ' + jour + ' ') >= 0, 'l\'Atelier : l\'échéance est la prochaine heure de ' + r.src + ' après l\'heure 1 (« ' + ((r.at && r.at.date) || '?') + ' »)', JSON.stringify(r).slice(0, 400));
   E.verif('A91', r.at && r.at.travail === r.tv && r.tv && Array.isArray(r.at.qui) && r.at.qui.length === 0, 'l\'Atelier : le travail prévu de l\'heure 1 (« ' + String(r.tv).slice(0, 40) + ' »), « qui a participé » vide', JSON.stringify(r.at));
   E.verif('A91', r.rep && r.rep.montrer && r.rep.qui === null && r.rep.date === r.at.date, 'la répétition : la même échéance ; « qui a participé » laissé aux élèves de la classe test (E4)', JSON.stringify(r.rep));
+  E.verif('A91', r.at && r.at.contenu && r.paras >= 1 && /on a /.test(r.vu) && r.rep && r.rep.contenu === r.at.contenu && r.J0 === r.J1, '« le contenu de la séance » (clé `contenu`, tranché 02:25) : le récit prévu de l\'heure 1 — ' + r.paras + ' paragraphe(s), le même en répétition ; le journal inchangé (' + r.J0 + ' → ' + r.J1 + ')', JSON.stringify({ vu: r.vu, paras: r.paras, J0: r.J0, J1: r.J1 }));
   E.verif('A91', r.avant != null && r.avant === r.apres && !/cahier/.test(r.apres), 'rien n\'est écrit dans la trame : la diapo de fin garde ses blocs (' + r.apres + ')', r.apres);
   E.verif('A91', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
 

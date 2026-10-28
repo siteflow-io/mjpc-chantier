@@ -18476,10 +18476,19 @@ function dr_echeanceHorsClasse(h){ try { const src = typeof dr_sourceSeance === 
   const hv = typeof dr_heureAVenir === 'function' ? dr_heureAVenir(h) : null; const apres = (hv && hv.base) || Date.now();
   const x = (edtProchainesDe(sl, 20) || []).find(p => { const [y, mo, d] = p.iso.split('-').map(Number); const [hh, mm] = String(p.creneau).split('-')[0].split(':').map(Number); return new Date(y, mo - 1, d, hh || 0, mm || 0).getTime() > apres; });
   return x ? { iso: x.iso, creneau: x.creneau, l: x.l } : null; } catch (e) { return null; } }
+/* E1 (§12.38-3, tranché par la conscience le 28/10 02:25, E3 retour 92) : « le contenu de la séance » hors de la classe = le contenu PRÉVU de l'heure h —
+   ses diapos dans l'ordre (`ordreHeure`), sans la diapo du cahier, écrites par le même rendu que le récit d'une heure jouée (`recitPourED0` → `recitHtml0`), comme si
+   toutes étaient jouées et entièrement dévoilées. Un journal fictif le temps de l'écriture (J est remis tel quel aussitôt, rien n'est journalisé ni écrit) ; rend le HTML
+   des paragraphes, comme `recitPourED`. */
+function dr_contenuPrevuHeure(h){ if (typeof recitPourED0 !== 'function') return ''; const sauve = J.slice(); try {
+  const E = seance().ecrans; const T0 = (dr_heureAVenir(h) || {}).base || now(); const o = ordreHeure(h).filter(i => E[i] && E[i].role !== 'fin');
+  J.length = 0; J.push({ t: T0, h, type: 'lancement', heure: h }); let t = T0;
+  o.forEach(di => { t += 60000; J.push({ t, h, type: 'diapo', si: S.si, di, eid: E[di].eid }); const n = elements(E[di]).length; for (let k = 0; k < n; k++) J.push({ t: t + k + 1, h, type: 'devoile', si: S.si, di, k }); });
+  return recitPourED0(h) || ''; } catch (x) { return ''; } finally { J.length = 0; sauve.forEach(x => J.push(x)); } }
 function dr_cahierHorsClasse(e){ try { if (!e || e.role !== 'fin') return null; if (S.lancee && !S.repetition) return null; if ((e.blocs || []).some(b => b && b.t === 'cahier')) return null;
   const h = +e.heure || S.heure || 1; const ech = dr_echeanceHorsClasse(h); const src = typeof dr_sourceSeance === 'function' ? dr_sourceSeance() : null;
   const tv = (typeof dr_travail === 'function' ? dr_travail() : {})[S.si + '|' + h] || '';
-  return { montrer: true, heure: h, date: ech ? ech.l : null, echeanceIso: ech ? ech.iso : null, travail: tv, qui: S.repetition ? null : [], classe: src ? src.classeNom : '' }; } catch (x) { return null; } }
+  return { montrer: true, heure: h, date: ech ? ech.l : null, echeanceIso: ech ? ech.iso : null, travail: tv, qui: S.repetition ? null : [], classe: src ? src.classeNom : '', contenu: dr_contenuPrevuHeure(h) }; } catch (x) { return null; } }   /* `contenu` (02:25) : pour l'onglet « Contenus de séances » (E4) */
 function dr_finAvecCahier(){ try { let n = 0; seance().ecrans.forEach(e => { if (e && e.role === 'fin' && !(e.blocs || []).some(b => b && b.t === 'cahier')) { e.blocs = (e.blocs || []).concat([{ t: 'cahier' }]); n++; } }); return n; } catch (x) { return 0; } }
 function dr_prepCahierVoir(){ try { if (!S.preparation) return; const e = ecran(); if (!e || e.role !== 'fin') return; const k = K(S.di); const d = etatDiapo(); S._prepCahier = { k, nDev: d.nDev, vu: vuMax[k] }; d.nDev = elements(e).length; dr_tout(); } catch (x) {} }
 function dr_prepCahierRendre(){ try { const p = S._prepCahier; if (!p) return; S._prepCahier = null; if (parDiapo[p.k]) parDiapo[p.k].nDev = p.nDev; if (p.vu == null) delete vuMax[p.k]; else vuMax[p.k] = p.vu; } catch (x) {} }   /* « Où on en est » se redit tout de suite en entrant et en sortant de la préparation */

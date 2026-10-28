@@ -1125,3 +1125,9 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **A91 (rendu) E4 fini** (le commit de cette poussée).
 
 **A91 (rendu) E4 fini (`d65bf9df2`).**
+
+## Poussée 114 — 02:27 UTC (03:27 Paris) · **A91, le contenu prévu de l'heure** (relance 02:20, contrat §12.38 (3) tranché à 02:25)
+- **Ce que ça change pour la classe.** Hors de la classe (Atelier, répétition), l'onglet « Contenus de séances » du cahier ne dit plus « rien encore » : il montre le contenu prévu de l'heure (ses diapos dans l'ordre, sans celle du cahier), écrit comme le récit d'une heure jouée — le texte d'E1 (`dr_cahierHorsClasse(e).contenu`, `dr_contenuPrevuHeure`, `e2386690`).
+- **Code** (`dr-socle.js`, une ligne) : l'état du cahier prend `contenu` hors de la classe pour l'onglet « Contenus de séances » ; en classe, rien ne change (`recitPourED`).
+- **Garde A91** étendue (`banc-1238.mjs`) : Atelier — un clic sur l'onglet « Contenus de séances », le texte lu est le contenu prévu ; répétition — dévoilé jusqu'à l'onglet, le même. **Avant (tête `38bf699f`) : 2 échecs (« rien encore ») ; après : 16 / 0.**
+- **Bancs** (assemblé md5 `b01f1a39…`) : `banc.sh` **VERT** (`E4/sorties/0327-28-10-A91b/`). Captures : `E4/captures/E4-1238-A91-1707-avant-atelier-contenu.png`, `…-apres-atelier-contenu.png` (regardées).

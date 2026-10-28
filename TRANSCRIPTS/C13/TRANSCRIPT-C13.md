@@ -5677,3 +5677,28 @@ MEMO
 
 28/10/2026 07:41
 MEMO
+
+---
+
+## Tour 278 — 28/10/2026 07:43 → 07:44
+
+**Paul :** Ok mais alors dans ce cas pourquoi ne pas créer 250 mjpc médias? Ça me ferait 250 go d'avance et je serai tranquille
+
+**Claude :**
+
+À jouer : rien de neuf depuis la ⑦ · en cours chez les exécutants : E1 sur 717, puis la vidéo et les fichiers de la clé, puis la taxonomie ; E4 sur la présence en mode test, le cahier, le « ? », les notes, puis « Déposer en ligne » ; E3 vérifie · ouvert : 751 ; 538, 553, 481, 458.
+
+749. Je te le déconseille. Créer 250 dépôts d'un coup pour avoir 250 Go, c'est se servir de GitHub comme d'un grand disque gratuit en contournant sa limite. Ses règles d'usage l'autorisent alors à suspendre le compte, à le brider ou à supprimer des dépôts, quand il juge l'usage excessif par rapport aux autres utilisateurs. Or ce compte, c'est siteflow-io : il porte aussi ton site, le sas, et l'appli des conventions de stage dont se servent les familles. Le risque n'est pas de manquer de place, c'est de tout perdre d'un coup.
+
+750. Et cela n'apporterait rien : des dépôts vides ne gardent rien de plus. La place se prend au fur et à mesure. Ouvrir le deuxième dépôt quand le premier est plein, c'est la même tranquillité, sans le risque. Avec environ cinq mille images par dépôt, le premier te tiendra des années.
+
+751. Je garde donc ce qui est au contrat : un dépôt, le deuxième créé d'avance, et le relais qui passe seul de l'un à l'autre. Si un jour il te faut bien plus, par exemple des vidéos en ligne, il faudra un vrai hébergement, et je te le dirai avant d'en arriver là. Oui ?
+
+À tester : rien de neuf depuis 738.
+
+Sources :
+- [Règles d'usage de GitHub (usage excessif de la bande passante, section 9)](https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies)
+- [Les limites de GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)
+
+28/10/2026 07:44
+MEMO

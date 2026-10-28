@@ -5,13 +5,23 @@
 - **aucun autre mouvement n'y est nommé** : ni le Parnasse, ni le symbolisme, ni le surréalisme ;
 - le **nouveau programme** (arrêté du 18 février 2026, BO n° 10 du 5 mars 2026 : 5e en 2026, 4e en 2027, 3e en 2028) dit « périodes et courants » (« Identifier quelques caractéristiques majeures de périodes et de courants », 3e) et ne nomme aucun mouvement.
 
-**Statut** : PROPOSÉ — les phrases « pour l'élève » attendent le mot de Paul, mot pour mot.
+**Statut** : **VALIDÉ par Paul le 28/10 à 07:17** (« Ok » aux points 734 et 735 du transcript C13 : la famille, les deux notions, les trois phrases pour l'élève, mot pour mot). Le fragment ci-dessous est celui qu'il collera dans « Importer des notions » (§12.48).
 
 | id | pour toi (libelleProf) — la dénomination du programme | pour l'élève (libelleEleve) — à valider | niveaux | source |
 |---|---|---|---|---|
 | fam-52 | Les mouvements littéraires et artistiques | Les grands mouvements de l'art et des lettres | | programme cycle 4, culture littéraire et artistique, introduction |
 | litt-040 | Le romantisme | Un art qui place l'émotion, la nature et le « je » au premier plan | 3e | programme cycle 4, 3e, « Visions poétiques du monde » : « la poésie lyrique du romantisme à nos jours » |
 | litt-041 | L'esthétique réaliste ou naturaliste | Un récit ou un tableau qui montre la société telle qu'elle est | 4e | programme cycle 4, 4e, « La fiction pour interroger le réel » |
+
+Le fragment validé, pour « Importer des notions » :
+
+```json
+{ "id": "fam-52", "libelleProf": "Les mouvements littéraires et artistiques", "libelleEleve": "Les grands mouvements de l'art et des lettres",
+  "notions": [
+    { "id": "litt-040", "actif": true, "libelleProf": "Le romantisme", "libelleEleve": "Un art qui place l'émotion, la nature et le « je » au premier plan", "niveaux": "3e", "source": "Programme du cycle 4, 3e, « Visions poétiques du monde » : « la poésie lyrique du romantisme à nos jours »" },
+    { "id": "litt-041", "actif": true, "libelleProf": "L'esthétique réaliste ou naturaliste", "libelleEleve": "Un récit ou un tableau qui montre la société telle qu'elle est", "niveaux": "4e", "source": "Programme du cycle 4, 4e, « La fiction pour interroger le réel » : « l'esthétique réaliste ou naturaliste »" }
+  ] }
+```
 
 Le Parnasse, le symbolisme et le surréalisme ne sont pas proposés : le programme ne les nomme pas. Quand la 3e passera au nouveau programme (2028), la famille pourra prendre son mot : « Les périodes et courants littéraires et artistiques ».
 

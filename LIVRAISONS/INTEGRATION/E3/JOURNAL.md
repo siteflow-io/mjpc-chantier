@@ -1284,3 +1284,8 @@ Identique aux deux tailles et aux deux polices. **Règle : une diapo de texte ti
   1. Le « dernier qui enregistre gagne » de l'Atelier à deux appareils.
   2. L'aide qui dit « Pilotage pour répéter ».
   3. `now()` décalé à vérifier hors de la case des De Gaulle.
+
+## Retour 105 — 28/10, 14:45 — l étoile filante supprimée ; 56s VERT au repos
+- Paul (14:25) : « il suffit de la supprimer ». Retirés de `index.html` : `#shooting-star`, `doShoot` et ses minuteries, le CSS `.shooting-star`, `.shooting-star.active`, `@keyframes shoot`.
+- 56s (1707 × 743, tous les écrans) : **VERT 33/33**, au repos compris. `banc.sh` : **VERT** (`d04ad16e`).
+- Arrêt, comme demandé. Reprise sur relance (§12.58 (4)(5) lundi soir).

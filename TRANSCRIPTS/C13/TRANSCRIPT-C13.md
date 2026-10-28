@@ -5579,3 +5579,29 @@ MEMO
 
 28/10/2026 07:18
 MEMO
+
+---
+
+## Tour 274 — 28/10/2026 07:19 → 07:24
+
+**Paul :** Promeus. Pas compris 724
+
+*(Promu à 07:21 : `index.html` 8.75.0-⑦, commit prod `4ed2380745b5`, md5 `e3a92022920c0cca559cfa1edb356961`, bit à bit ; suivi fait.)*
+
+**Claude :**
+
+738. La ⑦ est en production depuis 07:21, et le site public sert exactement le fichier vérifié. Les quatorze dettes réglées sont cochées. Le suivi est fait : registre, journal, point de retour vers la ⑥, « où trouver quoi », index des fonctions. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/?v=8.75.0-7
+
+739. 724, plus simplement. Tu as déjà dit oui à la vidéo prise sur ta clé ; c'est ton cadrage. Ma question porte sur le reste : veux-tu aussi prendre une image (un tableau) ou un document (un PDF) directement dans le dossier de ta clé, au lieu de le déposer dans mjpc-medias ? L'avantage : rien à déposer. L'inconvénient : un fichier de ta clé ne se voit que sur l'ordinateur où la clé est branchée, ni sur ton téléphone ni sur l'ordi de classe par l'adresse du tableau. Je propose non : les images et les documents restent dans mjpc-medias, qui se voient partout, et seule la vidéo vient de la clé, comme dans ton cadrage. Oui ?
+
+À tester, sur ton vrai chapitre, à l'adresse de 738 :
+- ouvre l'Atelier : à gauche, le titre du chapitre, puis les séances ; sous la séance ouverte, ses heures avec leur date et l'heure de chaque diapo ;
+- clique un à un le titre, « → Structure », une séance repliée, le ▾ de la séance ouverte, une ligne d'heure, une diapo : chacun fait quelque chose ;
+- tire la poignée de la colonne de gauche, puis celle de droite, et recharge la page : les deux largeurs sont gardées ;
+- ouvre une feuille : mets un mot en gras, souligne-le, change sa couleur, surligne-le, ajoute la légende, puis l'aperçu d'impression : tout reste ;
+- le soir, « ▶ Jouer en avance » : l'en-tête dit la classe de la prochaine case, son heure et sa date ; « ⋯ » montre les élèves de CLASSE TEST ; la diapo du cahier de textes est remplie ;
+- dans Structure, réserve une séance à une seule classe : l'emploi du temps de l'autre classe passe à la séance suivante, sans trou ;
+- côté élève, les séances sont numérotées sans trou.
+
+28/10/2026 07:24
+MEMO

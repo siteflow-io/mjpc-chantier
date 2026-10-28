@@ -888,3 +888,4 @@ La veille s'était arrêtée à 04:10 ; un rappel en double (07:53 UTC) m'a fait
 - **(3)** AIDE_FIL : « ▶ Jouer en avance » pour répéter.
 - **A106** (deux navigateurs, le faux hub relayé) : A → B sans recharger ; deux diapos en même temps, les deux restent ; la même diapo : B le dit, le hub garde A, B garde la sienne, « Garder la mienne » la porte à A ; un menu ouvert reste le même pendant une écriture ; A n'écrit que `ecrans/6` et `maj`. Rouge avant (6 échecs sur la tête), vert après (5 fois). Le banc lit le déroulé au hub (`__DER`) là où il lisait le corps de l'écriture entière (A4, A9, A10, A11, A13, A14, A18, A21, A22) ; A10 admet le canal du tableau en répétition (§12.51).
 - **banc.sh VERT** (`LIVRAISONS/INTEGRATION/E1/sorties/1410-28-10/`) ; A4-A22, A33, A57, A60, A103, A106 verts.
+- 28/10 14:20 — commit 2f091ec64. **§12.60 E1 fini.**

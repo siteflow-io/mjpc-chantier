@@ -6,7 +6,7 @@
 ---
 
 ### fil — Le fil d'un chapitre
-1. **Préparer** le chapitre — l'Atelier : « Structure », puis « Atelier » ; « Pilotage » pour répéter.
+1. **Préparer** le chapitre — l'Atelier : « Structure », puis « Atelier » ; « ▶ Jouer en avance » pour répéter.
 2. **Publier** pour tes classes — la page du niveau : « Je publie pour » la classe, puis le chapitre.
 3. **Jouer l'heure** — l'emploi du temps : la case de l'heure → « ▶ Ouvrir le pilotage et lancer ».
 4. **Finir l'heure** — « Fin de l'heure » : les sept étapes, puis « Clore l'heure ».

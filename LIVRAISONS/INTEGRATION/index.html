@@ -15478,7 +15478,11 @@ document.addEventListener('keydown',function(ev){
 /* §12.56 (4) : l'aide suit l'écran au changement d'écran — après chaque geste (clic, touche, retour), deux fois (tout de suite, puis
    quand l'écran s'est posé) — et un filet toutes les 2,5 s pour un écran qui change tout seul (T-5, la fin de l'heure) ; avant : toutes les 400 ms */
 (function(){ var t1=null,t2=null; var suivre=function(){ try{ aideSuivre(); }catch(e){} }; var apres=function(){ clearTimeout(t1); clearTimeout(t2); t1=setTimeout(suivre,30); t2=setTimeout(suivre,450); };
-  ['click','keyup','popstate','hashchange'].forEach(function(n){ window.addEventListener(n,apres,true); }); setInterval(suivre,2500); })();
+  ['click','keyup','popstate','hashchange'].forEach(function(n){ window.addEventListener(n,apres,true); }); setInterval(suivre,2500);
+  /* EX ⑧ : le passage à la vue élève (et le retour) — la classe admin-mode du body, quel que soit le chemin (👁, Ctrl+Espace, 5 tapes,
+     connexion, profil test) ; une seule écoute posée une fois ; l'aide ne suit que si la vue a vraiment changé */
+  var vue=document.body.classList.contains('admin-mode');
+  new MutationObserver(function(){ var v=document.body.classList.contains('admin-mode'); if(v===vue)return; vue=v; suivre(); }).observe(document.body,{attributes:true,attributeFilter:['class']}); })();
 function atSommaireNatifHtml(){
   var ec=AT.edChap||AT_FIL; if(!ec) return '<div class="at-vues-arbre" id="at-arbre"></div>';
   try{

@@ -1,19 +1,18 @@
 /**
  * MJPC — LE RELAIS « DÉPOSER EN LIGNE » (contrat §12.49 ; E4, 28/10).
  *
- * À coller UNE fois dans le programme Google de Paul, comme un nouveau fichier (Fichier → +, « depot.gs »).
- * Puis : Déployer → Nouveau déploiement → Application Web — « Exécuter en tant que : moi »,
- *        « Qui a accès : moi uniquement ». L'adresse /exec de CE déploiement va dans le site (MJPC_RELAIS_URL).
- *        Le déploiement des élèves (login, open, close) ne change pas.
- * La clé GitHub : Paramètres du projet → Propriétés du script → GITHUB_CLE = <la clé, droits « contents: write »
- *        sur siteflow-io/mjpc-medias et siteflow-io/mjpc-medias-2>. Jamais dans le navigateur, jamais dans un fichier.
- *
- * ATTENTION : ce fichier définit doGet(). Si le programme a DÉJÀ une fonction doGet, renomme-la
- * (par exemple doGetAncien) et décommente l'appel en bas de relaisDoGet_ — sinon Google n'en garde qu'une.
+ * S'installe dans un PROJET GOOGLE NEUF, à lui seul (« MJPC relais ») — jamais dans le programme existant :
+ * pas de doGet en double, le déploiement des élèves (login, open, close) n'est jamais touché.
+ *   1. script.google.com → Nouveau projet → le nommer « MJPC relais » → coller ce fichier à la place de Code.gs.
+ *   2. Déployer → Nouveau déploiement → Application Web — « Exécuter en tant que : moi », « Qui a accès : moi uniquement ».
+ *      L'adresse /exec de ce déploiement va dans le site (MJPC_RELAIS_URL).
+ *   3. La clé : un jeton GitHub « à grain fin », SEULEMENT le dépôt siteflow-io/mjpc-medias, « Contents : lecture et écriture »
+ *      (mjpc-medias-2 s'ajoutera au jeton le jour où il existera). Paramètres du projet → Propriétés du script →
+ *      GITHUB_CLE = <le jeton>. Jamais dans le navigateur, jamais dans un fichier.
  *
  * Qui peut déposer : seulement la connexion Google du propriétaire du programme (Paul). Le déploiement
  * « moi uniquement » le garantit déjà ; deposer() le revérifie (Session.getActiveUser() === propriétaire),
- * donc même appelé depuis le déploiement des élèves, il refuse.
+ * donc même appelé hors de ce déploiement, il refuse.
  */
 
 var RELAIS = {
@@ -29,14 +28,12 @@ var RELAIS = {
 function doGet(e) { return relaisDoGet_(e); }
 
 function relaisDoGet_(e) {
-  // Si le programme avait déjà un doGet (renommé doGetAncien, voir l'en-tête) : if (e && e.parameter && e.parameter.relais !== 'depot') return doGetAncien(e);
-  // et l'adresse du site devient …/exec?relais=depot.
   var html = '<!doctype html><meta charset="utf-8"><title>MJPC — dépôt en ligne</title>'
     + '<body style="font:15px Georgia,serif;background:#17130f;color:#eadfcb;padding:22px">'
     + '<div id="m">Dépôt en ligne : connexion…</div><script>'
     + 'var O=' + JSON.stringify(RELAIS.origine) + ',m=document.getElementById("m"),op=(window.top&&window.top.opener)||window.opener;'
     + 'function dire(t){m.textContent=t;}'
-    + 'if(!op){dire("Cette fenêtre s\'ouvre depuis le site (« Déposer en ligne »).");}'
+    + 'if(!op){dire("Tu es connecté. Ferme cette fenêtre et recommence « Déposer en ligne » sur le site.");}'
     + 'else{window.addEventListener("message",function(ev){if(ev.origin!==O||!ev.data||ev.data.mjpcRelais!=="paquet")return;dire("Dépôt en cours…");'
     + 'google.script.run.withSuccessHandler(function(r){op.postMessage(r&&r.ok?{mjpcRelais:"fait",depots:r.depots}:{mjpcRelais:"refus",raison:(r&&r.raison)||"Refusé."},O);dire(r&&r.ok?"Déposé.":"Refusé : "+((r&&r.raison)||""));})'
     + '.withFailureHandler(function(er){op.postMessage({mjpcRelais:"refus",raison:"Le dépôt n\'a pas abouti — recommence."},O);dire("Échec.");}).deposer(ev.data.paquet);});'

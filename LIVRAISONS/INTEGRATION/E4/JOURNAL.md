@@ -1212,3 +1212,9 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - **Pas fait** : le bouton sur une image ou un PDF **pris sur la clé** et dans l'alerte de §12.44 (4 ter) — §12.44 n'est pas encore livré par E1 ; `mjpcDeposerEnLigne(fichiers, niveau)` est prêt pour lui. Les galeries d'images déjà au hub (aucune, mesuré par la conscience) ne s'affichent plus que si elles existent ; le prompt d'injection garde la valeur `source: "drive"` (texte de Paul, invisible à l'écran).
 - **Gardes A100 + A101** (`E4/bancs/banc-1249.mjs`, faux relais du banc) : 18 ok · 0 échec (après, md5 `df099653…`, quatre tailles) ; avant (md5 `940a1f94…`) : 15 vérifications, 11 échecs. `banc.sh` **VERT** (K 106/0, parcours ×2 ; `E4/sorties/1249-1250-28-10/`), rejoué après le rebase sur E3 §12.48 (`b40a78db7`, md5 `22c846b1…` ; banc-1249 15/0).
 - **§12.49 E4 fini ; §12.50 E4 fini.**
+
+## Poussée 123 — 08:18 UTC (09:18 Paris) · relance 09:07 : les trois retouches
+- (1) §12.50 fini : la liste des images d'une galerie (aperçu, renommer, monter, retirer), `openGalleryViewer`, `previewImage` retirés ; une galerie ouverte dit qu'elle n'existe plus ; `dr-recit.js` (`dr_recitUrlDe`) : plus d'adresse Drive. Plus aucune adresse `drive.google.com` ni `googleusercontent.com` dans le code qui s'exécute — sauf l'**origine** acceptée des messages du relais (`mjpcRelais` : `google.com` ou `googleusercontent.com`, d'où la fenêtre Google répond ; aucune demande n'y part).
+- (2) `depot.gs` : la fenêtre ouverte sans le site dit « Tu es connecté. Ferme cette fenêtre et recommence « Déposer en ligne » sur le site. »
+- (3) `depot.gs`, l'en-tête : un projet Google neuf, à lui seul (« MJPC relais ») ; la consigne `doGet` / `doGetAncien` retirée ; le jeton à grain fin, seulement mjpc-medias, « Contents : lecture et écriture ».
+- banc-1249 15/0 (md5 `18d54336…`) ; `banc.sh` **VERT** (K 106/0 ; `E4/sorties/1250b-28-10/`).

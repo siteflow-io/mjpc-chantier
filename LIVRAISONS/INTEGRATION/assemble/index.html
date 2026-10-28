@@ -3946,19 +3946,7 @@ function renderItem(level,chnum,snum,itemId,it,subNum,isAdmin){
   html+='<span class="gc-ind"></span><span class="gc-lead"><span class="doc-icon '+iconClass+'">'+icon+'</span></span>';
   html+='<span class="gc-ttl"><span class="doc-label">'+subPrefix+escapeHtml(it.title||'')+(it.autonomie?' <span class="chip-autonomie" title="Disponible dans la Zone autonomie">\ud83d\ude80</span>':'')+(it.subtitle?'<small>'+escapeHtml(it.subtitle)+'</small>':'')+'</span></span>';
   html+='<span class="gc-stat doc-action">'+actionTxt+'</span><span class="gc-pub">'+pub+'</span><span class="gc-acts">'+acts+'</span></div>';
-  if(isAdmin && isGallery && imgKeys.length>0){
-    var sortedImg=imgKeys.sort(function(a,b){return (it.images[a].ordre||0)-(it.images[b].ordre||0);});
-    html+='<div class="gallery-admin-list">';
-    sortedImg.forEach(function(imgK){var img=it.images[imgK];
-      html+='<div class="gallery-image-row"><span class="gallery-image-title">'+escapeHtml(img.titre||imgK)+'</span>';
-      html+='<button class="admin-action-btn" title="Aper\u00e7u" onclick="event.stopPropagation();previewImage(\''+img.ref+'\')">\ud83d\udc41</button>';
-      html+='<button class="admin-action-btn" title="Renommer" onclick="event.stopPropagation();renameImageInGallery(\''+level+'\',\''+chnum+'\',\''+snum+'\',\''+itemId+'\',\''+imgK+'\')">\u270f</button>';
-      html+='<button class="admin-action-btn" title="Monter" onclick="event.stopPropagation();moveImageInGallery(\''+level+'\',\''+chnum+'\',\''+snum+'\',\''+itemId+'\',\''+imgK+'\',-1)">\u2191</button>';
-      html+='<button class="admin-action-btn" title="Descendre" onclick="event.stopPropagation();moveImageInGallery(\''+level+'\',\''+chnum+'\',\''+snum+'\',\''+itemId+'\',\''+imgK+'\',1)">\u2193</button>';
-      html+='<button class="admin-action-btn danger" title="Retirer" onclick="event.stopPropagation();deleteImageInGallery(\''+level+'\',\''+chnum+'\',\''+snum+'\',\''+itemId+'\',\''+imgK+'\')">\u2715</button></div>';
-    });
-    html+='</div>';
-  }
+  /* E4 (§12.50) : la liste des images d'une galerie Drive (aperçu, renommer, monter, retirer) est retirée — le hub n'a aucune galerie */
   return html;
 }
 
@@ -3972,7 +3960,7 @@ function openItem(level,chnum,snum,itemId){
   // Maj contexte présence
   if(window.PRESENCE_CONTEXT){PRESENCE_CONTEXT.chapter=data[chnum].title||chnum;PRESENCE_CONTEXT.seance=data[chnum].seances[snum].title||snum;PRESENCE_CONTEXT.item=item.title||itemId;if(typeof updatePresence==='function')updatePresence();}
   // Galerie : viewer dédié
-  if(item.kind==='gallery'){openGalleryViewer(item);return;}
+  if(item.kind==='gallery'){showUploadToast('\u26a0 Cette galerie n\u2019existe plus \u2014 d\u00e9pose les images en ligne (glisse-les sur la s\u00e9ance).','err');return;}   /* E4 (§12.50) : les galeries Drive retirées */
   var ref=item.ref;
   var src=item.source;
   if(!ref){alert('Item non li\u00e9. Utilise le bouton \ud83d\udd17 en mode admin pour associer une ressource.');return;}
@@ -3996,24 +3984,7 @@ function openItem(level,chnum,snum,itemId){
   alert('Type d\u2019item non support\u00e9 : '+item.kind+' / '+src);
 }
 
-function openGalleryViewer(item){
-  var images=item.images||{};
-  var keys=Object.keys(images).filter(function(k){return images[k]&&typeof images[k]==='object';}).sort(function(a,b){return (images[a].ordre||0)-(images[b].ordre||0);});
-  if(keys.length===0){alert('Galerie vide.');return;}
-  var existing=document.getElementById('gallery-viewer-overlay');if(existing)existing.remove();
-  var overlay=document.createElement('div');
-  overlay.id='gallery-viewer-overlay';
-  overlay.className='gallery-viewer-overlay';
-  var isMobilePortrait=window.matchMedia&&window.matchMedia('(max-width:768px) and (orientation:portrait)').matches;
-  var portraitBanner=isMobilePortrait?'<div class="gallery-portrait-hint">\ud83d\udcf1 Tourne ton t\u00e9l\u00e9phone en mode paysage pour une meilleure lecture.</div>':'';
-  var imgsHtml=keys.map(function(k){
-    var img=images[k];
-    return '<figure class="gallery-figure"><img src="https://lh3.googleusercontent.com/d/'+img.ref+'=s2000" alt="'+escapeHtml(img.titre||'')+'" onerror="this.onerror=null;this.src=\'https://drive.google.com/uc?export=view&id='+img.ref+'\'"/><figcaption>'+escapeHtml(img.titre||'')+'</figcaption></figure>';
-  }).join('');
-  overlay.innerHTML='<div class="gallery-viewer-header"><div class="gallery-viewer-title">'+escapeHtml(item.title||'Galerie')+'</div><button class="gallery-viewer-close" onclick="closeGalleryViewer()">\u2715</button></div>'+portraitBanner+'<div class="gallery-viewer-scroll">'+imgsHtml+'</div>';
-  document.body.appendChild(overlay);
-  document.body.style.overflow='hidden';
-}
+/* E4 (§12.50) : openGalleryViewer (les images du Drive) retirée */
 
 function closeGalleryViewer(){
   var ov=document.getElementById('gallery-viewer-overlay');if(ov)ov.remove();
@@ -4737,20 +4708,7 @@ function _nextImageId(images){
 }
 
 // ============ Pilotage des images d'une galerie (mode admin) ============
-function previewImage(driveId){
-  if(!driveId)return;
-  var existing=document.getElementById('image-preview-overlay');if(existing)existing.remove();
-  var overlay=document.createElement('div');
-  overlay.id='image-preview-overlay';
-  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:7000;display:flex;align-items:center;justify-content:center;padding:24px;cursor:zoom-out;';
-  var img=document.createElement('img');
-  img.src='https://lh3.googleusercontent.com/d/'+driveId+'=s2000';
-  img.style.cssText='max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,0.6);';
-  img.onerror=function(){img.src='https://drive.google.com/uc?export=view&id='+driveId;};
-  overlay.appendChild(img);
-  overlay.addEventListener('click',function(){overlay.remove();});
-  document.body.appendChild(overlay);
-}
+/* E4 (§12.50) : previewImage (l'aperçu d'une image du Drive) retirée */
 
 function renameImageInGallery(level,chnum,snum,itemId,imgId){
   var item=chapitresData[level][chnum].seances[snum].items[itemId];
@@ -20494,8 +20452,8 @@ function dr_recitTexteDe(html){ const z = document.createElement('div'); z.style
 function dr_recitSnum(){ try { const c = typeof dr_ctx === 'function' ? dr_ctx() : null; if (c && c.snum != null) return c.snum; } catch (e) {} try { if (typeof ATVUES !== 'undefined' && ATVUES.snum != null) return ATVUES.snum; } catch (e) {} return typeof S !== 'undefined' ? S.si : 0; }
 function dr_recitSeanceN(sk){ try { const c = typeof dr_ctx === 'function' ? dr_ctx() : null; const ch = typeof dr_chapitre === 'function' ? dr_chapitre() : null; if (ch && typeof atSeances === 'function') { const l = atSeances(ch); const i = l.findIndex(p => String(p.j) === String(sk)); if (i >= 0) return i + 1; } } catch (e) {} return (+sk || 0) + 1; }
 function dr_recitUrlDe(it){ const ref = String(it.ref || '').trim(), src = it.source || ''; if (!ref) return '';
-  if (src === 'drive' || (/^[A-Za-z0-9_-]{20,}$/.test(ref) && src !== 'firebase_app' && src !== 'atelier')) return 'https://drive.google.com/file/d/' + ref + '/preview';
-  if (/^https?:\/\//i.test(ref) && (src === 'external' || src === 'html' || src === '' || src === 'drive')) return ref.indexOf('drive.google.com/file/d/') >= 0 ? ref.replace(/\/view(\?|$)/, '/preview$1') : ref;
+  /* E4 (§12.50) : plus d'adresse Drive (l'id → /preview, /view → /preview) */
+  if (/^https?:\/\//i.test(ref) && (src === 'external' || src === 'html' || src === '')) return ref;
   return ''; }
 function dr_recitDocuments(){ const D = dr_recitSim(); if (D && D.documents && D.documents[String(S.si)] && D.documents[String(S.si)].length) return D.documents[String(S.si)];
   let se = null; const sk = dr_recitSnum(); try { se = typeof dr_seance === 'function' ? dr_seance(sk) : null; } catch (e) {} if (!se || !se.items) return [];

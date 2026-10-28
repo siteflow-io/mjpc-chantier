@@ -424,8 +424,8 @@ function dr_recitTexteDe(html){ const z = document.createElement('div'); z.style
 function dr_recitSnum(){ try { const c = typeof dr_ctx === 'function' ? dr_ctx() : null; if (c && c.snum != null) return c.snum; } catch (e) {} try { if (typeof ATVUES !== 'undefined' && ATVUES.snum != null) return ATVUES.snum; } catch (e) {} return typeof S !== 'undefined' ? S.si : 0; }
 function dr_recitSeanceN(sk){ try { const c = typeof dr_ctx === 'function' ? dr_ctx() : null; const ch = typeof dr_chapitre === 'function' ? dr_chapitre() : null; if (ch && typeof atSeances === 'function') { const l = atSeances(ch); const i = l.findIndex(p => String(p.j) === String(sk)); if (i >= 0) return i + 1; } } catch (e) {} return (+sk || 0) + 1; }
 function dr_recitUrlDe(it){ const ref = String(it.ref || '').trim(), src = it.source || ''; if (!ref) return '';
-  if (src === 'drive' || (/^[A-Za-z0-9_-]{20,}$/.test(ref) && src !== 'firebase_app' && src !== 'atelier')) return 'https://drive.google.com/file/d/' + ref + '/preview';
-  if (/^https?:\/\//i.test(ref) && (src === 'external' || src === 'html' || src === '' || src === 'drive')) return ref.indexOf('drive.google.com/file/d/') >= 0 ? ref.replace(/\/view(\?|$)/, '/preview$1') : ref;
+  /* E4 (§12.50) : plus d'adresse Drive (l'id → /preview, /view → /preview) */
+  if (/^https?:\/\//i.test(ref) && (src === 'external' || src === 'html' || src === '')) return ref;
   return ''; }
 function dr_recitDocuments(){ const D = dr_recitSim(); if (D && D.documents && D.documents[String(S.si)] && D.documents[String(S.si)].length) return D.documents[String(S.si)];
   let se = null; const sk = dr_recitSnum(); try { se = typeof dr_seance === 'function' ? dr_seance(sk) : null; } catch (e) {} if (!se || !se.items) return [];

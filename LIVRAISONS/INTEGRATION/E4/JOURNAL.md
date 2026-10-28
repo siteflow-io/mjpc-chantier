@@ -1218,3 +1218,5 @@ Une fonction de mon territoire, **`dr_reactivationConstruire(n)`**, qui rend l'�
 - (2) `depot.gs` : la fenêtre ouverte sans le site dit « Tu es connecté. Ferme cette fenêtre et recommence « Déposer en ligne » sur le site. »
 - (3) `depot.gs`, l'en-tête : un projet Google neuf, à lui seul (« MJPC relais ») ; la consigne `doGet` / `doGetAncien` retirée ; le jeton à grain fin, seulement mjpc-medias, « Contents : lecture et écriture ».
 - banc-1249 15/0 (md5 `18d54336…`) ; `banc.sh` **VERT** (K 106/0 ; `E4/sorties/1250b-28-10/`).
+
+- 28/10 09:35 Paris : veille close (rien de neuf aux relances après la poussée 123).

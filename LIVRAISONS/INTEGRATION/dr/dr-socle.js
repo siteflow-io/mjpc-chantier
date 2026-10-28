@@ -408,15 +408,7 @@ function dr_cheminH(){ const c = (typeof AT_DR_COURS !== 'undefined' && AT_DR_CO
 /* ── les onglets et la navigation du socle ── */
 function dr_onglet(v){ if (!dr_actif()) return; if (v === 'atelier' && typeof S !== 'undefined' && S.repetition) { arreterRepetition(); return; } voir(v); }
 function dr_aller(i){ if (typeof S === 'undefined') return; if (S.lancee && !S.atelier) aller(i); else { S.di = i; S.page = null; dr_tout(); } }   /* dr_tout : le tout() de la maquette, préfixé (contrat §7) */
-/* ── « ▶ Lancer l'heure » ([data-lancer="1"], contrat §7) : E2 le rebranche sur dr_lancer (la classe, le créneau, la copie jouée, cours_actif).
-   En attendant E2 : le lancement de la maquette (l'EDT simulé, heure 1), en mémoire — rien ne s'écrit. ── */
-function dr_lancerClic(){
-  if (typeof dr_lancer === 'function') { dr_lancer(); return; }
-  if (S.lancee || S.repetition) return;
-  S.heure = 1; S.lancee = true; S.ordres = S.ordres || {}; S.ordres[1] = ordreHeureCalc(1); S.ordresEid = S.ordresEid || {}; S.ordresEid[1] = S.ordres[1].map(eidDe); S.ecoule = 0; journal('lancement', { heure: 1 });
-  const hd = dr_heureDe(1); $('hou').textContent = hd.jour + ' ' + hd.debut + '-' + hd.fin + ' · heure 1 · ' + seance().titre; voir('pilotage');
-}
-(function(){ const b = document.getElementById('dr-lancer'); if (b) b.onclick = dr_lancerClic; })();
+/* E1 (§12.61 (2)) : plus de « ▶ Lancer l'heure » au Pilotage — l'heure se lance par la case de l'emploi du temps (edtLancer → dr_lancer) */
 /* ── les boîtes du site (atModaleChoix) à la place de celles du navigateur (cadrage n°7, T1 : « les confirm() natifs → modales MJPC ») ── */
 /* E1 (R21) les images vivent dans mjpc-medias ; la trame garde l'adresse complète, Paul ne voit et ne tape que la relative (3.2) */
 const DR_MEDIAS = 'https://siteflow-io.github.io/mjpc-medias/';
@@ -433,7 +425,7 @@ function dr_saisir(question, defaut, cb, libOk){
   setTimeout(() => { const i = document.getElementById('dr-saisie'); if (!i) return; i.focus(); i.onkeydown = ev => { ev.stopPropagation(); if (ev.key === 'Enter') { ev.preventDefault(); const p = document.querySelector('#at-modale .at-btn-prim'); if (p) p.click(); } else if (ev.key === 'Escape') { const m = document.querySelector('#at-modale'); /* la modale du site, lue, pas déclarée */ if (m) m.remove(); } }; }, 0);
 }
 /* la barre du site suit la vue de la maquette (voir() est appelée aussi par la répétition, la clôture…) */
-function dr_suivreBarre(v){ const lb = document.getElementById('dr-lancer'); if (lb) lb.classList.toggle('dr-cache', !!(S.lancee || S.repetition)); if (typeof ATVUES !== 'undefined') { ATVUES.vue = v; if (typeof atVuesRetenir === 'function') atVuesRetenir(); } if (typeof atVuesMarquer === 'function') atVuesMarquer(v); }
+function dr_suivreBarre(v){ if (typeof ATVUES !== 'undefined') { ATVUES.vue = v; if (typeof atVuesRetenir === 'function') atVuesRetenir(); } if (typeof atVuesMarquer === 'function') atVuesMarquer(v); }
 /* la séance de la colonne devient celle du déroulé (ATVUES.snum ↔ S.si) */
 function dr_suivreSeance(){ const k = (typeof ATVUES !== 'undefined' && ATVUES.snum != null) ? String(ATVUES.snum) : dr_cleSeance(0); const si = dr_rangSeance(k); if (S.si !== si) { S.si = si; S.di = 0; S.page = null; if (typeof reindexer === 'function') reindexer(); } dr_frontiereHorsClasse(); }
 function dr_frontiereHorsClasse(){ /* E1 (réveil n°10 ; C1 6.1) : la frontière d'heure portée par la trame vaut hors classe aussi — la trame réelle met ses écrans à l'heure 1 (§12.5) ; hors classe, le socle la pose par le calcul d'E2 (par les durées, le temps utile du créneau proposé), comme le lancement : l'atelier et le Pilotage montrent les heures que la classe jouera. Une frontière déjà posée (par Paul ou une heure jouée) n'est jamais refaite. Elle entre dans la trame à la prochaine modification de Paul */

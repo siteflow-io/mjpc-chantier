@@ -11,9 +11,14 @@ const sansVoile = pg => pg.evaluate(() => { const x = document.getElementById('f
 const b = await E.nav();
 /* (§12.28-3a, contrôle n°62) l'Atelier ne lance plus : une heure se lance dans « la classe en cours » — dr_ouvrirClasse sur la séance ouverte
    (ce que fait la case de l'emploi du temps), puis « ▶ Lancer » de l'écran de la classe. Remplace les clics sur [data-lancer] de l'Atelier. */
-const lancerEnClasse = async pg => { const deja = await pg.evaluate(() => document.documentElement.classList.contains('dr-en-classe'));
-  if (!deja) { await pg.evaluate(() => new Promise(r => { const ec = AT.edChap; dr_ouvrirClasse(ec.level, ec.chnum, String(ATVUES.snum), () => r()); })); await pg.waitForTimeout(500); }
-  await pg.evaluate(() => { const m = document.getElementById('at-modale'); if (m) m.querySelectorAll('button').forEach(x => { if (/Compris/.test(x.textContent)) x.click(); }); document.querySelector('[data-lancer="1"]').click(); }); };
+/* §12.61 (2) (Paul 28/10 14:36 : « toujours edt ») : plus de « ▶ Lancer » au Pilotage — le banc lance par la case de l'emploi du temps, comme Paul :
+   la case de 3E Charles de Gaulle du jour, « ▶ Ouvrir le pilotage et lancer » (les contrôles de la conscience font de même). */
+const lancerParCase = async (pg, jour) => { await pg.evaluate(() => { try { edtFermer(); } catch (e) {} edtOuvrir(); }); await pg.waitForTimeout(1500);
+  const ok = await pg.evaluate(j => { const cs = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); const c = (j && cs.find(e => (e.getAttribute('onclick') || '').indexOf(j) >= 0)) || cs.find(e => (e.getAttribute('onclick') || '').indexOf(new Date(Date.now()).toISOString().slice(0, 10)) >= 0) || cs[0]; if (!c) return false; c.click(); return true; }, jour || null);
+  if (!ok) throw new Error('aucune case de la 3E Charles de Gaulle dans l\'emploi du temps'); await pg.waitForTimeout(700);
+  if (!(await E.clicTexte(pg, 'button', 'Ouvrir le pilotage et lancer'))) throw new Error('« ▶ Ouvrir le pilotage et lancer » absent de la case'); await pg.waitForTimeout(3000);
+  await pg.evaluate(() => { const m = document.getElementById('at-modale'); if (m) m.querySelectorAll('button').forEach(x => { if (/Compris/.test(x.textContent)) x.click(); }); const g = document.getElementById('garde'); if (g && g.classList.contains('on')) { const d = document.getElementById('garde-devant'); if (d) d.click(); } }); await pg.waitForTimeout(300); };
+const lancerEnClasse = pg => lancerParCase(pg);
 const SEUL = (process.env.MJPC_SEUL || '').split(',').filter(Boolean);   // MJPC_SEUL=A7,A8 : ne jouer que ces parties (mise au point ; le banc de poussée les joue toutes)
 const B = async (k, titre, f) => { if (SEUL.length && !SEUL.includes(k)) return; dire(''); dire(k + ' — ' + titre); try { await f(); } catch (e) { E.verif(k, false, 'le banc n\'a pas pu aller au bout', String(e.message).split('\n')[0]); } };
 
@@ -40,9 +45,9 @@ await B('A3', 'la porte, la barre fusionnée, le déroulé dans la page (P2-P3)'
   E.verif('A3', barre === 'structure atelier#ong-atelier[data-atelier] pilotage#ong-pilotage relecture#ong-relecture', 'la barre : Structure · Atelier · Pilotage · Relecture, avec les ids de la maquette (96, contrat §7)', barre);
   E.verif('A3', !(await pg.$('.at-onglet[data-vue="papier"]')) && !(await pg.$('.at-onglet[data-vue="deroule"]')), 'plus d\'onglet « Papier » ni « Déroulé »');
   await pg.click('#ong-atelier'); await pg.waitForTimeout(1500); await sansVoile(pg);
-  const d = await pg.evaluate(() => ({ iframe: !!document.getElementById('at-dr-iframe'), zone: !!document.querySelector('#at-vues-zone > #dr-zone:not(.dr-parque)'), mur: !!document.getElementById('mur'), vig: document.querySelectorAll('#volet [data-at-di]').length, titre: (document.querySelector('#volet [data-at-di="0"]') || {}).textContent || '', lignes: Array.from(document.querySelectorAll('#mur li[data-p]')).map(l => l.textContent.trim()), at: S.atelier, haut: !!document.querySelector('#dr-zone .haut'), onglets: !!document.querySelector('#dr-zone .onglets'), bfin: !!document.getElementById('bfin'), lancer: !!document.querySelector('[data-lancer="1"]'), ecr: window.__ECR.filter(x => /\/chapitres\//.test(x)) }));
+  const d = await pg.evaluate(() => ({ iframe: !!document.getElementById('at-dr-iframe'), zone: !!document.querySelector('#at-vues-zone > #dr-zone:not(.dr-parque)'), mur: !!document.getElementById('mur'), vig: document.querySelectorAll('#volet [data-at-di]').length, titre: (document.querySelector('#volet [data-at-di="0"]') || {}).textContent || '', lignes: Array.from(document.querySelectorAll('#mur li[data-p]')).map(l => l.textContent.trim()), at: S.atelier, haut: !!document.querySelector('#dr-zone .haut'), onglets: !!document.querySelector('#dr-zone .onglets'), bfin: !!document.getElementById('bfin'), lancer: !!document.querySelector('[data-lancer="1"], #dr-lancer'), ecr: window.__ECR.filter(x => /\/chapitres\//.test(x)) }));
   E.verif('A3', !d.iframe && d.zone && d.mur, 'le déroulé p8 dans la zone du site (#dr-zone monté), sans iframe at-dr-iframe');
-  E.verif('A3', d.haut && !d.onglets && d.bfin && d.lancer, 'l\'entête .haut est là sans ses onglets (audit C1) ; #bfin et [data-lancer="1"] sont là');
+  E.verif('A3', d.haut && !d.onglets && d.bfin && !d.lancer, 'l\'entête .haut est là sans ses onglets (audit C1) ; #bfin est là, aucun « ▶ Lancer » ([data-lancer], §12.61 (2) : l\'heure se lance par la case de l\'emploi du temps)');
   const fr = await pg.evaluate(() => ({ n: dr_trame().length, pleines: dr_trame().filter(e => e.role !== 'fin').length, fins: dr_trame().filter(e => e.role === 'fin').length, heures: new Set(dr_trame().filter(e => e.role !== 'fin').map(e => e.heure)).size }));
   E.verif('A3', d.at && fr.pleines === 18 && fr.fins === fr.heures && d.vig === fr.n, 'Atelier ouvert sur la séance 0 : une ligne par diapo au volet — les 18 diapos de la trame et une fin d\'heure par heure (audit F7 ; la frontière hors classe, réveil n°10 : ' + fr.heures + ' heures)', d.vig + ' · ' + JSON.stringify(fr));
   E.verif('A3', /Analyse d'images : la routine/.test(d.titre) && d.lignes.length === 6 && /^Étape 1 : J'observe/.test(d.lignes[0]) && /^Étape 6 :/.test(d.lignes[5]), 'la diapo 1 « Analyse d\'images : la routine » au mur, ses six étapes', d.lignes.length + ' lignes');
@@ -559,7 +564,7 @@ await B('A27', 'le réveil n°8 (contrat §12.8) : la copie jouée d\'un autre j
   const hub = await p1.evaluate(() => window.__HUB); E.verif('A27', !o1.errs.length, 'lundi : aucune erreur JS', o1.errs.join(' ; ') || undefined); await o1.ctx.close();
   // mardi 15/09, 15 h 05 : l'heure suivante, par l'écran d'ouverture
   const o2 = await E.ouvrir(b, { w: 1366, h: 768, hub, quand: '2026-09-15T15:05:00+02:00' }); const p2 = o2.pg; await sansVoile(p2);
-  const prop = await p2.evaluate(() => (document.querySelector('[data-lancer="1"]') || {}).textContent || ''); await lancerEnClasse(p2); await p2.waitForTimeout(1500);
+  const prop = await p2.evaluate(() => { const p = dr_proposer(); return 'heure ' + p.heure + '/' + p.sur + ' · ' + p.classeNom + ' · ' + p.creneau; }); await lancerEnClasse(p2); await p2.waitForTimeout(1500);
   const ol = await p2.$('#o-lancer'); if (ol) { await ol.click(); await p2.waitForTimeout(1500); }
   const ma = await p2.evaluate(c => { const e = seance().ecrans.find(x => x.eid === c.eid); const b = e && e.blocs.find(x => x.bid === c.bid); const i = seance().ecrans.indexOf(e); S.di = i; S.page = null; dr_tout(); const li = document.querySelector('#mur [data-p="' + c.bi + '.t"]'); return { heure: S.heure, lancee: S.lancee, close: S.close, txt: b && b.txt, vu: li ? li.textContent : null }; }, ci);
   E.verif('A27', /heure 2/.test(prop) && !!ol && ma.heure === 2 && ma.lancee && !ma.close && /retouché lundi$/.test(ma.txt || '') && /retouché lundi/.test(ma.vu || ''), 'mardi, « ' + prop.trim().slice(0, 60) + ' » puis « Lancer l\'heure 2 » : le titre retouché en classe le lundi est là, dans la copie et à l\'écran', JSON.stringify(ma));
@@ -943,8 +948,8 @@ await B('A43', '§12.27 (7) : la visionneuse d\'un document (openViewer) bord à
 await B('A44', '§12.27 (8), dette 13 · 38 : #hclasse dit la classe de l\'heure (AT_DR_COURS) dès le lancement et change avec elle ; avant tout lancement, la classe proposée — avec une classe d\'essai qui se trie avant les De Gaulle (audit C4 d\'E3)', async () => {
   const st = E.store(); st.classes['3A ESSAI'] = JSON.parse(JSON.stringify(st.classes['CLASSE TEST'] || st.classes['3E Charles de Gaulle'])); st.classes['3A ESSAI'].nom = '3A ESSAI'; st.classes['3A ESSAI'].niveau = '3e';   /* dans le magasin du banc seulement, pas dans AUDITS/…/hub */
   for (const [w, h] of TAILLES_1227.filter(t => t[0] === 1366 || t[0] === 1707)) { const o = await E.ouvrir(b, { w, h, hub: st, vue: 'pilotage' }); const pg = o.pg; await sansVoile(pg); await pg.waitForTimeout(1500);
-    const av = await pg.evaluate(() => ({ h: document.getElementById('hclasse').textContent, prop: (typeof dr_proposer === 'function') ? dr_proposer().classeNom : null, premiere: dr_classeDuNiveau(), lancer: (document.getElementById('dr-lancer') || {}).textContent || '' }));
-    E.verif('A44', av.prop && av.h === av.prop && av.lancer.indexOf(av.prop) >= 0, w + ' × ' + h + ' : avant tout lancement, #hclasse = la classe proposée (« ' + av.prop + ' », celle de « ▶ Lancer avec … »), pas la première du niveau (« ' + av.premiere + ' »)', JSON.stringify(av));
+    const av = await pg.evaluate(() => ({ h: document.getElementById('hclasse').textContent, prop: (typeof dr_proposer === 'function') ? dr_proposer().classeNom : null, premiere: dr_classeDuNiveau(), lancer: (typeof dr_proposer === 'function') ? dr_proposer().classeNom : '' }));
+    E.verif('A44', av.prop && av.h === av.prop && av.lancer.indexOf(av.prop) >= 0, w + ' × ' + h + ' : avant tout lancement, #hclasse = la classe proposée (« ' + av.prop + ' », celle que propose dr_proposer), pas la première du niveau (« ' + av.premiere + ' »)', JSON.stringify(av));
     await lancerEnClasse(pg); await pg.waitForTimeout(1500);
     const ap = await pg.evaluate(() => ({ h: document.getElementById('hclasse').textContent, cours: (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) ? (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug) : null, lancee: !!S.lancee }));
     E.verif('A44', ap.cours && ap.h === ap.cours, w + ' × ' + h + ' : l\'heure lancée (par le geste « Lancer ») — #hclasse = la classe de l\'heure (AT_DR_COURS : « ' + ap.cours + ' »)', JSON.stringify(ap));
@@ -1034,7 +1039,9 @@ await B('A48', '§12.28 (3a)(3b), dette 13 · 41 : l\'écran « la classe en cou
     const e0 = await ecranClasse(pg);
     E.verif('A48', m === null && e0.at && e0.enClasse && e0.onglets.join(' | ') === 'Pilotage | Relecture | ↗ Le site dans un nouvel onglet | ✕ Fermer' && !e0.arbre && !e0.mesCh.length && e0.volet && e0.cote <= 0, w + ' × ' + h + ' : dr_ouvrirClasse → l\'écran de la classe : Pilotage · Relecture, « ↗ », « ✕ Fermer » (avant le lancement) ; ni Structure, ni Atelier, ni Mes chapitres, ni la colonne du chapitre ; le volet de la séance dans la zone ; aucun défilement de côté', JSON.stringify(e0));
     if (w !== 1707) { E.verif('A48', !o.errs.length, w + ' × ' + h + ' : aucune erreur JS', o.errs.join(' ; ') || undefined); await o.ctx.close(); continue; }
-    await pg.evaluate(() => document.querySelector('[data-lancer="1"]').click()); await pg.waitForTimeout(1500);   /* E2 lance par la case de l'emploi du temps quand il aura branché dr_ouvrirClasse ; d'ici là, le « ▶ Lancer » de l'écran de la classe */
+    const l0 = await pg.evaluate(() => Array.from(document.querySelectorAll('button,[data-lancer]')).filter(x => x.offsetParent !== null && /▶ Lancer/.test(x.textContent || '')).length);
+    E.verif('A48', l0 === 0, 'l\'écran de la classe avant le lancement : aucun « ▶ Lancer » (§12.61 (2) — la case de l\'emploi du temps lance)', String(l0));
+    await lancerParCase(pg, '2026-09-14');
     const e1 = await ecranClasse(pg);
     E.verif('A48', e1.lancee && !e1.close && e1.onglets.join(' | ') === 'Pilotage | Relecture | ↗ Le site dans un nouvel onglet', 'l\'heure lancée : plus de « ✕ Fermer » — Pilotage · Relecture · ↗ seulement', JSON.stringify(e1.onglets));
     await pg.evaluate(() => atelierFermer()); await pg.waitForTimeout(500); const msg = await pg.evaluate(() => (document.getElementById('at-modale') || {}).innerText || ''); await compris(pg); await pg.evaluate(() => atClasseFermer()); await pg.waitForTimeout(400); await compris(pg);
@@ -1057,7 +1064,7 @@ await B('A48', '§12.28 (3a)(3b), dette 13 · 41 : l\'écran « la classe en cou
     const r0 = await pg.evaluate(() => { const l = document.querySelector('[data-lancer="1"]'); return { lancer: !!l && l.offsetParent !== null }; });
     await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="pilotage"]').click()); await pg.waitForTimeout(900);
     const r1 = await pg.evaluate(() => { const l = document.querySelector('[data-lancer="1"]'); const g = document.querySelector('.at-rep-ligne'); return { lancer: !!l && l.offsetParent !== null, rep: !!S.repetition, lancee: !!S.lancee && !S.close && !S.repetition, ligne: g && g.offsetParent !== null ? g.textContent : null, hub: window.__ECR.length }; });
-    await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="atelier"]').click()); await pg.waitForTimeout(700); const r2 = await pg.evaluate(() => ({ rep: !!S.repetition, hub: window.__ECR.length }));
+    await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="atelier"]').click()); await pg.waitForTimeout(700); const r2 = await pg.evaluate(n => ({ rep: !!S.repetition, hub: window.__ECR.slice(n).filter(x => !/^(PUT|DELETE) \/site\/repetition(\/|$)/.test(x)).length + n, ecr: window.__ECR.slice(n) }), r1.hub);   /* le canal du tableau en répétition (§12.51) se remet à l'arrêt : il n'écrit rien pour la classe */
     await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="pilotage"]').click()); await pg.waitForTimeout(700);   /* la répétition ouverte, puis une heure par l'écran de la classe : la répétition s'arrête d'abord */
     const r3 = await pg.evaluate(() => new Promise(res => { const avant = !!S.repetition; const ec = AT.edChap; dr_ouvrirClasse(ec.level, ec.chnum, String(ATVUES.snum), () => res({ avant, apres: !!S.repetition })); }));
     E.verif('A48', r3.avant && !r3.apres, 'une répétition ouverte dans l\'Atelier s\'arrête quand l\'écran de la classe s\'ouvre (jamais une classe par-dessus une répétition)', JSON.stringify(r3));
@@ -1098,7 +1105,7 @@ await B('A49', '§12.28 (5), dette 13 · 43 : le « ? » de chaque écran du pro
     for (const v of ['atelier', 'pilotage', 'relecture']) await ecran('chapitre-' + v, () => pg.evaluate(x => document.querySelector('.at-onglet[data-vue="' + x + '"]').click(), v));
     await pg.evaluate(() => { const r = document.querySelector('.at-onglet[data-vue="atelier"]'); if (r) r.click(); }); await pg.waitForTimeout(600); await pg.evaluate(() => { try { atelierFermer(); } catch (e) {} closeProfPanel(); }); await pg.waitForTimeout(900);
     await ecran('classe-ouverture', () => pg.evaluate(() => new Promise(r => dr_ouvrirClasse('3e', '0', '0', () => r()))));
-    await ecran('classe-heure', () => pg.evaluate(() => document.querySelector('[data-lancer="1"]').click()));
+    await ecran('classe-heure', () => lancerParCase(pg, '2026-09-14'));
     await ecran('chapitre-relecture', () => pg.evaluate(() => document.querySelector('.at-onglet[data-vue="relecture"]').click()));
     await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="pilotage"]').click()); await pg.waitForTimeout(500);
     await ecran('classe-fin', () => pg.evaluate(() => document.getElementById('dr-clore').click()));
@@ -1966,6 +1973,23 @@ await B('A106', '§12.60 : deux navigateurs sur le même chapitre (le faux hub r
   tourne = false; await boucle;
   E.verif('A106', !oA.errs.length && !oB.errs.length && !oA.boites.length && !oB.boites.length, 'aucune erreur JS, aucune boîte du navigateur', oA.errs.concat(oB.errs, oA.boites, oB.boites).slice(0, 2).join(' ; ') || undefined);
   await oA.ctx.close(); await oB.ctx.close(); });
+
+/* ── A108 · §12.61 (2) (Paul 28/10 14:36 : « Oui toujours edt ») : le bouton « ▶ Lancer » du Pilotage retiré — l'heure se lance par la case de l'emploi du temps ── */
+await B('A108', '§12.61 (2) : aucun autre chemin de lancement à l\'écran — ni dans l\'Atelier, ni dans son Pilotage (répétition), ni dans l\'écran de la classe avant le lancement, ni après « Clore » ; la case de l\'emploi du temps lance l\'heure (« ▶ Ouvrir le pilotage et lancer »)', async () => {
+  const lanceurs = pg => pg.evaluate(() => Array.from(document.querySelectorAll('button,[data-lancer],[onclick]')).filter(x => x.offsetParent !== null && (x.matches('[data-lancer], #dr-lancer') || /^\s*▶ Lancer/.test(x.textContent || ''))).map(x => (x.id || x.tagName) + ' « ' + (x.textContent || '').trim().slice(0, 40) + ' »'));
+  const o = await E.ouvrir(b, { w: 1707, h: 743 }); const pg = o.pg; await sansVoile(pg);
+  const vu = {}; vu.atelier = await lanceurs(pg);
+  await pg.evaluate(() => lancerRepetition()); await pg.waitForTimeout(900); vu.repetition = await lanceurs(pg); await pg.evaluate(() => arreterRepetition()); await pg.waitForTimeout(500);
+  await pg.evaluate(() => new Promise(r => { const ec = AT.edChap; dr_ouvrirClasse(ec.level, ec.chnum, String(ATVUES.snum), () => r()); })); await pg.waitForTimeout(800); await compris(pg); vu.classe = await lanceurs(pg);
+  const dom = await pg.evaluate(() => ({ bouton: !!document.getElementById('dr-lancer'), lancee: !!S.lancee }));
+  E.verif('A108', !vu.atelier.length && !vu.repetition.length && !vu.classe.length && !dom.bouton && !dom.lancee, 'aucun « ▶ Lancer » à l\'écran — Atelier, Pilotage (répétition), écran de la classe avant le lancement ; `#dr-lancer` n\'existe plus', JSON.stringify({ vu, dom }));
+  await lancerParCase(pg, '2026-09-14');
+  const l = await pg.evaluate(() => ({ lancee: !!S.lancee && !S.close, heure: S.heure, cours: (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) ? AT_DR_COURS.classeNom + ' · ' + (AT_DR_COURS.creneau || (AT_DR_COURS.debut + '-' + AT_DR_COURS.fin)) : null, enClasse: document.documentElement.classList.contains('dr-en-classe') }));
+  E.verif('A108', l.lancee && l.enClasse && /Charles de Gaulle/.test(l.cours || ''), 'la case de l\'emploi du temps lance l\'heure : « ▶ Ouvrir le pilotage et lancer » → ' + (l.cours || '?') + ', heure ' + l.heure + ', l\'écran de la classe', JSON.stringify(l));
+  await pg.evaluate(() => document.getElementById('dr-clore').click()); await pg.waitForTimeout(800); await pg.evaluate(() => { const x = document.getElementById('f-clore'); if (x) x.click(); }); await pg.waitForTimeout(500); await pg.evaluate(() => { const g = document.getElementById('garde-clore'); if (g && g.classList.contains('on')) document.getElementById('gclore-oui').click(); }); await pg.waitForTimeout(1500); await compris(pg);
+  await pg.waitForTimeout(1500); const apres = await lanceurs(pg); const clos = await pg.evaluate(() => !!S.close);
+  E.verif('A108', clos && !apres.length, 'après « Clore » : aucun « ▶ Lancer » ne reparaît (la boucle d\'une seconde est retirée)', JSON.stringify({ clos, apres }));
+  E.verif('A108', !o.errs.length, 'aucune erreur JS', o.errs.slice(0, 2).join(' ; ') || undefined); await o.ctx.close(); });
 
 await b.close();
 const { nb, ko } = E.bilan(); dire(''); dire(nb + ' vérifications, ' + ko + ' échec(s) · ' + Math.round((Date.now() - t0) / 1000) + ' s');

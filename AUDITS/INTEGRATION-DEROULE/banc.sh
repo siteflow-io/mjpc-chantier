@@ -3,7 +3,7 @@
 # usage : sh AUDITS/INTEGRATION-DEROULE/banc.sh [dossier-de-sortie]       (depuis la racine du sas, branche `integration`)
 # 1. assemble LIVRAISONS/INTEGRATION/index.html + dr/* → assemble/index.html     2. les collisions (0 attendu)
 # 3. le parcours P0-P12 + K15 sur l'assemblé           4. le parcours en MODE TEST (K15-test : zéro écriture)
-# 5. les contrôles K1-K13 de la conscience par l'entrée du site (MJPC_ENTREE=site)
+# 5. les contrôles K1-K13 de la conscience par l'entrée du site (MJPC_ENTREE=site)   6. la sonde de l'Atelier (sonde-1262, la ⑨)
 # Code de sortie : 0 si tout est vert. Les sorties sont dans le dossier donné (par défaut AUDITS/INTEGRATION-DEROULE/sorties/<date-heure>/).
 set -u
 ICI=$(cd "$(dirname "$0")" && pwd); RACINE=$(cd "$ICI/../.." && pwd)
@@ -18,5 +18,6 @@ echo "— 4. parcours en mode test" | tee -a "$OUT/banc.txt"; MJPC_MODE_TEST=1 n
 echo "— 5. contrôles K1-K13 par l'entrée du site" | tee -a "$OUT/banc.txt"; MJPC_ENTREE=site node "$RACINE/AUDITS/CONTROLES-DEROULE/controles.mjs" "$ASM" "$OUT/controles.txt" 2>&1 | tail -n 5 | tee -a "$OUT/banc.txt"
 # (v1.1, 16:33) le verdict vient du fichier, pas du tube (le code de sortie d'un tube est celui de `tail`) : « --- fin : 0 défaut(s) » ou ROUGE
 grep -q -- "--- fin : 0 défaut" "$OUT/controles.txt" 2>/dev/null || R=1
+echo "— 6. la sonde de l'Atelier (§12.62, la ⑨)" | tee -a "$OUT/banc.txt"; node "$RACINE/LIVRAISONS/INTEGRATION/EX/bancs/sonde-1262.mjs" "$ASM" "$OUT/sonde-1262.txt" 2>&1 | tail -n 2 | tee -a "$OUT/banc.txt"; grep -q "· VERT" "$OUT/sonde-1262.txt" 2>/dev/null || R=1
 echo "— résultat : $([ $R = 0 ] && echo VERT || echo ROUGE) · sorties dans $OUT" | tee -a "$OUT/banc.txt"
 exit $R

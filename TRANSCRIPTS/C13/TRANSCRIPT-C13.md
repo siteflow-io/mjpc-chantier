@@ -8162,3 +8162,32 @@ MEMO
 
 29/10/2026 16:22
 MEMO
+
+## Tour 373 — 29/10/2026 16:26 → 16:30
+
+**Paul :** 1178 non je ne peux pas corriger comme actuellement, les descritpeurs et sous descritpteurs sont un obstacle majeur dans leur forme actuelle.
+
+**Lu et mesuré.** La grille de la lettre au hub (`sujet_mvtd85g7_ycxjq3`, lecture) : 12 points, 4 descripteurs et 16 sous-descripteurs en phrases chacun, poids 6, 4, 2, 2, 5, 7, 2, 2, 2, 2, 4, 2 (40). La note réelle de Flavie, recalculée de ses échelons au hub : 19,5 / 40, « Les trois paragraphes » en Fragile (1 / 4). Les 33 questions de la capture (`captures-29-10/gen.py`), chaque question comptée pareil : 21 / 40, « Les trois paragraphes » à 2 « oui » sur 3 (2,5 / 4). Comptes antérieurs : mode général 29 gestes (1121), mode rapide 74 touches (1159) ; mesuré aujourd'hui : 60 gestes.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1187 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1181. Entendu, 1178 tombe : plus aucune copie sur la grille actuelle. La mesure d'avant, c'est donc la copie de Flavie, et elle seule : 13 min 37 s, 60 gestes et 366 caractères.
+
+1182. L'ordre change : d'abord ce qui te débloque, puis chaque gain, un à la fois. Étape 1 : la grille de la lettre en questions d'un seul fait, dans le mode général de la capture, le plus court à coder pour tes copies qui attendent ; avec le chrono fin, la flèche qui efface et la branche prête. Tu corriges tes copies avec, et le chrono compare à Flavie.
+
+1183. Étape 2 : le mode rapide à côté, une question à la fois, en une seule lecture. Tu alternes, une copie dans chaque mode, et le gain se lit copie contre copie. Puis le point d'un coup (1165) et l'appli qui apprend (1167), un à la fois, chacun mesuré ; ce qui ne gagne rien est retiré. 1166 attend ta deuxième rédaction : il n'y a encore rien à comparer.
+
+1184. Pourquoi il faut mesurer : compté, pas mesuré, le mode général fait 29 gestes sur Flavie (1121), et le mode rapide 74 touches (1159), plus que les 60 gestes mesurés aujourd'hui. Ce sont des touches, sans souris ni recherche des yeux : plus rapide ou non, je ne sais pas. Seul le chrono le dira.
+
+1185. Avant le code de l'étape 1, il reste le point de la grille que tu as laissé à cadrer : la correspondance entre la couleur, le poids et le contenu. Mesuré sur Flavie, avec les oui et non de la capture : si chaque question compte autant, elle a 21 sur 40, et toi tu lui as mis 19,5. Mais « Les trois paragraphes » passe au vert, avec deux « oui » sur trois, alors que tu l'as mis en fragile : un paragraphe entier qui manque pèse plus qu'une question.
+
+1186. Je propose : chaque question a son poids dans le point, proposé par l'IA d'injection et corrigé par toi. La note est la part du poids obtenue, et la couleur aussi : tout obtenu, vert foncé ; deux tiers, vert ; un tiers, orange ; en dessous, rouge. Le vert foncé reste à la portée d'une bonne copie de 3e, puisque les questions sont des attendus de 3e, pas la perfection.
+
+1187. Oui à 1182 à 1186 ? Je t'écris alors la grille de la lettre, question par question, avec ses poids et le compte sur Flavie, pour que tu la corriges avant le code.
+
+À tester : rien de neuf.
+
+29/10/2026 16:30
+MEMO

@@ -8413,3 +8413,32 @@ Pour ce qui est du rendu à l'élève : l'App doit être capable de produire des
 
 29/10/2026 20:55
 MEMO
+
+## Tour 382 — 29/10/2026 22:19 → 22:21
+
+**Paul :** [image : la photo d'une copie de l'an dernier, sans nom, en capture d'écran de téléphone]
+
+**Mesuré.** Le fichier : 1080 × 2412 points, 933 Ko ; la page : 1080 × 1438 (recadrée par la photo) ; papier Seyès, ligne principale tous les 8 mm, écart médian entre lignes écrites 44 points, soit environ 55 points par centimètre ; 30 lignes écrites (comptées à l'œil) ; détection automatique des bandes d'encre bleue : 29. La page recadrée en JPEG : 293 Ko (qualité 85), 205 Ko (70), 164 Ko (55), lisible à 55. Marge rouge : environ 135 points libres à gauche. La photo reste au scratchpad (`scan-prive/`), jamais poussée.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1246 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1240. Mesuré sur ta photo : c'est une capture d'écran de téléphone, et la page s'y lit en entier. 30 lignes écrites, sur du Seyès : une ligne tous les 8 mm, soit 44 points d'image par ligne. La netteté vaut à peu près la moitié d'un scan de photocopieur, et elle suffit.
+
+1241. Le poids : la page seule, recadrée, pèse 164 Ko et reste lisible. Le fichier HTML avec le scan dedans, ta roue de secours (1237), pèserait donc moins d'un demi-mégaoctet par élève.
+
+1242. La précision à tenir : une ligne fait 8 mm. Pour qu'un cercle tombe sur la bonne ligne, la photo de l'élève doit retomber juste à moins de 4 mm près. C'est le chiffre que la page de test (1238) devra vérifier.
+
+1243. La marge : sur cette copie, la marge rouge laisse environ 2,5 cm libres à gauche, de quoi écrire L, M, C ou D (1216) sans gêner le texte.
+
+1244. Un gain que je n'avais pas vu : avec le scan, l'appli peut compter elle-même les lignes écrites, au lieu que tu les déclares. Mon premier essai sur ta photo en trouve 29 sur 30 : pas encore fiable, à améliorer et à mesurer.
+
+1245. Ta photo reste ici, jamais sur le site ni au dépôt.
+
+1246. Je lance la feuille à repères et la page de test (1238) ?
+
+À tester : rien de neuf.
+
+29/10/2026 22:21
+MEMO

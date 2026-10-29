@@ -7448,3 +7448,32 @@ MEMO
 
 29/10/2026 10:37
 MEMO
+
+## Tour 353 — 29/10/2026 10:41 → 10:43
+
+**Paul :** ma question est plutot: actuellement dans le déroulé il n'y a pas de charte visuelle. Or, les diapos que tu reconstruis sur mes canons en ont une. Est ce possible d'avoir 5 chartes visuelles que je choisis selon les chapitres et qui s'appliquent partout? Par ailleurs, tout de suite en micro, tu fais en sorte que le tableau distant s'affiche en plein écran (autorisation google éivdemment)
+
+**Fait.** Micro §12.72 codé par la conscience (`dr-tableau.js`, `dr_tabPleinEcran`), commit sas `integration` `398e3d66a` ; sonde par le geste verte (clic → plein écran ; Échap puis clic → plein écran ; clic sur la clé → la clé ; fenêtre locale → rien ; 0 erreur). Banc complet et cas E3 en cours. Contrat §12.72, §12.73.
+
+**Claude :**
+
+À jouer : rien de neuf (la ⑨ attend toujours tes tests de 09:01) · en cours : le banc complet sur le plein écran · ouvert : 1033 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1027. Le plein écran est codé. Sur l'ordinateur du tableau, ton premier clic sur la page la met en plein écran : Chrome exige ce geste, c'est son autorisation. Si quelqu'un appuie sur Échap, le clic suivant y revient. Le clic sur la ligne de la clé USB reste pour la clé. La fenêtre « Ouvrir le tableau » de ton ordinateur ne change pas.
+
+1028. Je passe le banc complet, puis je te le présente à promouvoir, comme 8.76.1-⑨.
+
+1029. Les chartes : oui, c'est possible. Une charte, c'est un fond, la couleur des titres et du texte, un accent, les quatre couleurs des domaines, les deux polices, et le cadre des diapos d'ouverture : la bande, le fil.
+
+1030. Je propose : tu choisis la charte du chapitre dans l'Atelier, une parmi cinq, et elle s'enregistre avec le chapitre. Elle s'applique à toutes ses diapos, d'ouverture et de contenu, au tableau, dans les vignettes du pilote et sur la feuille sommaire. L'interface du site, pilote et Atelier, garde ses couleurs.
+
+1031. Ce qui frotte : tes couleurs de texte et tes surligneurs doivent rester lisibles sur chaque fond. Chaque charte a donc sa version de ces couleurs, contrôlée au banc.
+
+1032. La première charte est ton canon, le bleu nuit. Les quatre autres sont à inventer.
+
+1033. Je te montre les cinq en captures, sur ton chapitre 1, trois diapos par charte ? Après ton choix, j'écris au contrat.
+
+À tester : rien de neuf.
+
+29/10/2026 10:43
+MEMO

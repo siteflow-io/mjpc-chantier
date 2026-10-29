@@ -7137,3 +7137,40 @@ MEMO
 
 29/10/2026 08:42
 MEMO
+
+## Tour 343 — 29/10/2026 08:47 → 08:49
+
+**Paul :** En fait la question sous jacente c'est la copie de classe. Il faut construire le profil longitudinal classe ( entrée par l'encart en bas du calendrier). Une fois la copie de classe disponible ici, la réactivation sera toute légitime ici. En revanche que ce soit bien clair: on garde le bouton d'activation désactivation, et je veux voir la diapo qui s'allume ou se grise, mais jamais ne disparaît. Quand elle est grisée elle n'apparait jamais au tableau. 
+Par ailleurs il faut mesurer le message " dans les temps " sur la carte du bas du calendrier. 
+Dans ce profil classe on doit avoir donc la copie de classe( c'est là bas que je travaillerai le plus, car c'est là bas que j'adapte mes chapitres en fonction des classes ). Quoi d'autre peut y être?
+
+**Mesuré.** `index.html` de production (⑧) : `edtCartesHtml`, `edtDivergence`, `edtAvancement`, `edtHeuresJustifiees`, `edtCarteClic` ; relu `MANDATS/PROFIL-CLASSE/CADRAGE-RELU.md` (26/10) et le tour 187 (« deux endroits m'affichent le pilotage de la COPIE de CLASSE. l'edt, et le profil de classe. L'atelier n'est jamais le lieu où je vois jouer la copie de classe »).
+
+**Claude :**
+
+À jouer : promouvoir la ⑨ (943) · en cours : rien · ouvert : 961 ; 941 ; 905 à 917 (les questions de la lettre).
+
+952. La réactivation, entendu : le bouton oui / non reste. La diapo est toujours là, dans la copie de la classe, en tête de l'heure : allumée sur oui, grisée sur non, jamais retirée. Grisée, elle ne passe jamais au tableau, comme une diapo masquée. Dans l'Atelier, rien ne change : le réglage de la séance donne le oui ou le non proposé. La ⑨ peut partir telle quelle : la réactivation y est grisée dans la liste des rôles, et plus aucune diapo ne disparaît. 950 se fera avec la copie de classe.
+
+953. « Dans les temps », mesuré. La carte ne compare pas ta classe à ton emploi du temps prévu. Elle la compare à la classe la plus avancée du même niveau, en nombre de séances finies du chapitre en cours. « Dans les temps » veut dire : au plus une séance de retard sur cette classe-là.
+
+954. Ce qui est faux là-dedans. Une classe seule de son niveau, ou la plus avancée, est toujours « dans les temps », même si elle est en retard sur ton programme. Deux classes sur des chapitres différents se comparent quand même, séance contre séance : une classe passée au chapitre suivant peut paraître en retard. Le retard est compté en séances mais affiché « h de retard », et on lui retire des heures justifiées, comptées en heures. Enfin, le clic sur la carte dit seulement « Profil de la classe — il arrive au lot suivant ».
+
+955. Je propose : le retard se compte en heures jouées sur toute la progression du niveau, pas seulement dans le chapitre en cours ; il se compare à la classe la plus avancée du niveau et à ton prévu ; la carte dit lequel des deux est en cause. À inscrire au registre comme dette.
+
+956. Ce que le profil de la classe contient, d'après ce que tu as déjà cadré (25/08, tours 69 à 101, 26/10). D'abord la copie de la classe : le déroulé de cette classe, heure par heure, que tu adaptes. Une diapo « pas pour cette classe » ou « pour cette classe seulement », ta version d'une diapo, la réactivation allumée ou grisée. Le contenu reste celui du chapitre.
+
+957. L'emploi du temps de cette classe seule : ses heures de l'année, passées et à venir, avec la séance, « heure h/N » et le chapitre.
+
+958. Pour chaque heure jouée : « Relire cette heure » (le récit, ce qui s'est passé, le papier), et la revue du chapitre pour cette classe.
+
+959. Les stats, à côté et pas dans le même onglet : la participation par élève, la couverture des notions, le temps réel et le temps prévu, les heures sautées et leurs motifs. Tout se copie par un bouton.
+
+960. Le longitudinal : les compétences de la classe et de chaque élève, avec les niveaux des copies corrigées. La rédaction les écrit déjà, depuis hier soir, sur sa branche (553). Et le lancement ou la reprise de l'heure : tu as dit que la copie de classe se pilote depuis deux endroits, l'emploi du temps et le profil de la classe.
+
+961. Ce que tu ne commentes pas dans 952 à 960 est acquis. Le profil de chaque élève et le cockpit restent hors de ce profil, comme cadré le 26/10. Je te propose ensuite comment on le construit.
+
+À tester : rien de neuf, la ⑨ attend ton « promeus ».
+
+29/10/2026 08:49
+MEMO

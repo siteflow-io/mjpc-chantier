@@ -8494,3 +8494,32 @@ MEMO
 
 29/10/2026 23:03
 MEMO
+
+## Tour 385 — 29/10/2026 23:05 → 23:09
+
+**Paul :** Je ne peux pas faire de dessin non plus. Je veux surtout voir à quoi ressemble une copie avec le pochoir par dessus.
+
+**Fait.** Deux captures construites sur la photo de la copie de l'an dernier (envoyée par Paul) : `10-pochoir-ordinateur.png` (1707 × 1100) et `11-pochoir-telephone.png` (390 × 844, ×2), générées par `pochoir.py` ; gardées au scratchpad (`scan-prive/`), jamais poussées. Le pochoir : numéros de ligne (centres des lignes mesurés sur l'image), huit cercles sur huit erreurs réelles relevées sur la copie (clapoti, silent, voit, arrières, multiples, jusque là, A, ressorti), placés à la main puis vérifiés sur rendu ; un cadre doré (la phrase qui touche, ligne 22) ; un cadre en pointillé (une remarque, ligne 15) ; les citations du panneau sont des morceaux de l'image. Palette de `redaction.html`.
+
+**Claude :** [captures 10-pochoir-ordinateur.png et 11-pochoir-telephone.png]
+
+À jouer : regarder les captures 10 et 11 · en cours : rien · ouvert : 1264 ; 1254 (le test, quand tu pourras imprimer) ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1258. Entendu. Voici, sans rien imprimer ni dessiner, deux captures construites sur ta copie de l'an dernier, le pochoir posé dessus : ce que l'élève recevrait.
+
+1259. Sur la copie : les numéros de ligne dans la marge, posés par l'appli ; un cercle rouge numéroté sur chaque erreur, qui passe au vert quand l'élève l'a corrigée ; un cadre doré sur la phrase qui t'a touché ; un cadre en pointillé sur la phrase d'une remarque.
+
+1260. À côté : la phrase qui t'a touché et celle de la remarque sont des morceaux de sa copie, dans son écriture, sans rien recopier. Puis « À reprendre » : chaque erreur avec sa ligne et son type, jamais la bonne forme. L'élève écrit le mot corrigé, l'appli lui dit si c'est juste, le cercle passe au vert, et tu vois qui a fini.
+
+1261. Sur le téléphone : la copie s'agrandit avec deux doigts ; un clic sur un cercle ouvre l'erreur en bas de l'écran, avec le mot dans son écriture.
+
+1262. Les huit erreurs sont de vraies erreurs de cette copie : clapotis, silence, vit, arrière, de multiples, jusque-là, À, ressortit. J'ai placé leurs cercles à la main, comme tu le ferais d'un clic. La remarque et la raison (« L'image est juste ») sont des exemples.
+
+1263. Ta copie reste ici : ces captures ne vont ni sur le site ni au dépôt.
+
+1264. C'est bien ce que tu imaginais ?
+
+À tester : rien de neuf.
+
+29/10/2026 23:09
+MEMO

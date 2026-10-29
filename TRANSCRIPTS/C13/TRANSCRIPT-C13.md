@@ -7842,3 +7842,34 @@ Que proposes-tu ?
 
 29/10/2026 12:59
 MEMO
+
+## Tour 363 — 29/10/2026 13:25 → 13:26
+
+**Paul :** 1095 non. Le sous descripteur doit décrire exactement ce qu'il y a dans la copie de leleve. Le vert mélange deux choses : la place et la présence. Par ailleurs j'ai la possibilité de modifier le texte de la grille quand je corrige. Il faut une possibilité de verser la modification dans la grille. Et ensuite un export du journal de correction pour l'IA afin de voir comment affiner la rédaction des éléments de la grille. J'attends tes propositions
+
+**Mesuré.** `redaction.html` (branche `ru-1263`) : un sous-descripteur se modifie pour une copie (« La version éditée sera utilisée sur la fiche élève », « Restaurer le texte d'origine ») ; rien ne la reporte dans la grille ; aucun journal de correction (le mot n'existe pas dans le fichier).
+
+**Claude :**
+
+À jouer : les tests de la ⑩ (liste de 12:05) · en cours : rien · ouvert : 1105 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1098. 1095 retiré. La règle : un sous-descripteur est une observation de la copie, un seul fait, dit exactement. « Ta lettre n'a pas de date » et « Ta date n'est pas en haut à droite » sont deux sous-descripteurs, jamais un.
+
+1099. Comme une copie peut porter plusieurs faits, je propose : un clic sur la couleur, puis tu coches les observations vraies de cette copie, zéro, une ou plusieurs. Chaque observation est soit un acquis, soit un manque.
+
+1100. Le poids, cohérent avec la couleur : la couleur donne le haut de sa tranche, et chaque manque coché fait descendre d'un palier dans la couleur, sans jamais en sortir. Le vert foncé donne toujours le poids entier, même avec un manque coché : c'est ta règle, très bien n'est pas parfait. Les acquis ne changent pas la note, ils nourrissent le bilan.
+
+1101. Par exemple, pour « les codes de la lettre » : « Ta lettre a un lieu » (acquis) ; « Ta lettre n'a pas de date » (manque) ; « Ta date n'est pas en haut à droite » (manque) ; « Ta lettre ne nomme pas à qui elle s'adresse » (manque) ; « Ta lettre n'est pas signée » (manque). Tu choisis orange et tu coches « pas de date » : la note est le haut de l'orange moins un palier.
+
+1102. Verser dans la grille : quand tu modifies une observation en corrigeant, un bouton « Verser dans la grille » met ton texte à la place de l'ancien pour les copies suivantes ; les copies déjà corrigées gardent le leur. Et « Nouvelle observation », dans la couleur ouverte, pour un fait que la grille n'a pas encore : tu l'écris une fois, elle reste.
+
+1103. Le journal de correction : l'appli note, copie par copie, la couleur de chaque point, les observations cochées, les textes modifiés (avant, après, versés ou non), les citations et le temps passé par point. Rien d'autre n'est envoyé nulle part.
+
+1104. L'export pour l'IA : un bouton « Exporter le journal » donne un fichier, avec en tête une consigne prête à coller dans une conversation avec Claude : quelles observations ne sont jamais cochées, lesquelles sont toujours modifiées, les mêmes modifications répétées d'une copie à l'autre, les points où tu passes le plus de temps. Rien de payant : c'est toi qui colles le fichier.
+
+1105. Oui à 1098 à 1104 ? Ensuite la grille de la lettre ainsi rédigée, et le bilan de Flavie, pour que tu corriges les deux.
+
+À tester : la liste de la ⑩ de 12:05 tient.
+
+29/10/2026 13:26
+MEMO

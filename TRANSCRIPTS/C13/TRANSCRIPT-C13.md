@@ -7774,3 +7774,34 @@ MEMO
 
 29/10/2026 12:46
 MEMO
+
+## Tour 361 — 29/10/2026 12:50 → 12:51
+
+**Paul :** ok c'est bon pour tout, à part pour la correspondance entre la couleur, le poids, et le contenu exact du descripteur ou sous descripteur. il faut continuer à cadrer. dette à ajouter: quand je suis dans l'atelier et que je continue à écrire dans une diapo jusqu'à ce qu'elle déborde et qu'elle apsse en page, la colonne de gauche n'affiche pas la nouvelle page. Or, comment je sais qu'elle existe si elle ne s'affiiche pas? à mesurer.
+
+**Mesuré.** `redaction.html` (branche `ru-1263`) : la note d'un point = poids × (échelon × 4 + sous-échelon) / 12, arrondie au demi-point en dessous ; échelon 4 (Très satisfaisant) = le poids entier ; la couleur = l'échelon. Production 8.77.0 : `voletAtelier` (une ligne par diapo, rien sur ses pages). Registre 13 · 104 (prod `556bd05`).
+
+**Claude :**
+
+À jouer : les tests de la ⑩ (liste de 12:05) · en cours : rien · ouvert : 1086 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1080. Acquis : 1064 à 1079, sauf la correspondance entre la couleur, le poids et le contenu. Je continue le cadrage là-dessus.
+
+1081. Mesuré, ce qui se passe aujourd'hui : chaque point a quatre échelons (rouge, orange, vert, vert foncé) et, sous chacun, quatre sous-échelons. La note du point en découle : du poids entier pour « Très satisfaisant » à zéro, par seizièmes. Chaque échelon a son texte, et chaque sous-échelon le sien.
+
+1082. Je propose, avec les éléments : chaque point a ses éléments obligatoires, un seul fait chacun, et au plus un élément « au-delà », qui valorise. Tous les éléments comptent pareil.
+
+1083. La couleur vient du compte : tous les obligatoires et l'« au-delà », vert foncé ; tous les obligatoires, vert ; au moins la moitié, orange ; moins de la moitié, rouge.
+
+1084. Le poids : la note du point est son poids multiplié par la part des éléments vus, arrondie au demi-point en dessous. Par exemple, un point sur 6 avec quatre obligatoires et un « au-delà » : les cinq, 6 ; les quatre obligatoires, 4,5 ; trois, 3,5 ; deux, 2,5.
+
+1085. Le contenu : chaque élément a deux phrases à toi, une quand il est là, une quand il manque. Le bilan du point dit en une phrase ce qui est réussi, nomme ce qui manque, puis donne la citation.
+
+1086. Oui à 1082 à 1085 ? Ensuite je découpe la grille de la lettre en éléments et je réécris le bilan de Flavie, pour que tu corriges les deux.
+
+1087. La colonne de l'Atelier, mesuré : elle a une ligne par diapo et rien sur ses pages ; la page n'existe que dans le compteur « page 2 / 2 » de la diapo ouverte. Je propose : sous une diapo qui a plusieurs pages, ses pages dans la colonne (p. 1, p. 2), chacune cliquable, dans l'Atelier comme au pilote. Inscrit : 13 · 104, dans la ⑪.
+
+À tester : la liste de la ⑩ de 12:05 tient.
+
+29/10/2026 12:51
+MEMO

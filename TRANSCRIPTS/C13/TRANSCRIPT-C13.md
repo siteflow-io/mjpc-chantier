@@ -7508,3 +7508,22 @@ MEMO
 
 29/10/2026 10:49
 MEMO
+
+## Tour 355 — 29/10/2026 10:51 → 10:52
+
+**Paul :** ok pour la 10.
+
+**Fait.** Exécutant neuf lancé sur la ⑩ (branche `ex-dix`, base `integration` avec la ⑨ et le micro) : §12.74 avec 13 · 93 et 13 · 94, §12.70 avec 13 · 92, §12.71, §12.68 ; commit et poussée après chaque point ; sonde-10 au banc (étape 8) ; un banc complet à la fin.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : la ⑩ chez un exécutant neuf ; le banc complet du plein écran · ouvert : 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1042. La ⑩ est lancée, dans l'ordre de 1040. L'exécutant pousse après chaque point : si l'utilisation s'arrête, rien n'est perdu.
+
+1043. Le plein écran du tableau distant part avant, à part, dès que son banc est vert : je te le présente à promouvoir.
+
+À tester : rien de neuf.
+
+29/10/2026 10:52
+MEMO

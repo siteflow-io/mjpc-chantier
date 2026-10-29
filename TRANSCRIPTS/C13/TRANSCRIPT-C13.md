@@ -8024,3 +8024,36 @@ MEMO
 
 29/10/2026 15:03
 MEMO
+
+## Tour 369 — 29/10/2026 15:20 → 15:21
+
+**Paul :** 1139 attention à raisonnner en pourcentage du nombre de lignes du sujet, jamais en nombre fixe en dur. Pour le dépassement on met +10lignes autorisé. 1141. Non, une ligne équivaut à chaque ligne où l'élève a écrit au moins un mot. 
+Ce qui reste à ma main c'est ce quaucune grille ne voit, voilà exactement ce que je ne veux pas. l'App doit être fine jusqu'au bout. 
+Pour que j'ai peu d'apprentissage des raccourcis il faut au maximum qu'ils soient les mêmes entre la dictée et la redac
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1153 ; 1126 ; 1120 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1145. 1139 corrigé : tout se compte en part du nombre de lignes du sujet. La longueur est « oui » à partir de 100 % des lignes du sujet. Le dépassement autorisé, tes dix lignes sur trente, je l'écris en part : un tiers de plus. Pour un sujet de vingt lignes, cela donne sept lignes de plus. Au-delà, c'est « non ».
+
+1146. Les seuils d'erreurs aussi, en part des lignes écrites, au lieu des nombres d'aujourd'hui. Avec les seuils actuels de la lettre, cela fait : jusqu'à 10 % des lignes, très satisfaisant ; 25 %, satisfaisant ; 50 %, fragile ; au-delà, insuffisant. Flavie, 14 erreurs sur 21 lignes, 67 % : insuffisant, comme dans son bilan.
+
+1147. 1141 retiré : une ligne, c'est chaque ligne où l'élève a écrit au moins un mot. Pas de numéros sur la copie : en mode rapide, l'appli te mène ligne après ligne, dans l'ordre, et tu suis la copie du doigt. L'élève retrouve « ligne 7 » en comptant ses lignes écrites.
+
+1148. 1143 retiré, tu as raison : rien ne doit rester à ta main. La phrase qui t'a touché passe aussi par la grille : une dernière question, « Une phrase t'a-t-elle touché ? ». Tu la cites, puis tu choisis pourquoi parmi quelques raisons, à toi d'en donner les mots ; par exemple, on y entend la guerre vécue de l'intérieur ; le détail sonne vrai ; l'émotion passe sans être dite.
+
+1149. La priorité de la fin se calcule aussi : c'est le « non » qui coûte le plus de points. Pour Flavie, le troisième paragraphe.
+
+1150. Les touches, les mêmes que la dictée, avec le même sens. Espace ou Entrée : oui, la suite, comme « correct » en dictée. Retour : la précédente. M : non, ça manque, comme « manquant ». G ou L : un non avec sa citation, comme « erreur avec saisie ». A : attention, je reviens sur cette question. I : illisible.
+
+1151. Toujours comme en dictée : les chiffres, le nombre d'erreurs de la ligne ; ⇧R, l'autre mode, ici le mode général ; ? ou F1, l'aide ; Échap, Ctrl+Z ; les initiales puis Entrée pour la copie suivante. Seule nouvelle touche : ⇧ et Entrée, tout le reste du point est « oui ».
+
+1152. Au début de la copie : les initiales et Entrée, puis le nombre de lignes écrites et Entrée.
+
+1153. Oui à 1145 à 1152 ? Je refais alors les captures en mode rapide.
+
+À tester : rien de neuf.
+
+29/10/2026 15:21
+MEMO

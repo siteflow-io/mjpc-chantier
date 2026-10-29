@@ -778,7 +778,10 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   /* une heure close ne se reprend plus, par aucun chemin (C1 12 ; `_drHeureCloseAu`) : la même clé (jour + créneau + classe) n'est jamais réécrite */
   if (!DR_CL.cleVerifiee) { const fin0 = String(creneau).split('-')[1]; const ch0 = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug + '/heures/' + _drCleHeureDe({ classeSlug, debut, fin: fin0 });
     dr_lire(ch0, t0 => { const clos = !!(t0 && t0.clos); /* le paquet entier, pas `…/clos` : en mode test le magasin est rangé par chemin, une lecture de `…/clos` mise en cache cacherait la clôture écrite ensuite sur `H` */ if (clos === true) { try { atInfo('L’heure de ' + escapeHtml(nom) + ' sur le créneau ' + escapeHtml(creneau) + ' est déjà close aujourd’hui : elle ne se rouvre pas. Lance l’heure suivante depuis sa case de l’emploi du temps (son créneau à elle).'); } catch (e) {} return; }
-      DR_CL.cleVerifiee = true; try { dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); } finally { DR_CL.cleVerifiee = false; } }); return; }
+      /* §12.68 : ce que la copie de la classe était AVANT ce lancement (lu, jamais écrit) — « Annuler cette heure » la remettra telle quelle */
+      const C0 = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug;
+      dr_lire(C0, v0 => { DR_CL.avant = { C: C0, hub: v0 === undefined ? undefined : (v0 == null ? null : JSON.parse(JSON.stringify(v0))) };
+        DR_CL.cleVerifiee = true; try { dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); } finally { DR_CL.cleVerifiee = false; } }); }); return; }
   const fin = String(creneau).split('-')[1];
   if (!suite) DR_CL.etatRestaure = false;   /* un nouveau lancement : l'état relu de la classe le redira s'il y en a un */
   if (!suite) try { dr_cloreHeureRestee(classeSlug, nom, c); } catch (e) {}
@@ -803,6 +806,7 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   /* §12.25 (2) : l'écran d'ouverture paraît aussi à l'heure 1, ou à une heure n sans état relu, quand E4 a quelque chose à réactiver — le même bouton ; sinon « Lancer » reste direct */
   if (!DR_CL.react.decide[heure] && !dr_reactDejaLa(heure) && !DR_CL.react.enCours) { DR_CL.react.enCours = true; dr_reactPreparerAsync(heure, e => { DR_CL.react.enCours = false; if (e) { DR_CL.suite = (suite && DR_CL.suite) ? DR_CL.suite : { classeSlug, nom, creneau, debut, heure, garder: false }; dr_ouvertureLegere(heure); } else { DR_CL.react.decide[heure] = true; dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); } }); return; }
   const garder = suite && DR_CL.suite && DR_CL.suite.garder; DR_CL.suite = null;
+  try { DR_CL.avantMem = dr_annulInstantane(); } catch (e) { DR_CL.avantMem = null; }   /* §12.68 : la page telle qu'avant le lancement */
   const copie = garder ? null : ((typeof atDrJouer === 'function') ? atDrJouer(classeSlug, nom) : null);
   AT_DR_COURS = { debut, fin, classeSlug, classeNom: nom }; AT_DR_REGIME = 'classe';
   try { chChargerTaxo(() => {}); } catch (e) {}   /* [8.67.1] le T-5 nomme les notions, jamais leurs codes */
@@ -1073,6 +1077,7 @@ setInterval(() => { try { if (!dr_clPeutEcrire()) return; const g = J.length + '
    l'étape 7 — la clôture garde sa garde (ce qui manque et ce que Paul risque, C1 7.0 bis) ; rien ne se clôt sans qu'il l'ait lu ─── */
 function dr_clorePoser(){
   const f = document.getElementById('bfin'); if (!f) return; let b = document.getElementById('dr-clore');
+  try { dr_annulPoser(); } catch (e) {}   /* §12.68 : « Annuler cette heure », jusqu'à la clôture */
   if (!b) { b = document.createElement('button'); b.id = 'dr-clore'; b.className = f.className; b.textContent = '■ Clore l’heure';
     b.title = 'Clore l’heure : ouvre la dernière étape de la fin de l’heure ; avant de fermer, le site te dit ce qui manque (échéance, travail, récit relu, copie École Directe) et ce que tu risques — tu clos quand même si tu veux.';
     b.onclick = () => { if (!S.lancee || S.close) return; S.finSection = 7; ouvrirFin(true); }; f.insertAdjacentElement('afterend', b); }
@@ -1289,7 +1294,8 @@ function dr_closConfPoser(R){
     document.body.appendChild(b);
   }
   DR_CL.closConf = R; DR_CL.closConfEdt = false;
-  const txt = 'L’heure des ' + R.classe + ' est close à ' + R.h; const t = document.getElementById('dr-clos-conf-t'); if (t && t.textContent !== txt) t.textContent = txt;
+  { const rb = document.getElementById('dr-clos-relire'); if (rb) { const v = R.annulee ? 'none' : ''; if (rb.style.display !== v) rb.style.display = v; } }   /* §12.68 : une heure annulée ne se relit pas */
+  const txt = R.annulee ? 'L’heure des ' + R.classe + ' est annulée : le site n’en garde rien' : 'L’heure des ' + R.classe + ' est close à ' + R.h; const t = document.getElementById('dr-clos-conf-t'); if (t && t.textContent !== txt) t.textContent = txt;
   if (b.style.display === 'none') b.style.display = ''; document.documentElement.classList.add('dr-clos-conf-on');
 }
 function dr_closConfRetirer(){ const b = document.getElementById('dr-clos-conf'); if (b && b.style.display !== 'none') b.style.display = 'none'; document.documentElement.classList.remove('dr-clos-conf-on'); DR_CL.closConf = null; }
@@ -1511,3 +1517,74 @@ function dr_ongletClos(){ const c = dr_coursIci(); if (!c) return; const sg = _d
   try { localStorage.removeItem(DR_LOC_ETAT); const x = JSON.parse(localStorage.getItem(DR_LOC_PARTIE) || 'null'); if (x && x.c && _drSignatureCours(x.c) === sg) localStorage.removeItem(DR_LOC_PARTIE); } catch (e) {} }
 /* un onglet qui s'ouvre demande qui tient l'heure (la réponse arrive avant la première veille du bandeau) */
 if (!(typeof SES === 'object' && SES && SES.mode)) setTimeout(() => dr_ongletDire({ t: 'qui' }), 0);
+
+
+/* ═══ §12.68 — ANNULER UNE HEURE LANCÉE PAR ERREUR (Paul, 29/10 09:54 : « il faut que je puisse la fermer et qu'elle ne compte pas comme jouée ni rien
+   du tout. le site oublierait tout ce que j'y ai fait ») ══════════════════════════════════════════════════════════════════════════════════════════
+   Au Pilotage, à côté de « ■ Clore l'heure », jusqu'à la clôture : « Annuler cette heure », avec une confirmation qui dit ce qui sera oublié.
+   Ce que l'heure a écrit, et seulement cela : dans la copie de la classe (`deroule_joue/<classe>`), chaque clé changée depuis le lancement revient
+   à ce qu'elle était (lue avant le lancement : la copie, le journal, l'état — la participation, les absents de l'appel —, le récit, la scène) et la
+   trace de cette heure (`heures/<clé>`, les absents de la case compris) disparaît ; `/site/cours_actif` s'il est encore le nôtre ; en mode test,
+   l'image du tableau (`/site/tableau_test`) ; le miroir de l'heure dans ce navigateur (la présence) et les autres onglets prévenus. L'emploi du temps
+   n'est jamais écrit : l'heure n'y compte pas comme jouée. La réactivation construite à la clôture d'avant est dans la copie d'avant : elle reste.
+   La page revient à ce qu'elle était avant le lancement (comme « ■ Arrêter » une répétition), puis à l'emploi du temps. Le tableau distant voit sa
+   scène retirée : il revient à l'horloge (dr-tableau.js, `dr_tabSceneOubliee`). Les écritures passent par `dr_ecrire` (le mode test les garde). */
+const DR_ANNUL_BULLE = 'Annuler cette heure : pour une heure lancée par erreur (pas la bonne classe, pas le bon moment). Le site oublie tout ce qu’elle a écrit — '
+  + 'ce que la classe a vu, la copie de la classe, le journal, le récit, la participation, les absents — et le tableau distant revient à l’horloge ; '
+  + 'l’emploi du temps ne la compte pas comme jouée. Une confirmation te le redit avant. Après la clôture, ce n’est plus possible.';
+function dr_annulInstantane(){ const clone = x => JSON.parse(JSON.stringify(x === undefined ? null : x)); const E = seance().ecrans;
+  return { S: clone(Object.fromEntries(Object.entries(S).filter(([k, v]) => !k.startsWith('_') && k !== 'repSnap' && typeof v !== 'function'))), vuMax: clone(vuMax), parDiapo: clone(parDiapo), Jlen: J.length,
+    ecrans: clone(E), props: E.map(e => Object.getOwnPropertyNames(e || {}).map(n => [n, Object.getOwnPropertyDescriptor(e, n)]).filter(([n, d]) => !d.enumerable && 'value' in d).map(([n, d]) => [n, { value: d.value, writable: !!d.writable, enumerable: false, configurable: true }])),
+    cours: (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) ? clone(AT_DR_COURS) : null, regime: typeof AT_DR_REGIME !== 'undefined' ? AT_DR_REGIME : 'prep', si: S.si }; }
+function dr_annulPeut(){ try { return !!(S.lancee && !S.close && !S.repetition && !S.atelier && typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe' && AT_DR_COURS && DR_CL.ouverte); } catch (e) { return false; } }
+function dr_annulPoser(){
+  const f = document.getElementById('dr-clore') || document.getElementById('bfin'); if (!f) return; let b = document.getElementById('dr-annul');
+  if (!b) { b = document.createElement('button'); b.id = 'dr-annul'; b.className = 'btn'; b.type = 'button'; b.textContent = 'Annuler cette heure'; b.title = DR_ANNUL_BULLE; b.onclick = dr_annulDemander; f.insertAdjacentElement('afterend', b); }
+  const v = dr_annulPeut() ? '' : 'none'; if (b.style.display !== v) b.style.display = v; }
+function dr_annulDemander(){ if (!dr_annulPeut()) return; let g = document.getElementById('garde-annul');
+  if (!g) { const ref = document.getElementById('garde-clore'); g = document.createElement('div'); g.className = 'garde'; g.id = 'garde-annul';
+    g.innerHTML = '<div class="boite" style="width:620px;border-color:var(--or)"><h3 style="margin:0 0 8px;color:var(--or);font-size:1.05rem" id="gannul-titre"></h3><p id="gannul-corps" style="margin:0 0 6px"></p><p style="margin:0;color:var(--texte2);font-size:.9rem">L’emploi du temps ne la compte pas comme jouée. La réactivation préparée à la clôture d’avant reste.</p>'
+      + '<div class="choix" style="justify-content:flex-end;margin-top:12px"><button class="btn" id="gannul-non" title="Ne rien annuler : l’heure continue, rien n’est perdu">Garder l’heure</button><button class="btn or" id="gannul-oui" title="Annule l’heure : tout ce qu’elle a écrit est oublié, le tableau distant revient à l’horloge, tu retournes à l’emploi du temps">Annuler l’heure</button></div></div>';
+    (ref && ref.parentNode ? ref.parentNode : document.body).appendChild(g);
+    g.addEventListener('click', ev => { const t = ev.target && ev.target.closest && ev.target.closest('button'); if (!t) return; g.classList.remove('on'); if (t.id === 'gannul-oui') dr_annulerHeure(); }); }
+  const nom = (AT_DR_COURS && (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug)) || '';
+  document.getElementById('gannul-titre').textContent = 'Annuler l’heure des ' + nom + ' (' + dr_creneauDuCours(AT_DR_COURS) + ') ?';
+  document.getElementById('gannul-corps').textContent = 'Le site oublie tout ce que cette heure a écrit : ce que la classe a vu, la copie de la classe, le journal, le récit, la participation, les absents. L’heure s’arrête et le tableau distant revient à l’horloge.';
+  g.classList.add('on'); }
+/* la remise du hub : chaque clé de la copie de la classe changée depuis le lancement reprend sa valeur d'avant ; la trace de cette heure s'efface.
+   Jouée deux fois (tout de suite, puis 2,5 s plus tard : une écriture partie juste avant l'annulation ne survit pas). */
+function dr_annulRemettre(x){ if (!x || !x.C) return;
+  dr_lire(x.C, cur => { if (cur === undefined) return; cur = cur || {}; const av = x.avant || {};
+    const cles = new Set(Object.keys(cur).concat(Object.keys(av))); cles.delete('heures');
+    cles.forEach(k => { const a = av[k] === undefined ? null : av[k], b = cur[k] === undefined ? null : cur[k]; if (JSON.stringify(a) !== JSON.stringify(b)) dr_ecrire(x.C + '/' + k, a, 'Heure annulée — la copie de la classe revient à avant le lancement', () => {}); });
+    if (x.cle) { const a = (av.heures && av.heures[x.cle]) || null, b = (cur.heures && cur.heures[x.cle]) || null; if (JSON.stringify(a) !== JSON.stringify(b)) dr_ecrire(x.C + '/heures/' + x.cle, a, 'Heure annulée — sa trace est oubliée', () => {}); } }); }
+/* la projection de l'emploi du temps apprend que l'heure n'a pas été jouée (dr_joueeIci l'y avait posée) */
+function dr_joueeOublier(H){ if (!H) return; try { if (DR_CL.joueesIci) delete DR_CL.joueesIci[H]; const m = /^\/site\/([^/]+)\/chapitres\/([^/]+)\/seances\/([^/]+)\/deroule_joue\/([^/]+)\/heures\/([^/]+)$/.exec(H); if (!m || typeof EDT_CHAP === 'undefined' || !EDT_CHAP[m[1]]) return;
+  const ch = EDT_CHAP[m[1]].find(c => c && c.__cle === m[2]); const se = ch && edtListe(ch.seances).find(s => s && s.__i === m[3]); const b = se && se.deroule_joue && se.deroule_joue[m[4]]; if (b && b.heures) delete b.heures[m[5]]; } catch (e) {} }
+function dr_annulerHeure(){
+  if (!dr_annulPeut()) return;
+  const o = DR_CL.ouverte || {}; const C = o.C, H = o.H; const cle = H ? String(H).split('/').pop() : null;
+  const av = (DR_CL.avant && DR_CL.avant.C === C && DR_CL.avant.hub !== undefined) ? (DR_CL.avant.hub || {}) : null;
+  const nom = (AT_DR_COURS && (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug)) || ''; let sig = ''; try { sig = _drSignatureCours(dr_coursIci()); } catch (e) {}
+  /* 1. plus rien ne part : les débounces, le minuteur, les autres onglets et le miroir de ce navigateur */
+  [DR_CL.jT, DR_CL.eT, DR_CL.tT, DR_CL.cT].forEach(clearTimeout); try { dr_minuteurFin(); } catch (e) {}
+  try { dr_ongletClos(); } catch (e) {}
+  /* 2. la page revient à avant le lancement */
+  const mem = DR_CL.avantMem; AT_DR_REGIME = 'prep';
+  try { if (mem) { Object.keys(S).forEach(k => { if (!k.startsWith('_')) delete S[k]; }); Object.assign(S, mem.S); Object.keys(vuMax).forEach(k => delete vuMax[k]); Object.assign(vuMax, mem.vuMax); Object.keys(parDiapo).forEach(k => delete parDiapo[k]); Object.assign(parDiapo, mem.parDiapo); J.length = Math.min(J.length, mem.Jlen);
+      const E0 = dr_seances()[S.si].ecrans; E0.splice(0, E0.length, ...mem.ecrans); (mem.props || []).forEach((l, k) => { const e = E0[k]; if (e) l.forEach(([n, d]) => { try { Object.defineProperty(e, n, d); } catch (x) {} }); });
+      AT_DR_COURS = mem.cours; AT_DR_REGIME = mem.regime === 'classe' ? 'prep' : (mem.regime || 'prep'); }
+    else { S.lancee = false; S.close = false; AT_DR_COURS = null; } } catch (e) { S.lancee = false; S.close = false; }
+  S.mur = null; S.gel = null; DR_CL.ouverte = null; DR_CL.avantMem = null; DR_CL.empreinteEcrite = null; dr_joueeOublier(H);
+  /* 3. le hub : la copie d'avant, la trace oubliée, le pointeur s'il est encore le nôtre, l'image du mode test */
+  const x = av ? { C, avant: av, cle } : null;
+  if (x) { dr_annulRemettre(x); setTimeout(() => dr_annulRemettre(x), 2500); }
+  else if (H) { dr_ecrire(H, null, 'Heure annulée — sa trace est oubliée', () => {}); if (C) dr_ecrire(C + '/scene', null, 'Heure annulée — le tableau distant revient à l’horloge', () => {}); }   /* la copie d'avant n'a pas pu être lue : seule la trace part */
+  try { dr_coursActifEffacerSi(sig); } catch (e) {} try { SES.actif = false; } catch (e) {} try { if (typeof dr_ttHeureFin === 'function') dr_ttHeureFin(); } catch (e) {}
+  try { if (typeof dr_versMur === 'function') dr_versMur(null, { sortie: true }); } catch (e) {}   /* la fenêtre du tableau, sur cet ordinateur, se vide */
+  /* 4. l'emploi du temps, avec la phrase de l'annulation */
+  try { const f = document.getElementById('ecran-fin'); if (f) f.classList.remove('on'); } catch (e) {}
+  try { dr_tout(); } catch (e) {}
+  try { if (typeof atClasseFermer === 'function') atClasseFermer(); else if (typeof edtOuvrir === 'function') edtOuvrir(); } catch (e) {}
+  try { dr_closConfPoser({ classe: nom, h: '', chemin: null, heure: null, annulee: true }); } catch (e) {}
+}

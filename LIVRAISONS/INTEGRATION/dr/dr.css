@@ -524,3 +524,12 @@ html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
 /* §12.74 (2), 13 · 94 : l'étiquette d'activité lisible au tableau — fond plein, texte gras, toujours au-dessus d'une image (z-index 8 ; seule la participation, voulue par Paul, passe devant) */
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .act{z-index:8}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .act [data-p]{outline-color:#fff}
+/* §12.70 (6), 13 · 92 : le minuteur, un seul, sous la diapo — son panneau s'ouvre au-dessus du ⏱ ; le chiffre prend la couleur du tableau */
+#dr-zone .dr-minut-p { position: fixed; z-index: 9000; box-shadow: 0 6px 18px rgba(0,0,0,.28); flex-wrap: nowrap; white-space: nowrap; }
+#dr-zone .dr-minut-p button[disabled] { opacity: .45; cursor: not-allowed; }
+#dr-zone .dr-minut-aff.dr-minut-pret { color: var(--or); }
+#dr-zone .dr-minut-aff.dr-minut-vert { color: #1f9d55; }
+#dr-zone .dr-minut-aff.dr-minut-jaune { color: #b8860b; }
+#dr-zone .dr-minut-aff.dr-minut-orange { color: #e06c00; }
+#dr-zone .dr-minut-aff.dr-minut-rouge { color: #d0021b; }
+#dr-zone .dr-minut-aff.dr-minut-enpause { text-decoration: underline dotted; }

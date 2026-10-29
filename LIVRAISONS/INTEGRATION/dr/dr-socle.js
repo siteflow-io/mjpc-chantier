@@ -1498,12 +1498,12 @@ function menuA(m, x, y, items){ m.innerHTML = items.map(it => it === '-' ? '<hr>
 dr_ecouteDoc('click', ev => { if (!ev.target.closest('.menu') && !ev.target.closest('#bplus')) { $('menu').classList.remove('on'); $('menuplus').classList.remove('on'); } });
 
 $('bplus').onclick = ev => { ev.stopPropagation(); const r = $('bplus').getBoundingClientRect(); menuA($('menuplus'), r.left, r.bottom + 4, [{ a: 'reserve', l: 'Réserve de la séance…', t: 'ce qui est en réserve pour ceux qui ont fini ; afficher en encart' }, { a: 'docs', l: 'Documents de la séance…', t: 'projeter un document ; pages aux flèches ; croix pour fermer' }, { a: 'oral', l: 'Expliqué à l\'oral…', t: 'ce que tu as expliqué sans jouer la diapo : ça remplace une activité de l\'heure (faite à l\'oral) ou c\'est une reprise ; les notions cochées passent travaillées à l\'oral ; ta phrase devient le paragraphe au récit' }, { a: 'notion', l: 'Déclarer une notion imprévue…', t: 'une notion travaillée à l\'oral, sur la diapo affichée' }, { a: 'appel', l: 'L\'appel : clic droit sur un nom de la liste', off: true }]);
-  $('menuplus').onclick = e => { const b = e.target.closest('[data-a]'); if (!b) return; $('menuplus').classList.remove('on'); const a = b.dataset.a; if (a === 'chrono') { S.bandeau = S.bandeau ? '' : '⏱ 07:00'; dr_tout(); } if (a === 'qui') basculerQui('menu'); if (a === 'reserve') ouvrirReserve(); if (a === 'docs') ouvrirDocs(); if (a === 'notion') ouvrirNotion(); if (a === 'oral') ouvrirOral(); }; };
+  $('menuplus').onclick = e => { const b = e.target.closest('[data-a]'); if (!b) return; $('menuplus').classList.remove('on'); const a = b.dataset.a; if (a === 'chrono') { if (typeof dr_minuteurBasculer === 'function') dr_minuteurBasculer(); }   /* §12.70 (6) : le minuteur, un seul (plus de « ⏱ 07:00 » en dur) */ if (a === 'qui') basculerQui('menu'); if (a === 'reserve') ouvrirReserve(); if (a === 'docs') ouvrirDocs(); if (a === 'notion') ouvrirNotion(); if (a === 'oral') ouvrirOral(); }; };
 
 function basculerQui(par){ if (S.qui) { S.qui = null; journal('qui-retire', { par }); } else { S.qui = quiAParticipe(); journal('qui-affiche', { n: S.qui.length, par }); } $('bqui').classList.toggle('actif', !!S.qui); dr_tout(); }
 
 $('bqui').onclick = () => basculerQui('bouton');
-function basculerChrono(){ S.bandeau = S.bandeau ? '' : '⏱ 07:00'; const b = $('bchrono'); if (b) b.classList.toggle('actif', !!S.bandeau); dr_tout(); }   /* E1 (§12.51, Paul 28/10 10:17) : le geste de ⋯ « Chrono au tableau », sorti sous la diapo (la même publication) */
+function basculerChrono(){ if (typeof dr_minuteurBasculer === 'function') dr_minuteurBasculer(); }   /* §12.70 (6), 13 · 92 : le ⏱ sous la diapo ouvre LE minuteur (dr-classe.js) ; le « ⏱ 07:00 » en dur et le bandeau sont tombés */
 if ($('bchrono')) $('bchrono').onclick = basculerChrono;
 
 function brancherMenus(){

@@ -7873,3 +7873,34 @@ MEMO
 
 29/10/2026 13:26
 MEMO
+
+## Tour 364 — 29/10/2026 14:05 → 14:06
+
+**Paul :** Il faudrait presque quelque chose en oui non. Qu'en penses tu? À mesurer en gain de temps
+
+**Mesuré.** La grille de la lettre (`LIVRAISONS/REDACTION/sujets/lettre-grande-guerre.json`, branche `ru-1263`) : 12 points ; 48 descripteurs, 1 260 mots ; 192 sous-descripteurs, 4 041 mots. Aujourd'hui, par copie : 12 × (un échelon + un sous-échelon) = 24 clics à la souris, chaque choix pris parmi 4 puis 16 textes longs. Le temps réel par copie : aucune mesure, l'appli n'a pas de journal (13 · 102 voisin ; 1103).
+
+**Claude :**
+
+À jouer : les tests de la ⑩ (liste de 12:05) · en cours : rien · ouvert : 1113 ; 1112 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1106. Oui, je pense que le oui / non est le plus rapide, et il va avec ta règle : une question, un seul fait.
+
+1107. Mesuré, ce que tu lis aujourd'hui pour choisir : pour la lettre, 48 descripteurs (1 260 mots) et 192 sous-descripteurs (4 041 mots). Pour chaque point, tu choisis entre 4 textes, puis entre 16 : 24 clics à la souris par copie, chacun après une comparaison de textes longs.
+
+1108. En oui / non : une quarantaine de questions courtes par copie, d'une dizaine de mots, lues une seule fois, chacune répondue par une touche (O ou N), et la suivante vient seule. Plus de gestes, mais plus de comparaison ni de souris. Au bout de quelques copies, tu connais les questions et tu ne lis plus que la copie.
+
+1109. Ce que je ne sais pas : ton temps réel par copie, aujourd'hui. L'appli ne le mesure pas. Le journal (1103) le mesurera dès les premières copies en oui / non ; pour comparer, il me faut ton temps d'aujourd'hui.
+
+1110. Je propose : les questions dans l'ordre où tu lis la copie, pas dans l'ordre de la grille. D'abord ce qui se voit d'un coup d'œil : le lieu, la date, le destinataire, la signature, les trois paragraphes, les trente lignes. Puis ce qui se lit : le thème, les lectures, les phrases, les architectures. Enfin ce qui se juge à la fin : ce qu'on tait, la litote. La langue reste au compteur d'erreurs.
+
+1111. La couleur et la note se calculent des réponses, et tu les vois aussitôt. Rouge, moins de la moitié de oui ; orange, au moins la moitié ; vert, au moins les trois quarts ; vert foncé, le vert plus la question « au-delà ». Si ton jugement diffère, un clic change la couleur : c'est le cas rare. Chaque « non » devient une ligne nommée du bilan et de « À reprendre ».
+
+1112. Par exemple, pour les codes de la lettre : « Y a-t-il un lieu ? » ; « Y a-t-il une date ? » ; « La date est-elle en haut à droite ? » ; « Le destinataire est-il nommé ? » ; « La lettre est-elle signée ? ». Cinq touches.
+
+1113. Question : combien de temps te prend une copie aujourd'hui, à peu près ? Et oui à 1106 à 1112 ? Ensuite je rédige les questions de la lettre, et le bilan de Flavie, pour que tu corriges.
+
+À tester : la liste de la ⑩ de 12:05 tient.
+
+29/10/2026 14:06
+MEMO

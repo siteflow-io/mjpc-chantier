@@ -8381,3 +8381,35 @@ MEMO
 
 29/10/2026 20:43
 MEMO
+
+## Tour 381 — 29/10/2026 20:54 → 20:55
+
+**Paul :** J'ai des scans de l'année dernière je devrais trouver ça. 
+Pour ce qui est du rendu à l'élève : l'App doit être capable de produire des html qui contiennent le scan et le pochoir. Je les rends fichier par fichier sur école directe, c'est école directe qui devient l'hébergeur. Ou alors je fais un rendu via le drive. Ou alors autre idée : quand l'élève fait sa rédac il la fait sur une copie avec des repères aux 4 coins. Ensuite l'App lui permet de scanner sa copie avec un appareil photo, elle lui dit en vert quand elle reconnaît le cadre, et il prend sa photo et charge le html pochoir par dessus et comme ça à la maison il retrouve son html interactif avec le bon scan d'origine. Tu vois l'idée ? Faisable?
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1239 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1231. Les scans de l'an dernier suffisent pour mesurer la netteté, le poids et le chargement dans le navigateur. Ils n'ont pas de repères : ils ne mesurent pas ta troisième idée.
+
+1232. Oui, je vois l'idée, et c'est faisable. Les quatre repères font de la feuille une règle commune : ton scan et la photo de l'élève sont redressés par les mêmes repères, donc une marque posée sur ton scan retombe au même endroit sur sa photo, même prise de travers. Reconnaître des repères dans le navigateur, avec l'appareil photo, des outils gratuits le font déjà.
+
+1233. Ce qui la rend forte : aucun scan ne voyage ni n'est hébergé. Le site garde seulement le pochoir ; l'élève reconstruit chez lui sa copie interactive, avec sa propre photo. Pas d'École Directe à charger fichier par fichier, pas de Drive.
+
+1234. Ce qu'elle apporte en plus : les repères peuvent porter un numéro. Si chaque élève écrit sur une feuille à son nom, avec son code, ton paquet scanné se range tout seul : plus d'initiales à taper à chaque copie, trois gestes de moins. L'appli imprime les 28 feuilles.
+
+1235. Et 1227 tombe : l'élève se corrige dans MJPC, sur sa photo ; ses corrections arrivent au site d'elles-mêmes, et tu vois qui a fini.
+
+1236. Ce que je ne sais pas, et qui décide de tout : la précision. Une feuille pliée ou bombée, une photo floue, une lumière faible décalent les marques ; un cercle autour d'un mot peut tomber à côté. Ça se mesure, ça ne se devine pas.
+
+1237. Ce qui frotte aussi : l'élève doit avoir chez lui un téléphone avec appareil photo. Pour ceux qui n'en ont pas, l'appli produit le fichier HTML complet, scan compris, que tu rends par École Directe : ta première idée, en roue de secours.
+
+1238. L'ordre que je propose : mesurer la précision avant tout code de l'app. Je te fabrique une feuille à repères à imprimer, et une page de test. Tu écris quelques lignes sur la feuille, tu la scannes au photocopieur, tu poses trois cercles sur le scan, puis tu la photographies au téléphone, de travers ; la page affiche le décalage en millimètres. Si c'est juste, on cadre l'app ainsi.
+
+1239. Oui à 1238 ? Et envoie-moi un scan de l'an dernier quand tu le retrouves.
+
+À tester : rien de neuf.
+
+29/10/2026 20:55
+MEMO

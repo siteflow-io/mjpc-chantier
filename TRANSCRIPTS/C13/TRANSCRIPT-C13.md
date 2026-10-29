@@ -8317,3 +8317,36 @@ MEMO
 
 29/10/2026 19:59
 MEMO
+
+## Tour 379 — 29/10/2026 20:05 → 20:07
+
+**Paul :** Bon maintenant audit mon app et dis moi si je pourrais faire autrement pour atteindre les mêmes objectifs énoncés plus haut
+
+**Lu et mesuré.** `redaction.html` (branche `ru-1263`, 351 755 o, 277 fonctions) : le sujet donnée du site, « Nouveau sujet » et la relecture phrase par phrase, le panneau commun, le paquet, la vue classique et le mode interrogatif, l'édition au crayon, le marquage des erreurs dans la citation, le compteur, la télémétrie (L18a-L21) et sa fenêtre sans bouton, la triple sauvegarde JSON, la fiche HTML élève et l'export ZIP ; côté élève, rien. Mesures de la copie de Flavie (tour 372) ; temps avant la première réponse sur « Modalisation et litote », « Ce qu'on tait », « Les lectures reprises » : 12,1 + 58,5 + 15,4 = 86 s. `CADRAGE-27-10.md` R9 : la tablette à deux élèves.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1221 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1213. L'audit, mesuré sur la copie de Flavie : 13 min 37 s, 60 gestes et 366 caractères tapés. Près de la moitié du temps passe entre ton arrivée sur une question et ta réponse : tu cherches dans la copie. Le reste : lire, taper les citations, compter les erreurs.
+
+1214. Ce qui, dans l'app, ne sert pas tes objectifs est déjà remplacé au cadrage : le paquet à ranger avant de corriger, par les initiales ; les deux modes de correction, par le mode général seul ; les 4 niveaux et 16 sous-niveaux par point, environ 430 phrases cousues par des mots de liaison tirés d'une liste, par les 69 cases ; l'élève qui ne corrige rien, par « À reprendre » et sa correction dans l'appli. Tout cela est décidé : ce n'est pas faire autrement.
+
+1215. Faire autrement, c'est toucher à la vraie contrainte : la copie est sur papier, écrite à la main. L'appli n'en sait rien ; tout passe par tes yeux et tes mains : trouver, recopier, compter. Je vois trois façons de la contourner.
+
+1216. Un : l'élève désigne, et toi tu vérifies. Ton sujet le fait déjà pour les architectures, avec leur numéro dans la marge. On étend ce geste : L dans la marge pour la litote, M pour chaque modalisation, C pour ce qu'il cache, D pour le détail repris des lectures. Tu ne cherches plus, tu vérifies ce qui est marqué ; et pour marquer sa litote, l'élève doit savoir ce qu'est une litote. Mesuré sur Flavie, sur ces trois points : 1 min 26 s entre ton arrivée et ta réponse ; c'est le plus que la marge peut faire gagner sur eux. Aucun code : une consigne de plus dans tes prochains sujets, la lettre étant déjà écrite. Verdict : oui.
+
+1217. Deux : la photo de la copie. Tu photographies le paquet, ou le photocopieur le scanne ; la copie s'affiche à côté des questions. Une citation devient un rectangle tracé sur la photo, au lieu de quinze mots tapés ; une erreur, un clic sur le mot lui-même. L'élève reçoit sa propre écriture, le mot fautif entouré : le lien avec sa copie est plus fort qu'une citation recopiée, et il sait exactement où se corriger. Ce qu'elle remplacerait sur Flavie : 366 caractères tapés et 14 erreurs placées à la main. Ce que je ne sais pas : le temps pour photographier 28 copies, et où ranger les photos sans service payant. C'est un gros chantier. Verdict : à mesurer avant de décider.
+
+1218. Trois : l'élève tape sa lettre. L'appli aurait le texte, et tout se ferait d'un clic : citations, lignes, mots répétés. Mais dans MJPC tes élèves travaillent à deux par tablette, et le brevet s'écrit à la main. Verdict : non.
+
+1219. J'écarte aussi l'autoévaluation, l'élève qui répond aux questions avant toi : il apprendrait la grille, mais cela prend sur l'heure de cours, et tu vérifierais quand même chaque réponse ; ton gain est inconnu. Verdict : non, pour l'instant.
+
+1220. Ma recommandation : garder ton app avec ce qui est cadré (1214) ; ajouter le marquage par l'élève (1216) dans tes prochains sujets, la grille demandant alors « La litote marquée L est-elle une litote ? » ; et mesurer la photo (1217) avant d'en décider.
+
+1221. Oui à 1220 ?
+
+À tester : rien de neuf.
+
+29/10/2026 20:07
+MEMO

@@ -7114,3 +7114,26 @@ MEMO
 
 29/10/2026 08:28
 MEMO
+
+## Tour 342 — 29/10/2026 08:41 → 08:42
+
+**Paul :** Relis le cadrage de la réactivation.
+
+**Claude :**
+
+À jouer : rien, la ⑨ attend · en cours : rien · ouvert : 951 ; 941 ; 905 à 917 (les questions de la lettre).
+
+947. Relu : tes mots du 22/10 (tour 115) et du 25/10 (tours 154 et 155), le contrat §12.22 et §12.26, et ton message du 28/10 (797).
+
+948. Le cadrage dit ceci. La réactivation n'est jamais écrite d'avance : ni dans le chapitre, ni dans le déroulé de l'Atelier. Le site la construit à la clôture de l'heure d'avant, pour chaque classe, dans la copie de cette classe. C'est toi qui choisis de l'intégrer, à deux endroits : dans l'Atelier, le réglage de la séance « Ouvrir chaque heure par la réactivation », oui ou non ; et à chaque heure, sur « Où en est la classe », « Ouvrir par la réactivation », oui ou non. Tu la vois et tu la modifies avant de lancer, directement dans la diapo ; « ta version » et ↩ dans ton pilotage, jamais au tableau. Le contrat (§12.22) ajoute : le seul rôle qu'une diapo du chapitre peut porter est « bilan ».
+
+949. Donc 944 à 946 étaient faux, et l'erreur vient de moi, en 797. En 793, je proposais de retirer « réactivation » de la liste des rôles, en écrivant « alors que le site la pose seul ». Ton objection portait sur « le site la pose seul » : c'est toi qui choisis. Je l'ai lue comme « garde-la dans la liste ». La ⑨ a suivi mon contrat : elle l'a gardée, grisée. Et sa phrase grisée oublie le réglage de la séance dans l'Atelier.
+
+950. Je propose : « réactivation » sort de la liste des rôles. Ton choix reste là où il est cadré : le réglage de la séance dans l'Atelier, et « Ouvrir par la réactivation » à chaque heure. Une diapo de l'Atelier ne peut plus la porter, donc plus aucune ne disparaît.
+
+951. Oui à 950 ? La correction entre dans la ⑨ avant la promotion, et je rejoue le banc.
+
+À tester : rien de neuf, la ⑨ attend.
+
+29/10/2026 08:42
+MEMO

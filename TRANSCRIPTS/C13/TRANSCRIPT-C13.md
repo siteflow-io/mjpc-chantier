@@ -7566,3 +7566,35 @@ Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?vue=tableau&v=876
 
 29/10/2026 11:22
 MEMO
+
+### Messages de la conscience (sans message de Paul : la ⑩ codée, puis son banc)
+
+**Claude (11:30) :** La ⑩ est codée : les feuilles du site se projettent, l'étiquette d'activité est lisible et modifiable en répétition, un seul minuteur (couleurs, pause, son, moins de 0,2 seconde jusqu'au tableau distant), la participation à 0, « Annuler cette heure ». Je passe moi-même le banc complet et les cas d'E3, puis je te la présente à promouvoir. Rien à faire pour toi.
+29/10/2026 11:30
+MEMO
+
+**Claude (11:56) :**
+
+À jouer : promouvoir la ⑩ (1052) · en cours : rien · ouvert : 1050 ; 1051 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1047. La ⑩ est verte : le banc complet (les deux parcours, 106 contrôles, l'Atelier 52 sur 52, le tableau distant 27 sur 27, la ⑩ 51 sur 51) et les cas d'E3, 112 sur 112.
+
+1048. Ce qu'elle contient : les feuilles du site se projettent au tableau, en lecture, comme dans Structure ; l'étiquette d'activité porte son numéro au tableau distant, sur fond plein, en gras, au-dessus des images, et se corrige en répétition ; l'en-tête écrit « problématique » ; l'étiquette d'une fiche se corrige aussi en répétition.
+
+1049. Le minuteur : un seul, sous la diapo, avec la durée, Départ, Pause et Reprendre, « au tableau » visible avant Départ, les couleurs, le son à ton pilote. Mesuré : moins de 0,2 seconde entre ton pilote et le tableau distant. La participation à 0 arrive au tableau distant. « Annuler cette heure » a sa confirmation : en heure réelle, le hub revient exactement à son état d'avant le lancement.
+
+1050. Tranché par l'exécutant, je le garde : le minuteur est or et noir tant qu'il n'est pas parti, puis vert, jaune, orange, rouge.
+
+1051. Tranché aussi, je le garde : « Annuler cette heure » n'efface pas le signal « le prof est connecté », qui vit sur toutes les pages du site, heure ou pas ; il efface la présence propre à l'heure.
+
+1052. Promeus ? Elle part comme 8.77.0-⑩.
+
+À tester (après la promotion) :
+1. En répétition sur ton chapitre, « Documents de la séance » : une feuille du site, « Projeter au tableau » : elle s'affiche au tableau distant.
+2. Au tableau distant, l'étiquette en haut à gauche porte « Activité n — … », sur fond plein ; clique-la en répétition et corrige-la.
+3. Le ⏱ sous la diapo : règle 1 minute, coche « au tableau » : la durée paraît au tableau avant Départ ; Départ, puis Pause, puis Reprendre ; les couleurs changent ; les bips et le ding sortent de ton pilote.
+4. 👥 à 0 élève : le tableau distant l'affiche.
+5. En mode test, lance une heure des De Gaulle, puis « Annuler cette heure » : la confirmation, puis plus rien de cette heure, et l'emploi du temps n'a pas bougé.
+
+29/10/2026 11:56
+MEMO

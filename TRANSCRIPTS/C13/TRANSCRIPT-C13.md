@@ -7545,3 +7545,24 @@ MEMO
 
 29/10/2026 11:07
 MEMO
+
+## Tour 356 — 29/10/2026 11:19 → 11:22
+
+**Paul :** promeus
+
+**Fait.** Prod `index.html` 8.76.1-⑨ : commit `36d9367`, blob `5a46178a0fa5`, md5 `6586dada1424c999e38d11c826e4a22e`, 2 672 694 o ; bit à bit au dépôt et à l'adresse publique (11:20). Docs prod `eb06805` : état de production, journal, point de retour (8.76.0-⑨, blob `41ecb48a02b2`), où trouver quoi, index des fonctions.
+
+**Claude :**
+
+À jouer : les trois tests du plein écran · en cours : la ⑩ chez un exécutant neuf · ouvert : 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1046. Le plein écran est en ligne (8.76.1-⑨), identique au fichier testé, vérifié au dépôt et à l'adresse publique. Point de retour : la 8.76.0-⑨.
+
+À tester :
+1. Sur l'ordinateur du tableau, ouvre l'adresse du tableau, puis clique une fois sur la page : elle passe en plein écran.
+2. Appuie sur Échap, puis clique : elle y revient.
+3. Clique sur la ligne de la clé USB : c'est la clé qui répond, pas le plein écran.
+Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?vue=tableau&v=8761
+
+29/10/2026 11:22
+MEMO

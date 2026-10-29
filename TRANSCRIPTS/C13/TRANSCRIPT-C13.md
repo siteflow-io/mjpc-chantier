@@ -8523,3 +8523,37 @@ MEMO
 
 29/10/2026 23:09
 MEMO
+
+## Tour 386 — 29/10/2026 23:21 → 23:25
+
+**Paul :** Oui mais maintenant les critères ? Moi je pensais à une copie "mille feuille". En gros on a des points un peu partout, dans des couleurs différentes etc, et au clic on accède aux descripteurs, à la grille, aux commentaires etc. Mais éparpillés un peu partout. Et à la correction l'App me guide au fur et à mesure. Tu vois un peu l'idée ? Il faut fixer le rendu final avant de commencer à coder. 
+Je veux vraiment une copie 3d, interactive, et qui force l'élève à réfléchir.
+
+**Fait.** Cinq captures construites (`millefeuille.py`, au scratchpad `scan-prive/`, jamais poussées), sur la photo de la copie de l'an dernier, grille d'exemple (sujet inconnu) en cinq calques (le sujet, le récit, les phrases, la langue, mes mots) : 12 la vue d'ensemble (points posés sur la copie, fermés en gris avec « ? », note cachée jusqu'à tout ouvrir, 5 points ouverts sur 14) ; 13 un point ouvert à droite de la copie, relié par un trait (la question à l'élève, puis la case, l'échelle du point, la tâche) ; 14 les calques écartés en 3D (CSS 3D) ; 15 la grille, un point choisi allume ses marques ; 16 au téléphone, la question d'un point fermé. Palette de `redaction.html` ; couleurs des calques choisies pour la capture.
+
+**Claude :** [captures 12 à 16]
+
+À jouer : regarder les captures 12 à 16 · en cours : rien · ouvert : 1273 ; 1254 (le test, quand tu pourras imprimer) ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1265. Oui, je vois : la grille ne vit plus à côté de la copie, elle est posée dessus, en couches. Voici cinq captures construites sur ta copie de l'an dernier, avec une grille d'exemple, puisque je ne connais pas son sujet.
+
+1266. La 12, la vue d'ensemble. Chaque point de la grille est posé à l'endroit de la copie qu'il concerne, avec un rond à la lettre de son calque : S le sujet, R le récit, P les phrases, L la langue, ★ mes mots. Un point fermé est gris, avec un « ? » : l'élève ne voit pas sa couleur tant qu'il ne l'a pas ouvert. Et sa note reste cachée tant qu'il n'a pas tout ouvert.
+
+1267. La 13, un point ouvert. D'abord une question : à lui d'y répondre en relisant sa copie. Ensuite seulement ta case, sa couleur et ses points, l'échelle du point et la tâche « À reprendre ». C'est ce qui le force à réfléchir : il se juge avant de lire ton jugement, et l'appli lui dit s'il a vu juste.
+
+1268. La 14, la 3D : « Écarter les calques » soulève les couches au-dessus de la copie. Il fait tourner la pile, et un clic sur un calque le pose seul sur sa copie. Ta copie mille-feuille, au sens propre.
+
+1269. La 15, la grille : chaque point avec son échelle ; un clic sur un point allume ses marques sur la copie et éteint les autres. Un point fermé reste fermé dans la grille aussi.
+
+1270. La 16, au téléphone : la question d'un point fermé, en bas de l'écran.
+
+1271. Pour toi, à la correction : un « non » devient un clic sur la copie, à l'endroit, au lieu de la touche N. Même nombre de gestes, et le point se pose où il faut. Un point tout « oui » se pose seul dans la marge de son paragraphe ; un clic le déplace si tu veux montrer l'endroit. L'appli te guide question par question à côté de la copie : c'est le prochain écran à construire, une fois ce rendu fixé.
+
+1272. Ce qui est d'exemple : la grille, les cases, et les questions posées à l'élève avec leurs réponses au choix. Ces questions sont une règle de plus pour l'IA d'injection : pour chaque case, la question que l'élève se pose avant de la lire.
+
+1273. Ce rendu te convient-il ? Ce que tu ne commentes pas est acquis.
+
+À tester : rien de neuf.
+
+29/10/2026 23:25
+MEMO

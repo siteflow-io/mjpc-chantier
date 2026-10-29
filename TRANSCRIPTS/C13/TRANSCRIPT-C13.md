@@ -7095,3 +7095,22 @@ MEMO
 
 29/10/2026 00:17
 MEMO
+
+## Tour 341 — 29/10/2026 08:28 → 08:28
+
+**Paul :** [extrait de mon message précédent : « Choisie pour une diapo de l'Atelier, elle faisait disparaître cette diapo. Je propose de la garder ainsi. »] C'est à dire?
+
+**Claude :**
+
+À jouer : promouvoir la ⑨ · en cours : rien · ouvert : 943 (promeus ?), 940 et 941, 905 à 917 (les questions de la lettre).
+
+944. Dans l'Atelier, la carte « Ce que la diapo déclare » a un menu « rôle », où « réactivation » figure. Aujourd'hui, dans le site en ligne, si tu donnes ce rôle à une diapo de l'Atelier, la diapo disparaît trois secondes plus tard, et elle est perdue. L'exécutant l'a mesuré par le geste.
+
+945. La raison : tu as cadré que « la réactivation est uniquement dans la copie de classe jamais dans le déroulé de l'atelier ». Le site retire donc du déroulé toute diapo qui porte ce rôle. Ta réactivation, tu la choisis en ouvrant l'heure, par « Ouvrir par la réactivation ».
+
+946. Dans la ⑨, « réactivation » reste visible dans le menu, mais grisée, avec sa raison écrite en clair : elle se choisit en ouvrant l'heure. Tu ne peux plus la donner à une diapo de l'Atelier, donc tu ne perds plus de diapo. « La garder ainsi » veut dire : grisée avec sa raison, plutôt que retirée du menu.
+
+À tester : rien de neuf, la ⑨ attend ton « promeus ».
+
+29/10/2026 08:28
+MEMO

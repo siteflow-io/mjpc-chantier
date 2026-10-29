@@ -7921,9 +7921,9 @@ MEMO
 
 1116. Je propose, pour la plus grande finesse en 30 gestes au plus : chaque point a ses questions, un seul fait chacune, aussi fines que tu veux. Tout est « oui » d'avance : tu ne cliques que ce qui manque, et l'« au-delà » quand il est là. La couleur et la note se calculent seules.
 
-1117. Pour la langue, une touche par erreur, comme le compteur d'aujourd'hui, mais tu tapes le numéro de la ligne au lieu de « + ». Même nombre de gestes, et l'élève sait où chercher pour se corriger.
+1117. Pour la langue, un clic par erreur, comme le compteur d'aujourd'hui, mais sur une réglette des lignes de la copie, de 1 à 30 : tu cliques le numéro de la ligne au lieu de « + ». Même nombre de gestes, et l'élève sait où chercher pour se corriger.
 
-1118. Le compte sur Flavie : ses initiales, 10 manques, 14 erreurs par ligne, la validation : 29 gestes, contre 42 aujourd'hui, et chaque manque est nommé. Les citations se tapent comme aujourd'hui.
+1118. Le compte sur Flavie : ses initiales et Entrée (3), 10 manques, 14 erreurs par ligne, la validation : 28 gestes, contre 42 aujourd'hui, et chaque manque est nommé. Les citations se tapent comme aujourd'hui.
 
 1119. Ce qui frotte : une copie à plus de quinze erreurs dépasse 30, à cause de la langue seule. Pour celles-là, tu tapes le nombre total en deux touches au lieu des lignes.
 

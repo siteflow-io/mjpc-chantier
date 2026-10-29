@@ -74,12 +74,14 @@ function dr_versMur(et, x){
         f.postMessage(fiche ? { sortie: true } : Object.assign({ et: null }, x), '*');
       } else { let ecran = x.ecran; if (ecran === undefined) { try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) { ecran = null; } }
         let docs = x.documents; if (docs === undefined) { try { docs = (dr_documents() || {})[String(et.si)] || []; } catch (e) { docs = []; } }
-        f.postMessage({ et, ecran, documents: docs }, '*'); }
+        f.postMessage({ et, ecran, documents: docs, feuilles: dr_tabFeuillesDe(et) }, '*'); }
     } catch (e) {}
   }
   if (et) dr_sceneAuto();
 }
 
+/* §12.74 (1) : la feuille du site montrée part avec l'état vers la fenêtre locale (elle ne lit pas le hub) */
+function dr_tabFeuillesDe(et){ try { const r = et && et.doc && et.doc.feuille; const d = r && typeof DR_FEUILLES !== 'undefined' ? DR_FEUILLES.doc[r] : null; return d ? { [r]: d } : null; } catch (e) { return null; } }
 /* la fenêtre dit `pret` à l'ouverture (comme la maquette) : on lui pousse ce que la classe voit, gel compris (p8-5g, point 1).
    Elle redit `ici` toutes les 3 s : un pilote RECHARGÉ (réveil n°6 : écrire, recharger, « Reprendre le cours ») ne connaît plus la fenêtre
    qu'il avait ouverte ; il l'adopte à ce signe et lui renvoie ce que voit la classe. Un pilote qui la connaît déjà ignore `ici`. */
@@ -102,7 +104,7 @@ window.addEventListener('message', ev => {
        ce que voit la classe, sans rien écrire ni journaliser (relecteur 2, n° 3) */
     const et = dr_tabSansEntree(S.gel || S.mur); if (!et || !DR_TAB.fen || DR_TAB.fen.closed) return;
     let ecran = null; try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) {}
-    DR_TAB.fen.postMessage({ et, ecran }, '*');   /* directement : pas de scène au hub depuis l'Atelier */
+    DR_TAB.fen.postMessage({ et, ecran, feuilles: dr_tabFeuillesDe(et) }, '*');   /* directement : pas de scène au hub depuis l'Atelier */
   } catch (e) {}
 });
 /* le clic sur « ⧉ Ouvrir le tableau », d'où que vienne le bouton (le gabarit est posé plus tard par `atVuesPoser`) :
@@ -389,6 +391,7 @@ function dr_tabRecevoir(ev){
   if (d.sortie && !('et' in d)) { const t = document.querySelector('#mur2 .f-tab'); if (t) t.classList.add('ecran-sortie'); return; }   /* la fiche se referme */
   if ('et' in d && !d.et) { dr_rendreMur(null); return; }
   if (d.et) {
+    if (d.feuilles && typeof dr_feuillePoser === 'function') Object.keys(d.feuilles).forEach(r => dr_feuillePoser(r, d.feuilles[r]));   /* §12.74 (1) */
     if (d.documents) { DR_TAB.documents = d.documents; try { if (window.DATA) { DATA.documents = DATA.documents || {}; DATA.documents[String(d.et.si)] = d.documents; } } catch (e) {} }
     dr_rendreMur(d.et, d.ecran);
   }

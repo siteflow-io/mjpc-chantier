@@ -7338,3 +7338,34 @@ MEMO
 
 29/10/2026 10:07
 MEMO
+
+## Tour 349 — 29/10/2026 10:17 → 10:20
+
+**Paul (10:17) :** [image : le canon de la séance, « SÉANCE 1 · Entrée par l'image »] voilà. Non je veux d'abord des captures construites de ce que ça donnerait. Par ailleurs, le chrono au tableau. actuellement c'est une bande en bas de l'écran. ça ne doit pas être ça, mais être en haut à droite du tableau, en or et noir. Par ailleurs, j'ai reamarqué qu'il y a un lag entre le pilotage et le tableau distant (typiquement sur le chrono au tableau, ça impacte forcément parce que trois secondes sont toujjours mangées). par ailleurs, dès que je clique sur au tableau, ça doit s'afficher au tableau, même si ce n'est pas parti. par ailleur il manque une option de pause.
+
+**Paul (10:18, en interrompant) :** pour la participation, elle ne s'affiche pas au tableau distant quand c'est 0 élève. il le faut.
+
+**Fait.** Captures construites, 1600 × 900 : `MANDATS/CANONS-DIAPOS/captures-29-10/` (les quatre types au canon, avec tes mots du chapitre 1 et les phrases d'élève du hub ; le tableau avec le minuteur). Canon de séance rangé (`4-seance.png`). Mesuré dans la ⑨ : le minuteur (`dr_minuteurPoser`, `dr_minuteurTic`, `S.bandeau`), la lecture du tableau distant (`dr_tabSonder`, 0,9 s), la participation au tableau (`et.qui`). Contrat §12.67 (7), §12.70, §12.71.
+
+**Claude :**
+
+À jouer : les tests de la ⑨ (liste de 09:01) · en cours : rien · ouvert : 1008 ; 1001 ; 979 à 988 ; 905 à 917 (les questions de la lettre).
+
+1002. Les captures, construites, sans code : la présentation du chapitre, les compétences du chapitre, le parcours, la séance 1, et le tableau avec le minuteur. Tes mots du chapitre 1 ; les compétences par leur phrase d'élève, prises au hub ; les séances 3, 4, 5 et 7 en bleu vif.
+
+1003. Le minuteur, mesuré : au tableau, c'est un texte que le pilote recalcule chaque seconde et renvoie. Le tableau distant lit le hub toutes les 0,9 seconde, et le pilote attend 0,25 seconde avant d'envoyer. Les secondes arrivent donc en retard et par sauts : ce sont tes trois secondes mangées.
+
+1004. Je propose : le pilote envoie une seule fois l'heure de fin, la durée et la pause, et chaque tableau compte lui-même, avec sa propre horloge recalée sur celle du pilote. Le tableau distant écoute le hub en continu au lieu de le lire toutes les 0,9 seconde : les diapos arrivent aussitôt, elles aussi. C'est gratuit.
+
+1005. En haut à droite du tableau, chiffres or sur fond noir, sans aucun mot (capture 5). Plus de bande en bas.
+
+1006. « au tableau » : mesuré, la case ne fait rien tant que le minuteur n'est pas parti. Je propose : cochée, la durée réglée s'affiche aussitôt au tableau, immobile ; « Départ » la fait courir. Et « ⏸ Pause » / « ▶ Reprendre » au pilote ; au tableau, les chiffres s'arrêtent.
+
+1007. La participation à 0 élève, lu dans le code : le tableau sait écrire « 0 élève sur 29 ont participé · personne pour l'instant », mais le hub ne garde pas une liste vide, donc le tableau distant ne reçoit rien. On envoie la participation de façon que zéro arrive aussi.
+
+1008. Tout est au contrat (§12.67 à §12.71). Ce que tu ne commentes pas dans les captures est acquis. Sur ton mot, je lance.
+
+À tester : la liste de la ⑨ de 09:01 tient.
+
+29/10/2026 10:20
+MEMO

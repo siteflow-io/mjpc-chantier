@@ -7214,3 +7214,36 @@ Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?v=876-9
 
 29/10/2026 09:01
 MEMO
+
+## Tour 345 — 29/10/2026 09:15 → 09:16
+
+**Paul :** 963. Donc il faudra la phrase élève. Pour les captures que proposes tu pour enrichir en termes de fonctionnalités ?
+
+**Fait.** Registre prod : 13 · 91 (la phrase d'élève des compétences), commit `7516d1b`.
+
+**Claude :**
+
+À jouer : les tests de la ⑨ (liste de 09:01) · en cours : rien · ouvert : 978 ; 905 à 917 (les questions de la lettre).
+
+970. 963 : c'est inscrit au registre (13 · 91). La phrase d'élève partout où l'élève la voit, l'intitulé officiel seulement dans l'infobulle. Ça part avec le prochain morceau.
+
+971. Pour enrichir le profil, je propose sept ajouts, chacun tiré de ce qui existe déjà dans le site ou dans ton cadrage. D'abord une note par classe sur une diapo, visible seulement dans ton pilotage, par exemple « CB n'a jamais parlé : l'interroger ». Ton cadrage de la copie prévoit déjà « les commentaires et les notes » par classe.
+
+972. La durée d'une diapo pour cette classe seulement : une classe plus lente prend quinze minutes au lieu de dix, sans toucher au chapitre. Le contenu reste celui du chapitre, seule la durée change.
+
+973. Ce qui a glissé, décidé d'avance : pour chaque activité reportée, « on la reprend », « on la raccourcit » ou « on la saute », avant l'heure au lieu de pendant. Ces décisions existent déjà à la fin de l'heure.
+
+974. Les élèves à solliciter : ceux qui n'ont pas parlé depuis le début du chapitre arrivent en tête de la participation de ton pilotage, à l'heure suivante. Le site compte déjà la participation.
+
+975. Les absents de l'heure d'avant : ce qu'ils ont manqué et le mot à leur envoyer, prêt à copier pour École Directe. « Où en est la classe » fait déjà le mot aux absents, pour une heure seulement.
+
+976. Le cahier de textes de la classe : les travaux donnés, leurs échéances, et s'ils sont copiés dans École Directe. Tout cela est déjà saisi à la fin de chaque heure.
+
+977. Les dictées et les rédactions de cette classe : la liste, leur état (à corriger, corrigée), et un clic pour les ouvrir. Une dictée ou une rédaction, c'est déjà une classe.
+
+978. Lesquels gardes-tu ? Je les ajoute aux captures, toujours sans code. Hors de ce profil, comme cadré : le profil de chaque élève et le cockpit.
+
+À tester : la liste de la ⑨ de 09:01 tient.
+
+29/10/2026 09:16
+MEMO

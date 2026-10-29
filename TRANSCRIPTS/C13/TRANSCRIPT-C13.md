@@ -7904,3 +7904,32 @@ MEMO
 
 29/10/2026 14:06
 MEMO
+
+## Tour 365 — 29/10/2026 14:20 → 14:21
+
+**Paul :** Si, l'App me chronomètre actuellement. Tu as parlé sans mesurer. Je veux max 30 clics par copie et la plus grande finesse
+
+**Mesuré.** `redaction.html` : la télémétrie (L19a, L20) — temps actif par copie, par critère, par point, temps avant le premier clic, changements d'échelon et de sous-échelon, hésitations, survols, pauses, « incrementsCompteur » — gardée dans le navigateur (`localStorage`, `c.telemetry`) ; la fenêtre qui l'affiche (`ouvrirStatsProf`, « MODALE STATS PROF ») existe mais rien ne l'ouvre ; le chrono s'affiche en correction (`majChronoInterro`). Au hub (lecture) : une seule copie porte une télémétrie (0,8 min actif) ; les copies de la 3 FRANKLIN ARETHA n'y sont pas. Le compteur d'erreurs : un clic (ou la touche +) par erreur. Le bilan de Flavie relu pour compter ses manques : 10 manques nommés ou à nommer, 14 erreurs, 4 citations.
+
+**Claude :**
+
+À jouer : les tests de la ⑩ (liste de 12:05) · en cours : rien · ouvert : 1120 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1114. Tu as raison, j'ai parlé sans mesurer : l'appli te chronomètre. Elle mesure le temps actif de chaque copie, de chaque point, le temps avant ton premier clic, tes hésitations et tes retours. Mais elle garde tout dans ton navigateur, pas au hub : je ne peux pas lire tes temps d'ici. La fenêtre qui les affiche existe dans le code, mais aucun bouton ne l'ouvre.
+
+1115. Mesuré, le compte d'aujourd'hui sur la copie de Flavie : 12 échelons, 12 sous-échelons, 14 clics au compteur d'erreurs, 4 citations à ouvrir : au moins 42 gestes, sans compter le paquet.
+
+1116. Je propose, pour la plus grande finesse en 30 gestes au plus : chaque point a ses questions, un seul fait chacune, aussi fines que tu veux. Tout est « oui » d'avance : tu ne cliques que ce qui manque, et l'« au-delà » quand il est là. La couleur et la note se calculent seules.
+
+1117. Pour la langue, une touche par erreur, comme le compteur d'aujourd'hui, mais tu tapes le numéro de la ligne au lieu de « + ». Même nombre de gestes, et l'élève sait où chercher pour se corriger.
+
+1118. Le compte sur Flavie : ses initiales, 10 manques, 14 erreurs par ligne, la validation : 29 gestes, contre 42 aujourd'hui, et chaque manque est nommé. Les citations se tapent comme aujourd'hui.
+
+1119. Ce qui frotte : une copie à plus de quinze erreurs dépasse 30, à cause de la langue seule. Pour celles-là, tu tapes le nombre total en deux touches au lieu des lignes.
+
+1120. Oui à 1116 à 1119 ? Et pour mesurer ton temps réel : un bouton « Mes temps de correction » qui ouvre la fenêtre déjà codée. Tu m'y lis ton temps par copie, ou tu m'envoies la capture, et on compare après les premières copies en oui / non.
+
+À tester : la liste de la ⑩ de 12:05 tient.
+
+29/10/2026 14:21
+MEMO

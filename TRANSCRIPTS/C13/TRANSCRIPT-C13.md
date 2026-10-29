@@ -8660,3 +8660,41 @@ MEMO
 
 29/10/2026 23:48
 MEMO
+
+## Tour 391 — 29/10/2026 23:52 → 30/10/2026 00:01
+
+**Paul :** Poser et s'y accrocher ne veulent rien dire pour l'élève. Je veux voir maintenant mon flux de correction. L'idée de faire swiper les copies toutes sur le même critère à chaque fois est pertinente. Le flux est rendu plus fluide qu'avec le paquet de copies physique, les copies défilant sur mon écran.
+
+**Fait.** Captures 19 et 20 (`correction.py`, au scratchpad `scan-prive/`, jamais poussées) : la passe de la langue, puis une passe sur un critère (le récit). Copie de l'an dernier, grille d'exemple du mille-feuille, vignettes du paquet vides. Comptage des questions par moment dans la grille de la lettre (`gen3.py`) : thème 15 en lisant, 2 d'un coup d'œil, 4 à la fin ; construction 6, 6, 5 ; organisation 4 en lisant, 6 d'un coup d'œil, 1 calculée ; langue 3 à la fin, 1 calculée.
+
+**Claude :** [captures 19-correction-langue.png, 20-correction-critere.png]
+
+À jouer : regarder les captures 19 et 20, donner les phrases de 1300 · en cours : rien · ouvert : 1308 ; 1299 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1300. « Poser » et « s'y accrocher » tombent. Je propose de dire ce que l'élève voit, avec tes mots à toi, « sa copie passe à travers la grille » :
+1 · « La grille de correction est au-dessus de ta copie : une feuille par critère. »
+2 · « Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, entourées en rouge. »
+3 · « Puis à travers le sujet et le récit : leurs points apparaissent sur ta copie, gris, avec un « ? ». »
+4 · « Ta copie est passée à travers toute la grille. Clique sur un critère : tu ne vois plus que ses points. »
+C'est toi qui les donnes ou les changes.
+
+1301. Ton flux, un critère à la fois : faisable, oui. Les copies défilent sur le même critère ; la flèche fait venir la suivante à la place de celle-ci. Passes : la langue, le sujet, le récit, les phrases ; les papillons plus tard, quand les élèves les ont faits (1293). Par critère, pas par point : douze passes, ce seraient douze relectures.
+
+1302. Passe 1, la langue (capture 19) : la seule où tu lis toute la copie. Un clic sur l'erreur, la bonne forme et sa lettre comme en dictée (G, L…), Entrée. Une forme déjà tapée dans le paquet se reprend par son numéro : « jusque-là » sur trois copies, tu la tapes une fois. La lettre, c'est ce qui dit à l'élève le type de son erreur : une touche de plus pour une forme neuve, aucune pour une forme reprise. La phrase qui t'a touché se marque ici, puisque c'est la lecture entière.
+
+1303. Passes 2 à 4, un critère (capture 20) : seulement ses questions, point après point. Entrée, c'est oui ; un « non » est un clic sur la copie, à l'endroit. En dessous, les copies déjà vues sur ce point, en couleur : même question, mêmes exigences pour toutes, d'un coup d'œil.
+
+1304. La case se compte. « Le récit reste-t-il au passé simple et à l'imparfait ? » : un clic par verbe qui en sort. Deux clics, case orange. Tu ne choisis jamais la case, tes clics la donnent. Il faut pour ça des cases comptables (un, deux ou trois, plus de trois) : une règle de plus pour l'IA d'injection, dans la ligne de « un contenu strict, une couleur stricte, un point strict ».
+
+1305. Ce qui télescope : la lecture unique (1163, 1190). Par critère, tu relis. Dans la grille de la lettre, le thème a 15 questions qui se répondent en lisant, la construction 6 ; l'organisation se juge surtout d'un coup d'œil (6 questions sur 11). Ça fait trois lectures entières par copie au lieu d'une : la langue, le thème, la construction. En face : une seule question en tête au lieu de toute la grille, et une relecture qui ne cherche qu'une chose. Si ça compense, je ne sais pas. Sur Flavie, le thème t'a pris 7 min 05 sur 13 min 37 en une seule lecture.
+
+1306. Ce qui ne télescope pas : l'ordre. Tu corriges dans l'ordre où l'élève reprend : la langue, puis la grille de haut en bas (1298). Ni les séances : chaque passe garde où tu en es, copie par copie.
+
+1307. Combien de clics par copie : je ne sais pas. Le chrono mesurera chaque passe, copie par copie, clics et touches à part ; sur tes paquets de la lettre (1277), on comparera aux 13 min 37 de Flavie.
+
+1308. Oui à 1300 à 1307 ?
+
+À tester : rien de neuf.
+
+30/10/2026 00:01
+MEMO

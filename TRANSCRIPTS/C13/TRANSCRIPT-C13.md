@@ -7247,3 +7247,38 @@ MEMO
 
 29/10/2026 09:16
 MEMO
+
+## Tour 346 — 29/10/2026 09:24 → 09:26
+
+**Paul :** Ok. Sachant qu'il n'y a pas que les dictées et les rédactions. Mesure le reste des apps.
+
+**Mesuré.** Les fichiers du dépôt de production et le hub, en lecture (`manifestes`, la forme des données de chaque appli, le lien de classe de chacune). Captures refaites : 971 à 977 ajoutés, onglet « Les travaux » (`06-travaux.png`).
+
+**Claude :**
+
+À jouer : les tests de la ⑨ (liste de 09:01) · en cours : rien · ouvert : 988 ; 905 à 917 (les questions de la lettre).
+
+979. « Ok » : les sept ajouts sont dans les captures. Dans la copie : la note de classe, la durée pour cette classe, ce qui a glissé décidé d'avance, les élèves à solliciter, les absents et leur mot. Un sixième onglet, « Les travaux » : le cahier de textes de la classe, et les travaux dans les applis.
+
+980. Mesuré, les applis qui écrivent au hub, et leur lien avec une classe. Correction de dictée : par classe (« 3E Charles de Gaulle » dans sa fiche), 6 au hub.
+
+981. Réécriture et Réécriture brevet blanc 4e : par classe, la classe est dans le nom (2 et 2 au hub).
+
+982. Évaluation QCM : par classe, chaque session porte sa classe et son état (8 sessions). Applaudimètre : par classe aussi (2 séances, des 4e). Les deux écrivent déjà un profil par élève, rangé par classe.
+
+983. Analyse logique : par classe, dans le nom du travail (1 au hub). Plan de travail : actif par classe (les 4e et la classe test), un chapitre.
+
+984. Rédaction : le sujet n'a pas de classe ; la classe est dans son suivi (1 sujet, suivi pour la 3_dylan_bob).
+
+985. Ce qui manque. Dictée universelle : sa fiche a une case « classe », mais elle est vide sur celle mesurée (2 au hub). Pilotage débat : rattaché à un niveau, jamais à une classe (3 débats). Le profil ne peut pas les ranger sans ce lien : dans la capture, ils portent « Rattacher ».
+
+986. Hors du hub, dans le navigateur seulement : la rédaction de brevet blanc et l'étude de texte de Dugain (faites pour la 3e De Gaulle), et la console des ateliers de révision. Le profil ne peut pas les lire.
+
+987. Je propose : le profil liste, pour la classe, tout ce que les applis du hub ont pour elle, avec l'état et « Ouvrir » ; la dictée universelle et le débat gagnent une classe (« Rattacher »). Les trois outils du navigateur restent hors du profil.
+
+988. Ce que tu ne commentes pas est acquis.
+
+À tester : la liste de la ⑨ de 09:01 tient.
+
+29/10/2026 09:26
+MEMO

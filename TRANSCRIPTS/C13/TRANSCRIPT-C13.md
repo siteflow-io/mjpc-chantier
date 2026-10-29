@@ -8272,3 +8272,24 @@ MEMO
 
 29/10/2026 19:25
 MEMO
+
+## Tour 377 — 29/10/2026 19:39 → 19:40
+
+**Paul :** La première chose que je vois, règle à ajouter en plus c'est à qui s'adresse les questions.
+
+**Fait.** `gen3.py` : règle 12 ajoutée (capture 5) ; 21 questions récrites à la troisième personne (« la lettre », « le personnage », « l'élève ») ; les quatre « tu » qui restent dans les questions désignent Paul (« que tu déclares », « tes « + » », « t'a-t-elle touché ») ou citent le pronom du personnage (« tu, vous ») ; deux textes de case alignés sur le sujet (« ta vie d'avant la guerre », « Dis ton âge et ton métier d'avant la guerre »). Captures 5 à 9 refaites.
+
+**Claude :** [captures 5 à 9, refaites]
+
+À jouer : relire la grille (captures 5 à 9, refaites) · en cours : rien · ouvert : 1208 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1206. Règle ajoutée, la 12 sur la capture 5. Les questions s'adressent à toi : elles parlent de la lettre et du personnage, et leur seul « tu », c'est toi. Les cases s'adressent à l'élève : leur « tu », c'est l'élève, qui écrit en son personnage, comme dans le sujet (« décide qui tu es »).
+
+1207. Appliquée : 21 questions récrites, par exemple « Écris-tu à la 1re personne ? » devient « La lettre est-elle écrite à la 1re personne ? ». Dans les cases, « Ton personnage n'a pas de vie d'avant » devient « On ne sait rien de ta vie d'avant la guerre ». Les captures 5 à 9 sont refaites.
+
+1208. J'attends la suite de ta lecture.
+
+À tester : rien de neuf.
+
+29/10/2026 19:40
+MEMO

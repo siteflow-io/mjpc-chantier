@@ -8293,3 +8293,27 @@ MEMO
 
 29/10/2026 19:40
 MEMO
+
+## Tour 378 — 29/10/2026 19:57 → 19:59
+
+**Paul :** Bon la deuxième chose que devra respecter l'instance d'injection c'est la compréhension. "Ton plus dur" mais ça ne veut strictement rien dire, ni pour un élève de 3e ni pour personne. 
+Ça doit être concret
+
+**Fait.** `gen3.py` : règle 13 ajoutée (capture 5) ; la capture 5 titrée « Les règles que suivra l'IA d'injection » ; les 51 questions, les 69 cases et leurs tâches relues contre la règle 13 et récrites en concret (bloc `CRIT` remplacé ; version précédente gardée au scratchpad). Captures 5 à 9 refaites.
+
+**Claude :** [captures 5 à 9, refaites]
+
+À jouer : relire la grille (captures 5 à 9, refaites) · en cours : rien · ouvert : 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1209. Règle ajoutée, la 13 sur la capture 5 : tout se comprend du premier coup, par un élève de 3e comme par n'importe qui. Chaque phrase dit concrètement ce qu'il y a dans la copie, ou ce qu'il faut faire. Aucune étiquette inventée par la grille ; les mots du cours (modalisation, litote, architecture, relative) restent, puisque l'élève les a appris.
+
+1210. J'ai relu contre elle les 51 questions, les 69 cases et leurs tâches, et tout ce qui était étiquette est récrit. Par exemple, « Ton plus dur est celui qu'on attend » devient « Ce que tu présentes comme le plus difficile à vivre, c'est ce que tout le monde attend : la mort, les combats. Rien ne surprend. » Et « Ta lettre ne tait rien » devient « Ta lettre ne cache rien à l'autre : tu lui dis tout, même le pire. »
+
+1211. La capture 5 s'appelle maintenant « Les règles que suivra l'IA d'injection ». Quand tu auras validé la grille, ces règles entreront dans le prompt qui écrit les grilles, pour que les prochains sujets naissent ainsi.
+
+1212. J'attends la suite de ta lecture.
+
+À tester : rien de neuf.
+
+29/10/2026 19:59
+MEMO

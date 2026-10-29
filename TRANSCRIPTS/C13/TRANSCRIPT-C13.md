@@ -8191,3 +8191,32 @@ MEMO
 
 29/10/2026 16:30
 MEMO
+
+## Tour 374 — 29/10/2026 16:41 → 16:43
+
+**Paul :** 1184, il faut surtout mesurer ce qu'on gagne en finesse entre le mode général et le mode rapide. prends un cas concret. parce que si on ne gagne pas grand chose, dans ce cas le mode général peut suffire. 1185. en fait mon idée était surtout que chaque case ait un contenu strict, une couleur strict et un point strict. En gros, interdit de mélanger.
+
+**Mesuré.** Les questions de la capture (`captures-29-10/gen.py`) : 30 questions et 3 « au-delà » ; Flavie : 11 « non », 19 « oui ». La note réelle de Flavie au hub, « Les trois paragraphes » : Fragile, sous-échelon 0, 1 / 4. Transcript, tours 362 à 364 (1093 à 1112) : la correspondance couleur, poids, contenu laissée à cadrer (12:50).
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1194 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1188. 1184, le cas concret : la copie de Flavie, avec les questions de la capture. Les deux modes posent les mêmes 30 questions et les 3 « au-delà », et Flavie y répond pareil : 11 « non », 14 erreurs, 4 citations, donc la même note et le même bilan. En finesse, le mode rapide ne gagne rien : la finesse est dans la grille, pas dans le mode.
+
+1189. La seule différence : en mode général, les 19 « oui » de Flavie sont mis d'avance ; une question que tu n'as pas regardée reste « oui » sans que tu le saches. En mode rapide, tu les vois toutes, une à une.
+
+1190. Verdict : le mode général suffit, le mode rapide tombe. Pour lui prendre son seul avantage, je propose que chaque groupe de la capture (d'un coup d'œil, en lisant, à la fin) se valide d'une touche : trois gestes, et aucun « oui » ne passe sans toi. 1165 n'a plus d'objet, puisqu'en mode général un point tout bon ne coûte déjà aucun geste. 1163 reste sous la forme de la capture : les questions rangées dans l'ordre où tu lis.
+
+1191. 1185, j'ai compris : une case, c'est un seul fait, une seule couleur et un seul point, fixés d'avance ; rien ne se calcule en mélangeant. Le cas concret, « Les trois paragraphes », sur 4 : par exemple, « Les trois paragraphes sont là », vert foncé, 4 ; « Le troisième paragraphe, l'inquiétude pour l'autre, manque », orange, 1. Flavie tombe dans cette case par un seul « non » : orange, 1 sur 4, ce que tu lui as mis.
+
+1192. Le oui / non garde sa place : chaque question demande un fait, et son « non » ouvre sa case. 1186 tombe : la couleur ne vient plus d'une part de « oui », elle vient de la case.
+
+1193. Le seul point à trancher : deux « non » dans le même point. Je propose que la case la plus sévère donne la couleur et le point, et que les autres soient nommées dans le bilan et dans « À reprendre ». Quand un cumul compte, il a sa propre case : par exemple « Deux codes manquent », orange, au lieu de deux cases « il manque… ».
+
+1194. Oui à 1188 à 1193 ? Je t'écris alors la grille de la lettre case par case, avec le compte sur Flavie, pour que tu la corriges avant le code.
+
+À tester : rien de neuf.
+
+29/10/2026 16:43
+MEMO

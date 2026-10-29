@@ -7878,7 +7878,7 @@ MEMO
 
 **Paul :** Il faudrait presque quelque chose en oui non. Qu'en penses tu? À mesurer en gain de temps
 
-**Mesuré.** La grille de la lettre (`LIVRAISONS/REDACTION/sujets/lettre-grande-guerre.json`, branche `ru-1263`) : 12 points ; 48 descripteurs, 1 260 mots ; 192 sous-descripteurs, 4 041 mots. Aujourd'hui, par copie : 12 × (un échelon + un sous-échelon) = 24 clics à la souris, chaque choix pris parmi 4 puis 16 textes longs. Le temps réel par copie : aucune mesure, l'appli n'a pas de journal (13 · 102 voisin ; 1103).
+**Mesuré.** La grille de la lettre (`LIVRAISONS/REDACTION/sujets/lettre-grande-guerre.json`, branche `ru-1263`) : 12 points ; 48 descripteurs, 1 260 mots ; 192 sous-descripteurs, 4 041 mots. Aujourd'hui, par copie : 12 × (un échelon + un sous-échelon) = 24 clics à la souris, chaque choix pris parmi 4 puis 16 textes longs. Le temps réel par copie : aucune mesure, l'appli n'a pas de journal (1103).
 
 **Claude :**
 

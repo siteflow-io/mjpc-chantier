@@ -74,12 +74,16 @@ function dr_versMur(et, x){
         f.postMessage(fiche ? { sortie: true } : Object.assign({ et: null }, x), '*');
       } else { let ecran = x.ecran; if (ecran === undefined) { try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) { ecran = null; } }
         let docs = x.documents; if (docs === undefined) { try { docs = (dr_documents() || {})[String(et.si)] || []; } catch (e) { docs = []; } }
-        f.postMessage({ et, ecran, documents: docs }, '*'); }
+        f.postMessage({ et: dr_tabAvecEtiquette(et), ecran, documents: docs, feuilles: dr_tabFeuillesDe(et), minut: (typeof dr_minuteurEtat === 'function' ? dr_minuteurEtat() : null), t: Date.now() }, '*'); }
     } catch (e) {}
   }
   if (et) dr_sceneAuto();
 }
 
+/* §12.74 (1) : la feuille du site montrée part avec l'état vers la fenêtre locale (elle ne lit pas le hub) */
+/* §12.74 (2) : l'étiquette entière part avec l'état (le tableau n'a pas les activités du chapitre) */
+function dr_tabAvecEtiquette(et){ if (!et || typeof dr_etiquetteDe !== 'function') return et; const t = dr_etiquetteDe(et); return t == null ? et : Object.assign({}, et, { etiquette: t }); }
+function dr_tabFeuillesDe(et){ try { const r = et && et.doc && et.doc.feuille; const d = r && typeof DR_FEUILLES !== 'undefined' ? DR_FEUILLES.doc[r] : null; return d ? { [r]: d } : null; } catch (e) { return null; } }
 /* la fenêtre dit `pret` à l'ouverture (comme la maquette) : on lui pousse ce que la classe voit, gel compris (p8-5g, point 1).
    Elle redit `ici` toutes les 3 s : un pilote RECHARGÉ (réveil n°6 : écrire, recharger, « Reprendre le cours ») ne connaît plus la fenêtre
    qu'il avait ouverte ; il l'adopte à ce signe et lui renvoie ce que voit la classe. Un pilote qui la connaît déjà ignore `ici`. */
@@ -102,7 +106,7 @@ window.addEventListener('message', ev => {
        ce que voit la classe, sans rien écrire ni journaliser (relecteur 2, n° 3) */
     const et = dr_tabSansEntree(S.gel || S.mur); if (!et || !DR_TAB.fen || DR_TAB.fen.closed) return;
     let ecran = null; try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) {}
-    DR_TAB.fen.postMessage({ et, ecran }, '*');   /* directement : pas de scène au hub depuis l'Atelier */
+    DR_TAB.fen.postMessage({ et: dr_tabAvecEtiquette(et), ecran, feuilles: dr_tabFeuillesDe(et) }, '*');   /* directement : pas de scène au hub depuis l'Atelier */
   } catch (e) {}
 });
 /* le clic sur « ⧉ Ouvrir le tableau », d'où que vienne le bouton (le gabarit est posé plus tard par `atVuesPoser`) :
@@ -136,6 +140,9 @@ function dr_scene(et){
   sc.origine = (typeof SES === 'object' && SES) ? SES.id : 'pilote';
   sc.ts = Math.max(Date.now(), (DR_TAB.dernierTs || 0) + 1); DR_TAB.dernierTs = sc.ts;   /* toujours croissant : deux scènes dans la même milliseconde (ou une horloge figée) restent ordonnées */
   sc.trameMaj = DR_TAB.trameMaj || 0;
+  try { const t = dr_etiquetteDe(et); if (t != null) sc.etiquette = t; } catch (e) {}   /* §12.74 (2) : l'étiquette entière, numéro compris */
+  if (Array.isArray(sc.qui)) sc.quiOn = true; if (sc.cahier && typeof sc.cahier === 'object' && Array.isArray(sc.cahier.qui)) sc.cahier.quiOn = true;   /* §12.71 : le hub ne garde pas une liste vide — le drapeau dit « la participation est au tableau », même à 0 */
+  delete sc.bandeau; try { const m = (typeof dr_minuteurEtat === 'function') ? dr_minuteurEtat() : null; if (m) sc.minut = m; else delete sc.minut; } catch (e) {}   /* §12.70 (4) : le minuteur (fin, durée, pause), une fois par geste ; plus de bandeau */
   try { const hc = (typeof dr_horlogeCase === 'function') ? dr_horlogeCase() : null; sc.hdec = hc ? hc.dec + hc.saut : 0; } catch (e) { sc.hdec = 0; }   /* §12.66 (2) : l'écart de l'horloge de la case (les De Gaulle) — l'horloge du tableau distant le suit */
   return sc;
 }
@@ -309,7 +316,8 @@ function dr_tabPoser(){
     + '<div class="n">monsieurjaipascompris</div><div class="h" id="ses-tab-h">--:--</div>'
     + '<div class="d" id="ses-tab-d"></div><div class="c" id="ses-tab-c" style="display:none"></div>' + (dr_tabLocal() ? '' : '<button class="c" id="ses-tab-cle"></button>') + '</div>'
     + '<div class="mur tableau" id="mur2"></div>'
-    + '<div class="ses-tab-perdu" id="ses-tab-perdu"></div>';
+    + '<div class="ses-tab-perdu" id="ses-tab-perdu"></div>'
+    + '<div class="dr-tab-minut" id="dr-tab-minut" style="display:none"></div>';   /* §12.70 (1) : le minuteur, en haut à droite du tableau, hors du mur (le redessin du mur n'y touche jamais) */
   [].slice.call(document.body.children).forEach(el => { el.style.display = 'none'; });
   document.body.appendChild(z); document.body.classList.add('ses-corps-tab');
   if (!dr_tabLocal()) ['pointerdown', 'keydown', 'touchstart'].forEach(ty => document.addEventListener(ty, dr_tabPleinEcran, true));   /* §12.72 : le plein écran au premier geste */
@@ -318,7 +326,11 @@ function dr_tabPoser(){
     st.textContent = '#ses-tab #mur2{position:absolute;inset:0;margin:auto;width:min(100vw,calc(100vh * 16 / 9));height:auto;aspect-ratio:16/9;border-radius:0;box-shadow:none}'
       /* §12.66 (5) : la ligne de la clé USB quitte le centre — en bas à droite, petite et pâle, toujours cliquable ; l'horloge et la date restent seules au centre */
       + '#ses-tab #ses-tab-cle{position:absolute;right:1.6vh;bottom:1.4vh;max-width:46vw;cursor:pointer;background:transparent;color:inherit;font:inherit;font-size:1.5vh;line-height:1.3;padding:.4vh 1.2vh;border-color:#3a322b;opacity:.42;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
-      + '#ses-tab #ses-tab-cle:hover,#ses-tab #ses-tab-cle:focus-visible{opacity:.9}';
+      + '#ses-tab #ses-tab-cle:hover,#ses-tab #ses-tab-cle:focus-visible{opacity:.9}'
+      /* §12.70 (1)(7) : chiffres sur fond noir, en haut à droite du tableau (le coin du mur 16:9), aucun mot ; or immobile avant « Départ », puis vert, jaune, orange, rouge clignotant */
+      + '#ses-tab .dr-tab-minut{position:absolute;z-index:20;top:calc((100vh - min(100vw, 100vh * 16 / 9) * 9 / 16) / 2 + min(100vw, 100vh * 16 / 9) * .018);right:calc((100vw - min(100vw, 100vh * 16 / 9)) / 2 + min(100vw, 100vh * 16 / 9) * .018);background:#000;color:#d4a017;font:700 calc(min(100vw, 100vh * 16 / 9) * .05)/1 ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;padding:.12em .3em;border-radius:.14em;letter-spacing:.02em;box-shadow:0 .05em .3em rgba(0,0,0,.45);pointer-events:none}'
+      + '#ses-tab .dr-tab-minut.m-vert{color:#3ddc84}#ses-tab .dr-tab-minut.m-jaune{color:#ffd60a}#ses-tab .dr-tab-minut.m-orange{color:#ff8c1a}#ses-tab .dr-tab-minut.m-rouge{color:#ff3b30}'
+      + '#ses-tab .dr-tab-minut.m-rouge.m-court{animation:drMinutClig 1s steps(1,end) infinite}@keyframes drMinutClig{50%{opacity:.25}}';
     document.head.appendChild(st);
   }
   const horloge = () => { const d = new Date(Date.now() + ((SES && SES.ctx && isFinite(DR_TAB.hdec)) ? DR_TAB.hdec : 0)), J = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'], M = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
@@ -387,8 +399,11 @@ function dr_tabDireClasse(t){ const el = document.getElementById('ses-tab-c'); i
 function dr_tabRecevoir(ev){
   const d = ev.data; if (!d || typeof d !== 'object') return;
   if (d.sortie && !('et' in d)) { const t = document.querySelector('#mur2 .f-tab'); if (t) t.classList.add('ecran-sortie'); return; }   /* la fiche se referme */
+  if ('minut' in d) dr_tabMinutRecevoir(d.minut, d.t, true);   /* §12.70 : le minuteur, avec ou sans état (même ordinateur : même horloge) */
+  if (!('et' in d)) return;
   if ('et' in d && !d.et) { dr_rendreMur(null); return; }
   if (d.et) {
+    if (d.feuilles && typeof dr_feuillePoser === 'function') Object.keys(d.feuilles).forEach(r => dr_feuillePoser(r, d.feuilles[r]));   /* §12.74 (1) */
     if (d.documents) { DR_TAB.documents = d.documents; try { if (window.DATA) { DATA.documents = DATA.documents || {}; DATA.documents[String(d.et.si)] = d.documents; } } catch (e) {} }
     dr_rendreMur(d.et, d.ecran);
   }
@@ -410,7 +425,7 @@ function dr_tabDemarrer(){
 /* le distant : le cours trouvé, on lit la copie jouée, puis la scène toutes les 900 ms et le pointeur toutes les 3 s */
 function dr_tabCheminC(c){ if (c && c.repetition && typeof c.chemin === 'string' && (c.chemin === '/site/repetition' || c.chemin === '/site/tableau_test')) return c.chemin;   /* §12.66 (1) : le mode test a son adresse */ return '/site/' + c.niveau + '/chapitres/' + c.chapitre + '/seances/' + c.seance + '/deroule_joue/' + c.classeSlug; }   /* E1 (§12.41) : une répétition se lit sous son chemin à elle, jamais dans la copie d'une classe */
 /* E1 (§12.41) : le pointeur d'une répétition retiré (« ■ Arrêter ») → l'horloge d'attente ; une heure lancée retirée garde son image (relance C3, inchangé) */
-function dr_tabRetourAttente(){ DR_TAB.hdec = 0; clearInterval(DR_TAB.sondeT); DR_TAB.sondeT = null; clearInterval(DR_TAB.pointeurT); DR_TAB.pointeurT = null; SES.ctx = null; SES.tabPointeur = null; DR_TAB.montre = null; DR_TAB.ts = 0; DR_TAB.ecrans = null;
+function dr_tabRetourAttente(){ dr_tabMinutRecevoir(null); dr_tabFluxFermer(); DR_TAB.vuCours = false; DR_TAB.hdec = 0; clearInterval(DR_TAB.sondeT); DR_TAB.sondeT = null; clearInterval(DR_TAB.pointeurT); DR_TAB.pointeurT = null; SES.ctx = null; SES.tabPointeur = null; DR_TAB.montre = null; DR_TAB.ts = 0; DR_TAB.ecrans = null;
   const m = document.getElementById('mur2'); if (m) m.innerHTML = ''; const a = document.getElementById('ses-tab-att'); if (a) a.style.display = ''; try { if (DR_TAB.horloge) DR_TAB.horloge(); } catch (e) {} dr_tabDireClasse(''); try { sesTabChercherCours(); } catch (e) {} try { dr_tabAttendre(); } catch (e) {} }
 /* la règle (relance F2/I1) : une scène n'est acceptée que si la clé de cours de `cours_actif` est celle de ce cours ;
    le « pilote présent » n'existe pas — sans scène neuve, l'image reste */
@@ -437,21 +452,27 @@ function dr_tabMonter(){
   dr_tabLireSeance(SES.ctx);
   dr_tabLire(dr_tabCheminC(SES.ctx) + '/ecrans', ecr => {
     if (Array.isArray(ecr)) DR_TAB.ecrans = ecr;
-    if (!DR_TAB.sondeT) DR_TAB.sondeT = setInterval(dr_tabSonder, 900);
+    DR_TAB.decal = null; DR_TAB.vuCours = false;   /* §12.70 (4) : l'horloge du pilote se recale à chaque cours */
+    if (!dr_tabFluxOuvrir(dr_tabCheminC(SES.ctx) + '/scene') && !DR_TAB.sondeT) DR_TAB.sondeT = setInterval(dr_tabSonder, 900);   /* §12.70 (5) : le flux du hub ; la lecture toutes les 0,9 s en repli */
     if (!DR_TAB.pointeurT) DR_TAB.pointeurT = setInterval(() => { sesTabVeillePointeur(); dr_tabPointeur(); }, 3000);
     dr_tabSonder();
   });
 }
 function dr_tabSonder(){
   const c = SES.ctx; if (!c) return;
-  const base = dr_tabCheminC(c);
-  dr_tabLire(base + '/scene', o => {
+  dr_tabLire(dr_tabCheminC(c) + '/scene', o => { if (SES.ctx === c) dr_tabSceneRecue(o, c); });
+}
+/* une scène arrivée (par le flux ou par la lecture) */
+function dr_tabSceneRecue(o, c){
+  c = c || SES.ctx; if (!c) return; const base = dr_tabCheminC(c);
+  {
     const perdu = document.getElementById('ses-tab-perdu');
     if (o === undefined) {   /* la lecture a échoué : le tableau tient, il le dit */
       if (!SES.perduDepuis) SES.perduDepuis = Date.now();
       if (perdu) { perdu.textContent = 'Pilotage interrompu à ' + new Date(SES.perduDepuis).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + ' — le tableau tient, il reprendra tout seul.'; perdu.classList.add('on'); }
       return; }
     SES.perduDepuis = 0; if (perdu) perdu.classList.remove('on');
+    if (dr_tabSceneOubliee(o, c)) return;   /* §12.68 : l'heure annulée — sa scène est retirée : l'horloge */
     if (!o || typeof o !== 'object' || typeof o.ts !== 'number' || !isFinite(o.ts)) return;   /* une scène sans heure lisible n'est pas une scène */
     if (!DR_TAB.pilotePresent) return;                               /* le pilote n'est plus là (pointeur retiré ou périmé) : l'image reste (mandat point 5 ; relecteur 2, n° 5a) */
     const futur = DR_TAB.ts > Date.now() + 5 * 60000;                 /* la dernière scène venait d'une horloge en avance : elle ne bloque pas la suite (n° 5b) */
@@ -459,12 +480,63 @@ function dr_tabSonder(){
     if (c.ts && o.ts < c.ts - 2000) return;                          /* la scène d'une heure précédente ne ressuscite jamais */
     if (o.si == null && o.di == null && !o.eid) return;              /* la scène « à neuf » du lancement : rien à montrer encore (audit C6) */
     DR_TAB.ts = o.ts; DR_TAB.hdec = isFinite(o.hdec) ? +o.hdec : 0;   /* §12.66 (2) : l'horloge de la case, pendant l'heure */
+    DR_TAB.vuCours = true; dr_tabMinutRecevoir(o.minut || null, o.ts);
+    dr_tabNormaliser(o);   /* §12.71 : la participation à 0 revient en liste vide */   /* §12.70 : le minuteur suit la scène, recalé sur l'horloge du pilote */
     if (o.trameMaj && o.trameMaj > DR_TAB.trameMaj) {
       DR_TAB.trameMaj = o.trameMaj;
       dr_tabLire(base + '/ecrans', ecr => { if (Array.isArray(ecr)) DR_TAB.ecrans = ecr; dr_tabMontrer(o); });
     } else dr_tabMontrer(o);
-  });
+  }
 }
+/* ═══ §12.70 (5) — LE FLUX DU HUB (Paul, 29/10 10:17 : « il y a un lag entre le pilotage et le tableau distant ») ═══
+   Le tableau distant ÉCOUTE la scène (le flux REST de Firebase, `EventSource`, gratuit) au lieu de la lire toutes les 0,9 s : elle arrive
+   aussitôt. Le flux tombe (réseau, refus) : la lecture toutes les 0,9 s reprend, et le flux se rouvre 15 s plus tard. Lecture seule. */
+var DR_FLUX = { es: null, chemin: null, val: undefined, ok: false, reT: null, n: 0 };
+function dr_tabFluxPoser(v, chemin, data, patch){ const q = String(chemin || '/').split('/').filter(Boolean);
+  if (!q.length) { if (!patch) return data; v = (v && typeof v === 'object') ? Object.assign({}, v) : {}; Object.keys(data || {}).forEach(k => { if (data[k] === null) delete v[k]; else v[k] = data[k]; }); return v; }
+  const r = (v && typeof v === 'object') ? JSON.parse(JSON.stringify(v)) : {}; let n = r; for (let i = 0; i < q.length - 1; i++) { if (!n[q[i]] || typeof n[q[i]] !== 'object') n[q[i]] = {}; n = n[q[i]]; }
+  const k = q[q.length - 1]; if (patch) { n[k] = (n[k] && typeof n[k] === 'object') ? n[k] : {}; Object.keys(data || {}).forEach(x => { if (data[x] === null) delete n[k][x]; else n[k][x] = data[x]; }); } else if (data === null) delete n[k]; else n[k] = data; return r; }
+function dr_tabFluxFermer(){ clearTimeout(DR_FLUX.reT); DR_FLUX.reT = null; if (DR_FLUX.es) { try { DR_FLUX.es.close(); } catch (e) {} } DR_FLUX.es = null; DR_FLUX.chemin = null; DR_FLUX.val = undefined; DR_FLUX.ok = false; }
+function dr_tabFluxTombe(chemin){ if (DR_FLUX.chemin !== chemin) return; dr_tabFluxFermer();
+  if (SES.ctx && !DR_TAB.sondeT) DR_TAB.sondeT = setInterval(dr_tabSonder, 900);   /* le repli : la lecture */
+  DR_FLUX.reT = setTimeout(() => { if (SES.ctx && dr_tabCheminC(SES.ctx) + '/scene' === chemin) dr_tabFluxOuvrir(chemin); }, 15000); }
+function dr_tabFluxOuvrir(chemin){
+  dr_tabFluxFermer();
+  if (dr_tabLocal() || typeof EventSource !== 'function' || typeof FIREBASE_BASE === 'undefined') return false;
+  let es; try { es = new EventSource(FIREBASE_BASE + chemin + '.json'); } catch (e) { return false; }
+  DR_FLUX.es = es; DR_FLUX.chemin = chemin; DR_FLUX.n++;
+  const recu = (ev, patch) => { if (DR_FLUX.es !== es) return; let m = null; try { m = JSON.parse(ev.data); } catch (e) { return; } if (!m || typeof m.path !== 'string') return;
+    DR_FLUX.val = dr_tabFluxPoser(DR_FLUX.val, m.path, m.data, patch);
+    if (!DR_FLUX.ok) { DR_FLUX.ok = true; clearInterval(DR_TAB.sondeT); DR_TAB.sondeT = null; }   /* le flux tient : la lecture s'arrête */
+    const c = SES.ctx; if (c && dr_tabCheminC(c) + '/scene' === chemin) dr_tabSceneRecue(DR_FLUX.val === undefined ? null : DR_FLUX.val, c); };
+  es.addEventListener('put', ev => recu(ev, false)); es.addEventListener('patch', ev => recu(ev, true));
+  ['cancel', 'auth_revoked'].forEach(t => es.addEventListener(t, () => dr_tabFluxTombe(chemin)));
+  es.onerror = () => { if (DR_FLUX.es === es) dr_tabFluxTombe(chemin); };
+  return true;
+}
+/* §12.71 : ce que le hub a retiré d'une scène (une liste vide) et que le rendu attend */
+function dr_tabNormaliser(o){ if (!o || typeof o !== 'object') return o; if (o.quiOn && !Array.isArray(o.qui)) o.qui = o.qui && typeof o.qui === 'object' ? Object.values(o.qui) : [];
+  if (o.cahier && typeof o.cahier === 'object' && !Array.isArray(o.cahier.qui)) o.cahier.qui = o.cahier.qui && typeof o.cahier.qui === 'object' ? Object.values(o.cahier.qui) : []; return o; }
+/* §12.68 : une scène de CE cours déjà montrée, puis retirée (ou remise à celle d'avant le cours) : l'heure a été annulée — le tableau revient à l'horloge */
+function dr_tabSceneOubliee(o, c){ if (!DR_TAB.vuCours || !c) return false; const vieille = !o || typeof o !== 'object' || (typeof o.ts === 'number' && c.ts && o.ts < c.ts - 2000);
+  if (!vieille) return false; dr_tabRetourAttente(); return true; }
+
+/* ═══ §12.70 (1)-(4)(7) — LE MINUTEUR AU TABLEAU ═══
+   Reçu avec la scène (ou par message, pour la fenêtre locale) : { d durée, e état, f fin à l'horloge du pilote, r reste }. Le tableau compte
+   avec sa propre horloge, recalée sur celle du pilote : l'écart est le plus grand (heure du pilote à l'envoi − heure ici à la réception) vu
+   pendant le cours — celui que le trajet a le moins retardé. Seuls le chiffre et sa classe changent ; la boucle ne tourne que quand il court. */
+function dr_tabMinutRecevoir(m, tsPilote, local){
+  if (m && typeof m === 'object' && isFinite(tsPilote)) { const ech = local ? 0 : (+tsPilote - Date.now()); DR_TAB.decal = (DR_TAB.decal == null || ech > DR_TAB.decal) ? ech : DR_TAB.decal; }
+  DR_TAB.minut = (m && typeof m === 'object' && isFinite(m.d)) ? m : null; DR_TAB.minutRecu = Date.now();
+  dr_tabMinutTic(); clearInterval(DR_TAB.minutT); DR_TAB.minutT = (DR_TAB.minut && DR_TAB.minut.e === 'court') ? setInterval(dr_tabMinutTic, 100) : null; }
+function dr_tabMinutReste(){ const m = DR_TAB.minut; if (!m) return null; if (m.e === 'court' && isFinite(m.f)) return Math.max(0, m.f - (Date.now() + (DR_TAB.decal || 0))); return Math.max(0, +m.r || 0); }
+function dr_tabMinutTic(){ const el = document.getElementById('dr-tab-minut'); if (!el) return; const m = DR_TAB.minut;
+  if (!m) { if (el.style.display !== 'none') el.style.display = 'none'; return; }
+  const reste = m.e === 'pret' ? m.d : dr_tabMinutReste(); const txt = (typeof dr_mmss === 'function') ? dr_mmss(reste) : String(Math.ceil(reste / 1000));
+  const ph = m.e === 'fini' ? 'rouge' : (typeof dr_minutPhase === 'function' ? dr_minutPhase(reste, m.d, m.e) : 'vert'); const cl = 'dr-tab-minut m-' + ph + (m.e === 'court' ? ' m-court' : '') + (m.e === 'pause' ? ' m-pause' : '');
+  if (el.textContent !== txt) el.textContent = txt; if (el.className !== cl) el.className = cl; if (el.style.display === 'none') el.style.display = '';
+  if (m.e === 'court' && reste <= 0) { clearInterval(DR_TAB.minutT); DR_TAB.minutT = null; } }
+
 /* l'identité fait foi : si le rang reçu ne désigne pas la même diapo dans MA copie, on la retrouve par son eid */
 function dr_tabMontrer(o){
   const E = DR_TAB.ecrans || []; let di = o.di;

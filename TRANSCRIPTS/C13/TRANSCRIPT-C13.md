@@ -8669,32 +8669,81 @@ MEMO
 
 **Claude :** [captures 19-correction-langue.png, 20-correction-critere.png]
 
-À jouer : regarder les captures 19 et 20, donner les phrases de 1300 · en cours : rien · ouvert : 1308 ; 1299 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+À jouer : regarder les captures 19 et 20, me donner les phrases de 1300 · en cours : rien · ouvert : 1308 ; 1299 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
 
-1300. « Poser » et « s'y accrocher » tombent. Je propose de dire ce que l'élève voit, avec tes mots à toi, « sa copie passe à travers la grille » :
+1300. « Poser » et « s'y accrocher », je les retire. Je propose de dire ce que l'élève voit, avec ta formule à toi : « sa copie passe à travers la grille ».
 1 · « La grille de correction est au-dessus de ta copie : une feuille par critère. »
 2 · « Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, entourées en rouge. »
 3 · « Puis à travers le sujet et le récit : leurs points apparaissent sur ta copie, gris, avec un « ? ». »
 4 · « Ta copie est passée à travers toute la grille. Clique sur un critère : tu ne vois plus que ses points. »
-C'est toi qui les donnes ou les changes.
+C'est toi qui les valides ou les changes.
 
-1301. Ton flux, un critère à la fois : faisable, oui. Les copies défilent sur le même critère ; la flèche fait venir la suivante à la place de celle-ci. Passes : la langue, le sujet, le récit, les phrases ; les papillons plus tard, quand les élèves les ont faits (1293). Par critère, pas par point : douze passes, ce seraient douze relectures.
+1301. Ton flux, un critère à la fois : faisable, oui. Les copies défilent l'une après l'autre sur le même critère, et la flèche fait venir la suivante à la place de celle-ci. Les passes : la langue, le sujet, le récit, les phrases. Les papillons viennent plus tard, quand les élèves les ont faits (1293). On défile par critère, pas par point : avec une passe par point, ce seraient douze relectures.
 
-1302. Passe 1, la langue (capture 19) : la seule où tu lis toute la copie. Un clic sur l'erreur, la bonne forme et sa lettre comme en dictée (G, L…), Entrée. Une forme déjà tapée dans le paquet se reprend par son numéro : « jusque-là » sur trois copies, tu la tapes une fois. La lettre, c'est ce qui dit à l'élève le type de son erreur : une touche de plus pour une forme neuve, aucune pour une forme reprise. La phrase qui t'a touché se marque ici, puisque c'est la lecture entière.
+1302. Passe 1, la langue (capture 19) : c'est la seule passe où tu lis toute la copie.
+- Un clic sur l'erreur, puis la bonne forme et sa lettre comme en dictée (G, L…), puis Entrée.
+- Une forme déjà tapée dans le paquet se reprend par son numéro : « jusque-là » revient sur trois copies, tu ne la tapes qu'une fois.
+- La lettre dit à l'élève le type de son erreur. Elle coûte une touche de plus pour une forme neuve, aucune pour une forme reprise.
+- La phrase qui t'a touché se marque dans cette passe, puisque c'est la seule lecture entière.
 
-1303. Passes 2 à 4, un critère (capture 20) : seulement ses questions, point après point. Entrée, c'est oui ; un « non » est un clic sur la copie, à l'endroit. En dessous, les copies déjà vues sur ce point, en couleur : même question, mêmes exigences pour toutes, d'un coup d'œil.
+1303. Passes 2 à 4, un critère (capture 20) : seulement les questions de ce critère, point après point. Entrée, c'est oui ; un « non » est un clic sur la copie, à l'endroit. En dessous s'affichent en couleur les copies déjà vues sur ce point : même question, mêmes exigences pour toutes, tu compares d'un coup d'œil.
 
-1304. La case se compte. « Le récit reste-t-il au passé simple et à l'imparfait ? » : un clic par verbe qui en sort. Deux clics, case orange. Tu ne choisis jamais la case, tes clics la donnent. Il faut pour ça des cases comptables (un, deux ou trois, plus de trois) : une règle de plus pour l'IA d'injection, dans la ligne de « un contenu strict, une couleur stricte, un point strict ».
+1304. La case se compte. Exemple de la capture 20 : « Le récit reste-t-il au passé simple et à l'imparfait ? ». Tu fais un clic par verbe qui en sort ; deux clics donnent la case orange. Tu ne choisis jamais la case, ce sont tes clics qui la donnent. Pour ça, il faut des cases comptables (un ; deux ou trois ; plus de trois). Ça fait une règle de plus pour l'IA d'injection, dans la ligne de « un contenu strict, une couleur stricte, un point strict ».
 
-1305. Ce qui télescope : la lecture unique (1163, 1190). Par critère, tu relis. Dans la grille de la lettre, le thème a 15 questions qui se répondent en lisant, la construction 6 ; l'organisation se juge surtout d'un coup d'œil (6 questions sur 11). Ça fait trois lectures entières par copie au lieu d'une : la langue, le thème, la construction. En face : une seule question en tête au lieu de toute la grille, et une relecture qui ne cherche qu'une chose. Si ça compense, je ne sais pas. Sur Flavie, le thème t'a pris 7 min 05 sur 13 min 37 en une seule lecture.
+1305. Ce qui télescope : la lecture unique (1163, 1190). Corriger par critère oblige à relire. Dans la grille de la lettre :
 
-1306. Ce qui ne télescope pas : l'ordre. Tu corriges dans l'ordre où l'élève reprend : la langue, puis la grille de haut en bas (1298). Ni les séances : chaque passe garde où tu en es, copie par copie.
+| Critère | Questions qui se répondent en lisant |
+| --- | --- |
+| Le thème | 15 |
+| La construction | 6 |
+| L'organisation | se juge surtout d'un coup d'œil (6 questions sur 11) |
 
-1307. Combien de clics par copie : je ne sais pas. Le chrono mesurera chaque passe, copie par copie, clics et touches à part ; sur tes paquets de la lettre (1277), on comparera aux 13 min 37 de Flavie.
+Ça fait trois lectures entières par copie au lieu d'une : la langue, le thème, la construction. En face, tu n'as qu'une question en tête au lieu de toute la grille, et chaque relecture ne cherche qu'une chose. Si ça compense, je ne sais pas. Sur Flavie, en une seule lecture, le thème t'a pris 7 min 05 sur 13 min 37.
+
+1306. Ce qui ne télescope pas :
+- l'ordre : tu corriges dans l'ordre où l'élève reprend sa copie, la langue puis la grille de haut en bas (1298) ;
+- les séances : chaque passe garde où tu en es, copie par copie.
+
+1307. Combien de clics par copie : je ne sais pas. Le chrono mesurera chaque passe, copie par copie, en comptant à part les clics et les touches. Sur tes paquets de la lettre (1277), on comparera aux 13 min 37 de Flavie.
 
 1308. Oui à 1300 à 1307 ?
 
 À tester : rien de neuf.
 
 30/10/2026 00:01
+MEMO
+
+## Tour 392 — 30/10/2026 00:06 → 00:11
+
+**Paul :** Clique sur un critère tu ne vois plus que ses points, ça sert à quoi?
+
+Par ailleurs pour le passage critère par critère, j'imaginais que les marques sur le calque se posaient automatiquement et après je n'ai plus qu'à déplacer et redimensionner aux bons endroits sur la copie, et faire clic droit et dupliquer éventuellement.
+
+**Fait.** Mesure `lignes.py` (scratchpad `scan-prive/`) sur la copie de l'an dernier : encre bleue plus sombre que le papier autour, réglure retirée, profil par ligne. 30 lignes écrites trouvées sur 30, écart médian 1 px avec le relevé à la main ; fins de paragraphe par ligne courte : lignes 9 et 17, les deux visibles ; trous de classeur exclus à la main (x > 975 px). Relu `redaction.html` : la langue s'y compte au « + » / « - », sans type. Correction de 1302 : la lettre G, L tombe (cadrage du 29/10). Capture 19 corrigée et capture 18 aux phrases de 1300 et 1309, au scratchpad, non renvoyées. Tour 391 remis au mot près.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1317 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1309. Chez l'élève, ça ne sert à rien. Son parcours le mène déjà d'un point à l'autre, dans l'ordre (1298) ; je l'avais mis pour feuilleter la pile, ce n'est pas une raison. Je le retire. La phrase 4 de 1300 devient : « Ta copie est passée à travers toute la grille. » Ça ne sert que chez toi : en passe « le récit », tu ne vois que les marques du récit (capture 20).
+
+1310. Une erreur à moi dans 1302 : la lettre G, L. Tu as cadré le 29/10 qu'une touche propre à la dictée n'existe pas en rédaction ; elle tombe. Reste : un clic sur l'erreur remplace ton « + » d'aujourd'hui, et la bonne forme, ou son numéro, permet à l'appli de vérifier seule la correction de l'élève (capture 10). Capture 19 corrigée au scratchpad, je ne te la renvoie pas.
+
+1311. Tes marques posées d'avance : faisable là où l'appli sait où regarder sans lire. Elle ne lit pas l'écriture : je ne connais pas de moyen gratuit et fiable de lire une écriture d'élève dans le navigateur. Mais elle voit où est l'encre. Mesuré sur la copie de l'an dernier : 30 lignes écrites trouvées sur 30, à 1 pixel près ; les deux fins de paragraphe trouvées par leur ligne courte (lignes 9 et 17). Une seule copie, et j'ai retiré à la main les trous de classeur : sur un paquet, je ne sais pas. Tes photos de la lettre (1277) le diront.
+
+1312. Ce que l'appli pose seule, dans la grille de la lettre : les codes de la lettre, lieu et date en haut, formule d'appel au début, signature en bas ; et une marque à chaque début de paragraphe. Juste : Entrée. Pas juste : tu la glisses où il faut.
+
+1313. Les marques de l'élève dans la marge (1216 : numéros d'architecture, L, M, C, D) : l'appli voit qu'il y en a une sur telle ligne, pas laquelle. Elle pose une marque en attente sur chacune de ces lignes, toute la largeur ; sur le point en cours, un clic la prend et tu la redimensionnes à la phrase. C'est ton geste. Qu'elle trouve la marge sur tes copies, je ne sais pas avant tes photos.
+
+1314. Les trente lignes : l'appli les compte. Tu n'as plus à les déclarer avant de corriger.
+
+1315. Ce que l'appli ne peut pas poser : tout ce qui demande de lire, où il dit qui il est, un verbe au mauvais temps. Là, ton geste coûte plus que tracer. Une marque posée au hasard, la déplacer puis la redimensionner : 2 gestes. La tracer, appuyer au début du passage et glisser jusqu'à la fin : 1 geste. Dupliquer, clic droit, Dupliquer, déplacer, redimensionner : 4 gestes ; en tracer une deuxième : 1 geste. Je propose : posée par l'appli quand elle sait, tracée par toi sinon, pas de duplication. Chaque marque s'aimante à la ligne trouvée : tu ne vises qu'en largeur, et un passage sur plusieurs lignes se trace comme on surligne un texte.
+
+1316. Un point tout bon qui ne tient à aucun passage, comme « le thème tenu » : sa marque reste en haut de la copie, dans la marge, sans aucun geste. Tu ne la places que si tu veux montrer un endroit.
+
+1317. Oui à 1309 à 1316 ?
+
+À tester : rien de neuf.
+
+30/10/2026 00:11
 MEMO

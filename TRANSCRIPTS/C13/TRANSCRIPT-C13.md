@@ -7369,3 +7369,22 @@ MEMO
 
 29/10/2026 10:20
 MEMO
+
+## Tour 350 — 29/10/2026 10:20 → 10:21
+
+**Paul :** en fait il y a un doublon: le chrono en bas du pilotage, et le chrono en haut!! celui d'en bas met 7 minutes instantanés. mesure.
+
+**Mesuré.** Production ⑨ : `#bchrono` (sous la diapo) → `basculerChrono` : `S.bandeau = '⏱ 07:00'`, texte fixe ; `#dr-minut-b` (en-tête) → `dr_minuteurPoser` / `dr_minuteurTic`, le vrai minuteur ; les deux écrivent `S.bandeau`. Registre 13 · 92 (prod `docs`), contrat §12.70 (6).
+
+**Claude :**
+
+1009. Mesuré : tu as raison, ce sont deux boutons différents. Celui du bas ne compte rien : il écrit « ⏱ 07:00 » au tableau, un texte fixe, toujours le même. C'est le geste de la maquette, sorti sous la diapo quand on y a mis ⏱ et 👥. Son infobulle dit « le chrono de l'heure », c'est faux.
+
+1010. Celui du haut est le vrai minuteur : une durée, « Départ », « au tableau », ■. Les deux écrivent au même endroit du tableau, donc ils se marchent dessus.
+
+1011. Je propose : un seul minuteur, celui du bas, sous la diapo, comme tu l'avais voulu. Il devient le vrai, avec la durée, Départ, Pause, « au tableau » et ■. Le ⏱ du haut et le « 07:00 » disparaissent. C'est inscrit (13 · 92) et au contrat.
+
+À tester : la liste de la ⑨ de 09:01 tient.
+
+29/10/2026 10:21
+MEMO

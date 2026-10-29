@@ -7315,3 +7315,26 @@ MEMO
 
 29/10/2026 09:55
 MEMO
+
+## Tour 348 — 29/10/2026 10:07 → 10:07
+
+**Paul :** C'est surtout l'UI qu'il faut reproduire au mieux donc ce sont de nouveaux types de diapo à créer et le prompt d'injection à adapter. Oui à tout après, sauf 996, la phrase élève, pas l'intitulé officiel évidemment. 997. J'ai oublié de te mettre ce canon là
+
+**Fait.** Contrat §12.67 (les diapos d'ouverture au canon, le prompt), §12.68 (annuler une heure), §12.69 (la relecture dans le profil de la classe).
+
+**Claude :**
+
+À jouer : les tests de la ⑨ (liste de 09:01) · en cours : rien · ouvert : 1001 ; 979 à 988 ; 905 à 917 (les questions de la lettre).
+
+998. C'est écrit au contrat. De nouveaux types de diapo, qui reproduisent tes canons au plus près : la présentation du chapitre, les compétences du chapitre, le parcours. Le prompt d'injection écrit la phrase de chaque séance, met la majeure en premier, et marque les séances évaluées, en bleu vif dans le parcours. Les compétences sont nommées par la phrase d'élève, partout où l'élève les voit, et aussi sur la feuille sommaire.
+
+999. « Annuler cette heure » et la relecture dans le profil de la classe sont aussi au contrat.
+
+1000. J'attends ton canon de début de séance.
+
+1001. Je propose : dès que le canon arrive, un exécutant neuf fait les nouveaux types de diapo et le prompt d'un seul coup. En parallèle, un autre fait « Annuler cette heure » ; il peut partir tout de suite si tu dis « lance ».
+
+À tester : la liste de la ⑨ de 09:01 tient.
+
+29/10/2026 10:07
+MEMO

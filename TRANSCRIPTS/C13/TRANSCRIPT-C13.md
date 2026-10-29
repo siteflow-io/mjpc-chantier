@@ -7423,3 +7423,28 @@ MEMO
 
 29/10/2026 10:30
 MEMO
+
+## Tour 352 — 29/10/2026 10:36 → 10:37
+
+**Paul :** 1014. si, de mon pilote. ok pour le reste, sauf le fond et les couleurs, ça sort d'où?
+
+**Mesuré.** Les vraies couleurs du site, dans la ⑨ (`:root`) : fond `#0f0d0a`, cartes `#1b1712` et `#241e17`, bords `#332a20` et `#4a3d2f`, texte `#efe6d6` et `#b9ab94`, or `#e4b45c` ; l'en-tête `#141110` ; la police EB Garamond. Le pilote et l'Atelier sont la même zone (`#dr-zone`), avec les mêmes couleurs. Les captures 6 et 7 et celles du profil de la classe sont refaites avec ces couleurs. Contrat §12.70 (7) : le son sort du pilote.
+
+**Claude :**
+
+À jouer : les tests de la ⑨ (liste de 09:01) · en cours : rien · ouvert : 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917 (les questions de la lettre).
+
+1022. 1014 : entendu, le son sort de ton pilote. C'est corrigé au contrat.
+
+1023. Le fond et les couleurs autour des diapos : je les avais pris à l'œil sur ta capture du pilotage d'hier, pas dans le code. Ils étaient proches, mais faux.
+
+1024. Mesuré maintenant dans le site : le fond est presque noir, les cartes brun sombre, le texte crème, l'or plus clair que le mien, et la police est EB Garamond. Le pilote et l'Atelier ont les mêmes couleurs. Les captures 6 et 7, et celles du profil de la classe, sont refaites avec les vraies.
+
+1025. Les couleurs des diapos elles-mêmes (le bleu nuit, le vert d'eau, le violet, l'ocre, le rouge, le bleu vif) viennent de tes canons, relevées à l'œil. Celles du minuteur sont tes mots (vert, jaune, orange, rouge) ; les nuances sont de moi.
+
+1026. Si tu as les fichiers de tes canons (PowerPoint), je prends les couleurs exactes dedans.
+
+À tester : la liste de la ⑨ de 09:01 tient.
+
+29/10/2026 10:37
+MEMO

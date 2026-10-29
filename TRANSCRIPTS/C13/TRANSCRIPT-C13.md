@@ -7156,7 +7156,7 @@ Dans ce profil classe on doit avoir donc la copie de classe( c'est là bas que j
 
 954. Ce qui est faux là-dedans. Une classe seule de son niveau, ou la plus avancée, est toujours « dans les temps », même si elle est en retard sur ton programme. Deux classes sur des chapitres différents se comparent quand même, séance contre séance : une classe passée au chapitre suivant peut paraître en retard. Le retard est compté en séances mais affiché « h de retard », et on lui retire des heures justifiées, comptées en heures. Enfin, le clic sur la carte dit seulement « Profil de la classe — il arrive au lot suivant ».
 
-955. Je propose : le retard se compte en heures jouées sur toute la progression du niveau, pas seulement dans le chapitre en cours ; il se compare à la classe la plus avancée du niveau et à ton prévu ; la carte dit lequel des deux est en cause. À inscrire au registre comme dette.
+955. Je propose : le retard se compte en heures jouées sur toute la progression du niveau, pas seulement dans le chapitre en cours ; il se compare à la classe la plus avancée du niveau et à ton prévu ; la carte dit lequel des deux est en cause. Inscrit au registre : 13 · 90.
 
 956. Ce que le profil de la classe contient, d'après ce que tu as déjà cadré (25/08, tours 69 à 101, 26/10). D'abord la copie de la classe : le déroulé de cette classe, heure par heure, que tu adaptes. Une diapo « pas pour cette classe » ou « pour cette classe seulement », ta version d'une diapo, la réactivation allumée ou grisée. Le contenu reste celui du chapitre.
 

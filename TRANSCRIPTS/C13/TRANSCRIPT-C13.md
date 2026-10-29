@@ -7282,3 +7282,36 @@ MEMO
 
 29/10/2026 09:26
 MEMO
+
+## Tour 347 — 29/10/2026 09:54 → 09:55
+
+**Paul :** [trois images : la présentation du chapitre 1 « J'ai été dans les tranchées », « Les compétences du chapitre 1 », « Le parcours du chapitre »] la relecture, une fois que j'ai l'encadré en haut qui me propose de relire, cette relecture se ferait dans le profil de classe, non? par ailleurs, imaginons que je lance une heure pas au bon moment, il faut que je puisse la fermer et qu'elle ne compte pas comme jouée ni rien du tout. le site oublierait tout ce que j'y ai fait. pour les diapos de début de chapitre et de séance, voici à quoi elles doivent ressemble. celles-ci sont les canons. et je ne réponds aps encore à ce que tu m'as dit.
+
+**Mesuré.** Production ⑨ : aucun geste n'annule un lancement (les seules « annulations » sont le Ctrl + Z de l'Atelier, `dr_annuler`) ; le lancement écrit la copie de la classe et l'heure en cours. Le fichier du chapitre 3e au contrat (sas `E4/prompt/chapitre-3e-au-contrat.json`) : chapitre `title`, `problematique`, `entree`, `competencesMajeures`, `competencesMineures`, `aRetenir` ; séance `title`, `type`, `competences` (liste à plat), `notions` ; ni image du chapitre, ni phrase de séance, ni majeure par séance, ni dates. Canons rangés au sas : `MANDATS/CANONS-DIAPOS/`.
+
+**Claude :**
+
+À jouer : les tests de la ⑨ (liste de 09:01) · en cours : rien · ouvert : 979 à 988 ; 995 à 997 ; 905 à 917 (les questions de la lettre).
+
+989. La relecture : oui, dans le profil de la classe. « Relire l'heure » t'y emmène, sur cette heure : le récit, ce qui s'est passé, le papier, et la revue du chapitre pour cette classe. C'est ton cadrage du 26/10.
+
+990. Une heure lancée par erreur, mesuré : aujourd'hui, aucun geste n'annule un lancement. Dès le lancement, le site écrit la copie de la classe et l'heure en cours ; l'heure ne se ferme que par la fin de l'heure et la clôture, et elle compte alors comme jouée.
+
+991. Je propose « Annuler cette heure », dans le pilotage, jusqu'à la clôture, avec une confirmation qui dit ce qui sera oublié. Le site oublie tout ce que l'heure a écrit : la copie, le journal, le récit, la participation, les absents, l'heure en cours. L'emploi du temps ne bouge pas, et le tableau distant revient à l'horloge. Ta règle « ce que la classe a vu ne change plus » ne vaut pas ici : une heure annulée n'a pas eu lieu. La réactivation construite à la clôture d'avant reste.
+
+992. Les canons sont reçus et rangés au sas. Au début du chapitre, trois diapos : la présentation (le titre, la question, l'entrée du programme et les dates, l'image à droite), les compétences du chapitre (séance par séance, majeure ou mineure, par domaine), et le parcours (chaque séance numérotée, son titre, ce qu'on y fait).
+
+993. Ce que ton fichier de chapitre donne déjà : le titre, la question, l'entrée du programme, les compétences de chaque séance, le titre et le type de chaque séance. Ce qui manque : l'image du chapitre, la phrase de chaque séance (« Décrire une image de guerre… »), et laquelle des compétences d'une séance est la majeure. Je propose : la conversation qui crée le chapitre écrit la phrase de chaque séance, et met la majeure en premier ; l'image, tu la poses sur la diapo.
+
+994. Les dates (« du 7 septembre au 13 octobre ») dépendent de la classe. Je propose : la copie de la classe les calcule par son emploi du temps ; dans l'Atelier, la diapo dit « selon la classe ».
+
+995. Question : le bleu vif des séances 3, 4, 5 et 7, ce sont les séances évaluées ?
+
+996. Question : ton canon nomme les compétences par l'intitulé officiel, par exemple « Lire des images et des documents composites ». Sur cette diapo, l'intitulé, ou la phrase d'élève de 963 ?
+
+997. Question : au début de chaque séance, c'est le parcours avec « Séance n sur 8 » et la séance du jour mise en avant ? Et la présentation de la séance et la problématique, tu en as un canon ?
+
+À tester : la liste de la ⑨ de 09:01 tient.
+
+29/10/2026 09:55
+MEMO

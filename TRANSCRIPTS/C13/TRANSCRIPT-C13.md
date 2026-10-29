@@ -8557,3 +8557,32 @@ Je veux vraiment une copie 3d, interactive, et qui force l'élève à réfléchi
 
 29/10/2026 23:25
 MEMO
+
+## Tour 387 — 29/10/2026 23:33 → 23:35
+
+**Paul :** C'est vraiment pas mal. Mais les calques ne doivent pas être appelés calques. L'élève doit comprendre que c'est la façon dont sa copie passe à travers la grille d'évaluation. 
+Pour ce qui est des réécritures qu'il doit faire etc, ça se fait directement dans l'App. En effet, c'est de cette façon que je récupère le contrôle sur la capacité rédactionnelle des élèves, via le numérique et ils ont l'impression de travailler sur leur copie papier. 
+J'ai mes paquets de la rédac lettre 14 18. Je vais les prendre en photo demain et j'essaierai l'App dessus.
+
+**Fait.** `millefeuille.py` : « Calques » retiré (« Ta copie à travers la grille : », « Voir ta copie traverser la grille », « Ta copie passe à travers chaque critère de la grille ») ; capture 13 : la tâche se fait dans le point ouvert (champ de réécriture, « Envoyer »), la réécriture s'inscrit entre les lignes de la copie à l'encre bleue (police Caveat, au scratchpad), le passage fautif barré ; points déplacés à gauche de leur bande ; le trait relie la fenêtre à la dernière ancre. Captures 12 à 16 refaites, gardées au scratchpad.
+
+**Claude :** [captures 12 à 16, refaites]
+
+À jouer : regarder les captures 12 à 16, refaites · en cours : rien · ouvert : 1277 ; 1254 (le test, quand tu pourras imprimer) ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1274. « Calques » disparaît. Je propose, en tête de la copie : « Ta copie à travers la grille : » suivi des critères. Le bouton de la 3D devient « Voir ta copie traverser la grille », et la vue dit : « Ta copie passe à travers chaque critère de la grille. » Les captures 12 à 16 sont refaites.
+
+1275. Les réécritures se font dans l'appli, sur la copie (capture 13). L'élève récrit dans le point ouvert, et sa réécriture s'inscrit entre les lignes de sa copie, à l'encre bleue, le passage fautif barré, comme sur le papier. Elle t'arrive : tu la relis, tu la valides ou tu la renvoies. Tu récupères chaque réécriture, et avec elles la mesure de ce qu'il sait écrire.
+
+1276. Tes lettres de 14-18, demain : il n'y a pas encore d'appli à essayer sur tes photos. Ni ce rendu ni l'écran où l'appli te guide ne sont codés, et c'est voulu : on fixe le rendu d'abord.
+
+1277. Je propose : envoie-moi deux ou trois photos. Je mesure leur netteté, et je construis dessus le rendu définitif avec la vraie grille de la lettre (captures 5 à 9), puis l'écran où l'appli te guide pendant que tu corriges. Tu valides les deux ; ensuite seulement le code.
+
+1278. Pour les photos : la page entière, posée à plat, bien éclairée, prise d'au-dessus, une photo par page. Elles restent ici, jamais sur le site ni au dépôt.
+
+1279. Une conséquence, que je mesurerai sur tes photos : ces lettres n'ont pas de repères, donc l'élève ne pourra pas photographier la sienne ; l'appli devra garder ta photo pour qu'il retrouve sa copie. Une page pèse 164 Ko, une classe de 28 un peu moins de 5 Mo.
+
+À tester : rien de neuf.
+
+29/10/2026 23:35
+MEMO

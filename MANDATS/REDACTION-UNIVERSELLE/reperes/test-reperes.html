@@ -1,0 +1,410 @@
+<title>Test des repères</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&display=swap">
+<style>
+/* Mise en page : une colonne de trois étapes, la feuille de papier comme matière ; palette de la rédaction MJPC, un seul thème clair voulu. */
+:root{
+  --papier:#f5f1ea; --carte:#fdfbf7; --trait:#d6cfc1; --encre:#2b2520; --doux:#7a6e5f;
+  --bordeaux:#6b1a2a; --ocre:#c08a4a; --vert:#3d6b26; --vertfond:#e3efd9; --rouge:#a23a3a; --rougefond:#f6dcd9;
+  --titre:"EB Garamond",Garamond,"Liberation Serif",Georgia,serif;
+  --texte:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+body{background:var(--papier);color:var(--encre);font:15px/1.45 var(--texte);margin:0}
+[hidden]{display:none!important}
+main{max-width:980px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+h1{font:600 2rem/1.1 var(--titre);color:var(--bordeaux);margin:0;text-wrap:balance}
+h2{font:600 1.35rem/1.2 var(--titre);color:var(--bordeaux);margin:0 0 6px;text-wrap:balance}
+.chapo{color:var(--doux);margin:4px 0 0;max-width:62ch}
+.etape{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:14px 16px;display:grid;gap:10px;min-width:0}
+.etape .num{font:600 .8rem/1 var(--texte);letter-spacing:.12em;text-transform:uppercase;color:var(--ocre)}
+.etape p{margin:0;max-width:66ch}
+.feuille{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.feuille svg{width:150px;height:auto;flex:none;border:1px solid var(--trait);background:#fff}
+.feuille ul{margin:0;padding-left:18px;display:grid;gap:4px;min-width:0;flex:1 1 260px}
+label.bouton,button{font:600 .95rem/1 var(--texte);background:var(--bordeaux);color:#fff;border:0;border-radius:8px;padding:11px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;justify-self:start}
+button.second{background:transparent;color:var(--bordeaux);border:1px solid var(--bordeaux)}
+label.bouton:focus-within,button:focus-visible{outline:3px solid var(--ocre);outline-offset:2px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+.vue{position:relative;min-width:0}
+.vue canvas{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--trait);background:#fff;touch-action:manipulation}
+.etat{font-size:.95rem;color:var(--doux)}
+.etat b{color:var(--encre)}
+.ok{color:var(--vert)} .ko{color:var(--rouge)}
+.verdict{display:flex;gap:14px;align-items:center;flex-wrap:wrap;border-radius:10px;padding:12px 16px}
+.verdict.bon{background:var(--vertfond);color:var(--vert)} .verdict.mauvais{background:var(--rougefond);color:var(--rouge)}
+.verdict .mm{font:600 2.4rem/1 var(--titre);font-variant-numeric:tabular-nums}
+.verdict .mot{font:600 1.25rem/1.2 var(--titre)}
+.code{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.code input{font:15px/1 ui-monospace,Menlo,monospace;padding:9px 10px;border:1px solid var(--trait);border-radius:8px;min-width:0;flex:1 1 220px;background:#fff;color:var(--encre)}
+table.croix{border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:.9rem}
+table.croix td,table.croix th{border-bottom:1px solid var(--trait);padding:3px 10px;text-align:right}
+table.croix th{color:var(--doux);font-weight:600}
+.defile{overflow-x:auto}
+@media (prefers-reduced-motion:no-preference){.verdict{transition:background .2s}}
+</style>
+
+<main>
+  <header>
+    <h1>Test des repères</h1>
+    <p class="chapo">Le test mesure si un cercle posé sur ton scan retombe sur le même mot dans la photo que l'élève prendra de sa feuille. Il faut moins de 4 mm de décalage : une demi-ligne.</p>
+  </header>
+
+  <section class="etape" aria-labelledby="t1">
+    <span class="num">Étape 1 · la feuille</span>
+    <h2 id="t1">Imprime et écris</h2>
+    <div class="feuille">
+      <svg id="apercu" viewBox="0 0 210 297" role="img" aria-label="La feuille à repères : quatre carrés noirs aux coins, des lignes à écrire en haut, dix croix de contrôle"></svg>
+      <ul>
+        <li>Imprime la feuille envoyée en PDF dans la conversation, à 100 %.</li>
+        <li>Écris quelques lignes entre les traits, comme un élève.</li>
+        <li>N'écris ni sur les carrés des coins ni sur les croix : elles servent à mesurer.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="etape" aria-labelledby="t2">
+    <span class="num">Étape 2 · sur l'ordinateur</span>
+    <h2 id="t2">Charge ton scan, pose trois cercles</h2>
+    <p>Scanne la feuille au photocopieur, puis charge le scan ici (PDF ou image). Clique ensuite sur trois mots : un cercle se pose sur chacun.</p>
+    <label class="bouton" for="fScan">Choisir le scan<input type="file" id="fScan" accept="application/pdf,image/*"></label>
+    <div class="vue" id="vScan" hidden><canvas id="cScan" aria-label="Ton scan, avec les repères trouvés"></canvas></div>
+    <p class="etat" id="eScan">Aucun scan chargé.</p>
+    <div class="code" id="zCodeScan" hidden>
+      <span class="etat">Code de tes cercles, à recopier sur le téléphone :</span>
+      <input id="iCodeScan" readonly aria-label="Code des cercles">
+      <button class="second" id="bCopier" type="button">Copier</button>
+    </div>
+    <button class="second" id="bEffacer" type="button" hidden>Effacer les cercles</button>
+  </section>
+
+  <section class="etape" aria-labelledby="t3">
+    <span class="num">Étape 3 · sur le téléphone</span>
+    <h2 id="t3">Photographie la feuille</h2>
+    <p>Ouvre cette même page sur ton téléphone. Pose la feuille sur une table et photographie-la entière, même un peu de travers. Recommence en la pliant légèrement : c'est le cas réel d'une copie rendue.</p>
+    <p class="etat" id="eCercles">Cercles du scan : aucun pour l'instant.</p>
+    <div class="code" id="zCodePhoto" hidden>
+      <input id="iCodePhoto" placeholder="Colle ici le code des cercles" aria-label="Code des cercles">
+      <button class="second" id="bCode" type="button">Utiliser ce code</button>
+    </div>
+    <label class="bouton" for="fPhoto">Prendre la photo<input type="file" id="fPhoto" accept="image/*" capture="environment"></label>
+    <div class="vue" id="vPhoto" hidden><canvas id="cPhoto" aria-label="Ta photo, avec les cercles reportés"></canvas></div>
+    <p class="etat" id="ePhoto">Aucune photo pour l'instant.</p>
+    <div class="verdict" id="verdict" hidden><span class="mm" id="vMm"></span><span class="mot" id="vMot"></span></div>
+    <div class="defile"><table class="croix" id="tCroix" hidden></table></div>
+  </section>
+</main>
+
+<script>
+"use strict";
+// ── la feuille : une seule géométrie, en millimètres (A4) ──
+const G = {
+  W: 210, H: 297, cote: 16, trou: 8,
+  reperes: [[20, 20], [190, 20], [190, 277], [20, 277]],          // haut gauche (le carré évidé), haut droit, bas droit, bas gauche
+  croix: [[105, 20], [45, 150], [105, 150], [165, 150], [45, 200], [105, 200], [165, 200], [45, 250], [105, 250], [165, 250]],
+  bras: 4, trait: 0.6, ligne0: 44, ligneN: 124, pas: 8, marge: 35, droite: 195,
+  rayonCercle: 4, seuil: 4
+};
+function feuilleSVG(pourImpression) {
+  const s = [];
+  if (pourImpression) s.push('<rect width="210" height="297" fill="#fff"/>');
+  s.push('<text x="105" y="34" font-size="3.6" text-anchor="middle" fill="#b3b3b3" font-family="Helvetica,Arial,sans-serif">Test des repères · écris quelques lignes entre les traits · n\'écris ni sur les carrés ni sur les croix</text>');
+  for (let y = G.ligne0; y <= G.ligneN; y += G.pas) s.push(`<line x1="${G.marge - 10}" y1="${y}" x2="${G.droite}" y2="${y}" stroke="#bcd0e8" stroke-width="0.35"/>`);
+  s.push(`<line x1="${G.marge}" y1="${G.ligne0 - 6}" x2="${G.marge}" y2="${G.ligneN + 2}" stroke="#f0b8b8" stroke-width="0.4"/>`);
+  G.reperes.forEach(([x, y], i) => {
+    const h = G.cote / 2;
+    s.push(`<rect x="${x - h}" y="${y - h}" width="${G.cote}" height="${G.cote}" fill="#000"/>`);
+    if (i === 0) s.push(`<rect x="${x - G.trou / 2}" y="${y - G.trou / 2}" width="${G.trou}" height="${G.trou}" fill="#fff"/>`);
+  });
+  G.croix.forEach(([x, y]) => s.push(`<path d="M${x - G.bras} ${y}H${x + G.bras}M${x} ${y - G.bras}V${y + G.bras}" stroke="#000" stroke-width="${G.trait}"/>`));
+  return s.join('');
+}
+document.getElementById('apercu').innerHTML = feuilleSVG(true);
+window.__feuilleSVG = feuilleSVG;   // pour fabriquer le PDF de la feuille, et pour le banc
+
+// ── calcul : homographie (page en mm → image en points) ──
+function resoudre(A, b) {   // élimination de Gauss, pivot partiel
+  const n = b.length;
+  for (let c = 0; c < n; c++) {
+    let p = c; for (let r = c + 1; r < n; r++) if (Math.abs(A[r][c]) > Math.abs(A[p][c])) p = r;
+    [A[c], A[p]] = [A[p], A[c]]; [b[c], b[p]] = [b[p], b[c]];
+    if (Math.abs(A[c][c]) < 1e-12) return null;
+    for (let r = c + 1; r < n; r++) { const f = A[r][c] / A[c][c]; for (let k = c; k < n; k++) A[r][k] -= f * A[c][k]; b[r] -= f * b[c]; }
+  }
+  const x = new Array(n).fill(0);
+  for (let r = n - 1; r >= 0; r--) { let s = b[r]; for (let k = r + 1; k < n; k++) s -= A[r][k] * x[k]; x[r] = s / A[r][r]; }
+  return x;
+}
+function homographie(src, dst) {
+  const A = [], b = [];
+  for (let i = 0; i < 4; i++) {
+    const [X, Y] = src[i], [x, y] = dst[i];
+    A.push([X, Y, 1, 0, 0, 0, -x * X, -x * Y]); b.push(x);
+    A.push([0, 0, 0, X, Y, 1, -y * X, -y * Y]); b.push(y);
+  }
+  const h = resoudre(A, b); if (!h) return null;
+  return [[h[0], h[1], h[2]], [h[3], h[4], h[5]], [h[6], h[7], 1]];
+}
+function inverse3(m) {
+  const [a, b, c] = m[0], [d, e, f] = m[1], [g, h, i] = m[2];
+  const A = e * i - f * h, B = -(d * i - f * g), C = d * h - e * g, det = a * A + b * B + c * C;
+  if (Math.abs(det) < 1e-12) return null;
+  return [[A / det, -(b * i - c * h) / det, (b * f - c * e) / det], [B / det, (a * i - c * g) / det, -(a * f - c * d) / det], [C / det, -(a * h - b * g) / det, (a * e - b * d) / det]];
+}
+function appliquer(H, x, y) { const w = H[2][0] * x + H[2][1] * y + H[2][2]; return [(H[0][0] * x + H[0][1] * y + H[0][2]) / w, (H[1][0] * x + H[1][1] * y + H[1][2]) / w]; }
+
+// ── analyse d'une image : trouver les quatre repères ──
+const MAXI = 1400;
+function analyser(source) {
+  const t0 = performance.now();
+  const sw = source.width, sh = source.height, k = Math.min(1, MAXI / Math.max(sw, sh));
+  const w = Math.max(1, Math.round(sw * k)), h = Math.max(1, Math.round(sh * k));
+  const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+  const cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(source, 0, 0, w, h);
+  const px = cx.getImageData(0, 0, w, h).data, N = w * h, g = new Uint8Array(N);
+  for (let i = 0, j = 0; i < N; i++, j += 4) g[i] = (px[j] * 299 + px[j + 1] * 587 + px[j + 2] * 114) / 1000;
+  const W1 = w + 1, I = new Float64Array(W1 * (h + 1));   // image intégrale
+  for (let y = 0; y < h; y++) { let s = 0; for (let x = 0; x < w; x++) { s += g[y * w + x]; I[(y + 1) * W1 + x + 1] = I[y * W1 + x + 1] + s; } }
+  const somme = (x0, y0, x1, y1) => I[y1 * W1 + x1] - I[y0 * W1 + x1] - I[y1 * W1 + x0] + I[y0 * W1 + x0];
+  const R = Math.max(8, Math.round(Math.max(w, h) / 12)), sombre = new Uint8Array(N);
+  for (let y = 0; y < h; y++) {
+    const y0 = Math.max(0, y - R), y1 = Math.min(h, y + R + 1);
+    for (let x = 0; x < w; x++) {
+      const x0 = Math.max(0, x - R), x1 = Math.min(w, x + R + 1);
+      const m = somme(x0, y0, x1, y1) / ((x1 - x0) * (y1 - y0));
+      sombre[y * w + x] = g[y * w + x] < 0.62 * m ? 1 : 0;
+    }
+  }
+  // composantes connexes des points sombres
+  const lab = new Int32Array(N), pile = new Int32Array(N), comps = [];
+  for (let s = 0; s < N; s++) {
+    if (!sombre[s] || lab[s]) continue;
+    const id = comps.length + 1; let n = 0, sx = 0, sy = 0, x0 = w, x1 = 0, y0 = h, y1 = 0, bord = false, top = 0;
+    pile[top++] = s; lab[s] = id;
+    while (top) {
+      const p = pile[--top], x = p % w, y = (p / w) | 0;
+      n++; sx += x; sy += y; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
+      if (x === 0 || y === 0 || x === w - 1 || y === h - 1) bord = true;
+      if (x > 0 && sombre[p - 1] && !lab[p - 1]) { lab[p - 1] = id; pile[top++] = p - 1; }
+      if (x < w - 1 && sombre[p + 1] && !lab[p + 1]) { lab[p + 1] = id; pile[top++] = p + 1; }
+      if (y > 0 && sombre[p - w] && !lab[p - w]) { lab[p - w] = id; pile[top++] = p - w; }
+      if (y < h - 1 && sombre[p + w] && !lab[p + w]) { lab[p + w] = id; pile[top++] = p + w; }
+    }
+    comps.push({ n, cx: sx / n, cy: sy / n, x0, x1, y0, y1, bord });
+  }
+  const aMin = N * 0.0004, aMax = N * 0.03, cands = [];
+  for (const c of comps) {
+    if (c.bord || c.n < aMin || c.n > aMax) continue;
+    const bw = c.x1 - c.x0 + 1, bh = c.y1 - c.y0 + 1, rempli = c.n / (bw * bh), allong = Math.max(bw, bh) / Math.min(bw, bh);
+    if (rempli < 0.45 || allong > 2.5) continue;
+    const r = Math.max(1, Math.round(Math.min(bw, bh) / 7)); let clair = 0, tot = 0;   // le carré évidé : son centre est clair
+    for (let y = Math.round(c.cy) - r; y <= Math.round(c.cy) + r; y++) for (let x = Math.round(c.cx) - r; x <= Math.round(c.cx) + r; x++) { if (x < 0 || y < 0 || x >= w || y >= h) continue; tot++; if (!sombre[y * w + x]) clair++; }
+    cands.push({ ...c, evide: tot > 0 && clair / tot > 0.7 });
+  }
+  cands.sort((a, b) => b.n - a.n); const C = cands.slice(0, 16);
+  let meilleur = null, aire = 0;
+  for (let a = 0; a < C.length; a++) for (let b = a + 1; b < C.length; b++) for (let c = b + 1; c < C.length; c++) for (let d = c + 1; d < C.length; d++) {
+    const q = [C[a], C[b], C[c], C[d]];
+    if (q.filter(m => m.evide).length !== 1) continue;
+    const ns = q.map(m => m.n); if (Math.max(...ns) / Math.min(...ns) > 4) continue;
+    const mx = q.reduce((s, m) => s + m.cx, 0) / 4, my = q.reduce((s, m) => s + m.cy, 0) / 4;
+    q.sort((u, v) => Math.atan2(u.cy - my, u.cx - mx) - Math.atan2(v.cy - my, v.cx - mx));
+    let A = 0, convexe = true, signe = 0;
+    for (let i = 0; i < 4; i++) {
+      const p = q[i], r = q[(i + 1) % 4], s = q[(i + 2) % 4];
+      A += p.cx * r.cy - r.cx * p.cy;
+      const z = (r.cx - p.cx) * (s.cy - r.cy) - (r.cy - p.cy) * (s.cx - r.cx);
+      if (signe === 0) signe = Math.sign(z); else if (Math.sign(z) !== signe) convexe = false;
+    }
+    A = Math.abs(A) / 2; if (convexe && A > aire) { aire = A; meilleur = q.slice(); }
+  }
+  const res = { w, h, k, g, I, W1, cv, ms: 0, trouves: Math.min(4, cands.length), ok: false };
+  if (meilleur) {
+    const i0 = meilleur.findIndex(m => m.evide);
+    const ord = [0, 1, 2, 3].map(i => meilleur[(i0 + i) % 4]);
+    res.pts = ord.map(m => [m.cx, m.cy]);
+    res.H = homographie(G.reperes, res.pts); res.Hi = res.H && inverse3(res.H);
+    res.ok = !!(res.H && res.Hi); res.trouves = 4;
+    if (res.ok) res.croix = mesurerCroix(res);
+  }
+  res.ms = performance.now() - t0;
+  return res;
+}
+// ── les croix : où la feuille les place, où l'image les montre ──
+function mesurerCroix(r) {
+  const { w, h, g, I, W1, H, Hi } = r;
+  const somme = (x0, y0, x1, y1) => I[y1 * W1 + x1] - I[y0 * W1 + x1] - I[y1 * W1 + x0] + I[y0 * W1 + x0];
+  return G.croix.map(([X, Y]) => {
+    const P = appliquer(H, X, Y), Px = appliquer(H, X + 1, Y), Py = appliquer(H, X, Y + 1);
+    const s = (Math.hypot(Px[0] - P[0], Px[1] - P[1]) + Math.hypot(Py[0] - P[0], Py[1] - P[1])) / 2, demi = Math.round(7 * s);
+    const x0 = Math.max(0, Math.round(P[0]) - demi), x1 = Math.min(w, Math.round(P[0]) + demi + 1), y0 = Math.max(0, Math.round(P[1]) - demi), y1 = Math.min(h, Math.round(P[1]) + demi + 1);
+    if (x1 - x0 < 4 || y1 - y0 < 4) return { X, Y, trouvee: false };
+    const moy = somme(x0, y0, x1, y1) / ((x1 - x0) * (y1 - y0)); let mini = 255;
+    for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) if (g[y * w + x] < mini) mini = g[y * w + x];
+    if (moy - mini < 25) return { X, Y, trouvee: false };
+    const seuil = (mini + moy) / 2; let sw = 0, sx = 0, sy = 0, n = 0;
+    for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) { const v = g[y * w + x]; if (v < seuil) { const p = seuil - v; sw += p; sx += p * x; sy += p * y; n++; } }
+    const attendu = 2 * 2 * G.bras * G.trait * s * s;
+    if (!sw || n < 0.25 * attendu || n > 5 * attendu) return { X, Y, trouvee: false };
+    const F = [sx / sw + 0.5, sy / sw + 0.5], Q = appliquer(Hi, F[0], F[1]);
+    return { X, Y, trouvee: true, P, F, mm: Math.hypot(Q[0] - X, Q[1] - Y) };
+  });
+}
+function bilanCroix(r) {
+  const t = (r.croix || []).filter(c => c.trouvee);
+  if (!t.length) return null;
+  return { n: t.length, moyen: t.reduce((s, c) => s + c.mm, 0) / t.length, max: Math.max(...t.map(c => c.mm)) };
+}
+const mm = v => v.toFixed(1).replace('.', ',') + ' mm';
+
+// ── charger un fichier : image, ou première page d'un PDF ──
+let pdfPret = null;
+function chargerPdfJs() {
+  if (pdfPret) return pdfPret;
+  const v = '3.11.174', base = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/' + v + '/';
+  const script = src => new Promise((ok, ko) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); });
+  pdfPret = script(base + 'pdf.min.js').then(() => script(base + 'pdf.worker.min.js')).then(() => { window.pdfjsLib.GlobalWorkerOptions.workerSrc = base + 'pdf.worker.min.js'; return window.pdfjsLib; });
+  return pdfPret;
+}
+async function charger(fichier) {
+  if (fichier.type === 'application/pdf' || /\.pdf$/i.test(fichier.name)) {
+    const lib = await chargerPdfJs();
+    const doc = await lib.getDocument({ data: new Uint8Array(await fichier.arrayBuffer()), isEvalSupported: false }).promise;
+    const page = await doc.getPage(1), v1 = page.getViewport({ scale: 1 }), e = 2400 / Math.max(v1.width, v1.height), vp = page.getViewport({ scale: e });
+    const c = document.createElement('canvas'); c.width = Math.round(vp.width); c.height = Math.round(vp.height);
+    const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height);
+    await page.render({ canvasContext: x, viewport: vp }).promise; return c;
+  }
+  const url = URL.createObjectURL(fichier);
+  try { const im = new Image(); im.decoding = 'async'; im.src = url; await im.decode(); return im; } finally { setTimeout(() => URL.revokeObjectURL(url), 1000); }
+}
+
+// ── dessin ──
+function dessiner(canvas, r, cercles, opts) {
+  const larg = Math.min(r.w, 1400); canvas.width = r.w; canvas.height = r.h;
+  const x = canvas.getContext('2d'); x.drawImage(r.cv, 0, 0);
+  const ep = Math.max(2, r.w / 400);
+  if (r.pts) {
+    x.strokeStyle = r.ok ? '#2e8b3e' : '#a23a3a'; x.lineWidth = ep * 1.5; x.beginPath();
+    r.pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.closePath(); x.stroke();
+  }
+  if (r.ok) {
+    (r.croix || []).forEach(c => {
+      if (!c.trouvee) return;
+      x.fillStyle = c.mm < G.seuil ? '#2e8b3e' : '#a23a3a'; x.beginPath(); x.arc(c.F[0], c.F[1], ep * 1.6, 0, 7); x.fill();
+      x.font = `600 ${Math.round(ep * 6)}px system-ui,sans-serif`; x.fillText(c.mm.toFixed(1).replace('.', ','), c.F[0] + ep * 4, c.F[1] - ep * 3);
+    });
+    cercles.forEach(([X, Y], i) => {
+      x.strokeStyle = '#6b1a2a'; x.lineWidth = ep * 1.4; x.beginPath();
+      for (let a = 0; a <= 32; a++) { const t = a / 32 * Math.PI * 2, [u, v] = appliquer(r.H, X + G.rayonCercle * Math.cos(t), Y + G.rayonCercle * Math.sin(t)); a ? x.lineTo(u, v) : x.moveTo(u, v); }
+      x.stroke(); const [u, v] = appliquer(r.H, X + G.rayonCercle + 1.5, Y - G.rayonCercle);
+      x.fillStyle = '#6b1a2a'; x.font = `700 ${Math.round(ep * 7)}px system-ui,sans-serif`; x.fillText(String(i + 1), u, v);
+    });
+  }
+}
+function phraseReperes(r, ou) {
+  if (r.ok) return null;
+  return `Je ne trouve pas les quatre repères sur ${ou}. La feuille doit y être entière, bien éclairée, avec ses quatre carrés noirs.`;
+}
+
+// ── l'état : les cercles, gardés pour toi seul, partagés entre ton ordinateur et ton téléphone ──
+let cerclesLocaux = [], cerclesDistants = [], cerclesCode = [], docRef = null, ecriture = Promise.resolve(), scanR = null, photoR = null;
+const cercles = () => cerclesLocaux.length ? cerclesLocaux : (cerclesDistants.length ? cerclesDistants : cerclesCode);
+const enCode = L => 'R:' + L.map(([a, b]) => a.toFixed(1) + ',' + b.toFixed(1)).join(';');
+function lireCode(s) {
+  const m = String(s || '').trim().replace(/^R:/i, ''); if (!m) return [];
+  const L = m.split(';').map(p => p.split(',').map(Number)).filter(p => p.length === 2 && p.every(Number.isFinite) && p[0] >= 0 && p[0] <= G.W && p[1] >= 0 && p[1] <= G.H);
+  return L.slice(0, 3);
+}
+function etatCercles() {
+  const L = cercles(), e = document.getElementById('eCercles');
+  e.innerHTML = L.length ? `Cercles du scan : <b>${L.length}</b>${docRef && !cerclesLocaux.length ? ', venus de ton ordinateur' : ''}.` : (docRef ? "Cercles du scan : aucun pour l'instant. Pose-les à l'étape 2 sur l'ordinateur : ils arrivent ici tout seuls." : "Cercles du scan : aucun. Colle le code affiché à l'étape 2 sur l'ordinateur.");
+  document.getElementById('zCodePhoto').hidden = !!docRef;
+}
+function enregistrer() {
+  const L = cerclesLocaux.map(p => [Math.round(p[0] * 10) / 10, Math.round(p[1] * 10) / 10]);
+  document.getElementById('iCodeScan').value = enCode(L);
+  document.getElementById('zCodeScan').hidden = !!docRef || !L.length;
+  if (!docRef) return;
+  ecriture = ecriture.then(() => docRef.set({ cercles: L.map(([a, b]) => ({ x: a, y: b })), quand: new Date().toISOString() })).catch(() => {
+    docRef = null; document.getElementById('zCodeScan').hidden = !L.length; etatCercles();
+  });
+}
+(async () => {
+  try {
+    if (!window.claude || typeof window.claude.use !== 'function') { etatCercles(); return; }
+    const [db, user] = await Promise.all([window.claude.use('db'), window.claude.use('user')]);
+    const id = db && user ? await user.id() : null;
+    if (!id) { etatCercles(); return; }
+    docRef = db.doc('data/users/' + id + '/test-reperes');
+    docRef.onSnapshot(s => {
+      const d = s.exists ? s.data() : null;
+      cerclesDistants = d && Array.isArray(d.cercles) ? d.cercles.map(c => [Number(c.x), Number(c.y)]).filter(p => p.every(Number.isFinite)).slice(0, 3) : [];
+      etatCercles(); if (photoR) afficherPhoto();
+    }, () => { docRef = null; etatCercles(); });
+    etatCercles();
+  } catch (e) { docRef = null; etatCercles(); }
+})();
+
+// ── étape 2 : le scan ──
+function afficherScan() {
+  const r = scanR, e = document.getElementById('eScan'); document.getElementById('vScan').hidden = false;
+  dessiner(document.getElementById('cScan'), r, cerclesLocaux);
+  const pb = phraseReperes(r, 'ce scan'); if (pb) { e.innerHTML = `<span class="ko">${pb}</span>`; return; }
+  const b = bilanCroix(r);
+  e.innerHTML = `<span class="ok">Les quatre repères sont trouvés.</span> ` + (b ? `Sur le scan lui-même, les croix sont à <b>${mm(b.moyen)}</b> en moyenne de leur place, <b>${mm(b.max)}</b> au plus (${b.n} croix sur ${G.croix.length}).` : 'Aucune croix mesurable.') +
+    ` ${cerclesLocaux.length < 3 ? 'Clique sur ' + (3 - cerclesLocaux.length) + ' mot' + (3 - cerclesLocaux.length > 1 ? 's' : '') + ' encore.' : 'Tes trois cercles sont posés' + (docRef ? ' et enregistrés : ton téléphone les retrouve tout seul.' : '.')}`;
+  document.getElementById('bEffacer').hidden = !cerclesLocaux.length;
+}
+document.getElementById('fScan').addEventListener('change', async ev => {
+  const f = ev.target.files && ev.target.files[0]; if (!f) return;
+  const e = document.getElementById('eScan'); e.textContent = 'Lecture du scan…';
+  try { scanR = analyser(await charger(f)); afficherScan(); window.__reperes.scan = resume(scanR); }
+  catch (err) { e.innerHTML = '<span class="ko">Ce fichier ne s\'ouvre pas ici. Essaie une image (JPEG ou PNG) du scan.</span>'; }
+  ev.target.value = '';
+});
+document.getElementById('cScan').addEventListener('click', ev => {
+  if (!scanR || !scanR.ok) return;
+  const c = ev.currentTarget, b = c.getBoundingClientRect(), x = (ev.clientX - b.left) * c.width / b.width, y = (ev.clientY - b.top) * c.height / b.height;
+  const [X, Y] = appliquer(scanR.Hi, x, y); if (X < 0 || Y < 0 || X > G.W || Y > G.H) return;
+  cerclesLocaux.push([X, Y]); if (cerclesLocaux.length > 3) cerclesLocaux.shift();
+  enregistrer(); afficherScan(); etatCercles(); if (photoR) afficherPhoto();
+});
+document.getElementById('bEffacer').addEventListener('click', () => { cerclesLocaux = []; enregistrer(); if (scanR) afficherScan(); etatCercles(); if (photoR) afficherPhoto(); });
+document.getElementById('bCopier').addEventListener('click', () => {
+  const i = document.getElementById('iCodeScan');
+  try { navigator.clipboard.writeText(i.value).catch(() => i.select()); } catch (e) { i.select(); }
+});
+document.getElementById('bCode').addEventListener('click', () => { cerclesCode = lireCode(document.getElementById('iCodePhoto').value); etatCercles(); if (photoR) afficherPhoto(); });
+
+// ── étape 3 : la photo ──
+function afficherPhoto() {
+  const r = photoR, e = document.getElementById('ePhoto'), vd = document.getElementById('verdict'), tb = document.getElementById('tCroix');
+  document.getElementById('vPhoto').hidden = false; dessiner(document.getElementById('cPhoto'), r, cercles());
+  const pb = phraseReperes(r, 'cette photo'); if (pb) { e.innerHTML = `<span class="ko">${pb}</span>`; vd.hidden = true; tb.hidden = true; return; }
+  const b = bilanCroix(r); if (!b) { e.innerHTML = '<span class="ko">Les repères sont trouvés, mais aucune croix n\'est mesurable : la photo est-elle nette ?</span>'; vd.hidden = true; return; }
+  const bs = scanR && scanR.ok ? bilanCroix(scanR) : null, total = b.max + (bs ? bs.max : 0);
+  e.innerHTML = `<span class="ok">Les quatre repères sont trouvés.</span> Sur la photo, les croix sont à <b>${mm(b.moyen)}</b> en moyenne de leur place, <b>${mm(b.max)}</b> au plus (${b.n} croix sur ${G.croix.length}).` +
+    (bs ? ` Avec le décalage du scan (${mm(bs.max)} au plus), un cercle peut glisser de <b>${mm(total)}</b> au plus.` : ' Charge aussi le scan (étape 2) pour compter son décalage.') +
+    (cercles().length ? ' Tes cercles sont reportés sur la photo : regarde s\'ils entourent les mêmes mots.' : '');
+  vd.hidden = false; vd.className = 'verdict ' + (total < G.seuil ? 'bon' : 'mauvais');
+  document.getElementById('vMm').textContent = mm(total);
+  document.getElementById('vMot').textContent = total < G.seuil ? 'ça va : moins d\'une demi-ligne' : 'ça ne va pas : plus d\'une demi-ligne';
+  tb.hidden = false;
+  tb.innerHTML = '<tr><th>Croix</th><th>Scan</th><th>Photo</th></tr>' + G.croix.map(([X, Y], i) => {
+    const p = r.croix[i], s = bs && scanR.croix[i];
+    return `<tr><td>${X} × ${Y} mm</td><td>${s && s.trouvee ? mm(s.mm) : '—'}</td><td>${p && p.trouvee ? mm(p.mm) : '—'}</td></tr>`;
+  }).join('');
+}
+document.getElementById('fPhoto').addEventListener('change', async ev => {
+  const f = ev.target.files && ev.target.files[0]; if (!f) return;
+  const e = document.getElementById('ePhoto'); e.textContent = 'Lecture de la photo…';
+  try { photoR = analyser(await charger(f)); afficherPhoto(); window.__reperes.photo = resume(photoR); }
+  catch (err) { e.innerHTML = '<span class="ko">Cette photo ne s\'ouvre pas ici. Reprends-la avec l\'appareil photo du téléphone.</span>'; }
+  ev.target.value = '';
+});
+
+// ── pour le banc : ce que la page a mesuré, sans l'image ──
+function resume(r) { return { ok: r.ok, w: r.w, h: r.h, k: r.k, ms: Math.round(r.ms), pts: r.pts || null, H: r.H || null, croix: (r.croix || []).map(c => c.trouvee ? +c.mm.toFixed(2) : null), cercles: cercles().map(([X, Y]) => r.ok ? appliquer(r.H, X, Y) : null) }; }
+window.__reperes = { analyser, appliquer, G, scan: null, photo: null, cercles: () => cercles() };
+</script>

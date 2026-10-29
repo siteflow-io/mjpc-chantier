@@ -8442,3 +8442,30 @@ MEMO
 
 29/10/2026 22:21
 MEMO
+
+## Tour 383 — 29/10/2026 22:23 → 22:49
+
+**Paul :** Ok
+
+**Fait.** `MANDATS/REDACTION-UNIVERSELLE/reperes/` : `feuille-reperes.pdf` (A4, quatre repères de 16 mm à 20 mm des bords, le haut gauche évidé ; dix croix de contrôle ; onze lignes à écrire), fabriquée par `feuille.mjs` depuis la géométrie de la page ; `test-reperes.html`, publiée en page Claude privée (« Test des repères », capacités `db` et `user` : les cercles gardés dans l'espace privé de Paul, `data/users/<id>/test-reperes`, sinon un code à recopier) ; reconnaissance des repères, homographie, mesure des croix, écrite sans bibliothèque (pdf.js 3.11.174 seulement pour un scan en PDF). Banc `banc.mjs` sur une feuille simulée (`synth.py` : écriture, scan biaisé de 0,7°, photo de travers sur fond sombre, lumière inégale, flou, et la même feuille bombée de 2,5 mm), jugé contre la vérité de terrain : 14 ok / 0 échec. Scan PDF : 10 croix, 0,32 mm au plus ; scan image : 0,22 mm au plus ; trois clics, trois cercles à 0,29 mm au plus ; photo à plat : cercles à 0,22 mm de leur mot, croix 0,38 mm au plus, « ça va » ; feuille bombée : 2,52 mm mesurés pour 2,5 ; la photo de l'an dernier (sans repères) : « Je ne trouve pas les quatre repères » ; une image vidéo 1280 × 720 : 64 ms ; 390 de large sans défilement ; aucune erreur. Non testé ici : le passage des cercles par le site entre deux appareils (il faut le compte de Paul) ; la caméra en direct (refusée aux pages Claude). La photo de l'an dernier n'a pas quitté le scratchpad.
+
+**Claude :** [page « Test des repères » ; pièce : feuille-reperes.pdf]
+
+À jouer : le test des repères (1248) · en cours : rien · ouvert : 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1247. C'est fait : la feuille à repères, en PDF joint, et la page « Test des repères ».
+
+1248. Le test, dans l'ordre. Imprime la feuille à 100 % et écris quelques lignes. Scanne-la au photocopieur. Sur l'ordinateur, ouvre la page, charge le scan, clique sur trois mots. Sur le téléphone, ouvre la même page et prends la photo, à plat puis la feuille un peu pliée. Les cercles passent seuls de l'ordinateur au téléphone, gardés pour toi seul. La page donne le décalage en millimètres, et dit « ça va » sous 4 mm.
+
+1249. Mesuré ici, sur une feuille simulée : le scan, à 0,3 mm près ; une photo de travers sur une table sombre, lumière inégale, un peu floue : les cercles retombent à 0,2 mm de leur mot ; la même feuille bombée de 2,5 mm : la page mesure 2,5 mm. Ta copie de l'an dernier, sans repères : la page dit qu'elle ne les trouve pas. 14 vérifications sur 14.
+
+1250. Ton viseur vert est faisable : reconnaître le cadre sur une image vidéo de téléphone prend 64 ms ici, assez pour le faire plus de dix fois par seconde.
+
+1251. Ce que la page de test ne fait pas : le viseur vivant. Une page Claude n'a pas accès à la caméra en direct ; ton téléphone ouvre donc son appareil photo, puis la page dit si elle a trouvé le cadre. Dans MJPC, sur le site, le viseur vert est possible.
+
+1252. Ce que je n'ai pas pu tester : ta vraie feuille, ton photocopieur, ton téléphone, et le passage des cercles d'un appareil à l'autre, qui ne marche qu'une fois la page ouverte dans ton compte. C'est l'objet de ton test.
+
+À tester : la feuille imprimée à 100 % ; le scan chargé et trois cercles posés ; la photo à plat ; la photo de la feuille pliée ; pour chacune, le chiffre et le verdict.
+
+29/10/2026 22:49
+MEMO

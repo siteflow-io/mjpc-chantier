@@ -8087,3 +8087,36 @@ En revanche i oui.
 
 29/10/2026 15:44
 MEMO
+
+## Tour 371 — 29/10/2026 16:06 → 16:07
+
+**Paul :** 1154, à l'ia d'injection d'en donner les termes. 1156 pourquoi garder M? Non, C reste la citation. Mais sois force de proposition pour atteindre les objectifs que j'ai donnés, arrête de juste me dire "oui, faisons ça".
+
+**Mesuré.** `correction_dictee.html` : lettres prises A, C, E, G, I, L, M, P, R, Z ; Tab n'y sert pas ; aucune des applis n'utilise la dictée vocale du navigateur.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1169 ; 1126 ; 1120 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1161. 1154 : entendu, la conversation qui crée le sujet écrit ces raisons, assez générales pour tout élève.
+
+1162. 1156 : tu as raison, M n'a pas ici le sens exact de la dictée ; je le retire. « Non », c'est N. C reste la citation. Le reste ne bouge pas : Espace ou Entrée, oui ; Retour ; I ; A ; Échap ; Ctrl+Z ; ? ou F1 ; ⇧R ; les initiales.
+
+1163. Je propose cinq choses pour tes objectifs. La première, une seule lecture. Aujourd'hui tu lis la copie une fois pour la grille, et tu comptes les erreurs à côté. En mode rapide, l'appli te mène ligne par ligne : + par erreur, Entrée la ligne suivante, Tab à la fin d'un paragraphe. Les questions de ce paragraphe viennent alors, au moment où tu viens de le lire. À la dernière ligne, les questions de la fin. Une lecture, sans retour en arrière.
+
+1164. La deuxième, les citations à la voix : C, tu lis la phrase à voix haute, Entrée. Chrome l'écrit, sans rien payer ni clé. Le numéro de ligne se met seul, puisque l'appli sait sur quelle ligne tu es. Taper une phrase de quinze mots devient quelques secondes de lecture. Ce qui frotte : la voix passe par les serveurs de Google, avec la phrase de l'élève, jamais son nom.
+
+1165. La troisième, le point d'un coup : sur un point où tout est bon, ⇧ et Entrée le passe entier. Sur une bonne copie, on passe d'une trentaine de touches à une douzaine ; sur Flavie, on ne gagne rien.
+
+1166. La quatrième, parler vraiment de la copie : le bilan se compare seul à la rédaction précédente du même élève, que le site garde déjà par compétence. Par exemple : « La dernière fois, la date manquait déjà », ou « Cette fois, ton troisième paragraphe est là ». Un vrai suivi, sans une touche de plus.
+
+1167. La cinquième, l'appli apprend de toi : une question à laquelle tu réponds pareil pour presque toutes les copies passe en fin de point, confirmée d'un geste ; celles qui départagent viennent d'abord. Et l'export pour l'IA (1104) propose de fusionner ou de couper les questions.
+
+1168. Ce que je ne sais pas : ce que tout cela gagne en secondes. Le chrono de l'appli le dira sur tes premières copies.
+
+1169. Lesquelles des cinq gardes-tu ? Je fais ensuite les captures du mode rapide avec celles-là.
+
+À tester : rien de neuf.
+
+29/10/2026 16:07
+MEMO

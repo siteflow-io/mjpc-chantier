@@ -7174,3 +7174,43 @@ Dans ce profil classe on doit avoir donc la copie de classe( c'est là bas que j
 
 29/10/2026 08:49
 MEMO
+
+## Tour 344 — 29/10/2026 08:53 → 09:01
+
+**Paul :** Promeus, et pour le profil classe je veux d'abord des captures construites, quelque chose de très léger en termes de tokens
+
+**Fait.** Promotion 8.76.0-⑨ : prod commit `0877347`, blob `41ecb48a02b2`, md5 `2ef1eba96d82078089e92cff22659c3f`, 2 671 556 o (= l'assemblé du sas `29f0533b5` + `APP_VERSION`) ; bit à bit au dépôt et à l'adresse publique (08:56). Docs prod `6c3d649` : état de production, ✔ 13 · 85, 86, 87, journal, point de retour (⑧, blob `9c7935a03892`), où trouver quoi, index des fonctions (2 117). Mesuré au hub en lecture : la taxonomie a une phrase d'élève pour chaque compétence (`libelleEleve`, ex. c4-ecrire-01 « Écrire pour réfléchir, garder une trace, communiquer ») ; la ⑨ prend `libelle` (`dr_invCompLib`), la feuille sommaire aussi (`chCompetencesC4`) ; l'exécutant avait mesuré sur le faux hub du banc, sans `libelleEleve`. Captures construites : `MANDATS/PROFIL-CLASSE/captures-29-10/` (une page HTML, cinq images 1707 × 743).
+
+**Claude :**
+
+À jouer : les tests de la ⑨ ci-dessous · en cours : rien · ouvert : 968 ; 969 ; 905 à 917 (les questions de la lettre).
+
+962. La ⑨ est en ligne (8.76.0-⑨), identique au fichier testé, vérifiée au dépôt et à l'adresse publique. Point de retour : la ⑧.
+
+963. Correction de 941, qui était faux. Ta taxonomie a bien une phrase d'élève pour chaque compétence, par exemple « Écrire pour réfléchir, garder une trace, communiquer ». L'exécutant avait mesuré sur le faux hub du banc, qui ne l'a pas. Or la ⑨ écrit l'intitulé officiel sur les diapos d'ouverture, et ta feuille sommaire aussi : c'est contre ta règle du 10/10.
+
+964. Les captures du profil de la classe, construites, sans code : cinq images. La copie de la classe, réactivation allumée : à gauche les heures du chapitre, au centre ce que la classe jouera, à droite la diapo où tu écris.
+
+965. La même, réactivation grisée sur « non » : la diapo reste à sa place, grisée, et ne passe jamais au tableau.
+
+966. « L'année » : le prévu et le joué, heure par heure, avec les heures sans séance et leur motif ; à droite, où en est la classe, sur ton prévu et sur la classe la plus avancée du niveau.
+
+967. « Les stats » : la participation par élève, les notions, le temps prévu et réel, les heures sans séance. « Les compétences » : un point par copie corrigée, la compétence nommée par sa phrase d'élève.
+
+968. Ce que tu ne commentes pas dans les captures est acquis.
+
+969. Pour 963, je propose : la phrase d'élève sur les diapos d'ouverture et sur la feuille sommaire, l'intitulé officiel seulement dans l'infobulle. Oui ?
+
+À tester (la ⑨) :
+1. Ouvre un chapitre dans l'Atelier : « Ce que la diapo déclare » est ouverte en haut à droite.
+2. Au début de la séance 1 : présentation du chapitre, plan, présentation de la séance, problématique. Écris une ligne dans le plan : elle reste.
+3. Clic droit sur une diapo, « Insérer une diapo avant » : une diapo vierge. Renomme-la par double-clic.
+4. Ctrl + clic sur deux diapos, puis glisse-les ailleurs.
+5. Mode test, lance une heure des De Gaulle par sa case ; ouvre l'adresse du tableau sur un autre ordinateur : il suit ta diapo et tes dévoilements.
+6. Avant la première diapo, le tableau distant montre l'horloge au centre et la clé USB en bas à droite.
+7. « ⏩ aller à 5 minutes de la fin », fais la fin de l'heure, clos : tu arrives à l'emploi du temps, avec « L'heure des 3E Charles de Gaulle est close à … » à l'heure de la case, et « Relire l'heure ».
+8. Reviens au pilotage de cette heure : « Relire l'heure » à la place de « Fin de l'heure ».
+Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?v=876-9
+
+29/10/2026 09:01
+MEMO

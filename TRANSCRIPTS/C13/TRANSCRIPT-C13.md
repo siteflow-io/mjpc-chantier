@@ -8108,7 +8108,7 @@ MEMO
 
 1165. La troisième, le point d'un coup : sur un point où tout est bon, ⇧ et Entrée le passe entier. Sur une bonne copie, on passe d'une trentaine de touches à une douzaine ; sur Flavie, on ne gagne rien.
 
-1166. La quatrième, parler vraiment de la copie : le bilan se compare seul à la rédaction précédente du même élève, que le site garde déjà par compétence. Par exemple : « La dernière fois, la date manquait déjà », ou « Cette fois, ton troisième paragraphe est là ». Un vrai suivi, sans une touche de plus.
+1166. La quatrième, parler vraiment de la copie : le bilan se compare seul à la rédaction précédente du même élève, par compétence : la rédaction les écrit sur sa branche, pas encore en ligne (553). Par exemple : « La dernière fois, la date manquait déjà », ou « Cette fois, ton troisième paragraphe est là ». Un vrai suivi, sans une touche de plus.
 
 1167. La cinquième, l'appli apprend de toi : une question à laquelle tu réponds pareil pour presque toutes les copies passe en fin de point, confirmée d'un geste ; celles qui départagent viennent d'abord. Et l'export pour l'IA (1104) propose de fusionner ou de couper les questions.
 

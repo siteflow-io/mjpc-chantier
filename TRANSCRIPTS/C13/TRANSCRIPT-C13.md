@@ -7933,3 +7933,30 @@ MEMO
 
 29/10/2026 14:21
 MEMO
+
+## Tour 366 — 29/10/2026 14:25 → 14:27
+
+**Paul :** Montre moi des captures construites
+
+**Fait.** Deux captures construites, sans code du site, 1707 de large : `MANDATS/REDACTION-UNIVERSELLE/captures-29-10/1-correction-oui-non.png` (l'écran de correction) et `2-fiche-eleve.png` (la fiche de Flavie) ; page et calcul : `gen.py` (les poids réels de la grille ; les réponses tirées du bilan de Flavie ; les numéros de ligne, la date manquante et les lignes des erreurs sont des exemples).
+
+**Claude :**
+
+À jouer : regarder les deux captures · en cours : rien · ouvert : 1126 ; 1120 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1121. La capture 1, l'écran de correction de Flavie : à gauche les questions dans l'ordre où tu lis, d'un coup d'œil, en lisant, à la fin ; tout est « oui » d'avance, les « NON » sont les 11 clics de cette copie. À droite, la grille se calcule seule, couleur et note, et la réglette des lignes porte les 14 erreurs. En bas, le compte : 29 gestes sur 30, contre 42 aujourd'hui.
+
+1122. Le calcul, sur Flavie : 19 sur 40 (son bilan d'origine disait 19,5). La couleur vient de la part de « oui », et chaque « NON » fait descendre d'un palier dans la couleur.
+
+1123. La capture 2, sa fiche : son échelle, les douze points avec leur couleur ; mon bilan, le prénom deux fois, les manques nommés, chaque citation après sa phrase avec sa ligne ; « À reprendre », huit tâches, dont ses erreurs ligne par ligne.
+
+1124. Ce qui est inventé pour l'exemple : quel code manque (j'ai mis la date), les numéros de ligne des citations et des erreurs. Le reste vient de son bilan.
+
+1125. Les questions et les phrases sont des brouillons : à toi de les corriger.
+
+1126. Ce que tu ne commentes pas est acquis.
+
+À tester : la liste de la ⑩ de 12:05 tient.
+
+29/10/2026 14:27
+MEMO

@@ -8037,7 +8037,7 @@ Pour que j'ai peu d'apprentissage des raccourcis il faut au maximum qu'ils soien
 
 1145. 1139 corrigé : tout se compte en part du nombre de lignes du sujet. La longueur est « oui » à partir de 100 % des lignes du sujet. Le dépassement autorisé, tes dix lignes sur trente, je l'écris en part : un tiers de plus. Pour un sujet de vingt lignes, cela donne sept lignes de plus. Au-delà, c'est « non ».
 
-1146. Les seuils d'erreurs aussi, en part des lignes écrites, au lieu des nombres d'aujourd'hui. Avec les seuils actuels de la lettre, cela fait : jusqu'à 10 % des lignes, très satisfaisant ; 25 %, satisfaisant ; 50 %, fragile ; au-delà, insuffisant. Flavie, 14 erreurs sur 21 lignes, 67 % : insuffisant, comme dans son bilan.
+1146. Les seuils d'erreurs aussi, en part des lignes écrites, au lieu des nombres d'aujourd'hui. Les seuils actuels de la lettre, ramenés à ses trente lignes (3, 7 et 14 erreurs), donnent : jusqu'à 10 % des lignes, très satisfaisant ; 23 %, satisfaisant ; 47 %, fragile ; au-delà, insuffisant. Flavie, 14 erreurs sur 21 lignes, 67 % : insuffisant, comme dans son bilan.
 
 1147. 1141 retiré : une ligne, c'est chaque ligne où l'élève a écrit au moins un mot. Pas de numéros sur la copie : en mode rapide, l'appli te mène ligne après ligne, dans l'ordre, et tu suis la copie du doigt. L'élève retrouve « ligne 7 » en comptant ses lignes écrites.
 

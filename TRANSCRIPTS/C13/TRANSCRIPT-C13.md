@@ -8057,3 +8057,33 @@ Pour que j'ai peu d'apprentissage des raccourcis il faut au maximum qu'ils soien
 
 29/10/2026 15:21
 MEMO
+
+## Tour 370 — 29/10/2026 15:43 → 15:44
+
+**Paul :** Pour les raisons de 1148 il faut des choses suffisamment générales pour que ça colle quel que soit l'élève. 1150 non ce n'est pas ce que je demandais. Je disais qu'il fallait les touches avec exactement les mêmes fonctions qu'en dictée, les touches communes mais g et l ne sont jamais en rédac. 
+En revanche i oui.
+
+**Mesuré.** `correction_dictee.html`, les touches prises : G, L, M, I, A, C (accent, majuscule, trait d'union), P, E, R, Z, Espace, Entrée, Retour, les chiffres (forme déjà vue), ?, F1, Échap, Ctrl+Z. Ni T, ni +.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1160 ; 1126 ; 1120 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1154. 1148 : des raisons générales, valables pour n'importe quel élève, à toi d'en donner les mots ; par exemple : elle dit beaucoup en peu de mots ; le détail sonne vrai ; on entend une vraie voix ; l'émotion passe sans être dite ; l'image est juste.
+
+1155. 1150 corrigé : une touche commune aux deux applis garde exactement sa fonction de la dictée ; une touche propre à la dictée n'existe pas en rédaction ; G et L n'y sont jamais.
+
+1156. Les touches communes, même fonction : Espace ou Entrée, correct et la suite ; Retour, la précédente ; M, manquant ; I, illisible ; A, attention ; ⇧R, l'autre mode ; ? ou F1, l'aide ; Échap ; Ctrl+Z ; les initiales puis Entrée, la copie suivante.
+
+1157. Mesuré, ce qui change par rapport à 1150 et 1151. Les chiffres, en dictée, choisissent une forme déjà vue : en rédaction, ils ne servent donc pas aux erreurs de la ligne. Une erreur sur la ligne, c'est +, la touche du compteur d'aujourd'hui ; Entrée, la ligne suivante. C, en dictée, marque accent, majuscule, trait d'union : la citation prend donc T, qui n'existe pas en dictée.
+
+1158. Les touches propres à la rédaction : T, la citation ; +, une erreur sur la ligne ; ⇧ et Entrée, tout le reste du point est « oui ».
+
+1159. Le compte sur Flavie change : 21 lignes et 14 erreurs, 35 touches au lieu de 21 ; 74 touches en tout, aucun clic.
+
+1160. Oui à 1154 à 1159 ? Je refais alors les captures en mode rapide.
+
+À tester : rien de neuf.
+
+29/10/2026 15:44
+MEMO

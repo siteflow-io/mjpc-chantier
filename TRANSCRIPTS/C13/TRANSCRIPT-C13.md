@@ -7960,3 +7960,32 @@ MEMO
 
 29/10/2026 14:27
 MEMO
+
+## Tour 367 — 29/10/2026 14:39 → 14:40
+
+**Paul :** Il faut que tout soit pilotable au clavier comme correction dictée
+
+**Mesuré.** `correction_dictee.html`, la légende du clavier : « G / L = erreur + saisie · M = manquant · i = illisible · A = attention · Espace = correct · Entrée = correct, mot suivant · Retour = préc. · ⇧R = mode texte · pavé numérique = choisir une forme déjà vue · ? (ou F1) = l'aide » ; Échap efface le numéro en cours, puis ferme ; Ctrl+Z retire la dernière erreur ; « Copie suivante — tape les initiales, puis Entrée ». Compte sur la copie de Flavie (capture 1 du tour 366 : 30 questions, 3 « au-delà », 11 NON, 14 erreurs).
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1133 ; 1126 ; 1120 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1127. Oui, tout au clavier, avec les mêmes touches que la correction de dictée, pour que tes mains ne changent pas d'habitude. Copie suivante : les initiales, puis Entrée.
+
+1128. Les questions : chacune porte un numéro à deux chiffres, comme les formes déjà vues de la dictée au pavé numérique. Tu tapes le numéro d'une question pour la passer à « NON », par exemple 0, 2. Tout le reste reste « oui ». Pour un « au-delà » rempli, la même chose.
+
+1129. Les citations : C ouvre le champ de citation de la dernière question touchée ; Entrée valide ; Échap efface d'abord, puis ferme ; le ✕ du champ efface le champ (13 · 102).
+
+1130. La langue : L, puis le numéro de la ligne de chaque erreur, à deux chiffres (0, 9 pour la ligne 9) ; + compte une erreur sans ligne. Ctrl+Z retire le dernier geste, Retour revient en arrière, ? ou F1 ouvre l'aide, V puis 1 à 4 change la couleur d'un point si ton jugement diffère.
+
+1131. Le compte sur Flavie, au clavier : les initiales et Entrée, 3 ; 11 NON à deux chiffres, 22 ; L et 14 lignes à deux chiffres, 29 ; valider, 1. Soit 55 touches et aucun clic, contre 29 clics à la souris. Les erreurs par ligne en prennent la moitié.
+
+1132. Ce que je ne sais pas : si 55 touches vont plus vite que 29 clics. Une touche ne demande pas de viser, un clic si. Le chrono de l'appli le dira dès les premières copies, avec le bouton « Mes temps de correction » (1120). La souris reste possible, au même endroit, pour qui préfère.
+
+1133. Oui à 1127 à 1132 ?
+
+À tester : rien de neuf.
+
+29/10/2026 14:40
+MEMO

@@ -8629,3 +8629,34 @@ Enfin, il faut un ordre de correction pour l'élève.
 
 29/10/2026 23:42
 MEMO
+
+## Tour 390 — 29/10/2026 23:47 → 23:48
+
+**Paul :** 1283. Toujours papillon. Pas besoin de réécriture dans le texte. 84. Là il faut voir exactement comment l'App m'aide à gagner du temps. 85. Si c'est bon. 86. Captures. 87. La langue avant tout.
+
+**Fait.** Capture 18 (`traversee.py`, au scratchpad `scan-prive/`, jamais poussée) : la traversée en quatre temps, pile fixe, la langue d'abord, puis le sujet, le récit, les phrases, mes mots.
+
+**Claude :** [capture 18-traversee.png]
+
+À jouer : regarder la capture 18 · en cours : rien · ouvert : 1299 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1292. 1283 : toujours le papillon, rien ne s'écrit dans le texte. Le passage reste barré, le papillon est collé à côté, dans la marge.
+
+1293. 1284, comment l'appli te fait gagner du temps sur les papillons. Un : tu les relis par case, toutes les copies à la suite. Par exemple, les papillons de « Il manque le paragraphe où tu dis que tu t'inquiètes pour l'autre », l'un après l'autre, chacun à côté du passage de sa copie. Une seule consigne en tête, et tu compares d'un coup d'œil. Un geste par papillon, les touches de la correction : Espace ou Entrée, c'est bon ; N, à refaire.
+
+1294. Deux : « à refaire » renvoie à l'élève la tâche de la case avec une phrase toute prête, rien à taper. Cette phrase, tu la donnes une fois pour toutes.
+
+1295. Trois : dans la grille, chaque case dit si sa tâche se relit ou non. « Ajoute la date » se valide par l'élève seul ; « Récris ta litote » arrive chez toi. Tu ne relis que ce qui le mérite.
+
+1296. Ce que je ne sais pas : ce que ça te coûte par classe. Le chrono fin le mesurera, papillon par papillon.
+
+1297. 1286 : la capture 18, la traversée en quatre temps. La pile ne tourne pas ; la copie monte à travers la grille, la langue d'abord, et chaque critère y dépose ses points, fermés.
+
+1298. 1287 : la langue avant tout. L'ordre de l'élève : d'abord ses erreurs de langue, de haut en bas ; ensuite les points de la grille, de haut en bas (1288). 1289 tombe : ses erreurs sont corrigées avant toute réécriture.
+
+1299. Oui à 1292 à 1298 ?
+
+À tester : rien de neuf.
+
+29/10/2026 23:48
+MEMO

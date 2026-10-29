@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Diapos d'ouverture dans le site</title>
+<style>
+:root{--f:#1b1714;--p:#221c17;--b:#3d3127;--or:#c9a04a;--t:#eadfca;--m:#9d8d77;--v:#6fae6a;--r:#c0573f;--nuit:#223a50;--clair:#a9b8c6;--teal:#3d7a74;--vif:#1a72c4}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--f);color:var(--t);font:15px/1.35 Georgia,"Liberation Serif",serif}
+.haut{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--b);height:54px}
+.btn{border:1px solid var(--b);background:var(--p);color:var(--t);border-radius:8px;padding:6px 12px;font:inherit;white-space:nowrap}
+.btn.or{border-color:var(--or);color:var(--or)}.btn.on{background:var(--or);color:#1b1714;border-color:var(--or)}
+.m{color:var(--m)}.esp{flex:1}
+.corps{display:flex;height:calc(100% - 54px)}
+.col{border-right:1px solid var(--b);padding:10px;overflow:hidden}
+.tit{font-size:11.5px;letter-spacing:.12em;color:var(--m);text-transform:uppercase;margin:2px 0 8px}
+.vig{display:flex;gap:8px;align-items:center;border:1px solid var(--b);border-radius:6px;padding:5px;margin-bottom:6px;background:var(--p);font-size:13px}
+.vig .mini{width:86px;height:48px;border-radius:3px;flex:none;overflow:hidden;position:relative}
+.vig.sel{border-color:var(--or)}.vig i{display:block;color:var(--m);font-style:normal;font-size:11.5px}
+.tag{font-size:11px;border:1px solid var(--b);border-radius:20px;padding:1px 7px;color:var(--m)}
+.scene{flex:1;padding:12px;display:flex;flex-direction:column;align-items:center}
+.cadre{width:960px;height:540px;position:relative;overflow:hidden;border-radius:4px}
+.cadre>.d{transform:scale(.6);transform-origin:0 0}
+.carte{border:1px solid var(--or);border-radius:8px;background:var(--p);padding:10px 12px}
+.ch{margin:7px 0;font-size:14px}.ch b{font-weight:normal;color:var(--m);display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.champ{border:1px solid #6b5a46;border-radius:5px;padding:5px 8px;background:#1e1915;min-height:28px}
+.note{color:var(--m);font-size:12.5px;margin-top:8px}
+.barre{display:flex;gap:8px;align-items:center;margin-top:10px}
+.rond{width:42px;height:42px;border-radius:50%;border:1px solid var(--b);background:var(--p);display:flex;align-items:center;justify-content:center;color:var(--t)}
+.chr{font:bold 22px/1 Carlito,sans-serif;padding:7px 12px;border-radius:8px;background:#111;border:2px solid #4c9a52;color:#6fd17a}
+.pan{border:1px solid var(--or);border-radius:8px;background:var(--p);padding:8px 10px;display:flex;gap:8px;align-items:center;font-size:14px}
+/* les diapos au canon, adaptées */
+.d{width:1600px;height:900px;position:absolute;left:0;top:0;font-family:Carlito,Calibri,sans-serif;overflow:hidden}
+.serif{font-family:"EB Garamond",Garamond,"Liberation Serif",Georgia,serif}
+.p4{background:var(--nuit);color:#fff}
+.p4 .fil{position:absolute;left:40px;top:60px;width:3px;height:820px;background:#5d7488}
+.p4 .pt{position:absolute;left:31px;top:132px;width:24px;height:24px;border-radius:50%;border:4px solid #e8eef2;background:var(--teal);box-shadow:0 0 0 10px rgba(61,122,116,.35)}
+.p4 .g{position:absolute;left:108px;top:170px;width:860px}
+.p4 .k{color:var(--clair);font-size:28px;letter-spacing:.04em}
+.p4 h1{font-size:66px;margin:40px 0 0;font-weight:bold}
+.p4 .bar{width:240px;height:5px;background:var(--teal);margin:54px 0 46px}
+.p4 .o{font-size:36px;line-height:1.39;color:#c9d3dc}
+.p4 .cs{display:flex;align-items:center;margin-top:30px;color:var(--clair);font-size:22px;letter-spacing:.14em}
+.p4 .dots{margin-left:120px;display:flex;gap:4px}.p4 .dots i{width:23px;height:23px;border-radius:4px;background:#34506a}.p4 .dots i.on{background:#e8eef2}
+.p4 ul{list-style:none;padding:0;margin:18px 0 0}.p4 li{font-size:24px;margin:0 0 13px;display:flex;align-items:center;color:#dfe6ec}
+.p4 li i{width:21px;height:21px;border-radius:4px;margin-right:19px}.p4 li.maj{font-weight:bold;color:#fff}
+.p4 img{position:absolute;right:77px;top:91px;height:675px}
+.p3{background:#fff}
+.p3 .bande{position:absolute;left:0;top:0;width:1600px;height:122px;background:#f3f2ef;border-left:16px solid var(--nuit)}
+.p3 h1{position:absolute;left:54px;top:28px;margin:0;font-size:44px;color:var(--nuit)}
+.p3 .sn{position:absolute;right:52px;top:46px;font-size:25px;color:#6b7580}
+.p3 .l{position:absolute;left:72px;width:1452px;height:83px;display:flex;align-items:center}
+.p3 .n{width:60px;height:83px;background:var(--nuit);color:#fff;font-size:38px;display:flex;align-items:center;justify-content:center}
+.p3 .n.ev{background:var(--vif)}
+.p3 .dt{width:150px;font-size:22px;color:#6b7580;padding-left:22px}
+.p3 .t{width:390px;padding-left:10px;font-size:29px;color:var(--nuit);font-weight:bold;line-height:1.18}
+.p3 .x{flex:1;font-size:21px;color:#5c6670;line-height:1.3;padding-right:24px}
+.p3 .l.jour{outline:4px solid #c9a04a;outline-offset:-4px}
+.p3 .l.cache{opacity:.18}
+</style></head><body>
+
+<!-- A : l'Atelier, la diapo de début de séance -->
+<div id="A" style="display:none;height:100%">
+<div class="haut"><b style="font-weight:normal;font-size:19px">Atelier</b><span class="m">3e · Chapitre 1 · J'ai été dans les tranchées · séance 1</span>
+<span class="btn">Structure</span><span class="btn on">Atelier</span><span class="btn">▶ Jouer en avance</span><span class="esp"></span><span class="btn or">?</span></div>
+<div class="corps">
+ <div class="col" style="width:270px"><div class="tit">Séance 1 · ouverture</div>
+  <div class="vig"><div class="mini" style="background:#223a50"></div><div>Présentation du chapitre<i>posée par le site</i></div></div>
+  <div class="vig"><div class="mini" style="background:#fff;border:1px solid #ccc"></div><div>Les compétences du chapitre<i>posée par le site</i></div></div>
+  <div class="vig"><div class="mini" style="background:#f3f2ef;border-left:5px solid #223a50"></div><div>Le parcours du chapitre<i>posée par le site</i></div></div>
+  <div class="vig sel"><div class="mini" style="background:#223a50"></div><div>Séance 1 · Entrée par l'image<i>posée par le site</i></div></div>
+  <div class="tit" style="margin-top:12px">H1 · les activités</div>
+  <div class="vig"><div class="mini" style="background:linear-gradient(135deg,#5b4632,#2d2a25)"></div><div>A1 · J'observe en silence<i>5 min</i></div></div>
+  <div class="vig"><div class="mini" style="background:#f4efe6"></div><div>A1 · Plans, cadrage, point de vue<i>15 min</i></div></div>
+ </div>
+ <div class="scene"><div class="cadre"><div class="d p4"><div class="fil"></div><div class="pt"></div>
+  <div class="g"><div class="k">SÉANCE 1</div><h1 class="serif">Entrée par l'image</h1><div class="bar"></div>
+  <div class="o">Objectif : Décrire une image de guerre en nommant plans, cadrage, point de vue et hors champ, puis définir avec la classe ce qu'est « faire mémoire ».</div>
+  <div class="cs">COMPÉTENCES DE LA SÉANCE<span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+  <ul><li class="maj"><i style="background:#3d7a74"></i>Lire des documents, des images et des pages numériques</li><li><i style="background:#d6e4e3"></i>Interpréter un texte littéraire</li><li><i style="background:#f0e3c8"></i>Connaître la grammaire pour analyser et construire des phrases</li><li><i style="background:#efd5d1"></i>Se servir de sa culture pour comprendre les textes et les œuvres</li><li><i style="background:#efd5d1"></i>Prendre part à une discussion</li></ul></div>
+  <img src="img-seance.png"></div></div>
+  <div class="note" style="width:960px">Ce que tu écris directement dans la diapo devient « ta version » ; ↩ rend celle du chapitre. L'ordre du dévoilement : le titre, l'objectif, puis les compétences une à une ; seul le fil et le carré de la séance bougent d'eux-mêmes.</div>
+ </div>
+ <div class="col" style="width:400px;border-right:0;border-left:1px solid var(--b)"><div class="carte">
+  <div class="tit" style="color:var(--or)">Ce que la diapo déclare</div>
+  <div class="ch"><b>Type</b>début de séance · posée par le site, remplie depuis le chapitre · hors activité · 0 min</div>
+  <div class="ch"><b>Titre de la séance</b><div class="champ">Entrée par l'image</div></div>
+  <div class="ch"><b>Objectif (la phrase de la séance)</b><div class="champ">Décrire une image de guerre en nommant plans, cadrage, point de vue et hors champ, puis définir avec la classe ce qu'est « faire mémoire ».</div></div>
+  <div class="ch"><b>Compétences de la séance</b><div class="champ">★ Lire des documents, des images… <span class="m">· la majeure</span><br>Interpréter un texte littéraire · Connaître la grammaire… · Se servir de sa culture… · Prendre part à une discussion</div></div>
+  <div class="ch"><b>Séance évaluée</b><span class="btn on" style="padding:2px 10px">non</span> <span class="btn" style="padding:2px 10px">oui</span></div>
+  <div class="ch"><b>Image de la séance</b><div style="display:flex;gap:8px;align-items:center"><img src="img-seance.png" style="height:56px;border-radius:3px"><span class="btn">Changer…</span><span class="m" style="font-size:12px">clé USB ou en ligne</span></div></div>
+  <div style="display:flex;gap:8px;margin-top:10px"><span class="btn">↩ celle du chapitre</span><span class="btn">Retirer</span></div>
+  <div class="note">Ce que tu changes ici change le chapitre, pour toutes tes classes, et la feuille sommaire avec. Pour une classe seulement : son profil.</div></div></div>
+</div></div>
+
+<!-- B : le pilotage, le parcours, en classe -->
+<div id="B" style="display:none;height:100%">
+<div class="haut"><span class="btn">Pilotage</span><span class="btn">Relecture</span><b style="font-weight:normal;font-size:17px;margin-left:8px">3E Charles de Gaulle · 08:00-08:55 · heure 1/2</b><span class="esp"></span><span style="font:bold 20px Carlito,sans-serif;color:var(--or)">−38:12</span><span class="btn">Notes</span><span class="btn">Ce que voit la classe</span><span class="btn or">?</span></div>
+<div class="corps">
+ <div class="col" style="width:240px"><div class="tit">Heure 1 · 9 diapos</div>
+  <div class="vig"><div class="mini" style="background:#223a50"></div><div>1 · Présentation</div></div>
+  <div class="vig"><div class="mini" style="background:#fff;border:1px solid #ccc"></div><div>2 · Les compétences</div></div>
+  <div class="vig sel"><div class="mini" style="background:#f3f2ef;border-left:5px solid #223a50"></div><div>3 · Le parcours</div></div>
+  <div class="vig"><div class="mini" style="background:#223a50"></div><div>4 · Séance 1</div></div>
+  <div class="vig"><div class="mini" style="background:linear-gradient(135deg,#5b4632,#2d2a25)"></div><div>5 · A1 · J'observe</div></div>
+ </div>
+ <div class="scene"><div class="cadre"><div class="d p3"><div class="bande"></div><h1 class="serif">Le parcours du chapitre</h1><div class="sn">Séance 1 sur 8</div><div id="parc"></div></div></div>
+  <div class="barre" style="width:960px"><span class="rond">✦</span><span class="rond">✍</span><span class="rond">⊞</span><span class="rond">👥</span>
+   <span class="pan"><span class="rond" style="width:34px;height:34px;border-color:var(--or)">⏱</span><input value="05:00" size="5" style="background:#1e1915;color:var(--t);border:1px solid #6b5a46;border-radius:5px;padding:4px;font:inherit"> <span class="btn or">Départ</span><span class="btn">⏸ Pause</span><span class="btn">■</span><label><input type="checkbox" checked> au tableau</label><span class="chr">05:00</span></span>
+   <span class="esp"></span><span class="btn on">▶ Dévoiler</span><span class="m">3 / 8 dévoilés</span></div>
+  <div class="note" style="width:960px">Au pilote, ce qui n'est pas encore dévoilé reste visible, pâle ; au tableau, rien. Les dates sont celles de la classe (son emploi du temps) ; la séance du jour est entourée d'or.</div>
+ </div>
+ <div class="col" style="width:380px;border-right:0;border-left:1px solid var(--b)">
+  <div class="tit">Le minuteur, au tableau</div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+   <span class="chr">05:00</span><span class="chr" style="border-color:#c9a827;color:#e8c84a">03:20</span><span class="chr" style="border-color:#d07a2a;color:#f0954a">01:40</span><span class="chr" style="border-color:#c0392b;color:#ff5a48">00:30</span></div>
+  <div class="note">Vert au départ ; jaune au premier tiers ; orange au deuxième tiers ; rouge clignotant sur le dernier dixième ; cinq bips discrets sur les cinq dernières secondes, puis un ding fort à 0. Le son sort du tableau. Coché « au tableau », la durée s'y affiche aussitôt, immobile, jusqu'à « Départ ».</div>
+  <div class="tit" style="margin-top:14px">Diapo suivante</div>
+  <div class="cadre" style="width:350px;height:197px"><div class="d p4" style="transform:scale(.21875)"><div class="pt"></div><div class="fil"></div><div class="g"><div class="k">SÉANCE 1</div><h1 class="serif">Entrée par l'image</h1></div><img src="img-seance.png"></div></div>
+ </div>
+</div></div>
+<script>
+var P=[['lun. 7/9','Entrée par l\'image','Décrire une image de guerre en nommant plans, cadrage, point de vue et hors champ, puis définir avec la classe ce qu\'est « faire mémoire ».'],
+['mer. 9/9','La lettre de Jean Déléage','Analyser une lettre de poilu : identifier la situation d\'énonciation, repérer les marques de modalisation et comprendre ce que la lettre tait.'],
+['mer. 16/9','Dictée et réécriture : la lettre de Karl Fritz','Lire la guerre du côté allemand, réinvestir la modalisation, puis orthographier un texte dicté et le transposer.',1],
+['lun. 21/9','Interro et construction','Construire des phrases complexes selon cinq structures imposées.',1],
+['lun. 28/9','Étude en autonomie : Floch et Leymarie','Étudier seul deux lettres d\'adieu dans les conditions de l\'épreuve, et comparer deux façons d\'écrire la même innocence.',1],
+['mer. 30/9','Remédiation','Corriger ses erreurs de dictée, de réécriture et d\'étude en autonomie, puis s\'entraîner sur sa notion la moins sûre.'],
+['lun. 5/10','Tâche finale : écrire une lettre','Écrire une lettre de la Grande Guerre en respectant les codes du genre et en construisant quinze phrases complexes — celle du front, ou celle qui répond.',1],
+['lun. 12/10','Préparation du regard','Préparer le séjour à Verdun avec ce que le chapitre a établi, et savoir quoi chercher sur place.']];
+document.getElementById('parc').innerHTML=P.map(function(p,i){return '<div class="l'+(i===0?' jour':'')+(i>2?' cache':'')+'" style="top:'+(136+i*88.5)+'px;background:'+(i%2?'#fff':'#f3f2ef')+'"><div class="n serif'+(p[3]?' ev':'')+'">'+(i+1)+'</div><div class="dt">'+p[0]+'</div><div class="t serif">'+p[1]+'</div><div class="x">'+p[2]+'</div></div>';}).join('');
+var v=(location.hash||'#A').slice(1);document.getElementById(v).style.display='block';
+</script></body></html>

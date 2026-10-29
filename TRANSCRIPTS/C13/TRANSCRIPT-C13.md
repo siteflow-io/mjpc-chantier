@@ -7793,7 +7793,7 @@ MEMO
 
 1083. La couleur vient du compte : tous les obligatoires et l'« au-delà », vert foncé ; tous les obligatoires, vert ; au moins la moitié, orange ; moins de la moitié, rouge.
 
-1084. Le poids : la note du point est son poids multiplié par la part des éléments vus, arrondie au demi-point en dessous. Par exemple, un point sur 6 avec quatre obligatoires et un « au-delà » : les cinq, 6 ; les quatre obligatoires, 4,5 ; trois, 3,5 ; deux, 2,5.
+1084. Le poids : la note du point est son poids multiplié par la part des éléments vus, arrondie au demi-point en dessous. Par exemple, un point sur 6 avec quatre obligatoires et un « au-delà » : les cinq, 6 ; les quatre obligatoires, 4,5 ; trois, 3,5 ; deux, 2.
 
 1085. Le contenu : chaque élément a deux phrases à toi, une quand il est là, une quand il manque. Le bilan du point dit en une phrase ce qui est réussi, nomme ce qui manque, puis donne la citation.
 

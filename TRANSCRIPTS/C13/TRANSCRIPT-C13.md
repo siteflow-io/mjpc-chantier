@@ -7598,3 +7598,87 @@ MEMO
 
 29/10/2026 11:56
 MEMO
+
+## Tour 357 — 29/10/2026 11:58 → 12:00
+
+**Paul :** [pièce : « FRANCAIS — contenu de la séance » (Le Horla) ; capture : Structure, le chapitre « Le Horla », l'aperçu des feuilles] audit ce contenu de séance. Je pense que tu as mélangé dans le code: "M.Meney" et le "je" élève. D'ailleurs, l'auxiliaire a été mangé. Par ailleurs, je trouve que tout ce qu'il y a entre guillemets est introduit très abruptement donc on ne comprend pas bien ce qui s'est fait etc.il  faut vraiment améliorer le récit. Enfin, pourquoi dans l'atelier j'ai l'heure de la prochaine classe? Normalement l'atelier est sans classe, ou alors toujours avec la classe test, non? à mesurer d'abord et proposer le plus logique. Enfin, pour le bilan, la règle est qu'il n'y a pas de diapo après le bilan: en fait si, il en faut une vierge absolument, car c'est sur elle qu'on va écrire le bilan, et ça se fait sur participation de classe évidemment, donc avec les champs des initiales élèves etc. Et le passage entre cette diapo d'écriture et les consignes du bilan n'a pas besoin de passer par le gel dégel. en effet, quand on écrit le bilan, on revient aux consignes du bilan au fur et à mesure. On pourrait d'ailleurs imaginer que lorsque je tape sur la diapo vierge le contenu du bilan donné par les élèves, ça coche automatiquement les consignes du bilan dès qu'on les insère. tu vois l'idée? autre bug: j'ai rechargé le site en pleine répétition: je n'ai eu aucune garde. pour les colonnes de la structure, elles doivent avoir les poignées en largeur aussi. Enfin, regarde la disposition du texte. et le texte doit toujours être justifié (quand on imprime, ça repasse correctement sur les bonnes lignes, mais c'est aligné à gauche et donc c'est moche). enfin au tableau, je ne veux pas la phrase "clé usb des vidéos etc". Je veux juste "USB ✅" ou "USB ⌛"
+
+**Mesuré.** Production 8.76.1 : `recit(t)` (la consigne au « je » lue comme Paul) ; `dr_sourceSeance`, `dr_hclasseNom`, `dr_hclasseMaj` (l'Atelier et la répétition prennent la prochaine heure de la séance à l'emploi du temps, contrat §12.38) ; `dr_heureTenue` (la garde du navigateur exclut la répétition) ; `dr_tabCleMaj`. Registre 13 · 95 à 13 · 100 (prod `9a2a580`).
+
+**Claude :**
+
+À jouer : promouvoir la ⑩ (1052) · en cours : rien · ouvert : 1063 ; 1052 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1053. Le récit, audité : tu as raison. Le site lit toute consigne qui commence par « je » comme un geste de toi. « Je recopie le tableau dans mon cahier » devient « m. Meney recopié le tableau dans mon cahier » : sans « a », avec le cahier de l'élève, et la majuscule perdue après « D'ailleurs ». Or tes consignes sont au « je » de l'élève : ce « je », c'est la classe. Il doit donner « on a recopié le tableau dans le cahier » (13 · 95).
+
+1054. Ce qui rend le reste abrupt : les diapos d'ouverture sont versées telles quelles (« Entrée du programme : Récit », la liste des compétences à l'intitulé officiel) ; une consigne arrive sans rien qui l'annonce (« À 11 h 10, le narrateur devient-il fou… ») ; « d'abord la consigne disait… puis la consigne disait… » ; une heure à la minute en tête de chaque paragraphe (13 · 96).
+
+1055. Je propose quatre règles. Les diapos d'ouverture tiennent en une phrase : le chapitre, son plan, sa question. Chaque activité dit d'abord ce qu'on a fait, en phrase, puis ce qu'on a noté. Les consignes se fondent dans la phrase au lieu d'être citées l'une après l'autre. Les heures à la minute disparaissent du texte.
+
+1056. Ta séance, réécrite selon ces règles, à corriger : « Aujourd'hui, on a ouvert le chapitre « Le Horla, de Guy de Maupassant » : son plan, ce qu'on va y apprendre, et sa question : « En quoi Le Horla repousse-t-il les limites de la réalité ? ». Activité 1 — Contrôle de lecture : on a fait le contrôle de lecture seul, sur la feuille, dix questions en dix minutes, une seule réponse cochée par question. Activité 2 — Fou, ou pas fou ? : on s'est demandé si le narrateur devient fou ou si le Horla existe vraiment ; chacun a répondu en trois lignes au brouillon, avec un détail du livre. En classe, on a retenu trois réponses : il devient fou ; le Horla existe ; on ne peut pas trancher, le livre donne des raisons pour les deux. Activité 3 — Le journal, du 8 mai au 10 septembre : on a construit les deux schémas du journal, de mai à juillet puis d'août à septembre, et on les a recopiés dans le cahier ; puis on a cherché comment l'état du narrateur change, du 8 mai au 10 septembre. Élise a participé à la mise en commun. Le bilan : on a cherché ce qui se passe dans le journal, avec ces mots-clés : un journal intime ; un homme heureux, au bord de la Seine ; un être invisible, buveur d'eau et de lait ; la peur, puis la terreur. Chacun a rédigé le bilan au brouillon, en cinq à huit lignes, au présent, en soulignant chaque mot-clé. »
+
+1057. L'Atelier et la classe, mesuré : l'Atelier et la répétition prennent la prochaine heure de la séance à l'emploi du temps. C'est le contrat §12.38, sur ton message du 27/10 (« jouer en avance prend toujours les Dylan ») : tu voulais répéter l'heure que la bonne classe va vivre, avec sa réactivation, son heure n/N et sa date. D'où « 3 FRANKLIN ARETHA · lun. 02/11 08:57 ».
+
+1058. Depuis, la réactivation et les dates sont parties dans la copie de la classe, donc dans son profil (952, 989). Je propose : l'Atelier est sans classe, c'est le chapitre, pour toutes ; la répétition se joue toujours avec la classe test, De Gaulle, et l'horloge de sa case ; répéter l'heure d'une vraie classe se fait depuis son profil, sur sa copie. La raison de §12.38 tient donc toujours, ailleurs.
+
+1059. Le bilan, je vois l'idée. Je propose : le site pose après le bilan une diapo vierge, « le bilan de la classe », où tu écris ce que disent les élèves, avec les initiales de qui parle, comme pour la participation. Entre elle et la diapo du bilan, tu passes sans la garde « geler puis y aller ». Quand ce que tu tapes contient un mot-clé du bilan (« un journal intime », « la peur, puis la terreur »…), il se coche aussitôt sur la diapo du bilan, au pilote et au tableau.
+
+1060. La garde au rechargement, mesuré : elle ne vaut que pour une heure lancée, pas en répétition. Je propose la même garde en répétition (13 · 97).
+
+1061. Structure : des poignées en largeur entre les colonnes, comme en hauteur (13 · 98). La disposition du texte : chaque ligne numérotée du livre passe sur deux lignes à l'écran, parce que la colonne est plus étroite que la ligne imprimée. Je propose : l'aperçu montre la feuille à sa largeur d'impression, réduite pour tenir, donc les mêmes lignes qu'à l'impression ; et le texte justifié, à l'écran comme à l'impression (13 · 99).
+
+1062. Au tableau : « USB ✅ » quand la clé est lue, « USB ⌛ » sinon. Le geste et son explication restent dans l'infobulle, pour toi (13 · 100).
+
+1063. Tout cela fait une ⑪, après la ⑩. Ce que tu ne commentes pas est acquis ; je l'écris au contrat. La ⑩ attend toujours ton « promeus » (1052).
+
+À tester : rien de neuf.
+
+29/10/2026 12:00
+MEMO
+
+## Tours 357 et 358 — 29/10/2026 11:58 et 12:00 → 12:05 (une seule réponse : la première, interrompue par Paul avant d'être envoyée, part avec la seconde)
+
+**Paul (11:58) :** [pièce : « FRANCAIS — contenu de la séance » (Le Horla) ; capture : Structure, le chapitre « Le Horla », l'aperçu des feuilles] audit ce contenu de séance. Je pense que tu as mélangé dans le code: "M.Meney" et le "je" élève. D'ailleurs, l'auxiliaire a été mangé. Par ailleurs, je trouve que tout ce qu'il y a entre guillemets est introduit très abruptement donc on ne comprend pas bien ce qui s'est fait etc.il  faut vraiment améliorer le récit. Enfin, pourquoi dans l'atelier j'ai l'heure de la prochaine classe? Normalement l'atelier est sans classe, ou alors toujours avec la classe test, non? à mesurer d'abord et proposer le plus logique. Enfin, pour le bilan, la règle est qu'il n'y a pas de diapo après le bilan: en fait si, il en faut une vierge absolument, car c'est sur elle qu'on va écrire le bilan, et ça se fait sur participation de classe évidemment, donc avec les champs des initiales élèves etc. Et le passage entre cette diapo d'écriture et les consignes du bilan n'a pas besoin de passer par le gel dégel. en effet, quand on écrit le bilan, on revient aux consignes du bilan au fur et à mesure. On pourrait d'ailleurs imaginer que lorsque je tape sur la diapo vierge le contenu du bilan donné par les élèves, ça coche automatiquement les consignes du bilan dès qu'on les insère. tu vois l'idée? autre bug: j'ai rechargé le site en pleine répétition: je n'ai eu aucune garde. pour les colonnes de la structure, elles doivent avoir les poignées en largeur aussi. Enfin, regarde la disposition du texte. et le texte doit toujours être justifié (quand on imprime, ça repasse correctement sur les bonnes lignes, mais c'est aligné à gauche et donc c'est moche). enfin au tableau, je ne veux pas la phrase "clé usb des vidéos etc". Je veux juste "USB ✅" ou "USB ⌛"
+
+**Paul (12:00, en interrompant) :** promeus 8.77.0-⑩.
+
+**Mesuré.** Production 8.76.1 : `recit(t)` (la consigne au « je » lue comme Paul) ; `dr_sourceSeance`, `dr_hclasseNom`, `dr_hclasseMaj` (l'Atelier et la répétition prennent la prochaine heure de la séance à l'emploi du temps, contrat §12.38) ; `dr_heureTenue` (la garde du navigateur exclut la répétition) ; `dr_tabCleMaj`. Registre 13 · 95 à 13 · 100 (prod `9a2a580`).
+
+**Fait.** Promotion 8.77.0-⑩ : prod commit `e0e56fc`, blob `5cf9d24ab593`, md5 `55694fe15bc27b5fb318eeb1e05910a1`, 2 709 746 o ; bit à bit au dépôt et à l'adresse publique (12:02). Docs prod `9d6dfe2` (✔ 13 · 92, 93, 94).
+
+**Claude :**
+
+À jouer : les tests de la ⑩ ci-dessous · en cours : rien · ouvert : 1063 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1053. La ⑩ est en ligne (8.77.0-⑩), identique au fichier testé, vérifiée au dépôt et à l'adresse publique. Point de retour : la 8.76.1.
+
+1054. Le récit, audité : tu as raison. Le site lit toute consigne qui commence par « je » comme un geste de toi. « Je recopie le tableau dans mon cahier » devient « m. Meney recopié le tableau dans mon cahier » : sans « a », avec le cahier de l'élève, et la majuscule perdue après « D'ailleurs ». Or tes consignes sont au « je » de l'élève : ce « je », c'est la classe. Il doit donner « on a recopié le tableau dans le cahier » (13 · 95).
+
+1055. Ce qui rend le reste abrupt : les diapos d'ouverture sont versées telles quelles (« Entrée du programme : Récit », la liste des compétences à l'intitulé officiel) ; une consigne arrive sans rien qui l'annonce (« À 11 h 10, le narrateur devient-il fou… ») ; « d'abord la consigne disait… puis la consigne disait… » ; une heure à la minute en tête de chaque paragraphe (13 · 96).
+
+1056. Je propose quatre règles. Les diapos d'ouverture tiennent en une phrase : le chapitre, son plan, sa question. Chaque activité dit d'abord ce qu'on a fait, en phrase, puis ce qu'on a noté. Les consignes se fondent dans la phrase au lieu d'être citées l'une après l'autre. Les heures à la minute disparaissent du texte.
+
+1057. Ta séance, réécrite selon ces règles, à corriger : « Aujourd'hui, on a ouvert le chapitre « Le Horla, de Guy de Maupassant » : son plan, ce qu'on va y apprendre, et sa question : « En quoi Le Horla repousse-t-il les limites de la réalité ? ». Activité 1 — Contrôle de lecture : on a fait le contrôle de lecture seul, sur la feuille, dix questions en dix minutes, une seule réponse cochée par question. Activité 2 — Fou, ou pas fou ? : on s'est demandé si le narrateur devient fou ou si le Horla existe vraiment ; chacun a répondu en trois lignes au brouillon, avec un détail du livre. En classe, on a retenu trois réponses : il devient fou ; le Horla existe ; on ne peut pas trancher, le livre donne des raisons pour les deux. Activité 3 — Le journal, du 8 mai au 10 septembre : on a construit les deux schémas du journal, de mai à juillet puis d'août à septembre, et on les a recopiés dans le cahier ; puis on a cherché comment l'état du narrateur change, du 8 mai au 10 septembre. Élise a participé à la mise en commun. Le bilan : on a cherché ce qui se passe dans le journal, avec ces mots-clés : un journal intime ; un homme heureux, au bord de la Seine ; un être invisible, buveur d'eau et de lait ; la peur, puis la terreur. Chacun a rédigé le bilan au brouillon, en cinq à huit lignes, au présent, en soulignant chaque mot-clé. »
+
+1058. L'Atelier et la classe, mesuré : l'Atelier et la répétition prennent la prochaine heure de la séance à l'emploi du temps. C'est le contrat §12.38, sur ton message du 27/10 (« jouer en avance prend toujours les Dylan ») : tu voulais répéter l'heure que la bonne classe va vivre, avec sa réactivation, son heure n/N et sa date. D'où « 3 FRANKLIN ARETHA · lun. 02/11 08:57 ».
+
+1059. Depuis, la réactivation et les dates sont parties dans la copie de la classe, donc dans son profil (952, 989). Je propose : l'Atelier est sans classe, c'est le chapitre, pour toutes ; la répétition se joue toujours avec la classe test, De Gaulle, et l'horloge de sa case ; répéter l'heure d'une vraie classe se fait depuis son profil, sur sa copie. La raison de §12.38 tient donc toujours, ailleurs.
+
+1060. Le bilan, je vois l'idée. Je propose : le site pose après le bilan une diapo vierge, « le bilan de la classe », où tu écris ce que disent les élèves, avec les initiales de qui parle, comme pour la participation. Entre elle et la diapo du bilan, tu passes sans la garde « geler puis y aller ». Quand ce que tu tapes contient un mot-clé du bilan (« un journal intime », « la peur, puis la terreur »…), il se coche aussitôt sur la diapo du bilan, au pilote et au tableau.
+
+1061. La garde au rechargement, mesuré : elle ne vaut que pour une heure lancée, pas en répétition. Je propose la même garde en répétition (13 · 97).
+
+1062. Structure : des poignées en largeur entre les colonnes, comme en hauteur (13 · 98). La disposition du texte : chaque ligne numérotée du livre passe sur deux lignes à l'écran, parce que la colonne est plus étroite que la ligne imprimée. Je propose : l'aperçu montre la feuille à sa largeur d'impression, réduite pour tenir, donc les mêmes lignes qu'à l'impression ; et le texte justifié, à l'écran comme à l'impression (13 · 99). Au tableau : « USB ✅ » quand la clé est lue, « USB ⌛ » sinon ; le geste et son explication restent dans l'infobulle, pour toi (13 · 100).
+
+1063. Tout cela fait une ⑪. Ce que tu ne commentes pas est acquis ; je l'écris au contrat.
+
+À tester (la ⑩) :
+1. En répétition sur ton chapitre, « Documents de la séance » : une feuille du site, « Projeter au tableau » : elle s'affiche au tableau distant.
+2. Au tableau distant, l'étiquette en haut à gauche porte « Activité n — … », sur fond plein ; clique-la en répétition et corrige-la.
+3. Le ⏱ sous la diapo : règle 1 minute, coche « au tableau » : la durée paraît au tableau avant Départ ; Départ, puis Pause, puis Reprendre ; les couleurs changent ; les bips et le ding sortent de ton pilote.
+4. 👥 à 0 élève : le tableau distant l'affiche.
+5. En mode test, lance une heure des De Gaulle, puis « Annuler cette heure » : la confirmation, puis plus rien de cette heure, et l'emploi du temps n'a pas bougé.
+Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?v=877-10
+
+29/10/2026 12:05
+MEMO

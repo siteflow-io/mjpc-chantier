@@ -201,3 +201,8 @@ MEMO
 
 - integration `36258c9b5` (ex-dix : §12.74, §12.70, §12.71, §12.68), assemblée + `APP_VERSION="8.77.0-⑩"` : md5 `55694fe15bc27b5fb318eeb1e05910a1`, 2 709 746 o (copie : scratchpad `cand10/candidate-10-36258c9b5.html`).
 - Banc complet par la conscience : parcours ×2 VERT, 106/0, sonde-1262 52/52, sonde-1266 27/0, sonde-10 51/0 — VERT. Cas E3 112/112.
+
+
+## PROMU ⑩ (8.77.0-⑩) — 29/10/2026 12:02
+
+- prod commit `e0e56fc`, blob `5cf9d24ab593`, md5 `55694fe15bc27b5fb318eeb1e05910a1` ; bit à bit au dépôt et à l'adresse publique. Docs prod `9d6dfe2`.

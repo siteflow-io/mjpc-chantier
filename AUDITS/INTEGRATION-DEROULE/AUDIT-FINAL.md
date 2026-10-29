@@ -179,3 +179,8 @@ MEMO
 - Banc complet par la conscience (une fois) : assemblage, 0 collision, parcours VERT, parcours en mode test VERT, contrôles K1-K13 106/0, sonde-1262 52/52, sonde-1266 27/0 — VERT.
 - Cas E3 (41, 41d, 42i, 43t, 45a, 46c, 47n, 48x, 56s ; 1707×743) : 112/112 VERT. (Premier passage sur 7e7fcec2d : 100/105 ; 4 cas ajustés au contrat §12.62, §12.66 ; 2 défauts réparés : le redessin des lignes du plan dans l'Atelier, la page qui sautait en répétition.)
 - Contrôles de la conscience ajustés : le chapitre des contrôles retire ses diapos d'ouverture (K6, K9) ; K15-test : aucune écriture hors de `/site/tableau_test`.
+
+
+## PROMU ⑨ — 29/10/2026 08:54
+
+- prod commit `0877347`, blob `41ecb48a02b2`, md5 `2ef1eba96d82078089e92cff22659c3f` ; bit à bit au dépôt et à l'adresse publique. Docs prod `6c3d649`.

@@ -225,7 +225,7 @@ function dr_tabAdresse(){
   const d = document.createElement('div'); d.className = 'ses-qr-fond'; d.id = 'dr-tab-adr-boite';
   d.innerHTML = '<div class="ses-qr-boite"><button class="ses-qr-x" id="dr-tab-adr-x" title="Ferme cette fenêtre">\u2715</button>'
     + '<h3>Le tableau sur un autre appareil</h3>'
-    + '<p>Sur l\u2019ordinateur branché au vidéoprojecteur, ouvre cette adresse dans Chrome : il attend le cours, puis suit ce que voit la classe. Il n\u2019écrit jamais rien.</p>'
+    + '<p>Sur l\u2019ordinateur branché au vidéoprojecteur, ouvre cette adresse dans Chrome : il attend le cours, puis suit ce que voit la classe. Il n\u2019écrit jamais rien. Un clic sur sa page le met en plein écran.</p>'
     + '<div class="ses-qr-url" id="dr-tab-adr-url"></div></div>';
   d.querySelector('#dr-tab-adr-url').textContent = url;
   d.addEventListener('click', ev => { if (ev.target === d || ev.target.id === 'dr-tab-adr-x') d.remove(); });
@@ -287,6 +287,16 @@ function dr_tabPoserEcran(et, ecran){
   try { if (window.DATA && DATA.seances && DATA.seances[et.si]) DATA.seances[et.si].ecrans[et.di] = ecran; } catch (e) {}
 }
 
+/* §12.72 (Paul, 29/10 10:41 : « tu fais en sorte que le tableau distant s'affiche en plein écran (autorisation google évidemment) ») : Chrome
+   n'ouvre le plein écran que sur un geste de l'utilisateur. Le premier clic, toucher ou touche sur la page du tableau distant le demande ; sorti par
+   Échap, le geste suivant le redemande. Le clic sur la ligne de la clé USB est laissé à la clé (son autorisation a besoin du même geste). Rien n'est
+   affiché à la classe. */
+function dr_tabPleinEcran(ev){
+  try { const d = document; if (d.fullscreenElement || d.webkitFullscreenElement) return;
+    if (ev && ev.target && ev.target.closest && ev.target.closest('#ses-tab-cle')) return;
+    const el = d.documentElement; const f = el.requestFullscreen || el.webkitRequestFullscreen; if (!f) return;
+    const r = f.call(el); if (r && typeof r.catch === 'function') r.catch(() => {}); } catch (e) {}
+}
 /* la page tableau : on cache le site, on pose l'attente, le mur et le témoin « interrompu » */
 function dr_tabPoser(){
   if (document.getElementById('ses-tab')) return;
@@ -302,6 +312,7 @@ function dr_tabPoser(){
     + '<div class="ses-tab-perdu" id="ses-tab-perdu"></div>';
   [].slice.call(document.body.children).forEach(el => { el.style.display = 'none'; });
   document.body.appendChild(z); document.body.classList.add('ses-corps-tab');
+  if (!dr_tabLocal()) ['pointerdown', 'keydown', 'touchstart'].forEach(ty => document.addEventListener(ty, dr_tabPleinEcran, true));   /* §12.72 : le plein écran au premier geste */
   if (!document.getElementById('dr-tab-style')) {
     const st = document.createElement('style'); st.id = 'dr-tab-style';
     st.textContent = '#ses-tab #mur2{position:absolute;inset:0;margin:auto;width:min(100vw,calc(100vh * 16 / 9));height:auto;aspect-ratio:16/9;border-radius:0;box-shadow:none}'

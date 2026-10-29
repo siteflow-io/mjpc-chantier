@@ -1,0 +1,32 @@
+banc E1 · 2026-10-27 09:00 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 193c78c7c71245dd1e93c75b653a8b91
+
+A57 — §12.31 (2), dette 13 · 49 : « Créer ce chapitre » (aucun chapitre de ce titre) écrit le titre du JSON tel quel ; « Créer un double » (le titre existe) le suffixe « (proposition) »
+  ok     A57 · la confirmation dit « Créer ce chapitre », sans « (proposition) » — {"bouton":true,"t":"Créer ce chapitre ? Le chapitre est créé en fin de liste (position 2), non publié. Rien n’existe encore sous ce titre : rien d’autre n’est touché. Trames de déroulé : « Poésie et peinture : le Romantisme en question » (1"}
+  ok     A57 · « Créer ce chapitre » : le titre du JSON tel quel au hub — ["Chapitre neuf de la garde A57"]
+  ok     A57 · « Créer un double » : l'original intact, le double « Poésie et peinture au XIXe siècle (proposition) (proposition) » — ["Poésie et peinture au XIXe siècle (proposition)","Poésie et peinture au XIXe siècle (proposition) (proposition)"]
+  ok     A57 · aucune erreur JS
+
+A58 — §12.31 (3), dette 13 · 50 : sans la clé de chiffrement, « 📚 Nouveau chapitre » ouvre son écran (pas de « Clé requise ») ; les gestes des codes la demandent toujours
+  ok     A58 · 1366 × 768 : clé absente, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"porte":true,"libelle":"📚 Nouveau chapitre Tu apportes tes docu","titre":"📚 Construire un chapitre avec une IA","cle":false,"valide":false}
+  ok     A58 · 1366 × 768 : aucune erreur JS
+  ok     A58 · 1536 × 864 : clé absente, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"porte":true,"libelle":"📚 Nouveau chapitre Tu apportes tes docu","titre":"📚 Construire un chapitre avec une IA","cle":false,"valide":false}
+  ok     A58 · 1536 × 864 : aucune erreur JS
+  ok     A58 · 1707 × 743 : clé absente, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"porte":true,"libelle":"📚 Nouveau chapitre Tu apportes tes docu","titre":"📚 Construire un chapitre avec une IA","cle":false,"valide":false}
+  ok     A58 · les codes demandent toujours la clé (secuExigeCle inchangée : « Clé requise ») — {"ok":false,"dit":true}
+  ok     A58 · 1707 × 743 : aucune erreur JS
+  ok     A58 · 1920 × 1080 : clé absente, « 📚 Nouveau chapitre Tu apportes tes docu » ouvre « Construire un chapitre avec une IA », sans « Clé requise » — {"porte":true,"libelle":"📚 Nouveau chapitre Tu apportes tes docu","titre":"📚 Construire un chapitre avec une IA","cle":false,"valide":false}
+  ok     A58 · 1920 × 1080 : aucune erreur JS
+
+A56 — §12.31 (1), dette 13 · 51 : une classe à clé simplifiée (créée par le site) reliée par le menu, le chapitre publié → la case montre la séance et « heure n/N », la fenêtre de la case ses élèves ; hors mode test et en mode test ; edtCleClasse résout nom, clé, slug
+  ok     A56 · le menu « 🔗 Classes de la grille et classes du site » propose le nom (« 3 DYLAN Bob ») : c'est ce que classeMjpc reçoit — ["3 DYLAN Bob","3E Charles de Gaulle","4E BANKSY","4E PYTHAGORE","5e HERGÉ","6e Saint-Michel","CLASSE TEST","_TEST","_test_pilotage_debat_s3"]
+  ok     A56 · hors mode test : avant, « aucune séance prête » ; « Je publie pour » 3 DYLAN Bob → « Publier » le chapitre → les 2 cases montrent la séance — {"pill":true,"pb":true,"avant":"3 DYLAN Bob aucune séance prête","apres":["3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 3/3","3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"]}
+  ok     A56 · hors mode test : chaque case dit « heure n/N » — ["3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 3/3","3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"]
+  ok     A56 · hors mode test : la fenêtre de l'heure jouée (mardi 15/09, 10:07) montre les élèves de la classe (les absents) — mardi 15 septembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 0 activité. Close. Séance : Poésie et peinture : le Romantisme en question Relire cette h
+  ok     A56 · edtCleClasse : le nom → la clé, la clé → elle-même, le nom écrit autrement → la clé par le slug, la 3E (clé = nom) → elle-même, l'inconnue → son nom ; edtNiveauDe, edtElevesDe, edtEstExperimentale la trouvent ; edtDecisionsOrphelines ne la dit plus orpheline — {"r":["3_dylan_bob","3_dylan_bob","3_dylan_bob","3E Charles de Gaulle","Inconnue X"],"niv":"3e","exp":false,"el":4,"orph":[]}
+  ok     A56 · hors mode test : aucune erreur JS
+  ok     A56 · mode test : avant, « aucune séance prête » ; « Je publie pour » 3 DYLAN Bob → « Publier » le chapitre → les 2 cases montrent la séance — {"pill":true,"pb":true,"avant":"3 DYLAN Bob aucune séance prête","apres":["3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 3/3","3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"]}
+  ok     A56 · mode test : chaque case dit « heure n/N » — ["3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 3/3","3 DYLAN Bob Poésie et peinture : le Romantisme en question heure 2/3"]
+  ok     A56 · mode test : la fenêtre de l'heure jouée (mardi 15/09, 10:07) montre les élèves de la classe (les absents) — mardi 15 septembre · 10:07-11:02 ✕ 3 DYLAN Bob Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 0 activité. Close. Séance : Poésie et peinture : le Romantisme en question Relire cette h
+  ok     A56 · mode test : aucune erreur JS
+
+23 vérifications, 0 échec(s) · 73 s

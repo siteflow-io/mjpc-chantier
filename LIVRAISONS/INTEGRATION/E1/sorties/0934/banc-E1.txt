@@ -1,0 +1,50 @@
+banc E1 · 2026-10-21 09:43 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 a76a9982023a9c1122f49b7326a0044e
+
+A1 — les collisions (contrat §7)
+  ok     A1 · collisions.mjs : aucune collision dans les fichiers d'E1 (dr.css, dr-gabarit.js, dr-socle.js, dr-atelier.js)
+      (collisions.mjs, tous modules : ses-tab-att ses-tab-h ses-tab-d ses-tab-c ses-tab-perdu durees ses-tab — modules d'E2/E3, à leurs propriétaires)
+
+A2 — ce qui tombe du site (contrat §6, colonne E1, et audit C4)
+  ok     A2 · 44 noms de la colonne E1 « tombe » : aucun n'est encore déclaré
+  ok     A2 · la façade du pont (DR, AT_PONT) et l'iframe ne sont plus dans le site
+  ok     A2 · les sept modules chargés, dans l'ordre du contrat §3 — 1094447 < 1094472 < 1094513 < 1094552 < 1094593 < 1094633 < 1094674
+
+A3 — la porte, la barre fusionnée, le déroulé dans la page (P2-P3)
+  ok     A3 · la barre : Structure · Atelier · Pilotage · Relecture, avec les ids de la maquette (96, contrat §7) — structure atelier#ong-atelier[data-atelier] pilotage#ong-pilotage relecture#ong-relecture
+  ok     A3 · plus d'onglet « Papier » ni « Déroulé »
+  ok     A3 · le déroulé p8 dans la zone du site (#dr-zone monté), sans iframe at-dr-iframe
+  ok     A3 · l'entête .haut est là sans ses onglets (audit C1) ; #bfin et [data-lancer="1"] sont là
+  ok     A3 · Atelier ouvert sur la séance 0 : 19 lignes au volet (18 diapos de la trame + la fin d'heure, audit F7) — 19
+  ok     A3 · la diapo 1 « Analyse d'images : la routine » au mur, ses six étapes — 6 lignes
+  ok     A3 · K15 : aucune écriture sous /site/…/chapitres tant que rien n'est modifié — 
+  ok     A3 · la classe réelle (classesData) : 29 élèves, leurs initiales, le nom dans l'entête — {"nom":"3E Charles de Gaulle","n":29,"ini":29,"h":"3E Charles de Gaulle"}
+  ok     A3 · dr_ctx / dr_chapitre / dr_seance / dr_trame — {"level":"3e","chnum":"0","snum":"0","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle","debut":null
+  ok     A3 · dr_cheminB / dr_cheminC (la classe proposée) ; dr_cheminH nul sans heure de cours — /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+  ok     A3 · dr_taxo (les 7 domaines de /taxonomie), dr_notes, window.dr — 7 · S,J,ctx,trame,chapitre,classe,notes
+  ok     A3 · dr_blocLu : la consigne lue {bid, txt, el} sur le modèle du site, qui reste seul en JSON — [true,6,"Observe, discute, fa","etapes,id,pic,t,txt,vues"]
+  ok     A3 · aucune erreur JS
+
+A4 — une modification → B/deroule de la séance 0, et rien d'autre ; le rechargement la retrouve (points 11, K15)
+  ok     A4 · une seule écriture : PUT /site/3e/chapitres/0/seances/0/deroule — PUT /site/3e/chapitres/0/seances/0/deroule
+  ok     A4 · elle porte la ligne écrite et les 18 diapos de la trame (la fin d'heure posée à la lecture ne s'écrit pas) — 18
+  ok     A4 · au hub, le modèle du site (consigne : etapes ; le bloc neuf « texte » garde txt/el, son bid devient id), maj posé — ["etapes,id,pic,t,txt,vues","el,id,t,txt"]
+  ok     A4 · aucune erreur JS
+  ok     A4 · rechargé sur le hub écrit : la ligne est au mur, et rien ne se réécrit — {"mur":true,"ecr":0}
+
+A5 — Structure ↔ Atelier : la zone se gare et revient, intacte ; le clavier du déroulé ne vaut que dans le déroulé
+  ok     A5 · en Structure : la zone est garée dans <body>, inactive — {"parque":true,"dansBody":true,"actif":false,"gel":false}
+  ok     A5 · en Structure, G et N ne touchent pas le déroulé
+  ok     A5 · retour à l'Atelier : la même diapo (S.di 2), le mur rendu — {"actif":true,"di":2,"cour":{"atDi":"2"},"lignes":62}
+  ok     A5 · Pilotage : la vue de la maquette et l'onglet actif du site suivent — {"at":false,"act":"pilotage","vue":"pilotage"}
+  ok     A5 · aucune erreur JS
+
+A6 — la colonne unique (point 13, contrat §8.3) : sous la séance dépliée, le volet du déroulé ; une seule séance dépliée
+  ok     A6 · le #volet est dans la colonne du site, sous la séance 0, seule dépliée ; plus d'écrans horodatés — {"hote":"at-som-volet","seance":"0","dansArbre":true,"ouvertes":1,"ecrHorodates":0,"lignes":19,"si":0,"snum":"0","lg":"0px","mur":600}
+  ok     A6 · la colonne gauche de la maquette n'a plus de largeur (la diapo y gagne), 19 lignes au volet — 0px · mur 600 px
+  ok     A6 · déplier la séance 1 : elle devient celle du déroulé (ATVUES.snum, S.si), son volet (17 + la fin d'heure), la séance 0 se replie — {"hote":"at-som-volet","seance":"1","dansArbre":true,"ouvertes":1,"ecrHorodates":0,"lignes":18,"si":1,"snum":"1","lg":"0px","mur":592}
+  ok     A6 · en Structure : le volet est rentré dans la zone du déroulé (garée)
+  ok     A6 · retour au Pilotage : le volet revient sous la séance 1 — {"hote":"at-som-volet","seance":"1","dansArbre":true,"ouvertes":1,"ecrHorodates":0,"lignes":18,"si":1,"snum":"1","lg":"0px","mur":592}
+  ok     A6 · K15 : rien d'écrit en dépliant, en changeant de séance, en changeant d'onglet
+  ok     A6 · aucune erreur JS
+
+34 vérifications, 0 échec(s) · 86 s

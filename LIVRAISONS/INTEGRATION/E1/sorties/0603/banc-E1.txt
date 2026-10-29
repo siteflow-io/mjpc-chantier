@@ -1,0 +1,263 @@
+banc E1 · 2026-10-22 06:11 UTC · LIVRAISONS/INTEGRATION/assemble/index.html · md5 52df032a293de11570529103aaa95881
+
+A1 — les collisions (contrat §7)
+  ok     A1 · collisions.mjs : aucune collision dans les fichiers d'E1 (dr.css, dr-gabarit.js, dr-socle.js, dr-atelier.js)
+      (collisions.mjs, tous modules : 0)
+
+A2 — ce qui tombe du site (contrat §6, colonne E1, et audit C4)
+  ok     A2 · 44 noms de la colonne E1 « tombe » : aucun n'est encore déclaré
+  ok     A2 · la façade du pont (DR, AT_PONT) et l'iframe ne sont plus dans le site
+  ok     A2 · les sept modules chargés, dans l'ordre du contrat §3 — 1072677 < 1072702 < 1072743 < 1072782 < 1072823 < 1072863 < 1072904
+
+A3 — la porte, la barre fusionnée, le déroulé dans la page (P2-P3)
+  ok     A3 · la barre : Structure · Atelier · Pilotage · Relecture, avec les ids de la maquette (96, contrat §7) — structure atelier#ong-atelier[data-atelier] pilotage#ong-pilotage relecture#ong-relecture
+  ok     A3 · plus d'onglet « Papier » ni « Déroulé »
+  ok     A3 · le déroulé p8 dans la zone du site (#dr-zone monté), sans iframe at-dr-iframe
+  ok     A3 · l'entête .haut est là sans ses onglets (audit C1) ; #bfin et [data-lancer="1"] sont là
+  ok     A3 · Atelier ouvert sur la séance 0 : une ligne par diapo au volet — les 18 diapos de la trame et une fin d'heure par heure (audit F7 ; la frontière hors classe, réveil n°10 : 3 heures) — 21 · {"n":21,"pleines":18,"fins":3,"heures":3}
+  ok     A3 · la diapo 1 « Analyse d'images : la routine » au mur, ses six étapes — 6 lignes
+  ok     A3 · K15 : aucune écriture sous /site/…/chapitres tant que rien n'est modifié — 
+  ok     A3 · la classe réelle (classesData) : 29 élèves, leurs initiales, le nom dans l'entête — {"nom":"3E Charles de Gaulle","n":29,"ini":29,"h":"3E Charles de Gaulle"}
+  ok     A3 · dr_ctx / dr_chapitre / dr_seance / dr_trame — {"level":"3e","chnum":"0","snum":"0","classeSlug":"3E Charles de Gaulle","classeNom":"3E Charles de Gaulle","debut":null
+  ok     A3 · dr_cheminB / dr_cheminC (la classe proposée) ; dr_cheminH nul sans heure de cours — /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+  ok     A3 · dr_taxo (les 7 domaines de /taxonomie), dr_notes, window.dr — 7 · S,J,ctx,trame,chapitre,classe,notes
+  ok     A3 · dr_blocLu : la consigne lue {bid, txt, el} sur le modèle du site, qui reste seul en JSON — [true,6,"Observe, discute, fa","etapes,id,pic,t,txt,vues"]
+  ok     A3 · aucune erreur JS
+
+A4 — une modification → B/deroule de la séance 0, et rien d'autre ; le rechargement la retrouve (points 11, K15)
+  ok     A4 · une seule écriture : PUT /site/3e/chapitres/0/seances/0/deroule — PUT /site/3e/chapitres/0/seances/0/deroule
+  ok     A4 · elle porte la ligne écrite et les 18 diapos de la trame (la fin d'heure posée à la lecture ne s'écrit pas) — 18
+  ok     A4 · au hub, le modèle du site (consigne : etapes ; le bloc neuf « texte » garde txt/el, son bid devient id), maj posé — ["etapes,id,pic,t,txt,vues","el,id,t,txt"]
+  ok     A4 · aucune erreur JS
+  ok     A4 · rechargé sur le hub écrit : la ligne est au mur, et rien ne se réécrit — {"mur":true,"ecr":0}
+
+A5 — Structure ↔ Atelier : la zone se gare et revient, intacte ; le clavier du déroulé ne vaut que dans le déroulé
+  ok     A5 · en Structure : la zone est garée dans <body>, inactive — {"parque":true,"dansBody":true,"actif":false,"gel":false}
+  ok     A5 · en Structure, G et N ne touchent pas le déroulé
+  ok     A5 · retour à l'Atelier : la même diapo (S.di 2), le mur rendu — {"actif":true,"di":2,"cour":{"atDi":"2"},"lignes":145}
+  ok     A5 · Pilotage : la vue de la maquette et l'onglet actif du site suivent — {"at":false,"act":"pilotage","vue":"pilotage"}
+  ok     A5 · aucune erreur JS
+
+A6 — la colonne unique (point 13, contrat §8.3) : sous la séance dépliée, le volet du déroulé ; une seule séance dépliée
+  ok     A6 · le #volet est dans la colonne du site, sous la séance 0, seule dépliée ; plus d'écrans horodatés — {"hote":"at-som-volet","seance":"0","dansArbre":true,"ouvertes":1,"ecrHorodates":0,"lignes":21,"si":0,"snum":"0","lg":"0px","mur":620}
+  ok     A6 · la colonne gauche de la maquette n'a plus de largeur (la diapo y gagne), une ligne par diapo au volet (21) — 0px · mur 620 px
+  ok     A6 · déplier la séance 1 : elle devient celle du déroulé (ATVUES.snum, S.si), son volet (ses 17 diapos et ses fins d'heure), la séance 0 se replie — {"hote":"at-som-volet","seance":"1","dansArbre":true,"ouvertes":1,"ecrHorodates":0,"lignes":20,"si":1,"snum":"1","lg":"0px","mur":620}
+  ok     A6 · en Structure : le volet est rentré dans la zone du déroulé (garée)
+  ok     A6 · retour au Pilotage : le volet revient sous la séance 1 — {"hote":"at-som-volet","seance":"1","dansArbre":true,"ouvertes":1,"ecrHorodates":0,"lignes":20,"si":1,"snum":"1","lg":"0px","mur":620}
+  ok     A6 · K15 : rien d'écrit en dépliant, en changeant de séance, en changeant d'onglet
+  ok     A6 · aucune erreur JS
+
+A7 — p8-5h dans le site (point 14) et la taille (point 15), sur la trame réelle
+  ok     A7 · 5 · atelier : la diapo 1 dit « · 2 pages », la diapo 2 rien — 1Analyse d'images : la routine · 2 pages3 min
+  ok     A7 · 14 · Échap a fait sortir de la ligne (le texte reste, rien de sélectionné) — {"dans":false,"sel":0}
+  ok     A7 · 1 · en classe : deux vignettes « 1 · 1/2 » (courante) et « 1 · 2/2 » — [["1 · 1/2",true],["1 · 2/2",false]]
+      (à E2 : la copie jouée garde 2 fin(s) d'heure d'une autre heure que celle lancée — une vignette de plus dans le volet)
+  ok     A7 · 3 · pas un écran de plus : une vignette par page de chaque écran de la copie (22 pages : le nombre de pages suit la hauteur du mur) — 22 vignettes
+  ok     A7 · 1-2 · ▶ jusqu'à la page 2 : « 1 · 2/2 » courante, elle montre les lignes de la page 2 du mur — ["1.3","1.4","1.5","1.6","1.7"]
+  ok     A7 · 12 · la vue « ⧉ Tableau » porte « page 2 / 2 » et montre les mêmes lignes que le mur — page 2 / 2
+  ok     A7 · 2 · clic sur « 1 · 1/2 » : la garde « La classe te suivrait », « Y aller » → page 1 / 2
+  ok     A7 · 15 · 1280 × 800 : l'entête, « ▶ Dévoiler », le compteur et la diapo tiennent dans la zone du site — {"haut":true,"dev":true,"compte":true,"mur":true}
+  ok     A7 · 15 · 1366 × 768 : l'entête, « ▶ Dévoiler », le compteur et la diapo tiennent dans la zone du site — {"haut":true,"dev":true,"compte":true,"mur":true}
+  ok     A7 · aucune erreur JS
+
+A8 — la trame réelle, ligne pour ligne (point 10) : les 9 séances rendues dans le site comme dans la maquette p8-5g
+  ok     A8 · chaque diapo des 9 séances se rend dans le site sans erreur — 95 diapos
+  ok     A8 · les diapos communes (par titre) : mêmes lignes, mêmes titres de blocs, dans le même ordre (hors les objets que la maquette simulait : page, document, objet inconnu) — 93 / 95 identiques ; 2 fiche(s) que la maquette laissait non liée(s), donc invisible(s), montrée(s) par le site (audit F17) : 2 · Le point d'attention : « que » ; 2 · La subordonnée circonstancielle
+
+A9 — l'écriture complète (point 11) : une activité, une note, le travail prévu → B/deroule seul, par eid ; le rechargement retrouve tout
+  ok     A9 · « + activité » : la modale du site demande le titre (plus de prompt du navigateur)
+  ok     A9 · relecteur d'E4 (« activités sans numéro ») : l'activité créée porte son numéro dans la colonne (« A1 ») — la trame réelle n'en a aucune (0 actId sur 95 écrans : F8) — A1 · 1Analyse d'images : la routineA13 min
+  ok     A9 · K15 : les écritures vont toutes à B/deroule de la séance 0 — PUT /site/3e/chapitres/0/seances/0/deroule
+  ok     A9 · l'activité : B/deroule/activites (titre, numéro), la diapo 1 la porte (actId) ; ses diapos jamais par rang — [{"id":"a-mu0w7z40qsy4","num":1,"titre":"Le Romantisme en images","diapos":["emt9v3yqoecf9d"]}]
+  ok     A9 · la note : B/deroule/notes/<eid de la diapo 1> — {"emt9v3yqoecf9d":[{"p":null,"html":""},{"p":"0.1","html":"Note du banc E1."}]}
+  ok     A9 · le travail prévu de l'heure 1 : B/deroule/travail/1 — {"1":"Relire la fiche."}
+  ok     A9 · aucune erreur JS, aucune boîte du navigateur
+  ok     A9 · rechargé : l'activité, la note, le travail prévu sont là ; rien ne se réécrit — {"act":"Le Romantisme en images","note":"[{\"p\":null,\"html\":\"\"},{\"p\":\"0.1\",\"html\":\"Note du banc E1.\"}]","tp":"Relire la fiche.","ecr":0}
+  ok     A9 · aucune erreur JS au rechargement
+
+A10 — l'Atelier entier (point 12) : dupliquer, insérer, déplacer, supprimer, envoyer vers une séance, jouer en avance — et ce qui s'écrit
+  ok     A10 · Ctrl+D : la diapo dupliquée suit, avec une identité neuve — 22 lignes
+  ok     A10 · Ctrl+Entrée : une diapo insérée après — 23 lignes
+  ok     A10 · Alt+↓ : la diapo descend d'un cran, elle reste la courante — 2 → 3
+  ok     A10 · Suppr : la modale du site demande, « Supprimer la diapo » : la diapo courante supprimée — 22 lignes
+  ok     A10 · K15 : seules B/deroule de la séance 0 et B'/deroule de la séance 1 (la cible de l'envoi) sont écrites — PUT /site/3e/chapitres/0/seances/0/deroule ; PUT /site/3e/chapitres/0/seances/1/deroule
+  ok     A10 · envoyer vers la séance 2 : l'écran (même eid) quitte la séance 1 et arrive dans la 2 ; jamais un rang au hub — {"chemins":["PUT /site/3e/chapitres/0/seances/0/deroule","PUT /site/3e/chapitres/0/seances/1/deroule"],"dans0":false,"dans1":true,"n0":18,"n1":18,"rang":false}
+  ok     A10 · « Jouer en avance », trois ▶, « ■ Arrêter » : rien d'écrit, retour à l'atelier
+  ok     A10 · aucune erreur JS, aucune boîte du navigateur
+  ok     A10 · rechargé : la diapo envoyée est dans la séance 2 (18 diapos, et ses fins d'heure) — {"la":true,"n":21,"p":18,"t":21}
+
+A11 — la mise en forme de la trame (recyclage R13, R18) : gras, souligné, surlignage — dans B/deroule, et rechargée
+  ok     A11 · les boutons G et S de l'atelier : gras et souligné posés ; Ctrl+H deux fois : le surlignage posé puis ôté (Ctrl+B / Ctrl+U : R6, à E4) — {"gras":[{"p":"0.0","txt":"Étape 1"},{"p":"0.3","txt":"Étape 4"}],"soul":[{"p":"0.1","txt":"Étape 2"}],"surl":[]}
+  ok     A11 · la mise en forme s'écrit dans B/deroule (ecrans[0].forme) — {"gras":[{"p":"0.0","txt":"Étape 1"},{"p":"0.3","txt":"Étape 4"}],"soul":[{"p":"0.1","txt":"Étape 2"}],"surl":[]}
+  ok     A11 · aucune erreur JS, aucune boîte du navigateur
+  ok     A11 · rechargé : le mur rend le gras et le souligné, pas de surlignage — <b class="p8-gras">Étape 1</b> : J'observe les ima | <u class="p8-soul">Étape 2</u> : Je discute en gro | Étape 3 : Au brouillon, dans un tableau à trois co | <b class="p8-gras">Étape 4</b> : Je choisis de que
+  ok     A11 · aucune erreur JS au rechargement
+
+A13 — les blocs au clavier (recyclage R17, R20) : Ctrl+C, Ctrl+V, Ctrl+X sur le bloc touché — le même geste que le menu
+  ok     A13 · clic sur le bloc 1, Échap, Ctrl+C : le bloc est dans le presse-papiers
+  ok     A13 · Ctrl+V : collé juste après, nouvelle identité ; écrit dans B/deroule — bws04gp7 | bmu0w7z40o7gg
+  ok     A13 · Ctrl+X : le bloc collé (devenu le bloc touché) est coupé — bws04gp7
+  ok     A13 · aucune erreur JS, aucune boîte du navigateur
+
+A14 — changer l'adresse d'une image posée (recyclage R21) : l'aperçu suit la frappe, « image absente de mjpc-medias · ref », les refus de 3.2
+  ok     A14 · hors réseau, l'atelier dit « image absente de mjpc-medias · » et l'adresse relative — image absente de mjpc-medias · poesie-peinture-xixe/tableau-5-friedrich-voyageur.webp
+  ok     A14 · la modale du site propose l'adresse relative ; une adresse complète est refusée à la frappe ; l'aperçu suit la frappe — Refus : l'adresse doit être relative, jamais complète (3.2). | image absente de mjpc-medias · dossier/nouvelle.jpg
+  ok     A14 · Entrée : l'adresse change dans la trame et s'écrit dans B/deroule — https://siteflow-io.github.io/mjpc-medias/dossier/nouvelle.jpg
+  ok     A14 · aucune erreur JS, aucune boîte du navigateur
+
+A18 — les dettes du territoire : 13 · 4 et 13 · 5 (le bloc question au tableau), 13 · 6 (écrire dans la diapo), 13 · 12 (la taille obtenue)
+  ok     A18 · 13 · 5 : au tableau, la deuxième question ne paraît qu'à son tour (▶ ×1 : cachée ; ▶ ×3 : là) — [{"nDev":1,"q2vue":false,"repBas":null,"q2Haut":0},{"nDev":3,"q2vue":true,"repBas":null,"q2Haut":237.484375}]
+  ok     A18 · 13 · 4 : la ligne de réponse vide (son chevron) n'est pas recouverte par la question suivante — 294 ≤ 301
+  ok     A18 · 13 · 6 (vérifiée) : on clique sous le dernier bloc et on écrit — un bloc naît, sans menu, et s'écrit — {"n":2,"t":"{\"t\":\"texte\",\"txt\":\"\",\"el\":[\"Écrit dans la diapo\"],\"id\":\"bmu0w7z40cvut\",\"bid\":\"bmu0w7z40cvut\"}","ecrit":true}
+  ok     A18 · 13 · 12 : quand la diapo pleine ne peut pas grossir, le libellé dit la taille obtenue — 32 pt → 26
+  ok     A18 · F17 (garde) : le corps d'une fiche du site se lit sur la largeur de la fiche, chacun de ses paragraphes (il héritait la grille de la mise en page : lettre par lettre dans la colonne unique) — 98 %
+  ok     A18 · aucune erreur JS, aucune boîte du navigateur
+
+A19 — la fiche ouverte se pilote comme une diapo (recyclage R14, la couche commune) : ⤢, ▶ par paragraphe, ◀, ✍🏻 sur un paragraphe, ✕ ; au journal
+  ok     A19 · au pilote, « ⤢ Ouvrir la fiche » : la page s'ouvre, rien n'en est dévoilé — {"f":{"nDev":0,"ecr":[]},"p":"p p"}
+  ok     A19 · ▶ ▶ : deux paragraphes dévoilés ; ◀ : un de moins — v v → v p
+  ok     A19 · ✍🏻 puis clic sur le premier paragraphe : il est « à écrire » — vw p
+  ok     A19 · le journal (le récit le lira) : ouverte, dévoilé ×2, retiré, à écrire — fiche-ouverte,fiche-devoile,fiche-devoile,fiche-retire,fiche-ecrire
+  ok     A19 · ✕ : la fiche se referme, la page s'en va ; aucune erreur JS, aucune boîte — [null,0] 
+
+A20 — la relance du 21/10 (12:50-13:02) : ▶ derrière un document, #bdev et l'entête à 1366 et 1280, #dr-session, dr_ctx en vue tableau, le crochet dr_versMur d'E3
+  ok     A20 · 1366 × 768 (13:02) : l'entête dit la classe entière et le créneau entier ; aucun bouton hors de la zone — {"classe":true,"ou":true,"hors":[],"recouvert":[],"session":true}
+  ok     A20 · 1366 × 768 (relecteur d'E4) : ▶ Dévoiler n'est jamais recouvert — toutes les diapos, les cinq tailles de texte — 
+  ok     A20 · C1 : #dr-session est posé dans .haut (le témoin de session, qu'E3 remplit)
+  ok     A20 · relecteur d'E4 : un document au tableau, ▶ au bout du document ne dévoile rien derrière lui (ni dévoilement, ni journal) — {"nDev":0,"devoile":0}
+  ok     A20 · réveil n°2 (pour E3) : pousser passe par dr_versMur(et) ; fermer la fiche, par dr_versMur(null, { sortie: true }) (la signature d'E3) — et,sortie,et
+  ok     A20 · réveil n°2, M1 : en vue tableau, dr_ctx() lit SES.ctx (cours_actif), pas AT.edChap — {"level":"3e","chnum":0,"snum":"2","classeSlug":"3e-cdg","classeNom":"3E Charles de Gaulle","debut":null,"fin":null,"heure":1,"regime":"tableau"}
+  ok     A20 · 1366 × 768 : aucune erreur JS, aucune boîte du navigateur
+  ok     A20 · 1280 × 800 (13:02) : l'entête dit la classe entière et le créneau entier ; aucun bouton hors de la zone — {"classe":true,"ou":true,"hors":[],"recouvert":[],"session":true}
+  ok     A20 · 1280 × 800 (relecteur d'E4) : ▶ Dévoiler n'est jamais recouvert — toutes les diapos, les cinq tailles de texte — 
+  ok     A20 · 1280 × 800 : aucune erreur JS, aucune boîte du navigateur
+
+A21 — les trouvailles du relecteur neuf n°1 (contrat §8) : chacune corrigée, chacune gardée
+  ok     A21 · 1 · clic droit sur une diapo de la colonne : le menu est au-dessus de la colonne du site, ses entrées reçoivent le clic — {"ok":true,"lib":"Ouvrir"}
+  ok     A21 · 4, 5 · ni « maquette », ni « simulé », ni « à venir : p… » dans l'atelier (textes et infobulles)
+  ok     A21 · 5 · le témoin : « pas encore au hub » tant que le hub n'a rien reçu, « ✔ enregistré » quand il a accepté (plus une minuterie de 3 s) — ● modification en cours — pas encore au hub → ✔ enregistré à 09:00
+  ok     A21 · 2 · contrat §5 : rien ne se journalise dans l'atelier (une ligne écrite, l'enregistrement) — 0 entrée(s)
+  ok     A21 · 11 · l'activité au hub : une identité sans rang de séance, ses diapos par eid (celle qui la porte) — {"id":"a-mu0w7z40ahnw","num":1,"titre":"Activité du banc","diapos":["emt9v3yqoecf9d"]}
+  ok     A21 · 12 · « + fiche… » sans feuille dans le chapitre : la fiche s'écrit ici, au format du site (titre, def, corps), et se rend — {"t":"fiche","titre":"La fiche du banc","def":"Ce qu'on retient.","corps":"<p>Premier paragraphe.</p><p>Second paragraphe.</p>","rendu":true}
+  ok     A21 · 7 · dans l'atelier, un clic sur le titre d'une séance l'ouvre (comme le chevron) — {"snum":"3","vol":true}
+  ok     A21 · 9 · le menu d'une séance commence par « Éditer dans l’atelier » (mandat point 6) — Éditer dans l’atelier · Ouvrir dans la Structure · Renommer… · Dupliquer la séance · Où est-ce ? (contenu) · Supprimer…
+  ok     A21 · réveil n°2, C4/C5 : le glisser mort est retiré (un dragover sur la page ne lève plus d'erreur) ; pont-css sans ses 29 règles mortes — {"mortes":false}
+  ok     A21 · aucune erreur JS, aucune boîte du navigateur
+
+A22 — les trouvailles du relecteur neuf n°2 (contrat §8) : chacune corrigée, chacune gardée
+  ok     A22 · 1366 × 768 · 11 : « ▶ Jouer en avance », le témoin et la barre restent hors de la colonne de droite ; les notes se voient — {"hors":[],"notesVues":true}
+  ok     A22 · 1366 × 768 · 10 : un clic dans une ligne ne fait rien défiler (la barre du site reste entière) — 0 px
+  ok     A22 · 14 : la colonne de gauche garde sa largeur d'une séance à l'autre — 250 · 250 · 250 px
+  ok     A22 · 20 : « + insérer une séance ici » (il écrit /seances/N/ordre) n'est pas dans la colonne de l'atelier
+  ok     A22 · 17 : dans l'atelier, « g » ne gèle pas, « r » ne bascule pas en Relecture — {"gel":false,"vue":"atelier","atelier":true}
+  ok     A22 · 21 : sur une image pleine, « ✎ clique ici et écris » ne couvre pas l'étiquette de la diapo
+  ok     A22 · 5 : « joindre un nouveau document » mène à la Structure (où il s'enregistre) — plus de document en mémoire seulement — {"fic":false,"bouton":"Ouvrir la Structure de la séance"}
+  ok     A22 · 16 : l'objet manquant déclaré s'écrit avec sa diapo (B/deroule, ecrans[i].manques) — [{"texte":"un tableau à deux colonnes","t":1789369200000}]
+  ok     A22 · 19 : une frappe dans la diapo 1 n'écrit aucun « etapes: [] » ni « el: [] » dans les autres diapos — 0 champ(s) vide(s)
+  ok     A22 · 13 : sur la dernière diapo de la dernière heure, « modifier » offre l'heure d'après ; la diapo y passe, et elle reçoit sa fin d'heure — {"hM":3,"offre":true,"h2":1,"fin2":true}
+  ok     A22 · 15 : la page se cache moins de 900 ms après la frappe — l'enregistrement en attente part tout de suite — {"n":8,"ok":true}
+  ok     A22 · 3 : la fin d'heure a une identité stable (l'heure et la clé de la séance), plus celle de la première diapo — fin-h1-s0
+  ok     A22 · 1366 × 768 : aucune erreur JS, aucune boîte du navigateur
+  ok     A22 · 1280 × 800 · 11 : « ▶ Jouer en avance », le témoin et la barre restent hors de la colonne de droite ; les notes se voient — {"hors":[],"notesVues":true}
+  ok     A22 · 1280 × 800 · 10 : un clic dans une ligne ne fait rien défiler (la barre du site reste entière) — 0 px
+  ok     A22 · 1280 × 800 : aucune erreur JS, aucune boîte du navigateur
+
+A23 — la relecture continue d'E4 (12:33-12:38) : Entrée puis frappe rapide, Échap et Entrée dans les boîtes, les infobulles du menu, la réglette, la classe une fois, la Relecture et les notes sous les outils
+  ok     A23 · 1280 × 800 · grave : Entrée, Entrée, puis « Ligne B » à 90 ms par touche — la ligne d'avant intacte, une ligne vide, « Ligne B » entière — ["olonne (10 min).","","Ligne B"]
+  ok     A23 · 1280 × 800 · grave : Entrée, Entrée, puis « Ligne B » à 30 ms par touche — la ligne d'avant intacte, une ligne vide, « Ligne B » entière — ["olonne (10 min).","","Ligne B"]
+  ok     A23 · 1280 × 800 : la réglette entière (32 et 52 pt), ▶ dégagé ; la classe une seule fois dans l'entête — {"r":[],"classe":"none"}
+  ok     A23 · 1280 × 800 : N + Entrée, la fenêtre des notes laisse ◀ ▶ ❄ atteignables ; en Relecture, l'entête (ses deux rangées) reste atteignable — {"t1":[],"t2":[]}
+  ok     A23 · 1280 × 800 : aucune erreur JS, aucune boîte du navigateur
+  ok     A23 · 1366 × 768 · grave : Entrée, Entrée, puis « Ligne B » à 90 ms par touche — la ligne d'avant intacte, une ligne vide, « Ligne B » entière — ["olonne (10 min).","","Ligne B"]
+  ok     A23 · 1366 × 768 · grave : Entrée, Entrée, puis « Ligne B » à 30 ms par touche — la ligne d'avant intacte, une ligne vide, « Ligne B » entière — ["olonne (10 min).","","Ligne B"]
+  ok     A23 · « Supprimer la diapo » : Échap renonce, Entrée supprime ; le panneau « + bloc » se ferme à Échap — {"n0":21,"n1":21,"n2":20,"m1":false,"c1":true,"c2":false}
+  ok     A23 · le menu d'un élément : chaque entrée a son infobulle (le titre, Dupliquer, Monter, Descendre…) — 
+  ok     A23 · 1366 × 768 : la réglette entière (32 et 52 pt), ▶ dégagé ; la classe une seule fois dans l'entête — {"r":[],"classe":"none"}
+  ok     A23 · 1366 × 768 : N + Entrée, la fenêtre des notes laisse ◀ ▶ ❄ atteignables ; en Relecture, l'entête (ses deux rangées) reste atteignable — {"t1":[],"t2":[]}
+  ok     A23 · 1366 × 768 : aucune erreur JS, aucune boîte du navigateur
+
+A24 — le réveil n°3 (15:14) : la question grisée, le témoin du hub, ▶ derrière un document projeté, la réponse qui dévoile sa question, « Activité n — » au récit, la taille au tableau
+  ok     A24 · 3 · aucune écriture du déroulé ne pose le bandeau du site (atelier, puis ▶ en classe) ; « Enregistré à … » dans l'entête ; les pastilles restent libres — {"t3a":{"bandeau":false,"enr":"Enregistré à 09:00"},"t3b":{"bandeau":false,"pastilles":true,"enr":"Enregistré à 09:00"}}
+  ok     A24 · 8 · une activité créée dans l'atelier porte son numéro au récit de l'heure jouée (« Activité 1 — … ») —  tableaux.Activité 1 — Observer les tableaux À 09 
+  ok     A24 · 4 · le geste exact : « Projeter au tableau » un document, ▶ ×3 et → : rien ne se dévoile ni ne se raconte derrière lui — {"n0":{"n":4,"d":4},"n1":{"n":4,"d":4,"doc":true}}
+  ok     A24 · 2 · un clic dans une question grisée la dévoile ; la frappe qui suit n'écrit pas dans l'énoncé, rien au journal — {"q0":true,"q1":{"pas":false,"txt":"Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours.","cc":0}}
+  ok     A24 · 2 · quatre touches dans la copie : une seule entrée au journal (sa longueur suit) — 1 entrée(s)
+  ok     A24 · 5 · « TB », Tab, la réponse : la question se dévoile, la réponse part au tableau au fil de la frappe — {"kq":0,"nDev":1,"murN":1,"murRep":true}
+  ok     A24 · 9 · à 52 pt, la donnée part au tableau : la taille demandée et la police réellement obtenue (13 · 12 : réduite plutôt que paginée — à Paul) — {"taille":4,"ratio":0.09098701298701299}
+  ok     A24 · aucune erreur JS, aucune boîte du navigateur
+
+A25 — la relecture continue d'E4 (13:35-14:05) : rien au journal hors heure, « + bloc » dont la frappe remplace l'attente, Échap ferme le menu d'une étape, le volet suit ▶, F2 + note : une seule pose
+  ok     A25 · parcourir des diapos dans l'atelier puis au Pilotage sans heure lancée : aucune entrée au journal (pas d'« heure 1 » fantôme) — {"j0":0,"j1":{"n":0,"h":[]}}
+  ok     A25 · « + bloc » → Consigne, puis la frappe : elle remplace « Nouvelle consigne » (pas « Nouvelle consigneRelis… ») — {"t":"consigne","txt":"Relis ton tableau."}
+  ok     A25 · réveil n°4, 1 (grave) : dans un bloc neuf, « Ligne A. » Entrée « Ligne B. » Entrée « Ligne C. » à 80 ms par touche, quatre fois : chaque ligne entière, aucune lettre sur la ligne d'avant — Ligne A.|Ligne B.|Ligne C. ; Ligne A.|Ligne B.|Ligne C. ; Ligne A.|Ligne B.|Ligne C. ; Ligne A.|Ligne B.|Ligne C.
+  ok     A25 · clic droit sur une étape, Échap : le menu se ferme (Échap renonce) — {"m0":true,"m1":false}
+  ok     A25 · ▶ jusqu'à la dernière diapo de l'heure (7) à 1366 × 768 : la vignette courante est en vue, au premier plan (le volet suit S.di) — {"di":6,"top":178,"bas":295,"h":768,"sous":true}
+  ok     A25 · F2, « EA », 2, une note, Entrée : une seule prise de parole, « a proposé une piste » avec la note ; le chiffre ne s'écrit pas — {"p0":0,"p1":{"n":1,"d":{"nom":"AUDEBERT Elise","m":"piste","note":"bonne idee"},"vif":"","pop":false}}
+  ok     A25 · F2, la note tapée vite juste après les initiales, quatre fois : jamais une lettre perdue (le curseur passe à la note dans la même tâche) — bien vu | bien vu | bien vu | bien vu
+  ok     A25 · F2, la note d'abord, puis 3, Entrée : « on y reviendra avec lui » avec la note « bien vu » — {"n":2,"d":{"m":"revenir","note":"bien vu"}}
+  ok     A25 · mode test du site : « mode test — rien n'est enregistré » en pastille dans l'entête (jamais « Enregistré à … ») ; elle part avec le mode test — {"mt":{"txt":"mode test — rien n'est enregistré","cl":true,"vu":true},"mt2":""}
+  ok     A25 · aucune erreur JS, aucune boîte du navigateur
+
+A26 — le réveil n°5 et la relecture continue d'E4 (A4 14:50, B4 15:50, A5 16:15) : la page suit ▶, la question ouvre sa réponse, la consigne grise reste grise, l'atelier en classe tient à la reprise, Ctrl+B à la bonne occurrence, l'entête et l'image stables, le numéro du dégel, rien de « terminé » avant le lancement
+  ok     A26 · B4 · « Enregistré à … » paraît dans l'entête sans la faire descendre (46 → 46 px) — "Enregistré à 09:00"
+  ok     A26 · B4 · après une modification, l'image absente montre « image absente de mjpc-medias · … », jamais l'icône cassée — {"haut":46,"enr":"Enregistré à 09:00","casse":0,"vide":["image absente de mjpc-medias · poesie-pe"]}
+  ok     A26 · B4 · Ctrl+B sur la 2ᵉ occurrence de « que je » : la 2ᵉ passe en gras, pas la 1ʳᵉ (la position est gardée) — {"avant":"que je dis ","b":"que je","donnee":"[{\"p\":\"1.0\",\"txt\":\"que je\",\"n\":1}]"}
+  ok     A26 · B4 · la diapo 9 ouverte dans l'atelier, ▶ jusqu'au bout au Pilotage avant de lancer (2 dévoilé(s) sur la diapo 9) : au lancement, rien n'en reste — « pas jouée », rien au journal — {"av":{"di":8,"n":2},"ap":{"si":0,"n":0,"J":0}}
+  ok     A26 · A4 · une question-bilan à 2 pages : ▶ dévoile l'étape de la page 1 — la page reste la 1, l'élément montré est visible — {"qi":{"i":7,"pages":2,"page":1},"pa":{"nDev":2,"page":0,"pages":2,"vu":true}}
+  ok     A26 · A4 · clic dans une question grisée puis « EA » : la question dévoilée, la frappe dans les initiales de la réponse (pas d'espace qui dévoile, pas de loupe) — {"ini":true,"txt":"EA","q":false,"loupe":false}
+  ok     A26 · A5 · un clic dans la dernière ligne grise d'une consigne : le curseur y est (la saisie, dans la copie), rien ne se dévoile (0 → 0) — le reste à la flèche (C1 4.3, 2.2) — {"cg":{"i":0,"n":0},"cur":true}
+  ok     A26 · A5 · le dégel avec un écart : « La classe est sur la diapo 2, tu es à la diapo 8 » — le rang dans l'heure — La classe est sur la diapo 2, tu es à la diapo 8.
+  ok     A26 · réveil n°7 · 1366 × 768 : au Pilotage, « Enregistré à 09:00 » se lit en entier dans l'entête — {"txt":"Enregistré à 09:00","entier":true,"dans":true,"dessus":true}
+  ok     A26 · réveil n°7 · 1280 × 800 : au Pilotage, « Enregistré à 09:00 » se lit en entier dans l'entête — {"txt":"Enregistré à 09:00","entier":true,"dans":true,"dessus":true}
+  ok     A26 · aucune erreur JS, aucune boîte du navigateur
+  ok     A26 · B4 (grave) · un bloc écrit dans l'atelier pendant l'heure : une entrée « copie-classe » pour la diapo (ce que la reprise lit pour garder la copie), rien d'autre de l'atelier au journal — {"n":2,"cc":1,"autres":0}
+  ok     A26 · B4 (grave 110), de bout en bout : après rechargement et « Reprendre le cours », le bloc écrit en classe est toujours là (2 / 2 blocs) — ma part (l'entrée copie-classe) et celle d'E2 (dr_reprendre relit C/ecrans, réveil n°6) — 2
+  ok     A26 · la reprise : aucune erreur JS
+  ok     A26 · la passe d'infobulles : aucun bouton visible sans infobulle, dans l'Atelier, le Pilotage en classe et la Relecture
+
+A27 — le réveil n°8 (contrat §12.8) : la copie jouée d'un autre jour — un titre retouché en classe le lundi est là le mardi ; dr_jouerCopie fusionne par eid ; une séance close repart de la trame
+  ok     A27 · lundi : aucune erreur JS
+  ok     A27 · mardi, « ▶ Lancer avec 3E Charles de Gaulle · 15:07-16:02 · heure 2/3 » puis « Lancer l'heure 2 » : le titre retouché en classe le lundi est là, dans la copie et à l'écran — {"heure":2,"lancee":true,"close":false,"txt":"Observe, discute, fais une hypothèse sur le Romantisme. — retouché lundi","vu":"Observe, discute, fais une hypothèse sur le Romantisme. — retouché lundi"}
+  ok     A27 · mardi : l'écran d'ouverture sans erreur JS (une heure de la veille jamais close n'a pas de S.closes)
+  ok     A27 · dr_jouerCopie (au premier lancement, appelée par dr_lancerNeuf d'E2) : la copie d'avant fusionnée par eid, le titre retouché en classe repris ; sa dernière heure (« 2 sur 2 ») close : la trame (LOT A ④) ; l'enveloppe d'atDrJouer garde la copie avant qu'elle soit réécrite — {"avant":"Observe, discute, fais une hypothèse sur le Romantisme.","apres":"Titre de la classe","fusion":true,"close":"Observe, discute, fais une hypothèse sur le Romantisme.","r2":true,"env":true}
+  ok     A27 · aucune erreur JS
+
+A28 — le réveil n°9 et la relecture continue d'E4 (20:50) : l'onglet Atelier pendant l'heure — la classe ne saute pas, la retouche part au hub sans repasser au Pilotage ; la légende de deux lignes ; « Diapo suivante » dit « préparée à la maison — à reprendre »
+  ok     A28 · grave (perte) · l'onglet Atelier ouvert pendant l'heure : la retouche est dans la copie de la classe au hub en moins de 2 s, sans repasser au Pilotage — jamais dans la trame — {"hub":2,"ici":2,"temoin":"✔ enregistré à 09:00","trame":1}
+  ok     A28 · grave · retour au Pilotage : Paul retrouve la diapo où est la classe (3), le tableau n'a pas bougé, aucune garde, rien d'autre au journal que la copie retouchée — {"av":{"di":2,"mur":2,"n":9},"ap":{"di":2,"mur":2,"nouv":["copie-classe"],"garde":false}}
+  ok     A28 · aucune erreur JS
+  ok     A28 · grave · la page quittée depuis l'onglet Atelier, « Reprendre le cours » : la retouche est là (2 blocs) — 2
+  ok     A28 · réveil n°10 · hors classe, la séance 0 dit ses heures (1,2,3 ; « (3 h) ») comme en classe — la frontière posée par le calcul d'E2, rien d'écrit dans la trame à l'ouverture — {"heures":"1,2,3","sea":["(3 h)","3"],"trame":0}
+  ok     A28 · 1280 · la légende d'une image pleine, éditée sur deux lignes : entière, dans le cadre (le texte ne se coupe jamais) — {"entiere":true,"dedans":true,"lignes":2}
+  ok     A28 · « Diapo suivante » : « préparée à la maison — à reprendre », « terminée à la maison — à reprendre », « glissée » — le libellé de l'ouverture (dr_libGlissee d'E2, une seule fonction) — {"a":"préparée à la maison — à reprendre","b":"terminée à la maison — à reprendre","c":"glissée"}
+  ok     A28 · aucune erreur JS
+
+A29 — le réveil n°11 : la retouche de l'onglet Atelier pendant l'heure dans la copie de la classe (S.copie[h], versable à la clôture), le témoin à « enregistré » ; la garde de ◀ au rang de l'heure ; Entrée dans « + bloc » et « Envoyer vers… »
+  ok     A29 · 149 (a) · une retouche de texte dans l'onglet Atelier pendant l'heure va dans la copie de la classe (S.copie[h]), comme au Pilotage ; l'atelier la montre ; la trame ne bouge pas ; elle est au hub (C/etat) sans repasser au Pilotage — {"copie":"Pêcheurs en mer, Joseph Mallord William Turner, 1796 — retouche atelier","trame":"Pêcheurs en mer, Joseph Mallord William Turner, 1796","vu":"Pêcheurs en mer, Joseph Mallord William Turner, 1796 — retouche atel
+  ok     A29 · 149 (b) · après l'écriture faite depuis l'atelier, le témoin dit « enregistré à … » (la vérité du hub) — ✔ enregistré à 09:00
+  ok     A29 · 149 (a) · à la clôture, « verser dans la trame » propose la retouche faite dans l'atelier (C1 8.4) — {"liste":true,"diffère":true}
+  ok     A29 · 156 · ◀ hors du fil : « La classe te suivrait — revenir à la diapo 2 » — le rang dans l'heure, plus celui de la trame (6) — La classe te suivrait — revenir à la diapo 2.
+  ok     A29 · aucune erreur JS
+  ok     A29 · « + bloc », Entrée : le premier objet est choisi (un bloc posé, ou son formulaire ouvert) — plus « rien » — {"ouvert":true,"form":true,"blocs":0}
+  ok     A29 · « Envoyer vers… », ↓ puis Entrée : la diapo part vers la séance choisie au clavier — {"ouvert":false,"parti":1}
+  ok     A29 · aucune erreur JS, aucune boîte du navigateur
+
+A30 — le réveil n°12 : hors classe, l'heure suivante s'ouvre sur le rituel (« Où en sommes-nous ? ») et finit sur le bilan (§12.16, C1 6.1) ; chaque heure porte sa date (la case du jour, puis les prochaines cases de l'EDT)
+  ok     A30 · 160 · hors classe, H2 s'ouvre sur « Où en sommes-nous ? » et finit sur « Question-bilan » (le rituel en tête, le bilan en dernier) — {"p":"Où en sommes-nous ?","d":"Question-bilan"}
+  ok     A30 · 161 · chaque heure sa date — celle des heures de la classe que donne l'EDT (dr_heuresDeLaClasse d'E2) : lundi 14 septembre, mardi 15 septembre, vendredi 18 septembre — H1 · lundi 14 septembre · 55 min · H2 · mardi 15 septembre · 55 min · H3 · vendredi 18 septembre · 55 min
+  ok     A30 · aucune erreur JS
+
+A31 — le réveil n°13 (contrat §12.18) : l'heure n de l'atelier est celle de l'EDT — jouée : sa date ; à venir : sa case ; le choix d'Entrée surligné, celui du survol ; « Envoyer vers… » : chaque séance ses heures
+  ok     A31 · 172 · lundi 14, 9 h, « ▶ Lancer avec 3E Charles de Gaulle · 08:57-09:52 · heure 2/3 » : H1 « lundi 7 septembre · jouée », H2 lundi 14 (la case que « Lancer » prend), H3 mardi 15 (sa prochaine case) ; l'entête de la diapo dit « jouée » — H1 · lundi 7 septembre · jouée · H2 · lundi 14 septembre · 55 min · H3 · mardi 15 septembre · 55 min
+  ok     A31 · 161 · mercredi 16, aucune case en cours : H1 jouée le lundi 7, H2 à sa prochaine case (vendredi 18) — jamais trois heures datées du même jour — H1 · lundi 7 septembre · jouée · H2 · vendredi 18 septembre · 55 min · H3 · lundi 21 septembre · 55 min
+  ok     A31 · 181 · « Étude de texte accompagnée : « L'Albatro » : l'atelier date ses heures sur celles de dr_heuresDeLaClasse (H1 mardi 22 septembre, H2 mercredi 23 septembre, H3 jeudi 24 septembre) et « Lancer » vise la même H1 — {"fr":["H1 · mardi 22 septembre · 55 min","H2 · mercredi 23 septembre · 55 min","H3 · jeudi 24 septembre · 55 min"],"lancer":"▶ Lancer — prochaine heure : mardi 22 septembre, 15 h 07"}
+  ok     A31 · aucune erreur JS
+  ok     A31 · 164 · « + bloc » : le premier choix surligné à l'ouverture ; le survol de « consigne » le surligne ; Entrée prend celui-là, pas le premier — {"m0":"image","m1":"consigne","ap":{"blocs":1,"form":false,"titre":"","dernier":"consigne"}}
+  ok     A31 · 173 · « Envoyer vers… » : chaque séance son nombre d'heures (sa frontière par les durées), plus « · 1 heure » partout ni +70 min — [{"t":"Séance 2 — Étude de texte accompagnée : « L'Albatros »","h":"3","plus":13},{"t":"Séance 3 — Interro de cours et analyse logique — les bases (1)","h":"3","plus":16},{"t":"Séance 4 — Le poème sans vers : dictée et réécriture","h":"3","plus":16},{"t":"Séance 5 — Atelier d'écriture : le sonnet et le paragraphe","h":"3","plus":13},{"t":"Séance 6 — Brevet blanc n°1 : un sonnet, « Parfum exotique »","h":"1","plus":16},{"t":"Séance 7 — Récitation : « À une passante »","h":"3","plus":14},{"t":"Séance 8 — Remédiation","h":"2","plus":13},{"t":"Séance 9 — Tâche finale : un poème en prose inconnu, « L'Étranger »","h":"1","plus":16}]
+  ok     A31 · aucune erreur JS, aucune boîte du navigateur
+
+A32 — E4 (03:30, §12.18) : une heure close dans la page est « jouée » dans l'atelier dès la clôture, sans recharger
+  ok     A32 · l'heure 2 close, puis l'onglet Atelier : « H2 · lundi 14 septembre · jouée » et l'entête de sa diapo disent « jouée », sans rechargement — {"fr":["H2 · lundi 14 septembre · jouée"],"num":"Atelier · Diapo 1 sur 8 · heure 2 · Où en sommes-nous ? · prévue 3 min · H2 lundi 14 septembre · 09 h 00 → 09 h 03 · jouée"}
+  ok     A32 · aucune erreur JS
+
+202 vérifications, 0 échec(s) · 680 s

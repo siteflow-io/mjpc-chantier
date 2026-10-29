@@ -3,7 +3,7 @@
 // Le même parcours que la conscience a joué le 20/10 sur la production (pièces T72-EX-00…12) : il doit passer sur le fichier intégré.
 // Chaque pas essaie D'ABORD les noms du déroulé intégré (contrat §7), PUIS ceux de la production d'aujourd'hui, et dit lequel il a pris.
 // Ce qui fait échouer (code 1) : une erreur JS ; une boîte système ; une écriture au hub hors des chemins permis (K15) ;
-// une écriture au hub en mode test (K15-test) ; un pas qui a trouvé son entrée mais n'a pas abouti.
+// une écriture au hub en mode test hors de /site/tableau_test (K15-test, §12.66) ; un pas qui a trouvé son entrée mais n'a pas abouti.
 // Un pas dont l'entrée n'existe ni en neuf ni en ancien est « absent » : ce n'est pas un échec, c'est écrit (le territoire n'est pas encore livré).
 import fs from 'fs'; import path from 'path'; import { createRequire } from 'module'; import { createHash } from 'crypto';
 const ici = path.dirname(new URL(import.meta.url).pathname);
@@ -122,7 +122,8 @@ await P('P12', 'la clôture', async () => { if (neuf && await existe('.at-onglet
 dire(''); dire('K15 — les écritures au hub pendant le parcours');
 const tout = await ecrits(); const motifs = [...new Set(tout.map(e => e.replace(/\/[^\/]*\d{4}-\d\d-\d\d[^\/]*/g, '/<heure>').replace(/\/-?[A-Za-z0-9_]{15,}/g, '/<id>')))];
 motifs.forEach(m => dire('      ' + m));
-if (MODE_TEST) pas('K15-test', tout.length === 0 ? 'ok' : 'ÉCHEC', 'mode test : zéro écriture au hub', tout.length + ' écriture(s)');
+// §12.66 (1) (28/10) : en mode test, l'image du tableau part à son adresse, /site/tableau_test (pointeur, scène, écrans), pour le tableau distant — rien d'autre
+if (MODE_TEST) { const horsTT = tout.filter(e => !/^\S+ \/site\/tableau_test(\/|$)/.test(e)); pas('K15-test', horsTT.length === 0 ? 'ok' : 'ÉCHEC', 'mode test : aucune écriture au hub hors de /site/tableau_test (l\'image du tableau, §12.66)', tout.length + ' écriture(s), dont ' + horsTT.length + ' hors de /site/tableau_test' + (horsTT.length ? ' : ' + horsTT.slice(0, 6).join(' ; ') : '')); }
 else { const hors = tout.map(e => e.split(' ')[1]).filter(c => !PERMIS.some(p => p.test(c))); pas('K15', hors.length === 0 ? 'ok' : 'ÉCHEC', tout.length + ' écritures, toutes sur des chemins permis', hors.join(' ')); }
 pas('JS', errs.length === 0 ? 'ok' : 'ÉCHEC', 'aucune erreur JS', errs.join(' ; ')); pas('JS', boites.length === 0 ? 'ok' : 'ÉCHEC', 'aucune boîte système', boites.join(' ; '));
 dire(''); dire(echecs === 0 ? 'PARCOURS VERT' : 'PARCOURS ROUGE — ' + echecs + ' échec(s)');

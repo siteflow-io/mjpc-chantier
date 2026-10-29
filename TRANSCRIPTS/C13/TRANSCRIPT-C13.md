@@ -8245,3 +8245,30 @@ MEMO
 
 29/10/2026 16:49
 MEMO
+
+## Tour 376 — 29/10/2026 19:18 → 19:25
+
+**Paul :** Non mais en fait le prêsupposé qui ne va pas c'est que tu reprends la grille actuellement sur le site. Celle ci est évidemment mauvaise car elle n'est pas rédigée selon les règles qu'on a fixées là durant le cadrage
+
+**Lu et fait.** Le sujet (`Sujet-ecriture-lettre-30-lignes-3e.pdf`, en entier) ; `CADRAGE-27-10.md` (R10 bis : quatre critères et poids, acquis le 27/10 à 11:48 — « c'est la construction des phrases et le respect du thème qui comptent le plus ») ; les mots de Paul du 29/10 sur la grille (12:41, 12:5x « les rouges vraiment négatifs… une maîtrise très satisfaisante comporte quand même des erreurs », 13:25, 14:05, 14:20, 15:03, 15:20, 15:43, 16:14, 16:41). La grille réécrite depuis le sujet, sans rien de la grille du site ni des notes qu'elle a données : `gen3.py` → captures 5 à 9 (`5-grille-regles-et-points.png`, `6-grille-theme-invention.png`, `7-grille-construction.png`, `8-grille-organisation-lettre.png`, `9-grille-langue.png`) ; 12 points, 51 questions, 69 cases. Relue contre la règle « un seul fait » : trois cases qui mêlaient un acquis et un manque récrites avant l'envoi.
+
+**Claude :** [captures 5 à 9]
+
+À jouer : relire la grille (captures 5 à 9) · en cours : rien · ouvert : 1205 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1200. Tu as raison : j'avais pris pour base la grille du site, et même les notes qu'elle a données à Flavie. Je repars du sujet et des règles fixées aujourd'hui ; la copie de Flavie n'est plus une référence.
+
+1201. La capture 5 : les règles appliquées, en onze lignes, pour que tu vérifies la base. Une seule chose est gardée du site, parce qu'elle a été cadrée avec une raison : les quatre critères et leurs poids (27/10 : le thème et les phrases comptent le plus).
+
+1202. Les captures 6 à 9 : la grille entière, un critère par capture. 12 points, 51 questions, 69 cases. Chaque question vient d'une consigne du sujet ; chaque case porte un fait, une couleur, un point, et sa tâche « À reprendre ».
+
+1203. Une proposition nouvelle, à trancher, sur la capture 5 : le point de chaque couleur. Rouge, 0 ; orange, le tiers du point ; vert, les deux tiers ; vert foncé, le point entier. Une couleur donne toujours le même point.
+
+1204. Deux choix pris dans tes mots et dans le sujet, à vérifier. Une case vert foncé peut nommer une petite erreur, un code mal placé ou un relatif, puisque très bien n'est pas parfait. Et les cinq architectures une fois chacune restent en vert : le sujet appelle cela le strict minimum, et valorise ce qui va au-delà.
+
+1205. Corrige ce qui ne va pas, case par case ; ce que tu ne commentes pas est acquis.
+
+À tester : rien de neuf.
+
+29/10/2026 19:25
+MEMO

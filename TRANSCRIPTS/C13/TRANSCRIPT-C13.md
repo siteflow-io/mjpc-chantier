@@ -8778,3 +8778,32 @@ Je reprends 1309 à 1317, plus simplement.
 
 30/10/2026 00:15
 MEMO
+
+## Tour 394 — 30/10/2026 00:20 → 00:20
+
+**Paul :** 1319. Elles peuvent être n'importe où, l'idée c'est juste d'avoir mon matériel de repérage instantanément sous la main. On peut même pousser : quand je suis en train d'évaluer un critère, ma souris est en mode pinceau de ce critère. Comme ça c'est un clic gauche pour poser et un clic droit pour redimensionner. Suppr sur la marque après l'avoir sélectionnée pour supprimer
+
+**Fait.** Relu `correction_dictee.html` (ligne 5031 : Suppr annule l'erreur posée sur le mot) et `redaction.html` : aucune des deux applis n'utilise le clic droit.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1331 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1325. Compris : rien n'est posé d'avance, ton matériel c'est ta souris. Je retire 1320, sauf deux choses que la mesure donne sans geste : l'appli compte les lignes, et une marque se cale toute seule sur la ligne où tu cliques.
+
+1326. Le pinceau du critère : faisable, oui. En passe « le récit », ta souris pose des marques du récit ; Entrée, et le pinceau passe au point suivant. En passe langue, c'est le pinceau des fautes : un clic sur la faute, la bonne forme, Entrée (1323).
+
+1327. Clic gauche : une marque de la taille d'un mot, là où tu cliques. Clic droit : la dernière marque posée ou cliquée s'étire jusque-là, même plusieurs lignes plus bas. Un passage, c'est donc clic gauche sur le premier mot, clic droit sur le dernier. Le menu habituel du clic droit est coupé sur la copie : aucune de tes deux applis ne s'en sert aujourd'hui.
+
+1328. Suppr : même fonction qu'en dictée, où Suppr annule l'erreur posée sur le mot. Ici, un clic gauche sur une marque déjà posée la sélectionne, au lieu d'en poser une autre ; Suppr l'efface.
+
+1329. Ce qui télescope : ce que veut dire une marque. Pour « Y a-t-il une litote ? », elle montre la litote ; pour « Le récit reste-t-il au passé simple et à l'imparfait ? », elle montre le verbe qui en sort. C'est la grille qui le dit, question par question : une règle de plus pour l'IA d'injection.
+
+1330. La phrase qui t'a touché : un autre pinceau, en passe langue. Geste rare, donc un bouton ★, pas une touche.
+
+1331. Oui à 1325 à 1330 ?
+
+À tester : rien de neuf.
+
+30/10/2026 00:20
+MEMO

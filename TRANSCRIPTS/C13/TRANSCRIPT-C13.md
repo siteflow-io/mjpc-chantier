@@ -7682,3 +7682,46 @@ Adresse : https://siteflow-io.github.io/monsieurjaipascompris/?v=877-10
 
 29/10/2026 12:05
 MEMO
+
+## Tour 359 — 29/10/2026 12:41 → 12:44
+
+**Paul :** [captures : l'Atelier, la frise « Le journal (2) : d'août à septembre » ; la grille de la rédaction de CHEVALIER Flavie, l'échelle à quatre niveaux ; pièce : « CHEVALIER Flavie — Rédaction 1 : Écrire une lettre de la Grande Guerre » (PDF)] ok pour tout, mais une chose aussi pour le bilan écrit en classe: il y aura forcément des diapos en plus, donc là on reprend le système classique de diapos suivantes créées auto? Par ailleurs, une autre chose. j'ai voulu créer une frise avec des dates journalières et mensuelles, mais le champ n'accepte que les dates annuelles. Donc il faut que je puisse. mais avant il faut qu'on revoit la rédaction. En effet, il faut que les descripteurs et sous descripteurs ne contiennent qu'une seule chose à chaque fois. Par ailleurs, le tri des copies doit être abandonné au profit de la classification de correction dictée, beaucoup plus performante et qui ne demande pas de passer 10 minutes à classer les copies au préalable. De plus, la citation doit s'insérer après la dernière phrase du descripteur. Enfin, le bilan final ne doit pas reprendre à chaque fois le prénom de l'élève. Max deux fois. et l'élève doit avoir également son échelle descriptive finale. (voir capture). enfin, la flèche effacer dans le champ de la citation fait retour, alors qu'il faut qu'elle efface le champ. par ailleurs, pour qu'une correction aille vite, les descripteurs et sous descripteurs doivent vraiment pointer un seul élément à chaque fois. enfin, voici le bilan de flavie, dis moi ce que tu vois comme améliorations possibles pour que ça paraisse plus personnalisé et en même temps mieux rédigé et surtout que je gagne beaucoup plus de temps à la correction. Enfin, il faut aussi que l'élève puisse s'autocorriger concrètement, vu que je n'écris rien sur sa copie.
+
+**Lu et mesuré.** Le bilan de Flavie lu en entier (le PDF). `redaction.html` (production) : le paquet (« Choisis l'ordre dans lequel tu veux corriger les copies ») ; `correction_dictee.html` : « Copie suivante — tape les initiales (DM pour Dupont Marie), puis Entrée », la barre de recherche par initiales réutilisable. Cadrage 1 et 4, contrôle K6 : une diapo trop pleine se lit en pages, le site ne crée jamais de diapo seul. Registre 13 · 101, 13 · 102 (prod).
+
+**Claude :**
+
+À jouer : les tests de la ⑩ (liste de 12:05) · en cours : rien · ouvert : 1077 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1064. « Ok pour tout » : 1053 à 1063 sont acquis, la ⑪ est au contrat.
+
+1065. Le bilan écrit en classe : le système existant, ce sont les pages. Quand la diapo est pleine, elle continue en page 2, puis 3 ; le tableau suit la page où tu écris, et les mots-clés continuent de se cocher. Le site ne crée jamais de diapo tout seul : c'est ton cadrage.
+
+1066. La frise, vu sur ta capture : « 14 août : il est possédé » devient « 14 », et « 10 septembre : l'incendie » devient « 10 » et passe en premier. Le champ ne lit que le nombre, comme une année. Je propose : il lit les jours et les mois (« 8 mai », « 14 août », « 10 septembre 1887 »), les range dans l'ordre vrai, et garde le mois sur l'étiquette. Inscrit (13 · 101), pour après la rédaction.
+
+1067. La rédaction, un élément par descripteur : je propose de découper chaque point de ta grille en éléments simples. Par exemple, « Le thème tenu » devient : on sait qui écrit ; on sait d'où ; on sait à qui ; on sait depuis quand ; c'est bien 14-18. Un clic par élément : vu ou pas vu. Le niveau du point se calcule du nombre d'éléments vus, et la phrase du bilan nomme ce qui manque. Le mode interrogatif devient simple : une question par élément, oui ou non.
+
+1068. Le tri des copies, mesuré : la rédaction te fait saisir l'ordre du paquet avant de corriger ; la correction de dictée te demande seulement les initiales de la copie suivante (« DM pour Dupont Marie »), dans n'importe quel ordre. Je propose : la rédaction prend la même barre des initiales, et le paquet disparaît.
+
+1069. La citation va après la dernière phrase du descripteur, avec le numéro de ligne de la copie, pour que l'élève la retrouve sur sa feuille.
+
+1070. Le prénom : deux fois au plus, au début et à la fin du bilan. Et l'élève reçoit son échelle finale, comme sur ta capture : chaque point de la grille, ses quatre niveaux, le sien en couleur.
+
+1071. La flèche d'effacement du champ de citation : noté (13 · 102), à mesurer au code.
+
+1072. Le bilan de Flavie, ce que je vois. « Flavie » revient cinq fois. Les liaisons tournent sans rapport avec le sens : « Néanmoins, deux des trois paragraphes sont là » vient après un reproche, « D'ailleurs, les cinq architectures apparaissent » n'ajoute rien à la phrase d'avant. « Attention aussi à la langue dans ce passage » revient trois fois, sans dire quoi.
+
+1073. Les manques ne sont jamais nommés : « il en manque un » (lequel ?), « un passage qui redevient un récit » (lequel ?), « un relatif ou une virgule hésite ici ou là » (où ?). Le troisième paragraphe manquant est dit deux fois, dans deux critères. « Tu tiens le thème sans fausse note » côtoie 6,5 sur 14. Les 14 erreurs sont comptées, jamais montrées. La phrase qui t'a touché est citée avec ses fautes, sans rien pour les corriger.
+
+1074. Pour que tu gagnes du temps : un élément, un clic (1067), et le manque se nomme de lui-même. Pour la langue, la méthode de la correction de dictée : chaque faute se tape une fois avec sa bonne forme, puis se reprend dans les autres copies par son numéro, au pavé numérique.
+
+1075. Pour que l'élève se corrige : le bilan finit par « À reprendre », des tâches numérotées avec la ligne de la copie. Pour Flavie : ajoute la date ; écris le troisième paragraphe, l'inquiétude pour l'autre ; récris ta litote pour qu'elle fasse entendre au lieu de dire ; corrige tes 14 erreurs, montrées ligne par ligne avec leur type, la bonne forme cachée. Elle fait ses corrections dans l'appli, comme en correction de dictée, et tu vois qui a fini.
+
+1076. Pour la personnalisation : une seule phrase sur ce qui est le plus réussi, citée, au début ; une seule priorité à la fin. Le reste devient une liste, plus courte à lire et à écrire.
+
+1077. Je te réécris le bilan de Flavie selon tout ça, comme exemple, et je découpe la grille de la lettre en éléments, pour que tu corriges les deux avant tout code ? Ce que tu ne commentes pas dans 1064 à 1076 est acquis.
+
+À tester : la liste de la ⑩ de 12:05 tient.
+
+29/10/2026 12:44
+MEMO

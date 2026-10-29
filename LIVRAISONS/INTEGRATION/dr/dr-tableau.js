@@ -141,6 +141,7 @@ function dr_scene(et){
   sc.ts = Math.max(Date.now(), (DR_TAB.dernierTs || 0) + 1); DR_TAB.dernierTs = sc.ts;   /* toujours croissant : deux scènes dans la même milliseconde (ou une horloge figée) restent ordonnées */
   sc.trameMaj = DR_TAB.trameMaj || 0;
   try { const t = dr_etiquetteDe(et); if (t != null) sc.etiquette = t; } catch (e) {}   /* §12.74 (2) : l'étiquette entière, numéro compris */
+  if (Array.isArray(sc.qui)) sc.quiOn = true; if (sc.cahier && typeof sc.cahier === 'object' && Array.isArray(sc.cahier.qui)) sc.cahier.quiOn = true;   /* §12.71 : le hub ne garde pas une liste vide — le drapeau dit « la participation est au tableau », même à 0 */
   delete sc.bandeau; try { const m = (typeof dr_minuteurEtat === 'function') ? dr_minuteurEtat() : null; if (m) sc.minut = m; else delete sc.minut; } catch (e) {}   /* §12.70 (4) : le minuteur (fin, durée, pause), une fois par geste ; plus de bandeau */
   try { const hc = (typeof dr_horlogeCase === 'function') ? dr_horlogeCase() : null; sc.hdec = hc ? hc.dec + hc.saut : 0; } catch (e) { sc.hdec = 0; }   /* §12.66 (2) : l'écart de l'horloge de la case (les De Gaulle) — l'horloge du tableau distant le suit */
   return sc;
@@ -479,7 +480,8 @@ function dr_tabSceneRecue(o, c){
     if (c.ts && o.ts < c.ts - 2000) return;                          /* la scène d'une heure précédente ne ressuscite jamais */
     if (o.si == null && o.di == null && !o.eid) return;              /* la scène « à neuf » du lancement : rien à montrer encore (audit C6) */
     DR_TAB.ts = o.ts; DR_TAB.hdec = isFinite(o.hdec) ? +o.hdec : 0;   /* §12.66 (2) : l'horloge de la case, pendant l'heure */
-    DR_TAB.vuCours = true; dr_tabMinutRecevoir(o.minut || null, o.ts);   /* §12.70 : le minuteur suit la scène, recalé sur l'horloge du pilote */
+    DR_TAB.vuCours = true; dr_tabMinutRecevoir(o.minut || null, o.ts);
+    dr_tabNormaliser(o);   /* §12.71 : la participation à 0 revient en liste vide */   /* §12.70 : le minuteur suit la scène, recalé sur l'horloge du pilote */
     if (o.trameMaj && o.trameMaj > DR_TAB.trameMaj) {
       DR_TAB.trameMaj = o.trameMaj;
       dr_tabLire(base + '/ecrans', ecr => { if (Array.isArray(ecr)) DR_TAB.ecrans = ecr; dr_tabMontrer(o); });
@@ -512,6 +514,9 @@ function dr_tabFluxOuvrir(chemin){
   es.onerror = () => { if (DR_FLUX.es === es) dr_tabFluxTombe(chemin); };
   return true;
 }
+/* §12.71 : ce que le hub a retiré d'une scène (une liste vide) et que le rendu attend */
+function dr_tabNormaliser(o){ if (!o || typeof o !== 'object') return o; if (o.quiOn && !Array.isArray(o.qui)) o.qui = o.qui && typeof o.qui === 'object' ? Object.values(o.qui) : [];
+  if (o.cahier && typeof o.cahier === 'object' && !Array.isArray(o.cahier.qui)) o.cahier.qui = o.cahier.qui && typeof o.cahier.qui === 'object' ? Object.values(o.cahier.qui) : []; return o; }
 /* §12.68 : une scène de CE cours déjà montrée, puis retirée (ou remise à celle d'avant le cours) : l'heure a été annulée — le tableau revient à l'horloge */
 function dr_tabSceneOubliee(o, c){ if (!DR_TAB.vuCours || !c) return false; const vieille = !o || typeof o !== 'object' || (typeof o.ts === 'number' && c.ts && o.ts < c.ts - 2000);
   if (!vieille) return false; dr_tabRetourAttente(); return true; }

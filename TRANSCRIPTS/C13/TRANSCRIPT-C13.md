@@ -8098,25 +8098,67 @@ MEMO
 
 À jouer : rien de neuf · en cours : rien · ouvert : 1169 ; 1126 ; 1120 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
 
-1161. 1154 : entendu, la conversation qui crée le sujet écrit ces raisons, assez générales pour tout élève.
+1161. 1154 : entendu, c'est la conversation qui crée le sujet qui écrit ces raisons, assez générales pour convenir à tout élève.
 
-1162. 1156 : tu as raison, M n'a pas ici le sens exact de la dictée ; je le retire. « Non », c'est N. C reste la citation. Le reste ne bouge pas : Espace ou Entrée, oui ; Retour ; I ; A ; Échap ; Ctrl+Z ; ? ou F1 ; ⇧R ; les initiales.
+1162. 1156 : tu as raison, M n'a pas ici exactement le sens qu'il a en dictée ; je le retire. « Non », c'est N. C reste la citation. Le reste ne bouge pas : Espace ou Entrée pour oui ; Retour ; I ; A ; Échap ; Ctrl+Z ; ? ou F1 ; ⇧R ; les initiales.
 
-1163. Je propose cinq choses pour tes objectifs. La première, une seule lecture. Aujourd'hui tu lis la copie une fois pour la grille, et tu comptes les erreurs à côté. En mode rapide, l'appli te mène ligne par ligne : + par erreur, Entrée la ligne suivante, Tab à la fin d'un paragraphe. Les questions de ce paragraphe viennent alors, au moment où tu viens de le lire. À la dernière ligne, les questions de la fin. Une lecture, sans retour en arrière.
+1163. Je propose cinq choses pour atteindre tes objectifs. La première : une seule lecture. Aujourd'hui, tu lis la copie pour la grille et tu comptes les erreurs à côté. En mode rapide, l'appli te mène ligne par ligne :
+- + pour chaque erreur ;
+- Entrée pour la ligne suivante ;
+- Tab à la fin d'un paragraphe.
 
-1164. La deuxième, les citations à la voix : C, tu lis la phrase à voix haute, Entrée. Chrome l'écrit, sans rien payer ni clé. Le numéro de ligne se met seul, puisque l'appli sait sur quelle ligne tu es. Taper une phrase de quinze mots devient quelques secondes de lecture. Ce qui frotte : la voix passe par les serveurs de Google, avec la phrase de l'élève, jamais son nom.
+Les questions sur ce paragraphe arrivent alors, au moment où tu viens de le lire. À la dernière ligne, viennent les questions de la fin. Une seule lecture, sans retour en arrière.
 
-1165. La troisième, le point d'un coup : sur un point où tout est bon, ⇧ et Entrée le passe entier. Sur une bonne copie, on passe d'une trentaine de touches à une douzaine ; sur Flavie, on ne gagne rien.
+1164. La deuxième : les citations à la voix. Tu appuies sur C, tu lis la phrase à voix haute, puis Entrée : Chrome l'écrit, gratuitement et sans réglage. Le numéro de ligne se met tout seul, puisque l'appli sait sur quelle ligne tu es. Taper une phrase de quinze mots devient quelques secondes de lecture. Le point délicat : la voix passe par les serveurs de Google, avec la phrase de l'élève, jamais son nom.
 
-1166. La quatrième, parler vraiment de la copie : le bilan se compare seul à la rédaction précédente du même élève, par compétence : la rédaction les écrit sur sa branche, pas encore en ligne (553). Par exemple : « La dernière fois, la date manquait déjà », ou « Cette fois, ton troisième paragraphe est là ». Un vrai suivi, sans une touche de plus.
+1165. La troisième : le point d'un coup. Sur un point où tout est bon, ⇧ et Entrée le valide en entier. Sur une bonne copie, on passe d'une trentaine de touches à une douzaine ; sur la copie de Flavie, on ne gagne rien.
 
-1167. La cinquième, l'appli apprend de toi : une question à laquelle tu réponds pareil pour presque toutes les copies passe en fin de point, confirmée d'un geste ; celles qui départagent viennent d'abord. Et l'export pour l'IA (1104) propose de fusionner ou de couper les questions.
+1166. La quatrième : parler vraiment de la copie. Le bilan se compare tout seul à la rédaction précédente du même élève, compétence par compétence. Ces compétences, la rédaction les enregistre déjà dans sa nouvelle version, qui n'est pas encore en ligne (553). Par exemple : « La dernière fois, la date manquait déjà », ou « Cette fois, ton troisième paragraphe est là ». Un vrai suivi, sans une touche de plus.
 
-1168. Ce que je ne sais pas : ce que tout cela gagne en secondes. Le chrono de l'appli le dira sur tes premières copies.
+1167. La cinquième : l'appli apprend de toi. Une question à laquelle tu réponds pareil pour presque toutes les copies passe en fin de point, et se confirme d'un geste ; celles qui font la différence entre les copies viennent en premier. Et l'export pour l'IA (1104) propose de regrouper ou de découper les questions.
+
+1168. Ce que je ne sais pas : ce que tout cela fait gagner en secondes. Le chrono de l'appli le dira sur tes premières copies.
 
 1169. Lesquelles des cinq gardes-tu ? Je fais ensuite les captures du mode rapide avec celles-là.
 
 À tester : rien de neuf.
 
 29/10/2026 16:07
+MEMO
+
+## Tour 372 — 29/10/2026 16:14 → 16:22
+
+**Paul :** c'est pas mal. pour les citations, je mets un point d'honneur à les recopier telles que l'élève les a écrites: en effet, si je ne le fais pas, il pense que la correction numérique n'a pas de lien authentique avec son travail. C'est déjà ainsi, et c'est aussi pour ça que ce sont des citations dans lesquelles je corrige la langue au mot. le flux actuel me va d'ailleurs, sur ce point précis (à part la flèche effacer, mais c'est déjà traité). et d'ailleurs, je ne sais pas pourquoi tu dis que le numéro de ligne se met tout seul, dans la mesure où la citation peut être prise n'importe où dans le texte (sauf si tu avais une idée précise). Pour les autres oui. pour 1168, il faut vraiment mesurer. sinon je mets en place des choses, sans savoir le gain que ça m'apporte.
+
+**Lu et mesuré.** Au hub (lecture seule) : `/redactions` porte deux rédactions de la lettre, `sujet_mvqx0bld_6pj89w` (3 DYLAN BOB, une copie ouverte 46 s, rien coché) et `sujet_mvtd85g7_ycxjq3` (3 FRANKLIN ARETHA, dupliquée le 29/10 à 10:53, paquet de 28, une copie corrigée). La copie corrigée porte sa télémétrie au hub (`synchroniser` écrit la copie entière, `telemetry` comprise) : 1114 était faux, la copie avait été cherchée dans la mauvaise rédaction. Mesures de la copie : ouverture 11:00:52, dernier geste 11:14:29 ; `tempsActifMs` 751 000 ; par critère 425 / 122 / 109 / 95 s ; `tempsAvantPremierClic` cumulé 369,7 s ; événements : 34 `changementsEchelon` (niveaux et sous-niveaux), 14 `incrementsCompteur`, 6 `marquagesErreurs`, 5 `retoursArriere`, 1 `editionsSousDesc`, 5 `citationsSaisies` ; 366 caractères tapés (4 citations et le commentaire) ; aucun échelon à 3. Le code : la citation n'a pas de case de ligne aujourd'hui ; la ligne vient de 1069 (acquis). Registre (prod `13d677e`) : 13 · 101 et 13 · 102 étaient inscrites deux fois, une seule entrée gardée.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1180 (avec 1120) ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1170. Les citations : entendu, je retire 1164. Tu recopies la phrase telle que l'élève l'a écrite, c'est ce qui le relie à sa copie ; ton flux reste tel quel, avec la flèche qui efface (13 · 102). 1163, 1165, 1166 et 1167 sont acquis.
+
+1171. Le numéro de ligne vient de 1069, acquis : la citation porte sa ligne, pour que l'élève retrouve la phrase sur sa feuille. « Il se met tout seul » était faux dit comme ça : ce n'est vrai que si la phrase est sur la ligne où tu en es. Mon idée précise, en lecture unique : la case de la ligne s'ouvre avec la ligne où tu en es ; si la phrase est ailleurs, tu tapes son numéro par-dessus. Ça ne coûte jamais plus qu'une case vide.
+
+1172. Je me corrige sur 1114 : tes temps ne restent pas dans ton navigateur, ils partent au site avec chaque copie. J'avais cherché la copie de Flavie dans la rédaction de la 3 DYLAN BOB, alors que tu l'avais dupliquée pour la 3 FRANKLIN ARETHA. Tes temps de ce matin y sont : je les ai lus, sans rien écrire.
+
+1173. Mesuré, la copie de Flavie : ouverte à 11:00, dernier geste à 11:14, soit 13 min 37 s ; le chrono en a compté 12 min 31 s, car il s'arrête après 30 s sans geste. « Le thème et l'invention » en prend 7 min 05 s, plus de la moitié ; « La langue », 2 min 02 s ; « La construction des phrases », 1 min 49 s ; « L'organisation et la lettre », 1 min 35 s.
+
+1174. Le premier point, « Le thème tenu », prend à lui seul 2 min 51 s : il commence dès l'ouverture de la copie, donc si tu la lis d'abord en entier, cette lecture y est comptée. Entre l'arrivée sur une question et ta première réponse : 6 min 10 s en tout, près de la moitié du temps. L'appli y mêle la recherche dans la copie et, parfois, la frappe de la citation : elle ne les sépare pas.
+
+1175. Les gestes que l'appli compte : 60. Ce sont 34 clics sur les niveaux, 14 erreurs au compteur, 6 mots marqués dans les citations, 5 retours, 1 phrase réécrite. S'y ajoutent 366 caractères tapés : tes 4 citations et ton commentaire. 1115 disait 42 : je l'avais compté sur la grille, sans mesurer. Ton objectif de 30 se compare donc à 60.
+
+1176. Ce que cette copie dit des propositions. 1165 n'y gagne rien : aucun point n'y est entièrement bon. 1166 ne coûte aucun geste : son gain est dans le bilan, pas en secondes. Pour 1163 et 1167, je ne sais pas : une copie ne suffit pas, et le chrono ne sépare pas la recherche de la frappe.
+
+1177. Pour vraiment mesurer, je propose d'abord un chrono plus fin, avant toute nouveauté. Il note le moment de chaque geste : l'arrivée sur une question, la réponse, le début et la fin de chaque citation, chaque erreur. Rien ne change à ton écran, sauf le bouton « Mes temps de correction » (1120).
+
+1178. Ensuite, tu corriges comme aujourd'hui les copies qui restent : 27 dans le paquet de la 3 FRANKLIN ARETHA. Je lis tes temps au site, et je te dis, avant d'en coder une seule, ce que chaque proposition peut faire gagner au plus sur tes vraies copies. Celle qui ne gagne rien tombe. Le cadrage du mode rapide avance pendant ce temps.
+
+1179. Enfin, le mode rapide arrive à côté du mode général, avec le même chrono. Tu alternes, une copie dans chaque mode : le gain se lit copie contre copie, sur le même paquet.
+
+1180. Je lance le chrono fin maintenant ? Il part avec la flèche qui efface (13 · 102) et la rédaction déjà prête sur sa branche (les seuils, les compétences) : un exécutant, une promotion. Si tu corriges avant qu'il soit en ligne, rien n'est perdu : le chrono actuel mesure déjà le temps par copie et par point.
+
+À tester : rien de neuf.
+
+29/10/2026 16:22
 MEMO

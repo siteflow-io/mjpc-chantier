@@ -8832,3 +8832,26 @@ MEMO
 
 30/10/2026 00:24
 MEMO
+
+## Tour 396 — 30/10/2026 00:26 → 00:27
+
+**Paul :** Ok. Par ailleurs le soulignage rouge c'est pour les fautes, le surligné ça peut être pour des citations, les encadrés pour des mots etc.
+
+**Fait.** Rien de neuf : 1332 à 1335 acquis (« Ok »).
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1340 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1337. Compris : la forme dit ce qu'on montre, la couleur dit le critère. Souligné rouge, une faute ; surligné, une citation ; encadré, un mot. Je corrige 1333 : plus de cercle pour les fautes, et la phrase qui t'a touché devient un surligné doré, puisque c'est une citation. Les captures 10 à 20 avaient des cercles : ce sera du souligné.
+
+1338. Ce qui télescope : dans un même critère, tu peux avoir à encadrer un mot, puis à surligner une citation. Qui choisit la forme ? Je propose : la question en cours. « Le récit reste-t-il au passé simple et à l'imparfait ? » attend des mots : le pinceau encadre. « Y a-t-il une litote ? » attend une citation : le pinceau surligne. Tu ne changes jamais d'outil ; c'est la grille qui le dit, comme en 1329.
+
+1339. Un paragraphe entier, pour « Un paragraphe dit-il où est le personnage et ce qu'il voit ? » : surligné, il couvrirait un tiers de la copie. Je propose un trait dans la marge, sur la hauteur du paragraphe, comme on le fait à la main.
+
+1340. Oui à 1337 à 1339 ?
+
+À tester : rien de neuf.
+
+30/10/2026 00:27
+MEMO

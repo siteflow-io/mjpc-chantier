@@ -8855,3 +8855,36 @@ MEMO
 
 30/10/2026 00:27
 MEMO
+
+## Tour 397 — 30/10/2026 00:29 → 00:31
+
+**Paul :** Ok. Tout est cadré ? Les marques, objets avec id interne, les copies pareil, et il faut voir le doc école directe ( on construit ce flux là pour l'instant, la photo élève chez lui on verra plus tard).
+
+**Fait.** 1337 à 1339 acquis (« Ok »). Recherche web : rien de public sur les pièces jointes acceptées par École Directe ; pour un fichier HTML ouvert depuis une pièce jointe sur iPhone ou iPad, des utilisateurs rapportent que la page s'affiche sans que son JavaScript tourne (forum développeurs Apple, iOS 13 ; yomotherboard). Non mesuré par moi.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1348 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1341. Pas encore tout. Les identités, oui : chaque copie et chaque marque a son identité et son heure internes, invisibles pour l'élève. Une copie, c'est un élève et ses pages ; une marque, c'est une copie, un point de la grille, une forme et une place sur la photo.
+
+1342. Il reste trois choses : comment les copies entrent dans l'appli, où les photos sont gardées, et le fichier École Directe.
+
+1343. L'entrée. Je propose le photocopieur du collège : il scanne le paquet en un seul PDF, les pages sont droites. Tu ranges le paquet dans l'ordre de la liste avant de scanner, et chaque page va au bon élève sans geste ; les pages blanches, l'appli les retire seule, puisqu'elle voit les lignes écrites. Des photos au téléphone, la page est de travers : la redresser seule sans repères, je ne sais pas. Tes photos de la lettre (1277) le diront.
+
+1344. La garde. Jamais sur le site ni au dépôt. Je propose ton hub, avec la copie : à peu près 164 Ko la page, 5 Mo la classe. Si elles ne restaient que dans ton navigateur, un nettoyage les effacerait, et tes marques avec, puisqu'elles sont posées sur cette photo-là.
+
+1345. Le fichier École Directe. L'appli fabrique un fichier par élève, sa photo et tes marques dedans. Sur ordinateur, il marche. Sur iPhone et iPad, des utilisateurs rapportent qu'un fichier ouvert depuis une pièce jointe s'affiche, mais sans son interactivité : ni parcours, ni papillons. Ce que fait l'appli École Directe, et si elle accepte un fichier .html, je ne sais pas.
+
+1346. Je propose : un fichier qui s'affiche partout, même sans interactivité (sa copie et tes marques, lisibles), avec dedans un lien propre à cet élève vers sa copie interactive sur le site, la photo venant du hub (1344). Seul l'élève a ce lien, puisqu'il est dans son fichier. Sur iPhone, le lien ouvre le navigateur, où tout marche.
+
+1347. Le test : je te fais un fichier d'essai de quelques lignes. Tu le déposes sur École Directe, pour toi ou pour un compte test, et tu l'ouvres sur un téléphone et sur l'ordinateur. En deux minutes, on sait si École Directe accepte le .html et ce que voit l'élève. Pas pendant un cours.
+
+1348. Oui à 1341 à 1347 ?
+
+Sources : [forum développeurs Apple, JavaScript coupé dans les pièces jointes HTML](https://developer.apple.com/forums/thread/124172) · [yomotherboard, page HTML locale sur iPhone](https://yomotherboard.com/question/how-can-i-run-a-local-html-and-javascript-page-on-an-iphone-2/)
+
+À tester : rien de neuf.
+
+30/10/2026 00:31
+MEMO

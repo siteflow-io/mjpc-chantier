@@ -8586,3 +8586,46 @@ J'ai mes paquets de la rédac lettre 14 18. Je vais les prendre en photo demain 
 
 29/10/2026 23:35
 MEMO
+
+## Tours 388 et 389 — 29/10/2026 23:39 et 23:41 → 23:42 (une seule réponse : la première, interrompue par Paul)
+
+**Paul (23:39) :** 1275. Comment l'élève écrit? Et comment ça s'insère entre les lignes de sa copie?
+Par ailleurs pourquoi la pile de calques tourne?
+Enfin, il faut un ordre de correction pour l'élève.
+
+**Fait puis interrompu.** Une capture 17 (le parcours de l'élève, l'écriture entre les lignes, le papillon) fabriquée au scratchpad, non envoyée.
+
+**Paul (23:41, en interrompant) :** Ne refais pas sans cesse les captures, dis moi si c'est faisable, si ça télescope ou pas, etc. On cadre là.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1291 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1280. Entendu : plus de captures pendant qu'on cadre.
+
+1281. Comment l'élève écrit : au clavier, sur tablette, téléphone ou ordinateur, pas au doigt. Tu récupères ainsi du texte, que tu lis, que l'appli mesure et compare d'une réécriture à l'autre ; écrit au doigt, ce serait une image, que l'appli ne lit pas. Faisable : oui, c'est un champ de saisie ordinaire.
+
+1282. Comment ça s'insère : la place vient de ton clic à la correction, le passage de la case. L'appli barre ce passage et écrit le texte de l'élève dans l'interligne juste au-dessus, à l'encre bleue, dans une écriture manuscrite. Il clique sur le passage barré et écrit là, sur sa copie. Faisable : oui.
+
+1283. Ce qui télescope, un : la place. Une ligne fait 8 mm ; l'interligne libre, à peu près la moitié. Quelques mots y tiennent, une phrase récrite non. Je propose : entre les lignes tant que le texte tient dans la largeur du passage barré ; au-delà, il part sur un papillon collé dans la marge à côté du passage, comme un ajout collé sur un manuscrit, qui se déplie d'un clic.
+
+1284. Ce qui télescope, deux : ton temps. Un mot corrigé se vérifie seul, contre la bonne forme que tu as tapée, comme en dictée. Une phrase récrite, non : c'est toi qui la relis, la valides ou la renvoies. Combien ça te coûte par classe, je ne sais pas ; le chrono le dira.
+
+1285. Ce qui télescope, trois : l'impression de papier, alors qu'il tape. Ce qui la donne, c'est de voir son texte s'écrire sur sa copie, à l'endroit, à l'encre. Si ça suffit pour tes élèves, je ne sais pas.
+
+1286. La pile qui tourne : aucune bonne raison, je la retire. Je propose : la pile reste fixe, de biais. À la première ouverture seulement, la copie traverse la grille critère après critère, et chacun y dépose ses points ; c'est ce qui montre à l'élève que sa copie passe à travers la grille. Ensuite, un clic sur un critère le pose seul sur la copie. Faisable : oui ; sur les tablettes du collège, la fluidité, je ne sais pas.
+
+1287. L'ordre de correction, ce qui télescope d'abord : si l'on ouvre en premier ce qui lui coûte le plus de points, l'ordre trahit ton verdict avant qu'il ait réfléchi. Il saurait que le point 1 est le pire.
+
+1288. Je propose donc l'ordre de la copie, de haut en bas : il relit sa copie ligne après ligne, et chaque point s'ouvre à sa place, erreurs de langue comprises, ce qui t'a touché aussi. Un point après l'autre : le suivant s'ouvre quand il a répondu à la question et fait la réécriture demandée. La note apparaît à la fin du parcours.
+
+1289. Ce qui télescope avec cet ordre : une erreur de langue dans un passage déjà barré et récrit. Je propose : si sa réécriture contient la bonne forme, l'erreur est corrigée d'elle-même et sort du parcours ; sinon elle reste.
+
+1290. Pour toi, ça ne change rien : l'ordre de l'élève se calcule de tes clics, tu n'as rien à ranger.
+
+1291. Oui à 1281 à 1290 ? Ce que tu ne commentes pas est acquis.
+
+À tester : rien de neuf.
+
+29/10/2026 23:42
+MEMO

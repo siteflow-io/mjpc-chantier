@@ -7477,3 +7477,34 @@ MEMO
 
 29/10/2026 10:43
 MEMO
+
+## Tour 354 — 29/10/2026 10:47 → 10:49
+
+**Paul :** [capture : répétition, 3 FRANKLIN ARETHA, diapo 4 « problematique », « Documents de la séance » : trois feuilles « n'a pas d'adresse »] pour l'instant deux chartes suffisent, une pour les 4e, une pour les 3e. par ailleurs, bug trouvé. mesure le "n'a pas d'adresse". c'est sur mon chapitre réel. par ailleurs, le tableau distant affiche "analyse d'image" et pas le numéro de l'activité, dans l'encadré vert en haut. D'ailleurs cet encadré vert n'est pas vraiment lisible. il faut une étiquette avec fond plein qui soit toujours au dessus de n'importe quel autre élément (typiquement une image) et que le texte soit gras. par ailleurs en répétition ça fait partie des éléments que je ne peux pas modifier, donc qui est passé entre les mailles du filet au codage du même élément du mode test.
+
+**Mesuré.** Hub, en lecture : `/site/3e/chapitres/1` (« Poésie et peinture au XIXe siècle »), 16 documents dans les séances : 15 `source: 'atelier'` (`ref: feuille_…`), 1 `source: 'drive'`. Production ⑨ : `dr_docsPanneau`, `dr_recitDocuments`, `dr_recitUrlDe` (seuls Drive et http(s)) ; `actHtml` (`numDe` → `dr_activites()`, `!S.repetition`), `.mur .act`. Registre 13 · 93, 13 · 94 (prod `1c968d1`) ; contrat §12.73 (deux chartes), §12.74.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : le banc complet sur le plein écran · ouvert : 1041 ; 1040 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1034. Deux chartes, une par niveau, c'est noté : celle des 3e est ton canon, le bleu nuit ; celle des 4e est à proposer.
+
+1035. « N'a pas d'adresse », mesuré sur ton chapitre réel. Au hub, tes séances ont 16 documents : 15 sont des feuilles faites dans le site, 1 seul vient du Drive (« Les cinq tableaux à analyser »). Le panneau ne sait projeter qu'un document qui a une adresse web : le Drive en a une, tes feuilles du site non. Donc 15 sur 16 sont grisées.
+
+1036. C'est grave pour lundi : dimanche, le Drive part (13 · 88), et alors plus rien ne se projette. Je propose : le tableau dessine lui-même la feuille du site, telle que Structure l'affiche, en lecture. « Projeter au tableau » marche alors pour toutes. Inscrit : 13 · 93.
+
+1037. L'étiquette d'activité, mesuré. Le numéro se calcule à partir des activités du chapitre, que la page du tableau distant n'a pas : elle n'écrit que le titre. L'étiquette est en vert sur fond transparent avec un contour fin, et rien ne la met au-dessus d'une image.
+
+1038. En répétition, le code l'exclut exprès de la correction en direct : la règle de §12.59 a été posée pour l'heure, pas pour la répétition. Tu as raison, c'est passé entre les mailles.
+
+1039. Je propose : le pilote envoie l'étiquette entière, numéro compris ; fond plein, texte gras, toujours au-dessus ; modifiable en répétition comme en heure. Je vois aussi sur ta capture « problematique » dans l'en-tête, sans accent : c'est le nom interne du rôle, il sera écrit en clair. Inscrit : 13 · 94.
+
+1040. Pour lundi, je propose une ⑩ courte, dans cet ordre : les feuilles projetables (13 · 93), l'étiquette (13 · 94), le minuteur (un seul, couleurs, pause, son, 13 · 92), la participation à 0, et « Annuler cette heure ». Les nouveaux types de diapo, les chartes et le profil de la classe viennent après lundi.
+
+1041. Je lance la ⑩ ? Elle coûte de l'utilisation : un exécutant neuf, un seul banc complet.
+
+À tester : rien de neuf.
+
+29/10/2026 10:49
+MEMO

@@ -190,3 +190,8 @@ MEMO
 
 - integration `398e3d66a`, assemblée + `APP_VERSION="8.76.1-⑨"` : md5 `6586dada1424c999e38d11c826e4a22e`, 2 672 694 o (copie : scratchpad `micro/candidate-9m-398e3d66a.html`).
 - Banc complet VERT (parcours ×2, 106/0, sonde-1262 52/52, sonde-1266 27/0) ; cas E3 112/112 ; sonde du plein écran par le geste verte.
+
+
+## PROMU 8.76.1-⑨ — 29/10/2026 11:20
+
+- prod commit `36d9367`, blob `5a46178a0fa5`, md5 `6586dada1424c999e38d11c826e4a22e` ; bit à bit au dépôt et à l'adresse publique. Docs prod `eb06805`.

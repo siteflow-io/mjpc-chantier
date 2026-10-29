@@ -8747,3 +8747,34 @@ Par ailleurs pour le passage critère par critère, j'imaginais que les marques 
 
 30/10/2026 00:11
 MEMO
+
+## Tour 393 — 30/10/2026 00:14 → 00:15
+
+**Paul :** Je n'ai rien compris
+
+**Fait.** Rien de neuf : 1309 à 1317 redits simplement en 1318 à 1324.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1324 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+Je reprends 1309 à 1317, plus simplement.
+
+1318. « Clique sur un critère » : ça ne sert à rien. Je le retire.
+
+1319. Ton idée : les marques arrivent toutes seules sur la copie, tu les déplaces et tu les agrandis. Le problème : l'appli ne sait pas lire l'écriture de l'élève. Elle ne sait donc pas où il parle de sa tranchée, ni où est le verbe au mauvais temps. Ces marques-là, elle ne peut pas les poser au bon endroit.
+
+1320. Ce qu'elle sait faire : voir où sont les lignes écrites. Je l'ai essayé sur la copie de l'an dernier : elle a trouvé les 30 lignes et les 2 changements de paragraphe. Elle peut donc poser toute seule les marques qui dépendent de la place sur la feuille : en haut (le lieu, la date, « Ma chère Louise »), en bas (la signature), au début de chaque paragraphe, et sur les lignes où l'élève a écrit dans la marge (son numéro d'architecture, L pour la litote…). Là, ton idée marche : tu n'as qu'à ajuster. Elle compte aussi les lignes : tu n'as plus à les déclarer.
+
+1321. Pour les autres marques, plus court que déplacer et agrandir : tu dessines la marque directement, en glissant la souris sur le passage, du premier mot au dernier. Un geste au lieu de deux. Pour une deuxième marque pareille, tu en dessines une autre : un geste, au lieu de quatre (clic droit, dupliquer, déplacer, agrandir).
+
+1322. Un point tout bon qui n'a pas d'endroit, comme « le thème tenu » : sa marque reste en haut de la copie, tu n'y touches pas.
+
+1323. Une erreur à moi, en 1302 : je t'ai mis les lettres G et L de la dictée pour les fautes. Tu avais dit qu'elles n'existent pas en rédaction. Je les retire : un clic sur la faute, la bonne forme, Entrée.
+
+1324. Oui à 1318 à 1323 ?
+
+À tester : rien de neuf.
+
+30/10/2026 00:15
+MEMO

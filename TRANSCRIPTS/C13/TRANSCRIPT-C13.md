@@ -7805,3 +7805,40 @@ MEMO
 
 29/10/2026 12:51
 MEMO
+
+## Tour 362 — 29/10/2026 12:58 → 12:59
+
+**Paul :** 1087 oui et du coup une diapo avec des pages dans la colonne de gauche sont encadrées d'un liseré fin ensemble pour que je voie que c'est une diapo et sa suite. Attention, il faut cadrer ce qui se passe en répétition et en live et dans le mode test en live. Si j'écris et que je dépasse, la diapo page s'affiche telle à gauche? A t'elle une identité ? Où part elle? Etc. 
+Pour la rédaction: je te dis ce que j'imagine pour les couleurs et les poids et le contenu et tu me dis si ta proposition est plus riche et surtout plus rapide. En gros vu qu'un sous descripteur contient un seul élément, il faut que les rouges soient vraiment négatifs, les orange un peu moins, le vert un peu mieux et le vert vert très bien mais cantonné aux attendus 3e: une maîtrise très satisfaisante comporte quand même des erreurs, sinon ce serait des Victor Hugo. 
+Que proposes-tu ?
+
+**Mesuré.** Production 8.77.0 : `paginer`, `dr_paginerReference`, `appliquerPages` — la page est calculée à l'affichage, d'après la taille du tableau et du texte, en groupes d'éléments de la diapo ; elle n'a pas d'identité propre ; le journal note déjà « page n montrée » (`journal('page', { si, di, p })`).
+
+**Claude :**
+
+À jouer : les tests de la ⑩ (liste de 12:05) · en cours : rien · ouvert : 1097 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1088. 1087 : oui, avec le liseré fin qui entoure la diapo et ses pages dans la colonne.
+
+1089. Mesuré, ce qu'est une page : ce n'est pas une diapo. Le site coupe le texte de la diapo en pages au moment de l'afficher, d'après la taille du tableau et la taille du texte. La page n'a donc pas d'identité à elle : c'est « la diapo X, page 2 ». Si tu changes la taille du texte, les pages se refont. Le journal note déjà « page 2 montrée ».
+
+1090. Je propose, partout pareil, dans l'Atelier, en répétition, en heure et en mode test : quand tu écris et que tu dépasses, la page nouvelle paraît aussitôt dans la colonne, sous sa diapo, dans le même liseré ; un clic la montre ; au tableau, la page suit celle où tu es.
+
+1091. Où part ce que tu écris : il appartient à la diapo, pas à la page. Dans l'Atelier, au chapitre. En heure, dans la copie de la classe, pour cette classe. En répétition, nulle part : la répétition oublie tout à l'arrêt, c'est la règle. En mode test, rien au hub, sauf l'image du tableau.
+
+1092. La rédaction : ta proposition est plus rapide que la mienne. Chez toi, un clic sur la couleur, et au plus un sur le sous-descripteur ; chez moi, un clic par élément, cinq pour « le thème tenu ». La mienne nomme tout ce qui manque, mais tes sous-descripteurs à un seul élément le font aussi, pour l'essentiel. Je retire 1082 à 1084 et je prends la tienne.
+
+1093. La couleur est ton jugement d'ensemble, en un clic. Rouge, vraiment négatif ; orange, un peu moins ; vert, un peu mieux ; vert foncé, très bien, mais pour un élève de 3e, avec ses erreurs. Elle donne la note de base du point, par le calcul d'aujourd'hui, et le vert foncé donne le poids entier.
+
+1094. Sous chaque couleur, ses sous-descripteurs, un seul élément chacun, écrits dans le ton de leur couleur. Un clic au plus, sur le plus important : il affine la note dans la couleur, par les quatre paliers d'aujourd'hui, et il nomme l'élément dans le bilan et dans « À reprendre ».
+
+1095. Le contenu, par exemple pour « les codes de la lettre », à corriger : rouge, « Ta lettre n'a ni lieu ni date. » ; orange, « Il manque la date. » ; vert, « Les quatre codes sont là ; la date n'est pas en haut à droite. » ; vert foncé, « Les quatre codes sont là, chacun à sa place. »
+
+1096. Le bilan d'un point : la phrase de la couleur, la phrase du sous-descripteur, puis la citation.
+
+1097. Oui à 1092 à 1096 ? Ensuite je rédige la grille de la lettre ainsi, et le bilan de Flavie, pour que tu corriges les deux.
+
+À tester : la liste de la ⑩ de 12:05 tient.
+
+29/10/2026 12:59
+MEMO

@@ -8350,3 +8350,34 @@ MEMO
 
 29/10/2026 20:07
 MEMO
+
+## Tour 380 — 29/10/2026 20:42 → 20:43
+
+**Paul :** 1216 oui c'est le mieux. 1217 j'y ai déjà pensé. On pourrait imaginer que l'élève reçoit un pochoir html et le scan de sa copie. Moi quand je corrige, je charge les scans dans le navigateur, je fais ma correction ça sort un pochoir. Quand l'élève reçoit sa copie, il reçoit le scan et le pochoir, éventuellement je refabrique un pdf avec sa copie et le pochoir. Tu vois l'idée ?
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1230 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1222. 1216 acquis : le marquage dans la marge entre dans tes prochains sujets, et la grille vérifie ce qui est marqué.
+
+1223. Oui, je vois l'idée, et elle règle ce qui bloquait 1217 : le scan ne quitte jamais ton ordinateur. Tu le charges dans le navigateur pour corriger ; seul le pochoir part au site, c'est-à-dire la place de chaque marque sur la page et son texte. Quelques lignes par copie, aucune photo sur le site.
+
+1224. Ce que tu fais sur le scan : un clic sur un mot fautif l'entoure ; un rectangle tracé sur une phrase en fait la citation, dans l'écriture même de l'élève, sans la recopier ; les lettres de la marge (1216) sont sous tes yeux, tu vérifies. Les questions de la grille restent à côté, comme sur la capture 3. Si la mesure est bonne, l'étape 1 se construit directement avec le scan, pour ne pas refaire l'écran deux fois.
+
+1225. Ce que reçoit l'élève : un seul fichier, son scan avec le pochoir posé dessus, puis son échelle, ton bilan et « À reprendre ». En PDF, il s'imprime ou part par École Directe. En HTML, il devient vivant : un clic sur un mot entouré dit le type d'erreur, la bonne forme restant cachée. Tout se fabrique dans ton navigateur, avec des outils gratuits.
+
+1226. Ce qui frotte, un : le pochoir ne tombe juste que sur le scan qui a servi à corriger. L'élève reçoit donc toujours les deux fondus ensemble, jamais un pochoir à poser sur un autre scan ou sur sa feuille. Et quand tu rouvres une copie, l'appli vérifie que tu as chargé le même scan.
+
+1227. Ce qui frotte, deux : en 1075, l'élève se corrigeait dans l'appli et tu voyais qui avait fini. Avec un fichier envoyé par École Directe, tu ne le vois plus. Je propose que le fichier HTML renvoie ses corrections au site, comme les apps élèves ; tu gardes ainsi la liste de qui a fini.
+
+1228. Ce que je ne sais pas : ce que sort le photocopieur du collège (un PDF ? assez net ? une page par copie ?), le poids d'un scan, et le temps pour scanner un paquet.
+
+1229. Peux-tu scanner une page au photocopieur et me l'envoyer ? Une copie d'élève, ou une page écrite par toi si tu préfères. Je mesure la netteté et le poids ; elle reste ici, jamais sur le site ni au dépôt. Je te construis ensuite les captures : l'écran de correction avec le scan, et ce que reçoit l'élève.
+
+1230. Et oui à 1227 ?
+
+À tester : rien de neuf.
+
+29/10/2026 20:43
+MEMO

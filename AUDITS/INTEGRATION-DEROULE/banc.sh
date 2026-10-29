@@ -5,6 +5,7 @@
 # 3. le parcours P0-P12 + K15 sur l'assemblé           4. le parcours en MODE TEST (K15-test : aucune écriture hors de /site/tableau_test, §12.66)
 # 5. les contrôles K1-K13 de la conscience par l'entrée du site (MJPC_ENTREE=site)   6. la sonde de l'Atelier (sonde-1262, la ⑨)
 # 7. la sonde du tableau distant en mode test et de la clôture (sonde-1266, §12.66, la ⑨)
+# 8. la sonde de la ⑩ (sonde-10 : les feuilles du site au tableau, l'étiquette, le minuteur, la participation à 0, « Annuler cette heure » — §12.74, §12.70, §12.71, §12.68)
 # Code de sortie : 0 si tout est vert. Les sorties sont dans le dossier donné (par défaut AUDITS/INTEGRATION-DEROULE/sorties/<date-heure>/).
 set -u
 ICI=$(cd "$(dirname "$0")" && pwd); RACINE=$(cd "$ICI/../.." && pwd)
@@ -21,5 +22,6 @@ echo "— 5. contrôles K1-K13 par l'entrée du site" | tee -a "$OUT/banc.txt"; 
 grep -q -- "--- fin : 0 défaut" "$OUT/controles.txt" 2>/dev/null || R=1
 echo "— 6. la sonde de l'Atelier (§12.62, la ⑨)" | tee -a "$OUT/banc.txt"; node "$RACINE/LIVRAISONS/INTEGRATION/EX/bancs/sonde-1262.mjs" "$ASM" "$OUT/sonde-1262.txt" 2>&1 | tail -n 2 | tee -a "$OUT/banc.txt"; grep -q "· VERT" "$OUT/sonde-1262.txt" 2>/dev/null || R=1
 echo "— 7. la sonde du tableau distant en mode test et de la clôture (§12.66, la ⑨)" | tee -a "$OUT/banc.txt"; node "$RACINE/LIVRAISONS/INTEGRATION/EX/bancs/sonde-1266.mjs" "$ASM" "$OUT/sonde-1266.txt" 2>&1 | tail -n 2 | tee -a "$OUT/banc.txt"; grep -q "· VERT" "$OUT/sonde-1266.txt" 2>/dev/null || R=1
+echo "— 8. la sonde de la ⑩ (§12.74, §12.70, §12.71, §12.68)" | tee -a "$OUT/banc.txt"; node "$RACINE/LIVRAISONS/INTEGRATION/EX/bancs/sonde-10.mjs" "$ASM" "$OUT/sonde-10.txt" 2>&1 | tail -n 2 | tee -a "$OUT/banc.txt"; grep -q "· VERT" "$OUT/sonde-10.txt" 2>/dev/null || R=1
 echo "— résultat : $([ $R = 0 ] && echo VERT || echo ROUGE) · sorties dans $OUT" | tee -a "$OUT/banc.txt"
 exit $R

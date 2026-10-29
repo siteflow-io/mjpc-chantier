@@ -74,13 +74,15 @@ function dr_versMur(et, x){
         f.postMessage(fiche ? { sortie: true } : Object.assign({ et: null }, x), '*');
       } else { let ecran = x.ecran; if (ecran === undefined) { try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) { ecran = null; } }
         let docs = x.documents; if (docs === undefined) { try { docs = (dr_documents() || {})[String(et.si)] || []; } catch (e) { docs = []; } }
-        f.postMessage({ et, ecran, documents: docs, feuilles: dr_tabFeuillesDe(et) }, '*'); }
+        f.postMessage({ et: dr_tabAvecEtiquette(et), ecran, documents: docs, feuilles: dr_tabFeuillesDe(et) }, '*'); }
     } catch (e) {}
   }
   if (et) dr_sceneAuto();
 }
 
 /* §12.74 (1) : la feuille du site montrée part avec l'état vers la fenêtre locale (elle ne lit pas le hub) */
+/* §12.74 (2) : l'étiquette entière part avec l'état (le tableau n'a pas les activités du chapitre) */
+function dr_tabAvecEtiquette(et){ if (!et || typeof dr_etiquetteDe !== 'function') return et; const t = dr_etiquetteDe(et); return t == null ? et : Object.assign({}, et, { etiquette: t }); }
 function dr_tabFeuillesDe(et){ try { const r = et && et.doc && et.doc.feuille; const d = r && typeof DR_FEUILLES !== 'undefined' ? DR_FEUILLES.doc[r] : null; return d ? { [r]: d } : null; } catch (e) { return null; } }
 /* la fenêtre dit `pret` à l'ouverture (comme la maquette) : on lui pousse ce que la classe voit, gel compris (p8-5g, point 1).
    Elle redit `ici` toutes les 3 s : un pilote RECHARGÉ (réveil n°6 : écrire, recharger, « Reprendre le cours ») ne connaît plus la fenêtre
@@ -104,7 +106,7 @@ window.addEventListener('message', ev => {
        ce que voit la classe, sans rien écrire ni journaliser (relecteur 2, n° 3) */
     const et = dr_tabSansEntree(S.gel || S.mur); if (!et || !DR_TAB.fen || DR_TAB.fen.closed) return;
     let ecran = null; try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) {}
-    DR_TAB.fen.postMessage({ et, ecran, feuilles: dr_tabFeuillesDe(et) }, '*');   /* directement : pas de scène au hub depuis l'Atelier */
+    DR_TAB.fen.postMessage({ et: dr_tabAvecEtiquette(et), ecran, feuilles: dr_tabFeuillesDe(et) }, '*');   /* directement : pas de scène au hub depuis l'Atelier */
   } catch (e) {}
 });
 /* le clic sur « ⧉ Ouvrir le tableau », d'où que vienne le bouton (le gabarit est posé plus tard par `atVuesPoser`) :
@@ -138,6 +140,7 @@ function dr_scene(et){
   sc.origine = (typeof SES === 'object' && SES) ? SES.id : 'pilote';
   sc.ts = Math.max(Date.now(), (DR_TAB.dernierTs || 0) + 1); DR_TAB.dernierTs = sc.ts;   /* toujours croissant : deux scènes dans la même milliseconde (ou une horloge figée) restent ordonnées */
   sc.trameMaj = DR_TAB.trameMaj || 0;
+  try { const t = dr_etiquetteDe(et); if (t != null) sc.etiquette = t; } catch (e) {}   /* §12.74 (2) : l'étiquette entière, numéro compris */
   try { const hc = (typeof dr_horlogeCase === 'function') ? dr_horlogeCase() : null; sc.hdec = hc ? hc.dec + hc.saut : 0; } catch (e) { sc.hdec = 0; }   /* §12.66 (2) : l'écart de l'horloge de la case (les De Gaulle) — l'horloge du tableau distant le suit */
   return sc;
 }

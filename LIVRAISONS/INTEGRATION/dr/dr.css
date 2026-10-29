@@ -116,7 +116,7 @@ html:not(.dr-en-classe) #dr-zone #bnotes{display:none}
 .mur{container-type:size;font-family:"EB Garamond",Garamond,serif;background:#fffdf9;color:#22303f}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran{position:absolute;inset:0;padding:3.2% 3.6%;display:flex;flex-direction:column;gap:1.2%;overflow:hidden;box-sizing:border-box;background:#fffdf9;color:#22303f}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .corpsd.p85f-ancre{justify-content:flex-start}
-:is(#dr-zone,#ses-tab,.at-som-volet) .mur .act{font-size:.42em;letter-spacing:.13em;text-transform:uppercase;color:#0f8f53;border:1px solid rgba(15,143,83,.4);border-radius:999px;padding:.18em .5em;align-self:flex-start}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .act{font-size:.42em;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:#0f8f53;font-weight:700;border:0;border-radius:999px;padding:.24em .7em;align-self:flex-start;position:relative;z-index:8;box-shadow:0 1px 3px rgba(0,0,0,.25)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .cons{display:flex;gap:1.4cqh}:is(#dr-zone,#ses-tab,.at-som-volet) .mur .cons .pic{font-size:1.1em;flex:0 0 auto;line-height:1.25}:is(#dr-zone,#ses-tab,.at-som-volet) .mur .cons .txt{font-size:1.05em;line-height:1.28;font-weight:600;flex:1}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .sch{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;justify-content:center}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .sch-t{font-size:.72em;font-weight:600;margin-bottom:.15em}
@@ -520,3 +520,7 @@ html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-glisse-avant{box-shadow:inset 0 3px 0 var(--or)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-glisse-apres{box-shadow:inset 0 -3px 0 var(--or)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .at-chap .dr-d.dr-glisse-src{opacity:.4}
+
+/* §12.74 (2), 13 · 94 : l'étiquette d'activité lisible au tableau — fond plein, texte gras, toujours au-dessus d'une image (z-index 8 ; seule la participation, voulue par Paul, passe devant) */
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .act{z-index:8}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .act [data-p]{outline-color:#fff}

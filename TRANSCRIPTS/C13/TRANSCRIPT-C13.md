@@ -8220,3 +8220,28 @@ MEMO
 
 29/10/2026 16:43
 MEMO
+
+## Tour 375 — 29/10/2026 16:46 → 16:49
+
+**Paul :** je ne comprends plus rien, il faut que je visualise là.
+
+**Fait.** Deux captures construites, `MANDATS/REDACTION-UNIVERSELLE/captures-29-10/` : `3-correction-cases.png` (vue-c.html) et `4-grille-case-par-case.png` (vue-d.html), générées par `gen2.py`, 1707 × 743, palette de `redaction.html` (`ECHELON_COULEUR`, `:root`). Données : les oui / non de la capture 1 ; couleur et point de chaque case de Flavie = ceux de sa copie au hub (total 19,5) ; les autres cases et toutes les phrases sont des exemples.
+
+**Claude :** [captures 3-correction-cases.png et 4-grille-case-par-case.png]
+
+À jouer : regarder les deux captures · en cours : rien · ouvert : 1199 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1195. Deux captures construites, sur la copie de Flavie, aux couleurs de la rédaction.
+
+1196. La capture 3, l'écran de correction en mode général. À gauche, les questions, toutes « oui » d'avance : tu cliques les 9 « NON » de Flavie, et chaque groupe se valide d'une touche. À droite, la case où tombe chaque point : un fait, une couleur, un point. Le total fait 19,5, la note que tu lui as mise.
+
+1197. La capture 4, la grille case par case, sur trois points. Chaque case est un seul fait, avec sa couleur et son point fixés d'avance ; la case de Flavie est encadrée. On y voit la présence et la place séparées (les codes), une couleur absente quand aucun fait ne la justifie (les paragraphes), et les questions sautées quand elles n'ont plus d'objet (ce qu'on tait).
+
+1198. Les phrases des cases sont des exemples, à corriger. Les couleurs et les points des cases de Flavie sont ceux que tu lui as mis ; ceux des autres cases sont les miens. Les 32 gestes sont comptés, pas mesurés : 2 de trop, à cause de ses 14 erreurs.
+
+1199. C'est bien ça que tu veux ? Si oui, j'écris toute la grille de la lettre ainsi.
+
+À tester : rien de neuf.
+
+29/10/2026 16:49
+MEMO

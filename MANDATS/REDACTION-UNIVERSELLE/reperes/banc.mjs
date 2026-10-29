@@ -68,6 +68,36 @@ if (fs.existsSync(D + '/../scan-prive/page-q85.jpg')) {
   const t = await pg.textContent('#ePhoto');
   dire(!p.ok && /quatre repères/.test(t) && await pg.isHidden('#verdict'), `copie de l'an dernier, sans repères : « ${t.trim().slice(0, 60)}… »`);
 }
+// 6 bis. sans imprimante : des carrés dessinés au feutre, pas aux places prévues, une photo d'au-dessus pour référence
+const VM = JSON.parse(fs.readFileSync(D + '/verite-main.json', 'utf8'));
+const inv = H => { const [a, b, c] = H[0], [d, e, f] = H[1], [g, h, i] = H[2], A = e * i - f * h, B = -(d * i - f * g), C = d * h - e * g, det = a * A + b * B + c * C; return [[A / det, -(b * i - c * h) / det, (b * f - c * e) / det], [B / det, (a * i - c * g) / det, -(a * f - c * d) / det], [C / det, -(a * h - b * g) / det, (a * e - b * d) / det]]; };
+await pg.click('#bEffacer');
+await pg.evaluate(() => { window.__reperes.scan = null; window.__reperes.photo = null; });
+await pg.setInputFiles('#fScan', D + '/main-reference.jpg');
+await pg.waitForFunction(() => window.__reperes.scan);
+const rm = await pg.evaluate(() => window.__reperes.scan);
+dire(rm.ok && !rm.imprimee, `feuille au feutre, référence : quatre carrés trouvés, reconnue comme non imprimée (${rm.ms} ms)`);
+const motsM = [[70, 100], [121, 180], [158, 240]], clics = [];
+for (const [X, Y] of motsM) {
+  const q = ap(VM['main-reference'].H, X, Y).map(v => v * rm.k), box = await pg.locator('#cScan').boundingBox();
+  clics.push(q); await pg.locator('#cScan').click({ position: { x: q[0] / rm.w * box.width, y: q[1] / rm.h * box.height } });
+}
+await pg.evaluate(() => { window.__reperes.photo = null; });
+await pg.setInputFiles('#fPhoto', D + '/main-photo.jpg');
+await pg.waitForFunction(() => window.__reperes.photo, null, { timeout: 60000 });
+let pm = await pg.evaluate(() => window.__reperes.photo);
+const HrI = inv(VM['main-reference'].H);
+let pire2 = 0; clics.forEach((q, i) => { const vrai = ap(HrI, q[0] / rm.k, q[1] / rm.k), t = ap(VM['main-photo'].H, vrai[0], vrai[1]).map(v => v * pm.k), e1 = ap(VM['main-photo'].H, vrai[0] + 1, vrai[1]).map(v => v * pm.k), m = pm.cercles[i]; pire2 = Math.max(pire2, Math.hypot(t[0] - m[0], t[1] - m[1]) / Math.hypot(e1[0] - t[0], e1[1] - t[1])); });
+dire(pm.ok && pire2 < 1, `feuille au feutre, photo de travers : chaque cercle tombe à ${pire2.toFixed(2)} mm au plus de son mot (attendu < 1)`);
+dire(pm.ecriture && pm.ecriture.n >= 20 && pm.ecriture.p90 < 1, `feuille au feutre, photo de travers : l'écriture comparée sur ${pm.ecriture && pm.ecriture.n} morceaux, 9 sur 10 à ${pm.ecriture && pm.ecriture.p90.toFixed(2)} mm au plus (attendu < 1)`);
+dire(/ça va/.test(await pg.textContent('#verdict')) && await pg.isHidden('#tCroix'), `feuille au feutre : verdict « ça va », pas de tableau de croix`);
+await pg.screenshot({ path: D + '/banc-5-feutre.png', fullPage: true });
+await pg.evaluate(() => { window.__reperes.photo = null; });
+await pg.setInputFiles('#fPhoto', D + '/main-pliee.jpg');
+await pg.waitForFunction(() => window.__reperes.photo, null, { timeout: 60000 });
+pm = await pg.evaluate(() => window.__reperes.photo);
+dire(pm.ecriture && Math.abs(pm.ecriture.max - VM.bosse_mm) < 0.8, `feuille au feutre, bombée de ${VM.bosse_mm} mm : l'écriture a glissé de ${pm.ecriture && pm.ecriture.max.toFixed(2)} mm au plus (attendu ${VM.bosse_mm} à 0,8 près)`);
+await pg.screenshot({ path: D + '/banc-6-feutre-pliee.png', fullPage: true });
 // 7. la reconnaissance du cadre, assez rapide pour un viseur vivant ?
 const t7 = [];
 for (let i = 0; i < 5; i++) { await pg.evaluate(() => { window.__reperes.photo = null; }); await pg.setInputFiles('#fPhoto', D + '/video.jpg'); await pg.waitForFunction(() => window.__reperes.photo); const r = await pg.evaluate(() => window.__reperes.photo); t7.push(r.ok ? r.ms : -1); }

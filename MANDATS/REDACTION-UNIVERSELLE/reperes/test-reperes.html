@@ -47,29 +47,30 @@ table.croix th{color:var(--doux);font-weight:600}
 <main>
   <header>
     <h1>Test des repères</h1>
-    <p class="chapo">Le test mesure si un cercle posé sur ton scan retombe sur le même mot dans la photo que l'élève prendra de sa feuille. Il faut moins de 4 mm de décalage : une demi-ligne.</p>
+    <p class="chapo">Le test mesure si un cercle posé sur ton scan retombe sur le même mot dans la photo que l'élève prendra de sa feuille. Il faut moins de 4 mm de décalage : une demi-ligne. Tout peut se faire avec le seul téléphone, sans imprimante.</p>
   </header>
 
   <section class="etape" aria-labelledby="t1">
     <span class="num">Étape 1 · la feuille</span>
-    <h2 id="t1">Imprime et écris</h2>
+    <h2 id="t1">Prépare une feuille avec ses quatre repères</h2>
     <div class="feuille">
-      <svg id="apercu" viewBox="0 0 210 297" role="img" aria-label="La feuille à repères : quatre carrés noirs aux coins, des lignes à écrire en haut, dix croix de contrôle"></svg>
+      <svg id="apercuMain" viewBox="0 0 210 297" role="img" aria-label="Une copie écrite, avec quatre carrés dessinés au feutre près des coins ; celui d'en haut à gauche est évidé"></svg>
       <ul>
-        <li>Imprime la feuille envoyée en PDF dans la conversation, à 100 %.</li>
-        <li>Écris quelques lignes entre les traits, comme un élève.</li>
-        <li>N'écris ni sur les carrés des coins ni sur les croix : elles servent à mesurer.</li>
+        <li><b>Sans imprimante.</b> Prends une feuille déjà écrite : une de tes copies, ou une page de ta main.</li>
+        <li>Au feutre noir, dessine quatre carrés pleins d'environ 1,5 cm, à 2 cm des coins. Celui d'en haut à gauche est évidé : un cadre épais avec un trou au milieu.</li>
+        <li>Ne dessine rien d'autre près des carrés.</li>
+        <li><b>Avec une imprimante</b>, plus tard : la feuille à repères envoyée en PDF, à 100 %, puis quelques lignes écrites.</li>
       </ul>
     </div>
   </section>
 
   <section class="etape" aria-labelledby="t2">
-    <span class="num">Étape 2 · sur l'ordinateur</span>
-    <h2 id="t2">Charge ton scan, pose trois cercles</h2>
-    <p>Scanne la feuille au photocopieur, puis charge le scan ici (PDF ou image). Clique ensuite sur trois mots : un cercle se pose sur chacun.</p>
-    <label class="bouton" for="fScan">Choisir le scan<input type="file" id="fScan" accept="application/pdf,image/*"></label>
-    <div class="vue" id="vScan" hidden><canvas id="cScan" aria-label="Ton scan, avec les repères trouvés"></canvas></div>
-    <p class="etat" id="eScan">Aucun scan chargé.</p>
+    <span class="num">Étape 2 · la référence</span>
+    <h2 id="t2">Charge la référence, pose trois cercles</h2>
+    <p>La référence, c'est ce que tu aurais pour corriger : le scan du photocopieur. Sans photocopieur, une photo prise bien droite, d'au-dessus, fait l'affaire. Clique ensuite sur trois mots : un cercle se pose sur chacun.</p>
+    <label class="bouton" for="fScan">Choisir la référence<input type="file" id="fScan" accept="application/pdf,image/*"></label>
+    <div class="vue" id="vScan" hidden><canvas id="cScan" aria-label="Ta référence, avec les repères trouvés"></canvas></div>
+    <p class="etat" id="eScan">Aucune référence chargée.</p>
     <div class="code" id="zCodeScan" hidden>
       <span class="etat">Code de tes cercles, à recopier sur le téléphone :</span>
       <input id="iCodeScan" readonly aria-label="Code des cercles">
@@ -79,10 +80,10 @@ table.croix th{color:var(--doux);font-weight:600}
   </section>
 
   <section class="etape" aria-labelledby="t3">
-    <span class="num">Étape 3 · sur le téléphone</span>
-    <h2 id="t3">Photographie la feuille</h2>
-    <p>Ouvre cette même page sur ton téléphone. Pose la feuille sur une table et photographie-la entière, même un peu de travers. Recommence en la pliant légèrement : c'est le cas réel d'une copie rendue.</p>
-    <p class="etat" id="eCercles">Cercles du scan : aucun pour l'instant.</p>
+    <span class="num">Étape 3 · la photo de l'élève</span>
+    <h2 id="t3">Photographie la feuille de travers</h2>
+    <p>Pose la feuille sur une table et photographie-la entière, de travers, comme le ferait un élève. Recommence en la pliant légèrement : c'est le cas réel d'une copie rendue. Si ta référence est sur l'ordinateur, ouvre cette même page sur le téléphone : tes cercles y arrivent seuls.</p>
+    <p class="etat" id="eCercles">Cercles de la référence : aucun pour l'instant.</p>
     <div class="code" id="zCodePhoto" hidden>
       <input id="iCodePhoto" placeholder="Colle ici le code des cercles" aria-label="Code des cercles">
       <button class="second" id="bCode" type="button">Utiliser ce code</button>
@@ -119,7 +120,18 @@ function feuilleSVG(pourImpression) {
   G.croix.forEach(([x, y]) => s.push(`<path d="M${x - G.bras} ${y}H${x + G.bras}M${x} ${y - G.bras}V${y + G.bras}" stroke="#000" stroke-width="${G.trait}"/>`));
   return s.join('');
 }
-document.getElementById('apercu').innerHTML = feuilleSVG(true);
+function feuilleMainSVG() {
+  const s = ['<rect width="210" height="297" fill="#fff"/>'];
+  for (let y = 24; y <= 280; y += 8) s.push(`<line x1="0" y1="${y}" x2="210" y2="${y}" stroke="#c9d6ec" stroke-width="0.5"/>`);
+  s.push('<line x1="40" y1="0" x2="40" y2="297" stroke="#f0b8b8" stroke-width="0.6"/>');
+  for (let y = 48; y <= 256; y += 8) { let x = 44 + (y % 16 ? 6 : 0); while (x < 186) { const l = 9 + ((x * 7 + y) % 13); s.push(`<path d="M${x} ${y - 1.5}q${l / 4} -3 ${l / 2} 0t${l / 2} 0" fill="none" stroke="#2a4c9a" stroke-width="0.7"/>`); x += l + 4; } }
+  [[20, 20], [190, 20], [190, 277], [20, 277]].forEach(([x, y], i) => {
+    s.push(`<rect x="${x - 7.5}" y="${y - 7.5}" width="15" height="15" rx="1.2" fill="#111" transform="rotate(${[-3, 2, -1, 4][i]} ${x} ${y})"/>`);
+    if (!i) s.push(`<rect x="${x - 3.5}" y="${y - 3.5}" width="7" height="7" fill="#fff" transform="rotate(-3 ${x} ${y})"/>`);
+  });
+  return s.join('');
+}
+document.getElementById('apercuMain').innerHTML = feuilleMainSVG();
 window.__feuilleSVG = feuilleSVG;   // pour fabriquer le PDF de la feuille, et pour le banc
 
 // ── calcul : homographie (page en mm → image en points) ──
@@ -225,7 +237,7 @@ function analyser(source) {
     res.pts = ord.map(m => [m.cx, m.cy]);
     res.H = homographie(G.reperes, res.pts); res.Hi = res.H && inverse3(res.H);
     res.ok = !!(res.H && res.Hi); res.trouves = 4;
-    if (res.ok) res.croix = mesurerCroix(res);
+    if (res.ok) { res.croix = mesurerCroix(res); const b = bilanCroix(res); res.imprimee = !!b && b.n >= 8 && b.moyen < 1.5; }   // la feuille imprimée : ses croix sont là où il faut
   }
   res.ms = performance.now() - t0;
   return res;
@@ -256,6 +268,49 @@ function bilanCroix(r) {
   return { n: t.length, moyen: t.reduce((s, c) => s + c.mm, 0) / t.length, max: Math.max(...t.map(c => c.mm)) };
 }
 const mm = v => v.toFixed(1).replace('.', ',') + ' mm';
+const mmx = v => Number.isFinite(v) ? mm(v) : 'plus de 6 mm';
+// ── l'écriture elle-même : chaque morceau de la référence, retrouvé sur la photo ──
+function redresser(r, pas) {   // la page remise droite, à « pas » points par millimètre
+  const { w, h, I, W1, H } = r, Wp = Math.round(G.W * pas), Hp = Math.round(G.H * pas), d = new Float32Array(Wp * Hp);
+  const bx = (x, y) => { const x0 = Math.max(0, x - 1), x1 = Math.min(w, x + 2), y0 = Math.max(0, y - 1), y1 = Math.min(h, y + 2); return (I[y1 * W1 + x1] - I[y0 * W1 + x1] - I[y1 * W1 + x0] + I[y0 * W1 + x0]) / ((x1 - x0) * (y1 - y0)); };
+  for (let j = 0; j < Hp; j++) for (let i = 0; i < Wp; i++) {
+    const [x, y] = appliquer(H, (i + 0.5) / pas, (j + 0.5) / pas);
+    if (!(x >= 0 && y >= 0 && x < w - 1 && y < h - 1)) { d[j * Wp + i] = NaN; continue; }
+    const x0 = x | 0, y0 = y | 0, fx = x - x0, fy = y - y0;
+    d[j * Wp + i] = (bx(x0, y0) * (1 - fx) + bx(x0 + 1, y0) * fx) * (1 - fy) + (bx(x0, y0 + 1) * (1 - fx) + bx(x0 + 1, y0 + 1) * fx) * fy;
+  }
+  return { Wp, Hp, d, pas };
+}
+function comparerEcriture(ra, rb) {
+  const pas = 2.5, A = redresser(ra, pas), B = redresser(rb, pas), W = A.Wp, t = Math.round(10 * pas), R = Math.round(6 * pas), n = (2 * t) * (2 * t), L = 2 * R + 1;
+  const encres = [];
+  for (let cy = 40; cy <= 257; cy += 10) for (let cx = 40; cx <= 170; cx += 10) {
+    const px = Math.round(cx * pas), py = Math.round(cy * pas); let s = 0, s2 = 0, nan = false;
+    for (let y = py - t; y < py + t && !nan; y++) for (let x = px - t; x < px + t; x++) { const v = A.d[y * W + x]; if (v !== v) { nan = true; break; } s += v; s2 += v * v; }
+    if (nan) continue; const m = s / n, va = s2 / n - m * m; if (va < 120) continue;   // un morceau sans encre ne se compare pas
+    encres.push({ cx, cy, px, py, m, va });
+  }
+  const pas2 = Math.ceil(encres.length / 48), pris = encres.filter((_, i) => i % pas2 === 0), mesures = [];
+  for (const P of pris) {
+    let best = -2, bdx = 0, bdy = 0; const S = new Float32Array(L * L).fill(-2);
+    for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) {
+      let sb = 0, sb2 = 0, sab = 0, ok = true;
+      for (let y = P.py - t; y < P.py + t && ok; y++) { const oa = y * W, ob = (y + dy) * W + dx; for (let x = P.px - t; x < P.px + t; x++) { const b = B.d[ob + x]; if (b !== b) { ok = false; break; } sb += b; sb2 += b * b; sab += A.d[oa + x] * b; } }
+      if (!ok) continue;
+      const mb = sb / n, vb = sb2 / n - mb * mb; if (vb < 1) continue;
+      const c = (sab / n - P.m * mb) / Math.sqrt(P.va * vb); S[(dy + R) * L + dx + R] = c;
+      if (c > best) { best = c; bdx = dx; bdy = dy; }
+    }
+    if (best < 0.5) continue;
+    if (Math.abs(bdx) === R || Math.abs(bdy) === R) { mesures.push({ cx: P.cx, cy: P.cy, mm: Infinity, ncc: best }); continue; }
+    const at = (dx, dy) => S[(dy + R) * L + dx + R], sub = (m, c, p) => { if (m < -1 || p < -1) return 0; const den = m - 2 * c + p; return Math.abs(den) > 1e-9 ? 0.5 * (m - p) / den : 0; };
+    const fx = bdx + sub(at(bdx - 1, bdy), best, at(bdx + 1, bdy)), fy = bdy + sub(at(bdx, bdy - 1), best, at(bdx, bdy + 1));
+    mesures.push({ cx: P.cx, cy: P.cy, mm: Math.hypot(fx, fy) / pas, ncc: best });
+  }
+  if (mesures.length < 5) return null;
+  const v = mesures.map(m => m.mm).sort((a, b) => a - b);
+  return { n: v.length, med: v[Math.floor((v.length - 1) / 2)], p90: v[Math.floor(0.9 * (v.length - 1))], max: v[v.length - 1], mesures };
+}
 
 // ── charger un fichier : image, ou première page d'un PDF ──
 let pdfPret = null;
@@ -289,7 +344,7 @@ function dessiner(canvas, r, cercles, opts) {
     r.pts.forEach(([a, b], i) => i ? x.lineTo(a, b) : x.moveTo(a, b)); x.closePath(); x.stroke();
   }
   if (r.ok) {
-    (r.croix || []).forEach(c => {
+    (r.imprimee ? r.croix : []).forEach(c => {
       if (!c.trouvee) return;
       x.fillStyle = c.mm < G.seuil ? '#2e8b3e' : '#a23a3a'; x.beginPath(); x.arc(c.F[0], c.F[1], ep * 1.6, 0, 7); x.fill();
       x.font = `600 ${Math.round(ep * 6)}px system-ui,sans-serif`; x.fillText(c.mm.toFixed(1).replace('.', ','), c.F[0] + ep * 4, c.F[1] - ep * 3);
@@ -318,7 +373,7 @@ function lireCode(s) {
 }
 function etatCercles() {
   const L = cercles(), e = document.getElementById('eCercles');
-  e.innerHTML = L.length ? `Cercles du scan : <b>${L.length}</b>${docRef && !cerclesLocaux.length ? ', venus de ton ordinateur' : ''}.` : (docRef ? "Cercles du scan : aucun pour l'instant. Pose-les à l'étape 2 sur l'ordinateur : ils arrivent ici tout seuls." : "Cercles du scan : aucun. Colle le code affiché à l'étape 2 sur l'ordinateur.");
+  e.innerHTML = L.length ? `Cercles de la référence : <b>${L.length}</b>${docRef && !cerclesLocaux.length ? ', venus de ton ordinateur' : ''}.` : (docRef ? "Cercles de la référence : aucun pour l'instant. Pose-les à l'étape 2 ; s'ils sont posés sur l'ordinateur, ils arrivent ici tout seuls." : "Cercles de la référence : aucun. Colle le code affiché à l'étape 2 sur l'ordinateur.");
   document.getElementById('zCodePhoto').hidden = !!docRef;
 }
 function enregistrer() {
@@ -351,16 +406,16 @@ function afficherScan() {
   const r = scanR, e = document.getElementById('eScan'); document.getElementById('vScan').hidden = false;
   dessiner(document.getElementById('cScan'), r, cerclesLocaux);
   const pb = phraseReperes(r, 'ce scan'); if (pb) { e.innerHTML = `<span class="ko">${pb}</span>`; return; }
-  const b = bilanCroix(r);
-  e.innerHTML = `<span class="ok">Les quatre repères sont trouvés.</span> ` + (b ? `Sur le scan lui-même, les croix sont à <b>${mm(b.moyen)}</b> en moyenne de leur place, <b>${mm(b.max)}</b> au plus (${b.n} croix sur ${G.croix.length}).` : 'Aucune croix mesurable.') +
+  const b = r.imprimee ? bilanCroix(r) : null;
+  e.innerHTML = `<span class="ok">Les quatre repères sont trouvés.</span> ` + (b ? `Sur la référence elle-même, les croix sont à <b>${mm(b.moyen)}</b> en moyenne de leur place, <b>${mm(b.max)}</b> au plus.` : 'La mesure se fera sur ton écriture, à l\'étape 3.') +
     ` ${cerclesLocaux.length < 3 ? 'Clique sur ' + (3 - cerclesLocaux.length) + ' mot' + (3 - cerclesLocaux.length > 1 ? 's' : '') + ' encore.' : 'Tes trois cercles sont posés' + (docRef ? ' et enregistrés : ton téléphone les retrouve tout seul.' : '.')}`;
   document.getElementById('bEffacer').hidden = !cerclesLocaux.length;
 }
 document.getElementById('fScan').addEventListener('change', async ev => {
   const f = ev.target.files && ev.target.files[0]; if (!f) return;
   const e = document.getElementById('eScan'); e.textContent = 'Lecture du scan…';
-  try { scanR = analyser(await charger(f)); afficherScan(); window.__reperes.scan = resume(scanR); }
-  catch (err) { e.innerHTML = '<span class="ko">Ce fichier ne s\'ouvre pas ici. Essaie une image (JPEG ou PNG) du scan.</span>'; }
+  try { scanR = analyser(await charger(f)); afficherScan(); window.__reperes.scan = resume(scanR); if (photoR) { await pause(); afficherPhoto(); window.__reperes.photo = resume(photoR); } }
+  catch (err) { e.innerHTML = '<span class="ko">Ce fichier ne s\'ouvre pas ici. Essaie une image (JPEG ou PNG).</span>'; }
   ev.target.value = '';
 });
 document.getElementById('cScan').addEventListener('click', ev => {
@@ -378,33 +433,41 @@ document.getElementById('bCopier').addEventListener('click', () => {
 document.getElementById('bCode').addEventListener('click', () => { cerclesCode = lireCode(document.getElementById('iCodePhoto').value); etatCercles(); if (photoR) afficherPhoto(); });
 
 // ── étape 3 : la photo ──
+const pause = () => new Promise(ok => setTimeout(ok, 30));
 function afficherPhoto() {
   const r = photoR, e = document.getElementById('ePhoto'), vd = document.getElementById('verdict'), tb = document.getElementById('tCroix');
   document.getElementById('vPhoto').hidden = false; dessiner(document.getElementById('cPhoto'), r, cercles());
   const pb = phraseReperes(r, 'cette photo'); if (pb) { e.innerHTML = `<span class="ko">${pb}</span>`; vd.hidden = true; tb.hidden = true; return; }
-  const b = bilanCroix(r); if (!b) { e.innerHTML = '<span class="ko">Les repères sont trouvés, mais aucune croix n\'est mesurable : la photo est-elle nette ?</span>'; vd.hidden = true; return; }
-  const bs = scanR && scanR.ok ? bilanCroix(scanR) : null, total = b.max + (bs ? bs.max : 0);
-  e.innerHTML = `<span class="ok">Les quatre repères sont trouvés.</span> Sur la photo, les croix sont à <b>${mm(b.moyen)}</b> en moyenne de leur place, <b>${mm(b.max)}</b> au plus (${b.n} croix sur ${G.croix.length}).` +
-    (bs ? ` Avec le décalage du scan (${mm(bs.max)} au plus), un cercle peut glisser de <b>${mm(total)}</b> au plus.` : ' Charge aussi le scan (étape 2) pour compter son décalage.') +
-    (cercles().length ? ' Tes cercles sont reportés sur la photo : regarde s\'ils entourent les mêmes mots.' : '');
-  vd.hidden = false; vd.className = 'verdict ' + (total < G.seuil ? 'bon' : 'mauvais');
-  document.getElementById('vMm').textContent = mm(total);
-  document.getElementById('vMot').textContent = total < G.seuil ? 'ça va : moins d\'une demi-ligne' : 'ça ne va pas : plus d\'une demi-ligne';
-  tb.hidden = false;
-  tb.innerHTML = '<tr><th>Croix</th><th>Scan</th><th>Photo</th></tr>' + G.croix.map(([X, Y], i) => {
-    const p = r.croix[i], s = bs && scanR.croix[i];
+  const ref = scanR && scanR.ok ? scanR : null;
+  if (ref && r.ecritureRef !== ref) { r.ecriture = comparerEcriture(ref, r); r.ecritureRef = ref; }
+  const ecr = ref ? r.ecriture : null, bp = r.imprimee ? bilanCroix(r) : null, bs = ref && ref.imprimee ? bilanCroix(ref) : null;
+  const ph = ['<span class="ok">Les quatre repères sont trouvés.</span>']; let total = null;
+  if (ecr) { total = ecr.p90; ph.push(`Sur ton écriture, ${ecr.n} morceaux de la référence retrouvés sur la photo : 9 sur 10 ont glissé de moins de <b>${mmx(ecr.p90)}</b>, le pire de <b>${mmx(ecr.max)}</b>.`); }
+  else if (ref) ph.push('Trop peu d\'écriture à comparer : prends une feuille plus remplie.');
+  if (bp) { ph.push(`Les croix de la feuille : <b>${mm(bp.max)}</b> au plus sur la photo${bs ? `, ${mm(bs.max)} au plus sur la référence` : ''}.`); if (total == null) total = bp.max + (bs ? bs.max : 0); }
+  if (!ref) ph.push('Charge aussi la référence (étape 2) : la mesure compare les deux.');
+  if (cercles().length) ph.push('Tes cercles sont reportés sur la photo : regarde s\'ils entourent les mêmes mots.');
+  e.innerHTML = ph.join(' ');
+  if (total == null) { vd.hidden = true; tb.hidden = true; return; }
+  const bon = total < G.seuil;
+  vd.hidden = false; vd.className = 'verdict ' + (bon ? 'bon' : 'mauvais');
+  document.getElementById('vMm').textContent = mmx(total);
+  document.getElementById('vMot').textContent = bon ? 'ça va : moins d\'une demi-ligne' : 'ça ne va pas : plus d\'une demi-ligne';
+  tb.hidden = !bp;
+  if (bp) tb.innerHTML = '<tr><th>Croix</th><th>Référence</th><th>Photo</th></tr>' + G.croix.map(([X, Y], i) => {
+    const p = r.croix[i], s = bs && ref.croix[i];
     return `<tr><td>${X} × ${Y} mm</td><td>${s && s.trouvee ? mm(s.mm) : '—'}</td><td>${p && p.trouvee ? mm(p.mm) : '—'}</td></tr>`;
   }).join('');
 }
 document.getElementById('fPhoto').addEventListener('change', async ev => {
   const f = ev.target.files && ev.target.files[0]; if (!f) return;
   const e = document.getElementById('ePhoto'); e.textContent = 'Lecture de la photo…';
-  try { photoR = analyser(await charger(f)); afficherPhoto(); window.__reperes.photo = resume(photoR); }
+  try { photoR = analyser(await charger(f)); if (scanR && scanR.ok && photoR.ok) { e.textContent = 'Comparaison avec la référence…'; await pause(); } afficherPhoto(); window.__reperes.photo = resume(photoR); }
   catch (err) { e.innerHTML = '<span class="ko">Cette photo ne s\'ouvre pas ici. Reprends-la avec l\'appareil photo du téléphone.</span>'; }
   ev.target.value = '';
 });
 
 // ── pour le banc : ce que la page a mesuré, sans l'image ──
-function resume(r) { return { ok: r.ok, w: r.w, h: r.h, k: r.k, ms: Math.round(r.ms), pts: r.pts || null, H: r.H || null, croix: (r.croix || []).map(c => c.trouvee ? +c.mm.toFixed(2) : null), cercles: cercles().map(([X, Y]) => r.ok ? appliquer(r.H, X, Y) : null) }; }
-window.__reperes = { analyser, appliquer, G, scan: null, photo: null, cercles: () => cercles() };
+function resume(r) { return { ok: r.ok, w: r.w, h: r.h, k: r.k, ms: Math.round(r.ms), pts: r.pts || null, H: r.H || null, croix: (r.croix || []).map(c => c.trouvee ? +c.mm.toFixed(2) : null), cercles: cercles().map(([X, Y]) => r.ok ? appliquer(r.H, X, Y) : null), imprimee: !!r.imprimee, ecriture: r.ecriture ? { n: r.ecriture.n, med: r.ecriture.med, p90: r.ecriture.p90, max: r.ecriture.max } : null }; }
+window.__reperes = { analyser, appliquer, comparerEcriture, G, scan: null, photo: null, cercles: () => cercles() };
 </script>

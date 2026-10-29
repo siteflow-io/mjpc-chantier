@@ -8469,3 +8469,28 @@ MEMO
 
 29/10/2026 22:49
 MEMO
+
+## Tour 384 — 29/10/2026 22:57 → 23:03
+
+**Paul :** Je ne peux pas imprimer
+
+**Fait.** La page « Test des repères » refaite pour un test sans imprimante (version 2, même adresse) : la feuille, une copie déjà écrite avec quatre carrés dessinés au feutre (celui d'en haut à gauche évidé) ; la référence, le scan ou à défaut une photo d'au-dessus ; la mesure, sur l'écriture elle-même (`comparerEcriture` : la référence et la photo remises droites à 2,5 points par mm, jusqu'à 48 morceaux de 20 mm comparés par corrélation, recherche à ± 6 mm), les croix n'étant mesurées que sur la feuille imprimée (reconnue par ses croix). Fondement : le passage référence → photo ne dépend pas de la place exacte des carrés, seulement de ce que ce sont les mêmes. Banc sur une feuille simulée au feutre (`synth_main.py` : carrés tordus, décalés de 2 à 5 mm des places prévues, traînées de feutre ; écriture sur toute la page) : 19 ok / 0 échec ; cercles à 0,24 mm de leur mot sur la photo de travers ; écriture comparée sur 44 morceaux, 9 sur 10 à 0,06 mm ; feuille bombée de 2,5 mm : 2,30 mm mesurés ; comparaison : environ 460 ms ici (`chrono.mjs`).
+
+**Claude :** [page « Test des repères », version 2]
+
+À jouer : le test des repères, sans imprimante (1254) · en cours : rien · ouvert : 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1253. Entendu, la page est refaite pour un test sans imprimante, au même endroit.
+
+1254. Le test, avec ton seul téléphone. Prends une feuille déjà écrite, une de tes copies ou une page de ta main. Au feutre noir, dessine quatre carrés pleins d'environ 1,5 cm, à 2 cm des coins ; celui d'en haut à gauche est évidé, un cadre épais avec un trou au milieu. Prends une première photo bien droite, d'au-dessus : c'est la référence, ce que serait ton scan ; touche trois mots. Puis photographie la feuille de travers, et une dernière fois un peu pliée.
+
+1255. Les carrés n'ont pas besoin d'être à la bonne place ni bien droits : il suffit que ce soient les mêmes sur les deux photos. La page compare alors ton écriture elle-même, morceau par morceau, entre la référence et la photo, et dit de combien elle a glissé.
+
+1256. Mesuré ici, sur une feuille simulée aux carrés dessinés de travers et décalés : les cercles retombent à 0,2 mm de leur mot ; sur la feuille bombée de 2,5 mm, la page mesure 2,3 mm. La comparaison prend une demi-seconde. 19 vérifications sur 19.
+
+1257. Ce que je ne sais pas : le temps sur ton téléphone, et ce que donnent ton feutre, ta lumière et ton papier. C'est ton test.
+
+À tester : quatre carrés au feutre ; la photo de référence, trois mots touchés ; la photo de travers ; la photo pliée ; pour chacune, le chiffre et le verdict.
+
+29/10/2026 23:03
+MEMO

@@ -8807,3 +8807,28 @@ MEMO
 
 30/10/2026 00:20
 MEMO
+
+## Tour 395 — 30/10/2026 00:23 → 00:24
+
+**Paul :** Ok. Pour le comportement du pinceau je pensais surtout à ce qu'on fait quand on fait une capture d'écran. Le pointeur croix, puis on file là où on veut. Pareil pour les formes, elles font partie du pinceau
+
+**Fait.** Rien de neuf : 1325 à 1330 acquis (« Ok »).
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1336 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1332. Compris : le pinceau marche comme une capture d'écran. Pointeur en croix, de la couleur du critère ; tu appuies, tu glisses, tu lâches : la forme est posée à la taille tracée. Un seul geste. Ça remplace le clic gauche, clic droit de 1327. Faisable, oui.
+
+1333. Les formes font partie du pinceau : la langue trace un cercle rouge autour du mot ; un critère trace un cadre de sa couleur ; la phrase qui t'a touché, un cadre doré (bouton ★, 1330). Tu ne choisis jamais la forme, elle vient avec le pinceau.
+
+1334. Ce qui télescope : un passage sur plusieurs lignes. Un rectangle de capture tiré du milieu de la ligne 24 au milieu de la ligne 27 prend aussi la fin de la phrase d'avant et le début de celle d'après. Je propose : sur une ligne, le cadre suit ton tracé ; sur plusieurs lignes, il suit les lignes, du mot où tu as appuyé au mot où tu as lâché, comme un surlignage. Faisable, puisque l'appli trouve les lignes (1325).
+
+1335. Pour retoucher une marque : appuyer dessus la sélectionne, ses poignées apparaissent, tu les tires ; Suppr l'efface (1328). Appuyer à côté en trace une nouvelle.
+
+1336. Oui à 1332 à 1335 ?
+
+À tester : rien de neuf.
+
+30/10/2026 00:24
+MEMO

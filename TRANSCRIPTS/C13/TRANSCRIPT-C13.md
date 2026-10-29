@@ -7527,3 +7527,21 @@ MEMO
 
 29/10/2026 10:52
 MEMO
+
+### Message de la conscience (sans message de Paul : le banc du micro a fini)
+
+**Claude (11:07) :**
+
+À jouer : promouvoir le plein écran (1045) · en cours : la ⑩ chez un exécutant neuf · ouvert : 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1044. Le plein écran du tableau distant est vert : le banc complet (les parcours, 106 contrôles, l'Atelier 52 sur 52, le tableau distant 27 sur 27) et les cas d'E3, 112 sur 112.
+
+1045. Promeus ? Il part comme 8.76.1-⑨.
+
+À tester (après la promotion) :
+1. Sur l'ordinateur du tableau, ouvre l'adresse du tableau, puis clique une fois sur la page : elle passe en plein écran.
+2. Appuie sur Échap, puis clique : elle y revient.
+3. Clique sur la ligne de la clé USB : c'est la clé qui répond, pas le plein écran.
+
+29/10/2026 11:07
+MEMO

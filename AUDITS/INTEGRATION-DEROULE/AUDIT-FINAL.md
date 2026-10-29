@@ -184,3 +184,9 @@ MEMO
 ## PROMU ⑨ — 29/10/2026 08:54
 
 - prod commit `0877347`, blob `41ecb48a02b2`, md5 `2ef1eba96d82078089e92cff22659c3f` ; bit à bit au dépôt et à l'adresse publique. Docs prod `6c3d649`.
+
+
+## CANDIDATE 8.76.1-⑨ (micro §12.72, le plein écran) VERTE — 29/10/2026 11:07
+
+- integration `398e3d66a`, assemblée + `APP_VERSION="8.76.1-⑨"` : md5 `6586dada1424c999e38d11c826e4a22e`, 2 672 694 o (copie : scratchpad `micro/candidate-9m-398e3d66a.html`).
+- Banc complet VERT (parcours ×2, 106/0, sonde-1262 52/52, sonde-1266 27/0) ; cas E3 112/112 ; sonde du plein écran par le geste verte.

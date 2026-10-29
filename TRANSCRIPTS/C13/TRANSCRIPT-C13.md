@@ -7989,3 +7989,38 @@ MEMO
 
 29/10/2026 14:40
 MEMO
+
+## Tour 368 — 29/10/2026 15:03 → 15:03
+
+**Paul :** Il faut quand même que les boutons restent cliquables de toute façon. Par ailleurs je pense que chaque question doit m'être posée une par une, non? Ce serait 'e mode rapide correspondant à celui de la dictée. Il resterait qd mm le mode général comme sur ta capture. Que vous tu comme gain de temps supplémentaire? Et pour les lignes, il faut que je déclare le nombre des lignes de la copie avant de commencer la correction comme çar critère de longueur est automatique et le nombre des lignes pour les fautes est pré écrit. Pour les élèves qui dépassent il faut une solution aussi . Mon objectif de fond est le suivant : parler réellement de la copie tout en y passant le moins de temps possible et en automatisant le plus, et en me déchargeant mentalement
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1144 ; 1126 ; 1120 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1134. Oui : les boutons restent cliquables partout ; le clavier s'ajoute, il ne remplace rien.
+
+1135. Le mode rapide, une question à la fois, comme la dictée mot à mot : la question en grand, avec son point en petit au-dessus. Espace ou Entrée, « oui » et la suivante ; N, « non » et la suivante ; Retour, la précédente. Le mode général de la capture reste, et un geste passe de l'un à l'autre.
+
+1136. Le gain : tu ne cherches plus rien des yeux, ni question ni numéro ; l'appli te mène dans l'ordre où tu lis, et tu n'as qu'une décision à la fois. C'est la décharge mentale. En touches, c'est un peu plus : une par question, 32 pour Flavie, contre 22 avec les numéros. En secondes, je ne sais pas : le chrono le dira.
+
+1137. Gains de plus que je propose. Une question qui découle d'une autre ne se pose pas : si la lettre n'a pas de date, « la date est-elle en haut à droite ? » saute. ⇧ et Entrée : tout le reste du point est « oui », et on passe au point suivant. Une bonne copie va donc très vite.
+
+1138. Les lignes : au début de chaque copie, après les initiales, tu tapes son nombre de lignes, puis Entrée. Le critère « trente lignes » se remplit seul, les seuils du compteur d'erreurs s'ajustent seuls, et la réglette a exactement les lignes de la copie.
+
+1139. Ceux qui dépassent : la réglette va jusqu'au nombre déclaré, 38 s'il le faut ; à partir de trente, la longueur est « oui », sans pénalité.
+
+1140. La langue en mode rapide : l'appli te mène ligne par ligne, « ligne 7 ? », et tu tapes le nombre d'erreurs de la ligne, 0 s'il n'y en a pas. Une touche par ligne : 21 pour Flavie, contre 29 avec les numéros, et chaque erreur est déjà à sa ligne.
+
+1141. Ce qui frotte : pour situer une erreur par ligne, il faut que les lignes de la copie soient numérotées. Je propose que l'élève les numérote de 5 en 5 dans la marge ; à toi d'écrire cette consigne dans le sujet si tu la veux.
+
+1142. Le compte sur Flavie en mode rapide : initiales et Entrée, 3 ; ses 21 lignes et Entrée, 3 ; 32 questions ; 21 lignes ; valider, 1 : 60 touches, aucun clic, rien à chercher, rien à compter, la longueur et la couleur calculées.
+
+1143. Ton objectif, parler vraiment de la copie : l'appli écrit le bilan à partir de tes « non », de tes citations et de la phrase qui t'a touché ; ce qui reste à ta main, c'est ce qu'aucune grille ne voit.
+
+1144. Oui à 1134 à 1143 ? Je refais alors les captures en mode rapide.
+
+À tester : rien de neuf.
+
+29/10/2026 15:03
+MEMO

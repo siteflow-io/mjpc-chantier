@@ -7388,3 +7388,38 @@ MEMO
 
 29/10/2026 10:21
 MEMO
+
+## Tour 351 — 29/10/2026 10:28 → 10:30
+
+**Paul :** 1009 et 1010 c'est le chrono en bas qui doit être là où je pilote le chrono. par ailleurs, en fonction du temps donné au chrono, il doit être en vert au début, puis passer en jaune à un tiers du temps, puis orange, puis rouge clignotant, et sonner les 5 dernières secondes discrètement, puis un ding fort sur la fin arrivé au 0. Pour les captures, tu m'as juste repris les miennes! Je te demandais de les construire en les adaptant au site, et éventuellement de me proposer de créer d'autres fonctionnaltiés pour supporter ces nouveaux types de diapos.
+
+**Fait.** Deux captures dans le site, 1707 × 743 : `MANDATS/CANONS-DIAPOS/captures-29-10/6-atelier-debut-de-seance.png`, `7-pilotage-parcours-minuteur.png` (page `site.html`). Contrat §12.70 (7), §12.67 (8).
+
+**Claude :**
+
+À jouer : les tests de la ⑨ (liste de 09:01) · en cours : rien · ouvert : 1021 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917 (les questions de la lettre).
+
+1012. Entendu : le minuteur se pilote en bas, sous la diapo, et celui du haut disparaît.
+
+1013. Les couleurs : vert au départ, jaune au premier tiers, orange au deuxième tiers, rouge clignotant sur le dernier dixième (trente secondes pour cinq minutes). Cinq bips discrets sur les cinq dernières secondes, puis un ding fort à 0.
+
+1014. Le son sort du tableau, pas de ton pilote. Le navigateur du tableau n'accepte un son qu'après un clic sur sa page : le clic sur la clé USB à l'ouverture suffit, sinon un clic n'importe où sur le tableau.
+
+1015. Les captures : tu as raison, j'avais recopié tes canons. Les voici dans le site. La 6, l'Atelier : la diapo de début de séance, et la carte avec ses champs. La 7, le pilotage en classe : le parcours dévoilé ligne à ligne, avec les dates de la classe, et le minuteur sous la diapo.
+
+1016. Les fonctions que je propose pour ces diapos. Le dévoilement suit ta règle des diaporamas : le parcours ligne par ligne, les compétences domaine par domaine, la séance avec l'objectif puis les compétences une à une. Seul le fil de progression bouge de lui-même.
+
+1017. Le parcours de la classe : la date de chaque séance pour cette classe, la séance du jour entourée d'or, et les séances faites cochées.
+
+1018. La carte « Ce que la diapo déclare » montre les champs de ces diapos : titre, objectif, la majeure (★), séance évaluée, image. Ce que tu y changes change le chapitre et la feuille sommaire ; pour une classe seulement, c'est son profil.
+
+1019. L'image du chapitre et celle de chaque séance se choisissent une fois, sur la clé USB ou en ligne, et sont reprises partout : la diapo, la feuille sommaire, le profil de la classe.
+
+1020. En fin de chapitre, « Les compétences du chapitre » revient en bilan pour la classe : chaque case jouée cochée, celles qui n'ont pas été faites en pâle.
+
+1021. Ce que tu ne commentes pas est acquis. C'est au contrat.
+
+À tester : la liste de la ⑨ de 09:01 tient.
+
+29/10/2026 10:30
+MEMO

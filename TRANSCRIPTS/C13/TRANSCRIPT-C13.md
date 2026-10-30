@@ -9611,3 +9611,39 @@ MEMO
 30/10/2026 13:14
 MEMO
 
+## Tour 417 — 30/10/2026 13:54 → 14:02
+
+**Paul :** En fait voilà exactement comment ça doit fonctionner. Je ne remplis jamais la grille, mais je pose des stickers dans le texte. La pose de ces stickers répond aux questions et remplit la grille d'évaluation. Tu comprends? C'est comme ça qu'on corrige une rédaction, j'aurais dû y penser avant. Et pour que les stickers ne cachent pas systématiquement le texte avec leur dénomination, il faut un code couleur et surtout des liens. On a les marques dans la copie et le passage ou le clic au survol ouvre le détail . Construis des captures pour ça.
+
+**Fait.** `stickers.js` refait (maquette seule, `STICKERS=1` ; `PROD=1` refait 1.2.2-RU à l'identique, md5 `d46ecf46557d`) : 8 stickers (Lexique : répétition, mot à reprendre, mot de 14-18 ; complexes : phrase simple, sans principale, relatif à revoir ; modalisation : modalisation, litote), chacun une couleur, sans étiquette ; « non » = souligné ondulé (chemin SVG), « oui » = surligné ; `scCase` repris : la grille des points `lexique`, `complexes`, `modalisation` remplie par présence / absence des stickers ou par calcul (`SC_ST_CALC` : complexes q1 = 2 phrases simples au plus ; complexes q2 et modalisation q3 : oui par défaut, à trancher ; modalisation q1 : à calculer, laissée sans réponse, le point reste en attente) ; panneau : blocs Oui / Non, « La case où tombe cette copie » et « Sur ce point » retirés, palette-légende avec compteurs et seuil, bloc « La grille se remplit avec tes stickers » (réponse, source, niveau, phrase de la case) ; bulle au survol (`scStBulle`) ; clic sur une ligne de la grille → `scStFlash` (clignotement) ; fichier de l'élève (`scEleveLecture` repris par motifs exacts) : légende « Les couleurs sur ta copie », bulle au survol, clic vers le point avec « Par exemple, sur ta copie ». Défauts trouvés en construisant : une image de vague entre guillemets cassait l'attribut `style` (corrigé : guillemets simples dehors, doubles encodés dedans) ; la classe `.ech` de la légende écrasait l'échelle des niveaux du fichier de l'élève (renommée `.sw`). Captures au geste (`banc/capture-stickers.mjs`) : Lexique niveau 1 complet (2 répétitions, 1 mot à reprendre, 1 mot de 14-18) ; complexes niveau 2 complet (1 phrase simple) ; modalisation en attente ; bulle lue ; fichier élève sans erreur. Infobulles 368 / 0. Maquette `T417-maquette-stickers.html` (md5 `b9e8135d84df`). Docs de production : `6a71276`. Pas de « promeus » reçu pour 1.2.2.
+
+**Claude :**
+
+À jouer : les captures 21-st (1522) · en cours : rien · ouvert : 1528 ; 1511 ; 1520 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1521. Compris. Tu ne remplis jamais la grille : tu poses des stickers dans le texte, chaque sticker répond à sa question, et son absence répond aussi (aucune répétition marquée : « les mêmes mots reviennent-ils rarement ? » oui). Les boutons Oui / Non disparaissent du panneau.
+
+1522. Les captures, construites dans l'app (maquette seulement) : 21-st-1-langue (les couleurs, aucun nom sur la copie ; à droite, la grille du Lexique remplie seule : 2 répétitions, non ; 1 mot à reprendre, non ; 1 mot de 14-18, oui ; Fragile, 0,5 sur 2) ; 21-st-2-survol (la bulle au survol) ; 21-st-3-construction et 21-st-3b (une phrase simple marquée, et « Toutes les phrases sont complexes » tombe seul à Satisfaisant, 3 sur 5) ; 21-st-4-eleve-survol et 21-st-5-eleve-detail (le fichier de l'élève).
+
+1523. Le code couleur : ce qui est à reprendre, souligné ondulé de sa couleur ; ce qui est réussi, surligné de sa couleur ; tes fautes restent le trait rouge droit. Chaque sticker a sa couleur dans sa passe, et la palette à droite sert de légende, avec son compteur.
+
+1524. Les liens, dans les deux sens. Sur la copie : le survol d'une marque ouvre sa bulle (son nom, ce qu'elle veut dire, la question à laquelle elle répond, où en est le point) ; le clic la choisit. Dans la grille : un clic sur une ligne fait clignoter ses stickers sur la copie. Chez l'élève : une légende de ses couleurs ; le survol ouvre la bulle ; le clic ouvre le point de sa grille avec « Par exemple, sur ta copie » (sur téléphone, le clic seul).
+
+1525. La conséquence pour ta grille : chaque question doit devenir soit un sticker (ce qui est là, ou ce qui ne va pas), soit un calcul sur les stickers (combien, où). Sur les 12 questions des 3 points de la capture : 8 deviennent des stickers, 1 se calcule (« deux phrases simples au plus »), 3 restent à trancher : « La plupart des phrases sont-elles complexes ? » (il faudrait compter les phrases) ; « La litote fait-elle entendre plus qu'elle ne dit ? » (un sticker « litote plate » ?) ; « Chaque paragraphe a-t-il sa modalisation ? » (il faut tes paragraphes, marqués dans la passe du thème). Tant qu'une question n'a pas de réponse, son point reste « en attente » et ne part pas chez l'élève : sur la capture, Modalisation et litote.
+
+1526. C'est le travail de tes 51 questions (1444) qui change de forme : pour chacune, un sticker ou un calcul. Les autres points (le thème, les architectures, l'organisation) ne sont pas encore passés en stickers.
+
+1527. Pas encore fait non plus : Entrée répond encore « oui » ; je propose qu'elle fasse passer à la copie suivante, et que la grille de la copie se fige à ce moment-là (avant, elle bouge avec tes stickers).
+
+1528. À trancher : oui au principe de 1525, une question = un sticker ou un calcul ? Je transforme alors tes 51 questions point par point, et je te les donne à valider. Tes 3 questions de 1525 ? Entrée de 1527 ? Et 1511 attend toujours ton promeus (le trait qui se voit pendant le tracé ; aucun sticker dedans).
+
+À tester (la maquette T417-maquette-stickers.html, jointe) :
+1. « 📄 Corriger sur les scans », ton paquet, les initiales, les lignes ; « Répétition » dans la palette, puis un clic sur un mot : souligné ondulé orange, aucun nom.
+2. Passer la souris sur la marque : la bulle ; regarder à droite la grille du Lexique changer seule.
+3. Cliquer « Les mêmes mots reviennent-ils rarement ? » dans la grille : tes répétitions clignotent sur la copie.
+4. Passe 3 : « Phrase simple » sur une phrase ; « Toutes les phrases sont complexes » tombe à Satisfaisant.
+5. « 📨 Fichiers École Directe », « 🧪 Tester comme l'élève » : la légende, le survol, le clic.
+
+30/10/2026 14:02
+MEMO
+

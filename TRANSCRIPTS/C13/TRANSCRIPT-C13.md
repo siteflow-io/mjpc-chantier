@@ -9715,3 +9715,29 @@ Là je suis en train de chercher hein.
 30/10/2026 14:20
 MEMO
 
+## Tour 420 — 30/10/2026 14:24 → 14:24
+
+**Paul :** 1540. Il faut décourager ça au max . Je ne peux devenir un bureau des plaintes. 
+Par ailleurs ce mode de correction fait qu'un élève n'a jamais ses erreurs signalées en fait, si?
+
+**Fait.** Vérifié dans le code : le fichier de l'élève (`scEleveLecture`) n'a aucun champ ni bouton d'envoi, aucun appel au site (banc : « aucun champ », « le fichier réel ne joint jamais le site ») ; la remarque existe (`SC.outil = "remarque"`, cadre en pointillé et texte lu par l'élève à l'endroit) et ne compte dans aucune case. Rien codé.
+
+**Claude :**
+
+À jouer : rien, tu cherches · en cours : rien · ouvert : 1550 ; 1545 ; 1528 ; 1511 ; 1520 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1546. Décourager la plainte, d'abord par l'outil : le fichier de l'élève reste en lecture seule, sans aucun bouton pour contester (c'est déjà le cas). Ensuite par une règle, écrite une fois en tête de son fichier : « Je marque ce que j'ai vu réussi en lisant ta lettre. Ce que je n'ai pas vu en lisant, ton lecteur ne l'aurait pas vu non plus. » La plainte « tu ne l'as pas vu » devient la leçon elle-même.
+
+1547. Et l'élève ne lit jamais « Il te manque : … » (ma phrase de 1541), qui appelle « mais je l'ai fait ! ». Il lit « Pas encore réussi : … » : c'est vrai que ce soit absent ou raté, il n'y a rien à contester. 1540 tombe : tu ne rouvres pas une copie sur réclamation.
+
+1548. Tes erreurs signalées : oui pour la langue, sur la copie, à l'endroit exact (tes fautes, et si tu suis 1542 les temps, le « je », la principale, le relatif, les répétitions, les mots à reprendre). Pour tout le reste, non : jamais une erreur à un endroit. L'élève voit sur sa copie ce qui est réussi, et lit dans sa grille ce qui n'est pas encore réussi. C'est exactement ta phrase : ce qui compte, c'est ce qu'il a fait.
+
+1549. Si un mal fait hors de la langue mérite un jour d'être montré (un contresens, un anachronisme), ta remarque existe déjà : un cadre en pointillé et ta phrase, à l'endroit, rare, et qui ne compte jamais dans la note. Je propose que ce soit la réponse à 1544 : l'anachronisme sort de la grille et devient une remarque.
+
+1550. Oui à la règle de 1546 et à « Pas encore réussi » de 1547 (ce sont mes mots, lus par l'élève, à valider ou à changer) ? Oui à 1549 pour l'anachronisme ?
+
+À tester : rien de neuf ici (cadrage, aucun code) ; 1511 et la maquette T417 restent.
+
+30/10/2026 14:24
+MEMO
+

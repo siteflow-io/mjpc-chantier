@@ -40,7 +40,7 @@ function scOuvrir() {
   Promise.all([ruLire(["redactions", RU.id, "config", "grille2"]), ruLire(scChemin(["pages"])), ruLire(scCheminRetours()), scDbTout().catch(() => []), ruLire(["redactions", RU.id, "config", "aRefaire"])]).then(([g, pg, rt, loc, ar]) => {
     SC.aRefaire = ar || "";
     if (!g || !g.criteres) { toast("Ce sujet n'a pas encore de grille à cases : la correction sur les scans attend sa grille."); return; }
-    SC.grille = g; SC.pages = pg || {}; SC.retours = rt || {};
+    SC.grille = scGrilleNormale(g); SC.pages = pg || {}; SC.retours = rt || {};
     const L = g.criteres.find(c => c.id === "langue");
     SC.passes = [{ id: "langue", nom: L ? L.nom : "La langue", pts: L ? L.points : [], crit: "langue" }]
       .concat(g.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom, pts: c.points, crit: c.id })))
@@ -141,6 +141,8 @@ function scPrecedentEleve() { const L = scPagesOrdre(); for (let i = SC.ia - 1; 
 function scBlanche(v) { const p = scPagesOrdre()[SC.ia]; if (!p) return; p.blanche = v; if (v) p.eleve = null; ruEcrire(scChemin(["pages", p.id]), p, "une page blanche"); scCopiesOrdre(); if (v) scAttribSuivante(); else scRendre(); }
 // ── la grille : questions sautées, cases calculées ──
 // une question a son identité (cle) : les réponses et les marques la portent ; la grille, elle, écrit ses conditions par numéro, traduit ici
+// le site (Firebase) n'enregistre pas un tableau vide : un point calculé revient sans « questions » ; et il rend le barème (clés 0 à 3) en tableau
+function scGrilleNormale(g) { (g.criteres = g.criteres || []).forEach(c => { c.points = c.points || []; c.points.forEach(pt => { pt.questions = pt.questions || []; pt.cases = pt.cases || []; pt.bareme = pt.bareme || {}; }); }); return g; }
 function scQ(pt, c) { return pt.questions.find(q => q.cle === c); }
 function scCleDe(pt, i) { const q = pt.questions.find(q => q.id === +i); return q ? q.cle : null; }
 function scSautee(pt, q, rep) { if (!q || !q.saute) return false; const [t, i] = q.saute.split(":"); const c = scCleDe(pt, i); return t === "n" ? rep[c] === "n" : rep[c] === "o"; }

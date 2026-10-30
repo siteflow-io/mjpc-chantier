@@ -22,10 +22,10 @@ rid = 'sujet_mvtd85g7_ycxjq3'
 arbre = {'classes': {cfg['classe']: classe}, 'redactions': {rid: {'config': cfg, 'validations': val}}, 'taxonomie': taxo}
 cle = 'mjpc_maquette_T399_hub_' + hashlib.md5(json.dumps(arbre, sort_keys=True).encode()).hexdigest()[:8]
 shim = '''<script>/* MAQUETTE — le faux hub : une copie anonymisée de la base, gardée dans ce navigateur. Le vrai hub n'est jamais joint. */
-(function(){const CLE=%s;const BASE0=%s;let H=null;try{H=JSON.parse(localStorage.getItem(CLE)||"null");}catch(e){}if(!H)H=JSON.parse(JSON.stringify(BASE0));
+(function(){const CLE=%s;const BASE0=%s;const fb=v=>{if(v===null||v===undefined)return null;if(Array.isArray(v))v=Object.assign({},v);if(typeof v!=="object")return v;const o={};Object.keys(v).forEach(k=>{const y=fb(v[k]);if(y!==null)o[k]=y;});const K=Object.keys(o);if(!K.length)return null;if(K.every(k=>/^(0|[1-9]\\d*)$/.test(k))){const mx=Math.max.apply(null,K.map(Number));if(mx<2*K.length){const a=[];for(let i=0;i<=mx;i++)a.push(i in o?o[i]:null);return a;}}return o;};let H=null;try{H=JSON.parse(localStorage.getItem(CLE)||"null");}catch(e){}if(!H)H=fb(JSON.parse(JSON.stringify(BASE0)));
 window.__FAUX_HUB=true;const seg=c=>c.split("/").filter(Boolean).map(decodeURIComponent);
 const lire=c=>{let n=H;for(const k of seg(c)){if(n==null||typeof n!=="object"||!(k in n))return null;n=n[k];}return n===undefined?null:n;};
-const poser=(c,v)=>{const q=seg(c);if(!q.length){H=v||{};return;}let n=H;for(let i=0;i<q.length-1;i++){if(n[q[i]]==null||typeof n[q[i]]!=="object"){if(v==null)return;n[q[i]]={};}n=n[q[i]];}if(v==null)delete n[q[q.length-1]];else n[q[q.length-1]]=JSON.parse(JSON.stringify(v));};
+const poser=(c,v)=>{const q=seg(c);if(!q.length){H=v||{};return;}let n=H;for(let i=0;i<q.length-1;i++){if(n[q[i]]==null||typeof n[q[i]]!=="object"){if(v==null)return;n[q[i]]={};}n=n[q[i]];}if(v==null)delete n[q[q.length-1]];else{const y=fb(JSON.parse(JSON.stringify(v)));if(y===null)delete n[q[q.length-1]];else n[q[q.length-1]]=y;}};
 const garder=()=>{try{localStorage.setItem(CLE,JSON.stringify(H));}catch(e){}};const vrai=window.fetch.bind(window);
 const f=function(u,o){const s=String(u);const i=s.indexOf("firebasedatabase.app");if(i<0)return vrai(u,o);let c=s.slice(i+20).split("?")[0].replace(/\\.json$/,"");const q=s.split("?")[1]||"";const m=((o&&o.method)||"GET").toUpperCase();
 if(m==="GET"){let v=lire(c);if(/shallow=true/.test(q)&&v&&typeof v==="object"){const w={};Object.keys(v).forEach(k=>w[k]=true);v=w;}return Promise.resolve(new Response(JSON.stringify(v),{status:200,headers:{"Content-Type":"application/json"}}));}
@@ -34,7 +34,11 @@ window.fetch=f;window.__FAUX_HUB_FETCH=f;window.EventSource=undefined;
 try{localStorage.setItem("mjpc_eleve",JSON.stringify({is_prof:true,display:"Professeur",ts:Date.now()}));}catch(e){}
 window.__fauxHubRemettre=()=>{try{localStorage.removeItem(CLE);}catch(e){}indexedDB.deleteDatabase("mjpc_scans");location.href=location.pathname;};})();
 </script>''' % (json.dumps(cle), json.dumps(arbre, ensure_ascii=False).replace('</', '<\\/'))
-t = '<head>\n<meta charset="UTF-8">'; assert H.count(t) == 1; H = H.replace(t, t + '\n' + shim, 1)
+PROD = os.environ.get('PROD') == '1'   # la mise en ligne : le même fichier, sans le faux hub ni le réglage de la simulation, au vrai site
+t = '<head>\n<meta charset="UTF-8">'; assert H.count(t) == 1
+if not PROD: H = H.replace(t, t + '\n' + shim, 1)
+else:
+    v0 = 'var APP_VERSION = "1.1.0-RU";'; assert H.count(v0) == 1; H = H.replace(v0, 'var APP_VERSION = "' + os.environ.get('VERSION', '1.2.0-RU') + '";')
 # la nouveauté, là où elle vivra : le bouton au tableau des élèves, l'écran, son code
 a = '''      📋 Classer le paquet
     </button>'''
@@ -44,6 +48,9 @@ H = H.replace(a, a + '''
 v = '!c.telemetry); }'; assert H.count(v) == 1; H = H.replace(v, '!c.telemetry && !c.scan); }')   # une copie qui n'a que des marques est une copie touchée
 v = 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert"];'; assert H.count(v) == 1; H = H.replace(v, 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert", "scanCurseur"];')   # l'endroit exact de la correction sur les scans
 v = 'function ruReprendre() {   // la reprise exacte (l\'INIT de l\'app d\'origine, inchangé)'; assert H.count(v) == 1; H = H.replace(v, v + '\n  if (state.modeOuvert === "scan") { showDashboard(); setTimeout(() => scOuvrir(), 0); return; }   // la correction sur les scans rouverte là où tu en étais')
+MQ = '''<div class="mq-reglage" onclick="if(document.getElementById('mqR').style.display==='block'){document.getElementById('mqR').style.display='none'}else{document.getElementById('mqR').style.display='block'}" title="Réglages de la simulation (n'existe pas dans le site).">⚙ Maquette</div>
+<div id="mqR" style="display:none;position:fixed;left:8px;bottom:36px;z-index:999;background:#fdfbf7;border:1px solid #d4b87a;border-radius:9px;padding:10px 12px;max-width:380px;font:13.5px system-ui;box-shadow:0 6px 18px rgba(0,0,0,.2)"><b>Réglages de la simulation</b><p>Le site est simulé par un faux hub gardé dans ce navigateur : une copie de la vraie base, élèves aux noms inventés. Rien ne part au vrai site.</p><button class="sc-btn" onclick="window.__fauxHubRemettre()" title="Effacer tout ce qui a été fait dans la maquette (marques, réponses, pages chargées) et repartir de la base.">Tout remettre à zéro</button></div>
+'''
 ecran = '''
 <!-- RU-SCAN : corriger sur la copie scannée -->
 <div id="scanEcran" class="sc-ecran hidden">
@@ -61,11 +68,9 @@ ecran = '''
 </div>
 <div id="scLoupe" class="sc-loupe" hidden></div>
 <div id="scModale" class="sc-modale" onclick="if(event.target===this)scModaleFermer()"><div class="sc-modale-c"></div></div>
-<div class="mq-reglage" onclick="if(document.getElementById('mqR').style.display==='block'){document.getElementById('mqR').style.display='none'}else{document.getElementById('mqR').style.display='block'}" title="Réglages de la simulation (n'existe pas dans le site).">⚙ Maquette</div>
-<div id="mqR" style="display:none;position:fixed;left:8px;bottom:36px;z-index:999;background:#fdfbf7;border:1px solid #d4b87a;border-radius:9px;padding:10px 12px;max-width:380px;font:13.5px system-ui;box-shadow:0 6px 18px rgba(0,0,0,.2)"><b>Réglages de la simulation</b><p>Le site est simulé par un faux hub gardé dans ce navigateur : une copie de la vraie base, élèves aux noms inventés. Rien ne part au vrai site.</p><button class="sc-btn" onclick="window.__fauxHubRemettre()" title="Effacer tout ce qui a été fait dans la maquette (marques, réponses, pages chargées) et repartir de la base.">Tout remettre à zéro</button></div>
-<style>''' + open('scan.css', encoding='utf8').read() + '''</style>
+''' + ('' if PROD else MQ) + '''<style>''' + open('scan.css', encoding='utf8').read() + '''</style>
 <script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + '''</script>
 '''
 i = H.rindex('</body>'); H = H[:i] + ecran + H[i:]
 open(out, 'w', encoding='utf8').write(H)
-print('maquette', out, len(H), 'octets ·', n, 'élèves inventés · clé', cle)
+print(('MISE EN LIGNE ' if PROD else 'maquette ') + out, len(H), 'octets' + ('' if PROD else ' · ' + str(n) + ' élèves inventés · clé ' + cle))

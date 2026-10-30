@@ -368,3 +368,36 @@ Le site de production à l'adresse donnée par Où-trouver-quoi est ouvert dans 
 
 30/10/2026 21:56
 MEMO
+
+## Tour 8 — 30/10/2026 21:57 → 21:58
+
+**Paul :** Alors continue
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : reprise du blocage du banc · ouvert : 53 ; 45 ; 36.
+
+96. Je reprends la recherche d’un moyen de faire tourner le banc dans cet atelier, puis je poursuis la recopie si la vérification aboutit.
+
+À tester : rien pour toi à ce stade.
+
+MEMO
+
+**Faits — reprise demandée.** Prompt C15 relu intégralement, blob 7a4e14ee6c8170881a80da4d2bb4d59ae1d089a2 inchangé ; mandat et transcript courants relus, blobs 0e46b99a5775e153b8f7f61c908b3338dac5e322 et 7ebc971d3be16a6fe60e8b59c16c93aeec29dc11. La première mesure de l'horloge donne 30/10/2026 21:57, heure de Paris ; le premier message ci-dessus avait omis son horodatage et est conservé sans correction.
+
+L'environnement de fichiers est désormais sans restriction de chemins, mais les accès réseau restent restreints. Recherche des exécutables chrome, chromium, chrome-headless-shell et firefox dans /opt/codex, /root/.cache et /usr/local/bin : zéro fichier trouvé. Aucun exécutable Chromium trouvé par les noms de commande usuels, aucun dossier de navigateur installé aux chemins attendus. Aucun droit réseau modifié, aucune escalade demandée.
+
+Diagnostic de l'adresse officielle que l'installateur venait d'utiliser, sans changer d'hôte ni de chemin : HEAD renvoie HTTP 200, Content-Type text/html, Content-Length 195 ; GET confirme 195 octets HTML, titre et en-tête « Site Unavailable », paragraphe « Unable to access this site. ». Ce n'est pas l'archive ZIP attendue. La cause de cette indisponibilité n'est pas mesurée. Aucun nouvel installateur lancé, aucun contournement essayé. Le banc reste non exécutable dans cet atelier ; aucun test fonctionnel exécuté, aucun nouveau résultat 49/0. Aucune nouvelle interaction navigateur ni authentification, aucune écriture Firebase.
+
+La suite reste donc le cadrage, autorisé par le prompt quand le banc ne peut pas tourner. Le format conditionnel du fichier de recopies 53 est relu dans le mandat : quatre règles reprises ci-dessous sans ajout ; la validation 61 reste acquise, 53 n'est pas considéré validé par « Alors continue ». Aucun code ni mandat ni document de production modifié ; seul le présent transcript est mis à jour au sas.
+
+**GPT — réponse :**
+
+À jouer : Paul — valider 53 · en cours : cadrage de la recopie · ouvert : 53 ; 45 ; 36.
+
+97. Le banc reste bloqué ; je poursuis avec **53 : un fichier texte par classe**, conservé chez toi. Les quatre règles du [mandat]([lien dans la conversation]) : `### NOM Prénom` commence une copie ; une ligne tapée correspond à une ligne manuscrite non vide, même de deux mots ; les mots barrés s’écrivent `[comme ça]` ; `---` commence une nouvelle page. Fautes, ponctuation et mots coupés restent tels quels. **Je propose de valider ce format** pour prévoir son import dans la recopie.
+
+À tester : vérifier ces quatre règles sur une copie ; rien de nouveau dans l’app.
+
+30/10/2026 21:58
+MEMO

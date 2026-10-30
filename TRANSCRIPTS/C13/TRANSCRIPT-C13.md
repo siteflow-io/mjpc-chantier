@@ -9766,3 +9766,28 @@ MEMO
 30/10/2026 14:28
 MEMO
 
+## Tour 422 — 30/10/2026 14:29 → 14:30
+
+**Paul :** Donc sur une seule occurrence l'élève a les points alors que le reste de sa lettre peut être bourré danachronismes qui ne comptent pas mais qui sont en commentaires?
+
+**Fait.** Confronté 1554 à l'objection de Paul : vrai, une réussite unique ne prouve pas un fait « partout » (même raison qu'en 1542). Le paragraphe comme unité : le sujet de la lettre en demande trois (point « Les trois paragraphes ») ; la marque « trait dans la marge (un paragraphe) » existe déjà dans l'app. Rien codé.
+
+**Claude :**
+
+À jouer : 1560 · en cours : rien · ouvert : 1560 ; 1545 ; 1528 ; 1511 ; 1520 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1556. Oui, tu as raison : c'est le défaut de 1554, je la retire. Une seule réussite ne peut pas valoir pour toute la lettre quand le fait demandé doit tenir partout.
+
+1557. Ma proposition : l'unité devient le paragraphe. Tu poses un sticker « tient l'époque » dans la marge de chaque paragraphe où rien n'est hors de 14-18 : trois paragraphes, trois stickers au plus. Par exemple : 3, réussi ; 2, « un de tes paragraphes sort de 14-18 » ; 1 ou 0, « ta lettre n'est pas dans 14-18 ». Une lettre bourrée d'anachronismes n'a aucun sticker : elle perd tout.
+
+1558. Tes règles tiennent : tu ne marques que du réussi ; trois gestes au plus ; le coût est gradué ; l'élève lit « Pas encore réussi : un de tes paragraphes sort de 14-18 », sans un endroit précis à contester. Si tu veux lui montrer l'anachronisme, ta remarque reste possible, sans rien compter de plus.
+
+1559. Le même geste vaut pour tout ce qui doit tenir partout hors de la langue : le paragraphe est l'unité, jamais la lettre entière, jamais un seul mot. Les mots de 14-18 et le détail des textes lus restent leurs propres faits : je retire aussi la fusion de 1554.
+
+1560. Oui à 1557, un sticker par paragraphe qui tient l'époque ? 1555 est remplacé.
+
+À tester : rien de neuf ici (cadrage, aucun code) ; 1511 et la maquette T417 restent.
+
+30/10/2026 14:30
+MEMO
+

@@ -428,3 +428,80 @@ MEMO
 
 30/10/2026 22:15
 MEMO
+
+## Tour 10 — 30/10/2026 22:19 — en cours
+
+**Paul :** Trouve une solution
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : recherche d’une solution pour le banc · ouvert : 53 ; 45 ; 36.
+
+100. Je cherche une solution qui permette d’exécuter le banc complet. Je vérifie les possibilités de cet atelier et celles du dépôt.
+
+À tester : rien pour toi à ce stade.
+
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : préparation d’une exécution du banc sur GitHub · ouvert : 53 ; 45 ; 36.
+
+101. Le sas est public. Je vérifie si GitHub peut exécuter le banc sur une machine de test, avec Chromium et les fichiers d’essai anonymes. Cette piste permettrait aussi de conserver les résultats et les captures.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 22:20
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : préparation du banc sur GitHub · ouvert : 53 ; 45 ; 36.
+
+102. Je prépare une branche du sas pour cette exécution. La machine standard choisie est gratuite pour un dépôt public. Les résultats et les captures seront conservés dans le journal du test. genui{"citation":{"ref":"turn0search0"}}
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 22:22
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification de l’exécution sur GitHub · ouvert : 53 ; 45 ; 36.
+
+103. L’appel d’écriture GitHub a été interrompu sans résultat. Je vérifie si la branche et le fichier de lancement ont été créés avant de reprendre.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 22:42
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : lancement du banc sur GitHub · ouvert : 53 ; 45 ; 36.
+
+104. La branche est créée et le fichier de lancement est prêt. Sa syntaxe est vérifiée. Il prévoit le banc existant, les deux PDF d’essai et les versions précises de Chromium et de pdf.js nécessaires au test.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 22:43
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : exécution du banc complet · ouvert : 53 ; 45 ; 36.
+
+105. Chromium et pdf.js sont installés sur la machine GitHub. Les quatre fichiers de référence ont été vérifiés, et le banc complet tourne maintenant. Le résultat reste à lire.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 22:45
+MEMO
+
+**Faits — solution en cours.** Le message de Paul autorise la recherche et la mise en place d'une solution au blocage du banc. La première lecture de l'horloge donne 30/10/2026 22:19, heure de Paris ; le premier message omet son horodatage et reste inchangé. Le prompt C15 est relu intégralement, blob 7a4e14ee6c8170881a80da4d2bb4d59ae1d089a2 inchangé. Le sas est vérifié public, main sur e8d7c44050ad51dcff4463632171ced9d2e1f25e ; AGENTS.md absent et .github absent avant intervention. Aucune exécution GitHub Actions existante. La documentation officielle GitHub sur la facturation des Actions est consultée : la machine standard ubuntu-24.04 est gratuite pour un dépôt public. Aucun stockage d'artefact ni cache payant n'est utilisé ; les captures sont conservées en archive encodée dans le journal du job. Aucun secret n'est utilisé, les permissions du workflow sont contents:read.
+
+Une première préparation JavaScript échoue en syntaxe avant tout effet. Le second appel est interrompu après 1 126,9 secondes sans réponse de mutation ; vérification après interruption : la branche c15/banc-complet n'existe pas, aucun fichier de workflow et aucune exécution n'ont été créés. Une branche nommée c15-banc-complet est ensuite créée sur e8d7c440. Le fichier complet .github/workflows/mjpc-banc-scans.yml y est déposé, commit 7cf72b6a4ff337a822aad6dbf996a69565e4ba02, blob f9941e78726249393f0602bbc0af415fd1ac5e2a. Son contenu est relu intégralement : identique. Le YAML, les cinq scripts bash et les deux blocs Python ont été vérifiés en syntaxe dans l'atelier avant dépôt. Aucun code fonctionnel de l'app ni source du banc modifié, aucune promotion.
+
+Le workflow récupère le seul commit demandé, vérifie les quatre blobs (banc courant, maquette scans v14, deux PDF d'essai), installe Playwright 1.56.1 et pdfjs-dist 3.11.174, puis son navigateur Chromium associé. Playwright 1.56.1 a été vérifié dans les releases officielles, publié le 17/10/2025. Le banc est lancé tel quel avec NODE_PATH et PDFJS dirigés vers ces dépendances. La limite du job est de 15 minutes. La sortie de la commande reste celle du banc, conservée par pipefail, et les captures sont inscrites en ZIP avec empreinte SHA-256 dans le journal. Aucune adresse concrète des dépôts ni aucun jeton dans le fichier de lancement.
+
+Exécution GitHub créée : 41133185881, commit 7cf72b6a ; job scans 124329070115. À 22:45, récupération des sources, contrôle des quatre blobs et installation des dépendances terminés avec succès ; étape du banc en cours. Pas encore de verdict fonctionnel. L'atelier local devient indisponible (transport exec-server déconnecté, puis environnement déclaré indisponible) ; l'exécution GitHub continue indépendamment. Les horodatages suivants sont lus avec Date et Intl en Europe/Paris lorsque le shell ne répond plus. Le présent enregistrement intermédiaire conserve le tour avant la fin de l'exécution ; il sera complété avec le résultat et la réponse finale.

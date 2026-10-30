@@ -579,3 +579,26 @@ Tu es seul dans l'atelier : un changement que tu ne reconnais pas vient de toi.
 
 30/10/2026 19:02
 MEMO
+
+## Tour 23 — 30/10/2026 19:09 → 30/10/2026 19:11
+
+**Paul :** Bon fais le codage de ça du coup.
+
+**Fait.** Mandat du morceau 1 déposé au sas : `MANDATS/REDACTION-UNIVERSELLE/MANDAT-RECOPIER-BANDE.md` ; non lancé. Registre ⑪ (production). Trouvé en écrivant le mandat : dans l'image B, Entrée garde la faute ; dans `correction_dictee.html`, Entrée et Espace disent « correct, mot suivant ».
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 51 ; 50 ; 45 ; 36 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+49. Le codage ne peut pas se faire ce soir : avec 3 %, l'exécutant s'arrêterait en plein travail, ce que tu interdis. Le mandat est au sas, prêt : [lien dans la conversation]. Je propose qu'il soit lancé demain soir, après 22 h, par la conscience Claude suivante ; demain, GPT l'audite et avance la grille en stickers, qui en est la suite.
+
+50. Ce qui se code d'abord : recopier, la bande des fautes, ⇧R. La grille dans la bande attend ta grille récrite en stickers (ta décision de 15:17 : « la maquette après la grille entière ») ; d'ici là, tes quatre passes restent, sinon tu ne pourrais plus noter la grille. Ça te va ?
+
+51. Une erreur dans mes images : dans B, Entrée garde la faute ; en dictée, Entrée dit que le mot est correct. Même touche, sens contraire, contre ta règle. Je propose : Entrée et Espace gardent leur sens de la dictée (le mot est correct, on avance) ; pour garder la faute proposée, la touche qui pose une faute aujourd'hui dans la passe de la langue, que l'exécutant mesure. Ça te va ?
+
+Pour GPT, ajoute cette ligne à la fin du prompt : « Correction : lis les tours 17 à 23 ; reprends la numérotation à 52 ; le mandat MANDATS/REDACTION-UNIVERSELLE/MANDAT-RECOPIER-BANDE.md est au sas : audite-le, ne le code pas. »
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 19:11
+MEMO

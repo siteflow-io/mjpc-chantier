@@ -446,3 +446,24 @@ MEMO
 
 30/10/2026 16:51
 MEMO
+
+## Tour 18 — 30/10/2026 16:57 → 16:59
+
+**Paul :** [le nom de l'élève de la copie recopiée] 30, d'où l'importance à mon avis que je prenne le temps de numéroter les lignes sur la copie physique scannée (à voir quelle fonctionnalité permet de faire ça rapidement) et que la zone de texte où j'écris me fasse écrire exactement là où l'élève a écrit. Il faut ainsi que la zone d'écriture soit cadrée avant que j'écrive. ainsi l'app aura une version numérique géographiquement correspondante au scan de la manuscrite. Tu comprends?
+
+**Fait.** Au site (lecture, privé) : la copie de l'élève nommée, 2 pages, 41 lignes écrites déclarées, 27 marques « faute », aucune avec bonne forme, 15 sur la page 1 et 12 sur la page 2 ; passe de la langue 7 min 04 s ; ses réponses au Lexique sont au site (1.2.3). Relu C13 1485 : l'écart des lignes se mesure sur chaque page de photo (31, 33, 28 points pour 1 200 sur trois pages réelles). Registre ⑪ (production `e99e84c`). Le nom de l'élève n'est pas reporté au sas.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 33 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+31. Sur cette copie, tu avais marqué 27 fautes (41 lignes, 7 min 04 s pour la langue) ; l'IA trouve 28 fautes de mots, plus 4 de ponctuation. Les nombres sont proches. Faute par faute, je ne peux pas comparer : tes marques sont des traits sur la photo, sans bonne forme tapée, donc je ne sais pas quels mots tu as soulignés. C'est exactement ce que ton idée règle : avec un texte calé sur la photo, chaque trait tombe sur un mot.
+
+32. Oui, je comprends : la copie numérique devient le calque exact de la photo. Chaque ligne écrite par l'élève a sa ligne de texte en face, à la même hauteur, avec son numéro dans la marge ; tu tapes chaque ligne en face de la sienne, et l'app sait toujours quelle ligne de texte correspond à quelle ligne de la photo. Pour numéroter vite, je propose deux clics par page : sur la première ligne écrite et sur la dernière. L'app place les lignes entre les deux au pas des lignes de la feuille, qu'elle mesure déjà sur chaque page de tes photos ; une ligne mal placée se tire d'un geste. Sur tes copies vierges imprimées par l'app, les lignes sont connues d'avance : aucun clic. Dans une ligne, l'endroit exact de chaque mot sur la photo, l'app ne le sait qu'à peu près ; à la ligne près, c'est exact.
+
+33. C'est bien ça ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 16:59
+MEMO

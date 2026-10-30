@@ -602,3 +602,26 @@ Pour GPT, ajoute cette ligne à la fin du prompt : « Correction : lis les tours
 
 30/10/2026 19:11
 MEMO
+
+## Tour 24 — 30/10/2026 19:19 → 30/10/2026 19:20
+
+**Paul :** Rien compris 51. Je parlais de coder le recopiage, pour que je puisse le faire, les lignes détectées aussi. Comme ça demain toute la journée je peux faire mon recopiage et quand tu reprendras le codage demain soir mes recopies seront déjà enregistrées. Oui ou non? Conseil demandé.
+
+**Fait.** Rien mesuré, rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 53 ; 50 ; 45 ; 36 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+52. Non, pas ce soir. Avec 3 %, je ne peux pas coder la recopie et les lignes, faire tourner le banc et la mettre en ligne : je m'arrêterais avant la fin, et tu n'aurais rien demain. Et rien ne se met en ligne sans le banc.
+
+53. Mon conseil, pour que ta journée de demain serve quand même : tu recopies tes rédactions à la suite, comme tu l'avais dit à 16:38, dans un simple fichier texte par classe, la photo d'un côté de l'écran, le fichier de l'autre. Quatre règles, pour que rien ne soit perdu : chaque copie commence par une ligne « ### NOM Prénom » ; une ligne tapée = une ligne écrite de la copie, même s'il n'y a que deux mots dessus (les lignes vides, tu ne les tapes pas) ; un mot barré, entre crochets [comme ça] ; une ligne « --- » quand tu passes à la page suivante. Les fautes, la ponctuation, les mots coupés en fin de ligne : tels quels. Demain soir, le mode recopier lira ce fichier : ta ligne 1 va sur la première ligne trouvée sur la photo, et ainsi de suite ; si l'app trouve plus ou moins de lignes que toi, tu le vois tout de suite et tu recales aux poignées. L'endroit où l'élève commence sa ligne se retrouverait dans l'encre de la photo : je ne l'ai pas mesuré. Le fichier reste chez toi, jamais au sas. Ça te va ?
+
+54. Oublie 51 pour l'instant : il concerne la bande, pas la recopie. Je te le reposerai plus simplement quand on codera la bande.
+
+Pour GPT, remplace la ligne de correction que je t'ai donnée par celle-ci : « Correction : lis les tours 17 à 24 ; reprends la numérotation à 55 ; le mandat MANDATS/REDACTION-UNIVERSELLE/MANDAT-RECOPIER-BANDE.md est au sas : audite-le, ne le code pas ; si Paul a dit oui au point 53, ajoute au mandat la lecture de son fichier de recopies. »
+
+À tester : si 53 te va, chronomètre ta première copie recopiée demain ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 19:20
+MEMO

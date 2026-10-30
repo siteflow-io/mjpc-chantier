@@ -9681,3 +9681,37 @@ C'est encore une fois le travail de la grille à mon avis. Ou alors un parti pri
 30/10/2026 14:14
 MEMO
 
+## Tour 419 — 30/10/2026 14:19 → 14:20
+
+**Paul :** Attention encore une fois, la grille actuelle peut être remise en question. Par ailleurs il faudrait plutôt faire dans l'autre sens : ce que l'élève a bien fait. Une mauvaise copie a peu de bien fait et donc beaucoup de pas fait ou mal fait ( et on s'en fiche de lui dire si c'est pas fait ou mal fait, ce qui compte c'est ce qu'il a fait). Ça réduit à mon avis mon temps de correction aussi. 
+Le seul critère où je pointe un mal fait, c'est la langue. 
+Que penses-tu de cette façon de faire? 
+Là je suis en train de chercher hein.
+
+**Fait.** Confronté au tri du tour 418 (34 présence / 12 constance / 5 fréquence) : les 34 de présence passent tels quels en stickers de réussite ; parmi les 12 de constance, les faits de langue (temps, « je », principale, relatif) passent à la langue, la date se règle par le geste, l'anachronisme reste seul sans forme positive ; les questions de qualité deviennent le seuil du geste. Rien codé.
+
+**Claude :**
+
+À jouer : rien, tu cherches · en cours : rien · ouvert : 1544 ; 1545 ; 1528 ; 1511 ; 1520 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1538. Mon avis : oui, c'est meilleur que ce que je t'ai proposé en 1530, pour trois raisons : ton temps, la récrimination, et ce que l'élève lit. Mes trois familles tombent.
+
+1539. Ton temps : tu poses un sticker par réussite attendue, sur sa meilleure occurrence, et jamais plus. Le nombre de gestes ne dépend plus de la longueur de la copie ni de ses défauts, mais de ce que ta grille attend : une mauvaise copie, presque rien à poser.
+
+1540. La récrimination disparaît : la seule objection possible devient « tu n'as pas vu que je l'avais fait ». Il te le montre, tu ajoutes le sticker, la note monte. L'erreur joue toujours pour l'élève, jamais contre lui.
+
+1541. La note : chaque critère dit d'avance ce que tu attends (pour les codes : le lieu, la date, la formule, la signature), et son niveau vient du nombre de stickers posés. La case de l'élève s'écrit seule : « Tu as réussi : … » et « Il te manque : … », sans dire si c'est absent ou raté, comme tu le veux.
+
+1542. Le point dur : ce qui doit tenir partout (les temps, le « je » jusqu'au bout, chaque phrase avec sa principale, le bon relatif) ne se prouve pas par une réussite, parce qu'un sticker ne dit jamais « partout ». Ma proposition : ce sont des faits de langue, ils passent dans la langue, là où tu pointes déjà le mal fait, à côté des fautes.
+
+1543. La qualité (« la chose difficile est-elle inattendue ? », « la litote fait-elle entendre plus qu'elle ne dit ? », « le détail est-il écrit avec ses mots ? ») cesse d'être une question : tu ne poses le sticker que si c'est réussi comme tu l'attends. Le jugement est dans ton geste.
+
+1544. Deux questions résistent : « La date est-elle entre 1914 et 1918 ? » se règle par le geste (le sticker « date » seulement si elle est juste) ; « Tout ce que raconte la lettre existait-il en 14-18 ? » ne se marque pas en positif. Je la garderais comme seule exception, un « mal fait » hors de la langue ; sinon, tu la supprimes. Tu tranches.
+
+1545. Quand tu auras fini de chercher : je refais ta grille sur ce principe (pour chaque critère, la liste de ce que tu attends, et combien il en faut pour chaque niveau), à valider, puis la maquette en captures.
+
+À tester : rien de neuf ici (cadrage, aucun code) ; 1511 et la maquette T417 restent.
+
+30/10/2026 14:20
+MEMO
+

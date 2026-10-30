@@ -37,7 +37,12 @@ await att(4800); verif('le bandeau d\'alerte des lignes disparaît seul (4,5 s)'
 // passe 1, la langue : souligner « écrit » (ligne 3), taper la bonne forme ; une deuxième faute reprise par son numéro sur la copie suivante
 const boite = async () => pg.locator('.sc-page').first().boundingBox();
 const tracer = async (x0, y0, x1, y1) => { const r = await boite(); await pg.mouse.move(r.x + x0 * r.width, r.y + y0 * r.height); await pg.mouse.down(); await pg.mouse.move(r.x + x1 * r.width, r.y + y1 * r.height, { steps: 6 }); await pg.mouse.up(); await att(250); };
-await tracer(0.25, 0.175, 0.33, 0.185); await pg.keyboard.type('écris'); await att(100); await cap('02-langue-faute'); await pg.keyboard.press('Enter'); await att(200);
+// 1509 (Paul, 30/10 12:59 : « le trait rouge n'apparaît pas au fur et à mesure de mon tiré ») : pendant le tracé, le trait se dessine sous la main, avant de lâcher
+{ const r = await boite(), largeur = () => pg.evaluate(() => { const t = document.querySelector('.sc-page svg .sc-trace'); return t ? Math.round(t.getBoundingClientRect().width) : 0; });
+  await pg.mouse.move(r.x + 0.25 * r.width, r.y + 0.175 * r.height); await pg.mouse.down(); await pg.mouse.move(r.x + 0.29 * r.width, r.y + 0.18 * r.height, { steps: 4 }); await att(60); const v1 = await largeur();
+  await pg.mouse.move(r.x + 0.33 * r.width, r.y + 0.185 * r.height, { steps: 4 }); await att(60); const v2 = await largeur(); await cap('02a-trait-en-cours'); await pg.mouse.up(); await att(250);
+  verif('pendant le tracé, le trait rouge se dessine sous la main (' + v1 + ' puis ' + v2 + ' points), avant de lâcher', v1 > 15 && v2 > v1 + 15); }
+await pg.keyboard.type('écris'); await att(100); await cap('02-langue-faute'); await pg.keyboard.press('Enter'); await att(200);
 await pg.click('text=★ La phrase qui t\'a touché'); await tracer(0.14, 0.28, 0.6, 0.33);
 const m1 = await pg.evaluate(() => Object.values(scCopie(scK()).marques).map(m => m.forme + ':' + (m.bonne || '') + ':' + m.l0 + '-' + m.l1));
 verif('une faute soulignée avec sa bonne forme, une phrase dorée sur deux lignes : ' + m1.join(' '), m1.some(x => x.startsWith('faute:écris')) && m1.some(x => x.startsWith('etoile')));

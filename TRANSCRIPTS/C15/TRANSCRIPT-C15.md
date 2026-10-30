@@ -147,3 +147,83 @@ MEMO
 
 30/10/2026 20:25
 MEMO
+
+## Tour 4 — 30/10/2026 21:01 → 21:17
+
+**Paul :** Ok continue
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : correction du mandat · ouvert : 61 ; 53 ; 45 ; 36.
+
+74. Je reprends la proposition 68 : je corrige le mandat selon le tour 25 et l’audit. Les choix encore ouverts y resteront clairement indiqués.
+
+À tester : rien de neuf à ce stade.
+
+30/10/2026 21:01
+MEMO
+
+**Fait — référence nouvelle.** Avant d'écrire, les fichiers cibles et le prompt C15 ont été relus au sas, ainsi que le fichier de production de référence. Les fichiers cibles n'ont pas changé depuis l'audit. La branche main du sas porte maintenant 4b9928ddc1c8a4bf17c374447badf8166b56f5b9 : seul le transcript C14 a reçu un tour 27, ajouté à 20:58. Ce tour a été lu en entier ; il confirme l'audit et propose au point 77 la correction du mandat et de la fin du banc. Le premier message C15 74 avait été envoyé avant cette découverte ; les numéros 75 à 77 sont ceux du nouveau tour de C14. Les messages déjà envoyés ne sont pas renumérotés ; C15 reprend à 78. La présente action est la reprise de la proposition C15 68 sur le « Ok continue » de Paul ; aucun codage fonctionnel de l'app et aucune promotion.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : correction du mandat et de la sortie du banc · ouvert : 61 ; 53 ; 45 ; 36.
+
+78. Le tour 27 de C14 confirme l’audit. Je vérifie que le générateur reconstruit exactement la 1.2.3, puis je corrige le mandat et la fin du banc pour qu’une vérification ratée fasse échouer la commande.
+
+À tester : rien dans l’app pour l’instant.
+
+30/10/2026 21:04
+MEMO
+
+**Fait — reconstruction mesurée.** Les huit fichiers de l'essai ont été vérifiés contre leurs blobs GitHub avant exécution : base 1.1.0-RU, générateur, scan.js, scan.css, eleve.js, grille2.json, référence 1.2.3-RU, banc d'origine. Le générateur est exécuté sur la base d'avant les scans avec PROD=1 et VERSION=1.2.3-RU ; quatre fichiers JSON d'entrée inventés (classe de test), aucune lecture ou écriture Firebase. La sortie contient 533 112 octets ; comparaison de tous les octets avec le fichier de production du dépôt : identique. md5 de la base f7c2c85e05468c7dd74d785eb9aa707c ; md5 de la référence et de la reconstruction bde58bd636a12ea3e6af66474b476e38. Essai témoin : le générateur recevant la 1.2.3 comme entrée termine en erreur d'assertion et ne crée pas le fichier demandé. Ces essais vérifient la construction, pas le parcours dans un navigateur. Les fichiers construits restent des mesures locales, pas une livraison ni une mise en ligne.
+
+**Fait — correction du banc.** Diff intégral relu : la dernière ligne est remplacée par trois lignes. Le prédicat d'échec inclut une vérification marquée ✗ ou une erreur collectée ; le résultat est affiché, le navigateur est fermé, puis process.exitCode=1 si nécessaire. Aucun appel de vérification ajouté ou supprimé : 49 appels verif comptés dans le script. Syntaxe du module vérifiée avec node --check. La fin exacte des scripts d'avant et d'après est extraite, exécutée isolément dans de vrais processus Node, avec uniquement ok, err et la fermeture du navigateur remplacés par des entrées inventées. Résultats :
+
+| Essai isolé | Code de sortie | Résultat affiché |
+|---|---:|---|
+| Témoin d'avant, une vérification ratée | 0 | BANC : ÉCHEC |
+| Après correction, une vérification réussie | 0 | BANC : 1 vérifications, 0 défaut |
+| Après correction, une vérification ratée | 1 | BANC : ÉCHEC |
+| Après correction, une erreur collectée | 1 | BANC : ÉCHEC |
+
+Le banc navigateur complet n'est pas rejoué dans ce tour ; aucun nouveau résultat 49/0. Pas de navigateur ouvert ni de capture livrée. Le faux résultat vert de la commande est corrigé, pas les fonctionnalités encore à coder.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : mise à jour du mandat au sas · ouvert : 61 ; 53 ; 45 ; 36.
+
+79. La reconstruction donne exactement la 1.2.3 actuelle : 533 112 octets identiques. La fin du banc corrigée renvoie maintenant 1 en cas d’échec et 0 en cas de réussite, vérifié sur trois essais isolés. Je termine le mandat avec ces preuves.
+
+À tester : rien dans l’app ; le banc complet n’a pas été rejoué.
+
+30/10/2026 21:09
+MEMO
+
+**Fait — mandat révisé.** Le fichier complet traite les huit écarts : référence au tour 25 avec 56 et 57 séparés et 53 conditionnel ; trajet de construction prouvé ; raccourci de faute inexistant retiré et 51 différé à la bande ; repère de ligne sur la photo ; absence de promesse non prouvée sur les anciennes marques et leurs doublons ; règle ⑨ complète, grille distincte, conservation des notes et preuve en lecture seule ; sortie du banc corrigée et épreuves à ajouter selon l'intervention ; trois défauts de 59 imposés avant la première mise en ligne. La révision rappelle aussi le JSON avec prompt intégré demandé par Paul, le gel des quatre passes jusqu'à 58, les trois défauts, les limites des mesures, les 30 clics et la validation des mots élèves. Le fichier porte VERSION À COMPLÉTER. 61, 53, 45 et 36 restent ouverts ; aucune décision de touche inventée. Aucun registre de production modifié sur la seule base d'un constat de la conscience.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : dépôt au sas · ouvert : 61 ; 53 ; 45 ; 36.
+
+80. Le mandat est prêt : la recopie est séparée de la bande, l’import de 53 reste conditionnel et les anciennes marques ne sont plus promises comme reconnues mot par mot. Je le dépose avec la correction du banc et le transcript.
+
+À tester : rien dans l’app.
+
+30/10/2026 21:15
+MEMO
+
+**Fait — dépôt prévu et vérification.** Trois fichiers seulement sont préparés dans le même commit du sas : MANDATS/REDACTION-UNIVERSELLE/MANDAT-RECOPIER-BANDE.md ; MANDATS/REDACTION-UNIVERSELLE/maquette/banc/banc.mjs ; TRANSCRIPTS/C15/TRANSCRIPT-C15.md. Le commit conserve le tour 27 de C14 dans son parent. La mise à jour de main exige que sa tête soit encore celle relue ; aucun forçage. Les contenus déposés seront relus et comparés intégralement avant l'envoi de la réponse ci-dessous. Aucune écriture au dépôt de production ni au site de données par C15.
+
+**GPT — réponse :**
+
+À jouer : rien · en cours : rien · ouvert : 61 ; 53 ; 45 ; 36.
+
+81. Le [mandat complet]([lien dans la conversation]) et le [banc]([lien dans la conversation]) sont corrigés au sas et relus identiques. La reconstruction de la 1.2.3 est exacte ; la sortie du banc est vérifiée sur trois essais isolés. Le banc complet reste à rejouer.
+
+82. Je propose de retenir l’ordre 61 : recopie, puis bande des fautes, puis grille en stickers ; les trois défauts de 59 réglés avant la première mise en ligne.
+
+À tester : ouvrir le mandat, vérifier les étapes 56–58 et les conditions de 59.
+
+30/10/2026 21:17
+MEMO

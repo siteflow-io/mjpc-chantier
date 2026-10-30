@@ -242,4 +242,6 @@ verif('aucune écriture sur une classe entière (une clé de copie vide)', !(awa
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }
 console.log(ok.join('\n')); if (err.length) console.log('ERREURS\n' + err.join('\n'));
-console.log(ok.filter(x => x.startsWith('✗')).length ? 'BANC : ÉCHEC' : 'BANC : ' + ok.length + ' vérifications, 0 défaut'); await b.close();
+const echec = ok.some(x => x.startsWith('✗')) || err.length > 0;
+console.log(echec ? 'BANC : ÉCHEC' : 'BANC : ' + ok.length + ' vérifications, 0 défaut'); await b.close();
+if (echec) process.exitCode = 1;

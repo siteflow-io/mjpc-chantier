@@ -1,4 +1,4 @@
-# Captures construites : la correction en oui / non (C13 1116-1120). Données : la copie de Flavie (son bilan du 29/10), poids réels de la grille.
+# Captures construites : la correction en oui / non (C13 1116-1120). Données : la copie d'Emma (son bilan du 29/10), poids réels de la grille.
 import math, html
 E=html.escape
 P=[ # (id, critère, libellé, poids, [(question, réponse, ordre de lecture)], au-delà)
@@ -51,7 +51,7 @@ h3{break-after:avoid;margin:2px 0 6px;font-size:13px;letter-spacing:.12em;text-t
 .reg span.e{background:#f6d0cc;border-color:#c0504a;font-weight:bold}.reg span i{position:absolute;top:-6px;right:-5px;background:#8e2b25;color:#fff;border-radius:8px;font-size:9.5px;padding:0 3px;font-style:normal}
 .ges{font-size:22px;font-weight:bold;color:#3d6b26}.m{color:#8a7a62;font-size:12.5px}'''
 def vueA():
-  h='<div class="top"><b>CHEVALIER Flavie</b><span>Copie 7 sur 30</span><span class="pill">Copie suivante : CF ⏎</span><span class="esp"></span><span class="pill">Écrire une lettre de la Grande Guerre</span><span class="pill">⏱ le chrono de la copie</span><span class="pill" style="font-size:18px">%.1f / 40</span></div>'%tot
+  h='<div class="top"><b>CHAUVIN Emma</b><span>Copie 7 sur 30</span><span class="pill">Copie suivante : CF ⏎</span><span class="esp"></span><span class="pill">Écrire une lettre de la Grande Guerre</span><span class="pill">⏱ le chrono de la copie</span><span class="pill" style="font-size:18px">%.1f / 40</span></div>'%tot
   h+='<div class="cols"><div class="col" style="flex:1.25;column-count:2;column-gap:22px">'
   for grp,tit in [('oeil',"D'un coup d'œil"),('lire','En lisant'),('fin','À la fin')]:
     h+='<h3>'+tit+'</h3>'
@@ -76,15 +76,15 @@ def vueA():
   return h
 def vueB():
   h='<div style="max-width:1100px;margin:0 auto;background:#fff;padding:26px 40px;min-height:100vh">'
-  h+='<div style="display:flex;align-items:baseline"><h2 style="margin:0;font-size:24px">CHEVALIER Flavie — Écrire une lettre de la Grande Guerre</h2><span class="esp"></span><b style="font-size:24px">%s / 40</b></div><div class="m">3 FRANKLIN ARETHA · rédaction 1</div>'%('%g'%tot).replace('.',',')
+  h+='<div style="display:flex;align-items:baseline"><h2 style="margin:0;font-size:24px">CHAUVIN Emma — Écrire une lettre de la Grande Guerre</h2><span class="esp"></span><b style="font-size:24px">%s / 40</b></div><div class="m">3 FRANKLIN ARETHA · rédaction 1</div>'%('%g'%tot).replace('.',',')
   h+='<h3 style="margin-top:16px">Ton échelle</h3><table style="border-collapse:collapse;width:100%;font-size:13px">'
   for cr,ks in crit.items():
     for k in ks:
       e=R[k][0]; h+='<tr><td style="padding:2px 6px;width:34%%">%s</td>'%E(LIB[k])+''.join('<td style="padding:2px"><div class="c %s" style="width:100%%;%s">%d %s</div></td>'%('c%d'%i if i==e else '', '' if i==e else 'border-color:#e3dacb;color:#b8ab95;background:#fff', i+1, LAB[i]) for i in range(4))+'</tr>'
   h+='</table>'
-  h+='''<h3 style="margin-top:16px">Mon bilan</h3><p style="font-size:15.5px;text-align:justify">Flavie, ta lettre tient le thème : on sait qui écrit, d’où, à qui, et c’est bien la guerre de 14-18. Tu fais voir le concret, comme Jean Déléage, et toutes tes phrases sont complexes, avec les cinq architectures.</p>
+  h+='''<h3 style="margin-top:16px">Mon bilan</h3><p style="font-size:15.5px;text-align:justify">Emma, ta lettre tient le thème : on sait qui écrit, d’où, à qui, et c’est bien la guerre de 14-18. Tu fais voir le concret, comme Jean Déléage, et toutes tes phrases sont complexes, avec les cinq architectures.</p>
 <p style="font-size:15.5px;text-align:justify">Ce qui manque encore : ton personnage n’a pas de vie à lui ; le troisième paragraphe, l’inquiétude pour l’autre, n’est pas écrit ; un détail est trop proche du texte lu (« Il y a aussi beaucoup de mort qui sont entassés sur le sol où l’on marche. », ligne 9) ; ta lettre dit tout, même le pire, sans se demander ce que l’autre peut entendre (« Je ne veux pas que tu pleure pour moi qui tue des gens. », ligne 14) ; ta litote dit la chose au lieu de la faire entendre.</p>
-<p style="font-size:15.5px;text-align:justify">Une phrase m’a touché : « je parlais de mes enfants qui était ma fiertée » (ligne 17) — on y entend la guerre vécue par un père. Ta priorité, Flavie : le troisième paragraphe.</p>
+<p style="font-size:15.5px;text-align:justify">Une phrase m’a touché : « je parlais de mes enfants qui était ma fiertée » (ligne 17) — on y entend la guerre vécue par un père. Ta priorité, Emma : le troisième paragraphe.</p>
 <h3 style="margin-top:14px">À reprendre</h3><ol style="font-size:15px;margin-top:4px">
 <li>Ajoute la date de ta lettre.</li><li>Écris le troisième paragraphe : ton inquiétude pour l’autre.</li><li>Donne une vie à ton personnage : son âge, son métier d’avant.</li><li>Récris le détail de la ligne 9 avec tes mots.</li><li>Tais une chose, et laisse deviner pourquoi.</li><li>Récris ta litote pour qu’elle fasse entendre plus qu’elle ne dit.</li><li>Vérifie chaque relatif, et note le numéro de chaque architecture dans la marge.</li><li>Corrige tes 14 erreurs : ligne 2 (2), 3, 5 (2), 7, 8, 9 (2), 11, 14, 15, 17, 19. Tu les corriges dans l’appli.</li></ol></div>'''
   return h

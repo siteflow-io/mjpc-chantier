@@ -38,14 +38,14 @@ jobs:
           root = pathlib.Path("MANDATS/REDACTION-UNIVERSELLE/maquette")
           expected = {
               "scan.js": "c7d8afd385860f6fbc8353499bd944c6c8821cc1",
-              "recopie.js": "da7a53bf65d090041701fe10535d1e096b41d644",
-              "recopie.css": "fed13314640a646f32880474a0eeabd7e2609ef0",
+              "recopie.js": "864a0b134cfc8ed98d3dc948622d88f4ebb3eaa2",
+              "recopie.css": "c9080da44e371cf39d005ddeb7f04005a97a9502",
               "gen-maquette.py": "dfff0b7972cab6cd8432b59335edb72bf6dbc391",
               "banc/banc.mjs": "fce59d71e70eb856929c9b22dce7a6554f73ae4c",
-              "banc/recopie.mjs": "8ef3e126a5811d47b0cf2448a018fedbc094e14a",
+              "banc/recopie.mjs": "3ecbc1294bf8bf7f02749862edd91cee34c7692a",
               "banc/fixture-recopie.py": "b96a0b58aa121522fa75599c0ffd521c55a4f757",
-              "banc/verifier-construction.py": "b7274c6ccc4f9347cc09a208ac228c32c62a3a9f",
-              "C15-maquette-recopie-v1-essai1.html": "36fa1fd4b3427fa6d872c7968c921f94eac8d71f",
+              "banc/verifier-construction.py": "03ebbded1d86ceb842b2dcb365cfba2d92c6ce26",
+              "C15-maquette-recopie-v1-essai2.html": "81355436fd26d4fb39b62feba92ebe599e58fe29",
               "banc/recopie-lignes-essai.png": "238ee23b628f28751a3550be91d3c570f603bc58",
               "T399-maquette-redaction-scans-v14.html": "c7fb23f32a9280c528f5b1f91229cd945d9f0102",
               "paquet-essai.pdf": "9b4ec27e91a0e6586300945759fb1fa3835a6827",
@@ -65,7 +65,7 @@ jobs:
           npm --version
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/recopie.js
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/banc/banc.mjs
-          python3 MANDATS/REDACTION-UNIVERSELLE/maquette/banc/verifier-construction.py C15-maquette-recopie-v1-essai1.html
+          python3 MANDATS/REDACTION-UNIVERSELLE/maquette/banc/verifier-construction.py C15-maquette-recopie-v1-essai2.html
 
       - name: Installer les dependances de test epinglees
         shell: bash
@@ -85,7 +85,7 @@ jobs:
           export NODE_PATH="$DEPS_DIR/node_modules"
           export PDFJS="$DEPS_DIR/node_modules/pdfjs-dist/build/"
           set +e
-          node "$BANC_DIR/banc/banc.mjs" C15-maquette-recopie-v1-essai1.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
+          node "$BANC_DIR/banc/banc.mjs" C15-maquette-recopie-v1-essai2.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
           issue=$?
           set -e
           python3 - <<'PY'

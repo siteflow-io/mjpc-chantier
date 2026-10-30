@@ -26,8 +26,8 @@
 .rc-selection{fill:#cce5b733;stroke:#4b7c38;stroke-width:1.5;vector-effect:non-scaling-stroke;pointer-events:none}
 #rcAbsente{position:absolute;inset:15% 10%;padding:20px;background:#fff8e5;text-align:center;color:#72582e}
 #rcAbsente[hidden]{display:none}
-.rc-ligne{position:absolute;height:26px;transform-origin:0 12px;border-bottom:1px solid #b8cfc2;box-sizing:border-box}
-.rc-saisie{box-sizing:border-box;display:block;width:100%;height:26px;margin:0;padding:0 2px;background:transparent;border:1px solid transparent;outline:0;color:#283443;font:18px/24px Georgia,serif;box-shadow:none;border-radius:3px}
+.rc-ligne{position:absolute;height:calc(26px * var(--rc-echelle,1));transform-origin:0 calc(12px * var(--rc-echelle,1));border-bottom:1px solid #b8cfc2;box-sizing:border-box}
+.rc-saisie{box-sizing:border-box;display:block;width:100%;height:100%;margin:0;padding:0 2px;background:transparent;border:1px solid transparent;outline:0;color:#283443;font:calc(18px * var(--rc-echelle,1))/calc(24px * var(--rc-echelle,1)) Georgia,serif;box-shadow:none;border-radius:3px}
 .rc-ligne.on .rc-saisie{border-color:#739a5c;background:#fbfff5}
 .rc-saisie:focus{outline:2px solid #86a96b;outline-offset:1px}
 .rc-message{flex:none;margin:0;padding:5px 14px;background:#fffaf1;color:#6a5a45;font-size:12px}

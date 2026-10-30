@@ -173,13 +173,14 @@ function rcMettreEnPage() {
   if (!RC.ouvert || !RC.ui || !SC.pages[RC.page]) return;
   const e = RC.ui, p = SC.pages[RC.page], zone = e.querySelector("#rcDefile"), duo = e.querySelector("#rcPapiers");
   const largeur = Math.max(580, zone.clientWidth - 28) * RC.zoom, w = (largeur - 18) / 2, h = w * p.h / p.w;
-  duo.style.width = largeur + "px";
+  const echelle = w / 620;
+  duo.style.width = largeur + "px"; duo.style.setProperty("--rc-echelle", echelle);
   e.querySelector("#rcPhoto").style.height = h + "px"; e.querySelector("#rcFeuille").style.height = h + "px";
   const d = rcDocument(p.id);
   e.querySelectorAll(".rc-ligne").forEach(row => {
     const l = d.lignes[row.dataset.ligne]; if (!l) return;
     const a = Math.atan2((l.y1 - l.y0) * h, (l.x1 - l.x0) * w) * 180 / Math.PI;
-    row.style.left = (l.x0 * w) + "px"; row.style.top = (l.y0 * h - 12) + "px";
+    row.style.left = (l.x0 * w) + "px"; row.style.top = (l.y0 * h - 12 * echelle) + "px";
     row.style.width = Math.max(24, Math.hypot((l.x1 - l.x0) * w, (l.y1 - l.y0) * h)) + "px";
     row.style.transform = "rotate(" + a + "deg)";
   });

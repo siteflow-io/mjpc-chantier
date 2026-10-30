@@ -45,10 +45,11 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     const photo = document.getElementById("rcPhoto").getBoundingClientRect();
     const feuille = document.getElementById("rcFeuille").getBoundingClientRect();
     const row = Array.from(document.querySelectorAll(".rc-ligne")).find(e => e.dataset.ligne === id);
-    const m = new DOMMatrix(getComputedStyle(row).transform), longueur = parseFloat(row.style.width);
+    const style = getComputedStyle(row), m = new DOMMatrix(style.transform), longueur = parseFloat(row.style.width);
+    const origine = style.transformOrigin.split(" ").map(parseFloat);
     return Math.abs(photo.width - feuille.width) < 1
       && Math.abs(parseFloat(row.style.left) - l.x0 * photo.width) < 1
-      && Math.abs(parseFloat(row.style.top) + 12 - l.y0 * photo.height) < 1
+      && Math.abs(parseFloat(row.style.top) + origine[1] - l.y0 * photo.height) < 1
       && Math.abs(m.a * longueur - (l.x1 - l.x0) * photo.width) < 1.5
       && Math.abs(m.b * longueur - (l.y1 - l.y0) * photo.height) < 1.5;
   }, id);
@@ -119,6 +120,14 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie : six lignes trouvées sur six dans la page inventée, avec ligne courte, rature, pente et grand blanc (" + six.n + ")", six.n === 6);
   await champ(1).fill("Deux mots"); await pg.keyboard.press("Enter");
   verif("recopie : la ligne de deux mots se saisit et se garde comme les autres", await champ(1).inputValue() === "Deux mots");
-  await cap("C15-24-recopie-six-lignes"); await pg.click("#rcFermer"); await att(180);
+  await cap("C15-24-recopie-six-lignes");
+  await pg.setViewportSize({ width: 390, height: 800 }); await att(180);
+  const lisible = await pg.evaluate(() => {
+    const es = Array.from(document.querySelectorAll(".rc-saisie")), boites = es.map(e => e.getBoundingClientRect());
+    return es.length === 6 && boites.slice(0,-1).every((b,i) => b.bottom <= boites[i+1].top + 2);
+  });
+  verif("recopie : à 390 pixels, les six lignes de saisie ne se chevauchent pas", lisible);
+  await cap("C15-26-recopie-six-lignes-mobile");
+  await pg.setViewportSize({ width: 1536, height: 864 }); await pg.click("#rcFermer"); await att(180);
   verif("recopie : fermer rend les quatre passes, les anciennes corrections et leurs gestes", await pg.locator("#scanEcran").isVisible() && !(await pg.locator("#rcEcran").isVisible()) && await pg.locator(".sc-passe").count() === 4);
 }

@@ -9381,3 +9381,38 @@ MEMO
 
 30/10/2026 11:16
 MEMO
+
+## Tour 411 — 30/10/2026 11:22 → 11:34
+
+**Paul :** pendant que tu codais j'ai pris mes copies en photo jai donc mes paquets prêts. Mets en ligne, il faut que je fasse ma correction absolument. Fais une sauvegarde du fichier actuellement en ligne afin de pouvoir y revenir si celui-ci casse. POur la mise en ligne, assure toi de faire les branchements nécessaires pour que la maquette devienne une app. Attention aux erreurs habituelles.
+
+**Fait.** Au site (GET) : deux rédactions de la lettre, `sujet_mvqx0bld_6pj89w` (3 Dylan Bob) et `sujet_mvtd85g7_ycxjq3` (3 Franklin Aretha), aucune n'avait `config/grille2`. Essai d'écriture `scan/3_franklin_aretha/essai_conscience_c13` : PUT 200, relu, DELETE 200, relu `null`. `grille2.json` (md5 98c1821b0f33) écrit dans `config/grille2` des deux : PUT 200 ; relu : les deux points calculés reviennent sans `questions` (Firebase n'enregistre pas un tableau vide). D'où, avant toute mise en ligne : `scan.js` `scGrilleNormale` (questions, cases, barème toujours présents) ; faux hub du générateur rendu fidèle à Firebase (`fb` : ni null, ni objet ou tableau vide, objet à clés 0…n rendu en tableau ; vérifié sur un exemple) ; maquette v11 (md5 16c94831f92a) ; banc rejoué : 39 / 0. `gen-maquette.py` : `PROD=1` (même code, sans faux hub ni réglage de simulation, `APP_VERSION` 1.2.0-RU) ; candidat vérifié : aucune trace du faux hub, aucun vrai nom, trois scripts sans erreur de syntaxe, différence avec la production = les seules insertions prévues. Essai à la fumée (`t411/fumee.mjs`, lectures réelles, écritures interceptées) : accueil (deux rédactions), classe Franklin 30 élèves, bouton, écran des scans (4 passes, 51 questions), paquet d'essai + une photo réelle lus, écritures : `suivi` et `scan/…/pages` seulement, aucune erreur. Sauvegarde : `SAUVEGARDES/redaction-1.1.0-RU-avant-scans-2026-10-30.html` (sas, md5 f7c2c85e…) ; point de retour inscrit avant (`docs/MJPC6-restauration.md`, commit `33d9a09`). Mise en ligne : commit `46a2045`, blob `4ca9e3dcfa6b`, 524 986 o, md5 `8d9457088ef356431598dd7aaed8d778` ; GitHub (API) même blob ; le site servi relu bit à bit (même md5, `APP_VERSION` 1.2.0-RU) ; essai à la fumée sur l'adresse en ligne : aucune erreur. Docs : `MJPC6-DETTES.md` (état de production, dettes du premier flux dont l'affichage menteur de la tuile), `MJPC6-OU-TROUVER-QUOI.md`, `MJPC6-journal.md`. `index.html` non touché.
+
+**Claude :**
+
+À jouer : ta correction, en ligne (1471) · en cours : rien · ouvert : 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1471. C'est en ligne et vérifié : la Rédaction 1.2.0-RU, avec « 📄 Corriger sur les scans ». L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.2.0-RU, puis ta rédaction, ta classe, et le bouton « 📄 Corriger sur les scans » à droite de « Paquet classé ». Le fichier en ligne est identique, octet pour octet, à celui que j'ai envoyé.
+
+1472. La sauvegarde : l'ancienne version (1.1.0-RU) est gardée intacte au sas, et le point de retour est inscrit avant la mise en ligne. Si la nouvelle casse, je la remets en une minute. Ce que tu aurais corrigé sur les scans resterait au site : rien n'est effacé en revenant.
+
+1473. Les branchements faits au site : la grille à cases est posée sur tes deux rédactions de la lettre (3 Franklin Aretha et 3 Dylan Bob), relue après écriture. J'ai essayé une écriture là où vont tes pages et tes marques : le site l'accepte (essai posé puis retiré).
+
+1474. L'erreur habituelle, trouvée avant la mise en ligne : le site n'enregistre jamais un tableau vide, alors que la maquette les gardait. Relue au site, la grille revenait sans les questions de ses deux points calculés (les lignes, l'orthographe) : l'écran aurait planté. Corrigé dans l'app, et la maquette se comporte maintenant comme le site ; tout le banc rejoué dessus : 39 vérifications, 0 défaut.
+
+1475. Essayé sur le vrai site, sans rien y écrire (mes écritures interceptées) : la liste de tes rédactions, ta classe de 30 élèves, l'écran des scans avec ses 4 passes et 51 questions, une photo de Flavie chargée, aucune erreur. Ce que l'app écrit en ouvrant les scans : seulement l'endroit où tu en es, et tes pages (jamais les photos).
+
+1476. À savoir avant de commencer : tes essais dans les maquettes restent dans les maquettes ; sur le site, tu repars de zéro : charge ton paquet, puis les initiales. Tes photos doivent être des JPG : une photo HEIC d'iPhone, ton navigateur ne la lit pas (le message dit « Ce fichier n'a pas pu être lu »). Ton paquet reste dans ce navigateur : corrige sur le même ordinateur, ou recharge le paquet sur l'autre, les marques reviennent.
+
+1477. Les dettes qui restent, au registre (ce que tu ne commentes pas, je le règle ensuite, sans toucher à ta correction en cours) : tes 51 questions à récrire (1444) ; les mots de l'élève (1468) ; et un affichage menteur que j'ai trouvé : au tableau des élèves, une copie corrigée sur les scans reste « Non commencé · 0 % ». Ta note est juste dans le récapitulatif et dans les fichiers École Directe.
+
+1478. Je corrige la tuile du tableau (1477) quand tu as fini ta correction, pas avant ?
+
+À tester (sur le site, maintenant) :
+1. Ouvrir l'adresse de 1471, ta rédaction, ta classe : le bouton « 📄 Corriger sur les scans » est là.
+2. Charger ton paquet de photos ; les initiales, page par page ; Entrée seule pour la deuxième page d'une même copie.
+3. Première copie : taper les lignes écrites, Entrée ; souligner une faute ; en haut à droite, « ✓ Enregistré au site ».
+4. Fermer l'onglet, rouvrir l'adresse : tu reviens au même endroit, tes marques sont là.
+
+30/10/2026 11:34
+MEMO

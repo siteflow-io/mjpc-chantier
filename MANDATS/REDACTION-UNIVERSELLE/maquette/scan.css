@@ -57,3 +57,25 @@ body.sc-ouvert #ruAide{z-index:975}body.sc-ouvert .rp-aide-btn{z-index:976}
 body.sc-nue .sc-page svg,body.sc-nue .sc-champ{visibility:hidden}
 .sc-replie .sc-panneau{display:none}.sc-bande{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 14px;background:#fffaf2;border-bottom:1px solid #d6cfc1;font-size:14.5px}.sc-bande .sc-btn{margin-left:auto}
 .sc-outils{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+/* 1443 : la question en cours dit ce qu'elle décide, et se répond aussi à la souris */
+.sc-q-si{grid-column:1/3;font-size:13px;color:#6b1a2a;background:#fbf3e6;border-radius:6px;padding:4px 7px;margin-top:3px}.sc-q-si b{float:right;color:#6b1a2a}
+.sc-q-rep{grid-column:1/3;display:flex;gap:6px;margin-top:4px}.sc-q-rep .sc-btn{flex:1}
+.sc-case.si{opacity:1;outline:2px dashed #6b1a2a;outline-offset:1px}
+/* 1444 : le champ au-dessus du mot, relié à lui, déplaçable */
+.sc-tire{cursor:move;user-select:none;color:#6b1a2a}.sc-lien{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:visible}
+body.sc-nue .sc-lien{visibility:hidden}
+.sc-champ .sc-sugg{top:auto;bottom:100%;margin-bottom:3px}
+/* 1445 : la retouche d'une page, comme une photo */
+#scRetouche{position:fixed;inset:0;z-index:955;background:#2b2520;display:flex;flex-direction:column}#scRetouche[hidden]{display:none}
+.sc-rt-barre{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 64px 8px 14px;background:#f5efe4;border-bottom:1px solid #d8cbb6;font-size:14px}
+.sc-rt-barre input[type=range]{width:240px;accent-color:#6b1a2a}.sc-rt-deg{min-width:44px;text-align:center;font-weight:700}
+.sc-rt-aide{flex:1;min-width:220px;color:#7a6e5f;font-size:13px}.sc-rt-ok{background:#6b1a2a!important;color:#fff!important;border-color:#6b1a2a!important}
+.sc-rt-zone{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:0}
+.sc-rt-scene{position:relative;overflow:hidden;background:#fff;flex:none}.sc-rt-rot{position:absolute;inset:0;transform-origin:50% 50%}
+.sc-rt-img{position:absolute;inset:0;width:100%;height:100%}.sc-rt-marques{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sc-rt-cadre{position:absolute;border:2px solid #fff;outline:1px solid #2b2520;box-shadow:0 0 0 4000px rgba(20,16,12,.55);cursor:move;touch-action:none}
+.sc-rt-p{position:absolute;width:18px;height:18px;background:#fff;border:2px solid #2b2520;border-radius:3px}
+/* les poignées dans le cadre : un cadre sur toute la photo garde ses coins à portée de souris */
+.sc-rt-p.nw{left:-1px;top:-1px;cursor:nwse-resize}.sc-rt-p.ne{right:-1px;top:-1px;cursor:nesw-resize}.sc-rt-p.se{right:-1px;bottom:-1px;cursor:nwse-resize}.sc-rt-p.sw{left:-1px;bottom:-1px;cursor:nesw-resize}
+.sc-rt-p.n{left:calc(50% - 9px);top:-1px;cursor:ns-resize}.sc-rt-p.s{left:calc(50% - 9px);bottom:-1px;cursor:ns-resize}.sc-rt-p.e{right:-1px;top:calc(50% - 9px);cursor:ew-resize}.sc-rt-p.w{left:-1px;top:calc(50% - 9px);cursor:ew-resize}
+body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-dessus l'écran des scans et la retouche */

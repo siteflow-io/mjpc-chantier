@@ -7,7 +7,7 @@
 // Une page a pour identité l'empreinte de son image : remettre le même PDF, sur n'importe quel ordinateur, ramène ses marques.
 // Une marque est un objet : un id né une fois, l'horodatage, la page et la place sur la page (jamais un rang).
 const SC = { grille: null, passes: [], passe: 0, copies: [], ic: 0, ip: 0, iq: 0, pages: {}, imgs: {}, sel: null, outil: null, annule: [],
-  attrib: false, ia: 0, trace: null, champ: null, retours: {}, ir: 0, actif: 0, ouvert: false, dbp: null };
+  attrib: false, ia: 0, trace: null, champ: null, retours: {}, ir: 0, actif: 0, ouvert: false, dbp: null, origs: {}, rt: null };
 const SC_COUL = { 0: "#c54040", 1: "#c47820", 2: "#5a8a32", 3: "#3a6e1c" };
 const SC_FOND = { 0: "#f4b0b0", 1: "#f5c98a", 2: "#a8d088", 3: "#7eb55c" };
 const SC_CRIT = { langue: "#c54040", theme: "#2f5d8a", construction: "#1f7a72", organisation: "#7a3f8f", etoile: "#c08a4a" };
@@ -22,7 +22,7 @@ function scLong() { const n = Number(SUJET && SUJET.longueur); return n > 0 ? n 
 // ── la mémoire du navigateur : les images des pages ──
 function scDb() { return SC.dbp || (SC.dbp = new Promise((res, rej) => { const r = indexedDB.open("mjpc_scans", 1); r.onupgradeneeded = () => r.result.createObjectStore("pages", { keyPath: "id" }); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); })); }
 function scDbFaire(mode, f) { return scDb().then(db => new Promise((res, rej) => { const t = db.transaction("pages", mode); const st = t.objectStore("pages"); let out; const q = f(st); if (q) q.onsuccess = () => { out = q.result; }; t.oncomplete = () => res(out); t.onerror = () => rej(t.error); })); }
-function scDbMettre(o) { return scDbFaire("readwrite", st => st.put(o)); }
+function scDbMettre(o) { const g = SC.origs[o.id]; if (g && !o.orig) { o.orig = g.blob; o.ow = g.w; o.oh = g.h; } return scDbFaire("readwrite", st => st.put(o)); }
 function scDbTout() { return scDbFaire("readonly", st => st.getAll()); }
 // ── ouvrir l'écran ──
 function scOuvrir() {
@@ -37,7 +37,7 @@ function scOuvrir() {
       .concat(g.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom, pts: c.points, crit: c.id })))
       .concat([{ id: "retours", nom: "Les retours des élèves", pts: [], crit: "retours" }]);
     Object.values(SC.imgs).forEach(u => { try { URL.revokeObjectURL(u.url); } catch (e) {} }); SC.imgs = {};
-    (loc || []).forEach(o => { if (o && o.blob) SC.imgs[o.id] = scImg(o.blob, o.w, o.h); });
+    (loc || []).forEach(o => { if (o && o.blob) SC.imgs[o.id] = scImg(o.blob, o.w, o.h); if (o && o.orig) SC.origs[o.id] = { blob: o.orig, w: o.ow, h: o.oh }; });
     scCopiesOrdre(); SC.ouvert = true; SC.actif = Date.now();
     const c = state.scanCurseur; if (c) { const ip = SC.passes.findIndex(p => p.id === c.passe); if (ip >= 0) SC.passe = ip; const j = SC.copies.indexOf(c.copie); if (j >= 0) SC.ic = j; const P = SC.passes[SC.passe]; const k = P.pts.findIndex(p => p.id === c.point); if (k >= 0) SC.ip = k; SC.iq = c.q != null ? c.q : null; }
     state.modeOuvert = "scan"; SC.aideAvant = AIDE.courant; aidePoser("scan");
@@ -60,7 +60,7 @@ function scCharger(ev) {
   const nouvelles = []; let n = 0;
   const traiter = cv => scPage(cv).then(o => { n++; scTemoinCharge("Page " + n + " lue…");
     const ex = SC.pages[o.id];
-    SC.imgs[o.id] = scImg(o.blob, o.w, o.h); if (SC.encres) delete SC.encres[o.id];
+    SC.imgs[o.id] = scImg(o.blob, o.w, o.h); if (SC.encres) delete SC.encres[o.id]; if (o.orig) SC.origs[o.id] = { blob: o.orig, w: o.ow, h: o.oh };
     const meta = ex || { id: o.id, eleve: null, ordre: ++ordre, blanche: o.blanche, lignes: o.lignes, rot: o.rot, w: o.w, h: o.h, creeLe: new Date().toISOString() };
     if (!ex) { SC.pages[o.id] = meta; nouvelles.push(meta); ruEcrire(scChemin(["pages", o.id]), meta, "une page du paquet"); }
     return scDbMettre({ id: o.id, red: RU.id, classe: RU.classe, blob: o.blob, w: o.w, h: o.h, le: new Date().toISOString() }); });
@@ -92,9 +92,9 @@ function scPage(cvLu) {
   const moy = g.reduce((a, b) => a + b, 0) / 256; let hex = ""; for (let i = 0; i < 256; i += 4) { let v = 0; for (let j = 0; j < 4; j++) v = v * 2 + (g[i + j] > moy ? 1 : 0); hex += v.toString(16); }
   const id = "page_" + hex + "_" + cvLu.width.toString(36) + cvLu.height.toString(36);
   const ex = SC.pages[id]; const rot = ex && ex.rot != null ? ex.rot : (cvLu.width > cvLu.height * 1.08 ? 90 : 0);   // une page en paysage : photographiée de côté
-  let cv0 = scTourner(cvLu, rot); if (ex && ex.recadre) cv0 = scCouper(cv0, ex.recadre); const H = scReperes(cv0); const cv = H ? scRedresser(cv0, H) : cv0;   // une copie de l'appli : remise droite, lignes connues
+  let cv0 = scTourner(cvLu, rot); if (ex && ex.angle) cv0 = scIncliner(cv0, ex.angle); if (ex && ex.recadre) cv0 = scCouper(cv0, ex.recadre); const H = scReperes(cv0); const cv = H ? scRedresser(cv0, H) : cv0;   // une copie de l'appli : remise droite, lignes connues
   const lig = H ? scLignesConnues(cv) : scLignes(cv);
-  return new Promise(res => cv.toBlob(b => res({ id, rot, blob: b, w: cv.width, h: cv.height, lignes: lig, blanche: lig.fiable !== false && lig.n === 0 }), "image/jpeg", 0.82));
+  return new Promise(res => cv.toBlob(b => cvLu.toBlob(g => res({ id, rot, blob: b, w: cv.width, h: cv.height, lignes: lig, blanche: lig.fiable !== false && lig.n === 0, orig: g, ow: cvLu.width, oh: cvLu.height }), "image/jpeg", 0.85), "image/jpeg", 0.82));
 }
 // les lignes écrites (mesuré le 30/10 sur une copie de l'an dernier : 30 sur 30, à 1 pixel près) : l'encre plus sombre que le papier autour,
 // la réglure (longues traînées horizontales) retirée, le profil ligne par ligne ; le début et la fin de l'écriture de chaque ligne
@@ -135,6 +135,9 @@ function scBlanche(v) { const p = scPagesOrdre()[SC.ia]; if (!p) return; p.blanc
 function scQ(pt, c) { return pt.questions.find(q => q.cle === c); }
 function scCleDe(pt, i) { const q = pt.questions.find(q => q.id === +i); return q ? q.cle : null; }
 function scSautee(pt, q, rep) { if (!q || !q.saute) return false; const [t, i] = q.saute.split(":"); const c = scCleDe(pt, i); return t === "n" ? rep[c] === "n" : rep[c] === "o"; }
+// la case que décide une question : celle où tombe la copie si la réponse est non (ou oui), ou que comptent ses marques
+function scCaseLiee(pt, q) { if (!q) return null; let c = pt.cases.find(c => c.si === "n:" + q.id); if (c) return { c, dit: "Si non" }; c = pt.cases.find(c => c.si === "o:" + q.id); if (c) return { c, dit: "Si oui" };
+  c = pt.cases.find(c => String(c.si || "").indexOf("m:" + q.id + ":") === 0); return c ? { c, dit: "Avec tes marques" } : null; }
 function scQuestions(pt, rep) { return pt.questions.filter(q => !scSautee(pt, q, rep || {})); }
 function scFautes(k) { return Object.values(scCopie(k).marques).filter(m => m.forme === "faute"); }
 // les lignes écrites : comptées d'office sur les copies de l'appli (lignes connues) ; sur une photo, l'appli propose, tu gardes ou tu corriges (mesuré le 30/10 sur tes copies : la réglure et les feuilles voisines faussent le compte)
@@ -247,8 +250,9 @@ function scAnnuler() { const a = SC.annule.pop(); if (!a) { toast("Rien à annul
   if (a.t === "pose") delete s.marques[a.id]; else if (a.t === "efface") s.marques[a.m.id] = a.m; else if (a.t === "change") s.marques[a.m.id] = a.m;
   SC.sel = null; scNumeroter(a.k); saveState(); scRendre(); }
 function scPointeur(ev) {
-  const pg = ev.target.closest(".sc-page"); if (!pg || (SC.attrib && SC.recadre !== pg.dataset.p) || scP().id === "retours") return; const p = SC.pages[pg.dataset.p]; if (!p) return;
+  const pg = ev.target.closest(".sc-page"); if (!pg || SC.attrib || scP().id === "retours") return; const p = SC.pages[pg.dataset.p]; if (!p) return;
   const r = pg.getBoundingClientRect(); const at = e => ({ x: Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)), y: Math.max(0, Math.min(1, (e.clientY - r.top) / r.height)) });
+  if (ev.target.closest(".sc-champ")) return;   // dans le champ ouvert : on tape, on choisit une forme, on le tire ; rien sur la copie
   const a = at(ev); scToucher(); scChampFermer(true);
   const g = ev.target.closest(".sc-m"), poi = ev.target.closest(".sc-poignee");
   if (g) {   // une marque : la sélectionner ; la tirer la déplace ; ses poignées la redimensionnent
@@ -258,10 +262,6 @@ function scPointeur(ev) {
       if (!bouge && !poi && (m.forme === "faute" || m.forme === "remarque")) scChampOuvrir(m); };   // un clic sur une faute rouvre sa bonne forme ; sur une remarque, son texte
     addEventListener("pointermove", mv); addEventListener("pointerup", up); ev.preventDefault(); scRendre(); return;
   }
-  if (SC.recadre === p.id) { SC.trace = { page: p.id, x0: a.x, y0: a.y, x1: a.x, y1: a.y, forme: "cadre" };
-    const mvR = e => { const q = at(e); SC.trace.x1 = q.x; SC.trace.y1 = q.y; scDessinerPages(); };
-    const upR = () => { removeEventListener("pointermove", mvR); removeEventListener("pointerup", upR); const t = SC.trace; SC.trace = null; scRecadrerFin(p.id, t); };
-    addEventListener("pointermove", mvR); addEventListener("pointerup", upR); ev.preventDefault(); return; }
   const o = scOutil(); if (!o) return; SC.sel = null;
   SC.trace = { page: p.id, x0: a.x, y0: a.y, x1: a.x, y1: a.y, forme: o.forme };
   const mv = e => { const b = at(e); SC.trace.x1 = b.x; SC.trace.y1 = b.y; scDessinerPages(); };
@@ -277,9 +277,14 @@ function scChampOuvrir(m) {
   scChampFermer(false); const pg = document.querySelector(`.sc-page[data-p="${m.page}"]`); if (!pg) return;
   const d = document.createElement("div"); d.className = "sc-champ"; d.style.left = (m.x0 * 100) + "%"; d.style.top = (m.y1 * 100 + 1) + "%";
   const rq = m.forme === "remarque"; if (rq) { d.style.borderColor = "#6b1a2a"; }
-  d.innerHTML = rq ? `<span>ta remarque :</span><input id="scChampIn" autocomplete="off" style="width:320px" title="Ta remarque, telle que l'élève la lira à cet endroit de sa copie, puis Entrée. Échap : la remarque reste comme elle était. Suppr, le champ fini : la remarque s'efface.">`
-    : `<span>bonne forme :</span><input id="scChampIn" autocomplete="off" spellcheck="false" title="Tape la bonne forme, ou son numéro dans les formes déjà vues, puis Entrée. En tapant, les formes du paquet qui commencent pareil s'affichent : Tab prend la première. Entrée seule : la faute reste, sans bonne forme (l'élève te l'enverra à relire). Suppr, le champ fini : la faute s'efface."><div class="sc-sugg"></div>`;
-  pg.appendChild(d); SC.champ = { id: m.id, el: d, rq };
+  d.innerHTML = rq ? `<span class="sc-tire" title="Tire ici pour déplacer ce champ, s'il cache un mot que tu veux lire ; la place choisie reste pour les champs suivants.">⠿ ta remarque :</span><input id="scChampIn" autocomplete="off" style="width:320px" title="Ta remarque, telle que l'élève la lira à cet endroit de sa copie, puis Entrée. Échap : la remarque reste comme elle était. Suppr, le champ fini : la remarque s'efface.">`
+    : `<span class="sc-tire" title="Tire ici pour déplacer ce champ, s'il cache un mot que tu veux lire ; la place choisie reste pour les champs suivants.">⠿ bonne forme :</span><input id="scChampIn" autocomplete="off" spellcheck="false" title="Tape la bonne forme, ou son numéro dans les formes déjà vues, puis Entrée. En tapant, les formes du paquet qui commencent pareil s'affichent : Tab prend la première. Entrée seule : la faute reste, sans bonne forme (l'élève te l'enverra à relire). Suppr, le champ fini : la faute s'efface."><div class="sc-sugg"></div>`;
+  pg.appendChild(d); const lien = document.createElementNS("http://www.w3.org/2000/svg", "svg"); lien.setAttribute("class", "sc-lien"); lien.innerHTML = '<line stroke="#c54040" stroke-width="2" stroke-dasharray="4 3"/><circle r="4" fill="#c54040"/>'; if (rq) lien.querySelectorAll("line,circle").forEach(e => { e.setAttribute("stroke", "#6b1a2a"); e.setAttribute("fill", "#6b1a2a"); }); pg.appendChild(lien);
+  SC.champ = { id: m.id, el: d, rq, lien, m }; scChampPlacer();
+  d.addEventListener("pointerdown", e => { e.stopPropagation(); if (!e.target.closest(".sc-tire")) return; e.preventDefault(); const x0 = e.clientX, y0 = e.clientY, L0 = d.offsetLeft, T0 = d.offsetTop;
+    const mv = ev => { d.style.left = (L0 + ev.clientX - x0) + "px"; d.style.top = (T0 + ev.clientY - y0) + "px"; scChampLien(); };
+    const up = () => { removeEventListener("pointermove", mv); removeEventListener("pointerup", up); const W = pg.clientWidth, H = pg.clientHeight; SC.champDecal = { dx: d.offsetLeft - m.x0 * W, dy: d.offsetTop - m.y0 * H }; try { localStorage.setItem("mjpc_scan_champ", JSON.stringify(SC.champDecal)); } catch (x) {} setTimeout(() => { const i = d.querySelector("input"); if (i) i.focus({ preventScroll: true }); }, 0); };
+    addEventListener("pointermove", mv); addEventListener("pointerup", up); });
   const inp = d.querySelector("input"); inp.value = (rq ? m.texte : m.bonne) || ""; setTimeout(() => { inp.focus({ preventScroll: true }); inp.setSelectionRange(inp.value.length, inp.value.length); }, 0);
   const sug = () => { const z = d.querySelector(".sc-sugg"); if (!z) return []; const v = inp.value.trim().toLowerCase(); const L = v && !/^\d+$/.test(v) ? scBanque().map(b => b.forme).filter(f => f.toLowerCase().startsWith(v) && f.toLowerCase() !== v).slice(0, 5) : []; z.innerHTML = L.map((f, i) => `<span${i ? "" : ' class="on"'}>${escapeHtml(f)}</span>`).join(""); return L; };
   inp.addEventListener("input", sug);
@@ -296,15 +301,29 @@ function scChampFermer(garder) {
   if (garder !== false && inp && scK()) { const v = inp.value.trim(); const mm = scCopie(scK()).marques[c.id];
     if (mm && c.rq) { if (v !== (mm.texte || "")) { mm.texte = v; mm.modifieLe = new Date().toISOString(); saveState(); } }
     else if (mm && v !== (mm.bonne || "")) { const B = scBanque(); mm.bonne = /^\d{1,3}$/.test(v) && B[+v - 1] ? B[+v - 1].forme : (v || null); mm.modifieLe = new Date().toISOString(); saveState(); } }
-  if (c.el) c.el.remove();
+  if (c.el) c.el.remove(); if (c.lien) c.lien.remove();
+}
+// 1444 : le champ se pose au-dessus du mot, sur les lignes déjà lues, relié au mot par un trait : il ne cache jamais la suite de la copie ; tiré ailleurs, il garde cette place pour les champs suivants
+try { SC.champDecal = JSON.parse(localStorage.getItem("mjpc_scan_champ") || "null"); } catch (e) { SC.champDecal = null; }
+function scChampPlacer() {
+  const c = SC.champ; if (!c) return; const d = c.el, m = c.m, pg = d.parentNode; if (!pg) return; const W = pg.clientWidth, H = pg.clientHeight, fw = d.offsetWidth, fh = d.offsetHeight;
+  const dec = SC.champDecal || { dx: 0, dy: -(fh + 30) }; let L = m.x0 * W + dec.dx, T = m.y0 * H + dec.dy;
+  if (T < 4) T = m.y1 * H + 30;   // la première ligne : pas de place au-dessus, le champ passe dessous
+  L = Math.max(4, Math.min(W - fw - 4, L)); T = Math.max(4, Math.min(H - fh - 4, T)); d.style.left = L + "px"; d.style.top = T + "px"; scChampLien();
+}
+function scChampLien() {
+  const c = SC.champ; if (!c || !c.lien) return; const d = c.el, m = c.m, pg = d.parentNode; if (!pg) return; const W = pg.clientWidth, H = pg.clientHeight;
+  const L = d.offsetLeft, T = d.offsetTop, fw = d.offsetWidth, fh = d.offsetHeight; const mx = (m.x0 + m.x1) / 2 * W, au = T + fh / 2 < m.y0 * H; const my = au ? m.y0 * H : m.y1 * H;
+  const fx = Math.max(L + 12, Math.min(L + fw - 12, mx)), fy = au ? T + fh : T; c.lien.setAttribute("viewBox", "0 0 " + W + " " + H);
+  const l = c.lien.querySelector("line"); l.setAttribute("x1", fx); l.setAttribute("y1", fy); l.setAttribute("x2", mx); l.setAttribute("y2", my); const o = c.lien.querySelector("circle"); o.setAttribute("cx", mx); o.setAttribute("cy", my);
 }
 // ── le clavier ──
 function scClavier(e) {
-  if (!SC.ouvert) return; const a = document.activeElement; const ecrit = a && (a.tagName === "INPUT" || a.tagName === "TEXTAREA");
+  if (!SC.ouvert) return;
+  if (SC.rt) { const t = { Enter: () => scRtFermer(true), Escape: () => scRtFermer(false), ArrowLeft: () => scRtTourner(-1), ArrowRight: () => scRtTourner(1) }[e.key]; if (t) { e.preventDefault(); e.stopPropagation(); t(); } return; } const a = document.activeElement; const ecrit = a && (a.tagName === "INPUT" || a.tagName === "TEXTAREA");
   if (SC.attrib) { if (!ecrit) { if (e.key === "ArrowRight") { e.preventDefault(); scAttribSuivante(); } } return; }
   if (ecrit) return;
   const P = scP(); scToucher();
-  if (e.key === "Escape" && SC.recadre) { e.preventDefault(); SC.recadre = null; scRendre(); return; }
   if (e.key === "Escape") { const ai = document.getElementById("ruAide"); if (ai && !ai.hidden) return; e.preventDefault(); if (document.getElementById("scModale").classList.contains("show")) { scModaleFermer(); return; } SC.sel = null; SC.outil = null; scRendre(); return; }
   if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) { e.preventDefault(); scAnnuler(); return; }
   if (e.key === "Delete" && SC.sel) { e.preventDefault(); scEffacer(SC.sel); return; }
@@ -336,7 +355,7 @@ function scDessinerPages() {
   if (!ps.length) { Z.dataset.sig = ""; Z.innerHTML = Object.keys(SC.pages).length ? `<div class="sc-vide">Aucune copie à afficher.</div>` : `<label class="sc-vide sc-vide-btn" title="Choisir ton paquet scanné, sur ta clé : un PDF, ou des photos (plusieurs à la fois). Il reste dans ce navigateur, jamais au site.">📄 Charger le paquet<small>un PDF ou des photos · il reste dans ce navigateur, jamais au site</small><input type="file" accept="application/pdf,.pdf,image/*" multiple onchange="scCharger(event)" hidden></label>`; return; }
   if (P.id === "retours" && !SC.attrib) { Z.dataset.sig = ""; scDessinerRetour(Z); return; }
   const lw = Math.max(240, Z.clientWidth - 30) * (SC.zoom || 1);   // la page à la largeur de la zone, fois ton zoom
-  const o = scOutil(); const curseur = SC.recadre ? "crosshair" : SC.attrib ? "default" : scCurseur(o ? o.coul : "#6b1a2a");
+  const o = scOutil(); const curseur = SC.attrib ? "default" : scCurseur(o ? o.coul : "#6b1a2a");
   let html = ""; const champ = SC.champ ? SC.champ.id : null;
   ps.forEach(p => { const im = SC.imgs[p.id]; const Hs = Math.round(1000 * p.h / p.w);
     let svg = ""; if (!SC.attrib) { const ms = scMarquesPage(p.id).filter(scVisible); ms.forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); }
@@ -344,7 +363,7 @@ function scDessinerPages() {
     html += `<div class="sc-page${p.blanche ? " blanche" : ""}" data-p="${p.id}" style="width:${Math.round(lw)}px;height:${Math.round(lw * p.h / p.w)}px;cursor:${curseur}">${im ? `<img src="${im.url}" alt="" draggable="false">` : `<div class="sc-absente">Page absente de ce navigateur</div>`}<svg viewBox="0 0 1000 ${Hs}" preserveAspectRatio="none">${svg}</svg></div>`; });
   const sig = ps.map(p => p.id + ":" + p.w + "x" + p.h).join("|") + "|" + (SC.attrib ? 1 : 0);
   const garde = Z.dataset.sig === sig && Z.querySelectorAll(".sc-page").length === ps.length;
-  if (garde) { Z.querySelectorAll(".sc-page").forEach((e, i) => { e.style.cursor = curseur; const p = ps[i]; if (p) { e.style.width = Math.round(lw) + "px"; e.style.height = Math.round(lw * p.h / p.w) + "px"; } }); Z.querySelectorAll(".sc-page svg").forEach((s, i) => { const p = ps[i]; if (!p) return; const Hs = Math.round(1000 * p.h / p.w); let svg = ""; scMarquesPage(p.id).filter(scVisible).forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); s.innerHTML = svg; }); return; }
+  if (garde) { Z.querySelectorAll(".sc-page").forEach((e, i) => { e.style.cursor = curseur; const p = ps[i]; if (p) { e.style.width = Math.round(lw) + "px"; e.style.height = Math.round(lw * p.h / p.w) + "px"; } }); Z.querySelectorAll(".sc-page > svg:not(.sc-lien)").forEach((s, i) => { const p = ps[i]; if (!p) return; const Hs = Math.round(1000 * p.h / p.w); let svg = ""; scMarquesPage(p.id).filter(scVisible).forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); s.innerHTML = svg; }); scChampPlacer(); return; }
   Z.innerHTML = html; Z.dataset.sig = sig;
   if (champ) { const m = scCopie(scK()).marques[champ]; SC.champ = null; if (m) scChampOuvrir(m); }
 }
@@ -366,16 +385,17 @@ function scPanneau() {
       h += `<div class="sc-bloc"><h3>Les fautes · toute la copie</h3><p>Tu lis la copie en entier, une seule fois. Souligne chaque faute au pinceau (appuie, glisse, lâche), tape la bonne forme ou son numéro, Entrée. Entrée sur la copie : tu as fini les fautes.</p>
         <p class="sc-m">${F.length} faute${F.length > 1 ? "s" : ""} · ${n ? n + " lignes écrites" : "lignes écrites à taper"}</p>
         <label class="sc-m" title="Le nombre de lignes écrites : il compte pour la longueur et pour les fautes. Sur une copie de l'appli, il est compté d'office ; sur une photo, tu le tapes : l'appli s'y trompe (mesuré sur tes copies du 30/10).">Lignes écrites : <input id="scLig" type="number" min="0" max="120" value="${s.lignes != null ? s.lignes : (n || "")}" style="width:64px" onchange="scLignesFixer(this.value)"></label>
-        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">${scPagesDe(k).map((p, i) => `<button class="sc-btn" onclick="scTournerPage('${p.id}')" title="Tourner la page ${i + 1} de cette copie d'un quart de tour vers la droite ; ses marques tournent avec elle.">↻ Page ${i + 1}</button><button class="sc-btn" onclick="scRecadrerDebut('${p.id}')" title="Recadrer la page ${i + 1} sur la feuille : ce qui dépasse (une autre copie, la table) disparaît, et du fichier de l'élève aussi.">✂ Page ${i + 1}</button>`).join("")}${scPagesDe(k).length > 1 ? `<button class="sc-btn" onclick="scOrdrePages('${escapeAttr(k)}')" title="Changer l'ordre des pages de cette copie : la dernière passe en premier.">⇄ Ordre des pages</button>` : ""}</div>
+        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">${scPagesDe(k).map((p, i) => `<button class="sc-btn" onclick="scTournerPage('${p.id}')" title="Tourner la page ${i + 1} de cette copie d'un quart de tour vers la droite ; ses marques tournent avec elle.">↻ Page ${i + 1}</button><button class="sc-btn" onclick="scRecadrerDebut('${p.id}')" title="Retoucher la page ${i + 1} comme une photo : le cadre (ce qui dépasse, une autre copie, la table, disparaît de la copie et du fichier de l'élève) et la rotation degré par degré. Rien n'est perdu, les marques suivent leurs mots.">✂ Page ${i + 1}</button>`).join("")}${scPagesDe(k).length > 1 ? `<button class="sc-btn" onclick="scOrdrePages('${escapeAttr(k)}')" title="Changer l'ordre des pages de cette copie : la dernière passe en premier.">⇄ Ordre des pages</button>` : ""}</div>
         <div style="margin-top:8px"><button class="sc-btn${SC.outil === "etoile" ? " on" : ""}" onclick="SC.outil=SC.outil==='etoile'?null:'etoile';scRendre()" title="Le pinceau doré : surligne la phrase qui t'a touché. Un seul tracé, puis le pinceau revient aux fautes.">★ La phrase qui t'a touché</button></div></div>`;
       const B = scBanque(); h += `<div class="sc-bloc"><h3>Les formes déjà vues dans le paquet</h3>${B.length ? `<div class="sc-banque">${B.map((b, i) => `<span class="sc-touche">${i + 1}</span><span>${escapeHtml(b.forme)} <i class="sc-m">· ${b.copies.size} copie${b.copies.size > 1 ? "s" : ""}</i></span>`).join("")}</div>` : `<p class="sc-m">Aucune encore : chaque forme tapée prend un numéro.</p>`}</div>`;
     } else if (pt.calcul === "lignes") {
       const r = scCase(pt, k); h += `<div class="sc-bloc"><h3>${escapeHtml(pt.titre)} · calculé</h3><p>${r ? scChip(r.c.niveau, r.txt) : "Les lignes ne sont pas comptées : tape-les dans la passe de la langue."}</p><p class="sc-m">Entrée : point suivant.</p></div>`;
     } else {
       h += `<div class="sc-bloc"><h3>${escapeHtml(pt.titre)} · ${pt.poids} points</h3>${scQuestions(pt, rep).map(q => { const v = rep[q.cle]; const nb = Object.values(s.marques).filter(m => m.point === pt.id && m.q === q.cle).length;
-        return `<div class="sc-q${q.cle === SC.iq ? " on" : ""}" onclick="SC.iq='${q.cle}';scRendre()" title="${q.marque ? "Le pinceau " + (q.marque.forme === "surligne" ? "surligne une citation" : q.marque.forme === "marge" ? "trace un trait dans la marge (un paragraphe)" : "encadre un mot") + (q.marque.sens === "non" ? " : une marque répond « non »" : q.marque.sens === "oui" ? " : une marque répond « oui »" : "") : "Pas de marque attendue : Entrée ou N."}"><span>${escapeHtml(q.texte)}</span><b class="${v === "n" ? "non" : v === "o" ? "oui" : ""}">${v === "n" ? "NON" : v === "o" ? "oui" : "…"}${nb ? " · " + nb + " marque" + (nb > 1 ? "s" : "") : ""}</b><em>${escapeHtml(q.moment)}${q.marque ? " · " + (q.marque.forme === "surligne" ? "surligné" : q.marque.forme === "marge" ? "marge" : "encadré") : ""}</em></div>`; }).join("")}</div>`;
+        const sel = q.cle === SC.iq, lien = scCaseLiee(pt, q), forme = q.marque ? (q.marque.forme === "surligne" ? "il surligne une citation" : q.marque.forme === "marge" ? "il trace un trait dans la marge (un paragraphe)" : "il encadre un mot") : "";
+        return `<div class="sc-q${sel ? " on" : ""}" onclick="SC.iq='${q.cle}';scRendre()" title="${sel ? "La question en cours : réponds Oui (Entrée) ou Non (N)." : "Aller à cette question : sa réponse se change, et la case qu'elle décide s'entoure en bas."}${q.marque ? " Le pinceau de cette question : " + forme + (q.marque.sens === "non" ? " ; une marque posée répond « non »." : q.marque.sens === "oui" ? " ; une marque posée répond « oui »." : ".") : " Pas de pinceau pour cette question."}"><span>${escapeHtml(q.texte)}</span><b class="${v === "n" ? "non" : v === "o" ? "oui" : ""}">${v === "n" ? "NON" : v === "o" ? "oui" : "à répondre"}${nb ? " · " + nb + " marque" + (nb > 1 ? "s" : "") : ""}</b><em>${escapeHtml(q.moment)} · ${q.marque ? "pinceau : " + (q.marque.forme === "surligne" ? "surligné" : q.marque.forme === "marge" ? "trait dans la marge" : "encadré") : "sans pinceau"}</em>${sel ? `${lien ? `<div class="sc-q-si">${lien.dit} : « ${escapeHtml(lien.c.fait)} » <b>${pt.bareme[lien.c.niveau]}</b></div>` : ""}<div class="sc-q-rep"><button class="sc-btn${v === "o" ? " on" : ""}" onclick="event.stopPropagation();scRepondre('o')" title="Oui : la réponse est rangée, et la question suivante vient. Même chose que la touche Entrée.">Oui · Entrée</button><button class="sc-btn${v === "n" ? " on" : ""}" onclick="event.stopPropagation();scRepondre('n')" title="Non : la réponse est rangée${lien && lien.dit === "Si non" ? ", la copie tombe dans la case entourée en bas" : ""}, et la question suivante vient. Même chose que la touche N.">Non · N</button></div>` : ""}</div>`; }).join("")}</div>`;
       const r = scCase(pt, k);
-      h += `<div class="sc-bloc"><h3>La case où tombe cette copie</h3>${pt.cases.map(c => `<div class="sc-case${r && r.c === c ? " on" : ""}" title="${c.tache ? "À reprendre : " + escapeAttr(c.tache) + (c.relire ? " — tu la relis (passe des retours)." : " — l'élève la valide seul.") : "Rien à reprendre."}"><i style="background:${SC_COUL[c.niveau]}"></i><span>${escapeHtml(r && r.c === c ? r.txt : c.fait)}${c.tache ? (c.relire ? " <em class=\"sc-m\">✎ relue</em>" : " <em class=\"sc-m\">✓ seul</em>") : ""}</span><b>${pt.bareme[c.niveau]}</b></div>`).join("")}<p class="sc-m">${r ? (r.complet ? "Calculée de tes réponses : tu ne choisis jamais la case." : "Provisoire : il reste des questions.") : "Réponds aux questions."}</p></div>`;
+      h += `<div class="sc-bloc"><h3>La case où tombe cette copie</h3>${pt.cases.map(c => { const li = SC.iq && scQ(pt, SC.iq) ? scCaseLiee(pt, scQ(pt, SC.iq)) : null; return `<div class="sc-case${r && r.c === c ? " on" : ""}${li && li.c === c ? " si" : ""}" title="${li && li.c === c ? li.dit + " à la question en cours, la copie tombe ici. " : ""}${c.tache ? "À reprendre : " + escapeAttr(c.tache) + (c.relire ? " — tu la relis (passe des retours)." : " — l'élève la valide seul.") : "Rien à reprendre."}"><i style="background:${SC_COUL[c.niveau]}"></i><span>${escapeHtml(r && r.c === c ? r.txt : c.fait)}${c.tache ? (c.relire ? " <em class=\"sc-m\">✎ relue</em>" : " <em class=\"sc-m\">✓ seul</em>") : ""}</span><b>${pt.bareme[c.niveau]}</b></div>`; }).join("")}<p class="sc-m">${r ? (r.complet ? "Calculée de tes réponses : tu ne choisis jamais la case." : "Provisoire : il reste des questions.") : "Réponds aux questions."}</p></div>`;
       const vus = SC.copies.map((c, i) => ({ i, r: scCase(pt, c) })).filter(x => x.r && x.r.complet);
       h += `<div class="sc-bloc"><h3>Sur ce point, les copies déjà vues</h3><div class="sc-points">${vus.length ? vus.map(x => `<span title="${escapeAttr(nomEleveDe(SC.copies[x.i]) || "")}"><i style="background:${SC_COUL[x.r.c.niveau]}"></i>${x.i + 1}</span>`).join("") : '<span class="sc-m">aucune encore</span>'}</div></div>`;
     }
@@ -390,7 +410,7 @@ function scPanneauAttrib(Z) {
   Z.innerHTML = `<div class="sc-bloc"><h3>Le paquet · page ${SC.ia + 1} sur ${L.length}</h3><p>Tape les initiales de l'élève de cette page, Entrée. <b>Entrée seule</b> : même élève que la page d'avant${prec ? " (" + escapeHtml(nomEleveDe(prec)) + ")" : ""}.</p>
     <input id="scInit" class="sc-init" autocomplete="off" placeholder="initiales" title="Les initiales, dans n'importe quel ordre (CE ou EC pour Chauvin Emma)."><div id="scInitSug" class="sc-m"></div>
     <button class="sc-btn" onclick="scTournerPage('${p ? p.id : ""}')" title="Tourner cette page d'un quart de tour vers la droite (une photo prise de côté). Ses marques tournent avec elle.">↻ Tourner</button>
-    <button class="sc-btn" onclick="scRecadrerDebut('${p ? p.id : ""}')" title="Recadrer cette page sur la feuille : ce qui dépasse (une autre copie, la table) disparaît, et du fichier de l'élève aussi.">✂ Recadrer</button>
+    <button class="sc-btn" onclick="scRecadrerDebut('${p ? p.id : ""}')" title="Retoucher cette page comme une photo : le cadre (ce qui dépasse, une autre copie, la table, disparaît de la copie et du fichier de l'élève) et la rotation degré par degré. Rien n'est perdu.">✂ Retoucher</button>
     ${p && p.blanche ? `<p class="sc-alerte">L'appli n'y voit aucune ligne écrite : page blanche, sautée.</p><button class="sc-btn" onclick="scBlanche(false)" title="Cette page porte bien une copie : elle reprend sa place dans le paquet.">Ce n'est pas une page blanche</button>` : `<button class="sc-btn" onclick="scBlanche(true)" title="Écarter cette page : elle ne va à aucun élève.">Page blanche</button>`}
     <p class="sc-m">${reste} page${reste > 1 ? "s" : ""} sans élève · ${SC.copies.length} copie${SC.copies.length > 1 ? "s" : ""} reconnue${SC.copies.length > 1 ? "s" : ""}. L'ordre du paquet devient celui de tes flèches.</p>
     ${reste ? "" : `<button class="sc-btn" onclick="SC.attrib=false;scAllerCopie(0)" title="Commencer la correction, passe 1.">Corriger</button>`}</div>`;
@@ -435,7 +455,7 @@ function scVerdict(v) { const L = scRetoursListe(); const r = L[SC.ir]; if (!r) 
   // l'onglet de test de l'élève reçoit ton verdict, comme l'élève le reçoit du site
   scPousser(r.eleve); SC.ir = Math.min(SC.ir + 1, L.length - 1); scRendre(); }
 // ── l'aide, la fenêtre ──
-RU_AIDES.scan = { ou: "Corriger sur les scans", l: [["le pinceau", "appuie, glisse, lâche : la forme vient avec la question (souligné rouge, une faute ; surligné, une citation ; encadré, un mot ; trait dans la marge, un paragraphe)"], ["Entrée / N", "oui · non, puis la question suivante ; une marque qui répond « non » ou « oui » répond pour toi"], ["⌫", "la question précédente"], ["→ ←", "la copie suivante · précédente ; dans les retours : le retour suivant · précédent"], ["clic sur une marque", "la choisir ; sur une faute, sa bonne forme se rouvre (pour la taper ou la changer) ; sur une remarque, son texte ; tire-la, ou ses poignées"], ["Suppr · Ctrl+Z", "effacer la marque choisie · annuler"], ["★", "la phrase qui t'a touché, surlignée en doré (passe de la langue)"], ["Ctrl + molette", "zoomer, sous la souris ; « ↔ Largeur » revient à la largeur de l'écran"], ["Maj (tenue)", "la loupe : un rond grossi trois fois sous la souris"], ["Alt (tenue)", "la copie nue : les marques disparaissent tant que tu tiens la touche"], ["un clic sur un mot", "le trait prend la longueur du mot, lue dans l'encre (glisse si l'appli se trompe)"], ["Tab", "dans la bonne forme : prend la première forme du paquet qui commence pareil"], ["💬 Remarque · Faute", "un tracé avec ce pinceau, puis le pinceau revient à la question"], ["⇥ Replier", "la copie prend la largeur ; la question reste dans une bande"], ["le paquet", "il reste dans ce navigateur et sur ta clé, jamais au site ; les marques et les réponses vont au site, chacune avec son identité"]] };
+RU_AIDES.scan = { ou: "Corriger sur les scans", l: [["le pinceau", "appuie, glisse, lâche : la forme vient avec la question (souligné rouge, une faute ; surligné, une citation ; encadré, un mot ; trait dans la marge, un paragraphe)"], ["Entrée / N", "oui · non, puis la question suivante ; une marque qui répond « non » ou « oui » répond pour toi"], ["⌫", "la question précédente"], ["→ ←", "la copie suivante · précédente ; dans les retours : le retour suivant · précédent"], ["clic sur une marque", "la choisir ; sur une faute, sa bonne forme se rouvre (pour la taper ou la changer) ; sur une remarque, son texte ; tire-la, ou ses poignées"], ["Suppr · Ctrl+Z", "effacer la marque choisie · annuler"], ["★", "la phrase qui t'a touché, surlignée en doré (passe de la langue)"], ["Ctrl + molette", "zoomer, sous la souris ; « ↔ Largeur » revient à la largeur de l'écran"], ["Maj (tenue)", "la loupe : un rond grossi trois fois sous la souris"], ["Alt (tenue)", "la copie nue : les marques disparaissent tant que tu tiens la touche"], ["un clic sur un mot", "le trait prend la longueur du mot, lue dans l'encre (glisse si l'appli se trompe)"], ["Tab", "dans la bonne forme : prend la première forme du paquet qui commence pareil"], ["💬 Remarque · Faute", "un tracé avec ce pinceau, puis le pinceau revient à la question"], ["⇥ Replier", "la copie prend la largeur ; la question reste dans une bande"], ["✂ Page", "retoucher la photo : le cadre et la rotation degré par degré (flèches), Entrée garde, Échap annule ; les marques suivent leurs mots"], ["⠿ bonne forme", "le champ se pose au-dessus du mot ; tire-le par ⠿ s'il cache quelque chose, il garde cette place"], ["le paquet", "il reste dans ce navigateur et sur ta clé, jamais au site ; les marques et les réponses vont au site, chacune avec son identité"]] };
 document.addEventListener("focusout", () => setTimeout(() => { if (SC.panneauAttend && SC.ouvert) { const a = document.activeElement; if (!(a && document.getElementById("scPanneau").contains(a))) { SC.panneauAttend = false; scPanneau(); } } }, 0));
 function scModale(h) { const m = document.getElementById("scModale"); m.querySelector(".sc-modale-c").innerHTML = h + `<div style="text-align:right;margin-top:10px"><button class="sc-btn" onclick="scModaleFermer()" title="Fermer cette fenêtre (Échap fait pareil) ; rien n'est perdu.">Fermer</button></div>`; m.classList.add("show"); }
 function scModaleFermer() { document.getElementById("scModale").classList.remove("show"); }
@@ -498,6 +518,11 @@ function scLignesConnues(cv) {   // sur la copie de l'appli, les lignes sont à 
 // ↻ : la page tourne d'un quart de tour vers la droite ; ses marques tournent avec elle ; l'identité de la page ne change pas
 function scTournerPage(pid) {
   const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return;
+  if (!(p.lignes && p.lignes.reperes)) { scOrigDe(pid).then(o => { if (!o) return scTournerPageVieux(pid); const r = p.recadre; scReglerPage(pid, { rot: ((p.rot || 0) + 270) % 360, angle: p.angle || 0, recadre: r ? [1 - r[3], r[0], 1 - r[1], r[2]] : null }); }); return; }
+  scTournerPageVieux(pid);
+}
+function scTournerPageVieux(pid) {   // une page sans sa photo entière (une copie de l'appli, ou chargée avant) : l'image vue tourne
+  const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return;
   createImageBitmap(im.blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); const r = scTourner(c, 270);
     p.rot = (((p.rot || 0) + 270) % 360); if (p.recadre) { const [a0, b0, c0, d0] = p.recadre; p.recadre = [1 - d0, a0, 1 - b0, c0]; } p.w = r.width; p.h = r.height; p.lignes = scLignes(r); p.blanche = false; p.modifieLe = new Date().toISOString();
     Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; const [a, b, c2, d] = [m.x0, m.y0, m.x1, m.y1]; m.x0 = 1 - d; m.x1 = 1 - b; m.y0 = a; m.y1 = c2; m.l0 = m.l1 = null; m.modifieLe = p.modifieLe; }); });
@@ -507,20 +532,130 @@ function scTournerPage(pid) {
 // ⇄ : la dernière page de la copie passe en premier (une copie de deux pages photographiée dans le désordre)
 function scOrdrePages(k) { const P = scPagesDe(k); if (P.length < 2) return; const o = P.map(p => p.ordre); P.forEach((p, i) => { p.ordre = o[(i + 1) % P.length]; p.modifieLe = new Date().toISOString(); ruEcrire(scChemin(["pages", p.id]), p, "l'ordre des pages"); }); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }
 
-// ✂ recadrer une page : tu traces le cadre de la feuille ; le reste (une autre copie, la table) disparaît, et du fichier de l'élève aussi
+// ✂ 1445 : retoucher une page comme une photo : le cadre et la rotation degré par degré. Rien n'est perdu : la photo entière reste dans ce navigateur,
+// la page vue se refait d'elle (quart de tour, inclinaison, cadre). Les marques suivent leurs mots, à chaque retouche ; le cadre ne coupe jamais une marque déjà posée.
 function scCouper(cv, r) { const [a, b, c, d] = r; const x0 = Math.round(a * cv.width), y0 = Math.round(b * cv.height), w = Math.max(1, Math.round((c - a) * cv.width)), h = Math.max(1, Math.round((d - b) * cv.height));
   const o = document.createElement("canvas"); o.width = w; o.height = h; o.getContext("2d").drawImage(cv, x0, y0, w, h, 0, 0, w, h); return o; }
-function scRecadrerDebut(pid) { SC.recadre = pid; SC.sel = null; toast("Trace le cadre de la feuille sur la page : appuie à un coin, glisse jusqu'à l'autre, lâche. Échap annule."); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }
-function scRecadrerFin(pid, t) {
-  SC.recadre = null; const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return; const a = Math.max(0, Math.min(t.x0, t.x1)), b = Math.max(0, Math.min(t.y0, t.y1)), c = Math.min(1, Math.max(t.x0, t.x1)), d = Math.min(1, Math.max(t.y0, t.y1));
-  if (c - a < 0.2 || d - b < 0.2) { toast("Cadre trop petit : rien n'est coupé."); scRendre(); return; }
-  createImageBitmap(im.blob).then(bm => { const cv = document.createElement("canvas"); cv.width = bm.width; cv.height = bm.height; cv.getContext("2d").drawImage(bm, 0, 0); const r = scCouper(cv, [a, b, c, d]);
-    const R0 = p.recadre || [0, 0, 1, 1], W = R0[2] - R0[0], H = R0[3] - R0[1]; p.recadre = [R0[0] + a * W, R0[1] + b * H, R0[0] + c * W, R0[1] + d * H].map(v => +v.toFixed(4));
-    p.w = r.width; p.h = r.height; p.lignes = scLignes(r); p.modifieLe = new Date().toISOString();
-    Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; m.x0 = (m.x0 - a) / (c - a); m.x1 = (m.x1 - a) / (c - a); m.y0 = (m.y0 - b) / (d - b); m.y1 = (m.y1 - b) / (d - b); m.l0 = m.l1 = null; m.modifieLe = p.modifieLe; }); });
-    r.toBlob(bl => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = scImg(bl, r.width, r.height); if (SC.encres) delete SC.encres[pid]; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: bl, w: r.width, h: r.height, le: p.modifieLe });
-      ruEcrire(scChemin(["pages", pid]), p, "une page recadrée"); saveState(); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }, "image/jpeg", 0.82); });
+function scIncliner(cv, deg) {   // deg : degrés dans le sens des aiguilles d'une montre ; la page garde sa taille, les coins découverts sont blancs
+  if (!deg) return cv; const c = document.createElement("canvas"); c.width = cv.width; c.height = cv.height; const x = c.getContext("2d");
+  x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height); x.translate(c.width / 2, c.height / 2); x.rotate(deg * Math.PI / 180); x.drawImage(cv, -cv.width / 2, -cv.height / 2); return c; }
+function scTheta(P) { return (((P.rot || 0) % 360) + 360) % 360; }
+function scBaseDims(P, W0, H0) { return scTheta(P) % 180 ? [H0, W0] : [W0, H0]; }
+function scRot(x, y, a) { const c = Math.cos(a), s = Math.sin(a); return [x * c - y * s, x * s + y * c]; }
+// un point de la page vue (en fractions) dans la photo entière (en pixels), et l'inverse
+function scVue2Orig(P, W0, H0, u, v) {
+  const [Wb, Hb] = scBaseDims(P, W0, H0), Rc = P.recadre || [0, 0, 1, 1];
+  const x = Wb * (Rc[0] + u * (Rc[2] - Rc[0])), y = Hb * (Rc[1] + v * (Rc[3] - Rc[1]));
+  const [bx, by] = scRot(x - Wb / 2, y - Hb / 2, -(P.angle || 0) * Math.PI / 180);
+  const [ox, oy] = scRot(bx, by, scTheta(P) * Math.PI / 180); return [W0 / 2 + ox, H0 / 2 + oy];
 }
+function scOrig2Vue(P, W0, H0, X, Y) {
+  const [Wb, Hb] = scBaseDims(P, W0, H0), Rc = P.recadre || [0, 0, 1, 1];
+  const [bx, by] = scRot(X - W0 / 2, Y - H0 / 2, -scTheta(P) * Math.PI / 180);
+  const [ax, ay] = scRot(bx, by, (P.angle || 0) * Math.PI / 180);
+  const x = (ax + Wb / 2) / Wb, y = (ay + Hb / 2) / Hb; return [(x - Rc[0]) / (Rc[2] - Rc[0]), (y - Rc[1]) / (Rc[3] - Rc[1])];
+}
+// une marque d'un réglage A au réglage B : son centre suit le mot ; sa longueur et sa hauteur restent les siennes (un quart de tour les échange)
+function scRemap(m, A, B, W0, H0) {
+  const f = (u, v) => { const [X, Y] = scVue2Orig(A, W0, H0, u, v); return scOrig2Vue(B, W0, H0, X, Y); };
+  const [Wb, Hb] = scBaseDims(B, W0, H0), Rc = B.recadre || [0, 0, 1, 1], Wv = Wb * (Rc[2] - Rc[0]), Hv = Hb * (Rc[3] - Rc[1]);
+  const x0 = Math.min(m.x0, m.x1), x1 = Math.max(m.x0, m.x1), y0 = Math.min(m.y0, m.y1), y1 = Math.max(m.y0, m.y1), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  const c = f(cx, cy), ex = f(x1, cy), ey = f(cx, y1); const e1 = [(ex[0] - c[0]) * Wv, (ex[1] - c[1]) * Hv], e2 = [(ey[0] - c[0]) * Wv, (ey[1] - c[1]) * Hv];
+  const l1 = Math.hypot(e1[0], e1[1]), l2 = Math.hypot(e2[0], e2[1]), hor = Math.abs(e1[0]) >= Math.abs(e1[1]); const hw = (hor ? l1 : l2) / Wv, hh = (hor ? l2 : l1) / Hv;
+  m.x0 = c[0] - hw; m.x1 = c[0] + hw; m.y0 = c[1] - hh; m.y1 = c[1] + hh; m.l0 = m.l1 = null;
+}
+// la photo entière d'une page : gardée depuis son chargement, ou refaite d'une page jamais recadrée ni inclinée
+function scOrigDe(pid) {
+  if (SC.origs[pid]) return Promise.resolve(SC.origs[pid]);
+  const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im || p.recadre || p.angle || (p.lignes && p.lignes.reperes)) return Promise.resolve(null);
+  return createImageBitmap(im.blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); const r = scTourner(c, (360 - (p.rot || 0)) % 360);
+    return new Promise(res => r.toBlob(b => { SC.origs[pid] = { blob: b, w: r.width, h: r.height }; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: im.blob, w: im.w, h: im.h, le: new Date().toISOString() }); res(SC.origs[pid]); }, "image/jpeg", 0.9)); });
+}
+function scToile(blob) { return createImageBitmap(blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); return c; }); }
+// appliquer un réglage (quart de tour, inclinaison, cadre) à une page : l'image refaite de la photo entière, ses marques déplacées avec leurs mots
+function scReglerPage(pid, B, cvO) {
+  const p = SC.pages[pid]; if (!p) return Promise.resolve();
+  const prend = cvO ? Promise.resolve(cvO) : scOrigDe(pid).then(o => o ? scToile(o.blob) : null);
+  return prend.then(cv0 => {
+    if (!cv0) { toast("Remets ton paquet une fois (« Charger le paquet ») : l'appli garde alors la photo entière de cette page, pour la retoucher sans rien perdre."); return; }
+    const W0 = cv0.width, H0 = cv0.height, A = { rot: p.rot || 0, angle: p.angle || 0, recadre: p.recadre || null };
+    let cv = scTourner(cv0, B.rot || 0); if (B.angle) cv = scIncliner(cv, B.angle); if (B.recadre) cv = scCouper(cv, B.recadre);
+    const le = new Date().toISOString();
+    Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; scRemap(m, A, B, W0, H0); m.modifieLe = le; }); });
+    p.rot = B.rot || 0; p.angle = B.angle || 0; p.recadre = B.recadre ? B.recadre.map(v => +v.toFixed(4)) : null; p.w = cv.width; p.h = cv.height; p.lignes = scLignes(cv); p.modifieLe = le;
+    return new Promise(res => cv.toBlob(b => { const im = SC.imgs[pid]; if (im) { try { URL.revokeObjectURL(im.url); } catch (e) {} } SC.imgs[pid] = scImg(b, cv.width, cv.height); if (SC.encres) delete SC.encres[pid];
+      scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: b, w: cv.width, h: cv.height, le });
+      ruEcrire(scChemin(["pages", pid]), p, "une page retouchée"); saveState(); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); res(); }, "image/jpeg", 0.82));
+  });
+}
+// ── l'écran de la retouche ──
+function scRecadrerDebut(pid) { scRetoucher(pid); }
+function scRetoucher(pid) {
+  const p = SC.pages[pid]; if (!p) return;
+  if (p.lignes && p.lignes.reperes) { toast("Une copie de l'appli se remet droite et se recadre d'elle-même : rien à retoucher."); return; }
+  scChampFermer(true);
+  scOrigDe(pid).then(o => { if (!o) { toast("Remets ton paquet une fois (« Charger le paquet ») : l'appli garde alors la photo entière de cette page, pour la retoucher sans rien perdre."); return; }
+    scToile(o.blob).then(c => { SC.rt = { pid, orig: c, W0: c.width, H0: c.height, rot: p.rot || 0, angle: p.angle || 0, cadre: (p.recadre || [0, 0, 1, 1]).slice(), A: { rot: p.rot || 0, angle: p.angle || 0, recadre: p.recadre || null } };
+      scRtBase(); scRtOuvrir(); }); });
+}
+function scRtBase() { const R = SC.rt; R.base = scTourner(R.orig, R.rot); if (R.base === R.orig) { const c = document.createElement("canvas"); c.width = R.orig.width; c.height = R.orig.height; c.getContext("2d").drawImage(R.orig, 0, 0); R.base = c; } R.Wb = R.base.width; R.Hb = R.base.height; R.base.className = "sc-rt-img"; }
+// les marques de la page, dans la photo tournée d'un quart de tour (avant l'inclinaison) : elles tournent avec elle à l'écran
+function scRtMarques() { const R = SC.rt, L = []; Object.keys(state.copies || {}).forEach(k => Object.values(((state.copies[k].scan || {}).marques) || {}).forEach(m => { if (m.page !== R.pid) return;
+  const pts = [[m.x0, m.y0], [m.x1, m.y0], [m.x1, m.y1], [m.x0, m.y1]].map(([u, v]) => { const [X, Y] = scVue2Orig(R.A, R.W0, R.H0, u, v); const [bx, by] = scRot(X - R.W0 / 2, Y - R.H0 / 2, -scTheta(R) * Math.PI / 180); return [bx + R.Wb / 2, by + R.Hb / 2]; });
+  L.push({ m, pts }); })); return L; }
+function scRtBoite() { const R = SC.rt; let a = 1, b = 1, c = 0, d = 0, n = 0;
+  scRtMarques().forEach(o => o.pts.forEach(([x, y]) => { const [ax, ay] = scRot(x - R.Wb / 2, y - R.Hb / 2, R.angle * Math.PI / 180); const u = (ax + R.Wb / 2) / R.Wb, v = (ay + R.Hb / 2) / R.Hb; a = Math.min(a, u); b = Math.min(b, v); c = Math.max(c, u); d = Math.max(d, v); n++; }));
+  return n ? [Math.max(0, a), Math.max(0, b), Math.min(1, c), Math.min(1, d)] : null; }
+function scRtContenir() { const R = SC.rt, B = scRtBoite(), k = R.cadre; if (!B) return; k[0] = Math.max(0, Math.min(k[0], B[0] - 0.004)); k[1] = Math.max(0, Math.min(k[1], B[1] - 0.004)); k[2] = Math.min(1, Math.max(k[2], B[2] + 0.004)); k[3] = Math.min(1, Math.max(k[3], B[3] + 0.004)); }
+function scRtOuvrir() {
+  let E = document.getElementById("scRetouche"); if (!E) { E = document.createElement("div"); E.id = "scRetouche"; document.body.appendChild(E); }
+  const R = SC.rt;
+  E.innerHTML = `<div class="sc-rt-barre"><b>✂ Retoucher la page</b>
+    <button class="sc-btn" onclick="scRtTourner(-1)" title="Tourner la photo d'un degré, dans le sens inverse des aiguilles d'une montre (aussi : flèche gauche). Les marques tournent avec elle.">⟲ 1°</button>
+    <input id="scRtAngle" type="range" min="-45" max="45" step="1" value="${R.angle}" oninput="scRtTourner(0, +this.value)" title="Redresser la photo, degré par degré : tire le curseur, ou flèches gauche et droite. Les marques suivent leurs mots.">
+    <button class="sc-btn" onclick="scRtTourner(1)" title="Tourner la photo d'un degré, dans le sens des aiguilles d'une montre (aussi : flèche droite). Les marques tournent avec elle.">⟳ 1°</button>
+    <span id="scRtDeg" class="sc-rt-deg" title="L'inclinaison de la photo, en degrés : 0°, la photo telle qu'elle est.">${R.angle}°</span>
+    <button class="sc-btn" onclick="scRtQuart()" title="Un quart de tour vers la droite : une photo prise de côté. Les marques tournent avec elle.">↻ Quart de tour</button>
+    <button class="sc-btn" onclick="scRtTout()" title="Le cadre reprend toute la photo : rien n'a été perdu, la photo entière est gardée dans ce navigateur.">Toute la photo</button>
+    <span class="sc-rt-aide">Tire les coins ou les bords du cadre, l'intérieur pour le déplacer. Il ne coupe jamais une marque déjà posée.</span>
+    <button class="sc-btn" onclick="scRtFermer(false)" title="Fermer sans rien changer (Échap).">Annuler</button>
+    <button class="sc-btn sc-rt-ok" onclick="scRtFermer(true)" title="Garder ce cadre et cette rotation (Entrée) : la page de la copie et le fichier de l'élève prennent la nouvelle image ; les marques restent sur leurs mots.">✓ Valider</button></div>
+    <div class="sc-rt-zone" id="scRtZone"><div class="sc-rt-scene" id="scRtScene"><div class="sc-rt-rot" id="scRtRot"></div>
+    <div class="sc-rt-cadre" id="scRtCadre" title="Le cadre : ce qui restera de la page. Tire ses coins ou ses bords pour le changer, l'intérieur pour le déplacer.">${[["nw", "ce coin"], ["n", "ce bord"], ["ne", "ce coin"], ["e", "ce bord"], ["se", "ce coin"], ["s", "ce bord"], ["sw", "ce coin"], ["w", "ce bord"]].map(([h, t]) => `<i class="sc-rt-p ${h}" data-h="${h}" title="Tirer ${t} du cadre."></i>`).join("")}</div></div></div>`;
+  E.hidden = false; document.body.classList.add("sc-rt-ouvert");
+  document.getElementById("scRtCadre").addEventListener("pointerdown", scRtTirer);
+  scRtContenir(); scRtDessiner();
+}
+function scRtDessiner() {
+  const R = SC.rt; if (!R) return; const Z = document.getElementById("scRtZone"), S = document.getElementById("scRtScene"), T = document.getElementById("scRtRot"), C = document.getElementById("scRtCadre"); if (!Z) return;
+  const k = Math.min((Z.clientWidth - 28) / R.Wb, (Z.clientHeight - 28) / R.Hb); S.style.width = Math.round(R.Wb * k) + "px"; S.style.height = Math.round(R.Hb * k) + "px";
+  if (R.base.parentNode !== T) { T.innerHTML = ""; T.appendChild(R.base); T.insertAdjacentHTML("beforeend", `<svg class="sc-rt-marques" viewBox="0 0 ${R.Wb} ${R.Hb}" preserveAspectRatio="none"></svg>`); }
+  T.querySelector("svg").innerHTML = scRtMarques().map(o => { const coul = o.m.forme === "faute" ? SC_CRIT.langue : o.m.forme === "etoile" ? SC_CRIT.etoile : (SC_CRIT[o.m.passe] || "#6b1a2a"); return `<polygon points="${o.pts.map(p => p.map(v => v.toFixed(1)).join(",")).join(" ")}" fill="${coul}33" stroke="${coul}" stroke-width="2.5" vector-effect="non-scaling-stroke"/>`; }).join("");
+  T.style.transform = "rotate(" + R.angle + "deg)";
+  const c = R.cadre; C.style.left = (c[0] * 100) + "%"; C.style.top = (c[1] * 100) + "%"; C.style.width = ((c[2] - c[0]) * 100) + "%"; C.style.height = ((c[3] - c[1]) * 100) + "%";
+  const g = document.getElementById("scRtDeg"); if (g) g.textContent = R.angle + "°"; const a = document.getElementById("scRtAngle"); if (a && +a.value !== R.angle) a.value = R.angle;
+}
+function scRtTirer(e) {
+  const R = SC.rt; if (!R) return; e.preventDefault(); const h = (e.target.dataset && e.target.dataset.h) || "tout"; const S = document.getElementById("scRtScene"), r = S.getBoundingClientRect(); const k0 = R.cadre.slice(), x0 = e.clientX, y0 = e.clientY, min = 0.15;
+  const mv = ev => { const du = (ev.clientX - x0) / r.width, dv = (ev.clientY - y0) / r.height; const k = k0.slice();
+    if (h === "tout") { const w = k0[2] - k0[0], hh = k0[3] - k0[1]; k[0] = Math.max(0, Math.min(1 - w, k0[0] + du)); k[1] = Math.max(0, Math.min(1 - hh, k0[1] + dv)); k[2] = k[0] + w; k[3] = k[1] + hh; }
+    else { if (h.includes("w")) k[0] = Math.max(0, Math.min(k0[2] - min, k0[0] + du)); if (h.includes("e")) k[2] = Math.min(1, Math.max(k0[0] + min, k0[2] + du)); if (h.includes("n")) k[1] = Math.max(0, Math.min(k0[3] - min, k0[1] + dv)); if (h.includes("s")) k[3] = Math.min(1, Math.max(k0[1] + min, k0[3] + dv)); }
+    R.cadre = k; scRtContenir(); scRtDessiner(); };
+  const up = () => { removeEventListener("pointermove", mv); removeEventListener("pointerup", up); };
+  addEventListener("pointermove", mv); addEventListener("pointerup", up);
+}
+function scRtTourner(d, v) { const R = SC.rt; if (!R) return; R.angle = Math.max(-45, Math.min(45, v != null ? Math.round(v) : R.angle + d)); scRtContenir(); scRtDessiner(); }
+function scRtQuart() { const R = SC.rt; if (!R) return; const c = R.cadre; R.cadre = [1 - c[3], c[0], 1 - c[1], c[2]]; R.rot = (R.rot + 270) % 360; scRtBase(); scRtContenir(); scRtDessiner(); }
+function scRtTout() { const R = SC.rt; if (!R) return; R.cadre = [0, 0, 1, 1]; scRtDessiner(); }
+function scRtFermer(garder) {
+  const R = SC.rt; if (!R) return; const E = document.getElementById("scRetouche");
+  const fin = () => { SC.rt = null; if (E) { E.hidden = true; E.innerHTML = ""; } document.body.classList.remove("sc-rt-ouvert"); };
+  if (!garder) { fin(); return; }
+  const c = R.cadre, plein = c[0] <= 0.001 && c[1] <= 0.001 && c[2] >= 0.999 && c[3] >= 0.999; const B = { rot: R.rot, angle: R.angle, recadre: plein ? null : c.slice() };
+  const A = R.A; if (B.rot === A.rot && B.angle === A.angle && JSON.stringify(B.recadre) === JSON.stringify(A.recadre ? A.recadre.map(v => +v.toFixed(4)) : null)) { fin(); return; }
+  const pid = R.pid, cv = R.orig; fin(); scReglerPage(pid, B, cv).then(() => toast("Page retouchée : les marques sont restées sur leurs mots."));
+}
+addEventListener("resize", () => { if (SC.rt) scRtDessiner(); });
 
 // ── 1417 : le mot sous le clic, lu dans l'encre de la page (une image d'analyse par page, gardée en mémoire) ──
 function scEncrePage(pid) {
@@ -561,7 +696,6 @@ function scTitreCopie() {
   const Z = document.getElementById("scCopie"); if (!Z) return; const vue = " Ctrl + molette : zoom. Maj tenue : la loupe. Alt tenue : la copie sans marques.";
   let t;
   if (!Object.keys(SC.pages).length) t = "Ton paquet de copies s'affichera ici. Clique au milieu pour le charger : un PDF ou des photos.";
-  else if (SC.recadre) t = "Trace le cadre de la feuille : appuie à un coin, glisse jusqu'à l'autre coin, lâche. Échap annule.";
   else if (SC.attrib) t = "La page à donner à un élève : tape ses initiales à droite, Entrée." + vue;
   else if (scP() && scP().id === "retours") t = "La copie de l'élève dont tu relis le retour, avec tes marques." + vue;
   else { const o = scOutil(); const f = o ? o.forme : "encadre";

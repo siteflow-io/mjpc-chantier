@@ -9135,3 +9135,60 @@ MEMO
 
 30/10/2026 07:54
 MEMO
+
+## Tour 405 — 30/10/2026 07:59 → 08:00
+
+**Paul :** J'ai l'impression que la copie est en tout petit. Par ailleurs il faut que je puisse zoomer. On n'a pas du tout cadré l'epaisseur des marques, le fait qu'elles peuvent cacher quelque chose écrit par l'élève. Liste tout ce qui manque en termes d'ergonomie de correction pour moi, et de rapidité toujours
+
+**Fait.** Mesuré sur les captures des copies réelles (scratchpad) : à 1536 × 864, une page affichée 680 points de haut pour 2 212 (31 %), deux pages côte à côte de 510 points de large ; à la largeur de la zone de copie (environ 1 056 points), la page de Gabin passerait à 64 %. Relu `scSvgMarque` : traits en unités de la page (épaisseur proportionnelle), surlignés en couleur à 25 % d'opacité sans mélange, numéros des fautes posés au coin du mot. 1407 acquis (pas commenté).
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1425 ; 1405 ; 1397 ; 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+Lire la copie
+
+1409. La copie est petite, mesuré : à ton écran (1536 × 864), une page tient en hauteur, 680 points pour 2 212, soit 31 %. Une ligne d'écriture fait environ 18 points, une lettre 6. Je propose la page à la largeur de l'écran, et tu descends dans la copie à la molette, comme tu la lis : sur la copie de Gabin, 64 %, une ligne d'environ 38 points. Deux pages : l'une sous l'autre, plus côte à côte.
+
+1410. Le zoom : Ctrl + molette, centré sous la souris ; un bouton revient à la largeur. Le zoom reste d'une copie à l'autre.
+
+1411. Une loupe : en tenant Maj, un rond grossi trois fois sous la souris, pour un mot mal écrit, sans toucher au zoom.
+
+1412. Le panneau de droite prend 440 points. Un bouton le replie en une bande (la question en cours, Entrée ou N), et la copie prend la place.
+
+Les marques
+
+1413. L'épaisseur grossit aujourd'hui avec la copie. Je propose un trait fin, de 2 points à l'écran, quel que soit le zoom.
+
+1414. Ce qu'elles cachent : un surlignage couvre l'encre d'une couleur. Je propose que le surligné laisse passer l'encre, comme un vrai surligneur : l'écriture reste nette dessous. Le souligné passe sous le mot, jamais à travers ; l'encadré laisse un espace autour du mot.
+
+1415. Les numéros des fautes sont posés sur le texte. Je propose de les mettre dans la marge, à la hauteur de la ligne.
+
+1416. Voir la copie nue : en tenant Alt, toutes les marques disparaissent ; tu lâches, elles reviennent.
+
+La rapidité
+
+1417. Une faute coûte un glisser. Je propose un clic sur le mot : le soulignement prend la longueur du mot, lue dans l'encre. Si l'appli trouve les mots sur tes photos, je ne sais pas : à mesurer sur tes copies avant de le faire.
+
+1418. La bonne forme : en tapant, les formes déjà vues du paquet qui commencent pareil s'affichent ; Tab prend la première.
+
+1419. La fin d'une passe : à la dernière copie, tout s'arrête. Je propose que la passe suivante s'ouvre d'elle-même sur la première copie.
+
+1420. Les lignes écrites, sur photo, sont à taper à chaque copie (1401). Seules tes copies vierges de l'appli l'évitent.
+
+1421. ↻ et ✂ coûtent un à deux gestes par photo. Je propose que l'appli cherche seule le bord de la feuille dans la photo. Si ça marche sur tes photos, je ne sais pas : à mesurer. Le photocopieur ou les copies de l'appli l'évitent.
+
+1422. Le paquet vide : le milieu de l'écran devient le bouton (1407, acquis).
+
+Ce qui manque sur le fond
+
+1423. Un commentaire à toi, libre, posé sur la copie : ton mille-feuille le prévoyait (« au clic on accède aux descripteurs, à la grille, aux commentaires »). Aujourd'hui, hors de la grille, seul ★ existe. Je propose un pinceau « remarque » : un encadré et une phrase que tu tapes, lue par l'élève à sa place sur la copie.
+
+1424. Une faute vue pendant une autre passe (pendant le thème, par exemple) : aujourd'hui, chaque passe ne montre que ses marques, et seul le pinceau de la langue souligne. Je propose un bouton « Faute » dans chaque passe, pour un tracé, et un bouton pour voir toutes les marques.
+
+1425. Oui à 1409 à 1424 ?
+
+À tester : rien de neuf.
+
+30/10/2026 08:00
+MEMO

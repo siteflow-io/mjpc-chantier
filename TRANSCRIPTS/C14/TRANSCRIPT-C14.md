@@ -379,3 +379,22 @@ Sources :
 
 30/10/2026 16:08
 MEMO
+
+## Tour 15 — 30/10/2026 16:32 → 16:33
+
+**Paul :** pas compris la garde de 18. 19. C'est quoi les passes 2 à 4? sois clair putain.
+
+**Fait.** Rien mesuré de neuf ; les noms des boutons repris de la capture de Paul de 15:19 (« La langue », « Le thème et l'invention », « La construction des phrases », « L'organisation et la lettre »). Rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : deux mesures (21) · en cours : rien · ouvert : 21 ; les stickers (9) ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+20. Le 18, en clair. En recopiant, tu peux faire une faute de frappe, par exemple taper « maisno » au lieu de « maison ». L'app ne peut pas savoir que c'est toi : pour elle, c'est l'élève qui a écrit « maisno ». Pour que ça ne te piège pas : quand tu cliques un mot pour le marquer comme faute, l'app t'affiche à côté le morceau de la photo où est ce mot. Tu vois tout de suite si l'élève l'a vraiment écrit comme ça.
+
+21. Le 19, en clair. En haut de l'écran « Corriger sur les scans », il y a quatre boutons : « 1 La langue », « 2 Le thème et l'invention », « 3 La construction des phrases », « 4 L'organisation et la lettre ». Jusqu'ici, tu n'as fait que le premier : les fautes. Les trois autres, ce sont les questions de ta grille (Entrée pour oui, N pour non). Je ne sais pas combien de temps ils te prennent, et c'est ce qu'il faut savoir pour juger si recopier vaut le coup. Donc deux essais : prends une copie, clique « 2 », réponds à ses questions, puis « 3 », puis « 4 » ; l'app chronomètre seule, et je lis ton temps au site. Et recopie une autre copie dans un fichier texte, en notant le temps. Tu fais les deux ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 16:33
+MEMO

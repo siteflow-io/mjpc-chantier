@@ -509,3 +509,30 @@ MEMO
 
 30/10/2026 18:30
 MEMO
+
+## Tour 21 — 30/10/2026 18:47 → 18:58
+
+**Paul :** Montre moi des captures construites de ce que ça donnerait. Pas de maquette, pas de code. Juste du jpeg
+
+**Fait.** Quatre images (JPEG, 1536 × 864) construites sur la capture de Paul de 15:19 : bandes de la vraie photo, lignes trouvées par la mesure de 17:43, fautes lues par la conscience sur la photo ; gardées hors du sas (copie réelle). Compté avec `tokenize` de la dictée sur la page recopiée : 97 mots, « est » = mot 31. Avant envoi : le mot encadré de D corrigé (il tombait sur la fin du mot précédent), « 98 » corrigé en 97, un total de lignes non mesuré retiré. C envoyée deux fois : la première comptait avec `config/grille2` (« Le thème tenu », barème 0 / 2 / 4 / 6) au lieu de la règle des stickers acquise à 15:17 (1591-1592, registre ⑧) ; renvoyée corrigée. Registre ⑪ (production `8f7bf93`). Rien codé.
+
+**Claude :** [4 images : A recopier · B la bande, arrêt sur une faute · C la bande, arrêt sur ta grille · D ⇧R, le mot par mot ; puis C corrigée]
+
+À jouer : rien · en cours : rien · ouvert : 45 ; 39 ; 36 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+40. Quatre images, construites sur ta capture de 15:19 : la vraie photo, ses vraies lignes, ses vraies fautes. Rien n'est codé. Ce qui n'est pas mesuré est là pour l'image : les compteurs (copie 16 sur 28, les temps), les noms des stickers (les miens, pas encore les tiens) et les 8 fautes de la liste, que j'ai lues moi-même sur ta photo ; dans l'app, c'est la comparaison avec le texte corrigé qui les trouverait. Les traits rouges et la case « bonne forme » sur la photo de A viennent de ta capture.
+
+41. A, « Recopier » : la photo à gauche, ses 11 lignes trouvées seules et numérotées en vert ; à droite, une feuille aux mêmes 11 lignes, à la même hauteur. Tu tapes la ligne 8 : elle est encadrée sur la photo et montrée en grand juste au-dessus de ta frappe ; Entrée, ligne 9. Ce que tu tapes tombe là où l'élève a écrit : « Notre nouvelle », à droite sur la photo, est à droite sur ta feuille.
+
+42. B, « La bande », arrêt sur une faute : la bande de la dictée, mais qui saute directement à la faute suivante, ici la 4e, « délabrer → délabrée », ligne 5. Au-dessus, la photo de la ligne, le mot encadré ; en dessous, la phrase, comme en dictée. À droite, les 14 arrêts de cette page, numérotés d'avance : 8 fautes, puis 6 de ta grille, au lieu de 97 mots. Entrée, c'est une faute ; N, non ; un clic sur un autre mot de la ligne, une faute que la comparaison n'a pas vue.
+
+43. C, « La bande », arrêt sur ta grille : « Dire depuis quand vous êtes séparés ». Le passage qui le prouve est déjà encadré, lignes 9 et 10 ; Entrée, et le sticker se pose sur ce passage, sans viser. À droite, le compte en direct, avec ta règle de 15:17 (les six, 6 ; un manque, 4 ; deux ou trois, 2 ; au-delà, 0) : 2 posés, 0 point ; avec celui-ci, 2 points ; et ce qui manque encore, nommé, pour ne pas l'oublier. Le passage, c'est l'IA de ton export qui le proposerait ; sans IA, ou quand rien n'est trouvé, l'arrêt vient à la fin de la bande (« à la fin » dans la liste). La première C que je t'ai envoyée comptait avec l'ancienne grille : prends la seconde.
+
+44. D, ⇧R : le mot par mot, exactement le mode rapide de la dictée, sur la même copie : mot 31 sur 97, « est », encadré sur la photo, les mêmes touches, et ⇧R pour revenir aux arrêts.
+
+45. En haut des quatre images, deux étapes au lieu des quatre passes d'aujourd'hui : « Recopier », puis « La bande : tes fautes, puis ta grille ». C'est ma proposition, pas une décision : on remplace les quatre passes par ces deux étapes ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 18:58
+MEMO

@@ -9192,3 +9192,43 @@ Ce qui manque sur le fond
 
 30/10/2026 08:00
 MEMO
+
+## Tour 406 — 30/10/2026 08:12 → 08:41
+
+**Paul :** 1409 je veux voir une capture construite. Pour le reste il faut que tout soit expliqué en info bulle pour moi, je le rappelle.
+
+**Fait.** Captures t406-1 (page de Gabin à la largeur) et t406-3 (loupe) regardées ; t406-2 montrait un clic pris sur deux lignes (« camarades » / « se décomposent »), le trait sous la ligne d'en dessous. `scMotSous` (`scan.js`) réécrit : la bande de la ligne cliquée est bornée par les creux d'encre les plus proches au-dessus et au-dessous du clic ; l'écart entre deux mots se lit sur la ligne (deux familles de blancs coupées en deux, à l'échelle des rapports, plancher 0,65 % de la largeur, plafond 1,6 %). Mesuré par planches privées (`scan-prive/mots-planche.mjs`, `pts-*.json`, `planche-*.png`), chaque clic regardé : 119 clics page 1 de Gabin, 14 page 2, 156 Flavie. Écart fixe 1,3 % : Gabin 95/119, Flavie presque tout collé ou rien ; écart fixe 0,9 % : Gabin 109/119 et 14/14, Flavie 70/156 ; coupure lue sur la ligne, plancher 0,4 % : Gabin ~85/119, Flavie 131/156 ; plancher 0,65 % (retenu) : Gabin 106/119 et 11/14, Flavie ~101/156. Essais écartés : morceaux d'encre d'un seul tenant (les lignes se touchent), corps de ligne seul (des clics sans rien), taille des lettres. Aucun trait sur deux lignes sur 289 clics. Infobulles : `banc/infobulles.mjs` relève, état par état, chaque élément qu'on clique ou qu'on tape sans infobulle à lui : 2 trouvés (la copie, « Fermer » des fenêtres) ; ajoutés : `scTitreCopie` (l'infobulle de la copie suit le pinceau de la question) et le title de « Fermer » ; relevé : 343 éléments, 0 sans. Captures construites : `banc/capture-1409.mjs` ; inventée au sas (`banc/captures/1409-1-largeur.png`, `1409-2-zoom.png` : 1 036 × 1 465 pour 1 273 × 1 800, 81 %) ; réelle privée (`scan-prive/t406-4-reel-largeur.png`, `t406-5-reel-zoom.png` : 1 036 × 1 381 pour 1 659 × 2 212, 62 % ; quatre clics : Celà, s'occupais (« occu »), avais, plein). v7 générée (la v7 non livrée au tour 405 est remplacée), md5 eb17b05ddaed ; banc 31 / 0 ; `scan-prive/T406-maquette-classe-reelle.html` (md5 75403df899f3, vrais noms, jamais au sas). Trouvé : v1 à v5 et `captures-29-10/` (gen.py, gen2.py, vue-a/b/c.html) portent encore « Chevalier Flavie » au sas ; non touchés, proposés (1433). 1421 non fait. Docs : `docs/MJPC6-OU-TROUVER-QUOI.md` (ligne de la maquette, v7) et `docs/MJPC6-journal.md` (tour 406).
+
+**Claude :** [fichiers : t406-4-reel-largeur.png (privé), t406-5-reel-zoom.png (privé), T406-maquette-classe-reelle.html (privé), T399-maquette-redaction-scans-v7.html]
+
+À jouer : la v7 sur tes copies (1426 à 1431) · en cours : rien · ouvert : 1435 ; 1405 ; 1397 ; 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1426. 1409 construit, capture jointe sur la page de Gabin (t406-4, privée). La page prend la largeur : 1 036 points pour 1 659, soit 62 % (31 % avant). Une ligne d'écriture fait environ 36 points. Tu descends dans la copie à la molette ; deux pages, l'une sous l'autre. La même sur une copie inventée est au sas (1409-1-largeur).
+
+1427. Le zoom, capture t406-5 : Ctrl + molette, sous la souris, ici à 176 %. Le bouton « ↔ Largeur » affiche alors « 🔍 176 % » ; un clic revient à la largeur.
+
+1428. Les infobulles, mesuré écran par écran : paquet vide, initiales, les cinq passes, une faute qu'on tape, une remarque, une marque choisie, panneau replié, fichiers École Directe, ⚙ Maquette. 343 éléments qu'on clique ou qu'on tape : chacun a la sienne. Deux manquaient, ajoutées.
+
+1429. La copie elle-même a maintenant son infobulle, qui change avec la question. Elle dit ce que fait le pinceau à cet instant (« Le pinceau souligne une faute : appuie, glisse, lâche. Un clic sans glisser prend le mot sous la souris. »), puis Suppr, Ctrl + Z, Ctrl + molette, Maj, Alt. Elle paraît quand la souris s'arrête sur la copie : si elle gêne ta lecture, dis-le.
+
+1430. 1417, le clic sur un mot, mesuré sur tes trois pages : 289 clics, chacun regardé. Gabin : 117 sur 133 soulignent le mot juste (88 %). Flavie : environ 2 sur 3, son écriture serrée colle souvent deux mots (« sur le », « je parlais de »). Les autres ratés : un bout de mot (« occu » pour « s'occupais », visible sur la capture). Quand c'est faux : Ctrl + Z, puis le glisser, qui marche toujours.
+
+1431. Un défaut trouvé en mesurant, corrigé : un clic pouvait prendre deux lignes, et le trait passait alors sous la ligne d'en dessous (vu sur Gabin, à « camarades »). Le trait reste maintenant dans la ligne cliquée : sur les 289 clics, aucun sur deux lignes.
+
+1432. 1421, l'appli qui trouve seule le bord de la feuille : pas fait, pas mesuré. ✂ reste à la main. Je le mesure sur tes photos au prochain tour.
+
+1433. Les versions v1 à v5, au sas, portent encore le vrai nom de Flavie dans une infobulle : 1403 ne l'avait retiré que de la v6. Les fichiers du 29/10 (captures-29-10) aussi. Je propose de remplacer ce nom dans ces fichiers ; l'historique du sas le garde.
+
+1434. Banc : 31 vérifications, 0 défaut. Fichiers : T399-maquette-redaction-scans-v7.html (classe inventée, au sas) ; T406-maquette-classe-reelle.html pour tes copies (privé, jamais au sas).
+
+1435. Oui à 1426 à 1434 ?
+
+À tester (avec T406-maquette-classe-reelle.html et tes trois photos) :
+1. Charger les photos, puis DG, Entrée seule, CF : la page de Gabin prend la largeur, tu descends à la molette (1426).
+2. Ctrl + molette sur un mot : la copie grossit sous la souris ; « 🔍 … % » revient à la largeur (1427).
+3. Laisser la souris immobile sur un bouton, puis sur la copie : l'infobulle dit ce qu'il fait (1428, 1429).
+4. Passe de la langue : un clic sur « Celà », il se souligne seul ; taper « Cela », Entrée. Puis quelques clics sur des mots de Flavie (1430).
+5. Tenir Maj sur un mot : la loupe. Tenir Alt : la copie sans marques.
+
+30/10/2026 08:41
+MEMO

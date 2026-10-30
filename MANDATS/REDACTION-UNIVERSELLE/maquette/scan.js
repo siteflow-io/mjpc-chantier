@@ -373,7 +373,7 @@ function scLignesFixer(v) { const k = scK(); if (!k) return; const s = scCopie(k
 function scPanneauAttrib(Z) {
   const L = scPagesOrdre(); const p = L[SC.ia]; const reste = scPagesSans().length; const prec = scPrecedentEleve();
   Z.innerHTML = `<div class="sc-bloc"><h3>Le paquet · page ${SC.ia + 1} sur ${L.length}</h3><p>Tape les initiales de l'élève de cette page, Entrée. <b>Entrée seule</b> : même élève que la page d'avant${prec ? " (" + escapeHtml(nomEleveDe(prec)) + ")" : ""}.</p>
-    <input id="scInit" class="sc-init" autocomplete="off" placeholder="initiales" title="Les initiales, dans n'importe quel ordre (CF ou FC pour Chevalier Flavie)."><div id="scInitSug" class="sc-m"></div>
+    <input id="scInit" class="sc-init" autocomplete="off" placeholder="initiales" title="Les initiales, dans n'importe quel ordre (CE ou EC pour Chauvin Emma)."><div id="scInitSug" class="sc-m"></div>
     <button class="sc-btn" onclick="scTournerPage('${p ? p.id : ""}')" title="Tourner cette page d'un quart de tour vers la droite (une photo prise de côté). Ses marques tournent avec elle.">↻ Tourner</button>
     <button class="sc-btn" onclick="scRecadrerDebut('${p ? p.id : ""}')" title="Recadrer cette page sur la feuille : ce qui dépasse (une autre copie, la table) disparaît, et du fichier de l'élève aussi.">✂ Recadrer</button>
     ${p && p.blanche ? `<p class="sc-alerte">L'appli n'y voit aucune ligne écrite : page blanche, sautée.</p><button class="sc-btn" onclick="scBlanche(false)" title="Cette page porte bien une copie : elle reprend sa place dans le paquet.">Ce n'est pas une page blanche</button>` : `<button class="sc-btn" onclick="scBlanche(true)" title="Écarter cette page : elle ne va à aucun élève.">Page blanche</button>`}

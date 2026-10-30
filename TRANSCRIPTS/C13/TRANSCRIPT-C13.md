@@ -9083,9 +9083,9 @@ MEMO
 
 **Paul :** [trois photos : la page 2 de Gabin, sa page 1, la copie de Flavie] Voici deux copies, Flavie et Gabin. Gabin a deux pages. C'est un cas qu'on n'a pas envisagé. Test ces copies.
 
-**Fait.** Photos copiées au scratchpad (`scan-prive/reel-*.jpg`), jamais poussées. Maquette à la classe réelle générée au scratchpad (`CLASSE_REELLE=1`, `scan-prive/T403-maquette-classe-reelle.html`, jamais au sas) ; `scan-prive/test-reel.mjs` les joue par le geste. Mesuré : pages de Gabin 2212 × 1659 (paysage, sans orientation dans le fichier) ; lignes trouvées 22 et 23 couchées, puis 34 et 30 redressées, Flavie 33 ; essais d'ouverture verticale de la réglure : toujours faux (27-30 et 29-30). Corrigé dans `scan.js` : redressement d'une page en paysage (`rot`, appliqué à la relecture, ↻), ⇄ ordre des pages, ✂ recadrage (`recadre`, appliqué à la relecture, marques transformées), plus de compte ni de calage des lignes sur une photo (seulement sur les copies à repères), la saisie des initiales ne bloque plus le passage à la correction. Défaut fait par moi en route et corrigé : un commentaire posé au milieu d'une ligne avalait la fin de `scLigneDe` (le fichier ne se chargeait plus) — c'est la troisième fois ; je vérifie maintenant la syntaxe après chaque retouche. Banc de la v5 : 31 vérifications, 0 défaut ; copies réelles : Gabin redressé, deux pages dans l'ordre après ⇄, faute sur la page 2 dans son fichier, Flavie recadrée 1350 × 1800 → 1094 × 1557. `T399-maquette-redaction-scans-v5.html` md5 09b730c238bb.
+**Fait.** Photos copiées au scratchpad (`scan-prive/reel-*.jpg`), jamais poussées. Maquette à la classe réelle générée au scratchpad (`CLASSE_REELLE=1`, `scan-prive/T403-maquette-classe-reelle.html`, jamais au sas) ; `scan-prive/test-reel.mjs` les joue par le geste. Mesuré : pages de Gabin 2212 × 1659 (paysage, sans orientation dans le fichier) ; lignes trouvées 22 et 23 couchées, puis 34 et 30 redressées, Flavie 33 ; essais d'ouverture verticale de la réglure : toujours faux (27-30 et 29-30). Corrigé dans `scan.js` : redressement d'une page en paysage (`rot`, appliqué à la relecture, ↻), ⇄ ordre des pages, ✂ recadrage (`recadre`, appliqué à la relecture, marques transformées), plus de compte ni de calage des lignes sur une photo (seulement sur les copies à repères), la saisie des initiales ne bloque plus le passage à la correction. Défaut fait par moi en route et corrigé : un commentaire posé au milieu d'une ligne avalait la fin de `scLigneDe` (le fichier ne se chargeait plus) — c'est la troisième fois ; je vérifie maintenant la syntaxe après chaque retouche. Banc de la v5 : 31 vérifications, 0 défaut ; copies réelles : Gabin redressé, deux pages dans l'ordre après ⇄, faute sur la page 2 dans son fichier, Flavie recadrée 1350 × 1800 → 1094 × 1557. Trouvé en relisant le sas : mon infobulle des initiales citait « Chevalier Flavie » ; remplacé par un nom inventé, v6 (md5 886e465b0041, banc 31 / 0). `T399-maquette-redaction-scans-v5.html` md5 09b730c238bb.
 
-**Claude :** [fichiers : T403-maquette-classe-reelle.html (privé), T399-maquette-redaction-scans-v5.html]
+**Claude :** [fichiers : T403-maquette-classe-reelle.html (privé), T399-maquette-redaction-scans-v6.html]
 
 À jouer : tes deux copies dans la maquette (1398 à 1403) · en cours : rien · ouvert : 1405 ; 1397 ; 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
 
@@ -9099,9 +9099,9 @@ MEMO
 
 1402. Ce qui ne va pas, et que tu n'avais pas vu : au bord de la photo de Flavie, on lit un morceau de la copie de Gabin, et une autre feuille dépasse en bas de la page 2 de Gabin. Ça partirait dans le fichier de l'élève. Corrigé : « ✂ » recadre une page sur la feuille, d'un glisser. Les copies de l'appli se recadrent seules.
 
-1403. Un défaut trouvé : après les dernières initiales, l'écran restait sur la saisie. Corrigé.
+1403. Deux défauts trouvés et corrigés. Après les dernières initiales, l'écran restait sur la saisie. Et une infobulle donnait en exemple le vrai nom de Flavie : remplacé par un nom inventé.
 
-1404. Banc : 31 vérifications, 0 défaut. Fichier : T399-maquette-redaction-scans-v5.html (classe inventée, au sas).
+1404. Banc : 31 vérifications, 0 défaut. Fichier : T399-maquette-redaction-scans-v6.html (classe inventée, au sas).
 
 1405. Oui à 1398 à 1404 ?
 

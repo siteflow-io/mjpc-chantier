@@ -10,8 +10,8 @@ function scEleveDonnees(k) {
   const M = Object.values(s.marques).filter(m => ordre.indexOf(m.page) >= 0);
   const fautes = M.filter(m => m.forme === "faute").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0) || (a.x0 - b.x0))
     .map(m => { const p = SC.pages[m.page]; const l = m.l0 != null && m.l0 >= 0 ? m.l0 + 1 : null; return { id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, num: m.num, ligne: l, bonne: m.bonne || null }; });
-  const pts = []; SC.grille.criteres.forEach(c => c.points.forEach(pt => { const r = scCase(pt, k); if (!r) return;
-    const ms = M.filter(m => m.point === pt.id).sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0));
+  const pts = []; SC.grille.criteres.forEach(c => c.points.forEach(pt => { const r = scCase(pt, k); if (!r || !r.complet) return;   // seuls les points que tu as passés partent chez l'élève
+    const ms = M.filter(m => m.point === pt.id && m.forme !== "faute" && m.forme !== "etoile").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0));
     const pl = ms.length ? place(ms[0]) : { page: 0, y: 0 };
     pts.push({ id: pt.id, crit: c.id, critNom: c.nom, titre: pt.titre, poids: pt.poids, niveau: r.c.niveau, pts: pt.bareme[String(r.c.niveau)], fait: r.txt, tache: r.tache != null ? r.tache : (r.c.tache || ""),
       bareme: pt.bareme, place: pl, marques: ms.map(m => ({ page: ordre.indexOf(m.page), forme: m.forme, x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, seg: scSegments(m, SC.pages[m.page]) })) }); }));
@@ -54,22 +54,22 @@ function scEleveApp(D, IMG) {
   const ecrire = (cle, v) => { R[cle] = v; if (F) return F(url(cle), { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(v) }).catch(() => null); try { localStorage.setItem("mjpc_retours_" + D.cle, JSON.stringify(R)); } catch (e) {} return Promise.resolve(); };
   const st = document.createElement("style"); st.textContent = `#statique{display:none}
 .app{display:flex;gap:16px;max-width:1500px;margin:0 auto;padding:12px}.col{flex:1;min-width:0}.pan{width:400px;flex:none;position:sticky;top:10px;align-self:flex-start;max-height:calc(100vh - 20px);overflow:auto}
-.pg{position:relative;width:100%;margin-bottom:12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
+.pg{position:relative;width:68%;margin-bottom:12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
 .mk{position:absolute;transition:opacity .5s}.f{height:0;border-top:3px solid #c54040}.f.ok{border-color:#3a6e1c}.f.cour{border-top-width:5px}.e{border:2.5px solid;border-radius:4px}.g{border-radius:4px}
-.num{position:absolute;transform:translate(-50%,-115%);background:#c54040;color:#fff;border-radius:50%;width:22px;height:22px;font:700 12px/22px system-ui;text-align:center}.num.ok{background:#3a6e1c}
+.num{position:absolute;transform:translate(3px,-50%);background:#c54040;color:#fff;border-radius:50%;width:22px;height:22px;font:700 12px/22px system-ui;text-align:center}.num.ok{background:#3a6e1c}
 .pin{position:absolute;left:.4%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:#9a9086;color:#fff;font:800 15px/26px system-ui;text-align:center;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3)}
 .pin.cour{background:#2b2520}.pin.fait{color:#fff}
 .bloc{background:#fdfbf7;border:1px solid #d6cfc1;border-radius:10px;padding:12px 14px;margin-bottom:10px}.bloc h3{margin:0 0 6px;font:600 12.5px system-ui;letter-spacing:.1em;text-transform:uppercase;color:#6b1a2a}
 .ech{display:flex;gap:4px;margin:8px 0}.ech span{flex:1;border:2px solid;border-radius:7px;padding:4px;font-size:12px;text-align:center;opacity:.45}.ech span.on{opacity:1;font-weight:700;box-shadow:0 0 0 2px #2b2520}
 input,textarea{font:inherit;width:100%;border:1px solid #c9bba4;border-radius:7px;padding:8px 10px;background:#fff}textarea{min-height:110px;resize:vertical;font-family:"Segoe Script","Bradley Hand",cursive;color:#2a3f8f}
 button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;padding:8px 14px;margin-top:8px;cursor:pointer}.m{color:#7a6e5f;font-size:14px}.ok{color:#3a6e1c;font-weight:700}.ko{color:#c54040;font-weight:700}
-.pap{position:absolute;right:-2%;width:46%;background:#fffbe6;border:1px solid #e0c870;box-shadow:2px 3px 8px rgba(0,0,0,.25);padding:6px 8px;font-family:"Segoe Script","Bradley Hand",cursive;color:#2a3f8f;font-size:14px;transform:rotate(-1deg);white-space:pre-wrap}
+.pap{position:absolute;left:102%;width:45%;background:#fffbe6;border:1px solid #e0c870;box-shadow:2px 3px 8px rgba(0,0,0,.25);padding:6px 8px;font-family:"Segoe Script","Bradley Hand",cursive;color:#2a3f8f;font-size:14px;transform:rotate(-1deg);white-space:pre-wrap}
 .trav{position:fixed;inset:0;background:#f5f1ea;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center}.sc3{perspective:1400px;height:62vh;width:100%;display:flex;align-items:center;justify-content:center}
 .pile{position:relative;width:min(34vh,60vw);aspect-ratio:${D.pages[0] ? D.pages[0].w + "/" + D.pages[0].h : "210/297"};transform-style:preserve-3d;transform:rotateX(55deg) rotateZ(-28deg)}
 .feuille{position:absolute;inset:0;border:2px solid;border-radius:4px;background:rgba(255,255,255,.25)}.feuille b{position:absolute;right:-4px;top:-26px;color:#fff;font:700 13px system-ui;padding:2px 8px;border-radius:6px 6px 0 0}
 .cp{position:absolute;inset:0;transition:transform 1.4s ease}.cp img{width:100%;height:100%;display:block;border-radius:4px;box-shadow:0 14px 26px rgba(0,0,0,.3)}
 .leg{max-width:640px;text-align:center;font-size:18px;padding:0 16px;min-height:3em}.passer{position:absolute;right:16px;bottom:16px;background:#fff;color:#6b1a2a;border:1px solid #d6cfc1}
-@media (max-width:820px){.app{display:block;padding:6px}.pan{position:fixed;left:0;right:0;bottom:0;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}.pap{width:60%}}`;
+@media (max-width:820px){.pg{width:100%}.pap{left:auto;right:0;width:62%;opacity:.96}.app{display:block;padding:6px}.pan{position:fixed;left:0;right:0;bottom:0;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}.pap{width:60%}}`;
   document.head.appendChild(st);
   // les étapes : les fautes d'abord, de haut en bas ; puis les points, à leur place sur la copie
   const E = D.fautes.map(f => ({ t: "f", f, cle: f.id })).concat(D.points.slice().sort((a, b) => (a.place.page - b.place.page) || (a.place.y - b.place.y)).map(p => ({ t: "p", p, cle: p.id })));
@@ -80,7 +80,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     const pgs = col.querySelectorAll(".pg"); const cour = E[etape];
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach(f => { const ok = fini({ t: "f", f, cle: f.id }); const c = cour && cour.t === "f" && cour.f === f; const P = pgs[f.page]; if (!P) return;
-      P.insertAdjacentHTML("beforeend", `<div class="mk f${ok ? " ok" : ""}${c ? " cour" : ""}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num${ok ? " ok" : ""}" style="left:${pc(f.x1)};top:${pc(f.y0)}">${ok ? "✓" : f.num}</div>`); });
+      P.insertAdjacentHTML("beforeend", `<div class="mk f${ok ? " ok" : ""}${c ? " cour" : ""}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num${ok ? " ok" : ""}" style="left:${pc(f.x1)};top:${pc(f.y1)}">${ok ? "✓" : f.num}</div>`); });
     D.points.forEach(p => { const P = pgs[p.place.page]; if (!P) return; const ouvert = E.findIndex(s => s.t === "p" && s.p === p) <= etape; const c = cour && cour.t === "p" && cour.p === p;
       if (ouvert) p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return; const k = D.coul[p.crit] || "#6b1a2a";
         if (m.forme === "surligne") m.seg.forEach(r => Q.insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${k}${c ? "55" : "30"}"></div>`));
@@ -90,8 +90,8 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
   }
   function panneau() {
     const pan = $("#pan"); const s = E[etape];
-    if (!s) { const pts = D.points.reduce((a, p) => a + p.pts, 0);
-      pan.innerHTML = `<div class="bloc"><h3>Ta note</h3><div style="font:700 30px Georgia,serif">${String(D.note != null ? D.note : pts).replace(".", ",")} / ${D.total}</div></div>` + D.points.map(p => `<div class="bloc"><h3>${esc(p.critNom)} · ${esc(p.titre)}</h3><div>${esc(p.fait)}</div><div class="m">${String(p.pts).replace(".", ",")} / ${p.poids}</div></div>`).join(""); return; }
+    if (!s) {
+      pan.innerHTML = (D.note != null ? `<div class="bloc"><h3>Ta note</h3><div style="font:700 30px Georgia,serif">${String(D.note).replace(".", ",")} / ${D.total}</div></div>` : "") + D.points.map(p => `<div class="bloc"><h3>${esc(p.critNom)} · ${esc(p.titre)}</h3><div>${esc(p.fait)}</div><div class="m">${String(p.pts).replace(".", ",")} / ${p.poids}</div></div>`).join(""); return; }
     const r = R[s.cle] || {};
     if (s.t === "f") { const f = s.f;
       pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length}${f.ligne ? " · ligne " + f.ligne : ""}</h3>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' : ""}<input id="rep" autocomplete="off" value="${esc(r.texte || "")}"><button id="ok">${f.bonne ? "Vérifier" : "Envoyer"}</button><div id="msg"></div></div>`;

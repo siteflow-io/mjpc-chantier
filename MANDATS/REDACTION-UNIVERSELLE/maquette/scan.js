@@ -78,12 +78,13 @@ function scLirePdf(f, traiter) {
   });
 }
 // une page : son empreinte (son identité), ses lignes écrites, page blanche ou non, l'image en JPEG
-function scPage(cv) {
+function scPage(cv0) {
+  const H = scReperes(cv0); const cv = H ? scRedresser(cv0, H) : cv0;   // une copie de l'appli : remise droite, lignes connues
   const p = document.createElement("canvas"); p.width = 16; p.height = 16; const pc = p.getContext("2d"); pc.drawImage(cv, 0, 0, 16, 16);
   const d = pc.getImageData(0, 0, 16, 16).data; const g = []; for (let i = 0; i < 256; i++) g.push(d[i * 4] + d[i * 4 + 1] + d[i * 4 + 2]);
   const moy = g.reduce((a, b) => a + b, 0) / 256; let hex = ""; for (let i = 0; i < 256; i += 4) { let v = 0; for (let j = 0; j < 4; j++) v = v * 2 + (g[i + j] > moy ? 1 : 0); hex += v.toString(16); }
   const id = "page_" + hex + "_" + cv.width.toString(36) + cv.height.toString(36);
-  const lig = scLignes(cv);
+  const lig = H ? scLignesConnues(cv) : scLignes(cv);
   return new Promise(res => cv.toBlob(b => res({ id, blob: b, w: cv.width, h: cv.height, lignes: lig, blanche: lig.n === 0 }), "image/jpeg", 0.82));
 }
 // les lignes écrites (mesuré le 30/10 sur une copie de l'an dernier : 30 sur 30, à 1 pixel près) : l'encre plus sombre que le papier autour,
@@ -393,3 +394,57 @@ function scAide() { scModale(`<h3>Corriger sur les scans</h3><p>Un critère à l
 function scModale(h) { const m = document.getElementById("scModale"); m.querySelector(".sc-modale-c").innerHTML = h + `<div style="text-align:right;margin-top:10px"><button class="sc-btn" onclick="scModaleFermer()">Fermer</button></div>`; m.classList.add("show"); }
 function scModaleFermer() { document.getElementById("scModale").classList.remove("show"); }
 addEventListener("resize", () => { if (SC.ouvert) scDessinerPages(); });
+// ── les copies vierges de l'appli : quatre repères aux coins, les lignes à leur place ; au scan, la page est remise droite
+// et ses lignes sont connues d'avance (la détection des repères : test-reperes.html, mesurée le 29/10 : 0,2 mm sur synthèse) ──
+const SC_F = { W: 210, H: 297, cote: 16, trou: 8, reperes: [[20, 20], [190, 20], [190, 277], [20, 277]], l0: 36, pas: 8, n: 30, marge: 35, droite: 195 };
+function scFeuilleSVG() {
+  const s = ['<rect width="210" height="297" fill="#fff"/>'];
+  for (let i = 0; i < SC_F.n; i++) { const y = SC_F.l0 + i * SC_F.pas; s.push(`<line x1="${SC_F.marge - 8}" y1="${y}" x2="${SC_F.droite}" y2="${y}" stroke="#bcd0e8" stroke-width="0.35"/>`); }
+  s.push(`<line x1="${SC_F.marge}" y1="${SC_F.l0 - 8}" x2="${SC_F.marge}" y2="${SC_F.l0 + (SC_F.n - 1) * SC_F.pas + 2}" stroke="#f0b8b8" stroke-width="0.4"/>`);
+  SC_F.reperes.forEach(([x, y], i) => { const h = SC_F.cote / 2; s.push(`<rect x="${x - h}" y="${y - h}" width="${SC_F.cote}" height="${SC_F.cote}" fill="#000"/>`); if (!i) s.push(`<rect x="${x - SC_F.trou / 2}" y="${y - SC_F.trou / 2}" width="${SC_F.trou}" height="${SC_F.trou}" fill="#fff"/>`); });
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 297" width="210mm" height="297mm">${s.join("")}</svg>`;
+}
+function scImprimerVierges() {
+  const n = Math.max(1, (state.classe || []).length + 4); const w = window.open("", "_blank"); if (!w) { toast("Le navigateur a bloqué la fenêtre d'impression : autorise-la pour ce fichier."); return; }
+  w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Copies vierges</title><style>@page{size:A4;margin:0}body{margin:0}.p{width:210mm;height:297mm;page-break-after:always}</style></head><body>${Array.from({ length: n }, () => `<div class="p">${scFeuilleSVG()}</div>`).join("")}<script>setTimeout(()=>print(),300)<\/script></body></html>`); w.document.close();
+}
+function scResoudre(A, b) { const n = b.length; for (let c = 0; c < n; c++) { let p = c; for (let r = c + 1; r < n; r++) if (Math.abs(A[r][c]) > Math.abs(A[p][c])) p = r; [A[c], A[p]] = [A[p], A[c]]; [b[c], b[p]] = [b[p], b[c]]; if (Math.abs(A[c][c]) < 1e-12) return null; for (let r = c + 1; r < n; r++) { const f = A[r][c] / A[c][c]; for (let k = c; k < n; k++) A[r][k] -= f * A[c][k]; b[r] -= f * b[c]; } } const x = new Array(n).fill(0); for (let r = n - 1; r >= 0; r--) { let s = b[r]; for (let k = r + 1; k < n; k++) s -= A[r][k] * x[k]; x[r] = s / A[r][r]; } return x; }
+function scHomographie(src, dst) { const A = [], b = []; for (let i = 0; i < 4; i++) { const [X, Y] = src[i], [x, y] = dst[i]; A.push([X, Y, 1, 0, 0, 0, -x * X, -x * Y]); b.push(x); A.push([0, 0, 0, X, Y, 1, -y * X, -y * Y]); b.push(y); } const h = scResoudre(A, b); return h ? [[h[0], h[1], h[2]], [h[3], h[4], h[5]], [h[6], h[7], 1]] : null; }
+function scAppliquer(H, x, y) { const w = H[2][0] * x + H[2][1] * y + H[2][2]; return [(H[0][0] * x + H[0][1] * y + H[0][2]) / w, (H[1][0] * x + H[1][1] * y + H[1][2]) / w]; }
+function scReperes(src) {   // les quatre repères (le haut gauche évidé) : l'homographie page en mm → image en points, ou null
+  const k = Math.min(1, 1400 / Math.max(src.width, src.height)), w = Math.round(src.width * k), h = Math.round(src.height * k);
+  const cv = document.createElement("canvas"); cv.width = w; cv.height = h; const cx = cv.getContext("2d"); cx.drawImage(src, 0, 0, w, h);
+  const px = cx.getImageData(0, 0, w, h).data, N = w * h, g = new Uint8Array(N); for (let i = 0, j = 0; i < N; i++, j += 4) g[i] = (px[j] * 299 + px[j + 1] * 587 + px[j + 2] * 114) / 1000;
+  const W1 = w + 1, I = new Float64Array(W1 * (h + 1)); for (let y = 0; y < h; y++) { let s = 0; for (let x = 0; x < w; x++) { s += g[y * w + x]; I[(y + 1) * W1 + x + 1] = I[y * W1 + x + 1] + s; } }
+  const R = Math.max(8, Math.round(Math.max(w, h) / 12)), sb = new Uint8Array(N);
+  for (let y = 0; y < h; y++) { const y0 = Math.max(0, y - R), y1 = Math.min(h, y + R + 1); for (let x = 0; x < w; x++) { const x0 = Math.max(0, x - R), x1 = Math.min(w, x + R + 1); sb[y * w + x] = g[y * w + x] < 0.62 * ((I[y1 * W1 + x1] - I[y0 * W1 + x1] - I[y1 * W1 + x0] + I[y0 * W1 + x0]) / ((x1 - x0) * (y1 - y0))) ? 1 : 0; } }
+  const lab = new Int32Array(N), pile = new Int32Array(N), C = [];
+  for (let s = 0; s < N; s++) { if (!sb[s] || lab[s]) continue; const id = C.length + 1; let n = 0, sx = 0, sy = 0, x0 = w, x1 = 0, y0 = h, y1 = 0, bord = false, top = 0; pile[top++] = s; lab[s] = id;
+    while (top) { const p = pile[--top], x = p % w, y = (p / w) | 0; n++; sx += x; sy += y; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; if (!x || !y || x === w - 1 || y === h - 1) bord = true;
+      if (x > 0 && sb[p - 1] && !lab[p - 1]) { lab[p - 1] = id; pile[top++] = p - 1; } if (x < w - 1 && sb[p + 1] && !lab[p + 1]) { lab[p + 1] = id; pile[top++] = p + 1; } if (y > 0 && sb[p - w] && !lab[p - w]) { lab[p - w] = id; pile[top++] = p - w; } if (y < h - 1 && sb[p + w] && !lab[p + w]) { lab[p + w] = id; pile[top++] = p + w; } }
+    C.push({ n, cx: sx / n, cy: sy / n, x0, x1, y0, y1, bord }); }
+  const cands = []; for (const c of C) { if (c.bord || c.n < N * 0.0004 || c.n > N * 0.03) continue; const bw = c.x1 - c.x0 + 1, bh = c.y1 - c.y0 + 1; if (c.n / (bw * bh) < 0.45 || Math.max(bw, bh) / Math.min(bw, bh) > 2.5) continue;
+    const r = Math.max(1, Math.round(Math.min(bw, bh) / 7)); let cl = 0, t = 0; for (let y = Math.round(c.cy) - r; y <= Math.round(c.cy) + r; y++) for (let x = Math.round(c.cx) - r; x <= Math.round(c.cx) + r; x++) { if (x < 0 || y < 0 || x >= w || y >= h) continue; t++; if (!sb[y * w + x]) cl++; } cands.push(Object.assign({}, c, { evide: t > 0 && cl / t > 0.7 })); }
+  cands.sort((a, b) => b.n - a.n); const Q = cands.slice(0, 14); let best = null, aire = 0;
+  for (let a = 0; a < Q.length; a++) for (let b = a + 1; b < Q.length; b++) for (let c = b + 1; c < Q.length; c++) for (let d = c + 1; d < Q.length; d++) { const q = [Q[a], Q[b], Q[c], Q[d]]; if (q.filter(m => m.evide).length !== 1) continue; const ns = q.map(m => m.n); if (Math.max(...ns) / Math.min(...ns) > 4) continue;
+    const mx = q.reduce((s, m) => s + m.cx, 0) / 4, my = q.reduce((s, m) => s + m.cy, 0) / 4; q.sort((u, v) => Math.atan2(u.cy - my, u.cx - mx) - Math.atan2(v.cy - my, v.cx - mx)); let A = 0, cv2 = true, sg = 0;
+    for (let i = 0; i < 4; i++) { const p = q[i], r = q[(i + 1) % 4], s = q[(i + 2) % 4]; A += p.cx * r.cy - r.cx * p.cy; const z = (r.cx - p.cx) * (s.cy - r.cy) - (r.cy - p.cy) * (s.cx - r.cx); if (!sg) sg = Math.sign(z); else if (Math.sign(z) !== sg) cv2 = false; } A = Math.abs(A) / 2; if (cv2 && A > aire && A > N * 0.25) { aire = A; best = q.slice(); } }
+  if (!best) return null; const i0 = best.findIndex(m => m.evide); const pts = [0, 1, 2, 3].map(i => best[(i0 + i) % 4]).map(m => [m.cx / k, m.cy / k]);
+  return scHomographie(SC_F.reperes, pts);
+}
+function scRedresser(src, H) {   // la page remise droite, à 6 points par millimètre
+  const P = 6, Wp = SC_F.W * P, Hp = SC_F.H * P; const sx = src.getContext("2d").getImageData(0, 0, src.width, src.height); const s = sx.data, sw = src.width, sh = src.height;
+  const out = document.createElement("canvas"); out.width = Wp; out.height = Hp; const oc = out.getContext("2d"); const od = oc.createImageData(Wp, Hp); const d = od.data;
+  for (let j = 0; j < Hp; j++) for (let i = 0; i < Wp; i++) { const [x, y] = scAppliquer(H, (i + 0.5) / P, (j + 0.5) / P); const o = (j * Wp + i) * 4; if (!(x >= 0 && y >= 0 && x < sw - 1 && y < sh - 1)) { d[o] = d[o + 1] = d[o + 2] = 255; d[o + 3] = 255; continue; }
+    const x0 = x | 0, y0 = y | 0, fx = x - x0, fy = y - y0; for (let c = 0; c < 3; c++) { const a = s[(y0 * sw + x0) * 4 + c], b = s[(y0 * sw + x0 + 1) * 4 + c], e = s[((y0 + 1) * sw + x0) * 4 + c], f = s[((y0 + 1) * sw + x0 + 1) * 4 + c]; d[o + c] = (a * (1 - fx) + b * fx) * (1 - fy) + (e * (1 - fx) + f * fx) * fy; } d[o + 3] = 255; }
+  oc.putImageData(od, 0, 0); return out;
+}
+function scLignesConnues(cv) {   // sur la copie de l'appli, les lignes sont à leur place : une ligne est écrite si sa bande porte de l'encre
+  const W = 420, H = Math.round(W * SC_F.H / SC_F.W), c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d"); x.drawImage(cv, 0, 0, W, H);
+  const d = x.getImageData(0, 0, W, H).data, k = W / SC_F.W; const res = [];
+  for (let i = 0; i < SC_F.n; i++) { const yb = SC_F.l0 + i * SC_F.pas; const ya = Math.round((yb - 6.5) * k), yz = Math.round((yb - 0.6) * k), xa = Math.round((SC_F.marge + 1) * k), xz = Math.round(SC_F.droite * k);
+    let n = 0, t = 0, g = -1, dr = -1; for (let yy = ya; yy < yz; yy++) for (let xx = xa; xx < xz; xx++) { const o = (yy * W + xx) * 4, r = d[o], gg = d[o + 1], bb = d[o + 2]; t++; if ((r + gg + bb) / 3 < 150 && !(r > gg + 30 && r > bb + 30)) { n++; if (g < 0 || xx < g) g = xx; if (xx > dr) dr = xx; } }
+    res.push({ y: +((yb - 3) / SC_F.H).toFixed(4), x0: g >= 0 ? +(g / W).toFixed(4) : SC_F.marge / SC_F.W, x1: dr >= 0 ? +(dr / W).toFixed(4) : SC_F.droite / SC_F.W, ecrite: n / t > 0.004 }); }
+  let der = -1; res.forEach((l, i) => { if (l.ecrite) der = i; });
+  return { n: res.filter(l => l.ecrite).length, pas: +(SC_F.pas / SC_F.H).toFixed(4), l: res.slice(0, Math.max(der + 1, 1)), reperes: true };
+}

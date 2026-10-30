@@ -270,3 +270,22 @@ MEMO
 
 30/10/2026 15:48
 MEMO
+
+## Tour 10 — 30/10/2026 15:49 → 15:51
+
+**Paul :** ok donc les stickers ne sont pas une bonne idée en fait.
+
+**Fait.** Relu les mots de Paul du 29/10 14:20 (transcript C13, ligne 7910) : « Je veux max 30 clics par copie et la plus grande finesse » — « 30 clics », pas « 30 gestes » (reformulation de C13 reprise par C14) ; corrigé au registre (production `5b3fed8`) et dans `MANDATS/EXIGENCES-DEPUIS-29-10.md` (ligne 36). Mesuré dans le code de 1.2.3 (`scan.js`, `scCase`) : un point n'est fini que quand chacune de ses questions a sa réponse (« o » ou « n ») ; la grille porte 51 questions : jusqu'à 51 touches par copie, quelle que soit la copie, plus les fautes.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 8 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+7. Je ne crois pas : c'est ma façon de compter qui t'a induit en erreur. Les 44, c'est pour une copie qui réussit tout ; une copie moyenne en demande moins, une copie faible presque rien ; la moyenne sur ton paquet, je ne la connais pas. Et ta limite d'hier, je l'avais mal reprise : tu as dit « 30 clics », pas 30 gestes. Aujourd'hui, sans stickers, la 1.2.3 te demande une touche par question, jusqu'à 51 par copie, qu'elle soit bonne ou mauvaise. Les stickers ne coûtent donc pas plus que ce que tu fais déjà, et ils coûtent moins sur les copies faibles.
+
+8. Ce qui coûte vraiment, c'est de viser la copie à la souris. Je propose qu'un sticker se pose aussi d'une touche, sans viser, quand l'endroit n'apprend rien à l'élève (par exemple « Aller à la ligne entre les parties de ta lettre ») ; tu ne le poses sur la copie que quand tu veux lui montrer où. Les clics ne servent plus alors qu'à montrer, comme tu le choisis. On garde les stickers avec cette règle, ou tu préfères arrêter là ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 15:51
+MEMO

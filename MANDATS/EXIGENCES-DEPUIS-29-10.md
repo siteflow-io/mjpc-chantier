@@ -41,7 +41,7 @@
 33. 12:50, 16:41 — Une case = un seul fait, une couleur, un point, fixés d'avance. ✔ dans la grille ; c'est aussi ta règle permanente.
 34. 13:25 — Verser dans la grille un texte modifié en corrigeant ; exporter le journal de correction pour l'IA, pour affiner la grille (proposé C13 1102-1104, jamais tranché). ⚠ n'existe pas dans 1.2.x.
 35. 14:05 — Corriger en oui / non. ✔ 1.2.0 (Entrée oui, N non) ; remis en cause par les stickers (37).
-36. 14:20 — Au plus 30 gestes par copie, avec la plus grande finesse. ⚠ jamais mesuré sur les scans.
+36. 14:20 — Au plus 30 clics par copie, avec la plus grande finesse (« Je veux max 30 clics par copie et la plus grande finesse »). ⚠ jamais mesuré sur les scans.
 37. 12:59 → 14:37 (30/10) — Les stickers : posés dans le texte, ils remplissent la grille ; ils marquent ce que l'élève a réussi ; seule la langue montre le mal fait ; décourager la plainte ; la grille peut changer. 🔍 acquis : C13 1546 à 1548 ; ouvert : ce qui doit tenir dans toute la lettre.
 38. 14:39, 15:03 — Tout au clavier comme la dictée, les boutons restant cliquables. ✔ 1.2.0.
 39. 15:43 — Une touche commune garde la fonction qu'elle a en dictée ; G et L jamais en rédaction. Je ne sais pas : pas mesuré contre la correction de dictée.

@@ -696,3 +696,24 @@ MEMO
 
 30/10/2026 20:58
 MEMO
+
+## Tour 28 — 30/10/2026 21:26 → 30/10/2026 21:27
+
+**Paul :** Verkfe
+
+**Fait.** Lu au sas le commit C15 `e9618259` : mandat `MANDATS/REDACTION-UNIVERSELLE/MANDAT-RECOPIER-BANDE.md` révisé en entier, fin de `banc/banc.mjs` (+ `process.exitCode = 1` si une vérification ratée ou une erreur), transcript C15 tour 4 (points 74 à 82, 21:01 → 21:17). Revérifié : `PROD=1 VERSION=1.2.3-RU python3 gen-maquette.py` sur la base 1.1.0 avec les lectures privées → 533 112 octets, md5 `bde58bd636a12ea3e6af66474b476e38`, identique à `redaction.html` en production ; `node --check banc/banc.mjs` : sans erreur ; banc complet non rejoué. Trouvé : points 74 à 77 en double (C14 tour 27, 20:58 ; C15 tour 4, 21:01) ; la « première mission » (auditer le mandat avant de coder) absente du mandat révisé ; registre ⑪ (production `03b3143`) non mis à jour depuis le mandat C14.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 85 ; 61 ; 53 ; 45 ; 36.
+
+83. Le travail de GPT, sur le fond : ça va. J'ai revérifié ses deux preuves. En repartant de la version d'avant les scans, l'outil refabrique exactement le fichier en ligne (533 112 octets, identiques). Le banc corrigé échoue maintenant vraiment quand une vérification échoue ; j'ai lu la correction et vérifié qu'elle s'exécute, sans rejouer le banc entier. Le mandat reprend tes décisions : la recopie d'abord, la faute montrée à la ligne sur la photo, ton fichier de recopies seulement si tu dis oui à 53, tes copies déjà corrigées intouchées, les trois défauts réglés avant la mise en ligne.
+
+84. Trois choses ne vont pas. Les numéros 74 à 77 existent deux fois : les miens à 20:58, ceux de GPT à 21:01 ; nous t'avons parlé en même temps. Le mandat a perdu la première mission de l'exécutant, que tu as fixée le 21/10 : relire le mandat et signaler nos erreurs avant de coder. Et le registre en ligne décrit encore l'ancien mandat.
+
+85. Je propose : tout le monde reprend à 86, et pour 74 à 77 on précise « C14 » ou « C15 » ; un seul de nous deux te parle à la fois, GPT demain, moi à partir de demain 22 h ; GPT remet la première mission dans le mandat et met le registre à jour. Ça te va ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 21:27
+MEMO

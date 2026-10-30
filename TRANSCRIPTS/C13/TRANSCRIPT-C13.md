@@ -9555,7 +9555,7 @@ MEMO
 30/10/2026 12:51
 MEMO
 
-## Tour 416 — 30/10/2026 12:59 → (en cours)
+## Tour 416 — 30/10/2026 12:59 → 13:14
 
 **Paul :** 1499. en fait, c'est exactement ce qui fait que je dois pouvoir fixer un quota dans les réglages d'une rédaction. L'élève en correction sait qu'il a des mots dont la bonne forme est enregistrée, et que sa correction compte sur ces mots là. Mais pour le hors quota, les mots que je ne fais que souligner, l'élève les corrige quand même mais l'app ne confronte rien vu qu'elle n'a pas la bonne forme. A mettre dans le cadrage de la correction élève (partie à coder). Peut-être que la correction donnera lieu à une note d'autocorrection, comme la dictée. 1500 et 1501: donc en fait les critères de répétition et de mots mal écrits ou mal usités (argot, etc, tout ce qui ne va pas dans le canon attendu de l'écrit), sont deux stickers et le niveau de ces critères se calcule tout seul, avec un seuil de nombre de stickers. tu comprends? mais j'hésite parce que ça ouvre la voie à la correction exhaustive, ce que je ne veux pas. Pour le reste, montre moi une capture des stickers. Dette à résoudre dès maintenant en priorité : pour le trait rouge que je tire, en fait je ne le vois pas se tirer. quand je clique au premier point puis que je tire, le trait rouge n'apparaît pas au fur et à mesure de mon tiré. il n'apparait qu'au relacher. Fais d'abord la dette à résoudre dès maintenant
 
@@ -9582,5 +9582,32 @@ MEMO
 2. Lâcher : le trait reste exactement là où tu l'as vu.
 
 30/10/2026 13:03
+MEMO
+
+**Fait (puis les stickers).** `stickers.js`, maquette seule (inclus par `gen-maquette.py` avec `STICKERS=1`, jamais avec `PROD=1` : la 1.2.2-RU refaite après donne le même md5 `d46ecf46557d`, la v13 aussi `260472fad5dd`). 13 stickers, chacun sur une question existante de `grille2.json` (Lexique q0, q1, q2 ; thème q6 ; lectures q0 ; complexes q0, q3, q4 ; modalisation q0, q2 ; personne q1, q3 ; codes q4) ; posé, il répond à SA question (`scPoser` : point, clé, sens) ; pas recalé sur les lignes (`scCaler`), un trait sans hauteur prend 0,75 pas au-dessus ; palette par passe sous l'en-tête de la copie, compteur, seuil-butée à 3 pour « Rép. » et « Mot ? » (bouton grisé, raison écrite) ; dessin : cadre fin + étiquette au-dessus, à taille d'écran constante ; fichier de l'élève (`scEleveDonnees`, `scEleveLecture` repris par motifs exacts) : l'étiquette sur la copie, « Par exemple, sur ta copie » dans le point. Un commentaire `//` a encore avalé du code en écrivant `stickers.js` : vu par `node --check`, corrigé en `/* */`. Captures au geste (`banc/capture-stickers.mjs`, paquet d'essai, 5 stickers de langue + une litote) : Lexique mesuré niveau 1 « Des mots ne disent pas ce que tu veux dire. » (le premier « Mot ? »), seuil grisé vu, aucune erreur ; infobulles 384 / 0. Docs de production : `a21a2f1`. Pas de « promeus » reçu pour 1.2.2 pendant le tour.
+
+**Claude :**
+
+À jouer : promeus 1.2.2-RU (1511), puis les captures des stickers (1515) · en cours : rien · ouvert : 1511 ; 1520 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1515. Les stickers sont construits dans l'app, en maquette seulement : rien en ligne, et la 1.2.2 de 1511 n'en contient aucun. Trois captures : 20-st-1-langue (ta passe de la langue, la palette à droite, les stickers sur la copie) ; 20-st-2-construction (chaque passe a sa palette, ici la « Litote » en vert) ; 20-st-3-eleve (le fichier de l'élève : il clique une étiquette, le point s'ouvre avec « Par exemple, sur ta copie » et ce que veut dire chaque sticker).
+
+1516. Le geste : un clic sur le sticker dans la palette, puis un clic sur le mot, ou un trait tiré sous plusieurs mots. Le mot s'encadre finement, l'étiquette se pose au-dessus, et le pinceau revient aux fautes. À côté de chaque sticker, son compteur sur la copie : « 2 / 3 ».
+
+1517. Le seuil, pour ne jamais tout corriger (1513) : « Rép. » et « Mot ? » s'arrêtent à 3. Au 3e, le bouton se grise et dit « seuil atteint : inutile d'en poser d'autres ». Le chiffre 3 est le mien, à fixer.
+
+1518. Pas encore fait : la note du Lexique suit encore ta grille d'aujourd'hui, où le premier sticker fait toute la perte (sur la capture, un seul « Mot ? » met le Lexique à 0,5 sur 2). Le calcul par nombre de stickers (1505) attend tes seuils.
+
+1519. L'étiquette mord un peu sur la ligne du dessus (on le voit au-dessus de « finit »). Sur la copie d'essai, bien écrite, ce « Mot ? » est posé pour la capture seulement.
+
+1520. À trancher : les étiquettes et leurs phrases, lues par l'élève (1507) ; le seuil de 3 ; la note du Lexique par nombre (1505 : 1 ou 2 stickers, 1 sur 2 ; 3, 0,5 sur 2) ; l'étiquette au-dessus du mot, ou dans la marge de gauche à la hauteur du mot pour ne rien cacher ?
+
+À tester :
+1. Après ton promeus de 1511, F5 entre deux copies : le trait rouge suit ta main pendant que tu tires, et reste là où tu l'as vu.
+2. La maquette T416-maquette-stickers.html (jointe) : « 📄 Corriger sur les scans », ton paquet, les initiales, les lignes ; clic sur « Rép. » puis sur un mot : il s'encadre, l'étiquette au-dessus.
+3. Trois « Rép. » sur la même copie : le bouton se grise et dit pourquoi.
+4. « 📨 Fichiers École Directe », « 🧪 Tester comme l'élève » : cliquer une étiquette, lire « Par exemple, sur ta copie ».
+
+30/10/2026 13:14
 MEMO
 

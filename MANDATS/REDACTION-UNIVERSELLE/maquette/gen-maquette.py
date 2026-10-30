@@ -74,7 +74,7 @@ ecran = '''
 <div id="scLoupe" class="sc-loupe" hidden></div>
 <div id="scModale" class="sc-modale" onclick="if(event.target===this)scModaleFermer()"><div class="sc-modale-c"></div></div>
 ''' + ('' if PROD else MQ) + '''<style>''' + open('scan.css', encoding='utf8').read() + '''</style>
-<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + '''</script>
+<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + ('\n' + open('stickers.js', encoding='utf8').read() if os.environ.get('STICKERS') == '1' and not PROD else '') + '''</script>
 '''
 i = H.rindex('</body>'); H = H[:i] + ecran + H[i:]
 open(out, 'w', encoding='utf8').write(H)

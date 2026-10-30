@@ -197,3 +197,32 @@ Je prépare le correctif tout de suite.
 
 30/10/2026 15:31
 MEMO
+
+## Tour 7 — 30/10/2026 15:33 → 15:40
+
+**Paul :** promeus. j'attends maintenant la suite.
+
+**Fait.** Base relue en production : `redaction.html` md5 `d46ecf46557d0f7da853ac5ee96e0dc4` (1.2.2-RU, commit `413d235`), identique en ligne. 1.2.2-RU copiée au sas `SAUVEGARDES/redaction-1.2.2-RU-avant-1.2.3-2026-10-30.html` (sas `ea3bcfc8`) ; point de retour inscrit avant (`docs/MJPC6-restauration.md`, production `af5cf4a`, 15:34:21). Mise en ligne : `redaction.html` = la candidate, commit `d733af6` (15:34:27), blob `753ebaaec117ffd1ae406a15edab2e0dc955884a`, md5 `bde58bd636a12ea3e6af66474b476e38`, 533 112 octets (le « 525 597 o » du tour 6 comptait les caractères, pas les octets) ; servie en ligne bit à bit à 15:36:19 (11e lecture). Fumée sur le fichier en ligne (vrai site lu, écritures interceptées) : 1.2.3-RU, classe de 30, écran des scans, 51 questions, 1 écriture (le suivi), aucune erreur. Docs : registre (état de production 1.2.3-RU, ⑩ ✔, ⑨ acquis), journal, où-trouver-quoi (`&v=1.2.3-RU`, maquette v14), point de retour (promu) — production `4a29b03`, `861b942`. 1598 à 1600 non commentés : acquis. Relu pour la suite : le sujet (les trois paragraphes) et `grille2.json`, « Les trois paragraphes » (4 points, 7 questions : alinéas ; où et ce qu'il voit ; le plus dur ; inattendu ; inquiétude pour l'autre ; questions sur sa vie ; ordre du sujet) ; barème de 4 points : 4 ; 2,5 ; 1 ; 0.
+
+**Claude :**
+
+À jouer : F5, puis le Lexique des copies où tu l'avais donné (1608) · en cours : rien · ouvert : 1613 ; 1577 ; 1482 ; 1478 ; 1468 ; 1374 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1608. La 1.2.3-RU est en ligne et vérifiée : le fichier en ligne est identique, octet pour octet, à celui que j'ai essayé (15:36) ; essayée sur le vrai site sans y écrire, aucune erreur. La 1.2.2 est gardée au sas, le point de retour écrit avant. F5 entre deux copies, puis redonne le Lexique des copies où tu l'avais fait. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.2.3-RU
+
+1609. 1598 à 1600 sont acquis et au registre : une nouvelle version ajoute sans rien retirer, la grille au site ne se récrit jamais, et chaque version ouvre tes vraies copies avant ton « promeus ».
+
+1610. La suite : le deuxième point de ta grille en stickers de réussite, « Les trois paragraphes » (4 points), tiré du sujet. Sept stickers, chacun un seul fait, posé là où c'est réussi : « Les alinéas » (la lettre va à la ligne entre ses parties) ; « Où je suis, ce que je vois » ; « Le plus dur » ; « Pas ce qu'on croit » (ce plus dur n'est pas ce qu'on attend, comme la boue chez Jean Déléage) ; « L'inquiétude pour l'autre » ; « Ses nouvelles » (il lui demande des nouvelles de sa vie) ; « Dans l'ordre du sujet », à la fin de ta lecture, sur la lettre entière (comme 1587).
+
+1611. Le niveau, mêmes marches que ta grille : les sept, 4 points ; il en manque un, 2,5 ; deux ou trois, 1 ; au-delà, 0.
+
+1612. Le compte de tes 30 gestes (1593), mesuré sur ces deux points : une copie parfaite coûte 13 stickers pour 10 points sur 40. Si la suite garde ce rythme, une très bonne copie dépassera 30 stickers avant ses fautes. Je te donne le compte exact quand la grille sera entière, et on tranche alors, avant la maquette.
+
+1613. Oui à 1610 et 1611 ? Les noms des stickers sont des brouillons, à toi.
+
+À tester (sur le site, après F5) :
+1. Sur une copie finie : Entrée sur la copie, puis les trois questions du Lexique ; en haut à droite, « ✓ Enregistré au site ».
+2. F5 : tes réponses au Lexique sont toujours là.
+
+30/10/2026 15:40
+MEMO

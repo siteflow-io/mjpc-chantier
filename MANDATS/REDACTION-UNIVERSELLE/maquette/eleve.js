@@ -18,7 +18,7 @@ function scEleveDonnees(k, test) {
       bareme: pt.bareme, place: pl, marques: ms.map(m => ({ page: ordre.indexOf(m.page), forme: m.forme, x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, seg: scSegments(m, SC.pages[m.page]) })) }); }));
   const etoile = M.filter(m => m.forme === "etoile").map(m => ({ page: ordre.indexOf(m.page), seg: scSegments(m, SC.pages[m.page]) }));
   const nt = scNote(k);
-  return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB), retours: JSON.parse(JSON.stringify((SC.retours || {})[k] || {})),
+  return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB),
     criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: nt.ok ? nt.n : null, total: nt.tot,
     pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL,
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
@@ -48,17 +48,33 @@ function scEleveFichier(k, test) {
 function scEleveApp(D, IMG) {
   const $ = s => document.querySelector(s); const pc = v => (v * 100).toFixed(3) + "%"; const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const R = {}; let etape = 0;
-  // les retours : au hub de la rédaction, dans la place de cet élève. En mode test (celui de MJPC, ou la maquette), jamais au hub :
-  // ils reviennent à l'onglet de correction qui a ouvert ce fichier (« Tester comme l'élève »), et tes verdicts reviennent ici, sans recharger.
+  // Les retours : lus à l'ouverture, écrits à chaque réponse, et tes verdicts reçus sans recharger — le même code pour l'élève et pour ton test.
+  // Seul le transport change : le site pour l'élève ; en mode test (celui de MJPC, ou la maquette), l'onglet de correction qui a ouvert ce fichier
+  // (« Tester comme l'élève »), qui lit et écrit comme le site, dans son mode test ; ouvert seul, ce navigateur. Jamais le site en mode test.
   const url = cle => D.hub + "/redactions/" + encodeURIComponent(D.red) + "/retours/" + encodeURIComponent(D.classe) + "/" + encodeURIComponent(D.cle) + (cle ? "/" + encodeURIComponent(cle) : "") + ".json";
   const voisin = D.test ? (window.opener && !window.opener.closed ? window.opener : (window.parent !== window ? window.parent : null)) : null;
-  const cleLocale = "mjpc_retours_test_" + D.red + "_" + D.cle;
-  const lire = () => D.test ? Promise.resolve(voisin ? D.retours : (() => { try { return JSON.parse(localStorage.getItem(cleLocale) || "null"); } catch (e) { return null; } })()) : fetch(url()).then(r => r.ok ? r.json() : null).catch(() => null);
-  const ecrire = (cle, v) => { R[cle] = v;
-    if (D.test) { if (voisin) { try { voisin.postMessage({ mjpcRetour: { red: D.red, eleve: D.cle, cle, v } }, "*"); } catch (e) {} } else { try { localStorage.setItem(cleLocale, JSON.stringify(R)); } catch (e) {} } return Promise.resolve(); }
-    return fetch(url(cle), { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(v) }).catch(() => null); };
-  if (D.test) { addEventListener("message", e => { const d = e.data && e.data.mjpcVerdict; if (!d || e.source !== voisin || d.eleve !== D.cle) return; R[d.cle] = d.v; if (d.aRefaire != null) D.aRefaire = d.aRefaire; suite(); });
-    document.body.insertAdjacentHTML("afterbegin", `<div style="background:#fff3d6;border-bottom:1px solid #d4b87a;color:#5a3010;padding:5px 14px;font:14px system-ui">🧪 Mode test${voisin ? " : relié à ta correction. Ce que tu écris ici arrive dans « Les retours des élèves » ; rien ne part au site." : " : rien ne part au site."}</div>`); }
+  const cleLocale = "mjpc_retours_test_" + D.red + "_" + D.cle; let nreq = 0; const attente = {};
+  if (voisin) addEventListener("message", e => { const d = e.data && e.data.mjpcReponse; if (d && e.source === voisin && attente[d.n]) { attente[d.n](d.v); delete attente[d.n]; } });
+  const demander = o => new Promise(res => { const n = ++nreq; attente[n] = res; try { voisin.postMessage({ mjpcDemande: Object.assign({ n, red: D.red, eleve: D.cle }, o) }, "*"); } catch (e) { res(null); } setTimeout(() => { if (attente[n]) { delete attente[n]; res(null); } }, 4000); });
+  const poserA = (o, s, v) => { if (!s.length) return v; o = (o && typeof o === "object") ? Object.assign({}, o) : {}; const r = poserA(o[s[0]], s.slice(1), v); if (r == null) delete o[s[0]]; else o[s[0]] = r; return o; };
+  const T = !D.test ? {
+      lire: () => fetch(url()).then(r => r.ok ? r.json() : null).catch(() => null),
+      ecrire: (cle, v) => fetch(url(cle), { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(v) }).catch(() => null),
+      abonner: f => { if (typeof EventSource !== "function") return; let miroir = null; const es = new EventSource(url());
+        const app = (ev, patch) => { let m; try { m = JSON.parse(ev.data); } catch (e) { return; } if (!m || typeof m.path !== "string") return; const sg = m.path.split("/").filter(Boolean);
+          if (patch) Object.keys(m.data || {}).forEach(k => { miroir = poserA(miroir, sg.concat(k.split("/").filter(Boolean)), m.data[k]); }); else miroir = poserA(miroir, sg, m.data); f(miroir || {}); };
+        es.addEventListener("put", ev => app(ev, false)); es.addEventListener("patch", ev => app(ev, true)); } }
+    : voisin ? { lire: () => demander({ op: "lire" }), ecrire: (cle, v) => demander({ op: "ecrire", cle, v }),
+      abonner: f => addEventListener("message", e => { const d = e.data && e.data.mjpcPousse; if (d && e.source === voisin && d.eleve === D.cle) f(d.v || {}); }) }
+    : { lire: () => Promise.resolve((() => { try { return JSON.parse(localStorage.getItem(cleLocale) || "null"); } catch (e) { return null; } })()),
+      ecrire: (cle, v) => { try { const t = JSON.parse(localStorage.getItem(cleLocale) || "{}"); t[cle] = v; localStorage.setItem(cleLocale, JSON.stringify(t)); } catch (e) {} return Promise.resolve(); },
+      abonner: f => addEventListener("storage", e => { if (e.key === cleLocale) { try { f(JSON.parse(e.newValue || "{}")); } catch (x) {} } }) };
+  const lire = () => T.lire(); const ecrire = (cle, v) => { R[cle] = v; return T.ecrire(cle, v); };
+  // un verdict arrivé pendant que l'élève écrit attend qu'il ait quitté son champ : un redessin ne touche jamais le champ en cours
+  let aRedessiner = false; const enCours = () => { const a = document.activeElement; return !!a && ["rep", "pap", "rq"].includes(a.id); };
+  const recevoir = v => { if (JSON.stringify(v || {}) === JSON.stringify(R)) return; Object.keys(R).forEach(k => delete R[k]); Object.assign(R, v || {}); if (enCours()) { aRedessiner = true; return; } if (!document.querySelector(".trav")) suite(); };
+  document.addEventListener("focusout", () => setTimeout(() => { if (aRedessiner && !enCours()) { aRedessiner = false; suite(); } }, 0));
+  if (D.test) document.body.insertAdjacentHTML("afterbegin", `<div style="background:#fff3d6;border-bottom:1px solid #d4b87a;color:#5a3010;padding:5px 14px;font:14px system-ui">🧪 Mode test${voisin ? " : relié à ta correction. Ce que tu écris ici arrive dans « Les retours des élèves » ; rien ne part au site." : " : rien ne part au site."}</div>`);
   const st = document.createElement("style"); st.textContent = `#statique{display:none}
 .app{display:flex;gap:16px;max-width:1500px;margin:0 auto;padding:12px}.col{flex:1;min-width:0}.pan{width:400px;flex:none;position:sticky;top:10px;align-self:flex-start;max-height:calc(100vh - 20px);overflow:auto}
 .pg{position:relative;width:68%;margin-bottom:12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
@@ -103,7 +119,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
       pan.innerHTML = (D.note != null ? `<div class="bloc"><h3>Ta note</h3><div style="font:700 30px Georgia,serif">${String(D.note).replace(".", ",")} / ${D.total}</div></div>` : "") + D.points.map(p => `<div class="bloc"><h3>${esc(p.critNom)} · ${esc(p.titre)}</h3><div>${esc(p.fait)}</div><div class="m">${String(p.pts).replace(".", ",")} / ${p.poids}</div></div>`).join(""); return; }
     const r = R[s.cle] || {};
     if (s.t === "f") { const f = s.f;
-      pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length}${f.ligne ? " · ligne " + f.ligne : ""}</h3>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' + (D.aRefaire ? '<div>' + esc(D.aRefaire) + '</div>' : "") : ""}<input id="rep" autocomplete="off" value="${esc(r.texte || "")}"><button id="ok">${f.bonne ? "Vérifier" : "Envoyer"}</button><div id="msg"></div></div>`;
+      pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length}${f.ligne ? " · ligne " + f.ligne : ""}</h3>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' + ((r.phrase || D.aRefaire) ? '<div>' + esc(r.phrase || D.aRefaire) + '</div>' : "") : ""}<input id="rep" autocomplete="off" value="${esc(r.texte || "")}"><button id="ok">${f.bonne ? "Vérifier" : "Envoyer"}</button><div id="msg"></div></div>`;
       const go = () => { const v = $("#rep").value.trim(); if (!v) return; const n = x => x.normalize("NFC").replace(/[’ʼ]/g, "'").replace(/\s+/g, " ").trim();
         if (f.bonne) { const ok = n(v) === n(f.bonne); ecrire(f.id, { type: "faute", texte: v, ok, le: new Date().toISOString(), marque: f.id }); if (ok) { suite(); } else { $("#msg").innerHTML = '<span class="ko">✗</span>'; } }
         else { ecrire(f.id, { type: "faute", texte: v, ok: false, le: new Date().toISOString(), marque: f.id, groupe: "0-fautes", titre: "Une faute sans bonne forme", consigne: "" }).then(suite); } };
@@ -113,7 +129,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
       $("#ok").onclick = () => { const v = $("#rq").value.trim(); if (!v) return; ecrire(p.id + ":q", { type: "reponse", texte: v, ok: true, le: new Date().toISOString(), point: p.id }).then(() => { copie(); panneau(); }); }; setTimeout(() => $("#rq").focus(), 0); return; }
     pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length} · ${esc(p.critNom)}</h3><div style="font-weight:700">${esc(p.titre)}</div>
       <div class="ech">${[0, 1, 2, 3].map(n => `<span class="${n === p.niveau ? "on" : ""}" style="background:${D.fond[n]};border-color:${D.bord[n]}">${esc(D.niveaux[n])}<br>${String(p.bareme[n]).replace(".", ",")}</span>`).join("")}</div>
-      <div style="font-size:17px">${esc(p.fait)}</div>${p.tache ? `<div class="bloc" style="margin:10px 0 0;background:#fff"><b>${esc(p.tache)}</b>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' + (D.aRefaire ? '<div>' + esc(D.aRefaire) + '</div>' : "") : ""}<textarea id="pap">${esc(r.texte || "")}</textarea><button id="ok">Envoyer</button></div>` : `<button id="ok">Suivant</button>`}</div>`;
+      <div style="font-size:17px">${esc(p.fait)}</div>${p.tache ? `<div class="bloc" style="margin:10px 0 0;background:#fff"><b>${esc(p.tache)}</b>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' + ((r.phrase || D.aRefaire) ? '<div>' + esc(r.phrase || D.aRefaire) + '</div>' : "") : ""}<textarea id="pap">${esc(r.texte || "")}</textarea><button id="ok">Envoyer</button></div>` : `<button id="ok">Suivant</button>`}</div>`;
     $("#ok").onclick = () => { if (!p.tache) { ecrire(p.id, { type: "vu", texte: "", ok: true, le: new Date().toISOString() }).then(suite); return; }
       const v = $("#pap").value.trim(); if (!v) return; ecrire(p.id, { type: "papillon", texte: v, ok: !p.relire, le: new Date().toISOString(), point: p.id, groupe: p.id + "-" + p.niveau, titre: p.critNom + " · " + p.titre, consigne: p.tache }).then(suite); };
   }
@@ -130,7 +146,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     const pas = () => { if (fait) return; $("#leg").textContent = L[Math.min(i, 3)]; $("#cp").style.transform = "translateZ(" + (i === 0 ? 0 : i === 1 ? 70 : i === 2 ? 46 * (crit.length) - 10 : 46 * (crit.length + 1)) + "px)"; i++; if (i <= 4) setTimeout(i === 4 ? fin : pas, 2600); };
     const fin = () => { if (fait) return; fait = true; T.remove(); suite(); }; $("#passer").onclick = fin; setTimeout(pas, 400);
   }
-  lire().then(v => { Object.assign(R, v || {}); copie(); traversee(); });
+  lire().then(v => { Object.assign(R, v || {}); copie(); traversee(); T.abonner(recevoir); });
 }
 // ── la fenêtre des fichiers : un par élève, à déposer sur École Directe ──
 function scFichiersED() {
@@ -150,9 +166,12 @@ function scTesterEleve(k) {
   SC.fenetres.push(w); scModaleFermer();
   scEleveFichier(k, true).then(f => { w.location.href = URL.createObjectURL(new Blob([f.html], { type: "text/html" })); });
 }
+// l'onglet de test de l'élève : ses lectures et ses écritures passent par celles de la correction (ruLire, ruEcrire), donc par son mode test
 addEventListener("message", e => {
-  const d = e.data && e.data.mjpcRetour; if (!d || SC.fenetres.indexOf(e.source) < 0 || d.red !== RU.id || !state.classe.some(n => eleveId(n) === d.eleve)) return;
-  SC.retours[d.eleve] = SC.retours[d.eleve] || {}; SC.retours[d.eleve][d.cle] = d.v;
-  if (RU.test || window.__FAUX_HUB) ruEcrire(scCheminRetours([d.eleve, d.cle]), d.v, "un retour (test)");   // hors mode test : gardé dans cette page seulement
-  if (SC.ouvert) scRendre();
+  const d = e.data && e.data.mjpcDemande; if (!d || SC.fenetres.indexOf(e.source) < 0 || d.red !== RU.id || !state.classe.some(n => eleveId(n) === d.eleve)) return;
+  const repondre = v => { try { e.source.postMessage({ mjpcReponse: { n: d.n, v } }, "*"); } catch (x) {} };
+  if (d.op === "lire") { ruLire(scCheminRetours([d.eleve])).then(v => { const loc = (SC.retours || {})[d.eleve]; repondre(Object.assign({}, v || {}, RU.test || window.__FAUX_HUB ? {} : loc || {})); }, () => repondre(null)); return; }
+  if (d.op === "ecrire") { SC.retours[d.eleve] = SC.retours[d.eleve] || {}; SC.retours[d.eleve][d.cle] = d.v; const fin = () => { repondre(true); scPousser(d.eleve); if (SC.ouvert) scRendre(); };
+    if (RU.test || window.__FAUX_HUB) ruEcrire(scCheminRetours([d.eleve, d.cle]), d.v, "un retour (test)").then(fin, fin); else fin(); }   // hors mode test : gardé dans cette page seulement, jamais au site
 });
+function scPousser(k) { (SC.fenetres || []).forEach(w => { try { if (!w.closed) w.postMessage({ mjpcPousse: { eleve: k, v: (SC.retours || {})[k] || {} } }, "*"); } catch (e) {} }); }

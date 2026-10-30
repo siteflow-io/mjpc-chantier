@@ -47,3 +47,5 @@ body.sc-ouvert{overflow:hidden}
 .sc-table{border-collapse:collapse;width:100%;margin:8px 0}.sc-table td,.sc-table th{border-bottom:1px solid #e3dacb;padding:5px 6px;text-align:left;font-size:14px}
 .sc-ve{position:fixed;inset:0;z-index:960;background:#2b2520;display:none;flex-direction:column}.sc-ve.show{display:flex}.sc-ve-haut{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;color:#fff}.sc-ve iframe{flex:1;border:0;background:#fff}
 .mq-reglage{position:fixed;left:8px;bottom:8px;z-index:999;font:12px system-ui;background:#fff3d6;border:1px solid #d4b87a;border-radius:7px;padding:3px 8px;cursor:pointer;opacity:.8}
+
+body.sc-ouvert #ruAide{z-index:975}body.sc-ouvert .rp-aide-btn{z-index:976}

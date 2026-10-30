@@ -78,7 +78,9 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie : anciennes marques, réponses, note, total de lignes et nombre de copies conservés", ancienne.lignes === avant.lignes && ancienne.marques === avant.marques && ancienne.rep === avant.rep && JSON.stringify(ancienne.note) === JSON.stringify(avant.note) && ancienne.copies === avant.copies);
   const photoAvant = await pg.evaluate(() => SC.imgs[RC.page].url);
   const pageRetouchee = reprise.page;
-  await pg.click("#rcFermer"); await pg.locator('#scPanneau button[onclick^="scRecadrerDebut("]').first().click();
+  await pg.click("#rcFermer");
+  await pg.locator('.sc-passe[onclick="scAllerPasse(0)"]').click();
+  await pg.locator('#scPanneau button[onclick^="scRecadrerDebut("]').first().click();
   await pg.locator("#scRtAngle").waitFor({ state: "visible" }); await pg.locator("#scRtAngle").focus(); await pg.keyboard.press("ArrowRight");
   await pg.locator('button[onclick="scRtFermer(true)"]').click();
   await pg.waitForFunction(({pid, url}) => SC.imgs[pid] && SC.imgs[pid].url !== url, {pid: pageRetouchee, url: photoAvant});

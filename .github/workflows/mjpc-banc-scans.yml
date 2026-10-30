@@ -16,6 +16,9 @@ jobs:
   scans:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    outputs:
+      verdict: ${{ steps.banc.outputs.verdict }}
+      captures: ${{ steps.archives.outputs.captures }}
     steps:
       - name: Recuperer le code public du commit demande
         shell: bash
@@ -57,6 +60,7 @@ jobs:
           node "$DEPS_DIR/node_modules/playwright/cli.js" install chromium --with-deps --only-shell
 
       - name: Executer tout le banc existant
+        id: banc
         shell: bash
         run: |
           set -euo pipefail
@@ -65,8 +69,18 @@ jobs:
           export NODE_PATH="$DEPS_DIR/node_modules"
           export PDFJS="$DEPS_DIR/node_modules/pdfjs-dist/build/"
           node "$BANC_DIR/banc/banc.mjs" T399-maquette-redaction-scans-v14.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
+          python3 - <<'PY'
+          import os, pathlib
+          rows = (pathlib.Path(os.environ["RUNNER_TEMP"]) / "mjpc-banc.log").read_text().splitlines()
+          verdicts = [r.strip() for r in rows if r.startswith("BANC : ")]
+          if not verdicts:
+              raise SystemExit("Verdict du banc absent")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write("verdict=" + verdicts[-1] + "\n")
+          PY
 
       - name: Conserver le resultat et les captures dans le journal gratuit
+        id: archives
         if: always()
         shell: bash
         run: |
@@ -77,6 +91,8 @@ jobs:
           captures = tmp / "mjpc-banc-captures"
           text = log.read_text(errors="replace") if log.exists() else "Le banc n'a pas atteint son lancement."
           pngs = sorted(captures.glob("*.png")) if captures.exists() else []
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write("captures=" + str(len(pngs)) + "\n")
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
               out.write("## Banc complet des scans\n\n")
               out.write("Sources et dependances epinglees ; aucune modification du code de l'app.\n\n")
@@ -94,3 +110,20 @@ jobs:
                   print("MJPC_CAPTURES_ZIP_DATA " + encoded[pos:pos+12000])
               print("MJPC_CAPTURES_ZIP_END")
           PY
+
+  resultat:
+    name: "${{ needs.scans.outputs.verdict || 'Banc non execute' }} - ${{ needs.scans.outputs.captures || '0' }} captures"
+    needs: scans
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    steps:
+      - name: Afficher le verdict mesure du banc
+        env:
+          VERDICT: ${{ needs.scans.outputs.verdict }}
+          CAPTURES: ${{ needs.scans.outputs.captures }}
+          RESULTAT: ${{ needs.scans.result }}
+        shell: bash
+        run: |
+          printf "%s\n" "$VERDICT" "Captures PNG : $CAPTURES"
+          test "$RESULTAT" = success

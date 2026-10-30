@@ -227,3 +227,45 @@ MEMO
 
 30/10/2026 21:17
 MEMO
+
+## Tour 5 — 30/10/2026 21:31 → 21:38
+
+**Paul :** Relis au sas MANDATS/PROMPT-CONSCIENCE-15-GPT.md, il a changé, et suis-le. »
+
+**GPT — message envoyé avant la lecture du nouveau prompt :**
+
+À jouer : rien · en cours : relecture du prompt C15 · ouvert : 61 ; 53 ; 45 ; 36.
+
+83. Je relis le fichier modifié au sas avant de poursuivre.
+
+**Fait — nouvelle consigne.** Prompt C15 relu intégralement, blob 7a4e14ee6c8170881a80da4d2bb4d59ae1d089a2, mise à jour de C14 à 21:30. Transcript C14 récupéré jusqu'au tour 29 ; nouveaux tours 28 et 29 lus intégralement. Le tour 25 reste l'état de référence ; C14 83 vérifie la révision précédente et ses preuves, C14 84 rappelle la première mission manquante et le registre non actualisé. Paul a dit à C14 « GPT commence son travail maintenant » à 21:29. La numérotation reprend à 86 suivant le nouveau prompt ; les anciens numéros ne sont pas changés, les références ambiguës sont préfixées C14 ou C15. Le message C15 83 ci-dessus a été envoyé avant la lecture de cette consigne. C14 reprend le 31/10 à 22 h en lisant ce transcript ; une seule conscience parle à Paul à la fois.
+
+Les autres lectures demandées ont été reprises dans l'ordre : mandat, passation, exigences, six documents de production, redaction.html et correction_dictee.html. Leurs contenus sont inchangés par rapport aux versions déjà récupérées et examinées, sauf le prompt et les nouveaux tours de C14. Les blobs de code sont toujours 753ebaaec117ffd1ae406a15edab2e0dc955884a (Rédaction 1.2.3-RU) et 3b9c4e98719d011fcd5e142bb2df30b9eadcb54a (Correction de dictée 6.7.0-L18). Aucun nouveau résultat de banc, aucune ouverture du site ni écriture Firebase dans ce tour.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : application du nouveau prompt · ouvert : 61 ; 53 ; 45 ; 36.
+
+86. Nouveau prompt lu en entier, ainsi que les tours 28 et 29 de C14. Je reprends à 86. Je rétablis la première mission de l’exécutant dans le mandat et je mets à jour le registre ⑪.
+
+À tester : rien dans l’app.
+
+30/10/2026 21:34
+MEMO
+
+**Fait — première mission rétablie.** Le mandat complet reçoit la section « Première mission de l'exécutant — auditer avant de coder ». Elle impose la relecture, la confrontation aux transcripts, au registre et au code, les mesures possibles et le signalement des erreurs de la conscience avant le codage. La référence au transcript C14 va désormais jusqu'au dernier tour ; les tours 28 et 29 et le complément suivant le prompt de 21:30 sont indiqués. Seules ces parties documentaires sont changées. Commit du sas c3cd1094a6d420f5c241655cb64e0b7702fa4282, blob 880d9895347ad3f23af045fc7f15c58ce417124f. Fichier relu sur main et comparé intégralement : identique au contenu prévu.
+
+**Fait — registre ⑪ actualisé.** Dans docs/MJPC6-DETTES.md, ajout de 1 738 caractères à la fin de l'entrée ⑪ du premier flux des scans, avant les exigences retrouvées du 29/10. Tout le texte antérieur et tout ce qui suit sont conservés. Le complément inscrit le mandat et le banc corrigés (e9618259), leur vérification par C14, la première mission rétablie (c3cd1094), la reconstruction exacte de la 1.2.3, les trois essais isolés de sortie du banc et la limite explicite : aucun nouveau banc complet 49/0. Il garde ⑪ ouverte, les décisions 61/53/45/36 ouvertes et 51 différée à la bande ; il rappelle que les anciennes propositions où Entrée garde une faute sont historiques. Commit de documentation en production b289add99f12134bfd74ae16ce83bc69816808de, blob 422ba634f126715935df5cfa031211b9556226d9. Le registre entier a été relu sur main et comparé intégralement : identique au contenu prévu. Aucun code de l'app modifié, aucune promotion.
+
+**GPT — réponse :**
+
+À jouer : rien · en cours : rien · ouvert : 61 ; 53 ; 45 ; 36.
+
+87. Nouveau prompt appliqué. La première mission de l’exécutant est rétablie dans le [mandat]([lien dans la conversation]) : relire et signaler les erreurs avant de coder. Le [registre ⑪]([lien dans la conversation]) est à jour. Les deux fichiers sont relus identiques.
+
+88. Tu corriges toujours sur la 1.2.3. Ma proposition reste 61 : recopie, bande des fautes, puis grille en stickers ; les trois défauts de 59 réglés avant la première mise en ligne.
+
+À tester : ouvrir le mandat, lire « Première mission de l’exécutant », puis vérifier l’actualisation C15 de ⑪ au registre.
+
+30/10/2026 21:38
+MEMO

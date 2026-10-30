@@ -289,3 +289,20 @@ MEMO
 
 30/10/2026 15:51
 MEMO
+
+## Tour 11 — 30/10/2026 15:53 → 15:54
+
+**Paul :** comment ne pas viser à la souris et placer pourtant les choses à un endroit voulu?
+
+**Fait.** Relu C13 1485 (tour 413) : la ligne cliquée est trouvée dans l'encre de chaque page ; rejoué sur 3 pages réelles, 279 clics, aucun cadre sur deux lignes ; et 1401 : sur photo, le compte des lignes est faux, il ne sert que sur les copies vierges de l'app. Rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 9 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+9. Pour un endroit précis, il faut bien le désigner : rien ne le devine à ta place. Mais on peut le désigner sans viser ni cliquer. Tu lis avec la souris posée sur la ligne que tu lis, comme un doigt ; quand tu vois une réussite, tu tapes la touche de son sticker, et il se pose sur cette ligne, sous la souris : ni clic, ni glisser. La ligne sous la souris, l'app sait déjà la trouver pour tes fautes : sur 279 clics mesurés sur tes copies, aucun n'a pris deux lignes. Quand l'endroit ne compte pas, la même touche, la souris hors de la copie, pose le sticker sur la lettre entière. Ça te va ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 15:54
+MEMO

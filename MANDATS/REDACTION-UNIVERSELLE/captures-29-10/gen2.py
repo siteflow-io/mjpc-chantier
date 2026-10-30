@@ -1,5 +1,5 @@
 # Captures construites (C13 1188-1193) : le mode général, une case = un fait, une couleur, un point.
-# Données : la copie de Flavie — les oui / non de la capture 1 ; couleurs et points de chaque case = ceux que Paul lui a mis (hub, 29/10, total 19,5).
+# Données : la copie d'Emma — les oui / non de la capture 1 ; couleurs et points de chaque case = ceux que Paul lui a mis (hub, 29/10, total 19,5).
 # Couleurs : la palette de redaction.html (ECHELON_COULEUR, :root).
 import html
 E = html.escape
@@ -10,7 +10,7 @@ def chip(n, w=118):
     return '<span class="chip" style="background:%s;border-color:%s;color:%s;min-width:%dpx">%s</span>' % (b, bo, t, w, l)
 def num(x): return ('%g' % x).replace('.', ',')
 
-# ── les questions (groupe, question, réponse de Flavie : 1 oui, 0 non, None sautée, 'au' au-delà), par point ──
+# ── les questions (groupe, question, réponse d'Emma : 1 oui, 0 non, None sautée, 'au' au-delà), par point ──
 Q = [
  ('codes', 'oeil', [("Y a-t-il un lieu ?", 1), ("Y a-t-il une date ?", 0), ("Le destinataire est-il nommé ?", 1), ("La lettre est-elle signée ?", 1), ("Chaque code est-il à sa place ?", 1)]),
  ('architectures', 'oeil', [("Les numéros sont-ils dans la marge ?", 0)]),
@@ -31,7 +31,7 @@ LIB = {'codes': 'Les codes de la lettre', 'trente_lignes': 'Trente lignes', 'per
        'trois_paragraphes': 'Les trois paragraphes', 'theme_tenu': 'Le thème tenu', 'lectures': 'Les lectures reprises', 'ce_qu_on_tait': "Ce qu'on tait",
        'phrases_complexes': 'Les phrases complexes', 'architectures': 'Les cinq architectures', 'modalisation_litote': 'Modalisation et litote',
        'orthographe': 'Orthographe et grammaire', 'lexique': 'Lexique'}
-# ── la case où tombe Flavie : (point, poids, niveau, le fait, note) — niveau et note = ceux que Paul lui a mis ──
+# ── la case où tombe Emma : (point, poids, niveau, le fait, note) — niveau et note = ceux que Paul lui a mis ──
 CRIT = [
  ("L'organisation et la lettre", 6, [('codes', 2, 1, "Il manque la date.", .5), ('personne_destinataire', 2, 1, "Les temps ne sont pas cohérents.", 1),
                                       ('trente_lignes', 2, 1, "Ta lettre fait 21 lignes sur 30.", .5)]),
@@ -66,7 +66,7 @@ h3 .ok{font-size:11px;letter-spacing:0;text-transform:none;background:#e8f2df;bo
 .tag{background:#fff3d6;border:1px solid #d4b87a;color:#5a3010;border-radius:6px;padding:1px 8px;font-size:12px}'''
 
 def vueC():
-    h = '<div class="top"><b>CHEVALIER Flavie</b><span>Copie 7 sur 28</span><span class="pill">Copie suivante : CF ⏎</span><span class="pill">21 lignes écrites ⏎</span><span class="esp"></span>'
+    h = '<div class="top"><b>CHAUVIN Emma</b><span>Copie 7 sur 28</span><span class="pill">Copie suivante : CF ⏎</span><span class="pill">21 lignes écrites ⏎</span><span class="esp"></span>'
     h += '<span class="pill">Écrire une lettre de la Grande Guerre</span><span class="pill">⏱ le chrono de la copie</span><span class="pill" style="font-size:18px">%s / 40</span></div>' % num(TOT)
     h += '<div class="cols"><div class="col" style="flex:1.2;column-count:2;column-gap:20px">'
     for grp, tit in [('oeil', "D'un coup d'œil"), ('lire', 'En lisant'), ('fin', 'À la fin')]:
@@ -116,7 +116,7 @@ def vueD():
     h += '<div class="cols">'
     for tit, p, qs, cases, note in PTS:
         h += '<div class="col" style="flex:1;display:flex;flex-direction:column"><div class="cr" style="font-size:16px"><span>%s</span><span>sur %d</span></div>' % (E(tit), p)
-        h += '<h3>Les questions — Flavie</h3>'
+        h += '<h3>Les questions — Emma</h3>'
         for txt, r in qs:
             cls, lab = ('saut', 'sautée') if r is None else (('oui', 'oui') if r else ('non', 'NON'))
             h += '<div class="q"><span class="t">%s</span><span class="on %s">%s</span></div>' % (E(txt), cls, lab)
@@ -124,7 +124,7 @@ def vueD():
         for n, fait, nt, quand, fl in cases:
             st = 'border:2px solid #6b1a2a;background:#fff;' if fl else 'border:1px solid #ede4d3;'
             h += '<div style="%sborder-radius:7px;padding:4px 6px;margin:3px 0"><div class="g" style="margin:0">%s<span class="f" style="font-style:normal">%s</span><span class="n">%s</span></div>' % (st, chip(n, 104), E(fait), num(nt))
-            h += '<div class="m" style="margin-left:112px">%s%s</div></div>' % (E(quand) if quand else 'tout est « oui »', ' &nbsp;<b style="color:#6b1a2a">← Flavie</b>' if fl else '')
+            h += '<div class="m" style="margin-left:112px">%s%s</div></div>' % (E(quand) if quand else 'tout est « oui »', ' &nbsp;<b style="color:#6b1a2a">← Emma</b>' if fl else '')
         h += '<div class="m" style="margin-top:auto;padding-top:6px;font-size:13px;color:#5a3010">%s</div></div>' % E(note)
     h += '</div>'
     return h

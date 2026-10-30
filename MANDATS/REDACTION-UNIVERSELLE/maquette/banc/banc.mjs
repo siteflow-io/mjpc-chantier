@@ -37,6 +37,19 @@ await pg.keyboard.press('Enter'); await att(150); await pg.keyboard.press('Enter
 verif('après la langue, la copie suivante arrive', await pg.evaluate(() => SC.ic === 1));
 await tracer(0.25, 0.175, 0.33, 0.185); await pg.keyboard.type('1'); await pg.keyboard.press('Enter'); await att(200);
 verif('le numéro 1 reprend « écris »', await pg.evaluate(() => scFautes(scK())[0].bonne === 'écris'));
+// 1436 : une faute posée sans bonne forme ; un clic sur elle rouvre son champ, la bonne forme s'y tape ; Suppr au bout du champ efface la faute, Ctrl+Z la remet
+await tracer(0.40, 0.175, 0.47, 0.185); await pg.keyboard.press('Enter'); await att(250);
+const sansB = async () => pg.evaluate(() => { const m = Object.values(scCopie(scK()).marques).find(m => m.forme === 'faute' && !m.bonne); return m ? [m.id, (m.x0 + m.x1) / 2, (m.y0 + m.y1) / 2] : null; });
+const fx = await sansB(); const rb = await boite(); await pg.mouse.click(rb.x + fx[1] * rb.width, rb.y + fx[2] * rb.height); await att(300);
+const ouvert = await pg.evaluate(() => (document.activeElement || {}).id === 'scChampIn');
+await pg.keyboard.type('quelques'); await pg.keyboard.press('Enter'); await att(250);
+const rangee = await pg.evaluate(id => (scCopie(scK()).marques[id] || {}).bonne, fx[0]);
+verif('un clic sur une faute sans bonne forme rouvre son champ (' + ouvert + '), la bonne forme s\'y range (« ' + rangee + ' »)', ouvert && rangee === 'quelques');
+await pg.mouse.click(rb.x + fx[1] * rb.width, rb.y + fx[2] * rb.height); await att(300);
+const relu = await pg.evaluate(() => (document.getElementById('scChampIn') || {}).value);
+await pg.keyboard.press('Delete'); await att(250); const effacee = await pg.evaluate(id => !scCopie(scK()).marques[id], fx[0]);
+await pg.keyboard.press('Control+z'); await att(250); const remise = await pg.evaluate(id => (scCopie(scK()).marques[id] || {}).bonne, fx[0]);
+verif('rouverte, elle montre sa bonne forme (« ' + relu + ' ») ; Suppr au bout du champ l\'efface, Ctrl+Z la remet', relu === 'quelques' && effacee && remise === 'quelques');
 await cap('03-langue-banque');
 // passe 2, le thème : Entrée, N, une marque « marge » qui répond oui
 await pg.click('.sc-passe >> nth=1'); await att(400); await pg.click('.sc-vig >> nth=0'); await att(300);

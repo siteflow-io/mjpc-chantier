@@ -9232,3 +9232,35 @@ MEMO
 
 30/10/2026 08:41
 MEMO
+
+## Tour 407 — 30/10/2026 09:35 → 09:41
+
+**Paul :** quand je marque un mot, en recliquant sur le trait ça ne réouvre pas le champ bonne forme. il le faut, afin que je puisse réouvrir une marque où je n'aurais pas mis la bonne forme. par ailleurs, ça marche plutôt pas mal pour l'instant, ça fonctionnera encore mieux je pense avec mes copies précablées.
+
+**Fait.** `scan.js` : au clic sur une marque sans la tirer (ni ses poignées), une faute rouvre son champ « bonne forme » et une remarque son texte (`scChampOuvrir`, curseur au bout) ; dans le champ, Suppr au bout efface la marque (`scEffacer`, Ctrl+Z la remet) ; textes revus : le `<title>` des marques, l'infobulle de la copie, celles des deux champs, la ligne « clic sur une marque » de l'aide. Banc : deux vérifications ajoutées (faute posée sans bonne forme, clic sur elle, champ rouvert, « quelques » rangé ; rouverte, Suppr au bout l'efface, Ctrl+Z la remet) : 33 / 0. Infobulles : 344 éléments, 0 sans. Sur la page réelle de Gabin (`scan-prive/clic-sur-faute-407.mjs`) : champ rouvert, « Cela » rangé. 1421 (1432 acquis) mesuré : `scan-prive/bords.py` sur les trois photos redressées, deux essais (masque du papier : prend toute la photo deux fois sur trois ; bords les plus nets : Gabin page 1 juste aux quatre bords, Gabin page 2 coupe le haut écrit à 16 %, Flavie coupe la droite écrite à 85 %) ; capture privée `scan-prive/t407-bords.png` ; rien mis dans la maquette. 1433 (acquis) : « CHEVALIER Flavie » / « Flavie » remplacés par « CHAUVIN Emma » / « Emma » dans v1 à v5, `captures-29-10/gen.py`, `gen2.py`, `vue-a` à `vue-d.html` ; captures 1 à 4 refaites depuis ces vues (1707 de large, identiques sauf le nom, comparées). v8 md5 1b6f66eb7dba ; `scan-prive/T407-maquette-classe-reelle.html` md5 5407be875c45 (vrais noms, jamais au sas). Docs : `docs/MJPC6-OU-TROUVER-QUOI.md` (v8), `docs/MJPC6-journal.md` (tour 407).
+
+**Claude :** [fichiers : t407-bords.png (privé), T407-maquette-classe-reelle.html (privé), T399-maquette-redaction-scans-v8.html]
+
+À jouer : la v8 (1436, 1437) · en cours : rien · ouvert : 1442 ; 1405 ; 1397 ; 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1436. Fait : un clic sur le trait d'une faute rouvre son champ « bonne forme ». Tu la tapes ou tu la changes, Entrée. Testé sur la page de Gabin : une faute posée sans bonne forme, un clic sur son trait, « Cela », Entrée : rangée. Pareil pour une remarque : le clic rouvre son texte.
+
+1437. Ce que ça change pour Suppr : le champ ouvert prend le clavier. Suppr au bout du champ (plus rien à effacer) efface la faute, comme avant ; Ctrl + Z la remet. L'infobulle du trait, celle du champ et l'aide (?) le disent.
+
+1438. Tes copies précâblées : je ne sais pas encore, je n'ai aucune copie remplie à mesurer. Leurs lignes sont connues d'avance : je propose de m'en servir pour borner la ligne cliquée, au lieu de la chercher dans l'encre. À mesurer sur une de tes copies remplie et scannée.
+
+1439. 1421 (promis en 1432), mesuré sur tes trois photos : non. Le bord trouvé est juste sur la page 1 de Gabin, faux sur les deux autres ; deux fois, le cadre trouvé coupe l'écriture de l'élève (le haut de la page 2 de Gabin, la droite de Flavie). Capture t407-bords (privée). Verdict : on ne le fait pas. ✂ reste à la main sur photo ; tes copies précâblées se recadrent seules.
+
+1440. 1433 fait : le vrai nom de Flavie est remplacé par un nom inventé dans v1 à v5 et dans les fichiers du 29/10, captures comprises (1 à 4 refaites, identiques sauf le nom). L'historique du sas le garde.
+
+1441. Banc : 33 vérifications, 0 défaut (deux nouvelles, pour 1436 et 1437). Infobulles : 344 éléments, 0 sans. Fichiers : T399-maquette-redaction-scans-v8.html (classe inventée, au sas) ; T407-maquette-classe-reelle.html (privé, jamais au sas).
+
+1442. Oui à 1436 à 1441 ?
+
+À tester (avec T407-maquette-classe-reelle.html et tes photos) :
+1. Passe de la langue, sur Gabin : un clic sur un mot, Entrée seule (sans bonne forme). Puis un clic sur son trait : le champ se rouvre ; taper la forme, Entrée (1436).
+2. Un clic sur ce trait encore : la bonne forme est là. Suppr : la faute s'efface. Ctrl + Z : elle revient (1437).
+3. 💬 Remarque : tracer, taper une phrase, Entrée. Un clic sur l'encadré : la phrase revient, à changer (1436).
+
+30/10/2026 09:41
+MEMO

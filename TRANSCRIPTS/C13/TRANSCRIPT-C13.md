@@ -9555,3 +9555,32 @@ MEMO
 30/10/2026 12:51
 MEMO
 
+## Tour 416 — 30/10/2026 12:59 → (en cours)
+
+**Paul :** 1499. en fait, c'est exactement ce qui fait que je dois pouvoir fixer un quota dans les réglages d'une rédaction. L'élève en correction sait qu'il a des mots dont la bonne forme est enregistrée, et que sa correction compte sur ces mots là. Mais pour le hors quota, les mots que je ne fais que souligner, l'élève les corrige quand même mais l'app ne confronte rien vu qu'elle n'a pas la bonne forme. A mettre dans le cadrage de la correction élève (partie à coder). Peut-être que la correction donnera lieu à une note d'autocorrection, comme la dictée. 1500 et 1501: donc en fait les critères de répétition et de mots mal écrits ou mal usités (argot, etc, tout ce qui ne va pas dans le canon attendu de l'écrit), sont deux stickers et le niveau de ces critères se calcule tout seul, avec un seuil de nombre de stickers. tu comprends? mais j'hésite parce que ça ouvre la voie à la correction exhaustive, ce que je ne veux pas. Pour le reste, montre moi une capture des stickers. Dette à résoudre dès maintenant en priorité : pour le trait rouge que je tire, en fait je ne le vois pas se tirer. quand je clique au premier point puis que je tire, le trait rouge n'apparaît pas au fur et à mesure de mon tiré. il n'apparait qu'au relacher. Fais d'abord la dette à résoudre dès maintenant
+
+**Fait (la dette d'abord).** Mesuré : `scPointeur` pose `SC.trace` et appelle `scDessinerPages` à chaque mouvement ; la branche rapide (`garde`, pages déjà affichées) refait le SVG des marques seules, sans `SC.trace` — le tracé n'était dessiné que par le redessin complet, jamais pendant un tracé (défaut présent depuis 1.2.0). Corrigé : `scSvgTrace` (pour une faute, la ligne rouge elle-même, à la hauteur du bas du tracé, comme la marque posée ; pour les autres formes, le cadre en pointillé), appelé dans les deux redessins. Sur une photo (lignes inconnues), `scCaler` ne recale pas : le trait vu en tirant est celui qui reste. Banc : vérification nouvelle au geste (souris enfoncée, 41 puis 83 points mesurés avant de lâcher, capture `02a-trait-en-cours`), 48 / 0 ; infobulles 355 / 0. Maquette v13 (md5 `260472fad5dd`). 1.2.2-RU construite de la base (`PROD=1`), md5 `d46ecf46557d0f7da853ac5ee96e0dc4`, aucun nom d'élève, syntaxe juste, écart avec 1.2.1 limité au tracé ; essai à la fumée au vrai site (écritures interceptées) : 1 écriture (le suivi), aucune erreur. Candidate au sas `LIVRAISONS/REDACTION/redaction-1.2.2-RU-candidat.html`. 1499 consigné au sas (`A-CODER-CORRECTION-ELEVE.md`, dettes 5 et 11). Docs de production : `cb2a9f2`.
+
+**Claude (13:03, en cours de tour) :**
+
+À jouer : promeus 1.2.2-RU (1511) · en cours : la capture des stickers (1514) · ouvert : 1511 ; 1508 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1509. La dette, trouvée et corrigée : quand tu tires, l'app redessine la page à chaque mouvement de ta main, mais ce redessin rapide n'y remettait que les marques déjà posées, jamais le trait en cours. Il n'apparaissait donc qu'au relâcher, et c'était déjà le cas en 1.2.0. Maintenant le trait rouge se dessine sous ta main pendant que tu tires, tel qu'il restera : sur tes photos, ce que tu vois en tirant est exactement ce qui reste au relâcher.
+
+1510. Vérifié : banc 48 vérifications, 0 défaut, dont une nouvelle (pendant le tracé, avant de lâcher, le trait mesure 41 puis 83 points sous la main) ; essayée sur le vrai site sans y écrire, aucune erreur. Rien d'autre ne change.
+
+1511. Promeus 1.2.2-RU ? Point de retour inscrit avant, vérifié en ligne octet pour octet ; puis F5 entre deux copies.
+
+1512. 1499 : consigné au cadrage de la correction par l'élève (dettes 5 et 11) : le quota de bonnes formes dans les réglages de la rédaction ; le hors quota, que l'élève corrige sans que l'app confronte rien ; peut-être une note d'autocorrection, comme la dictée.
+
+1513. 1500, compris : deux stickers, « répétition » et « mot hors de l'écrit attendu » (impropre, argot, familier), et le niveau du Lexique qui se calcule seul sur leur nombre. Contre la correction exhaustive, je propose que le seuil soit une butée : dès que la case la plus basse est atteinte (par exemple au 3e sticker d'un même type), la palette dit « seuil atteint : inutile d'en poser d'autres », et l'élève lit « par exemple » devant ses stickers. Tu marques des exemples, jamais tout.
+
+1514. La capture des stickers arrive ensuite, construite dans l'app (maquette, rien en ligne).
+
+À tester (après la mise en ligne, F5 entre deux copies) :
+1. Appuyer au début d'un mot et tirer : le trait rouge suit ta main pendant que tu tires.
+2. Lâcher : le trait reste exactement là où tu l'as vu.
+
+30/10/2026 13:03
+MEMO
+

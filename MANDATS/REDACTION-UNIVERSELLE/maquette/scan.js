@@ -400,6 +400,10 @@ function scRendre() {
   if (JSON.stringify(cur) !== JSON.stringify(state.scanCurseur || null)) { state.scanCurseur = cur; saveState(); }
 }
 function scPagesAffichees() { if (SC.attrib) { const p = scPagesOrdre()[SC.ia]; return p ? [p] : []; } const k = scK(); return k ? scPagesDe(k) : []; }
+// le tracé en cours, dessiné sous la main à chaque mouvement (Paul, 30/10 12:59 : « le trait rouge n'apparaît pas au fur et à mesure de mon tiré, il n'apparaît qu'au relâcher » — le redessin rapide oubliait le tracé)
+function scSvgTrace(p, Hs, o) { const t = SC.trace; if (!t || t.page !== p.id) return ""; const c = o ? o.coul : "#333", X0 = Math.min(t.x0, t.x1) * 1000, X1 = Math.max(t.x0, t.x1) * 1000;
+  if (t.forme === "faute") { const y = Math.max(t.y0, t.y1) * Hs + 1.5; return `<line class="sc-trace" x1="${X0}" y1="${y}" x2="${Math.max(X1, X0 + 1)}" y2="${y}" stroke="${c}" stroke-width="2.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`; }   // une faute : le trait rouge lui-même, tel qu'il restera
+  return `<rect class="sc-trace" x="${X0}" y="${Math.min(t.y0, t.y1) * Hs}" width="${X1 - X0}" height="${Math.abs(t.y1 - t.y0) * Hs}" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/>`; }
 function scDessinerPages() {
   const Z = document.getElementById("scCopie"); const ps = scPagesAffichees(); const P = scP();
   if (!ps.length) { Z.dataset.sig = ""; Z.innerHTML = Object.keys(SC.pages).length ? `<div class="sc-vide">Aucune copie à afficher.</div>` : `<label class="sc-vide sc-vide-btn" title="Choisir ton paquet scanné, sur ta clé : un PDF, ou des photos (plusieurs à la fois). Il reste dans ce navigateur, jamais au site.">📄 Charger le paquet<small>un PDF ou des photos · il reste dans ce navigateur, jamais au site</small><input type="file" accept="application/pdf,.pdf,image/*" multiple onchange="scCharger(event)" hidden></label>`; return; }
@@ -409,11 +413,11 @@ function scDessinerPages() {
   let html = ""; const champ = SC.champ ? SC.champ.id : null;
   ps.forEach(p => { const im = SC.imgs[p.id]; const Hs = Math.round(1000 * p.h / p.w);
     let svg = ""; if (!SC.attrib) { const ms = scMarquesPage(p.id).filter(scVisible); ms.forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); }
-    if (SC.trace && SC.trace.page === p.id) { const t = SC.trace; svg += `<rect x="${Math.min(t.x0, t.x1) * 1000}" y="${Math.min(t.y0, t.y1) * Hs}" width="${Math.abs(t.x1 - t.x0) * 1000}" height="${Math.abs(t.y1 - t.y0) * Hs}" fill="none" stroke="${o ? o.coul : "#333"}" stroke-width="2" stroke-dasharray="5 4"/>`; }
+    svg += scSvgTrace(p, Hs, o);
     html += `<div class="sc-page${p.blanche ? " blanche" : ""}" data-p="${p.id}" style="width:${Math.round(lw)}px;height:${Math.round(lw * p.h / p.w)}px;cursor:${curseur}">${im ? `<img src="${im.url}" alt="" draggable="false">` : `<div class="sc-absente">Page absente de ce navigateur</div>`}<svg viewBox="0 0 1000 ${Hs}" preserveAspectRatio="none">${svg}</svg></div>`; });
   const sig = ps.map(p => p.id + ":" + p.w + "x" + p.h).join("|") + "|" + (SC.attrib ? 1 : 0);
   const garde = Z.dataset.sig === sig && Z.querySelectorAll(".sc-page").length === ps.length;
-  if (garde) { Z.querySelectorAll(".sc-page").forEach((e, i) => { e.style.cursor = curseur; const p = ps[i]; if (p) { e.style.width = Math.round(lw) + "px"; e.style.height = Math.round(lw * p.h / p.w) + "px"; } }); Z.querySelectorAll(".sc-page > svg:not(.sc-lien)").forEach((s, i) => { const p = ps[i]; if (!p) return; const Hs = Math.round(1000 * p.h / p.w); let svg = ""; scMarquesPage(p.id).filter(scVisible).forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); s.innerHTML = svg; }); scChampPlacer(); return; }
+  if (garde) { Z.querySelectorAll(".sc-page").forEach((e, i) => { e.style.cursor = curseur; const p = ps[i]; if (p) { e.style.width = Math.round(lw) + "px"; e.style.height = Math.round(lw * p.h / p.w) + "px"; } }); Z.querySelectorAll(".sc-page > svg:not(.sc-lien)").forEach((s, i) => { const p = ps[i]; if (!p) return; const Hs = Math.round(1000 * p.h / p.w); let svg = ""; scMarquesPage(p.id).filter(scVisible).forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); svg += scSvgTrace(p, Hs, o); s.innerHTML = svg; }); scChampPlacer(); return; }
   Z.innerHTML = html; Z.dataset.sig = sig;
   if (champ) { const m = scCopie(scK()).marques[champ]; SC.champ = null; if (m) scChampOuvrir(m); }
 }

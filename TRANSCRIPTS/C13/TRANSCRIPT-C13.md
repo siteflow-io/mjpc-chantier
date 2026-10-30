@@ -9741,3 +9741,28 @@ Par ailleurs ce mode de correction fait qu'un élève n'a jamais ses erreurs sig
 30/10/2026 14:24
 MEMO
 
+## Tour 421 — 30/10/2026 14:27 → 14:28
+
+**Paul :** Ok c'est pas mal. Pour 1544 c'est quoi le problème actuellement?
+
+**Fait.** Relu dans `grille2.json` : thème q6 « Tout ce que raconte la lettre existait-il en 14-18 ? » (marque encadré, sens non), case `n:6` niveau 1 → 2 / 6 ; lexique q2 « Y a-t-il des mots de 14-18 (poilu, tranchée, permission…) ? » ; lectures q0-q1 « Un détail vient-il des textes lus en classe… Ce détail se voit-il : un objet, un geste, un lieu ? ». Acquis par l'« Ok » de Paul : 1546 à 1548. Rien codé.
+
+**Claude :**
+
+À jouer : 1555 · en cours : rien · ouvert : 1555 ; 1545 ; 1528 ; 1511 ; 1520 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1551. Le problème : dans ta nouvelle façon, un sticker marque une réussite, à un endroit. Cette question demande l'inverse : que rien, nulle part dans la lettre, ne soit hors de l'époque. Il n'y a rien où poser un sticker (on ne marque pas l'absence d'un téléphone), et un détail juste de 14-18 marqué ne prouve pas que tout le reste l'est.
+
+1552. Et ce n'est pas de la langue, le seul endroit où tu pointes le mal fait : elle ne peut donc pas y passer comme les temps ou le « je » (1542).
+
+1553. Dans ta grille d'aujourd'hui, en plus, elle pèse lourd : un seul anachronisme marqué met le thème à 2 sur 6, il coûte 4 points d'un coup (mesuré dans tes cases au tour 415).
+
+1554. Ma proposition, plus nette que 1549 : tu notes la version positive de ce que tu veux vérifier, « ta lettre fait vivre 14-18 », par un sticker de réussite sur un détail juste de l'époque (un objet, un geste, un lieu). L'anachronisme, s'il y en a un, se montre par une remarque, sans coût. Mais ce fait rejoint deux autres de ta grille, « des mots de 14-18 » (Lexique) et « un détail repris des textes lus » : je les fondrais en un seul, sinon tu marques trois fois la même chose.
+
+1555. Oui à 1554 : un seul fait « la lettre fait vivre 14-18 », marqué en réussite, et l'anachronisme en remarque ? 1546 à 1548 sont acquis, phrases de l'élève comprises.
+
+À tester : rien de neuf ici (cadrage, aucun code) ; 1511 et la maquette T417 restent.
+
+30/10/2026 14:28
+MEMO
+

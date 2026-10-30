@@ -9520,3 +9520,38 @@ MEMO
 30/10/2026 12:36
 MEMO
 
+## Tour 415 — 30/10/2026 12:48 → 12:51
+
+**Paul :** que se passe-t-il pour les erreurs pour lesquelles je ne marque pas la bonne forme? par ailleurs, il me faudrait un ennsemble de stickers pour marquer les répétitions, les mots mal employés, etc. A quels autres stickers penses-tu, et quel impact ont-ils sur la note?
+
+**Fait.** Mesuré dans le code (1.2.1 en ligne = maquette v12) : `scFautes` compte toutes les fautes, avec ou sans bonne forme (`scCase`, calcul `fautes` = fautes / lignes) ; `scBanque` ne garde que les fautes avec bonne forme ; le récapitulatif écrit « sans bonne forme » ; le fichier de l'élève (`scEleveLecture`) n'affiche jamais la bonne forme. Grille `grille2.json` relue entière : le point « Lexique » (2 pts) porte déjà « Les mots disent-ils… » (encadré, non) et « Les mêmes mots reviennent-ils rarement ? » (encadré, non), même marque pour les deux. Règle du moteur (`scCase`) : une marque « non » répond « non » à sa question ; la case la plus basse parmi celles qui s'appliquent l'emporte ; les cases `m:q:min-max` comptent les marques (déjà pour les phrases simples et les temps). Coût d'un seul sticker calculé sur les cases : Lexique n:1 → 1/2, n:0 → 0,5/2 ; complexes m:0:1-2 → 3/5, m:0:3-99 → 1,5/5, n:3 → 1,5/5, n:4 → 5/5 ; personne m:3:1-1 → 1/2, m:3:2-99 → 0,5/2, n:1 → 0,5/2 ; codes n:4 → 2/2 ; thème n:6 → 2/6. Ponctuation et registre familier : dans aucune case. Touches de la dictée (`correction_dictee.html`) : G grammaire, L lexique, M mot manquant, P ponctuation, I illisible, A attention. Rien codé.
+
+**Claude :**
+
+À jouer : tes tests de la 1.2.1 (1495) · en cours : rien · ouvert : 1508 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1499. Une faute sans bonne forme compte dans ta note exactement comme les autres : la note d'orthographe ne regarde que le nombre de fautes rapporté à tes lignes. L'élève ne voit jamais la bonne forme dans son fichier aujourd'hui : pour lui non plus, rien ne change. Deux différences seulement : elle n'entre pas dans les formes numérotées du paquet, et ton récapitulatif l'écrit « sans bonne forme ». Elle ne comptera que le jour où l'élève corrigera lui-même (une faute sans bonne forme ne se vérifie pas : dette déjà au registre). Tu peux en laisser.
+
+1500. Les répétitions et les mots mal employés sont déjà dans ta grille : le point « Lexique » (2 points sur 40), avec « Les mêmes mots reviennent-ils rarement ? » et « Les mots disent-ils ce que l'élève veut dire ? ». Ce qui manque : leur marque est le même encadré pour les deux, l'élève ne sait pas lequel, et il faut changer de point pour la poser.
+
+1501. Ma proposition : un sticker, c'est la marque d'une question de ta grille, avec une étiquette courte posée sur le mot. Chaque sticker appartient à une seule question, donc à un seul point : ta règle « une case, un fait » tient. L'élève clique l'étiquette et lit ce qu'elle veut dire. Dans la passe de la langue, une palette à droite : un clic choisit le sticker, un tracé le pose, le pinceau revient aux fautes, comme ★ aujourd'hui. Pas de lettre au clavier : G et L sont des touches de la dictée.
+
+1502. Les stickers de la langue, et ce que coûte un seul sur la copie : « Rép. » (une répétition), le Lexique passe à 1 sur 2 ; « Mot ? » (un mot qui ne dit pas ce que l'élève veut dire), 0,5 sur 2 ; « 14-18 » en vert (un mot de l'époque), il garde le point.
+
+1503. Ceux de la construction, sur des questions qui ont déjà leur marque : « Simple » (une phrase simple), 1 ou 2 sur la copie donnent 3 sur 5, 3 et plus 1,5 sur 5 (ta grille les compte déjà) ; « Sans principale », 1,5 sur 5 ; « Qui/que ? » (un pronom relatif faux), signalé à l'élève, aucun point retiré.
+
+1504. Ceux de l'organisation et du thème : « Temps » (un temps qui change dans un passage), 1 donne 1 sur 2, 2 et plus 0,5 (déjà compté) ; « Je ? » (le « je » qui se perd), 0,5 sur 2 ; « Code ? » (un code de la lettre mal placé), signalé, aucun point retiré ; « Pas en 14-18 » (un anachronisme), le thème passe à 2 sur 6 : il coûte 4 points d'un coup. En vert, ceux qui montrent ce qui est réussi : « Modalisation », « Litote », « Lu en classe ».
+
+1505. Aujourd'hui, un sticker répond « non » à sa question : le premier fait toute la perte, les suivants ne retirent plus rien, sauf là où ta grille compte déjà (phrases simples, temps). Je propose de compter aussi « Rép. » et « Mot ? » : 1 ou 2 sur la copie, 1 sur 2 ; 3 et plus, 0,5 sur 2. Une répétition seule ne coûte plus autant que six.
+
+1506. Deux choses ne sont dans aucune case de ta grille : la ponctuation et le registre familier (« trop bien », « ouf »). Je ne les invente pas. Je propose « Ponct. » dans « La construction des phrases » et « Fam. » dans le Lexique, chacun avec sa question et sa case.
+
+1507. Les étiquettes (« Rép. », « Mot ? »…) sont lues par l'élève : ce sont mes mots, à valider ou à changer, comme ceux de 1468.
+
+1508. Oui à 1501 (un sticker = la marque d'une question, avec son étiquette ; la palette dans la passe de la langue) ? Oui à 1505 (compter « Rép. » et « Mot ? ») ? Et 1506 : oui, non, ou ailleurs ?
+
+À tester : rien de neuf ici (cadrage, aucun code) ; les cinq tests de la 1.2.1 (1495) restent.
+
+30/10/2026 12:51
+MEMO
+

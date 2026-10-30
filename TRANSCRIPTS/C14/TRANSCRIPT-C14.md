@@ -656,3 +656,20 @@ Pour GPT, la ligne à mettre à la fin du prompt, à la place des deux que je t'
 
 30/10/2026 19:23
 MEMO
+
+## Tour 26 — 30/10/2026 19:43 → 30/10/2026 19:44
+
+**Paul :** Non le prompt GPT doit être mis à jour sur github, je ne fais jamais de collage de bouts de prompts
+
+**Fait.** Prompt complet écrit au sas : `MANDATS/PROMPT-CONSCIENCE-15-GPT.md` ; il remplace le prompt du tour 22 et les lignes de correction des tours 23 à 25 ; sans adresse de dépôt (elles sont dans la phrase à coller, dans la conversation) ; la règle de Paul y est écrite.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 61 ; 53 ; 45 ; 36.
+
+62. C'est fait : le prompt complet est au sas, à jour, et il remplace tout ce que je t'ai donné avant : [lien dans la conversation]. Demain, tu ne colles à GPT que cette phrase : [phrase dans la conversation, avec les adresses des dépôts]. Ta règle (jamais de morceaux de prompt, une phrase qui renvoie à un fichier complet) est écrite dans le prompt, pour lui aussi.
+
+À tester : demain, colle la phrase à GPT et vérifie qu'il te répond par l'état, ce qui est ouvert et sa première proposition, au format habituel.
+
+30/10/2026 19:44
+MEMO

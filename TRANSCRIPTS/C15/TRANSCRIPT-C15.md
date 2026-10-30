@@ -401,3 +401,30 @@ La suite reste donc le cadrage, autorisé par le prompt quand le banc ne peut pa
 
 30/10/2026 22:14
 MEMO
+
+## Tour 9 — 30/10/2026 22:15
+
+**Paul :** Pourquoi le banc est bloqué ?
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification de la cause · ouvert : 53 ; 45 ; 36.
+
+98. Je reprends le résultat exact du lancement et du téléchargement pour te donner la cause constatée.
+
+À tester : rien dans l’app.
+
+MEMO
+
+**Fait.** Transcript actuel relu, blob 6e26675f7137bbe96d4d12567cc18cb170ee562e ; réponse fondée sur les sorties de commande déjà mesurées aux tours 7 et 8, sans nouvel essai. La première mesure de l'horloge donne 30/10/2026 22:15, heure de Paris. Le message intermédiaire avait omis son horodatage ; il reste inchangé. Aucun nouveau résultat de banc, aucun code ni document de production modifié. La cause amont de la page « Site Unavailable » n'est pas établie : ne pas l'attribuer à une panne générale ou à une restriction précise sans preuve.
+
+**GPT — réponse :**
+
+À jouer : rien · en cours : banc bloqué · ouvert : 53 ; 45 ; 36.
+
+99. Il manque **Chromium, le navigateur que le banc doit piloter**. Son installation échoue parce que le téléchargement renvoie une page « Site Unavailable » de **195 octets**, à la place du programme attendu. Le banc s’arrête donc avant son premier test. Ces résultats sont consignés dans le [transcript, tours 7 et 8]([lien dans la conversation]). **Je ne sais pas pourquoi ce téléchargement est indisponible depuis cet atelier.**
+
+À tester : rien dans l’app.
+
+30/10/2026 22:15
+MEMO

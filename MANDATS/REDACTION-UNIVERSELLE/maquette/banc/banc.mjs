@@ -71,6 +71,12 @@ await pg.click('#scVueEleve .sc-btn'); await att(800); await pg.click('.sc-passe
 const nr = await pg.evaluate(() => scRetoursListe().length); await pg.keyboard.press('n'); await att(300);
 const et = await pg.evaluate(() => Object.values(SC.retours).reduce((a, R) => a.concat(Object.values(R)), []).filter(r => r.etat === 'arefaire').length);
 verif('les retours arrivent chez Paul (' + nr + ') ; N : à refaire', nr >= 1 && et === 1);
+// les copies vierges de l'appli : scannées de travers, remises droites, lignes connues
+await pg.click('.sc-passe >> nth=0'); await att(200);
+await pg.setInputFiles('#scanEcran input[type=file]', path.join(DIR, 'paquet-reperes.pdf')); await pg.waitForFunction(() => Object.keys(SC.pages).length >= 10, null, { timeout: 60000 }); await att(600);
+const rp = await pg.evaluate(() => scPagesOrdre().slice(-2).map(p => (p.lignes.reperes ? 'repères' : 'sans') + ':' + p.lignes.n + ':' + p.w + 'x' + p.h));
+verif('les copies à repères se remettent droites, lignes connues : ' + rp.join(' · '), rp.length === 2 && rp.every(x => x.startsWith('repères')) && /:24:/.test(rp[0]) && /:17:/.test(rp[1]));
+await cap('11-copie-a-reperes');
 // sans interactivité (un téléphone qui n'exécute pas la pièce jointe) : la copie et les marques se voient
 const p2 = await (await b.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 800 } })).newPage(); await p2.goto('file://' + f); await att(500);
 verif('sans interactivité, la copie et ses marques se voient (' + await p2.locator('.mk').count() + ' marques)', await p2.locator('#statique img').count() >= 1 && await p2.locator('.mk').count() >= 2);

@@ -93,3 +93,5 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .sc-rc-grille i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}.sc-rc-crit td{background:#f3ebdd;font-weight:700;color:#6b1a2a!important}.sc-rc-pas td{color:#a49886}.sc-rc-autre{font-size:13px;color:#7a6e5f;margin:2px 0 0 18px}
 .sc-rc-fautes{display:flex;flex-wrap:wrap;gap:6px 14px}.sc-rc-fautes b{display:inline-block;min-width:20px;height:20px;border-radius:10px;background:#c54040;color:#fff;text-align:center;font-size:12px;line-height:20px;margin-right:4px}
 .sc-rc-pied{display:flex;justify-content:flex-end;gap:8px;padding:10px 22px;border-top:1px solid #eadfcd}
+.sc-lig-alerte{color:#c54040;font-weight:700;margin:6px 0 0}.sc-alerte-copie{position:fixed;left:50%;top:120px;transform:translateX(-50%);z-index:958;background:#c54040;color:#fff;font:600 17px system-ui;padding:12px 20px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);max-width:70vw;text-align:center}.sc-alerte-copie[hidden]{display:none}
+.sc-coche{display:block;margin:6px 0 10px;color:#9a8f80}.sc-coche input{margin-right:6px}

@@ -11,6 +11,15 @@ const SC = { grille: null, passes: [], passe: 0, copies: [], ic: 0, ip: 0, iq: 0
 const SC_COUL = { 0: "#c54040", 1: "#c47820", 2: "#5a8a32", 3: "#3a6e1c" };
 const SC_FOND = { 0: "#f4b0b0", 1: "#f5c98a", 2: "#a8d088", 3: "#7eb55c" };
 const SC_CRIT = { langue: "#c54040", theme: "#2f5d8a", construction: "#1f7a72", organisation: "#7a3f8f", etoile: "#c08a4a" };
+// ════════════════════════════════════════════════════════════════════════════════════════════════
+// SECTION ENTIÈRE À CODER (Paul, 30/10 10:57) : LA CORRECTION PAR L'ÉLÈVE — une seconde étape, ouverte par une coche,
+// lancée en classe comme la correction de dictée. Tant qu'elle n'est pas codée : la coche est grisée et décochée (config/correctionEleve
+// n'est jamais écrit), l'élève reçoit sa copie corrigée en lecture seule (eleve.js : scEleveLecture), et la passe « Les retours des élèves »
+// n'apparaît pas. Le code de l'ancien parcours (scEleveApp, la passe des retours, scVerdict, le transport des retours) reste en place,
+// derrière ce drapeau, pour être repris : rien ne l'appelle quand le drapeau est faux. Dettes : docs/MJPC6-DETTES.md (production).
+const SC_CORRECTION_ELEVE_CODEE = false;
+function scCorrectionEleve() { return SC_CORRECTION_ELEVE_CODEE && !!SC.correctionEleve; }
+// ════════════════════════════════════════════════════════════════════════════════════════════════
 const SC_PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
 function scImg(blob, w, h) { const url = URL.createObjectURL(blob); const el = new Image(); el.src = url; return { url, w, h, blob, el }; }
 function scId(p) { return p + "_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8); }
@@ -146,7 +155,11 @@ function scLignesCopie(k) { const s = scCopie(k); if (s.lignes != null) return s
 // 1451 : les lignes écrites, demandées au début de chaque copie dans la passe de la langue ; tant qu'elles manquent, la copie ne se quitte pas
 function scLignesManquent(k) { return !!k && scPagesDe(k).length > 0 && !scLignesCopie(k); }
 function scLignesBloque() { const P = scP(), k = scK(); return !SC.attrib && P && P.id === "langue" && scLignesManquent(k); }
-function scLignesDemander() { toast("D'abord les lignes écrites de cette copie : tape le nombre en haut à droite, puis Entrée. La longueur et le compte des fautes en dépendent."); scLignesFocus(true); }
+function scLignesDemander() {
+  const a = document.getElementById("scLigAlerte"); if (a) a.hidden = false;
+  let b = document.getElementById("scAlerte"); if (!b) { b = document.createElement("div"); b.id = "scAlerte"; b.className = "sc-alerte-copie"; document.getElementById("scanEcran").appendChild(b); }
+  b.textContent = "⚠ D'abord les lignes écrites de cette copie : tape le nombre à droite, puis Entrée. Sans lui, la copie ne se quitte pas."; b.hidden = false; const Zr = document.getElementById("scCopie").getBoundingClientRect(); b.style.left = (Zr.left + Zr.width / 2) + "px"; b.style.top = (Zr.top + 18) + "px"; b.style.maxWidth = Math.max(240, Zr.width - 60) + "px";   // au-dessus de la copie, jamais sur le panneau clearTimeout(SC.alerteT); SC.alerteT = setTimeout(() => { b.hidden = true; }, 4500);
+  scLignesFocus(true); }
 function scLignesFocus(flash) { setTimeout(() => { const e = document.getElementById("scLig"); if (!e) return; e.focus({ preventScroll: false }); e.select(); if (flash) { const b = e.closest(".sc-bloc"); if (b) { b.classList.remove("sc-flash"); void b.offsetWidth; b.classList.add("sc-flash"); } } }, 30); }
 function scLignesAccueil() { if (scLignesBloque()) scLignesFocus(false); }
 function scCase(pt, k) {
@@ -168,7 +181,8 @@ function scCase(pt, k) {
   const lab = pt.questions.filter(q => non(q.id) && q.etiquette).map(q => q.etiquette);
   const liste = lab.length > 1 ? lab.slice(0, -1).join(", ") + " et " + lab[lab.length - 1] : (lab[0] || "");
   const txt = c.fait.replace("{…}", liste).replace("{n}", liste).replace(/\{[^}]*\|[^}]*\}/, liste);
-  const autres = ms.filter(x => x !== c && x.si !== "tout" && x.niveau < 3).sort((a, b) => a.niveau - b.niveau).map(x => ({ c: x, txt: x.fait.replace("{…}", liste).replace("{n}", liste).replace(/\{[^}]*\|[^}]*\}/, liste), tache: (x.tache || "").replace("{n}", liste) }));
+  const qDe = si => { const m = /^(?:[no]|m):(\d+)/.exec(si || ""); return m ? +m[1] : null; }, qc = qDe(c.si);
+  const autres = ms.filter(x => x !== c && x.si !== "tout" && x.niveau < 3 && (qc == null || qDe(x.si) !== qc)).sort((a, b) => a.niveau - b.niveau).map(x => ({ c: x, txt: x.fait.replace("{…}", liste).replace("{n}", liste).replace(/\{[^}]*\|[^}]*\}/, liste), tache: (x.tache || "").replace("{n}", liste) }));
   return { c, txt, tache: (c.tache || "").replace("{n}", liste), complet, autres };
 }
 function scPasseDe(pt) { const p = SC.passes.find(p => p.pts.indexOf(pt) >= 0); return p ? p.id : ""; }
@@ -199,7 +213,7 @@ function scSuiteCopie() {
 }
 function scReculer() { const L = scEtapes(scK()); const i = L.findIndex(e => e.ip === SC.ip && e.iq === SC.iq); if (i > 0) { SC.ip = L[i - 1].ip; SC.iq = L[i - 1].iq; scRendre(); } }
 function scAllerCopie(i) { if (i !== SC.ic && scLignesBloque()) { scLignesDemander(); return; } scChrono(); SC.ic = Math.max(0, Math.min(SC.copies.length - 1, i)); const L = scEtapes(scK() || ""); SC.ip = L.length ? L[0].ip : 0; SC.iq = L.length ? L[0].iq : null; SC.sel = null; SC.outil = null; scChampFermer(); scRendre(); scLignesAccueil(); }
-function scAllerPasse(i) { scChrono(); SC.passe = i; SC.ir = 0; scAllerCopie(SC.ic); }
+function scAllerPasse(i) { if (SC.passes[i] && SC.passes[i].id === "retours" && !scCorrectionEleve()) return; scChrono(); SC.passe = i; SC.ir = 0; scAllerCopie(SC.ic); }
 // le chrono : le temps passé sur chaque copie, passe par passe (une minute sans geste ne compte pas)
 function scToucher() { const t = Date.now(); if (SC.actif && SC.ouvert && scK() && scP()) { const s = scCopie(scK()); s.chrono[scP().id] = (s.chrono[scP().id] || 0) + Math.min(60000, t - SC.actif); } SC.actif = t; }
 function scChrono() { scToucher(); }
@@ -239,7 +253,7 @@ function scSvgMarque(m, p, sel) {
   const W = 1000, H = Math.round(1000 * p.h / p.w); const X = x => (x * W).toFixed(1), Y = y => (y * H).toFixed(1);
   const coul = m.forme === "faute" ? SC_CRIT.langue : m.forme === "etoile" ? SC_CRIT.etoile : (SC_CRIT[m.passe] || "#6b1a2a");
   const fin = 'vector-effect="non-scaling-stroke"';
-  const dit = m.forme === "faute" ? "Faute n° " + (m.num || "") + (m.bonne ? " · bonne forme : « " + m.bonne + " »" : " · sans bonne forme : l'élève te l'enverra à relire") : m.forme === "etoile" ? "La phrase qui t'a touché" : m.forme === "remarque" ? "Ta remarque : « " + (m.texte || "") + " »" : (() => { const pt = scTousPoints().find(x => x.id === m.point); const q = pt && m.q != null ? scQ(pt, m.q) : null; return (pt ? pt.titre : "") + (q ? " · " + q.texte : "") + (m.sens === "non" ? " — répond « non »" : m.sens === "oui" ? " — répond « oui »" : ""); })();
+  const dit = m.forme === "faute" ? "Faute n° " + (m.num || "") + (m.bonne ? " · bonne forme : « " + m.bonne + " »" : " · sans bonne forme (à taper : un clic sur le trait rouvre son champ)") : m.forme === "etoile" ? "La phrase qui t'a touché" : m.forme === "remarque" ? "Ta remarque : « " + (m.texte || "") + " »" : (() => { const pt = scTousPoints().find(x => x.id === m.point); const q = pt && m.q != null ? scQ(pt, m.q) : null; return (pt ? pt.titre : "") + (q ? " · " + q.texte : "") + (m.sens === "non" ? " — répond « non »" : m.sens === "oui" ? " — répond « oui »" : ""); })();
   let s = `<g class="sc-m${sel ? " sel" : ""}" data-id="${m.id}"><title>${escapeHtml(dit)} — clic : ${m.forme === "faute" ? "rouvrir sa bonne forme, pour la taper ou la changer" : m.forme === "remarque" ? "rouvrir ta remarque" : "la choisir"} ; la tirer la déplace, ses poignées la redimensionnent ; Suppr : l'effacer</title>`;
   if (m.forme === "faute") s += `<rect x="${X(m.x0)}" y="${Y(m.y0)}" width="${X(m.x1 - m.x0)}" height="${Y(m.y1 - m.y0)}" fill="transparent"/><line x1="${X(m.x0)}" y1="${(+Y(m.y1) + 1.5).toFixed(1)}" x2="${X(m.x1)}" y2="${(+Y(m.y1) + 1.5).toFixed(1)}" stroke="${coul}" stroke-width="2.5" stroke-linecap="round" ${fin}/>`;
   else if (m.forme === "encadre" || m.forme === "remarque") { const dx = 0.004, dy = 0.003; s += `<rect x="${X(m.x0 - dx)}" y="${Y(m.y0 - dy)}" width="${X(m.x1 - m.x0 + 2 * dx)}" height="${Y(m.y1 - m.y0 + 2 * dy)}" rx="4" fill="none" stroke="${m.forme === "remarque" ? "#6b1a2a" : coul}" stroke-width="2" ${m.forme === "remarque" ? 'stroke-dasharray="6 3"' : ""} ${fin}/>`; }
@@ -290,7 +304,7 @@ function scChampOuvrir(m) {
   const d = document.createElement("div"); d.className = "sc-champ"; d.style.left = (m.x0 * 100) + "%"; d.style.top = (m.y1 * 100 + 1) + "%";
   const rq = m.forme === "remarque"; if (rq) { d.style.borderColor = "#6b1a2a"; }
   d.innerHTML = rq ? `<span class="sc-tire" title="Tire ici pour déplacer ce champ, s'il cache un mot que tu veux lire ; la place choisie reste pour les champs suivants.">⠿ ta remarque :</span><input id="scChampIn" autocomplete="off" style="width:320px" title="Ta remarque, telle que l'élève la lira à cet endroit de sa copie, puis Entrée. Échap : la remarque reste comme elle était. Suppr, le champ fini : la remarque s'efface.">`
-    : `<span class="sc-tire" title="Tire ici pour déplacer ce champ, s'il cache un mot que tu veux lire ; la place choisie reste pour les champs suivants.">⠿ bonne forme :</span><input id="scChampIn" autocomplete="off" spellcheck="false" title="Tape la bonne forme, ou son numéro dans les formes déjà vues, puis Entrée. En tapant, les formes du paquet qui commencent pareil s'affichent : Tab prend la première. Entrée seule : la faute reste, sans bonne forme (l'élève te l'enverra à relire). Suppr, le champ fini : la faute s'efface."><div class="sc-sugg"></div>`;
+    : `<span class="sc-tire" title="Tire ici pour déplacer ce champ, s'il cache un mot que tu veux lire ; la place choisie reste pour les champs suivants.">⠿ bonne forme :</span><input id="scChampIn" autocomplete="off" spellcheck="false" title="Tape la bonne forme, ou son numéro dans les formes déjà vues, puis Entrée. En tapant, les formes du paquet qui commencent pareil s'affichent : Tab prend la première. Entrée seule : la faute reste, sans bonne forme (un clic sur son trait rouvre ce champ). Suppr, le champ fini : la faute s'efface."><div class="sc-sugg"></div>`;
   pg.appendChild(d); const lien = document.createElementNS("http://www.w3.org/2000/svg", "svg"); lien.setAttribute("class", "sc-lien"); lien.innerHTML = '<line stroke="#c54040" stroke-width="2" stroke-dasharray="4 3"/><circle r="4" fill="#c54040"/>'; if (rq) lien.querySelectorAll("line,circle").forEach(e => { e.setAttribute("stroke", "#6b1a2a"); e.setAttribute("fill", "#6b1a2a"); }); pg.appendChild(lien);
   SC.champ = { id: m.id, el: d, rq, lien, m }; scChampPlacer();
   d.addEventListener("pointerdown", e => { e.stopPropagation(); if (!e.target.closest(".sc-tire")) return; e.preventDefault(); const x0 = e.clientX, y0 = e.clientY, L0 = d.offsetLeft, T0 = d.offsetTop;
@@ -354,7 +368,8 @@ function scRendre() {
   if (SC.passe >= SC.passes.length) SC.passe = 0;
   const L = scEtapes(scK() || ""); if (scK() && !L.some(e => e.ip === SC.ip && e.iq === SC.iq) && L.length) { SC.ip = L[0].ip; SC.iq = L[0].iq; }
   const P = scP(), k = scK();
-  document.getElementById("scPasses").innerHTML = SC.passes.map((p, i) => { const fait = p.id === "retours" ? scRetoursListe().filter(r => r.etat).length + " / " + scRetoursListe().length : SC.copies.filter(c => (scCopie(c).vu || {})[p.id]).length + " / " + SC.copies.length;
+  if (scP() && scP().id === "retours" && !scCorrectionEleve()) SC.passe = 0;
+  document.getElementById("scPasses").innerHTML = SC.passes.map((p, i) => { if (p.id === "retours" && !scCorrectionEleve()) return ""; const fait = p.id === "retours" ? scRetoursListe().filter(r => r.etat).length + " / " + scRetoursListe().length : SC.copies.filter(c => (scCopie(c).vu || {})[p.id]).length + " / " + SC.copies.length;
     return `<button class="sc-passe${i === SC.passe ? " on" : ""}" style="--c:${SC_CRIT[p.crit] || "#6b1a2a"}" onclick="scAllerPasse(${i})" title="${p.id === "retours" ? "Relire ce que les élèves t'ont renvoyé, case par case : Entrée, c'est bon ; N, à refaire." : "Passer toutes les copies sur « " + escapeAttr(p.nom) + " » : un critère à la fois, les copies défilent."}"><i>${i + 1}</i>${escapeHtml(p.nom)}<b>${fait}</b></button>`; }).join("");
   const ch = k && P ? (scCopie(k).chrono[P.id] || 0) : 0; document.getElementById("scChrono").textContent = "⏱ " + Math.floor(ch / 60000) + ":" + String(Math.floor(ch / 1000) % 60).padStart(2, "0") + " sur cette copie";
   const man = scManquantes(); document.getElementById("scManque").innerHTML = man.length ? `⚠ ${man.length} page${man.length > 1 ? "s" : ""} de ce paquet ne ${man.length > 1 ? "sont" : "est"} pas dans ce navigateur : remets ton paquet (clé USB) avec « Charger le paquet ». Les marques reviendront d'elles-mêmes.` : "";
@@ -388,6 +403,7 @@ function scPanneau() {
   if (P.id === "retours") { scPanneauRetours(Z); return; }
   if (!k) { Z.innerHTML = `<div class="sc-bloc"><h3>Le paquet</h3><p>Charge ton paquet, puis donne à chaque page les initiales de son élève.</p></div>`; return; }
   const s = scCopie(k); const pt = scPt(); let h = "";
+  if (P.id === "langue" && scLignesManquent(k)) h += `<div class="sc-bloc sc-lig-manque"><h3>D'abord : les lignes écrites</h3><p>Compte les lignes écrites de cette copie, tape le nombre, Entrée. Tant qu'il manque, la copie ne se quitte pas : la longueur et le compte des fautes en dépendent.</p>${scLignesChamp(k, true)}<p class="sc-lig-alerte" id="scLigAlerte" hidden>⚠ Il manque le nombre de lignes écrites : tape-le ici, puis Entrée.</p></div>`;
   h += `<div class="sc-bloc"><h3>Passe ${SC.passe + 1} · ${escapeHtml(P.nom)} · copie ${SC.ic + 1} sur ${SC.copies.length}</h3><div class="sc-nom">${escapeHtml(nomEleveDe(k) || k)}</div>`;
   h += `<div class="sc-outils"><button class="sc-btn${SC.outil === "remarque" ? " on" : ""}" onclick="SC.outil=SC.outil==='remarque'?null:'remarque';scRendre()" title="Le pinceau de ta remarque : un tracé (un cadre en pointillé), puis tu tapes ta phrase ; l'élève la lit à cet endroit de sa copie. Un seul tracé, puis le pinceau revient à la question.">💬 Remarque</button>${P.id !== "langue" ? `<button class="sc-btn${SC.outil === "faute" ? " on" : ""}" onclick="SC.outil=SC.outil==='faute'?null:'faute';scRendre()" title="Une faute vue pendant cette passe : un tracé souligné en rouge, puis sa bonne forme ; elle compte avec celles de la langue. Un seul tracé, puis le pinceau revient à la question.">Faute</button>` : ""}<button class="sc-btn${SC.toutVoir ? " on" : ""}" onclick="SC.toutVoir=!SC.toutVoir;scRendre()" title="Voir aussi les marques des autres passes (les fautes, les autres critères). Clique encore pour ne voir que celles de cette passe.">👁 Toutes les marques</button><button class="sc-btn" onclick="scReplier(true)" title="Replier ce panneau : la copie prend toute la largeur ; la question en cours reste dans une bande en haut. Entrée, N et les flèches marchent pareil.">⇥ Replier</button></div>`;
   h += `<div class="sc-pts">${P.pts.map((p, i) => { const r = scCase(p, k); return `<span class="${i === SC.ip ? "on" : ""}" style="${r && r.complet ? "border-color:" + SC_COUL[r.c.niveau] : ""}">${i + 1} · ${escapeHtml(p.titre)}${r && r.complet ? " ✓" : ""}</span>`; }).join("")}</div></div>`;
@@ -395,7 +411,6 @@ function scPanneau() {
     const rep = s.rep[pt.id] || {};
     if (pt.calcul === "fautes") {
       const F = scFautes(k), n = scLignesCopie(k);
-      if (scLignesManquent(k)) h += `<div class="sc-bloc sc-lig-manque"><h3>D'abord : les lignes écrites</h3><p>Compte les lignes écrites de cette copie, tape le nombre, Entrée. Tant qu'il manque, la copie ne se quitte pas : la longueur et le compte des fautes en dépendent.</p>${scLignesChamp(k, true)}</div>`;
       h += `<div class="sc-bloc"><h3>Les fautes · toute la copie</h3><p>Tu lis la copie en entier, une seule fois. Souligne chaque faute au pinceau (appuie, glisse, lâche), tape la bonne forme ou son numéro, Entrée. Entrée sur la copie : tu as fini les fautes.</p>
         <p class="sc-m">${F.length} faute${F.length > 1 ? "s" : ""} · ${n ? n + " lignes écrites" : "lignes écrites à taper"}</p>
         ${scLignesManquent(k) ? "" : scLignesChamp(k, false)}
@@ -409,7 +424,7 @@ function scPanneau() {
         const sel = q.cle === SC.iq, lien = scCaseLiee(pt, q), forme = q.marque ? (q.marque.forme === "surligne" ? "il surligne une citation" : q.marque.forme === "marge" ? "il trace un trait dans la marge (un paragraphe)" : "il encadre un mot") : "";
         return `<div class="sc-q${sel ? " on" : ""}" onclick="SC.iq='${q.cle}';scRendre()" title="${sel ? "La question en cours : réponds Oui (Entrée) ou Non (N)." : "Aller à cette question : sa réponse se change, et la case qu'elle décide s'entoure en bas."}${q.marque ? " Le pinceau de cette question : " + forme + (q.marque.sens === "non" ? " ; une marque posée répond « non »." : q.marque.sens === "oui" ? " ; une marque posée répond « oui »." : ".") : " Pas de pinceau pour cette question."}"><span>${escapeHtml(q.texte)}</span><b class="${v === "n" ? "non" : v === "o" ? "oui" : ""}">${v === "n" ? "NON" : v === "o" ? "oui" : "à répondre"}${nb ? " · " + nb + " marque" + (nb > 1 ? "s" : "") : ""}</b><em>${escapeHtml(q.moment)} · ${q.marque ? "pinceau : " + (q.marque.forme === "surligne" ? "surligné" : q.marque.forme === "marge" ? "trait dans la marge" : "encadré") : "sans pinceau"}</em>${sel ? `${lien ? `<div class="sc-q-si">${lien.dit} : « ${escapeHtml(lien.c.fait)} » <b>${pt.bareme[lien.c.niveau]}</b></div>` : ""}<div class="sc-q-rep"><button class="sc-btn${v === "o" ? " on" : ""}" onclick="event.stopPropagation();scRepondre('o')" title="Oui : la réponse est rangée, et la question suivante vient. Même chose que la touche Entrée.">Oui · Entrée</button><button class="sc-btn${v === "n" ? " on" : ""}" onclick="event.stopPropagation();scRepondre('n')" title="Non : la réponse est rangée${lien && lien.dit === "Si non" ? ", la copie tombe dans la case entourée en bas" : ""}, et la question suivante vient. Même chose que la touche N.">Non · N</button></div>` : ""}</div>`; }).join("")}</div>`;
       const r = scCase(pt, k);
-      h += `<div class="sc-bloc"><h3>La case où tombe cette copie</h3>${pt.cases.map(c => { const li = SC.iq && scQ(pt, SC.iq) ? scCaseLiee(pt, scQ(pt, SC.iq)) : null; return `<div class="sc-case${r && r.c === c ? " on" : ""}${li && li.c === c ? " si" : ""}" title="${li && li.c === c ? li.dit + " à la question en cours, la copie tombe ici. " : ""}${c.tache ? "À reprendre : " + escapeAttr(c.tache) + (c.relire ? " — tu la relis (passe des retours)." : " — l'élève la valide seul.") : "Rien à reprendre."}"><i style="background:${SC_COUL[c.niveau]}"></i><span>${escapeHtml(r && r.c === c ? r.txt : c.fait)}${c.tache ? (c.relire ? " <em class=\"sc-m\">✎ relue</em>" : " <em class=\"sc-m\">✓ seul</em>") : ""}</span><b>${pt.bareme[c.niveau]}</b></div>`; }).join("")}<p class="sc-m">${r ? (r.complet ? "Calculée de tes réponses : tu ne choisis jamais la case." : "Provisoire : il reste des questions.") : "Réponds aux questions."}</p></div>`;
+      h += `<div class="sc-bloc"><h3>La case où tombe cette copie</h3>${pt.cases.map(c => { const li = SC.iq && scQ(pt, SC.iq) ? scCaseLiee(pt, scQ(pt, SC.iq)) : null; return `<div class="sc-case${r && r.c === c ? " on" : ""}${li && li.c === c ? " si" : ""}" title="${li && li.c === c ? li.dit + " à la question en cours, la copie tombe ici. " : ""}${c.tache ? "À reprendre : " + escapeAttr(c.tache) + (scCorrectionEleve() ? (c.relire ? " — tu la relis (passe des retours)." : " — l'élève la valide seul.") : " — l'élève la lit dans son fichier.") : "Rien à reprendre."}"><i style="background:${SC_COUL[c.niveau]}"></i><span>${escapeHtml(r && r.c === c ? r.txt : c.fait)}${c.tache && scCorrectionEleve() ? (c.relire ? " <em class=\"sc-m\">✎ relue</em>" : " <em class=\"sc-m\">✓ seul</em>") : ""}</span><b>${pt.bareme[c.niveau]}</b></div>`; }).join("")}<p class="sc-m">${r ? (r.complet ? "Calculée de tes réponses : tu ne choisis jamais la case." : "Provisoire : il reste des questions.") : "Réponds aux questions."}</p></div>`;
       const vus = SC.copies.map((c, i) => ({ i, r: scCase(pt, c) })).filter(x => x.r && x.r.complet);
       h += `<div class="sc-bloc"><h3>Sur ce point, les copies déjà vues</h3><div class="sc-points">${vus.length ? vus.map(x => `<span title="${escapeAttr(nomEleveDe(SC.copies[x.i]) || "")}"><i style="background:${SC_COUL[x.r.c.niveau]}"></i>${x.i + 1}</span>`).join("") : '<span class="sc-m">aucune encore</span>'}</div></div>`;
     }
@@ -679,18 +694,15 @@ function scMin(t) { return t ? t.charAt(0).toLowerCase() + t.slice(1) : ""; }
 function scBilan(k) {
   const pre = prenom(nomEleveDe(k) || ""), bien = [], manque = [], taches = [];
   SC.grille.criteres.forEach(c => c.points.forEach(pt => { const r = scCase(pt, k); if (!r || !r.complet) return;
-    (r.c.niveau >= 3 ? bien : manque).push(r.txt);
-    if (r.c.niveau < 3 && r.tache) taches.push({ t: r.tache, relire: r.c.relire !== false, niveau: r.c.niveau });
-    (r.autres || []).forEach(a => { manque.push(a.txt); if (a.tache) taches.push({ t: a.tache, relire: a.c.relire !== false, niveau: a.c.niveau }); }); }));
+    (r.c.niveau >= 3 && !r.tache ? bien : manque).push(r.txt);   // réussi : la case la plus haute, sans rien à reprendre ; tout le reste manque encore if (r.tache) taches.push({ fait: r.txt, t: r.tache, relire: r.c.relire !== false, niveau: r.c.niveau, titre: pt.titre });
+    (r.autres || []).forEach(a => { manque.push(a.txt); if (a.tache) taches.push({ fait: a.txt, t: a.tache, relire: a.c.relire !== false, niveau: a.c.niveau, titre: pt.titre }); }); }));
   const vu = new Set(); const T = taches.filter(x => !vu.has(x.t) && vu.add(x.t)).sort((a, b) => a.niveau - b.niveau);
   const M = Object.values(scCopie(k).marques); const etoile = M.some(m => m.forme === "etoile"); const rq = M.filter(m => m.forme === "remarque" && m.texte).map(m => m.texte);
-  const P = [];
-  if (bien.length) P.push((pre ? pre + ", " : "") + bien.map(scMin).join(" "));
-  if (manque.length) P.push("Ce qui manque encore : " + manque.map(scMin).join(" "));
+  const P = [], phrases = L => L.join(" ");
+  if (bien.length) P.push((pre ? pre + ", " + scMin(bien[0]) : bien[0]) + (bien.length > 1 ? " " + phrases(bien.slice(1)) : ""));
+  if (manque.length) P.push("Ce qui manque encore : " + scMin(manque[0]) + (manque.length > 1 ? " " + phrases(manque.slice(1)) : ""));
   if (etoile) P.push("La phrase qui m'a touché est surlignée en or sur ta copie.");
   if (rq.length) P.push("Mes remarques sur ta copie : " + rq.map(t => "« " + t + " »").join(" ; ") + ".");
-  if (T.length) P.push("Ta priorité" + (pre ? ", " + pre : "") + " : " + scMin(T[0].t));
-  if (!bien.length && pre && P.length) P[0] = pre + ", " + scMin(P[0]);
   return { paras: P, taches: T };
 }
 function scRecap(k, suite) {
@@ -703,11 +715,11 @@ function scRecap(k, suite) {
     <div class="sc-rc-tete"><div><small>Récapitulatif de la copie</small><h2>${escapeHtml(nomEleveDe(k) || k)}</h2><small>${lig ? lig + " lignes écrites · " : ""}${F.length} faute${F.length > 1 ? "s" : ""} soulignée${F.length > 1 ? "s" : ""}</small></div>
       <div class="sc-rc-note" title="${nt.ok ? "La note de la copie : la somme des points de ses cases." : "La note se calcule quand tous les points de la copie sont passés."}">${nt.ok ? String(nt.n).replace(".", ",") + " / " + nt.tot : "Provisoire<small>" + manquent + " point" + (manquent > 1 ? "s" : "") + " pas encore passé" + (manquent > 1 ? "s" : "") + "</small>"}</div></div>
     <div class="sc-rc-corps"><div class="sc-rc-col"><h3>La grille</h3><table class="sc-rc-grille">${grille}</table></div>
-      <div class="sc-rc-col"><h3>Le bilan, tel que l'élève le lira</h3>${B.paras.length ? B.paras.map(p => `<p>${escapeHtml(p)}</p>`).join("") : '<p class="sc-m">Rien encore : le bilan s\'écrit au fil des points passés.</p>'}
-        ${B.taches.length ? `<h3>À reprendre</h3><ol>${B.taches.map(t => `<li>${escapeHtml(t.t)} <em class="sc-m" title="${t.relire ? "Une écriture : tu la relis dans la passe des retours." : "Se vérifie d'un coup d'œil : l'élève la valide seul."}">${t.relire ? "✎ relue" : "✓ seul"}</em></li>`).join("")}</ol>` : ""}
-        ${F.length ? `<h3>Les fautes</h3><p class="sc-rc-fautes">${F.map(f => `<span><b>${f.num || "?"}</b> ${f.bonne ? escapeHtml(f.bonne) : '<i title="Sans bonne forme : l\'élève te l\'enverra à relire.">sans bonne forme</i>'}</span>`).join("")}</p>` : ""}</div></div>
+      <div class="sc-rc-col"><h3>Le bilan</h3>${B.paras.length ? B.paras.map(p => `<p>${escapeHtml(p)}</p>`).join("") : '<p class="sc-m">Rien encore : le bilan s\'écrit au fil des points passés.</p>'}
+        ${B.taches.length ? `<h3>À reprendre</h3><ol>${B.taches.map(t => `<li><span class="sc-m">${escapeHtml(t.fait)}</span><br>${escapeHtml(t.t)}${scCorrectionEleve() ? ` <em class="sc-m" title="${t.relire ? "Une écriture : tu la relis dans la passe des retours." : "Se vérifie d'un coup d'œil : l'élève la valide seul."}">${t.relire ? "✎ relue" : "✓ seul"}</em>` : ""}</li>`).join("")}</ol>` : ""}
+        ${F.length ? `<h3>Les fautes</h3><p class="sc-rc-fautes">${F.map(f => `<span><b>${f.num || "?"}</b> ${f.bonne ? escapeHtml(f.bonne) : '<i title="Sans bonne forme : un clic sur son trait, sur la copie, rouvre son champ.">sans bonne forme</i>'}</span>`).join("")}</p>` : ""}</div></div>
     <div class="sc-rc-pied"><button class="sc-btn" onclick="scRecapFermer()" title="Fermer le récapitulatif (Échap) et rester sur cette copie, pour reprendre un point.">Rester sur cette copie · Échap</button>
-      <button class="sc-btn" onclick="scTesterEleve(scK())" title="Ouvrir le fichier que recevra l'élève, dans un onglet de test : rien ne part chez lui.">🧪 Le fichier de l'élève</button>
+      <button class="sc-btn" onclick="scTesterEleve(scK())" title="Ouvrir le fichier que recevra l'élève, dans un onglet de test : sa copie, tes marques, sa grille et sa note, en lecture seule. Rien ne part chez lui.">🧪 Le fichier de l'élève</button>
       ${suite ? `<button class="sc-btn sc-rt-ok" onclick="scRecapFermer(true)" title="Passer à la copie suivante (Entrée).">Copie suivante · Entrée</button>` : ""}</div></div>`;
   E.hidden = false;
 }

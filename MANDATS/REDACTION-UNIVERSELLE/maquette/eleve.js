@@ -19,7 +19,7 @@ function scEleveDonnees(k, test) {
   const etoile = M.filter(m => m.forme === "etoile").map(m => ({ page: ordre.indexOf(m.page), seg: scSegments(m, SC.pages[m.page]) }));
   const remarques = M.filter(m => m.forme === "remarque" && m.texte).map(m => ({ id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, texte: m.texte, place: place(m) }));
   const nt = scNote(k);
-  return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB),
+  return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB), correctionEleve: scCorrectionEleve(),
     criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: nt.ok ? nt.n : null, total: nt.tot,
     pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL,
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
@@ -41,10 +41,92 @@ function scEleveFichier(k, test) {
 .mk{position:absolute}.mk.f{height:0;border-top:3px solid #c54040;border-radius:2px}.mk.e{border:2.5px solid;border-radius:4px}.mk.g{border-radius:4px}`;
     const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(D.titre)} — ${escapeHtml(D.nom)}</title><style>${css}</style></head><body>
 <div class="tete">${escapeHtml(D.titre)}<small>${escapeHtml(D.nom)}</small></div><div class="copie" id="statique">${statique}</div>
-<script>const D=${JSON.stringify(D).replace(/</g, "\\u003c")};const IMG=${JSON.stringify(srcs)};(${scEleveApp.toString()})(D,IMG);<\/script></body></html>`;
+<script>const D=${JSON.stringify(D).replace(/</g, "\\u003c")};const IMG=${JSON.stringify(srcs)};(${(D.correctionEleve ? scEleveApp : scEleveLecture).toString()})(D,IMG);<\/script></body></html>`;
     return { html, nom: "Redaction-" + scSlug(D.titre).slice(0, 40) + "-" + scSlug(D.nom) + ".html", D };
   });
 }
+// ── 1463 : le fichier de l'élève en LECTURE SEULE (tant que la correction par l'élève n'est pas codée) ──
+// Sa copie, tes marques (le pochoir), sa grille et sa note. Il clique une marque ou un point de sa grille : il voit le point, son échelle, sa case,
+// ce qu'il a à reprendre ; il va et vient librement. Il n'écrit rien, rien ne part au site. La bonne forme d'une faute ne se montre pas :
+// elle servira à la correction par l'élève, quand elle sera ouverte.
+function scEleveLecture(D, IMG) {
+  const $ = s => document.querySelector(s); const pc = v => (v * 100).toFixed(3) + "%"; const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  let vue = null;   // null : la grille ; { t: "p", i } un point ; { t: "f", i } une faute ; { t: "r", i } une remarque ; { t: "e" } la phrase dorée
+  if (D.test) document.body.insertAdjacentHTML("afterbegin", `<div style="background:#fff3d6;border-bottom:1px solid #d4b87a;color:#5a3010;padding:5px 14px;font:14px system-ui">🧪 Mode test : le fichier tel que l'élève le verra. Il le lit, il n'y écrit rien.</div>`);
+  const st = document.createElement("style"); st.textContent = `#statique{display:none}
+.app{display:flex;gap:16px;padding:12px;min-height:calc(100vh - 50px)}.col{flex:1;min-width:0}.pan{width:420px;flex:none;position:sticky;top:10px;align-self:flex-start;max-height:calc(100vh - 20px);overflow:auto}
+.pg{position:relative;width:100%;max-width:1000px;margin:0 auto 12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
+.mk{position:absolute;cursor:pointer}.f{height:0;border-top:3px solid #c54040;padding-top:6px;margin-top:-6px}.f.on{border-top-width:5px;box-shadow:0 0 0 3px #f4b0b0}.e{border:2.5px solid;border-radius:4px}.g{border-radius:4px}.mk.on{outline:3px solid #2b2520;outline-offset:2px}
+.num{position:absolute;transform:translate(-50%,-50%);background:#c54040;color:#fff;border-radius:50%;width:22px;height:22px;font:700 12px/22px system-ui;text-align:center;cursor:pointer}
+.pin{position:absolute;left:.4%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);cursor:pointer}.pin.on{box-shadow:0 0 0 3px #2b2520}
+.bloc{background:#fdfbf7;border:1px solid #d6cfc1;border-radius:10px;padding:12px 14px;margin-bottom:10px}.bloc h3{margin:0 0 6px;font:600 12.5px system-ui;letter-spacing:.1em;text-transform:uppercase;color:#6b1a2a}
+.note{font:700 32px Georgia,serif}.ligne{display:grid;grid-template-columns:16px 1fr auto;gap:8px;align-items:start;padding:6px 4px;border-radius:7px;cursor:pointer}.ligne:hover{background:#f3ebdd}.ligne i{width:14px;height:14px;border-radius:50%;margin-top:4px}.ligne b{white-space:nowrap}
+.crit{font:600 13px system-ui;color:#6b1a2a;margin:10px 0 2px}.m{color:#7a6e5f;font-size:14px}
+.ech{display:flex;gap:4px;margin:8px 0}.ech span{flex:1;border:2px solid;border-radius:7px;padding:4px;font-size:12px;text-align:center;opacity:.45}.ech span.on{opacity:1;font-weight:700;box-shadow:0 0 0 2px #2b2520}
+button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;padding:8px 14px;margin-top:8px;cursor:pointer}button.clair{background:#fff;color:#6b1a2a;border:1px solid #d6cfc1}
+.trav{position:fixed;inset:0;background:#f5f1ea;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center}.sc3{perspective:1400px;height:62vh;width:100%;display:flex;align-items:center;justify-content:center}
+.pile{position:relative;width:min(34vh,60vw);aspect-ratio:${D.pages[0] ? D.pages[0].w + "/" + D.pages[0].h : "210/297"};transform-style:preserve-3d;transform:rotateX(55deg) rotateZ(-28deg)}
+.feuille{position:absolute;inset:0;border:2px solid;border-radius:4px;background:rgba(255,255,255,.25)}.feuille b{position:absolute;right:-4px;top:-26px;color:#fff;font:700 13px system-ui;padding:2px 8px;border-radius:6px 6px 0 0}
+.cp{position:absolute;inset:0;transition:transform 1.4s ease}.cp img{width:100%;height:100%;display:block;border-radius:4px;box-shadow:0 14px 26px rgba(0,0,0,.3)}
+.leg{max-width:640px;text-align:center;font-size:18px;padding:0 16px;min-height:3em}.passer{position:absolute;right:16px;bottom:16px;background:#fff;color:#6b1a2a;border:1px solid #d6cfc1}
+@media (max-width:820px){.app{display:block;padding:6px}.pan{position:fixed;left:0;right:0;bottom:0;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}}`;
+  document.head.appendChild(st);
+  const app = document.createElement("div"); app.className = "app"; app.innerHTML = `<div class="col" id="col"></div><div class="pan" id="pan"></div>`; document.body.appendChild(app);
+  const montrer = (page, y) => { const P = document.querySelectorAll(".pg")[page]; if (!P) return; const r = P.getBoundingClientRect(); window.scrollTo({ top: window.scrollY + r.top + r.height * y - window.innerHeight * 0.3, behavior: "smooth" }); };
+  function copie() {
+    const col = $("#col"); col.innerHTML = D.pages.map((p, i) => `<div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${IMG[i]}" alt=""></div>`).join("");
+    const pgs = col.querySelectorAll(".pg"), on = (t, i) => vue && vue.t === t && vue.i === i;
+    D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk${vue && vue.t === "e" ? " on" : ""}" data-v="e" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
+    D.fautes.forEach((f, i) => { const P = pgs[f.page]; if (!P) return;
+      P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num" data-v="f:${i}" style="left:${pc(0.022 + (f.rang || 0) * 0.03)};top:${pc((f.y0 + f.y1) / 2)}">${f.num}</div>`); });
+    (D.remarques || []).forEach((r0, i) => { const P = pgs[r0.page]; if (!P) return; P.insertAdjacentHTML("beforeend", `<div class="mk e${on("r", i) ? " on" : ""}" data-v="r:${i}" style="left:${pc(r0.x0 - 0.004)};top:${pc(r0.y0 - 0.003)};width:${pc(r0.x1 - r0.x0 + 0.008)};height:${pc(r0.y1 - r0.y0 + 0.006)};border:2px dashed #6b1a2a"></div>`); });
+    const pris = {}; D.points.forEach((p, i) => { const P = pgs[p.place.page]; if (!P) return; const k = D.coul[p.crit] || "#6b1a2a"; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1;
+      p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return;
+        if (m.forme === "surligne") m.seg.forEach(r => Q.insertAdjacentHTML("beforeend", `<div class="mk${on("p", i) ? " on" : ""}" data-v="p:${i}" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${k}${on("p", i) ? "66" : "40"};mix-blend-mode:multiply"></div>`));
+        else Q.insertAdjacentHTML("beforeend", `<div class="mk ${m.forme === "marge" ? "g" : "e"}${on("p", i) ? " on" : ""}" data-v="p:${i}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + k : "border-color:" + k}"></div>`); });
+      P.insertAdjacentHTML("beforeend", `<div class="pin${on("p", i) ? " on" : ""}" data-v="p:${i}" style="top:${pc(Math.max(0.015, p.place.y))};margin-left:${dx * 30}px;background:${D.bord[p.niveau]}"></div>`); });
+    col.querySelectorAll("[data-v]").forEach(e => e.addEventListener("click", () => { const [t, i] = e.dataset.v.split(":"); vue = { t, i: i == null ? null : +i }; copie(); panneau(); }));
+  }
+  const retour = `<button class="clair" id="gr">← Ta grille</button>`;
+  function panneau() {
+    const pan = $("#pan");
+    if (!vue) {
+      const crit = []; D.points.forEach((p, i) => { let c = crit.find(x => x.id === p.crit); if (!c) crit.push(c = { id: p.crit, nom: p.critNom, l: [] }); c.l.push({ p, i }); });
+      pan.innerHTML = `<div class="bloc"><h3>Ta note</h3><div class="note">${D.note != null ? String(D.note).replace(".", ",") + " / " + D.total : "…"}</div></div>
+        <div class="bloc"><h3>Ta grille</h3>${crit.map(c => `<div class="crit">${esc(c.nom)}</div>` + c.l.map(({ p, i }) => `<div class="ligne" data-p="${i}"><i style="background:${D.bord[p.niveau]}"></i><span>${esc(p.titre)}<br><span class="m">${esc(p.fait)}</span></span><b>${String(p.pts).replace(".", ",")} / ${p.poids}</b></div>`).join("")).join("")}</div>
+        ${D.fautes.length ? `<div class="bloc"><h3>Tes fautes</h3><div>${D.fautes.length} soulignée${D.fautes.length > 1 ? "s" : ""} en rouge sur ta copie.</div></div>` : ""}
+        ${(D.remarques || []).length ? `<div class="bloc"><h3>Mes remarques</h3>${D.remarques.map((r, i) => `<div class="ligne" data-r="${i}"><i style="background:#6b1a2a"></i><span>${esc(r.texte)}</span><b></b></div>`).join("")}</div>` : ""}`;
+      pan.querySelectorAll("[data-p]").forEach(e => e.addEventListener("click", () => { const i = +e.dataset.p; vue = { t: "p", i }; copie(); panneau(); const p = D.points[i]; montrer(p.place.page, p.place.y); }));
+      pan.querySelectorAll("[data-r]").forEach(e => e.addEventListener("click", () => { const i = +e.dataset.r; vue = { t: "r", i }; copie(); panneau(); const r = D.remarques[i]; montrer(r.page, r.y0); }));
+      return;
+    }
+    if (vue.t === "p") { const p = D.points[vue.i];
+      pan.innerHTML = `<div class="bloc"><h3>${esc(p.critNom)}</h3><div style="font-weight:700">${esc(p.titre)}</div>
+        <div class="ech">${[0, 1, 2, 3].map(n => `<span class="${n === p.niveau ? "on" : ""}" style="background:${D.fond[n]};border-color:${D.bord[n]}">${esc(D.niveaux[n])}<br>${String(p.bareme[n]).replace(".", ",")}</span>`).join("")}</div>
+        <div style="font-size:17px">${esc(p.fait)}</div>${p.tache ? `<div class="bloc" style="margin:10px 0 0;background:#fff"><h3>À reprendre</h3>${esc(p.tache)}</div>` : ""}${retour}</div>`; }
+    else if (vue.t === "f") { const f = D.fautes[vue.i]; pan.innerHTML = `<div class="bloc"><h3>Faute ${f.num} sur ${D.fautes.length}</h3><div>Une erreur d'orthographe ou de grammaire, soulignée en rouge.</div>${retour}</div>`; }
+    else if (vue.t === "r") { const r = D.remarques[vue.i]; pan.innerHTML = `<div class="bloc"><h3>Ma remarque</h3><div style="font-size:17px">${esc(r.texte)}</div>${retour}</div>`; }
+    else pan.innerHTML = `<div class="bloc"><h3>La phrase qui m'a touché</h3><div>Surlignée en or sur ta copie.</div>${retour}</div>`;
+    $("#gr").onclick = () => { vue = null; copie(); panneau(); };
+  }
+  // la traversée (cadrée le 29/10) : à l'ouverture, la copie passe à travers la grille, la langue d'abord
+  function traversee() {
+    const crit = [{ id: "langue", nom: "La langue" }].concat(D.criteres); const nomsC = D.criteres.map(c => c.nom.replace(/^L[ae]s? |^L'/, m => m.toLowerCase()));
+    const liste = nomsC.length > 1 ? nomsC.slice(0, -1).join(", ") + " et " + nomsC[nomsC.length - 1] : (nomsC[0] || "");
+    const L = ["La grille de correction est au-dessus de ta copie : une feuille par critère.", "Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées en rouge.",
+      "Puis à travers " + liste + " : leurs points apparaissent sur ta copie.", "Ta copie est passée à travers toute la grille."];
+    const T = document.createElement("div"); T.className = "trav";
+    T.innerHTML = `<div class="sc3"><div class="pile">${crit.map((c, i) => `<div class="feuille" style="transform:translateZ(${(i + 1) * 46}px);border-color:${D.coul[c.id] || "#6b1a2a"}"><b style="background:${D.coul[c.id] || "#6b1a2a"}">${esc(c.nom)}</b></div>`).join("")}<div class="cp" id="cp"><img src="${IMG[0] || ""}" alt=""></div></div></div><div class="leg" id="leg"></div><button class="passer" id="passer">⏭ Passer</button>`;
+    document.body.appendChild(T); let i = 0, fait = false;
+    const pas = () => { if (fait) return; $("#leg").textContent = L[Math.min(i, 3)]; $("#cp").style.transform = "translateZ(" + (i === 0 ? 0 : i === 1 ? 70 : i === 2 ? 46 * (crit.length) - 10 : 46 * (crit.length + 1)) + "px)"; i++; if (i <= 4) setTimeout(i === 4 ? fin : pas, 2600); };
+    const fin = () => { if (fait) return; fait = true; T.remove(); }; $("#passer").onclick = fin; setTimeout(pas, 400);
+  }
+  copie(); panneau(); traversee();
+}
+// ════ SECTION À CODER : LA CORRECTION PAR L'ÉLÈVE (voir SC_CORRECTION_ELEVE_CODEE dans scan.js, et docs/MJPC6-DETTES.md) ════
+// L'ancien parcours, gardé pour être repris, jamais appelé tant que la correction par l'élève est fermée. Ce que Paul a écarté le 30/10 :
+// la question avant la case, la tâche écrite et sa relecture (« je n'ai pas de relecture de correction à faire ») ; ce qui se recycle :
+// le transport des retours (site, onglet de test, ce navigateur) et la vérification d'une faute contre ta bonne forme.
 // le code qui tourne chez l'élève (il ne voit rien d'autre de l'app : aucune variable extérieure)
 function scEleveApp(D, IMG) {
   const $ = s => document.querySelector(s); const pc = v => (v * 100).toFixed(3) + "%"; const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -157,8 +239,9 @@ function scFichiersED() {
   if (!SC.copies.length) { toast("Aucune copie : charge d'abord ton paquet."); return; }
   const lignes = SC.copies.map((k, i) => { const nt = scNote(k); const faits = scTousPoints().filter(pt => { const r = scCase(pt, k); return r && r.complet; }).length; const tous = scTousPoints().length;
     return `<tr><td>${i + 1}</td><td>${escapeHtml(nomEleveDe(k) || k)}</td><td>${scPagesDe(k).length}</td><td>${nt.ok ? "<b>" + String(nt.n).replace(".", ",") + " / " + nt.tot + "</b>" : faits + " points sur " + tous}</td>
-      <td><button class="sc-btn" onclick="scTesterEleve('${escapeAttr(k)}')" title="Ouvrir le fichier de cet élève dans un nouvel onglet, exactement comme il le verra, en mode test : ce que tu y écris arrive ici, dans « Les retours des élèves », et tes verdicts y repartent. Rien ne va au site.">🧪 Tester comme l'élève</button> <button class="sc-btn" onclick="scTelecharger('${escapeAttr(k)}')" title="Télécharger le fichier de cet élève, à déposer sur École Directe. Sa photo est dedans : elle ne passe pas par le site.">Télécharger</button></td></tr>`; }).join("");
-  scModale(`<h3>Les fichiers École Directe</h3><p>Un fichier par élève : sa copie scannée et tes marques dedans. Tu le déposes sur École Directe ; la photo ne passe jamais par le site. Ce que l'élève écrit (ses corrections, ses papillons) te revient dans la passe « Les retours des élèves ».</p>${window.__FAUX_HUB || RU.test ? '<p class="sc-alerte">🧪 Mode test : les fichiers fabriqués ici n\'envoient rien au site.</p>' : ""}
+      <td><button class="sc-btn" onclick="scTesterEleve('${escapeAttr(k)}')" title="Ouvrir le fichier de cet élève dans un nouvel onglet, exactement comme il le verra, en mode test : sa copie, tes marques, sa grille et sa note, en lecture seule. Rien ne va au site.">🧪 Tester comme l'élève</button> <button class="sc-btn" onclick="scTelecharger('${escapeAttr(k)}')" title="Télécharger le fichier de cet élève, à déposer sur École Directe. Sa photo est dedans : elle ne passe pas par le site.">Télécharger</button></td></tr>`; }).join("");
+  scModale(`<h3>Les fichiers École Directe</h3><p>Un fichier par élève : sa copie scannée et tes marques dedans. Tu le déposes sur École Directe ; la photo ne passe jamais par le site. L'élève y lit sa copie corrigée, sa grille et sa note : il clique tes marques, il n'écrit rien.</p>
+    <label class="sc-coche" title="Pas encore codée : cette coche reste grisée et décochée. Quand elle le sera, elle ouvrira la correction par l'élève, à lancer en classe comme la correction de dictée."><input type="checkbox" disabled> Ouvrir la correction par l'élève <span class="sc-m">— pas encore codée : aujourd'hui, l'élève lit sa copie corrigée, il ne la corrige pas.</span></label>${window.__FAUX_HUB || RU.test ? '<p class="sc-alerte">🧪 Mode test : les fichiers fabriqués ici n\'envoient rien au site.</p>' : ""}
     <table class="sc-table"><tr><th></th><th>Élève</th><th>Pages</th><th>Correction</th><th></th></tr>${lignes}</table><button class="sc-btn" onclick="scToutTelecharger()" title="Télécharger les ${SC.copies.length} fichiers l'un après l'autre (le navigateur peut te demander d'autoriser plusieurs téléchargements).">Tout télécharger</button>`);
 }
 function scTelecharger(k) { return scEleveFichier(k).then(f => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([f.html], { type: "text/html" })); a.download = f.nom; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500); }); }

@@ -26,6 +26,13 @@ await cap('01-initiales');
 for (const ini of ['ec', 'la', 'mb', '', 'tb', 'gc', 'rb']) { await pg.keyboard.type(ini); await att(150); await pg.keyboard.press('Enter'); await att(250); }
 const cps = await pg.evaluate(() => SC.copies.map(k => nomEleveDe(k) + ':' + scPagesDe(k).length)); verif('6 copies dans l\'ordre du paquet : ' + cps.join(' · '), cps.length === 6 && cps[2].endsWith(':2'));
 verif('la dernière page donnée, la correction commence d\'elle-même (passe 1, copie 1)', await pg.evaluate(() => !SC.attrib && SC.passe === 0 && SC.ic === 0)); await att(300);
+// 1451 : les lignes écrites d'abord : le champ attend, et tant qu'il est vide la copie ne se quitte pas
+const ligFocus = await pg.evaluate(() => (document.activeElement || {}).id === 'scLig' && !!document.querySelector('.sc-lig-manque'));
+await pg.evaluate(() => document.activeElement.blur()); await pg.keyboard.press('Enter'); await att(200); await pg.keyboard.press('ArrowRight'); await att(300);
+const reste = await pg.evaluate(() => ({ ic: SC.ic, pt: (scPt() || {}).id, focus: (document.activeElement || {}).id }));
+await pg.keyboard.type('24'); await pg.keyboard.press('Enter'); await att(300);
+const ligOk = await pg.evaluate(() => scLignesCopie(scK()) === 24 && !document.querySelector('.sc-lig-manque'));
+verif('les lignes d\'abord : le champ attend (' + ligFocus + ') ; vide, ni Entrée ni → ne quittent la copie (' + reste.ic + ', ' + reste.pt + ') ; 24 tapé, Entrée : rangé', ligFocus && reste.ic === 0 && reste.pt === 'orthographe' && reste.focus === 'scLig' && ligOk);
 // passe 1, la langue : souligner « écrit » (ligne 3), taper la bonne forme ; une deuxième faute reprise par son numéro sur la copie suivante
 const boite = async () => pg.locator('.sc-page').first().boundingBox();
 const tracer = async (x0, y0, x1, y1) => { const r = await boite(); await pg.mouse.move(r.x + x0 * r.width, r.y + y0 * r.height); await pg.mouse.down(); await pg.mouse.move(r.x + x1 * r.width, r.y + y1 * r.height, { steps: 6 }); await pg.mouse.up(); await att(250); };
@@ -35,6 +42,7 @@ const m1 = await pg.evaluate(() => Object.values(scCopie(scK()).marques).map(m =
 verif('une faute soulignée avec sa bonne forme, une phrase dorée sur deux lignes : ' + m1.join(' '), m1.some(x => x.startsWith('faute:écris')) && m1.some(x => x.startsWith('etoile')));
 await pg.keyboard.press('Enter'); await att(150); await pg.keyboard.press('Enter'); await pg.keyboard.press('n'); await pg.keyboard.press('Enter'); await att(400);
 verif('après la langue, la copie suivante arrive', await pg.evaluate(() => SC.ic === 1));
+await att(200); await pg.keyboard.type('22'); await pg.keyboard.press('Enter'); await att(250);
 await tracer(0.25, 0.175, 0.33, 0.185); await pg.keyboard.type('1'); await pg.keyboard.press('Enter'); await att(200);
 verif('le numéro 1 reprend « écris »', await pg.evaluate(() => scFautes(scK())[0].bonne === 'écris'));
 // 1436 : une faute posée sans bonne forme ; un clic sur elle rouvre son champ, la bonne forme s'y tape ; Suppr au bout du champ efface la faute, Ctrl+Z la remet
@@ -184,6 +192,14 @@ const vu = (await pr.locator('#pan').innerText()).includes('Reprends ta tâche')
 await pr.locator('#rep').fill('écris'); await pr.locator('#ok').click(); await att(600);
 verif('l\'élève réel passe par le même code : ton verdict lui arrive du site sans recharger (' + vu + '), sa correction part au site (' + recu.length + ' écriture)', vu && recu.length >= 1);
 await ctx2.close();
+// 1450 : une copie passée en entier, le récapitulatif s'ouvre seul : la note, la grille, le bilan, « À reprendre »
+await pg.bringToFront(); let recapOuvert = false;
+for (const ip of [0, 1, 2, 3]) { await pg.click('.sc-passe >> nth=' + ip); await att(300); await pg.click('.sc-vig >> nth=0'); await att(300); const k0 = await pg.evaluate(() => scK());
+  for (let n = 0; n < 90; n++) { const st = await pg.evaluate(k0 => ({ r: !!SC.recap, autre: scK() !== k0 }), k0); if (st.r) { recapOuvert = true; break; } if (st.autre) break; await pg.keyboard.press('Enter'); await att(50); } if (recapOuvert) break; }
+const rc = await pg.evaluate(() => { const E = document.getElementById('scRecap'); return E && !E.hidden ? { note: E.querySelector('.sc-rc-note').textContent, lignes: E.querySelectorAll('.sc-rc-grille tr:not(.sc-rc-crit)').length, pas: E.querySelectorAll('.sc-rc-pas').length, paras: E.querySelectorAll('.sc-rc-col:last-child > p').length, suite: !!E.querySelector('.sc-rt-ok') } : null; });
+await cap('18-recapitulatif');
+const icAvant = await pg.evaluate(() => SC.ic); await pg.keyboard.press('Enter'); await att(400); const apresRc = await pg.evaluate(() => ({ ferme: !SC.recap, ic: SC.ic }));
+verif('copie passée en entier : le récapitulatif s\'ouvre seul (note « ' + (rc && rc.note) + ' », ' + (rc && rc.lignes) + ' points, ' + (rc && rc.paras) + ' paragraphes de bilan) ; Entrée : la copie suivante', rc && /\/ 40/.test(rc.note) && rc.lignes === 12 && rc.pas === 0 && rc.paras >= 1 && rc.suite && apresRc.ferme && apresRc.ic !== icAvant);
 verif('aucune écriture sur une classe entière (une clé de copie vide)', !(await pg.evaluate(() => window.__LOG || [])).some(l => /^\w+ [^/]+\.json/.test(l)));
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }

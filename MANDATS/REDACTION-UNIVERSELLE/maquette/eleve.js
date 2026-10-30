@@ -81,11 +81,11 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach(f => { const ok = fini({ t: "f", f, cle: f.id }); const c = cour && cour.t === "f" && cour.f === f; const P = pgs[f.page]; if (!P) return;
       P.insertAdjacentHTML("beforeend", `<div class="mk f${ok ? " ok" : ""}${c ? " cour" : ""}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num${ok ? " ok" : ""}" style="left:${pc(f.x1)};top:${pc(f.y1)}">${ok ? "✓" : f.num}</div>`); });
-    D.points.forEach(p => { const P = pgs[p.place.page]; if (!P) return; const ouvert = E.findIndex(s => s.t === "p" && s.p === p) <= etape; const c = cour && cour.t === "p" && cour.p === p;
+    const pris = {}; D.points.forEach(p => { const P = pgs[p.place.page]; if (!P) return; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1; const ouvert = E.findIndex(s => s.t === "p" && s.p === p) <= etape; const c = cour && cour.t === "p" && cour.p === p;
       if (ouvert) p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return; const k = D.coul[p.crit] || "#6b1a2a";
         if (m.forme === "surligne") m.seg.forEach(r => Q.insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${k}${c ? "55" : "30"}"></div>`));
         else Q.insertAdjacentHTML("beforeend", `<div class="mk ${m.forme === "marge" ? "g" : "e"}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + k : "border-color:" + k}"></div>`); });
-      P.insertAdjacentHTML("beforeend", `<div class="pin${c ? " cour" : ""}${ouvert && !c ? " fait" : ""}" style="top:${pc(Math.max(0.015, p.place.y))};${ouvert ? "background:" + D.bord[p.niveau] : ""}">${ouvert ? "" : "?"}</div>`);
+      P.insertAdjacentHTML("beforeend", `<div class="pin${c ? " cour" : ""}${ouvert && !c ? " fait" : ""}" style="top:${pc(Math.max(0.015, p.place.y))};margin-left:${dx * 30}px;${ouvert ? "background:" + D.bord[p.niveau] : ""}">${ouvert ? "" : "?"}</div>`);
       const r = R[p.id]; if (r && r.texte) P.insertAdjacentHTML("beforeend", `<div class="pap" style="top:${pc(Math.min(0.92, p.place.y + 0.01))}">${esc(r.texte)}</div>`); });
   }
   function panneau() {

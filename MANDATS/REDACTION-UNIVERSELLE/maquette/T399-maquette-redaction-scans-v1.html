@@ -6629,12 +6629,13 @@ function scOuvrir() {
     (loc || []).forEach(o => { if (o && o.blob) SC.imgs[o.id] = { url: URL.createObjectURL(o.blob), w: o.w, h: o.h, blob: o.blob }; });
     scCopiesOrdre(); SC.ouvert = true; SC.actif = Date.now();
     document.getElementById("scanEcran").classList.remove("hidden"); document.body.classList.add("sc-ouvert");
-    SC.attrib = scPagesSans().length > 0; SC.ia = 0;
+    SC.attrib = scPagesSans().length > 0; SC.ia = scPremiereSans();
     scRendre();
   });
 }
 function scFermer() { scChrono(); SC.ouvert = false; scChampFermer(true); document.getElementById("scanEcran").classList.add("hidden"); document.body.classList.remove("sc-ouvert"); saveState(); if (typeof renderDashboard === "function") renderDashboard(); }
 function scPagesOrdre() { return Object.values(SC.pages).filter(p => p && p.id).sort((a, b) => (a.ordre || 0) - (b.ordre || 0)); }
+function scPremiereSans() { const i = scPagesOrdre().findIndex(p => !p.eleve && !p.blanche); return i < 0 ? 0 : i; }
 function scPagesSans() { return scPagesOrdre().filter(p => !p.eleve && !p.blanche); }
 function scPagesDe(k) { return scPagesOrdre().filter(p => p.eleve === k && !p.blanche); }
 function scCopiesOrdre() { const vu = []; scPagesOrdre().forEach(p => { if (p.eleve && !p.blanche && vu.indexOf(p.eleve) < 0) vu.push(p.eleve); }); SC.copies = vu; if (SC.ic >= vu.length) SC.ic = Math.max(0, vu.length - 1); }
@@ -6652,7 +6653,7 @@ function scCharger(ev) {
     return scDbMettre({ id: o.id, red: RU.id, classe: RU.classe, blob: o.blob, w: o.w, h: o.h, le: new Date().toISOString() }); });
   let ch = Promise.resolve();
   fs.forEach(f => { ch = ch.then(() => /pdf$/i.test(f.type) || /\.pdf$/i.test(f.name) ? scLirePdf(f, traiter) : scLireImage(f).then(traiter)); });
-  ch.then(() => { scCopiesOrdre(); SC.attrib = scPagesSans().length > 0; SC.ia = 0; scTemoinCharge("");
+  ch.then(() => { scCopiesOrdre(); SC.attrib = scPagesSans().length > 0; SC.ia = scPremiereSans(); scTemoinCharge("");
     toast(n + " page" + (n > 1 ? "s" : "") + " lue" + (n > 1 ? "s" : "") + (nouvelles.length < n ? " · " + (n - nouvelles.length) + " déjà connue" + (n - nouvelles.length > 1 ? "s" : "") + " : leurs marques reviennent" : ""));
     scRendre(); }, e => { scTemoinCharge(""); toast("⚠ Ce fichier n'a pas pu être lu."); console.error(e); });
 }
@@ -6723,7 +6724,7 @@ function scCase(pt, k) {
     const n = scLignesCopie(k); if (!n) return null; const e = scFautes(k).length;
     const r = pt.calcul === "lignes" ? n / scLong() : e / n;
     const c = pt.cases.find(c => { const m = /^calc:\w+:([\d.]+)-([\d.]+)$/.exec(c.si); return m && r >= +m[1] && r <= +m[2]; });
-    return c ? { c, txt: c.fait.replace("{n}", n).replace("{e}", e), complet: !!s.vu && !!s.vu[scPasseDe(pt)] } : null;
+    return c ? { c, txt: c.fait.replace("{n}", n).replace("{e}", e).replace(/\b1 erreurs\b/, "1 erreur").replace(/\b1 lignes\b/, "1 ligne"), complet: !!s.vu && !!s.vu[scPasseDe(pt)] } : null;
   }
   const qs = scQuestions(pt, rep); const complet = qs.every(q => rep[q.id] === "o" || rep[q.id] === "n");
   const non = i => rep[i] === "n" && !scSautee(scQ(pt, i), rep), oui = i => rep[i] === "o" && !scSautee(scQ(pt, i), rep);
@@ -7123,11 +7124,11 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach(f => { const ok = fini({ t: "f", f, cle: f.id }); const c = cour && cour.t === "f" && cour.f === f; const P = pgs[f.page]; if (!P) return;
       P.insertAdjacentHTML("beforeend", `<div class="mk f${ok ? " ok" : ""}${c ? " cour" : ""}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num${ok ? " ok" : ""}" style="left:${pc(f.x1)};top:${pc(f.y1)}">${ok ? "✓" : f.num}</div>`); });
-    D.points.forEach(p => { const P = pgs[p.place.page]; if (!P) return; const ouvert = E.findIndex(s => s.t === "p" && s.p === p) <= etape; const c = cour && cour.t === "p" && cour.p === p;
+    const pris = {}; D.points.forEach(p => { const P = pgs[p.place.page]; if (!P) return; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1; const ouvert = E.findIndex(s => s.t === "p" && s.p === p) <= etape; const c = cour && cour.t === "p" && cour.p === p;
       if (ouvert) p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return; const k = D.coul[p.crit] || "#6b1a2a";
         if (m.forme === "surligne") m.seg.forEach(r => Q.insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${k}${c ? "55" : "30"}"></div>`));
         else Q.insertAdjacentHTML("beforeend", `<div class="mk ${m.forme === "marge" ? "g" : "e"}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + k : "border-color:" + k}"></div>`); });
-      P.insertAdjacentHTML("beforeend", `<div class="pin${c ? " cour" : ""}${ouvert && !c ? " fait" : ""}" style="top:${pc(Math.max(0.015, p.place.y))};${ouvert ? "background:" + D.bord[p.niveau] : ""}">${ouvert ? "" : "?"}</div>`);
+      P.insertAdjacentHTML("beforeend", `<div class="pin${c ? " cour" : ""}${ouvert && !c ? " fait" : ""}" style="top:${pc(Math.max(0.015, p.place.y))};margin-left:${dx * 30}px;${ouvert ? "background:" + D.bord[p.niveau] : ""}">${ouvert ? "" : "?"}</div>`);
       const r = R[p.id]; if (r && r.texte) P.insertAdjacentHTML("beforeend", `<div class="pap" style="top:${pc(Math.min(0.92, p.place.y + 0.01))}">${esc(r.texte)}</div>`); });
   }
   function panneau() {

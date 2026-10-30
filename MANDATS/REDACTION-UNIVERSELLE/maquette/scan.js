@@ -38,12 +38,13 @@ function scOuvrir() {
     (loc || []).forEach(o => { if (o && o.blob) SC.imgs[o.id] = { url: URL.createObjectURL(o.blob), w: o.w, h: o.h, blob: o.blob }; });
     scCopiesOrdre(); SC.ouvert = true; SC.actif = Date.now();
     document.getElementById("scanEcran").classList.remove("hidden"); document.body.classList.add("sc-ouvert");
-    SC.attrib = scPagesSans().length > 0; SC.ia = 0;
+    SC.attrib = scPagesSans().length > 0; SC.ia = scPremiereSans();
     scRendre();
   });
 }
 function scFermer() { scChrono(); SC.ouvert = false; scChampFermer(true); document.getElementById("scanEcran").classList.add("hidden"); document.body.classList.remove("sc-ouvert"); saveState(); if (typeof renderDashboard === "function") renderDashboard(); }
 function scPagesOrdre() { return Object.values(SC.pages).filter(p => p && p.id).sort((a, b) => (a.ordre || 0) - (b.ordre || 0)); }
+function scPremiereSans() { const i = scPagesOrdre().findIndex(p => !p.eleve && !p.blanche); return i < 0 ? 0 : i; }
 function scPagesSans() { return scPagesOrdre().filter(p => !p.eleve && !p.blanche); }
 function scPagesDe(k) { return scPagesOrdre().filter(p => p.eleve === k && !p.blanche); }
 function scCopiesOrdre() { const vu = []; scPagesOrdre().forEach(p => { if (p.eleve && !p.blanche && vu.indexOf(p.eleve) < 0) vu.push(p.eleve); }); SC.copies = vu; if (SC.ic >= vu.length) SC.ic = Math.max(0, vu.length - 1); }
@@ -61,7 +62,7 @@ function scCharger(ev) {
     return scDbMettre({ id: o.id, red: RU.id, classe: RU.classe, blob: o.blob, w: o.w, h: o.h, le: new Date().toISOString() }); });
   let ch = Promise.resolve();
   fs.forEach(f => { ch = ch.then(() => /pdf$/i.test(f.type) || /\.pdf$/i.test(f.name) ? scLirePdf(f, traiter) : scLireImage(f).then(traiter)); });
-  ch.then(() => { scCopiesOrdre(); SC.attrib = scPagesSans().length > 0; SC.ia = 0; scTemoinCharge("");
+  ch.then(() => { scCopiesOrdre(); SC.attrib = scPagesSans().length > 0; SC.ia = scPremiereSans(); scTemoinCharge("");
     toast(n + " page" + (n > 1 ? "s" : "") + " lue" + (n > 1 ? "s" : "") + (nouvelles.length < n ? " · " + (n - nouvelles.length) + " déjà connue" + (n - nouvelles.length > 1 ? "s" : "") + " : leurs marques reviennent" : ""));
     scRendre(); }, e => { scTemoinCharge(""); toast("⚠ Ce fichier n'a pas pu être lu."); console.error(e); });
 }
@@ -132,7 +133,7 @@ function scCase(pt, k) {
     const n = scLignesCopie(k); if (!n) return null; const e = scFautes(k).length;
     const r = pt.calcul === "lignes" ? n / scLong() : e / n;
     const c = pt.cases.find(c => { const m = /^calc:\w+:([\d.]+)-([\d.]+)$/.exec(c.si); return m && r >= +m[1] && r <= +m[2]; });
-    return c ? { c, txt: c.fait.replace("{n}", n).replace("{e}", e), complet: !!s.vu && !!s.vu[scPasseDe(pt)] } : null;
+    return c ? { c, txt: c.fait.replace("{n}", n).replace("{e}", e).replace(/\b1 erreurs\b/, "1 erreur").replace(/\b1 lignes\b/, "1 ligne"), complet: !!s.vu && !!s.vu[scPasseDe(pt)] } : null;
   }
   const qs = scQuestions(pt, rep); const complet = qs.every(q => rep[q.id] === "o" || rep[q.id] === "n");
   const non = i => rep[i] === "n" && !scSautee(scQ(pt, i), rep), oui = i => rep[i] === "o" && !scSautee(scQ(pt, i), rep);

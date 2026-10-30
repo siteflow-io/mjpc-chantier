@@ -398,3 +398,26 @@ MEMO
 
 30/10/2026 16:33
 MEMO
+
+## Tour 16 — 30/10/2026 16:38 → 16:40
+
+**Paul :** ok. 21, je sais que ça va me prendre du temps c'est sûr, d'où mon intérêt d'automatiser au max cette partie, vraiment au max (si tu as de nouvelles idées je suis preneur, sachant que l'automatisation est à la base impactée par la forme de la grille, le contenu des descripteurs etc). Par ailleurs je suis plus partant de recopier la copie parce que ça me permet d'enregistrer la rédaction des élèves en entier, de l'avoir en entier et donc en développant l'app de pouvoir gagner en enrichissement de correction sur ces copies là même après les avoir rendues. et au profil longitudinal de l'élève c'est hautement précieux. l'année dernière j'avais déjà développé des apps qui analysait le contenu textuel, et aujourd'hui j'ai notamment la taxonomie. l'app de correction dictée a aussi beaucoup de fonctionnalités sur ce point, qui lui permettent d'analyser les erreurs par exemple. Sinon, il existe un moyen simple: je recopie mes rédactions à la suite. Puis j'exporte le json pour l'ia avec le prompt intégré: l'ia rend le texte correct, je le mets dans l'app, et l'app a de quoi comparer à partir de là. Et sinon, je fais en mode manuel sans ia, tout simplement. Qu'en penses-tu?
+
+**Fait.** Registre (production `190efa3`), ⑪ : la vitesse mesurée, la décision de Paul (16:38, citée), son idée d'export à l'IA, la proposition de la conscience et la mesure avant tout code. Rien codé.
+
+**Claude :**
+
+À jouer : une copie recopiée (25) · en cours : rien · ouvert : 25 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+22. Mon avis : oui, c'est la bonne direction. Pour tes raisons (le texte entier gardé, le profil de l'élève, une correction qu'on peut enrichir après coup), et parce qu'elle règle d'un coup les problèmes d'aujourd'hui : plus de souris, des citations exactes, l'endroit de chaque chose connu.
+
+23. Ton idée d'IA, oui, à deux conditions. Un : l'IA corrige mot pour mot et ligne pour ligne, sans jamais reformuler ; sinon la comparaison ne marche pas. Le prompt l'impose, et l'app refuse un texte rendu qui n'a pas les mêmes lignes. Deux : ce que l'IA trouve n'est qu'une proposition ; chaque faute s'affiche, tu la gardes d'Entrée ou la rejettes de N, le morceau de photo à côté (20). C'est toi qui corriges, l'élève ne voit que ta correction. La comparaison existe déjà dans la correction de dictée : on la reprend, on ne la refait pas. Sans IA, c'est le même écran, et tu marques toi-même. Et deux garde-fous : aucun nom d'élève ne part à l'IA (chaque copie porte un numéro), et rien de payant : c'est toi qui colles le fichier dans ta conversation Claude, comme tes autres prompts.
+
+24. Ma nouvelle idée pour automatiser ta grille au maximum : le même envoi à l'IA répond aussi à ta grille, copie par copie. Pour chaque chose attendue, elle dit si c'est réussi, et elle cite le passage exact qui le prouve. Tu valides d'Entrée ou rejettes de N, et le passage cité devient l'endroit du sticker sur la copie, sans viser. Pour que ça marche, chaque élément de ta grille doit pouvoir se prouver par un passage du texte : c'est la forme de grille qu'on cherchait déjà.
+
+25. Avant tout code, une mesure. Tu recopies une des copies que tu as déjà corrigées aujourd'hui, ligne par ligne, avec ses fautes, en chronométrant, et tu me l'envoies avec son nom. Je fais exactement ce que ferait l'IA avec le prompt, puis je compare à ta correction : les fautes qu'elle trouve, celles qu'elle rate, celles qu'elle invente, et ses réponses à la grille. Tu décides sur ces chiffres. Tu le fais ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 16:40
+MEMO

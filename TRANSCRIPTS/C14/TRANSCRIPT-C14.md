@@ -717,3 +717,18 @@ MEMO
 
 30/10/2026 21:27
 MEMO
+
+## Tour 29 — 30/10/2026 21:29 → 30/10/2026 21:30
+
+**Paul :** GPT commence son travail maintenant
+
+**Fait.** Prompt de GPT mis à jour au sas (`MANDATS/PROMPT-CONSCIENCE-15-GPT.md`) : tour 28 ajouté à l'état de référence ; ce qui reste (84) ; numéros à partir de 86 ; une seule conscience parle à Paul à la fois, GPT depuis 21:29, la n°14 se tait jusqu'au 31/10 22 h.
+
+**Claude :**
+
+86. Compris : je me tais jusqu'à demain 22 h, et je reprendrai en lisant le transcript de GPT. Son prompt au sas est à jour (ce qui reste à corriger, les numéros à partir de 86, un seul de nous deux te parle à la fois). Dis-lui seulement : « Relis au sas MANDATS/PROMPT-CONSCIENCE-15-GPT.md, il a changé, et suis-le. »
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 21:30
+MEMO

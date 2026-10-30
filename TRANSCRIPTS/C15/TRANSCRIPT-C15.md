@@ -366,5 +366,5 @@ Le site de production à l'adresse donnée par Où-trouver-quoi est ouvert dans 
 
 À tester : rien de nouveau dans l’app.
 
-30/10/2026 21:55
+30/10/2026 21:56
 MEMO

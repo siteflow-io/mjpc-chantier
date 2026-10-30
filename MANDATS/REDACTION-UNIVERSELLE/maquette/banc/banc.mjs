@@ -50,6 +50,44 @@ const relu = await pg.evaluate(() => (document.getElementById('scChampIn') || {}
 await pg.keyboard.press('Delete'); await att(250); const effacee = await pg.evaluate(id => !scCopie(scK()).marques[id], fx[0]);
 await pg.keyboard.press('Control+z'); await att(250); const remise = await pg.evaluate(id => (scCopie(scK()).marques[id] || {}).bonne, fx[0]);
 verif('rouverte, elle montre sa bonne forme (« ' + relu + ' ») ; Suppr au bout du champ l\'efface, Ctrl+Z la remet', relu === 'quelques' && effacee && remise === 'quelques');
+// 1444 : le champ de la bonne forme au-dessus du mot, relié à lui ; tiré ailleurs, il garde cette place pour le champ suivant
+await tracer(0.55, 0.30, 0.62, 0.31); await att(250);
+const champPos = async () => pg.evaluate(() => { const d = document.querySelector('.sc-champ'); if (!d) return null; const P = d.parentNode, m = scCopie(scK()).marques[SC.champ.id]; const r = d.getBoundingClientRect(), q = P.getBoundingClientRect(); return { haut: r.top, bas: r.bottom, gauche: r.left, motHaut: q.top + m.y0 * q.height, motGauche: q.left + m.x0 * q.width, lien: !!P.querySelector('.sc-lien line') }; });
+const ch1 = await champPos(); verif('le champ de la bonne forme se pose au-dessus du mot, relié à lui par un trait : la suite de la copie reste visible', ch1 && ch1.bas < ch1.motHaut && ch1.lien);
+const ti = await pg.locator('.sc-champ .sc-tire').boundingBox(); await pg.mouse.move(ti.x + 6, ti.y + 6); await pg.mouse.down(); await pg.mouse.move(ti.x + 206, ti.y - 34, { steps: 6 }); await pg.mouse.up(); await att(250);
+const ch2 = await champPos(); await pg.keyboard.type('mots'); await pg.keyboard.press('Enter'); await att(250);
+await tracer(0.30, 0.40, 0.37, 0.41); await att(250); const ch3 = await champPos(); await pg.keyboard.press('Enter'); await att(200);
+verif('tiré par ⠿, le champ se déplace (' + Math.round(ch2.gauche - ch1.gauche) + ' points) et le suivant reprend cette place près de son mot', Math.abs((ch2.gauche - ch2.motGauche) - (ch3.gauche - ch3.motGauche)) < 3 && Math.abs((ch2.haut - ch2.motHaut) - (ch3.haut - ch3.motHaut)) < 3 && ch2.gauche - ch1.gauche > 150);
+await pg.evaluate(() => { SC.champDecal = null; try { localStorage.removeItem('mjpc_scan_champ'); } catch (e) {} });
+// 1445 : retoucher la page comme une photo — rotation degré par degré, cadre ; les marques restent sur leurs mots ; le cadre ne coupe pas une marque ; tout se défait
+const pidR = await pg.evaluate(() => scPagesDe(scK())[0].id);
+const etatR = async () => pg.evaluate(pid => { const p = SC.pages[pid], o = SC.origs[pid], A = { rot: p.rot || 0, angle: p.angle || 0, recadre: p.recadre || null };
+  const ms = Object.values(scCopie(scK()).marques).filter(m => m.page === pid).sort((a, b) => a.id < b.id ? -1 : 1); return { w: p.w, h: p.h, angle: p.angle || 0, recadre: p.recadre || null, m: ms.map(m => [m.x0, m.y0, m.x1, m.y1]), o: ms.map(m => o ? scVue2Orig(A, o.w, o.h, (m.x0 + m.x1) / 2, (m.y0 + m.y1) / 2) : null) }; }, pidR);
+const rt0 = await etatR(); await pg.click('text=✂ Page 1'); await att(900);
+const ouverte = await pg.evaluate(() => !!SC.rt && !document.getElementById('scRetouche').hidden);
+for (let i = 0; i < 3; i++) { await pg.keyboard.press('ArrowRight'); await att(80); }
+const scn = await pg.locator('#scRtScene').boundingBox(); const se = await pg.locator('.sc-rt-p.se').boundingBox();
+await pg.mouse.move(se.x + 9, se.y + 9); await pg.mouse.down(); await pg.mouse.move(se.x + 9 - 0.12 * scn.width, se.y + 9 - 0.15 * scn.height, { steps: 6 }); await pg.mouse.up(); await att(200);
+const wv = await pg.locator('.sc-rt-p.w').boundingBox(); await pg.mouse.move(wv.x + 9, wv.y + 9); await pg.mouse.down(); await pg.mouse.move(wv.x + 9 + 0.7 * scn.width, wv.y + 9, { steps: 6 }); await pg.mouse.up(); await att(200);
+const cad = await pg.evaluate(() => ({ c: SC.rt.cadre.slice(), b: scRtBoite() }));
+await cap('13-retouche');
+verif('✂ ouvre la retouche ; tiré par-dessus une marque, le cadre s\'arrête à elle', ouverte && cad.b && cad.c[0] <= cad.b[0] + 1e-9 && cad.c[2] >= cad.b[2] - 1e-9);
+await pg.keyboard.press('Enter'); await att(1800); const rt1 = await etatR();
+const ecart = rt1.o.reduce((a, p, i) => Math.max(a, Math.hypot(p[0] - rt0.o[i][0], p[1] - rt0.o[i][1])), 0);
+verif('retouchée (3°, recadrée : ' + rt0.w + '×' + rt0.h + ' → ' + rt1.w + '×' + rt1.h + '), ses ' + rt1.m.length + ' marques restent sur leurs mots (écart ' + ecart.toFixed(2) + ' point)', rt1.angle === 3 && rt1.recadre && rt1.w < rt0.w && rt1.m.length >= 2 && ecart < 1.5);
+await cap('14-apres-retouche');
+const vuToast = await pg.evaluate(() => { const t = document.getElementById('toast'); const r = t.getBoundingClientRect(); const e = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return t.classList.contains('show') && (e === t || t.contains(e)) ? t.textContent : ''; });
+verif('le message de l\'appli se lit par-dessus l\'écran des scans (« ' + vuToast.slice(0, 40) + ' »)', /retouchée/.test(vuToast));
+await pg.click('text=✂ Page 1'); await att(900); for (let i = 0; i < 3; i++) { await pg.keyboard.press('ArrowLeft'); await att(80); } await pg.click('text=Toute la photo'); await att(200); await pg.keyboard.press('Enter'); await att(1800);
+const rt2 = await etatR(); const dm = rt2.m.reduce((a, m, i) => Math.max(a, ...m.map((v, j) => Math.abs(v - rt0.m[i][j]))), 0);
+verif('rien n\'est perdu : 0° et toute la photo, la page et ses marques reviennent comme avant (écart ' + dm.toFixed(4) + ')', rt2.w === rt0.w && rt2.h === rt0.h && rt2.angle === 0 && !rt2.recadre && dm < 0.003);
+// 1443 : la question en cours se répond aussi à la souris, et entoure la case qu'elle décide
+await pg.click('.sc-pts span >> nth=0').catch(() => {}); await pg.keyboard.press('Enter'); await att(300);
+await pg.click('.sc-q >> nth=2'); await att(300);
+const lie = await pg.evaluate(() => ({ si: (document.querySelector('.sc-case.si span') || {}).textContent || '', bout: !!document.querySelector('.sc-q.on .sc-q-rep') }));
+await pg.click('.sc-q.on >> text=Non · N'); await att(300);
+const rep3 = await pg.evaluate(() => { const L = Object.values(scCopie(SC.copies[1]).rep.lexique || {}); return L.join(','); });
+verif('la question en cours entoure la case qu\'elle décide (« ' + lie.si.slice(0, 30) + '… ») et se répond au bouton Non', lie.bout && /14-18/.test(lie.si) && rep3.includes('n'));
 await cap('03-langue-banque');
 // passe 2, le thème : Entrée, N, une marque « marge » qui répond oui
 await pg.click('.sc-passe >> nth=1'); await att(400); await pg.click('.sc-vig >> nth=0'); await att(300);
@@ -78,9 +116,9 @@ const avant = await pg.evaluate(() => SC.copies.map(k => Object.values(scCopie(k
 await pg.reload(); await att(3500);
 const ou2 = await pg.evaluate(() => SC.ouvert ? scP().id + ' · ' + scK() + ' · ' + (scPt() || {}).id + ' · ' + SC.iq : 'écran fermé');
 verif('reprise exacte : rechargée, la page rouvre la correction sur les scans au même endroit (' + ou2 + ')', ou2 === ou);
-const n2 = await pg.evaluate(() => ({ m: SC.copies.reduce((a, k) => a + Object.keys(scCopie(k).marques).length, 0), img: Object.keys(SC.imgs).length, man: scManquantes().length }));
+const n2 = await pg.evaluate(() => ({ m: SC.copies.reduce((a, k) => a + Object.keys(scCopie(k).marques).length, 0), img: Object.keys(SC.imgs).length, man: scManquantes().length, orig: Object.keys(SC.origs).length }));
 const apresR = await pg.evaluate(() => SC.copies.map(k => Object.values(scCopie(k).marques).map(m => m.forme).join('+')).join(' | ')); console.log('avant : ' + avant + '\naprès : ' + apresR);
-verif('après rechargement : ' + n2.m + ' marques, ' + n2.img + ' images gardées par le navigateur, ' + n2.man + ' manquante', n2.m >= 6 && n2.img >= 8 && n2.man === 0);
+verif('après rechargement : ' + n2.m + ' marques, ' + n2.img + ' images gardées par le navigateur (et ' + n2.orig + ' photos entières, pour retoucher), ' + n2.man + ' manquante', n2.m >= 6 && n2.img >= 8 && n2.orig >= 8 && n2.man === 0);
 // le fichier de l'élève
 await pg.click('text=📨 Fichiers École Directe'); await att(400); await cap('05-fichiers-ed');
 const dl = pg.waitForEvent('download'); await pg.click('.sc-table tr >> nth=1 >> text=Télécharger'); const d = await dl; const f = path.join(OUT, 'fichier-eleve.html'); await d.saveAs(f);

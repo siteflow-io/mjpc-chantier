@@ -625,3 +625,34 @@ Pour GPT, remplace la ligne de correction que je t'ai donnée par celle-ci : « 
 
 30/10/2026 19:20
 MEMO
+
+## Tour 25 — 30/10/2026 19:22 → 30/10/2026 19:23
+
+**Paul :** C'est le bazar là. Fais l'état des lieux de ce qu'il faut coder, sachant que je continue à corriger actuellement sur l'App en ligne.
+
+**Fait.** État des lieux tiré du registre ⑧ à ⑪ (production) et du mandat déposé au tour 23 ; rien mesuré de neuf, rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 61 (remplace 50) ; 53 ; 45 ; 36 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction.
+
+55. Ce qui est en ligne : la 1.2.3, celle avec laquelle tu corriges. Tout ce que tu y fais (fautes, lignes, réponses à la grille) est enregistré au site et sera lu par les versions suivantes : c'est ta règle du 15:17, écrite dans le mandat, et le banc la vérifie sur tes vraies copies avant chaque mise en ligne. Tu peux continuer.
+
+56. À coder en premier : la recopie. Le bouton « Recopier », la photo à gauche, les lignes trouvées seules avec leurs poignées, la feuille aux mêmes lignes à droite, la ligne en cours en grand, et la lecture de ton fichier de recopies si tu dis oui à 53. Le mandat est au sas, pas encore lancé.
+
+57. À coder ensuite : la bande des fautes. Ton export pour l'IA et le collage du texte corrigé, la comparaison mot à mot (avec le découpage en mots de la dictée), la bande qui saute de faute en faute, ⇧R pour le mot par mot. Dans le même mandat ; les touches restent à trancher (51, je te le reposerai simplement).
+
+58. À coder après : ta grille dans la bande, en stickers, avec le compte en direct que tu as demandé à 15:17. Avant ce code, ta grille se récrit en stickers, un point à la fois, validé par toi : seul « Le thème tenu » est fait. D'ici là, tes quatre passes restent ; elles ne pourront partir (45) qu'une fois ta grille dans la bande.
+
+59. Trois défauts de l'app en ligne, au registre, à régler avant la prochaine mise en ligne, puisque tu ne veux jamais de mise en ligne sur une dette : au tableau des élèves, une copie corrigée sur les scans affiche « Non commencé · 0 % » ; aucun bouton pour remettre une copie à zéro, et une page restée ouverte réécrit une copie effacée ailleurs ; les mots de l'élève dans son fichier, à valider par toi.
+
+60. Pas du code, mais en attente : redonner les réponses du Lexique perdues avant la 1.2.3 (point 1) ; le test sur iPhone de la pièce jointe École Directe ; tes 3 ou 4 photos de pages entières pour vérifier les lignes (36) ; les deux tâches de dimanche de la n°13.
+
+61. Je propose cet ordre : 56, puis 57, puis 58, et 59 réglé avant la première mise en ligne. Ça te va ?
+
+Pour GPT, la ligne à mettre à la fin du prompt, à la place des deux que je t'ai données : « Correction : lis le transcript C14 jusqu'au dernier tour ; le tour 25 (l'état des lieux) est l'état de référence ; reprends la numérotation après le dernier numéro du transcript ; le mandat MANDATS/REDACTION-UNIVERSELLE/MANDAT-RECOPIER-BANDE.md est au sas : audite-le, ne le code pas. »
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 19:23
+MEMO

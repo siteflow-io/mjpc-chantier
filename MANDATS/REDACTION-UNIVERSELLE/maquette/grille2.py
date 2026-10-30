@@ -34,6 +34,25 @@ SPEC = [
   ({}, {0: (E, 'non'), 1: (E, 'non'), 2: (E, 'oui')}, {}, ['tout', 'n:2', 'n:1', 'n:0']),
  ],
 ]
+QE = {'theme': "Relis le début de ta lettre : qui es-tu, d'où écris-tu, à qui, et depuis quand êtes-vous séparés ?",
+      'paragraphes': "Quels sont tes trois paragraphes, et que dit chacun ?",
+      'lectures': "Quel détail de ta lettre vient des textes lus en classe ?",
+      'tait': "Que caches-tu à l'autre dans ta lettre, et pourquoi ?",
+      'complexes': "Combien de verbes conjugués compte chacune de tes phrases ?",
+      'architectures': "Où sont tes cinq architectures ? Retrouve leurs numéros dans ta marge.",
+      'modalisation': "Où sont ta modalisation et ta litote ?",
+      'codes': "Où sont le lieu, la date, la formule pour t'adresser à l'autre et ta signature ?",
+      'personne': "Qui dit « je » dans ta lettre, et à qui parle-t-il ?",
+      'lignes': "Combien de lignes as-tu écrites ?",
+      'orthographe': "Combien d'erreurs as-tu trouvées et corrigées sur ta copie ?",
+      'lexique': "Quels mots de 14-18 emploies-tu ?"}
+SEUL = ('Ajoute', 'Dis ', 'Nomme', 'Va à la ligne', 'Remets', 'Choisis une date', 'Écris le numéro', 'Corrige tes erreurs')   # une tâche qui se vérifie d'un coup d'œil : l'élève la valide seul (1295)
+PTS_SEUL = ('theme', 'paragraphes', 'architectures', 'codes', 'orthographe')   # ailleurs, toute tâche est une écriture : tu la relis
+COMPTE = {   # 1304 : des cases comptées par les marques, posées avant les cases de la question (la plus sévère l'emporte)
+  'personne': [(2, "Un de tes verbes change de temps sans raison au milieu d'un passage.", 'une marque sur « les temps ? »', "Garde le même temps dans ce passage.", 1, 'm:3:1-1'),
+               (1, "Plusieurs de tes verbes changent de temps sans raison au milieu d'un passage.", 'deux marques ou plus sur « les temps ? »', "Garde le même temps dans chacun de ces passages.", 1, 'm:3:2-99')],
+  'complexes': [(2, "Une ou deux de tes phrases sont simples : un seul verbe conjugué.", 'une ou deux phrases simples marquées', "Ajoute-leur une proposition subordonnée relative.", 1, 'm:0:1-2'),
+                (1, "Plusieurs de tes phrases sont simples : un seul verbe conjugué.", 'trois phrases simples marquées ou plus', "Transforme-les en phrases complexes, avec une relative.", 1, 'm:0:3-99')]}
 ids = [['theme', 'paragraphes', 'lectures', 'tait'], ['complexes', 'architectures', 'modalisation'], ['codes', 'personne', 'lignes'], ['orthographe', 'lexique']]
 out = {'version': 1, 'source': 'sujet lettre 30 lignes 3e — réécrite le 29/10', 'criteres': []}
 for ci, (nom, poids, pts) in enumerate(CRIT):
@@ -42,7 +61,7 @@ for ci, (nom, poids, pts) in enumerate(CRIT):
         saute, marq, etiq, conds = SPEC[ci][pi]
         assert len(conds) == len(cs), (titre, len(conds), len(cs))
         b = bareme(p)
-        pt = {'id': ids[ci][pi], 'titre': titre, 'poids': p, 'bareme': {str(k): v for k, v in b.items()}, 'questions': [], 'cases': []}
+        pt = {'id': ids[ci][pi], 'titre': titre, 'poids': p, 'bareme': {str(k): v for k, v in b.items()}, 'questions': [], 'cases': [], 'questionEleve': QE[ids[ci][pi]]}
         for qi, (g, q, sk) in enumerate(qs):
             if g == 'calculé': pt['calcul'] = 'lignes' if 'lignes' in q.lower() and 'part des 30' in q else 'fautes'; continue
             d = {'id': qi, 'texte': q, 'moment': g}
@@ -50,8 +69,10 @@ for ci, (nom, poids, pts) in enumerate(CRIT):
             if qi in marq: d['marque'] = {'forme': marq[qi][0], 'sens': marq[qi][1]}
             if qi in etiq: d['etiquette'] = etiq[qi]
             pt['questions'].append(d)
+        for niv, fait, quand, rep, cite, cond in COMPTE.get(pt['id'], []):
+            pt['cases'].append({'niveau': niv, 'fait': fait, 'quand': quand, 'tache': rep, 'cite': bool(cite), 'si': cond, 'relire': not (pt['id'] in PTS_SEUL and rep.startswith(SEUL))})
         for (niv, fait, quand, rep, cite), cond in zip(cs, conds):
-            pt['cases'].append({'niveau': niv, 'fait': fait, 'quand': quand, 'tache': rep, 'cite': bool(cite), 'si': cond})
+            pt['cases'].append({'niveau': niv, 'fait': fait, 'quand': quand, 'tache': rep, 'cite': bool(cite), 'si': cond, 'relire': bool(rep) and not (pt['id'] in PTS_SEUL and rep.startswith(SEUL))})
         cr['points'].append(pt)
     out['criteres'].append(cr)
 print(json.dumps(out, ensure_ascii=False, indent=0)[:600], file=sys.stderr)

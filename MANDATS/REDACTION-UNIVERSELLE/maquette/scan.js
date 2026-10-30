@@ -27,7 +27,8 @@ function scDbTout() { return scDbFaire("readonly", st => st.getAll()); }
 function scOuvrir() {
   if (!RU.id || !RU.classe) { toast("Choisis d'abord la classe."); return; }
   try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
-  Promise.all([ruLire(["redactions", RU.id, "config", "grille2"]), ruLire(scChemin(["pages"])), ruLire(scCheminRetours()), scDbTout().catch(() => [])]).then(([g, pg, rt, loc]) => {
+  Promise.all([ruLire(["redactions", RU.id, "config", "grille2"]), ruLire(scChemin(["pages"])), ruLire(scCheminRetours()), scDbTout().catch(() => []), ruLire(["redactions", RU.id, "config", "aRefaire"])]).then(([g, pg, rt, loc, ar]) => {
+    SC.aRefaire = ar || "";
     if (!g || !g.criteres) { toast("Ce sujet n'a pas encore de grille à cases : la correction sur les scans attend sa grille."); return; }
     SC.grille = g; SC.pages = pg || {}; SC.retours = rt || {};
     const L = g.criteres.find(c => c.id === "langue");
@@ -139,6 +140,7 @@ function scCase(pt, k) {
   const non = i => rep[i] === "n" && !scSautee(scQ(pt, i), rep), oui = i => rep[i] === "o" && !scSautee(scQ(pt, i), rep);
   const ok = c => { const si = c.si; if (si === "tout") return qs.every(q => rep[q.id] !== "n");
     let m = /^([no]):(\d+)$/.exec(si); if (m) return m[1] === "n" ? non(+m[2]) : oui(+m[2]);
+    m = /^m:(\d+):(\d+)-(\d+)$/.exec(si); if (m) { const nb = Object.values(s.marques).filter(x => x.point === pt.id && x.q === +m[1]).length; return nb >= +m[2] && nb <= +m[3]; }
     m = /^k(>=|=)(\d+):([\d,]+)$/.exec(si); if (m) { const nb = m[3].split(",").filter(i => non(+i)).length; return m[1] === "=" ? nb === +m[2] : nb >= +m[2]; } return false; };
   const ms = pt.cases.filter(ok); if (!ms.length) return null;
   const c = ms.reduce((a, b) => b.niveau < a.niveau ? b : a, ms[0]);
@@ -337,7 +339,7 @@ function scPanneau() {
       h += `<div class="sc-bloc"><h3>${escapeHtml(pt.titre)} · ${pt.poids} points</h3>${scQuestions(pt, rep).map(q => { const v = rep[q.id]; const nb = scMarquesPage ? Object.values(s.marques).filter(m => m.point === pt.id && m.q === q.id).length : 0;
         return `<div class="sc-q${q.id === SC.iq ? " on" : ""}" onclick="SC.iq=${q.id};scRendre()" title="${q.marque ? "Le pinceau " + (q.marque.forme === "surligne" ? "surligne une citation" : q.marque.forme === "marge" ? "trace un trait dans la marge (un paragraphe)" : "encadre un mot") + (q.marque.sens === "non" ? " : une marque répond « non »" : q.marque.sens === "oui" ? " : une marque répond « oui »" : "") : "Pas de marque attendue : Entrée ou N."}"><span>${escapeHtml(q.texte)}</span><b class="${v === "n" ? "non" : v === "o" ? "oui" : ""}">${v === "n" ? "NON" : v === "o" ? "oui" : "…"}${nb ? " · " + nb + " marque" + (nb > 1 ? "s" : "") : ""}</b><em>${escapeHtml(q.moment)}${q.marque ? " · " + (q.marque.forme === "surligne" ? "surligné" : q.marque.forme === "marge" ? "marge" : "encadré") : ""}</em></div>`; }).join("")}</div>`;
       const r = scCase(pt, k);
-      h += `<div class="sc-bloc"><h3>La case où tombe cette copie</h3>${pt.cases.map(c => `<div class="sc-case${r && r.c === c ? " on" : ""}"><i style="background:${SC_COUL[c.niveau]}"></i><span>${escapeHtml(r && r.c === c ? r.txt : c.fait)}</span><b>${pt.bareme[c.niveau]}</b></div>`).join("")}<p class="sc-m">${r ? (r.complet ? "Calculée de tes réponses : tu ne choisis jamais la case." : "Provisoire : il reste des questions.") : "Réponds aux questions."}</p></div>`;
+      h += `<div class="sc-bloc"><h3>La case où tombe cette copie</h3>${pt.cases.map(c => `<div class="sc-case${r && r.c === c ? " on" : ""}" title="${c.tache ? "À reprendre : " + escapeAttr(c.tache) + (c.relire ? " — tu la relis (passe des retours)." : " — l'élève la valide seul.") : "Rien à reprendre."}"><i style="background:${SC_COUL[c.niveau]}"></i><span>${escapeHtml(r && r.c === c ? r.txt : c.fait)}${c.tache ? (c.relire ? " <em class=\"sc-m\">✎ relue</em>" : " <em class=\"sc-m\">✓ seul</em>") : ""}</span><b>${pt.bareme[c.niveau]}</b></div>`).join("")}<p class="sc-m">${r ? (r.complet ? "Calculée de tes réponses : tu ne choisis jamais la case." : "Provisoire : il reste des questions.") : "Réponds aux questions."}</p></div>`;
       const vus = SC.copies.map((c, i) => ({ i, r: scCase(pt, c) })).filter(x => x.r && x.r.complet);
       h += `<div class="sc-bloc"><h3>Sur ce point, les copies déjà vues</h3><div class="sc-points">${vus.length ? vus.map(x => `<span title="${escapeAttr(nomEleveDe(SC.copies[x.i]) || "")}"><i style="background:${SC_COUL[x.r.c.niveau]}"></i>${x.i + 1}</span>`).join("") : '<span class="sc-m">aucune encore</span>'}</div></div>`;
     }
@@ -377,8 +379,10 @@ function scPanneauRetours(Z) {
   const L = scRetoursListe(); const r = L[SC.ir];
   Z.innerHTML = `<div class="sc-bloc"><h3>Les retours des élèves · ${L.length ? (Math.min(SC.ir, L.length - 1) + 1) + " sur " + L.length : "aucun"}</h3>${r ? `<div class="sc-nom">${escapeHtml(nomEleveDe(r.eleve) || r.eleve)}</div><p class="sc-m">${escapeHtml(r.titre || "")}</p><p>${escapeHtml(r.consigne || "")}</p><div class="sc-papillon">${escapeHtml(r.texte)}</div>${r.etat ? `<p class="sc-m">Déjà relu : ${r.etat === "bon" ? "c'est bon" : "à refaire"}.</p>` : ""}` : `<p>Rien à relire : les retours arrivent quand les élèves ouvrent leur fichier et écrivent leurs papillons.</p>`}
     <button class="sc-btn" onclick="scRetoursRelire()" title="Relire au site ce que les élèves ont envoyé depuis leur fichier.">↻ Relire les retours</button></div>
+    <div class="sc-bloc"><h3>Ta phrase de « à refaire »</h3><p class="sc-m">Ce que reçoit l'élève, avec sa tâche, quand tu dis « à refaire ». Tu la donnes une fois pour toutes.</p><textarea id="scARefaire" rows="2" style="width:100%;font:14px system-ui" title="Enregistrée au sujet dès que tu quittes le champ ; elle part dans les fichiers École Directe que tu fabriques ensuite." onchange="scARefaireFixer(this.value)">${escapeHtml(SC.aRefaire || "")}</textarea></div>
     <div class="sc-bloc sc-touches"><h3>Les touches</h3><div class="sc-cle"><span class="sc-touche">Entrée</span><span>c'est bon</span><span class="sc-touche">N</span><span>à refaire : l'élève reçoit la tâche à refaire</span><span class="sc-touche">→ ←</span><span>retour suivant · précédent</span></div></div>`;
 }
+function scARefaireFixer(v) { SC.aRefaire = String(v || "").trim(); ruEcrire(["redactions", RU.id, "config", "aRefaire"], SC.aRefaire || null, "ta phrase de « à refaire »"); }
 function scRetoursRelire() { ruLire(scCheminRetours()).then(rt => { SC.retours = rt || {}; scRendre(); toast("Retours relus."); }); }
 function scDessinerRetour(Z) {
   const r = scRetoursListe()[SC.ir]; if (!r) { Z.innerHTML = '<div class="sc-vide">Aucun retour à relire.</div>'; return; }

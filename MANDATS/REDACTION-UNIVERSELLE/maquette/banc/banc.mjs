@@ -49,11 +49,20 @@ await cap('04-theme-case');
 await pg.keyboard.press('Delete'); await att(150); const apres = await pg.evaluate(() => Object.values(scCopie(SC.copies[0]).marques).filter(m => m.forme === 'marge').length);
 await pg.keyboard.press('Control+z'); await att(150); const remis = await pg.evaluate(() => Object.values(scCopie(SC.copies[0]).marques).filter(m => m.forme === 'marge').length);
 verif('Suppr efface la marque choisie, Ctrl+Z la remet', apres === 0 && remis === 1);
+// 1304 : les cases comptées par les marques — passe 4, « la 1re personne », deux verbes encadrés
+await pg.click('.sc-passe >> nth=3'); await att(300); await pg.click('.sc-vig >> nth=0'); await att(300);
+for (let i = 0; i < 9; i++) { await pg.keyboard.press('Enter'); await att(60); }
+await tracer(0.45, 0.30, 0.52, 0.31); await tracer(0.45, 0.40, 0.52, 0.41); await pg.keyboard.press('Escape'); await att(200);
+const cp = await pg.evaluate(() => { const pt = SC.grille.criteres[2].points[1]; const r = scCase(pt, SC.copies[0]); return SC.iq + ' · ' + (r && r.c.niveau + ' ' + r.txt); });
+verif('deux verbes encadrés : la case se compte (' + cp + ')', /^3 · 1 Plusieurs de tes verbes/.test(cp));
+// les copies vierges : la fenêtre d'impression
+const pop = ctx.waitForEvent('page'); await pg.click('text=🖨 Copies vierges'); const fen = await pop; await fen.waitForLoadState(); await att(400);
+verif('les copies vierges : ' + await fen.locator('.p svg').count() + ' pages à imprimer, quatre repères chacune', await fen.locator('.p svg').count() >= 30 && await fen.locator('.p').first().locator('rect[fill="#000"]').count() === 4); await fen.close();
 // le rechargement : les marques reviennent par leur identité, le paquet est resté dans le navigateur
 const avant = await pg.evaluate(() => SC.copies.map(k => Object.values(scCopie(k).marques).map(m => m.forme).join('+')).join(' | ')); await att(1500); console.log((await pg.evaluate(() => window.__LOG)).join('\n')); console.log('HUB ARNAUD : ' + await pg.evaluate(() => fetch(ruUrl(ruCheminCopies().concat(SC.copies[1]))).then(r => r.json()).then(v => JSON.stringify(v && v.scan && Object.keys(v.scan.marques || {}).length) + ' · état : ' + Object.keys(scCopie(SC.copies[1]).marques).length + ' · sig ' + !!RU.sig[SC.copies[1]] + ' · test ' + RU.test))); await pg.reload(); await att(2500); await pg.click('#btnScan'); await att(1500);
 const n2 = await pg.evaluate(() => ({ m: SC.copies.reduce((a, k) => a + Object.keys(scCopie(k).marques).length, 0), img: Object.keys(SC.imgs).length, man: scManquantes().length }));
 const apresR = await pg.evaluate(() => SC.copies.map(k => Object.values(scCopie(k).marques).map(m => m.forme).join('+')).join(' | ')); console.log('avant : ' + avant + '\naprès : ' + apresR);
-verif('après rechargement : ' + n2.m + ' marques, ' + n2.img + ' images gardées par le navigateur, ' + n2.man + ' manquante', n2.m >= 4 && n2.img >= 8 && n2.man === 0);
+verif('après rechargement : ' + n2.m + ' marques, ' + n2.img + ' images gardées par le navigateur, ' + n2.man + ' manquante', n2.m >= 6 && n2.img >= 8 && n2.man === 0);
 // le fichier de l'élève
 await pg.click('text=📨 Fichiers École Directe'); await att(400); await cap('05-fichiers-ed');
 const dl = pg.waitForEvent('download'); await pg.click('.sc-table tr >> nth=1 >> text=Télécharger'); const d = await dl; const f = path.join(OUT, 'fichier-eleve.html'); await d.saveAs(f);
@@ -64,11 +73,14 @@ await fr.locator('#rep').fill('écrit'); await fr.locator('#ok').click(); await 
 await fr.locator('#rep').fill('écris'); await fr.locator('#ok').click(); await att(500);
 verif('l\'élève corrige sa faute : faux puis juste', ko.includes('✗'));
 await cap('07-eleve-parcours');
-let pap = 0; for (let i = 0; i < 20; i++) { if (!(await fr.locator('#ok').count())) break; const t = fr.locator('#pap'); if (await t.count()) { await t.fill('Je suis dans la tranchée de Vauquois depuis le mois de février, avec les hommes de ma compagnie.'); pap++; } await fr.locator('#ok').click(); await att(250); }
+let pap = 0; let questions = 0; for (let i = 0; i < 30; i++) { if (!(await fr.locator('#ok').count())) break; if (await fr.locator('#rq').count()) { if (!questions) await cap('07b-eleve-question'); await fr.locator('#rq').fill('Je suis Pierre, dans la tranchée, et j\'écris à Louise.'); questions++; await fr.locator('#ok').click(); await att(250); continue; } const t = fr.locator('#pap'); if (await t.count()) { await t.fill('Je suis dans la tranchée de Vauquois depuis le mois de février, avec les hommes de ma compagnie.'); pap++; } await fr.locator('#ok').click(); await att(250); }
 await cap('08-eleve-papillon');
-const statique = await pg.evaluate(() => 1); verif('papillons écrits par l\'élève : ' + pap, pap >= 1);
+verif('l\'élève répond à la question avant de voir chaque case (' + questions + ') et écrit ses papillons (' + pap + ')', questions >= 3 && pap >= 1);
 await pg.click('#scVueEleve .sc-btn'); await att(800); await pg.click('.sc-passe >> nth=4'); await att(500); await cap('09-retours');
-const nr = await pg.evaluate(() => scRetoursListe().length); await pg.keyboard.press('n'); await att(300);
+const nr = await pg.evaluate(() => scRetoursListe().length);
+await pg.fill('#scARefaire', 'Relis ta tâche, et écris-la de nouveau.'); await pg.click('.sc-nom'); await att(300);
+verif('ta phrase de « à refaire » s\'enregistre au sujet', await pg.evaluate(() => fetch(ruUrl(["redactions", RU.id, "config", "aRefaire"])).then(r => r.json())) === 'Relis ta tâche, et écris-la de nouveau.');
+await pg.keyboard.press('n'); await att(300);
 const et = await pg.evaluate(() => Object.values(SC.retours).reduce((a, R) => a.concat(Object.values(R)), []).filter(r => r.etat === 'arefaire').length);
 verif('les retours arrivent chez Paul (' + nr + ') ; N : à refaire', nr >= 1 && et === 1);
 // les copies vierges de l'appli : scannées de travers, remises droites, lignes connues

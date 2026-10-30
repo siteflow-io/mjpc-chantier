@@ -9,7 +9,7 @@ function scEleveDonnees(k, test) {
   const place = m => ({ page: ordre.indexOf(m.page), y: m.y0 });
   const M = Object.values(s.marques).filter(m => ordre.indexOf(m.page) >= 0);
   const fautes = M.filter(m => m.forme === "faute").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0) || (a.x0 - b.x0))
-    .map(m => { const p = SC.pages[m.page]; const l = m.l0 != null && m.l0 >= 0 ? m.l0 + 1 : null; return { id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, num: m.num, ligne: l, bonne: m.bonne || null }; });
+    .map(m => { const p = SC.pages[m.page]; const l = m.l0 != null && m.l0 >= 0 ? m.l0 + 1 : null; return { id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, num: m.num, rang: m.rang || 0, ligne: l, bonne: m.bonne || null }; });
   const pts = []; SC.grille.criteres.forEach(c => c.points.forEach(pt => { const r = scCase(pt, k); if (!r || !r.complet) return;   // seuls les points que tu as passés partent chez l'élève
     const ms = M.filter(m => m.point === pt.id && m.forme !== "faute" && m.forme !== "etoile").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0));
     const pl = ms.length ? place(ms[0]) : { page: 0, y: 0 };
@@ -17,10 +17,11 @@ function scEleveDonnees(k, test) {
       question: pt.questionEleve || "", relire: r.c.relire !== false,
       bareme: pt.bareme, place: pl, marques: ms.map(m => ({ page: ordre.indexOf(m.page), forme: m.forme, x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, seg: scSegments(m, SC.pages[m.page]) })) }); }));
   const etoile = M.filter(m => m.forme === "etoile").map(m => ({ page: ordre.indexOf(m.page), seg: scSegments(m, SC.pages[m.page]) }));
+  const remarques = M.filter(m => m.forme === "remarque" && m.texte).map(m => ({ id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, texte: m.texte, place: place(m) }));
   const nt = scNote(k);
   return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB),
     criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: nt.ok ? nt.n : null, total: nt.tot,
-    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL,
+    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL,
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
 }
 function scEleveFichier(k, test) {
@@ -79,7 +80,7 @@ function scEleveApp(D, IMG) {
 .app{display:flex;gap:16px;max-width:1500px;margin:0 auto;padding:12px}.col{flex:1;min-width:0}.pan{width:400px;flex:none;position:sticky;top:10px;align-self:flex-start;max-height:calc(100vh - 20px);overflow:auto}
 .pg{position:relative;width:68%;margin-bottom:12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
 .mk{position:absolute;transition:opacity .5s}.f{height:0;border-top:3px solid #c54040}.f.ok{border-color:#3a6e1c}.f.cour{border-top-width:5px}.e{border:2.5px solid;border-radius:4px}.g{border-radius:4px}
-.num{position:absolute;transform:translate(3px,-50%);background:#c54040;color:#fff;border-radius:50%;width:22px;height:22px;font:700 12px/22px system-ui;text-align:center}.num.ok{background:#3a6e1c}
+.num{position:absolute;transform:translate(-50%,-50%);background:#c54040;color:#fff;border-radius:50%;width:22px;height:22px;font:700 12px/22px system-ui;text-align:center}.num.ok{background:#3a6e1c}
 .pin{position:absolute;left:.4%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:#9a9086;color:#fff;font:800 15px/26px system-ui;text-align:center;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3)}
 .pin.cour{background:#2b2520}.pin.fait{color:#fff}
 .bloc{background:#fdfbf7;border:1px solid #d6cfc1;border-radius:10px;padding:12px 14px;margin-bottom:10px}.bloc h3{margin:0 0 6px;font:600 12.5px system-ui;letter-spacing:.1em;text-transform:uppercase;color:#6b1a2a}
@@ -95,9 +96,9 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
 @media (max-width:820px){.pg{width:100%}.pap{left:auto;right:0;width:62%;opacity:.96}.app{display:block;padding:6px}.pan{position:fixed;left:0;right:0;bottom:0;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}.pap{width:60%}}`;
   document.head.appendChild(st);
   // les étapes : les fautes d'abord, de haut en bas ; puis les points, à leur place sur la copie
-  const E = D.fautes.map(f => ({ t: "f", f, cle: f.id })).concat(D.points.slice().sort((a, b) => (a.place.page - b.place.page) || (a.place.y - b.place.y)).map(p => ({ t: "p", p, cle: p.id })));
+  const E = D.fautes.map(f => ({ t: "f", f, cle: f.id })).concat(D.points.map(p => ({ t: "p", p, cle: p.id, pl: p.place })).concat((D.remarques || []).map(r => ({ t: "r", r, cle: r.id, pl: r.place }))).sort((a, b) => (a.pl.page - b.pl.page) || (a.pl.y - b.pl.y)));
   // le point est fini quand l'élève a répondu à la question (1360), puis fait sa tâche
-  const fini = s => { const r = R[s.cle]; if (s.t === "f") return !!r && r.etat !== "arefaire" && (r.ok || (!s.f.bonne && !!r.texte)); if (s.p.question && !R[s.cle + ":q"]) return false; if (!r || r.etat === "arefaire") return false; return !s.p.tache || !!r.texte; };
+  const fini = s => { const r = R[s.cle]; if (s.t === "r") return !!r; if (s.t === "f") return !!r && r.etat !== "arefaire" && (r.ok || (!s.f.bonne && !!r.texte)); if (s.p.question && !R[s.cle + ":q"]) return false; if (!r || r.etat === "arefaire") return false; return !s.p.tache || !!r.texte; };
   const repondu = p => !p.question || !!R[p.id + ":q"];
   const app = document.createElement("div"); app.className = "app"; app.innerHTML = `<div class="col" id="col"></div><div class="pan" id="pan"></div>`; document.body.appendChild(app);
   function copie() {
@@ -105,10 +106,11 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     const pgs = col.querySelectorAll(".pg"); const cour = E[etape];
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach(f => { const ok = fini({ t: "f", f, cle: f.id }); const c = cour && cour.t === "f" && cour.f === f; const P = pgs[f.page]; if (!P) return;
-      P.insertAdjacentHTML("beforeend", `<div class="mk f${ok ? " ok" : ""}${c ? " cour" : ""}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num${ok ? " ok" : ""}" style="left:${pc(f.x1)};top:${pc(f.y1)}">${ok ? "✓" : f.num}</div>`); });
+      P.insertAdjacentHTML("beforeend", `<div class="mk f${ok ? " ok" : ""}${c ? " cour" : ""}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num${ok ? " ok" : ""}" style="left:${pc(0.022 + (f.rang || 0) * 0.03)};top:${pc((f.y0 + f.y1) / 2)}">${ok ? "✓" : f.num}</div>`); });
+    (D.remarques || []).forEach(r0 => { const P = pgs[r0.page]; const i = E.findIndex(s => s.t === "r" && s.r === r0); if (!P || i > etape) return; P.insertAdjacentHTML("beforeend", `<div class="mk e" style="left:${pc(r0.x0 - 0.004)};top:${pc(r0.y0 - 0.003)};width:${pc(r0.x1 - r0.x0 + 0.008)};height:${pc(r0.y1 - r0.y0 + 0.006)};border:2px dashed #6b1a2a"></div>`); });
     const pris = {}; D.points.forEach(p => { const P = pgs[p.place.page]; if (!P) return; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1; const ouvert = E.findIndex(s => s.t === "p" && s.p === p) <= etape; const c = cour && cour.t === "p" && cour.p === p;
       if (ouvert && repondu(p)) p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return; const k = D.coul[p.crit] || "#6b1a2a";
-        if (m.forme === "surligne") m.seg.forEach(r => Q.insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${k}${c ? "55" : "30"}"></div>`));
+        if (m.forme === "surligne") m.seg.forEach(r => Q.insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${k}${c ? "66" : "40"};mix-blend-mode:multiply"></div>`));
         else Q.insertAdjacentHTML("beforeend", `<div class="mk ${m.forme === "marge" ? "g" : "e"}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + k : "border-color:" + k}"></div>`); });
       P.insertAdjacentHTML("beforeend", `<div class="pin${c ? " cour" : ""}${ouvert && !c ? " fait" : ""}" style="top:${pc(Math.max(0.015, p.place.y))};margin-left:${dx * 30}px;${ouvert && repondu(p) ? "background:" + D.bord[p.niveau] : ""}">${ouvert && repondu(p) ? "" : "?"}</div>`);
       const r = R[p.id]; if (r && r.texte) P.insertAdjacentHTML("beforeend", `<div class="pap" style="top:${pc(Math.min(0.92, p.place.y + 0.01))}">${esc(r.texte)}</div>`); });
@@ -118,6 +120,8 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     if (!s) {
       pan.innerHTML = (D.note != null ? `<div class="bloc"><h3>Ta note</h3><div style="font:700 30px Georgia,serif">${String(D.note).replace(".", ",")} / ${D.total}</div></div>` : "") + D.points.map(p => `<div class="bloc"><h3>${esc(p.critNom)} · ${esc(p.titre)}</h3><div>${esc(p.fait)}</div><div class="m">${String(p.pts).replace(".", ",")} / ${p.poids}</div></div>`).join(""); return; }
     const r = R[s.cle] || {};
+    if (s.t === "r") { const r0 = s.r; pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length}</h3><div style="font-size:17px">${esc(r0.texte)}</div><button id="ok">→</button></div>`;
+      $("#ok").onclick = () => { ecrire(r0.id, { type: "vu", texte: "", ok: true, le: new Date().toISOString() }).then(suite); }; return; }
     if (s.t === "f") { const f = s.f;
       pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length}${f.ligne ? " · ligne " + f.ligne : ""}</h3>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' + ((r.phrase || D.aRefaire) ? '<div>' + esc(r.phrase || D.aRefaire) + '</div>' : "") : ""}<input id="rep" autocomplete="off" value="${esc(r.texte || "")}"><button id="ok">${f.bonne ? "Vérifier" : "Envoyer"}</button><div id="msg"></div></div>`;
       const go = () => { const v = $("#rep").value.trim(); if (!v) return; const n = x => x.normalize("NFC").replace(/[’ʼ]/g, "'").replace(/\s+/g, " ").trim();

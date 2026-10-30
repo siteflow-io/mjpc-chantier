@@ -12,6 +12,7 @@ const SC_COUL = { 0: "#c54040", 1: "#c47820", 2: "#5a8a32", 3: "#3a6e1c" };
 const SC_FOND = { 0: "#f4b0b0", 1: "#f5c98a", 2: "#a8d088", 3: "#7eb55c" };
 const SC_CRIT = { langue: "#c54040", theme: "#2f5d8a", construction: "#1f7a72", organisation: "#7a3f8f", etoile: "#c08a4a" };
 const SC_PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+function scImg(blob, w, h) { const url = URL.createObjectURL(blob); const el = new Image(); el.src = url; return { url, w, h, blob, el }; }
 function scId(p) { return p + "_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8); }
 function scChemin(x) { return ["redactions", RU.id, "scan", RU.classe].concat(x || []); }
 function scCheminRetours(x) { return ["redactions", RU.id, "retours", RU.classe].concat(x || []); }
@@ -36,7 +37,7 @@ function scOuvrir() {
       .concat(g.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom, pts: c.points, crit: c.id })))
       .concat([{ id: "retours", nom: "Les retours des élèves", pts: [], crit: "retours" }]);
     Object.values(SC.imgs).forEach(u => { try { URL.revokeObjectURL(u.url); } catch (e) {} }); SC.imgs = {};
-    (loc || []).forEach(o => { if (o && o.blob) SC.imgs[o.id] = { url: URL.createObjectURL(o.blob), w: o.w, h: o.h, blob: o.blob }; });
+    (loc || []).forEach(o => { if (o && o.blob) SC.imgs[o.id] = scImg(o.blob, o.w, o.h); });
     scCopiesOrdre(); SC.ouvert = true; SC.actif = Date.now();
     const c = state.scanCurseur; if (c) { const ip = SC.passes.findIndex(p => p.id === c.passe); if (ip >= 0) SC.passe = ip; const j = SC.copies.indexOf(c.copie); if (j >= 0) SC.ic = j; const P = SC.passes[SC.passe]; const k = P.pts.findIndex(p => p.id === c.point); if (k >= 0) SC.ip = k; SC.iq = c.q != null ? c.q : null; }
     state.modeOuvert = "scan"; SC.aideAvant = AIDE.courant; aidePoser("scan");
@@ -59,7 +60,7 @@ function scCharger(ev) {
   const nouvelles = []; let n = 0;
   const traiter = cv => scPage(cv).then(o => { n++; scTemoinCharge("Page " + n + " lue…");
     const ex = SC.pages[o.id];
-    SC.imgs[o.id] = { url: URL.createObjectURL(o.blob), w: o.w, h: o.h, blob: o.blob };
+    SC.imgs[o.id] = scImg(o.blob, o.w, o.h); if (SC.encres) delete SC.encres[o.id];
     const meta = ex || { id: o.id, eleve: null, ordre: ++ordre, blanche: o.blanche, lignes: o.lignes, rot: o.rot, w: o.w, h: o.h, creeLe: new Date().toISOString() };
     if (!ex) { SC.pages[o.id] = meta; nouvelles.push(meta); ruEcrire(scChemin(["pages", o.id]), meta, "une page du paquet"); }
     return scDbMettre({ id: o.id, red: RU.id, classe: RU.classe, blob: o.blob, w: o.w, h: o.h, le: new Date().toISOString() }); });
@@ -179,7 +180,7 @@ function scAvancer() {
   const k = scK(); const L = scEtapes(k); const i = L.findIndex(e => e.ip === SC.ip && e.iq === SC.iq);
   if (i >= 0 && i < L.length - 1) { SC.ip = L[i + 1].ip; SC.iq = L[i + 1].iq; SC.outil = null; scRendre(); return; }
   const s = scCopie(k); s.vu = s.vu || {}; s.vu[scP().id] = true; saveState();
-  if (SC.ic < SC.copies.length - 1) scAllerCopie(SC.ic + 1); else { toast("Dernière copie du paquet : « " + scP().nom + " » est fait pour tout le paquet."); scRendre(); }
+  if (SC.ic < SC.copies.length - 1) scAllerCopie(SC.ic + 1); else if (SC.passe < SC.passes.length - 2) { const fait = scP().nom; SC.ic = 0; scAllerPasse(SC.passe + 1); toast("« " + fait + " » est fait pour tout le paquet : « " + scP().nom + " » commence, copie 1."); } else { toast("Dernière copie du paquet : « " + scP().nom + " » est fait pour tout le paquet."); scRendre(); }
 }
 function scReculer() { const L = scEtapes(scK()); const i = L.findIndex(e => e.ip === SC.ip && e.iq === SC.iq); if (i > 0) { SC.ip = L[i - 1].ip; SC.iq = L[i - 1].iq; scRendre(); } }
 function scAllerCopie(i) { scChrono(); SC.ic = Math.max(0, Math.min(SC.copies.length - 1, i)); const L = scEtapes(scK() || ""); SC.ip = L.length ? L[0].ip : 0; SC.iq = L.length ? L[0].iq : null; SC.sel = null; SC.outil = null; scChampFermer(); scRendre(); }
@@ -190,6 +191,8 @@ function scChrono() { scToucher(); }
 // ── le pinceau : la forme vient de ce que tu montres ──
 function scOutil() {
   if (SC.outil === "etoile") return { forme: "etoile", sens: "lieu", coul: SC_CRIT.etoile };
+  if (SC.outil === "remarque") return { forme: "remarque", sens: "lieu", coul: "#6b1a2a" };
+  if (SC.outil === "faute") return { forme: "faute", sens: "lieu", coul: SC_CRIT.langue };
   const P = scP(), pt = scPt(); if (!P || !pt) return null;
   if (P.id === "langue" && pt.calcul === "fautes") return { forme: "faute", sens: "lieu", coul: SC_CRIT.langue };
   const q = pt.calcul ? null : scQ(pt, SC.iq); const m = q && q.marque;
@@ -216,23 +219,25 @@ function scSegments(m, p) {   // un surlignage sur plusieurs lignes suit les lig
   return S;
 }
 function scMarquesPage(pid) { const k = scK(); if (!k) return []; return Object.values(scCopie(k).marques).filter(m => m.page === pid); }
-function scVisible(m) { const P = scP(); if (!P) return false; if (P.id === "langue") return m.passe === "langue"; return m.passe === P.id; }
+function scVisible(m) { const P = scP(); if (!P) return false; if (SC.toutVoir || m.forme === "remarque" && m.passe === P.id) return true; if (P.id === "langue") return m.passe === "langue"; return m.passe === P.id; }
 function scSvgMarque(m, p, sel) {
   const W = 1000, H = Math.round(1000 * p.h / p.w); const X = x => (x * W).toFixed(1), Y = y => (y * H).toFixed(1);
   const coul = m.forme === "faute" ? SC_CRIT.langue : m.forme === "etoile" ? SC_CRIT.etoile : (SC_CRIT[m.passe] || "#6b1a2a");
-  let s = `<g class="sc-m${sel ? " sel" : ""}" data-id="${m.id}">`;
-  if (m.forme === "faute") s += `<rect x="${X(m.x0)}" y="${Y(m.y0)}" width="${X(m.x1 - m.x0)}" height="${Y(m.y1 - m.y0)}" fill="transparent"/><line x1="${X(m.x0)}" y1="${Y(m.y1)}" x2="${X(m.x1)}" y2="${Y(m.y1)}" stroke="${coul}" stroke-width="4" stroke-linecap="round"/>`;
-  else if (m.forme === "encadre") s += `<rect x="${X(m.x0)}" y="${Y(m.y0)}" width="${X(m.x1 - m.x0)}" height="${Y(m.y1 - m.y0)}" rx="4" fill="${coul}14" stroke="${coul}" stroke-width="3"/>`;
-  else if (m.forme === "marge") s += `<rect x="${X(m.x0)}" y="${Y(m.y0)}" width="${X(m.x1 - m.x0)}" height="${Y(m.y1 - m.y0)}" rx="5" fill="${coul}"/>`;
-  else scSegments(m, p).forEach(r => { s += `<rect x="${X(r[0])}" y="${Y(r[1])}" width="${X(r[2] - r[0])}" height="${Y(r[3] - r[1])}" fill="${coul}40"/>`; });
-  if (m.forme === "faute" && m.num) s += `<circle cx="${X(m.x1)}" cy="${Y(m.y0) - 2}" r="11" fill="${coul}"/><text x="${X(m.x1)}" y="${+Y(m.y0) + 3}" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="system-ui">${m.num}</text>`;
+  const fin = 'vector-effect="non-scaling-stroke"';
+  const dit = m.forme === "faute" ? "Faute n° " + (m.num || "") + (m.bonne ? " · bonne forme : « " + m.bonne + " »" : " · sans bonne forme : l'élève te l'enverra à relire") : m.forme === "etoile" ? "La phrase qui t'a touché" : m.forme === "remarque" ? "Ta remarque : « " + (m.texte || "") + " »" : (() => { const pt = scTousPoints().find(x => x.id === m.point); const q = pt && m.q != null ? scQ(pt, m.q) : null; return (pt ? pt.titre : "") + (q ? " · " + q.texte : "") + (m.sens === "non" ? " — répond « non »" : m.sens === "oui" ? " — répond « oui »" : ""); })();
+  let s = `<g class="sc-m${sel ? " sel" : ""}" data-id="${m.id}"><title>${escapeHtml(dit)} — clic : la choisir, la tirer ou tirer ses poignées ; Suppr : l'effacer</title>`;
+  if (m.forme === "faute") s += `<rect x="${X(m.x0)}" y="${Y(m.y0)}" width="${X(m.x1 - m.x0)}" height="${Y(m.y1 - m.y0)}" fill="transparent"/><line x1="${X(m.x0)}" y1="${(+Y(m.y1) + 1.5).toFixed(1)}" x2="${X(m.x1)}" y2="${(+Y(m.y1) + 1.5).toFixed(1)}" stroke="${coul}" stroke-width="2.5" stroke-linecap="round" ${fin}/>`;
+  else if (m.forme === "encadre" || m.forme === "remarque") { const dx = 0.004, dy = 0.003; s += `<rect x="${X(m.x0 - dx)}" y="${Y(m.y0 - dy)}" width="${X(m.x1 - m.x0 + 2 * dx)}" height="${Y(m.y1 - m.y0 + 2 * dy)}" rx="4" fill="none" stroke="${m.forme === "remarque" ? "#6b1a2a" : coul}" stroke-width="2" ${m.forme === "remarque" ? 'stroke-dasharray="6 3"' : ""} ${fin}/>`; }
+  else if (m.forme === "marge") s += `<rect x="${X(m.x0)}" y="${Y(m.y0)}" width="${X(m.x1 - m.x0)}" height="${Y(m.y1 - m.y0)}" rx="5" fill="${coul}" style="mix-blend-mode:multiply"/>`;
+  else scSegments(m, p).forEach(r => { s += `<rect x="${X(r[0])}" y="${Y(r[1])}" width="${X(r[2] - r[0])}" height="${Y(r[3] - r[1])}" fill="${coul}55" style="mix-blend-mode:multiply"/>`; });
+  if (m.forme === "faute" && m.num) { const cx = X(0.022 + (m.rang || 0) * 0.03), cy = Y((m.y0 + m.y1) / 2); s += `<circle cx="${cx}" cy="${cy}" r="11" fill="${coul}"/><text x="${cx}" y="${+cy + 4.5}" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="system-ui">${m.num}</text>`; }
   if (sel) { s += `<rect x="${X(m.x0) - 3}" y="${Y(m.y0) - 3}" width="${X(m.x1 - m.x0) + 6}" height="${+Y(m.y1 - m.y0) + 6}" fill="none" stroke="#2b2520" stroke-dasharray="6 4" stroke-width="1.5"/>`;
     [["a", m.x0, m.y0], ["b", m.x1, m.y1]].forEach(([h, x, y]) => { s += `<rect class="sc-poignee" data-p="${h}" x="${X(x) - 7}" y="${Y(y) - 7}" width="14" height="14" fill="#fff" stroke="#2b2520" stroke-width="2"/>`; }); }
   return s + "</g>";
 }
 // les fautes de la copie, numérotées dans l'ordre de la copie ; la banque des formes du paquet, numérotée à la première rencontre
 function scBanque() { const vu = {}; const L = []; SC.copies.forEach(k => Object.values(scCopie(k).marques).filter(m => m.forme === "faute" && m.bonne).sort((a, b) => a.creeLe < b.creeLe ? -1 : 1).forEach(m => { if (!vu[m.bonne]) { vu[m.bonne] = { forme: m.bonne, copies: new Set(), le: m.creeLe }; L.push(vu[m.bonne]); } vu[m.bonne].copies.add(k); })); return L.sort((a, b) => a.le < b.le ? -1 : 1); }
-function scNumeroter(k) { const pg = scPagesDe(k).map(p => p.id); scFautes(k).sort((a, b) => (pg.indexOf(a.page) - pg.indexOf(b.page)) || (a.y0 - b.y0) || (a.x0 - b.x0)).forEach((m, i) => { m.num = i + 1; }); }
+function scNumeroter(k) { const pg = scPagesDe(k).map(p => p.id); const L = scFautes(k).sort((a, b) => (pg.indexOf(a.page) - pg.indexOf(b.page)) || (a.y0 - b.y0) || (a.x0 - b.x0)); L.forEach((m, i) => { m.num = i + 1; m.rang = L.slice(0, i).filter(x => x.page === m.page && Math.abs((x.y0 + x.y1) / 2 - (m.y0 + m.y1) / 2) < 0.012).length; }); }
 // ── poser, déplacer, effacer, annuler ──
 function scPoser(m) { const k = scK(); m.id = scId("marque"); m.eleve = k; m.creeLe = m.modifieLe = new Date().toISOString(); scCopie(k).marques[m.id] = m; SC.annule.push({ t: "pose", k, id: m.id });
   if (m.q != null && m.point && (m.sens === "non" || m.sens === "oui")) { const s = scCopie(k); s.rep[m.point] = s.rep[m.point] || {}; s.rep[m.point][m.q] = m.sens === "non" ? "n" : "o"; }
@@ -260,20 +265,25 @@ function scPointeur(ev) {
   SC.trace = { page: p.id, x0: a.x, y0: a.y, x1: a.x, y1: a.y, forme: o.forme };
   const mv = e => { const b = at(e); SC.trace.x1 = b.x; SC.trace.y1 = b.y; scDessinerPages(); };
   const up = () => { removeEventListener("pointermove", mv); removeEventListener("pointerup", up); const t = SC.trace; SC.trace = null; if (!t) return;
-    if (Math.abs(t.x1 - t.x0) < 0.012 && Math.abs(t.y1 - t.y0) < 0.008) { t.x0 -= 0.045; t.x1 += 0.045; }   // un clic sans glisser : la taille d'un mot
+    if (Math.abs(t.x1 - t.x0) < 0.012 && Math.abs(t.y1 - t.y0) < 0.008) { const w = scMotSous(t.page, t.x0, t.y0); if (w) Object.assign(t, w); else { t.x0 -= 0.045; t.x1 += 0.045; } }   // un clic sans glisser : le mot sous le clic, lu dans l'encre
     const P = scP(), pt = scPt();
-    const m = scCaler({ page: t.page, forme: o.forme, sens: o.sens, passe: o.forme === "faute" || o.forme === "etoile" ? "langue" : P.id, point: o.forme === "etoile" ? "etoile" : pt && pt.id, q: pt && !pt.calcul && o.forme !== "etoile" ? SC.iq : null, x0: t.x0, y0: t.y0, x1: t.x1, y1: t.y1, bonne: null }, p);
-    scPoser(m); SC.sel = m.id; if (o.forme === "etoile") SC.outil = null; scRendre(); if (o.forme === "faute") scChampOuvrir(m); };
+    const m = scCaler({ page: t.page, forme: o.forme, sens: o.sens, passe: o.forme === "faute" || o.forme === "etoile" ? "langue" : P.id, point: o.forme === "etoile" ? "etoile" : o.forme === "remarque" ? "remarque" : o.forme === "faute" ? "orthographe" : pt && pt.id, q: pt && !pt.calcul && ["etoile", "remarque", "faute"].indexOf(o.forme) < 0 ? SC.iq : null, x0: t.x0, y0: t.y0, x1: t.x1, y1: t.y1, bonne: null }, p);
+    scPoser(m); SC.sel = m.id; if (["etoile", "remarque", "faute"].indexOf(SC.outil) >= 0) SC.outil = null; scRendre(); if (o.forme === "faute" || o.forme === "remarque") scChampOuvrir(m); };
   addEventListener("pointermove", mv); addEventListener("pointerup", up); ev.preventDefault();
 }
 // le champ de la bonne forme, sous la faute : une forme neuve, ou son numéro dans la banque du paquet
 function scChampOuvrir(m) {
   scChampFermer(false); const pg = document.querySelector(`.sc-page[data-p="${m.page}"]`); if (!pg) return;
   const d = document.createElement("div"); d.className = "sc-champ"; d.style.left = (m.x0 * 100) + "%"; d.style.top = (m.y1 * 100 + 1) + "%";
-  d.innerHTML = `<span>bonne forme :</span><input id="scChampIn" autocomplete="off" spellcheck="false" title="Tape la bonne forme, ou son numéro dans les formes déjà vues, puis Entrée. Entrée seule : la faute reste, sans bonne forme (l'élève te l'enverra à relire).">`;
-  pg.appendChild(d); SC.champ = { id: m.id, el: d };
-  const inp = d.querySelector("input"); inp.value = m.bonne || ""; setTimeout(() => inp.focus({ preventScroll: true }), 0);
+  const rq = m.forme === "remarque"; if (rq) { d.style.borderColor = "#6b1a2a"; }
+  d.innerHTML = rq ? `<span>ta remarque :</span><input id="scChampIn" autocomplete="off" style="width:320px" title="Ta remarque, telle que l'élève la lira à cet endroit de sa copie, puis Entrée. Échap : la remarque reste vide.">`
+    : `<span>bonne forme :</span><input id="scChampIn" autocomplete="off" spellcheck="false" title="Tape la bonne forme, ou son numéro dans les formes déjà vues, puis Entrée. En tapant, les formes du paquet qui commencent pareil s'affichent : Tab prend la première. Entrée seule : la faute reste, sans bonne forme (l'élève te l'enverra à relire)."><div class="sc-sugg"></div>`;
+  pg.appendChild(d); SC.champ = { id: m.id, el: d, rq };
+  const inp = d.querySelector("input"); inp.value = (rq ? m.texte : m.bonne) || ""; setTimeout(() => inp.focus({ preventScroll: true }), 0);
+  const sug = () => { const z = d.querySelector(".sc-sugg"); if (!z) return []; const v = inp.value.trim().toLowerCase(); const L = v && !/^\d+$/.test(v) ? scBanque().map(b => b.forme).filter(f => f.toLowerCase().startsWith(v) && f.toLowerCase() !== v).slice(0, 5) : []; z.innerHTML = L.map((f, i) => `<span${i ? "" : ' class="on"'}>${escapeHtml(f)}</span>`).join(""); return L; };
+  inp.addEventListener("input", sug);
   inp.addEventListener("keydown", e => { e.stopPropagation();
+    if (e.key === "Tab" && !rq) { const L = sug(); if (L.length) { e.preventDefault(); inp.value = L[0]; sug(); } return; }
     if (e.key === "Enter") { e.preventDefault(); scChampFermer(true); scRendre(); }
     else if (e.key === "Escape") { e.preventDefault(); scChampFermer(false); scRendre(); } });
 }
@@ -281,7 +291,8 @@ function scChampOuvrir(m) {
 function scChampFermer(garder) {
   const c = SC.champ; SC.champ = null; if (!c) return; const inp = c.el && c.el.querySelector("input");
   if (garder !== false && inp && scK()) { const v = inp.value.trim(); const mm = scCopie(scK()).marques[c.id];
-    if (mm && v !== (mm.bonne || "")) { const B = scBanque(); mm.bonne = /^\d{1,3}$/.test(v) && B[+v - 1] ? B[+v - 1].forme : (v || null); mm.modifieLe = new Date().toISOString(); saveState(); } }
+    if (mm && c.rq) { if (v !== (mm.texte || "")) { mm.texte = v; mm.modifieLe = new Date().toISOString(); saveState(); } }
+    else if (mm && v !== (mm.bonne || "")) { const B = scBanque(); mm.bonne = /^\d{1,3}$/.test(v) && B[+v - 1] ? B[+v - 1].forme : (v || null); mm.modifieLe = new Date().toISOString(); saveState(); } }
   if (c.el) c.el.remove();
 }
 // ── le clavier ──
@@ -312,25 +323,25 @@ function scRendre() {
     return `<button class="sc-passe${i === SC.passe ? " on" : ""}" style="--c:${SC_CRIT[p.crit] || "#6b1a2a"}" onclick="scAllerPasse(${i})" title="${p.id === "retours" ? "Relire ce que les élèves t'ont renvoyé, case par case : Entrée, c'est bon ; N, à refaire." : "Passer toutes les copies sur « " + escapeAttr(p.nom) + " » : un critère à la fois, les copies défilent."}"><i>${i + 1}</i>${escapeHtml(p.nom)}<b>${fait}</b></button>`; }).join("");
   const ch = k && P ? (scCopie(k).chrono[P.id] || 0) : 0; document.getElementById("scChrono").textContent = "⏱ " + Math.floor(ch / 60000) + ":" + String(Math.floor(ch / 1000) % 60).padStart(2, "0") + " sur cette copie";
   const man = scManquantes(); document.getElementById("scManque").innerHTML = man.length ? `⚠ ${man.length} page${man.length > 1 ? "s" : ""} de ce paquet ne ${man.length > 1 ? "sont" : "est"} pas dans ce navigateur : remets ton paquet (clé USB) avec « Charger le paquet ». Les marques reviendront d'elles-mêmes.` : "";
-  scDessinerPages(); scPanneau(); scPaquet();
+  scDessinerPages(); scPanneau(); scPaquet(); scBande(); scZoomAffiche(); scTitreCopie();
   const cur = { passe: P && P.id, copie: k || null, point: scPt() ? scPt().id : null, q: SC.iq };   // l'endroit exact, par identités
   if (JSON.stringify(cur) !== JSON.stringify(state.scanCurseur || null)) { state.scanCurseur = cur; saveState(); }
 }
 function scPagesAffichees() { if (SC.attrib) { const p = scPagesOrdre()[SC.ia]; return p ? [p] : []; } const k = scK(); return k ? scPagesDe(k) : []; }
 function scDessinerPages() {
   const Z = document.getElementById("scCopie"); const ps = scPagesAffichees(); const P = scP();
-  if (!ps.length) { Z.innerHTML = `<div class="sc-vide">${Object.keys(SC.pages).length ? "Aucune copie à afficher." : "Charge ton paquet scanné (PDF ou photos) : il reste dans ce navigateur, jamais au site."}</div>`; return; }
-  if (P.id === "retours" && !SC.attrib) { scDessinerRetour(Z); return; }
-  const W = Z.clientWidth - 16, H = Z.clientHeight - 12; const somme = ps.reduce((a, p) => a + p.w / p.h, 0); const h = Math.min(H, W / somme);
+  if (!ps.length) { Z.dataset.sig = ""; Z.innerHTML = Object.keys(SC.pages).length ? `<div class="sc-vide">Aucune copie à afficher.</div>` : `<label class="sc-vide sc-vide-btn" title="Choisir ton paquet scanné, sur ta clé : un PDF, ou des photos (plusieurs à la fois). Il reste dans ce navigateur, jamais au site.">📄 Charger le paquet<small>un PDF ou des photos · il reste dans ce navigateur, jamais au site</small><input type="file" accept="application/pdf,.pdf,image/*" multiple onchange="scCharger(event)" hidden></label>`; return; }
+  if (P.id === "retours" && !SC.attrib) { Z.dataset.sig = ""; scDessinerRetour(Z); return; }
+  const lw = Math.max(240, Z.clientWidth - 30) * (SC.zoom || 1);   // la page à la largeur de la zone, fois ton zoom
   const o = scOutil(); const curseur = SC.recadre ? "crosshair" : SC.attrib ? "default" : scCurseur(o ? o.coul : "#6b1a2a");
   let html = ""; const champ = SC.champ ? SC.champ.id : null;
   ps.forEach(p => { const im = SC.imgs[p.id]; const Hs = Math.round(1000 * p.h / p.w);
     let svg = ""; if (!SC.attrib) { const ms = scMarquesPage(p.id).filter(scVisible); ms.forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); }
     if (SC.trace && SC.trace.page === p.id) { const t = SC.trace; svg += `<rect x="${Math.min(t.x0, t.x1) * 1000}" y="${Math.min(t.y0, t.y1) * Hs}" width="${Math.abs(t.x1 - t.x0) * 1000}" height="${Math.abs(t.y1 - t.y0) * Hs}" fill="none" stroke="${o ? o.coul : "#333"}" stroke-width="2" stroke-dasharray="5 4"/>`; }
-    html += `<div class="sc-page${p.blanche ? " blanche" : ""}" data-p="${p.id}" style="width:${Math.round(h * p.w / p.h)}px;height:${Math.round(h)}px;cursor:${curseur}">${im ? `<img src="${im.url}" alt="" draggable="false">` : `<div class="sc-absente">Page absente de ce navigateur</div>`}<svg viewBox="0 0 1000 ${Hs}" preserveAspectRatio="none">${svg}</svg></div>`; });
-  const sig = ps.map(p => p.id + ":" + Math.round(h)).join("|") + "|" + curseur + "|" + (SC.attrib ? 1 : 0);
+    html += `<div class="sc-page${p.blanche ? " blanche" : ""}" data-p="${p.id}" style="width:${Math.round(lw)}px;height:${Math.round(lw * p.h / p.w)}px;cursor:${curseur}">${im ? `<img src="${im.url}" alt="" draggable="false">` : `<div class="sc-absente">Page absente de ce navigateur</div>`}<svg viewBox="0 0 1000 ${Hs}" preserveAspectRatio="none">${svg}</svg></div>`; });
+  const sig = ps.map(p => p.id + ":" + p.w + "x" + p.h).join("|") + "|" + (SC.attrib ? 1 : 0);
   const garde = Z.dataset.sig === sig && Z.querySelectorAll(".sc-page").length === ps.length;
-  if (garde) { Z.querySelectorAll(".sc-page").forEach(e => { e.style.cursor = curseur; }); Z.querySelectorAll(".sc-page svg").forEach((s, i) => { const p = ps[i]; if (!p) return; const Hs = Math.round(1000 * p.h / p.w); let svg = ""; scMarquesPage(p.id).filter(scVisible).forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); s.innerHTML = svg; }); return; }
+  if (garde) { Z.querySelectorAll(".sc-page").forEach((e, i) => { e.style.cursor = curseur; const p = ps[i]; if (p) { e.style.width = Math.round(lw) + "px"; e.style.height = Math.round(lw * p.h / p.w) + "px"; } }); Z.querySelectorAll(".sc-page svg").forEach((s, i) => { const p = ps[i]; if (!p) return; const Hs = Math.round(1000 * p.h / p.w); let svg = ""; scMarquesPage(p.id).filter(scVisible).forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); s.innerHTML = svg; }); return; }
   Z.innerHTML = html; Z.dataset.sig = sig;
   if (champ) { const m = scCopie(scK()).marques[champ]; SC.champ = null; if (m) scChampOuvrir(m); }
 }
@@ -343,6 +354,7 @@ function scPanneau() {
   if (!k) { Z.innerHTML = `<div class="sc-bloc"><h3>Le paquet</h3><p>Charge ton paquet, puis donne à chaque page les initiales de son élève.</p></div>`; return; }
   const s = scCopie(k); const pt = scPt(); let h = "";
   h += `<div class="sc-bloc"><h3>Passe ${SC.passe + 1} · ${escapeHtml(P.nom)} · copie ${SC.ic + 1} sur ${SC.copies.length}</h3><div class="sc-nom">${escapeHtml(nomEleveDe(k) || k)}</div>`;
+  h += `<div class="sc-outils"><button class="sc-btn${SC.outil === "remarque" ? " on" : ""}" onclick="SC.outil=SC.outil==='remarque'?null:'remarque';scRendre()" title="Le pinceau de ta remarque : un tracé (un cadre en pointillé), puis tu tapes ta phrase ; l'élève la lit à cet endroit de sa copie. Un seul tracé, puis le pinceau revient à la question.">💬 Remarque</button>${P.id !== "langue" ? `<button class="sc-btn${SC.outil === "faute" ? " on" : ""}" onclick="SC.outil=SC.outil==='faute'?null:'faute';scRendre()" title="Une faute vue pendant cette passe : un tracé souligné en rouge, puis sa bonne forme ; elle compte avec celles de la langue. Un seul tracé, puis le pinceau revient à la question.">Faute</button>` : ""}<button class="sc-btn${SC.toutVoir ? " on" : ""}" onclick="SC.toutVoir=!SC.toutVoir;scRendre()" title="Voir aussi les marques des autres passes (les fautes, les autres critères). Clique encore pour ne voir que celles de cette passe.">👁 Toutes les marques</button><button class="sc-btn" onclick="scReplier(true)" title="Replier ce panneau : la copie prend toute la largeur ; la question en cours reste dans une bande en haut. Entrée, N et les flèches marchent pareil.">⇥ Replier</button></div>`;
   h += `<div class="sc-pts">${P.pts.map((p, i) => { const r = scCase(p, k); return `<span class="${i === SC.ip ? "on" : ""}" style="${r && r.complet ? "border-color:" + SC_COUL[r.c.niveau] : ""}">${i + 1} · ${escapeHtml(p.titre)}${r && r.complet ? " ✓" : ""}</span>`; }).join("")}</div></div>`;
   if (pt) {
     const rep = s.rep[pt.id] || {};
@@ -420,9 +432,9 @@ function scVerdict(v) { const L = scRetoursListe(); const r = L[SC.ir]; if (!r) 
   // l'onglet de test de l'élève reçoit ton verdict, comme l'élève le reçoit du site
   scPousser(r.eleve); SC.ir = Math.min(SC.ir + 1, L.length - 1); scRendre(); }
 // ── l'aide, la fenêtre ──
-RU_AIDES.scan = { ou: "Corriger sur les scans", l: [["le pinceau", "appuie, glisse, lâche : la forme vient avec la question (souligné rouge, une faute ; surligné, une citation ; encadré, un mot ; trait dans la marge, un paragraphe)"], ["Entrée / N", "oui · non, puis la question suivante ; une marque qui répond « non » ou « oui » répond pour toi"], ["⌫", "la question précédente"], ["→ ←", "la copie suivante · précédente ; dans les retours : le retour suivant · précédent"], ["clic sur une marque", "la choisir ; tire-la, ou ses poignées"], ["Suppr · Ctrl+Z", "effacer la marque choisie · annuler"], ["★", "la phrase qui t'a touché, surlignée en doré (passe de la langue)"], ["le paquet", "il reste dans ce navigateur et sur ta clé, jamais au site ; les marques et les réponses vont au site, chacune avec son identité"]] };
+RU_AIDES.scan = { ou: "Corriger sur les scans", l: [["le pinceau", "appuie, glisse, lâche : la forme vient avec la question (souligné rouge, une faute ; surligné, une citation ; encadré, un mot ; trait dans la marge, un paragraphe)"], ["Entrée / N", "oui · non, puis la question suivante ; une marque qui répond « non » ou « oui » répond pour toi"], ["⌫", "la question précédente"], ["→ ←", "la copie suivante · précédente ; dans les retours : le retour suivant · précédent"], ["clic sur une marque", "la choisir ; tire-la, ou ses poignées"], ["Suppr · Ctrl+Z", "effacer la marque choisie · annuler"], ["★", "la phrase qui t'a touché, surlignée en doré (passe de la langue)"], ["Ctrl + molette", "zoomer, sous la souris ; « ↔ Largeur » revient à la largeur de l'écran"], ["Maj (tenue)", "la loupe : un rond grossi trois fois sous la souris"], ["Alt (tenue)", "la copie nue : les marques disparaissent tant que tu tiens la touche"], ["un clic sur un mot", "le trait prend la longueur du mot, lue dans l'encre (glisse si l'appli se trompe)"], ["Tab", "dans la bonne forme : prend la première forme du paquet qui commence pareil"], ["💬 Remarque · Faute", "un tracé avec ce pinceau, puis le pinceau revient à la question"], ["⇥ Replier", "la copie prend la largeur ; la question reste dans une bande"], ["le paquet", "il reste dans ce navigateur et sur ta clé, jamais au site ; les marques et les réponses vont au site, chacune avec son identité"]] };
 document.addEventListener("focusout", () => setTimeout(() => { if (SC.panneauAttend && SC.ouvert) { const a = document.activeElement; if (!(a && document.getElementById("scPanneau").contains(a))) { SC.panneauAttend = false; scPanneau(); } } }, 0));
-function scModale(h) { const m = document.getElementById("scModale"); m.querySelector(".sc-modale-c").innerHTML = h + `<div style="text-align:right;margin-top:10px"><button class="sc-btn" onclick="scModaleFermer()">Fermer</button></div>`; m.classList.add("show"); }
+function scModale(h) { const m = document.getElementById("scModale"); m.querySelector(".sc-modale-c").innerHTML = h + `<div style="text-align:right;margin-top:10px"><button class="sc-btn" onclick="scModaleFermer()" title="Fermer cette fenêtre (Échap fait pareil) ; rien n'est perdu.">Fermer</button></div>`; m.classList.add("show"); }
 function scModaleFermer() { document.getElementById("scModale").classList.remove("show"); }
 addEventListener("resize", () => { if (SC.ouvert) scDessinerPages(); });
 // ── les copies vierges de l'appli : quatre repères aux coins, les lignes à leur place ; au scan, la page est remise droite
@@ -486,7 +498,7 @@ function scTournerPage(pid) {
   createImageBitmap(im.blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); const r = scTourner(c, 270);
     p.rot = (((p.rot || 0) + 270) % 360); if (p.recadre) { const [a0, b0, c0, d0] = p.recadre; p.recadre = [1 - d0, a0, 1 - b0, c0]; } p.w = r.width; p.h = r.height; p.lignes = scLignes(r); p.blanche = false; p.modifieLe = new Date().toISOString();
     Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; const [a, b, c2, d] = [m.x0, m.y0, m.x1, m.y1]; m.x0 = 1 - d; m.x1 = 1 - b; m.y0 = a; m.y1 = c2; m.l0 = m.l1 = null; m.modifieLe = p.modifieLe; }); });
-    r.toBlob(b => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = { url: URL.createObjectURL(b), w: r.width, h: r.height, blob: b }; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: b, w: r.width, h: r.height, le: p.modifieLe });
+    r.toBlob(b => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = scImg(b, r.width, r.height); if (SC.encres) delete SC.encres[pid]; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: b, w: r.width, h: r.height, le: p.modifieLe });
       ruEcrire(scChemin(["pages", pid]), p, "une page tournée"); saveState(); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }, "image/jpeg", 0.82); });
 }
 // ⇄ : la dernière page de la copie passe en premier (une copie de deux pages photographiée dans le désordre)
@@ -503,6 +515,78 @@ function scRecadrerFin(pid, t) {
     const R0 = p.recadre || [0, 0, 1, 1], W = R0[2] - R0[0], H = R0[3] - R0[1]; p.recadre = [R0[0] + a * W, R0[1] + b * H, R0[0] + c * W, R0[1] + d * H].map(v => +v.toFixed(4));
     p.w = r.width; p.h = r.height; p.lignes = scLignes(r); p.modifieLe = new Date().toISOString();
     Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; m.x0 = (m.x0 - a) / (c - a); m.x1 = (m.x1 - a) / (c - a); m.y0 = (m.y0 - b) / (d - b); m.y1 = (m.y1 - b) / (d - b); m.l0 = m.l1 = null; m.modifieLe = p.modifieLe; }); });
-    r.toBlob(bl => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = { url: URL.createObjectURL(bl), w: r.width, h: r.height, blob: bl }; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: bl, w: r.width, h: r.height, le: p.modifieLe });
+    r.toBlob(bl => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = scImg(bl, r.width, r.height); if (SC.encres) delete SC.encres[pid]; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: bl, w: r.width, h: r.height, le: p.modifieLe });
       ruEcrire(scChemin(["pages", pid]), p, "une page recadrée"); saveState(); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }, "image/jpeg", 0.82); });
+}
+
+// ── 1417 : le mot sous le clic, lu dans l'encre de la page (une image d'analyse par page, gardée en mémoire) ──
+function scEncrePage(pid) {
+  SC.encres = SC.encres || {}; if (SC.encres[pid]) return SC.encres[pid]; const im = SC.imgs[pid]; if (!im || !im.el) return null;
+  const W = 900, H = Math.round(W * im.h / im.w), cv = document.createElement("canvas"); cv.width = W; cv.height = H; const x = cv.getContext("2d"); x.drawImage(im.el, 0, 0, W, H);
+  const d = x.getImageData(0, 0, W, H).data, lum = new Float32Array(W * H); for (let i = 0; i < W * H; i++) lum[i] = (d[i * 4] + d[i * 4 + 1] + d[i * 4 + 2]) / 3;
+  const I = new Float64Array((W + 1) * (H + 1)); for (let y = 0; y < H; y++) { let a = 0; for (let k = 0; k < W; k++) { a += lum[y * W + k]; I[(y + 1) * (W + 1) + k + 1] = I[y * (W + 1) + k + 1] + a; } }
+  const e = new Uint8Array(W * H), R = 12; for (let y = 0; y < H; y++) for (let k = 0; k < W; k++) { const x0 = Math.max(0, k - R), x1 = Math.min(W, k + R + 1), y0 = Math.max(0, y - R), y1 = Math.min(H, y + R + 1);
+    const m = (I[y1 * (W + 1) + x1] - I[y0 * (W + 1) + x1] - I[y1 * (W + 1) + x0] + I[y0 * (W + 1) + x0]) / ((x1 - x0) * (y1 - y0)); const o = (y * W + k) * 4; e[y * W + k] = lum[y * W + k] < m - 28 && !(d[o] > d[o + 1] + 30 && d[o] > d[o + 2] + 30) ? 1 : 0; }
+  return SC.encres[pid] = { W, H, e };
+}
+function scMotSous(pid, x, y, reglage) {
+  const R = reglage || {}, E = scEncrePage(pid); if (!E) return null; const { W, H, e } = E; const cx = Math.round(x * W), cy = Math.round(y * H), bh = Math.max(4, Math.round(H * 0.009));
+  // la bande de la ligne cliquée : le creux d'encre le plus proche au-dessus du clic, et au-dessous (une ligne écrite ≈ 2,7 % de la hauteur de la page) ; jamais la ligne voisine
+  const fx0 = Math.max(0, cx - Math.round(W * 0.06)), fx1 = Math.min(W - 1, cx + Math.round(W * 0.06));
+  const rg = yy => { if (yy < 0 || yy >= H) return 0; let n = 0; for (let k = fx0; k <= fx1; k++) n += e[yy * W + k]; return n; };
+  const lisse = yy => rg(yy - 1) + rg(yy) + rg(yy + 1);
+  let haut = Math.max(0, cy - 2 * bh), bas = Math.min(H - 1, cy + 2 * bh), m = Infinity;
+  for (let yy = cy - Math.round(bh * 0.3); yy >= Math.max(0, cy - Math.round(bh * 2.2)); yy--) { const v = lisse(yy); if (v < m) { m = v; haut = yy; } }
+  m = Infinity; for (let yy = cy + Math.round(bh * 0.3); yy <= Math.min(H - 1, cy + Math.round(bh * 2.2)); yy++) { const v = lisse(yy); if (v < m) { m = v; bas = yy; } }
+  const col = k => { let n = 0; for (let yy = haut; yy <= bas; yy++) n += e[yy * W + k]; return n; };
+  // l'écart qui sépare deux mots se lit sur la ligne même : ses blancs font deux familles, entre deux lettres (petits) et entre deux mots (grands) ; la coupure se cherche à l'échelle des rapports, pour qu'un grand vide (fin de ligne, correcteur blanc) ne l'emporte pas ; jamais sous 0,65 % de la largeur (une lettre levée dans un mot attaché)
+  let gap = Math.round(W * (R.ecart || 0.009));
+  if (!R.ecart) { const bl = []; let run = 0, vu = false; for (let k = Math.max(0, cx - Math.round(W * 0.3)); k <= Math.min(W - 1, cx + Math.round(W * 0.3)); k++) { if (col(k) > 1) { if (vu && run) bl.push(Math.log(Math.min(run, W * 0.03))); run = 0; vu = true; } else if (vu) run++; }
+    if (bl.length >= 6) { const s = bl.sort((p, q) => p - q), moy = t => t.reduce((p, q) => p + q, 0) / t.length; let best = -1, seuil = Math.log(gap);
+      for (let t = 1; t < s.length; t++) { const A = s.slice(0, t), B = s.slice(t), v = A.length * B.length * Math.pow(moy(A) - moy(B), 2); if (v > best) { best = v; seuil = (s[t - 1] + s[t]) / 2; } }
+      gap = Math.max(Math.round(W * (R.plancher || 0.0065)), Math.min(Math.round(W * 0.016), Math.floor(Math.exp(seuil)))); } }
+  let a = -1; for (let r = 0; r < Math.round(W * 0.02) && a < 0; r++) { if (cx + r < W && col(cx + r) > 1) a = cx + r; else if (cx - r >= 0 && col(cx - r) > 1) a = cx - r; } if (a < 0) return null;
+  let x0 = a, vide = 0; for (let k = a - 1; k >= 0; k--) { if (col(k) > 1) { x0 = k; vide = 0; } else if (++vide > gap) break; }
+  let x1 = a; vide = 0; for (let k = a + 1; k < W; k++) { if (col(k) > 1) { x1 = k; vide = 0; } else if (++vide > gap) break; }
+  if ((x1 - x0) > W * 0.4 || (x1 - x0) < W * 0.01) return null;   // pas un mot : une ligne entière, la réglure, ou une poussière
+  let y0 = bas, y1 = haut; for (let yy = haut; yy <= bas; yy++) { let n = 0; for (let k = x0; k <= x1; k++) n += e[yy * W + k]; if (n > 1) { if (yy < y0) y0 = yy; if (yy > y1) y1 = yy; } }
+  if (y1 < y0) { y0 = haut; y1 = bas; }
+  return { x0: (x0 - 2) / W, x1: (x1 + 2) / W, y0: (y0 - 1) / H, y1: (y1 + 1) / H };
+}
+// l'infobulle de la copie : ce que fait la souris sur la copie, à cet instant (le pinceau change avec la question)
+function scTitreCopie() {
+  const Z = document.getElementById("scCopie"); if (!Z) return; const vue = " Ctrl + molette : zoom. Maj tenue : la loupe. Alt tenue : la copie sans marques.";
+  let t;
+  if (!Object.keys(SC.pages).length) t = "Ton paquet de copies s'affichera ici. Clique au milieu pour le charger : un PDF ou des photos.";
+  else if (SC.recadre) t = "Trace le cadre de la feuille : appuie à un coin, glisse jusqu'à l'autre coin, lâche. Échap annule.";
+  else if (SC.attrib) t = "La page à donner à un élève : tape ses initiales à droite, Entrée." + vue;
+  else if (scP() && scP().id === "retours") t = "La copie de l'élève dont tu relis le retour, avec tes marques." + vue;
+  else { const o = scOutil(); const f = o ? o.forme : "encadre";
+    const dit = { faute: "souligne une faute", etoile: "surligne en or la phrase qui t'a touché", remarque: "encadre un passage, puis tu tapes ta remarque", surligne: "surligne une citation", marge: "trace un trait dans la marge, le long d'un paragraphe", encadre: "encadre un mot" }[f] || "pose une marque";
+    t = "Le pinceau " + dit + " : appuie, glisse, lâche." + (f === "marge" ? "" : " Un clic sans glisser prend le mot sous la souris.") + " Un clic sur une marque la choisit : Suppr l'efface, Ctrl + Z la remet." + vue; }
+  if (Z.title !== t) Z.title = t;
+}
+// ── 1410 : le zoom (Ctrl + molette, sous la souris) ; 1411 : la loupe (Maj) ; 1416 : la copie nue (Alt) ; 1412 : le panneau replié ──
+try { SC.zoom = +(localStorage.getItem("mjpc_scan_zoom") || 1) || 1; } catch (e) { SC.zoom = 1; }
+function scZoomAffiche() { const b = document.getElementById("scZoom"); if (b) b.textContent = Math.abs(SC.zoom - 1) < 0.01 ? "↔ Largeur" : "🔍 " + Math.round(SC.zoom * 100) + " %"; }
+function scZoomLargeur() { SC.zoom = 1; try { localStorage.setItem("mjpc_scan_zoom", "1"); } catch (e) {} scDessinerPages(); scZoomAffiche(); }
+(function () {
+  const Z = document.getElementById("scCopie"); if (!Z) return;
+  Z.addEventListener("wheel", e => { if (!e.ctrlKey || !SC.ouvert) return; e.preventDefault(); const r = Z.getBoundingClientRect(); const fy = (Z.scrollTop + e.clientY - r.top) / Math.max(1, Z.scrollHeight), fx = (Z.scrollLeft + e.clientX - r.left) / Math.max(1, Z.scrollWidth);
+    SC.zoom = Math.max(0.5, Math.min(4, SC.zoom * (e.deltaY < 0 ? 1.12 : 1 / 1.12))); try { localStorage.setItem("mjpc_scan_zoom", String(SC.zoom)); } catch (x) {}
+    scDessinerPages(); Z.scrollTop = fy * Z.scrollHeight - (e.clientY - r.top); Z.scrollLeft = fx * Z.scrollWidth - (e.clientX - r.left); scZoomAffiche(); }, { passive: false });
+  const L = document.getElementById("scLoupe");
+  Z.addEventListener("mousemove", e => { const pg = e.target.closest && e.target.closest(".sc-page"); const im = pg && SC.imgs[pg.dataset.p];
+    if (!e.shiftKey || !pg || !im || !L) { if (L) L.hidden = true; return; } const r = pg.getBoundingClientRect(), k = 3, D = 240;
+    L.hidden = false; L.style.left = (e.clientX - D / 2) + "px"; L.style.top = (e.clientY - D / 2) + "px"; L.style.backgroundImage = "url(" + im.url + ")";
+    L.style.backgroundSize = (r.width * k) + "px " + (r.height * k) + "px"; L.style.backgroundPosition = (-(e.clientX - r.left) * k + D / 2) + "px " + (-(e.clientY - r.top) * k + D / 2) + "px"; });
+  addEventListener("keyup", e => { if (e.key === "Shift" && L) L.hidden = true; if (e.key === "Alt") { document.body.classList.remove("sc-nue"); if (SC.ouvert) e.preventDefault(); } });
+  addEventListener("keydown", e => { if (e.key === "Alt" && SC.ouvert) { document.body.classList.add("sc-nue"); e.preventDefault(); } });
+  addEventListener("blur", () => { document.body.classList.remove("sc-nue"); if (L) L.hidden = true; });
+})();
+function scReplier(v) { SC.replie = v; document.getElementById("scanEcran").classList.toggle("sc-replie", !!v); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }
+function scBande() {
+  const B = document.getElementById("scBande"); if (!B) return; if (!SC.replie || SC.attrib) { B.hidden = true; return; } B.hidden = false; const P = scP(), pt = scPt(), k = scK();
+  const q = pt && !pt.calcul ? scQ(pt, SC.iq) : null; const r = pt && k ? scCase(pt, k) : null;
+  B.innerHTML = `<b>${escapeHtml(P.nom)}</b> · ${escapeHtml(pt ? pt.titre : "")}${q ? " · " + escapeHtml(q.texte) : ""}${r && r.complet ? ` · <span style="color:${SC_COUL[r.c.niveau]}">●</span> ${escapeHtml(r.txt)}` : ""} <span class="sc-m">— Entrée oui · N non · → copie suivante</span><button class="sc-btn" onclick="scReplier(false)" title="Déplier le panneau de droite : les questions, la case, les copies déjà vues, les touches.">⇤ Déplier</button>`;
 }

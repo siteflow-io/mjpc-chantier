@@ -307,7 +307,7 @@ MEMO
 30/10/2026 15:54
 MEMO
 
-## Tour 12 — 30/10/2026 15:57 → 16:00
+## Tour 12 — 30/10/2026 15:57 → 15:58
 
 **Paul :** Je viens d'avoir une idée. j'ai les photos des copies: donc je les vois à la verticale. Il faudrait un mode où je recopie la copie directement. Et là elle devient numérique. Je la recopie avec ses fautes etc. quelles seraient les possibilités ensuite? ça ne me dérange pas de recopier les copies, si la correction derrière est extrêmement accélérée.
 
@@ -327,5 +327,5 @@ MEMO
 
 À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
 
-30/10/2026 16:00
+30/10/2026 15:58
 MEMO

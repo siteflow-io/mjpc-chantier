@@ -467,3 +467,24 @@ MEMO
 
 30/10/2026 16:59
 MEMO
+
+## Tour 19 — 30/10/2026 17:43 → 17:47
+
+**Paul :** Pour la numérotation il faut que l'App cherche les lignes non? Et je recale celles qui sont de travers par des poignées à droite et à gauche? Ou trop complexe? Et pour la limite oui mais quel est l'impact ? Mesure
+
+**Fait.** Mesuré sur la capture de Paul de 15:19 (une partie de page réelle, 1 275 × 662 points d'écran, scratchpad privé `lignes/`) : encre = pixels sombres non rouges ; réglure et quadrillage retirés (traits horizontaux de 40 points et plus, verticaux de 30 et plus) ; profil horizontal lissé : 11 lignes trouvées (189, 241, 287, 334, 380, 422, 468, 517, 561, 606, 652 ; écarts 42 à 52), chacune vérifiée à l'œil sur l'image (`lignes-trouvees.png`, regardée, envoyée) : 11 lignes écrites sur 11, dont une ligne d'ajout de deux mots. Pente (pic de droite moins pic de gauche) : de 2 à 5 points pour 46 entre deux lignes. Place des mots : relevé à l'œil, sur 5 lignes zoomées avec une règle (`regle-a.png`, `regle-b.png`), le début et la fin de 44 mots et de 2 ratures ; centre prédit à la proportion des lettres entre le premier et le dernier mot : 33 sur 44 dans le bon mot (75 %) ; lignes sans rature ni grand blanc : 18 sur 18 ; ligne avec une rature : 4 sur 10 ; écart médian du centre : 0,22 largeur de mot. Segmentation automatique des mots sur cette capture : échouée sur 6 lignes sur 8 (résolution d'écran, quadrillage), non retenue. Registre ⑪ (production `9f7c4f5`).
+
+**Claude :** [capture : lignes-trouvees.png]
+
+À jouer : rien · en cours : rien · ouvert : 36 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+34. Les lignes : oui, l'app peut les chercher seule. Mesuré sur ta capture de 15:19 : 11 lignes écrites, 11 trouvées, y compris la ligne où l'élève n'a ajouté que deux mots (capture jointe, les lignes en vert). Tes poignées à gauche et à droite : ce n'est pas complexe, une ligne devient un trait à deux poignées, comme tes traits de faute aujourd'hui. Sur cette page, les lignes penchent peu : 2 à 5 points sur toute la largeur, pour 46 entre deux lignes. Mais c'est un morceau d'une seule page, et la n°13 avait trouvé le contraire sur trois photos (elle comptait aussi les lignes imprimées de la feuille ; moi, je les enlève d'abord).
+
+35. La limite, mesurée sur 5 lignes de la même copie (44 mots) : en plaçant chaque mot selon la place de ses lettres dans la ligne, l'app tombe sur le bon mot de la photo 33 fois sur 44 (75 %). Sur les lignes propres, 18 sur 18 ; elle se trompe là où l'élève a barré un mot ou laissé un grand blanc (4 sur 10 sur la ligne avec une rature). L'impact : aucun sur tes fautes, la grille, les citations, le texte de l'élève, son profil, ni sur la vérification de 20, qui montre la ligne entière. Il n'existe que si l'on veut montrer le mot exact sur la photo : une fois sur quatre, la marque tomberait sur le mot voisin. Je propose donc : sur la photo, la marque se met à la ligne, avec son numéro dans la marge ; le mot exact se lit sur le texte.
+
+36. Pour confirmer 34 sur des pages entières, tu m'envoies 3 ou 4 photos de copies ? Je les garde hors du sas.
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 17:47
+MEMO

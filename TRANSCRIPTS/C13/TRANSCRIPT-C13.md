@@ -9492,3 +9492,31 @@ MEMO
 30/10/2026 12:31
 MEMO
 
+## Tour 414 — 30/10/2026 12:33 → 12:36
+
+**Paul :** promeus.
+
+**Fait.** 1.2.0-RU copiée au sas `SAUVEGARDES/redaction-1.2.0-RU-avant-1.2.1-2026-10-30.html` (md5 `8d9457088ef3…`, identique). Point de retour inscrit avant la promotion (`docs/MJPC6-restauration.md`, commit `11bdd1e`). `redaction.html` = la candidate du tour 413 : commit `fd6fbc4`, blob `2f58817bc58b`, md5 `b0d4584e512aab05f741b5e833dc7f0c`, 531 283 o ; en ligne au 6e essai (≈ 1 min), md5 identique bit à bit. Essai à la fumée sur le fichier en ligne, au vrai site (lectures réelles, écritures interceptées) : version 1.2.1-RU, classe de 30, écran des scans ouvert, 51 questions, 1 écriture (le suivi), aucune erreur ; captures rangées en privé. Docs : registre (état de production 1.2.1, ⑥ ✔), journal, où-trouver-quoi (`&v=1.2.1-RU`), point de retour (promu) — commit `d756a46`.
+
+**Claude :**
+
+À jouer : F5 entre deux copies, puis les tests ci-dessous (1495) · en cours : rien · ouvert : 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1495. C'est en ligne et vérifié : la Rédaction 1.2.1-RU. Le fichier en ligne est identique, octet pour octet, à celui que j'ai essayé. Recharge (F5) entre deux copies : ton paquet, tes initiales et tes marques reviennent où tu les as laissés. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.2.1-RU
+
+1496. La sauvegarde : la 1.2.0 est gardée intacte au sas, et le point de retour est inscrit avant la mise en ligne. Si la nouvelle casse, je la remets en une minute, sans rien perdre au site.
+
+1497. Essayé en ligne sur le vrai site, sans y écrire : ta classe s'ouvre, l'écran des scans aussi, aucune erreur. À l'ouverture, une seule écriture (l'endroit où tu en es) : plus aucune copie réécrite.
+
+1498. Les fichiers élèves que tu as déjà faits en 1.2.0 (celui de Gabin) : refais-les maintenant, les traits seront sous les mots.
+
+À tester (sur le site, après F5) :
+1. Cliquer sur le mot d'une faute déjà posée : son champ s'ouvre, aucune nouvelle marque.
+2. Prendre une poignée un peu à côté et tirer : la fin du trait suit ta main, sans sauter.
+3. Cliquer sur un mot à jambage (comme « mangent ») : le trait sous le corps du mot, sur sa ligne.
+4. « 📨 Fichiers École Directe », « 🧪 Tester comme l'élève » sur Gabin : les traits sous les mots, comme chez toi.
+5. Cliquer dans le blanc à côté de la page : l'outil se lâche ; la copie n'a plus d'infobulle.
+
+30/10/2026 12:36
+MEMO
+

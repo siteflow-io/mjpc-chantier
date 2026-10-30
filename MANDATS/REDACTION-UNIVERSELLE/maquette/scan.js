@@ -31,6 +31,12 @@ function scCopie(k) { if (!k || !state.classe.some(n => eleveId(n) === k)) retur
 function scPlein(v) { if (v == null) return false; if (typeof v !== "object") return true; return Object.keys(v).some(k => scPlein(v[k])); }
 // la forme qu'a une copie au site (le site jette les vides et les nuls, rend en tableau un objet aux clés 0..n, range les clés) : comparer sous cette forme,
 // sinon rouvrir la classe réécrit des copies qui n'ont pas bougé (1.2.0 : 28 écritures à l'ouverture, mesuré au banc)
+/* 1.2.3 (C14, 30/10) — le site refuse un nom qui contient . # $ / [ ] (mesuré : « Key value can't be empty or contain $ # [ ] / or . ») ;
+   l'identité d'une question en porte un (« lexique.les-mots-disent-ils-ce-que ») : une réponse rangée sous elle faisait refuser toute la copie.
+   Au site, ces caractères s'écrivent %2E, %23… ; ils se relisent tels quels. Rien ne change dans l'app, dans la grille, ni dans les copies déjà au site. */
+const SC_CLE_SITE = [["%", "%25"], [".", "%2E"], ["#", "%23"], ["$", "%24"], ["/", "%2F"], ["[", "%5B"], ["]", "%5D"]];
+function scCleSite(k, versSite) { let s = String(k); if (versSite) SC_CLE_SITE.forEach(([a, b]) => { s = s.split(a).join(b); }); else SC_CLE_SITE.slice().reverse().forEach(([a, b]) => { s = s.split(b).join(a); }); return s; }
+function scCles(v, versSite) { if (v == null || typeof v !== "object") return v; if (Array.isArray(v)) return v.map(x => scCles(x, versSite)); const o = {}; Object.keys(v).forEach(k => { o[scCleSite(k, versSite)] = scCles(v[k], versSite); }); return o; }
 function scFb(v) { if (v == null) return null; if (Array.isArray(v)) v = Object.assign({}, v); if (typeof v !== "object") return v;
   const o = {}; Object.keys(v).sort().forEach(k => { const y = scFb(v[k]); if (y !== null) o[k] = y; }); const K = Object.keys(o); if (!K.length) return null;
   if (K.every(k => /^(0|[1-9]\d*)$/.test(k))) { const mx = Math.max.apply(null, K.map(Number)); if (mx < 2 * K.length) { const a = []; for (let i = 0; i <= mx; i++) a.push(i in o ? o[i] : null); return a; } }

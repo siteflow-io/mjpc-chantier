@@ -153,3 +153,47 @@ MEMO
 
 30/10/2026 15:19
 MEMO
+
+## Tour 6 — 30/10/2026 15:19 → 15:31
+
+**Paul (15:19) :** [capture : « Corriger sur les scans », passe 1, copie 16 sur 28, en haut à droite « ⚠ Le site a refusé l'enregistrement »] pourquoi j'ai le message "le site a refusé l'enregistrement"?
+
+**Paul (15:20, en interrompant) :** [pièce : la console du navigateur, 19 lignes « Failed to load resource: the server responded with a status of 400 (Bad Request) » sur `redactions/sujet_mvtd85g7_ycxjq3/copies/3_franklin_aretha/<élève>.json`, cinq copies]
+
+**Fait.** Lu dans `redaction.html` (1.2.2) : le témoin vient de `ruTemoin` (issue `REFUSEE` = réponse du site sans `ok`) ; `synchroniser` écrit chaque copie entière (PUT) ; `ruOuvrirClasse` ne lit jamais la sauvegarde de secours ; le flux (`ruAbonner`) remet en mémoire la version du site d'une copie dont l'écriture a échoué (`RU.sig` effacé). Au site (GET, scratchpad privé) à 15:19 : dernières copies écrites 15:00 à 15:14, aucune réponse oui / non au site. Les réponses : `s.rep[point][q.cle]`, et `cle` porte un point (`config/grille2`, « lexique.les-mots-disent-ils-ce-que »). Essai au site : PUT `{"rep":{"lexique":{"lexique.les-mots…":"o"}}}` sur `/_test_c14_cle_point` → 400 « Invalid data; couldn't parse key… Key value can't be empty or contain $ # [ ] / or . », relu `null`. Deux messages envoyés à Paul pendant le tour (ci-dessous). Correctif 1.2.3 : `scan.js` (`SC_CLE_SITE`, `scCleSite`, `scCles`) ; `gen-maquette.py` (trois remplacements : `synchroniser` écrit `scCles(v, true)`, `ruOuvrirClasse` et `ruAbonner` relisent `scCles(…, false)` ; le faux hub refuse un nom avec . # $ / [ ], comme le site, et compte ses refus dans `mjpc_faux_hub_refus`) ; `banc/banc.mjs` (vérification nouvelle après rechargement : réponses au faux hub sous `%2E`, relues avec leur point, 0 refus). Maquette v14 (md5 `6b98905472853a3911016689bbd6a888`) : banc 49 / 0. Témoin (la v14 sans les trois remplacements, scratchpad) : 35 ✓, en échec sur la nouvelle vérification (3 écritures refusées) puis sur les marques après rechargement (le défaut de Paul reproduit). Candidate `LIVRAISONS/REDACTION/redaction-1.2.3-RU-candidat.html` (`PROD=1 VERSION=1.2.3-RU`, base 1.1.0) : md5 `bde58bd636a12ea3e6af66474b476e38`, 525 597 o ; aucun nom d'élève réel (comparé aux 30 noms de la classe) ; scripts sans erreur de syntaxe ; écart avec 1.2.2 en ligne : 14 lignes (la version, les trois remplacements, le bloc des noms). Essai au site de la forme écrite : PUT `lexique%2Eles-mots…` → 200, relu identique, DELETE → 200, relu `null`. Fumée sur la candidate (copie au scratchpad, vrai site lu, écritures interceptées) : 1.2.3-RU, classe de 30, écran des scans, 51 questions, 1 écriture (le suivi), aucune copie réécrite, aucune erreur. Au site à 15:29 : 18 copies, 394 fautes, 0 réponse. Dettes : registre ⑩, `A-CODER-CORRECTION-ELEVE.md` n°12 (le chemin des retours porte aussi l'identité de la question) ; journal ; production `7162b7c`.
+
+**Claude (15:21, message envoyé pendant le tour) :** Ne recharge pas la page et ne ferme pas l'onglet. Depuis 15:00 environ, le site refuse tes copies (erreur 400 sur 5 copies, dont celle à l'écran). Tes marques ne sont pas perdues : elles sont dans la page et dans la sauvegarde de secours de ton navigateur. Je cherche la cause tout de suite.
+
+**Claude (15:23, message envoyé pendant le tour) :** Trouvé, et vérifié sur le vrai site (mon essai a été refusé, rien n'a été écrit) : ce sont tes réponses aux questions qui sont refusées, pas tes fautes. Quand tu réponds « oui » ou « non » à une question (les trois questions du Lexique à la fin des fautes, et toutes celles des passes 2 à 4), l'app range ta réponse sous un nom qui contient un point. Le site refuse ce caractère, et il refuse alors toute la copie à chaque nouveau geste. C'est un défaut présent depuis la 1.2.0, que le banc n'a pas vu.
+
+Ce que tu peux faire en attendant, sans risque :
+- continue tes fautes et tes lignes, copie par copie ;
+- ne réponds pas aux questions du Lexique : passe à la copie suivante avec la flèche →.
+
+Ce qui est au site : tes fautes de 15 copies, en entier. Ce qui ne l'est pas : tes réponses au Lexique sur 5 copies, et les 3 fautes de la copie à l'écran. Ces 3 fautes seront à refaire, je te dirai quand.
+
+Je prépare le correctif tout de suite.
+
+**Claude :**
+
+À jouer : promeus 1.2.3-RU (1607) · en cours : rien · ouvert : 1607 ; 1601 ; 1577 ; 1482 ; 1478 ; 1468 ; 1374 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1602. La cause, mesurée : tes réponses aux questions (le Lexique en fin de langue, et toutes celles des passes 2 à 4) étaient rangées sous un nom qui contient un point. Le site refuse ce caractère, et refusait alors la copie entière. Le défaut est là depuis la 1.2.0 ; le banc ne le voyait pas, parce que la maquette acceptait ce que le site refuse.
+
+1603. Rien de tes fautes n'est perdu, mesuré au site à 15:29 : 18 copies, 394 fautes, avec leurs lignes. La copie qui était à l'écran y est aussi, avec ses 36 fautes : rien à refaire de ce côté, contrairement à ce que je t'ai écrit à 15:23. Ce qui manque : tes réponses au Lexique, sur les copies où tu les avais données.
+
+1604. Corrigé dans la 1.2.3-RU : au site, ces noms s'écrivent sous une forme qu'il accepte, et se relisent tels quels. Rien d'autre ne change : ni l'écran, ni la grille, ni tes copies déjà au site (rouvertes avec la 1.2.3, aucune n'est réécrite).
+
+1605. Vérifié. Le site accepte la nouvelle forme (essai posé, relu identique, retiré). La maquette refuse maintenant ce que le site refuse. Banc : 49 vérifications, 0 défaut, dont une nouvelle (tes réponses partent au site et reviennent après rechargement) ; le même banc sur la version sans le correctif échoue : il aurait vu le défaut. Essai sur le vrai site sans y écrire : aucune erreur, aucune copie réécrite.
+
+1606. Ce qui reste à toi après la mise en ligne : F5, puis redonner le Lexique des copies où tu l'avais fait (Entrée ou N, en fin de langue). En haut à droite, le témoin doit dire « ✓ Enregistré au site ».
+
+1607. Promeus 1.2.3-RU ? Le point de retour (la 1.2.2) s'écrit avant, et le fichier en ligne se relit octet pour octet.
+
+À tester (après la mise en ligne, F5) :
+1. Sur une copie finie : Entrée sur la copie, puis les trois questions du Lexique ; en haut à droite, « ✓ Enregistré au site ».
+2. F5 : tes réponses au Lexique sont toujours là.
+3. Une faute de plus sur une autre copie : « ✓ Enregistré au site ».
+
+30/10/2026 15:31
+MEMO

@@ -8991,3 +8991,38 @@ MEMO
 
 30/10/2026 07:05
 MEMO
+
+## Tour 401 — 30/10/2026 07:12 → 07:19
+
+**Paul :** Je dois pouvoir tester le flux élève. Mode test à rattacher à mjpc etc.
+
+**Fait.** Relu le mode test de MJPC : `index.html` (`M8T`, `m8TestOn`, `redactionAdresse` qui ajoute `&test=1`) et `redaction.html` (`ruModeTest`, `RU.ecritsTest`, la carte « Mode test »). `eleve.js` : le fichier élève porte `test` (mode test de MJPC ou maquette : jamais au hub) ; ouvert par « 🧪 Tester comme l'élève » (nouvel onglet ouvert au clic, le fichier posé ensuite), il renvoie ses retours à l'onglet de correction (`postMessage` `mjpcRetour`, accepté seulement d'un onglet ouvert par la correction) et reçoit les verdicts (`mjpcVerdict`, avec la phrase de « à refaire ») ; seul, il garde dans le navigateur. `scan.js` : les retours reçus s'écrivent par `ruEcrire` (gardés dans la page en mode test), les verdicts repartent. L'aperçu dans la page (`#scVueEleve`) retiré. Défaut trouvé et corrigé : une ligne de `scVerdict` passée en commentaire par mon ajout (le fichier ne se chargeait plus) ; et la phrase de « à refaire » écrite après la fabrication du fichier n'arrivait pas : elle part avec le verdict. Banc : 27 vérifications, 0 défaut, dont l'onglet de test (retours sans recharger, « à refaire » reçu) et le mode test de MJPC (`?test=1` : 5 écritures gardées dans la page, hub inchangé). `T399-maquette-redaction-scans-v3.html` md5 8a25514aac73. Capture regardée : `09b-eleve-a-refaire`.
+
+**Claude :** [fichier : T399-maquette-redaction-scans-v3.html]
+
+À jouer : le flux élève en mode test (1376 à 1379) · en cours : rien · ouvert : 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1375. C'est fait : T399-maquette-redaction-scans-v3.html. Banc par le geste : 27 vérifications, 0 défaut.
+
+1376. Le flux élève se teste comme les autres applis de MJPC, en mode test. Dans « Fichiers École Directe », « 🧪 Tester comme l'élève » ouvre son fichier dans un nouvel onglet, exactement comme il le verra : la traversée, ses fautes, la question avant chaque case, ses papillons.
+
+1377. Cet onglet est relié à ta correction. Ce que tu y écris comme élève arrive aussitôt dans « Les retours des élèves », sans recharger. Ton « à refaire », avec ta phrase, repart aussitôt dans son onglet. Un bandeau 🧪 le dit en haut de son onglet.
+
+1378. Le mode test de MJPC : la carte « 🧪 Mode test » de « Mes rédactions », ou le portail en mode test, qui ouvre la rédaction avec le même mode. Ta correction, les pages données et les retours restent alors dans la page : rien n'est écrit au site. Le banc le vérifie.
+
+1379. Un fichier élève fabriqué en mode test (ou dans la maquette) n'écrit jamais au site. Téléchargé et ouvert seul, il garde ce que tu y écris dans ton navigateur.
+
+1380. Ce qui a disparu : l'aperçu « Voir comme l'élève » dans la page. Il fait double emploi avec l'onglet de test.
+
+1381. Oui à 1375 à 1380 ?
+
+À tester :
+1. Ouvrir la v3, « Corriger sur les scans », charger paquet-essai.pdf, donner les initiales, corriger une copie (passe 1).
+2. « Fichiers École Directe », « 🧪 Tester comme l'élève » : un nouvel onglet s'ouvre (1376).
+3. Dans cet onglet, corriger une faute, répondre à une question, écrire un papillon (1376).
+4. Revenir à ta correction, passe 5 : le papillon y est (1377).
+5. N sur ce retour, avec ta phrase de « à refaire » écrite : dans l'onglet de l'élève, « à refaire » et ta phrase paraissent (1377).
+6. « Mes rédactions », carte « 🧪 Mode test », « Ouvrir » puis l'activer ; refaire 1 : le bandeau 🧪 est là, et rien ne part au site (1378).
+
+30/10/2026 07:19
+MEMO

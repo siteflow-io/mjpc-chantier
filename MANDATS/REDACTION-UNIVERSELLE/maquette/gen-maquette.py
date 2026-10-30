@@ -55,7 +55,6 @@ ecran = '''
   <div id="scPaquet" class="sc-paquet"></div>
 </div>
 <div id="scModale" class="sc-modale" onclick="if(event.target===this)scModaleFermer()"><div class="sc-modale-c"></div></div>
-<div id="scVueEleve" class="sc-ve"><div class="sc-ve-haut"><span class="sc-ve-nom"></span><button class="sc-btn" onclick="scVueEleveFermer()" title="Revenir à la correction ; ce que tu as écrit comme élève est arrivé dans « Les retours des élèves ».">✕ Fermer</button></div><iframe title="Le fichier de l'élève"></iframe></div>
 <div class="mq-reglage" onclick="if(document.getElementById('mqR').style.display==='block'){document.getElementById('mqR').style.display='none'}else{document.getElementById('mqR').style.display='block'}" title="Réglages de la simulation (n'existe pas dans le site).">⚙ Maquette</div>
 <div id="mqR" style="display:none;position:fixed;left:8px;bottom:36px;z-index:999;background:#fdfbf7;border:1px solid #d4b87a;border-radius:9px;padding:10px 12px;max-width:380px;font:13.5px system-ui;box-shadow:0 6px 18px rgba(0,0,0,.2)"><b>Réglages de la simulation</b><p>Le site est simulé par un faux hub gardé dans ce navigateur : une copie de la vraie base, élèves aux noms inventés. Rien ne part au vrai site.</p><button class="sc-btn" onclick="window.__fauxHubRemettre()" title="Effacer tout ce qui a été fait dans la maquette (marques, réponses, pages chargées) et repartir de la base.">Tout remettre à zéro</button></div>
 <style>''' + open('scan.css', encoding='utf8').read() + '''</style>

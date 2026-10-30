@@ -3,7 +3,7 @@
 // Avec : la traversée, puis le parcours (les fautes d'abord, puis les points de haut en bas), les papillons, la note à la fin.
 function scBlobUrl(b) { return new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(b); }); }
 function scSlug(t) { return String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
-function scEleveDonnees(k) {
+function scEleveDonnees(k, test) {
   const ps = scPagesDe(k); const s = scCopie(k); scNumeroter(k);
   const ordre = ps.map(p => p.id);
   const place = m => ({ page: ordre.indexOf(m.page), y: m.y0 });
@@ -18,13 +18,13 @@ function scEleveDonnees(k) {
       bareme: pt.bareme, place: pl, marques: ms.map(m => ({ page: ordre.indexOf(m.page), forme: m.forme, x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, seg: scSegments(m, SC.pages[m.page]) })) }); }));
   const etoile = M.filter(m => m.forme === "etoile").map(m => ({ page: ordre.indexOf(m.page), seg: scSegments(m, SC.pages[m.page]) }));
   const nt = scNote(k);
-  return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, maquette: !!window.__FAUX_HUB,
+  return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB), retours: JSON.parse(JSON.stringify((SC.retours || {})[k] || {})),
     criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: nt.ok ? nt.n : null, total: nt.tot,
     pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL,
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
 }
-function scEleveFichier(k) {
-  const D = scEleveDonnees(k); const ps = scPagesDe(k);
+function scEleveFichier(k, test) {
+  const D = scEleveDonnees(k, test); const ps = scPagesDe(k);
   return Promise.all(ps.map(p => SC.imgs[p.id] ? scBlobUrl(SC.imgs[p.id].blob) : Promise.resolve(""))).then(srcs => {
     const pc = (v) => (v * 100).toFixed(3) + "%";
     const statique = ps.map((p, i) => { let mk = "";
@@ -48,11 +48,17 @@ function scEleveFichier(k) {
 function scEleveApp(D, IMG) {
   const $ = s => document.querySelector(s); const pc = v => (v * 100).toFixed(3) + "%"; const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const R = {}; let etape = 0;
-  // les retours : au hub de la rédaction, dans la place de cet élève ; dans la maquette, jamais au vrai hub
+  // les retours : au hub de la rédaction, dans la place de cet élève. En mode test (celui de MJPC, ou la maquette), jamais au hub :
+  // ils reviennent à l'onglet de correction qui a ouvert ce fichier (« Tester comme l'élève »), et tes verdicts reviennent ici, sans recharger.
   const url = cle => D.hub + "/redactions/" + encodeURIComponent(D.red) + "/retours/" + encodeURIComponent(D.classe) + "/" + encodeURIComponent(D.cle) + (cle ? "/" + encodeURIComponent(cle) : "") + ".json";
-  const F = D.maquette ? ((window.parent && window.parent !== window && window.parent.__FAUX_HUB_FETCH) || null) : window.fetch.bind(window);
-  const lire = () => F ? F(url()).then(r => r.ok ? r.json() : null).catch(() => null) : Promise.resolve((() => { try { return JSON.parse(localStorage.getItem("mjpc_retours_" + D.cle) || "null"); } catch (e) { return null; } })());
-  const ecrire = (cle, v) => { R[cle] = v; if (F) return F(url(cle), { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(v) }).catch(() => null); try { localStorage.setItem("mjpc_retours_" + D.cle, JSON.stringify(R)); } catch (e) {} return Promise.resolve(); };
+  const voisin = D.test ? (window.opener && !window.opener.closed ? window.opener : (window.parent !== window ? window.parent : null)) : null;
+  const cleLocale = "mjpc_retours_test_" + D.red + "_" + D.cle;
+  const lire = () => D.test ? Promise.resolve(voisin ? D.retours : (() => { try { return JSON.parse(localStorage.getItem(cleLocale) || "null"); } catch (e) { return null; } })()) : fetch(url()).then(r => r.ok ? r.json() : null).catch(() => null);
+  const ecrire = (cle, v) => { R[cle] = v;
+    if (D.test) { if (voisin) { try { voisin.postMessage({ mjpcRetour: { red: D.red, eleve: D.cle, cle, v } }, "*"); } catch (e) {} } else { try { localStorage.setItem(cleLocale, JSON.stringify(R)); } catch (e) {} } return Promise.resolve(); }
+    return fetch(url(cle), { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(v) }).catch(() => null); };
+  if (D.test) { addEventListener("message", e => { const d = e.data && e.data.mjpcVerdict; if (!d || e.source !== voisin || d.eleve !== D.cle) return; R[d.cle] = d.v; if (d.aRefaire != null) D.aRefaire = d.aRefaire; suite(); });
+    document.body.insertAdjacentHTML("afterbegin", `<div style="background:#fff3d6;border-bottom:1px solid #d4b87a;color:#5a3010;padding:5px 14px;font:14px system-ui">🧪 Mode test${voisin ? " : relié à ta correction. Ce que tu écris ici arrive dans « Les retours des élèves » ; rien ne part au site." : " : rien ne part au site."}</div>`); }
   const st = document.createElement("style"); st.textContent = `#statique{display:none}
 .app{display:flex;gap:16px;max-width:1500px;margin:0 auto;padding:12px}.col{flex:1;min-width:0}.pan{width:400px;flex:none;position:sticky;top:10px;align-self:flex-start;max-height:calc(100vh - 20px);overflow:auto}
 .pg{position:relative;width:68%;margin-bottom:12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
@@ -131,13 +137,22 @@ function scFichiersED() {
   if (!SC.copies.length) { toast("Aucune copie : charge d'abord ton paquet."); return; }
   const lignes = SC.copies.map((k, i) => { const nt = scNote(k); const faits = scTousPoints().filter(pt => { const r = scCase(pt, k); return r && r.complet; }).length; const tous = scTousPoints().length;
     return `<tr><td>${i + 1}</td><td>${escapeHtml(nomEleveDe(k) || k)}</td><td>${scPagesDe(k).length}</td><td>${nt.ok ? "<b>" + String(nt.n).replace(".", ",") + " / " + nt.tot + "</b>" : faits + " points sur " + tous}</td>
-      <td><button class="sc-btn" onclick="scVoirEleve('${escapeAttr(k)}')" title="Ouvrir ce fichier comme l'élève le verra : la traversée, puis son parcours.">Voir comme l'élève</button> <button class="sc-btn" onclick="scTelecharger('${escapeAttr(k)}')" title="Télécharger le fichier de cet élève, à déposer sur École Directe. Sa photo est dedans : elle ne passe pas par le site.">Télécharger</button></td></tr>`; }).join("");
-  scModale(`<h3>Les fichiers École Directe</h3><p>Un fichier par élève : sa copie scannée et tes marques dedans. Tu le déposes sur École Directe ; la photo ne passe jamais par le site. Ce que l'élève écrit (ses corrections, ses papillons) te revient dans la passe « Les retours des élèves ».</p>${window.__FAUX_HUB ? '<p class="sc-alerte">Maquette : un fichier téléchargé d\'ici n\'envoie rien au site.</p>' : ""}
+      <td><button class="sc-btn" onclick="scTesterEleve('${escapeAttr(k)}')" title="Ouvrir le fichier de cet élève dans un nouvel onglet, exactement comme il le verra, en mode test : ce que tu y écris arrive ici, dans « Les retours des élèves », et tes verdicts y repartent. Rien ne va au site.">🧪 Tester comme l'élève</button> <button class="sc-btn" onclick="scTelecharger('${escapeAttr(k)}')" title="Télécharger le fichier de cet élève, à déposer sur École Directe. Sa photo est dedans : elle ne passe pas par le site.">Télécharger</button></td></tr>`; }).join("");
+  scModale(`<h3>Les fichiers École Directe</h3><p>Un fichier par élève : sa copie scannée et tes marques dedans. Tu le déposes sur École Directe ; la photo ne passe jamais par le site. Ce que l'élève écrit (ses corrections, ses papillons) te revient dans la passe « Les retours des élèves ».</p>${window.__FAUX_HUB || RU.test ? '<p class="sc-alerte">🧪 Mode test : les fichiers fabriqués ici n\'envoient rien au site.</p>' : ""}
     <table class="sc-table"><tr><th></th><th>Élève</th><th>Pages</th><th>Correction</th><th></th></tr>${lignes}</table><button class="sc-btn" onclick="scToutTelecharger()" title="Télécharger les ${SC.copies.length} fichiers l'un après l'autre (le navigateur peut te demander d'autoriser plusieurs téléchargements).">Tout télécharger</button>`);
 }
 function scTelecharger(k) { return scEleveFichier(k).then(f => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([f.html], { type: "text/html" })); a.download = f.nom; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500); }); }
 function scToutTelecharger() { let ch = Promise.resolve(); SC.copies.forEach(k => { ch = ch.then(() => scTelecharger(k)).then(() => new Promise(r => setTimeout(r, 500))); }); }
-function scVoirEleve(k) {
-  scEleveFichier(k).then(f => { scModaleFermer(); const V = document.getElementById("scVueEleve"); V.querySelector("iframe").srcdoc = f.html; V.querySelector(".sc-ve-nom").textContent = f.D.nom + " — comme l'élève le voit"; V.classList.add("show"); });
+// tester le flux de l'élève : son fichier, en mode test, dans un onglet relié à cette correction (l'onglet s'ouvre au clic, le fichier s'y pose ensuite)
+SC.fenetres = [];
+function scTesterEleve(k) {
+  const w = window.open("", "_blank"); if (!w) { toast("Le navigateur a bloqué le nouvel onglet : autorise les fenêtres pour ce fichier."); return; }
+  SC.fenetres.push(w); scModaleFermer();
+  scEleveFichier(k, true).then(f => { w.location.href = URL.createObjectURL(new Blob([f.html], { type: "text/html" })); });
 }
-function scVueEleveFermer() { const V = document.getElementById("scVueEleve"); V.classList.remove("show"); V.querySelector("iframe").srcdoc = ""; scRetoursRelire(); }
+addEventListener("message", e => {
+  const d = e.data && e.data.mjpcRetour; if (!d || SC.fenetres.indexOf(e.source) < 0 || d.red !== RU.id || !state.classe.some(n => eleveId(n) === d.eleve)) return;
+  SC.retours[d.eleve] = SC.retours[d.eleve] || {}; SC.retours[d.eleve][d.cle] = d.v;
+  if (RU.test || window.__FAUX_HUB) ruEcrire(scCheminRetours([d.eleve, d.cle]), d.v, "un retour (test)");   // hors mode test : gardé dans cette page seulement
+  if (SC.ouvert) scRendre();
+});

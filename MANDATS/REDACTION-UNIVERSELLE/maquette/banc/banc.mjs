@@ -66,21 +66,24 @@ verif('après rechargement : ' + n2.m + ' marques, ' + n2.img + ' images gardée
 // le fichier de l'élève
 await pg.click('text=📨 Fichiers École Directe'); await att(400); await cap('05-fichiers-ed');
 const dl = pg.waitForEvent('download'); await pg.click('.sc-table tr >> nth=1 >> text=Télécharger'); const d = await dl; const f = path.join(OUT, 'fichier-eleve.html'); await d.saveAs(f);
-const html = fs.readFileSync(f, 'utf8'); verif('le fichier élève porte sa photo (' + Math.round(html.length / 1024) + ' Ko) et ne joint jamais le vrai hub en maquette', /data:image\/jpeg;base64/.test(html) && /"maquette":true/.test(html));
-await pg.click('.sc-table tr >> nth=1 >> text=Voir comme l\'élève'); await att(1500);
-const fr = pg.frameLocator('#scVueEleve iframe'); await cap('06-eleve-traversee'); await fr.locator('#passer').click(); await att(600);
+const html = fs.readFileSync(f, 'utf8'); verif('le fichier élève porte sa photo (' + Math.round(html.length / 1024) + ' Ko) et ne joint jamais le vrai hub en maquette', /data:image\/jpeg;base64/.test(html) && /"test":true/.test(html));
+const popE = ctx.waitForEvent('page'); await pg.click('.sc-table tr >> nth=1 >> text=Tester comme l\'élève'); const el = await popE; await el.waitForLoadState(); await el.setViewportSize({ width: 1536, height: 864 }); await att(1500);
+const fr = el; await el.screenshot({ path: path.join(OUT, '06-eleve-traversee.png') }); await fr.locator('#passer').click(); await att(600);
 await fr.locator('#rep').fill('écrit'); await fr.locator('#ok').click(); await att(300); const ko = await fr.locator('#msg').innerText();
 await fr.locator('#rep').fill('écris'); await fr.locator('#ok').click(); await att(500);
-verif('l\'élève corrige sa faute : faux puis juste', ko.includes('✗'));
-await cap('07-eleve-parcours');
-let pap = 0; let questions = 0; for (let i = 0; i < 30; i++) { if (!(await fr.locator('#ok').count())) break; if (await fr.locator('#rq').count()) { if (!questions) await cap('07b-eleve-question'); await fr.locator('#rq').fill('Je suis Pierre, dans la tranchée, et j\'écris à Louise.'); questions++; await fr.locator('#ok').click(); await att(250); continue; } const t = fr.locator('#pap'); if (await t.count()) { await t.fill('Je suis dans la tranchée de Vauquois depuis le mois de février, avec les hommes de ma compagnie.'); pap++; } await fr.locator('#ok').click(); await att(250); }
-await cap('08-eleve-papillon');
+verif('l\'élève corrige sa faute dans son onglet de test : faux puis juste', ko.includes('✗'));
+await el.screenshot({ path: path.join(OUT, '07-eleve-parcours.png') });
+let pap = 0; let questions = 0; for (let i = 0; i < 30; i++) { if (!(await fr.locator('#ok').count())) break; if (await fr.locator('#rq').count()) { if (!questions) await el.screenshot({ path: path.join(OUT, '07b-eleve-question.png') }); await fr.locator('#rq').fill('Je suis Pierre, dans la tranchée, et j\'écris à Louise.'); questions++; await fr.locator('#ok').click(); await att(250); continue; } const t = fr.locator('#pap'); if (await t.count()) { await t.fill('Je suis dans la tranchée de Vauquois depuis le mois de février, avec les hommes de ma compagnie.'); pap++; } await fr.locator('#ok').click(); await att(250); }
+await el.screenshot({ path: path.join(OUT, '08-eleve-papillon.png') });
 verif('l\'élève répond à la question avant de voir chaque case (' + questions + ') et écrit ses papillons (' + pap + ')', questions >= 3 && pap >= 1);
-await pg.click('#scVueEleve .sc-btn'); await att(800); await pg.click('.sc-passe >> nth=4'); await att(500); await cap('09-retours');
+await pg.bringToFront(); await att(500); await pg.click('.sc-passe >> nth=4'); await att(500); await cap('09-retours');
+verif('les retours de l\'onglet de test arrivent sans recharger (' + await pg.evaluate(() => scRetoursListe().length) + ')', await pg.evaluate(() => scRetoursListe().length) >= 1);
 const nr = await pg.evaluate(() => scRetoursListe().length);
 await pg.fill('#scARefaire', 'Relis ta tâche, et écris-la de nouveau.'); await pg.click('.sc-nom'); await att(300);
 verif('ta phrase de « à refaire » s\'enregistre au sujet', await pg.evaluate(() => fetch(ruUrl(["redactions", RU.id, "config", "aRefaire"])).then(r => r.json())) === 'Relis ta tâche, et écris-la de nouveau.');
-await pg.keyboard.press('n'); await att(300);
+await pg.keyboard.press('n'); await att(500);
+verif('ton « à refaire » arrive dans l\'onglet de l\'élève, avec ta phrase', (await el.locator('.ko').count()) >= 1 && (await el.locator('#pan').innerText()).includes('Relis ta tâche'));
+await el.screenshot({ path: path.join(OUT, '09b-eleve-a-refaire.png') });
 const et = await pg.evaluate(() => Object.values(SC.retours).reduce((a, R) => a.concat(Object.values(R)), []).filter(r => r.etat === 'arefaire').length);
 verif('les retours arrivent chez Paul (' + nr + ') ; N : à refaire', nr >= 1 && et === 1);
 // les copies vierges de l'appli : scannées de travers, remises droites, lignes connues
@@ -96,6 +99,17 @@ await pg.setViewportSize({ width: 1536, height: 864 });
 const p2 = await (await b.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 800 } })).newPage(); await p2.goto('file://' + f); await att(500);
 verif('sans interactivité, la copie et ses marques se voient (' + await p2.locator('.mk').count() + ' marques)', await p2.locator('#statique img').count() >= 1 && await p2.locator('.mk').count() >= 2);
 await p2.screenshot({ path: path.join(OUT, '10-eleve-sans-interactivite.png') });
+// le mode test de MJPC (?test=1, comme l'ouvre le portail en mode test) : la correction et les retours restent dans la page, rien au hub
+const pt = await ctx.newPage(); pt.on('pageerror', e => err.push('test : ' + e.message));
+await pt.goto('file://' + MAQ + '?mode=prof&id=sujet_mvtd85g7_ycxjq3&classe=3_franklin_aretha&test=1'); await att(2500);
+const avantT = await pt.evaluate(() => JSON.stringify(window.__hubTest = null) && fetch(ruUrl(ruCheminCopies())).then(r => r.json()).then(v => JSON.stringify(v).length));
+await pt.click('#btnScan'); await att(1500); if (await pt.evaluate(() => SC.attrib)) { await pt.keyboard.type('rc'); await att(150); await pt.keyboard.press('1'); await att(400); }
+await pt.click('.sc-vig >> nth=0'); await att(400);
+const r2 = await pt.locator('.sc-page').first().boundingBox(); await pt.mouse.move(r2.x + 0.3 * r2.width, r2.y + 0.5 * r2.height); await pt.mouse.down(); await pt.mouse.move(r2.x + 0.38 * r2.width, r2.y + 0.51 * r2.height, { steps: 4 }); await pt.mouse.up(); await att(200); await pt.keyboard.type('essai'); await pt.keyboard.press('Enter'); await att(1600);
+const t2 = await pt.evaluate(() => ({ test: RU.test, ecrits: RU.ecritsTest.length, temoin: (document.getElementById('ruTemoin') || {}).textContent || '' }));
+const apresT = await pg.evaluate(() => fetch(ruUrl(["redactions", "sujet_mvtd85g7_ycxjq3", "copies", "3_franklin_aretha"])).then(r => r.json()).then(v => JSON.stringify(v).length));
+verif('mode test de MJPC : la faute posée reste dans la page (' + t2.ecrits + ' écritures gardées, témoin « ' + t2.temoin.slice(0, 28) + ' »), rien au hub', t2.test && t2.ecrits >= 1 && apresT === avantT);
+await pt.close();
 verif('aucune écriture sur une classe entière (une clé de copie vide)', !(await pg.evaluate(() => window.__LOG || [])).some(l => /^\w+ [^/]+\.json/.test(l)));
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }

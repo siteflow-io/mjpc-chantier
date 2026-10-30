@@ -40,6 +40,8 @@ assert H.count(a) == 1
 H = H.replace(a, a + '''
     <button id="btnScan" onclick="scOuvrir()" title="Corriger sur les copies scannées : un critère à la fois, les copies défilent, le pinceau marque la copie. Le paquet reste dans ce navigateur.">📄 Corriger sur les scans</button>''')
 v = '!c.telemetry); }'; assert H.count(v) == 1; H = H.replace(v, '!c.telemetry && !c.scan); }')   # une copie qui n'a que des marques est une copie touchée
+v = 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert"];'; assert H.count(v) == 1; H = H.replace(v, 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert", "scanCurseur"];')   # l'endroit exact de la correction sur les scans
+v = 'function ruReprendre() {   // la reprise exacte (l\'INIT de l\'app d\'origine, inchangé)'; assert H.count(v) == 1; H = H.replace(v, v + '\n  if (state.modeOuvert === "scan") { showDashboard(); setTimeout(() => scOuvrir(), 0); return; }   // la correction sur les scans rouverte là où tu en étais')
 ecran = '''
 <!-- RU-SCAN : corriger sur la copie scannée -->
 <div id="scanEcran" class="sc-ecran hidden">
@@ -48,7 +50,6 @@ ecran = '''
     <button class="sc-btn" onclick="scImprimerVierges()" title="Imprimer des copies vierges de l'appli : quatre repères aux coins, les lignes à leur place. Scannées, elles se remettent droites d'elles-mêmes et leurs lignes sont connues d'avance.">🖨 Copies vierges</button>
     <button class="sc-btn" onclick="SC.attrib=true;SC.ia=0;scRendre()" title="Revoir, page par page, l'élève de chaque page (ses initiales).">🔤 Les initiales</button>
     <button class="sc-btn" onclick="scFichiersED()" title="Fabriquer le fichier de chaque élève, à déposer sur École Directe : sa copie scannée et tes marques.">📨 Fichiers École Directe</button>
-    <button class="sc-btn" onclick="scAide()" title="L'aide (touche ?).">?</button>
     <button class="sc-btn" onclick="scFermer()" title="Revenir au tableau des élèves : tout est déjà enregistré.">✕ Fermer</button></div>
   <div id="scManque" class="sc-manque"></div>
   <div class="sc-corps"><div id="scCopie" class="sc-copie" onpointerdown="scPointeur(event)"></div><div id="scPanneau" class="sc-panneau"></div></div>

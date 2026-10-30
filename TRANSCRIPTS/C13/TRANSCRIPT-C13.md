@@ -9026,3 +9026,46 @@ MEMO
 
 30/10/2026 07:19
 MEMO
+
+## Tour 402 — 30/10/2026 07:22 → 07:31
+
+**Paul :** Attention ce mode test emprunte t il exactement les mêmes fonctionnalités quun vrai élève? 
+Par ailleurs va relire la totalité des erreurs faites par Claude sur les creations de maquettes et relis ta maquette contre.
+
+**Fait.** Relu : `PROTOCOLE-MAQUETTE.md` (règle 00, §0 à §7, règle du 03/10) et les 83 passages du registre `docs/MJPC6-DETTES.md` qui parlent de maquette (dont n°12 · 11, 15, 26, 27, 29, 31, 32, 45 ; n°13 · 1, 24 ; n°12 · 221 ; la règle des noms préfixés). Mesuré dans `redaction.html` : le « ? » et F1 de l'app (`document`, capture), `RU_AIDES` / `aidePoser`, `RU_SUIVI`, `ruReprendre`, `interroKeydown` ; aucune classe `sc-` ni fonction `sc…` préexistante. Corrigé dans la v4 : identité des questions (`cle`, grille2) ; l'endroit exact (`state.scanCurseur`, ajouté à `RU_SUIVI` ; `modeOuvert = "scan"` ; `ruReprendre` rouvre l'écran) ; pages non reconstruites (signature), défilement du panneau gardé ; panneau et fichier élève : aucun rendu sur un champ en cours ; l'aide de l'app (`RU_AIDES.scan`), mon « ? » retiré ; clavier de l'écran en capture sur la fenêtre, arrêté seulement pour ses touches ; `focus({ preventScroll })`. Élève : transport unique (`T.lire`, `T.ecrire`, `T.abonner`) — site (`fetch`, `EventSource`), onglet de correction (`mjpcDemande` / `mjpcReponse` / `mjpcPousse`, lu et écrit par `ruLire` / `ruEcrire`), ou navigateur seul ; le verdict porte la phrase de « à refaire ». Banc : 31 vérifications, 0 défaut (aide, reprise exacte, chevauchements à trois tailles, élève réel sur faux site). `T399-maquette-redaction-scans-v4.html` md5 9e8daa11591c.
+
+**Claude :** [fichier : T399-maquette-redaction-scans-v4.html]
+
+À jouer : la v4 (1382 à 1385) · en cours : rien · ouvert : 1394 ; 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1382. Ta question : non, pas exactement, avant cette version. L'onglet de test différait de l'élève réel sur trois points :
+- il lisait une photo des retours prise à son ouverture, quand l'élève lit le site ;
+- il écrivait par un autre chemin ;
+- il recevait tes verdicts tout de suite, alors que l'élève réel ne les voyait qu'en rouvrant son fichier. C'était une dette contre ta règle : une page ne dépend jamais d'un rechargement.
+
+1383. Réglé dans la v4 : un seul code pour l'élève et pour ton test. Lire à l'ouverture, écrire chaque réponse, recevoir un verdict sans recharger : ce sont les mêmes fonctions. Seul le dernier maillon change : le site pour l'élève, ta page de correction en mode test (qui lit et écrit comme le site, dans son mode test). Le banc joue aussi l'élève réel, sur un faux site : ton verdict lui arrive sans recharger, sa correction part au site.
+
+1384. Ce qui reste différent, et ne peut pas être le même : l'élève ouvre un fichier reçu par École Directe, souvent sur son téléphone, quand toi tu l'ouvres dans un onglet de ton ordinateur. Le téléphone, c'est le test École Directe (1363).
+
+1385. Relu contre les erreurs déjà faites sur les maquettes : le protocole des maquettes, et les 83 passages du registre qui en parlent. J'ai trouvé et corrigé six erreurs :
+- Le rang : les réponses étaient rangées par le numéro de la question. Chaque question a maintenant son identité (n°12 · 45).
+- La reprise exacte : rechargée, la page revenait au tableau des élèves. Elle rouvre maintenant la correction au même endroit (passe, copie, point, question), gardé au site par identités.
+- La reconstruction au clic : chaque geste refaisait les pages et le panneau, et le défilement se perdait. Maintenant, les pages restent, seules les marques se redessinent, et le défilement reste.
+- Le champ en cours : un retour d'élève arrivant pendant que tu tapes ta phrase de « à refaire » l'aurait effacée ; chez l'élève, de même pour un verdict pendant qu'il écrit. Le rendu attend maintenant que le champ soit quitté.
+- Deux aides sur la même touche : « ? » ouvrait la mienne et celle de l'app. Il n'y a plus que celle de l'app, avec sa page pour cet écran. Les touches de l'écran passent avant celles de l'app, et seulement les siennes.
+- Un champ qui faisait défiler l'écran en prenant la main. Corrigé.
+
+1386. Vérifié sans défaut : c'est bien l'existant réel, pas une démo ; aucune boîte système ; aucun bouton mort ; aucun chevauchement avec le « ? » et le témoin de l'app, mesuré à 1366, 1536 et 1920 ; aucun mot technique à l'écran ; des exemples plausibles ; le mode test joue le vrai sujet ; une version par livraison.
+
+1387. Banc par le geste : 31 vérifications, 0 défaut. Fichier : T399-maquette-redaction-scans-v4.html.
+
+1394. Oui à 1382 à 1387 ?
+
+À tester :
+1. Ouvrir la v4, corriger deux copies, recharger la page : la correction rouvre au même endroit (1385).
+2. Taper « ? » : l'aide de cet écran ; Échap la ferme (1385).
+3. « 🧪 Tester comme l'élève » : corriger une faute, écrire un papillon ; dans ta correction, passe 5 : le retour est là (1383).
+4. Taper ta phrase de « à refaire », puis N : dans l'onglet de l'élève, « à refaire » et ta phrase (1383).
+
+30/10/2026 07:31
+MEMO

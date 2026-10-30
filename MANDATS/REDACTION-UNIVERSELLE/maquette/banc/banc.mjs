@@ -17,6 +17,8 @@ await pg.getByText('Rédaction 1', { exact: false }).first().click(); await att(
 verif('le tableau des élèves s\'ouvre sur la classe', await pg.locator('#btnScan').isVisible());
 await pg.evaluate(() => { const f0 = window.fetch; window.__LOG = []; window.fetch = function (u, o) { if (o && o.method && /copies/.test(String(u))) { let n = '?'; try { const v = JSON.parse(o.body); n = v && v.scan ? Object.keys(v.scan.marques || {}).length : 'sans scan'; } catch (e) {} window.__LOG.push(o.method + ' ' + String(u).split('copies/')[1] + ' ' + n); } return f0(u, o); }; });
 await pg.click('#btnScan'); await att(600);
+await pg.keyboard.press('?'); await att(300); const aide = await pg.evaluate(() => { const a = document.getElementById('ruAide'); return a && !a.hidden ? a.innerText.slice(0, 40) : ''; });
+await pg.keyboard.press('Escape'); await att(200); verif('« ? » : l\'aide de l\'app, pour cet écran (' + aide.split('\n')[0] + '), Échap la ferme', /Corriger sur les scans/.test(aide) && await pg.evaluate(() => document.getElementById('ruAide').hidden));
 await pg.setInputFiles('#scanEcran input[type=file]', path.join(DIR, 'paquet-essai.pdf')); await pg.waitForFunction(() => Object.keys(SC.pages).length >= 8, null, { timeout: 60000 }); await att(800);
 const blanches = await pg.evaluate(() => Object.values(SC.pages).filter(p => p.blanche).length); verif('8 pages lues, la page blanche reconnue (' + blanches + ')', blanches === 1);
 const lig = await pg.evaluate(() => scPagesOrdre().map(p => p.lignes.n)); verif('lignes trouvées par page : ' + lig.join(','), lig[0] >= 20);
@@ -54,12 +56,15 @@ await pg.click('.sc-passe >> nth=3'); await att(300); await pg.click('.sc-vig >>
 for (let i = 0; i < 9; i++) { await pg.keyboard.press('Enter'); await att(60); }
 await tracer(0.45, 0.30, 0.52, 0.31); await tracer(0.45, 0.40, 0.52, 0.41); await pg.keyboard.press('Escape'); await att(200);
 const cp = await pg.evaluate(() => { const pt = SC.grille.criteres[2].points[1]; const r = scCase(pt, SC.copies[0]); return SC.iq + ' · ' + (r && r.c.niveau + ' ' + r.txt); });
-verif('deux verbes encadrés : la case se compte (' + cp + ')', /^3 · 1 Plusieurs de tes verbes/.test(cp));
+verif('deux verbes encadrés : la case se compte (' + cp + ')', /^personne\.les-temps\S* · 1 Plusieurs de tes verbes/.test(cp));
 // les copies vierges : la fenêtre d'impression
 const pop = ctx.waitForEvent('page'); await pg.click('text=🖨 Copies vierges'); const fen = await pop; await fen.waitForLoadState(); await att(400);
 verif('les copies vierges : ' + await fen.locator('.p svg').count() + ' pages à imprimer, quatre repères chacune', await fen.locator('.p svg').count() >= 30 && await fen.locator('.p').first().locator('rect[fill="#000"]').count() === 4); await fen.close();
 // le rechargement : les marques reviennent par leur identité, le paquet est resté dans le navigateur
-const avant = await pg.evaluate(() => SC.copies.map(k => Object.values(scCopie(k).marques).map(m => m.forme).join('+')).join(' | ')); await att(1500); console.log((await pg.evaluate(() => window.__LOG)).join('\n')); console.log('HUB ARNAUD : ' + await pg.evaluate(() => fetch(ruUrl(ruCheminCopies().concat(SC.copies[1]))).then(r => r.json()).then(v => JSON.stringify(v && v.scan && Object.keys(v.scan.marques || {}).length) + ' · état : ' + Object.keys(scCopie(SC.copies[1]).marques).length + ' · sig ' + !!RU.sig[SC.copies[1]] + ' · test ' + RU.test))); await pg.reload(); await att(2500); await pg.click('#btnScan'); await att(1500);
+const avant = await pg.evaluate(() => SC.copies.map(k => Object.values(scCopie(k).marques).map(m => m.forme).join('+')).join(' | ')); await att(1500); console.log((await pg.evaluate(() => window.__LOG)).join('\n')); console.log('HUB ARNAUD : ' + await pg.evaluate(() => fetch(ruUrl(ruCheminCopies().concat(SC.copies[1]))).then(r => r.json()).then(v => JSON.stringify(v && v.scan && Object.keys(v.scan.marques || {}).length) + ' · état : ' + Object.keys(scCopie(SC.copies[1]).marques).length + ' · sig ' + !!RU.sig[SC.copies[1]] + ' · test ' + RU.test))); const ou = await pg.evaluate(() => scP().id + ' · ' + scK() + ' · ' + (scPt() || {}).id + ' · ' + SC.iq);
+await pg.reload(); await att(3500);
+const ou2 = await pg.evaluate(() => SC.ouvert ? scP().id + ' · ' + scK() + ' · ' + (scPt() || {}).id + ' · ' + SC.iq : 'écran fermé');
+verif('reprise exacte : rechargée, la page rouvre la correction sur les scans au même endroit (' + ou2 + ')', ou2 === ou);
 const n2 = await pg.evaluate(() => ({ m: SC.copies.reduce((a, k) => a + Object.keys(scCopie(k).marques).length, 0), img: Object.keys(SC.imgs).length, man: scManquantes().length }));
 const apresR = await pg.evaluate(() => SC.copies.map(k => Object.values(scCopie(k).marques).map(m => m.forme).join('+')).join(' | ')); console.log('avant : ' + avant + '\naprès : ' + apresR);
 verif('après rechargement : ' + n2.m + ' marques, ' + n2.img + ' images gardées par le navigateur, ' + n2.man + ' manquante', n2.m >= 6 && n2.img >= 8 && n2.man === 0);
@@ -103,13 +108,31 @@ await p2.screenshot({ path: path.join(OUT, '10-eleve-sans-interactivite.png') })
 const pt = await ctx.newPage(); pt.on('pageerror', e => err.push('test : ' + e.message));
 await pt.goto('file://' + MAQ + '?mode=prof&id=sujet_mvtd85g7_ycxjq3&classe=3_franklin_aretha&test=1'); await att(2500);
 const avantT = await pt.evaluate(() => JSON.stringify(window.__hubTest = null) && fetch(ruUrl(ruCheminCopies())).then(r => r.json()).then(v => JSON.stringify(v).length));
-await pt.click('#btnScan'); await att(1500); if (await pt.evaluate(() => SC.attrib)) { await pt.keyboard.type('rc'); await att(150); await pt.keyboard.press('1'); await att(400); }
+if (!(await pt.evaluate(() => SC.ouvert))) { await pt.click('#btnScan'); } await att(1500); if (await pt.evaluate(() => SC.attrib)) { await pt.keyboard.type('rc'); await att(150); await pt.keyboard.press('1'); await att(400); }
 await pt.click('.sc-vig >> nth=0'); await att(400);
 const r2 = await pt.locator('.sc-page').first().boundingBox(); await pt.mouse.move(r2.x + 0.3 * r2.width, r2.y + 0.5 * r2.height); await pt.mouse.down(); await pt.mouse.move(r2.x + 0.38 * r2.width, r2.y + 0.51 * r2.height, { steps: 4 }); await pt.mouse.up(); await att(200); await pt.keyboard.type('essai'); await pt.keyboard.press('Enter'); await att(1600);
 const t2 = await pt.evaluate(() => ({ test: RU.test, ecrits: RU.ecritsTest.length, temoin: (document.getElementById('ruTemoin') || {}).textContent || '' }));
 const apresT = await pg.evaluate(() => fetch(ruUrl(["redactions", "sujet_mvtd85g7_ycxjq3", "copies", "3_franklin_aretha"])).then(r => r.json()).then(v => JSON.stringify(v).length));
 verif('mode test de MJPC : la faute posée reste dans la page (' + t2.ecrits + ' écritures gardées, témoin « ' + t2.temoin.slice(0, 28) + ' »), rien au hub', t2.test && t2.ecrits >= 1 && apresT === avantT);
 await pt.close();
+// les couches ne se chevauchent pas : le « ? » de l'app, son témoin, et l'écran des scans, aux trois tailles
+const chev = []; for (const [w, h] of [[1366, 768], [1536, 864], [1920, 1080]]) { await pg.setViewportSize({ width: w, height: h }); await att(300);
+  chev.push(...await pg.evaluate(({ w, h }) => { const R = e => e && e.getBoundingClientRect(); const x = (a, b) => a && b && a.width && b.width && a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+    const app = [document.querySelector('.rp-aide-btn'), document.getElementById('ruTemoin')].map(R); const moi = Array.from(document.querySelectorAll('#scanEcran .sc-haut button, #scanEcran .sc-haut label, #scanEcran .sc-passe, #scanEcran .sc-bloc, #scChrono')).map(R);
+    const L = []; app.forEach((a, i) => moi.forEach((b, j) => { if (x(a, b)) L.push(w + 'x' + h + ' ' + ['?', 'témoin'][i] + '/' + j); })); return L; }, { w, h })); }
+await pg.setViewportSize({ width: 1536, height: 864 }); verif('aucun chevauchement avec le « ? » et le témoin de l\'app, à 1366, 1536 et 1920 (' + (chev.join(', ') || 'aucun') + ')', chev.length === 0);
+// l'élève réel : le même code, par le site (ici un faux site servi au navigateur) — lire à l'ouverture, écrire, et recevoir un verdict sans recharger
+const reel = await pg.evaluate(() => { const fh = window.__FAUX_HUB; window.__FAUX_HUB = false; const t = RU.test; RU.test = false; const p = scEleveFichier(SC.copies[0], false); window.__FAUX_HUB = fh; RU.test = t; return p.then(f => f.html); });
+const fr2 = path.join(OUT, 'fichier-eleve-reel.html'); fs.writeFileSync(fr2, reel); const idF = /"fautes":\[\{"id":"([^"]+)"/.exec(reel)[1];
+const ctx2 = await b.newContext({ viewport: { width: 1536, height: 864 } }); const recu = [];
+await ctx2.route(u => /firebasedatabase\.app\/.*retours/.test(String(u)), async r => { const q = r.request(); if (q.method() === 'PUT') { recu.push(q.url().split('/').pop()); return r.fulfill({ status: 200, body: q.postData() }); }
+  if ((q.headers().accept || '').includes('text/event-stream')) return r.fulfill({ status: 200, contentType: 'text/event-stream', body: 'event: put\ndata: {"path":"/","data":null}\n\n' + 'event: patch\ndata: ' + JSON.stringify({ path: '/', data: { [idF]: { type: 'faute', texte: 'écri', ok: false, etat: 'arefaire', phrase: 'Reprends ta tâche.' } } }) + '\n\n' });
+  return r.fulfill({ status: 200, contentType: 'application/json', body: 'null' }); });
+const pr = await ctx2.newPage(); await pr.goto('file://' + fr2); await att(1200); await pr.locator('#passer').click(); await att(500);
+const vu = (await pr.locator('#pan').innerText()).includes('Reprends ta tâche');
+await pr.locator('#rep').fill('écris'); await pr.locator('#ok').click(); await att(600);
+verif('l\'élève réel passe par le même code : ton verdict lui arrive du site sans recharger (' + vu + '), sa correction part au site (' + recu.length + ' écriture)', vu && recu.length >= 1);
+await ctx2.close();
 verif('aucune écriture sur une classe entière (une clé de copie vide)', !(await pg.evaluate(() => window.__LOG || [])).some(l => /^\w+ [^/]+\.json/.test(l)));
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }

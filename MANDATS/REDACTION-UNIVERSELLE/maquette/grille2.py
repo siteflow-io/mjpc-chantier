@@ -64,7 +64,9 @@ for ci, (nom, poids, pts) in enumerate(CRIT):
         pt = {'id': ids[ci][pi], 'titre': titre, 'poids': p, 'bareme': {str(k): v for k, v in b.items()}, 'questions': [], 'cases': [], 'questionEleve': QE[ids[ci][pi]]}
         for qi, (g, q, sk) in enumerate(qs):
             if g == 'calculé': pt['calcul'] = 'lignes' if 'lignes' in q.lower() and 'part des 30' in q else 'fautes'; continue
-            d = {'id': qi, 'texte': q, 'moment': g}
+            import unicodedata, re as _re
+            sl = _re.sub(r'[^a-z0-9]+', '-', unicodedata.normalize('NFD', q.lower()).encode('ascii', 'ignore').decode()).strip('-')
+            d = {'id': qi, 'cle': pt['id'] + '.' + '-'.join(sl.split('-')[:6]), 'texte': q, 'moment': g}   # l'identité de la question : jamais son rang
             if qi in saute: d['saute'] = saute[qi]; d['sauteDit'] = sk
             if qi in marq: d['marque'] = {'forme': marq[qi][0], 'sens': marq[qi][1]}
             if qi in etiq: d['etiquette'] = etiq[qi]

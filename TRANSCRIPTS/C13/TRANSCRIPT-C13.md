@@ -9416,3 +9416,28 @@ MEMO
 
 30/10/2026 11:34
 MEMO
+
+## Tour 412 — 30/10/2026 11:39 → 11:41
+
+**Paul :** [capture : le tableau des élèves de 3 FRANKLIN ARETHA, CHEVALIER Flavie « Corrigé 19.5/40 », les autres « Non commencé »] comment supprimer la correction classique du mode d'avant? je veux supprimer la correction de flavie pour repartir de zéro
+
+**Fait.** Mesuré : `redaction.html` n'a aucun geste pour remettre une copie à zéro (seule `ruSupprimer`, la rédaction ou la classe entière, par la corbeille MJPC). Au site (GET) : la copie `chevalier_flavie` = l'ancienne correction seule (18 champs, modifiée le 29/10), aucune partie `scan` ; son signet `interroBookmark` {etape: recap, k: 11}. Rangées d'abord dans la corbeille MJPC, au format de `ruCorbeille` : `corbeille/2026-10-30/suppression-copie_114015` (copie + signet, relue identique) ; puis DELETE de la copie (relue `null`) et du signet (relu aussitôt réécrit : la page ouverte de Paul réécrit tout le suivi à chaque pas). Lu : le flux `ruAbonner` ne retire pas de la mémoire une copie effacée au site — la page ouverte la réécrirait au premier geste sur Flavie : d'où le rechargement demandé. Au site à 11:40 : 50 pages, 8 copies écrites pendant les initiales (parties `scan` vides). Docs : `MJPC6-journal.md`, `MJPC6-DETTES.md` (dette ⑤ : remettre une copie à zéro ; la copie effacée ailleurs gardée en mémoire).
+
+**Claude :**
+
+À jouer : recharger la page tout de suite (1479) · en cours : rien · ouvert : 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1479. Recharge la page maintenant (F5), avant de toucher à Flavie. Ton travail d'aujourd'hui ne risque rien : tes 50 pages et tes initiales sont au site, et tes photos restent dans ton navigateur. Si tu corriges Flavie sans recharger, ta page, qui a encore l'ancienne correction en mémoire, la réécrirait au site.
+
+1480. Fait au site : la correction classique de Flavie (le 19,5 / 40 du 29/10) est supprimée. Elle est d'abord rangée dans la corbeille MJPC, récupérable un an, relue identique. Après le rechargement, Flavie repart de zéro.
+
+1481. L'app n'a pas de bouton pour ça : aujourd'hui, seule la rédaction entière se supprime. Je propose un bouton « Remettre cette copie à zéro » sur la fiche de l'élève, qui passe par la corbeille comme la suppression d'une rédaction. Il va au registre des dettes.
+
+1482. Dis-moi « rechargé » : j'efface alors le dernier reste, le signet de l'ancien mode « interrogatif » de Flavie, que ta page réécrit tant qu'elle n'est pas rechargée. Il ne gêne pas la correction sur les scans.
+
+À tester :
+1. F5 sur ta page, puis ta classe : la tuile de Flavie dit « Non commencé ».
+2. « 📄 Corriger sur les scans » : ton paquet et tes initiales sont là où tu les as laissés ; Flavie est vierge.
+
+30/10/2026 11:41
+MEMO

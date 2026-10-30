@@ -399,5 +399,5 @@ La suite reste donc le cadrage, autorisé par le prompt quand le banc ne peut pa
 
 À tester : vérifier ces quatre règles sur une copie ; rien de nouveau dans l’app.
 
-30/10/2026 21:58
+30/10/2026 22:14
 MEMO

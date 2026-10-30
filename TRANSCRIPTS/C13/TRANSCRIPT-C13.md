@@ -9036,36 +9036,45 @@ Par ailleurs va relire la totalité des erreurs faites par Claude sur les creati
 
 **Claude :** [fichier : T399-maquette-redaction-scans-v4.html]
 
-À jouer : la v4 (1382 à 1385) · en cours : rien · ouvert : 1394 ; 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+À jouer : la v4 (1386, 1390 à 1393) · en cours : rien · ouvert : 1397 ; 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
 
-1382. Ta question : non, pas exactement, avant cette version. L'onglet de test différait de l'élève réel sur trois points :
-- il lisait une photo des retours prise à son ouverture, quand l'élève lit le site ;
-- il écrivait par un autre chemin ;
-- il recevait tes verdicts tout de suite, alors que l'élève réel ne les voyait qu'en rouvrant son fichier. C'était une dette contre ta règle : une page ne dépend jamais d'un rechargement.
+1382. Ta question : non, pas exactement, avant cette version. L'onglet de test différait de l'élève réel sur trois points (1383 à 1385).
 
-1383. Réglé dans la v4 : un seul code pour l'élève et pour ton test. Lire à l'ouverture, écrire chaque réponse, recevoir un verdict sans recharger : ce sont les mêmes fonctions. Seul le dernier maillon change : le site pour l'élève, ta page de correction en mode test (qui lit et écrit comme le site, dans son mode test). Le banc joue aussi l'élève réel, sur un faux site : ton verdict lui arrive sans recharger, sa correction part au site.
+1383. Un : il lisait une photo des retours prise à son ouverture ; l'élève, lui, lit le site.
 
-1384. Ce qui reste différent, et ne peut pas être le même : l'élève ouvre un fichier reçu par École Directe, souvent sur son téléphone, quand toi tu l'ouvres dans un onglet de ton ordinateur. Le téléphone, c'est le test École Directe (1363).
+1384. Deux : il écrivait par un autre chemin que l'élève.
 
-1385. Relu contre les erreurs déjà faites sur les maquettes : le protocole des maquettes, et les 83 passages du registre qui en parlent. J'ai trouvé et corrigé six erreurs :
-- Le rang : les réponses étaient rangées par le numéro de la question. Chaque question a maintenant son identité (n°12 · 45).
-- La reprise exacte : rechargée, la page revenait au tableau des élèves. Elle rouvre maintenant la correction au même endroit (passe, copie, point, question), gardé au site par identités.
-- La reconstruction au clic : chaque geste refaisait les pages et le panneau, et le défilement se perdait. Maintenant, les pages restent, seules les marques se redessinent, et le défilement reste.
-- Le champ en cours : un retour d'élève arrivant pendant que tu tapes ta phrase de « à refaire » l'aurait effacée ; chez l'élève, de même pour un verdict pendant qu'il écrit. Le rendu attend maintenant que le champ soit quitté.
-- Deux aides sur la même touche : « ? » ouvrait la mienne et celle de l'app. Il n'y a plus que celle de l'app, avec sa page pour cet écran. Les touches de l'écran passent avant celles de l'app, et seulement les siennes.
-- Un champ qui faisait défiler l'écran en prenant la main. Corrigé.
+1385. Trois : il recevait tes verdicts tout de suite, alors que l'élève réel ne les voyait qu'en rouvrant son fichier. C'était une dette contre ta règle : une page ne dépend jamais d'un rechargement.
 
-1386. Vérifié sans défaut : c'est bien l'existant réel, pas une démo ; aucune boîte système ; aucun bouton mort ; aucun chevauchement avec le « ? » et le témoin de l'app, mesuré à 1366, 1536 et 1920 ; aucun mot technique à l'écran ; des exemples plausibles ; le mode test joue le vrai sujet ; une version par livraison.
+1386. Réglé dans la v4 : un seul code pour l'élève et pour ton test. Lire à l'ouverture, écrire chaque réponse, recevoir un verdict sans recharger : ce sont les mêmes fonctions. Seul le dernier maillon change : le site pour l'élève ; ta page de correction en mode test, qui lit et écrit comme le site, dans son mode test. Le banc joue aussi l'élève réel, sur un faux site : ton verdict lui arrive sans recharger, sa correction part au site.
 
-1387. Banc par le geste : 31 vérifications, 0 défaut. Fichier : T399-maquette-redaction-scans-v4.html.
+1387. Ce qui reste différent, et ne peut pas être le même : l'élève ouvre un fichier reçu par École Directe, souvent sur son téléphone ; toi, dans un onglet de ton ordinateur. Le téléphone, c'est le test École Directe (1363).
 
-1394. Oui à 1382 à 1387 ?
+1388. Relu contre les erreurs déjà faites sur les maquettes : le protocole des maquettes, et les 83 passages du registre qui en parlent. Six erreurs trouvées et corrigées (1389 à 1394).
+
+1389. Le rang : les réponses étaient rangées par le numéro de la question. Chaque question a maintenant son identité (n°12 · 45).
+
+1390. La reprise exacte : rechargée, la page revenait au tableau des élèves. Elle rouvre maintenant la correction au même endroit (passe, copie, point, question), gardé au site par identités.
+
+1391. La reconstruction au clic : chaque geste refaisait les pages et le panneau, et le défilement se perdait. Maintenant les pages restent, seules les marques se redessinent, et le défilement reste.
+
+1392. Le champ en cours : un retour d'élève arrivant pendant que tu tapes ta phrase de « à refaire » l'aurait effacée ; chez l'élève, de même pour un verdict pendant qu'il écrit. Le rendu attend maintenant que le champ soit quitté.
+
+1393. Deux aides sur la même touche : « ? » ouvrait la mienne et celle de l'app. Il n'y a plus que celle de l'app, avec sa page pour cet écran. Les touches de l'écran passent avant celles de l'app, et seulement les siennes.
+
+1394. Un champ faisait défiler l'écran en prenant la main. Corrigé.
+
+1395. Vérifié sans défaut : c'est bien l'existant réel, pas une démo ; aucune boîte système ; aucun bouton mort ; aucun chevauchement avec le « ? » et le témoin de l'app, mesuré à 1366, 1536 et 1920 ; aucun mot technique à l'écran ; des exemples plausibles ; le mode test joue le vrai sujet ; une version par livraison.
+
+1396. Banc par le geste : 31 vérifications, 0 défaut. Fichier : T399-maquette-redaction-scans-v4.html.
+
+1397. Oui à 1382 à 1396 ?
 
 À tester :
-1. Ouvrir la v4, corriger deux copies, recharger la page : la correction rouvre au même endroit (1385).
-2. Taper « ? » : l'aide de cet écran ; Échap la ferme (1385).
-3. « 🧪 Tester comme l'élève » : corriger une faute, écrire un papillon ; dans ta correction, passe 5 : le retour est là (1383).
-4. Taper ta phrase de « à refaire », puis N : dans l'onglet de l'élève, « à refaire » et ta phrase (1383).
+1. Ouvrir la v4, corriger deux copies, recharger la page : la correction rouvre au même endroit (1390).
+2. Taper « ? » : l'aide de cet écran ; Échap la ferme (1393).
+3. « 🧪 Tester comme l'élève » : corriger une faute, écrire un papillon ; dans ta correction, passe 5 : le retour est là (1386).
+4. Taper ta phrase de « à refaire », puis N : dans l'onglet de l'élève, « à refaire » et ta phrase (1386).
 
 30/10/2026 07:31
 MEMO

@@ -355,3 +355,27 @@ Sources :
 
 30/10/2026 16:03
 MEMO
+
+## Tour 14 — 30/10/2026 16:07 → 16:08
+
+**Paul :** [capture : le test de KeyHero, « Madame Bovary - Gustave Flaubert », Speed 64.62 WPM, Accuracy 93.55 %, Time 82 seconds ; moyenne du site 49.81 WPM, 92.27 %]
+
+**Fait.** Calculé : 310 mots (33 lignes × environ 9 mots) à 64,62 mots/min = 4 min 48 s. Relu C13 1173 : la copie d'une élève corrigée le 29/10 sur l'ancienne correction, 13 min 37 s en tout, dont 7 min 05 s pour « Le thème et l'invention ». Les passes 2 à 4 sur les scans : jamais faites au site (aucune réponse à 15:29), donc pas de temps mesuré. Rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : deux mesures (19) · en cours : rien · ouvert : 19 ; les stickers (9) ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+17. Ton résultat : 64,6 mots par minute, bien au-dessus de la moyenne du site (49,8) et de la moyenne en recopie (33). Pour une copie de 33 lignes, environ 310 mots, ça fait 4 min 48 s de frappe : à peu près le temps de toute ta passe de la langue d'aujourd'hui (4 min 27 s). Sur l'écriture d'un élève, avec ses fautes à reproduire, ce sera plus lent ; de combien, seule une vraie copie le dira. Verdict : recopier ne vaut le coup que si la suite de la correction te fait gagner plus de 5 minutes par copie. Ce que la suite te coûte aujourd'hui sur les scans (passes 2 à 4), je ne le sais pas : tu ne les as pas encore faites. Sur l'ancienne correction, le 29/10, une copie t'avait pris 13 min 37 s, dont 7 min pour le thème seul.
+
+18. Un risque à régler dès le départ : ta précision était de 93,5 %. Une faute de frappe que tu ne vois pas deviendrait une faute de l'élève. La parade : quand tu marques une faute sur le texte, la ligne de la photo s'affiche juste à côté, et tu vérifies d'un coup d'œil.
+
+19. Pour trancher, deux mesures, sans rien coder. Une : tu recopies une vraie copie, ligne par ligne, dans un fichier texte, en chronométrant. Deux : sur une autre copie, tu fais les passes 2 à 4 dans l'app d'aujourd'hui ; son chrono mesure tout seul, et tes réponses sont gardées. Tu fais les deux ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+Sources :
+[Human interaction speeds — Human Factors International](https://www.humanfactors.com/newsletters/human_interaction_speeds.html)
+
+30/10/2026 16:08
+MEMO

@@ -9814,3 +9814,38 @@ MEMO
 30/10/2026 14:34
 MEMO
 
+## Tour 424 — 30/10/2026 14:37 → 14:42
+
+**Paul :** Non ça devient n'importe quoi, trop compliqué. Tu dérives beaucoup. Cest le moment de c14. Tu mets tout au sas, tout ce que c14 doit savoir, et tu me donnes le message à lui coller une fois que tout est ok.
+
+**Fait.** Mesuré : versions en production (`index.html` 8.77.0-⑩ `55694fe1…`, `redaction.html` 1.2.1-RU `b0d4584e…`, `correction_dictee.html` 6.7.0-L18 `a4f2c283…`) ; tâches planifiées actives : trois, dimanche 01/11 (deux réveillent la session de la n°13 : `trig_016ng8QYFJrj7MhtKMsiid7a`, `trig_01ACxdaTckTJDoCXW7GiyuVY` ; une session neuve : `trig_011N2ypugwHmfdNnRHfe6bwb`) ; aucun exécutant en cours. Écrit : `MANDATS/PASSATION-C13-C14.md` (39 points, sept parties) ; outils copiés au sas `MANDATS/REDACTION-UNIVERSELLE/outils/` (`sas.sh`, `fumee.mjs`, sans jeton ni donnée d'élève) ; chemin de pdf.js réglable (`PDFJS`) dans `fumee.mjs` et les trois captures qui ne l'avaient pas ; registre (⑧ le cadrage des stickers, renvoi à la passation), journal, où-trouver-quoi en production (`523a612`, `92c18c0`). Aucune tâche planifiée touchée, rien promu.
+
+**Claude :**
+
+À jouer : coller le message à la n°14 · en cours : rien · ouvert : tout passe à la n°14 (passation, §4).
+
+1565. Tu as raison : j'ai dérivé. En 45 minutes je t'ai proposé sept façons de noter, chacune plus compliquée que la précédente, au lieu de revenir à ta phrase. C'est écrit tel quel dans la passation (§6), pour que la n°14 ne le refasse pas.
+
+1566. Tout est au sas : la passation https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PASSATION-C13-C14.md (l'état de production vérifié, le chantier des scans et ses outils, le cadrage des stickers tel que tu l'as laissé, ce qui est acquis et ce qui est tombé, les points ouverts, le rapport de dérive) ; le transcript jusqu'à ce tour ; les outils copiés au sas. Registre, journal et où-trouver-quoi sont à jour en production. Les deux dépôts sont propres et poussés.
+
+1567. Deux choses que la n°14 te demandera d'abord. La 1.2.2 (le trait qui se voit pendant que tu le tires) attend toujours ton « promeus » (1511). Et deux tâches planifiées de dimanche matin (créer mjpc-medias-2 ; les trois lignes Drive) réveilleraient ma session à moi, pas la sienne : à toi de dire si elle les reprend.
+
+1568. Le message à coller à la n°14, ci-dessous.
+
+```
+Tu es la conscience n°14 du chantier MJPC (Monsieur J'ai Pas Compris). Tu n'es pas l'exécutant : tu cadres avec moi, tu écris les mandats et les compléments au sas, tu audites, et je promeus. La n°13 vient de s'arrêter : elle a dérivé sur le cadrage des stickers de la rédaction.
+
+Avant de me dire quoi que ce soit, lis dans cet ordre :
+(1) MANDATS/PASSATION-C13-C14.md au sas siteflow-io/mjpc-chantier (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/PASSATION-C13-C14.md) ;
+(2) tout ce qu'elle cite : la fin du transcript TRANSCRIPTS/C13/TRANSCRIPT-C13.md (tours 399 à 424), et dans le dépôt de production siteflow-io/monsieurjaipascompris le registre docs/MJPC6-DETTES.md, le journal docs/MJPC6-journal.md (entrées C13 du 30/10), docs/MJPC6-1-DISPOSITIF.md et PROTOCOLE-MAQUETTE.md.
+
+Puis réponds-moi court, au format habituel : ce que tu as compris de l'état, ce qui est ouvert, et ta première proposition. Rien d'écrit, rien de poussé, rien de promu sans mon mot. Tu tiens ton transcript mot pour mot dans TRANSCRIPTS/C14/TRANSCRIPT-C14.md, et tu numérotes à partir de 1569.
+```
+
+À tester :
+1. Ouvrir l'adresse de 1566 : la passation s'affiche.
+2. Coller le message de 1568 dans une conversation neuve : la n°14 lit avant de répondre.
+
+30/10/2026 14:42
+MEMO
+

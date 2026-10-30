@@ -306,3 +306,26 @@ MEMO
 
 30/10/2026 15:54
 MEMO
+
+## Tour 12 — 30/10/2026 15:57 → 16:00
+
+**Paul :** Je viens d'avoir une idée. j'ai les photos des copies: donc je les vois à la verticale. Il faudrait un mode où je recopie la copie directement. Et là elle devient numérique. Je la recopie avec ses fautes etc. quelles seraient les possibilités ensuite? ça ne me dérange pas de recopier les copies, si la correction derrière est extrêmement accélérée.
+
+**Fait.** Mesuré au site (lecture, scratchpad privé), 3 FRANKLIN ARETHA, 21 copies corrigées dans la passe de la langue : lignes écrites de 10 à 45, médiane 33 ; fautes, médiane 25 ; temps de la passe de la langue par copie (chrono de l'app, `scan.chrono.langue`, en millisecondes, une minute sans geste ne compte pas) : médiane 4 min 27 s (266 582 ms), de 1 min 56 s à 8 min 32 s. Relu : C13 1218 (« l'élève tape sa lettre » écarté : tablettes à deux, brevet à la main), 1491 (OCR gratuite : 4 ou 5 mots justes sur 36). Rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 13 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+10. Pour la langue, la copie recopiée se corrige comme une dictée : tu passes de mot en mot au clavier, une touche marque la faute, une bonne forme déjà vue revient par son numéro. Plus de souris, plus de trait à tirer, plus de photo à zoomer. Si tu recopies ligne par ligne, comme sur la feuille, les lignes se comptent seules et chaque faute garde sa ligne pour l'élève.
+
+11. Pour la grille, l'app lit le texte et te propose ce qu'elle trouve ; tu acceptes d'une touche, c'est toujours toi qui décides. Elle peut trouver seule : les mots répétés de près, les mots de 14-18 d'une liste, la date et la signature à leur place, les phrases sans verbe conjugué, les relatives (qui, que, dont, où) de tes architectures. Elle ne peut pas juger le sens : l'inattendu, la litote, ce que l'élève tait ; là, tu poses le sticker en sélectionnant le passage au clavier, sans viser. Et une citation ne se recopie plus : tu la sélectionnes, elle est exacte, fautes comprises.
+
+12. Pour l'élève : il reçoit sa photo et son texte, ses fautes à leur ligne ; plus tard, sa correction devient celle de la dictée, qu'il connaît déjà. Ce que tu as déjà corrigé sur les photos reste tel quel.
+
+13. Le coût, c'est le temps de recopier, et je ne le connais pas : il dépend de ta frappe. Ce que je connais, mesuré par le chrono de l'app sur tes 21 copies : la passe de la langue te prend aujourd'hui 4 min 27 s par copie (médiane), pour 33 lignes et 25 fautes. Recopier 33 lignes prendra sans doute autant ou plus ; le gain doit donc venir de tout le reste de la correction. Je propose de mesurer avant de décider : tu recopies une seule copie, ligne par ligne, avec ses fautes, dans un simple fichier texte, et tu notes le temps ; tu me l'envoies, je te montre ce que l'app y aurait trouvé seule, et tu juges. Tu fais cet essai ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 16:00
+MEMO

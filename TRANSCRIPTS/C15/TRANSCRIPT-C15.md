@@ -623,3 +623,95 @@ MEMO
 
 30/10/2026 23:00
 MEMO
+
+## Tour 12 — 30/10/2026 23:04 — en cours
+
+**Paul :** Bon et alors il faut coder maintenant !!
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : lancement de la recopie · ouvert : 53 ; 45 ; 36.
+
+114. Je lance le codage de la recopie (56), selon l’ordre validé. Je reprends le code et le mandat avant de modifier la maquette, puis je ferai jouer la nouveauté au banc complet.
+
+À tester : rien pour toi à ce stade.
+
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : codage de la recopie · ouvert : 53 ; 45 ; 36.
+
+115. La base reconstruite est identique à la 1.2.3 : 533 112 octets. Je code maintenant la feuille alignée sur la photo, les poignées de ligne et la reprise de la saisie. Les marques et le total de lignes déjà corrigés seront conservés.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:11
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : branchement de la recopie dans l’app · ouvert : 53 ; 45 ; 36.
+
+116. Le mode recopie est écrit : chaque ligne garde une identité stable, son texte et ses deux poignées. Je le branche maintenant dans le vrai fichier des scans, avec la sauvegarde et la reprise après rechargement.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:15
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification de la maquette · ouvert : 53 ; 45 ; 36.
+
+117. La première maquette est construite. Le serveur d’aperçu ajoute un script qui casse l’affichage de l’app ; je corrige la configuration de cet aperçu avant de jouer la saisie et la reprise.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:23
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : essais de la recopie · ouvert : 53 ; 45 ; 36.
+
+118. L’aperçu affiche maintenant l’app correctement. Je passe aux essais de saisie, de déplacement des poignées et de reprise, puis j’ajoute ces gestes au banc existant.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:26
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : extension du banc de la recopie · ouvert : 53 ; 45 ; 36.
+
+119. Les premières lignes ont été saisies dans l’aperçu. Je complète le banc avec la reprise après rechargement, les changements de page et la conservation des anciennes corrections. J’ajoute aussi une page inventée avec une ligne courte, une rature, une pente et un grand blanc.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:35
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : lancement du banc sur la recopie · ouvert : 53 ; 45 ; 36.
+
+120. La maquette se reconstruit à l’identique depuis ses sources : 742 836 octets. Les nouvelles épreuves sont écrites. Je dépose cette version sur une branche du sas pour lancer les anciennes vérifications et celles de la recopie ensemble.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:39
+MEMO
+
+**Faits — ordre de coder et périmètre.** L'ordre explicite de Paul lance 56, la recopie, selon 61 déjà validé. Il ne valide ni l'import de 53, ni le clavier de la bande 51, ni la grille 58 ou la suppression des quatre passes 45 ; aucune promotion autorisée. Prompt C15 et mandat relus intégralement ; C14 récupéré, blob ccaefa2fb3f458981eb6be7ae3bf7925b2b7a832 inchangé. Les sources courantes sont relues : production 1.2.3-RU toujours blob 753ebaaec117ffd1ae406a15edab2e0dc955884a ; scan.js 457f2eeca90b4fc86a3bc69274f138a4547e3d37 ; gen-maquette.py aa002d1fd6f5392605f7c2dc6f7e3afb52995b37 ; banc 6edec4937325512999c4b5f72c31f142b6271ad0. AGENTS.md absent à la racine et dans chacun des dossiers parents des sources et du banc. Première horloge lue à 23:04 ; le premier message avait omis son heure et reste inchangé.
+
+Avant modification, huit sources locales vérifiées contre leurs empreintes Git et reconstruction de la référence : 533 112 octets identiques, md5 bde58bd636a12ea3e6af66474b476e38. Une copie de travail isolée c15-recopie est créée ; les lectures anonymes sont extraites de la maquette v14 existante. Les nouvelles classes restent les 30 noms inventés du générateur. Aucun accès aux copies réelles ni écriture Firebase.
+
+**Faits — code local et aperçu.** Nouveau module recopie.js et recopie.css, intégré au générateur et à l'écran des scans. Photo et feuille partagent leur défilement et leur géométrie ; chaque ligne porte un id stable, ses deux extrémités et son texte. La recopie ajoute scan.recopie et son curseur de reprise ; elle n'écrit pas le total de lignes déjà saisi, les marques, les réponses ou la grille. La détection réutilise scLignes avec un réglage propre à la recopie pour les lignes courtes ; le réglage des anciennes corrections ne change pas. Ajout, retrait et annulation gardent les textes par identité. Les retouches de photo transforment aussi les nouvelles lignes et leur cadre les contient. Les protections scCles, scCleSite et scFb existantes restent en place ; les textes sont des valeurs.
+
+L'aperçu local géré par Sites injectait son script de rechargement au milieu des chaînes HTML des anciens exports et cassait l'affichage. Diagnostic : les quatre scripts du fichier construit sont valides sous Node, tandis que le DOM servi contient le code de rechargement dans des scripts coupés. Le serveur de développement déclaré dans la configuration locale est remplacé par un simple serveur Python lancé et arrêté par sites-preview, sur les paramètres fournis par cet outil. Aucun changement de l'app pour compenser ce défaut de l'aperçu ; aucun serveur hors de ce lanceur. L'aperçu affiche ensuite l'app. Le PDF d'essai est choisi par le vrai sélecteur de fichiers ; son chargement est long dans ce navigateur. Une image PNG de sa première page est aussi choisie, ce qui ajoute une neuvième page au seul essai manuel. Pages données aux élèves fictifs par les initiales, ouverture de Recopier et saisie de deux lignes par les gestes. Les captures observées sont encore des essais, pas une livraison ; aucune donnée réelle d'élève.
+
+Le banc unique est étendu par banc/recopie.mjs, appelé après ses vérifications existantes. Nouvelle page PNG entièrement inventée avec six lignes, dont deux de deux mots, une rature, une pente et un grand blanc ; son générateur est conservé. Vérifications syntaxiques Node et Python passées. Un contrôle de construction extrait les lectures anonymes de v14, reconstruit la candidate et compare tous les octets : 742 836 identiques, SHA-256 c11d4ba1683b7887e9a77943988c31a88c645fdae919c83af03ebc4fb9ac652f. Aucun verdict fonctionnel nouveau encore annoncé : le lancement distant de la candidate suit.
+
+**Fait — dépôt en préparation.** Sources, générateur, maquette C15-maquette-recopie-v1-essai1.html, extension du banc et page d'essai sont préparés sur la branche c15-recopie du sas. Le fichier de lancement cible explicitement cette candidate et vérifie 17 empreintes de sources, au lieu de rejouer silencieusement v14. Le code du banc et ses nouveaux gestes seront joués ensemble ; son état d'échec reste propagé. Les erreurs et le verdict réel seront lisibles dans le nom du job de résultat. Le présent transcript intermédiaire est gardé avant lancement ; il sera complété du résultat.

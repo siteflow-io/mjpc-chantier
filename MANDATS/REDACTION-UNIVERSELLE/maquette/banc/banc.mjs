@@ -26,6 +26,13 @@ await cap('01-initiales');
 for (const ini of ['ec', 'la', 'mb', '', 'tb', 'gc', 'rb']) { await pg.keyboard.type(ini); await att(150); await pg.keyboard.press('Enter'); await att(250); }
 const cps = await pg.evaluate(() => SC.copies.map(k => nomEleveDe(k) + ':' + scPagesDe(k).length)); verif('6 copies dans l\'ordre du paquet : ' + cps.join(' · '), cps.length === 6 && cps[2].endsWith(':2'));
 verif('la dernière page donnée, la correction commence d\'elle-même (passe 1, copie 1)', await pg.evaluate(() => !SC.attrib && SC.passe === 0 && SC.ic === 0)); await att(300);
+// 1451 : les lignes écrites d'abord : le champ attend, et tant qu'il est vide la copie ne se quitte pas
+const ligFocus = await pg.evaluate(() => (document.activeElement || {}).id === 'scLig' && !!document.querySelector('.sc-lig-manque'));
+await pg.evaluate(() => document.activeElement.blur()); await pg.keyboard.press('Enter'); await att(200); await pg.keyboard.press('ArrowRight'); await att(300);
+const reste = await pg.evaluate(() => ({ ic: SC.ic, pt: (scPt() || {}).id, focus: (document.activeElement || {}).id }));
+await pg.keyboard.type('24'); await pg.keyboard.press('Enter'); await att(300);
+const ligOk = await pg.evaluate(() => scLignesCopie(scK()) === 24 && !document.querySelector('.sc-lig-manque'));
+verif('les lignes d\'abord : le champ attend (' + ligFocus + ') ; vide, ni Entrée ni → ne quittent la copie (' + reste.ic + ', ' + reste.pt + ') ; 24 tapé, Entrée : rangé', ligFocus && reste.ic === 0 && reste.pt === 'orthographe' && reste.focus === 'scLig' && ligOk);
 // passe 1, la langue : souligner « écrit » (ligne 3), taper la bonne forme ; une deuxième faute reprise par son numéro sur la copie suivante
 const boite = async () => pg.locator('.sc-page').first().boundingBox();
 const tracer = async (x0, y0, x1, y1) => { const r = await boite(); await pg.mouse.move(r.x + x0 * r.width, r.y + y0 * r.height); await pg.mouse.down(); await pg.mouse.move(r.x + x1 * r.width, r.y + y1 * r.height, { steps: 6 }); await pg.mouse.up(); await att(250); };
@@ -35,6 +42,7 @@ const m1 = await pg.evaluate(() => Object.values(scCopie(scK()).marques).map(m =
 verif('une faute soulignée avec sa bonne forme, une phrase dorée sur deux lignes : ' + m1.join(' '), m1.some(x => x.startsWith('faute:écris')) && m1.some(x => x.startsWith('etoile')));
 await pg.keyboard.press('Enter'); await att(150); await pg.keyboard.press('Enter'); await pg.keyboard.press('n'); await pg.keyboard.press('Enter'); await att(400);
 verif('après la langue, la copie suivante arrive', await pg.evaluate(() => SC.ic === 1));
+await att(200); await pg.keyboard.type('22'); await pg.keyboard.press('Enter'); await att(250);
 await tracer(0.25, 0.175, 0.33, 0.185); await pg.keyboard.type('1'); await pg.keyboard.press('Enter'); await att(200);
 verif('le numéro 1 reprend « écris »', await pg.evaluate(() => scFautes(scK())[0].bonne === 'écris'));
 // 1436 : une faute posée sans bonne forme ; un clic sur elle rouvre son champ, la bonne forme s'y tape ; Suppr au bout du champ efface la faute, Ctrl+Z la remet
@@ -123,25 +131,21 @@ verif('après rechargement : ' + n2.m + ' marques, ' + n2.img + ' images gardée
 await pg.click('text=📨 Fichiers École Directe'); await att(400); await cap('05-fichiers-ed');
 const dl = pg.waitForEvent('download'); await pg.click('.sc-table tr >> nth=1 >> text=Télécharger'); const d = await dl; const f = path.join(OUT, 'fichier-eleve.html'); await d.saveAs(f);
 const html = fs.readFileSync(f, 'utf8'); verif('le fichier élève porte sa photo (' + Math.round(html.length / 1024) + ' Ko) et ne joint jamais le vrai hub en maquette', /data:image\/jpeg;base64/.test(html) && /"test":true/.test(html));
+// 1463 : le fichier de l'élève en lecture seule : il clique tes marques et sa grille, il n'écrit rien ; la coche de la correction par l'élève est grisée
+const coche = await pg.evaluate(() => { const c = document.querySelector('.sc-coche input'); return c ? { off: c.disabled && !c.checked, dit: c.closest('label').textContent.replace(/\s+/g, ' ').trim() } : null; });
+verif('la coche « Ouvrir la correction par l\'élève » est là, grisée, décochée, et dit pourquoi (« ' + (coche && coche.dit.slice(0, 60)) + '… »)', coche && coche.off && /pas encore codée/.test(coche.dit));
 const popE = ctx.waitForEvent('page'); await pg.click('.sc-table tr >> nth=1 >> text=Tester comme l\'élève'); const el = await popE; await el.waitForLoadState(); await el.setViewportSize({ width: 1536, height: 864 }); await att(1500);
-const fr = el; await el.screenshot({ path: path.join(OUT, '06-eleve-traversee.png') }); await fr.locator('#passer').click(); await att(600);
-await fr.locator('#rep').fill('écrit'); await fr.locator('#ok').click(); await att(300); const ko = await fr.locator('#msg').innerText();
-await fr.locator('#rep').fill('écris'); await fr.locator('#ok').click(); await att(500);
-verif('l\'élève corrige sa faute dans son onglet de test : faux puis juste', ko.includes('✗'));
-await el.screenshot({ path: path.join(OUT, '07-eleve-parcours.png') });
-let pap = 0; let questions = 0; for (let i = 0; i < 30; i++) { if (!(await fr.locator('#ok').count())) break; if (await fr.locator('#rq').count()) { if (!questions) await el.screenshot({ path: path.join(OUT, '07b-eleve-question.png') }); await fr.locator('#rq').fill('Je suis Pierre, dans la tranchée, et j\'écris à Louise.'); questions++; await fr.locator('#ok').click(); await att(250); continue; } const t = fr.locator('#pap'); if (await t.count()) { await t.fill('Je suis dans la tranchée de Vauquois depuis le mois de février, avec les hommes de ma compagnie.'); pap++; } await fr.locator('#ok').click(); await att(250); }
-await el.screenshot({ path: path.join(OUT, '08-eleve-papillon.png') });
-verif('l\'élève répond à la question avant de voir chaque case (' + questions + ') et écrit ses papillons (' + pap + ')', questions >= 3 && pap >= 1);
-await pg.bringToFront(); await att(500); await pg.click('.sc-passe >> nth=4'); await att(500); await cap('09-retours');
-verif('les retours de l\'onglet de test arrivent sans recharger (' + await pg.evaluate(() => scRetoursListe().length) + ')', await pg.evaluate(() => scRetoursListe().length) >= 1);
-const nr = await pg.evaluate(() => scRetoursListe().length);
-await pg.fill('#scARefaire', 'Relis ta tâche, et écris-la de nouveau.'); await pg.click('.sc-nom'); await att(300);
-verif('ta phrase de « à refaire » s\'enregistre au sujet', await pg.evaluate(() => fetch(ruUrl(["redactions", RU.id, "config", "aRefaire"])).then(r => r.json())) === 'Relis ta tâche, et écris-la de nouveau.');
-await pg.keyboard.press('n'); await att(500);
-verif('ton « à refaire » arrive dans l\'onglet de l\'élève, avec ta phrase', (await el.locator('.ko').count()) >= 1 && (await el.locator('#pan').innerText()).includes('Relis ta tâche'));
-await el.screenshot({ path: path.join(OUT, '09b-eleve-a-refaire.png') });
-const et = await pg.evaluate(() => Object.values(SC.retours).reduce((a, R) => a.concat(Object.values(R)), []).filter(r => r.etat === 'arefaire').length);
-verif('les retours arrivent chez Paul (' + nr + ') ; N : à refaire', nr >= 1 && et === 1);
+await el.screenshot({ path: path.join(OUT, '06-eleve-traversee.png') }); await el.locator('#passer').click(); await att(600);
+const lg = await el.evaluate(() => ({ lignes: document.querySelectorAll('#pan .ligne[data-p]').length, champs: document.querySelectorAll('input,textarea').length, note: (document.querySelector('.note') || {}).textContent || '' }));
+await el.screenshot({ path: path.join(OUT, '07-eleve-grille.png') });
+await el.locator('#pan .ligne[data-p] >> nth=0').click(); await att(500); const det = await el.evaluate(() => ({ ech: !!document.querySelector('#pan .ech span.on'), marque: document.querySelectorAll('#col .on').length }));
+await el.screenshot({ path: path.join(OUT, '08-eleve-point.png') });
+await el.locator('#gr').click(); await att(300); await el.locator('#col .num >> nth=0').click(); await att(400); const fa = await el.evaluate(() => (document.querySelector('#pan h3') || {}).textContent || '');
+await el.screenshot({ path: path.join(OUT, '09-eleve-faute.png') }); await el.locator('#gr').click(); await att(300); const retourGrille = await el.evaluate(() => document.querySelectorAll('#pan .ligne[data-p]').length);
+verif('l\'élève lit sa copie corrigée : sa grille (' + lg.lignes + ' points, note « ' + lg.note + ' »), un point cliqué montre son échelle et ses marques (' + det.marque + '), une faute cliquée (« ' + fa + ' »), il revient à sa grille quand il veut ; aucun champ (' + lg.champs + ')', lg.lignes >= 1 && lg.champs === 0 && det.ech && det.marque >= 1 && /^Faute 1 sur/.test(fa) && retourGrille === lg.lignes);
+const passes = await pg.evaluate(() => Array.from(document.querySelectorAll('.sc-passe')).map(b => b.textContent.trim()));
+verif('pas de passe « Les retours des élèves » tant que la correction par l\'élève est fermée (' + passes.length + ' passes)', passes.length === 4 && !passes.some(t => /retours/.test(t)));
+await pg.bringToFront(); await pg.keyboard.press('Escape'); await att(300);
 // les copies vierges de l'appli : scannées de travers, remises droites, lignes connues
 await pg.click('.sc-passe >> nth=0'); await att(200);
 await pg.setInputFiles('#scanEcran input[type=file]', path.join(DIR, 'paquet-reperes.pdf')); await pg.waitForFunction(() => Object.keys(SC.pages).length >= 10, null, { timeout: 60000 }); await att(600);
@@ -172,18 +176,25 @@ const chev = []; for (const [w, h] of [[1366, 768], [1536, 864], [1920, 1080]]) 
     const app = [document.querySelector('.rp-aide-btn'), document.getElementById('ruTemoin')].map(R); const moi = Array.from(document.querySelectorAll('#scanEcran .sc-haut button, #scanEcran .sc-haut label, #scanEcran .sc-passe, #scanEcran .sc-bloc, #scChrono')).map(R);
     const L = []; app.forEach((a, i) => moi.forEach((b, j) => { if (x(a, b)) L.push(w + 'x' + h + ' ' + ['?', 'témoin'][i] + '/' + j); })); return L; }, { w, h })); }
 await pg.setViewportSize({ width: 1536, height: 864 }); verif('aucun chevauchement avec le « ? » et le témoin de l\'app, à 1366, 1536 et 1920 (' + (chev.join(', ') || 'aucun') + ')', chev.length === 0);
-// l'élève réel : le même code, par le site (ici un faux site servi au navigateur) — lire à l'ouverture, écrire, et recevoir un verdict sans recharger
+// le fichier réel, celui d'École Directe : il ne joint jamais le site (lecture seule), et se lit sans recharger
 const reel = await pg.evaluate(() => { const fh = window.__FAUX_HUB; window.__FAUX_HUB = false; const t = RU.test; RU.test = false; const p = scEleveFichier(SC.copies[0], false); window.__FAUX_HUB = fh; RU.test = t; return p.then(f => f.html); });
-const fr2 = path.join(OUT, 'fichier-eleve-reel.html'); fs.writeFileSync(fr2, reel); const idF = /"fautes":\[\{"id":"([^"]+)"/.exec(reel)[1];
-const ctx2 = await b.newContext({ viewport: { width: 1536, height: 864 } }); const recu = [];
-await ctx2.route(u => /firebasedatabase\.app\/.*retours/.test(String(u)), async r => { const q = r.request(); if (q.method() === 'PUT') { recu.push(q.url().split('/').pop()); return r.fulfill({ status: 200, body: q.postData() }); }
-  if ((q.headers().accept || '').includes('text/event-stream')) return r.fulfill({ status: 200, contentType: 'text/event-stream', body: 'event: put\ndata: {"path":"/","data":null}\n\n' + 'event: patch\ndata: ' + JSON.stringify({ path: '/', data: { [idF]: { type: 'faute', texte: 'écri', ok: false, etat: 'arefaire', phrase: 'Reprends ta tâche.' } } }) + '\n\n' });
-  return r.fulfill({ status: 200, contentType: 'application/json', body: 'null' }); });
-const pr = await ctx2.newPage(); await pr.goto('file://' + fr2); await att(1200); await pr.locator('#passer').click(); await att(500);
-const vu = (await pr.locator('#pan').innerText()).includes('Reprends ta tâche');
-await pr.locator('#rep').fill('écris'); await pr.locator('#ok').click(); await att(600);
-verif('l\'élève réel passe par le même code : ton verdict lui arrive du site sans recharger (' + vu + '), sa correction part au site (' + recu.length + ' écriture)', vu && recu.length >= 1);
+const fr2 = path.join(OUT, 'fichier-eleve-reel.html'); fs.writeFileSync(fr2, reel);
+const ctx2 = await b.newContext({ viewport: { width: 1536, height: 864 } }); const appels = []; ctx2.on('request', q => { if (!/^(file|data|blob):/.test(q.url())) appels.push(q.url()); });
+const pr = await ctx2.newPage(); await pr.goto('file://' + fr2); await att(900); await pr.locator('#passer').click(); await att(400);
+const vuR = await pr.evaluate(() => ({ lignes: document.querySelectorAll('#pan .ligne[data-p]').length, test: /Mode test/.test(document.body.innerText) }));
+verif('le fichier réel de l\'élève se lit seul : sa grille (' + vuR.lignes + ' points), aucun appel au site ni ailleurs (' + appels.length + ')', vuR.lignes >= 1 && !vuR.test && appels.length === 0);
 await ctx2.close();
+// 1450 : une copie passée en entier, le récapitulatif s'ouvre seul : la note, la grille, le bilan, « À reprendre »
+await pg.bringToFront(); if (await pg.evaluate(() => SC.attrib)) { await pg.click('#scInit'); await pg.keyboard.press('1'); await att(500); }   // la page à repères laissée en suspens plus haut : « rc » désigne deux élèves, le chiffre 1 choisit
+let recapOuvert = false;
+for (const ip of [0, 1, 2, 3]) { await pg.click('.sc-passe >> nth=' + ip); await att(300); await pg.click('.sc-vig >> nth=0'); await att(300); const k0 = await pg.evaluate(() => scK());
+  let nE = 0; for (; nE < 90; nE++) { const st = await pg.evaluate(k0 => ({ r: !!SC.recap, autre: scK() !== k0 }), k0); if (st.r) { recapOuvert = true; break; } if (st.autre) break; await pg.keyboard.press('Enter'); await att(50); }
+  if (!recapOuvert) console.log('  recap, passe ' + ip + ' après ' + nE + ' Entrée : ' + await pg.evaluate(k0 => { const a = document.activeElement; return 'copie ' + k0 + ' → ' + scK() + ' · pt ' + (scPt() || {}).id + ' · q ' + SC.iq + ' · focus ' + (a && (a.id || a.tagName)) + ' · lignes ' + scLignesCopie(k0) + ' · ' + SC.grille.criteres.map(c => c.points.map(pt => { const r = scCase(pt, k0); return r ? (r.complet ? r.c.niveau : 'i') : '-'; }).join('')).join('|'); }, k0));
+  if (recapOuvert) break; }
+const rc = await pg.evaluate(() => { const E = document.getElementById('scRecap'); return E && !E.hidden ? { note: E.querySelector('.sc-rc-note').textContent, lignes: E.querySelectorAll('.sc-rc-grille tr:not(.sc-rc-crit)').length, pas: E.querySelectorAll('.sc-rc-pas').length, paras: E.querySelectorAll('.sc-rc-col:last-child > p').length, suite: !!E.querySelector('.sc-rt-ok') } : null; });
+await cap('18-recapitulatif');
+const icAvant = await pg.evaluate(() => SC.ic); await pg.keyboard.press('Enter'); await att(400); const apresRc = await pg.evaluate(() => ({ ferme: !SC.recap, ic: SC.ic }));
+verif('copie passée en entier : le récapitulatif s\'ouvre seul (note « ' + (rc && rc.note) + ' », ' + (rc && rc.lignes) + ' points, ' + (rc && rc.paras) + ' paragraphes de bilan) ; Entrée : la copie suivante', rc && /\/ 40/.test(rc.note) && rc.lignes === 12 && rc.pas === 0 && rc.paras >= 1 && rc.suite && apresRc.ferme && apresRc.ic !== icAvant);
 verif('aucune écriture sur une classe entière (une clé de copie vide)', !(await pg.evaluate(() => window.__LOG || [])).some(l => /^\w+ [^/]+\.json/.test(l)));
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }

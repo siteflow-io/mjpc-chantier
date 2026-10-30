@@ -1,7 +1,7 @@
 // Infobulles : tout ce qui se clique, se tape ou se tient sur l'écran des scans porte une explication écrite pour Paul (un title), état par état.
 import { createRequire } from 'node:module'; import path from 'node:path';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
-const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..'); const MAQ = path.join(DIR, process.argv[2] || 'T399-maquette-redaction-scans-v9.html');
+const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..'); const MAQ = path.join(DIR, process.argv[2] || 'T399-maquette-redaction-scans-v10.html');
 const b = await pw.chromium.launch({ args: ['--allow-file-access-from-files'] }); const ctx = await b.newContext({ viewport: { width: 1536, height: 864 } });
 const pg = await ctx.newPage(); const err = []; pg.on('pageerror', e => err.push(e.message)); pg.on('dialog', d => { err.push('boîte ' + d.message()); d.dismiss(); });
 await ctx.route(u => /firebasedatabase|firebaseio/.test(String(u)), r => { err.push('RÉSEAU HUB ' + r.request().url()); r.abort(); });
@@ -24,7 +24,7 @@ await tr(0.25, 0.175, 0.33, 0.185); await pg.keyboard.type('éc'); await att(200
 await pg.click('text=💬 Remarque'); await att(200); await tr(0.4, 0.3, 0.6, 0.33); await att(200); await releve('une remarque'); await pg.keyboard.press('Escape'); await att(200);
 await pg.mouse.click(r.x + 0.29 * r.width, r.y + 0.18 * r.height); await att(200); await releve('une marque choisie');
 await pg.click('text=✂ Page 1'); await att(900); await releve('la retouche'); await pg.keyboard.press('Escape'); await att(300);
-for (let i = 1; i < 5; i++) { await pg.click('.sc-passe >> nth=' + i); await att(400); await releve('passe ' + (i + 1)); }
+for (let i = 1; i < 4; i++) { await pg.click('.sc-passe >> nth=' + i); await att(400); await releve('passe ' + (i + 1)); }
 await pg.click('.sc-passe >> nth=1'); await att(300); await pg.click('text=Replier'); await att(300); await releve('panneau replié'); await pg.click('text=Déplier'); await att(300);
 await pg.click('text=📨 Fichiers École Directe'); await att(400); await releve('fichiers École Directe'); await pg.keyboard.press('Escape'); await att(300);
 const mq = pg.locator('text=⚙ Maquette'); if (await mq.count()) { await mq.first().click(); await att(300); await releve('⚙ Maquette'); await pg.keyboard.press('Escape'); }

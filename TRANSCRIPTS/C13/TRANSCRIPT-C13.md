@@ -9343,3 +9343,41 @@ Les solutions
 
 30/10/2026 10:30
 MEMO
+
+## Tour 410 — 30/10/2026 10:57 → 11:16
+
+**Paul :** 1451 il faut un message d'alerte si je clique sur entrée ou flèche droite. 1452 ok on laisse tomber. 1453. en fait la correction élève est une étape qui arrive dans un second temps. Pour l'instant on ne le code pas (tu marques dans le code que c'est une section entière à coder quand même et tu t'organises pour que lorsqu'on le codera ça ne cassera rien). il faut donc une coche d'ouverture de correction élève. quand cette coche est active, on peut lancer la correction en classe, comme celle de dictée. tout ça restera à coder du coup. Pour l'instant cette case est décochée par défaut, et l'élève reçoit juste sa correction de copie avec le pochoir et la photo (html interactif remis sur école directe dans un seul fichier). il clique sur les éléments, voit sa grille, etc. C'est de la lecture seule. Comme ça pour aujourd'hui j'ai juste à corriger mes copies normalement, et l'élève reçoit son fichier et sa note et sa grille et c'est tout. les dettes du parcours de correction élève sont à mettre sur github évidemment pour quand je reprendrai ce chantier. Tu as compris? On consolide le premier flux là, c'est l'objectif à atteindre.
+
+**Fait.** Branche du sas `c13-t409-v10-en-cours` reprise. Le défaut du récapitulatif mesuré : sonde neuve (`t410/recap-sonde.mjs`) : il s'ouvre seul à la fin de la passe 4 ; dans le banc, l'écran était resté en attribution (une page à repères, « rc » ambigu, COLAS Raphaël / RENAUD Chloé, attendait son chiffre) : banc corrigé (chiffre 1), le récapitulatif s'ouvre (note 34 / 40, 12 points). `scan.js` : `SC_CORRECTION_ELEVE_CODEE = false` et `scCorrectionEleve()` (bloc « SECTION ENTIÈRE À CODER ») ; passe « retours » ni affichée ni atteignable ; marques « relue / seul » masquées ; textes de faute « l'élève te l'enverra à relire » remplacés ; bloc des lignes en tête du panneau à toute étape de la langue ; alerte (`#scAlerte` au-dessus de la copie, `#scLigAlerte` sous le champ, clignotement) ; bilan : majuscules gardées, réussi = case la plus haute sans tâche, « À reprendre » avec sa case, « Ta priorité » retiré, autres cases de la même question écartées. `eleve.js` : `scEleveLecture` (lecture seule : traversée, copie, grille, détail d'un point, d'une faute sans bonne forme, d'une remarque, de l'étoile ; aucun champ, aucun appel) choisie par `scEleveFichier` tant que `D.correctionEleve` est faux ; `scEleveApp` gardé sous le bandeau « SECTION À CODER » ; fenêtre École Directe : coche grisée avec sa raison, textes mis à jour. Banc : retirés (parcours interactif, relecture, « à refaire », verdict par le site) ; ajoutés (coche grisée ; lecture seule par le geste ; pas de passe des retours ; fichier réel sans aucun appel) : 39 / 0. Infobulles : 368, 0 sans. Captures : 06 à 09 (élève), 18 (récapitulatif), 19 (alerte). Dettes : `docs/MJPC6-DETTES.md` (production, consignées non ordonnancées) et `MANDATS/REDACTION-UNIVERSELLE/A-CODER-CORRECTION-ELEVE.md`. v10 md5 ce6f2a6bd513 ; privé `scan-prive/T410-maquette-classe-reelle.html` md5 89ce54fc1b0e (même clé de navigateur que T406 à T408). Docs : `docs/MJPC6-OU-TROUVER-QUOI.md`, `docs/MJPC6-journal.md`.
+
+**Claude :** [fichiers : 07-eleve-grille.png, 08-eleve-point.png, 09-eleve-faute.png, 18-recapitulatif.png, 19-alerte-lignes.png, T410-maquette-classe-reelle.html (privé), T399-maquette-redaction-scans-v10.html]
+
+À jouer : la v10 sur tes copies (1463 à 1467) · en cours : rien · ouvert : 1470 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1462. Compris. Le premier flux, c'est tout : tu corriges tes copies sur les scans ; l'élève reçoit sur École Directe un seul fichier, sa photo avec tes marques, sa grille et sa note, en lecture seule. La correction par l'élève vient plus tard.
+
+1463. Le fichier de l'élève, en lecture seule (v10) : il s'ouvre sur la traversée, puis sa copie et sa grille. Il clique une marque, un rond ou une ligne de sa grille : il voit le point, son échelle, sa case et ce qu'il a à reprendre ; « ← Ta grille » le ramène, quand il veut. Il n'écrit rien, et le fichier ne joint jamais le site (mesuré : aucun appel). La bonne forme de ses fautes ne s'affiche pas : je la garde pour la correction par l'élève, sinon elle n'aurait plus d'exercice. Captures 07-eleve-grille, 08-eleve-point, 09-eleve-faute.
+
+1464. La coche « Ouvrir la correction par l'élève » est dans la fenêtre « 📨 Fichiers École Directe », grisée, décochée, avec sa raison écrite à côté : « pas encore codée ». Tant qu'elle est fermée, la passe « Les retours des élèves » n'existe plus : aucune relecture.
+
+1465. Dans le code, la correction par l'élève est marquée « section entière à coder », derrière un seul interrupteur, fermé. L'ancien parcours y reste, jamais appelé : le jour où on la code, rien du premier flux ne bouge. Les dettes sont sur GitHub, au registre des dettes (https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-DETTES.md) et en détail au sas (https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/REDACTION-UNIVERSELLE/A-CODER-CORRECTION-ELEVE.md) : dix dettes, dont le lancement en classe comme en dictée.
+
+1466. 1451, l'alerte : Entrée ou → sans les lignes, un bandeau rouge paraît au-dessus de la copie (« D'abord les lignes écrites de cette copie… »), et le même message en rouge sous le champ, qui clignote. La copie ne bouge pas. Capture 19-alerte-lignes.
+
+1467. Le récapitulatif (1450) : le défaut venait du banc, pas de l'appli (une page du paquet d'essai restait sans élève). Corrigé ; il s'ouvre seul quand une copie est finie, capture 18-recapitulatif. Deux corrections du bilan en chemin : les phrases gardent leur majuscule ; dans « À reprendre », chaque tâche a sa case au-dessus (« Transforme-les… » ne voulait rien dire seul). « Ta priorité » est retiré : sorti de sa case, il ne voulait rien dire.
+
+1468. Les mots que l'élève lit dans ce fichier sont les miens, à valider ou à changer : « Ta note », « Ta grille », « À reprendre », « ← Ta grille », « Tes fautes : 3 soulignées en rouge sur ta copie », « Faute 2 sur 3 : une erreur d'orthographe ou de grammaire, soulignée en rouge », « Ma remarque », « La phrase qui m'a touché : surlignée en or sur ta copie », et les quatre phrases de la traversée.
+
+1469. Pour corriger tes paquets sur le site, ce qui reste, dans l'ordre : tes 51 questions récrites et validées (1444) ; les mots de 1468 ; puis la promotion. À la promotion, deux écritures au site que je n'ai jamais faites : la grille à cases dans le sujet, et ton paquet (pages, marques, réponses), dont je ne sais pas encore si le site l'accepte. Je les fais sur ton « promeus », et je les vérifie aussitôt.
+
+1470. Oui à 1462 à 1469 ? Je récris tes 51 questions maintenant ?
+
+À tester (avec T410-maquette-classe-reelle.html, dans le même navigateur que les essais d'avant) :
+1. Ouvrir T410 : ton paquet et tes marques des essais d'avant sont là.
+2. Passe de la langue, sur une copie sans lignes : Entrée, puis → ; le bandeau rouge, la copie ne bouge pas ; taper le nombre, Entrée (1466).
+3. Finir les quatre passes d'une copie : le récapitulatif s'ouvre seul ; Entrée, la copie suivante (1467).
+4. « 📨 Fichiers École Directe » : la coche grisée (1464) ; « 🧪 Tester comme l'élève » : cliquer un rond, une ligne de la grille, une faute, puis « ← Ta grille » (1463).
+5. En haut, plus de passe « Les retours des élèves » (1464).
+
+30/10/2026 11:16
+MEMO

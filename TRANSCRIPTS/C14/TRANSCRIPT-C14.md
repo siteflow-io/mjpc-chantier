@@ -226,3 +226,26 @@ MEMO
 
 30/10/2026 15:40
 MEMO
+
+## Tour 8 — 30/10/2026 15:43 → 15:45
+
+**Paul :** Je n'ai rien compris. Pour la numérotation, recommence à 1. par ailleurs, on ne fait pas de numéros différents pour des choses qui vont ensemble. Et sois plus clair bon sang.
+
+**Fait.** Numérotation repartie à 1 (règle de Paul : ce qui va ensemble sous un seul numéro). Rien mesuré de neuf, rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : F5, puis le Lexique (1) · en cours : rien · ouvert : 3 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+1. Le message « Le site a refusé l'enregistrement » est réglé : la nouvelle version (1.2.3) est en ligne depuis 15:36, et je l'ai vérifiée. Tes fautes n'ont jamais été perdues. Ce que tu fais maintenant : F5, puis, sur les copies où tu avais déjà répondu aux trois questions du Lexique, tu y réponds de nouveau. En haut à droite, tu dois lire « ✓ Enregistré au site ».
+
+2. Les stickers, ce qui est décidé. Tu ne remplis plus la grille. En lisant la copie, chaque fois que l'élève a réussi une chose que la grille attend, tu poses sur ce passage le sticker de cette chose. La note de chaque point se calcule seule, d'après les stickers posés, et le panneau te montre en direct ce qui est posé, ce qui manque et ce que chaque sticker rapporte. Seule la langue se corrige autrement : tu marques les fautes, comme aujourd'hui. Je réécris donc ta grille point par point sous cette forme, et tu valides chaque point. Le premier, « Le thème tenu » (6 points), est validé : six stickers, « D'où vient la lettre », « Le lieu », « Le destinataire », « La séparation », « Le personnage », « Toute la lettre en 14-18 ». Je compte au fur et à mesure combien de stickers demande une copie parfaite, pour tes 30 gestes par copie : 13 déjà pour les deux premiers points ; je te donne le total quand toute la grille sera écrite.
+
+3. Le deuxième point, « Les trois paragraphes » (4 points), suit ton sujet. Sept stickers : « Les alinéas » (la lettre va à la ligne entre ses parties) ; « Où je suis, ce que je vois » ; « Le plus dur » ; « Pas ce qu'on croit » (le plus dur n'est pas ce qu'on attend, comme la boue chez Jean Déléage) ; « L'inquiétude pour l'autre » ; « Ses nouvelles » (il lui demande des nouvelles de sa vie) ; « Dans l'ordre du sujet » (posé à la fin de ta lecture, sur la lettre entière). La note : les sept posés, 4 points ; il en manque un, 2,5 ; il en manque deux ou trois, 1 ; plus, 0. Tu valides ces sept stickers et cette note ? Les noms sont mes propositions : change ceux qui ne te vont pas.
+
+À tester :
+1. F5 sur le site, puis, sur une copie finie, Entrée sur la copie et les trois questions du Lexique : en haut à droite, « ✓ Enregistré au site ».
+2. F5 encore : tes réponses au Lexique sont toujours là.
+
+30/10/2026 15:45
+MEMO

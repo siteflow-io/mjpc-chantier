@@ -9849,3 +9849,26 @@ Puis réponds-moi court, au format habituel : ce que tu as compris de l'état, c
 30/10/2026 14:42
 MEMO
 
+## Tour 425 — 30/10/2026 14:51 → 14:54
+
+**Paul :** fais au moins la correction du trait rouge demandée en urgence précédemment
+
+**Fait.** Lu comme l'ordre de mise en ligne de 1.2.2-RU (le correctif est la candidate du tour 416). Candidate refaite de la base : md5 `d46ecf46557d0f7da853ac5ee96e0dc4`, identique. 1.2.1-RU copiée au sas (`SAUVEGARDES/redaction-1.2.1-RU-avant-1.2.2-2026-10-30.html`, md5 `b0d4584e…`). Point de retour écrit et poussé avant (prod `docs/MJPC6-restauration.md`). Commit prod `413d235`, blob `4cd727385377` ; en ligne au 7e essai (14:53), md5 identique bit à bit. Essai à la fumée sur le fichier en ligne, au vrai site (écritures interceptées) : version 1.2.2-RU, classe de 30, écran des scans, 51 questions, 1 écriture (le suivi), aucune erreur ; captures rangées en privé. Docs de production (`e0b5c5f`) : état de production 1.2.2, ⑦ ✔, journal, où-trouver-quoi (`&v=1.2.2-RU`), point de retour (promu). Passation à la n°14 mise à jour (1.2.2 en ligne, 1511 soldé, numérotation à partir de 1572).
+
+**Claude :**
+
+À jouer : F5 entre deux copies, puis tirer un trait (1569) · en cours : rien · ouvert : tout passe à la n°14 (passation, §4).
+
+1569. C'est en ligne et vérifié : la Rédaction 1.2.2-RU, le trait rouge se voit pendant que tu le tires. Le fichier en ligne est identique, octet pour octet, à celui que j'avais essayé ; essayé de nouveau en ligne sur le vrai site, sans y écrire : aucune erreur. Rien d'autre ne change. Recharge (F5) entre deux copies : ton paquet, tes initiales et tes marques reviennent où tu les as laissés.
+
+1570. La sauvegarde : la 1.2.1 est gardée intacte au sas, et le point de retour est inscrit avant la mise en ligne. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.2.2-RU
+
+1571. La passation est mise à jour (1.2.2 en ligne, 1511 soldé). Dans le message à coller à la n°14 (1568), remplace « tu numérotes à partir de 1569 » par « tu numérotes à partir de 1572 ».
+
+À tester (sur le site, après F5) :
+1. Appuyer au début d'un mot et tirer : le trait rouge suit ta main pendant que tu tires.
+2. Lâcher : le trait reste exactement là où tu l'as vu.
+
+30/10/2026 14:54
+MEMO
+

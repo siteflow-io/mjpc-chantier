@@ -489,7 +489,7 @@ MEMO
 30/10/2026 17:47
 MEMO
 
-## Tour 20 — 30/10/2026 18:29 → 18:32
+## Tour 20 — 30/10/2026 18:29 → 18:30
 
 **Paul :** Ok mais du coup vu que les lignes sont reconnues ça veut dire que l'App est capable de faire passer la copie entière comme une bande ( comme correction dictée en mode rapide ) et elle numérote toutes les marques au préalable de la copie numérique et moi j'ai juste à cliquer sur les mots de la bande déroulante pour attacher les remarques tu vois l'idée ? Ou tu as qqchose de plus ergonomique et plus rapide? Et la bande passe exactement comme en correction dictée
 
@@ -507,5 +507,5 @@ MEMO
 
 À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
 
-30/10/2026 18:32
+30/10/2026 18:30
 MEMO

@@ -421,3 +421,28 @@ MEMO
 
 30/10/2026 16:40
 MEMO
+
+## Tour 17 — 30/10/2026 16:48 → 16:53
+
+**Paul :** entre 4 et 5 minutes à taper: [le texte recopié d'une copie réelle de la 3 FRANKLIN ARETHA, 398 jetons, gardé hors du sas (scratchpad privé `recopie/eleve.txt`) : une lettre datée du 15 septembre 1916, « Ma chère Ginette », signée « Ton mari Georges Severin »]
+
+**Fait.** Le rôle de l'IA joué avec la règle du prompt (corriger mot pour mot, sans reformuler) : `recopie/corrige.txt` (privé). Comparaison avec `tokenize` empruntée telle quelle à `correction_dictee.html` (ligne 1290) : 398 jetons contre 403 ; comparés rang par rang, 380 écarts (inutilisable dès qu'un mot manque) ; alignés (plus longue suite commune), 35 écarts, qui donnent 28 fautes de mots et 4 de ponctuation. Copie au site : non retrouvée par les bonnes formes (aucune en commun avec les 21 copies). Réponses aux deux points écrits (« Le thème tenu », « Les trois paragraphes »), avec leurs passages. Rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 30 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+26. Ton temps, 4 à 5 minutes, colle au calcul (4 min 48 s).
+
+27. Ce que l'IA a trouvé en corrigeant mot pour mot, sans reformuler : 28 fautes de mots, avec leur bonne forme. pirt → pires ; celle-ci → celles-ci ; même que → même si ; soit → sont ; j'aimerai → j'aimerais ; dont → donc (« de la boue donc la saleté ») ; glaciale → glaciaux ; m'importe → n'importe ; reflexe → réflexe ; laçant → lassant ; ses pensées → ces pensées ; une femmes → une femme ; constente → constante ; agricutteur → agriculteur ; leurs père → leur père ; tout les jours → tous les jours ; mitrailleuse → mitrailleuses ; remplacés → remplacé ; oiseau → oiseaux ; ce passe → se passe ; difficiles → difficile ; répond moi → réponds-moi ; fait attention → fais attention ; m'inquiete → m'inquiète ; qu'il y est → qu'il n'y ait (deux fautes : le « n' » qui manque, et est → ait) ; acrder → garder ; meilleurs → meilleur. Plus 4 de ponctuation : la virgule après « malgré cela », et trois points d'interrogation (« à mon tour ? », « l'arrière ? », « conditions de vie ? »). L'app les retrouve seule en comparant ton texte au texte corrigé : je l'ai fait avec le découpage en mots de la correction de dictée.
+
+28. Ce qu'elle ne peut pas corriger mot à mot, et te signale comme phrases à revoir : « Le froid et le vent qui sont glaciaux. » et « Assis sur des cadavres… » (pas de verbe principal) ; « bien plus différentes qu'à la maison » ; « parfois proche que ce soit » ; « les bombardements dont le bruit des mitrailleuses ». Elles servent aussi ta grille, pour « toutes les phrases sont complexes ».
+
+29. Ses réponses aux deux points déjà écrits, chacune avec le passage qui la prouve ; tu gardes d'Entrée ou rejettes de N. Le thème tenu : réussis, « Dire si tu écris du front ou de la maison » (« Je me trouve dans les tranchées »), « Dire à qui tu écris » (« Ma chère Ginette », « Ton mari »), « Dire ton métier d'avant » (« Ma vie d'agriculteur »), « Rester en 14-18 » (1916, les mitrailleuses, la censure) ; pas encore, « Nommer le lieu » (« les tranchées », sans dire lesquelles) et « Dire depuis quand vous êtes séparés ». Deux manquent : 2 points sur 6. Les trois paragraphes : réussis, les alinéas, ce qu'il voit (« la boue », « le froid et le vent »), le plus dur (« la peur constante de mourir »), l'inquiétude pour l'autre (« est-ce aussi difficile que mes conditions de vie »), ses nouvelles (« comment se passe l'arrière »), l'ordre du sujet ; pas encore, l'inattendu (son plus dur, la peur de mourir, c'est ce qu'on attend). Un manque : 2,5 sur 4.
+
+30. Pour comparer à ta propre correction, il me faut le nom de l'élève : je ne retrouve pas sa copie au site. Tu me le donnes ? Et pour la suite : tu as recopié paragraphe par paragraphe ; pour que les lignes se comptent seules et que chaque faute ait sa ligne, il faudra aller à la ligne comme sur la feuille.
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 16:53
+MEMO

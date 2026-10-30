@@ -9441,3 +9441,54 @@ MEMO
 
 30/10/2026 11:41
 MEMO
+
+## Tour 413 — 30/10/2026 11:57 → 12:31
+
+**Paul :** ok. par ailleurs l'infobulle "le pinceau encadre un mot" s'affiche en permanence c'est pénible. Par ailleurs quand je clique en dehors de la copie dans la partie blanche, l'outil doit lacher la souris. Une question: l'app a une fonction de recherche du mot écrit par l'élève, on est d'accord? Quand je clique sur un mot, le soulignage se fait bien à 80 pourcent des cas. De ce fait, une fonction OCR gratuite pourrait peut-être me faire gagner du temps: l'app propose une détection du mot, je la prends ou non (un peu comme la saisie prédictive, tu vois l'idée? je modifie le mot comme je veux puis je passe à la suite)
+
+**Paul (12:08, en interrompant) :** [capture : un trait sélectionné et ses poignées] l'outil est capricieux. les poignées lâchent quand je les tire, je dois m'y reprendre à plusieurs fois. Par ailleurs le clic après coup est fastidieux parfois, il faut que si je clique sur le mot, ça ouvre forcément ce mot là, sans reposer une nouvelle marque de correction. Problème de redessin????? Je me demande s'il ne faudrait pas un outil où je pointe le premier point du trait avec ma croix, et je tire jusqu'à la fin du mot.
+
+**Paul (12:09, en interrompant) :** [capture : un cadre de détection sur deux lignes, le trait sur la ligne d'en dessous, le champ loin à gauche] par ailleurs la détection automatique, s'il y en a une, fait souvent ce genre de chose... Je clique à l'endroit du mot et le soulignement part n'importe où.
+
+**Paul (12:16, en interrompant) :** [fichier joint : le fichier élève de Gabin ; capture : sa première page dans « Corriger sur les scans », 12 fautes soulignées] et sinon voilà le fichier de l'élève (les fautes uniquement). les soulignés se sont un peu décalés en hauteur pour certains mots.
+
+**Fait.** Lu : le fichier élève de Gabin (copié en privé `scan-prive/t413/`, jamais au sas), 17 fautes, 2 pages 1800×2400. Mesuré dans le fichier : le trait des fautes 6 points au-dessus du bas de la marque (la règle statique `.mk.f{height:0;border-top}` l'emportait sur `.f`, `margin-top:-6px`) — corrigé (`#col .mk.f`, trait en `::after` de y1 à y1+3), banc : écart 0. Rejoué ses 15 fautes de la page 1 (clic au milieu de chacune) : le pas des lignes lu 93 au lieu de 31 (le plus haut pic d'autocorrélation tombait sur 3 lignes) → premier pic franc ; le trait sous le corps du mot (dernière rangée à 30 % de la plus pleine), plus sous les jambages ; 15 traits sous leur mot. Planches réelles (Gabin p1, p2, Flavie ; 279 clics) : pas 31, 33, 28 / 1200, aucun cadre au-delà de 1,11 ligne. `scan.js` : clic sur une marque à quelques points près, une faute aussi sur son mot au-dessus du trait (0,7 pas), la plus proche ; seuil de 4 points avant de déplacer ; poignées 16 points (34 de prise) à l'écran par `SC.upx`, qui suivent l'écart de la main ; cadre remis à l'endroit au lâcher. Copie sans infobulle, clic dans le blanc qui relâche, minuterie du bandeau des lignes (un `//` l'avalait, en ligne depuis 1.2.0). `scFb` : la copie comparée sous la forme du site (vides retirés, clés rangées) dans `synchroniser` et aux deux réceptions. Banc 47 / 0 (nouveaux : clic sur le mot et sous le trait, poignées, cadre retourné, Ctrl+Z, trait du fichier élève, réouverture sans réécriture), infobulles 355 / 0. 1.2.1-RU construite de la base 1.1.0 (`PROD=1`), refaite à l'identique (md5 `b0d4584e512aab05f741b5e833dc7f0c`), aucun nom d'élève, syntaxe juste, écart avec 1.2.0 limité à ces changements ; essai à la fumée sur le vrai site (écritures interceptées) : 1 écriture (le suivi), aucune erreur ; la même sur 1.2.0 : 29 (28 copies). Captures de la fumée sorties du dépôt de production vers `scan-prive`. Pas de promotion : le « promeus » est demandé (1494). Docs de production : `0b71825`.
+
+**Claude :**
+
+À jouer : promeus 1.2.1-RU (1494) · en cours : rien · ouvert : 1494 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1483. Ton fichier de Gabin : trouvé. Dans le fichier de l'élève, le trait rouge était dessiné 6 points plus haut que chez toi. Sur les mots encadrés serré, il les barrait au lieu de les souligner (plein, vermines, mourir, nos compagnons, cessent, était). Corrigé : le trait de l'élève est à la hauteur exacte du tien, sous le mot. Tes marques ne bougent pas, les fichiers se refont depuis elles. N'envoie aucun fichier élève avant la 1.2.1 : refais-les après.
+
+1484. La deuxième cause, que tu vois aussi chez toi : sur un mot à jambage (mangent, compagnons, Aujourd'hui), le clic posait le trait sous la queue du g ou du j, plus bas que les autres. Maintenant le trait se pose sous le corps du mot. Rejoué sur tes 15 fautes de la première page de Gabin, en cliquant au milieu de chacune : les 15 traits sont juste sous leur mot. Les fautes déjà posées gardent leur place ; une poignée les remonte si tu veux.
+
+1485. Le soulignement parti sur la ligne d'en dessous (ta capture de 12:09) : l'app croyait tes lignes trois fois plus espacées qu'elles ne sont (93 au lieu de 31 sur la page de Gabin), et cherchait le mot sur trois lignes. Corrigé : elle mesure l'écart des lignes de chaque page, et le mot cherché ne sort plus de la ligne cliquée. Rejoué sur 3 de tes pages, 279 clics : aucun cadre sur deux lignes.
+
+1486. Un clic sur un mot déjà marqué ouvre cette marque, jamais une nouvelle : sur le mot lui-même au-dessus du trait, ou juste dessous. Un clic qui tremble ne déplace plus la marque.
+
+1487. Les poignées : 16 points à l'écran quel que soit le zoom (environ 10 avant), et elles se prennent jusqu'à 17 points autour. Elles ne sautent plus sous la souris : elles suivent ta main depuis le point où tu les as prises. Tirer le début au-delà de la fin ne retourne plus le trait.
+
+1488. Ton outil « je pointe le début et je tire jusqu'à la fin du mot » existe déjà : c'est le pinceau. Appuie au début du mot, glisse jusqu'à la fin, lâche : le trait suit exactement ta main, sans aucune détection. Le simple clic n'est qu'un raccourci.
+
+1489. L'infobulle « le pinceau encadre un mot » ne s'affiche plus sur la copie. Les gestes restent écrits dans le bloc « Les touches », à droite.
+
+1490. Un clic dans le blanc, hors de la page, lâche l'outil et ferme le champ en gardant ce que tu as tapé.
+
+1491. Ta question : non, l'app ne lit pas le mot. Elle trouve où il est et sa longueur dans l'encre, c'est tout. L'OCR gratuite (Tesseract, en français), je l'ai mesurée sur 36 mots de Gabin : 4 ou 5 justes. Elle te ferait perdre du temps : non.
+
+1492. Deux défauts de la 1.2.0 en ligne, trouvés en chemin. Le bandeau rouge des lignes ne disparaissait jamais : corrigé, il part après 4,5 secondes. Et chaque ouverture de ta classe réécrivait au site 28 copies sans rien y changer (mesuré sur le vrai site, sans y écrire : 29 écritures à l'ouverture en 1.2.0, 1 en 1.2.1, l'endroit où tu en es). Tes marques n'y ont rien perdu, mais deux pages ouvertes en même temps pourraient s'écraser l'une l'autre.
+
+1493. Vérifié : banc 47 vérifications, 0 défaut ; infobulles 355 éléments, 0 sans ; la 1.2.1 essayée sur le vrai site sans y écrire, aucune erreur. Tes données ne changent pas : pages, initiales et marques restent.
+
+1494. Promeus 1.2.1-RU ? Point de retour inscrit avant (la 1.2.0), vérifié en ligne octet pour octet ; puis F5 entre deux copies.
+
+À tester (après la mise en ligne, F5 entre deux copies) :
+1. Cliquer sur le mot d'une faute déjà posée : son champ s'ouvre, aucune nouvelle marque.
+2. Prendre une poignée un peu à côté et tirer : la fin du trait suit ta main, sans sauter.
+3. Cliquer sur un mot à jambage (comme « mangent ») : le trait sous le corps du mot, sur sa ligne.
+4. « 📨 Fichiers École Directe », « 🧪 Tester comme l'élève » sur Gabin : les traits sous les mots, comme chez toi.
+5. Cliquer dans le blanc à côté de la page : l'outil se lâche ; la copie n'a plus d'infobulle.
+
+30/10/2026 12:31
+MEMO
+

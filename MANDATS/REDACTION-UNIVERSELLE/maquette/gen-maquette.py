@@ -4,6 +4,7 @@
 import json, sys, random, re, hashlib
 prod, lec, out = sys.argv[1], sys.argv[2], sys.argv[3]
 H = open(prod, encoding='utf8').read()
+assert 'RU-SCAN : corriger' not in H, "ce fichier porte déjà la correction sur les scans : partir de la base d'avant (sas SAUVEGARDES/redaction-1.1.0-RU-avant-scans-2026-10-30.html), jamais du fichier en ligne"
 J = lambda f: json.load(open(lec + '/' + f, encoding='utf8'))
 cfg, cl, val, taxo = J('cfg.json'), J('cl.json'), J('val.json'), J('taxo.json')
 g2 = json.load(open('grille2.json', encoding='utf8'))
@@ -45,7 +46,11 @@ a = '''      📋 Classer le paquet
 assert H.count(a) == 1
 H = H.replace(a, a + '''
     <button id="btnScan" onclick="scOuvrir()" title="Corriger sur les copies scannées : un critère à la fois, les copies défilent, le pinceau marque la copie. Le paquet reste dans ce navigateur.">📄 Corriger sur les scans</button>''')
-v = '!c.telemetry); }'; assert H.count(v) == 1; H = H.replace(v, '!c.telemetry && !c.scan); }')   # une copie qui n'a que des marques est une copie touchée
+v = '!c.telemetry); }'; assert H.count(v) == 1; H = H.replace(v, '!c.telemetry && !scPlein(c.scan)); }')   # une copie qui a des marques ou des réponses est une copie touchée (une partie scan vide ne compte pas)
+v = 'const corps = Object.assign({}, cp); RU_IDENTITE.forEach(f => delete corps[f]);'; assert H.count(v) == 1; H = H.replace(v, v + ' if (!scPlein(corps.scan)) delete corps.scan;')   # une partie scan vide (le site ne l'enregistre pas) n'est pas un changement : pas de réécriture à l'ouverture
+v = 'const sgCorps = JSON.stringify(corps);'; assert H.count(v) == 1; H = H.replace(v, 'const sgCorps = JSON.stringify(scFb(corps));')   # comparer sous la forme du site (scFb) : rouvrir la classe ne réécrit plus les copies (1.2.0 : 28 écritures)
+v = 'RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[k] = JSON.stringify(corps); }'; assert H.count(v) == 1; H = H.replace(v, 'RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[k] = JSON.stringify(scFb(corps)); }')
+v = 'RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[e] = JSON.stringify(corps); });'; assert H.count(v) == 1; H = H.replace(v, 'RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[e] = JSON.stringify(scFb(corps)); });')
 v = 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert"];'; assert H.count(v) == 1; H = H.replace(v, 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert", "scanCurseur"];')   # l'endroit exact de la correction sur les scans
 v = 'function ruReprendre() {   // la reprise exacte (l\'INIT de l\'app d\'origine, inchangé)'; assert H.count(v) == 1; H = H.replace(v, v + '\n  if (state.modeOuvert === "scan") { showDashboard(); setTimeout(() => scOuvrir(), 0); return; }   // la correction sur les scans rouverte là où tu en étais')
 MQ = '''<div class="mq-reglage" onclick="if(document.getElementById('mqR').style.display==='block'){document.getElementById('mqR').style.display='none'}else{document.getElementById('mqR').style.display='block'}" title="Réglages de la simulation (n'existe pas dans le site).">⚙ Maquette</div>

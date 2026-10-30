@@ -9647,3 +9647,37 @@ MEMO
 30/10/2026 14:02
 MEMO
 
+## Tour 418 — 30/10/2026 14:12 → 14:14
+
+**Paul :** Les stickers ne soulignent que des mauvais points. En revanche, comment évaluer un critère avec une seule marque? Un élève peut recriminer en disant que j'ai souligné un point non réussi dans sa copie mais qu'il l'avait réussi autre part. 
+C'est encore une fois le travail de la grille à mon avis. Ou alors un parti pris. A toi de me conseiller. Sois véritablement force de proposition car c'est un point dur pour moi
+
+**Fait.** Relu `grille2.json` : 51 questions (compté). Tri proposé par la conscience, question par question, en trois familles : présence 34 (thème q0-q5 ; paragraphes q0-q5 ; lectures q0-q1 ; ce qu'on tait q0, q2 ; architectures q0-q5, q7 ; modalisation q0-q3 ; codes q0-q3 ; personne q0, q2 ; lexique q2), constance 12 (thème q6 ; paragraphes q6 ; lectures q2 ; ce qu'on tait q1, q3 ; complexes q3, q4 ; architectures q6 ; codes q4, q5 ; personne q1, q3), fréquence 5 (complexes q0-q2 ; lexique q0-q1). Mesuré dans les cases : la gradation par compte existe déjà (personne `m:3:1-1` → 2, `m:3:2-99` → 1 ; complexes `m:0:1-2` → 2, `m:0:3-99` → 1) ; modalisation `n:1` « Un de tes paragraphes n'a pas de modalisation » (2), `n:0` « Ta lettre n'a aucune modalisation » (1). Rien codé.
+
+**Claude :**
+
+À jouer : 1537 · en cours : rien · ouvert : 1537 ; 1528 ; 1511 ; 1520 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1529. Acté : un sticker ne marque que ce qui ne va pas. Ce qui est réussi n'a pas de marque : tout est présumé réussi tant que tu n'as rien posé. Les stickers verts de la maquette (mot de 14-18, modalisation, litote) deviennent des stickers « Manque ».
+
+1530. Ton problème vient de ce que tes questions ne sont pas toutes du même genre. Ma proposition : trois familles de questions, chaque question de ta grille dans une seule, fixée d'avance, et la famille dit ce que vaut un sticker. C'est donc les deux à la fois : un parti pris, écrit dans la grille, que l'élève lit dans sa case.
+
+1531. Famille 1, la présence (« Y a-t-il… ? », « Sait-on… ? », « Un paragraphe dit-il… ? ») : la meilleure occurrence compte. Tu ne poses le sticker « Manque » que si l'élément n'est réussi nulle part, et tu le poses dans la marge, là où il était attendu. L'élève qui te montre qu'il l'a réussi ailleurs a raison : tu retires le sticker d'un clic, la grille se refait seule. Une seule marque suffit, parce qu'elle veut dire « nulle part ».
+
+1532. Famille 2, la constance (« Toutes… », « Chaque… », « jusqu'au bout », « les temps restent-ils… ») : la question demande que ça tienne partout. Une seule rupture est le fait, et réussir ailleurs ne la répare pas : l'objection de l'élève tombe d'elle-même, parce que sa case le lui dit (« Une fois, ton « je » se perd : ta lettre doit le garder jusqu'au bout »). Mais le coût est gradué : une rupture, une marche de moins ; plusieurs, deux marches. Ta grille le fait déjà pour les temps et pour les phrases simples.
+
+1533. Famille 3, la fréquence (répétitions, mots à reprendre, comme tes fautes) : jamais tout ou rien. C'est la densité qui décide, tes stickers rapportés aux lignes écrites, avec la butée (jamais plus de 3 à poser) ; l'élève lit « par exemple, 3 sur tes 24 lignes ».
+
+1534. Un exemple où ça règle un trou de la maquette, « Chaque paragraphe a-t-il sa modalisation ? » : un sticker « Manque une modalisation » posé dans la marge du paragraphe qui n'en a pas, et le compte suffit. Aucun : réussi ; un ou deux : « un de tes paragraphes n'en a pas » ; trois : « ta lettre n'a aucune modalisation ». Deux questions deviennent un seul sticker.
+
+1535. Mon tri de tes 51 questions, à valider : 34 de présence, 12 de constance, 5 de fréquence. De présence : les quatre codes de la lettre, les trois paragraphes, les architectures 1 à 5, la litote. De constance : « le « je » tient-il jusqu'au bout », « les temps restent-ils les mêmes », « chaque code est-il à sa place », « la date est-elle entre 1914 et 1918 », « tout existait-il en 14-18 ». De fréquence : répétitions, mots à reprendre, phrases simples.
+
+1536. Ce que ça change dans ta grille : chaque case dit sa règle à l'élève (« il manque… », « une fois… », « par exemple, 3 sur tes 24 lignes ») ; les questions de calcul fusionnent avec leur sticker ; il ne reste aucune question à laquelle tu réponds. C'est le travail de 1444, sous sa forme définitive.
+
+1537. Oui aux trois familles et à leur règle (1531 à 1533) ? Si oui : je trie tes 51 questions et je récris leurs cases, à valider ; puis la maquette T418, stickers de ce qui ne va pas seulement et « Manque » dans la marge, en captures.
+
+À tester : rien de neuf ici (cadrage, aucun code) ; 1511 et la maquette T417 restent.
+
+30/10/2026 14:14
+MEMO
+

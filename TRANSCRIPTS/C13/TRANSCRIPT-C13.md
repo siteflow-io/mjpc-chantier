@@ -9791,3 +9791,26 @@ MEMO
 30/10/2026 14:30
 MEMO
 
+## Tour 423 — 30/10/2026 14:33 → 14:34
+
+**Paul :** Et si l'élève n'a pas fait de paragraphes ?
+
+**Fait.** Confronté 1557 à la grille : le point « Les trois paragraphes » juge déjà les alinéas (question « La lettre va-t-elle à la ligne entre ses parties ? ») ; prendre le paragraphe de l'élève comme unité ferait compter deux fois le même fait. Rien codé.
+
+**Claude :**
+
+À jouer : 1564 · en cours : rien · ouvert : 1564 ; 1545 ; 1528 ; 1511 ; 1520 ; 1482 ; 1478 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1561. Bien vu : avec le paragraphe comme unité, une lettre d'un seul bloc n'aurait qu'une seule unité, et l'élève serait puni deux fois pour ses paragraphes, ici et dans « Les trois paragraphes ». Ta règle « une case, un fait » l'interdit : 1557 ne va pas.
+
+1562. Je corrige : l'unité est le tiers de la lettre, pas le paragraphe de l'élève. Tu poses au plus trois stickers « tient l'époque », un dans la marge de chaque tiers où rien n'est hors de 14-18 : le début, le milieu, la fin, jugés à l'œil. L'app ne fait que les compter, avec la butée à 3. Ça vaut que l'élève ait fait des paragraphes ou non.
+
+1563. C'est aussi ta règle des longueurs : une part de la lettre, jamais un nombre fixe. Et 1559 devient : pour tout ce qui doit tenir partout hors de la langue, l'unité est le tiers de la lettre.
+
+1564. Oui à 1562 ? Il remplace 1557.
+
+À tester : rien de neuf ici (cadrage, aucun code) ; 1511 et la maquette T417 restent.
+
+30/10/2026 14:34
+MEMO
+

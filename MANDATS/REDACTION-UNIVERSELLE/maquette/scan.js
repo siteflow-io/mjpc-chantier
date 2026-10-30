@@ -60,7 +60,7 @@ function scCharger(ev) {
   const traiter = cv => scPage(cv).then(o => { n++; scTemoinCharge("Page " + n + " lue…");
     const ex = SC.pages[o.id];
     SC.imgs[o.id] = { url: URL.createObjectURL(o.blob), w: o.w, h: o.h, blob: o.blob };
-    const meta = ex || { id: o.id, eleve: null, ordre: ++ordre, blanche: o.blanche, lignes: o.lignes, w: o.w, h: o.h, creeLe: new Date().toISOString() };
+    const meta = ex || { id: o.id, eleve: null, ordre: ++ordre, blanche: o.blanche, lignes: o.lignes, rot: o.rot, w: o.w, h: o.h, creeLe: new Date().toISOString() };
     if (!ex) { SC.pages[o.id] = meta; nouvelles.push(meta); ruEcrire(scChemin(["pages", o.id]), meta, "une page du paquet"); }
     return scDbMettre({ id: o.id, red: RU.id, classe: RU.classe, blob: o.blob, w: o.w, h: o.h, le: new Date().toISOString() }); });
   let ch = Promise.resolve();
@@ -82,14 +82,18 @@ function scLirePdf(f, traiter) {
   });
 }
 // une page : son empreinte (son identité), ses lignes écrites, page blanche ou non, l'image en JPEG
-function scPage(cv0) {
-  const H = scReperes(cv0); const cv = H ? scRedresser(cv0, H) : cv0;   // une copie de l'appli : remise droite, lignes connues
-  const p = document.createElement("canvas"); p.width = 16; p.height = 16; const pc = p.getContext("2d"); pc.drawImage(cv, 0, 0, 16, 16);
+function scTourner(cv, deg) {   // deg : un quart de tour dans le sens inverse des aiguilles d'une montre, par 90
+  const q = ((deg % 360) + 360) % 360; if (!q) return cv; const c = document.createElement("canvas"); c.width = q % 180 ? cv.height : cv.width; c.height = q % 180 ? cv.width : cv.height;
+  const x = c.getContext("2d"); x.translate(c.width / 2, c.height / 2); x.rotate(-q * Math.PI / 180); x.drawImage(cv, -cv.width / 2, -cv.height / 2); return c; }
+function scPage(cvLu) {
+  const p = document.createElement("canvas"); p.width = 16; p.height = 16; const pc = p.getContext("2d"); pc.drawImage(cvLu, 0, 0, 16, 16);
   const d = pc.getImageData(0, 0, 16, 16).data; const g = []; for (let i = 0; i < 256; i++) g.push(d[i * 4] + d[i * 4 + 1] + d[i * 4 + 2]);
   const moy = g.reduce((a, b) => a + b, 0) / 256; let hex = ""; for (let i = 0; i < 256; i += 4) { let v = 0; for (let j = 0; j < 4; j++) v = v * 2 + (g[i + j] > moy ? 1 : 0); hex += v.toString(16); }
-  const id = "page_" + hex + "_" + cv.width.toString(36) + cv.height.toString(36);
+  const id = "page_" + hex + "_" + cvLu.width.toString(36) + cvLu.height.toString(36);
+  const ex = SC.pages[id]; const rot = ex && ex.rot != null ? ex.rot : (cvLu.width > cvLu.height * 1.08 ? 90 : 0);   // une page en paysage : photographiée de côté
+  let cv0 = scTourner(cvLu, rot); if (ex && ex.recadre) cv0 = scCouper(cv0, ex.recadre); const H = scReperes(cv0); const cv = H ? scRedresser(cv0, H) : cv0;   // une copie de l'appli : remise droite, lignes connues
   const lig = H ? scLignesConnues(cv) : scLignes(cv);
-  return new Promise(res => cv.toBlob(b => res({ id, blob: b, w: cv.width, h: cv.height, lignes: lig, blanche: lig.n === 0 }), "image/jpeg", 0.82));
+  return new Promise(res => cv.toBlob(b => res({ id, rot, blob: b, w: cv.width, h: cv.height, lignes: lig, blanche: lig.fiable !== false && lig.n === 0 }), "image/jpeg", 0.82));
 }
 // les lignes écrites (mesuré le 30/10 sur une copie de l'an dernier : 30 sur 30, à 1 pixel près) : l'encre plus sombre que le papier autour,
 // la réglure (longues traînées horizontales) retirée, le profil ligne par ligne ; le début et la fin de l'écriture de chaque ligne
@@ -112,6 +116,7 @@ function scLignes(src) {
     let a = -1, b = -1; for (let x = bx; x < ex; x++) { let s = 0; for (let k = -3; k <= 3; k++) s += col[Math.min(W - 1, Math.max(0, x + k))]; if (s > 1.5) { if (a < 0) a = x; b = x; } }
     return { y: +(y / H).toFixed(4), x0: +((a < 0 ? bx : a) / W).toFixed(4), x1: +((b < 0 ? ex : b) / W).toFixed(4) }; });
   const ecarts = L.slice(1).map((l, i) => l.y - L[i].y).sort((a, b) => a - b); const pas = ecarts.length ? ecarts[Math.floor(ecarts.length / 2)] : 0.03;
+  if (L.length > 45 || (L.length >= 6 && pas < 0.016)) return { n: null, pas: 0.03, l: [], fiable: false };   // trop serrées : la réglure, pas l'écriture
   return { n: L.length, pas: +pas.toFixed(4), l: L };
 }
 // ── les initiales : chaque page dans l'ordre où elle est dans le paquet ──
@@ -131,7 +136,9 @@ function scCleDe(pt, i) { const q = pt.questions.find(q => q.id === +i); return 
 function scSautee(pt, q, rep) { if (!q || !q.saute) return false; const [t, i] = q.saute.split(":"); const c = scCleDe(pt, i); return t === "n" ? rep[c] === "n" : rep[c] === "o"; }
 function scQuestions(pt, rep) { return pt.questions.filter(q => !scSautee(pt, q, rep || {})); }
 function scFautes(k) { return Object.values(scCopie(k).marques).filter(m => m.forme === "faute"); }
-function scLignesCopie(k) { const s = scCopie(k); if (s.lignes != null) return s.lignes; return scPagesDe(k).reduce((n, p) => n + ((p.lignes && p.lignes.n) || 0), 0); }
+// les lignes écrites : comptées d'office sur les copies de l'appli (lignes connues) ; sur une photo, l'appli propose, tu gardes ou tu corriges (mesuré le 30/10 sur tes copies : la réglure et les feuilles voisines faussent le compte)
+function scLignesProposees(k) { const P = scPagesDe(k); if (P.some(p => !p.lignes || p.lignes.fiable === false)) return 0; return P.reduce((n, p) => n + (p.lignes.n || 0), 0); }
+function scLignesCopie(k) { const s = scCopie(k); if (s.lignes != null) return s.lignes; const P = scPagesDe(k); return P.length && P.every(p => p.lignes && p.lignes.reperes) ? scLignesProposees(k) : 0; }
 function scCase(pt, k) {
   const s = scCopie(k); const rep = s.rep[pt.id] || {};
   if (pt.calcul) {
@@ -189,10 +196,11 @@ function scOutil() {
   return { forme: m ? m.forme : "encadre", sens: m ? m.sens : "lieu", coul: SC_CRIT[P.crit] || "#6b1a2a" };
 }
 function scCurseur(coul) { const s = `<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M12 1v22M1 12h22' stroke='${coul}' stroke-width='2'/><circle cx='12' cy='12' r='2.5' fill='none' stroke='${coul}'/></svg>`; return `url("data:image/svg+xml,${encodeURIComponent(s)}") 12 12, crosshair`; }
-function scLigneDe(p, y) { const L = p.lignes && p.lignes.l; if (!L || !L.length) return -1; let b = 0; L.forEach((l, i) => { if (Math.abs(l.y - y) < Math.abs(L[b].y - y)) b = i; }); return Math.abs(L[b].y - y) < (p.lignes.pas || 0.03) * 0.75 ? b : -1; }
+// les lignes ne servent que là où elles sont connues (copies de l'appli)
+function scLigneDe(p, y) { const L = p.lignes && p.lignes.reperes ? p.lignes.l : null; if (!L || !L.length) return -1; let b = 0; L.forEach((l, i) => { if (Math.abs(l.y - y) < Math.abs(L[b].y - y)) b = i; }); return Math.abs(L[b].y - y) < (p.lignes.pas || 0.03) * 0.75 ? b : -1; }
 // le tracé posé : calé sur les lignes quand l'appli les a trouvées
-function scCaler(m, p) {
-  const L = p.lignes && p.lignes.l, pas = (p.lignes && p.lignes.pas) || 0.03;
+function scCaler(m, p) {   // calée sur les lignes seulement sur une copie de l'appli, où elles sont connues : sur une photo, la réglure trompe l'appli
+  const L = p.lignes && p.lignes.reperes ? p.lignes.l : null, pas = (p.lignes && p.lignes.pas) || 0.03;
   const ya = Math.min(m.y0, m.y1), yb = Math.max(m.y0, m.y1), xa = Math.min(m.x0, m.x1), xb = Math.max(m.x0, m.x1);
   m.x0 = xa; m.x1 = xb; m.y0 = ya; m.y1 = yb;
   const la = scLigneDe(p, ya + (yb - ya) * (m.forme === "surligne" || m.forme === "etoile" || m.forme === "marge" ? 0 : 0.5)), lb = scLigneDe(p, yb);
@@ -234,7 +242,7 @@ function scAnnuler() { const a = SC.annule.pop(); if (!a) { toast("Rien à annul
   if (a.t === "pose") delete s.marques[a.id]; else if (a.t === "efface") s.marques[a.m.id] = a.m; else if (a.t === "change") s.marques[a.m.id] = a.m;
   SC.sel = null; scNumeroter(a.k); saveState(); scRendre(); }
 function scPointeur(ev) {
-  const pg = ev.target.closest(".sc-page"); if (!pg || SC.attrib || scP().id === "retours") return; const p = SC.pages[pg.dataset.p]; if (!p) return;
+  const pg = ev.target.closest(".sc-page"); if (!pg || (SC.attrib && SC.recadre !== pg.dataset.p) || scP().id === "retours") return; const p = SC.pages[pg.dataset.p]; if (!p) return;
   const r = pg.getBoundingClientRect(); const at = e => ({ x: Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)), y: Math.max(0, Math.min(1, (e.clientY - r.top) / r.height)) });
   const a = at(ev); scToucher(); scChampFermer(true);
   const g = ev.target.closest(".sc-m"), poi = ev.target.closest(".sc-poignee");
@@ -244,6 +252,10 @@ function scPointeur(ev) {
     const up = () => { removeEventListener("pointermove", mv); removeEventListener("pointerup", up); if (bouge) { scCaler(m, p); m.modifieLe = new Date().toISOString(); SC.annule.push({ t: "change", k: scK(), m: avant }); scNumeroter(scK()); saveState(); } scRendre(); };
     addEventListener("pointermove", mv); addEventListener("pointerup", up); ev.preventDefault(); scRendre(); return;
   }
+  if (SC.recadre === p.id) { SC.trace = { page: p.id, x0: a.x, y0: a.y, x1: a.x, y1: a.y, forme: "cadre" };
+    const mvR = e => { const q = at(e); SC.trace.x1 = q.x; SC.trace.y1 = q.y; scDessinerPages(); };
+    const upR = () => { removeEventListener("pointermove", mvR); removeEventListener("pointerup", upR); const t = SC.trace; SC.trace = null; scRecadrerFin(p.id, t); };
+    addEventListener("pointermove", mvR); addEventListener("pointerup", upR); ev.preventDefault(); return; }
   const o = scOutil(); if (!o) return; SC.sel = null;
   SC.trace = { page: p.id, x0: a.x, y0: a.y, x1: a.x, y1: a.y, forme: o.forme };
   const mv = e => { const b = at(e); SC.trace.x1 = b.x; SC.trace.y1 = b.y; scDessinerPages(); };
@@ -278,6 +290,7 @@ function scClavier(e) {
   if (SC.attrib) { if (!ecrit) { if (e.key === "ArrowRight") { e.preventDefault(); scAttribSuivante(); } } return; }
   if (ecrit) return;
   const P = scP(); scToucher();
+  if (e.key === "Escape" && SC.recadre) { e.preventDefault(); SC.recadre = null; scRendre(); return; }
   if (e.key === "Escape") { const ai = document.getElementById("ruAide"); if (ai && !ai.hidden) return; e.preventDefault(); if (document.getElementById("scModale").classList.contains("show")) { scModaleFermer(); return; } SC.sel = null; SC.outil = null; scRendre(); return; }
   if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) { e.preventDefault(); scAnnuler(); return; }
   if (e.key === "Delete" && SC.sel) { e.preventDefault(); scEffacer(SC.sel); return; }
@@ -309,7 +322,7 @@ function scDessinerPages() {
   if (!ps.length) { Z.innerHTML = `<div class="sc-vide">${Object.keys(SC.pages).length ? "Aucune copie à afficher." : "Charge ton paquet scanné (PDF ou photos) : il reste dans ce navigateur, jamais au site."}</div>`; return; }
   if (P.id === "retours" && !SC.attrib) { scDessinerRetour(Z); return; }
   const W = Z.clientWidth - 16, H = Z.clientHeight - 12; const somme = ps.reduce((a, p) => a + p.w / p.h, 0); const h = Math.min(H, W / somme);
-  const o = scOutil(); const curseur = SC.attrib ? "default" : scCurseur(o ? o.coul : "#6b1a2a");
+  const o = scOutil(); const curseur = SC.recadre ? "crosshair" : SC.attrib ? "default" : scCurseur(o ? o.coul : "#6b1a2a");
   let html = ""; const champ = SC.champ ? SC.champ.id : null;
   ps.forEach(p => { const im = SC.imgs[p.id]; const Hs = Math.round(1000 * p.h / p.w);
     let svg = ""; if (!SC.attrib) { const ms = scMarquesPage(p.id).filter(scVisible); ms.forEach(m => { svg += scSvgMarque(m, p, m.id === SC.sel); }); }
@@ -324,7 +337,7 @@ function scDessinerPages() {
 function scChip(n, txt) { return `<span class="sc-chip" style="background:${SC_FOND[n]};border-color:${SC_COUL[n]}">${txt}</span>`; }
 function scPanneau() {
   const Z = document.getElementById("scPanneau"); const P = scP(), k = scK();
-  const a = document.activeElement; if (!SC.attrib && a && Z.contains(a) && (a.tagName === "INPUT" || a.tagName === "TEXTAREA")) { SC.panneauAttend = true; return; }   // un champ en cours n'est jamais touché par un rendu
+  const a = document.activeElement; if (!SC.attrib && a && a.id !== "scInit" && Z.contains(a) && (a.tagName === "INPUT" || a.tagName === "TEXTAREA")) { SC.panneauAttend = true; return; }   // un champ en cours n'est jamais touché par un rendu
   if (SC.attrib) { scPanneauAttrib(Z); return; }
   if (P.id === "retours") { scPanneauRetours(Z); return; }
   if (!k) { Z.innerHTML = `<div class="sc-bloc"><h3>Le paquet</h3><p>Charge ton paquet, puis donne à chaque page les initiales de son élève.</p></div>`; return; }
@@ -336,8 +349,9 @@ function scPanneau() {
     if (pt.calcul === "fautes") {
       const F = scFautes(k), n = scLignesCopie(k);
       h += `<div class="sc-bloc"><h3>Les fautes · toute la copie</h3><p>Tu lis la copie en entier, une seule fois. Souligne chaque faute au pinceau (appuie, glisse, lâche), tape la bonne forme ou son numéro, Entrée. Entrée sur la copie : tu as fini les fautes.</p>
-        <p class="sc-m">${F.length} faute${F.length > 1 ? "s" : ""} · ${n || "?"} lignes écrites${n ? "" : " (l'appli ne les a pas trouvées : tape-les ci-dessous)"}</p>
-        <label class="sc-m" title="Le nombre de lignes écrites, trouvé par l'appli sur les pages de cette copie. Corrige-le s'il est faux : il compte pour la longueur et pour les fautes.">Lignes écrites : <input id="scLig" type="number" min="0" max="120" value="${s.lignes != null ? s.lignes : (n || "")}" style="width:64px" onchange="scLignesFixer(this.value)"></label>
+        <p class="sc-m">${F.length} faute${F.length > 1 ? "s" : ""} · ${n ? n + " lignes écrites" : "lignes écrites à taper"}</p>
+        <label class="sc-m" title="Le nombre de lignes écrites : il compte pour la longueur et pour les fautes. Sur une copie de l'appli, il est compté d'office ; sur une photo, tu le tapes : l'appli s'y trompe (mesuré sur tes copies du 30/10).">Lignes écrites : <input id="scLig" type="number" min="0" max="120" value="${s.lignes != null ? s.lignes : (n || "")}" style="width:64px" onchange="scLignesFixer(this.value)"></label>
+        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">${scPagesDe(k).map((p, i) => `<button class="sc-btn" onclick="scTournerPage('${p.id}')" title="Tourner la page ${i + 1} de cette copie d'un quart de tour vers la droite ; ses marques tournent avec elle.">↻ Page ${i + 1}</button><button class="sc-btn" onclick="scRecadrerDebut('${p.id}')" title="Recadrer la page ${i + 1} sur la feuille : ce qui dépasse (une autre copie, la table) disparaît, et du fichier de l'élève aussi.">✂ Page ${i + 1}</button>`).join("")}${scPagesDe(k).length > 1 ? `<button class="sc-btn" onclick="scOrdrePages('${escapeAttr(k)}')" title="Changer l'ordre des pages de cette copie : la dernière passe en premier.">⇄ Ordre des pages</button>` : ""}</div>
         <div style="margin-top:8px"><button class="sc-btn${SC.outil === "etoile" ? " on" : ""}" onclick="SC.outil=SC.outil==='etoile'?null:'etoile';scRendre()" title="Le pinceau doré : surligne la phrase qui t'a touché. Un seul tracé, puis le pinceau revient aux fautes.">★ La phrase qui t'a touché</button></div></div>`;
       const B = scBanque(); h += `<div class="sc-bloc"><h3>Les formes déjà vues dans le paquet</h3>${B.length ? `<div class="sc-banque">${B.map((b, i) => `<span class="sc-touche">${i + 1}</span><span>${escapeHtml(b.forme)} <i class="sc-m">· ${b.copies.size} copie${b.copies.size > 1 ? "s" : ""}</i></span>`).join("")}</div>` : `<p class="sc-m">Aucune encore : chaque forme tapée prend un numéro.</p>`}</div>`;
     } else if (pt.calcul === "lignes") {
@@ -360,6 +374,8 @@ function scPanneauAttrib(Z) {
   const L = scPagesOrdre(); const p = L[SC.ia]; const reste = scPagesSans().length; const prec = scPrecedentEleve();
   Z.innerHTML = `<div class="sc-bloc"><h3>Le paquet · page ${SC.ia + 1} sur ${L.length}</h3><p>Tape les initiales de l'élève de cette page, Entrée. <b>Entrée seule</b> : même élève que la page d'avant${prec ? " (" + escapeHtml(nomEleveDe(prec)) + ")" : ""}.</p>
     <input id="scInit" class="sc-init" autocomplete="off" placeholder="initiales" title="Les initiales, dans n'importe quel ordre (CF ou FC pour Chevalier Flavie)."><div id="scInitSug" class="sc-m"></div>
+    <button class="sc-btn" onclick="scTournerPage('${p ? p.id : ""}')" title="Tourner cette page d'un quart de tour vers la droite (une photo prise de côté). Ses marques tournent avec elle.">↻ Tourner</button>
+    <button class="sc-btn" onclick="scRecadrerDebut('${p ? p.id : ""}')" title="Recadrer cette page sur la feuille : ce qui dépasse (une autre copie, la table) disparaît, et du fichier de l'élève aussi.">✂ Recadrer</button>
     ${p && p.blanche ? `<p class="sc-alerte">L'appli n'y voit aucune ligne écrite : page blanche, sautée.</p><button class="sc-btn" onclick="scBlanche(false)" title="Cette page porte bien une copie : elle reprend sa place dans le paquet.">Ce n'est pas une page blanche</button>` : `<button class="sc-btn" onclick="scBlanche(true)" title="Écarter cette page : elle ne va à aucun élève.">Page blanche</button>`}
     <p class="sc-m">${reste} page${reste > 1 ? "s" : ""} sans élève · ${SC.copies.length} copie${SC.copies.length > 1 ? "s" : ""} reconnue${SC.copies.length > 1 ? "s" : ""}. L'ordre du paquet devient celui de tes flèches.</p>
     ${reste ? "" : `<button class="sc-btn" onclick="SC.attrib=false;scAllerCopie(0)" title="Commencer la correction, passe 1.">Corriger</button>`}</div>`;
@@ -462,4 +478,31 @@ function scLignesConnues(cv) {   // sur la copie de l'appli, les lignes sont à 
     res.push({ y: +((yb - 3) / SC_F.H).toFixed(4), x0: g >= 0 ? +(g / W).toFixed(4) : SC_F.marge / SC_F.W, x1: dr >= 0 ? +(dr / W).toFixed(4) : SC_F.droite / SC_F.W, ecrite: n / t > 0.004 }); }
   let der = -1; res.forEach((l, i) => { if (l.ecrite) der = i; });
   return { n: res.filter(l => l.ecrite).length, pas: +(SC_F.pas / SC_F.H).toFixed(4), l: res.slice(0, Math.max(der + 1, 1)), reperes: true };
+}
+
+// ↻ : la page tourne d'un quart de tour vers la droite ; ses marques tournent avec elle ; l'identité de la page ne change pas
+function scTournerPage(pid) {
+  const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return;
+  createImageBitmap(im.blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); const r = scTourner(c, 270);
+    p.rot = (((p.rot || 0) + 270) % 360); if (p.recadre) { const [a0, b0, c0, d0] = p.recadre; p.recadre = [1 - d0, a0, 1 - b0, c0]; } p.w = r.width; p.h = r.height; p.lignes = scLignes(r); p.blanche = false; p.modifieLe = new Date().toISOString();
+    Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; const [a, b, c2, d] = [m.x0, m.y0, m.x1, m.y1]; m.x0 = 1 - d; m.x1 = 1 - b; m.y0 = a; m.y1 = c2; m.l0 = m.l1 = null; m.modifieLe = p.modifieLe; }); });
+    r.toBlob(b => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = { url: URL.createObjectURL(b), w: r.width, h: r.height, blob: b }; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: b, w: r.width, h: r.height, le: p.modifieLe });
+      ruEcrire(scChemin(["pages", pid]), p, "une page tournée"); saveState(); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }, "image/jpeg", 0.82); });
+}
+// ⇄ : la dernière page de la copie passe en premier (une copie de deux pages photographiée dans le désordre)
+function scOrdrePages(k) { const P = scPagesDe(k); if (P.length < 2) return; const o = P.map(p => p.ordre); P.forEach((p, i) => { p.ordre = o[(i + 1) % P.length]; p.modifieLe = new Date().toISOString(); ruEcrire(scChemin(["pages", p.id]), p, "l'ordre des pages"); }); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }
+
+// ✂ recadrer une page : tu traces le cadre de la feuille ; le reste (une autre copie, la table) disparaît, et du fichier de l'élève aussi
+function scCouper(cv, r) { const [a, b, c, d] = r; const x0 = Math.round(a * cv.width), y0 = Math.round(b * cv.height), w = Math.max(1, Math.round((c - a) * cv.width)), h = Math.max(1, Math.round((d - b) * cv.height));
+  const o = document.createElement("canvas"); o.width = w; o.height = h; o.getContext("2d").drawImage(cv, x0, y0, w, h, 0, 0, w, h); return o; }
+function scRecadrerDebut(pid) { SC.recadre = pid; SC.sel = null; toast("Trace le cadre de la feuille sur la page : appuie à un coin, glisse jusqu'à l'autre, lâche. Échap annule."); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }
+function scRecadrerFin(pid, t) {
+  SC.recadre = null; const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return; const a = Math.max(0, Math.min(t.x0, t.x1)), b = Math.max(0, Math.min(t.y0, t.y1)), c = Math.min(1, Math.max(t.x0, t.x1)), d = Math.min(1, Math.max(t.y0, t.y1));
+  if (c - a < 0.2 || d - b < 0.2) { toast("Cadre trop petit : rien n'est coupé."); scRendre(); return; }
+  createImageBitmap(im.blob).then(bm => { const cv = document.createElement("canvas"); cv.width = bm.width; cv.height = bm.height; cv.getContext("2d").drawImage(bm, 0, 0); const r = scCouper(cv, [a, b, c, d]);
+    const R0 = p.recadre || [0, 0, 1, 1], W = R0[2] - R0[0], H = R0[3] - R0[1]; p.recadre = [R0[0] + a * W, R0[1] + b * H, R0[0] + c * W, R0[1] + d * H].map(v => +v.toFixed(4));
+    p.w = r.width; p.h = r.height; p.lignes = scLignes(r); p.modifieLe = new Date().toISOString();
+    Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; m.x0 = (m.x0 - a) / (c - a); m.x1 = (m.x1 - a) / (c - a); m.y0 = (m.y0 - b) / (d - b); m.y1 = (m.y1 - b) / (d - b); m.l0 = m.l1 = null; m.modifieLe = p.modifieLe; }); });
+    r.toBlob(bl => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = { url: URL.createObjectURL(bl), w: r.width, h: r.height, blob: bl }; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: bl, w: r.width, h: r.height, le: p.modifieLe });
+      ruEcrire(scChemin(["pages", pid]), p, "une page recadrée"); saveState(); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }, "image/jpeg", 0.82); });
 }

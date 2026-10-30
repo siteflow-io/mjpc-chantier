@@ -14,6 +14,8 @@ PREN = ['Léa', 'Hugo', 'Inès', 'Noé', 'Zoé', 'Jules', 'Manon', 'Tom', 'Chlo�
         'Louise', 'Sacha', 'Alice', 'Paul', 'Anna', 'Raphaël', 'Lou', 'Adam', 'Mila', 'Ethan', 'Juliette', 'Maël']
 n = len(cl['eleves'])
 eleves = sorted(['%s %s' % (NOMS[i], PREN[(i * 7) % len(PREN)]) for i in range(n)])
+import os
+if os.environ.get('CLASSE_REELLE') == '1': eleves = list(cl['eleves'])   # la classe réelle, pour jouer les copies réelles : ce fichier-là ne quitte jamais l'ordinateur de Paul (jamais au sas)
 classe = {'nom': cl['nom'], 'niveau': cl.get('niveau', '3e'), 'annee': cl.get('annee', ''), 'archivee': False, 'couleur': cl.get('couleur', '#FF4D4D'), 'eleves': eleves}
 cfg = dict(cfg); cfg['grille2'] = g2
 rid = 'sujet_mvtd85g7_ycxjq3'

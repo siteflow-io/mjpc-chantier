@@ -40,6 +40,19 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   }
   const g1 = await geom();
   verif("recopie : les deux poignées recalent la ligne avec sa pente, sans changer son identité ni son texte", g1.x0 > g0.x0 && g1.x1 < g0.x1 && g1.y0 !== g0.y0 && g1.y1 !== g0.y1 && g1.id === g0.id && g1.texte === g0.texte);
+  const alignement = await pg.evaluate(id => {
+    const d = state.copies[RC.copie].scan.recopie.pages[RC.page], l = d.lignes[id];
+    const photo = document.getElementById("rcPhoto").getBoundingClientRect();
+    const feuille = document.getElementById("rcFeuille").getBoundingClientRect();
+    const row = Array.from(document.querySelectorAll(".rc-ligne")).find(e => e.dataset.ligne === id);
+    const m = new DOMMatrix(getComputedStyle(row).transform), longueur = parseFloat(row.style.width);
+    return Math.abs(photo.width - feuille.width) < 1
+      && Math.abs(parseFloat(row.style.left) - l.x0 * photo.width) < 1
+      && Math.abs(parseFloat(row.style.top) + 12 - l.y0 * photo.height) < 1
+      && Math.abs(m.a * longueur - (l.x1 - l.x0) * photo.width) < 1.5
+      && Math.abs(m.b * longueur - (l.y1 - l.y0) * photo.height) < 1.5;
+  }, id);
+  verif("recopie : le début et la pente de la saisie suivent la ligne photographiée, à 1,5 pixel près", alignement);
   await cap("C15-21-recopie-poignees");
   await pg.click("#rcAjouter"); const ajout = await pg.evaluate(() => RC.ligne);
   await pg.keyboard.type("Une ligne ajoutée."); await pg.click("#rcRetirer");
@@ -63,6 +76,16 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     return { lignes: s.lignes, marques: JSON.stringify(s.marques || {}), rep: JSON.stringify(s.rep || {}), note: scNote(k), copies: Object.keys(state.copies).length };
   }, avant.k);
   verif("recopie : anciennes marques, réponses, note, total de lignes et nombre de copies conservés", ancienne.lignes === avant.lignes && ancienne.marques === avant.marques && ancienne.rep === avant.rep && JSON.stringify(ancienne.note) === JSON.stringify(avant.note) && ancienne.copies === avant.copies);
+  const photoAvant = await pg.evaluate(() => SC.imgs[RC.page].url);
+  const pageRetouchee = reprise.page;
+  await pg.click("#rcFermer"); await pg.locator('#scPanneau button[onclick^="scRecadrerDebut("]').first().click();
+  await pg.locator("#scRtAngle").waitFor({ state: "visible" }); await pg.locator("#scRtAngle").focus(); await pg.keyboard.press("ArrowRight");
+  await pg.locator('button[onclick="scRtFermer(true)"]').click();
+  await pg.waitForFunction(({pid, url}) => SC.imgs[pid] && SC.imgs[pid].url !== url, {pid: pageRetouchee, url: photoAvant});
+  await pg.click("#btnRecopier"); await att(200); const g2 = await geom();
+  const noteRetouchee = await pg.evaluate(k => scNote(k), avant.k);
+  verif("recopie : retoucher la photo déplace ses lignes, garde leurs identités et textes, et conserve la note", g2.id === g1.id && g2.texte === g1.texte && (Math.abs(g2.x0 - g1.x0) > 0.00001 || Math.abs(g2.y0 - g1.y0) > 0.00001) && JSON.stringify(noteRetouchee) === JSON.stringify(avant.note));
+  await cap("C15-25-recopie-apres-retouche");
   const double = await pg.evaluate(() => SC.copies.find(k => Object.values(SC.pages).filter(p => p.eleve === k && !p.blanche).length > 1));
   await pg.selectOption("#rcCopie", double); const pages = await pg.locator("#rcPage option").evaluateAll(es => es.map(e => e.value));
   await pg.selectOption("#rcPage", pages[1]); await champ(0).fill("Sur la deuxième page.");

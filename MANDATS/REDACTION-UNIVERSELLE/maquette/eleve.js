@@ -14,10 +14,11 @@ function scEleveDonnees(k) {
     const ms = M.filter(m => m.point === pt.id && m.forme !== "faute" && m.forme !== "etoile").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0));
     const pl = ms.length ? place(ms[0]) : { page: 0, y: 0 };
     pts.push({ id: pt.id, crit: c.id, critNom: c.nom, titre: pt.titre, poids: pt.poids, niveau: r.c.niveau, pts: pt.bareme[String(r.c.niveau)], fait: r.txt, tache: r.tache != null ? r.tache : (r.c.tache || ""),
+      question: pt.questionEleve || "", relire: r.c.relire !== false,
       bareme: pt.bareme, place: pl, marques: ms.map(m => ({ page: ordre.indexOf(m.page), forme: m.forme, x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, seg: scSegments(m, SC.pages[m.page]) })) }); }));
   const etoile = M.filter(m => m.forme === "etoile").map(m => ({ page: ordre.indexOf(m.page), seg: scSegments(m, SC.pages[m.page]) }));
   const nt = scNote(k);
-  return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, maquette: !!window.__FAUX_HUB,
+  return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, maquette: !!window.__FAUX_HUB,
     criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: nt.ok ? nt.n : null, total: nt.tot,
     pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL,
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
@@ -73,7 +74,9 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
   document.head.appendChild(st);
   // les étapes : les fautes d'abord, de haut en bas ; puis les points, à leur place sur la copie
   const E = D.fautes.map(f => ({ t: "f", f, cle: f.id })).concat(D.points.slice().sort((a, b) => (a.place.page - b.place.page) || (a.place.y - b.place.y)).map(p => ({ t: "p", p, cle: p.id })));
-  const fini = s => { const r = R[s.cle]; if (!r || r.etat === "arefaire") return false; return s.t === "f" ? (r.ok || (!s.f.bonne && !!r.texte)) : (!s.p.tache || !!r.texte); };
+  // le point est fini quand l'élève a répondu à la question (1360), puis fait sa tâche
+  const fini = s => { const r = R[s.cle]; if (s.t === "f") return !!r && r.etat !== "arefaire" && (r.ok || (!s.f.bonne && !!r.texte)); if (s.p.question && !R[s.cle + ":q"]) return false; if (!r || r.etat === "arefaire") return false; return !s.p.tache || !!r.texte; };
+  const repondu = p => !p.question || !!R[p.id + ":q"];
   const app = document.createElement("div"); app.className = "app"; app.innerHTML = `<div class="col" id="col"></div><div class="pan" id="pan"></div>`; document.body.appendChild(app);
   function copie() {
     const col = $("#col"); col.innerHTML = D.pages.map((p, i) => `<div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${IMG[i]}" alt=""></div>`).join("");
@@ -82,10 +85,10 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     D.fautes.forEach(f => { const ok = fini({ t: "f", f, cle: f.id }); const c = cour && cour.t === "f" && cour.f === f; const P = pgs[f.page]; if (!P) return;
       P.insertAdjacentHTML("beforeend", `<div class="mk f${ok ? " ok" : ""}${c ? " cour" : ""}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num${ok ? " ok" : ""}" style="left:${pc(f.x1)};top:${pc(f.y1)}">${ok ? "✓" : f.num}</div>`); });
     const pris = {}; D.points.forEach(p => { const P = pgs[p.place.page]; if (!P) return; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1; const ouvert = E.findIndex(s => s.t === "p" && s.p === p) <= etape; const c = cour && cour.t === "p" && cour.p === p;
-      if (ouvert) p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return; const k = D.coul[p.crit] || "#6b1a2a";
+      if (ouvert && repondu(p)) p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return; const k = D.coul[p.crit] || "#6b1a2a";
         if (m.forme === "surligne") m.seg.forEach(r => Q.insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${k}${c ? "55" : "30"}"></div>`));
         else Q.insertAdjacentHTML("beforeend", `<div class="mk ${m.forme === "marge" ? "g" : "e"}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + k : "border-color:" + k}"></div>`); });
-      P.insertAdjacentHTML("beforeend", `<div class="pin${c ? " cour" : ""}${ouvert && !c ? " fait" : ""}" style="top:${pc(Math.max(0.015, p.place.y))};margin-left:${dx * 30}px;${ouvert ? "background:" + D.bord[p.niveau] : ""}">${ouvert ? "" : "?"}</div>`);
+      P.insertAdjacentHTML("beforeend", `<div class="pin${c ? " cour" : ""}${ouvert && !c ? " fait" : ""}" style="top:${pc(Math.max(0.015, p.place.y))};margin-left:${dx * 30}px;${ouvert && repondu(p) ? "background:" + D.bord[p.niveau] : ""}">${ouvert && repondu(p) ? "" : "?"}</div>`);
       const r = R[p.id]; if (r && r.texte) P.insertAdjacentHTML("beforeend", `<div class="pap" style="top:${pc(Math.min(0.92, p.place.y + 0.01))}">${esc(r.texte)}</div>`); });
   }
   function panneau() {
@@ -94,17 +97,19 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
       pan.innerHTML = (D.note != null ? `<div class="bloc"><h3>Ta note</h3><div style="font:700 30px Georgia,serif">${String(D.note).replace(".", ",")} / ${D.total}</div></div>` : "") + D.points.map(p => `<div class="bloc"><h3>${esc(p.critNom)} · ${esc(p.titre)}</h3><div>${esc(p.fait)}</div><div class="m">${String(p.pts).replace(".", ",")} / ${p.poids}</div></div>`).join(""); return; }
     const r = R[s.cle] || {};
     if (s.t === "f") { const f = s.f;
-      pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length}${f.ligne ? " · ligne " + f.ligne : ""}</h3>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' : ""}<input id="rep" autocomplete="off" value="${esc(r.texte || "")}"><button id="ok">${f.bonne ? "Vérifier" : "Envoyer"}</button><div id="msg"></div></div>`;
+      pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length}${f.ligne ? " · ligne " + f.ligne : ""}</h3>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' + (D.aRefaire ? '<div>' + esc(D.aRefaire) + '</div>' : "") : ""}<input id="rep" autocomplete="off" value="${esc(r.texte || "")}"><button id="ok">${f.bonne ? "Vérifier" : "Envoyer"}</button><div id="msg"></div></div>`;
       const go = () => { const v = $("#rep").value.trim(); if (!v) return; const n = x => x.normalize("NFC").replace(/[’ʼ]/g, "'").replace(/\s+/g, " ").trim();
         if (f.bonne) { const ok = n(v) === n(f.bonne); ecrire(f.id, { type: "faute", texte: v, ok, le: new Date().toISOString(), marque: f.id }); if (ok) { suite(); } else { $("#msg").innerHTML = '<span class="ko">✗</span>'; } }
         else { ecrire(f.id, { type: "faute", texte: v, ok: false, le: new Date().toISOString(), marque: f.id, groupe: "0-fautes", titre: "Une faute sans bonne forme", consigne: "" }).then(suite); } };
       $("#ok").onclick = go; $("#rep").onkeydown = e => { if (e.key === "Enter") go(); }; setTimeout(() => $("#rep").focus(), 0); return; }
     const p = s.p;
+    if (!repondu(p)) { pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length} · ${esc(p.critNom)}</h3><div style="font-weight:700">${esc(p.titre)}</div><div style="font-size:17px;margin:8px 0">${esc(p.question)}</div><textarea id="rq" style="min-height:70px;font-family:inherit;color:inherit"></textarea><button id="ok">→</button></div>`;
+      $("#ok").onclick = () => { const v = $("#rq").value.trim(); if (!v) return; ecrire(p.id + ":q", { type: "reponse", texte: v, ok: true, le: new Date().toISOString(), point: p.id }).then(() => { copie(); panneau(); }); }; setTimeout(() => $("#rq").focus(), 0); return; }
     pan.innerHTML = `<div class="bloc"><h3>${etape + 1} / ${E.length} · ${esc(p.critNom)}</h3><div style="font-weight:700">${esc(p.titre)}</div>
       <div class="ech">${[0, 1, 2, 3].map(n => `<span class="${n === p.niveau ? "on" : ""}" style="background:${D.fond[n]};border-color:${D.bord[n]}">${esc(D.niveaux[n])}<br>${String(p.bareme[n]).replace(".", ",")}</span>`).join("")}</div>
-      <div style="font-size:17px">${esc(p.fait)}</div>${p.tache ? `<div class="bloc" style="margin:10px 0 0;background:#fff"><b>${esc(p.tache)}</b>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' : ""}<textarea id="pap">${esc(r.texte || "")}</textarea><button id="ok">Envoyer</button></div>` : `<button id="ok">Suivant</button>`}</div>`;
+      <div style="font-size:17px">${esc(p.fait)}</div>${p.tache ? `<div class="bloc" style="margin:10px 0 0;background:#fff"><b>${esc(p.tache)}</b>${r.etat === "arefaire" ? '<div class="ko">à refaire</div>' + (D.aRefaire ? '<div>' + esc(D.aRefaire) + '</div>' : "") : ""}<textarea id="pap">${esc(r.texte || "")}</textarea><button id="ok">Envoyer</button></div>` : `<button id="ok">Suivant</button>`}</div>`;
     $("#ok").onclick = () => { if (!p.tache) { ecrire(p.id, { type: "vu", texte: "", ok: true, le: new Date().toISOString() }).then(suite); return; }
-      const v = $("#pap").value.trim(); if (!v) return; ecrire(p.id, { type: "papillon", texte: v, ok: false, le: new Date().toISOString(), point: p.id, groupe: p.id + "-" + p.niveau, titre: p.critNom + " · " + p.titre, consigne: p.tache }).then(suite); };
+      const v = $("#pap").value.trim(); if (!v) return; ecrire(p.id, { type: "papillon", texte: v, ok: !p.relire, le: new Date().toISOString(), point: p.id, groupe: p.id + "-" + p.niveau, titre: p.critNom + " · " + p.titre, consigne: p.tache }).then(suite); };
   }
   function suite() { etape = E.findIndex(s => !fini(s)); if (etape < 0) etape = E.length; copie(); panneau(); }
   // la traversée : à l'ouverture, la copie passe à travers la grille, la langue d'abord

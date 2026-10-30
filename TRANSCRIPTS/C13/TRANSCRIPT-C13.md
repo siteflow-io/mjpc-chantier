@@ -8956,3 +8956,38 @@ Et chaque navigateur se souvient de ça ( que je n'ai pas besoin de réinjecter 
 
 30/10/2026 01:14
 MEMO
+
+## Tour 400 — 30/10/2026 06:58 → 07:05
+
+**Paul :** Règle les dettes
+
+**Fait.** Dettes de la maquette (1360 à 1362) réglées dans la v2 : `grille2.py` porte la question à l'élève par point (`questionEleve`), le drapeau `relire` par case (16 tâches validées par l'élève seul, 46 relues), et des cases comptées par les marques (`m:<question>:<min>-<max>`, points « la 1re personne » et « toutes les phrases sont complexes », 73 cases) ; `scan.js` : condition `m:`, « ✓ seul / ✎ relue » sur chaque case, la phrase de « à refaire » (`config/aRefaire`) ; `eleve.js` : la question d'abord, la case ensuite, pastille grise tant que l'élève n'a pas répondu ; banc : 24 vérifications, 0 défaut (question avant la case, phrase de « à refaire », cases comptées, copies vierges imprimées). `T399-maquette-redaction-scans-v2.html` md5 04afe6b10dc0. Capture regardée : `07b-eleve-question`.
+
+**Claude :** [fichier : T399-maquette-redaction-scans-v2.html]
+
+À jouer : la maquette v2 (1368 à 1371) · en cours : rien · ouvert : 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1367. Les dettes de la maquette sont réglées : T399-maquette-redaction-scans-v2.html, banc 24 vérifications, 0 défaut.
+
+1368. 1360 réglée : la question à l'élève avant la case. Chaque point a sa question ; l'élève y répond par écrit, et alors seulement ses marques et sa case paraissent. Sa réponse ne t'arrive pas à relire. Les douze questions sont dans la grille, à valider ; par exemple : « Relis le début de ta lettre : qui es-tu, d'où écris-tu, à qui, et depuis quand êtes-vous séparés ? »
+
+1369. 1361 réglée, un : chaque case dit si sa tâche se relit. « ✓ seul » : l'élève la valide seul (16 tâches : ajouter la date, la signature, dire depuis quand…). « ✎ relue » : elle arrive dans tes retours (46 tâches, toutes les réécritures). Tu le vois sur chaque case, et au survol.
+
+1370. 1361 réglée, deux : ta phrase de « à refaire ». Tu la donnes une fois, dans la passe des retours ; elle part avec chaque fichier élève.
+
+1371. 1362 réglée : les cases comptées par les marques. Deux points comptent maintenant tes marques : les temps (un verbe encadré, case verte ; deux ou plus, case orange) et les phrases simples (une ou deux surlignées, verte ; trois ou plus, orange).
+
+1372. Ce qui reste à toi seul. 1364 : les mots côté élève (« Vérifier », « Envoyer », « Suivant », « Ta note », « à refaire ») et les deux retouches de tes phrases de la traversée. 1363 : le test École Directe sur un téléphone.
+
+1373. Le registre garde d'autres dettes, hors de cette maquette : 13·100 à 13·104 (l'USB au tableau, la frise, la flèche du champ de citation, le tableau qui défile, la page nouvelle de l'atelier). Je n'y ai pas touché.
+
+1374. Les mots de 1372 : tu me les donnes, ou je garde les miens ?
+
+À tester :
+1. Ouvrir la v2, « Fichiers École Directe », « Voir comme l'élève » : répondre à la question, puis la case paraît (1368).
+2. Survoler une case : « ✓ seul » ou « ✎ relue » (1369).
+3. Passe des retours : écrire ta phrase de « à refaire » (1370).
+4. Passe 4, « La 1re personne », question des temps : encadrer deux verbes, la case passe à l'orange (1371).
+
+30/10/2026 07:05
+MEMO

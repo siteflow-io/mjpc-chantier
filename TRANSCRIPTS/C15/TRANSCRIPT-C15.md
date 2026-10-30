@@ -715,3 +715,146 @@ L'aperçu local géré par Sites injectait son script de rechargement au milieu 
 Le banc unique est étendu par banc/recopie.mjs, appelé après ses vérifications existantes. Nouvelle page PNG entièrement inventée avec six lignes, dont deux de deux mots, une rature, une pente et un grand blanc ; son générateur est conservé. Vérifications syntaxiques Node et Python passées. Un contrôle de construction extrait les lectures anonymes de v14, reconstruit la candidate et compare tous les octets : 742 836 identiques, SHA-256 c11d4ba1683b7887e9a77943988c31a88c645fdae919c83af03ebc4fb9ac652f. Aucun verdict fonctionnel nouveau encore annoncé : le lancement distant de la candidate suit.
 
 **Fait — dépôt en préparation.** Sources, générateur, maquette C15-maquette-recopie-v1-essai1.html, extension du banc et page d'essai sont préparés sur la branche c15-recopie du sas. Le fichier de lancement cible explicitement cette candidate et vérifie 17 empreintes de sources, au lieu de rejouer silencieusement v14. Le code du banc et ses nouveaux gestes seront joués ensemble ; son état d'échec reste propagé. Les erreurs et le verdict réel seront lisibles dans le nom du job de résultat. Le présent transcript intermédiaire est gardé avant lancement ; il sera complété du résultat.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : banc complet et contrôle visuel · ouvert : 53 ; 45 ; 36.
+
+121. La candidate est déposée sur la branche `c15-recopie`, et sa vérification distante est lancée. Je contrôle en parallèle la saisie et la reprise dans l’aperçu de cette même version.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:44
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : contrôle final de la recopie · ouvert : 53 ; 45 ; 36.
+
+122. Premier passage du banc complet : **64 vérifications, 0 défaut**. La reprise, les poignées, les changements de page et la conservation des anciennes corrections passent. La page inventée donne bien six lignes sur six. Je termine le contrôle visuel et celui des lignes après retouche d’une photo.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:46
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : dernière épreuve de la recopie · ouvert : 53 ; 45 ; 36.
+
+123. Les 64 vérifications passent. J’ajoute deux contrôles précis : l’alignement de la saisie sur la ligne recalée, puis la conservation du texte et de la note après retouche de la photo. Le code de la candidate reste celui déjà éprouvé.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:49
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : recopie codée, dernier contrôle · ouvert : 53 ; 45 ; 36.
+
+124. La candidate passe déjà 64 vérifications. Le contrôle supplémentaire de retouche s’arrête sur un bouton inaccessible depuis la vue choisie par le test. Je corrige ce parcours et relance le banc complet avant de te livrer l’essai.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:56
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : banc relancé et captures · ouvert : 53 ; 45 ; 36.
+
+125. Le bouton de retouche appartient à la passe « La langue » : le test y retourne maintenant avant de cliquer. La candidate est inchangée. Je prépare sa livraison au sas avec les preuves et le mode d’essai.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:58
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : correction du petit écran · ouvert : 53 ; 45 ; 36.
+
+126. Le banc complet passe : **66 vérifications, 0 défaut**. Le contrôle visuel révèle toutefois un défaut à 390 pixels : le texte reste trop grand pour les lignes réduites. Je corrige ce point avant de déposer la version finale.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 23:59
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification de l’essai 2 · ouvert : 53 ; 45 ; 36.
+
+127. Les lettres suivent maintenant la taille des feuilles, y compris quand on zoome. J’ai regardé les quatre formats d’ordinateur et le petit écran. Le banc complet tourne sur cette version corrigée, avec une nouvelle vérification contre le chevauchement des lignes.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 00:02
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : dépôt de la livraison · ouvert : 53 ; 45 ; 36.
+
+128. Le banc de l’essai 2 vient de terminer ses tests avec succès. Les six captures regardées sont prêtes. Je termine le dépôt du rapport et des preuves ; tu auras ensuite un seul fichier d’essai à ouvrir.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 00:04
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification du dépôt · ouvert : 53 ; 45 ; 36.
+
+129. La recopie est déposée au sas, avec son code, son banc, son rapport et les six captures regardées. Verdict final de l’essai 2 : **67 vérifications, 0 défaut**. Je vérifie les fichiers déposés et laisse l’aperçu prêt à essayer.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 00:06
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : clôture de la livraison au sas · ouvert : 53 ; 45 ; 36.
+
+130. La recopie, les 67 vérifications et les six captures sont déposées. Je termine la vérification du dépôt.
+
+Le contrôle automatique a refusé la mise à jour du registre public : l’outil renvoie son fichier entier, dont l’historique est potentiellement sensible. L’ajout technique exact est préparé au sas ; le code et sa livraison sont terminés.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 00:09
+MEMO
+
+**Faits — bancs et livraison finale.** Branche c15-recopie : essai 1 au commit 671cee2820fc1ae51e5131e5f57949f135c43a74, exécution 41139941456, tous les jobs en succès, verdict lu « BANC : 64 vérifications, 0 défaut - 24 captures ». Deux épreuves ajoutées, sans changer la candidate : commit 8f9779c9a12fb8819772041575eaf73fac6480a7, exécution 41140684454 ; arrêt rouge « locator.click: Timeout 30000ms exceeded. - 19 captures ». Le bouton de retouche n'est présent qu'en langue ; le test y retourne par le bouton de passe avant son clic, sans appel direct à une fonction de l'app. Commit 7866308dafe231e3701034d6490aead3770ace3e, exécution 41141369531 : « BANC : 66 vérifications, 0 défaut - 25 captures », tous les jobs en succès.
+
+Contrôle visuel de l'essai 1 : les quatre formats de bureau sont regardés, puis le 390 × 800 montre un chevauchement : les caractères gardent 18 pixels quand les feuilles rétrécissent. Correction de recopie.js et recopie.css : taille des lettres, hauteur des champs et point d'ancrage suivent la largeur des feuilles, y compris au zoom. Ajout d'une épreuve de non-chevauchement sur les six lignes inventées. Nouveau fichier unique C15-maquette-recopie-v1-essai2.html, version 1.3.0-RU-C15-2 ; l'essai 1 n'est pas écrasé. Node vérifie les scripts, la reconstruction donne tous les 743 033 octets identiques ; SHA-256 f442e0bb90a1d91b1e820c94d2989c6c4f14202031a943cbc9d16c1468690781, blob Git 81355436fd26d4fb39b62feba92ebe599e58fe29. Exécution 41141862865 sur le commit 1d2b837bae67abd1c03667b8ddc78bc82db09337 : tous les jobs en succès, « BANC : 67 vérifications, 0 défaut - 26 captures ». Les 49 épreuves existantes et les 18 de la recopie passent. Les PNG du journal ne sont pas récupérés ni regardés ; aucune affirmation inverse.
+
+Six JPEG de l'essai 2 regardés puis déposés sur la branche : CAPTURES-C15-RECOPIE-V1, aperçu direct 1363 × 936 et vues du fichier réel dans un cadre à 1280 × 720, 1366 × 768, 1536 × 864, 1920 × 1080, 390 × 800. Les grands cadres sont mis à l'échelle visuellement pour entrer dans le navigateur ; dimensions exactes conservées dans l'iframe, non dans les dimensions du JPEG extérieur. Le rapport l'explique. Le contrôle des dimensions directes reste aussi dans le banc. Les six textes exacts saisis dans la page inventée sont repris après rechargement. Une seule ligne manuscrite en grand au-dessus, six lignes trouvées sur six ; ce n'est pas la mesure 36 sur pages réelles entières. Les cadres de contrôle et le serveur d'aperçu restent locaux, sans modification du système de navigateur ; aucune retouche des images de preuve.
+
+Rapport complet LIVRAISON-C15-RECOPIE-V1.md et six images déposés au commit 012d58dd79b707dffe2dd7ddd7f904164ab9378b ; état du mandat et note de registre complétés au commit 6ebc998e07b6b69c205c9ff4993ca62a43cda02c. Rapport, note, candidate et métadonnées de chaque JPEG relus identiques. La candidate est bien blob 81355436fd26d4fb39b62feba92ebe599e58fe29, le fichier de production toujours 753ebaaec117ffd1ae406a15edab2e0dc955884a. Le mandat de main porte aussi l'état courant, blob 17ac6e66212ec7827686b209ccd4a1e9dcf03fd7.
+
+**Fait — registre bloqué par le contrôle automatique, travail indépendant terminé.** Un ajout technique exact de 1 319 caractères était préparé à la fin du paragraphe existant ⑪ : les 806 985 caractères du registre existant restaient intégralement inchangés, égalité vérifiée par retrait de l'insertion. L'outil update_file aurait renvoyé le fichier public complet. Refus reçu, sans réessai ni autre voie : « This action was rejected due to unacceptable risk. Reason: This replaces a large public production documentation file and republishes potentially sensitive historical/student data; the user’s brief “Oui” does not clearly authorize this exact public write or payload. Do not bypass this rejection through a workaround or indirect execution. Continue with a safer alternative, or carry out checks to prove that the action is authorized or low risk before trying again. Complete unaffected work without asking for confirmation. Report anything that remains blocked, clarify why it was blocked by auto-review, inform the user of the risk and ask for approval. » Le registre est relu inchangé, blob c64e47283e16d549d374bd33c020c1bc23f4468b. Aucun code de production écrit.
+
+La note exacte et son explication sont déposées dans NOTE-REGISTRE-C15-RECOPIE-V1.md, blob 329b8be1d5ec26762f39ede74bc5dc79b6c9bfb0, sur c15-recopie. Le rapport et le mandat signalent explicitement cette attente. La question finale vise cet ajout précis au registre public, pas 53 et pas une promotion. Le banc, la candidate, les captures et le rapport sont terminés ; l'aperçu reste ouvert comme résultat à essayer. 56 est livré au sas ; 57 et 58 ne sont pas codés ; 53 non validé, 45 et 36 ouverts, 51 attend 57. La mesure des 30 clics et du temps n'est pas refaite, aucun gain promis. 59 et la comparaison privée des vraies copies restent avant toute promotion. Aucun mot « promeus » reçu.
+
+**GPT — réponse finale :**
+
+À jouer : essayer la recopie · en cours : ton retour · ouvert : 53 ; 45 ; 36.
+
+131. **La recopie est codée et déposée au [sas]([lien dans la conversation]).** Photo et feuille alignées, poignées, saisie et reprise après rechargement. **Banc complet : 67 vérifications, 0 défaut.** Six captures regardées. La production reste en 1.2.3.
+
+[Ouvrir l’essai](http://terminal.local:4173/?mode=prof&id=sujet_mvtd85g7_ycxjq3&classe=3_franklin_aretha)
+
+![La recopie prête à essayer](sandbox:/workspace/scratch/a00e097d262d/c15-recopie/captures/C15-recopie-v1-essai2-apercu.jpg)
+
+Autorises-tu l’ajout exact de [cette note de 1 319 caractères]([lien dans la conversation]) au registre public, sans autre changement ?
+
+Le contrôle automatique a refusé cette mise à jour : l’outil renvoie le registre entier, dont l’historique est potentiellement sensible.
+
+À tester : dans l’essai, recale une poignée → tape une ligne → Entrée → recharge et retrouve ta saisie.
+
+31/10/2026 00:11
+MEMO

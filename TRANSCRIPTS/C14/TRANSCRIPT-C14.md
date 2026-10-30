@@ -97,3 +97,30 @@ MEMO
 
 30/10/2026 15:11
 MEMO
+
+## Tour 4 — 30/10/2026 15:12 → 15:15
+
+**Paul :** ok
+
+**Fait.** « ok » = oui à 1587 ; inscrit au registre (production, dette ⑧ du premier flux, « acquis : 1546 à 1548 ; 1587 »), commit `6cac445`. Relus : le sujet `MANDATS/REDACTION-UNIVERSELLE/Sujet-ecriture-lettre-30-lignes-3e.pdf` (brouillon d'idées : nom, âge, métier ; où ; à qui, depuis quand ; ce qu'on tait ; trois paragraphes ; codes ; modalisation, litote ; architectures numérotées dans la marge) ; `grille2.json`, critère « Le thème et l'invention » (14) : « Le thème tenu » 6 points, 7 questions (q0 Grande Guerre ; q1 front ou maison ; q2 où ; q3 destinataire ; q4 depuis quand ; q5 âge ou métier ; q6 tout existait en 14-18, « en lisant ») ; barème de la grille (niveau 3 : le point ; 2 : 4 ; 1 : 2 ; 0 : 0 pour 6 points). Rien codé.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 1594 ; 1577 ; 1482 ; 1478 ; 1468 ; 1374 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1589. 1587 est acquis et inscrit au registre.
+
+1590. La suite (1545) : je récris ta grille en stickers de réussite, un point à la fois, tirés du sujet ; tu valides chaque point avant le suivant ; la maquette seulement quand toute la grille est validée.
+
+1591. Le premier point, « Le thème tenu » (6 points sur les 14 du thème), avec six stickers, chacun un seul fait, posé là où c'est réussi : « D'où vient la lettre » (du front ou de la maison) ; « Le lieu » (quelle tranchée, quel village) ; « Le destinataire » (à qui il écrit) ; « La séparation » (depuis quand) ; « Le personnage » (son âge ou son métier d'avant) ; « Toute la lettre en 14-18 », à la fin de ta lecture, sur la lettre entière (1587). « La lettre se passe-t-elle pendant la Grande Guerre ? » entre dans ce dernier.
+
+1592. Le niveau se compte seul : les six, 6 points ; il en manque un, 4 ; il en manque deux ou trois, 2 ; au-delà, 0. Ce sont les marches de ta grille d'aujourd'hui. L'élève lit « Tu as réussi : … » et « Pas encore réussi : … ».
+
+1593. Ce que ça change : l'époque ne coûte plus 4 points d'un coup (2 sur 6 aujourd'hui), mais une marche, 2 points, comme chacun des cinq autres. Si tu veux qu'elle pèse plus, dis-le. Et tes 30 gestes : une bonne copie coûte ici 6 stickers ; je compterai la grille entière quand elle sera écrite, avant toute maquette.
+
+1594. Oui à 1591 et 1592 ? Les noms des stickers sont lus par l'élève : ce sont des brouillons, à toi de les donner ou de les changer.
+
+À tester : rien de neuf (cadrage, aucun code).
+
+30/10/2026 15:15
+MEMO

@@ -505,3 +505,58 @@ Une première préparation JavaScript échoue en syntaxe avant tout effet. Le se
 Le workflow récupère le seul commit demandé, vérifie les quatre blobs (banc courant, maquette scans v14, deux PDF d'essai), installe Playwright 1.56.1 et pdfjs-dist 3.11.174, puis son navigateur Chromium associé. Playwright 1.56.1 a été vérifié dans les releases officielles, publié le 17/10/2025. Le banc est lancé tel quel avec NODE_PATH et PDFJS dirigés vers ces dépendances. La limite du job est de 15 minutes. La sortie de la commande reste celle du banc, conservée par pipefail, et les captures sont inscrites en ZIP avec empreinte SHA-256 dans le journal. Aucune adresse concrète des dépôts ni aucun jeton dans le fichier de lancement.
 
 Exécution GitHub créée : 41133185881, commit 7cf72b6a ; job scans 124329070115. À 22:45, récupération des sources, contrôle des quatre blobs et installation des dépendances terminés avec succès ; étape du banc en cours. Pas encore de verdict fonctionnel. L'atelier local devient indisponible (transport exec-server déconnecté, puis environnement déclaré indisponible) ; l'exécution GitHub continue indépendamment. Les horodatages suivants sont lus avec Date et Intl en Europe/Paris lorsque le shell ne répond plus. Le présent enregistrement intermédiaire conserve le tour avant la fin de l'exécution ; il sera complété avec le résultat et la réponse finale.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification du résultat du banc · ouvert : 53 ; 45 ; 36.
+
+106. L’exécution du banc complet est terminée avec succès sur GitHub. Je vérifie le compte exact et la récupération des captures avant de te donner le verdict final.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 22:46
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification du compte des tests · ouvert : 53 ; 45 ; 36.
+
+107. Le banc a réussi, mais la connexion refuse de me rendre son journal. Je fais afficher le verdict et le nombre de captures directement dans la liste des tests GitHub pour pouvoir les lire et les vérifier.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 22:47
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : enregistrement de la solution · ouvert : 53 ; 45 ; 36.
+
+108. Verdict lu : **49 vérifications, 0 défaut ; 17 captures produites**. Le blocage du banc est levé par l’exécution sur GitHub. Je dépose le lanceur et son mode d’emploi au sas, puis j’actualise le mandat et le registre.
+
+À tester : rien pour toi avant la fin du dépôt.
+
+30/10/2026 22:51
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : dépôt de la solution au sas · ouvert : 53 ; 45 ; 36.
+
+109. Je termine les fichiers du sas. J’ai aussi vérifié que l’ajout prévu au registre contient seulement le compte rendu technique et laisse tout le texte existant inchangé.
+
+L’approbation automatique a refusé cette mise à jour du registre, car le fichier public contient des données personnelles et des historiques sensibles.
+
+À tester : rien de nouveau dans l’app.
+
+30/10/2026 22:54
+MEMO
+
+
+**Faits — résultat obtenu et preuve accessible.** L'exécution 41133185881 se termine avec succès, y compris l'étape qui joue tout le banc. Deux demandes de lecture des journaux du job 124329070115 échouent avec « Transport closed » ; l'API générique pour le détail du job est également refusée par le périmètre d'URL du connecteur (400). Aucun contournement de cet accès n'est essayé. Le lanceur est complété pour lire la ligne réelle BANC du fichier de sortie, la mettre dans une sortie du job, compter les PNG et reporter ces deux valeurs dans le nom d'un second job. Ce job exige le succès du premier ; aucune vérification du banc n'est retirée ni assouplie. Commit de ce complément sur c15-banc-complet : b3f520f48bbf3ddece1f8177ea5c3832dee9922f, blob du lanceur 7958236a6547eb9bfb5173cdecc33ed98ae96cb6. Fichier relu intégralement et identique.
+
+Exécution 41133740714 : job scans 124330928451 et job de résultat 124331939583 terminés avec succès. À 22:51, les métadonnées du second job portent exactement « BANC : 49 vérifications, 0 défaut - 17 captures ». C'est le compte du banc réellement exécuté, pas le seul nombre d'appels du code. Les captures sont produites et archivées dans le journal ; aucune des 17 n'est regardée par C15 dans ce tour, l'atelier et le navigateur local étant indisponibles. Ce résultat n'est pas une validation des futures fonctions ni une permission de promouvoir. La cible reste la maquette scans v14 vérifiée, sans code nouveau de recopie.
+
+**Fait — refus automatique du registre.** L'actualisation de docs/MJPC6-DETTES.md est refusée par l'approbation automatique : « La mise à jour du registre public contient manifestement des données personnelles et historiques sensibles; l’autorisation de consigner la solution ne couvre pas leur publication intégrale dans ce dépôt public. » Le registre n'est pas modifié par cet essai. Il est relu ensuite : blob f4c94558912f9b800bbbe6715084784b788e78e9, inchangé. Comparaison complète de la proposition : les 805 381 caractères existants sont identiques ; seule une note technique de 1 604 caractères sur le banc est ajoutée. Aucune donnée personnelle ni copie d'élève dans cette note. Cette preuve d'un ajout technique seul est conservée pour déterminer si une nouvelle revue peut autoriser l'actualisation, sans contourner le refus ni changer de voie d'écriture au registre.
+
+**Fait — dépôt des fichiers du sas.** Le lanceur testé est copié à l'identique sur main pour rendre sa commande manuelle disponible. Un mode d'emploi complet LANCEMENT-GITHUB-C15.md est ajouté, le mandat reçoit la mesure et sa portée exacte, et ce transcript est complété. Les quatre fichiers sont déposés ensemble avec une mise à jour de main protégée par sa tête relue. Ils seront relus avant la réponse finale. Aucune app mise en ligne, aucun nouveau code fonctionnel de recopie, aucun changement de cible caché sous un banc vert.

@@ -673,3 +673,26 @@ MEMO
 
 30/10/2026 19:44
 MEMO
+
+## Tour 27 — 30/10/2026 20:57 → 30/10/2026 20:58
+
+**Paul :** Regarde GPT au sas
+
+**Fait.** Lu au sas `TRANSCRIPTS/C15/TRANSCRIPT-C15.md` (commit `d80343a8`, 149 lignes, 3 tours, points 63 à 73) ; aucun autre fichier changé au sas ni en production. Vérifié dans le code trois de ses huit constats : `gen-maquette.py` ligne 7, `assert 'RU-SCAN : corriger' not in H` (présent 2 fois dans `redaction.html` 1.2.3) ; `scClavier` (`redaction.html` 7001-7017) : Entrée / Espace → `scRepondre("o")`, N → `scRepondre("n")`, aucune touche ne pose une faute ; `banc/banc.mjs`, dernière ligne : « BANC : ÉCHEC » écrit sans `process.exit(1)`. Les trois sont vrais. Les cinq autres non revérifiés dans le code.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 77 ; 61 ; 53 ; 45 ; 36.
+
+74. GPT : ça va. Il a suivi ta façon de travailler (en-tête, numéros à la suite, transcript au sas, rien codé, rien promu), et son audit est juste : j'ai vérifié dans le code ses trois constats les plus lourds, les trois sont vrais. Ce sont mes erreurs dans le mandat.
+
+75. Les trois, en clair. Le mandat dit de partir du fichier en ligne ; or l'outil qui fabrique la maquette le refuse et part de la version d'avant les scans (c'est ce que j'avais fait moi-même pour la 1.2.3). Le mandat parle de « la touche qui pose une faute » dans la rédaction : elle n'existe pas ; tes fautes se posent à la souris, Entrée dit oui, N dit non. Et le banc écrit « ÉCHEC » mais se termine comme s'il avait réussi : on a toujours lu son résultat à l'écran, mais ça contredit ta règle, un banc échoue si une seule vérification échoue.
+
+76. Ses cinq autres constats sont justes au regard du transcript ; je ne les ai pas revérifiés dans le code. Le mandat date d'avant l'état des lieux (tour 25) et n'a pas les trois défauts à régler avant la mise en ligne ; il pose la faute sur le mot de la photo, alors que ton « Ok » du tour 20 la pose à la ligne ; il promet de reconnaître une faute déjà marquée, ce que les anciennes marques ne permettent pas ; il ne reprend pas toute ta règle sur les anciennes copies.
+
+77. Je propose de dire « ok » à sa proposition 68 : GPT corrige le mandat selon ses huit constats et le tour 25, et corrige la fin du banc pour qu'il échoue vraiment. Ça te va ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 20:58
+MEMO

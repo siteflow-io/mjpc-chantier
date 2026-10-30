@@ -9078,3 +9078,39 @@ Par ailleurs va relire la totalité des erreurs faites par Claude sur les creati
 
 30/10/2026 07:31
 MEMO
+
+## Tour 403 — 30/10/2026 07:34 → 07:44
+
+**Paul :** [trois photos : la page 2 de Gabin, sa page 1, la copie de Flavie] Voici deux copies, Flavie et Gabin. Gabin a deux pages. C'est un cas qu'on n'a pas envisagé. Test ces copies.
+
+**Fait.** Photos copiées au scratchpad (`scan-prive/reel-*.jpg`), jamais poussées. Maquette à la classe réelle générée au scratchpad (`CLASSE_REELLE=1`, `scan-prive/T403-maquette-classe-reelle.html`, jamais au sas) ; `scan-prive/test-reel.mjs` les joue par le geste. Mesuré : pages de Gabin 2212 × 1659 (paysage, sans orientation dans le fichier) ; lignes trouvées 22 et 23 couchées, puis 34 et 30 redressées, Flavie 33 ; essais d'ouverture verticale de la réglure : toujours faux (27-30 et 29-30). Corrigé dans `scan.js` : redressement d'une page en paysage (`rot`, appliqué à la relecture, ↻), ⇄ ordre des pages, ✂ recadrage (`recadre`, appliqué à la relecture, marques transformées), plus de compte ni de calage des lignes sur une photo (seulement sur les copies à repères), la saisie des initiales ne bloque plus le passage à la correction. Défaut fait par moi en route et corrigé : un commentaire posé au milieu d'une ligne avalait la fin de `scLigneDe` (le fichier ne se chargeait plus) — c'est la troisième fois ; je vérifie maintenant la syntaxe après chaque retouche. Banc de la v5 : 31 vérifications, 0 défaut ; copies réelles : Gabin redressé, deux pages dans l'ordre après ⇄, faute sur la page 2 dans son fichier, Flavie recadrée 1350 × 1800 → 1094 × 1557. `T399-maquette-redaction-scans-v5.html` md5 09b730c238bb.
+
+**Claude :** [fichiers : T403-maquette-classe-reelle.html (privé), T399-maquette-redaction-scans-v5.html]
+
+À jouer : tes deux copies dans la maquette (1398 à 1403) · en cours : rien · ouvert : 1405 ; 1397 ; 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1398. Testé sur tes trois photos, avec la vraie classe : CF donne CHEVALIER Flavie, DG donne DUTRUEL Gabin. Ce fichier-là porte les vrais noms : il est joint ici, et il ne va jamais au sas (T403-maquette-classe-reelle.html).
+
+1399. Les pages de Gabin étaient de côté (photos en paysage), et la maquette les montrait couchées. Corrigé : une page photographiée en paysage se redresse d'elle-même. Si le sens est faux, « ↻ » la tourne d'un quart de tour, marques comprises.
+
+1400. Ses deux pages : la page 2 était en premier dans ce que tu m'as envoyé. Corrigé : « ⇄ Ordre des pages » les remet dans l'ordre. Ensuite, les deux pages sont côte à côte à la correction, l'une sous l'autre dans son fichier. Une faute soulignée sur la page 2 y est bien. Sa page 2, presque vide, n'est pas prise pour une page blanche.
+
+1401. Les lignes : sur tes photos, le compte est faux. Gabin : 34 et 30 lignes trouvées, pour 2 et environ 25 écrites. Flavie : 33, pour environ 21. La réglure et les feuilles voisines trompent l'appli. Verdict : sur une photo, l'appli ne compte plus et ne cale plus les marques sur les lignes ; tu tapes le nombre, comme aujourd'hui. Seules les copies vierges de l'appli (repères) comptent d'office. Ça corrige 1314 et 1325 pour les photos.
+
+1402. Ce qui ne va pas, et que tu n'avais pas vu : au bord de la photo de Flavie, on lit un morceau de la copie de Gabin, et une autre feuille dépasse en bas de la page 2 de Gabin. Ça partirait dans le fichier de l'élève. Corrigé : « ✂ » recadre une page sur la feuille, d'un glisser. Les copies de l'appli se recadrent seules.
+
+1403. Un défaut trouvé : après les dernières initiales, l'écran restait sur la saisie. Corrigé.
+
+1404. Banc : 31 vérifications, 0 défaut. Fichier : T399-maquette-redaction-scans-v5.html (classe inventée, au sas).
+
+1405. Oui à 1398 à 1404 ?
+
+À tester (avec T403-maquette-classe-reelle.html et tes photos) :
+1. Charger tes trois photos : les pages de Gabin se redressent (1399).
+2. Initiales : DG, Entrée seule, CF (1398).
+3. Sur Gabin, « ⇄ Ordre des pages » : la page 1 passe devant (1400).
+4. Sur Flavie, « ✂ Page 1 », puis tracer le cadre de sa feuille : la copie de Gabin disparaît du bord (1402).
+5. Taper ses lignes écrites dans la passe de la langue (1401).
+
+30/10/2026 07:44
+MEMO

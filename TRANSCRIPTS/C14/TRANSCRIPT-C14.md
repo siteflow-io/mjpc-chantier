@@ -70,3 +70,30 @@ MEMO
 
 30/10/2026 14:56
 MEMO
+
+## Tour 3 — 30/10/2026 15:01 → 15:11
+
+**Paul :** ok c'est bon. reprends donc là où on en était avec C13. reprends toutes mes exigences depuis hier.
+
+**Fait.** « ok » lu comme oui à 1582 (« reprends là où on en était avec C13 » : la n°13 a fini) : `SAUVEGARDES/redaction-1.2.1-RU-avant-1.2.2-2026-10-30.html` tirée de la production (`fd6fbc4`), md5 `b0d4584e512aab05f741b5e833dc7f0c`, 531 283 o, `APP_VERSION` 1.2.1-RU. Relus : les messages de Paul du transcript C13, tours 341 à 424 (lignes 7099 à 8899, puis 8899 à 9851 déjà lus au tour 1) ; les réponses de la n°13 aux tours 341 à 346 (points 944 à 990) et 363 à 379 (points 1098 à 1221) ; le contrat `MANDATS/INTEGRATION-DEROULE/CONTRAT.md` §62 à §75 ; `MANDATS/PROFIL-CLASSE/CADRAGE-RELU.md` (en-tête et §1 à §4) ; le registre, section H, 13 · 85 à 13 · 104 ; le journal, promotions 8.76.0-⑨, 8.76.1-⑨, 8.77.0-⑩. Recherché dans le sas et les docs de production (hors transcripts, html, json) : « Rattacher », « à solliciter », « Les travaux », « Mes temps de correction », « l'élève désigne », « L dans la marge », « 30 clics », « journal de correction », « Les règles que suivra » (seulement dans `captures-29-10/gen3.py`), « chrono fin ». Mesuré dans le code de 1.2.2 / maquette : `scBilan` prend le prénom une fois (`pre`, un seul emploi) ; « la phrase qui t'a touché » sans raison (textes de `scan.js` et `eleve.js`) ; le paquet vide est un bouton (`sc-vide-btn`) ; la grille : 51 questions, dont 12 « à la fin » (`tait` q0 à q3, `architectures` q7, `modalisation` q0 à q3, `lexique` q0 à q2), longueur `calc:lignes` de 1 à 1,3334. Écrit : sas `MANDATS/EXIGENCES-DEPUIS-29-10.md` (79 lignes, comptées par script : ✔ 41, 📌 20, 🔍 6, ✖ 6, ⚠ seul 5, je ne sais pas 1 ; ⚠ en tout 9 : 1, 4, 5, 34, 36, 43, 45, 47, 48) ; production `docs/MJPC6-DETTES.md` (bloc « EXIGENCES DU 29/10 RETROUVÉES PAR LA CONSCIENCE N°14 », ① à ⑦) et `docs/MJPC6-journal.md` (C14 tour 3), commit `c8eec63`. Rien codé.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 1588 ; 1577 ; 1545 ; 1482 ; 1478 ; 1468 ; 1374 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1583. 1582 fait, sur ton « ok » : la copie de la 1.2.1 est au sas, tirée de l'historique, même empreinte. Le point de retour dit vrai maintenant.
+
+1584. Tes exigences depuis hier : j'ai relu tous tes messages, du 29/10 08:28 au 30/10 14:37, avec les réponses de la n°13, et j'ai vérifié chacune contre le registre, le contrat du déroulé, les cadrages du sas et le code en ligne. 79 exigences, une ligne chacune, avec l'heure de ton message et ce qu'elle est devenue : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/EXIGENCES-DEPUIS-29-10.md
+
+1585. Le compte : 41 faites et en ligne ; 20 écrites au registre ou au contrat, pas faites (surtout le déroulé : la ⑪, les diapos au canon, les deux chartes, la relecture dans le profil) ; 6 en cadrage (le profil de la classe, les stickers) ; 6 tombées sur ta décision ou remplacées par les scans ; 1 que je ne sais pas (les touches communes avec la dictée, pas mesurées).
+
+1586. Le trou : 9 de tes exigences n'étaient écrites nulle part ailleurs que dans la conversation. Elles sont maintenant au registre : le profil de la classe tel que tu l'as validé hier matin (la réactivation jamais retirée, les sept ajouts, toutes les applis par classe), qui n'existait qu'en captures ; verser dans la grille un texte modifié en corrigeant, et exporter le journal de correction pour l'IA ; tes 30 gestes au plus par copie ; la raison de « la phrase qui m'a touché » ; mesurer le gain avant de mettre en place ; tes règles 12 et 13 de la grille, pour le prompt d'injection ; l'élève qui désigne dans sa marge (L, M, C, D), à quoi tu as dit « c'est le mieux ».
+
+1587. Là où on en était : les stickers. Acquis : ils marquent ce que l'élève a réussi, seule la langue montre le mal fait, et le fichier de l'élève ne laisse aucune place à la plainte. Ta question : comment juger ce qui doit tenir dans toute la lettre, comme l'époque. Ma proposition, une seule : ça ne se juge pas sur un mot, mais à la fin de ta lecture, comme tes questions « à la fin » d'aujourd'hui. Un seul sticker, posé sur la lettre entière, seulement si tu n'as rien vu hors de 14-18 en lisant. Une lettre bourrée d'anachronismes ne l'a pas ; qu'elle ait des paragraphes ou non n'y change rien. Un geste, un fait, une case ; son nom, lu par l'élève, est à toi.
+
+1588. Oui à 1587 ?
+
+À tester : rien de neuf (cadrage, aucun code).
+
+30/10/2026 15:11
+MEMO

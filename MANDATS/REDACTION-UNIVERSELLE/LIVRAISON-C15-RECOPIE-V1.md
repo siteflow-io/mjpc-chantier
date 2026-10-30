@@ -58,3 +58,7 @@ La première image est l'écran entier de l'aperçu direct, 1363 × 936. Les cin
 56 est codé et livré pour essai au sas. 57, la bande des fautes, et 58, les stickers, ne sont pas codés dans cette livraison. 53 n'est pas validé : aucun import de fichier de recopies. Les quatre passes restent ; 45 attend la grille. Les touches 51 et le traitement des doublons d'anciennes fautes sont à cadrer avant 57.
 
 ⑪ reste ouverte pour la suite. Avant toute promotion : 59 entier (avancement de la tuile, remise à zéro d'une copie et page restée ouverte, mots vus par l'élève validés), comparaison privée des vraies copies sur le même instantané en lecture seule, banc complet, audit et mot « promeus » de Paul. Le fichier de production reste la 1.2.3-RU.
+
+## Registre — mise à jour en attente
+
+La note de livraison pour ⑪ n'a pas été appliquée au registre de production. Le contrôle automatique a refusé la réécriture du fichier public complet, en raison de son historique potentiellement sensible ; aucune autre voie n'a été essayée. [L'ajout technique exact préparé](NOTE-REGISTRE-C15-RECOPIE-V1.md) ajoute 1 319 caractères et conserve les 806 985 caractères existants. L'autorisation explicite sur cet ajout reste à recueillir. La livraison de la recopie au sas, ses tests et ses preuves sont terminés.

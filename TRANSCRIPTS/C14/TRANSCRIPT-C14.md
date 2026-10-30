@@ -249,3 +249,24 @@ MEMO
 
 30/10/2026 15:45
 MEMO
+
+## Tour 9 — 30/10/2026 15:46 → 15:48
+
+**Paul :** les noms doivent être plus explicites et faciles à comprendre. Je n'ai pas compris 1612
+
+**Fait.** Compté sur `grille2.json` : 40 points, dont la langue 6 (orthographe 4, lexique 2) ; hors de la langue 34 ; les deux premiers points font 10 (thème tenu 6, trois paragraphes 4) ; il en reste 24. Confronté les noms des deux points : « Le lieu » (thème, « Sait-on où est le personnage ») et « Où je suis, ce que je vois » (paragraphes) pointaient le même fait ; séparés en « nommer le lieu » et « décrire ce que tu vois ». Rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : rien · ouvert : 6 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+4. 1612, en clair. Hier, tu m'as fixé une limite : au plus 30 gestes par copie. Avec les stickers, chaque chose réussie te coûte un geste, puisque tu poses son sticker. Une copie qui réussit tout dans les deux premiers points te coûte donc 13 gestes (6 + 7), pour 10 points sur 40. Hors de la langue, il reste 24 points à écrire ; au même rythme, ce serait une trentaine de gestes de plus, soit à peu près 44 pour une copie qui réussit tout, avant même ses fautes. C'est au-delà de ta limite. Je te propose d'écrire d'abord toute la grille, de compter, puis de décider ensemble comment rester sous 30.
+
+5. Des noms plus clairs. Chaque nom dit la chose à réussir, à l'infinitif, pour se lire aussi bien après « Tu as réussi : » qu'après « Pas encore réussi : ». Pour « Le thème tenu » : « Dire si tu écris du front ou de la maison » ; « Nommer le lieu où tu es (la tranchée, le village) » ; « Dire à qui tu écris » ; « Dire depuis quand vous êtes séparés » ; « Dire ton âge ou ton métier d'avant la guerre » ; « Rester en 14-18 dans toute la lettre ».
+
+6. Pour « Les trois paragraphes » : « Aller à la ligne entre les parties de ta lettre » ; « Décrire ce que tu vois autour de toi » ; « Dire ce qui est le plus dur à vivre » ; « Choisir pour le plus dur une chose inattendue, comme la boue chez Jean Déléage » ; « Dire ton inquiétude pour l'autre » ; « Lui demander de ses nouvelles » ; « Suivre l'ordre des trois paragraphes du sujet ». La note ne change pas : les sept, 4 points ; il en manque un, 2,5 ; deux ou trois, 1 ; plus, 0. J'ai séparé « Nommer le lieu » (le thème) de « Décrire ce que tu vois » (les paragraphes) : avant, le même fait comptait deux fois. Tu valides ces noms et cette note ?
+
+À tester : rien de neuf ; les deux tests du Lexique (1) restent.
+
+30/10/2026 15:48
+MEMO

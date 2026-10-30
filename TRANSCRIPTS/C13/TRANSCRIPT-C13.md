@@ -9298,3 +9298,48 @@ MEMO
 
 30/10/2026 10:09
 MEMO
+
+## Tour 409 — 30/10/2026 10:20 → 10:30
+
+**Paul (10:20) :** [deux captures : passe 4 sur Flavie, les codes de la lettre ; passe 4 sur Gabin, « Trente lignes · calculé : Les lignes ne sont pas comptées : tape-les dans la passe de la langue »] et une fois que je suis arrivé là, il faut que je vois le récapitulatif de la copie, la note, la grille, le bilan complet rédigé par le moteur, etc. par ailleurs, le compte des lignes doit être bloquant au début pour ne pas arriver à ça à la fin (l'encart avec le nombre des lignes non déclaré et donc il fuat que je reparte dans le premier critère). Pour les lignes, je me demandais s'il ne fallait pas faire un pinceau pareil, et je clique sur chaque ligne écrite. Tu vois l'idée? mais ça prendrait peut-être beaucoup de temps. Par ailleurs, la prochaine étape sera de push la maquette parce qu'il faut que je corrige mes paquets maintenant.
+
+**Paul (10:28, en interrompant) :** [deux captures : le fichier de Flavie en mode test, 16 / 26, le thème tenu, « Reprends ton brouillon d'idées : qui tu es, où, à qui, depuis quand. » ; la passe 5 « Les retours des élèves 8 / 8 », Flavie, « gzgtrg », « Déjà relu : c'est bon »] l'élève ne peut jamais revenir en arrière. par ailleurs, la question d'avant on lui posait la même question qu'ici. enfin ma relecture de ses corrections est horriblement longue et fastidieuse. je n'ai pas de relecture de correction à faire sinon on est pas rendus. Il faut juste le bilan final, les corrections de l'élève, et voilà. Ce flux là est assez sommaire en fait. Par ailleurs l'élève peut écrire n'importe quoi. J'attends ton audit et tes solutions.
+
+**Fait (10:20 → 10:28).** Lu : `redaction.html` (production) a la fiche de l'ancien modèle (`assemblerCommentaireCritere`, connecteurs) et un bilan de télémétrie (`ouvrirBilanCopie`), aucun bilan pour la grille à cases ; le cadrage du bilan (1123, 1143, 1193) relu. `scan.js` (v10, non livrée) : `scCase` rend aussi les autres cases touchées (`autres`, 1193) ; `scBilan` (tes cases, leurs tâches, tes remarques, l'étoile ; prénom par `prenom()`) ; `scRecap` (plein écran : note, grille, bilan, « À reprendre », fautes ; Entrée suite, Échap reste ; bouton « 📋 Le récapitulatif ») ouvert par `scAvancer` quand `scNote(k).ok` ; `scSuiteCopie` ; les lignes : `scLignesManquent` / `scLignesBloque`, champ en tête (`.sc-lig-manque`), focus à l'arrivée sur la copie, Entrée et → refusés tant qu'il manque, champ aussi dans « Trente lignes ». Banc v10 (`T399-maquette-redaction-scans-v10.html`) : 41 vérifications, 1 défaut (« copie passée en entier : le récapitulatif s'ouvre seul » : non ouvert, cause non trouvée) ; la sonde de cause arrêtée par Paul en cours (ligne de sonde retirée du banc). Rien poussé du code. **Mesuré (10:28 → 10:30).** `eleve.js` (`scEleveApp`) : `suite()` met toujours l'étape sur la première non finie, aucun retour, les ronds ne se cliquent pas ; Flavie 26 étapes ; question du point (`#rq`) acceptée dès qu'elle n'est pas vide (`ok: true`) ; tâche (`#pap`) acceptée non vide, envoyée à relire si `relire` ; faute avec bonne forme comparée exactement (`normalize NFC`, apostrophes, espaces) ; faute sans bonne forme acceptée et envoyée à relire ; QE « theme » et la tâche de sa case demandent la même chose. Capture de Paul : passe 5, 8 retours pour 2 copies.
+
+**Claude :**
+
+À jouer : rien de neuf · en cours : la v10 (1450, 1451), un défaut à régler · ouvert : 1461 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1450. Ton message de 10:20, le récapitulatif : fait dans une v10, pas livrée. Quand tous les points d'une copie sont passés, il s'ouvre seul : la note, la grille des douze points avec leur case, le bilan écrit, « À reprendre », les fautes avec leur bonne forme. Entrée, la copie suivante ; Échap, tu restes. « 📋 Le récapitulatif » l'ouvre à tout moment. Au banc, il ne s'est pas ouvert seul dans la vérification qui joue une copie en entier ; la cause, je ne sais pas encore. Je ne livre pas sur ce défaut.
+
+1451. Les lignes, bloquantes au début : fait dans la v10, vérifié au banc. En arrivant sur une copie dans la passe de la langue, le champ « Lignes écrites » est en haut, prêt à taper ; tant qu'il est vide, ni Entrée ni → ne quittent la copie. Dans « Trente lignes », s'il manque encore, le champ est là : plus besoin de revenir à la langue.
+
+1452. Le pinceau des lignes : je vois l'idée. Son vrai gain n'est pas le compte (taper « 24 » va plus vite que 24 clics), c'est le numéro de ligne de chaque faute, que les photos n'ont pas aujourd'hui. Ce qu'il coûte en temps, je ne sais pas : à mesurer. Je propose de ne pas le faire pour tes paquets de maintenant ; tes copies précâblées donneront les lignes et leurs numéros sans aucun geste.
+
+L'audit du flux de l'élève (mesuré dans le code et sur tes captures)
+
+1453. Il ne revient jamais en arrière : vrai. Son parcours est une file imposée : l'étape suivante est toujours la première qui n'est pas finie, et les ronds en haut de sa copie ne se cliquent pas. Flavie : 26 étapes à la file.
+
+1454. La même question deux fois : vrai. Chaque point lui pose d'abord une question (« Relis le début de ta lettre : qui es-tu, d'où écris-tu, à qui… »), puis, sous sa case, une tâche qui demande la même chose (« Reprends ton brouillon d'idées : qui tu es, où, à qui, depuis quand »). Deux champs pour un même travail.
+
+1455. Il peut écrire n'importe quoi : vrai partout où il écrit librement. Sa réponse à la question passe dès qu'elle n'est pas vide ; sa tâche aussi, puis elle t'arrive à relire. Seule la correction d'une faute est vérifiée : comparée à ta bonne forme, lettre à lettre, accents compris. « gzgtrg » ne passe pas là.
+
+1456. Ta relecture : chaque tâche écrite et chaque faute sans bonne forme deviennent un retour à juger, un par un, dans la passe 5. Sur ton essai, 8 retours pour 2 copies : pour 30 copies, de l'ordre de 120 jugements un par un. C'est elle qui rend tout long.
+
+Les solutions
+
+1457. Le fichier de l'élève se réduit à deux choses. D'abord le bilan final, un seul écran à lire : sa note, ses douze points avec leur case, le bilan écrit, « À reprendre » (des consignes, sans champ). Puis la correction de ses fautes : il clique une faute soulignée, n'importe laquelle, dans l'ordre qu'il veut, et tape la bonne forme ; juste ou faux s'affiche aussitôt ; il revient sur n'importe quelle faute quand il veut ; un compteur dit « 9 corrigées sur 14 ». Le bilan n'est fait que de tes phrases ; les mots qui les relient sont les miens, à valider : « Ce qui manque encore : », « Ta priorité : », « La phrase qui m'a touché est surlignée en or sur ta copie », « Mes remarques sur ta copie : ».
+
+1458. Ce qui disparaît : la traversée animée, la question avant la case, la tâche écrite et sa relecture, toute la passe 5 « Les retours des élèves ». Ça défait 1360 (la question avant la case) et le papillon : sans relecture, ce qu'il y écrit n'est lu par personne.
+
+1459. Ce qui reste pour toi : aucune relecture. Dans le récapitulatif de chaque copie et dans le tableau, « fautes corrigées : 9 / 14 », compté seul, sans recharger. Une faute sans bonne forme ne peut pas être vérifiée : je propose que le fichier de l'élève ne parte pas tant qu'une de ses fautes n'a pas sa bonne forme ; le récapitulatif les liste, un clic t'y ramène.
+
+1460. Pour corriger tes paquets maintenant (ton message de 10:20), l'ordre : la v10 sans défaut (1450, 1451) ; tes 51 questions récrites (1444) et validées ; puis la promotion. Avant ton « promeus », deux choses que je ne sais pas encore : si le site accepte l'écriture du paquet (pages, marques, réponses), jamais faite sur le vrai site ; et la grille à cases, qui n'est pas au site et qu'il faudra y écrire. Le fichier de l'élève (1457 à 1459) peut venir après : tu corriges d'abord, il part ensuite.
+
+1461. Oui à 1452 à 1460 ?
+
+À tester : rien de neuf.
+
+30/10/2026 10:30
+MEMO

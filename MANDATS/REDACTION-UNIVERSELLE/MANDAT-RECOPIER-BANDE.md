@@ -114,3 +114,7 @@ Livrer la nouveauté sur une branche du sas : vrai fichier construit, générate
 Si l'exécutant ne peut pas faire tourner le banc complet ou ouvrir le site, il le dit : **cadrage seulement, pas de codage fonctionnel**. Aucun lancement automatique à partir de la présente révision.
 
 La promotion exige le « promeus » de Paul sur une livraison présente et auditée, le banc complet sans défaut et les conditions de 59 réglées. Sauvegarde et point de retour avant ; fichier promu vérifié bit à bit ; dans le même tour, journal, registre des dettes, restauration et où-trouver-quoi, adresse avec `&v=`, tests de Paul geste par geste. Pas de mise en ligne sur une dette.
+
+## Registre après la livraison C15
+
+La note de ⑪ sur cette livraison n'a pas été appliquée en production : le contrôle automatique a refusé la réécriture du registre public complet à cause de son historique potentiellement sensible. La note technique exacte est préparée sur la branche `c15-recopie`, `MANDATS/REDACTION-UNIVERSELLE/NOTE-REGISTRE-C15-RECOPIE-V1.md` ; elle attend l'autorisation de Paul sur cet ajout précis. Cette attente ne remet pas en cause le dépôt de la candidate, le banc 67/0 et les captures regardées. Aucun contournement, aucune promotion.

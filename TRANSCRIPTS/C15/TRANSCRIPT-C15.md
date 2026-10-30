@@ -594,3 +594,32 @@ L’approbation automatique refuse cette écriture parce que le registre contien
 
 30/10/2026 22:58
 MEMO
+
+## Tour 11 — 30/10/2026 22:59 → 23:00
+
+**Paul :** Oui
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : ajout du résultat au registre · ouvert : 53 ; 45 ; 36.
+
+112. J’applique ton accord à l’ajout technique préparé, en conservant tout le contenu existant du registre.
+
+À tester : rien de nouveau dans l’app.
+
+MEMO
+
+**Faits — accord explicite et réalisation.** « Oui » répond exactement à la demande C15 111 : ajout technique préparé dans le guide au registre public, contenu actuel conservé. La première horloge lue donne 30/10/2026 22:59, heure de Paris ; le premier message ci-dessus avait omis l'horodatage, il est conservé mot pour mot. Le guide, le registre et le transcript courants sont relus avant écriture. L'ajout est extrait de la proposition publiée dans le guide : exactement 1 604 caractères, espaces compris. La proposition conserve intégralement les 805 381 caractères existants du registre et ajoute seulement cette note à la fin de ⑪, avant les exigences retrouvées du 29/10. Ce contrôle est effectué avant l'appel d'écriture. Les deux refus automatiques précédents ne sont pas contournés : l'accord explicite demandé est maintenant reçu, puis la même action update_file est présentée à l'approbation.
+
+Écriture acceptée : commit de documentation en production a3db4d44692ae886b3841ddb9d0658e6bf126102, blob c64e47283e16d549d374bd33c020c1bc23f4468b. Registre entier relu et comparé intégralement : identique au contenu préparé. Le guide est ensuite actualisé pour remplacer le statut d'accord en attente par l'accord reçu et la note consignée ; historique des deux refus conservé, texte de l'ajout inchangé. Commit du guide d6cd512ebe5ff74f4496dd06b99a47b43b629d9a, blob 09134a07281f8d1d41cd2d59c7a4b286d20a5c67 ; contenu entier relu et identique. Aucun code fonctionnel modifié, aucun nouveau banc exécuté, aucune promotion. L'accord n'est attribué ni à 53 ni à 45 ni à 36, qui restent ouverts.
+
+**GPT — réponse :**
+
+À jouer : rien · en cours : rien · ouvert : 53 ; 45 ; 36.
+
+113. L’ajout technique est consigné au [registre ⑪]([lien dans la conversation]) et relu identique. Tout le contenu antérieur est conservé. Le mode d’emploi et le transcript sont à jour.
+
+À tester : ouvrir le registre et rechercher « Solution demandée par Paul à C15 ».
+
+30/10/2026 23:00
+MEMO

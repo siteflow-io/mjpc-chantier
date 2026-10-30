@@ -329,3 +329,29 @@ MEMO
 
 30/10/2026 15:58
 MEMO
+
+## Tour 13 — 30/10/2026 16:01 → 16:03
+
+**Paul :** [extrait de mon message précédent : « Recopier 33 lignes prendra sans doute autant de temps, ou plus. Le gain doit donc venir de tout le reste de la correction. »] mesure avec les standards sur internet. Je tape plutôt vite, et surtout si j'ai la copie sous les yeux et la zone de texte à droite, c'est encore plus facile. Il faut que l'endroit où j'écris ressemble à une vraie copie.
+
+**Fait.** Recherches : « vitesse de frappe moyenne mots par minute… », « copy typing speed from handwritten text… ». Lus : humanfactors.com (Karat et al., CHI 1999 : transcription 33 mots/min en moyenne, 40 pour les plus rapides de l'étude ; Brown 1988 : 27 mots/min à deux doigts) ; voxbooster.com (transcripteurs professionnels 65 à 85 mots/min, Bureau of Labor Statistics, non vérifié à la source). Aucune source trouvée sur la recopie d'un texte manuscrit plus lente qu'un texte imprimé. Compté sur la capture de Paul de 15:19 : dix lignes, environ 94 mots, environ 9 mots par ligne ; 33 lignes (médiane du paquet) ≈ 310 mots ; temps de recopie : 33 mots/min, 9 min 24 s ; 40, 7 min 45 s ; 60, 5 min 10 s ; 80, 3 min 52 s. Registre : ⑪ le mode « recopier la copie » (production `079ce5f`).
+
+**Claude :**
+
+À jouer : un test de frappe d'une minute (16) · en cours : rien · ouvert : 16 ; les stickers (9) ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+14. Les standards trouvés : en recopiant un texte, une personne moyenne tape 33 mots par minute, les plus rapides de l'étude 40 (Karat et al., 1999) ; un transcripteur professionnel, 65 à 85. Recopier l'écriture d'un élève, fautes comprises, va moins vite qu'un texte imprimé : de combien, aucune source ne le dit.
+
+15. Le calcul sur tes copies : environ 9 mots par ligne (compté sur ta capture de 15:19), 33 lignes par copie (médiane de ton paquet), soit à peu près 310 mots. À 40 mots par minute, 7 min 45 s par copie ; à 60, 5 min 10 s ; à 80, 3 min 52 s. Aujourd'hui, ta passe de la langue prend 4 min 27 s. Si tu tapes vers 60, recopier coûte donc un peu plus que ta passe de la langue d'aujourd'hui ; en échange, la langue se corrige ensuite au clavier sur le texte, et les autres passes profitent de ce que l'app trouve seule. Le gain réel, je ne le saurai qu'avec ta vitesse.
+
+16. Ta demande est notée au registre : ta photo à gauche, à droite une zone qui ressemble à une vraie copie (lignes, marge), où tu recopies ligne par ligne. Pour connaître ta vitesse sans rien coder : un test d'une minute en français, https://www.keyhero.com/test-dactylographie/ . Tu le fais et tu me donnes ton chiffre ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+Sources :
+[Human interaction speeds — Human Factors International](https://www.humanfactors.com/newsletters/human_interaction_speeds.html)
+[Typing speed statistics 2026 — Voxbooster](https://voxbooster.com/fr/blog/typing-speed-statistics-2026/)
+[Test de dactylographie — KeyHero](https://www.keyhero.com/test-dactylographie/)
+
+30/10/2026 16:03
+MEMO

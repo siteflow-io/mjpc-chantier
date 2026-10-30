@@ -44,3 +44,29 @@ Puis réponds-moi court, au format habituel : ce que tu as compris de l'état, c
 
 30/10/2026 14:52
 MEMO
+
+## Tour 2 — 30/10/2026 14:54 → 14:56
+
+**Paul :** promeus
+
+**Fait.** Base re-téléchargée de la production avant tout geste : le dépôt avait 3 commits de plus qu'à 14:42 — `8640aaa` 14:51:35 (point de retour avant 1.2.2-RU, « C13 tour 425 »), `413d235` 14:51:38 (`redaction.html` 1.2.2-RU, « sur l'ordre de Paul (14:51 : « fais au moins la correction du trait rouge ») »), `e0b5c5f` 14:53:34 (registre, journal, où-trouver-quoi, point de retour). `redaction.html` en production et en ligne (lu à 14:54 et 14:55) : md5 `d46ecf46557d0f7da853ac5ee96e0dc4` = la candidate, `APP_VERSION` 1.2.2-RU. Rien promu par la n°14 : le « promeus » est sans objet (DISPOSITIF, règle du 21/07). Audit court de cette promotion : point de retour inscrit avant (14:51:35 < 14:51:38) ✔ ; la 1.2.1 se retrouve dans l'historique (`fd6fbc4`, md5 `b0d4584e512aab05f741b5e833dc7f0c`, vérifié après approfondissement du clone) ✔ ; registre (état de production 1.2.2-RU, dette ⑦ ✔), journal, où-trouver-quoi ✔ ; **la copie `SAUVEGARDES/redaction-1.2.1-RU-avant-1.2.2-2026-10-30.html` annoncée par le point de retour est absente du sas** (relu à 14:54 et 14:55 : dernier commit du sas `7eb2420`, le mien) ; le transcript C13 n'a pas de tour 425 au sas. Le registre ne porte pas la taille en octets de 1.2.2. Fumée en ligne non refaite (le journal la déclare faite par la n°13). Rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : F5 entre deux copies, puis les tests ci-dessous · en cours : rien · ouvert : 1582 ; 1577 ; 1573 ; 1545 ; 1482 ; 1478 ; 1468 ; 1374 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1579. Ton « promeus » n'a plus d'objet : la 1.2.2-RU est déjà en ligne depuis 14:51. La n°13 l'a mise en ligne sur ton ordre dans sa conversation (« fais au moins la correction du trait rouge »), avant ton mot ici. Je n'ai rien poussé en production.
+
+1580. Vérifié à 14:55 : le fichier en ligne est la candidate, octet pour octet, version 1.2.2-RU. Le point de retour (la 1.2.1) a été écrit avant la mise en ligne, et la 1.2.1 est bien dans l'historique de production. Le registre, le journal et l'adresse sont à jour ; la dette ⑦ est cochée.
+
+1581. Ce qui ne va pas : le point de retour annonce une copie de la 1.2.1 au sas, et elle n'y est pas (relu à 14:54 et à 14:55). Le transcript de la n°13 s'arrête au tour 424. Le retour en arrière marche quand même : « BUG » remet la 1.2.1 en une minute depuis l'historique.
+
+1582. Je pose la copie manquante au sas, tirée de l'historique et vérifiée à l'empreinte de la 1.2.1 ? Seulement si la n°13 a fini : deux sessions qui écrivent au sas en même temps se marchent dessus.
+
+À tester (sur le site, maintenant) :
+1. F5 entre deux copies, ou ouvrir https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.2.2-RU : ton paquet, tes initiales et tes marques reviennent.
+2. Appuyer au début d'un mot et tirer : le trait rouge suit ta main pendant que tu tires.
+3. Lâcher : le trait reste là où tu l'as vu, le champ « bonne forme » s'ouvre.
+
+30/10/2026 14:56
+MEMO

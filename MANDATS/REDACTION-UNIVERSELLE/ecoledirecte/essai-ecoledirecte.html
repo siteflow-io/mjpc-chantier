@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Essai École Directe</title>
+<!-- Essai C13, tour 398 (1347) : ce fichier se dépose sur École Directe et s'ouvre sur téléphone et ordinateur.
+     Il ne contient aucune donnée d'élève et n'écrit rien nulle part ; il lit seulement la liste des rubriques du hub. -->
+<style>
+body{margin:0;padding:16px;background:#f5f1ea;color:#2b2520;font:17px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1{font:600 22px/1.2 Georgia,serif;color:#6b1a2a;margin:0 0 12px}
+.l{display:flex;gap:10px;align-items:center;padding:10px 12px;margin:8px 0;border-radius:9px;background:#fff;border:1px solid #d6cfc1}
+.ok{color:#3d6b26;font-weight:700}.non{color:#c54040;font-weight:700}
+.copie{max-width:460px;background:#fff repeating-linear-gradient(#fff 0 39px,#cfd9ea 39px 40px);border:1px solid #d6cfc1;border-left:3px solid #e8a0a0;border-radius:6px;padding:4px 14px;font:21px/40px 'Segoe Script','Bradley Hand','Comic Sans MS',cursive;color:#2a3f8f}
+.faute{border-bottom:3px solid #c54040}
+button{font:inherit;padding:8px 14px;border-radius:8px;border:0;background:#6b1a2a;color:#fff}
+small{color:#7a6e5f}
+</style></head><body>
+<h1>Essai MJPC · fichier École Directe</h1>
+<div class="l"><span class="ok">1 · ✓</span><span>Le fichier s'affiche.</span></div>
+<div class="l" id="js"><span class="non">2 · ✗</span><span>L'interactivité ne marche pas ici : ni parcours, ni papillons.</span></div>
+<div class="l" id="hub"><span class="non">3 · ✗</span><span>Le hub ne répond pas d'ici.</span></div>
+<p>Une fausse copie, avec une marque :</p>
+<div class="copie"><div>Mon cher Louis, depuis la tranchée</div><div>je t'<span class="faute">écrit</span> ces quelques mots</div><div>avant la relève du soir.</div></div>
+<p id="zone"></p>
+<p><small id="appareil">Appareil : inconnu (l'interactivité ne marche pas).</small></p>
+<script>
+document.getElementById('js').innerHTML='<span class="ok">2 · ✓</span><span>L\'interactivité marche ici.</span>';
+var n=0;document.getElementById('zone').innerHTML='<button id="b">Clique ici</button> <span id="c"></span>';
+document.getElementById('b').onclick=function(){n++;document.getElementById('c').textContent=n+' clic'+(n>1?'s':'')+' compté'+(n>1?'s':'')+'.';};
+document.getElementById('appareil').textContent='Appareil : '+navigator.userAgent;
+fetch('https://mjpc-hub-default-rtdb.europe-west1.firebasedatabase.app/.json?shallow=true').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(){
+document.getElementById('hub').innerHTML='<span class="ok">3 · ✓</span><span>Le hub répond : les réponses de l\'élève pourront partir.</span>';}).catch(function(){});
+</script>
+</body></html>

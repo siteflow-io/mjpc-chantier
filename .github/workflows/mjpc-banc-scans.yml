@@ -3,7 +3,7 @@ name: MJPC - banc complet des scans
 on:
   push:
     branches:
-      - c15-banc-complet
+      - c15-recopie
     paths:
       - .github/workflows/mjpc-banc-scans.yml
       - MANDATS/REDACTION-UNIVERSELLE/maquette/**
@@ -37,10 +37,23 @@ jobs:
           import pathlib, subprocess
           root = pathlib.Path("MANDATS/REDACTION-UNIVERSELLE/maquette")
           expected = {
-              "banc/banc.mjs": "6edec4937325512999c4b5f72c31f142b6271ad0",
+              "scan.js": "c7d8afd385860f6fbc8353499bd944c6c8821cc1",
+              "recopie.js": "da7a53bf65d090041701fe10535d1e096b41d644",
+              "recopie.css": "fed13314640a646f32880474a0eeabd7e2609ef0",
+              "gen-maquette.py": "dfff0b7972cab6cd8432b59335edb72bf6dbc391",
+              "banc/banc.mjs": "fce59d71e70eb856929c9b22dce7a6554f73ae4c",
+              "banc/recopie.mjs": "9c67e20315f96f71a5ae8c2b911a36f394d59239",
+              "banc/fixture-recopie.py": "b96a0b58aa121522fa75599c0ffd521c55a4f757",
+              "banc/verifier-construction.py": "b7274c6ccc4f9347cc09a208ac228c32c62a3a9f",
+              "C15-maquette-recopie-v1-essai1.html": "36fa1fd4b3427fa6d872c7968c921f94eac8d71f",
+              "banc/recopie-lignes-essai.png": "238ee23b628f28751a3550be91d3c570f603bc58",
               "T399-maquette-redaction-scans-v14.html": "c7fb23f32a9280c528f5b1f91229cd945d9f0102",
               "paquet-essai.pdf": "9b4ec27e91a0e6586300945759fb1fa3835a6827",
               "paquet-reperes.pdf": "8a33a028ac1147a07334851ea1cbd96861fde264",
+              "scan.css": "35cf61768e07a1a5949f81288084028ae9ba9603",
+              "eleve.js": "c0469c5546f26192b0db029a8b70ab75917e272d",
+              "grille2.json": "f843068e78b226ac971353a9f627ca3dfbd39391",
+              "../../../SAUVEGARDES/redaction-1.1.0-RU-avant-scans-2026-10-30.html": "3c1ed7de294c338d940c4d699a7e707934cf05d0",
           }
           for name, wanted in expected.items():
               actual = subprocess.check_output(["git", "hash-object", str(root / name)], text=True).strip()
@@ -50,6 +63,9 @@ jobs:
           PY
           node --version
           npm --version
+          node --check MANDATS/REDACTION-UNIVERSELLE/maquette/recopie.js
+          node --check MANDATS/REDACTION-UNIVERSELLE/maquette/banc/banc.mjs
+          python3 MANDATS/REDACTION-UNIVERSELLE/maquette/banc/verifier-construction.py C15-maquette-recopie-v1-essai1.html
 
       - name: Installer les dependances de test epinglees
         shell: bash
@@ -59,7 +75,7 @@ jobs:
           npm install --prefix "$DEPS_DIR" --ignore-scripts --no-audit --no-fund playwright@1.56.1 pdfjs-dist@3.11.174
           node "$DEPS_DIR/node_modules/playwright/cli.js" install chromium --with-deps --only-shell
 
-      - name: Executer tout le banc existant
+      - name: Executer tout le banc existant et la recopie
         id: banc
         shell: bash
         run: |
@@ -68,16 +84,22 @@ jobs:
           DEPS_DIR="$RUNNER_TEMP/mjpc-banc-deps"
           export NODE_PATH="$DEPS_DIR/node_modules"
           export PDFJS="$DEPS_DIR/node_modules/pdfjs-dist/build/"
-          node "$BANC_DIR/banc/banc.mjs" T399-maquette-redaction-scans-v14.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
+          set +e
+          node "$BANC_DIR/banc/banc.mjs" C15-maquette-recopie-v1-essai1.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
+          issue=$?
+          set -e
           python3 - <<'PY'
           import os, pathlib
-          rows = (pathlib.Path(os.environ["RUNNER_TEMP"]) / "mjpc-banc.log").read_text().splitlines()
-          verdicts = [r.strip() for r in rows if r.startswith("BANC : ")]
-          if not verdicts:
-              raise SystemExit("Verdict du banc absent")
+          rows = (pathlib.Path(os.environ["RUNNER_TEMP"]) / "mjpc-banc.log").read_text(errors="replace").splitlines()
+          verdicts = [r.strip() for r in rows if r.startswith("BANC : ") or r.startswith("ARRÊT : ")]
+          fails = [r.strip() for r in rows if r.startswith("✗ ")]
+          verdict = verdicts[-1] if verdicts else "Banc interrompu"
+          if fails:
+              verdict += " - " + " | ".join(fails)
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
-              out.write("verdict=" + verdicts[-1] + "\n")
+              out.write("verdict=" + verdict[:240] + "\n")
           PY
+          exit "$issue"
 
       - name: Conserver le resultat et les captures dans le journal gratuit
         id: archives

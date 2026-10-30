@@ -67,9 +67,10 @@ function scOuvrir() {
     document.getElementById("scanEcran").classList.remove("hidden"); document.body.classList.add("sc-ouvert");
     SC.attrib = scPagesSans().length > 0; SC.ia = scPremiereSans();
     scRendre();
+    if (state.scanRecopie && state.scanRecopie.ouverte && typeof rcOuvrir === "function") rcOuvrir(true);
   });
 }
-function scFermer() { scChrono(); SC.ouvert = false; scChampFermer(true); state.modeOuvert = null; aidePoser(SC.aideAvant || "correction"); document.getElementById("scanEcran").classList.add("hidden"); document.body.classList.remove("sc-ouvert"); saveState(); if (typeof renderDashboard === "function") renderDashboard(); }
+function scFermer() { if (typeof RC !== "undefined" && RC.ouvert) rcFermer(true); scChrono(); SC.ouvert = false; scChampFermer(true); state.modeOuvert = null; aidePoser(SC.aideAvant || "correction"); document.getElementById("scanEcran").classList.add("hidden"); document.body.classList.remove("sc-ouvert"); saveState(); if (typeof renderDashboard === "function") renderDashboard(); }
 function scPagesOrdre() { return Object.values(SC.pages).filter(p => p && p.id).sort((a, b) => (a.ordre || 0) - (b.ordre || 0)); }
 function scPremiereSans() { const i = scPagesOrdre().findIndex(p => !p.eleve && !p.blanche); return i < 0 ? 0 : i; }
 function scPagesSans() { return scPagesOrdre().filter(p => !p.eleve && !p.blanche); }
@@ -121,7 +122,7 @@ function scPage(cvLu) {
 }
 // les lignes écrites (mesuré le 30/10 sur une copie de l'an dernier : 30 sur 30, à 1 pixel près) : l'encre plus sombre que le papier autour,
 // la réglure (longues traînées horizontales) retirée, le profil ligne par ligne ; le début et la fin de l'écriture de chaque ligne
-function scLignes(src) {
+function scLignes(src, options) {
   const W = 540, H = Math.round(src.height * W / src.width); const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
   const cx = cv.getContext("2d"); cx.drawImage(src, 0, 0, W, H); const d = cx.getImageData(0, 0, W, H).data;
   const lum = new Float32Array(W * H), rouge = new Uint8Array(W * H);
@@ -134,7 +135,7 @@ function scLignes(src) {
   const bx = Math.round(W * 0.02), ex = Math.round(W * 0.97);
   const prof = new Float32Array(H); for (let y = 0; y < H; y++) { let s = 0; for (let x = bx; x < ex; x++) s += encre[y * W + x]; prof[y] = s; }
   const lis = new Float32Array(H); const sg = 3; for (let y = 0; y < H; y++) { let s = 0, w = 0; for (let k = -9; k <= 9; k++) { const yy = y + k; if (yy < 0 || yy >= H) continue; const c = Math.exp(-k * k / (2 * sg * sg)); s += prof[yy] * c; w += c; } lis[y] = s / w; }
-  const tri = Array.from(lis).sort((a, b) => a - b); const p95 = tri[Math.floor(H * 0.95)] || 0; const seuil = Math.max(2.5, 0.25 * p95);
+  const tri = Array.from(lis).sort((a, b) => a - b); const p95 = tri[Math.floor(H * 0.95)] || 0; const seuil = options && options.recopie ? Math.max(1.2, 0.10 * p95) : Math.max(2.5, 0.25 * p95);
   const pics = []; for (let y = 8; y < H - 8; y++) { if (lis[y] < seuil) continue; let mx = true; for (let k = -8; k <= 8; k++) if (lis[y + k] > lis[y]) { mx = false; break; } if (mx && (!pics.length || y - pics[pics.length - 1] > 8)) pics.push(y); }
   const L = pics.map(y => { const col = new Float32Array(W); for (let yy = Math.max(0, y - 8); yy < Math.min(H, y + 5); yy++) for (let x = bx; x < ex; x++) col[x] += encre[yy * W + x];
     let a = -1, b = -1; for (let x = bx; x < ex; x++) { let s = 0; for (let k = -3; k <= 3; k++) s += col[Math.min(W - 1, Math.max(0, x + k))]; if (s > 1.5) { if (a < 0) a = x; b = x; } }
@@ -231,7 +232,7 @@ function scReculer() { const L = scEtapes(scK()); const i = L.findIndex(e => e.i
 function scAllerCopie(i) { if (i !== SC.ic && scLignesBloque()) { scLignesDemander(); return; } scChrono(); SC.ic = Math.max(0, Math.min(SC.copies.length - 1, i)); const L = scEtapes(scK() || ""); SC.ip = L.length ? L[0].ip : 0; SC.iq = L.length ? L[0].iq : null; SC.sel = null; SC.outil = null; scChampFermer(); scRendre(); scLignesAccueil(); }
 function scAllerPasse(i) { if (SC.passes[i] && SC.passes[i].id === "retours" && !scCorrectionEleve()) return; scChrono(); SC.passe = i; SC.ir = 0; scAllerCopie(SC.ic); }
 // le chrono : le temps passé sur chaque copie, passe par passe (une minute sans geste ne compte pas)
-function scToucher() { const t = Date.now(); if (SC.actif && SC.ouvert && scK() && scP()) { const s = scCopie(scK()); s.chrono[scP().id] = (s.chrono[scP().id] || 0) + Math.min(60000, t - SC.actif); } SC.actif = t; }
+function scToucher() { const t = Date.now(); if (typeof RC !== "undefined" && RC.ouvert) { SC.actif = t; return; } if (SC.actif && SC.ouvert && scK() && scP()) { const s = scCopie(scK()); s.chrono[scP().id] = (s.chrono[scP().id] || 0) + Math.min(60000, t - SC.actif); } SC.actif = t; }
 function scChrono() { scToucher(); }
 // ── le pinceau : la forme vient de ce que tu montres ──
 function scOutil() {
@@ -373,6 +374,7 @@ function scChampLien() {
 }
 // ── le clavier ──
 function scClavier(e) {
+  if (typeof rcClavier === "function" && rcClavier(e)) return;
   if (!SC.ouvert) return;
   if (SC.recap) { if (e.key === "Enter" || e.key === "Escape") { e.preventDefault(); e.stopPropagation(); scRecapFermer(e.key === "Enter"); } return; }
   if (SC.rt) { const t = { Enter: () => scRtFermer(true), Escape: () => scRtFermer(false), ArrowLeft: () => scRtTourner(-1), ArrowRight: () => scRtTourner(1) }[e.key]; if (t) { e.preventDefault(); e.stopPropagation(); t(); } return; } const a = document.activeElement; const ecrit = a && (a.tagName === "INPUT" || a.tagName === "TEXTAREA");
@@ -402,6 +404,7 @@ function scRendre() {
   const ch = k && P ? (scCopie(k).chrono[P.id] || 0) : 0; document.getElementById("scChrono").textContent = "⏱ " + Math.floor(ch / 60000) + ":" + String(Math.floor(ch / 1000) % 60).padStart(2, "0") + " sur cette copie";
   const man = scManquantes(); document.getElementById("scManque").innerHTML = man.length ? `⚠ ${man.length} page${man.length > 1 ? "s" : ""} de ce paquet ne ${man.length > 1 ? "sont" : "est"} pas dans ce navigateur : remets ton paquet (clé USB) avec « Charger le paquet ». Les marques reviendront d'elles-mêmes.` : "";
   scDessinerPages(); scPanneau(); scPaquet(); scBande(); scZoomAffiche(); scTitreCopie();
+  if (typeof rcActualiser === "function") rcActualiser();
   const cur = { passe: P && P.id, copie: k || null, point: scPt() ? scPt().id : null, q: SC.iq };   // l'endroit exact, par identités
   if (JSON.stringify(cur) !== JSON.stringify(state.scanCurseur || null)) { state.scanCurseur = cur; saveState(); }
 }
@@ -587,6 +590,7 @@ function scTournerPage(pid) {
 function scTournerPageVieux(pid) {   // une page sans sa photo entière (une copie de l'appli, ou chargée avant) : l'image vue tourne
   const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return;
   createImageBitmap(im.blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); const r = scTourner(c, 270);
+    if (typeof rcTransformerPage === "function") rcTransformerPage(pid, (x, y) => [1 - y, x]);
     p.rot = (((p.rot || 0) + 270) % 360); if (p.recadre) { const [a0, b0, c0, d0] = p.recadre; p.recadre = [1 - d0, a0, 1 - b0, c0]; } p.w = r.width; p.h = r.height; p.lignes = scLignes(r); p.blanche = false; p.modifieLe = new Date().toISOString();
     Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; const [a, b, c2, d] = [m.x0, m.y0, m.x1, m.y1]; m.x0 = 1 - d; m.x1 = 1 - b; m.y0 = a; m.y1 = c2; m.l0 = m.l1 = null; m.modifieLe = p.modifieLe; }); });
     r.toBlob(b => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = scImg(b, r.width, r.height); if (SC.encres) delete SC.encres[pid]; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: b, w: r.width, h: r.height, le: p.modifieLe });
@@ -645,6 +649,7 @@ function scReglerPage(pid, B, cvO) {
     let cv = scTourner(cv0, B.rot || 0); if (B.angle) cv = scIncliner(cv, B.angle); if (B.recadre) cv = scCouper(cv, B.recadre);
     const le = new Date().toISOString();
     Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; scRemap(m, A, B, W0, H0); m.modifieLe = le; }); });
+    if (typeof rcTransformerPage === "function") rcTransformerPage(pid, (u, v) => { const [X, Y] = scVue2Orig(A, W0, H0, u, v); return scOrig2Vue(B, W0, H0, X, Y); });
     p.rot = B.rot || 0; p.angle = B.angle || 0; p.recadre = B.recadre ? B.recadre.map(v => +v.toFixed(4)) : null; p.w = cv.width; p.h = cv.height; p.lignes = scLignes(cv); p.modifieLe = le;
     return new Promise(res => cv.toBlob(b => { const im = SC.imgs[pid]; if (im) { try { URL.revokeObjectURL(im.url); } catch (e) {} } SC.imgs[pid] = scImg(b, cv.width, cv.height); if (SC.encres) delete SC.encres[pid];
       scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: b, w: cv.width, h: cv.height, le });
@@ -668,6 +673,7 @@ function scRtMarques() { const R = SC.rt, L = []; Object.keys(state.copies || {}
   L.push({ m, pts }); })); return L; }
 function scRtBoite() { const R = SC.rt; let a = 1, b = 1, c = 0, d = 0, n = 0;
   scRtMarques().forEach(o => o.pts.forEach(([x, y]) => { const [ax, ay] = scRot(x - R.Wb / 2, y - R.Hb / 2, R.angle * Math.PI / 180); const u = (ax + R.Wb / 2) / R.Wb, v = (ay + R.Hb / 2) / R.Hb; a = Math.min(a, u); b = Math.min(b, v); c = Math.max(c, u); d = Math.max(d, v); n++; }));
+  if (typeof rcBornesRetouche === "function") rcBornesRetouche(R).forEach(([u, v]) => { a = Math.min(a, u); b = Math.min(b, v); c = Math.max(c, u); d = Math.max(d, v); n++; });
   return n ? [Math.max(0, a), Math.max(0, b), Math.min(1, c), Math.min(1, d)] : null; }
 function scRtContenir() { const R = SC.rt, B = scRtBoite(), k = R.cadre; if (!B) return; k[0] = Math.max(0, Math.min(k[0], B[0] - 0.004)); k[1] = Math.max(0, Math.min(k[1], B[1] - 0.004)); k[2] = Math.min(1, Math.max(k[2], B[2] + 0.004)); k[3] = Math.min(1, Math.max(k[3], B[3] + 0.004)); }
 function scRtOuvrir() {

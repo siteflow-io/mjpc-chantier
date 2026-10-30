@@ -37,7 +37,9 @@ window.__fauxHubRemettre=()=>{try{localStorage.removeItem(CLE);}catch(e){}indexe
 </script>''' % (json.dumps(cle), json.dumps(arbre, ensure_ascii=False).replace('</', '<\\/'))
 PROD = os.environ.get('PROD') == '1'   # la mise en ligne : le même fichier, sans le faux hub ni le réglage de la simulation, au vrai site
 t = '<head>\n<meta charset="UTF-8">'; assert H.count(t) == 1
-if not PROD: H = H.replace(t, t + '\n' + shim, 1)
+if not PROD:
+    H = H.replace(t, t + '\n' + shim, 1)
+    if os.environ.get('VERSION'): H = H.replace('var APP_VERSION = \"1.1.0-RU\";', 'var APP_VERSION = \"' + os.environ['VERSION'] + '\";')
 else:
     v0 = 'var APP_VERSION = "1.1.0-RU";'; assert H.count(v0) == 1; H = H.replace(v0, 'var APP_VERSION = "' + os.environ.get('VERSION', '1.2.0-RU') + '";')
 # la nouveauté, là où elle vivra : le bouton au tableau des élèves, l'écran, son code
@@ -51,7 +53,7 @@ v = 'const corps = Object.assign({}, cp); RU_IDENTITE.forEach(f => delete corps[
 v = 'const sgCorps = JSON.stringify(corps);'; assert H.count(v) == 1; H = H.replace(v, 'const sgCorps = JSON.stringify(scFb(corps));')   # comparer sous la forme du site (scFb) : rouvrir la classe ne réécrit plus les copies (1.2.0 : 28 écritures)
 v = 'RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[k] = JSON.stringify(corps); }'; assert H.count(v) == 1; H = H.replace(v, 'RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[k] = JSON.stringify(scFb(corps)); }')
 v = 'RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[e] = JSON.stringify(corps); });'; assert H.count(v) == 1; H = H.replace(v, 'RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[e] = JSON.stringify(scFb(corps)); });')
-v = 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert"];'; assert H.count(v) == 1; H = H.replace(v, 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert", "scanCurseur"];')   # l'endroit exact de la correction sur les scans
+v = 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert"];'; assert H.count(v) == 1; H = H.replace(v, 'const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert", "scanCurseur", "scanRecopie"];')   # l'endroit exact de la correction sur les scans
 v = 'function ruReprendre() {   // la reprise exacte (l\'INIT de l\'app d\'origine, inchangé)'; assert H.count(v) == 1; H = H.replace(v, v + '\n  if (state.modeOuvert === "scan") { showDashboard(); setTimeout(() => scOuvrir(), 0); return; }   // la correction sur les scans rouverte là où tu en étais')
 # 1.2.3 (C14) : les noms des réponses (l'identité d'une question porte un point) s'écrivent au site sous une forme qu'il accepte, et se relisent tels quels
 v = 'const sg = JSON.stringify(v); if (RU.sig[k] === sg) return; RU.sig[k] = sg;'; assert H.count(v) == 1; H = H.replace(v, 'const sg = JSON.stringify(scCles(v, true)); if (RU.sig[k] === sg) return; RU.sig[k] = sg;')
@@ -63,7 +65,7 @@ MQ = '''<div class="mq-reglage" onclick="if(document.getElementById('mqR').style
 ecran = '''
 <!-- RU-SCAN : corriger sur la copie scannée -->
 <div id="scanEcran" class="sc-ecran hidden">
-  <div class="sc-haut"><b>Corriger sur les scans</b><nav id="scPasses" class="sc-passes"></nav><span class="sc-esp"></span><span id="scCharge"></span><span id="scChrono" class="sc-pill" title="Le temps passé sur cette copie dans cette passe (une minute sans geste ne compte pas)."></span>
+  <div class="sc-haut"><b>Corriger sur les scans</b><button class="sc-btn" id="btnRecopier" onclick="rcOuvrir()" title="Recopier à côté de la photo, ligne par ligne, avec une reprise enregistrée.">✍ Recopier</button><nav id="scPasses" class="sc-passes"></nav><span class="sc-esp"></span><span id="scCharge"></span><span id="scChrono" class="sc-pill" title="Le temps passé sur cette copie dans cette passe (une minute sans geste ne compte pas)."></span>
     <button class="sc-btn" id="scZoom" onclick="scZoomLargeur()" title="Le zoom de la copie : Ctrl + molette pour grossir ou réduire, sous la souris. Clique ici pour revenir à la largeur de l'écran. Maj tenue : la loupe. Alt tenue : la copie sans les marques.">↔ Largeur</button>
     <label class="sc-btn" title="Charger ton paquet scanné (un PDF, ou des photos) depuis ta clé : il reste dans ce navigateur, jamais au site. Une page déjà connue retrouve ses marques.">📄 Charger le paquet<input type="file" accept="application/pdf,.pdf,image/*" multiple onchange="scCharger(event)" hidden></label>
     <button class="sc-btn" onclick="scImprimerVierges()" title="Imprimer des copies vierges de l'appli : quatre repères aux coins, les lignes à leur place. Scannées, elles se remettent droites d'elles-mêmes et leurs lignes sont connues d'avance.">🖨 Copies vierges</button>
@@ -77,8 +79,8 @@ ecran = '''
 </div>
 <div id="scLoupe" class="sc-loupe" hidden></div>
 <div id="scModale" class="sc-modale" onclick="if(event.target===this)scModaleFermer()"><div class="sc-modale-c"></div></div>
-''' + ('' if PROD else MQ) + '''<style>''' + open('scan.css', encoding='utf8').read() + '''</style>
-<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + ('\n' + open('stickers.js', encoding='utf8').read() if os.environ.get('STICKERS') == '1' and not PROD else '') + '''</script>
+''' + ('' if PROD else MQ) + '''<style>''' + open('scan.css', encoding='utf8').read() + '\n' + open('recopie.css', encoding='utf8').read() + '''</style>
+<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + '\n' + open('recopie.js', encoding='utf8').read() + ('\n' + open('stickers.js', encoding='utf8').read() if os.environ.get('STICKERS') == '1' and not PROD else '') + '''</script>
 '''
 i = H.rindex('</body>'); H = H[:i] + ecran + H[i:]
 open(out, 'w', encoding='utf8').write(H)

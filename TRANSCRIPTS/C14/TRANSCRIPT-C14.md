@@ -422,7 +422,7 @@ MEMO
 30/10/2026 16:40
 MEMO
 
-## Tour 17 — 30/10/2026 16:48 → 16:53
+## Tour 17 — 30/10/2026 16:48 → 16:51
 
 **Paul :** entre 4 et 5 minutes à taper: [le texte recopié d'une copie réelle de la 3 FRANKLIN ARETHA, 398 jetons, gardé hors du sas (scratchpad privé `recopie/eleve.txt`) : une lettre datée du 15 septembre 1916, « Ma chère Ginette », signée « Ton mari Georges Severin »]
 
@@ -444,5 +444,5 @@ MEMO
 
 À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
 
-30/10/2026 16:53
+30/10/2026 16:51
 MEMO

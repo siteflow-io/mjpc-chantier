@@ -9114,3 +9114,24 @@ MEMO
 
 30/10/2026 07:44
 MEMO
+
+## Tour 404 — 30/10/2026 07:54 → 07:54
+
+**Paul :** Où est le bouton d'import du paquet?
+
+**Fait.** Captures `banc/captures/20-ou-1-corriger-sur-les-scans.png` et `20-ou-2-charger-le-paquet.png` (v6, classe inventée ; `banc/ou-bouton.mjs`), regardées.
+
+**Claude :** [captures 20-ou-1, 20-ou-2]
+
+À jouer : rien de neuf · en cours : rien · ouvert : 1408 ; 1405 ; 1397 ; 1381 ; 1374 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1406. Deux écrans. D'abord le tableau des élèves de la classe (Pilotage, Correction) : « 📄 Corriger sur les scans », à droite de « 📋 Classer le paquet » (capture 20-ou-1). Puis, dans cet écran, en haut à gauche : « 📄 Charger le paquet » (capture 20-ou-2). Il prend un PDF ou des photos, plusieurs à la fois.
+
+1407. Il est trop discret : tu ne l'as pas trouvé. Je propose que, tant que le paquet est vide, le milieu de l'écran soit lui-même le bouton.
+
+1408. Oui à 1407 ?
+
+À tester : rien de neuf.
+
+30/10/2026 07:54
+MEMO

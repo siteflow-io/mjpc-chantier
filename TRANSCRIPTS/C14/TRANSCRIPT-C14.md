@@ -488,3 +488,24 @@ MEMO
 
 30/10/2026 17:47
 MEMO
+
+## Tour 20 — 30/10/2026 18:29 → 18:32
+
+**Paul :** Ok mais du coup vu que les lignes sont reconnues ça veut dire que l'App est capable de faire passer la copie entière comme une bande ( comme correction dictée en mode rapide ) et elle numérote toutes les marques au préalable de la copie numérique et moi j'ai juste à cliquer sur les mots de la bande déroulante pour attacher les remarques tu vois l'idée ? Ou tu as qqchose de plus ergonomique et plus rapide? Et la bande passe exactement comme en correction dictée
+
+**Fait.** Lu dans `correction_dictee.html` : le mode rapide (`fastMode`, `fastIdx`) montre le mot courant et sa phrase sur une ligne centrée sur lui ; aide « Mode rapide — sur un mot » : G / L, C, M (ou /), i, A, Espace / Entrée (correct, mot suivant), Retour (mot précédent), ⇧R (l'autre mode, sur la même copie), Suppr. Compté sur la copie recopiée avec `tokenize` de la dictée : 398 jetons, 343 mots. Arrêts proposés : 32 fautes (28 de mots, 4 de ponctuation) et 13 réponses de grille. Registre ⑪ (production). Rien codé.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 39 ; 36 ; en attente au registre : les deux tâches de dimanche, le signet de l'ancienne correction, la tuile « Non commencé », les mots de l'élève.
+
+37. Je vois l'idée : la copie recopiée défile comme la bande de la correction de dictée ; les fautes trouvées par la comparaison y sont déjà marquées et numérotées ; toi, tu valides au clavier, et tu cliques un mot pour y attacher une remarque. C'est faisable sans rien inventer : on reprend la bande de la dictée, ses touches et ce qu'elles font. Au-dessus de la bande, la photo de la ligne en cours, pour vérifier d'un coup d'œil.
+
+38. Plus rapide, avec les mêmes touches : la bande ne s'arrête que là où il y a quelque chose à décider. Sur la copie recopiée : 343 mots à passer un par un, contre 45 arrêts (les 32 fautes proposées et les 13 réponses de ta grille). À chaque arrêt, Entrée, c'est bon ; N, non ; et un clic sur un autre mot de la ligne pour une faute que la comparaison n'a pas vue. Espace garde son sens de la dictée (c'est bon, on avance), seul le pas change. Et ⇧R, comme en dictée, passe à l'autre mode : le mot par mot, exactement comme en dictée, quand tu veux tout relire.
+
+39. La bande qui saute d'un arrêt à l'autre, avec ⇧R pour le mot par mot : ça te va ?
+
+À tester : rien de neuf ; les deux tests du Lexique (point 1) restent.
+
+30/10/2026 18:32
+MEMO

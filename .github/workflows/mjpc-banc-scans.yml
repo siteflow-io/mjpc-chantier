@@ -1,0 +1,96 @@
+name: MJPC - banc complet des scans
+
+on:
+  push:
+    branches:
+      - c15-banc-complet
+    paths:
+      - .github/workflows/mjpc-banc-scans.yml
+      - MANDATS/REDACTION-UNIVERSELLE/maquette/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scans:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Recuperer le code public du commit demande
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init .
+          git remote add origin "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+
+      - name: Verifier les sources du banc de reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib, subprocess
+          root = pathlib.Path("MANDATS/REDACTION-UNIVERSELLE/maquette")
+          expected = {
+              "banc/banc.mjs": "6edec4937325512999c4b5f72c31f142b6271ad0",
+              "T399-maquette-redaction-scans-v14.html": "c7fb23f32a9280c528f5b1f91229cd945d9f0102",
+              "paquet-essai.pdf": "9b4ec27e91a0e6586300945759fb1fa3835a6827",
+              "paquet-reperes.pdf": "8a33a028ac1147a07334851ea1cbd96861fde264",
+          }
+          for name, wanted in expected.items():
+              actual = subprocess.check_output(["git", "hash-object", str(root / name)], text=True).strip()
+              if actual != wanted:
+                  raise SystemExit("Source differente : " + name + " " + actual)
+              print("Source verifiee :", name, actual)
+          PY
+          node --version
+          npm --version
+
+      - name: Installer les dependances de test epinglees
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEPS_DIR="$RUNNER_TEMP/mjpc-banc-deps"
+          npm install --prefix "$DEPS_DIR" --ignore-scripts --no-audit --no-fund playwright@1.56.1 pdfjs-dist@3.11.174
+          node "$DEPS_DIR/node_modules/playwright/cli.js" install chromium --with-deps --only-shell
+
+      - name: Executer tout le banc existant
+        shell: bash
+        run: |
+          set -euo pipefail
+          BANC_DIR="$GITHUB_WORKSPACE/MANDATS/REDACTION-UNIVERSELLE/maquette"
+          DEPS_DIR="$RUNNER_TEMP/mjpc-banc-deps"
+          export NODE_PATH="$DEPS_DIR/node_modules"
+          export PDFJS="$DEPS_DIR/node_modules/pdfjs-dist/build/"
+          node "$BANC_DIR/banc/banc.mjs" T399-maquette-redaction-scans-v14.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
+
+      - name: Conserver le resultat et les captures dans le journal gratuit
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, io, os, pathlib, zipfile
+          tmp = pathlib.Path(os.environ["RUNNER_TEMP"])
+          log = tmp / "mjpc-banc.log"
+          captures = tmp / "mjpc-banc-captures"
+          text = log.read_text(errors="replace") if log.exists() else "Le banc n'a pas atteint son lancement."
+          pngs = sorted(captures.glob("*.png")) if captures.exists() else []
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
+              out.write("## Banc complet des scans\n\n")
+              out.write("Sources et dependances epinglees ; aucune modification du code de l'app.\n\n")
+              out.write("Captures PNG : " + str(len(pngs)) + ". Archive inscrite dans le journal, sans stockage d'artefact.\n\n")
+              out.write("~~~text\n" + text[-20000:] + "\n~~~\n")
+          if pngs:
+              archive = io.BytesIO()
+              with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as pack:
+                  for p in pngs:
+                      pack.writestr(p.name, p.read_bytes())
+              raw = archive.getvalue()
+              encoded = base64.b64encode(raw).decode("ascii")
+              print("MJPC_CAPTURES_ZIP_BEGIN", len(raw), hashlib.sha256(raw).hexdigest())
+              for pos in range(0, len(encoded), 12000):
+                  print("MJPC_CAPTURES_ZIP_DATA " + encoded[pos:pos+12000])
+              print("MJPC_CAPTURES_ZIP_END")
+          PY

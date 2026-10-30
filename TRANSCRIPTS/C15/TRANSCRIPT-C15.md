@@ -297,3 +297,74 @@ MEMO
 
 30/10/2026 21:48
 MEMO
+
+## Tour 7 — 30/10/2026 21:50 → 21:55
+
+**Paul :** Ok
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification du site et du banc · ouvert : 53 ; 45 ; 36.
+
+91. L’ordre 61 est validé. Je commence par vérifier le site actuel et faire tourner le banc complet pour préparer la recopie.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 21:48
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification du site et du banc · ouvert : 53 ; 45 ; 36.
+
+92. Le banc est retrouvé. Je vérifie ses dépendances et ses fichiers d’essai. J’utilise aussi la procédure Sites pour la vérification dans le navigateur.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 21:51
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : démarrage du banc · ouvert : 53 ; 45 ; 36.
+
+93. Le site s’ouvre sur l’entrée professeur. Le banc s’arrête avant son premier test : son navigateur Chromium manque. Je tente d’installer cette dépendance dans l’atelier pour pouvoir poursuivre la vérification.
+
+À tester : rien pour toi à ce stade.
+
+30/10/2026 21:53
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : consignation du résultat · ouvert : 53 ; 45 ; 36.
+
+94. L’installation échoue : l’archive téléchargée est invalide. Aucun des 49 tests du banc n’a pu être exécuté. Je consigne l’ordre validé et ce blocage ; le prompt impose de rester au cadrage tant que le banc ne tourne pas.
+
+À tester : rien de nouveau dans l’app.
+
+30/10/2026 21:54
+MEMO
+
+**Faits — accord et vérification préalable.** « Ok » répond à C15 90 : ordre 61 validé, recopie 56, bande des fautes 57, grille en stickers 58, défauts de 59 avant première mise en ligne. 53, 45 et 36 restent ouverts, 51 attend la bande. Prompt C15 et mandat relus, blobs 7a4e14ee6c8170881a80da4d2bb4d59ae1d089a2 et 880d9895347ad3f23af045fc7f15c58ce417124f inchangés au départ ; registre, protocole, CLAUDE.md, banc et Où-trouver-quoi récupérés. Le premier message 91 conserve à tort l'heure 21:48 du tour précédent ; la première mesure de ce tour donne 30/10/2026 21:50, heure de Paris. Le message reste inchangé.
+
+Procédure Sites consultée et annoncée : SKILL.md skill://plugin_connector_1p_689987207de08191979cf68eca2941c6/sites/SKILL.md, références preview/managed.md et troubleshooting.md. Aucun projet Sites créé, aucune publication. L'environnement possède Playwright 1.62.1 et pdfjs-dist 5.6.205, mais aucun Chromium aux chemins attendus ; le banc demande pdf.js 3.11.174 (copie locale par variable PDFJS), dépendance également à fournir pour une reprise complète.
+
+Dans un dossier temporaire du projet : le banc courant est copié à l'identique, blob 6edec4937325512999c4b5f72c31f142b6271ad0 ; les fichiers du clone local sont extraits et leurs blobs vérifiés : maquette scans v14 c7fb23f32a9280c528f5b1f91229cd945d9f0102, paquet-essai.pdf 9b4ec27e91a0e6586300945759fb1fa3835a6827, paquet-reperes.pdf 8a33a028ac1147a07334851ea1cbd96861fde264. Le générateur du paquet d'essai, relu au sas, indique des données entièrement inventées. Le premier lancement du banc échoue avant les tests car /tmp est absent. Après création d'un dossier temporaire dans l'espace de travail et TMPDIR pointant dessus, nouveau lancement : code de sortie 1, « Executable doesn't exist » pour chromium_headless_shell-1234, ligne 6 du banc. Aucun appel de vérification exécuté. Aucun résultat 49/0, aucune capture du banc. Aucun fichier du banc ni code d'app modifié.
+
+Une tentative d'installation officielle par la CLI Playwright est faite dans le dossier de travail (PLAYWRIGHT_BROWSERS_PATH et TMPDIR locaux), chromium --only-shell. L'installateur effectue cinq tentatives de téléchargement, toutes rejetées comme archive invalide (« End of central directory record signature not found »), puis termine avec code 1 (« Failed to install browsers »). Aucun navigateur installé ; aucun changement de droits réseau ni escalade de permissions. La cause de l'archive invalide n'est pas mesurée.
+
+Le site de production à l'adresse donnée par Où-trouver-quoi est ouvert dans le navigateur cloud. État visible : « Rédaction — espace professeur », champ « Clé ou code professeur », bouton « Ouvrir ». Les consignes browserAuth sont lues ; aucune clé saisie, aucune connexion ni manipulation de copie, aucune écriture Firebase. L'app derrière l'entrée professeur n'est pas jouée. Ce constat ne prouve ni le fichier servi bit à bit ni les gestes de correction. En application du prompt C15 (« Si tu ne peux pas faire tourner le banc ou ouvrir le site […] pas de code, cadrage seulement »), aucun codage fonctionnel de la recopie n'est commencé.
+
+**Faits — documents actualisés.** Mandat complet : ordre 61 validé, vérification préalable et ses limites ajoutées ; commit sas 7979e7456584aab8a2b6939a13785e73e8fff9c8, blob 0e46b99a5775e153b8f7f61c908b3338dac5e322. Registre ⑪ : ajout de la décision de Paul et du blocage après l'actualisation précédente, sans effacer l'historique où 61 était proposé ; commit documentation production d49296274880815755e04e4e25248083b591174a, blob f4c94558912f9b800bbbe6715084784b788e78e9. Les deux fichiers sont relus et comparés intégralement : identiques aux contenus prévus. redaction.html de production est relu : blob 753ebaaec117ffd1ae406a15edab2e0dc955884a inchangé. Aucune promotion. Le présent transcript est ajouté et sera relu avant la réponse finale.
+
+**GPT — réponse :**
+
+À jouer : rien · en cours : bloqué avant codage · ouvert : 53 ; 45 ; 36.
+
+95. L’ordre 61 est enregistré dans le [mandat]([lien dans la conversation]). **La recopie est bloquée avant codage** : Chromium manque et son installation échoue sur une archive invalide. **Aucun test du banc exécuté.** Le site n’a été vu qu’à l’entrée professeur. La suite nécessite de rejouer le banc dans un atelier équipé, conformément au mandat.
+
+À tester : rien de nouveau dans l’app.
+
+30/10/2026 21:55
+MEMO

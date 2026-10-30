@@ -124,3 +124,32 @@ MEMO
 
 30/10/2026 15:15
 MEMO
+
+## Tour 5 — 30/10/2026 15:17 → 15:19
+
+**Paul :** ok donc ça veut aussi dire que je dois voir le compte des stickers et ce qu'ils ajoutent ou enlèvent en termes de grille et de points. en direct. afin de ne pas en oublier. Par ailleurs, assure moi que tout ce que je fais déjà en correction là ne sera pas écrasé ou non lu avec les futures nouvelles versions. Je corrige tout en développant, donc il faut que les nouvelles versions de l'app acceptent toujours les anciennes copies, ou les mette à jour pour ce qui est faisable.
+
+**Fait.** « ok » = oui à 1591 et 1592. Mesuré dans le code (maquette = 1.2.2) : une copie porte au site `copies/<classe>/<élève>/scan` = `marques` (par identité : page, place, forme, sens, passe, point, question `q`, bonne forme `bonne`), `rep` (par point puis par identité de question `cle` : « o » / « n »), `lignes`, `chrono` ; les photos restent dans le navigateur (`indexedDB` « mjpc_scans », version 1) ; la grille est lue à `config/grille2` ; une marque liée à une question écrit aussi sa réponse (`scPoser`). Au site (GET, gardé au scratchpad privé, rien au sas) à 15:18 : `sujet_mvtd85g7_ycxjq3` / 3_franklin_aretha : 15 copies avec marques, 353 marques toutes « faute » (champs : id, eleve, page, x0, y0, x1, y1, forme, sens, passe, point, num, rang, creeLe, modifieLe ; `bonne` sur 68), `lignes` sur 16 copies, `chrono` sur 16 (« langue » seulement), 0 réponse oui / non, 0 marque liée à une question ; `sujet_mvqx0bld_6pj89w` / 3_dylan_bob : aucune. Registre (production) : ⑧ complété (1591-1592, l'exigence du compte en direct) et ⑨ ouverte (les anciennes copies toujours lues, la mesure, la proposition 1598 à 1600, le lien avec ①), commits `18e045c`, `ddadac6`. Rien codé.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 1601 ; 1577 ; 1482 ; 1478 ; 1468 ; 1374 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1595. 1591 et 1592 sont acquis.
+
+1596. Le compte en direct, acquis et écrit au registre : dans le panneau, pour chaque point, ses stickers, posés (un clic les montre sur la copie) ou pas encore, avec ce que chacun ajouterait (« + 2 points ») ; la case et les points changent à chaque geste ; le total de la copie en haut. C'est aussi ta liste de ce qui reste à regarder : rien ne s'oublie. Il sera dans la maquette.
+
+1597. Ce que tu as déjà corrigé, mesuré au site à 15:18, en lecture : 15 copies de la 3 FRANKLIN ARETHA, toutes dans la passe de la langue ; 353 fautes, dont 68 avec leur bonne forme ; les lignes de 16 copies ; aucune réponse oui / non, aucune marque liée à une question. Tout ce que tu as fait est donc dans la langue, et les stickers ne changent pas la langue : rien de ton travail ne dépend de la grille qui va changer.
+
+1598. Ma règle pour toutes les versions à venir : une version ajoute, elle ne renomme ni ne retire rien de ce que tes copies portent (les fautes et leur place, les bonnes formes, les lignes, les temps, les pages ; tes photos restent rangées au même endroit de ton navigateur). Et la grille au site ne se récrit jamais : celle des stickers sera une nouvelle grille, à côté ; chaque copie garde la grille avec laquelle tu l'as corrigée, et sa note ne bouge pas toute seule.
+
+1599. La mise à jour, là où c'est faisable : quand c'est le même fait, la nouvelle version convertit, sur ton geste, en t'affichant la note avant et après. Par exemple, un « oui » à « Sait-on où est le personnage ? » devient le sticker « Le lieu », posé sur la lettre entière, puisqu'un oui n'a pas d'endroit. Ce qui n'a pas d'équivalent reste lisible, dans son ancienne grille.
+
+1600. La preuve, à chaque version : avant ton « promeus », la version ouvre tes vraies copies en lecture seule, comme l'essai sur le vrai site ; même nombre de copies, de fautes, de lignes, mêmes notes. Une seule différence, pas de promotion.
+
+1601. Oui à 1598, 1599 et 1600 ? Et en attendant les stickers : finis la passe de la langue sur tout ton paquet, elle ne changera pas. Les passes 2 à 4, si tu les fais avant, restent lisibles, mais ne se convertiront qu'aux mêmes faits.
+
+À tester : rien de neuf (cadrage, aucun code).
+
+30/10/2026 15:19
+MEMO

@@ -8888,3 +8888,71 @@ Sources : [forum développeurs Apple, JavaScript coupé dans les pièces jointes
 
 30/10/2026 00:31
 MEMO
+
+## Tour 398 — 30/10/2026 00:39 → (réponse interrompue)
+
+**Paul :** 1343. Non je ne classe jamais le paquet. Je peux éventuellement poser les initiales élève sur chaque copie numérisée et ça fait le paquet dans l'ordre où il est physiquement. Pour le scan et les lignes: parfois celles ci disparaissent avec un contraste un peu fort etc. En revanche avec copies à repères de coin et lignes déjà préétablies ( en gros mes copies vierges  imprimées depuis l'App ) là je pense que ça ne pose pas de souci.1344. les marques survivent à n'importe quel rechargement, d'où l'importance de leur id interne, de leur placement non par rang mais par id aussi.  Pour ce qui est du Pdf, tout se passe sur le navigateur, même si je change d'ordinateur les calques et les marques reviennent aussitôt que je remets mon gros pdf scan dans l'App. 
+Et chaque navigateur se souvient de ça ( que je n'ai pas besoin de réinjecter le paquet de scans en permanence). Ce paquet est sur clef usb. La photo de la copie élève n'est jamais au hub..
+
+**Fait.** Fichier d'essai École Directe (1347) écrit : `MANDATS/REDACTION-UNIVERSELLE/ecoledirecte/essai-ecoledirecte.html` ; mesuré dans Chromium : sans JavaScript, il dit « ✗ » ; avec, « ✓ » et le hub répond en lecture depuis un fichier local. Ma réponse n'est pas partie : Paul a interrompu.
+
+## Tour 399 — 30/10/2026 00:41 → 01:14
+
+**Paul :** Je me couche, tu es capable de me faire une maquette avec tout ce qu'on a cadré. Je répète : une maquette avec tout ce quon a cadré. J'en prends livraison demain à 8h. Tu ne t'arrêtes pas tant que tout n'est pas tel que je l'ai cadré. 
+10 pourcent restants : tu t'arrêtes à 97 pourcents.
+
+**Fait.** Protocole maquette appliqué : le fichier de production `redaction.html` servi sur un faux hub (GET de `/redactions/sujet_mvtd85g7_ycxjq3/config` et `validations`, `/classes/3_franklin_aretha` anonymisée, `/taxonomie`), la nouveauté écrite dedans. Sas `MANDATS/REDACTION-UNIVERSELLE/maquette/` : `T399-maquette-redaction-scans-v1.html` (md5 adf1e959507d, 614 886 octets), `gen-maquette.py`, `scan.js`, `eleve.js`, `scan.css`, `grille2.py` → `grille2.json` (la grille de la lettre de `gen3.py`, conditions des cases, sauts, formes des marques), `paquet-essai.py` → `paquet-essai.pdf` (md5 bda162255842), `paquet-reperes.py` → `paquet-reperes.pdf` (md5 4a684db62d0e), `banc/banc.mjs` (21 vérifications, 0 défaut), captures `banc/captures/01…12` regardées (02, 04, 06, 08, 09, 11, 12). Prod : `docs/MJPC6-OU-TROUVER-QUOI.md` et `docs/MJPC6-journal.md` (commit 2075276). Je ne vois pas ton compteur d'usage : j'ai travaillé au plus court.
+
+**Claude :** [fichiers : T399-maquette-redaction-scans-v1.html, paquet-essai.pdf, paquet-reperes.pdf, essai-ecoledirecte.html]
+
+À jouer : la maquette, geste par geste (1350 à 1359) · en cours : rien · ouvert : 1366 ; 1277 ; 1254 ; 1212 ; 1126 ; 1026 ; 1008 ; 1001 ; 979 à 988 ; 905 à 917.
+
+1349. La maquette est prête. C'est redaction.html de production, sur un faux hub (la vraie base, élèves aux noms inventés), avec la correction sur les scans écrite dedans, là où elle vivra. Banc par le geste : 21 vérifications, 0 défaut. Fichier : T399-maquette-redaction-scans-v1.html, joint ici et au sas (MANDATS/REDACTION-UNIVERSELLE/maquette/).
+
+1350. Ouvrir : double-clic sur le fichier, « Mes rédactions », la lettre de la Grande Guerre, puis au tableau des élèves « 📄 Corriger sur les scans ».
+
+1351. Le paquet : « Charger le paquet », puis paquet-essai.pdf (inventé : 8 pages, une page blanche glissée dedans), ou ton propre PDF, ou tes photos. Il reste dans le navigateur : recharge la page, il est encore là.
+
+1352. Les initiales, page par page dans l'ordre du paquet : CE Entrée, LA Entrée… La page blanche est sautée seule. Sur la deuxième page d'une copie, Entrée seule. Deux élèves aux mêmes initiales : tape son chiffre.
+
+1353. Passe 1, la langue. Pointeur en croix rouge : appuie, glisse sous le mot, lâche, c'est souligné. Tape la bonne forme, Entrée ; sur une autre copie, son numéro suffit. ★ : la phrase qui t'a touché, surlignée en doré. Entrée sur la copie : les fautes sont finies, viennent les trois questions du lexique (Entrée ou N), puis la copie suivante arrive à la place.
+
+1354. Passes 2 à 4, un critère à la fois. Entrée oui, N non. La forme du pinceau vient de la question : encadré pour un mot, surligné pour une citation, trait dans la marge pour un paragraphe. Une marque qui répond « non » répond pour toi. La case se calcule ; en dessous, les copies déjà vues sur ce point. Les flèches → ← font défiler les copies.
+
+1355. Retoucher : un clic sur une marque fait paraître ses poignées, tu les tires ; Suppr l'efface ; Ctrl+Z annule.
+
+1356. Recharge la page : tout revient, marques comprises, par leur identité.
+
+1357. « 📨 Fichiers École Directe » : un fichier par élève, sa photo dedans. « Voir comme l'élève » : la traversée, puis ses fautes à corriger, puis les points, ses papillons, et la note à la fin quand toute sa copie est corrigée.
+
+1358. Passe 5, les retours : ce que l'élève a écrit, à côté de son passage. Entrée, c'est bon ; N, à refaire.
+
+1359. « 🖨 Copies vierges » : la copie de l'appli à imprimer, repères aux coins et 30 lignes. paquet-reperes.pdf : deux copies écrites dessus et scannées de travers. L'appli les remet droites et sait d'avance où sont les lignes : 24 et 17 lignes écrites trouvées, sur 24 et 17.
+
+1360. Ce qu'elle n'a pas, un : la question à l'élève avant la case. La grille de la lettre ne l'a pas encore, donc le point s'ouvre directement sur la case. C'est à faire écrire par l'IA d'injection.
+
+1361. Deux : la grille ne dit pas encore quelles tâches tu dois relire (1295). Toutes arrivent donc dans tes retours. La phrase toute prête de « à refaire » (1294) n'est pas donnée non plus : l'élève voit « à refaire » et sa tâche.
+
+1362. Trois : les cases comptées par les marques (1304). La grille de la lettre a été écrite avant cette règle : ses cases comptent les « non », pas les marques.
+
+1363. Ce qui est simulé : le site, par un faux hub gardé dans ton navigateur (« ⚙ Maquette » pour tout remettre à zéro). Un fichier élève téléchargé depuis la maquette n'envoie rien au site. Pour l'iPhone, je ne sais toujours pas : essai-ecoledirecte.html, joint, le dira une fois déposé sur École Directe et ouvert sur un téléphone.
+
+1364. Les mots que j'ai dû mettre côté élève, à toi de les donner ou de les changer : « Vérifier », « Envoyer », « Suivant », « Ta note », « à refaire ». Et deux retouches de tes phrases de la traversée : « soulignées en rouge » au lieu d'« entourées », puisque les fautes sont soulignées (1337), et les noms des critères de cette grille au lieu de « le sujet et le récit ».
+
+1365. Défauts trouvés au banc et corrigés. Un, le plus grave : une copie sans élève écrivait par-dessus toute la classe ; au vrai site, elle aurait effacé les copies. C'est verrouillé et vérifié au banc. Deux : Entrée après une marque « non » la changeait en « oui ». Trois : un point pas encore corrigé partait chez l'élève à pleine note ; seuls les points que tu as passés partent. Quatre : chez l'élève, les fautes se dessinaient deux fois.
+
+1366. Oui à 1349 à 1365 ?
+
+À tester :
+1. Ouvrir la maquette, aller jusqu'à « Corriger sur les scans » (1350).
+2. Charger paquet-essai.pdf, donner les initiales (1352).
+3. Passe 1 sur deux copies, avec un numéro de forme sur la deuxième (1353).
+4. Passe 2 sur une copie : Entrée, N, une marque, la case (1354).
+5. Recharger la page : les marques reviennent (1356).
+6. « Voir comme l'élève » : corriger une faute, écrire un papillon (1357).
+7. Passe 5 : Entrée ou N sur ce retour (1358).
+8. Charger paquet-reperes.pdf : les copies se remettent droites (1359).
+9. Si tu veux : ton propre PDF de la lettre (1277).
+
+30/10/2026 01:14
+MEMO

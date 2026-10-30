@@ -76,7 +76,10 @@ await pg.click('.sc-passe >> nth=0'); await att(200);
 await pg.setInputFiles('#scanEcran input[type=file]', path.join(DIR, 'paquet-reperes.pdf')); await pg.waitForFunction(() => Object.keys(SC.pages).length >= 10, null, { timeout: 60000 }); await att(600);
 const rp = await pg.evaluate(() => scPagesOrdre().slice(-2).map(p => (p.lignes.reperes ? 'repères' : 'sans') + ':' + p.lignes.n + ':' + p.w + 'x' + p.h));
 verif('les copies à repères se remettent droites, lignes connues : ' + rp.join(' · '), rp.length === 2 && rp.every(x => x.startsWith('repères')) && /:24:/.test(rp[0]) && /:17:/.test(rp[1]));
-await cap('11-copie-a-reperes');
+verif('les initiales reprennent à la première page sans élève', await pg.evaluate(() => SC.attrib && !scPagesOrdre()[SC.ia].eleve)); await cap('11-copie-a-reperes');
+await pg.keyboard.type('tb'); await pg.keyboard.press('Enter'); await att(200); await pg.keyboard.type('rc'); await pg.keyboard.press('Enter'); await att(400);
+for (const [w, h] of [[1366, 768], [1920, 1080]]) { await pg.setViewportSize({ width: w, height: h }); await att(400); await cap('12-ecran-' + w + 'x' + h); }
+await pg.setViewportSize({ width: 1536, height: 864 });
 // sans interactivité (un téléphone qui n'exécute pas la pièce jointe) : la copie et les marques se voient
 const p2 = await (await b.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 800 } })).newPage(); await p2.goto('file://' + f); await att(500);
 verif('sans interactivité, la copie et ses marques se voient (' + await p2.locator('.mk').count() + ' marques)', await p2.locator('#statique img').count() >= 1 && await p2.locator('.mk').count() >= 2);

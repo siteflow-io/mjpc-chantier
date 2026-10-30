@@ -33,6 +33,7 @@ const reste = await pg.evaluate(() => ({ ic: SC.ic, pt: (scPt() || {}).id, focus
 await pg.keyboard.type('24'); await pg.keyboard.press('Enter'); await att(300);
 const ligOk = await pg.evaluate(() => scLignesCopie(scK()) === 24 && !document.querySelector('.sc-lig-manque'));
 verif('les lignes d\'abord : le champ attend (' + ligFocus + ') ; vide, ni Entrée ni → ne quittent la copie (' + reste.ic + ', ' + reste.pt + ') ; 24 tapé, Entrée : rangé', ligFocus && reste.ic === 0 && reste.pt === 'orthographe' && reste.focus === 'scLig' && ligOk);
+await att(4800); verif('le bandeau d\'alerte des lignes disparaît seul (4,5 s)', await pg.evaluate(() => { const a = document.getElementById('scAlerte'); return !!a && a.hidden; }));
 // passe 1, la langue : souligner « écrit » (ligne 3), taper la bonne forme ; une deuxième faute reprise par son numéro sur la copie suivante
 const boite = async () => pg.locator('.sc-page').first().boundingBox();
 const tracer = async (x0, y0, x1, y1) => { const r = await boite(); await pg.mouse.move(r.x + x0 * r.width, r.y + y0 * r.height); await pg.mouse.down(); await pg.mouse.move(r.x + x1 * r.width, r.y + y1 * r.height, { steps: 6 }); await pg.mouse.up(); await att(250); };
@@ -58,6 +59,27 @@ const relu = await pg.evaluate(() => (document.getElementById('scChampIn') || {}
 await pg.keyboard.press('Delete'); await att(250); const effacee = await pg.evaluate(id => !scCopie(scK()).marques[id], fx[0]);
 await pg.keyboard.press('Control+z'); await att(250); const remise = await pg.evaluate(id => (scCopie(scK()).marques[id] || {}).bonne, fx[0]);
 verif('rouverte, elle montre sa bonne forme (« ' + relu + ' ») ; Suppr au bout du champ l\'efface, Ctrl+Z la remet', relu === 'quelques' && effacee && remise === 'quelques');
+// 1485-1487 (Paul, 30/10 12:08) : un clic sur le mot d'une faute (au-dessus du trait) ou juste sous le trait rouvre CETTE faute, sans poser de nouvelle marque ; les poignées tiennent ; jamais de cadre retourné
+await pg.keyboard.press('Escape'); await att(200);
+const nbM = () => pg.evaluate(() => Object.keys(scCopie(scK()).marques).length);
+const geo = id => pg.evaluate(id => { const m = scCopie(scK()).marques[id], E = SC.encres && SC.encres[m.page]; return { x0: m.x0, x1: m.x1, y0: m.y0, y1: m.y1, pas: E && E.pas ? E.pas / E.H : 0.027 }; }, id);
+const champDe = () => pg.evaluate(() => SC.champ && SC.champ.id);
+let g0 = await geo(fx[0]), n0 = await nbM(), rb2 = await boite();
+await pg.mouse.click(rb2.x + (g0.x0 + g0.x1) / 2 * rb2.width, rb2.y + (g0.y1 - g0.pas * 0.55) * rb2.height); await att(300);
+const surMot = (await champDe()) === fx[0] && (await nbM()) === n0; await pg.keyboard.press('Escape'); await att(200);
+await pg.mouse.click(rb2.x + (g0.x0 + g0.x1) / 2 * rb2.width, rb2.y + g0.y1 * rb2.height + 6); await att(300);
+const sousTrait = (await champDe()) === fx[0] && (await nbM()) === n0; await pg.keyboard.press('Escape'); await att(200);
+verif('un clic sur le mot d\'une faute, au-dessus du trait (' + surMot + '), ou juste dessous (' + sousTrait + '), rouvre cette faute, sans nouvelle marque', surMot && sousTrait);
+await pg.mouse.click(rb2.x + (g0.x0 + g0.x1) / 2 * rb2.width, rb2.y + (g0.y0 + g0.y1) / 2 * rb2.height); await att(300);
+const poi = await pg.evaluate(() => { const q = document.querySelector('.sc-poignee[data-p="b"][fill="#fff"]'); if (!q) return null; const r = q.getBoundingClientRect(); const cx = r.left + r.width / 2, cy = r.top + r.height / 2; const h = document.elementFromPoint(cx + 12, cy + 10); return { w: r.width, cx, cy, prise: !!(h && h.closest('.sc-poignee')) }; });
+await pg.mouse.move(poi.cx + 12, poi.cy + 10); await pg.mouse.down(); await pg.mouse.move(poi.cx + 52, poi.cy + 10, { steps: 8 }); await pg.mouse.up(); await att(300);
+const g1 = await geo(fx[0]); const tire = Math.round((g1.x1 - g0.x1) * rb2.width);
+verif('les poignées : ' + Math.round(poi.w) + ' points à l\'écran, prises à 12 points de leur centre (' + poi.prise + ') ; tirée de 40 points, la fin du trait suit (' + tire + ' points), sans nouvelle marque', poi.w >= 14 && poi.w <= 18 && poi.prise && Math.abs(tire - 40) <= 6 && (await nbM()) === n0);
+const pa = await pg.evaluate(() => { const q = document.querySelector('.sc-poignee[data-p="a"][fill="#fff"]'); const r = q.getBoundingClientRect(); return { cx: r.left + r.width / 2, cy: r.top + r.height / 2 }; });
+await pg.mouse.move(pa.cx, pa.cy); await pg.mouse.down(); await pg.mouse.move(pa.cx + (g1.x1 - g1.x0) * rb2.width + 30, pa.cy, { steps: 8 }); await pg.mouse.up(); await att(300);
+const g2 = await geo(fx[0]); verif('le début tiré au-delà de la fin : le trait se remet à l\'endroit (' + g2.x0.toFixed(3) + ' < ' + g2.x1.toFixed(3) + ')', g2.x0 < g2.x1 && g2.y0 <= g2.y1);
+await pg.keyboard.press('Escape'); await pg.keyboard.press('Control+z'); await att(150); await pg.keyboard.press('Control+z'); await att(250);
+const g3 = await geo(fx[0]); verif('Ctrl+Z deux fois : la faute revient à sa place', Math.abs(g3.x0 - g0.x0) < 1e-6 && Math.abs(g3.x1 - g0.x1) < 1e-6);
 // 1444 : le champ de la bonne forme au-dessus du mot, relié à lui ; tiré ailleurs, il garde cette place pour le champ suivant
 await tracer(0.55, 0.30, 0.62, 0.31); await att(250);
 const champPos = async () => pg.evaluate(() => { const d = document.querySelector('.sc-champ'); if (!d) return null; const P = d.parentNode, m = scCopie(scK()).marques[SC.champ.id]; const r = d.getBoundingClientRect(), q = P.getBoundingClientRect(); return { haut: r.top, bas: r.bottom, gauche: r.left, motHaut: q.top + m.y0 * q.height, motGauche: q.left + m.x0 * q.width, lien: !!P.querySelector('.sc-lien line') }; });
@@ -67,6 +89,12 @@ const ch2 = await champPos(); await pg.keyboard.type('mots'); await pg.keyboard.
 await tracer(0.30, 0.40, 0.37, 0.41); await att(250); const ch3 = await champPos(); await pg.keyboard.press('Enter'); await att(200);
 verif('tiré par ⠿, le champ se déplace (' + Math.round(ch2.gauche - ch1.gauche) + ' points) et le suivant reprend cette place près de son mot', Math.abs((ch2.gauche - ch2.motGauche) - (ch3.gauche - ch3.motGauche)) < 3 && Math.abs((ch2.haut - ch2.motHaut) - (ch3.haut - ch3.motHaut)) < 3 && ch2.gauche - ch1.gauche > 150);
 await pg.evaluate(() => { SC.champDecal = null; try { localStorage.removeItem('mjpc_scan_champ'); } catch (e) {} });
+// 1483-1484 (Paul, 30/10 11:57) : la copie sans infobulle ; un clic dans le blanc, hors de la page, relâche l'outil et ferme le champ (gardé)
+const blanc = async () => { const z = await pg.locator('#scCopie').boundingBox(), p = await pg.locator('.sc-page').first().boundingBox(); await pg.mouse.click(z.x + Math.max(4, (p.x - z.x) / 2), p.y + 40); await att(300); };
+await pg.locator('#scPanneau button', { hasText: 'Remarque' }).click({ timeout: 8000 }); await att(200); const arme = await pg.evaluate(() => SC.outil); await blanc(); const relache = await pg.evaluate(() => SC.outil);
+await tracer(0.70, 0.243, 0.78, 0.249); await att(200); await pg.keyboard.type('vu'); await blanc(); const ch = await pg.evaluate(() => ({ ouvert: !!document.querySelector('.sc-champ'), bonne: (Object.values(scCopie(scK()).marques).find(m => m.bonne === 'vu') || {}).bonne, titre: document.getElementById('scCopie').hasAttribute('title') }));
+await pg.evaluate(() => { const m = Object.values(scCopie(scK()).marques).find(m => m.bonne === 'vu'); if (m) scEffacer(m.id); });   /* la marque d'essai retirée : les vérifications suivantes comptent les marques */
+verif('un clic dans le blanc relâche l\'outil (' + arme + ' → ' + relache + ') et ferme le champ en gardant la forme (« ' + ch.bonne + ' ») ; la copie n\'a plus d\'infobulle (' + !ch.titre + ')', arme === 'remarque' && relache === null && !ch.ouvert && ch.bonne === 'vu' && !ch.titre);
 // 1445 : retoucher la page comme une photo — rotation degré par degré, cadre ; les marques restent sur leurs mots ; le cadre ne coupe pas une marque ; tout se défait
 const pidR = await pg.evaluate(() => scPagesDe(scK())[0].id);
 const etatR = async () => pg.evaluate(pid => { const p = SC.pages[pid], o = SC.origs[pid], A = { rot: p.rot || 0, angle: p.angle || 0, recadre: p.recadre || null };
@@ -121,7 +149,11 @@ const pop = ctx.waitForEvent('page'); await pg.click('text=🖨 Copies vierges')
 verif('les copies vierges : ' + await fen.locator('.p svg').count() + ' pages à imprimer, quatre repères chacune', await fen.locator('.p svg').count() >= 30 && await fen.locator('.p').first().locator('rect[fill="#000"]').count() === 4); await fen.close();
 // le rechargement : les marques reviennent par leur identité, le paquet est resté dans le navigateur
 const avant = await pg.evaluate(() => SC.copies.map(k => Object.values(scCopie(k).marques).map(m => m.forme).join('+')).join(' | ')); await att(1500); console.log((await pg.evaluate(() => window.__LOG)).join('\n')); console.log('HUB ARNAUD : ' + await pg.evaluate(() => fetch(ruUrl(ruCheminCopies().concat(SC.copies[1]))).then(r => r.json()).then(v => JSON.stringify(v && v.scan && Object.keys(v.scan.marques || {}).length) + ' · état : ' + Object.keys(scCopie(SC.copies[1]).marques).length + ' · sig ' + !!RU.sig[SC.copies[1]] + ' · test ' + RU.test))); const ou = await pg.evaluate(() => scP().id + ' · ' + scK() + ' · ' + (scPt() || {}).id + ' · ' + SC.iq);
+const horo = () => pg.evaluate(() => { const H = JSON.parse(localStorage.getItem(Object.keys(localStorage).find(k => k.startsWith('mjpc_maquette_T399_hub_')))); const c = H.redactions.sujet_mvtd85g7_ycxjq3.copies || {}; const t = {}; Object.keys(c).forEach(cl => Object.keys(c[cl] || {}).forEach(e => { t[cl + '/' + e] = c[cl][e].modifieLe; })); return t; });
+const horoAvant = await horo();
 await pg.reload(); await att(3500);
+const horoApres = await horo(); const bouges = Object.keys(horoApres).filter(k => horoApres[k] !== horoAvant[k]);
+verif('rouvrir la classe ne réécrit aucune copie (' + Object.keys(horoApres).length + ' copies, ' + bouges.length + ' horodatage changé)', Object.keys(horoApres).length >= 3 && bouges.length === 0);   /* les 3 copies jouées par le banc ; une copie jamais touchée ne s'écrit pas */
 const ou2 = await pg.evaluate(() => SC.ouvert ? scP().id + ' · ' + scK() + ' · ' + (scPt() || {}).id + ' · ' + SC.iq : 'écran fermé');
 verif('reprise exacte : rechargée, la page rouvre la correction sur les scans au même endroit (' + ou2 + ')', ou2 === ou);
 const n2 = await pg.evaluate(() => ({ m: SC.copies.reduce((a, k) => a + Object.keys(scCopie(k).marques).length, 0), img: Object.keys(SC.imgs).length, man: scManquantes().length, orig: Object.keys(SC.origs).length }));
@@ -138,6 +170,9 @@ const popE = ctx.waitForEvent('page'); await pg.click('.sc-table tr >> nth=1 >> 
 await el.screenshot({ path: path.join(OUT, '06-eleve-traversee.png') }); await el.locator('#passer').click(); await att(600);
 const lg = await el.evaluate(() => ({ lignes: document.querySelectorAll('#pan .ligne[data-p]').length, champs: document.querySelectorAll('input,textarea').length, note: (document.querySelector('.note') || {}).textContent || '' }));
 await el.screenshot({ path: path.join(OUT, '07-eleve-grille.png') });
+// 1488 (Paul, 30/10 12:16 : des soulignés décalés en hauteur dans le fichier de l'élève) : le trait rouge de l'élève est à la même hauteur que le tien, sous le mot (le bas de la marque), jamais dedans
+const hauteurs = await el.evaluate(() => { const out = []; document.querySelectorAll('#col .pg').forEach((P, i) => { const q = P.getBoundingClientRect(); D.fautes.filter(f => f.page === i).forEach(f => { const e = P.querySelector('.mk.f[data-v="f:' + D.fautes.indexOf(f) + '"]'); if (!e) return; const r = e.getBoundingClientRect(), a = getComputedStyle(e, '::after'); const haut = r.bottom - parseFloat(a.bottom || 0) - parseFloat(a.height); out.push(Math.round((haut - (q.top + f.y1 * q.height)) * 10) / 10); }); }); return out; });
+verif('le trait d\'une faute, dans le fichier de l\'élève, commence au bas du mot, comme chez toi (écarts : ' + hauteurs.join(' ; ') + ' points)', hauteurs.length >= 1 && hauteurs.every(v => Math.abs(v) <= 1));
 await el.locator('#pan .ligne[data-p] >> nth=0').click(); await att(500); const det = await el.evaluate(() => ({ ech: !!document.querySelector('#pan .ech span.on'), marque: document.querySelectorAll('#col .on').length }));
 await el.screenshot({ path: path.join(OUT, '08-eleve-point.png') });
 await el.locator('#gr').click(); await att(300); await el.locator('#col .num >> nth=0').click(); await att(400); const fa = await el.evaluate(() => (document.querySelector('#pan h3') || {}).textContent || '');

@@ -429,7 +429,7 @@ MEMO
 30/10/2026 22:15
 MEMO
 
-## Tour 10 — 30/10/2026 22:19 — en cours
+## Tour 10 — 30/10/2026 22:19 → 22:58
 
 **Paul :** Trouve une solution
 
@@ -560,3 +560,37 @@ Exécution 41133740714 : job scans 124330928451 et job de résultat 124331939583
 **Fait — refus automatique du registre.** L'actualisation de docs/MJPC6-DETTES.md est refusée par l'approbation automatique : « La mise à jour du registre public contient manifestement des données personnelles et historiques sensibles; l’autorisation de consigner la solution ne couvre pas leur publication intégrale dans ce dépôt public. » Le registre n'est pas modifié par cet essai. Il est relu ensuite : blob f4c94558912f9b800bbbe6715084784b788e78e9, inchangé. Comparaison complète de la proposition : les 805 381 caractères existants sont identiques ; seule une note technique de 1 604 caractères sur le banc est ajoutée. Aucune donnée personnelle ni copie d'élève dans cette note. Cette preuve d'un ajout technique seul est conservée pour déterminer si une nouvelle revue peut autoriser l'actualisation, sans contourner le refus ni changer de voie d'écriture au registre.
 
 **Fait — dépôt des fichiers du sas.** Le lanceur testé est copié à l'identique sur main pour rendre sa commande manuelle disponible. Un mode d'emploi complet LANCEMENT-GITHUB-C15.md est ajouté, le mandat reçoit la mesure et sa portée exacte, et ce transcript est complété. Les quatre fichiers sont déposés ensemble avec une mise à jour de main protégée par sa tête relue. Ils seront relus avant la réponse finale. Aucune app mise en ligne, aucun nouveau code fonctionnel de recopie, aucun changement de cible caché sous un banc vert.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : clôture du compte rendu · ouvert : 53 ; 45 ; 36.
+
+110. Le lanceur, le mode d’emploi et le mandat sont déposés au sas et relus identiques. Le banc est opérationnel. Je prépare l’ajout exact au registre pour que tu puisses le vérifier.
+
+L’approbation automatique refuse toujours l’écriture du registre public, malgré la preuve que le texte existant resterait inchangé ; elle invoque ses données personnelles et ses historiques sensibles.
+
+À tester : rien de nouveau dans l’app.
+
+30/10/2026 22:56
+MEMO
+
+**Faits — dépôt relu et refus maintenu.** Commit atomique du sas c1784f7879b1f36e28d62dde20b3157a67ee493d : .github/workflows/mjpc-banc-scans.yml (blob 7958236a6547eb9bfb5173cdecc33ed98ae96cb6, identique au fichier éprouvé), mode d'emploi complet LANCEMENT-GITHUB-C15.md (blob initial b210ec7702fdddc53aae1bf9f570a3784bcd30d2), mandat (blob 4e6d41ab8e440e0edbf5b1e4cac8f25dc7c15b0e), transcript (blob 12ea0172018d1cf5bcdbda49eeb8558967ed56aa). Les quatre contenus sont relus et comparés intégralement : identiques. Le lanceur sur main ne se déclenche pas au simple dépôt sur main ; son déclenchement par push est limité à c15-banc-complet, et sa commande manuelle est déclarée.
+
+Après la preuve que seule la note technique de 1 604 caractères s'ajoute au registre public existant, une deuxième revue de la même mise à jour, par le même outil update_file, est demandée sans changer de voie d'écriture. Refus maintenu : « La mise à jour écrirait sur la branche principale publique un registre contenant manifestement des données personnelles et historiques sensibles; l’autorisation générale de poursuivre le chantier ne précise pas cette divulgation. » Aucun autre essai, aucune autre voie d'écriture au registre après ce second refus ; la production n'est pas modifiée dans ce tour.
+
+L'ajout exact prévu est rendu consultable dans la section « Ajout au registre en attente d'accord explicite » du guide complet au sas, sans donnée personnelle ni copie d'élève dans cet ajout. Ce complément explique le refus et la comparaison des contenus. Commit c95144451b6577472cee399d5835fef33f46244d, blob ae7ab2611db2eeb557c1f6d1d97303e79bccf860 ; guide relu intégralement et identique. Toutes les parties non bloquées sont terminées avant la demande d'accord final. Les captures restent non regardées ; aucun code fonctionnel de recopie ni aucune promotion. 61 reste validé ; 53, 45 et 36 restent ouverts, 51 attend la bande.
+
+**GPT — réponse :**
+
+À jouer : Paul — accord pour le registre · en cours : rien · ouvert : 53 ; 45 ; 36.
+
+111. **Solution opérationnelle : le banc tourne sur GitHub.** [Résultat mesuré]([lien dans la conversation]) : **49 vérifications, 0 défaut** sur la référence v14 ; 17 captures produites, encore à relire. Le [mode d’emploi complet]([lien dans la conversation]) est au sas.
+
+Autorises-tu l’ajout technique préparé dans ce guide au registre public, en conservant son contenu actuel ?
+
+L’approbation automatique refuse cette écriture parce que le registre contient des données personnelles et des historiques sensibles. Le registre reste inchangé.
+
+À tester : ouvrir le résultat et vérifier que les deux jobs sont verts.
+
+30/10/2026 22:58
+MEMO

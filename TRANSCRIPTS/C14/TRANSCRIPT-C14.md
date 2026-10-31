@@ -1061,3 +1061,24 @@ MEMO
 
 31/10/2026 08:18
 MEMO
+
+## Tour 47 — 31/10/2026 08:20 → 31/10/2026 08:27
+
+**Paul :** une autre chose à modifier: le compte des lignes doit se faire sur l'ensemble de la copie sachant qu'une ligne ne compte que si quelque chose est écrit (un entrée ne suffit pas!). Pareil, pourquoi la copie ne s'affiche plus avec ses deux pages en scroll à la suite, comme pour les scans? C'est fastidieux de devoir cliquer dans le champ "page 1, page 2". Enfin, les guillemets doivent être français, quand je retape le texte.
+
+**Fait.** `recopie.js` (`c14-poignees`) : numéros et compte sur toute la copie, une ligne ne compte que si elle porte du texte (la ligne vide où l'on est : « Ligne vide : elle comptera quand tu y écriras ») ; ↑ sur la première ligne, Retour arrière au début de la première ligne : fin de la page précédente ; Entrée, ↓ sur la dernière : page suivante ; `"` tapé → « ou » selon ceux déjà ouverts sur la ligne, avec espaces insécables. L'écran de recopie, codé par C15, ne montre qu'une page à la fois (`RC.page`, menu « Page ») : le défilement des pages à la suite demande de refaire cet écran. Banc : 4 vérifications par le geste (compte et numéros ; page d'avant écrite → numéros décalés, « 2 lignes écrites sur la copie » ; ↑ / Entrée d'une page à l'autre ; guillemets) → « BANC : 89 vérifications, 0 défaut ». Candidate 1.3.2-RU : 577436 o, md5 `799e6800ecb41a0635a1519cda32406e`. Vrai site en lecture seule : 30 copies, 0 différente ; recopies : textes et places identiques ; seule écriture interceptée : le suivi.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 172 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+170. Dans la 1.3.2 : le compte se fait sur toute la copie, et une ligne ne compte que si tu y as écrit ; une ligne vide après Entrée n'a ni numéro ni place dans le compte. Les guillemets que tu tapes deviennent « français », avec leurs espaces. Et tu passes d'une page à l'autre au clavier : Entrée ou ↓ sur la dernière ligne t'emmène à la page suivante, ↑ ou Retour arrière sur la première te ramène à la fin de la précédente ; plus besoin du menu « Page ». Banc : 89 vérifications, 0 défaut ; tes copies et tes recopies au site : rien ne change.
+
+171. Pourquoi une seule page : l'écran de recopie a été construit ainsi par GPT, page par page, alors que l'écran des scans fait défiler toutes les pages. Les deux pages à la suite demandent de refaire cet écran : je le fais juste après, dans la 1.3.3, pour ne pas retarder ce qui est prêt.
+
+172. Pour mettre la 1.3.2 en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 08:27
+MEMO

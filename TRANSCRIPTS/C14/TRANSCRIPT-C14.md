@@ -2010,3 +2010,29 @@ MEMO
 
 31/10/2026 20:18
 MEMO
+
+## Tour 87 — 31/10/2026 20:17 → 31/10/2026 20:34
+
+**Paul :** Ok la suite.
+
+**Fait.** Codé (1.4.10, sur la 1.4.9 en ligne ; le travail de 17:10 repris en partie, sans le second envoi) : la consigne de l'IA demande, dans la même réponse, la correction et le type de chaque faute, la lettre entre accolades juste après le mot ou le signe corrigé ou ajouté, {X} à la place d'un mot retiré, avec un exemple ; le retour compact (`mjpc-recopie-ia-3` : « identifiant : ligne corrigée »), l'ancien format toujours lu (les fichiers de Paul se réinjectent) ; 8 copies par envoi ; un retour coupé garde ses paires complètes, seules les copies entières se chargent, le message dit ce qui repart ; l'export garde sur chaque ligne le texte envoyé et l'heure (`envoiIA`), l'import laisse au prochain export une copie dont une ligne a changé depuis (dette C14 296) ; `rcLettres` enlève les lettres et donne à chaque arrêt la sienne (essai sur 9 cas types : 9/9) ; une faute sans lettre garde le type du moteur ; le type de l'IA passe avant le moteur dans la bande, sur les marques et dans leurs couleurs ; plus de bandeau après l'export (Paul 17:03) ; « Tout effacer » efface aussi `corrigeMarque` et `envoiIA`. Banc 122/0, vérifications nouvelles par le geste : l'export (format, consigne avec les lettres, texte envoyé gardé) ; un retour où il manque une ligne : sa copie attend, les autres se chargent ; un retour compact avec lettres, coupé dans la dernière copie : les copies entières se chargent sans accolades, une majuscule changée prend « L » de l'IA (le moteur disait « C ») ; une ligne retapée après l'envoi : sa copie ne reçoit rien. Vrai site, lecture seule : aucune différence avec la 1.4.9 ; le compteur dit « Toutes tes copies recopiées ont leur corrigé de l’IA, à jour (28) ». Candidate 1.4.10-RU : 684 342 o, md5 2c4043460b49e560fac754f3d94ce6e9. Branche c14-poignees fd445f7e ; registre (prod).
+
+**Claude :**
+
+À jouer : promeus (1.4.10) · en cours : rien · ouvert : 220 ; 234.
+
+298. L'envoi unique est codé dans la 1.4.10. La consigne de l'IA garde tes règles et ajoute ceci, tel quel : « Dans chaque ligne corrigée, écris juste après chaque mot ou signe que tu as corrigé ou ajouté une lettre entre accolades, le type de la faute : {G} grammaire (accord, conjugaison, homophone grammatical), {L} lexique (l'orthographe du mot lui-même), {C} accent, majuscule ou trait d'union, {P} ponctuation, {E} élision (apostrophe), {M} mot manquant que tu ajoutes ; là où tu retires un mot en trop, écris {X} à sa place. Exemple : « Il sont allé a Paris » devient « Ils{G} sont allés{G} à{G} Paris ». » Et elle rend un fichier court : seulement chaque ligne avec sa correction, sans recopier la consigne.
+
+299. Ce que tu y gagnes : 8 copies par envoi au lieu de 4 ; tes 28 copies passent en 4 envois. Si une réponse arrive coupée, les copies entières se chargent quand même, et le message dit que le reste repart au prochain export. Si tu retapes une ligne après l'avoir envoyée, sa copie ne reçoit pas la correction de l'ancien texte : elle repart au prochain export. Plus de bandeau après l'export : le compteur d'en haut suffit.
+
+300. Ton ordre pour la reprise, une fois en ligne : « 🗑 Tout effacer », puis « Exporter pour l'IA » quatre fois, chaque fois suivi de « Charger le corrigé de l’IA ». Le compteur d'en haut te dit à chaque fois combien il en reste. Tes anciens fichiers se lisent toujours, mais sans les types.
+
+301. Ensuite : le flux (284), avec une capture d'abord.
+
+À tester, une fois en ligne :
+1. « 🗑 Tout effacer » (dans « Charger le corrigé de l’IA »), puis « Exporter pour l’IA » : le fichier a 8 copies, et sa consigne parle des lettres entre accolades.
+2. Donne-le à l'IA ; charge sa réponse : le message dit combien de fautes ont leur type.
+3. Ouvre la bande : les étiquettes et les couleurs sont celles que l'IA a données.
+
+31/10/2026 20:34
+MEMO

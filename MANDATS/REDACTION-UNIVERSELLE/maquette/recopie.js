@@ -598,7 +598,7 @@ function rcEncre(pid, L, d) {
   if (w < 10 || h < 4) return (RC.encre[cle] = null);
   const cv = RC.cvEncre || (RC.cvEncre = document.createElement("canvas")); cv.width = w; cv.height = h; const c = cv.getContext("2d"); c.drawImage(im.el, x0, y0, w, h, 0, 0, w, h);
   const px = c.getImageData(0, 0, w, h).data, lum = []; for (let i = 0; i < w * h; i += 7) { const j = i * 4; lum.push(px[j] + px[j + 1] + px[j + 2]); } lum.sort((a, b) => a - b); const papier = lum[Math.floor(lum.length * 0.75)] || 600;
-  const col = new Array(w).fill(0); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const j = (y * w + x) * 4, r = px[j], g = px[j + 1], b = px[j + 2]; if (r + g + b < papier * 0.55 && r - g < 18) col[x]++; }
+  const col = new Array(w).fill(0); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const j = (y * w + x) * 4, r = px[j], g = px[j + 1], b = px[j + 2]; const l = r + g + b; if ((b - r > 12 && l < papier * 0.8) || l < papier * 0.35) col[x]++; }   // 1.4.3 : l'encre est bleue (ou très sombre) ; le quadrillage et les ombres, non
   const seuil = Math.max(2, Math.round(h * 0.03)), runs = []; for (let x = 0; x < w; x++) if (col[x] >= seuil) { const a = x; while (x < w && col[x] >= seuil) x++; if (x - a >= 2) runs.push([a, x]); }
   if (!runs.length) return (RC.encre[cle] = null);
   return (RC.encre[cle] = [(x0 + runs[0][0]) / im.w, (x0 + runs[runs.length - 1][1]) / im.w]);
@@ -606,7 +606,10 @@ function rcEncre(pid, L, d) {
 function rcPlaceSeg(a) {
   const L = a.l, d = RC.copie === a.k && RC.documents[a.pid] || ((scCopie(a.k).recopie || {}).pages || {})[a.pid], P = rcPosMots(L.texte), len = Math.max(1, L.texte.length);
   const c0 = a.g.a > a.g.de ? P[a.g.de][0] : (P[a.g.de] ? P[a.g.de][0] : len), c1 = a.g.a > a.g.de ? P[a.g.a - 1][1] : c0;
-  const e = rcEncre(a.pid, L, d) || [L.x0, L.x1], u = c => e[0] + (e[1] - e[0]) * c / len, yv = x => L.y0 + (L.y1 - L.y0) * (x - L.x0) / ((L.x1 - L.x0) || 1);
+  /* 1.4.3 : chaque lettre compte pour sa largeur habituelle (i, l, t, ponctuation étroits ; m, w, majuscules larges ; l'espace un peu plus) */
+  const poids = ch => ch === " " ? 1.3 : "iljtf.,;:'’!|ïî-".includes(ch) ? 0.55 : "mwMW".includes(ch) ? 1.45 : ch !== ch.toLowerCase() ? 1.25 : 1, cum = [0];
+  for (const ch of L.texte) cum.push(cum[cum.length - 1] + poids(ch)); const T = cum[cum.length - 1] || 1;
+  const e = rcEncre(a.pid, L, d) || [L.x0, L.x1], u = c => e[0] + (e[1] - e[0]) * cum[Math.min(c, cum.length - 1)] / T, yv = x => L.y0 + (L.y1 - L.y0) * (x - L.x0) / ((L.x1 - L.x0) || 1);
   const x0 = u(c0), x1 = Math.max(u(c1), x0 + 0.012); return { x0, x1, y0: yv(x0) - 0.012, y1: yv(x1) + 0.004, encre: e };
 }
 function rcReplacerBande(k) {

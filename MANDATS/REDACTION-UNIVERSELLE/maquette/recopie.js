@@ -70,7 +70,11 @@ function rcBordDroit(cv) {
   return 0.995;
 }
 /* C14 (31/10, Paul 07:11) : la numérotation ne prend que les lignes écrites (et celle où tu écris) */
-function rcNumeros(d) { const n = {}; let k = 0; d.ordre.forEach(id => { if ((d.lignes[id].texte || "").trim() || id === RC.ligne) n[id] = ++k; }); return n; }
+/* 1.3.2 (Paul 08:20) : « le compte des lignes doit se faire sur l'ensemble de la copie sachant qu'une ligne ne compte que si quelque chose est écrit (un entrée ne suffit pas!) » */
+function rcEcrites(pid) { const d = RC.documents[pid] || (rcCopieSource().pages || {})[pid]; if (!d) return 0; return rcListe(d.ordre).filter(id => d.lignes[id] && !d.lignes[id].retiree && (d.lignes[id].texte || "").trim()).length; }
+function rcEcritesAvant(pid) { let n = 0; for (const p of scPagesDe(RC.copie)) { if (p.id === pid) break; n += rcEcrites(p.id); } return n; }
+function rcEcritesCopie() { return scPagesDe(RC.copie).reduce((a, p) => a + rcEcrites(p.id), 0); }
+function rcNumeros(d) { const n = {}; let k = RC.page ? rcEcritesAvant(RC.page) : 0; d.ordre.forEach(id => { if ((d.lignes[id].texte || "").trim()) n[id] = ++k; }); return n; }
 /* C14 (31/10, Paul 07:27) : une ligne trop pleine rapetisse juste assez pour se lire en entier ; rien n'est mangé */
 function rcAjusterTaille(input) {
   if (!input) return; const base = 18 * (RC.echelle || 1);
@@ -217,7 +221,7 @@ function rcRapprocherLignes() {
       input.value = d.lignes[id].texte || "";
       input.onfocus = () => rcSelectionner(id, false, false);
       input.onclick = () => { rcSelectionner(id, false, false); rcGarder(); };
-      input.oninput = () => { const ligne = rcDocument(RC.page).lignes[id]; ligne.texte = input.value; rcAjusterTaille(input); rcGarder(); };
+      input.oninput = () => { const ligne = rcDocument(RC.page).lignes[id]; const vide = !(ligne.texte || "").trim(); ligne.texte = input.value; rcAjusterTaille(input); if (vide !== !(input.value || "").trim()) { rcMarques(); rcEtatLigne(); rcRapprocherLignes(); } rcGarder(); };
       row.appendChild(input); feuille.appendChild(row);
     }
     const place = feuille.children[rang]; if (place !== row) feuille.insertBefore(row, place || null);
@@ -276,9 +280,9 @@ function rcMarques() {
   }
 }
 function rcEtatLigne() {
-  const d = RC.page && rcDocument(RC.page), n = d ? d.ordre.length : 0, rang = d ? d.ordre.indexOf(RC.ligne) : -1, N = d ? rcNumeros(d) : {}, e = Object.keys(N).length;
-  RC.ui.querySelector("#rcCompte").textContent = e + " ligne" + (e > 1 ? "s" : "") + " écrite" + (e > 1 ? "s" : "");
-  RC.ui.querySelector("#rcLigneTitre").textContent = rang >= 0 ? "Ligne " + N[RC.ligne] + " sur " + e : "Une ligne à ajouter";
+  const d = RC.page && rcDocument(RC.page), n = d ? d.ordre.length : 0, rang = d ? d.ordre.indexOf(RC.ligne) : -1, N = d ? rcNumeros(d) : {}, e = RC.copie ? rcEcritesCopie() : 0;
+  RC.ui.querySelector("#rcCompte").textContent = e + " ligne" + (e > 1 ? "s" : "") + " écrite" + (e > 1 ? "s" : "") + " sur la copie";
+  RC.ui.querySelector("#rcLigneTitre").textContent = rang < 0 ? "Une ligne à ajouter" : N[RC.ligne] ? "Ligne " + N[RC.ligne] + " sur " + e : "Ligne vide : elle comptera quand tu y écriras";
   RC.ui.querySelector("#rcRetirer").disabled = rang < 0;
   RC.ui.querySelector("#rcAnnuler").disabled = RC.annule.length === 0;
   RC.ui.querySelector("#rcMessage").textContent = (RC.sansMarge && RC.sansMarge[RC.page] ? "Marge rouge non trouvée sur cette page : cale le trait rouge sur la marge de la copie (ses deux poignées), les débuts de ligne suivront. " : "") + (n ? "La photo et la feuille défilent ensemble. Le total de lignes de ta correction reste celui que tu as saisi." : "Ajoute une ligne, puis place ses poignées sur l'écriture avant de taper.");
@@ -432,13 +436,30 @@ function rcBornesRetouche(R) {
   });
   return points;
 }
+/* 1.3.2 (Paul 08:20) : on passe d'une page à l'autre au clavier, sans le menu « Page » */
+function rcPageVoisine(sens) {
+  const pages = scPagesDe(RC.copie), i = pages.findIndex(p => p.id === RC.page), v = pages[i + sens]; if (!v) return false;
+  rcGarder(); rcChoisirPage(v.id); const d = rcDocument(v.id);
+  if (sens < 0 && d.ordre.length) { rcSelectionner(d.ordre[d.ordre.length - 1], true, true); const c = RC.ui.querySelector('.rc-saisie[data-ligne="' + CSS.escape(RC.ligne) + '"]'); if (c) { c.focus(); const n = c.value.length; c.setSelectionRange(n, n); } }
+  return true;
+}
+/* 1.3.2 (Paul 08:20) : les guillemets tapés deviennent français, « avec leurs espaces insécables » */
+function rcGuillemet(input) {
+  const a = input.selectionStart, b = input.selectionEnd, avant = input.value.slice(0, a);
+  const ouvre = (avant.match(/«/g) || []).length <= (avant.match(/»/g) || []).length;
+  let ins = ouvre ? "«\u00a0" : "\u00a0»", debut = a;
+  if (!ouvre && /[ \u00a0]$/.test(avant)) { debut = a - 1; ins = "\u00a0»"; }
+  input.setRangeText(ins, debut, b, "end"); input.dispatchEvent(new Event("input", { bubbles: true }));
+}
 function rcClavier(ev) {
   if (!RC.ouvert) return false;
   if (ev.isComposing) return true;
   const input = ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie");
   if (ev.key === "Escape") { ev.preventDefault(); ev.stopPropagation(); rcFermer(); return true; }
+  if (input && ev.key === '"' && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { ev.preventDefault(); ev.stopPropagation(); rcGuillemet(ev.target); return true; }
   if (input && ev.key === "Backspace" && !ev.ctrlKey && !ev.metaKey && !ev.altKey && ev.target.selectionStart === 0 && ev.target.selectionEnd === 0) {
     const d = rcDocument(RC.page), i = d.ordre.indexOf(RC.ligne);
+    if (i === 0 && rcPageVoisine(-1)) { ev.preventDefault(); ev.stopPropagation(); return true; }
     if (i > 0) { ev.preventDefault(); ev.stopPropagation(); rcSelectionner(d.ordre[i - 1], true, true);
       const c = RC.ui.querySelector('.rc-saisie[data-ligne="' + CSS.escape(RC.ligne) + '"]'); if (c) { c.focus(); const n = c.value.length; c.setSelectionRange(n, n); } rcGarder(); }
     return true;
@@ -446,6 +467,7 @@ function rcClavier(ev) {
   if (input && !ev.ctrlKey && !ev.metaKey && !ev.altKey && ["Enter", "ArrowDown", "ArrowUp"].includes(ev.key)) {
     ev.preventDefault(); ev.stopPropagation();
     const d = rcDocument(RC.page), i = d.ordre.indexOf(RC.ligne), sens = ev.key === "ArrowUp" ? -1 : 1;
+    if (i + sens < 0 || i + sens >= d.ordre.length) { if (rcPageVoisine(sens)) { rcGarder(); return true; } }
     const id = d.ordre[Math.max(0, Math.min(d.ordre.length - 1, i + sens))]; rcSelectionner(id, true, true);
     rcGarder();
     return true;

@@ -122,8 +122,8 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie : la ligne de deux mots se saisit et se garde comme les autres", await champ(1).inputValue() === "Deux mots");
   const pos = await pg.evaluate(() => { const d = RC.documents[RC.page]; return { g: d.ordre.map(id => d.lignes[id].x0), dr: d.ordre.map(id => d.lignes[id].x1), sans: !!(RC.sansMarge && RC.sansMarge[RC.page]) }; });
   verif("recopie (C14) : les poignées gauches se posent seules juste avant la marge rouge, les droites au bord de la copie (" + pos.g.map(x => x.toFixed(3)).join(" ") + " | " + pos.dr.map(x => x.toFixed(3)).join(" ") + ")", !pos.sans && pos.g.length === 6 && pos.g.every(x => x < 150 / 1240 && x > 150 / 1240 - 0.02) && pos.dr.every(x => x >= 0.98));
-  const nums = await pg.evaluate(() => Array.from(document.querySelectorAll("#rcLignesSVG text.rc-numero")).map(t => t.textContent).join(",") + " · " + document.querySelector("#rcLigneTitre").textContent);
-  verif("recopie (C14) : seules la ligne écrite et celle où l'on écrit portent un numéro, à la suite (" + nums + ")", nums === "1,2 · Ligne 2 sur 2");
+  const nums = await pg.evaluate(() => ({ t: Array.from(document.querySelectorAll("#rcLignesSVG text.rc-numero")).map(t => t.textContent).join(","), av: rcEcritesAvant(RC.page), tot: rcEcritesCopie(), titre: document.querySelector("#rcLigneTitre").textContent, compte: document.querySelector("#rcCompte").textContent }));
+  verif("recopie (1.3.2) : seules les lignes écrites comptent, la ligne vide après Entrée non, et le compte court sur toute la copie (" + nums.t + " · " + nums.titre + " · " + nums.compte + ")", nums.t === String(nums.av + 1) && nums.tot === nums.av + 1 && nums.compte === nums.tot + (nums.tot > 1 ? " lignes écrites" : " ligne écrite") + " sur la copie" && /^Ligne vide/.test(nums.titre));
   // 1.3.2 : une page ouverte avant (poignées encore à leur place automatique) se range à la marge ; une poignée tirée par Paul ne bouge pas
   const ancien = await pg.evaluate(() => { const s = state.copies[RC.copie].scan.recopie.pages[RC.page], o = rcListe(s.ordre); s.lignes[o[3]].x0 = 0.0204; s.lignes[o[3]].x1 = 0.9685; s.lignes[o[4]].x0 = 0.0211921755; s.lignes[o[4]].recale = true; delete s.marge; return { copie: RC.copie, page: RC.page, a: o[3], b: o[4] }; });
   const autre = await pg.evaluate(c => SC.copies.find(k => k !== c), ancien.copie);
@@ -143,7 +143,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     await pg.mouse.move(c.x + c.width / 2, c.y + c.height / 2); await pg.mouse.down(); await pg.mouse.move(c.x + c.width / 2, cible.y - 10, { steps: 8 }); await pg.mouse.up(); await att(120);
   }
   const rang = await pg.evaluate(id => { const d = RC.documents[RC.page]; return { i: d.ordre.indexOf(id), n: rcNumeros(d)[id], champ: document.querySelectorAll(".rc-saisie")[0].value, titre: document.querySelector("#rcLigneTitre").textContent }; }, nouv);
-  verif("recopie (C14) : une ligne ajoutée puis remontée aux poignées prend sa place, son numéro et sa place sur la feuille (rang " + rang.i + ", n° " + rang.n + ", " + rang.titre + ")", rang.i === 0 && rang.n === 1 && rang.champ === "Ligne ajoutée");
+  verif("recopie (C14) : une ligne ajoutée puis remontée aux poignées prend sa place, son numéro et sa place sur la feuille (rang " + rang.i + ", n° " + rang.n + ", " + rang.titre + ")", rang.i === 0 && rang.n === nums.av + 1 && rang.champ === "Ligne ajoutée");
   for (let k = 0; k < 3; k++) { await pg.click("#rcAnnuler"); await att(80); }
   // C14 (07:47) : la bande alignée sur la feuille ; Retour arrière au début d'une ligne ; plusieurs poignées avec Ctrl
   await champ(1).click(); await att(150);
@@ -177,6 +177,16 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await pg.click("#rcAnnuler"); await att(100); const reM = await x0s(), tm2 = await pg.evaluate(() => RC.documents[RC.page].marge);
   verif("recopie (1.3.2) : tirer le trait de marge recale tous les débuts de ligne, sauf celui tiré à la main ; Annuler remet tout (" + dM.map(v => v.toFixed(3)).join(" ") + ")", main[2] && dM.every((v, i) => main[i] ? v === 0 : v > 0.005) && reM.every((x, i) => x === avM[i]) && Math.abs(tm2.xh - tm.xh) < 1e-9);
   await pg.click("#rcAnnuler"); await att(80);
+  // 1.3.2 (Paul 08:20) : passer d'une page à l'autre au clavier ; guillemets français
+  const p0 = await pg.evaluate(() => RC.page); await champ(0).click(); await pg.keyboard.press("ArrowUp"); await att(250);
+  const p1 = await pg.evaluate(() => { const d = RC.documents[RC.page]; return { page: RC.page, derniere: RC.ligne === d.ordre[d.ordre.length - 1] }; });
+  await pg.keyboard.type("Ligne de la page précédente");
+  await pg.keyboard.press("Enter"); await att(250); const p2 = await pg.evaluate(() => { const d = RC.documents[RC.page], n = Array.from(document.querySelectorAll("#rcLignesSVG text.rc-numero")).map(t => t.textContent); return { page: RC.page, premiere: RC.ligne === d.ordre[0], av: rcEcritesAvant(RC.page), n, tot: rcEcritesCopie(), compte: document.querySelector("#rcCompte").textContent }; });
+  verif("recopie (1.3.2) : le compte court sur toute la copie : une ligne écrite sur la page d'avant décale les numéros de celle-ci (" + p2.av + " avant · " + p2.n.join(",") + " · " + p2.compte + ")", p2.av >= 1 && p2.n[0] === String(p2.av + 1) && p2.compte === p2.tot + " lignes écrites sur la copie");
+  verif("recopie (1.3.2) : ↑ sur la première ligne passe à la fin de la page précédente, Entrée sur la dernière revient à la page suivante, sans le menu « Page »", p1.page !== p0 && p1.derniere && p2.page === p0 && p2.premiere);
+  await champ(4).click(); await pg.keyboard.press("End"); const garde = await champ(4).inputValue(); await champ(4).fill(""); await pg.keyboard.type('Il dit "bonjour" puis "au revoir"');
+  const gu = await champ(4).inputValue(); await champ(4).fill(garde);
+  verif("recopie (1.3.2) : les guillemets tapés deviennent français, avec leurs espaces insécables (" + gu + ")", gu === "Il dit «\u00a0bonjour\u00a0» puis «\u00a0au revoir\u00a0»");
   await cap("C15-24-recopie-six-lignes");
   await pg.setViewportSize({ width: 390, height: 800 }); await att(180);
   const lisible = await pg.evaluate(() => {

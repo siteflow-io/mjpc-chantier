@@ -12,18 +12,49 @@ function rcDocument(pid) {
     d.ordre = rcListe(d.ordre).filter(id => d.lignes[id] && !d.lignes[id].retiree);
   } else {
     d = { schema: 1, lignes: {}, ordre: [] };
-    const p = SC.pages[pid], im = SC.imgs[pid]; let L = (p && p.lignes && p.lignes.l) || [];
+    const p = SC.pages[pid], im = SC.imgs[pid]; let L = (p && p.lignes && p.lignes.l) || [], marge = null, bord = null;
     if (im && im.el.complete && im.el.naturalWidth && !(p.lignes && p.lignes.reperes)) {
       const cv = document.createElement("canvas"); cv.width = im.w; cv.height = im.h; cv.getContext("2d").drawImage(im.el, 0, 0);
       const trouvees = scLignes(cv, { recopie: true }); if (trouvees.fiable !== false) L = trouvees.l || [];
+      marge = rcMargeRouge(cv); bord = rcBordDroit(cv); RC.sansMarge = RC.sansMarge || {}; RC.sansMarge[pid] = !marge;
     }
-    L.filter(l => l.ecrite !== false).forEach(l => { const id = scId("ligne"); d.ordre.push(id); d.lignes[id] = {
-      id, x0: rcBorne(l.x0, 0, 0.97), x1: rcBorne(l.x1, 0.03, 1),
+    L.filter(l => l.ecrite !== false).forEach(l => { const id = scId("ligne"), yl = rcBorne(l.y, 0, 1); d.ordre.push(id); d.lignes[id] = {
+      id, x0: marge ? rcBorne(marge(yl) - 0.008, 0, 0.97) : rcBorne(l.x0, 0, 0.97), x1: bord ? bord : rcBorne(l.x1, 0.03, 1),
       y0: rcBorne(l.y, 0, 1), y1: rcBorne(l.y, 0, 1), texte: ""
     }; });
   }
   RC.documents[pid] = d; return d;
 }
+/* C14 (31/10, Paul 07:00) : « les points s'alignent toujours juste avant la marge rouge à gauche, et aillent au bord de la copie, à droite » */
+function rcMargeRouge(cv) {
+  const W = cv.width, H = cv.height; if (!W || !H) return null;
+  const px = cv.getContext("2d").getImageData(0, 0, W, H).data, xmax = Math.floor(W * 0.45), pas = Math.max(1, Math.floor(H / 400));
+  const rouge = (x, y) => { const i = (y * W + x) * 4, r = px[i], g = px[i + 1], b = px[i + 2]; return r > 140 && r - g > 45 && r - b > 30; };
+  const compte = new Array(xmax).fill(0); let n = 0;
+  for (let y = Math.floor(H * 0.05); y < H * 0.95; y += pas) { n++; for (let x = 0; x < xmax; x++) if (rouge(x, y)) compte[x]++; }
+  let best = -1, bx = -1; for (let x = 1; x < xmax - 1; x++) { const c = Math.max(compte[x - 1], compte[x], compte[x + 1]); if (c > best) { best = c; bx = x; } }
+  if (best < n * 0.35) return null;
+  const tol = Math.max(3, Math.round(W * 0.03)), pts = [];
+  for (let k = 0; k < 10; k++) {
+    const ya = Math.floor(H * (0.05 + 0.09 * k)), yb = Math.floor(H * (0.05 + 0.09 * (k + 1))); let sx = 0, m = 0, r = 0;
+    for (let y = ya; y < yb; y += pas) { r++; for (let x = Math.max(0, bx - tol); x <= Math.min(W - 1, bx + tol); x++) if (rouge(x, y)) { sx += x; m++; } }
+    if (m >= r * 0.3) pts.push([(ya + yb) / 2 / H, sx / m / W]);
+  }
+  if (pts.length < 3) { const c = bx / W; return () => c; }
+  const my = pts.reduce((a, p) => a + p[0], 0) / pts.length, mx = pts.reduce((a, p) => a + p[1], 0) / pts.length;
+  const b = pts.reduce((a, p) => a + (p[0] - my) * (p[1] - mx), 0) / (pts.reduce((a, p) => a + (p[0] - my) ** 2, 0) || 1);
+  return y => mx + b * (y - my);
+}
+function rcBordDroit(cv) {
+  const W = cv.width, H = cv.height; if (!W || !H) return null;
+  const px = cv.getContext("2d").getImageData(0, 0, W, H).data, pas = Math.max(1, Math.floor(H / 300));
+  const col = x => { let s = 0, n = 0; for (let y = Math.floor(H * 0.1); y < H * 0.9; y += pas) { const i = (y * W + x) * 4; s += px[i] + px[i + 1] + px[i + 2]; n++; } return s / n; };
+  const ref = [0.5, 0.6, 0.7, 0.8].map(f => col(Math.floor(W * f))).sort((a, b) => a - b)[2];
+  for (let x = W - 1; x > W * 0.6; x--) if (col(x) >= ref * 0.8) return x >= W * 0.985 ? 0.995 : rcBorne(x / W - 0.005, 0.6, 0.995);
+  return 0.995;
+}
+/* C14 (31/10, Paul 07:11) : la numérotation ne prend que les lignes écrites (et celle où tu écris) */
+function rcNumeros(d) { const n = {}; let k = 0; d.ordre.forEach(id => { if ((d.lignes[id].texte || "").trim() || id === RC.ligne) n[id] = ++k; }); return n; }
 function rcCourante() { const d = RC.page && rcDocument(RC.page); return d && d.lignes[RC.ligne]; }
 function rcNoeud(tag, attrs, texte) {
   const e = document.createElement(tag);
@@ -164,8 +195,8 @@ function rcRapprocherLignes() {
       row.appendChild(input); feuille.appendChild(row);
     }
     const place = feuille.children[rang]; if (place !== row) feuille.insertBefore(row, place || null);
-    const input = row.querySelector("input"); input.setAttribute("aria-label", "Recopie de la ligne " + (rang + 1));
-    input.title = "Recopie de la ligne " + (rang + 1) + " : garde les fautes, les mots barrés et la ponctuation. Entrée passe à la suivante.";
+    const num = rcNumeros(d)[id], input = row.querySelector("input"); input.setAttribute("aria-label", "Recopie de la ligne " + (num || "vide"));
+    input.title = "Recopie de la ligne" + (num ? " " + num : " (vide : elle n'aura un numéro que si tu y écris)") + " : garde les fautes, les mots barrés et la ponctuation. Entrée passe à la suivante.";
     row.classList.toggle("on", id === RC.ligne);
   });
 }
@@ -190,14 +221,14 @@ function rcMarques() {
   if (!RC.ouvert || !RC.page || !RC.ui) return;
   const p = SC.pages[RC.page], d = rcDocument(RC.page), svg = RC.ui.querySelector("#rcLignesSVG");
   const H = 1000 * p.h / p.w; svg.setAttribute("viewBox", "0 0 1000 " + H);
-  let s = "";
+  let s = ""; const N = rcNumeros(d);
   d.ordre.forEach((id, i) => {
     const l = d.lignes[id], actif = id === RC.ligne, x0 = l.x0 * 1000, x1 = l.x1 * 1000, y0 = l.y0 * H, y1 = l.y1 * H;
     const attributId = escapeAttr(id);
     if (actif) s += '<polygon class="rc-selection" points="' + x0 + "," + (y0 - 17) + " " + x1 + "," + (y1 - 17) + " " + x1 + "," + (y1 + 15) + " " + x0 + "," + (y0 + 15) + '"/>';
     s += '<g data-rc-ligne="' + attributId + '"><line class="rc-trait" x1="' + x0 + '" y1="' + y0 + '" x2="' + x1 + '" y2="' + y1 + '"/>';
-    s += '<text class="rc-numero" x="5" y="' + (y0 + 4) + '">' + (i + 1) + "</text>";
-    for (const cote of ["gauche", "droite"]) s += '<circle class="rc-poignee" data-rc-ligne="' + attributId + '" data-rc-cote="' + cote + '" cx="' + (cote === "gauche" ? x0 : x1) + '" cy="' + (cote === "gauche" ? y0 : y1) + '" r="7" role="button" aria-label="' + (cote === "gauche" ? "Début" : "Fin") + " de la ligne " + (i + 1) + '"><title>Glisse cette poignée pour recaler ' + (cote === "gauche" ? "le début" : "la fin") + " de la ligne " + (i + 1) + ".</title></circle>";
+    if (N[id]) s += '<text class="rc-numero" x="5" y="' + (y0 + 4) + '">' + N[id] + "</text>";
+    for (const cote of ["gauche", "droite"]) s += '<circle class="rc-poignee" data-rc-ligne="' + attributId + '" data-rc-cote="' + cote + '" cx="' + (cote === "gauche" ? x0 : x1) + '" cy="' + (cote === "gauche" ? y0 : y1) + '" r="7" role="button" aria-label="' + (cote === "gauche" ? "Début" : "Fin") + " de la ligne " + (N[id] || "vide") + '"><title>Glisse cette poignée pour recaler ' + (cote === "gauche" ? "le début" : "la fin") + " de la ligne" + (N[id] ? " " + N[id] : " (vide, sans numéro)") + ".</title></circle>";
     s += "</g>";
   });
   // Les poignées gardent leur capture de pointeur pendant le déplacement.
@@ -211,12 +242,12 @@ function rcMarques() {
   }
 }
 function rcEtatLigne() {
-  const d = RC.page && rcDocument(RC.page), n = d ? d.ordre.length : 0, rang = d ? d.ordre.indexOf(RC.ligne) : -1;
-  RC.ui.querySelector("#rcCompte").textContent = n + " ligne" + (n > 1 ? "s" : "");
-  RC.ui.querySelector("#rcLigneTitre").textContent = rang >= 0 ? "Ligne " + (rang + 1) + " sur " + n : "Une ligne à ajouter";
+  const d = RC.page && rcDocument(RC.page), n = d ? d.ordre.length : 0, rang = d ? d.ordre.indexOf(RC.ligne) : -1, N = d ? rcNumeros(d) : {}, e = Object.keys(N).length;
+  RC.ui.querySelector("#rcCompte").textContent = e + " ligne" + (e > 1 ? "s" : "") + " écrite" + (e > 1 ? "s" : "");
+  RC.ui.querySelector("#rcLigneTitre").textContent = rang >= 0 ? "Ligne " + N[RC.ligne] + " sur " + e : "Une ligne à ajouter";
   RC.ui.querySelector("#rcRetirer").disabled = rang < 0;
   RC.ui.querySelector("#rcAnnuler").disabled = RC.annule.length === 0;
-  RC.ui.querySelector("#rcMessage").textContent = n ? "La photo et la feuille défilent ensemble. Le total de lignes de ta correction reste celui que tu as saisi." : "Ajoute une ligne, puis place ses poignées sur l'écriture avant de taper.";
+  RC.ui.querySelector("#rcMessage").textContent = (RC.sansMarge && RC.sansMarge[RC.page] ? "Marge rouge non trouvée sur cette page : place toi-même le début des lignes. " : "") + (n ? "La photo et la feuille défilent ensemble. Le total de lignes de ta correction reste celui que tu as saisi." : "Ajoute une ligne, puis place ses poignées sur l'écriture avant de taper.");
 }
 function rcSelectionner(id, focus, aligner) {
   if (!RC.ouvert || !RC.page) return;

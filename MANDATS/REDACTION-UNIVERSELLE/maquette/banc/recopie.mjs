@@ -120,6 +120,10 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie : six lignes trouvées sur six dans la page inventée, avec ligne courte, rature, pente et grand blanc (" + six.n + ")", six.n === 6);
   await champ(1).fill("Deux mots"); await pg.keyboard.press("Enter");
   verif("recopie : la ligne de deux mots se saisit et se garde comme les autres", await champ(1).inputValue() === "Deux mots");
+  const pos = await pg.evaluate(() => { const d = RC.documents[RC.page]; return { g: d.ordre.map(id => d.lignes[id].x0), dr: d.ordre.map(id => d.lignes[id].x1), sans: !!(RC.sansMarge && RC.sansMarge[RC.page]) }; });
+  verif("recopie (C14) : les poignées gauches se posent seules juste avant la marge rouge, les droites au bord de la copie (" + pos.g.map(x => x.toFixed(3)).join(" ") + " | " + pos.dr.map(x => x.toFixed(3)).join(" ") + ")", !pos.sans && pos.g.length === 6 && pos.g.every(x => x < 150 / 1240 && x > 150 / 1240 - 0.02) && pos.dr.every(x => x >= 0.98));
+  const nums = await pg.evaluate(() => Array.from(document.querySelectorAll("#rcLignesSVG text.rc-numero")).map(t => t.textContent).join(",") + " · " + document.querySelector("#rcLigneTitre").textContent);
+  verif("recopie (C14) : seules la ligne écrite et celle où l'on écrit portent un numéro, à la suite (" + nums + ")", nums === "1,2 · Ligne 2 sur 2");
   await cap("C15-24-recopie-six-lignes");
   await pg.setViewportSize({ width: 390, height: 800 }); await att(180);
   const lisible = await pg.evaluate(() => {

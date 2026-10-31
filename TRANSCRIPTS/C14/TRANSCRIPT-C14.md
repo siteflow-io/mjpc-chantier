@@ -1369,3 +1369,24 @@ MEMO
 
 31/10/2026 11:07
 MEMO
+
+## Tour 61 — 31/10/2026 11:10 → 31/10/2026 11:12
+
+**Paul :** Pour le corrigé on est d'accord que je ne suis pas obligé davoir terminé un paquet complet pour upload le json? Répond d'abord puis promeus
+
+**Claude (message envoyé d'abord) :**
+
+203. Oui, tu n'as pas besoin de finir tout le paquet. L'export prend les copies déjà recopiées qui n'ont pas encore leur corrigé, 4 à la fois, et le chargement accepte n'importe quel morceau de la classe. Une seule règle : exporte une copie quand sa recopie est finie. Si tu y tapes encore après l'export, le retour de l'IA pour cette copie sera refusé (« ligne manquante… refais l'export »), et l'export suivant la reprendra toute seule. Je mets la 1.4.2 en ligne.
+
+**Fait.** 1.4.1 copiée au sas (`SAUVEGARDES/redaction-1.4.1-RU-avant-1.4.2-2026-10-31.html`). Production : commit `ff78f75`, blob `178220100d06`, md5 `966a11eaef3439de03c395863fe0d222`, 609 792 o ; en ligne bit à bit à la 5e lecture. Docs de suivi : journal, registre (dettes de 11:01 ✔), point de retour, où trouver quoi (`&v=1.4.2-RU`).
+
+**Claude :**
+
+À jouer : les tests ci-dessous · en cours : rien · ouvert : 53 ; 45 ; 36 ; le mot par mot ⇧R (196, acquis).
+
+204. La 1.4.2 est en ligne, vérifiée à l'octet près : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.2-RU. Recharge la page de l'app.
+
+À tester : sur la copie d'Eva, « ▶ La bande » : le cadre jaune est sur le mot de la faute, ses fautes déjà gardées se sont replacées ; « ← Revenir à la recopie » te ramène à ta recopie ; rouvre la bande et change d'élève dans le menu « Copie » : la bande se ferme, tu es dans la recopie du nouvel élève.
+
+31/10/2026 11:12
+MEMO

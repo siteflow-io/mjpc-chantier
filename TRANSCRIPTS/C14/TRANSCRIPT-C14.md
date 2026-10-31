@@ -1524,3 +1524,28 @@ Rappel de 216 : les trois dettes sont toujours ouvertes et ta règle interdit de
 
 31/10/2026 13:56
 MEMO
+
+## Tour 68 — 31/10/2026 14:03 → 31/10/2026 14:12
+
+**Paul :** [capture : copie rendue de la correction de dictée, mode « Brut », « Badge type » coché, « Correction verte » décochée ; sous chaque mot fautif, une pastille G, L ou M dans sa couleur] 223. Non, ça doit être comme dans correction dictée. Regarde à quoi ressemble une copie rendue ( capture ). Mais attention parce qu'il y aura un problème de place: donc les mots sont soulignés dans la couleur de leur erreur et ils ont le détail dans la marge. Ok? 224. Comment le moteur peut se tromper? l'IA d'injection a corrigé le texte. Dis moi si c'est vraiment possible que le moteur se trompe. 225. À prévoir dans la tâche planifiée de demain. 216. On règle les dettes une fois que jai ta réponse sur 223 à 225.
+
+**Fait.** 224 mesuré de deux façons. (1) Sur 40 fautes d'élève inventées, passées par le vrai chemin de la bande (découpage des mots puis classement) : 35/40, les 5 ratées sont 4 conjugaisons ou participes rangés en L et 1 mot lexical rangé en G. (2) Au hub, en lecture seule, gardé dans le dossier privé : 619 lignes ont le corrigé de l'IA, soit 895 arrêts ; G 283, L 244, P 180, C 126, M 26, X 26, E 10 ; parmi les 244 rangés en L, 78 mêlent un mot et une ponctuation (compté) ; relu à la main les G et les L. Trouvé et corrigé au passage : les mots étaient coupés aux apostrophes et aux traits d'union (« m ’ a »), donc « le → l’ » sortait en L au lieu de E et « ma → m’a » en L au lieu de G ; ils sont recollés avant le classement, et la grammaire passe avant l'élision. Banc 110/0 (13 cas types). Candidate 1.4.4-RU refaite : 654 654 o, md5 1fe39330f8d2aa5c9f7f432f4e755030 ; vrai site en lecture seule : aucune différence avec la 1.4.3 hors numéro de version. Branche c14-poignees a0fff32c. 225 : aucune tâche planifiée de ce chantier demain (celles de dimanche 8:00 et 8:05 sont à la conscience n°13 et à l'ordinateur de Paul) ; rappel posé dans cette conversation pour le 01/11 à 22:07 (trig_01YS57xn1UsjCiQrbpgAticv).
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 220 ; 226 ; 227.
+
+226. Sur 223 : oui, comme ta copie rendue de dictée. Chaque faute est soulignée dans la couleur de son type. Le détail va dans la marge, à la hauteur de sa ligne : une pastille par faute, dans l'ordre de la ligne, avec la lettre de la dictée (G, L, ∅, Acc., P, E, +) dans sa couleur, sans la bonne forme, comme sur ta capture (« Badge type » coché, « Correction verte » décochée). Je propose que cette marge soit une bande ajoutée à gauche de la photo, pour ne jamais cacher ce que l'élève a écrit dans sa propre marge. Deux phrases que l'élève lit disent aujourd'hui « en rouge » : « … soulignée(s) en rouge sur ta copie. » et « Une erreur d'orthographe ou de grammaire, soulignée en rouge. » Il me faut tes mots pour les remplacer. Ok pour la bande à gauche ?
+
+227. Sur 224 : oui, le moteur se trompe, et je l'ai mesuré. L'IA donne le mot juste, pas le type. Le moteur devine le type en comparant les deux mots avec des listes (homophones, terminaisons, accords) ; il ne comprend pas la phrase. Sur 40 fautes inventées, il en range 35 juste : « il a finit → fini » ou « que tu viens → viennes » partent en L au lieu de G. Sur tes vraies copies (lecture seule, rien n'est sorti du dossier privé) : 895 arrêts. Sur les 244 rangés en L, 78 mêlent un mot et une ponctuation dans le même arrêt, et parmi les autres, à ma lecture, environ un tiers est de la grammaire (conjugaison, accord, pronom relatif). Sur les 283 rangés en G, à ma lecture, une vingtaine sont du lexique. Tranchage proposé : c'est l'IA qui donne le type, puisqu'elle comprend la phrase, et le moteur ne sert que si elle ne le donne pas. Pour tes 619 lignes déjà corrigées, tu ne recommences rien : un aller-retour court par paquet, où l'IA ne reçoit que les arrêts et rend une lettre par arrêt. Je coupe aussi en deux les arrêts qui mêlent un mot et une ponctuation. La consigne de l'IA change : je te la montre avant. Ce que l'IA fera juste, je ne sais pas : on le mesure sur un paquet. Je le fais ?
+
+228. Sur 225 : il n'y avait pas de tâche planifiée de ce chantier demain. Les deux de dimanche matin (8:00 et 8:05) appartiennent à la conscience n°13 et passent par ton ordinateur ; je n'y ai pas touché. J'ai posé un rappel qui revient dans cette conversation-ci demain, 01/11 à 22:07, juste après ta remise à zéro de 22 h : la liste des fonctions qui ne servent plus, mesurée, chacune avec « garder », « recycler dans… » ou « ranger », rien d'effacé sans ton mot. Si tu veux une autre heure, dis-la.
+
+229. En mesurant, j'ai trouvé une erreur à moi dans la 1.4.4 et je l'ai corrigée : les mots étaient coupés aux apostrophes et aux traits d'union, donc « le → l’ » sortait en Lexique au lieu d'Élision, et « ma → m’a » en Lexique au lieu de Grammaire. La candidate est refaite : banc 110/0, et sur le vrai site, aucune différence avec la 1.4.3. Elle attend : d'abord les dettes (216), comme tu l'as dit.
+
+Les dettes : je commence dès ton prochain mot.
+
+À tester : rien de neuf en ligne.
+
+31/10/2026 14:12
+MEMO

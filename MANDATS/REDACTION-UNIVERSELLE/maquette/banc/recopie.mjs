@@ -513,6 +513,9 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   const k19 = await pg.evaluate(() => SC.copies.find(k => Object.values(scCopie(k).marques).some(m => m.bande && m.bande.code)));
   await pg.click("#btnRecopier"); await att(400); if (await pg.evaluate(k => RC.copie !== k, k19)) { await pg.selectOption("#rcCopie", k19); await att(300); }
   const fl19a = (await pg.locator("#rcIAEtat").textContent()) || "";
+  // 1.4.12 (exigences du 29/10 : « Je veux max 30 clics par copie » ; « mesurer le gain ») : le temps et les gestes de chaque copie, comptés seuls
+  await pg.click("#rcFluxOuvrir"); await att(200); const tg19 = await pg.evaluate(k => { const f = rcFluxCopie(k), tr = document.querySelector('#rcFluxTable tr[data-k="' + CSS.escape(k) + '"]'); return { t: f.temps, g: f.gestes, cell: tr ? tr.lastElementChild.textContent : "" }; }, k19); await pg.click("#rcFluxFermer"); await att(100);
+  verif("recopie (1.4.12) : le flux compte seul, pour chaque copie, le temps de recopie, le temps de bande et les gestes (« " + tg19.cell + " »)", !!tg19.t && tg19.t.bande > 0 && tg19.t.recopie > 0 && !!tg19.g && tg19.g.bande >= 5 && /gestes/.test(tg19.cell));
   await pg.click("#rcPhraseOuvrir"); await att(250); const mots19 = await pg.locator("#rcPhraseTexte [data-j]").count(), fin19 = Math.min(mots19 - 1, 7);
   await pg.click("#rcPhraseTexte [data-j] >> nth=1"); await att(100); await pg.click("#rcPhraseTexte [data-j] >> nth=" + fin19); await att(150);
   const or19 = await pg.locator("#rcPhraseTexte .or").count(); await cap("C14-47-phrase-qui-m-a-marque");
@@ -547,7 +550,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   // 1.4.9 (Paul 19:27 et 19:39) : tout effacer, les corrigés de l'IA et tout ce qui vient de la bande ; rien de la recopie ne bouge
   const photo12 = () => pg.evaluate(() => { const IA = ["corrige", "corrigeDe", "corrigeLe", "corrigeMarque", "types", "typesDe", "envoiIA", "decisions", "marquesBande", "places"], o = {}; let n = 0, bande = 0, autres = 0, arret = 0;
     SC.copies.forEach(k => { const c = state.copies[k] || {}, sc = c.scan || {}, r = JSON.parse(JSON.stringify(sc.recopie || null));
-      if (r) { if (r.bandeArret) arret++; if (r.envoi || r.charge) arret++; delete r.bandeArret; delete r.reprise; delete r.envoi; delete r.charge; Object.values(r.pages || {}).forEach(p => { delete p.modifieLe; Object.values(p.lignes || {}).forEach(l => { if (IA.some(f => l[f] !== undefined)) n++; IA.forEach(f => delete l[f]); }); }); }
+      if (r) { if (r.bandeArret) arret++; if (r.envoi || r.charge) arret++; delete r.bandeArret; delete r.reprise; delete r.envoi; delete r.charge; delete r.temps; delete r.gestes;   /* [1.4.12] le temps et les gestes se comptent à chaque clic : ce ne sont pas la recopie */ Object.values(r.pages || {}).forEach(p => { delete p.modifieLe; Object.values(p.lignes || {}).forEach(l => { if (IA.some(f => l[f] !== undefined)) n++; IA.forEach(f => delete l[f]); }); }); }
       const ms = Object.values(sc.marques || {}); bande += ms.filter(m => m.bande).length + (sc.bandeDebut ? 1 : 0); autres += ms.filter(m => !m.bande).length;
       o[k] = { r, anciennes: Object.keys(sc.marquesAnciennes || {}).length, autres: ms.filter(m => !m.bande).map(m => m.id).sort() }; });
     return { sans: JSON.stringify(o), n, bande, autres, arret }; });

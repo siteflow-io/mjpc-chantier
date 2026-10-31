@@ -8082,6 +8082,8 @@ function rcInterface() {
   e.querySelector("#rcBandeRetour").onclick = () => rcBandeFermer();
   e.querySelector("#rcImportIA").onclick = rcIAOuvrir;
   e.querySelector("#rcIAFermer").onclick = rcIAFermer;
+  /* [C14 1.4.12] (exigences du 29/10 : « max 30 clics par copie » ; « mesurer le gain ») : le temps de recopie, le temps de bande et les gestes de chaque copie, comptés seuls */
+  e.addEventListener("pointerdown", () => rcCompter("clic"), true); e.addEventListener("keydown", ev => rcCompter(ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie") ? "frappe" : "touche"), true); e.addEventListener("input", () => rcCompter("frappe"), true);
   e.querySelector("#rcFluxOuvrir").onclick = rcFluxOuvrir; e.querySelector("#rcFluxFermer").onclick = rcFluxFermer;
   e.querySelector("#rcPhraseOuvrir").onclick = rcPhraseOuvrir; e.querySelector("#rcPhraseFermer").onclick = rcPhraseFermer; e.querySelector("#rcPhraseOui").onclick = rcPhraseValider;
   e.querySelector("#rcPhraseAucune").onchange = ev => { if (ev.target.checked) rcPhraseAucune(); };
@@ -8722,7 +8724,7 @@ function rcHeure(iso) { if (!iso) return ""; const d = new Date(iso), j = new Da
 function rcFluxCopie(k) {
   const s = scCopie(k), rec = s.recopie || {}, L = rcLignesEcrites(k); let modif = ""; Object.values(rec.pages || {}).forEach(p => { if (p && p.modifieLe && p.modifieLe > modif) modif = p.modifieLe; });
   const A = rcArrets(k), dec = A.filter(a => a.l.decisions && a.l.decisions[a.cle]).length, corr = L.length && !rcCopieACorriger(k);
-  return { k, nom: nomEleveDe(k) || k, lignes: L.length, modif, envoi: rec.envoi || null, envoiAJour: !!(rec.envoi && L.length && L.every(x => x.l.envoiIA && x.l.envoiIA.texte === x.l.texte)), charge: corr ? (rec.charge || { le: (L.map(x => x.l.corrigeLe || "").sort().pop() || ""), fautes: A.length, types: null }) : null, arrets: A.length, decides: dec, fini: A.length > 0 && dec === A.length, refus: rec.refusIA || null, finie: !!rec.phrase };
+  return { k, nom: nomEleveDe(k) || k, lignes: L.length, modif, envoi: rec.envoi || null, envoiAJour: !!(rec.envoi && L.length && L.every(x => x.l.envoiIA && x.l.envoiIA.texte === x.l.texte)), charge: corr ? (rec.charge || { le: (L.map(x => x.l.corrigeLe || "").sort().pop() || ""), fautes: A.length, types: null }) : null, arrets: A.length, decides: dec, fini: A.length > 0 && dec === A.length, refus: rec.refusIA || null, finie: !!rec.phrase, temps: rec.temps || null, gestes: rec.gestes || null };
 }
 /* [C14 1.4.12] (Paul 31/10 23:09 : « à la fin d'une recopie je dois pouvoir surligner facilement la phrase qui m'a marqué ( pas touché, marqué). Si pas de
    phrase, pas de phrase ( coche pas de phrase ). Cette phase là marque la fin d'une recopie. ») : clic sur le premier mot, puis sur le dernier ;
@@ -8756,15 +8758,25 @@ function rcPhraseAucune() {
   const P = RC.phrase; if (!P) return; rcPhraseRetirer(P.k); const s = scCopie(P.k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), aucune: true };
   saveState(); rcPhraseFermer(); rcEtatIA(); toast("Pas de phrase : la recopie de cette copie est finie.");
 }
+/* le temps compte comme le chrono des scans : une minute sans geste ne compte pas ; la frappe de la recopie compte du temps, pas des gestes */
+function rcCompter(type) {
+  if (!RC.ouvert || !RC.copie || !state.classe.some(n => eleveId(n) === RC.copie)) return; const s = scCopie(RC.copie); s.recopie = s.recopie || {};
+  const t = Date.now(), d = t - (RC.dernierGeste || 0), lieu = RC.bd ? "bande" : "recopie", T = s.recopie.temps = s.recopie.temps || { recopie: 0, bande: 0 };
+  if (RC.gesteCopie === RC.copie && d > 0 && d < 60000) T[lieu] = (T[lieu] || 0) + d;
+  RC.dernierGeste = t; RC.gesteCopie = RC.copie;
+  if (type !== "frappe") { const G = s.recopie.gestes = s.recopie.gestes || { recopie: 0, bande: 0 }; G[lieu] = (G[lieu] || 0) + 1; }
+}
+function rcDuree(ms) { const s = Math.round((ms || 0) / 1000); return s < 60 ? s + " s" : Math.floor(s / 60) + " min" + (s % 60 ? " " + String(s % 60).padStart(2, "0") : ""); }
 function rcFluxOuvrir() { if (RC.page) rcGarder(); RC.fluxOuvert = true; RC.ui.querySelector("#rcFlux").hidden = false; rcFluxRendre(); }
 function rcFluxFermer() { RC.fluxOuvert = false; RC.ui.querySelector("#rcFlux").hidden = true; }
 function rcFluxRendre() {
   const t = RC.ui.querySelector("#rcFluxTable"), F = SC.copies.map(rcFluxCopie), ok = '<span class="rc-flux-ok">✓</span> ', non = '<span class="rc-flux-non">—</span>';
-  t.innerHTML = '<table><thead><tr><th>Copie</th><th>Recopiée</th><th>Envoyée à l’IA</th><th>Corrigé chargé</th><th>Bande</th></tr></thead><tbody>' + F.map(f => '<tr data-k="' + escapeAttr(f.k) + '"' + (f.k === RC.copie ? ' class="on"' : "") + '><td>' + escapeHtml(f.nom) + "</td>"
+  t.innerHTML = '<table><thead><tr><th>Copie</th><th>Recopiée</th><th>Envoyée à l’IA</th><th>Corrigé chargé</th><th>Bande</th><th title="Comptés seuls : une minute sans geste ne compte pas ; la frappe de ta recopie compte du temps, pas des gestes.">Temps et gestes</th></tr></thead><tbody>' + F.map(f => '<tr data-k="' + escapeAttr(f.k) + '"' + (f.k === RC.copie ? ' class="on"' : "") + '><td>' + escapeHtml(f.nom) + "</td>"
     + "<td>" + (f.lignes ? (f.finie ? ok : "") + f.lignes + " ligne" + (f.lignes > 1 ? "s" : "") + (f.modif ? " · " + rcHeure(f.modif) : "") + (f.finie ? "" : " · la phrase qui m’a marqué : pas encore") : non) + "</td>"
     + "<td>" + (f.envoi ? (f.envoiAJour || f.charge ? ok : "⚠ ") + "envoi " + f.envoi.n + " · " + rcHeure(f.envoi.le) + (!f.envoiAJour && !f.charge ? " · retapée depuis" : "") : f.charge ? ok + "avant le flux" : non) + "</td>"
     + "<td>" + (f.charge ? ok + rcHeure(f.charge.le) + " · " + f.charge.fautes + " faute" + (f.charge.fautes > 1 ? "s" : "") + (f.charge.types != null ? ", " + f.charge.types + " avec leur type" : "") : f.envoi ? "en attente" : non) + (f.refus ? ' <span class="rc-flux-non">⚠ copie refusée ' + rcHeure(f.refus.le) + " : lignes mélangées par l’IA, au prochain export</span>" : "") + "</td>"
-    + "<td>" + (f.arrets ? (f.fini ? ok : "") + f.decides + " / " + f.arrets : non) + "</td></tr>").join("") + "</tbody></table>";
+    + "<td>" + (f.arrets ? (f.fini ? ok : "") + f.decides + " / " + f.arrets : non) + "</td>"
+    + "<td>" + (f.temps || f.gestes ? "recopie " + rcDuree((f.temps || {}).recopie) + " · bande " + rcDuree((f.temps || {}).bande) + " · " + (((f.gestes || {}).recopie || 0) + ((f.gestes || {}).bande || 0)) + " gestes" : non) + "</td></tr>").join("") + "</tbody></table>";
   t.querySelectorAll("tr[data-k]").forEach(tr => tr.onclick = () => { const k = tr.dataset.k; rcFluxFermer(); const sel = RC.ui.querySelector("#rcCopie"); if (sel && sel.value !== k) { sel.value = k; sel.dispatchEvent(new Event("change")); } });
 }
 function rcCompteIA() {

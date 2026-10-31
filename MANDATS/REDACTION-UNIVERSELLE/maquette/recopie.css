@@ -63,6 +63,11 @@
 .rc-bande-avis[hidden]{display:none}
 #rcBandePhoto{width:100%;height:110px;border-radius:6px;background:#fffdf8;box-shadow:0 1px 4px #3b2e2522}
 .rc-bande-contexte{padding:10px 14px;border:1px solid #e3d8c6;border-radius:8px;background:#fff;font:18px/1.6 Georgia,serif;color:#5d5148}
+.rc-bande-contexte{display:flex;align-items:center;gap:8px;min-width:0}
+.rc-ruban{flex:1;min-width:0;overflow:hidden;white-space:nowrap;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rc-ruban-t{display:inline-block;white-space:nowrap;transition:transform .17s ease-out;will-change:transform}
+.rc-ruban-l{color:#8a7d6e}.rc-ruban-l.on{color:#2b2520}
+.rc-ruban-sep{display:inline-block;width:1px;height:1em;margin:0 12px;background:#d6c9b4;vertical-align:-2px}
 .rc-bande-contexte mark{background:#fbe7a6;color:#2b2520;font-weight:600;padding:0 2px;border-radius:3px}
 .rc-bande-contexte .rc-manque{background:#f6c7cb;color:#a3262f}
 .rc-bande-n{font:600 12px system-ui;color:#3d752e;margin-right:6px}

@@ -394,6 +394,15 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     const ancien = im.el, el = new Image(); await new Promise(r => { el.onload = r; el.src = cv.toDataURL("image/png"); }); im.el = el; RC.encre = {};
     const q = rcPlaceSeg(a); im.el = ancien; RC.encre = {}; return { haut: (base - q.y0 * im.h) / P, queue: 0.52 }; });
   verif("recopie (1.4.7) : la queue d'une lettre de la ligne du dessus descend jusqu'au-dessus du mot visé, et les traits verticaux du cahier traversent la bande, dont un à travers le mot : le cadre s'arrête au haut des lettres du mot (" + t6.haut.toFixed(2) + " interligne au-dessus de la ligne), sous la queue (" + t6.queue + ")", t6.haut > 0.25 && t6.haut < t6.queue - 0.02);
+  // 1.4.11 (Paul 15:41) : la bande en continu ; le texte et la photo en ruban, le mot de l'arrêt au milieu ; d'un arrêt à l'autre, le ruban glisse
+  const ruban = async () => { await att(320); return pg.evaluate(() => { const ctx = document.querySelector("#rcBandeContexte"), b = ctx.querySelector(".rc-ruban"), m = ctx.querySelector(".rc-ruban-t mark"), R = RC.bd.ruban, a = RC.bd.A[RC.bd.i];
+    const rb = b.getBoundingClientRect(), mb = m ? m.getBoundingClientRect() : null, cur = R && R.lignes.find(l => l.id === a.id);
+    return { lignes: ctx.querySelectorAll(".rc-ruban-l").length, ecrites: rcLignesEcrites(RC.bd.k).length, ecart: mb ? Math.abs((mb.left + mb.width / 2) - (rb.left + rb.width / 2)) : 999, photo: R ? R.lignes.length : 0, dedans: !!cur && cur.X <= R.centre && cur.X + cur.W >= R.centre, id: a.id + "|" + a.cle, n: a.n }; }); };
+  const r15a = await ruban();
+  const i15 = await pg.evaluate(cle => { const j = RC.bd.A.findIndex(a => a.id + "|" + a.cle !== cle && a.id !== cle.split("|")[0]); return j >= 0 ? j : RC.bd.A.findIndex(a => a.id + "|" + a.cle !== cle); }, r15a.id); if (i15 >= 0) await pg.click('#rcBandeListe li[data-i="' + i15 + '"]');
+  const r15b = await ruban(); await cap("C14-38-bande-en-continu");
+  verif("recopie (1.4.11) : la bande en continu : le texte recopié de toute la copie (" + r15a.lignes + " lignes sur " + r15a.ecrites + ") et la photo de toutes ses lignes bout à bout (" + r15a.photo + ") en un seul ruban, le mot de l'arrêt au milieu (à " + Math.round(r15a.ecart) + " point" + (r15a.ecart >= 2 ? "s" : "") + " près) ; à un autre arrêt (ligne " + r15a.n + " → " + r15b.n + "), le ruban a glissé et le mot est encore au milieu (à " + Math.round(r15b.ecart) + " près)",
+    r15a.lignes === r15a.ecrites && r15a.photo === r15a.ecrites && r15a.ecart <= 3 && r15a.dedans && i15 >= 0 && r15b.id !== r15a.id && r15b.ecart <= 3 && r15b.dedans);
   // 1.4.7 (Paul 15:41) : la bande se rouvre à l'arrêt où l'on était, après l'avoir fermée, puis après un rechargement de la page
   const i8 = await pg.evaluate(id => RC.bd.A.findIndex(a => a.id === id && a.g.eleve === "se"), cible2); await pg.click('#rcBandeListe li[data-i="' + i8 + '"]'); await att(200);
   const vise8 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i]; return a.id + "|" + a.cle; });

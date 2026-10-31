@@ -956,28 +956,62 @@ function rcBandeRendre() {
   const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle], T = rcStyleArret(a), st = ' style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";box-shadow:inset 0 -2px 0 " + T.couleur + '"';
   let h = "", c = 0; P.forEach((p, i) => { h += escapeHtml(a.l.texte.slice(c, p[0])); const w = escapeHtml(a.l.texte.slice(p[0], p[1])); h += i >= a.g.de && i < a.g.a ? "<mark" + st + ">" + w + "</mark>" : '<span class="rc-mot" data-m="' + i + '">' + w + "</span>"; if (a.g.a === a.g.de && i === a.g.de - 1) h += ' <mark class="rc-manque"' + st + ">∧</mark>"; c = p[1]; });
   h += escapeHtml(a.l.texte.slice(c)); if (a.g.a === a.g.de && a.g.de === 0) h = '<mark class="rc-manque"' + st + ">∧</mark> " + h;
-  ctx.innerHTML = '<span class="rc-bande-n">ligne ' + a.n + "</span> " + h;
+  rcRubanTexte(ctx, B.k, a, h);
   carte.innerHTML = '<div class="rc-bande-mot"><span class="rc-eleve">' + escapeHtml(a.g.eleve || "(mot manquant)") + '</span> <span class="rc-fleche">→</span> <span class="rc-corr">' + escapeHtml(a.g.corrige || "(mot en trop)") + "</span></div><div class=\"rc-bande-pied\"><b class=\"rc-bande-type\" style=\"background:" + T.fond + ";color:" + (T.texte || T.couleur) + ";border-color:" + T.couleur + "\">" + T.libelle + "</b> " + (rcTypeFaute(a.g).nom === T.libelle ? "" : rcTypeFaute(a.g).nom + " · ") + "proposé par l’IA · ligne " + a.n + " · arrêt " + (B.i + 1) + " sur " + B.A.length + (d === "o" ? " · gardée" : d === "n" ? " · refusée" : "") + "</div>";
   touches.innerHTML = "<span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> oui, c’est une faute</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span><span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser</span><span><kbd>clic droit</kbd> sur le cadre : faute de ma recopie</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : la remettre</span><span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
   rcBandePhoto(a);
 }
-function rcBandePhoto(a) {
+/* [C14 1.4.11] (Paul 15:41 : « le texte doit s'afficher en continu aussi, autant en recopié qu'en manuscrit. Le texte complet devient une immense
+   bande qui s'affiche au fur et à mesure, comme une bande qu'on passerait entre ses doigts tout en regardant toujours l'endroit entre ses doigts.
+   c'est le principe de correction dictée ») : toutes les lignes écrites de la copie, bout à bout, en un seul ruban ; le mot de l'arrêt au milieu ;
+   d'un arrêt à l'autre, le ruban glisse. */
+function rcRubanTexte(ctx, k, a, hCourante) {
+  let ruban = ctx.querySelector(".rc-ruban-t"); if (!ruban) { ctx.innerHTML = '<span class="rc-bande-n"></span><div class="rc-ruban"><div class="rc-ruban-t"></div></div>'; ruban = ctx.querySelector(".rc-ruban-t"); }
+  ctx.querySelector(".rc-bande-n").textContent = "ligne " + a.n;
+  ruban.innerHTML = rcLignesEcrites(k).map((x, i) => '<span class="rc-ruban-l' + (x.id === a.id ? " on" : "") + '" data-n="' + (i + 1) + '">' + (x.id === a.id ? hCourante : escapeHtml(x.l.texte)) + "</span>").join('<span class="rc-ruban-sep" aria-hidden="true"></span>');
+  const m = ruban.querySelector("mark") || ruban.querySelector(".rc-ruban-l.on"), boite = ctx.querySelector(".rc-ruban");
+  if (m && boite) { const c = m.offsetLeft + m.offsetWidth / 2; ruban.style.transform = "translateX(" + Math.round(boite.clientWidth / 2 - c) + "px)"; }
+}
+function rcRubanPhoto(k) {
+  const marge = 0.022, out = []; let X = 0;
+  rcLignesEcrites(k).forEach((x, i) => { const L = x.l, im = SC.imgs[x.pid], ok = im && im.el.complete && im.el.naturalWidth;
+    const iw = ok ? im.w : 1000, ih = ok ? im.h : 1414, sx = Math.max(0, L.x0 - 0.01) * iw, sy = Math.max(0, Math.min(L.y0, L.y1) - marge) * ih, sw = Math.min(iw - sx, (L.x1 - L.x0 + 0.02) * iw), sh = Math.min(ih - sy, (Math.abs(L.y1 - L.y0) + marge * 1.5) * ih);
+    out.push({ x, i, im: ok ? im : null, sx, sy, sw, sh, X }); X += 0; });
+  return out;
+}
+function rcBandePhoto(a, anime) {
   const cv = RC.ui.querySelector("#rcBandePhoto"), w = Math.max(300, Math.round(cv.clientWidth || 800)), h = 110; if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
-  const x = cv.getContext("2d"); x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h); if (!a) return;
-  const im = SC.imgs[a.pid], L = a.l; if (!im || !im.el.complete || !im.el.naturalWidth) return;
-  const marge = 0.022, sx = Math.max(0, L.x0 - 0.01) * im.w, sy = Math.max(0, Math.min(L.y0, L.y1) - marge) * im.h, sw = Math.min(im.w - sx, (L.x1 - L.x0 + 0.02) * im.w), sh = Math.min(im.h - sy, (Math.abs(L.y1 - L.y0) + marge * 1.5) * im.h);
-  const k = Math.min(w / sw, h / sh), dx = (w - sw * k) / 2, dy = (h - sh * k) / 2; x.drawImage(im.el, sx, sy, sw, sh, dx, dy, sw * k, sh * k);
-  const q = rcPlaceSeg(a), X = u => dx + (u * im.w - sx) * k, Y = v => dy + (v * im.h - sy) * k, a0 = X(q.x0), a1 = Math.max(X(q.x1), a0 + 6), b0 = Math.max(2, Y(q.y0)), b1 = Math.min(h - 2, Math.max(Y(q.y1), b0 + 10));
-  const cd = rcCodeArret(a), T = RC_TYPES[cd];
-  x.fillStyle = rcRgba(T.couleur, .22); x.strokeStyle = T.couleur; x.lineWidth = 2; x.fillRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6); x.strokeRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6);
-  if (q.type.manque) { const m = (a0 + a1) / 2; x.strokeStyle = T.couleur; x.lineWidth = 3; x.beginPath(); x.moveTo(m - 9, b1 + 1); x.lineTo(m, b0 + 4); x.lineTo(m + 9, b1 + 1); x.stroke(); }
-  RC.bd.boite = { a0: a0 - 6, a1: a1 + 6, par: 1 / (k * im.w), q, code: cd, bord: a0 - 3, ym: (b0 + b1) / 2 };
+  const x = cv.getContext("2d"); x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h); if (!a) { if (RC.bd) RC.bd.ruban = null; return; }
+  const B = RC.bd, R = rcRubanPhoto(B.k), ecart = 26; let X = 0; R.forEach(r => { r.k = h / r.sh; r.X = X; r.W = r.sw * r.k; X += r.W + ecart; });
+  const cur = R.find(r => r.x.id === a.id); if (!cur || !cur.im) { if (B) B.ruban = null; return; }
+  const im = cur.im, q = rcPlaceSeg(a), Xr = u => cur.X + (u * im.w - cur.sx) * cur.k, Y = v => (v * im.h - cur.sy) * cur.k;
+  const centre = (Xr(q.x0) + Math.max(Xr(q.x1), Xr(q.x0) + 6)) / 2;
+  /* le ruban glisse d'un arrêt à l'autre (un sixième de seconde), puis s'arrête sur le mot */
+  const depart = anime !== false && B.rubanCentre != null && Math.abs(B.rubanCentre - centre) > 2 ? B.rubanCentre : centre; B.rubanCentre = centre;
+  const dessiner = c => {
+    const sh = w / 2 - c; x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h);
+    R.forEach(r => { const g = r.X + sh; if (g > w || g + r.W < 0) return;
+      if (r.im) x.drawImage(r.im.el, r.sx, r.sy, r.sw, r.sh, g, 0, r.W, h); else { x.fillStyle = "#f3eee4"; x.fillRect(g, 8, r.W, h - 16); }
+      x.fillStyle = "#b9ab95"; x.font = "600 11px system-ui"; x.fillText(String(r.i + 1), g + r.W + 7, 14); x.fillRect(g + r.W + ecart / 2 - 0.5, 22, 1, h - 30); });
+    return sh;
+  };
+  const finir = () => {
+    const sh = dessiner(centre), a0 = Xr(q.x0) + sh, a1 = Math.max(Xr(q.x1) + sh, a0 + 6), b0 = Math.max(2, Y(q.y0)), b1 = Math.min(h - 2, Math.max(Y(q.y1), b0 + 10));
+    const cd = rcCodeArret(a), T = RC_TYPES[cd];
+    x.fillStyle = rcRgba(T.couleur, .22); x.strokeStyle = T.couleur; x.lineWidth = 2; x.fillRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6); x.strokeRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6);
+    if (q.type.manque) { const m = (a0 + a1) / 2; x.strokeStyle = T.couleur; x.lineWidth = 3; x.beginPath(); x.moveTo(m - 9, b1 + 1); x.lineTo(m, b0 + 4); x.lineTo(m + 9, b1 + 1); x.stroke(); }
+    B.boite = { a0: a0 - 6, a1: a1 + 6, par: 1 / (cur.k * im.w), q, code: cd, bord: a0 - 3, ym: (b0 + b1) / 2 };
+    B.ruban = { lignes: R.map(r => ({ id: r.x.id, X: r.X + sh, W: r.W })), centre: w / 2 };
+  };
+  if (depart === centre || typeof requestAnimationFrame !== "function") { finir(); return; }
+  const t0 = Date.now(), duree = 170, pas = () => { if (RC.bd !== B || B.rubanCentre !== centre) return; const t = Math.min(1, (Date.now() - t0) / duree), e = t * (2 - t); if (t < 1) { dessiner(depart + (centre - depart) * e); requestAnimationFrame(pas); } else finir(); };
+  finir(); dessiner(depart); requestAnimationFrame(pas);
 }
 function rcBandeGlisser(du) {
   const B = RC.bd, a = B && B.A[B.i]; if (!a || B.attente) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a), x0 = rcBorne(q.x0 + du, 0, 0.99), x1 = rcBorne(q.x1 + du, 0.01, 1);
   rcLigneMaj(B.k, a.pid, a.id, l => { l.places = Object.assign({}, l.places, { [a.cle]: { x0, x1 } }); });
   const mk = a.l.marquesBande && a.l.marquesBande[a.cle], m = mk && scCopie(B.k).marques[mk]; if (m) { const r = rcPlaceSeg(a); Object.assign(m, { x0: r.x0, x1: r.x1, y0: r.y0, y1: r.y1, modifieLe: new Date().toISOString() }); }
-  rcBandePhoto(a);
+  rcBandePhoto(a, false);
 }
 function rcBandeSouris() {
   const cv = RC.ui.querySelector("#rcBandePhoto"); if (cv.dataset.branche) return; cv.dataset.branche = "1";

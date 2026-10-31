@@ -7831,6 +7831,13 @@ function rcBordDroit(cv) {
 }
 /* C14 (31/10, Paul 07:11) : la numérotation ne prend que les lignes écrites (et celle où tu écris) */
 function rcNumeros(d) { const n = {}; let k = 0; d.ordre.forEach(id => { if ((d.lignes[id].texte || "").trim() || id === RC.ligne) n[id] = ++k; }); return n; }
+/* C14 (31/10, Paul 07:27) : une ligne trop pleine rapetisse juste assez pour se lire en entier ; rien n'est mangé */
+function rcAjusterTaille(input) {
+  if (!input) return; const base = 18 * (RC.echelle || 1);
+  RC.mesure = RC.mesure || document.createElement("canvas").getContext("2d"); RC.mesure.font = base + "px Georgia, serif";
+  const t = RC.mesure.measureText(input.value || "").width, place = input.clientWidth - 6;
+  input.style.fontSize = (t > place && place > 0 ? Math.max(base * 0.45, base * place / t) : base) + "px"; if (t > place) input.scrollLeft = 0;
+}
 function rcCourante() { const d = RC.page && rcDocument(RC.page); return d && d.lignes[RC.ligne]; }
 function rcNoeud(tag, attrs, texte) {
   const e = document.createElement(tag);
@@ -7967,7 +7974,7 @@ function rcRapprocherLignes() {
       input.value = d.lignes[id].texte || "";
       input.onfocus = () => rcSelectionner(id, false, false);
       input.onclick = () => { rcSelectionner(id, false, false); rcGarder(); };
-      input.oninput = () => { const ligne = rcDocument(RC.page).lignes[id]; ligne.texte = input.value; rcGarder(); };
+      input.oninput = () => { const ligne = rcDocument(RC.page).lignes[id]; ligne.texte = input.value; rcAjusterTaille(input); rcGarder(); };
       row.appendChild(input); feuille.appendChild(row);
     }
     const place = feuille.children[rang]; if (place !== row) feuille.insertBefore(row, place || null);
@@ -7980,7 +7987,7 @@ function rcMettreEnPage() {
   if (!RC.ouvert || !RC.ui || !SC.pages[RC.page]) return;
   const e = RC.ui, p = SC.pages[RC.page], zone = e.querySelector("#rcDefile"), duo = e.querySelector("#rcPapiers");
   const largeur = Math.max(580, zone.clientWidth - 28) * RC.zoom, w = (largeur - 18) / 2, h = w * p.h / p.w;
-  const echelle = w / 620;
+  const echelle = w / 620; RC.echelle = echelle;
   duo.style.width = largeur + "px"; duo.style.setProperty("--rc-echelle", echelle);
   e.querySelector("#rcPhoto").style.height = h + "px"; e.querySelector("#rcFeuille").style.height = h + "px";
   const d = rcDocument(p.id);
@@ -7990,6 +7997,7 @@ function rcMettreEnPage() {
     row.style.left = (l.x0 * w) + "px"; row.style.top = (l.y0 * h - 12 * echelle) + "px";
     row.style.width = Math.max(24, Math.hypot((l.x1 - l.x0) * w, (l.y1 - l.y0) * h)) + "px";
     row.style.transform = "rotate(" + a + "deg)";
+    rcAjusterTaille(row.querySelector("input"));
   });
   rcMarques(); rcAgrandir();
 }

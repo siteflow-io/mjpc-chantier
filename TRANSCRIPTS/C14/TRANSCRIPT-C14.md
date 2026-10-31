@@ -899,3 +899,22 @@ MEMO
 
 31/10/2026 07:24
 MEMO
+
+## Tour 39 — 31/10/2026 07:27 → 31/10/2026 07:30
+
+**Paul :** 150. oui évidemment et c'est ainsi d'ailleurs que ça épousera la vraie taille d'écriture de l'élève, on est d'accord?
+
+**Fait.** `recopie.js` (`c14-poignees`) : `rcAjusterTaille` — si le texte d'une ligne dépasse la place entre ses poignées, ses lettres rapetissent juste assez (au plus jusqu'à 45 % de la taille), à chaque frappe et à chaque mise en page. Banc : vérification ajoutée (ligne de 141 caractères : 655 px montrés sur 655, lettres 12,4 au lieu de 21,6) → « BANC : 78 vérifications, 0 défaut ». Candidate 1.3.1-RU refaite : 566 798 o, md5 `bd61a08bef22ed856979f343d88dd845` ; écart avec la 1.3.0 en ligne : seulement ce code. Vrai site en lecture seule, 1.3.0 puis 1.3.1 : 30 copies, 605 marques, 0 différente.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 152 ; 148 ; 53 ; 45 ; 36.
+
+151. C'est fait dans la 1.3.1 : une ligne trop pleine rapetisse juste assez pour se lire en entier. Banc : 78 vérifications, 0 défaut ; tes vraies copies, 1.3.0 contre 1.3.1 : aucune différence.
+
+152. Épouser la vraie taille de l'élève : pas tout à fait. Rapetisser ne joue que sur les lignes trop pleines ; une ligne où l'élève écrit large garde tes lettres à leur taille. Pour épouser vraiment, chaque ligne devrait finir là où l'encre de l'élève finit sur la photo (l'app sait trouver la fin de l'encre) ; ça rapprocherait aussi tes mots de leur place sur la photo, utile pour la bande. Je te le propose pour après ta journée de recopie. Pour mettre la 1.3.1 en ligne maintenant : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 07:30
+MEMO

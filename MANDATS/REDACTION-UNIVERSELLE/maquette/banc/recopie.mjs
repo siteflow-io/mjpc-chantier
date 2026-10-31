@@ -231,6 +231,12 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   const st = await pg.evaluate(ids => ids.map(id => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) return x.l.corrige; } return null; }), [l0.id, l1.id]);
   verif("recopie (1.4.0) : le bon retour, même entouré de texte, est chargé ligne par ligne et compte ses fautes (" + ok1 + ")", /^Chargé/.test(ok1) && ok1.includes(att1 + " faute") && st[0] === l0.texte && st[1] === l1.texte);
   await cap("C14-28-corrige-ia");
+  // 1.4.8 (Paul 15:59) : le compteur de toute la classe, toujours visible, et sur le bouton d'export
+  const cpt = await pg.evaluate(() => { const c = rcCompteIA(), t = document.querySelector("#rcIAEtat").textContent, b = document.querySelector("#rcExportIA").textContent;
+    const attendu = []; for (const k of SC.copies) { const L = rcLignesEcrites(k); if (L.length) attendu.push(L.some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe)); }
+    return { c, t, b, rec: attendu.length, aFaire: attendu.filter(Boolean).length }; });
+  verif("recopie (1.4.8) : le compteur d'en haut (le même, pas un nouveau) donne le compte de toute la classe : « " + cpt.t + " » (" + cpt.rec + " copies recopiées, " + cpt.aFaire + " à exporter) ; le bouton reste « " + cpt.b.trim() + " »",
+    cpt.c.rec === cpt.rec && cpt.c.aFaire === cpt.aFaire && (cpt.aFaire ? cpt.t.includes(cpt.aFaire + " à exporter") && cpt.t.includes((cpt.rec - cpt.aFaire) + " copie") : /Toutes tes copies recopiées/.test(cpt.t)) && !/\(\d+\)/.test(cpt.b));
   await pg.click("#rcIAFermer"); await pg.click("#rcExportIA"); await att(150); const tout = await pg.locator("#rcIAEtat").textContent(); await pg.click("#rcImportIA"); await att(100);
   verif("recopie (1.4.2) : l'export ne reprend que les copies sans corrigé à jour, 4 au plus ; quand tout est fait, il le dit (" + tout + ")", /Toutes tes copies recopiées ont leur corrigé/.test(tout) && ex.copies.length <= 4);
   await att(1500); const auSite = await pg.evaluate(t => { let s = ""; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (/hub/.test(k)) s += localStorage.getItem(k); } return s.includes(JSON.stringify(t).slice(1, -1)) && s.includes('"corrigeLe"'); }, l0.texte);

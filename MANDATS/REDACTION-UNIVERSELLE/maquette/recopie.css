@@ -45,7 +45,8 @@
 
 .rc-pages{display:flex;flex-direction:column;gap:26px}
 .rc-page-titre{grid-column:1/-1;font:600 13px system-ui;color:#7a6a55;margin:0 0 -10px}
-.rc-ia-etat{font-size:12px;color:#426531;margin-left:6px}
+.rc-ia-etat{font-size:14px;font-weight:650;color:#2f5a1f;background:#eef6e6;border:1px solid #b9d6a4;border-radius:6px;padding:3px 9px;margin-left:6px}
+.rc-ia-etat:empty{display:none}
 .rc-ia{position:fixed;inset:0;z-index:970;display:flex;align-items:center;justify-content:center;background:#2b252066}
 .rc-ia[hidden]{display:none}
 .rc-ia-c{display:flex;flex-direction:column;gap:8px;width:min(760px,94vw);padding:16px;border-radius:8px;background:#fffdf8;box-shadow:0 8px 30px #0004}

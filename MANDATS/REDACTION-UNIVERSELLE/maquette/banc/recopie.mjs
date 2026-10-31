@@ -128,6 +128,16 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   const mg = await pg.evaluate(() => { const i = document.querySelectorAll(".rc-saisie")[2]; return { sw: i.scrollWidth, cw: i.clientWidth, fs: parseFloat(getComputedStyle(i).fontSize), base: 18 * RC.echelle }; });
   verif("recopie (C14) : une ligne trop pleine rapetisse et se lit en entier, rien n'est mangé (" + mg.sw + " / " + mg.cw + " px, lettres " + mg.fs.toFixed(1) + " au lieu de " + mg.base.toFixed(1) + ")", mg.sw <= mg.cw + 1 && mg.fs < mg.base);
   await champ(2).fill("");
+  await champ(3).click(); await pg.click("#rcAjouter"); await att(150); await pg.keyboard.type("Ligne ajoutée");
+  const nouv = await pg.evaluate(() => RC.ligne);
+  const cible = await pg.locator('#rcLignesSVG circle[data-rc-cote="gauche"]').first().boundingBox();
+  for (const cote of ["gauche", "droite"]) {
+    const c = await pg.locator('#rcLignesSVG circle[data-rc-ligne="' + nouv + '"][data-rc-cote="' + cote + '"]').boundingBox();
+    await pg.mouse.move(c.x + c.width / 2, c.y + c.height / 2); await pg.mouse.down(); await pg.mouse.move(c.x + c.width / 2, cible.y - 10, { steps: 8 }); await pg.mouse.up(); await att(120);
+  }
+  const rang = await pg.evaluate(id => { const d = RC.documents[RC.page]; return { i: d.ordre.indexOf(id), n: rcNumeros(d)[id], champ: document.querySelectorAll(".rc-saisie")[0].value, titre: document.querySelector("#rcLigneTitre").textContent }; }, nouv);
+  verif("recopie (C14) : une ligne ajoutée puis remontée aux poignées prend sa place, son numéro et sa place sur la feuille (rang " + rang.i + ", n° " + rang.n + ", " + rang.titre + ")", rang.i === 0 && rang.n === 1 && rang.champ === "Ligne ajoutée");
+  for (let k = 0; k < 3; k++) { await pg.click("#rcAnnuler"); await att(80); }
   await cap("C15-24-recopie-six-lignes");
   await pg.setViewportSize({ width: 390, height: 800 }); await att(180);
   const lisible = await pg.evaluate(() => {

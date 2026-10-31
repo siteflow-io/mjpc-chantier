@@ -1411,3 +1411,28 @@ MEMO
 
 31/10/2026 11:19
 MEMO
+
+## Tour 63 — 31/10/2026 11:25 → 31/10/2026 11:26
+
+**Paul :** Je pense qu'il y a aussi à cadrer les types d'erreur. Des mots manquants par exemple ne doivent jamais tomber sur des mots, et la ponctuation pareil. Par ailleurs je dois pouvoir modifier directement les erreurs car sinon je n'ai pas la main pour vérifier ma recopie ( fautes de recopie). Et dans ce cas, la faute disparait évidemment si c'est mon erreur. Cas concret : l'élève écrit "loup" et j'ai tapé "lou". Compté comme une erreur par l'IA, elle a raison, mais je dois pouvoir modifier à la relecture bande. Enfin je dois pouvoir déplacer le cadre jaune afin de mieux viser le mot si besoin. C'est un glissé à droite ou à gauche. Tu as compris? Il faudra aussi voir la hauteur du cadre jaune peut être, dans la mesure où la ligne de la copie manuscrite ne colle pas toujours aux marges rectilignes du haut et du bas
+
+**Fait.** Rien codé. Relu `rcArrets` : une ligne retouchée après le corrigé perd tous ses arrêts (le texte n'est plus celui que l'IA a corrigé).
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 212 ; 53 ; 45 ; 36.
+
+208. Compris. Tu gardes donc le cadre sur le mot (207), avec ces quatre réglages ; je les propose un par point.
+
+209. Les types de faute. Un mot faux : le cadre sur le mot. Un mot en trop : le cadre sur le mot. Un mot manquant ou une ponctuation manquante : jamais sur un mot, un signe ∧ dans le blanc entre les deux mots, là où il manque (l'app cherche ce blanc dans l'encre). Une ponctuation fausse : un petit cadre sur le signe.
+
+210. Ta recopie, corrigée depuis la bande : un clic sur la ligne recopiée (ou la touche E) la rend modifiable ; tu corriges « lou » en « loup », Entrée ; la ligne est enregistrée, l'app la recompare au même corrigé de l'IA, et la faute qui venait de ta frappe disparaît. Les autres fautes de la ligne restent.
+
+211. Viser : tu glisses le cadre à gauche ou à droite à la souris (← et → le décalent aussi au clavier) ; la place choisie est celle de la marque sur la copie. La hauteur : le cadre se règle seul sur le haut et le bas de l'encre du mot, pas sur les lignes du cahier.
+
+212. Ça te va, les quatre ?
+
+À tester : rien de neuf.
+
+31/10/2026 11:26
+MEMO

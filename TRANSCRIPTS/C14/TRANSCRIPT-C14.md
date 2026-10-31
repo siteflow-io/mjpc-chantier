@@ -1342,3 +1342,30 @@ MEMO
 
 31/10/2026 10:47
 MEMO
+
+## Tour 60 — 31/10/2026 10:57 et 11:01 → 31/10/2026 11:07
+
+**Paul (10:57) :** quand je clique sur vérifier et charger il ne se passe rien.
+
+**Fait (10:57 → 11:00).** Reproduit en privé avec la 1.4.1 en ligne sur la vraie classe (écritures interceptées) : export de 21 copies, 661 lignes, 94 224 octets ; le même fichier recollé : « Chargé : 21 copies, 661 lignes, 0 faute proposée », aucune erreur. Cause probable, non mesurée chez Paul : un retour d'IA d'une autre forme fait échouer le code sans message, ou un retour trop long coupé. Codé (1.4.2) : le chargement répond toujours, en couleur ; retour coupé détecté et dit ; plusieurs fichiers collés acceptés ; listes ou objets acceptés ; export par 4 copies sans corrigé à jour. Commande de vérification arrêtée par Paul.
+
+**Paul (11:01) :** [5 captures : la bande sur deux copies réelles ; cadre jaune à côté des mots ; la bande d'une copie affichée sous le nom d'une autre] ça ne va pas DU TOUT. déjà le repérage est absurde. De plus, une fois que je suis dans ce mode je suis complètement bloqué, je ne peux plus revenir à ma recopie. En plus, j'ai changé d'élève et je reste sur la bande d'Eva.
+
+**Claude (message envoyé d'abord) :**
+
+200. Tu as raison, ça ne va pas, et ce sont trois erreurs de ma part. Pour sortir tout de suite : recharge la page (F5), tu retrouves ta recopie là où tu en étais et rien n'est perdu. Je mesure le repérage sur tes captures et je corrige les trois maintenant.
+
+**Fait.** Causes : (1) la place d'un mot était prise d'une poignée à l'autre, or depuis 1.3.1 les poignées vont de la marge au bord : sur une ligne courte, le mot tombait dans le blanc ; (2) aucun bouton pour sortir de la bande, seulement Échap, et « ← Les scans » ou un autre écran ne la fermaient pas ; (3) changer de copie ne fermait pas la bande. Mesuré sur les 4 lignes réelles des captures (cadre placé entre le premier et le dernier trait d'encre de la ligne, marge rouge et quadrillage exclus ; place vraie lue à l'œil) : « cher » 83 %, « tranchés » 87 %, « manque » 56 %, « êtres » 100 % du mot recouvert ; avant : « cher » 0 %. Essai du découpage par les blancs entre mots : bon sur 1 ligne sur 4, non retenu. 1.4.2 (`c14-poignees`) : `rcEncre`, `rcPlaceSeg` ; les fautes déjà gardées par la bande sont replacées à l'ouverture de la bande (`rcReplacerBande`, il faut les photos du navigateur) ; « ← Revenir à la recopie » dans la bande, le bouton du haut devient « ■ Fermer la bande » ; la bande se ferme au changement de copie et en quittant la recopie. Banc : « BANC : 105 vérifications, 0 défaut ». Candidate 1.4.2-RU :  o, md5 ``. Vrai site en lecture seule : export de la 1.4.2 = 1 copie (les autres ont déjà leur corrigé), recollée : « Chargé : 1 copie, 42 lignes » ; 1.4.1 puis 1.4.2 : 30 copies, 0 différente.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 202 ; 53 ; 45 ; 36.
+
+201. Corrigé dans la 1.4.2, les trois. Le cadre se place maintenant dans l'écriture de la ligne, entre son premier et son dernier trait, plus d'une poignée à l'autre : sur tes captures, il recouvre le bon mot sur les 4 lignes (de 56 % à 100 % du mot), au lieu de tomber dans le blanc. Les fautes que tu as déjà gardées sur la copie d'Eva se replacent seules à la prochaine ouverture de sa bande. Dans la bande, un bouton « ← Revenir à la recopie », et le bouton du haut devient « ■ Fermer la bande ». Changer de copie ferme la bande. Le chargement du corrigé répond toujours, et l'export ne prend que 4 copies sans corrigé à la fois. Banc : 105 vérifications, 0 défaut ; tes copies au site : rien ne change.
+
+202. Pour la mettre en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 11:07
+MEMO

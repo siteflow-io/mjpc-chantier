@@ -23,7 +23,18 @@ export async function eprouverRemiseZero({pg,verif,cap,att,err}) {
     const d=await p.waitForEvent("download"); const f=await d.path(); return JSON.parse(await fs.readFile(f,"utf8"));
   };
   const avantAnnuler = stable(await lireHub(pg));
-  await demander(); await cap("C15-59b-confirmation"); await pg.locator('#rzAnnuler').click(); await att(1200);
+  await demander(); await cap("C15-59b-confirmation");
+  const tailles=[];
+  for(const [width,height] of [[1280,720],[1366,768],[1536,864],[1920,1080],[390,800]]) {
+    await pg.setViewportSize({width,height}); await att(120);
+    tailles.push(await pg.locator('#rzDialogue .sc-modale-c').evaluate(e=>{
+      const r=e.getBoundingClientRect(),bs=Array.from(e.querySelectorAll('button')).map(b=>b.getBoundingClientRect());
+      return r.left>=0&&r.right<=innerWidth+1&&r.top>=0&&r.bottom<=innerHeight+1&&bs.every(b=>b.left>=r.left&&b.right<=r.right+1&&b.bottom<=r.bottom+1)&&(bs[0].right<=bs[1].left+1||bs[0].bottom<=bs[1].top+1);
+    }));
+    await cap('C15-59b-confirmation-'+width);
+  }
+  verif("remise à zéro : confirmation et deux boutons accessibles sans chevauchement aux quatre tailles de bureau et à 390 pixels",tailles.every(Boolean));
+  await pg.setViewportSize({width:1536,height:864}); await pg.locator('#rzAnnuler').click(); await att(1200);
   verif("remise à zéro : Annuler ne change aucune copie et ne crée aucune archive",avantAnnuler===stable(await lireHub(pg)));
   await demander(); await pg.keyboard.press("Escape");
   verif("remise à zéro : Échap ferme la confirmation sans boîte native",!(await pg.locator('#rzDialogue').count()));
@@ -55,6 +66,7 @@ export async function eprouverRemiseZero({pg,verif,cap,att,err}) {
   await pg.locator('#rzDialogue').waitFor({state:"detached"}); await att(1800);
   const apres=await lireHub(pg), archive=archives(apres).find(a=>a._meta.source===chemin.join("/")&&stable(a.data)===stable(copie(avant)));
   verif("remise à zéro : export JSON complet, source exacte et copie bit à bit conservée dans la corbeille",stable(exportee.data)===stable(copie(avant))&&exportee._meta.source===chemin.join("/")&&!!archive);
+  verif("remise à zéro : les clés internes avec un point et les champs vides survivent dans les sauvegardes locales JSON",!!archive&&stable(JSON.parse(archive._meta.versionLocaleJSON))===stable(JSON.parse(exportee._meta.versionLocaleJSON))&&stable(JSON.parse(archive._meta.suiviLocalJSON))===stable(JSON.parse(exportee._meta.suiviLocalJSON))&&/lexique\./.test(archive._meta.versionLocaleJSON));
   verif("remise à zéro : deux archives rapprochées ont deux identifiants, sans écraser la précédente",archives(apres).length===archives(avant).length+1&&new Set(archives(apres).map(a=>a._meta.idArchive)).size===archives(apres).length);
   verif("remise à zéro : seule la copie choisie disparaît ; toutes les autres copies restent identiques",copie(apres)===null&&stable(autres(apres))===stable(autres(avant)));
   verif("remise à zéro : photos et originaux identiques en SHA-256, pages, élèves et ordre conservés",photos===await photo(pg)&&pages===stable(dans(apres,["redactions",chemin[1],"scan",chemin[3],"pages"])));

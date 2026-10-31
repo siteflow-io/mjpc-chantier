@@ -125,7 +125,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   const nums = await pg.evaluate(() => Array.from(document.querySelectorAll("#rcLignesSVG text.rc-numero")).map(t => t.textContent).join(",") + " · " + document.querySelector("#rcLigneTitre").textContent);
   verif("recopie (C14) : seules la ligne écrite et celle où l'on écrit portent un numéro, à la suite (" + nums + ")", nums === "1,2 · Ligne 2 sur 2");
   // 1.3.2 : une page ouverte avant (poignées encore à leur place automatique) se range à la marge ; une poignée tirée par Paul ne bouge pas
-  const ancien = await pg.evaluate(() => { const s = state.copies[RC.copie].scan.recopie.pages[RC.page], o = rcListe(s.ordre); s.lignes[o[3]].x0 = 0.0204; s.lignes[o[3]].x1 = 0.9685; s.lignes[o[4]].x0 = 0.0211921755; s.lignes[o[4]].recale = true; return { copie: RC.copie, page: RC.page, a: o[3], b: o[4] }; });
+  const ancien = await pg.evaluate(() => { const s = state.copies[RC.copie].scan.recopie.pages[RC.page], o = rcListe(s.ordre); s.lignes[o[3]].x0 = 0.0204; s.lignes[o[3]].x1 = 0.9685; s.lignes[o[4]].x0 = 0.0211921755; s.lignes[o[4]].recale = true; delete s.marge; return { copie: RC.copie, page: RC.page, a: o[3], b: o[4] }; });
   const autre = await pg.evaluate(c => SC.copies.find(k => k !== c), ancien.copie);
   await pg.selectOption("#rcCopie", autre); await att(150); await pg.selectOption("#rcCopie", ancien.copie); await att(150); await pg.selectOption("#rcPage", ancien.page); await att(200);
   const rg = await pg.evaluate(o => { const d = RC.documents[RC.page]; return { a0: d.lignes[o.a].x0, a1: d.lignes[o.a].x1, b0: d.lignes[o.b].x0 }; }, ancien);
@@ -163,6 +163,20 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   const dx = apresG.map((x, i) => x - avantG[i]);
   await pg.click("#rcAnnuler"); await att(100); const annuleG = await pg.evaluate(ids => ids.map(id => RC.documents[RC.page].lignes[id].x0), ids);
   verif("recopie (C14) : Ctrl + clic choisit deux poignées, elles se déplacent ensemble, Annuler les remet (" + dx.map(v => v.toFixed(3)).join(" / ") + ")", dx[0] > 0.01 && Math.abs(dx[0] - dx[1]) < 1e-9 && annuleG.every((x, i) => x === avantG[i]));
+  // 1.3.2 (Paul 08:08) : le trait de marge et ses deux poignées ; les débuts de ligne le suivent, sauf une ligne tirée à la main
+  const tm = await pg.evaluate(() => { const d = RC.documents[RC.page]; return d.marge && { xh: d.marge.xh, xb: d.marge.xb, n: document.querySelectorAll("#rcLignesSVG circle[data-rc-marge]").length }; });
+  verif("recopie (1.3.2) : le trait de marge est posé seul sur la marge rouge, avec ses deux poignées (" + (tm ? tm.xh.toFixed(3) + " · " + tm.xb.toFixed(3) + " · " + tm.n : "absent") + ")", tm && tm.n === 2 && Math.abs(tm.xh - 0.121) < 0.01 && Math.abs(tm.xb - 0.121) < 0.01);
+  const o = await pg.evaluate(() => RC.documents[RC.page].ordre.slice()), x0s = () => pg.evaluate(o => o.map(id => RC.documents[RC.page].lignes[id].x0), o);
+  const c2 = await pg.locator('#rcLignesSVG circle[data-rc-ligne="' + o[2] + '"][data-rc-cote="gauche"]').boundingBox();
+  await pg.mouse.move(c2.x + c2.width / 2, c2.y + c2.height / 2); await pg.mouse.down(); await pg.mouse.move(c2.x + c2.width / 2 - 25, c2.y + c2.height / 2, { steps: 5 }); await pg.mouse.up(); await att(100);
+  await pg.locator('#rcLignesSVG circle[data-rc-marge="haut"]').scrollIntoViewIfNeeded(); await att(100);
+  const avM = await x0s(), mb = await pg.locator('#rcLignesSVG circle[data-rc-marge="haut"]').boundingBox();
+  await pg.mouse.move(mb.x + mb.width / 2, mb.y + mb.height / 2); await pg.mouse.down(); await pg.mouse.move(mb.x + mb.width / 2 + 40, mb.y + mb.height / 2, { steps: 6 }); await pg.mouse.up(); await att(120);
+  const apM = await x0s(), dM = apM.map((x, i) => x - avM[i]);
+  const main = await pg.evaluate(o => o.map(id => !!RC.documents[RC.page].lignes[id].recale), o);
+  await pg.click("#rcAnnuler"); await att(100); const reM = await x0s(), tm2 = await pg.evaluate(() => RC.documents[RC.page].marge);
+  verif("recopie (1.3.2) : tirer le trait de marge recale tous les débuts de ligne, sauf celui tiré à la main ; Annuler remet tout (" + dM.map(v => v.toFixed(3)).join(" ") + ")", main[2] && dM.every((v, i) => main[i] ? v === 0 : v > 0.005) && reM.every((x, i) => x === avM[i]) && Math.abs(tm2.xh - tm.xh) < 1e-9);
+  await pg.click("#rcAnnuler"); await att(80);
   await cap("C15-24-recopie-six-lignes");
   await pg.setViewportSize({ width: 390, height: 800 }); await att(180);
   const lisible = await pg.evaluate(() => {

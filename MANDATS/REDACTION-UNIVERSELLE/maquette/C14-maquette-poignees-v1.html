@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.3.2-RU-C14-1";
+var APP_VERSION = "1.3.2-RU-C14-2";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -6666,6 +6666,9 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .rc-poignee{fill:#fffdf8;stroke:#3d752e;stroke-width:2;vector-effect:non-scaling-stroke;cursor:move;pointer-events:all}
 .rc-poignee:hover{fill:#cce5b7}
 .rc-poignee.sel{fill:#5d8c45;stroke:#2c5a1e}
+.rc-marge-trait{stroke:#c8323c;stroke-width:2.5;stroke-dasharray:7 5;vector-effect:non-scaling-stroke;pointer-events:none}
+.rc-marge-poignee{fill:#fff4f4;stroke:#c8323c;stroke-width:2.5;vector-effect:non-scaling-stroke;cursor:ew-resize;pointer-events:all}
+.rc-marge-poignee:hover{fill:#f6c7cb}
 .rc-numero{font:600 14px system-ui;fill:#3d752e;paint-order:stroke;stroke:#fff;stroke-width:4;pointer-events:none}
 .rc-selection{fill:#cce5b733;stroke:#4b7c38;stroke-width:1.5;vector-effect:non-scaling-stroke;pointer-events:none}
 #rcAbsente{position:absolute;inset:15% 10%;padding:20px;background:#fff8e5;text-align:center;color:#72582e}
@@ -7806,10 +7809,13 @@ function rcDocument(pid) {
     if (im && im.el.complete && im.el.naturalWidth) {
       const cv = document.createElement("canvas"); cv.width = im.w; cv.height = im.h; cv.getContext("2d").drawImage(im.el, 0, 0);
       const marge = rcMargeRouge(cv), bord = rcBordDroit(cv), auto = v => Math.abs(v * 1e4 - Math.round(v * 1e4)) < 1e-6;
-      RC.sansMarge = RC.sansMarge || {}; RC.sansMarge[pid] = !marge;
-      d.ordre.forEach(id => { const l = d.lignes[id]; if (l.recale) return;
-        if (marge && auto(l.x0)) l.x0 = rcBorne(marge((l.y0 + l.y1) / 2) - 0.008, 0, 0.97);
-        if (bord && auto(l.x1)) l.x1 = bord; });
+      if (!d.marge) {
+        RC.sansMarge = RC.sansMarge || {}; RC.sansMarge[pid] = !marge;
+        d.marge = marge ? { xh: rcBorne(marge(0), 0.01, 0.6), xb: rcBorne(marge(1), 0.01, 0.6) } : { xh: 0.15, xb: 0.15, absente: true };
+        d.ordre.forEach(id => { const l = d.lignes[id]; if (l.recale) return;
+          if (marge && auto(l.x0)) l.x0 = rcBorne(marge((l.y0 + l.y1) / 2) - 0.008, 0, 0.97);
+          if (bord && auto(l.x1)) l.x1 = bord; });
+      }
     }
   } else {
     d = { schema: 1, lignes: {}, ordre: [] };
@@ -7818,6 +7824,7 @@ function rcDocument(pid) {
       const cv = document.createElement("canvas"); cv.width = im.w; cv.height = im.h; cv.getContext("2d").drawImage(im.el, 0, 0);
       const trouvees = scLignes(cv, { recopie: true }); if (trouvees.fiable !== false) L = trouvees.l || [];
       marge = rcMargeRouge(cv); bord = rcBordDroit(cv); RC.sansMarge = RC.sansMarge || {}; RC.sansMarge[pid] = !marge;
+      d.marge = marge ? { xh: rcBorne(marge(0), 0.01, 0.6), xb: rcBorne(marge(1), 0.01, 0.6) } : { xh: 0.15, xb: 0.15, absente: true };
     }
     L.filter(l => l.ecrite !== false).forEach(l => { const id = scId("ligne"), yl = rcBorne(l.y, 0, 1); d.ordre.push(id); d.lignes[id] = {
       id, x0: marge ? rcBorne(marge(yl) - 0.008, 0, 0.97) : rcBorne(l.x0, 0, 0.97), x1: bord ? bord : rcBorne(l.x1, 0.03, 1),
@@ -8046,10 +8053,16 @@ function rcMarques() {
     for (const cote of ["gauche", "droite"]) s += '<circle class="rc-poignee' + (RC.selP && RC.selP.has(id + "|" + cote) ? " sel" : "") + '" data-rc-ligne="' + attributId + '" data-rc-cote="' + cote + '" cx="' + (cote === "gauche" ? x0 : x1) + '" cy="' + (cote === "gauche" ? y0 : y1) + '" r="7" role="button" aria-label="' + (cote === "gauche" ? "Début" : "Fin") + " de la ligne " + (N[id] || "vide") + '"><title>Glisse cette poignée pour recaler ' + (cote === "gauche" ? "le début" : "la fin") + " de la ligne" + (N[id] ? " " + N[id] : " (vide, sans numéro)") + ".</title></circle>";
     s += "</g>";
   });
+  if (d.marge) { const xh = d.marge.xh * 1000, xb = d.marge.xb * 1000;
+    s += '<g data-rc-trait="1"><line class="rc-marge-trait" x1="' + xh + '" y1="0" x2="' + xb + '" y2="' + H + '"/>';
+    [["haut", xh + (xb - xh) * 0.02, 0.02 * H], ["bas", xh + (xb - xh) * 0.98, 0.98 * H]].forEach(([q, cx, cy]) => { s += '<circle class="rc-marge-poignee" data-rc-marge="' + q + '" cx="' + cx + '" cy="' + cy + '" r="9" role="button" aria-label="Marge, poignée du ' + q + '"><title>Cale ce trait rouge sur la marge de la copie : tous les débuts de ligne le suivent, sauf ceux que tu as tirés à la main.</title></circle>'; });
+    s += "</g>"; }
   // Les poignées gardent leur capture de pointeur pendant le déplacement.
   if (!RC.drag) svg.innerHTML = s;
   else {
-    const ids = [...new Set((RC.drag.avants || []).map(x => x.id).concat([RC.ligne]))];
+    const tr = svg.querySelector("g[data-rc-trait]"); if (tr && d.marge) { const xh = d.marge.xh * 1000, xb = d.marge.xb * 1000, t = tr.querySelector("line"); t.setAttribute("x1", xh); t.setAttribute("x2", xb);
+      tr.querySelectorAll("circle").forEach(c => { const f = c.dataset.rcMarge === "haut" ? 0.02 : 0.98; c.setAttribute("cx", xh + (xb - xh) * f); }); }
+    const ids = [...new Set((RC.drag.avants || []).map(x => x.id).concat(RC.ligne ? [RC.ligne] : []))];
     ids.forEach(lid => { const l = d.lignes[lid], g = Array.from(svg.querySelectorAll("g[data-rc-ligne]")).find(n => n.dataset.rcLigne === lid);
     if (g && l) {
       const trait = g.querySelector("line"); [["x1", l.x0 * 1000], ["y1", l.y0 * H], ["x2", l.x1 * 1000], ["y2", l.y1 * H]].forEach(([k, v]) => trait.setAttribute(k, v));
@@ -8063,7 +8076,7 @@ function rcEtatLigne() {
   RC.ui.querySelector("#rcLigneTitre").textContent = rang >= 0 ? "Ligne " + N[RC.ligne] + " sur " + e : "Une ligne à ajouter";
   RC.ui.querySelector("#rcRetirer").disabled = rang < 0;
   RC.ui.querySelector("#rcAnnuler").disabled = RC.annule.length === 0;
-  RC.ui.querySelector("#rcMessage").textContent = (RC.sansMarge && RC.sansMarge[RC.page] ? "Marge rouge non trouvée sur cette page : place toi-même le début des lignes. " : "") + (n ? "La photo et la feuille défilent ensemble. Le total de lignes de ta correction reste celui que tu as saisi." : "Ajoute une ligne, puis place ses poignées sur l'écriture avant de taper.");
+  RC.ui.querySelector("#rcMessage").textContent = (RC.sansMarge && RC.sansMarge[RC.page] ? "Marge rouge non trouvée sur cette page : cale le trait rouge sur la marge de la copie (ses deux poignées), les débuts de ligne suivront. " : "") + (n ? "La photo et la feuille défilent ensemble. Le total de lignes de ta correction reste celui que tu as saisi." : "Ajoute une ligne, puis place ses poignées sur l'écriture avant de taper.");
 }
 function rcSelectionner(id, focus, aligner) {
   if (!RC.ouvert || !RC.page) return;
@@ -8125,12 +8138,20 @@ function rcAnnuler() {
   if (a.type === "ajout") { d.ordre = d.ordre.filter(id => id !== a.id); d.lignes[a.id].retiree = new Date().toISOString(); RC.ligne = d.ordre[0] || null; }
   if (a.type === "retrait") { delete d.lignes[a.id].retiree; d.ordre.splice(a.i, 0, a.id); RC.ligne = a.id; }
   if (a.type === "recalage") { Object.assign(d.lignes[a.id], a.avant); RC.ligne = a.id; }
+  if (a.type === "marge") { d.marge = a.marge; a.liste.forEach(({ id, avant }) => { if (d.lignes[id]) Object.assign(d.lignes[id], avant); }); }
   if (a.type === "groupe") { a.liste.forEach(({ id, avant }) => { if (d.lignes[id]) Object.assign(d.lignes[id], avant); }); RC.ligne = a.liste[0].id; }
   rcRapprocherLignes(); rcMettreEnPage(); rcSelectionner(RC.ligne, true, true); rcGarder();
 }
 /* C14 (31/10, Paul 07:47) : Ctrl (ou Cmd) + clic choisit plusieurs poignées ; on les déplace ensemble */
 function rcPoint(ev) { const r = RC.ui.querySelector("#rcLignesSVG").getBoundingClientRect(); return { x: (ev.clientX - r.left) / r.width, y: (ev.clientY - r.top) / r.height }; }
+function rcMargeX(d, y) { return d.marge.xh + (d.marge.xb - d.marge.xh) * y; }
+function rcSuivreMarge(d) { d.ordre.forEach(id => { const l = d.lignes[id]; if (!l.recale) l.x0 = rcBorne(rcMargeX(d, (l.y0 + l.y1) / 2) - 0.008, 0, l.x1 - 0.02); }); }
 function rcPoigneeDebut(ev) {
+  const t = ev.target.closest && ev.target.closest("circle[data-rc-marge]");
+  if (t) { ev.preventDefault(); ev.stopPropagation(); const d = rcDocument(RC.page);
+    RC.drag = { marge: t.dataset.rcMarge, pointer: ev.pointerId, cible: t, bouge: false, depart: rcPoint(ev), margeAvant: Object.assign({}, d.marge), groupe: [],
+      avants: d.ordre.map(id => { const L = d.lignes[id]; return { id, cote: "gauche", avant: { x0: L.x0, x1: L.x1, y0: L.y0, y1: L.y1, recale: !!L.recale } }; }) };
+    t.setPointerCapture(ev.pointerId); return; }
   const c = ev.target.closest && ev.target.closest("circle[data-rc-cote]"); if (!c) return;
   ev.preventDefault(); ev.stopPropagation();
   const d = rcDocument(RC.page), cle = c.dataset.rcLigne + "|" + c.dataset.rcCote; RC.selP = RC.selP || new Set();
@@ -8141,13 +8162,16 @@ function rcPoigneeDebut(ev) {
   if ((ev.ctrlKey || ev.metaKey) && !RC.selP.has(cle)) return;
   const groupe = RC.selP.has(cle) && RC.selP.size > 1 ? [...RC.selP] : [cle];
   RC.ligne = c.dataset.rcLigne; const l = rcCourante();
-  RC.drag = { id: RC.ligne, cote: c.dataset.rcCote, pointer: ev.pointerId, cible: c, avant: { x0: l.x0, x1: l.x1, y0: l.y0, y1: l.y1 }, groupe, depart: rcPoint(ev), bouge: false,
-    avants: groupe.map(k => { const id = k.split("|")[0], L = d.lignes[id]; return { id, cote: k.split("|")[1], avant: { x0: L.x0, x1: L.x1, y0: L.y0, y1: L.y1 } }; }) };
+  RC.drag = { id: RC.ligne, cote: c.dataset.rcCote, pointer: ev.pointerId, cible: c, avant: { x0: l.x0, x1: l.x1, y0: l.y0, y1: l.y1, recale: !!l.recale }, groupe, depart: rcPoint(ev), bouge: false,
+    avants: groupe.map(k => { const id = k.split("|")[0], L = d.lignes[id]; return { id, cote: k.split("|")[1], avant: { x0: L.x0, x1: L.x1, y0: L.y0, y1: L.y1, recale: !!L.recale } }; }) };
   c.setPointerCapture(ev.pointerId); rcEtatLigne();
 }
 function rcPoigneeBouger(ev) {
   const a = RC.drag; if (!a || a.pointer !== ev.pointerId) return;
   ev.preventDefault(); const q = rcPoint(ev), l = rcCourante(), d = rcDocument(RC.page); a.bouge = true;
+  if (a.marge) { const x = rcBorne(q.x, 0.01, 0.6), f = a.marge === "haut" ? 0.02 : 0.98, autre = a.marge === "haut" ? a.margeAvant.xb : a.margeAvant.xh;
+    if (a.marge === "haut") { d.marge.xh = rcBorne((x - autre * f) / (1 - f), 0.01, 0.6); } else { d.marge.xb = rcBorne((x - autre * (1 - f)) / f, 0.01, 0.6); }
+    delete d.marge.absente; rcSuivreMarge(d); rcMettreEnPage(); return; }
   if (a.groupe.length > 1) {
     const dx = q.x - a.depart.x, dy = q.y - a.depart.y;
     a.avants.forEach(({ id, cote, avant }) => { const L = d.lignes[id]; if (!L) return;
@@ -8162,6 +8186,8 @@ function rcPoigneeBouger(ev) {
 function rcPoigneeFin(ev) {
   const a = RC.drag; if (!a || a.pointer !== ev.pointerId) return;
   RC.drag = null;
+  if (a.marge) { if (a.bouge) { RC.annule.push({ type: "marge", marge: a.margeAvant, liste: a.avants }); RC.sansMarge && (RC.sansMarge[RC.page] = false); }
+    rcRapprocherLignes(); rcMarques(); rcEtatLigne(); if (a.bouge) rcGarder(); return; }
   if (a.bouge) { const d = rcDocument(RC.page); a.avants.forEach(({ id }) => { if (d.lignes[id]) d.lignes[id].recale = true; }); }
   if (a.bouge) RC.annule.push(a.groupe.length > 1 ? { type: "groupe", liste: a.avants } : { type: "recalage", id: a.id, avant: a.avant });
   rcRapprocherLignes(); rcMarques(); rcSelectionner(a.id, false, false); if (a.bouge) rcGarder();
@@ -8169,7 +8195,7 @@ function rcPoigneeFin(ev) {
 function rcPoigneeAnnuler(ev) {
   const a = RC.drag; if (!a || a.pointer !== ev.pointerId) return;
   const d = rcDocument(RC.page); a.avants.forEach(({ id, avant }) => { if (d.lignes[id]) Object.assign(d.lignes[id], avant); });
-  Object.assign(rcCourante(), a.avant); RC.drag = null; rcMettreEnPage();
+  if (a.marge) d.marge = a.margeAvant; else Object.assign(rcCourante(), a.avant); RC.drag = null; rcMettreEnPage();
 }
 function rcZoom(v) { RC.zoom = rcBorne(v, 0.6, 2.5); rcMettreEnPage(); rcSelectionner(RC.ligne, true, true); }
 function rcTransformerPage(pid, transformer) {

@@ -23,6 +23,9 @@
 .rc-poignee{fill:#fffdf8;stroke:#3d752e;stroke-width:2;vector-effect:non-scaling-stroke;cursor:move;pointer-events:all}
 .rc-poignee:hover{fill:#cce5b7}
 .rc-poignee.sel{fill:#5d8c45;stroke:#2c5a1e}
+.rc-marge-trait{stroke:#c8323c;stroke-width:2.5;stroke-dasharray:7 5;vector-effect:non-scaling-stroke;pointer-events:none}
+.rc-marge-poignee{fill:#fff4f4;stroke:#c8323c;stroke-width:2.5;vector-effect:non-scaling-stroke;cursor:ew-resize;pointer-events:all}
+.rc-marge-poignee:hover{fill:#f6c7cb}
 .rc-numero{font:600 14px system-ui;fill:#3d752e;paint-order:stroke;stroke:#fff;stroke-width:4;pointer-events:none}
 .rc-selection{fill:#cce5b733;stroke:#4b7c38;stroke-width:1.5;vector-effect:non-scaling-stroke;pointer-events:none}
 #rcAbsente{position:absolute;inset:15% 10%;padding:20px;background:#fff8e5;text-align:center;color:#72582e}

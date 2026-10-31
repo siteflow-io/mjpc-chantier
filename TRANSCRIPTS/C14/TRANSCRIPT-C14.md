@@ -2110,3 +2110,43 @@ MEMO
 
 31/10/2026 22:27
 MEMO
+
+## Tour 92 — 31/10/2026 22:36 → 31/10/2026 22:40
+
+**Paul :** Ok allez maintenant fais tout le reste.
+
+**Fait.** Commencé « tout le reste » dans l'ordre de 308 : la bande en continu (la ligne recopiée et la ligne manuscrite en un ruban, la ligne en cours au centre, comme en correction de dictée), codée sur la 1.4.11, banc 124/0, capture regardée, gardée sur la branche `c14-poignees` du sas (commit `80085a34`). Rien en production.
+
+**Claude :** (point 309, annonce du plan de la nuit.) **Incident déclaré :** le texte exact de 309 n'a pas été écrit dans ce transcript avant que la conversation de la conscience soit compactée ; il n'est plus lisible mot pour mot. Son contenu : l'ordre de 308 suivi (le tableau des élèves dans le flux, le bilan tiré des scans, les fiches dans les fichiers École Directe, ranger 2, 3, 4, 5, 8, 9, 12), puis ⇧R, la copie de l'élève en couleurs ; rien en ligne sans le « promeus ».
+
+## Tour 93 — 31/10/2026 22:45 → 31/10/2026 22:48
+
+**Paul :** Et la correction de toutes les dettes, et tout de suite la liste de ce qui ne sert à rien. Tu tournes cette nuit avec les exécutants en tâches planifiées et demain à 6h lapp est opérationnelle.
+
+**Fait.** Relu au sas la liste 225 (`MANDATS/REDACTION-UNIVERSELLE/INVENTAIRE-FONCTIONS-225.md`) et, au registre des dettes (production), la section de la rédaction : ce qui reste à coder, les dettes du premier flux, les exigences du 29/10. Vérifié dans le code que les photos ne vivent que dans le navigateur (`indexedDB` « mjpc_scans »). Rien écrit au site, rien en production.
+
+**Claude :**
+
+À jouer : rien avant 6h · en cours : la nuit de codage, candidate 1.4.12 au sas, rien en ligne · ouvert : 316, 317
+
+310. Ce qui ne sert à rien, rangé cette nuit (le geste disparaît de l'écran, son code part au sas dans SAUVEGARDES, rien n'est effacé au site) : la grille d'origine d'une copie (0 copie remplie sur 31) ; le mode interrogatif (1 chrono, 1 signet au site) ; le compteur d'orthographe (0) ; le bilan détaillé d'une copie (0) ; le classement du paquet d'origine (remplacé par « 🔤 Les initiales ») ; la sauvegarde JSON automatique et « Exporter / Importer JSON » d'origine (« 📸 Snapshot / 📤 Restaurer » et la corbeille restent) ; les calculs de note d'origine. La variante du sujet (2 copies) et l'alerte « déclassement DNB » (0) partent de l'écran avec la grille d'origine ; leur code est gardé à part, les 2 variantes restent dans les copies, elles reviennent dans les scans sur ton mot.
+
+311. Ce qui ne sert à rien tel quel, recyclé cette nuit : le tableau des élèves (la carte montre les étapes du flux de la copie, le clic ouvre la copie dans les scans) ; l'onglet « Bilan » (vide aujourd'hui : refait sur les scans et la bande, notes, critères, fautes par type, par élève et pour la classe) ; l'onglet « Fiches élèves » (toutes disent « pas commencée » : il mène aux fichiers École Directe des scans).
+
+312. Codé cette nuit, sans toi : la bande en continu (faite, banc 124/0) ; le mot par mot ⇧R ; les élèves identifiés dans l'aller-retour avec l'IA (chaque copie part avec son identité interne, jamais le nom ; au retour, une ligne raccrochée à une autre copie est refusée) ; la copie de l'élève en couleurs ; emporter les copies d'un ordi à l'autre (tes photos ne sont que dans ton navigateur : un fichier de la classe, photos comprises, qui se recharge sur l'autre ordi) ; épouser la fin de l'encre (152). Mesurés : les clics par copie au banc (« au plus 30 clics », jamais mesuré), le temps par copie au site en lecture.
+
+313. Ne se règlent pas sans toi, donc pas cette nuit : la place du cadre (237, il faut tes photos) ; la grille en stickers et les 51 questions (tes mots, point par point) ; les passes remplacées (après la grille) ; les mots de l'élève dans son fichier (②) ; le test iPhone École Directe ; 220 (53 et 36) ; les exigences du 29/10 qui demandent un cadrage (profil de la classe, verser dans la grille, la phrase qui m'a touché, règles 12 et 13, L M C D). La taxonomie : je mesure cette nuit comment la dictée la branche, la proposition t'attend à 6h. La correction par l'élève reste au « second temps », comme tu l'as dit. Les dettes du reste de MJPC (moteur, téléphone, M-SÉCU) ne sont pas de cette nuit.
+
+314. La nuit : un exécutant neuf par morceau, un seul à la fois sur un même fichier, chacun sur sa branche du sas ; je relis, je fusionne, je rejoue le banc entier et la vérification au vrai site en lecture seule ; un réveil chaque heure vérifie les poussées. Ce qui n'est pas vert à 5h30 reste au sas et je te le dis tel quel.
+
+315. À 5h30 : la candidate 1.4.12 au sas, ses captures, la liste de ce qui est fait et de ce qui ne l'est pas.
+
+316. « À 6h l'app est opérationnelle » : je la mets en ligne seul à 5h30 si le banc est vert et le vrai site identique en lecture, ou elle t'attend au sas et tu dis « promeus » à 6h (deux minutes) ? Sans réponse, elle t'attend au sas.
+
+317. Les trois phrases de la copie de l'élève qui disent « en rouge » (234) deviennent fausses avec les couleurs. Sans tes mots, la candidate porte mes trois propositions de 234, signalées, et rien n'est vu par un élève avant que tu les aies lues.
+
+À tester : rien cette nuit ; à 6h, la candidate 1.4.12 sur ses captures.
+
+31/10/2026 22:48
+
+MEMO

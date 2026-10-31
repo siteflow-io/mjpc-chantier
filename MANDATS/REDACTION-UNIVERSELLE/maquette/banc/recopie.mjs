@@ -196,6 +196,11 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await cap("C14-27-recopie-pages-a-la-suite"); await pg.keyboard.press("Backspace");
   verif("recopie (1.3.3) : un clic sur une ligne de l'autre page y écrit directement, sans le menu « Page » (" + ap.texte.slice(-12) + ")", ap.page !== pageAvant && ap.texte.endsWith("§"));
   await pg.selectOption("#rcPage", pageAvant); await att(200);
+  const vue = await pg.evaluate(async () => { const z = document.querySelector("#rcDefile"), bs = Array.from(document.querySelectorAll("#rcPages .rc-papiers")), r = [];
+    for (const b of bs) { z.scrollTop = b.offsetTop - z.firstElementChild.offsetTop + 20; await new Promise(f => setTimeout(f, 120)); r.push(document.querySelector("#rcPage").value === b.dataset.page); }
+    return r; });
+  verif("recopie (1.3.4) : le menu « Page » suit la page que l'on voit en faisant défiler (" + vue.join(" ") + ")", vue.length >= 2 && vue.every(Boolean));
+  await pg.selectOption("#rcPage", pageAvant); await att(200);
   await cap("C15-24-recopie-six-lignes");
   await pg.setViewportSize({ width: 390, height: 800 }); await att(180);
   const lisible = await pg.evaluate(() => {

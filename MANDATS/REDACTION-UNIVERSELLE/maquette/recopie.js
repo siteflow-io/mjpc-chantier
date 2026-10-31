@@ -128,7 +128,7 @@ function rcInterface() {
   e.querySelector("#rcDefile").addEventListener("wheel", ev => {
     if (!ev.ctrlKey) return; ev.preventDefault(); rcZoom(RC.zoom * (ev.deltaY < 0 ? 1.12 : 1 / 1.12));
   }, { passive: false });
-  e.querySelector("#rcDefile").addEventListener("scroll", () => rcAgrandir(), { passive: true });
+  e.querySelector("#rcDefile").addEventListener("scroll", () => { rcAgrandir(); rcPageVue(); }, { passive: true });
   if (typeof ResizeObserver !== "undefined") new ResizeObserver(() => { if (RC.ouvert) rcToutesPages(rcMettreEnPage); }).observe(e.querySelector("#rcDefile"));
   const temoin = document.getElementById("ruTemoin");
   if (temoin) new MutationObserver(() => { if (RC.ouvert) e.querySelector("#rcEtat").textContent = temoin.textContent; }).observe(temoin, { childList: true, subtree: true, characterData: true });
@@ -164,6 +164,13 @@ function rcBlocs() {
   pages.forEach(p => { const b = rcBloc(p.id), image = b.querySelector(".rc-image"), im = SC.imgs[p.id], src = im && im.url || "";
     if (image.getAttribute("src") !== src) { if (src) image.src = src; else image.removeAttribute("src"); }
     b.querySelector(".rc-absente").hidden = !!im; });
+}
+/* 1.3.4 (Paul 31/10 08:54) : le menu « Page » suit la page que l'on voit en faisant défiler */
+function rcPageVue() {
+  if (!RC.ouvert || !RC.ui) return; const zone = RC.ui.querySelector("#rcDefile"), sel = RC.ui.querySelector("#rcPage"); if (!zone || !sel) return;
+  const z = zone.getBoundingClientRect(), y = z.top + z.height / 3;
+  const b = Array.from(RC.ui.querySelectorAll("#rcPages .rc-papiers")).find(n => { const r = n.getBoundingClientRect(); return r.top <= y && r.bottom > y; });
+  if (b && sel.value !== b.dataset.page) sel.value = b.dataset.page;
 }
 function rcActiverPage(pid) {
   if (!pid || pid === RC.page || !rcBloc(pid)) return;

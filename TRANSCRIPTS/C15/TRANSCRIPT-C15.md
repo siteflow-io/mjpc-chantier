@@ -916,3 +916,35 @@ MEMO
 
 31/10/2026 04:20
 MEMO
+
+## Tour 15 — 31/10/2026 04:23 (heure de Paris)
+
+**Paul :**
+
+Alors fais une relance par heure avec la planification de chatgpt
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : création de la relance horaire · ouvert : 53 ; 45 ; 36.
+
+136. Je crée la relance ChatGPT pour reprendre le mandat depuis l’état enregistré au sas et avancer par étapes.
+
+À tester : rien pour toi.
+MEMO
+
+**Faits.** Paul valide explicitement la fréquence horaire et l'outil de planification ChatGPT. Une seule tâche « Poursuite du mandat MJPC » est créée avec Automations, création confirmée avec success:true et is_enabled:true. Fuseau Europe/Paris, timing_mode exact_schedule, DTSTART;TZID=Europe/Paris:20261031T052234, RRULE:FREQ=HOURLY;INTERVAL=1. Première relance prévue à 05:22:34 le 31/10 ; le champ next_run_time n'est pas renseigné, cet horaire vient du DTSTART confirmé. Une relecture privée par peek confirme la tâche active, son titre, le même calendrier et le même fuseau. Aucun doublon créé. Le résultat a confirmé l'association à la conversation ; aucune exécution future ou fin de mandat n'est présentée comme déjà réalisée. L'identifiant interne de la tâche n'est pas publié.
+
+La consigne enregistrée demande d'exécuter concrètement une étape cohérente du mandat plutôt que de rappeler à Paul de le faire ; de relire les instructions, le mandat et le transcript à jour au sas ; de vérifier le code et le registre ; de reprendre la livraison 56 déjà éprouvée sans la refaire ; de poursuivre 57 puis 58, avec 59 avant mise en ligne ; d'ajouter les épreuves au banc unique, regarder les captures et livrer les preuves. Les décisions manquantes (51, doublons anciens, grille) doivent être préparées et signalées, avec progression indépendante quand possible ; 53 n'est pas validé, 45 et 36 restent ouverts. Conservation des anciennes copies, aucune donnée réelle d'élève dans les dépôts, aucun service payant, pas de promotion sans « promeus ». Éviter le travail concurrent et respecter la relève. Conserver le transcript, donner un bref compte rendu à chaque passage ; désactiver la planification une fois tout le travail autorisé livré et vérifié. Aucun accès ou résultat futur n'est garanti si ses outils manquent ; la consigne demande alors de nommer le blocage précisément.
+
+Prompt C15 relu, blob 7a4e14ee6c8170881a80da4d2bb4d59ae1d089a2 inchangé. Aucun fichier de l'app, du mandat ou du registre modifié dans ce tour ; seul le transcript est complété. Le message initial ne portait pas d'heure et reste inchangé ; première horloge lue à 04:21.
+
+**GPT — réponse finale :**
+
+À jouer : rien · en cours : relance horaire active · ouvert : 53 ; 45 ; 36.
+
+137. **C’est programmé dans ChatGPT, toutes les heures.** Première relance prévue aujourd’hui à **05 h 22, heure de Paris**. La tâche « Poursuite du mandat MJPC » reprendra l’état du sas pour avancer et rendre compte du travail.
+
+À tester : rien pour toi.
+
+31/10/2026 04:23
+MEMO

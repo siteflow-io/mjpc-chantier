@@ -209,6 +209,28 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   });
   verif("recopie : à 390 pixels, les six lignes de saisie ne se chevauchent pas", lisible);
   await cap("C15-26-recopie-six-lignes-mobile");
+  // 1.4.0 (Paul 31/10, 182 et consigne validée 10:16) : l'export pour l'IA et son retour vérifié
+  await pg.setViewportSize({ width: 1536, height: 864 }); await att(150);
+  const fs = await import("node:fs");
+  const [dl] = await Promise.all([pg.waitForEvent("download"), pg.click("#rcExportIA")]); const brut = fs.readFileSync(await dl.path(), "utf8"), ex = JSON.parse(brut);
+  const noms = await pg.evaluate(() => ({ consigne: RC_CONSIGNE_IA, noms: state.classe.slice(), cles: state.classe.map(n => eleveId(n)) }));
+  const nbL = ex.copies.reduce((a, c) => a + c.pages.reduce((b, q) => b + q.lignes.length, 0), 0);
+  verif("recopie (1.4.0) : « Exporter pour l'IA » donne la consigne validée et les copies numérotées, sans aucun nom d'élève (" + ex.copies.length + " copies, " + nbL + " lignes)", ex.consigne === noms.consigne && ex.copies.length >= 1 && nbL > 0 && ex.copies.every((c, i) => c.numero === i + 1) && !noms.noms.some(n => brut.includes(n)) && !noms.cles.some(k => brut.includes(k)));
+  const faux = JSON.parse(brut); faux.copies[0].pages[0].lignes.pop();
+  await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(faux)); await pg.click("#rcIAValider"); await att(150);
+  const refus = await pg.locator("#rcIAMessage").textContent(), rien = await pg.evaluate(() => SC.copies.every(k => rcLignesEcrites(k).every(x => x.l.corrige === undefined)));
+  verif("recopie (1.4.0) : un retour où il manque une ligne est refusé, avec sa raison, et rien ne change (" + refus.slice(0, 90) + ")", /^Rien n’a changé/.test(refus) && /manque/.test(refus) && rien);
+  const bon = JSON.parse(brut), l0 = bon.copies[0].pages[0].lignes[0], l1 = bon.copies[0].pages[0].lignes[1] || bon.copies[0].pages[0].lignes[0];
+  l0.texte = l0.texte + " ajouté"; if (l1 !== l0) l1.texte = "Mot " + l1.texte;
+  await pg.locator("#rcIATexte").fill("Voici le fichier corrigé :\n```json\n" + JSON.stringify(bon) + "\n```"); await pg.click("#rcIAValider"); await att(200);
+  const ok1 = await pg.locator("#rcIAMessage").textContent(), att1 = l1 !== l0 ? 2 : 1;
+  const st = await pg.evaluate(ids => ids.map(id => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) return x.l.corrige; } return null; }), [l0.id, l1.id]);
+  verif("recopie (1.4.0) : le bon retour, même entouré de texte, est chargé ligne par ligne et compte ses fautes (" + ok1 + ")", /^Chargé/.test(ok1) && ok1.includes(att1 + " faute") && st[0] === l0.texte && st[1] === l1.texte);
+  await cap("C14-28-corrige-ia");
+  await att(1500); const auSite = await pg.evaluate(t => { let s = ""; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (/hub/.test(k)) s += localStorage.getItem(k); } return s.includes(JSON.stringify(t).slice(1, -1)) && s.includes('"corrigeLe"'); }, l0.texte);
+  verif("recopie (1.4.0) : le corrigé chargé est enregistré au site (faux hub), pas seulement à l'écran", auSite);
+  await pg.keyboard.press("Escape"); await att(120);
+  verif("recopie (1.4.0) : Échap ferme la fenêtre du corrigé, pas la recopie", await pg.evaluate(() => RC.ouvert && document.querySelector("#rcIA").hidden));
   await pg.setViewportSize({ width: 1536, height: 864 }); await pg.click("#rcFermer"); await att(180);
   verif("recopie : fermer rend les quatre passes, les anciennes corrections et leurs gestes", await pg.locator("#scanEcran").isVisible() && !(await pg.locator("#rcEcran").isVisible()) && await pg.locator(".sc-passe").count() === 4);
 }

@@ -39,3 +39,12 @@
 
 .rc-pages{display:flex;flex-direction:column;gap:26px}
 .rc-page-titre{grid-column:1/-1;font:600 13px system-ui;color:#7a6a55;margin:0 0 -10px}
+.rc-ia-etat{font-size:12px;color:#426531;margin-left:6px}
+.rc-ia{position:fixed;inset:0;z-index:970;display:flex;align-items:center;justify-content:center;background:#2b252066}
+.rc-ia[hidden]{display:none}
+.rc-ia-c{display:flex;flex-direction:column;gap:8px;width:min(760px,94vw);padding:16px;border-radius:8px;background:#fffdf8;box-shadow:0 8px 30px #0004}
+.rc-ia-c b{font:600 18px Georgia,serif;color:#6b1a2a}
+.rc-ia-c span{font-size:13px;color:#685b4a}
+#rcIATexte{height:42vh;font:12px/1.4 ui-monospace,monospace;border:1px solid #cbb88f;border-radius:6px;padding:8px}
+.rc-ia-b{display:flex;gap:8px;flex-wrap:wrap}
+#rcIAMessage{margin:0;font-size:13px;color:#6b1a2a;min-height:1.2em}

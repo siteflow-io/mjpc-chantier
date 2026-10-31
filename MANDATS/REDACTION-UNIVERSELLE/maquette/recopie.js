@@ -106,11 +106,16 @@ function rcInterface() {
     '<button id="rcMoins" class="sc-btn" title="Réduire ensemble la photo et la feuille.">−</button>',
     '<button id="rcLargeur" class="sc-btn" title="Remettre la photo et la feuille à la largeur de leurs colonnes. Ctrl + molette règle aussi leur zoom.">↔ Largeur</button>',
     '<button id="rcPlus" class="sc-btn" title="Agrandir ensemble la photo et la feuille.">＋</button>',
+    '<button id="rcExportIA" class="sc-btn" title="Télécharger un fichier pour l’IA : ta consigne, puis tes copies recopiées, numérotées, sans aucun nom. Donne-le à l’IA, elle te rend le même fichier corrigé.">⇪ Exporter pour l’IA</button>',
+    '<button id="rcImportIA" class="sc-btn" title="Coller ou choisir le retour de l’IA. L’app vérifie que toutes les lignes correspondent avant de rien changer.">⇩ Charger le corrigé de l’IA</button><span id="rcIAEtat" class="rc-ia-etat"></span>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
     '<canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div>',
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
-    '<p id="rcMessage" class="rc-message"></p>'
+    '<p id="rcMessage" class="rc-message"></p>',
+    '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
+    '<textarea id="rcIATexte" spellcheck="false" placeholder="Colle ici le retour de l’IA"></textarea>',
+    '<div class="rc-ia-b"><label class="sc-btn" title="Choisir le fichier rendu par l’IA">Choisir un fichier<input id="rcIAFichier" type="file" accept=".json,.txt,application/json,text/plain" hidden></label><button id="rcIAValider" class="sc-btn" title="Vérifier toutes les lignes, puis enregistrer le corrigé">Vérifier et charger</button><button id="rcIAFermer" class="sc-btn" title="Fermer sans rien changer (Échap)">Fermer</button></div><p id="rcIAMessage" role="status"></p></div></div>'
   ].join("");
   document.body.appendChild(e); RC.ui = e;
   e.querySelector("#rcFermer").onclick = () => rcFermer();
@@ -124,6 +129,11 @@ function rcInterface() {
   e.querySelector("#rcMoins").onclick = () => rcZoom(RC.zoom / 1.15);
   e.querySelector("#rcPlus").onclick = () => rcZoom(RC.zoom * 1.15);
   e.querySelector("#rcLargeur").onclick = () => rcZoom(1);
+  e.querySelector("#rcExportIA").onclick = rcExportIA;
+  e.querySelector("#rcImportIA").onclick = rcIAOuvrir;
+  e.querySelector("#rcIAFermer").onclick = rcIAFermer;
+  e.querySelector("#rcIAValider").onclick = () => rcIACharger(e.querySelector("#rcIATexte").value);
+  e.querySelector("#rcIAFichier").onchange = ev => { const f = ev.target.files && ev.target.files[0]; if (!f) return; f.text().then(t => { e.querySelector("#rcIATexte").value = t; rcIACharger(t); }); ev.target.value = ""; };
   e.querySelector("#rcCharger").onclick = () => document.querySelector("#scanEcran input[type=file]").click();
   e.querySelector("#rcDefile").addEventListener("wheel", ev => {
     if (!ev.ctrlKey) return; ev.preventDefault(); rcZoom(RC.zoom * (ev.deltaY < 0 ? 1.12 : 1 / 1.12));
@@ -311,6 +321,7 @@ function rcMarques() {
   }
 }
 function rcEtatLigne() {
+  rcEtatIA();
   const d = RC.page && rcDocument(RC.page), n = d ? d.ordre.length : 0, rang = d ? d.ordre.indexOf(RC.ligne) : -1, N = d ? rcNumeros(d) : {}, e = RC.copie ? rcEcritesCopie() : 0;
   RC.ui.querySelector("#rcCompte").textContent = e + " ligne" + (e > 1 ? "s" : "") + " écrite" + (e > 1 ? "s" : "") + " sur la copie";
   RC.ui.querySelector("#rcLigneTitre").textContent = rang < 0 ? "Une ligne à ajouter" : N[RC.ligne] ? "Ligne " + N[RC.ligne] + " sur " + e : "Ligne vide : elle comptera quand tu y écriras";
@@ -483,10 +494,82 @@ function rcGuillemet(input) {
   if (!ouvre && /[ \u00a0]$/.test(avant)) { debut = a - 1; ins = "\u00a0»"; }
   input.setRangeText(ins, debut, b, "end"); input.dispatchEvent(new Event("input", { bubbles: true }));
 }
+/* 1.4.0 (C14, Paul 31/10 : décisions 182, 186, 187 ; consigne validée à 10:16) : l'export pour l'IA, son retour vérifié, les fautes proposées */
+// emprunté tel quel à correction_dictee.html (ligne 1290), seul le nom change — DISPOSITIF règle 27
+function rcTokenize(text){if(!text)return[];var t=[],re=/(\s+)|(['\u2019"\u00ab\u00bb\u201c\u201d])|([.,;:!?\u2026()\-\u2013\u2014]+)|([^\s.,;:!?\u2026\u00ab\u00bb\u201c\u201d()'\u2019"\-\u2013\u2014]+)/g,m;while((m=re.exec(text))!==null){if(!m[1])t.push(m[2]||m[3]||m[4])}return t}
+const RC_CONSIGNE_IA = "Tu reçois des rédactions d'élèves de 3e, recopiées ligne par ligne par leur professeur, fautes comprises. Pour chaque ligne, rends la même ligne corrigée : orthographe, accords, conjugaison, ponctuation, majuscules. Corrige mot pour mot : ne reformule pas, ne change pas l'ordre des mots, n'ajoute ni ne retire aucun mot, sauf si la grammaire l'exige (un mot manquant, un mot en trop). Ne touche pas au style ni au vocabulaire quand ils ne sont pas fautifs. Garde exactement les mêmes copies, pages et lignes, dans le même ordre ; une ligne vide reste vide ; un mot coupé en fin de ligne reste coupé au même endroit. Un mot entre crochets [comme ceci] a été barré par l'élève : laisse-le tel quel. Les guillemets restent « français ». Rends uniquement le fichier, avec la même structure, sans aucun commentaire.";
+function rcEcrite(l) { return l && !l.retiree && (l.texte || "").trim(); }
+function rcLignesEcrites(k) {
+  const r = (((state.copies[k] || {}).scan || {}).recopie || {}).pages || {}, out = [];
+  scPagesDe(k).forEach((p, j) => { const d = (RC.copie === k && RC.documents[p.id]) || r[p.id]; if (!d) return;
+    const h = id => (d.lignes[id].y0 || 0) + (d.lignes[id].y1 || 0);
+    rcListe(d.ordre).filter(id => rcEcrite(d.lignes[id])).sort((a, b) => h(a) - h(b)).forEach(id => out.push({ k, pid: p.id, page: j + 1, id, l: d.lignes[id] })); });
+  return out;
+}
+function rcExportIA() {
+  if (RC.page) rcGarder();
+  const copies = SC.copies.filter(k => rcLignesEcrites(k).length); if (!copies.length) { toast("Aucune copie recopiée pour l’instant."); return; }
+  const o = { consigne: RC_CONSIGNE_IA, format: "mjpc-recopie-ia-1", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = []; let n = 0;
+    L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push({ id: x.id, n: ++n, texte: x.l.texte }); });
+    return { numero: i + 1, pages }; }) };
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(o, null, 1)], { type: "application/json" }));
+  a.download = "recopies-pour-l-IA-" + new Date().toISOString().slice(0, 10) + ".json"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  RC.ui.querySelector("#rcIAEtat").textContent = "Exporté : " + copies.length + " copie" + (copies.length > 1 ? "s" : "") + ".";
+}
+function rcIAOuvrir() { if (RC.page) rcGarder(); RC.iaOuvert = true; const m = RC.ui.querySelector("#rcIA"); m.hidden = false; RC.ui.querySelector("#rcIAMessage").textContent = ""; RC.ui.querySelector("#rcIATexte").focus(); }
+function rcIAFermer() { RC.iaOuvert = false; RC.ui.querySelector("#rcIA").hidden = true; }
+function rcIALire(txt) {
+  const t = String(txt || ""), a = t.indexOf("{"), b = t.lastIndexOf("}");
+  if (a < 0 || b < a) throw "Je ne trouve pas de fichier dans ce que tu as collé.";
+  let o; try { o = JSON.parse(t.slice(a, b + 1)); } catch (e) { throw "Le retour de l’IA n’est pas lisible : il n’a pas la forme du fichier envoyé."; }
+  if (!o || !Array.isArray(o.copies)) throw "Le retour de l’IA n’a pas la liste des copies.";
+  return o;
+}
+function rcIACharger(txt) {
+  const msg = RC.ui.querySelector("#rcIAMessage"); let o;
+  try { o = rcIALire(txt); } catch (e) { msg.textContent = "Rien n’a changé. " + e; return false; }
+  const ici = {}; SC.copies.forEach(k => rcLignesEcrites(k).forEach(x => { ici[x.id] = x; }));
+  const recu = {}, erreurs = []; let doublons = 0;
+  o.copies.forEach(c => (c.pages || []).forEach(pg => (pg.lignes || []).forEach(l => { if (!l || typeof l.id !== "string") { erreurs.push("une ligne sans son identifiant (copie n° " + c.numero + ")"); return; }
+    if (recu[l.id]) doublons++; recu[l.id] = { texte: String(l.texte == null ? "" : l.texte), numero: c.numero, n: l.n }; })));
+  Object.keys(recu).forEach(id => { if (!ici[id]) erreurs.push("la ligne " + recu[id].n + " de la copie n° " + recu[id].numero + " n’existe pas, ou n’est plus écrite, dans tes recopies"); });
+  const copiesRecues = new Set(Object.keys(recu).filter(id => ici[id]).map(id => ici[id].k));
+  copiesRecues.forEach(k => { const manque = rcLignesEcrites(k).filter(x => !recu[x.id]).length; if (manque) erreurs.push(manque + " ligne" + (manque > 1 ? "s" : "") + " de « " + nomEleveDe(k) + " » manque" + (manque > 1 ? "nt" : "") + " dans le retour (écrite" + (manque > 1 ? "s" : "") + " après l’export ? refais l’export)"); });
+  if (doublons) erreurs.push(doublons + " ligne" + (doublons > 1 ? "s" : "") + " en double dans le retour");
+  if (!Object.keys(recu).length) erreurs.push("aucune ligne dans le retour");
+  if (erreurs.length) { msg.textContent = "Rien n’a changé : " + erreurs.slice(0, 4).join(" ; ") + (erreurs.length > 4 ? " ; et " + (erreurs.length - 4) + " autre(s)." : "."); return false; }
+  const quand = new Date().toISOString(); let fautes = 0, lignes = 0;
+  Object.keys(recu).forEach(id => { const x = ici[id], pgs = (scCopie(x.k).recopie || {}).pages || {}, src = pgs[x.pid] && pgs[x.pid].lignes[id];
+    [src, RC.copie === x.k && RC.documents[x.pid] && RC.documents[x.pid].lignes[id]].forEach(l => { if (l) { l.corrige = recu[id].texte; l.corrigeDe = l.texte; l.corrigeLe = quand; } });
+    fautes += rcEcarts(x.l.texte, recu[id].texte).fautes; lignes++; });
+  saveState(); rcEtatIA();
+  msg.textContent = "Chargé : " + copiesRecues.size + " copie" + (copiesRecues.size > 1 ? "s" : "") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA.";
+  return true;
+}
+/* les fautes proposées d'une ligne : les mots qui diffèrent, alignés par la plus longue sous-suite commune */
+function rcEcarts(a, b) {
+  const A = rcTokenize(a || ""), B = rcTokenize(b || ""), n = A.length, m = B.length, T = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) T[i][j] = A[i] === B[j] ? T[i + 1][j + 1] + 1 : Math.max(T[i + 1][j], T[i][j + 1]);
+  const segs = []; let i = 0, j = 0, sa = 0, sb = 0;
+  const fermer = () => { if (i > sa || j > sb) segs.push({ de: sa, a: i, de2: sb, a2: j, eleve: A.slice(sa, i).join(" "), corrige: B.slice(sb, j).join(" ") }); };
+  while (i < n || j < m) {
+    if (i < n && j < m && A[i] === B[j]) { fermer(); i++; j++; sa = i; sb = j; }
+    else if (j >= m || (i < n && T[i + 1][j] >= T[i][j + 1])) i++; else j++;
+  }
+  fermer();
+  return { segs, fautes: segs.reduce((s, x) => s + Math.max(x.a - x.de, x.a2 - x.de2), 0) };
+}
+function rcEtatIA() {
+  if (!RC.ui || !RC.copie) return; const L = rcLignesEcrites(RC.copie), e = RC.ui.querySelector("#rcIAEtat"); if (!e) return;
+  const avec = L.filter(x => typeof x.l.corrige === "string"); if (!avec.length) { if (!/^Exporté/.test(e.textContent)) e.textContent = ""; return; }
+  const f = avec.reduce((s, x) => s + rcEcarts(x.l.texte, x.l.corrige).fautes, 0), change = avec.filter(x => x.l.texte !== x.l.corrigeDe).length, sans = L.length - avec.length;
+  e.textContent = "Corrigé de l’IA : " + f + " faute" + (f > 1 ? "s" : "") + " proposée" + (f > 1 ? "s" : "") + (change ? " · " + change + " ligne" + (change > 1 ? "s" : "") + " changée" + (change > 1 ? "s" : "") + " depuis" : "") + (sans ? " · " + sans + " sans corrigé" : "");
+}
 function rcClavier(ev) {
   if (!RC.ouvert) return false;
   if (ev.isComposing) return true;
   const input = ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie");
+  if (RC.iaOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcIAFermer(); } ev.stopPropagation(); return true; }
   if (ev.key === "Escape") { ev.preventDefault(); ev.stopPropagation(); rcFermer(); return true; }
   if (input && ev.key === '"' && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { ev.preventDefault(); ev.stopPropagation(); rcGuillemet(ev.target); return true; }
   if (input && ev.key === "Backspace" && !ev.ctrlKey && !ev.metaKey && !ev.altKey && ev.target.selectionStart === 0 && ev.target.selectionEnd === 0) {

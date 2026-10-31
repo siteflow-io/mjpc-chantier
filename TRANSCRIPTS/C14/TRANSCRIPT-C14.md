@@ -1987,3 +1987,26 @@ MEMO
 
 31/10/2026 19:50
 MEMO
+
+## Tour 86 — 31/10/2026 20:13 → 31/10/2026 20:18
+
+**Paul :** De toute façon j'ai le json produit par l'IA donc si je le réinjecte j'aurai exactement la même correction on est d'accord ? Promeus
+
+**Fait.** Mesuré au site, lecture seule, dossier privé, à 20:14 : 869 lignes ont leur corrigé ; aucune n'a été retapée depuis son corrigé ; 6 ont été corrigées au clic droit (faute de ma recopie). Relu `rcIAChargerSuite` (1.4.9) : le corrigé est pris tel quel pour chaque ligne, par son identité ; le texte de la ligne n'est pas comparé à celui qui était parti chez l'IA (dette consignée). Mise en ligne de `redaction.html` 1.4.9-RU : 1.4.8 copiée au sas (`SAUVEGARDES/redaction-1.4.8-RU-avant-1.4.9-2026-10-31.html`, sas a4ab232d) ; candidate identique à celle du sas ; commit prod `60bc646`, blob `733d02ae0e8a`, md5 `1490e03e0057ddb7f0b849b43c401c37`, 679 353 o ; en ligne bit à bit à la 4e lecture (20:15). Docs de suivi en prod : journal, point de retour, registre (0 quinquies ✔, la dette de l'import), adresse `&v=1.4.9-RU`.
+
+**Claude :**
+
+À jouer : tester la 1.4.9 · en cours : rien · ouvert : 220 ; 234.
+
+294. La 1.4.9 est en ligne, vérifiée bit à bit à 20:15 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.9-RU.
+
+295. Oui pour la correction, avec une nuance. Réinjecter tes fichiers de l'IA redonne exactement le même texte corrigé, donc les mêmes arrêts : je l'ai vérifié au site, aucune de tes 869 lignes n'a été retapée depuis son corrigé, et les 6 que tu as corrigées au clic droit gardent leur correction. La nuance : ces fichiers n'ont pas le type des fautes. Réinjectés, tu retrouves la correction, mais les types restent ceux du moteur, faux pour à peu près un Lexique sur trois. L'envoi unique (283) rend correction et types d'un coup : c'est lui qu'il faut pour la reprise. Dans les deux cas, ta bande est à refaire, puisqu'elle est effacée.
+
+296. En vérifiant, j'ai trouvé une dette et je l'ai consignée : l'app ne vérifie pas qu'une ligne a encore le texte qui est parti chez l'IA. Une ligne retapée entre l'export et l'import recevrait la correction de son ancien texte. Aujourd'hui aucune ligne n'est dans ce cas. Je la règle avec le flux (284) : l'export garde le texte envoyé, et l'import refuse une ligne qui a changé.
+
+297. Ensuite, l'envoi unique (283).
+
+À tester : dans la recopie, « Charger le corrigé de l’IA », puis « 🗑 Tout effacer : corrigés de l’IA et bande » : lis la question et clique « Annuler ».
+
+31/10/2026 20:18
+MEMO

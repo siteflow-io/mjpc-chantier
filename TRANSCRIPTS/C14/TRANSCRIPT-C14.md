@@ -1390,3 +1390,24 @@ MEMO
 
 31/10/2026 11:12
 MEMO
+
+## Tour 62 — 31/10/2026 11:14 → 31/10/2026 11:19
+
+**Paul :** [capture : la bande en 1.4.2 sur une copie réelle ; « cher » encadré trop à droite] ce n'est pas encore ça pour la place de l'encadré jaune. C'est mieux, mais pas encore ça. Est ce que cet encadré jaune sera sur la copie après?
+
+**Fait.** Mesuré sur les 5 lignes réelles des captures (place vraie lue à l'œil ; « couvert » = part du mot dans le cadre, « hors » = part du cadre hors du mot). Sur la capture de 11:14, la fin de l'écriture était trouvée trop loin (730 au lieu de 550 environ) : le quadrillage et les ombres comptaient comme de l'encre. Encre = bleue ou très sombre : fin trouvée à 536 ; « cher » 81 % couvert. Puis chaque lettre comptée pour sa largeur habituelle : « cher » 92 % couvert / 30 % hors, « tranchés » 95 / 9, « manque » 75 / 20, « êtres » 100 / 36 (avant ces deux corrections : 41 / 77, 87 / 14, 56 / 35, 100 / 35). Essai de calage sur les blancs entre les mots : moins bon (0 à 75 % couvert), non retenu. Sur 4 lignes seulement : ce n'est pas une mesure générale. 1.4.3 (`c14-poignees`) : les deux corrections dans `rcEncre` et `rcPlaceSeg`. Banc : « BANC : 105 vérifications, 0 défaut ». Candidate 1.4.3-RU : 610 355 o, md5 `1737a96cfe26baf968d872f8d18b674e`. Vrai site en lecture seule, 1.4.2 puis 1.4.3 : 30 copies, 0 différente.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 206 ; 207 ; 53 ; 45 ; 36.
+
+205. Oui : quand tu gardes une faute, sa marque sur la copie (dans les scans et dans le fichier de l'élève) est posée exactement à la place du cadre jaune. Sa justesse compte donc.
+
+206. Mesuré sur tes lignes : sur ta capture, l'app croyait que l'écriture finissait bien après « Françoise » ; elle prenait le quadrillage pour de l'encre. Dans la 1.4.3, seule l'encre bleue (ou très sombre) compte, et chaque lettre pèse sa largeur habituelle. Sur tes 4 lignes, le cadre couvre maintenant 75 à 100 % du bon mot, et déborde de 9 à 36 %. C'est mieux, pas parfait, et mesuré sur 4 lignes seulement. Les fautes déjà gardées se replacent à l'ouverture de la bande.
+
+207. Si ça reste trop approximatif, il y a ta décision d'hier (35) : sur la copie, la marque souligne toute la ligne avec son numéro, et le mot exact se lit dans le texte de l'élève ; c'est toujours juste. Tu essaies d'abord la 1.4.3 (« promeus »), ou tu préfères la ligne entière ?
+
+À tester : rien avant ton mot.
+
+31/10/2026 11:19
+MEMO

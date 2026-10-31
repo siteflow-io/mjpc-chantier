@@ -962,3 +962,24 @@ MEMO
 
 31/10/2026 07:43
 MEMO
+
+## Tour 42 — 31/10/2026 07:47 → 31/10/2026 07:52
+
+**Paul :** Ok. Autre chose à mettre dans la 1.3.1. la bande de texte en haut à droite n'est pas alignée avec la copie en dessous. Pas gênant en soi mais fatiguant à la longue pour recopier. Par ailleurs la flèche retour doit me permettre de revenir à la ligne précédente quand j'ai fait un entrée et si j'ai écrit du texte, la flèche efface évidemment. Comportement habituel de traitement de texte quoi. Enfin je veux pouvoir sélectionner plusieurs poignées en tenant le CTRL enfoncé et en déplaçant.
+
+**Fait.** `recopie.js` / `recopie.css` (`c14-poignees`) : la bande du haut dessine la photo à l'échelle et à la place de la feuille en dessous (redessinée au défilement) ; Retour arrière au début d'une ligne : la fin de la ligne précédente, sinon il efface ; Ctrl (ou Cmd) + clic choisit plusieurs poignées (marquées), on les tire ensemble, Annuler les remet ensemble. Banc : 3 vérifications par le geste (bande à 0,0 px de la feuille ; Retour arrière remonte puis efface « Deux mots » → « Deux mot » ; deux poignées déplacées de 0,040 chacune, puis remises) → « BANC : 82 vérifications, 0 défaut ». Candidate 1.3.1-RU : 569 822 o, md5 `831962924855372ad20388b12e131bf2`. Vrai site en lecture seule : 30 copies (marques, réponses, lignes, notes) 0 différente ; recopies : 6 pages, 180 lignes dont 98 écrites, textes et places identiques, ordre changé sur 1 page (la ligne remontée), seule écriture interceptée : le suivi.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 160 ; 53 ; 45 ; 36.
+
+158. Les trois sont dans la 1.3.1. La bande du haut est maintenant à la même échelle et à la même place que ta feuille : chaque mot de l'élève est juste au-dessus de l'endroit où tu le tapes. Retour arrière au début d'une ligne te ramène à la fin de la ligne précédente ; s'il y a du texte avant le curseur, il efface, comme un traitement de texte. Ctrl + clic sur plusieurs poignées les marque ; tu en tires une, elles bougent toutes ensemble ; Annuler les remet ensemble.
+
+159. Banc : 82 vérifications, 0 défaut. Ton travail au site, relu sans rien écrire : 30 copies identiques ; tes recopies, 98 lignes écrites, textes et poignées identiques.
+
+160. Pour la mettre en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 07:52
+MEMO

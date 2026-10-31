@@ -398,22 +398,23 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     t7.apres = await pg.evaluate(p2 => !!(rcBloc(p2) && rcBloc(p2).querySelector(".rc-marge-trait")), k7.p2);
     await cap("C14-34-marge-page-2"); await pg.click("#rcFermer"); await att(180); }
   verif("recopie (1.4.6) : une page préparée avant que sa photo soit prête n'a pas de trait rouge (" + t7.avant + ") ; la photo arrivée, son trait rouge apparaît (" + t7.apres + ")", !!k7 && t7.avant === false && t7.apres === true);
-  // 1.4.9 (Paul 19:27) : effacer les corrigés de l'IA déjà chargés, pour refaire l'import ; rien de la recopie ne bouge
-  const photo12 = () => pg.evaluate(() => { const IA = ["corrige", "corrigeDe", "corrigeLe", "types", "typesDe"], o = {}; let n = 0;
-    SC.copies.forEach(k => { const c = state.copies[k] || {}, r = JSON.parse(JSON.stringify((c.scan || {}).recopie || null));
-      if (r) Object.values(r.pages || {}).forEach(p => Object.values(p.lignes || {}).forEach(l => { if (IA.some(f => l[f] !== undefined)) n++; IA.forEach(f => delete l[f]); delete p.modifieLe; }));
-      o[k] = { r, m: Object.keys(((c.scan || {}).marques) || {}).length }; });
-    return { sans: JSON.stringify(o), n }; });
+  // 1.4.9 (Paul 19:27 et 19:39) : tout effacer, les corrigés de l'IA et tout ce qui vient de la bande ; rien de la recopie ne bouge
+  const photo12 = () => pg.evaluate(() => { const IA = ["corrige", "corrigeDe", "corrigeLe", "types", "typesDe", "decisions", "marquesBande", "places"], o = {}; let n = 0, bande = 0, autres = 0, arret = 0;
+    SC.copies.forEach(k => { const c = state.copies[k] || {}, sc = c.scan || {}, r = JSON.parse(JSON.stringify(sc.recopie || null));
+      if (r) { if (r.bandeArret) arret++; delete r.bandeArret; delete r.reprise; Object.values(r.pages || {}).forEach(p => { delete p.modifieLe; Object.values(p.lignes || {}).forEach(l => { if (IA.some(f => l[f] !== undefined)) n++; IA.forEach(f => delete l[f]); }); }); }
+      const ms = Object.values(sc.marques || {}); bande += ms.filter(m => m.bande).length + (sc.bandeDebut ? 1 : 0); autres += ms.filter(m => !m.bande).length;
+      o[k] = { r, anciennes: Object.keys(sc.marquesAnciennes || {}).length, autres: ms.filter(m => !m.bande).map(m => m.id).sort() }; });
+    return { sans: JSON.stringify(o), n, bande, autres, arret }; });
   await pg.click("#btnRecopier"); await att(400); const av12 = await photo12();
   await pg.click("#rcImportIA"); await att(150); await pg.click("#rcIAEffacer"); await att(150);
   const q12 = await pg.locator("#rcIAEffacerQ").textContent(); await pg.click("#rcIAEffacerNon"); await att(150); const annule12 = await photo12();
   const dl12 = []; pg.on("download", d => dl12.push(d.suggestedFilename()));
   await pg.click("#rcIAEffacer"); await att(150); await pg.click("#rcIAEffacerOui"); await att(1600);
   const m12 = await pg.locator("#rcIAMessage").textContent(), ap12 = await photo12();
-  const corb12 = await pg.evaluate(() => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/corbeille.json").then(r => r.json())), ent12 = Object.values(corb12 || {}).flatMap(j => Object.keys(j || {})).filter(n => /^effacement-corriges-ia_/.test(n));
-  const hub12 = await pg.evaluate(() => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/" + ruCheminCopies().join("/") + ".json").then(r => r.json()).then(c => Object.values(c || {}).some(cp => Object.values((((cp || {}).scan || {}).recopie || {}).pages || {}).some(p => Object.values(p.lignes || {}).some(l => l.corrige !== undefined || l.corrigeDe !== undefined)))));
-  await cap("C14-36-effacer-corriges"); await pg.click("#rcIAFermer"); await att(100);
-  verif("recopie (1.4.9) : « 🗑 Effacer les corrigés chargés » demande d'abord (« " + q12.slice(0, 60) + "… »), « Annuler » ne change rien ; « Effacer » range dans la corbeille (" + ent12.length + "), télécharge l'export (" + dl12.length + "), efface le corrigé de " + av12.n + " lignes (il en reste " + ap12.n + ", au site : " + (hub12 ? "encore" : "aucun") + ") ; la recopie, les décisions et les marques ne bougent pas d'un caractère (" + (ap12.sans === av12.sans) + ")",
-    av12.n > 0 && /Ta recopie ne bouge pas/.test(q12) && annule12.n === av12.n && annule12.sans === av12.sans && ent12.length === 1 && dl12.length === 1 && ap12.n === 0 && !hub12 && ap12.sans === av12.sans && /^Effacé/.test(m12));
+  const corb12 = await pg.evaluate(() => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/corbeille.json").then(r => r.json())), ent12 = Object.values(corb12 || {}).flatMap(j => Object.keys(j || {})).filter(n => /^nettoyage-ia-et-bande_/.test(n));
+  const hub12 = await pg.evaluate(() => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/" + ruCheminCopies().join("/") + ".json").then(r => r.json()).then(c => Object.values(c || {}).some(cp => Object.values(((cp || {}).scan || {}).marques || {}).some(m => m.bande) || Object.values((((cp || {}).scan || {}).recopie || {}).pages || {}).some(p => Object.values(p.lignes || {}).some(l => l.corrige !== undefined || l.decisions !== undefined)))));
+  await cap("C14-36-tout-effacer"); await pg.click("#rcIAFermer"); await att(100);
+  verif("recopie (1.4.9) : « 🗑 Tout effacer » demande d'abord (« " + q12.slice(0, 70) + "… »), « Annuler » ne change rien ; « Tout effacer » range dans la corbeille (" + ent12.length + "), télécharge l'export (" + dl12.length + "), efface les corrigés et la bande (lignes touchées " + av12.n + " → " + ap12.n + ", marques et début de bande " + av12.bande + " → " + ap12.bande + ", arrêts gardés " + av12.arret + " → " + ap12.arret + " ; au site : " + (hub12 ? "il en reste" : "plus rien") + ") ; la recopie, les marques d'avant et les autres marques ne bougent pas d'un caractère (" + (ap12.sans === av12.sans) + ")",
+    av12.n > 0 && av12.bande > 0 && /Ta recopie ne bouge pas/.test(q12) && annule12.sans === av12.sans && annule12.n === av12.n && ent12.length === 1 && dl12.length === 1 && ap12.n === 0 && ap12.bande === 0 && ap12.arret === 0 && !hub12 && ap12.sans === av12.sans && /^Effacé/.test(m12));
   await pg.click("#rcFermer"); await att(180);
 }

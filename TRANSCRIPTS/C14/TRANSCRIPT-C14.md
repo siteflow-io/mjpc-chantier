@@ -1262,3 +1262,26 @@ MEMO
 
 31/10/2026 10:14
 MEMO
+
+## Tour 57 — 31/10/2026 10:16 → 31/10/2026 10:25
+
+**Paul :** ok
+
+**Claude (message envoyé d'abord) :**
+
+190. Consigne validée. Je code en deux mises en ligne, pour que tu aies l'utile au plus tôt. D'abord la 1.4.0, avec deux boutons dans la recopie : « Exporter pour l'IA » donne le fichier avec la consigne et tes copies numérotées, sans aucun nom ; « Charger le corrigé de l'IA » te laisse coller ou choisir son retour, le vérifie, puis l'enregistre. L'app te dit alors combien de fautes elle a trouvées par copie. Ensuite viendra la 1.4.1, la bande elle-même. Je te préviens dès que la 1.4.0 est prête.
+
+**Fait.** `recopie.js` / `recopie.css` (`c14-poignees`) : `rcTokenize` = `tokenize` de `correction_dictee.html` ligne 1290, copié tel quel, seul le nom change (règle 27) ; `RC_CONSIGNE_IA` = la consigne validée à 10:16, mot pour mot ; « ⇪ Exporter pour l'IA » : fichier JSON (consigne, format, copies numérotées 1…n dans l'ordre du paquet, pages, lignes écrites avec leur identifiant de ligne, leur numéro et leur texte ; aucun nom ni clé d'élève) ; « ⇩ Charger le corrigé de l'IA » : fenêtre où coller le retour ou choisir le fichier ; le fichier est retrouvé même entouré de texte ; refus, raisons dites et rien changé si une ligne est inconnue, manque, est en double ou n'a pas d'identifiant ; sinon chaque ligne garde `corrige`, `corrigeDe` (le texte d'alors) et `corrigeLe` (ajouts) ; fautes proposées = segments différents après alignement par la plus longue sous-suite commune ; dans la barre : « Corrigé de l'IA : n fautes proposées », et les lignes changées depuis ; Échap ferme la fenêtre, pas la recopie. Banc : 5 vérifications par le geste (export sans nom ; retour incomplet refusé ; bon retour entouré de texte chargé et compté ; enregistré au site ; Échap) → « BANC : 97 vérifications, 0 défaut », capture regardée. Candidate 1.4.0-RU : 591 547 o, md5 `e7089d22921bb73fc3bbe1106e19bf41`. Vrai site en lecture seule, 1.3.4 puis 1.4.0 : 30 copies, 0 différente ; recopies : 32 pages, 525 lignes écrites, places identiques, textes identiques sauf 1 ligne de la copie que Paul recopiait (curseur : « lac… ») ; seule écriture interceptée : le suivi.
+
+**Claude :** [capture : C14-28-corrige-ia.png]
+
+À jouer : rien · en cours : rien · ouvert : 192 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+191. La 1.4.0 est prête. Dans la recopie, deux boutons : « Exporter pour l'IA » te donne le fichier à donner à l'IA, avec la consigne validée et tes copies numérotées, sans aucun nom ; « Charger le corrigé de l'IA » ouvre une fenêtre où tu colles tout ce que l'IA t'a répondu (ou tu choisis son fichier). L'app vérifie chaque ligne : s'il en manque une, elle te dit laquelle et ne change rien. Sinon elle enregistre le corrigé et affiche en haut le nombre de fautes proposées pour la copie. Banc : 97 vérifications, 0 défaut ; tes copies et tes 525 lignes recopiées au site : rien ne change.
+
+192. Pour la mettre en ligne : « promeus ». Ensuite, je passe à la bande.
+
+À tester : rien avant ton mot.
+
+31/10/2026 10:25
+MEMO

@@ -1601,3 +1601,39 @@ MEMO
 
 31/10/2026 14:53
 MEMO
+
+## Tour 71 — 31/10/2026 14:53 → 31/10/2026 15:03
+
+**Paul :** [capture : la bande d'une copie, arrêt 37 sur 51, « se plaint → nous plaignons », étiquette « Lexique », la liste des arrêts presque tous cochés ✓] ok. et donc sur la copie d'Eva va bien retrouver ses mots distincts?
+
+**Fait.** Mesuré au hub, lecture seule, dossier privé : sur cette copie, 51 arrêts, 50 décidés (les clés de décision sont écrites au site sous la forme « 4-6%2F4-6 ») ; 12 arrêts à plusieurs mots, 11 dits « oui » avec une marque, 7 avec un cadre glissé. Envoyé à Paul pendant le travail (message ci-dessous, mot pour mot). Codé : `rcEcartsBruts` (l'ancien regroupement), `rcCouper` (un arrêt par mot et par ponctuation ; entier si apostrophe, trait d'union, ou mots en nombre différent ; deux mots manquants ou en trop : deux arrêts), `rcEcarts` (les arrêts coupés), `rcSeparerAnciens` (un arrêt décidé d'avant est coupé à l'ouverture de la recopie, pour toutes les copies dont la photo est là, et à l'ouverture de la bande : la décision, la marque et le cadre glissé suivent). Recompté avec le vrai découpage : sur cette copie, 9 arrêts coupés (pas 11), 9 marques remplacées, 50 fautes deviennent 62 ; c'est la seule copie qui a déjà des décisions ; sur toutes les copies, 890 arrêts deviennent 1 023. Banc 113/0 (nouvelle vérification par le geste : « se plaint → nous plaignons » recopié et corrigé par l'IA, puis l'arrêt d'avant dit « oui » coupé en deux marques dans le cadre glissé). Candidate 1.4.5-RU : 664 077 o, md5 3374bc96af2470137b1d024ec7ad215d ; vrai site, lecture seule : aucune différence avec la 1.4.4, une seule écriture à l'ouverture (le suivi) ; la coupe n'y joue pas, faute des photos (elles ne sont que dans le navigateur de Paul). Branche c14-poignees d13527cb ; registre (prod c95c38c).
+
+**Claude (message envoyé pendant le travail, 14:56) :**
+
+À jouer : 240 (ton ok sur la consigne) · en cours : 239 (je code maintenant) · ouvert : 220 ; 234 ; 240.
+
+239. Oui, ses mots redeviendront distincts. Voici ce que j'ai mesuré au site, sans rien y écrire, sur sa copie : 51 arrêts, dont 12 qui prennent plusieurs mots, ou un mot avec une ponctuation. Tu as déjà dit « oui » à 11 de ces 12 ; chacun a posé une seule marque sur sa copie, et pour 7 d'entre eux tu avais glissé le cadre.
+À l'ouverture de la bande, l'app les sépare une fois pour toutes : un arrêt par mot (et par ponctuation). Chacun garde ton « oui », et la marque unique devient une marque par mot. Tes 7 glissés ne sont pas perdus : les mots se partagent le cadre que tu avais placé.
+Conséquence : elle aura plus de fautes comptées qu'aujourd'hui, une par mot comme tu le dis, donc sa note de langue baisse. Je te donne le compte exact avant la mise en ligne.
+Quand les deux côtés n'ont pas le même nombre de mots (« entoi → en toi »), l'arrêt reste unique : c'est une seule faute.
+Toutes les copies sont traitées pareil, pas seulement la sienne.
+
+240. Pour la consigne de l'IA (230), j'ajoute ceci à la fin, tel quel : « Pour chaque ligne, donne aussi la liste de ses fautes, une faute par mot : "fautes": [{"eleve": le mot de l'élève (vide s'il manque), "corrige": le mot juste (vide s'il est en trop), "type": une lettre}]. Deux mots fautifs côte à côte font deux fautes ; une ponctuation est une faute à part. Les types : G grammaire (accord, conjugaison, homophone grammatical), L lexique (l'orthographe du mot lui-même), C accent, majuscule ou trait d'union, P ponctuation, E élision (apostrophe), M mot manquant, X mot en trop. Si une ligne arrive avec son "corrige", garde-le tel quel et donne seulement ses fautes. »
+Pour tes lignes déjà corrigées, tu gardes le même bouton « Exporter pour l'IA » : elles partent avec leur corrigé, et l'IA ne rend que les types. Tu valides ?
+
+**Claude :**
+
+À jouer : promeus (1.4.5) · en cours : rien · ouvert : 220 ; 234 ; 240.
+
+241. Je corrige 239 avec le compte exact, fait avec le vrai découpage. Sur sa copie, 9 arrêts sont coupés, et non 11 : les 2 autres restent entiers, parce qu'un côté a une apostrophe ou un trait d'union, ou parce que les mots ne sont pas en même nombre. Ses fautes passent de 50 à 62. C'est la seule copie où tu as déjà décidé des arrêts. Sur toutes tes copies, les 890 arrêts proposés deviennent 1 023.
+
+242. C'est codé dans la 1.4.5 : un arrêt par mot et par ponctuation. Les arrêts déjà décidés sont coupés à l'ouverture de la recopie ou de la bande : chaque morceau garde ta décision, la marque unique devient une marque par mot, et les mots se partagent ton cadre glissé. Banc 113/0, avec une vérification nouvelle par le geste : « se plaint → nous plaignons » donne deux arrêts, et sur une copie d'avant, le « oui » unique devient deux marques dans ton cadre. Sur le vrai site, en lecture seule, rien ne change à l'ouverture. La coupe a besoin des photos, qui ne sont que dans ton navigateur : elle se fera chez toi, à la première ouverture de la recopie. Le type reste celui du moteur (« se → nous » est encore donné en Lexique) tant que la consigne de l'IA (240) n'est pas validée.
+
+243. La dette ② (tes mots, 234) est toujours ouverte : ton « promeus » lèverait encore ta règle pour cette mise en ligne.
+
+À tester, une fois en ligne :
+1. Ouvre la recopie, puis la bande de sa copie : « se plaint » est maintenant deux arrêts (« se → nous », « plaint → plaignons »), tous deux cochés ✓.
+2. Sur sa copie, dans l'écran des scans, ces deux mots ont chacun leur trait ; la note de la bande (« note maintenant ») a bougé avec les 62 fautes.
+
+31/10/2026 15:03
+MEMO

@@ -1686,3 +1686,27 @@ MEMO
 
 31/10/2026 15:26
 MEMO
+
+## Tour 74 — 31/10/2026 15:25 → 31/10/2026 15:30
+
+**Paul :** promeus. par ailleurs tout ce qui reste à coder est bien sûr consigné sur github, on est d'accord?
+
+**Fait.** Mise en ligne de `redaction.html` 1.4.6-RU : 1.4.5 copiée au sas (`SAUVEGARDES/redaction-1.4.5-RU-avant-1.4.6-2026-10-31.html`, sas f2b1de62) ; candidate identique à celle du sas ; commit prod `24510c9`, blob `ab785a3189a4`, md5 `f91e3dd04b709bf4bd9d1e08aa5416aa`, 669 304 o ; en ligne bit à bit à la 4e lecture (15:27). Docs de suivi en prod (674cc8e) : journal, point de retour, registre (hauteur, trait rouge, poignée ✔), adresse `&v=1.4.6-RU`. Vérifié le registre contre la demande : les points étaient consignés par morceaux, dispersés dans la section « Rédaction sur les scans » ; « les fonctions qui ne servent plus » (225) n'y était pas (seulement dans le transcript et le rappel de 22:07). Écrit en tête de la section rédaction du registre (prod e055834) : « Rédaction — ce qui reste à coder, dans l'ordre », onze points avec leurs sources, et les questions en attente.
+
+**Claude :**
+
+À jouer : tester la 1.4.6 · en cours : rien · ouvert : 220 ; 234.
+
+250. La 1.4.6 est en ligne, vérifiée bit à bit à 15:27 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.6-RU.
+
+251. Pour ta question : pas tout à fait, et c'est réparé. J'ai vérifié sur GitHub : tout était consigné, mais par morceaux, dispersé dans la section du registre, et « les fonctions qui ne servent plus » (225) n'y était pas (elle n'était que dans le transcript et dans le rappel de ce soir). C'est maintenant une seule liste, dans l'ordre, en tête de la section rédaction du registre : https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-DETTES.md. Elle compte onze points : le type par l'IA, la place du cadre, la copie de l'élève en couleurs, la taxonomie, les fonctions qui ne servent plus, le mot par mot ⇧R, la grille en stickers, les passes remplacées, la fin de l'encre, le test iPhone, les exigences du 29/10. Je la tiens à jour à chaque livraison.
+
+252. Je commence par le premier point : le type donné par l'IA (240).
+
+À tester :
+1. La copie de ta capture, page 2 : le trait rouge est là, à sa marge.
+2. Dans la bande de ta capture, « plaint → plaignons » et les mots où le cadre se collait en haut : le cadre a la hauteur des lettres du mot.
+3. Dans la recopie, tire la poignée pointillée vers la gauche : la feuille et la ligne en grand grandissent ; recharge la page : la position est gardée ; double-clic sur la poignée : moitié-moitié.
+
+31/10/2026 15:30
+MEMO

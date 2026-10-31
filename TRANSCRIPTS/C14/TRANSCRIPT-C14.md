@@ -732,3 +732,26 @@ MEMO
 
 30/10/2026 21:30
 MEMO
+
+## Tour 30 — 31/10/2026 04:01 → 31/10/2026 04:05
+
+**Paul :** Vérifie le travail de GPT
+
+**Fait.** Lu au sas : transcript C15 tours 5 à 12 (points jusqu'à 131) ; branche `c15-recopie` (20 fichiers, dont `recopie.js` 345 lignes, `recopie.css`, `banc/recopie.mjs`, rapport `LIVRAISON-C15-RECOPIE-V1.md`, note `NOTE-REGISTRE-C15-RECOPIE-V1.md`) ; branche `c15-banc-complet` et `.github/workflows/mjpc-banc-scans.yml` (banc sur machine GitHub gratuite, dépôt public). Production : registre ⑪ mis à jour par C15 à 21:36, 21:54 et 22:59 ; la note de la recopie non appliquée (outil de GPT refusé). Refait de mon côté : `banc/verifier-construction.py` → 743 033 octets identiques, SHA-256 `f442e0bb…`, version 1.3.0-RU-C15-2 ; banc complet local sur `C15-maquette-recopie-v1-essai2.html` → « BANC : 67 vérifications, 0 défaut », code de sortie 0, 18 vérifications « recopie » ; capture `C15-22-recopie-1536.png` regardée. Trouvé : le lien « Ouvrir l'essai » de la réponse 131 pointe sur une adresse locale de GPT (`terminal.local`) ; tour 12 du transcript C15 resté « en cours ». Envoyés à Paul : la maquette et la page inventée.
+
+**Claude :** [fichiers : C15-maquette-recopie-v1-essai2.html, recopie-lignes-essai.png]
+
+À jouer : essayer la recopie (fichiers joints) · en cours : rien · ouvert : 135 ; 53 ; 45 ; 36.
+
+132. Le travail de GPT : ça va. Je l'ai refait de mon côté sans me fier à lui : son fichier se refabrique à l'identique depuis ses sources, et son banc passe chez moi aussi, 67 vérifications, 0 défaut, dont 18 nouvelles sur la recopie (lignes recalées aux poignées, reprise après rechargement, deux pages, changement de copie, tes anciennes marques, réponses, note et total de lignes intacts). J'ai regardé l'écran à 1536 × 864 : la photo à gauche, ta feuille à droite, chaque ligne de saisie commence là où commence la ligne de la photo, la ligne en cours en grand en haut.
+
+133. Ce qui ne va pas. Le lien « Ouvrir l'essai » que GPT t'a donné pointe sur sa propre machine : il ne s'ouvre pas chez toi ; je t'envoie donc le fichier et la page inventée à charger dedans. Le registre en ligne n'est pas à jour : l'outil de GPT a refusé d'y écrire, et il attend ton accord sur une note de 1 319 caractères. Et son transcript laisse le tour 12 marqué « en cours ».
+
+134. Le point important pour ta journée : la recopie n'est pas en ligne, tu ne peux pas encore y recopier tes vraies copies. L'essai tourne sur 30 élèves inventés. Pour la mettre en ligne, ta règle demande d'abord les trois défauts du point 59 (la tuile « Non commencé », la remise à zéro d'une copie, les mots de l'élève à valider par toi), puis l'ouverture de tes vraies copies en lecture seule pour vérifier que rien ne bouge, puis ton « promeus ». Les lignes n'ont été trouvées que sur une page inventée (36 reste ouvert).
+
+135. Je propose : j'ajoute moi-même au registre la note de GPT, mot pour mot ; et GPT s'attaque au point 59 dès maintenant, pour que la recopie puisse aller en ligne au plus tôt. Ça te va ?
+
+À tester : ouvre le fichier C15-maquette-recopie-v1-essai2.html, « Corriger sur les scans », charge recopie-lignes-essai.png, initiales « ec », Entrée, « ✍ Recopier » ; recale une poignée verte, tape une ligne avec ses fautes, Entrée, recharge la page : ta ligne et ta poignée reviennent ; « ← Les scans » rend tes quatre passes.
+
+31/10/2026 04:05
+MEMO

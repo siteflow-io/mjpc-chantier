@@ -624,7 +624,7 @@ MEMO
 30/10/2026 23:00
 MEMO
 
-## Tour 12 — 30/10/2026 23:04 — en cours
+## Tour 12 — 30/10/2026 23:04 → 31/10/2026 00:11 — terminé
 
 **Paul :** Bon et alors il faut coder maintenant !!
 
@@ -947,4 +947,136 @@ Prompt C15 relu, blob 7a4e14ee6c8170881a80da4d2bb4d59ae1d089a2 inchangé. Aucun 
 À tester : rien pour toi.
 
 31/10/2026 04:23
+MEMO
+
+## Tour 16 — 31/10/2026 05:26 → 31/10/2026 05:50
+
+**Instruction de Paul :**
+
+Reprends le chantier MJPC comme conscience n°15 et poursuis concrètement l'exécution complète du mandat, par une étape cohérente et vérifiable. Il s'agit de faire avancer le travail autorisé, pas de me rappeler de le faire.
+
+Avant toute action, lis intégralement dans le sas [adresse du sas dans la conversation] MANDATS/PROMPT-CONSCIENCE-15-GPT.md, MANDATS/REDACTION-UNIVERSELLE/MANDAT-RECOPIER-BANDE.md et TRANSCRIPTS/C15/TRANSCRIPT-C15.md jusqu'au dernier tour ; reprends les références C14 et les autres règles prescrites. Lis le code courant et le registre docs/MJPC6-DETTES.md dans la production [adresse de production dans la conversation] avant toute modification pertinente. Le sas et ses transcripts sont la source de continuité si la conversation ou les fichiers de travail ne sont plus disponibles.
+
+Vérifie l'état réel des dépôts et des travaux déjà engagés. La recopie 56 a été livrée au sas sur c15-recopie : MANDATS/REDACTION-UNIVERSELLE/LIVRAISON-C15-RECOPIE-V1.md ; candidate C15-maquette-recopie-v1-essai2.html, banc complet 67 vérifications et 0 défaut, six captures regardées. Le registre a reçu l'ajout technique exact autorisé par Paul au commit 7dbf1f7a14cecbb19c3ed37307291517269a31c8. Ne refais pas les étapes terminées.
+
+Poursuis l'ordre 61 validé : terminer la recopie si des défauts restent, puis 57 la bande des fautes, puis 58 la grille en stickers ; régler 59 avant toute mise en ligne. Respecte les décisions encore nécessaires, notamment les touches 51, le traitement des doublons de fautes anciennes et les points de la grille à faire valider. Le fichier de recopies 53 reste non validé ; les quatre passes 45 restent disponibles jusqu'à la grille ; la mesure 36 sur pages réelles entières reste ouverte. Une approbation relative à une autre opération ne valide pas ces points. Lorsqu'une décision de Paul manque, prépare un choix concret et complet, indique le blocage et avance sur le travail indépendant déjà autorisé.
+
+Implémente dans le véritable fichier de l'app sur faux hub, avec les sources et le générateur conservés. Ajoute les épreuves nécessaires au banc unique, rejoue le banc complet et regarde les captures avant livraison. Dépose au sas le code, les preuves comptées et un rapport à jour. Préserve toutes les anciennes copies, marques, réponses, lignes, notes, grilles, photos et positions de reprise ; aucune donnée réelle d'élève dans les dépôts, aucun service payant, aucun texte élève inventé. Respecte les protections de données et le protocole de maquette.
+
+Cette planification autorise la poursuite du travail, pas une promotion : aucune mise en ligne sans le mot « promeus » de Paul, le banc complet réussi et toutes les conditions du mandat remplies. Ne modifie pas les fichiers de l'app en production à titre de raccourci. Évite tout travail concurrent sur la même étape et respecte la relève éventuelle des consciences.
+
+À la fin de chaque passage, conserve le transcript et l'état de progression dans le sas ; donne dans cette conversation un compte rendu bref en français : travail effectivement fait, preuves et tests exécutés, blocage précis éventuel et prochaine étape. Respecte la numérotation continue, l'heure de Paris et le format du prompt C15. Si les outils nécessaires manquent, dis ce qui n'a pas pu être fait sans prétendre avoir codé ou testé. Quand tout le travail du mandat autorisé est livré et vérifié, donne le bilan final et désactive cette planification.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : lecture de l’état courant et préparation de la bande · ouvert : 53 ; 45 ; 36.
+
+138. Je reprends les fichiers du sas et le code courant pour isoler une étape vérifiable de la bande, sans décider à ta place les touches encore ouvertes.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 05:26
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : vérification de l’avancement des copies · ouvert : 51 ; 53 ; 45 ; 36.
+
+139. La bande attend encore le choix de sa touche de validation et la règle pour les anciennes fautes. J’avance sur un point indépendant de 59 : faire afficher l’avancement réel des copies scannées au tableau des élèves.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 05:29
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : correction du tableau des élèves · ouvert : 51 ; 53 ; 45 ; 36.
+
+140. La cause est confirmée : le tableau ne lit que l’ancienne grille, alors que les scans enregistrent leurs réponses ailleurs. Je corrige cette lecture, sans réécrire les copies ni leurs notes.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 05:33
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : correction du tableau des élèves · ouvert : 51 ; 53 ; 45 ; 36.
+
+141. Le défaut est reproduit : après avoir terminé la langue d’une copie inventée, sa carte dit encore « Non commencé · 0 % ». Le correctif comptera les rubriques réellement terminées et distinguera une correction commencée d’une copie intacte.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 05:37
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : banc complet du correctif d’avancement · ouvert : 51 ; 53 ; 45 ; 36.
+
+142. Sur les mêmes données conservées, la carte affiche maintenant « En cours · 17 % » après la langue : deux rubriques terminées sur douze. Je lance l’ensemble du banc, avec les nouveaux contrôles du tableau et les anciennes épreuves de recopie.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 05:39
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : dépôt du correctif d’avancement · ouvert : 51 ; 53 ; 45 ; 36.
+
+143. Le banc complet passe : **75 vérifications, 0 défaut**. Il couvre aussi une copie terminée à 100 %, la reprise avant ouverture des scans et l’absence de réécriture des copies quand on trie le tableau. Les captures du correctif sont regardées ; je prépare la livraison au sas.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 05:43
+MEMO
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : livraison de l’avancement corrigé · ouvert : 51 ; 53 ; 45 ; 36.
+
+144. Le correctif est prêt au sas : le calcul fonctionne aussi après rechargement, sans ouvrir les scans ni charger leurs photos. La suite indépendante est la remise à zéro d’une copie et la protection contre sa réapparition depuis un autre onglet.
+
+À tester : rien pour toi à ce stade.
+
+31/10/2026 05:46
+MEMO
+
+**Faits — état et choix du périmètre.** Prompt C15 inchangé (7a4e14ee6c8170881a80da4d2bb4d59ae1d089a2), mandat courant relu (e1a0f5238ee4d15b018a4dc798133980ec7c6769), transcript C15 récupéré jusqu'au tour 15. C14 porte désormais un tour 30, blob 51422a08e165f4307a10ff67fb497493d0635cd3 : audit de 04:01 à 04:05, reconstruction et banc local indépendants 67/0, capture regardée ; critique exacte du lien terminal.local qui n'est pas une adresse jouable chez Paul ; fichier et page inventée envoyés par C14. Ses points 132 à 135 sont C14, à distinguer de C15 132 à 135. Aucune modification de code concurrente détectée. La note dont C14 disait qu'elle restait à appliquer a depuis été appliquée au tour 13 ; registre relu blob b358dfcda2336e57f50b3e46cd5aa451247b1cdf. Aucun doublon d'ajout au registre.
+
+Le point 57 attend encore la décision 51 et le traitement des anciennes fautes ; 58 attend la grille validée. Le présent ordre demande d'avancer sur le travail indépendant : choix du défaut du tableau dans 59, sans prétendre que Paul a validé la proposition C14 135 ni choisir les touches à sa place. Production toujours redaction.html 1.2.3-RU, blob 753ebaaec117ffd1ae406a15edab2e0dc955884a ; correction_dictee.html 6.7.0-L18, blob 3b9c4e98719d011fcd5e142bb2df30b9eadcb54a. Registre, journal, restauration, Où trouver quoi, protocole, CLAUDE.md et dispositif récupérés ; fonctions utiles relues. Pas de lecture des copies réelles et pas d'écriture Firebase.
+
+**Faits — source et reproduction.** Nouveau dossier local mjpc-avancement ; 13 sources de départ vérifiées contre leurs blobs. Le transfert du seul grille2.json avait ajouté une fin de ligne : elle est restituée seulement après vérification de l'empreinte exacte. Référence de recopie reconstruite avant modification, 743 033 octets identiques au blob 81355436fd26d4fb39b62feba92ebe599e58fe29. Les lectures anonymes viennent de v14, les 30 noms restent ceux du générateur. Le navigateur ouvre l'app existante par le lanceur Sites géré, avec un serveur Python déclaré comme script dev ; aucune injection de rechargement dans les chaînes des exports, aucun serveur hors du lanceur. La page PNG inventée est vérifiée (55 682 octets, blob 238ee23b628f28751a3550be91d3c570f603bc58), choisie par le vrai sélecteur, initiales la, 6 lignes, fin des fautes puis les trois réponses au Lexique. La passe du thème vient : la langue est finie. Retour au tableau, carte encore Non commencé · 0 %. Capture du constat regardée. Une première capture prise dans le même appel que la fermeture portait encore l'écran des scans, à cause du rendu retardé ; elle est écartée des pièces livrées.
+
+**Faits — code et preuves.** Nouveau module avancement.js : lecture du scan dans state.copies, grille du sujet courant, aucun appel à scCopie ni écriture. Les rubriques à questions réutilisent scCase avec un argument de lecture ; la signature change, l'algorithme des cases reste le même. Recherche des usages en callback map/forEach/filter/some/every : aucun appel direct par ce moyen. Les rubriques calculées lisent la fin de passe enregistrée ; les lignes à repères ne demandent pas l'image au tableau. Les points de note ne servent pas de poids au pourcentage de progression. Une marque commence la correction sans terminer seule une rubrique ; une ouverture, un chrono ou la recopie seule n'annoncent pas une correction. Le chemin classique existant reste quand aucune activité de correction scan n'est enregistrée ; son parcours entier n'est pas rejoué dans ce tour. L'ancienne note classique n'est pas affichée comme note des scans.
+
+Même navigateur et mêmes données gardées, rechargement sur la candidate : En cours · 17 %. Candidate unique C15-maquette-avancement-v1-essai1.html, version 1.3.1-RU-C15-1 ; 744 785 octets, blob b5f6e2b9c73f14fed644df0e942a7c5eb3d656a3 ; SHA-256 1a93af50dd2fbd15e952a7e9913a7f3ec0a8dca5092d17815eec0ace01938d1b. Reconstruction depuis les sources identique octet pour octet. Aucun fichier livré auparavant n'est écrasé. Branche nouvelle c15-avancement, issue de c15-recopie ae190802fc98018f913ddc821ef6977668688919.
+
+Le banc unique conserve les 49 épreuves précédentes et les 18 de recopie. Huit épreuves ajoutées par les gestes : copie entière à 100 %, langue seule à 17 %, copie intacte à 0 %, compteur une sur trente, données inchangées au tri, aucune copie réécrite au tri, reprise sans ouvrir les scans ni leurs images, statut et pourcentage séparés aux quatre tailles de bureau. Le lanceur cible explicitement la nouvelle candidate et vérifie 19 empreintes de sources. Commit de code 4ec075245a52852cf2e62d4a23862894a42a98f9, exécution 41169486032 : tous les jobs en succès, nom du job résultat « BANC : 75 vérifications, 0 défaut - 30 captures ». Résultat lu dans les métadonnées, pas dans des journaux récupérés. Les 30 PNG produits ne sont pas regardés.
+
+Sept JPEG regardés et déposés : avant, après, vues dans un cadre à 1280 × 720, 1366 × 768, 1536 × 864, 1920 × 1080, 390 × 800. Les cadres les plus larges sont réduits visuellement, leurs dimensions propres restent exactes ; le JPEG extérieur conserve l'écran entier. Le rapport distingue cela du banc aux dimensions directes. Le mobile confirme la lisibilité de la carte ; son en-tête préexistant déborde horizontalement, non corrigé dans ce périmètre. Le badge de simulation peut recouvrir le bas de la liste aux petites hauteurs, noté dans les limites. Aucun test iPhone réel annoncé.
+
+**Faits — livraison et suite.** Rapport complet LIVRAISON-C15-AVANCEMENT-59A.md, sept captures et mandat à jour déposés sur c15-avancement, commit b422081ea6f52dbbaf67dd69b3dc0203c732e916. Rapport, choix préparés, mandat, sept fichiers de code/banc/candidate relus identiques ; métadonnées des sept JPEG identiques. Le lien final renvoie au rapport du sas, qui propose un fichier complet à télécharger ; aucune adresse terminal.local proposée comme site à Paul. Le serveur géré est arrêté et les pages de contrôle sont fermées, sans transfert de page à l'utilisateur.
+
+CHOIX-C15-BANDE-57.md prépare F pour garder une faute et avancer, sans inverser Entrée/Espace ; cette touche est absente des deux gestionnaires relus. Le sens précis de Suppr en dictée rapide (retirer puis avancer) est consigné. Sources : dictée lignes 5023–5033 et tokenize ligne 1290 ; scans scClavier ligne 376. Cadrage proposé des anciennes fautes : lien explicite choisi par Paul, aucune fusion, suppression ou déplacement automatique. Ces choix ne sont ni validés ni codés.
+
+59 reste ouvert : prochaine étape indépendante, remise à zéro d'une copie via la corbeille MJPC et protection contre une page ouverte qui la réécrit ; les mots de l'élève attendent Paul. 57, 58, 53, 45 et 36 restent dans leur état du mandat. Le travail autorisé n'est pas entièrement terminé. Aucun code de production changé, aucune promotion, aucun « promeus » reçu, aucun gain de temps ou mesure des 30 clics prétendu.
+
+L'ancien en-tête du tour 12 était resté « en cours » alors qu'il se terminait au point 131 le 31/10 à 00:11. Seul cet en-tête de statut est corrigé ci-dessus ; les messages de Paul et les réponses déjà transcrites ne sont pas modifiés.
+
+**GPT — réponse finale :**
+
+À jouer : rien · en cours : point 59 · ouvert : 51 ; 53 ; 45 ; 36.
+
+145. **Le faux « Non commencé · 0 % » est corrigé au [sas]([lien dans la conversation]).** Après la langue : « En cours · 17 % » ; copie entièrement corrigée : 100 %. **Banc complet : 75 vérifications, 0 défaut.**
+
+![Tableau corrigé sur les copies inventées](sandbox:/workspace/scratch/f1d00b4a9273/mjpc-avancement/captures/59a-apres-tableau-1363x936.jpg)
+
+Suite : la remise à zéro d’une copie et sa protection contre la réapparition depuis un autre onglet. La production reste inchangée.
+
+À tester : télécharger la maquette depuis le rapport → terminer la langue d’une copie inventée → fermer les scans → vérifier 17 % → recharger.
+
+31/10/2026 05:50
 MEMO

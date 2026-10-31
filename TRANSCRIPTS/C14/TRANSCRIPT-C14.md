@@ -1912,3 +1912,32 @@ Tu valides ?
 
 31/10/2026 17:16
 MEMO
+
+## Tour 83 — 31/10/2026 17:18 → 31/10/2026 17:24
+
+**Paul :** Non mais c'est surtout pour moi: il me faut un flux, avec validation des étapes etc. Sinon je ne sais plus ce que j'ai uploadé, ce que j'ai renvoyé à l'IA etc. 
+Mais pour moi tout devait se faire en une fois, c'était ça le contrat. 
+Là ça me fait perdre du temps puis reperdre du temps etc. 
+Consigne ça. Ça ne va pas. 
+Je fais déjà deux passages par copie, une recopie, la bande... Ça fait beaucoup. Ou alors tout le reste devra être 100 pourcent automatisé.
+
+**Fait.** Consigné en tête de la section rédaction du registre (prod 784e2cc), avec ses mots : ce qui ne va pas, et le contrat (un seul envoi à l'IA par copie, qui rend correction et types ; un flux visible, étapes validées et datées ; deux passages de Paul par copie au plus, le reste automatisé à 100 %). La branche c14-poignees garde le travail de 17:10 (non poussé) : le passage des types en second envoi est à retirer.
+
+**Claude :**
+
+À jouer : 285 (ton ok) · en cours : rien · ouvert : 220 ; 234 ; 285.
+
+281. C'est consigné au registre, avec tes mots : https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-DETTES.md. Le contrat : un seul envoi à l'IA par copie, qui rend tout ; un flux où chaque étape est validée et datée ; tes deux passages par copie (la recopie, la bande), et rien d'autre à la main.
+
+282. Tu as raison, et c'est ma faute : le second envoi pour les types casse le contrat. Je le retire. Et la consigne de ce matin aurait dû demander le type dès le départ.
+
+283. Un seul envoi, qui rend aussi le type : dans chaque ligne corrigée, l'IA écrit juste après chaque mot ou signe corrigé ou ajouté sa lettre entre accolades (« je suis allé{G} au marché »), et {X} là où elle a retiré un mot en trop. L'app enlève les accolades, trouve les fautes et prend la lettre de chacune ; une faute sans lettre garde le type du moteur. C'est court : à peu près trois signes de plus par faute, donc toujours 8 copies par envoi ; une réponse coupée garde les copies entières.
+
+284. Le flux : dans la recopie, chaque copie affiche ses étapes, chacune validée et datée : recopiée, envoyée à l'IA (quel envoi, à quelle heure), corrigé chargé, bande passée (arrêts faits sur le total). Le compteur d'en haut résume le tout pour la classe : recopiées, envoyées, chargées, bandes passées. Tu sais toujours ce qui est parti, ce qui est revenu, ce qui reste. Je te montre une capture du flux avant de le coder.
+
+285. Pour tes 28 copies déjà corrigées sans type, une seule reprise est possible : les renvoyer avec la nouvelle consigne, en 4 envois de 8, et l'IA rend correction et types d'un coup. Sinon, elles gardent le type du moteur, faux pour à peu près un Lexique sur trois. Je propose la reprise. Ok pour 283, 284 et 285 ?
+
+À tester : rien de neuf en ligne.
+
+31/10/2026 17:24
+MEMO

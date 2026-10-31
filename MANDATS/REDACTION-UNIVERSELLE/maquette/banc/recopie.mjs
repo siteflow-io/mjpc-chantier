@@ -475,6 +475,14 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
     /se→nous:o/.test(av17.arrets) && /plaint→plaignons:o/.test(av17.arrets) && /camarade→camarades:(\s|$)/.test(ap17.arrets + " ") && /se→nous:o/.test(ap17.arrets) && /plaint→plaignons:o/.test(ap17.arrets) && ap17.marques === "plaint,se" && ap17.fautes === av17.fautes && ap17.de === ap17.texte && !ap17.aExporter
     && /ce→nous:(\s|$)/.test(ap17b.arrets + " ") && ap17b.marques === "plaint" && ap17b.fautes === av17.fautes - 1 && /se→nous:(\s|$)/.test(fin17.arrets + " ") && /plaint→plaignons:o/.test(fin17.arrets) && fin17.texte === av17.texte);
   await pg.click("#rcBandeOuvrir"); await att(450);
+  // 1.4.12 (C14 322, acquis) : un cadre glissé pour la première fois garde aussi la place où l'app l'avait posé
+  { const i21 = await pg.evaluate(() => RC.bd.A.findIndex(a => !(a.l.places && a.l.places[a.cle]) && !(a.l.placesApp && a.l.placesApp[a.cle])));
+    if (i21 >= 0) { await pg.click('#rcBandeListe li[data-i="' + i21 + '"]'); await att(200); }
+    const av21 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i]; return { cle: a.cle, q: (({ x0, x1 }) => ({ x0, x1 }))(rcPlaceSeg(a)) }; });
+    await pg.keyboard.press("ArrowRight"); await att(150); await pg.keyboard.press("ArrowRight"); await att(200);
+    const ap21 = await pg.evaluate(cle => { const a = RC.bd.A[RC.bd.i]; return { app: a.l.placesApp && a.l.placesApp[cle], ici: a.l.places && a.l.places[cle] }; }, av21.cle);
+    verif("recopie (1.4.12) : un cadre glissé pour la première fois (deux fois →) garde la place où l'app l'avait posé (" + (ap21.app ? ap21.app.x0.toFixed(3) : "—") + ") à côté de la tienne (" + (ap21.ici ? ap21.ici.x0.toFixed(3) : "—") + ") : la mesure se fera sur ton travail",
+      i21 >= 0 && !!ap21.app && Math.abs(ap21.app.x0 - av21.q.x0) < 1e-9 && !!ap21.ici && Math.abs(ap21.ici.x0 - av21.q.x0 - 0.008) < 1e-6); }
   // 1.4.7 (Paul 15:41) : la bande se rouvre à l'arrêt où l'on était, après l'avoir fermée, puis après un rechargement de la page
   const i8 = await pg.evaluate(id => RC.bd.A.findIndex(a => a.id === id && a.g.eleve === "se"), cible2); await pg.click('#rcBandeListe li[data-i="' + i8 + '"]'); await att(200);
   const vise8 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i]; return a.id + "|" + a.cle; });
@@ -548,7 +556,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   verif("recopie (1.4.12) : le fichier de l'élève en couleurs : " + att18.n + " fautes soulignées chacune dans la couleur de son type d'erreur (" + e18.soul + "), une pastille par faute dans la marge ajoutée à gauche de la photo (« " + e18.pas + " », aucune sur la photo : " + (e18.surPhoto === 0 && e18.gauche) + "), sans la bonne forme (" + !e18.bonne + ") ; « " + e18.tes.replace(/^Tes fautes/, "").trim() + " » ; une pastille cliquée : « " + h18 + " » ; plus de « en rouge » (" + !e18.rouge + ") ; au téléphone sans interactivité, les pastilles se voient (" + s18.pas + ") sans défilement de côté (" + s18.large + ")",
     att18.n >= 1 && /[A-Z∅+⚠?]/.test(e18.pas) && e18.soul === att18.couleurs && e18.pas === att18.lettres && e18.surPhoto === 0 && e18.gauche && !e18.bonne && /chacune dans la couleur de son type d'erreur/.test(e18.tes) && /^Faute \d+ sur \d+/.test(h18) && !e18.rouge && s18.pas === att18.n && s18.large);
   // 1.4.9 (Paul 19:27 et 19:39) : tout effacer, les corrigés de l'IA et tout ce qui vient de la bande ; rien de la recopie ne bouge
-  const photo12 = () => pg.evaluate(() => { const IA = ["corrige", "corrigeDe", "corrigeLe", "corrigeMarque", "types", "typesDe", "envoiIA", "decisions", "marquesBande", "places"], o = {}; let n = 0, bande = 0, autres = 0, arret = 0;
+  const photo12 = () => pg.evaluate(() => { const IA = ["corrige", "corrigeDe", "corrigeLe", "corrigeMarque", "types", "typesDe", "envoiIA", "decisions", "marquesBande", "places", "placesApp"], o = {}; let n = 0, bande = 0, autres = 0, arret = 0;
     SC.copies.forEach(k => { const c = state.copies[k] || {}, sc = c.scan || {}, r = JSON.parse(JSON.stringify(sc.recopie || null));
       if (r) { if (r.bandeArret) arret++; if (r.envoi || r.charge) arret++; delete r.bandeArret; delete r.reprise; delete r.envoi; delete r.charge; delete r.temps; delete r.gestes;   /* [1.4.12] le temps et les gestes se comptent à chaque clic : ce ne sont pas la recopie */ Object.values(r.pages || {}).forEach(p => { delete p.modifieLe; Object.values(p.lignes || {}).forEach(l => { if (IA.some(f => l[f] !== undefined)) n++; IA.forEach(f => delete l[f]); }); }); }
       const ms = Object.values(sc.marques || {}); bande += ms.filter(m => m.bande).length + (sc.bandeDebut ? 1 : 0); autres += ms.filter(m => !m.bande).length;

@@ -1549,3 +1549,29 @@ Les dettes : je commence dès ton prochain mot.
 
 31/10/2026 14:12
 MEMO
+
+## Tour 69 — 31/10/2026 14:16 → 31/10/2026 14:44
+
+**Paul :** 227. Oui évidemment l'IA fait le triage et c'est injecté au json. 228. Le rappel doit être posé ce soir, c'est ce soir ma réinitialisation. 229. Oui il faut séparer les types d'erreur, il faut être dans le même détail que dictée. Par ailleurs, il faudra brancher la taxonomie aussi. 
+On y va pour les dettes.
+
+**Fait.** Rappel déplacé au 31/10 à 22:07 (trig_01YS57xn1UsjCiQrbpgAticv). Dettes relues au registre (prod `docs/MJPC6-DETTES.md`, section « Rédaction sur les scans ») et contre le code. ⓑ : à l'ouverture, `rcOuvrir(true)` (la reprise de la recopie) appelait `scChrono()` et ajoutait les millisecondes depuis `SC.actif` au temps de la passe ; la reprise pose maintenant `SC.actif` sans compter. ⑤ : `scRemettreAZero` (question dans la fenêtre de l'app, jamais une boîte du navigateur), `scRemettreAZeroOui` (export JSON, corbeille `remise-a-zero-copie_*` sous la forme du site, puis effacement), `scOublierCopie`, `scApresOubli` ; le flux `ruAbonner` oublie une copie que le site n'a plus (patch dans gen-maquette.py). Banc 112/0, dont deux vérifications nouvelles par le geste : remise à zéro d'une copie recopiée (corbeille 1, export 1, marques, temps et visées à 0, recopie gardée, même identité) ; une copie effacée au site pendant que la page est ouverte, puis un geste sur elle (son nombre de lignes) : au site, une copie neuve, jamais l'ancienne. Vrai site, lecture seule, écritures interceptées : 1.4.3 = 2 écritures à l'ouverture (la copie, le suivi), 1.4.4 = 1 (le suivi) ; aucune autre différence hors version ; l'écriture du suivi comparée au site : seul le numéro de la ligne de recopie diffère (Paul recopiait peut-être à ce moment, non prouvé). Candidate 1.4.4-RU : 659 164 o, md5 dc6a2ef8083b9f99b3922c6eea301b01. Branche c14-poignees f5603cd4 ; registre des dettes mis à jour (prod 9cb5886). ② : relevé dans `eleve.js` les phrases que l'élève lit.
+
+**Claude :**
+
+À jouer : 234 (tes mots) · en cours : rien · ouvert : 220 ; 234.
+
+230. Sur 227 : c'est noté, l'IA donne le type dans le JSON qu'elle rend, et l'app le prend tel quel. Je change la consigne et l'import juste après les dettes, et je te montre la consigne avant.
+
+231. Sur 228 : le rappel est déplacé à ce soir, 31/10 à 22:07.
+
+232. Sur 229 : c'est noté. Un arrêt ne mêlera plus un mot et une ponctuation : chacun aura son type, au même détail qu'en dictée. Après les dettes, l'ordre que je propose : la consigne de l'IA avec le type (230), puis les arrêts séparés, puis la copie de l'élève soulignée en couleurs avec les pastilles dans la marge (226, acquis puisque tu ne l'as pas commenté), puis la taxonomie. Pour la taxonomie, je regarde d'abord comment la dictée la branche, puis je te propose.
+
+233. Deux dettes sont réglées dans la 1.4.4, qui attend ton « promeus ». ⑤ : un bouton « ↺ Remettre à zéro » dans l'écran des scans, et pas sur la fiche de l'élève, puisque la fiche sera recadrée (225). La question s'affiche dans la fenêtre de l'app. L'app télécharge l'export JSON, range la copie dans la corbeille MJPC, puis efface la correction : l'ancienne, tes marques, tes réponses, la bande et ses décisions, le temps. Restent ses pages, ta recopie, le corrigé de l'IA et le nombre de lignes. En plus, une page ouverte ailleurs oublie une copie effacée au site et ne la réécrit plus. ⓑ : à l'ouverture, la copie où tu en étais n'est plus réenregistrée. Mesuré sur le vrai site, en lecture seule : la 1.4.3 écrit deux fois à l'ouverture (ta copie et ton suivi), la 1.4.4 une fois (ton suivi, « où tu en es », comme depuis la 1.2). Banc 112/0, avec deux vérifications nouvelles par le geste ; sur le vrai site, rien d'autre ne change.
+
+234. Dette ② : les mots que l'élève lit dans son fichier. Ce sont les tiens, à valider ou à changer : « Ta note », « Ta grille », « ← Ta grille », « À reprendre », « La langue », « Tes fautes : 3 soulignées en rouge sur ta copie. », « Faute 2 sur 3 : Une erreur d'orthographe ou de grammaire, soulignée en rouge. », « Ma remarque », « Mes remarques », « La phrase qui m'a touché : Surlignée en or sur ta copie. », et pour la traversée « Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées en rouge. », « … : leurs points apparaissent sur ta copie. », « …, gris, avec un « ? ». », « La grille de correction est au-dessus de ta copie : une feuille par critère. », « Ta copie est passée à travers toute la grille. », avec les boutons « Suivant » et « ⏭ Passer ». Avec 226, les trois phrases « en rouge » doivent changer ; je propose « Tes fautes : 3 soulignées sur ta copie, chacune dans la couleur de son type. », « Faute 2 sur 3 · Grammaire » (le nom du type, comme en dictée) et « Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées dans la couleur de leur type. ». Tu valides ou tu changes ?
+
+À tester : rien de neuf en ligne. La 1.4.4 attend tes mots (234), puis ton « promeus ».
+
+31/10/2026 14:44
+MEMO

@@ -2485,7 +2485,7 @@ function ruAbonner() {
   const es = new EventSource(ruUrl(ruCheminCopies())); RU.flux = es;
   const appliquer = (ev, patch) => {
     let m; try { m = JSON.parse(ev.data); } catch (e) { return; } if (!m || typeof m.path !== "string") return;
-    const seg = ruSeg(m.path);
+    const seg = ruSeg(m.path), avant = Object.keys(RU.miroir || {});
     if (patch) Object.keys(m.data || {}).forEach(k => { RU.miroir = ruPoser(RU.miroir, seg.concat(ruSeg(k)), m.data[k]); });
     else RU.miroir = ruPoser(RU.miroir, seg, m.data);
     let change = false;
@@ -2494,7 +2494,9 @@ function ruAbonner() {
       RU.sig[k] = sg; const v = scCles(ruCopie(RU.miroir[k]), false); delete v.nom; state.copies[k] = v; change = true;
       { const corps = Object.assign({}, v); RU_IDENTITE.forEach(f => delete corps[f]); RU.sigCorps = RU.sigCorps || {}; RU.sigCorps[k] = JSON.stringify(scFb(corps)); }   // reçue d'ailleurs : pas à réécrire d'ici
     });
+    const parties = avant.filter(k => (RU.miroir || {})[k] == null && state.copies[k]); parties.forEach(k => { scOublierCopie(k); change = true; });   // [C14 dette ⑤] une copie effacée au site (remise à zéro ailleurs) quitte aussi cette page : sinon le geste suivant la réécrirait
     if (change) { try { localStorage.setItem(ruCleSecours(), JSON.stringify(state)); } catch (e) {} ruRedessiner(); }
+    parties.forEach(scApresOubli);
   };
   es.addEventListener("put", ev => appliquer(ev, false));
   es.addEventListener("patch", ev => appliquer(ev, true));
@@ -6520,6 +6522,7 @@ ruDemarrer();
     <button class="sc-btn" onclick="scImprimerVierges()" title="Imprimer des copies vierges de l'appli : quatre repères aux coins, les lignes à leur place. Scannées, elles se remettent droites d'elles-mêmes et leurs lignes sont connues d'avance.">🖨 Copies vierges</button>
     <button class="sc-btn" onclick="SC.attrib=true;SC.ia=0;scRendre()" title="Revoir, page par page, l'élève de chaque page (ses initiales).">🔤 Les initiales</button>
     <button class="sc-btn" onclick="scFichiersED()" title="Fabriquer le fichier de chaque élève, à déposer sur École Directe : sa copie scannée et tes marques.">📨 Fichiers École Directe</button>
+    <button class="sc-btn" id="scZero" onclick="scRemettreAZero()" title="Remettre à zéro la copie affichée : sa correction s'efface (l'ancienne, tes marques, tes réponses, la bande, le temps) ; ses pages, ta recopie et le corrigé de l'IA restent. Tout passe d'abord par la corbeille MJPC (un an) et un export JSON. Une confirmation est demandée.">↺ Remettre à zéro</button>
     <button class="sc-btn" onclick="scFermer()" title="Revenir au tableau des élèves : tout est déjà enregistré.">✕ Fermer</button></div>
   <div id="scManque" class="sc-manque"></div>
   <div id="scBande" class="sc-bande" hidden></div>
@@ -7557,6 +7560,40 @@ function scBande() {
   B.innerHTML = `<b>${escapeHtml(P.nom)}</b> · ${escapeHtml(pt ? pt.titre : "")}${q ? " · " + escapeHtml(q.texte) : ""}${r && r.complet ? ` · <span style="color:${SC_COUL[r.c.niveau]}">●</span> ${escapeHtml(r.txt)}` : ""} <span class="sc-m">— Entrée oui · N non · → copie suivante</span><button class="sc-btn" onclick="scReplier(false)" title="Déplier le panneau de droite : les questions, la case, les copies déjà vues, les touches.">⇤ Déplier</button>`;
 }
 
+// [C14 dette ⑤] Remettre une copie à zéro (Paul, 30/10 11:39 : « je veux supprimer la correction de flavie pour repartir de zéro »).
+// Comme ruSupprimer : un export JSON téléchargé, puis la corbeille MJPC, puis l'effacement. S'effacent la correction : l'ancienne,
+// les marques sur les scans et celles mises de côté, les réponses, la bande et ses décisions, le temps. Restent les pages de l'élève,
+// la recopie, le corrigé de l'IA et le nombre de lignes : c'est la copie elle-même, pas son jugement.
+function scOublierCopie(k) {   // la copie quitte la mémoire de cette page : plus rien ne la réécrit
+  delete RU.sig[k]; if (RU.sigCorps) delete RU.sigCorps[k];
+  delete state.copies[k]; copieFor(k);
+}
+function scApresOubli(k) {
+  if (typeof RC !== "undefined" && RC.copie === k) { if (RC.bd) rcBandeFermer(true); RC.documents = {}; RC.annule = []; if (RC.ouvert) rcActualiser(); }   // la recopie en mémoire est relue depuis la copie
+  if (SC.ouvert) scRendre();
+}
+function scRemettreAZero() {   // la question, dans la fenêtre de l'app (jamais une boîte du navigateur)
+  const k = scK(), c = k && state.copies[k], nom = nomEleveDe(k) || k;
+  if (!k) return; if (!c || ruVierge(c)) { toast("La copie de " + nom + " est déjà vierge."); return; }
+  scModale("<h3>Remettre à zéro la copie de " + escapeHtml(nom) + " ?</h3><p><b>S’effacent :</b> l’ancienne correction, tes marques sur les scans (et celles mises de côté), tes réponses aux questions, la bande et ses décisions, le temps passé.</p><p><b>Restent :</b> ses pages, ta recopie, le corrigé de l’IA, le nombre de lignes.</p><p>Tout est d’abord rangé dans la corbeille MJPC (récupérable un an) et un export JSON est téléchargé.</p><button class=\"sc-btn\" id=\"scZeroOui\" onclick=\"scRemettreAZeroOui(" + escapeAttr(JSON.stringify(k)) + ")\" title=\"Ranger la copie dans la corbeille MJPC, télécharger son export, puis effacer sa correction.\">↺ Remettre à zéro</button>");
+}
+function scRemettreAZeroOui(k) {
+  scModaleFermer(); const c = state.copies[k], nom = nomEleveDe(k) || k; if (!c) return;
+  const chemin = ruCheminCopies().concat(k), data = { copie: scCles(ruCopie(c), true), signet: (state.interroBookmark || {})[k] || null };
+  ruTelecharger({ _meta: { source: chemin.join("/"), exportedAt: new Date().toISOString(), exportedBy: "remise_a_zero", version: 1 }, data }, "redaction_" + RU.id + "_" + k + "_" + new Date().toISOString().slice(0, 10) + ".json");
+  ruCorbeille("remise-a-zero-copie", chemin.join("/"), data, { redaction: RU.id, eleve: k, nom }).then(i => {
+    if (i.etat !== MJPC_ISSUE.ACCEPTEE) { toast("La corbeille MJPC n’a pas répondu : rien n’est effacé. L’export JSON est téléchargé."); return; }
+    const s0 = c.scan || {}, rec = s0.recopie ? ruCopie(s0.recopie) : null;
+    if (rec) Object.values(rec.pages || {}).forEach(p => Object.values((p && p.lignes) || {}).forEach(l => { if (l) { delete l.decisions; delete l.marquesBande; delete l.places; } }));
+    scOublierCopie(k);
+    const cp = state.copies[k]; ["id", "eleve", "classe", "sujetId", "creeLe"].forEach(f => { if (c[f] != null) cp[f] = c[f]; });
+    if (rec || s0.lignes != null) { const s = scCopie(k); if (rec) s.recopie = rec; if (s0.lignes != null) s.lignes = s0.lignes; }
+    if (state.interroBookmark) delete state.interroBookmark[k];
+    if (ruVierge(cp)) ruEcrire(chemin, null, "la copie remise à zéro");   // plus rien à garder : la copie quitte le site
+    saveState(); scApresOubli(k); toast("Copie de " + nom + " remise à zéro (corbeille MJPC)");
+  });
+}
+
 // ── le fichier de l'élève, rendu par École Directe : sa photo et tes marques dedans (la photo ne passe jamais par le hub) ──
 // Sans interactivité (un téléphone qui ouvre la pièce jointe sans l'exécuter) : la copie et les marques se voient quand même.
 // Avec : la traversée, puis le parcours (les fautes d'abord, puis les points de haut en bas), les papillons, la note à la fin.
@@ -8022,7 +8059,8 @@ function rcBookmark() {
 function rcOuvrir(reprendre) {
   if (!SC.ouvert || SC.attrib || !scK()) { toast("Donne d'abord chaque page à son élève."); return; }
   if (SC.champ) scChampFermer(true);
-  scChrono(); RC.ouvert = true; RC.documents = {}; RC.annule = []; RC.zoom = 1;
+  if (reprendre) SC.actif = Date.now(); else scChrono();   // [C14 dette ⓑ] la reprise à l'ouverture n'est pas un geste : elle ne compte pas de temps, la copie n'est pas réécrite
+  RC.ouvert = true; RC.documents = {}; RC.annule = []; RC.zoom = 1;
   const trace = state.scanRecopie;
   const dernier = trace && (reprendre ? trace.ouverte : trace.copie === scK()) ? trace : null;
   RC.copie = dernier && SC.copies.includes(dernier.copie) ? dernier.copie : scK();

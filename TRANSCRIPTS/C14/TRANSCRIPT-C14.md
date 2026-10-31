@@ -1497,3 +1497,30 @@ MEMO
 
 31/10/2026 13:37
 MEMO
+
+## Tour 67 — 31/10/2026 13:41 → 31/10/2026 13:56
+
+**Paul :** Avant ça : l'encadré jaune doit prendre la couleur de l'erreur. Même code couleur qu'en dictée, l'élève n'est jamais dépaysé. Je pense qu'il faut aussi établir la liste des fonctionnalités de l'App qui ne servent plus, afin de ne pas tout mélanger. Typiquement quand je suis sur l'accueil avec les cartes élèves, quand je clique dessus je tombe sur la grille de l'élève et le mode interrogatif etc. Or, tout ça sera à recadrer je pense. Il y a une refonte à faire. Mais sans uniquement jeter: je rappelle le principe de recyclage. Fais d'abord le changement de couleur automatique de l'encadré jaune.
+
+**Fait.** Lu le code couleur de la dictée (correction_dictee.html, TYPE_STYLE l. 311) et sa façon de classer : moteur GRAMM (l. 1797-2312) et reclassement en C (l. 1635-1642), recopiés tels quels dans recopie.js. Le cadre, le mot surligné, le bord de la carte, son étiquette et la liste prennent la couleur du type. Banc 110/0 (nouvelle vérification : cadre d'un mot manquant lu #975a16 sur la photo, 10 cas types classés comme la dictée). Candidate PROD 1.4.4-RU (654 448 o, md5 a4d5500814a15a12b304c4868ec59b1f) : LIVRAISONS/REDACTION/redaction-1.4.4-RU-candidat.html. Vrai site, lecture seule, écritures interceptées : 30 copies, 578 marques, même résultat qu'en 1.4.3 ; recopie relue : mêmes textes, mêmes places. Branche c14-poignees 1171e076.
+
+**Claude :**
+
+À jouer : promeus (1.4.4) · en cours : rien · ouvert : 219 ; 220 ; 223 ; 224 ; 225.
+
+221. Fait : le cadre prend tout seul la couleur de l'erreur, avec le code de la dictée. La même couleur va au mot surligné dans la ligne, au bord de la carte, à son étiquette (« Grammaire », « Lexique »…) et à la liste des arrêts.
+
+222. Le type est choisi par la règle de la dictée, que j'ai reprise telle quelle sans y toucher (son moteur de grammaire, 35 Ko de plus) : mot manquant → M, mot en trop → X, ponctuation → P, apostrophe → E, accent, majuscule ou trait d'union seuls → C, homophone, conjugaison ou accord → G, le reste → L. Sur 10 cas types : 10/10. Sur tes vraies copies : je ne sais pas, ce n'est pas mesuré.
+
+223. La limite : sur sa copie, l'élève voit encore ses fautes soulignées en rouge, et l'app lui écrit « soulignée en rouge sur ta copie ». Pour qu'il ne soit jamais dépaysé, ces soulignés doivent aussi prendre la couleur du type, et ces deux phrases doivent changer : j'ai besoin de tes mots. Le type est déjà enregistré sur chaque faute de la bande, donc rien ne se perd en attendant.
+
+224. Si le moteur se trompe (L au lieu de G), tu n'as pas encore la main. Je propose de faire comme en dictée : une touche change le type de l'arrêt en cours. Je le fais ?
+
+225. La liste des fonctions qui ne servent plus (cartes élèves → grille, mode interrogatif…) : je mesure ce que chacune fait encore, puis pour chacune je te dis « garder », « recycler dans… » ou « ranger ». Rien n'est effacé sans ton mot. Je la commence ensuite ?
+
+Rappel de 216 : les trois dettes sont toujours ouvertes et ta règle interdit de mettre en ligne tant qu'elles le sont. « promeus » vaut donc aussi pour lever cette règle une fois de plus.
+
+À tester : ouvre la bande d'une copie qui a son corrigé. Un mot manquant est en brun, une ponctuation en rose, un accent en bleu clair, un accord ou un homophone en rouge, une faute d'orthographe en bleu. Les mêmes couleurs se retrouvent sur la ligne, sur la carte et dans la liste.
+
+31/10/2026 13:56
+MEMO

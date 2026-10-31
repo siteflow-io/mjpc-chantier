@@ -861,3 +861,22 @@ MEMO
 
 31/10/2026 07:10
 MEMO
+
+## Tour 37 — 31/10/2026 07:11 → 31/10/2026 07:17
+
+**Paul :** ok fais. par ailleurs, la numérotation des lignes ne devrait prendre que les lignes que j'écris, on est d'accord?
+
+**Fait.** Pause de C15 dans son prompt. Branche `c14-poignees` (depuis `c15-avancement`) : `recopie.js` — à la détection d'une page neuve, la marge rouge est cherchée dans la photo (trait rouge vertical, penché si besoin) et la poignée gauche se pose 0,008 avant elle, la droite au bord de la copie ; sans marge trouvée, un message et l'ancien placement ; pages déjà recopiées intouchées ; numéros seulement sur les lignes écrites et celle où l'on écrit, titre « Ligne n sur e », compte « e lignes écrites ». Banc : 2 vérifications ajoutées (poignées 0,113 pour une marge à 0,121, droites 0,995 ; numéros « 1,2 · Ligne 2 sur 2 ») → « BANC : 77 vérifications, 0 défaut », capture regardée. Candidate `PROD=1 VERSION=1.3.1-RU` : 558 507 o, md5 `f8f4629faa257e762691ffa2e0f70cec`, au sas. Vrai site en lecture seule, 1.3.0 en ligne puis 1.3.1 : 30 copies, 605 marques, 0 différente. Trouvé, déjà dans 1.3.0 : à l'ouverture, une copie est réécrite (interceptée) ; seule différence avec le site : son temps de la passe de la langue, +38 millièmes de seconde.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 148 ; 53 ; 45 ; 36.
+
+147. Oui, d'accord, et c'est fait dans la même version : seules les lignes que tu écris (et celle où tu écris) ont un numéro. Les poignées : à chaque page neuve, la gauche se pose juste avant la marge rouge, la droite au bord de la copie ; tes pages déjà recopiées ne bougent pas ; sans marge trouvée, l'app te le dit. Banc : 77 vérifications, 0 défaut. Tes vraies copies, 1.3.0 contre 1.3.1 : 30 copies, aucune différence.
+
+148. Un défaut trouvé en vérifiant, déjà présent dans la 1.3.0 en ligne : à l'ouverture, l'app réenregistre la copie où tu en étais, en ajoutant 38 millièmes de seconde à son temps de correction. Rien d'autre ne change, rien ne se perd. Je l'inscris au registre. Pour mettre la 1.3.1 en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 07:17
+MEMO

@@ -69,9 +69,10 @@
 .rc-bande-d{overflow:auto;border-left:1px solid #e3d8c6;padding-left:12px}
 .rc-bande-d h4{margin:0 0 6px;font:600 12px system-ui;letter-spacing:.06em;text-transform:uppercase;color:#6b1a2a}
 #rcBandeListe{margin:0;padding-left:22px;font-size:14px}
-#rcBandeListe li{display:flex;justify-content:space-between;gap:8px;padding:3px 6px;border-radius:5px;cursor:pointer}
+#rcBandeListe li{display:flex;justify-content:space-between;gap:8px;padding:3px 6px;border-radius:5px;cursor:pointer;border-left:4px solid transparent}
 #rcBandeListe li.on{background:#fbe7a6;font-weight:600}
 #rcBandeListe small{color:#8a7b68;white-space:nowrap}
+.rc-bande-type{display:inline-block;border:1.5px solid;border-radius:6px;padding:0 6px;margin-right:4px;font-weight:700}
 #rcIAMessage.rc-ia-msg{padding:8px 10px;border-radius:6px;font-size:14px;background:#fff3cd;color:#5a4300}
 #rcIAMessage.rc-ia-msg.ok{background:#e3f2d9;color:#2c5a1e}
 #rcIAMessage.rc-ia-msg.ko{background:#fbe0e2;color:#8a1f28}

@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.4.3-RU-C14-3";
+var APP_VERSION = "1.4.4-RU";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -6712,9 +6712,10 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .rc-bande-d{overflow:auto;border-left:1px solid #e3d8c6;padding-left:12px}
 .rc-bande-d h4{margin:0 0 6px;font:600 12px system-ui;letter-spacing:.06em;text-transform:uppercase;color:#6b1a2a}
 #rcBandeListe{margin:0;padding-left:22px;font-size:14px}
-#rcBandeListe li{display:flex;justify-content:space-between;gap:8px;padding:3px 6px;border-radius:5px;cursor:pointer}
+#rcBandeListe li{display:flex;justify-content:space-between;gap:8px;padding:3px 6px;border-radius:5px;cursor:pointer;border-left:4px solid transparent}
 #rcBandeListe li.on{background:#fbe7a6;font-weight:600}
 #rcBandeListe small{color:#8a7b68;white-space:nowrap}
+.rc-bande-type{display:inline-block;border:1.5px solid;border-radius:6px;padding:0 6px;margin-right:4px;font-weight:700}
 #rcIAMessage.rc-ia-msg{padding:8px 10px;border-radius:6px;font-size:14px;background:#fff3cd;color:#5a4300}
 #rcIAMessage.rc-ia-msg.ok{background:#e3f2d9;color:#2c5a1e}
 #rcIAMessage.rc-ia-msg.ko{background:#fbe0e2;color:#8a1f28}
@@ -8479,6 +8480,25 @@ function rcTypeFaute(g) { const pe = rcEstPonct(g.eleve), pc = rcEstPonct(g.corr
   if (!g.eleve) return { manque: true, ponct: pc, nom: pc ? "Ponctuation manquante" : "Mot manquant" };
   if (!g.corrige) return { ponct: pe, nom: pe ? "Ponctuation en trop" : "Mot en trop" };
   return { ponct: pe && pc, nom: pe && pc ? "Ponctuation fausse" : "Mot faux" }; }
+/* [C14 1.4.4] la couleur de la faute = le code de la dictée (TYPE_STYLE de correction_dictee.html l. 311, copié tel quel) */
+const RC_TYPES = { G: { couleur: "#c53030", fond: "#fee2e2", libelle: "Grammaire" }, M: { couleur: "#975a16", fond: "#fef3c7", libelle: "Mot manquant" }, I: { couleur: "#7c3aed", fond: "#ede9fe", libelle: "Illisible" },
+  L: { couleur: "#2b6cb0", fond: "#dbeafe", libelle: "Lexique" }, C: { couleur: "#0369a1", fond: "#f0f9ff", libelle: "Accent, majuscule ou trait d’union" }, P: { couleur: "#b83280", fond: "#fce7f3", libelle: "Ponctuation" },
+  E: { couleur: "#0d9488", fond: "#ccfbf1", libelle: "Élision" }, X: { couleur: "#1f2937", fond: "#e5e7eb", libelle: "Mot en trop" }, A: { couleur: "#eab308", fond: "#fef9c3", texte: "#854d0e", libelle: "Attention graphie" } };
+function rcRgba(c, a) { return "rgba(" + parseInt(c.slice(1, 3), 16) + "," + parseInt(c.slice(3, 5), 16) + "," + parseInt(c.slice(5, 7), 16) + "," + a + ")"; }
+const RC_ELISION = /(^|\s)(l|d|j|m|n|s|t|c|qu|jusqu|lorsqu|puisqu|quoiqu)['’]|^['’]+$/i;
+/* comme la dictée : apostrophe → E, trait d’union → C, signe → P, mot manquant → M, mot en trop → X ; un mot faux → G si le moteur de la dictée
+   y voit de la grammaire (homophone, conjugaison, accord), C si seuls accents, majuscule ou trait d’union diffèrent, sinon L */
+function rcCodeFaute(g) {
+  const e = String(g.eleve || "").trim(), c = String(g.corrige || "").trim(), apo = t => RC_ELISION.test(t);
+  if (apo(e) !== apo(c) && (!e || !c || /^['’]+$/.test(e) || /^['’]+$/.test(c) || e.split(/\s+/).length === c.split(/\s+/).length)) return "E";
+  if (e === "-" || c === "-") return "C";
+  if (rcTypeFaute(g).ponct) return "P";
+  if (!e) return "M"; if (!c) return "X";
+  const E = e.split(/\s+/), K = c.split(/\s+/), paires = E.length === K.length ? E.map((x, i) => [x, K[i]]).filter(p => p[0] !== p[1]) : [[e, c]];
+  if (paires.some(p => { const r = GRAMM.classify(p[0], p[1]); return r && r.code.charAt(0) === "G"; })) return "G";
+  return paires.length && paires.every(p => reclassableEnC(p[0], p[1])) ? "C" : "L";
+}
+function rcStyleFaute(g) { return RC_TYPES[rcCodeFaute(g)]; }
 function rcPosMots(t) { const T = rcTokenize(t || ""), P = []; let i = 0; T.forEach(w => { const j = t.indexOf(w, i); P.push([j, j + w.length]); i = j + w.length; }); return P; }
 function rcArrets(k) {
   const A = []; rcLignesEcrites(k).forEach((x, i) => { const l = x.l; if (typeof l.corrige !== "string" || l.texte !== l.corrigeDe) return;
@@ -8512,7 +8532,7 @@ function rcBandeDecider(v) {
   const B = RC.bd, a = B.A[B.i]; if (!a) return; const s = scCopie(B.k), deja = a.l.marquesBande && a.l.marquesBande[a.cle];
   if (v === "o" && !(deja && s.marques[deja])) {
     const q = rcPlaceSeg(a);
-    const m = { page: a.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: a.g.corrige || null, bande: { ligne: a.id, cle: a.cle, eleve: a.g.eleve, corrige: a.g.corrige, type: q.type.nom } };
+    const m = { page: a.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: a.g.corrige || null, bande: { ligne: a.id, cle: a.cle, eleve: a.g.eleve, corrige: a.g.corrige, type: q.type.nom, code: rcCodeFaute(a.g) } };
     scPoser(m); rcLigneMaj(B.k, a.pid, a.id, l => { l.marquesBande = Object.assign({}, l.marquesBande, { [a.cle]: m.id }); });
   }
   if (v === "n" && deja && s.marques[deja]) scEffacer(deja);
@@ -8522,21 +8542,22 @@ function rcBandeDecider(v) {
 function rcBandeRendre() {
   const B = RC.bd, e = RC.ui; if (!B) return; const a = B.A[B.i], s = scCopie(B.k);
   const liste = e.querySelector("#rcBandeListe");
-  liste.innerHTML = B.A.map((x, i) => { const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (i === B.i ? "on" : "") + '" data-i="' + i + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
+  liste.innerHTML = B.A.map((x, i) => { const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (i === B.i ? "on" : "") + '" data-i="' + i + '" style="border-left-color:' + rcStyleFaute(x.g).couleur + (i === B.i ? ";background:" + rcStyleFaute(x.g).fond : "") + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
   liste.querySelectorAll("li").forEach(li => li.onclick = () => { B.i = +li.dataset.i; rcBandeRendre(); });
   const on = liste.querySelector("li.on"); if (on) on.scrollIntoView({ block: "nearest" });
   const ctx = e.querySelector("#rcBandeContexte"), carte = e.querySelector("#rcBandeCarte"), touches = e.querySelector("#rcBandeTouches");
+  carte.style.borderColor = a && !B.attente ? rcStyleFaute(a.g).couleur : "";
   if (B.attente) { carte.innerHTML = ""; ctx.innerHTML = ""; touches.innerHTML = ""; rcBandePhoto(null); return; }
   if (!a) {
     const faites = B.A.filter(x => x.l.decisions && x.l.decisions[x.cle] === "o").length;
     carte.innerHTML = '<div class="rc-bande-mot">Bande finie</div><div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + B.A.length + " arrêts · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k)) + "</div>";
     ctx.innerHTML = ""; touches.innerHTML = "<span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : remettre une faute</span><span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : ""); rcBandePhoto(null); return;
   }
-  const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle];
-  let h = "", c = 0; P.forEach((p, i) => { h += escapeHtml(a.l.texte.slice(c, p[0])); const w = escapeHtml(a.l.texte.slice(p[0], p[1])); h += i >= a.g.de && i < a.g.a ? "<mark>" + w + "</mark>" : '<span class="rc-mot" data-m="' + i + '">' + w + "</span>"; if (a.g.a === a.g.de && i === a.g.de - 1) h += ' <mark class="rc-manque">∧</mark>'; c = p[1]; });
-  h += escapeHtml(a.l.texte.slice(c)); if (a.g.a === a.g.de && a.g.de === 0) h = '<mark class="rc-manque">∧</mark> ' + h;
+  const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle], T = rcStyleFaute(a.g), st = ' style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";box-shadow:inset 0 -2px 0 " + T.couleur + '"';
+  let h = "", c = 0; P.forEach((p, i) => { h += escapeHtml(a.l.texte.slice(c, p[0])); const w = escapeHtml(a.l.texte.slice(p[0], p[1])); h += i >= a.g.de && i < a.g.a ? "<mark" + st + ">" + w + "</mark>" : '<span class="rc-mot" data-m="' + i + '">' + w + "</span>"; if (a.g.a === a.g.de && i === a.g.de - 1) h += ' <mark class="rc-manque"' + st + ">∧</mark>"; c = p[1]; });
+  h += escapeHtml(a.l.texte.slice(c)); if (a.g.a === a.g.de && a.g.de === 0) h = '<mark class="rc-manque"' + st + ">∧</mark> " + h;
   ctx.innerHTML = '<span class="rc-bande-n">ligne ' + a.n + "</span> " + h;
-  carte.innerHTML = '<div class="rc-bande-mot"><span class="rc-eleve">' + escapeHtml(a.g.eleve || "(mot manquant)") + '</span> <span class="rc-fleche">→</span> <span class="rc-corr">' + escapeHtml(a.g.corrige || "(mot en trop)") + "</span></div><div class=\"rc-bande-pied\">" + rcTypeFaute(a.g).nom + " · proposé par l’IA · ligne " + a.n + " · arrêt " + (B.i + 1) + " sur " + B.A.length + (d === "o" ? " · gardée" : d === "n" ? " · refusée" : "") + "</div>";
+  carte.innerHTML = '<div class="rc-bande-mot"><span class="rc-eleve">' + escapeHtml(a.g.eleve || "(mot manquant)") + '</span> <span class="rc-fleche">→</span> <span class="rc-corr">' + escapeHtml(a.g.corrige || "(mot en trop)") + "</span></div><div class=\"rc-bande-pied\"><b class=\"rc-bande-type\" style=\"background:" + T.fond + ";color:" + (T.texte || T.couleur) + ";border-color:" + T.couleur + "\">" + T.libelle + "</b> " + (rcTypeFaute(a.g).nom === T.libelle ? "" : rcTypeFaute(a.g).nom + " · ") + "proposé par l’IA · ligne " + a.n + " · arrêt " + (B.i + 1) + " sur " + B.A.length + (d === "o" ? " · gardée" : d === "n" ? " · refusée" : "") + "</div>";
   touches.innerHTML = "<span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> oui, c’est une faute</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span><span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser</span><span><kbd>clic droit</kbd> sur le cadre : faute de ma recopie</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : la remettre</span><span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
   rcBandePhoto(a);
 }
@@ -8547,9 +8568,10 @@ function rcBandePhoto(a) {
   const marge = 0.022, sx = Math.max(0, L.x0 - 0.01) * im.w, sy = Math.max(0, Math.min(L.y0, L.y1) - marge) * im.h, sw = Math.min(im.w - sx, (L.x1 - L.x0 + 0.02) * im.w), sh = Math.min(im.h - sy, (Math.abs(L.y1 - L.y0) + marge * 1.5) * im.h);
   const k = Math.min(w / sw, h / sh), dx = (w - sw * k) / 2, dy = (h - sh * k) / 2; x.drawImage(im.el, sx, sy, sw, sh, dx, dy, sw * k, sh * k);
   const q = rcPlaceSeg(a), X = u => dx + (u * im.w - sx) * k, Y = v => dy + (v * im.h - sy) * k, a0 = X(q.x0), a1 = Math.max(X(q.x1), a0 + 6), b0 = Math.max(2, Y(q.y0)), b1 = Math.min(h - 2, Math.max(Y(q.y1), b0 + 10));
-  x.fillStyle = "rgba(232,180,40,.28)"; x.strokeStyle = "#c79a17"; x.lineWidth = 2; x.fillRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6); x.strokeRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6);
-  if (q.type.manque) { const m = (a0 + a1) / 2; x.strokeStyle = "#c53030"; x.lineWidth = 3; x.beginPath(); x.moveTo(m - 9, b1 + 1); x.lineTo(m, b0 + 4); x.lineTo(m + 9, b1 + 1); x.stroke(); }
-  RC.bd.boite = { a0: a0 - 6, a1: a1 + 6, par: 1 / (k * im.w), q };
+  const cd = rcCodeFaute(a.g), T = RC_TYPES[cd];
+  x.fillStyle = rcRgba(T.couleur, .22); x.strokeStyle = T.couleur; x.lineWidth = 2; x.fillRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6); x.strokeRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6);
+  if (q.type.manque) { const m = (a0 + a1) / 2; x.strokeStyle = T.couleur; x.lineWidth = 3; x.beginPath(); x.moveTo(m - 9, b1 + 1); x.lineTo(m, b0 + 4); x.lineTo(m + 9, b1 + 1); x.stroke(); }
+  RC.bd.boite = { a0: a0 - 6, a1: a1 + 6, par: 1 / (k * im.w), q, code: cd, bord: a0 - 3, ym: (b0 + b1) / 2 };
 }
 function rcBandeGlisser(du) {
   const B = RC.bd, a = B && B.A[B.i]; if (!a || B.attente) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a), x0 = rcBorne(q.x0 + du, 0, 0.99), x1 = rcBorne(q.x1 + du, 0.01, 1);
@@ -8624,6 +8646,533 @@ function rcClavier(ev) {
   if (!input && (ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "z") { ev.preventDefault(); rcAnnuler(); }
   ev.stopPropagation(); return true;
 }
+
+/* ═══ [C14 1.4.4] RECYCLÉ TEL QUEL de correction_dictee.html (prod, 31/10/2026) : le moteur grammatical (l. 1797-2312) et le reclassement en C (l. 1635-1642).
+   Sert à donner à chaque faute de la bande le type de la dictée (G, L, C…), donc sa couleur : l’élève n’est jamais dépaysé. Rien n’y est changé. */
+/* [L15h — dette 126] LE RECLASSEMENT EN C : une erreur L dont la recopie, une fois retirés les seuls accents aigu, grave, circonflexe, tréma,
+   la majuscule et le trait d'union, est le mot attendu. JAMAIS : une lettre en plus, en moins ou changée ; une cédille (lexicale) ;
+   un homophone grammatical (a/à, la/là, ou/où, du/dû, sur/sûr : G) ; une erreur L sans recopie. */
+var HOMOPHONES_GRAMMATICAUX_L15H=["a","\u00e0","la","l\u00e0","ou","o\u00f9","du","d\u00fb","sur","s\u00fbr"];
+function signesCL15h(w){return String(w||"").normalize("NFD").replace(/[\u0300\u0301\u0302\u0308]/g,"").normalize("NFC").replace(/-/g,"").toLowerCase();}
+function reclassableEnC(fautif,attendu){var f=String(fautif||"").trim(),w=String(attendu||"").trim();if(!f||!w||f===w)return false;
+  if(HOMOPHONES_GRAMMATICAUX_L15H.indexOf(w.toLowerCase())>=0||HOMOPHONES_GRAMMATICAUX_L15H.indexOf(f.toLowerCase())>=0)return false;
+  return signesCL15h(f)===signesCL15h(w);}
+var GRAMM = {};
+
+// ─────────────────────────────────────────────────────
+// 1. HOMOPHONES GRAMMATICAUX (complet cycle 3-4)
+// ─────────────────────────────────────────────────────
+// Chaque entrée : group, confusions {forme→code}, rule (test de substitution)
+
+GRAMM.HOMOPHONES = {};
+function _h(forms, group, rule) {
+  forms.forEach(function(f) {
+    var confusions = {};
+    forms.forEach(function(f2) { if (f2 !== f) confusions[f2] = "G-HOM"; });
+    GRAMM.HOMOPHONES[f] = {group: group, forms: forms, confusions: confusions, rule: rule};
+  });
+}
+
+// a/à/as
+_h(["a","à","as"], "a/à", "« a/as » = verbe avoir (→ avait/avais). « à » = préposition.");
+// et/est/es/ai
+_h(["et","est","es","ai"], "et/est", "« et » = conjonction (→ et puis). « est/es » = être (→ était/étais). « ai » = avoir 1re pers.");
+// ou/où
+_h(["ou","où"], "ou/où", "« ou » = choix (→ ou bien). « où » = lieu/temps.");
+// son/sont
+_h(["son","sont"], "son/sont", "« son » = possessif (→ mon). « sont » = être (→ étaient).");
+// on/ont/on n'
+_h(["on","ont"], "on/ont", "« on » = pronom sujet (→ il). « ont » = avoir (→ avaient).");
+// ce/se/ceux
+_h(["ce","se"], "ce/se", "« ce » = démonstratif (devant nom ou → cela). « se » = réfléchi (devant verbe pronominal).");
+// c'est/s'est/ces/ses/sais/sait
+_h(["c'est","s'est","ces","ses","sais","sait"], "c'est/s'est/ces/ses",
+  "« c'est » → cela est. « s'est » → s'était. « ces » → cette (dém. pl.). « ses » → sa (poss. pl.). « sais/sait » → savais/savait.");
+// leur/leurs
+_h(["leur","leurs"], "leur/leurs", "« leur » pronom (invariable, devant verbe → lui). « leurs » déterminant possessif pluriel.");
+// mon/m'ont
+_h(["mon","m'ont"], "mon/m'ont", "« mon » = possessif (→ le mien). « m'ont » = me + ont (→ m'avaient).");
+// ton/t'ont
+_h(["ton","t'ont"], "ton/t'ont", "« ton » = possessif (→ le tien). « t'ont » = te + ont (→ t'avaient).");
+// ma/m'a/m'as
+_h(["ma","m'a","m'as"], "ma/m'a", "« ma » = possessif fém. (→ la mienne). « m'a/m'as » = me + a/as (→ m'avait/m'avais).");
+// ta/t'a
+_h(["ta","t'a"], "ta/t'a", "« ta » = possessif fém. (→ la tienne). « t'a » = te + a (→ t'avait).");
+// mes/mais/m'est/met/mets
+_h(["mes","mais","m'est","met","mets"], "mes/mais/m'est/met",
+  "« mes » = possessif pl. « mais » = opposition (→ cependant). « m'est » = me+est (→ m'était). « met/mets » = verbe mettre.");
+// la/là/l'a/l'as
+_h(["la","là","l'a","l'as"], "la/là/l'a", "« la » = article/pronom. « là » = adverbe lieu (→ ici). « l'a/l'as » = le/la+a/as (→ l'avait).");
+// quand/quant/qu'en
+_h(["quand","quant","qu'en"], "quand/quant/qu'en",
+  "« quand » = temps (→ lorsque). « quant à » = en ce qui concerne. « qu'en » = que+en.");
+// quel/quelle/quels/quelles/qu'elle/qu'elles
+_h(["quel","quelle","quels","quelles","qu'elle","qu'elles"], "quel/qu'elle",
+  "« quel(le)(s) » = interrogatif/exclamatif. « qu'elle(s) » = que+elle(s) (→ qu'il).");
+// sans/s'en/sens/sent
+_h(["sans","s'en","sens","sent"], "sans/s'en",
+  "« sans » = préposition privation (→ avec). « s'en » = se+en (→ de cela). « sens/sent » = verbe sentir.");
+// dans/d'en
+_h(["dans","d'en"], "dans/d'en", "« dans » = préposition lieu/temps. « d'en » = de+en.");
+// peu/peux/peut
+_h(["peu","peux","peut"], "peu/peux/peut",
+  "« peu » = adverbe quantité (→ pas beaucoup). « peux » = pouvoir 1re/2e (→ pouvais). « peut » = pouvoir 3e (→ pouvait).");
+// ni/n'y
+_h(["ni","n'y"], "ni/n'y", "« ni » = conjonction négative. « n'y » = ne+y (devant verbe).");
+// si/s'y
+_h(["si","s'y"], "si/s'y", "« si » = condition/intensité. « s'y » = se+y (→ il s'y rend).");
+// ça/sa/çà
+_h(["ça","sa"], "ça/sa", "« ça » = pronom démonstratif (→ cela). « sa » = possessif fém. (→ ma).");
+// tout/tous/toute/toutes
+_h(["tout","tous","toute","toutes"], "tout/tous", "« tout » adverbe = tout à fait. « tous/toute/toutes » = accord selon le contexte.");
+// prêt/près
+_h(["prêt","prêts","près"], "prêt/près", "« prêt(s) » = adjectif (→ terminé). « près » = adverbe/préposition de lieu (→ à côté).");
+// plus tôt/plutôt
+_h(["plutôt"], "plus tôt/plutôt", "« plutôt » = de préférence. « plus tôt » = inverse de plus tard.");
+// or/hors
+_h(["or","hors"], "or/hors", "« or » = conjonction coordination. « hors » = préposition (→ en dehors de).");
+// tant/temps/t'en
+_h(["tant","temps","t'en"], "tant/temps/t'en",
+  "« tant » = adverbe (→ tellement). « temps » = nom commun. « t'en » = te+en (→ m'en).");
+// quoique/quoi que — traité comme paire
+_h(["quoique"], "quoique/quoi que", "« quoique » = conjonction (→ bien que). « quoi que » = quelle que soit la chose.");
+// du/dû
+_h(["du","dû"], "du/dû", "« du » = article contracté (de le). « dû » = participe passé de devoir (accent au masc. sing.).");
+// sur/sûr
+_h(["sur","sûr","sûre","sûrs","sûres"], "sur/sûr",
+  "« sur » = préposition. « sûr(e)(s) » = adjectif (→ certain). « sur » adj. = acide.");
+// mur/mûr
+_h(["mur","mûr","mûre","mûrs","mûres"], "mur/mûr", "« mur » = nom (paroi). « mûr(e)(s) » = adjectif (→ à maturité).");
+// cru/crû
+_h(["cru","crû"], "cru/crû", "« cru » = PP de croire / adj. (pas cuit). « crû » = PP de croître.");
+// voie/voix
+_h(["voie","voix"], "voie/voix", "« voie » = chemin, moyen. « voix » = son produit par les cordes vocales.");
+// compte/conte/comte
+_h(["compte","conte","comte"], "compte/conte/comte",
+  "« compte » = calcul (→ compter). « conte » = récit (→ conter). « comte » = titre noblesse.");
+// ver/vers/verre/vert
+_h(["ver","vers","verre","vert"], "ver/vers/verre/vert",
+  "« ver » = animal. « vers » = direction/poésie. « verre » = matière/récipient. « vert » = couleur.");
+// cour/cours/court/courre
+_h(["cour","cours","court"], "cour/cours/court",
+  "« cour » = espace ouvert. « cours » = enseignement/écoulement. « court » = adj. bref.");
+// père/paire/pair
+_h(["père","paire","pair"], "père/paire/pair",
+  "« père » = papa. « paire » = ensemble de deux. « pair » = nombre divisible par 2.");
+// mère/maire/mer
+_h(["mère","maire","mer"], "mère/maire/mer",
+  "« mère » = maman. « maire » = élu municipal. « mer » = étendue d'eau salée.");
+// maître/mètre/mettre
+_h(["maître","mètre","mettre"], "maître/mètre/mettre",
+  "« maître » = celui qui enseigne. « mètre » = unité de mesure. « mettre » = verbe (placer).");
+// ancre/encre
+_h(["ancre","encre"], "ancre/encre", "« ancre » = marine. « encre » = liquide pour écrire.");
+// tante/tente
+_h(["tante","tente"], "tante/tente", "« tante » = sœur du père/de la mère. « tente » = abri de camping.");
+// salle/sale
+_h(["salle","sale"], "salle/sale", "« salle » = pièce. « sale » = pas propre.");
+// pain/pin/peint
+_h(["pain","pin","peint"], "pain/pin/peint", "« pain » = aliment. « pin » = arbre. « peint » = PP de peindre.");
+// sang/cent/sans/sent
+_h(["sang","cent","sans","sent"], "sang/cent/sans/sent",
+  "« sang » = liquide rouge. « cent » = 100. « sans » = préposition privation. « sent » = verbe sentir.");
+// champ/chant
+_h(["champ","chant"], "champ/chant", "« champ » = terrain cultivé. « chant » = mélodie.");
+// cou/coup/coût
+_h(["cou","coup","coût"], "cou/coup/coût", "« cou » = partie du corps. « coup » = choc. « coût » = prix.");
+// seau/sot/saut/sceau
+_h(["seau","sot","saut","sceau"], "seau/sot/saut", "« seau » = récipient. « sot » = stupide. « saut » = bond. « sceau » = cachet.");
+// date/datte
+_h(["date","datte"], "date/datte", "« date » = jour. « datte » = fruit du palmier.");
+// dessin/dessein
+_h(["dessin","dessein"], "dessin/dessein", "« dessin » = tracé, image. « dessein » = intention, projet.");
+// repère/repaire
+_h(["repère","repaire"], "repaire/repère", "« repère » = point de référence. « repaire » = cachette.");
+// pause/pose
+_h(["pause","pose"], "pause/pose", "« pause » = arrêt. « pose » = installation / action de poser.");
+// poids/pois/poix
+_h(["poids","pois","poix"], "poids/pois", "« poids » = masse. « pois » = légume. « poix » = résine.");
+// foi/foie/fois
+_h(["foi","foie","fois"], "foi/foie/fois", "« foi » = croyance. « foie » = organe. « fois » = occurrence.");
+// raisonner/résonner
+_h(["raisonner","résonner"], "raisonner/résonner", "« raisonner » = réfléchir. « résonner » = produire un écho.");
+// tâche/tache
+_h(["tâche","tache"], "tâche/tache", "« tâche » = travail à faire. « tache » = marque, salissure.");
+// parti/partie
+_h(["parti","partie"], "parti/partie", "« parti » = choix / organisation politique. « partie » = portion / jeu.");
+
+// ─────────────────────────────────────────────────────
+// 2. TERMINAISONS VERBALES CONFONDABLES
+// ─────────────────────────────────────────────────────
+GRAMM.TERMINAISONS = [
+  // -er / -é / -ée / -és / -ées / -ez / -ait / -ais / -aient
+  {src:"er", alts:[
+    {t:"é",code:"G-CONJ",rule:"Infinitif (-er) / participe passé (-é). Test : vendre/vendu."},
+    {t:"ée",code:"G-PP",rule:"Infinitif (-er) / PP féminin (-ée)."},
+    {t:"és",code:"G-PP",rule:"Infinitif (-er) / PP pluriel (-és)."},
+    {t:"ées",code:"G-PP",rule:"Infinitif (-er) / PP fém. pluriel (-ées)."},
+    {t:"ez",code:"G-CONJ",rule:"Infinitif (-er) / 2e pers. pluriel (-ez)."},
+    {t:"ait",code:"G-CONJ",rule:"Infinitif (-er) / imparfait 3e sing. (-ait)."},
+    {t:"ais",code:"G-CONJ",rule:"Infinitif (-er) / imparfait 1re-2e sing. (-ais)."},
+    {t:"aient",code:"G-CONJ",rule:"Infinitif (-er) / imparfait 3e pl. (-aient)."}
+  ]},
+  {src:"é", alts:[
+    {t:"er",code:"G-CONJ",rule:"PP (-é) / infinitif (-er). Test : vendu/vendre."},
+    {t:"ée",code:"G-PP",rule:"Accord PP : féminin (-ée) manquant ou en trop."},
+    {t:"és",code:"G-PP",rule:"Accord PP : pluriel (-és) manquant ou en trop."},
+    {t:"ées",code:"G-PP",rule:"Accord PP : fém. pl. (-ées) manquant ou en trop."},
+    {t:"ez",code:"G-CONJ",rule:"PP (-é) / 2e pers. pl. (-ez)."},
+    {t:"ait",code:"G-CONJ",rule:"PP (-é) / imparfait (-ait)."}
+  ]},
+  {src:"ait", alts:[
+    {t:"ais",code:"G-CONJ",rule:"Imparfait 3e (-ait) / 1re-2e pers. (-ais)."},
+    {t:"er",code:"G-CONJ",rule:"Imparfait (-ait) / infinitif (-er)."},
+    {t:"é",code:"G-CONJ",rule:"Imparfait (-ait) / PP (-é)."},
+    {t:"aient",code:"G-ACC",rule:"Accord sujet-verbe : singulier (-ait) / pluriel (-aient)."}
+  ]},
+  {src:"aient", alts:[
+    {t:"ait",code:"G-ACC",rule:"Accord sujet-verbe : pluriel (-aient) / singulier (-ait)."},
+    {t:"er",code:"G-CONJ",rule:"Imparfait 3e pl. (-aient) / infinitif (-er)."}
+  ]},
+  {src:"ent", alts:[
+    {t:"ant",code:"G-CONJ",rule:"3e pers. pluriel (-ent) / participe présent (-ant)."},
+    {t:"e",code:"G-ACC",rule:"Accord sujet-verbe : pluriel (-ent) / singulier (-e)."}
+  ]},
+  // Passé simple
+  {src:"èrent", alts:[
+    {t:"erent",code:"L-ACC",rule:"Accent manquant sur passé simple (-èrent)."},
+    {t:"ère",code:"G-ACC",rule:"Passé simple pluriel (-èrent) / singulier."}
+  ]},
+  {src:"ut", alts:[
+    {t:"u",code:"G-CONJ",rule:"Passé simple 3e sing. (-ut) / PP (-u). Ex : il aperçut / aperçu."},
+    {t:"ût",code:"L-ACC",rule:"Accent circonflexe : passé simple (-ut) ≠ subjonctif (-ût)."}
+  ]},
+  {src:"it", alts:[
+    {t:"i",code:"G-CONJ",rule:"Passé simple 3e sing. (-it) / PP (-i). Ex : il comprit / compris."},
+    {t:"is",code:"G-CONJ",rule:"Confusion terminaison passé simple (-it / -is)."},
+    {t:"ît",code:"L-ACC",rule:"Accent circonflexe : passé simple (-it) ≠ subjonctif (-ît)."}
+  ]},
+  // Futur / conditionnel
+  {src:"rai", alts:[
+    {t:"rais",code:"G-CONJ",rule:"Futur 1re sing. (-rai) / conditionnel (-rais). Test : demain je… / si je…"}
+  ]},
+  {src:"ra", alts:[
+    {t:"rait",code:"G-CONJ",rule:"Futur 3e sing. (-ra) / conditionnel (-rait)."}
+  ]},
+  {src:"rais", alts:[
+    {t:"rai",code:"G-CONJ",rule:"Conditionnel 1re sing. (-rais) / futur (-rai). Test : si je… / demain je…"}
+  ]},
+  {src:"rait", alts:[
+    {t:"ra",code:"G-CONJ",rule:"Conditionnel 3e sing. (-rait) / futur (-ra)."}
+  ]},
+  {src:"rions", alts:[
+    {t:"rons",code:"G-CONJ",rule:"Conditionnel 1re pl. (-rions) / futur (-rons)."}
+  ]},
+  {src:"riez", alts:[
+    {t:"rez",code:"G-CONJ",rule:"Conditionnel 2e pl. (-riez) / futur (-rez)."}
+  ]},
+  {src:"raient", alts:[
+    {t:"ront",code:"G-CONJ",rule:"Conditionnel 3e pl. (-raient) / futur (-ront)."}
+  ]},
+    {src:"rons", alts:[
+    {t:"rions",code:"G-CONJ",rule:"Futur 1re pl. (-rons) / conditionnel (-rions)."}
+  ]},
+  {src:"rez", alts:[
+    {t:"riez",code:"G-CONJ",rule:"Futur 2e pl. (-rez) / conditionnel (-riez)."}
+  ]},
+  {src:"ront", alts:[
+    {t:"raient",code:"G-CONJ",rule:"Futur 3e pl. (-ront) / conditionnel (-raient)."}
+  ]}
+];
+
+// ─────────────────────────────────────────────────────
+// 3. RÈGLES D'ACCORD
+// ─────────────────────────────────────────────────────
+GRAMM.ACCORDS = [
+  // ── Pluriel régulier -s ──
+  {name:"pl_s", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    if(cl===tl+"s")return{code:"G-ACC",rule:"Pluriel manquant : « "+c+" » prend un -s."};
+    if(tl===cl+"s")return{code:"G-ACC",rule:"Marque du pluriel en trop : « "+c+" » est au singulier."};return null}},
+  // ── Pluriel -x ──
+  {name:"pl_x", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    if(cl===tl+"x")return{code:"G-ACC",rule:"Pluriel manquant : « "+c+" » prend un -x."};
+    if(tl===cl+"x")return{code:"G-ACC",rule:"Marque du pluriel en trop : « "+c+" » est au singulier."};return null}},
+  // ── Féminin -e ──
+  {name:"fem_e", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    if(cl===tl+"e"&&cl.length>3)return{code:"G-ACC",rule:"Accord au féminin manquant : « "+c+" »."};
+    if(tl===cl+"e"&&tl.length>3)return{code:"G-ACC",rule:"Accord au féminin en trop : « "+c+" » est au masculin."};return null}},
+  // ── Féminin -e + pluriel -s → -es ──
+  {name:"fem_pl_es", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    if(cl===tl+"es"&&cl.length>4)return{code:"G-ACC",rule:"Accord fém. pluriel manquant : « "+c+" » → -es."};
+    if(tl===cl+"es"&&tl.length>4)return{code:"G-ACC",rule:"Accord fém. pluriel en trop : « "+c+" »."};
+    // singulier féminin → pluriel féminin
+    if(cl===tl.replace(/e$/,"es"))return{code:"G-ACC",rule:"Pluriel manquant sur le féminin : « "+c+" » → -es."};
+    if(tl===cl.replace(/es$/,"e"))return{code:"G-ACC",rule:"Pluriel en trop : « "+c+" » est au singulier féminin."};
+    return null}},
+  // ── Pluriel -al → -aux ──
+  {name:"pl_aux", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    if(cl.match(/aux$/)&&tl===cl.replace(/aux$/,"al"))return{code:"G-ACC",rule:"Pluriel irrégulier manquant : « "+c+" » → -aux (et non -als)."};
+    if(tl.match(/aux$/)&&cl===tl.replace(/aux$/,"al"))return{code:"G-ACC",rule:"Singulier attendu : « "+c+" » → -al."};
+    // Erreur inverse: écrire -als au lieu de -aux
+    if(cl.match(/aux$/)&&tl===cl.replace(/aux$/,"als"))return{code:"G-ACC",rule:"Pluriel irrégulier : « "+c+" » → -aux (pas -als)."};
+    return null}},
+  // ── Exceptions pluriel -al → -als (bals, festivals, carnavals, récitals, régals, chacals) ──
+  {name:"pl_als_exception", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    var exceptions=["bals","festivals","carnavals","récitals","régals","chacals","narvals"];
+    if(exceptions.indexOf(cl)>=0&&tl===cl.replace(/als$/,"aux"))return{code:"G-ACC",rule:"Exception : « "+c+" » fait -als au pluriel (pas -aux)."};
+    return null}},
+  // ── Pluriel -eau → -eaux ──
+  {name:"pl_eaux", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    if(cl.match(/eaux$/)&&tl===cl.replace(/eaux$/,"eau"))return{code:"G-ACC",rule:"Pluriel manquant : « "+c+" » → -eaux."};
+    if(tl.match(/eaux$/)&&cl===tl.replace(/eaux$/,"eau"))return{code:"G-ACC",rule:"Pluriel en trop : « "+c+" » → -eau."};return null}},
+  // ── Pluriel -eu → -eux ──
+  {name:"pl_eux", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    if(cl.match(/eux$/)&&tl===cl.replace(/eux$/,"eu"))return{code:"G-ACC",rule:"Pluriel manquant : « "+c+" » → -eux."};
+    if(tl.match(/eux$/)&&cl===tl.replace(/eux$/,"eu"))return{code:"G-ACC",rule:"Pluriel en trop : « "+c+" » → -eu."};return null}},
+  // ── Pluriel -ou → -oux (7 exceptions) ──
+  {name:"pl_oux", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    var oux=["bijoux","cailloux","choux","genoux","hiboux","joujoux","poux"];
+    if(oux.indexOf(cl)>=0&&tl===cl.replace(/oux$/,"ou"))return{code:"G-ACC",rule:"Pluriel irrégulier manquant : « "+c+" » → -oux (exception)."};
+    if(oux.indexOf(tl)>=0&&cl===tl.replace(/oux$/,"ou"))return{code:"G-ACC",rule:"Pluriel irrégulier en trop : « "+c+" » → -ou."};
+    // Erreur: écrire -ous au lieu de -oux
+    if(oux.indexOf(cl)>=0&&tl===cl.replace(/oux$/,"ous"))return{code:"G-ACC",rule:"Pluriel irrégulier : « "+c+" » → -oux (pas -ous)."};
+    return null}},
+  // ── Pluriel -ail → -aux (exceptions: travaux, vitraux, coraux, émaux) ──
+  {name:"pl_ail_aux", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    var pairs={"travaux":"travail","vitraux":"vitrail","coraux":"corail","émaux":"émail"};
+    if(pairs[cl]&&tl===pairs[cl])return{code:"G-ACC",rule:"Pluriel irrégulier manquant : « "+c+" » (pluriel de "+pairs[cl]+")."};
+    var inv={};Object.keys(pairs).forEach(function(k){inv[pairs[k]]=k});
+    if(inv[cl]&&tl===inv[cl])return{code:"G-ACC",rule:"Singulier attendu : « "+c+" »."};
+    return null}},
+  // ── Participe passé : -é / -ée / -és / -ées ──
+  {name:"pp_accord", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    var ppForms=[[/é$/,/ée$/,"fém."],[/é$/,/és$/,"masc.pl."],[/é$/,/ées$/,"fém.pl."],
+      [/ée$/,/é$/,"masc.sing."],[/és$/,/é$/,"masc.sing."],[/ées$/,/é$/,"masc.sing."],
+      [/ée$/,/és$/,"masc.pl."],[/és$/,/ée$/,"fém.sing."],[/ée$/,/ées$/,"fém.pl."],
+      [/ées$/,/ée$/,"fém.sing."],[/ées$/,/és$/,"masc.pl."],[/és$/,/ées$/,"fém.pl."],
+      [/i$/,/ie$/,"fém."],[/i$/,/is$/,"masc.pl."],[/i$/,/ies$/,"fém.pl."],
+      [/is$/,/i$/,"masc.sing."],[/ie$/,/i$/,"masc.sing."],
+      [/u$/,/ue$/,"fém."],[/u$/,/us$/,"masc.pl."],[/u$/,/ues$/,"fém.pl."],
+      [/us$/,/u$/,"masc.sing."],[/ue$/,/u$/,"masc.sing."]];
+    for(var i=0;i<ppForms.length;i++){
+      var f=ppForms[i];
+      if(f[0].test(cl)&&f[1].test(tl)){
+        var base1=cl.replace(f[0],""),base2=tl.replace(f[1],"");
+        if(base1===base2&&base1.length>1)return{code:"G-PP",rule:"Accord du participe passé : « "+c+" » attendu ("+f[2]+" incorrect)."};
+      }
+    }return null}},
+  // ── Accord adjectif : détection de différences de marques de genre/nombre ──
+  {name:"adj_accord", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    // -eux/-euse/-euses/-eux
+    if(cl.match(/euse$/)&&tl===cl.replace(/euse$/,"eux"))return{code:"G-ACC",rule:"Accord au féminin manquant : « "+c+" » (fém. de "+tl+")."};
+    if(cl.match(/eux$/)&&tl===cl.replace(/eux$/,"euse"))return{code:"G-ACC",rule:"Masculin attendu : « "+c+" »."};
+    // -if/-ive
+    if(cl.match(/ive$/)&&tl===cl.replace(/ive$/,"if"))return{code:"G-ACC",rule:"Accord au féminin manquant : « "+c+" » (fém. de "+tl+")."};
+    if(cl.match(/if$/)&&tl===cl.replace(/if$/,"ive"))return{code:"G-ACC",rule:"Masculin attendu : « "+c+" »."};
+    // -eux/-euses
+    if(cl.match(/euses$/)&&tl===cl.replace(/euses$/,"eux"))return{code:"G-ACC",rule:"Accord fém. pluriel manquant : « "+c+" »."};
+    // -el/-elle
+    if(cl.match(/elle$/)&&tl===cl.replace(/elle$/,"el"))return{code:"G-ACC",rule:"Accord au féminin manquant : « "+c+" » (doublement de consonne)."};
+    if(cl.match(/el$/)&&tl===cl.replace(/el$/,"elle"))return{code:"G-ACC",rule:"Masculin attendu : « "+c+" »."};
+    // -en/-enne
+    if(cl.match(/enne$/)&&tl===cl.replace(/enne$/,"en"))return{code:"G-ACC",rule:"Accord au féminin manquant : « "+c+" » (doublement de consonne)."};
+    // -on/-onne
+    if(cl.match(/onne$/)&&tl===cl.replace(/onne$/,"on"))return{code:"G-ACC",rule:"Accord au féminin manquant : « "+c+" » (doublement de consonne)."};
+    // -er/-ère
+    if(cl.match(/ère$/)&&tl===cl.replace(/ère$/,"er"))return{code:"G-ACC",rule:"Accord au féminin manquant : « "+c+" »."};
+    if(cl.match(/er$/)&&tl===cl.replace(/er$/,"ère"))return{code:"G-ACC",rule:"Masculin attendu : « "+c+" »."};
+    // -eur/-euse (adjectifs)
+    if(cl.match(/euse$/)&&tl===cl.replace(/euse$/,"eur"))return{code:"G-ACC",rule:"Accord au féminin manquant : « "+c+" »."};
+    // -teur/-trice
+    if(cl.match(/trice$/)&&tl===cl.replace(/trice$/,"teur"))return{code:"G-ACC",rule:"Accord au féminin manquant : « "+c+" »."};
+    return null}},
+  // ── Accord sujet-verbe : -e/-es/-ent (présent) ──
+  {name:"sv_present", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    if(cl.match(/ent$/)&&tl===cl.replace(/ent$/,"e")&&cl.length>4)return{code:"G-ACC",rule:"Accord sujet-verbe : 3e pers. pluriel (-ent) attendu."};
+    if(cl.match(/e$/)&&!cl.match(/ent$/)&&tl===cl+"nt"&&cl.length>3)return{code:"G-ACC",rule:"Accord sujet-verbe : singulier (-e) attendu, pas pluriel (-ent)."};
+    return null}},
+  // ── Couleurs invariables ──
+  {name:"couleur_inv", test:function(c,t){var cl=c.toLowerCase(),tl=t.toLowerCase();
+    var inv=["marron","orange","cerise","crème","turquoise","kaki","olive"];
+    if(inv.indexOf(cl)>=0&&(tl===cl+"s"||tl===cl+"e"||tl===cl+"es"))
+      return{code:"G-ACC",rule:"Adjectif de couleur invariable : « "+c+" » ne s'accorde pas."};
+    return null}}
+];
+
+// ─────────────────────────────────────────────────────
+// 4. MOTS INVARIABLES (programme cycle 3 + cycle 4)
+// ─────────────────────────────────────────────────────
+GRAMM.INVARIABLES = [
+  // Conjonctions de coordination
+  "mais","ou","et","donc","or","ni","car",
+  // Conjonctions de subordination
+  "que","comme","quand","lorsque","puisque","si",
+  // Prépositions
+  "à","dans","par","pour","en","vers","avec","de","sans","sous","sur",
+  "devant","derrière","chez","entre","contre","malgré","pendant","durant",
+  "depuis","avant","après","selon","hormis","parmi","sauf",
+  // Adverbes de temps
+  "alors","après","aujourd'hui","aussitôt","autrefois","avant",
+  "bientôt","déjà","demain","depuis","désormais","enfin","ensuite",
+  "hier","jadis","jamais","longtemps","maintenant","naguère",
+  "parfois","puis","quelquefois","soudain","souvent","tantôt",
+  "tard","tôt","toujours",
+  // Adverbes de lieu
+  "ailleurs","autour","dedans","dehors","dessous","dessus",
+  "devant","derrière","ici","là","loin","partout","près",
+  // Adverbes de manière
+  "bien","mal","mieux","vite","ensemble","exprès","volontiers","vraiment",
+  // Adverbes de quantité
+  "assez","aussi","autant","beaucoup","combien","davantage",
+  "encore","environ","guère","moins","peu","plus","presque",
+  "tant","très","trop",
+  // Adverbes de négation/affirmation
+  "non","oui","peut-être","certes",
+  // Adverbes de liaison
+  "cependant","d'abord","d'ailleurs","néanmoins","pourtant",
+  "plutôt","seulement","surtout","toutefois"
+];
+
+// ─────────────────────────────────────────────────────
+// 5. DOUBLES CONSONNES + ORTHOGRAPHE LEXICALE
+// ─────────────────────────────────────────────────────
+GRAMM.DOUBLES_CONSONNES = {
+  // pp
+  "apparaître":"pp","appeler":"pp","apporter":"pp","appréhender":"pp",
+  "approcher":"pp","apprendre":"pp","appuyer":"pp","frapper":"pp",
+  "enveloppe":"pp","opposer":"pp","proposer":"pp","rappeler":"pp",
+  "supplier":"pp","supplément":"pp","supposer":"pp",
+  // rr
+  "arrêter":"rr","arriver":"rr","arracher":"rr","courrier":"rr",
+  "derrière":"rr","erreur":"rr","horrible":"rr","nourrir":"rr",
+  "pierre":"rr","pourrir":"rr","terrible":"rr","terre":"rr",
+  "terreur":"rr","torrent":"rr","verrou":"rr","barrière":"rr",
+  "corriger":"rr","correspondre":"rr","interrompre":"rr","irrégulier":"rr",
+  // tt
+  "attendre":"tt","attraper":"tt","atteindre":"tt","attention":"tt",
+  "battre":"tt","combattre":"tt","flatter":"tt","jeter":"tt",
+  "lettre":"tt","lutter":"tt","mettre":"tt","permettre":"tt",
+  "quitter":"tt","regretter":"tt","transmettre":"tt","nettoyer":"tt",
+  // ll
+  "balle":"ll","belle":"ll","briller":"ll","coller":"ll",
+  "colline":"ll","grille":"ll","illustre":"ll","installer":"ll",
+  "intelligence":"ll","mille":"ll","tranquille":"ll","village":"ll",
+  "allumer":"ll","alliance":"ll","tellement":"ll","étoile":"ll",
+  // mm
+  "comme":"mm","commander":"mm","commencer":"mm","commerce":"mm",
+  "communiquer":"mm","femme":"mm","flamme":"mm","grammaire":"mm",
+  "homme":"mm","immense":"mm","immobile":"mm","mammifère":"mm",
+  "nommer":"mm","programme":"mm","sommet":"mm","mammifère":"mm",
+  // nn
+  "année":"nn","bonne":"nn","colonne":"nn","connaître":"nn",
+  "connecter":"nn","donner":"nn","étonner":"nn","innocent":"nn",
+  "monnaie":"nn","personne":"nn","personnel":"nn","prisonnier":"nn",
+  "raisonner":"nn","résonner":"nn","sonner":"nn","tonne":"nn",
+  // ss
+  "assez":"ss","assassin":"ss","baisser":"ss","blesser":"ss",
+  "boisson":"ss","chasser":"ss","classe":"ss","dessiner":"ss",
+  "essayer":"ss","glisser":"ss","intéresser":"ss","laisser":"ss",
+  "message":"ss","mission":"ss","passer":"ss","passion":"ss",
+  "posséder":"ss","poisson":"ss","pression":"ss","puissant":"ss",
+  "rassurer":"ss","réussir":"ss","tousser":"ss",
+  // ff
+  "affaire":"ff","affiche":"ff","affreux":"ff","différent":"ff",
+  "difficile":"ff","effort":"ff","effet":"ff","offrir":"ff",
+  "officier":"ff","siffler":"ff","souffler":"ff","souffrir":"ff",
+  "suffire":"ff",
+  // cc
+  "accéder":"cc","accepter":"cc","accident":"cc","accord":"cc",
+  "accorder":"cc","accrocher":"cc","accueil":"cc","accueillir":"cc",
+  "occasion":"cc","occuper":"cc","raccourcir":"cc","succès":"cc"
+};
+
+// ─────────────────────────────────────────────────────
+// 6. FONCTIONS
+// ─────────────────────────────────────────────────────
+
+// Analyse un texte et retourne les pièges
+GRAMM.analyseTexte = function(texte) {
+  var mots = texte.split(/\s+/).map(function(m) {
+    return m.replace(/^[.,;:!?"«»()]+/, "").replace(/[.,;:!?"«»()]+$/, "");
+  }).filter(function(m) { return m.length > 0; });
+  var pieges = [];
+  var seen = {};
+  mots.forEach(function(mot, idx) {
+    var low = mot.toLowerCase();
+    if (seen[low]) return;
+    if (GRAMM.HOMOPHONES[low]) {
+      var h = GRAMM.HOMOPHONES[low];
+      pieges.push({mot:mot,index:idx,type:"homophone",group:h.group,code:"G-HOM",
+        rule:h.rule,confusions:Object.keys(h.confusions)});
+      seen[low] = true;
+    }
+    if (!seen[low]) {
+      for (var ti=0;ti<GRAMM.TERMINAISONS.length;ti++) {
+        var term=GRAMM.TERMINAISONS[ti];
+        if (low.length > term.src.length + 1 && low.substring(low.length-term.src.length) === term.src) {
+          pieges.push({mot:mot,index:idx,type:"terminaison",code:term.alts[0].code,
+            rule:term.alts[0].rule,confusions:[]});
+          seen[low] = true;
+          break;
+        }
+      }
+    }
+    if (GRAMM.DOUBLES_CONSONNES[low] && !seen[low]) {
+      pieges.push({mot:mot,index:idx,type:"orthographe",code:"L-ORT",
+        rule:"Double consonne : « "+mot+" » s'écrit avec -"+GRAMM.DOUBLES_CONSONNES[low]+"-.",confusions:[]});
+      seen[low] = true;
+    }
+    if (GRAMM.INVARIABLES.indexOf(low) >= 0 && !seen[low]) {
+      pieges.push({mot:mot,index:idx,type:"invariable",code:"G-INV",
+        rule:"« "+mot+" » est un mot invariable.",confusions:[]});
+      seen[low] = true;
+    }
+  });
+  return pieges;
+};
+
+// Classification enrichie d'une erreur
+GRAMM.classify = function(typed, correct) {
+  var tl = typed.toLowerCase(), cl = correct.toLowerCase();
+  if (tl === cl) return null;
+  // 1) Homophones
+  var hRef = GRAMM.HOMOPHONES[cl];
+  if (hRef && hRef.confusions[tl]) return {code:hRef.confusions[tl], rule:hRef.rule};
+  // Aussi chercher en sens inverse
+  var hTyp = GRAMM.HOMOPHONES[tl];
+  if (hTyp && hTyp.confusions[cl]) return {code:"G-HOM", rule:hTyp.rule};
+  // 2) Terminaisons verbales
+  for (var ti=0;ti<GRAMM.TERMINAISONS.length;ti++) {
+    var term = GRAMM.TERMINAISONS[ti];
+    if (cl.length > term.src.length && cl.substring(cl.length-term.src.length) === term.src) {
+      var base = cl.substring(0, cl.length-term.src.length);
+      for (var ai=0;ai<term.alts.length;ai++) {
+        var alt = term.alts[ai];
+        if (tl === base + alt.t) return {code:alt.code, rule:alt.rule};
+      }
+    }
+  }
+  // 3) Accords
+  for (var i=0;i<GRAMM.ACCORDS.length;i++) {
+    var r = GRAMM.ACCORDS[i].test(correct, typed);
+    if (r) return r;
+  }
+  // 4) Doubles consonnes
+  if (GRAMM.DOUBLES_CONSONNES[cl]) {
+    var dc = GRAMM.DOUBLES_CONSONNES[cl];
+    if (typeof dc==="string"&&dc.length===2) {
+      var single=dc[0];
+      if(cl.replace(dc,single)===tl) return{code:"L-ORT",rule:"Double consonne manquante : « "+correct+" » → -"+dc+"-."};
+      if(tl.replace(single,dc)===cl) return{code:"L-ORT",rule:"Double consonne en trop ou manquante sur « "+correct+" »."};
+    }
+  }
+  // 5) Accent manquant/erroné
+  var clNorm=cl.normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  var tlNorm=tl.normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  if(clNorm===tlNorm&&tl!==cl) return{code:"L-ACC",rule:"Accent manquant ou erroné sur « "+correct+" »."};
+  return null;
+};
+
 
 // Le tableau lit la correction des scans sans initialiser ni réécrire une copie.
 // Une rubrique terminée est une case complète ; une marque seule commence la lecture.

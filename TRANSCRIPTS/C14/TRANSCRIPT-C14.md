@@ -1680,8 +1680,8 @@ MEMO
 249. Sur le vrai site, en lecture seule, rien ne change avec la 1.4.6 ; banc 116/0. La dette ② (tes mots, 234) est toujours ouverte, donc ton « promeus » lèverait encore ta règle. Pour 240 (la consigne de l'IA avec le type), tu ne l'as pas commentée : selon ta règle, je la prends pour acquise et je la code après la 1.4.6, sauf avis contraire.
 
 À tester, une fois en ligne :
-1. La copie de Justin, page 2 : le trait rouge est là, à sa marge.
-2. La bande de la copie d'Eva, « plaint → plaignons » et les mots où le cadre se collait en haut : le cadre a la hauteur des lettres du mot.
+1. La copie de ta capture, page 2 : le trait rouge est là, à sa marge.
+2. Dans la bande de ta capture, « plaint → plaignons » et les mots où le cadre se collait en haut : le cadre a la hauteur des lettres du mot.
 3. Dans la recopie, tire la poignée pointillée vers la gauche : la feuille et la ligne en grand grandissent ; recharge la page : la position est gardée ; double-clic sur la poignée : moitié-moitié.
 
 31/10/2026 15:26

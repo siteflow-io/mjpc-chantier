@@ -1186,3 +1186,26 @@ MEMO
 
 31/10/2026 09:35
 MEMO
+
+## Tour 53 — 31/10/2026 09:36 → 31/10/2026 09:37
+
+**Paul :** on peut passer à la suite dans ce qui me servira directement une fois que j'aurais fini la recopie.
+
+**Fait.** Relu le mandat révisé (C15) §57 et ses points ouverts (51, doublons des anciennes marques) ; `scClavier` de la rédaction (C14 tour 27) : Entrée / Espace = « oui » à une question, N = « non », les fautes se posent à la souris ; mode rapide de la dictée : Entrée / Espace = « correct, mot suivant ». Rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 182 ; 183 ; 184 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+181. La suite qui te servira dès la recopie finie : la bande des fautes. Trois morceaux, dans l'ordre : tu exportes tes recopies pour l'IA et tu recolles son texte corrigé ; l'app compare les deux, mot à mot ; la bande passe et s'arrête à chaque faute trouvée, tu dis oui ou non. Avant de coder, trois décisions à toi, une par point ; ce que tu ne commentes pas, je le prends comme acquis.
+
+182. L'export. Un bouton « Exporter pour l'IA » dans la recopie donne un fichier : ta consigne à l'IA dedans, puis les copies de la classe, désignées par un numéro (aucun nom), ligne par ligne. L'IA rend le même fichier, chaque ligne corrigée mot pour mot, sans reformuler, même nombre de lignes. Tu le charges dans l'app, qui vérifie que tout correspond (mêmes copies, mêmes lignes) avant de rien changer ; s'il manque une ligne, elle te le dit et ne touche à rien. La consigne, je te la montre avant de la mettre dans l'app.
+
+183. Les touches à un arrêt de la bande. Chaque arrêt est une question : « faute ? ». Je propose qu'elles gardent le sens qu'elles ont déjà dans tes passes de rédaction : Entrée ou Espace, oui, c'est une faute, on la garde ; N, non. Et ⇧R, le mot par mot, reste exactement la dictée (Entrée, le mot est correct). Ce qui change de sens d'un mode à l'autre est écrit en clair à l'arrêt.
+
+184. Les fautes que tu as déjà marquées sur les scans (passe de la langue). La bande ne doit pas te les faire marquer deux fois. Je propose : quand une faute trouvée tombe sur une ligne où tu as déjà une marque, à peu près au même endroit, la bande te montre la marque et Entrée relie les deux au lieu d'en créer une deuxième. À peu près, parce que la place d'un mot sur la photo n'est juste que 3 fois sur 4 (mesuré hier) : quand l'app hésite, elle te montre les deux et tu choisis.
+
+À tester : rien de neuf.
+
+31/10/2026 09:37
+MEMO

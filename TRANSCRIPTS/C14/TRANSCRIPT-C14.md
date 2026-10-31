@@ -1099,3 +1099,20 @@ MEMO
 
 31/10/2026 08:32
 MEMO
+
+**Suite du tour 48, sans nouveau message de Paul (1.3.3, annoncée au point 173) — 08:32 → 31/10/2026 08:41**
+
+**Fait.** `recopie.js` / `recopie.css` (`c14-poignees`) : l'écran de recopie pose toutes les pages de la copie l'une sous l'autre (`#rcPages`, « Page n / N »), photo et feuille de chaque page ; la page de la ligne en cours porte les identifiants, les autres sont dessinées par le même code (`rcPourPage`) ; un clic, une frappe ou une poignée sur une autre page la rend active ; le défilement va à la ligne choisie, quelle que soit sa page ; le menu « Page » reste et fait défiler jusqu'à la page. Banc : recherches de champ limitées à la page en cours ; 2 vérifications par le geste (2 pages l'une sous l'autre ; un clic sur une ligne de l'autre page y écrit) → « BANC : 91 vérifications, 0 défaut », capture regardée et envoyée. Candidate 1.3.3-RU : 580 262 o, md5 `10bde5d9b733fb8be658bcd8c1ed3232`. Vrai site en lecture seule, 1.3.2 puis 1.3.3 : 30 copies, 0 différente ; recopies : 16 pages, 478 lignes dont 235 écrites, textes et places identiques dans les deux ; seule écriture interceptée : le suivi.
+
+**Claude :** [capture : C14-27-recopie-pages-a-la-suite.png]
+
+À jouer : rien · en cours : rien · ouvert : 175 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+174. La 1.3.3 est prête : les pages de la copie sont l'une sous l'autre, comme dans les scans, dans un seul défilement ; tu cliques une ligne de n'importe quelle page et tu écris, sans menu. Banc : 91 vérifications, 0 défaut ; tes copies et tes 235 lignes recopiées au site : rien ne change.
+
+175. Pour la mettre en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 08:41
+MEMO

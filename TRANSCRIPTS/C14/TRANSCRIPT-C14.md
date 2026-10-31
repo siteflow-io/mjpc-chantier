@@ -2070,3 +2070,22 @@ MEMO
 
 31/10/2026 20:48
 MEMO
+
+## Tour 90 — 31/10/2026 21:57 → 31/10/2026 22:10
+
+**Paul :** Continue
+
+**Fait.** Codé le flux (284, acquis ; 1.4.11, sur la 1.4.10 en ligne) : chaque copie garde la date et le numéro de son envoi à l'IA (`recopie.envoi`), la date de son corrigé chargé avec le nombre de fautes et de types (`recopie.charge`) ; un bouton « 📋 Le flux » ouvre un tableau, une ligne par copie : recopiée (lignes, heure de la dernière modification), envoyée à l'IA (n° d'envoi, heure ; « ⚠ retapée depuis » si une ligne a changé depuis l'envoi), corrigé chargé (heure, fautes, avec leur type), bande (décidés sur le total, coché quand elle est finie) ; un clic sur une copie l'ouvre ; Échap ferme. Le compteur d'en haut (le même) résume le flux de la classe : recopiées, envoyées, chargées, bandes finies, puis ce qui reste à exporter, puis la copie ouverte. Chaque étape se valide par le geste lui-même, sans clic de plus. « Tout effacer » efface aussi l'envoi et le chargement de chaque copie. Banc 123/0 (vérification nouvelle : la fenêtre du flux, une ligne par copie, étapes datées ; capture `C14-37-le-flux`, élèves inventés, envoyée à Paul et gardée au sas `LIVRAISONS/REDACTION/captures/C14-37-le-flux-maquette.png`). Vrai site, lecture seule : aucune différence avec la 1.4.10 ; le compteur dit « Le flux : 28 recopiées · 28 envoyées · 28 chargées · 3 bandes finies ». Candidate 1.4.11-RU : 690 493 o, md5 35efd41ec64363bd827d597a575821e0. Branche c14-poignees a6e2e907.
+
+**Claude :**
+
+À jouer : 305 (ton mot sur la capture) · en cours : rien · ouvert : 220 ; 234 ; 305.
+
+304. Le flux est prêt dans la 1.4.11 : la capture vient de la maquette, avec des élèves inventés. Un bouton « 📋 Le flux » ouvre un tableau, une ligne par copie : recopiée (combien de lignes, à quelle heure), envoyée à l'IA (quel envoi, à quelle heure), corrigé chargé (à quelle heure, combien de fautes, combien avec leur type), bande (arrêts décidés sur le total, cochée quand elle est finie). Chaque étape se coche toute seule, par ton geste : l'export, le chargement, la bande. Aucun clic de plus. Si tu retapes une ligne après l'envoi, la copie le montre (« ⚠ retapée depuis ») et repart au prochain export. Un clic sur une copie l'ouvre. Le compteur d'en haut résume le tout ; sur ton site, il dirait en ce moment : « Le flux : 28 recopiées · 28 envoyées · 28 chargées · 3 bandes finies ».
+
+305. Ça te va ? Si oui, « promeus ». Sinon, dis-moi ce qui change.
+
+À tester, une fois en ligne : « 📋 Le flux » dans la recopie ; puis, pendant ta reprise, après chaque export et chaque chargement, le flux se coche tout seul.
+
+31/10/2026 22:10
+MEMO

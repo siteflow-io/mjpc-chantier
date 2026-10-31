@@ -90,3 +90,11 @@
 
 .rc-ia-effacer{margin-left:auto;color:#8a2a1f;border-color:#d9a79f}
 .rc-ia-q{margin-top:8px;padding:8px 10px;border:1px solid #d9a79f;border-radius:6px;background:#fdf1ef;font-size:14px;line-height:1.45}
+
+.rc-flux-c{width:min(1100px,96vw);max-height:86vh}
+.rc-flux-t{overflow:auto;max-height:64vh;border:1px solid #e1d6c5;border-radius:6px}
+.rc-flux-t table{width:100%;border-collapse:collapse;font-size:14px}
+.rc-flux-t th{position:sticky;top:0;background:#f4ede1;text-align:left;padding:6px 8px;font-weight:650;color:#4a3b29}
+.rc-flux-t td{padding:5px 8px;border-top:1px solid #efe6d8;white-space:nowrap}
+.rc-flux-t tr[data-k]{cursor:pointer}.rc-flux-t tr[data-k]:hover{background:#faf5ea}.rc-flux-t tr.on{background:#eef6e6}
+.rc-flux-ok{color:#2f7d32;font-weight:700}.rc-flux-non{color:#b3a891}

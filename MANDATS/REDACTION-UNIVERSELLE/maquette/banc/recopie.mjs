@@ -238,9 +238,9 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     const attendu = []; for (const k of SC.copies) { const L = rcLignesEcrites(k); if (L.length) attendu.push(L.some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe)); }
     return { c, t, b, rec: attendu.length, aFaire: attendu.filter(Boolean).length }; });
   verif("recopie (1.4.8) : le compteur d'en haut (le même, pas un nouveau) donne le compte de toute la classe : « " + cpt.t + " » (" + cpt.rec + " copies recopiées, " + cpt.aFaire + " à exporter) ; le bouton reste « " + cpt.b.trim() + " »",
-    cpt.c.rec === cpt.rec && cpt.c.aFaire === cpt.aFaire && (cpt.aFaire ? cpt.t.includes(cpt.aFaire + " à exporter") && cpt.t.includes((cpt.rec - cpt.aFaire) + " copie") : /Toutes tes copies recopiées/.test(cpt.t)) && !/\(\d+\)/.test(cpt.b));
+    cpt.c.rec === cpt.rec && cpt.c.aFaire === cpt.aFaire && cpt.t.includes("Le flux : " + cpt.rec + " recopiée") && (cpt.aFaire ? cpt.t.includes(cpt.aFaire + " à exporter") : cpt.t.includes(cpt.rec + " chargée")) && !/\(\d+\)/.test(cpt.b));
   await pg.click("#rcIAFermer"); await pg.click("#rcExportIA"); await att(150); const tout = await pg.locator("#rcIAEtat").textContent(); await pg.click("#rcImportIA"); await att(100);
-  verif("recopie (1.4.2) : l'export ne reprend que les copies sans corrigé à jour, 8 au plus ; quand tout est fait, il le dit (" + tout + ")", /Toutes tes copies recopiées ont leur corrigé/.test(tout) && ex.copies.length <= 8);
+  verif("recopie (1.4.2) : l'export ne reprend que les copies sans corrigé à jour, 8 au plus ; quand tout est fait, il le dit (" + tout + ")", /Le flux : (\d+) recopiées? · \d+ envoyées? · \1 chargées?/.test(tout) && !/à exporter/.test(tout) && ex.copies.length <= 8);
   await att(1500); const auSite = await pg.evaluate(t => { let s = ""; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (/hub/.test(k)) s += localStorage.getItem(k); } return s.includes(JSON.stringify(t).slice(1, -1)) && s.includes('"corrigeLe"'); }, l0.texte);
   verif("recopie (1.4.0) : le corrigé chargé est enregistré au site (faux hub), pas seulement à l'écran", auSite);
   // 1.4.10 (Paul 17:18 : « tout devait se faire en une fois ») : le retour compact, la correction et ses lettres ; coupé : les copies entières se chargent ;
@@ -262,6 +262,13 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   if (ici13) { const champ13 = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + ici13.id + '"]'); await champ13.fill(ici13.texte); await att(300); }
   await pg.click("#rcImportIA"); await att(100); await pg.locator("#rcIATexte").fill(JSON.stringify(bon)); await pg.click("#rcIAValider"); await att(250);   // le bon retour d'avant, remis : la suite du banc s'appuie dessus ; la fenêtre reste ouverte
   verif("recopie (1.4.10) : une ligne retapée après l'envoi à l'IA : sa copie ne reçoit pas la correction de l'ancien texte, et le message le dit (« " + m14.slice(0, 120) + " »)", !!ici13 && r14 && /changé depuis l’envoi/.test(m14));
+  // 1.4.11 (Paul 17:18 ; C14 284) : le flux de la classe, chaque étape datée ; une ligne retapée depuis l'envoi se voit
+  await pg.click("#rcIAFermer"); await att(100); await pg.click("#rcFluxOuvrir"); await att(200);
+  const fl = await pg.evaluate(() => { const rows = Array.from(document.querySelectorAll("#rcFluxTable tr[data-k]")).map(tr => Array.from(tr.children).map(td => td.textContent)); const F = SC.copies.map(rcFluxCopie); return { rows, n: F.length, envoyees: F.filter(f => f.envoi).length, chargees: F.filter(f => f.charge).length }; });
+  await cap("C14-37-le-flux");
+  await pg.click("#rcFluxFermer"); await att(100); await pg.click("#rcImportIA"); await att(100);   // la suite attend la fenêtre du corrigé ouverte
+  verif("recopie (1.4.11) : « 📋 Le flux » montre chaque copie et ses étapes, datées (" + fl.rows.length + " copies ; envoyées " + fl.envoyees + ", chargées " + fl.chargees + " ; première ligne : « " + (fl.rows[0] || []).join(" | ").slice(0, 120) + " »)",
+    fl.rows.length === fl.n && fl.envoyees > 0 && fl.chargees > 0 && fl.rows.some(r => /envoi \d+ · \d{2}:\d{2}/.test(r[2])) && fl.rows.some(r => /✓ \d{2}:\d{2} · \d+ faute/.test(r[3])));
   await pg.keyboard.press("Escape"); await att(120);
   verif("recopie (1.4.0) : Échap ferme la fenêtre du corrigé, pas la recopie", await pg.evaluate(() => RC.ouvert && document.querySelector("#rcIA").hidden));
   // 1.4.1 (Paul 31/10 : 181, 183, 186, 187) : la bande des fautes
@@ -423,7 +430,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   // 1.4.9 (Paul 19:27 et 19:39) : tout effacer, les corrigés de l'IA et tout ce qui vient de la bande ; rien de la recopie ne bouge
   const photo12 = () => pg.evaluate(() => { const IA = ["corrige", "corrigeDe", "corrigeLe", "corrigeMarque", "types", "typesDe", "envoiIA", "decisions", "marquesBande", "places"], o = {}; let n = 0, bande = 0, autres = 0, arret = 0;
     SC.copies.forEach(k => { const c = state.copies[k] || {}, sc = c.scan || {}, r = JSON.parse(JSON.stringify(sc.recopie || null));
-      if (r) { if (r.bandeArret) arret++; delete r.bandeArret; delete r.reprise; Object.values(r.pages || {}).forEach(p => { delete p.modifieLe; Object.values(p.lignes || {}).forEach(l => { if (IA.some(f => l[f] !== undefined)) n++; IA.forEach(f => delete l[f]); }); }); }
+      if (r) { if (r.bandeArret) arret++; if (r.envoi || r.charge) arret++; delete r.bandeArret; delete r.reprise; delete r.envoi; delete r.charge; Object.values(r.pages || {}).forEach(p => { delete p.modifieLe; Object.values(p.lignes || {}).forEach(l => { if (IA.some(f => l[f] !== undefined)) n++; IA.forEach(f => delete l[f]); }); }); }
       const ms = Object.values(sc.marques || {}); bande += ms.filter(m => m.bande).length + (sc.bandeDebut ? 1 : 0); autres += ms.filter(m => !m.bande).length;
       o[k] = { r, anciennes: Object.keys(sc.marquesAnciennes || {}).length, autres: ms.filter(m => !m.bande).map(m => m.id).sort() }; });
     return { sans: JSON.stringify(o), n, bande, autres, arret }; });

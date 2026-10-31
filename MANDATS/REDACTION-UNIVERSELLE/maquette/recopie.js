@@ -119,7 +119,7 @@ function rcInterface() {
     '<button id="rcLargeur" class="sc-btn" title="Remettre la photo et la feuille à la largeur de leurs colonnes. Ctrl + molette règle aussi leur zoom.">↔ Largeur</button>',
     '<button id="rcPlus" class="sc-btn" title="Agrandir ensemble la photo et la feuille.">＋</button>',
     '<button id="rcExportIA" class="sc-btn" title="Télécharger un fichier pour l’IA : ta consigne, puis tes copies recopiées, numérotées, sans aucun nom. Donne-le à l’IA, elle te rend le même fichier corrigé.">⇪ Exporter pour l’IA</button>',
-    '<button id="rcImportIA" class="sc-btn" title="Coller ou choisir le retour de l’IA. L’app vérifie que toutes les lignes correspondent avant de rien changer.">⇩ Charger le corrigé de l’IA</button><span id="rcIAEtat" class="rc-ia-etat"></span>',
+    '<button id="rcImportIA" class="sc-btn" title="Coller ou choisir le retour de l’IA. L’app vérifie que toutes les lignes correspondent avant de rien changer.">⇩ Charger le corrigé de l’IA</button><button id="rcFluxOuvrir" class="sc-btn" title="Le flux de la classe : pour chaque copie, ce qui est recopié, envoyé à l’IA, chargé, et où en est la bande, avec l’heure de chaque étape.">📋 Le flux</button><span id="rcIAEtat" class="rc-ia-etat"></span>',
     '<button id="rcBandeOuvrir" class="sc-btn" title="La bande : elle s’arrête à chaque faute proposée par le corrigé de l’IA. Entrée ou Espace : c’est une faute ; N : non. Échap : revenir à la recopie.">▶ La bande</button>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
@@ -127,6 +127,7 @@ function rcInterface() {
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>',
     '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo"></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
+    '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
     '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
     '<textarea id="rcIATexte" spellcheck="false" placeholder="Colle ici le retour de l’IA"></textarea>',
     '<div class="rc-ia-b"><label class="sc-btn" title="Choisir le fichier rendu par l’IA">Choisir un fichier<input id="rcIAFichier" type="file" accept=".json,.txt,application/json,text/plain" hidden></label><button id="rcIAValider" class="sc-btn" title="Vérifier toutes les lignes, puis enregistrer le corrigé">Vérifier et charger</button><button id="rcIAFermer" class="sc-btn" title="Fermer sans rien changer (Échap)">Fermer</button><button id="rcIAEffacer" class="sc-btn rc-ia-effacer" title="Effacer, sur toute la classe, le corrigé de l’IA et tout ce qui vient de la bande (décisions, marques posées par la bande, cadres visés), pour tout refaire proprement. Ta recopie ne bouge pas. Une confirmation est demandée ; tout passe d’abord par la corbeille MJPC et un export.">🗑 Tout effacer : corrigés de l’IA et bande</button></div><p id="rcIAMessage" role="status"></p><div id="rcIAEffacerQ" class="rc-ia-q" hidden></div></div></div>'
@@ -149,6 +150,7 @@ function rcInterface() {
   e.querySelector("#rcBandeRetour").onclick = () => rcBandeFermer();
   e.querySelector("#rcImportIA").onclick = rcIAOuvrir;
   e.querySelector("#rcIAFermer").onclick = rcIAFermer;
+  e.querySelector("#rcFluxOuvrir").onclick = rcFluxOuvrir; e.querySelector("#rcFluxFermer").onclick = rcFluxFermer;
   e.querySelector("#rcIAEffacer").onclick = rcIAEffacerDemander;
   e.querySelector("#rcIAValider").onclick = () => rcIACharger(e.querySelector("#rcIATexte").value);
   e.querySelector("#rcIAFichier").onchange = ev => { const f = ev.target.files && ev.target.files[0]; if (!f) return; f.text().then(t => { e.querySelector("#rcIATexte").value = t; rcIACharger(t); }); ev.target.value = ""; };
@@ -552,6 +554,7 @@ function rcLignesEcrites(k) {
     rcListe(d.ordre).filter(id => rcEcrite(d.lignes[id])).sort((a, b) => h(a) - h(b)).forEach(id => out.push({ k, pid: p.id, page: j + 1, id, l: d.lignes[id] })); });
   return out;
 }
+function rcArretsLigne(l) { return l && typeof l.corrige === "string" && l.texte === l.corrigeDe ? rcEcarts(l.texte, l.corrige).segs : []; }
 function rcCopieACorriger(k) { return rcLignesEcrites(k).some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe); }
 function rcExportIA() {
   if (RC.page) rcGarder();
@@ -560,7 +563,8 @@ function rcExportIA() {
      plus de bandeau après l'export (Paul 17:03) : le compteur d'en haut le dit. */
   const aFaire = SC.copies.filter(k => rcLignesEcrites(k).length && rcCopieACorriger(k));
   if (!aFaire.length) { rcEtatIA(); return; }
-  const copies = aFaire.slice(0, RC_PAQUET_IA), le = new Date().toISOString();
+  const copies = aFaire.slice(0, RC_PAQUET_IA), le = new Date().toISOString(), nEnvoi = 1 + SC.copies.reduce((m, k) => Math.max(m, (((scCopie(k).recopie || {}).envoi) || {}).n || 0), 0);
+  copies.forEach(k => { const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.envoi = { n: nEnvoi, le, lignes: rcLignesEcrites(k).length }; });   // [C14 1.4.11] le flux : l'envoi de chaque copie, numéroté et daté
   const o = { consigne: RC_CONSIGNE_IA, format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = []; let n = 0;
     L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push({ id: x.id, n: ++n, texte: x.l.texte });
       rcLigneMaj(k, x.pid, x.id, l => { l.envoiIA = { texte: l.texte, le }; }); });
@@ -588,7 +592,7 @@ function rcIANettoyage() {
       if (!Object.keys(champs).length) return; r.lignes.push(x); if (l.corrige !== undefined) r.corriges++; r.decisions += Object.keys(l.decisions || {}).length; r.places += Object.keys(l.places || {}).length;
       ((o.lignes = o.lignes || {})[x.pid] = o.lignes[x.pid] || {})[x.id] = champs; });
     const mb = Object.values(s.marques || {}).filter(m => m && m.bande); if (mb.length) { o.marques = {}; mb.forEach(m => { o.marques[m.id] = m; }); r.marques += mb.length; }
-    if (rec.bandeArret) o.bandeArret = rec.bandeArret; if (s.bandeDebut) o.bandeDebut = s.bandeDebut;
+    if (rec.bandeArret) o.bandeArret = rec.bandeArret; if (rec.envoi) o.envoi = rec.envoi; if (rec.charge) o.charge = rec.charge; if (s.bandeDebut) o.bandeDebut = s.bandeDebut;
     if (Object.keys(o).length) { r.data[k] = o; r.copies.add(k); } });
   return r;
 }
@@ -609,7 +613,7 @@ function rcIAEffacer() {
     if (i.etat !== MJPC_ISSUE.ACCEPTEE) { msg.textContent = "Rien n’a changé : la corbeille MJPC n’a pas répondu. L’export est téléchargé."; msg.className = "rc-ia-msg ko"; return; }
     if (RC.bd) rcBandeFermer(true); if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; }
     r.lignes.forEach(x => rcLigneMaj(x.k, x.pid, x.id, l => { RC_CHAMPS_IA.concat(RC_CHAMPS_BANDE).forEach(f => { delete l[f]; }); }));
-    r.copies.forEach(k => { const s = scCopie(k); Object.keys(r.data[k].marques || {}).forEach(id => { delete s.marques[id]; }); if (s.recopie) delete s.recopie.bandeArret; delete s.bandeDebut; scNumeroter(k); });
+    r.copies.forEach(k => { const s = scCopie(k); Object.keys(r.data[k].marques || {}).forEach(id => { delete s.marques[id]; }); if (s.recopie) { delete s.recopie.bandeArret; delete s.recopie.envoi; delete s.recopie.charge; } delete s.bandeDebut; scNumeroter(k); });
     rcBookmark(); saveState(); rcEtatIA();
     msg.textContent = "Effacé, sur " + r.copies.size + " copie" + (r.copies.size > 1 ? "s" : "") + " : le corrigé de l’IA et tout ce qui vient de la bande. Ta recopie n’a pas bougé. Tu peux refaire l’export pour l’IA."; msg.className = "rc-ia-msg ok";
   });
@@ -677,6 +681,7 @@ function rcIAChargerSuite(txt) {
     A.forEach(g => { if (r.types && r.types[rcCle(g)]) typees++; else sansLettre++; });
     Object.keys(x.l.marquesBande || {}).forEach(c => { const m = s.marques[x.l.marquesBande[c]]; if (m && m.bande && r.types && r.types[c]) m.bande.code = r.types[c]; });
     fautes += A.length; lignes++; }); });
+  ok.forEach(k => { const s = scCopie(k), L = rcLignesEcrites(k); let f = 0, t = 0; L.forEach(x => rcArretsLigne(x.l).forEach(g => { f++; if (x.l.types && x.l.typesDe === x.l.corrige && x.l.types[rcCle(g)]) t++; })); s.recopie = s.recopie || {}; s.recopie.charge = { le: quand, fautes: f, types: t }; });   // [C14 1.4.11] le flux
   saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre();
   const reste = coupees.length + changees.length, pl = (v, m) => v + " " + m + (v > 1 ? "s" : "");
   msg.textContent = "Chargé : " + pl(ok.length, "copie") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA" + (fautes ? ", dont " + typees + " avec leur type" + (sansLettre ? " (" + sansLettre + " sans lettre : le type du moteur)" : "") : "") + "."
@@ -754,6 +759,25 @@ function rcSeparerAnciens(k) {
 /* [C14 1.4.8] (Paul 15:59 et 16:01 : « il n'est pas assez visible, je n'ai pas le compte sur le total. c'est lui qu'il faut mettre à jour. Pas créer un
    nouveau compteur ») : le même compteur, plus visible, avec le compte de toute la classe, compté comme l'export choisit les copies (une copie
    recopiée dont une ligne n'a pas de corrigé, ou a été retapée depuis) ; puis, comme avant, les fautes proposées sur cette copie */
+/* [C14 1.4.11] (Paul 17:18 : « il me faut un flux, avec validation des étapes […] Sinon je ne sais plus ce que j'ai uploadé, ce que j'ai renvoyé à
+   l'IA ») : les étapes de chaque copie, validées par les gestes eux-mêmes, et datées ; C14 284, acquis */
+function rcHeure(iso) { if (!iso) return ""; const d = new Date(iso), j = new Date(), h = String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0"); return d.toDateString() === j.toDateString() ? h : String(d.getDate()).padStart(2, "0") + "/" + String(d.getMonth() + 1).padStart(2, "0") + " " + h; }
+function rcFluxCopie(k) {
+  const s = scCopie(k), rec = s.recopie || {}, L = rcLignesEcrites(k); let modif = ""; Object.values(rec.pages || {}).forEach(p => { if (p && p.modifieLe && p.modifieLe > modif) modif = p.modifieLe; });
+  const A = rcArrets(k), dec = A.filter(a => a.l.decisions && a.l.decisions[a.cle]).length, corr = L.length && !rcCopieACorriger(k);
+  return { k, nom: nomEleveDe(k) || k, lignes: L.length, modif, envoi: rec.envoi || null, envoiAJour: !!(rec.envoi && L.length && L.every(x => x.l.envoiIA && x.l.envoiIA.texte === x.l.texte)), charge: corr ? (rec.charge || { le: (L.map(x => x.l.corrigeLe || "").sort().pop() || ""), fautes: A.length, types: null }) : null, arrets: A.length, decides: dec, fini: A.length > 0 && dec === A.length };
+}
+function rcFluxOuvrir() { if (RC.page) rcGarder(); RC.fluxOuvert = true; RC.ui.querySelector("#rcFlux").hidden = false; rcFluxRendre(); }
+function rcFluxFermer() { RC.fluxOuvert = false; RC.ui.querySelector("#rcFlux").hidden = true; }
+function rcFluxRendre() {
+  const t = RC.ui.querySelector("#rcFluxTable"), F = SC.copies.map(rcFluxCopie), ok = '<span class="rc-flux-ok">✓</span> ', non = '<span class="rc-flux-non">—</span>';
+  t.innerHTML = '<table><thead><tr><th>Copie</th><th>Recopiée</th><th>Envoyée à l’IA</th><th>Corrigé chargé</th><th>Bande</th></tr></thead><tbody>' + F.map(f => '<tr data-k="' + escapeAttr(f.k) + '"' + (f.k === RC.copie ? ' class="on"' : "") + '><td>' + escapeHtml(f.nom) + "</td>"
+    + "<td>" + (f.lignes ? ok + f.lignes + " ligne" + (f.lignes > 1 ? "s" : "") + (f.modif ? " · " + rcHeure(f.modif) : "") : non) + "</td>"
+    + "<td>" + (f.envoi ? (f.envoiAJour || f.charge ? ok : "⚠ ") + "envoi " + f.envoi.n + " · " + rcHeure(f.envoi.le) + (!f.envoiAJour && !f.charge ? " · retapée depuis" : "") : f.charge ? ok + "avant le flux" : non) + "</td>"
+    + "<td>" + (f.charge ? ok + rcHeure(f.charge.le) + " · " + f.charge.fautes + " faute" + (f.charge.fautes > 1 ? "s" : "") + (f.charge.types != null ? ", " + f.charge.types + " avec leur type" : "") : f.envoi ? "en attente" : non) + "</td>"
+    + "<td>" + (f.arrets ? (f.fini ? ok : "") + f.decides + " / " + f.arrets : non) + "</td></tr>").join("") + "</tbody></table>";
+  t.querySelectorAll("tr[data-k]").forEach(tr => tr.onclick = () => { const k = tr.dataset.k; rcFluxFermer(); const sel = RC.ui.querySelector("#rcCopie"); if (sel && sel.value !== k) { sel.value = k; sel.dispatchEvent(new Event("change")); } });
+}
 function rcCompteIA() {
   const rec = SC.copies.filter(k => rcLignesEcrites(k).length), aFaire = rec.filter(rcCopieACorriger);
   return { rec: rec.length, ok: rec.length - aFaire.length, aFaire: aFaire.length, envois: Math.ceil(aFaire.length / RC_PAQUET_IA) };
@@ -764,7 +788,10 @@ function rcEtatIA() {
   const avec = L.filter(x => typeof x.l.corrige === "string");
   const f = avec.reduce((s, x) => s + rcEcarts(x.l.texte, x.l.corrige).fautes, 0), change = avec.filter(x => x.l.texte !== x.l.corrigeDe).length, sans = L.length - avec.length;
   const ici = !avec.length ? "" : "cette copie : " + f + " faute" + (f > 1 ? "s" : "") + " proposée" + (f > 1 ? "s" : "") + (change ? " · " + change + " ligne" + (change > 1 ? "s" : "") + " changée" + (change > 1 ? "s" : "") + " depuis" : "") + (sans ? " · " + sans + " sans corrigé" : "");
-  e.textContent = [classe, ici].filter(Boolean).join(" · ");
+  const F = SC.copies.map(rcFluxCopie).filter(f => f.lignes), env = F.filter(f => f.envoi || f.charge).length, ch = F.filter(f => f.charge).length, fin = F.filter(f => f.fini).length;
+  const flux = F.length ? "Le flux : " + F.length + " recopiée" + (F.length > 1 ? "s" : "") + " · " + env + " envoyée" + (env > 1 ? "s" : "") + " · " + ch + " chargée" + (ch > 1 ? "s" : "") + " · " + fin + " bande" + (fin > 1 ? "s" : "") + " finie" + (fin > 1 ? "s" : "") : "";
+  e.textContent = [flux, c.aFaire ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", ici].filter(Boolean).join(" · ");
+  if (RC.fluxOuvert) rcFluxRendre();
 }
 /* 1.4.1 (C14, Paul 31/10 : 181, 183, 186, 187) : la bande des fautes. Elle s'arrête à chaque faute proposée par le corrigé de l'IA.
    Entrée ou Espace : oui, c'est une faute (une marque de la langue, avec sa bonne forme) ; N : non ; Retour : l'arrêt d'avant ; Échap : la recopie.
@@ -998,6 +1025,7 @@ function rcClavier(ev) {
   if (ev.isComposing) return true;
   const input = ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie");
   if (RC.bd) return rcBandeClavier(ev);
+  if (RC.fluxOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcFluxFermer(); } ev.stopPropagation(); return true; }
   if (RC.iaOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcIAFermer(); } ev.stopPropagation(); return true; }
   if (ev.key === "Escape") { ev.preventDefault(); ev.stopPropagation(); rcFermer(); return true; }
   if (input && ev.key === '"' && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { ev.preventDefault(); ev.stopPropagation(); rcGuillemet(ev.target); return true; }

@@ -198,7 +198,8 @@ function rcBookmark() {
 function rcOuvrir(reprendre) {
   if (!SC.ouvert || SC.attrib || !scK()) { toast("Donne d'abord chaque page à son élève."); return; }
   if (SC.champ) scChampFermer(true);
-  scChrono(); RC.ouvert = true; RC.documents = {}; RC.annule = []; RC.zoom = 1;
+  if (reprendre) SC.actif = Date.now(); else scChrono();   // [C14 dette ⓑ] la reprise à l'ouverture n'est pas un geste : elle ne compte pas de temps, la copie n'est pas réécrite
+  RC.ouvert = true; RC.documents = {}; RC.annule = []; RC.zoom = 1;
   const trace = state.scanRecopie;
   const dernier = trace && (reprendre ? trace.ouverte : trace.copie === scK()) ? trace : null;
   RC.copie = dernier && SC.copies.includes(dernier.copie) ? dernier.copie : scK();

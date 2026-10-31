@@ -299,4 +299,31 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie (1.4.3) : de retour dans la recopie, la feuille montre le texte à jour", feuille === null || feuille === reR.t);
   await pg.setViewportSize({ width: 1536, height: 864 }); await pg.click("#rcFermer"); await att(180);
   verif("recopie : fermer rend les quatre passes, les anciennes corrections et leurs gestes", await pg.locator("#scanEcran").isVisible() && !(await pg.locator("#rcEcran").isVisible()) && await pg.locator(".sc-passe").count() === 4);
+  // dette ⑤ (Paul, 30/10 11:39) : remettre une copie à zéro, par la corbeille ; restent ses pages, la recopie, le corrigé de l'IA
+  const hubLire = c => pg.evaluate(c => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/" + c + ".json").then(r => r.json()), c);
+  const iz = await pg.evaluate(k => SC.copies.indexOf(k), kC2); await pg.click('[onclick="scAllerCopie(' + iz + ')"]'); await att(250);
+  const av0 = await pg.evaluate(() => { const k = scK(), s = state.copies[k].scan || {}, L = rcLignesEcrites(k); return { k, id: state.copies[k].id, n: L.length, textes: L.map(x => x.l.texte).join("|"), places: L.filter(x => x.l.places).length, chrono: Object.keys(s.chrono || {}).length, chemin: ruCheminCopies().join("/") }; });
+  const dlZ = []; pg.on("download", d => dlZ.push(d.suggestedFilename())); 
+  await pg.click("#scZero"); await att(200); await pg.click("#scZeroOui"); await att(1600);
+  const ap0 = await pg.evaluate(() => { const k = scK(), c = state.copies[k], s = c.scan || {}, L = rcLignesEcrites(k); return { k, id: c.id, n: L.length, textes: L.map(x => x.l.texte).join("|"), places: L.filter(x => x.l.places || x.l.decisions || x.l.marquesBande).length, marques: Object.keys(s.marques || {}).length, chrono: Object.keys(s.chrono || {}).length }; });
+  const hc = await hubLire(av0.chemin + "/" + av0.k), corb = await pg.evaluate(() => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/corbeille.json").then(r => r.json()));
+  const ent = Object.values(corb || {}).flatMap(j => Object.entries(j || {})).filter(([n]) => /^remise-a-zero-copie_/.test(n)).map(([, v]) => v);
+  const hubL = hc && hc.scan && hc.scan.recopie ? Object.values(hc.scan.recopie.pages || {}).reduce((t, p) => t + Object.values(p.lignes || {}).filter(l => !l.retiree && (l.texte || "").trim()).length, 0) : 0;
+  verif("dette ⑤ : « ↺ Remettre à zéro » sur une copie recopiée (" + av0.n + " lignes, " + av0.places + " cadre visé, temps sur " + av0.chrono + " passe) : rangée d'abord dans la corbeille (" + ent.length + "), export JSON (" + dlZ.length + ") ; au site, la correction s'efface (marques " + ap0.marques + ", temps " + ap0.chrono + ", visées " + ap0.places + "), la recopie reste (" + hubL + " lignes, mêmes textes), même identité",
+    ent.length === 1 && ent[0].data.copie.id === av0.id && dlZ.length === 1 && ap0.id === av0.id && hc && hc.id === av0.id && ap0.n === av0.n && ap0.textes === av0.textes && hubL === av0.n && ap0.places === 0 && ap0.marques === 0 && ap0.chrono === 0 && !(hc.scan || {}).chrono && av0.places + av0.chrono > 0);
+  // dette ⑤, 2e moitié : une copie effacée au site (ailleurs) quitte la page ouverte ; un geste sur elle ne réécrit pas l'ancienne
+  const k3 = await pg.evaluate(async ch => { const tous = await window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/" + ch + ".json").then(r => r.json()) || {};
+    window.EventSource = class { constructor() { window.__es = this; this.l = {}; } addEventListener(t, f) { this.l[t] = f; } close() {} };
+    ruAbonner(); window.__es.l.put({ data: JSON.stringify({ path: "/", data: tous }) });
+    const k = SC.copies.find(x => x !== scK() && tous[x] && tous[x].scan && Object.keys(tous[x].scan.marques || {}).length) || SC.copies.find(x => x !== scK() && tous[x]);
+    return { k, id: tous[k] && tous[k].id, m: Object.keys(((tous[k] || {}).scan || {}).marques || {}).length }; }, av0.chemin);
+  await pg.evaluate(([ch, k]) => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/" + ch + "/" + k + ".json", { method: "DELETE" }).then(() => window.__es.l.put({ data: JSON.stringify({ path: "/" + k, data: null }) })), [av0.chemin, k3.k]);
+  const oublie = await pg.evaluate(k => ruVierge(state.copies[k]), k3.k);
+  const i3b = await pg.evaluate(k => SC.copies.indexOf(k), k3.k); await pg.click('[onclick="scAllerCopie(' + i3b + ')"]'); await att(300);
+  if (await pg.evaluate(k => scK() !== k, k3.k)) { await pg.fill("#scLig", "20"); await pg.press("#scLig", "Enter"); await att(200); await pg.click('[onclick="scAllerCopie(' + i3b + ')"]'); await att(300); }
+  const surK3 = await pg.evaluate(k => scK() === k, k3.k); await pg.fill("#scLig", "12"); await pg.press("#scLig", "Enter"); await att(1500);   // un geste sur la copie effacée : son nombre de lignes
+  const h3 = await hubLire(av0.chemin + "/" + k3.k);
+  verif("dette ⑤ : une copie effacée au site pendant que la page est ouverte (" + k3.m + " marques) quitte la page ; un geste sur elle y écrit une copie neuve, jamais l'ancienne (au site : " + (h3 ? "id " + (h3.id === k3.id ? "ancien" : "neuf") + ", " + Object.keys(((h3 || {}).scan || {}).marques || {}).length + " marques" : "rien") + ")",
+    !!k3.k && oublie && surK3 && !!h3 && h3.id !== k3.id && !Object.keys((h3.scan || {}).marques || {}).length && (h3.scan || {}).lignes === 12);
+  await pg.evaluate(() => { try { RU.flux = null; } catch (e) {} window.EventSource = undefined; });
 }

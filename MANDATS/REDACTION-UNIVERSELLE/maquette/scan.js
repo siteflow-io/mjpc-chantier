@@ -845,3 +845,37 @@ function scBande() {
   const q = pt && !pt.calcul ? scQ(pt, SC.iq) : null; const r = pt && k ? scCase(pt, k) : null;
   B.innerHTML = `<b>${escapeHtml(P.nom)}</b> · ${escapeHtml(pt ? pt.titre : "")}${q ? " · " + escapeHtml(q.texte) : ""}${r && r.complet ? ` · <span style="color:${SC_COUL[r.c.niveau]}">●</span> ${escapeHtml(r.txt)}` : ""} <span class="sc-m">— Entrée oui · N non · → copie suivante</span><button class="sc-btn" onclick="scReplier(false)" title="Déplier le panneau de droite : les questions, la case, les copies déjà vues, les touches.">⇤ Déplier</button>`;
 }
+
+// [C14 dette ⑤] Remettre une copie à zéro (Paul, 30/10 11:39 : « je veux supprimer la correction de flavie pour repartir de zéro »).
+// Comme ruSupprimer : un export JSON téléchargé, puis la corbeille MJPC, puis l'effacement. S'effacent la correction : l'ancienne,
+// les marques sur les scans et celles mises de côté, les réponses, la bande et ses décisions, le temps. Restent les pages de l'élève,
+// la recopie, le corrigé de l'IA et le nombre de lignes : c'est la copie elle-même, pas son jugement.
+function scOublierCopie(k) {   // la copie quitte la mémoire de cette page : plus rien ne la réécrit
+  delete RU.sig[k]; if (RU.sigCorps) delete RU.sigCorps[k];
+  delete state.copies[k]; copieFor(k);
+}
+function scApresOubli(k) {
+  if (typeof RC !== "undefined" && RC.copie === k) { if (RC.bd) rcBandeFermer(true); RC.documents = {}; RC.annule = []; if (RC.ouvert) rcActualiser(); }   // la recopie en mémoire est relue depuis la copie
+  if (SC.ouvert) scRendre();
+}
+function scRemettreAZero() {   // la question, dans la fenêtre de l'app (jamais une boîte du navigateur)
+  const k = scK(), c = k && state.copies[k], nom = nomEleveDe(k) || k;
+  if (!k) return; if (!c || ruVierge(c)) { toast("La copie de " + nom + " est déjà vierge."); return; }
+  scModale("<h3>Remettre à zéro la copie de " + escapeHtml(nom) + " ?</h3><p><b>S’effacent :</b> l’ancienne correction, tes marques sur les scans (et celles mises de côté), tes réponses aux questions, la bande et ses décisions, le temps passé.</p><p><b>Restent :</b> ses pages, ta recopie, le corrigé de l’IA, le nombre de lignes.</p><p>Tout est d’abord rangé dans la corbeille MJPC (récupérable un an) et un export JSON est téléchargé.</p><button class=\"sc-btn\" id=\"scZeroOui\" onclick=\"scRemettreAZeroOui(" + escapeAttr(JSON.stringify(k)) + ")\" title=\"Ranger la copie dans la corbeille MJPC, télécharger son export, puis effacer sa correction.\">↺ Remettre à zéro</button>");
+}
+function scRemettreAZeroOui(k) {
+  scModaleFermer(); const c = state.copies[k], nom = nomEleveDe(k) || k; if (!c) return;
+  const chemin = ruCheminCopies().concat(k), data = { copie: scCles(ruCopie(c), true), signet: (state.interroBookmark || {})[k] || null };
+  ruTelecharger({ _meta: { source: chemin.join("/"), exportedAt: new Date().toISOString(), exportedBy: "remise_a_zero", version: 1 }, data }, "redaction_" + RU.id + "_" + k + "_" + new Date().toISOString().slice(0, 10) + ".json");
+  ruCorbeille("remise-a-zero-copie", chemin.join("/"), data, { redaction: RU.id, eleve: k, nom }).then(i => {
+    if (i.etat !== MJPC_ISSUE.ACCEPTEE) { toast("La corbeille MJPC n’a pas répondu : rien n’est effacé. L’export JSON est téléchargé."); return; }
+    const s0 = c.scan || {}, rec = s0.recopie ? ruCopie(s0.recopie) : null;
+    if (rec) Object.values(rec.pages || {}).forEach(p => Object.values((p && p.lignes) || {}).forEach(l => { if (l) { delete l.decisions; delete l.marquesBande; delete l.places; } }));
+    scOublierCopie(k);
+    const cp = state.copies[k]; ["id", "eleve", "classe", "sujetId", "creeLe"].forEach(f => { if (c[f] != null) cp[f] = c[f]; });
+    if (rec || s0.lignes != null) { const s = scCopie(k); if (rec) s.recopie = rec; if (s0.lignes != null) s.lignes = s0.lignes; }
+    if (state.interroBookmark) delete state.interroBookmark[k];
+    if (ruVierge(cp)) ruEcrire(chemin, null, "la copie remise à zéro");   // plus rien à garder : la copie quitte le site
+    saveState(); scApresOubli(k); toast("Copie de " + nom + " remise à zéro (corbeille MJPC)");
+  });
+}

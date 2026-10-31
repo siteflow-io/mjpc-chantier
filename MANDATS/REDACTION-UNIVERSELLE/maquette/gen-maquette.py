@@ -58,6 +58,8 @@ v = 'function ruReprendre() {   // la reprise exacte (l\'INIT de l\'app d\'origi
 # 1.2.3 (C14) : les noms des réponses (l'identité d'une question porte un point) s'écrivent au site sous une forme qu'il accepte, et se relisent tels quels
 v = 'const sg = JSON.stringify(v); if (RU.sig[k] === sg) return; RU.sig[k] = sg;'; assert H.count(v) == 1; H = H.replace(v, 'const sg = JSON.stringify(scCles(v, true)); if (RU.sig[k] === sg) return; RU.sig[k] = sg;')
 v = 'const v = ruCopie(cp[e]); delete v.nom; state.copies[e] = v;'; assert H.count(v) == 1; H = H.replace(v, 'const v = scCles(ruCopie(cp[e]), false); delete v.nom; state.copies[e] = v;')
+v = 'const seg = ruSeg(m.path);\n    if (patch)'; assert H.count(v) == 1; H = H.replace(v, 'const seg = ruSeg(m.path), avant = Object.keys(RU.miroir || {});\n    if (patch)')   # [C14 dette ⑤] les copies que le site avait avant ce message
+v = '    if (change) { try { localStorage.setItem(ruCleSecours(), JSON.stringify(state)); } catch (e) {} ruRedessiner(); }'; assert H.count(v) == 1; H = H.replace(v, '    const parties = avant.filter(k => (RU.miroir || {})[k] == null && state.copies[k]); parties.forEach(k => { scOublierCopie(k); change = true; });   // [C14 dette ⑤] une copie effacée au site (remise à zéro ailleurs) quitte aussi cette page : sinon le geste suivant la réécrirait\n' + v + '\n    parties.forEach(scApresOubli);')
 v = 'const v = ruCopie(RU.miroir[k]); delete v.nom; state.copies[k] = v;'; assert H.count(v) == 1; H = H.replace(v, 'const v = scCles(ruCopie(RU.miroir[k]), false); delete v.nom; state.copies[k] = v;')
 # 59a : lire les scans au tableau, avec le même calcul de case et sans écrire une copie.
 v = 'function progressionPct(id) {'; assert H.count(v) == 1
@@ -80,6 +82,7 @@ ecran = '''
     <button class="sc-btn" onclick="scImprimerVierges()" title="Imprimer des copies vierges de l'appli : quatre repères aux coins, les lignes à leur place. Scannées, elles se remettent droites d'elles-mêmes et leurs lignes sont connues d'avance.">🖨 Copies vierges</button>
     <button class="sc-btn" onclick="SC.attrib=true;SC.ia=0;scRendre()" title="Revoir, page par page, l'élève de chaque page (ses initiales).">🔤 Les initiales</button>
     <button class="sc-btn" onclick="scFichiersED()" title="Fabriquer le fichier de chaque élève, à déposer sur École Directe : sa copie scannée et tes marques.">📨 Fichiers École Directe</button>
+    <button class="sc-btn" id="scZero" onclick="scRemettreAZero()" title="Remettre à zéro la copie affichée : sa correction s\'efface (l\'ancienne, tes marques, tes réponses, la bande, le temps) ; ses pages, ta recopie et le corrigé de l\'IA restent. Tout passe d\'abord par la corbeille MJPC (un an) et un export JSON. Une confirmation est demandée.">↺ Remettre à zéro</button>
     <button class="sc-btn" onclick="scFermer()" title="Revenir au tableau des élèves : tout est déjà enregistré.">✕ Fermer</button></div>
   <div id="scManque" class="sc-manque"></div>
   <div id="scBande" class="sc-bande" hidden></div>

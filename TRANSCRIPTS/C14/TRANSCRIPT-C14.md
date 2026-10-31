@@ -1731,3 +1731,41 @@ MEMO
 
 31/10/2026 15:38
 MEMO
+
+## Tour 76 — 31/10/2026 15:41 → 31/10/2026 15:50
+
+**Paul :** [captures : la bande d'une copie, « entend → entends » et « êtres → être », le cadre de toute la hauteur de la bande ; la correction de dictée, le ruban du texte centré sur le mot en cours] Ce n'est pas encore ça sur la hauteur! Sinon, sur les captures tu vois que la ligne écrite en dessous (ligne 7 Peut-êtres d'ici trois mois je serai de retour, j'espère) s'affiche seule. Or, le texte doit s'afficher en continu aussi, autant en recopié qu'en manuscrit. Le texte complet devient une immense bande qui s'affiche au fur et à mesure, comme une bande qu'on passerait entre ses doigts tout en regardant toujours l'endroit entre ses doigts. c'est le principe de correction dictée. par ailleurs quand je recharge la page en mode bande je dois retomber à l'endroit où j'étais. pareil pour n'importe quelle action: pour Un élève, si je commence la bande, que je fais deux mots, je dois retomber à ce même mot. attention, ça me rappelle des erreurs de rechargement et de redessin qu'il y a eu aussi dans correction dictée. Pour 254. Pas grave si ça se décale un peu de la feuille, le but est de zoomer ponctuellement quand l'élève écrit vraiment petit. En revanche aucune barre de scroll gauche droite hein. on garde tout le temps la bande de texte complète.
+
+**Fait.** Sur les captures : des traits verticaux du cahier traversent toute la bande ; ils passent mon critère d'encre et reliaient le mot au haut et au bas de la bande. Message envoyé à Paul pendant le travail (ci-dessous, mot pour mot). Codé (1.4.7) : poignée latérale retirée (et sa position gardée effacée) ; zoom cranté de la ligne en grand (`RC_CRANS` ×1, ×1,5, ×2, ×2,5, ×3 ; au-dessus de ×1, toute la largeur, la ligne entière centrée, le texte d'aide caché ; « + » grisé quand la ligne remplit la largeur ; gardé dans ce navigateur) ; dans `rcEncre`, une colonne d'encre sur les trois quarts de la hauteur lue est un trait du cahier (ni lien, ni mot) ; la bande reprise : `bandeArret` (l'arrêt en cours, dans la recopie de la copie), `bande` dans le suivi, `rcBandeOuvrir(true)` à la reprise sans réécrire la page ; la photo qui arrive redessine aussi la bande. Banc 117/0, vérifications nouvelles par le geste : les traits verticaux du cahier ajoutés à l'essai des jambages (un à travers le mot) : le cadre s'arrête à 0,43 interligne ; la bande fermée puis rouverte, puis la page rechargée : même arrêt (« se → nous », pas le premier non décidé) ; le zoom à ×2 : la ligne en grand de 32 à 64 points de haut, entière, sans défilement, photo et lignes vertes immobiles au point près, retour à ×1. Candidate 1.4.7-RU : 671 657 o, md5 388d837460a309f6b5f34a191821eaf0 ; vrai site, lecture seule : aucune différence avec la 1.4.6, une écriture à l'ouverture (le suivi). Branche c14-poignees c844dee6 ; registre (prod).
+
+**Claude (message envoyé pendant le travail, 15:43) :**
+
+À jouer : rien · en cours : 1.4.7 (je code) · ouvert : 220 ; 234.
+
+256. Bien reçu. Je fais maintenant une seule version, la 1.4.7, avec :
+- la poignée retirée, remplacée par ton zoom cranté de la ligne en grand. Au-dessus du cran ×1, la ligne prend toute la largeur de l'écran pour grossir, et elle reste toujours entière, sans aucune barre de défilement ;
+- la hauteur du cadre. Sur tes captures, je vois la cause probable : les traits verticaux du cahier, qui traversent toute la bande, relient le mot au haut et au bas de la bande. Je les écarte comme les traits horizontaux ;
+- la bande reprise exactement là où tu étais, après un rechargement ou après l'avoir fermée : même copie, même arrêt, pour chaque élève.
+
+257. Ensuite, la 1.4.8 : la bande en continu, comme en correction de dictée. Tout le texte recopié devient un seul ruban, centré sur le mot en cours, et la photo devient un ruban de toutes les lignes manuscrites mises bout à bout, centré sur le même mot. Je la fais après la 1.4.7, pour que tu aies vite les corrections.
+
+**Claude :**
+
+À jouer : promeus (1.4.7) · en cours : rien · ouvert : 220 ; 234.
+
+258. La 1.4.7 est prête. Le zoom : deux boutons − et + en haut à droite de la ligne en grand, avec les crans ×1, ×1,5, ×2, ×2,5 et ×3. À ×1, la ligne est alignée sur la feuille, comme avant. Au-dessus, elle prend toute la largeur et grossit, le texte d'aide se cache, et elle reste entière ; quand elle remplit la largeur, « + » se grise. La photo et les lignes vertes ne bougent pas d'un point, à aucun cran (vérifié sur le banc). Ton cran est gardé dans ce navigateur. La poignée de la 1.4.6 a disparu.
+
+259. La hauteur du cadre : les traits verticaux du cahier ne relient plus le mot au haut et au bas de la bande. Sur le banc, avec ces traits et la queue d'une lettre de la ligne du dessus, le cadre s'arrête au haut des lettres du mot. Sur tes photos, c'est ton test qui le dira.
+
+260. La bande se rouvre à l'arrêt où tu étais, pour chaque élève : après l'avoir fermée, après être passé à un autre élève et revenu, et après un rechargement de la page (la bande se rouvre seule, au même mot). Tes décisions ne changent pas. Après un rechargement, rien n'est réécrit tant que tu ne fais rien.
+
+261. Sur le vrai site, en lecture seule, rien ne change à l'ouverture ; banc 117/0. La dette ② (tes mots, 234) est toujours ouverte. Après la 1.4.7 : la bande en continu (257), puis le type donné par l'IA (240).
+
+À tester, une fois en ligne :
+1. Ouvre la bande d'une copie, va à un arrêt au milieu, puis recharge la page : la bande se rouvre seule, sur ce même arrêt.
+2. Ferme la bande, passe à un autre élève, reviens et rouvre la bande : même arrêt.
+3. Dans la bande, les mots où le cadre prenait toute la hauteur : il a la hauteur des lettres du mot.
+4. Dans la recopie, « + » au-dessus de la ligne en grand : elle grossit, entière ; les lignes vertes ne bougent pas ; « − » jusqu'à ×1 : elle est de nouveau alignée sur la feuille.
+
+31/10/2026 15:50
+MEMO

@@ -1152,3 +1152,20 @@ MEMO
 
 31/10/2026 08:56
 MEMO
+
+## Tour 51 — 31/10/2026 09:01 → 31/10/2026 09:03
+
+**Paul :** promeus.
+
+**Fait.** 1.3.3 copiée au sas (`SAUVEGARDES/redaction-1.3.3-RU-avant-1.3.4-2026-10-31.html`). Production : commit `3b4c31d`, blob `3343e785da26`, md5 `23f016d759e31656753a21b4efe6a6db`, 580 848 o ; en ligne bit à bit à la 5e lecture. Docs de suivi : journal, registre, point de retour, où trouver quoi (`&v=1.3.4-RU`).
+
+**Claude :**
+
+À jouer : le test ci-dessous · en cours : rien · ouvert : 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+179. La 1.3.4 est en ligne, vérifiée à l'octet près : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.3.4-RU. Recharge la page de l'app.
+
+À tester : en recopie, fais défiler d'une page à l'autre : le menu « Page » en haut change avec la page que tu vois.
+
+31/10/2026 09:03
+MEMO

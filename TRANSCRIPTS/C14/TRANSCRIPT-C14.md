@@ -829,3 +829,20 @@ MEMO
 
 31/10/2026 06:49
 MEMO
+
+## Tour 35 — 31/10/2026 07:00 → 31/10/2026 07:02
+
+**Paul :** il faudrait que les points s'alignent toujours juste avant la marge rouge à gauche, et aillent au bord de la copie, à droite. De manière automatique. Va voir au hub, j'ai fait la première page d'emma danard
+
+**Fait.** Lu au site (lecture seule, gardé hors du sas) la recopie de cette copie : 2 pages de 31 lignes ; page recopiée : 23 lignes ; poignée gauche déplacée à la main sur 20 lignes, entre 0,209 et 0,224 (trouvée seule : 0,020 à 0,230) ; poignée droite poussée au bord (0,995) sur 3. Complément écrit au sas (`COMPLEMENT-RECOPIE-POIGNEES.md`), en tête du prompt de C15.
+
+**Claude :**
+
+144. Vu au site : sur ta première page, tu as recalé à la main la poignée gauche de 20 lignes sur 23, toutes juste avant la marge rouge, et poussé 3 poignées droites au bord. C'est donc bien ce que l'app doit faire seule : chercher la marge rouge sur la photo, poser la poignée gauche juste avant, la droite au bord de la copie ; une ligne que tu as déjà déplacée ne bouge plus.
+
+145. C'est écrit pour GPT, en tête de son travail ; je vérifie et mets en ligne sur ton « promeus ». Si la marge rouge n'est pas trouvée sur une photo, l'app te le dira ; combien de fois ça arrivera, je ne sais pas.
+
+À tester : rien avant la livraison.
+
+31/10/2026 07:02
+MEMO

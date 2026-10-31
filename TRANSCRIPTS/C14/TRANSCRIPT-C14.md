@@ -1941,3 +1941,26 @@ Je fais déjà deux passages par copie, une recopie, la bande... Ça fait beauco
 
 31/10/2026 17:24
 MEMO
+
+## Tour 84 — 31/10/2026 19:27 → 31/10/2026 19:38
+
+**Paul :** 285. Tu vas me coder un bouton de suppression des corrections déjà faites. Comme ça ensuite tu codes et je refais l'import.  (attention que le bouton  ne supprime rien de ma recopie!!!!!)
+
+**Fait.** Le travail de 17:10 (deux envois) mis de côté dans la branche (`git stash`, réutilisable pour le retour compact et le retour coupé) ; repris sur la 1.4.8. Codé (1.4.9) : dans « Charger le corrigé de l’IA », le bouton « 🗑 Effacer les corrigés chargés » ; il demande d'abord, dans la fenêtre (combien de lignes, sur combien de copies, ce qui ne bouge pas) ; « Effacer » télécharge un export, range dans la corbeille MJPC (`effacement-corriges-ia_*`), puis n'efface que les champs rendus par l'IA (`corrige`, `corrigeDe`, `corrigeLe`, et `types`, `typesDe` s'il y en a) sur toute la classe ; jamais le texte recopié, les lignes, leurs places, les lignes retirées, la marge, ni les décisions de la bande, les marques et les cadres visés ; si la corbeille ne répond pas, rien n'est effacé. Banc 119/0, vérification nouvelle par le geste : la question, « Annuler » sans effet, puis « Effacer » : corbeille 1, export 1, corrigés 8 → 0 (au faux site aussi), et la recopie, les décisions et les marques identiques au caractère près. Au site, lecture seule : le bouton effacerait le corrigé de 869 lignes sur 28 copies. Vrai site : aucune différence avec la 1.4.8. Candidate 1.4.9-RU : 677 184 o, md5 c0f203a5ad57e0f2d951ed205accf723. Branche c14-poignees f9bd1137 ; registre (prod 6e8dfc3).
+
+**Claude :**
+
+À jouer : promeus (1.4.9) · en cours : rien · ouvert : 220 ; 234.
+
+286. C'est codé dans la 1.4.9. Dans « Charger le corrigé de l’IA », un bouton « 🗑 Effacer les corrigés chargés ». Il te demande d'abord, dans la fenêtre : combien de lignes, sur combien de copies, et ce qui ne bouge pas. « Annuler » ne fait rien. « Effacer » télécharge un export, range tout dans la corbeille MJPC, puis n'efface que ce que l'IA a rendu. Si la corbeille ne répond pas, rien n'est effacé.
+
+287. Ce qui ne bouge jamais : ta recopie (le texte, les lignes, leurs places, les lignes retirées, la marge), tes décisions de bande, tes marques et tes cadres visés. Vérifié sur le banc : après l'effacement, tout cela est identique au caractère près. Sur ton site, le bouton effacerait le corrigé de 869 lignes sur tes 28 copies.
+
+288. Après le nouvel import, une décision de bande retrouve son arrêt si l'IA corrige de la même façon. Si elle corrige autrement un endroit déjà décidé, la marque reste sur la copie, mais l'arrêt neuf demandera ta décision. Je ne sais pas combien de cas : on le verra au chargement.
+
+289. Ensuite, je code l'envoi unique (283) : la consigne avec la lettre entre accolades, le retour compact, une réponse coupée qui garde les copies entières. Puis le flux (284), avec une capture d'abord.
+
+À tester, une fois en ligne : dans la recopie, « Charger le corrigé de l’IA », puis « 🗑 Effacer les corrigés chargés » : lis la question, et clique « Annuler » ; n'efface vraiment qu'une fois l'envoi unique en ligne, puisque c'est lui qui te servira à refaire l'import.
+
+31/10/2026 19:38
+MEMO

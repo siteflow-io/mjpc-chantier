@@ -1302,3 +1302,24 @@ MEMO
 
 31/10/2026 10:31
 MEMO
+
+**Suite du tour 58, sans nouveau message de Paul (1.4.1, annoncée au point 193) — 10:31 → 31/10/2026 10:40**
+
+**Fait.** `recopie.js` / `recopie.css` (`c14-poignees`) : « ▶ La bande » dans la recopie ; arrêts = segments différents entre le texte recopié et le corrigé de l'IA, ligne par ligne (lignes changées depuis le corrigé : sans arrêt) ; à l'arrêt : la ligne de la photo (segment encadré à sa place proportionnelle), la ligne recopiée (segment surligné, ∧ pour un mot manquant), la carte « élève → corrigé », « Faute proposée par l'IA · ligne n · arrêt i sur N », la liste des arrêts à droite (✓ gardée, ✗ refusée) ; Entrée / Espace : une marque de la langue (`scPoser`, bonne forme = le corrigé, `bande` : ligne, segment) ; N : refus (la marque de cet arrêt enlevée si elle existait) ; Retour : arrêt d'avant ; Échap : la recopie ; décisions gardées dans la ligne (`decisions`, `marquesBande`) ; à la première entrée sur une copie qui a des fautes d'avant : leur nombre et la note, puis, sur « Commencer la bande » (ou Entrée), elles passent dans `marquesAnciennes` (gardées, ne comptent plus) ; à la fin : fautes gardées, note avant, note maintenant. Le mot par mot (⇧R) n'est pas codé : la touche qui marque une faute en mot par mot reste à décider. Le nom `RC.bande` était déjà pris (la bande du haut) : état de la bande = `RC.bd`. Banc : 4 vérifications par le geste → « BANC : 101 vérifications, 0 défaut », capture regardée et envoyée. Candidate 1.4.1-RU : 603803 o, md5 `c0c7e2df186f9b587a084c00a1fc13be`. Vrai site en lecture seule, 1.4.0 puis 1.4.1 : 30 copies, 0 différente ; recopies : 36 pages, 592 lignes écrites, textes et places identiques ; seule écriture interceptée : le suivi.
+
+**Claude :** [capture : C14-29-la-bande.png]
+
+À jouer : rien · en cours : rien · ouvert : 196 ; 197 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+194. La 1.4.1 est prête : la bande. Dans la recopie, « ▶ La bande » s'arrête à chaque faute proposée par le corrigé de l'IA : en haut la ligne de la photo, la faute encadrée ; dessous ta ligne recopiée, la faute surlignée ; au milieu « élève → corrigé » ; à droite la liste des arrêts. Entrée ou Espace : c'est une faute, elle est marquée avec sa bonne forme ; N : non ; Retour : l'arrêt d'avant ; Échap : la recopie. À la fin : le nombre de fautes gardées, la note avant et la note maintenant.
+
+195. Sur une copie déjà corrigée hier, la bande t'annonce d'abord ses fautes d'avant et sa note, et ne les met de côté que quand tu cliques « Commencer la bande » (ou Entrée). Banc : 101 vérifications, 0 défaut ; tes copies et tes 592 lignes recopiées au site : rien ne change.
+
+196. Le mot par mot (⇧R) n'est pas encore là : en dictée, on marque une faute avec G ou L, qui n'existent pas en rédaction. Je propose F (faute), qui n'a aucun sens en dictée ; Entrée et Espace y restent « le mot est correct », comme en dictée. Ça te va ?
+
+197. Pour mettre la 1.4.1 en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 10:40
+MEMO

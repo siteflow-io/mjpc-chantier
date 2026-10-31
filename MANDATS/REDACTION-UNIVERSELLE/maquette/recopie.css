@@ -48,3 +48,27 @@
 #rcIATexte{height:42vh;font:12px/1.4 ui-monospace,monospace;border:1px solid #cbb88f;border-radius:6px;padding:8px}
 .rc-ia-b{display:flex;gap:8px;flex-wrap:wrap}
 #rcIAMessage{margin:0;font-size:13px;color:#6b1a2a;min-height:1.2em}
+.rc-bande{display:none}
+.rc-mode-bande #rcDefile,.rc-mode-bande .rc-apercu{display:none}
+.rc-mode-bande .rc-bande{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:16px;flex:1;min-height:0;padding:12px 14px;overflow:hidden}
+.rc-bande-g{display:flex;flex-direction:column;gap:12px;min-width:0;overflow:auto}
+.rc-bande-avis{padding:10px 12px;border:1px solid #d9b45a;border-radius:8px;background:#fff8e5;font-size:14px;line-height:1.5}
+.rc-bande-avis[hidden]{display:none}
+#rcBandePhoto{width:100%;height:110px;border-radius:6px;background:#fffdf8;box-shadow:0 1px 4px #3b2e2522}
+.rc-bande-contexte{padding:10px 14px;border:1px solid #e3d8c6;border-radius:8px;background:#fff;font:18px/1.6 Georgia,serif;color:#5d5148}
+.rc-bande-contexte mark{background:#fbe7a6;color:#2b2520;font-weight:600;padding:0 2px;border-radius:3px}
+.rc-bande-contexte .rc-manque{background:#f6c7cb;color:#a3262f}
+.rc-bande-n{font:600 12px system-ui;color:#3d752e;margin-right:6px}
+.rc-bande-carte{border:2px solid #d9b45a;border-radius:10px;background:#fff;overflow:hidden}
+.rc-bande-mot{padding:26px 16px;text-align:center;font:600 34px Georgia,serif;color:#2b2520}
+.rc-bande-mot .rc-corr{color:#c53030}.rc-bande-mot .rc-fleche{color:#9a8b78;font-weight:400}
+.rc-bande-pied{padding:7px 12px;background:#fff8e5;text-align:center;font:600 13px Georgia,serif;color:#7a5f12}
+.rc-bande-touches{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:#4b4036}
+.rc-bande-touches span{padding:4px 8px;border:1px solid #e3d8c6;border-radius:6px;background:#fffdf8}
+.rc-bande-touches kbd{font:600 12px system-ui;padding:1px 5px;border:1px solid #cbb88f;border-radius:4px;background:#fff}
+.rc-bande-d{overflow:auto;border-left:1px solid #e3d8c6;padding-left:12px}
+.rc-bande-d h4{margin:0 0 6px;font:600 12px system-ui;letter-spacing:.06em;text-transform:uppercase;color:#6b1a2a}
+#rcBandeListe{margin:0;padding-left:22px;font-size:14px}
+#rcBandeListe li{display:flex;justify-content:space-between;gap:8px;padding:3px 6px;border-radius:5px;cursor:pointer}
+#rcBandeListe li.on{background:#fbe7a6;font-weight:600}
+#rcBandeListe small{color:#8a7b68;white-space:nowrap}

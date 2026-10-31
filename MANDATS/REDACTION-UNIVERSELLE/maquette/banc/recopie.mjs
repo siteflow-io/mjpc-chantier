@@ -231,6 +231,23 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie (1.4.0) : le corrigé chargé est enregistré au site (faux hub), pas seulement à l'écran", auSite);
   await pg.keyboard.press("Escape"); await att(120);
   verif("recopie (1.4.0) : Échap ferme la fenêtre du corrigé, pas la recopie", await pg.evaluate(() => RC.ouvert && document.querySelector("#rcIA").hidden));
+  // 1.4.1 (Paul 31/10 : 181, 183, 186, 187) : la bande des fautes
+  const kB = await pg.evaluate(id => SC.copies.find(k => rcLignesEcrites(k).some(x => x.id === id)), l0.id);
+  await pg.selectOption("#rcCopie", kB); await att(250);
+  const n0 = await pg.evaluate(k => scFautes(k).length, kB);
+  await pg.click("#rcBandeOuvrir"); await att(200);
+  if (n0) { const avis = await pg.locator("#rcBandeAvis").textContent(); await pg.click("#rcBandeCommencer"); await att(150);
+    const apres = await pg.evaluate(k => ({ f: scFautes(k).length, anc: Object.keys(scCopie(k).marquesAnciennes || {}).length }), kB);
+    verif("recopie (1.4.1) : à l'entrée dans la bande, les " + n0 + " fautes d'avant sont annoncées avec la note, puis mises de côté (gardées, ne comptent plus)", avis.includes(String(n0)) && /Note avant/.test(avis) && apres.f === 0 && apres.anc === n0); }
+  const carte = await pg.locator("#rcBandeCarte").textContent(); await cap("C14-29-la-bande");
+  await pg.keyboard.press("Enter"); await att(200);
+  const oui = await pg.evaluate(k => { const F = scFautes(k); return { n: F.length, bonne: F[0] && F[0].bonne, cle: F[0] && F[0].bande && F[0].bande.cle, fin: document.querySelector("#rcBandeCarte").textContent }; }, kB);
+  verif("recopie (1.4.1) : la bande s'arrête sur la faute proposée ; Entrée la garde, avec sa bonne forme, et passe à la suite (" + carte.slice(0, 40) + " · " + oui.fin.slice(0, 50) + ")", /ajouté/.test(carte) && oui.n === 1 && oui.bonne === "ajouté" && !!oui.cle && /Bande finie/.test(oui.fin) && /note maintenant/.test(oui.fin));
+  await pg.keyboard.press("Backspace"); await att(120); await pg.keyboard.press("n"); await att(200);
+  const non = await pg.evaluate(k => { const x = rcArrets(k)[0]; return { n: scFautes(k).length, d: x.l.decisions && x.l.decisions[x.cle] }; }, kB);
+  verif("recopie (1.4.1) : Retour revient à l'arrêt ; N enlève la faute gardée et note le refus", non.n === 0 && non.d === "n");
+  await pg.keyboard.press("Escape"); await att(200);
+  verif("recopie (1.4.1) : Échap ferme la bande et rend la recopie", await pg.evaluate(() => !RC.bd && RC.ouvert && !document.querySelector("#rcEcran").classList.contains("rc-mode-bande")));
   await pg.setViewportSize({ width: 1536, height: 864 }); await pg.click("#rcFermer"); await att(180);
   verif("recopie : fermer rend les quatre passes, les anciennes corrections et leurs gestes", await pg.locator("#scanEcran").isVisible() && !(await pg.locator("#rcEcran").isVisible()) && await pg.locator(".sc-passe").count() === 4);
 }

@@ -1323,3 +1323,22 @@ MEMO
 
 31/10/2026 10:40
 MEMO
+
+## Tour 59 — 31/10/2026 10:45 → 31/10/2026 10:47
+
+**Paul :** promeus
+
+**Fait.** 1.4.0 copiée au sas (`SAUVEGARDES/redaction-1.4.0-RU-avant-1.4.1-2026-10-31.html`). Production : commit `9755a93`, blob `cfb34c5ad27f`, md5 `c0c7e2df186f9b587a084c00a1fc13be`, 603 803 o ; en ligne bit à bit à la 5e lecture. Docs de suivi : journal, registre, point de retour, où trouver quoi (`&v=1.4.1-RU`). 196 non commenté : acquis.
+
+**Claude :**
+
+À jouer : les tests ci-dessous · en cours : rien · ouvert : 199 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+198. La 1.4.1 est en ligne, vérifiée à l'octet près : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.1-RU. Recharge la page de l'app. 196 (F pour marquer une faute en mot par mot), que tu n'as pas commenté : acquis.
+
+199. Je code le mot par mot (⇧R) maintenant ?
+
+À tester : sur une copie dont tu as chargé le corrigé de l'IA : « ▶ La bande » ; si la copie a des fautes d'hier, lis l'annonce, Entrée ; à chaque arrêt, Entrée (faute) ou N (non) ; Retour revient ; à la fin, la note avant et maintenant ; Échap, puis « ← Les scans » : les fautes gardées sont sur la photo, avec leur bonne forme.
+
+31/10/2026 10:47
+MEMO

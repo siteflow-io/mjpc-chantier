@@ -880,3 +880,22 @@ MEMO
 
 31/10/2026 07:17
 MEMO
+
+## Tour 38 — 31/10/2026 07:22 → 31/10/2026 07:24
+
+**Paul :** Attends j'ai trouvé quelque chose: quand je remets les poignées alignées à gauche, après quand j'écris ça mange ce que j'écris. Je pense qu'est par rapport à la taille de police de ce que j'écris. D'où le fait que l'app mets ses poignées automatiques avec suffisamment de marge pour que ma recopie passe sans être mangée. Mesure et dis moi.
+
+**Fait.** Lu dans `recopie.js` / `recopie.css` : la saisie est en Georgia, 18 pour une feuille de 620 de large (la taille suit la feuille), le champ va d'une poignée à l'autre. Mesuré avec Gelasio (mêmes largeurs de lettres que Georgia), sur les recopies lues au site (lecture seule, hors du sas) : première copie recopiée, 41 lignes sur 2 pages, 55 caractères au plus, 73 % de la largeur au plus, aucune ligne mangée ; copie en cours, 11 lignes, 50 à 70 caractères, 70 caractères = 93 % de la largeur, 3 lignes mangées avec les poignées actuelles (100 à 102 %), place entre la marge rouge (vers 0,17) et le bord : environ 82 %.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 150 ; 148 ; 53 ; 45 ; 36.
+
+149. Tu as raison, c'est la taille de tes lettres. Mesuré sur tes recopies au site : sur ta première copie, 55 caractères par ligne au plus, ça passe partout. Sur celle que tu recopies maintenant, l'élève écrit serré, jusqu'à 70 caractères par ligne : à la taille actuelle, 70 caractères prennent 93 % de la largeur de la feuille, alors qu'entre la marge rouge et le bord il n'y a qu'environ 82 %. Trois de tes 11 lignes sont déjà mangées. Donc plus de marge aux poignées ne suffira pas : sur une copie serrée, même poignées à la marge et au bord, ça mange.
+
+150. Je propose : quand une ligne est pleine, ses lettres rapetissent seules juste assez pour tout montrer ; les poignées restent à la marge et au bord, rien n'est jamais mangé. Je l'ajoute à la 1.3.1 avant ta mise en ligne ?
+
+À tester : rien.
+
+31/10/2026 07:24
+MEMO

@@ -2200,3 +2200,35 @@ MEMO
 31/10/2026 23:13
 
 MEMO
+
+## Tour 95 — 31/10/2026 23:09 → 31/10/2026 23:20
+
+**Paul :** Type ne veut rien dire pour l'élève. Type d'erreur plutôt. 320. Ok mais attention : du concret et du ultra compréhensible par un élève de 3e. 321. Ça je dois la faire quand je fais ma recopie: à la fin d'une recopie je dois pouvoir surligner facilement la phrase qui m'a marqué ( pas touché, marqué). Si pas de phrase, pas de phrase ( coche pas de phrase ). Cette phase là marque la fin d'une recopie. D'ailleurs conflit possible à mesurer: si je viens retoucher une recopie après avoir validé l'erreur dans la bande, il faut que ce soit rétroactif bien sûr. Une modif change partout. 220. Attention, l'App doit pouvoir servir aussi à corriger des textes tapés. 324 ok mais préparer le terrain.  325. Pas compris.
+
+**Fait (23:13-23:20).** Codé sur `c14-poignees` (pas encore commité) : le mot par mot ⇧R dans la bande (F faute, Entrée et Espace le mot est correct, N sur un mot de l'IA, clic sur un mot du texte, faute oubliée par l'IA grise et sans type, reprise au même mot) et le refus d'une copie dont une ligne rendue ne ressemble plus à la ligne envoyée (seuil 0,6 mesuré, l'identité interne de la copie dans l'export, jamais le nom, le refus montré dans le flux). Banc : 125 vérifications passées, une vérification nouvelle à refaire (la copie de la maquette n'a que 11 mots), relancé. Mesuré au site, en lecture seule, dossier privé : 68 lignes de 4 copies ont des réponses de bande ; aucune ligne retapée après le corrigé de l'IA.
+
+**Claude :**
+
+À jouer : rien avant 5h30 · en cours : je code moi-même (329) ; le mot par mot ⇧R et le refus des lignes mélangées sont codés, au banc · ouvert : 336
+
+330. « Type » devient « type d'erreur » partout où l'élève lit. Les deux phrases deviennent : « Tes fautes : 3 soulignées sur ta copie, chacune dans la couleur de son type d'erreur. » et « Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées dans la couleur de leur type d'erreur. » ; « Faute 2 sur 3 · Grammaire » ne change pas. Avec ça, 319 est acquis.
+
+331. 320 : cette nuit, je rédige la grille en stickers au sas, chaque sticker un seul fait concret, que l'élève de 3e comprend du premier coup et retrouve sur sa copie. Tu valides ou tu changes par numéro.
+
+332. 321 : à la fin de la recopie d'une copie, une étape « La phrase qui m'a marqué » : tu la surlignes à la souris sur ta feuille recopiée, ou tu coches « Pas de phrase ». Cette étape ferme la recopie : le flux ne coche « recopiée » qu'après elle. La phrase passe en or sur la photo, dans le fichier de l'élève. Là où l'élève lit « La phrase qui m'a touché », il lira « La phrase qui m'a marqué ».
+
+333. 321, ta modif rétroactive : mesuré au site (lecture), aucune ligne n'a encore été retapée après le corrigé de l'IA ; 68 lignes de 4 copies ont déjà des réponses de bande. La règle que je code : une ligne retapée après la bande garde le corrigé de l'IA et tes réponses sur tous les mots qui n'ont pas changé ; la marque d'un mot qui a changé disparaît ; un mot nouveau que l'IA n'a pas vu devient un arrêt de la bande. Une modif change partout : la copie, la note, le flux, le fichier de l'élève.
+
+334. 220 : 53 se ferme, mais l'app devra aussi corriger des textes tapés. Au registre, pour plus tard ; rien de ce que je code cette nuit ne l'empêche.
+
+335. 324 : je prépare le terrain. Chaque faute garde, en plus de sa lettre, la notion précise que le moteur de la dictée lui trouve quand il la trouve. Le jour où on branche la taxonomie, on compte sans rien recorriger.
+
+336. 325, plus simplement. La variante : quand un sujet propose deux sujets au choix, l'ancienne app te demandait, à chaque copie, lequel l'élève avait pris. Je propose que l'IA le dise en lisant la copie, sans geste de ta part. L'alerte DNB : l'ancienne app affichait un avertissement quand l'orthographe d'une copie tombait sous le seuil du brevet. Je propose que ce soit une colonne du bilan de la classe, sans avertissement à chaque copie. Ok ?
+
+337. 318, non commenté, est acquis : la 1.4.12 passe en ligne à 5h30 si le banc est vert et si le vrai site, ouvert en lecture, est identique. Sinon elle t'attend au sas, et je te dis pourquoi.
+
+À tester : rien cette nuit.
+
+31/10/2026 23:20
+
+MEMO

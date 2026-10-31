@@ -1021,3 +1021,24 @@ MEMO
 
 31/10/2026 08:04
 MEMO
+
+## Tour 45 — 31/10/2026 08:08 → 31/10/2026 08:08
+
+**Paul :** sinon, plus simple: quand les copies sont "artisanales" comme celles-ci, tu me mets une marge rouge à gauche avec deux poignées, une en haut une en bas. Je la cale sur la marge rouge de la copie, et tous les points de début de ligne se recalent à sa droite. Tu vois? En revanche un élève peut ponctuellement écrire dans la marge, donc je peux quand même pour certaines lignes passer la poignée d'une ligne à gauche de la marge. ou alors ce que tu viens de faire suffit? Et sinon, je veux que l'ensemble des copies (y compris celles corrigées avant les différents correctifs) bénéficient des améliorations. C'est possible? ça évitera le mélange des versions et le crash final...
+
+**Fait.** Rien mesuré de neuf, rien écrit hors de ce transcript.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 167 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+165. Je vois, et ton idée est meilleure que ce que j'ai fait seul ; les deux vont ensemble. L'app pose elle-même ce trait de marge, avec ses deux poignées en haut et en bas, là où elle trouve la marge. Si elle se trompe ou ne la trouve pas, tu le cales une fois par page, et tous les débuts de ligne suivent, contre la marge. Une ligne que tu tires à la main, par exemple quand l'élève écrit dans la marge, ne suit plus le trait. Ce que j'ai fait seul ne suffit pas : sur tes photos entières, je ne sais pas si la marge sera trouvée à chaque fois ; ton trait règle tous les cas d'un geste.
+
+166. Toutes les copies : oui. Il n'y a qu'une seule forme d'enregistrement, et chaque version relit toutes les copies, anciennes comprises, avec ses améliorations : la bande, les numéros, les lignes qui rapetissent, Retour arrière, les poignées multiples valent partout. La seule chose que l'app ne déplace jamais seule, ce sont les poignées que tu as tirées à la main ; avec le trait de marge, tu les ramènes toutes d'un geste. Tes corrections (fautes, réponses, notes) ne bougent pas d'une version à l'autre : je le mesure sur tes vraies copies à chaque mise en ligne.
+
+167. Je propose d'ajouter le trait de marge à la 1.3.2 avant de la mettre en ligne. Ça te va ?
+
+À tester : rien.
+
+31/10/2026 08:08
+MEMO

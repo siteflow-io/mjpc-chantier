@@ -3,8 +3,20 @@ var RC = { ouvert: false, copie: null, page: null, ligne: null, documents: {}, a
 function rcCopieSource() { return ((state.copies[RC.copie] || {}).scan || {}).recopie || {}; }
 function rcListe(v) { return Array.isArray(v) ? v.slice() : Object.values(v || {}); }
 function rcBorne(v, a, b) { return Math.max(a, Math.min(b, Number(v) || 0)); }
+/* [C14 1.4.6] (Paul 15:18, page 2 de la copie sans trait rouge) : depuis que les pages défilent à la suite, la page d'une copie peut se préparer
+   avant que sa photo soit prête ; elle restait alors sans marge. Dès que la photo est là, la marge (et le bord droit) se trouvent, une fois. */
+function rcMargeTardive(pid, d) {
+  const im = SC.imgs[pid]; if (!d || d.marge || !im || !im.el.complete || !im.el.naturalWidth) return;
+  const cv = document.createElement("canvas"); cv.width = im.w; cv.height = im.h; cv.getContext("2d").drawImage(im.el, 0, 0);
+  const marge = rcMargeRouge(cv), bord = rcBordDroit(cv), auto = v => Math.abs(v * 1e4 - Math.round(v * 1e4)) < 1e-6;
+  RC.sansMarge = RC.sansMarge || {}; RC.sansMarge[pid] = !marge;
+  d.marge = marge ? { xh: rcBorne(marge(0), 0.01, 0.6), xb: rcBorne(marge(1), 0.01, 0.6) } : { xh: 0.15, xb: 0.15, absente: true };
+  d.ordre.forEach(id => { const l = d.lignes[id]; if (!l || l.recale) return;
+    if (marge && auto(l.x0)) l.x0 = rcBorne(marge((l.y0 + l.y1) / 2) - 0.008, 0, 0.97);
+    if (bord && auto(l.x1)) l.x1 = bord; });
+}
 function rcDocument(pid) {
-  if (RC.documents[pid]) return RC.documents[pid];
+  if (RC.documents[pid]) { const d = RC.documents[pid]; if (!d.marge) rcMargeTardive(pid, d); return d; }
   const ancien = (rcCopieSource().pages || {})[pid];
   let d;
   if (ancien && ancien.schema === 1) {
@@ -111,6 +123,7 @@ function rcInterface() {
     '<button id="rcBandeOuvrir" class="sc-btn" title="La bande : elle s’arrête à chaque faute proposée par le corrigé de l’IA. Entrée ou Espace : c’est une faute ; N : non. Échap : revenir à la recopie.">▶ La bande</button>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
+    '<div id="rcSep" class="rc-sep" title="Tirer à gauche ou à droite : la feuille recopiée et la ligne en grand s’agrandissent ou rétrécissent, la photo fait l’inverse. Double-clic : moitié-moitié."></div>',
     '<canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div>',
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>',
@@ -128,6 +141,7 @@ function rcInterface() {
   e.querySelector("#rcAjouter").onclick = rcAjouter;
   e.querySelector("#rcRetirer").onclick = rcRetirer;
   e.querySelector("#rcAnnuler").onclick = rcAnnuler;
+  rcSepBrancher(e);
   e.querySelector("#rcMoins").onclick = () => rcZoom(RC.zoom / 1.15);
   e.querySelector("#rcPlus").onclick = () => rcZoom(RC.zoom * 1.15);
   e.querySelector("#rcLargeur").onclick = () => rcZoom(1);
@@ -170,7 +184,7 @@ function rcBlocs() {
       svg.addEventListener("pointerdown", ev => { if (ev.target.closest && ev.target.closest("circle")) rcActiverPage(p.id); rcPoigneeDebut(ev); });
       svg.addEventListener("pointermove", rcPoigneeBouger); svg.addEventListener("pointerup", rcPoigneeFin); svg.addEventListener("pointercancel", rcPoigneeAnnuler);
       const im = b.querySelector(".rc-image");
-      im.onload = () => { if (RC.ouvert) { rcPourPage(p.id, rcMettreEnPage); if (p.id === RC.page) rcAgrandir(); } };
+      im.onload = () => { if (RC.ouvert) { rcMargeTardive(p.id, RC.documents[p.id]); rcPourPage(p.id, rcMettreEnPage); if (p.id === RC.page) rcAgrandir(); } };
       im.onerror = () => { b.querySelector(".rc-absente").hidden = false; };
       box.appendChild(b);
     });
@@ -352,10 +366,28 @@ function rcSelectionner(id, focus, aligner) {
   rcBookmark();
 }
 /* C14 (31/10, Paul 07:47) : la bande du haut, alignée sur la feuille en dessous (même échelle, même place) */
+/* [C14 1.4.6] la poignée entre la photo et la feuille (Paul 15:12) : la part de la photo, gardée dans ce navigateur */
+function rcSepAppliquer(frac) {
+  const e = RC.ui, ap = e && e.querySelector(".rc-apercu"); if (!ap) return; const W = ap.clientWidth - 28;
+  if (!frac) { e.style.removeProperty("--rc-cols-a"); e.style.removeProperty("--rc-cols-p"); RC.partage = null; return; }
+  const g = Math.round(rcBorne(frac, 0.2, 0.8) * (W - 18)); RC.partage = rcBorne(frac, 0.2, 0.8);
+  e.style.setProperty("--rc-cols-a", g + "px 10px minmax(0,1fr)"); e.style.setProperty("--rc-cols-p", g + "px minmax(0,1fr)");
+}
+function rcSepBrancher(e) {
+  const sep = e.querySelector("#rcSep"); if (!sep) return; let tire = false;
+  try { const f = parseFloat(localStorage.getItem("mjpc_rc_partage")); if (f > 0) setTimeout(() => { rcSepAppliquer(f); if (RC.ouvert) { rcMettreEnPage(); rcAgrandir(); } }, 0); } catch (x) {}
+  const bouger = ev => { const ap = e.querySelector(".rc-apercu").getBoundingClientRect(); rcSepAppliquer((ev.clientX - ap.left - 14 - 9) / (ap.width - 28 - 18)); rcMettreEnPage(); rcAgrandir(); };
+  sep.addEventListener("pointerdown", ev => { if (ev.button !== 0) return; ev.preventDefault(); tire = true; sep.setPointerCapture(ev.pointerId); sep.classList.add("on"); });
+  sep.addEventListener("pointermove", ev => { if (tire) bouger(ev); });
+  sep.addEventListener("pointerup", ev => { if (!tire) return; tire = false; sep.classList.remove("on"); bouger(ev); try { localStorage.setItem("mjpc_rc_partage", String(RC.partage || "")); } catch (x) {} rcSelectionner(RC.ligne, true, true); });
+  sep.addEventListener("dblclick", () => { rcSepAppliquer(null); try { localStorage.removeItem("mjpc_rc_partage"); } catch (x) {} rcMettreEnPage(); rcAgrandir(); rcSelectionner(RC.ligne, true, true); });
+}
 function rcAgrandir() {
   if (!RC.ouvert || !RC.ui) return;
   const p = SC.pages[RC.page], l = rcCourante(), im = p && SC.imgs[p.id], cv = RC.ui.querySelector("#rcAgrandie");
-  const w = Math.max(200, Math.round(cv.clientWidth || 500)), h = 76;
+  /* [C14 1.4.6] la ligne en grand suit la largeur de la feuille : plus la feuille est large, plus la bande est haute */
+  const w = Math.max(200, Math.round(cv.clientWidth || 500)), h = RC.hBande || 76;
+  if (cv.style.height !== h + "px") cv.style.height = h + "px";
   if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
   const x = cv.getContext("2d"); x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h); RC.bande = null;
   if (!l || !im || !im.el.complete || !im.el.naturalWidth) return;
@@ -364,6 +396,7 @@ function rcAgrandir() {
   for (let i = 1; i < ys.length; i++) if (ys[i] - ys[i - 1] > 0.005) ecarts.push(ys[i] - ys[i - 1]);
   const pas = ecarts.length ? ecarts.sort((a, b) => a - b)[ecarts.length >> 1] : (p.lignes && p.lignes.pas) || 0.03;
   const demi = Math.max(0.012, Math.min(0.035, pas * 0.55)) * im.h, k = fr.width / im.w, gauche = fr.left - cr.left, dh = 2 * demi * k, dy = (h - dh) / 2, N = 60;
+  const voulu = Math.max(76, Math.min(240, Math.ceil(dh + 12))); if (voulu !== h) { RC.hBande = voulu; return rcAgrandir(); }
   const yl = u => (l.y0 + (l.y1 - l.y0) * (u - l.x0) / ((l.x1 - l.x0) || 1)) * im.h;
   for (let i = 0; i < N; i++) { const u = (i + 0.5) / N, sx = i * im.w / N, sw = im.w / N + 1; x.drawImage(im.el, sx, yl(u) - demi, sw, 2 * demi, gauche + sx * k, dy, sw * k, dh); }
   RC.bande = { gauche, largeur: fr.width, hauteur: dh, pas: pas * im.h * k };
@@ -656,14 +689,26 @@ function rcEncre(pid, L, d) {
   if (w < 10 || h < 4) return (RC.encre[cle] = null);
   const cv = RC.cvEncre || (RC.cvEncre = document.createElement("canvas")); cv.width = w; cv.height = h; const c = cv.getContext("2d"); c.drawImage(im.el, x0, y0, w, h, 0, 0, w, h);
   const px = c.getImageData(0, 0, w, h).data, lum = []; for (let i = 0; i < w * h; i += 7) { const j = i * 4; lum.push(px[j] + px[j + 1] + px[j + 2]); } lum.sort((a, b) => a - b); const papier = lum[Math.floor(lum.length * 0.75)] || 600;
-  const col = new Array(w).fill(0), haut = new Array(w).fill(h), bas = new Array(w).fill(-1); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const j = (y * w + x) * 4, r = px[j], g = px[j + 1], b = px[j + 2]; const l = r + g + b; if ((b - r > 12 && l < papier * 0.8) || l < papier * 0.35) { if (y >= ya && y < yb) col[x]++; if (y < haut[x]) haut[x] = y; if (y > bas[x]) bas[x] = y; } }   // 1.4.3 : l'encre est bleue (ou très sombre) ; le quadrillage et les ombres, non
+  const col = new Array(w).fill(0), enc = new Uint8Array(w * h), parRang = new Array(h).fill(0); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const j = (y * w + x) * 4, r = px[j], g = px[j + 1], b = px[j + 2]; const l = r + g + b; if ((b - r > 12 && l < papier * 0.8) || l < papier * 0.35) { if (y >= ya && y < yb) col[x]++; enc[y * w + x] = 1; parRang[y]++; } }
+  for (let y = 0; y < h; y++) if (parRang[y] > 0.5 * w) enc.fill(0, y * w, (y + 1) * w);   // [C14 1.4.6] un rang d'encre sur presque toute la ligne est un trait du cahier : il ne relie rien   // 1.4.3 : l'encre est bleue (ou très sombre) ; le quadrillage et les ombres, non
   const seuil = Math.max(2, Math.round((yb - ya) * 0.05)), runs = []; for (let x = 0; x < w; x++) if (col[x] >= seuil) { const a = x; while (x < w && col[x] >= seuil) x++; if (x - a >= 2) runs.push([a, x]); }
   if (!runs.length) return (RC.encre[cle] = null);
   const r = [(x0 + runs[0][0]) / im.w, (x0 + runs[runs.length - 1][1]) / im.w];
   r.traits = runs.map(([a, b]) => [(x0 + a) / im.w, (x0 + b) / im.w]);
-  const plage = (u0, u1, f, depart) => { let v = depart; for (let x = Math.max(0, Math.floor(u0 * im.w) - x0); x < Math.min(w, Math.ceil(u1 * im.w) - x0); x++) if (col[x] >= seuil) v = f(v, x); return v; };
-  r.haut = (u0, u1) => { const v = plage(u0, u1, (m, x) => Math.min(m, haut[x]), h); return v < h ? (y0 + v) / im.h : null; };
-  r.bas = (u0, u1) => { const v = plage(u0, u1, (m, x) => Math.max(m, bas[x]), -1); return v >= 0 ? (y0 + v) / im.h : null; };
+  /* [C14 1.4.6] (Paul 15:12 : « il faut que l'app ignore les pieds de lettres de la ligne supérieure ») : le haut et le bas d'un mot se suivent
+     trait par trait depuis le corps de ses lettres ; les jambages de la ligne du dessus, qui ne le touchent pas, ne comptent plus ; jamais plus haut
+     qu'une hampe (0,62 interligne au-dessus de la ligne). Sans encre sous le mot visé : la hauteur du corps des lettres de la ligne. */
+  const vu = new Uint8Array(w * h), plafond = Math.max(0, Math.floor((Math.min(L.y0, L.y1) - 0.62 * pas) * im.h) - y0), etendue = (u0, u1) => {
+    const a = Math.max(0, Math.floor(u0 * im.w) - x0 - 2), b = Math.min(w, Math.ceil(u1 * im.w) - x0 + 2); if (b <= a) return null;
+    vu.fill(0); const pile = []; for (let y = ya; y < yb; y++) for (let x = a; x < b; x++) if (enc[y * w + x]) { vu[y * w + x] = 1; pile.push(y * w + x); }
+    if (!pile.length) return null; let hh = h, bb = -1;
+    while (pile.length) { const q = pile.pop(), y = (q / w) | 0, x = q - y * w; if (y < hh) hh = y; if (y > bb) bb = y;
+      for (let dy = -3; dy <= 3; dy++) for (let dx = -1; dx <= 1; dx++) { const ny = y + dy, nx = x + dx; if ((!dy && !dx) || ny < plafond || ny >= h || nx < a || nx >= b) continue; const v = ny * w + nx; if (enc[v] && !vu[v]) { vu[v] = 1; pile.push(v); } } }
+    return [hh, bb];
+  };
+  r.haut = (u0, u1) => { const v = etendue(u0, u1); return v ? (y0 + v[0]) / im.h : null; };
+  r.bas = (u0, u1) => { const v = etendue(u0, u1); return v ? (y0 + v[1]) / im.h : null; };
+  r.corps = [(y0 + ya) / im.h, (y0 + yb) / im.h];
   return (RC.encre[cle] = r);
 }
 function rcPlaceSeg(a) {
@@ -684,7 +729,7 @@ function rcPlaceSeg(a) {
   else { x0 = u(c0); x1 = Math.max(u(c1), x0 + (type.ponct ? 0.006 : 0.012)); }
   const ici = L.places && L.places[a.cle]; if (ici) { x0 = ici.x0; x1 = ici.x1; }
   const hh = e.haut && e.haut(x0 - (type.manque ? 0.015 : 0), x1 + (type.manque ? 0.015 : 0)), bb = e.bas && e.bas(x0 - (type.manque ? 0.015 : 0), x1 + (type.manque ? 0.015 : 0));
-  return { x0, x1, y0: hh != null ? hh - 0.003 : yv(x0) - 0.012, y1: bb != null ? bb + 0.003 : yv(x1) + 0.004, encre: e, type };
+  return { x0, x1, y0: hh != null ? hh - 0.003 : e.corps ? e.corps[0] : yv(x0) - 0.012, y1: bb != null ? bb + 0.003 : e.corps ? e.corps[1] : yv(x1) + 0.004, encre: e, type };
 }
 function rcReplacerBande(k) {
   const s = scCopie(k); let n = 0; rcArrets(k).forEach(a => { const id = a.l.marquesBande && a.l.marquesBande[a.cle], m = id && s.marques[id]; if (!m) return; const q = rcPlaceSeg(a);

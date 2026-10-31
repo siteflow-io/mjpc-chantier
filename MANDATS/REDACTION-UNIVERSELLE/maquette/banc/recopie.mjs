@@ -347,5 +347,36 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await cap("C14-32-un-arret-par-mot");
   verif("recopie (1.4.5) : « se plaint → nous plaignons » donne deux arrêts (" + ap5.arr.join(" ; ") + ") ; sur une copie d'avant où il était un seul arrêt dit « oui », il est coupé : chaque mot garde le « oui » (" + ap5.d.join(", ") + "), la marque unique devient " + ap5.marques.length + " marques (" + ap5.marques.join(", ") + "), les deux cadres restent dans celui que tu avais glissé ; fautes " + av5.fautes + " → " + ap5.fautes,
     trouve5 && !!av5 && ap5.arr.join("|") === "se→nous|plaint→plaignons" && ap5.d[0] === "o" && ap5.d[1] === "o" && ap5.d[2] === null && !ap5.ancienne && ap5.marques.length === 2 && ap5.dedans && ap5.fautes === av5.fautes + 1);
-  await pg.click("#rcBandeRetour"); await att(150); await pg.click("#rcFermer"); await att(180);
+  // 1.4.6 (Paul 15:12) : le cadre ignore les jambages de la ligne du dessus. La photo reçoit, au-dessus du mot visé, la queue d'un « p » de la ligne
+  // du dessus (qui descend jusqu'à 0,66 interligne au-dessus de la ligne) et, sous elle, séparée par un blanc, la hampe d'un « l » du mot.
+  const i6 = await pg.evaluate(id => RC.bd.A.findIndex(a => a.id === id && a.g.eleve === "plaint"), cible2); await pg.click('#rcBandeListe li[data-i="' + i6 + '"]'); await att(150);
+  const t6 = await pg.evaluate(async () => { const a = RC.bd.A[RC.bd.i], im = SC.imgs[a.pid], d = RC.documents[a.pid] || ((scCopie(a.k).recopie || {}).pages || {})[a.pid], pas = rcPasDoc(d), L = a.l, q0 = rcPlaceSeg(a);
+    const cv = document.createElement("canvas"); cv.width = im.w; cv.height = im.h; const c = cv.getContext("2d"); c.drawImage(im.el, 0, 0);
+    const xm = (q0.x0 + q0.x1) / 2 * im.w, base = Math.max(L.y0, L.y1) * im.h, P = pas * im.h; c.strokeStyle = "#1d3fa8"; c.lineWidth = Math.max(2, P * 0.06); c.lineCap = "round";
+    c.beginPath(); c.moveTo(xm - P * 0.1, base - P * 1.2); c.quadraticCurveTo(xm, base - P * 0.9, xm - P * 0.05, base - P * 0.52); c.stroke();   // la queue d'un « p » de la ligne du dessus, qui descend loin
+    c.beginPath(); c.arc(xm + P * 0.02, base - P * 0.16, P * 0.13, 0, 2 * Math.PI); c.stroke();   // un « o » du mot, sans hampe
+    const ancien = im.el, el = new Image(); await new Promise(r => { el.onload = r; el.src = cv.toDataURL("image/png"); }); im.el = el; RC.encre = {};
+    const q = rcPlaceSeg(a); im.el = ancien; RC.encre = {}; return { haut: (base - q.y0 * im.h) / P, queue: 0.52 }; });
+  verif("recopie (1.4.6) : la queue d'une lettre de la ligne du dessus descend jusqu'au-dessus du mot visé : le cadre s'arrête au haut des lettres du mot (" + t6.haut.toFixed(2) + " interligne au-dessus de la ligne), sous la queue (" + t6.queue + ")", t6.haut > 0.25 && t6.haut < t6.queue - 0.02);
+  await pg.click("#rcBandeRetour"); await att(150);
+  // 1.4.6 (Paul 15:12) : la poignée entre la photo et la feuille ; la ligne en grand grandit avec la feuille
+  const sepB = await pg.locator("#rcSep").boundingBox(), avS = await pg.evaluate(() => ({ f: document.querySelector("#rcFeuille").getBoundingClientRect().width, h: RC.bande ? RC.bande.hauteur : 0 }));
+  await pg.mouse.move(sepB.x + sepB.width / 2, sepB.y + sepB.height / 2); await pg.mouse.down(); await pg.mouse.move(sepB.x - 260, sepB.y + sepB.height / 2, { steps: 8 }); await pg.mouse.up(); await att(250);
+  const apS = await pg.evaluate(() => ({ f: document.querySelector("#rcFeuille").getBoundingClientRect().width, h: RC.bande ? RC.bande.hauteur : 0, garde: (() => { try { return localStorage.getItem("mjpc_rc_partage"); } catch (e) { return null; } })() }));
+  await cap("C14-33-poignee-laterale");
+  await pg.dblclick("#rcSep"); await att(200); const reS = await pg.evaluate(() => document.querySelector("#rcFeuille").getBoundingClientRect().width);
+  verif("recopie (1.4.6) : la poignée entre la photo et la feuille, tirée vers la gauche, élargit la feuille (" + Math.round(avS.f) + " → " + Math.round(apS.f) + " px) et l'écriture de la ligne en grand grandit avec elle (" + Math.round(avS.h) + " → " + Math.round(apS.h) + " px de haut) ; gardée dans ce navigateur ; double-clic : moitié-moitié (" + Math.round(reS) + " px)",
+    apS.f > avS.f + 150 && apS.h > avS.h * 1.2 && !!apS.garde && Math.abs(reS - avS.f) < 6);
+  await pg.click("#rcFermer"); await att(180);
+  // 1.4.6 (Paul 15:18) : la page 2 d'une copie, préparée avant que sa photo soit prête, trouve son trait rouge dès que la photo arrive
+  const k7 = await pg.evaluate(() => { for (const k of SC.copies) { const P = scPagesDe(k), r = ((scCopie(k).recopie || {}).pages) || {}; if (P.length >= 2 && !r[P[1].id]) return { k, i: SC.copies.indexOf(k), p2: P[1].id }; } return null; });
+  let t7 = { avant: null, apres: null };
+  if (k7) { await pg.click('[onclick="scAllerCopie(' + k7.i + ')"]'); await att(250);
+    await pg.evaluate(p2 => { window.__el7 = SC.imgs[p2].el; SC.imgs[p2].el = new Image(); }, k7.p2);   // la photo pas encore prête
+    await pg.click("#btnRecopier"); await att(400);
+    t7.avant = await pg.evaluate(p2 => !!(rcBloc(p2) && rcBloc(p2).querySelector(".rc-marge-trait")), k7.p2);
+    await pg.evaluate(p2 => { SC.imgs[p2].el = window.__el7; const img = rcBloc(p2).querySelector(".rc-image"), u = img.src; img.removeAttribute("src"); img.src = u; }, k7.p2); await att(500);   // la photo arrive
+    t7.apres = await pg.evaluate(p2 => !!(rcBloc(p2) && rcBloc(p2).querySelector(".rc-marge-trait")), k7.p2);
+    await cap("C14-34-marge-page-2"); await pg.click("#rcFermer"); await att(180); }
+  verif("recopie (1.4.6) : une page préparée avant que sa photo soit prête n'a pas de trait rouge (" + t7.avant + ") ; la photo arrivée, son trait rouge apparaît (" + t7.apres + ")", !!k7 && t7.avant === false && t7.apres === true);
 }

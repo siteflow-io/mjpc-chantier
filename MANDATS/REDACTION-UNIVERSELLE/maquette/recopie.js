@@ -540,8 +540,10 @@ function rcGuillemet(input) {
 /* 1.4.0 (C14, Paul 31/10 : décisions 182, 186, 187 ; consigne validée à 10:16) : l'export pour l'IA, son retour vérifié, les fautes proposées */
 // emprunté tel quel à correction_dictee.html (ligne 1290), seul le nom change — DISPOSITIF règle 27
 function rcTokenize(text){if(!text)return[];var t=[],re=/(\s+)|(['\u2019"\u00ab\u00bb\u201c\u201d])|([.,;:!?\u2026()\-\u2013\u2014]+)|([^\s.,;:!?\u2026\u00ab\u00bb\u201c\u201d()'\u2019"\-\u2013\u2014]+)/g,m;while((m=re.exec(text))!==null){if(!m[1])t.push(m[2]||m[3]||m[4])}return t}
-const RC_PAQUET_IA = 4;
-const RC_CONSIGNE_IA = "Tu reçois des rédactions d'élèves de 3e, recopiées ligne par ligne par leur professeur, fautes comprises. Pour chaque ligne, rends la même ligne corrigée : orthographe, accords, conjugaison, ponctuation, majuscules. Corrige mot pour mot : ne reformule pas, ne change pas l'ordre des mots, n'ajoute ni ne retire aucun mot, sauf si la grammaire l'exige (un mot manquant, un mot en trop). Ne touche pas au style ni au vocabulaire quand ils ne sont pas fautifs. Garde exactement les mêmes copies, pages et lignes, dans le même ordre ; une ligne vide reste vide ; un mot coupé en fin de ligne reste coupé au même endroit. Un mot entre crochets [comme ceci] a été barré par l'élève : laisse-le tel quel. Les guillemets restent « français ». Rends uniquement le fichier, avec la même structure, sans aucun commentaire.";
+const RC_PAQUET_IA = 8;   // [C14 1.4.10] (Paul 17:03 : « charger plus que 4 copies ») : le retour compact est deux fois plus court (mesuré : 4 779 → 2 341 signes par copie)
+/* [C14 1.4.10] (Paul 14:16 « l'IA fait le triage et c'est injecté au json » ; 17:18 « tout devait se faire en une fois, c'était ça le contrat ») :
+   un seul envoi, qui rend la correction et le type de chaque faute, la lettre entre accolades juste après le mot corrigé (C14 283, acquis) */
+const RC_CONSIGNE_IA = "Tu reçois des rédactions d'élèves de 3e, recopiées ligne par ligne par leur professeur, fautes comprises. Pour chaque ligne, rends la même ligne corrigée : orthographe, accords, conjugaison, ponctuation, majuscules. Corrige mot pour mot : ne reformule pas, ne change pas l'ordre des mots, n'ajoute ni ne retire aucun mot, sauf si la grammaire l'exige (un mot manquant, un mot en trop). Ne touche pas au style ni au vocabulaire quand ils ne sont pas fautifs. Garde exactement les mêmes copies, pages et lignes, dans le même ordre ; une ligne vide reste vide ; un mot coupé en fin de ligne reste coupé au même endroit. Un mot entre crochets [comme ceci] a été barré par l'élève : laisse-le tel quel. Les guillemets restent « français ». Dans chaque ligne corrigée, écris juste après chaque mot ou signe que tu as corrigé ou ajouté une lettre entre accolades, le type de la faute : {G} grammaire (accord, conjugaison, homophone grammatical), {L} lexique (l'orthographe du mot lui-même), {C} accent, majuscule ou trait d'union, {P} ponctuation, {E} élision (apostrophe), {M} mot manquant que tu ajoutes ; là où tu retires un mot en trop, écris {X} à sa place. Exemple : « Il sont allé a Paris » devient « Ils{G} sont allés{G} à{G} Paris ». Rends uniquement, sans aucun commentaire et sans recopier cette consigne, un JSON compact sur une seule ligne : {\"format\":\"mjpc-recopie-ia-3\",\"lignes\":{\"identifiant de la ligne\":\"la ligne corrigée, avec ses lettres\"}}, avec toutes les lignes reçues, dans le même ordre, même celles qui n'ont pas de faute.";
 function rcEcrite(l) { return l && !l.retiree && (l.texte || "").trim(); }
 function rcLignesEcrites(k) {
   const r = (((state.copies[k] || {}).scan || {}).recopie || {}).pages || {}, out = [];
@@ -550,18 +552,23 @@ function rcLignesEcrites(k) {
     rcListe(d.ordre).filter(id => rcEcrite(d.lignes[id])).sort((a, b) => h(a) - h(b)).forEach(id => out.push({ k, pid: p.id, page: j + 1, id, l: d.lignes[id] })); });
   return out;
 }
+function rcCopieACorriger(k) { return rcLignesEcrites(k).some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe); }
 function rcExportIA() {
   if (RC.page) rcGarder();
-  /* 1.4.2 (Paul 10:57, « il ne se passe rien ») : un retour d'IA trop long est coupé ; on exporte 4 copies à la fois, celles qui n'ont pas encore leur corrigé à jour */
-  const aFaire = SC.copies.filter(k => { const L = rcLignesEcrites(k); return L.length && L.some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe); });
-  if (!aFaire.length) { RC.ui.querySelector("#rcIAEtat").textContent = SC.copies.some(k => rcLignesEcrites(k).length) ? "Toutes tes copies recopiées ont leur corrigé." : "Aucune copie recopiée pour l’instant."; return; }
-  const copies = aFaire.slice(0, RC_PAQUET_IA);
-  const o = { consigne: RC_CONSIGNE_IA, format: "mjpc-recopie-ia-1", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = []; let n = 0;
-    L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push({ id: x.id, n: ++n, texte: x.l.texte }); });
+  /* 1.4.2 (Paul 10:57) : un retour d'IA trop long est coupé ; on exporte par paquets les copies qui n'ont pas encore leur corrigé à jour.
+     [C14 1.4.10] 8 copies (retour compact) ; chaque ligne garde le texte envoyé et l'heure (dette C14 296 : l'import refuse une ligne qui a changé depuis) ;
+     plus de bandeau après l'export (Paul 17:03) : le compteur d'en haut le dit. */
+  const aFaire = SC.copies.filter(k => rcLignesEcrites(k).length && rcCopieACorriger(k));
+  if (!aFaire.length) { rcEtatIA(); return; }
+  const copies = aFaire.slice(0, RC_PAQUET_IA), le = new Date().toISOString();
+  const o = { consigne: RC_CONSIGNE_IA, format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = []; let n = 0;
+    L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push({ id: x.id, n: ++n, texte: x.l.texte });
+      rcLigneMaj(k, x.pid, x.id, l => { l.envoiIA = { texte: l.texte, le }; }); });
     return { numero: i + 1, pages }; }) };
+  saveState();
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(o, null, 1)], { type: "application/json" }));
-  a.download = "recopies-pour-l-IA-" + new Date().toISOString().slice(0, 10) + ".json"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
-  rcEtatIA(); toast("Exporté : " + copies.length + " copie" + (copies.length > 1 ? "s" : "") + (aFaire.length > copies.length ? " ; encore " + (aFaire.length - copies.length) + " après celles-ci, une fois leur corrigé chargé" : "") + ".");
+  a.download = "recopies-pour-l-IA-" + le.slice(0, 10) + ".json"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  rcEtatIA();
 }
 function rcIAOuvrir() { if (RC.page) rcGarder(); RC.iaOuvert = true; const m = RC.ui.querySelector("#rcIA"); m.hidden = false; RC.ui.querySelector("#rcIAMessage").textContent = ""; RC.ui.querySelector("#rcIATexte").focus(); }
 function rcIAFermer() { RC.iaOuvert = false; RC.ui.querySelector("#rcIA").hidden = true; const q = RC.ui.querySelector("#rcIAEffacerQ"); if (q) q.hidden = true; }
@@ -570,7 +577,7 @@ function rcIAFermer() { RC.iaOuvert = false; RC.ui.querySelector("#rcIA").hidden
    (corrige, corrigeDe, corrigeLe, types, typesDe) et tout ce qui vient de la bande (décisions, cadres visés, marques posées par la bande, l'arrêt où
    on en était, le début de la bande). Ne touche jamais au texte recopié, aux lignes et à leurs places, aux lignes retirées, à la marge, ni aux marques
    d'avant mises de côté, ni aux autres marques. Export puis corbeille d'abord ; si la corbeille ne répond pas, rien n'est effacé. */
-const RC_CHAMPS_IA = ["corrige", "corrigeDe", "corrigeLe", "types", "typesDe"], RC_CHAMPS_BANDE = ["decisions", "marquesBande", "places"];
+const RC_CHAMPS_IA = ["corrige", "corrigeDe", "corrigeLe", "corrigeMarque", "types", "typesDe", "envoiIA"], RC_CHAMPS_BANDE = ["decisions", "marquesBande", "places"];
 function rcIANettoyage() {
   const r = { lignes: [], copies: new Set(), corriges: 0, decisions: 0, places: 0, marques: 0, data: {} };
   SC.copies.forEach(k => { const s = scCopie(k), rec = s.recopie || {}, o = {};
@@ -614,11 +621,33 @@ function rcIALire(txt) {
     if (chaine) { if (ech) ech = false; else if (c === "\\") ech = true; else if (c === '"') chaine = false; continue; }
     if (c === '"') { if (prof > 0) chaine = true; continue; }
     if (c === "{") { if (prof === 0) deb = i; prof++; } else if (c === "}" && prof > 0) { prof--; if (prof === 0) blocs.push(t.slice(deb, i + 1)); } }
-  if (!blocs.length) throw prof > 0 ? "Le retour de l’IA est coupé avant la fin : elle n’a pas tout rendu. Demande-lui la suite et colle le tout, ou exporte moins de copies." : "Je ne trouve pas de fichier dans ce que tu as collé.";
-  const copies = []; let lus = 0;
-  blocs.forEach(b => { let o; try { o = JSON.parse(b); } catch (e) { return; } if (o && o.copies) { lus++; rcListeIA(o.copies).forEach(c => copies.push(c)); } });
-  if (!lus) throw prof > 0 ? "Le retour de l’IA est coupé avant la fin : elle n’a pas tout rendu. Demande-lui la suite et colle le tout, ou exporte moins de copies." : "Le retour de l’IA n’a pas la forme du fichier envoyé (il manque la liste des copies, ou il n’est pas lisible).";
-  return { copies };
+  const r = { lignes: {}, coupe: prof > 0, doublons: 0, sansId: 0, repris: new Set() };
+  const poser = (id, v) => { if (r.lignes[id] !== undefined) r.doublons++; r.lignes[id] = v; };
+  blocs.forEach(b => { let o; try { o = JSON.parse(b); } catch (e) { return; } if (!o || typeof o !== "object") return;
+    if (o.copies) rcListeIA(o.copies).forEach(c => rcListeIA(c && c.pages).forEach(pg => rcListeIA(pg && pg.lignes).forEach(l => { if (!l || typeof l.id !== "string") { r.sansId++; return; } poser(l.id, String(l.texte == null ? "" : l.texte)); })));
+    if (o.lignes && typeof o.lignes === "object" && !Array.isArray(o.lignes)) Object.keys(o.lignes).forEach(id => poser(id, String(o.lignes[id] == null ? "" : o.lignes[id]))); });
+  /* [C14 1.4.10] un retour coupé : ses paires « identifiant : ligne » complètes sont gardées ; seules les copies entières se chargeront */
+  if (r.coupe && deb >= 0) { const queue = t.slice(deb), re = /"([^"\\]+)"\s*:\s*"((?:[^"\\]|\\.)*)"/g; let m;
+    while ((m = re.exec(queue))) { if (/^(format|consigne|id|texte|page)$/.test(m[1])) continue; let v; try { v = JSON.parse('"' + m[2] + '"'); } catch (e) { continue; } if (r.lignes[m[1]] === undefined) { r.lignes[m[1]] = v; r.repris.add(m[1]); } } }
+  if (!blocs.length && !r.repris.size) throw r.coupe ? "Le retour de l’IA est coupé avant la fin de la première copie : demande-lui de tout rendre, ou exporte à nouveau." : "Je ne trouve pas de fichier dans ce que tu as collé.";
+  return r;
+}
+/* [C14 1.4.10] la ligne corrigée, avec ses lettres : le texte sans les lettres, et la lettre de chaque arrêt (celle qui suit son mot corrigé ;
+   {X} à la place d'un mot retiré) ; un arrêt sans lettre garde le type du moteur */
+function rcLettres(brut, eleve) {
+  const s = String(brut == null ? "" : brut), L = [], re = /\{([GLCPEMXIA])\}/gi; let net = "", dernier = 0, m;
+  while ((m = re.exec(s))) { net += s.slice(dernier, m.index); dernier = m.index + m[0].length; const t = m[1].toUpperCase();
+    if (t === "X" && (!net.length || /[ \u00a0]$/.test(net)) && /^[ \u00a0]/.test(s.slice(dernier))) dernier++;   // « très {X} grand » : un seul blanc reste
+    L.push({ pos: net.length, t }); }
+  net += s.slice(dernier);
+  if (!L.length) return { texte: s, types: null };
+  const P = rcPosMots(net), avant = pos => { let j = -1; P.forEach((q, i) => { if (q[1] <= pos && !net.slice(q[1], pos).trim()) j = i; }); return j; }, trou = pos => P.filter(q => q[1] <= pos).length;
+  const types = {};
+  rcEcarts(eleve, net).segs.forEach(g => { let t = null;
+    if (g.a2 > g.de2) { const f = L.find(x => x.t !== "X" && (() => { const j = avant(x.pos); return j >= g.de2 && j < g.a2; })()); if (f) t = f.t; }
+    else if (L.some(x => x.t === "X" && trou(x.pos) === g.de2)) t = "X";
+    if (t && RC_TYPES[t]) types[rcCle(g)] = t; });
+  return { texte: net, types: Object.keys(types).length ? types : null };
 }
 function rcIACharger(txt) {
   const msg = RC.ui.querySelector("#rcIAMessage"); msg.textContent = "Vérification…"; msg.className = "rc-ia-msg";
@@ -629,21 +658,31 @@ function rcIAChargerSuite(txt) {
   const msg = RC.ui.querySelector("#rcIAMessage"); let o;
   try { o = rcIALire(txt); } catch (e) { msg.textContent = "Rien n’a changé. " + e; return false; }
   const ici = {}; SC.copies.forEach(k => rcLignesEcrites(k).forEach(x => { ici[x.id] = x; }));
-  const recu = {}, erreurs = []; let doublons = 0;
-  rcListeIA(o.copies).forEach(c => rcListeIA(c && c.pages).forEach(pg => rcListeIA(pg && pg.lignes).forEach(l => { if (!l || typeof l.id !== "string") { erreurs.push("des lignes sans leur identifiant (l’IA les a enlevés : redemande-lui de garder chaque « id »)"); return; }
-    if (recu[l.id]) doublons++; recu[l.id] = { texte: String(l.texte == null ? "" : l.texte), numero: c.numero, n: l.n }; })));
-  Object.keys(recu).forEach(id => { if (!ici[id]) erreurs.push("la ligne " + recu[id].n + " de la copie n° " + recu[id].numero + " n’existe pas, ou n’est plus écrite, dans tes recopies"); });
-  const copiesRecues = new Set(Object.keys(recu).filter(id => ici[id]).map(id => ici[id].k));
-  copiesRecues.forEach(k => { const manque = rcLignesEcrites(k).filter(x => !recu[x.id]).length; if (manque) erreurs.push(manque + " ligne" + (manque > 1 ? "s" : "") + " de « " + nomEleveDe(k) + " » manque" + (manque > 1 ? "nt" : "") + " dans le retour (écrite" + (manque > 1 ? "s" : "") + " après l’export ? refais l’export)"); });
-  if (doublons) erreurs.push(doublons + " ligne" + (doublons > 1 ? "s" : "") + " en double dans le retour");
-  if (!Object.keys(recu).length) erreurs.push("aucune ligne dans le retour");
-  if (erreurs.length) { msg.textContent = "Rien n’a changé : " + [...new Set(erreurs)].slice(0, 4).join(" ; ") + (erreurs.length > 4 ? " ; et " + (erreurs.length - 4) + " autre(s)." : "."); return false; }
-  const quand = new Date().toISOString(); let fautes = 0, lignes = 0;
-  Object.keys(recu).forEach(id => { const x = ici[id], pgs = (scCopie(x.k).recopie || {}).pages || {}, src = pgs[x.pid] && pgs[x.pid].lignes[id];
-    [src, RC.copie === x.k && RC.documents[x.pid] && RC.documents[x.pid].lignes[id]].forEach(l => { if (l) { l.corrige = recu[id].texte; l.corrigeDe = l.texte; l.corrigeLe = quand; } });
-    fautes += rcEcarts(x.l.texte, recu[id].texte).fautes; lignes++; });
-  saveState(); rcEtatIA();
-  msg.textContent = "Chargé : " + copiesRecues.size + " copie" + (copiesRecues.size > 1 ? "s" : "") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA.";
+  const erreurs = [], recu = {};
+  if (o.sansId) erreurs.push("des lignes sans leur identifiant (l’IA les a enlevés : redemande-lui de garder chaque « id »)");
+  Object.keys(o.lignes).forEach(id => { if (ici[id]) recu[id] = o.lignes[id]; else if (!o.repris.has(id)) erreurs.push("une ligne du retour n’existe pas, ou n’est plus écrite, dans tes recopies"); });
+  if (o.doublons) erreurs.push(o.doublons + " ligne" + (o.doublons > 1 ? "s" : "") + " en double dans le retour");
+  if (erreurs.length) { msg.textContent = "Rien n’a changé : " + [...new Set(erreurs)].slice(0, 4).join(" ; ") + "."; return false; }
+  /* [C14 1.4.10] (Paul 17:09, « ok » à 273) : une copie se charge si toutes ses lignes écrites sont dans le retour, et si aucune n'a changé depuis l'envoi
+     (dette C14 296) ; sinon elle attend le prochain export. Une ligne d'une autre copie ne s'y mêle jamais : chaque ligne a son identité. */
+  const pc = {}; Object.keys(recu).forEach(id => { (pc[ici[id].k] = pc[ici[id].k] || []).push(id); });
+  const ok = [], coupees = [], changees = [];
+  Object.keys(pc).forEach(k => { const L = rcLignesEcrites(k);
+    if (!L.every(x => recu[x.id] !== undefined)) coupees.push(k); else if (L.some(x => x.l.envoiIA && x.l.envoiIA.texte !== x.l.texte)) changees.push(k); else ok.push(k); });
+  if (!ok.length) { msg.textContent = "Rien n’a changé : " + (changees.length ? "une ligne de chaque copie du retour a changé depuis l’envoi à l’IA : exporte à nouveau." : o.coupe ? "le retour de l’IA est coupé avant la fin de la première copie : demande-lui de tout rendre, ou exporte à nouveau." : "il manque des lignes à chaque copie du retour (écrites après l’export ? refais l’export).") ; return false; }
+  const quand = new Date().toISOString(); let fautes = 0, lignes = 0, typees = 0, sansLettre = 0;
+  ok.forEach(k => { const s = scCopie(k); rcLignesEcrites(k).forEach(x => { const id = x.id, r = rcLettres(recu[id], x.l.texte), A = rcEcarts(x.l.texte, r.texte).segs;
+    rcLigneMaj(k, x.pid, id, l => { l.corrige = r.texte; l.corrigeDe = l.texte; l.corrigeLe = quand; if (r.texte !== recu[id]) l.corrigeMarque = recu[id]; else delete l.corrigeMarque;
+      if (r.types) { l.types = r.types; l.typesDe = r.texte; } else { delete l.types; delete l.typesDe; } });
+    A.forEach(g => { if (r.types && r.types[rcCle(g)]) typees++; else sansLettre++; });
+    Object.keys(x.l.marquesBande || {}).forEach(c => { const m = s.marques[x.l.marquesBande[c]]; if (m && m.bande && r.types && r.types[c]) m.bande.code = r.types[c]; });
+    fautes += A.length; lignes++; }); });
+  saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre();
+  const reste = coupees.length + changees.length, pl = (v, m) => v + " " + m + (v > 1 ? "s" : "");
+  msg.textContent = "Chargé : " + pl(ok.length, "copie") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA" + (fautes ? ", dont " + typees + " avec leur type" + (sansLettre ? " (" + sansLettre + " sans lettre : le type du moteur)" : "") : "") + "."
+    + (coupees.length ? " " + pl(coupees.length, "copie") + (o.coupe ? " coupée" + (coupees.length > 1 ? "s" : "") : " incomplète" + (coupees.length > 1 ? "s" : "")) + " : au prochain export." : "")
+    + (changees.length ? " " + pl(changees.length, "copie") + " dont une ligne a changé depuis l’envoi : au prochain export." : "")
+    + (o.coupe && !coupees.length ? " Le retour de l’IA était coupé : les copies qui manquent repartent au prochain export." : "");
   return true;
 }
 /* les fautes proposées d'une ligne : les mots qui diffèrent, alignés par la plus longue sous-suite commune */
@@ -704,7 +743,7 @@ function rcSeparerAnciens(k) {
       if (place) { avecMot.forEach(u => { const w = (place.x1 - place.x0) * u.eleve.length / tot, c = rcCle(u); rcLigneMaj(k, x.pid, x.id, L => { L.places = Object.assign({}, L.places, { [c]: { x0: cur, x1: cur + w } }); }); cur += w; }); }
       if (ancienne) { delete s.marques[mk];
         subs.forEach(u => { const c = rcCle(u), a = { k, pid: x.pid, id: x.id, l, g: u, cle: c }, q = rcPlaceSeg(a);
-          const m = { page: x.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: u.corrige || null, bande: { ligne: x.id, cle: c, eleve: u.eleve, corrige: u.corrige, type: q.type.nom, code: rcCodeFaute(u) } };
+          const m = { page: x.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: u.corrige || null, bande: { ligne: x.id, cle: c, eleve: u.eleve, corrige: u.corrige, type: q.type.nom, code: (l.types && l.typesDe === l.corrige && l.types[c]) || rcCodeFaute(u) } };
           m.id = scId("marque"); m.eleve = k; m.creeLe = m.modifieLe = new Date().toISOString(); s.marques[m.id] = m;
           rcLigneMaj(k, x.pid, x.id, L => { L.marquesBande = Object.assign({}, L.marquesBande, { [c]: m.id }); }); }); }
       n++; });
@@ -716,7 +755,7 @@ function rcSeparerAnciens(k) {
    nouveau compteur ») : le même compteur, plus visible, avec le compte de toute la classe, compté comme l'export choisit les copies (une copie
    recopiée dont une ligne n'a pas de corrigé, ou a été retapée depuis) ; puis, comme avant, les fautes proposées sur cette copie */
 function rcCompteIA() {
-  const rec = SC.copies.filter(k => rcLignesEcrites(k).length), aFaire = rec.filter(k => rcLignesEcrites(k).some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe));
+  const rec = SC.copies.filter(k => rcLignesEcrites(k).length), aFaire = rec.filter(rcCopieACorriger);
   return { rec: rec.length, ok: rec.length - aFaire.length, aFaire: aFaire.length, envois: Math.ceil(aFaire.length / RC_PAQUET_IA) };
 }
 function rcEtatIA() {
@@ -821,6 +860,9 @@ function rcCodeFaute(g) {
   return paires.length && paires.every(p => reclassableEnC(p[0], p[1])) ? "C" : "L";
 }
 function rcStyleFaute(g) { return RC_TYPES[rcCodeFaute(g)]; }
+/* [C14 1.4.10] le type donné par l'IA pour cet arrêt, s'il est là et à jour ; sinon le moteur de la dictée */
+function rcCodeArret(a) { const l = a && a.l, t = l && l.types && l.typesDe === l.corrige && l.types[a.cle]; return RC_TYPES[t] ? t : rcCodeFaute(a.g); }
+function rcStyleArret(a) { return RC_TYPES[rcCodeArret(a)]; }
 function rcPosMots(t) { const T = rcTokenize(t || ""), P = []; let i = 0; T.forEach(w => { const j = t.indexOf(w, i); P.push([j, j + w.length]); i = j + w.length; }); return P; }
 function rcArrets(k) {
   const A = []; rcLignesEcrites(k).forEach((x, i) => { const l = x.l; if (typeof l.corrige !== "string" || l.texte !== l.corrigeDe) return;
@@ -863,7 +905,7 @@ function rcBandeDecider(v) {
   const B = RC.bd, a = B.A[B.i]; if (!a) return; const s = scCopie(B.k), deja = a.l.marquesBande && a.l.marquesBande[a.cle];
   if (v === "o" && !(deja && s.marques[deja])) {
     const q = rcPlaceSeg(a);
-    const m = { page: a.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: a.g.corrige || null, bande: { ligne: a.id, cle: a.cle, eleve: a.g.eleve, corrige: a.g.corrige, type: q.type.nom, code: rcCodeFaute(a.g) } };
+    const m = { page: a.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: a.g.corrige || null, bande: { ligne: a.id, cle: a.cle, eleve: a.g.eleve, corrige: a.g.corrige, type: q.type.nom, code: rcCodeArret(a) } };
     scPoser(m); rcLigneMaj(B.k, a.pid, a.id, l => { l.marquesBande = Object.assign({}, l.marquesBande, { [a.cle]: m.id }); });
   }
   if (v === "n" && deja && s.marques[deja]) scEffacer(deja);
@@ -873,18 +915,18 @@ function rcBandeDecider(v) {
 function rcBandeRendre() {
   const B = RC.bd, e = RC.ui; if (!B) return; const a = B.A[B.i], s = scCopie(B.k); rcBandeMemoriser();
   const liste = e.querySelector("#rcBandeListe");
-  liste.innerHTML = B.A.map((x, i) => { const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (i === B.i ? "on" : "") + '" data-i="' + i + '" style="border-left-color:' + rcStyleFaute(x.g).couleur + (i === B.i ? ";background:" + rcStyleFaute(x.g).fond : "") + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
+  liste.innerHTML = B.A.map((x, i) => { const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (i === B.i ? "on" : "") + '" data-i="' + i + '" style="border-left-color:' + rcStyleArret(x).couleur + (i === B.i ? ";background:" + rcStyleArret(x).fond : "") + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
   liste.querySelectorAll("li").forEach(li => li.onclick = () => { B.i = +li.dataset.i; rcBandeRendre(); });
   const on = liste.querySelector("li.on"); if (on) on.scrollIntoView({ block: "nearest" });
   const ctx = e.querySelector("#rcBandeContexte"), carte = e.querySelector("#rcBandeCarte"), touches = e.querySelector("#rcBandeTouches");
-  carte.style.borderColor = a && !B.attente ? rcStyleFaute(a.g).couleur : "";
+  carte.style.borderColor = a && !B.attente ? rcStyleArret(a).couleur : "";
   if (B.attente) { carte.innerHTML = ""; ctx.innerHTML = ""; touches.innerHTML = ""; rcBandePhoto(null); return; }
   if (!a) {
     const faites = B.A.filter(x => x.l.decisions && x.l.decisions[x.cle] === "o").length;
     carte.innerHTML = '<div class="rc-bande-mot">Bande finie</div><div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + B.A.length + " arrêts · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k)) + "</div>";
     ctx.innerHTML = ""; touches.innerHTML = "<span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : remettre une faute</span><span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : ""); rcBandePhoto(null); return;
   }
-  const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle], T = rcStyleFaute(a.g), st = ' style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";box-shadow:inset 0 -2px 0 " + T.couleur + '"';
+  const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle], T = rcStyleArret(a), st = ' style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";box-shadow:inset 0 -2px 0 " + T.couleur + '"';
   let h = "", c = 0; P.forEach((p, i) => { h += escapeHtml(a.l.texte.slice(c, p[0])); const w = escapeHtml(a.l.texte.slice(p[0], p[1])); h += i >= a.g.de && i < a.g.a ? "<mark" + st + ">" + w + "</mark>" : '<span class="rc-mot" data-m="' + i + '">' + w + "</span>"; if (a.g.a === a.g.de && i === a.g.de - 1) h += ' <mark class="rc-manque"' + st + ">∧</mark>"; c = p[1]; });
   h += escapeHtml(a.l.texte.slice(c)); if (a.g.a === a.g.de && a.g.de === 0) h = '<mark class="rc-manque"' + st + ">∧</mark> " + h;
   ctx.innerHTML = '<span class="rc-bande-n">ligne ' + a.n + "</span> " + h;
@@ -899,7 +941,7 @@ function rcBandePhoto(a) {
   const marge = 0.022, sx = Math.max(0, L.x0 - 0.01) * im.w, sy = Math.max(0, Math.min(L.y0, L.y1) - marge) * im.h, sw = Math.min(im.w - sx, (L.x1 - L.x0 + 0.02) * im.w), sh = Math.min(im.h - sy, (Math.abs(L.y1 - L.y0) + marge * 1.5) * im.h);
   const k = Math.min(w / sw, h / sh), dx = (w - sw * k) / 2, dy = (h - sh * k) / 2; x.drawImage(im.el, sx, sy, sw, sh, dx, dy, sw * k, sh * k);
   const q = rcPlaceSeg(a), X = u => dx + (u * im.w - sx) * k, Y = v => dy + (v * im.h - sy) * k, a0 = X(q.x0), a1 = Math.max(X(q.x1), a0 + 6), b0 = Math.max(2, Y(q.y0)), b1 = Math.min(h - 2, Math.max(Y(q.y1), b0 + 10));
-  const cd = rcCodeFaute(a.g), T = RC_TYPES[cd];
+  const cd = rcCodeArret(a), T = RC_TYPES[cd];
   x.fillStyle = rcRgba(T.couleur, .22); x.strokeStyle = T.couleur; x.lineWidth = 2; x.fillRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6); x.strokeRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6);
   if (q.type.manque) { const m = (a0 + a1) / 2; x.strokeStyle = T.couleur; x.lineWidth = 3; x.beginPath(); x.moveTo(m - 9, b1 + 1); x.lineTo(m, b0 + 4); x.lineTo(m + 9, b1 + 1); x.stroke(); }
   RC.bd.boite = { a0: a0 - 6, a1: a1 + 6, par: 1 / (k * im.w), q, code: cd, bord: a0 - 3, ym: (b0 + b1) / 2 };

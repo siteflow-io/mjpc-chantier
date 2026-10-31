@@ -216,10 +216,12 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   const noms = await pg.evaluate(() => ({ consigne: RC_CONSIGNE_IA, noms: state.classe.slice(), cles: state.classe.map(n => eleveId(n)) }));
   const nbL = ex.copies.reduce((a, c) => a + c.pages.reduce((b, q) => b + q.lignes.length, 0), 0);
   verif("recopie (1.4.0) : « Exporter pour l'IA » donne la consigne validée et les copies numérotées, sans aucun nom d'élève (" + ex.copies.length + " copies, " + nbL + " lignes)", ex.consigne === noms.consigne && ex.copies.length >= 1 && nbL > 0 && ex.copies.every((c, i) => c.numero === i + 1) && !noms.noms.some(n => brut.includes(n)) && !noms.cles.some(k => brut.includes(k)));
+  const env = await pg.evaluate(ids => ids.every(id => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) return !!x.l.envoiIA && x.l.envoiIA.texte === x.l.texte; } return false; }), ex.copies.flatMap(c => c.pages.flatMap(q => q.lignes.map(l => l.id))));
+  verif("recopie (1.4.10) : l'export demande la correction et le type de chaque faute dans le même envoi (lettres entre accolades, retour compact « " + ex.format + " »), 8 copies au plus ; chaque ligne garde le texte envoyé", ex.format === "mjpc-recopie-ia-3" && /\{G\} grammaire/.test(ex.consigne) && /\{X\}/.test(ex.consigne) && ex.copies.length <= 8 && env);
   const faux = JSON.parse(brut); faux.copies[0].pages[0].lignes.pop();
   await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(faux)); await pg.click("#rcIAValider"); await att(150);
-  const refus = await pg.locator("#rcIAMessage").textContent(), rien = await pg.evaluate(() => SC.copies.every(k => rcLignesEcrites(k).every(x => x.l.corrige === undefined)));
-  verif("recopie (1.4.0) : un retour où il manque une ligne est refusé, avec sa raison, et rien ne change (" + refus.slice(0, 90) + ")", /^Rien n’a changé/.test(refus) && /manque/.test(refus) && rien);
+  const refus = await pg.locator("#rcIAMessage").textContent(), rien = await pg.evaluate(ids => ids.every(id => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) return x.l.corrige === undefined; } return true; }), faux.copies[0].pages.flatMap(q => q.lignes.map(l => l.id)));
+  verif("recopie (1.4.10) : un retour où il manque une ligne : cette copie-là ne change pas, le message le dit ; les copies entières se chargent (" + refus.slice(0, 120) + ")", (/^Rien n’a changé/.test(refus) && /manque/.test(refus) || /incomplète/.test(refus)) && rien);
   await pg.locator("#rcIATexte").fill(brut.slice(0, Math.floor(brut.length / 2))); await pg.click("#rcIAValider"); await att(200);
   const coupe = await pg.locator("#rcIAMessage").textContent(), vis = await pg.evaluate(() => { const r = document.querySelector("#rcIAMessage").getBoundingClientRect(); return r.height > 10 && r.bottom <= innerHeight; });
   verif("recopie (1.4.2) : un retour de l'IA coupé avant la fin le dit, en clair et bien visible (" + coupe.slice(0, 70) + ")", /coupé/.test(coupe) && vis);
@@ -238,9 +240,28 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie (1.4.8) : le compteur d'en haut (le même, pas un nouveau) donne le compte de toute la classe : « " + cpt.t + " » (" + cpt.rec + " copies recopiées, " + cpt.aFaire + " à exporter) ; le bouton reste « " + cpt.b.trim() + " »",
     cpt.c.rec === cpt.rec && cpt.c.aFaire === cpt.aFaire && (cpt.aFaire ? cpt.t.includes(cpt.aFaire + " à exporter") && cpt.t.includes((cpt.rec - cpt.aFaire) + " copie") : /Toutes tes copies recopiées/.test(cpt.t)) && !/\(\d+\)/.test(cpt.b));
   await pg.click("#rcIAFermer"); await pg.click("#rcExportIA"); await att(150); const tout = await pg.locator("#rcIAEtat").textContent(); await pg.click("#rcImportIA"); await att(100);
-  verif("recopie (1.4.2) : l'export ne reprend que les copies sans corrigé à jour, 4 au plus ; quand tout est fait, il le dit (" + tout + ")", /Toutes tes copies recopiées ont leur corrigé/.test(tout) && ex.copies.length <= 4);
+  verif("recopie (1.4.2) : l'export ne reprend que les copies sans corrigé à jour, 8 au plus ; quand tout est fait, il le dit (" + tout + ")", /Toutes tes copies recopiées ont leur corrigé/.test(tout) && ex.copies.length <= 8);
   await att(1500); const auSite = await pg.evaluate(t => { let s = ""; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (/hub/.test(k)) s += localStorage.getItem(k); } return s.includes(JSON.stringify(t).slice(1, -1)) && s.includes('"corrigeLe"'); }, l0.texte);
   verif("recopie (1.4.0) : le corrigé chargé est enregistré au site (faux hub), pas seulement à l'écran", auSite);
+  // 1.4.10 (Paul 17:18 : « tout devait se faire en une fois ») : le retour compact, la correction et ses lettres ; coupé : les copies entières se chargent ;
+  // une ligne changée depuis l'envoi : sa copie attend le prochain export
+  const lignesEx = c => c.pages.flatMap(q => q.lignes);
+  const corrigeLettre = t => { const m = t.match(/^(\S*?)([A-Za-zÀ-ÿ]{3,})/); if (!m) return t + " ok{M}"; const w = m[2], w2 = (w[0] === w[0].toUpperCase() ? w[0].toLowerCase() : w[0].toUpperCase()) + w.slice(1); return t.replace(w, w2 + "{L}"); };   // une majuscule changée, que l'IA dit « Lexique »
+  const comp = {}; ex.copies.forEach(c => lignesEx(c).forEach((l, j) => { comp[l.id] = j === 0 ? corrigeLettre(l.texte) : l.texte; }));
+  const txt13 = JSON.stringify({ format: "mjpc-recopie-ia-3", lignes: comp }), dern13 = lignesEx(ex.copies[ex.copies.length - 1]).map(l => l.id), coupe13 = txt13.indexOf('"' + dern13[0] + '"') + dern13[0].length + 8;
+  if (!(await pg.locator("#rcIA").isVisible())) { await pg.click("#rcImportIA"); await att(100); } await pg.locator("#rcIATexte").fill(txt13.slice(0, coupe13)); await pg.click("#rcIAValider"); await att(250);
+  const m13 = await pg.locator("#rcIAMessage").textContent();
+  const r13 = await pg.evaluate(cs => cs.map(c => { const id = c[0]; for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) { const A = rcArrets(k).filter(a => a.id === id); return { charge: !!x.l.corrigeMarque, net: !/[{}]/.test(x.l.corrige || "{"), types: A.map(a => rcCodeArret(a) + "/" + rcCodeFaute(a.g)).join(" ") }; } } return null; }), ex.copies.map(c => lignesEx(c).map(l => l.id)));
+  verif("recopie (1.4.10) : un retour compact, la correction avec ses lettres, coupé dans la dernière copie : les " + (ex.copies.length - 1) + " copies entières se chargent, sans accolades dans le corrigé, et chaque faute prend la lettre de l'IA (« " + (r13[0] || {}).types + " », IA/moteur) ; la coupée attend (« " + m13.slice(0, 120) + " »)",
+    ex.copies.length < 2 || (r13.slice(0, -1).every((r, i) => { const l0 = comp[lignesEx(ex.copies[i])[0].id], att = /\{L\}/.test(l0) ? "L" : "M"; return r && (r.charge || att === "M") && r.net && r.types.startsWith(att + "/"); }) && r13[0].types === "L/C" && r13[r13.length - 1] && !r13[r13.length - 1].charge && /coupé/.test(m13) && /avec leur type/.test(m13)));
+  const ici13 = await pg.evaluate(ids => { const k = RC.copie, x = rcLignesEcrites(k).find(y => ids.includes(y.id) && y.pid === RC.page); return x ? { id: x.id, texte: x.l.texte } : null; }, Object.keys(comp));
+  if (ici13) { await pg.click("#rcIAFermer"); await att(100); const champ13 = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + ici13.id + '"]'); await champ13.scrollIntoViewIfNeeded(); await champ13.fill(ici13.texte + " encore"); await att(300);
+    await pg.click("#rcImportIA"); await att(100); await pg.locator("#rcIATexte").fill(txt13); await pg.click("#rcIAValider"); await att(250); }
+  const m14 = await pg.locator("#rcIAMessage").textContent(), r14 = ici13 ? await pg.evaluate(id => { const x = rcLignesEcrites(RC.copie).find(y => y.id === id); return !(x.l.corrigeMarque || "").includes("{L}") || x.l.corrigeDe !== x.l.texte; }, ici13.id) : false;
+  await pg.click("#rcIAFermer"); await att(100);
+  if (ici13) { const champ13 = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + ici13.id + '"]'); await champ13.fill(ici13.texte); await att(300); }
+  await pg.click("#rcImportIA"); await att(100); await pg.locator("#rcIATexte").fill(JSON.stringify(bon)); await pg.click("#rcIAValider"); await att(250);   // le bon retour d'avant, remis : la suite du banc s'appuie dessus ; la fenêtre reste ouverte
+  verif("recopie (1.4.10) : une ligne retapée après l'envoi à l'IA : sa copie ne reçoit pas la correction de l'ancien texte, et le message le dit (« " + m14.slice(0, 120) + " »)", !!ici13 && r14 && /changé depuis l’envoi/.test(m14));
   await pg.keyboard.press("Escape"); await att(120);
   verif("recopie (1.4.0) : Échap ferme la fenêtre du corrigé, pas la recopie", await pg.evaluate(() => RC.ouvert && document.querySelector("#rcIA").hidden));
   // 1.4.1 (Paul 31/10 : 181, 183, 186, 187) : la bande des fautes
@@ -336,7 +357,8 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await pg.click("#btnRecopier"); await att(300); await pg.selectOption("#rcCopie", kC2); await att(250);
   const pid5 = await pg.evaluate(id => { const x = rcLignesEcrites(RC.copie).find(y => y.id === id); if (x && RC.page !== x.pid) rcActiverPage(x.pid); return x ? x.pid : null; }, cible2); await att(200);
   const champ5 = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + cible2 + '"]'); await champ5.scrollIntoViewIfNeeded(); await champ5.fill("Mes camarades et moi se plaint"); await att(300);
-  const re5 = JSON.parse(brut); let trouve5 = false; re5.copies.forEach(c => c.pages.forEach(q => q.lignes.forEach(l => { if (l.id === cible2) { l.texte = "Mes camarades et moi nous plaignons"; trouve5 = true; } })));
+  const [dl5] = await Promise.all([pg.waitForEvent("download"), pg.click("#rcExportIA")]); const brut5 = fs.readFileSync(await dl5.path(), "utf8");   // 1.4.10 : la ligne retapée repart chez l'IA
+  const re5 = JSON.parse(brut5); let trouve5 = false; re5.copies.forEach(c => c.pages.forEach(q => q.lignes.forEach(l => { if (l.id === cible2) { l.texte = "Mes camarades et moi nous plaignons"; trouve5 = true; } })));
   await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(re5)); await pg.click("#rcIAValider"); await att(300); await pg.click("#rcIAFermer");
   // la copie telle qu'une 1.4.4 l'a laissée : l'arrêt « se plaint → nous plaignons » dit « oui », une seule marque, un cadre glissé
   const av5 = await pg.evaluate(id => { const k = RC.copie, x = rcLignesEcrites(k).find(y => y.id === id), r = rcEcartsBruts(x.l.texte, x.l.corrige), g = r.segs.find(u => u.eleve === "se plaint"); if (!g) return null;
@@ -399,7 +421,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     await cap("C14-34-marge-page-2"); await pg.click("#rcFermer"); await att(180); }
   verif("recopie (1.4.6) : une page préparée avant que sa photo soit prête n'a pas de trait rouge (" + t7.avant + ") ; la photo arrivée, son trait rouge apparaît (" + t7.apres + ")", !!k7 && t7.avant === false && t7.apres === true);
   // 1.4.9 (Paul 19:27 et 19:39) : tout effacer, les corrigés de l'IA et tout ce qui vient de la bande ; rien de la recopie ne bouge
-  const photo12 = () => pg.evaluate(() => { const IA = ["corrige", "corrigeDe", "corrigeLe", "types", "typesDe", "decisions", "marquesBande", "places"], o = {}; let n = 0, bande = 0, autres = 0, arret = 0;
+  const photo12 = () => pg.evaluate(() => { const IA = ["corrige", "corrigeDe", "corrigeLe", "corrigeMarque", "types", "typesDe", "envoiIA", "decisions", "marquesBande", "places"], o = {}; let n = 0, bande = 0, autres = 0, arret = 0;
     SC.copies.forEach(k => { const c = state.copies[k] || {}, sc = c.scan || {}, r = JSON.parse(JSON.stringify(sc.recopie || null));
       if (r) { if (r.bandeArret) arret++; delete r.bandeArret; delete r.reprise; Object.values(r.pages || {}).forEach(p => { delete p.modifieLe; Object.values(p.lignes || {}).forEach(l => { if (IA.some(f => l[f] !== undefined)) n++; IA.forEach(f => delete l[f]); }); }); }
       const ms = Object.values(sc.marques || {}); bande += ms.filter(m => m.bande).length + (sc.bandeDebut ? 1 : 0); autres += ms.filter(m => !m.bande).length;

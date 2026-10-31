@@ -1138,7 +1138,7 @@ MEMO
 
 **Paul :** le numéro de page ne s'actualise pas dans le champ du haut quand on scrolle.
 
-**Fait.** `recopie.js` : `rcPageVue` — au défilement, le menu « Page » prend la page vue au premier tiers de l'écran (affichage seul ; la page où tu écris ne change qu'au clic ou au clavier). Banc : vérification par le geste (défilement sur chacune des 2 pages : le menu suit) → « BANC : 92 vérifications, 0 défaut ». Candidate 1.3.4-RU : 580848 o, md5 `23f016d759e31656753a21b4efe6a6db`. Vrai site en lecture seule, 1.3.3 puis 1.3.4 : 30 copies, 0 différente ; recopies : places identiques, textes comparés ci-dessus ; seule écriture interceptée : le suivi.
+**Fait.** `recopie.js` : `rcPageVue` — au défilement, le menu « Page » prend la page vue au premier tiers de l'écran (affichage seul ; la page où tu écris ne change qu'au clic ou au clavier). Banc : vérification par le geste (défilement sur chacune des 2 pages : le menu suit) → « BANC : 92 vérifications, 0 défaut ». Candidate 1.3.4-RU : 580848 o, md5 `23f016d759e31656753a21b4efe6a6db`. Vrai site en lecture seule, 1.3.3 puis 1.3.4 : 30 copies, 0 différente ; recopies : 19 pages, 276 lignes écrites, places identiques ; textes identiques sauf 1 ligne de la copie que Paul recopiait à ce moment (son curseur y était), puis identiques au passage suivant ; seule écriture interceptée : le suivi.
 
 **Claude :**
 

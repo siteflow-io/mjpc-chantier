@@ -888,3 +888,31 @@ La note du sas, le rapport de livraison et la fin du mandat portent l'applicatio
 
 31/10/2026 04:17
 MEMO
+
+## Tour 14 — 31/10/2026 04:20 (heure de Paris)
+
+**Paul :**
+
+Planifie des relances de cette conversation toutes les demi heures pour exécuter la totalité du mandat au fur et à mesure.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : planification des passages toutes les 30 minutes · ouvert : 53 ; 45 ; 36.
+
+134. Je programme ces passages pour poursuivre le mandat par étapes, avec lecture de l’état courant au sas et compte rendu de chaque avancée.
+
+À tester : rien pour toi.
+MEMO
+
+**Faits.** Demande explicite d'automatisation récurrente pour continuer le mandat, et non d'un simple rappel à Paul. Découverte des outils Automations disponibles et lecture de la documentation de create. Elle impose une fréquence maximale d'une fois par heure : « The highest frequency at which it is possible to schedule automations or tasks is once every hour. If the user asks for a schedule at a higher frequency, explain that it is not possible and do not call the automations tool. » Aucun appel create, update ou autre action Automations n'est effectué. Aucune tâche créée, ni substitution silencieuse par une fréquence horaire, ni plusieurs tâches décalées. Le rythme horaire reste une possibilité à valider par Paul. Aucun horaire futur promis. Le premier message exprimait l'intention de programmer avant découverte de cette limite ; il reste transcrit tel quel, sans heure. Première horloge lue à 04:19. Le prompt C15 est relu et inchangé, blob 7a4e14ee6c8170881a80da4d2bb4d59ae1d089a2. Aucun fichier de l'app, du mandat ou du registre modifié dans ce tour ; seul ce transcript est complété.
+
+**GPT — réponse finale :**
+
+À jouer : cadence horaire à valider · en cours : planification · ouvert : 53 ; 45 ; 36.
+
+135. Le planificateur disponible ici permet au maximum **une relance par heure**. Les passages toutes les 30 minutes sont indisponibles : **aucune tâche n’a été créée**. Je peux programmer une poursuite horaire du mandat.
+
+À tester : rien pour toi.
+
+31/10/2026 04:20
+MEMO

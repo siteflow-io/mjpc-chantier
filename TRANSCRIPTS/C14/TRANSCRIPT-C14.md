@@ -1000,3 +1000,24 @@ MEMO
 
 31/10/2026 07:54
 MEMO
+
+## Tour 44 — 31/10/2026 07:58 → 31/10/2026 08:04
+
+**Paul :** [capture : la recopie en 1.3.1 sur une nouvelle copie ; poignées gauches au bord gauche de la photo, la bande du haut montre deux lignes] deux choses ne vont pas: les poignées ne sont pas alignées à gauche, et la bande en haut prend plusieurs lignes de la copie de l'élève!!! La version précédente me montrait exactement la phrase de l'élève sur sa ligne, pas plusieurs lignes. Mesure.
+
+**Fait.** Mesuré. Au site (lecture seule) : la page de la capture a été ouverte en recopie avant la 1.3.1 (poignées droites à 0,965-0,969 : placement de la 1.3.0) ; la 1.3.1 ne touchait pas les pages déjà ouvertes. Sur la capture de Paul, la détection de la 1.3.1 (rouge vif : r > 140, r−g > 45) ne trouve rien : 0 pixel sur 594 lignes ; les pixels de la marge y valent (126,98,100), (150,124,131), (138,108,112) : r−g ≈ 26 à 30, comme le papier pour la clarté ; papier et quadrillage r−g ≈ 6. Détection par la noirceur d'un trait vertical : échoue (elle prend une ligne du quadrillage). Détection retenue (r−g ≥ 18, r−b ≥ 10, ni papier ni encre, suivie bande par bande) : capture de 07:58, marge trouvée sur 10 bandes sur 10 (x 183 → 173, elle penche) ; capture de 07:32 : 6 bandes sur 10 ; capture du 30/10 15:19 : 10 sur 10. Photos entières à leur pleine taille : non mesuré. La bande : la 1.3.1 la dessinait à l'échelle de la feuille sur 76 px, soit plus de 2 lignes. 1.3.2 (`c14-poignees`) : la nouvelle détection ; sur une page déjà ouverte, les poignées encore à leur place automatique se rangent à la marge et au bord, une poignée tirée par Paul (marquée `recale`) ne bouge plus ; la bande : une seule ligne (± 0,55 interligne), redressée, à l'échelle et à la place de la feuille. Banc : « BANC : 84 vérifications, 0 défaut » (poignées 0,111 pour une marge à 0,121 ; page ancienne rangée 0,111 · 0,995, poignée à la main inchangée ; bande 32 px pour un interligne de 29 ; bande à 0,0 px de la feuille). Candidate 1.3.2-RU : 571685 o, md5 `74b1b2a351e610ebecdd4c5c530ad56d`. Vrai site en lecture seule : 30 copies, 0 différente ; recopies : 7 pages, 206 lignes dont 121 écrites, textes et places identiques (sans les photos, rien ne se range) ; seule écriture interceptée : le suivi.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 164 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+162. Les poignées, mesuré : deux causes. Cette page avait été ouverte en recopie avant la 1.3.1, qui ne touchait pas les pages déjà ouvertes. Et surtout, sur tes vraies photos, la marge n'est pas rouge vif : sur ta capture, ma détection ne trouvait aucun point. La marge y est un trait à peine plus rouge que le papier et que le quadrillage. Avec ce critère, je la retrouve sur tes trois captures (10 bandes sur 10 sur celle de 07:58, elle penche et je la suis). Sur tes photos entières : je ne sais pas, je ne les ai pas. Dans la 1.3.2, une page déjà ouverte se range aussi à la marge et au bord, sauf les poignées que tu as tirées à la main.
+
+163. La bande : tu as raison, en l'alignant je l'avais dessinée trop haute, plus de deux lignes. Dans la 1.3.2, elle ne montre plus que la ligne de l'élève, redressée, à l'échelle et à la place de ta feuille. Banc : 84 vérifications, 0 défaut ; tes copies et tes recopies au site : rien ne change.
+
+164. Pour la mettre en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 08:04
+MEMO

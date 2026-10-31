@@ -1042,3 +1042,22 @@ MEMO
 
 31/10/2026 08:08
 MEMO
+
+## Tour 46 — 31/10/2026 08:10 → 31/10/2026 08:18
+
+**Paul :** ok ça me va.
+
+**Fait.** `recopie.js` / `recopie.css` (`c14-poignees`) : par page, un trait de marge rouge (pointillé) avec une poignée en haut et une en bas (`marge` : `xh`, `xb`, ajouté à la page) ; posé par l'app sur la marge trouvée, sinon au 0,15 avec le message ; le tirer recale tous les débuts de ligne juste avant lui, sauf les lignes tirées à la main (`recale`) ; Annuler remet trait et lignes ; une page ouverte avant reçoit son trait une fois. Banc : 2 vérifications par le geste (trait posé à 0,119 pour une marge à 0,121, deux poignées ; trait tiré : 4 lignes recalées de 0,031 à 0,048, les 2 lignes tirées à la main immobiles, Annuler remet tout) → « BANC : 86 vérifications, 0 défaut », capture regardée. Candidate 1.3.2-RU : 575 016 o, md5 `65bbd349ea00ecc221d527084d126721`. Vrai site en lecture seule : 30 copies, 0 différente ; recopies : 9 pages, 267 lignes dont 162 écrites, textes et places identiques ; seule écriture interceptée : le suivi.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 169 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+168. Le trait de marge est dans la 1.3.2 : un trait rouge en pointillé, une poignée en haut, une en bas. L'app le pose sur la marge quand elle la trouve ; sinon elle te le dit et tu le cales. Quand tu le tires, tous les débuts de ligne le suivent, juste avant lui, sauf les lignes que tu as tirées à la main ; Annuler remet tout. Banc : 86 vérifications, 0 défaut ; tes 30 copies et tes 162 lignes recopiées au site : rien ne change.
+
+169. Pour la mettre en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 08:18
+MEMO

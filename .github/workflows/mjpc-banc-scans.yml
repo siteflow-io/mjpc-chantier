@@ -3,7 +3,7 @@ name: MJPC - banc complet des scans
 on:
   push:
     branches:
-      - c15-avancement
+      - c15-remise-zero
     paths:
       - .github/workflows/mjpc-banc-scans.yml
       - MANDATS/REDACTION-UNIVERSELLE/maquette/**
@@ -39,15 +39,17 @@ jobs:
           expected = {
               "avancement.js": "e5c2aa4b01dbc4949827235a34b59f170f1307d0",
               "banc/avancement.mjs": "73cac6dc110330aad9d067ccd5f3efc9d501de86",
-              "scan.js": "e4f8d39d952df6583ed5c96a9ee973fbec9669cd",
-              "recopie.js": "864a0b134cfc8ed98d3dc948622d88f4ebb3eaa2",
+              "remise-zero.js": "9d2f6d2a0d693cfb210b23c4f8962a428a4bc988",
+              "banc/remise-zero.mjs": "abfcd2ce75c14abe86074e8c7f9cc6c7846571db",
+              "scan.js": "ade07d1a90701696d62f1ca8fcc4072187fcf5ae",
+              "recopie.js": "eabeb708094324a1c8ca03d57c501a5abc0578d0",
               "recopie.css": "c9080da44e371cf39d005ddeb7f04005a97a9502",
-              "gen-maquette.py": "0c9a78b7d8daa1672c4eb72a5b7a81d00fd83478",
-              "banc/banc.mjs": "85ac9b8ad893b2a2dea8e84965abd1adc520a2d6",
+              "gen-maquette.py": "25d53e41afe2b0d2f9682417ac44709fde438e69",
+              "banc/banc.mjs": "cf0a4dd433374334738c67d98dd0e529f8e2ca1d",
               "banc/recopie.mjs": "3ecbc1294bf8bf7f02749862edd91cee34c7692a",
               "banc/fixture-recopie.py": "b96a0b58aa121522fa75599c0ffd521c55a4f757",
-              "banc/verifier-construction.py": "1b957747153b8c767df2c409317785a17b90f45d",
-              "C15-maquette-avancement-v1-essai1.html": "b5f6e2b9c73f14fed644df0e942a7c5eb3d656a3",
+              "banc/verifier-construction.py": "1e5adb2092894e1d50062874d7d7ff341ec0baf2",
+              "C15-maquette-remise-zero-v1-essai1.html": "db7bb0007f4e7dd3299b7b88691a924f9c907795",
               "banc/recopie-lignes-essai.png": "238ee23b628f28751a3550be91d3c570f603bc58",
               "T399-maquette-redaction-scans-v14.html": "c7fb23f32a9280c528f5b1f91229cd945d9f0102",
               "paquet-essai.pdf": "9b4ec27e91a0e6586300945759fb1fa3835a6827",
@@ -66,9 +68,11 @@ jobs:
           node --version
           npm --version
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/avancement.js
+          node --check MANDATS/REDACTION-UNIVERSELLE/maquette/remise-zero.js
+          node --check MANDATS/REDACTION-UNIVERSELLE/maquette/banc/remise-zero.mjs
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/recopie.js
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/banc/banc.mjs
-          python3 MANDATS/REDACTION-UNIVERSELLE/maquette/banc/verifier-construction.py C15-maquette-avancement-v1-essai1.html
+          python3 MANDATS/REDACTION-UNIVERSELLE/maquette/banc/verifier-construction.py C15-maquette-remise-zero-v1-essai1.html
 
       - name: Installer les dependances de test epinglees
         shell: bash
@@ -88,7 +92,7 @@ jobs:
           export NODE_PATH="$DEPS_DIR/node_modules"
           export PDFJS="$DEPS_DIR/node_modules/pdfjs-dist/build/"
           set +e
-          node "$BANC_DIR/banc/banc.mjs" C15-maquette-avancement-v1-essai1.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
+          node "$BANC_DIR/banc/banc.mjs" C15-maquette-remise-zero-v1-essai1.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
           issue=$?
           set -e
           python3 - <<'PY'

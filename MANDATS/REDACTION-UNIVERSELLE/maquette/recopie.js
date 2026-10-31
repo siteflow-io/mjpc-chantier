@@ -96,6 +96,7 @@ function rcOuvrir(reprendre) {
   const trace = state.scanRecopie;
   const dernier = trace && (reprendre ? trace.ouverte : trace.copie === scK()) ? trace : null;
   RC.copie = dernier && SC.copies.includes(dernier.copie) ? dernier.copie : scK();
+  if (!rzPermet(RC.copie)) { RC.ouvert = false; return; }
   const i = SC.copies.indexOf(RC.copie); if (i >= 0) SC.ic = i;
   const pages = scPagesDe(RC.copie), r = dernier || rcCopieSource().reprise || {};
   RC.page = pages.some(p => p.id === r.page) ? r.page : pages[0] && pages[0].id;
@@ -112,6 +113,7 @@ function rcFermer(sansRendre) {
 }
 function rcChoisirCopie(k) {
   if (!SC.copies.includes(k)) return;
+  if (!rzPermet(k)) return;
   RC.copie = k; RC.documents = {}; RC.annule = [];
   SC.ic = SC.copies.indexOf(k); const pages = scPagesDe(k), r = rcCopieSource().reprise || {};
   RC.page = pages.some(p => p.id === r.page) ? r.page : pages[0] && pages[0].id; RC.ligne = r.ligne || null;

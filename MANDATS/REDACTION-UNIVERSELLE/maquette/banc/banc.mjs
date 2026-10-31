@@ -1,5 +1,6 @@
 import { eprouverRecopie } from "./recopie.mjs";
 import { eprouverAvancement } from "./avancement.mjs";
+import { eprouverRemiseZero } from "./remise-zero.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -12,6 +13,7 @@ const PDFJS = process.env.PDFJS || '/tmp/claude-0/-home-claude/fbedd388-7b0c-5f4
 await ctx.route(u => String(u).includes('cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/'), r => { const f = String(r.request().url()).split('/').pop(); r.fulfill({ path: PDFJS + f, contentType: 'application/javascript' }); });
 const ok = []; const verif = (n, c) => { ok.push((c ? '✓ ' : '✗ ') + n); };
 const att = ms => pg.waitForTimeout(ms); const cap = async n => { await pg.screenshot({ path: path.join(OUT, n + '.png') }); };
+cap.dossier = OUT;
 process.on('uncaughtException', async e => { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); try { await cap('zz-arret'); } catch (x) {} process.exit(1); });
 try {
 await pg.goto('file://' + MAQ); await att(1500);
@@ -243,6 +245,7 @@ verif('copie passée en entier : le récapitulatif s\'ouvre seul (note « ' + (r
 verif('aucune écriture sur une classe entière (une clé de copie vide)', !(await pg.evaluate(() => window.__LOG || [])).some(l => /^\w+ [^/]+\.json/.test(l)));
 await eprouverAvancement({ pg, verif, cap, att });
 await eprouverRecopie({ pg, verif, cap, att, dir: DIR });
+await eprouverRemiseZero({ pg, verif, cap, att, err });
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }
 console.log(ok.join('\n')); if (err.length) console.log('ERREURS\n' + err.join('\n'));

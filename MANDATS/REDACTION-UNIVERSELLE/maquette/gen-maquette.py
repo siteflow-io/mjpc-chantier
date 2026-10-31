@@ -29,7 +29,14 @@ const lire=c=>{let n=H;for(const k of seg(c)){if(n==null||typeof n!=="object"||!
 const poser=(c,v)=>{const q=seg(c);if(!q.length){H=v||{};return;}let n=H;for(let i=0;i<q.length-1;i++){if(n[q[i]]==null||typeof n[q[i]]!=="object"){if(v==null)return;n[q[i]]={};}n=n[q[i]];}if(v==null)delete n[q[q.length-1]];else{const y=fb(JSON.parse(JSON.stringify(v)));if(y===null)delete n[q[q.length-1]];else n[q[q.length-1]]=y;}};
 const garder=()=>{try{localStorage.setItem(CLE,JSON.stringify(H));}catch(e){}};const vrai=window.fetch.bind(window);
 const f=function(u,o){const s=String(u);const i=s.indexOf("firebasedatabase.app");if(i<0)return vrai(u,o);let c=s.slice(i+20).split("?")[0].replace(/\\.json$/,"");const q=s.split("?")[1]||"";const m=((o&&o.method)||"GET").toUpperCase();
-if(m==="GET"){let v=lire(c);if(/shallow=true/.test(q)&&v&&typeof v==="object"){const w={};Object.keys(v).forEach(k=>w[k]=true);v=w;}return Promise.resolve(new Response(JSON.stringify(v),{status:200,headers:{"Content-Type":"application/json"}}));}
+/* Chaque lecture retrouve le même faux hub partagé par les onglets. ETag + If-Match reproduisent les requêtes conditionnelles Firebase. */
+try{H=JSON.parse(localStorage.getItem(CLE)||"null")||fb(JSON.parse(JSON.stringify(BASE0)));}catch(e){}
+const etag=()=> '"'+encodeURIComponent(JSON.stringify(lire(c)))+'"';const headers=new Headers(o&&o.headers||{});
+if(m==="GET"){let v=lire(c);if(/shallow=true/.test(q)&&v&&typeof v==="object"){const w={};Object.keys(v).forEach(k=>w[k]=true);v=w;}return Promise.resolve(new Response(JSON.stringify(v),{status:200,headers:{"Content-Type":"application/json",ETag:etag()}}));}
+if(m==="PUT"&&c.startsWith("/corbeille/")&&window.__FAUX_HUB_REFUSER_ARCHIVE){window.__FAUX_HUB_REFUSER_ARCHIVE=false;return Promise.resolve(new Response('{"error":"Archivage refusé pour cette épreuve"}',{status:403}));}
+if(m==="DELETE"&&headers.has("If-Match")&&window.__FAUX_HUB_CONFLIT_SUPPRESSION){window.__FAUX_HUB_CONFLIT_SUPPRESSION=false;const v=lire(c);if(v){v.modifieLe="conflit-suppression-essai";poser(c,v);garder();}}
+if(m==="PUT"&&headers.has("If-Match")&&window.__FAUX_HUB_EFFACER_AVANT_ECRITURE){window.__FAUX_HUB_EFFACER_AVANT_ECRITURE=false;poser(c,null);garder();}
+if(headers.has("If-Match")&&headers.get("If-Match")!==etag()){try{localStorage.setItem("mjpc_faux_hub_conflits",String(+(localStorage.getItem("mjpc_faux_hub_conflits")||0)+1));}catch(e){}return Promise.resolve(new Response(JSON.stringify(lire(c)),{status:412,headers:{ETag:etag()}}));}
 let b=null;try{b=JSON.parse((o&&o.body)||"null");}catch(e){}const cleOk=v=>{if(v===null||typeof v!=="object")return true;return Object.keys(v).every(k=>k!==""&&!/[.#$\\/\\[\\]]/.test(k)&&cleOk(v[k]));};if(m!=="DELETE"&&b&&!(m==="PATCH"?Object.values(b).every(cleOk):cleOk(b))){try{localStorage.setItem("mjpc_faux_hub_refus",String(+(localStorage.getItem("mjpc_faux_hub_refus")||0)+1));}catch(e){}return Promise.resolve(new Response(JSON.stringify({error:"Invalid data; Key value can't be empty or contain $ # [ ] / or ."}),{status:400}));}/* 1.2.3 : comme le site, le faux hub refuse un nom avec . # $ / [ ] */if(m==="PATCH"&&b)Object.keys(b).forEach(k=>poser(c+"/"+k,b[k]));else poser(c,m==="DELETE"?null:b);garder();return Promise.resolve(new Response(JSON.stringify(b),{status:200}));};
 window.fetch=f;window.__FAUX_HUB_FETCH=f;window.EventSource=undefined;
 try{localStorage.setItem("mjpc_eleve",JSON.stringify({is_prof:true,display:"Professeur",ts:Date.now()}));}catch(e){}
@@ -68,8 +75,27 @@ v = '${pct === 0 ? "Non commencé" : pct === 100 ? "Corrigé" : "En cours"}'; as
 H = H.replace(v, '${pct === 0 && !suiviScan ? "Non commencé" : pct === 100 ? "Corrigé" : "En cours"}')
 v = 'title="Pourcentage d\'avancement de la correction"'; assert H.count(v) == 1
 H = H.replace(v, 'title="${suiviScan ? escapeAttr(suiviScan.fait + \' rubriques corrigées sur \' + suiviScan.total + \'. Une faute posée commence la correction ; elle ne termine pas seule une rubrique.\') : \'Pourcentage d’avancement de la correction\'}"')
+# 59b : une seule copie archivée, et aucune réécriture aveugle depuis une ancienne page.
+v = 'function ruEcrire(chemin, valeur, libelle) {'; assert H.count(v) == 1
+H = H.replace(v, 'function ruEcrire(chemin, valeur, libelle, options) {')
+v = 'headers: { "Content-Type": "application/json" }, body: valeur === null'; assert H.count(v) == 1
+H = H.replace(v, 'headers: Object.assign({ "Content-Type": "application/json" }, options && options.etag ? { "If-Match": options.etag } : {}), body: valeur === null')
+v = 'Object.keys(state.copies || {}).forEach(k => {'; assert H.count(v) == 1
+H = H.replace(v, v + '\n    if (rzEtat(k).perime || rzEtat(k).occupe) return;')
+v = 'if (i.etat !== MJPC_ISSUE.ACCEPTEE) delete RU.sig[k];'; assert H.count(v) == 1
+H = H.replace(v, 'if (i.etat !== MJPC_ISSUE.ACCEPTEE && RU.sig[k] === sg) { delete RU.sig[k]; if (RU.sigCorps) delete RU.sigCorps[k]; }')
+v = 'return Promise.all([ruLire(ruCheminCopies()), ruLire(ruCheminSuivi())]).then(([cp, su]) => {'; assert H.count(v) == 1
+H = H.replace(v, v + '\n    rzCharger(cp);')
+v = '    let change = false;\n    Object.keys(RU.miroir || {}).forEach(k => {'; assert H.count(v) == 1
+H = H.replace(v, '    rzComparer(RU.miroir);\n' + v + '\n      if (!rzRecevoir(k, RU.miroir[k])) return;')
+v = 'motif + "_" + hh], { _meta:'; assert H.count(v) == 1
+H = H.replace(v, 'motif + "_" + hh + (meta && meta.idArchive ? "_" + meta.idArchive : "")], { _meta:')
+v = 'function ouvrirCopie(id) {'; assert H.count(v) == 1
+H = H.replace(v, v + '\n  if (!rzPermet(id)) return;')
+v = '        <div class="barre-progression" title="Avancement visuel : ${pct}%"><div class="barre-progression-fill" style="width:${pct}%;background:${couleur}"></div></div>'; assert H.count(v) == 1
+H = H.replace(v, v + '\n        ${rzBouton(id, c)}')
 MQ = '''<div class="mq-reglage" onclick="if(document.getElementById('mqR').style.display==='block'){document.getElementById('mqR').style.display='none'}else{document.getElementById('mqR').style.display='block'}" title="Réglages de la simulation (n'existe pas dans le site).">⚙ Maquette</div>
-<div id="mqR" style="display:none;position:fixed;left:8px;bottom:36px;z-index:999;background:#fdfbf7;border:1px solid #d4b87a;border-radius:9px;padding:10px 12px;max-width:380px;font:13.5px system-ui;box-shadow:0 6px 18px rgba(0,0,0,.2)"><b>Réglages de la simulation</b><p>Le site est simulé par un faux hub gardé dans ce navigateur : une copie de la vraie base, élèves aux noms inventés. Rien ne part au vrai site.</p><button class="sc-btn" onclick="window.__fauxHubRemettre()" title="Effacer tout ce qui a été fait dans la maquette (marques, réponses, pages chargées) et repartir de la base.">Tout remettre à zéro</button></div>
+<div id="mqR" style="display:none;position:fixed;left:8px;bottom:36px;z-index:999;background:#fdfbf7;border:1px solid #d4b87a;border-radius:9px;padding:10px 12px;max-width:380px;font:13.5px system-ui;box-shadow:0 6px 18px rgba(0,0,0,.2)"><b>Réglages de la simulation</b><p>Le site est simulé par un faux hub gardé dans ce navigateur : une copie de la vraie base, élèves aux noms inventés. Rien ne part au vrai site.</p><button class="sc-btn" onclick="window.__fauxHubRemettre()" title="Effacer tout ce qui a été fait dans la maquette (marques, réponses, pages chargées) et repartir de la base.">Tout remettre à zéro</button><hr><p>Épreuves de sécurité, sur les données inventées seulement :</p><button class="sc-btn" id="mqRefuserArchive" onclick="window.__FAUX_HUB_REFUSER_ARCHIVE=true;this.textContent='Prochain archivage refusé'">Refuser le prochain archivage</button><button class="sc-btn" id="mqConflitSuppression" onclick="window.__FAUX_HUB_CONFLIT_SUPPRESSION=true;this.textContent='Prochaine suppression en conflit'">Changer la copie pendant sa suppression</button><button class="sc-btn" id="mqEffacerAvantEcriture" onclick="window.__FAUX_HUB_EFFACER_AVANT_ECRITURE=true;this.textContent='Effacement avant la prochaine écriture'">Effacer juste avant la prochaine écriture de copie</button></div>
 '''
 ecran = '''
 <!-- RU-SCAN : corriger sur la copie scannée -->
@@ -89,7 +115,7 @@ ecran = '''
 <div id="scLoupe" class="sc-loupe" hidden></div>
 <div id="scModale" class="sc-modale" onclick="if(event.target===this)scModaleFermer()"><div class="sc-modale-c"></div></div>
 ''' + ('' if PROD else MQ) + '''<style>''' + open('scan.css', encoding='utf8').read() + '\n' + open('recopie.css', encoding='utf8').read() + '''</style>
-<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + '\n' + open('recopie.js', encoding='utf8').read() + '\n' + open('avancement.js', encoding='utf8').read() + ('\n' + open('stickers.js', encoding='utf8').read() if os.environ.get('STICKERS') == '1' and not PROD else '') + '''</script>
+<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + '\n' + open('recopie.js', encoding='utf8').read() + '\n' + open('avancement.js', encoding='utf8').read() + '\n' + open('remise-zero.js', encoding='utf8').read() + ('\n' + open('stickers.js', encoding='utf8').read() if os.environ.get('STICKERS') == '1' and not PROD else '') + '''</script>
 '''
 i = H.rindex('</body>'); H = H[:i] + ecran + H[i:]
 open(out, 'w', encoding='utf8').write(H)

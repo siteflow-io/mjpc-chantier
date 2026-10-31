@@ -66,6 +66,7 @@ function scOuvrir() {
     state.modeOuvert = "scan"; SC.aideAvant = AIDE.courant; aidePoser("scan");
     document.getElementById("scanEcran").classList.remove("hidden"); document.body.classList.add("sc-ouvert");
     SC.attrib = scPagesSans().length > 0; SC.ia = scPremiereSans();
+    if (scK() && !rzPermet(scK())) { SC.ouvert = false; document.getElementById("scanEcran").classList.add("hidden"); document.body.classList.remove("sc-ouvert"); return; }
     scRendre();
     if (state.scanRecopie && state.scanRecopie.ouverte && typeof rcOuvrir === "function") rcOuvrir(true);
   });
@@ -229,7 +230,7 @@ function scSuiteCopie() {
   if (SC.ic < SC.copies.length - 1) scAllerCopie(SC.ic + 1); else if (SC.passe < SC.passes.length - 2) { const fait = scP().nom; SC.ic = 0; scAllerPasse(SC.passe + 1); toast("« " + fait + " » est fait pour tout le paquet : « " + scP().nom + " » commence, copie 1."); } else { toast("Dernière copie du paquet : « " + scP().nom + " » est fait pour tout le paquet."); scRendre(); }
 }
 function scReculer() { const L = scEtapes(scK()); const i = L.findIndex(e => e.ip === SC.ip && e.iq === SC.iq); if (i > 0) { SC.ip = L[i - 1].ip; SC.iq = L[i - 1].iq; scRendre(); } }
-function scAllerCopie(i) { if (i !== SC.ic && scLignesBloque()) { scLignesDemander(); return; } scChrono(); SC.ic = Math.max(0, Math.min(SC.copies.length - 1, i)); const L = scEtapes(scK() || ""); SC.ip = L.length ? L[0].ip : 0; SC.iq = L.length ? L[0].iq : null; SC.sel = null; SC.outil = null; scChampFermer(); scRendre(); scLignesAccueil(); }
+function scAllerCopie(i) { if (SC.copies[i] && !rzPermet(SC.copies[i])) return; if (i !== SC.ic && scLignesBloque()) { scLignesDemander(); return; } scChrono(); SC.ic = Math.max(0, Math.min(SC.copies.length - 1, i)); const L = scEtapes(scK() || ""); SC.ip = L.length ? L[0].ip : 0; SC.iq = L.length ? L[0].iq : null; SC.sel = null; SC.outil = null; scChampFermer(); scRendre(); scLignesAccueil(); }
 function scAllerPasse(i) { if (SC.passes[i] && SC.passes[i].id === "retours" && !scCorrectionEleve()) return; scChrono(); SC.passe = i; SC.ir = 0; scAllerCopie(SC.ic); }
 // le chrono : le temps passé sur chaque copie, passe par passe (une minute sans geste ne compte pas)
 function scToucher() { const t = Date.now(); if (typeof RC !== "undefined" && RC.ouvert) { SC.actif = t; return; } if (SC.actif && SC.ouvert && scK() && scP()) { const s = scCopie(scK()); s.chrono[scP().id] = (s.chrono[scP().id] || 0) + Math.min(60000, t - SC.actif); } SC.actif = t; }

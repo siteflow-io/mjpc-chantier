@@ -1,0 +1,85 @@
+// 59b : tous les changements passent par les boutons et champs de l'app.
+// evaluate ne lit que les preuves ; les trois pannes sont armées dans les réglages de la maquette.
+import fs from "node:fs/promises";
+export async function eprouverRemiseZero({pg,verif,cap,att,err}) {
+  await pg.locator('button[onclick="scFermer()"]').click(); await att(1600);
+  const k = await pg.evaluate(()=>eleveId("CHAUVIN Emma"));
+  const carte = p=>p.locator('#gridEleves .eleve-card').filter({hasText:"CHAUVIN Emma"});
+  const lireHub = p=>p.evaluate(()=>JSON.parse(localStorage.getItem(Object.keys(localStorage).find(k=>k.startsWith("mjpc_maquette_T399_hub_")))));
+  const chemin = await pg.evaluate(k=>ruCheminCopies().concat(k),k);
+  const dans = (v,seg)=>seg.reduce((n,k)=>n&&n[k],v)||null;
+  const copie = h=>dans(h,chemin), copies = h=>dans(h,chemin.slice(0,-1));
+  const autres = h=>Object.fromEntries(Object.entries(copies(h)||{}).filter(([cle])=>cle!==k));
+  const archives = h=>Object.values(h.corbeille||{}).flatMap(j=>Object.values(j)).filter(a=>a._meta?.motif==="remise-zero-copie");
+  const stable = v=>JSON.stringify(v);
+  const photo = p=>p.evaluate(async()=>{
+    const db=await scDbTout(); const a=[];
+    for(const o of db){ const q={id:o.id,w:o.w,h:o.h}; for(const champ of ["blob","orig"]){ if(o[champ])q[champ]=Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",await o[champ].arrayBuffer()))).join(","); } a.push(q); }
+    return JSON.stringify(a.sort((x,y)=>x.id.localeCompare(y.id)));
+  });
+  const demander = async()=>{await carte(pg).locator('.rz-zero').click();await pg.locator('#rzConfirmer').waitFor();};
+  const panne = async id=>{await pg.locator('.mq-reglage').click();await pg.locator(id).click();await pg.locator('.mq-reglage').click();};
+  const telecharger = async p=>{
+    const d=await p.waitForEvent("download"); const f=await d.path(); return JSON.parse(await fs.readFile(f,"utf8"));
+  };
+  const avantAnnuler = stable(await lireHub(pg));
+  await demander(); await cap("C15-59b-confirmation"); await pg.locator('#rzAnnuler').click(); await att(1200);
+  verif("remise à zéro : Annuler ne change aucune copie et ne crée aucune archive",avantAnnuler===stable(await lireHub(pg)));
+  await demander(); await pg.keyboard.press("Escape");
+  verif("remise à zéro : Échap ferme la confirmation sans boîte native",!(await pg.locator('#rzDialogue').count()));
+  await panne('#mqRefuserArchive'); await demander();
+  const avantRefus=await lireHub(pg), dlRefus=telecharger(pg);
+  await pg.locator('#rzConfirmer').click(); await dlRefus;
+  await pg.locator('#rzMessage').filter({hasText:"L'archivage a échoué"}).waitFor(); await att(1200);
+  const apresRefus=await lireHub(pg);
+  verif("remise à zéro : archivage refusé, aucune suppression ni modification des copies",stable(copies(avantRefus))===stable(copies(apresRefus))&&archives(avantRefus).length===archives(apresRefus).length);
+  await cap("C15-59b-archivage-refuse"); await pg.locator('#rzAnnuler').click();
+  await panne('#mqConflitSuppression'); await demander();
+  const avantConflit=await lireHub(pg), dlConflit=telecharger(pg);
+  await pg.locator('#rzConfirmer').click(); await dlConflit;
+  await pg.locator('#rzMessage').filter({hasText:"La copie a changé pendant"}).waitFor();
+  const apresConflit=await lireHub(pg);
+  verif("remise à zéro : changement pendant l'archivage, DELETE refusé en 412 et copie conservée",copie(apresConflit)?.id===copie(avantConflit)?.id&&copie(apresConflit)?.modifieLe==="conflit-suppression-essai");
+  verif("remise à zéro : en cas de conflit, l'archive garde exactement la version lue avant la suppression",archives(apresConflit).some(a=>stable(a.data)===stable(copie(avantConflit))));
+  await pg.locator('#rzAnnuler').click(); await pg.reload(); await carte(pg).waitFor();
+  const peer=await pg.context().newPage(); peer.on("pageerror",e=>err.push("onglet 2 : "+e.message)); peer.on("dialog",d=>{err.push("onglet 2 boîte : "+d.message());d.dismiss();});
+  await peer.goto(pg.url()); await carte(peer).waitFor(); await peer.locator('#btnScan').click();
+  await peer.locator('#scanEcran').waitFor({state:"visible"});
+  const i=await peer.evaluate(k=>SC.copies.indexOf(k),k); await peer.locator('.sc-vig').nth(i).click();
+  await peer.locator('#btnRecopier').click(); await peer.selectOption('#rcCopie',k);
+  await peer.locator('.rc-saisie').first().focus(); await peer.waitForTimeout(1600);
+  const locale=await peer.evaluate(k=>JSON.parse(JSON.stringify(state.copies[k])),k);
+  const avant=await lireHub(pg), photos=await photo(pg);
+  const pages=stable(dans(avant,["redactions",chemin[1],"scan",chemin[3],"pages"]));
+  await demander(); const dl=telecharger(pg); await pg.locator('#rzConfirmer').click(); const exportee=await dl;
+  await pg.locator('#rzDialogue').waitFor({state:"detached"}); await att(1800);
+  const apres=await lireHub(pg), archive=archives(apres).find(a=>a._meta.source===chemin.join("/")&&stable(a.data)===stable(copie(avant)));
+  verif("remise à zéro : export JSON complet, source exacte et copie bit à bit conservée dans la corbeille",stable(exportee.data)===stable(copie(avant))&&exportee._meta.source===chemin.join("/")&&!!archive);
+  verif("remise à zéro : deux archives rapprochées ont deux identifiants, sans écraser la précédente",archives(apres).length===archives(avant).length+1&&new Set(archives(apres).map(a=>a._meta.idArchive)).size===archives(apres).length);
+  verif("remise à zéro : seule la copie choisie disparaît ; toutes les autres copies restent identiques",copie(apres)===null&&stable(autres(apres))===stable(autres(avant)));
+  verif("remise à zéro : photos et originaux identiques en SHA-256, pages, élèves et ordre conservés",photos===await photo(pg)&&pages===stable(dans(apres,["redactions",chemin[1],"scan",chemin[3],"pages"])));
+  const suivi=await pg.evaluate(k=>({sans:!state.interroBookmark?.[k]&&state.current!==k&&state.scanCurseur?.copie!==k&&state.scanRecopie?.copie!==k,undo:!SC.annule.some(a=>a.k===k),vide:!scPlein(state.copies[k]?.scan)}),k);
+  verif("remise à zéro : marques, réponses, recopie, reprise et annulations de cette copie sont retirées de l'état actif",suivi.sans&&suivi.undo&&suivi.vide&&/Non commencé/.test(await carte(pg).innerText()));
+  await peer.locator('#rzAlerte').waitFor({state:"visible",timeout:10000});
+  await peer.keyboard.press("Enter"); await peer.waitForTimeout(1400);
+  const ferme=await peer.evaluate(()=>!SC.ouvert&&!RC.ouvert&&!SC.champ);
+  verif("remise à zéro : l'autre onglet ferme son ancienne recopie et un nouveau geste ne ressuscite pas la copie",ferme&&copie(await lireHub(peer))===null&&await carte(peer).locator('.rz-relire').isVisible());
+  const dlLocale=telecharger(peer); await peer.locator('#rzAlerte button').filter({hasText:"Télécharger la version locale"}).click(); const sauvee=await dlLocale;
+  verif("remise à zéro : l'autre onglet permet de récupérer ses anciennes marques, réponses et recopies en JSON",stable(sauvee.data?.scan?.marques)===stable(locale.scan?.marques)&&stable(sauvee.data?.scan?.rep)===stable(locale.scan?.rep)&&stable(sauvee.data?.scan?.recopie)===stable(locale.scan?.recopie));
+  await peer.screenshot({path:cap.dossier+"/C15-59b-autre-onglet.png"});
+  await peer.locator('#rzAlerte button').filter({hasText:"Relire la copie"}).click(); await peer.locator('#rzAlerte').waitFor({state:"detached"});
+  verif("remise à zéro : Relire la copie retire le blocage et repart de la version réellement vide",!(await carte(peer).locator('.rz-relire').count())&&copie(await lireHub(peer))===null);
+  await pg.locator('#btnScan').click(); await pg.locator('#scanEcran').waitFor({state:"visible"});
+  await pg.locator('.sc-passe').nth(0).click(); const j=await pg.evaluate(k=>SC.copies.indexOf(k),k); await pg.locator('.sc-vig').nth(j).click();
+  await pg.locator('#scLig').fill('24'); await pg.locator('#scLig').press('Enter'); await att(1600);
+  const neuve=copie(await lireHub(pg));
+  verif("remise à zéro : recommencer crée une nouvelle identité sans reprendre les anciennes marques ni la recopie",!!neuve?.id&&neuve.id!==copie(avant).id&&+neuve.scan.lignes===24&&!Object.keys(neuve.scan.marques||{}).length&&!neuve.scan.recopie);
+  await pg.locator('button[onclick="scFermer()"]').click(); await att(1300);
+  await panne('#mqEffacerAvantEcriture'); await pg.locator('#btnScan').click(); await pg.locator('#scanEcran').waitFor({state:"visible"});
+  await pg.locator('.sc-passe').nth(0).click(); await pg.locator('.sc-vig').nth(j).click();
+  await pg.locator('#scLig').fill('25'); await pg.locator('#scLig').press('Enter');
+  await pg.locator('#rzAlerte').waitFor({state:"visible"}); await att(1500);
+  verif("remise à zéro : effacement entre GET et PUT, écriture refusée en 412 sans résurrection",copie(await lireHub(pg))===null&&await pg.evaluate(()=>+(localStorage.getItem("mjpc_faux_hub_conflits")||0)>=2));
+  await cap("C15-59b-ecriture-perimee");
+  await peer.close();
+}

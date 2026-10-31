@@ -1209,3 +1209,22 @@ MEMO
 
 31/10/2026 09:37
 MEMO
+
+## Tour 54 — 31/10/2026 09:57 → 31/10/2026 09:58
+
+**Paul :** 184. en réalité toutes les marques posées hier peuvent servir à une chose: mesurer si l'app tombe juste. en effet, ce que j'ai posé est au mieux. Donc si systématiquement l'app tombe autre part que sur les mots que j'ai soulignés, c'est que ça ne va pas. Cependant, mes soulignés sont un peu "sauvages": parfois j'ai souligné tout le mot, parfois un peu plus, parfois juste l'endroit de la faute. Donc à voir si ça sert vraiment. Sinon on efface les marques posées hier et on applique une seule et même méthode pour toutes les copies. De toute façon je savais qu'une partie de mon travail serait à jeter dans la mesure où je corrige tout en développant. On ne peut pas avoir le meilleur des deux mondes en permanence.
+
+**Fait.** Mesuré au site (lecture seule, hors du sas) : 12 copies à la fois marquées et recopiées ; marques de la langue avec bonne forme, sur une ligne recopiée : 64 (4 écartées : aucun mot de la ligne ne ressemble à la bonne forme). Ligne trouvée par la hauteur du milieu de la marque ; mot prévu = celui qui est à la même proportion dans le texte tapé, entre les deux poignées ; mot vrai = celui qui ressemble le plus à la bonne forme. Bon mot : 46 sur 64 (72 %) ; à un mot près : 59 (92 %) ; écarts : −1 : 7, +1 : 6, +2 : 3, +4 : 1, +8 : 1.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 186 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+185. Mesuré : tes marques d'hier servent bien de règle. 64 d'entre elles ont une bonne forme et tombent sur une ligne que tu as recopiée. En plaçant les mots selon leur place dans la ligne, l'app tombe sur ton mot 46 fois (72 %), et à un mot près 59 fois (92 %). Tes soulignés « sauvages » ne gênent pas : je prends le milieu de ta marque. 182 et 183, que tu n'as pas commentés : acquis.
+
+186. Je propose une seule méthode pour toutes les copies : la bande. Ses fautes, reliées au mot de ta recopie, sont celles qui comptent, pour toutes les copies, celles d'hier comprises. Tes marques d'hier ne sont pas effacées (on ne retire jamais rien) : elles sont mises de côté, ne comptent plus, et restent la règle qui mesure l'app à chaque version. Sur une copie d'hier, la note peut changer quand tu y passes la bande : l'app te montre la note avant et après. Ça te va ?
+
+À tester : rien de neuf.
+
+31/10/2026 09:58
+MEMO

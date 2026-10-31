@@ -791,3 +791,22 @@ MEMO
 
 31/10/2026 06:41
 MEMO
+
+## Tour 33 — 31/10/2026 06:42 → 31/10/2026 06:46
+
+**Paul :** ok, mais minimise l'utilisation.
+
+**Fait.** Pause écrite en tête du prompt de C15. Branche `c15-avancement` (contient `c15-recopie`) : `verifier-construction.py` → 744 785 octets identiques ; banc complet local → « BANC : 75 vérifications, 0 défaut », code 0. Changements de `scan.js` lus : seulement des ajouts (paramètres facultatifs, appels à la recopie). Candidate `PROD=1 VERSION=1.3.0-RU` depuis la base 1.1.0 : 562 942 octets, md5 `57d26691c787e78cd016919a037cba76`, au sas `LIVRAISONS/REDACTION/redaction-1.3.0-RU-candidat.html`. Vrai site lu en lecture seule (écritures interceptées), même classe, 1.2.3 puis 1.3.0 : 30 copies, 605 marques, 0 copie différente (marques, réponses, lignes, note) ; 1 écriture interceptée dans les deux (le suivi), aucune erreur. Captures envoyées : recopie et tableau des élèves à 1536 × 864 (élèves inventés).
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 141 ; 53 ; 45 ; 36.
+
+140. La 1.3.0 (la recopie, plus la tuile corrigée) est prête. Banc complet chez moi : 75 vérifications, 0 défaut. Tes vraies copies ouvertes en lecture seule avec la 1.2.3 puis la 1.3.0 : 30 copies, 605 marques, aucune différence de marques, réponses, lignes ou notes, aucune écriture envoyée. GPT est en pause.
+
+141. Pour la mettre en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 06:46
+MEMO

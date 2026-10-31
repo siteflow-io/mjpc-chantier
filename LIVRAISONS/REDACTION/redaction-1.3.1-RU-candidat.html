@@ -7799,7 +7799,7 @@ function rcDocument(pid) {
       y0: rcBorne(l.y, 0, 1), y1: rcBorne(l.y, 0, 1), texte: ""
     }; });
   }
-  RC.documents[pid] = d; return d;
+  rcTrier(d); RC.documents[pid] = d; return d;
 }
 /* C14 (31/10, Paul 07:00) : « les points s'alignent toujours juste avant la marge rouge à gauche, et aillent au bord de la copie, à droite » */
 function rcMargeRouge(cv) {
@@ -7962,8 +7962,10 @@ function rcActualiser(changer) {
   rcRapprocherLignes(); rcMettreEnPage(); rcMarques(); rcEtatLigne();
   if (changer) e.querySelector("#rcDefile").scrollTop = 0;
 }
+/* C14 (31/10, Paul 07:32) : une ligne prend toujours son rang (et son numéro) selon sa hauteur sur la photo */
+function rcTrier(d) { const h = id => (d.lignes[id].y0 || 0) + (d.lignes[id].y1 || 0); d.ordre.sort((a, b) => h(a) - h(b)); return d; }
 function rcRapprocherLignes() {
-  const feuille = RC.ui.querySelector("#rcFeuille"), d = rcDocument(RC.page);
+  const feuille = RC.ui.querySelector("#rcFeuille"), d = rcTrier(rcDocument(RC.page));
   const presents = new Map(Array.from(feuille.children).map(n => [n.dataset.ligne, n]));
   for (const [id, n] of presents) if (!d.ordre.includes(id)) n.remove();
   d.ordre.forEach((id, rang) => {
@@ -8107,7 +8109,7 @@ function rcPoigneeBouger(ev) {
 }
 function rcPoigneeFin(ev) {
   const a = RC.drag; if (!a || a.pointer !== ev.pointerId) return;
-  RC.drag = null; RC.annule.push({ type: "recalage", id: a.id, avant: a.avant }); rcMarques(); rcSelectionner(a.id, false, false); rcGarder();
+  RC.drag = null; RC.annule.push({ type: "recalage", id: a.id, avant: a.avant }); rcRapprocherLignes(); rcMarques(); rcSelectionner(a.id, false, false); rcGarder();
 }
 function rcPoigneeAnnuler(ev) {
   const a = RC.drag; if (!a || a.pointer !== ev.pointerId) return;

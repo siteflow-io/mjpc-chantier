@@ -918,3 +918,28 @@ MEMO
 
 31/10/2026 07:30
 MEMO
+
+## Tour 40 — 31/10/2026 07:32 → 31/10/2026 07:36
+
+**Paul :** [capture : la recopie en ligne, lignes 13 à 28 ; la ligne ajoutée « 22 » placée entre 20 et 21] ok mais en réalité les lignes terminent déjà là où finit l'encre de l'élève, non?  dette trouvée, à régler: quand je rajoute une ligne qui n'avait pas été détectée, si je la remonte avec les poignées elle garde son numéro. Or elle doit changer de numéro évidemment. regarde la ligne 22. réponds moi d'abord à ma question.
+
+**Claude (message envoyé d'abord) :**
+
+153. Pour la poignée droite, oui, dans la 1.3.0 que tu utilises : l'app la pose là où elle trouve la fin de l'encre. Sur ta capture, la ligne « 22 Juillet 1916, » s'arrête juste après la date. Mais ton texte, lui, ne s'étire pas jusqu'à cette fin : il garde sa taille et s'arrête où il s'arrête. Il ne rapetisse que si la ligne est trop pleine. Et dans la 1.3.1, comme tu l'as demandé à 07:00, la poignée droite va au bord de la copie, donc elle ne dira plus où finit l'encre. Pour épouser l'écriture de l'élève, l'app devra garder la fin de l'encre à part et y ajuster ton texte.
+
+Je règle maintenant ta dette de la ligne 22 dans la 1.3.1.
+
+**Fait.** `recopie.js` : `rcTrier` — l'ordre des lignes suit leur hauteur sur la photo, au chargement, après chaque ajout, retrait, annulation et après chaque poignée lâchée (numéros, feuille et Entrée suivent). Banc : vérification par le geste (ajout d'une ligne, texte, ses deux poignées tirées au-dessus de la première ligne : rang 0, n° 1, premier champ de la feuille) → « BANC : 79 vérifications, 0 défaut ». Candidate 1.3.1-RU refaite : 567090 o, md5 `6eca9983a406cb302fb0affdef821e8e`. Vrai site en lecture seule, 1.3.0 puis 1.3.1 : 30 copies, 0 différente. Registre ⑪ : dettes ⓐ (la ligne remontée) et ⓑ (réenregistrement à l'ouverture, +38 ms).
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 155 ; 53 ; 45 ; 36.
+
+154. Dette réglée dans la 1.3.1 : une ligne prend toujours son rang et son numéro selon sa hauteur sur la photo, dès que tu lâches une poignée ; ta feuille et Entrée suivent le même ordre. Ta ligne 22 actuelle se remettra à sa place toute seule à l'ouverture. Banc : 79 vérifications, 0 défaut ; tes vraies copies : aucune différence.
+
+155. La 1.3.1 contient donc : les poignées à la marge rouge et au bord, les numéros sur tes seules lignes écrites, les lignes pleines qui rapetissent, et cette dette. Pour la mettre en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 07:36
+MEMO

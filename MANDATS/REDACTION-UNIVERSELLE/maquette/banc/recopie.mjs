@@ -138,6 +138,22 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   const rang = await pg.evaluate(id => { const d = RC.documents[RC.page]; return { i: d.ordre.indexOf(id), n: rcNumeros(d)[id], champ: document.querySelectorAll(".rc-saisie")[0].value, titre: document.querySelector("#rcLigneTitre").textContent }; }, nouv);
   verif("recopie (C14) : une ligne ajoutée puis remontée aux poignées prend sa place, son numéro et sa place sur la feuille (rang " + rang.i + ", n° " + rang.n + ", " + rang.titre + ")", rang.i === 0 && rang.n === 1 && rang.champ === "Ligne ajoutée");
   for (let k = 0; k < 3; k++) { await pg.click("#rcAnnuler"); await att(80); }
+  // C14 (07:47) : la bande alignée sur la feuille ; Retour arrière au début d'une ligne ; plusieurs poignées avec Ctrl
+  await champ(1).click(); await att(150);
+  const al = await pg.evaluate(() => { const cv = document.querySelector("#rcAgrandie").getBoundingClientRect(), l = rcCourante(), ch = document.querySelector('.rc-saisie[data-ligne="' + CSS.escape(RC.ligne) + '"]').getBoundingClientRect(); return { bande: RC.bande ? cv.left + RC.bande.gauche + l.x0 * RC.bande.largeur : null, champ: ch.left }; });
+  verif("recopie (C14) : la bande du haut est alignée sur la feuille en dessous (début de ligne à " + (al.bande == null ? "?" : Math.abs(al.bande - al.champ).toFixed(1)) + " px)", al.bande != null && Math.abs(al.bande - al.champ) <= 2);
+  await champ(2).click(); await pg.keyboard.press("Home"); await pg.keyboard.press("Backspace"); await att(100);
+  const rb = await pg.evaluate(() => { const a = document.activeElement; return { meme: a === document.querySelectorAll(".rc-saisie")[1], pos: a.selectionStart, n: a.value.length }; });
+  await pg.keyboard.press("Backspace"); const efface = await champ(1).inputValue(); await pg.keyboard.type("s");
+  verif("recopie (C14) : Retour arrière au début d'une ligne remonte à la fin de la précédente, puis efface comme un traitement de texte (" + efface + ")", rb.meme && rb.pos === rb.n && efface === "Deux mot" && await champ(1).inputValue() === "Deux mots");
+  const ids = await pg.evaluate(() => RC.documents[RC.page].ordre.slice(0, 2)), avantG = await pg.evaluate(ids => ids.map(id => RC.documents[RC.page].lignes[id].x0), ids);
+  const cg = id => pg.locator('#rcLignesSVG circle[data-rc-ligne="' + id + '"][data-rc-cote="gauche"]');
+  await pg.keyboard.down("Control"); for (const id of ids) { const b = await cg(id).boundingBox(); await pg.mouse.click(b.x + b.width / 2, b.y + b.height / 2); await att(60); } await pg.keyboard.up("Control");
+  const b0 = await cg(ids[0]).boundingBox(); await pg.mouse.move(b0.x + b0.width / 2, b0.y + b0.height / 2); await pg.mouse.down(); await pg.mouse.move(b0.x + b0.width / 2 + 30, b0.y + b0.height / 2, { steps: 6 }); await pg.mouse.up(); await att(120);
+  const apresG = await pg.evaluate(ids => ids.map(id => RC.documents[RC.page].lignes[id].x0), ids);
+  const dx = apresG.map((x, i) => x - avantG[i]);
+  await pg.click("#rcAnnuler"); await att(100); const annuleG = await pg.evaluate(ids => ids.map(id => RC.documents[RC.page].lignes[id].x0), ids);
+  verif("recopie (C14) : Ctrl + clic choisit deux poignées, elles se déplacent ensemble, Annuler les remet (" + dx.map(v => v.toFixed(3)).join(" / ") + ")", dx[0] > 0.01 && Math.abs(dx[0] - dx[1]) < 1e-9 && annuleG.every((x, i) => x === avantG[i]));
   await cap("C15-24-recopie-six-lignes");
   await pg.setViewportSize({ width: 390, height: 800 }); await att(180);
   const lisible = await pg.evaluate(() => {

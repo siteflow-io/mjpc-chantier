@@ -110,6 +110,7 @@ function rcInterface() {
   e.querySelector("#rcDefile").addEventListener("wheel", ev => {
     if (!ev.ctrlKey) return; ev.preventDefault(); rcZoom(RC.zoom * (ev.deltaY < 0 ? 1.12 : 1 / 1.12));
   }, { passive: false });
+  e.querySelector("#rcDefile").addEventListener("scroll", () => rcAgrandir(), { passive: true });
   const svg = e.querySelector("#rcLignesSVG");
   svg.addEventListener("pointerdown", rcPoigneeDebut);
   svg.addEventListener("pointermove", rcPoigneeBouger);
@@ -238,17 +239,18 @@ function rcMarques() {
     if (actif) s += '<polygon class="rc-selection" points="' + x0 + "," + (y0 - 17) + " " + x1 + "," + (y1 - 17) + " " + x1 + "," + (y1 + 15) + " " + x0 + "," + (y0 + 15) + '"/>';
     s += '<g data-rc-ligne="' + attributId + '"><line class="rc-trait" x1="' + x0 + '" y1="' + y0 + '" x2="' + x1 + '" y2="' + y1 + '"/>';
     if (N[id]) s += '<text class="rc-numero" x="5" y="' + (y0 + 4) + '">' + N[id] + "</text>";
-    for (const cote of ["gauche", "droite"]) s += '<circle class="rc-poignee" data-rc-ligne="' + attributId + '" data-rc-cote="' + cote + '" cx="' + (cote === "gauche" ? x0 : x1) + '" cy="' + (cote === "gauche" ? y0 : y1) + '" r="7" role="button" aria-label="' + (cote === "gauche" ? "Début" : "Fin") + " de la ligne " + (N[id] || "vide") + '"><title>Glisse cette poignée pour recaler ' + (cote === "gauche" ? "le début" : "la fin") + " de la ligne" + (N[id] ? " " + N[id] : " (vide, sans numéro)") + ".</title></circle>";
+    for (const cote of ["gauche", "droite"]) s += '<circle class="rc-poignee' + (RC.selP && RC.selP.has(id + "|" + cote) ? " sel" : "") + '" data-rc-ligne="' + attributId + '" data-rc-cote="' + cote + '" cx="' + (cote === "gauche" ? x0 : x1) + '" cy="' + (cote === "gauche" ? y0 : y1) + '" r="7" role="button" aria-label="' + (cote === "gauche" ? "Début" : "Fin") + " de la ligne " + (N[id] || "vide") + '"><title>Glisse cette poignée pour recaler ' + (cote === "gauche" ? "le début" : "la fin") + " de la ligne" + (N[id] ? " " + N[id] : " (vide, sans numéro)") + ".</title></circle>";
     s += "</g>";
   });
   // Les poignées gardent leur capture de pointeur pendant le déplacement.
   if (!RC.drag) svg.innerHTML = s;
   else {
-    const l = rcCourante(), g = Array.from(svg.querySelectorAll("g[data-rc-ligne]")).find(n => n.dataset.rcLigne === RC.ligne);
+    const ids = [...new Set((RC.drag.avants || []).map(x => x.id).concat([RC.ligne]))];
+    ids.forEach(lid => { const l = d.lignes[lid], g = Array.from(svg.querySelectorAll("g[data-rc-ligne]")).find(n => n.dataset.rcLigne === lid);
     if (g && l) {
       const trait = g.querySelector("line"); [["x1", l.x0 * 1000], ["y1", l.y0 * H], ["x2", l.x1 * 1000], ["y2", l.y1 * H]].forEach(([k, v]) => trait.setAttribute(k, v));
       g.querySelectorAll("circle").forEach(c => { const gauche = c.dataset.rcCote === "gauche"; c.setAttribute("cx", (gauche ? l.x0 : l.x1) * 1000); c.setAttribute("cy", (gauche ? l.y0 : l.y1) * H); });
-    }
+    } });
   }
 }
 function rcEtatLigne() {
@@ -273,18 +275,17 @@ function rcSelectionner(id, focus, aligner) {
   }
   rcBookmark();
 }
+/* C14 (31/10, Paul 07:47) : la bande du haut, alignée sur la feuille en dessous (même échelle, même place) */
 function rcAgrandir() {
   if (!RC.ouvert || !RC.ui) return;
   const p = SC.pages[RC.page], l = rcCourante(), im = p && SC.imgs[p.id], cv = RC.ui.querySelector("#rcAgrandie");
   const w = Math.max(200, Math.round(cv.clientWidth || 500)), h = 76;
   if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
-  const x = cv.getContext("2d"); x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h);
+  const x = cv.getContext("2d"); x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h); RC.bande = null;
   if (!l || !im || !im.el.complete || !im.el.naturalWidth) return;
-  const marge = Math.max(0.012, Math.min(0.035, (p.lignes && p.lignes.pas || 0.03) * 0.55));
-  const sx = Math.max(0, l.x0 - 0.015) * im.w, sy = Math.max(0, Math.min(l.y0, l.y1) - marge) * im.h;
-  const sw = Math.min(im.w - sx, (l.x1 - l.x0 + 0.03) * im.w), sh = Math.min(im.h - sy, (Math.abs(l.y1 - l.y0) + marge * 2) * im.h);
-  if (sw <= 0 || sh <= 0) return;
-  const k = Math.min(w / sw, h / sh); x.drawImage(im.el, sx, sy, sw, sh, (w - sw * k) / 2, (h - sh * k) / 2, sw * k, sh * k);
+  const fr = RC.ui.querySelector("#rcFeuille").getBoundingClientRect(), cr = cv.getBoundingClientRect(); if (!fr.width) return;
+  const k = fr.width / im.w, sh = h / k, sy = (l.y0 + l.y1) / 2 * im.h - sh / 2, gauche = fr.left - cr.left;
+  x.drawImage(im.el, 0, sy, im.w, sh, gauche, 0, fr.width, h); RC.bande = { gauche, largeur: fr.width };
 }
 function rcGarder() {
   if (!RC.copie || !RC.page || !state.classe.some(n => eleveId(n) === RC.copie)) return;
@@ -315,28 +316,49 @@ function rcAnnuler() {
   if (a.type === "ajout") { d.ordre = d.ordre.filter(id => id !== a.id); d.lignes[a.id].retiree = new Date().toISOString(); RC.ligne = d.ordre[0] || null; }
   if (a.type === "retrait") { delete d.lignes[a.id].retiree; d.ordre.splice(a.i, 0, a.id); RC.ligne = a.id; }
   if (a.type === "recalage") { Object.assign(d.lignes[a.id], a.avant); RC.ligne = a.id; }
+  if (a.type === "groupe") { a.liste.forEach(({ id, avant }) => { if (d.lignes[id]) Object.assign(d.lignes[id], avant); }); RC.ligne = a.liste[0].id; }
   rcRapprocherLignes(); rcMettreEnPage(); rcSelectionner(RC.ligne, true, true); rcGarder();
 }
+/* C14 (31/10, Paul 07:47) : Ctrl (ou Cmd) + clic choisit plusieurs poignées ; on les déplace ensemble */
+function rcPoint(ev) { const r = RC.ui.querySelector("#rcLignesSVG").getBoundingClientRect(); return { x: (ev.clientX - r.left) / r.width, y: (ev.clientY - r.top) / r.height }; }
 function rcPoigneeDebut(ev) {
   const c = ev.target.closest && ev.target.closest("circle[data-rc-cote]"); if (!c) return;
-  ev.preventDefault(); ev.stopPropagation(); RC.ligne = c.dataset.rcLigne;
-  const l = rcCourante(); RC.drag = { id: RC.ligne, cote: c.dataset.rcCote, pointer: ev.pointerId, cible: c,
-    avant: { x0: l.x0, x1: l.x1, y0: l.y0, y1: l.y1 } };
+  ev.preventDefault(); ev.stopPropagation();
+  const d = rcDocument(RC.page), cle = c.dataset.rcLigne + "|" + c.dataset.rcCote; RC.selP = RC.selP || new Set();
+  [...RC.selP].forEach(k => { if (!d.lignes[k.split("|")[0]]) RC.selP.delete(k); });
+  if (ev.ctrlKey || ev.metaKey) { if (RC.selP.has(cle)) RC.selP.delete(cle); else RC.selP.add(cle); }
+  else if (!RC.selP.has(cle)) RC.selP.clear();
+  RC.ui.querySelectorAll("#rcLignesSVG circle[data-rc-cote]").forEach(n => n.classList.toggle("sel", RC.selP.has(n.dataset.rcLigne + "|" + n.dataset.rcCote)));
+  if ((ev.ctrlKey || ev.metaKey) && !RC.selP.has(cle)) return;
+  const groupe = RC.selP.has(cle) && RC.selP.size > 1 ? [...RC.selP] : [cle];
+  RC.ligne = c.dataset.rcLigne; const l = rcCourante();
+  RC.drag = { id: RC.ligne, cote: c.dataset.rcCote, pointer: ev.pointerId, cible: c, avant: { x0: l.x0, x1: l.x1, y0: l.y0, y1: l.y1 }, groupe, depart: rcPoint(ev), bouge: false,
+    avants: groupe.map(k => { const id = k.split("|")[0], L = d.lignes[id]; return { id, cote: k.split("|")[1], avant: { x0: L.x0, x1: L.x1, y0: L.y0, y1: L.y1 } }; }) };
   c.setPointerCapture(ev.pointerId); rcEtatLigne();
 }
 function rcPoigneeBouger(ev) {
   const a = RC.drag; if (!a || a.pointer !== ev.pointerId) return;
-  ev.preventDefault(); const r = RC.ui.querySelector("#rcLignesSVG").getBoundingClientRect(), l = rcCourante();
-  const x = rcBorne((ev.clientX - r.left) / r.width, 0.005, 0.995), y = rcBorne((ev.clientY - r.top) / r.height, 0.005, 0.995);
+  ev.preventDefault(); const q = rcPoint(ev), l = rcCourante(), d = rcDocument(RC.page); a.bouge = true;
+  if (a.groupe.length > 1) {
+    const dx = q.x - a.depart.x, dy = q.y - a.depart.y;
+    a.avants.forEach(({ id, cote, avant }) => { const L = d.lignes[id]; if (!L) return;
+      if (cote === "gauche") { L.x0 = rcBorne(avant.x0 + dx, 0.005, L.x1 - 0.02); L.y0 = rcBorne(avant.y0 + dy, 0.005, 0.995); }
+      else { L.x1 = rcBorne(avant.x1 + dx, L.x0 + 0.02, 0.995); L.y1 = rcBorne(avant.y1 + dy, 0.005, 0.995); } });
+    rcMettreEnPage(); return;
+  }
+  const x = rcBorne(q.x, 0.005, 0.995), y = rcBorne(q.y, 0.005, 0.995);
   if (a.cote === "gauche") { l.x0 = Math.min(x, l.x1 - 0.02); l.y0 = y; } else { l.x1 = Math.max(x, l.x0 + 0.02); l.y1 = y; }
   rcMettreEnPage();
 }
 function rcPoigneeFin(ev) {
   const a = RC.drag; if (!a || a.pointer !== ev.pointerId) return;
-  RC.drag = null; RC.annule.push({ type: "recalage", id: a.id, avant: a.avant }); rcRapprocherLignes(); rcMarques(); rcSelectionner(a.id, false, false); rcGarder();
+  RC.drag = null;
+  if (a.bouge) RC.annule.push(a.groupe.length > 1 ? { type: "groupe", liste: a.avants } : { type: "recalage", id: a.id, avant: a.avant });
+  rcRapprocherLignes(); rcMarques(); rcSelectionner(a.id, false, false); if (a.bouge) rcGarder();
 }
 function rcPoigneeAnnuler(ev) {
   const a = RC.drag; if (!a || a.pointer !== ev.pointerId) return;
+  const d = rcDocument(RC.page); a.avants.forEach(({ id, avant }) => { if (d.lignes[id]) Object.assign(d.lignes[id], avant); });
   Object.assign(rcCourante(), a.avant); RC.drag = null; rcMettreEnPage();
 }
 function rcZoom(v) { RC.zoom = rcBorne(v, 0.6, 2.5); rcMettreEnPage(); rcSelectionner(RC.ligne, true, true); }
@@ -374,6 +396,12 @@ function rcClavier(ev) {
   if (ev.isComposing) return true;
   const input = ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie");
   if (ev.key === "Escape") { ev.preventDefault(); ev.stopPropagation(); rcFermer(); return true; }
+  if (input && ev.key === "Backspace" && !ev.ctrlKey && !ev.metaKey && !ev.altKey && ev.target.selectionStart === 0 && ev.target.selectionEnd === 0) {
+    const d = rcDocument(RC.page), i = d.ordre.indexOf(RC.ligne);
+    if (i > 0) { ev.preventDefault(); ev.stopPropagation(); rcSelectionner(d.ordre[i - 1], true, true);
+      const c = RC.ui.querySelector('.rc-saisie[data-ligne="' + CSS.escape(RC.ligne) + '"]'); if (c) { c.focus(); const n = c.value.length; c.setSelectionRange(n, n); } rcGarder(); }
+    return true;
+  }
   if (input && !ev.ctrlKey && !ev.metaKey && !ev.altKey && ["Enter", "ArrowDown", "ArrowUp"].includes(ev.key)) {
     ev.preventDefault(); ev.stopPropagation();
     const d = rcDocument(RC.page), i = d.ordre.indexOf(RC.ligne), sens = ev.key === "ArrowUp" ? -1 : 1;

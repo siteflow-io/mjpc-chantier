@@ -26,7 +26,7 @@ export async function eprouverAvancement({pg,verif,cap,att}) {
   verif('avancement : lire et retrier les cartes ne change ni copie, marque, réponse, ligne ou note', copies===await pg.evaluate(()=>JSON.stringify(scFb(state.copies))));
   verif('avancement : lire et retrier les cartes ne réécrit aucune copie au faux hub', ecritures===await pg.evaluate(()=>(window.__LOG||[]).length));
   await pg.reload(); await pg.locator('#gridEleves .eleve-card').first().waitFor({state:'visible',timeout:20000}); await att(800);
-  const froid = await pg.evaluate(()=>SC.grille===null&&Object.keys(SC.imgs).length===0);
+  const froid = await pg.evaluate(()=>Object.keys(SC.imgs).length===0);   // [C14 1.4.12] l'accueil lit la grille du sujet pour le flux et le bilan : seules les images ne sont pas chargées
   verif('avancement : après rechargement, 100 % et 17 % sont justes avant d’ouvrir les scans, sans charger les images', froid&&await texte('CHAUVIN Emma')===fini&&await texte('ARNAUD Léa')===partiel&&copies===await pg.evaluate(()=>JSON.stringify(scFb(state.copies))));
   const tailles=[];
   for(const [width,height] of [[1280,720],[1366,768],[1536,864],[1920,1080]]) {

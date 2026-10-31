@@ -1394,12 +1394,12 @@ window.__fauxHubRemettre=()=>{try{localStorage.removeItem(CLE);}catch(e){}indexe
   <div class="tri-bar">
     <label title="Permet d'organiser la liste des élèves dans l'ordre de correction de ton choix">Tri du paquet :</label>
     <select id="triSelect" onchange="changerTri(this.value)" title="Choisis l'ordre dans lequel tu veux corriger les copies">
-      <option value="ordre" title="Suit l'ordre des copies sur ton bureau, que tu saisis via le bouton « Classer le paquet ». À défaut : ordre dans lequel tu as collé la liste.">Ordre du paquet</option>
+      <option value="ordre" title="Suit l'ordre des copies sur ton bureau, que tu donnes dans l’écran des scans avec « 🔤 Les initiales ». À défaut : ordre dans lequel tu as collé la liste.">Ordre du paquet</option>
       <option value="alpha" title="Tri alphabétique (par nom puis prénom)">Alphabétique</option>
       <option value="sujet" title="Regroupe les copies par sujet traité (quand le sujet en propose plusieurs)">Par sujet</option>
       <option value="progression" title="Place en premier les copies non commencées ou peu avancées">Par progression</option>
     </select>
-    <button id="btnClasserPaquet" onclick="ouvrirClassementPaquet()"
+    <button id="btnClasserPaquet" style="display:none" onclick="ouvrirClassementPaquet()"
             title="Saisis l'ordre des copies sur ton bureau en tapant les initiales (ex : XC pour Xavier Capucine). Les flèches Précédent/Suivant suivront ensuite ton paquet physique.">
       📋 Classer le paquet
     </button>
@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.4.11-RU";
+var APP_VERSION = "1.4.12-RU";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -2437,7 +2437,7 @@ function ruClassesProposees() { const t = RU.classes || {}; return Object.keys(t
 function nomClasseCourante() { return RU.classeNom || ""; }
 function ficheTexte(k) { const v = (SUJET && SUJET.fiche && SUJET.fiche[k]) || ""; return v || (k === "titre" && SUJET ? SUJET.titre || "" : ""); }
 // ── l'état d'une classe au hub : les copies (une par élève) et le suivi (le paquet, l'endroit exact) ──
-const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert", "scanCurseur", "scanRecopie"];
+const RU_SUIVI = ["tri", "paquetOrdre", "interroBookmark", "current", "modeOuvert", "scanCurseur", "scanRecopie", "scanDernier"];
 function ruCheminCopies() { return ["redactions", RU.id, "copies", RU.classe]; }
 function ruCheminSuivi() { return ["redactions", RU.id, "suivi", RU.classe]; }
 function ruCleSecours() { return "mjpc_redaction_" + RU.id + "_" + RU.classe; }
@@ -2571,6 +2571,7 @@ function ruOuvrirClasse(k) {
   }, () => { toast("⚠ Le site ne répond pas : les copies de cette classe n'ont pas pu être lues."); showDashboard(); });
 }
 function ruReprendre() {   // la reprise exacte (l'INIT de l'app d'origine, inchangé)
+  if (state.modeOuvert === "interrogatif" || state.modeOuvert === "classique") { state.modeOuvert = null; showDashboard(); return; }   // [1.4.12] la grille d'origine et le mode interrogatif sont rangés : on revient au tableau des élèves
   if (state.modeOuvert === "scan") { showDashboard(); setTimeout(() => scOuvrir(), 0); return; }   // la correction sur les scans rouverte là où tu en étais
   if (state.modeOuvert === "interrogatif" && state.current && state.interroBookmark && state.interroBookmark[state.current]) {
     const nomEleve = state.classe.find(n => eleveId(n) === state.current);
@@ -3018,8 +3019,8 @@ function ruOnglet(o, sous) {
   if (corr) { if (!RU.dansCorrection) { RU.dansCorrection = true; showDashboard(); } else if (document.getElementById("correctionView").classList.contains("hidden")) showDashboard(); }
   else RU.dansCorrection = false;
   if (vue === "preparation") ruRendrePreparation();
-  if (vue === "bilan") document.getElementById("ruVue_bilan").innerHTML = `<div class="rp-carte"><h2>Bilan de la correction</h2>${genererContenuStatsProf()}</div>`;
-  if (vue === "fiches") ruRendreFiches();
+  if (vue === "bilan") avBilanClasse();
+  if (vue === "fiches") avFiches();
   if (vue === "reglages") ruRendreReglages();
   aidePoser(vue);
 }
@@ -3085,9 +3086,9 @@ function ruRestaurer(ev) {
 const RU_AIDES = {
   accueil: { ou: "Accueil — Mes rédactions", l: [["« Ouvrir → » (ou clic sur une ligne)", "ouvrir la rédaction : Préparation, Correction, Bilan, Fiches élèves, Réglages"], ["✏️", "changer le titre, ou la classe tant qu’aucune copie n’est commencée"], ["⧉", "dupliquer pour une autre classe : la grille, l’énoncé, les phrases déjà lues — sans les copies"], ["🗑️", "supprimer (archivée dans la corbeille MJPC, avec un export JSON téléchargé)"], ["« ＋ Nouvelle rédaction »", "coller le JSON du sujet préparé avec Claude, « Vérifier », choisir la classe, « Créer »"], ["🧪 Mode test", "essayer sans rien enregistrer au site"]] },
   preparation: { ou: "Pilotage — Préparation", l: [["« ✓ Préparer le sujet »", "lire et valider les phrases, un point de la grille par écran"], ["« 📝 Corriger l’énoncé »", "l’énoncé tel que distribué, en tête de chaque fiche"]] },
-  correction: { ou: "Pilotage — Correction", l: [["clic sur un élève", "ouvrir sa copie"], ["« 📋 Classer le paquet »", "taper les initiales dans l’ordre des copies du bureau"], ["le tri", "ordre du paquet, alphabétique, par sujet, par progression"], ["⚠ sur une carte", "le compteur et le niveau d’orthographe ne s’accordent plus : « Garder » ou « Prendre »"], ["« ⌨️ Mode interrogatif »", "un point par écran : 1-2-3-4 le niveau puis le sous-niveau, C la citation, + / − le compteur, N puis E non évalué, Entrée suivant"]] },
-  bilan: { ou: "Données — Bilan", l: [["le tableau", "le temps passé par copie, par critère, par point ; les copies anormalement longues"]] },
-  fiches: { ou: "Données — Fiches élèves", l: [["👁 Aperçu", "la fiche dans un nouvel onglet"], ["🖨️ Exporter", "la fiche d’un élève en HTML"], ["« 🖨️ Exporter tous HTML »", "un zip des fiches prêtes ; une fiche qui porte une phrase pas lue ne part pas (la raison est dite)"]] },
+  correction: { ou: "Pilotage — Correction", l: [["clic sur un élève", "ouvrir sa copie là où tu travailles : la recopie, ou l’écran des scans"], ["la carte", "les étapes de la copie : recopiée (avec la phrase qui m’a marqué), envoyée à l’IA, corrigé chargé, bande"], ["le tri", "ordre du paquet (donné par « 🔤 Les initiales » dans les scans), alphabétique, par sujet, par progression"], ["« 📄 Corriger sur les scans »", "l’écran des scans, la recopie et la bande"]] },
+  bilan: { ou: "Données — Bilan", l: [["le tableau", "pour chaque élève : sa note, ses critères, ses fautes par type d’erreur ; en bas, la classe : la moyenne, la part de chaque type d’erreur, le critère le plus faible"]] },
+  fiches: { ou: "Données — Fiches élèves", l: [["« 📨 Fichiers École Directe »", "ouvre l’écran des scans et fabrique le fichier de chaque élève : sa copie scannée et tes marques"]] },
   reglages: { ou: "Réglages — la grille", l: [["le tableau", "critères, points, poids, compétences, seuils du compteur"], ["« ✓ Préparer le sujet »", "corriger les phrases"]] },
   copie: { ou: "Une copie", l: [["1-2-3-4", "le niveau, puis le sous-niveau"], ["C", "taper une citation de la copie"], ["✏️ éditer", "réécrire la phrase pour cette copie (validée d’office)"], ["Entrée / ←", "point suivant / précédent"], ["Échap", "quitter le mode interrogatif"]] },
   preparer: { ou: "Préparer le sujet", l: [["une case", "corriger la phrase : en sortant de la case, elle est enregistrée et lue"], ["« ✓ Je valide ce point »", "toutes les phrases de l’écran sont lues"], ["à gauche", "les écrans : ✓ validé, ○ à relire"]] },
@@ -4334,28 +4335,28 @@ function renderDashboard() {
                   : "#4a7a3a";
     const sujetClass = c.sujet || "";
     const sujetTag = (SUJET.variantes || []).length < 2 ? ""   // un sujet à une variante : rien à choisir, la carte n'en dit rien (relance 19:12)
-                   : c.sujet ? libVariante(c.sujet, "etiquette") : "— Sujet non choisi —";
+                   : c.sujet ? libVariante(c.sujet, "etiquette") : "";
     // L21d — Bouton "Bilan" accessible directement depuis le dashboard si la copie a des
     // données de télémétrie. Évite que Paul ouvre le mode interrogatif juste pour consulter
     // (ce qui relancerait le chrono et fausserait les métriques). stopPropagation pour ne pas
     // déclencher le onclick du parent (qui ouvrirait la copie).
     const aDonneesTelemetrie = c.telemetry && Array.isArray(c.telemetry.ouverturesTs) && c.telemetry.ouverturesTs.length > 0 && c.telemetry.tempsActifMs > 0;
-    const boutonBilanCarte = aDonneesTelemetrie ? `
+    const boutonBilanCarte = false && aDonneesTelemetrie ? `
       <button class="eleve-bilan-btn" onclick="event.stopPropagation(); ouvrirBilanCopie('${id}')"
               title="Consulter le bilan de correction de cette copie (temps, hésitations, ventilation) sans rouvrir le mode interrogatif. Le chrono ne sera pas relancé."
               style="position:absolute;top:6px;right:6px;background:rgba(255,255,255,0.85);border:1px solid #c9b89e;color:#5a3010;padding:3px 7px;border-radius:4px;cursor:pointer;font-size:0.78em;font-family:inherit;line-height:1;">📊</button>
     ` : '';
     return `
-      <div class="eleve-card ${sujetClass}" onclick="ouvrirCopie('${id}')" style="position:relative;"
-           title="Cliquer pour corriger la copie de ${escapeAttr(nom)}${c.sujet ? ' (sujet de ' + c.sujet + ' déjà choisi)' : ' — le sujet sera demandé au démarrage'}">
+      <div class="eleve-card ${sujetClass}" onclick="avOuvrirCarte('${id}')" style="position:relative;"
+           title="Ouvrir la copie de ${escapeAttr(nom)} là où tu travailles : la recopie, ou l’écran des scans.">
         ${boutonBilanCarte}
         ${sujetTag ? `<div class="eleve-sujet-tag">${sujetTag}</div>` : ""}
-        ${(() => { const d = ruDesaccordCompteur(id); if (!d) return ""; return `<div class="ru-desaccord" onclick="event.stopPropagation()" title="Le compteur juge avec la longueur notée : les deux ne s'accordent plus. La fiche attend que tu tranches.">⚠ Orthographe : choisi « ${ECHELON_COULEUR[d.choisi].label} », le compteur dit « ${ECHELON_COULEUR[d.compteur].label} » (${d.n} erreurs)
+        ${(() => { const d = null; if (!d) return ""; return `<div class="ru-desaccord" onclick="event.stopPropagation()" title="Le compteur juge avec la longueur notée : les deux ne s'accordent plus. La fiche attend que tu tranches.">⚠ Orthographe : choisi « ${ECHELON_COULEUR[d.choisi].label} », le compteur dit « ${ECHELON_COULEUR[d.compteur].label} » (${d.n} erreurs)
           <span><button onclick="event.stopPropagation(); ruTrancherCompteur('${id}','garder')" title="Garder ton niveau : la fiche dira seulement « Tu as fait ${d.n} erreurs d'orthographe et de grammaire dans ta copie. »">Garder « ${ECHELON_COULEUR[d.choisi].label} »</button>
           <button onclick="event.stopPropagation(); ruTrancherCompteur('${id}','prendre')" title="Prendre le niveau du compteur : la fiche dira « … ce qui correspond au niveau ${ECHELON_COULEUR[d.compteur].label.toLowerCase()} »">Prendre « ${ECHELON_COULEUR[d.compteur].label} »</button></span></div>`; })()}
-        <div class="eleve-nom">${escapeHtml(nom)}</div>
+        <div class="eleve-nom">${escapeHtml(nom)}</div>${avCarteFlux(id)}
         <div class="eleve-statut">
-          <span>${pct === 0 && !suiviScan ? "Non commencé" : pct === 100 ? "Corrigé" : "En cours"}</span>
+          <span>${avCarteEtat(id, pct, suiviScan)}</span>
           ${complete && pct >= 90 ? `<span class="eleve-note" title="Note totale sur ${totalPour(id)}">${total}/${totalPour(id)}</span>` : `<span style="font-size:0.85em;color:#aaa" title="${suiviScan ? escapeAttr(suiviScan.fait + ' rubriques corrigées sur ' + suiviScan.total + '. Une faute posée commence la correction ; elle ne termine pas seule une rubrique.') : 'Pourcentage d’avancement de la correction'}">${pct}%</span>`}
         </div>
         <div class="barre-progression" title="Avancement visuel : ${pct}%"><div class="barre-progression-fill" style="width:${pct}%;background:${couleur}"></div></div>
@@ -6643,6 +6644,10 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .sc-rc-pied{display:flex;justify-content:flex-end;gap:8px;padding:10px 22px;border-top:1px solid #eadfcd}
 .sc-lig-alerte{color:#c54040;font-weight:700;margin:6px 0 0}.sc-alerte-copie{position:fixed;left:50%;top:120px;transform:translateX(-50%);z-index:958;background:#c54040;color:#fff;font:600 17px system-ui;padding:12px 20px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);max-width:70vw;text-align:center}.sc-alerte-copie[hidden]{display:none}
 .sc-coche{display:block;margin:6px 0 10px;color:#9a8f80}.sc-coche input{margin-right:6px}
+/* [C14 1.4.12] l'accueil dans le flux : les étapes sur la carte ; le bilan de la classe */
+.av-flux{display:flex;flex-wrap:wrap;gap:3px;margin:4px 0 2px}.av-et{font:600 11px system-ui;color:#9a8b78;background:#f3eee4;border-radius:5px;padding:2px 5px}.av-et.ok{color:#2f6b25;background:#e3f0dc}
+.av-tab{overflow-x:auto}.av-bilan .rp-table{width:100%}.av-n{text-align:center;white-space:nowrap}.av-m{color:#9a8b78;font-size:12px}.av-ty{display:inline-block;font:700 11px system-ui;border:1.5px solid;border-radius:6px;padding:2px 5px}.av-classe td{border-top:2px solid #6b1a2a;background:#fdfbf7}.av-faible{background:#fde8e8!important}
+.av-dnb{color:#c54040;font-weight:700}
 
 /* La recopie : deux feuilles de mêmes dimensions, un seul défilement. */
 .rc-ecran{position:fixed;inset:0;z-index:950;display:flex;flex-direction:column;box-sizing:border-box;padding-bottom:28px;background:#f5f1ea;color:#2b2520;font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -6749,6 +6754,12 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .rc-flux-t td{padding:5px 8px;border-top:1px solid #efe6d8;white-space:nowrap}
 .rc-flux-t tr[data-k]{cursor:pointer}.rc-flux-t tr[data-k]:hover{background:#faf5ea}.rc-flux-t tr.on{background:#eef6e6}
 .rc-flux-ok{color:#2f7d32;font-weight:700}.rc-flux-non{color:#b3a891}
+/* [C14 1.4.12] le mot par mot : le mode écrit en clair, les mots du ruban se cliquent */
+.rc-bande-mode{font:700 12px system-ui;color:#fff;background:#3d752e;border-radius:4px;padding:2px 7px;margin-right:4px}
+.rc-ruban .rc-mot[data-id]{cursor:pointer;border-radius:3px}.rc-ruban .rc-mot[data-id]:hover{background:#efe6d4}
+.rc-bande-mot .rc-juste{color:#2b2520}
+/* [C14 1.4.12] la phrase qui m'a marqué */
+.rc-phrase-c{max-width:900px}.rc-phrase-t{max-height:52vh;overflow:auto;background:#fff;border:1px solid #d6cfc1;border-radius:8px;padding:10px 14px;font:17px/1.7 Georgia,serif;text-align:left}.rc-phrase-t p{margin:0}.rc-phrase-t small{font:600 11px system-ui;color:#3d752e;margin-right:6px}.rc-phrase-t .rc-mot{cursor:pointer;border-radius:3px;padding:0 1px}.rc-phrase-t .rc-mot:hover{background:#efe6d4}.rc-phrase-t .rc-mot.or{background:#f3dfb8;box-shadow:inset 0 -2px 0 #c08a4a}.rc-phrase-non{display:inline-flex;gap:6px;align-items:center;margin-right:auto;font:15px system-ui;cursor:pointer}
 </style>
 <script>// =====================================================================
 // RU-SCAN — CORRIGER SUR LA COPIE SCANNÉE (cadrage C13, 29-30/10/2026, tours 371 à 399)
@@ -6806,7 +6817,7 @@ function scOuvrir() {
   Promise.all([ruLire(["redactions", RU.id, "config", "grille2"]), ruLire(scChemin(["pages"])), ruLire(scCheminRetours()), scDbTout().catch(() => []), ruLire(["redactions", RU.id, "config", "aRefaire"])]).then(([g, pg, rt, loc, ar]) => {
     SC.aRefaire = ar || "";
     if (!g || !g.criteres) { toast("Ce sujet n'a pas encore de grille à cases : la correction sur les scans attend sa grille."); return; }
-    SC.grille = scGrilleNormale(g); SC.pages = pg || {}; SC.retours = rt || {};
+    SC.grille = scGrilleNormale(g); SC.pages = pg || {}; SC.retours = rt || {}; if (typeof AV === "object") AV.red = RU.id;
     const L = g.criteres.find(c => c.id === "langue");
     SC.passes = [{ id: "langue", nom: L ? L.nom : "La langue", pts: L ? L.points : [], crit: "langue" }]
       .concat(g.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom, pts: c.points, crit: c.id })))
@@ -6839,7 +6850,7 @@ function scCharger(ev) {
     SC.imgs[o.id] = scImg(o.blob, o.w, o.h); if (SC.encres) delete SC.encres[o.id]; if (o.orig) SC.origs[o.id] = { blob: o.orig, w: o.ow, h: o.oh };
     const meta = ex || { id: o.id, eleve: null, ordre: ++ordre, blanche: o.blanche, lignes: o.lignes, rot: o.rot, w: o.w, h: o.h, creeLe: new Date().toISOString() };
     if (!ex) { SC.pages[o.id] = meta; nouvelles.push(meta); ruEcrire(scChemin(["pages", o.id]), meta, "une page du paquet"); }
-    return scDbMettre({ id: o.id, red: RU.id, classe: RU.classe, blob: o.blob, w: o.w, h: o.h, le: new Date().toISOString() }); });
+    return scDbMettre({ id: o.id, red: RU.id, classe: RU.classe, blob: o.blob, w: o.w, h: o.h, le: new Date().toISOString() }); });   // [C14 1.4.12, mesuré] une page déjà connue reprend ici sa retouche (scPage) : le même paquet, rechargé sur un autre ordinateur, rend tout
   let ch = Promise.resolve();
   fs.forEach(f => { ch = ch.then(() => /pdf$/i.test(f.type) || /\.pdf$/i.test(f.name) ? scLirePdf(f, traiter) : scLireImage(f).then(traiter)); });
   ch.then(() => { scCopiesOrdre(); SC.attrib = scPagesSans().length > 0; SC.ia = scPremiereSans(); scTemoinCharge("");
@@ -6963,6 +6974,7 @@ function scK() { return SC.copies[SC.ic]; }
 function scPt() { const P = scP(); return P && P.pts[SC.ip]; }
 function scEtapes(k) { if (!k) return []; const P = scP(), rep = scCopie(k).rep; const L = []; P.pts.forEach((pt, ip) => { if (pt.calcul) L.push({ ip, iq: null }); else scQuestions(pt, rep[pt.id]).forEach(q => L.push({ ip, iq: q.cle })); }); return L; }
 function scRepondre(v) {
+  state.scanDernier = "scans";   // [C14 1.4.12] là où tu travailles
   const k = scK(), pt = scPt(); if (!k || !pt) return; scToucher();
   const s = scCopie(k);
   if (pt.calcul) { scAvancer(); return; }
@@ -7011,6 +7023,7 @@ function scCaler(m, p) {   // calée sur les lignes seulement sur une copie de l
   m.l0 = m.l1 = la; m.y0 = L[la].y - pas * 0.45; m.y1 = L[la].y + pas * 0.28; return m;
 }
 function scSegments(m, p) {   // un surlignage sur plusieurs lignes suit les lignes, du mot où tu as appuyé au mot où tu as lâché
+  if (Array.isArray(m.segs) && m.segs.length) return m.segs;   // [C14 1.4.12] la phrase qui m'a marqué, choisie sur la recopie : une bande par ligne
   const L = p.lignes && p.lignes.l, pas = (p.lignes && p.lignes.pas) || 0.03;
   if (!(m.forme === "surligne" || m.forme === "etoile") || m.l0 == null || m.l1 == null || m.l1 === m.l0 || !L) return [[m.x0, m.y0, m.x1, m.y1]];
   const S = []; for (let l = m.l0; l <= m.l1; l++) { const a = l === m.l0 ? m.x0 : Math.min(L[l].x0, 0.12), b = l === m.l1 ? m.x1 : Math.max(L[l].x1, 0.9); S.push([a, L[l].y - pas * 0.48, b, L[l].y + pas * 0.3]); }
@@ -7022,7 +7035,7 @@ function scSvgMarque(m, p, sel) {
   const W = 1000, H = Math.round(1000 * p.h / p.w); const X = x => (x * W).toFixed(1), Y = y => (y * H).toFixed(1);
   const coul = m.forme === "faute" ? SC_CRIT.langue : m.forme === "etoile" ? SC_CRIT.etoile : (SC_CRIT[m.passe] || "#6b1a2a");
   const fin = 'vector-effect="non-scaling-stroke"';
-  const dit = m.forme === "faute" ? "Faute n° " + (m.num || "") + (m.bonne ? " · bonne forme : « " + m.bonne + " »" : " · sans bonne forme (à taper : un clic sur le trait rouvre son champ)") : m.forme === "etoile" ? "La phrase qui t'a touché" : m.forme === "remarque" ? "Ta remarque : « " + (m.texte || "") + " »" : (() => { const pt = scTousPoints().find(x => x.id === m.point); const q = pt && m.q != null ? scQ(pt, m.q) : null; return (pt ? pt.titre : "") + (q ? " · " + q.texte : "") + (m.sens === "non" ? " — répond « non »" : m.sens === "oui" ? " — répond « oui »" : ""); })();
+  const dit = m.forme === "faute" ? "Faute n° " + (m.num || "") + (m.bonne ? " · bonne forme : « " + m.bonne + " »" : " · sans bonne forme (à taper : un clic sur le trait rouvre son champ)") : m.forme === "etoile" ? "La phrase qui t'a marqué" : m.forme === "remarque" ? "Ta remarque : « " + (m.texte || "") + " »" : (() => { const pt = scTousPoints().find(x => x.id === m.point); const q = pt && m.q != null ? scQ(pt, m.q) : null; return (pt ? pt.titre : "") + (q ? " · " + q.texte : "") + (m.sens === "non" ? " — répond « non »" : m.sens === "oui" ? " — répond « oui »" : ""); })();
   let s = `<g class="sc-m${sel ? " sel" : ""}" data-id="${m.id}"><title>${escapeHtml(dit)} — clic : ${m.forme === "faute" ? "rouvrir sa bonne forme, pour la taper ou la changer" : m.forme === "remarque" ? "rouvrir ta remarque" : "la choisir"} ; la tirer la déplace, ses poignées la redimensionnent ; Suppr : l'effacer</title>`;
   if (m.forme === "faute") s += `<rect x="${X(m.x0)}" y="${Y(m.y0)}" width="${X(m.x1 - m.x0)}" height="${Y(m.y1 - m.y0)}" fill="transparent"/><line x1="${X(m.x0)}" y1="${(+Y(m.y1) + 1.5).toFixed(1)}" x2="${X(m.x1)}" y2="${(+Y(m.y1) + 1.5).toFixed(1)}" stroke="${coul}" stroke-width="2.5" stroke-linecap="round" ${fin}/>`;
   else if (m.forme === "encadre" || m.forme === "remarque") { const dx = 0.004, dy = 0.003; s += `<rect x="${X(m.x0 - dx)}" y="${Y(m.y0 - dy)}" width="${X(m.x1 - m.x0 + 2 * dx)}" height="${Y(m.y1 - m.y0 + 2 * dy)}" rx="4" fill="none" stroke="${m.forme === "remarque" ? "#6b1a2a" : coul}" stroke-width="2" ${m.forme === "remarque" ? 'stroke-dasharray="6 3"' : ""} ${fin}/>`; }
@@ -7038,7 +7051,8 @@ function scSvgMarque(m, p, sel) {
 function scBanque() { const vu = {}; const L = []; SC.copies.forEach(k => Object.values(scCopie(k).marques).filter(m => m.forme === "faute" && m.bonne).sort((a, b) => a.creeLe < b.creeLe ? -1 : 1).forEach(m => { if (!vu[m.bonne]) { vu[m.bonne] = { forme: m.bonne, copies: new Set(), le: m.creeLe }; L.push(vu[m.bonne]); } vu[m.bonne].copies.add(k); })); return L.sort((a, b) => a.le < b.le ? -1 : 1); }
 function scNumeroter(k) { const pg = scPagesDe(k).map(p => p.id); const L = scFautes(k).sort((a, b) => (pg.indexOf(a.page) - pg.indexOf(b.page)) || (a.y0 - b.y0) || (a.x0 - b.x0)); L.forEach((m, i) => { m.num = i + 1; m.rang = L.slice(0, i).filter(x => x.page === m.page && Math.abs((x.y0 + x.y1) / 2 - (m.y0 + m.y1) / 2) < 0.012).length; }); }
 // ── poser, déplacer, effacer, annuler ──
-function scPoser(m) { const k = scK(); m.id = scId("marque"); m.eleve = k; m.creeLe = m.modifieLe = new Date().toISOString(); scCopie(k).marques[m.id] = m; SC.annule.push({ t: "pose", k, id: m.id });
+function scPoser(m) { if (!(typeof RC !== "undefined" && RC.ouvert)) state.scanDernier = "scans";   /* [C14 1.4.12] là où tu travailles : la carte d'un élève y rouvre sa copie */
+  const k = scK(); m.id = scId("marque"); m.eleve = k; m.creeLe = m.modifieLe = new Date().toISOString(); scCopie(k).marques[m.id] = m; SC.annule.push({ t: "pose", k, id: m.id });
   if (m.q != null && m.point && (m.sens === "non" || m.sens === "oui")) { const s = scCopie(k); s.rep[m.point] = s.rep[m.point] || {}; s.rep[m.point][m.q] = m.sens === "non" ? "n" : "o"; }
   scNumeroter(k); saveState(); return m; }
 function scEffacer(id) { const k = scK(); const s = scCopie(k); const m = s.marques[id]; if (!m) return; SC.annule.push({ t: "efface", k, m: JSON.parse(JSON.stringify(m)) }); delete s.marques[id]; SC.sel = null; scNumeroter(k); saveState(); scRendre(); }
@@ -7202,7 +7216,7 @@ function scPanneau() {
         <p class="sc-m">${F.length} faute${F.length > 1 ? "s" : ""} · ${n ? n + " lignes écrites" : "lignes écrites à taper"}</p>
         ${scLignesManquent(k) ? "" : scLignesChamp(k, false)}
         <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">${scPagesDe(k).map((p, i) => `<button class="sc-btn" onclick="scTournerPage('${p.id}')" title="Tourner la page ${i + 1} de cette copie d'un quart de tour vers la droite ; ses marques tournent avec elle.">↻ Page ${i + 1}</button><button class="sc-btn" onclick="scRecadrerDebut('${p.id}')" title="Retoucher la page ${i + 1} comme une photo : le cadre (ce qui dépasse, une autre copie, la table, disparaît de la copie et du fichier de l'élève) et la rotation degré par degré. Rien n'est perdu, les marques suivent leurs mots.">✂ Page ${i + 1}</button>`).join("")}${scPagesDe(k).length > 1 ? `<button class="sc-btn" onclick="scOrdrePages('${escapeAttr(k)}')" title="Changer l'ordre des pages de cette copie : la dernière passe en premier.">⇄ Ordre des pages</button>` : ""}</div>
-        <div style="margin-top:8px"><button class="sc-btn${SC.outil === "etoile" ? " on" : ""}" onclick="SC.outil=SC.outil==='etoile'?null:'etoile';scRendre()" title="Le pinceau doré : surligne la phrase qui t'a touché. Un seul tracé, puis le pinceau revient aux fautes.">★ La phrase qui t'a touché</button></div></div>`;
+        <div style="margin-top:8px"><button class="sc-btn${SC.outil === "etoile" ? " on" : ""}" onclick="SC.outil=SC.outil==='etoile'?null:'etoile';scRendre()" title="Le pinceau doré : surligne la phrase qui t'a marqué. Un seul tracé, puis le pinceau revient aux fautes.">★ La phrase qui t'a marqué</button></div></div>`;
       const B = scBanque(); h += `<div class="sc-bloc"><h3>Les formes déjà vues dans le paquet</h3>${B.length ? `<div class="sc-banque">${B.map((b, i) => `<span class="sc-touche">${i + 1}</span><span>${escapeHtml(b.forme)} <i class="sc-m">· ${b.copies.size} copie${b.copies.size > 1 ? "s" : ""}</i></span>`).join("")}</div>` : `<p class="sc-m">Aucune encore : chaque forme tapée prend un numéro.</p>`}</div>`;
     } else if (pt.calcul === "lignes") {
       const r = scCase(pt, k); h += `<div class="sc-bloc"><h3>${escapeHtml(pt.titre)} · calculé</h3><p>${r ? scChip(r.c.niveau, r.txt) : "Les lignes écrites manquent : tape-les ici, Entrée."}</p><p>${scLignesChamp(k, !r)}</p><p class="sc-m">Entrée : point suivant.</p></div>`;
@@ -7273,7 +7287,7 @@ function scVerdict(v) { const L = scRetoursListe(); const r = L[SC.ir]; if (!r) 
   // l'onglet de test de l'élève reçoit ton verdict, comme l'élève le reçoit du site
   scPousser(r.eleve); SC.ir = Math.min(SC.ir + 1, L.length - 1); scRendre(); }
 // ── l'aide, la fenêtre ──
-RU_AIDES.scan = { ou: "Corriger sur les scans", l: [["le pinceau", "appuie, glisse, lâche : la forme vient avec la question (souligné rouge, une faute ; surligné, une citation ; encadré, un mot ; trait dans la marge, un paragraphe) ; un clic sans glisser prend le mot sous la souris"], ["un clic dans le blanc", "hors de la page : l'outil se relâche (le champ se ferme, gardé ; la marque choisie et l'outil d'un tracé se relâchent)"], ["Entrée / N", "oui · non, puis la question suivante ; une marque qui répond « non » ou « oui » répond pour toi"], ["⌫", "la question précédente"], ["→ ←", "la copie suivante · précédente ; dans les retours : le retour suivant · précédent"], ["clic sur une marque", "la choisir ; sur une faute, sa bonne forme se rouvre (pour la taper ou la changer) ; sur une remarque, son texte ; tire-la, ou ses poignées"], ["Suppr · Ctrl+Z", "effacer la marque choisie · annuler"], ["★", "la phrase qui t'a touché, surlignée en doré (passe de la langue)"], ["Ctrl + molette", "zoomer, sous la souris ; « ↔ Largeur » revient à la largeur de l'écran"], ["Maj (tenue)", "la loupe : un rond grossi trois fois sous la souris"], ["Alt (tenue)", "la copie nue : les marques disparaissent tant que tu tiens la touche"], ["un clic sur un mot", "le trait prend la longueur du mot, lue dans l'encre (glisse si l'appli se trompe)"], ["Tab", "dans la bonne forme : prend la première forme du paquet qui commence pareil"], ["💬 Remarque · Faute", "un tracé avec ce pinceau, puis le pinceau revient à la question"], ["⇥ Replier", "la copie prend la largeur ; la question reste dans une bande"], ["📋 Le récapitulatif", "la note, la grille, le bilan tel que l'élève le lira, « À reprendre » ; il s'ouvre seul quand tous les points d'une copie sont passés : Entrée, la copie suivante ; Échap, rester"], ["les lignes écrites", "demandées au début de chaque copie, passe de la langue : tape le nombre, Entrée ; tant qu'il manque, la copie ne se quitte pas"], ["✂ Page", "retoucher la photo : le cadre et la rotation degré par degré (flèches), Entrée garde, Échap annule ; les marques suivent leurs mots"], ["⠿ bonne forme", "le champ se pose au-dessus du mot ; tire-le par ⠿ s'il cache quelque chose, il garde cette place"], ["le paquet", "il reste dans ce navigateur et sur ta clé, jamais au site ; les marques et les réponses vont au site, chacune avec son identité"]] };
+RU_AIDES.scan = { ou: "Corriger sur les scans", l: [["sur un autre ordinateur", "recharge le même paquet (« 📄 Charger le paquet ») : chaque page retrouve son élève, ta recopie, tes marques et tes retouches ; tout le reste est déjà au site"], ["le pinceau", "appuie, glisse, lâche : la forme vient avec la question (souligné rouge, une faute ; surligné, une citation ; encadré, un mot ; trait dans la marge, un paragraphe) ; un clic sans glisser prend le mot sous la souris"], ["un clic dans le blanc", "hors de la page : l'outil se relâche (le champ se ferme, gardé ; la marque choisie et l'outil d'un tracé se relâchent)"], ["Entrée / N", "oui · non, puis la question suivante ; une marque qui répond « non » ou « oui » répond pour toi"], ["⌫", "la question précédente"], ["→ ←", "la copie suivante · précédente ; dans les retours : le retour suivant · précédent"], ["clic sur une marque", "la choisir ; sur une faute, sa bonne forme se rouvre (pour la taper ou la changer) ; sur une remarque, son texte ; tire-la, ou ses poignées"], ["Suppr · Ctrl+Z", "effacer la marque choisie · annuler"], ["★", "la phrase qui t'a marqué, surlignée en doré (passe de la langue)"], ["Ctrl + molette", "zoomer, sous la souris ; « ↔ Largeur » revient à la largeur de l'écran"], ["Maj (tenue)", "la loupe : un rond grossi trois fois sous la souris"], ["Alt (tenue)", "la copie nue : les marques disparaissent tant que tu tiens la touche"], ["un clic sur un mot", "le trait prend la longueur du mot, lue dans l'encre (glisse si l'appli se trompe)"], ["Tab", "dans la bonne forme : prend la première forme du paquet qui commence pareil"], ["💬 Remarque · Faute", "un tracé avec ce pinceau, puis le pinceau revient à la question"], ["⇥ Replier", "la copie prend la largeur ; la question reste dans une bande"], ["📋 Le récapitulatif", "la note, la grille, le bilan tel que l'élève le lira, « À reprendre » ; il s'ouvre seul quand tous les points d'une copie sont passés : Entrée, la copie suivante ; Échap, rester"], ["les lignes écrites", "demandées au début de chaque copie, passe de la langue : tape le nombre, Entrée ; tant qu'il manque, la copie ne se quitte pas"], ["✂ Page", "retoucher la photo : le cadre et la rotation degré par degré (flèches), Entrée garde, Échap annule ; les marques suivent leurs mots"], ["⠿ bonne forme", "le champ se pose au-dessus du mot ; tire-le par ⠿ s'il cache quelque chose, il garde cette place"], ["le paquet", "il reste dans ce navigateur et sur ta clé, jamais au site ; les marques et les réponses vont au site, chacune avec son identité"]] };
 document.addEventListener("focusout", () => setTimeout(() => { if (SC.panneauAttend && SC.ouvert) { const a = document.activeElement; if (!(a && document.getElementById("scPanneau").contains(a))) { SC.panneauAttend = false; scPanneau(); } } }, 0));
 function scModale(h) { const m = document.getElementById("scModale"); m.querySelector(".sc-modale-c").innerHTML = h + `<div style="text-align:right;margin-top:10px"><button class="sc-btn" onclick="scModaleFermer()" title="Fermer cette fenêtre (Échap fait pareil) ; rien n'est perdu.">Fermer</button></div>`; m.classList.add("show"); }
 function scModaleFermer() { document.getElementById("scModale").classList.remove("show"); }
@@ -7491,7 +7505,7 @@ function scBilan(k) {
   const P = [], phrases = L => L.join(" ");
   if (bien.length) P.push((pre ? pre + ", " + scMin(bien[0]) : bien[0]) + (bien.length > 1 ? " " + phrases(bien.slice(1)) : ""));
   if (manque.length) P.push("Ce qui manque encore : " + scMin(manque[0]) + (manque.length > 1 ? " " + phrases(manque.slice(1)) : ""));
-  if (etoile) P.push("La phrase qui m'a touché est surlignée en or sur ta copie.");
+  if (etoile) P.push("La phrase qui m'a marqué est surlignée en or sur ta copie.");
   if (rq.length) P.push("Mes remarques sur ta copie : " + rq.map(t => "« " + t + " »").join(" ; ") + ".");
   return { paras: P, taches: T };
 }
@@ -7569,7 +7583,7 @@ function scTitreCopie() {
   else if (SC.attrib) t = "La page à donner à un élève : tape ses initiales à droite, Entrée." + vue;
   else if (scP() && scP().id === "retours") t = "La copie de l'élève dont tu relis le retour, avec tes marques." + vue;
   else { const o = scOutil(); const f = o ? o.forme : "encadre";
-    const dit = { faute: "souligne une faute", etoile: "surligne en or la phrase qui t'a touché", remarque: "encadre un passage, puis tu tapes ta remarque", surligne: "surligne une citation", marge: "trace un trait dans la marge, le long d'un paragraphe", encadre: "encadre un mot" }[f] || "pose une marque";
+    const dit = { faute: "souligne une faute", etoile: "surligne en or la phrase qui t'a marqué", remarque: "encadre un passage, puis tu tapes ta remarque", surligne: "surligne une citation", marge: "trace un trait dans la marge, le long d'un paragraphe", encadre: "encadre un mot" }[f] || "pose une marque";
     t = "Le pinceau " + dit + " : appuie, glisse, lâche." + (f === "marge" ? "" : " Un clic sans glisser prend le mot sous la souris.") + " Un clic sur une faute rouvre sa bonne forme. Une marque choisie : Suppr l'efface, Ctrl + Z la remet." + vue; }
   SC.titreCopie = t; if (Z.hasAttribute("title")) Z.removeAttribute("title");   // Paul, 30/10 11:57 : l'infobulle de la copie s'affichait en permanence, « c'est pénible » : la copie n'en a plus ; ce qu'elle disait est dans l'aide (?) et dans « Les touches »
 }
@@ -7643,7 +7657,7 @@ function scEleveDonnees(k, test) {
   const place = m => ({ page: ordre.indexOf(m.page), y: m.y0 });
   const M = Object.values(s.marques).filter(m => ordre.indexOf(m.page) >= 0);
   const fautes = M.filter(m => m.forme === "faute").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0) || (a.x0 - b.x0))
-    .map(m => { const p = SC.pages[m.page]; const l = m.l0 != null && m.l0 >= 0 ? m.l0 + 1 : null; return { id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, num: m.num, rang: m.rang || 0, ligne: l, bonne: m.bonne || null }; });
+    .map(m => { const p = SC.pages[m.page]; const l = m.l0 != null && m.l0 >= 0 ? m.l0 + 1 : null; return { id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, num: m.num, rang: m.rang || 0, ligne: l, bonne: m.bonne || null, t: (m.bande && m.bande.code) || null }; });
   const pts = []; SC.grille.criteres.forEach(c => c.points.forEach(pt => { const r = scCase(pt, k); if (!r || !r.complet) return;   // seuls les points que tu as passés partent chez l'élève
     const ms = M.filter(m => m.point === pt.id && m.forme !== "faute" && m.forme !== "etoile").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0));
     const pl = ms.length ? place(ms[0]) : { page: 0, y: 0 };
@@ -7655,24 +7669,36 @@ function scEleveDonnees(k, test) {
   const nt = scNote(k);
   return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB), correctionEleve: scCorrectionEleve(),
     criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: nt.ok ? nt.n : null, total: nt.tot,
-    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL,
+    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL, types: scTypesEleve(),
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
+}
+/* [C14 1.4.12] (Paul 31/10 14:03 : « les mots sont soulignés dans la couleur de leur erreur et ils ont le détail dans la marge » ; C14 226) : les couleurs et
+   les lettres de la correction de dictée (TYPE_STYLE, « Badge type ») ; une faute sans type d'erreur : gris, « • » */
+const SC_COURT = { G: "G", M: "∅", I: "?", L: "L", C: "Acc.", P: "P", E: "E", X: "+", A: "⚠" };
+function scTypesEleve() { const o = { _: { couleur: "#6b7280", fond: "#f3f4f6", libelle: "", court: "•" } }; if (typeof RC_TYPES === "object") Object.keys(RC_TYPES).forEach(c => { o[c] = Object.assign({}, RC_TYPES[c], { court: SC_COURT[c] || c }); }); return o; }
+/* la marge ajoutée à gauche de la photo : à la hauteur de chaque ligne fautive, une pastille par faute, dans l'ordre de la ligne (sans la bonne forme) */
+function scPastilles(D, i) {
+  const F = D.fautes.map((f, j) => ({ f, j })).filter(o => o.f.page === i).sort((a, b) => ((a.f.y0 + a.f.y1) - (b.f.y0 + b.f.y1)) || (a.f.x0 - b.f.x0)), rangs = [];
+  F.forEach(o => { const y = (o.f.y0 + o.f.y1) / 2, r = rangs.find(g => Math.abs(g.y - y) < 0.012); if (r) { r.l.push(o); r.y = (r.y * (r.l.length - 1) + y) / r.l.length; } else rangs.push({ y, l: [o] }); });
+  rangs.forEach(g => g.l.sort((a, b) => a.f.x0 - b.f.x0));
+  return rangs;
 }
 function scEleveFichier(k, test) {
   const D = scEleveDonnees(k, test); const ps = scPagesDe(k);
   return Promise.all(ps.map(p => SC.imgs[p.id] ? scBlobUrl(SC.imgs[p.id].blob) : Promise.resolve(""))).then(srcs => {
     const pc = (v) => (v * 100).toFixed(3) + "%";
     const statique = ps.map((p, i) => { let mk = "";
-      D.fautes.filter(f => f.page === i).forEach(f => { mk += `<div class="mk f" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div>`; });
+      D.fautes.filter(f => f.page === i).forEach(f => { const T = D.types[f.t] || D.types._; mk += `<div class="mk f" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};border-top-color:${T.couleur}"></div>`; });
       D.etoile.filter(e => e.page === i).forEach(e => e.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${SC_CRIT.etoile}40"></div>`; }));
       D.points.forEach(pt => pt.marques.filter(m => m.page === i).forEach(m => { const c = SC_CRIT[pt.crit] || "#6b1a2a";
         if (m.forme === "surligne") m.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${c}40"></div>`; });
         else mk += `<div class="mk ${m.forme === "marge" ? "g" : "e"}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + c : "border-color:" + c}"></div>`; }));
-      return `<div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${srcs[i]}" alt="">${mk}</div>`; }).join("");
+      const marge = scPastilles(D, i).map(g => `<div class="pas" style="top:${pc(g.y)}">${g.l.map(o => { const T = D.types[o.f.t] || D.types._; return `<span style="background:${T.fond};color:${T.texte || T.couleur};border-color:${T.couleur}">${T.court}</span>`; }).join("")}</div>`).join("");
+      return `<div class="pgx"><div class="marge">${marge}</div><div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${srcs[i]}" alt="">${mk}</div></div>`; }).join("");
     const css = `*{box-sizing:border-box}body{margin:0;background:#f5f1ea;color:#2b2520;font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
 .tete{background:linear-gradient(#c08a4a,#a67a44);color:#fff;padding:10px 16px;font:600 19px Georgia,serif}.tete small{font:14px system-ui;opacity:.9;margin-left:8px}
 .copie{max-width:900px;margin:0 auto;padding:10px}.pg{position:relative;width:100%;margin-bottom:12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
-.mk{position:absolute}.mk.f{height:0;border-top:3px solid #c54040;border-radius:2px}.mk.e{border:2.5px solid;border-radius:4px}.mk.g{border-radius:4px}`;
+.mk{position:absolute}.mk.f{height:0;border-top:3px solid #c54040;border-radius:2px}.pgx{display:flex;align-items:stretch;gap:4px;margin-bottom:12px}.pgx .pg{margin-bottom:0;flex:1;min-width:0}.marge{position:relative;width:46px;flex:none}.pas{position:absolute;left:0;right:0;transform:translateY(-50%);display:flex;flex-wrap:wrap;gap:2px;justify-content:center}.pas span{font:700 11px/1 system-ui;border:1.5px solid;border-radius:6px;padding:3px 3px;min-width:18px;text-align:center;cursor:pointer}.pas span.on{box-shadow:0 0 0 2px #2b2520}.mk.e{border:2.5px solid;border-radius:4px}.mk.g{border-radius:4px}`;
     const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(D.titre)} — ${escapeHtml(D.nom)}</title><style>${css}</style></head><body>
 <div class="tete">${escapeHtml(D.titre)}<small>${escapeHtml(D.nom)}</small></div><div class="copie" id="statique">${statique}</div>
 <script>const D=${JSON.stringify(D).replace(/</g, "\\u003c")};const IMG=${JSON.stringify(srcs)};(${(D.correctionEleve ? scEleveApp : scEleveLecture).toString()})(D,IMG);<\/script></body></html>`;
@@ -7685,12 +7711,13 @@ function scEleveFichier(k, test) {
 // elle servira à la correction par l'élève, quand elle sera ouverte.
 function scEleveLecture(D, IMG) {
   const $ = s => document.querySelector(s); const pc = v => (v * 100).toFixed(3) + "%"; const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const Ty = f => (D.types && (D.types[f.t] || D.types._)) || { couleur: "#c54040", fond: "#fde8e8", libelle: "", court: "•" };   // [C14 1.4.12] le type d'erreur d'une faute, sa couleur et sa lettre
   let vue = null;   // null : la grille ; { t: "p", i } un point ; { t: "f", i } une faute ; { t: "r", i } une remarque ; { t: "e" } la phrase dorée
   if (D.test) document.body.insertAdjacentHTML("afterbegin", `<div style="background:#fff3d6;border-bottom:1px solid #d4b87a;color:#5a3010;padding:5px 14px;font:14px system-ui">🧪 Mode test : le fichier tel que l'élève le verra. Il le lit, il n'y écrit rien.</div>`);
   const st = document.createElement("style"); st.textContent = `#statique{display:none}
 .app{display:flex;gap:16px;padding:12px;min-height:calc(100vh - 50px)}.col{flex:1;min-width:0}.pan{width:420px;flex:none;position:sticky;top:10px;align-self:flex-start;max-height:calc(100vh - 20px);overflow:auto}
 .pg{position:relative;width:100%;max-width:1000px;margin:0 auto 12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
-.mk{position:absolute;cursor:pointer}#col .mk.f{height:12px;margin-top:-9px;border:0;border-radius:0}#col .mk.f::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:2px;background:#c54040}#col .mk.f.on{outline:0}#col .mk.f.on::after{height:5px;bottom:-1px;box-shadow:0 0 0 3px #f4b0b0}.e{border:2.5px solid;border-radius:4px}.g{border-radius:4px}.mk.on{outline:3px solid #2b2520;outline-offset:2px}
+.mk{position:absolute;cursor:pointer}#col .mk.f{height:12px;margin-top:-9px;border:0;border-radius:0}#col .mk.f::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:2px;background:var(--c,#c54040)}#col .mk.f.on{outline:0}#col .mk.f.on::after{height:5px;bottom:-1px;box-shadow:0 0 0 3px #2b252033}.pgx{display:flex;align-items:stretch;gap:4px;max-width:1046px;margin:0 auto 12px}.pgx .pg{margin:0;flex:1;min-width:0}.marge{position:relative;width:46px;flex:none}.pas{position:absolute;left:0;right:0;transform:translateY(-50%);display:flex;flex-wrap:wrap;gap:2px;justify-content:center}.pas span{font:700 11px/1 system-ui;border:1.5px solid;border-radius:6px;padding:3px 3px;min-width:18px;text-align:center;cursor:pointer}.pas span.on{box-shadow:0 0 0 2px #2b2520}.e{border:2.5px solid;border-radius:4px}.g{border-radius:4px}.mk.on{outline:3px solid #2b2520;outline-offset:2px}
 .num{position:absolute;transform:translate(-50%,-50%);background:#c54040;color:#fff;border-radius:50%;width:22px;height:22px;font:700 12px/22px system-ui;text-align:center;cursor:pointer}
 .pin{position:absolute;left:.4%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);cursor:pointer}.pin.on{box-shadow:0 0 0 3px #2b2520}
 .bloc{background:#fdfbf7;border:1px solid #d6cfc1;border-radius:10px;padding:12px 14px;margin-bottom:10px}.bloc h3{margin:0 0 6px;font:600 12.5px system-ui;letter-spacing:.1em;text-transform:uppercase;color:#6b1a2a}
@@ -7708,11 +7735,15 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
   const app = document.createElement("div"); app.className = "app"; app.innerHTML = `<div class="col" id="col"></div><div class="pan" id="pan"></div>`; document.body.appendChild(app);
   const montrer = (page, y) => { const P = document.querySelectorAll(".pg")[page]; if (!P) return; const r = P.getBoundingClientRect(); window.scrollTo({ top: window.scrollY + r.top + r.height * y - window.innerHeight * 0.3, behavior: "smooth" }); };
   function copie() {
-    const col = $("#col"); col.innerHTML = D.pages.map((p, i) => `<div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${IMG[i]}" alt=""></div>`).join("");
-    const pgs = col.querySelectorAll(".pg"), on = (t, i) => vue && vue.t === t && vue.i === i;
+    const on = (t, i) => vue && vue.t === t && vue.i === i;
+    const rangs = i => { const F = D.fautes.map((f, j) => ({ f, j })).filter(o => o.f.page === i).sort((a, b) => ((a.f.y0 + a.f.y1) - (b.f.y0 + b.f.y1)) || (a.f.x0 - b.f.x0)), R = [];   // la même règle que scPastilles (ce code tourne seul chez l'élève)
+      F.forEach(o => { const y = (o.f.y0 + o.f.y1) / 2, r = R.find(g => Math.abs(g.y - y) < 0.012); if (r) { r.l.push(o); r.y = (r.y * (r.l.length - 1) + y) / r.l.length; } else R.push({ y, l: [o] }); }); R.forEach(g => g.l.sort((a, b) => a.f.x0 - b.f.x0)); return R; };
+    const marge = i => rangs(i).map(g => `<div class="pas" style="top:${pc(g.y)}">${g.l.map(o => `<span class="${on("f", o.j) ? "on" : ""}" data-v="f:${o.j}" title="Faute ${o.f.num}" style="background:${Ty(o.f).fond};color:${Ty(o.f).texte || Ty(o.f).couleur};border-color:${Ty(o.f).couleur}">${Ty(o.f).court}</span>`).join("")}</div>`).join("");
+    const col = $("#col"); col.innerHTML = D.pages.map((p, i) => `<div class="pgx"><div class="marge">${marge(i)}</div><div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${IMG[i]}" alt=""></div></div>`).join("");
+    const pgs = col.querySelectorAll(".pg");
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk${vue && vue.t === "e" ? " on" : ""}" data-v="e" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach((f, i) => { const P = pgs[f.page]; if (!P) return;
-      P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num" data-v="f:${i}" style="left:${pc(0.022 + (f.rang || 0) * 0.03)};top:${pc((f.y0 + f.y1) / 2)}">${f.num}</div>`); });
+      P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};--c:${Ty(f).couleur}"></div>`); });
     (D.remarques || []).forEach((r0, i) => { const P = pgs[r0.page]; if (!P) return; P.insertAdjacentHTML("beforeend", `<div class="mk e${on("r", i) ? " on" : ""}" data-v="r:${i}" style="left:${pc(r0.x0 - 0.004)};top:${pc(r0.y0 - 0.003)};width:${pc(r0.x1 - r0.x0 + 0.008)};height:${pc(r0.y1 - r0.y0 + 0.006)};border:2px dashed #6b1a2a"></div>`); });
     const pris = {}; D.points.forEach((p, i) => { const P = pgs[p.place.page]; if (!P) return; const k = D.coul[p.crit] || "#6b1a2a"; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1;
       p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return;
@@ -7728,7 +7759,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
       const crit = []; D.points.forEach((p, i) => { let c = crit.find(x => x.id === p.crit); if (!c) crit.push(c = { id: p.crit, nom: p.critNom, l: [] }); c.l.push({ p, i }); });
       pan.innerHTML = `<div class="bloc"><h3>Ta note</h3><div class="note">${D.note != null ? String(D.note).replace(".", ",") + " / " + D.total : "…"}</div></div>
         <div class="bloc"><h3>Ta grille</h3>${crit.map(c => `<div class="crit">${esc(c.nom)}</div>` + c.l.map(({ p, i }) => `<div class="ligne" data-p="${i}"><i style="background:${D.bord[p.niveau]}"></i><span>${esc(p.titre)}<br><span class="m">${esc(p.fait)}</span></span><b>${String(p.pts).replace(".", ",")} / ${p.poids}</b></div>`).join("")).join("")}</div>
-        ${D.fautes.length ? `<div class="bloc"><h3>Tes fautes</h3><div>${D.fautes.length} soulignée${D.fautes.length > 1 ? "s" : ""} en rouge sur ta copie.</div></div>` : ""}
+        ${D.fautes.length ? `<div class="bloc"><h3>Tes fautes</h3><div>${D.fautes.length} soulignée${D.fautes.length > 1 ? "s" : ""} sur ta copie, chacune dans la couleur de son type d'erreur.</div></div>` : ""}
         ${(D.remarques || []).length ? `<div class="bloc"><h3>Mes remarques</h3>${D.remarques.map((r, i) => `<div class="ligne" data-r="${i}"><i style="background:#6b1a2a"></i><span>${esc(r.texte)}</span><b></b></div>`).join("")}</div>` : ""}`;
       pan.querySelectorAll("[data-p]").forEach(e => e.addEventListener("click", () => { const i = +e.dataset.p; vue = { t: "p", i }; copie(); panneau(); const p = D.points[i]; montrer(p.place.page, p.place.y); }));
       pan.querySelectorAll("[data-r]").forEach(e => e.addEventListener("click", () => { const i = +e.dataset.r; vue = { t: "r", i }; copie(); panneau(); const r = D.remarques[i]; montrer(r.page, r.y0); }));
@@ -7738,16 +7769,16 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
       pan.innerHTML = `<div class="bloc"><h3>${esc(p.critNom)}</h3><div style="font-weight:700">${esc(p.titre)}</div>
         <div class="ech">${[0, 1, 2, 3].map(n => `<span class="${n === p.niveau ? "on" : ""}" style="background:${D.fond[n]};border-color:${D.bord[n]}">${esc(D.niveaux[n])}<br>${String(p.bareme[n]).replace(".", ",")}</span>`).join("")}</div>
         <div style="font-size:17px">${esc(p.fait)}</div>${p.tache ? `<div class="bloc" style="margin:10px 0 0;background:#fff"><h3>À reprendre</h3>${esc(p.tache)}</div>` : ""}${retour}</div>`; }
-    else if (vue.t === "f") { const f = D.fautes[vue.i]; pan.innerHTML = `<div class="bloc"><h3>Faute ${f.num} sur ${D.fautes.length}</h3><div>Une erreur d'orthographe ou de grammaire, soulignée en rouge.</div>${retour}</div>`; }
+    else if (vue.t === "f") { const f = D.fautes[vue.i]; pan.innerHTML = `<div class="bloc"><h3>Faute ${f.num} sur ${D.fautes.length}${Ty(f).libelle ? " · " + esc(Ty(f).libelle) : ""}</h3>${retour}</div>`; }
     else if (vue.t === "r") { const r = D.remarques[vue.i]; pan.innerHTML = `<div class="bloc"><h3>Ma remarque</h3><div style="font-size:17px">${esc(r.texte)}</div>${retour}</div>`; }
-    else pan.innerHTML = `<div class="bloc"><h3>La phrase qui m'a touché</h3><div>Surlignée en or sur ta copie.</div>${retour}</div>`;
+    else pan.innerHTML = `<div class="bloc"><h3>La phrase qui m'a marqué</h3><div>Surlignée en or sur ta copie.</div>${retour}</div>`;
     $("#gr").onclick = () => { vue = null; copie(); panneau(); };
   }
   // la traversée (cadrée le 29/10) : à l'ouverture, la copie passe à travers la grille, la langue d'abord
   function traversee() {
     const crit = [{ id: "langue", nom: "La langue" }].concat(D.criteres); const nomsC = D.criteres.map(c => c.nom.replace(/^L[ae]s? |^L'/, m => m.toLowerCase()));
     const liste = nomsC.length > 1 ? nomsC.slice(0, -1).join(", ") + " et " + nomsC[nomsC.length - 1] : (nomsC[0] || "");
-    const L = ["La grille de correction est au-dessus de ta copie : une feuille par critère.", "Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées en rouge.",
+    const L = ["La grille de correction est au-dessus de ta copie : une feuille par critère.", "Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées dans la couleur de leur type d'erreur.",
       "Puis à travers " + liste + " : leurs points apparaissent sur ta copie.", "Ta copie est passée à travers toute la grille."];
     const T = document.createElement("div"); T.className = "trav";
     T.innerHTML = `<div class="sc3"><div class="pile">${crit.map((c, i) => `<div class="feuille" style="transform:translateZ(${(i + 1) * 46}px);border-color:${D.coul[c.id] || "#6b1a2a"}"><b style="background:${D.coul[c.id] || "#6b1a2a"}">${esc(c.nom)}</b></div>`).join("")}<div class="cp" id="cp"><img src="${IMG[0] || ""}" alt=""></div></div></div><div class="leg" id="leg"></div><button class="passer" id="passer">⏭ Passer</button>`;
@@ -7858,7 +7889,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
   function traversee() {
     const crit = [{ id: "langue", nom: "La langue" }].concat(D.criteres); const nomsC = D.criteres.map(c => c.nom.replace(/^L[ae]s? |^L'/, m => m.toLowerCase()));
     const liste = nomsC.length > 1 ? nomsC.slice(0, -1).join(", ") + " et " + nomsC[nomsC.length - 1] : (nomsC[0] || "");
-    const L = ["La grille de correction est au-dessus de ta copie : une feuille par critère.", "Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées en rouge.",
+    const L = ["La grille de correction est au-dessus de ta copie : une feuille par critère.", "Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées dans la couleur de leur type d'erreur.",
       "Puis à travers " + liste + " : leurs points apparaissent sur ta copie, gris, avec un « ? ».", "Ta copie est passée à travers toute la grille."];
     const T = document.createElement("div"); T.className = "trav";
     T.innerHTML = `<div class="sc3"><div class="pile">${crit.map((c, i) => `<div class="feuille" style="transform:translateZ(${(i + 1) * 46}px);border-color:${D.coul[c.id] || "#6b1a2a"}"><b style="background:${D.coul[c.id] || "#6b1a2a"}">${esc(c.nom)}</b></div>`).join("")}<div class="cp" id="cp"><img src="${IMG[0] || ""}" alt=""></div></div></div><div class="leg" id="leg"></div><button class="passer" id="passer">⏭</button>`;
@@ -8019,6 +8050,7 @@ function rcInterface() {
     '<button id="rcPlus" class="sc-btn" title="Agrandir ensemble la photo et la feuille.">＋</button>',
     '<button id="rcExportIA" class="sc-btn" title="Télécharger un fichier pour l’IA : ta consigne, puis tes copies recopiées, numérotées, sans aucun nom. Donne-le à l’IA, elle te rend le même fichier corrigé.">⇪ Exporter pour l’IA</button>',
     '<button id="rcImportIA" class="sc-btn" title="Coller ou choisir le retour de l’IA. L’app vérifie que toutes les lignes correspondent avant de rien changer.">⇩ Charger le corrigé de l’IA</button><button id="rcFluxOuvrir" class="sc-btn" title="Le flux de la classe : pour chaque copie, ce qui est recopié, envoyé à l’IA, chargé, et où en est la bande, avec l’heure de chaque étape.">📋 Le flux</button><span id="rcIAEtat" class="rc-ia-etat"></span>',
+    '<button id="rcPhraseOuvrir" class="sc-btn" title="La fin de la recopie de cette copie : surligne la phrase qui t’a marqué (clic sur son premier mot, puis sur son dernier), ou coche « Pas de phrase ». Elle passe en or sur la copie de l’élève. Le flux ne coche « recopiée » qu’après.">★ La phrase qui m’a marqué</button>',
     '<button id="rcBandeOuvrir" class="sc-btn" title="La bande : elle s’arrête à chaque faute proposée par le corrigé de l’IA. Entrée ou Espace : c’est une faute ; N : non. Échap : revenir à la recopie.">▶ La bande</button>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
@@ -8026,6 +8058,7 @@ function rcInterface() {
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>',
     '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo"></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
+    '<div id="rcPhrase" class="rc-ia" hidden><div class="rc-ia-c rc-phrase-c" role="dialog" aria-label="La phrase qui m’a marqué"><b>La phrase qui m’a marqué</b><span>Clique le premier mot de la phrase, puis le dernier. Elle passera en or sur la copie de l’élève. C’est la fin de la recopie de cette copie.</span><div id="rcPhraseTexte" class="rc-phrase-t"></div><div class="rc-ia-b"><label class="rc-phrase-non" title="Aucune phrase ne t’a marqué dans cette copie : la recopie est finie quand même.">' + '<input type="checkbox" id="rcPhraseAucune"> Pas de phrase</label><button id="rcPhraseOui" class="sc-btn" disabled title="Choisis d’abord le premier et le dernier mot de la phrase.">✓ C’est elle</button><button id="rcPhraseFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
     '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
     '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
     '<textarea id="rcIATexte" spellcheck="false" placeholder="Colle ici le retour de l’IA"></textarea>',
@@ -8050,6 +8083,8 @@ function rcInterface() {
   e.querySelector("#rcImportIA").onclick = rcIAOuvrir;
   e.querySelector("#rcIAFermer").onclick = rcIAFermer;
   e.querySelector("#rcFluxOuvrir").onclick = rcFluxOuvrir; e.querySelector("#rcFluxFermer").onclick = rcFluxFermer;
+  e.querySelector("#rcPhraseOuvrir").onclick = rcPhraseOuvrir; e.querySelector("#rcPhraseFermer").onclick = rcPhraseFermer; e.querySelector("#rcPhraseOui").onclick = rcPhraseValider;
+  e.querySelector("#rcPhraseAucune").onchange = ev => { if (ev.target.checked) rcPhraseAucune(); };
   e.querySelector("#rcIAEffacer").onclick = rcIAEffacerDemander;
   e.querySelector("#rcIAValider").onclick = () => rcIACharger(e.querySelector("#rcIATexte").value);
   e.querySelector("#rcIAFichier").onchange = ev => { const f = ev.target.files && ev.target.files[0]; if (!f) return; f.text().then(t => { e.querySelector("#rcIATexte").value = t; rcIACharger(t); }); ev.target.value = ""; };
@@ -8114,7 +8149,7 @@ function rcOuvrir(reprendre) {
   if (!SC.ouvert || SC.attrib || !scK()) { toast("Donne d'abord chaque page à son élève."); return; }
   if (SC.champ) scChampFermer(true);
   if (reprendre) SC.actif = Date.now(); else scChrono();   // [C14 dette ⓑ] la reprise à l'ouverture n'est pas un geste : elle ne compte pas de temps, la copie n'est pas réécrite
-  RC.ouvert = true; RC.documents = {}; RC.annule = []; RC.zoom = 1;
+  RC.ouvert = true; RC.documents = {}; RC.annule = []; RC.zoom = 1; state.scanDernier = "recopie";   // [C14 1.4.12] là où tu travailles : la carte d'un élève y rouvre sa copie
   const trace = state.scanRecopie;
   const dernier = trace && (reprendre ? trace.ouverte : trace.copie === scK()) ? trace : null;
   RC.copie = dernier && SC.copies.includes(dernier.copie) ? dernier.copie : scK();
@@ -8185,6 +8220,7 @@ function rcRapprocherLignes() {
       input.onfocus = () => { if (pageRow !== RC.page) rcActiverPage(pageRow); if (RC.ligne !== id) rcSelectionner(id, false, false); };
       input.onclick = () => { if (pageRow !== RC.page) rcActiverPage(pageRow); rcSelectionner(id, false, false); rcGarder(); };
       input.oninput = () => { if (pageRow !== RC.page) rcActiverPage(pageRow); const ligne = rcDocument(pageRow).lignes[id]; const vide = !(ligne.texte || "").trim(); ligne.texte = input.value; rcAjusterTaille(input); if (vide !== !(input.value || "").trim()) { rcMarques(); rcEtatLigne(); rcRapprocherLignes(); } rcGarder(); };
+      input.onchange = () => { if (rcRetroactif(RC.copie, pageRow, id)) { rcGarder(); rcEtatIA(); } };   // [C14 1.4.12] une modif change partout (Paul 23:09)
       row.appendChild(input); feuille.appendChild(row);
     }
     const place = feuille.children[rang]; if (place !== row) feuille.insertBefore(row, place || null);
@@ -8445,6 +8481,13 @@ const RC_PAQUET_IA = 8;   // [C14 1.4.10] (Paul 17:03 : « charger plus que 4 co
 /* [C14 1.4.10] (Paul 14:16 « l'IA fait le triage et c'est injecté au json » ; 17:18 « tout devait se faire en une fois, c'était ça le contrat ») :
    un seul envoi, qui rend la correction et le type de chaque faute, la lettre entre accolades juste après le mot corrigé (C14 283, acquis) */
 const RC_CONSIGNE_IA = "Tu reçois des rédactions d'élèves de 3e, recopiées ligne par ligne par leur professeur, fautes comprises. Pour chaque ligne, rends la même ligne corrigée : orthographe, accords, conjugaison, ponctuation, majuscules. Corrige mot pour mot : ne reformule pas, ne change pas l'ordre des mots, n'ajoute ni ne retire aucun mot, sauf si la grammaire l'exige (un mot manquant, un mot en trop). Ne touche pas au style ni au vocabulaire quand ils ne sont pas fautifs. Garde exactement les mêmes copies, pages et lignes, dans le même ordre ; une ligne vide reste vide ; un mot coupé en fin de ligne reste coupé au même endroit. Un mot entre crochets [comme ceci] a été barré par l'élève : laisse-le tel quel. Les guillemets restent « français ». Dans chaque ligne corrigée, écris juste après chaque mot ou signe que tu as corrigé ou ajouté une lettre entre accolades, le type de la faute : {G} grammaire (accord, conjugaison, homophone grammatical), {L} lexique (l'orthographe du mot lui-même), {C} accent, majuscule ou trait d'union, {P} ponctuation, {E} élision (apostrophe), {M} mot manquant que tu ajoutes ; là où tu retires un mot en trop, écris {X} à sa place. Exemple : « Il sont allé a Paris » devient « Ils{G} sont allés{G} à{G} Paris ». Rends uniquement, sans aucun commentaire et sans recopier cette consigne, un JSON compact sur une seule ligne : {\"format\":\"mjpc-recopie-ia-3\",\"lignes\":{\"identifiant de la ligne\":\"la ligne corrigée, avec ses lettres\"}}, avec toutes les lignes reçues, dans le même ordre, même celles qui n'ont pas de faute.";
+/* [C14 1.4.12] (Paul 31/10 23:19, « Ok » à 336) : quand le sujet laisse le choix entre plusieurs sujets, l'IA dit, en lisant la copie, lequel l'élève a traité ;
+   plus aucun geste. Ton choix déjà fait sur une copie reste le tien. */
+function rcVariantes() { return ((typeof SUJET === "object" && SUJET && SUJET.variantes) || []).filter(v => v && v.id); }
+function rcConsigneVariantes() {
+  const V = rcVariantes(); if (V.length < 2) return "";
+  return " Ce sujet laisse le choix entre " + V.length + " sujets : " + V.map(v => "« " + v.id + " » (" + String(v.libelle || v.enonce || v.id).replace(/\s+/g, " ").slice(0, 160) + ")").join(", ") + ". Pour chaque copie, dis lequel l'élève a traité : ajoute au JSON \"sujets\":{\"identité de la copie (son champ copie)\":\"" + V[0].id + "\"}, avec l'identifiant du sujet traité.";
+}
 function rcEcrite(l) { return l && !l.retiree && (l.texte || "").trim(); }
 function rcLignesEcrites(k) {
   const r = (((state.copies[k] || {}).scan || {}).recopie || {}).pages || {}, out = [];
@@ -8464,10 +8507,10 @@ function rcExportIA() {
   if (!aFaire.length) { rcEtatIA(); return; }
   const copies = aFaire.slice(0, RC_PAQUET_IA), le = new Date().toISOString(), nEnvoi = 1 + SC.copies.reduce((m, k) => Math.max(m, (((scCopie(k).recopie || {}).envoi) || {}).n || 0), 0);
   copies.forEach(k => { const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.envoi = { n: nEnvoi, le, lignes: rcLignesEcrites(k).length }; });   // [C14 1.4.11] le flux : l'envoi de chaque copie, numéroté et daté
-  const o = { consigne: RC_CONSIGNE_IA, format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = []; let n = 0;
+  const o = { consigne: RC_CONSIGNE_IA + rcConsigneVariantes(), format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = []; let n = 0;
     L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push({ id: x.id, n: ++n, texte: x.l.texte });
       rcLigneMaj(k, x.pid, x.id, l => { l.envoiIA = { texte: l.texte, le }; }); });
-    return { numero: i + 1, pages }; }) };
+    return { numero: i + 1, copie: (state.copies[k] || {}).id || null, pages }; }) };   // [C14 1.4.12] (Paul 15:59) l'identité interne de la copie, jamais son nom
   saveState();
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(o, null, 1)], { type: "application/json" }));
   a.download = "recopies-pour-l-IA-" + le.slice(0, 10) + ".json"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
@@ -8524,11 +8567,12 @@ function rcIALire(txt) {
     if (chaine) { if (ech) ech = false; else if (c === "\\") ech = true; else if (c === '"') chaine = false; continue; }
     if (c === '"') { if (prof > 0) chaine = true; continue; }
     if (c === "{") { if (prof === 0) deb = i; prof++; } else if (c === "}" && prof > 0) { prof--; if (prof === 0) blocs.push(t.slice(deb, i + 1)); } }
-  const r = { lignes: {}, coupe: prof > 0, doublons: 0, sansId: 0, repris: new Set() };
+  const r = { lignes: {}, coupe: prof > 0, doublons: 0, sansId: 0, repris: new Set(), copieDe: {}, sujets: {} };
   const poser = (id, v) => { if (r.lignes[id] !== undefined) r.doublons++; r.lignes[id] = v; };
   blocs.forEach(b => { let o; try { o = JSON.parse(b); } catch (e) { return; } if (!o || typeof o !== "object") return;
-    if (o.copies) rcListeIA(o.copies).forEach(c => rcListeIA(c && c.pages).forEach(pg => rcListeIA(pg && pg.lignes).forEach(l => { if (!l || typeof l.id !== "string") { r.sansId++; return; } poser(l.id, String(l.texte == null ? "" : l.texte)); })));
-    if (o.lignes && typeof o.lignes === "object" && !Array.isArray(o.lignes)) Object.keys(o.lignes).forEach(id => poser(id, String(o.lignes[id] == null ? "" : o.lignes[id]))); });
+    if (o.copies) rcListeIA(o.copies).forEach(c => rcListeIA(c && c.pages).forEach(pg => rcListeIA(pg && pg.lignes).forEach(l => { if (!l || typeof l.id !== "string") { r.sansId++; return; } poser(l.id, String(l.texte == null ? "" : l.texte)); if (c && typeof c.copie === "string") r.copieDe[l.id] = c.copie; })));
+    if (o.lignes && typeof o.lignes === "object" && !Array.isArray(o.lignes)) Object.keys(o.lignes).forEach(id => poser(id, String(o.lignes[id] == null ? "" : o.lignes[id])));
+    if (o.sujets && typeof o.sujets === "object") Object.keys(o.sujets).forEach(c => { r.sujets[c] = String(o.sujets[c]); }); });
   /* [C14 1.4.10] un retour coupé : ses paires « identifiant : ligne » complètes sont gardées ; seules les copies entières se chargeront */
   if (r.coupe && deb >= 0) { const queue = t.slice(deb), re = /"([^"\\]+)"\s*:\s*"((?:[^"\\]|\\.)*)"/g; let m;
     while ((m = re.exec(queue))) { if (/^(format|consigne|id|texte|page)$/.test(m[1])) continue; let v; try { v = JSON.parse('"' + m[2] + '"'); } catch (e) { continue; } if (r.lignes[m[1]] === undefined) { r.lignes[m[1]] = v; r.repris.add(m[1]); } } }
@@ -8552,6 +8596,14 @@ function rcLettres(brut, eleve) {
     if (t && RC_TYPES[t]) types[rcCle(g)] = t; });
   return { texte: net, types: Object.keys(types).length ? types : null };
 }
+/* [C14 1.4.12] la ressemblance en lettres entre la ligne envoyée et la ligne rendue : 2 × la plus longue suite commune / la somme des longueurs.
+   Mesurée sur les 869 vraies lignes de la classe de 3e (31/10, sas NUIT-31-10/SEUIL-A2.md) : la plus basse vaut 0,64 ; des lignes échangées passent sous 0,6 (sauf 1 sur 1 000). */
+const RC_RESSEMBLANCE_IA = 0.6;
+function rcRessemblance(a, b) {
+  a = String(a || "").toLowerCase(); b = String(b || "").toLowerCase(); if (!a.length && !b.length) return 1;
+  let p = new Array(b.length + 1).fill(0); for (let i = 0; i < a.length; i++) { const c = [0]; for (let j = 0; j < b.length; j++) c.push(a[i] === b[j] ? p[j] + 1 : Math.max(p[j + 1], c[j])); p = c; }
+  return 2 * p[b.length] / (a.length + b.length);
+}
 function rcIACharger(txt) {
   const msg = RC.ui.querySelector("#rcIAMessage"); msg.textContent = "Vérification…"; msg.className = "rc-ia-msg";
   setTimeout(() => { try { rcIAChargerSuite(txt); } catch (e) { msg.textContent = "Rien n’a changé : le retour de l’IA n’a pas la forme attendue (" + (e && e.message || e) + ")."; } msg.className = "rc-ia-msg " + (/^Chargé/.test(msg.textContent) ? "ok" : "ko"); msg.scrollIntoView({ block: "nearest" }); }, 20);
@@ -8569,11 +8621,17 @@ function rcIAChargerSuite(txt) {
   /* [C14 1.4.10] (Paul 17:09, « ok » à 273) : une copie se charge si toutes ses lignes écrites sont dans le retour, et si aucune n'a changé depuis l'envoi
      (dette C14 296) ; sinon elle attend le prochain export. Une ligne d'une autre copie ne s'y mêle jamais : chaque ligne a son identité. */
   const pc = {}; Object.keys(recu).forEach(id => { (pc[ici[id].k] = pc[ici[id].k] || []).push(id); });
-  const ok = [], coupees = [], changees = [];
-  Object.keys(pc).forEach(k => { const L = rcLignesEcrites(k);
-    if (!L.every(x => recu[x.id] !== undefined)) coupees.push(k); else if (L.some(x => x.l.envoiIA && x.l.envoiIA.texte !== x.l.texte)) changees.push(k); else ok.push(k); });
-  if (!ok.length) { msg.textContent = "Rien n’a changé : " + (changees.length ? "une ligne de chaque copie du retour a changé depuis l’envoi à l’IA : exporte à nouveau." : o.coupe ? "le retour de l’IA est coupé avant la fin de la première copie : demande-lui de tout rendre, ou exporte à nouveau." : "il manque des lignes à chaque copie du retour (écrites après l’export ? refais l’export).") ; return false; }
-  const quand = new Date().toISOString(); let fautes = 0, lignes = 0, typees = 0, sansLettre = 0;
+  const ok = [], coupees = [], changees = [], melangees = [];
+  Object.keys(pc).forEach(k => { const L = rcLignesEcrites(k), idc = (state.copies[k] || {}).id;
+    if (!L.every(x => recu[x.id] !== undefined)) coupees.push(k); else if (L.some(x => x.l.envoiIA && x.l.envoiIA.texte !== x.l.texte)) changees.push(k);
+    else if (L.some(x => (o.copieDe[x.id] && idc && o.copieDe[x.id] !== idc) || rcRessemblance(x.l.texte, rcLettres(recu[x.id], x.l.texte).texte) < RC_RESSEMBLANCE_IA)) melangees.push(k); else ok.push(k); });
+  /* [C14 1.4.12] (Paul 15:59, « sinon c'est la porte ouverte au mélange de données ») : le refus est gardé dans la copie, pour le flux ; un chargement réussi l'efface */
+  const qr = new Date().toISOString(); melangees.forEach(k => { const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.refusIA = { le: qr, raison: "melange" }; }); ok.forEach(k => { const s = scCopie(k); if (s.recopie && s.recopie.refusIA) delete s.recopie.refusIA; });
+  if (melangees.length) saveState();
+  const dMel = melangees.length ? " " + melangees.length + " copie" + (melangees.length > 1 ? "s" : "") + " refusée" + (melangees.length > 1 ? "s" : "") + " (" + melangees.map(k => nomEleveDe(k) || k).join(", ") + ") : une ligne rendue par l’IA ne ressemble plus à la ligne envoyée, l’IA a pu mélanger des lignes ; rien n’y est écrit, elle repart au prochain export." : "";
+  if (!ok.length) { msg.textContent = "Rien n’a changé : " + (melangees.length && !changees.length && !coupees.length ? dMel.trim() : changees.length ? "une ligne de chaque copie du retour a changé depuis l’envoi à l’IA : exporte à nouveau." : o.coupe ? "le retour de l’IA est coupé avant la fin de la première copie : demande-lui de tout rendre, ou exporte à nouveau." : "il manque des lignes à chaque copie du retour (écrites après l’export ? refais l’export).") ; return false; }
+  const quand = new Date().toISOString(); let fautes = 0, lignes = 0, typees = 0, sansLettre = 0, sujetsDits = 0;
+  { const V = rcVariantes().map(v => v.id); if (V.length > 1) ok.forEach(k => { const c = state.copies[k] || {}, dit = c.id && o.sujets[c.id]; if (dit && V.includes(dit) && !c.sujet) { c.sujet = dit; c.sujetDe = "ia"; sujetsDits++; } }); }   // [C14 1.4.12] le sujet traité, dit par l'IA
   ok.forEach(k => { const s = scCopie(k); rcLignesEcrites(k).forEach(x => { const id = x.id, r = rcLettres(recu[id], x.l.texte), A = rcEcarts(x.l.texte, r.texte).segs;
     rcLigneMaj(k, x.pid, id, l => { l.corrige = r.texte; l.corrigeDe = l.texte; l.corrigeLe = quand; if (r.texte !== recu[id]) l.corrigeMarque = recu[id]; else delete l.corrigeMarque;
       if (r.types) { l.types = r.types; l.typesDe = r.texte; } else { delete l.types; delete l.typesDe; } });
@@ -8585,8 +8643,8 @@ function rcIAChargerSuite(txt) {
   const reste = coupees.length + changees.length, pl = (v, m) => v + " " + m + (v > 1 ? "s" : "");
   msg.textContent = "Chargé : " + pl(ok.length, "copie") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA" + (fautes ? ", dont " + typees + " avec leur type" + (sansLettre ? " (" + sansLettre + " sans lettre : le type du moteur)" : "") : "") + "."
     + (coupees.length ? " " + pl(coupees.length, "copie") + (o.coupe ? " coupée" + (coupees.length > 1 ? "s" : "") : " incomplète" + (coupees.length > 1 ? "s" : "")) + " : au prochain export." : "")
-    + (changees.length ? " " + pl(changees.length, "copie") + " dont une ligne a changé depuis l’envoi : au prochain export." : "")
-    + (o.coupe && !coupees.length ? " Le retour de l’IA était coupé : les copies qui manquent repartent au prochain export." : "");
+    + (changees.length ? " " + pl(changees.length, "copie") + " dont une ligne a changé depuis l’envoi : au prochain export." : "") + dMel
+    + (o.coupe && !coupees.length ? " Le retour de l’IA était coupé : les copies qui manquent repartent au prochain export." : "") + (sujetsDits ? " Le sujet traité, dit par l’IA : " + sujetsDits + " copie" + (sujetsDits > 1 ? "s" : "") + "." : "");
   return true;
 }
 /* les fautes proposées d'une ligne : les mots qui diffèrent, alignés par la plus longue sous-suite commune */
@@ -8664,16 +8722,48 @@ function rcHeure(iso) { if (!iso) return ""; const d = new Date(iso), j = new Da
 function rcFluxCopie(k) {
   const s = scCopie(k), rec = s.recopie || {}, L = rcLignesEcrites(k); let modif = ""; Object.values(rec.pages || {}).forEach(p => { if (p && p.modifieLe && p.modifieLe > modif) modif = p.modifieLe; });
   const A = rcArrets(k), dec = A.filter(a => a.l.decisions && a.l.decisions[a.cle]).length, corr = L.length && !rcCopieACorriger(k);
-  return { k, nom: nomEleveDe(k) || k, lignes: L.length, modif, envoi: rec.envoi || null, envoiAJour: !!(rec.envoi && L.length && L.every(x => x.l.envoiIA && x.l.envoiIA.texte === x.l.texte)), charge: corr ? (rec.charge || { le: (L.map(x => x.l.corrigeLe || "").sort().pop() || ""), fautes: A.length, types: null }) : null, arrets: A.length, decides: dec, fini: A.length > 0 && dec === A.length };
+  return { k, nom: nomEleveDe(k) || k, lignes: L.length, modif, envoi: rec.envoi || null, envoiAJour: !!(rec.envoi && L.length && L.every(x => x.l.envoiIA && x.l.envoiIA.texte === x.l.texte)), charge: corr ? (rec.charge || { le: (L.map(x => x.l.corrigeLe || "").sort().pop() || ""), fautes: A.length, types: null }) : null, arrets: A.length, decides: dec, fini: A.length > 0 && dec === A.length, refus: rec.refusIA || null, finie: !!rec.phrase };
+}
+/* [C14 1.4.12] (Paul 31/10 23:09 : « à la fin d'une recopie je dois pouvoir surligner facilement la phrase qui m'a marqué ( pas touché, marqué). Si pas de
+   phrase, pas de phrase ( coche pas de phrase ). Cette phase là marque la fin d'une recopie. ») : clic sur le premier mot, puis sur le dernier ;
+   la phrase passe en or sur la photo (une marque « etoile » des scans, une bande par ligne) ; recopie.phrase garde la fin de la recopie, pour le flux */
+function rcPhraseOuvrir() {
+  if (RC.page) rcGarder(); const k = RC.copie, W = rcMotsCopie(k, []); if (!W.length) { toast("Recopie d’abord la copie : la phrase se choisit sur ta recopie."); return; }
+  const ph = (scCopie(k).recopie || {}).phrase || {}, i = q => q ? W.findIndex(w => w.id === q.id && w.m === q.m) : -1;
+  RC.phrase = { k, W, a: i(ph.debut), b: i(ph.fin) }; if (RC.phrase.a < 0 || RC.phrase.b < 0) RC.phrase.a = RC.phrase.b = -1;
+  RC.ui.querySelector("#rcPhraseAucune").checked = !!ph.aucune; RC.ui.querySelector("#rcPhrase").hidden = false; rcPhraseRendre();
+}
+function rcPhraseFermer() { RC.phrase = null; RC.ui.querySelector("#rcPhrase").hidden = true; }
+function rcPhraseRendre() {
+  const P = RC.phrase, T = RC.ui.querySelector("#rcPhraseTexte"), lo = Math.min(P.a, P.b), hi = Math.max(P.a, P.b); let h = "", ligne = null;
+  P.W.forEach((w, j) => { if (w.id !== ligne) { h += (ligne ? "</p>" : "") + '<p><small>' + w.n + "</small> "; ligne = w.id; }
+    h += '<span class="rc-mot' + (P.a >= 0 && j >= lo && j <= (P.b >= 0 ? hi : P.a) ? " or" : "") + '" data-j="' + j + '">' + escapeHtml(w.g.eleve) + "</span> "; });
+  T.innerHTML = h + "</p>"; T.querySelectorAll("[data-j]").forEach(s => s.onclick = () => { const j = +s.dataset.j; if (P.a < 0 || P.b >= 0) { P.a = j; P.b = -1; } else P.b = j; rcPhraseRendre(); });
+  const ok = P.a >= 0 && P.b >= 0, b = RC.ui.querySelector("#rcPhraseOui"); b.disabled = !ok; b.title = ok ? "Garder cette phrase : elle passe en or sur la copie de l’élève, et la recopie de cette copie est finie." : "Choisis d’abord le premier et le dernier mot de la phrase.";
+}
+function rcPhraseRetirer(k) { const s = scCopie(k); Object.values(s.marques).filter(m => m.forme === "etoile" && m.recopie).forEach(m => scEffacer(m.id)); }
+function rcPhraseValider() {
+  const P = RC.phrase; if (!P || P.a < 0 || P.b < 0) return; const k = P.k, a = Math.min(P.a, P.b), b = Math.max(P.a, P.b), W = P.W.slice(a, b + 1);
+  rcPhraseRetirer(k); const parPage = {};
+  W.forEach(w => { const L = parPage[w.pid] = parPage[w.pid] || {}; (L[w.id] = L[w.id] || []).push(w); });
+  Object.keys(parPage).forEach(pid => { const segs = Object.values(parPage[pid]).map(ws => { const w0 = ws[0], w1 = ws[ws.length - 1], q = rcPlaceSeg({ k, pid, id: w0.id, l: w0.l, g: { de: w0.m, a: w1.m + 1, de2: w0.m, a2: w1.m + 1, eleve: "x", corrige: "x" }, cle: "phrase" }); return [q.x0, q.y0, q.x1, q.y1]; });
+    const m = { page: pid, forme: "etoile", sens: "lieu", passe: "langue", point: "etoile", q: null, x0: Math.min(...segs.map(s => s[0])), y0: Math.min(...segs.map(s => s[1])), x1: Math.max(...segs.map(s => s[2])), y1: Math.max(...segs.map(s => s[3])), segs, bonne: null, recopie: true, l0: null, l1: null };
+    scPoser(m); });
+  const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), debut: { id: P.W[a].id, m: P.W[a].m }, fin: { id: P.W[b].id, m: P.W[b].m }, texte: W.map(w => w.g.eleve).join(" ") };
+  saveState(); rcPhraseFermer(); rcEtatIA(); toast("La phrase qui t’a marqué est gardée : la recopie de cette copie est finie.");
+}
+function rcPhraseAucune() {
+  const P = RC.phrase; if (!P) return; rcPhraseRetirer(P.k); const s = scCopie(P.k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), aucune: true };
+  saveState(); rcPhraseFermer(); rcEtatIA(); toast("Pas de phrase : la recopie de cette copie est finie.");
 }
 function rcFluxOuvrir() { if (RC.page) rcGarder(); RC.fluxOuvert = true; RC.ui.querySelector("#rcFlux").hidden = false; rcFluxRendre(); }
 function rcFluxFermer() { RC.fluxOuvert = false; RC.ui.querySelector("#rcFlux").hidden = true; }
 function rcFluxRendre() {
   const t = RC.ui.querySelector("#rcFluxTable"), F = SC.copies.map(rcFluxCopie), ok = '<span class="rc-flux-ok">✓</span> ', non = '<span class="rc-flux-non">—</span>';
   t.innerHTML = '<table><thead><tr><th>Copie</th><th>Recopiée</th><th>Envoyée à l’IA</th><th>Corrigé chargé</th><th>Bande</th></tr></thead><tbody>' + F.map(f => '<tr data-k="' + escapeAttr(f.k) + '"' + (f.k === RC.copie ? ' class="on"' : "") + '><td>' + escapeHtml(f.nom) + "</td>"
-    + "<td>" + (f.lignes ? ok + f.lignes + " ligne" + (f.lignes > 1 ? "s" : "") + (f.modif ? " · " + rcHeure(f.modif) : "") : non) + "</td>"
+    + "<td>" + (f.lignes ? (f.finie ? ok : "") + f.lignes + " ligne" + (f.lignes > 1 ? "s" : "") + (f.modif ? " · " + rcHeure(f.modif) : "") + (f.finie ? "" : " · la phrase qui m’a marqué : pas encore") : non) + "</td>"
     + "<td>" + (f.envoi ? (f.envoiAJour || f.charge ? ok : "⚠ ") + "envoi " + f.envoi.n + " · " + rcHeure(f.envoi.le) + (!f.envoiAJour && !f.charge ? " · retapée depuis" : "") : f.charge ? ok + "avant le flux" : non) + "</td>"
-    + "<td>" + (f.charge ? ok + rcHeure(f.charge.le) + " · " + f.charge.fautes + " faute" + (f.charge.fautes > 1 ? "s" : "") + (f.charge.types != null ? ", " + f.charge.types + " avec leur type" : "") : f.envoi ? "en attente" : non) + "</td>"
+    + "<td>" + (f.charge ? ok + rcHeure(f.charge.le) + " · " + f.charge.fautes + " faute" + (f.charge.fautes > 1 ? "s" : "") + (f.charge.types != null ? ", " + f.charge.types + " avec leur type" : "") : f.envoi ? "en attente" : non) + (f.refus ? ' <span class="rc-flux-non">⚠ copie refusée ' + rcHeure(f.refus.le) + " : lignes mélangées par l’IA, au prochain export</span>" : "") + "</td>"
     + "<td>" + (f.arrets ? (f.fini ? ok : "") + f.decides + " / " + f.arrets : non) + "</td></tr>").join("") + "</tbody></table>";
   t.querySelectorAll("tr[data-k]").forEach(tr => tr.onclick = () => { const k = tr.dataset.k; rcFluxFermer(); const sel = RC.ui.querySelector("#rcCopie"); if (sel && sel.value !== k) { sel.value = k; sel.dispatchEvent(new Event("change")); } });
 }
@@ -8688,7 +8778,7 @@ function rcEtatIA() {
   const f = avec.reduce((s, x) => s + rcEcarts(x.l.texte, x.l.corrige).fautes, 0), change = avec.filter(x => x.l.texte !== x.l.corrigeDe).length, sans = L.length - avec.length;
   const ici = !avec.length ? "" : "cette copie : " + f + " faute" + (f > 1 ? "s" : "") + " proposée" + (f > 1 ? "s" : "") + (change ? " · " + change + " ligne" + (change > 1 ? "s" : "") + " changée" + (change > 1 ? "s" : "") + " depuis" : "") + (sans ? " · " + sans + " sans corrigé" : "");
   const F = SC.copies.map(rcFluxCopie).filter(f => f.lignes), env = F.filter(f => f.envoi || f.charge).length, ch = F.filter(f => f.charge).length, fin = F.filter(f => f.fini).length;
-  const flux = F.length ? "Le flux : " + F.length + " recopiée" + (F.length > 1 ? "s" : "") + " · " + env + " envoyée" + (env > 1 ? "s" : "") + " · " + ch + " chargée" + (ch > 1 ? "s" : "") + " · " + fin + " bande" + (fin > 1 ? "s" : "") + " finie" + (fin > 1 ? "s" : "") : "";
+  const finies = F.filter(f => f.finie).length, flux = F.length ? "Le flux : " + F.length + " recopiée" + (F.length > 1 ? "s" : "") + " · " + env + " envoyée" + (env > 1 ? "s" : "") + " · " + ch + " chargée" + (ch > 1 ? "s" : "") + " · " + fin + " bande" + (fin > 1 ? "s" : "") + " finie" + (fin > 1 ? "s" : "") + (finies < F.length ? " · la phrase qui m’a marqué : " + finies + " sur " + F.length : "") : "";
   e.textContent = [flux, c.aFaire ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", ici].filter(Boolean).join(" · ");
   if (RC.fluxOuvert) rcFluxRendre();
 }
@@ -8785,6 +8875,14 @@ function rcCodeFaute(g) {
   if (apo(e) !== apo(c)) return "E";
   return paires.length && paires.every(p => reclassableEnC(p[0], p[1])) ? "C" : "L";
 }
+/* [C14 1.4.12] (Paul 23:09, « 324 ok mais préparer le terrain ») : la notion précise que le moteur de la dictée trouve à une faute
+   (G-CONJ, G-PP, un homophone…), gardée avec la faute pour brancher la taxonomie plus tard sans rien recorriger ; null quand il ne sait pas */
+function rcNotion(g) {
+  const e = rcRecoller(g.eleve), c = rcRecoller(g.corrige); if (!e || !c) return null;
+  const E = e.split(/\s+/), K = c.split(/\s+/), paires = E.length === K.length ? E.map((x, i) => [x, K[i]]).filter(p => p[0] !== p[1]) : [[e, c]];
+  for (const p of paires) { let r = null; try { r = GRAMM.classify(p[0], p[1]); } catch (x) {} if (r && r.code) return { code: r.code, regle: r.rule || null }; }
+  return null;
+}
 function rcStyleFaute(g) { return RC_TYPES[rcCodeFaute(g)]; }
 /* [C14 1.4.10] le type donné par l'IA pour cet arrêt, s'il est là et à jour ; sinon le moteur de la dictée */
 function rcCodeArret(a) { const l = a && a.l, t = l && l.types && l.typesDe === l.corrige && l.types[a.cle]; return RC_TYPES[t] ? t : rcCodeFaute(a.g); }
@@ -8795,10 +8893,80 @@ function rcArrets(k) {
     rcEcarts(l.texte, l.corrige).segs.forEach(g => A.push({ k, pid: x.pid, id: x.id, n: i + 1, g, cle: g.de + "-" + g.a + "/" + g.de2 + "-" + g.a2, l })); });
   return A;
 }
+/* [C14 1.4.12] ⇧R, le mot par mot (C14 183 « ⇧R = la dictée », C14 196 : F = faute, Entrée et Espace = le mot est correct, comme en dictée) :
+   chaque mot et chaque ponctuation des lignes écrites, dans l'ordre de la copie ; un mot pris dans une faute proposée par l'IA porte cette faute (w.ia) */
+const RC_NEUTRE = { couleur: "#6b7280", fond: "#f3f4f6", libelle: "Faute oubliée par l’IA" };
+function rcMotsCopie(k, A) {
+  const W = []; rcLignesEcrites(k).forEach((x, i) => { const l = x.l, P = rcPosMots(l.texte);
+    P.forEach((p, m) => { const mot = l.texte.slice(p[0], p[1]), ia = (A || []).find(a => a.id === x.id && a.g.a > a.g.de && m >= a.g.de && m < a.g.a) || null;
+      W.push({ k, pid: x.pid, id: x.id, n: i + 1, l, mot: true, m, g: { de: m, a: m + 1, de2: m, a2: m + 1, eleve: mot, corrige: mot }, cle: "mot-" + m, ia }); }); });
+  return W;
+}
+function rcBandeCourant() { const B = RC.bd; return !B ? null : B.mot ? B.W[B.j] : B.A[B.i]; }
+function rcBandeCible() { const a = rcBandeCourant(); return a && a.mot && a.ia ? a.ia : a; }   // le cadre d'un mot pris dans une faute de l'IA est celui de la faute
+function rcOubliee(w) { const mk = w.l.marquesBande && w.l.marquesBande[w.cle], m = mk && scCopie(w.k).marques[mk]; return m && m.bande && m.bande.oubliee ? m : null; }
+/* F sur un mot que l'IA n'a pas proposé : une faute oubliée par l'IA, sans type (G et L n'existent pas en rédaction) ; F une deuxième fois la retire */
+function rcBandeOubliee(w) {
+  const s = scCopie(w.k), deja = rcOubliee(w);
+  if (deja) { scEffacer(deja.id); rcLigneMaj(w.k, w.pid, w.id, l => { ["marquesBande", "decisions", "places"].forEach(f => { if (l[f] && l[f][w.cle] != null) { l[f] = Object.assign({}, l[f]); delete l[f][w.cle]; } }); }); saveState(); return false; }
+  const q = rcPlaceSeg(w);
+  const m = { page: w.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: null, bande: { ligne: w.id, cle: w.cle, eleve: w.g.eleve, corrige: null, type: q.type.nom, code: null, oubliee: true } };
+  scPoser(m); rcLigneMaj(w.k, w.pid, w.id, l => { l.marquesBande = Object.assign({}, l.marquesBande, { [w.cle]: m.id }); l.decisions = Object.assign({}, l.decisions, { [w.cle]: "o" }); });
+  saveState(); return true;
+}
+/* ⇧R : des arrêts au mot par mot, sur le mot de l'arrêt ; du mot par mot aux arrêts, sur l'arrêt le plus proche du mot */
+function rcBandeBasculer() {
+  const B = RC.bd; if (!B || B.attente) return;
+  if (!B.mot) { const a = B.A[B.i]; B.W = rcMotsCopie(B.k, B.A); let j = 0;
+    if (a) { j = B.W.findIndex(w => w.id === a.id && w.m >= a.g.de); if (j < 0) { const L = B.W.map((w, t) => w.id === a.id ? t : -1).filter(t => t >= 0); j = L.length ? L[L.length - 1] : 0; } }
+    B.mot = true; B.j = Math.max(0, j); }
+  else { const w = B.W[B.j], rang = x => [rcLignesEcrites(B.k).findIndex(y => y.id === x.id), x.g.de];
+    let i = B.A.length; if (w) { const r = rang(w); i = B.A.findIndex(a => { const q = rang(a); return q[0] > r[0] || (q[0] === r[0] && q[1] >= r[1]); }); if (i < 0) i = B.A.length ? B.A.length - 1 : 0; }
+    B.mot = false; B.i = i; }
+  B.note = ""; rcBandeRendre();
+}
+function rcBandeMotClavier(ev) {
+  const B = RC.bd, w = B.W[B.j], seul = !ev.ctrlKey && !ev.metaKey && !ev.altKey;
+  if ((ev.key === "Enter" || ev.key === " ") && seul) { ev.preventDefault(); if (w) { B.j++; B.note = ""; rcBandeRendre(); } return true; }
+  if ((ev.key === "f" || ev.key === "F") && seul && !ev.shiftKey) { ev.preventDefault(); if (!w) return true;
+    if (w.ia) { const d = w.ia.l.decisions && w.ia.l.decisions[w.ia.cle]; rcDeciderArret(B.k, w.ia, d === "o" ? "n" : "o"); if (d !== "o") B.j++; B.note = d === "o" ? "Faute de l’IA refusée." : ""; }
+    else { const cree = rcBandeOubliee(w); if (cree) B.j++; B.note = cree ? "" : "Faute retirée."; }
+    rcBandeRendre(); return true; }
+  if ((ev.key === "n" || ev.key === "N") && seul) { ev.preventDefault(); if (w && w.ia) { rcDeciderArret(B.k, w.ia, "n"); B.j++; B.note = ""; } else B.note = "N : seulement sur un mot proposé par l’IA."; rcBandeRendre(); return true; }
+  if (ev.key === "Backspace") { ev.preventDefault(); B.j = Math.max(0, B.j - 1); B.note = ""; rcBandeRendre(); return true; }
+  return false;
+}
+/* [C14 1.4.12] (Paul 31/10 23:09 : « si je viens retoucher une recopie après avoir validé l'erreur dans la bande, il faut que ce soit rétroactif
+   bien sûr. Une modif change partout. ») : une ligne retapée après le corrigé de l'IA garde ce corrigé ; tes réponses de la bande suivent les mots
+   qui n'ont pas changé ; la marque d'un mot qui a changé disparaît ; un mot nouveau que l'IA n'a pas vu devient un arrêt de la bande. */
+function rcAligner(A, B) {   // les mots gardés d'un texte à l'autre (plus longue suite commune) : m[i] = la place du mot i dans B, ou -1
+  const n = A.length, p = B.length, T = Array.from({ length: n + 1 }, () => new Array(p + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--) for (let j = p - 1; j >= 0; j--) T[i][j] = A[i] === B[j] ? T[i + 1][j + 1] + 1 : Math.max(T[i + 1][j], T[i][j + 1]);
+  const m = new Array(n).fill(-1); let i = 0, j = 0; while (i < n && j < p) { if (A[i] === B[j]) { m[i] = j; i++; j++; } else if (T[i + 1][j] >= T[i][j + 1]) i++; else j++; }
+  return m;
+}
+function rcRetroactif(k, pid, id) {
+  const pg = ((scCopie(k).recopie || {}).pages || {})[pid], L0 = (RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]) || (pg && pg.lignes[id]);
+  if (!L0 || typeof L0.corrige !== "string" || typeof L0.corrigeDe !== "string" || L0.texte === L0.corrigeDe) return false;
+  const ancien = L0.corrigeDe, nouveau = L0.texte || "", corr = L0.corrige;
+  if (rcRessemblance(ancien, nouveau) < RC_RESSEMBLANCE_IA) return false;   // une ligne qui a trop changé (une autre ligne, ou une moitié ajoutée) repart chez l'IA au prochain export
+  const sig = segs => { const c = {}; return segs.map(x => { const b = x.eleve + "→" + x.corrige; c[b] = (c[b] || 0) + 1; return b + "#" + c[b]; }); };
+  const anc = rcEcarts(ancien, corr).segs, nouv = rcEcarts(nouveau, corr).segs, sA = sig(anc), sN = sig(nouv), map = {};
+  sA.forEach((v, i) => { const j = sN.indexOf(v); if (j >= 0) map[rcCle(anc[i])] = rcCle(nouv[j]); });
+  const mots = t => rcPosMots(t).map(p => t.slice(p[0], p[1])), mm = rcAligner(mots(ancien), mots(nouveau));
+  const re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; else { const m = /^mot-(\d+)$/.exec(x); if (m && mm[+m[1]] >= 0) r["mot-" + mm[+m[1]]] = o[x]; } }); return r; };
+  const s = scCopie(k), mb = re(L0.marquesBande), gardees = new Set(Object.values(mb)), typesAJour = L0.types && L0.typesDe === corr, types = typesAJour ? re(L0.types) : null;
+  Object.values(L0.marquesBande || {}).forEach(mid => { if (!gardees.has(mid) && s.marques[mid]) scEffacer(mid); });
+  rcLigneMaj(k, pid, id, l => { l.corrigeDe = nouveau; l.decisions = re(l.decisions); l.marquesBande = mb; l.places = re(l.places); if (typesAJour) l.types = types; l.retoucheeLe = new Date().toISOString(); });
+  const Lf = (RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]) || pg.lignes[id], P = rcPosMots(nouveau);
+  Object.keys(mb).forEach(c => { const m = s.marques[mb[c]]; if (!m) return; const mo = /^mot-(\d+)$/.exec(c), g = mo ? (w => ({ de: w, a: w + 1, de2: w, a2: w + 1, eleve: nouveau.slice(P[w][0], P[w][1]), corrige: nouveau.slice(P[w][0], P[w][1]) }))(+mo[1]) : nouv.find(x => rcCle(x) === c);
+    if (!g || (mo && !P[+mo[1]])) return; const q = rcPlaceSeg({ k, pid, id, l: Lf, g, cle: c }); Object.assign(m, { x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, modifieLe: new Date().toISOString() }); if (m.bande) { m.bande.cle = c; m.bande.eleve = g.eleve; } });
+  scNumeroter(k); saveState(); return true;
+}
 function rcLigneMaj(k, pid, id, fn) { const pgs = (scCopie(k).recopie || {}).pages || {}; [pgs[pid] && pgs[pid].lignes[id], RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]].forEach(l => { if (l) fn(l); }); }
 function rcNoteTexte(k) { const r = scNote(k); return r.ok ? (Math.round(r.n * 10) / 10) + " / " + r.tot : "incomplète"; }
 function rcBandeOuvrir(reprise) {
-  if (RC.page && !reprise) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); const A = rcArrets(k);
+  if (RC.page && !reprise) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); rcLignesEcrites(k).forEach(x => rcRetroactif(k, x.pid, x.id)); const A = rcArrets(k);
   if (!A.length) { toast("Pas de faute proposée sur cette copie : charge d’abord le corrigé de l’IA."); return; }
   RC.bd = { k, i: 0, A }; rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
   RC.ui.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(k); if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
@@ -8812,12 +8980,13 @@ function rcBandeOuvrir(reprise) {
   const i = A.findIndex(a => !(a.l.decisions && a.l.decisions[a.cle])); RC.bd.i = i >= 0 ? i : 0;
   /* [C14 1.4.7] (Paul 15:41 : « si je commence la bande, que je fais deux mots, je dois retomber à ce même mot ») : l'arrêt où tu étais, pour chaque élève */
   const ba = (scCopie(k).recopie || {}).bandeArret;
-  if (ba && ba.fin) RC.bd.i = A.length; else if (ba) { let j = A.findIndex(a => a.id === ba.id && a.cle === ba.cle); if (j < 0) j = A.findIndex(a => a.id === ba.id); if (j >= 0) RC.bd.i = j; }
+  if (ba && ba.mot) { const B = RC.bd; B.mot = true; B.W = rcMotsCopie(k, A); let j = ba.fin ? B.W.length : B.W.findIndex(w => w.id === ba.id && w.cle === ba.cle); if (j < 0) j = Math.max(0, B.W.findIndex(w => w.id === ba.id)); B.j = j; }   // [C14 1.4.12] rouverte en mot par mot, au même mot
+  else if (ba && ba.fin) RC.bd.i = A.length; else if (ba) { let j = A.findIndex(a => a.id === ba.id && a.cle === ba.cle); if (j < 0) j = A.findIndex(a => a.id === ba.id); if (j >= 0) RC.bd.i = j; }
   rcBookmark(); rcBandeRendre();
 }
 function rcBandeMemoriser() {
-  const B = RC.bd; if (!B || B.attente) return; const rec = scCopie(B.k).recopie; if (!rec) return; const a = B.A[B.i];
-  const v = a ? { id: a.id, cle: a.cle } : { fin: true };
+  const B = RC.bd; if (!B || B.attente) return; const rec = scCopie(B.k).recopie; if (!rec) return; const a = rcBandeCourant();
+  const v = Object.assign(a ? { id: a.id, cle: a.cle } : { fin: true }, B.mot ? { mot: true } : {});
   if (JSON.stringify(rec.bandeArret || null) !== JSON.stringify(v)) { rec.bandeArret = v; saveState(); }
 }
 function rcBandeCommencer() {
@@ -8828,46 +8997,71 @@ function rcBandeCommencer() {
 }
 function rcBandeFermer(seul) { RC.bd = null; if (!seul) rcBookmark(); if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; } if (seul) return; rcActualiser(); rcSelectionner(RC.ligne, true, true); }
 function rcBandeDecider(v) {
-  const B = RC.bd, a = B.A[B.i]; if (!a) return; const s = scCopie(B.k), deja = a.l.marquesBande && a.l.marquesBande[a.cle];
+  const B = RC.bd, a = B.A[B.i]; if (!a) return; rcDeciderArret(B.k, a, v);
+  B.i = Math.min(B.A.length, B.i + 1); B.note = ""; rcBandeRendre();
+}
+function rcDeciderArret(k, a, v) {   // [C14 1.4.12] la décision d'un arrêt de l'IA, la même depuis les arrêts et depuis le mot par mot
+  const B = { k }, s = scCopie(B.k), deja = a.l.marquesBande && a.l.marquesBande[a.cle];
   if (v === "o" && !(deja && s.marques[deja])) {
     const q = rcPlaceSeg(a);
-    const m = { page: a.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: a.g.corrige || null, bande: { ligne: a.id, cle: a.cle, eleve: a.g.eleve, corrige: a.g.corrige, type: q.type.nom, code: rcCodeArret(a) } };
+    const m = { page: a.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: a.g.corrige || null, bande: { ligne: a.id, cle: a.cle, eleve: a.g.eleve, corrige: a.g.corrige, type: q.type.nom, code: rcCodeArret(a), notion: rcNotion(a.g) } };
     scPoser(m); rcLigneMaj(B.k, a.pid, a.id, l => { l.marquesBande = Object.assign({}, l.marquesBande, { [a.cle]: m.id }); });
   }
   if (v === "n" && deja && s.marques[deja]) scEffacer(deja);
   rcLigneMaj(B.k, a.pid, a.id, l => { l.decisions = Object.assign({}, l.decisions, { [a.cle]: v }); if (v === "n" && l.marquesBande) { l.marquesBande = Object.assign({}, l.marquesBande); delete l.marquesBande[a.cle]; } });
-  saveState(); B.i = Math.min(B.A.length, B.i + 1); B.note = ""; rcBandeRendre();
+  saveState();
 }
 function rcBandeRendre() {
   const B = RC.bd, e = RC.ui; if (!B) return; const a = B.A[B.i], s = scCopie(B.k); rcBandeMemoriser();
-  const liste = e.querySelector("#rcBandeListe");
-  liste.innerHTML = B.A.map((x, i) => { const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (i === B.i ? "on" : "") + '" data-i="' + i + '" style="border-left-color:' + rcStyleArret(x).couleur + (i === B.i ? ";background:" + rcStyleArret(x).fond : "") + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
-  liste.querySelectorAll("li").forEach(li => li.onclick = () => { B.i = +li.dataset.i; rcBandeRendre(); });
+  e.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(B.k) + (B.mot ? " · mot par mot" : "");
+  const liste = e.querySelector("#rcBandeListe"), wc = B.mot ? B.W[B.j] : null, estOn = (x, i) => B.mot ? !!(wc && wc.ia === x) : i === B.i;
+  liste.innerHTML = B.A.map((x, i) => { const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (estOn(x, i) ? "on" : "") + '" data-i="' + i + '" style="border-left-color:' + rcStyleArret(x).couleur + (estOn(x, i) ? ";background:" + rcStyleArret(x).fond : "") + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
+  liste.querySelectorAll("li").forEach(li => li.onclick = () => { B.mot = false; B.i = +li.dataset.i; B.note = ""; rcBandeRendre(); });
   const on = liste.querySelector("li.on"); if (on) on.scrollIntoView({ block: "nearest" });
   const ctx = e.querySelector("#rcBandeContexte"), carte = e.querySelector("#rcBandeCarte"), touches = e.querySelector("#rcBandeTouches");
   carte.style.borderColor = a && !B.attente ? rcStyleArret(a).couleur : "";
   if (B.attente) { carte.innerHTML = ""; ctx.innerHTML = ""; touches.innerHTML = ""; rcBandePhoto(null); return; }
+  if (B.mot) { rcBandeRendreMots(B, ctx, carte, touches); return; }
   if (!a) {
     const faites = B.A.filter(x => x.l.decisions && x.l.decisions[x.cle] === "o").length;
     carte.innerHTML = '<div class="rc-bande-mot">Bande finie</div><div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + B.A.length + " arrêts · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k)) + "</div>";
-    ctx.innerHTML = ""; touches.innerHTML = "<span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : remettre une faute</span><span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : ""); rcBandePhoto(null); return;
+    ctx.innerHTML = ""; touches.innerHTML = '<b class="rc-bande-mode">Les arrêts</b><span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>⇧</kbd> + <kbd>R</kbd> mot par mot</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : remettre une faute</span><span><kbd>Échap</kbd> revenir à la recopie</span>' + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : ""); rcBandePhoto(null); return;
   }
   const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle], T = rcStyleArret(a), st = ' style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";box-shadow:inset 0 -2px 0 " + T.couleur + '"';
   let h = "", c = 0; P.forEach((p, i) => { h += escapeHtml(a.l.texte.slice(c, p[0])); const w = escapeHtml(a.l.texte.slice(p[0], p[1])); h += i >= a.g.de && i < a.g.a ? "<mark" + st + ">" + w + "</mark>" : '<span class="rc-mot" data-m="' + i + '">' + w + "</span>"; if (a.g.a === a.g.de && i === a.g.de - 1) h += ' <mark class="rc-manque"' + st + ">∧</mark>"; c = p[1]; });
   h += escapeHtml(a.l.texte.slice(c)); if (a.g.a === a.g.de && a.g.de === 0) h = '<mark class="rc-manque"' + st + ">∧</mark> " + h;
   rcRubanTexte(ctx, B.k, a, h);
   carte.innerHTML = '<div class="rc-bande-mot"><span class="rc-eleve">' + escapeHtml(a.g.eleve || "(mot manquant)") + '</span> <span class="rc-fleche">→</span> <span class="rc-corr">' + escapeHtml(a.g.corrige || "(mot en trop)") + "</span></div><div class=\"rc-bande-pied\"><b class=\"rc-bande-type\" style=\"background:" + T.fond + ";color:" + (T.texte || T.couleur) + ";border-color:" + T.couleur + "\">" + T.libelle + "</b> " + (rcTypeFaute(a.g).nom === T.libelle ? "" : rcTypeFaute(a.g).nom + " · ") + "proposé par l’IA · ligne " + a.n + " · arrêt " + (B.i + 1) + " sur " + B.A.length + (d === "o" ? " · gardée" : d === "n" ? " · refusée" : "") + "</div>";
-  touches.innerHTML = "<span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> oui, c’est une faute</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span><span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser</span><span><kbd>clic droit</kbd> sur le cadre : faute de ma recopie</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : la remettre</span><span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
+  touches.innerHTML = '<b class="rc-bande-mode">Les arrêts</b>' + "<span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> oui, c’est une faute</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>⇧</kbd> + <kbd>R</kbd> mot par mot</span><span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser</span><span><kbd>clic droit</kbd> sur le cadre : faute de ma recopie</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : la remettre</span><span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
   rcBandePhoto(a);
+}
+/* [C14 1.4.12] le mot par mot : la carte dit le mot, sa faute s'il en a une ; les touches de ce mode sont écrites en clair (C14 183) */
+function rcBandeRendreMots(B, ctx, carte, touches) {
+  const w = B.W[B.j], N = B.W.length, nOub = B.W.filter(x => rcOubliee(x)).length, note = B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "";
+  const badge = T => '<b class="rc-bande-type" style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";border-color:" + T.couleur + '">' + T.libelle + "</b>", pl = (n, m) => n + " " + m + (n > 1 ? "s" : "");
+  if (!w) { const faites = B.A.filter(x => x.l.decisions && x.l.decisions[x.cle] === "o").length; carte.style.borderColor = "";
+    carte.innerHTML = '<div class="rc-bande-mot">Fin de la copie, mot par mot</div><div class="rc-bande-pied">' + pl(faites, "faute") + " de l’IA gardée" + (faites > 1 ? "s" : "") + " sur " + B.A.length + " · " + pl(nOub, "faute") + " oubliée" + (nOub > 1 ? "s" : "") + " par l’IA · note maintenant : " + escapeHtml(rcNoteTexte(B.k)) + "</div>";
+    ctx.innerHTML = ""; touches.innerHTML = '<b class="rc-bande-mode">Mot par mot</b><span><kbd>Retour</kbd> le mot d’avant</span><span><kbd>⇧</kbd> + <kbd>R</kbd> revenir aux arrêts</span><span><kbd>Échap</kbd> revenir à la recopie</span>' + note; rcBandePhoto(null); return; }
+  const ia = w.ia, oub = rcOubliee(w), d = ia && ia.l.decisions && ia.l.decisions[ia.cle], T = ia ? rcStyleArret(ia) : RC_NEUTRE;
+  carte.style.borderColor = ia || oub ? T.couleur : "";
+  rcRubanTexte(ctx, B.k, w, null, T);
+  carte.innerHTML = '<div class="rc-bande-mot">' + (ia ? '<span class="rc-eleve">' + escapeHtml(ia.g.eleve || "(mot manquant)") + '</span> <span class="rc-fleche">→</span> <span class="rc-corr">' + escapeHtml(ia.g.corrige || "(mot en trop)") + "</span>" : '<span class="rc-eleve' + (oub ? "" : " rc-juste") + '">' + escapeHtml(w.g.eleve) + "</span>") + '</div><div class="rc-bande-pied">'
+    + (ia ? badge(T) + " proposé par l’IA" + (d === "o" ? " · gardée" : d === "n" ? " · refusée" : "") + " · " : oub ? badge(RC_NEUTRE) + " · " : "") + "ligne " + w.n + " · mot " + (B.j + 1) + " sur " + N + "</div>";
+  touches.innerHTML = '<b class="rc-bande-mode">Mot par mot</b><span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> le mot est correct</span><span><kbd>F</kbd> faute (encore <kbd>F</kbd> : la retirer)</span><span><kbd>N</kbd> non, sur un mot proposé par l’IA</span><span><kbd>Retour</kbd> le mot d’avant</span><span>clic sur un mot du texte : y aller</span><span><kbd>⇧</kbd> + <kbd>R</kbd> revenir aux arrêts</span><span><kbd>Échap</kbd> revenir à la recopie</span>' + note;
+  rcBandePhoto(rcBandeCible());
 }
 /* [C14 1.4.11] (Paul 15:41 : « le texte doit s'afficher en continu aussi, autant en recopié qu'en manuscrit. Le texte complet devient une immense
    bande qui s'affiche au fur et à mesure, comme une bande qu'on passerait entre ses doigts tout en regardant toujours l'endroit entre ses doigts.
    c'est le principe de correction dictée ») : toutes les lignes écrites de la copie, bout à bout, en un seul ruban ; le mot de l'arrêt au milieu ;
    d'un arrêt à l'autre, le ruban glisse. */
-function rcRubanTexte(ctx, k, a, hCourante) {
+function rcRubanTexte(ctx, k, a, hCourante, T) {
   let ruban = ctx.querySelector(".rc-ruban-t"); if (!ruban) { ctx.innerHTML = '<span class="rc-bande-n"></span><div class="rc-ruban"><div class="rc-ruban-t"></div></div>'; ruban = ctx.querySelector(".rc-ruban-t"); }
   ctx.querySelector(".rc-bande-n").textContent = "ligne " + a.n;
-  ruban.innerHTML = rcLignesEcrites(k).map((x, i) => '<span class="rc-ruban-l' + (x.id === a.id ? " on" : "") + '" data-n="' + (i + 1) + '">' + (x.id === a.id ? hCourante : escapeHtml(x.l.texte)) + "</span>").join('<span class="rc-ruban-sep" aria-hidden="true"></span>');
+  /* [C14 1.4.12] en mot par mot (T donné) : chaque mot de chaque ligne se clique, le mot en cours est marqué */
+  const mots = (x, i) => { const t = x.l.texte, P = rcPosMots(t); let h = "", c = 0; P.forEach((p, m) => { h += escapeHtml(t.slice(c, p[0])); const w = escapeHtml(t.slice(p[0], p[1])), ici = x.id === a.id && m === a.m;
+    h += ici ? '<mark class="rc-mot" data-id="' + escapeAttr(x.id) + '" data-m="' + m + '" style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";box-shadow:inset 0 -2px 0 " + T.couleur + '">' + w + "</mark>" : '<span class="rc-mot" data-id="' + escapeAttr(x.id) + '" data-m="' + m + '">' + w + "</span>"; c = p[1]; }); return h + escapeHtml(t.slice(c)); };
+  ruban.innerHTML = rcLignesEcrites(k).map((x, i) => '<span class="rc-ruban-l' + (x.id === a.id ? " on" : "") + '" data-n="' + (i + 1) + '">' + (T ? mots(x, i) : x.id === a.id ? hCourante : escapeHtml(x.l.texte)) + "</span>").join('<span class="rc-ruban-sep" aria-hidden="true"></span>');
+  ctx.onclick = ev => { const B = RC.bd, t = ev.target && ev.target.closest && ev.target.closest(".rc-mot[data-id]"); if (!B || !B.mot || !t) return; const j = B.W.findIndex(w => w.id === t.dataset.id && w.m === +t.dataset.m); if (j >= 0) { B.j = j; B.note = ""; rcBandeRendre(); } };
   const m = ruban.querySelector("mark") || ruban.querySelector(".rc-ruban-l.on"), boite = ctx.querySelector(".rc-ruban");
   if (m && boite) { const c = m.offsetLeft + m.offsetWidth / 2; ruban.style.transform = "translateX(" + Math.round(boite.clientWidth / 2 - c) + "px)"; }
 }
@@ -8896,7 +9090,7 @@ function rcBandePhoto(a, anime) {
   };
   const finir = () => {
     const sh = dessiner(centre), a0 = Xr(q.x0) + sh, a1 = Math.max(Xr(q.x1) + sh, a0 + 6), b0 = Math.max(2, Y(q.y0)), b1 = Math.min(h - 2, Math.max(Y(q.y1), b0 + 10));
-    const cd = rcCodeArret(a), T = RC_TYPES[cd];
+    const cd = a.mot ? null : rcCodeArret(a), T = a.mot ? RC_NEUTRE : RC_TYPES[cd];   // [C14 1.4.12] un mot sans faute de l'IA : un cadre gris
     x.fillStyle = rcRgba(T.couleur, .22); x.strokeStyle = T.couleur; x.lineWidth = 2; x.fillRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6); x.strokeRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6);
     if (q.type.manque) { const m = (a0 + a1) / 2; x.strokeStyle = T.couleur; x.lineWidth = 3; x.beginPath(); x.moveTo(m - 9, b1 + 1); x.lineTo(m, b0 + 4); x.lineTo(m + 9, b1 + 1); x.stroke(); }
     B.boite = { a0: a0 - 6, a1: a1 + 6, par: 1 / (cur.k * im.w), q, code: cd, bord: a0 - 3, ym: (b0 + b1) / 2 };
@@ -8907,7 +9101,7 @@ function rcBandePhoto(a, anime) {
   finir(); dessiner(depart); requestAnimationFrame(pas);
 }
 function rcBandeGlisser(du) {
-  const B = RC.bd, a = B && B.A[B.i]; if (!a || B.attente) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a), x0 = rcBorne(q.x0 + du, 0, 0.99), x1 = rcBorne(q.x1 + du, 0.01, 1);
+  const B = RC.bd, a = B && rcBandeCible(); if (!a || B.attente) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a), x0 = rcBorne(q.x0 + du, 0, 0.99), x1 = rcBorne(q.x1 + du, 0.01, 1);
   rcLigneMaj(B.k, a.pid, a.id, l => { l.places = Object.assign({}, l.places, { [a.cle]: { x0, x1 } }); });
   const mk = a.l.marquesBande && a.l.marquesBande[a.cle], m = mk && scCopie(B.k).marques[mk]; if (m) { const r = rcPlaceSeg(a); Object.assign(m, { x0: r.x0, x1: r.x1, y0: r.y0, y1: r.y1, modifieLe: new Date().toISOString() }); }
   rcBandePhoto(a, false);
@@ -8922,7 +9116,8 @@ function rcBandeSouris() {
 }
 /* 1.4.3 (Paul 12:15) : clic droit sur le cadre = une faute de ta recopie ; la ligne prend la forme du corrigé à cet endroit et la faute disparaît ; Ctrl + Z la remet */
 function rcBandeRecopie() {
-  const B = RC.bd, a = B.A[B.i]; if (!a) return; const L = a.l, t = L.texte, P = rcPosMots(t), Q = rcPosMots(L.corrige), g = a.g;
+  const B = RC.bd, a = rcBandeCible(); if (!a) return; if (a.mot) { B.note = "Clic droit : seulement sur une faute proposée par l’IA."; rcBandeRendre(); return; }
+  const L = a.l, t = L.texte, P = rcPosMots(t), Q = rcPosMots(L.corrige), g = a.g;
   const sub = g.a2 > g.de2 ? L.corrige.slice(Q[g.de2][0], Q[g.a2 - 1][1]) : ""; let n;
   if (g.a > g.de) { let c0 = P[g.de][0], c1 = P[g.a - 1][1]; if (sub) n = t.slice(0, c0) + sub + t.slice(c1); else { if (t[c1] === " ") c1++; else if (c0 > 0 && t[c0 - 1] === " ") c0--; n = t.slice(0, c0) + t.slice(c1); } }
   else { const pos = g.de > 0 ? P[g.de - 1][1] : 0, colle = /^[.,;:!?…)»]/.test(sub); n = pos === 0 ? sub + " " + t : t.slice(0, pos) + (colle ? "" : " ") + sub + t.slice(pos); }
@@ -8931,21 +9126,24 @@ function rcBandeRecopie() {
   sA.forEach((v, i) => { const j = sN.indexOf(v); if (j >= 0 && cle(anc[i]) !== a.cle) map[cle(anc[i])] = cle(nouv[j]); });
   const avant = { texte: t, corrigeDe: L.corrigeDe, decisions: JSON.parse(JSON.stringify(L.decisions || {})), marquesBande: JSON.parse(JSON.stringify(L.marquesBande || {})), places: JSON.parse(JSON.stringify(L.places || {})) };
   const s = scCopie(B.k), mk = L.marquesBande && L.marquesBande[a.cle], retiree = mk && s.marques[mk] ? JSON.parse(JSON.stringify(s.marques[mk])) : null; if (retiree) scEffacer(mk);
-  const re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; }); return r; };
+  /* [C14 1.4.12] une faute oubliée par l'IA (clé « mot-n ») suit son mot quand la recopie change avant lui */
+  const dN = rcPosMots(n).length - P.length, re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; else { const mm = /^mot-(\d+)$/.exec(x); if (mm) { const i = +mm[1]; if (i < g.de) r[x] = o[x]; else if (i >= g.a) r["mot-" + (i + dN)] = o[x]; } } }); return r; };
   rcLigneMaj(B.k, a.pid, a.id, l => { l.texte = n; l.corrigeDe = n; l.decisions = re(avant.decisions); l.marquesBande = re(avant.marquesBande); l.places = re(avant.places); l.recopieCorrigee = (l.recopieCorrigee || 0) + 1; });
-  (B.annule = B.annule || []).push({ k: B.k, pid: a.pid, id: a.id, avant, retiree, i: B.i });
-  saveState(); B.A = rcArrets(B.k); B.i = Math.min(B.i, B.A.length); B.note = "Faute de recopie : « " + (g.eleve || "∅") + " » devient « " + (sub || "∅") + " ». Ctrl + Z pour la remettre."; rcBandeRendre();
+  (B.annule = B.annule || []).push({ k: B.k, pid: a.pid, id: a.id, avant, retiree, i: B.i, j: B.j });
+  saveState(); B.A = rcArrets(B.k); B.i = Math.min(B.i, B.A.length); if (B.mot) { B.W = rcMotsCopie(B.k, B.A); B.j = Math.min(B.j, B.W.length); } B.note = "Faute de recopie : « " + (g.eleve || "∅") + " » devient « " + (sub || "∅") + " ». Ctrl + Z pour la remettre."; rcBandeRendre();
 }
 function rcBandeRemettre() {
   const B = RC.bd, u = B && B.annule && B.annule.pop(); if (!u) { toast("Rien à remettre."); return; }
   rcLigneMaj(u.k, u.pid, u.id, l => Object.assign(l, JSON.parse(JSON.stringify(u.avant))));
   if (u.retiree) { const s = scCopie(u.k); s.marques[u.retiree.id] = u.retiree; scNumeroter(u.k); }
-  saveState(); B.A = rcArrets(B.k); B.i = Math.min(u.i, B.A.length); B.note = "Faute remise."; rcBandeRendre();
+  saveState(); B.A = rcArrets(B.k); B.i = Math.min(u.i, B.A.length); if (B.mot) { B.W = rcMotsCopie(B.k, B.A); B.j = Math.min(u.j != null ? u.j : B.j, B.W.length); } B.note = "Faute remise."; rcBandeRendre();
 }
 function rcBandeClavier(ev) {
   const B = RC.bd; ev.stopPropagation();
   if (ev.key === "Escape") { ev.preventDefault(); rcBandeFermer(); return true; }
   if (B.attente) { if (ev.key === "Enter") { ev.preventDefault(); rcBandeCommencer(); } return true; }
+  if (ev.shiftKey && (ev.key === "R" || ev.key === "r") && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { ev.preventDefault(); rcBandeBasculer(); return true; }   // [C14 1.4.12] ⇧R, comme en dictée
+  if (B.mot && rcBandeMotClavier(ev)) return true;
   if ((ev.key === "Enter" || ev.key === " ") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("o"); return true; }
   if ((ev.key === "n" || ev.key === "N") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("n"); return true; }
   if (ev.key === "Backspace") { ev.preventDefault(); B.i = Math.max(0, B.i - 1); B.note = ""; rcBandeRendre(); return true; }
@@ -8959,6 +9157,7 @@ function rcClavier(ev) {
   const input = ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie");
   if (RC.bd) return rcBandeClavier(ev);
   if (RC.fluxOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcFluxFermer(); } ev.stopPropagation(); return true; }
+  if (RC.phrase) { if (ev.key === "Escape") { ev.preventDefault(); rcPhraseFermer(); } ev.stopPropagation(); return true; }
   if (RC.iaOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcIAFermer(); } ev.stopPropagation(); return true; }
   if (ev.key === "Escape") { ev.preventDefault(); ev.stopPropagation(); rcFermer(); return true; }
   if (input && ev.key === '"' && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { ev.preventDefault(); ev.stopPropagation(); rcGuillemet(ev.target); return true; }
@@ -9534,6 +9733,77 @@ function scAvancement(k) {
     }
   }));
   return { commence: true, fait, total, pct: total ? Math.round(100 * fait / total) : 0 };
+}
+
+/* ═══ [C14 1.4.12] l'accueil de la correction dans le flux (C14 225, n° 1, 6, 7 ; Paul 22:36 « fais tout le reste », 22:45 « la liste de ce qui ne sert à rien ») ═══
+   La carte d'un élève montre les étapes de sa copie (le flux) ; un clic l'ouvre là où tu travailles (la recopie ou l'écran des scans), plus jamais la grille
+   d'origine ; l'onglet « Bilan » se tire des scans et de la bande ; l'onglet « Fiches élèves » mène aux fichiers École Directe. Rien n'est écrit au site. */
+const AV = { red: null };
+function avPret() { return SC.ouvert || AV.red === RU.id; }
+function avPagesCharger() {   // les pages du paquet (leur élève) : lues une fois par rédaction, pour compter le flux sans ouvrir les scans
+  if (SC.ouvert || AV.red === RU.id || AV.lit === RU.id || !RU.id) return; const red = AV.lit = RU.id;
+  ruLire(scChemin(["pages"])).then(pg => { if (RU.id !== red) return; AV.lit = null; AV.red = red; if (!SC.ouvert) SC.pages = pg || {}; avGrille(); renderDashboard(); if (RU.sous === "bilan") avBilanClasse(); if (RU.sous === "fiches") avFiches(); }).catch(() => { AV.lit = null; });
+}
+function avGrille() {   // la grille à cases du sujet et ses passes, comme les prépare l'écran des scans (scOuvrir), pour lire les notes sans l'ouvrir
+  if (SC.ouvert || (SC.grille && SC.passes.length)) return !!SC.grille; const g = SUJET && SUJET.grille2; if (!g || !g.criteres) return false;
+  SC.grille = scGrilleNormale(g); const L = g.criteres.find(c => c.id === "langue");
+  SC.passes = [{ id: "langue", nom: L ? L.nom : "La langue", pts: L ? L.points : [], crit: "langue" }].concat(g.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom, pts: c.points, crit: c.id })));
+  return true;
+}
+function avFlux(k) { if (!avPret() || typeof rcFluxCopie !== "function") return null; try { return rcFluxCopie(k); } catch (e) { return null; } }
+function avCarteFlux(k) {
+  avPagesCharger(); const f = avFlux(k); if (!f || (!f.lignes && !f.arrets)) return "";
+  const pl = (n, m) => n + " " + m + (n > 1 ? "s" : ""), e = (fait, txt, tip) => '<span class="av-et' + (fait ? " ok" : "") + '" title="' + escapeAttr(tip) + '">' + (fait ? "✓ " : "") + escapeHtml(txt) + "</span>";
+  return '<div class="av-flux">' + e(f.finie, "recopiée", f.lignes ? pl(f.lignes, "ligne") + (f.finie ? ", avec la phrase qui m’a marqué : la recopie est finie." : " ; la recopie se finit avec « ★ La phrase qui m’a marqué ».") : "Pas encore recopiée.")
+    + e(!!(f.envoi || f.charge), "envoyée", f.envoi ? "Envoi " + f.envoi.n + " à l’IA, " + rcHeure(f.envoi.le) + "." : f.charge ? "Envoyée avant le flux." : "Pas encore envoyée à l’IA.")
+    + e(!!f.charge, "chargée", f.charge ? "Corrigé de l’IA chargé " + rcHeure(f.charge.le) + " : " + pl(f.charge.fautes, "faute") + " proposée" + (f.charge.fautes > 1 ? "s" : "") + "." : "Le corrigé de l’IA n’est pas encore chargé.")
+    + e(f.fini, f.arrets ? "bande " + f.decides + "/" + f.arrets : "bande", f.arrets ? f.decides + " arrêt" + (f.decides > 1 ? "s" : "") + " décidé" + (f.decides > 1 ? "s" : "") + " sur " + f.arrets + (f.fini ? " : la bande est finie." : ".") : "La bande attend le corrigé de l’IA.") + "</div>";
+}
+function avCarteEtat(k, pct, suivi) { const f = avFlux(k); if (f && f.fini) return "Corrigé"; if ((f && (f.lignes || f.arrets)) || suivi || pct > 0) return pct === 100 ? "Corrigé" : "En cours"; return "Non commencé"; }
+function avOuvrirCarte(k) {   // la copie s'ouvre là où tu travaillais quand tu as quitté l'écran des scans
+  const rec = state.scanDernier === "recopie", r = ((((state.copies[k] || {}).scan || {}).recopie) || {}).reprise || {};
+  state.scanCurseur = Object.assign({}, state.scanCurseur || {}, { copie: k });
+  state.scanRecopie = rec ? { ouverte: true, copie: k, page: r.page || null, ligne: r.ligne || null } : Object.assign({}, state.scanRecopie || {}, { ouverte: false });
+  saveState(); scOuvrir();
+}
+/* l'onglet « Bilan » : pour la remédiation, la note, les critères et les fautes par type d'erreur de chaque élève, puis la classe */
+const AV_ORDRE = ["G", "L", "C", "P", "E", "M", "X", "I", "A"];
+function avFautes(k) { const ids = new Set(scPagesDe(k).map(p => p.id)), o = {}; Object.values(((state.copies[k] || {}).scan || {}).marques || {}).filter(m => m && m.forme === "faute" && (!ids.size || ids.has(m.page))).forEach(m => { const c = (m.bande && RC_TYPES[m.bande.code]) ? m.bande.code : "_"; o[c] = (o[c] || 0) + 1; }); return o; }
+function avCritere(k, c) { let n = 0, tot = 0, ok = true; c.points.forEach(pt => { tot += pt.poids; const r = scCase(pt, k); if (!r || !r.complet) ok = false; else n += pt.bareme[String(r.c.niveau)]; }); return { n, tot, ok }; }
+function avBilanClasse() {
+  const v = document.getElementById("ruVue_bilan"); if (!v) return; avPagesCharger();
+  if (!avPret() || !avGrille()) { v.innerHTML = '<div class="rp-carte"><h2>Bilan de la classe</h2><p>' + (SUJET && SUJET.grille2 ? "Lecture du paquet…" : "Ce sujet n’a pas encore de grille à cases : le bilan se tire de la correction sur les scans.") + "</p></div>"; return; }
+  const al = (SUJET && SUJET.fiche && SUJET.fiche.alerte) || {}, lg = SC.grille.criteres.find(c => c.id === "langue"), pO = lg && lg.points.find(p => p.calcul === "fautes"), seuil = al.echelon != null ? al.echelon : 0;
+  const dnb = k => { if (!pO) return null; const r = scCase(pO, k); return r && r.complet ? r.c.niveau === seuil : null; };
+  const C = SC.grille.criteres, nb = x => String(Math.round(x * 10) / 10).replace(".", ","), T = Object.assign({}, RC_TYPES), ty = AV_ORDRE.filter(c => T[c]);
+  const L = state.classe.map(nm => { const k = eleveId(nm), f = avFlux(k) || {}, nt = scNote(k), cr = C.map(c => avCritere(k, c)), fa = avFautes(k); return { nm, k, f, nt, cr, fa, nf: Object.values(fa).reduce((a, b) => a + b, 0), dnb: dnb(k) }; });
+  const finies = L.filter(x => x.nt.ok), tot = {}; L.forEach(x => Object.keys(x.fa).forEach(c => { tot[c] = (tot[c] || 0) + x.fa[c]; })); const totF = Object.values(tot).reduce((a, b) => a + b, 0);
+  const moyC = C.map((c, i) => { const ok = L.filter(x => x.cr[i].ok); return ok.length ? ok.reduce((a, x) => a + x.cr[i].n / (x.cr[i].tot || 1), 0) / ok.length : null; });
+  let faible = -1; moyC.forEach((m, i) => { if (m != null && (faible < 0 || m < moyC[faible])) faible = i; });
+  const th = c => '<th title="' + escapeAttr(T[c].libelle) + '"><span class="av-ty" style="background:' + T[c].fond + ";color:" + (T[c].texte || T[c].couleur) + ";border-color:" + T[c].couleur + '">' + c + "</span></th>";
+  const ligne = x => "<tr><td>" + escapeHtml(x.nm) + '</td><td class="av-n">' + (x.nt.ok ? "<b>" + nb(x.nt.n) + " / " + x.nt.tot + "</b>" : '<span class="av-m">pas finie</span>') + "</td>" + '<td class="av-n">' + (x.dnb ? '<span class="av-dnb">⚠ orthographe</span>' : x.dnb === false ? "—" : "") + "</td>"
+    + C.map((c, i) => '<td class="av-n">' + (x.cr[i].ok ? nb(x.cr[i].n) + " / " + x.cr[i].tot : '<span class="av-m">…</span>') + "</td>").join("")
+    + '<td class="av-n"><b>' + (x.nf || "") + "</b></td>" + ty.map(c => '<td class="av-n">' + (x.fa[c] || "") + "</td>").join("") + '<td class="av-n">' + (x.fa._ || "") + "</td></tr>";
+  const classe = '<tr class="av-classe"><td>La classe</td><td class="av-n">' + (finies.length ? "<b>" + nb(finies.reduce((a, x) => a + x.nt.n, 0) / finies.length) + " / " + finies[0].nt.tot + "</b><br><span class=\"av-m\">moyenne de " + finies.length + " copie" + (finies.length > 1 ? "s" : "") + " finie" + (finies.length > 1 ? "s" : "") + "</span>" : '<span class="av-m">aucune copie finie</span>') + "</td>" + '<td class="av-n">' + (L.filter(x => x.dnb).length ? '<span class="av-dnb">⚠ ' + L.filter(x => x.dnb).length + "</span>" : "—") + "</td>"
+    + C.map((c, i) => '<td class="av-n' + (i === faible ? " av-faible" : "") + '"' + (i === faible ? ' title="Le critère le plus faible de la classe"' : "") + ">" + (moyC[i] != null ? Math.round(100 * moyC[i]) + " %" + (i === faible ? "<br><span class=\"av-m\">le plus faible</span>" : "") : "…") + "</td>").join("")
+    + '<td class="av-n"><b>' + totF + "</b></td>" + ty.map(c => '<td class="av-n">' + (tot[c] ? tot[c] + '<br><span class="av-m">' + Math.round(100 * tot[c] / totF) + " %</span>" : "") + "</td>").join("") + '<td class="av-n">' + (tot._ ? tot._ + '<br><span class="av-m">' + Math.round(100 * tot._ / totF) + " %</span>" : "") + "</td></tr>";
+  v.innerHTML = '<div class="rp-carte av-bilan"><h2>Bilan de la classe</h2><p>Tiré de la correction sur les scans et de la bande, sans rien écrire. Une copie pas finie n’entre pas dans la moyenne. Les fautes comptées par type d’erreur sont celles de la bande ; une faute marquée avec la méthode d’avant est « sans type ».</p>'
+    + '<div class="av-tab"><table class="rp-table"><thead><tr><th>Élève</th><th>Note</th><th title="' + escapeAttr((al.titre ? al.titre + " : " : "") + "la copie dont l’orthographe tombe au plus bas niveau de la grille (trop de fautes par ligne) peut être déclassée au brevet. Une colonne, jamais une alerte.") + '">Brevet</th>' + C.map(c => "<th>" + escapeHtml(c.nom) + "</th>").join("") + "<th>Fautes</th>" + ty.map(th).join("") + '<th title="Une faute sans type d’erreur : marquée avant la bande, ou oubliée par l’IA">sans type</th></tr></thead><tbody>'
+    + L.map(ligne).join("") + classe + "</tbody></table></div></div>";
+}
+/* l'onglet « Fiches élèves » : les fichiers École Directe des scans (la fiche HTML d'origine est rangée) */
+function avFiches() {
+  const v = document.getElementById("ruVue_fiches"); if (!v) return; avPagesCharger(); avGrille();
+  const L = state.classe.map(nm => { const k = eleveId(nm), f = avFlux(k), nt = avPret() && SC.grille ? scNote(k) : { ok: false }; return "<tr><td>" + escapeHtml(nm) + '</td><td class="av-n">' + (nt.ok ? "<b>" + String(Math.round(nt.n * 10) / 10).replace(".", ",") + " / " + nt.tot + "</b>" : "—") + '</td><td class="' + (nt.ok ? "rp-ok" : "") + '">' + (nt.ok ? "prête : la correction est finie" : f && (f.lignes || f.arrets) ? "pas encore : la correction est en cours" : "pas encore commencée") + "</td></tr>"; }).join("");
+  v.innerHTML = '<div class="rp-carte"><h2>Fiches élèves</h2><p>Le fichier de chaque élève se fabrique dans l’écran des scans : sa copie scannée et tes marques, à déposer sur École Directe. Les photos ne quittent jamais ce navigateur.</p>'
+    + '<button class="rp-prim" onclick="avFichiersED()" title="Ouvre l’écran des scans et sa liste des fichiers : un fichier par élève, à télécharger, ou à tester comme l’élève le verra. Les photos doivent être dans ce navigateur (le paquet chargé).">📨 Fichiers École Directe</button>'
+    + '<table class="rp-table"><thead><tr><th>Élève</th><th>Note</th><th>Son fichier</th></tr></thead><tbody>' + L + "</tbody></table></div>";
+}
+function avFichiersED() {
+  const fin = () => { if (typeof RC !== "undefined" && RC.ouvert) rcFermer(); scFichiersED(); };
+  if (SC.ouvert) { fin(); return; }
+  state.scanRecopie = Object.assign({}, state.scanRecopie || {}, { ouverte: false }); scOuvrir(); const t0 = Date.now();
+  (function attendre() { if (SC.ouvert) fin(); else if (Date.now() - t0 < 10000) setTimeout(attendre, 120); else toast("L’écran des scans ne s’ouvre pas : ouvre-le avec « 📄 Corriger sur les scans », puis « 📨 Fichiers École Directe »."); })();
 }
 </script>
 </body>

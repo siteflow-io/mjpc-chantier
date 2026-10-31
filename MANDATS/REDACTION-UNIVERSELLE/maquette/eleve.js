@@ -9,7 +9,7 @@ function scEleveDonnees(k, test) {
   const place = m => ({ page: ordre.indexOf(m.page), y: m.y0 });
   const M = Object.values(s.marques).filter(m => ordre.indexOf(m.page) >= 0);
   const fautes = M.filter(m => m.forme === "faute").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0) || (a.x0 - b.x0))
-    .map(m => { const p = SC.pages[m.page]; const l = m.l0 != null && m.l0 >= 0 ? m.l0 + 1 : null; return { id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, num: m.num, rang: m.rang || 0, ligne: l, bonne: m.bonne || null }; });
+    .map(m => { const p = SC.pages[m.page]; const l = m.l0 != null && m.l0 >= 0 ? m.l0 + 1 : null; return { id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, num: m.num, rang: m.rang || 0, ligne: l, bonne: m.bonne || null, t: (m.bande && m.bande.code) || null }; });
   const pts = []; SC.grille.criteres.forEach(c => c.points.forEach(pt => { const r = scCase(pt, k); if (!r || !r.complet) return;   // seuls les points que tu as passés partent chez l'élève
     const ms = M.filter(m => m.point === pt.id && m.forme !== "faute" && m.forme !== "etoile").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0));
     const pl = ms.length ? place(ms[0]) : { page: 0, y: 0 };
@@ -21,24 +21,36 @@ function scEleveDonnees(k, test) {
   const nt = scNote(k);
   return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB), correctionEleve: scCorrectionEleve(),
     criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: nt.ok ? nt.n : null, total: nt.tot,
-    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL,
+    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL, types: scTypesEleve(),
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
+}
+/* [C14 1.4.12] (Paul 31/10 14:03 : « les mots sont soulignés dans la couleur de leur erreur et ils ont le détail dans la marge » ; C14 226) : les couleurs et
+   les lettres de la correction de dictée (TYPE_STYLE, « Badge type ») ; une faute sans type d'erreur : gris, « • » */
+const SC_COURT = { G: "G", M: "∅", I: "?", L: "L", C: "Acc.", P: "P", E: "E", X: "+", A: "⚠" };
+function scTypesEleve() { const o = { _: { couleur: "#6b7280", fond: "#f3f4f6", libelle: "", court: "•" } }; if (typeof RC_TYPES === "object") Object.keys(RC_TYPES).forEach(c => { o[c] = Object.assign({}, RC_TYPES[c], { court: SC_COURT[c] || c }); }); return o; }
+/* la marge ajoutée à gauche de la photo : à la hauteur de chaque ligne fautive, une pastille par faute, dans l'ordre de la ligne (sans la bonne forme) */
+function scPastilles(D, i) {
+  const F = D.fautes.map((f, j) => ({ f, j })).filter(o => o.f.page === i).sort((a, b) => ((a.f.y0 + a.f.y1) - (b.f.y0 + b.f.y1)) || (a.f.x0 - b.f.x0)), rangs = [];
+  F.forEach(o => { const y = (o.f.y0 + o.f.y1) / 2, r = rangs.find(g => Math.abs(g.y - y) < 0.012); if (r) { r.l.push(o); r.y = (r.y * (r.l.length - 1) + y) / r.l.length; } else rangs.push({ y, l: [o] }); });
+  rangs.forEach(g => g.l.sort((a, b) => a.f.x0 - b.f.x0));
+  return rangs;
 }
 function scEleveFichier(k, test) {
   const D = scEleveDonnees(k, test); const ps = scPagesDe(k);
   return Promise.all(ps.map(p => SC.imgs[p.id] ? scBlobUrl(SC.imgs[p.id].blob) : Promise.resolve(""))).then(srcs => {
     const pc = (v) => (v * 100).toFixed(3) + "%";
     const statique = ps.map((p, i) => { let mk = "";
-      D.fautes.filter(f => f.page === i).forEach(f => { mk += `<div class="mk f" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div>`; });
+      D.fautes.filter(f => f.page === i).forEach(f => { const T = D.types[f.t] || D.types._; mk += `<div class="mk f" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};border-top-color:${T.couleur}"></div>`; });
       D.etoile.filter(e => e.page === i).forEach(e => e.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${SC_CRIT.etoile}40"></div>`; }));
       D.points.forEach(pt => pt.marques.filter(m => m.page === i).forEach(m => { const c = SC_CRIT[pt.crit] || "#6b1a2a";
         if (m.forme === "surligne") m.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${c}40"></div>`; });
         else mk += `<div class="mk ${m.forme === "marge" ? "g" : "e"}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + c : "border-color:" + c}"></div>`; }));
-      return `<div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${srcs[i]}" alt="">${mk}</div>`; }).join("");
+      const marge = scPastilles(D, i).map(g => `<div class="pas" style="top:${pc(g.y)}">${g.l.map(o => { const T = D.types[o.f.t] || D.types._; return `<span style="background:${T.fond};color:${T.texte || T.couleur};border-color:${T.couleur}">${T.court}</span>`; }).join("")}</div>`).join("");
+      return `<div class="pgx"><div class="marge">${marge}</div><div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${srcs[i]}" alt="">${mk}</div></div>`; }).join("");
     const css = `*{box-sizing:border-box}body{margin:0;background:#f5f1ea;color:#2b2520;font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
 .tete{background:linear-gradient(#c08a4a,#a67a44);color:#fff;padding:10px 16px;font:600 19px Georgia,serif}.tete small{font:14px system-ui;opacity:.9;margin-left:8px}
 .copie{max-width:900px;margin:0 auto;padding:10px}.pg{position:relative;width:100%;margin-bottom:12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
-.mk{position:absolute}.mk.f{height:0;border-top:3px solid #c54040;border-radius:2px}.mk.e{border:2.5px solid;border-radius:4px}.mk.g{border-radius:4px}`;
+.mk{position:absolute}.mk.f{height:0;border-top:3px solid #c54040;border-radius:2px}.pgx{display:flex;align-items:stretch;gap:4px;margin-bottom:12px}.pgx .pg{margin-bottom:0;flex:1;min-width:0}.marge{position:relative;width:46px;flex:none}.pas{position:absolute;left:0;right:0;transform:translateY(-50%);display:flex;flex-wrap:wrap;gap:2px;justify-content:center}.pas span{font:700 11px/1 system-ui;border:1.5px solid;border-radius:6px;padding:3px 3px;min-width:18px;text-align:center;cursor:pointer}.pas span.on{box-shadow:0 0 0 2px #2b2520}.mk.e{border:2.5px solid;border-radius:4px}.mk.g{border-radius:4px}`;
     const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(D.titre)} — ${escapeHtml(D.nom)}</title><style>${css}</style></head><body>
 <div class="tete">${escapeHtml(D.titre)}<small>${escapeHtml(D.nom)}</small></div><div class="copie" id="statique">${statique}</div>
 <script>const D=${JSON.stringify(D).replace(/</g, "\\u003c")};const IMG=${JSON.stringify(srcs)};(${(D.correctionEleve ? scEleveApp : scEleveLecture).toString()})(D,IMG);<\/script></body></html>`;
@@ -51,12 +63,13 @@ function scEleveFichier(k, test) {
 // elle servira à la correction par l'élève, quand elle sera ouverte.
 function scEleveLecture(D, IMG) {
   const $ = s => document.querySelector(s); const pc = v => (v * 100).toFixed(3) + "%"; const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const Ty = f => (D.types && (D.types[f.t] || D.types._)) || { couleur: "#c54040", fond: "#fde8e8", libelle: "", court: "•" };   // [C14 1.4.12] le type d'erreur d'une faute, sa couleur et sa lettre
   let vue = null;   // null : la grille ; { t: "p", i } un point ; { t: "f", i } une faute ; { t: "r", i } une remarque ; { t: "e" } la phrase dorée
   if (D.test) document.body.insertAdjacentHTML("afterbegin", `<div style="background:#fff3d6;border-bottom:1px solid #d4b87a;color:#5a3010;padding:5px 14px;font:14px system-ui">🧪 Mode test : le fichier tel que l'élève le verra. Il le lit, il n'y écrit rien.</div>`);
   const st = document.createElement("style"); st.textContent = `#statique{display:none}
 .app{display:flex;gap:16px;padding:12px;min-height:calc(100vh - 50px)}.col{flex:1;min-width:0}.pan{width:420px;flex:none;position:sticky;top:10px;align-self:flex-start;max-height:calc(100vh - 20px);overflow:auto}
 .pg{position:relative;width:100%;max-width:1000px;margin:0 auto 12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
-.mk{position:absolute;cursor:pointer}#col .mk.f{height:12px;margin-top:-9px;border:0;border-radius:0}#col .mk.f::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:2px;background:#c54040}#col .mk.f.on{outline:0}#col .mk.f.on::after{height:5px;bottom:-1px;box-shadow:0 0 0 3px #f4b0b0}.e{border:2.5px solid;border-radius:4px}.g{border-radius:4px}.mk.on{outline:3px solid #2b2520;outline-offset:2px}
+.mk{position:absolute;cursor:pointer}#col .mk.f{height:12px;margin-top:-9px;border:0;border-radius:0}#col .mk.f::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:2px;background:var(--c,#c54040)}#col .mk.f.on{outline:0}#col .mk.f.on::after{height:5px;bottom:-1px;box-shadow:0 0 0 3px #2b252033}.pgx{display:flex;align-items:stretch;gap:4px;max-width:1046px;margin:0 auto 12px}.pgx .pg{margin:0;flex:1;min-width:0}.marge{position:relative;width:46px;flex:none}.pas{position:absolute;left:0;right:0;transform:translateY(-50%);display:flex;flex-wrap:wrap;gap:2px;justify-content:center}.pas span{font:700 11px/1 system-ui;border:1.5px solid;border-radius:6px;padding:3px 3px;min-width:18px;text-align:center;cursor:pointer}.pas span.on{box-shadow:0 0 0 2px #2b2520}.e{border:2.5px solid;border-radius:4px}.g{border-radius:4px}.mk.on{outline:3px solid #2b2520;outline-offset:2px}
 .num{position:absolute;transform:translate(-50%,-50%);background:#c54040;color:#fff;border-radius:50%;width:22px;height:22px;font:700 12px/22px system-ui;text-align:center;cursor:pointer}
 .pin{position:absolute;left:.4%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);cursor:pointer}.pin.on{box-shadow:0 0 0 3px #2b2520}
 .bloc{background:#fdfbf7;border:1px solid #d6cfc1;border-radius:10px;padding:12px 14px;margin-bottom:10px}.bloc h3{margin:0 0 6px;font:600 12.5px system-ui;letter-spacing:.1em;text-transform:uppercase;color:#6b1a2a}
@@ -74,11 +87,15 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
   const app = document.createElement("div"); app.className = "app"; app.innerHTML = `<div class="col" id="col"></div><div class="pan" id="pan"></div>`; document.body.appendChild(app);
   const montrer = (page, y) => { const P = document.querySelectorAll(".pg")[page]; if (!P) return; const r = P.getBoundingClientRect(); window.scrollTo({ top: window.scrollY + r.top + r.height * y - window.innerHeight * 0.3, behavior: "smooth" }); };
   function copie() {
-    const col = $("#col"); col.innerHTML = D.pages.map((p, i) => `<div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${IMG[i]}" alt=""></div>`).join("");
-    const pgs = col.querySelectorAll(".pg"), on = (t, i) => vue && vue.t === t && vue.i === i;
+    const on = (t, i) => vue && vue.t === t && vue.i === i;
+    const rangs = i => { const F = D.fautes.map((f, j) => ({ f, j })).filter(o => o.f.page === i).sort((a, b) => ((a.f.y0 + a.f.y1) - (b.f.y0 + b.f.y1)) || (a.f.x0 - b.f.x0)), R = [];   // la même règle que scPastilles (ce code tourne seul chez l'élève)
+      F.forEach(o => { const y = (o.f.y0 + o.f.y1) / 2, r = R.find(g => Math.abs(g.y - y) < 0.012); if (r) { r.l.push(o); r.y = (r.y * (r.l.length - 1) + y) / r.l.length; } else R.push({ y, l: [o] }); }); R.forEach(g => g.l.sort((a, b) => a.f.x0 - b.f.x0)); return R; };
+    const marge = i => rangs(i).map(g => `<div class="pas" style="top:${pc(g.y)}">${g.l.map(o => `<span class="${on("f", o.j) ? "on" : ""}" data-v="f:${o.j}" title="Faute ${o.f.num}" style="background:${Ty(o.f).fond};color:${Ty(o.f).texte || Ty(o.f).couleur};border-color:${Ty(o.f).couleur}">${Ty(o.f).court}</span>`).join("")}</div>`).join("");
+    const col = $("#col"); col.innerHTML = D.pages.map((p, i) => `<div class="pgx"><div class="marge">${marge(i)}</div><div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${IMG[i]}" alt=""></div></div>`).join("");
+    const pgs = col.querySelectorAll(".pg");
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk${vue && vue.t === "e" ? " on" : ""}" data-v="e" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach((f, i) => { const P = pgs[f.page]; if (!P) return;
-      P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)}"></div><div class="num" data-v="f:${i}" style="left:${pc(0.022 + (f.rang || 0) * 0.03)};top:${pc((f.y0 + f.y1) / 2)}">${f.num}</div>`); });
+      P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};--c:${Ty(f).couleur}"></div>`); });
     (D.remarques || []).forEach((r0, i) => { const P = pgs[r0.page]; if (!P) return; P.insertAdjacentHTML("beforeend", `<div class="mk e${on("r", i) ? " on" : ""}" data-v="r:${i}" style="left:${pc(r0.x0 - 0.004)};top:${pc(r0.y0 - 0.003)};width:${pc(r0.x1 - r0.x0 + 0.008)};height:${pc(r0.y1 - r0.y0 + 0.006)};border:2px dashed #6b1a2a"></div>`); });
     const pris = {}; D.points.forEach((p, i) => { const P = pgs[p.place.page]; if (!P) return; const k = D.coul[p.crit] || "#6b1a2a"; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1;
       p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return;
@@ -94,7 +111,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
       const crit = []; D.points.forEach((p, i) => { let c = crit.find(x => x.id === p.crit); if (!c) crit.push(c = { id: p.crit, nom: p.critNom, l: [] }); c.l.push({ p, i }); });
       pan.innerHTML = `<div class="bloc"><h3>Ta note</h3><div class="note">${D.note != null ? String(D.note).replace(".", ",") + " / " + D.total : "…"}</div></div>
         <div class="bloc"><h3>Ta grille</h3>${crit.map(c => `<div class="crit">${esc(c.nom)}</div>` + c.l.map(({ p, i }) => `<div class="ligne" data-p="${i}"><i style="background:${D.bord[p.niveau]}"></i><span>${esc(p.titre)}<br><span class="m">${esc(p.fait)}</span></span><b>${String(p.pts).replace(".", ",")} / ${p.poids}</b></div>`).join("")).join("")}</div>
-        ${D.fautes.length ? `<div class="bloc"><h3>Tes fautes</h3><div>${D.fautes.length} soulignée${D.fautes.length > 1 ? "s" : ""} en rouge sur ta copie.</div></div>` : ""}
+        ${D.fautes.length ? `<div class="bloc"><h3>Tes fautes</h3><div>${D.fautes.length} soulignée${D.fautes.length > 1 ? "s" : ""} sur ta copie, chacune dans la couleur de son type d'erreur.</div></div>` : ""}
         ${(D.remarques || []).length ? `<div class="bloc"><h3>Mes remarques</h3>${D.remarques.map((r, i) => `<div class="ligne" data-r="${i}"><i style="background:#6b1a2a"></i><span>${esc(r.texte)}</span><b></b></div>`).join("")}</div>` : ""}`;
       pan.querySelectorAll("[data-p]").forEach(e => e.addEventListener("click", () => { const i = +e.dataset.p; vue = { t: "p", i }; copie(); panneau(); const p = D.points[i]; montrer(p.place.page, p.place.y); }));
       pan.querySelectorAll("[data-r]").forEach(e => e.addEventListener("click", () => { const i = +e.dataset.r; vue = { t: "r", i }; copie(); panneau(); const r = D.remarques[i]; montrer(r.page, r.y0); }));
@@ -104,16 +121,16 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
       pan.innerHTML = `<div class="bloc"><h3>${esc(p.critNom)}</h3><div style="font-weight:700">${esc(p.titre)}</div>
         <div class="ech">${[0, 1, 2, 3].map(n => `<span class="${n === p.niveau ? "on" : ""}" style="background:${D.fond[n]};border-color:${D.bord[n]}">${esc(D.niveaux[n])}<br>${String(p.bareme[n]).replace(".", ",")}</span>`).join("")}</div>
         <div style="font-size:17px">${esc(p.fait)}</div>${p.tache ? `<div class="bloc" style="margin:10px 0 0;background:#fff"><h3>À reprendre</h3>${esc(p.tache)}</div>` : ""}${retour}</div>`; }
-    else if (vue.t === "f") { const f = D.fautes[vue.i]; pan.innerHTML = `<div class="bloc"><h3>Faute ${f.num} sur ${D.fautes.length}</h3><div>Une erreur d'orthographe ou de grammaire, soulignée en rouge.</div>${retour}</div>`; }
+    else if (vue.t === "f") { const f = D.fautes[vue.i]; pan.innerHTML = `<div class="bloc"><h3>Faute ${f.num} sur ${D.fautes.length}${Ty(f).libelle ? " · " + esc(Ty(f).libelle) : ""}</h3>${retour}</div>`; }
     else if (vue.t === "r") { const r = D.remarques[vue.i]; pan.innerHTML = `<div class="bloc"><h3>Ma remarque</h3><div style="font-size:17px">${esc(r.texte)}</div>${retour}</div>`; }
-    else pan.innerHTML = `<div class="bloc"><h3>La phrase qui m'a touché</h3><div>Surlignée en or sur ta copie.</div>${retour}</div>`;
+    else pan.innerHTML = `<div class="bloc"><h3>La phrase qui m'a marqué</h3><div>Surlignée en or sur ta copie.</div>${retour}</div>`;
     $("#gr").onclick = () => { vue = null; copie(); panneau(); };
   }
   // la traversée (cadrée le 29/10) : à l'ouverture, la copie passe à travers la grille, la langue d'abord
   function traversee() {
     const crit = [{ id: "langue", nom: "La langue" }].concat(D.criteres); const nomsC = D.criteres.map(c => c.nom.replace(/^L[ae]s? |^L'/, m => m.toLowerCase()));
     const liste = nomsC.length > 1 ? nomsC.slice(0, -1).join(", ") + " et " + nomsC[nomsC.length - 1] : (nomsC[0] || "");
-    const L = ["La grille de correction est au-dessus de ta copie : une feuille par critère.", "Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées en rouge.",
+    const L = ["La grille de correction est au-dessus de ta copie : une feuille par critère.", "Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées dans la couleur de leur type d'erreur.",
       "Puis à travers " + liste + " : leurs points apparaissent sur ta copie.", "Ta copie est passée à travers toute la grille."];
     const T = document.createElement("div"); T.className = "trav";
     T.innerHTML = `<div class="sc3"><div class="pile">${crit.map((c, i) => `<div class="feuille" style="transform:translateZ(${(i + 1) * 46}px);border-color:${D.coul[c.id] || "#6b1a2a"}"><b style="background:${D.coul[c.id] || "#6b1a2a"}">${esc(c.nom)}</b></div>`).join("")}<div class="cp" id="cp"><img src="${IMG[0] || ""}" alt=""></div></div></div><div class="leg" id="leg"></div><button class="passer" id="passer">⏭ Passer</button>`;
@@ -224,7 +241,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
   function traversee() {
     const crit = [{ id: "langue", nom: "La langue" }].concat(D.criteres); const nomsC = D.criteres.map(c => c.nom.replace(/^L[ae]s? |^L'/, m => m.toLowerCase()));
     const liste = nomsC.length > 1 ? nomsC.slice(0, -1).join(", ") + " et " + nomsC[nomsC.length - 1] : (nomsC[0] || "");
-    const L = ["La grille de correction est au-dessus de ta copie : une feuille par critère.", "Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées en rouge.",
+    const L = ["La grille de correction est au-dessus de ta copie : une feuille par critère.", "Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées dans la couleur de leur type d'erreur.",
       "Puis à travers " + liste + " : leurs points apparaissent sur ta copie, gris, avec un « ? ».", "Ta copie est passée à travers toute la grille."];
     const T = document.createElement("div"); T.className = "trav";
     T.innerHTML = `<div class="sc3"><div class="pile">${crit.map((c, i) => `<div class="feuille" style="transform:translateZ(${(i + 1) * 46}px);border-color:${D.coul[c.id] || "#6b1a2a"}"><b style="background:${D.coul[c.id] || "#6b1a2a"}">${esc(c.nom)}</b></div>`).join("")}<div class="cp" id="cp"><img src="${IMG[0] || ""}" alt=""></div></div></div><div class="leg" id="leg"></div><button class="passer" id="passer">⏭</button>`;

@@ -1,5 +1,6 @@
 import { eprouverRecopie } from "./recopie.mjs";
 import { eprouverAvancement } from "./avancement.mjs";
+import { eprouverAccueil, eprouverAutreOrdinateur } from "./accueil.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -45,7 +46,7 @@ const tracer = async (x0, y0, x1, y1) => { const r = await boite(); await pg.mou
   await pg.mouse.move(r.x + 0.33 * r.width, r.y + 0.185 * r.height, { steps: 4 }); await att(60); const v2 = await largeur(); await cap('02a-trait-en-cours'); await pg.mouse.up(); await att(250);
   verif('pendant le tracé, le trait rouge se dessine sous la main (' + v1 + ' puis ' + v2 + ' points), avant de lâcher', v1 > 15 && v2 > v1 + 15); }
 await pg.keyboard.type('écris'); await att(100); await cap('02-langue-faute'); await pg.keyboard.press('Enter'); await att(200);
-await pg.click('text=★ La phrase qui t\'a touché'); await tracer(0.14, 0.28, 0.6, 0.33);
+await pg.click('text=★ La phrase qui t\'a marqué'); await tracer(0.14, 0.28, 0.6, 0.33);
 const m1 = await pg.evaluate(() => Object.values(scCopie(scK()).marques).map(m => m.forme + ':' + (m.bonne || '') + ':' + m.l0 + '-' + m.l1));
 verif('une faute soulignée avec sa bonne forme, une phrase dorée sur deux lignes : ' + m1.join(' '), m1.some(x => x.startsWith('faute:écris')) && m1.some(x => x.startsWith('etoile')));
 await pg.keyboard.press('Enter'); await att(150); await pg.keyboard.press('Enter'); await pg.keyboard.press('n'); await pg.keyboard.press('Enter'); await att(400);
@@ -185,7 +186,7 @@ const hauteurs = await el.evaluate(() => { const out = []; document.querySelecto
 verif('le trait d\'une faute, dans le fichier de l\'élève, commence au bas du mot, comme chez toi (écarts : ' + hauteurs.join(' ; ') + ' points)', hauteurs.length >= 1 && hauteurs.every(v => Math.abs(v) <= 1));
 await el.locator('#pan .ligne[data-p] >> nth=0').click(); await att(500); const det = await el.evaluate(() => ({ ech: !!document.querySelector('#pan .ech span.on'), marque: document.querySelectorAll('#col .on').length }));
 await el.screenshot({ path: path.join(OUT, '08-eleve-point.png') });
-await el.locator('#gr').click(); await att(300); await el.locator('#col .num >> nth=0').click(); await att(400); const fa = await el.evaluate(() => (document.querySelector('#pan h3') || {}).textContent || '');
+await el.locator('#gr').click(); await att(300); await el.locator('#col .pas span >> nth=0').click(); await att(400); const fa = await el.evaluate(() => (document.querySelector('#pan h3') || {}).textContent || '');
 await el.screenshot({ path: path.join(OUT, '09-eleve-faute.png') }); await el.locator('#gr').click(); await att(300); const retourGrille = await el.evaluate(() => document.querySelectorAll('#pan .ligne[data-p]').length);
 verif('l\'élève lit sa copie corrigée : sa grille (' + lg.lignes + ' points, note « ' + lg.note + ' »), un point cliqué montre son échelle et ses marques (' + det.marque + '), une faute cliquée (« ' + fa + ' »), il revient à sa grille quand il veut ; aucun champ (' + lg.champs + ')', lg.lignes >= 1 && lg.champs === 0 && det.ech && det.marque >= 1 && /^Faute 1 sur/.test(fa) && retourGrille === lg.lignes);
 const passes = await pg.evaluate(() => Array.from(document.querySelectorAll('.sc-passe')).map(b => b.textContent.trim()));
@@ -242,7 +243,9 @@ const icAvant = await pg.evaluate(() => SC.ic); await pg.keyboard.press('Enter')
 verif('copie passée en entier : le récapitulatif s\'ouvre seul (note « ' + (rc && rc.note) + ' », ' + (rc && rc.lignes) + ' points, ' + (rc && rc.paras) + ' paragraphes de bilan) ; Entrée : la copie suivante', rc && /\/ 40/.test(rc.note) && rc.lignes === 12 && rc.pas === 0 && rc.paras >= 1 && rc.suite && apresRc.ferme && apresRc.ic !== icAvant);
 verif('aucune écriture sur une classe entière (une clé de copie vide)', !(await pg.evaluate(() => window.__LOG || [])).some(l => /^\w+ [^/]+\.json/.test(l)));
 await eprouverAvancement({ pg, verif, cap, att });
-await eprouverRecopie({ pg, verif, cap, att, dir: DIR });
+await eprouverRecopie({ pg, verif, cap, att, dir: DIR, out: OUT });
+await eprouverAccueil({ pg, verif, cap, att });
+await eprouverAutreOrdinateur({ pg, verif, cap, att, dir: DIR });
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }
 console.log(ok.join('\n')); if (err.length) console.log('ERREURS\n' + err.join('\n'));

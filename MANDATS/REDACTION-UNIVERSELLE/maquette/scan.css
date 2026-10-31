@@ -95,3 +95,7 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .sc-rc-pied{display:flex;justify-content:flex-end;gap:8px;padding:10px 22px;border-top:1px solid #eadfcd}
 .sc-lig-alerte{color:#c54040;font-weight:700;margin:6px 0 0}.sc-alerte-copie{position:fixed;left:50%;top:120px;transform:translateX(-50%);z-index:958;background:#c54040;color:#fff;font:600 17px system-ui;padding:12px 20px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);max-width:70vw;text-align:center}.sc-alerte-copie[hidden]{display:none}
 .sc-coche{display:block;margin:6px 0 10px;color:#9a8f80}.sc-coche input{margin-right:6px}
+/* [C14 1.4.12] l'accueil dans le flux : les étapes sur la carte ; le bilan de la classe */
+.av-flux{display:flex;flex-wrap:wrap;gap:3px;margin:4px 0 2px}.av-et{font:600 11px system-ui;color:#9a8b78;background:#f3eee4;border-radius:5px;padding:2px 5px}.av-et.ok{color:#2f6b25;background:#e3f0dc}
+.av-tab{overflow-x:auto}.av-bilan .rp-table{width:100%}.av-n{text-align:center;white-space:nowrap}.av-m{color:#9a8b78;font-size:12px}.av-ty{display:inline-block;font:700 11px system-ui;border:1.5px solid;border-radius:6px;padding:2px 5px}.av-classe td{border-top:2px solid #6b1a2a;background:#fdfbf7}.av-faible{background:#fde8e8!important}
+.av-dnb{color:#c54040;font-weight:700}

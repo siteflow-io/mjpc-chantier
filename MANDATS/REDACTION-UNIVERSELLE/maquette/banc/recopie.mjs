@@ -1,6 +1,6 @@
 import path from "node:path";
 // Épreuves de la recopie : seulement des gestes ; les évaluations lisent l'état et le DOM.
-export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
+export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   await pg.bringToFront();
   const avant = await pg.evaluate(() => {
     const k = SC.copies[SC.ic], c = state.copies[k], s = c.scan || {};
@@ -262,6 +262,38 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   if (ici13) { const champ13 = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + ici13.id + '"]'); await champ13.fill(ici13.texte); await att(300); }
   await pg.click("#rcImportIA"); await att(100); await pg.locator("#rcIATexte").fill(JSON.stringify(bon)); await pg.click("#rcIAValider"); await att(250);   // le bon retour d'avant, remis : la suite du banc s'appuie dessus ; la fenêtre reste ouverte
   verif("recopie (1.4.10) : une ligne retapée après l'envoi à l'IA : sa copie ne reçoit pas la correction de l'ancien texte, et le message le dit (« " + m14.slice(0, 120) + " »)", !!ici13 && r14 && /changé depuis l’envoi/.test(m14));
+  // 1.4.12 (Paul 15:59 : « les élèves doivent être identifiés. sinon c'est la porte ouverte au mélange de données ») : chaque copie part avec son
+  // identité interne, jamais son nom ; une ligne rendue qui ne ressemble plus à la ligne envoyée (l'IA a échangé deux lignes de deux copies) fait refuser sa copie
+  if (ex.copies.length >= 3) {
+    const plus = c => lignesEx(c).slice().sort((p, q) => q.texte.split(/\s+/).length - p.texte.split(/\s+/).length)[0], lA = plus(ex.copies[0]), lB = plus(ex.copies[1]);
+    const comp2 = Object.assign({}, comp); comp2[lA.id] = comp[lB.id]; comp2[lB.id] = comp[lA.id];
+    const av16 = await pg.evaluate(ids => ids.map(id => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) return { k, c: x.l.corrige, le: x.l.corrigeLe, r: 0 }; } return null; }), [lA.id, lB.id]);
+    const res16 = await pg.evaluate(([a, b]) => rcRessemblance(a, b), [lA.texte, lB.texte]);
+    if (!(await pg.locator("#rcIA").isVisible())) { await pg.click("#rcImportIA"); await att(100); }
+    await pg.locator("#rcIATexte").fill(JSON.stringify({ format: "mjpc-recopie-ia-3", lignes: comp2 })); await pg.click("#rcIAValider"); await att(300);
+    const m16 = await pg.locator("#rcIAMessage").textContent();
+    const ap16 = await pg.evaluate(([ids, autres]) => ({ deux: ids.map(id => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) return { c: x.l.corrige, le: x.l.corrigeLe, refus: !!((scCopie(k).recopie || {}).refusIA) }; } return null; }),
+      autres: autres.filter(id => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) return x.l.corrigeLe && x.l.corrigeMarque !== undefined || typeof x.l.corrige === "string"; } return false; }).length,
+      noms: SC.copies.map(k => nomEleveDe(k)).filter(Boolean) }), [[lA.id, lB.id], ex.copies.slice(2).map(c => lignesEx(c)[0].id)]);
+    await pg.click("#rcIAFermer"); await att(100); await pg.click("#rcFluxOuvrir"); await att(200); const fl16 = await pg.locator("#rcFluxTable").textContent(); await cap("C14-41-retour-ia-refus"); await pg.click("#rcFluxFermer"); await att(100);
+    const exTxt = JSON.stringify(ex), sansNom = !ap16.noms.some(n => exTxt.includes(n));
+    await pg.click("#rcImportIA"); await att(100); await pg.locator("#rcIATexte").fill(JSON.stringify(bon)); await pg.click("#rcIAValider"); await att(250);   // le bon retour remis, pour la suite du banc
+    const apres16 = await pg.evaluate(ids => ids.map(id => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) return !((scCopie(k).recopie || {}).refusIA); } return false; }), [lA.id, lB.id]);
+    verif("recopie (1.4.12) : chaque copie part chez l'IA avec son identité interne (" + ex.copies.filter(c => typeof c.copie === "string" && c.copie).length + " sur " + ex.copies.length + "), sans aucun nom d'élève (" + sansNom + ") ; un retour où l'IA a échangé deux lignes de deux copies (ressemblance " + res16.toFixed(2) + ", seuil 0,6) : ces 2 copies sont refusées, rien n'y est écrit (" + ap16.deux.filter((d, i) => d && d.c === av16[i].c && d.le === av16[i].le).length + " sur 2), le message le dit et le flux le montre (« " + m16.slice(0, 60) + " … " + (m16.match(/\d+ copies? refusées?[^:]*/) || [""])[0] + " », flux : " + (fl16.match(/refusée/g) || []).length + ") ; les autres copies se chargent ; un bon retour efface le refus (" + apres16.filter(Boolean).length + " sur 2)",
+      ex.copies.every(c => typeof c.copie === "string" && c.copie) && sansNom && res16 < 0.6 && ap16.deux.every((d, i) => d && d.refus && d.c === av16[i].c && d.le === av16[i].le) && /2 copies refusées/.test(m16) && /ne ressemble plus/.test(m16) && /^Chargé/.test(m16) && (fl16.match(/refusée/g) || []).length === 2 && apres16.every(Boolean));
+  }
+  // 1.4.12 (Paul 23:19, « Ok » à 336) : quand le sujet laisse le choix, l'IA dit, dans le même envoi, lequel l'élève a traité ; aucun geste ; un choix déjà fait reste
+  { const V = await pg.evaluate(() => rcVariantes().map(v => v.id));
+    if (V.length >= 2) {
+      const c20 = ex.copies.find(c => c.copie), k20 = await pg.evaluate(id => SC.copies.find(k => (state.copies[k] || {}).id === id), c20.copie), av20 = await pg.evaluate(k => state.copies[k].sujet || null, k20);
+      if (!(await pg.locator("#rcIA").isVisible())) { await pg.click("#rcImportIA"); await att(100); }
+      await pg.locator("#rcIATexte").fill(JSON.stringify({ format: "mjpc-recopie-ia-3", lignes: comp, sujets: { [c20.copie]: V[1] } })); await pg.click("#rcIAValider"); await att(300);
+      const m20 = (await pg.locator("#rcIAMessage").textContent()) || "", ap20 = await pg.evaluate(k => state.copies[k].sujet || null, k20);
+      await pg.locator("#rcIATexte").fill(JSON.stringify(bon)); await pg.click("#rcIAValider"); await att(250);   // le bon retour remis, pour la suite du banc
+      verif("recopie (1.4.12) : le sujet laisse le choix (" + V.length + " sujets) : la consigne le demande à l'IA (" + /Ce sujet laisse le choix/.test(ex.consigne) + ") ; son retour le dit pour une copie : « " + (av20 || "pas choisi") + " » → « " + ap20 + " »" + (av20 ? " (ton choix reste)" : "") + ", et le message le dit (« " + (m20.match(/Le sujet traité[^.]*\./) || [""])[0] + " »)",
+        /Ce sujet laisse le choix/.test(ex.consigne) && (av20 ? ap20 === av20 : ap20 === V[1] && /Le sujet traité, dit par l’IA : 1 copie/.test(m20)));
+    } else verif("recopie (1.4.12) : le sujet de la maquette n'a qu'un sujet : la consigne ne demande rien de plus à l'IA (" + !/Ce sujet laisse le choix/.test(ex.consigne) + ")", !/Ce sujet laisse le choix/.test(ex.consigne));
+  }
   // 1.4.11 (Paul 17:18 ; C14 284) : le flux de la classe, chaque étape datée ; une ligne retapée depuis l'envoi se voit
   await pg.click("#rcIAFermer"); await att(100); await pg.click("#rcFluxOuvrir"); await att(200);
   const fl = await pg.evaluate(() => { const rows = Array.from(document.querySelectorAll("#rcFluxTable tr[data-k]")).map(tr => Array.from(tr.children).map(td => td.textContent)); const F = SC.copies.map(rcFluxCopie); return { rows, n: F.length, envoyees: F.filter(f => f.envoi).length, chargees: F.filter(f => f.charge).length }; });
@@ -403,6 +435,46 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   const r15b = await ruban(); await cap("C14-38-bande-en-continu");
   verif("recopie (1.4.11) : la bande en continu : le texte recopié de toute la copie (" + r15a.lignes + " lignes sur " + r15a.ecrites + ") et la photo de toutes ses lignes bout à bout (" + r15a.photo + ") en un seul ruban, le mot de l'arrêt au milieu (à " + Math.round(r15a.ecart) + " point" + (r15a.ecart >= 2 ? "s" : "") + " près) ; à un autre arrêt (ligne " + r15a.n + " → " + r15b.n + "), le ruban a glissé et le mot est encore au milieu (à " + Math.round(r15b.ecart) + " près)",
     r15a.lignes === r15a.ecrites && r15a.photo === r15a.ecrites && r15a.ecart <= 3 && r15a.dedans && i15 >= 0 && r15b.id !== r15a.id && r15b.ecart <= 3 && r15b.dedans);
+  // 1.4.12 (C14 183 « ⇧R = la dictée », C14 196 : F = faute, Entrée et Espace = le mot est correct) : le mot par mot, dans la bande
+  const mpm = () => pg.evaluate(() => { const B = RC.bd, w = B.W && B.W[B.j], s = scCopie(B.k), ms = Object.values(s.marques);
+    return { mot: !!B.mot, j: B.j, i: B.i, n: B.W ? B.W.length : 0, id: w && w.id, m: w && w.m, ia: !!(w && w.ia), oub: ms.filter(m => m.bande && m.bande.oubliee), fautes: ms.filter(m => m.forme === "faute").length,
+      titre: document.querySelector("#rcBandeTitre").textContent, mode: (document.querySelector("#rcBandeTouches .rc-bande-mode") || {}).textContent || "", arret: JSON.stringify(((s.recopie || {}).bandeArret) || null) }; });
+  await pg.click('#rcBandeListe li[data-i="0"]'); await att(200);
+  const a16 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i]; return { id: a.id, de: a.g.de, d: a.l.decisions && a.l.decisions[a.cle] }; });
+  await pg.keyboard.press("Shift+R"); await att(250); const m0 = await mpm();
+  for (const t of ["Backspace", "Backspace", "Backspace"]) { await pg.keyboard.press(t); await att(110); } const m0b = await mpm();
+  await pg.keyboard.press("Enter"); await att(110); await pg.keyboard.press("Enter"); await att(110); await pg.keyboard.press(" "); await att(200); const m1 = await mpm();
+  const c16 = await pg.evaluate(() => { const B = RC.bd, rb = document.querySelector("#rcBandeContexte .rc-ruban").getBoundingClientRect();
+    for (const sp of document.querySelectorAll("#rcBandeContexte .rc-mot[data-id]")) { const r = sp.getBoundingClientRect(), j = B.W.findIndex(w => w.id === sp.dataset.id && w.m === +sp.dataset.m), w = B.W[j];
+      if (w && !w.ia && j !== B.j && /[a-zà-ÿ]{3,}/i.test(w.g.eleve) && r.left > rb.left + 30 && r.right < rb.right - 30) return { id: w.id, m: w.m, j }; } return null; });
+  if (c16) await pg.click('#rcBandeContexte .rc-mot[data-id="' + c16.id + '"][data-m="' + c16.m + '"]'); await att(220); const m2 = await mpm();
+  await pg.keyboard.press("f"); await att(250); const m3 = await mpm();
+  await pg.keyboard.press("Backspace"); await att(300); await cap("C14-40-bande-mot-par-mot");
+  await pg.keyboard.press("f"); await att(250); const m4 = await mpm();
+  await pg.click('#rcBandeListe li[data-i="0"]'); await att(200); await pg.keyboard.press("Shift+R"); await att(220); const m5 = await mpm();
+  const dec16 = () => pg.evaluate(() => { const a = RC.bd.A[0], mk = a.l.marquesBande && a.l.marquesBande[a.cle], m = mk && scCopie(RC.bd.k).marques[mk]; return { d: a.l.decisions && a.l.decisions[a.cle] || null, code: m && m.bande ? m.bande.code : null, fautes: Object.values(scCopie(RC.bd.k).marques).filter(z => z.forme === "faute").length }; });
+  await pg.keyboard.press("F"); await att(250); const e1 = await dec16(), j16 = (await mpm()).j; if (j16 !== m5.j) { await pg.keyboard.press("Backspace"); await att(150); } await pg.keyboard.press("F"); await att(250); const e2 = await dec16();   // F sur une faute gardée la refuse et reste ; sur une faute pas gardée, la garde et avance
+  const ia16 = e1.d === "o" ? e1 : e2, non16 = e1.d === "o" ? e2 : e1;
+  await pg.keyboard.press("Shift+R"); await att(220); const m7 = await mpm();
+  await pg.keyboard.press("Shift+R"); await att(200); await pg.keyboard.press("Backspace"); await att(200); const m8 = await mpm();
+  await pg.click("#rcBandeOuvrir"); await att(250); await pg.click("#rcBandeOuvrir"); await att(450); const m9 = await mpm();
+  await pg.keyboard.press("Shift+R"); await att(200); const m10 = await mpm();
+  verif("recopie (1.4.12) : ⇧R passe la bande en mot par mot (titre « " + m0.titre.split(" · ").pop() + " », touches « " + m0.mode + " »), sur le mot de l'arrêt (" + (m0.id === a16.id && m0.m === a16.de) + ") ; Retour trois fois, puis Entrée, Entrée, Espace : 3 mots passés (" + (m1.j - m0b.j) + "), aucune faute posée (" + m0.fautes + " → " + m1.fautes + ") ; un clic sur un mot du texte y amène la bande (" + (!!c16 && m2.j === c16.j) + ") ; F sur ce mot, que l'IA n'avait pas proposé : une faute oubliée par l'IA, grise et sans type (" + (m3.oub.length - m2.oub.length) + ", type " + JSON.stringify(m3.oub.length ? m3.oub[m3.oub.length - 1].bande.code : "?") + "), fautes " + m2.fautes + " → " + m3.fautes + ", mot suivant ; Retour puis F la retire (" + m4.oub.length + ", fautes " + m4.fautes + ")",
+    m0.mot && /mot par mot/.test(m0.titre) && m0.mode === "Mot par mot" && m0.id === a16.id && m0.m === a16.de && m0b.j === m0.j - 3 && m1.j === m0b.j + 3 && m1.fautes === m0.fautes && !!c16 && m2.j === c16.j && m3.oub.length === m2.oub.length + 1 && m3.oub[m3.oub.length - 1].bande.code === null && m3.fautes === m2.fautes + 1 && m3.j === m2.j + 1 && m4.oub.length === m2.oub.length && m4.fautes === m2.fautes && m4.j === m2.j);
+  verif("recopie (1.4.12) : en mot par mot, F sur un mot d'une faute proposée par l'IA la garde avec son type (« " + ia16.d + " », " + ia16.code + "), encore F la refuse (« " + non16.d + " », fautes " + non16.fautes + " → " + ia16.fautes + ") ; ⇧R revient aux arrêts (" + !m7.mot + ") ; fermée puis rouverte, la bande reprend en mot par mot au même mot (" + (m9.mot && m9.id === m8.id && m9.m === m8.m) + ", gardé dans la copie : " + /"mot":true/.test(m8.arret) + ") ; ⇧R, retour aux arrêts (" + !m10.mot + ")",
+    m5.mot && m5.ia && ia16.d === "o" && !!ia16.code && non16.d === "n" && ia16.fautes === non16.fautes + 1 && !m7.mot && m8.mot && /"mot":true/.test(m8.arret) && m9.mot && m9.id === m8.id && m9.m === m8.m && !m10.mot);
+  // 1.4.12 (Paul 23:09 : « si je viens retoucher une recopie après avoir validé l'erreur dans la bande, il faut que ce soit rétroactif bien sûr. Une modif change partout. »)
+  await pg.keyboard.press("Escape"); await att(300);
+  const r17 = () => pg.evaluate(id => { const x = rcLignesEcrites(RC.copie).find(y => y.id === id), s = scCopie(RC.copie), A = rcArrets(RC.copie).filter(a => a.id === id);
+    return { texte: x.l.texte, de: x.l.corrigeDe, arrets: A.map(a => a.g.eleve + "→" + a.g.corrige + ":" + ((x.l.decisions || {})[a.cle] || "")).join(" | "), marques: Object.values(x.l.marquesBande || {}).filter(m => s.marques[m]).map(m => s.marques[m].bande.eleve).sort().join(","), fautes: Object.values(s.marques).filter(m => m.forme === "faute").length, aExporter: rcCopieACorriger(RC.copie) }; }, cible2);
+  const av17 = await r17(), champ17 = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + cible2 + '"]'); await champ17.scrollIntoViewIfNeeded();
+  await champ17.fill(av17.texte.replace("camarades", "camarade")); await champ17.press("Tab"); await att(350); const ap17 = await r17();
+  await champ17.fill(ap17.texte.replace(" se ", " ce ")); await champ17.press("Tab"); await att(350); const ap17b = await r17();
+  await champ17.fill(av17.texte); await champ17.press("Tab"); await att(350); const fin17 = await r17();
+  verif("recopie (1.4.12) : une ligne retapée après la bande (« " + av17.arrets + " ») : un autre mot retapé (« camarades » → « camarade ») garde tes réponses et leurs marques (« " + ap17.arrets + " », marques " + ap17.marques + ", fautes " + av17.fautes + " → " + ap17.fautes + ") et le mot nouveau devient un arrêt ; le mot d'une réponse retapé (« se » → « ce ») perd sa marque (marques " + ap17b.marques + ", fautes " + ap17b.fautes + ") ; la copie ne repart pas chez l'IA (" + !ap17.aExporter + ") ; le texte remis : « " + fin17.arrets + " »",
+    /se→nous:o/.test(av17.arrets) && /plaint→plaignons:o/.test(av17.arrets) && /camarade→camarades:(\s|$)/.test(ap17.arrets + " ") && /se→nous:o/.test(ap17.arrets) && /plaint→plaignons:o/.test(ap17.arrets) && ap17.marques === "plaint,se" && ap17.fautes === av17.fautes && ap17.de === ap17.texte && !ap17.aExporter
+    && /ce→nous:(\s|$)/.test(ap17b.arrets + " ") && ap17b.marques === "plaint" && ap17b.fautes === av17.fautes - 1 && /se→nous:(\s|$)/.test(fin17.arrets + " ") && /plaint→plaignons:o/.test(fin17.arrets) && fin17.texte === av17.texte);
+  await pg.click("#rcBandeOuvrir"); await att(450);
   // 1.4.7 (Paul 15:41) : la bande se rouvre à l'arrêt où l'on était, après l'avoir fermée, puis après un rechargement de la page
   const i8 = await pg.evaluate(id => RC.bd.A.findIndex(a => a.id === id && a.g.eleve === "se"), cible2); await pg.click('#rcBandeListe li[data-i="' + i8 + '"]'); await att(200);
   const vise8 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i]; return a.id + "|" + a.cle; });
@@ -436,6 +508,42 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     t7.apres = await pg.evaluate(p2 => !!(rcBloc(p2) && rcBloc(p2).querySelector(".rc-marge-trait")), k7.p2);
     await cap("C14-34-marge-page-2"); await pg.click("#rcFermer"); await att(180); }
   verif("recopie (1.4.6) : une page préparée avant que sa photo soit prête n'a pas de trait rouge (" + t7.avant + ") ; la photo arrivée, son trait rouge apparaît (" + t7.apres + ")", !!k7 && t7.avant === false && t7.apres === true);
+  // 1.4.12 (Paul 23:09 : « à la fin d'une recopie je dois pouvoir surligner facilement la phrase qui m'a marqué […] Si pas de phrase, pas de phrase ( coche pas de phrase ).
+  // Cette phase là marque la fin d'une recopie. »)
+  const k19 = await pg.evaluate(() => SC.copies.find(k => Object.values(scCopie(k).marques).some(m => m.bande && m.bande.code)));
+  await pg.click("#btnRecopier"); await att(400); if (await pg.evaluate(k => RC.copie !== k, k19)) { await pg.selectOption("#rcCopie", k19); await att(300); }
+  const fl19a = (await pg.locator("#rcIAEtat").textContent()) || "";
+  await pg.click("#rcPhraseOuvrir"); await att(250); const mots19 = await pg.locator("#rcPhraseTexte [data-j]").count(), fin19 = Math.min(mots19 - 1, 7);
+  await pg.click("#rcPhraseTexte [data-j] >> nth=1"); await att(100); await pg.click("#rcPhraseTexte [data-j] >> nth=" + fin19); await att(150);
+  const or19 = await pg.locator("#rcPhraseTexte .or").count(); await cap("C14-47-phrase-qui-m-a-marque");
+  await pg.click("#rcPhraseOui"); await att(300);
+  const r19 = await pg.evaluate(k => { const s = scCopie(k), E = Object.values(s.marques).filter(m => m.forme === "etoile" && m.recopie); return { etoiles: E.length, segs: E.reduce((n, m) => n + m.segs.length, 0), phrase: ((s.recopie || {}).phrase || {}).texte || "", finie: rcFluxCopie(k).finie }; }, k19);
+  const fl19b = (await pg.locator("#rcIAEtat").textContent()) || "";
+  await pg.click("#rcPhraseOuvrir"); await att(200); await pg.click("#rcPhraseAucune"); await att(300);
+  const r19b = await pg.evaluate(k => { const s = scCopie(k); return { etoiles: Object.values(s.marques).filter(m => m.forme === "etoile" && m.recopie).length, aucune: !!((s.recopie || {}).phrase || {}).aucune, finie: rcFluxCopie(k).finie }; }, k19);
+  await pg.click("#rcPhraseOuvrir"); await att(200); await pg.click("#rcPhraseTexte [data-j] >> nth=1"); await att(100); await pg.click("#rcPhraseTexte [data-j] >> nth=" + fin19); await att(100); await pg.click("#rcPhraseOui"); await att(300);   // la phrase remise, pour le fichier de l'élève
+  await pg.click("#rcFermer"); await att(200);
+  verif("recopie (1.4.12) : « ★ La phrase qui m'a marqué » : clic sur le 2e mot puis sur le " + (fin19 + 1) + "e (" + or19 + " mots en or), « ✓ C'est elle » : la phrase passe en or sur la photo (" + r19.etoiles + " marque" + (r19.etoiles > 1 ? "s" : "") + ", " + r19.segs + " bandes, une par ligne : « " + r19.phrase + " ») ; la recopie de cette copie est finie : le compteur passe de « " + (fl19a.match(/la phrase qui m’a marqué : \d+ sur \d+/) || ["—"])[0] + " » à « " + (fl19b.match(/la phrase qui m’a marqué : \d+ sur \d+/) || ["toutes finies"])[0] + " » ; « Pas de phrase » coché : plus d'or (" + r19b.etoiles + "), finie quand même (" + r19b.finie + ")",
+    or19 === fin19 && r19.etoiles >= 1 && r19.segs >= 2 && r19.phrase.split(" ").length === fin19 && r19.finie && /la phrase qui m’a marqué : 0 sur/.test(fl19a) && !/la phrase qui m’a marqué : 0 sur/.test(fl19b) && r19b.etoiles === 0 && r19b.aucune && r19b.finie);
+  // 1.4.12 (Paul 14:03 : « les mots sont soulignés dans la couleur de leur erreur et ils ont le détail dans la marge » ; C14 226 ; C14 234 et Paul 23:09 : « type d'erreur ») :
+  // la copie de l'élève en couleurs, une pastille par faute dans une marge ajoutée à gauche de la photo, sans la bonne forme
+  const k18 = await pg.evaluate(() => SC.copies.find(k => Object.values(scCopie(k).marques).some(m => m.bande && m.bande.code)));
+  const att18 = await pg.evaluate(k => { const ids = scPagesDe(k).map(p => p.id), ms = Object.values(scCopie(k).marques).filter(m => m.forme === "faute" && ids.includes(m.page)), T = scTypesEleve(), t = m => T[(m.bande && m.bande.code) || "_"];
+    return { n: ms.length, couleurs: ms.map(m => t(m).couleur).sort().join(","), lettres: ms.map(m => t(m).court).sort().join(" "), nom: nomEleveDe(k) }; }, k18);
+  await pg.click('#scanEcran .sc-haut >> text=Fichiers École Directe'); await att(300);
+  const dl18 = pg.waitForEvent("download"); await pg.click('.sc-table tr:has-text("' + att18.nom + '") >> text=Télécharger'); const d18 = await dl18, f18 = path.join(path.dirname(await d18.path()), "eleve-couleurs.html"); await d18.saveAs(f18);
+  await pg.keyboard.press("Escape"); await att(200);
+  const pe = await pg.context().newPage(); await pe.setViewportSize({ width: 1536, height: 864 }); await pe.goto("file://" + f18); await att(600); await pe.click("#passer").catch(() => {}); await att(400);
+  const e18 = await pe.evaluate(() => ({ soul: Array.from(document.querySelectorAll("#col .mk.f")).map(e => e.style.getPropertyValue("--c").trim()).sort().join(","), pas: Array.from(document.querySelectorAll("#col .pas span")).map(e => e.textContent).sort().join(" "),
+    surPhoto: document.querySelectorAll("#col .pg .pas").length, gauche: Array.from(document.querySelectorAll("#col .pas")).every(p => p.getBoundingClientRect().right <= p.closest(".pgx").querySelector(".pg").getBoundingClientRect().left + 1),
+    tes: (Array.from(document.querySelectorAll("#pan .bloc")).find(b => /Tes fautes/.test(b.textContent)) || {}).textContent || "", rouge: /en rouge/.test(document.body.innerText), bonne: document.body.innerText.includes("→") }));
+  await pe.click("#col .pas span >> nth=0"); await att(300); const h18 = (await pe.locator("#pan h3").first().textContent()) || "";
+  await pe.screenshot({ path: path.join(out, "C14-45-copie-eleve-couleurs.png") });
+  const p18 = await (await pg.context().browser().newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 800 } })).newPage(); await p18.goto("file://" + f18); await att(400);
+  const s18 = await p18.evaluate(() => ({ pas: document.querySelectorAll("#statique .pas span").length, large: document.documentElement.scrollWidth <= window.innerWidth + 1 }));
+  await p18.screenshot({ path: path.join(out, "C14-45b-copie-eleve-telephone.png") }); await p18.context().close(); await pe.close(); await pg.bringToFront();
+  verif("recopie (1.4.12) : le fichier de l'élève en couleurs : " + att18.n + " fautes soulignées chacune dans la couleur de son type d'erreur (" + e18.soul + "), une pastille par faute dans la marge ajoutée à gauche de la photo (« " + e18.pas + " », aucune sur la photo : " + (e18.surPhoto === 0 && e18.gauche) + "), sans la bonne forme (" + !e18.bonne + ") ; « " + e18.tes.replace(/^Tes fautes/, "").trim() + " » ; une pastille cliquée : « " + h18 + " » ; plus de « en rouge » (" + !e18.rouge + ") ; au téléphone sans interactivité, les pastilles se voient (" + s18.pas + ") sans défilement de côté (" + s18.large + ")",
+    att18.n >= 1 && /[A-Z∅+⚠?]/.test(e18.pas) && e18.soul === att18.couleurs && e18.pas === att18.lettres && e18.surPhoto === 0 && e18.gauche && !e18.bonne && /chacune dans la couleur de son type d'erreur/.test(e18.tes) && /^Faute \d+ sur \d+/.test(h18) && !e18.rouge && s18.pas === att18.n && s18.large);
   // 1.4.9 (Paul 19:27 et 19:39) : tout effacer, les corrigés de l'IA et tout ce qui vient de la bande ; rien de la recopie ne bouge
   const photo12 = () => pg.evaluate(() => { const IA = ["corrige", "corrigeDe", "corrigeLe", "corrigeMarque", "types", "typesDe", "envoiIA", "decisions", "marquesBande", "places"], o = {}; let n = 0, bande = 0, autres = 0, arret = 0;
     SC.copies.forEach(k => { const c = state.copies[k] || {}, sc = c.scan || {}, r = JSON.parse(JSON.stringify(sc.recopie || null));

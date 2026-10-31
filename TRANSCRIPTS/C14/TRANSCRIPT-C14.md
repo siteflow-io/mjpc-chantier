@@ -983,3 +983,20 @@ MEMO
 
 31/10/2026 07:52
 MEMO
+
+## Tour 43 — 31/10/2026 07:53 → 31/10/2026 07:54
+
+**Paul :** Promeus
+
+**Fait.** 1.3.0 copiée au sas (`SAUVEGARDES/redaction-1.3.0-RU-avant-1.3.1-2026-10-31.html`). Production : commit `110a266`, blob `ee19b9bce3f3`, md5 `831962924855372ad20388b12e131bf2`, 569 822 o ; en ligne bit à bit à la 5e lecture. Docs de suivi : journal, registre (ⓐ ✔, 1.3.1 dans ⑪), point de retour, où trouver quoi (`&v=1.3.1-RU`). C15 reste en pause.
+
+**Claude :**
+
+À jouer : les tests ci-dessous · en cours : rien · ouvert : 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+161. La 1.3.1 est en ligne, vérifiée à l'octet près : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.3.1-RU. Recharge la page de l'app. GPT reste en pause jusqu'à ton mot.
+
+À tester : sur une page pas encore ouverte en recopie, les poignées gauches juste avant la marge rouge, les droites au bord ; tape une ligne très longue : elle rapetisse et se lit en entier ; seules tes lignes écrites portent un numéro ; ajoute une ligne, remonte-la aux poignées : elle prend sa place et son numéro ; la bande du haut : les mots de l'élève au-dessus de ta frappe ; Entrée puis Retour arrière sur la ligne vide : retour à la fin de la précédente ; Ctrl + clic sur deux poignées, tire-en une : les deux bougent, Annuler les remet.
+
+31/10/2026 07:54
+MEMO

@@ -1653,7 +1653,7 @@ MEMO
 245. Ensuite, dans l'ordre de 238 : le type donné par l'IA, dès que tu valides la consigne (240) ; puis la place et la hauteur du cadre (237).
 
 À tester :
-1. Recharge la page, ouvre la recopie, puis la bande de sa copie : « se plaint » fait deux arrêts (« se → nous » et « plaint → plaignons »), tous deux cochés ✓, et la liste compte 9 arrêts de plus.
+1. Recharge la page, ouvre la recopie, puis la bande de sa copie : « se plaint » fait deux arrêts (« se → nous » et « plaint → plaignons »), tous deux cochés ✓, et la liste compte au moins 12 arrêts de plus.
 2. Dans l'écran des scans, sur sa copie, chacun de ces mots a son trait ; la « note maintenant » de la bande tient compte des 62 fautes.
 
 31/10/2026 15:10

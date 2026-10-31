@@ -39,7 +39,7 @@ jobs:
           expected = {
               "avancement.js": "e5c2aa4b01dbc4949827235a34b59f170f1307d0",
               "banc/avancement.mjs": "73cac6dc110330aad9d067ccd5f3efc9d501de86",
-              "remise-zero.js": "9d2f6d2a0d693cfb210b23c4f8962a428a4bc988",
+              "remise-zero.js": "4261fb4d153bc393650d29abdb99481caa8ec3f9",
               "banc/remise-zero.mjs": "abfcd2ce75c14abe86074e8c7f9cc6c7846571db",
               "scan.js": "ade07d1a90701696d62f1ca8fcc4072187fcf5ae",
               "recopie.js": "eabeb708094324a1c8ca03d57c501a5abc0578d0",
@@ -48,8 +48,8 @@ jobs:
               "banc/banc.mjs": "cf0a4dd433374334738c67d98dd0e529f8e2ca1d",
               "banc/recopie.mjs": "3ecbc1294bf8bf7f02749862edd91cee34c7692a",
               "banc/fixture-recopie.py": "b96a0b58aa121522fa75599c0ffd521c55a4f757",
-              "banc/verifier-construction.py": "1e5adb2092894e1d50062874d7d7ff341ec0baf2",
-              "C15-maquette-remise-zero-v1-essai1.html": "db7bb0007f4e7dd3299b7b88691a924f9c907795",
+              "banc/verifier-construction.py": "97151c3877e98a7bf2cc90f991eeda51e9b9fae9",
+              "C15-maquette-remise-zero-v1-essai2.html": "230438bddd2447f3baf1e89394cc6fd068dc40c8",
               "banc/recopie-lignes-essai.png": "238ee23b628f28751a3550be91d3c570f603bc58",
               "T399-maquette-redaction-scans-v14.html": "c7fb23f32a9280c528f5b1f91229cd945d9f0102",
               "paquet-essai.pdf": "9b4ec27e91a0e6586300945759fb1fa3835a6827",
@@ -72,7 +72,7 @@ jobs:
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/banc/remise-zero.mjs
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/recopie.js
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/banc/banc.mjs
-          python3 MANDATS/REDACTION-UNIVERSELLE/maquette/banc/verifier-construction.py C15-maquette-remise-zero-v1-essai1.html
+          python3 MANDATS/REDACTION-UNIVERSELLE/maquette/banc/verifier-construction.py C15-maquette-remise-zero-v1-essai2.html
 
       - name: Installer les dependances de test epinglees
         shell: bash
@@ -92,7 +92,7 @@ jobs:
           export NODE_PATH="$DEPS_DIR/node_modules"
           export PDFJS="$DEPS_DIR/node_modules/pdfjs-dist/build/"
           set +e
-          node "$BANC_DIR/banc/banc.mjs" C15-maquette-remise-zero-v1-essai1.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
+          node "$BANC_DIR/banc/banc.mjs" C15-maquette-remise-zero-v1-essai2.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
           issue=$?
           set -e
           python3 - <<'PY'

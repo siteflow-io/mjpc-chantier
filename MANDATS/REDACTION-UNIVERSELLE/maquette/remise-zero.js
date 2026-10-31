@@ -152,7 +152,8 @@ async function rzExecuter() {
     if (s.attente) await s.attente;
     const r = await rzLire(chemin); if (d.session !== RZ.session) throw new Error("La classe a changé : rien n'est effacé.");
     if (!r.valeur || s.present && (r.valeur.id || null) !== s.id) throw new Error("Cette copie a changé ailleurs. Rien n'est effacé ; relis-la avant de recommencer.");
-    const meta = { motif: "remise-zero-copie", source: chemin.join("/"), le: Date.now(), idArchive: idCopie(), redaction: RU.id, titre: SUJET.titre, versionLocale: locale, suiviLocal };
+    // JSON conserve aussi les vides et les clés internes avec un point, refusées comme noms de champs Firebase.
+    const meta = { motif: "remise-zero-copie", source: chemin.join("/"), le: Date.now(), idArchive: idCopie(), redaction: RU.id, titre: SUJET.titre, versionLocaleJSON: JSON.stringify(locale), suiviLocalJSON: JSON.stringify(suiviLocal) };
     rzExporter({ _meta: meta, data: r.valeur }, "copie_" + (r.valeur.id || k) + "_avant_remise_zero");
     const archive = await ruCorbeille(meta.motif, meta.source, r.valeur, meta);
     if (archive.etat !== MJPC_ISSUE.ACCEPTEE) throw new Error("L'archivage a échoué : la copie est conservée. Tu peux réessayer.");

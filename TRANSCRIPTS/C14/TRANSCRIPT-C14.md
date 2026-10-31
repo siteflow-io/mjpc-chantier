@@ -846,3 +846,18 @@ MEMO
 
 31/10/2026 07:02
 MEMO
+
+## Tour 36 — 31/10/2026 07:10 → 31/10/2026 07:10
+
+**Paul :** gpt est lent, bug, fait "connexion perdue", saute, etc...
+
+**Fait.** Rien.
+
+**Claude :**
+
+146. Je propose de le coder moi-même maintenant : c'est un petit morceau (trouver la marge rouge, poser les poignées, trois vérifications au banc), puis la vérification sur tes vraies copies et ton « promeus ». Je mets GPT en pause pour qu'on ne se croise pas. Ce que ça coûtera de ton utilisation : je ne sais pas, moins que la mise en ligne de ce matin. Je lance ?
+
+À tester : rien.
+
+31/10/2026 07:10
+MEMO

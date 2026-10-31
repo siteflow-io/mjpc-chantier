@@ -1658,3 +1658,31 @@ MEMO
 
 31/10/2026 15:10
 MEMO
+
+## Tour 73 — 31/10/2026 15:12 → 31/10/2026 15:26
+
+**Paul (15:12) :** [captures : la recopie, la ligne en grand en haut à droite, petite ; la bande d'une copie, « plaint → plaignons », le cadre collé en haut de la bande] par ailleurs c'est possible d'avoir une poignée latérale entre la dictée papier et la dictée recopiée? ça me permettrait de zoomer et d'agrandir la bande du haut en haut à droite. enfin, le problème de la hauteur de l'encadré n'est pas encore résolu (capture eva): il va encore se coller en haut de la bande sur certains mots. Il faut que l'app ignore les pieds de lettres de la ligne supérieure je pense.
+
+**Paul (15:18) :** [captures : la recopie d'une copie, page 1 avec son trait rouge, page 2 sans trait rouge] tu as cassé quelque chose. copie de justin. Où est la barre rouge sur la page 2? j'ai recalé la barre rouge sur la première page (il avait mis du bleu sur sa marge rose donc ça a du faire casser la reconnaissance).
+
+**Fait.** Lu `rcEncre` : le haut et le bas d'un mot étaient le point d'encre le plus haut et le plus bas de ses colonnes dans toute la hauteur lue (0,75 interligne au-dessus de la ligne), donc la queue d'une lettre de la ligne du dessus comptait. Codé : le haut et le bas se suivent trait par trait depuis le corps des lettres du mot (`etendue`, voisinage vertical de 3 points pour passer un trait du cahier), jamais plus haut que 0,62 interligne ; un rang d'encre sur plus de la moitié de la ligne est un trait du cahier et ne relie rien ; sans encre sous le mot, la hauteur du corps des lettres (`corps`). Lu `rcDocument` et `rcBlocs` : depuis la 1.3.4 (les pages à la suite), toutes les pages d'une copie se préparent à l'ouverture ; une page dont la photo n'est pas encore prête reste sans marge, et rien ne la recalculait ; aucune des versions du jour n'a touché à cette partie (diff relu). Codé : `rcMargeTardive` (la marge et le bord droit dès que la photo est là, une fois ; les points non recalés suivent). Codé : la poignée `#rcSep` entre la photo et la feuille (`rcSepAppliquer`, `rcSepBrancher`, gardée dans ce navigateur, double-clic : moitié-moitié) ; la ligne en grand prend la hauteur que demande la largeur de la feuille. Banc 116/0, trois vérifications nouvelles par le geste : une queue de « p » de la ligne du dessus dessinée sur la photo jusqu'à 0,52 interligne au-dessus d'un « o » du mot : le cadre s'arrête à 0,43 ; la poignée tirée de 265 px : la feuille passe de 745 à 1 010 px, l'écriture de la ligne en grand de 32 à 43 px de haut, double-clic : 745 px ; une page 2 préparée avant sa photo : pas de trait rouge, puis la photo arrive : le trait rouge apparaît. Candidate 1.4.6-RU : 669 304 o, md5 f91e3dd04b709bf4bd9d1e08aa5416aa ; vrai site, lecture seule : aucune différence avec la 1.4.5 (631 marques : Paul corrige en ce moment), une écriture à l'ouverture (le suivi). Branche c14-poignees f08d4f60 ; registre (prod).
+
+**Claude :**
+
+À jouer : promeus (1.4.6) · en cours : rien · ouvert : 220 ; 234 ; 240.
+
+246. La page 2 sans trait rouge : ce n'est pas une version d'aujourd'hui, je n'ai pas touché à cette partie (j'ai relu les changements). Depuis que les pages défilent à la suite (1.3.4, ce matin), toutes les pages d'une copie se préparent à l'ouverture. Si la photo de la page 2 n'est pas encore prête à ce moment-là, la page reste sans marge, et rien ne la recalculait. Dans la 1.4.6, dès que la photo est là, la marge et le bord droit se trouvent, et les points que tu n'as pas déplacés s'y calent. Le banc refait le cas : la page 2 préparée avant sa photo n'a pas de trait rouge, puis la photo arrive et le trait apparaît. Ta marge recalée à la main sur la page 1 ne bouge pas.
+
+247. La hauteur du cadre : il suit maintenant les traits du mot à partir du corps de ses lettres. La queue d'une lettre de la ligne du dessus, si elle ne touche pas le mot, ne compte plus. Le cadre ne monte jamais plus haut qu'une hampe, et les traits du cahier ne relient rien. Sans encre sous le mot visé, il prend la hauteur du corps des lettres de la ligne, jamais celle de toute la bande. Sur le banc, la queue d'un « p » de la ligne du dessus descend jusqu'au-dessus d'un « o » du mot, et le cadre s'arrête au haut du « o ». Sur tes photos, je ne sais pas : elles ne sont que dans ton navigateur, c'est ton test qui le dira.
+
+248. La poignée latérale : oui, c'est fait. Elle est entre le texte d'aide en haut à gauche et la ligne en grand. Tire-la vers la gauche : la feuille s'élargit, la photo rétrécit, et l'écriture de la ligne en grand grossit avec la feuille (sur le banc, de 32 à 43 points de haut pour 265 points de large en plus). La position est gardée dans ce navigateur ; un double-clic remet moitié-moitié. Une conséquence : quand la feuille est plus large que la photo, une ligne de la photo et sa ligne recopiée ne sont plus exactement face à face. La ligne en grand, elle, reste alignée sur la feuille.
+
+249. Sur le vrai site, en lecture seule, rien ne change avec la 1.4.6 ; banc 116/0. La dette ② (tes mots, 234) est toujours ouverte, donc ton « promeus » lèverait encore ta règle. Pour 240 (la consigne de l'IA avec le type), tu ne l'as pas commentée : selon ta règle, je la prends pour acquise et je la code après la 1.4.6, sauf avis contraire.
+
+À tester, une fois en ligne :
+1. La copie de Justin, page 2 : le trait rouge est là, à sa marge.
+2. La bande de la copie d'Eva, « plaint → plaignons » et les mots où le cadre se collait en haut : le cadre a la hauteur des lettres du mot.
+3. Dans la recopie, tire la poignée pointillée vers la gauche : la feuille et la ligne en grand grandissent ; recharge la page : la position est gardée ; double-clic sur la poignée : moitié-moitié.
+
+31/10/2026 15:26
+MEMO

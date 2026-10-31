@@ -2190,3 +2190,13 @@ Ton objectif : « parler réellement de la copie en y passant le moins de temps 
 31/10/2026 23:02
 
 MEMO
+
+**Fait (23:05-23:13).** Mesuré au vrai site, en lecture seule, dans le dossier privé, le seuil contre le mélange (A2) : 1 528 identités de lignes, aucune en double ; la ressemblance en mots refuse de vraies lignes ; la ressemblance en lettres, au seuil 0,6, refuse 0 vraie ligne sur 869 et laisse passer 5 échanges sur 5 000 ; écrit au sas `NUIT-31-10/SEUIL-A2.md` (commit `36147c15`, nombres seulement). Trouvé : les trois exécutants ont été arrêtés par l'interruption de 22:56, sans rien avoir écrit sur leurs branches.
+
+**Claude :**
+
+329. Ton message de 22:56 a arrêté les trois exécutants (ils n'avaient encore rien écrit). Je ne les relance pas sans ton mot : dis « relance » et ils repartent. Sans ta réponse, je code moi-même cette nuit, dans l'ordre : la bande mot par mot ⇧R et l'IA sans mélange ; l'accueil dans le flux, le bilan, les fiches, le rangement ; la copie de l'élève en couleurs ; emporter les copies. Le seuil contre le mélange est mesuré sur ta classe : aucune vraie ligne refusée sur 869.
+
+31/10/2026 23:13
+
+MEMO

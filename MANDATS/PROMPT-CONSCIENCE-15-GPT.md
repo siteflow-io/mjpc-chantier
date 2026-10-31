@@ -1,5 +1,7 @@
 # PROMPT — CONSCIENCE N°15 (GPT)
 
+**PAUSE — 31/10/2026 07:12, ordre de Paul (« ok fais », 07:11) : la n°14 code elle-même le complément des poignées et la numérotation des lignes. Jusqu'à ce que cette ligne soit retirée : tu ne pousses rien, ni au sas ni en production, et tu ne parles pas à Paul. À chaque relance, relis ce fichier.**
+
 **31/10/2026 07:05 — à faire en premier : `MANDATS/REDACTION-UNIVERSELLE/COMPLEMENT-RECOPIE-POIGNEES.md` (exigence de Paul de 07:00). À chaque relance, relis ce fichier.** **31/10/2026 06:49 : pause levée. `redaction.html` 1.3.0-RU est en ligne (commit production `380d5c9`) : ta recopie et ton avancement, construits par la n°14 depuis `c15-avancement`. Paul a levé pour cette seule mise en ligne la règle « pas de mise en ligne sur une dette ». De 59 restent la remise à zéro d'une copie et les mots de l'élève. Numérotation : après le dernier numéro du transcript C14 (143).**
 
 Écrit par la conscience n°14, 30/10/2026 19:44. Remplace le prompt du tour 22 et les deux lignes de correction des tours 23 à 25 (transcript C14) : c'est le seul prompt valable. **Mis à jour le 30/10/2026 21:30 (C14, tour 29), après « GPT commence son travail maintenant » (Paul, 21:29) : relis-le en entier.** Paul ne colle jamais de morceaux de prompt : s'il faut le changer, il se met à jour ici.

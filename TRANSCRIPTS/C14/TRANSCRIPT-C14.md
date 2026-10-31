@@ -1228,3 +1228,16 @@ MEMO
 
 31/10/2026 09:58
 MEMO
+
+## Tour 55 — 31/10/2026 10:06 → 31/10/2026 10:06
+
+**Paul :** pourquoi dans ce cas ne pas abandonner totalement les marques d'hier? réponse rapide et économique en utilisation.
+
+**Fait.** Rien.
+
+**Claude :**
+
+187. On les abandonne : elles ne s'affichent plus et ne comptent plus. Je ne les efface pas pour deux raisons : c'est la seule règle qu'on a pour mesurer l'app sur tes vraies copies, et effacer ne se rattrape pas, alors que les garder cachées ne coûte rien. Ça te va ?
+
+31/10/2026 10:06
+MEMO

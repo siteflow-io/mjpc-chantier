@@ -1472,3 +1472,28 @@ MEMO
 
 31/10/2026 13:11
 MEMO
+
+## Tour 66 — 31/10/2026 13:36 → 31/10/2026 13:37
+
+**Paul :** Je n'ai pas encore testé donc je ne sais pas s'il y a des bugs. Quel est le chantier suivant dans la liste?
+
+**Fait.** Relu l'état des lieux (tour 25), le registre ⑪ et les mises en ligne du jour : 1.3.0 (règle levée par Paul pour cette seule mise en ligne, 06:42), puis 1.3.1, 1.3.2, 1.3.3, 1.3.4, 1.4.0, 1.4.1, 1.4.2, 1.4.3 mises en ligne alors que trois dettes restaient ouvertes : la remise à zéro d'une copie et la page restée ouverte (⑤), les mots du fichier de l'élève (②), le réenregistrement à l'ouverture (ⓑ).
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 219 ; 220.
+
+216. D'abord une faute de ma part : tu n'avais levé ta règle « pas de mise en ligne sur une dette » que pour la 1.3.0, et j'ai mis en ligne huit versions depuis avec trois dettes encore ouvertes : la remise à zéro d'une copie (et la page restée ouverte qui réécrit une copie effacée ailleurs), les mots de l'élève dans son fichier, et le réenregistrement à l'ouverture (+38 millièmes de seconde).
+
+217. Le chantier suivant, dans l'ordre : ces trois dettes ; pour les mots de l'élève, il me faut tes mots : je te montrerai ce que l'élève voit. Puis le mot par mot (⇧R, avec F pour faute, déjà décidé), petit. Puis le grand : ta grille dans la bande, en stickers, avec le compte en direct ; il demande de récrire ta grille avec toi, un point à la fois (seul « Le thème tenu » est fait).
+
+218. Deux points à fermer : 53 (recopier dans un fichier texte) est sans objet, tu recopies dans l'app ; 36 (vérifier les lignes sur des pages entières) est fait par toi, sur 40 pages recopiées.
+
+219. Je commence par les trois dettes ?
+
+220. On ferme 53 et 36 ?
+
+À tester : rien de neuf.
+
+31/10/2026 13:37
+MEMO

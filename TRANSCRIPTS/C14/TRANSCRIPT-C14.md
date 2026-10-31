@@ -1575,3 +1575,29 @@ On y va pour les dettes.
 
 31/10/2026 14:44
 MEMO
+
+## Tour 70 — 31/10/2026 14:46 → 31/10/2026 14:53
+
+**Paul :** un défaut sur la version en ligne: l'ia a rendu un json où parfois elle met deux mots ensemble comme erreur. Il y a bien une erreur sur chaque mot mais ils sont pris ensemble. par ailleurs la validation des erreurs est encore à améliorer en termes de place, et aussi en termes de redimensionnement. parfois l'app voit bien le mot que je vise et se recale dessus, mais parfois elle ne voit rien et du coup le cadre ou le chevron reste de la hauteur de la bande. promeus cependant, il faut que j'ai mes couleurs.
+
+**Fait.** Mise en ligne de `redaction.html` 1.4.4-RU : 1.4.3 copiée au sas (`SAUVEGARDES/redaction-1.4.3-RU-avant-1.4.4-2026-10-31.html`, sas 3fdac641) ; candidate identique à celle du sas ; commit prod `f315b24`, blob `69f7e3b5b0c8`, md5 `dc6a2ef8083b9f99b3922c6eea301b01`, 659 164 o ; en ligne bit à bit à la 5e lecture (14:49). Docs de suivi en prod (cedbdcb, a35d8d5) : journal, point de retour, registre (⑤ et ⓑ ✔, la couleur de l'erreur en ligne, les deux défauts de Paul consignés, ② ouverte), adresse `&v=1.4.4-RU`. Les deux mots pris ensemble : c'est `rcEcarts` qui regroupe deux écarts voisins en un seul arrêt (mesuré au tour 68 : 147 arrêts à plusieurs mots sur 895).
+
+**Claude :**
+
+À jouer : tester la 1.4.4 · en cours : rien · ouvert : 220 ; 234 ; 238.
+
+235. La 1.4.4 est en ligne, vérifiée bit à bit à 14:49 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.4-RU. Ta règle est levée pour cette mise en ligne seulement ; la dette ② (tes mots, 234) reste ouverte.
+
+236. Les deux mots pris ensemble : l'IA a bien corrigé chaque mot à part. C'est l'app qui regroupe en un seul arrêt deux corrections qui se touchent. Sur tes copies, 147 arrêts sur 895 contiennent plusieurs mots. C'est le défaut que règlent les arrêts séparés (232) : un mot, un arrêt, un type. Je le mets au registre et je le règle en même temps que le type donné par l'IA (230), puisque ce sont les mêmes arrêts.
+
+237. La place et la hauteur du cadre : c'est au registre. Quand l'app ne trouve pas d'encre sous le mot visé, le cadre ou le ∧ garde toute la hauteur de la bande. Je propose qu'il prenne alors la hauteur de l'encre des mots voisins sur la même ligne, jamais celle de la bande. Pour la place, tes cadres glissés sont la mesure : chaque glissé est un endroit où l'app tombait à côté. Je compte combien tu en as glissé et de combien, avant de toucher au calcul.
+
+238. L'ordre que je propose : 236 avec 230 (l'IA donne le type, un arrêt par mot), puis 237, puis la copie de l'élève en couleurs (226), puis la taxonomie. Ce soir à 22:07, le rappel lance la liste des fonctions qui ne servent plus (225). Ça te va ?
+
+À tester :
+1. Ouvre la bande d'une copie qui a son corrigé : le cadre, le mot dans la ligne, le bord de la carte, son étiquette et la liste ont la couleur du type (brun pour un mot manquant, rose pour une ponctuation, bleu clair pour un accent, rouge pour la grammaire, bleu pour le lexique).
+2. Dans l'écran des scans, clique « ↺ Remettre à zéro », lis la fenêtre, puis clique « Fermer » : rien ne bouge. Ne clique « ↺ Remettre à zéro » dans la fenêtre que sur une copie à refaire.
+3. Ferme l'onglet et rouvre l'app : tu retombes là où tu en étais, sur la même ligne de recopie.
+
+31/10/2026 14:53
+MEMO

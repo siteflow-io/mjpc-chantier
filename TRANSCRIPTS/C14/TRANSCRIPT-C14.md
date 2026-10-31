@@ -1285,3 +1285,20 @@ MEMO
 
 31/10/2026 10:25
 MEMO
+
+## Tour 58 — 31/10/2026 10:30 → 31/10/2026 10:31
+
+**Paul :** promeus
+
+**Fait.** 1.3.4 copiée au sas (`SAUVEGARDES/redaction-1.3.4-RU-avant-1.4.0-2026-10-31.html`). Production : commit `1d90bbb`, blob `9316f21dc61c`, md5 `e7089d22921bb73fc3bbe1106e19bf41`, 591 547 o ; en ligne bit à bit à la 5e lecture. Docs de suivi : journal, registre, point de retour, où trouver quoi (`&v=1.4.0-RU`).
+
+**Claude :**
+
+À jouer : les tests ci-dessous · en cours : la 1.4.1 (la bande) · ouvert : 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+193. La 1.4.0 est en ligne, vérifiée à l'octet près : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.0-RU. Recharge la page de l'app. Je passe à la bande.
+
+À tester : dans la recopie, « Exporter pour l'IA » : un fichier se télécharge ; ouvre-le : la consigne en tête, tes copies numérotées, aucun nom ; donne-le à l'IA ; « Charger le corrigé de l'IA » : colle sa réponse entière, « Vérifier et charger » : « Chargé : … fautes proposées » ; en haut, le nombre de fautes de la copie ouverte.
+
+31/10/2026 10:31
+MEMO

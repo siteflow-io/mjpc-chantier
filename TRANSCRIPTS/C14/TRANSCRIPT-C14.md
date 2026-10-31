@@ -1133,3 +1133,22 @@ MEMO
 
 31/10/2026 08:48
 MEMO
+
+## Tour 50 — 31/10/2026 08:54 → 31/10/2026 08:56
+
+**Paul :** le numéro de page ne s'actualise pas dans le champ du haut quand on scrolle.
+
+**Fait.** `recopie.js` : `rcPageVue` — au défilement, le menu « Page » prend la page vue au premier tiers de l'écran (affichage seul ; la page où tu écris ne change qu'au clic ou au clavier). Banc : vérification par le geste (défilement sur chacune des 2 pages : le menu suit) → « BANC : 92 vérifications, 0 défaut ». Candidate 1.3.4-RU : 580848 o, md5 `23f016d759e31656753a21b4efe6a6db`. Vrai site en lecture seule, 1.3.3 puis 1.3.4 : 30 copies, 0 différente ; recopies : places identiques, textes comparés ci-dessus ; seule écriture interceptée : le suivi.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 178 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+177. Corrigé dans la 1.3.4 : quand tu fais défiler, le menu « Page » affiche la page que tu as sous les yeux. Banc : 92 vérifications, 0 défaut ; tes copies au site : rien ne change.
+
+178. Pour la mettre en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 08:56
+MEMO

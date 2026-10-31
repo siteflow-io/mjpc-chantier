@@ -1769,3 +1769,26 @@ MEMO
 
 31/10/2026 15:50
 MEMO
+
+## Tour 77 — 31/10/2026 15:49 → 31/10/2026 15:52
+
+**Paul :** promeus
+
+**Fait.** Mise en ligne de `redaction.html` 1.4.7-RU : 1.4.6 copiée au sas (`SAUVEGARDES/redaction-1.4.6-RU-avant-1.4.7-2026-10-31.html`, sas 80af4ef8) ; candidate identique à celle du sas ; commit prod `58ba42a`, blob `54256a5e8d1c`, md5 `388d837460a309f6b5f34a191821eaf0`, 671 657 o ; en ligne bit à bit à la 4e lecture (15:50). Docs de suivi en prod (aa0d249) : journal, point de retour (en cas de retour, la 1.4.5 et non la 1.4.6, dont la poignée décale l'affichage), registre (0 ✔), adresse `&v=1.4.7-RU`.
+
+**Claude :**
+
+À jouer : tester la 1.4.7 · en cours : rien · ouvert : 220 ; 234.
+
+262. La 1.4.7 est en ligne, vérifiée bit à bit à 15:50 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.7-RU. Recharge la page : si tu avais tiré la poignée de la 1.4.6, tout revient à moitié-moitié.
+
+263. À ton prochain mot, je fais la 1.4.8 : la bande en continu, comme en correction de dictée (257).
+
+À tester :
+1. Ouvre la bande d'une copie, va à un arrêt au milieu, puis recharge la page : la bande se rouvre seule, sur ce même arrêt.
+2. Ferme la bande, passe à un autre élève, reviens et rouvre la bande : même arrêt.
+3. Dans la bande, les mots où le cadre prenait toute la hauteur : il a la hauteur des lettres du mot.
+4. Dans la recopie, « + » au-dessus de la ligne en grand : elle grossit, entière ; les lignes vertes ne bougent pas ; « − » jusqu'à ×1 : elle est de nouveau alignée sur la feuille.
+
+31/10/2026 15:52
+MEMO

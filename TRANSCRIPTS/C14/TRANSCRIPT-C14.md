@@ -1813,3 +1813,26 @@ MEMO
 
 31/10/2026 15:59
 MEMO
+
+## Tour 79 — 31/10/2026 15:59 → 31/10/2026 16:06
+
+**Paul (15:59) :** 265. comment je sais que toutes mes copies ne sont pas exportées alors? Je n'ai aucun compteur, rien. Par ailleurs, une dette qui sera à coder plus tard: les élèves doivent etre identifiés. sinon c'est la porte ouverte au mélange de données. Et code le compteur du coup.
+
+**Paul (16:01, pendant le travail) :** en fait j'ai vu le compteur en haut effectivement, mais il n'est pas assez visible, je n'ai pas le compte sur le total. c'est lui qu'il faut mettre à jour. Pas créer un nouveau compteur
+
+**Fait.** Codé d'abord un compte de la classe dans le texte d'en haut et sur le bouton d'export ; arrêté par Paul à 16:01 pendant le banc (aucun banc ne tournait encore, vérifié). Repris selon son mot : le compte sur le bouton est retiré ; le compteur d'en haut (`#rcIAEtat`, le même) dit d'abord le compte de toute la classe, compté comme l'export choisit les copies (`rcCompteIA` : « Corrigé de l’IA : X copies sur Y · Z à exporter (N envois de 4 au plus) », ou « Toutes tes copies recopiées ont leur corrigé de l’IA, à jour (Y) »), puis, comme avant, les fautes proposées sur la copie ; il est plus visible (plus grand, en gras, sur fond vert pâle) ; après un export, le message part en bandeau sans effacer le compteur. Banc 118/0 (vérification nouvelle : le compteur d'en haut, et rien sur le bouton). Vrai site, lecture seule : « Toutes tes copies recopiées ont leur corrigé de l’IA, à jour (28) · cette copie : 76 fautes proposées » ; 1.4.7 et 1.4.8 passées l'une après l'autre : une seule copie diffère, ses marques (15 puis 18), Paul corrigeait à ce moment. Candidate 1.4.8-RU : 672 914 o, md5 56d7e40a90d7ba6db07296644a520902. Branche c14-poignees 06bf93b6. Registre (prod afcbb46) : le compteur, la bande en continu passée en 1.4.9, la dette « élèves identifiés » avec les mots de Paul.
+
+**Claude :**
+
+À jouer : promeus (1.4.8) · en cours : rien · ouvert : 220 ; 234.
+
+267. C'est fait sur le compteur d'en haut, le même, sans en créer un autre. Il dit d'abord le compte de toute la classe : « Corrigé de l’IA : 23 copies sur 28 · 5 à exporter (2 envois de 4 au plus) ». Quand tout est fait : « Toutes tes copies recopiées ont leur corrigé de l’IA, à jour (28) ». Puis, comme avant, les fautes proposées sur la copie ouverte. Il est plus grand, en gras, sur fond vert pâle. Sur ton site, il dit en ce moment : toutes tes 28 copies recopiées ont leur corrigé.
+
+268. La dette est au registre, avec tes mots : les élèves doivent être identifiés dans l'aller-retour avec l'IA. Aujourd'hui, l'export numérote les copies sans nom (ta décision de ce matin), et le retour se raccroche à chaque ligne par son identité interne. Le choix restera à faire en la codant : un identifiant interne de la copie suffit à empêcher le mélange, alors qu'un nom partirait chez l'IA.
+
+269. La bande en continu devient la 1.4.9.
+
+À tester, une fois en ligne : ouvre la recopie. En haut, le compteur dit en gras, sur fond vert, combien de copies ont leur corrigé sur le total.
+
+31/10/2026 16:06
+MEMO

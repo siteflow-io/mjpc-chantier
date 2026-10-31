@@ -1082,3 +1082,20 @@ MEMO
 
 31/10/2026 08:27
 MEMO
+
+## Tour 48 — 31/10/2026 08:31 → 31/10/2026 08:32
+
+**Paul :** promeus.
+
+**Fait.** 1.3.1 copiée au sas (`SAUVEGARDES/redaction-1.3.1-RU-avant-1.3.2-2026-10-31.html`). Production : commit `8ff8ab1`, blob `7ba15c8e7b2e`, md5 `799e6800ecb41a0635a1519cda32406e`, 577 436 o ; en ligne bit à bit à la 5e lecture. Docs de suivi : journal, registre (1.3.2 dans ⑪, les pages à la suite ouvertes pour 1.3.3), point de retour, où trouver quoi (`&v=1.3.2-RU`).
+
+**Claude :**
+
+À jouer : les tests ci-dessous · en cours : la 1.3.3 (les pages à la suite) · ouvert : 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+173. La 1.3.2 est en ligne, vérifiée à l'octet près : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.3.2-RU. Recharge la page de l'app. Je passe à la 1.3.3 : les pages de la copie à la suite.
+
+À tester : sur une page, le trait rouge en pointillé sur la marge ; tire une de ses poignées : les débuts de ligne suivent, sauf ceux tirés à la main ; Annuler les remet ; la bande du haut : une seule ligne de l'élève, au-dessus de ta frappe ; Entrée sur une ligne vide : pas de numéro ; le compte en haut à gauche : les lignes écrites de toute la copie ; Entrée sur la dernière ligne : la page suivante ; tape "bonjour" entre guillemets droits : « bonjour ».
+
+31/10/2026 08:32
+MEMO

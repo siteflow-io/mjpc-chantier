@@ -124,6 +124,10 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie (C14) : les poignées gauches se posent seules juste avant la marge rouge, les droites au bord de la copie (" + pos.g.map(x => x.toFixed(3)).join(" ") + " | " + pos.dr.map(x => x.toFixed(3)).join(" ") + ")", !pos.sans && pos.g.length === 6 && pos.g.every(x => x < 150 / 1240 && x > 150 / 1240 - 0.02) && pos.dr.every(x => x >= 0.98));
   const nums = await pg.evaluate(() => Array.from(document.querySelectorAll("#rcLignesSVG text.rc-numero")).map(t => t.textContent).join(",") + " · " + document.querySelector("#rcLigneTitre").textContent);
   verif("recopie (C14) : seules la ligne écrite et celle où l'on écrit portent un numéro, à la suite (" + nums + ")", nums === "1,2 · Ligne 2 sur 2");
+  await champ(2).fill("Une ligne écrite très serrée, sans une place, ".repeat(3));
+  const mg = await pg.evaluate(() => { const i = document.querySelectorAll(".rc-saisie")[2]; return { sw: i.scrollWidth, cw: i.clientWidth, fs: parseFloat(getComputedStyle(i).fontSize), base: 18 * RC.echelle }; });
+  verif("recopie (C14) : une ligne trop pleine rapetisse et se lit en entier, rien n'est mangé (" + mg.sw + " / " + mg.cw + " px, lettres " + mg.fs.toFixed(1) + " au lieu de " + mg.base.toFixed(1) + ")", mg.sw <= mg.cw + 1 && mg.fs < mg.base);
+  await champ(2).fill("");
   await cap("C15-24-recopie-six-lignes");
   await pg.setViewportSize({ width: 390, height: 800 }); await att(180);
   const lisible = await pg.evaluate(() => {

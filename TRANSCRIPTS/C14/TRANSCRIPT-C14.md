@@ -2089,3 +2089,24 @@ MEMO
 
 31/10/2026 22:10
 MEMO
+
+## Tour 91 — 31/10/2026 22:08 (rappel planifié) → 31/10/2026 22:27
+
+**Rappel planifié (posé à la demande de Paul, 14:16 et 14:17, déclenché à 22:08) :** Point 225 (Paul, 31/10 14:03 : « À prévoir dans la tâche planifiée de demain »). Dresser la liste des fonctions de redaction.html (production) qui ne servent plus depuis les scans, la recopie et la bande. Exemple donné par Paul : sur l'accueil, cliquer une carte élève mène à la grille de l'élève et au mode interrogatif. Pour chaque fonction : ce qu'elle fait encore, mesuré dans le code et sur le site en lecture seule (écritures interceptées), puis « garder », « recycler dans… » ou « ranger ». Principe de recyclage : rien n'est jeté sans mesure, rien n'est effacé sans le mot de Paul. Commencer par relire le transcript C14 depuis le tour 68 : si Paul a donné un autre ordre entre-temps, c'est son ordre qui compte. Rien n'est poussé en production. Le résultat va au sas (transcript C14 et un fichier de liste) et part dans un message à Paul au format habituel.
+
+**Fait.** Relu les ordres de Paul depuis le tour 68 : aucun ne change le 225 ; le 305 (la capture du flux) attend son mot. Lu dans `redaction.html` (production, 1.4.10-RU) la partie de l'app d'origine (l. 3071 à 6738) : chaque fonction, ses appels, et son usage par le code des scans, de la recopie, de la bande (aucun). Au site, en lecture seule, dossier privé : les deux rédactions ; ce que la correction d'origine y a laissé (grilles 0, sous-descripteurs 0, citations 0, compteur 0, meilleure citation 0 ; chronométrage 1, signet 1, variante 2). Écrit la liste au sas : `MANDATS/REDACTION-UNIVERSELLE/INVENTAIRE-FONCTIONS-225.md` (12 fonctions avec leur verdict proposé, ce qui reste tel quel, ce que « ranger » veut dire, l'ordre proposé). Rien en production.
+
+**Claude :**
+
+À jouer : 305 (ton mot sur le flux) ; 308 (ton mot sur la liste) · en cours : rien · ouvert : 220 ; 234 ; 305 ; 308.
+
+306. La liste des fonctions qui ne servent plus est faite (le rappel de 22:07) : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/REDACTION-UNIVERSELLE/INVENTAIRE-FONCTIONS-225.md. Rien n'est changé dans l'app.
+
+307. Ce que j'ai mesuré : au site, la correction d'origine n'a presque rien laissé (aucune grille remplie, aucune citation, aucun compteur ; un chronométrage, un signet, deux variantes de sujet). Ton exemple est le n° 1 : le clic sur la carte d'un élève ouvre encore la grille d'origine ou le mode interrogatif. Je propose : garder le tableau des élèves, mais la carte montre les étapes du flux et le clic ouvre la copie dans les scans ou la recopie. À ranger : la grille d'origine, le mode interrogatif, le compteur d'orthographe, le bilan d'une copie, le classement du paquet, la sauvegarde JSON automatique, les calculs de note d'origine. À recycler : l'onglet « Bilan » en bilan de classe tiré des scans, avec les fautes par type pour la remédiation ; l'onglet « Fiches élèves » dans les fichiers École Directe ; les textes des quatre niveaux dans la grille en stickers. Deux questions pour plus tard : la variante du sujet (imagination ou réflexion), et l'alerte « déclassement DNB ».
+
+308. « Ranger » veut dire : le geste disparaît de l'écran, son code part dans une copie au sas, rien n'est effacé au site. Tu valides la liste et l'ordre proposé (le tableau des élèves d'abord) ?
+
+À tester : rien de neuf en ligne.
+
+31/10/2026 22:27
+MEMO

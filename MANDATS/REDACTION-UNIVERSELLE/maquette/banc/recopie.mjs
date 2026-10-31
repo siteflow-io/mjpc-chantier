@@ -355,18 +355,31 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     const xm = (q0.x0 + q0.x1) / 2 * im.w, base = Math.max(L.y0, L.y1) * im.h, P = pas * im.h; c.strokeStyle = "#1d3fa8"; c.lineWidth = Math.max(2, P * 0.06); c.lineCap = "round";
     c.beginPath(); c.moveTo(xm - P * 0.1, base - P * 1.2); c.quadraticCurveTo(xm, base - P * 0.9, xm - P * 0.05, base - P * 0.52); c.stroke();   // la queue d'un « p » de la ligne du dessus, qui descend loin
     c.beginPath(); c.arc(xm + P * 0.02, base - P * 0.16, P * 0.13, 0, 2 * Math.PI); c.stroke();   // un « o » du mot, sans hampe
+    c.save(); c.strokeStyle = "#7d6fc4"; c.lineWidth = Math.max(1, P * 0.03); for (let gx = xm - 3 * P; gx <= xm + 3 * P; gx += P * 0.9) { c.beginPath(); c.moveTo(gx, base - P * 2); c.lineTo(gx, base + P); c.stroke(); } c.beginPath(); c.moveTo(xm + P * 0.02, base - P * 2); c.lineTo(xm + P * 0.02, base + P); c.stroke(); c.restore();   // les traits verticaux du cahier, dont un à travers le « o »
     const ancien = im.el, el = new Image(); await new Promise(r => { el.onload = r; el.src = cv.toDataURL("image/png"); }); im.el = el; RC.encre = {};
     const q = rcPlaceSeg(a); im.el = ancien; RC.encre = {}; return { haut: (base - q.y0 * im.h) / P, queue: 0.52 }; });
-  verif("recopie (1.4.6) : la queue d'une lettre de la ligne du dessus descend jusqu'au-dessus du mot visé : le cadre s'arrête au haut des lettres du mot (" + t6.haut.toFixed(2) + " interligne au-dessus de la ligne), sous la queue (" + t6.queue + ")", t6.haut > 0.25 && t6.haut < t6.queue - 0.02);
+  verif("recopie (1.4.7) : la queue d'une lettre de la ligne du dessus descend jusqu'au-dessus du mot visé, et les traits verticaux du cahier traversent la bande, dont un à travers le mot : le cadre s'arrête au haut des lettres du mot (" + t6.haut.toFixed(2) + " interligne au-dessus de la ligne), sous la queue (" + t6.queue + ")", t6.haut > 0.25 && t6.haut < t6.queue - 0.02);
+  // 1.4.7 (Paul 15:41) : la bande se rouvre à l'arrêt où l'on était, après l'avoir fermée, puis après un rechargement de la page
+  const i8 = await pg.evaluate(id => RC.bd.A.findIndex(a => a.id === id && a.g.eleve === "se"), cible2); await pg.click('#rcBandeListe li[data-i="' + i8 + '"]'); await att(200);
+  const vise8 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i]; return a.id + "|" + a.cle; });
+  await pg.click("#rcBandeRetour"); await att(200); await pg.click("#rcBandeOuvrir"); await att(250);
+  const rouvre8 = await pg.evaluate(() => RC.bd ? RC.bd.A[RC.bd.i].id + "|" + RC.bd.A[RC.bd.i].cle : null);
+  await att(1500); await pg.reload(); await att(6000);
+  const recharge8 = await pg.evaluate(() => ({ bande: !!(typeof RC !== "undefined" && RC.bd), ici: RC.bd && RC.bd.A[RC.bd.i] ? RC.bd.A[RC.bd.i].id + "|" + RC.bd.A[RC.bd.i].cle : null, mot: RC.bd && RC.bd.A[RC.bd.i] ? RC.bd.A[RC.bd.i].g.eleve : null }));
+  await cap("C14-35-bande-rechargee");
+  verif("recopie (1.4.7) : la bande se rouvre à l'arrêt où tu étais (« se → nous », pas le premier non décidé) : après l'avoir fermée (" + (rouvre8 === vise8) + "), et après un rechargement de la page, bande ouverte au même mot (« " + recharge8.mot + " »)", rouvre8 === vise8 && recharge8.bande && recharge8.ici === vise8);
   await pg.click("#rcBandeRetour"); await att(150);
-  // 1.4.6 (Paul 15:12) : la poignée entre la photo et la feuille ; la ligne en grand grandit avec la feuille
-  const sepB = await pg.locator("#rcSep").boundingBox(), avS = await pg.evaluate(() => ({ f: document.querySelector("#rcFeuille").getBoundingClientRect().width, h: RC.bande ? RC.bande.hauteur : 0 }));
-  await pg.mouse.move(sepB.x + sepB.width / 2, sepB.y + sepB.height / 2); await pg.mouse.down(); await pg.mouse.move(sepB.x - 260, sepB.y + sepB.height / 2, { steps: 8 }); await pg.mouse.up(); await att(250);
-  const apS = await pg.evaluate(() => ({ f: document.querySelector("#rcFeuille").getBoundingClientRect().width, h: RC.bande ? RC.bande.hauteur : 0, garde: (() => { try { return localStorage.getItem("mjpc_rc_partage"); } catch (e) { return null; } })() }));
-  await cap("C14-33-poignee-laterale");
-  await pg.dblclick("#rcSep"); await att(200); const reS = await pg.evaluate(() => document.querySelector("#rcFeuille").getBoundingClientRect().width);
-  verif("recopie (1.4.6) : la poignée entre la photo et la feuille, tirée vers la gauche, élargit la feuille (" + Math.round(avS.f) + " → " + Math.round(apS.f) + " px) et l'écriture de la ligne en grand grandit avec elle (" + Math.round(avS.h) + " → " + Math.round(apS.h) + " px de haut) ; gardée dans ce navigateur ; double-clic : moitié-moitié (" + Math.round(reS) + " px)",
-    apS.f > avS.f + 150 && apS.h > avS.h * 1.2 && !!apS.garde && Math.abs(reS - avS.f) < 6);
+  // 1.4.7 (Paul 15:33 et 15:41) : le zoom cranté de la seule ligne en grand ; la photo et les lignes vertes ne bougent jamais ; la ligne reste entière
+  const lignes9 = () => pg.evaluate(() => { const b = rcBloc(RC.page), r = b.querySelector(".rc-image").getBoundingClientRect(); return JSON.stringify([Math.round(r.width), Math.round(r.height)].concat(Array.from(b.querySelectorAll(".rc-trait")).slice(0, 6).map(t => { const q = t.getBoundingClientRect(); return [Math.round(q.left - r.left), Math.round(q.top - r.top)]; }))); });
+  const av9 = await lignes9(), h9a = await pg.evaluate(() => RC.bande ? RC.bande.hauteur : 0);
+  await pg.click("#rcZoomPlus"); await att(150); await pg.click("#rcZoomPlus"); await att(250);
+  const ap9 = await lignes9(), z9 = await pg.evaluate(() => { const cv = document.querySelector("#rcAgrandie"), l = rcCourante(), im = SC.imgs[RC.page], B = RC.bande, ap = document.querySelector(".rc-apercu");
+    const larg = (l.x1 - l.x0 + 0.02) * im.w * (B.hauteur / (2 * Math.max(0.012, Math.min(0.035, rcPasDoc(rcDocument(RC.page)) * 0.55)) * im.h));
+    return { cran: document.querySelector("#rcZoomCran").textContent, h: B.hauteur, entiere: B.gauche + (l.x0 - 0.01) * im.w * (B.hauteur / (2 * Math.max(0.012, Math.min(0.035, rcPasDoc(rcDocument(RC.page)) * 0.55)) * im.h)) >= -1 && larg <= cv.width + 2, defile: ap.scrollWidth > ap.clientWidth + 1 || document.querySelector("#rcEcran").scrollWidth > document.querySelector("#rcEcran").clientWidth + 1, garde: (() => { try { return localStorage.getItem("mjpc_rc_zoom_bande"); } catch (e) { return null; } })() }; });
+  await cap("C14-33-zoom-ligne-en-grand");
+  await pg.click("#rcZoomMoins"); await att(150); await pg.click("#rcZoomMoins"); await att(200); const re9 = await lignes9(), h9r = await pg.evaluate(() => RC.bande ? RC.bande.hauteur : 0);
+  verif("recopie (1.4.7) : le zoom cranté de la ligne en grand (" + z9.cran + ") la grossit (" + Math.round(h9a) + " → " + Math.round(z9.h) + " px de haut), entière, sans barre de défilement ; la photo et les lignes vertes n'ont pas bougé d'un point (" + (av9 === ap9) + ") ; gardé dans ce navigateur ; − revient à ×1 (" + Math.round(h9r) + " px)",
+    z9.cran === "×2" && z9.h > h9a * 1.3 && z9.entiere && !z9.defile && av9 === ap9 && z9.garde === "2" && Math.abs(h9r - h9a) < 1 && re9 === av9);
   await pg.click("#rcFermer"); await att(180);
   // 1.4.6 (Paul 15:18) : la page 2 d'une copie, préparée avant que sa photo soit prête, trouve son trait rouge dès que la photo arrive
   const k7 = await pg.evaluate(() => { for (const k of SC.copies) { const P = scPagesDe(k), r = ((scCopie(k).recopie || {}).pages) || {}; if (P.length >= 2 && !r[P[1].id]) return { k, i: SC.copies.indexOf(k), p2: P[1].id }; } return null; });

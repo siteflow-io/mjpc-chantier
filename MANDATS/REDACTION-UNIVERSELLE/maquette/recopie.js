@@ -123,8 +123,7 @@ function rcInterface() {
     '<button id="rcBandeOuvrir" class="sc-btn" title="La bande : elle s’arrête à chaque faute proposée par le corrigé de l’IA. Entrée ou Espace : c’est une faute ; N : non. Échap : revenir à la recopie.">▶ La bande</button>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
-    '<div id="rcSep" class="rc-sep" title="Tirer à gauche ou à droite : la feuille recopiée et la ligne en grand s’agrandissent ou rétrécissent, la photo fait l’inverse. Double-clic : moitié-moitié."></div>',
-    '<canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div>',
+    '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand est alignée sur la feuille.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>',
     '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo"></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
@@ -141,7 +140,7 @@ function rcInterface() {
   e.querySelector("#rcAjouter").onclick = rcAjouter;
   e.querySelector("#rcRetirer").onclick = rcRetirer;
   e.querySelector("#rcAnnuler").onclick = rcAnnuler;
-  rcSepBrancher(e);
+  rcZoomBandeBrancher(e);
   e.querySelector("#rcMoins").onclick = () => rcZoom(RC.zoom / 1.15);
   e.querySelector("#rcPlus").onclick = () => rcZoom(RC.zoom * 1.15);
   e.querySelector("#rcLargeur").onclick = () => rcZoom(1);
@@ -184,7 +183,7 @@ function rcBlocs() {
       svg.addEventListener("pointerdown", ev => { if (ev.target.closest && ev.target.closest("circle")) rcActiverPage(p.id); rcPoigneeDebut(ev); });
       svg.addEventListener("pointermove", rcPoigneeBouger); svg.addEventListener("pointerup", rcPoigneeFin); svg.addEventListener("pointercancel", rcPoigneeAnnuler);
       const im = b.querySelector(".rc-image");
-      im.onload = () => { if (RC.ouvert) { rcMargeTardive(p.id, RC.documents[p.id]); rcPourPage(p.id, rcMettreEnPage); if (p.id === RC.page) rcAgrandir(); } };
+      im.onload = () => { if (RC.ouvert) { rcMargeTardive(p.id, RC.documents[p.id]); rcPourPage(p.id, rcMettreEnPage); if (p.id === RC.page) rcAgrandir(); if (RC.bd) rcBandeRendre(); } };
       im.onerror = () => { b.querySelector(".rc-absente").hidden = false; };
       box.appendChild(b);
     });
@@ -206,7 +205,7 @@ function rcActiverPage(pid) {
   const sel = RC.ui.querySelector("#rcPage"); if (sel) sel.value = pid;
 }
 function rcBookmark() {
-  const v = { ouverte: RC.ouvert, copie: RC.copie, page: RC.page, ligne: RC.ligne };
+  const v = { ouverte: RC.ouvert, copie: RC.copie, page: RC.page, ligne: RC.ligne }; if (RC.ouvert && RC.bd) v.bande = true;   // [C14 1.4.7] la bande ouverte se rouvre au rechargement
   if (JSON.stringify(state.scanRecopie || null) !== JSON.stringify(v)) { state.scanRecopie = v; saveState(); }
 }
 function rcOuvrir(reprendre) {
@@ -225,6 +224,7 @@ function rcOuvrir(reprendre) {
   SC.copies.forEach(rcSeparerAnciens);   // [C14 1.4.5] les arrêts d'avant à plusieurs mots, coupés une fois pour toutes
   rcActualiser(true); rcBookmark(); SC.actif = Date.now();
   rcSelectionner(RC.ligne, true, true);
+  if (reprendre && dernier && dernier.bande && dernier.copie === RC.copie) rcBandeOuvrir(true);   // [C14 1.4.7] rechargée en mode bande : la bande, au même arrêt
 }
 function rcFermer(sansRendre) {
   if (!RC.ouvert) return; if (RC.bd) rcBandeFermer(true); RC.ouvert = false; RC.drag = null;
@@ -366,26 +366,21 @@ function rcSelectionner(id, focus, aligner) {
   rcBookmark();
 }
 /* C14 (31/10, Paul 07:47) : la bande du haut, alignée sur la feuille en dessous (même échelle, même place) */
-/* [C14 1.4.6] la poignée entre la photo et la feuille (Paul 15:12) : la part de la photo, gardée dans ce navigateur */
-function rcSepAppliquer(frac) {
-  const e = RC.ui, ap = e && e.querySelector(".rc-apercu"); if (!ap) return; const W = ap.clientWidth - 28;
-  if (!frac) { e.style.removeProperty("--rc-cols-a"); e.style.removeProperty("--rc-cols-p"); RC.partage = null; return; }
-  const g = Math.round(rcBorne(frac, 0.2, 0.8) * (W - 18)); RC.partage = rcBorne(frac, 0.2, 0.8);
-  e.style.setProperty("--rc-cols-a", g + "px 10px minmax(0,1fr)"); e.style.setProperty("--rc-cols-p", g + "px minmax(0,1fr)");
-}
-function rcSepBrancher(e) {
-  const sep = e.querySelector("#rcSep"); if (!sep) return; let tire = false;
-  try { const f = parseFloat(localStorage.getItem("mjpc_rc_partage")); if (f > 0) setTimeout(() => { rcSepAppliquer(f); if (RC.ouvert) { rcMettreEnPage(); rcAgrandir(); } }, 0); } catch (x) {}
-  const bouger = ev => { const ap = e.querySelector(".rc-apercu").getBoundingClientRect(); rcSepAppliquer((ev.clientX - ap.left - 14 - 9) / (ap.width - 28 - 18)); rcMettreEnPage(); rcAgrandir(); };
-  sep.addEventListener("pointerdown", ev => { if (ev.button !== 0) return; ev.preventDefault(); tire = true; sep.setPointerCapture(ev.pointerId); sep.classList.add("on"); });
-  sep.addEventListener("pointermove", ev => { if (tire) bouger(ev); });
-  sep.addEventListener("pointerup", ev => { if (!tire) return; tire = false; sep.classList.remove("on"); bouger(ev); try { localStorage.setItem("mjpc_rc_partage", String(RC.partage || "")); } catch (x) {} rcSelectionner(RC.ligne, true, true); });
-  sep.addEventListener("dblclick", () => { rcSepAppliquer(null); try { localStorage.removeItem("mjpc_rc_partage"); } catch (x) {} rcMettreEnPage(); rcAgrandir(); rcSelectionner(RC.ligne, true, true); });
+/* [C14 1.4.7] (Paul 15:33 et 15:41) : la poignée latérale de la 1.4.6 décalait l'affichage des lignes vertes ; elle est retirée. À sa place,
+   un zoom cranté de la seule ligne en grand : ×1, elle est alignée sur la feuille ; au-dessus, elle prend toute la largeur de l'écran (le texte
+   d'aide se cache) et grossit, toujours entière, jamais de barre de défilement. Les lignes vertes et la photo ne bougent jamais. */
+const RC_CRANS = [1, 1.5, 2, 2.5, 3];
+function rcZoomBandeBrancher(e) {
+  try { localStorage.removeItem("mjpc_rc_partage"); } catch (x) {}   // la poignée de la 1.4.6 : sa position gardée ne sert plus
+  try { const z = parseFloat(localStorage.getItem("mjpc_rc_zoom_bande")); RC.zoomBande = RC_CRANS.includes(z) ? z : 1; } catch (x) { RC.zoomBande = 1; }
+  const changer = sens => { const i = RC_CRANS.indexOf(RC.zoomBande), n = RC_CRANS[Math.max(0, Math.min(RC_CRANS.length - 1, i + sens))]; if (sens > 0 && RC.zoomPlein) return; RC.zoomBande = n; try { localStorage.setItem("mjpc_rc_zoom_bande", String(n)); } catch (x) {} rcAgrandir(); };
+  e.querySelector("#rcZoomMoins").onclick = () => changer(-1); e.querySelector("#rcZoomPlus").onclick = () => changer(1);
 }
 function rcAgrandir() {
   if (!RC.ouvert || !RC.ui) return;
   const p = SC.pages[RC.page], l = rcCourante(), im = p && SC.imgs[p.id], cv = RC.ui.querySelector("#rcAgrandie");
   /* [C14 1.4.6] la ligne en grand suit la largeur de la feuille : plus la feuille est large, plus la bande est haute */
+  const z = RC.zoomBande || 1; RC.ui.classList.toggle("rc-zoom-bande", z > 1);
   const w = Math.max(200, Math.round(cv.clientWidth || 500)), h = RC.hBande || 76;
   if (cv.style.height !== h + "px") cv.style.height = h + "px";
   if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
@@ -395,8 +390,15 @@ function rcAgrandir() {
   const d = rcDocument(RC.page), ys = d.ordre.map(id => (d.lignes[id].y0 + d.lignes[id].y1) / 2).sort((a, b) => a - b), ecarts = [];
   for (let i = 1; i < ys.length; i++) if (ys[i] - ys[i - 1] > 0.005) ecarts.push(ys[i] - ys[i - 1]);
   const pas = ecarts.length ? ecarts.sort((a, b) => a - b)[ecarts.length >> 1] : (p.lignes && p.lignes.pas) || 0.03;
-  const demi = Math.max(0.012, Math.min(0.035, pas * 0.55)) * im.h, k = fr.width / im.w, gauche = fr.left - cr.left, dh = 2 * demi * k, dy = (h - dh) / 2, N = 60;
-  const voulu = Math.max(76, Math.min(240, Math.ceil(dh + 12))); if (voulu !== h) { RC.hBande = voulu; return rcAgrandir(); }
+  /* ×1 : à l'échelle et à la place de la feuille ; au-dessus : plus grand, la ligne entière centrée dans toute la largeur */
+  const k1 = fr.width / im.w, kPlein = (w - 16) / Math.max(1, (l.x1 - l.x0 + 0.02) * im.w), k = z > 1 ? Math.min(k1 * z, kPlein) : k1;
+  RC.zoomPlein = z > 1 && k1 * z >= kPlein - 1e-9;
+  const gauche = z > 1 ? (w - (l.x1 - l.x0 + 0.02) * im.w * k) / 2 - (l.x0 - 0.01) * im.w * k : fr.left - cr.left;
+  const demi = Math.max(0.012, Math.min(0.035, pas * 0.55)) * im.h, dh = 2 * demi * k, dy = (h - dh) / 2, N = 60;
+  const voulu = Math.max(76, Math.min(320, Math.ceil(dh + 12))); if (voulu !== h) { RC.hBande = voulu; return rcAgrandir(); }
+  const zm = RC.ui.querySelector("#rcZoomCran"); if (zm) zm.textContent = "×" + String(z).replace(".", ",");
+  const zp = RC.ui.querySelector("#rcZoomPlus"); if (zp) { zp.disabled = RC.zoomPlein || z >= RC_CRANS[RC_CRANS.length - 1]; zp.title = zp.disabled ? "La ligne remplit déjà toute la largeur : plus grand, elle ne serait plus entière." : "Grossir la ligne en grand d'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas."; }
+  const zmo = RC.ui.querySelector("#rcZoomMoins"); if (zmo) zmo.disabled = z <= 1;
   const yl = u => (l.y0 + (l.y1 - l.y0) * (u - l.x0) / ((l.x1 - l.x0) || 1)) * im.h;
   for (let i = 0; i < N; i++) { const u = (i + 0.5) / N, sx = i * im.w / N, sw = im.w / N + 1; x.drawImage(im.el, sx, yl(u) - demi, sw, 2 * demi, gauche + sx * k, dy, sw * k, dh); }
   RC.bande = { gauche, largeur: fr.width, hauteur: dh, pas: pas * im.h * k };
@@ -690,7 +692,11 @@ function rcEncre(pid, L, d) {
   const cv = RC.cvEncre || (RC.cvEncre = document.createElement("canvas")); cv.width = w; cv.height = h; const c = cv.getContext("2d"); c.drawImage(im.el, x0, y0, w, h, 0, 0, w, h);
   const px = c.getImageData(0, 0, w, h).data, lum = []; for (let i = 0; i < w * h; i += 7) { const j = i * 4; lum.push(px[j] + px[j + 1] + px[j + 2]); } lum.sort((a, b) => a - b); const papier = lum[Math.floor(lum.length * 0.75)] || 600;
   const col = new Array(w).fill(0), enc = new Uint8Array(w * h), parRang = new Array(h).fill(0); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const j = (y * w + x) * 4, r = px[j], g = px[j + 1], b = px[j + 2]; const l = r + g + b; if ((b - r > 12 && l < papier * 0.8) || l < papier * 0.35) { if (y >= ya && y < yb) col[x]++; enc[y * w + x] = 1; parRang[y]++; } }
-  for (let y = 0; y < h; y++) if (parRang[y] > 0.5 * w) enc.fill(0, y * w, (y + 1) * w);   // [C14 1.4.6] un rang d'encre sur presque toute la ligne est un trait du cahier : il ne relie rien   // 1.4.3 : l'encre est bleue (ou très sombre) ; le quadrillage et les ombres, non
+  for (let y = 0; y < h; y++) if (parRang[y] > 0.5 * w) enc.fill(0, y * w, (y + 1) * w);
+  /* [C14 1.4.7] (Paul 15:41 : le cadre encore collé en haut de la bande) : les traits verticaux du cahier traversent toute la hauteur lue et
+     reliaient le mot au haut et au bas de la bande ; une colonne d'encre sur les trois quarts de la hauteur est un trait du cahier : elle ne relie rien,
+     et ne compte pas comme un mot */
+  for (let x = 0; x < w; x++) { let n = 0; for (let y = 0; y < h; y++) n += enc[y * w + x]; if (n >= 0.75 * h) { for (let y = 0; y < h; y++) enc[y * w + x] = 0; col[x] = 0; } }   // [C14 1.4.6] un rang d'encre sur presque toute la ligne est un trait du cahier : il ne relie rien   // 1.4.3 : l'encre est bleue (ou très sombre) ; le quadrillage et les ombres, non
   const seuil = Math.max(2, Math.round((yb - ya) * 0.05)), runs = []; for (let x = 0; x < w; x++) if (col[x] >= seuil) { const a = x; while (x < w && col[x] >= seuil) x++; if (x - a >= 2) runs.push([a, x]); }
   if (!runs.length) return (RC.encre[cle] = null);
   const r = [(x0 + runs[0][0]) / im.w, (x0 + runs[runs.length - 1][1]) / im.w];
@@ -771,8 +777,8 @@ function rcArrets(k) {
 }
 function rcLigneMaj(k, pid, id, fn) { const pgs = (scCopie(k).recopie || {}).pages || {}; [pgs[pid] && pgs[pid].lignes[id], RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]].forEach(l => { if (l) fn(l); }); }
 function rcNoteTexte(k) { const r = scNote(k); return r.ok ? (Math.round(r.n * 10) / 10) + " / " + r.tot : "incomplète"; }
-function rcBandeOuvrir() {
-  if (RC.page) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); const A = rcArrets(k);
+function rcBandeOuvrir(reprise) {
+  if (RC.page && !reprise) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); const A = rcArrets(k);
   if (!A.length) { toast("Pas de faute proposée sur cette copie : charge d’abord le corrigé de l’IA."); return; }
   RC.bd = { k, i: 0, A }; rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
   RC.ui.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(k); if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
@@ -783,7 +789,16 @@ function rcBandeOuvrir() {
     av.innerHTML = "<b>Cette copie a " + anc + " faute" + (anc > 1 ? "s" : "") + " marquée" + (anc > 1 ? "s" : "") + " avec la méthode d’avant.</b> En passant la bande, elles sont mises de côté : gardées, cachées, elles ne comptent plus. Note avant : <b>" + escapeHtml(rcNoteTexte(k)) + "</b>. <button id=\"rcBandeCommencer\" class=\"sc-btn\" title=\"Mettre de côté les fautes d’avant et commencer la bande (Entrée)\">Commencer la bande</button>";
     av.querySelector("#rcBandeCommencer").onclick = rcBandeCommencer;
   } else { av.hidden = true; if (!s.bandeDebut) rcBandeCommencer(); }
-  const i = A.findIndex(a => !(a.l.decisions && a.l.decisions[a.cle])); RC.bd.i = i >= 0 ? i : 0; rcBandeRendre();
+  const i = A.findIndex(a => !(a.l.decisions && a.l.decisions[a.cle])); RC.bd.i = i >= 0 ? i : 0;
+  /* [C14 1.4.7] (Paul 15:41 : « si je commence la bande, que je fais deux mots, je dois retomber à ce même mot ») : l'arrêt où tu étais, pour chaque élève */
+  const ba = (scCopie(k).recopie || {}).bandeArret;
+  if (ba && ba.fin) RC.bd.i = A.length; else if (ba) { let j = A.findIndex(a => a.id === ba.id && a.cle === ba.cle); if (j < 0) j = A.findIndex(a => a.id === ba.id); if (j >= 0) RC.bd.i = j; }
+  rcBookmark(); rcBandeRendre();
+}
+function rcBandeMemoriser() {
+  const B = RC.bd; if (!B || B.attente) return; const rec = scCopie(B.k).recopie; if (!rec) return; const a = B.A[B.i];
+  const v = a ? { id: a.id, cle: a.cle } : { fin: true };
+  if (JSON.stringify(rec.bandeArret || null) !== JSON.stringify(v)) { rec.bandeArret = v; saveState(); }
 }
 function rcBandeCommencer() {
   const k = RC.bd.k, s = scCopie(k); s.bandeDebut = s.bandeDebut || { le: new Date().toISOString(), noteAvant: rcNoteTexte(k) };
@@ -791,7 +806,7 @@ function rcBandeCommencer() {
   Object.values(s.marques).filter(m => m.forme === "faute" && !m.bande).forEach(m => { s.marquesAnciennes[m.id] = m; delete s.marques[m.id]; });
   scNumeroter(k); saveState(); RC.bd.attente = false; RC.ui.querySelector("#rcBandeAvis").hidden = true; rcBandeRendre();
 }
-function rcBandeFermer(seul) { RC.bd = null; if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; } if (seul) return; rcActualiser(); rcSelectionner(RC.ligne, true, true); }
+function rcBandeFermer(seul) { RC.bd = null; if (!seul) rcBookmark(); if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; } if (seul) return; rcActualiser(); rcSelectionner(RC.ligne, true, true); }
 function rcBandeDecider(v) {
   const B = RC.bd, a = B.A[B.i]; if (!a) return; const s = scCopie(B.k), deja = a.l.marquesBande && a.l.marquesBande[a.cle];
   if (v === "o" && !(deja && s.marques[deja])) {
@@ -804,7 +819,7 @@ function rcBandeDecider(v) {
   saveState(); B.i = Math.min(B.A.length, B.i + 1); B.note = ""; rcBandeRendre();
 }
 function rcBandeRendre() {
-  const B = RC.bd, e = RC.ui; if (!B) return; const a = B.A[B.i], s = scCopie(B.k);
+  const B = RC.bd, e = RC.ui; if (!B) return; const a = B.A[B.i], s = scCopie(B.k); rcBandeMemoriser();
   const liste = e.querySelector("#rcBandeListe");
   liste.innerHTML = B.A.map((x, i) => { const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (i === B.i ? "on" : "") + '" data-i="' + i + '" style="border-left-color:' + rcStyleFaute(x.g).couleur + (i === B.i ? ";background:" + rcStyleFaute(x.g).fond : "") + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
   liste.querySelectorAll("li").forEach(li => li.onclick = () => { B.i = +li.dataset.i; rcBandeRendre(); });

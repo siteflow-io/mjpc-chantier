@@ -1241,3 +1241,24 @@ MEMO
 
 31/10/2026 10:06
 MEMO
+
+## Tour 56 — 31/10/2026 10:14 → 31/10/2026 10:14
+
+**Paul :** ok ça me va
+
+**Fait.** Registre ⑪ (production) : décisions 182, 183, 186, 187 et la mesure du tour 54.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 189 ; 53 ; 45 ; 36 ; épouser la fin de l'encre (152).
+
+188. Noté au registre. Prochaine étape avant de coder : la consigne à l'IA, que tu dois valider (point 182). La voici, telle qu'elle partirait dans le fichier :
+
+« Tu reçois des rédactions d'élèves de 3e, recopiées ligne par ligne par leur professeur, fautes comprises. Pour chaque ligne, rends la même ligne corrigée : orthographe, accords, conjugaison, ponctuation, majuscules. Corrige mot pour mot : ne reformule pas, ne change pas l'ordre des mots, n'ajoute ni ne retire aucun mot, sauf si la grammaire l'exige (un mot manquant, un mot en trop). Ne touche pas au style ni au vocabulaire quand ils ne sont pas fautifs. Garde exactement les mêmes copies, pages et lignes, dans le même ordre ; une ligne vide reste vide ; un mot coupé en fin de ligne reste coupé au même endroit. Un mot entre crochets [comme ceci] a été barré par l'élève : laisse-le tel quel. Les guillemets restent « français ». Rends uniquement le fichier, avec la même structure, sans aucun commentaire. »
+
+189. Tu la valides telle quelle, ou tu la changes ?
+
+À tester : rien de neuf.
+
+31/10/2026 10:14
+MEMO

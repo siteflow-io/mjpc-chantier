@@ -858,3 +858,33 @@ Le contrôle automatique a refusé cette mise à jour : l’outil renvoie le reg
 
 31/10/2026 00:11
 MEMO
+
+## Tour 13 — 31/10/2026 04:17 (heure de Paris)
+
+**Paul :**
+
+Oui pour l'ajout.
+
+**GPT — message intermédiaire :**
+
+À jouer : rien · en cours : ajout exact au registre · ouvert : 53 ; 45 ; 36.
+
+132. J’applique l’ajout autorisé, puis je vérifie que tout le contenu précédent du registre reste inchangé.
+
+À tester : rien pour toi.
+MEMO
+
+**Faits.** Accord explicite sur l'ajout technique exact proposé en C15 131, et non sur 53 ou une promotion. Prompt C15 relu, blob 7a4e14ee6c8170881a80da4d2bb4d59ae1d089a2 inchangé. Note préparée relue sur c15-recopie, blob 329b8be1d5ec26762f39ede74bc5dc79b6c9bfb0 ; son passage après « Texte exact à ajouter » compte exactement 1 319 caractères, espace initial conservé, seule la fin de fichier exclue. Registre avant modification inchangé depuis la préparation : blob c64e47283e16d549d374bd33c020c1bc23f4468b, 806 985 caractères. Ajout à la fin du paragraphe « RÉDACTION SUR LES SCANS — LES DETTES DU PREMIER FLUX », sans retirer ni réécrire son contenu. La suppression de la seule insertion redonne exactement le registre précédent. L'outil update_file applique cet ajout, autorisé par le présent message : commit 7dbf1f7a14cecbb19c3ed37307291517269a31c8, blob b358dfcda2336e57f50b3e46cd5aa451247b1cdf, 808 304 caractères. Le fichier complet relu est identique au contenu préparé ; les 806 985 caractères précédents restent identiques. Aucun autre outil de modification du registre n'a été employé. Aucun code de l'app changé ; pas de nouveau banc nécessaire pour cette seule mise à jour documentaire.
+
+La note du sas, le rapport de livraison et la fin du mandat portent l'application de l'ajout et lèvent l'attente d'autorisation. Les pièces du code et les captures ne changent pas. Le transcript est complété sur main et sur c15-recopie. Le premier message de ce tour ne portait pas d'heure : il reste transcrit sans correction ; première horloge lue à 04:16. Aucun « promeus » reçu.
+
+**GPT — réponse finale :**
+
+À jouer : tester la recopie · en cours : ajout terminé · ouvert : 53 ; 45 ; 36.
+
+133. L’ajout exact est appliqué au [registre]([lien dans la conversation]) : **1 319 caractères ajoutés**, tout le contenu précédent conservé à l’identique. Relecture vérifiée.
+
+À tester : rien pour cet ajout.
+
+31/10/2026 04:17
+MEMO

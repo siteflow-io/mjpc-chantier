@@ -117,4 +117,6 @@ La promotion exige le « promeus » de Paul sur une livraison présente et audit
 
 ## Registre après la livraison C15
 
-La note de ⑪ sur cette livraison n'a pas été appliquée en production : le contrôle automatique a refusé la réécriture du registre public complet à cause de son historique potentiellement sensible. La note technique exacte est préparée sur la branche `c15-recopie`, `MANDATS/REDACTION-UNIVERSELLE/NOTE-REGISTRE-C15-RECOPIE-V1.md` ; elle attend l'autorisation de Paul sur cet ajout précis. Cette attente ne remet pas en cause le dépôt de la candidate, le banc 67/0 et les captures regardées. Aucun contournement, aucune promotion.
+**Ajout appliqué le 31/10/2026 04:17 (heure de Paris), sur « Oui pour l'ajout. » de Paul.** Les 1 319 caractères préparés ont été ajoutés au registre public, commit `7dbf1f7a14cecbb19c3ed37307291517269a31c8`, blob `b358dfcda2336e57f50b3e46cd5aa451247b1cdf`. Relecture intégrale identique au contenu autorisé ; les 806 985 caractères précédents sont conservés à l'identique. Aucun autre contenu du registre n'est modifié.
+
+La note exacte et son application sont conservées sur la branche `c15-recopie`, `MANDATS/REDACTION-UNIVERSELLE/NOTE-REGISTRE-C15-RECOPIE-V1.md`. L'attente d'autorisation de cet ajout est levée. Le code livré, le banc 67/0 et les captures ne changent pas. ⑪ reste ouverte pour la suite, sans promotion.

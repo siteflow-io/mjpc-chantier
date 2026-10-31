@@ -59,6 +59,8 @@ La première image est l'écran entier de l'aperçu direct, 1363 × 936. Les cin
 
 ⑪ reste ouverte pour la suite. Avant toute promotion : 59 entier (avancement de la tuile, remise à zéro d'une copie et page restée ouverte, mots vus par l'élève validés), comparaison privée des vraies copies sur le même instantané en lecture seule, banc complet, audit et mot « promeus » de Paul. Le fichier de production reste la 1.2.3-RU.
 
-## Registre — mise à jour en attente
+## Registre — mise à jour appliquée
 
-La note de livraison pour ⑪ n'a pas été appliquée au registre de production. Le contrôle automatique a refusé la réécriture du fichier public complet, en raison de son historique potentiellement sensible ; aucune autre voie n'a été essayée. [L'ajout technique exact préparé](NOTE-REGISTRE-C15-RECOPIE-V1.md) ajoute 1 319 caractères et conserve les 806 985 caractères existants. L'autorisation explicite sur cet ajout reste à recueillir. La livraison de la recopie au sas, ses tests et ses preuves sont terminés.
+**Ajout appliqué le 31/10/2026 04:17 (heure de Paris), sur « Oui pour l'ajout. » de Paul.** Les 1 319 caractères préparés ont été ajoutés au registre public, commit `7dbf1f7a14cecbb19c3ed37307291517269a31c8`, blob `b358dfcda2336e57f50b3e46cd5aa451247b1cdf`. Relecture intégrale identique au contenu autorisé ; les 806 985 caractères précédents sont conservés à l'identique. Aucun autre contenu du registre n'est modifié.
+
+[L'ajout exact conservé au sas](NOTE-REGISTRE-C15-RECOPIE-V1.md) garde le texte autorisé et la preuve de son application. La candidate, ses sources, son banc et ses captures restent ceux de cette livraison.

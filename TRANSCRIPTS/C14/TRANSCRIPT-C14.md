@@ -1455,3 +1455,20 @@ MEMO
 
 31/10/2026 12:28
 MEMO
+
+## Tour 65 — 31/10/2026 13:09 → 31/10/2026 13:11
+
+**Paul :** Promeus.
+
+**Fait.** 1.4.2 copiée au sas (`SAUVEGARDES/redaction-1.4.2-RU-avant-1.4.3-2026-10-31.html`). Production : commit `9693f28`, blob `84e61ab7dca2`, md5 `ef85d8900be86cdc7257d4f019e300e1`, 619 216 o ; en ligne bit à bit à la 5e lecture. Docs de suivi : journal, registre, point de retour, où trouver quoi (`&v=1.4.3-RU`).
+
+**Claude :**
+
+À jouer : les tests ci-dessous · en cours : rien · ouvert : 53 ; 45 ; 36 ; le mot par mot ⇧R (196).
+
+215. La 1.4.3 est en ligne, vérifiée à l'octet près : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.3-RU. Recharge la page de l'app.
+
+À tester : dans la bande d'une copie, un mot manquant : le ∧ est dans le blanc entre deux mots ; glisse un cadre à la souris, puis ← → : il bouge et reste là ; sur une faute de ta frappe, clic droit sur le cadre : la faute disparaît et ta ligne prend le bon mot ; Ctrl + Z : elle revient ; la carte dit le type de faute.
+
+31/10/2026 13:11
+MEMO

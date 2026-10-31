@@ -1757,7 +1757,7 @@ MEMO
 
 259. La hauteur du cadre : les traits verticaux du cahier ne relient plus le mot au haut et au bas de la bande. Sur le banc, avec ces traits et la queue d'une lettre de la ligne du dessus, le cadre s'arrête au haut des lettres du mot. Sur tes photos, c'est ton test qui le dira.
 
-260. La bande se rouvre à l'arrêt où tu étais, pour chaque élève : après l'avoir fermée, après être passé à un autre élève et revenu, et après un rechargement de la page (la bande se rouvre seule, au même mot). Tes décisions ne changent pas. Après un rechargement, rien n'est réécrit tant que tu ne fais rien.
+260. La bande se rouvre à l'arrêt où tu étais, pour chaque élève : après l'avoir fermée, après être passé à un autre élève et revenu, et après un rechargement de la page (la bande se rouvre seule, au même mot). Tes décisions ne changent pas. Après un rechargement, rien ne devrait être réécrit tant que tu ne fais rien : c'est ainsi que je l'ai codé, mais je ne l'ai mesuré sur le vrai site que bande fermée.
 
 261. Sur le vrai site, en lecture seule, rien ne change à l'ouverture ; banc 117/0. La dette ② (tes mots, 234) est toujours ouverte. Après la 1.4.7 : la bande en continu (257), puis le type donné par l'IA (240).
 

@@ -129,7 +129,7 @@ function rcInterface() {
     '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo"></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
     '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
     '<textarea id="rcIATexte" spellcheck="false" placeholder="Colle ici le retour de l’IA"></textarea>',
-    '<div class="rc-ia-b"><label class="sc-btn" title="Choisir le fichier rendu par l’IA">Choisir un fichier<input id="rcIAFichier" type="file" accept=".json,.txt,application/json,text/plain" hidden></label><button id="rcIAValider" class="sc-btn" title="Vérifier toutes les lignes, puis enregistrer le corrigé">Vérifier et charger</button><button id="rcIAFermer" class="sc-btn" title="Fermer sans rien changer (Échap)">Fermer</button></div><p id="rcIAMessage" role="status"></p></div></div>'
+    '<div class="rc-ia-b"><label class="sc-btn" title="Choisir le fichier rendu par l’IA">Choisir un fichier<input id="rcIAFichier" type="file" accept=".json,.txt,application/json,text/plain" hidden></label><button id="rcIAValider" class="sc-btn" title="Vérifier toutes les lignes, puis enregistrer le corrigé">Vérifier et charger</button><button id="rcIAFermer" class="sc-btn" title="Fermer sans rien changer (Échap)">Fermer</button><button id="rcIAEffacer" class="sc-btn rc-ia-effacer" title="Effacer le corrigé de l’IA de toute la classe, pour refaire l’import : ta recopie, tes décisions de bande et tes marques ne bougent pas. Une confirmation est demandée ; tout passe d’abord par la corbeille MJPC et un export.">🗑 Effacer les corrigés chargés</button></div><p id="rcIAMessage" role="status"></p><div id="rcIAEffacerQ" class="rc-ia-q" hidden></div></div></div>'
   ].join("");
   document.body.appendChild(e); RC.ui = e;
   e.querySelector("#rcFermer").onclick = () => rcFermer();
@@ -149,6 +149,7 @@ function rcInterface() {
   e.querySelector("#rcBandeRetour").onclick = () => rcBandeFermer();
   e.querySelector("#rcImportIA").onclick = rcIAOuvrir;
   e.querySelector("#rcIAFermer").onclick = rcIAFermer;
+  e.querySelector("#rcIAEffacer").onclick = rcIAEffacerDemander;
   e.querySelector("#rcIAValider").onclick = () => rcIACharger(e.querySelector("#rcIATexte").value);
   e.querySelector("#rcIAFichier").onchange = ev => { const f = ev.target.files && ev.target.files[0]; if (!f) return; f.text().then(t => { e.querySelector("#rcIATexte").value = t; rcIACharger(t); }); ev.target.value = ""; };
   e.querySelector("#rcCharger").onclick = () => document.querySelector("#scanEcran input[type=file]").click();
@@ -563,7 +564,35 @@ function rcExportIA() {
   rcEtatIA(); toast("Exporté : " + copies.length + " copie" + (copies.length > 1 ? "s" : "") + (aFaire.length > copies.length ? " ; encore " + (aFaire.length - copies.length) + " après celles-ci, une fois leur corrigé chargé" : "") + ".");
 }
 function rcIAOuvrir() { if (RC.page) rcGarder(); RC.iaOuvert = true; const m = RC.ui.querySelector("#rcIA"); m.hidden = false; RC.ui.querySelector("#rcIAMessage").textContent = ""; RC.ui.querySelector("#rcIATexte").focus(); }
-function rcIAFermer() { RC.iaOuvert = false; RC.ui.querySelector("#rcIA").hidden = true; }
+function rcIAFermer() { RC.iaOuvert = false; RC.ui.querySelector("#rcIA").hidden = true; const q = RC.ui.querySelector("#rcIAEffacerQ"); if (q) q.hidden = true; }
+/* [C14 1.4.9] (Paul 19:27 : « un bouton de suppression des corrections déjà faites […] attention que le bouton ne supprime rien de ma recopie ») :
+   n'efface que ce que l'IA a rendu (corrige, corrigeDe, corrigeLe, et les types s'il y en a), sur toute la classe. Ne touche jamais au texte recopié,
+   aux lignes et à leurs places, aux lignes retirées, à la marge, ni aux décisions de la bande, aux marques et aux cadres visés. Export puis corbeille d'abord. */
+const RC_CHAMPS_IA = ["corrige", "corrigeDe", "corrigeLe", "types", "typesDe"];
+function rcIACorriges() { const L = []; SC.copies.forEach(k => rcLignesEcrites(k).forEach(x => { if (RC_CHAMPS_IA.some(f => x.l[f] !== undefined)) L.push(x); })); return L; }
+function rcIAEffacerDemander() {
+  const L = rcIACorriges(), q = RC.ui.querySelector("#rcIAEffacerQ"), n = new Set(L.map(x => x.k)).size;
+  if (!L.length) { RC.ui.querySelector("#rcIAMessage").textContent = "Aucun corrigé de l’IA n’est chargé : il n’y a rien à effacer."; return; }
+  q.hidden = false;
+  q.innerHTML = "<b>Effacer le corrigé de l’IA de " + L.length + " ligne" + (L.length > 1 ? "s" : "") + ", sur " + n + " copie" + (n > 1 ? "s" : "") + " ?</b> Ta recopie ne bouge pas : ni le texte, ni les lignes, ni leurs places, ni la marge. Tes décisions de bande et tes marques restent. Tout est d’abord rangé dans la corbeille MJPC (un an) et un export est téléchargé. <button id=\"rcIAEffacerOui\" class=\"sc-btn\" title=\"Ranger les corrigés dans la corbeille, télécharger l’export, puis les effacer\">Effacer</button> <button id=\"rcIAEffacerNon\" class=\"sc-btn\" title=\"Ne rien effacer\">Annuler</button>";
+  q.querySelector("#rcIAEffacerNon").onclick = () => { q.hidden = true; };
+  q.querySelector("#rcIAEffacerOui").onclick = rcIAEffacer;
+}
+function rcIAEffacer() {
+  const q = RC.ui.querySelector("#rcIAEffacerQ"), msg = RC.ui.querySelector("#rcIAMessage"), L = rcIACorriges(); q.hidden = true; if (!L.length) return;
+  const data = {}; L.forEach(x => { const o = {}; RC_CHAMPS_IA.forEach(f => { if (x.l[f] !== undefined) o[f] = x.l[f]; }); ((data[x.k] = data[x.k] || {})[x.pid] = data[x.k][x.pid] || {})[x.id] = o; });
+  const chemin = ruCheminCopies().join("/") + "/*/scan/recopie", jour = new Date().toISOString().slice(0, 10);
+  ruTelecharger({ _meta: { source: chemin, exportedAt: new Date().toISOString(), exportedBy: "effacement_corriges_ia", version: 1 }, data: scCles(data, true) }, "corriges-ia_" + RU.id + "_" + jour + ".json");
+  msg.textContent = "Rangement dans la corbeille…"; msg.className = "rc-ia-msg";
+  ruCorbeille("effacement-corriges-ia", chemin, scCles(data, true), { redaction: RU.id, lignes: L.length }).then(i => {
+    if (i.etat !== MJPC_ISSUE.ACCEPTEE) { msg.textContent = "Rien n’a changé : la corbeille MJPC n’a pas répondu. L’export est téléchargé."; msg.className = "rc-ia-msg ko"; return; }
+    if (RC.bd) rcBandeFermer(true);
+    L.forEach(x => rcLigneMaj(x.k, x.pid, x.id, l => { RC_CHAMPS_IA.forEach(f => { delete l[f]; }); }));
+    saveState(); rcEtatIA(); if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; }
+    const n = new Set(L.map(x => x.k)).size;
+    msg.textContent = "Effacé : le corrigé de l’IA de " + L.length + " ligne" + (L.length > 1 ? "s" : "") + " sur " + n + " copie" + (n > 1 ? "s" : "") + ". Ta recopie n’a pas bougé. Tu peux refaire l’export pour l’IA."; msg.className = "rc-ia-msg ok";
+  });
+}
 function rcListeIA(v) { return Array.isArray(v) ? v : v && typeof v === "object" ? Object.values(v) : []; }
 function rcIALire(txt) {
   const t = String(txt || ""), blocs = []; let prof = 0, deb = -1, chaine = false, ech = false;

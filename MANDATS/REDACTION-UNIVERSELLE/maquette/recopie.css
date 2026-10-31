@@ -87,3 +87,6 @@
 .rc-bande-haut b{font:600 16px Georgia,serif;color:#6b1a2a}
 #rcBandePhoto{cursor:ew-resize}
 .rc-bande-note{display:block;width:100%;font-style:normal;color:#2c5a1e;background:#e3f2d9;padding:4px 8px;border-radius:6px}
+
+.rc-ia-effacer{margin-left:auto;color:#8a2a1f;border-color:#d9a79f}
+.rc-ia-q{margin-top:8px;padding:8px 10px;border:1px solid #d9a79f;border-radius:6px;background:#fdf1ef;font-size:14px;line-height:1.45}

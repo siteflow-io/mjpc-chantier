@@ -8510,7 +8510,7 @@ function rcIAFermer() { RC.iaOuvert = false; RC.ui.querySelector("#rcIA").hidden
    (corrige, corrigeDe, corrigeLe, types, typesDe) et tout ce qui vient de la bande (décisions, cadres visés, marques posées par la bande, l'arrêt où
    on en était, le début de la bande). Ne touche jamais au texte recopié, aux lignes et à leurs places, aux lignes retirées, à la marge, ni aux marques
    d'avant mises de côté, ni aux autres marques. Export puis corbeille d'abord ; si la corbeille ne répond pas, rien n'est effacé. */
-const RC_CHAMPS_IA = ["corrige", "corrigeDe", "corrigeLe", "corrigeMarque", "types", "typesDe", "envoiIA"], RC_CHAMPS_BANDE = ["decisions", "marquesBande", "places"];
+const RC_CHAMPS_IA = ["corrige", "corrigeDe", "corrigeLe", "corrigeMarque", "types", "typesDe", "envoiIA"], RC_CHAMPS_BANDE = ["decisions", "marquesBande", "places", "placesApp"];
 function rcIANettoyage() {
   const r = { lignes: [], copies: new Set(), corriges: 0, decisions: 0, places: 0, marques: 0, data: {} };
   SC.copies.forEach(k => { const s = scCopie(k), rec = s.recopie || {}, o = {};
@@ -8954,7 +8954,7 @@ function rcRetroactif(k, pid, id) {
   const re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; else { const m = /^mot-(\d+)$/.exec(x); if (m && mm[+m[1]] >= 0) r["mot-" + mm[+m[1]]] = o[x]; } }); return r; };
   const s = scCopie(k), mb = re(L0.marquesBande), gardees = new Set(Object.values(mb)), typesAJour = L0.types && L0.typesDe === corr, types = typesAJour ? re(L0.types) : null;
   Object.values(L0.marquesBande || {}).forEach(mid => { if (!gardees.has(mid) && s.marques[mid]) scEffacer(mid); });
-  rcLigneMaj(k, pid, id, l => { l.corrigeDe = nouveau; l.decisions = re(l.decisions); l.marquesBande = mb; l.places = re(l.places); if (typesAJour) l.types = types; l.retoucheeLe = new Date().toISOString(); });
+  rcLigneMaj(k, pid, id, l => { l.corrigeDe = nouveau; l.decisions = re(l.decisions); l.marquesBande = mb; l.places = re(l.places); if (l.placesApp) l.placesApp = re(l.placesApp); if (typesAJour) l.types = types; l.retoucheeLe = new Date().toISOString(); });
   const Lf = (RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]) || pg.lignes[id], P = rcPosMots(nouveau);
   Object.keys(mb).forEach(c => { const m = s.marques[mb[c]]; if (!m) return; const mo = /^mot-(\d+)$/.exec(c), g = mo ? (w => ({ de: w, a: w + 1, de2: w, a2: w + 1, eleve: nouveau.slice(P[w][0], P[w][1]), corrige: nouveau.slice(P[w][0], P[w][1]) }))(+mo[1]) : nouv.find(x => rcCle(x) === c);
     if (!g || (mo && !P[+mo[1]])) return; const q = rcPlaceSeg({ k, pid, id, l: Lf, g, cle: c }); Object.assign(m, { x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, modifieLe: new Date().toISOString() }); if (m.bande) { m.bande.cle = c; m.bande.eleve = g.eleve; } });
@@ -9099,7 +9099,9 @@ function rcBandePhoto(a, anime) {
 }
 function rcBandeGlisser(du) {
   const B = RC.bd, a = B && rcBandeCible(); if (!a || B.attente) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a), x0 = rcBorne(q.x0 + du, 0, 0.99), x1 = rcBorne(q.x1 + du, 0.01, 1);
-  rcLigneMaj(B.k, a.pid, a.id, l => { l.places = Object.assign({}, l.places, { [a.cle]: { x0, x1 } }); });
+  /* [C14 1.4.12] (C14 322, acquis) : la première fois que tu glisses un cadre, l'app garde aussi où elle l'avait posé ; la mesure de sa justesse se fait sur ton travail */
+  const app = !(a.l.places && a.l.places[a.cle]) && !(a.l.placesApp && a.l.placesApp[a.cle]) ? (({ x0, x1, y0, y1 }) => ({ x0, x1, y0, y1 }))(rcPlaceSeg(a)) : null;
+  rcLigneMaj(B.k, a.pid, a.id, l => { l.places = Object.assign({}, l.places, { [a.cle]: { x0, x1 } }); if (app) l.placesApp = Object.assign({}, l.placesApp, { [a.cle]: app }); });
   const mk = a.l.marquesBande && a.l.marquesBande[a.cle], m = mk && scCopie(B.k).marques[mk]; if (m) { const r = rcPlaceSeg(a); Object.assign(m, { x0: r.x0, x1: r.x1, y0: r.y0, y1: r.y1, modifieLe: new Date().toISOString() }); }
   rcBandePhoto(a, false);
 }

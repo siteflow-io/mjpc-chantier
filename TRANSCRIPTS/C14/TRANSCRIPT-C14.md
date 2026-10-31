@@ -1710,3 +1710,24 @@ MEMO
 
 31/10/2026 15:30
 MEMO
+
+## Tour 75 — 31/10/2026 15:33 → 31/10/2026 15:38
+
+**Paul :** 3. la poignée qui permet de zoomer la zone en haut à droite déplace en hauteur les lignes vertes dans la copie!!! celles ci ne bougent que si c'est moi qui les bougent avec les poignées, JAMAIS toutes seules, quel que soit le zoom etc. elles sont accrochées à la copie physique. je pense donc qu'il vaut mieux un zoom très cranté de la seule zone en haut, c'est tout. ça coute moins en codage, non? mesure les possibilités et le cout en codage.
+
+**Fait.** Lu `rcMettreEnPage` : la photo et la feuille prennent la même hauteur, calculée sur une demi-largeur ; avec la poignée, la photo rétrécit en largeur mais garde cette hauteur, l'image s'étire (`object-fit: fill`) tandis que le dessin des lignes garde ses proportions (`viewBox` fixe) : les lignes vertes s'affichent décalées en hauteur par rapport à l'écriture. Défaut d'affichage seulement : les places des lignes sont lues sur la photo, pas sur l'écran. Vérifié au hub, lecture seule : depuis la mise en ligne de 15:27, une seule page a changé (une page neuve, 33 lignes, 20 écrites), aucune ligne recalée à la main, donc aucune place enregistrée pendant le décalage. Mesuré les deux possibilités et leur coût dans le code actuel.
+
+**Claude :**
+
+À jouer : 255 (ton choix) · en cours : rien · ouvert : 220 ; 234 ; 255.
+
+253. Tu as raison, et c'est ma faute : la poignée rétrécit la photo en largeur mais pas en hauteur, l'image s'étire et les lignes vertes ne s'étirent pas avec elle. Elles s'affichent donc décalées. C'est l'affichage seulement : leurs places sont accrochées à la photo et ne bougent pas. Vérifié au site : depuis 15:27, aucune ligne n'a été recalée à la main, donc rien de faux n'est enregistré. En attendant, n'utilise pas la poignée ; un double-clic dessus remet tout comme avant.
+
+254. Les possibilités et leur coût. Un : ton zoom cranté de la seule ligne en grand, et la poignée retirée. Au cran ×1, la ligne reste alignée sur la feuille, comme aujourd'hui. Au-dessus (×1,5, ×2, ×3), elle est plus large que la feuille : elle ne peut plus être alignée, donc elle suit l'endroit où tu tapes, centrée sur le mot en cours (calculé comme la place des fautes dans la bande, d'après les lettres déjà tapées). Les lignes vertes et la photo ne bougent jamais. Coût : petit, une version de la taille de la 1.4.6, avec deux vérifications sur le banc (les lignes ne bougent à aucun cran ; la ligne en grand grandit et suit la frappe). Deux : le même zoom sans le suivi ; c'est toi qui fais défiler la ligne en grand à la main. Un peu moins cher, mais un geste de plus à chaque ligne : je le déconseille. Trois : garder la poignée et la réparer ; la photo et la feuille n'auraient plus la même hauteur et ne défileraient plus face à face. Plus cher, et contraire à ta règle : je le déconseille.
+
+255. Je fais le un, avec les crans ×1, ×1,5, ×2, ×3, deux boutons − et + à côté de la ligne en grand, et ton cran gardé dans ce navigateur ?
+
+À tester : rien de neuf en ligne.
+
+31/10/2026 15:38
+MEMO

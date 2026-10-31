@@ -1792,3 +1792,24 @@ MEMO
 
 31/10/2026 15:52
 MEMO
+
+## Tour 78 — 31/10/2026 15:56 → 31/10/2026 15:59
+
+**Paul :** [capture : « Charger le corrigé de l'IA », « Chargé : 4 copies, 117 lignes, 223 fautes proposées par l'IA »] pourquoi que 4 copies? J'ai terminé ma recopie complète, et j'ai mon json d'injection avec les corrections.
+
+**Fait.** Relu `rcExportIA` : l'export prend les copies dont le corrigé manque ou n'est plus à jour (une ligne retapée après le corrigé), 4 à la fois (`RC_PAQUET_IA`, 1.4.2, après le retour coupé de 10:57). Au hub, lecture seule, dossier privé, à 15:57 : 28 copies recopiées (869 lignes écrites), 1 sans recopie ; 23 ont leur corrigé à jour, 5 non.
+
+**Claude :**
+
+À jouer : deux exports de plus · en cours : rien · ouvert : 220 ; 234.
+
+264. « Exporter pour l'IA » envoie 4 copies à la fois. C'est voulu depuis la 1.4.2 : à 10:57, un retour d'IA trop long arrivait coupé, et « Vérifier et charger » ne faisait rien. Chaque export prend les copies dont le corrigé manque ou n'est plus à jour (une ligne retapée après le corrigé), donc tu ne renvoies jamais deux fois la même chose.
+
+265. Au site, à 15:57 : 28 copies recopiées, dont 23 avec leur corrigé à jour ; il en reste 5. Refais « Exporter pour l'IA » : 4 copies, puis encore une fois : la dernière. Quand tout est fait, l'export te dit « Toutes tes copies recopiées ont leur corrigé ».
+
+266. Ces corrigés n'ont pas encore le type de chaque faute (240 n'est pas codé). Ce n'est pas grave : le type viendra ensuite par le même bouton, l'IA ne rendant que les types, sans rien recorriger. Continue donc tes deux exports maintenant.
+
+À tester : les deux exports qui restent ; à la fin, « Exporter pour l'IA » dit que toutes tes copies ont leur corrigé.
+
+31/10/2026 15:59
+MEMO

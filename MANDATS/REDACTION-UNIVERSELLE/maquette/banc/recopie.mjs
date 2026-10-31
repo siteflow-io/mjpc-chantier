@@ -220,13 +220,19 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(faux)); await pg.click("#rcIAValider"); await att(150);
   const refus = await pg.locator("#rcIAMessage").textContent(), rien = await pg.evaluate(() => SC.copies.every(k => rcLignesEcrites(k).every(x => x.l.corrige === undefined)));
   verif("recopie (1.4.0) : un retour où il manque une ligne est refusé, avec sa raison, et rien ne change (" + refus.slice(0, 90) + ")", /^Rien n’a changé/.test(refus) && /manque/.test(refus) && rien);
+  await pg.locator("#rcIATexte").fill(brut.slice(0, Math.floor(brut.length / 2))); await pg.click("#rcIAValider"); await att(200);
+  const coupe = await pg.locator("#rcIAMessage").textContent(), vis = await pg.evaluate(() => { const r = document.querySelector("#rcIAMessage").getBoundingClientRect(); return r.height > 10 && r.bottom <= innerHeight; });
+  verif("recopie (1.4.2) : un retour de l'IA coupé avant la fin le dit, en clair et bien visible (" + coupe.slice(0, 70) + ")", /coupé/.test(coupe) && vis);
   const bon = JSON.parse(brut), l0 = bon.copies[0].pages[0].lignes[0], l1 = bon.copies[0].pages[0].lignes[1] || bon.copies[0].pages[0].lignes[0];
   l0.texte = l0.texte + " ajouté"; if (l1 !== l0) l1.texte = "Mot " + l1.texte;
+  bon.copies[0].pages = Object.fromEntries(bon.copies[0].pages.map((q, i) => [String(i + 1), q]));
   await pg.locator("#rcIATexte").fill("Voici le fichier corrigé :\n```json\n" + JSON.stringify(bon) + "\n```"); await pg.click("#rcIAValider"); await att(200);
   const ok1 = await pg.locator("#rcIAMessage").textContent(), att1 = l1 !== l0 ? 2 : 1;
   const st = await pg.evaluate(ids => ids.map(id => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.id === id); if (x) return x.l.corrige; } return null; }), [l0.id, l1.id]);
   verif("recopie (1.4.0) : le bon retour, même entouré de texte, est chargé ligne par ligne et compte ses fautes (" + ok1 + ")", /^Chargé/.test(ok1) && ok1.includes(att1 + " faute") && st[0] === l0.texte && st[1] === l1.texte);
   await cap("C14-28-corrige-ia");
+  await pg.click("#rcIAFermer"); await pg.click("#rcExportIA"); await att(150); const tout = await pg.locator("#rcIAEtat").textContent(); await pg.click("#rcImportIA"); await att(100);
+  verif("recopie (1.4.2) : l'export ne reprend que les copies sans corrigé à jour, 4 au plus ; quand tout est fait, il le dit (" + tout + ")", /Toutes tes copies recopiées ont leur corrigé/.test(tout) && ex.copies.length <= 4);
   await att(1500); const auSite = await pg.evaluate(t => { let s = ""; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (/hub/.test(k)) s += localStorage.getItem(k); } return s.includes(JSON.stringify(t).slice(1, -1)) && s.includes('"corrigeLe"'); }, l0.texte);
   verif("recopie (1.4.0) : le corrigé chargé est enregistré au site (faux hub), pas seulement à l'écran", auSite);
   await pg.keyboard.press("Escape"); await att(120);
@@ -248,6 +254,18 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie (1.4.1) : Retour revient à l'arrêt ; N enlève la faute gardée et note le refus", non.n === 0 && non.d === "n");
   await pg.keyboard.press("Escape"); await att(200);
   verif("recopie (1.4.1) : Échap ferme la bande et rend la recopie", await pg.evaluate(() => !RC.bd && RC.ouvert && !document.querySelector("#rcEcran").classList.contains("rc-mode-bande")));
+  // 1.4.2 (Paul 11:01) : le repérage dans l'encre ; un bouton pour revenir ; changer de copie ferme la bande
+  const re2 = JSON.parse(brut); let cibleId = null; re2.copies.forEach(c => c.pages.forEach(q => q.lignes.forEach(l => { if (l.texte === "Deux mots") { l.texte = "Deux mot"; cibleId = l.id; } })));
+  await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(re2)); await pg.click("#rcIAValider"); await att(300); const msg2 = await pg.locator("#rcIAMessage").textContent(); await pg.click("#rcIAFermer");
+  const kC = await pg.evaluate(id => SC.copies.find(k => rcLignesEcrites(k).some(x => x.id === id)), cibleId); await pg.selectOption("#rcCopie", kC); await att(250);
+  await pg.click("#rcBandeOuvrir"); await att(200); if (await pg.locator("#rcBandeCommencer").count() && await pg.locator("#rcBandeCommencer").isVisible()) { await pg.click("#rcBandeCommencer"); await att(150); }
+  const iC = await pg.evaluate(id => RC.bd.A.findIndex(x => x.id === id), cibleId); await pg.click('#rcBandeListe li[data-i="' + iC + '"]'); await att(150);
+  const pl = await pg.evaluate(id => { const a = RC.bd.A.find(x => x.id === id); const q = rcPlaceSeg(a); return { q, x1L: a.l.x1, mot: a.g.eleve }; }, cibleId); await cap("C14-30-bande-dans-l-encre");
+  verif("recopie (1.4.2) : la faute « " + pl.mot + " » se place dans l'encre de la ligne, pas d'une poignée à l'autre (" + msg2.slice(0, 20) + " · encre " + (pl.q.encre || []).map(v => v.toFixed(3)).join("-") + " · mot " + pl.q.x0.toFixed(3) + "-" + pl.q.x1.toFixed(3) + ")", /^Chargé/.test(msg2) && pl.q.encre && pl.q.x0 >= pl.q.encre[0] - 1e-6 && pl.q.x1 <= pl.q.encre[1] + 0.013 && pl.q.x1 < pl.x1L - 0.2 && pl.q.x0 > (pl.q.encre[0] + pl.q.encre[1]) / 2 - 0.02);
+  await pg.click("#rcBandeRetour"); await att(200); const sorti = await pg.evaluate(() => !RC.bd && RC.ouvert && !document.querySelector("#rcEcran").classList.contains("rc-mode-bande"));
+  await pg.click("#rcBandeOuvrir"); await att(200); const autreK = await pg.evaluate(k => SC.copies.find(x => x !== k), kC); await pg.selectOption("#rcCopie", autreK); await att(250);
+  const change = await pg.evaluate(k => !RC.bd && RC.copie === k && !document.querySelector("#rcEcran").classList.contains("rc-mode-bande"), autreK);
+  verif("recopie (1.4.2) : « ← Revenir à la recopie » sort de la bande ; changer de copie ferme la bande et ouvre la recopie de l'autre élève", sorti && change);
   await pg.setViewportSize({ width: 1536, height: 864 }); await pg.click("#rcFermer"); await att(180);
   verif("recopie : fermer rend les quatre passes, les anciennes corrections et leurs gestes", await pg.locator("#scanEcran").isVisible() && !(await pg.locator("#rcEcran").isVisible()) && await pg.locator(".sc-passe").count() === 4);
 }

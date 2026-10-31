@@ -20,7 +20,7 @@ with tempfile.TemporaryDirectory() as td:
     ]:
         (d / name).write_text(json.dumps(value, ensure_ascii=False))
     out = d / "reconstruite.html"
-    env = dict(os.environ, VERSION="1.3.0-RU-C15-2")
+    env = dict(os.environ, VERSION="1.3.1-RU-C15-1")
     env.pop("PROD", None)
     env.pop("CLASSE_REELLE", None)
     subprocess.run([sys.executable, "gen-maquette.py", str(base), str(d), str(out)], cwd=ma, env=env, check=True)

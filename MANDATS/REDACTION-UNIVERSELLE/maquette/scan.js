@@ -179,8 +179,8 @@ function scLignesDemander() {
   scLignesFocus(true); }
 function scLignesFocus(flash) { setTimeout(() => { const e = document.getElementById("scLig"); if (!e) return; e.focus({ preventScroll: false }); e.select(); if (flash) { const b = e.closest(".sc-bloc"); if (b) { b.classList.remove("sc-flash"); void b.offsetWidth; b.classList.add("sc-flash"); } } }, 30); }
 function scLignesAccueil() { if (scLignesBloque()) scLignesFocus(false); }
-function scCase(pt, k) {
-  const s = scCopie(k); const rep = s.rep[pt.id] || {};
+function scCase(pt, k, lecture) {
+  const s = lecture || scCopie(k); const rep = s.rep[pt.id] || {};
   if (pt.calcul) {
     const n = scLignesCopie(k); if (!n) return null; const e = scFautes(k).length;
     const r = pt.calcul === "lignes" ? n / scLong() : e / n;

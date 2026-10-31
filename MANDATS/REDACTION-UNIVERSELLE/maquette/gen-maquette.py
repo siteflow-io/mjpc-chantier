@@ -59,6 +59,15 @@ v = 'function ruReprendre() {   // la reprise exacte (l\'INIT de l\'app d\'origi
 v = 'const sg = JSON.stringify(v); if (RU.sig[k] === sg) return; RU.sig[k] = sg;'; assert H.count(v) == 1; H = H.replace(v, 'const sg = JSON.stringify(scCles(v, true)); if (RU.sig[k] === sg) return; RU.sig[k] = sg;')
 v = 'const v = ruCopie(cp[e]); delete v.nom; state.copies[e] = v;'; assert H.count(v) == 1; H = H.replace(v, 'const v = scCles(ruCopie(cp[e]), false); delete v.nom; state.copies[e] = v;')
 v = 'const v = ruCopie(RU.miroir[k]); delete v.nom; state.copies[k] = v;'; assert H.count(v) == 1; H = H.replace(v, 'const v = scCles(ruCopie(RU.miroir[k]), false); delete v.nom; state.copies[k] = v;')
+# 59a : lire les scans au tableau, avec le même calcul de case et sans écrire une copie.
+v = 'function progressionPct(id) {'; assert H.count(v) == 1
+H = H.replace(v, v + '\n  const av = scAvancement(id); if (av) return av.pct;')
+v = '    const { total, complete } = noteTotale(id);\n    const pct = progressionPct(id);'; assert H.count(v) == 1
+H = H.replace(v, '    const suiviScan = scAvancement(id);\n    const { total, complete } = suiviScan ? { total: 0, complete: false } : noteTotale(id);\n    const pct = progressionPct(id);')
+v = '${pct === 0 ? "Non commencé" : pct === 100 ? "Corrigé" : "En cours"}'; assert H.count(v) == 1
+H = H.replace(v, '${pct === 0 && !suiviScan ? "Non commencé" : pct === 100 ? "Corrigé" : "En cours"}')
+v = 'title="Pourcentage d\'avancement de la correction"'; assert H.count(v) == 1
+H = H.replace(v, 'title="${suiviScan ? escapeAttr(suiviScan.fait + \' rubriques corrigées sur \' + suiviScan.total + \'. Une faute posée commence la correction ; elle ne termine pas seule une rubrique.\') : \'Pourcentage d’avancement de la correction\'}"')
 MQ = '''<div class="mq-reglage" onclick="if(document.getElementById('mqR').style.display==='block'){document.getElementById('mqR').style.display='none'}else{document.getElementById('mqR').style.display='block'}" title="Réglages de la simulation (n'existe pas dans le site).">⚙ Maquette</div>
 <div id="mqR" style="display:none;position:fixed;left:8px;bottom:36px;z-index:999;background:#fdfbf7;border:1px solid #d4b87a;border-radius:9px;padding:10px 12px;max-width:380px;font:13.5px system-ui;box-shadow:0 6px 18px rgba(0,0,0,.2)"><b>Réglages de la simulation</b><p>Le site est simulé par un faux hub gardé dans ce navigateur : une copie de la vraie base, élèves aux noms inventés. Rien ne part au vrai site.</p><button class="sc-btn" onclick="window.__fauxHubRemettre()" title="Effacer tout ce qui a été fait dans la maquette (marques, réponses, pages chargées) et repartir de la base.">Tout remettre à zéro</button></div>
 '''
@@ -80,7 +89,7 @@ ecran = '''
 <div id="scLoupe" class="sc-loupe" hidden></div>
 <div id="scModale" class="sc-modale" onclick="if(event.target===this)scModaleFermer()"><div class="sc-modale-c"></div></div>
 ''' + ('' if PROD else MQ) + '''<style>''' + open('scan.css', encoding='utf8').read() + '\n' + open('recopie.css', encoding='utf8').read() + '''</style>
-<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + '\n' + open('recopie.js', encoding='utf8').read() + ('\n' + open('stickers.js', encoding='utf8').read() if os.environ.get('STICKERS') == '1' and not PROD else '') + '''</script>
+<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + '\n' + open('recopie.js', encoding='utf8').read() + '\n' + open('avancement.js', encoding='utf8').read() + ('\n' + open('stickers.js', encoding='utf8').read() if os.environ.get('STICKERS') == '1' and not PROD else '') + '''</script>
 '''
 i = H.rindex('</body>'); H = H[:i] + ecran + H[i:]
 open(out, 'w', encoding='utf8').write(H)

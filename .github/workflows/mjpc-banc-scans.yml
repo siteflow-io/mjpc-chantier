@@ -3,7 +3,7 @@ name: MJPC - banc complet des scans
 on:
   push:
     branches:
-      - c15-recopie
+      - c15-avancement
     paths:
       - .github/workflows/mjpc-banc-scans.yml
       - MANDATS/REDACTION-UNIVERSELLE/maquette/**
@@ -37,15 +37,17 @@ jobs:
           import pathlib, subprocess
           root = pathlib.Path("MANDATS/REDACTION-UNIVERSELLE/maquette")
           expected = {
-              "scan.js": "c7d8afd385860f6fbc8353499bd944c6c8821cc1",
+              "avancement.js": "e5c2aa4b01dbc4949827235a34b59f170f1307d0",
+              "banc/avancement.mjs": "73cac6dc110330aad9d067ccd5f3efc9d501de86",
+              "scan.js": "e4f8d39d952df6583ed5c96a9ee973fbec9669cd",
               "recopie.js": "864a0b134cfc8ed98d3dc948622d88f4ebb3eaa2",
               "recopie.css": "c9080da44e371cf39d005ddeb7f04005a97a9502",
-              "gen-maquette.py": "dfff0b7972cab6cd8432b59335edb72bf6dbc391",
-              "banc/banc.mjs": "fce59d71e70eb856929c9b22dce7a6554f73ae4c",
+              "gen-maquette.py": "0c9a78b7d8daa1672c4eb72a5b7a81d00fd83478",
+              "banc/banc.mjs": "85ac9b8ad893b2a2dea8e84965abd1adc520a2d6",
               "banc/recopie.mjs": "3ecbc1294bf8bf7f02749862edd91cee34c7692a",
               "banc/fixture-recopie.py": "b96a0b58aa121522fa75599c0ffd521c55a4f757",
-              "banc/verifier-construction.py": "03ebbded1d86ceb842b2dcb365cfba2d92c6ce26",
-              "C15-maquette-recopie-v1-essai2.html": "81355436fd26d4fb39b62feba92ebe599e58fe29",
+              "banc/verifier-construction.py": "1b957747153b8c767df2c409317785a17b90f45d",
+              "C15-maquette-avancement-v1-essai1.html": "b5f6e2b9c73f14fed644df0e942a7c5eb3d656a3",
               "banc/recopie-lignes-essai.png": "238ee23b628f28751a3550be91d3c570f603bc58",
               "T399-maquette-redaction-scans-v14.html": "c7fb23f32a9280c528f5b1f91229cd945d9f0102",
               "paquet-essai.pdf": "9b4ec27e91a0e6586300945759fb1fa3835a6827",
@@ -63,9 +65,10 @@ jobs:
           PY
           node --version
           npm --version
+          node --check MANDATS/REDACTION-UNIVERSELLE/maquette/avancement.js
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/recopie.js
           node --check MANDATS/REDACTION-UNIVERSELLE/maquette/banc/banc.mjs
-          python3 MANDATS/REDACTION-UNIVERSELLE/maquette/banc/verifier-construction.py C15-maquette-recopie-v1-essai2.html
+          python3 MANDATS/REDACTION-UNIVERSELLE/maquette/banc/verifier-construction.py C15-maquette-avancement-v1-essai1.html
 
       - name: Installer les dependances de test epinglees
         shell: bash
@@ -85,7 +88,7 @@ jobs:
           export NODE_PATH="$DEPS_DIR/node_modules"
           export PDFJS="$DEPS_DIR/node_modules/pdfjs-dist/build/"
           set +e
-          node "$BANC_DIR/banc/banc.mjs" C15-maquette-recopie-v1-essai2.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
+          node "$BANC_DIR/banc/banc.mjs" C15-maquette-avancement-v1-essai1.html "$RUNNER_TEMP/mjpc-banc-captures" 2>&1 | tee "$RUNNER_TEMP/mjpc-banc.log"
           issue=$?
           set -e
           python3 - <<'PY'

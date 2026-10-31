@@ -810,3 +810,22 @@ MEMO
 
 31/10/2026 06:46
 MEMO
+
+## Tour 34 — 31/10/2026 06:47 → 31/10/2026 06:49
+
+**Paul :** promeus
+
+**Fait.** 1.2.3 copiée au sas (`SAUVEGARDES/redaction-1.2.3-RU-avant-1.3.0-2026-10-31.html`). Production : commit `380d5c9`, blob `4d43bcd4f6d6`, md5 `57d26691c787e78cd016919a037cba76`, 562 942 o ; en ligne bit à bit à la 4e lecture. Docs de suivi (production `d839c7a`) : journal, registre ③ ✔ et ⑪, point de retour, où trouver quoi (`&v=1.3.0-RU`). Pause de C15 levée dans son prompt.
+
+**Claude :**
+
+À jouer : les tests ci-dessous · en cours : rien · ouvert : 53 ; 45 ; 36.
+
+142. La 1.3.0 est en ligne, vérifiée à l'octet près : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.3.0-RU. La 1.2.3 est sauvegardée au sas pour revenir en arrière si besoin. GPT peut reprendre.
+
+143. Recopie dans le navigateur où tu as chargé ton paquet : les photos ne sont que là.
+
+À tester : ouvre l'adresse → la rédaction → la classe : les copies déjà corrigées sur les scans affichent leur avancement, plus « Non commencé · 0 % » ; « 📄 Corriger sur les scans » → « ✍ Recopier » : la photo à gauche, ta feuille à droite ; recale une poignée verte, tape la ligne 1 avec ses fautes, Entrée ; recharge la page : la copie, la ligne et ton texte reviennent ; « ← Les scans » : tes quatre passes et tes corrections sont là.
+
+31/10/2026 06:49
+MEMO

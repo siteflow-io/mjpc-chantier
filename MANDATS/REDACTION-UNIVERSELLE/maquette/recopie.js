@@ -208,6 +208,7 @@ function rcOuvrir(reprendre) {
   RC.page = pages.some(p => p.id === r.page) ? r.page : pages[0] && pages[0].id;
   RC.ligne = r.ligne || null;
   const e = rcInterface(); e.hidden = false; document.body.classList.add("rc-ouvert");
+  SC.copies.forEach(rcSeparerAnciens);   // [C14 1.4.5] les arrêts d'avant à plusieurs mots, coupés une fois pour toutes
   rcActualiser(true); rcBookmark(); SC.actif = Date.now();
   rcSelectionner(RC.ligne, true, true);
 }
@@ -568,7 +569,7 @@ function rcIAChargerSuite(txt) {
   return true;
 }
 /* les fautes proposées d'une ligne : les mots qui diffèrent, alignés par la plus longue sous-suite commune */
-function rcEcarts(a, b) {
+function rcEcartsBruts(a, b) {
   const A = rcTokenize(a || ""), B = rcTokenize(b || ""), n = A.length, m = B.length, T = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
   for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) T[i][j] = A[i] === B[j] ? T[i + 1][j + 1] + 1 : Math.max(T[i + 1][j], T[i][j + 1]);
   const segs = []; let i = 0, j = 0, sa = 0, sb = 0;
@@ -578,7 +579,60 @@ function rcEcarts(a, b) {
     else if (j >= m || (i < n && T[i + 1][j] >= T[i][j + 1])) i++; else j++;
   }
   fermer();
+  return { segs, A, B };
+}
+/* [C14 1.4.5] un arrêt par mot (Paul 14:16 : « il faut séparer les types d'erreur, il faut être dans le même détail que dictée » ; 14:46 : deux mots
+   fautifs côte à côte étaient pris ensemble). Dans un écart, les mots se répondent un à un quand les deux côtés en ont autant, et chaque
+   ponctuation est un arrêt à part. Un écart qui touche une apostrophe ou un trait d’union reste entier (« le → l’ », « peut etre → peut-être »),
+   et aussi un écart où les mots ne sont pas en même nombre (« entoi → en toi » : une seule faute). */
+function rcSeparable(t) { return rcEstPonct(t) && !/['’]|^-+$/.test(t); }
+function rcCouper(A, B, g) {
+  const EA = A.slice(g.de, g.a), EB = B.slice(g.de2, g.a2);
+  if (EA.length <= 1 && EB.length <= 1) return [g];
+  if (EA.concat(EB).some(t => /['’]|^-+$/.test(t))) return [g];
+  if (!EA.length || !EB.length) return (EA.length ? EA : EB).map((t, i) => EA.length ? { de: g.de + i, a: g.de + i + 1, de2: g.de2, a2: g.de2, eleve: t, corrige: "" } : { de: g.de, a: g.de, de2: g.de2 + i, a2: g.de2 + i + 1, eleve: "", corrige: t });   // deux mots manquants, ou en trop : deux fautes
+  if (EA.filter(t => !rcSeparable(t)).length !== EB.filter(t => !rcSeparable(t)).length) return [g];
+  const out = []; let i = 0, j = 0;
+  const pousser = (i0, i1, j0, j1) => { if (i1 - i0 === 1 && j1 - j0 === 1 && EA[i0] === EB[j0]) return; out.push({ de: g.de + i0, a: g.de + i1, de2: g.de2 + j0, a2: g.de2 + j1, eleve: EA.slice(i0, i1).join(" "), corrige: EB.slice(j0, j1).join(" ") }); };
+  while (i < EA.length || j < EB.length) {
+    const pa = i < EA.length && rcSeparable(EA[i]), pb = j < EB.length && rcSeparable(EB[j]);
+    if (i < EA.length && j < EB.length && pa === pb) { pousser(i, i + 1, j, j + 1); i++; j++; }
+    else if (j < EB.length && (pb || i >= EA.length)) { pousser(i, i, j, j + 1); j++; }
+    else { pousser(i, i + 1, j, j); i++; }
+  }
+  return out.length ? out : [g];
+}
+function rcEcarts(a, b) {
+  const r = rcEcartsBruts(a, b), segs = [].concat(...r.segs.map(g => rcCouper(r.A, r.B, g)));
   return { segs, fautes: segs.reduce((s, x) => s + Math.max(x.a - x.de, x.a2 - x.de2), 0) };
+}
+function rcCle(g) { return g.de + "-" + g.a + "/" + g.de2 + "-" + g.a2; }
+/* les copies d'avant 1.4.5 : un arrêt déjà décidé qui prenait plusieurs mots est coupé une fois pour toutes ; chaque morceau garde la décision ;
+   la marque unique devient une marque par morceau ; un cadre glissé est partagé entre les mots, à la longueur de chacun. Une ligne dont la photo
+   n'est pas encore là attend (elle sera coupée à la prochaine ouverture). */
+function rcSeparerAnciens(k) {
+  const s = scCopie(k); let n = 0;
+  rcLignesEcrites(k).forEach(x => { const l = x.l; if (typeof l.corrige !== "string" || l.texte !== l.corrigeDe || !l.decisions) return;
+    const im = SC.imgs[x.pid]; if (!im || !im.el || !im.el.complete || !im.el.naturalWidth) return;
+    const r = rcEcartsBruts(l.texte, l.corrige);
+    r.segs.forEach(g => { const cle = rcCle(g), d = l.decisions[cle]; if (!d) return; const subs = rcCouper(r.A, r.B, g); if (subs[0] === g) return;
+      const mk = (l.marquesBande || {})[cle], ancienne = mk && s.marques[mk], place = (l.places || {})[cle];
+      const avecMot = subs.filter(u => u.eleve), tot = avecMot.reduce((t, u) => t + u.eleve.length, 0) || 1; let cur = place ? place.x0 : 0;
+      rcLigneMaj(k, x.pid, x.id, L => {
+        const D = Object.assign({}, L.decisions); delete D[cle]; subs.forEach(u => { if (!D[rcCle(u)]) D[rcCle(u)] = d; }); L.decisions = D;
+        if (L.marquesBande && L.marquesBande[cle]) { const M = Object.assign({}, L.marquesBande); delete M[cle]; L.marquesBande = M; }
+        if (L.places && L.places[cle]) { const P = Object.assign({}, L.places); delete P[cle]; L.places = P; }
+      });
+      if (place) { avecMot.forEach(u => { const w = (place.x1 - place.x0) * u.eleve.length / tot, c = rcCle(u); rcLigneMaj(k, x.pid, x.id, L => { L.places = Object.assign({}, L.places, { [c]: { x0: cur, x1: cur + w } }); }); cur += w; }); }
+      if (ancienne) { delete s.marques[mk];
+        subs.forEach(u => { const c = rcCle(u), a = { k, pid: x.pid, id: x.id, l, g: u, cle: c }, q = rcPlaceSeg(a);
+          const m = { page: x.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: u.corrige || null, bande: { ligne: x.id, cle: c, eleve: u.eleve, corrige: u.corrige, type: q.type.nom, code: rcCodeFaute(u) } };
+          m.id = scId("marque"); m.eleve = k; m.creeLe = m.modifieLe = new Date().toISOString(); s.marques[m.id] = m;
+          rcLigneMaj(k, x.pid, x.id, L => { L.marquesBande = Object.assign({}, L.marquesBande, { [c]: m.id }); }); }); }
+      n++; });
+  });
+  if (n) { scNumeroter(k); saveState(); }
+  return n;
 }
 function rcEtatIA() {
   if (!RC.ui || !RC.copie) return; const L = rcLignesEcrites(RC.copie), e = RC.ui.querySelector("#rcIAEtat"); if (!e) return;
@@ -673,7 +727,7 @@ function rcArrets(k) {
 function rcLigneMaj(k, pid, id, fn) { const pgs = (scCopie(k).recopie || {}).pages || {}; [pgs[pid] && pgs[pid].lignes[id], RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]].forEach(l => { if (l) fn(l); }); }
 function rcNoteTexte(k) { const r = scNote(k); return r.ok ? (Math.round(r.n * 10) / 10) + " / " + r.tot : "incomplète"; }
 function rcBandeOuvrir() {
-  if (RC.page) rcGarder(); const k = RC.copie, A = rcArrets(k);
+  if (RC.page) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); const A = rcArrets(k);
   if (!A.length) { toast("Pas de faute proposée sur cette copie : charge d’abord le corrigé de l’IA."); return; }
   RC.bd = { k, i: 0, A }; rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
   RC.ui.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(k); if (document.activeElement && document.activeElement.blur) document.activeElement.blur();

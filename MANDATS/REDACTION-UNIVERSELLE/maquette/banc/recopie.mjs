@@ -326,4 +326,26 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("dette ⑤ : une copie effacée au site pendant que la page est ouverte (" + k3.m + " marques) quitte la page ; un geste sur elle y écrit une copie neuve, jamais l'ancienne (au site : " + (h3 ? "id " + (h3.id === k3.id ? "ancien" : "neuf") + ", " + Object.keys(((h3 || {}).scan || {}).marques || {}).length + " marques" : "rien") + ")",
     !!k3.k && oublie && surK3 && !!h3 && h3.id !== k3.id && !Object.keys((h3.scan || {}).marques || {}).length && (h3.scan || {}).lignes === 12);
   await pg.evaluate(() => { try { RU.flux = null; } catch (e) {} window.EventSource = undefined; });
+  // 1.4.5 (Paul 14:16 et 14:46) : un arrêt par mot ; un arrêt déjà décidé qui prenait deux mots (copie d'avant) est coupé, ses marques suivent
+  await pg.click("#btnRecopier"); await att(300); await pg.selectOption("#rcCopie", kC2); await att(250);
+  const pid5 = await pg.evaluate(id => { const x = rcLignesEcrites(RC.copie).find(y => y.id === id); if (x && RC.page !== x.pid) rcActiverPage(x.pid); return x ? x.pid : null; }, cible2); await att(200);
+  const champ5 = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + cible2 + '"]'); await champ5.scrollIntoViewIfNeeded(); await champ5.fill("Mes camarades et moi se plaint"); await att(300);
+  const re5 = JSON.parse(brut); let trouve5 = false; re5.copies.forEach(c => c.pages.forEach(q => q.lignes.forEach(l => { if (l.id === cible2) { l.texte = "Mes camarades et moi nous plaignons"; trouve5 = true; } })));
+  await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(re5)); await pg.click("#rcIAValider"); await att(300); await pg.click("#rcIAFermer");
+  // la copie telle qu'une 1.4.4 l'a laissée : l'arrêt « se plaint → nous plaignons » dit « oui », une seule marque, un cadre glissé
+  const av5 = await pg.evaluate(id => { const k = RC.copie, x = rcLignesEcrites(k).find(y => y.id === id), r = rcEcartsBruts(x.l.texte, x.l.corrige), g = r.segs.find(u => u.eleve === "se plaint"); if (!g) return null;
+    const cle = rcCle(g), a = { k, pid: x.pid, id, l: x.l, g, cle }, q = rcPlaceSeg(a), s = scCopie(k), place = { x0: q.x0 - 0.004, x1: q.x1 - 0.004 };
+    const m = { page: x.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: place.x0, x1: place.x1, y0: q.y0, y1: q.y1, bonne: g.corrige, bande: { ligne: id, cle, eleve: g.eleve, corrige: g.corrige, type: "Mot faux", code: "L" } };
+    m.id = scId("marque"); m.eleve = k; m.creeLe = m.modifieLe = new Date().toISOString(); s.marques[m.id] = m;
+    rcLigneMaj(k, x.pid, id, l => { l.decisions = Object.assign({}, l.decisions, { [cle]: "o" }); l.marquesBande = Object.assign({}, l.marquesBande, { [cle]: m.id }); l.places = Object.assign({}, l.places, { [cle]: place }); });
+    scNumeroter(k); saveState(); return { cle, mk: m.id, place, fautes: Object.values(s.marques).filter(z => z.forme === "faute").length }; }, cible2);
+  await pg.click("#rcBandeOuvrir"); await att(250); if (await pg.locator("#rcBandeCommencer").count() && await pg.locator("#rcBandeCommencer").isVisible()) { await pg.click("#rcBandeCommencer"); await att(150); }
+  const ap5 = await pg.evaluate(([id, av]) => { const k = RC.copie, x = rcLignesEcrites(k).find(y => y.id === id), s = scCopie(k), D = x.l.decisions || {}, M = x.l.marquesBande || {}, P = x.l.places || {};
+    const arr = RC.bd.A.filter(a => a.id === id).map(a => a.g.eleve + "→" + a.g.corrige), ms = Object.values(M).map(i => s.marques[i]).filter(Boolean);
+    return { arr, d: [D["4-5/4-5"], D["5-6/5-6"], D[av.cle] || null], ancienne: !!s.marques[av.mk], marques: ms.map(m => m.bande.eleve + ":" + m.bande.code), dedans: Object.keys(P).filter(c => c !== av.cle).every(c => P[c].x0 >= av.place.x0 - 1e-9 && P[c].x1 <= av.place.x1 + 1e-9) && Object.keys(P).filter(c => c !== av.cle).length === 2,
+      fautes: Object.values(s.marques).filter(z => z.forme === "faute").length }; }, [cible2, av5]);
+  await cap("C14-32-un-arret-par-mot");
+  verif("recopie (1.4.5) : « se plaint → nous plaignons » donne deux arrêts (" + ap5.arr.join(" ; ") + ") ; sur une copie d'avant où il était un seul arrêt dit « oui », il est coupé : chaque mot garde le « oui » (" + ap5.d.join(", ") + "), la marque unique devient " + ap5.marques.length + " marques (" + ap5.marques.join(", ") + "), les deux cadres restent dans celui que tu avais glissé ; fautes " + av5.fautes + " → " + ap5.fautes,
+    trouve5 && !!av5 && ap5.arr.join("|") === "se→nous|plaint→plaignons" && ap5.d[0] === "o" && ap5.d[1] === "o" && ap5.d[2] === null && !ap5.ancienne && ap5.marques.length === 2 && ap5.dedans && ap5.fautes === av5.fautes + 1);
+  await pg.click("#rcBandeRetour"); await att(150); await pg.click("#rcFermer"); await att(180);
 }

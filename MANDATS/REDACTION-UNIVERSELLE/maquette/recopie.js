@@ -109,9 +109,7 @@ function rcInterface() {
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
     '<canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div>',
-    '<div id="rcDefile" class="rc-defile"><div id="rcPapiers" class="rc-papiers">',
-    '<div id="rcPhoto" class="rc-photo"><img id="rcImage" alt="La page manuscrite" draggable="false"><svg id="rcLignesSVG" aria-label="Les lignes et leurs poignées"></svg><p id="rcAbsente" hidden>La photo manque dans ce navigateur. Remets ton paquet.</p></div>',
-    '<div id="rcFeuille" class="rc-feuille" aria-label="La feuille de recopie alignée sur la photo"></div></div></div>',
+    '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>'
   ].join("");
   document.body.appendChild(e); RC.ui = e;
@@ -131,18 +129,46 @@ function rcInterface() {
     if (!ev.ctrlKey) return; ev.preventDefault(); rcZoom(RC.zoom * (ev.deltaY < 0 ? 1.12 : 1 / 1.12));
   }, { passive: false });
   e.querySelector("#rcDefile").addEventListener("scroll", () => rcAgrandir(), { passive: true });
-  const svg = e.querySelector("#rcLignesSVG");
-  svg.addEventListener("pointerdown", rcPoigneeDebut);
-  svg.addEventListener("pointermove", rcPoigneeBouger);
-  svg.addEventListener("pointerup", rcPoigneeFin);
-  svg.addEventListener("pointercancel", rcPoigneeAnnuler);
-  const im = e.querySelector("#rcImage");
-  im.onload = () => { if (RC.ouvert) { rcMettreEnPage(); rcAgrandir(); } };
-  im.onerror = () => { e.querySelector("#rcAbsente").hidden = false; };
-  if (typeof ResizeObserver !== "undefined") new ResizeObserver(() => { if (RC.ouvert) rcMettreEnPage(); }).observe(e.querySelector("#rcDefile"));
+  if (typeof ResizeObserver !== "undefined") new ResizeObserver(() => { if (RC.ouvert) rcToutesPages(rcMettreEnPage); }).observe(e.querySelector("#rcDefile"));
   const temoin = document.getElementById("ruTemoin");
   if (temoin) new MutationObserver(() => { if (RC.ouvert) e.querySelector("#rcEtat").textContent = temoin.textContent; }).observe(temoin, { childList: true, subtree: true, characterData: true });
   return e;
+}
+/* 1.3.3 (C14, Paul 31/10 08:20) : « pourquoi la copie ne s'affiche plus avec ses deux pages en scroll à la suite, comme pour les scans ? »
+   Toutes les pages de la copie sont posées l'une sous l'autre ; la page de la ligne en cours porte les identifiants (#rcPhoto, #rcFeuille…),
+   les autres sont dessinées avec le même code. */
+const RC_IDS = [["rcPapiers", null], ["rcPhoto", ".rc-photo"], ["rcImage", ".rc-image"], ["rcLignesSVG", ".rc-svg"], ["rcAbsente", ".rc-absente"], ["rcFeuille", ".rc-feuille"]];
+function rcBloc(pid) { return RC.ui && Array.from(RC.ui.querySelectorAll("#rcPages .rc-papiers")).find(b => b.dataset.page === pid); }
+function rcIds(pid) {
+  const b = rcBloc(pid); if (!b) return;
+  RC_IDS.forEach(([id, sel]) => { const n = sel ? b.querySelector(sel) : b, old = document.getElementById(id); if (old && old !== n) old.removeAttribute("id"); if (n) n.id = id; });
+}
+function rcPourPage(pid, fn) { const avant = RC.page; if (pid === avant) return fn(); RC.page = pid; rcIds(pid); try { return fn(); } finally { RC.page = avant; rcIds(avant); } }
+function rcToutesPages(fn) { scPagesDe(RC.copie).forEach(p => { if (p.id !== RC.page && rcBloc(p.id)) rcPourPage(p.id, fn); }); if (rcBloc(RC.page)) { rcIds(RC.page); fn(); } }
+function rcBlocs() {
+  const box = RC.ui.querySelector("#rcPages"), pages = scPagesDe(RC.copie);
+  if (box.dataset.copie !== RC.copie || box.dataset.pages !== pages.map(p => p.id).join(",")) {
+    box.innerHTML = ""; box.dataset.copie = RC.copie; box.dataset.pages = pages.map(p => p.id).join(",");
+    pages.forEach((p, i) => {
+      const b = rcNoeud("div", { class: "rc-papiers", "data-page": p.id });
+      b.innerHTML = '<div class="rc-page-titre">Page ' + (i + 1) + ' / ' + pages.length + '</div><div class="rc-photo"><img class="rc-image" alt="La page manuscrite" draggable="false"><svg class="rc-svg" aria-label="Les lignes et leurs poignées"></svg><p class="rc-absente" hidden>La photo manque dans ce navigateur. Remets ton paquet.</p></div><div class="rc-feuille" aria-label="La feuille de recopie alignée sur la photo"></div>';
+      const svg = b.querySelector(".rc-svg");
+      svg.addEventListener("pointerdown", ev => { if (ev.target.closest && ev.target.closest("circle")) rcActiverPage(p.id); rcPoigneeDebut(ev); });
+      svg.addEventListener("pointermove", rcPoigneeBouger); svg.addEventListener("pointerup", rcPoigneeFin); svg.addEventListener("pointercancel", rcPoigneeAnnuler);
+      const im = b.querySelector(".rc-image");
+      im.onload = () => { if (RC.ouvert) { rcPourPage(p.id, rcMettreEnPage); if (p.id === RC.page) rcAgrandir(); } };
+      im.onerror = () => { b.querySelector(".rc-absente").hidden = false; };
+      box.appendChild(b);
+    });
+  }
+  pages.forEach(p => { const b = rcBloc(p.id), image = b.querySelector(".rc-image"), im = SC.imgs[p.id], src = im && im.url || "";
+    if (image.getAttribute("src") !== src) { if (src) image.src = src; else image.removeAttribute("src"); }
+    b.querySelector(".rc-absente").hidden = !!im; });
+}
+function rcActiverPage(pid) {
+  if (!pid || pid === RC.page || !rcBloc(pid)) return;
+  RC.prev = RC.page; RC.page = pid; rcIds(pid); RC.annule = []; if (RC.selP) RC.selP.clear();
+  const sel = RC.ui.querySelector("#rcPage"); if (sel) sel.value = pid;
 }
 function rcBookmark() {
   const v = { ouverte: RC.ouvert, copie: RC.copie, page: RC.page, ligne: RC.ligne };
@@ -179,7 +205,7 @@ function rcChoisirCopie(k) {
 function rcCopieVoisine(sens) { const i = SC.copies.indexOf(RC.copie) + sens; if (i >= 0 && i < SC.copies.length) rcChoisirCopie(SC.copies[i]); }
 function rcChoisirPage(pid) {
   if (!scPagesDe(RC.copie).some(p => p.id === pid)) return;
-  RC.page = pid; RC.ligne = null; RC.annule = []; rcActualiser(true); rcSelectionner(null, true, true); rcBookmark();
+  rcActiverPage(pid); RC.ligne = null; rcSelectionner(null, true, true); rcBookmark();
 }
 function rcOptions(select, values, current) {
   const sig = JSON.stringify(values);
@@ -200,11 +226,8 @@ function rcActualiser(changer) {
   if (!p) { e.querySelector("#rcMessage").textContent = "Cette copie n'a pas de page."; return; }
   const d = rcDocument(p.id);
   if (!d.ordre.includes(RC.ligne)) RC.ligne = d.ordre[0] || null;
-  const image = e.querySelector("#rcImage"), im = SC.imgs[p.id], src = im && im.url || "";
-  if (image.getAttribute("src") !== src) { if (src) image.src = src; else image.removeAttribute("src"); }
-  e.querySelector("#rcAbsente").hidden = !!im; e.querySelector("#rcCharger").hidden = !!im;
-  e.querySelector("#rcPapiers").dataset.page = p.id;
-  rcRapprocherLignes(); rcMettreEnPage(); rcMarques(); rcEtatLigne();
+  const im = SC.imgs[p.id]; e.querySelector("#rcCharger").hidden = scPagesDe(RC.copie).every(q => SC.imgs[q.id]);
+  rcBlocs(); rcToutesPages(() => { rcRapprocherLignes(); rcMettreEnPage(); }); rcMarques(); rcEtatLigne();
   if (changer) e.querySelector("#rcDefile").scrollTop = 0;
 }
 /* C14 (31/10, Paul 07:32) : une ligne prend toujours son rang (et son numéro) selon sa hauteur sur la photo */
@@ -219,9 +242,10 @@ function rcRapprocherLignes() {
       row = rcNoeud("div", { class: "rc-ligne", "data-ligne": id });
       const input = rcNoeud("input", { class: "rc-saisie", type: "text", spellcheck: "false", autocomplete: "off", autocapitalize: "off", autocorrect: "off", "data-ligne": id });
       input.value = d.lignes[id].texte || "";
-      input.onfocus = () => rcSelectionner(id, false, false);
-      input.onclick = () => { rcSelectionner(id, false, false); rcGarder(); };
-      input.oninput = () => { const ligne = rcDocument(RC.page).lignes[id]; const vide = !(ligne.texte || "").trim(); ligne.texte = input.value; rcAjusterTaille(input); if (vide !== !(input.value || "").trim()) { rcMarques(); rcEtatLigne(); rcRapprocherLignes(); } rcGarder(); };
+      const pageRow = RC.page;
+      input.onfocus = () => { if (pageRow !== RC.page) rcActiverPage(pageRow); if (RC.ligne !== id) rcSelectionner(id, false, false); };
+      input.onclick = () => { if (pageRow !== RC.page) rcActiverPage(pageRow); rcSelectionner(id, false, false); rcGarder(); };
+      input.oninput = () => { if (pageRow !== RC.page) rcActiverPage(pageRow); const ligne = rcDocument(pageRow).lignes[id]; const vide = !(ligne.texte || "").trim(); ligne.texte = input.value; rcAjusterTaille(input); if (vide !== !(input.value || "").trim()) { rcMarques(); rcEtatLigne(); rcRapprocherLignes(); } rcGarder(); };
       row.appendChild(input); feuille.appendChild(row);
     }
     const place = feuille.children[rang]; if (place !== row) feuille.insertBefore(row, place || null);
@@ -290,13 +314,14 @@ function rcEtatLigne() {
 function rcSelectionner(id, focus, aligner) {
   if (!RC.ouvert || !RC.page) return;
   const d = rcDocument(RC.page); RC.ligne = d.ordre.includes(id) ? id : d.ordre[0] || null;
+  if (RC.prev) { const pp = RC.prev; RC.prev = null; if (pp !== RC.page && rcBloc(pp)) rcPourPage(pp, rcMarques); }
   RC.ui.querySelectorAll(".rc-ligne").forEach(n => n.classList.toggle("on", n.dataset.ligne === RC.ligne));
   rcMarques(); rcEtatLigne(); rcAgrandir();
   const input = Array.from(RC.ui.querySelectorAll(".rc-saisie")).find(n => n.dataset.ligne === RC.ligne);
   if (input && focus) input.focus({ preventScroll: true });
   if (input && aligner) {
     const zone = RC.ui.querySelector("#rcDefile"), row = input.parentElement;
-    zone.scrollTop = Math.max(0, row.offsetTop - 30);
+    zone.scrollTop = Math.max(0, zone.scrollTop + row.getBoundingClientRect().top - zone.getBoundingClientRect().top - 60);
     if (zone.clientWidth < 600) zone.scrollLeft = Math.max(0, RC.ui.querySelector("#rcFeuille").offsetLeft - 10);
   }
   rcBookmark();

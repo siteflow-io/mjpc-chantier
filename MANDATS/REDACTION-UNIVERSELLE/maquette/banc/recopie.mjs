@@ -7,15 +7,15 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     return { k, lignes: s.lignes, marques: JSON.stringify(s.marques || {}), rep: JSON.stringify(s.rep || {}), note: scNote(k), copies: Object.keys(state.copies).length };
   });
   await pg.click("#btnRecopier"); await pg.locator("#rcEcran").waitFor({ state: "visible" });
-  const debut = await pg.evaluate(() => ({ n: document.querySelectorAll(".rc-saisie").length, k: RC.copie, page: RC.page, ids: Array.from(document.querySelectorAll(".rc-saisie")).map(e => e.dataset.ligne) }));
+  const debut = await pg.evaluate(() => ({ n: document.querySelectorAll("#rcFeuille .rc-saisie").length, k: RC.copie, page: RC.page, ids: Array.from(document.querySelectorAll("#rcFeuille .rc-saisie")).map(e => e.dataset.ligne) }));
   verif("recopie : photo et feuille ouvertes sur la bonne copie, lignes proposées (" + debut.n + ")", debut.k === avant.k && debut.n >= 3);
-  const champ = n => pg.locator(".rc-saisie").nth(n);
+  const champ = n => pg.locator("#rcFeuille .rc-saisie").nth(n);
   const textes = ["je t'écrit [vite], mon ami.", "Deux mots", "une phra-"];
   const noeud = await champ(0).elementHandle();
   await champ(0).fill(textes[0]); await pg.keyboard.press("Enter");
   await pg.keyboard.type(textes[1]); await pg.keyboard.press("Enter"); await pg.keyboard.type(textes[2]);
   const frappe = await pg.evaluate(() => ({
-    textes: Array.from(document.querySelectorAll(".rc-saisie")).slice(0, 3).map(e => e.value),
+    textes: Array.from(document.querySelectorAll("#rcFeuille .rc-saisie")).slice(0, 3).map(e => e.value),
     active: document.activeElement.dataset.ligne,
     lignes: state.copies[RC.copie].scan.lignes
   }));
@@ -57,10 +57,10 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await cap("C15-21-recopie-poignees");
   await pg.click("#rcAjouter"); const ajout = await pg.evaluate(() => RC.ligne);
   await pg.keyboard.type("Une ligne ajoutée."); await pg.click("#rcRetirer");
-  const apresRetrait = await pg.evaluate(() => Array.from(document.querySelectorAll(".rc-saisie")).map(e => e.dataset.ligne));
+  const apresRetrait = await pg.evaluate(() => Array.from(document.querySelectorAll("#rcFeuille .rc-saisie")).map(e => e.dataset.ligne));
   await pg.click("#rcAnnuler");
   const retablie = await pg.evaluate(id => {
-    const e = Array.from(document.querySelectorAll(".rc-saisie")).find(e => e.dataset.ligne === id);
+    const e = Array.from(document.querySelectorAll("#rcFeuille .rc-saisie")).find(e => e.dataset.ligne === id);
     return e && e.value;
   }, ajout);
   const gardees = await pg.evaluate(ids => {
@@ -70,7 +70,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie : ajout et retrait sans changer les autres identités ; Annuler remet la ligne et son texte", !apresRetrait.includes(ajout) && retablie === "Une ligne ajoutée." && gardees[0][1] === textes[0] + " À demain." && gardees[1][1] === textes[1] && gardees[2][1] === textes[2]);
   const reprise = await pg.evaluate(() => ({ copie: RC.copie, page: RC.page, ligne: RC.ligne }));
   await att(1400); await pg.reload(); await pg.locator("#rcEcran").waitFor({ state: "visible", timeout: 20000 }); await att(500);
-  const reload = await pg.evaluate(() => ({ copie: RC.copie, page: RC.page, ligne: RC.ligne, textes: Array.from(document.querySelectorAll(".rc-saisie")).map(e => e.value) }));
+  const reload = await pg.evaluate(() => ({ copie: RC.copie, page: RC.page, ligne: RC.ligne, textes: Array.from(document.querySelectorAll("#rcFeuille .rc-saisie")).map(e => e.value) }));
   verif("recopie : après rechargement, même copie, page, ligne, textes et poignées", reload.copie === reprise.copie && reload.page === reprise.page && reload.ligne === reprise.ligne && reload.textes.includes("Une ligne ajoutée.") && JSON.stringify(await geom()) === JSON.stringify(g1));
   const ancienne = await pg.evaluate(k => {
     const s = state.copies[k].scan || {};
@@ -116,7 +116,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await pg.locator("#scInit").waitFor({ state: "visible" }); await pg.locator("#scInit").fill("ec"); await pg.locator("#scInit").press("Enter"); await att(300);
   const derniere = await pg.evaluate(() => Object.values(SC.pages).sort((a, b) => a.ordre - b.ordre).at(-1));
   await pg.click("#btnRecopier"); await pg.selectOption("#rcCopie", derniere.eleve); await pg.selectOption("#rcPage", derniere.id);
-  const six = await pg.evaluate(() => ({ n: document.querySelectorAll(".rc-saisie").length, lignes: Object.values(RC.documents[RC.page].lignes).map(l => ({ y: l.y0, w: l.x1 - l.x0 })) }));
+  const six = await pg.evaluate(() => ({ n: document.querySelectorAll("#rcFeuille .rc-saisie").length, lignes: Object.values(RC.documents[RC.page].lignes).map(l => ({ y: l.y0, w: l.x1 - l.x0 })) }));
   verif("recopie : six lignes trouvées sur six dans la page inventée, avec ligne courte, rature, pente et grand blanc (" + six.n + ")", six.n === 6);
   await champ(1).fill("Deux mots"); await pg.keyboard.press("Enter");
   verif("recopie : la ligne de deux mots se saisit et se garde comme les autres", await champ(1).inputValue() === "Deux mots");
@@ -132,7 +132,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie (1.3.2) : une page ouverte avant se range seule à la marge et au bord, une poignée tirée à la main reste où elle est (" + rg.a0.toFixed(3) + " · " + rg.a1.toFixed(3) + " · " + rg.b0.toFixed(4) + ")", rg.a0 < 150 / 1240 && rg.a0 > 150 / 1240 - 0.02 && rg.a1 >= 0.98 && rg.b0 === 0.0211921755);
   await champ(1).click(); await att(100);
   await champ(2).fill("Une ligne écrite très serrée, sans une place, ".repeat(3));
-  const mg = await pg.evaluate(() => { const i = document.querySelectorAll(".rc-saisie")[2]; return { sw: i.scrollWidth, cw: i.clientWidth, fs: parseFloat(getComputedStyle(i).fontSize), base: 18 * RC.echelle }; });
+  const mg = await pg.evaluate(() => { const i = document.querySelectorAll("#rcFeuille .rc-saisie")[2]; return { sw: i.scrollWidth, cw: i.clientWidth, fs: parseFloat(getComputedStyle(i).fontSize), base: 18 * RC.echelle }; });
   verif("recopie (C14) : une ligne trop pleine rapetisse et se lit en entier, rien n'est mangé (" + mg.sw + " / " + mg.cw + " px, lettres " + mg.fs.toFixed(1) + " au lieu de " + mg.base.toFixed(1) + ")", mg.sw <= mg.cw + 1 && mg.fs < mg.base);
   await champ(2).fill("");
   await champ(3).click(); await pg.click("#rcAjouter"); await att(150); await pg.keyboard.type("Ligne ajoutée");
@@ -142,7 +142,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
     const c = await pg.locator('#rcLignesSVG circle[data-rc-ligne="' + nouv + '"][data-rc-cote="' + cote + '"]').boundingBox();
     await pg.mouse.move(c.x + c.width / 2, c.y + c.height / 2); await pg.mouse.down(); await pg.mouse.move(c.x + c.width / 2, cible.y - 10, { steps: 8 }); await pg.mouse.up(); await att(120);
   }
-  const rang = await pg.evaluate(id => { const d = RC.documents[RC.page]; return { i: d.ordre.indexOf(id), n: rcNumeros(d)[id], champ: document.querySelectorAll(".rc-saisie")[0].value, titre: document.querySelector("#rcLigneTitre").textContent }; }, nouv);
+  const rang = await pg.evaluate(id => { const d = RC.documents[RC.page]; return { i: d.ordre.indexOf(id), n: rcNumeros(d)[id], champ: document.querySelectorAll("#rcFeuille .rc-saisie")[0].value, titre: document.querySelector("#rcLigneTitre").textContent }; }, nouv);
   verif("recopie (C14) : une ligne ajoutée puis remontée aux poignées prend sa place, son numéro et sa place sur la feuille (rang " + rang.i + ", n° " + rang.n + ", " + rang.titre + ")", rang.i === 0 && rang.n === nums.av + 1 && rang.champ === "Ligne ajoutée");
   for (let k = 0; k < 3; k++) { await pg.click("#rcAnnuler"); await att(80); }
   // C14 (07:47) : la bande alignée sur la feuille ; Retour arrière au début d'une ligne ; plusieurs poignées avec Ctrl
@@ -152,7 +152,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   const un = await pg.evaluate(() => RC.bande && { h: RC.bande.hauteur, pas: RC.bande.pas });
   verif("recopie (1.3.2) : la bande ne montre qu'une ligne de l'élève (" + (un ? un.h.toFixed(0) + " px pour des lignes espacées de " + un.pas.toFixed(0) : "?") + ")", un && un.h <= un.pas * 1.15);
   await champ(2).click(); await pg.keyboard.press("Home"); await pg.keyboard.press("Backspace"); await att(100);
-  const rb = await pg.evaluate(() => { const a = document.activeElement; return { meme: a === document.querySelectorAll(".rc-saisie")[1], pos: a.selectionStart, n: a.value.length }; });
+  const rb = await pg.evaluate(() => { const a = document.activeElement; return { meme: a === document.querySelectorAll("#rcFeuille .rc-saisie")[1], pos: a.selectionStart, n: a.value.length }; });
   await pg.keyboard.press("Backspace"); const efface = await champ(1).inputValue(); await pg.keyboard.type("s");
   verif("recopie (C14) : Retour arrière au début d'une ligne remonte à la fin de la précédente, puis efface comme un traitement de texte (" + efface + ")", rb.meme && rb.pos === rb.n && efface === "Deux mot" && await champ(1).inputValue() === "Deux mots");
   const ids = await pg.evaluate(() => RC.documents[RC.page].ordre.slice(0, 2)), avantG = await pg.evaluate(ids => ids.map(id => RC.documents[RC.page].lignes[id].x0), ids);
@@ -187,10 +187,19 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await champ(4).click(); await pg.keyboard.press("End"); const garde = await champ(4).inputValue(); await champ(4).fill(""); await pg.keyboard.type('Il dit "bonjour" puis "au revoir"');
   const gu = await champ(4).inputValue(); await champ(4).fill(garde);
   verif("recopie (1.3.2) : les guillemets tapés deviennent français, avec leurs espaces insécables (" + gu + ")", gu === "Il dit «\u00a0bonjour\u00a0» puis «\u00a0au revoir\u00a0»");
+  // 1.3.3 (Paul 08:20) : les pages de la copie l'une sous l'autre, dans un seul défilement ; écrire sur l'autre page sans menu
+  const bl = await pg.evaluate(() => ({ n: document.querySelectorAll("#rcPages .rc-papiers").length, pages: scPagesDe(RC.copie).length, tops: Array.from(document.querySelectorAll("#rcPages .rc-papiers")).map(b => b.offsetTop) }));
+  verif("recopie (1.3.3) : toutes les pages de la copie sont l'une sous l'autre, dans un seul défilement (" + bl.n + " pages)", bl.n === bl.pages && bl.n >= 2 && bl.tops.every((t, i) => i === 0 || t > bl.tops[i - 1]));
+  const autreChamp = pg.locator("#rcPages .rc-papiers:not(#rcPapiers) .rc-saisie").first(); await autreChamp.scrollIntoViewIfNeeded(); await att(150);
+  const pageAvant = await pg.evaluate(() => RC.page); await autreChamp.click(); await pg.keyboard.press("End"); await pg.keyboard.type("§"); await att(150);
+  const ap = await pg.evaluate(() => { const d = RC.documents[RC.page]; return { page: RC.page, texte: d.lignes[RC.ligne].texte }; });
+  await cap("C14-27-recopie-pages-a-la-suite"); await pg.keyboard.press("Backspace");
+  verif("recopie (1.3.3) : un clic sur une ligne de l'autre page y écrit directement, sans le menu « Page » (" + ap.texte.slice(-12) + ")", ap.page !== pageAvant && ap.texte.endsWith("§"));
+  await pg.selectOption("#rcPage", pageAvant); await att(200);
   await cap("C15-24-recopie-six-lignes");
   await pg.setViewportSize({ width: 390, height: 800 }); await att(180);
   const lisible = await pg.evaluate(() => {
-    const es = Array.from(document.querySelectorAll(".rc-saisie")), boites = es.map(e => e.getBoundingClientRect());
+    const es = Array.from(document.querySelectorAll("#rcFeuille .rc-saisie")), boites = es.map(e => e.getBoundingClientRect());
     return es.length === 6 && boites.slice(0,-1).every((b,i) => b.bottom <= boites[i+1].top + 2);
   });
   verif("recopie : à 390 pixels, les six lignes de saisie ne se chevauchent pas", lisible);

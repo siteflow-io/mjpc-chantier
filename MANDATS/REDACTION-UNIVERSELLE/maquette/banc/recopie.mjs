@@ -124,6 +124,13 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   verif("recopie (C14) : les poignées gauches se posent seules juste avant la marge rouge, les droites au bord de la copie (" + pos.g.map(x => x.toFixed(3)).join(" ") + " | " + pos.dr.map(x => x.toFixed(3)).join(" ") + ")", !pos.sans && pos.g.length === 6 && pos.g.every(x => x < 150 / 1240 && x > 150 / 1240 - 0.02) && pos.dr.every(x => x >= 0.98));
   const nums = await pg.evaluate(() => Array.from(document.querySelectorAll("#rcLignesSVG text.rc-numero")).map(t => t.textContent).join(",") + " · " + document.querySelector("#rcLigneTitre").textContent);
   verif("recopie (C14) : seules la ligne écrite et celle où l'on écrit portent un numéro, à la suite (" + nums + ")", nums === "1,2 · Ligne 2 sur 2");
+  // 1.3.2 : une page ouverte avant (poignées encore à leur place automatique) se range à la marge ; une poignée tirée par Paul ne bouge pas
+  const ancien = await pg.evaluate(() => { const s = state.copies[RC.copie].scan.recopie.pages[RC.page], o = rcListe(s.ordre); s.lignes[o[3]].x0 = 0.0204; s.lignes[o[3]].x1 = 0.9685; s.lignes[o[4]].x0 = 0.0211921755; s.lignes[o[4]].recale = true; return { copie: RC.copie, page: RC.page, a: o[3], b: o[4] }; });
+  const autre = await pg.evaluate(c => SC.copies.find(k => k !== c), ancien.copie);
+  await pg.selectOption("#rcCopie", autre); await att(150); await pg.selectOption("#rcCopie", ancien.copie); await att(150); await pg.selectOption("#rcPage", ancien.page); await att(200);
+  const rg = await pg.evaluate(o => { const d = RC.documents[RC.page]; return { a0: d.lignes[o.a].x0, a1: d.lignes[o.a].x1, b0: d.lignes[o.b].x0 }; }, ancien);
+  verif("recopie (1.3.2) : une page ouverte avant se range seule à la marge et au bord, une poignée tirée à la main reste où elle est (" + rg.a0.toFixed(3) + " · " + rg.a1.toFixed(3) + " · " + rg.b0.toFixed(4) + ")", rg.a0 < 150 / 1240 && rg.a0 > 150 / 1240 - 0.02 && rg.a1 >= 0.98 && rg.b0 === 0.0211921755);
+  await champ(1).click(); await att(100);
   await champ(2).fill("Une ligne écrite très serrée, sans une place, ".repeat(3));
   const mg = await pg.evaluate(() => { const i = document.querySelectorAll(".rc-saisie")[2]; return { sw: i.scrollWidth, cw: i.clientWidth, fs: parseFloat(getComputedStyle(i).fontSize), base: 18 * RC.echelle }; });
   verif("recopie (C14) : une ligne trop pleine rapetisse et se lit en entier, rien n'est mangé (" + mg.sw + " / " + mg.cw + " px, lettres " + mg.fs.toFixed(1) + " au lieu de " + mg.base.toFixed(1) + ")", mg.sw <= mg.cw + 1 && mg.fs < mg.base);
@@ -142,6 +149,8 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await champ(1).click(); await att(150);
   const al = await pg.evaluate(() => { const cv = document.querySelector("#rcAgrandie").getBoundingClientRect(), l = rcCourante(), ch = document.querySelector('.rc-saisie[data-ligne="' + CSS.escape(RC.ligne) + '"]').getBoundingClientRect(); return { bande: RC.bande ? cv.left + RC.bande.gauche + l.x0 * RC.bande.largeur : null, champ: ch.left }; });
   verif("recopie (C14) : la bande du haut est alignée sur la feuille en dessous (début de ligne à " + (al.bande == null ? "?" : Math.abs(al.bande - al.champ).toFixed(1)) + " px)", al.bande != null && Math.abs(al.bande - al.champ) <= 2);
+  const un = await pg.evaluate(() => RC.bande && { h: RC.bande.hauteur, pas: RC.bande.pas });
+  verif("recopie (1.3.2) : la bande ne montre qu'une ligne de l'élève (" + (un ? un.h.toFixed(0) + " px pour des lignes espacées de " + un.pas.toFixed(0) : "?") + ")", un && un.h <= un.pas * 1.15);
   await champ(2).click(); await pg.keyboard.press("Home"); await pg.keyboard.press("Backspace"); await att(100);
   const rb = await pg.evaluate(() => { const a = document.activeElement; return { meme: a === document.querySelectorAll(".rc-saisie")[1], pos: a.selectionStart, n: a.value.length }; });
   await pg.keyboard.press("Backspace"); const efface = await champ(1).inputValue(); await pg.keyboard.type("s");

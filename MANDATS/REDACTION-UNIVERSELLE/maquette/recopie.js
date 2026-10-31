@@ -10,6 +10,15 @@ function rcDocument(pid) {
   if (ancien && ancien.schema === 1) {
     d = JSON.parse(JSON.stringify(ancien)); d.lignes = d.lignes || {};
     d.ordre = rcListe(d.ordre).filter(id => d.lignes[id] && !d.lignes[id].retiree);
+    const im = SC.imgs[pid];
+    if (im && im.el.complete && im.el.naturalWidth) {
+      const cv = document.createElement("canvas"); cv.width = im.w; cv.height = im.h; cv.getContext("2d").drawImage(im.el, 0, 0);
+      const marge = rcMargeRouge(cv), bord = rcBordDroit(cv), auto = v => Math.abs(v * 1e4 - Math.round(v * 1e4)) < 1e-6;
+      RC.sansMarge = RC.sansMarge || {}; RC.sansMarge[pid] = !marge;
+      d.ordre.forEach(id => { const l = d.lignes[id]; if (l.recale) return;
+        if (marge && auto(l.x0)) l.x0 = rcBorne(marge((l.y0 + l.y1) / 2) - 0.008, 0, 0.97);
+        if (bord && auto(l.x1)) l.x1 = bord; });
+    }
   } else {
     d = { schema: 1, lignes: {}, ordre: [] };
     const p = SC.pages[pid], im = SC.imgs[pid]; let L = (p && p.lignes && p.lignes.l) || [], marge = null, bord = null;
@@ -27,22 +36,25 @@ function rcDocument(pid) {
 }
 /* C14 (31/10, Paul 07:00) : « les points s'alignent toujours juste avant la marge rouge à gauche, et aillent au bord de la copie, à droite » */
 function rcMargeRouge(cv) {
+  /* 1.3.2 (C14, 31/10 07:58) : sur les vraies photos, la marge n'est pas « rouge vif » : c'est un trait plus rouge que le papier et que le quadrillage
+     (mesuré sur 3 captures de Paul : marge r−g ≈ 26 à 30, papier et quadrillage r−g ≈ 6) ; elle penche, on la suit bande par bande */
   const W = cv.width, H = cv.height; if (!W || !H) return null;
-  const px = cv.getContext("2d").getImageData(0, 0, W, H).data, xmax = Math.floor(W * 0.45), pas = Math.max(1, Math.floor(H / 400));
-  const rouge = (x, y) => { const i = (y * W + x) * 4, r = px[i], g = px[i + 1], b = px[i + 2]; return r > 140 && r - g > 45 && r - b > 30; };
-  const compte = new Array(xmax).fill(0); let n = 0;
-  for (let y = Math.floor(H * 0.05); y < H * 0.95; y += pas) { n++; for (let x = 0; x < xmax; x++) if (rouge(x, y)) compte[x]++; }
-  let best = -1, bx = -1; for (let x = 1; x < xmax - 1; x++) { const c = Math.max(compte[x - 1], compte[x], compte[x + 1]); if (c > best) { best = c; bx = x; } }
-  if (best < n * 0.35) return null;
-  const tol = Math.max(3, Math.round(W * 0.03)), pts = [];
+  const px = cv.getContext("2d").getImageData(0, 0, W, H).data, lum = [];
+  for (let i = 0; i < W * H; i += 29) { const j = i * 4; lum.push(px[j] + px[j + 1] + px[j + 2]); }
+  lum.sort((a, b) => a - b); const papier = lum[Math.floor(lum.length * 0.8)] || 765;
+  const m = (x, y) => { const j = (y * W + x) * 4, r = px[j], g = px[j + 1], b = px[j + 2], l = r + g + b; return r - g >= 18 && r - b >= 10 && l > papier * 0.2 && l < papier * 0.88; };
+  const xa = Math.max(1, Math.floor(W * 0.03)), xb = Math.floor(W * 0.45), pas = Math.max(1, Math.floor(H / 600)), pts = [];
   for (let k = 0; k < 10; k++) {
-    const ya = Math.floor(H * (0.05 + 0.09 * k)), yb = Math.floor(H * (0.05 + 0.09 * (k + 1))); let sx = 0, m = 0, r = 0;
-    for (let y = ya; y < yb; y += pas) { r++; for (let x = Math.max(0, bx - tol); x <= Math.min(W - 1, bx + tol); x++) if (rouge(x, y)) { sx += x; m++; } }
-    if (m >= r * 0.3) pts.push([(ya + yb) / 2 / H, sx / m / W]);
+    const ya = Math.floor(H * (0.03 + 0.094 * k)), yb = Math.floor(H * (0.03 + 0.094 * (k + 1))), c = new Array(xb - xa).fill(0); let n = 0;
+    for (let y = ya; y < yb; y += pas) { n++; let avant = m(xa - 1, y), ici = m(xa, y); for (let x = xa; x < xb; x++) { const apres = m(x + 1, y); if (avant || ici || apres) c[x - xa]++; avant = ici; ici = apres; } }
+    let bi = 0; for (let i = 1; i < c.length; i++) if (c[i] > c[bi]) bi = i;
+    if (c[bi] >= n * 0.4) pts.push([(ya + yb) / 2 / H, (xa + bi) / W]);
   }
-  if (pts.length < 3) { const c = bx / W; return () => c; }
-  const my = pts.reduce((a, p) => a + p[0], 0) / pts.length, mx = pts.reduce((a, p) => a + p[1], 0) / pts.length;
-  const b = pts.reduce((a, p) => a + (p[0] - my) * (p[1] - mx), 0) / (pts.reduce((a, p) => a + (p[0] - my) ** 2, 0) || 1);
+  if (pts.length < 3) return null;
+  const med = pts.map(p => p[1]).sort((a, b) => a - b)[pts.length >> 1], bons = pts.filter(p => Math.abs(p[1] - med) < 0.02);
+  if (bons.length < 3) return null;
+  const my = bons.reduce((a, p) => a + p[0], 0) / bons.length, mx = bons.reduce((a, p) => a + p[1], 0) / bons.length;
+  const b = bons.reduce((a, p) => a + (p[0] - my) * (p[1] - mx), 0) / (bons.reduce((a, p) => a + (p[0] - my) ** 2, 0) || 1);
   return y => mx + b * (y - my);
 }
 function rcBordDroit(cv) {
@@ -284,8 +296,13 @@ function rcAgrandir() {
   const x = cv.getContext("2d"); x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h); RC.bande = null;
   if (!l || !im || !im.el.complete || !im.el.naturalWidth) return;
   const fr = RC.ui.querySelector("#rcFeuille").getBoundingClientRect(), cr = cv.getBoundingClientRect(); if (!fr.width) return;
-  const k = fr.width / im.w, sh = h / k, sy = (l.y0 + l.y1) / 2 * im.h - sh / 2, gauche = fr.left - cr.left;
-  x.drawImage(im.el, 0, sy, im.w, sh, gauche, 0, fr.width, h); RC.bande = { gauche, largeur: fr.width };
+  const d = rcDocument(RC.page), ys = d.ordre.map(id => (d.lignes[id].y0 + d.lignes[id].y1) / 2).sort((a, b) => a - b), ecarts = [];
+  for (let i = 1; i < ys.length; i++) if (ys[i] - ys[i - 1] > 0.005) ecarts.push(ys[i] - ys[i - 1]);
+  const pas = ecarts.length ? ecarts.sort((a, b) => a - b)[ecarts.length >> 1] : (p.lignes && p.lignes.pas) || 0.03;
+  const demi = Math.max(0.012, Math.min(0.035, pas * 0.55)) * im.h, k = fr.width / im.w, gauche = fr.left - cr.left, dh = 2 * demi * k, dy = (h - dh) / 2, N = 60;
+  const yl = u => (l.y0 + (l.y1 - l.y0) * (u - l.x0) / ((l.x1 - l.x0) || 1)) * im.h;
+  for (let i = 0; i < N; i++) { const u = (i + 0.5) / N, sx = i * im.w / N, sw = im.w / N + 1; x.drawImage(im.el, sx, yl(u) - demi, sw, 2 * demi, gauche + sx * k, dy, sw * k, dh); }
+  RC.bande = { gauche, largeur: fr.width, hauteur: dh, pas: pas * im.h * k };
 }
 function rcGarder() {
   if (!RC.copie || !RC.page || !state.classe.some(n => eleveId(n) === RC.copie)) return;
@@ -353,6 +370,7 @@ function rcPoigneeBouger(ev) {
 function rcPoigneeFin(ev) {
   const a = RC.drag; if (!a || a.pointer !== ev.pointerId) return;
   RC.drag = null;
+  if (a.bouge) { const d = rcDocument(RC.page); a.avants.forEach(({ id }) => { if (d.lignes[id]) d.lignes[id].recale = true; }); }
   if (a.bouge) RC.annule.push(a.groupe.length > 1 ? { type: "groupe", liste: a.avants } : { type: "recalage", id: a.id, avant: a.avant });
   rcRapprocherLignes(); rcMarques(); rcSelectionner(a.id, false, false); if (a.bouge) rcGarder();
 }

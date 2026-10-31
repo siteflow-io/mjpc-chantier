@@ -943,3 +943,22 @@ Je règle maintenant ta dette de la ligne 22 dans la 1.3.1.
 
 31/10/2026 07:36
 MEMO
+
+## Tour 41 — 31/10/2026 07:42 → 31/10/2026 07:43
+
+**Paul :** ok. pendant ce temps j'ai continué à recopier, mais cette fois ci sans bouger les poignées qui avaient été posées par l'app. Confirme moi que mon promeus ne va rien casser sur ce que j'ai déjà corrigé.
+
+**Fait.** Vrai site lu en lecture seule avec la 1.3.1 candidate (écritures interceptées), recopie ouverte sur chaque page recopiée : 4 copies, 6 pages ; toutes les lignes (29 à 31 par page), leurs textes et leurs places identiques à ce qui est enregistré ; l'ordre ne change que sur une page (la ligne remontée) ; une seule écriture interceptée, le suivi (l'endroit où tu en es), aucune copie réécrite, aucune erreur. Comparaison 1.3.0 / 1.3.1 du tour 40 : 30 copies, marques, réponses, lignes, notes : 0 différente.
+
+**Claude :**
+
+À jouer : rien · en cours : rien · ouvert : 157 ; 53 ; 45 ; 36.
+
+156. Confirmé, mesuré sur le vrai site sans rien y écrire. Tes recopies : 4 copies, 6 pages ; chaque ligne, son texte et ses poignées restent exactement comme tu les as laissés ; seule ta page avec la ligne remontée change d'ordre, comme demandé. Tes corrections : 30 copies, marques, réponses, lignes et notes identiques. Les nouvelles poignées (marge rouge, bord) ne jouent que sur les pages que tu n'as pas encore ouvertes en recopie.
+
+157. Après ton « promeus », recharge la page de l'app pour passer en 1.3.1.
+
+À tester : rien avant ton mot.
+
+31/10/2026 07:43
+MEMO

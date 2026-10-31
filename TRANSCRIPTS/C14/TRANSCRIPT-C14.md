@@ -1836,3 +1836,22 @@ MEMO
 
 31/10/2026 16:06
 MEMO
+
+## Tour 80 — 31/10/2026 16:07 → 31/10/2026 16:10
+
+**Paul :** promeus
+
+**Fait.** Mise en ligne de `redaction.html` 1.4.8-RU : 1.4.7 copiée au sas (`SAUVEGARDES/redaction-1.4.7-RU-avant-1.4.8-2026-10-31.html`, sas c973fd67) ; candidate identique à celle du sas ; commit prod `53b834d`, blob `4ee52f615328`, md5 `56d7e40a90d7ba6db07296644a520902`, 672 914 o ; en ligne bit à bit à la 4e lecture (16:08). Docs de suivi en prod : journal, point de retour, registre (0 bis ✔), adresse `&v=1.4.8-RU`.
+
+**Claude :**
+
+À jouer : tester la 1.4.8 · en cours : rien · ouvert : 220 ; 234.
+
+270. La 1.4.8 est en ligne, vérifiée bit à bit à 16:08 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.8-RU.
+
+271. À ton prochain mot, je fais la 1.4.9 : la bande en continu, comme en correction de dictée.
+
+À tester : recharge la page et ouvre la recopie : en haut, le compteur dit, en gras sur fond vert, que tes 28 copies recopiées ont leur corrigé.
+
+31/10/2026 16:10
+MEMO

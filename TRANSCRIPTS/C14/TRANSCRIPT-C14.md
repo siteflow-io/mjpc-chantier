@@ -1436,3 +1436,22 @@ MEMO
 
 31/10/2026 11:26
 MEMO
+
+## Tour 64 — 31/10/2026 12:15 → 31/10/2026 12:28
+
+**Paul :** Pour la correction de la recopie j'imagine encore plus simple: je fais clic droit sur le cadre jaune, il disparaît et l'App compte le mot comme écrit correctement. En revanche il faut que je puisse  remettre la faute  si besoin, si je vais trop vite par exemple.
+
+**Fait.** 209 et 211 non commentés : acquis ; 210 remplacé par le clic droit. `recopie.js` (`c14-poignees`, 1.4.3) : `rcTypeFaute` (mot faux, mot en trop, mot manquant, ponctuation manquante, fausse, en trop) ; un manque se pose en ∧ étroit dans un blanc entre deux mots (parmi les blancs les plus larges de l'encre, autant que de mots moins un) ; une ponctuation fausse : petit cadre ; hauteur du cadre = haut et bas de l'encre du mot ; début, fin et blancs de l'écriture cherchés dans la bande du corps des lettres (les jambages des lignes voisines faussaient la fin : mesuré sur la page inventée) ; glisser le cadre à la souris, ← → au clavier, place gardée (`places`) et reportée sur la marque ; clic droit sur le cadre : la ligne recopiée prend la forme du corrigé à cet endroit, la faute disparaît, les autres décisions de la ligne sont gardées (`recopieCorrigee`) ; Ctrl + Z la remet ; la feuille de recopie montre le texte à jour. Banc : 4 vérifications par le geste (∧ dans le blanc entre « Deux » et « mots » ; cadre glissé, place gardée ; clic droit puis Ctrl + Z : 1 → 0 → 1 arrêt ; feuille à jour) → « BANC : 109 vérifications, 0 défaut », capture regardée et envoyée. Candidate 1.4.3-RU :  o, md5 `` (remplace la candidate de 11:19). Vrai site en lecture seule, 1.4.2 puis 1.4.3 : 30 copies, 0 différente ; recopies : 40 pages, 661 lignes écrites, textes et places identiques ; seule écriture interceptée : le suivi.
+
+**Claude :** [capture : C14-31-mot-manquant.png]
+
+À jouer : rien · en cours : rien · ouvert : 214 ; 53 ; 45 ; 36.
+
+213. C'est dans la 1.4.3, avec tout ce que tu as demandé à 11:25. Clic droit sur le cadre : c'était ta faute de recopie, ta ligne prend le mot juste, la faute disparaît ; Ctrl + Z la remet. Un mot ou une ponctuation qui manque : un ∧ dans le blanc entre les deux mots, jamais sur un mot. Une ponctuation fausse : un petit cadre sur le signe. Le cadre se glisse à la souris (ou ← →), et sa place est celle de la marque sur la copie ; sa hauteur suit l'encre du mot. La carte dit le type : mot faux, mot manquant, ponctuation… Banc : 109 vérifications, 0 défaut ; tes copies et tes 661 lignes au site : rien ne change. Sur tes vraies photos, la justesse du cadre reste celle mesurée sur tes 4 lignes : je ne sais pas mieux.
+
+214. Pour la mettre en ligne : « promeus ».
+
+À tester : rien avant ton mot.
+
+31/10/2026 12:28
+MEMO

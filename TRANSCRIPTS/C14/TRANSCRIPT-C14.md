@@ -1701,7 +1701,7 @@ MEMO
 
 251. Pour ta question : pas tout à fait, et c'est réparé. J'ai vérifié sur GitHub : tout était consigné, mais par morceaux, dispersé dans la section du registre, et « les fonctions qui ne servent plus » (225) n'y était pas (elle n'était que dans le transcript et dans le rappel de ce soir). C'est maintenant une seule liste, dans l'ordre, en tête de la section rédaction du registre : https://github.com/siteflow-io/monsieurjaipascompris/blob/main/docs/MJPC6-DETTES.md. Elle compte onze points : le type par l'IA, la place du cadre, la copie de l'élève en couleurs, la taxonomie, les fonctions qui ne servent plus, le mot par mot ⇧R, la grille en stickers, les passes remplacées, la fin de l'encre, le test iPhone, les exigences du 29/10. Je la tiens à jour à chaque livraison.
 
-252. Je commence par le premier point : le type donné par l'IA (240).
+252. À ton prochain mot, je commence par le premier point : le type donné par l'IA (240).
 
 À tester :
 1. La copie de ta capture, page 2 : le trait rouge est là, à sa marge.

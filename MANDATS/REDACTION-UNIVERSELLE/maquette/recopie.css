@@ -77,3 +77,5 @@
 #rcIAMessage.rc-ia-msg.ko{background:#fbe0e2;color:#8a1f28}
 .rc-bande-haut{display:flex;align-items:center;gap:12px}
 .rc-bande-haut b{font:600 16px Georgia,serif;color:#6b1a2a}
+#rcBandePhoto{cursor:ew-resize}
+.rc-bande-note{display:block;width:100%;font-style:normal;color:#2c5a1e;background:#e3f2d9;padding:4px 8px;border-radius:6px}

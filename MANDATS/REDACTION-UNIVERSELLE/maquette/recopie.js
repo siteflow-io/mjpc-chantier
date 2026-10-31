@@ -270,6 +270,7 @@ function rcRapprocherLignes() {
       row.appendChild(input); feuille.appendChild(row);
     }
     const place = feuille.children[rang]; if (place !== row) feuille.insertBefore(row, place || null);
+    { const inp = row.querySelector("input"); if (inp && document.activeElement !== inp && inp.value !== (d.lignes[id].texte || "")) inp.value = d.lignes[id].texte || ""; }
     const num = rcNumeros(d)[id], input = row.querySelector("input"); input.setAttribute("aria-label", "Recopie de la ligne " + (num || "vide"));
     input.title = "Recopie de la ligne" + (num ? " " + num : " (vide : elle n'aura un numéro que si tu y écris)") + " : garde les fautes, les mots barrés et la ponctuation. Entrée passe à la suivante.";
     row.classList.toggle("on", id === RC.ligne);
@@ -594,14 +595,21 @@ function rcEncre(pid, L, d) {
   const im = SC.imgs[pid]; if (!im || !im.el.complete || !im.el.naturalWidth) return null;
   RC.encre = RC.encre || {}; const cle = pid + "|" + [L.x0, L.x1, L.y0, L.y1].map(v => (+v).toFixed(4)).join(","); if (RC.encre[cle] !== undefined) return RC.encre[cle];
   const pas = rcPasDoc(d || { ordre: [], lignes: {} }), x0 = Math.max(0, Math.floor(L.x0 * im.w)), x1 = Math.min(im.w, Math.ceil(L.x1 * im.w));
-  const y0 = Math.max(0, Math.floor((Math.min(L.y0, L.y1) - 0.75 * pas) * im.h)), y1 = Math.min(im.h, Math.ceil((Math.max(L.y0, L.y1) + 0.2 * pas) * im.h)), w = x1 - x0, h = y1 - y0;
+  const y0 = Math.max(0, Math.floor((Math.min(L.y0, L.y1) - 0.75 * pas) * im.h)), y1 = Math.min(im.h, Math.ceil((Math.max(L.y0, L.y1) + 0.25 * pas) * im.h)), w = x1 - x0, h = y1 - y0;
+  /* le début, la fin et les blancs se cherchent dans la bande du corps des lettres (sans les jambages des lignes voisines) ; le haut et le bas d'un mot, dans toute la hauteur */
+  const ya = Math.max(0, Math.floor((Math.min(L.y0, L.y1) - 0.45 * pas) * im.h) - y0), yb = Math.min(h, Math.ceil((Math.max(L.y0, L.y1) + 0.12 * pas) * im.h) - y0);
   if (w < 10 || h < 4) return (RC.encre[cle] = null);
   const cv = RC.cvEncre || (RC.cvEncre = document.createElement("canvas")); cv.width = w; cv.height = h; const c = cv.getContext("2d"); c.drawImage(im.el, x0, y0, w, h, 0, 0, w, h);
   const px = c.getImageData(0, 0, w, h).data, lum = []; for (let i = 0; i < w * h; i += 7) { const j = i * 4; lum.push(px[j] + px[j + 1] + px[j + 2]); } lum.sort((a, b) => a - b); const papier = lum[Math.floor(lum.length * 0.75)] || 600;
-  const col = new Array(w).fill(0); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const j = (y * w + x) * 4, r = px[j], g = px[j + 1], b = px[j + 2]; const l = r + g + b; if ((b - r > 12 && l < papier * 0.8) || l < papier * 0.35) col[x]++; }   // 1.4.3 : l'encre est bleue (ou très sombre) ; le quadrillage et les ombres, non
-  const seuil = Math.max(2, Math.round(h * 0.03)), runs = []; for (let x = 0; x < w; x++) if (col[x] >= seuil) { const a = x; while (x < w && col[x] >= seuil) x++; if (x - a >= 2) runs.push([a, x]); }
+  const col = new Array(w).fill(0), haut = new Array(w).fill(h), bas = new Array(w).fill(-1); for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const j = (y * w + x) * 4, r = px[j], g = px[j + 1], b = px[j + 2]; const l = r + g + b; if ((b - r > 12 && l < papier * 0.8) || l < papier * 0.35) { if (y >= ya && y < yb) col[x]++; if (y < haut[x]) haut[x] = y; if (y > bas[x]) bas[x] = y; } }   // 1.4.3 : l'encre est bleue (ou très sombre) ; le quadrillage et les ombres, non
+  const seuil = Math.max(2, Math.round((yb - ya) * 0.05)), runs = []; for (let x = 0; x < w; x++) if (col[x] >= seuil) { const a = x; while (x < w && col[x] >= seuil) x++; if (x - a >= 2) runs.push([a, x]); }
   if (!runs.length) return (RC.encre[cle] = null);
-  return (RC.encre[cle] = [(x0 + runs[0][0]) / im.w, (x0 + runs[runs.length - 1][1]) / im.w]);
+  const r = [(x0 + runs[0][0]) / im.w, (x0 + runs[runs.length - 1][1]) / im.w];
+  r.traits = runs.map(([a, b]) => [(x0 + a) / im.w, (x0 + b) / im.w]);
+  const plage = (u0, u1, f, depart) => { let v = depart; for (let x = Math.max(0, Math.floor(u0 * im.w) - x0); x < Math.min(w, Math.ceil(u1 * im.w) - x0); x++) if (col[x] >= seuil) v = f(v, x); return v; };
+  r.haut = (u0, u1) => { const v = plage(u0, u1, (m, x) => Math.min(m, haut[x]), h); return v < h ? (y0 + v) / im.h : null; };
+  r.bas = (u0, u1) => { const v = plage(u0, u1, (m, x) => Math.max(m, bas[x]), -1); return v >= 0 ? (y0 + v) / im.h : null; };
+  return (RC.encre[cle] = r);
 }
 function rcPlaceSeg(a) {
   const L = a.l, d = RC.copie === a.k && RC.documents[a.pid] || ((scCopie(a.k).recopie || {}).pages || {})[a.pid], P = rcPosMots(L.texte), len = Math.max(1, L.texte.length);
@@ -610,13 +618,29 @@ function rcPlaceSeg(a) {
   const poids = ch => ch === " " ? 1.3 : "iljtf.,;:'’!|ïî-".includes(ch) ? 0.55 : "mwMW".includes(ch) ? 1.45 : ch !== ch.toLowerCase() ? 1.25 : 1, cum = [0];
   for (const ch of L.texte) cum.push(cum[cum.length - 1] + poids(ch)); const T = cum[cum.length - 1] || 1;
   const e = rcEncre(a.pid, L, d) || [L.x0, L.x1], u = c => e[0] + (e[1] - e[0]) * cum[Math.min(c, cum.length - 1)] / T, yv = x => L.y0 + (L.y1 - L.y0) * (x - L.x0) / ((L.x1 - L.x0) || 1);
-  const x0 = u(c0), x1 = Math.max(u(c1), x0 + 0.012); return { x0, x1, y0: yv(x0) - 0.012, y1: yv(x1) + 0.004, encre: e };
+  /* 1.4.3 (Paul 11:25, acquis 12:15) : un mot ou une ponctuation qui manque ne tombe jamais sur un mot : un ∧ dans le blanc ; une ponctuation fausse, un petit cadre */
+  const type = rcTypeFaute(a.g); let x0, x1;
+  if (type.manque) { let gx = u(a.g.de > 0 && P[a.g.de - 1] ? P[a.g.de - 1][1] : 0);
+    /* seuls les blancs entre deux mots comptent : ils sont parmi les plus larges ; on en garde autant qu'il y a de mots moins un, et ceux qui leur ressemblent */
+    const tr = e.traits || [], blancs = []; for (let i = 0; i + 1 < tr.length; i++) blancs.push({ m: (tr[i][1] + tr[i + 1][0]) / 2, l: tr[i + 1][0] - tr[i][1] });
+    const nMots = L.texte.trim().split(/\s+/).length, tri = blancs.map(b => b.l).sort((p, q) => q - p), seuil = tri.length ? 0.6 * tri[Math.min(tri.length - 1, Math.max(0, nMots - 2))] : 0;
+    let best = null; blancs.filter(b => b.l >= seuil).forEach(b => { if (best === null || Math.abs(b.m - gx) < Math.abs(best - gx)) best = b.m; });
+    if (best !== null && Math.abs(best - gx) < 0.06) gx = best; x0 = gx - 0.004; x1 = gx + 0.004; }
+  else { x0 = u(c0); x1 = Math.max(u(c1), x0 + (type.ponct ? 0.006 : 0.012)); }
+  const ici = L.places && L.places[a.cle]; if (ici) { x0 = ici.x0; x1 = ici.x1; }
+  const hh = e.haut && e.haut(x0 - (type.manque ? 0.015 : 0), x1 + (type.manque ? 0.015 : 0)), bb = e.bas && e.bas(x0 - (type.manque ? 0.015 : 0), x1 + (type.manque ? 0.015 : 0));
+  return { x0, x1, y0: hh != null ? hh - 0.003 : yv(x0) - 0.012, y1: bb != null ? bb + 0.003 : yv(x1) + 0.004, encre: e, type };
 }
 function rcReplacerBande(k) {
   const s = scCopie(k); let n = 0; rcArrets(k).forEach(a => { const id = a.l.marquesBande && a.l.marquesBande[a.cle], m = id && s.marques[id]; if (!m) return; const q = rcPlaceSeg(a);
     if (Math.abs(m.x0 - q.x0) > 0.002 || Math.abs(m.x1 - q.x1) > 0.002) { Object.assign(m, { x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, modifieLe: new Date().toISOString() }); n++; } });
   if (n) { scNumeroter(k); saveState(); }
 }
+function rcEstPonct(t) { return !!t && /^[\s.,;:!?…()«»"'’\-–—]+$/.test(t); }
+function rcTypeFaute(g) { const pe = rcEstPonct(g.eleve), pc = rcEstPonct(g.corrige);
+  if (!g.eleve) return { manque: true, ponct: pc, nom: pc ? "Ponctuation manquante" : "Mot manquant" };
+  if (!g.corrige) return { ponct: pe, nom: pe ? "Ponctuation en trop" : "Mot en trop" };
+  return { ponct: pe && pc, nom: pe && pc ? "Ponctuation fausse" : "Mot faux" }; }
 function rcPosMots(t) { const T = rcTokenize(t || ""), P = []; let i = 0; T.forEach(w => { const j = t.indexOf(w, i); P.push([j, j + w.length]); i = j + w.length; }); return P; }
 function rcArrets(k) {
   const A = []; rcLignesEcrites(k).forEach((x, i) => { const l = x.l; if (typeof l.corrige !== "string" || l.texte !== l.corrigeDe) return;
@@ -628,7 +652,7 @@ function rcNoteTexte(k) { const r = scNote(k); return r.ok ? (Math.round(r.n * 1
 function rcBandeOuvrir() {
   if (RC.page) rcGarder(); const k = RC.copie, A = rcArrets(k);
   if (!A.length) { toast("Pas de faute proposée sur cette copie : charge d’abord le corrigé de l’IA."); return; }
-  RC.bd = { k, i: 0, A }; RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
+  RC.bd = { k, i: 0, A }; rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
   RC.ui.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(k); if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   rcReplacerBande(k);
   const s = scCopie(k), anc = Object.values(s.marques).filter(m => m.forme === "faute" && !m.bande).length, av = RC.ui.querySelector("#rcBandeAvis");
@@ -650,12 +674,12 @@ function rcBandeDecider(v) {
   const B = RC.bd, a = B.A[B.i]; if (!a) return; const s = scCopie(B.k), deja = a.l.marquesBande && a.l.marquesBande[a.cle];
   if (v === "o" && !(deja && s.marques[deja])) {
     const q = rcPlaceSeg(a);
-    const m = { page: a.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: a.g.corrige || null, bande: { ligne: a.id, cle: a.cle, eleve: a.g.eleve, corrige: a.g.corrige } };
+    const m = { page: a.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: a.g.corrige || null, bande: { ligne: a.id, cle: a.cle, eleve: a.g.eleve, corrige: a.g.corrige, type: q.type.nom } };
     scPoser(m); rcLigneMaj(B.k, a.pid, a.id, l => { l.marquesBande = Object.assign({}, l.marquesBande, { [a.cle]: m.id }); });
   }
   if (v === "n" && deja && s.marques[deja]) scEffacer(deja);
   rcLigneMaj(B.k, a.pid, a.id, l => { l.decisions = Object.assign({}, l.decisions, { [a.cle]: v }); if (v === "n" && l.marquesBande) { l.marquesBande = Object.assign({}, l.marquesBande); delete l.marquesBande[a.cle]; } });
-  saveState(); B.i = Math.min(B.A.length, B.i + 1); rcBandeRendre();
+  saveState(); B.i = Math.min(B.A.length, B.i + 1); B.note = ""; rcBandeRendre();
 }
 function rcBandeRendre() {
   const B = RC.bd, e = RC.ui; if (!B) return; const a = B.A[B.i], s = scCopie(B.k);
@@ -668,14 +692,14 @@ function rcBandeRendre() {
   if (!a) {
     const faites = B.A.filter(x => x.l.decisions && x.l.decisions[x.cle] === "o").length;
     carte.innerHTML = '<div class="rc-bande-mot">Bande finie</div><div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + B.A.length + " arrêts · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k)) + "</div>";
-    ctx.innerHTML = ""; touches.innerHTML = "<span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>Échap</kbd> revenir à la recopie</span>"; rcBandePhoto(null); return;
+    ctx.innerHTML = ""; touches.innerHTML = "<span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : remettre une faute</span><span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : ""); rcBandePhoto(null); return;
   }
   const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle];
   let h = "", c = 0; P.forEach((p, i) => { h += escapeHtml(a.l.texte.slice(c, p[0])); const w = escapeHtml(a.l.texte.slice(p[0], p[1])); h += i >= a.g.de && i < a.g.a ? "<mark>" + w + "</mark>" : '<span class="rc-mot" data-m="' + i + '">' + w + "</span>"; if (a.g.a === a.g.de && i === a.g.de - 1) h += ' <mark class="rc-manque">∧</mark>'; c = p[1]; });
   h += escapeHtml(a.l.texte.slice(c)); if (a.g.a === a.g.de && a.g.de === 0) h = '<mark class="rc-manque">∧</mark> ' + h;
   ctx.innerHTML = '<span class="rc-bande-n">ligne ' + a.n + "</span> " + h;
-  carte.innerHTML = '<div class="rc-bande-mot"><span class="rc-eleve">' + escapeHtml(a.g.eleve || "(mot manquant)") + '</span> <span class="rc-fleche">→</span> <span class="rc-corr">' + escapeHtml(a.g.corrige || "(mot en trop)") + "</span></div><div class=\"rc-bande-pied\">Faute proposée par l’IA · ligne " + a.n + " · arrêt " + (B.i + 1) + " sur " + B.A.length + (d === "o" ? " · gardée" : d === "n" ? " · refusée" : "") + "</div>";
-  touches.innerHTML = "<span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> oui, c’est une faute</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>Échap</kbd> revenir à la recopie</span>";
+  carte.innerHTML = '<div class="rc-bande-mot"><span class="rc-eleve">' + escapeHtml(a.g.eleve || "(mot manquant)") + '</span> <span class="rc-fleche">→</span> <span class="rc-corr">' + escapeHtml(a.g.corrige || "(mot en trop)") + "</span></div><div class=\"rc-bande-pied\">" + rcTypeFaute(a.g).nom + " · proposé par l’IA · ligne " + a.n + " · arrêt " + (B.i + 1) + " sur " + B.A.length + (d === "o" ? " · gardée" : d === "n" ? " · refusée" : "") + "</div>";
+  touches.innerHTML = "<span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> oui, c’est une faute</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span><span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser</span><span><kbd>clic droit</kbd> sur le cadre : faute de ma recopie</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : la remettre</span><span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
   rcBandePhoto(a);
 }
 function rcBandePhoto(a) {
@@ -684,8 +708,46 @@ function rcBandePhoto(a) {
   const im = SC.imgs[a.pid], L = a.l; if (!im || !im.el.complete || !im.el.naturalWidth) return;
   const marge = 0.022, sx = Math.max(0, L.x0 - 0.01) * im.w, sy = Math.max(0, Math.min(L.y0, L.y1) - marge) * im.h, sw = Math.min(im.w - sx, (L.x1 - L.x0 + 0.02) * im.w), sh = Math.min(im.h - sy, (Math.abs(L.y1 - L.y0) + marge * 1.5) * im.h);
   const k = Math.min(w / sw, h / sh), dx = (w - sw * k) / 2, dy = (h - sh * k) / 2; x.drawImage(im.el, sx, sy, sw, sh, dx, dy, sw * k, sh * k);
-  const q = rcPlaceSeg(a), X = u => dx + (u * im.w - sx) * k, a0 = X(q.x0), a1 = Math.max(X(q.x1), a0 + 6);
-  x.fillStyle = "rgba(232,180,40,.28)"; x.strokeStyle = "#c79a17"; x.lineWidth = 2; x.fillRect(a0 - 4, 4, a1 - a0 + 8, h - 8); x.strokeRect(a0 - 4, 4, a1 - a0 + 8, h - 8);
+  const q = rcPlaceSeg(a), X = u => dx + (u * im.w - sx) * k, Y = v => dy + (v * im.h - sy) * k, a0 = X(q.x0), a1 = Math.max(X(q.x1), a0 + 6), b0 = Math.max(2, Y(q.y0)), b1 = Math.min(h - 2, Math.max(Y(q.y1), b0 + 10));
+  x.fillStyle = "rgba(232,180,40,.28)"; x.strokeStyle = "#c79a17"; x.lineWidth = 2; x.fillRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6); x.strokeRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6);
+  if (q.type.manque) { const m = (a0 + a1) / 2; x.strokeStyle = "#c53030"; x.lineWidth = 3; x.beginPath(); x.moveTo(m - 9, b1 + 1); x.lineTo(m, b0 + 4); x.lineTo(m + 9, b1 + 1); x.stroke(); }
+  RC.bd.boite = { a0: a0 - 6, a1: a1 + 6, par: 1 / (k * im.w), q };
+}
+function rcBandeGlisser(du) {
+  const B = RC.bd, a = B && B.A[B.i]; if (!a || B.attente) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a), x0 = rcBorne(q.x0 + du, 0, 0.99), x1 = rcBorne(q.x1 + du, 0.01, 1);
+  rcLigneMaj(B.k, a.pid, a.id, l => { l.places = Object.assign({}, l.places, { [a.cle]: { x0, x1 } }); });
+  const mk = a.l.marquesBande && a.l.marquesBande[a.cle], m = mk && scCopie(B.k).marques[mk]; if (m) { const r = rcPlaceSeg(a); Object.assign(m, { x0: r.x0, x1: r.x1, y0: r.y0, y1: r.y1, modifieLe: new Date().toISOString() }); }
+  rcBandePhoto(a);
+}
+function rcBandeSouris() {
+  const cv = RC.ui.querySelector("#rcBandePhoto"); if (cv.dataset.branche) return; cv.dataset.branche = "1";
+  const dedans = ev => { const b = RC.bd && RC.bd.boite, r = cv.getBoundingClientRect(), x = (ev.clientX - r.left) * cv.width / r.width; return b && x >= b.a0 && x <= b.a1 ? x : null; };
+  cv.addEventListener("pointerdown", ev => { if (ev.button !== 0 || !RC.bd || dedans(ev) === null) return; ev.preventDefault(); cv.setPointerCapture(ev.pointerId); RC.bd.tire = { x: ev.clientX }; });
+  cv.addEventListener("pointermove", ev => { const t = RC.bd && RC.bd.tire; if (!t) return; const r = cv.getBoundingClientRect(), dpx = (ev.clientX - t.x) * cv.width / r.width; t.x = ev.clientX; rcBandeGlisser(dpx * RC.bd.boite.par); });
+  const fin = () => { if (RC.bd && RC.bd.tire) { RC.bd.tire = null; saveState(); } }; cv.addEventListener("pointerup", fin); cv.addEventListener("pointercancel", fin);
+  cv.addEventListener("contextmenu", ev => { if (!RC.bd || RC.bd.attente) return; ev.preventDefault(); if (dedans(ev) !== null) rcBandeRecopie(); });
+}
+/* 1.4.3 (Paul 12:15) : clic droit sur le cadre = une faute de ta recopie ; la ligne prend la forme du corrigé à cet endroit et la faute disparaît ; Ctrl + Z la remet */
+function rcBandeRecopie() {
+  const B = RC.bd, a = B.A[B.i]; if (!a) return; const L = a.l, t = L.texte, P = rcPosMots(t), Q = rcPosMots(L.corrige), g = a.g;
+  const sub = g.a2 > g.de2 ? L.corrige.slice(Q[g.de2][0], Q[g.a2 - 1][1]) : ""; let n;
+  if (g.a > g.de) { let c0 = P[g.de][0], c1 = P[g.a - 1][1]; if (sub) n = t.slice(0, c0) + sub + t.slice(c1); else { if (t[c1] === " ") c1++; else if (c0 > 0 && t[c0 - 1] === " ") c0--; n = t.slice(0, c0) + t.slice(c1); } }
+  else { const pos = g.de > 0 ? P[g.de - 1][1] : 0, colle = /^[.,;:!?…)»]/.test(sub); n = pos === 0 ? sub + " " + t : t.slice(0, pos) + (colle ? "" : " ") + sub + t.slice(pos); }
+  const sig = segs => { const c = {}; return segs.map(x => { const b = x.eleve + "→" + x.corrige; c[b] = (c[b] || 0) + 1; return b + "#" + c[b]; }); }, cle = x => x.de + "-" + x.a + "/" + x.de2 + "-" + x.a2;
+  const anc = rcEcarts(t, L.corrige).segs, nouv = rcEcarts(n, L.corrige).segs, sA = sig(anc), sN = sig(nouv), map = {};
+  sA.forEach((v, i) => { const j = sN.indexOf(v); if (j >= 0 && cle(anc[i]) !== a.cle) map[cle(anc[i])] = cle(nouv[j]); });
+  const avant = { texte: t, corrigeDe: L.corrigeDe, decisions: JSON.parse(JSON.stringify(L.decisions || {})), marquesBande: JSON.parse(JSON.stringify(L.marquesBande || {})), places: JSON.parse(JSON.stringify(L.places || {})) };
+  const s = scCopie(B.k), mk = L.marquesBande && L.marquesBande[a.cle], retiree = mk && s.marques[mk] ? JSON.parse(JSON.stringify(s.marques[mk])) : null; if (retiree) scEffacer(mk);
+  const re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; }); return r; };
+  rcLigneMaj(B.k, a.pid, a.id, l => { l.texte = n; l.corrigeDe = n; l.decisions = re(avant.decisions); l.marquesBande = re(avant.marquesBande); l.places = re(avant.places); l.recopieCorrigee = (l.recopieCorrigee || 0) + 1; });
+  (B.annule = B.annule || []).push({ k: B.k, pid: a.pid, id: a.id, avant, retiree, i: B.i });
+  saveState(); B.A = rcArrets(B.k); B.i = Math.min(B.i, B.A.length); B.note = "Faute de recopie : « " + (g.eleve || "∅") + " » devient « " + (sub || "∅") + " ». Ctrl + Z pour la remettre."; rcBandeRendre();
+}
+function rcBandeRemettre() {
+  const B = RC.bd, u = B && B.annule && B.annule.pop(); if (!u) { toast("Rien à remettre."); return; }
+  rcLigneMaj(u.k, u.pid, u.id, l => Object.assign(l, JSON.parse(JSON.stringify(u.avant))));
+  if (u.retiree) { const s = scCopie(u.k); s.marques[u.retiree.id] = u.retiree; scNumeroter(u.k); }
+  saveState(); B.A = rcArrets(B.k); B.i = Math.min(u.i, B.A.length); B.note = "Faute remise."; rcBandeRendre();
 }
 function rcBandeClavier(ev) {
   const B = RC.bd; ev.stopPropagation();
@@ -693,7 +755,9 @@ function rcBandeClavier(ev) {
   if (B.attente) { if (ev.key === "Enter") { ev.preventDefault(); rcBandeCommencer(); } return true; }
   if ((ev.key === "Enter" || ev.key === " ") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("o"); return true; }
   if ((ev.key === "n" || ev.key === "N") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("n"); return true; }
-  if (ev.key === "Backspace") { ev.preventDefault(); B.i = Math.max(0, B.i - 1); rcBandeRendre(); return true; }
+  if (ev.key === "Backspace") { ev.preventDefault(); B.i = Math.max(0, B.i - 1); B.note = ""; rcBandeRendre(); return true; }
+  if (ev.key === "ArrowLeft" || ev.key === "ArrowRight") { ev.preventDefault(); rcBandeGlisser(ev.key === "ArrowLeft" ? -0.004 : 0.004); saveState(); return true; }
+  if ((ev.ctrlKey || ev.metaKey) && (ev.key === "z" || ev.key === "Z")) { ev.preventDefault(); rcBandeRemettre(); return true; }
   return true;
 }
 function rcClavier(ev) {

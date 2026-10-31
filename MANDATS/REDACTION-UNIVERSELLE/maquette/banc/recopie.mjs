@@ -266,6 +266,31 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir }) {
   await pg.click("#rcBandeOuvrir"); await att(200); const autreK = await pg.evaluate(k => SC.copies.find(x => x !== k), kC); await pg.selectOption("#rcCopie", autreK); await att(250);
   const change = await pg.evaluate(k => !RC.bd && RC.copie === k && !document.querySelector("#rcEcran").classList.contains("rc-mode-bande"), autreK);
   verif("recopie (1.4.2) : « ← Revenir à la recopie » sort de la bande ; changer de copie ferme la bande et ouvre la recopie de l'autre élève", sorti && change);
+  // 1.4.3 (Paul 11:25 et 12:15) : le type de faute, le cadre qu'on glisse, le clic droit (faute de ma recopie) et Ctrl + Z
+  const cible2 = (await pg.evaluate(pid => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.pid === pid && y.l.texte === "Deux mots"); if (x) return x.id; } return null; }, derniere.id)) || cibleId;
+  const kC2 = await pg.evaluate(id => SC.copies.find(k => rcLignesEcrites(k).some(x => x.id === id)), cible2);
+  const re3 = JSON.parse(brut); re3.copies.forEach(c => c.pages.forEach(q => q.lignes.forEach(l => { if (l.id === cible2) l.texte = "Deux beaux mots"; })));
+  await pg.selectOption("#rcCopie", kC2); await att(250); await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(re3)); await pg.click("#rcIAValider"); await att(300); await pg.click("#rcIAFermer");
+  await pg.click("#rcBandeOuvrir"); await att(200); if (await pg.locator("#rcBandeCommencer").count() && await pg.locator("#rcBandeCommencer").isVisible()) { await pg.click("#rcBandeCommencer"); await att(150); }
+  const i3 = await pg.evaluate(id => RC.bd.A.findIndex(x => x.id === id), cible2); await pg.click('#rcBandeListe li[data-i="' + i3 + '"]'); await att(150);
+  const t3 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i], q = rcPlaceSeg(a), m = (q.x0 + q.x1) / 2, tr = q.encre.traits || [], bl = []; for (let i = 0; i + 1 < tr.length; i++) bl.push([tr[i][1], tr[i + 1][0]]); bl.sort((p, r) => (r[1] - r[0]) - (p[1] - p[0]));
+    return { nom: q.type.nom, large: q.x1 - q.x0, dans: !!bl.length && m >= bl[0][0] && m <= bl[0][1], haut: q.y1 > q.y0, carte: document.querySelector("#rcBandeCarte").textContent }; });
+  await cap("C14-31-mot-manquant");
+  verif("recopie (1.4.3) : un mot manquant ne tombe pas sur un mot : un ∧ étroit dans le blanc entre « Deux » et « mots » sur la photo, et la carte dit « Mot manquant » (" + t3.nom + ", " + t3.large.toFixed(3) + ")", t3.nom === "Mot manquant" && t3.large < 0.01 && t3.dans && t3.haut && /Mot manquant/.test(t3.carte));
+  const cvb = await pg.locator("#rcBandePhoto").boundingBox(), bo = await pg.evaluate(() => ({ a0: RC.bd.boite.a0, a1: RC.bd.boite.a1, w: document.querySelector("#rcBandePhoto").width, x0: rcPlaceSeg(RC.bd.A[RC.bd.i]).x0 }));
+  const cx = cvb.x + (bo.a0 + bo.a1) / 2 * cvb.width / bo.w, cy = cvb.y + cvb.height / 2;
+  await pg.mouse.move(cx, cy); await pg.mouse.down(); await pg.mouse.move(cx + 40, cy, { steps: 6 }); await pg.mouse.up(); await att(150);
+  const gl = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i]; return { x0: rcPlaceSeg(a).x0, garde: !!(a.l.places && a.l.places[a.cle]) }; });
+  verif("recopie (1.4.3) : le cadre se glisse à la souris et garde sa nouvelle place (" + bo.x0.toFixed(3) + " → " + gl.x0.toFixed(3) + ")", gl.x0 > bo.x0 + 0.005 && gl.garde);
+  const avR = await pg.evaluate(() => ({ n: RC.bd.A.length, t: RC.bd.A[RC.bd.i].l.texte })), bo2 = await pg.evaluate(() => ({ a0: RC.bd.boite.a0, a1: RC.bd.boite.a1, w: document.querySelector("#rcBandePhoto").width }));
+  await pg.mouse.click(cvb.x + (bo2.a0 + bo2.a1) / 2 * cvb.width / bo2.w, cy, { button: "right" }); await att(200);
+  const apR = await pg.evaluate(id => ({ n: RC.bd.A.length, t: rcLignesEcrites(RC.bd.k).find(x => x.id === id).l.texte, note: document.querySelector("#rcBandeTouches").textContent }), cible2);
+  await pg.keyboard.press("Control+z"); await att(200);
+  const reR = await pg.evaluate(id => ({ n: RC.bd.A.length, t: rcLignesEcrites(RC.bd.k).find(x => x.id === id).l.texte }), cible2);
+  verif("recopie (1.4.3) : clic droit sur le cadre = faute de ma recopie : la ligne devient « " + apR.t + " », la faute disparaît ; Ctrl + Z la remet (" + avR.n + " → " + apR.n + " → " + reR.n + " arrêts)", apR.t === "Deux beaux mots" && apR.n === avR.n - 1 && /Faute de recopie/.test(apR.note) && reR.t === avR.t && reR.n === avR.n);
+  await pg.click("#rcBandeRetour"); await att(150);
+  const feuille = await pg.evaluate(id => { const i = document.querySelector('.rc-saisie[data-ligne="' + CSS.escape(id) + '"]'); return i ? i.value : null; }, cible2);
+  verif("recopie (1.4.3) : de retour dans la recopie, la feuille montre le texte à jour", feuille === null || feuille === reR.t);
   await pg.setViewportSize({ width: 1536, height: 864 }); await pg.click("#rcFermer"); await att(180);
   verif("recopie : fermer rend les quatre passes, les anciennes corrections et leurs gestes", await pg.locator("#scanEcran").isVisible() && !(await pg.locator("#rcEcran").isVisible()) && await pg.locator(".sc-passe").count() === 4);
 }

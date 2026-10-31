@@ -1855,3 +1855,24 @@ MEMO
 
 31/10/2026 16:10
 MEMO
+
+## Tour 81 — 31/10/2026 17:03 → 31/10/2026 17:10
+
+**Paul :** En revanche une fois comptée, plus besoin de la notification. Par ailleurs il faut trouver un moyen pour charger plus que 4 copies, c'est super pénible
+
+**Fait.** La notification : le bandeau « Exporté : … » ajouté en 1.4.8 (`rcExportIA`) redit ce que le compteur montre. Mesuré au hub, lecture seule, dossier privé, sur les 28 copies recopiées (869 lignes écrites, 671 corrigées par l'IA) : le retour de l'IA au format d'aujourd'hui (indenté, toutes les lignes, la consigne recopiée en tête, comme sur la capture de 15:56) fait 4 779 signes par copie ; 4 copies et la consigne, environ 20 000 signes, c'est ce qui passe. Au même budget : un retour compact (seulement « identité de la ligne : ligne corrigée », sans consigne ni indentation) fait 2 341 signes par copie, soit 8 copies par envoi ; seulement les lignes corrigées : 1 882, soit 10. Pour les types (240) des copies déjà corrigées, l'IA n'a besoin de rendre qu'une lettre par arrêt.
+
+**Claude :**
+
+À jouer : 274 (ton ok) · en cours : rien · ouvert : 220 ; 234 ; 274.
+
+272. La notification : d'accord, je la retire. C'est le bandeau « Exporté : 4 copies… » qui s'affiche après un export ; le compteur d'en haut dit déjà la même chose.
+
+273. Charger plus de 4 copies : la limite vient de l'IA, qui coupe une réponse trop longue. Aujourd'hui, elle recopie toute la consigne et toutes les lignes, avec des espaces partout. J'ai mesuré sur tes 28 copies : 4 779 signes par copie, et environ 20 000 signes passent, d'où les 4 copies. Ce que je propose, en trois choses. Un : l'IA ne rend plus que « la ligne : sa correction », sans recopier la consigne ni rien d'autre ; c'est deux fois plus court, donc 8 copies par envoi au lieu de 4. Deux : si une réponse arrive coupée quand même, l'app garde les copies complètes et ne rejette que la dernière, qui repart au prochain export ; on peut donc essayer de plus gros envois sans rien risquer. Trois : pour le type des fautes (240) de tes 28 copies déjà corrigées, l'IA ne reçoit que les arrêts et ne rend qu'une lettre par arrêt ; tes 28 copies passent en un ou deux envois, au lieu de sept.
+
+274. La consigne de l'IA change pour ça : je te montre les nouvelles phrases avant de les mettre. Je fais 272 et 273 dans une même version, avant la bande en continu ?
+
+À tester : rien de neuf en ligne.
+
+31/10/2026 17:10
+MEMO

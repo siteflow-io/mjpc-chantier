@@ -1637,3 +1637,24 @@ Pour tes lignes déjà corrigées, tu gardes le même bouton « Exporter pour l'
 
 31/10/2026 15:03
 MEMO
+
+## Tour 72 — 31/10/2026 15:06 → 31/10/2026 15:10
+
+**Paul :** promeus
+
+**Fait.** Mise en ligne de `redaction.html` 1.4.5-RU : 1.4.4 copiée au sas (`SAUVEGARDES/redaction-1.4.4-RU-avant-1.4.5-2026-10-31.html`, sas a4b3a7d4) ; candidate identique à celle du sas ; commit prod `656a3f6`, blob `0d893dff8e84`, md5 `3374bc96af2470137b1d024ec7ad215d`, 664 077 o ; en ligne bit à bit à la 4e lecture (15:08). Docs de suivi en prod (d3e06a7) : journal, point de retour, registre (les deux mots pris ensemble ✔ en ligne, ② ouverte), adresse `&v=1.4.5-RU`.
+
+**Claude :**
+
+À jouer : tester la 1.4.5 · en cours : rien · ouvert : 220 ; 234 ; 240.
+
+244. La 1.4.5 est en ligne, vérifiée bit à bit à 15:08 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.5-RU. La dette ② (tes mots, 234) reste ouverte.
+
+245. Ensuite, dans l'ordre de 238 : le type donné par l'IA, dès que tu valides la consigne (240) ; puis la place et la hauteur du cadre (237).
+
+À tester :
+1. Recharge la page, ouvre la recopie, puis la bande de sa copie : « se plaint » fait deux arrêts (« se → nous » et « plaint → plaignons »), tous deux cochés ✓, et la liste compte 9 arrêts de plus.
+2. Dans l'écran des scans, sur sa copie, chacun de ces mots a son trait ; la « note maintenant » de la bande tient compte des 62 fautes.
+
+31/10/2026 15:10
+MEMO

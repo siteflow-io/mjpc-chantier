@@ -1964,3 +1964,26 @@ MEMO
 
 31/10/2026 19:38
 MEMO
+
+## Tour 85 — 31/10/2026 19:39 → 31/10/2026 19:50
+
+**Paul :** Il faut que tout ce qui concerne la bande disparaisse je pense. Sinon on va mélanger les données dune ia avec une autre et ça va crasher. L'idée est de nettoyer à fond puis refaire. Et moi ça me permet de tester le flux l'esprit tranquille.
+
+**Fait.** Le bouton de la 1.4.9 refait : « 🗑 Tout effacer : corrigés de l’IA et bande ». Il efface, sur toute la classe, ce que l'IA a rendu (`corrige`, `corrigeDe`, `corrigeLe`, `types`, `typesDe`) et tout ce qui vient de la bande : décisions, cadres visés (`places`), les liens vers les marques (`marquesBande`), les marques posées par la bande (celles qui portent `bande`), l'arrêt gardé (`bandeArret`), le début de la bande (`bandeDebut`) ; sur toutes les lignes, même retirées ou vidées. Il ne touche jamais au texte recopié, aux lignes et à leurs places, aux lignes retirées, à la marge, ni aux marques d'avant mises de côté (`marquesAnciennes`), ni aux autres marques. Export puis corbeille (`nettoyage-ia-et-bande_*`) d'abord. Erreur à moi trouvée par le banc et corrigée : un commentaire avait avalé la lecture des champs de chaque ligne (rien n'était compté). Banc 119/0 (vérification par le geste : lignes touchées 8 → 0, marques de la bande et début de bande 4 → 0, arrêts gardés 2 → 0, au faux site aussi ; la recopie, les marques d'avant et les autres marques identiques au caractère près). Au site, lecture seule, le bouton effacerait : le corrigé de 869 lignes sur 28 copies, 135 décisions, 134 marques posées par la bande, 99 cadres visés, 4 débuts de bande ; 540 autres marques resteraient. Vrai site : aucune différence avec la 1.4.8. Candidate 1.4.9-RU : 679 353 o, md5 1490e03e0057ddb7f0b849b43c401c37. Branche c14-poignees ; registre (prod).
+
+**Claude :**
+
+À jouer : promeus (1.4.9) · en cours : rien · ouvert : 220 ; 234.
+
+290. D'accord, c'est refait. Le bouton s'appelle maintenant « 🗑 Tout effacer : corrigés de l’IA et bande ». Il efface, sur toute la classe, ce que l'IA a rendu et tout ce qui vient de la bande : tes décisions, les marques posées par la bande, les cadres visés, l'arrêt où tu en étais, le début de la bande. Plus rien ne peut se mélanger avec le prochain import.
+
+291. Ce qui ne bouge jamais : ta recopie (le texte, les lignes, leurs places, les lignes retirées, la marge), les marques d'avant mises de côté et tes autres marques. Vérifié sur le banc, au caractère près. Tout passe d'abord par l'export et la corbeille MJPC ; si la corbeille ne répond pas, rien n'est effacé.
+
+292. Sur ton site, il effacerait : le corrigé de 869 lignes sur 28 copies, 135 décisions, 134 marques posées par la bande, 99 cadres visés, et 4 débuts de bande. 540 autres marques resteraient.
+
+293. Ensuite, l'envoi unique (283), puis le flux (284), avec une capture d'abord.
+
+À tester, une fois en ligne : dans la recopie, « Charger le corrigé de l’IA », puis « 🗑 Tout effacer : corrigés de l’IA et bande » : lis la question et clique « Annuler ». N'efface vraiment qu'une fois l'envoi unique en ligne.
+
+31/10/2026 19:50
+MEMO

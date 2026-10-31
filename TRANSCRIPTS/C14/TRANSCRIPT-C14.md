@@ -1876,3 +1876,39 @@ MEMO
 
 31/10/2026 17:10
 MEMO
+
+## Tour 82 — 31/10/2026 17:09 → 31/10/2026 17:16
+
+**Paul (17:09) :** Ok. Par ailleurs à inscrire au plan de codage: il faudra trouver une solution pour emporter les copies d'un ordi à un autre
+
+**Claude (message envoyé pendant le travail, 17:10) :**
+
+À jouer : 277 (tes mots sur les deux consignes) · en cours : 1.4.9 (je code) · ouvert : 220 ; 234 ; 277.
+
+275. C'est noté au plan de codage : emporter les copies d'un ordinateur à un autre. Aujourd'hui, tes photos ne vivent que dans ce navigateur ; tout le reste est au site.
+
+276. Je code la 1.4.9 (272 et 273), avec 8 copies par envoi pour les corrigés et 14 pour les types.
+
+277. Voici les phrases de consigne, à valider ou à changer avant la mise en ligne.
+La consigne des corrigés reste la même, sauf la dernière phrase, qui devient : « Rends uniquement, sans aucun commentaire et sans recopier cette consigne, un JSON compact sur une seule ligne : {"format":"mjpc-recopie-ia-2","lignes":{"identifiant de la ligne":"la ligne corrigée"}}, avec toutes les lignes reçues, dans le même ordre, même celles qui n'ont pas de faute. »
+La consigne des types est nouvelle : « Tu reçois des lignes de rédactions d'élèves de 3e et, pour chacune, ses fautes déjà trouvées, dans l'ordre : le mot de l'élève, puis le mot juste (vide quand un mot manque ou est en trop). Pour chaque faute, donne une seule lettre, son type : G grammaire (accord, conjugaison, homophone grammatical), L lexique (l'orthographe du mot lui-même), C accent, majuscule ou trait d'union, P ponctuation, E élision (apostrophe), M mot manquant, X mot en trop. Rends uniquement, sans aucun commentaire et sans recopier cette consigne, un JSON compact sur une seule ligne : {"format":"mjpc-types-ia-1","types":{"identifiant de la ligne":"les lettres, une par faute, dans l'ordre"}}, avec toutes les lignes reçues. »
+Tu valides ?
+
+**Fait (17:10 → 17:13).** Codé dans la branche, sans banc passé : le bandeau d'export retiré ; 8 copies par envoi ; le retour compact (`mjpc-recopie-ia-2`), l'ancien toujours lu ; un retour coupé garde ses paires complètes et ne charge que les copies entières ; le même bouton exporte les types quand toutes les copies ont leur corrigé (`mjpc-types-ia-1`, 14 copies) ; le type de l'IA, quand il est là, passe avant le moteur (`rcCodeArret`) et va aussi dans les marques déjà posées ; le compteur d'en haut compte aussi les types. Banc en cours d'écriture ; arrêté par Paul à 17:13.
+
+**Paul (17:13) :** Mais les fautes ne sont pas déjà trouvées, si?
+
+**Claude :**
+
+À jouer : 280 (ton mot) · en cours : rien, arrêté sur ton signal · ouvert : 220 ; 234 ; 277 ; 280.
+
+278. Pour tes 28 copies, si : elles sont trouvées. Le corrigé de l'IA que tu as chargé, comparé à ta recopie, donne déjà chaque faute : ce sont les arrêts de la bande, 1 023 en tout. Le passage des types n'envoie que ces fautes (le mot de l'élève, le mot juste, avec la ligne), et l'IA ne rend qu'une lettre par faute ; elle ne recorrige rien.
+
+279. Pour une nouvelle rédaction, rien n'est trouvé avant le corrigé : d'abord le corrigé (l'IA corrige les lignes, l'app en tire les fautes), puis les types, par le même bouton, en un ou deux envois. On pourrait tout faire en un seul envoi : l'IA rendrait, pour chaque ligne, sa correction et une lettre par mot changé. Mais son découpage des mots peut différer de celui de l'app (une apostrophe, un mot coupé), et une lettre tomberait alors sur la mauvaise faute. Je le déconseille : le deuxième envoi est court.
+
+280. Pour que la consigne des types ne prête pas à confusion, je propose de remplacer « ses fautes déjà trouvées » par « la liste de ses fautes, tirée de sa correction ». Tu valides cette version des deux consignes (277) ? La 1.4.9 n'est pas finie : je me suis arrêté sur ton signal, le banc n'est pas passé. Je reprends à ton mot.
+
+À tester : rien de neuf en ligne.
+
+31/10/2026 17:16
+MEMO

@@ -2036,3 +2036,20 @@ MEMO
 
 31/10/2026 20:34
 MEMO
+
+## Tour 88 — 31/10/2026 20:43 → 31/10/2026 20:44
+
+**Paul :** 99 pourcent. Refund dans 1h20 environ.
+
+**Fait.** Rien, pour ne pas consommer.
+
+**Claude :**
+
+À jouer : promeus (1.4.10), quand tu veux · en cours : rien · ouvert : 220 ; 234.
+
+302. Noté, je ne fais plus rien d'ici là. La 1.4.10 attend ton « promeus ». À 22:07, le rappel lance la liste des fonctions qui ne servent plus (225).
+
+À tester : rien de neuf en ligne.
+
+31/10/2026 20:44
+MEMO

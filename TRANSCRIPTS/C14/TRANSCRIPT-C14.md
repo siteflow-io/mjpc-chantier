@@ -2053,3 +2053,20 @@ MEMO
 
 31/10/2026 20:44
 MEMO
+
+## Tour 89 — 31/10/2026 20:45 → 31/10/2026 20:48
+
+**Paul :** Promeus
+
+**Fait.** Mise en ligne de `redaction.html` 1.4.10-RU : 1.4.9 copiée au sas (`SAUVEGARDES/redaction-1.4.9-RU-avant-1.4.10-2026-10-31.html`) ; candidate identique à celle du sas ; commit prod `a6ab9fe`, blob `34c2a59b139c`, md5 `2c4043460b49e560fac754f3d94ce6e9`, 684 342 o ; en ligne bit à bit. Docs de suivi en prod : journal, point de retour, registre, adresse `&v=1.4.10-RU`.
+
+**Claude :**
+
+À jouer : la reprise (300) · en cours : rien · ouvert : 220 ; 234.
+
+303. La 1.4.10 est en ligne, vérifiée bit à bit : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.10-RU. Recharge la page avant la reprise (300).
+
+À tester : « 🗑 Tout effacer », puis « Exporter pour l’IA » : 8 copies, la consigne avec les lettres entre accolades ; la réponse chargée dit combien de fautes ont leur type.
+
+31/10/2026 20:48
+MEMO

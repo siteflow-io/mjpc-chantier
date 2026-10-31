@@ -2150,3 +2150,43 @@ MEMO
 31/10/2026 22:48
 
 MEMO
+
+## Tour 94 — 31/10/2026 22:56 → 31/10/2026 23:02
+
+**Paul :** Fais moi des propositions pour tous les points où tu as besoin de mes cadrages. Tu reprends mon objectif principal en tête.
+
+**Fait (entre 22:48 et 22:56).** Écrit au sas les mandats de la nuit (`MANDATS/REDACTION-UNIVERSELLE/NUIT-31-10/` : COMMUN, A la bande, D l'accueil, E l'élève, commit `bedb155d`) ; trois arbres de travail `c14-nuit-a`, `c14-nuit-d`, `c14-nuit-e` depuis `c14-poignees` (`80085a34`, poussée au sas) ; trois exécutants neufs lancés, un verrou commun pour que deux bancs ne tournent jamais ensemble ; quatre réveils posés (00:30, 02:00, 03:30, 04:45). Lu au vrai site, en lecture seule, dans le dossier privé : chaque copie porte déjà une identité interne ; transmis à l'exécutant A. La mesure du seuil de ressemblance (A2) a été arrêtée par le message de Paul.
+
+**Claude :**
+
+Ton objectif : « parler réellement de la copie en y passant le moins de temps possible, automatiser le plus » (29/10) ; deux passages par copie, la recopie et la bande, tout le reste automatique (31/10 17:18) ; l'app opérationnelle à 6h.
+
+À jouer : un mot sur 318 à 328 (« ok », ou un numéro à changer) · en cours : trois exécutants (la bande ⇧R et l'IA sans mélange ; l'accueil, le bilan, les fiches, le rangement ; la copie de l'élève en couleurs et emporter les copies) · ouvert : 318 à 328
+
+318. Mise en ligne (316) : je mets en ligne seul à 5h30, seulement si le banc est vert et si le vrai site, ouvert en lecture, donne les mêmes copies, lignes, fautes et notes qu'en 1.4.10 ; le point de retour est prêt. À 6h tu ouvres et tu corriges, sans geste. Sinon elle t'attend au sas.
+
+319. Les mots de l'élève (317, dette ②) : tu valides tels quels les mots de 234 qui ne changent pas, et les trois nouveaux : « Tes fautes : 3 soulignées sur ta copie, chacune dans la couleur de son type. » ; « Faute 2 sur 3 · Grammaire » ; « Ta copie passe d'abord à travers la langue : tes erreurs apparaissent, soulignées dans la couleur de leur type. ». Un « ok » ferme la dette ②.
+
+320. La grille (les 51 questions, les stickers, les passes) : la grille devient des stickers de réussite, un fait chacun, comme « Le thème tenu ». L'IA les propose dans le même envoi que la correction, avec le passage qui le prouve ; la bande s'y arrête après les fautes : Entrée gardé, N non, le compte et les points en direct. Les quatre passes quittent l'écran : il reste « Recopier » et « La bande ». Cette nuit, je rédige toute la grille en stickers à partir des 51 questions, numérotés, au sas ; à 6h tu valides ou tu changes par numéro ; je code après ton mot. Pour cette classe-ci seulement, les copies déjà chargées repartent une fois chez l'IA pour les stickers (4 envois de 8 copies, même bouton).
+
+321. La phrase qui m'a touché : l'IA la propose dans ce même envoi, avec une raison en mots généraux ; la bande s'y arrête en dernier ; Entrée = gardée (l'étoile sur la copie, la raison dans le fichier de l'élève), N = non.
+
+322. La place du cadre (237) : à chaque cadre que tu glisses, l'app garde aussi où elle l'avait posé (rien de visible). Je mesure sur ton travail de la semaine, sans photo à m'envoyer, et je ne touche au calcul qu'avec ces chiffres.
+
+323. 220 : on ferme 53 (le fichier texte par classe : tu recopies dans l'app) et 36 (tes photos de pages entières : remplacées par 322).
+
+324. La taxonomie : l'IA ne donne que la lettre, comme ce soir. L'app précise la notion avec le moteur de la dictée quand il sait le faire (homophones, accords, conjugaison), avec les noms de la taxonomie de la dictée (Eduscol). Le Bilan de la classe compte par notion, pour la remédiation. Rien de plus pour toi. Je mesure cette nuit comment la dictée la branche ; si ça ne colle pas, je te le dis à 6h.
+
+325. La variante du sujet : l'IA la dit dans le même envoi (elle lit la copie), aucun geste. L'alerte « déclassement DNB » : une colonne du Bilan de la classe, jamais une alerte.
+
+326. Les exigences du 29/10 : « verser dans la grille » et « le journal pour l'IA » sont fermés (la recopie et la bande sont ce journal) ; « au plus 30 clics » et « mesurer le gain » se mesurent seuls : le flux montre pour chaque copie le temps de recopie, le temps de bande et le nombre de gestes ; les règles 12 et 13 de la grille sont écrites dans les stickers (320) ; L M C D va avec la correction par l'élève ; le profil de la classe vient après la rédaction.
+
+327. La feuille qui épouse la fin de l'encre (152) : la bande place déjà les mots dans l'encre depuis la 1.4.3 ; ce qui reste ne change que l'apparence de ta recopie, rien à ton temps. On le range.
+
+328. La correction par l'élève (le second temps) : elle vient après la grille en stickers. L'élève corrige ses fautes comme en correction de dictée (mêmes touches, même compteur), sur sa copie en couleurs.
+
+À tester : rien cette nuit ; à 6h, la candidate 1.4.12 sur ses captures et la grille en stickers au sas.
+
+31/10/2026 23:02
+
+MEMO

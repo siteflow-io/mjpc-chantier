@@ -29,9 +29,9 @@ Ce que le site ne garde pas, je ne peux pas le mesurer : « ⇥ Replier », « �
 | E6 | 📂 Mon dossier | nouveau (1.4.13) | **Garder.** |
 | E7 | 🖨 Copies vierges | aucune page de ta classe ne vient d'elles | **Ranger.** Tes copies sont sur papier ordinaire ; à rendre le jour où tu en imprimes. |
 | E8 | 🔤 Les initiales | sert à chaque paquet | **Garder.** |
-| E9 | 📨 Fichiers École Directe | — | **Retirer du haut** : le même bouton est dans Données › Fiches élèves. Le geste reste là-bas. |
-| E10 | ↺ Remettre à zéro | — | **Déplacer** près des outils de la copie (geste rare) : il ne prend plus de place en haut. |
-| E11 | ✕ Fermer | — | **Garder.** |
+| E9 | 📨 Fichiers École Directe | — | **Retirer du haut** : le même bouton est dans Données › Fiches élèves. Le geste reste là-bas.** ce bouton doit me servir à sortir le zip des pdfs reconstruits.** |
+| E10 | ↺ Remettre à zéro | — | **Déplacer** près des outils de la copie (geste rare) : il ne prend plus de place en haut. | Cette remise à zéro était pour les soulignés au pinceau, or cette fonctionnalité tombe.
+| E11 | ✕ Fermer | — | **Garder.** | Attention à la place des boutons, ils ne doivent pas être sur deux lignes mais sur une seule.
 
 ## Le panneau de droite
 

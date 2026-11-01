@@ -188,7 +188,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   // 1.3.2 (Paul 08:20) : passer d'une page à l'autre au clavier ; guillemets français
   const p0 = await pg.evaluate(() => RC.page); await champ(0).click(); await pg.keyboard.press("ArrowUp"); await att(250);
   const p1 = await pg.evaluate(() => { const d = RC.documents[RC.page]; return { page: RC.page, derniere: RC.ligne === d.ordre[d.ordre.length - 1] }; });
-  await pg.keyboard.type("Ligne de la page précédente");
+  await pg.keyboard.type("Je pense à vous chaque soir, quand le canon se tait.");
   await pg.keyboard.press("Enter"); await att(250); const p2 = await pg.evaluate(() => { const d = RC.documents[RC.page], n = Array.from(document.querySelectorAll("#rcLignesSVG text.rc-numero")).map(t => t.textContent); return { page: RC.page, premiere: RC.ligne === d.ordre[0], av: rcEcritesAvant(RC.page), n, tot: rcEcritesCopie(), compte: document.querySelector("#rcCompte").textContent }; });
   verif("recopie (1.3.2) : le compte court sur toute la copie : une ligne écrite sur la page d'avant décale les numéros de celle-ci (" + p2.av + " avant · " + p2.n.join(",") + " · " + p2.compte + ")", p2.av >= 1 && p2.n[0] === String(p2.av + 1) && p2.compte === p2.tot + " lignes écrites sur la copie");
   verif("recopie (1.3.2) : ↑ sur la première ligne passe à la fin de la page précédente, Entrée sur la dernière revient à la page suivante, sans le menu « Page »", p1.page !== p0 && p1.derniere && p2.page === p0 && p2.premiere);

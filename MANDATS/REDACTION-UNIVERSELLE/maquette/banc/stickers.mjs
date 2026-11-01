@@ -31,17 +31,24 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   await pg.click('#ruOnglets [data-o="pilotage"]'); await att(300); await pg.click('#ruSous [data-s="correction"]'); await att(600);
   await pg.click("#btnScan"); await pg.locator("#scanEcran").waitFor({ state: "visible" }); await att(1200);
   if (!(await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert))) { await pg.click("#btnRecopier"); await att(600); }
+  // l'en-tête d'une vraie lettre de poilu, recopié à la main sur une copie encore à corriger (Paul 27/10 : « un exemple pour le banc doit toujours etre réaliste »)
+  const kE = await pg.evaluate(() => { const L = SC.copies.filter(k => rcLignesEcrites(k).length); const k = L.find(k => rcCopieACorriger(k)) || L[0]; return { k, id: (state.copies[k] || {}).id || null, l: rcLignesEcrites(k).slice(0, 2).map(x => x.id) }; });
+  if (await pg.evaluate(k => RC.copie !== k, kE.k)) { await pg.selectOption("#rcCopie", kE.k); await att(400); if (await pg.evaluate(() => !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(400); } }
+  const ENTETE = ["Tranchée de la cote 304, près de Verdun, le 14 avril 1916", "Ma chère Louise,"];
+  for (let i = 0; i < kE.l.length; i++) { const c = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + kE.l[i] + '"]'); await c.scrollIntoViewIfNeeded(); await c.fill(ENTETE[i]); await att(300); }
   const dl = pg.waitForEvent("download"); await pg.click("#rcExportIA"); const fichier = await (await dl).path(); const ex = JSON.parse(fs.readFileSync(fichier, "utf8"));
   const nCop = ex.copies.length, seul = ex.copies.filter(c => c.seulementStickers).length, sansId = ex.copies.filter(c => !c.copie).length;
-  verif("stickers (1.4.16) : « ⇪ Exporter pour l’IA » : la grille part avec la correction (" + (ex.grille || []).length + " stickers, le sujet : " + (ex.sujet || "").length + " signes, la consigne demande les réussites : " + /reussites/.test(ex.consigne) + ") ; " + nCop + " copies, " + seul + " déjà corrigée(s) pour leurs seules réussites ; chaque copie avec son identité interne (" + (nCop - sansId) + " sur " + nCop + "), aucun nom",
-    (ex.grille || []).length === 44 && (ex.sujet || "").length > 100 && /reussites/.test(ex.consigne) && /\{"s":"fin"\}/.test(ex.consigne.replace(/\\"/g, '"')) && nCop >= 1 && sansId === 0 && !JSON.stringify(ex).includes(await pg.evaluate(() => nomEleveDe(SC.copies[0]))));
+  const idE = await pg.evaluate(k => (state.copies[k] || {}).id, kE.k), c0 = ex.copies.find(c => c.copie === idE);
+  const L0 = c0 ? c0.pages.flatMap(p => p.lignes) : [], entete = L0.slice(0, 2).map(l => l.texte).join(" / ");
+  verif("stickers (1.4.16) : « ⇪ Exporter pour l’IA » : la grille part avec la correction (" + (ex.grille || []).length + " stickers, le sujet : " + (ex.sujet || "").length + " signes, la consigne demande les réussites : " + /reussites/.test(ex.consigne) + ") ; " + nCop + " copies, " + seul + " déjà corrigée(s) pour leurs seules réussites ; chaque copie avec son identité interne (" + (nCop - sansId) + " sur " + nCop + "), aucun nom ; la copie recopiée à l’instant part avec ses lignes (« " + entete + " »)",
+    (ex.grille || []).length === 44 && (ex.sujet || "").length > 100 && /reussites/.test(ex.consigne) && /\{"s":"fin"\}/.test(ex.consigne.replace(/\\"/g, '"')) && nCop >= 2 && seul >= 1 && sansId === 0 && !!c0 && !c0.seulementStickers && entete === ENTETE.join(" / ") && !JSON.stringify(ex).includes(await pg.evaluate(() => nomEleveDe(SC.copies[0]))));
+  if (!c0 || L0.length < 2) return;
   // 5. le retour de l'IA : des réussites sur deux lignes, une de toute la lettre ; une réussite posée sur la ligne d'une autre copie est refusée
-  const c0 = ex.copies[0], L0 = c0.pages.flatMap(p => p.lignes), c1 = ex.copies[1];
-  const mots = t => t.split(/\s+/).slice(0, 3).join(" ");
+  const c1 = ex.copies.find(c => c !== c0);
   const ret = { format: "mjpc-recopie-ia-3", lignes: {}, reussites: {} };
   ex.copies.filter(c => !c.seulementStickers).forEach(c => c.pages.flatMap(p => p.lignes).forEach(l => { ret.lignes[l.id] = l.texte; }));
-  ret.reussites[c0.copie] = [{ s: "S2", l: L0[0].id, m: mots(L0[0].texte) }, { s: "S36", l: (L0[1] || L0[0]).id, m: mots((L0[1] || L0[0]).texte) }, { s: "S38" }, { s: "fin" }];
-  if (c1) ret.reussites[c1.copie] = [{ s: "S8", l: L0[0].id, m: mots(L0[0].texte) }, { s: "fin" }];
+  ret.reussites[c0.copie] = [{ s: "S2", l: L0[0].id, m: "Tranchée de la cote 304, près de Verdun" }, { s: "S36", l: L0[1].id, m: "Ma chère Louise" }, { s: "S38" }, { s: "fin" }];
+  if (c1) ret.reussites[c1.copie] = [{ s: "S8", l: L0[0].id, m: "Tranchée de la cote 304" }, { s: "fin" }];
   await pg.click("#rcImportIA"); await att(200); await pg.locator("#rcIATexte").fill(JSON.stringify(ret)); await pg.click("#rcIAValider"); await att(900);
   const msg = await pg.evaluate(() => document.getElementById("rcIAMessage").textContent); await pg.keyboard.press("Escape"); await att(200);
   const k0 = await pg.evaluate(id => Object.keys(state.copies).find(k => state.copies[k].id === id), c0.copie);

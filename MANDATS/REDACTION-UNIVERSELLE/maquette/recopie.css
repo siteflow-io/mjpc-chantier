@@ -13,8 +13,12 @@
 .rc-apercu>div{display:flex;flex-direction:column;justify-content:center;gap:4px}
 .rc-apercu b{font:600 18px Georgia,serif;color:#426531}
 .rc-apercu span{font-size:12px;color:#685b4a}
-.rc-zoom-bande-c{position:relative;min-width:0}
-.rc-zoom-boutons{position:absolute;right:4px;top:4px;display:flex;align-items:center;gap:4px;z-index:2;background:#fffdf8d9;border-radius:6px;padding:2px 4px}
+/* [C14 1.4.14] (Paul 01/11 09:22 : « les boutons de zoom me cachent le coin supérieur droit de la bande ») : les boutons à droite de la bande, jamais dessus */
+.rc-apercu>.rc-zoom-bande-c{position:relative;min-width:0;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:6px}
+.rc-zoom-bande-c #rcAgrandie{flex:1 1 0;min-width:0;width:auto}
+.rc-zoom-boutons{order:2;flex:none;display:flex;flex-direction:column;align-items:center;gap:2px}
+/* à ×1, les boutons se mettent juste à gauche de la bande, dans le blanc de la colonne d'aide : la bande garde toute sa largeur */
+.rc-ecran:not(.rc-zoom-bande) .rc-zoom-boutons{position:absolute;right:100%;top:50%;transform:translateY(-50%);margin-right:4px}
 .rc-zoom-boutons .sc-btn{padding:1px 8px;font-size:14px}
 .rc-zoom-boutons b{font:600 13px system-ui,sans-serif;color:#5a4a36;min-width:30px;text-align:center}
 .rc-zoom-bande .rc-apercu{grid-template-columns:1fr}

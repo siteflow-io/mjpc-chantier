@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.4.13-RU";
+var APP_VERSION = "1.4.14-RU";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -6672,8 +6672,12 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .rc-apercu>div{display:flex;flex-direction:column;justify-content:center;gap:4px}
 .rc-apercu b{font:600 18px Georgia,serif;color:#426531}
 .rc-apercu span{font-size:12px;color:#685b4a}
-.rc-zoom-bande-c{position:relative;min-width:0}
-.rc-zoom-boutons{position:absolute;right:4px;top:4px;display:flex;align-items:center;gap:4px;z-index:2;background:#fffdf8d9;border-radius:6px;padding:2px 4px}
+/* [C14 1.4.14] (Paul 01/11 09:22 : « les boutons de zoom me cachent le coin supérieur droit de la bande ») : les boutons à droite de la bande, jamais dessus */
+.rc-apercu>.rc-zoom-bande-c{position:relative;min-width:0;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:6px}
+.rc-zoom-bande-c #rcAgrandie{flex:1 1 0;min-width:0;width:auto}
+.rc-zoom-boutons{order:2;flex:none;display:flex;flex-direction:column;align-items:center;gap:2px}
+/* à ×1, les boutons se mettent juste à gauche de la bande, dans le blanc de la colonne d'aide : la bande garde toute sa largeur */
+.rc-ecran:not(.rc-zoom-bande) .rc-zoom-boutons{position:absolute;right:100%;top:50%;transform:translateY(-50%);margin-right:4px}
 .rc-zoom-boutons .sc-btn{padding:1px 8px;font-size:14px}
 .rc-zoom-boutons b{font:600 13px system-ui,sans-serif;color:#5a4a36;min-width:30px;text-align:center}
 .rc-zoom-bande .rc-apercu{grid-template-columns:1fr}
@@ -8159,7 +8163,7 @@ function rcInterface() {
     '<button id="rcRemplacer" class="sc-btn" title="Remplacer la photo de cette page par une meilleure (une photo, ou un PDF d’une page). La feuille garde son identité : ta recopie reste et se recale sur la nouvelle photo, les cadres de la bande se replacent.">📷 Remplacer la photo</button>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
-    '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand est alignée sur la feuille.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
+    '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand va de la marge rouge au bord de la copie.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>',
     '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo"></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
@@ -8438,10 +8442,15 @@ function rcAgrandir() {
   const d = rcDocument(RC.page), ys = d.ordre.map(id => (d.lignes[id].y0 + d.lignes[id].y1) / 2).sort((a, b) => a - b), ecarts = [];
   for (let i = 1; i < ys.length; i++) if (ys[i] - ys[i - 1] > 0.005) ecarts.push(ys[i] - ys[i - 1]);
   const pas = ecarts.length ? ecarts.sort((a, b) => a - b)[ecarts.length >> 1] : (p.lignes && p.lignes.pas) || 0.03;
-  /* ×1 : à l'échelle et à la place de la feuille ; au-dessus : plus grand, la ligne entière centrée dans toute la largeur */
-  const k1 = fr.width / im.w, kPlein = (w - 16) / Math.max(1, (l.x1 - l.x0 + 0.02) * im.w), k = z > 1 ? Math.min(k1 * z, kPlein) : k1;
-  RC.zoomPlein = z > 1 && k1 * z >= kPlein - 1e-9;
-  const gauche = z > 1 ? (w - (l.x1 - l.x0 + 0.02) * im.w * k) / 2 - (l.x0 - 0.01) * im.w * k : fr.left - cr.left;
+  /* [C14 1.4.14] (Paul 01/11 09:22 : « à gauche elle est alignée sur le bord de l'image et non sur le bord de la ligne rouge. Or, c'est bien lui la limite. Si l'élève
+     a écrit quelque chose dans la marge, je le verrai de toute façon sur la photo tout à gauche ») : ×1, la bande va de la marge rouge au bord de la copie, sur toute
+     sa largeur ; au-dessus : plus grand, la ligne entière centrée dans toute la largeur de l'écran. (Avant : ×1 à l'échelle et à la place de la feuille, C14 31/10 07:47.) */
+  const yM = (l.y0 + l.y1) / 2, m = d.marge && !d.marge.absente ? rcBorne(rcMargeX(d, yM), 0, 0.6) : Math.max(0, l.x0 - 0.01);
+  const r = Math.min(1, Math.max.apply(null, d.ordre.filter(id => d.lignes[id]).map(id => d.lignes[id].x1).concat([l.x1])) + 0.01), large = Math.max(1, (r - m) * im.w);
+  const b = Math.min(r, l.x1 + 0.01), utile = Math.max(1, (b - m) * im.w);   // au-dessus de ×1 aussi, la ligne commence à la marge rouge
+  const kb = (Math.min(w, fr.width) - 8) / large, kPlein = (w - 16) / utile, k = z > 1 ? Math.min(kb * z, kPlein) : kb;
+  RC.zoomPlein = z > 1 && kb * z >= kPlein - 1e-9;
+  const gauche = z > 1 ? (w - utile * k) / 2 - m * im.w * k : 4 - m * im.w * k;
   const demi = Math.max(0.012, Math.min(0.035, pas * 0.55)) * im.h, dh = 2 * demi * k, dy = (h - dh) / 2, N = 60;
   const voulu = Math.max(76, Math.min(320, Math.ceil(dh + 12))); if (voulu !== h) { RC.hBande = voulu; return rcAgrandir(); }
   const zm = RC.ui.querySelector("#rcZoomCran"); if (zm) zm.textContent = "×" + String(z).replace(".", ",");
@@ -8449,7 +8458,7 @@ function rcAgrandir() {
   const zmo = RC.ui.querySelector("#rcZoomMoins"); if (zmo) zmo.disabled = z <= 1;
   const yl = u => (l.y0 + (l.y1 - l.y0) * (u - l.x0) / ((l.x1 - l.x0) || 1)) * im.h;
   for (let i = 0; i < N; i++) { const u = (i + 0.5) / N, sx = i * im.w / N, sw = im.w / N + 1; x.drawImage(im.el, sx, yl(u) - demi, sw, 2 * demi, gauche + sx * k, dy, sw * k, dh); }
-  RC.bande = { gauche, largeur: fr.width, hauteur: dh, pas: pas * im.h * k };
+  RC.bande = { gauche, largeur: im.w * k, hauteur: dh, pas: pas * im.h * k, debut: m, fin: z > 1 ? b : r };
 }
 function rcGarder() {
   if (!RC.copie || !RC.page || !state.classe.some(n => eleveId(n) === RC.copie)) return;

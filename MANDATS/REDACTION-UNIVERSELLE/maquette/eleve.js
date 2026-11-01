@@ -37,6 +37,34 @@ function scPastilles(D, i) {
   rangs.forEach(g => g.l.sort((a, b) => a.f.x0 - b.f.x0));
   return rangs;
 }
+/* [C14 1.4.17] (Paul 18:08 : « aucun stickers ne doit se chevaucher jamais ») Les cadres des stickers d'une page, posés sans jamais se croiser :
+   un mot encadré dans une phrase encadrée est dedans, avec un jour entre les deux bords ; deux lignes voisines se partagent l'interligne ;
+   deux cadres côte à côte se partagent le blanc entre eux ; l'accolade d'un paragraphe passe à droite de tous les cadres de ses lignes, et deux accolades
+   ne se touchent pas. Ce code part aussi dans le fichier de l'élève, où il tourne seul. Entrée : les stickers de la page ({ i, taille, segs, x0…y1 },
+   en part de la page), la largeur d'une accolade (en part de la largeur de la page) et, à l'écran, la part d'un point en largeur et en hauteur. Le jour entre deux bords suit la taille de la copie (sur un téléphone, la copie est plus petite et ses traits plus fins), jamais moins d'un point et demi. Sortie : les cadres { i, j, ph, niv, r } et les accolades { i, x, y0, y1 }. */
+function scCadresStickers(L, lAcc, px, py) {
+  const gx = Math.max(0.005, 1.5 * (px || 0)), gy = Math.max(0.004, 1.5 * (py || 0)), F = [], A = [];
+  L.forEach(t => { const S = t.segs && t.segs.length ? t.segs : null;
+    if (t.taille === "paragraphe" && S) { A.push({ i: t.i, y0: Math.min(...S.map(s => s[1])), y1: Math.max(...S.map(s => s[3])), x: Math.max(...S.map(s => s[2])) + 0.01 }); return; }
+    (t.taille === "phrase" && S ? S : [[t.x0, t.y0, t.x1, t.y1]]).forEach((s, j) => F.push({ i: t.i, j, ph: t.taille === "phrase" && !!S, n: F.length, r: [s[0] - 0.004, s[1] - 0.003, s[2] + 0.004, s[3] + 0.003] })); });
+  const cy = f => (f.r[1] + f.r[3]) / 2, hh = f => f.r[3] - f.r[1], lignes = [];   // les lignes de la copie : les cadres groupés par hauteur
+  F.slice().sort((a, b) => cy(a) - cy(b)).forEach(f => { const l = lignes[lignes.length - 1]; if (l && cy(f) - l.c < 0.6 * Math.min(l.h, hh(f))) l.f.push(f); else lignes.push({ c: cy(f), h: hh(f), f: [f] }); });
+  const w = f => f.r[2] - f.r[0], hov = (a, b) => Math.min(a.r[2], b.r[2]) - Math.max(a.r[0], b.r[0]);
+  const dedans = (g, f) => g !== f && hov(g, f) >= 0.6 * Math.min(w(f), w(g)) && (w(g) > w(f) + 0.004 || (Math.abs(w(g) - w(f)) <= 0.004 && g.n > f.n));   // f est dans g (deux cadres sur les mêmes mots : le second contient le premier)
+  lignes.forEach(l => { l.f.forEach(f => { f.par = l.f.filter(g => dedans(g, f)); f.niv = f.par.length; });
+    l.y0 = Math.min(...l.f.map(f => f.r[1])); l.y1 = Math.max(...l.f.map(f => f.r[3]));
+    l.f.slice().sort((a, b) => b.niv - a.niv).forEach(f => f.par.forEach(g => { g.r[0] = Math.min(g.r[0], f.r[0] - gx); g.r[2] = Math.max(g.r[2], f.r[2] + gx); }));   // le cadre du dehors s'élargit autour de celui du dedans
+    l.f.forEach(a => l.f.forEach(b => { if (a === b || a.par.includes(b) || b.par.includes(a) || a.r[0] > b.r[0] || a.r[2] <= b.r[0] - 0.003) return; const m = (a.r[2] + b.r[0]) / 2; a.r[2] = m - 0.0015; b.r[0] = m + 0.0015; }));   // côte à côte
+    l.f.slice().sort((a, b) => a.niv - b.niv).forEach(f => f.par.forEach(g => { f.r[0] = Math.max(f.r[0], g.r[0] + gx); f.r[2] = Math.min(f.r[2], g.r[2] - gx); })); });
+  for (let k = 1; k < lignes.length; k++) { const a = lignes[k - 1], b = lignes[k]; if (a.y1 > b.y0 - gy) { const m = (a.y1 + b.y0) / 2; a.y1 = m - gy / 2; b.y0 = m + gy / 2; } }   // deux lignes voisines : l'interligne partagé
+  lignes.forEach(l => l.f.forEach(f => { f.r[1] = l.y0 + f.niv * gy; f.r[3] = Math.max(f.r[1] + 0.006, l.y1 - f.niv * gy); }));
+  A.forEach(a => { F.forEach(f => { if (f.r[3] > a.y0 && f.r[1] < a.y1) a.x = Math.max(a.x, f.r[2] + gx); }); });
+  A.sort((p, q) => p.y0 - q.y0).forEach((q, k) => A.slice(0, k).forEach(p => { const ov = Math.min(p.y1, q.y1) - Math.max(p.y0, q.y0);
+    if (ov > 0.5 * Math.min(p.y1 - p.y0, q.y1 - q.y0)) q.x = Math.max(q.x, p.x + lAcc + gx); else if (ov > -gy) { const m = (p.y1 + q.y0) / 2; p.y1 = m - gy / 2; q.y0 = m + gy / 2; } }));   // sur les mêmes lignes : côte à côte ; sinon, l'interligne partagé
+  A.slice().sort((p, q) => q.x - p.x).forEach(a => { const d = a.x - (1 - lAcc); if (d > 0) A.forEach(b => { if (b.x <= a.x && Math.min(a.y1, b.y1) - Math.max(a.y0, b.y0) > 0) b.x -= d; }); });   // au bord de la page : l'accolade rentre, et les cadres de ses lignes s'arrêtent avant
+  F.forEach(f => A.forEach(a => { if (f.r[3] > a.y0 && f.r[1] < a.y1) f.r[2] = Math.max(f.r[0] + 0.01, Math.min(f.r[2], a.x - gx * (1 + f.niv))); }));
+  return { cadres: F.sort((a, b) => a.niv - b.niv).map(f => ({ i: f.i, j: f.j, ph: f.ph, niv: f.niv, r: f.r })), acc: A.map(a => ({ i: a.i, x: a.x, y0: a.y0, y1: a.y1 })) };
+}
 function scEleveFichier(k, test) {
   const D = scEleveDonnees(k, test); const ps = scPagesDe(k);
   return Promise.all(ps.map(p => SC.imgs[p.id] ? scBlobUrl(SC.imgs[p.id].blob) : Promise.resolve(""))).then(srcs => {
@@ -44,7 +72,9 @@ function scEleveFichier(k, test) {
     const statique = ps.map((p, i) => { let mk = "";
       D.fautes.filter(f => f.page === i).forEach(f => { const T = D.types[f.t] || D.types._; mk += `<div class="mk f" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};border-top-color:${T.couleur}"></div>`; });
       D.etoile.filter(e => e.page === i).forEach(e => e.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${SC_CRIT.etoile}40"></div>`; }));
-      (D.stickers || []).filter(t => t.page === i).forEach(t => (t.segs && t.segs.length ? t.segs : [[t.x0, t.y0, t.x1, t.y1]]).forEach(s => { mk += `<div class="mk e" style="left:${pc(s[0] - 0.004)};top:${pc(s[1] - 0.003)};width:${pc(s[2] - s[0] + 0.008)};height:${pc(s[3] - s[1] + 0.006)};border-color:${SC_CRIT[t.crit] || "#6b1a2a"}"></div>`; }));
+      { const Z = scCadresStickers((D.stickers || []).map((t, j) => Object.assign({ i: j }, t)).filter(t => t.page === i), 0.014), kc = c => SC_CRIT[D.stickers[c.i].crit] || "#6b1a2a";   // [C14 1.4.17] (Paul 18:08) aucun cadre n'en chevauche un autre
+        Z.cadres.forEach(c => { const s = c.r; mk += `<div class="mk e" style="left:${pc(s[0])};top:${pc(s[1])};width:${pc(s[2] - s[0])};height:${pc(s[3] - s[1])};border-color:${kc(c)}"></div>`; });
+        Z.acc.forEach(a => { mk += `<div class="mk stp" style="left:${pc(a.x)};top:${pc(a.y0)};height:${pc(a.y1 - a.y0)};border-color:${kc(a)}"></div>`; }); }
       D.points.forEach(pt => pt.marques.filter(m => m.page === i).forEach(m => { const c = SC_CRIT[pt.crit] || "#6b1a2a";
         if (m.forme === "surligne") m.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${c}40"></div>`; });
         else mk += `<div class="mk ${m.forme === "marge" ? "g" : "e"}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + c : "border-color:" + c}"></div>`; }));
@@ -55,10 +85,10 @@ function scEleveFichier(k, test) {
     const css = `*{box-sizing:border-box}body{margin:0;background:#f5f1ea;color:#2b2520;font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
 .tete{background:linear-gradient(#c08a4a,#a67a44);color:#fff;padding:10px 16px;font:600 19px Georgia,serif}.tete small{font:14px system-ui;opacity:.9;margin-left:8px}
 .copie{max-width:900px;margin:0 auto;padding:10px}.pg{position:relative;width:100%;margin-bottom:12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.pg img{display:block;width:100%;height:100%}
-.mk{position:absolute}.mk.f{height:0;border-top:3px solid #c54040;border-radius:2px}.pgx{display:flex;align-items:stretch;gap:4px;margin-bottom:12px}.pgx .pg{margin-bottom:0;flex:1;min-width:0}.marge{position:relative;width:46px;flex:none}.pas{position:absolute;left:0;right:0;transform:translateY(-50%);display:flex;flex-wrap:wrap;gap:2px;justify-content:center}.pas span{font:700 11px/1 system-ui;border:1.5px solid;border-radius:6px;padding:3px 3px;min-width:18px;text-align:center;cursor:pointer}.pas span.on{box-shadow:0 0 0 2px #2b2520}.mk.e{border:2.5px solid;border-radius:4px}.mk.g{border-radius:4px}.pas2{position:absolute;z-index:2;transform:translate(-100%,-50%);display:flex;flex-direction:row-reverse;gap:2px;align-items:center}.pas2 span{font:700 11px/1 system-ui;border:1.5px solid;border-radius:6px;padding:3px 3px;min-width:18px;text-align:center;background:#fff}.pas2 span.rqn,.rqn{background:#2b2520;color:#fff;border:0;border-radius:50%;width:22px;height:22px;min-width:22px;padding:0;font:700 12px/22px system-ui;text-align:center}`;
+.mk{position:absolute}.mk.f{height:0;border-top:3px solid #c54040;border-radius:2px}.pgx{display:flex;align-items:stretch;gap:4px;margin-bottom:12px}.pgx .pg{margin-bottom:0;flex:1;min-width:0}.marge{position:relative;width:46px;flex:none}.pas{position:absolute;left:0;right:0;transform:translateY(-50%);display:flex;flex-wrap:wrap;gap:2px;justify-content:center}.pas span{font:700 11px/1 system-ui;border:1.5px solid;border-radius:6px;padding:3px 3px;min-width:18px;text-align:center;cursor:pointer}.pas span.on{box-shadow:0 0 0 2px #2b2520}.mk.e{border:2.5px solid;border-radius:4px}.mk.g{border-radius:4px}.pas2{position:absolute;z-index:2;transform:translate(-100%,-50%);display:flex;flex-direction:row-reverse;gap:2px;align-items:center}.pas2 span{font:700 11px/1 system-ui;border:1.5px solid;border-radius:6px;padding:3px 3px;min-width:18px;text-align:center;background:#fff}.pas2 span.rqn,.rqn{background:#2b2520;color:#fff;border:0;border-radius:50%;width:22px;height:22px;min-width:22px;padding:0;font:700 12px/22px system-ui;text-align:center}.mk.stp{width:11px;border:3px solid;border-left:0;border-radius:0 7px 7px 0}`;
     const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(D.titre)} — ${escapeHtml(D.nom)}</title><style>${css}</style></head><body>
 <div class="tete">${escapeHtml(D.titre)}<small>${escapeHtml(D.nom)}</small></div><div class="copie" id="statique">${statique}</div>
-<script>const D=${JSON.stringify(D).replace(/</g, "\\u003c")};const IMG=${JSON.stringify(srcs)};(${(D.correctionEleve ? scEleveApp : scEleveLecture).toString()})(D,IMG);<\/script></body></html>`;
+<script>const D=${JSON.stringify(D).replace(/</g, "\\u003c")};const IMG=${JSON.stringify(srcs)};${scCadresStickers.toString()};(${(D.correctionEleve ? scEleveApp : scEleveLecture).toString()})(D,IMG);<\/script></body></html>`;
     return { html, nom: "Redaction-" + scSlug(D.titre).slice(0, 40) + "-" + scSlug(D.nom) + ".html", D };
   });
 }
@@ -93,7 +123,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
 .stb{position:absolute;left:-9px;top:-10px;width:17px;height:17px;border-radius:50%;color:#fff;font:700 11px/17px system-ui;text-align:center;pointer-events:none;box-shadow:0 0 0 1.5px #fff}.reussi{display:inline-block;background:#e6f4ea;color:#1e6b34;border:1.5px solid #3a8a50;border-radius:8px;padding:3px 10px;font:700 15px system-ui;margin-bottom:8px}.rqp mark.ok{background:#d6f0dc}.pq{font-size:16px;margin:6px 0 4px;padding:6px 10px;border-left:4px solid #3a8a50;background:#f3faf5}#col .mk.st{z-index:3}#col .mk.st.ph{z-index:1;border-width:1.5px}#col .mk.stp{z-index:3;width:11px;border:3px solid var(--k);border-left:0;border-radius:0 7px 7px 0;cursor:pointer}#col .mk.stp.on{outline:3px solid #2b2520;outline-offset:2px}
 .tys{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.ty{font:14px system-ui;border:1.5px solid;border-radius:8px;padding:5px 9px;margin:0;cursor:pointer}.ty b{font-weight:700}.ty.on{box-shadow:0 0 0 2px #2b2520}.rqs{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .ech span b{font-weight:700}.gc{position:fixed;inset:0;background:rgba(30,25,20,.55);z-index:20;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:16px}.gc-c{background:#fdfbf7;border-radius:12px;max-width:1200px;width:100%;padding:14px 16px}.gc-h{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:10px;font:600 18px Georgia,serif}.gc-h button{margin:0}.gc-t{overflow-x:auto}.gc table{border-collapse:collapse;width:100%;font-size:14px;min-width:760px}.gc td,.gc th{border:1px solid #e3dccf;padding:6px 8px;vertical-align:top;text-align:left}.gc th{font:600 12px system-ui;letter-spacing:.05em;text-transform:uppercase}.gc td.on{outline:3px solid #2b2520;outline-offset:-3px;font-weight:700}.gc .gc-crit{font:600 13px system-ui;background:#f3ebdd}.gc small{color:#7a6e5f}
-@media (max-width:820px){.rqn,.pas2 span.rqn{width:18px;height:18px;min-width:18px;font-size:10px;line-height:18px}.pas2 span{font-size:8.5px;min-width:13px;padding:2px 1px;border-width:1px}.app{display:block;padding:6px}.pan{position:fixed;z-index:6;left:0;right:0;bottom:0;top:auto;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}}`;
+@media (max-width:820px){#col .mk.e{border-width:1.5px}#col .mk.st.ph{border-width:1px}#col .mk.stp{border-width:2px;width:8px}.stb{width:13px;height:13px;left:-7px;top:-8px;font-size:9px;line-height:13px;box-shadow:0 0 0 1px #fff}.rqn,.pas2 span.rqn{width:18px;height:18px;min-width:18px;font-size:10px;line-height:18px}.pas2 span{font-size:8.5px;min-width:13px;padding:2px 1px;border-width:1px}.app{display:block;padding:6px}.pan{position:fixed;z-index:6;left:0;right:0;bottom:0;top:auto;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}}`;
   document.head.appendChild(st);
   const app = document.createElement("div"); app.className = "app"; app.innerHTML = `<div class="col" id="col"></div><div class="pan" id="pan"></div>`; document.body.appendChild(app);
   const montrer = (page, y) => { const P = document.querySelectorAll(".pg")[page]; if (!P) return; const r = P.getBoundingClientRect(); window.scrollTo({ top: window.scrollY + r.top + r.height * y - window.innerHeight * 0.3, behavior: "smooth" }); };
@@ -115,13 +145,16 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk${vue && vue.t === "e" ? " on" : ""}" data-v="e" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach((f, i) => { const P = pgs[f.page]; if (!P) return;
       P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) || tyOn(f) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};--c:${Ty(f).couleur}"></div>`); });
-    (D.stickers || []).forEach((t, i) => { const P = pgs[t.page]; if (!P) return; const k = D.coul[t.crit] || "#6b1a2a", sel = on("s", i);   // [C14 1.4.16] un sticker réussi : encadré dans la couleur de son critère ; un clic, son texte
-      if (t.taille === "paragraphe" && t.segs && t.segs.length) {   // [C14 1.4.17, proposé, C14 492] un paragraphe : une accolade dans la marge de droite ; au clic, ses lignes s'éclairent
-        const y0 = Math.min(...t.segs.map(s => s[1])), y1 = Math.max(...t.segs.map(s => s[3])), xr = Math.min(0.975, Math.max(...t.segs.map(s => s[2])) + 0.01);
-        P.insertAdjacentHTML("beforeend", `<div class="mk stp${sel ? " on" : ""}" data-v="s:${i}" title="Réussi : ${esc(t.texte)}" style="left:${pc(xr)};top:${pc(y0)};height:${pc(y1 - y0)};--k:${k}"><span class="stb" style="background:${k}">★</span></div>`);
-        if (sel) t.segs.forEach(s => P.insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(s[0] - 0.004)};top:${pc(s[1] - 0.003)};width:${pc(s[2] - s[0] + 0.008)};height:${pc(s[3] - s[1] + 0.006)};background:${k}2e;cursor:default"></div>`)); return; }
-      (t.taille === "phrase" && t.segs && t.segs.length ? t.segs : [[t.x0, t.y0, t.x1, t.y1]]).forEach((s, j) =>   // une phrase : un cadre par ligne
-        P.insertAdjacentHTML("beforeend", `<div class="mk e st${t.taille === "phrase" && t.segs ? " ph" : ""}${sel ? " on" : ""}" data-v="s:${i}" title="Réussi : ${esc(t.texte)}" style="left:${pc(s[0] - 0.004)};top:${pc(s[1] - 0.003)};width:${pc(s[2] - s[0] + 0.008)};height:${pc(s[3] - s[1] + 0.006)};border-color:${k};background:${k}14">${j === 0 ? `<span class="stb" style="background:${k}">★</span>` : ""}</div>`)); });
+    // [C14 1.4.16] un sticker réussi : encadré dans la couleur de son critère ; un clic, son texte. [C14 1.4.17] une phrase : un cadre par ligne ;
+    // un paragraphe (proposé, C14 492) : une accolade à droite de ses lignes, qui s'éclairent au clic. (Paul 18:08 : « aucun stickers ne doit se chevaucher
+    // jamais ») les cadres et les accolades sont posés par scCadresStickers, sans se croiser ; les étoiles, par decoller(), sans se toucher
+    pgs.forEach((P, pi) => { const Z = scCadresStickers((D.stickers || []).map((t, i) => Object.assign({ i }, t)).filter(t => t.page === pi), 15 / Math.max(200, P.clientWidth), 1 / Math.max(200, P.clientWidth), 1 / Math.max(200, P.clientHeight));
+      const kc = i => D.coul[D.stickers[i].crit] || "#6b1a2a";
+      Z.acc.forEach(a => { const t = D.stickers[a.i], k = kc(a.i), sel = on("s", a.i);
+        P.insertAdjacentHTML("beforeend", `<div class="mk stp${sel ? " on" : ""}" data-v="s:${a.i}" title="Réussi : ${esc(t.texte)}" style="left:${pc(a.x)};top:${pc(a.y0)};height:${pc(a.y1 - a.y0)};--k:${k}"><span class="stb" style="background:${k}">★</span></div>`);
+        if (sel) t.segs.forEach(s => P.insertAdjacentHTML("beforeend", `<div class="mk" style="left:${pc(s[0] - 0.004)};top:${pc(s[1] - 0.003)};width:${pc(s[2] - s[0] + 0.008)};height:${pc(s[3] - s[1] + 0.006)};background:${k}2e;cursor:default"></div>`)); });
+      Z.cadres.forEach(c => { const t = D.stickers[c.i], k = kc(c.i), sel = on("s", c.i), s = c.r;
+        P.insertAdjacentHTML("beforeend", `<div class="mk e st${c.ph ? " ph" : ""}${sel ? " on" : ""}" data-v="s:${c.i}" title="Réussi : ${esc(t.texte)}" style="left:${pc(s[0])};top:${pc(s[1])};width:${pc(s[2] - s[0])};height:${pc(s[3] - s[1])};border-color:${k};background:${k}14${c.niv ? ";z-index:" + (3 + c.niv) : ""}">${c.j === 0 ? `<span class="stb" style="background:${k}">★</span>` : ""}</div>`); }); });
     if (vue && vue.t === "q") { const g = (D.reprendre || [])[vue.i]; if (g) g.l.forEach(x => { const P = pgs[g.page]; if (!P || x.x0 == null) return; P.insertAdjacentHTML("beforeend", `<div class="mk rq" style="left:${pc(x.x0 - 0.004)};top:${pc(x.y0 - 0.004)};width:${pc(x.x1 - x.x0 + 0.008)};height:${pc(x.y1 - x.y0 + 0.008)}"></div>`); }); }   // [C14 1.4.17] le passage visé par la remarque
     (D.remarques || []).forEach((r0, i) => { const P = pgs[r0.page]; if (!P) return; P.insertAdjacentHTML("beforeend", `<div class="mk e${on("r", i) ? " on" : ""}" data-v="r:${i}" style="left:${pc(r0.x0 - 0.004)};top:${pc(r0.y0 - 0.003)};width:${pc(r0.x1 - r0.x0 + 0.008)};height:${pc(r0.y1 - r0.y0 + 0.006)};border:2px dashed #6b1a2a"></div>`); });
     const pris = {}; D.points.forEach((p, i) => { const P = pgs[p.place.page]; if (!P) return; const k = D.coul[p.crit] || "#6b1a2a"; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1;
@@ -130,8 +163,23 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
         else Q.insertAdjacentHTML("beforeend", `<div class="mk ${m.forme === "marge" ? "g" : "e"}${on("p", i) ? " on" : ""}" data-v="p:${i}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + k : "border-color:" + k}"></div>`); });
       P.insertAdjacentHTML("beforeend", `<div class="pin${on("p", i) ? " on" : ""}" data-v="p:${i}" style="top:${pc(Math.max(0.015, p.place.y))};margin-left:${dx * 30}px;background:${D.bord[p.niveau]}"></div>`); });
     col.querySelectorAll("[data-v]").forEach(e => e.addEventListener("click", () => { const [t, i] = e.dataset.v.split(":"); vue = { t, i: i == null ? null : +i }; copie(); panneau(); }));
+    decoller();
   }
-  const retour = `<button class="clair" id="gr">← Ta grille</button>`;
+  /* [C14 1.4.17] (Paul 18:08 : « à côté de 1 et 2, l'étoile verte est derrière l'étoile bleue ») les étoiles des stickers ne se chevauchent jamais :
+     ni entre elles, ni avec les numéros et les pastilles de la marge, ni avec une accolade. Une étoile qui en touche une autre glisse le long du haut
+     de son cadre, vers la droite ; celle d'une accolade glisse le long de l'accolade, vers le bas. Refait à chaque dessin et quand la largeur change. */
+  function decoller() { document.querySelectorAll("#col .pg").forEach(P => {
+    const R = e => { const q = e.getBoundingClientRect(); return { l: q.left, t: q.top, r: q.right, b: q.bottom, e }; };
+    const occ = Array.from(P.querySelectorAll(".pas2 span, .pin, .mk.stp")).map(R), E = Array.from(P.querySelectorAll(".stb"));
+    E.forEach(b => { b.style.left = ""; b.style.top = ""; b.x0 = parseFloat(getComputedStyle(b).left) || 0; b.y0 = parseFloat(getComputedStyle(b).top) || 0; });
+    E.map(R).sort((u, v) => (u.t - v.t) || (u.l - v.l)).forEach(r => { const bas = r.e.parentNode.classList.contains("stp"); let dx = 0, dy = 0;
+      for (let n = 0; n < 80; n++) { const o = occ.find(o => o.e !== r.e.parentNode && r.l < o.r + 2 && o.l < r.r + 2 && r.t < o.b + 2 && o.t < r.b + 2); if (!o) break;
+        if (bas) { const d = o.b + 2 - r.t; dy += d; r.t += d; r.b += d; } else { const d = o.r + 2 - r.l; dx += d; r.l += d; r.r += d; } }
+      if (dx) r.e.style.left = (r.e.x0 + dx) + "px"; if (dy) r.e.style.top = (r.e.y0 + dy) + "px"; occ.push(r); }); }); }
+  let largeur = innerWidth, attente = 0;
+  addEventListener("resize", () => { clearTimeout(attente); attente = setTimeout(() => { if (innerWidth !== largeur) { largeur = innerWidth; copie(); } else decoller(); }, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(decoller);
+  const retour =`<button class="clair" id="gr">← Ta grille</button>`;
   function panneau() {
     const pan = $("#pan");
     const num = x => String(x).replace(".", ",");

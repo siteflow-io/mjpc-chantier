@@ -2905,3 +2905,43 @@ MEMO
 01/11/2026 15:45
 
 MEMO
+
+## Tour 115 — 01/11/2026 15:54 → 01/11/2026 16:02
+
+**Paul :** quand on clique sur un encadré dans la copie, il faut vraiment que le texte de la grille corresponde à ce qui est encadré (une demi ligne ne peut pas former "un paragraphe" par exemple). clic sur les encadrés, mets toi à la place de l'élève et dis moi ce que tu comprends. Je ne dis pas qu'il faut enlever ce qu'il y a, mais je pense qu'il faut contextualiser. Par ailleurs, un encadré dans la copie doit être repris (recopie) pour que l'élève fasse le lien entre ce qu'il a écrit et le critère qu'il a réussi. Il faut que ce soit clair que c'est réussi.
+
+**Fait.** (Ses mots et son prénom retirés de ce tour.) Banc complet de la 1.4.17 : 165 vérifications, 0 défaut (avant 15:54). Version candidate PROD 1.4.17 sur le vrai site, en lecture seule, l'une après l'autre : cmp9 identique à la version en ligne (30 copies, 675 marques, 2 écritures interceptées, le suivi) ; les 51 pages recopiées identiques ; carte-vrai (le script fermait la fenêtre par un bouton qui n'existe plus : Échap) : la carte ouvre la bonne copie, aucune carte sans copie au site. Les 9 cadres cliqués un à un dans son fichier. Codé au sas (b2813ea0) : « ✓ Réussi », « Tu as écrit » (sa phrase recopiée, le passage surligné), l'étoile au coin du cadre, la phrase coupée après une formule d'adresse.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : rien · ouvert : 409, 481, 482, 483, 497, 498, 499
+
+488. Je me suis mis à la place de l'élève et j'ai cliqué les 9 cadres de [l'élève]. Trois se comprennent seuls : d'où tu écris, tu parles à l'autre, un mot de 14-18. [Ses mots, cités dans l'envoi, sont retirés du transcript.]
+
+489. Deux se comprennent à moitié. Sur un passage, l'élève lit « comme la boue chez Jean Déléage » sans savoir qui c'est : c'est une référence sans mini-contexte, contraire à ta règle des supports. Sur sa formule d'adresse, le sticker lui parle de « Ma chère Louise » ; elle ne sait pas que c'est un exemple, et sa formule est en même temps soulignée comme une faute. [Ses mots retirés.]
+
+490. Quatre ne se comprennent pas. « Un paragraphe dit où tu es » et « Un paragraphe dit ce qui est le plus dur » sont posés sur une demi-ligne : c'est ton exemple. « Tu écris l'architecture 1 » et « Tu écris l'architecture 4 » sont posés sur un bout de phrase. L'élève ne voit ni le modèle, ni où sa phrase commence et finit.
+
+491. J'ai déjà fait, au sas, ce que tu as demandé à 15:54. Un cadre cliqué commence par « ✓ Réussi », en vert. Puis « Tu as écrit » reprend sa phrase telle que tu l'as recopiée, avec le passage du cadre surligné en vert. Chaque cadre porte aussi une étoile à son coin, dans la couleur de son critère. Les trois captures et son fichier refait viennent de t'être envoyés.
+
+492. Pour contextualiser, sans rien enlever, je propose trois changements. Le premier : le cadre a la taille de ce que dit le sticker. Un sticker de quelques mots encadre ses mots. Un sticker d'architecture encadre toute la phrase, ligne par ligne. Un sticker de paragraphe met une accolade dans la marge de droite, le long du paragraphe, avec son étoile ; au clic, le paragraphe s'éclaire. Cette taille se règle dans Réglages, sticker par sticker. Pour un paragraphe, l'IA donne sa première et sa dernière ligne.
+
+493. Le deuxième : pour chaque réussite, l'IA écrit une phrase qui dit pourquoi c'est réussi, en citant les mots de l'élève. [Les deux exemples, tirés de sa copie, sont retirés du transcript : la décomposition de son architecture 1 en P.P + PSR 1 + PSR 2, et son premier paragraphe qui dit où elle est et ce qu'elle voit.] L'élève la lit sous « Tu as écrit ». Toi, tu la lis dans la carte du sticker, dans la bande, avant ton Entrée : aucun arrêt de plus.
+
+494. Le troisième : une phrase de sticker qui cite une référence a son mini-contexte, comme le veut ta règle des supports. Pour S10 : « comme la boue dans la lettre de Jean Déléage, lue en classe ». Pour S36 : « comme « Ma chère Louise » ». Ce sont des propositions à valider, avec celles de 478.
+
+495. Ce que ça coûte : dans le retour de l'IA, une taille et une phrase de plus par réussite ; pour toi, une phrase à lire sur chaque carte de sticker. Côté code, c'est à peu près la taille des remarques.
+
+496. Les vérifications de la version candidate sur ton vrai site, en lecture seule, faites avant 15:54 : mêmes 30 copies, mêmes 675 marques, mêmes notes que la version en ligne ; les 51 pages recopiées sont identiques ; les mêmes 2 écritures que la version en ligne, interceptées ; la carte d'un élève ouvre bien sa copie. Le banc complet était à 165 vérifications, 0 défaut. Je refais les deux après tes réponses.
+
+497. 492, la taille du cadre selon le sticker : ok ?
+
+498. 493, la phrase de l'IA qui dit pourquoi : ok ?
+
+499. 494, les deux phrases avec leur mini-contexte : ok ?
+
+À tester : ouvre le nouveau « [nom de l'élève] - fichier eleve (maquette).html », clique un cadre : « ✓ Réussi », puis « Tu as écrit » et ton passage surligné en vert.
+
+01/11/2026 16:02
+
+MEMO

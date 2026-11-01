@@ -2979,3 +2979,33 @@ MEMO
 01/11/2026 16:15
 
 MEMO
+
+## Tour 117 — 01/11/2026 16:37 → 01/11/2026 16:42
+
+**Paul :** La seule chose c'est la capture 7. La bande et le paragraphe sont deux choses qui se télescopent géographiquement. Par ailleurs l'architecture correcte de [l'élève] ne récupère que 0.5 pt??
+
+**Fait.** Un échange de 16:28 à 16:34 (un message de Paul à 16:28, du même sujet, et mon travail) n'est plus dans mon contexte : il n'est pas au transcript, et je ne peux pas le recopier mot pour mot. Son travail est au sas, commit a7fbbfff de 16:34, que j'ai poussé à 16:40 (il ne l'était pas) : dans la bande, un sticker de phrase ou de paragraphe montre sa zone de la page (rcBandeZone : la zone recadrée, un cadre par ligne ou l'accolade) et son texte entier ; la carte dit « Si tu le gardes : … → … pt (… pour … pt) » (stBandeApport) et « ta note avec ce qui est gardé jusqu'ici ». Vérifié sur la copie de l'élève : captures de la bande, un paragraphe et une architecture. Banc complet relancé.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc complet, au sas · ouvert : 409, 483, 514
+
+509. Capture 7, la bande : tu as raison. Le ruban met les lignes bout à bout, donc un paragraphe ou une phrase sur plusieurs lignes ne peut pas s'y voir. Maintenant, pour un sticker de phrase ou de paragraphe, la bande montre sa zone de la page, comme l'élève la verra : l'accolade et le paragraphe éclairé (capture 1), ou un cadre par ligne de la phrase (capture 2). Le texte, en dessous, reprend toute la phrase ou tout le paragraphe. Pour ces stickers, on ne glisse plus le cadre : il suit ses lignes.
+
+510. J'ai fait ce travail à 16:34, sur ton message de 16:28. De mon côté, je ne vois plus cet échange, seulement ton message de 16:37. Le travail est au sas, et je l'ai vérifié sur la copie de [l'élève].
+
+511. Les 0,5 point, ce n'était pas l'architecture : c'était sa note entière à ce moment de la bande, avant ton Entrée sur l'architecture. Seule « Trente lignes » comptait déjà : ses 20 lignes donnent 0,5 point. La carte disait « la note pour l'instant », et ça prêtait à confusion. Elle dit maintenant « ta note avec ce qui est gardé jusqu'ici ».
+
+512. Ce que rapporte son architecture, la carte le dit maintenant : « Si tu le gardes : 1 sur 6 → 0 / 7 pt (3 sur 6 pour 2 pt) ». Une architecture juste, seule, ne rapporte rien. C'est le compte de la ligne, qui a 6 stickers : tous réussis, 7 points ; un manque, 4,5 ; deux ou trois manques, 2 ; plus, 0. [l'élève] en a 3 (l'architecture 1, l'architecture 4, et « plusieurs fois ») : elle finit à [retiré].
+
+513. Ce compte ne va pas pour cette ligne, où chaque architecture est une réussite à part. Je propose pour elle un autre compte, que « Régler » permet déjà : 5 ou 6 stickers, 7 points ; 3 ou 4, 4,5 points ; 1 ou 2, 2 points ; aucun, 0. Une architecture juste rapporte alors 2 points à elle seule. [l'élève] passerait à [retiré], et sa note [sa note avant et après : retirées du transcript].
+
+514. Tu prends ce compte pour les architectures ?
+
+515. Tu n'as relevé que la capture 7. Je prends donc le reste comme validé : 480, 492, 493, 494, et les textes de 477 et 478. Le banc complet tourne sur tout ce qui a été fait depuis 16:15.
+
+À tester : rien de neuf en ligne. Les deux captures de ta bande sont à regarder : un paragraphe, puis une architecture.
+
+01/11/2026 16:42
+
+MEMO

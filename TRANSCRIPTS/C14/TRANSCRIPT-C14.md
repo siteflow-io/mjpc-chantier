@@ -3147,3 +3147,29 @@ MEMO
 01/11/2026 18:38
 
 MEMO
+
+## Tour 122 — 01/11/2026 18:38 → 01/11/2026 18:49
+
+**Paul (18:38) :** ok règle 546.
+
+**Fait (18:38 → 18:48).** 546 codé dans eleve.js (maquette, branche c14-poignees, pas encore poussé) : sur téléphone, les pastilles et les numéros de la marge à la hauteur d'une ligne de la copie (l'écart entre deux lignes de la recopie), un seul rang par ligne, une ligne gênée se range à gauche de la précédente, la photo se décale d'autant (ranger) ; sur ordinateur rien ne change. Mesuré sur la copie de [l'élève] (en privé) : marge du téléphone 0 chevauchement sur 30 pastilles et numéros (14 avant), 0 hors de l'écran, photo décalée de 6,4 points (372 au lieu de 378), lettres de 8,5 à 7,1 points ; étoiles et cadres toujours à 0. Banc : premier passage 168/0 avec la vérification des chevauchements (S1 dans la phrase de S24) ; ajout d'une vérification de la marge au téléphone sur la copie en couleurs du banc, relancé — interrompu par Paul pendant l'attente, il finit seul. Candidate PROD reconstruite (md5 c66fe150…), vrai site pas encore repassé. Rien en ligne.
+
+**Paul (18:48, en interrompant l'attente du banc) :** il faut que je lance une autre conscience et ses exécutants sur les dettes du déroulé.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc complet de la 1.4.17-RU, avec la vérification de 546 · ouvert : 409, 551
+
+548. 546 est codé dans la maquette. Sur la copie de [l'élève], sur téléphone, il n'y a plus aucun chevauchement dans la marge (14 avant). La photo ne se décale que de 6 points, pas de 33 : mon calcul de 546 gardait des pastilles plus hautes qu'une ligne. Rien n'est en ligne, et ce code n'est pas encore poussé au sas.
+
+549. Ta nouvelle conscience et ses exécutants ne touchent pas ce chantier : le déroulé vit dans index.html, la rédaction dans redaction.html. Nous partageons seulement le registre des dettes, le journal, le point de retour et « où trouver quoi », ainsi que la branche main du sas. Je relis toujours ces fichiers avant d'écrire, et je n'y écris que mes lignes. Tant qu'elle tourne, un changement que je ne reconnais pas n'est plus forcément le mien : je te le signale, je ne le défais pas.
+
+550. J'arrête tout jusqu'à ton mot. Le banc qui tournait finit seul, dans ma session, sans rien écrire ailleurs.
+
+551. Je prépare sa passation au sas (les dettes du déroulé, relues contre le code, et la phrase que tu lui colles), ou tu la lances toi-même ?
+
+À tester : rien.
+
+01/11/2026 18:49
+
+MEMO

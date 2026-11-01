@@ -162,3 +162,41 @@ MEMO
 38. Un exécutant neuf l'écrit dans le vrai site, sur une branche : les cinq diapos au canon, leur ordre, le bilan du chapitre à la dernière séance, la carte de l'Atelier, « À régler », la phrase d'élève partout, l'import et le prompt. Il commence par relire le mandat pour y chercher mes erreurs.
 
 39. Dès qu'il a fini, je passe le banc complet et je te montre les captures en mode test, sur tes chapitres du Horla et de Poésie et peinture. Rien ne part en ligne sans ton « promeus ». C'est un gros morceau : compte plutôt une à deux heures que quelques minutes.
+
+**Claude (21:13, fin du tour) :**
+
+À jouer : tes tests de la 8.77.1-⑩ (liste de 20:40) · en cours : l'exécutant écrit les diapos d'ouverture dans le vrai site · ouvert : 15
+
+40. L'exécutant tourne. Je te reviens dès qu'il a fini, avec le banc complet et les captures en mode test sur tes deux chapitres. D'ici là, rien ne change en ligne.
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 21:13
+
+MEMO
+
+## Tour 6 — 01/11/2026 22:37 → 01/11/2026 22:40 (le point, l'exécutant encore à la lecture)
+
+**Paul (22:37) :** On en est où ?
+
+**Fait.** Mesuré sans toucher à l'exécutant : sa branche `deroule/diapos-ouverture` est encore à `fc036e8`, son dossier propre (rien d'écrit dans le code) ; 109 lectures depuis 21:10 (mandat, canons et leurs couleurs revérifiées au pixel sur les captures du 29/10, socle, classe, tableau, Atelier, récit, sonde modèle) ; son banc de référence sur la base : VERT (parcours ×2, 106/0, 52/52, 27/0, 51/0, question 33). Dernière activité 22:32 : il lit l'ouverture et la clôture de la classe.
+
+**Claude (22:40) :**
+
+À jouer : ta classe de demain, sur la 8.77.1-⑩ · en cours : l'exécutant, encore à la lecture du code · ouvert : 15
+
+41. L'exécutant tourne, mais il n'a encore rien écrit dans le site. Depuis 21:10, il lit : le mandat, tes canons (il a revérifié leurs couleurs au pixel près), puis le code des diapos, de la classe, du tableau et de l'Atelier. Il a passé le banc de référence sur la version actuelle : VERT.
+
+42. Je me suis trompé à 21:12 sur le temps : « une à deux heures », c'était trop court. Il reste l'écriture, sa sonde et ses captures, puis mon banc complet et mes captures à moi. Pas avant tard dans la nuit : compte encore deux à trois heures au moins.
+
+43. Ce que je propose : tu ne m'attends pas ce soir. Demain, tu joues sur la 8.77.1-⑩, celle qui est en ligne et prouvée. Les diapos d'ouverture ne partent pas en ligne avant ton cours, même si tout est prêt : mettre en ligne le matin d'un cours, c'est un risque pour rien. Cette nuit, l'exécutant finit, je passe le banc et je prépare les captures. Tu les regardes après ton cours, et tu dis « promeus » si elles te vont.
+
+44. Si tu veux quand même les diapos d'ouverture pour demain, dis-le. Elles partiront alors sur ton « promeus » à la vue des captures, au plus tard une heure avant ton cours.
+
+45. D'où la question 15, toujours ouverte : à quelle heure joues-tu demain avec le déroulé ?
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 22:40
+
+MEMO

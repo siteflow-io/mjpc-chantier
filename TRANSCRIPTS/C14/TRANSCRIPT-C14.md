@@ -2342,3 +2342,44 @@ MEMO
 01/11/2026 05:33
 
 MEMO
+
+## Tour 101 — 01/11/2026 07:59, 08:01, 08:04 → 01/11/2026 08:06
+
+**Paul (07:59) :** 346 ok. 347. La grille de stickers doit être evidement modifiable et attachée à un sujet. À placer dans les paramètres. Un stickers est un objet, et il se rattache à un descripteur dans la grille d'évaluation ou un sous descripteur, et à une compétence et à la taxo.
+Que proposes tu? Je veux une proposition complète et solide
+
+**Paul (08:01) :** Et c'est aussi le moment de réorganiser et voir ce qui tombe dans les fonctionnalités précédentes.
+
+**Paul (08:04) :** Et pareil la question du paquet emporté d'un ordinateur à un autre? Mes photos/pdf de copies sont sur clef usb. Je peux designer un dossier ( celui des copies) et l'App retrouve les copies ? Il faudrait que les feuilles des copies se voient attribuer un identifiant interne alors? J'attends ta proposition
+
+**Fait.** Lu, sans rien écrire au site : la grille d'évaluation du sujet (critères, lignes notées avec poids et compétences, quatre textes de niveau, phrases par niveau), la grille des scans (51 questions, cases), la taxonomie au hub (7 domaines, 51 familles, 210 notions, compétences du cycle 4, tables de correspondances), les Réglages de la rédaction et de la correction de dictée, l'empreinte d'une feuille dans le code (l'image réduite à 16 × 16 points). Écrit au sas `MANDATS/REDACTION-UNIVERSELLE/CADRAGE-STICKERS-OBJET.md` (commit `15eb4885`). 346 consigné : la table de correspondances de la dictée reprise pour la taxonomie de la rédaction.
+
+**Claude :**
+
+À jouer : tes mots sur le cadrage des stickers (351) et sur le dossier des copies (356 à 360) · en cours : rien · ouvert : 351, 360
+
+351. Le sticker comme objet : la proposition complète est au sas, en points numérotés, pour que tu valides ou changes par numéro : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/REDACTION-UNIVERSELLE/CADRAGE-STICKERS-OBJET.md. Elle tient en quatre idées (352 à 355).
+
+352. Un sticker appartient au sujet. Il se règle dans Réglages, dans un éditeur sur trois colonnes : la grille en arbre, les stickers de la ligne choisie, les rattachements du sticker choisi. Il a une identité interne, le texte que lit l'élève (que tu valides), ce que l'IA cherche, sa portée (un passage, ou toute la lettre) et sa place dans la bande.
+
+353. Il se rattache à une ligne notée de la grille (le descripteur, par exemple « Le thème tenu »), et au plus à un sous-descripteur : une partie de cette ligne, qui regroupe des stickers. Il se rattache aussi à une compétence du socle (par défaut, celle de sa ligne) et à une ou deux notions de la taxonomie Eduscol du hub. Une notion qui manque part en proposition, par le même chemin que la dictée. Un sujet n'est prêt pour l'IA que si chaque sticker est validé et rattaché.
+
+354. Les règles : une modif de texte change partout. Une modif qui changerait la note de copies déjà corrigées les liste, avec la note avant et après, et ne s'applique qu'à ton « Appliquer ». Un sticker déjà posé ne s'efface jamais : il se range.
+
+355. Ce qui tombe : les 51 questions deviennent le « ce que l'IA cherche » des stickers. Les quatre passes des scans et leur pinceau se rangent pour les nouvelles copies. Les textes de niveau et leurs phrases avec {prenom} ne sont plus lus par l'élève. « À reprendre » devient « Pas encore réussi ». « Préparer le sujet » sert à valider les stickers. Le tableau complet est au point 9 du document ; au point 10, les 43 stickers de la lettre, déjà rattachés.
+
+356. Le dossier des copies : oui. Un bouton « 📂 Mon dossier de copies » : tu choisis une fois, sur chaque ordinateur, le dossier de ta clé. Ensuite, un clic : l'app relit le dossier et ne charge que les fichiers de cette rédaction. Un fichier qu'elle ne connaît pas, elle te le montre et te demande. Les photos ne quittent jamais ta clé et ton navigateur. Sur Chrome et Edge, l'app se souvient du dossier ; sur Firefox ou Safari, tu le choisis à chaque fois.
+
+357. L'identifiant des feuilles : chaque feuille en a déjà un, son empreinte, calculée sur l'image réduite à 16 × 16 points (mesuré dans le code). Recharger le même fichier sur le même ordinateur rend tout (banc : 8 pages sur 8). Entre deux ordinateurs, un seul point calculé autrement suffit pour que la feuille ne soit plus reconnue. Je ne sais pas si ça arrive chez toi : je ne peux pas le mesurer d'ici.
+
+358. Je propose d'ajouter à chaque feuille, au site, son origine : l'empreinte exacte de son fichier (sur son contenu, pas son nom) et le numéro de sa page. Elle ne dépend ni de l'ordinateur ni du nom du fichier. Sur l'autre ordinateur, l'app retrouve la feuille par son origine et lui garde son identité de toujours : ta recopie, tes marques et tes retouches restent attachées, rien n'est renommé.
+
+359. Tes 50 pages d'aujourd'hui : la première fois que tu ouvres ton dossier sur ton ordinateur habituel, l'app reconnaît chaque page comme aujourd'hui et lui ajoute son origine. Ensuite, l'autre ordinateur la retrouve à coup sûr. Une copie rescannée (un fichier neuf) se retrouve par son image, avec une tolérance ; sinon, elle passe par « Les initiales », comme aujourd'hui.
+
+360. Ok pour 356 à 359 ?
+
+À tester : rien de neuf depuis 5h28 ; la liste de 338 à 347 vaut toujours.
+
+01/11/2026 08:06
+
+MEMO

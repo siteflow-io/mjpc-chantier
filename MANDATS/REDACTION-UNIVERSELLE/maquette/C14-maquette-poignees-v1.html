@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.4.18";
+var APP_VERSION = "1.4.19";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -8325,6 +8325,7 @@ function rcInterface() {
     '<button id="rcLargeur" class="sc-btn" title="Remettre la photo et la feuille à la largeur de leurs colonnes. Ctrl + molette règle aussi leur zoom.">↔ Largeur</button>',
     '<button id="rcPlus" class="sc-btn" title="Agrandir ensemble la photo et la feuille.">＋</button>',
     '<button id="rcExportIA" class="sc-btn" title="Télécharger un fichier pour l’IA : ta consigne, puis tes copies recopiées, numérotées, sans aucun nom. Donne-le à l’IA, elle te rend le même fichier corrigé.">⇪ Exporter pour l’IA</button>',
+    '<button id="rcRenvoyerIA" class="sc-btn" hidden title="Un retour de l’IA s’est perdu : redonne-lui les copies qui attendent encore leur retour, dans un nouveau fichier (8 au plus par clic). Rien n’est effacé.">↻ Renvoyer les copies en attente</button>',
     '<button id="rcImportIA" class="sc-btn" title="Coller ou choisir le retour de l’IA. L’app vérifie que toutes les lignes correspondent avant de rien changer.">⇩ Charger le corrigé de l’IA</button><button id="rcFluxOuvrir" class="sc-btn" title="Le flux de la classe : pour chaque copie, ce qui est recopié, envoyé à l’IA, chargé, et où en est la bande, avec l’heure de chaque étape.">📋 Le flux</button><span id="rcIAEtat" class="rc-ia-etat"></span>',
     '<button id="rcPhraseOuvrir" class="sc-btn" title="La fin de la recopie de cette copie : surligne la phrase qui t’a marqué (clic sur son premier mot, puis sur son dernier), ou coche « Pas de phrase ». Elle passe en or sur la copie de l’élève. Le flux ne coche « recopiée » qu’après.">★ La phrase qui m’a marqué</button>',
     '<button id="rcBandeOuvrir" class="sc-btn" title="La bande : elle s’arrête à chaque faute proposée par le corrigé de l’IA. Entrée ou Espace : c’est une faute ; N : non. Échap : revenir à la recopie.">▶ La bande</button>',
@@ -8339,7 +8340,7 @@ function rcInterface() {
     '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
     '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
     '<textarea id="rcIATexte" spellcheck="false" placeholder="Colle ici le retour de l’IA"></textarea>',
-    '<div class="rc-ia-b"><label class="sc-btn" title="Choisir le fichier rendu par l’IA">Choisir un fichier<input id="rcIAFichier" type="file" accept=".json,.txt,application/json,text/plain" hidden></label><button id="rcIAValider" class="sc-btn" title="Vérifier toutes les lignes, puis enregistrer le corrigé">Vérifier et charger</button><button id="rcIAFermer" class="sc-btn" title="Fermer sans rien changer (Échap)">Fermer</button><button id="rcIAEffacer" class="sc-btn rc-ia-effacer" title="Effacer, sur toute la classe, le corrigé de l’IA et tout ce qui vient de la bande (décisions, marques posées par la bande, cadres visés), pour tout refaire proprement. Ta recopie ne bouge pas. Une confirmation est demandée ; tout passe d’abord par la corbeille MJPC et un export.">🗑 Tout effacer : corrigés de l’IA et bande</button></div><p id="rcIAMessage" role="status"></p><div id="rcIAEffacerQ" class="rc-ia-q" hidden></div></div></div>'
+    '<div class="rc-ia-b"><label class="sc-btn" title="Choisir le fichier rendu par l’IA, ou tous ses fichiers d’un coup : ils se chargent l’un après l’autre, dans n’importe quel ordre.">Choisir un ou plusieurs fichiers<input id="rcIAFichier" type="file" multiple accept=".json,.txt,application/json,text/plain" hidden></label><button id="rcIAValider" class="sc-btn" title="Vérifier toutes les lignes, puis enregistrer le corrigé">Vérifier et charger</button><button id="rcIAFermer" class="sc-btn" title="Fermer sans rien changer (Échap)">Fermer</button><button id="rcIAEffacer" class="sc-btn rc-ia-effacer" title="Effacer, sur toute la classe, le corrigé de l’IA et tout ce qui vient de la bande (décisions, marques posées par la bande, cadres visés), pour tout refaire proprement. Ta recopie ne bouge pas. Une confirmation est demandée ; tout passe d’abord par la corbeille MJPC et un export.">🗑 Tout effacer : corrigés de l’IA et bande</button></div><p id="rcIAMessage" role="status"></p><div id="rcIAEffacerQ" class="rc-ia-q" hidden></div></div></div>'
   ].join("");
   document.body.appendChild(e); RC.ui = e;
   e.querySelector("#rcFermer").onclick = () => rcFermer();
@@ -8354,7 +8355,7 @@ function rcInterface() {
   e.querySelector("#rcMoins").onclick = () => rcZoom(RC.zoom / 1.15);
   e.querySelector("#rcPlus").onclick = () => rcZoom(RC.zoom * 1.15);
   e.querySelector("#rcLargeur").onclick = () => rcZoom(1);
-  e.querySelector("#rcExportIA").onclick = rcExportIA;
+  e.querySelector("#rcExportIA").onclick = () => rcExportIA(false); e.querySelector("#rcRenvoyerIA").onclick = () => rcExportIA(true);   // [C14 1.4.19] (C14 571)
   e.querySelector("#rcBandeOuvrir").onclick = () => { if (RC.bd) rcBandeFermer(); else rcBandeOuvrir(); };
   e.querySelector("#rcStPlus").onclick = () => { if (typeof stPlusOuvrir === "function") stPlusOuvrir(); };
   e.querySelector("#rcBandeRetour").onclick = () => rcBandeFermer();
@@ -8368,7 +8369,7 @@ function rcInterface() {
   e.querySelector("#rcPhraseAucune").onchange = ev => { if (ev.target.checked) rcPhraseAucune(); };
   e.querySelector("#rcIAEffacer").onclick = rcIAEffacerDemander;
   e.querySelector("#rcIAValider").onclick = () => rcIACharger(e.querySelector("#rcIATexte").value);
-  e.querySelector("#rcIAFichier").onchange = ev => { const f = ev.target.files && ev.target.files[0]; if (!f) return; f.text().then(t => { e.querySelector("#rcIATexte").value = t; rcIACharger(t); }); ev.target.value = ""; };
+  e.querySelector("#rcIAFichier").onchange = ev => { const fs = ev.target.files; if (fs && fs.length > 1) { rcIAChargerPlusieurs(Array.from(fs)); ev.target.value = ""; return; } const f = fs && fs[0]; if (!f) return; f.text().then(t => { e.querySelector("#rcIATexte").value = t; rcIACharger(t); }); ev.target.value = ""; };
   e.querySelector("#rcCharger").onclick = () => document.querySelector("#scanEcran input[type=file]").click();
   e.querySelector("#rcDefile").addEventListener("wheel", ev => {
     if (!ev.ctrlKey) return; ev.preventDefault(); rcZoom(RC.zoom * (ev.deltaY < 0 ? 1.12 : 1 / 1.12));
@@ -8790,16 +8791,20 @@ function rcLignesEcrites(k) {
 }
 function rcArretsLigne(l) { return l && typeof l.corrige === "string" && l.texte === l.corrigeDe ? rcEcarts(l.texte, l.corrige).segs : []; }
 function rcCopieACorriger(k) { return rcLignesEcrites(k).some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe); }
-function rcExportIA() {
+function rcExportIA(renvoi) {
   { const g = typeof stGardeExport === "function" ? stGardeExport() : null; if (g) { toast("Pas encore d’export : " + g + "."); rcEtatIA(); return; } }   // [C14 1.4.18] (Paul 20:31, C14 565) le sujet complet d'abord
   if (RC.page) rcGarder();
   /* 1.4.2 (Paul 10:57) : un retour d'IA trop long est coupé ; on exporte par paquets les copies qui n'ont pas encore leur corrigé à jour.
      [C14 1.4.10] 8 copies (retour compact) ; chaque ligne garde le texte envoyé et l'heure (dette C14 296 : l'import refuse une ligne qui a changé depuis) ;
      plus de bandeau après l'export (Paul 17:03) : le compteur d'en haut le dit. */
   const sti = typeof stEnvoiGrille === "function" ? stEnvoiGrille() : null;   // [C14 1.4.16] les stickers validés partent avec la correction, dans le même envoi
-  const aFaire = SC.copies.filter(k => rcLignesEcrites(k).length && (rcCopieACorriger(k) || (sti && stAEnvoyer(k))));
+  /* [C14 1.4.19] (Paul 20:54 : « tout exporter à la suite en une fois puis tout importer ensuite à la suite en une fois » ; « Ok pour 571 », 22:16) :
+     chaque export donne le paquet suivant ; une copie qui attend son retour ne repart que par « ↻ Renvoyer les copies en attente » */
+  const besoin = SC.copies.filter(k => rcLignesEcrites(k).length && (rcCopieACorriger(k) || (sti && stAEnvoyer(k)))), attente = besoin.filter(rcEnAttente);
+  const aFaire = renvoi ? attente.slice().sort((a, b) => ((scCopie(a).recopie.envoi || {}).n || 0) - ((scCopie(b).recopie.envoi || {}).n || 0)) : besoin.filter(k => !attente.includes(k));
   if (!sti && typeof stActifs === "function" && stActifs().length) toast("Les stickers ne partent pas encore : " + stPretTexte() + ".");
-  if (!aFaire.length) { rcEtatIA(); return; }
+  if (!aFaire.length) { if (!renvoi && attente.length) toast("Toutes tes copies à corriger sont parties : " + attente.length + " attend" + (attente.length > 1 ? "ent" : "") + " son retour. Charge les retours ; si l’un s’est perdu : « ↻ Renvoyer les copies en attente »."); rcEtatIA(); return; }
+  const paquetsEnAttente = new Set(attente.map(k => (scCopie(k).recopie.envoi || {}).n)).size;
   const copies = aFaire.slice(0, RC_PAQUET_IA), le = new Date().toISOString(), nEnvoi = 1 + SC.copies.reduce((m, k) => Math.max(m, (((scCopie(k).recopie || {}).envoi) || {}).n || 0), 0);
   copies.forEach(k => { const s = scCopie(k), c = state.copies[k]; if (c && !c.id) { c.id = idCopie(); if (!c.creeLe) c.creeLe = le; }   // [C14 1.4.16] une copie part toujours avec son identité interne (une copie toute neuve n'en avait pas encore)
     s.recopie = s.recopie || {}; s.recopie.envoi = Object.assign({ n: nEnvoi, le, lignes: rcLignesEcrites(k).length }, sti && !rcCopieACorriger(k) ? { seul: true } : {}); });   // [C14 1.4.11] le flux : l'envoi de chaque copie, numéroté et daté
@@ -8808,9 +8813,11 @@ function rcExportIA() {
       rcLigneMaj(k, x.pid, x.id, l => { l.envoiIA = { texte: l.texte, le }; }); });
     return Object.assign({ numero: i + 1, copie: (state.copies[k] || {}).id || null, pages }, seul ? { seulementStickers: true } : {}); }) };   // [C14 1.4.12] (Paul 15:59) l'identité interne de la copie, jamais son nom
   if (sti) { o.sujet = stEnonce(); o.grille = sti; }
+  const nom = rcNomEnvoi({ n: copies.length, seuls: copies.filter(k => sti && !rcCopieACorriger(k)).length, renvoi, rang: paquetsEnAttente + 1, total: paquetsEnAttente + Math.ceil(aFaire.length / RC_PAQUET_IA) });
+  o.fichier = nom; o.consigne += RC_CONSIGNE_FICHIER;   // [C14 1.4.19] (Paul 20:54 : « Nommés par leurs contenus ») le fichier rendu porte le même nom, précédé de « corrige_ »
   saveState();
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(o, null, 1)], { type: "application/json" }));
-  a.download = "recopies-pour-l-IA-" + le.slice(0, 10) + ".json"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  a.download = nom; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
   rcEtatIA();
 }
 function rcIAOuvrir() { if (RC.page) rcGarder(); RC.iaOuvert = true; const m = RC.ui.querySelector("#rcIA"); m.hidden = false; RC.ui.querySelector("#rcIAMessage").textContent = ""; RC.ui.querySelector("#rcIATexte").focus(); }
@@ -9099,8 +9106,28 @@ function rcFluxRendre() {
   t.querySelectorAll("tr[data-k]").forEach(tr => tr.onclick = () => { const k = tr.dataset.k; rcFluxFermer(); const sel = RC.ui.querySelector("#rcCopie"); if (sel && sel.value !== k) { sel.value = k; sel.dispatchEvent(new Event("change")); } });
 }
 function rcCompteIA() {
-  const rec = SC.copies.filter(k => rcLignesEcrites(k).length), aFaire = rec.filter(rcCopieACorriger);
-  return { rec: rec.length, ok: rec.length - aFaire.length, aFaire: aFaire.length, envois: Math.ceil(aFaire.length / RC_PAQUET_IA) };
+  const rec = SC.copies.filter(k => rcLignesEcrites(k).length), corr = rec.filter(rcCopieACorriger), st = typeof stEnvoiGrille === "function" && !!stEnvoiGrille();
+  const attente = rec.filter(k => (rcCopieACorriger(k) || (st && stAEnvoyer(k))) && rcEnAttente(k)), aFaire = corr.filter(k => !attente.includes(k));   // [C14 1.4.19] une copie partie attend son retour (sa correction, ou ses seuls stickers)
+  return { rec: rec.length, ok: rec.length - corr.length, aFaire: aFaire.length, attente: attente.length, envois: Math.ceil(aFaire.length / RC_PAQUET_IA) };
+}
+/* [C14 1.4.19] (C14 571) une copie partie chez l'IA, dont aucun retour n'est encore chargé et dont aucune ligne n'a changé depuis : elle attend son retour */
+function rcEnAttente(k) {
+  const rec = scCopie(k).recopie || {}, ev = rec.envoi; if (!ev || !ev.le) return false;
+  const L = rcLignesEcrites(k); if (!L.length || !L.every(x => x.l.envoiIA && x.l.envoiIA.le === ev.le && x.l.envoiIA.texte === x.l.texte)) return false;
+  const apres = o => !!(o && o.le && o.le >= ev.le); return !apres(rec.charge) && !apres(rec.stickersIA) && !apres(rec.remarquesIA);
+}
+/* le nom du fichier dit ce qu'il contient : la rédaction, la classe, l'envoi (2 sur 4) ou le renvoi, le nombre de copies, la date et l'heure */
+function rcNomEnvoi(p) {
+  const d = new Date(), z = v => String(v).padStart(2, "0"), sl = v => (typeof scSlug === "function" ? scSlug(v) : String(v || "").replace(/[^A-Za-z0-9]+/g, "-"));
+  return [sl((typeof SUJET === "object" && SUJET && SUJET.titre) || "Redaction").slice(0, 40).replace(/-$/, ""), sl(RU.classe || "classe"), p.renvoi ? "renvoi" : "envoi-" + p.rang + "-sur-" + Math.max(p.rang, p.total),
+    p.n + "-copie" + (p.n > 1 ? "s" : "") + (p.seuls === p.n ? "-stickers-seuls" : ""), d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()), z(d.getHours()) + "h" + z(d.getMinutes())].join("_") + ".json";
+}
+const RC_CONSIGNE_FICHIER = " Rends ton travail dans un fichier JSON nommé « corrige_ » suivi exactement du nom donné dans « fichier ».";
+/* plusieurs retours de l'IA choisis d'un coup : chargés l'un après l'autre ; le message dit, fichier par fichier, ce qui s'est chargé */
+function rcIAChargerPlusieurs(fs) {
+  const msg = RC.ui.querySelector("#rcIAMessage"), R = []; msg.textContent = "Vérification de " + fs.length + " fichiers…"; msg.className = "rc-ia-msg";
+  fs.sort((a, b) => a.name.localeCompare(b.name)).reduce((p, f) => p.then(() => f.text().then(t => { try { rcIAChargerSuite(t); } catch (e) { msg.textContent = "Rien n’a changé : le retour de l’IA n’a pas la forme attendue (" + (e && e.message || e) + ")."; } R.push(f.name + " : " + msg.textContent); })), Promise.resolve())
+    .then(() => { msg.textContent = R.join("\n"); msg.style.whiteSpace = "pre-line"; msg.className = "rc-ia-msg " + (R.every(x => /: Chargé/.test(x)) ? "ok" : "ko"); msg.scrollIntoView({ block: "nearest" }); });
 }
 function rcEtatIA() {
   if (!RC.ui || !RC.copie) return; const L = rcLignesEcrites(RC.copie), e = RC.ui.querySelector("#rcIAEtat"); if (!e) return;
@@ -9111,9 +9138,10 @@ function rcEtatIA() {
   const F = SC.copies.map(rcFluxCopie).filter(f => f.lignes), env = F.filter(f => f.envoi || f.charge).length, ch = F.filter(f => f.charge).length, fin = F.filter(f => f.fini).length;
   const finies = F.filter(f => f.finie).length, flux = F.length ? "Le flux : " + F.length + " recopiée" + (F.length > 1 ? "s" : "") + " · " + env + " envoyée" + (env > 1 ? "s" : "") + " · " + ch + " chargée" + (ch > 1 ? "s" : "") + " · " + fin + " bande" + (fin > 1 ? "s" : "") + " finie" + (fin > 1 ? "s" : "") + (finies < F.length ? " · la phrase qui m’a marqué : " + finies + " sur " + F.length : "") : "";
   const g = typeof stGardeExport === "function" ? stGardeExport() : null; { const b = RC.ui.querySelector("#rcExportIA");   // [C14 1.4.18] (C14 565) l'export grisé dit sa raison, à l'écran
+    const rv = RC.ui.querySelector("#rcRenvoyerIA"); if (rv) rv.hidden = !c.attente;   // [C14 1.4.19] (C14 571)
     if (b) { b.classList.toggle("rc-gris", !!g); b.setAttribute("aria-disabled", g ? "true" : "false"); b.title = g ? "Pas encore : " + g + ". L’export partira quand le sujet sera complet." : "Télécharger un fichier pour l’IA : ta consigne, puis tes copies recopiées, numérotées, sans aucun nom. Donne-le à l’IA, elle te rend le même fichier corrigé."; }
   }
-  e.textContent = [g ? "⇪ L’export attend : " + g : "", flux, c.aFaire && !g ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", ici].filter(Boolean).join(" · ");
+  e.textContent = [g ? "⇪ L’export attend : " + g : "", flux, c.aFaire && !g ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", c.attente ? c.attente + " en attente de leur retour" : "", ici].filter(Boolean).join(" · ");
   if (RC.fluxOuvert) rcFluxRendre();
 }
 /* 1.4.1 (C14, Paul 31/10 : 181, 183, 186, 187) : la bande des fautes. Elle s'arrête à chaque faute proposée par le corrigé de l'IA.

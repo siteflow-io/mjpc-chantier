@@ -197,7 +197,15 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
     k2.l = await pg.evaluate(() => Array.from(document.querySelectorAll("#rcFeuille .rc-saisie[data-ligne]")).slice(0, 4).map(e => e.dataset.ligne));
     for (let i = 0; i < k2.l.length; i++) { const c = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + k2.l[i] + '"]'); await c.scrollIntoViewIfNeeded({ timeout: 5000 }); await c.fill(FAUTIF[i]); await att(300); }
     if (await pg.evaluate(() => !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(400); }
-    const dl3 = pg.waitForEvent("download"); await pg.click("#rcExportIA"); const ex3 = JSON.parse(fs.readFileSync(await (await dl3).path(), "utf8"));
+    const dl3 = pg.waitForEvent("download"); await pg.click("#rcExportIA"); const d3 = await dl3, nom3 = d3.suggestedFilename(), ex3 = JSON.parse(fs.readFileSync(await d3.path(), "utf8"));
+    // [C14 1.4.19] (Paul 20:54 ; « Ok pour 571 », 22:16) : un second export ne renvoie pas les copies qui attendent leur retour ; « ↻ Renvoyer » les redonne ; le nom dit le contenu
+    let dl4b = false; { const h = () => { dl4b = true; }; pg.on("download", h); await pg.click("#rcExportIA"); await att(900); pg.off("download", h); }
+    const att3 = await pg.evaluate(() => ({ flux: document.querySelector("#rcIAEtat").textContent, rv: !document.querySelector("#rcRenvoyerIA").hidden }));
+    const dlR = pg.waitForEvent("download"); await pg.click("#rcRenvoyerIA"); const dR = await dlR, nomR = dR.suggestedFilename(), exR = JSON.parse(fs.readFileSync(await dR.path(), "utf8"));
+    const memes = exR.copies.map(c => c.copie).sort().join() === ex3.copies.map(c => c.copie).sort().join();
+    verif("export (1.4.19, C14 571) : le fichier dit son contenu (« " + nom3 + " »), et la consigne demande à l’IA de rendre « corrige_ » + ce nom ; un second export ne renvoie rien (aucun fichier : " + !dl4b + ", « " + att3.flux.slice(0, 120) + " ») ; « ↻ Renvoyer les copies en attente » redonne les mêmes copies (« " + nomR + " »)",
+      /^Redaction-1-[A-Za-z0-9-]+_[a-z0-9-]+_envoi-1-sur-1_\d+-copies?(-stickers-seuls)?_\d{4}-\d\d-\d\d_\d\dh\d\d\.json$/.test(nom3) && ex3.fichier === nom3 && /« corrige_ » suivi exactement du nom donné dans « fichier »/.test(ex3.consigne)
+      && !dl4b && /en attente de leur retour/.test(att3.flux) && att3.rv && /_renvoi_/.test(nomR) && memes);
     const id2 = await pg.evaluate(k => (state.copies[k] || {}).id, k2.k), c2 = ex3.copies.find(c => c.copie === id2), L2 = c2 ? c2.pages.flatMap(p => p.lignes) : [];
     const seul3 = ex3.copies.filter(c => c.seulementStickers).length;   /* la copie dont la liste était coupée repart pour ses seuls stickers */
     const ret3 = { format: "mjpc-recopie-ia-3", lignes: {}, reussites: {}, aReprendre: {} };
@@ -205,8 +213,14 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
     ret3.reussites[id2] = [{ s: "fin" }];
     ret3.aReprendre[id2] = [{ s: "S2", l: k2.l[0], m: "depuis le front", r: "Tu écris « depuis le front », mais on ne sait pas où tu es. Donne le nom d'un lieu : une tranchée, un village." },
       { s: "S43", l: k2.l[2], m: "Mes camarade", r: "Ta lettre parle des obus, mais n'emploie aucun mot de 14-18 comme « poilu » ou « permission ». Ajoute-en un." }, { s: "fin" }];
-    await pg.click("#rcImportIA"); await att(200); await pg.locator("#rcIATexte").fill(JSON.stringify(ret3)); await pg.click("#rcIAValider"); await att(900);
-    const m3 = await pg.evaluate(() => document.getElementById("rcIAMessage").textContent); await pg.keyboard.press("Escape"); await att(200);
+    // deux retours de l'IA, choisis d'un coup : la correction de la copie, et les réussites des copies parties pour leurs seuls stickers
+    const retB = { format: "mjpc-recopie-ia-3", reussites: Object.fromEntries(ex3.copies.filter(c => c.seulementStickers).map(c => [c.copie, [{ s: "fin" }]])) };
+    const fA = path.join(out, "corrige_" + nom3), fB = path.join(out, "corrige_" + nomR); fs.writeFileSync(fA, JSON.stringify({ format: ret3.format, lignes: ret3.lignes, reussites: { [id2]: ret3.reussites[id2] }, aReprendre: ret3.aReprendre })); fs.writeFileSync(fB, JSON.stringify(retB));
+    await pg.click("#rcImportIA"); await att(200); await pg.setInputFiles("#rcIAFichier", [fA, fB]); await att(2500);
+    const m3 = await pg.evaluate(() => document.getElementById("rcIAMessage").textContent), apres3 = await pg.evaluate(() => ({ flux: document.querySelector("#rcIAEtat").textContent, rv: !document.querySelector("#rcRenvoyerIA").hidden }));
+    verif("import (1.4.19, C14 571) : deux fichiers de l’IA choisis d’un coup se chargent l’un après l’autre (« " + m3.replace(/\s+/g, " ").slice(0, 200) + " ») ; plus rien n’attend son retour (« ↻ Renvoyer » caché : " + !apres3.rv + ")",
+      (m3.match(/: Chargé/g) || []).length === 2 && m3.includes("corrige_" + nom3) && m3.includes("corrige_" + nomR) && !/en attente de leur retour/.test(apres3.flux) && !apres3.rv);
+    await pg.keyboard.press("Escape"); await att(200);
     if (await pg.evaluate(k => RC.copie !== k, k2.k)) { await pg.selectOption("#rcCopie", k2.k); await att(400); if (await pg.evaluate(() => !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(400); } }
     await pg.click("#rcBandeOuvrir"); await att(600); if (await pg.evaluate(() => RC.bd && RC.bd.attente)) { await pg.keyboard.press("Enter"); await att(300); }
     { let i = 0; while (i < 30 && await pg.evaluate(() => !!(RC.bd && RC.bd.A[RC.bd.i]))) { await pg.keyboard.press("Enter"); await att(250); i++; } }

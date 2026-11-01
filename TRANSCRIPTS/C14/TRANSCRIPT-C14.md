@@ -2883,3 +2883,25 @@ MEMO
 01/11/2026 15:38
 
 MEMO
+
+## Tour 114 — 01/11/2026 15:42 → 01/11/2026 15:45
+
+**Paul :** poiurquoi à chaque fois que je clique sur un encadré dans le texte de la rédaction, ça me met à droit "la phrase qui m'a marqué surlignée en or sur ta copie"?
+
+**Fait.** Cause trouvée dans eleve.js : en réécrivant le panneau (1.4.17, tour 113), la branche du sticker cliqué (vue « s ») a été remplacée sans être remise ; le clic tombait sur le dernier « sinon », la phrase dorée. Branche remise (le critère, la ligne formulée, le sticker) ; vérification ajoutée au banc (un cadre cliqué montre son sticker) ; au sas 78f71886 ; le fichier de l'élève refait dans le dossier privé et renvoyé à Paul ; banc complet relancé (le premier, arrêté par erreur avec la commande qui devait le relancer).
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc complet de la 1.4.17, au sas · ouvert : 409, 481, 482, 483
+
+485. C'était un défaut que j'ai mis moi-même à 15:38, en refaisant le panneau du fichier de l'élève. J'ai oublié la vue d'un sticker cliqué : le clic tombait alors dans la dernière vue du panneau, celle de la phrase qui m'a marqué. Le fichier que je t'avais envoyé à 14:47 n'avait pas ce défaut.
+
+486. C'est corrigé dans la maquette : un clic sur un cadre montre son critère, sa ligne, et son sticker avec son étoile. Le fichier de [l'élève], refait avec cette correction, vient de t'être envoyé.
+
+487. Le banc ne l'avait pas vu : il cliquait les lignes de la grille, jamais un cadre sur la copie. Il le vérifie maintenant ; le banc complet tourne.
+
+À tester : ouvre le nouveau « [nom de l'élève] - fichier eleve (maquette).html » et clique un cadre de couleur sur sa copie : à droite, son sticker avec son étoile ; puis « ← Ta grille ».
+
+01/11/2026 15:45
+
+MEMO

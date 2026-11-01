@@ -2525,3 +2525,51 @@ MEMO
 01/11/2026 10:21
 
 MEMO
+
+## Tour 105 — 01/11/2026 10:37 → 01/11/2026 10:43
+
+**Paul :** 387. Le chrono doit être déplacé dans mon temps de recopie puis de bande. ça me sert à savoir combien de temps je passe. Les copies vierges, ça doit être mis dans les réglages: d'ailleurs, j'ai pensé à pas mal de choses pour les améliorer, à consigner (par exemple le fait que la copie doit ressembler au plus à une copie normale, mais il n'y a pas que ça: ça reste un chantier entier à cadrer). 388. oui, sachant qu'il faut mesurer comment fonctionne le bouton "tourner", qui a laggué énormément pour les dylan (redessin, ENCORE?). 389. "Corriger le paquet scanné". 390. Comment ça elles donnent le niveau d'orthographe? elles remplissent surtout le critère de longueur dans la grille d'éval. 391. Non, ces fautes là ne doivent plus s'afficher. Elles restent dans les données parce qu'elles permettent d'étalonner la détection (le paquet des franklin devient en quelque sorte un jeu de données réelles qui permet d'étalonner l'app et d'augmenter sa précision) mais c'est tout. Je ne veux plus de pinceau, c'est trop aléatoire et surtout long (voir ce qui tombe avec du coup). Par ailleurs vu qu'on enlève des fonctions, tu fais attention à bien faire un nettoyage de code mort parce que sinon c'est la porte ouverte à l'empilement de code et aux bugs futurs. D'autant plus que là c'est un chantier sensible vu qu'on modifie profondément le fonctionnement de l'app. Un seul flux donc: la correction IA, et la relecture par moi. Et si j'ai des choses à rajouter ou enlever, je les rajoute directement dans la bande. 392. La note est calculée à partir du moment où le système des stickers est en place. Tout le flux d'avant n'a plus lieu d'être (les questions etc). 393. oui, sachant que là c'est l'extension chrome qui prendra le relais afin de déposer les fichiers un par un dans l'espace perso de chaque élève, et qu'à l'avenir ce sera rendu directement sur mjpc (il faut prévoir ce futur codage, en gros j'imagine un bouton comme pour les dictées "rendre les copies" et que l'élève aille télécharger son fichier sur mjpc. ça ira avec le chantieer où il scanne sa copie avec son téléphone, afin de reconstruire son fichier à la maison, vu que l'image de la copie ne peut pas transiter par mjpc. Et aussi il faudra prévoir le cas de secours, où l'élève n'a pas de téléphone, et dans ce cas c'est le texte retapé par moi qui sera le fichier de correction, et là ça peut transiter par mjpc sans problème vu que c'est du html et surtout que tout est au hub). Il reste des choses à cadrer?
+
+**Fait.** Mesuré « ↻ Tourner » sur la maquette, par le geste : 8 pages, un clic 0,15 s ; 50 pages, un clic 0,12 s ; 45 photos prises en largeur à la taille de celles des Dylan, un clic 0,14 s et trois clics rapides 0,7 s, un seul redessin par clic, le bon quart de tour à la fin. Lu au site, en lecture seule, la rédaction des Dylan (`sujet_mvqx0bld_6pj89w`, `3_dylan_bob`) : 45 pages, dont 39 photos en largeur tournées par l'app (rot 90) ; 32 sont à 270, donc deux clics de plus chacune ; dernières pages tournées entre 09:02 et 09:03. Lu dans le code : les lignes écrites servent au point « lignes » (organisation, 2 points, n / longueur du sujet) et au point « orthographe » (langue, 4 points, fautes / lignes). Registre à jour (les décisions de 10:37, les chantiers à cadrer plus tard).
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.14 depuis 10:20) · en cours : rien · ouvert : 401 à 409
+
+395. 387, noté. Le chrono passe dans la recopie (voir 403). « 🖨 Copies vierges » passe dans les Réglages. Ton chantier des copies vierges est consigné au registre, à cadrer plus tard : une copie qui ressemble le plus possible à une copie normale, et le reste.
+
+396. 388, j'ai mesuré « ↻ Tourner ». Sur la maquette, avec 45 photos de la taille de celles des Dylan, un clic prend 0,14 s, avec un seul redessin. Trois clics rapides prennent 0,7 s, et la page arrive au bon quart de tour. Chez toi : je ne sais pas, je ne peux pas le mesurer d'ici. Au site des Dylan, j'ai trouvé autre chose : 39 pages sur 45 sont des photos prises en largeur, que l'app a tournées seule d'un quart de tour. Pour 32 d'entre elles, elle a tourné du mauvais côté, et tu as dû cliquer deux fois de plus.
+
+397. Ma proposition pour « Tourner » : la page se met droite toute seule. L'app cherche la marge rouge, qui doit être à gauche ; si elle la trouve à droite, elle fait un demi-tour. Le bouton ne sert plus qu'aux cas rares. Chaque clic garde aussi sa durée dans les gestes de la copie : je la lirai au site, et je saurai si c'est lent chez toi.
+
+398. 389 : le bouton du tableau et le titre de l'écran s'appellent « 📄 Corriger le paquet scanné ».
+
+399. 390 : tu as raison pour la longueur. Dans le code d'aujourd'hui, les lignes écrites servent à deux points de la grille. Le premier, c'est la longueur : le point « lignes », 2 points, les lignes écrites rapportées à la longueur du sujet. Le second, c'est l'orthographe : 4 points, comptés en fautes par ligne, que lit aussi la colonne Brevet du Bilan. Avec les stickers, c'est la grille qui décidera de l'usage des lignes. D'ici là, elles se comptent seules dans la recopie.
+
+400. 391, 392 et 393, noté. Il n'y a plus qu'un seul flux : la correction de l'IA, puis ta relecture dans la bande. Dans la bande, F ajoute une faute et N en retire une. Il n'y a plus de pinceau. Tes 541 fautes posées au pinceau ne s'affichent plus nulle part : elles restent au site, comme données réelles pour étalonner la détection. La note revient avec les stickers. Les PDF sortent dans un zip ; ensuite, l'extension Chrome dépose chaque fichier dans l'espace de l'élève sur École Directe. Pour plus tard : « Rendre les copies » sur MJPC comme pour les dictées ; l'élève qui photographie sa copie chez lui ; et le secours sans téléphone, où ton texte recopié devient son fichier, en HTML, par le hub. Tout est consigné au registre, avec la place à préparer.
+
+Ce qui reste à cadrer, avec mes propositions :
+
+401. Le code mort. En 1.4.12, j'avais « rangé » : le geste avait disparu, mais le code était resté dans le fichier. Je propose de retirer pour de bon tout le code de l'ancien flux : les passes, les questions, le pinceau, les formes déjà vues, les remarques, le récapitulatif, la remise à zéro. Je retire aussi tout ce qui avait été rangé en 1.4.12 : la grille d'origine, le mode interrogatif, le compteur d'orthographe, le bilan détaillé, le classement d'origine, la sauvegarde JSON d'origine, les notes d'origine. Une fonction ne part que si plus rien ne l'appelle, et le banc le prouve. Les données des copies restent toutes au site, et la nouvelle version les lit toujours. Pour revenir en arrière, il reste la version précédente, gardée au sas.
+
+402. Les outils de la photo dans la recopie : un seul bouton « 📷 La photo ». Il ouvre une petite fenêtre avec « Remplacer », « Tourner », « Retoucher », « Retirer les photos » et « Ordre des pages ». Comme ce sont des gestes rares, le haut de la recopie ne prend pas une ligne de plus.
+
+403. Le chrono, en haut de la recopie : « ⏱ recopie 12 min · bande 4 min » pour la copie affichée. Il compte seul, comme aujourd'hui dans le flux. Le total de la classe est dans « 📋 Le flux ».
+
+404. Le milieu de « Corriger le paquet scanné » : les pages du paquet en vignettes, rangées par élève, avec son nom. Un clic sur une page ouvre sa recopie à cette page. Une page sans élève est mise en tête, pour « 🔤 Les initiales ».
+
+405. Le PDF, d'ici les stickers : ses pages, ses fautes en couleurs et la phrase en or, sans note ni grille. Le bouton marche dès ce lot, et c'est toi qui décides quand tu rends. Chaque fichier s'appelle « NOM Prénom.pdf », écrit comme dans la liste de la classe, pour que l'extension retrouve l'élève sur École Directe.
+
+406. Le Bilan, d'ici les stickers : pour chaque élève, ses fautes par type d'erreur, ses lignes recopiées et ton temps. Les critères et la note reviennent avec les stickers.
+
+407. L'aide « ? » de chaque écran touché est récrite, avec seulement ce qui reste.
+
+408. Le lot s'appelle 1.4.15, « le flux unique ». Il contient 386 à 390, 393, et 397 à 407. Je fais le banc complet, je vérifie sur ton vrai site en lecture seule, puis je t'envoie les captures avant/après de chaque écran changé. La mise en ligne attend ton promeus.
+
+409. Ça te va ? Un « go », et je code. Sinon, donne-moi tes changements par numéro.
+
+À tester : rien de neuf depuis 10:20 ; la liste de 10:21 vaut toujours (la bande du haut).
+
+01/11/2026 10:43
+
+MEMO

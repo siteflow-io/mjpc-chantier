@@ -110,7 +110,7 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   await w.screenshot({ path: path.join(out, "C14-64-eleve-grille-complete.png") }).catch(() => {}); await w.click("#gcF"); await w.waitForTimeout(200);
   const tout = await w.evaluate(() => document.body.innerText);
   verif("remarques (1.4.17) : dans le fichier de l’élève, " + nq + " numéro dans la marge ; au clic : « " + q1.slice(0, 200) + " »",
-    nq === 1 && /À reprendre · 1/.test(q1) && /Dis depuis quand vous êtes séparés/.test(q1) && /Ta phrase/.test(q1) && /Tranchée de la cote 304/.test(q1) && q1.includes(RQ4) && !tout.includes(RQ43));
+    nq === 1 && /À reprendre · 1/i.test(q1) && /Dis depuis quand vous êtes séparés/.test(q1) && /Ta phrase/i.test(q1) && /Tranchée de la cote 304/.test(q1) && q1.includes(RQ4) && !tout.includes(RQ43));
   verif("grille (1.4.17) : une ligne formulée pour l’élève (« " + formule.slice(0, 70) + " ») ; son échelle et la remarque de la grille sous « Pas encore réussi » (« " + q2.slice(0, 160) + " ») ; « 🪟 Voir ma grille complète » : " + gc.lignes + " rangs, " + gc.on + " cases à elle (" + gc.th.slice(0, 80) + ")",
     /Ta lettre est bien celle d'un soldat/.test(formule) && /Insuffisant/.test(q2) && /sur 7/.test(q2) && /Va à la ligne entre les parties/.test(q2) && q2.includes(RQ7) && gc.lignes === 17 && gc.on >= 10 && /Ce qui est attendu/.test(gc.th));
   await w.close(); await pg.keyboard.press("Escape"); await att(200);

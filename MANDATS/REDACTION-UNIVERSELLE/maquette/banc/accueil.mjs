@@ -42,6 +42,27 @@ export async function eprouverAccueil({ pg, verif, cap, att }) {
   await pg.reload(); await pg.locator("#gridEleves .eleve-card").first().waitFor({ state: "visible", timeout: 20000 }); await att(1200);
   const rep = await pg.evaluate(() => ({ dash: !document.getElementById("dashboard").classList.contains("hidden"), grille: !document.getElementById("correctionView").classList.contains("hidden"), interro: getComputedStyle(document.getElementById("interroOverlay")).display !== "none", mode: state.modeOuvert }));
   verif("accueil (1.4.12) : une page rouverte sur le mode interrogatif rangé revient au tableau des élèves (" + rep.dash + "), sans grille d'origine ni mode interrogatif (" + (!rep.grille && !rep.interro) + ")", rep.dash && !rep.grille && !rep.interro);
+  // [1.4.12.1] (Paul 01/11 08:47 : « quand je clique sur la carte d'un élève sans copie, ça affiche la copie et l'espace de correction d'un autre élève ») :
+  // la recopie est le dernier écran où tu as travaillé ; la carte d'un élève sans page dans le paquet n'ouvre rien, ni les scans ni la recopie d'un autre ; une carte avec copie ouvre toujours la sienne
+  await pg.evaluate(() => { state.scanDernier = "recopie"; }); await att(300);
+  const i0 = await pg.evaluate(() => Array.from(document.querySelectorAll("#gridEleves .eleve-card")).findIndex(c => { const n = c.querySelector(".eleve-nom"); return n && !scPagesDe(eleveId(n.textContent)).length; }));
+  const sansCopie = async (titre) => {
+    const s = await pg.evaluate(i => { const L = Array.from(document.querySelectorAll("#gridEleves .eleve-card")); return { i, nom: i >= 0 ? L[i].querySelector(".eleve-nom").textContent : "", carte: i >= 0 ? L[i].innerText.replace(/\s+/g, " ") : "" }; }, i0);
+    await pg.locator("#gridEleves .eleve-card").nth(s.i).click(); await att(2000);
+    const o = await pg.evaluate(() => ({ scans: SC.ouvert, recopie: typeof RC !== "undefined" && !!RC.ouvert, modale: (() => { const m = document.getElementById("scModale"); return m && m.classList.contains("show") ? m.textContent.replace(/\s+/g, " ") : ""; })() }));
+    if (titre) await cap(titre); if (o.modale) { await pg.click("#scModale >> text=Fermer"); await att(300); }
+    return Object.assign(s, o);
+  };
+  const s1 = await sansCopie("C14-49-carte-sans-copie");
+  await pg.evaluate(() => { AV.red = null; AV.lit = RU.id; SC.pages = {}; });   // la page vient de s'ouvrir : les pages du paquet sont en train d'être lues ; la carte les lit elle-même
+  const s2 = await sansCopie(null);
+  verif("carte (1.4.12.1) : la carte de " + s1.nom + ", sans page dans le paquet, le dit (« " + (s1.carte.match(/pas de copie dans le paquet/) || ["?"])[0] + " ») ; son clic n'ouvre ni les scans ni la recopie d'un autre élève (" + (!s1.scans && !s1.recopie) + "), la fenêtre dit pourquoi (« " + s1.modale.slice(0, 60) + " ») ; même chose quand les pages ne sont pas encore lues (" + (!s2.scans && !s2.recopie && s2.modale.includes(s2.nom)) + ")",
+    s1.i >= 0 && /pas de copie dans le paquet/.test(s1.carte) && !s1.scans && !s1.recopie && s1.modale.includes(s1.nom) && /n'a pas de copie dans le paquet/.test(s1.modale) && !s2.scans && !s2.recopie && s2.modale.includes(s2.nom));
+  const avec = await pg.evaluate(() => { const L = Array.from(document.querySelectorAll("#gridEleves .eleve-card")), i = L.findIndex(c => { const n = c.querySelector(".eleve-nom"); return n && scPagesDe(eleveId(n.textContent)).length; }); return { i, k: eleveId(L[i].querySelector(".eleve-nom").textContent) }; });
+  await pg.locator("#gridEleves .eleve-card").nth(avec.i).click(); await att(2500);
+  const s3 = await pg.evaluate(() => ({ scans: SC.ouvert, recopie: typeof RC !== "undefined" && !!RC.ouvert, copie: typeof RC !== "undefined" ? RC.copie : null, sc: scK() }));
+  verif("carte (1.4.12.1) : la carte d'un élève qui a sa copie ouvre toujours la sienne, dans la recopie (" + (s3.recopie && s3.copie === avec.k && s3.sc === avec.k) + ")", s3.scans && s3.recopie && s3.copie === avec.k && s3.sc === avec.k);
+  if (await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert)) { await pg.click("#rcFermer"); await att(250); } if (await pg.evaluate(() => SC.ouvert)) { await pg.locator('button[onclick="scFermer()"]').click(); await att(800); }
 }
 // [C14 1.4.12] (Paul 31/10 17:09 : « il faudra trouver une solution pour emporter les copies d'un ordi à un autre ») : mesuré, le même paquet rechargé
 // sur un autre ordinateur (ici : le même faux hub, et un navigateur sans aucune photo) rend chaque page à son élève, avec sa retouche, ta recopie et tes marques.

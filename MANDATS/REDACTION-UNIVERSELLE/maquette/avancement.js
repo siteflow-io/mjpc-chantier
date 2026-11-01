@@ -43,7 +43,8 @@ function avGrille() {   // la grille à cases du sujet et ses passes, comme les 
 }
 function avFlux(k) { if (!avPret() || typeof rcFluxCopie !== "function") return null; try { return rcFluxCopie(k); } catch (e) { return null; } }
 function avCarteFlux(k) {
-  avPagesCharger(); const f = avFlux(k); if (!f || (!f.lignes && !f.arrets)) return "";
+  avPagesCharger(); if (avPret() && !scPagesDe(k).length) return '<div class="av-flux"><span class="av-et" title="Aucune page du paquet n’est à son nom : sa carte n’ouvre rien. Sa copie se charge dans « 📄 Corriger sur les scans », et se donne avec « 🔤 Les initiales ».">pas de copie dans le paquet</span></div>';
+  const f = avFlux(k); if (!f || (!f.lignes && !f.arrets)) return "";
   const pl = (n, m) => n + " " + m + (n > 1 ? "s" : ""), e = (fait, txt, tip) => '<span class="av-et' + (fait ? " ok" : "") + '" title="' + escapeAttr(tip) + '">' + (fait ? "✓ " : "") + escapeHtml(txt) + "</span>";
   return '<div class="av-flux">' + e(f.finie, "recopiée", f.lignes ? pl(f.lignes, "ligne") + (f.finie ? ", avec la phrase qui m’a marqué : la recopie est finie." : " ; la recopie se finit avec « ★ La phrase qui m’a marqué ».") : "Pas encore recopiée.")
     + e(!!(f.envoi || f.charge), "envoyée", f.envoi ? "Envoi " + f.envoi.n + " à l’IA, " + rcHeure(f.envoi.le) + "." : f.charge ? "Envoyée avant le flux." : "Pas encore envoyée à l’IA.")
@@ -51,7 +52,18 @@ function avCarteFlux(k) {
     + e(f.fini, f.arrets ? "bande " + f.decides + "/" + f.arrets : "bande", f.arrets ? f.decides + " arrêt" + (f.decides > 1 ? "s" : "") + " décidé" + (f.decides > 1 ? "s" : "") + " sur " + f.arrets + (f.fini ? " : la bande est finie." : ".") : "La bande attend le corrigé de l’IA.") + "</div>";
 }
 function avCarteEtat(k, pct, suivi) { const f = avFlux(k); if (f && f.fini) return "Corrigé"; if ((f && (f.lignes || f.arrets)) || suivi || pct > 0) return pct === 100 ? "Corrigé" : "En cours"; return "Non commencé"; }
-function avOuvrirCarte(k) {   // la copie s'ouvre là où tu travaillais quand tu as quitté l'écran des scans
+/* [C14 1.4.12.1] (Paul 01/11 08:47 : « quand je clique sur la carte d'un élève sans copie, ça affiche la copie et l'espace de correction d'un autre élève ») :
+   la carte n'ouvre que la copie de son élève. Sans page à son nom dans le paquet, rien ne s'ouvre, et la fenêtre le dit ; les pages se lisent d'abord si besoin. */
+function avOuvrirCarte(k) {
+  if (!avPret()) { ruLire(scChemin(["pages"])).then(pg => { if (!SC.ouvert) { SC.pages = pg || {}; AV.red = RU.id; } avOuvrirCarte(k); }, () => toast("⚠ Le site ne répond pas : les pages du paquet n'ont pas pu être lues.")); return; }
+  if (!scPagesDe(k).length) { avSansCopie(k); return; }
+  avOuvrirCopie(k);
+}
+function avSansCopie(k) {
+  const nom = nomEleveDe(k) || k;
+  scModale(`<h3>${escapeHtml(nom)} n'a pas de copie dans le paquet</h3><p>Aucune page n'est à son nom : rien ne s'ouvre, pour ne jamais te montrer la copie d'un autre élève.</p><p>Si sa copie est sur ta clé : ouvre « 📄 Corriger sur les scans », charge-la, puis donne-lui ses pages avec « 🔤 Les initiales ».</p>`);
+}
+function avOuvrirCopie(k) {   // la copie s'ouvre là où tu travaillais quand tu as quitté l'écran des scans
   const rec = state.scanDernier === "recopie", r = ((((state.copies[k] || {}).scan || {}).recopie) || {}).reprise || {};
   state.scanCurseur = Object.assign({}, state.scanCurseur || {}, { copie: k });
   state.scanRecopie = rec ? { ouverte: true, copie: k, page: r.page || null, ligne: r.ligne || null } : Object.assign({}, state.scanRecopie || {}, { ouverte: false });

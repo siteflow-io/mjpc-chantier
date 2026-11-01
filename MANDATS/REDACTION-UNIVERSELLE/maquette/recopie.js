@@ -221,6 +221,8 @@ function rcOuvrir(reprendre) {
   if (!SC.ouvert || SC.attrib || !scK()) { toast("Donne d'abord chaque page à son élève."); return; }
   if (SC.champ) scChampFermer(true);
   if (reprendre) SC.actif = Date.now(); else scChrono();   // [C14 dette ⓑ] la reprise à l'ouverture n'est pas un geste : elle ne compte pas de temps, la copie n'est pas réécrite
+  const tr0 = state.scanRecopie;   // [C14 1.4.12.1] jamais la recopie d'un autre élève : la copie demandée n'a pas de page, la recopie ne s'ouvre pas
+  if (reprendre && tr0 && tr0.ouverte && tr0.copie && !SC.copies.includes(tr0.copie)) { state.scanRecopie = Object.assign({}, tr0, { ouverte: false }); toast((nomEleveDe(tr0.copie) || "Cet élève") + " n'a pas de page dans le paquet : la recopie ne s'ouvre pas sur une autre copie."); return; }
   RC.ouvert = true; RC.documents = {}; RC.annule = []; RC.zoom = 1; state.scanDernier = "recopie";   // [C14 1.4.12] là où tu travailles : la carte d'un élève y rouvre sa copie
   const trace = state.scanRecopie;
   const dernier = trace && (reprendre ? trace.ouverte : trace.copie === scK()) ? trace : null;

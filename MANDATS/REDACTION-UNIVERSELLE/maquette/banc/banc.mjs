@@ -3,7 +3,7 @@ import { eprouverAvancement } from "./avancement.mjs";
 import { eprouverAccueil, eprouverAutreOrdinateur } from "./accueil.mjs";
 import { eprouverAbsent } from "./absent.mjs";
 import { eprouverDettes115 } from "./dettes115.mjs";
-import { eprouverStickers } from "./stickers.mjs";
+import { eprouverStickers, eprouverStickersReglages } from "./stickers.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -246,6 +246,7 @@ const icAvant = await pg.evaluate(() => SC.ic); await pg.keyboard.press('Enter')
 verif('copie passée en entier : le récapitulatif s\'ouvre seul (note « ' + (rc && rc.note) + ' », ' + (rc && rc.lignes) + ' points, ' + (rc && rc.paras) + ' paragraphes de bilan) ; Entrée : la copie suivante', rc && /\/ 40/.test(rc.note) && rc.lignes === 12 && rc.pas === 0 && rc.paras >= 1 && rc.suite && apresRc.ferme && apresRc.ic !== icAvant);
 verif('aucune écriture sur une classe entière (une clé de copie vide)', !(await pg.evaluate(() => window.__LOG || [])).some(l => /^\w+ [^/]+\.json/.test(l)));
 await eprouverAvancement({ pg, verif, cap, att });
+await eprouverStickersReglages({ pg, verif, cap, att, dir: DIR });   // [C14 1.4.18] (C14 565) le sujet complet avant tout export
 await eprouverRecopie({ pg, verif, cap, att, dir: DIR, out: OUT });
 await eprouverDettes115({ pg, verif, cap, att });
 await eprouverAccueil({ pg, verif, cap, att });

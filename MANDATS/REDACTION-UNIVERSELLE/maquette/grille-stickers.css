@@ -36,3 +36,5 @@
 .rc-bande-g>*{flex-shrink:0}
 
 .rc-st-pourquoi{color:#1e6b34!important;font:15px Georgia,serif!important;text-align:center}
+/* [C14 1.4.18] (C14 565) l'export grisé tant que le sujet n'est pas complet */
+#rcExportIA.rc-gris{opacity:.45;cursor:not-allowed}

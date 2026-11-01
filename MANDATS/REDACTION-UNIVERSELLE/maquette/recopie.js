@@ -585,6 +585,7 @@ function rcLignesEcrites(k) {
 function rcArretsLigne(l) { return l && typeof l.corrige === "string" && l.texte === l.corrigeDe ? rcEcarts(l.texte, l.corrige).segs : []; }
 function rcCopieACorriger(k) { return rcLignesEcrites(k).some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe); }
 function rcExportIA() {
+  { const g = typeof stGardeExport === "function" ? stGardeExport() : null; if (g) { toast("Pas encore d’export : " + g + "."); rcEtatIA(); return; } }   // [C14 1.4.18] (Paul 20:31, C14 565) le sujet complet d'abord
   if (RC.page) rcGarder();
   /* 1.4.2 (Paul 10:57) : un retour d'IA trop long est coupé ; on exporte par paquets les copies qui n'ont pas encore leur corrigé à jour.
      [C14 1.4.10] 8 copies (retour compact) ; chaque ligne garde le texte envoyé et l'heure (dette C14 296 : l'import refuse une ligne qui a changé depuis) ;
@@ -903,7 +904,10 @@ function rcEtatIA() {
   const ici = !avec.length ? "" : "cette copie : " + f + " faute" + (f > 1 ? "s" : "") + " proposée" + (f > 1 ? "s" : "") + (change ? " · " + change + " ligne" + (change > 1 ? "s" : "") + " changée" + (change > 1 ? "s" : "") + " depuis" : "") + (sans ? " · " + sans + " sans corrigé" : "");
   const F = SC.copies.map(rcFluxCopie).filter(f => f.lignes), env = F.filter(f => f.envoi || f.charge).length, ch = F.filter(f => f.charge).length, fin = F.filter(f => f.fini).length;
   const finies = F.filter(f => f.finie).length, flux = F.length ? "Le flux : " + F.length + " recopiée" + (F.length > 1 ? "s" : "") + " · " + env + " envoyée" + (env > 1 ? "s" : "") + " · " + ch + " chargée" + (ch > 1 ? "s" : "") + " · " + fin + " bande" + (fin > 1 ? "s" : "") + " finie" + (fin > 1 ? "s" : "") + (finies < F.length ? " · la phrase qui m’a marqué : " + finies + " sur " + F.length : "") : "";
-  e.textContent = [flux, c.aFaire ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", ici].filter(Boolean).join(" · ");
+  const g = typeof stGardeExport === "function" ? stGardeExport() : null; { const b = RC.ui.querySelector("#rcExportIA");   // [C14 1.4.18] (C14 565) l'export grisé dit sa raison, à l'écran
+    if (b) { b.classList.toggle("rc-gris", !!g); b.setAttribute("aria-disabled", g ? "true" : "false"); b.title = g ? "Pas encore : " + g + ". L’export partira quand le sujet sera complet." : "Télécharger un fichier pour l’IA : ta consigne, puis tes copies recopiées, numérotées, sans aucun nom. Donne-le à l’IA, elle te rend le même fichier corrigé."; }
+  }
+  e.textContent = [g ? "⇪ L’export attend : " + g : "", flux, c.aFaire && !g ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", ici].filter(Boolean).join(" · ");
   if (RC.fluxOuvert) rcFluxRendre();
 }
 /* 1.4.1 (C14, Paul 31/10 : 181, 183, 186, 187) : la bande des fautes. Elle s'arrête à chaque faute proposée par le corrigé de l'IA.

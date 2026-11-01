@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.4.17";
+var APP_VERSION = "1.4.18";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -6815,6 +6815,8 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .rc-bande-g>*{flex-shrink:0}
 
 .rc-st-pourquoi{color:#1e6b34!important;font:15px Georgia,serif!important;text-align:center}
+/* [C14 1.4.18] (C14 565) l'export grisé tant que le sujet n'est pas complet */
+#rcExportIA.rc-gris{opacity:.45;cursor:not-allowed}
 </style>
 <script>// =====================================================================
 // RU-SCAN — CORRIGER SUR LA COPIE SCANNÉE (cadrage C13, 29-30/10/2026, tours 371 à 399)
@@ -7819,7 +7821,9 @@ function scEleveDonnees(k, test) {
   return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB), correctionEleve: scCorrectionEleve(),
     criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: stD ? stD.note : nt.ok ? nt.n : null, total: stD ? stD.total : nt.tot,
     stickers: stD ? stD.stickers : null, grilleSt: stD ? stD.grille : null,
-    pages: ps.map(p => { const d = (RC.copie === k && RC.documents && RC.documents[p.id]) || rp[p.id], m = d && d.marge; return { w: p.w, h: p.h, marge: m && isFinite(m.xh) && isFinite(m.xb) ? { xh: m.xh, xb: m.xb } : null }; }),   // [C14 1.4.17] la vraie marge rouge (Paul 15:09)
+    pages: ps.map(p => { const d = (RC.copie === k && RC.documents && RC.documents[p.id]) || rp[p.id], m = d && d.marge;
+      const ys = d && d.lignes ? Object.values(d.lignes).map(l => l.y0).filter(y => isFinite(y)).sort((a, b) => a - b) : [], ds = ys.slice(1).map((y, j) => y - ys[j]).filter(x => x > 0.008).sort((a, b) => a - b);   // [C14 1.4.17] (C14 546) l'écart entre deux lignes de la copie
+      return { w: p.w, h: p.h, marge: m && isFinite(m.xh) && isFinite(m.xb) ? { xh: m.xh, xb: m.xb } : null, pas: ds.length >= 2 ? ds[Math.floor(ds.length / 2)] : (p.lignes && p.lignes.pas) || null }; }),   // [C14 1.4.17] la vraie marge rouge (Paul 15:09)
     reprendre: stD ? stD.reprendre || [] : [], fautes, points: stD ? [] : pts, etoile, remarques: stD ? [] : remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL, types: scTypesEleve(),
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
 }
@@ -7920,7 +7924,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
 .stb{position:absolute;left:-9px;top:-10px;width:17px;height:17px;border-radius:50%;color:#fff;font:700 11px/17px system-ui;text-align:center;pointer-events:none;box-shadow:0 0 0 1.5px #fff}.reussi{display:inline-block;background:#e6f4ea;color:#1e6b34;border:1.5px solid #3a8a50;border-radius:8px;padding:3px 10px;font:700 15px system-ui;margin-bottom:8px}.rqp mark.ok{background:#d6f0dc}.pq{font-size:16px;margin:6px 0 4px;padding:6px 10px;border-left:4px solid #3a8a50;background:#f3faf5}#col .mk.st{z-index:3}#col .mk.st.ph{z-index:1;border-width:1.5px}#col .mk.stp{z-index:3;width:11px;border:3px solid var(--k);border-left:0;border-radius:0 7px 7px 0;cursor:pointer}#col .mk.stp.on{outline:3px solid #2b2520;outline-offset:2px}
 .tys{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.ty{font:14px system-ui;border:1.5px solid;border-radius:8px;padding:5px 9px;margin:0;cursor:pointer}.ty b{font-weight:700}.ty.on{box-shadow:0 0 0 2px #2b2520}.rqs{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .ech span b{font-weight:700}.gc{position:fixed;inset:0;background:rgba(30,25,20,.55);z-index:20;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:16px}.gc-c{background:#fdfbf7;border-radius:12px;max-width:1200px;width:100%;padding:14px 16px}.gc-h{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:10px;font:600 18px Georgia,serif}.gc-h button{margin:0}.gc-t{overflow-x:auto}.gc table{border-collapse:collapse;width:100%;font-size:14px;min-width:760px}.gc td,.gc th{border:1px solid #e3dccf;padding:6px 8px;vertical-align:top;text-align:left}.gc th{font:600 12px system-ui;letter-spacing:.05em;text-transform:uppercase}.gc td.on{outline:3px solid #2b2520;outline-offset:-3px;font-weight:700}.gc .gc-crit{font:600 13px system-ui;background:#f3ebdd}.gc small{color:#7a6e5f}
-@media (max-width:820px){#col .mk.e{border-width:1.5px}#col .mk.st.ph{border-width:1px}#col .mk.stp{border-width:2px;width:8px}.stb{width:13px;height:13px;left:-7px;top:-8px;font-size:9px;line-height:13px;box-shadow:0 0 0 1px #fff}.rqn,.pas2 span.rqn{width:18px;height:18px;min-width:18px;font-size:10px;line-height:18px}.pas2 span{font-size:8.5px;min-width:13px;padding:2px 1px;border-width:1px}.app{display:block;padding:6px}.pan{position:fixed;z-index:6;left:0;right:0;bottom:0;top:auto;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}}`;
+@media (max-width:820px){#col .pas2 span{height:var(--h,14px);min-width:calc(var(--h,14px) - 1px);padding:0 1px;font-size:calc(var(--h,14px) * .58);line-height:calc(var(--h,14px) - 2px);border-width:1px}#col .pas2 span.rqn{width:var(--h,14px);height:var(--h,14px);min-width:var(--h,14px);margin:0 1px;font-size:calc(var(--h,14px) * .62);line-height:var(--h,14px)}#col .mk.e{border-width:1.5px}#col .mk.st.ph{border-width:1px}#col .mk.stp{border-width:2px;width:8px}.stb{width:13px;height:13px;left:-7px;top:-8px;font-size:9px;line-height:13px;box-shadow:0 0 0 1px #fff}.rqn,.pas2 span.rqn{width:18px;height:18px;min-width:18px;font-size:10px;line-height:18px}.pas2 span{font-size:8.5px;min-width:13px;padding:2px 1px;border-width:1px}.app{display:block;padding:6px}.pan{position:fixed;z-index:6;left:0;right:0;bottom:0;top:auto;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}}`;
   document.head.appendChild(st);
   const app = document.createElement("div"); app.className = "app"; app.innerHTML = `<div class="col" id="col"></div><div class="pan" id="pan"></div>`; document.body.appendChild(app);
   const montrer = (page, y) => { const P = document.querySelectorAll(".pg")[page]; if (!P) return; const r = P.getBoundingClientRect(); window.scrollTo({ top: window.scrollY + r.top + r.height * y - window.innerHeight * 0.3, behavior: "smooth" }); };
@@ -7938,7 +7942,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     const dansMarge = i => rangsM(i).map(r => `<div class="pas2" style="left:${pc(xm(i, r.y) - 0.004)};top:${pc(r.y)};max-width:${pc(Math.max(0.05, xm(i, r.y) - 0.01))}">${rqSpan(r)}${r.f.map(fSpan).join("")}</div>`).join("");
     const marge = i => rangsM(i).map(r => `<div class="pas" style="top:${pc(r.y)}">${rqSpan(r)}${r.f.map(fSpan).join("")}</div>`).join("");
     const col = $("#col"); col.innerHTML = D.pages.map((p, i) => `<div class="pgx">${p.marge ? "" : `<div class="marge">${marge(i)}</div>`}<div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${IMG[i]}" alt="">${p.marge ? dansMarge(i) : ""}</div></div>`).join("");
-    const pgs = col.querySelectorAll(".pg");
+    const pgs = col.querySelectorAll(".pg"); ranger(pgs);
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk${vue && vue.t === "e" ? " on" : ""}" data-v="e" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach((f, i) => { const P = pgs[f.page]; if (!P) return;
       P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) || tyOn(f) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};--c:${Ty(f).couleur}"></div>`); });
@@ -7962,6 +7966,19 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     col.querySelectorAll("[data-v]").forEach(e => e.addEventListener("click", () => { const [t, i] = e.dataset.v.split(":"); vue = { t, i: i == null ? null : +i }; copie(); panneau(); }));
     decoller();
   }
+  /* [C14 1.4.17] (C14 545-546 ; Paul 18:38 : « règle 546 ») sur téléphone, rien ne se chevauche dans la marge non plus : les pastilles des fautes
+     et les numéros des remarques prennent la hauteur d'une ligne de la copie, et chaque ligne garde les siens sur un seul rang ; quand deux lignes
+     voisines se gêneraient encore, la seconde se range à gauche de la première, et la photo se décale vers la droite d'autant (jamais plus à gauche
+     que le bord de l'écran). Sur ordinateur, rien ne change. */
+  const telephone = () => !!(window.matchMedia && matchMedia("(max-width:820px)").matches);
+  function ranger(pgs) { pgs.forEach((P, i) => { const pg = D.pages[i], R = Array.from(P.querySelectorAll(".pas2")); if (!telephone() || !pg || !pg.marge || !R.length) return;
+    R.forEach(e => { e.style.maxWidth = "none"; e.style.flexWrap = "nowrap"; });
+    const bord = P.getBoundingClientRect().left; let g = 0;
+    for (let n = 0; n < 6; n++) { P.style.setProperty("--h", Math.max(10, Math.min(18, (pg.pas || 0.028) * P.clientHeight - 1.5)).toFixed(1) + "px"); R.forEach(e => { e.style.marginLeft = ""; });
+      const pl = []; R.map(e => ({ e, q: e.getBoundingClientRect() })).sort((a, b) => a.q.top - b.q.top).forEach(({ e, q }) => { let d = q.right;
+        for (let k = 0; k < 40; k++) { const o = pl.find(o => q.top < o.b + 1 && o.t < q.bottom + 1 && d - q.width < o.r + 2 && o.l < d + 2); if (!o) break; d = o.l - 2; }
+        if (d !== q.right) e.style.marginLeft = (d - q.right) + "px"; pl.push({ t: q.top, b: q.bottom, l: d - q.width, r: d }); });
+      const besoin = bord + 2 - Math.min(...pl.map(o => o.l)); if (besoin < 1) break; g += besoin; P.style.marginLeft = g + "px"; } }); }
   /* [C14 1.4.17] (Paul 18:08 : « à côté de 1 et 2, l'étoile verte est derrière l'étoile bleue ») les étoiles des stickers ne se chevauchent jamais :
      ni entre elles, ni avec les numéros et les pastilles de la marge, ni avec une accolade. Une étoile qui en touche une autre glisse le long du haut
      de son cadre, vers la droite ; celle d'une accolade glisse le long de l'accolade, vers le bas. Refait à chaque dessin et quand la largeur change. */
@@ -7975,7 +7992,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
       if (dx) r.e.style.left = (r.e.x0 + dx) + "px"; if (dy) r.e.style.top = (r.e.y0 + dy) + "px"; occ.push(r); }); }); }
   let largeur = innerWidth, attente = 0;
   addEventListener("resize", () => { clearTimeout(attente); attente = setTimeout(() => { if (innerWidth !== largeur) { largeur = innerWidth; copie(); } else decoller(); }, 120); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(decoller);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => copie());
   const retour =`<button class="clair" id="gr">← Ta grille</button>`;
   function panneau() {
     const pan = $("#pan");
@@ -8774,6 +8791,7 @@ function rcLignesEcrites(k) {
 function rcArretsLigne(l) { return l && typeof l.corrige === "string" && l.texte === l.corrigeDe ? rcEcarts(l.texte, l.corrige).segs : []; }
 function rcCopieACorriger(k) { return rcLignesEcrites(k).some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe); }
 function rcExportIA() {
+  { const g = typeof stGardeExport === "function" ? stGardeExport() : null; if (g) { toast("Pas encore d’export : " + g + "."); rcEtatIA(); return; } }   // [C14 1.4.18] (Paul 20:31, C14 565) le sujet complet d'abord
   if (RC.page) rcGarder();
   /* 1.4.2 (Paul 10:57) : un retour d'IA trop long est coupé ; on exporte par paquets les copies qui n'ont pas encore leur corrigé à jour.
      [C14 1.4.10] 8 copies (retour compact) ; chaque ligne garde le texte envoyé et l'heure (dette C14 296 : l'import refuse une ligne qui a changé depuis) ;
@@ -9092,7 +9110,10 @@ function rcEtatIA() {
   const ici = !avec.length ? "" : "cette copie : " + f + " faute" + (f > 1 ? "s" : "") + " proposée" + (f > 1 ? "s" : "") + (change ? " · " + change + " ligne" + (change > 1 ? "s" : "") + " changée" + (change > 1 ? "s" : "") + " depuis" : "") + (sans ? " · " + sans + " sans corrigé" : "");
   const F = SC.copies.map(rcFluxCopie).filter(f => f.lignes), env = F.filter(f => f.envoi || f.charge).length, ch = F.filter(f => f.charge).length, fin = F.filter(f => f.fini).length;
   const finies = F.filter(f => f.finie).length, flux = F.length ? "Le flux : " + F.length + " recopiée" + (F.length > 1 ? "s" : "") + " · " + env + " envoyée" + (env > 1 ? "s" : "") + " · " + ch + " chargée" + (ch > 1 ? "s" : "") + " · " + fin + " bande" + (fin > 1 ? "s" : "") + " finie" + (fin > 1 ? "s" : "") + (finies < F.length ? " · la phrase qui m’a marqué : " + finies + " sur " + F.length : "") : "";
-  e.textContent = [flux, c.aFaire ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", ici].filter(Boolean).join(" · ");
+  const g = typeof stGardeExport === "function" ? stGardeExport() : null; { const b = RC.ui.querySelector("#rcExportIA");   // [C14 1.4.18] (C14 565) l'export grisé dit sa raison, à l'écran
+    if (b) { b.classList.toggle("rc-gris", !!g); b.setAttribute("aria-disabled", g ? "true" : "false"); b.title = g ? "Pas encore : " + g + ". L’export partira quand le sujet sera complet." : "Télécharger un fichier pour l’IA : ta consigne, puis tes copies recopiées, numérotées, sans aucun nom. Donne-le à l’IA, elle te rend le même fichier corrigé."; }
+  }
+  e.textContent = [g ? "⇪ L’export attend : " + g : "", flux, c.aFaire && !g ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", ici].filter(Boolean).join(" · ");
   if (RC.fluxOuvert) rcFluxRendre();
 }
 /* 1.4.1 (C14, Paul 31/10 : 181, 183, 186, 187) : la bande des fautes. Elle s'arrête à chaque faute proposée par le corrigé de l'IA.
@@ -10436,8 +10457,16 @@ function stValidationAller(s) { const V = ST.valid; if (!V) return; V.i = Math.m
 function stValidationFermer() { ST.valid = null; const m = document.getElementById("stValid"); if (m) m.remove(); }
 document.addEventListener("keydown", e => { if (!ST.valid) return; if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); stValidationLigne(); } else if (e.key === "ArrowRight") { e.preventDefault(); e.stopPropagation(); stValidationAller(1); } else if (e.key === "ArrowLeft") { e.preventDefault(); e.stopPropagation(); stValidationAller(-1); } else if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); stValidationFermer(); } }, true);
 /* ═══ l'IA et la bande des stickers (cadrage 13 et 14 : un seul envoi par copie ; la bande s'arrête, après les fautes, à chaque sticker proposé) ═══ */
-const RC_CONSIGNE_STICKERS = " En plus, pour chaque copie, cherche les réussites de la grille donnée dans « grille » : chaque sticker a son numéro « s », ce que tu cherches « cherche », et sa portée « portee ». Le sujet donné aux élèves est dans « sujet ». Pour un sticker de portée « passage » réussi, donne la ligne où il se voit le mieux (son identifiant) et les mots exacts de cette ligne qui le prouvent, recopiés tels qu'ils sont dans la ligne reçue (pas dans ta ligne corrigée), de un à douze mots qui se suivent. Pour un sticker de portée « lettre », donne-le seulement si toute la lettre le montre et que rien ne le contredit. N'invente rien : un sticker qui n'est pas réussi n'apparaît pas. Pour une copie marquée « seulementStickers », ne rends pas ses lignes : rends seulement ses réussites. Ajoute au JSON \"reussites\":{\"identité de la copie (son champ copie)\":[{\"s\":\"S8\",\"l\":\"identifiant de la ligne\",\"m\":\"les mots exacts\"},{\"s\":\"S6\"},{\"s\":\"fin\"}]} : termine toujours la liste de chaque copie par {\"s\":\"fin\"}, même si elle n'a aucune réussite.";
+const RC_CONSIGNE_STICKERS = " En plus, pour chaque copie, cherche les réussites de la grille donnée dans « grille » : chaque sticker a son numéro « s », ce que tu cherches « cherche », et sa portée « portee ». Le sujet donné aux élèves est dans « sujet ». Pour un sticker de portée « passage » réussi, donne la ligne où il se voit le mieux (son identifiant) et les mots exacts de cette ligne qui le prouvent, recopiés tels qu'ils sont dans la ligne reçue (pas dans ta ligne corrigée), de un à douze mots qui se suivent. Pour un sticker de portée « lettre », donne-le seulement si toute la lettre le montre et que rien ne le contredit. N'invente rien : un sticker qui n'est pas réussi n'apparaît pas. Pour une copie marquée « seulementStickers », ne rends pas ses lignes : rends seulement ses réussites, et aussi ses remarques quand elles te sont demandées plus bas. Ajoute au JSON \"reussites\":{\"identité de la copie (son champ copie)\":[{\"s\":\"S8\",\"l\":\"identifiant de la ligne\",\"m\":\"les mots exacts\"},{\"s\":\"S6\"},{\"s\":\"fin\"}]} : termine toujours la liste de chaque copie par {\"s\":\"fin\"}, même si elle n'a aucune réussite.";
 function stEnvoiGrille() { if (!stPret().ok) return null; return stActifs().sort((a, b) => stSujetLignes().findIndex(l => l.id === a.ligne) - stSujetLignes().findIndex(l => l.id === b.ligne) || (a.ordre || 0) - (b.ordre || 0)).map(s => Object.assign({ s: s.num || s.id, cherche: s.cherche || s.texteEleve, portee: s.portee === "lettre" ? "lettre" : "passage" }, s.portee !== "lettre" && s.taille && s.taille !== "mots" ? { taille: s.taille } : {})); }
+/* [C14 1.4.18] (Paul 01/11 20:31 : « il faudrait une garde. pas d'export possible avant que le sujet soit complet, stickers grille etc. » ; C14 565) :
+   ce qui manque au sujet avant tout envoi à l'IA, dit en clair ; null quand il est complet (l'énoncé donné aux élèves, la grille de stickers chargée et validée en entier) */
+function stGardeExport() {
+  if (!stEnonce().trim()) return "l’énoncé donné aux élèves manque";
+  const P = stPret(); if (!P.n) return "ta grille de stickers n’est pas chargée (Réglages → « La grille et ses stickers » → « 📥 Charger des stickers »)";
+  if (!P.ok) { const m = /\(([^)]*)\)\s*$/.exec(stPretTexte()); return "ta grille de stickers n’est pas prête" + (m ? " : " + m[1] : "") + " (Réglages → « ✓ Valider ligne par ligne »)"; }
+  return null;
+}
 function stAEnvoyer(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !r || !r.complet; }   // une copie dont les réussites ne sont pas encore revenues entières
 function stEnonce() { const v = typeof SUJET === "object" && SUJET ? (SUJET.enonce || (SUJET.variantes || []).map(x => x.enonce || x.libelle).filter(Boolean).join("\n\n")) : ""; return String(v || "").slice(0, 6000); }
 /* les mots rendus par l'IA, retrouvés dans la ligne recopiée : la plus longue suite de mots qui se suivent (sans accents ni majuscules) */
@@ -10544,7 +10573,8 @@ function stCorrigeeAvec(k) { return !!Object.keys(scCopie(k).stickers || {}).len
 function stFinie(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !!(r && r.complet) && stArrets(k).every(a => stDecision(k, a.stId)); }
 /* le fichier de l'élève : ses stickers réussis sur sa copie, et sa grille ligne par ligne : ce qu'il a réussi, puis « Pas encore réussi » */
 function stEleve(k, ordre) {
-  const s = scCopie(k), D = s.stickers || {}; if (!Object.keys(D).length) return null;
+  const s = scCopie(k), D = s.stickers || {}, rIA = s.recopie || {};   // [C14 1.4.18] (trouvé par le banc de 546) une copie sans aucune réussite garde sa grille et ses remarques
+  if (!Object.keys(D).length && !(rIA.stickersIA && rIA.stickersIA.complet) && !(rIA.remarquesIA && (rIA.remarquesIA.liste || []).length)) return null;
   const nt = stNoteCopie(k), det = {}; nt.det.forEach(x => { det[x.ligne] = x; });
   const ia = (((s.recopie || {}).stickersIA || {}).liste) || [];
   const st = []; Object.keys(D).forEach(id => { const d = D[id]; if (d.v !== "o") return; const S = stTous().find(x => x.id === id); if (!S) return; const m = d.marque && s.marques[d.marque], l = stLigne(S.ligne);

@@ -1,12 +1,21 @@
-// [C14 1.4.16] les stickers, objets du sujet (Paul 01/11 07:59 et 13:12 : « le chantier principal à faire en premier c'est les stickers afin que je puisse enfin exporter
-// un fichier que l'IA peut analyser en entier avec toutes ses marques à poser »). Seulement des gestes ; les évaluations lisent l'état, le DOM, les fichiers téléchargés.
-export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
-  const fs = await import("node:fs"), path = await import("node:path");
+// [C14 1.4.18] (Paul 01/11 20:31 : « pas d'export possible avant que le sujet soit complet, stickers grille etc. » ; C14 565) : le sujet complet d'abord.
+// Avant la recopie : l'export est grisé et dit pourquoi (grille absente, puis pas prête) ; la grille se charge, se règle et se valide dans Réglages ; puis l'export part.
+export async function eprouverStickersReglages({ pg, verif, cap, att, dir }) {
+  const path = await import("node:path");
   await pg.bringToFront();
-  if (await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert)) { await pg.click("#rcFermer"); await att(300); }
-  if (await pg.evaluate(() => SC.ouvert)) { await pg.locator('button[onclick="scFermer()"]').click(); await att(1000); }
+  const versRecopie = async () => { if (!(await pg.evaluate(() => SC.ouvert))) { await pg.click('#ruOnglets [data-o="pilotage"]'); await att(300); await pg.click('#ruSous [data-s="correction"]'); await att(600);
+      await pg.click("#btnScan"); await pg.locator("#scanEcran").waitFor({ state: "visible" }); await att(1200); }
+    if (!(await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert))) { await pg.click("#btnRecopier"); await att(600); } };
+  const versReglages = async () => { if (await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert)) { await pg.click("#rcFermer"); await att(300); }
+    if (await pg.evaluate(() => SC.ouvert)) { await pg.locator('button[onclick="scFermer()"]').click(); await att(1000); }
+    await pg.click('#ruOnglets [data-o="reglages"]'); await att(900); };
+  const essai = async () => { let dl = false; const h = () => { dl = true; }; pg.on("download", h); await pg.click("#rcExportIA", { force: true });   /* le bouton grisé (aria-disabled) se clique quand même : rien ne part */ await att(900); pg.off("download", h);
+    return pg.evaluate(t => ({ t: document.querySelector("#rcIAEtat").textContent, gris: document.querySelector("#rcExportIA").classList.contains("rc-gris"), titre: document.querySelector("#rcExportIA").title, dl: t }), dl); };
+  await versRecopie(); const g0 = await essai();
+  verif("export (1.4.18, C14 565) : sans grille de stickers, « ⇪ Exporter pour l’IA » est grisé, ne télécharge rien et dit pourquoi, à l’écran (« " + g0.t.slice(0, 140) + " »)",
+    g0.gris && !g0.dl && /L’export attend : ta grille de stickers n’est pas chargée/.test(g0.t) && /^Pas encore : /.test(g0.titre));
+  await versReglages();
   // 1. Réglages → la grille et ses stickers : le fichier de la proposition se charge, tout « à valider »
-  await pg.click('#ruOnglets [data-o="reglages"]'); await att(900);
   const vide = await pg.evaluate(() => document.querySelector(".st-pret") ? document.querySelector(".st-pret").textContent : "");
   await pg.setInputFiles("#ruVue_reglages input[type=file]", path.join(dir, "banc/stickers-lettre-grande-guerre.json")); await att(1500);
   const charge = await pg.evaluate(() => ({ pret: document.querySelector(".st-pret").textContent, lignes: document.querySelectorAll(".st-ligne").length, cartes: document.querySelectorAll(".st-carte").length }));
@@ -14,6 +23,8 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   await cap("C14-58-stickers-reglages");
   verif("stickers (1.4.16) : Réglages → « La grille et ses stickers » : « 📥 Charger des stickers » (le fichier de la proposition) : « " + charge.pret + " » ; la grille en arbre (" + charge.lignes + " lignes), les stickers de la ligne choisie (" + charge.cartes + "), gardés au site, à valider (" + auSite + ")",
     /Aucun sticker/.test(vide) && /^44 stickers · 0 validé/.test(charge.pret) && charge.lignes === 12 && charge.cartes === 6 && auSite === 44);
+  await versRecopie(); const g1 = await essai(); await versReglages();
+  verif("export (1.4.18, C14 565) : la grille chargée mais pas validée, l’export attend encore (« " + g1.t.slice(0, 140) + " »)", g1.gris && !g1.dl && /L’export attend : ta grille de stickers n’est pas prête : 44 à valider/.test(g1.t));
   // 2. l'éditeur : le texte d'un sticker se change en place ; une notion de la taxonomie s'ajoute par la recherche ; « ✓ Je valide »
   const t1 = pg.locator('.st-carte >> nth=0').locator('textarea[data-champ="texteEleve"]'); await t1.fill("Tu dis d'où tu écris : du front, ou de la maison."); await t1.press("Tab"); await att(500);
   await pg.fill("#stTaxoCherche", "litote"); await att(300); const res = await pg.locator("#stTaxoRes button").count(); await pg.locator("#stTaxoRes button >> nth=0").click(); await att(500);
@@ -27,6 +38,17 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   let n = 0; while (await pg.evaluate(() => !!document.getElementById("stValid")) && n < 20) { await pg.keyboard.press("Enter"); await att(250); n++; }
   const pret = await pg.evaluate(() => ({ ok: stPret().ok, t: stPretTexte() }));
   verif("stickers (1.4.16) : « ✓ Valider ligne par ligne » : " + ecran + " stickers sur le premier écran, Entrée valide la ligne entière (" + n + " écrans) : « " + pret.t + " »", ecran === 6 && n === 10 && pret.ok);
+  await versRecopie(); const g2 = await pg.evaluate(() => ({ t: document.querySelector("#rcIAEtat").textContent, gris: document.querySelector("#rcExportIA").classList.contains("rc-gris") }));
+  verif("export (1.4.18, C14 565) : le sujet complet, l’export n’est plus grisé (« " + g2.t.slice(0, 100) + " »)", !g2.gris && !/L’export attend/.test(g2.t));
+  if (await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert)) { await pg.click("#rcFermer"); await att(300); }   /* la recopie commence à l'écran des scans */
+}
+// [C14 1.4.16] les stickers, objets du sujet (Paul 01/11 07:59 et 13:12 : « le chantier principal à faire en premier c'est les stickers afin que je puisse enfin exporter
+// un fichier que l'IA peut analyser en entier avec toutes ses marques à poser »). Seulement des gestes ; les évaluations lisent l'état, le DOM, les fichiers téléchargés.
+export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
+  const fs = await import("node:fs"), path = await import("node:path");
+  await pg.bringToFront();
+  if (await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert)) { await pg.click("#rcFermer"); await att(300); }
+  if (await pg.evaluate(() => SC.ouvert)) { await pg.locator('button[onclick="scFermer()"]').click(); await att(1000); }
   // 4. l'export pour l'IA : la correction et toutes les marques à poser, dans le même envoi ; une copie déjà corrigée part pour ses seules réussites
   await pg.click('#ruOnglets [data-o="pilotage"]'); await att(300); await pg.click('#ruSous [data-s="correction"]'); await att(600);
   await pg.click("#btnScan"); await pg.locator("#scanEcran").waitFor({ state: "visible" }); await att(1200);
@@ -44,7 +66,7 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   const idE = await pg.evaluate(k => (state.copies[k] || {}).id, kE.k), c0 = ex.copies.find(c => c.copie === idE);
   const L0 = c0 ? c0.pages.flatMap(p => p.lignes) : [], entete = L0.slice(0, ENTETE.length).map(l => l.texte).join(" / ");
   verif("stickers (1.4.16) : « ⇪ Exporter pour l’IA » : la grille part avec la correction (" + (ex.grille || []).length + " stickers, le sujet : " + (ex.sujet || "").length + " signes, la consigne demande les réussites : " + /reussites/.test(ex.consigne) + ") ; " + nCop + " copies, " + seul + " déjà corrigée(s) pour leurs seules réussites ; chaque copie avec son identité interne (" + (nCop - sansId) + " sur " + nCop + "), aucun nom ; la copie recopiée à l’instant part avec ses lignes (« " + entete + " »)",
-    (ex.grille || []).length === 44 && (ex.sujet || "").length > 100 && /reussites/.test(ex.consigne) && /\{"s":"fin"\}/.test(ex.consigne.replace(/\\"/g, '"')) && nCop >= 2 && seul >= 1 && sansId === 0 && !!c0 && !c0.seulementStickers && entete === ENTETE.join(" / ") && !JSON.stringify(ex).includes(await pg.evaluate(() => nomEleveDe(SC.copies[0]))));
+    (ex.grille || []).length === 44 && (ex.sujet || "").length > 100 && /reussites/.test(ex.consigne) && /\{"s":"fin"\}/.test(ex.consigne.replace(/\\"/g, '"')) && nCop >= 2 && seul === 0 && sansId === 0 && !!c0 && !c0.seulementStickers && entete === ENTETE.join(" / ") && !JSON.stringify(ex).includes(await pg.evaluate(() => nomEleveDe(SC.copies[0]))));
   if (!c0 || L0.length < 2) return;
   verif("remarques (1.4.17) : la consigne de l’export demande les remarques, au format de C14 451 (une par sticker non réussi, deux phrases, quarante mots au plus, jamais la phrase corrigée ; « aReprendre » : " + /aReprendre/.test(ex.consigne) + ")",
     /pour chaque sticker de la grille qui n'est pas réussi, écris une remarque/.test(ex.consigne) && /sans jamais écrire la phrase corrigée/.test(ex.consigne) && /aReprendre/.test(ex.consigne));
@@ -53,7 +75,7 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   const ret = { format: "mjpc-recopie-ia-3", lignes: {}, reussites: {} };
   ex.copies.filter(c => !c.seulementStickers).forEach(c => c.pages.flatMap(p => p.lignes).forEach(l => { ret.lignes[l.id] = l.texte; }));
   ret.reussites[c0.copie] = [{ s: "S2", l: L0[0].id, m: "Tranchée de la cote 304, près de Verdun" }, { s: "S36", l: L0[1].id, m: "Ma chère Louise" }, { s: "S38" }, { s: "fin" }];
-  if (c1) ret.reussites[c1.copie] = [{ s: "S8", l: L0[0].id, m: "Tranchée de la cote 304" }, { s: "fin" }];
+  if (c1) ret.reussites[c1.copie] = [{ s: "S8", l: L0[0].id, m: "Tranchée de la cote 304" }];   /* [C14 1.4.18] sa liste est coupée (pas de « fin ») : elle repart au prochain export, pour ses seuls stickers */
   // [C14 1.4.17] les remarques de l'IA : une sur une ligne, une pour la grille, une pour un sticker que tu poseras de ta main ; une sur un sticker réussi et une sur la ligne d'une autre copie, refusées
   const RQ4 = "Tu dis où tu es (« Tranchée de la cote 304 »), pas depuis quand tu as quitté Louise. Ajoute depuis combien de temps vous êtes séparés.", RQ7 = "Ta lettre est écrite d'un seul bloc. Va à la ligne quand tu passes à une autre partie.", RQ43 = "Ta lettre n'emploie aucun mot de 14-18 comme « poilu » ou « permission ». Ajoute-en un là où tu racontes ta vie au front.";
   ret.aReprendre = { [c0.copie]: [{ s: "S4", l: L0[0].id, m: "Tranchée de la cote 304", r: RQ4 }, { s: "S7", r: RQ7 }, { s: "S43", r: RQ43 }, { s: "S2", l: L0[0].id, r: "Tu dis où tu es." }, { s: "fin" }] };
@@ -164,4 +186,40 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
       [ch1, ch2].every(c => c.n >= 4 && c.ee === 0 && c.em === 0 && c.cc === 0 && c.emb >= 1 && c.jour >= 1 && c.marge >= 1 && c.mm === 0 && c.ecran === 0));
     verif("fichier de l’élève (1.4.17) : le paragraphe a son accolade (" + nAcc + ") ; au clic : « " + e8.slice(0, 150) + " » ; la phrase a un cadre par ligne (" + n24 + ") ; au clic : « " + e24.slice(e24.indexOf("TU AS"), e24.indexOf("TU AS") + 120) + " »",
       nAcc === 1 && /Réussi/.test(e8) && /Tu as écrit/i.test(e8) && e8.includes("jusqu'aux genoux et où personne ne dort.") && e8.includes(PQ8) && n24 === 2 && e24.includes("« Je t'écris depuis la tranchée, où la boue monte jusqu'aux genoux et où personne ne dort. »") && e24.includes(PQ24)); }
+  // [C14 1.4.17] (C14 545-546 ; Paul 18:38 « règle 546 », 18:53 « continue à faire tourner le banc mobile ») une marge chargée, comme sur une vraie copie de 3e :
+  // une autre copie, quatre lignes voisines recopiées avec leurs fautes, deux remarques ; la bande jusqu'au bout ; au téléphone, rien ne se chevauche dans la marge
+  { const FAUTIF = ["Mon cher frère, je t'écrit depuis le front ou il pleut", "sans arret. Les obus tombe toute la nuit et nous", "avons peur. Mes camarade sont fatigués et", "malades, la soupe et froide quand elle arrive."];
+    const CORR = ["Mon cher frère, je t'écris{G} depuis le front où{G} il pleut", "sans arrêt{C}. Les obus tombent{G} toute la nuit et nous", "avons peur. Mes camarades{G} sont fatigués et", "malades, la soupe est{G} froide quand elle arrive."];
+    if (await pg.evaluate(() => !(typeof RC !== "undefined" && RC.ouvert))) { await pg.click("#btnRecopier"); await att(600); }
+    const k2 = await pg.evaluate(k0 => { const k = SC.copies.find(k => k !== k0 && scPagesDe(k).length); return k ? { k, i: SC.copies.indexOf(k) } : null; }, k0);   /* une autre copie, ses quatre premières lignes */
+    if (!k2) { verif("recopie (1.4.17) : une autre copie avec sa photo, pour la marge chargée", false); return; }
+    if (await pg.evaluate(k => RC.copie !== k, k2.k)) { await pg.selectOption("#rcCopie", k2.k); await att(500); if (await pg.evaluate(() => !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(400); } }
+    k2.l = await pg.evaluate(() => Array.from(document.querySelectorAll("#rcFeuille .rc-saisie[data-ligne]")).slice(0, 4).map(e => e.dataset.ligne));
+    for (let i = 0; i < k2.l.length; i++) { const c = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + k2.l[i] + '"]'); await c.scrollIntoViewIfNeeded({ timeout: 5000 }); await c.fill(FAUTIF[i]); await att(300); }
+    if (await pg.evaluate(() => !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(400); }
+    const dl3 = pg.waitForEvent("download"); await pg.click("#rcExportIA"); const ex3 = JSON.parse(fs.readFileSync(await (await dl3).path(), "utf8"));
+    const id2 = await pg.evaluate(k => (state.copies[k] || {}).id, k2.k), c2 = ex3.copies.find(c => c.copie === id2), L2 = c2 ? c2.pages.flatMap(p => p.lignes) : [];
+    const seul3 = ex3.copies.filter(c => c.seulementStickers).length;   /* la copie dont la liste était coupée repart pour ses seuls stickers */
+    const ret3 = { format: "mjpc-recopie-ia-3", lignes: {}, reussites: {}, aReprendre: {} };
+    L2.forEach(l => { const i = k2.l.indexOf(l.id); ret3.lignes[l.id] = i >= 0 ? CORR[i] : l.texte; });
+    ret3.reussites[id2] = [{ s: "fin" }];
+    ret3.aReprendre[id2] = [{ s: "S2", l: k2.l[0], m: "depuis le front", r: "Tu écris « depuis le front », mais on ne sait pas où tu es. Donne le nom d'un lieu : une tranchée, un village." },
+      { s: "S43", l: k2.l[2], m: "Mes camarade", r: "Ta lettre parle des obus, mais n'emploie aucun mot de 14-18 comme « poilu » ou « permission ». Ajoute-en un." }, { s: "fin" }];
+    await pg.click("#rcImportIA"); await att(200); await pg.locator("#rcIATexte").fill(JSON.stringify(ret3)); await pg.click("#rcIAValider"); await att(900);
+    const m3 = await pg.evaluate(() => document.getElementById("rcIAMessage").textContent); await pg.keyboard.press("Escape"); await att(200);
+    if (await pg.evaluate(k => RC.copie !== k, k2.k)) { await pg.selectOption("#rcCopie", k2.k); await att(400); if (await pg.evaluate(() => !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(400); } }
+    await pg.click("#rcBandeOuvrir"); await att(600); if (await pg.evaluate(() => RC.bd && RC.bd.attente)) { await pg.keyboard.press("Enter"); await att(300); }
+    { let i = 0; while (i < 30 && await pg.evaluate(() => !!(RC.bd && RC.bd.A[RC.bd.i]))) { await pg.keyboard.press("Enter"); await att(250); i++; } }
+    await pg.keyboard.press("Enter"); await att(400);
+    const g3 = await pg.evaluate(k => ({ fautes: Object.values(scCopie(k).marques).filter(m => m.forme === "faute").length, rq: stRqVisibles(k).length }), k2.k);
+    await pg.click("#rcBandeRetour"); await att(200); await pg.click("#rcFermer"); await att(300);
+    await pg.click('#scanEcran .sc-haut >> text=Fichiers École Directe'); await att(500);
+    const dl4 = pg.waitForEvent("download"); await pg.locator("#scModale .sc-table tr").nth(k2.i + 1).locator("text=Télécharger").click(); const f4 = path.join(path.dirname(await (await dl4).path()), "eleve-marge-chargee.html"); await (await dl4).saveAs(f4); await pg.keyboard.press("Escape"); await att(200);
+    const tel = await (await pg.context().browser().newContext({ viewport: { width: 390, height: 844 } })).newPage(); await tel.goto("file://" + f4); await tel.waitForTimeout(800); await tel.click(".passer").catch(() => {}); await tel.waitForTimeout(400);
+    const mm = await tel.evaluate(() => { const S = Array.from(document.querySelectorAll("#col .pas2 span")), E = S.map(e => e.getBoundingClientRect()); let x = 0; E.forEach((a, i) => E.slice(i + 1).forEach(c => { if (a.left < c.right && c.left < a.right && a.top < c.bottom && c.top < a.bottom) x++; }));
+      const rangs = new Set(Array.from(document.querySelectorAll("#col .pas2")).map(e => Math.round(e.getBoundingClientRect().top))).size, P = document.querySelector("#col .pas2") ? document.querySelector("#col .pas2").closest(".pg") : null;
+      return { n: S.length, numeros: S.filter(e => e.classList.contains("rqn")).length, rangs, x, ecran: E.filter(r => r.left < 0 || r.right > innerWidth).length, h: P ? getComputedStyle(P).getPropertyValue("--h").trim() : "", decalage: P ? P.style.marginLeft || "0" : "", large: document.documentElement.scrollWidth <= innerWidth + 1 }; });
+    await tel.screenshot({ path: path.join(out, "C14-71-eleve-telephone-marge-chargee.png") }); await tel.context().close();
+    verif("l’export suivant : " + seul3 + " copie déjà corrigée, partie pour ses seuls stickers (sa liste était coupée) ; fichier de l’élève (1.4.17, C14 546) : une marge chargée au téléphone — le retour de l’IA (« " + m3.slice(0, 90) + " »), la bande jusqu’au bout (" + g3.fautes + " fautes gardées, " + g3.rq + " remarques) ; dans la marge : " + mm.n + " pastilles et numéros (" + mm.numeros + " numéros) sur " + mm.rangs + " rangs, à la hauteur d’une ligne de la copie (" + mm.h + "), " + mm.x + " chevauchement, " + mm.ecran + " hors de l’écran, photo décalée de " + mm.decalage + ", pas de défilement de côté : " + mm.large,
+      (!c1 || seul3 >= 1) && g3.fautes >= 6 && g3.rq >= 2 && mm.n >= 8 && mm.numeros >= 2 && mm.rangs >= 4 && mm.x === 0 && mm.ecran === 0 && /px$/.test(mm.h) && mm.large); }
 }

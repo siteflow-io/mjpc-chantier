@@ -22,7 +22,9 @@ function scEleveDonnees(k, test) {
   return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB), correctionEleve: scCorrectionEleve(),
     criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: stD ? stD.note : nt.ok ? nt.n : null, total: stD ? stD.total : nt.tot,
     stickers: stD ? stD.stickers : null, grilleSt: stD ? stD.grille : null,
-    pages: ps.map(p => { const d = (RC.copie === k && RC.documents && RC.documents[p.id]) || rp[p.id], m = d && d.marge; return { w: p.w, h: p.h, marge: m && isFinite(m.xh) && isFinite(m.xb) ? { xh: m.xh, xb: m.xb } : null }; }),   // [C14 1.4.17] la vraie marge rouge (Paul 15:09)
+    pages: ps.map(p => { const d = (RC.copie === k && RC.documents && RC.documents[p.id]) || rp[p.id], m = d && d.marge;
+      const ys = d && d.lignes ? Object.values(d.lignes).map(l => l.y0).filter(y => isFinite(y)).sort((a, b) => a - b) : [], ds = ys.slice(1).map((y, j) => y - ys[j]).filter(x => x > 0.008).sort((a, b) => a - b);   // [C14 1.4.17] (C14 546) l'écart entre deux lignes de la copie
+      return { w: p.w, h: p.h, marge: m && isFinite(m.xh) && isFinite(m.xb) ? { xh: m.xh, xb: m.xb } : null, pas: ds.length >= 2 ? ds[Math.floor(ds.length / 2)] : (p.lignes && p.lignes.pas) || null }; }),   // [C14 1.4.17] la vraie marge rouge (Paul 15:09)
     reprendre: stD ? stD.reprendre || [] : [], fautes, points: stD ? [] : pts, etoile, remarques: stD ? [] : remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL, types: scTypesEleve(),
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
 }
@@ -123,7 +125,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
 .stb{position:absolute;left:-9px;top:-10px;width:17px;height:17px;border-radius:50%;color:#fff;font:700 11px/17px system-ui;text-align:center;pointer-events:none;box-shadow:0 0 0 1.5px #fff}.reussi{display:inline-block;background:#e6f4ea;color:#1e6b34;border:1.5px solid #3a8a50;border-radius:8px;padding:3px 10px;font:700 15px system-ui;margin-bottom:8px}.rqp mark.ok{background:#d6f0dc}.pq{font-size:16px;margin:6px 0 4px;padding:6px 10px;border-left:4px solid #3a8a50;background:#f3faf5}#col .mk.st{z-index:3}#col .mk.st.ph{z-index:1;border-width:1.5px}#col .mk.stp{z-index:3;width:11px;border:3px solid var(--k);border-left:0;border-radius:0 7px 7px 0;cursor:pointer}#col .mk.stp.on{outline:3px solid #2b2520;outline-offset:2px}
 .tys{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.ty{font:14px system-ui;border:1.5px solid;border-radius:8px;padding:5px 9px;margin:0;cursor:pointer}.ty b{font-weight:700}.ty.on{box-shadow:0 0 0 2px #2b2520}.rqs{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .ech span b{font-weight:700}.gc{position:fixed;inset:0;background:rgba(30,25,20,.55);z-index:20;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:16px}.gc-c{background:#fdfbf7;border-radius:12px;max-width:1200px;width:100%;padding:14px 16px}.gc-h{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:10px;font:600 18px Georgia,serif}.gc-h button{margin:0}.gc-t{overflow-x:auto}.gc table{border-collapse:collapse;width:100%;font-size:14px;min-width:760px}.gc td,.gc th{border:1px solid #e3dccf;padding:6px 8px;vertical-align:top;text-align:left}.gc th{font:600 12px system-ui;letter-spacing:.05em;text-transform:uppercase}.gc td.on{outline:3px solid #2b2520;outline-offset:-3px;font-weight:700}.gc .gc-crit{font:600 13px system-ui;background:#f3ebdd}.gc small{color:#7a6e5f}
-@media (max-width:820px){#col .mk.e{border-width:1.5px}#col .mk.st.ph{border-width:1px}#col .mk.stp{border-width:2px;width:8px}.stb{width:13px;height:13px;left:-7px;top:-8px;font-size:9px;line-height:13px;box-shadow:0 0 0 1px #fff}.rqn,.pas2 span.rqn{width:18px;height:18px;min-width:18px;font-size:10px;line-height:18px}.pas2 span{font-size:8.5px;min-width:13px;padding:2px 1px;border-width:1px}.app{display:block;padding:6px}.pan{position:fixed;z-index:6;left:0;right:0;bottom:0;top:auto;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}}`;
+@media (max-width:820px){#col .pas2 span{height:var(--h,14px);min-width:calc(var(--h,14px) - 1px);padding:0 1px;font-size:calc(var(--h,14px) * .58);line-height:calc(var(--h,14px) - 2px);border-width:1px}#col .pas2 span.rqn{width:var(--h,14px);height:var(--h,14px);min-width:var(--h,14px);margin:0 1px;font-size:calc(var(--h,14px) * .62);line-height:var(--h,14px)}#col .mk.e{border-width:1.5px}#col .mk.st.ph{border-width:1px}#col .mk.stp{border-width:2px;width:8px}.stb{width:13px;height:13px;left:-7px;top:-8px;font-size:9px;line-height:13px;box-shadow:0 0 0 1px #fff}.rqn,.pas2 span.rqn{width:18px;height:18px;min-width:18px;font-size:10px;line-height:18px}.pas2 span{font-size:8.5px;min-width:13px;padding:2px 1px;border-width:1px}.app{display:block;padding:6px}.pan{position:fixed;z-index:6;left:0;right:0;bottom:0;top:auto;width:auto;max-height:46vh;margin:0;border-radius:14px 14px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.15);background:#f5f1ea;padding:8px}.col{padding-bottom:48vh}}`;
   document.head.appendChild(st);
   const app = document.createElement("div"); app.className = "app"; app.innerHTML = `<div class="col" id="col"></div><div class="pan" id="pan"></div>`; document.body.appendChild(app);
   const montrer = (page, y) => { const P = document.querySelectorAll(".pg")[page]; if (!P) return; const r = P.getBoundingClientRect(); window.scrollTo({ top: window.scrollY + r.top + r.height * y - window.innerHeight * 0.3, behavior: "smooth" }); };
@@ -141,7 +143,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     const dansMarge = i => rangsM(i).map(r => `<div class="pas2" style="left:${pc(xm(i, r.y) - 0.004)};top:${pc(r.y)};max-width:${pc(Math.max(0.05, xm(i, r.y) - 0.01))}">${rqSpan(r)}${r.f.map(fSpan).join("")}</div>`).join("");
     const marge = i => rangsM(i).map(r => `<div class="pas" style="top:${pc(r.y)}">${rqSpan(r)}${r.f.map(fSpan).join("")}</div>`).join("");
     const col = $("#col"); col.innerHTML = D.pages.map((p, i) => `<div class="pgx">${p.marge ? "" : `<div class="marge">${marge(i)}</div>`}<div class="pg" data-i="${i}" style="aspect-ratio:${p.w}/${p.h}"><img src="${IMG[i]}" alt="">${p.marge ? dansMarge(i) : ""}</div></div>`).join("");
-    const pgs = col.querySelectorAll(".pg");
+    const pgs = col.querySelectorAll(".pg"); ranger(pgs);
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk${vue && vue.t === "e" ? " on" : ""}" data-v="e" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach((f, i) => { const P = pgs[f.page]; if (!P) return;
       P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) || tyOn(f) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};--c:${Ty(f).couleur}"></div>`); });
@@ -165,6 +167,19 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     col.querySelectorAll("[data-v]").forEach(e => e.addEventListener("click", () => { const [t, i] = e.dataset.v.split(":"); vue = { t, i: i == null ? null : +i }; copie(); panneau(); }));
     decoller();
   }
+  /* [C14 1.4.17] (C14 545-546 ; Paul 18:38 : « règle 546 ») sur téléphone, rien ne se chevauche dans la marge non plus : les pastilles des fautes
+     et les numéros des remarques prennent la hauteur d'une ligne de la copie, et chaque ligne garde les siens sur un seul rang ; quand deux lignes
+     voisines se gêneraient encore, la seconde se range à gauche de la première, et la photo se décale vers la droite d'autant (jamais plus à gauche
+     que le bord de l'écran). Sur ordinateur, rien ne change. */
+  const telephone = () => !!(window.matchMedia && matchMedia("(max-width:820px)").matches);
+  function ranger(pgs) { pgs.forEach((P, i) => { const pg = D.pages[i], R = Array.from(P.querySelectorAll(".pas2")); if (!telephone() || !pg || !pg.marge || !R.length) return;
+    R.forEach(e => { e.style.maxWidth = "none"; e.style.flexWrap = "nowrap"; });
+    const bord = P.getBoundingClientRect().left; let g = 0;
+    for (let n = 0; n < 6; n++) { P.style.setProperty("--h", Math.max(10, Math.min(18, (pg.pas || 0.028) * P.clientHeight - 1.5)).toFixed(1) + "px"); R.forEach(e => { e.style.marginLeft = ""; });
+      const pl = []; R.map(e => ({ e, q: e.getBoundingClientRect() })).sort((a, b) => a.q.top - b.q.top).forEach(({ e, q }) => { let d = q.right;
+        for (let k = 0; k < 40; k++) { const o = pl.find(o => q.top < o.b + 1 && o.t < q.bottom + 1 && d - q.width < o.r + 2 && o.l < d + 2); if (!o) break; d = o.l - 2; }
+        if (d !== q.right) e.style.marginLeft = (d - q.right) + "px"; pl.push({ t: q.top, b: q.bottom, l: d - q.width, r: d }); });
+      const besoin = bord + 2 - Math.min(...pl.map(o => o.l)); if (besoin < 1) break; g += besoin; P.style.marginLeft = g + "px"; } }); }
   /* [C14 1.4.17] (Paul 18:08 : « à côté de 1 et 2, l'étoile verte est derrière l'étoile bleue ») les étoiles des stickers ne se chevauchent jamais :
      ni entre elles, ni avec les numéros et les pastilles de la marge, ni avec une accolade. Une étoile qui en touche une autre glisse le long du haut
      de son cadre, vers la droite ; celle d'une accolade glisse le long de l'accolade, vers le bas. Refait à chaque dessin et quand la largeur change. */
@@ -178,7 +193,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
       if (dx) r.e.style.left = (r.e.x0 + dx) + "px"; if (dy) r.e.style.top = (r.e.y0 + dy) + "px"; occ.push(r); }); }); }
   let largeur = innerWidth, attente = 0;
   addEventListener("resize", () => { clearTimeout(attente); attente = setTimeout(() => { if (innerWidth !== largeur) { largeur = innerWidth; copie(); } else decoller(); }, 120); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(decoller);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => copie());
   const retour =`<button class="clair" id="gr">← Ta grille</button>`;
   function panneau() {
     const pan = $("#pan");

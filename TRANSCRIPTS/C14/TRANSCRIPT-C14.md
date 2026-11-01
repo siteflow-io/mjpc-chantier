@@ -3338,3 +3338,25 @@ MEMO
 01/11/2026 21:13
 
 MEMO
+
+## Tour 127 — 01/11/2026 21:14 → 01/11/2026 21:16
+
+**Paul :** Promeus
+
+**Fait.** 1.4.17 copiée au sas (`d7be0986`, `SAUVEGARDES/redaction-1.4.17-RU-avant-1.4.18-2026-11-01.html`) ; production `a5d9854`, blob `232681c5afbd`, md5 `a1ef513b…`, 892 358 o ; en ligne bit à bit à 21:15 ; docs `3566f3a` (journal, point de retour, où trouver quoi `&v=1.4.18-RU`, registre : la marge au téléphone, la garde de l'export et la copie sans sticker gardé ✔).
+
+**Claude :**
+
+À jouer : la rédaction 1.4.18-RU, en ligne depuis 21:15 · en cours : rien · ouvert : 409, 442, 571
+
+579. La 1.4.18-RU est en ligne depuis 21:15, vérifiée bit à bit. Le registre, le journal, le point de retour et « où trouver quoi » sont à jour. Le point de retour est la 1.4.17, copiée au sas.
+
+580. Pour toi, ce soir : recharge la page (F5). Si ta grille de stickers est chargée et validée, l'export part comme avant. Sinon, la ligne verte d'en haut te dit ce qui manque et où le faire. La phrase que tu ajoutais à la main (563) n'est plus nécessaire.
+
+581. 571 (tout exporter à la suite, des fichiers nommés par leur contenu) attend toujours ton mot.
+
+À tester : recharge, puis « ⇪ Exporter pour l'IA » ; puis le fichier d'un élève ouvert sur ton téléphone, en regardant la marge.
+
+01/11/2026 21:16
+
+MEMO

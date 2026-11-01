@@ -2876,7 +2876,7 @@ MEMO
 
 483. Je propose de mettre en ligne la 1.4.16 et la 1.4.17 ensemble, après le banc complet, qui tourne en ce moment. Je te demanderai le promeus avec les captures. Ça te va ?
 
-484. Au sas, le transcript n'écrit pas le prénom de [l'élève] : il écrit « [l'élève] ». J'y ai aussi retiré le nom d'un élève que j'avais laissé au tour de 09:22.
+484. Au sas, le transcript n'écrit pas le prénom de [l'élève] : il écrit « [l'élève] ». J'y ai aussi retiré le nom d'un élève que j'avais laissé au tour de 09:22 ; il reste dans l'historique du sas.
 
 À tester : ouvre « [nom de l'élève] - fichier eleve (maquette).html » sur ton ordinateur, puis sur ton téléphone. Clique un numéro de la marge, un type dans « La langue », une ligne de la grille, puis « 🪟 Voir ma grille complète ».
 

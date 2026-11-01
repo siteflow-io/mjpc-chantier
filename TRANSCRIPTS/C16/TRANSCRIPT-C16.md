@@ -358,3 +358,21 @@ MEMO
 01/11/2026 23:38
 
 MEMO
+
+## Tour 12 — 01/11/2026 23:49 → 01/11/2026 23:49 (Paul dort : la conscience choisit, avec un retour à portée)
+
+**Paul (23:49) :** 69. Je dormirai donc il faudra faire un choix mais garder un point de retour à portée immédiate.
+
+**Claude (23:49) :**
+
+À jouer : ta classe de demain, sur la 8.77.1-⑩ · en cours : deux exécutants, l'un après l'autre · ouvert : 15
+
+70. Entendu. Cette nuit, chaque décision qui t'aurait été posée, je la prends. Chacune garde son retour à portée : l'autre choix reste prêt au sas, et à 05:30 je te les liste, numérotées, avec ce qu'il suffit de dire pour revenir en arrière.
+
+71. Ce qui ne change pas : rien ne part en ligne sans ton « promeus ». À 05:30, tout est prêt à partir, avec son point de retour écrit (la version d'aujourd'hui, remise en ligne en une minute si besoin).
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 23:49
+
+MEMO

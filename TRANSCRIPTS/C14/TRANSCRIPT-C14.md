@@ -2383,3 +2383,39 @@ Que proposes tu? Je veux une proposition complète et solide
 01/11/2026 08:06
 
 MEMO
+
+## Tour 102 — 01/11/2026 08:27 → 01/11/2026 08:33
+
+**Paul :** 357. Justement: imaginons que je reprenne une photo en meilleure qualité pour un élève, ou que je retouche la photo qui est sur ma clef. D'ailleurs, est ce que je peux supprimer une copie pour un ou des élèves ? Typiquement mauvaise qualité, je veux la refaire, tu vois l'idée. 358. Surtout que pour plus tard, quand l'élève prendra sa photo lui même à la maison il faudra bien que ce système d'identification de la copie soit le plus solide possible. Par ailleurs, un dossier de copies par classe et par sujet bien sûr ? Enfin les stickers sont évidemment injectés par l'IA d'injection, quand je crée mon sujet au départ ( donc il faudra adapter le prompt d'injection). 
+Et je dois pouvoir valider la lecture de la grille et des stickers le plus rapidement possible. 
+C'est le moment de coder. Attention aux télescopages. Fais ton plan de codage. Promeus d'abord ce qui est prêt.
+
+**Fait.** Vérifié : rien d'autre que la 1.4.12 (en ligne depuis 05:28) n'attendait.
+
+**Claude :**
+
+À jouer : rien, je code · en cours : le lot 1, la feuille et le dossier · ouvert : 372
+
+364. Ce qui était prêt est déjà en ligne : la 1.4.12, depuis 5h28. Rien d'autre n'attend.
+
+365. 357, une photo refaite ou retouchée sur ta clé : c'est un fichier neuf, donc la feuille ne se retrouve pas par son origine. Elle se retrouve par son image, avec une tolérance, ou par ton geste. Deux gestes sur la copie d'un élève : « 📷 Remplacer la photo » d'une page (la feuille garde son identité, ta recopie reste, ses lignes se recalent sur la nouvelle photo, les cadres de la bande se replacent seuls) et « Retirer les photos de cette copie » (elle redevient à charger ; ta recopie et ta correction restent).
+
+366. 358 : l'identité d'une feuille ne viendra jamais de l'image. L'app la donne une fois, au premier chargement, et ne la change plus ; l'image et le fichier servent seulement à la retrouver. Plus tard, quand l'élève photographiera sa copie à la maison, il l'enverra depuis sa session : elle arrivera déjà rattachée à lui. Les copies vierges de l'appli pourront aussi porter un code à son nom. Ce que je code aujourd'hui ne l'empêche pas.
+
+367. Un dossier par classe et par sujet : oui. L'app garde un dossier par rédaction, et une rédaction est une classe.
+
+368. Les stickers viennent de l'IA d'injection, à la création du sujet : le prompt d'injection passe au format 2 (les lignes, les stickers, ce que l'IA cherche, leurs rattachements à la ligne, à la compétence et à la taxonomie). Un sujet au format 1 se lit toujours. Pour la lettre d'aujourd'hui, ce sont les 43 stickers déjà rattachés.
+
+369. La validation la plus rapide : « Préparer le sujet » montre une ligne par écran, avec tous ses stickers et leurs rattachements. Entrée valide la ligne entière, un clic sur un sticker l'ouvre pour le changer. La lettre se valide en 12 écrans.
+
+370. Le plan de codage, dans cet ordre : lot 1, la feuille et le dossier (365 à 367) ; lot 2, le sticker (l'objet, l'éditeur des Réglages, les 43 stickers, la validation rapide) ; lot 3, la bande des stickers (dans le même envoi à l'IA, le compte en direct) ; lot 4, l'élève et le Bilan (ses stickers, « Pas encore réussi », les compétences et la taxonomie) ; lot 5, ranger les passes et le pinceau pour les nouvelles copies ; lot 6, le prompt d'injection au format 2.
+
+371. Les télescopages que je surveille à chaque lot : l'identité des feuilles (ta recopie, tes marques, tes retouches, les fichiers École Directe, « Remettre à zéro ») ; les copies déjà corrigées avec les 51 questions (leur note ne bouge pas) ; le seul envoi à l'IA (correction, types, sujet traité et stickers dans le même aller-retour) ; ta bande en cours sur tes 24 copies.
+
+372. Chaque lot passe en ligne dès qu'il est prêt (banc vert, vrai site identique en lecture), comme cette nuit. Ça te va ? Sans réponse, je fais comme pour 318.
+
+À tester : rien de neuf depuis 5h28.
+
+01/11/2026 08:33
+
+MEMO

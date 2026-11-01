@@ -2732,3 +2732,44 @@ MEMO
 01/11/2026 14:28
 
 MEMO
+
+## Tour 110 — 01/11/2026 14:27 → 01/11/2026 14:31
+
+**Paul :** Il faut cadrer au prompt le format d'une remarque du coup. 
+Par ailleurs, quel impact sur la note?
+
+**Fait.** Arrivé pendant que je finissais le tour 109. Banc des stickers de 14:22 fini : 158 vérifications, 0 défaut ; son exemple d'en-tête refait réaliste (banc/stickers.mjs, et la ligne « Ligne de la page précédente » de banc/recopie.mjs devenue « Je pense à vous chaque soir, quand le canon se tait. »), banc relancé à 14:28. Relu la consigne des stickers de la 1.4.16 (RC_CONSIGNE_STICKERS) et la règle du fichier de l'élève (« La bonne forme d'une faute ne se montre pas »). Rien d'écrit au site, rien de codé pour les remarques.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc des stickers, au sas (relancé à 14:28) · ouvert : 409, 439, 440, 441, 457
+
+447. La note : aucun impact. Elle se calcule sur les seules réussites. Une remarque n'ajoute ni ne retire aucun point.
+
+448. Un seul cas la fait bouger : en lisant une remarque, tu vois que l'élève a en fait réussi (l'IA n'a pas vu sa litote). Tu poses alors le sticker avec « ＋ Un sticker » : la remarque de ce sticker s'en va seule, et la note monte. Retirer une remarque fausse sans poser de sticker ne change pas la note.
+
+449. Un sticker que tu refuses dans la bande (N) n'a pas de remarque, puisque l'IA l'avait vu réussi. Il reste « Pas encore réussi » dans la grille, sans remarque.
+
+450. Je corrige mon exemple de 434 : il donnait la phrase corrigée (« un obus est tombé »). Pour les fautes, la bonne forme ne se montre pas à l'élève : elle servira quand il corrigera lui-même. La remarque fait pareil : elle dit ce qu'il doit faire, jamais à sa place.
+
+451. Le format d'une remarque, tel que je propose de l'écrire dans la consigne de l'IA : « Pour chaque sticker de la grille qui n'est pas réussi, écris une remarque à l'élève, une seule par sticker. Tutoie-le. Deux phrases au plus, quarante mots au plus, avec des mots qu'un élève de 3e comprend sans aide. La première phrase dit ce qui ne va pas, en citant ses mots exacts entre guillemets. La seconde dit ce qu'il peut faire, sans jamais écrire la phrase corrigée à sa place. N'emploie que les mots de grammaire de la grille et du sujet. Ne juge jamais l'élève lui-même et ne parle pas de note. Si le sticker est raté à plusieurs endroits, choisis le plus net. S'il manque et qu'une ligne est l'endroit où il aurait sa place, donne cette ligne ; sinon, ne donne pas de ligne. N'écris jamais de remarque sur un sticker réussi. »
+
+452. Ce que ça donne sur une lettre inventée, pour S40 : « Tu racontes ta nuit au passé composé (« nous avons marché »), puis tu passes au présent (« un obus tombe »). Relis ce passage et mets tous ses verbes au même temps. »
+
+453. Et pour un manque, S12 : « Ta lettre ne pose aucune question à Louise sur sa vie à elle. Ajoute dans ce paragraphe une ou deux questions sur ce qu'elle vit pendant ton absence. »
+
+454. Ce que l'IA rend, pour chaque remarque : le numéro du sticker, la ligne, les mots exacts qu'elle vise et le texte de la remarque. Les mots servent à encadrer le passage sur la photo, comme pour une réussite. Une remarque sans ligne va dans la grille.
+
+455. Ce que l'app refuse au chargement : une remarque sur un sticker que l'IA donne aussi réussi, et une remarque posée sur la ligne d'une autre copie. Le message du chargement les compte, comme il compte déjà les réussites refusées. Si les mots ne se retrouvent pas dans la ligne, le numéro reste sur la ligne, sans cadre.
+
+456. Une remarque de plus de quarante mots n'est pas coupée : elle te sera signalée dans ta liste de relecture (436), si tu prends cette façon-là.
+
+457. Le texte de 451 te va, ou tu le changes ?
+
+458. Le banc des stickers de 14:22 a fini : 158 vérifications, 0 défaut. Mais son exemple ne tenait pas : l'IA y « voyait » « Tu dis où tu es » dans une ligne qui disait « Ligne de la page précédente ». Je l'ai refait avec l'en-tête d'une vraie lettre (« Tranchée de la cote 304, près de Verdun, le 14 avril 1916 », puis « Ma chère Louise, »), recopié par le geste, et je l'ai relancé à 14:28.
+
+À tester : rien de neuf depuis 14:02 ; la liste de 14:04 vaut toujours.
+
+01/11/2026 14:31
+
+MEMO

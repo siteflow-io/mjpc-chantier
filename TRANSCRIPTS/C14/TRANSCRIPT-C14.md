@@ -3438,3 +3438,30 @@ MEMO
 01/11/2026 22:47
 
 MEMO
+
+---
+
+## Tour 130 — 01/11/2026 22:49
+
+**Paul (22:49) :**
+
+Promeus puis après il faut terminer effectivement tout le reste. À coder cette nuit. Tout doit être opérationnel demain matin à 5h30. Tourne cette nuit.
+
+**Ce qui a été fait (C14) :** la 1.4.18-RU en ligne copiée au sas (`SAUVEGARDES/redaction-1.4.18-RU-avant-1.4.19-2026-11-01.html`, `2145fd55`) ; la 1.4.19-RU candidate (md5 `55c27b0af397b48d2af2b8c6c491fa38`, 897 875 o) mise en production, commit `e390cbe`, blob `257fe862a182` ; en ligne bit à bit à 22:51:26. Docs de production : journal, point de retour, où trouver quoi (`&v=1.4.19-RU`), registre (état de production, ✔ « tout exporter à la suite », le plan de la nuit) — `e2b5984`.
+
+**Claude (22:53) :**
+
+*(Le texte de ce message a été perdu à la compaction de la conversation, avant son écriture ici ; 596, 598 et 600 sont mot pour mot, 595, 597 et 599 sont résumés.)*
+
+595. *(résumé)* La 1.4.19-RU est en ligne, vérifiée bit à bit.
+
+596. Ce que je code cette nuit, dans cet ordre, sur la maquette, chaque morceau passé au banc complet. 403 : le chrono « ⏱ recopie · bande » en haut de la recopie. 402 : un seul bouton « 📷 La photo ». 405 : « Rendre » donne un zip des fichiers de l'élève, chacun nommé « NOM Prénom.html ». 13:12 : la sauvegarde JSON étendue à tout, proposée au téléchargement et rangée au site quand le paquet est fini. 404 : les pages du paquet en vignettes, rangées par élève. 406 : le Bilan avec les stickers (note, lignes de la grille, fautes par type, lignes, ton temps). 407 : l'aide « ? » récrite. 401 en dernier… Puis les cadres décalés d'un mot sur le blanc correcteur.
+
+597. *(résumé)* Ce que je ne peux pas finir seul : le test iPhone de la pièce jointe École Directe ; 442 (le premier vrai paquet) ; le dossier des copies (351-360, en attente de ton mot) ; « corriger des textes tapés » (à cadrer) ; la correction par l'élève (plus tard).
+
+598. … Je te laisse un point à 5h30 : ce qui est fait, ce qui reste, et la version candidate.
+
+599. *(résumé)* Rien de neuf à tester tant que rien de plus n'est en ligne.
+
+600. Cette nuit, je mets en ligne seul, au fur et à mesure, ce qui passe le banc complet et ton vrai site en lecture seule ? Ou bien tout attend ton promeus à 5h30 ?
+

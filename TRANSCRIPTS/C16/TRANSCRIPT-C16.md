@@ -200,3 +200,25 @@ MEMO
 01/11/2026 22:40
 
 MEMO
+
+## Tour 7 — 01/11/2026 22:45 → 01/11/2026 22:48 (les captures, tout de suite)
+
+**Paul (22:45) :** Je veux les captures maintenant
+
+**Fait.** Message à l'exécutant (22:46) : il ne s'arrête pas, il réordonne — d'abord le rendu des cinq diapos (pilote et tableau, lignes à la flèche, couleurs du canon, « À régler »), poussé sur `deroule/diapos-ouverture` dès qu'il s'affiche par le geste, avant la carte, l'import, le prompt, la feuille sommaire et la sonde ; il a répondu « Je réordonne » à 22:47 et écrit. Faux hub de la conscience complété (jamais poussé) : la taxonomie réelle lue au hub en lecture seule (302 phrases d'élève), le 4e « Le Horla » (7 séances). Script de captures de l'ouverture (scratchpad `bancs/cap-ouverture.mjs`, sur le modèle de `cap-question.mjs`) : mode test, horloge du 07/09 09:00, la case 3E Charles de Gaulle du 07/09 → « Ouvrir le pilotage et lancer », la fenêtre du tableau, une capture pilote + tableau à chaque flèche. Joué sur la production 8.77.1-⑩ (md5 `db481a87…`) : heure 1, diapos 0 présentation du chapitre, 1 plan, 2 présentation de la séance, 3 problématique, puis le cours ; 15 captures × 2, aucune erreur JS, aucune boîte système ; regardées : C-04, C-09, C-12, C-14 au tableau, envoyées à Paul. Une veille attend la première poussée de l'exécutant.
+
+**Claude (22:48) :**
+
+À jouer : ta classe de demain, sur la 8.77.1-⑩ · en cours : l'exécutant écrit les cinq diapos · ouvert : 15
+
+46. Les captures « après » n'existent pas encore : l'exécutant n'avait encore rien écrit. Je lui ai fait changer d'ordre à 22:46 : d'abord les cinq diapos, au pilote et au tableau, et il les pousse dès qu'elles s'affichent, avant le reste (la carte de l'Atelier, l'import, le prompt). Il écrit depuis 22:47.
+
+47. Ce que je peux te montrer tout de suite, c'est l'« avant » : ton vrai chapitre « Poésie et peinture », au tableau, au début de la séance 1, en mode test. Ce sont les quatre captures C-04, C-09, C-12 et C-14 : la présentation du chapitre (« Ce que nous travaillons », avec les compétences à l'intitulé officiel), le plan, la présentation de la séance, la problématique. Fond crème, aucune image : rien n'est encore au canon.
+
+48. Je suis prévenu à l'instant où il pousse. Je prends alors les mêmes captures, au même endroit, et je te les envoie à côté de celles-ci, sans attendre.
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 22:48
+
+MEMO

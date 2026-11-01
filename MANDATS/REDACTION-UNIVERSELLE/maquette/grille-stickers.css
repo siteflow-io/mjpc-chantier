@@ -34,3 +34,5 @@
 .st-ligne-eleve{display:flex;flex-direction:column;gap:3px;font:600 13px system-ui;color:#4b4036;margin:4px 0 10px}.st-ligne-eleve textarea{font:15px/1.4 system-ui;border:1px solid #d6cfc1;border-radius:6px;padding:5px 7px}
 .st-v-ligne{display:block;font:14px system-ui;color:#2b6cb0;margin-top:3px}.st-v-manque{color:#975a16!important}
 .rc-bande-g>*{flex-shrink:0}
+
+.rc-st-pourquoi{color:#1e6b34!important;font:15px Georgia,serif!important;text-align:center}

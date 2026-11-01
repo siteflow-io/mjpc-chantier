@@ -168,7 +168,8 @@
    ],
    "ordre": 2,
    "sous": "ou-tu-es",
-   "texteManque": "Écris un paragraphe sur où tu es et ce que tu vois."
+   "texteManque": "Écris un paragraphe sur où tu es et ce que tu vois.",
+   "taille": "paragraphe"
   },
   {
    "num": "S9",
@@ -182,12 +183,13 @@
    ],
    "ordre": 3,
    "sous": "le-plus-dur",
-   "texteManque": "Écris un paragraphe sur ce qui est le plus dur à vivre pour toi."
+   "texteManque": "Écris un paragraphe sur ce qui est le plus dur à vivre pour toi.",
+   "taille": "paragraphe"
   },
   {
    "num": "S10",
    "ligne": "paragraphes",
-   "texteEleve": "Ce qui est le plus dur est une surprise, comme la boue chez Jean Déléage : pas seulement la mort ou les combats.",
+   "texteEleve": "Ce qui est le plus dur est une surprise, comme la boue dans la lettre de Jean Déléage, lue en classe : pas seulement la mort ou les combats.",
    "cherche": "Cette chose difficile est-elle inattendue, comme la boue chez Jean Déléage (pas seulement la mort ou les combats) ?",
    "portee": "passage",
    "competence": "c4-ecrire-02",
@@ -196,7 +198,7 @@
    ],
    "ordre": 4,
    "sous": "le-plus-dur",
-   "texteManque": "Choisis, pour le plus dur, une surprise, comme la boue chez Jean Déléage : pas seulement la mort ou les combats."
+   "texteManque": "Choisis, pour le plus dur, une surprise, comme la boue dans la lettre de Jean Déléage, lue en classe : pas seulement la mort ou les combats."
   },
   {
    "num": "S11",
@@ -210,7 +212,8 @@
    ],
    "ordre": 5,
    "sous": "l-inquietude",
-   "texteManque": "Écris un paragraphe où tu t'inquiètes pour l'autre."
+   "texteManque": "Écris un paragraphe où tu t'inquiètes pour l'autre.",
+   "taille": "paragraphe"
   },
   {
    "num": "S12",
@@ -401,7 +404,8 @@
     "fam-16"
    ],
    "ordre": 1,
-   "texteManque": "Écris l'architecture 1 comme le modèle du sujet."
+   "texteManque": "Écris l'architecture 1 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S25",
@@ -414,7 +418,8 @@
     "fam-16"
    ],
    "ordre": 2,
-   "texteManque": "Écris l'architecture 2 comme le modèle du sujet."
+   "texteManque": "Écris l'architecture 2 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S26",
@@ -427,7 +432,8 @@
     "fam-16"
    ],
    "ordre": 3,
-   "texteManque": "Écris l'architecture 3 comme le modèle du sujet."
+   "texteManque": "Écris l'architecture 3 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S27",
@@ -440,7 +446,8 @@
     "fam-16"
    ],
    "ordre": 4,
-   "texteManque": "Écris l'architecture 4 comme le modèle du sujet."
+   "texteManque": "Écris l'architecture 4 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S28",
@@ -453,7 +460,8 @@
     "fam-16"
    ],
    "ordre": 5,
-   "texteManque": "Écris l'architecture 5 comme le modèle du sujet."
+   "texteManque": "Écris l'architecture 5 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S29",
@@ -550,7 +558,7 @@
   {
    "num": "S36",
    "ligne": "codes",
-   "texteEleve": "La formule pour t'adresser à l'autre : « Ma chère Louise ».",
+   "texteEleve": "La formule pour t'adresser à l'autre, comme « Ma chère Louise ».",
    "cherche": "Y a-t-il une formule pour s'adresser à l'autre (« Ma chère Louise ») ?",
    "portee": "passage",
    "competence": "c4-ecrire-01",
@@ -558,7 +566,7 @@
     "fam-41"
    ],
    "ordre": 3,
-   "texteManque": "Écris une formule pour t'adresser à l'autre : « Ma chère Louise »."
+   "texteManque": "Écris une formule pour t'adresser à l'autre, comme « Ma chère Louise »."
   },
   {
    "num": "S37",

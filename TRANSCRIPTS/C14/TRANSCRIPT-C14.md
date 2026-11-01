@@ -3187,3 +3187,41 @@ MEMO
 01/11/2026 18:52
 
 MEMO
+
+## Tour 123 — 01/11/2026 18:53 → 01/11/2026 19:16
+
+**Paul (18:53) :** je veux la passation oui. Et les dettes ainsi que le cadrage restant. D'ailleurs, une dette à ajouter: rien qui n'arrive au tableau ne s'affiche tout seul. C'est moi qui dévoile tout. Par ailleurs, dans le type "question": la participation des élèves doit être avant la réponse préparée par moi. Car c'est comme ça que ça se passe en classe. J'affiche la question, les élèves participent et je prends leur participation, PUIS seulement j'affiche la réponse académique. Pour 553, vu que c'est que du mobile, si j'ai bien compris l'échec du banc, promeus le reste, qui va sur ordinateur, et continue à faire tourner le banc mobile.
+
+**Claude (18:58) :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : la 1.4.17-RU sans 546, au banc ; tes deux dettes ; la passation · ouvert : 409
+
+554. Je fais dans cet ordre. D'abord je mets en ligne la 1.4.17-RU sans 546, après le banc complet et la vérification de ton vrai site en lecture seule. Ensuite j'écris tes deux dettes au registre, et la marge du téléphone comme dette ouverte. Puis je fais tourner le banc mobile de 546. Enfin je prépare la passation : les dettes du déroulé relues dans le code, le cadrage restant, et la phrase que tu colles. Deux relectures du déroulé tournent déjà en parallèle, en lecture seule.
+
+À tester : rien pour l'instant.
+
+01/11/2026 18:58
+
+MEMO
+
+**Fait (18:53 → 19:16).** 546 retiré de la candidate (eleve.js revenu à la 542 ; la vérification de la marge au téléphone sortie du banc) : banc complet 168/0 ; vrai site en lecture seule : 30 copies, 675 marques identiques à la 1.4.15 (2 écritures de suivi interceptées ; 1 au premier passage, selon le temps), 51 pages recopiées identiques, la carte ouvre la bonne copie, 0 erreur. Sas : c14-poignees `2d1dcd62` ; point de retour 1.4.15 et candidate `cb9395a4`. Production : `c54472a`, md5 `e01b612c…`, 887 813 o, en ligne bit à bit à 19:02 ; docs `89bb45b` (journal, point de retour, où trouver quoi, registre : les deux dettes du déroulé, la marge du téléphone ouverte, l'état de production). Banc mobile (546 remis dans la maquette, non poussé) : la vérification de la marge au téléphone lit maintenant la page qui porte les pastilles (✓, 13,9 px) ; une phase « marge chargée » ajoutée (une autre copie, quatre lignes voisines fautives, deux remarques) échoue faute de copie du banc avec quatre lignes écrites : à reprendre. Passation : deux relectures en lecture seule (dettes du déroulé contre le code ; cadrage restant), points clés vérifiés par la n°14 dans le code ; déposée au sas `1719c0fe` (`MANDATS/PASSATION-C14-C16-DEROULE.md`, `MANDATS/DEROULE-01-11/`). Paul, 19:14, pendant le travail : « la passation doit partir maintenant, sinon je serai en retard ».
+
+**Paul (19:14, en interrompant) :** la passation doit partir maintenant, sinon je serai en retard
+
+**Claude (19:16) :**
+
+À jouer : la passation, prête · en cours : rien · ouvert : 409
+
+555. La passation est au sas. Colle cette phrase à la nouvelle conscience :
+
+« Tu es la conscience n°16 du chantier MJPC, sur les dettes du déroulé : avant toute chose, lis dans le dépôt [adresse du sas, dans la conversation] le fichier MANDATS/PASSATION-C14-C16-DEROULE.md et suis-le à la lettre ; la production est le dépôt [adresse de la production, dans la conversation]. »
+
+556. Le fichier : [lien GitHub du fichier, dans la conversation]. Il contient les dettes du déroulé mesurées dans le code (130 dettes : 28 ouvertes, 66 soldées, 36 à jouer pour trancher), le cadrage restant (28 sujets) et tes deux dettes de 18:53, mesurées. Les deux sont confirmées dans le code. Hors gel, chaque diapo part au tableau avec tout ce qui n'attend pas le ▶. Dans la question, l'ordre est partout question, puis réponse préparée, puis participation.
+
+557. La 1.4.17-RU est en ligne depuis 19:02, sans 546, vérifiée bit à bit ; le registre, le journal et le point de retour sont à jour. Le banc mobile de 546 n'est pas fini : sa marge chargée n'a pas encore de copie du banc avec quatre lignes à corriger. Je continue.
+
+À tester : la rédaction en ligne, sur ordinateur, avec ton fichier des stickers chargé dans Réglages.
+
+01/11/2026 19:16
+
+MEMO

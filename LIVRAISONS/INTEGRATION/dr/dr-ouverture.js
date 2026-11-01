@@ -20,6 +20,7 @@ const DR_CHARTES = {
     nuitClair: '#c9d6de',     /* la question du chapitre, l'objectif (texte clair sur le bleu nuit) */
     sourdine: '#8fa5b2',      /* « Chapitre n — niveau », « SÉANCE n », l'entrée et les dates */
     fil: '#5d727f', point: '#3e7c79', trait: '#3e7c79',
+    filClair: '#1f3b4d', pointClair: '#1f3b4d', bordClair: '#ffffff',   /* C16 63 : le fil de la séance sur une diapo claire (compétences, parcours, diapos de cours) : le bleu nuit */
     carreOff: '#2c4a5d', carreOn: '#eaf0f3', compTexte: '#dce6ec',
     papier: '#ffffff', bande: '#f4f3f0', gris: '#6e6e68', encre: '#23231f', filet: '#e4e3e0', filetFort: '#c9c7c0',
     vif: '#0070c0',           /* les séances évaluées (canon 3 ; C13 995) */
@@ -159,7 +160,7 @@ function dr_ouvHtml(e, b, et){
       return `<li data-k="${k}" class="ouv-comp${cp.maj ? ' maj' : ''}${cls(k)}"><i style="background:${cp.maj ? dc[1] : dc[2]}"></i><span data-p="${bi}.${k}">${S_(k)}</span></li>`; }).join('');
     const sansObj = !g.includes('objectif') ? `<li class="ouv-cs" aria-hidden="true"><span>COMPÉTENCES DE LA SÉANCE</span><span class="ouv-carres">${Array.from({ length: N }, (_, n) => `<i class="${n === d.jour ? 'on' : ''}"></i>`).join('')}</span></li>` : '';   /* sans objectif, les carrés gardent leur place, sous le titre */
     const L2 = sansObj ? lignes.replace(/(<li data-k="[^"]*"[^>]*class="ouv-comp)/, sansObj + '$1') : lignes;
-    h = `<div class="ouv ouv-debut ouv-sombre${avec ? ' ouv-avec-img' : ''}" style="${vars}"><div class="ouv-fil" aria-hidden="true"></div><div class="ouv-point" aria-hidden="true"></div><div class="ouv-g"><div class="ouv-k">${dr_esc(d.kicker || '')}</div><ul class="ouv-l">${L2.indexOf('ouv-cs') < 0 ? L2 + `<li class="ouv-cs" aria-hidden="true"><span>COMPÉTENCES DE LA SÉANCE</span><span class="ouv-carres">${Array.from({ length: N }, (_, n) => `<i class="${n === d.jour ? 'on' : ''}"></i>`).join('')}</span></li>` : L2}</ul></div>${img(d.image)}</div>`; }
+    h = `<div class="ouv ouv-debut ouv-sombre${avec ? ' ouv-avec-img' : ''}" style="${vars}"><div class="ouv-g"><div class="ouv-k">${dr_esc(d.kicker || '')}</div><ul class="ouv-l">${L2.indexOf('ouv-cs') < 0 ? L2 + `<li class="ouv-cs" aria-hidden="true"><span>COMPÉTENCES DE LA SÉANCE</span><span class="ouv-carres">${Array.from({ length: N }, (_, n) => `<i class="${n === d.jour ? 'on' : ''}"></i>`).join('')}</span></li>` : L2}</ul></div>${img(d.image)}</div>`; }
   else if (b.forme === 'parcours') { const S2 = d.seances || []; const n = Math.max(1, S2.length);
     h = `<div class="ouv ouv-parc ouv-clair${d.classe ? ' ouv-dates' : ''}" style="${vars};--ouv-n:${n}"><div class="ouv-bande"><div class="ouv-h1">Le parcours du chapitre</div><div class="ouv-sn">${dr_esc(d.sn || '')}</div></div><ul class="ouv-rangs">`
       + S2.map((s, k) => `<li data-k="${k}" class="ouv-r${s.ev ? ' ev' : ''}${k === d.jour ? ' jour' : ''}${s.faite ? ' faite' : ''}${cls(k)}"><span class="ouv-n">${k + 1}</span>${d.classe ? `<span class="ouv-date">${s.faite ? '<b class="ouv-ok" title="séance terminée">✓</b> ' : ''}${dr_esc(s.date || '')}</span>` : ''}<span class="ouv-t" data-p="${bi}.${2 * k}">${S_(2 * k)}</span><span class="ouv-x" data-p="${bi}.${2 * k + 1}">${S_(2 * k + 1)}</span></li>`).join('')

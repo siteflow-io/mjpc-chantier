@@ -187,7 +187,7 @@
 **Avant / après** : après, « Atelier » (les diapos de chaque heure).
 
 ### chapitre-atelier — Le chapitre · Atelier (fil-1)
-**Ici** : les diapos de chaque heure, telles qu'elles passeront au tableau.
+**Ici** : les diapos de chaque heure, telles qu'elles passeront au tableau. Le point sur le trait, à gauche de chaque diapo, dit où elle se place dans la séance : tout en haut à la première, tout en bas à la dernière.
 **Dans l'ordre** :
 1. À gauche, choisis l'heure et la diapo (clic droit sur une diapo : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer ; Ctrl + molette : zoom).
 2. Écris directement dans la diapo (l'aide d'écriture est à droite) ; « + bloc », « + étape », « + image », « + vidéo », « + document » ajoutent un objet.
@@ -224,7 +224,7 @@
 **Ici** : tu joues l'heure avec la classe. On ne quitte pas cet écran avant « Clore l'heure ».
 **Dans l'ordre** :
 1. « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau pour le vidéoprojecteur.
-2. « ▶ Dévoiler » (→ ou espace) montre l'élément suivant, puis passe à la diapo suivante ; ◀ revient.
+2. « ▶ Dévoiler » (→ ou espace) montre l'élément suivant, puis passe à la diapo suivante ; ◀ revient. Le point sur le trait, à gauche de la diapo, dit à la classe où on en est dans la séance : il descend d'un cran à chaque diapo.
 3. Pendant l'heure : la participation en bas à droite (les initiales de l'élève, puis 1, 2 ou 3, Entrée) ; « 📝 Notes » (N) pour toi ; « Où on en est » : ton avance ou ton retard.
 4. À cinq minutes de la fin, « Fin de l'heure » s'ouvre d'elle-même à droite (T-5, puis T-3, T-1).
 **Avant / après** : avant, la case de l'emploi du temps ; après, « Fin de l'heure », puis « Clore l'heure ». Besoin d'autre chose du site : « ↗ Le site dans un nouvel onglet ».

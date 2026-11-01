@@ -596,8 +596,6 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 .mur .ouv-parc .ouv-x{flex:1 1 auto;min-width:0;color:var(--ouv-gris);font-size:calc(2.4cqh*var(--ouv-z));line-height:1.3;padding-right:1.5cqw}
 .mur .ouv-parc .ouv-r.jour{outline:.35cqh solid var(--ouv-or);outline-offset:-.35cqh}
 /* 4 · le début de séance (canon 4) */
-.mur .ouv-debut .ouv-fil{position:absolute;left:2.5cqw;top:16cqh;bottom:2.2cqh;width:max(.19cqw,2px);background:var(--ouv-fil)}
-.mur .ouv-debut .ouv-point{position:absolute;left:calc(2.6cqw - 1.6cqh);top:14.3cqh;width:3.2cqh;height:3.2cqh;box-sizing:border-box;border-radius:50%;border:.45cqh solid var(--ouv-carreOn);background:var(--ouv-point)}
 .mur .ouv-debut .ouv-g{position:absolute;left:6.75cqw;right:6.75cqw;top:18.8cqh;bottom:3cqh;display:flex;flex-direction:column;overflow:hidden}
 .mur .ouv-debut.ouv-avec-img .ouv-g{right:39.5cqw}
 .mur .ouv-debut .ouv-img{right:4.8cqw;top:10.1cqh;height:75cqh;width:33.6cqw}
@@ -636,3 +634,22 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
    en entier SOUS la vignette, sur sa propre ligne — il chevauchait le bas de la miniature (il était posé en absolu dans la marge de 6 px) */
 :is(#dr-zone,#ses-tab,.at-som-volet) .vig{flex-wrap:wrap;row-gap:2px}
 :is(#dr-zone,#ses-tab,.at-som-volet) .vig .role{position:static;flex:0 0 100%;order:5;box-sizing:border-box;padding-left:20px;line-height:1.25;white-space:normal}
+
+/* ═══ C16 (mandat « fil et navigation », C16 62 à 65) — LE FIL DE LA SÉANCE, SUR TOUTES LES DIAPOS ═══
+   Le dessin du canon 4 (le trait à 2,5 % de la largeur, de 16 % de la hauteur jusqu'en bas ; le point de 3,2 % de la hauteur) devient celui de toutes les diapos.
+   Le point se place à --fil-y (0 en haut, 1 en bas : le rang de la diapo dans la séance, dr-fil.js) et glisse d'une diapo à l'autre : la seule animation
+   permanente (Paul : « seul le fil de progression est animé en permanence »). Les couleurs viennent de la charte (DR_CHARTES) par --fil-c, --fil-p, --fil-b. */
+.mur > .dr-fil{position:absolute;left:2.5cqw;top:16cqh;bottom:2.2cqh;width:max(.19cqw,2px);background:var(--fil-c);z-index:1;pointer-events:none}
+.mur > .dr-fil > i{position:absolute;left:50%;top:calc(var(--fil-y) * 100%);width:3.2cqh;height:3.2cqh;margin:-1.6cqh 0 0 -1.6cqh;box-sizing:border-box;border-radius:50%;border:.45cqh solid var(--fil-b);background:var(--fil-p);transition:top .6s cubic-bezier(.4,0,.2,1)}
+/* la marge du fil : rien ne passe dessous. La diapo ordinaire garde la largeur de son texte (5,2 % à gauche, 2 % à droite au lieu de 3,6 % et 3,6 % :
+   la même largeur, donc les mêmes pages au tableau) ; ce qui partait du bord gauche part de la marge : l'image pleine, son étiquette et sa consigne,
+   la vidéo, le document, la fiche ouverte en page, la légende des surligneurs, les alertes de forme. Le bandeau passe au-dessus du fil. */
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran{padding-left:5.2%;padding-right:2%}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .img{left:5.2cqw}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .act,:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .cons{left:5.2cqw}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .video{left:max(28px,5.2cqw)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .doc{padding-left:max(40px,5.2cqw)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .f-tab{left:5.2cqw}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .legsur{left:5.2cqw}
+.mur .alertes-diapo{left:5.2cqw}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .bandeau.on{z-index:2}

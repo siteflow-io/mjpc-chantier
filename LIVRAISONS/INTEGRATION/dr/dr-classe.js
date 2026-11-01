@@ -864,6 +864,7 @@ function dr_reprendre(cb){
     if (!dr_appliquerHeures(dr_duHub(etat.heures || {}), etat.heuresParDurees, dr_duHub(etat.reactivations || {})) && !(etat.heures && Object.keys(etat.heures).length)) dr_partagerHeures(dr_utileCreneau(dr_creneauDuCours(AT_DR_COURS)));   /* réveil n°4, 3 : les frontières de l'heure telles qu'elles étaient (avant : recalculées, la diapo 7 repassait à l'heure 1) */
     if (t && (t.clos || (t.classe && t.classe !== AT_DR_COURS.classeNom) || (t.creneau && t.creneau !== dr_creneauDuCours(AT_DR_COURS)))) { if (cb) cb(false); return; }
     dr_restaurer({ S: dr_duHub(etat.S), parDiapo: dr_duHub(etat.parDiapo || {}), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
+    try { if (typeof dr_invConvertirCopie === 'function') dr_invConvertirCopie(); } catch (e) {}   /* C16 (§4.11) : le journal relu, une ancienne diapo d'ouverture jamais montrée prend le canon ; une montrée ne change pas */
     DR_CL.sur = ((dr_heureJouee(S.heure) || {}).sur) || DR_CL.sur || 1;   /* N revient avec l'heure */
     const hc = dr_heureJouee(S.heure); if (hc && typeof HEURES_SIM === 'object') HEURES_SIM[S.heure] = hc; else dr_heurePoser(S.heure, AT_DR_COURS, t && t.debutReel);
     S.debutReel = (t && t.debutReel) || S.debutReel || Date.now();

@@ -563,7 +563,7 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 .mur .ouv-pres .ouv-k{color:var(--ouv-sourdine);font-size:calc(4.9cqh*var(--ouv-z));line-height:1.2}
 .mur .ouv-pres .ouv-titre{font-weight:700;color:#fff;font-size:calc(8.4cqh*var(--ouv-z));line-height:1.38;margin-top:calc(.7cqh*var(--ouv-z))}
 .mur .ouv-pres .ouv-question{font-weight:700;color:var(--ouv-nuitClair);font-size:calc(5.6cqh*var(--ouv-z));line-height:1.25}
-.mur .ouv-pres .ouv-entree{color:var(--ouv-sourdine);font-size:calc(3.8cqh*var(--ouv-z));line-height:1.45;margin-top:calc(4.4cqh*var(--ouv-z))}
+.mur .ouv-pres .ouv-entree{color:var(--ouv-sourdine);font-size:calc(3.8cqh*var(--ouv-z));line-height:1.45;margin-top:calc(4.4cqh*var(--ouv-z));white-space:pre-wrap}
 /* 2 · les compétences du chapitre (canon 2) ; le bilan du chapitre : les séances jouées cochées, les autres en pâle */
 .mur .ouv-comp .ouv-h1{position:absolute;left:4.5cqw;right:4.5cqw;top:4.4cqh;font-weight:700;color:var(--ouv-nuit);font-size:6.4cqh;line-height:1.15;white-space:nowrap}
 .mur .ouv-comp .ouv-sous{position:absolute;left:4.5cqw;right:4.5cqw;top:14cqh;color:var(--ouv-gris);font-size:2.9cqh;white-space:nowrap}
@@ -617,3 +617,18 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 .mur .ouv-prob .ouv-g{position:absolute;left:6.75cqw;right:6.75cqw;top:8cqh;bottom:8cqh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .mur .ouv-prob .ouv-k{color:var(--ouv-sourdine);font-size:calc(3.1cqh*var(--ouv-z));letter-spacing:.14em}
 .mur .ouv-prob .ouv-question{font-weight:700;color:#fff;font-size:calc(8.4cqh*var(--ouv-z));line-height:1.25;margin-top:calc(3cqh*var(--ouv-z))}
+/* la carte « Ce que la diapo déclare » d'une diapo d'ouverture (capture 6 du 29/10) */
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-lab{font-size:.72em;letter-spacing:.12em;color:#b9a98f;margin:.7em 0 .15em}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-bloc{display:block;min-height:2.6em;white-space:normal}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-vise,:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .l.dr-ouv-vise{box-shadow:0 0 0 2px var(--or,#c9a04a);border-radius:6px}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-maj{cursor:pointer;margin:2px 3px 2px 0;display:inline-block}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-maj.on{font-weight:700;border-color:var(--or,#c9a04a)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-maj i{font-weight:400;color:#b9a98f}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-ev .btn.on{background:var(--or,#c9a04a);color:#1a1512;border-color:var(--or,#c9a04a)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-img{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-mini{height:56px;width:auto;max-width:90px;object-fit:contain;border-radius:3px;background:#000}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-sans{color:#b9a98f;font-style:italic}
+:is(#dr-zone,#ses-tab,.at-som-volet) .dr-ouv-carte .dr-ouv-ta{border-left:3px solid var(--or,#c9a04a);padding-left:6px}
+/* « à écrire » (✍🏻) sur une ligne d'une diapo d'ouverture : le cadre et le picto gardent leur sens, le texte ne passe jamais dessous */
+.mur .ouv li.aecrire{padding-left:calc(.6em + 1.45em)!important;margin-left:0}
+.mur .ouv li.aecrire::after{left:.25em;top:.15em;font-size:max(1.6cqh,.5em)}

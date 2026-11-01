@@ -2945,3 +2945,37 @@ MEMO
 01/11/2026 16:02
 
 MEMO
+
+## Tour 116 — 01/11/2026 16:06 → 01/11/2026 16:15
+
+**Paul :** pour tout montre moi  des captures de ce que ça donnerait
+
+**Fait.** Construit dans la maquette (au sas, 8cfebcae), en propositions : la taille d'un sticker (mots, phrase, paragraphe) dans Réglages et dans le fichier des stickers (S24 à S28 : phrase ; S8, S9, S11 : paragraphe) ; l'étendue d'une phrase (du point d'avant au point d'après, ou après une formule d'adresse) et d'un paragraphe (de sa première ligne à la dernière, l2, donnée par l'IA) ; un cadre fin par ligne pour une phrase, une accolade dans la marge de droite pour un paragraphe, ses lignes éclairées au clic ; la phrase « pourquoi » (RC_CONSIGNE_POURQUOI, p au retour, sur la carte de la bande, sous « Tu as écrit ») ; S10 et S36 avec leur mini-contexte ; la phrase de 480 dans la consigne des remarques ; les petits cadres au-dessus des grands (un cadre d'architecture couvrait un cadre de mots et empêchait de le cliquer). La copie de l'élève repassée par tout le flux, ses 11 cadres cliqués un à un ; captures et fichier dans le dossier privé, envoyés à Paul seulement.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : rien · ouvert : 409, 481, 483, 508
+
+500. Tout est construit dans la maquette, sur la copie de [l'élève], avec les propositions en place : 9 captures et son fichier, à cliquer. Rien n'est en ligne.
+
+501. 492, la taille du cadre (captures 1 à 4). Les deux paragraphes ont leur accolade dans la marge de droite, avec leur étoile. Au clic, tout le paragraphe s'éclaire, et « Tu as écrit » le reprend en entier (2). Les deux architectures ont un cadre fin sur chaque ligne de leur phrase, du premier au dernier mot (3 et 4). Les autres stickers gardent leurs mots. Quand un grand cadre en couvre un petit, le petit reste au-dessus, et on peut toujours le cliquer.
+
+502. 493, la phrase qui dit pourquoi (2 à 6) : elle s'affiche sous « Tu as écrit », dans un bandeau vert. Pour une architecture, c'est la décomposition de sa phrase avec les sigles du sujet (3 et 4). Dans ta bande (7), elle est écrite sur la carte du sticker : « Pour l'élève : … ». Ton Entrée la garde avec le sticker.
+
+503. 494, le mini-contexte (5 et 6) : « comme la boue dans la lettre de Jean Déléage, lue en classe », et « comme « Ma chère Louise » ».
+
+504. 480 (9) : avec la phrase ajoutée à la consigne, ses remarques passent de 24 à 18. Les 6 en moins sont celles qui ne manquaient qu'à cause d'un autre sticker : trois de « Ce qu'on tait », deux des lectures reprises, une de la litote.
+
+505. Dans Réglages (8), chaque sticker a maintenant sa taille : « cadre : quelques mots », « cadre : toute la phrase » ou « cadre : tout le paragraphe ». Je propose « toute la phrase » pour les cinq architectures, et « tout le paragraphe » pour S8, S9 et S11.
+
+506. Sa copie porte maintenant 11 cadres et accolades, 21 pastilles et 9 numéros (capture 1). Sur ordinateur, ça se lit. Sur téléphone, je ne l'ai pas encore regardé avec ces cadres.
+
+507. Des 4 cadres décalés d'un mot (479), il en reste 3. [Ses mots retirés du transcript.] Le quatrième a disparu, remplacé par l'accolade du paragraphe.
+
+508. Tu valides ce que montrent ces captures (480, 492, 493, 494), ou tu changes quelque chose ?
+
+À tester : ouvre le nouveau « [nom de l'élève] - fichier eleve (maquette).html ». Clique l'accolade d'un paragraphe, dans la marge de droite, puis le cadre d'une architecture, puis le cadre des insectes.
+
+01/11/2026 16:15
+
+MEMO

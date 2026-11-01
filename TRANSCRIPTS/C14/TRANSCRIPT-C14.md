@@ -2622,3 +2622,27 @@ Le banc fait 150 vérifications, sans aucun défaut. Sur ton vrai site, en lectu
 01/11/2026 14:04
 
 MEMO
+
+## Tour 107 — 01/11/2026 14:09 → 01/11/2026 14:10
+
+**Paul :** La correction ne pointe que les réussites c'est ça ?
+
+**Fait.** Vérifié dans le code du fichier de l'élève (`eleve.js`, 1.4.16 au sas) : sur la copie, les fautes de la bande, les stickers gardés, la phrase en or ; dans la grille, « Pas encore réussi » sous chaque ligne. Rien d'écrit au site.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 depuis 14:02) · en cours : le banc des stickers, au sas · ouvert : 409
+
+416. Oui, pour la grille : un sticker ne pointe qu'une réussite, un seul fait réussi, encadré sur la copie dans la couleur de son critère. C'est ta règle du 30/10 : « je pose des stickers », « ce que l'élève a bien fait ».
+
+417. Le seul « mal fait » pointé sur la copie, c'est la langue : les fautes de la bande, soulignées dans la couleur de leur type d'erreur, comme en dictée. C'est aussi ta règle : « le seul critère où je pointe un mal fait, c'est la langue ».
+
+418. Ce qui n'est pas réussi ne se marque nulle part sur la copie. L'élève le lit seulement dans sa grille, sous chaque ligne : « Pas encore réussi : … », avec le texte des stickers qui manquent. Sa note vient du compte de ces stickers.
+
+419. Sur la copie de l'élève, il y a donc trois sortes de marques, et pas d'autres : ses fautes (la langue), ses stickers (les réussites), et la phrase qui m'a marqué, en or.
+
+À tester : rien de neuf depuis 14:02 ; la liste de 14:04 vaut toujours.
+
+01/11/2026 14:10
+
+MEMO

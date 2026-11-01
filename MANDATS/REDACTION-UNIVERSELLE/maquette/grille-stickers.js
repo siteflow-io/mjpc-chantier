@@ -253,18 +253,27 @@ function stNoteCopie(k) {
     const pts = niv == null ? 0 : stPoints(l.id, niv); n += pts; det.push({ ligne: l.id, titre: l.titre, niveau: niv, points: pts, sur: l.poids, info, fait }); });
   return { n, tot, det };
 }
+/* [C14 1.4.17] ce que le sticker apporte à sa ligne : « Si tu le gardes : 1 sur 6 → 0 / 7 pt (3 sur 6 pour 2 pt) » ; gardé : son compte */
+function stBandeApport(k, a, d) {
+  const ligne = a.sticker.ligne, S = stComptent(ligne), D = scCopie(k).stickers || {}, l = stLigne(ligne); if (!l) return "";
+  const p = S.filter(x => (D[x.id] || {}).v === "o").length, compte = !a.sticker.neCompte && S.some(x => x.id === a.stId), p2 = d === "o" || !compte ? p : p + 1, pts = stPoints(ligne, stNiveau(ligne, p2));
+  let q = p2 + 1; while (q <= S.length && stPoints(ligne, stNiveau(ligne, q)) <= pts) q++;
+  return (d === "o" ? "Gardé : " : "Si tu le gardes : ") + escapeHtml(l.titre) + ", " + p2 + " sur " + S.length + " → " + stNb(pts) + " / " + stNb(l.poids) + " pt" + (q <= S.length ? " (" + q + " sur " + S.length + " pour " + stNb(stPoints(ligne, stNiveau(ligne, q))) + " pt)" : "");
+}
 function stBandeCompte(k, ligne) { const S = stComptent(ligne), D = scCopie(k).stickers || {}, p = S.filter(x => (D[x.id] || {}).v === "o").length, niv = stNiveau(ligne, p), l = stLigne(ligne); return l ? escapeHtml(l.titre) + " : " + p + " sur " + S.length + " → " + stNb(stPoints(ligne, niv)) + " / " + stNb(l.poids) + " pt" : ""; }
 /* la carte d'un sticker dans la bande : ce que l'élève lira, sa ligne, le compte de la ligne et la note, en direct (Paul 30/10 15:17) */
 function stBandeCarte(B, a, ctx, carte, touches) {
   const c = stCouleur(a.sticker), d = stDecision(B.k, a.stId), l = stLigne(a.sticker.ligne), nt = stNoteCopie(B.k);
-  if (a.g) { const P = rcPosMots(a.l.texte); let h = "", cc = 0;
+  const zone = a.g && ["phrase", "paragraphe"].includes(a.sticker.taille) ? stEtendue(B.k, { id: a.id, de: a.g.de, a: a.g.a, l2: a.l2 }, a.sticker.taille) : null;
+  if (zone && zone.length) ctx.innerHTML = '<div class="rc-st-lettre rc-st-zone">« ' + escapeHtml(zone.map(r => { const P = rcPosMots(r.x.l.texte); return r.x.l.texte.slice(P[r.de][0], P[r.a - 1][1]); }).join(" ")) + " »</div>";   // [C14 1.4.17] toute la phrase, ou tout le paragraphe
+  else if (a.g) { const P = rcPosMots(a.l.texte); let h = "", cc = 0;
     P.forEach((p, i) => { h += escapeHtml(a.l.texte.slice(cc, p[0])); const w = escapeHtml(a.l.texte.slice(p[0], p[1])); h += i >= a.g.de && i < a.g.a ? '<mark style="background:' + c + '22;color:' + c + ";box-shadow:inset 0 -2px 0 " + c + '">' + w + "</mark>" : '<span class="rc-mot" data-m="' + i + '">' + w + "</span>"; cc = p[1]; });
     rcRubanTexte(ctx, B.k, a, h + escapeHtml(a.l.texte.slice(cc))); }
   else ctx.innerHTML = '<div class="rc-st-lettre">' + (a.l && a.mots ? "« " + escapeHtml(a.mots) + " » · " : "") + "toute la lettre</div>";
   carte.innerHTML = '<div class="rc-bande-mot rc-st-mot" style="color:' + c + '">★ ' + escapeHtml(a.sticker.texteEleve) + '</div><div class="rc-bande-pied"><b class="rc-bande-type" style="background:' + c + "22;color:" + c + ";border-color:" + c + '">' + escapeHtml((a.sticker.num || "") + " · " + (l ? l.titre : "")) + "</b> "
     + (a.lettre ? "Toute la lettre : gardé seulement si rien ne le contredit." : a.mots ? "L’IA l’a vu dans « " + escapeHtml(a.mots) + " »" + (a.sticker.taille === "phrase" ? " : le cadre prendra toute la phrase." : a.sticker.taille === "paragraphe" ? " : l’accolade prendra tout le paragraphe." : ".") : "") + (d === "o" ? " · ✓ gardé" : d === "n" ? " · ✗ non" : "") + '</div>'
-    + (a.p ? '<div class="rc-bande-pied rc-st-pourquoi" title="La phrase que l’élève lira sous ce qu’il a écrit. Entrée la garde avec le sticker.">Pour l’élève : ' + escapeHtml(a.p) + "</div>" : "") + '<div class="rc-bande-pied rc-st-compte">' + stBandeCompte(B.k, a.sticker.ligne) + " · la note pour l’instant : " + stNb(nt.n) + " / " + stNb(nt.tot) + "</div>";
-  touches.innerHTML = '<b class="rc-bande-mode">Les stickers</b><span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> gardé</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span>' + (a.g ? "<span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser · double clic sur le cadre : sa longueur</span>" : "") + "<span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
+    + (a.p ? '<div class="rc-bande-pied rc-st-pourquoi" title="La phrase que l’élève lira sous ce qu’il a écrit. Entrée la garde avec le sticker.">Pour l’élève : ' + escapeHtml(a.p) + "</div>" : "") + '<div class="rc-bande-pied rc-st-compte">' + stBandeApport(B.k, a, d) + " · ta note avec ce qui est gardé jusqu’ici : " + stNb(nt.n) + " / " + stNb(nt.tot) + "</div>";
+  touches.innerHTML = '<b class="rc-bande-mode">Les stickers</b><span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> gardé</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span>' + (a.g && !zone ? "<span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser · double clic sur le cadre : sa longueur</span>" : "") + "<span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
   rcBandePhoto(a.g ? a : null);
 }
 /* une ligne retapée : le passage d'un sticker suit ses mots ; s'ils ont disparu, le sticker reste, sans cadre */

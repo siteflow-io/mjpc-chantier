@@ -1251,8 +1251,24 @@ function rcRubanPhoto(k) {
     out.push({ x, i, im: ok ? im : null, sx, sy, sw, sh, X }); X += 0; });
   return out;
 }
+/* [C14 1.4.17] (Paul 16:28 : « La bande et le paragraphe sont deux choses qui se télescopent géographiquement ») : le ruban met les lignes bout à bout ; un sticker
+   de phrase ou de paragraphe ne s'y voit pas. Pour lui, la bande montre sa zone de la page, comme l'élève la verra : un cadre par ligne, ou l'accolade */
+function rcBandeZone(cv, w, a) {
+  const B = RC.bd, sg = typeof stSegments === "function" ? stSegments(B.k, a, a.sticker.taille) : null, im = SC.imgs[a.pid]; if (!sg || !im || !im.el.complete || !im.el.naturalWidth) return false;
+  const par = a.sticker.taille === "paragraphe", xa = Math.max(0, Math.min(...sg.map(s => s[0])) - 0.02), xb = Math.min(1, Math.max(...sg.map(s => s[2])) + (par ? 0.045 : 0.02)), ya = Math.max(0, Math.min(...sg.map(s => s[1])) - 0.012), yb = Math.min(1, Math.max(...sg.map(s => s[3])) + 0.012);
+  const sx = xa * im.w, sy = ya * im.h, sw = (xb - xa) * im.w, sh = (yb - ya) * im.h, k = Math.min(w / sw, 330 / sh), h = Math.max(60, Math.round(sh * k)), ox = Math.round((w - sw * k) / 2);   // au plus 330 points de haut : la carte reste visible sous la zone
+  cv.width = w; cv.height = h; cv.style.height = Math.round(h * (cv.clientWidth || w) / w) + "px"; const x = cv.getContext("2d"); x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h); x.drawImage(im.el, sx, sy, sw, sh, ox, 0, sw * k, h);
+  const X = u => ox + (u * im.w - sx) * k, Y = v => (v * im.h - sy) * k, c = stCouleur(a.sticker), boite = s => [X(s[0]) - 3, Y(s[1]) - 2, X(s[2]) - X(s[0]) + 6, Y(s[3]) - Y(s[1]) + 4];
+  if (par) { sg.forEach(s => { x.fillStyle = rcRgba(c, .16); x.fillRect(...boite(s)); });
+    const xr = X(Math.min(0.975, Math.max(...sg.map(s => s[2])) + 0.01)), hy = Y(Math.min(...sg.map(s => s[1]))), by = Y(Math.max(...sg.map(s => s[3])));
+    x.strokeStyle = c; x.lineWidth = 4; x.beginPath(); x.moveTo(xr - 10, hy); x.lineTo(xr, hy); x.lineTo(xr, by); x.lineTo(xr - 10, by); x.stroke(); }
+  else sg.forEach(s => { x.fillStyle = rcRgba(c, .12); x.strokeStyle = c; x.lineWidth = 2; x.fillRect(...boite(s)); x.strokeRect(...boite(s)); });
+  B.boite = null; B.ruban = null; B.rubanCentre = null; return true;
+}
 function rcBandePhoto(a, anime) {
-  const cv = RC.ui.querySelector("#rcBandePhoto"), w = Math.max(300, Math.round(cv.clientWidth || 800)), h = 110; if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+  const cv = RC.ui.querySelector("#rcBandePhoto"), w = Math.max(300, Math.round(cv.clientWidth || 800)), h = 110;
+  if (a && a.st && a.g && RC.bd && ["phrase", "paragraphe"].includes(a.sticker.taille) && rcBandeZone(cv, w, a)) return;
+  cv.style.height = ""; if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
   const x = cv.getContext("2d"); x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h); if (!a) { if (RC.bd) RC.bd.ruban = null; return; }
   const B = RC.bd, R = rcRubanPhoto(B.k), ecart = 26; let X = 0; R.forEach(r => { r.k = h / r.sh; r.X = X; r.W = r.sw * r.k; X += r.W + ecart; });
   const cur = R.find(r => r.x.id === a.id); if (!cur || !cur.im) { if (B) B.ruban = null; return; }
@@ -1284,7 +1300,7 @@ function rcBandePhoto(a, anime) {
 /* [C14 1.4.15] (Paul 01/11 13:12 : « dans la bande, parfois la largeur du rectangle est trop longue et je n'ai pas de moyen de la raccourcir. Un double clic sur le
    rectangle doit activer deux poignées de chaque côté du rectangle pour le redimensionner en longueur ») : cote « g » ou « d » ne bouge qu'un bord ; sans cote, tout le cadre */
 function rcBandeGlisser(du, cote) {
-  const B = RC.bd, a = B && rcBandeCible(); if (!a || B.attente || (a.st && !a.g)) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a);
+  const B = RC.bd, a = B && rcBandeCible(); if (!a || B.attente || (a.st && !a.g) || (a.st && ["phrase", "paragraphe"].includes(a.sticker.taille))) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a);   // [C14 1.4.17] une phrase ou un paragraphe ne se glisse pas : sa zone suit ses lignes
   let x0 = cote === "d" ? q.x0 : rcBorne(q.x0 + du, 0, 0.99), x1 = cote === "g" ? q.x1 : rcBorne(q.x1 + du, 0.01, 1); if (x1 - x0 < 0.008) { if (cote === "g") x0 = x1 - 0.008; else if (cote === "d") x1 = x0 + 0.008; }
   /* [C14 1.4.12] (C14 322, acquis) : la première fois que tu glisses un cadre, l'app garde aussi où elle l'avait posé ; la mesure de sa justesse se fait sur ton travail */
   const app = !(a.l.places && a.l.places[a.cle]) && !(a.l.placesApp && a.l.placesApp[a.cle]) ? (({ x0, x1, y0, y1 }) => ({ x0, x1, y0, y1 }))(rcPlaceSeg(a)) : null;

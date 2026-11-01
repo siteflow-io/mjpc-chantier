@@ -151,6 +151,9 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     if (vue && vue.t === "q") { const g = D.reprendre[vue.i];   // [C14 1.4.17] une remarque : ce qui était attendu, sa phrase telle que tu l'as recopiée, puis la remarque
       pan.innerHTML = `<div class="bloc"><h3>À reprendre · ${g.n}</h3>${g.l.map(x => `<div class="rq1" style="--c:${D.coul[x.crit] || "#6b1a2a"}"><div class="rqa">☆ ${esc(x.attendu)}</div>${x.phrase ? `<div class="rqp"><small>Ta phrase</small>« ${esc(x.phrase.avant)}${x.phrase.passage ? `<mark>${esc(x.phrase.passage)}</mark>` : ""}${esc(x.phrase.apres)} »</div>` : ""}<div class="rqt">${esc(x.r)}</div></div>`).join("")}${retour}</div>`;
       $("#gr").onclick = () => { vue = null; copie(); panneau(); }; return; }
+    if (vue && vue.t === "s") { const t = D.stickers[vue.i], l = (D.grilleSt || []).find(x => x.id === t.ligne) || {};   // [C14 1.4.17] un cadre cliqué : son sticker (Paul 15:42 : la branche manquait, le clic tombait sur la phrase dorée)
+      pan.innerHTML = `<div class="bloc"><h3 style="color:${D.coul[t.crit] || "#6b1a2a"}">${esc(l.critNom || "")}</h3><div class="m">${esc(l.eleve || l.titre || "")}</div><div style="font-size:18px;margin-top:6px">★ ${esc(t.texte)}</div>${retour}</div>`;
+      $("#gr").onclick = () => { vue = null; copie(); panneau(); }; return; }
     if (!vue) {
       const crit = []; D.points.forEach((p, i) => { let c = crit.find(x => x.id === p.crit); if (!c) crit.push(c = { id: p.crit, nom: p.critNom, l: [] }); c.l.push({ p, i }); });
       pan.innerHTML = `<div class="bloc"><h3>Ta note</h3><div class="note">${D.note != null ? String(D.note).replace(".", ",") + " / " + D.total : "…"}</div></div>

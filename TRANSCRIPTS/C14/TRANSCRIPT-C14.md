@@ -2773,3 +2773,55 @@ Par ailleurs, quel impact sur la note?
 01/11/2026 14:31
 
 MEMO
+
+## Tour 111 — 01/11/2026 14:34 → 01/11/2026 14:37
+
+**Paul :** Ok. Montre moi le visuel d'une copie totalement corrigée et que l'élève recevra. Le pdf interactif.
+
+**Fait.** Le banc de 14:22 relancé à 14:28 a échoué sur 4 vérifications : mon nouvel exemple de la 1.3.2 changeait les lignes dont dépendent trois vérifications plus loin, et la copie choisie pour l'en-tête n'avait qu'une ligne. Exemple refait (« Embrasse bien fort les petits », une copie d'au moins deux lignes), banc relancé. Trouvé dans le paquet d'essai la lettre inventée de CHAUVIN Emma (paquet-essai.py) pour la copie finie.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc des stickers, au sas ; ta copie finie, en route · ouvert : 409, 439, 440, 441, 457
+
+459. Je fais passer une copie inventée du paquet d'essai par tout le flux : la recopie, le retour de l'IA, la bande, les stickers et la phrase qui m'a marqué. Ensuite, je t'envoie son fichier d'élève, écran par écran. Tout se passe dans la maquette, sur le faux site.
+
+460. Deux choses à savoir avant de regarder. Aujourd'hui, l'élève ne reçoit pas un PDF : il reçoit une page HTML, qu'il ouvre et où il clique. Et les remarques (429 à 458) ne sont pas encore codées : tu ne les verras pas dans ce fichier.
+
+À tester : rien de neuf depuis 14:02.
+
+01/11/2026 14:37
+
+MEMO
+
+## Tour 112 — 01/11/2026 14:37 → 01/11/2026 14:47
+
+**Paul :** Oui le html élève bien sûr. C'est ça que je rends sur ed
+
+**Fait.** Écrit un parcours par le geste (/tmp/claude-0/-home-claude/84d6d562-de74-5674-982a-671fcc3ea048/scratchpad/vis/copie-finie.mjs, hors du sas) : la maquette 1.4.16, Rédaction 1, les 44 stickers chargés et validés ligne par ligne, le paquet d'essai et ses initiales, les 24 lignes de CHAUVIN Emma recopiées (la 25e ligne trouvée est son nom, laissée vide), Entrée sur la dernière ligne (la phrase s'ouvre seule), la phrase choisie, l'export, un retour d'IA écrit à la main (3 fautes {G}, 25 réussites), la bande en 28 Entrée (« 3 fautes gardées sur 3 arrêts · 25 stickers gardés sur 25 · note : 19 / 40 »), le fichier téléchargé et ouvert à 1536 × 864 et à 390 × 844. Aucune erreur de page, aucun appel au vrai site. Envoyé à Paul : 7 captures et le fichier HTML. Vu dans le code : la carte de fin de bande ajoute « note avant / note maintenant » de l'ancienne grille ; la règle du téléphone du fichier de l'élève (.pan fixé en bas) garde le top:10px de l'ordinateur, aussi dans redaction.html en ligne. Banc relancé (la ligne de l'en-tête choisie par « Page » avant d'être réécrite).
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc des stickers, au sas · ouvert : 409, 439, 440, 441, 457, 468
+
+461. Ce que tu regardes : la copie inventée de CHAUVIN Emma, celle du paquet d'essai (la lettre de Pierre à Louise, depuis la tranchée de Vauquois). Je l'ai fait passer, par le geste, par tout le flux, dans la maquette : c'est la 1.4.16 des stickers, pas encore en ligne. 24 lignes recopiées, la phrase qui m'a marqué, l'envoi à l'IA et son retour (3 fautes, 25 réussites), puis la bande, en 28 Entrée. Le retour de l'IA, c'est moi qui l'ai écrit pour l'exemple ; je n'y ai mis aucune architecture, faute d'en avoir les modèles. Ensuite, j'ai téléchargé son fichier dans « Fichiers École Directe » et je l'ai ouvert comme elle l'ouvrira.
+
+462. Le bandeau jaune « Mode test », en haut, vient de la maquette : le fichier du vrai site ne l'a pas.
+
+463. Ce qu'elle voit, dans l'ordre des captures. À l'ouverture, les feuilles de la grille posées sur sa copie (1). Puis sa copie entière : ses réussites encadrées dans la couleur de leur critère, ses 3 fautes soulignées avec leur lettre dans la marge, sa phrase en or, et à droite sa note, 19 / 40, avec sa grille en étoiles (2). Au clic sur un cadre, elle lit son sticker (3). Sur une ligne de la grille, elle voit les stickers réussis et ceux « Pas encore réussi » (4). Sur une faute, elle voit son numéro et son type, rien d'autre (5).
+
+464. Ce qui ne va pas, d'abord : les cadres coupent des mots. Sur la capture 2 : « froi|d », « jambe|s », « du|r », « Louis|e », « vit|e ». L'app place le passage en comptant les lettres le long de la ligne, sans regarder la photo. Je propose de caler chaque bord du cadre sur le blanc entre deux mots, mesuré sur la photo. Sinon, avec 25 réussites, tu aurais jusqu'à 25 cadres à reprendre à la main dans la bande.
+
+465. Sur téléphone (6), le panneau de la note se met en haut de l'écran au lieu d'en bas, et il cache la moitié de la copie. Le fichier en ligne aujourd'hui a le même défaut. La copie y est aussi très petite : l'élève devra l'agrandir avec les doigts, ce que le fichier permet.
+
+466. Dans ta fenêtre de la phrase (7), en ligne depuis 14:02, le texte s'écrit avec des espaces autour de la ponctuation : « c ' est la boue … jamais . ». La phrase est aussi gardée comme ça. Le banc ne l'avait pas vu : ses lignes n'avaient pas de ponctuation. L'élève ne la voit pas : son fichier dit seulement « Surlignée en or sur ta copie ».
+
+467. À la fin de la bande, ta carte dit encore « note avant : incomplète · note maintenant : incomplète » après la note des stickers. C'est l'ancienne grille qui parle : elle part avec le reste de l'ancien flux.
+
+468. Je corrige 464 à 467 dans la 1.4.16, avant de te demander le promeus ; 465 et 466 corrigent aussi ce qui est en ligne. Ça te va ?
+
+À tester : ouvre le fichier « CHAUVIN Emma - fichier eleve (maquette).html » sur ton ordinateur, puis sur ton téléphone. Clique un cadre, une ligne de la grille, une faute dans la marge, la phrase en or, et « ← Ta grille » pour revenir.
+
+01/11/2026 14:47
+
+MEMO

@@ -3245,3 +3245,31 @@ MEMO
 01/11/2026 20:17
 
 MEMO
+
+## Tour 125 — 01/11/2026 20:31 → 01/11/2026 20:33
+
+**Paul :** j'ai fait une bêtise, j'ai exporte et chargé les corrections avant d'avoir importé mes stickers. déjà, il faudrait une garde. pas d'export possible avant que le sujet soit complet, stickers grille etc. Maintenant, dis moi comment je me dépanne.
+
+**Fait.** Lu dans le code de la 1.4.17-RU (`rcExporterIA`, `stEnvoiGrille`, `stAEnvoyer`, `stPret`, les consignes) : une copie déjà corrigée repart, une fois les stickers prêts, sans ses lignes, pour ses seuls stickers (« seulementStickers ») ; huit copies par envoi ; sans aucun sticker, l'export partait sans rien dire. Trouvé : pour ces copies, la consigne dit « rends seulement ses réussites ». Registre : la garde de l'export (production `bf730d1`).
+
+**Claude :**
+
+À jouer : le dépannage, ci-dessous · en cours : rien · ouvert : 409, 565
+
+560. Rien n'est perdu. Tes corrections restent sur les copies ; les stickers viennent s'y ajouter, par un second envoi à l'IA. Le site sait le faire : une copie déjà corrigée repart sans ses lignes, pour ses seuls stickers.
+
+561. Charge tes stickers : Réglages, « La grille et ses stickers », « 📥 Charger des stickers ». Puis « ✓ Valider ligne par ligne », jusqu'au bout : tant qu'une ligne n'est pas validée, aucun sticker ne part.
+
+562. Retourne dans la recopie et clique « ⇪ Exporter pour l'IA ». Les copies déjà corrigées partent pour leurs seuls stickers, huit par envoi ; le compteur d'en haut dit ce qui reste.
+
+563. Quand tu colles le fichier à l'IA, ajoute cette phrase à ton message : « Pour les copies marquées seulementStickers, rends aussi leurs remarques (aReprendre). » La consigne dit, pour ces copies, « rends seulement ses réussites » : l'IA risquerait d'oublier les remarques. C'est un défaut de ma consigne, trouvé en lisant le code pour toi.
+
+564. « Charger le corrigé de l'IA » avec sa réponse, puis ouvre la bande : tes fautes déjà gardées ne bougent pas, et chaque sticker proposé t'attend ; Entrée le garde. À la fin, la relecture des remarques. Recommence 562 à 564 jusqu'à ce que le compteur dise que tout est revenu.
+
+565. La garde est inscrite au registre. Je propose : « ⇪ Exporter pour l'IA » grisé, avec sa raison écrite à côté, tant que l'énoncé du sujet manque ou que la grille des stickers n'est pas chargée et validée en entier ; et la consigne des copies déjà corrigées demande aussi leurs remarques. Je le code dans la maquette, puis je te demande le promeus ?
+
+À tester : 561 à 564 sur une première copie, puis la suite.
+
+01/11/2026 20:33
+
+MEMO

@@ -216,6 +216,12 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
     // deux retours de l'IA, choisis d'un coup : la correction de la copie, et les réussites des copies parties pour leurs seuls stickers
     const retB = { format: "mjpc-recopie-ia-3", reussites: Object.fromEntries(ex3.copies.filter(c => c.seulementStickers).map(c => [c.copie, [{ s: "fin" }]])) };
     const fA = path.join(out, "corrige_" + nom3), fB = path.join(out, "corrige_" + nomR); fs.writeFileSync(fA, JSON.stringify({ format: ret3.format, lignes: ret3.lignes, reussites: { [id2]: ret3.reussites[id2] }, aReprendre: ret3.aReprendre })); fs.writeFileSync(fB, JSON.stringify(retB));
+    // (C14 591) le retour de la seule copie corrigée, d'abord : la copie partie pour ses seuls stickers, absente de ce retour, repart au prochain export
+    await pg.click("#rcImportIA"); await att(200); await pg.locator("#rcIATexte").fill(fs.readFileSync(fA, "utf8")); await pg.click("#rcIAValider"); await att(900); await pg.keyboard.press("Escape"); await att(200);
+    const lib = await pg.evaluate(() => ({ flux: document.querySelector("#rcIAEtat").textContent, rv: !document.querySelector("#rcRenvoyerIA").hidden }));
+    let dl5n = ""; { const h = d => { dl5n = d.suggestedFilename(); }; pg.on("download", h); await pg.click("#rcExportIA"); await att(1200); pg.off("download", h); }
+    verif("export (1.4.19, C14 591) : un retour arrivé sans une copie de son envoi : elle n’attend plus (« ↻ Renvoyer » caché : " + !lib.rv + ") et repart au prochain export (« " + dl5n + " »)",
+      !/en attente de leur retour/.test(lib.flux) && !lib.rv && (!seul3 || /_envoi-1-sur-1_\d+-copies?-stickers-seuls_/.test(dl5n)));
     await pg.click("#rcImportIA"); await att(200); await pg.setInputFiles("#rcIAFichier", [fA, fB]); await att(2500);
     const m3 = await pg.evaluate(() => document.getElementById("rcIAMessage").textContent), apres3 = await pg.evaluate(() => ({ flux: document.querySelector("#rcIAEtat").textContent, rv: !document.querySelector("#rcRenvoyerIA").hidden }));
     verif("import (1.4.19, C14 571) : deux fichiers de l’IA choisis d’un coup se chargent l’un après l’autre (« " + m3.replace(/\s+/g, " ").slice(0, 200) + " ») ; plus rien n’attend son retour (« ↻ Renvoyer » caché : " + !apres3.rv + ")",

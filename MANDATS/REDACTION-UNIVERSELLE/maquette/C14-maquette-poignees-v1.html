@@ -8932,6 +8932,9 @@ function rcIAChargerSuite(txt) {
     if (!L.every(x => recu[x.id] !== undefined)) coupees.push(k); else if (L.some(x => x.l.envoiIA && x.l.envoiIA.texte !== x.l.texte)) changees.push(k);
     else if (L.some(x => (o.copieDe[x.id] && idc && o.copieDe[x.id] !== idc) || rcRessemblance(x.l.texte, rcLettres(recu[x.id], x.l.texte).texte) < RC_RESSEMBLANCE_IA)) melangees.push(k); else ok.push(k); });
   /* [C14 1.4.12] (Paul 15:59, « sinon c'est la porte ouverte au mélange de données ») : le refus est gardé dans la copie, pour le flux ; un chargement réussi l'efface */
+  { const parId = {}; SC.copies.forEach(k => { const id = (state.copies[k] || {}).id; if (id) parId[id] = k; });   // [C14 1.4.19] (C14 591) un retour arrivé sans une copie de son envoi : elle repart au prochain export, comme le message le dit
+    const touches = new Set(Object.keys(pc).concat(Object.keys(o.reussites || {}).map(id => parId[id]), Object.keys(o.aReprendre || {}).map(id => parId[id])).filter(Boolean).map(k => ((scCopie(k).recopie || {}).envoi || {}).n).filter(Boolean)), qt = new Date().toISOString();
+    let libres = 0; if (touches.size) SC.copies.forEach(k => { const ev = (scCopie(k).recopie || {}).envoi; if (ev && touches.has(ev.n) && !ok.includes(k) && !(ev.retour && ev.retour >= ev.le)) { ev.retour = qt; libres++; } }); if (libres) saveState(); }
   const qr = new Date().toISOString(); melangees.forEach(k => { const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.refusIA = { le: qr, raison: "melange" }; }); ok.forEach(k => { const s = scCopie(k); if (s.recopie && s.recopie.refusIA) delete s.recopie.refusIA; });
   if (melangees.length) saveState();
   const aJour = SC.copies.filter(k => !ok.includes(k) && !melangees.includes(k) && rcLignesEcrites(k).length && !rcCopieACorriger(k)), stR = typeof stIAReussites === "function" && Object.keys(o.reussites || {}).length ? stIAReussites(o, ok.concat(aJour)) : null;
@@ -9114,7 +9117,7 @@ function rcCompteIA() {
 function rcEnAttente(k) {
   const rec = scCopie(k).recopie || {}, ev = rec.envoi; if (!ev || !ev.le) return false;
   const L = rcLignesEcrites(k); if (!L.length || !L.every(x => x.l.envoiIA && x.l.envoiIA.le === ev.le && x.l.envoiIA.texte === x.l.texte)) return false;
-  const apres = o => !!(o && o.le && o.le >= ev.le); return !apres(rec.charge) && !apres(rec.stickersIA) && !apres(rec.remarquesIA);
+  const apres = o => !!(o && o.le && o.le >= ev.le); return !apres(rec.charge) && !apres(rec.stickersIA) && !apres(rec.remarquesIA) && !(ev.retour && ev.retour >= ev.le);
 }
 /* le nom du fichier dit ce qu'il contient : la rédaction, la classe, l'envoi (2 sur 4) ou le renvoi, le nombre de copies, la date et l'heure */
 function rcNomEnvoi(p) {

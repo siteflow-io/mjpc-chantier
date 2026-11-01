@@ -236,7 +236,6 @@ function rcBookmark() {
 }
 function rcOuvrir(reprendre) {
   if (!SC.ouvert || SC.attrib || !scK()) { toast("Donne d'abord chaque page à son élève."); return; }
-  if (SC.champ) scChampFermer(true);
   if (reprendre) SC.actif = Date.now(); else scChrono();   // [C14 dette ⓑ] la reprise à l'ouverture n'est pas un geste : elle ne compte pas de temps, la copie n'est pas réécrite
   const tr0 = state.scanRecopie;   // [C14 1.4.12.1] jamais la recopie d'un autre élève : la copie demandée n'a pas de page, la recopie ne s'ouvre pas
   if (reprendre && tr0 && tr0.ouverte && tr0.copie && !SC.copies.includes(tr0.copie)) { state.scanRecopie = Object.assign({}, tr0, { ouverte: false }); toast((nomEleveDe(tr0.copie) || "Cet élève") + " n'a pas de page dans le paquet : la recopie ne s'ouvre pas sur une autre copie."); return; }
@@ -258,7 +257,7 @@ function rcFermer(sansRendre) {
   if (!RC.ouvert) return; if (RC.bd) rcBandeFermer(true); RC.ouvert = false; RC.drag = null;
   if (RC.ui) RC.ui.hidden = true;
   document.body.classList.remove("rc-ouvert"); SC.actif = Date.now(); rcBookmark(); aidePoser(SC.ouvert ? "scan" : (SC.aideAvant || "correction"));
-  if (!sansRendre) { scRendre(); scLignesAccueil(); }
+  if (!sansRendre) scRendre();
 }
 function rcChoisirCopie(k) {
   if (!SC.copies.includes(k)) return;
@@ -1110,7 +1109,6 @@ function rcNotion(g) {
   for (const p of paires) { let r = null; try { r = GRAMM.classify(p[0], p[1]); } catch (x) {} if (r && r.code) return { code: r.code, regle: r.rule || null }; }
   return null;
 }
-function rcStyleFaute(g) { return RC_TYPES[rcCodeFaute(g)]; }
 /* [C14 1.4.10] le type donné par l'IA pour cet arrêt, s'il est là et à jour ; sinon le moteur de la dictée */
 function rcCodeArret(a) { const l = a && a.l, t = l && l.types && l.typesDe === l.corrige && l.types[a.cle]; return RC_TYPES[t] ? t : rcCodeFaute(a.g); }
 function rcStyleArret(a) { return a && a.st ? stStyle(a) : RC_TYPES[rcCodeArret(a)]; }

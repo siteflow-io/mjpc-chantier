@@ -268,7 +268,6 @@ function stBandeApport(k, a, d) {
   let q = p2 + 1; while (q <= S.length && stPoints(ligne, stNiveau(ligne, q)) <= pts) q++;
   return (d === "o" ? "Gardé : " : "Si tu le gardes : ") + escapeHtml(l.titre) + ", " + p2 + " sur " + S.length + " → " + stNb(pts) + " / " + stNb(l.poids) + " pt" + (q <= S.length ? " (" + q + " sur " + S.length + " pour " + stNb(stPoints(ligne, stNiveau(ligne, q))) + " pt)" : "");
 }
-function stBandeCompte(k, ligne) { const S = stComptent(ligne), D = scCopie(k).stickers || {}, p = S.filter(x => (D[x.id] || {}).v === "o").length, niv = stNiveau(ligne, p), l = stLigne(ligne); return l ? escapeHtml(l.titre) + " : " + p + " sur " + S.length + " → " + stNb(stPoints(ligne, niv)) + " / " + stNb(l.poids) + " pt" : ""; }
 /* la carte d'un sticker dans la bande : ce que l'élève lira, sa ligne, le compte de la ligne et la note, en direct (Paul 30/10 15:17) */
 function stBandeCarte(B, a, ctx, carte, touches) {
   const c = stCouleur(a.sticker), d = stDecision(B.k, a.stId), l = stLigne(a.sticker.ligne), nt = stNoteCopie(B.k);

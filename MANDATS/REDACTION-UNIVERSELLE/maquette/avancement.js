@@ -149,7 +149,6 @@ function avFichiersED() {
    correction_dictee/<id>/absents). Un absent ne compte ni dans le compteur, ni dans la moyenne et les totaux du Bilan, ni dans les fichiers École Directe ;
    les initiales ne lui donnent pas de page. Rien n'est effacé : sa copie, s'il en a une, reste au site, mise de côté. */
 function avAbsent(k) { return !!(state && state.absents && state.absents[k]); }
-function avAbsents() { return (state.classe || []).map(eleveId).filter(avAbsent); }
 function avAbsentBasculer(k) {
   const nom = nomEleveDe(k) || k, a = Object.assign({}, state.absents || {}); if (a[k]) delete a[k]; else a[k] = true; state.absents = a;
   saveState(); renderDashboard(); if (RU.sous === "bilan") avBilanClasse(); if (RU.sous === "fiches") avFiches();

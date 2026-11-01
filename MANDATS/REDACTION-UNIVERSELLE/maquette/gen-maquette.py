@@ -107,18 +107,17 @@ MQ = '''<div class="mq-reglage" onclick="if(document.getElementById('mqR').style
 ecran = '''
 <!-- RU-SCAN : corriger sur la copie scannée -->
 <div id="scanEcran" class="sc-ecran hidden">
-  <div class="sc-haut"><b>Corriger sur les scans</b><button class="sc-btn" id="btnRecopier" onclick="rcOuvrir()" title="Recopier à côté de la photo, ligne par ligne, avec une reprise enregistrée.">✍ Recopier</button><nav id="scPasses" class="sc-passes"></nav><span class="sc-esp"></span><span id="scCharge"></span><span id="scChrono" class="sc-pill" title="Le temps passé sur cette copie dans cette passe (une minute sans geste ne compte pas)."></span>
+  <div class="sc-haut"><b>Corriger sur les scans</b><button class="sc-btn" id="btnRecopier" onclick="rcOuvrir()" title="Recopier à côté de la photo, ligne par ligne, avec une reprise enregistrée.">✍ Recopier</button><span class="sc-esp"></span><span id="scCharge"></span>
     <button class="sc-btn" id="scZoom" onclick="scZoomLargeur()" title="Le zoom de la copie : Ctrl + molette pour grossir ou réduire, sous la souris. Clique ici pour revenir à la largeur de l'écran. Maj tenue : la loupe. Alt tenue : la copie sans les marques.">↔ Largeur</button>
     <label class="sc-btn" title="Charger depuis ta clé ton paquet scanné, ou la copie d'un seul élève (un PDF, ou des photos), à tout moment : les pages neuves passent par « Les initiales ». Elles restent dans ce navigateur, jamais au site. Une page déjà connue retrouve ses marques. Pour un élève précis : clic sur sa carte, « 📄 Charger sa copie ».">📄 Charger des copies<input type="file" accept="application/pdf,.pdf,image/*" multiple onchange="scCharger(event)" hidden></label>
     <button class="sc-btn" onclick="scDossier()" title="Le dossier des copies de cette classe, sur ta clé : choisis-le une fois sur chaque ordinateur ; ensuite un clic relit le dossier et ne recharge que les pages de cette rédaction. Les photos ne quittent jamais ta clé et ce navigateur.">📂 Mon dossier</button>
     <button class="sc-btn" onclick="scImprimerVierges()" title="Imprimer des copies vierges de l'appli : quatre repères aux coins, les lignes à leur place. Scannées, elles se remettent droites d'elles-mêmes et leurs lignes sont connues d'avance.">🖨 Copies vierges</button>
     <button class="sc-btn" onclick="SC.attrib=true;SC.ia=0;scRendre()" title="Revoir, page par page, l'élève de chaque page (ses initiales).">🔤 Les initiales</button>
     <button class="sc-btn" onclick="scFichiersED()" title="Fabriquer le fichier de chaque élève, à déposer sur École Directe : sa copie scannée et tes marques.">📨 Fichiers École Directe</button>
-    <button class="sc-btn" id="scZero" onclick="scRemettreAZero()" title="Remettre à zéro la copie affichée : sa correction s\'efface (l\'ancienne, tes marques, tes réponses, la bande, le temps) ; ses pages, ta recopie et le corrigé de l\'IA restent. Tout passe d\'abord par la corbeille MJPC (un an) et un export JSON. Une confirmation est demandée.">↺ Remettre à zéro</button>
     <button class="sc-btn" onclick="scFermer()" title="Revenir au tableau des élèves : tout est déjà enregistré.">✕ Fermer</button></div>
   <div id="scManque" class="sc-manque"></div>
-  <div id="scBande" class="sc-bande" hidden></div>
-  <div class="sc-corps"><div id="scCopie" class="sc-copie" onpointerdown="scPointeur(event)"></div><div id="scPanneau" class="sc-panneau"></div></div>
+  
+  <div class="sc-corps"><div id="scCopie" class="sc-copie"></div><div id="scPanneau" class="sc-panneau"></div></div>
   <div id="scPaquet" class="sc-paquet"></div>
 </div>
 <div id="scLoupe" class="sc-loupe" hidden></div>

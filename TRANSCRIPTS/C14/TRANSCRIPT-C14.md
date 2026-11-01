@@ -3225,3 +3225,23 @@ MEMO
 01/11/2026 19:16
 
 MEMO
+
+## Tour 124 — 01/11/2026 20:16 → 01/11/2026 20:17
+
+**Paul :** où sont les stickers à charger?
+
+**Fait.** Vérifié : le fichier est au sas (`MANDATS/REDACTION-UNIVERSELLE/STICKERS/stickers-lettre-grande-guerre.json`, 19 786 o) ; le bouton « 📥 Charger des stickers » est dans la 1.4.17-RU en ligne.
+
+**Claude :**
+
+À jouer : le fichier des stickers à charger · en cours : rien · ouvert : 409
+
+558. Le fichier est au sas : [lien GitHub du fichier, dans la conversation]. Sur cette page, clique l'icône « Download raw file » (la flèche vers le bas, en haut à droite du contenu) : tu obtiens stickers-lettre-grande-guerre.json.
+
+559. Dans la rédaction en ligne : Réglages, puis « La grille et ses stickers », puis « 📥 Charger des stickers », et tu choisis ce fichier. Ensuite « ✓ Valider ligne par ligne » : Entrée valide une ligne entière ; tu corriges une phrase dans sa case avant d'appuyer sur Entrée.
+
+À tester : le chargement, puis une ligne validée, puis l'export pour l'IA d'une copie.
+
+01/11/2026 20:17
+
+MEMO

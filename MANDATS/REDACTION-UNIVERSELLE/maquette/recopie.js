@@ -128,7 +128,7 @@ function rcInterface() {
     '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand va de la marge rouge au bord de la copie.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>',
-    '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b><button id="rcStPlus" class="sc-btn" title="Poser un sticker que l’IA n’a pas vu : sur le mot où tu es (mot par mot), ou sur le passage de l’arrêt en cours. Seuls les stickers validés se posent.">＋ Un sticker</button></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo" title="Glisse le cadre pour le déplacer. Double clic sur le cadre : deux poignées, une de chaque côté, pour régler sa longueur ; encore un double clic les retire. Clic droit sur le cadre : une faute de ta recopie."></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
+    '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b><button id="rcStPlus" class="sc-btn" title="Poser un sticker que l’IA n’a pas vu : sur le mot où tu es (mot par mot), ou sur le passage de l’arrêt en cours. Seuls les stickers validés se posent.">＋ Un sticker</button></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo" title="Glisse le cadre pour le déplacer. Double clic sur le cadre : deux poignées, une de chaque côté, pour régler sa longueur ; encore un double clic les retire. Clic droit sur le cadre : une faute de ta recopie."></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div><div id="rcRqListe" class="st-rq-liste" hidden></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
     '<div id="rcPhrase" class="rc-ia" hidden><div class="rc-ia-c rc-phrase-c" role="dialog" aria-label="La phrase qui m’a marqué"><b>La phrase qui m’a marqué</b><span>Clique le premier mot de la phrase : il s’écrit en dessous. Clique le dernier : toute la phrase s’écrit d’un coup. Un autre clic recommence. Elle passera en or sur la copie de l’élève. C’est la fin de la recopie de cette copie : sans elle (ou « Pas de phrase »), tu ne passes pas à la copie suivante.</span><div id="rcPhraseTexte" class="rc-phrase-t"></div><div id="rcPhraseChoix" class="rc-phrase-choix" aria-live="polite"></div><div class="rc-ia-b"><label class="rc-phrase-non" title="Aucune phrase ne t’a marqué dans cette copie : la recopie est finie quand même.">' + '<input type="checkbox" id="rcPhraseAucune"> Pas de phrase</label><button id="rcPhraseOui" class="sc-btn" disabled title="Choisis d’abord le premier et le dernier mot de la phrase.">✓ C’est elle</button><button id="rcPhraseFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
     '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
     '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
@@ -596,7 +596,7 @@ function rcExportIA() {
   const copies = aFaire.slice(0, RC_PAQUET_IA), le = new Date().toISOString(), nEnvoi = 1 + SC.copies.reduce((m, k) => Math.max(m, (((scCopie(k).recopie || {}).envoi) || {}).n || 0), 0);
   copies.forEach(k => { const s = scCopie(k), c = state.copies[k]; if (c && !c.id) { c.id = idCopie(); if (!c.creeLe) c.creeLe = le; }   // [C14 1.4.16] une copie part toujours avec son identité interne (une copie toute neuve n'en avait pas encore)
     s.recopie = s.recopie || {}; s.recopie.envoi = Object.assign({ n: nEnvoi, le, lignes: rcLignesEcrites(k).length }, sti && !rcCopieACorriger(k) ? { seul: true } : {}); });   // [C14 1.4.11] le flux : l'envoi de chaque copie, numéroté et daté
-  const o = { consigne: RC_CONSIGNE_IA + rcConsigneVariantes() + (sti ? RC_CONSIGNE_STICKERS : ""), format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = [], seul = !!sti && !rcCopieACorriger(k); let n = 0;
+  const o = { consigne: RC_CONSIGNE_IA + rcConsigneVariantes() + (sti ? RC_CONSIGNE_STICKERS + (typeof RC_CONSIGNE_REMARQUES === "string" ? RC_CONSIGNE_REMARQUES : "") : ""), format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = [], seul = !!sti && !rcCopieACorriger(k); let n = 0;
     L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push({ id: x.id, n: ++n, texte: x.l.texte });
       rcLigneMaj(k, x.pid, x.id, l => { l.envoiIA = { texte: l.texte, le }; }); });
     return Object.assign({ numero: i + 1, copie: (state.copies[k] || {}).id || null, pages }, seul ? { seulementStickers: true } : {}); }) };   // [C14 1.4.12] (Paul 15:59) l'identité interne de la copie, jamais son nom
@@ -657,13 +657,14 @@ function rcIALire(txt) {
     if (chaine) { if (ech) ech = false; else if (c === "\\") ech = true; else if (c === '"') chaine = false; continue; }
     if (c === '"') { if (prof > 0) chaine = true; continue; }
     if (c === "{") { if (prof === 0) deb = i; prof++; } else if (c === "}" && prof > 0) { prof--; if (prof === 0) blocs.push(t.slice(deb, i + 1)); } }
-  const r = { lignes: {}, coupe: prof > 0, doublons: 0, sansId: 0, repris: new Set(), copieDe: {}, sujets: {}, reussites: {} };
+  const r = { lignes: {}, coupe: prof > 0, doublons: 0, sansId: 0, repris: new Set(), copieDe: {}, sujets: {}, reussites: {}, aReprendre: {} };
   const poser = (id, v) => { if (r.lignes[id] !== undefined) r.doublons++; r.lignes[id] = v; };
   blocs.forEach(b => { let o; try { o = JSON.parse(b); } catch (e) { return; } if (!o || typeof o !== "object") return;
     if (o.copies) rcListeIA(o.copies).forEach(c => rcListeIA(c && c.pages).forEach(pg => rcListeIA(pg && pg.lignes).forEach(l => { if (!l || typeof l.id !== "string") { r.sansId++; return; } poser(l.id, String(l.texte == null ? "" : l.texte)); if (c && typeof c.copie === "string") r.copieDe[l.id] = c.copie; })));
     if (o.lignes && typeof o.lignes === "object" && !Array.isArray(o.lignes)) Object.keys(o.lignes).forEach(id => poser(id, String(o.lignes[id] == null ? "" : o.lignes[id])));
     if (o.sujets && typeof o.sujets === "object") Object.keys(o.sujets).forEach(c => { r.sujets[c] = String(o.sujets[c]); });
-    if (o.reussites && typeof o.reussites === "object" && !Array.isArray(o.reussites)) Object.keys(o.reussites).forEach(c => { r.reussites[c] = rcListeIA(o.reussites[c]); }); });
+    if (o.reussites && typeof o.reussites === "object" && !Array.isArray(o.reussites)) Object.keys(o.reussites).forEach(c => { r.reussites[c] = rcListeIA(o.reussites[c]); });
+    if (o.aReprendre && typeof o.aReprendre === "object" && !Array.isArray(o.aReprendre)) Object.keys(o.aReprendre).forEach(c => { r.aReprendre[c] = rcListeIA(o.aReprendre[c]); }); });
   /* [C14 1.4.10] un retour coupé : ses paires « identifiant : ligne » complètes sont gardées ; seules les copies entières se chargeront */
   if (r.coupe && deb >= 0) { const queue = t.slice(deb), re = /"([^"\\]+)"\s*:\s*"((?:[^"\\]|\\.)*)"/g; let m;
     while ((m = re.exec(queue))) { if (/^(format|consigne|id|texte|page)$/.test(m[1])) continue; let v; try { v = JSON.parse('"' + m[2] + '"'); } catch (e) { continue; } if (r.lignes[m[1]] === undefined) { r.lignes[m[1]] = v; r.repris.add(m[1]); } } }
@@ -721,8 +722,10 @@ function rcIAChargerSuite(txt) {
   if (melangees.length) saveState();
   const aJour = SC.copies.filter(k => !ok.includes(k) && !melangees.includes(k) && rcLignesEcrites(k).length && !rcCopieACorriger(k)), stR = typeof stIAReussites === "function" && Object.keys(o.reussites || {}).length ? stIAReussites(o, ok.concat(aJour)) : null;
   const dSt = stR && stR.copies ? " Les stickers : " + stR.poses + " réussite" + (stR.poses > 1 ? "s" : "") + " proposée" + (stR.poses > 1 ? "s" : "") + " sur " + stR.copies + " copie" + (stR.copies > 1 ? "s" : "") + (stR.incompletes ? " (" + stR.incompletes + " dont la liste est coupée : au prochain export)" : "") + (stR.horsCopie ? " · " + stR.horsCopie + " sur une ligne d’une autre copie, refusée" + (stR.horsCopie > 1 ? "s" : "") : "") + (stR.inconnus ? " · " + stR.inconnus + " d’un numéro inconnu, laissée" + (stR.inconnus > 1 ? "s" : "") : "") + "." : "";
-  if (!ok.length && stR && stR.copies) { saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre(); msg.textContent = "Chargé." + dSt + dMel; return true; }
-  const dMel = melangees.length ? " " + melangees.length + " copie" + (melangees.length > 1 ? "s" : "") + " refusée" + (melangees.length > 1 ? "s" : "") + " (" + melangees.map(k => nomEleveDe(k) || k).join(", ") + ") : une ligne rendue par l’IA ne ressemble plus à la ligne envoyée, l’IA a pu mélanger des lignes ; rien n’y est écrit, elle repart au prochain export." : "";
+  const rqR = typeof stIARemarques === "function" && Object.keys(o.aReprendre || {}).length ? stIARemarques(o, ok.concat(aJour)) : null;   // [C14 1.4.17] les remarques, après les réussites
+  const dRq = rqR && rqR.copies ? " Les remarques : " + rqR.n + " à relire à la fin de la bande" + (rqR.refusReussi ? " · " + rqR.refusReussi + " sur un sticker réussi, refusée" + (rqR.refusReussi > 1 ? "s" : "") : "") + (rqR.horsCopie ? " · " + rqR.horsCopie + " sur une ligne d’une autre copie, refusée" + (rqR.horsCopie > 1 ? "s" : "") : "") + (rqR.longues ? " · " + rqR.longues + " de plus de quarante mots, signalée" + (rqR.longues > 1 ? "s" : "") : "") + "." : "";
+  const dMel = melangees.length ? " " + melangees.length + " copie" + (melangees.length > 1 ? "s" : "") + " refusée" + (melangees.length > 1 ? "s" : "") + " (" + melangees.map(k => nomEleveDe(k) || k).join(", ") + ") : une ligne rendue par l’IA ne ressemble plus à la ligne envoyée, l’IA a pu mélanger des lignes ; rien n’y est écrit, elle repart au prochain export." : "";   // [C14 1.4.17] dite avant d'être lue (elle était lue plus haut avant d'exister)
+  if (!ok.length && stR && stR.copies) { saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre(); msg.textContent = "Chargé." + dSt + dRq + dMel; return true; }
   if (!ok.length) { msg.textContent = "Rien n’a changé : " + (melangees.length && !changees.length && !coupees.length ? dMel.trim() : changees.length ? "une ligne de chaque copie du retour a changé depuis l’envoi à l’IA : exporte à nouveau." : o.coupe ? "le retour de l’IA est coupé avant la fin de la première copie : demande-lui de tout rendre, ou exporte à nouveau." : "il manque des lignes à chaque copie du retour (écrites après l’export ? refais l’export).") ; return false; }
   const quand = new Date().toISOString(); let fautes = 0, lignes = 0, typees = 0, sansLettre = 0, sujetsDits = 0;
   { const V = rcVariantes().map(v => v.id); if (V.length > 1) ok.forEach(k => { const c = state.copies[k] || {}, dit = c.id && o.sujets[c.id]; if (dit && V.includes(dit) && !c.sujet) { c.sujet = dit; c.sujetDe = "ia"; sujetsDits++; } }); }   // [C14 1.4.12] le sujet traité, dit par l'IA
@@ -738,7 +741,7 @@ function rcIAChargerSuite(txt) {
   msg.textContent = "Chargé : " + pl(ok.length, "copie") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA" + (fautes ? ", dont " + typees + " avec leur type" + (sansLettre ? " (" + sansLettre + " sans lettre : le type du moteur)" : "") : "") + "."
     + (coupees.length ? " " + pl(coupees.length, "copie") + (o.coupe ? " coupée" + (coupees.length > 1 ? "s" : "") : " incomplète" + (coupees.length > 1 ? "s" : "")) + " : au prochain export." : "")
     + (changees.length ? " " + pl(changees.length, "copie") + " dont une ligne a changé depuis l’envoi : au prochain export." : "") + dMel
-    + (o.coupe && !coupees.length ? " Le retour de l’IA était coupé : les copies qui manquent repartent au prochain export." : "") + (sujetsDits ? " Le sujet traité, dit par l’IA : " + sujetsDits + " copie" + (sujetsDits > 1 ? "s" : "") + "." : "") + dSt;
+    + (o.coupe && !coupees.length ? " Le retour de l’IA était coupé : les copies qui manquent repartent au prochain export." : "") + (sujetsDits ? " Le sujet traité, dit par l’IA : " + sujetsDits + " copie" + (sujetsDits > 1 ? "s" : "") + "." : "") + dSt + dRq;
   return true;
 }
 /* les fautes proposées d'une ligne : les mots qui diffèrent, alignés par la plus longue sous-suite commune */
@@ -836,16 +839,18 @@ function rcPhraseManque(k) { if (!k) return false; const s = scCopie(k), rec = s
    avant, le premier clic peignait tout depuis le début du texte (le bas de l'intervalle valait -1). Le texte n'est dessiné qu'une fois ; un clic ne change que des couleurs. */
 function rcPhraseRendre() {
   const P = RC.phrase, T = RC.ui.querySelector("#rcPhraseTexte");
-  if (T.dataset.k !== P.k || T.dataset.n !== String(P.W.length)) { let h = "", ligne = null;
-    P.W.forEach((w, j) => { if (w.id !== ligne) { h += (ligne ? "</p>" : "") + '<p><small>' + w.n + "</small> "; ligne = w.id; } h += '<span class="rc-mot" data-j="' + j + '">' + escapeHtml(w.g.eleve) + "</span> "; });
+  if (T.dataset.k !== P.k || T.dataset.n !== String(P.W.length)) { let h = "", ligne = null, fin = 0, Pm = [];   // [C14 1.4.17] (C14 466) les blancs et la ponctuation de ta recopie, tels quels
+    P.W.forEach((w, j) => { if (w.id !== ligne) { h += (ligne ? "</p>" : "") + '<p><small>' + w.n + "</small> "; ligne = w.id; fin = 0; Pm = rcPosMots(w.l.texte); } const p = Pm[w.m] || [fin, fin]; h += escapeHtml(w.l.texte.slice(fin, p[0])) + '<span class="rc-mot" data-j="' + j + '">' + escapeHtml(w.g.eleve) + "</span>"; fin = p[1]; });
     T.innerHTML = h + "</p>"; T.dataset.k = P.k; T.dataset.n = String(P.W.length);
     T.onclick = ev => { const s = ev.target.closest && ev.target.closest("[data-j]"); if (!s) return; const j = +s.dataset.j; if (P.a < 0 || P.b >= 0) { P.a = j; P.b = -1; } else P.b = j; rcPhraseRendre(); }; }
   const lo = P.b >= 0 ? Math.min(P.a, P.b) : P.a, hi = P.b >= 0 ? Math.max(P.a, P.b) : P.a;
   T.querySelectorAll("[data-j]").forEach(s => { const j = +s.dataset.j; s.classList.toggle("or", P.a >= 0 && j >= lo && j <= hi); s.classList.toggle("debut", P.a >= 0 && P.b < 0 && j === P.a); });
-  const C = RC.ui.querySelector("#rcPhraseChoix"); C.textContent = P.a < 0 ? "La phrase s’écrira ici." : P.b < 0 ? "« " + P.W[P.a].g.eleve + " … » : clique maintenant le dernier mot." : "« " + P.W.slice(lo, hi + 1).map(w => w.g.eleve).join(" ") + " »";
+  const C = RC.ui.querySelector("#rcPhraseChoix"); C.textContent = P.a < 0 ? "La phrase s’écrira ici." : P.b < 0 ? "« " + P.W[P.a].g.eleve + " … » : clique maintenant le dernier mot." : "« " + rcTexteMots(P.W.slice(lo, hi + 1)) + " »";
   C.classList.toggle("vide", P.a < 0);
   const ok = P.a >= 0 && P.b >= 0, b = RC.ui.querySelector("#rcPhraseOui"); b.disabled = !ok; b.title = ok ? "Garder cette phrase : elle passe en or sur la copie de l’élève, et la recopie de cette copie est finie." : "Choisis d’abord le premier et le dernier mot de la phrase.";
 }
+function rcTexteMots(W) { const C = []; let c = null; W.forEach(w => { if (!c || c.id !== w.id) C.push(c = { id: w.id, l: w.l, a: w.m, b: w.m }); else c.b = w.m; });
+  return C.map(x => { const P = rcPosMots(x.l.texte); return P[x.a] && P[x.b] ? x.l.texte.slice(P[x.a][0], P[x.b][1]) : ""; }).join(" "); }
 function rcPhraseRetirer(k) { const s = scCopie(k); Object.values(s.marques).filter(m => m.forme === "etoile" && m.recopie).forEach(m => scEffacer(m.id)); }
 function rcPhrasePoser(k, a, b, W) {
   rcPhraseRetirer(k); const parPage = {};
@@ -858,7 +863,7 @@ function rcPhraseSuite() { const k = RC.phraseApres; RC.phraseApres = null; if (
 function rcPhraseValider() {
   const P = RC.phrase; if (!P || P.a < 0 || P.b < 0) return; const apres = RC.phraseApres; const k = P.k, a = Math.min(P.a, P.b), b = Math.max(P.a, P.b), W = P.W.slice(a, b + 1);
   rcPhrasePoser(k, a, b, P.W);
-  const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), debut: { id: P.W[a].id, m: P.W[a].m }, fin: { id: P.W[b].id, m: P.W[b].m }, texte: W.map(w => w.g.eleve).join(" ") };
+  const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), debut: { id: P.W[a].id, m: P.W[a].m }, fin: { id: P.W[b].id, m: P.W[b].m }, texte: rcTexteMots(W) };
   saveState(); rcPhraseFermer(); rcEtatIA(); toast("La phrase qui t’a marqué est gardée : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite();
 }
 function rcPhraseAucune() {
@@ -959,9 +964,37 @@ function rcPlaceSeg(a) {
     let best = null; blancs.filter(b => b.l >= seuil).forEach(b => { if (best === null || Math.abs(b.m - gx) < Math.abs(best - gx)) best = b.m; });
     if (best !== null && Math.abs(best - gx) < 0.06) gx = best; x0 = gx - 0.004; x1 = gx + 0.004; }
   else { x0 = u(c0); x1 = Math.max(u(c1), x0 + (type.ponct ? 0.006 : 0.012)); }
+  if ((a.st || a.rq || /^(stk|rq):/.test(a.cle || "")) && !type.manque && e.traits) { const cm = rcCalerMots(e, L.texte, x0, x1, c0, c1, u); x0 = cm[0]; x1 = cm[1]; }
   const ici = L.places && L.places[a.cle]; if (ici) { x0 = ici.x0; x1 = ici.x1; }
   const hh = e.haut && e.haut(x0 - (type.manque ? 0.015 : 0), x1 + (type.manque ? 0.015 : 0)), bb = e.bas && e.bas(x0 - (type.manque ? 0.015 : 0), x1 + (type.manque ? 0.015 : 0));
   return { x0, x1, y0: hh != null ? hh - 0.003 : e.corps ? e.corps[0] : yv(x0) - 0.012, y1: bb != null ? bb + 0.003 : e.corps ? e.corps[1] : yv(x1) + 0.004, encre: e, type };
+}
+/* [C14 1.4.17] (Paul 01/11 15:09, C14 464 : les cadres coupaient des mots, « froi|d », « jambe|s ») : le cadre d'un sticker ou d'une remarque prend ses mots
+   entiers ; chaque bord se cale sur le blanc entre deux mots le plus proche, mesuré sur la photo (les traits d'encre de la ligne) ; au bout de la ligne, sur l'encre */
+function rcCalerMots(e, texte, x0, x1, c0, c1, u) {
+  const tr = e && e.traits; if (!tr || !tr.length) return [x0, x1];
+  /* les mots de la ligne comme l'élève les écrit : les morceaux entre deux blancs de ta recopie, la ponctuation collée au mot d'avant (« front, », « j'observe ») */
+  const T = String(texte || ""), W = [], re = /\S+/g; let m; while ((m = re.exec(T))) { if (W.length && /^[.,;:!?…»)\]]+$/.test(m[0])) W[W.length - 1].b = m.index + m[0].length; else W.push({ a: m.index, b: m.index + m[0].length }); }
+  const bl = []; for (let i = 0; i + 1 < tr.length; i++) bl.push({ g: tr[i][1], d: tr[i + 1][0], l: tr[i + 1][0] - tr[i][1] });
+  const tri = bl.map(b => b.l).sort((p, q) => q - p), n = W.length, i0 = W.findIndex(w => c0 < w.b), i1 = W.findIndex(w => Math.max(c0, c1 - 1) < w.b);
+  /* 1. les mots d'encre : entre deux mots de ta recopie, le blanc de la photo qui est à la fois large et près de la place attendue (le meilleur choix, dans l'ordre,
+     pour toute la ligne ; un grand blanc laissé par du blanc correcteur ne décale plus les mots qui suivent) ; le passage prend ses mots d'encre entiers */
+  if (n >= 1 && i0 >= 0 && i1 >= i0 && bl.length >= n - 1) { let S = null;
+    if (n === 1) S = [[e[0], e[1]]];
+    else if (typeof u === "function") { const K = n - 1, G = bl.length, lmax = tri[0] || 1, est = W.slice(1).map(w => u(w.a)), sc = (k, j) => bl[j].l / lmax - Math.abs((bl[j].g + bl[j].d) / 2 - est[k]) / 0.06;
+      const f = [], de = []; for (let k = 0; k < K; k++) { f.push(new Array(G).fill(-Infinity)); de.push(new Array(G).fill(-1)); }
+      for (let j = 0; j < G; j++) f[0][j] = sc(0, j);
+      for (let k = 1; k < K; k++) { let best = -Infinity, bj = -1; for (let j = 0; j < G; j++) { if (j > 0 && f[k - 1][j - 1] > best) { best = f[k - 1][j - 1]; bj = j - 1; } if (bj >= 0) { f[k][j] = best + sc(k, j); de[k][j] = bj; } } }
+      let jb = -1, vb = -Infinity; for (let j = 0; j < G; j++) if (f[K - 1][j] > vb) { vb = f[K - 1][j]; jb = j; }
+      if (jb >= 0 && isFinite(vb)) { const pick = new Array(K); for (let k = K - 1; k >= 0; k--) { pick[k] = jb; jb = de[k][jb]; } if (pick.every(x => x >= 0)) { S = []; let st = e[0]; pick.forEach(x => { S.push([st, bl[x].g]); st = bl[x].d; }); S.push([st, e[1]]); } } }
+    if (S && S[i0] && S[i1] && S[i1][1] > S[i0][0] + 0.005) return [S[i0][0] - 0.003, S[i1][1] + 0.003]; }
+  /* 2. sinon, chaque bord sur le blanc entre deux mots le plus proche ; au bout de la ligne, sur l'encre */
+  const nMots = Math.max(1, n), seuil = tri.length ? 0.6 * tri[Math.min(tri.length - 1, Math.max(0, nMots - 2))] : 0, B = bl.filter(b => b.l >= seuil), mi = b => (b.g + b.d) / 2;
+  const proche = x => B.reduce((r, b) => !r || Math.abs(mi(b) - x) < Math.abs(mi(r) - x) ? b : r, null), premier = i0 === 0, dernier = i1 === n - 1;
+  let a = x0, z = x1;
+  if (premier) a = e[0]; else { const b = proche(x0); if (b && Math.abs(mi(b) - x0) < 0.05) a = b.d; }
+  if (dernier) z = e[1]; else { const b = proche(x1); if (b && Math.abs(mi(b) - x1) < 0.05) z = b.g; }
+  return z > a + 0.01 ? [a - 0.003, z + 0.003] : [x0, x1];
 }
 function rcReplacerBande(k) {
   const s = scCopie(k); let n = 0; rcArrets(k).forEach(a => { const id = a.l.marquesBande && a.l.marquesBande[a.cle], m = id && s.marques[id]; if (!m) return; const q = rcPlaceSeg(a);
@@ -1162,13 +1195,15 @@ function rcBandeRendre() {
   liste.querySelectorAll("li").forEach(li => li.onclick = () => { B.mot = false; B.i = +li.dataset.i; B.note = ""; rcBandeRendre(); });
   const on = liste.querySelector("li.on"); if (on) on.scrollIntoView({ block: "nearest" });
   const ctx = e.querySelector("#rcBandeContexte"), carte = e.querySelector("#rcBandeCarte"), touches = e.querySelector("#rcBandeTouches");
+  { const q = e.querySelector("#rcRqListe"), h = !a && !B.attente && !B.mot && typeof stRqRelecture === "function" ? stRqRelecture(B.k) : "";   // [C14 1.4.17] les remarques, relues à la fin de la bande
+    if (q) { if (q.dataset.h !== h && !q.contains(document.activeElement)) { q.innerHTML = h; q.dataset.h = h; } q.hidden = !h; } }
   carte.style.borderColor = a && !B.attente ? rcStyleArret(a).couleur : "";
   if (B.attente) { carte.innerHTML = ""; ctx.innerHTML = ""; touches.innerHTML = ""; rcBandePhoto(null); return; }
   if (B.mot) { rcBandeRendreMots(B, ctx, carte, touches); return; }
   if (a && a.st) { stBandeCarte(B, a, ctx, carte, touches); return; }
-  if (!a) {
+  if (!a) { if (typeof rcEtatIA === "function") rcEtatIA();   // [C14 1.4.17] le flux d'en haut se met à jour au bout de la bande
     const F = B.A.filter(x => !x.st), faites = F.filter(x => x.l.decisions && x.l.decisions[x.cle] === "o").length, Sx = B.A.filter(x => x.st), gard = Sx.filter(x => stDecision(B.k, x.stId) === "o").length, nt = Sx.length && typeof stNoteCopie === "function" ? stNoteCopie(B.k) : null;
-    carte.innerHTML = '<div class="rc-bande-mot">Bande finie</div><div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + F.length + " arrêts" + (Sx.length ? " · " + gard + " sticker" + (gard > 1 ? "s" : "") + " gardé" + (gard > 1 ? "s" : "") + " sur " + Sx.length + " · note : " + stNb(nt.n) + " / " + stNb(nt.tot) : "") + " · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k)) + "</div>";
+    carte.innerHTML = '<div class="rc-bande-mot">Bande finie</div><div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + F.length + " arrêts" + (Sx.length ? " · " + gard + " sticker" + (gard > 1 ? "s" : "") + " gardé" + (gard > 1 ? "s" : "") + " sur " + Sx.length + " · note : " + stNb(nt.n) + " / " + stNb(nt.tot) : "") + (Sx.length ? "" : " · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k))) + "</div>";   // [C14 1.4.17] (C14 467) avec les stickers, l'ancienne grille ne parle plus
     ctx.innerHTML = ""; touches.innerHTML = '<b class="rc-bande-mode">Les arrêts</b><span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>⇧</kbd> + <kbd>R</kbd> mot par mot</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : remettre une faute</span><span><kbd>Échap</kbd> revenir à la recopie</span>' + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : ""); rcBandePhoto(null); return;
   }
   const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle], T = rcStyleArret(a), st = ' style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";box-shadow:inset 0 -2px 0 " + T.couleur + '"';
@@ -1293,10 +1328,12 @@ function rcBandeRemettre() {
 }
 function rcBandeClavier(ev) {
   const B = RC.bd; ev.stopPropagation();
+  if (ev.target && ev.target.closest && ev.target.closest("#rcRqListe")) { if (ev.key === "Escape") { ev.preventDefault(); ev.target.blur(); } return true; }   // [C14 1.4.17] tu corriges une remarque : les touches écrivent
   if (ev.key === "Escape") { ev.preventDefault(); rcBandeFermer(); return true; }
   if (B.attente) { if (ev.key === "Enter") { ev.preventDefault(); rcBandeCommencer(); } return true; }
   if (ev.shiftKey && (ev.key === "R" || ev.key === "r") && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { ev.preventDefault(); rcBandeBasculer(); return true; }   // [C14 1.4.12] ⇧R, comme en dictée
   if (B.mot && rcBandeMotClavier(ev)) return true;
+  if (ev.key === "Enter" && !B.A[B.i] && typeof stRqARelire === "function" && stRqARelire(B.k)) { ev.preventDefault(); stRqGarder(B.k); B.note = "Les remarques sont gardées : l’élève les lira."; rcBandeRendre(); return true; }
   if ((ev.key === "Enter" || ev.key === " ") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("o"); return true; }
   if ((ev.key === "n" || ev.key === "N") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("n"); return true; }
   if (ev.key === "Backspace") { ev.preventDefault(); B.i = Math.max(0, B.i - 1); B.note = ""; rcBandeRendre(); return true; }

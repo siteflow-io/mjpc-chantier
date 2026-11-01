@@ -25,3 +25,12 @@
 .rc-st-li span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
 .st-plus-l{border-left:4px solid var(--st-c);padding-left:8px;margin:8px 0;display:flex;flex-direction:column;gap:3px;align-items:flex-start}.st-plus-l>b{font:600 13px system-ui;color:var(--st-c)}.st-plus-l button{text-align:left}
 #scModale .sc-modale-c{max-height:86vh;overflow:auto}
+/* [C14 1.4.17] la relecture des remarques, à la fin de la bande ; la formulation d'une ligne ; la phrase « pas encore réussi » */
+.st-rq-liste{display:flex;flex-direction:column;gap:8px;border-top:2px solid #e3dccf;padding-top:10px}
+.st-rq-tete{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font:14px system-ui;color:#4b4036}.st-rq-tete b{font:600 15px system-ui;color:#2b2520}.st-rq-tete .sc-btn{margin-left:auto}
+.st-rq{border-left:4px solid var(--st-c);background:#fff;border-radius:6px;padding:6px 8px;display:flex;flex-direction:column;gap:4px}.st-rq.off{opacity:.45}
+.st-rq-h{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}.st-rq-h b{color:var(--st-c);font:700 13px system-ui}.st-rq-h span{font:600 14px system-ui;color:#2b2520}.st-rq-h small{color:#7a6e5f;font-size:12.5px}.st-rq-h .sc-btn{margin-left:auto;padding:2px 8px}
+.st-rq textarea{width:100%;font:15px/1.4 Georgia,serif;border:1px solid #e3dccf;border-radius:6px;padding:5px 7px;resize:vertical}
+.st-ligne-eleve{display:flex;flex-direction:column;gap:3px;font:600 13px system-ui;color:#4b4036;margin:4px 0 10px}.st-ligne-eleve textarea{font:15px/1.4 system-ui;border:1px solid #d6cfc1;border-radius:6px;padding:5px 7px}
+.st-v-ligne{display:block;font:14px system-ui;color:#2b6cb0;margin-top:3px}.st-v-manque{color:#975a16!important}
+.rc-bande-g>*{flex-shrink:0}

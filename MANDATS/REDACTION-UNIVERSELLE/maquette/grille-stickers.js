@@ -56,11 +56,11 @@ function stImporter(o) {
   if (!o || !/^mjpc-redaction-stickers\//.test(o.format || "") || !Array.isArray(o.stickers)) { scModale("<h3>Ce fichier n’est pas une grille de stickers</h3><p>Il faut un fichier au format « mjpc-redaction-stickers/1 ».</p>"); return 0; }
   const deja = new Set(stTous().map(s => s.num).filter(Boolean)), le = new Date().toISOString(); let n = 0, sans = 0, doubles = 0;
   Object.keys(o.lignes || {}).forEach(id => { if (!stLigne(id)) return; const c = Object.assign({}, stConf(id)), src = o.lignes[id] || {}; let neuf = false;
-    if (src.competence && !c.competence) { c.competence = src.competence; neuf = true; } if (src.sous && !c.sous) { c.sous = src.sous; neuf = true; } if (Array.isArray(src.compte) && !c.compte) { c.compte = src.compte; neuf = true; }
+    if (src.competence && !c.competence) { c.competence = src.competence; neuf = true; } if (src.sous && !c.sous) { c.sous = src.sous; neuf = true; } if (Array.isArray(src.compte) && !c.compte) { c.compte = src.compte; neuf = true; } if (src.eleve && !c.eleve) { c.eleve = String(src.eleve); neuf = true; }
     if (neuf) stEcrireLigne(id, c); });
   o.stickers.forEach((x, i) => {
     if (!x || !x.texteEleve) return; if (!stLigne(x.ligne)) { sans++; return; } if (x.num && deja.has(x.num)) { doubles++; return; }
-    const s = { id: stId() + i.toString(36), num: x.num || null, ligne: x.ligne, sous: x.sous || null, texteEleve: String(x.texteEleve), cherche: String(x.cherche || ""), portee: x.portee === "lettre" ? "lettre" : "passage",
+    const s = { id: stId() + i.toString(36), num: x.num || null, ligne: x.ligne, sous: x.sous || null, texteEleve: String(x.texteEleve), texteManque: String(x.texteManque || ""), cherche: String(x.cherche || ""), portee: x.portee === "lettre" ? "lettre" : "passage",
       competence: x.competence || ((o.lignes || {})[x.ligne] || {}).competence || null, taxo: Array.isArray(x.taxo) ? x.taxo.slice(0, 2) : [], taxoPropose: x.taxoPropose || null, neCompte: !!x.neCompte,
       ordre: x.ordre || 99, etat: "a-valider", creeLe: le, version: 0, source: "fichier" };
     stEcrire(s, "un sticker chargé"); n++; if (s.num) deja.add(s.num); });
@@ -106,15 +106,17 @@ function stRendre() {
       return '<button class="st-ligne' + (l.id === ST.ligne ? " on" : "") + '" onclick="ST.ligne=\'' + escapeAttr(l.id) + '\';ST.s=null;stRendre()" title="' + escapeAttr(l.calcul ? "Ligne calculée par l’app, sans sticker : " + (l.calcul === "lignes" ? "les lignes recopiées, rapportées à la longueur du sujet." : "les fautes de la bande, par ligne recopiée.") : stCompteTexte(l.id)) + '"><span>' + escapeHtml(l.titre) + '</span><small>' + stNb(l.poids) + " pt · " + (l.calcul ? "calculée" : n.length + " sticker" + (n.length > 1 ? "s" : "") + (nv ? " · " + nv + " à valider" : n.length ? " ✓" : "")) + "</small></button>"
         + Object.keys(so).sort((a, b) => (so[a].ordre || 0) - (so[b].ordre || 0)).map(x => '<span class="st-sous-arbre">› ' + escapeHtml(so[x].libelle || x) + " (" + n.filter(s => s.sous === x).length + ")</span>").join(""); }).join("") + "</div>"; }).join("");
   const l = stLigne(ST.ligne), conf = stConf(ST.ligne), so = conf.sous || {};
-  const cartes = l.calcul ? '<p class="sc-m">' + escapeHtml(l.titre) + " est calculée par l’app : " + (l.calcul === "lignes" ? "les lignes recopiées, rapportées à la longueur du sujet." : "les fautes de la bande, par ligne recopiée.") + " Elle n’a pas de sticker.</p>"
+  const formule = '<label class="st-ligne-eleve">Ce que l’élève lit pour cette ligne<textarea rows="2" onchange="stLigneChamp(\'eleve\',this.value.trim())" title="[C14 1.4.17] La ligne de la grille, dite à l’élève : il la lit dans sa grille et dans « 🪟 Voir ma grille complète ». Vide : il lit le titre de la ligne.">' + escapeHtml(conf.eleve || "") + "</textarea></label>";
+  const cartes = formule + (l.calcul ? '<p class="sc-m">' + escapeHtml(l.titre) + " est calculée par l’app : " + (l.calcul === "lignes" ? "les lignes recopiées, rapportées à la longueur du sujet." : "les fautes de la bande, par ligne recopiée.") + " Elle n’a pas de sticker.</p>"
     : S.map((s, i) => '<div class="st-carte' + (s.id === ST.s ? " on" : "") + (s.etat === "valide" ? " valide" : "") + '" onclick="if(ST.s!==\'' + s.id + '\'){ST.s=\'' + s.id + '\';stRendre()}" style="--st-c:' + stCouleur(s) + '">'
       + '<div class="st-carte-haut"><b>' + escapeHtml(s.num || "—") + "</b>" + (s.sous && so[s.sous] ? '<span class="st-sous">' + escapeHtml(so[s.sous].libelle) + "</span>" : "") + (s.portee === "lettre" ? '<span class="st-portee" title="Posé à la fin de la lecture, sur la lettre entière, seulement si rien ne le contredit.">toute la lettre</span>' : "") + (s.neCompte ? '<span class="st-portee" title="Il se lit sur la copie de l’élève, mais ne compte pas dans le compte de la ligne.">sans point</span>' : "") + '<span class="st-etat ' + (s.etat === "valide" ? "ok" : "") + '">' + (s.etat === "valide" ? "✓ validé" : "à valider") + "</span></div>"
       + '<label>Ce que l’élève lit<textarea rows="2" data-st="' + s.id + '" data-champ="texteEleve" onchange="stChamp(this)" title="La phrase que l’élève lit sur sa copie et dans sa grille. Un seul fait, qu’il retrouve sur sa copie.">' + escapeHtml(s.texteEleve) + "</textarea></label>"
+      + '<label>S’il ne l’a pas encore réussi<textarea rows="2" data-st="' + s.id + '" data-champ="texteManque" onchange="stChamp(this)" title="[C14 1.4.17] La phrase que l’élève lit dans sa grille, sous « Pas encore réussi », quand il n’a pas ce sticker : ce qu’il a à faire. Vide : il lit la phrase du dessus.">' + escapeHtml(s.texteManque || "") + "</textarea></label>"
       + '<label>Ce que l’IA cherche<textarea rows="2" data-st="' + s.id + '" data-champ="cherche" onchange="stChamp(this)" title="Ce que l’IA cherche dans la copie, en mots de prof. L’élève ne le lit jamais.">' + escapeHtml(s.cherche || "") + "</textarea></label>"
       + '<div class="st-gestes"><select data-st="' + s.id + '" data-champ="portee" onchange="stChamp(this)" title="Un passage : l’IA donne les mots qui le prouvent, le cadre se pose dessus. Toute la lettre : posé à la fin, seulement si rien ne le contredit."><option value="passage"' + (s.portee !== "lettre" ? " selected" : "") + ">un passage</option><option value=\"lettre\"" + (s.portee === "lettre" ? " selected" : "") + ">toute la lettre</option></select>"
       + '<button class="sc-btn" onclick="event.stopPropagation();stBouger(\'' + s.id + '\',-1)" title="Monter ce sticker d’un cran dans la ligne (sa place dans la bande et dans la grille de l’élève)."' + (i ? "" : " disabled") + ">↑</button><button class=\"sc-btn\" onclick=\"event.stopPropagation();stBouger('" + s.id + "',1)\" title=\"Descendre ce sticker d’un cran dans la ligne.\"" + (i < S.length - 1 ? "" : " disabled") + ">↓</button>"
       + '<button class="sc-btn" onclick="event.stopPropagation();stDupliquer(\'' + s.id + '\')" title="Un nouveau sticker, copie de celui-ci, à valider.">⧉</button><button class="sc-btn" onclick="event.stopPropagation();stRanger(\'' + s.id + '\')" title="Ranger ce sticker : il ne se propose plus ; il reste sur les copies où il est déjà posé. Rien n’est effacé.">🗑 Ranger</button></div></div>').join("")
-      + '<button class="sc-btn st-plus" onclick="stNouveau()" title="Un nouveau sticker sur cette ligne, à écrire puis valider.">＋ Un sticker</button>';
+      + '<button class="sc-btn st-plus" onclick="stNouveau()" title="Un nouveau sticker sur cette ligne, à écrire puis valider.">＋ Un sticker</button>');
   const s = stTous().find(x => x.id === ST.s), T = ST.taxo || { comp: [], fam: [], not: [], lib: {} };
   const ratt = !s || l.calcul ? '<p class="sc-m">Choisis un sticker pour voir ses rattachements.</p>' : '<h3>Le sticker ' + escapeHtml(s.num || "") + "</h3>"
     + '<label>Sa ligne<select data-st="' + s.id + '" data-champ="ligne" onchange="stChamp(this)" title="La ligne notée de la grille (le descripteur) dont il fait partie.">' + L.filter(x => !x.calcul).map(x => '<option value="' + escapeAttr(x.id) + '"' + (x.id === s.ligne ? " selected" : "") + ">" + escapeHtml(x.titre) + "</option>").join("") + "</select></label>"
@@ -141,7 +143,7 @@ function stTaxoResultats() {
   R.innerHTML = (F.length + N.length ? F.map(f => '<button onclick="stTaxoAjouter(\'' + escapeAttr(f.id) + '\')" title="' + escapeAttr("Famille · " + f.dom + " · pour l’élève : " + f.eleve) + '"><b>' + escapeHtml(f.id) + "</b> " + escapeHtml(f.prof) + "</button>").join("") + N.map(n => '<button onclick="stTaxoAjouter(\'' + escapeAttr(n.id) + '\')" title="' + escapeAttr("Notion de " + stLib(n.fam) + " · pour l’élève : " + n.eleve + (n.ex ? " · exemple : " + n.ex : "")) + '">' + escapeHtml(n.prof) + "</button>").join("") : '<span class="sc-m">Rien dans la taxonomie.</span>');
 }
 function stMaj(id, f) { const s = stTous().find(x => x.id === id); if (!s) return null; const c = JSON.parse(JSON.stringify(s)); f(c); if (c.etat === "valide" && JSON.stringify(Object.assign({}, c, { etat: 0, valideLe: 0 })) !== JSON.stringify(Object.assign({}, s, { etat: 0, valideLe: 0 }))) { c.etat = "a-valider"; delete c.valideLe; } stEcrire(c); return c; }   // une modif remet le sticker à valider
-function stChamp(el) { const id = el.dataset.st, ch = el.dataset.champ, v = el.value, f = c => { if (ch === "sous") c.sous = v || null; else c[ch] = ch === "texteEleve" || ch === "cherche" ? v.trim() : v; if (ch === "ligne") c.sous = null; };
+function stChamp(el) { const id = el.dataset.st, ch = el.dataset.champ, v = el.value, f = c => { if (ch === "sous") c.sous = v || null; else c[ch] = ch === "texteEleve" || ch === "cherche" || ch === "texteManque" ? v.trim() : v; if (ch === "ligne") c.sous = null; };
   if (ch === "ligne") { stSiNotesChangent(() => { if (SUJET.stickers[id]) f(SUJET.stickers[id]); }, () => { stMaj(id, f); ST.ligne = v; }, "Changer sa ligne"); return; }   // un sticker qui change de ligne change le compte de deux lignes
   stMaj(id, f); stRendre(); }
 function stLigneChamp(ch, v) { const c = Object.assign({}, stConf(ST.ligne)); c[ch] = v || null; stEcrireLigne(ST.ligne, c); stRendre(); }
@@ -167,8 +169,8 @@ function stValidationOuvrir() { stTaxo().then(() => { const L = stSujetLignes().
 function stValidationRendre() {
   const V = ST.valid; if (!V) return; let m = document.getElementById("stValid"); if (!m) { m = document.createElement("div"); m.id = "stValid"; m.className = "st-valid"; document.body.appendChild(m); }
   const id = V.L[V.i], l = stLigne(id), S = stDeLigne(id), conf = stConf(id), so = conf.sous || {}, nv = S.filter(s => s.etat !== "valide").length;
-  m.innerHTML = '<div class="st-valid-c" role="dialog" aria-label="Valider la grille, ligne par ligne"><div class="st-valid-haut"><b>Ligne ' + (V.i + 1) + " sur " + V.L.length + " · " + escapeHtml(l.titre) + "</b> <span>" + stNb(l.poids) + " points · " + escapeHtml(stLib(conf.competence || "")) + "</span><small>" + escapeHtml(stCompteTexte(id)) + "</small></div>"
-    + S.map(s => '<div class="st-valid-s' + (s.etat === "valide" ? " ok" : "") + '" style="--st-c:' + stCouleur(s) + '" onclick="ST.ligne=\'' + escapeAttr(id) + '\';ST.s=\'' + s.id + '\';stValidationFermer();if(RU.onglet!==\'reglages\')ruOnglet(\'reglages\');stRendre()" title="Ouvrir ce sticker dans l’éditeur pour le changer."><b>' + escapeHtml(s.num || "") + '</b><div><span class="st-v-eleve">' + escapeHtml(s.texteEleve) + '</span><small>L’IA cherche : ' + escapeHtml(s.cherche || "—") + "</small><small>" + (s.portee === "lettre" ? "toute la lettre · " : "un passage · ") + (s.sous && so[s.sous] ? escapeHtml(so[s.sous].libelle) + " · " : "") + escapeHtml(s.competence || "sans compétence") + " · " + escapeHtml((s.taxo || []).map(stLib).join(", ") || "sans notion") + (s.taxoPropose ? " · ⚑ " + escapeHtml(s.taxoPropose) : "") + (s.neCompte ? " · sans point" : "") + "</small></div><i>" + (s.etat === "valide" ? "✓" : "") + "</i></div>").join("")
+  m.innerHTML = '<div class="st-valid-c" role="dialog" aria-label="Valider la grille, ligne par ligne"><div class="st-valid-haut"><b>Ligne ' + (V.i + 1) + " sur " + V.L.length + " · " + escapeHtml(l.titre) + "</b> <span>" + stNb(l.poids) + " points · " + escapeHtml(stLib(conf.competence || "")) + "</span><small>" + escapeHtml(stCompteTexte(id)) + "</small>" + (conf.eleve ? '<span class="st-v-ligne">L’élève lit : « ' + escapeHtml(conf.eleve) + " »</span>" : "") + "</div>"
+    + S.map(s => '<div class="st-valid-s' + (s.etat === "valide" ? " ok" : "") + '" style="--st-c:' + stCouleur(s) + '" onclick="ST.ligne=\'' + escapeAttr(id) + '\';ST.s=\'' + s.id + '\';stValidationFermer();if(RU.onglet!==\'reglages\')ruOnglet(\'reglages\');stRendre()" title="Ouvrir ce sticker dans l’éditeur pour le changer."><b>' + escapeHtml(s.num || "") + '</b><div><span class="st-v-eleve">' + escapeHtml(s.texteEleve) + '</span>' + (s.texteManque ? '<small class="st-v-manque">Pas encore réussi : ' + escapeHtml(s.texteManque) + "</small>" : "") + '<small>L’IA cherche : ' + escapeHtml(s.cherche || "—") + "</small><small>" + (s.portee === "lettre" ? "toute la lettre · " : "un passage · ") + (s.sous && so[s.sous] ? escapeHtml(so[s.sous].libelle) + " · " : "") + escapeHtml(s.competence || "sans compétence") + " · " + escapeHtml((s.taxo || []).map(stLib).join(", ") || "sans notion") + (s.taxoPropose ? " · ⚑ " + escapeHtml(s.taxoPropose) : "") + (s.neCompte ? " · sans point" : "") + "</small></div><i>" + (s.etat === "valide" ? "✓" : "") + "</i></div>").join("")
     + '<div class="st-valid-b"><button class="sc-btn" onclick="stValidationLigne()" title="Valider tous les stickers de cette ligne, puis la ligne suivante (Entrée).">✓ Je valide la ligne (Entrée)</button><button class="sc-btn" onclick="stValidationAller(-1)" title="La ligne d’avant (←)."' + (V.i ? "" : " disabled") + '>← Avant</button><button class="sc-btn" onclick="stValidationAller(1)" title="La ligne suivante, sans valider celle-ci (→)."' + (V.i < V.L.length - 1 ? "" : " disabled") + '>Après →</button><button class="sc-btn" onclick="stValidationFermer()" title="Fermer (Échap) : ce qui est validé reste validé.">Fermer</button><span class="sc-m">' + (nv ? nv + " à valider sur cette ligne" : "Toute la ligne est validée") + " · " + escapeHtml(stPretTexte()) + "</span></div></div>";
 }
 function stValidationLigne() { const V = ST.valid; if (!V) return; const le = new Date().toISOString(); stDeLigne(V.L[V.i]).filter(s => s.etat !== "valide").forEach(s => { const c = JSON.parse(JSON.stringify(s)); c.etat = "valide"; c.valideLe = le; stEcrire(c, "un sticker validé"); });
@@ -226,11 +228,11 @@ function stDeciderArret(k, a, v) {
 /* la note de la copie, depuis les stickers : chaque ligne à stickers donne son niveau par son compte ; « Trente lignes » sur la recopie ; l'orthographe, les fautes de la bande par ligne recopiée */
 function stNoteCopie(k) {
   const s = scCopie(k), D = s.stickers || {}, nL = rcLignesEcrites(k).length, g = SUJET && SUJET.grille2; let n = 0, tot = 0; const det = [];
-  stSujetLignes().forEach(l => { tot += Number(l.poids) || 0; let niv = null, info = "";
+  stSujetLignes().forEach(l => { tot += Number(l.poids) || 0; let niv = null, info = "", fait = "";
     if (l.calcul) { const pt = ((g && g.criteres) || []).flatMap(c => c.points || []).find(p => p.id === l.id); if (pt && nL) { const e = Object.values(s.marques || {}).filter(m => m.forme === "faute" && m.bande).length, r = l.calcul === "lignes" ? nL / (typeof scLong === "function" ? scLong() : 30) : e / nL;
-        const c = (pt.cases || []).find(c => { const m = /^calc:\w+:([\d.]+)-([\d.]+)$/.exec(c.si); return m && r >= +m[1] && r <= +m[2]; }); if (c) { niv = c.niveau; info = l.calcul === "lignes" ? nL + " lignes" : e + " faute" + (e > 1 ? "s" : "") + " pour " + nL + " lignes"; } } }
+        const c = (pt.cases || []).find(c => { const m = /^calc:\w+:([\d.]+)-([\d.]+)$/.exec(c.si); return m && r >= +m[1] && r <= +m[2]; }); if (c) { niv = c.niveau; info = l.calcul === "lignes" ? nL + " lignes" : e + " faute" + (e > 1 ? "s" : "") + " pour " + nL + " lignes"; fait = String(c.fait || "").replace(/\{n\}/g, nL).replace(/\{e\}/g, e); } } }
     else { const S = stComptent(l.id); if (S.length) { const p = S.filter(x => (D[x.id] || {}).v === "o").length; niv = stNiveau(l.id, p); info = p + " sur " + S.length; } }
-    const pts = niv == null ? 0 : stPoints(l.id, niv); n += pts; det.push({ ligne: l.id, titre: l.titre, niveau: niv, points: pts, sur: l.poids, info }); });
+    const pts = niv == null ? 0 : stPoints(l.id, niv); n += pts; det.push({ ligne: l.id, titre: l.titre, niveau: niv, points: pts, sur: l.poids, info, fait }); });
   return { n, tot, det };
 }
 function stBandeCompte(k, ligne) { const S = stComptent(ligne), D = scCopie(k).stickers || {}, p = S.filter(x => (D[x.id] || {}).v === "o").length, niv = stNiveau(ligne, p), l = stLigne(ligne); return l ? escapeHtml(l.titre) + " : " + p + " sur " + S.length + " → " + stNb(stPoints(ligne, niv)) + " / " + stNb(l.poids) + " pt" : ""; }
@@ -262,10 +264,12 @@ function stEleve(k, ordre) {
   const nt = stNoteCopie(k), det = {}; nt.det.forEach(x => { det[x.ligne] = x; });
   const st = []; Object.keys(D).forEach(id => { const d = D[id]; if (d.v !== "o") return; const S = stTous().find(x => x.id === id); if (!S) return; const m = d.marque && s.marques[d.marque], l = stLigne(S.ligne);
     st.push({ id, texte: S.texteEleve, ligne: S.ligne, crit: l ? l.crit : null, page: m ? ordre.indexOf(m.page) : -1, x0: m ? m.x0 : 0, y0: m ? m.y0 : 0, x1: m ? m.x1 : 0, y1: m ? m.y1 : 0 }); });
+  const R = stRqEleve(k, ordre), rqDe = {}; R.groupes.forEach(g => g.l.forEach(x => { rqDe[x.st] = { n: g.n }; })); R.grille.forEach(x => { rqDe[x.st] = { r: x.r }; });
   const grille = stSujetLignes().map(l => { const S = stDeLigne(l.id).filter(x => x.etat === "valide"), x = det[l.id] || {};
-    return { id: l.id, crit: l.crit, critNom: l.critNom, titre: l.titre, poids: l.poids, points: x.points || 0, niveau: x.niveau == null ? null : x.niveau, calcul: l.calcul,
-      reussis: S.filter(y => (D[y.id] || {}).v === "o").map(y => y.texteEleve), manquent: S.filter(y => !y.neCompte && (D[y.id] || {}).v !== "o").map(y => y.texteEleve) }; });
-  return { stickers: st, grille, note: stFinie(k) ? Math.round(nt.n * 100) / 100 : null, total: nt.tot };
+    return { id: l.id, crit: l.crit, critNom: l.critNom, titre: l.titre, eleve: stConf(l.id).eleve || "", poids: l.poids, points: x.points || 0, niveau: x.niveau == null ? null : x.niveau, calcul: l.calcul, fait: x.fait || "",
+      echelle: stEchelle(l), reussis: S.filter(y => (D[y.id] || {}).v === "o").map(y => y.texteEleve),
+      manquent: S.filter(y => !y.neCompte && (D[y.id] || {}).v !== "o").map(y => Object.assign({ texte: y.texteManque || y.texteEleve }, rqDe[y.id] || {})) }; });
+  return { stickers: st, grille, note: stFinie(k) ? Math.round(nt.n * 100) / 100 : null, total: nt.tot, reprendre: R.groupes };
 }
 /* la note et les critères d'une copie corrigée avec les stickers, pour le Bilan et les fichiers ; une copie corrigée avec les 51 questions garde les siens */
 function stNoteBilan(k) { const nt = stNoteCopie(k); return { n: nt.n, tot: nt.tot, ok: stFinie(k), det: nt.det }; }
@@ -300,4 +304,76 @@ function stSiNotesChangent(simuler, faire, quoi) {
   ST.enAttente = faire;
   scModale(`<h3>${escapeHtml(quoi)} change la note de ${D.length} copie${D.length > 1 ? "s" : ""} déjà corrigée${D.length > 1 ? "s" : ""}</h3><table class="sc-table"><tr><th>Élève</th><th>Avant</th><th>Après</th></tr>${D.map(k => `<tr><td>${escapeHtml(nomEleveDe(k) || k)}</td><td>${stNb(avant[k])}</td><td>${stNb(apres[k])}</td></tr>`).join("")}</table><p>Rien ne change tant que tu n’appliques pas.</p>`
     + `<button class="sc-btn" onclick="scModaleFermer();if(ST.enAttente)ST.enAttente();ST.enAttente=null;stRendre()" title="Appliquer le changement : ces notes changent.">Appliquer</button> <button class="sc-btn" onclick="scModaleFermer();ST.enAttente=null;stRendre()" title="Ne rien changer.">Annuler</button>`);
+}
+
+/* ═══ [C14 1.4.17] L'ÉCHELLE ET LES REMARQUES (Paul 01/11 14:19 : « les mal faits […] et les manquants peuvent simplement être des numéros dans la marge des lignes
+   concernées et au clic l'élève voit la remarque rédigée par l'IA, sous sa phrase recopiée » ; 14:27 : « Il faut cadrer au prompt le format d'une remarque » ;
+   15:09 : « l'élève doit voir son échelle descriptive d'un coup d'oeil » ; « applique ce que tu as toi même rédigé pour le prompt » : C14 451).
+   Une remarque par sticker non réussi, sur une ligne ou pour la grille ; tu les relis en une liste à la fin de la bande, sans arrêt (C14 436) ;
+   l'élève ne lit que celles que tu as gardées, et jamais celle d'un sticker réussi depuis (C14 448). ═══ */
+const RC_CONSIGNE_REMARQUES = " Ensuite, pour chaque sticker de la grille qui n'est pas réussi, écris une remarque à l'élève, une seule par sticker. Tutoie-le. Deux phrases au plus, quarante mots au plus, avec des mots qu'un élève de 3e comprend sans aide. La première phrase dit ce qui ne va pas, en citant ses mots exacts entre guillemets. La seconde dit ce qu'il peut faire, sans jamais écrire la phrase corrigée à sa place. N'emploie que les mots de grammaire de la grille et du sujet. Ne juge jamais l'élève lui-même et ne parle pas de note. Si le sticker est raté à plusieurs endroits, choisis le plus net. S'il manque et qu'une ligne est l'endroit où il aurait sa place, donne cette ligne ; sinon, ne donne pas de ligne. N'écris jamais de remarque sur un sticker réussi. Ajoute au JSON \"aReprendre\":{\"identité de la copie (son champ copie)\":[{\"s\":\"S40\",\"l\":\"identifiant de la ligne\",\"m\":\"les mots exacts visés\",\"r\":\"la remarque\"},{\"s\":\"S13\",\"r\":\"la remarque\"},{\"s\":\"fin\"}]} : les mots exacts sont recopiés tels qu'ils sont dans la ligne reçue, de un à douze mots qui se suivent ; termine toujours la liste de chaque copie par {\"s\":\"fin\"}.";
+/* l'échelle d'une ligne, pour l'élève : une ligne à stickers se lit en stickers réussis (« 5 sur 6 ») ; une ligne calculée, avec les phrases de sa grille */
+function stEchelle(l) {
+  const out = [0, 1, 2, 3].map(n => ({ n, texte: "", points: stPoints(l.id, n) }));
+  if (l.calcul) { const g = SUJET && SUJET.grille2, pt = ((g && g.criteres) || []).flatMap(c => c.points || []).find(p => p.id === l.id), lg = typeof scLong === "function" ? scLong() : 30;
+    ((pt && pt.cases) || []).forEach(c => { const m = /^calc:(\w+):([\d.]+)-([\d.]+)$/.exec(c.si || ""); if (!m) return; const a = +m[2], b = +m[3]; let x;
+      if (m[1] === "lignes") { const lo = Math.ceil(a * lg - 1e-6), hi = Math.floor(b * lg + 1e-6); x = b >= 50 ? "plus de " + (lo - 1) + " lignes" : a <= 0 ? "moins de " + (hi + 1) + " lignes" : lo + " à " + hi + " lignes"; }
+      else { const f = String(c.fait || ""), i = f.indexOf(":"); x = (i >= 0 ? f.slice(i + 1) : f).trim().replace(/\.$/, "").replace(/\bune\b/, "une erreur"); }
+      const o = out[c.niveau]; if (o && x) o.texte = o.texte ? o.texte + " ou " + x : x; });
+    return out; }
+  const n = stComptent(l.id).length; if (!n) return out; const [a, b, c] = stSeuils(l.id);
+  const r = (hi, lo) => { hi = Math.min(n, hi); lo = Math.max(0, lo); return hi < lo ? "" : hi === lo ? hi + " sur " + n : lo === 0 ? hi + " ou moins sur " + n : hi === lo + 1 ? lo + " ou " + hi + " sur " + n : lo + " à " + hi + " sur " + n; };   // hi, lo : stickers réussis
+  out[3].texte = r(n, n - a); out[2].texte = b > a ? r(n - a - 1, n - b) : ""; out[1].texte = c > b ? r(n - b - 1, n - c) : ""; out[0].texte = r(n - c - 1, 0);
+  return out;
+}
+/* le retour de l'IA : les remarques de chaque copie ; refusées : celle d'un sticker réussi, celle posée sur la ligne d'une autre copie */
+function stIARemarques(o, copiesOk) {
+  const R = o.aReprendre || {}, quand = new Date().toISOString(); let copies = 0, n = 0, refusReussi = 0, horsCopie = 0, inconnus = 0, longues = 0;
+  copiesOk.forEach(k => { const c = state.copies[k] || {}, L = R[c.id]; if (!Array.isArray(L)) return; const ici = {}; rcLignesEcrites(k).forEach(x => { ici[x.id] = x; });
+    const s = scCopie(k), ia = (((s.recopie || {}).stickersIA || {}).liste) || [], dec = s.stickers || {}, reussi = id => ia.some(e => e.st === id) || (dec[id] || {}).v === "o";
+    const liste = [], vu = new Set(); let complet = false;
+    L.forEach(e => { if (!e || typeof e.s !== "string") return; if (e.s === "fin") { complet = true; return; }
+      const st = stParNum(e.s) || stActifs().find(x => x.id === e.s); if (!st) { inconnus++; return; } const r = String(e.r || "").trim(); if (!r || vu.has(st.id)) return;
+      if (reussi(st.id)) { refusReussi++; return; } vu.add(st.id); const longue = r.split(/\s+/).length > 40; if (longue) longues++;
+      if (!e.l) { liste.push({ st: st.id, num: st.num, r, grille: true, longue }); return; }
+      const x = ici[e.l]; if (!x) { horsCopie++; return; } const t = e.m ? stTrouverMots(x.l.texte, e.m) : null;
+      liste.push(Object.assign({ st: st.id, num: st.num, l: x.id, pid: x.pid, r, mots: String(e.m || "").slice(0, 200), longue }, t ? { de: t.de, a: t.a } : { sansPlace: true })); });
+    s.recopie = s.recopie || {}; s.recopie.remarquesIA = { le: quand, complet, relu: null, liste }; copies++; n += liste.length; });
+  return { copies, n, refusReussi, horsCopie, inconnus, longues };
+}
+function stRq(k) { const r = (scCopie(k).recopie || {}).remarquesIA; return r && Array.isArray(r.liste) ? r : null; }
+function stRqVisibles(k) { const r = stRq(k); if (!r || !r.relu) return []; const D = scCopie(k).stickers || {}; return r.liste.filter(e => e.etat !== "retire" && (D[e.st] || {}).v !== "o"); }
+function stRqARelire(k) { const r = stRq(k); return !!(r && !r.relu && r.liste.length); }
+function stRqGarder(k) { const r = stRq(k); if (!r) return; r.relu = new Date().toISOString(); saveState(); }
+function stRqRetirer(k, i) { const r = stRq(k); if (!r || !r.liste[i]) return; if (r.liste[i].etat === "retire") delete r.liste[i].etat; else r.liste[i].etat = "retire"; saveState(); if (RC.bd) rcBandeRendre(); }
+function stRqTexte(k, i, v) { const r = stRq(k), t = String(v || "").trim(); if (!r || !r.liste[i] || !t || t === r.liste[i].r) return; Object.assign(r.liste[i], { r: t, deProf: true, longue: t.split(/\s+/).length > 40 }); saveState(); }
+/* la relecture, à la fin de la bande : la liste entière ; Entrée (ou « ✓ Je les garde ») les garde toutes ; ✕ en retire une ; le texte se corrige en place */
+function stRqRelecture(k) {
+  const r = stRq(k); if (!r || !r.liste.length) return "";
+  const D = scCopie(k).stickers || {}, L = rcLignesEcrites(k);
+  return '<div class="st-rq-tete"><b>Les remarques de l’IA · ' + r.liste.length + "</b> <span>" + (r.relu ? "✓ relues à " + escapeHtml(rcHeure(r.relu)) + " : l’élève lit celles qui restent." : "À relire : l’élève ne les lit qu’après ton <kbd>Entrée</kbd>.") + "</span>"
+    + (r.relu ? "" : '<button class="sc-btn" onclick="stRqGarder(RC.bd.k);rcBandeRendre()" title="Garder toutes les remarques qui restent : l’élève les lira dans son fichier (Entrée).">✓ Je les garde (Entrée)</button>') + "</div>"
+    + r.liste.map((e, i) => { const st = stTous().find(x => x.id === e.st), x = e.l && L.find(y => y.id === e.l), reussi = (D[e.st] || {}).v === "o", c = st ? stCouleur(st) : "#6b7280";
+      return '<div class="st-rq' + (e.etat === "retire" || reussi ? " off" : "") + '" style="--st-c:' + c + '"><div class="st-rq-h"><b>' + escapeHtml(e.num || "") + "</b><span>" + escapeHtml(st ? (st.texteManque || st.texteEleve) : "") + "</span><small>" + (x ? "ligne " + (L.indexOf(x) + 1) + (e.mots ? " · « " + escapeHtml(e.mots) + " »" : "") : "dans la grille") + (e.longue ? " · plus de quarante mots" : "") + (reussi ? " · réussi depuis : elle ne part pas" : e.etat === "retire" ? " · retirée" : "") + "</small>"
+        + '<button class="sc-btn" onclick="stRqRetirer(RC.bd.k,' + i + ')" title="' + (e.etat === "retire" ? "Remettre cette remarque : l’élève la lira." : "Retirer cette remarque : l’élève ne la lira pas. Rien n’est effacé.") + '">' + (e.etat === "retire" ? "↺ Remettre" : "✕ Retirer") + "</button></div>"
+        + '<textarea rows="2" onchange="stRqTexte(RC.bd.k,' + i + ',this.value)" title="La remarque que l’élève lira. Corrige-la ici : ton texte remplace celui de l’IA.">' + escapeHtml(e.r) + "</textarea></div>"; }).join("");
+}
+/* la phrase de l'élève qui contient le passage, telle que tu l'as recopiée (les lignes de la copie, bout à bout) : avant, le passage, après */
+function stPhraseRecopiee(k, id, de, a) {
+  const L = rcLignesEcrites(k); let T = "", deb = -1, fin = -1, entiere = false;
+  L.forEach(x => { const t = x.l.texte || ""; if (T) T += " "; const o = T.length; if (x.id === id) { const P = rcPosMots(t); if (de != null && a > de && P[de] && P[a - 1]) { deb = o + P[de][0]; fin = o + P[a - 1][1]; } else { deb = o; fin = o + t.length; entiere = true; } } T += t; });
+  if (deb < 0) return null; let s = deb; while (s > 0 && !/[.!?…]/.test(T[s - 1])) s--; let e = fin; while (e < T.length && !/[.!?…]/.test(T[e - 1])) e++;
+  return entiere ? { avant: T.slice(s, e).trim(), passage: "", apres: "" } : { avant: T.slice(s, deb).replace(/^\s+/, ""), passage: T.slice(deb, fin), apres: T.slice(fin, e) };
+}
+/* les remarques gardées, pour le fichier de l'élève : un numéro par ligne, dans l'ordre de la copie ; celles sans ligne vont dans la grille */
+function stRqEleve(k, ordre) {
+  const L = rcLignesEcrites(k), par = {}, grille = [], docs = (scCopie(k).recopie || {}).pages || {};
+  stRqVisibles(k).forEach(e => { const st = stTous().find(x => x.id === e.st); if (!st) return; const lg = stLigne(st.ligne), it = { st: e.st, ligne: st.ligne, crit: lg ? lg.crit : null, attendu: st.texteManque || st.texteEleve, r: e.r };
+    const x = e.l && L.find(y => y.id === e.l); if (!x || ordre.indexOf(x.pid) < 0) { grille.push(it); return; }
+    const d = (RC.copie === k && RC.documents && RC.documents[x.pid]) || docs[x.pid], en = typeof rcEncre === "function" ? rcEncre(x.pid, x.l, d) : null;
+    if (e.de != null && e.a > e.de && !e.sansPlace) { const q = rcPlaceSeg({ k, pid: x.pid, id: x.id, l: x.l, g: { de: e.de, a: e.a, de2: e.de, a2: e.a, eleve: "x", corrige: "x" }, cle: "rq:" + e.st, rq: true }); Object.assign(it, { x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1 }); }
+    it.phrase = stPhraseRecopiee(k, x.id, e.de, e.a);
+    const y = en && en.corps ? (en.corps[0] + en.corps[1]) / 2 : (x.l.y0 + x.l.y1) / 2 - 0.012, g = par[x.id] = par[x.id] || { id: x.id, page: ordre.indexOf(x.pid), y, l: [] }; g.l.push(it); });
+  const groupes = Object.values(par).sort((a, b) => a.page - b.page || a.y - b.y); groupes.forEach((g, i) => { g.n = i + 1; });
+  return { groupes, grille };
 }

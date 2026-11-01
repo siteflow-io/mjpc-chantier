@@ -32,3 +32,71 @@
 01/11/2026 19:24
 
 MEMO
+
+## Tour 2 — 01/11/2026 19:55 → 01/11/2026 20:07 (interrompu par Paul)
+
+**Paul (19:55) :** 3. oui mais ça ne télescope pas. dorénavant je veux le fonctionnement que je viens de décrire: tout ce qui arrive au tableau l'est par un dévoiler. et ensuite si je reviens en arrière ça revoile. C'est tout. En fait, il faut même aller plus loin: en réalité le dévoilement revoilement ce sont des choses qui viennent de ppt. c'est l'animation fondu.  donc ce qui manque dans le déroulé, c'est quatre ou cinq animations qui me permettent d'animer ou non le texte ou les objets, diapo par diapo.  Et oui, c'est la seconde dette la plus bloquante car c'est demain que je joue en classe.
+
+**Claude (19:58, message envoyé pendant le travail) :**
+
+À jouer : rien · en cours : la maquette du bloc question (le vrai site, l'ordre nouveau écrit dedans), captures dans la foulée · ouvert : 11 à 15
+
+9. Noté pour ta première dette, mot pour mot : tout ce qui arrive au tableau y arrive par un « dévoiler », et revenir en arrière revoile ; c'est l'animation « fondu » de PowerPoint, et il manque au déroulé quatre ou cinq animations pour animer ou non le texte et les objets, diapo par diapo. Je l'écris au registre avec les deux dettes du point 8. On la cadre après ton cours de demain, une question à la fois.
+
+10. Ce soir, la seconde dette. Je te propose ceci, à valider par numéro.
+
+11. Au tableau et sur ton écran, le bloc question se lit dans cet ordre : la question ; puis les réponses des élèves, au fil de ta frappe ; tout en bas, la réponse préparée, qui n'arrive au tableau qu'à ta flèche. Une réponse d'élève tapée après s'ajoute avec les autres, au-dessus de la réponse préparée : le bloc ne change jamais d'ordre.
+
+12. Sur ton écran, la réponse préparée reste visible en gris pâle, en bas, dès le départ, pour que tu l'aies sous les yeux pendant la mise en commun. La flèche ne change pas : la question, puis la réponse préparée.
+
+13. Dans l'Atelier, le formulaire « + Question » garde ses deux champs ; seuls le mot et l'infobulle changent : « La réponse préparée — elle s'affiche après la participation des élèves ».
+
+14. Le récit et le papier ne bougent pas.
+
+15. Pour demain : captures ce soir, ton « ok », un exécutant code et prouve par le geste, mon banc complet, captures avant et après, ton « promeus », puis tu testes en mode test avant le cours. À quelle heure joues-tu demain avec le déroulé ?
+
+**Fait (19:58 → 20:07).** Registre (prod `078536f`) : la dette ① cadrée par Paul, mot pour mot ; les deux dettes trouvées en mesurant (point 8, non commenté, donc acquis). Maquette au sas, branche `deroule/question-ordre` (sur `integration` `d40d567`, dont l'assemblé = la 8.77.0-⑩ à la ligne `APP_VERSION` près) : `rendre` écrit la réponse préparée après les réponses des élèves et la ligne libre, le fil inchangé ; les libellés de l'Atelier (formulaire, refus, carte, type). Captures par le geste (le parcours P0-P5 de la n°13, puis la question : mode test, 3E Charles de Gaulle, 14/09 09:00, heure 2, diapo « Où en sommes-nous ? », trois réponses réalistes), sur la production et sur la maquette, regardées une à une ; envoyées à Paul (non poussées : elles portent les initiales de la classe test) : `c16-01-before-pilot.png`, `c16-02-after-pilot.png`, `c16-03-before-board.png`, `c16-04-after-board.png`, `c16-05-after-atelier.png`, légende : « Mode test, 3E Charles de Gaulle, la même heure jouée deux fois par les mêmes gestes. 01-02 : ton écran avant / après, trois élèves ont répondu. 03-04 : le tableau avant / après ta flèche sur la réponse préparée. 05 : l'Atelier, « + bloc » → Question, après. » Mandat écrit au sas (`MANDATS/DEROULE-01-11/MANDAT-QUESTION-ORDRE.md`), pas lancé. La réponse finale du tour n'a pas été envoyée : Paul a interrompu à 20:07.
+
+## Tour 3 — 01/11/2026 20:07 → 01/11/2026 20:40
+
+**Paul (20:07) :** ok promeus
+
+**Claude (20:08, message envoyé pendant le travail) :**
+
+À jouer : rien encore · en cours : le banc complet sur la maquette, puis la mise en ligne · ouvert : 15
+
+16. Reçu. Je passe d'abord le banc complet du déroulé et les cas qui risquent de casser en classe (une réponse tapée après la réponse préparée, ◀, une question qui déborde sur deux pages, la question du bilan, le récit identique à avant). S'il est vert, je mets en ligne sans te redemander ; s'il est rouge, rien ne part et je te dis pourquoi. Quelques minutes.
+
+**Fait (20:08 → 20:40).** Banc complet sur la branche : VERT (parcours ×2, K1-K13 106/0, sonde-1262 52/52, sonde-1266 27/0, sonde-10 51/0). Sonde par le geste de la conscience (`sonde-question.mjs`) : VERTE sur la candidate (S1 l'ordre au tableau et au pilote, S2 une quatrième réponse après la réponse préparée, S3 ◀ la revoile, S4 le bloc sur deux pages, le tableau montre la page de la réponse préparée), ROUGE sur la 8.77.0-⑩ (elle voit donc la dette) ; le texte du récit identique entre les deux (2 504 octets). Les trois premières versions de la sonde lisaient mal le tableau (un `.mur` vide pris avant `#mur2`, un compte de pages mal écrit) : défauts de la sonde, corrigés, pas du site. Rien de ce qui suppose l'ordre ancien (CSS d'adjacence, voisins) dans les modules. Lus dans le code, pas joués : la question du bilan, la répétition, deux questions sur une diapo. Mise en ligne : point de retour d'abord (prod `dceede3`), puis `index.html` 8.77.1-⑩ (commit `c569a6d`, blob `422011fbb3fd`, md5 `db481a8725124c7782c031e9e6485e82`, 2 710 427 o ; diff avec la ⑩ : les seules lignes voulues) ; bit à bit au dépôt et à l'adresse publique à 20:24. Docs (prod `90c28bc`) : journal, registre (état de production, ② ✔), « où trouver quoi », index des fonctions régénéré (seules les tailles de `rendre` et `formulaireObjet` changent, toutes deux en hausse). Sas : la sonde dans le banc unique (étape 9), le mandat clos sans exécutant. Puis le banc unique rejoué avec la sonde : VERT (étape 9 : 33 vérifications ok, 0 échec). La branche `deroule/question-ordre` versée dans `integration` (avance rapide, `fc036e8`).
+
+**Claude :**
+
+À jouer : la 8.77.1-⑩, ce soir, en mode test · en cours : rien · ouvert : 15
+
+17. C'est en ligne : la 8.77.1-⑩, vérifiée à l'identique au dépôt et à l'adresse du site à 20:24. Le bloc question se lit maintenant ainsi : la question, les réponses des élèves, puis la réponse préparée tout en bas, qui n'arrive au tableau qu'à ta flèche.
+
+18. Avant la mise en ligne, tout est passé au vert : le banc complet du déroulé, et une vérification par le geste, verte sur la nouvelle version et rouge sur l'ancienne. Elle joue l'ordre au tableau et sur ton écran ; une réponse d'élève tapée après la réponse préparée, qui se range au-dessus d'elle ; ◀ qui la revoile ; une question si longue qu'elle passe sur deux pages, où le tableau montre bien la page de la réponse préparée. Le récit de l'heure est mot pour mot le même qu'avant.
+
+19. Trois cas lus dans le code mais pas joués : la question du bilan, la répétition, une diapo à deux questions. Je ne les ai pas vus à l'écran ; ils sont dans tes tests ci-dessous.
+
+20. Si un test de ce soir ne va pas, le retour à la 8.77.0-⑩ est écrit et prend une minute.
+
+21. La suite, après ton cours : ta première dette, « tout par un dévoiler », et les animations ; je te la cadre une question à la fois.
+
+15. À quelle heure joues-tu demain avec le déroulé ?
+
+À tester (ce soir, mode test, classe test 3E Charles de Gaulle) :
+1. Ouvre https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.77.1 , panneau prof, allume le mode test.
+2. Lance une heure de la classe test depuis l'emploi du temps, puis « 🖥 Ouvrir le tableau ».
+3. Avance à la flèche jusqu'à une diapo à question : au tableau, la question seule.
+4. Tape deux réponses d'élèves (initiales, réponse, Entrée) : au tableau, elles s'écrivent sous la question, sans la réponse préparée ; sur ton écran, la réponse préparée est grisée tout en bas.
+5. Flèche : la réponse préparée arrive au tableau, sous les réponses des élèves.
+6. Tape une troisième réponse : elle se range avec les autres, au-dessus de la réponse préparée.
+7. ◀ : la réponse préparée quitte le tableau, les réponses des élèves restent.
+8. Dans l'Atelier, « ▶ Jouer en avance » sur une diapo à question : le même ordre.
+9. La diapo du bilan (une question sans réponse préparée) : rien sous la question, les réponses viennent directement dessous.
+10. Atelier, « + bloc » → Question : le second champ dit « La réponse préparée — elle s'affiche après la participation des élèves ».
+
+01/11/2026 20:40
+
+MEMO

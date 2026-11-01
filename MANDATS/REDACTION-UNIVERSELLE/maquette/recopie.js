@@ -110,6 +110,7 @@ function rcInterface() {
     '<button id="rcCopieAvant" class="sc-btn" title="Recopier la copie précédente ; la saisie en cours est gardée.">← Copie</button>',
     '<button id="rcCopieSuite" class="sc-btn" title="Recopier la copie suivante ; la saisie en cours est gardée.">Copie →</button>',
     '<label>Page <select id="rcPage" title="Choisir une page de cette copie. Chaque page garde ses lignes et sa saisie."></select></label>',
+    '<output id="rcChrono" title="Ton temps sur cette copie, compté seul : à la recopie, puis dans la bande. Une minute sans geste ne compte pas ; la frappe compte. Le total de la classe est dans « 📋 Le flux »."></output>',
     '<output id="rcEtat" role="status"></output></header>',
     '<div class="rc-outils"><span id="rcCompte"></span>',
     '<button id="rcAjouter" class="sc-btn" title="Ajouter une ligne après la ligne en cours. Recale ses deux poignées avant de taper.">＋ Une ligne</button>',
@@ -123,7 +124,7 @@ function rcInterface() {
     '<button id="rcImportIA" class="sc-btn" title="Coller ou choisir le retour de l’IA. L’app vérifie que toutes les lignes correspondent avant de rien changer.">⇩ Charger le corrigé de l’IA</button><button id="rcFluxOuvrir" class="sc-btn" title="Le flux de la classe : pour chaque copie, ce qui est recopié, envoyé à l’IA, chargé, et où en est la bande, avec l’heure de chaque étape.">📋 Le flux</button><span id="rcIAEtat" class="rc-ia-etat"></span>',
     '<button id="rcPhraseOuvrir" class="sc-btn" title="La fin de la recopie de cette copie : surligne la phrase qui t’a marqué (clic sur son premier mot, puis sur son dernier), ou coche « Pas de phrase ». Elle passe en or sur la copie de l’élève. Le flux ne coche « recopiée » qu’après.">★ La phrase qui m’a marqué</button>',
     '<button id="rcBandeOuvrir" class="sc-btn" title="La bande : elle s’arrête à chaque faute proposée par le corrigé de l’IA. Entrée ou Espace : c’est une faute ; N : non. Échap : revenir à la recopie.">▶ La bande</button>',
-    '<button id="rcRemplacer" class="sc-btn" title="Remplacer la photo de cette page par une meilleure (une photo, ou un PDF d’une page). La feuille garde son identité : ta recopie reste et se recale sur la nouvelle photo, les cadres de la bande se replacent.">📷 Remplacer la photo</button>',
+    '<button id="rcPhotoOuvrir" class="sc-btn" title="Les outils de la photo de cette page, des gestes rares : la remplacer, la tourner, la retoucher, changer l’ordre des pages, retirer les photos de ce navigateur.">📷 La photo</button>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
     '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand va de la marge rouge au bord de la copie.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
@@ -131,7 +132,14 @@ function rcInterface() {
     '<p id="rcMessage" class="rc-message"></p>',
     '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b><button id="rcStPlus" class="sc-btn" title="Poser un sticker que l’IA n’a pas vu : sur le mot où tu es (mot par mot), ou sur le passage de l’arrêt en cours. Seuls les stickers validés se posent.">＋ Un sticker</button></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo" title="Glisse le cadre pour le déplacer. Double clic sur le cadre : deux poignées, une de chaque côté, pour régler sa longueur ; encore un double clic les retire. Clic droit sur le cadre : une faute de ta recopie."></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div><div id="rcRqListe" class="st-rq-liste" hidden></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
     '<div id="rcPhrase" class="rc-ia" hidden><div class="rc-ia-c rc-phrase-c" role="dialog" aria-label="La phrase qui m’a marqué"><b>La phrase qui m’a marqué</b><span>Clique le premier mot de la phrase : il s’écrit en dessous. Clique le dernier : toute la phrase s’écrit d’un coup. Un autre clic recommence. Elle passera en or sur la copie de l’élève. C’est la fin de la recopie de cette copie : sans elle (ou « Pas de phrase »), tu ne passes pas à la copie suivante.</span><div id="rcPhraseTexte" class="rc-phrase-t"></div><div id="rcPhraseChoix" class="rc-phrase-choix" aria-live="polite"></div><div class="rc-ia-b"><label class="rc-phrase-non" title="Aucune phrase ne t’a marqué dans cette copie : la recopie est finie quand même.">' + '<input type="checkbox" id="rcPhraseAucune"> Pas de phrase</label><button id="rcPhraseOui" class="sc-btn" disabled title="Choisis d’abord le premier et le dernier mot de la phrase.">✓ C’est elle</button><button id="rcPhraseFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
-    '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
+    '<div id="rcPhotoF" class="rc-ia" hidden><div class="rc-ia-c rc-photo-c" role="dialog" aria-label="La photo de cette page"><b>📷 La photo</b><span id="rcPhotoQui"></span><div class="rc-photo-b">',
+    '<button id="rcRemplacer" class="sc-btn" title="Remplacer la photo de cette page par une meilleure (une photo, ou un PDF d’une page). La feuille garde son identité : ta recopie reste et se recale sur la nouvelle photo, les cadres de la bande se replacent.">📷 Remplacer</button>',
+    '<button id="rcPhTourner" class="sc-btn" title="Tourner cette page d’un quart de tour vers la droite (une photo prise de côté). Ta recopie, tes marques et les cadres tournent avec elle.">↻ Tourner</button>',
+    '<button id="rcPhRetoucher" class="sc-btn" title="Retoucher cette page comme une photo : le cadre (ce qui dépasse disparaît de la copie et du fichier de l’élève) et la rotation degré par degré. Ta recopie et tes marques suivent leurs mots.">✂ Retoucher</button>',
+    '<button id="rcPhOrdre" class="sc-btn" title="La dernière page de cette copie passe en premier (une copie photographiée dans le désordre). Chaque page garde sa recopie.">⇄ Ordre des pages</button>',
+    '<button id="rcPhRetirer" class="sc-btn" title="Retirer les photos de cette copie de ce navigateur seulement. Une confirmation est demandée. Ta recopie, ta correction et tes marques restent au site.">🗑 Retirer les photos</button></div>',
+    '<p id="rcPhotoPourquoi" class="rc-photo-pq"></p><div class="rc-ia-b"><button id="rcPhotoFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
+    '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcSauvegarde" class="sc-btn" title="Télécharger la sauvegarde de toute la rédaction, telle qu’elle est au site : le sujet et sa grille de stickers, les copies (recopie, envois, corrigés, bande, stickers, remarques, temps), les pages du paquet, les retours des élèves. « 📤 Restaurer » la relit. Les photos n’y sont pas : elles ne quittent jamais ce navigateur.">💾 Télécharger la sauvegarde</button><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
     '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
     '<textarea id="rcIATexte" spellcheck="false" placeholder="Colle ici le retour de l’IA"></textarea>',
     '<div class="rc-ia-b"><label class="sc-btn" title="Choisir le fichier rendu par l’IA, ou tous ses fichiers d’un coup : ils se chargent l’un après l’autre, dans n’importe quel ordre.">Choisir un ou plusieurs fichiers<input id="rcIAFichier" type="file" multiple accept=".json,.txt,application/json,text/plain" hidden></label><button id="rcIAValider" class="sc-btn" title="Vérifier toutes les lignes, puis enregistrer le corrigé">Vérifier et charger</button><button id="rcIAFermer" class="sc-btn" title="Fermer sans rien changer (Échap)">Fermer</button><button id="rcIAEffacer" class="sc-btn rc-ia-effacer" title="Effacer, sur toute la classe, le corrigé de l’IA et tout ce qui vient de la bande (décisions, marques posées par la bande, cadres visés), pour tout refaire proprement. Ta recopie ne bouge pas. Une confirmation est demandée ; tout passe d’abord par la corbeille MJPC et un export.">🗑 Tout effacer : corrigés de l’IA et bande</button></div><p id="rcIAMessage" role="status"></p><div id="rcIAEffacerQ" class="rc-ia-q" hidden></div></div></div>'
@@ -157,8 +165,13 @@ function rcInterface() {
   e.querySelector("#rcIAFermer").onclick = rcIAFermer;
   /* [C14 1.4.12] (exigences du 29/10 : « max 30 clics par copie » ; « mesurer le gain ») : le temps de recopie, le temps de bande et les gestes de chaque copie, comptés seuls */
   e.addEventListener("pointerdown", () => rcCompter("clic"), true); e.addEventListener("keydown", ev => rcCompter(ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie") ? "frappe" : "touche"), true); e.addEventListener("input", () => rcCompter("frappe"), true);
-  e.querySelector("#rcRemplacer").onclick = () => { if (RC.page) { rcGarder(); scRemplacerPage(RC.page); } };
-  e.querySelector("#rcFluxOuvrir").onclick = rcFluxOuvrir; e.querySelector("#rcFluxFermer").onclick = rcFluxFermer;
+  e.querySelector("#rcRemplacer").onclick = () => rcPhotoFaire(pid => scRemplacerPage(pid));
+  e.querySelector("#rcPhotoOuvrir").onclick = rcPhotoOuvrir; e.querySelector("#rcPhotoFermer").onclick = rcPhotoFermer;
+  e.querySelector("#rcPhTourner").onclick = () => rcPhotoFaire(pid => scTournerPage(pid));
+  e.querySelector("#rcPhRetoucher").onclick = () => rcPhotoFaire(pid => scRetoucher(pid));
+  e.querySelector("#rcPhOrdre").onclick = () => rcPhotoFaire(() => scOrdrePages(RC.copie));
+  e.querySelector("#rcPhRetirer").onclick = () => rcPhotoFaire(() => scRetirerPhotos());
+  e.querySelector("#rcFluxOuvrir").onclick = rcFluxOuvrir; e.querySelector("#rcFluxFermer").onclick = rcFluxFermer; e.querySelector("#rcSauvegarde").onclick = () => svTelecharger();
   e.querySelector("#rcPhraseOuvrir").onclick = rcPhraseOuvrir; e.querySelector("#rcPhraseFermer").onclick = rcPhraseFermer; e.querySelector("#rcPhraseOui").onclick = rcPhraseValider;
   e.querySelector("#rcPhraseAucune").onchange = ev => { if (ev.target.checked) rcPhraseAucune(); };
   e.querySelector("#rcIAEffacer").onclick = rcIAEffacerDemander;
@@ -237,14 +250,14 @@ function rcOuvrir(reprendre) {
   RC.ligne = r.ligne || null;
   const e = rcInterface(); e.hidden = false; document.body.classList.add("rc-ouvert");
   SC.copies.forEach(rcSeparerAnciens);   // [C14 1.4.5] les arrêts d'avant à plusieurs mots, coupés une fois pour toutes
-  rcActualiser(true); rcBookmark(); SC.actif = Date.now();
+  rcActualiser(true); rcBookmark(); SC.actif = Date.now(); if (typeof svBase === "function") svBase(); aidePoser("recopie");   // [C14 407]   // [C14] la sauvegarde se propose quand le paquet PASSE à « entièrement corrigé »
   rcSelectionner(RC.ligne, true, true);
   if (reprendre && dernier && dernier.bande && dernier.copie === RC.copie) rcBandeOuvrir(true);   // [C14 1.4.7] rechargée en mode bande : la bande, au même arrêt
 }
 function rcFermer(sansRendre) {
   if (!RC.ouvert) return; if (RC.bd) rcBandeFermer(true); RC.ouvert = false; RC.drag = null;
   if (RC.ui) RC.ui.hidden = true;
-  document.body.classList.remove("rc-ouvert"); SC.actif = Date.now(); rcBookmark();
+  document.body.classList.remove("rc-ouvert"); SC.actif = Date.now(); rcBookmark(); aidePoser(SC.ouvert ? "scan" : (SC.aideAvant || "correction"));
   if (!sansRendre) { scRendre(); scLignesAccueil(); }
 }
 function rcChoisirCopie(k) {
@@ -281,7 +294,7 @@ function rcActualiser(changer) {
   const d = rcDocument(p.id);
   if (!d.ordre.includes(RC.ligne)) RC.ligne = d.ordre[0] || null;
   const im = SC.imgs[p.id]; e.querySelector("#rcCharger").hidden = scPagesDe(RC.copie).every(q => SC.imgs[q.id]);
-  rcBlocs(); rcToutesPages(() => { rcRapprocherLignes(); rcMettreEnPage(); }); rcMarques(); rcEtatLigne();
+  rcBlocs(); rcToutesPages(() => { rcRapprocherLignes(); rcMettreEnPage(); }); rcMarques(); rcEtatLigne(); rcChronoRendre();
   if (changer) e.querySelector("#rcDefile").scrollTop = 0;
 }
 /* C14 (31/10, Paul 07:32) : une ligne prend toujours son rang (et son numéro) selon sa hauteur sur la photo */
@@ -747,7 +760,7 @@ function rcIAChargerSuite(txt) {
     Object.keys(x.l.marquesBande || {}).forEach(c => { const m = s.marques[x.l.marquesBande[c]]; if (m && m.bande && r.types && r.types[c]) m.bande.code = r.types[c]; });
     fautes += A.length; lignes++; }); });
   ok.forEach(k => { const s = scCopie(k), L = rcLignesEcrites(k); let f = 0, t = 0; L.forEach(x => rcArretsLigne(x.l).forEach(g => { f++; if (x.l.types && x.l.typesDe === x.l.corrige && x.l.types[rcCle(g)]) t++; })); s.recopie = s.recopie || {}; s.recopie.charge = { le: quand, fautes: f, types: t }; });   // [C14 1.4.11] le flux
-  saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre();
+  saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre(); if (typeof svVerifier === "function") svVerifier();
   const reste = coupees.length + changees.length, pl = (v, m) => v + " " + m + (v > 1 ? "s" : "");
   msg.textContent = "Chargé : " + pl(ok.length, "copie") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA" + (fautes ? ", dont " + typees + " avec leur type" + (sansLettre ? " (" + sansLettre + " sans lettre : le type du moteur)" : "") : "") + "."
     + (coupees.length ? " " + pl(coupees.length, "copie") + (o.coupe ? " coupée" + (coupees.length > 1 ? "s" : "") : " incomplète" + (coupees.length > 1 ? "s" : "")) + " : au prochain export." : "")
@@ -875,11 +888,11 @@ function rcPhraseValider() {
   const P = RC.phrase; if (!P || P.a < 0 || P.b < 0) return; const apres = RC.phraseApres; const k = P.k, a = Math.min(P.a, P.b), b = Math.max(P.a, P.b), W = P.W.slice(a, b + 1);
   rcPhrasePoser(k, a, b, P.W);
   const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), debut: { id: P.W[a].id, m: P.W[a].m }, fin: { id: P.W[b].id, m: P.W[b].m }, texte: rcTexteMots(W) };
-  saveState(); rcPhraseFermer(); rcEtatIA(); toast("La phrase qui t’a marqué est gardée : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite();
+  saveState(); rcPhraseFermer(); rcEtatIA(); toast("La phrase qui t’a marqué est gardée : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite(); if (typeof svVerifier === "function") svVerifier();
 }
 function rcPhraseAucune() {
   const P = RC.phrase; if (!P) return; const apres = RC.phraseApres; rcPhraseRetirer(P.k); const s = scCopie(P.k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), aucune: true };
-  saveState(); rcPhraseFermer(); rcEtatIA(); toast("Pas de phrase : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite();
+  saveState(); rcPhraseFermer(); rcEtatIA(); toast("Pas de phrase : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite(); if (typeof svVerifier === "function") svVerifier();
 }
 /* le temps compte comme le chrono des scans : une minute sans geste ne compte pas ; la frappe de la recopie compte du temps, pas des gestes */
 function rcCompter(type) {
@@ -888,10 +901,37 @@ function rcCompter(type) {
   if (RC.gesteCopie === RC.copie && d > 0 && d < 60000) T[lieu] = (T[lieu] || 0) + d;
   RC.dernierGeste = t; RC.gesteCopie = RC.copie;
   if (type !== "frappe") { const G = s.recopie.gestes = s.recopie.gestes || { recopie: 0, bande: 0 }; G[lieu] = (G[lieu] || 0) + 1; }
+  rcChronoRendre();
+}
+/* [C14 403] le chrono de la copie affichée, en haut de la recopie : il ne touche que son texte, jamais le focus */
+function rcDureeCourte(ms) { const s = Math.floor((ms || 0) / 1000); return s < 60 ? s + " s" : Math.floor(s / 60) + " min"; }
+function rcChronoRendre() {
+  if (!RC.ui || !RC.copie) return; const o = RC.ui.querySelector("#rcChrono"); if (!o) return;
+  const T = ((scCopie(RC.copie).recopie || {}).temps) || {}, txt = "⏱ recopie " + rcDureeCourte(T.recopie) + " · bande " + rcDureeCourte(T.bande);
+  if (o.textContent !== txt) o.textContent = txt;
 }
 function rcDuree(ms) { const s = Math.round((ms || 0) / 1000); return s < 60 ? s + " s" : Math.floor(s / 60) + " min" + (s % 60 ? " " + String(s % 60).padStart(2, "0") : ""); }
+/* [C14 402] un seul bouton « 📷 La photo » : une petite fenêtre avec les gestes rares de la photo ; un bouton grisé dit pourquoi, en dessous */
+function rcPhotoOuvrir() {
+  if (!RC.page) return; rcGarder(); RC.photoOuvert = true; const e = RC.ui, P = scPagesDe(RC.copie), i = P.findIndex(p => p.id === RC.page), p = SC.pages[RC.page] || {}, a = !!SC.imgs[RC.page], app = !!(p.lignes && p.lignes.reperes) || !!p.vueTournee, pq = [];
+  e.querySelector("#rcPhotoQui").textContent = "Page " + (i + 1) + " / " + P.length + " de la copie de " + (nomEleveDe(RC.copie) || RC.copie) + ". Ta recopie, tes marques et les cadres suivent toujours la page.";
+  const gris = (sel, non, pourquoi) => { const b = e.querySelector(sel); b.disabled = !!non; b.setAttribute("aria-disabled", non ? "true" : "false"); if (non) pq.push(b.textContent + " : " + pourquoi); };
+  gris("#rcPhTourner", !a, "la photo de cette page n’est pas dans ce navigateur (remets ton paquet, ou « 📷 Remplacer »).");
+  gris("#rcPhRetoucher", !a || app, !a ? "la photo de cette page n’est pas dans ce navigateur." : "une copie de l’appli se remet droite et se recadre d’elle-même.");
+  gris("#rcPhOrdre", P.length < 2, "cette copie n’a qu’une page.");
+  gris("#rcPhRetirer", !P.some(q => SC.imgs[q.id]), "aucune photo de cette copie n’est dans ce navigateur.");
+  e.querySelector("#rcPhotoPourquoi").textContent = pq.join(" · ");
+  e.querySelector("#rcPhotoF").hidden = false;
+}
+function rcPhotoFermer() { RC.photoOuvert = false; if (RC.ui) RC.ui.querySelector("#rcPhotoF").hidden = true; }
+function rcPhotoFaire(fn) { const pid = RC.page; if (!pid) return; rcGarder(); rcPhotoFermer(); fn(pid); }
 function rcFluxOuvrir() { if (RC.page) rcGarder(); RC.fluxOuvert = true; RC.ui.querySelector("#rcFlux").hidden = false; rcFluxRendre(); }
 function rcFluxFermer() { RC.fluxOuvert = false; RC.ui.querySelector("#rcFlux").hidden = true; }
+/* [C14 403] le total de la classe, sous le flux */
+function rcFluxTotal(F) {
+  const S = F.reduce((s, f) => { const T = f.temps || {}, G = f.gestes || {}; s.r += T.recopie || 0; s.b += T.bande || 0; s.g += (G.recopie || 0) + (G.bande || 0); return s; }, { r: 0, b: 0, g: 0 });
+  return '<tfoot><tr class="rc-flux-total"><td colspan="5">Toute la classe</td><td>recopie ' + rcDuree(S.r) + " · bande " + rcDuree(S.b) + " · " + S.g + " geste" + (S.g > 1 ? "s" : "") + "</td></tr></tfoot>";
+}
 function rcFluxRendre() {
   const t = RC.ui.querySelector("#rcFluxTable"), F = SC.copies.map(rcFluxCopie), ok = '<span class="rc-flux-ok">✓</span> ', non = '<span class="rc-flux-non">—</span>';
   t.innerHTML = '<table><thead><tr><th>Copie</th><th>Recopiée</th><th>Envoyée à l’IA</th><th>Corrigé chargé</th><th>Bande</th><th title="Comptés seuls : une minute sans geste ne compte pas ; la frappe de ta recopie compte du temps, pas des gestes.">Temps et gestes</th></tr></thead><tbody>' + F.map(f => '<tr data-k="' + escapeAttr(f.k) + '"' + (f.k === RC.copie ? ' class="on"' : "") + '><td>' + escapeHtml(f.nom) + "</td>"
@@ -899,7 +939,7 @@ function rcFluxRendre() {
     + "<td>" + (f.envoi ? (f.envoiAJour || f.charge ? ok : "⚠ ") + "envoi " + f.envoi.n + " · " + rcHeure(f.envoi.le) + (!f.envoiAJour && !f.charge ? " · retapée depuis" : "") : f.charge ? ok + "avant le flux" : non) + "</td>"
     + "<td>" + (f.charge ? ok + rcHeure(f.charge.le) + " · " + f.charge.fautes + " faute" + (f.charge.fautes > 1 ? "s" : "") + (f.charge.types != null ? ", " + f.charge.types + " avec leur type" : "") : f.envoi ? "en attente" : non) + (f.refus ? ' <span class="rc-flux-non">⚠ copie refusée ' + rcHeure(f.refus.le) + " : lignes mélangées par l’IA, au prochain export</span>" : "") + "</td>"
     + "<td>" + (f.arrets ? (f.fini ? ok : "") + f.decides + " / " + f.arrets : non) + "</td>"
-    + "<td>" + (f.temps || f.gestes ? "recopie " + rcDuree((f.temps || {}).recopie) + " · bande " + rcDuree((f.temps || {}).bande) + " · " + (((f.gestes || {}).recopie || 0) + ((f.gestes || {}).bande || 0)) + " gestes" : non) + "</td></tr>").join("") + "</tbody></table>";
+    + "<td>" + (f.temps || f.gestes ? "recopie " + rcDuree((f.temps || {}).recopie) + " · bande " + rcDuree((f.temps || {}).bande) + " · " + (((f.gestes || {}).recopie || 0) + ((f.gestes || {}).bande || 0)) + " gestes" : non) + "</td></tr>").join("") + "</tbody>" + rcFluxTotal(F) + "</table>";
   t.querySelectorAll("tr[data-k]").forEach(tr => tr.onclick = () => { const k = tr.dataset.k; rcFluxFermer(); const sel = RC.ui.querySelector("#rcCopie"); if (sel && sel.value !== k) { sel.value = k; sel.dispatchEvent(new Event("change")); } });
 }
 function rcCompteIA() {
@@ -1177,8 +1217,8 @@ function rcLigneMaj(k, pid, id, fn) { const pgs = (scCopie(k).recopie || {}).pag
 function rcNoteTexte(k) { const r = scNote(k); return r.ok ? (Math.round(r.n * 10) / 10) + " / " + r.tot : "incomplète"; }
 function rcBandeOuvrir(reprise) {
   if (RC.page && !reprise) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); rcLignesEcrites(k).forEach(x => rcRetroactif(k, x.pid, x.id)); const A = rcArretsBande(k);
-  if (!A.length) { toast("Pas de faute ni de sticker proposés sur cette copie : charge d’abord le corrigé de l’IA."); return; }
-  RC.bd = { k, i: 0, A }; rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
+  if (!A.length && !(typeof stRqARelire === "function" && stRqARelire(k))) { toast("Pas de faute ni de sticker proposés sur cette copie : charge d’abord le corrigé de l’IA."); return; }   // [C14] (trouvé par le banc de la sauvegarde) une copie sans arrêt mais avec des remarques de l'IA : la bande s'ouvre sur leur relecture, sinon l'élève ne les lirait jamais
+  RC.bd = { k, i: 0, A }; aidePoser("bande"); rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
   RC.ui.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(k); if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   rcReplacerBande(k);
   const s = scCopie(k), anc = Object.values(s.marques).filter(m => m.forme === "faute" && !m.bande).length, av = RC.ui.querySelector("#rcBandeAvis");
@@ -1191,8 +1231,8 @@ function rcBandeOuvrir(reprise) {
   /* [C14 1.4.7] (Paul 15:41 : « si je commence la bande, que je fais deux mots, je dois retomber à ce même mot ») : l'arrêt où tu étais, pour chaque élève */
   const ba = (scCopie(k).recopie || {}).bandeArret;
   if (ba && ba.mot) { const B = RC.bd; B.mot = true; B.W = rcMotsCopie(k, A); let j = ba.fin ? B.W.length : B.W.findIndex(w => w.id === ba.id && w.cle === ba.cle); if (j < 0) j = Math.max(0, B.W.findIndex(w => w.id === ba.id)); B.j = j; }   // [C14 1.4.12] rouverte en mot par mot, au même mot
-  else if (ba && ba.fin) RC.bd.i = A.length; else if (ba) { let j = A.findIndex(a => a.id === ba.id && a.cle === ba.cle); if (j < 0) j = A.findIndex(a => a.id === ba.id); if (j >= 0) RC.bd.i = j; }
-  rcBookmark(); rcBandeRendre();
+  else if (ba && ba.fin) RC.bd.i = i >= 0 ? i : A.length; else if (ba) {   /* [C14] (trouvé par le banc de la sauvegarde) une bande finie le reste, sauf un arrêt nouveau (une ligne retapée) : elle s'ouvre sur lui */ let j = A.findIndex(a => a.id === ba.id && a.cle === ba.cle); if (j < 0) j = A.findIndex(a => a.id === ba.id); if (j >= 0) RC.bd.i = j; }
+  rcBookmark(); rcBandeRendre(); if (typeof svVerifier === "function") svVerifier();   // [C14] une copie rouverte avec un arrêt de plus (une ligne retapée) n'est plus finie : la sauvegarde se reproposera quand elle le sera
 }
 function rcBandeMemoriser() {
   const B = RC.bd; if (!B || B.attente) return; const rec = scCopie(B.k).recopie; if (!rec) return; const a = rcBandeCourant();
@@ -1205,10 +1245,10 @@ function rcBandeCommencer() {
   Object.values(s.marques).filter(m => m.forme === "faute" && !m.bande).forEach(m => { s.marquesAnciennes[m.id] = m; delete s.marques[m.id]; });
   scNumeroter(k); saveState(); RC.bd.attente = false; RC.ui.querySelector("#rcBandeAvis").hidden = true; rcBandeRendre();
 }
-function rcBandeFermer(seul) { RC.bd = null; if (!seul) rcBookmark(); if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; } if (seul) return; rcActualiser(); rcSelectionner(RC.ligne, true, true); }
+function rcBandeFermer(seul) { RC.bd = null; if (RC.ouvert) aidePoser("recopie"); if (!seul) rcBookmark(); if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; } if (seul) return; rcActualiser(); rcSelectionner(RC.ligne, true, true); }
 function rcBandeDecider(v) {
   const B = RC.bd, a = B.A[B.i]; if (!a) return; if (a.st) stDeciderArret(B.k, a, v); else rcDeciderArret(B.k, a, v);
-  B.i = Math.min(B.A.length, B.i + 1); B.note = ""; rcBandeRendre();
+  B.i = Math.min(B.A.length, B.i + 1); B.note = ""; rcBandeRendre(); if (typeof svVerifier === "function") svVerifier();   // [C14] le paquet fini propose sa sauvegarde
 }
 function rcDeciderArret(k, a, v) {   // [C14 1.4.12] la décision d'un arrêt de l'IA, la même depuis les arrêts et depuis le mot par mot
   const B = { k }, s = scCopie(B.k), deja = a.l.marquesBande && a.l.marquesBande[a.cle];
@@ -1396,7 +1436,10 @@ function rcClavier(ev) {
   if (!RC.ouvert) return false;
   if (ev.isComposing) return true;
   const input = ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie");
+  if (typeof SC !== "undefined" && SC.rt) return false;   // [C14 402] la retouche, ouverte depuis la recopie, garde ses touches (Entrée, Échap, flèches)
+  { const mo = document.getElementById("scModale"); if (mo && mo.classList.contains("show")) { if (ev.key === "Escape") { ev.preventDefault(); scModaleFermer(); } ev.stopPropagation(); return true; } }
   if (RC.bd) return rcBandeClavier(ev);
+  if (RC.photoOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcPhotoFermer(); } ev.stopPropagation(); return true; }
   if (RC.fluxOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcFluxFermer(); } ev.stopPropagation(); return true; }
   if (RC.phrase) { if (ev.key === "Escape") { ev.preventDefault(); rcPhraseFermer(); } ev.stopPropagation(); return true; }
   if (RC.iaOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcIAFermer(); } ev.stopPropagation(); return true; }
@@ -1948,3 +1991,32 @@ GRAMM.classify = function(typed, correct) {
   return null;
 };
 
+/* [C14 407] l'aide « ? » de la recopie et de la bande : seulement ce qui reste */
+RU_AIDES.recopie = { ou: "Recopier", l: [
+  ["les poignées vertes", "recale la ligne sur la photo (ses deux bouts), puis tape ce que l'élève a écrit, sans corriger"],
+  ["Entrée · ↑ ↓", "la ligne suivante · changer de ligne ; à la dernière ligne, Entrée ouvre « ★ La phrase qui m'a marqué »"],
+  ["⌫ au début d'une ligne", "remonter à la fin de la ligne d'avant"],
+  ["« (guillemet droit)", "s'écrit en guillemets français, « » selon la place"],
+  ["Ctrl + Z", "dans le champ : annuler la frappe ; hors du champ : annuler le dernier ajout, retrait ou recalage"],
+  ["＋ Une ligne · − Cette ligne", "ajouter une ligne après celle en cours · retirer celle en cours"],
+  ["− ↔ Largeur ＋ · Ctrl + molette", "la taille de la photo et de la feuille ensemble"],
+  ["★ La phrase qui m'a marqué", "la fin de la recopie de cette copie : premier mot, dernier mot, « ✓ C'est elle » (ou « Pas de phrase ») ; sans elle, la copie suivante ne vient pas"],
+  ["⇪ Exporter pour l'IA", "le paquet suivant, 8 copies au plus, sans nom d'élève ; grisé tant que l'énoncé ou ta grille de stickers manque, et il dit pourquoi ; « ↻ Renvoyer » si un retour s'est perdu"],
+  ["⇩ Charger le corrigé de l'IA", "colle le retour, ou choisis ses fichiers, plusieurs d'un coup ; rien ne change tant que les lignes ne correspondent pas"],
+  ["▶ La bande", "elle s'arrête à chaque faute proposée par l'IA, puis à chaque sticker"],
+  ["📋 Le flux", "chaque copie : recopiée, envoyée, chargée, la bande, ton temps ; en bas, toute la classe ; « 💾 Télécharger la sauvegarde »"],
+  ["⏱ en haut", "ton temps sur cette copie, compté seul : à la recopie, puis dans la bande"],
+  ["📷 La photo", "les gestes rares : remplacer, tourner, retoucher, l'ordre des pages, retirer les photos de ce navigateur ; ta recopie suit la page"],
+  ["Échap", "fermer la fenêtre ouverte ; sinon, revenir à l'écran des scans"]] };
+RU_AIDES.bande = { ou: "La bande", l: [
+  ["Entrée ou Espace", "c'est une faute (ou le sticker est réussi), puis l'arrêt suivant"],
+  ["N", "non, puis l'arrêt suivant"],
+  ["⌫", "revenir à l'arrêt d'avant"],
+  ["← →", "glisser le cadre sur la photo"],
+  ["le cadre", "tire-le ; double clic : une poignée de chaque côté pour régler sa longueur ; clic droit : une faute de ta recopie"],
+  ["Ctrl + Z", "annuler ton dernier réglage du cadre"],
+  ["⇧ R", "passer au mot par mot, comme en dictée, et en revenir : Entrée le mot suivant, F une faute (ou la retirer), N non, ⌫ le mot d'avant"],
+  ["＋ Un sticker", "un sticker que l'IA n'a pas vu, sur le mot où tu es ou le passage de l'arrêt ; seuls les stickers validés se posent"],
+  ["les remarques", "à la fin de la bande : corrige un texte en place, ✕ en retire une, Entrée les garde toutes"],
+  ["la liste à droite", "les arrêts de cette copie ; un clic y va"],
+  ["Échap", "revenir à ta recopie : tes réponses sont gardées"]] };

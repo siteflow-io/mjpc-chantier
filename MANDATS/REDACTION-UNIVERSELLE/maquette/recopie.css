@@ -6,6 +6,7 @@
 .rc-haut label{display:flex;align-items:center;gap:5px;white-space:nowrap}
 .rc-haut select{max-width:245px;border:1px solid #cbb88f;border-radius:6px;padding:5px;font:14px system-ui;color:#2b2520;background:#fffdf8}
 #rcEtat{margin-left:auto;font-size:12px;max-width:260px}
+#rcChrono{font:600 13px system-ui;white-space:nowrap;padding:3px 8px;border-radius:12px;background:rgba(255,255,255,.18)}
 .rc-outils{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:7px 12px;border-bottom:1px solid #d6c9b4;background:#fffaf1}
 #rcCompte{font-weight:650;margin-right:8px;min-width:55px}
 .rc-ecran button:disabled{opacity:.45;cursor:default}
@@ -117,3 +118,6 @@
 .rc-phrase-t .rc-mot.debut{outline:2px solid #b8860b;border-radius:3px}
 .rc-phrase-choix{margin-top:8px;padding:8px 12px;border-radius:8px;background:#fff7dc;border:1px solid #e6c65c;font:17px/1.5 Georgia,serif;color:#5a4300;text-align:left;min-height:1.5em}
 .rc-phrase-choix.vide{background:#fbf8f1;border-color:#e3dccd;color:#9a8b78;font-style:italic}
+.rc-flux-total td{font-weight:700;border-top:2px solid #b7884e;background:#fbf4e6}
+.rc-photo-b{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}.rc-photo-b .sc-btn[disabled]{opacity:.45;cursor:not-allowed}.rc-photo-pq{font-size:12px;color:#7a5a2a;margin:4px 0 0;min-height:1em}
+

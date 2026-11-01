@@ -192,7 +192,7 @@ function scLignesProposees(k) { const P = scPagesDe(k); if (P.some(p => !p.ligne
 function scLignesCopie(k) { const s = scCopie(k); if (s.lignes != null) return s.lignes; const P = scPagesDe(k); return P.length && P.every(p => p.lignes && p.lignes.reperes) ? scLignesProposees(k) : 0; }
 // 1451 : les lignes écrites, demandées au début de chaque copie dans la passe de la langue ; tant qu'elles manquent, la copie ne se quitte pas
 function scLignesManquent(k) { return !!k && scPagesDe(k).length > 0 && !scLignesCopie(k); }
-function scLignesBloque() { const P = scP(), k = scK(); return !SC.attrib && P && P.id === "langue" && scLignesManquent(k); }
+function scLignesBloque() { return false; }   // [C14 404] plus de passes : le nombre de lignes ne bloque plus rien (la recopie compte les siennes)
 function scLignesDemander() {
   const a = document.getElementById("scLigAlerte"); if (a) a.hidden = false;
   let b = document.getElementById("scAlerte"); if (!b) { b = document.createElement("div"); b.id = "scAlerte"; b.className = "sc-alerte-copie"; document.getElementById("scanEcran").appendChild(b); }
@@ -318,6 +318,7 @@ function scAnnuler() { const a = SC.annule.pop(); if (!a) { toast("Rien à annul
   if (a.t === "pose") delete s.marques[a.id]; else if (a.t === "efface") s.marques[a.m.id] = a.m; else if (a.t === "change") s.marques[a.m.id] = a.m;
   SC.sel = null; scNumeroter(a.k); saveState(); scRendre(); }
 function scPointeur(ev) {
+  if (!SC.attrib) return;   // [C14 404] le paquet en vignettes : un clic ouvre une recopie, rien ne se trace
   const pg = ev.target.closest(".sc-page");
   if (!pg && !SC.attrib && ev.target.closest("#scCopie") && !ev.target.closest(".sc-champ, label, button")) {   // Paul, 30/10 11:57 : un clic dans le blanc, hors de la page, lâche l'outil : le champ se ferme (gardé), l'outil d'un tracé et la marque choisie se relâchent
     scChampFermer(true); SC.outil = null; SC.sel = null; scRendre(); return; }
@@ -404,6 +405,7 @@ function scClavier(e) {
   if (SC.rt) { const t = { Enter: () => scRtFermer(true), Escape: () => scRtFermer(false), ArrowLeft: () => scRtTourner(-1), ArrowRight: () => scRtTourner(1) }[e.key]; if (t) { e.preventDefault(); e.stopPropagation(); t(); } return; } const a = document.activeElement; const ecrit = a && (a.tagName === "INPUT" || a.tagName === "TEXTAREA");
   if (SC.attrib) { if (!ecrit) { if (e.key === "ArrowRight") { e.preventDefault(); scAttribSuivante(); } } return; }
   if (ecrit) return;
+  if (!SC.attrib) { if (e.key === "Escape") { const ai = document.getElementById("ruAide"); if (ai && !ai.hidden) return; if (document.getElementById("scModale").classList.contains("show")) { e.preventDefault(); scModaleFermer(); } } return; }   // [C14 404] le paquet en vignettes : aucune touche de l'ancien flux
   const P = scP(); scToucher();
   if (e.key === "Escape") { const ai = document.getElementById("ruAide"); if (ai && !ai.hidden) return; e.preventDefault(); if (document.getElementById("scModale").classList.contains("show")) { scModaleFermer(); return; } SC.sel = null; SC.outil = null; scRendre(); return; }
   if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) { e.preventDefault(); scAnnuler(); return; }
@@ -419,6 +421,10 @@ addEventListener("keydown", e => { const avant = e.defaultPrevented; scClavier(e
 // ── le rendu : le haut, la copie, le panneau, le paquet ──
 function scRendre() {
   const E = document.getElementById("scanEcran"); if (!E || !SC.ouvert) return;
+  /* [C14 404] hors des initiales, le milieu de l'écran est le paquet : ses pages en vignettes, rangées par élève ; un clic ouvre sa recopie à cette page */
+  E.classList.toggle("sc-vue-paquet", !SC.attrib);
+  if (!SC.attrib) { const man = scManquantes(); document.getElementById("scManque").innerHTML = man.length ? `⚠ ${man.length} page${man.length > 1 ? "s" : ""} de ce paquet ne ${man.length > 1 ? "sont" : "est"} pas dans ce navigateur : remets ton paquet (clé USB) avec « 📄 Charger des copies ». Ta recopie et tes marques reviendront d'elles-mêmes.` : "";
+    scVuePaquet(); if (typeof rcActualiser === "function") rcActualiser(); return; }
   if (SC.passe >= SC.passes.length) SC.passe = 0;
   const L = scEtapes(scK() || ""); if (scK() && !L.some(e => e.ip === SC.ip && e.iq === SC.iq) && L.length) { SC.ip = L[0].ip; SC.iq = L[0].iq; }
   const P = scP(), k = scK();
@@ -546,7 +552,15 @@ function scVerdict(v) { const L = scRetoursListe(); const r = L[SC.ir]; if (!r) 
   // l'onglet de test de l'élève reçoit ton verdict, comme l'élève le reçoit du site
   scPousser(r.eleve); SC.ir = Math.min(SC.ir + 1, L.length - 1); scRendre(); }
 // ── l'aide, la fenêtre ──
-RU_AIDES.scan = { ou: "Corriger sur les scans", l: [["sur un autre ordinateur", "recharge le même paquet (« 📄 Charger des copies », ou « 📂 Mon dossier ») : chaque page retrouve son élève, ta recopie, tes marques et tes retouches ; tout le reste est déjà au site"], ["le pinceau", "appuie, glisse, lâche : la forme vient avec la question (souligné rouge, une faute ; surligné, une citation ; encadré, un mot ; trait dans la marge, un paragraphe) ; un clic sans glisser prend le mot sous la souris"], ["un clic dans le blanc", "hors de la page : l'outil se relâche (le champ se ferme, gardé ; la marque choisie et l'outil d'un tracé se relâchent)"], ["Entrée / N", "oui · non, puis la question suivante ; une marque qui répond « non » ou « oui » répond pour toi"], ["⌫", "la question précédente"], ["→ ←", "la copie suivante · précédente ; dans les retours : le retour suivant · précédent"], ["clic sur une marque", "la choisir ; sur une faute, sa bonne forme se rouvre (pour la taper ou la changer) ; sur une remarque, son texte ; tire-la, ou ses poignées"], ["Suppr · Ctrl+Z", "effacer la marque choisie · annuler"], ["★", "la phrase qui t'a marqué, surlignée en doré (passe de la langue)"], ["Ctrl + molette", "zoomer, sous la souris ; « ↔ Largeur » revient à la largeur de l'écran"], ["Maj (tenue)", "la loupe : un rond grossi trois fois sous la souris"], ["Alt (tenue)", "la copie nue : les marques disparaissent tant que tu tiens la touche"], ["un clic sur un mot", "le trait prend la longueur du mot, lue dans l'encre (glisse si l'appli se trompe)"], ["Tab", "dans la bonne forme : prend la première forme du paquet qui commence pareil"], ["💬 Remarque · Faute", "un tracé avec ce pinceau, puis le pinceau revient à la question"], ["⇥ Replier", "la copie prend la largeur ; la question reste dans une bande"], ["📋 Le récapitulatif", "la note, la grille, le bilan tel que l'élève le lira, « À reprendre » ; il s'ouvre seul quand tous les points d'une copie sont passés : Entrée, la copie suivante ; Échap, rester"], ["les lignes écrites", "demandées au début de chaque copie, passe de la langue : tape le nombre, Entrée ; tant qu'il manque, la copie ne se quitte pas"], ["✂ Page", "retoucher la photo : le cadre et la rotation degré par degré (flèches), Entrée garde, Échap annule ; les marques suivent leurs mots"], ["⠿ bonne forme", "le champ se pose au-dessus du mot ; tire-le par ⠿ s'il cache quelque chose, il garde cette place"], ["le paquet", "il reste dans ce navigateur et sur ta clé, jamais au site ; les marques et les réponses vont au site, chacune avec son identité"]] };
+RU_AIDES.scan = { ou: "Corriger sur les scans", l: [   /* [C14 407] le paquet en vignettes : seulement ce qui reste */
+  ["le paquet", "ses pages en vignettes, rangées par élève, avec son nom et ses étapes (recopiée, envoyée, chargée, la bande) ; une page sans élève vient en tête"],
+  ["clic sur une page", "ouvre la recopie de son élève à cette page ; Échap y revient"],
+  ["✍ Recopier", "la recopie de la copie où tu travaillais"],
+  ["📄 Charger des copies · 📂 Mon dossier", "ton paquet scanné, ou la copie d'un élève : un PDF ou des photos ; les pages neuves passent par « 🔤 Les initiales » ; elles restent dans ce navigateur et sur ta clé, jamais au site"],
+  ["🔤 Les initiales", "l'élève de chaque page : tape ses initiales, Entrée ; Entrée seule : le même élève que la page d'avant ; → passe la page"],
+  ["🖨 Copies vierges", "des copies de l'appli à imprimer : scannées, elles se remettent droites d'elles-mêmes"],
+  ["📨 Fichiers École Directe", "le fichier de chaque élève, à tester comme lui, à télécharger, ou tous dans un zip (« 📦 Tout rendre »)"],
+  ["sur un autre ordinateur", "recharge le même paquet : chaque page retrouve son élève, ta recopie, tes marques et tes retouches ; tout le reste est déjà au site"]] };
 document.addEventListener("focusout", () => setTimeout(() => { if (SC.panneauAttend && SC.ouvert) { const a = document.activeElement; if (!(a && document.getElementById("scPanneau").contains(a))) { SC.panneauAttend = false; scPanneau(); } } }, 0));
 function scModale(h) { const m = document.getElementById("scModale"); m.querySelector(".sc-modale-c").innerHTML = h + `<div style="text-align:right;margin-top:10px"><button class="sc-btn" onclick="scModaleFermer()" title="Fermer cette fenêtre (Échap fait pareil) ; rien n'est perdu.">Fermer</button></div>`; m.classList.add("show"); }
 function scModaleFermer() { document.getElementById("scModale").classList.remove("show"); }
@@ -609,14 +623,17 @@ function scLignesConnues(cv) {   // sur la copie de l'appli, les lignes sont à 
 // ↻ : la page tourne d'un quart de tour vers la droite ; ses marques tournent avec elle ; l'identité de la page ne change pas
 function scTournerPage(pid) {
   const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return;
-  if (!(p.lignes && p.lignes.reperes)) { scOrigDe(pid).then(o => { if (!o) return scTournerPageVieux(pid); const r = p.recadre; scReglerPage(pid, { rot: ((p.rot || 0) + 270) % 360, angle: p.angle || 0, recadre: r ? [1 - r[3], r[0], 1 - r[1], r[2]] : null }); }); return; }
+  if (!(p.lignes && p.lignes.reperes) && !p.vueTournee) { scOrigDe(pid).then(o => { if (!o) return scTournerPageVieux(pid); const r = p.recadre; scReglerPage(pid, { rot: ((p.rot || 0) + 270) % 360, angle: p.angle || 0, recadre: r ? [1 - r[3], r[0], 1 - r[1], r[2]] : null }); }); return; }
   scTournerPageVieux(pid);
 }
 function scTournerPageVieux(pid) {   // une page sans sa photo entière (une copie de l'appli, ou chargée avant) : l'image vue tourne
   const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return;
   createImageBitmap(im.blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); const r = scTourner(c, 270);
     if (typeof rcTransformerPage === "function") rcTransformerPage(pid, (x, y) => [1 - y, x]);
-    p.rot = (((p.rot || 0) + 270) % 360); if (p.recadre) { const [a0, b0, c0, d0] = p.recadre; p.recadre = [1 - d0, a0, 1 - b0, c0]; } p.w = r.width; p.h = r.height; p.lignes = scLignes(r); p.blanche = false; p.modifieLe = new Date().toISOString();
+    /* [C14 402] une copie de l'appli (redressée par ses repères) tourne toujours ici, en vue : elle n'a pas de photo entière à laquelle se rapporter ; revenue droite, elle retrouve ses lignes connues */
+    const vue = !!(p.lignes && p.lignes.reperes) || !!p.vueTournee; if (!(p.rot || 0) && p.lignes) p.lignesDroites = p.lignes;
+    p.rot = (((p.rot || 0) + 270) % 360); if (p.recadre) { const [a0, b0, c0, d0] = p.recadre; p.recadre = [1 - d0, a0, 1 - b0, c0]; } p.w = r.width; p.h = r.height; p.lignes = !p.rot && p.lignesDroites ? p.lignesDroites : scLignes(r); p.blanche = false; p.modifieLe = new Date().toISOString();
+    if (!p.rot) { delete p.lignesDroites; delete p.vueTournee; } else if (vue) p.vueTournee = true;
     Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; const [a, b, c2, d] = [m.x0, m.y0, m.x1, m.y1]; m.x0 = 1 - d; m.x1 = 1 - b; m.y0 = a; m.y1 = c2; m.l0 = m.l1 = null; m.modifieLe = p.modifieLe; }); });
     r.toBlob(b => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = scImg(b, r.width, r.height); if (SC.encres) delete SC.encres[pid]; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: b, w: r.width, h: r.height, le: p.modifieLe });
       ruEcrire(scChemin(["pages", pid]), p, "une page tournée"); saveState(); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }, "image/jpeg", 0.82); });
@@ -659,7 +676,7 @@ function scRemap(m, A, B, W0, H0) {
 // la photo entière d'une page : gardée depuis son chargement, ou refaite d'une page jamais recadrée ni inclinée
 function scOrigDe(pid) {
   if (SC.origs[pid]) return Promise.resolve(SC.origs[pid]);
-  const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im || p.recadre || p.angle || (p.lignes && p.lignes.reperes)) return Promise.resolve(null);
+  const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im || p.recadre || p.angle || (p.lignes && p.lignes.reperes) || p.vueTournee) return Promise.resolve(null);
   return createImageBitmap(im.blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); const r = scTourner(c, (360 - (p.rot || 0)) % 360);
     return new Promise(res => r.toBlob(b => { SC.origs[pid] = { blob: b, w: r.width, h: r.height }; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: im.blob, w: im.w, h: im.h, le: new Date().toISOString() }); res(SC.origs[pid]); }, "image/jpeg", 0.9)); });
 }
@@ -685,7 +702,7 @@ function scReglerPage(pid, B, cvO) {
 function scRecadrerDebut(pid) { scRetoucher(pid); }
 function scRetoucher(pid) {
   const p = SC.pages[pid]; if (!p) return;
-  if (p.lignes && p.lignes.reperes) { toast("Une copie de l'appli se remet droite et se recadre d'elle-même : rien à retoucher."); return; }
+  if ((p.lignes && p.lignes.reperes) || p.vueTournee) { toast("Une copie de l'appli se remet droite et se recadre d'elle-même : rien à retoucher."); return; }
   scChampFermer(true);
   scOrigDe(pid).then(o => { if (!o) { toast("Remets ton paquet une fois (« 📄 Charger des copies ») : l'appli garde alors la photo entière de cette page, pour la retoucher sans rien perdre."); return; }
     scToile(o.blob).then(c => { SC.rt = { pid, orig: c, W0: c.width, H0: c.height, rot: p.rot || 0, angle: p.angle || 0, cadre: (p.recadre || [0, 0, 1, 1]).slice(), A: { rot: p.rot || 0, angle: p.angle || 0, recadre: p.recadre || null } };
@@ -976,3 +993,23 @@ function scRetirerPhotosOui() {
   return Promise.all(P.map(p => { const im = SC.imgs[p.id]; try { URL.revokeObjectURL(im.url); } catch (e) {} delete SC.imgs[p.id]; delete SC.origs[p.id]; if (SC.encres) delete SC.encres[p.id]; return scDbFaire("readwrite", st => st.delete(p.id)).catch(() => null); }))
     .then(() => { const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); toast(P.length + " photo" + (P.length > 1 ? "s" : "") + " retirée" + (P.length > 1 ? "s" : "") + " de ce navigateur."); });
 }
+/* ═══ [C14 404] le paquet en vignettes, rangées par élève, avec son nom et ses étapes ; une page sans élève en tête, pour « 🔤 Les initiales » ═══ */
+function scVuePaquet() {
+  const Z = document.getElementById("scCopie"); if (!Z) return; Z.dataset.sig = "";
+  if (!Object.keys(SC.pages).length) { Z.innerHTML = `<label class="sc-vide sc-vide-btn" title="Choisir ton paquet scanné, sur ta clé : un PDF, ou des photos (plusieurs à la fois). Il reste dans ce navigateur, jamais au site.">📄 Charger le paquet<small>un PDF ou des photos · il reste dans ce navigateur, jamais au site</small><input type="file" accept="application/pdf,.pdf,image/*" multiple onchange="scCharger(event)" hidden></label>`; return; }
+  const O = scPagesOrdre(), vig = (p, titre, clic, n) => { const im = SC.imgs[p.id]; return `<button class="sc-pq-vig" onclick="${clic}" title="${escapeAttr(titre)}">${im ? `<img src="${im.url}" alt="" loading="lazy">` : `<span class="sc-pq-manque">photo à remettre</span>`}<i>${n}</i></button>`; };
+  const sans = O.map((p, i) => ({ p, i })).filter(x => !x.p.eleve && !x.p.blanche), blanches = O.filter(p => p.blanche).length;
+  let h = '<div class="sc-pq">';
+  if (sans.length) h += `<section class="sc-pq-el sc-pq-sans"><div class="sc-pq-nom"><b>⚠ ${sans.length} page${sans.length > 1 ? "s" : ""} sans élève</b><span class="sc-m">donne chacune à son élève</span><button class="sc-btn" onclick="SC.attrib=true;SC.ia=${sans[0].i};scRendre()" title="Revoir, page par page, l'élève de chaque page (ses initiales), en commençant par la première page sans élève.">🔤 Les initiales</button></div><div class="sc-pq-vigs">${sans.map(x => vig(x.p, "Page " + (x.i + 1) + " du paquet, sans élève : clic pour lui donner son élève (ses initiales).", "SC.attrib=true;SC.ia=" + x.i + ";scRendre()", "page " + (x.i + 1))).join("")}</div></section>`;
+  SC.copies.forEach(k => { const P = scPagesDe(k), nom = nomEleveDe(k) || k, abs = typeof avAbsent === "function" && avAbsent(k);
+    h += `<section class="sc-pq-el${abs ? " abs" : ""}${k === scK() ? " cour" : ""}" data-k="${escapeAttr(k)}"><div class="sc-pq-nom"><b>${escapeHtml(nom)}</b>${abs ? '<b class="av-abs" title="Marqué absent : pas de fichier École Directe, il ne compte pas dans le Bilan.">ABS</b>' : ""}${typeof avCarteFlux === "function" ? avCarteFlux(k) : ""}</div>`
+      + `<div class="sc-pq-vigs">${P.map((p, j) => vig(p, "Ouvrir la recopie de " + nom + " à sa page " + (j + 1) + (P.length > 1 ? " sur " + P.length : "") + ".", "scPqOuvrir('" + escapeAttr(k) + "','" + p.id + "')", "page " + (j + 1))).join("")}</div></section>`; });
+  if (blanches) h += `<p class="sc-m">${blanches} page${blanches > 1 ? "s" : ""} blanche${blanches > 1 ? "s" : ""} dans le paquet : sans élève, elle${blanches > 1 ? "s" : ""} ne compte${blanches > 1 ? "nt" : ""} pas.</p>`;
+  Z.innerHTML = h + "</div>";
+}
+function scPqOuvrir(k, pid) {
+  const i = SC.copies.indexOf(k); if (i < 0) return; SC.ic = i; state.scanRecopie = { ouverte: false, copie: k, page: pid, ligne: null }; state.scanCurseur = Object.assign({}, state.scanCurseur || {}, { copie: k });   // là où tu travailles : l'écran des scans y revient
+  rcOuvrir(); if (!RC.ouvert) return; if (RC.page !== pid) rcActiverPage(pid);
+  const b = rcBloc(pid); if (b) b.scrollIntoView({ block: "start" });
+}
+

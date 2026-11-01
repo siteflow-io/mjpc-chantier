@@ -91,7 +91,7 @@ function scEleveFichier(k, test) {
     const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(D.titre)} — ${escapeHtml(D.nom)}</title><style>${css}</style></head><body>
 <div class="tete">${escapeHtml(D.titre)}<small>${escapeHtml(D.nom)}</small></div><div class="copie" id="statique">${statique}</div>
 <script>const D=${JSON.stringify(D).replace(/</g, "\\u003c")};const IMG=${JSON.stringify(srcs)};${scCadresStickers.toString()};(${(D.correctionEleve ? scEleveApp : scEleveLecture).toString()})(D,IMG);<\/script></body></html>`;
-    return { html, nom: "Redaction-" + scSlug(D.titre).slice(0, 40) + "-" + scSlug(D.nom) + ".html", D };
+    return { html, nom: scNomFichierED(k), D };   // [C14 405] « NOM Prénom.html », écrit comme dans la liste de la classe
   });
 }
 // ── 1463 : le fichier de l'élève en LECTURE SEULE (tant que la correction par l'élève n'est pas codée) ──
@@ -383,11 +383,37 @@ function scFichiersED() {
       <td><button class="sc-btn" onclick="scTesterEleve('${escapeAttr(k)}')" title="Ouvrir le fichier de cet élève dans un nouvel onglet, exactement comme il le verra, en mode test : sa copie, tes marques, sa grille et sa note, en lecture seule. Rien ne va au site.">🧪 Tester comme l'élève</button> <button class="sc-btn" onclick="scTelecharger('${escapeAttr(k)}')" title="Télécharger le fichier de cet élève, à déposer sur École Directe. Sa photo est dedans : elle ne passe pas par le site.">Télécharger</button></td></tr>`; }).join("");
   scModale(`<h3>Les fichiers École Directe</h3><p>Un fichier par élève : sa copie scannée et tes marques dedans. Tu le déposes sur École Directe ; la photo ne passe jamais par le site. L'élève y lit sa copie corrigée, sa grille et sa note : il clique tes marques, il n'écrit rien.</p>
     <label class="sc-coche" title="Pas encore codée : cette coche reste grisée et décochée. Quand elle le sera, elle ouvrira la correction par l'élève, à lancer en classe comme la correction de dictée."><input type="checkbox" disabled> Ouvrir la correction par l'élève <span class="sc-m">— pas encore codée : aujourd'hui, l'élève lit sa copie corrigée, il ne la corrige pas.</span></label>${window.__FAUX_HUB || RU.test ? '<p class="sc-alerte">🧪 Mode test : les fichiers fabriqués ici n\'envoient rien au site.</p>' : ""}
-    <table class="sc-table"><tr><th></th><th>Élève</th><th>Pages</th><th>Correction</th><th></th></tr>${lignes}</table>${nAbs ? `<p class="sc-m">${nAbs} élève${nAbs > 1 ? "s" : ""} marqué${nAbs > 1 ? "s" : ""} absent${nAbs > 1 ? "s" : ""} : pas de fichier.</p>` : ""}<button class="sc-btn" onclick="scToutTelecharger()" title="Télécharger les ${Q.length} fichiers l'un après l'autre (le navigateur peut te demander d'autoriser plusieurs téléchargements).">Tout télécharger</button>`);
+    <table class="sc-table"><tr><th></th><th>Élève</th><th>Pages</th><th>Correction</th><th></th></tr>${lignes}</table>${nAbs ? `<p class="sc-m">${nAbs} élève${nAbs > 1 ? "s" : ""} marqué${nAbs > 1 ? "s" : ""} absent${nAbs > 1 ? "s" : ""} : pas de fichier.</p>` : ""}<button class="sc-btn" id="scToutRendre" onclick="scToutTelecharger()" title="Télécharger un seul zip : les ${Q.length} fichiers, un par élève, chacun nommé comme dans ta liste de classe (« NOM Prénom.html »), pour que l'extension retrouve l'élève sur École Directe. Rien ne part au site.">📦 Tout rendre : un zip de ${Q.length} fichier${Q.length > 1 ? "s" : ""}</button> <span id="scZipEtat" class="sc-m" role="status"></span>`);
 }
 function scTelecharger(k) { return scEleveFichier(k).then(f => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([f.html], { type: "text/html" })); a.download = f.nom; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500); }); }
 function scCopiesED() { return SC.copies.filter(k => !(typeof avAbsent === "function" && avAbsent(k))); }
-function scToutTelecharger() { let ch = Promise.resolve(); scCopiesED().forEach(k => { ch = ch.then(() => scTelecharger(k)).then(() => new Promise(r => setTimeout(r, 500))); }); }
+/* [C14 405] « 📦 Tout rendre » : un seul zip, un fichier par élève, nommé comme dans la liste de la classe (« NOM Prénom.html ») */
+function scTitreFichier() { const t = scSlug(SUJET.titre || "Redaction").slice(0, 40); return /^redaction/i.test(t) ? t : "Redaction-" + t; }   // jamais « Redaction-Redaction-… »
+function scNomFichierED(k) { return String(nomEleveDe(k) || k).replace(/[\\/:*?"<>|]+/g, "-").replace(/\s+/g, " ").trim() + ".html"; }
+const SC_CRC = (() => { const T = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let j = 0; j < 8; j++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; T[n] = c >>> 0; } return T; })();
+function scCrc32(u) { let c = 0xFFFFFFFF; for (let i = 0; i < u.length; i++) c = SC_CRC[(c ^ u[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+function scZip(F) {   // [{ nom, octets: Uint8Array }] → un zip « stocké », noms en UTF-8 (lu par Windows, macOS et l'extension)
+  const enc = new TextEncoder(), parts = [], centre = [], d = new Date(); let off = 0;
+  const dt = ((d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1)) & 0xFFFF, dd = (((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate()) & 0xFFFF;
+  F.forEach(f => { const n = enc.encode(f.nom), crc = scCrc32(f.octets), sz = f.octets.length, h = new DataView(new ArrayBuffer(30)), c = new DataView(new ArrayBuffer(46));
+    [[0, 0x04034b50, 4], [4, 20, 2], [6, 0x0800, 2], [8, 0, 2], [10, dt, 2], [12, dd, 2], [14, crc, 4], [18, sz, 4], [22, sz, 4], [26, n.length, 2], [28, 0, 2]].forEach(([o, v, l]) => l === 4 ? h.setUint32(o, v, true) : h.setUint16(o, v, true));
+    [[0, 0x02014b50, 4], [4, 20, 2], [6, 20, 2], [8, 0x0800, 2], [10, 0, 2], [12, dt, 2], [14, dd, 2], [16, crc, 4], [20, sz, 4], [24, sz, 4], [28, n.length, 2], [30, 0, 2], [32, 0, 2], [34, 0, 2], [36, 0, 2], [38, 0, 4], [42, off, 4]].forEach(([o, v, l]) => l === 4 ? c.setUint32(o, v, true) : c.setUint16(o, v, true));
+    parts.push(h.buffer, n, f.octets); centre.push(c.buffer, n); off += 30 + n.length + sz; });
+  const tc = centre.reduce((s, x) => s + x.byteLength, 0), e = new DataView(new ArrayBuffer(22));
+  e.setUint32(0, 0x06054b50, true); e.setUint16(8, F.length, true); e.setUint16(10, F.length, true); e.setUint32(12, tc, true); e.setUint32(16, off, true);
+  return new Blob(parts.concat(centre, [e.buffer]), { type: "application/zip" });
+}
+function scToutTelecharger() {
+  const Q = scCopiesED(), etat = t => { const o = document.getElementById("scZipEtat"); if (o) o.textContent = t; }, b = document.getElementById("scToutRendre"), enc = new TextEncoder(), F = [], vus = {};
+  if (!Q.length) { toast("Aucun fichier à rendre : aucune copie, ou tous les élèves sont absents."); return Promise.resolve(); }
+  if (b) b.disabled = true; let ch = Promise.resolve();
+  Q.forEach((k, i) => { ch = ch.then(() => { etat("Le zip se prépare : " + (i + 1) + " / " + Q.length + "…"); return scEleveFichier(k); }).then(f => { let nom = f.nom; if (vus[nom]) nom = nom.replace(/\.html$/, " (" + (++vus[f.nom]) + ").html"); else vus[nom] = 1; F.push({ nom, octets: enc.encode(f.html) }); }); });
+  return ch.then(() => { const d = new Date(), z = n => String(n).padStart(2, "0"), a = document.createElement("a");
+    a.href = URL.createObjectURL(scZip(F)); a.download = scTitreFichier() + "-fichiers-eleves_" + d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()) + "_" + z(d.getHours()) + "h" + z(d.getMinutes()) + ".zip";
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+    etat("Le zip est prêt : " + F.length + " fichier" + (F.length > 1 ? "s" : "") + ", un par élève, nommés comme dans ta liste de classe."); if (b) b.disabled = false; },
+    e => { etat(""); if (b) b.disabled = false; toast("⚠ Le zip n'a pas pu se faire : " + (e && e.message || e)); });
+}
 // tester le flux de l'élève : son fichier, en mode test, dans un onglet relié à cette correction (l'onglet s'ouvre au clic, le fichier s'y pose ensuite)
 SC.fenetres = [];
 function scTesterEleve(k) {

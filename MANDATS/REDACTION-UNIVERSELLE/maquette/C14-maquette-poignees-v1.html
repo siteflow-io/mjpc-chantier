@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.4.19";
+var APP_VERSION = "1.4.20";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -6656,6 +6656,25 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .eleve-card.absent{opacity:.5;border-style:dashed;cursor:default}.eleve-card.absent:hover{box-shadow:none;border-color:var(--gris)}.av-abs{font:700 12px system-ui;color:#7c3aed;letter-spacing:.04em}.av-ligne-abs td{color:#9a8b78}
 .av-menu-fond{position:fixed;inset:0;z-index:1000}.av-menu{position:absolute;background:#fff;border:1px solid #ccc;border-radius:10px;padding:6px;box-shadow:0 6px 24px rgba(0,0,0,.25);min-width:220px;display:flex;flex-direction:column;font:14px system-ui}
 .av-menu>b{padding:6px 10px;font-size:13px;color:#555;border-bottom:1px solid #eee}.av-menu>button{background:none;border:0;text-align:left;padding:8px 10px;border-radius:6px;cursor:pointer;font:inherit}.av-menu>button:hover{background:#f3eee4}
+.av-grille-b{margin-left:6px;font:600 11px system-ui;border:1px solid #d6c9b4;background:#fffaf1;color:#6b4a2a;border-radius:10px;padding:1px 7px;cursor:pointer}.av-det td{background:#fffdf8}.av-grille{margin:4px 0 6px;padding-left:22px}.av-grille li{border-left:4px solid #6b7280;padding:2px 8px;margin:3px 0}.av-g-pts{font-weight:700;white-space:nowrap}.av-g-r{font-size:12px;color:#4a5a3a}
+/* [C14 404] le paquet en vignettes */
+#scanEcran #scPasses,#scanEcran #scChrono,#scanEcran #scZero,#scanEcran #scBande{display:none!important}   /* l'ancien flux (passes, chrono des passes, remise à zéro, bande repliée) n'a plus de geste, même pendant « Les initiales » */
+.sc-vue-paquet #scZoom,.sc-vue-paquet #scPanneau,.sc-vue-paquet #scPaquet{display:none!important}
+.sc-vue-paquet #scCopie{cursor:default}
+.sc-pq{max-width:1180px;margin:0 auto;padding:4px 10px 30px;display:flex;flex-direction:column;gap:10px}
+.sc-pq-el{background:#fffdf8;border:1px solid #e3d6c0;border-radius:10px;padding:8px 12px;display:grid;grid-template-columns:minmax(180px,260px) 1fr;gap:12px;align-items:center}
+.sc-pq-el.cour{border-color:#b7884e;box-shadow:0 0 0 2px #e8d3ae}.sc-pq-el.abs{opacity:.55;border-style:dashed}
+.sc-pq-sans{border-color:#c54040;background:#fff6f4}
+.sc-pq-nom{display:flex;flex-direction:column;gap:4px;align-items:flex-start}.sc-pq-nom>b{font:600 16px Georgia,serif}
+.sc-pq-vigs{display:flex;flex-wrap:wrap;gap:8px}
+.sc-pq-vig{position:relative;width:96px;height:132px;padding:0;border:1px solid #cbb88f;border-radius:6px;background:#fff;cursor:pointer;overflow:hidden}
+.sc-pq-vig:hover,.sc-pq-vig:focus-visible{outline:3px solid #b7884e;outline-offset:1px}
+.sc-pq-vig img{width:100%;height:100%;object-fit:cover;object-position:top}
+.sc-pq-vig i{position:absolute;left:0;right:0;bottom:0;font:600 11px system-ui;font-style:normal;background:rgba(43,37,32,.7);color:#fff;padding:2px 0}
+.sc-pq-manque{display:flex;align-items:center;justify-content:center;height:100%;font:12px system-ui;color:#9a8b78;padding:6px}
+@media(max-width:760px){.sc-pq-el{grid-template-columns:1fr}.sc-pq-vig{width:72px;height:100px}}
+.sc-vue-paquet .sc-pq{padding-top:52px}   /* le témoin « Enregistré au site », en haut à droite, au-dessus des cartes */
+#scanEcran:not(.sc-vue-paquet) #scPanneau{padding-top:52px}   /* [C14 404] pendant « Les initiales », le panneau passe sous le témoin « Enregistré au site » */
 
 /* La recopie : deux feuilles de mêmes dimensions, un seul défilement. */
 .rc-ecran{position:fixed;inset:0;z-index:950;display:flex;flex-direction:column;box-sizing:border-box;padding-bottom:28px;background:#f5f1ea;color:#2b2520;font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -6665,6 +6684,7 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .rc-haut label{display:flex;align-items:center;gap:5px;white-space:nowrap}
 .rc-haut select{max-width:245px;border:1px solid #cbb88f;border-radius:6px;padding:5px;font:14px system-ui;color:#2b2520;background:#fffdf8}
 #rcEtat{margin-left:auto;font-size:12px;max-width:260px}
+#rcChrono{font:600 13px system-ui;white-space:nowrap;padding:3px 8px;border-radius:12px;background:rgba(255,255,255,.18)}
 .rc-outils{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:7px 12px;border-bottom:1px solid #d6c9b4;background:#fffaf1}
 #rcCompte{font-weight:650;margin-right:8px;min-width:55px}
 .rc-ecran button:disabled{opacity:.45;cursor:default}
@@ -6776,6 +6796,9 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .rc-phrase-t .rc-mot.debut{outline:2px solid #b8860b;border-radius:3px}
 .rc-phrase-choix{margin-top:8px;padding:8px 12px;border-radius:8px;background:#fff7dc;border:1px solid #e6c65c;font:17px/1.5 Georgia,serif;color:#5a4300;text-align:left;min-height:1.5em}
 .rc-phrase-choix.vide{background:#fbf8f1;border-color:#e3dccd;color:#9a8b78;font-style:italic}
+.rc-flux-total td{font-weight:700;border-top:2px solid #b7884e;background:#fbf4e6}
+.rc-photo-b{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}.rc-photo-b .sc-btn[disabled]{opacity:.45;cursor:not-allowed}.rc-photo-pq{font-size:12px;color:#7a5a2a;margin:4px 0 0;min-height:1em}
+
 
 /* [C14 1.4.16] Réglages → la grille et ses stickers : trois colonnes sur toute la largeur */
 .st-ed{max-width:none}.st-haut{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.st-haut h2{margin:0 8px 0 0}
@@ -7012,7 +7035,7 @@ function scLignesProposees(k) { const P = scPagesDe(k); if (P.some(p => !p.ligne
 function scLignesCopie(k) { const s = scCopie(k); if (s.lignes != null) return s.lignes; const P = scPagesDe(k); return P.length && P.every(p => p.lignes && p.lignes.reperes) ? scLignesProposees(k) : 0; }
 // 1451 : les lignes écrites, demandées au début de chaque copie dans la passe de la langue ; tant qu'elles manquent, la copie ne se quitte pas
 function scLignesManquent(k) { return !!k && scPagesDe(k).length > 0 && !scLignesCopie(k); }
-function scLignesBloque() { const P = scP(), k = scK(); return !SC.attrib && P && P.id === "langue" && scLignesManquent(k); }
+function scLignesBloque() { return false; }   // [C14 404] plus de passes : le nombre de lignes ne bloque plus rien (la recopie compte les siennes)
 function scLignesDemander() {
   const a = document.getElementById("scLigAlerte"); if (a) a.hidden = false;
   let b = document.getElementById("scAlerte"); if (!b) { b = document.createElement("div"); b.id = "scAlerte"; b.className = "sc-alerte-copie"; document.getElementById("scanEcran").appendChild(b); }
@@ -7138,6 +7161,7 @@ function scAnnuler() { const a = SC.annule.pop(); if (!a) { toast("Rien à annul
   if (a.t === "pose") delete s.marques[a.id]; else if (a.t === "efface") s.marques[a.m.id] = a.m; else if (a.t === "change") s.marques[a.m.id] = a.m;
   SC.sel = null; scNumeroter(a.k); saveState(); scRendre(); }
 function scPointeur(ev) {
+  if (!SC.attrib) return;   // [C14 404] le paquet en vignettes : un clic ouvre une recopie, rien ne se trace
   const pg = ev.target.closest(".sc-page");
   if (!pg && !SC.attrib && ev.target.closest("#scCopie") && !ev.target.closest(".sc-champ, label, button")) {   // Paul, 30/10 11:57 : un clic dans le blanc, hors de la page, lâche l'outil : le champ se ferme (gardé), l'outil d'un tracé et la marque choisie se relâchent
     scChampFermer(true); SC.outil = null; SC.sel = null; scRendre(); return; }
@@ -7224,6 +7248,7 @@ function scClavier(e) {
   if (SC.rt) { const t = { Enter: () => scRtFermer(true), Escape: () => scRtFermer(false), ArrowLeft: () => scRtTourner(-1), ArrowRight: () => scRtTourner(1) }[e.key]; if (t) { e.preventDefault(); e.stopPropagation(); t(); } return; } const a = document.activeElement; const ecrit = a && (a.tagName === "INPUT" || a.tagName === "TEXTAREA");
   if (SC.attrib) { if (!ecrit) { if (e.key === "ArrowRight") { e.preventDefault(); scAttribSuivante(); } } return; }
   if (ecrit) return;
+  if (!SC.attrib) { if (e.key === "Escape") { const ai = document.getElementById("ruAide"); if (ai && !ai.hidden) return; if (document.getElementById("scModale").classList.contains("show")) { e.preventDefault(); scModaleFermer(); } } return; }   // [C14 404] le paquet en vignettes : aucune touche de l'ancien flux
   const P = scP(); scToucher();
   if (e.key === "Escape") { const ai = document.getElementById("ruAide"); if (ai && !ai.hidden) return; e.preventDefault(); if (document.getElementById("scModale").classList.contains("show")) { scModaleFermer(); return; } SC.sel = null; SC.outil = null; scRendre(); return; }
   if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) { e.preventDefault(); scAnnuler(); return; }
@@ -7239,6 +7264,10 @@ addEventListener("keydown", e => { const avant = e.defaultPrevented; scClavier(e
 // ── le rendu : le haut, la copie, le panneau, le paquet ──
 function scRendre() {
   const E = document.getElementById("scanEcran"); if (!E || !SC.ouvert) return;
+  /* [C14 404] hors des initiales, le milieu de l'écran est le paquet : ses pages en vignettes, rangées par élève ; un clic ouvre sa recopie à cette page */
+  E.classList.toggle("sc-vue-paquet", !SC.attrib);
+  if (!SC.attrib) { const man = scManquantes(); document.getElementById("scManque").innerHTML = man.length ? `⚠ ${man.length} page${man.length > 1 ? "s" : ""} de ce paquet ne ${man.length > 1 ? "sont" : "est"} pas dans ce navigateur : remets ton paquet (clé USB) avec « 📄 Charger des copies ». Ta recopie et tes marques reviendront d'elles-mêmes.` : "";
+    scVuePaquet(); if (typeof rcActualiser === "function") rcActualiser(); return; }
   if (SC.passe >= SC.passes.length) SC.passe = 0;
   const L = scEtapes(scK() || ""); if (scK() && !L.some(e => e.ip === SC.ip && e.iq === SC.iq) && L.length) { SC.ip = L[0].ip; SC.iq = L[0].iq; }
   const P = scP(), k = scK();
@@ -7366,7 +7395,15 @@ function scVerdict(v) { const L = scRetoursListe(); const r = L[SC.ir]; if (!r) 
   // l'onglet de test de l'élève reçoit ton verdict, comme l'élève le reçoit du site
   scPousser(r.eleve); SC.ir = Math.min(SC.ir + 1, L.length - 1); scRendre(); }
 // ── l'aide, la fenêtre ──
-RU_AIDES.scan = { ou: "Corriger sur les scans", l: [["sur un autre ordinateur", "recharge le même paquet (« 📄 Charger des copies », ou « 📂 Mon dossier ») : chaque page retrouve son élève, ta recopie, tes marques et tes retouches ; tout le reste est déjà au site"], ["le pinceau", "appuie, glisse, lâche : la forme vient avec la question (souligné rouge, une faute ; surligné, une citation ; encadré, un mot ; trait dans la marge, un paragraphe) ; un clic sans glisser prend le mot sous la souris"], ["un clic dans le blanc", "hors de la page : l'outil se relâche (le champ se ferme, gardé ; la marque choisie et l'outil d'un tracé se relâchent)"], ["Entrée / N", "oui · non, puis la question suivante ; une marque qui répond « non » ou « oui » répond pour toi"], ["⌫", "la question précédente"], ["→ ←", "la copie suivante · précédente ; dans les retours : le retour suivant · précédent"], ["clic sur une marque", "la choisir ; sur une faute, sa bonne forme se rouvre (pour la taper ou la changer) ; sur une remarque, son texte ; tire-la, ou ses poignées"], ["Suppr · Ctrl+Z", "effacer la marque choisie · annuler"], ["★", "la phrase qui t'a marqué, surlignée en doré (passe de la langue)"], ["Ctrl + molette", "zoomer, sous la souris ; « ↔ Largeur » revient à la largeur de l'écran"], ["Maj (tenue)", "la loupe : un rond grossi trois fois sous la souris"], ["Alt (tenue)", "la copie nue : les marques disparaissent tant que tu tiens la touche"], ["un clic sur un mot", "le trait prend la longueur du mot, lue dans l'encre (glisse si l'appli se trompe)"], ["Tab", "dans la bonne forme : prend la première forme du paquet qui commence pareil"], ["💬 Remarque · Faute", "un tracé avec ce pinceau, puis le pinceau revient à la question"], ["⇥ Replier", "la copie prend la largeur ; la question reste dans une bande"], ["📋 Le récapitulatif", "la note, la grille, le bilan tel que l'élève le lira, « À reprendre » ; il s'ouvre seul quand tous les points d'une copie sont passés : Entrée, la copie suivante ; Échap, rester"], ["les lignes écrites", "demandées au début de chaque copie, passe de la langue : tape le nombre, Entrée ; tant qu'il manque, la copie ne se quitte pas"], ["✂ Page", "retoucher la photo : le cadre et la rotation degré par degré (flèches), Entrée garde, Échap annule ; les marques suivent leurs mots"], ["⠿ bonne forme", "le champ se pose au-dessus du mot ; tire-le par ⠿ s'il cache quelque chose, il garde cette place"], ["le paquet", "il reste dans ce navigateur et sur ta clé, jamais au site ; les marques et les réponses vont au site, chacune avec son identité"]] };
+RU_AIDES.scan = { ou: "Corriger sur les scans", l: [   /* [C14 407] le paquet en vignettes : seulement ce qui reste */
+  ["le paquet", "ses pages en vignettes, rangées par élève, avec son nom et ses étapes (recopiée, envoyée, chargée, la bande) ; une page sans élève vient en tête"],
+  ["clic sur une page", "ouvre la recopie de son élève à cette page ; Échap y revient"],
+  ["✍ Recopier", "la recopie de la copie où tu travaillais"],
+  ["📄 Charger des copies · 📂 Mon dossier", "ton paquet scanné, ou la copie d'un élève : un PDF ou des photos ; les pages neuves passent par « 🔤 Les initiales » ; elles restent dans ce navigateur et sur ta clé, jamais au site"],
+  ["🔤 Les initiales", "l'élève de chaque page : tape ses initiales, Entrée ; Entrée seule : le même élève que la page d'avant ; → passe la page"],
+  ["🖨 Copies vierges", "des copies de l'appli à imprimer : scannées, elles se remettent droites d'elles-mêmes"],
+  ["📨 Fichiers École Directe", "le fichier de chaque élève, à tester comme lui, à télécharger, ou tous dans un zip (« 📦 Tout rendre »)"],
+  ["sur un autre ordinateur", "recharge le même paquet : chaque page retrouve son élève, ta recopie, tes marques et tes retouches ; tout le reste est déjà au site"]] };
 document.addEventListener("focusout", () => setTimeout(() => { if (SC.panneauAttend && SC.ouvert) { const a = document.activeElement; if (!(a && document.getElementById("scPanneau").contains(a))) { SC.panneauAttend = false; scPanneau(); } } }, 0));
 function scModale(h) { const m = document.getElementById("scModale"); m.querySelector(".sc-modale-c").innerHTML = h + `<div style="text-align:right;margin-top:10px"><button class="sc-btn" onclick="scModaleFermer()" title="Fermer cette fenêtre (Échap fait pareil) ; rien n'est perdu.">Fermer</button></div>`; m.classList.add("show"); }
 function scModaleFermer() { document.getElementById("scModale").classList.remove("show"); }
@@ -7429,14 +7466,17 @@ function scLignesConnues(cv) {   // sur la copie de l'appli, les lignes sont à 
 // ↻ : la page tourne d'un quart de tour vers la droite ; ses marques tournent avec elle ; l'identité de la page ne change pas
 function scTournerPage(pid) {
   const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return;
-  if (!(p.lignes && p.lignes.reperes)) { scOrigDe(pid).then(o => { if (!o) return scTournerPageVieux(pid); const r = p.recadre; scReglerPage(pid, { rot: ((p.rot || 0) + 270) % 360, angle: p.angle || 0, recadre: r ? [1 - r[3], r[0], 1 - r[1], r[2]] : null }); }); return; }
+  if (!(p.lignes && p.lignes.reperes) && !p.vueTournee) { scOrigDe(pid).then(o => { if (!o) return scTournerPageVieux(pid); const r = p.recadre; scReglerPage(pid, { rot: ((p.rot || 0) + 270) % 360, angle: p.angle || 0, recadre: r ? [1 - r[3], r[0], 1 - r[1], r[2]] : null }); }); return; }
   scTournerPageVieux(pid);
 }
 function scTournerPageVieux(pid) {   // une page sans sa photo entière (une copie de l'appli, ou chargée avant) : l'image vue tourne
   const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im) return;
   createImageBitmap(im.blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); const r = scTourner(c, 270);
     if (typeof rcTransformerPage === "function") rcTransformerPage(pid, (x, y) => [1 - y, x]);
-    p.rot = (((p.rot || 0) + 270) % 360); if (p.recadre) { const [a0, b0, c0, d0] = p.recadre; p.recadre = [1 - d0, a0, 1 - b0, c0]; } p.w = r.width; p.h = r.height; p.lignes = scLignes(r); p.blanche = false; p.modifieLe = new Date().toISOString();
+    /* [C14 402] une copie de l'appli (redressée par ses repères) tourne toujours ici, en vue : elle n'a pas de photo entière à laquelle se rapporter ; revenue droite, elle retrouve ses lignes connues */
+    const vue = !!(p.lignes && p.lignes.reperes) || !!p.vueTournee; if (!(p.rot || 0) && p.lignes) p.lignesDroites = p.lignes;
+    p.rot = (((p.rot || 0) + 270) % 360); if (p.recadre) { const [a0, b0, c0, d0] = p.recadre; p.recadre = [1 - d0, a0, 1 - b0, c0]; } p.w = r.width; p.h = r.height; p.lignes = !p.rot && p.lignesDroites ? p.lignesDroites : scLignes(r); p.blanche = false; p.modifieLe = new Date().toISOString();
+    if (!p.rot) { delete p.lignesDroites; delete p.vueTournee; } else if (vue) p.vueTournee = true;
     Object.keys(state.copies || {}).forEach(k => { const ms = (state.copies[k].scan || {}).marques || {}; Object.values(ms).forEach(m => { if (m.page !== pid) return; const [a, b, c2, d] = [m.x0, m.y0, m.x1, m.y1]; m.x0 = 1 - d; m.x1 = 1 - b; m.y0 = a; m.y1 = c2; m.l0 = m.l1 = null; m.modifieLe = p.modifieLe; }); });
     r.toBlob(b => { try { URL.revokeObjectURL(im.url); } catch (e) {} SC.imgs[pid] = scImg(b, r.width, r.height); if (SC.encres) delete SC.encres[pid]; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: b, w: r.width, h: r.height, le: p.modifieLe });
       ruEcrire(scChemin(["pages", pid]), p, "une page tournée"); saveState(); const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); }, "image/jpeg", 0.82); });
@@ -7479,7 +7519,7 @@ function scRemap(m, A, B, W0, H0) {
 // la photo entière d'une page : gardée depuis son chargement, ou refaite d'une page jamais recadrée ni inclinée
 function scOrigDe(pid) {
   if (SC.origs[pid]) return Promise.resolve(SC.origs[pid]);
-  const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im || p.recadre || p.angle || (p.lignes && p.lignes.reperes)) return Promise.resolve(null);
+  const p = SC.pages[pid], im = SC.imgs[pid]; if (!p || !im || p.recadre || p.angle || (p.lignes && p.lignes.reperes) || p.vueTournee) return Promise.resolve(null);
   return createImageBitmap(im.blob).then(bm => { const c = document.createElement("canvas"); c.width = bm.width; c.height = bm.height; c.getContext("2d").drawImage(bm, 0, 0); const r = scTourner(c, (360 - (p.rot || 0)) % 360);
     return new Promise(res => r.toBlob(b => { SC.origs[pid] = { blob: b, w: r.width, h: r.height }; scDbMettre({ id: pid, red: RU.id, classe: RU.classe, blob: im.blob, w: im.w, h: im.h, le: new Date().toISOString() }); res(SC.origs[pid]); }, "image/jpeg", 0.9)); });
 }
@@ -7505,7 +7545,7 @@ function scReglerPage(pid, B, cvO) {
 function scRecadrerDebut(pid) { scRetoucher(pid); }
 function scRetoucher(pid) {
   const p = SC.pages[pid]; if (!p) return;
-  if (p.lignes && p.lignes.reperes) { toast("Une copie de l'appli se remet droite et se recadre d'elle-même : rien à retoucher."); return; }
+  if ((p.lignes && p.lignes.reperes) || p.vueTournee) { toast("Une copie de l'appli se remet droite et se recadre d'elle-même : rien à retoucher."); return; }
   scChampFermer(true);
   scOrigDe(pid).then(o => { if (!o) { toast("Remets ton paquet une fois (« 📄 Charger des copies ») : l'appli garde alors la photo entière de cette page, pour la retoucher sans rien perdre."); return; }
     scToile(o.blob).then(c => { SC.rt = { pid, orig: c, W0: c.width, H0: c.height, rot: p.rot || 0, angle: p.angle || 0, cadre: (p.recadre || [0, 0, 1, 1]).slice(), A: { rot: p.rot || 0, angle: p.angle || 0, recadre: p.recadre || null } };
@@ -7796,6 +7836,26 @@ function scRetirerPhotosOui() {
   return Promise.all(P.map(p => { const im = SC.imgs[p.id]; try { URL.revokeObjectURL(im.url); } catch (e) {} delete SC.imgs[p.id]; delete SC.origs[p.id]; if (SC.encres) delete SC.encres[p.id]; return scDbFaire("readwrite", st => st.delete(p.id)).catch(() => null); }))
     .then(() => { const Z = document.getElementById("scCopie"); if (Z) Z.dataset.sig = ""; scRendre(); toast(P.length + " photo" + (P.length > 1 ? "s" : "") + " retirée" + (P.length > 1 ? "s" : "") + " de ce navigateur."); });
 }
+/* ═══ [C14 404] le paquet en vignettes, rangées par élève, avec son nom et ses étapes ; une page sans élève en tête, pour « 🔤 Les initiales » ═══ */
+function scVuePaquet() {
+  const Z = document.getElementById("scCopie"); if (!Z) return; Z.dataset.sig = "";
+  if (!Object.keys(SC.pages).length) { Z.innerHTML = `<label class="sc-vide sc-vide-btn" title="Choisir ton paquet scanné, sur ta clé : un PDF, ou des photos (plusieurs à la fois). Il reste dans ce navigateur, jamais au site.">📄 Charger le paquet<small>un PDF ou des photos · il reste dans ce navigateur, jamais au site</small><input type="file" accept="application/pdf,.pdf,image/*" multiple onchange="scCharger(event)" hidden></label>`; return; }
+  const O = scPagesOrdre(), vig = (p, titre, clic, n) => { const im = SC.imgs[p.id]; return `<button class="sc-pq-vig" onclick="${clic}" title="${escapeAttr(titre)}">${im ? `<img src="${im.url}" alt="" loading="lazy">` : `<span class="sc-pq-manque">photo à remettre</span>`}<i>${n}</i></button>`; };
+  const sans = O.map((p, i) => ({ p, i })).filter(x => !x.p.eleve && !x.p.blanche), blanches = O.filter(p => p.blanche).length;
+  let h = '<div class="sc-pq">';
+  if (sans.length) h += `<section class="sc-pq-el sc-pq-sans"><div class="sc-pq-nom"><b>⚠ ${sans.length} page${sans.length > 1 ? "s" : ""} sans élève</b><span class="sc-m">donne chacune à son élève</span><button class="sc-btn" onclick="SC.attrib=true;SC.ia=${sans[0].i};scRendre()" title="Revoir, page par page, l'élève de chaque page (ses initiales), en commençant par la première page sans élève.">🔤 Les initiales</button></div><div class="sc-pq-vigs">${sans.map(x => vig(x.p, "Page " + (x.i + 1) + " du paquet, sans élève : clic pour lui donner son élève (ses initiales).", "SC.attrib=true;SC.ia=" + x.i + ";scRendre()", "page " + (x.i + 1))).join("")}</div></section>`;
+  SC.copies.forEach(k => { const P = scPagesDe(k), nom = nomEleveDe(k) || k, abs = typeof avAbsent === "function" && avAbsent(k);
+    h += `<section class="sc-pq-el${abs ? " abs" : ""}${k === scK() ? " cour" : ""}" data-k="${escapeAttr(k)}"><div class="sc-pq-nom"><b>${escapeHtml(nom)}</b>${abs ? '<b class="av-abs" title="Marqué absent : pas de fichier École Directe, il ne compte pas dans le Bilan.">ABS</b>' : ""}${typeof avCarteFlux === "function" ? avCarteFlux(k) : ""}</div>`
+      + `<div class="sc-pq-vigs">${P.map((p, j) => vig(p, "Ouvrir la recopie de " + nom + " à sa page " + (j + 1) + (P.length > 1 ? " sur " + P.length : "") + ".", "scPqOuvrir('" + escapeAttr(k) + "','" + p.id + "')", "page " + (j + 1))).join("")}</div></section>`; });
+  if (blanches) h += `<p class="sc-m">${blanches} page${blanches > 1 ? "s" : ""} blanche${blanches > 1 ? "s" : ""} dans le paquet : sans élève, elle${blanches > 1 ? "s" : ""} ne compte${blanches > 1 ? "nt" : ""} pas.</p>`;
+  Z.innerHTML = h + "</div>";
+}
+function scPqOuvrir(k, pid) {
+  const i = SC.copies.indexOf(k); if (i < 0) return; SC.ic = i; state.scanRecopie = { ouverte: false, copie: k, page: pid, ligne: null }; state.scanCurseur = Object.assign({}, state.scanCurseur || {}, { copie: k });   // là où tu travailles : l'écran des scans y revient
+  rcOuvrir(); if (!RC.ouvert) return; if (RC.page !== pid) rcActiverPage(pid);
+  const b = rcBloc(pid); if (b) b.scrollIntoView({ block: "start" });
+}
+
 
 // ── le fichier de l'élève, rendu par École Directe : sa photo et tes marques dedans (la photo ne passe jamais par le hub) ──
 // Sans interactivité (un téléphone qui ouvre la pièce jointe sans l'exécuter) : la copie et les marques se voient quand même.
@@ -7890,7 +7950,7 @@ function scEleveFichier(k, test) {
     const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(D.titre)} — ${escapeHtml(D.nom)}</title><style>${css}</style></head><body>
 <div class="tete">${escapeHtml(D.titre)}<small>${escapeHtml(D.nom)}</small></div><div class="copie" id="statique">${statique}</div>
 <script>const D=${JSON.stringify(D).replace(/</g, "\\u003c")};const IMG=${JSON.stringify(srcs)};${scCadresStickers.toString()};(${(D.correctionEleve ? scEleveApp : scEleveLecture).toString()})(D,IMG);<\/script></body></html>`;
-    return { html, nom: "Redaction-" + scSlug(D.titre).slice(0, 40) + "-" + scSlug(D.nom) + ".html", D };
+    return { html, nom: scNomFichierED(k), D };   // [C14 405] « NOM Prénom.html », écrit comme dans la liste de la classe
   });
 }
 // ── 1463 : le fichier de l'élève en LECTURE SEULE (tant que la correction par l'élève n'est pas codée) ──
@@ -8182,11 +8242,37 @@ function scFichiersED() {
       <td><button class="sc-btn" onclick="scTesterEleve('${escapeAttr(k)}')" title="Ouvrir le fichier de cet élève dans un nouvel onglet, exactement comme il le verra, en mode test : sa copie, tes marques, sa grille et sa note, en lecture seule. Rien ne va au site.">🧪 Tester comme l'élève</button> <button class="sc-btn" onclick="scTelecharger('${escapeAttr(k)}')" title="Télécharger le fichier de cet élève, à déposer sur École Directe. Sa photo est dedans : elle ne passe pas par le site.">Télécharger</button></td></tr>`; }).join("");
   scModale(`<h3>Les fichiers École Directe</h3><p>Un fichier par élève : sa copie scannée et tes marques dedans. Tu le déposes sur École Directe ; la photo ne passe jamais par le site. L'élève y lit sa copie corrigée, sa grille et sa note : il clique tes marques, il n'écrit rien.</p>
     <label class="sc-coche" title="Pas encore codée : cette coche reste grisée et décochée. Quand elle le sera, elle ouvrira la correction par l'élève, à lancer en classe comme la correction de dictée."><input type="checkbox" disabled> Ouvrir la correction par l'élève <span class="sc-m">— pas encore codée : aujourd'hui, l'élève lit sa copie corrigée, il ne la corrige pas.</span></label>${window.__FAUX_HUB || RU.test ? '<p class="sc-alerte">🧪 Mode test : les fichiers fabriqués ici n\'envoient rien au site.</p>' : ""}
-    <table class="sc-table"><tr><th></th><th>Élève</th><th>Pages</th><th>Correction</th><th></th></tr>${lignes}</table>${nAbs ? `<p class="sc-m">${nAbs} élève${nAbs > 1 ? "s" : ""} marqué${nAbs > 1 ? "s" : ""} absent${nAbs > 1 ? "s" : ""} : pas de fichier.</p>` : ""}<button class="sc-btn" onclick="scToutTelecharger()" title="Télécharger les ${Q.length} fichiers l'un après l'autre (le navigateur peut te demander d'autoriser plusieurs téléchargements).">Tout télécharger</button>`);
+    <table class="sc-table"><tr><th></th><th>Élève</th><th>Pages</th><th>Correction</th><th></th></tr>${lignes}</table>${nAbs ? `<p class="sc-m">${nAbs} élève${nAbs > 1 ? "s" : ""} marqué${nAbs > 1 ? "s" : ""} absent${nAbs > 1 ? "s" : ""} : pas de fichier.</p>` : ""}<button class="sc-btn" id="scToutRendre" onclick="scToutTelecharger()" title="Télécharger un seul zip : les ${Q.length} fichiers, un par élève, chacun nommé comme dans ta liste de classe (« NOM Prénom.html »), pour que l'extension retrouve l'élève sur École Directe. Rien ne part au site.">📦 Tout rendre : un zip de ${Q.length} fichier${Q.length > 1 ? "s" : ""}</button> <span id="scZipEtat" class="sc-m" role="status"></span>`);
 }
 function scTelecharger(k) { return scEleveFichier(k).then(f => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([f.html], { type: "text/html" })); a.download = f.nom; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500); }); }
 function scCopiesED() { return SC.copies.filter(k => !(typeof avAbsent === "function" && avAbsent(k))); }
-function scToutTelecharger() { let ch = Promise.resolve(); scCopiesED().forEach(k => { ch = ch.then(() => scTelecharger(k)).then(() => new Promise(r => setTimeout(r, 500))); }); }
+/* [C14 405] « 📦 Tout rendre » : un seul zip, un fichier par élève, nommé comme dans la liste de la classe (« NOM Prénom.html ») */
+function scTitreFichier() { const t = scSlug(SUJET.titre || "Redaction").slice(0, 40); return /^redaction/i.test(t) ? t : "Redaction-" + t; }   // jamais « Redaction-Redaction-… »
+function scNomFichierED(k) { return String(nomEleveDe(k) || k).replace(/[\\/:*?"<>|]+/g, "-").replace(/\s+/g, " ").trim() + ".html"; }
+const SC_CRC = (() => { const T = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let j = 0; j < 8; j++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; T[n] = c >>> 0; } return T; })();
+function scCrc32(u) { let c = 0xFFFFFFFF; for (let i = 0; i < u.length; i++) c = SC_CRC[(c ^ u[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+function scZip(F) {   // [{ nom, octets: Uint8Array }] → un zip « stocké », noms en UTF-8 (lu par Windows, macOS et l'extension)
+  const enc = new TextEncoder(), parts = [], centre = [], d = new Date(); let off = 0;
+  const dt = ((d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1)) & 0xFFFF, dd = (((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate()) & 0xFFFF;
+  F.forEach(f => { const n = enc.encode(f.nom), crc = scCrc32(f.octets), sz = f.octets.length, h = new DataView(new ArrayBuffer(30)), c = new DataView(new ArrayBuffer(46));
+    [[0, 0x04034b50, 4], [4, 20, 2], [6, 0x0800, 2], [8, 0, 2], [10, dt, 2], [12, dd, 2], [14, crc, 4], [18, sz, 4], [22, sz, 4], [26, n.length, 2], [28, 0, 2]].forEach(([o, v, l]) => l === 4 ? h.setUint32(o, v, true) : h.setUint16(o, v, true));
+    [[0, 0x02014b50, 4], [4, 20, 2], [6, 20, 2], [8, 0x0800, 2], [10, 0, 2], [12, dt, 2], [14, dd, 2], [16, crc, 4], [20, sz, 4], [24, sz, 4], [28, n.length, 2], [30, 0, 2], [32, 0, 2], [34, 0, 2], [36, 0, 2], [38, 0, 4], [42, off, 4]].forEach(([o, v, l]) => l === 4 ? c.setUint32(o, v, true) : c.setUint16(o, v, true));
+    parts.push(h.buffer, n, f.octets); centre.push(c.buffer, n); off += 30 + n.length + sz; });
+  const tc = centre.reduce((s, x) => s + x.byteLength, 0), e = new DataView(new ArrayBuffer(22));
+  e.setUint32(0, 0x06054b50, true); e.setUint16(8, F.length, true); e.setUint16(10, F.length, true); e.setUint32(12, tc, true); e.setUint32(16, off, true);
+  return new Blob(parts.concat(centre, [e.buffer]), { type: "application/zip" });
+}
+function scToutTelecharger() {
+  const Q = scCopiesED(), etat = t => { const o = document.getElementById("scZipEtat"); if (o) o.textContent = t; }, b = document.getElementById("scToutRendre"), enc = new TextEncoder(), F = [], vus = {};
+  if (!Q.length) { toast("Aucun fichier à rendre : aucune copie, ou tous les élèves sont absents."); return Promise.resolve(); }
+  if (b) b.disabled = true; let ch = Promise.resolve();
+  Q.forEach((k, i) => { ch = ch.then(() => { etat("Le zip se prépare : " + (i + 1) + " / " + Q.length + "…"); return scEleveFichier(k); }).then(f => { let nom = f.nom; if (vus[nom]) nom = nom.replace(/\.html$/, " (" + (++vus[f.nom]) + ").html"); else vus[nom] = 1; F.push({ nom, octets: enc.encode(f.html) }); }); });
+  return ch.then(() => { const d = new Date(), z = n => String(n).padStart(2, "0"), a = document.createElement("a");
+    a.href = URL.createObjectURL(scZip(F)); a.download = scTitreFichier() + "-fichiers-eleves_" + d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()) + "_" + z(d.getHours()) + "h" + z(d.getMinutes()) + ".zip";
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+    etat("Le zip est prêt : " + F.length + " fichier" + (F.length > 1 ? "s" : "") + ", un par élève, nommés comme dans ta liste de classe."); if (b) b.disabled = false; },
+    e => { etat(""); if (b) b.disabled = false; toast("⚠ Le zip n'a pas pu se faire : " + (e && e.message || e)); });
+}
 // tester le flux de l'élève : son fichier, en mode test, dans un onglet relié à cette correction (l'onglet s'ouvre au clic, le fichier s'y pose ensuite)
 SC.fenetres = [];
 function scTesterEleve(k) {
@@ -8316,6 +8402,7 @@ function rcInterface() {
     '<button id="rcCopieAvant" class="sc-btn" title="Recopier la copie précédente ; la saisie en cours est gardée.">← Copie</button>',
     '<button id="rcCopieSuite" class="sc-btn" title="Recopier la copie suivante ; la saisie en cours est gardée.">Copie →</button>',
     '<label>Page <select id="rcPage" title="Choisir une page de cette copie. Chaque page garde ses lignes et sa saisie."></select></label>',
+    '<output id="rcChrono" title="Ton temps sur cette copie, compté seul : à la recopie, puis dans la bande. Une minute sans geste ne compte pas ; la frappe compte. Le total de la classe est dans « 📋 Le flux »."></output>',
     '<output id="rcEtat" role="status"></output></header>',
     '<div class="rc-outils"><span id="rcCompte"></span>',
     '<button id="rcAjouter" class="sc-btn" title="Ajouter une ligne après la ligne en cours. Recale ses deux poignées avant de taper.">＋ Une ligne</button>',
@@ -8329,7 +8416,7 @@ function rcInterface() {
     '<button id="rcImportIA" class="sc-btn" title="Coller ou choisir le retour de l’IA. L’app vérifie que toutes les lignes correspondent avant de rien changer.">⇩ Charger le corrigé de l’IA</button><button id="rcFluxOuvrir" class="sc-btn" title="Le flux de la classe : pour chaque copie, ce qui est recopié, envoyé à l’IA, chargé, et où en est la bande, avec l’heure de chaque étape.">📋 Le flux</button><span id="rcIAEtat" class="rc-ia-etat"></span>',
     '<button id="rcPhraseOuvrir" class="sc-btn" title="La fin de la recopie de cette copie : surligne la phrase qui t’a marqué (clic sur son premier mot, puis sur son dernier), ou coche « Pas de phrase ». Elle passe en or sur la copie de l’élève. Le flux ne coche « recopiée » qu’après.">★ La phrase qui m’a marqué</button>',
     '<button id="rcBandeOuvrir" class="sc-btn" title="La bande : elle s’arrête à chaque faute proposée par le corrigé de l’IA. Entrée ou Espace : c’est une faute ; N : non. Échap : revenir à la recopie.">▶ La bande</button>',
-    '<button id="rcRemplacer" class="sc-btn" title="Remplacer la photo de cette page par une meilleure (une photo, ou un PDF d’une page). La feuille garde son identité : ta recopie reste et se recale sur la nouvelle photo, les cadres de la bande se replacent.">📷 Remplacer la photo</button>',
+    '<button id="rcPhotoOuvrir" class="sc-btn" title="Les outils de la photo de cette page, des gestes rares : la remplacer, la tourner, la retoucher, changer l’ordre des pages, retirer les photos de ce navigateur.">📷 La photo</button>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
     '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand va de la marge rouge au bord de la copie.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
@@ -8337,7 +8424,14 @@ function rcInterface() {
     '<p id="rcMessage" class="rc-message"></p>',
     '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b><button id="rcStPlus" class="sc-btn" title="Poser un sticker que l’IA n’a pas vu : sur le mot où tu es (mot par mot), ou sur le passage de l’arrêt en cours. Seuls les stickers validés se posent.">＋ Un sticker</button></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo" title="Glisse le cadre pour le déplacer. Double clic sur le cadre : deux poignées, une de chaque côté, pour régler sa longueur ; encore un double clic les retire. Clic droit sur le cadre : une faute de ta recopie."></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div><div id="rcRqListe" class="st-rq-liste" hidden></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
     '<div id="rcPhrase" class="rc-ia" hidden><div class="rc-ia-c rc-phrase-c" role="dialog" aria-label="La phrase qui m’a marqué"><b>La phrase qui m’a marqué</b><span>Clique le premier mot de la phrase : il s’écrit en dessous. Clique le dernier : toute la phrase s’écrit d’un coup. Un autre clic recommence. Elle passera en or sur la copie de l’élève. C’est la fin de la recopie de cette copie : sans elle (ou « Pas de phrase »), tu ne passes pas à la copie suivante.</span><div id="rcPhraseTexte" class="rc-phrase-t"></div><div id="rcPhraseChoix" class="rc-phrase-choix" aria-live="polite"></div><div class="rc-ia-b"><label class="rc-phrase-non" title="Aucune phrase ne t’a marqué dans cette copie : la recopie est finie quand même.">' + '<input type="checkbox" id="rcPhraseAucune"> Pas de phrase</label><button id="rcPhraseOui" class="sc-btn" disabled title="Choisis d’abord le premier et le dernier mot de la phrase.">✓ C’est elle</button><button id="rcPhraseFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
-    '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
+    '<div id="rcPhotoF" class="rc-ia" hidden><div class="rc-ia-c rc-photo-c" role="dialog" aria-label="La photo de cette page"><b>📷 La photo</b><span id="rcPhotoQui"></span><div class="rc-photo-b">',
+    '<button id="rcRemplacer" class="sc-btn" title="Remplacer la photo de cette page par une meilleure (une photo, ou un PDF d’une page). La feuille garde son identité : ta recopie reste et se recale sur la nouvelle photo, les cadres de la bande se replacent.">📷 Remplacer</button>',
+    '<button id="rcPhTourner" class="sc-btn" title="Tourner cette page d’un quart de tour vers la droite (une photo prise de côté). Ta recopie, tes marques et les cadres tournent avec elle.">↻ Tourner</button>',
+    '<button id="rcPhRetoucher" class="sc-btn" title="Retoucher cette page comme une photo : le cadre (ce qui dépasse disparaît de la copie et du fichier de l’élève) et la rotation degré par degré. Ta recopie et tes marques suivent leurs mots.">✂ Retoucher</button>',
+    '<button id="rcPhOrdre" class="sc-btn" title="La dernière page de cette copie passe en premier (une copie photographiée dans le désordre). Chaque page garde sa recopie.">⇄ Ordre des pages</button>',
+    '<button id="rcPhRetirer" class="sc-btn" title="Retirer les photos de cette copie de ce navigateur seulement. Une confirmation est demandée. Ta recopie, ta correction et tes marques restent au site.">🗑 Retirer les photos</button></div>',
+    '<p id="rcPhotoPourquoi" class="rc-photo-pq"></p><div class="rc-ia-b"><button id="rcPhotoFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
+    '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcSauvegarde" class="sc-btn" title="Télécharger la sauvegarde de toute la rédaction, telle qu’elle est au site : le sujet et sa grille de stickers, les copies (recopie, envois, corrigés, bande, stickers, remarques, temps), les pages du paquet, les retours des élèves. « 📤 Restaurer » la relit. Les photos n’y sont pas : elles ne quittent jamais ce navigateur.">💾 Télécharger la sauvegarde</button><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
     '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
     '<textarea id="rcIATexte" spellcheck="false" placeholder="Colle ici le retour de l’IA"></textarea>',
     '<div class="rc-ia-b"><label class="sc-btn" title="Choisir le fichier rendu par l’IA, ou tous ses fichiers d’un coup : ils se chargent l’un après l’autre, dans n’importe quel ordre.">Choisir un ou plusieurs fichiers<input id="rcIAFichier" type="file" multiple accept=".json,.txt,application/json,text/plain" hidden></label><button id="rcIAValider" class="sc-btn" title="Vérifier toutes les lignes, puis enregistrer le corrigé">Vérifier et charger</button><button id="rcIAFermer" class="sc-btn" title="Fermer sans rien changer (Échap)">Fermer</button><button id="rcIAEffacer" class="sc-btn rc-ia-effacer" title="Effacer, sur toute la classe, le corrigé de l’IA et tout ce qui vient de la bande (décisions, marques posées par la bande, cadres visés), pour tout refaire proprement. Ta recopie ne bouge pas. Une confirmation est demandée ; tout passe d’abord par la corbeille MJPC et un export.">🗑 Tout effacer : corrigés de l’IA et bande</button></div><p id="rcIAMessage" role="status"></p><div id="rcIAEffacerQ" class="rc-ia-q" hidden></div></div></div>'
@@ -8363,8 +8457,13 @@ function rcInterface() {
   e.querySelector("#rcIAFermer").onclick = rcIAFermer;
   /* [C14 1.4.12] (exigences du 29/10 : « max 30 clics par copie » ; « mesurer le gain ») : le temps de recopie, le temps de bande et les gestes de chaque copie, comptés seuls */
   e.addEventListener("pointerdown", () => rcCompter("clic"), true); e.addEventListener("keydown", ev => rcCompter(ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie") ? "frappe" : "touche"), true); e.addEventListener("input", () => rcCompter("frappe"), true);
-  e.querySelector("#rcRemplacer").onclick = () => { if (RC.page) { rcGarder(); scRemplacerPage(RC.page); } };
-  e.querySelector("#rcFluxOuvrir").onclick = rcFluxOuvrir; e.querySelector("#rcFluxFermer").onclick = rcFluxFermer;
+  e.querySelector("#rcRemplacer").onclick = () => rcPhotoFaire(pid => scRemplacerPage(pid));
+  e.querySelector("#rcPhotoOuvrir").onclick = rcPhotoOuvrir; e.querySelector("#rcPhotoFermer").onclick = rcPhotoFermer;
+  e.querySelector("#rcPhTourner").onclick = () => rcPhotoFaire(pid => scTournerPage(pid));
+  e.querySelector("#rcPhRetoucher").onclick = () => rcPhotoFaire(pid => scRetoucher(pid));
+  e.querySelector("#rcPhOrdre").onclick = () => rcPhotoFaire(() => scOrdrePages(RC.copie));
+  e.querySelector("#rcPhRetirer").onclick = () => rcPhotoFaire(() => scRetirerPhotos());
+  e.querySelector("#rcFluxOuvrir").onclick = rcFluxOuvrir; e.querySelector("#rcFluxFermer").onclick = rcFluxFermer; e.querySelector("#rcSauvegarde").onclick = () => svTelecharger();
   e.querySelector("#rcPhraseOuvrir").onclick = rcPhraseOuvrir; e.querySelector("#rcPhraseFermer").onclick = rcPhraseFermer; e.querySelector("#rcPhraseOui").onclick = rcPhraseValider;
   e.querySelector("#rcPhraseAucune").onchange = ev => { if (ev.target.checked) rcPhraseAucune(); };
   e.querySelector("#rcIAEffacer").onclick = rcIAEffacerDemander;
@@ -8443,14 +8542,14 @@ function rcOuvrir(reprendre) {
   RC.ligne = r.ligne || null;
   const e = rcInterface(); e.hidden = false; document.body.classList.add("rc-ouvert");
   SC.copies.forEach(rcSeparerAnciens);   // [C14 1.4.5] les arrêts d'avant à plusieurs mots, coupés une fois pour toutes
-  rcActualiser(true); rcBookmark(); SC.actif = Date.now();
+  rcActualiser(true); rcBookmark(); SC.actif = Date.now(); if (typeof svBase === "function") svBase(); aidePoser("recopie");   // [C14 407]   // [C14] la sauvegarde se propose quand le paquet PASSE à « entièrement corrigé »
   rcSelectionner(RC.ligne, true, true);
   if (reprendre && dernier && dernier.bande && dernier.copie === RC.copie) rcBandeOuvrir(true);   // [C14 1.4.7] rechargée en mode bande : la bande, au même arrêt
 }
 function rcFermer(sansRendre) {
   if (!RC.ouvert) return; if (RC.bd) rcBandeFermer(true); RC.ouvert = false; RC.drag = null;
   if (RC.ui) RC.ui.hidden = true;
-  document.body.classList.remove("rc-ouvert"); SC.actif = Date.now(); rcBookmark();
+  document.body.classList.remove("rc-ouvert"); SC.actif = Date.now(); rcBookmark(); aidePoser(SC.ouvert ? "scan" : (SC.aideAvant || "correction"));
   if (!sansRendre) { scRendre(); scLignesAccueil(); }
 }
 function rcChoisirCopie(k) {
@@ -8487,7 +8586,7 @@ function rcActualiser(changer) {
   const d = rcDocument(p.id);
   if (!d.ordre.includes(RC.ligne)) RC.ligne = d.ordre[0] || null;
   const im = SC.imgs[p.id]; e.querySelector("#rcCharger").hidden = scPagesDe(RC.copie).every(q => SC.imgs[q.id]);
-  rcBlocs(); rcToutesPages(() => { rcRapprocherLignes(); rcMettreEnPage(); }); rcMarques(); rcEtatLigne();
+  rcBlocs(); rcToutesPages(() => { rcRapprocherLignes(); rcMettreEnPage(); }); rcMarques(); rcEtatLigne(); rcChronoRendre();
   if (changer) e.querySelector("#rcDefile").scrollTop = 0;
 }
 /* C14 (31/10, Paul 07:32) : une ligne prend toujours son rang (et son numéro) selon sa hauteur sur la photo */
@@ -8953,7 +9052,7 @@ function rcIAChargerSuite(txt) {
     Object.keys(x.l.marquesBande || {}).forEach(c => { const m = s.marques[x.l.marquesBande[c]]; if (m && m.bande && r.types && r.types[c]) m.bande.code = r.types[c]; });
     fautes += A.length; lignes++; }); });
   ok.forEach(k => { const s = scCopie(k), L = rcLignesEcrites(k); let f = 0, t = 0; L.forEach(x => rcArretsLigne(x.l).forEach(g => { f++; if (x.l.types && x.l.typesDe === x.l.corrige && x.l.types[rcCle(g)]) t++; })); s.recopie = s.recopie || {}; s.recopie.charge = { le: quand, fautes: f, types: t }; });   // [C14 1.4.11] le flux
-  saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre();
+  saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre(); if (typeof svVerifier === "function") svVerifier();
   const reste = coupees.length + changees.length, pl = (v, m) => v + " " + m + (v > 1 ? "s" : "");
   msg.textContent = "Chargé : " + pl(ok.length, "copie") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA" + (fautes ? ", dont " + typees + " avec leur type" + (sansLettre ? " (" + sansLettre + " sans lettre : le type du moteur)" : "") : "") + "."
     + (coupees.length ? " " + pl(coupees.length, "copie") + (o.coupe ? " coupée" + (coupees.length > 1 ? "s" : "") : " incomplète" + (coupees.length > 1 ? "s" : "")) + " : au prochain export." : "")
@@ -9081,11 +9180,11 @@ function rcPhraseValider() {
   const P = RC.phrase; if (!P || P.a < 0 || P.b < 0) return; const apres = RC.phraseApres; const k = P.k, a = Math.min(P.a, P.b), b = Math.max(P.a, P.b), W = P.W.slice(a, b + 1);
   rcPhrasePoser(k, a, b, P.W);
   const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), debut: { id: P.W[a].id, m: P.W[a].m }, fin: { id: P.W[b].id, m: P.W[b].m }, texte: rcTexteMots(W) };
-  saveState(); rcPhraseFermer(); rcEtatIA(); toast("La phrase qui t’a marqué est gardée : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite();
+  saveState(); rcPhraseFermer(); rcEtatIA(); toast("La phrase qui t’a marqué est gardée : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite(); if (typeof svVerifier === "function") svVerifier();
 }
 function rcPhraseAucune() {
   const P = RC.phrase; if (!P) return; const apres = RC.phraseApres; rcPhraseRetirer(P.k); const s = scCopie(P.k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), aucune: true };
-  saveState(); rcPhraseFermer(); rcEtatIA(); toast("Pas de phrase : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite();
+  saveState(); rcPhraseFermer(); rcEtatIA(); toast("Pas de phrase : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite(); if (typeof svVerifier === "function") svVerifier();
 }
 /* le temps compte comme le chrono des scans : une minute sans geste ne compte pas ; la frappe de la recopie compte du temps, pas des gestes */
 function rcCompter(type) {
@@ -9094,10 +9193,37 @@ function rcCompter(type) {
   if (RC.gesteCopie === RC.copie && d > 0 && d < 60000) T[lieu] = (T[lieu] || 0) + d;
   RC.dernierGeste = t; RC.gesteCopie = RC.copie;
   if (type !== "frappe") { const G = s.recopie.gestes = s.recopie.gestes || { recopie: 0, bande: 0 }; G[lieu] = (G[lieu] || 0) + 1; }
+  rcChronoRendre();
+}
+/* [C14 403] le chrono de la copie affichée, en haut de la recopie : il ne touche que son texte, jamais le focus */
+function rcDureeCourte(ms) { const s = Math.floor((ms || 0) / 1000); return s < 60 ? s + " s" : Math.floor(s / 60) + " min"; }
+function rcChronoRendre() {
+  if (!RC.ui || !RC.copie) return; const o = RC.ui.querySelector("#rcChrono"); if (!o) return;
+  const T = ((scCopie(RC.copie).recopie || {}).temps) || {}, txt = "⏱ recopie " + rcDureeCourte(T.recopie) + " · bande " + rcDureeCourte(T.bande);
+  if (o.textContent !== txt) o.textContent = txt;
 }
 function rcDuree(ms) { const s = Math.round((ms || 0) / 1000); return s < 60 ? s + " s" : Math.floor(s / 60) + " min" + (s % 60 ? " " + String(s % 60).padStart(2, "0") : ""); }
+/* [C14 402] un seul bouton « 📷 La photo » : une petite fenêtre avec les gestes rares de la photo ; un bouton grisé dit pourquoi, en dessous */
+function rcPhotoOuvrir() {
+  if (!RC.page) return; rcGarder(); RC.photoOuvert = true; const e = RC.ui, P = scPagesDe(RC.copie), i = P.findIndex(p => p.id === RC.page), p = SC.pages[RC.page] || {}, a = !!SC.imgs[RC.page], app = !!(p.lignes && p.lignes.reperes) || !!p.vueTournee, pq = [];
+  e.querySelector("#rcPhotoQui").textContent = "Page " + (i + 1) + " / " + P.length + " de la copie de " + (nomEleveDe(RC.copie) || RC.copie) + ". Ta recopie, tes marques et les cadres suivent toujours la page.";
+  const gris = (sel, non, pourquoi) => { const b = e.querySelector(sel); b.disabled = !!non; b.setAttribute("aria-disabled", non ? "true" : "false"); if (non) pq.push(b.textContent + " : " + pourquoi); };
+  gris("#rcPhTourner", !a, "la photo de cette page n’est pas dans ce navigateur (remets ton paquet, ou « 📷 Remplacer »).");
+  gris("#rcPhRetoucher", !a || app, !a ? "la photo de cette page n’est pas dans ce navigateur." : "une copie de l’appli se remet droite et se recadre d’elle-même.");
+  gris("#rcPhOrdre", P.length < 2, "cette copie n’a qu’une page.");
+  gris("#rcPhRetirer", !P.some(q => SC.imgs[q.id]), "aucune photo de cette copie n’est dans ce navigateur.");
+  e.querySelector("#rcPhotoPourquoi").textContent = pq.join(" · ");
+  e.querySelector("#rcPhotoF").hidden = false;
+}
+function rcPhotoFermer() { RC.photoOuvert = false; if (RC.ui) RC.ui.querySelector("#rcPhotoF").hidden = true; }
+function rcPhotoFaire(fn) { const pid = RC.page; if (!pid) return; rcGarder(); rcPhotoFermer(); fn(pid); }
 function rcFluxOuvrir() { if (RC.page) rcGarder(); RC.fluxOuvert = true; RC.ui.querySelector("#rcFlux").hidden = false; rcFluxRendre(); }
 function rcFluxFermer() { RC.fluxOuvert = false; RC.ui.querySelector("#rcFlux").hidden = true; }
+/* [C14 403] le total de la classe, sous le flux */
+function rcFluxTotal(F) {
+  const S = F.reduce((s, f) => { const T = f.temps || {}, G = f.gestes || {}; s.r += T.recopie || 0; s.b += T.bande || 0; s.g += (G.recopie || 0) + (G.bande || 0); return s; }, { r: 0, b: 0, g: 0 });
+  return '<tfoot><tr class="rc-flux-total"><td colspan="5">Toute la classe</td><td>recopie ' + rcDuree(S.r) + " · bande " + rcDuree(S.b) + " · " + S.g + " geste" + (S.g > 1 ? "s" : "") + "</td></tr></tfoot>";
+}
 function rcFluxRendre() {
   const t = RC.ui.querySelector("#rcFluxTable"), F = SC.copies.map(rcFluxCopie), ok = '<span class="rc-flux-ok">✓</span> ', non = '<span class="rc-flux-non">—</span>';
   t.innerHTML = '<table><thead><tr><th>Copie</th><th>Recopiée</th><th>Envoyée à l’IA</th><th>Corrigé chargé</th><th>Bande</th><th title="Comptés seuls : une minute sans geste ne compte pas ; la frappe de ta recopie compte du temps, pas des gestes.">Temps et gestes</th></tr></thead><tbody>' + F.map(f => '<tr data-k="' + escapeAttr(f.k) + '"' + (f.k === RC.copie ? ' class="on"' : "") + '><td>' + escapeHtml(f.nom) + "</td>"
@@ -9105,7 +9231,7 @@ function rcFluxRendre() {
     + "<td>" + (f.envoi ? (f.envoiAJour || f.charge ? ok : "⚠ ") + "envoi " + f.envoi.n + " · " + rcHeure(f.envoi.le) + (!f.envoiAJour && !f.charge ? " · retapée depuis" : "") : f.charge ? ok + "avant le flux" : non) + "</td>"
     + "<td>" + (f.charge ? ok + rcHeure(f.charge.le) + " · " + f.charge.fautes + " faute" + (f.charge.fautes > 1 ? "s" : "") + (f.charge.types != null ? ", " + f.charge.types + " avec leur type" : "") : f.envoi ? "en attente" : non) + (f.refus ? ' <span class="rc-flux-non">⚠ copie refusée ' + rcHeure(f.refus.le) + " : lignes mélangées par l’IA, au prochain export</span>" : "") + "</td>"
     + "<td>" + (f.arrets ? (f.fini ? ok : "") + f.decides + " / " + f.arrets : non) + "</td>"
-    + "<td>" + (f.temps || f.gestes ? "recopie " + rcDuree((f.temps || {}).recopie) + " · bande " + rcDuree((f.temps || {}).bande) + " · " + (((f.gestes || {}).recopie || 0) + ((f.gestes || {}).bande || 0)) + " gestes" : non) + "</td></tr>").join("") + "</tbody></table>";
+    + "<td>" + (f.temps || f.gestes ? "recopie " + rcDuree((f.temps || {}).recopie) + " · bande " + rcDuree((f.temps || {}).bande) + " · " + (((f.gestes || {}).recopie || 0) + ((f.gestes || {}).bande || 0)) + " gestes" : non) + "</td></tr>").join("") + "</tbody>" + rcFluxTotal(F) + "</table>";
   t.querySelectorAll("tr[data-k]").forEach(tr => tr.onclick = () => { const k = tr.dataset.k; rcFluxFermer(); const sel = RC.ui.querySelector("#rcCopie"); if (sel && sel.value !== k) { sel.value = k; sel.dispatchEvent(new Event("change")); } });
 }
 function rcCompteIA() {
@@ -9383,8 +9509,8 @@ function rcLigneMaj(k, pid, id, fn) { const pgs = (scCopie(k).recopie || {}).pag
 function rcNoteTexte(k) { const r = scNote(k); return r.ok ? (Math.round(r.n * 10) / 10) + " / " + r.tot : "incomplète"; }
 function rcBandeOuvrir(reprise) {
   if (RC.page && !reprise) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); rcLignesEcrites(k).forEach(x => rcRetroactif(k, x.pid, x.id)); const A = rcArretsBande(k);
-  if (!A.length) { toast("Pas de faute ni de sticker proposés sur cette copie : charge d’abord le corrigé de l’IA."); return; }
-  RC.bd = { k, i: 0, A }; rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
+  if (!A.length && !(typeof stRqARelire === "function" && stRqARelire(k))) { toast("Pas de faute ni de sticker proposés sur cette copie : charge d’abord le corrigé de l’IA."); return; }   // [C14] (trouvé par le banc de la sauvegarde) une copie sans arrêt mais avec des remarques de l'IA : la bande s'ouvre sur leur relecture, sinon l'élève ne les lirait jamais
+  RC.bd = { k, i: 0, A }; aidePoser("bande"); rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
   RC.ui.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(k); if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   rcReplacerBande(k);
   const s = scCopie(k), anc = Object.values(s.marques).filter(m => m.forme === "faute" && !m.bande).length, av = RC.ui.querySelector("#rcBandeAvis");
@@ -9397,8 +9523,8 @@ function rcBandeOuvrir(reprise) {
   /* [C14 1.4.7] (Paul 15:41 : « si je commence la bande, que je fais deux mots, je dois retomber à ce même mot ») : l'arrêt où tu étais, pour chaque élève */
   const ba = (scCopie(k).recopie || {}).bandeArret;
   if (ba && ba.mot) { const B = RC.bd; B.mot = true; B.W = rcMotsCopie(k, A); let j = ba.fin ? B.W.length : B.W.findIndex(w => w.id === ba.id && w.cle === ba.cle); if (j < 0) j = Math.max(0, B.W.findIndex(w => w.id === ba.id)); B.j = j; }   // [C14 1.4.12] rouverte en mot par mot, au même mot
-  else if (ba && ba.fin) RC.bd.i = A.length; else if (ba) { let j = A.findIndex(a => a.id === ba.id && a.cle === ba.cle); if (j < 0) j = A.findIndex(a => a.id === ba.id); if (j >= 0) RC.bd.i = j; }
-  rcBookmark(); rcBandeRendre();
+  else if (ba && ba.fin) RC.bd.i = i >= 0 ? i : A.length; else if (ba) {   /* [C14] (trouvé par le banc de la sauvegarde) une bande finie le reste, sauf un arrêt nouveau (une ligne retapée) : elle s'ouvre sur lui */ let j = A.findIndex(a => a.id === ba.id && a.cle === ba.cle); if (j < 0) j = A.findIndex(a => a.id === ba.id); if (j >= 0) RC.bd.i = j; }
+  rcBookmark(); rcBandeRendre(); if (typeof svVerifier === "function") svVerifier();   // [C14] une copie rouverte avec un arrêt de plus (une ligne retapée) n'est plus finie : la sauvegarde se reproposera quand elle le sera
 }
 function rcBandeMemoriser() {
   const B = RC.bd; if (!B || B.attente) return; const rec = scCopie(B.k).recopie; if (!rec) return; const a = rcBandeCourant();
@@ -9411,10 +9537,10 @@ function rcBandeCommencer() {
   Object.values(s.marques).filter(m => m.forme === "faute" && !m.bande).forEach(m => { s.marquesAnciennes[m.id] = m; delete s.marques[m.id]; });
   scNumeroter(k); saveState(); RC.bd.attente = false; RC.ui.querySelector("#rcBandeAvis").hidden = true; rcBandeRendre();
 }
-function rcBandeFermer(seul) { RC.bd = null; if (!seul) rcBookmark(); if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; } if (seul) return; rcActualiser(); rcSelectionner(RC.ligne, true, true); }
+function rcBandeFermer(seul) { RC.bd = null; if (RC.ouvert) aidePoser("recopie"); if (!seul) rcBookmark(); if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; } if (seul) return; rcActualiser(); rcSelectionner(RC.ligne, true, true); }
 function rcBandeDecider(v) {
   const B = RC.bd, a = B.A[B.i]; if (!a) return; if (a.st) stDeciderArret(B.k, a, v); else rcDeciderArret(B.k, a, v);
-  B.i = Math.min(B.A.length, B.i + 1); B.note = ""; rcBandeRendre();
+  B.i = Math.min(B.A.length, B.i + 1); B.note = ""; rcBandeRendre(); if (typeof svVerifier === "function") svVerifier();   // [C14] le paquet fini propose sa sauvegarde
 }
 function rcDeciderArret(k, a, v) {   // [C14 1.4.12] la décision d'un arrêt de l'IA, la même depuis les arrêts et depuis le mot par mot
   const B = { k }, s = scCopie(B.k), deja = a.l.marquesBande && a.l.marquesBande[a.cle];
@@ -9602,7 +9728,10 @@ function rcClavier(ev) {
   if (!RC.ouvert) return false;
   if (ev.isComposing) return true;
   const input = ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie");
+  if (typeof SC !== "undefined" && SC.rt) return false;   // [C14 402] la retouche, ouverte depuis la recopie, garde ses touches (Entrée, Échap, flèches)
+  { const mo = document.getElementById("scModale"); if (mo && mo.classList.contains("show")) { if (ev.key === "Escape") { ev.preventDefault(); scModaleFermer(); } ev.stopPropagation(); return true; } }
   if (RC.bd) return rcBandeClavier(ev);
+  if (RC.photoOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcPhotoFermer(); } ev.stopPropagation(); return true; }
   if (RC.fluxOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcFluxFermer(); } ev.stopPropagation(); return true; }
   if (RC.phrase) { if (ev.key === "Escape") { ev.preventDefault(); rcPhraseFermer(); } ev.stopPropagation(); return true; }
   if (RC.iaOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcIAFermer(); } ev.stopPropagation(); return true; }
@@ -10154,6 +10283,35 @@ GRAMM.classify = function(typed, correct) {
   return null;
 };
 
+/* [C14 407] l'aide « ? » de la recopie et de la bande : seulement ce qui reste */
+RU_AIDES.recopie = { ou: "Recopier", l: [
+  ["les poignées vertes", "recale la ligne sur la photo (ses deux bouts), puis tape ce que l'élève a écrit, sans corriger"],
+  ["Entrée · ↑ ↓", "la ligne suivante · changer de ligne ; à la dernière ligne, Entrée ouvre « ★ La phrase qui m'a marqué »"],
+  ["⌫ au début d'une ligne", "remonter à la fin de la ligne d'avant"],
+  ["« (guillemet droit)", "s'écrit en guillemets français, « » selon la place"],
+  ["Ctrl + Z", "dans le champ : annuler la frappe ; hors du champ : annuler le dernier ajout, retrait ou recalage"],
+  ["＋ Une ligne · − Cette ligne", "ajouter une ligne après celle en cours · retirer celle en cours"],
+  ["− ↔ Largeur ＋ · Ctrl + molette", "la taille de la photo et de la feuille ensemble"],
+  ["★ La phrase qui m'a marqué", "la fin de la recopie de cette copie : premier mot, dernier mot, « ✓ C'est elle » (ou « Pas de phrase ») ; sans elle, la copie suivante ne vient pas"],
+  ["⇪ Exporter pour l'IA", "le paquet suivant, 8 copies au plus, sans nom d'élève ; grisé tant que l'énoncé ou ta grille de stickers manque, et il dit pourquoi ; « ↻ Renvoyer » si un retour s'est perdu"],
+  ["⇩ Charger le corrigé de l'IA", "colle le retour, ou choisis ses fichiers, plusieurs d'un coup ; rien ne change tant que les lignes ne correspondent pas"],
+  ["▶ La bande", "elle s'arrête à chaque faute proposée par l'IA, puis à chaque sticker"],
+  ["📋 Le flux", "chaque copie : recopiée, envoyée, chargée, la bande, ton temps ; en bas, toute la classe ; « 💾 Télécharger la sauvegarde »"],
+  ["⏱ en haut", "ton temps sur cette copie, compté seul : à la recopie, puis dans la bande"],
+  ["📷 La photo", "les gestes rares : remplacer, tourner, retoucher, l'ordre des pages, retirer les photos de ce navigateur ; ta recopie suit la page"],
+  ["Échap", "fermer la fenêtre ouverte ; sinon, revenir à l'écran des scans"]] };
+RU_AIDES.bande = { ou: "La bande", l: [
+  ["Entrée ou Espace", "c'est une faute (ou le sticker est réussi), puis l'arrêt suivant"],
+  ["N", "non, puis l'arrêt suivant"],
+  ["⌫", "revenir à l'arrêt d'avant"],
+  ["← →", "glisser le cadre sur la photo"],
+  ["le cadre", "tire-le ; double clic : une poignée de chaque côté pour régler sa longueur ; clic droit : une faute de ta recopie"],
+  ["Ctrl + Z", "annuler ton dernier réglage du cadre"],
+  ["⇧ R", "passer au mot par mot, comme en dictée, et en revenir : Entrée le mot suivant, F une faute (ou la retirer), N non, ⌫ le mot d'avant"],
+  ["＋ Un sticker", "un sticker que l'IA n'a pas vu, sur le mot où tu es ou le passage de l'arrêt ; seuls les stickers validés se posent"],
+  ["les remarques", "à la fin de la bande : corrige un texte en place, ✕ en retire une, Entrée les garde toutes"],
+  ["la liste à droite", "les arrêts de cette copie ; un clic y va"],
+  ["Échap", "revenir à ta recopie : tes réponses sont gardées"]] };
 
 // Le tableau lit la correction des scans sans initialiser ni réécrire une copie.
 // Une rubrique terminée est une case complète ; une marque seule commence la lecture.
@@ -10260,15 +10418,32 @@ function avBilanClasse() {
   const moyC = C.map((c, i) => { const ok = P.filter(x => x.cr[i].ok); return ok.length ? ok.reduce((a, x) => a + x.cr[i].n / (x.cr[i].tot || 1), 0) / ok.length : null; });
   let faible = -1; moyC.forEach((m, i) => { if (m != null && (faible < 0 || m < moyC[faible])) faible = i; });
   const th = c => '<th title="' + escapeAttr(T[c].libelle) + '"><span class="av-ty" style="background:' + T[c].fond + ";color:" + (T[c].texte || T[c].couleur) + ";border-color:" + T[c].couleur + '">' + c + "</span></th>";
-  const ligne = x => x.abs ? '<tr class="av-ligne-abs"><td>' + escapeHtml(x.nm) + '</td><td class="av-n"><b class="av-abs">ABS</b></td><td colspan="' + (C.length + ty.length + 3) + '"><span class="av-m">absent : ne compte pas dans la classe</span></td></tr>' : "<tr><td>" + escapeHtml(x.nm) + '</td><td class="av-n">' + (x.nt.ok ? "<b>" + nb(x.nt.n) + " / " + x.nt.tot + "</b>" : '<span class="av-m">pas finie</span>') + "</td>" + '<td class="av-n">' + (x.dnb ? '<span class="av-dnb">⚠ orthographe</span>' : x.dnb === false ? "—" : "") + "</td>"
+  const ligne = x => x.abs ? '<tr class="av-ligne-abs"><td>' + escapeHtml(x.nm) + '</td><td class="av-n"><b class="av-abs">ABS</b></td><td colspan="' + (C.length + ty.length + 5) + '"><span class="av-m">absent : ne compte pas dans la classe</span></td></tr>' : "<tr><td>" + escapeHtml(x.nm) + avGrilleBouton(x.k) + '</td><td class="av-n">' + (x.nt.ok ? "<b>" + nb(x.nt.n) + " / " + x.nt.tot + "</b>" : '<span class="av-m">pas finie</span>') + "</td>" + '<td class="av-n">' + (x.dnb ? '<span class="av-dnb">⚠ orthographe</span>' : x.dnb === false ? "—" : "") + "</td>"
     + C.map((c, i) => '<td class="av-n">' + (x.cr[i].ok ? nb(x.cr[i].n) + " / " + x.cr[i].tot : '<span class="av-m">…</span>') + "</td>").join("")
-    + '<td class="av-n"><b>' + (x.nf || "") + "</b></td>" + ty.map(c => '<td class="av-n">' + (x.fa[c] || "") + "</td>").join("") + '<td class="av-n">' + (x.fa._ || "") + "</td></tr>";
+    + '<td class="av-n"><b>' + (x.nf || "") + "</b></td>" + ty.map(c => '<td class="av-n">' + (x.fa[c] || "") + "</td>").join("") + '<td class="av-n">' + (x.fa._ || "") + "</td>" + avLignesTemps(x.f) + "</tr>" + avGrilleDetail(x.k, C.length + ty.length + 7);
   const classe = '<tr class="av-classe"><td>La classe' + (nAbs ? '<br><span class="av-m">' + nAbs + " absent" + (nAbs > 1 ? "s" : "") + " hors compte</span>" : "") + '</td><td class="av-n">' + (finies.length ? "<b>" + nb(finies.reduce((a, x) => a + x.nt.n, 0) / finies.length) + " / " + finies[0].nt.tot + "</b><br><span class=\"av-m\">moyenne de " + finies.length + " copie" + (finies.length > 1 ? "s" : "") + " finie" + (finies.length > 1 ? "s" : "") + "</span>" : '<span class="av-m">aucune copie finie</span>') + "</td>" + '<td class="av-n">' + (P.filter(x => x.dnb).length ? '<span class="av-dnb">⚠ ' + P.filter(x => x.dnb).length + "</span>" : "—") + "</td>"
     + C.map((c, i) => '<td class="av-n' + (i === faible ? " av-faible" : "") + '"' + (i === faible ? ' title="Le critère le plus faible de la classe"' : "") + ">" + (moyC[i] != null ? Math.round(100 * moyC[i]) + " %" + (i === faible ? "<br><span class=\"av-m\">le plus faible</span>" : "") : "…") + "</td>").join("")
-    + '<td class="av-n"><b>' + totF + "</b></td>" + ty.map(c => '<td class="av-n">' + (tot[c] ? tot[c] + '<br><span class="av-m">' + Math.round(100 * tot[c] / totF) + " %</span>" : "") + "</td>").join("") + '<td class="av-n">' + (tot._ ? tot._ + '<br><span class="av-m">' + Math.round(100 * tot._ / totF) + " %</span>" : "") + "</td></tr>";
-  v.innerHTML = '<div class="rp-carte av-bilan"><h2>Bilan de la classe</h2><p>Tiré de la correction sur les scans et de la bande, sans rien écrire. Une copie pas finie n’entre pas dans la moyenne. Les fautes comptées par type d’erreur sont celles de la bande ; une faute marquée avec la méthode d’avant est « sans type ».</p>'
-    + '<div class="av-tab"><table class="rp-table"><thead><tr><th>Élève</th><th>Note</th><th title="' + escapeAttr((al.titre ? al.titre + " : " : "") + "la copie dont l’orthographe tombe au plus bas niveau de la grille (trop de fautes par ligne) peut être déclassée au brevet. Une colonne, jamais une alerte.") + '">Brevet</th>' + C.map(c => "<th>" + escapeHtml(c.nom) + "</th>").join("") + "<th>Fautes</th>" + ty.map(th).join("") + '<th title="Une faute sans type d’erreur : marquée avant la bande, ou oubliée par l’IA">sans type</th></tr></thead><tbody>'
+    + '<td class="av-n"><b>' + totF + "</b></td>" + ty.map(c => '<td class="av-n">' + (tot[c] ? tot[c] + '<br><span class="av-m">' + Math.round(100 * tot[c] / totF) + " %</span>" : "") + "</td>").join("") + '<td class="av-n">' + (tot._ ? tot._ + '<br><span class="av-m">' + Math.round(100 * tot._ / totF) + " %</span>" : "") + "</td>" + avLignesTempsClasse(P.map(x => x.f)) + "</tr>";
+  v.innerHTML = '<div class="rp-carte av-bilan"><h2>Bilan de la classe</h2><p>Tiré de la correction sur les scans et de la bande, sans rien écrire. Une copie pas finie n’entre pas dans la moyenne. Les fautes comptées par type d’erreur sont celles de la bande ; une faute marquée avec la méthode d’avant est « sans type ». « ▸ sa grille » montre, pour une copie corrigée avec les stickers, chaque ligne de sa grille.</p>'
+    + '<div class="av-tab"><table class="rp-table"><thead><tr><th>Élève</th><th>Note</th><th title="' + escapeAttr((al.titre ? al.titre + " : " : "") + "la copie dont l’orthographe tombe au plus bas niveau de la grille (trop de fautes par ligne) peut être déclassée au brevet. Une colonne, jamais une alerte.") + '">Brevet</th>' + C.map(c => "<th>" + escapeHtml(c.nom) + "</th>").join("") + "<th>Fautes</th>" + ty.map(th).join("") + '<th title="Une faute sans type d’erreur : marquée avant la bande, ou oubliée par l’IA">sans type</th><th title="Les lignes de sa copie que tu as recopiées.">Lignes</th><th title="Ton temps sur sa copie, compté seul : à la recopie, puis dans la bande. Une minute sans geste ne compte pas.">Ton temps</th></tr></thead><tbody>'
     + L.map(ligne).join("") + classe + "</tbody></table></div></div>";
+}
+/* [C14 406] le Bilan avec les stickers : les lignes recopiées et ton temps ; « ▸ sa grille » : chaque ligne de sa grille, ses points, son niveau, ses stickers réussis */
+const AV_GRILLES = new Set();
+function avDureeB(ms) { const s = Math.round((ms || 0) / 1000); return s < 60 ? s + " s" : s < 3600 ? Math.floor(s / 60) + " min" : Math.floor(s / 3600) + " h " + String(Math.floor(s / 60) % 60).padStart(2, "0"); }
+function avLignesTemps(f) { f = f || {}; const T = f.temps || {}, t = (T.recopie || 0) + (T.bande || 0);
+  return '<td class="av-n">' + (f.lignes || "") + '</td><td class="av-n">' + (t ? '<span title="recopie ' + escapeAttr(avDureeB(T.recopie)) + " · bande " + escapeAttr(avDureeB(T.bande)) + '">' + avDureeB(t) + "</span>" : "") + "</td>"; }
+function avLignesTempsClasse(F) { const L = F.reduce((a, f) => a + ((f || {}).lignes || 0), 0), T = F.map(f => (((f || {}).temps) || {})), t = T.reduce((a, x) => a + (x.recopie || 0) + (x.bande || 0), 0), n = T.filter(x => (x.recopie || 0) + (x.bande || 0) > 0).length;
+  return '<td class="av-n"><b>' + (L || "") + '</b></td><td class="av-n">' + (t ? "<b>" + avDureeB(t) + "</b>" + (n ? '<br><span class="av-m">' + avDureeB(t / n) + " par copie</span>" : "") : "") + "</td>"; }
+function avGrilleBouton(k) { if (!(typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k))) return ""; const o = AV_GRILLES.has(k);
+  return ' <button class="av-grille-b" data-k="' + escapeAttr(k) + '" aria-expanded="' + o + '" onclick="avGrilleBasculer(this.dataset.k)" title="' + (o ? "Replier les lignes de sa grille." : "Voir chaque ligne de sa grille : ses points, son niveau, ses stickers réussis.") + '">' + (o ? "▾" : "▸") + " sa grille</button>"; }
+function avGrilleBasculer(k) { if (AV_GRILLES.has(k)) AV_GRILLES.delete(k); else AV_GRILLES.add(k); avBilanClasse(); }
+function avGrilleDetail(k, n) {
+  if (!AV_GRILLES.has(k) || !(typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k))) return ""; const nt = stNoteCopie(k), det = {}, D = scCopie(k).stickers || {}, nb = x => String(Math.round(x * 100) / 100).replace(".", ","); nt.det.forEach(x => { det[x.ligne] = x; });
+  const L = stSujetLignes().map(l => { const x = det[l.id] || {}, S = stDeLigne(l.id).filter(y => y.etat === "valide" && !y.neCompte), r = S.filter(y => (D[y.id] || {}).v === "o");
+    return '<li style="border-left-color:' + (SC_CRIT[l.crit] || "#6b7280") + '"><b>' + escapeHtml(l.titre) + '</b> <span class="av-g-pts">' + nb(x.points || 0) + " / " + (Number(l.poids) || 0) + "</span>" + (x.niveau != null ? ' <span class="av-m">niveau ' + x.niveau + "</span>" : "")
+      + (S.length ? ' <span class="av-m">· ' + r.length + " sticker" + (r.length > 1 ? "s" : "") + " réussi" + (r.length > 1 ? "s" : "") + " sur " + S.length + "</span>" : "") + (r.length ? '<br><span class="av-g-r">' + r.map(y => escapeHtml(y.texteEleve)).join(" · ") + "</span>" : "") + "</li>"; }).join("");
+  return '<tr class="av-det"><td colspan="' + n + '"><ol class="av-grille">' + L + '</ol><span class="av-m">' + (stFinie(k) ? "Total : " + nb(nt.n) + " / " + nt.tot : "Pas finie : chaque sticker proposé par l’IA n’est pas encore décidé.") + "</span></td></tr>";
 }
 /* l'onglet « Fiches élèves » : les fichiers École Directe des scans (la fiche HTML d'origine est rangée) */
 function avFiches() {
@@ -10305,6 +10480,70 @@ function avMenuEleve(ev, k) {
   document.body.appendChild(d);
 }
 document.addEventListener("keydown", e => { if (e.key === "Escape" && document.getElementById("avMenu")) { e.stopPropagation(); avMenuFermer(); } }, true);
+/* ═══ [C14] la sauvegarde JSON, étendue à tout (Paul 01/11 13:12 : « La sauvegarde json reste, d'ailleurs il faut l'étendre à l'ensemble des nouvelles fonctionnalités.
+   Quand un paquet est complètement corrigé, l'App propose un téléchargement du json de sauvegarde en local et le range aussi au hub. »)
+   Elle prend toute la rédaction telle qu'elle est au site : le sujet et sa grille de stickers, les copies (recopie, envois à l'IA, corrigés, bande, stickers, remarques, temps),
+   les pages du paquet, les retours des élèves. Même format que « 📸 Snapshot » : « 📤 Restaurer » la relit. Les photos n'y sont pas : elles ne quittent jamais ce navigateur. ═══ */
+function svCompter(d) {
+  d = d || {}; const C = (d.copies || {})[RU.classe] || {}, ks = Object.keys(C), sc = k => (C[k] || {}).scan || {}, rc = k => sc(k).recopie || {}, cfg = d.config || {};
+  const nb = f => ks.filter(f).length, lignes = k => Object.values(rc(k).pages || {}).reduce((s, p) => s + Object.values((p || {}).lignes || {}).filter(l => l && (l.texte || "").trim()).length, 0);
+  return { copies: ks.length, recopiees: nb(k => lignes(k) > 0), lignes: ks.reduce((s, k) => s + lignes(k), 0), envoyees: nb(k => !!rc(k).envoi), phrases: nb(k => !!rc(k).phrase),
+    marques: ks.reduce((s, k) => s + Object.keys(sc(k).marques || {}).length, 0), stickersDecides: ks.reduce((s, k) => s + Object.keys(sc(k).stickers || {}).length, 0),
+    stickersGrille: Object.keys(cfg.stickers || {}).length, lignesGrille: Object.keys(cfg.stickersLignes || {}).length,
+    pages: Object.keys((((d.scan || {})[RU.classe]) || {}).pages || {}).length, retours: Object.keys(((d.retours || {})[RU.classe]) || {}).length };
+}
+function svDire(c) { const p = (n, m, s) => n + " " + m + (n > 1 ? (s || "s") : ""); return [p(c.copies, "copie"), p(c.recopiees, "recopiée") + " (" + p(c.lignes, "ligne") + ")", p(c.envoyees, "envoyée") + " à l’IA", p(c.phrases, "phrase") + " qui t’a marqué", p(c.marques, "marque"), p(c.stickersDecides, "sticker") + " décidé" + (c.stickersDecides > 1 ? "s" : ""), "la grille : " + p(c.stickersGrille, "sticker") + ", " + p(c.lignesGrille, "ligne"), p(c.pages, "page") + " du paquet", p(c.retours, "retour") + " d’élève"].join(" · "); }
+function svNom(d) { const z = n => String(n).padStart(2, "0"); return "Sauvegarde_" + scTitreFichier() + "_" + scSlug(RU.classeNom || RU.classe || "") + "_" + d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()) + "_" + z(d.getHours()) + "h" + z(d.getMinutes()) + ".json"; }
+function svFaire(raison) {
+  // le dernier geste n'attend pas : les copies et le suivi partent tout de suite, et la sauvegarde les prend telles qu'elles s'écrivent (la forme du site)
+  clearTimeout(RU.timer); try { synchroniser(); } catch (e) {}
+  return ruLire(["redactions", RU.id]).then(d => { if (!d) throw new Error("rien au site pour cette rédaction"); const le = new Date();
+    d.copies = d.copies || {}; const C = d.copies[RU.classe] = d.copies[RU.classe] || {}; Object.keys(RU.sig || {}).forEach(k => { try { const v = scFb(JSON.parse(RU.sig[k])); if (v) C[k] = v; } catch (e) {} });
+    if (RU.sigSuivi) { try { d.suivi = d.suivi || {}; const v = scFb(JSON.parse(RU.sigSuivi)); if (v) d.suivi[RU.classe] = v; } catch (e) {} }
+    d = scFb(d);
+    return { nom: svNom(le), cle: svNom(le).replace(/^Sauvegarde_/, "").replace(/\.json$/, "").replace(/[.#$\[\]\/]/g, "-"), o: { _meta: { source: "redactions/" + RU.id, exportedAt: le.toISOString(), exportedBy: "sauvegarde_" + raison, version: 2, titre: SUJET.titre, classe: RU.classeNom || RU.classe, contenu: svCompter(d), photos: "dans ce navigateur seulement : elles ne passent jamais par le site" }, data: d } }; });
+}
+function svTelecharger() { return svFaire("manuelle").then(s => { ruTelecharger(s.o, s.nom); toast("Sauvegarde téléchargée : " + svDire(s.o._meta.contenu) + "."); return s; }, e => toast("⚠ La sauvegarde n’a pas pu se faire : " + (e && e.message || e))); }
+/* le paquet est complètement corrigé : chaque copie présente est recopiée jusqu'à sa phrase, son corrigé est chargé, chaque arrêt de sa bande (fautes et stickers) est décidé, ses remarques sont relues */
+function svCopieCorrigee(k) {
+  const f = rcFluxCopie(k); if (!f.finie || !f.charge) return false;
+  if (typeof stRqARelire === "function" && stRqARelire(k)) return false;
+  return rcArretsBande(k).every(a => a.st ? !!stDecision(k, a.stId) : !!(a.l.decisions && a.l.decisions[a.cle]));
+}
+function svPaquet() { const Q = typeof scCopiesED === "function" ? scCopiesED() : []; const ok = Q.filter(svCopieCorrigee); return { n: Q.length, ok: ok.length, complet: Q.length > 0 && ok.length === Q.length }; }
+function svBase() { try { SC.svComplet = svPaquet().complet; } catch (e) { SC.svComplet = null; } }
+function svVerifier() {   // après chaque geste qui peut finir une copie ; la copie en cours d'abord (un calcul court), toute la classe seulement si elle est finie
+  if (typeof SC === "undefined" || !SC.ouvert || typeof rcFluxCopie !== "function") return;
+  try { const k = typeof RC !== "undefined" && RC.ouvert ? RC.copie : null;
+    if (SC.svComplet == null) { SC.svComplet = svPaquet().complet; return; }
+    if (k && !svCopieCorrigee(k)) { SC.svComplet = false; return; }
+    if (SC.svComplet) return; const e = svPaquet(); if (!e.complet) return; SC.svComplet = true; svProposer(e); } catch (x) { console.warn("sauvegarde du paquet :", x); }
+}
+function svProposer(e) {
+  return svFaire("paquet-corrige").then(s => { SC.svDerniere = s;
+    scModale('<h3>💾 Le paquet est entièrement corrigé</h3><p>' + (e.n > 1 ? "Les " + e.n + " copies du paquet sont recopiées jusqu’à leur phrase, chargées, et leur bande est finie." : "La copie du paquet est recopiée jusqu’à sa phrase, chargée, et sa bande est finie.") + ' Ta sauvegarde est prête : toute la rédaction, telle qu’elle est au site (' + escapeHtml(svDire(s.o._meta.contenu)) + '). Les photos n’y sont pas : elles restent dans ce navigateur et sur ta clé.</p>'
+      + '<p id="svHub" class="sc-m" role="status">Je la range au site…</p><button class="sc-btn" id="svTelechargerBtn" title="Télécharger ce fichier de sauvegarde sur cet ordinateur (« ' + escapeAttr(s.nom) + ' »). « 📤 Restaurer » le relit.">💾 Télécharger la sauvegarde</button> <button class="sc-btn" onclick="scModaleFermer()" title="Fermer : la sauvegarde reste rangée au site ; « 💾 Télécharger la sauvegarde » du flux en refait une à tout moment.">Plus tard</button>');
+    const b = document.getElementById("svTelechargerBtn"); if (b) b.onclick = () => { ruTelecharger(s.o, s.nom); b.textContent = "✓ Téléchargée"; };
+    return ruEcrire(["sauvegardes", "redactions", RU.id, s.cle], s.o, "la sauvegarde du paquet corrigé").then(i => { const ok = i && i.etat === MJPC_ISSUE.ACCEPTEE, h = document.getElementById("svHub");
+      if (h) h.textContent = ok ? "✓ Rangée au site, dans les sauvegardes de cette rédaction (« " + s.cle + " »)." : "⚠ Le site ne l’a pas prise : télécharge-la ici, et dis-le à la conscience."; SC.svHub = ok ? s.cle : null; return ok; }); },
+    x => toast("⚠ Le paquet est corrigé, mais la sauvegarde n’a pas pu se faire : " + (x && x.message || x)));
+}
+/* [C14 407] l'aide « ? » du Bilan, des Fiches élèves et des Réglages : seulement ce qui reste */
+RU_AIDES.bilan = { ou: "Données — Bilan", l: [
+  ["le tableau", "pour chaque élève : sa note, le Brevet, ses critères, ses fautes par type d’erreur, les lignes recopiées, ton temps sur sa copie"],
+  ["« ▸ sa grille »", "pour une copie corrigée avec les stickers : chaque ligne de sa grille, ses points, son niveau, ses stickers réussis ; un autre clic la replie"],
+  ["en bas, la classe", "la moyenne des copies finies, la part de chaque type d’erreur, le critère le plus faible, toutes les lignes et tout ton temps"],
+  ["un élève absent", "sa ligne reste, sans note ; il ne compte pas dans la classe"]] };
+RU_AIDES.fiches = { ou: "Données — Fiches élèves", l: [
+  ["« 📨 Fichiers École Directe »", "ouvre l’écran des scans et la liste des fichiers : un fichier par élève, sa copie scannée et tes marques"],
+  ["🧪 Tester comme l’élève", "son fichier dans un nouvel onglet, comme il le verra ; rien ne va au site"],
+  ["Télécharger", "le fichier d’un élève, nommé comme dans ta liste de classe (« NOM Prénom.html »)"],
+  ["📦 Tout rendre", "un seul zip : un fichier par élève, nommés comme dans ta liste de classe, pour l’extension d’École Directe ; un élève absent n’a pas de fichier"]] };
+RU_AIDES.reglages = { ou: "Réglages — la grille et ses stickers", l: [
+  ["📥 Charger des stickers", "une grille de stickers depuis un fichier (le format du prompt de création d’un sujet)"],
+  ["✓ Valider ligne par ligne", "chaque ligne de la grille et ses stickers, un écran par ligne ; Entrée valide la ligne ; l’export pour l’IA attend que tout soit validé"],
+  ["un sticker", "sa phrase pour l’élève, ce qu’il a à faire quand il ne l’a pas, ce que l’IA cherche ; ↑ ↓ sa place ; ⧉ le copier ; 🗑 le ranger (rien n’est effacé)"],
+  ["＋ Un sticker · ⧉ Reprendre ceux d’un autre sujet", "écrire un sticker de plus sur une ligne · reprendre les stickers d’un autre sujet"]] };
 
 /* ═══ [C14 1.4.16] LES STICKERS, OBJETS DU SUJET (Paul 01/11 07:59 : « La grille de stickers doit être évidemment modifiable et attachée à un sujet. À placer dans
    les paramètres. Un sticker est un objet, et il se rattache à un descripteur dans la grille d'évaluation ou un sous-descripteur, et à une compétence et à la
@@ -10694,7 +10933,7 @@ function stIARemarques(o, copiesOk) {
 function stRq(k) { const r = (scCopie(k).recopie || {}).remarquesIA; return r && Array.isArray(r.liste) ? r : null; }
 function stRqVisibles(k) { const r = stRq(k); if (!r || !r.relu) return []; const D = scCopie(k).stickers || {}; return r.liste.filter(e => e.etat !== "retire" && (D[e.st] || {}).v !== "o"); }
 function stRqARelire(k) { const r = stRq(k); return !!(r && !r.relu && r.liste.length); }
-function stRqGarder(k) { const r = stRq(k); if (!r) return; r.relu = new Date().toISOString(); saveState(); }
+function stRqGarder(k) { const r = stRq(k); if (!r) return; r.relu = new Date().toISOString(); saveState(); if (typeof svVerifier === "function") svVerifier(); }
 function stRqRetirer(k, i) { const r = stRq(k); if (!r || !r.liste[i]) return; if (r.liste[i].etat === "retire") delete r.liste[i].etat; else r.liste[i].etat = "retire"; saveState(); if (RC.bd) rcBandeRendre(); }
 function stRqTexte(k, i, v) { const r = stRq(k), t = String(v || "").trim(); if (!r || !r.liste[i] || !t || t === r.liste[i].r) return; Object.assign(r.liste[i], { r: t, deProf: true, longue: t.split(/\s+/).length > 40 }); saveState(); }
 /* la relecture, à la fin de la bande : la liste entière ; Entrée (ou « ✓ Je les garde ») les garde toutes ; ✕ en retire une ; le texte se corrige en place */

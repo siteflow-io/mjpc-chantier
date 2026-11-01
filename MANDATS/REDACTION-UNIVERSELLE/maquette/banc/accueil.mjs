@@ -86,10 +86,11 @@ export async function eprouverAutreOrdinateur({ pg, verif, cap, att, dir }) {
   const photo = () => pg.evaluate(() => ({ pages: Object.values(SC.pages).filter(p => p && p.id).map(p => ({ id: p.id, eleve: p.eleve || null, w: p.w, h: p.h, retouche: !!(p.angle || p.recadre), source: !!p.source })),
     marques: JSON.stringify(Object.keys(state.copies).map(k => Object.values(((state.copies[k] || {}).scan || {}).marques || {}).map(m => m.id + ":" + m.x0.toFixed(4) + ":" + m.y0.toFixed(4)).sort())),
     recopie: JSON.stringify(Object.keys(state.copies).map(k => Object.keys((((state.copies[k] || {}).scan || {}).recopie || {}).pages || {}).length)) }));
-  const avant = await photo();
   // « 🗑 Retirer les photos » de la copie affichée : seulement de ce navigateur
   const r0 = await pg.evaluate(() => { const k = scK(), P = scPagesDe(k); return { k, nom: nomEleveDe(k), ids: P.map(p => p.id), avec: P.filter(p => SC.imgs[p.id]).length }; });
-  await pg.click('.sc-passe >> nth=0'); await att(300); await pg.click('#scPanneau >> text=Retirer les photos'); await att(250); await pg.click('#scRetirerOui'); await att(800);
+  /* [C14 402, 404] depuis la vignette de sa copie : sa recopie, « 📷 La photo », « 🗑 Retirer les photos » */
+  await pg.locator('#scCopie .sc-pq-el[data-k="' + r0.k + '"] .sc-pq-vig').first().click(); await att(700); await pg.click("#rcPhotoOuvrir"); await att(200); await pg.click("#rcPhRetirer"); await att(250); await pg.click('#scRetirerOui'); await att(800); await pg.click("#rcFermer"); await att(300);
+  const avant = await photo();   /* [C14 404] après le retrait (qui passe par la recopie de sa copie) : la photo d'avant l'autre ordinateur */
   const r1 = await pg.evaluate(async r => { const db = await scDb(); const n = await new Promise(res => { const q = db.transaction("pages").objectStore("pages").getAll(); q.onsuccess = () => res(q.result.filter(o => r.ids.includes(o.id)).length); });
     return { avec: r.ids.filter(id => SC.imgs[id]).length, idb: n, meta: r.ids.filter(id => SC.pages[id] && SC.pages[id].eleve === r.k).length, recopie: Object.keys((((state.copies[r.k] || {}).scan || {}).recopie || {}).pages || {}).length }; }, r0);
   verif("feuilles (1.4.13) : « 🗑 Retirer les photos » de la copie de " + r0.nom + " : ses " + r0.avec + " photos quittent ce navigateur (" + r1.avec + " ici, " + r1.idb + " gardées) ; ses " + r1.meta + " feuilles restent à elle, au site, et sa recopie reste (" + r1.recopie + " page" + (r1.recopie > 1 ? "s" : "") + ")",

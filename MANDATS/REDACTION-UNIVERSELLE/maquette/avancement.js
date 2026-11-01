@@ -103,15 +103,32 @@ function avBilanClasse() {
   const moyC = C.map((c, i) => { const ok = P.filter(x => x.cr[i].ok); return ok.length ? ok.reduce((a, x) => a + x.cr[i].n / (x.cr[i].tot || 1), 0) / ok.length : null; });
   let faible = -1; moyC.forEach((m, i) => { if (m != null && (faible < 0 || m < moyC[faible])) faible = i; });
   const th = c => '<th title="' + escapeAttr(T[c].libelle) + '"><span class="av-ty" style="background:' + T[c].fond + ";color:" + (T[c].texte || T[c].couleur) + ";border-color:" + T[c].couleur + '">' + c + "</span></th>";
-  const ligne = x => x.abs ? '<tr class="av-ligne-abs"><td>' + escapeHtml(x.nm) + '</td><td class="av-n"><b class="av-abs">ABS</b></td><td colspan="' + (C.length + ty.length + 3) + '"><span class="av-m">absent : ne compte pas dans la classe</span></td></tr>' : "<tr><td>" + escapeHtml(x.nm) + '</td><td class="av-n">' + (x.nt.ok ? "<b>" + nb(x.nt.n) + " / " + x.nt.tot + "</b>" : '<span class="av-m">pas finie</span>') + "</td>" + '<td class="av-n">' + (x.dnb ? '<span class="av-dnb">⚠ orthographe</span>' : x.dnb === false ? "—" : "") + "</td>"
+  const ligne = x => x.abs ? '<tr class="av-ligne-abs"><td>' + escapeHtml(x.nm) + '</td><td class="av-n"><b class="av-abs">ABS</b></td><td colspan="' + (C.length + ty.length + 5) + '"><span class="av-m">absent : ne compte pas dans la classe</span></td></tr>' : "<tr><td>" + escapeHtml(x.nm) + avGrilleBouton(x.k) + '</td><td class="av-n">' + (x.nt.ok ? "<b>" + nb(x.nt.n) + " / " + x.nt.tot + "</b>" : '<span class="av-m">pas finie</span>') + "</td>" + '<td class="av-n">' + (x.dnb ? '<span class="av-dnb">⚠ orthographe</span>' : x.dnb === false ? "—" : "") + "</td>"
     + C.map((c, i) => '<td class="av-n">' + (x.cr[i].ok ? nb(x.cr[i].n) + " / " + x.cr[i].tot : '<span class="av-m">…</span>') + "</td>").join("")
-    + '<td class="av-n"><b>' + (x.nf || "") + "</b></td>" + ty.map(c => '<td class="av-n">' + (x.fa[c] || "") + "</td>").join("") + '<td class="av-n">' + (x.fa._ || "") + "</td></tr>";
+    + '<td class="av-n"><b>' + (x.nf || "") + "</b></td>" + ty.map(c => '<td class="av-n">' + (x.fa[c] || "") + "</td>").join("") + '<td class="av-n">' + (x.fa._ || "") + "</td>" + avLignesTemps(x.f) + "</tr>" + avGrilleDetail(x.k, C.length + ty.length + 7);
   const classe = '<tr class="av-classe"><td>La classe' + (nAbs ? '<br><span class="av-m">' + nAbs + " absent" + (nAbs > 1 ? "s" : "") + " hors compte</span>" : "") + '</td><td class="av-n">' + (finies.length ? "<b>" + nb(finies.reduce((a, x) => a + x.nt.n, 0) / finies.length) + " / " + finies[0].nt.tot + "</b><br><span class=\"av-m\">moyenne de " + finies.length + " copie" + (finies.length > 1 ? "s" : "") + " finie" + (finies.length > 1 ? "s" : "") + "</span>" : '<span class="av-m">aucune copie finie</span>') + "</td>" + '<td class="av-n">' + (P.filter(x => x.dnb).length ? '<span class="av-dnb">⚠ ' + P.filter(x => x.dnb).length + "</span>" : "—") + "</td>"
     + C.map((c, i) => '<td class="av-n' + (i === faible ? " av-faible" : "") + '"' + (i === faible ? ' title="Le critère le plus faible de la classe"' : "") + ">" + (moyC[i] != null ? Math.round(100 * moyC[i]) + " %" + (i === faible ? "<br><span class=\"av-m\">le plus faible</span>" : "") : "…") + "</td>").join("")
-    + '<td class="av-n"><b>' + totF + "</b></td>" + ty.map(c => '<td class="av-n">' + (tot[c] ? tot[c] + '<br><span class="av-m">' + Math.round(100 * tot[c] / totF) + " %</span>" : "") + "</td>").join("") + '<td class="av-n">' + (tot._ ? tot._ + '<br><span class="av-m">' + Math.round(100 * tot._ / totF) + " %</span>" : "") + "</td></tr>";
-  v.innerHTML = '<div class="rp-carte av-bilan"><h2>Bilan de la classe</h2><p>Tiré de la correction sur les scans et de la bande, sans rien écrire. Une copie pas finie n’entre pas dans la moyenne. Les fautes comptées par type d’erreur sont celles de la bande ; une faute marquée avec la méthode d’avant est « sans type ».</p>'
-    + '<div class="av-tab"><table class="rp-table"><thead><tr><th>Élève</th><th>Note</th><th title="' + escapeAttr((al.titre ? al.titre + " : " : "") + "la copie dont l’orthographe tombe au plus bas niveau de la grille (trop de fautes par ligne) peut être déclassée au brevet. Une colonne, jamais une alerte.") + '">Brevet</th>' + C.map(c => "<th>" + escapeHtml(c.nom) + "</th>").join("") + "<th>Fautes</th>" + ty.map(th).join("") + '<th title="Une faute sans type d’erreur : marquée avant la bande, ou oubliée par l’IA">sans type</th></tr></thead><tbody>'
+    + '<td class="av-n"><b>' + totF + "</b></td>" + ty.map(c => '<td class="av-n">' + (tot[c] ? tot[c] + '<br><span class="av-m">' + Math.round(100 * tot[c] / totF) + " %</span>" : "") + "</td>").join("") + '<td class="av-n">' + (tot._ ? tot._ + '<br><span class="av-m">' + Math.round(100 * tot._ / totF) + " %</span>" : "") + "</td>" + avLignesTempsClasse(P.map(x => x.f)) + "</tr>";
+  v.innerHTML = '<div class="rp-carte av-bilan"><h2>Bilan de la classe</h2><p>Tiré de la correction sur les scans et de la bande, sans rien écrire. Une copie pas finie n’entre pas dans la moyenne. Les fautes comptées par type d’erreur sont celles de la bande ; une faute marquée avec la méthode d’avant est « sans type ». « ▸ sa grille » montre, pour une copie corrigée avec les stickers, chaque ligne de sa grille.</p>'
+    + '<div class="av-tab"><table class="rp-table"><thead><tr><th>Élève</th><th>Note</th><th title="' + escapeAttr((al.titre ? al.titre + " : " : "") + "la copie dont l’orthographe tombe au plus bas niveau de la grille (trop de fautes par ligne) peut être déclassée au brevet. Une colonne, jamais une alerte.") + '">Brevet</th>' + C.map(c => "<th>" + escapeHtml(c.nom) + "</th>").join("") + "<th>Fautes</th>" + ty.map(th).join("") + '<th title="Une faute sans type d’erreur : marquée avant la bande, ou oubliée par l’IA">sans type</th><th title="Les lignes de sa copie que tu as recopiées.">Lignes</th><th title="Ton temps sur sa copie, compté seul : à la recopie, puis dans la bande. Une minute sans geste ne compte pas.">Ton temps</th></tr></thead><tbody>'
     + L.map(ligne).join("") + classe + "</tbody></table></div></div>";
+}
+/* [C14 406] le Bilan avec les stickers : les lignes recopiées et ton temps ; « ▸ sa grille » : chaque ligne de sa grille, ses points, son niveau, ses stickers réussis */
+const AV_GRILLES = new Set();
+function avDureeB(ms) { const s = Math.round((ms || 0) / 1000); return s < 60 ? s + " s" : s < 3600 ? Math.floor(s / 60) + " min" : Math.floor(s / 3600) + " h " + String(Math.floor(s / 60) % 60).padStart(2, "0"); }
+function avLignesTemps(f) { f = f || {}; const T = f.temps || {}, t = (T.recopie || 0) + (T.bande || 0);
+  return '<td class="av-n">' + (f.lignes || "") + '</td><td class="av-n">' + (t ? '<span title="recopie ' + escapeAttr(avDureeB(T.recopie)) + " · bande " + escapeAttr(avDureeB(T.bande)) + '">' + avDureeB(t) + "</span>" : "") + "</td>"; }
+function avLignesTempsClasse(F) { const L = F.reduce((a, f) => a + ((f || {}).lignes || 0), 0), T = F.map(f => (((f || {}).temps) || {})), t = T.reduce((a, x) => a + (x.recopie || 0) + (x.bande || 0), 0), n = T.filter(x => (x.recopie || 0) + (x.bande || 0) > 0).length;
+  return '<td class="av-n"><b>' + (L || "") + '</b></td><td class="av-n">' + (t ? "<b>" + avDureeB(t) + "</b>" + (n ? '<br><span class="av-m">' + avDureeB(t / n) + " par copie</span>" : "") : "") + "</td>"; }
+function avGrilleBouton(k) { if (!(typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k))) return ""; const o = AV_GRILLES.has(k);
+  return ' <button class="av-grille-b" data-k="' + escapeAttr(k) + '" aria-expanded="' + o + '" onclick="avGrilleBasculer(this.dataset.k)" title="' + (o ? "Replier les lignes de sa grille." : "Voir chaque ligne de sa grille : ses points, son niveau, ses stickers réussis.") + '">' + (o ? "▾" : "▸") + " sa grille</button>"; }
+function avGrilleBasculer(k) { if (AV_GRILLES.has(k)) AV_GRILLES.delete(k); else AV_GRILLES.add(k); avBilanClasse(); }
+function avGrilleDetail(k, n) {
+  if (!AV_GRILLES.has(k) || !(typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k))) return ""; const nt = stNoteCopie(k), det = {}, D = scCopie(k).stickers || {}, nb = x => String(Math.round(x * 100) / 100).replace(".", ","); nt.det.forEach(x => { det[x.ligne] = x; });
+  const L = stSujetLignes().map(l => { const x = det[l.id] || {}, S = stDeLigne(l.id).filter(y => y.etat === "valide" && !y.neCompte), r = S.filter(y => (D[y.id] || {}).v === "o");
+    return '<li style="border-left-color:' + (SC_CRIT[l.crit] || "#6b7280") + '"><b>' + escapeHtml(l.titre) + '</b> <span class="av-g-pts">' + nb(x.points || 0) + " / " + (Number(l.poids) || 0) + "</span>" + (x.niveau != null ? ' <span class="av-m">niveau ' + x.niveau + "</span>" : "")
+      + (S.length ? ' <span class="av-m">· ' + r.length + " sticker" + (r.length > 1 ? "s" : "") + " réussi" + (r.length > 1 ? "s" : "") + " sur " + S.length + "</span>" : "") + (r.length ? '<br><span class="av-g-r">' + r.map(y => escapeHtml(y.texteEleve)).join(" · ") + "</span>" : "") + "</li>"; }).join("");
+  return '<tr class="av-det"><td colspan="' + n + '"><ol class="av-grille">' + L + '</ol><span class="av-m">' + (stFinie(k) ? "Total : " + nb(nt.n) + " / " + nt.tot : "Pas finie : chaque sticker proposé par l’IA n’est pas encore décidé.") + "</span></td></tr>";
 }
 /* l'onglet « Fiches élèves » : les fichiers École Directe des scans (la fiche HTML d'origine est rangée) */
 function avFiches() {
@@ -148,3 +165,67 @@ function avMenuEleve(ev, k) {
   document.body.appendChild(d);
 }
 document.addEventListener("keydown", e => { if (e.key === "Escape" && document.getElementById("avMenu")) { e.stopPropagation(); avMenuFermer(); } }, true);
+/* ═══ [C14] la sauvegarde JSON, étendue à tout (Paul 01/11 13:12 : « La sauvegarde json reste, d'ailleurs il faut l'étendre à l'ensemble des nouvelles fonctionnalités.
+   Quand un paquet est complètement corrigé, l'App propose un téléchargement du json de sauvegarde en local et le range aussi au hub. »)
+   Elle prend toute la rédaction telle qu'elle est au site : le sujet et sa grille de stickers, les copies (recopie, envois à l'IA, corrigés, bande, stickers, remarques, temps),
+   les pages du paquet, les retours des élèves. Même format que « 📸 Snapshot » : « 📤 Restaurer » la relit. Les photos n'y sont pas : elles ne quittent jamais ce navigateur. ═══ */
+function svCompter(d) {
+  d = d || {}; const C = (d.copies || {})[RU.classe] || {}, ks = Object.keys(C), sc = k => (C[k] || {}).scan || {}, rc = k => sc(k).recopie || {}, cfg = d.config || {};
+  const nb = f => ks.filter(f).length, lignes = k => Object.values(rc(k).pages || {}).reduce((s, p) => s + Object.values((p || {}).lignes || {}).filter(l => l && (l.texte || "").trim()).length, 0);
+  return { copies: ks.length, recopiees: nb(k => lignes(k) > 0), lignes: ks.reduce((s, k) => s + lignes(k), 0), envoyees: nb(k => !!rc(k).envoi), phrases: nb(k => !!rc(k).phrase),
+    marques: ks.reduce((s, k) => s + Object.keys(sc(k).marques || {}).length, 0), stickersDecides: ks.reduce((s, k) => s + Object.keys(sc(k).stickers || {}).length, 0),
+    stickersGrille: Object.keys(cfg.stickers || {}).length, lignesGrille: Object.keys(cfg.stickersLignes || {}).length,
+    pages: Object.keys((((d.scan || {})[RU.classe]) || {}).pages || {}).length, retours: Object.keys(((d.retours || {})[RU.classe]) || {}).length };
+}
+function svDire(c) { const p = (n, m, s) => n + " " + m + (n > 1 ? (s || "s") : ""); return [p(c.copies, "copie"), p(c.recopiees, "recopiée") + " (" + p(c.lignes, "ligne") + ")", p(c.envoyees, "envoyée") + " à l’IA", p(c.phrases, "phrase") + " qui t’a marqué", p(c.marques, "marque"), p(c.stickersDecides, "sticker") + " décidé" + (c.stickersDecides > 1 ? "s" : ""), "la grille : " + p(c.stickersGrille, "sticker") + ", " + p(c.lignesGrille, "ligne"), p(c.pages, "page") + " du paquet", p(c.retours, "retour") + " d’élève"].join(" · "); }
+function svNom(d) { const z = n => String(n).padStart(2, "0"); return "Sauvegarde_" + scTitreFichier() + "_" + scSlug(RU.classeNom || RU.classe || "") + "_" + d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()) + "_" + z(d.getHours()) + "h" + z(d.getMinutes()) + ".json"; }
+function svFaire(raison) {
+  // le dernier geste n'attend pas : les copies et le suivi partent tout de suite, et la sauvegarde les prend telles qu'elles s'écrivent (la forme du site)
+  clearTimeout(RU.timer); try { synchroniser(); } catch (e) {}
+  return ruLire(["redactions", RU.id]).then(d => { if (!d) throw new Error("rien au site pour cette rédaction"); const le = new Date();
+    d.copies = d.copies || {}; const C = d.copies[RU.classe] = d.copies[RU.classe] || {}; Object.keys(RU.sig || {}).forEach(k => { try { const v = scFb(JSON.parse(RU.sig[k])); if (v) C[k] = v; } catch (e) {} });
+    if (RU.sigSuivi) { try { d.suivi = d.suivi || {}; const v = scFb(JSON.parse(RU.sigSuivi)); if (v) d.suivi[RU.classe] = v; } catch (e) {} }
+    d = scFb(d);
+    return { nom: svNom(le), cle: svNom(le).replace(/^Sauvegarde_/, "").replace(/\.json$/, "").replace(/[.#$\[\]\/]/g, "-"), o: { _meta: { source: "redactions/" + RU.id, exportedAt: le.toISOString(), exportedBy: "sauvegarde_" + raison, version: 2, titre: SUJET.titre, classe: RU.classeNom || RU.classe, contenu: svCompter(d), photos: "dans ce navigateur seulement : elles ne passent jamais par le site" }, data: d } }; });
+}
+function svTelecharger() { return svFaire("manuelle").then(s => { ruTelecharger(s.o, s.nom); toast("Sauvegarde téléchargée : " + svDire(s.o._meta.contenu) + "."); return s; }, e => toast("⚠ La sauvegarde n’a pas pu se faire : " + (e && e.message || e))); }
+/* le paquet est complètement corrigé : chaque copie présente est recopiée jusqu'à sa phrase, son corrigé est chargé, chaque arrêt de sa bande (fautes et stickers) est décidé, ses remarques sont relues */
+function svCopieCorrigee(k) {
+  const f = rcFluxCopie(k); if (!f.finie || !f.charge) return false;
+  if (typeof stRqARelire === "function" && stRqARelire(k)) return false;
+  return rcArretsBande(k).every(a => a.st ? !!stDecision(k, a.stId) : !!(a.l.decisions && a.l.decisions[a.cle]));
+}
+function svPaquet() { const Q = typeof scCopiesED === "function" ? scCopiesED() : []; const ok = Q.filter(svCopieCorrigee); return { n: Q.length, ok: ok.length, complet: Q.length > 0 && ok.length === Q.length }; }
+function svBase() { try { SC.svComplet = svPaquet().complet; } catch (e) { SC.svComplet = null; } }
+function svVerifier() {   // après chaque geste qui peut finir une copie ; la copie en cours d'abord (un calcul court), toute la classe seulement si elle est finie
+  if (typeof SC === "undefined" || !SC.ouvert || typeof rcFluxCopie !== "function") return;
+  try { const k = typeof RC !== "undefined" && RC.ouvert ? RC.copie : null;
+    if (SC.svComplet == null) { SC.svComplet = svPaquet().complet; return; }
+    if (k && !svCopieCorrigee(k)) { SC.svComplet = false; return; }
+    if (SC.svComplet) return; const e = svPaquet(); if (!e.complet) return; SC.svComplet = true; svProposer(e); } catch (x) { console.warn("sauvegarde du paquet :", x); }
+}
+function svProposer(e) {
+  return svFaire("paquet-corrige").then(s => { SC.svDerniere = s;
+    scModale('<h3>💾 Le paquet est entièrement corrigé</h3><p>' + (e.n > 1 ? "Les " + e.n + " copies du paquet sont recopiées jusqu’à leur phrase, chargées, et leur bande est finie." : "La copie du paquet est recopiée jusqu’à sa phrase, chargée, et sa bande est finie.") + ' Ta sauvegarde est prête : toute la rédaction, telle qu’elle est au site (' + escapeHtml(svDire(s.o._meta.contenu)) + '). Les photos n’y sont pas : elles restent dans ce navigateur et sur ta clé.</p>'
+      + '<p id="svHub" class="sc-m" role="status">Je la range au site…</p><button class="sc-btn" id="svTelechargerBtn" title="Télécharger ce fichier de sauvegarde sur cet ordinateur (« ' + escapeAttr(s.nom) + ' »). « 📤 Restaurer » le relit.">💾 Télécharger la sauvegarde</button> <button class="sc-btn" onclick="scModaleFermer()" title="Fermer : la sauvegarde reste rangée au site ; « 💾 Télécharger la sauvegarde » du flux en refait une à tout moment.">Plus tard</button>');
+    const b = document.getElementById("svTelechargerBtn"); if (b) b.onclick = () => { ruTelecharger(s.o, s.nom); b.textContent = "✓ Téléchargée"; };
+    return ruEcrire(["sauvegardes", "redactions", RU.id, s.cle], s.o, "la sauvegarde du paquet corrigé").then(i => { const ok = i && i.etat === MJPC_ISSUE.ACCEPTEE, h = document.getElementById("svHub");
+      if (h) h.textContent = ok ? "✓ Rangée au site, dans les sauvegardes de cette rédaction (« " + s.cle + " »)." : "⚠ Le site ne l’a pas prise : télécharge-la ici, et dis-le à la conscience."; SC.svHub = ok ? s.cle : null; return ok; }); },
+    x => toast("⚠ Le paquet est corrigé, mais la sauvegarde n’a pas pu se faire : " + (x && x.message || x)));
+}
+/* [C14 407] l'aide « ? » du Bilan, des Fiches élèves et des Réglages : seulement ce qui reste */
+RU_AIDES.bilan = { ou: "Données — Bilan", l: [
+  ["le tableau", "pour chaque élève : sa note, le Brevet, ses critères, ses fautes par type d’erreur, les lignes recopiées, ton temps sur sa copie"],
+  ["« ▸ sa grille »", "pour une copie corrigée avec les stickers : chaque ligne de sa grille, ses points, son niveau, ses stickers réussis ; un autre clic la replie"],
+  ["en bas, la classe", "la moyenne des copies finies, la part de chaque type d’erreur, le critère le plus faible, toutes les lignes et tout ton temps"],
+  ["un élève absent", "sa ligne reste, sans note ; il ne compte pas dans la classe"]] };
+RU_AIDES.fiches = { ou: "Données — Fiches élèves", l: [
+  ["« 📨 Fichiers École Directe »", "ouvre l’écran des scans et la liste des fichiers : un fichier par élève, sa copie scannée et tes marques"],
+  ["🧪 Tester comme l’élève", "son fichier dans un nouvel onglet, comme il le verra ; rien ne va au site"],
+  ["Télécharger", "le fichier d’un élève, nommé comme dans ta liste de classe (« NOM Prénom.html »)"],
+  ["📦 Tout rendre", "un seul zip : un fichier par élève, nommés comme dans ta liste de classe, pour l’extension d’École Directe ; un élève absent n’a pas de fichier"]] };
+RU_AIDES.reglages = { ou: "Réglages — la grille et ses stickers", l: [
+  ["📥 Charger des stickers", "une grille de stickers depuis un fichier (le format du prompt de création d’un sujet)"],
+  ["✓ Valider ligne par ligne", "chaque ligne de la grille et ses stickers, un écran par ligne ; Entrée valide la ligne ; l’export pour l’IA attend que tout soit validé"],
+  ["un sticker", "sa phrase pour l’élève, ce qu’il a à faire quand il ne l’a pas, ce que l’IA cherche ; ↑ ↓ sa place ; ⧉ le copier ; 🗑 le ranger (rien n’est effacé)"],
+  ["＋ Un sticker · ⧉ Reprendre ceux d’un autre sujet", "écrire un sticker de plus sur une ligne · reprendre les stickers d’un autre sujet"]] };

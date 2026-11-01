@@ -386,7 +386,7 @@ function stIARemarques(o, copiesOk) {
 function stRq(k) { const r = (scCopie(k).recopie || {}).remarquesIA; return r && Array.isArray(r.liste) ? r : null; }
 function stRqVisibles(k) { const r = stRq(k); if (!r || !r.relu) return []; const D = scCopie(k).stickers || {}; return r.liste.filter(e => e.etat !== "retire" && (D[e.st] || {}).v !== "o"); }
 function stRqARelire(k) { const r = stRq(k); return !!(r && !r.relu && r.liste.length); }
-function stRqGarder(k) { const r = stRq(k); if (!r) return; r.relu = new Date().toISOString(); saveState(); }
+function stRqGarder(k) { const r = stRq(k); if (!r) return; r.relu = new Date().toISOString(); saveState(); if (typeof svVerifier === "function") svVerifier(); }
 function stRqRetirer(k, i) { const r = stRq(k); if (!r || !r.liste[i]) return; if (r.liste[i].etat === "retire") delete r.liste[i].etat; else r.liste[i].etat = "retire"; saveState(); if (RC.bd) rcBandeRendre(); }
 function stRqTexte(k, i, v) { const r = stRq(k), t = String(v || "").trim(); if (!r || !r.liste[i] || !t || t === r.liste[i].r) return; Object.assign(r.liste[i], { r: t, deProf: true, longue: t.split(/\s+/).length > 40 }); saveState(); }
 /* la relecture, à la fin de la bande : la liste entière ; Entrée (ou « ✓ Je les garde ») les garde toutes ; ✕ en retire une ; le texte se corrige en place */

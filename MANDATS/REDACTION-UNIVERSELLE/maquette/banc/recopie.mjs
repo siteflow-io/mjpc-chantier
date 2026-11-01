@@ -83,13 +83,12 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   verif("recopie : anciennes marques, réponses, note, total de lignes et nombre de copies conservés", ancienne.lignes === avant.lignes && ancienne.marques === avant.marques && ancienne.rep === avant.rep && JSON.stringify(ancienne.note) === JSON.stringify(avant.note) && ancienne.copies === avant.copies);
   const photoAvant = await pg.evaluate(() => SC.imgs[RC.page].url);
   const pageRetouchee = reprise.page;
-  await pg.click("#rcFermer");
-  await pg.locator('.sc-passe[onclick="scAllerPasse(0)"]').click();
-  await pg.locator('#scPanneau button[onclick^="scRecadrerDebut("]').first().click();
+  // [C14 402, 404] la retouche se fait depuis la recopie, par « 📷 La photo » (plus de panneau des passes)
+  await pg.evaluate(pid => { if (RC.page !== pid) rcActiverPage(pid); }, pageRetouchee); await pg.click("#rcPhotoOuvrir"); await att(150); await pg.click("#rcPhRetoucher");
   await pg.locator("#scRtAngle").waitFor({ state: "visible" }); await pg.locator("#scRtAngle").focus(); await pg.keyboard.press("ArrowRight");
   await pg.locator('button[onclick="scRtFermer(true)"]').click();
-  await pg.waitForFunction(({pid, url}) => SC.imgs[pid] && SC.imgs[pid].url !== url, {pid: pageRetouchee, url: photoAvant});
-  await pg.click("#btnRecopier"); await att(200); const g2 = await geom();
+  await pg.waitForFunction(({pid, url}) => SC.imgs[pid] && SC.imgs[pid].url !== url, {pid: pageRetouchee, url: photoAvant}); await att(300);
+  const g2 = await geom();
   const noteRetouchee = await pg.evaluate(k => scNote(k), avant.k);
   verif("recopie : retoucher la photo déplace ses lignes, garde leurs identités et textes, et conserve la note", g2.id === g1.id && g2.texte === g1.texte && (Math.abs(g2.x0 - g1.x0) > 0.00001 || Math.abs(g2.y0 - g1.y0) > 0.00001) && JSON.stringify(noteRetouchee) === JSON.stringify(avant.note));
   await cap("C15-25-recopie-apres-retouche");
@@ -373,33 +372,23 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   const feuille = await pg.evaluate(id => { const i = document.querySelector('.rc-saisie[data-ligne="' + CSS.escape(id) + '"]'); return i ? i.value : null; }, cible2);
   verif("recopie (1.4.3) : de retour dans la recopie, la feuille montre le texte à jour", feuille === null || feuille === reR.t);
   await pg.setViewportSize({ width: 1536, height: 864 }); await pg.click("#rcFermer"); await att(180);
-  verif("recopie : fermer rend les quatre passes, les anciennes corrections et leurs gestes", await pg.locator("#scanEcran").isVisible() && !(await pg.locator("#rcEcran").isVisible()) && await pg.locator(".sc-passe").count() === 4);
-  // dette ⑤ (Paul, 30/10 11:39) : remettre une copie à zéro, par la corbeille ; restent ses pages, la recopie, le corrigé de l'IA
+  verif("recopie (C14 404) : fermer rend le paquet en vignettes", await pg.locator("#scanEcran").isVisible() && !(await pg.locator("#rcEcran").isVisible()) && await pg.evaluate(() => document.getElementById("scanEcran").classList.contains("sc-vue-paquet") && document.querySelectorAll("#scCopie .sc-pq-vig").length >= 7));
   const hubLire = c => pg.evaluate(c => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/" + c + ".json").then(r => r.json()), c);
-  const iz = await pg.evaluate(k => SC.copies.indexOf(k), kC2); await pg.click('[onclick="scAllerCopie(' + iz + ')"]'); await att(250);
-  const av0 = await pg.evaluate(() => { const k = scK(), s = state.copies[k].scan || {}, L = rcLignesEcrites(k); return { k, id: state.copies[k].id, n: L.length, textes: L.map(x => x.l.texte).join("|"), places: L.filter(x => x.l.places).length, chrono: Object.keys(s.chrono || {}).length, chemin: ruCheminCopies().join("/") }; });
-  const dlZ = []; pg.on("download", d => dlZ.push(d.suggestedFilename())); 
-  await pg.click("#scZero"); await att(200); await pg.click("#scZeroOui"); await att(1600);
-  const ap0 = await pg.evaluate(() => { const k = scK(), c = state.copies[k], s = c.scan || {}, L = rcLignesEcrites(k); return { k, id: c.id, n: L.length, textes: L.map(x => x.l.texte).join("|"), places: L.filter(x => x.l.places || x.l.decisions || x.l.marquesBande).length, marques: Object.keys(s.marques || {}).length, chrono: Object.keys(s.chrono || {}).length }; });
-  const hc = await hubLire(av0.chemin + "/" + av0.k), corb = await pg.evaluate(() => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/corbeille.json").then(r => r.json()));
-  const ent = Object.values(corb || {}).flatMap(j => Object.entries(j || {})).filter(([n]) => /^remise-a-zero-copie_/.test(n)).map(([, v]) => v);
-  const hubL = hc && hc.scan && hc.scan.recopie ? Object.values(hc.scan.recopie.pages || {}).reduce((t, p) => t + Object.values(p.lignes || {}).filter(l => !l.retiree && (l.texte || "").trim()).length, 0) : 0;
-  verif("dette ⑤ : « ↺ Remettre à zéro » sur une copie recopiée (" + av0.n + " lignes, " + av0.places + " cadre visé, temps sur " + av0.chrono + " passe) : rangée d'abord dans la corbeille (" + ent.length + "), export JSON (" + dlZ.length + ") ; au site, la correction s'efface (marques " + ap0.marques + ", temps " + ap0.chrono + ", visées " + ap0.places + "), la recopie reste (" + hubL + " lignes, mêmes textes), même identité",
-    ent.length === 1 && ent[0].data.copie.id === av0.id && dlZ.length === 1 && ap0.id === av0.id && hc && hc.id === av0.id && ap0.n === av0.n && ap0.textes === av0.textes && hubL === av0.n && ap0.places === 0 && ap0.marques === 0 && ap0.chrono === 0 && !(hc.scan || {}).chrono && av0.places + av0.chrono > 0);
+  const av0 = await pg.evaluate(() => ({ chemin: ruCheminCopies().join("/") }));   /* [C14 401] « ↺ Remettre à zéro » (dette ⑤, 1re moitié) est parti avec l'ancien flux ; « 🗑 Tout effacer » de la fenêtre du corrigé reste (1.4.9) */
   // dette ⑤, 2e moitié : une copie effacée au site (ailleurs) quitte la page ouverte ; un geste sur elle ne réécrit pas l'ancienne
-  const k3 = await pg.evaluate(async ch => { const tous = await window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/" + ch + ".json").then(r => r.json()) || {};
+  const k3 = await pg.evaluate(async ([ch, garde]) => { const tous = await window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/" + ch + ".json").then(r => r.json()) || {};
     window.EventSource = class { constructor() { window.__es = this; this.l = {}; } addEventListener(t, f) { this.l[t] = f; } close() {} };
     ruAbonner(); window.__es.l.put({ data: JSON.stringify({ path: "/", data: tous }) });
-    const k = SC.copies.find(x => x !== scK() && tous[x] && tous[x].scan && Object.keys(tous[x].scan.marques || {}).length) || SC.copies.find(x => x !== scK() && tous[x]);
-    return { k, id: tous[k] && tous[k].id, m: Object.keys(((tous[k] || {}).scan || {}).marques || {}).length }; }, av0.chemin);
+    const C = SC.copies.filter(x => x !== garde && tous[x]).sort((a, b) => rcLignesEcrites(a).length - rcLignesEcrites(b).length), k = C[0];   /* jamais une copie que la suite recopie : celle qui a le moins de lignes */
+    return { k, id: tous[k] && tous[k].id, m: Object.keys(((tous[k] || {}).scan || {}).marques || {}).length }; }, [av0.chemin, kC2]);
   await pg.evaluate(([ch, k]) => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/" + ch + "/" + k + ".json", { method: "DELETE" }).then(() => window.__es.l.put({ data: JSON.stringify({ path: "/" + k, data: null }) })), [av0.chemin, k3.k]);
   const oublie = await pg.evaluate(k => ruVierge(state.copies[k]), k3.k);
-  const i3b = await pg.evaluate(k => SC.copies.indexOf(k), k3.k); await pg.click('[onclick="scAllerCopie(' + i3b + ')"]'); await att(300);
-  if (await pg.evaluate(k => scK() !== k, k3.k)) { await pg.fill("#scLig", "20"); await pg.press("#scLig", "Enter"); await att(200); await pg.click('[onclick="scAllerCopie(' + i3b + ')"]'); await att(300); }
-  const surK3 = await pg.evaluate(k => scK() === k, k3.k); await pg.fill("#scLig", "12"); await pg.press("#scLig", "Enter"); await att(1500);   // un geste sur la copie effacée : son nombre de lignes
-  const h3 = await hubLire(av0.chemin + "/" + k3.k);
+  /* [C14 404] le geste sur la copie effacée : une ligne recopiée, depuis sa vignette */
+  await pg.locator('#scCopie .sc-pq-el[data-k="' + k3.k + '"] .sc-pq-vig').first().click(); await att(700);
+  const surK3 = await pg.evaluate(k => RC.ouvert && RC.copie === k, k3.k); await pg.locator(".rc-saisie").first().click(); await pg.keyboard.press("End"); await pg.keyboard.type(" neuve"); await pg.keyboard.press("Enter"); await att(1800);
+  const h3 = await hubLire(av0.chemin + "/" + k3.k); await pg.click("#rcFermer"); await att(250);
   verif("dette ⑤ : une copie effacée au site pendant que la page est ouverte (" + k3.m + " marques) quitte la page ; un geste sur elle y écrit une copie neuve, jamais l'ancienne (au site : " + (h3 ? "id " + (h3.id === k3.id ? "ancien" : "neuf") + ", " + Object.keys(((h3 || {}).scan || {}).marques || {}).length + " marques" : "rien") + ")",
-    !!k3.k && oublie && surK3 && !!h3 && h3.id !== k3.id && !Object.keys((h3.scan || {}).marques || {}).length && (h3.scan || {}).lignes === 12);
+    !!k3.k && oublie && surK3 && !!h3 && h3.id !== k3.id && !Object.keys((h3.scan || {}).marques || {}).length && Object.values((((h3.scan || {}).recopie || {}).pages) || {}).some(p => Object.values(p.lignes || {}).some(l => / neuve$/.test(l.texte || ""))));
   await pg.evaluate(() => { try { RU.flux = null; } catch (e) {} window.EventSource = undefined; });
   // 1.4.5 (Paul 14:16 et 14:46) : un arrêt par mot ; un arrêt déjà décidé qui prenait deux mots (copie d'avant) est coupé, ses marques suivent
   await pg.click("#btnRecopier"); await att(300); await allerCopie(kC2); await att(250);
@@ -517,7 +506,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   // 1.4.6 (Paul 15:18) : la page 2 d'une copie, préparée avant que sa photo soit prête, trouve son trait rouge dès que la photo arrive
   const k7 = await pg.evaluate(() => { for (const k of SC.copies) { const P = scPagesDe(k), r = ((scCopie(k).recopie || {}).pages) || {}; if (P.length >= 2 && !r[P[1].id]) return { k, i: SC.copies.indexOf(k), p2: P[1].id }; } return null; });
   let t7 = { avant: null, apres: null };
-  if (k7) { await pg.click('[onclick="scAllerCopie(' + k7.i + ')"]'); await att(250);
+  if (k7) { await pg.locator('#scCopie .sc-pq-el[data-k="' + k7.k + '"] .sc-pq-vig').first().click(); await att(500); await pg.click("#rcFermer"); await att(300);   /* [C14 404] la copie choisie par sa vignette */
     await pg.evaluate(p2 => { window.__el7 = SC.imgs[p2].el; SC.imgs[p2].el = new Image(); }, k7.p2);   // la photo pas encore prête
     await pg.click("#btnRecopier"); await att(400);
     t7.avant = await pg.evaluate(p2 => !!(rcBloc(p2) && rcBloc(p2).querySelector(".rc-marge-trait")), k7.p2);
@@ -534,6 +523,27 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   // 1.4.12 (exigences du 29/10 : « Je veux max 30 clics par copie » ; « mesurer le gain ») : le temps et les gestes de chaque copie, comptés seuls
   await pg.click("#rcFluxOuvrir"); await att(200); const tg19 = await pg.evaluate(k => { const f = rcFluxCopie(k), tr = document.querySelector('#rcFluxTable tr[data-k="' + CSS.escape(k) + '"]'); return { t: f.temps, g: f.gestes, cell: tr ? tr.lastElementChild.textContent : "" }; }, k19); await pg.click("#rcFluxFermer"); await att(100);
   verif("recopie (1.4.12) : le flux compte seul, pour chaque copie, le temps de recopie, le temps de bande et les gestes (« " + tg19.cell + " »)", !!tg19.t && tg19.t.bande > 0 && tg19.t.recopie > 0 && !!tg19.g && tg19.g.bande >= 5 && /gestes/.test(tg19.cell));
+  // [C14 403] le chrono de la copie affichée, en haut de la recopie : il compte seul, au geste, sans toucher au focus ; le total de la classe sous le flux
+  const ch0 = await pg.evaluate(() => ({ txt: document.getElementById("rcChrono").textContent, r: ((scCopie(RC.copie).recopie || {}).temps || {}).recopie || 0, titre: document.getElementById("rcChrono").title }));
+  await pg.click("#rcLargeur"); await att(1300); await pg.locator(".rc-saisie").first().click(); await att(100); const foc0 = await pg.evaluate(() => document.activeElement && document.activeElement.className);
+  await pg.click("#rcLargeur"); await att(150);
+  const ch1 = await pg.evaluate(() => { const T = (scCopie(RC.copie).recopie || {}).temps || {}, c = s => { s = Math.floor((s || 0) / 1000); return s < 60 ? s + " s" : Math.floor(s / 60) + " min"; }; return { txt: document.getElementById("rcChrono").textContent, attendu: "⏱ recopie " + c(T.recopie) + " · bande " + c(T.bande), r: T.recopie || 0 }; });
+  await pg.locator(".rc-saisie").first().click(); await att(80); await pg.keyboard.press("End"); await att(1100); await pg.keyboard.press("End"); await att(120);
+  const foc1 = await pg.evaluate(() => ({ cl: document.activeElement && document.activeElement.className, txt: document.getElementById("rcChrono").textContent }));
+  await cap("C14-403-chrono-recopie");
+  await pg.click("#rcFluxOuvrir"); await att(200);
+  const tot = await pg.evaluate(() => { const F = SC.copies.map(rcFluxCopie), S = F.reduce((s, f) => { const T = f.temps || {}, G = f.gestes || {}; s.r += T.recopie || 0; s.b += T.bande || 0; s.g += (G.recopie || 0) + (G.bande || 0); return s; }, { r: 0, b: 0, g: 0 }), tf = document.querySelector("#rcFluxTable tfoot"); return { txt: tf ? tf.textContent : "", attendu: "Toute la classerecopie " + rcDuree(S.r) + " · bande " + rcDuree(S.b) + " · " + S.g + " geste" + (S.g > 1 ? "s" : "") }; });
+  await cap("C14-403-flux-total"); await pg.click("#rcFluxFermer"); await att(100);
+  // [C14 407] l'aide « ? » de la recopie et de la bande : seulement ce qui reste
+  const aide407 = async () => { await pg.click(".rp-aide-btn"); await att(250); const x = await pg.evaluate(() => { const a = document.getElementById("ruAide"); return a && !a.hidden ? a.innerText : ""; }); return x; };
+  const a407r = await aide407(); await cap("C14-407-aide-recopie"); await pg.click(".rp-aide-btn"); await att(150);
+  await pg.click("#rcBandeOuvrir"); await att(400); const a407b = await aide407(); await cap("C14-407-aide-bande"); await pg.click(".rp-aide-btn"); await att(150);
+  await pg.click("#rcBandeRetour"); await att(250); const a407r2 = await pg.evaluate(() => AIDE.courant);
+  const vieux407 = /pinceau|passe de la|les questions|récapitulatif|interrogatif|mode test/i;
+  verif("aide (C14 407) : « ? » dans la recopie : « " + a407r.split("\n")[0] + " », " + (a407r.match(/\n/g) || []).length + " lignes (dont « ⇪ Exporter pour l'IA », « 📷 La photo », « ⏱ ») ; dans la bande : « " + a407b.split("\n")[0] + " » (Entrée, N, ⇧ R, ＋ Un sticker, les remarques) ; rien de l'ancien flux ; revenue à la recopie, l'aide la suit (" + a407r2 + ")",
+    /^Recopier/.test(a407r) && /Exporter pour l'IA/.test(a407r) && /La photo/.test(a407r) && /⏱/.test(a407r) && /^La bande/.test(a407b) && /⇧ R/.test(a407b) && /Un sticker/.test(a407b) && /remarques/.test(a407b) && !vieux407.test(a407r + a407b) && a407r2 === "recopie");
+  verif("recopie (C14 403) : en haut de la recopie, « " + ch1.txt + " » pour la copie affichée, compté seul au geste (" + Math.round(ch0.r / 1000) + " s → " + Math.round(ch1.r / 1000) + " s), le focus reste dans la ligne (« " + foc1.txt + " ») ; sous le flux : « " + tot.txt + " »",
+    /^⏱ recopie \d+ (s|min) · bande \d+ (s|min)$/.test(ch1.txt) && ch1.txt === ch1.attendu && ch1.r > ch0.r && /Le flux/.test(ch0.titre) && /rc-saisie/.test(foc0 || "") && /rc-saisie/.test(foc1.cl || "") && tot.txt === tot.attendu);
   await pg.click("#rcPhraseOuvrir"); await att(250); const mots19 = await pg.locator("#rcPhraseTexte [data-j]").count(), fin19 = Math.min(mots19 - 1, 7);
   await pg.click("#rcPhraseTexte [data-j] >> nth=1"); await att(100); await pg.click("#rcPhraseTexte [data-j] >> nth=" + fin19); await att(150);
   const or19 = await pg.locator("#rcPhraseTexte .or").count(); await cap("C14-47-phrase-qui-m-a-marque");
@@ -552,13 +562,45 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   const av22 = await pg.evaluate(pid => { const k = RC.copie, d = (scCopie(k).recopie.pages || {})[pid], s = scCopie(k), L = rcListe(d.ordre).map(id => d.lignes[id]).filter(l => (l.texte || "").trim());
     return { textes: L.map(l => l.texte).join("|"), ids: L.map(l => l.id).join("|"), y: L.map(l => (l.y0 + l.y1) / 2), bande: Object.values(s.marques).filter(m => m.page === pid && m.bande).map(m => (m.y0 + m.y1) / 2), page: JSON.stringify({ e: SC.pages[pid].eleve, o: SC.pages[pid].ordre }) }; }, pid22);
   const png22 = await pg.evaluate(pid => { const im = SC.imgs[pid], c = document.createElement("canvas"); c.width = im.w; c.height = im.h; const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height); x.drawImage(im.el, 0, Math.round(0.03 * im.h)); return c.toDataURL("image/png").split(",")[1]; }, pid22);
-  const ch22 = pg.waitForEvent("filechooser"); await pg.click("#rcRemplacer"); const fc22 = await ch22; globalThis.BANC_PHOTO_REFAITE = Buffer.from(png22, "base64"); await fc22.setFiles({ name: "photo-refaite.png", mimeType: "image/png", buffer: globalThis.BANC_PHOTO_REFAITE }); await att(2500);
+  const ch22 = pg.waitForEvent("filechooser"); await pg.click("#rcPhotoOuvrir"); await att(150); await pg.click("#rcRemplacer"); const fc22 = await ch22; globalThis.BANC_PHOTO_REFAITE = Buffer.from(png22, "base64"); await fc22.setFiles({ name: "photo-refaite.png", mimeType: "image/png", buffer: globalThis.BANC_PHOTO_REFAITE }); await att(2500);
   const ap22 = await pg.evaluate(pid => { const k = RC.copie, d = (scCopie(k).recopie.pages || {})[pid], s = scCopie(k), L = rcListe(d.ordre).map(id => d.lignes[id]).filter(l => (l.texte || "").trim());
     return { textes: L.map(l => l.texte).join("|"), ids: L.map(l => l.id).join("|"), y: L.map(l => (l.y0 + l.y1) / 2), bande: Object.values(s.marques).filter(m => m.page === pid && m.bande).map(m => (m.y0 + m.y1) / 2), page: JSON.stringify({ e: SC.pages[pid].eleve, o: SC.pages[pid].ordre }), remplacee: !!SC.pages[pid].remplaceeLe, toast: (document.querySelector(".toast, #toast") || {}).textContent || "" }; }, pid22);
   await cap("C14-48-photo-remplacee"); await pg.click("#rcFermer"); await att(200);
   const dy = (a, b) => a.length && a.length === b.length ? Math.min(...a.map((v, i) => b[i] - v)) : -1;
   verif("feuilles (1.4.13) : « 📷 Remplacer la photo » d'une page par une photo refaite (décalée de 3 % vers le bas) : la feuille garde son identité, son élève et sa place (" + (av22.page === ap22.page && ap22.remplacee) + ") ; ta recopie garde ses lignes et leurs textes (" + (av22.ids === ap22.ids && av22.textes === ap22.textes) + ") et se recale sur la nouvelle photo (lignes descendues de " + (dy(av22.y, ap22.y) * 100).toFixed(1) + " %) ; les cadres de la bande suivent (" + av22.bande.length + " ; " + (dy(av22.bande.sort(), ap22.bande.sort()) * 100).toFixed(1) + " %)",
     !!pid22 && av22.page === ap22.page && ap22.remplacee && av22.ids === ap22.ids && av22.textes === ap22.textes && dy(av22.y, ap22.y) > 0.015 && (!av22.bande.length || dy(av22.bande.sort(), ap22.bande.sort()) > 0.01));
+  // [C14 402] un seul bouton « 📷 La photo » : une petite fenêtre, les gestes rares ; un bouton grisé dit pourquoi ; Échap ferme la fenêtre, pas la recopie ;
+  // la retouche et la confirmation ouvertes d'ici gardent leurs touches ; quatre quarts de tour reviennent au même, la recopie tourne avec la page ; l'ordre des pages suit
+  await pg.click("#btnRecopier"); await att(400); if (await pg.evaluate(k => RC.copie !== k, k19)) { await allerCopie(k19); await att(300); }
+  await pg.evaluate(pid => { if (RC.page !== pid) rcActiverPage(pid); }, pid22); await att(200);
+  const haut402 = await pg.evaluate(() => Array.from(document.querySelectorAll("#rcEcran .rc-outils button:not([hidden])")).map(b => b.textContent));
+  await pg.click("#rcPhotoOuvrir"); await att(200);
+  const w402 = await pg.evaluate(() => { const B = Array.from(document.querySelectorAll("#rcPhotoF .rc-photo-b button")), pq = document.getElementById("rcPhotoPourquoi").textContent; return { boutons: B.map(b => b.textContent), titres: B.every(b => (b.title || "").length > 30), gris: B.filter(b => b.disabled).map(b => b.textContent), pq, dit: B.filter(b => b.disabled).every(b => pq.includes(b.textContent + " : ")), qui: document.getElementById("rcPhotoQui").textContent }; });
+  await cap("C14-402-la-photo"); await pg.keyboard.press("Escape"); await att(150);
+  const esc402 = await pg.evaluate(() => ({ f: document.getElementById("rcPhotoF").hidden, rc: RC.ouvert }));
+  const lig402 = () => pg.evaluate(pid => { const d = (scCopie(RC.copie).recopie.pages || {})[pid]; const p = SC.pages[pid] || {}, I = rcListe(d.ordre).slice().sort();   // par identité de ligne : l'ordre des lignes suit leur hauteur, il change quand la page tourne
+    return { ids: I.join("|"), textes: I.map(id => d.lignes[id].texte || "").join("|"), P: I.map(id => [d.lignes[id].x0, d.lignes[id].y0, d.lignes[id].x1, d.lignes[id].y1]), id: RC.page, ouvert: RC.ouvert, rot: p.rot || 0, rep: !!(p.lignes && p.lignes.reperes), vt: !!p.vueTournee, orig: !!SC.origs[pid], marge: JSON.stringify(d.marge || null) }; }, pid22);
+  const t402 = await lig402(); const tours402 = [];
+  for (let i = 0; i < 4; i++) { await pg.click("#rcPhotoOuvrir"); await att(120); await pg.click("#rcPhTourner"); await att(1800); tours402.push(await lig402()); }
+  const ecart402 = (A, B) => Math.max(0, ...A.map((a, i) => Math.max(...a.map((v, j) => Math.abs(v - B[i][j])))));
+  const quart402 = t402.P.map(([x0, y0, x1, y1]) => [1 - y0, x0, 1 - y1, x1]), eq402 = ecart402(quart402, tours402[0].P), er402 = ecart402(t402.P, tours402[3].P);
+  await pg.click("#rcPhotoOuvrir"); await att(150); const rtGris402 = await pg.evaluate(() => document.getElementById("rcPhTourner") && document.getElementById("rcPhRetoucher").disabled);
+  let rt402 = "grisé";
+  if (!rtGris402) { await pg.click("#rcPhRetoucher"); await att(1500); const o = await pg.evaluate(() => !!SC.rt && !document.getElementById("scRetouche").hidden); await cap("C14-402-retoucher-depuis-la-recopie"); await pg.keyboard.press("Escape"); await att(300); const f = await pg.evaluate(() => ({ rt: !!SC.rt, rc: RC.ouvert })); rt402 = o && !f.rt && f.rc ? "ouverte, Échap la ferme, la recopie reste" : "défaut (" + o + "/" + JSON.stringify(f) + ")"; }
+  else { rt402 = "grisé : « " + (await pg.locator("#rcPhotoPourquoi").textContent()) + " »"; await pg.click("#rcPhotoFermer"); await att(100); }
+  const nIm402 = await pg.evaluate(() => scPagesDe(RC.copie).filter(p => SC.imgs[p.id]).length);
+  await pg.click("#rcPhotoOuvrir"); await att(120); await pg.click("#rcPhRetirer"); await att(200);
+  const mo402 = await pg.evaluate(() => document.getElementById("scModale").classList.contains("show") && /Retirer les photos/.test(document.querySelector("#scModale .sc-modale-c").textContent));
+  await cap("C14-402-retirer-demande"); await pg.keyboard.press("Escape"); await att(200);
+  const apMo402 = await pg.evaluate(() => ({ mo: document.getElementById("scModale").classList.contains("show"), rc: RC.ouvert, im: scPagesDe(RC.copie).filter(p => SC.imgs[p.id]).length }));
+  const ord402a = await pg.evaluate(() => scPagesDe(RC.copie).map(p => p.id)); let ord402b = ord402a, ord402n = ord402a, blocs402 = "";
+  if (ord402a.length > 1) { for (let i = 0; i < ord402a.length; i++) { await pg.click("#rcPhotoOuvrir"); await att(120); await pg.click("#rcPhOrdre"); await att(400); const o = await pg.evaluate(() => ({ p: scPagesDe(RC.copie).map(p => p.id), b: document.getElementById("rcPages").dataset.pages })); if (i === 0) { ord402b = o.p; blocs402 = o.b; } ord402n = o.p; } }
+  else { await pg.click("#rcPhotoOuvrir"); await att(120); ord402b = (await pg.evaluate(() => document.getElementById("rcPhOrdre").disabled && /qu’une page/.test(document.getElementById("rcPhotoPourquoi").textContent))) ? ["grisé"] : []; await pg.click("#rcPhotoFermer"); await att(100); }
+  await pg.click("#rcFermer"); await att(200);
+  verif("recopie (C14 402) : un seul bouton « " + haut402.filter(x => /📷/.test(x)).join(" / ") + " » en haut ; sa fenêtre : « " + w402.boutons.join(" · ") + " », chacun son infobulle, " + (w402.gris.length ? "grisés : « " + w402.pq + " »" : "aucun grisé") + " ; Échap ferme la fenêtre, pas la recopie ; quatre quarts de tour : la recopie tourne avec la page (écart au quart402 de tour attendu " + eq402.toExponential(1) + "), revient au même (" + er402.toExponential(1) + "), mêmes lignes et textes ; ✂ Retoucher : " + rt402 + " ; 🗑 Retirer demande d'abord, Échap ferme la demande, rien n'est retiré (" + apMo402.im + " / " + nIm402 + " photos) ; ⇄ " + (ord402a.length > 1 ? ord402a.length + " pages : la première passe, la recopie suit (" + (blocs402 === ord402b.join(",")) + "), " + ord402a.length + " clics reviennent au même ordre" : "une page : grisé, il dit pourquoi"),
+    haut402.filter(x => /📷/.test(x)).length === 1 && haut402.includes("📷 La photo") && w402.boutons.length === 5 && w402.titres && w402.dit && /Page \d+ \/ \d+ de la copie de/.test(w402.qui) && esc402.f && esc402.rc
+    && tours402.every(x => x.ids === t402.ids && x.textes === t402.textes && x.id === t402.id && x.ouvert) && eq402 < 1e-6 && er402 < 1e-6 && (/^grisé : /.test(rt402) || /Échap la ferme, la recopie reste/.test(rt402))
+    && mo402 && !apMo402.mo && apMo402.rc && apMo402.im === nIm402 && nIm402 > 0 && (ord402a.length > 1 ? ord402b.join() !== ord402a.join() && blocs402 === ord402b.join(",") && ord402n.join() === ord402a.join() : ord402b[0] === "grisé"));
   // 1.4.12 (Paul 14:03 : « les mots sont soulignés dans la couleur de leur erreur et ils ont le détail dans la marge » ; C14 226 ; C14 234 et Paul 23:09 : « type d'erreur ») :
   // la copie de l'élève en couleurs, une pastille par faute dans une marge ajoutée à gauche de la photo, sans la bonne forme
   const k18 = await pg.evaluate(() => SC.copies.find(k => Object.values(scCopie(k).marques).some(m => m.bande && m.bande.code)));
@@ -566,6 +608,15 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
     return { n: ms.length, couleurs: ms.map(m => t(m).couleur).sort().join(","), lettres: ms.map(m => t(m).court).sort().join(" "), nom: nomEleveDe(k) }; }, k18);
   await pg.click('#scanEcran .sc-haut >> text=Fichiers École Directe'); await att(300);
   const dl18 = pg.waitForEvent("download"); await pg.click('.sc-table tr:has-text("' + att18.nom + '") >> text=Télécharger'); const d18 = await dl18, f18 = path.join(path.dirname(await d18.path()), "eleve-couleurs.html"); await d18.saveAs(f18);
+  // [C14 405] « 📦 Tout rendre » : un seul zip, un fichier par élève, « NOM Prénom.html » écrit comme dans la liste de la classe ; un lecteur de zip ordinaire l'ouvre
+  const nom405 = d18.suggestedFilename(), att405 = await pg.evaluate(() => scCopiesED().map(k => nomEleveDe(k) + ".html"));
+  const btn405 = await pg.locator("#scToutRendre").textContent(); await cap("C14-405-tout-rendre");
+  const dlz = pg.waitForEvent("download", { timeout: 120000 }); await pg.click("#scToutRendre"); const dz = await dlz, fz = path.join(out, "C14-405-fichiers-eleves.zip"); await dz.saveAs(fz); await att(300);
+  const etat405 = await pg.locator("#scZipEtat").textContent();
+  const { execFileSync } = await import("node:child_process");
+  const z405 = JSON.parse(execFileSync("python3", ["-I", "-c", "import zipfile,json,sys\nz=zipfile.ZipFile(sys.argv[1])\nprint(json.dumps({'bad':z.testzip(),'noms':z.namelist(),'html':all(z.read(n)[:15].lower()==b'<!doctype html>' for n in z.namelist())}))", fz]).toString());
+  verif("fichiers (C14 405) : « " + btn405 + " » : un seul zip (« " + dz.suggestedFilename() + " »), " + z405.noms.length + " fichiers, un par élève, nommés comme dans la liste de la classe (« " + z405.noms.slice(0, 3).join(" », « ") + " »…), chacun une page HTML, le zip lu sans erreur par un lecteur ordinaire ; « " + etat405 + " » ; un fichier seul : « " + nom405 + " »",
+    /^Redaction-.+-fichiers-eleves_\d{4}-\d\d-\d\d_\d\dh\d\d\.zip$/.test(dz.suggestedFilename()) && z405.bad === null && JSON.stringify(z405.noms) === JSON.stringify(att405) && z405.html && att405.length >= 2 && nom405 === att18.nom + ".html" && /Le zip est prêt : \d+ fichiers/.test(etat405));
   await pg.keyboard.press("Escape"); await att(200);
   const pe = await pg.context().newPage(); await pe.setViewportSize({ width: 1536, height: 864 }); await pe.goto("file://" + f18); await att(600); await pe.click("#passer").catch(() => {}); await att(400);
   const e18 = await pe.evaluate(() => ({ soul: Array.from(document.querySelectorAll("#col .mk.f")).map(e => e.style.getPropertyValue("--c").trim()).sort().join(","), pas: Array.from(document.querySelectorAll("#col .pas span:not(.rqn), #col .pas2 span:not(.rqn)")).map(e => e.textContent).sort().join(" "),

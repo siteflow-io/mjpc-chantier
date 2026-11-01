@@ -3400,3 +3400,41 @@ MEMO
 01/11/2026 22:34
 
 MEMO
+
+## Tour 129 — 01/11/2026 22:36 → 01/11/2026 22:47
+
+**Paul :** Promeus mais dis moi d'abord 409 et 442
+
+**Claude (22:41) :**
+
+À jouer : rien de neuf (la 1.4.18-RU est en ligne) · en cours : un défaut de la 1.4.19, trouvé en te répondant · ouvert : 409, 442, 592
+
+589. 409, c'est ta décision sur le « flux unique », proposé à 10:43 (401 à 407), jamais tranché. Il y a sept points. 401 : retirer pour de bon le code de l'ancien flux (passes, pinceau, récapitulatif…). 402 : un seul bouton « 📷 La photo » pour Remplacer, Tourner, Retoucher, Retirer et Ordre des pages. 403 : le chrono « ⏱ recopie 12 min · bande 4 min » en haut de la recopie. 404 : au milieu de l'écran du paquet, les pages en vignettes, rangées par élève. 405 : les fichiers des élèves dans un zip, chacun nommé « NOM Prénom ». 406 : le Bilan. 407 : l'aide « ? » récrite. À 13:12, tu as dit que la sauvegarde JSON reste, et qu'elle s'étend à tout ce qui est nouveau : téléchargée et rangée au site quand un paquet est fini. Tu as dit aussi : les stickers d'abord. Mesuré dans le code ce soir : rien de 401 à 407 n'est fait. Depuis, 405 a changé : tu rends le fichier HTML de l'élève, pas un PDF. Le zip porterait donc les fichiers HTML.
+
+590. 442, c'est ce que je ne savais pas : combien de remarques par copie, et si la réponse de l'IA tiendrait en un seul message. Mesuré sur la copie de [l'élève] : 18 remarques, et un retour de 6 900 signes pour une seule copie (lignes 1 500, réussites 1 950, remarques 3 400). Un paquet de huit copies ferait donc environ 55 000 signes. Ton IA peut-elle rendre autant en un seul fichier ? Je ne sais pas : je le mesurerai sur ton premier vrai paquet.
+
+591. En mesurant 442, j'ai trouvé un défaut dans la 1.4.19. Quand un retour arrive coupé, ou sans une copie, le message dit « au prochain export ». Mais l'export suivant ne la reprend pas, parce qu'elle « attend son retour ». Il faudrait passer par « ↻ Renvoyer », et le message ment. Je le règle : une copie dont le retour est arrivé sans elle repart au prochain export, comme le message le dit. Puis je repasse le banc complet.
+
+592. Ton promeus portait sur la 1.4.19 telle que je te l'ai montrée. Je te le redemande dès que la 1.4.19 corrigée est passée au banc, d'ici une quinzaine de minutes.
+
+À tester : rien pour l'instant.
+
+01/11/2026 22:41
+
+MEMO
+
+**Fait.** 409 relu au transcript (tours 105-106) et mesuré dans le code (rien de 401-407) ; 442 mesuré sur le retour de [l'élève] (6 921 signes). Défaut C14 591 corrigé (`rcEnAttente` lit `envoi.retour` ; au chargement, les copies des envois touchés et non chargées sont libérées) ; vérification ajoutée au banc ; banc complet 176/0 (c14-poignees `c3d05523`). Candidate 1.4.19-RU refaite (md5 `55c27b0a…`, 897 875 o, sas `8dc95c06`). Vrai site en lecture seule : copies, marques et 51 pages identiques, la carte juste, 0 erreur ; trois exports sur la vraie classe : envoi 1, 2, 3 sur 4, 8 copies chacun, distincts ; 26 écritures interceptées.
+
+**Claude (22:47) :**
+
+À jouer : rien de neuf (la 1.4.18-RU est en ligne) · en cours : rien · ouvert : 409, 442, 594
+
+593. 591 est réglé dans la 1.4.19-RU. Une copie dont le retour arrive sans elle n'attend plus : elle repart au prochain export, comme le message le dit. « ↻ Renvoyer » ne sert plus qu'à un retour entièrement perdu. Le banc complet passe 176 vérifications, 0 défaut, dont celle-ci. Ton vrai site, en lecture seule, donne les mêmes copies, marques et pages qu'avec la 1.4.18. Sur ta vraie classe, trois exports à la suite donnent toujours trois paquets de huit copies différentes, sans rien écrire au site.
+
+594. Promeus pour la 1.4.19-RU corrigée ?
+
+À tester : rien n'est en ligne. Après le promeus : charge ta grille de stickers, exporte deux fois de suite, puis charge les deux retours d'un coup.
+
+01/11/2026 22:47
+
+MEMO

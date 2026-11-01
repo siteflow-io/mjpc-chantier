@@ -44,7 +44,7 @@ body.sc-ouvert{overflow:hidden}
 .sc-retour{margin:auto;display:flex;flex-direction:column;gap:14px;align-items:center}.sc-extrait{position:relative;border:1px solid #d6cfc1;border-radius:6px;background-repeat:no-repeat;box-shadow:0 1px 4px rgba(0,0,0,.2)}
 .sc-ext-m{position:absolute;border:2px solid #6b1a2a;border-radius:4px}
 .sc-papillon{background:#fffbe6;border:1px solid #e0c870;box-shadow:2px 3px 8px rgba(0,0,0,.2);padding:8px 10px;font-family:"Segoe Script","Bradley Hand",cursive;color:#2a3f8f;white-space:pre-wrap}.sc-papillon.grand{font-size:20px;max-width:900px;transform:rotate(-.6deg)}
-.sc-modale{position:fixed;inset:0;z-index:950;background:rgba(43,37,32,.45);display:none;align-items:center;justify-content:center}.sc-modale.show{display:flex}
+.sc-modale{position:fixed;inset:0;z-index:1100;background:rgba(43,37,32,.45);display:none;align-items:center;justify-content:center}.sc-modale.show{display:flex}
 .sc-modale-c{background:#fdfbf7;border-radius:12px;padding:16px 20px;max-width:860px;max-height:86vh;overflow:auto;box-shadow:0 10px 30px rgba(0,0,0,.3)}.sc-modale-c h3{margin:0 0 8px;color:#6b1a2a;font:600 20px Georgia,serif}
 .sc-table{border-collapse:collapse;width:100%;margin:8px 0}.sc-table td,.sc-table th{border-bottom:1px solid #e3dacb;padding:5px 6px;text-align:left;font-size:14px}
 .sc-ve{position:fixed;inset:0;z-index:960;background:#2b2520;display:none;flex-direction:column}.sc-ve.show{display:flex}.sc-ve-haut{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;color:#fff}.sc-ve iframe{flex:1;border:0;background:#fff}

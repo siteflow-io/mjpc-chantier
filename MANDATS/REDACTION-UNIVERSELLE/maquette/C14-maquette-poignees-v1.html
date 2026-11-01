@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.4.15-RU";
+var APP_VERSION = "1.4.16-RU";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -3021,7 +3021,7 @@ function ruOnglet(o, sous) {
   if (vue === "preparation") ruRendrePreparation();
   if (vue === "bilan") avBilanClasse();
   if (vue === "fiches") avFiches();
-  if (vue === "reglages") ruRendreReglages();
+  if (vue === "reglages") stRendre();
   aidePoser(vue);
 }
 function ruRendrePreparation() {
@@ -6594,7 +6594,7 @@ body.sc-ouvert{overflow:hidden}
 .sc-retour{margin:auto;display:flex;flex-direction:column;gap:14px;align-items:center}.sc-extrait{position:relative;border:1px solid #d6cfc1;border-radius:6px;background-repeat:no-repeat;box-shadow:0 1px 4px rgba(0,0,0,.2)}
 .sc-ext-m{position:absolute;border:2px solid #6b1a2a;border-radius:4px}
 .sc-papillon{background:#fffbe6;border:1px solid #e0c870;box-shadow:2px 3px 8px rgba(0,0,0,.2);padding:8px 10px;font-family:"Segoe Script","Bradley Hand",cursive;color:#2a3f8f;white-space:pre-wrap}.sc-papillon.grand{font-size:20px;max-width:900px;transform:rotate(-.6deg)}
-.sc-modale{position:fixed;inset:0;z-index:950;background:rgba(43,37,32,.45);display:none;align-items:center;justify-content:center}.sc-modale.show{display:flex}
+.sc-modale{position:fixed;inset:0;z-index:1100;background:rgba(43,37,32,.45);display:none;align-items:center;justify-content:center}.sc-modale.show{display:flex}
 .sc-modale-c{background:#fdfbf7;border-radius:12px;padding:16px 20px;max-width:860px;max-height:86vh;overflow:auto;box-shadow:0 10px 30px rgba(0,0,0,.3)}.sc-modale-c h3{margin:0 0 8px;color:#6b1a2a;font:600 20px Georgia,serif}
 .sc-table{border-collapse:collapse;width:100%;margin:8px 0}.sc-table td,.sc-table th{border-bottom:1px solid #e3dacb;padding:5px 6px;text-align:left;font-size:14px}
 .sc-ve{position:fixed;inset:0;z-index:960;background:#2b2520;display:none;flex-direction:column}.sc-ve.show{display:flex}.sc-ve-haut{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;color:#fff}.sc-ve iframe{flex:1;border:0;background:#fff}
@@ -6776,6 +6776,34 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .rc-phrase-t .rc-mot.debut{outline:2px solid #b8860b;border-radius:3px}
 .rc-phrase-choix{margin-top:8px;padding:8px 12px;border-radius:8px;background:#fff7dc;border:1px solid #e6c65c;font:17px/1.5 Georgia,serif;color:#5a4300;text-align:left;min-height:1.5em}
 .rc-phrase-choix.vide{background:#fbf8f1;border-color:#e3dccd;color:#9a8b78;font-style:italic}
+
+/* [C14 1.4.16] Réglages → la grille et ses stickers : trois colonnes sur toute la largeur */
+.st-ed{max-width:none}.st-haut{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.st-haut h2{margin:0 8px 0 0}
+.st-pret{font:600 13px system-ui;color:#8a4b09;background:#fff7e6;border:1px solid #f0d49a;border-radius:6px;padding:4px 8px}.st-pret.ok{color:#2f6b25;background:#eef7ea;border-color:#b8d8aa}
+.st-cols{display:grid;grid-template-columns:minmax(220px,1fr) minmax(0,2.2fr) minmax(260px,1.3fr);gap:14px;margin-top:12px;align-items:start}
+.st-arbre{display:flex;flex-direction:column;gap:10px}.st-crit{border-left:4px solid var(--st-c);padding-left:8px;display:flex;flex-direction:column;gap:3px}.st-crit>b{font:600 13px system-ui;color:var(--st-c)}
+.st-ligne{display:flex;flex-direction:column;align-items:flex-start;text-align:left;background:#fff;border:1px solid #e3dccd;border-radius:6px;padding:5px 8px;cursor:pointer;font:14px system-ui}.st-ligne small{color:#9a8b78;font-size:11.5px}.st-ligne.on{border-color:var(--st-c);box-shadow:0 0 0 2px color-mix(in srgb,var(--st-c) 25%,transparent)}
+.st-sous-arbre{font:12px system-ui;color:#7a6e5f;padding-left:12px}
+.st-milieu{display:flex;flex-direction:column;gap:8px}.st-ligne-titre{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.st-compte{font:12.5px system-ui;color:#5a4a36;background:#fbf8f1;border:1px solid #e3dccd;border-radius:6px;padding:4px 8px}.st-comp-ligne{font:12.5px system-ui}
+.st-carte{background:#fff;border:1px solid #e3dccd;border-left:5px solid var(--st-c);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:5px;cursor:pointer}.st-carte.on{box-shadow:0 0 0 2px color-mix(in srgb,var(--st-c) 30%,transparent)}.st-carte.valide{background:#fbfdf9}
+.st-carte label{display:flex;flex-direction:column;font:600 11.5px system-ui;color:#7a6e5f;gap:2px}.st-carte textarea{font:15px/1.35 Georgia,serif;border:1px solid #e3dccd;border-radius:5px;padding:4px 6px;resize:vertical;width:100%;box-sizing:border-box}
+.st-carte-haut{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.st-carte-haut b{font:700 13px system-ui;color:var(--st-c)}.st-sous,.st-portee{font:11.5px system-ui;background:#f3eee4;border-radius:4px;padding:1px 6px;color:#5a4a36}.st-etat{margin-left:auto;font:600 11.5px system-ui;color:#8a4b09}.st-etat.ok{color:#2f6b25}
+.st-gestes{display:flex;gap:5px;flex-wrap:wrap;align-items:center}.st-gestes select{font:13px system-ui}.st-plus{align-self:flex-start}
+.st-ratt{background:#fff;border:1px solid #e3dccd;border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:7px;position:sticky;top:8px}.st-ratt h3{margin:0;font:600 15px system-ui}.st-ratt label{display:flex;flex-direction:column;font:600 11.5px system-ui;color:#7a6e5f;gap:2px}.st-ratt select,.st-ratt input{font:13px system-ui;padding:3px}
+.st-taxo{font:12.5px system-ui;display:flex;flex-direction:column;gap:4px}.st-chip{display:inline-flex;align-items:center;gap:4px;background:#eef3fb;border:1px solid #c9d6ee;border-radius:12px;padding:1px 8px;margin:2px 4px 2px 0;font:12.5px system-ui}.st-chip button{border:0;background:none;cursor:pointer;color:#7a6e5f}.st-chip.propose{background:#fff7e6;border-color:#f0d49a}
+.st-taxo-res{display:flex;flex-direction:column;gap:2px;max-height:220px;overflow:auto}.st-taxo-res button{text-align:left;background:#fbf8f1;border:1px solid #eee5d4;border-radius:5px;padding:3px 6px;cursor:pointer;font:12.5px system-ui}
+.st-apercu{border-left:4px solid var(--st-c);background:color-mix(in srgb,var(--st-c) 8%,#fff);border-radius:6px;padding:6px 8px;display:flex;flex-direction:column}.st-apercu small{font:11px system-ui;color:#7a6e5f}.st-apercu span{font:15px Georgia,serif}
+.st-ok{color:#2f6b25;font:600 13px system-ui;margin:0}.st-valider{align-self:flex-start}
+.st-valid{position:fixed;inset:0;background:rgba(40,30,20,.35);z-index:1200;display:flex;align-items:center;justify-content:center}.st-valid-c{background:#fffdf8;border-radius:12px;max-width:1100px;width:94vw;max-height:92vh;overflow:auto;padding:14px 18px;box-shadow:0 10px 40px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:8px}
+.st-valid-haut{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}.st-valid-haut b{font:600 18px Georgia,serif}.st-valid-haut small{color:#7a6e5f}
+.st-valid-s{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid #e3dccd;border-left:5px solid var(--st-c);border-radius:8px;padding:7px 10px;cursor:pointer}.st-valid-s b{font:700 13px system-ui;color:var(--st-c);min-width:56px}.st-valid-s div{display:flex;flex-direction:column;gap:2px;flex:1}.st-v-eleve{font:16px Georgia,serif}.st-valid-s small{color:#7a6e5f;font:12px system-ui}.st-valid-s i{font-style:normal;color:#2f6b25;font-weight:700}.st-valid-s.ok{background:#fbfdf9}
+.st-valid-b{display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:sticky;bottom:0;background:#fffdf8;padding-top:6px}
+@media (max-width:900px){.st-cols{grid-template-columns:1fr}}
+/* la bande des stickers */
+.rc-st-mot{font:600 22px/1.35 Georgia,serif;text-align:center}.rc-st-compte{font:600 13px system-ui;color:#5a4a36}.rc-st-lettre{font:15px Georgia,serif;color:#7a6e5f;text-align:center;padding:8px}
+.rc-st-li span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
+.st-plus-l{border-left:4px solid var(--st-c);padding-left:8px;margin:8px 0;display:flex;flex-direction:column;gap:3px;align-items:flex-start}.st-plus-l>b{font:600 13px system-ui;color:var(--st-c)}.st-plus-l button{text-align:left}
+#scModale .sc-modale-c{max-height:86vh;overflow:auto}
 </style>
 <script>// =====================================================================
 // RU-SCAN — CORRIGER SUR LA COPIE SCANNÉE (cadrage C13, 29-30/10/2026, tours 371 à 399)
@@ -7776,10 +7804,11 @@ function scEleveDonnees(k, test) {
       bareme: pt.bareme, place: pl, marques: ms.map(m => ({ page: ordre.indexOf(m.page), forme: m.forme, x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, seg: scSegments(m, SC.pages[m.page]) })) }); }));
   const etoile = M.filter(m => m.forme === "etoile").map(m => ({ page: ordre.indexOf(m.page), seg: scSegments(m, SC.pages[m.page]) }));
   const remarques = M.filter(m => m.forme === "remarque" && m.texte).map(m => ({ id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, texte: m.texte, place: place(m) }));
-  const nt = scNote(k);
+  const nt = scNote(k), stD = typeof stEleve === "function" ? stEleve(k, ordre) : null;   // [C14 1.4.16] une copie corrigée avec les stickers : ses stickers et sa grille ; sinon, comme avant
   return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB), correctionEleve: scCorrectionEleve(),
-    criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: nt.ok ? nt.n : null, total: nt.tot,
-    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL, types: scTypesEleve(),
+    criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: stD ? stD.note : nt.ok ? nt.n : null, total: stD ? stD.total : nt.tot,
+    stickers: stD ? stD.stickers : null, grilleSt: stD ? stD.grille : null,
+    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: stD ? [] : pts, etoile, remarques: stD ? [] : remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL, types: scTypesEleve(),
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
 }
 /* [C14 1.4.12] (Paul 31/10 14:03 : « les mots sont soulignés dans la couleur de leur erreur et ils ont le détail dans la marge » ; C14 226) : les couleurs et
@@ -7800,6 +7829,7 @@ function scEleveFichier(k, test) {
     const statique = ps.map((p, i) => { let mk = "";
       D.fautes.filter(f => f.page === i).forEach(f => { const T = D.types[f.t] || D.types._; mk += `<div class="mk f" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};border-top-color:${T.couleur}"></div>`; });
       D.etoile.filter(e => e.page === i).forEach(e => e.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${SC_CRIT.etoile}40"></div>`; }));
+      (D.stickers || []).filter(t => t.page === i).forEach(t => { mk += `<div class="mk e" style="left:${pc(t.x0 - 0.004)};top:${pc(t.y0 - 0.003)};width:${pc(t.x1 - t.x0 + 0.008)};height:${pc(t.y1 - t.y0 + 0.006)};border-color:${SC_CRIT[t.crit] || "#6b1a2a"}"></div>`; });
       D.points.forEach(pt => pt.marques.filter(m => m.page === i).forEach(m => { const c = SC_CRIT[pt.crit] || "#6b1a2a";
         if (m.forme === "surligne") m.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${c}40"></div>`; });
         else mk += `<div class="mk ${m.forme === "marge" ? "g" : "e"}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + c : "border-color:" + c}"></div>`; }));
@@ -7854,6 +7884,8 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk${vue && vue.t === "e" ? " on" : ""}" data-v="e" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach((f, i) => { const P = pgs[f.page]; if (!P) return;
       P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};--c:${Ty(f).couleur}"></div>`); });
+    (D.stickers || []).forEach((t, i) => { const P = pgs[t.page]; if (!P) return; const k = D.coul[t.crit] || "#6b1a2a";   // [C14 1.4.16] un sticker réussi : encadré dans la couleur de son critère ; un clic, son texte
+      P.insertAdjacentHTML("beforeend", `<div class="mk e st${on("s", i) ? " on" : ""}" data-v="s:${i}" title="${esc(t.texte)}" style="left:${pc(t.x0 - 0.004)};top:${pc(t.y0 - 0.003)};width:${pc(t.x1 - t.x0 + 0.008)};height:${pc(t.y1 - t.y0 + 0.006)};border-color:${k};background:${k}14"></div>`); });
     (D.remarques || []).forEach((r0, i) => { const P = pgs[r0.page]; if (!P) return; P.insertAdjacentHTML("beforeend", `<div class="mk e${on("r", i) ? " on" : ""}" data-v="r:${i}" style="left:${pc(r0.x0 - 0.004)};top:${pc(r0.y0 - 0.003)};width:${pc(r0.x1 - r0.x0 + 0.008)};height:${pc(r0.y1 - r0.y0 + 0.006)};border:2px dashed #6b1a2a"></div>`); });
     const pris = {}; D.points.forEach((p, i) => { const P = pgs[p.place.page]; if (!P) return; const k = D.coul[p.crit] || "#6b1a2a"; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1;
       p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return;
@@ -7865,6 +7897,20 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
   const retour = `<button class="clair" id="gr">← Ta grille</button>`;
   function panneau() {
     const pan = $("#pan");
+    if (!vue && D.grilleSt) {   // [C14 1.4.16] la grille en stickers : chaque ligne, ses points ; un clic : ce que tu as réussi, puis « Pas encore réussi »
+      const crit = []; D.grilleSt.forEach((l, i) => { let c = crit.find(x => x.id === l.crit); if (!c) crit.push(c = { id: l.crit, nom: l.critNom, l: [] }); c.l.push({ l, i }); });
+      pan.innerHTML = `<div class="bloc"><h3>Ta note</h3><div class="note">${D.note != null ? String(D.note).replace(".", ",") + " / " + D.total : "…"}</div></div>
+        <div class="bloc"><h3>Ta grille</h3>${crit.map(c => `<div class="crit" style="color:${D.coul[c.id] || "#6b1a2a"}">${esc(c.nom)}</div>` + c.l.map(({ l, i }) => `<div class="ligne" data-l="${i}"><i style="background:${l.niveau != null ? D.bord[l.niveau] : "#d6cfc1"}"></i><span>${esc(l.titre)}${l.reussis.length || l.manquent.length ? `<br><span class="m">${"★".repeat(l.reussis.length)}${"☆".repeat(l.manquent.length)}</span>` : ""}</span><b>${String(l.points).replace(".", ",")} / ${String(l.poids).replace(".", ",")}</b></div>`).join("")).join("")}</div>
+        ${D.fautes.length ? `<div class="bloc"><h3>Tes fautes</h3><div>${D.fautes.length} soulignée${D.fautes.length > 1 ? "s" : ""} sur ta copie, chacune dans la couleur de son type d'erreur.</div></div>` : ""}`;
+      pan.querySelectorAll("[data-l]").forEach(e => e.addEventListener("click", () => { vue = { t: "l", i: +e.dataset.l }; copie(); panneau(); const l = D.grilleSt[vue.i], t = (D.stickers || []).find(x => x.ligne === l.id && x.page >= 0); if (t) montrer(t.page, t.y0); }));
+      return;
+    }
+    if (vue && vue.t === "l") { const l = D.grilleSt[vue.i];
+      pan.innerHTML = `<div class="bloc"><h3 style="color:${D.coul[l.crit] || "#6b1a2a"}">${esc(l.critNom)}</h3><div style="font-weight:700">${esc(l.titre)} · ${String(l.points).replace(".", ",")} / ${String(l.poids).replace(".", ",")}</div>
+        ${l.reussis.map(t => `<div style="font-size:17px;margin-top:6px">★ ${esc(t)}</div>`).join("")}${l.manquent.length ? `<div class="bloc" style="margin:10px 0 0;background:#fff"><h3>Pas encore réussi</h3>${l.manquent.map(t => `<div style="margin-top:4px">☆ ${esc(t)}</div>`).join("")}</div>` : ""}${retour}</div>`;
+      $("#gr").onclick = () => { vue = null; copie(); panneau(); }; return; }
+    if (vue && vue.t === "s") { const t = D.stickers[vue.i], l = (D.grilleSt || []).find(x => x.id === t.ligne) || {};
+      pan.innerHTML = `<div class="bloc"><h3 style="color:${D.coul[t.crit] || "#6b1a2a"}">${esc(l.titre || "")}</h3><div style="font-size:18px">★ ${esc(t.texte)}</div>${retour}</div>`; $("#gr").onclick = () => { vue = null; copie(); panneau(); }; return; }
     if (!vue) {
       const crit = []; D.points.forEach((p, i) => { let c = crit.find(x => x.id === p.crit); if (!c) crit.push(c = { id: p.crit, nom: p.critNom, l: [] }); c.l.push({ p, i }); });
       pan.innerHTML = `<div class="bloc"><h3>Ta note</h3><div class="note">${D.note != null ? String(D.note).replace(".", ",") + " / " + D.total : "…"}</div></div>
@@ -8013,7 +8059,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
 function scFichiersED() {
   if (!SC.copies.length) { toast("Aucune copie : charge d'abord ton paquet."); return; }
   const Q = scCopiesED(), nAbs = SC.copies.length - Q.length;   // [C14 1.4.13] un élève marqué absent n'a pas de fichier
-  const lignes = Q.map((k, i) => { const nt = scNote(k); const faits = scTousPoints().filter(pt => { const r = scCase(pt, k); return r && r.complet; }).length; const tous = scTousPoints().length;
+  const lignes = Q.map((k, i) => { const nt = typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k) ? stNoteBilan(k) : scNote(k); const faits = scTousPoints().filter(pt => { const r = scCase(pt, k); return r && r.complet; }).length; const tous = scTousPoints().length;
     return `<tr><td>${i + 1}</td><td>${escapeHtml(nomEleveDe(k) || k)}</td><td>${scPagesDe(k).length}</td><td>${nt.ok ? "<b>" + String(nt.n).replace(".", ",") + " / " + nt.tot + "</b>" : faits + " points sur " + tous}</td>
       <td><button class="sc-btn" onclick="scTesterEleve('${escapeAttr(k)}')" title="Ouvrir le fichier de cet élève dans un nouvel onglet, exactement comme il le verra, en mode test : sa copie, tes marques, sa grille et sa note, en lecture seule. Rien ne va au site.">🧪 Tester comme l'élève</button> <button class="sc-btn" onclick="scTelecharger('${escapeAttr(k)}')" title="Télécharger le fichier de cet élève, à déposer sur École Directe. Sa photo est dedans : elle ne passe pas par le site.">Télécharger</button></td></tr>`; }).join("");
   scModale(`<h3>Les fichiers École Directe</h3><p>Un fichier par élève : sa copie scannée et tes marques dedans. Tu le déposes sur École Directe ; la photo ne passe jamais par le site. L'élève y lit sa copie corrigée, sa grille et sa note : il clique tes marques, il n'écrit rien.</p>
@@ -8170,7 +8216,7 @@ function rcInterface() {
     '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand va de la marge rouge au bord de la copie.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>',
-    '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo" title="Glisse le cadre pour le déplacer. Double clic sur le cadre : deux poignées, une de chaque côté, pour régler sa longueur ; encore un double clic les retire. Clic droit sur le cadre : une faute de ta recopie."></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
+    '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b><button id="rcStPlus" class="sc-btn" title="Poser un sticker que l’IA n’a pas vu : sur le mot où tu es (mot par mot), ou sur le passage de l’arrêt en cours. Seuls les stickers validés se posent.">＋ Un sticker</button></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo" title="Glisse le cadre pour le déplacer. Double clic sur le cadre : deux poignées, une de chaque côté, pour régler sa longueur ; encore un double clic les retire. Clic droit sur le cadre : une faute de ta recopie."></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
     '<div id="rcPhrase" class="rc-ia" hidden><div class="rc-ia-c rc-phrase-c" role="dialog" aria-label="La phrase qui m’a marqué"><b>La phrase qui m’a marqué</b><span>Clique le premier mot de la phrase : il s’écrit en dessous. Clique le dernier : toute la phrase s’écrit d’un coup. Un autre clic recommence. Elle passera en or sur la copie de l’élève. C’est la fin de la recopie de cette copie : sans elle (ou « Pas de phrase »), tu ne passes pas à la copie suivante.</span><div id="rcPhraseTexte" class="rc-phrase-t"></div><div id="rcPhraseChoix" class="rc-phrase-choix" aria-live="polite"></div><div class="rc-ia-b"><label class="rc-phrase-non" title="Aucune phrase ne t’a marqué dans cette copie : la recopie est finie quand même.">' + '<input type="checkbox" id="rcPhraseAucune"> Pas de phrase</label><button id="rcPhraseOui" class="sc-btn" disabled title="Choisis d’abord le premier et le dernier mot de la phrase.">✓ C’est elle</button><button id="rcPhraseFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
     '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
     '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
@@ -8192,6 +8238,7 @@ function rcInterface() {
   e.querySelector("#rcLargeur").onclick = () => rcZoom(1);
   e.querySelector("#rcExportIA").onclick = rcExportIA;
   e.querySelector("#rcBandeOuvrir").onclick = () => { if (RC.bd) rcBandeFermer(); else rcBandeOuvrir(); };
+  e.querySelector("#rcStPlus").onclick = () => { if (typeof stPlusOuvrir === "function") stPlusOuvrir(); };
   e.querySelector("#rcBandeRetour").onclick = () => rcBandeFermer();
   e.querySelector("#rcImportIA").onclick = rcIAOuvrir;
   e.querySelector("#rcIAFermer").onclick = rcIAFermer;
@@ -8630,14 +8677,18 @@ function rcExportIA() {
   /* 1.4.2 (Paul 10:57) : un retour d'IA trop long est coupé ; on exporte par paquets les copies qui n'ont pas encore leur corrigé à jour.
      [C14 1.4.10] 8 copies (retour compact) ; chaque ligne garde le texte envoyé et l'heure (dette C14 296 : l'import refuse une ligne qui a changé depuis) ;
      plus de bandeau après l'export (Paul 17:03) : le compteur d'en haut le dit. */
-  const aFaire = SC.copies.filter(k => rcLignesEcrites(k).length && rcCopieACorriger(k));
+  const sti = typeof stEnvoiGrille === "function" ? stEnvoiGrille() : null;   // [C14 1.4.16] les stickers validés partent avec la correction, dans le même envoi
+  const aFaire = SC.copies.filter(k => rcLignesEcrites(k).length && (rcCopieACorriger(k) || (sti && stAEnvoyer(k))));
+  if (!sti && typeof stActifs === "function" && stActifs().length) toast("Les stickers ne partent pas encore : " + stPretTexte() + ".");
   if (!aFaire.length) { rcEtatIA(); return; }
   const copies = aFaire.slice(0, RC_PAQUET_IA), le = new Date().toISOString(), nEnvoi = 1 + SC.copies.reduce((m, k) => Math.max(m, (((scCopie(k).recopie || {}).envoi) || {}).n || 0), 0);
-  copies.forEach(k => { const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.envoi = { n: nEnvoi, le, lignes: rcLignesEcrites(k).length }; });   // [C14 1.4.11] le flux : l'envoi de chaque copie, numéroté et daté
-  const o = { consigne: RC_CONSIGNE_IA + rcConsigneVariantes(), format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = []; let n = 0;
+  copies.forEach(k => { const s = scCopie(k), c = state.copies[k]; if (c && !c.id) { c.id = idCopie(); if (!c.creeLe) c.creeLe = le; }   // [C14 1.4.16] une copie part toujours avec son identité interne (une copie toute neuve n'en avait pas encore)
+    s.recopie = s.recopie || {}; s.recopie.envoi = Object.assign({ n: nEnvoi, le, lignes: rcLignesEcrites(k).length }, sti && !rcCopieACorriger(k) ? { seul: true } : {}); });   // [C14 1.4.11] le flux : l'envoi de chaque copie, numéroté et daté
+  const o = { consigne: RC_CONSIGNE_IA + rcConsigneVariantes() + (sti ? RC_CONSIGNE_STICKERS : ""), format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = [], seul = !!sti && !rcCopieACorriger(k); let n = 0;
     L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push({ id: x.id, n: ++n, texte: x.l.texte });
       rcLigneMaj(k, x.pid, x.id, l => { l.envoiIA = { texte: l.texte, le }; }); });
-    return { numero: i + 1, copie: (state.copies[k] || {}).id || null, pages }; }) };   // [C14 1.4.12] (Paul 15:59) l'identité interne de la copie, jamais son nom
+    return Object.assign({ numero: i + 1, copie: (state.copies[k] || {}).id || null, pages }, seul ? { seulementStickers: true } : {}); }) };   // [C14 1.4.12] (Paul 15:59) l'identité interne de la copie, jamais son nom
+  if (sti) { o.sujet = stEnonce(); o.grille = sti; }
   saveState();
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(o, null, 1)], { type: "application/json" }));
   a.download = "recopies-pour-l-IA-" + le.slice(0, 10) + ".json"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
@@ -8694,12 +8745,13 @@ function rcIALire(txt) {
     if (chaine) { if (ech) ech = false; else if (c === "\\") ech = true; else if (c === '"') chaine = false; continue; }
     if (c === '"') { if (prof > 0) chaine = true; continue; }
     if (c === "{") { if (prof === 0) deb = i; prof++; } else if (c === "}" && prof > 0) { prof--; if (prof === 0) blocs.push(t.slice(deb, i + 1)); } }
-  const r = { lignes: {}, coupe: prof > 0, doublons: 0, sansId: 0, repris: new Set(), copieDe: {}, sujets: {} };
+  const r = { lignes: {}, coupe: prof > 0, doublons: 0, sansId: 0, repris: new Set(), copieDe: {}, sujets: {}, reussites: {} };
   const poser = (id, v) => { if (r.lignes[id] !== undefined) r.doublons++; r.lignes[id] = v; };
   blocs.forEach(b => { let o; try { o = JSON.parse(b); } catch (e) { return; } if (!o || typeof o !== "object") return;
     if (o.copies) rcListeIA(o.copies).forEach(c => rcListeIA(c && c.pages).forEach(pg => rcListeIA(pg && pg.lignes).forEach(l => { if (!l || typeof l.id !== "string") { r.sansId++; return; } poser(l.id, String(l.texte == null ? "" : l.texte)); if (c && typeof c.copie === "string") r.copieDe[l.id] = c.copie; })));
     if (o.lignes && typeof o.lignes === "object" && !Array.isArray(o.lignes)) Object.keys(o.lignes).forEach(id => poser(id, String(o.lignes[id] == null ? "" : o.lignes[id])));
-    if (o.sujets && typeof o.sujets === "object") Object.keys(o.sujets).forEach(c => { r.sujets[c] = String(o.sujets[c]); }); });
+    if (o.sujets && typeof o.sujets === "object") Object.keys(o.sujets).forEach(c => { r.sujets[c] = String(o.sujets[c]); });
+    if (o.reussites && typeof o.reussites === "object" && !Array.isArray(o.reussites)) Object.keys(o.reussites).forEach(c => { r.reussites[c] = rcListeIA(o.reussites[c]); }); });
   /* [C14 1.4.10] un retour coupé : ses paires « identifiant : ligne » complètes sont gardées ; seules les copies entières se chargeront */
   if (r.coupe && deb >= 0) { const queue = t.slice(deb), re = /"([^"\\]+)"\s*:\s*"((?:[^"\\]|\\.)*)"/g; let m;
     while ((m = re.exec(queue))) { if (/^(format|consigne|id|texte|page)$/.test(m[1])) continue; let v; try { v = JSON.parse('"' + m[2] + '"'); } catch (e) { continue; } if (r.lignes[m[1]] === undefined) { r.lignes[m[1]] = v; r.repris.add(m[1]); } } }
@@ -8749,12 +8801,15 @@ function rcIAChargerSuite(txt) {
      (dette C14 296) ; sinon elle attend le prochain export. Une ligne d'une autre copie ne s'y mêle jamais : chaque ligne a son identité. */
   const pc = {}; Object.keys(recu).forEach(id => { (pc[ici[id].k] = pc[ici[id].k] || []).push(id); });
   const ok = [], coupees = [], changees = [], melangees = [];
-  Object.keys(pc).forEach(k => { const L = rcLignesEcrites(k), idc = (state.copies[k] || {}).id;
+  Object.keys(pc).forEach(k => { const L = rcLignesEcrites(k), idc = (state.copies[k] || {}).id, ev = (scCopie(k).recopie || {}).envoi; if (ev && ev.seul && !rcCopieACorriger(k)) return;   // [C14 1.4.16] partie pour ses seules réussites : son corrigé et ta bande ne bougent pas
     if (!L.every(x => recu[x.id] !== undefined)) coupees.push(k); else if (L.some(x => x.l.envoiIA && x.l.envoiIA.texte !== x.l.texte)) changees.push(k);
     else if (L.some(x => (o.copieDe[x.id] && idc && o.copieDe[x.id] !== idc) || rcRessemblance(x.l.texte, rcLettres(recu[x.id], x.l.texte).texte) < RC_RESSEMBLANCE_IA)) melangees.push(k); else ok.push(k); });
   /* [C14 1.4.12] (Paul 15:59, « sinon c'est la porte ouverte au mélange de données ») : le refus est gardé dans la copie, pour le flux ; un chargement réussi l'efface */
   const qr = new Date().toISOString(); melangees.forEach(k => { const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.refusIA = { le: qr, raison: "melange" }; }); ok.forEach(k => { const s = scCopie(k); if (s.recopie && s.recopie.refusIA) delete s.recopie.refusIA; });
   if (melangees.length) saveState();
+  const aJour = SC.copies.filter(k => !ok.includes(k) && !melangees.includes(k) && rcLignesEcrites(k).length && !rcCopieACorriger(k)), stR = typeof stIAReussites === "function" && Object.keys(o.reussites || {}).length ? stIAReussites(o, ok.concat(aJour)) : null;
+  const dSt = stR && stR.copies ? " Les stickers : " + stR.poses + " réussite" + (stR.poses > 1 ? "s" : "") + " proposée" + (stR.poses > 1 ? "s" : "") + " sur " + stR.copies + " copie" + (stR.copies > 1 ? "s" : "") + (stR.incompletes ? " (" + stR.incompletes + " dont la liste est coupée : au prochain export)" : "") + (stR.horsCopie ? " · " + stR.horsCopie + " sur une ligne d’une autre copie, refusée" + (stR.horsCopie > 1 ? "s" : "") : "") + (stR.inconnus ? " · " + stR.inconnus + " d’un numéro inconnu, laissée" + (stR.inconnus > 1 ? "s" : "") : "") + "." : "";
+  if (!ok.length && stR && stR.copies) { saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre(); msg.textContent = "Chargé." + dSt + dMel; return true; }
   const dMel = melangees.length ? " " + melangees.length + " copie" + (melangees.length > 1 ? "s" : "") + " refusée" + (melangees.length > 1 ? "s" : "") + " (" + melangees.map(k => nomEleveDe(k) || k).join(", ") + ") : une ligne rendue par l’IA ne ressemble plus à la ligne envoyée, l’IA a pu mélanger des lignes ; rien n’y est écrit, elle repart au prochain export." : "";
   if (!ok.length) { msg.textContent = "Rien n’a changé : " + (melangees.length && !changees.length && !coupees.length ? dMel.trim() : changees.length ? "une ligne de chaque copie du retour a changé depuis l’envoi à l’IA : exporte à nouveau." : o.coupe ? "le retour de l’IA est coupé avant la fin de la première copie : demande-lui de tout rendre, ou exporte à nouveau." : "il manque des lignes à chaque copie du retour (écrites après l’export ? refais l’export).") ; return false; }
   const quand = new Date().toISOString(); let fautes = 0, lignes = 0, typees = 0, sansLettre = 0, sujetsDits = 0;
@@ -8771,7 +8826,7 @@ function rcIAChargerSuite(txt) {
   msg.textContent = "Chargé : " + pl(ok.length, "copie") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA" + (fautes ? ", dont " + typees + " avec leur type" + (sansLettre ? " (" + sansLettre + " sans lettre : le type du moteur)" : "") : "") + "."
     + (coupees.length ? " " + pl(coupees.length, "copie") + (o.coupe ? " coupée" + (coupees.length > 1 ? "s" : "") : " incomplète" + (coupees.length > 1 ? "s" : "")) + " : au prochain export." : "")
     + (changees.length ? " " + pl(changees.length, "copie") + " dont une ligne a changé depuis l’envoi : au prochain export." : "") + dMel
-    + (o.coupe && !coupees.length ? " Le retour de l’IA était coupé : les copies qui manquent repartent au prochain export." : "") + (sujetsDits ? " Le sujet traité, dit par l’IA : " + sujetsDits + " copie" + (sujetsDits > 1 ? "s" : "") + "." : "");
+    + (o.coupe && !coupees.length ? " Le retour de l’IA était coupé : les copies qui manquent repartent au prochain export." : "") + (sujetsDits ? " Le sujet traité, dit par l’IA : " + sujetsDits + " copie" + (sujetsDits > 1 ? "s" : "") + "." : "") + dSt;
   return true;
 }
 /* les fautes proposées d'une ligne : les mots qui diffèrent, alignés par la plus longue sous-suite commune */
@@ -9038,8 +9093,9 @@ function rcNotion(g) {
 function rcStyleFaute(g) { return RC_TYPES[rcCodeFaute(g)]; }
 /* [C14 1.4.10] le type donné par l'IA pour cet arrêt, s'il est là et à jour ; sinon le moteur de la dictée */
 function rcCodeArret(a) { const l = a && a.l, t = l && l.types && l.typesDe === l.corrige && l.types[a.cle]; return RC_TYPES[t] ? t : rcCodeFaute(a.g); }
-function rcStyleArret(a) { return RC_TYPES[rcCodeArret(a)]; }
+function rcStyleArret(a) { return a && a.st ? stStyle(a) : RC_TYPES[rcCodeArret(a)]; }
 function rcPosMots(t) { const T = rcTokenize(t || ""), P = []; let i = 0; T.forEach(w => { const j = t.indexOf(w, i); P.push([j, j + w.length]); i = j + w.length; }); return P; }
+function rcArretsBande(k) { return rcArrets(k).concat(typeof stArrets === "function" ? stArrets(k) : []); }   // [C14 1.4.16] après les fautes, les stickers proposés
 function rcArrets(k) {
   const A = []; rcLignesEcrites(k).forEach((x, i) => { const l = x.l; if (typeof l.corrige !== "string" || l.texte !== l.corrigeDe) return;
     rcEcarts(l.texte, l.corrige).segs.forEach(g => A.push({ k, pid: x.pid, id: x.id, n: i + 1, g, cle: g.de + "-" + g.a + "/" + g.de2 + "-" + g.a2, l })); });
@@ -9050,7 +9106,7 @@ function rcArrets(k) {
 const RC_NEUTRE = { couleur: "#6b7280", fond: "#f3f4f6", libelle: "Faute oubliée par l’IA" };
 function rcMotsCopie(k, A) {
   const W = []; rcLignesEcrites(k).forEach((x, i) => { const l = x.l, P = rcPosMots(l.texte);
-    P.forEach((p, m) => { const mot = l.texte.slice(p[0], p[1]), ia = (A || []).find(a => a.id === x.id && a.g.a > a.g.de && m >= a.g.de && m < a.g.a) || null;
+    P.forEach((p, m) => { const mot = l.texte.slice(p[0], p[1]), ia = (A || []).find(a => !a.st && a.id === x.id && a.g.a > a.g.de && m >= a.g.de && m < a.g.a) || null;
       W.push({ k, pid: x.pid, id: x.id, n: i + 1, l, mot: true, m, g: { de: m, a: m + 1, de2: m, a2: m + 1, eleve: mot, corrige: mot }, cle: "mot-" + m, ia }); }); });
   return W;
 }
@@ -9106,13 +9162,14 @@ function rcRetroactif(k, pid, id) {
   const anc = rcEcarts(ancien, corr).segs, nouv = rcEcarts(nouveau, corr).segs, sA = sig(anc), sN = sig(nouv), map = {};
   sA.forEach((v, i) => { const j = sN.indexOf(v); if (j >= 0) map[rcCle(anc[i])] = rcCle(nouv[j]); });
   const mots = t => rcPosMots(t).map(p => t.slice(p[0], p[1])), mm = rcAligner(mots(ancien), mots(nouveau));
-  const re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; else { const m = /^mot-(\d+)$/.exec(x); if (m && mm[+m[1]] >= 0) r["mot-" + mm[+m[1]]] = o[x]; } }); return r; };
+  const re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; else if (/^stk:/.test(x)) r[x] = o[x]; else { const m = /^mot-(\d+)$/.exec(x); if (m && mm[+m[1]] >= 0) r["mot-" + mm[+m[1]]] = o[x]; } }); return r; };   // [C14 1.4.16] un sticker de la ligne reste
   const s = scCopie(k), mb = re(L0.marquesBande), gardees = new Set(Object.values(mb)), typesAJour = L0.types && L0.typesDe === corr, types = typesAJour ? re(L0.types) : null;
   Object.values(L0.marquesBande || {}).forEach(mid => { if (!gardees.has(mid) && s.marques[mid]) scEffacer(mid); });
   rcLigneMaj(k, pid, id, l => { l.corrigeDe = nouveau; l.decisions = re(l.decisions); l.marquesBande = mb; l.places = re(l.places); if (l.placesApp) l.placesApp = re(l.placesApp); if (typesAJour) l.types = types; l.retoucheeLe = new Date().toISOString(); });
   const Lf = (RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]) || pg.lignes[id], P = rcPosMots(nouveau);
   Object.keys(mb).forEach(c => { const m = s.marques[mb[c]]; if (!m) return; const mo = /^mot-(\d+)$/.exec(c), g = mo ? (w => ({ de: w, a: w + 1, de2: w, a2: w + 1, eleve: nouveau.slice(P[w][0], P[w][1]), corrige: nouveau.slice(P[w][0], P[w][1]) }))(+mo[1]) : nouv.find(x => rcCle(x) === c);
     if (!g || (mo && !P[+mo[1]])) return; const q = rcPlaceSeg({ k, pid, id, l: Lf, g, cle: c }); Object.assign(m, { x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, modifieLe: new Date().toISOString() }); if (m.bande) { m.bande.cle = c; m.bande.eleve = g.eleve; } });
+  if (typeof stRetroactif === "function") stRetroactif(k, pid, id, mm, Lf);
   scNumeroter(k); saveState(); return true;
 }
 /* [C14 1.4.13] la photo d'une page remplacée (scRemplacerAvec) : les lignes de ta recopie se posent, dans l'ordre, sur les lignes trouvées dans la nouvelle photo ;
@@ -9139,8 +9196,8 @@ function rcRecalerPage(k, pid) {
 function rcLigneMaj(k, pid, id, fn) { const pgs = (scCopie(k).recopie || {}).pages || {}; [pgs[pid] && pgs[pid].lignes[id], RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]].forEach(l => { if (l) fn(l); }); }
 function rcNoteTexte(k) { const r = scNote(k); return r.ok ? (Math.round(r.n * 10) / 10) + " / " + r.tot : "incomplète"; }
 function rcBandeOuvrir(reprise) {
-  if (RC.page && !reprise) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); rcLignesEcrites(k).forEach(x => rcRetroactif(k, x.pid, x.id)); const A = rcArrets(k);
-  if (!A.length) { toast("Pas de faute proposée sur cette copie : charge d’abord le corrigé de l’IA."); return; }
+  if (RC.page && !reprise) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); rcLignesEcrites(k).forEach(x => rcRetroactif(k, x.pid, x.id)); const A = rcArretsBande(k);
+  if (!A.length) { toast("Pas de faute ni de sticker proposés sur cette copie : charge d’abord le corrigé de l’IA."); return; }
   RC.bd = { k, i: 0, A }; rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
   RC.ui.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(k); if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   rcReplacerBande(k);
@@ -9150,7 +9207,7 @@ function rcBandeOuvrir(reprise) {
     av.innerHTML = "<b>Cette copie a " + anc + " faute" + (anc > 1 ? "s" : "") + " marquée" + (anc > 1 ? "s" : "") + " avec la méthode d’avant.</b> En passant la bande, elles sont mises de côté : gardées, cachées, elles ne comptent plus. Note avant : <b>" + escapeHtml(rcNoteTexte(k)) + "</b>. <button id=\"rcBandeCommencer\" class=\"sc-btn\" title=\"Mettre de côté les fautes d’avant et commencer la bande (Entrée)\">Commencer la bande</button>";
     av.querySelector("#rcBandeCommencer").onclick = rcBandeCommencer;
   } else { av.hidden = true; if (!s.bandeDebut) rcBandeCommencer(); }
-  const i = A.findIndex(a => !(a.l.decisions && a.l.decisions[a.cle])); RC.bd.i = i >= 0 ? i : 0;
+  const i = A.findIndex(a => a.st ? !stDecision(k, a.stId) : !(a.l.decisions && a.l.decisions[a.cle])); RC.bd.i = i >= 0 ? i : 0;
   /* [C14 1.4.7] (Paul 15:41 : « si je commence la bande, que je fais deux mots, je dois retomber à ce même mot ») : l'arrêt où tu étais, pour chaque élève */
   const ba = (scCopie(k).recopie || {}).bandeArret;
   if (ba && ba.mot) { const B = RC.bd; B.mot = true; B.W = rcMotsCopie(k, A); let j = ba.fin ? B.W.length : B.W.findIndex(w => w.id === ba.id && w.cle === ba.cle); if (j < 0) j = Math.max(0, B.W.findIndex(w => w.id === ba.id)); B.j = j; }   // [C14 1.4.12] rouverte en mot par mot, au même mot
@@ -9170,7 +9227,7 @@ function rcBandeCommencer() {
 }
 function rcBandeFermer(seul) { RC.bd = null; if (!seul) rcBookmark(); if (RC.ui) { RC.ui.classList.remove("rc-mode-bande"); const b = RC.ui.querySelector("#rcBandeOuvrir"); if (b) b.textContent = "▶ La bande"; } if (seul) return; rcActualiser(); rcSelectionner(RC.ligne, true, true); }
 function rcBandeDecider(v) {
-  const B = RC.bd, a = B.A[B.i]; if (!a) return; rcDeciderArret(B.k, a, v);
+  const B = RC.bd, a = B.A[B.i]; if (!a) return; if (a.st) stDeciderArret(B.k, a, v); else rcDeciderArret(B.k, a, v);
   B.i = Math.min(B.A.length, B.i + 1); B.note = ""; rcBandeRendre();
 }
 function rcDeciderArret(k, a, v) {   // [C14 1.4.12] la décision d'un arrêt de l'IA, la même depuis les arrêts et depuis le mot par mot
@@ -9188,16 +9245,18 @@ function rcBandeRendre() {
   const B = RC.bd, e = RC.ui; if (!B) return; const a = B.A[B.i], s = scCopie(B.k); rcBandeMemoriser();
   e.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(B.k) + (B.mot ? " · mot par mot" : "");
   const liste = e.querySelector("#rcBandeListe"), wc = B.mot ? B.W[B.j] : null, estOn = (x, i) => B.mot ? !!(wc && wc.ia === x) : i === B.i;
-  liste.innerHTML = B.A.map((x, i) => { const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (estOn(x, i) ? "on" : "") + '" data-i="' + i + '" style="border-left-color:' + rcStyleArret(x).couleur + (estOn(x, i) ? ";background:" + rcStyleArret(x).fond : "") + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
+  liste.innerHTML = B.A.map((x, i) => { if (x.st) { const d = stDecision(B.k, x.stId), c = stCouleur(x.sticker); return '<li class="rc-st-li' + (estOn(x, i) ? " on" : "") + '" data-i="' + i + '" style="border-left-color:' + c + (estOn(x, i) ? ";background:" + c + "18" : "") + '"><span><b style="color:' + c + '">' + escapeHtml(x.sticker.num || "★") + "</b> " + escapeHtml(x.sticker.texteEleve) + "</span><small>" + (x.lettre ? "toute la lettre" : "ligne " + x.n) + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }
+    const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (estOn(x, i) ? "on" : "") + '" data-i="' + i + '" style="border-left-color:' + rcStyleArret(x).couleur + (estOn(x, i) ? ";background:" + rcStyleArret(x).fond : "") + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
   liste.querySelectorAll("li").forEach(li => li.onclick = () => { B.mot = false; B.i = +li.dataset.i; B.note = ""; rcBandeRendre(); });
   const on = liste.querySelector("li.on"); if (on) on.scrollIntoView({ block: "nearest" });
   const ctx = e.querySelector("#rcBandeContexte"), carte = e.querySelector("#rcBandeCarte"), touches = e.querySelector("#rcBandeTouches");
   carte.style.borderColor = a && !B.attente ? rcStyleArret(a).couleur : "";
   if (B.attente) { carte.innerHTML = ""; ctx.innerHTML = ""; touches.innerHTML = ""; rcBandePhoto(null); return; }
   if (B.mot) { rcBandeRendreMots(B, ctx, carte, touches); return; }
+  if (a && a.st) { stBandeCarte(B, a, ctx, carte, touches); return; }
   if (!a) {
-    const faites = B.A.filter(x => x.l.decisions && x.l.decisions[x.cle] === "o").length;
-    carte.innerHTML = '<div class="rc-bande-mot">Bande finie</div><div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + B.A.length + " arrêts · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k)) + "</div>";
+    const F = B.A.filter(x => !x.st), faites = F.filter(x => x.l.decisions && x.l.decisions[x.cle] === "o").length, Sx = B.A.filter(x => x.st), gard = Sx.filter(x => stDecision(B.k, x.stId) === "o").length, nt = Sx.length && typeof stNoteCopie === "function" ? stNoteCopie(B.k) : null;
+    carte.innerHTML = '<div class="rc-bande-mot">Bande finie</div><div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + F.length + " arrêts" + (Sx.length ? " · " + gard + " sticker" + (gard > 1 ? "s" : "") + " gardé" + (gard > 1 ? "s" : "") + " sur " + Sx.length + " · note : " + stNb(nt.n) + " / " + stNb(nt.tot) : "") + " · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k)) + "</div>";
     ctx.innerHTML = ""; touches.innerHTML = '<b class="rc-bande-mode">Les arrêts</b><span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>⇧</kbd> + <kbd>R</kbd> mot par mot</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : remettre une faute</span><span><kbd>Échap</kbd> revenir à la recopie</span>' + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : ""); rcBandePhoto(null); return;
   }
   const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle], T = rcStyleArret(a), st = ' style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";box-shadow:inset 0 -2px 0 " + T.couleur + '"';
@@ -9263,7 +9322,7 @@ function rcBandePhoto(a, anime) {
   };
   const finir = () => {
     const sh = dessiner(centre), a0 = Xr(q.x0) + sh, a1 = Math.max(Xr(q.x1) + sh, a0 + 6), b0 = Math.max(2, Y(q.y0)), b1 = Math.min(h - 2, Math.max(Y(q.y1), b0 + 10));
-    const cd = a.mot ? null : rcCodeArret(a), T = a.mot ? RC_NEUTRE : RC_TYPES[cd];   // [C14 1.4.12] un mot sans faute de l'IA : un cadre gris
+    const cd = a.mot || a.st ? null : rcCodeArret(a), T = a.st ? stStyle(a) : a.mot ? RC_NEUTRE : RC_TYPES[cd];   // [C14 1.4.12] un mot sans faute de l'IA : un cadre gris
     x.fillStyle = rcRgba(T.couleur, .22); x.strokeStyle = T.couleur; x.lineWidth = 2; x.fillRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6); x.strokeRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6);
     if (q.type.manque) { const m = (a0 + a1) / 2; x.strokeStyle = T.couleur; x.lineWidth = 3; x.beginPath(); x.moveTo(m - 9, b1 + 1); x.lineTo(m, b0 + 4); x.lineTo(m + 9, b1 + 1); x.stroke(); }
     const redim = B.redim === a.id + "|" + a.cle;
@@ -9278,7 +9337,7 @@ function rcBandePhoto(a, anime) {
 /* [C14 1.4.15] (Paul 01/11 13:12 : « dans la bande, parfois la largeur du rectangle est trop longue et je n'ai pas de moyen de la raccourcir. Un double clic sur le
    rectangle doit activer deux poignées de chaque côté du rectangle pour le redimensionner en longueur ») : cote « g » ou « d » ne bouge qu'un bord ; sans cote, tout le cadre */
 function rcBandeGlisser(du, cote) {
-  const B = RC.bd, a = B && rcBandeCible(); if (!a || B.attente) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a);
+  const B = RC.bd, a = B && rcBandeCible(); if (!a || B.attente || (a.st && !a.g)) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a);
   let x0 = cote === "d" ? q.x0 : rcBorne(q.x0 + du, 0, 0.99), x1 = cote === "g" ? q.x1 : rcBorne(q.x1 + du, 0.01, 1); if (x1 - x0 < 0.008) { if (cote === "g") x0 = x1 - 0.008; else if (cote === "d") x1 = x0 + 0.008; }
   /* [C14 1.4.12] (C14 322, acquis) : la première fois que tu glisses un cadre, l'app garde aussi où elle l'avait posé ; la mesure de sa justesse se fait sur ton travail */
   const app = !(a.l.places && a.l.places[a.cle]) && !(a.l.placesApp && a.l.placesApp[a.cle]) ? (({ x0, x1, y0, y1 }) => ({ x0, x1, y0, y1 }))(rcPlaceSeg(a)) : null;
@@ -9298,7 +9357,7 @@ function rcBandeSouris() {
 }
 /* 1.4.3 (Paul 12:15) : clic droit sur le cadre = une faute de ta recopie ; la ligne prend la forme du corrigé à cet endroit et la faute disparaît ; Ctrl + Z la remet */
 function rcBandeRecopie() {
-  const B = RC.bd, a = rcBandeCible(); if (!a) return; if (a.mot) { B.note = "Clic droit : seulement sur une faute proposée par l’IA."; rcBandeRendre(); return; }
+  const B = RC.bd, a = rcBandeCible(); if (!a) return; if (a.mot || a.st) { B.note = "Clic droit : seulement sur une faute proposée par l’IA."; rcBandeRendre(); return; }
   const L = a.l, t = L.texte, P = rcPosMots(t), Q = rcPosMots(L.corrige), g = a.g;
   const sub = g.a2 > g.de2 ? L.corrige.slice(Q[g.de2][0], Q[g.a2 - 1][1]) : ""; let n;
   if (g.a > g.de) { let c0 = P[g.de][0], c1 = P[g.a - 1][1]; if (sub) n = t.slice(0, c0) + sub + t.slice(c1); else { if (t[c1] === " ") c1++; else if (c0 > 0 && t[c0 - 1] === " ") c0--; n = t.slice(0, c0) + t.slice(c1); } }
@@ -9312,13 +9371,13 @@ function rcBandeRecopie() {
   const dN = rcPosMots(n).length - P.length, re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; else { const mm = /^mot-(\d+)$/.exec(x); if (mm) { const i = +mm[1]; if (i < g.de) r[x] = o[x]; else if (i >= g.a) r["mot-" + (i + dN)] = o[x]; } } }); return r; };
   rcLigneMaj(B.k, a.pid, a.id, l => { l.texte = n; l.corrigeDe = n; l.decisions = re(avant.decisions); l.marquesBande = re(avant.marquesBande); l.places = re(avant.places); l.recopieCorrigee = (l.recopieCorrigee || 0) + 1; });
   (B.annule = B.annule || []).push({ k: B.k, pid: a.pid, id: a.id, avant, retiree, i: B.i, j: B.j });
-  saveState(); B.A = rcArrets(B.k); B.i = Math.min(B.i, B.A.length); if (B.mot) { B.W = rcMotsCopie(B.k, B.A); B.j = Math.min(B.j, B.W.length); } B.note = "Faute de recopie : « " + (g.eleve || "∅") + " » devient « " + (sub || "∅") + " ». Ctrl + Z pour la remettre."; rcBandeRendre();
+  saveState(); B.A = rcArretsBande(B.k); B.i = Math.min(B.i, B.A.length); if (B.mot) { B.W = rcMotsCopie(B.k, B.A); B.j = Math.min(B.j, B.W.length); } B.note = "Faute de recopie : « " + (g.eleve || "∅") + " » devient « " + (sub || "∅") + " ». Ctrl + Z pour la remettre."; rcBandeRendre();
 }
 function rcBandeRemettre() {
   const B = RC.bd, u = B && B.annule && B.annule.pop(); if (!u) { toast("Rien à remettre."); return; }
   rcLigneMaj(u.k, u.pid, u.id, l => Object.assign(l, JSON.parse(JSON.stringify(u.avant))));
   if (u.retiree) { const s = scCopie(u.k); s.marques[u.retiree.id] = u.retiree; scNumeroter(u.k); }
-  saveState(); B.A = rcArrets(B.k); B.i = Math.min(u.i, B.A.length); if (B.mot) { B.W = rcMotsCopie(B.k, B.A); B.j = Math.min(u.j != null ? u.j : B.j, B.W.length); } B.note = "Faute remise."; rcBandeRendre();
+  saveState(); B.A = rcArretsBande(B.k); B.i = Math.min(u.i, B.A.length); if (B.mot) { B.W = rcMotsCopie(B.k, B.A); B.j = Math.min(u.j != null ? u.j : B.j, B.W.length); } B.note = "Faute remise."; rcBandeRendre();
 }
 function rcBandeClavier(ev) {
   const B = RC.bd; ev.stopPropagation();
@@ -9989,7 +10048,7 @@ function avBilanClasse() {
   const al = (SUJET && SUJET.fiche && SUJET.fiche.alerte) || {}, lg = SC.grille.criteres.find(c => c.id === "langue"), pO = lg && lg.points.find(p => p.calcul === "fautes"), seuil = al.echelon != null ? al.echelon : 0;
   const dnb = k => { if (!pO) return null; const r = scCase(pO, k); return r && r.complet ? r.c.niveau === seuil : null; };
   const C = SC.grille.criteres, nb = x => String(Math.round(x * 10) / 10).replace(".", ","), T = Object.assign({}, RC_TYPES), ty = AV_ORDRE.filter(c => T[c]);
-  const L = state.classe.map(nm => { const k = eleveId(nm), f = avFlux(k) || {}, nt = scNote(k), cr = C.map(c => avCritere(k, c)), fa = avFautes(k); return { nm, k, f, nt, cr, fa, nf: Object.values(fa).reduce((a, b) => a + b, 0), dnb: dnb(k), abs: avAbsent(k) }; });
+  const L = state.classe.map(nm => { const k = eleveId(nm), f = avFlux(k) || {}, st = typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k), nt = st ? stNoteBilan(k) : scNote(k), cr = C.map(c => st ? stCritereBilan(k, c) : avCritere(k, c)), fa = avFautes(k); /* [C14 1.4.16] une copie corrigée avec les stickers */ return { nm, k, f, nt, cr, fa, nf: Object.values(fa).reduce((a, b) => a + b, 0), dnb: dnb(k), abs: avAbsent(k) }; });
   const P = L.filter(x => !x.abs), nAbs = L.length - P.length;
   const finies = P.filter(x => x.nt.ok), tot = {}; P.forEach(x => Object.keys(x.fa).forEach(c => { tot[c] = (tot[c] || 0) + x.fa[c]; })); const totF = Object.values(tot).reduce((a, b) => a + b, 0);
   const moyC = C.map((c, i) => { const ok = P.filter(x => x.cr[i].ok); return ok.length ? ok.reduce((a, x) => a + x.cr[i].n / (x.cr[i].tot || 1), 0) / ok.length : null; });
@@ -10008,7 +10067,7 @@ function avBilanClasse() {
 /* l'onglet « Fiches élèves » : les fichiers École Directe des scans (la fiche HTML d'origine est rangée) */
 function avFiches() {
   const v = document.getElementById("ruVue_fiches"); if (!v) return; avPagesCharger(); avGrille();
-  const L = state.classe.map(nm => { const k = eleveId(nm); if (avAbsent(k)) return "<tr><td>" + escapeHtml(nm) + '</td><td class="av-n"><b class="av-abs">ABS</b></td><td>absent : pas de fichier</td></tr>'; const f = avFlux(k), nt = avPret() && SC.grille ? scNote(k) : { ok: false }; return "<tr><td>" + escapeHtml(nm) + '</td><td class="av-n">' + (nt.ok ? "<b>" + String(Math.round(nt.n * 10) / 10).replace(".", ",") + " / " + nt.tot + "</b>" : "—") + '</td><td class="' + (nt.ok ? "rp-ok" : "") + '">' + (nt.ok ? "prête : la correction est finie" : f && (f.lignes || f.arrets) ? "pas encore : la correction est en cours" : "pas encore commencée") + "</td></tr>"; }).join("");
+  const L = state.classe.map(nm => { const k = eleveId(nm); if (avAbsent(k)) return "<tr><td>" + escapeHtml(nm) + '</td><td class="av-n"><b class="av-abs">ABS</b></td><td>absent : pas de fichier</td></tr>'; const f = avFlux(k), nt = typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k) ? stNoteBilan(k) : avPret() && SC.grille ? scNote(k) : { ok: false }; return "<tr><td>" + escapeHtml(nm) + '</td><td class="av-n">' + (nt.ok ? "<b>" + String(Math.round(nt.n * 10) / 10).replace(".", ",") + " / " + nt.tot + "</b>" : "—") + '</td><td class="' + (nt.ok ? "rp-ok" : "") + '">' + (nt.ok ? "prête : la correction est finie" : f && (f.lignes || f.arrets) ? "pas encore : la correction est en cours" : "pas encore commencée") + "</td></tr>"; }).join("");
   v.innerHTML = '<div class="rp-carte"><h2>Fiches élèves</h2><p>Le fichier de chaque élève se fabrique dans l’écran des scans : sa copie scannée et tes marques, à déposer sur École Directe. Les photos ne quittent jamais ce navigateur.</p>'
     + '<button class="rp-prim" onclick="avFichiersED()" title="Ouvre l’écran des scans et sa liste des fichiers : un fichier par élève, à télécharger, ou à tester comme l’élève le verra. Les photos doivent être dans ce navigateur (le paquet chargé).">📨 Fichiers École Directe</button>'
     + '<table class="rp-table"><thead><tr><th>Élève</th><th>Note</th><th>Son fichier</th></tr></thead><tbody>' + L + "</tbody></table></div>";
@@ -10040,6 +10099,310 @@ function avMenuEleve(ev, k) {
   document.body.appendChild(d);
 }
 document.addEventListener("keydown", e => { if (e.key === "Escape" && document.getElementById("avMenu")) { e.stopPropagation(); avMenuFermer(); } }, true);
+
+/* ═══ [C14 1.4.16] LES STICKERS, OBJETS DU SUJET (Paul 01/11 07:59 : « La grille de stickers doit être évidemment modifiable et attachée à un sujet. À placer dans
+   les paramètres. Un sticker est un objet, et il se rattache à un descripteur dans la grille d'évaluation ou un sous-descripteur, et à une compétence et à la
+   taxo » ; 13:12 : « le chantier principal à faire en premier c'est les stickers afin que je puisse enfin exporter un fichier que l'IA peut analyser en entier
+   avec toutes ses marques à poser » ; cadrage au sas : MANDATS/REDACTION-UNIVERSELLE/CADRAGE-STICKERS-OBJET.md).
+   Un sticker = un seul fait réussi, que l'élève retrouve sur sa copie. Il vit dans le sujet, au site : redactions/<sujet>/config/stickers/<id>.
+   Sa ligne (le descripteur) est un point de la grille du sujet (config/grille2) ; les réglages d'une ligne (sa compétence, ses sous-descripteurs, son compte)
+   vivent dans config/stickersLignes/<point>. Rien n'est jamais effacé : un sticker « rangé » ne se propose plus, et reste là où il est posé. */
+const ST = { ligne: null, s: null, taxo: null, cherche: "", valid: null, autres: null };
+function stSujetLignes() {
+  const g = typeof SUJET === "object" && SUJET && SUJET.grille2, L = [];
+  ((g && g.criteres) || []).forEach(c => (c.points || []).forEach(p => L.push({ crit: c.id, critNom: c.nom, id: p.id, titre: p.titre || p.id, poids: p.poids, bareme: p.bareme || [0, 0, 0, p.poids], calcul: p.calcul || null })));
+  return L;
+}
+function stLigne(id) { return stSujetLignes().find(l => l.id === id) || null; }
+function stConf(id) { return ((typeof SUJET === "object" && SUJET && SUJET.stickersLignes) || {})[id] || {}; }
+function stTous() { return Object.values((typeof SUJET === "object" && SUJET && SUJET.stickers) || {}).filter(s => s && s.id); }
+function stActifs() { return stTous().filter(s => s.etat !== "range"); }
+function stDeLigne(id) { return stActifs().filter(s => s.ligne === id).sort((a, b) => (a.ordre || 0) - (b.ordre || 0) || String(a.num || "").localeCompare(String(b.num || ""), "fr", { numeric: true })); }
+function stParNum(num) { return stActifs().find(s => s.num === num) || null; }
+function stCouleur(s) { const l = s && stLigne(s.ligne); return (l && typeof SC_CRIT === "object" && SC_CRIT[l.crit]) || "#6b7280"; }
+function stComptent(id) { return stDeLigne(id).filter(s => !s.neCompte); }
+/* le compte d'une ligne (proposé, acquis pour « Le thème tenu ») : tous posés, le plus haut niveau ; un manque, le niveau d'en dessous ; deux manques (trois, pour
+   une ligne de six stickers et plus), encore en dessous ; au-delà, le plus bas. Réglable ligne par ligne : [manques au plus pour 3, pour 2, pour 1] */
+function stSeuils(id) { const c = stConf(id).compte, n = stComptent(id).length; return Array.isArray(c) && c.length === 3 ? c.map(Number) : [0, 1, n >= 6 ? 3 : 2]; }
+function stNiveau(id, poses) { const n = stComptent(id).length, m = n - poses, [a, b, c] = stSeuils(id); return m <= a ? 3 : m <= b ? 2 : m <= c ? 1 : 0; }
+function stPoints(id, niveau) { const l = stLigne(id); return l ? Number(l.bareme[niveau]) || 0 : 0; }
+function stNb(x) { return String(Math.round(x * 100) / 100).replace(".", ","); }
+function stCompteTexte(id) {
+  const n = stComptent(id).length; if (!n) return "pas de sticker";
+  const [a, b, c] = stSeuils(id), pl = x => x + " manque" + (x > 1 ? "s" : ""), tr = (lo, hi) => lo === hi ? (lo ? pl(lo) : "tous") : (lo ? lo : "0") + " à " + pl(hi);
+  return n + " sticker" + (n > 1 ? "s" : "") + " : " + tr(0, a) + " → " + stNb(stPoints(id, 3)) + " pt · " + tr(a + 1, b) + " → " + stNb(stPoints(id, 2)) + " · " + tr(b + 1, c) + " → " + stNb(stPoints(id, 1)) + " · plus → " + stNb(stPoints(id, 0));
+}
+/* un sujet est prêt pour l'IA quand chaque sticker actif est validé, rattaché à sa ligne, à une compétence et à la taxonomie */
+function stPret() {
+  const A = stActifs(), m = { aValider: A.filter(s => s.etat !== "valide").length, sansLigne: A.filter(s => !stLigne(s.ligne)).length, sansCompetence: A.filter(s => !s.competence).length, sansTaxo: A.filter(s => !(s.taxo || []).length).length };
+  return { ok: A.length > 0 && !m.aValider && !m.sansLigne && !m.sansCompetence && !m.sansTaxo, n: A.length, valides: A.filter(s => s.etat === "valide").length, m };
+}
+function stPretTexte() {
+  const P = stPret(); if (!P.n) return "Aucun sticker pour ce sujet.";
+  const R = []; if (P.m.aValider) R.push(P.m.aValider + " à valider"); if (P.m.sansLigne) R.push(P.m.sansLigne + " sans ligne de la grille"); if (P.m.sansCompetence) R.push(P.m.sansCompetence + " sans compétence"); if (P.m.sansTaxo) R.push(P.m.sansTaxo + " sans notion de la taxonomie");
+  return P.n + " sticker" + (P.n > 1 ? "s" : "") + " · " + P.valides + " validé" + (P.valides > 1 ? "s" : "") + " · " + (P.ok ? "prêts : ils partent chez l’IA avec la correction" : "pas encore prêts pour l’IA (" + R.join(", ") + ")");
+}
+// ── l'écriture au site : un sticker, une ligne ; le sujet en mémoire change aussitôt, partout ──
+function stId() { return "stk_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+function stEcrire(s, libelle) {
+  s.modifieLe = new Date().toISOString(); s.version = (s.version || 0) + 1; SUJET.stickers = Object.assign({}, SUJET.stickers, { [s.id]: s });
+  return ruEcrire(["redactions", RU.id, "config", "stickers", s.id], JSON.parse(JSON.stringify(s)), libelle || "un sticker");
+}
+function stEcrireLigne(id, o) { o.modifieLe = new Date().toISOString(); SUJET.stickersLignes = Object.assign({}, SUJET.stickersLignes, { [id]: o }); return ruEcrire(["redactions", RU.id, "config", "stickersLignes", id], JSON.parse(JSON.stringify(o)), "une ligne de la grille"); }
+// ── 📥 une grille de stickers depuis un fichier (le format que rendra le prompt de création d'un sujet, et la proposition de la conscience) ──
+function stCharger(ev) {
+  const f = ev.target.files && ev.target.files[0]; ev.target.value = ""; if (!f) return;
+  f.text().then(t => { let o; try { o = JSON.parse(t); } catch (e) { scModale("<h3>Ce fichier ne se lit pas</h3><p>Il faut le fichier JSON d’une grille de stickers.</p>"); return; } stImporter(o); });
+}
+function stImporter(o) {
+  if (!o || !/^mjpc-redaction-stickers\//.test(o.format || "") || !Array.isArray(o.stickers)) { scModale("<h3>Ce fichier n’est pas une grille de stickers</h3><p>Il faut un fichier au format « mjpc-redaction-stickers/1 ».</p>"); return 0; }
+  const deja = new Set(stTous().map(s => s.num).filter(Boolean)), le = new Date().toISOString(); let n = 0, sans = 0, doubles = 0;
+  Object.keys(o.lignes || {}).forEach(id => { if (!stLigne(id)) return; const c = Object.assign({}, stConf(id)), src = o.lignes[id] || {}; let neuf = false;
+    if (src.competence && !c.competence) { c.competence = src.competence; neuf = true; } if (src.sous && !c.sous) { c.sous = src.sous; neuf = true; } if (Array.isArray(src.compte) && !c.compte) { c.compte = src.compte; neuf = true; }
+    if (neuf) stEcrireLigne(id, c); });
+  o.stickers.forEach((x, i) => {
+    if (!x || !x.texteEleve) return; if (!stLigne(x.ligne)) { sans++; return; } if (x.num && deja.has(x.num)) { doubles++; return; }
+    const s = { id: stId() + i.toString(36), num: x.num || null, ligne: x.ligne, sous: x.sous || null, texteEleve: String(x.texteEleve), cherche: String(x.cherche || ""), portee: x.portee === "lettre" ? "lettre" : "passage",
+      competence: x.competence || ((o.lignes || {})[x.ligne] || {}).competence || null, taxo: Array.isArray(x.taxo) ? x.taxo.slice(0, 2) : [], taxoPropose: x.taxoPropose || null, neCompte: !!x.neCompte,
+      ordre: x.ordre || 99, etat: "a-valider", creeLe: le, version: 0, source: "fichier" };
+    stEcrire(s, "un sticker chargé"); n++; if (s.num) deja.add(s.num); });
+  stRendre(); toast(n + " sticker" + (n > 1 ? "s" : "") + " chargé" + (n > 1 ? "s" : "") + ", à valider" + (doubles ? " · " + doubles + " déjà là, laissé" + (doubles > 1 ? "s" : "") + " tel" + (doubles > 1 ? "s" : "") + " quel" + (doubles > 1 ? "s" : "") : "") + (sans ? " · " + sans + " sans ligne de cette grille" : "") + ".");
+  return n;
+}
+// ── ⧉ les stickers d'un autre sujet (une autre classe, le même sujet) : copiés avec leurs rattachements et leur validation ──
+function stReprendreChoisir() {
+  fetch(ruUrl(["redactions"]) + "?shallow=true").then(r => r.json()).then(t => Promise.all(Object.keys(t || {}).filter(id => id !== RU.id).map(id => ruLire(["redactions", id, "config", "titre"]).then(ti => ruLire(["redactions", id, "config", "stickers"]).then(S => ({ id, titre: ti || id, n: Object.values(S || {}).filter(s => s && s.etat !== "range").length, v: Object.values(S || {}).filter(s => s && s.etat === "valide").length }))))))
+    .then(L => { L = L.filter(x => x.n); ST.autres = L;
+      scModale(`<h3>Reprendre les stickers d’un autre sujet</h3>${L.length ? `<p>Ils sont copiés ici avec leurs rattachements et leur validation ; ceux qui ont déjà le même numéro ici restent tels quels.</p>` + L.map(x => `<p><button class="sc-btn" onclick="scModaleFermer();stReprendre('${escapeAttr(x.id)}')" title="Copier ses ${x.n} stickers dans ce sujet.">⧉ ${escapeHtml(x.titre)}</button> <span class="sc-m">${x.n} stickers, ${x.v} validés</span></p>`).join("") : "<p>Aucun autre sujet n’a de stickers.</p>"}`); })
+    .catch(() => toast("⚠ Le site ne répond pas : la liste des sujets n’a pas pu être lue."));
+}
+function stReprendre(id) {
+  Promise.all([ruLire(["redactions", id, "config", "stickers"]), ruLire(["redactions", id, "config", "stickersLignes"])]).then(([S, Lg]) => {
+    const deja = new Set(stTous().map(s => s.num).filter(Boolean)); let n = 0, doubles = 0;
+    Object.keys(Lg || {}).forEach(l => { if (stLigne(l) && !SUJET.stickersLignes?.[l]) stEcrireLigne(l, Object.assign({}, Lg[l])); });
+    Object.values(S || {}).filter(s => s && s.etat !== "range" && stLigne(s.ligne)).forEach(s => { if (s.num && deja.has(s.num)) { doubles++; return; } const c = Object.assign({}, s, { repris: { de: id, le: new Date().toISOString() } }); stEcrire(c, "un sticker repris"); n++; });
+    stRendre(); toast(n + " sticker" + (n > 1 ? "s" : "") + " repris" + (doubles ? " · " + doubles + " déjà là" : "") + ".");
+  });
+}
+// ── la taxonomie du hub : compétences du cycle 4, familles et notions d'Eduscol ──
+function stTaxo() {
+  if (ST.taxo) return Promise.resolve(ST.taxo);
+  return ruLire(["taxonomie"]).then(t => { const T = { comp: [], fam: [], not: [], lib: {} }, arr = v => Array.isArray(v) ? v : Object.values(v || {});
+    arr((t || {}).domaines).forEach(d => arr(d.familles).forEach(f => { T.fam.push({ id: f.id, prof: f.libelleProf, eleve: f.libelleEleve, dom: d.libelleProf }); T.lib[f.id] = f.libelleProf;
+      arr(f.notions).forEach(n => { if (n && n.actif !== false) { T.not.push({ id: n.id, prof: n.libelleProf, eleve: n.libelleEleve, ex: n.exemple || "", fam: f.id }); T.lib[n.id] = n.libelleProf; } }); }));
+    arr(((t || {}).competences || {}).francaisC4).forEach(g => arr(g.items).forEach(i => { if (i && i.actif !== false) { T.comp.push({ id: i.id, prof: i.libelle, eleve: i.libelleEleve }); T.lib[i.id] = i.libelleEleve || i.libelle; } }));
+    ST.taxo = T; return T; }, () => { ST.taxo = { comp: [], fam: [], not: [], lib: {} }; return ST.taxo; });
+}
+function stLib(id) { return (ST.taxo && ST.taxo.lib[id]) || id; }
+// ── Réglages → « La grille et ses stickers » : la grille en arbre, les stickers de la ligne choisie, les rattachements du sticker choisi ──
+function stRendre() {
+  const v = document.getElementById("ruVue_reglages"); if (!v) return;
+  if (!ST.taxo) { stTaxo().then(() => stRendre()); }
+  const L = stSujetLignes();
+  if (!L.length) { v.innerHTML = '<div class="rp-carte"><h2>La grille et ses stickers</h2><p>Ce sujet n’a pas encore de grille à points : les stickers se rattachent aux lignes de cette grille.</p></div>'; return; }
+  if (!ST.ligne || !stLigne(ST.ligne)) ST.ligne = (L.find(l => !l.calcul) || L[0]).id;
+  const S = stDeLigne(ST.ligne); if (ST.s && !stTous().some(s => s.id === ST.s)) ST.s = null; if (!ST.s && S.length) ST.s = S[0].id;
+  const P = stPret(), crit = [...new Set(L.map(l => l.crit))];
+  const arbre = crit.map(c => { const Lc = L.filter(l => l.crit === c);
+    return '<div class="st-crit" style="--st-c:' + (SC_CRIT[c] || "#6b7280") + '"><b>' + escapeHtml(Lc[0].critNom || c) + "</b>" + Lc.map(l => { const n = stDeLigne(l.id), nv = n.filter(s => s.etat !== "valide").length, so = stConf(l.id).sous || {};
+      return '<button class="st-ligne' + (l.id === ST.ligne ? " on" : "") + '" onclick="ST.ligne=\'' + escapeAttr(l.id) + '\';ST.s=null;stRendre()" title="' + escapeAttr(l.calcul ? "Ligne calculée par l’app, sans sticker : " + (l.calcul === "lignes" ? "les lignes recopiées, rapportées à la longueur du sujet." : "les fautes de la bande, par ligne recopiée.") : stCompteTexte(l.id)) + '"><span>' + escapeHtml(l.titre) + '</span><small>' + stNb(l.poids) + " pt · " + (l.calcul ? "calculée" : n.length + " sticker" + (n.length > 1 ? "s" : "") + (nv ? " · " + nv + " à valider" : n.length ? " ✓" : "")) + "</small></button>"
+        + Object.keys(so).sort((a, b) => (so[a].ordre || 0) - (so[b].ordre || 0)).map(x => '<span class="st-sous-arbre">› ' + escapeHtml(so[x].libelle || x) + " (" + n.filter(s => s.sous === x).length + ")</span>").join(""); }).join("") + "</div>"; }).join("");
+  const l = stLigne(ST.ligne), conf = stConf(ST.ligne), so = conf.sous || {};
+  const cartes = l.calcul ? '<p class="sc-m">' + escapeHtml(l.titre) + " est calculée par l’app : " + (l.calcul === "lignes" ? "les lignes recopiées, rapportées à la longueur du sujet." : "les fautes de la bande, par ligne recopiée.") + " Elle n’a pas de sticker.</p>"
+    : S.map((s, i) => '<div class="st-carte' + (s.id === ST.s ? " on" : "") + (s.etat === "valide" ? " valide" : "") + '" onclick="if(ST.s!==\'' + s.id + '\'){ST.s=\'' + s.id + '\';stRendre()}" style="--st-c:' + stCouleur(s) + '">'
+      + '<div class="st-carte-haut"><b>' + escapeHtml(s.num || "—") + "</b>" + (s.sous && so[s.sous] ? '<span class="st-sous">' + escapeHtml(so[s.sous].libelle) + "</span>" : "") + (s.portee === "lettre" ? '<span class="st-portee" title="Posé à la fin de la lecture, sur la lettre entière, seulement si rien ne le contredit.">toute la lettre</span>' : "") + (s.neCompte ? '<span class="st-portee" title="Il se lit sur la copie de l’élève, mais ne compte pas dans le compte de la ligne.">sans point</span>' : "") + '<span class="st-etat ' + (s.etat === "valide" ? "ok" : "") + '">' + (s.etat === "valide" ? "✓ validé" : "à valider") + "</span></div>"
+      + '<label>Ce que l’élève lit<textarea rows="2" data-st="' + s.id + '" data-champ="texteEleve" onchange="stChamp(this)" title="La phrase que l’élève lit sur sa copie et dans sa grille. Un seul fait, qu’il retrouve sur sa copie.">' + escapeHtml(s.texteEleve) + "</textarea></label>"
+      + '<label>Ce que l’IA cherche<textarea rows="2" data-st="' + s.id + '" data-champ="cherche" onchange="stChamp(this)" title="Ce que l’IA cherche dans la copie, en mots de prof. L’élève ne le lit jamais.">' + escapeHtml(s.cherche || "") + "</textarea></label>"
+      + '<div class="st-gestes"><select data-st="' + s.id + '" data-champ="portee" onchange="stChamp(this)" title="Un passage : l’IA donne les mots qui le prouvent, le cadre se pose dessus. Toute la lettre : posé à la fin, seulement si rien ne le contredit."><option value="passage"' + (s.portee !== "lettre" ? " selected" : "") + ">un passage</option><option value=\"lettre\"" + (s.portee === "lettre" ? " selected" : "") + ">toute la lettre</option></select>"
+      + '<button class="sc-btn" onclick="event.stopPropagation();stBouger(\'' + s.id + '\',-1)" title="Monter ce sticker d’un cran dans la ligne (sa place dans la bande et dans la grille de l’élève)."' + (i ? "" : " disabled") + ">↑</button><button class=\"sc-btn\" onclick=\"event.stopPropagation();stBouger('" + s.id + "',1)\" title=\"Descendre ce sticker d’un cran dans la ligne.\"" + (i < S.length - 1 ? "" : " disabled") + ">↓</button>"
+      + '<button class="sc-btn" onclick="event.stopPropagation();stDupliquer(\'' + s.id + '\')" title="Un nouveau sticker, copie de celui-ci, à valider.">⧉</button><button class="sc-btn" onclick="event.stopPropagation();stRanger(\'' + s.id + '\')" title="Ranger ce sticker : il ne se propose plus ; il reste sur les copies où il est déjà posé. Rien n’est effacé.">🗑 Ranger</button></div></div>').join("")
+      + '<button class="sc-btn st-plus" onclick="stNouveau()" title="Un nouveau sticker sur cette ligne, à écrire puis valider.">＋ Un sticker</button>';
+  const s = stTous().find(x => x.id === ST.s), T = ST.taxo || { comp: [], fam: [], not: [], lib: {} };
+  const ratt = !s || l.calcul ? '<p class="sc-m">Choisis un sticker pour voir ses rattachements.</p>' : '<h3>Le sticker ' + escapeHtml(s.num || "") + "</h3>"
+    + '<label>Sa ligne<select data-st="' + s.id + '" data-champ="ligne" onchange="stChamp(this)" title="La ligne notée de la grille (le descripteur) dont il fait partie.">' + L.filter(x => !x.calcul).map(x => '<option value="' + escapeAttr(x.id) + '"' + (x.id === s.ligne ? " selected" : "") + ">" + escapeHtml(x.titre) + "</option>").join("") + "</select></label>"
+    + '<label>Son sous-descripteur<select data-st="' + s.id + '" data-champ="sous" onchange="stChamp(this)" title="Une partie de la ligne, qui regroupe des stickers. Facultatif : il n’a pas de points à lui."><option value="">aucun</option>' + Object.keys(so).map(x => '<option value="' + escapeAttr(x) + '"' + (x === s.sous ? " selected" : "") + ">" + escapeHtml(so[x].libelle || x) + "</option>").join("") + '</select></label><button class="sc-btn" onclick="stSousNouveau()" title="Un nouveau sous-descripteur sur cette ligne : tu écris son nom.">＋ Un sous-descripteur</button>'
+    + '<label>Sa compétence du socle<select data-st="' + s.id + '" data-champ="competence" onchange="stChamp(this)" title="La compétence du cycle 4 qu’il montre ; par défaut, celle de sa ligne."><option value="">—</option>' + T.comp.map(c => '<option value="' + escapeAttr(c.id) + '"' + (c.id === s.competence ? " selected" : "") + ">" + escapeHtml(c.id + " · " + (c.eleve || c.prof)) + "</option>").join("") + "</select></label>"
+    + '<div class="st-taxo"><b>Sa notion de la taxonomie</b> (une ou deux)<div>' + (s.taxo || []).map(t => '<span class="st-chip">' + escapeHtml(stLib(t)) + ' <button onclick="stTaxoRetirer(\'' + s.id + "','" + escapeAttr(t) + '\')" title="Retirer ce rattachement.">×</button></span>').join("") + (s.taxoPropose ? '<span class="st-chip propose" title="Une notion qui manque à la taxonomie : elle part en proposition, à valider dans le panneau de la taxonomie.">⚑ ' + escapeHtml(s.taxoPropose) + "</span>" : "") + "</div>"
+      + ((s.taxo || []).length < 2 ? '<input id="stTaxoCherche" placeholder="chercher une notion ou une famille…" value="' + escapeAttr(ST.cherche) + '" oninput="ST.cherche=this.value;stTaxoResultats()" title="Tape un mot : les notions et les familles de la taxonomie Eduscol du hub qui le contiennent."><div id="stTaxoRes" class="st-taxo-res"></div>' : "") + "</div>"
+    + '<div class="st-apercu" style="--st-c:' + stCouleur(s) + '"><small>Comme l’élève le lit</small><span>' + escapeHtml(s.texteEleve) + "</span></div>"
+    + (s.etat === "valide" ? '<p class="st-ok">✓ Validé le ' + escapeHtml(typeof rcHeure === "function" ? rcHeure(s.valideLe) : "") + "</p>" : '<button class="sc-btn st-valider" onclick="stValider(\'' + s.id + '\')" title="Je valide ce sticker : ce que l’élève lit et ses rattachements.">✓ Je valide</button>');
+  v.innerHTML = '<div class="rp-carte st-ed"><div class="st-haut"><h2>La grille et ses stickers</h2><span class="st-pret ' + (P.ok ? "ok" : "") + '">' + escapeHtml(stPretTexte()) + "</span>"
+    + '<button class="sc-btn" onclick="stValidationOuvrir()" title="Valider la grille une ligne par écran : tous les stickers de la ligne et leurs rattachements ; Entrée valide la ligne entière.">✓ Valider ligne par ligne</button>'
+    + '<label class="sc-btn" title="Charger une grille de stickers depuis un fichier (le format mjpc-redaction-stickers/1) : ils arrivent à valider ; un numéro déjà là reste tel quel.">📥 Charger des stickers<input type="file" accept=".json,application/json" onchange="stCharger(event)" hidden></label>'
+    + '<button class="sc-btn" onclick="stReprendreChoisir()" title="Copier ici les stickers d’un autre sujet (le même sujet dans une autre classe), avec leurs rattachements et leur validation.">⧉ Reprendre ceux d’un autre sujet</button></div>'
+    + '<div class="st-cols"><nav class="st-arbre">' + arbre + '</nav><section class="st-milieu"><div class="st-ligne-titre"><b>' + escapeHtml(l.titre) + "</b> · " + stNb(l.poids) + " points"
+    + (l.calcul ? "" : '<label class="st-comp-ligne">Compétence de la ligne <select onchange="stLigneChamp(\'competence\',this.value)" title="La compétence de la ligne : chaque nouveau sticker la prend par défaut."><option value="">—</option>' + T.comp.map(c => '<option value="' + escapeAttr(c.id) + '"' + (c.id === conf.competence ? " selected" : "") + ">" + escapeHtml(c.id) + "</option>").join("") + "</select></label>"
+      + '<div class="st-compte" title="Combien de manques donnent quel niveau. Le barème de la ligne donne les points de chaque niveau.">' + escapeHtml(stCompteTexte(l.id)) + ' <button class="sc-btn" onclick="stCompteRegler()" title="Régler le compte de cette ligne : combien de manques au plus pour chaque niveau.">Régler</button></div>') + "</div>" + cartes + "</section>"
+    + '<aside class="st-ratt">' + ratt + "</aside></div></div>";
+  stTaxoResultats();
+}
+function stTaxoResultats() {
+  const R = document.getElementById("stTaxoRes"); if (!R) return; const q = ST.cherche.trim().toLowerCase(), T = ST.taxo; if (!T || q.length < 2) { R.innerHTML = ""; return; }
+  const ok = x => [x.prof, x.eleve, x.ex, x.id].some(t => String(t || "").toLowerCase().includes(q));
+  const F = T.fam.filter(ok).slice(0, 6), N = T.not.filter(ok).slice(0, 10);
+  R.innerHTML = (F.length + N.length ? F.map(f => '<button onclick="stTaxoAjouter(\'' + escapeAttr(f.id) + '\')" title="' + escapeAttr("Famille · " + f.dom + " · pour l’élève : " + f.eleve) + '"><b>' + escapeHtml(f.id) + "</b> " + escapeHtml(f.prof) + "</button>").join("") + N.map(n => '<button onclick="stTaxoAjouter(\'' + escapeAttr(n.id) + '\')" title="' + escapeAttr("Notion de " + stLib(n.fam) + " · pour l’élève : " + n.eleve + (n.ex ? " · exemple : " + n.ex : "")) + '">' + escapeHtml(n.prof) + "</button>").join("") : '<span class="sc-m">Rien dans la taxonomie.</span>');
+}
+function stMaj(id, f) { const s = stTous().find(x => x.id === id); if (!s) return null; const c = JSON.parse(JSON.stringify(s)); f(c); if (c.etat === "valide" && JSON.stringify(Object.assign({}, c, { etat: 0, valideLe: 0 })) !== JSON.stringify(Object.assign({}, s, { etat: 0, valideLe: 0 }))) { c.etat = "a-valider"; delete c.valideLe; } stEcrire(c); return c; }   // une modif remet le sticker à valider
+function stChamp(el) { const id = el.dataset.st, ch = el.dataset.champ, v = el.value, f = c => { if (ch === "sous") c.sous = v || null; else c[ch] = ch === "texteEleve" || ch === "cherche" ? v.trim() : v; if (ch === "ligne") c.sous = null; };
+  if (ch === "ligne") { stSiNotesChangent(() => { if (SUJET.stickers[id]) f(SUJET.stickers[id]); }, () => { stMaj(id, f); ST.ligne = v; }, "Changer sa ligne"); return; }   // un sticker qui change de ligne change le compte de deux lignes
+  stMaj(id, f); stRendre(); }
+function stLigneChamp(ch, v) { const c = Object.assign({}, stConf(ST.ligne)); c[ch] = v || null; stEcrireLigne(ST.ligne, c); stRendre(); }
+function stValider(id) { stMaj(id, c => { c.etat = "valide"; c.valideLe = new Date().toISOString(); }); const S = stDeLigne(ST.ligne), i = S.findIndex(s => s.id === id), nx = S.slice(i + 1).find(s => s.etat !== "valide"); if (nx) ST.s = nx.id; stRendre(); }
+function stTaxoAjouter(t) { stMaj(ST.s, c => { c.taxo = (c.taxo || []).filter(x => x !== t).concat([t]).slice(0, 2); }); ST.cherche = ""; stRendre(); }
+function stTaxoRetirer(id, t) { stMaj(id, c => { c.taxo = (c.taxo || []).filter(x => x !== t); }); stRendre(); }
+function stBouger(id, sens) { const S = stDeLigne(ST.ligne), i = S.findIndex(s => s.id === id), j = i + sens; if (i < 0 || j < 0 || j >= S.length) return; S.forEach((s, n) => { const o = n === i ? j : n === j ? i : n; if ((s.ordre || 0) !== o + 1) { const c = JSON.parse(JSON.stringify(s)); c.ordre = o + 1; stEcrire(c); } }); stRendre(); }
+function stNouveau() { const conf = stConf(ST.ligne), S = stDeLigne(ST.ligne), s = { id: stId(), num: null, ligne: ST.ligne, sous: null, texteEleve: "Tu …", cherche: "", portee: "passage", competence: conf.competence || null, taxo: [], neCompte: false, ordre: S.length + 1, etat: "a-valider", creeLe: new Date().toISOString(), version: 0, source: "prof" }; s.num = "S" + (1 + stTous().reduce((m, x) => Math.max(m, parseInt(String(x.num || "").replace(/\D/g, "")) || 0), 0)); stEcrire(s, "un nouveau sticker"); ST.s = s.id; stRendre(); }
+function stDupliquer(id) { const s = stTous().find(x => x.id === id); if (!s) return; const c = Object.assign(JSON.parse(JSON.stringify(s)), { id: stId(), num: "S" + (1 + stTous().reduce((m, x) => Math.max(m, parseInt(String(x.num || "").replace(/\D/g, "")) || 0), 0)), etat: "a-valider", valideLe: null, creeLe: new Date().toISOString(), version: 0, ordre: (s.ordre || 0) + 0.5, source: "dupliqué" }); stEcrire(c, "un sticker dupliqué"); ST.s = c.id; stRendre(); }
+function stRanger(id) { const s = stTous().find(x => x.id === id); if (!s) return;
+  scModale(`<h3>Ranger le sticker ${escapeHtml(s.num || "")} ?</h3><p>« ${escapeHtml(s.texteEleve)} »</p><p>Il ne se propose plus à l’IA ni dans la bande. Il reste sur les copies où il est déjà posé. Rien n’est effacé.</p><button class="sc-btn" onclick="scModaleFermer();stRangerOui('${s.id}')" title="Ranger ce sticker.">🗑 Ranger</button>`); }
+function stRangerOui(id) { stSiNotesChangent(() => { if (SUJET.stickers[id]) SUJET.stickers[id].etat = "range"; }, () => { stMaj(id, c => { c.etat = "range"; c.rangeLe = new Date().toISOString(); }); ST.s = null; }, "Ranger ce sticker"); }
+function stSousNouveau() { scModale(`<h3>Un sous-descripteur pour « ${escapeHtml(stLigne(ST.ligne).titre)} »</h3><p>Une partie de la ligne, qui regroupe des stickers ; il n’a pas de points à lui.</p><input id="stSousNom" class="sc-init" placeholder="son nom (ex. : le plus dur)"> <button class="sc-btn" onclick="stSousCreer()" title="Créer ce sous-descripteur.">Créer</button>`); setTimeout(() => { const i = document.getElementById("stSousNom"); if (i) i.focus(); }, 0); }
+function stSousCreer() { const i = document.getElementById("stSousNom"), nom = i && i.value.trim(); if (!nom) return; const c = Object.assign({}, stConf(ST.ligne)), so = Object.assign({}, c.sous || {}), id = ruSlug(nom).replace(/_/g, "-") || "sous-" + Date.now().toString(36); so[id] = { libelle: nom, ordre: Object.keys(so).length + 1 }; c.sous = so; stEcrireLigne(ST.ligne, c); scModaleFermer(); if (ST.s) stMaj(ST.s, x => { x.sous = id; }); stRendre(); }
+function stCompteRegler() { const [a, b, c] = stSeuils(ST.ligne), n = stComptent(ST.ligne).length;
+  scModale(`<h3>Le compte de « ${escapeHtml(stLigne(ST.ligne).titre)} »</h3><p>${n} sticker${n > 1 ? "s" : ""} qui comptent. Combien de manques au plus pour chaque niveau ? Le barème de la ligne donne les points.</p>`
+    + [[3, a], [2, b], [1, c]].map(([nv, x]) => `<p><label>Niveau ${nv} (${stNb(stPoints(ST.ligne, nv))} pt) : jusqu’à <input type="number" min="0" max="${n}" value="${x}" id="stSeuil${nv}" style="width:4em"> manque(s)</label></p>`).join("")
+    + `<p class="sc-m">Au-delà : niveau 0 (${stNb(stPoints(ST.ligne, 0))} pt). Une copie déjà corrigée dont la note changerait est listée avant que rien ne change.</p><button class="sc-btn" onclick="stCompteGarder()" title="Garder ce compte pour cette ligne.">Garder</button>`); }
+function stCompteGarder() { const v = [3, 2, 1].map(nv => Math.max(0, parseInt(document.getElementById("stSeuil" + nv).value) || 0)); for (let i = 1; i < 3; i++) v[i] = Math.max(v[i], v[i - 1]); const lg = ST.ligne, c = Object.assign({}, stConf(lg)); c.compte = v; scModaleFermer();
+  stSiNotesChangent(() => { SUJET.stickersLignes[lg] = Object.assign({}, c); }, () => stEcrireLigne(lg, c), "Ce compte"); }
+// ── ✓ Valider ligne par ligne : une ligne par écran, tous ses stickers ; Entrée valide la ligne entière (la lettre en douze écrans) ──
+function stValidationOuvrir() { stTaxo().then(() => { const L = stSujetLignes().filter(l => !l.calcul && stDeLigne(l.id).length); if (!L.length) { toast("Aucun sticker à valider."); return; } let i = L.findIndex(l => stDeLigne(l.id).some(s => s.etat !== "valide")); ST.valid = { L: L.map(l => l.id), i: i < 0 ? 0 : i }; stValidationRendre(); }); }
+function stValidationRendre() {
+  const V = ST.valid; if (!V) return; let m = document.getElementById("stValid"); if (!m) { m = document.createElement("div"); m.id = "stValid"; m.className = "st-valid"; document.body.appendChild(m); }
+  const id = V.L[V.i], l = stLigne(id), S = stDeLigne(id), conf = stConf(id), so = conf.sous || {}, nv = S.filter(s => s.etat !== "valide").length;
+  m.innerHTML = '<div class="st-valid-c" role="dialog" aria-label="Valider la grille, ligne par ligne"><div class="st-valid-haut"><b>Ligne ' + (V.i + 1) + " sur " + V.L.length + " · " + escapeHtml(l.titre) + "</b> <span>" + stNb(l.poids) + " points · " + escapeHtml(stLib(conf.competence || "")) + "</span><small>" + escapeHtml(stCompteTexte(id)) + "</small></div>"
+    + S.map(s => '<div class="st-valid-s' + (s.etat === "valide" ? " ok" : "") + '" style="--st-c:' + stCouleur(s) + '" onclick="ST.ligne=\'' + escapeAttr(id) + '\';ST.s=\'' + s.id + '\';stValidationFermer();if(RU.onglet!==\'reglages\')ruOnglet(\'reglages\');stRendre()" title="Ouvrir ce sticker dans l’éditeur pour le changer."><b>' + escapeHtml(s.num || "") + '</b><div><span class="st-v-eleve">' + escapeHtml(s.texteEleve) + '</span><small>L’IA cherche : ' + escapeHtml(s.cherche || "—") + "</small><small>" + (s.portee === "lettre" ? "toute la lettre · " : "un passage · ") + (s.sous && so[s.sous] ? escapeHtml(so[s.sous].libelle) + " · " : "") + escapeHtml(s.competence || "sans compétence") + " · " + escapeHtml((s.taxo || []).map(stLib).join(", ") || "sans notion") + (s.taxoPropose ? " · ⚑ " + escapeHtml(s.taxoPropose) : "") + (s.neCompte ? " · sans point" : "") + "</small></div><i>" + (s.etat === "valide" ? "✓" : "") + "</i></div>").join("")
+    + '<div class="st-valid-b"><button class="sc-btn" onclick="stValidationLigne()" title="Valider tous les stickers de cette ligne, puis la ligne suivante (Entrée).">✓ Je valide la ligne (Entrée)</button><button class="sc-btn" onclick="stValidationAller(-1)" title="La ligne d’avant (←)."' + (V.i ? "" : " disabled") + '>← Avant</button><button class="sc-btn" onclick="stValidationAller(1)" title="La ligne suivante, sans valider celle-ci (→)."' + (V.i < V.L.length - 1 ? "" : " disabled") + '>Après →</button><button class="sc-btn" onclick="stValidationFermer()" title="Fermer (Échap) : ce qui est validé reste validé.">Fermer</button><span class="sc-m">' + (nv ? nv + " à valider sur cette ligne" : "Toute la ligne est validée") + " · " + escapeHtml(stPretTexte()) + "</span></div></div>";
+}
+function stValidationLigne() { const V = ST.valid; if (!V) return; const le = new Date().toISOString(); stDeLigne(V.L[V.i]).filter(s => s.etat !== "valide").forEach(s => { const c = JSON.parse(JSON.stringify(s)); c.etat = "valide"; c.valideLe = le; stEcrire(c, "un sticker validé"); });
+  if (V.i < V.L.length - 1) V.i++; else { stValidationFermer(); toast(stPretTexte()); stRendre(); return; } stValidationRendre(); stRendre(); }
+function stValidationAller(s) { const V = ST.valid; if (!V) return; V.i = Math.max(0, Math.min(V.L.length - 1, V.i + s)); stValidationRendre(); }
+function stValidationFermer() { ST.valid = null; const m = document.getElementById("stValid"); if (m) m.remove(); }
+document.addEventListener("keydown", e => { if (!ST.valid) return; if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); stValidationLigne(); } else if (e.key === "ArrowRight") { e.preventDefault(); e.stopPropagation(); stValidationAller(1); } else if (e.key === "ArrowLeft") { e.preventDefault(); e.stopPropagation(); stValidationAller(-1); } else if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); stValidationFermer(); } }, true);
+/* ═══ l'IA et la bande des stickers (cadrage 13 et 14 : un seul envoi par copie ; la bande s'arrête, après les fautes, à chaque sticker proposé) ═══ */
+const RC_CONSIGNE_STICKERS = " En plus, pour chaque copie, cherche les réussites de la grille donnée dans « grille » : chaque sticker a son numéro « s », ce que tu cherches « cherche », et sa portée « portee ». Le sujet donné aux élèves est dans « sujet ». Pour un sticker de portée « passage » réussi, donne la ligne où il se voit le mieux (son identifiant) et les mots exacts de cette ligne qui le prouvent, recopiés tels qu'ils sont dans la ligne reçue (pas dans ta ligne corrigée), de un à douze mots qui se suivent. Pour un sticker de portée « lettre », donne-le seulement si toute la lettre le montre et que rien ne le contredit. N'invente rien : un sticker qui n'est pas réussi n'apparaît pas. Pour une copie marquée « seulementStickers », ne rends pas ses lignes : rends seulement ses réussites. Ajoute au JSON \"reussites\":{\"identité de la copie (son champ copie)\":[{\"s\":\"S8\",\"l\":\"identifiant de la ligne\",\"m\":\"les mots exacts\"},{\"s\":\"S6\"},{\"s\":\"fin\"}]} : termine toujours la liste de chaque copie par {\"s\":\"fin\"}, même si elle n'a aucune réussite.";
+function stEnvoiGrille() { if (!stPret().ok) return null; return stActifs().sort((a, b) => stSujetLignes().findIndex(l => l.id === a.ligne) - stSujetLignes().findIndex(l => l.id === b.ligne) || (a.ordre || 0) - (b.ordre || 0)).map(s => ({ s: s.num || s.id, cherche: s.cherche || s.texteEleve, portee: s.portee === "lettre" ? "lettre" : "passage" })); }
+function stAEnvoyer(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !r || !r.complet; }   // une copie dont les réussites ne sont pas encore revenues entières
+function stEnonce() { const v = typeof SUJET === "object" && SUJET ? (SUJET.enonce || (SUJET.variantes || []).map(x => x.enonce || x.libelle).filter(Boolean).join("\n\n")) : ""; return String(v || "").slice(0, 6000); }
+/* les mots rendus par l'IA, retrouvés dans la ligne recopiée : la plus longue suite de mots qui se suivent (sans accents ni majuscules) */
+function stNorm(w) { return String(w || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[’']/g, "'"); }
+function stTrouverMots(texte, mots) {
+  const P = rcPosMots(texte), T = P.map(p => stNorm(texte.slice(p[0], p[1]))), M = rcTokenize(mots || "").map(stNorm); if (!M.length || !T.length) return null;
+  let best = null; for (let i = 0; i < T.length; i++) { let j = 0; while (i + j < T.length && j < M.length && T[i + j] === M[j]) j++; if (j && (!best || j > best.n)) best = { de: i, a: i + j, n: j }; }
+  if (best && best.n >= Math.min(2, M.length)) return best;
+  const i = T.indexOf(M.find(m => m.length > 3) || M[0]); return i >= 0 ? { de: i, a: i + 1, n: 1 } : null;
+}
+/* le retour de l'IA : les réussites de chaque copie, gardées seulement pour les copies dont les lignes sont à jour ; une ligne d'une autre copie ne s'y mêle jamais */
+function stIAReussites(o, copiesOk) {
+  const R = o.reussites || {}, quand = new Date().toISOString(); let copies = 0, poses = 0, incompletes = 0, inconnus = 0, horsCopie = 0;
+  copiesOk.forEach(k => { const c = state.copies[k] || {}, L = R[c.id]; if (!Array.isArray(L)) return; const ici = {}; rcLignesEcrites(k).forEach(x => { ici[x.id] = x; });
+    const liste = [], vu = new Set(); let complet = false;
+    L.forEach(e => { if (!e || typeof e.s !== "string") return; if (e.s === "fin") { complet = true; return; } const st = stParNum(e.s) || stActifs().find(x => x.id === e.s); if (!st) { inconnus++; return; } if (vu.has(st.id)) return; vu.add(st.id);
+      if (st.portee === "lettre" || !e.l) { liste.push({ st: st.id, num: st.num, lettre: true }); return; }
+      const x = ici[e.l]; if (!x) { horsCopie++; return; } const t = stTrouverMots(x.l.texte, e.m); liste.push(Object.assign({ st: st.id, num: st.num, l: x.id, pid: x.pid, mots: String(e.m || "").slice(0, 200) }, t ? { de: t.de, a: t.a } : { sansPlace: true })); });
+    const s = scCopie(k); s.recopie = s.recopie || {}; const prof = (((s.recopie.stickersIA || {}).liste) || []).filter(e => e.par === "prof");   // ce que tu as posé de ta main reste
+    s.recopie.stickersIA = { le: quand, complet, liste: prof.concat(liste.filter(e => !prof.some(p => p.st === e.st))) }; if (!complet) incompletes++; copies++; poses += liste.length; });
+  return { copies, poses, incompletes, inconnus, horsCopie };
+}
+/* les arrêts des stickers d'une copie, après ceux des fautes : dans l'ordre de la grille ; ceux de toute la lettre en dernier */
+function stArrets(k) {
+  const r = (scCopie(k).recopie || {}).stickersIA; if (!r || !Array.isArray(r.liste)) return []; const L = rcLignesEcrites(k), ordre = stSujetLignes().map(l => l.id), A = [];
+  r.liste.forEach(e => { const st = stTous().find(x => x.id === e.st); if (!st) return; const x = e.l && L.find(y => y.id === e.l), i = x ? L.indexOf(x) : -1;
+    const a = { st: true, k, sticker: st, stId: st.id, cle: "stk:" + st.id, lettre: !x || e.lettre || e.sansPlace, mots: e.mots || "" };
+    if (x && !e.lettre && !e.sansPlace && e.a > e.de) Object.assign(a, { pid: x.pid, id: x.id, n: i + 1, l: x.l, g: { de: e.de, a: e.a, de2: e.de, a2: e.a, eleve: e.mots || "", corrige: e.mots || "" } });
+    else if (x) Object.assign(a, { pid: x.pid, id: x.id, n: i + 1, l: x.l });
+    A.push(a); });
+  return A.sort((p, q) => (p.lettre ? 1 : 0) - (q.lettre ? 1 : 0) || ordre.indexOf(p.sticker.ligne) - ordre.indexOf(q.sticker.ligne) || (p.sticker.ordre || 0) - (q.sticker.ordre || 0));
+}
+function stDecision(k, stId) { return ((scCopie(k).stickers || {})[stId] || {}).v || null; }
+function stStyle(a) { const c = stCouleur(a.sticker); return { couleur: c, fond: c + "22", texte: c, libelle: "Sticker" }; }
+/* la décision d'un sticker : gardé (Entrée) ou non (N) ; gardé, il se pose sur la photo (une marque « sticker » à la couleur de son critère), sa place suit le cadre */
+function stDeciderArret(k, a, v) {
+  const s = scCopie(k); s.stickers = Object.assign({}, s.stickers); const anc = s.stickers[a.stId], deja = anc && anc.marque && s.marques[anc.marque];
+  const d = { v, le: new Date().toISOString(), de: (anc && anc.de) || "ia", num: a.sticker.num || null, ligne: a.sticker.ligne, version: a.sticker.version || 0 };
+  if (v === "o" && !a.lettre && a.g) { if (deja) d.marque = anc.marque; else { const q = rcPlaceSeg(a), l = stLigne(a.sticker.ligne);
+      const m = { page: a.pid, forme: "sticker", sens: "lieu", passe: l ? l.crit : "theme", point: a.sticker.ligne, q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, sticker: a.stId, num: a.sticker.num || null, bonne: null, bande: { ligne: a.id, cle: a.cle, sticker: a.stId } };
+      scPoser(m); d.marque = m.id; rcLigneMaj(k, a.pid, a.id, l2 => { l2.marquesBande = Object.assign({}, l2.marquesBande, { [a.cle]: m.id }); }); } }
+  if (v === "n" && deja) { scEffacer(anc.marque); if (a.id) rcLigneMaj(k, a.pid, a.id, l2 => { if (l2.marquesBande) { l2.marquesBande = Object.assign({}, l2.marquesBande); delete l2.marquesBande[a.cle]; } }); }
+  s.stickers[a.stId] = d; saveState();
+}
+/* la note de la copie, depuis les stickers : chaque ligne à stickers donne son niveau par son compte ; « Trente lignes » sur la recopie ; l'orthographe, les fautes de la bande par ligne recopiée */
+function stNoteCopie(k) {
+  const s = scCopie(k), D = s.stickers || {}, nL = rcLignesEcrites(k).length, g = SUJET && SUJET.grille2; let n = 0, tot = 0; const det = [];
+  stSujetLignes().forEach(l => { tot += Number(l.poids) || 0; let niv = null, info = "";
+    if (l.calcul) { const pt = ((g && g.criteres) || []).flatMap(c => c.points || []).find(p => p.id === l.id); if (pt && nL) { const e = Object.values(s.marques || {}).filter(m => m.forme === "faute" && m.bande).length, r = l.calcul === "lignes" ? nL / (typeof scLong === "function" ? scLong() : 30) : e / nL;
+        const c = (pt.cases || []).find(c => { const m = /^calc:\w+:([\d.]+)-([\d.]+)$/.exec(c.si); return m && r >= +m[1] && r <= +m[2]; }); if (c) { niv = c.niveau; info = l.calcul === "lignes" ? nL + " lignes" : e + " faute" + (e > 1 ? "s" : "") + " pour " + nL + " lignes"; } } }
+    else { const S = stComptent(l.id); if (S.length) { const p = S.filter(x => (D[x.id] || {}).v === "o").length; niv = stNiveau(l.id, p); info = p + " sur " + S.length; } }
+    const pts = niv == null ? 0 : stPoints(l.id, niv); n += pts; det.push({ ligne: l.id, titre: l.titre, niveau: niv, points: pts, sur: l.poids, info }); });
+  return { n, tot, det };
+}
+function stBandeCompte(k, ligne) { const S = stComptent(ligne), D = scCopie(k).stickers || {}, p = S.filter(x => (D[x.id] || {}).v === "o").length, niv = stNiveau(ligne, p), l = stLigne(ligne); return l ? escapeHtml(l.titre) + " : " + p + " sur " + S.length + " → " + stNb(stPoints(ligne, niv)) + " / " + stNb(l.poids) + " pt" : ""; }
+/* la carte d'un sticker dans la bande : ce que l'élève lira, sa ligne, le compte de la ligne et la note, en direct (Paul 30/10 15:17) */
+function stBandeCarte(B, a, ctx, carte, touches) {
+  const c = stCouleur(a.sticker), d = stDecision(B.k, a.stId), l = stLigne(a.sticker.ligne), nt = stNoteCopie(B.k);
+  if (a.g) { const P = rcPosMots(a.l.texte); let h = "", cc = 0;
+    P.forEach((p, i) => { h += escapeHtml(a.l.texte.slice(cc, p[0])); const w = escapeHtml(a.l.texte.slice(p[0], p[1])); h += i >= a.g.de && i < a.g.a ? '<mark style="background:' + c + '22;color:' + c + ";box-shadow:inset 0 -2px 0 " + c + '">' + w + "</mark>" : '<span class="rc-mot" data-m="' + i + '">' + w + "</span>"; cc = p[1]; });
+    rcRubanTexte(ctx, B.k, a, h + escapeHtml(a.l.texte.slice(cc))); }
+  else ctx.innerHTML = '<div class="rc-st-lettre">' + (a.l && a.mots ? "« " + escapeHtml(a.mots) + " » · " : "") + "toute la lettre</div>";
+  carte.innerHTML = '<div class="rc-bande-mot rc-st-mot" style="color:' + c + '">★ ' + escapeHtml(a.sticker.texteEleve) + '</div><div class="rc-bande-pied"><b class="rc-bande-type" style="background:' + c + "22;color:" + c + ";border-color:" + c + '">' + escapeHtml((a.sticker.num || "") + " · " + (l ? l.titre : "")) + "</b> "
+    + (a.lettre ? "Toute la lettre : gardé seulement si rien ne le contredit." : a.mots ? "L’IA l’a vu dans « " + escapeHtml(a.mots) + " »." : "") + (d === "o" ? " · ✓ gardé" : d === "n" ? " · ✗ non" : "") + '</div><div class="rc-bande-pied rc-st-compte">' + stBandeCompte(B.k, a.sticker.ligne) + " · la note pour l’instant : " + stNb(nt.n) + " / " + stNb(nt.tot) + "</div>";
+  touches.innerHTML = '<b class="rc-bande-mode">Les stickers</b><span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> gardé</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span>' + (a.g ? "<span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser · double clic sur le cadre : sa longueur</span>" : "") + "<span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
+  rcBandePhoto(a.g ? a : null);
+}
+/* une ligne retapée : le passage d'un sticker suit ses mots ; s'ils ont disparu, le sticker reste, sans cadre */
+function stRetroactif(k, pid, id, mm, Lf) {
+  const s = scCopie(k), r = (s.recopie || {}).stickersIA; if (!r || !Array.isArray(r.liste)) return;
+  r.liste.forEach(e => { if (e.l !== id || e.de == null || e.sansPlace) return; const a = mm[e.de], b = mm[e.a - 1]; if (a >= 0 && b >= 0 && b >= a) { e.de = a; e.a = b + 1; } else e.sansPlace = true; });
+  Object.keys(Lf.marquesBande || {}).filter(c => /^stk:/.test(c)).forEach(c => { const m = s.marques[Lf.marquesBande[c]], e = r.liste.find(x => "stk:" + x.st === c); if (!m || !e || e.sansPlace) return;
+    const q = rcPlaceSeg({ k, pid, id, l: Lf, g: { de: e.de, a: e.a, de2: e.de, a2: e.a, eleve: "x", corrige: "x" }, cle: c }); Object.assign(m, { x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, modifieLe: new Date().toISOString() }); });
+}
+/* une copie corrigée avec les stickers : ses réussites décidées ; elle est finie quand chaque sticker proposé par l'IA est décidé (la liste revenue entière) */
+function stCorrigeeAvec(k) { return !!Object.keys(scCopie(k).stickers || {}).length; }
+function stFinie(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !!(r && r.complet) && stArrets(k).every(a => stDecision(k, a.stId)); }
+/* le fichier de l'élève : ses stickers réussis sur sa copie, et sa grille ligne par ligne : ce qu'il a réussi, puis « Pas encore réussi » */
+function stEleve(k, ordre) {
+  const s = scCopie(k), D = s.stickers || {}; if (!Object.keys(D).length) return null;
+  const nt = stNoteCopie(k), det = {}; nt.det.forEach(x => { det[x.ligne] = x; });
+  const st = []; Object.keys(D).forEach(id => { const d = D[id]; if (d.v !== "o") return; const S = stTous().find(x => x.id === id); if (!S) return; const m = d.marque && s.marques[d.marque], l = stLigne(S.ligne);
+    st.push({ id, texte: S.texteEleve, ligne: S.ligne, crit: l ? l.crit : null, page: m ? ordre.indexOf(m.page) : -1, x0: m ? m.x0 : 0, y0: m ? m.y0 : 0, x1: m ? m.x1 : 0, y1: m ? m.y1 : 0 }); });
+  const grille = stSujetLignes().map(l => { const S = stDeLigne(l.id).filter(x => x.etat === "valide"), x = det[l.id] || {};
+    return { id: l.id, crit: l.crit, critNom: l.critNom, titre: l.titre, poids: l.poids, points: x.points || 0, niveau: x.niveau == null ? null : x.niveau, calcul: l.calcul,
+      reussis: S.filter(y => (D[y.id] || {}).v === "o").map(y => y.texteEleve), manquent: S.filter(y => !y.neCompte && (D[y.id] || {}).v !== "o").map(y => y.texteEleve) }; });
+  return { stickers: st, grille, note: stFinie(k) ? Math.round(nt.n * 100) / 100 : null, total: nt.tot };
+}
+/* la note et les critères d'une copie corrigée avec les stickers, pour le Bilan et les fichiers ; une copie corrigée avec les 51 questions garde les siens */
+function stNoteBilan(k) { const nt = stNoteCopie(k); return { n: nt.n, tot: nt.tot, ok: stFinie(k), det: nt.det }; }
+function stCritereBilan(k, c) { const nt = stNoteCopie(k), ok = stFinie(k); let n = 0, tot = 0; nt.det.forEach(x => { const l = stLigne(x.ligne); if (l && l.crit === c.id) { n += x.points; tot += Number(l.poids) || 0; } }); return { n, tot, ok }; }
+/* ＋ un sticker que l'IA n'a pas vu, posé depuis la bande (Paul 01/11 10:37 : « si j'ai des choses à rajouter ou enlever, je les rajoute directement dans la bande ») :
+   sur le mot où tu es (mot par mot), ou sur le passage de l'arrêt en cours ; un sticker de toute la lettre, sans cadre. Seuls les stickers validés se posent. */
+function stPlusOuvrir() {
+  const B = RC.bd; if (!B) return; const S = stActifs().filter(s => s.etat === "valide"); if (!S.length) { toast("Aucun sticker validé pour ce sujet : Réglages → la grille et ses stickers."); return; }
+  const D = scCopie(B.k).stickers || {}, L = stSujetLignes().filter(l => !l.calcul);
+  scModale(`<h3>＋ Un sticker que l’IA n’a pas vu</h3><p>${B.mot ? "Il se pose sur le mot où tu es." : "Il se pose sur le passage de l’arrêt en cours."} Un sticker de toute la lettre se pose sans cadre. Tu peux ensuite glisser son cadre, ou régler sa longueur (double clic).</p>`
+    + L.map(l => { const T = S.filter(s => s.ligne === l.id); if (!T.length) return ""; return `<div class="st-plus-l" style="--st-c:${SC_CRIT[l.crit] || "#6b7280"}"><b>${escapeHtml(l.titre)}</b>${T.map(s => { const d = (D[s.id] || {}).v; return `<button class="sc-btn" ${d === "o" ? "disabled" : ""} onclick="scModaleFermer();stPoserProf('${s.id}')" title="${d === "o" ? "Déjà posé sur cette copie." : "Poser ce sticker : il compte aussitôt."}"><b>${escapeHtml(s.num || "")}</b> ${escapeHtml(s.texteEleve)}${s.portee === "lettre" ? " <i>(toute la lettre)</i>" : ""}${d === "o" ? " ✓" : ""}</button>`; }).join("")}</div>`; }).join(""));
+}
+function stPoserProf(stId) {
+  const B = RC.bd; if (!B) return; const st = stTous().find(x => x.id === stId); if (!st) return; const k = B.k, s = scCopie(k); s.recopie = s.recopie || {};
+  const w = B.mot ? B.W[B.j] : null, a = !B.mot ? B.A[B.i] : null, base = st.portee === "lettre" ? null : w ? { pid: w.pid, id: w.id, de: w.m, a: w.m + 1 } : a && a.g && a.id ? { pid: a.pid, id: a.id, de: a.g.de, a: Math.max(a.g.a, a.g.de + 1) } : null;
+  const r = s.recopie.stickersIA = s.recopie.stickersIA || { le: new Date().toISOString(), complet: false, liste: [] }; r.liste = (r.liste || []).filter(e => e.st !== stId);
+  const P = base ? rcPosMots((rcLignesEcrites(k).find(x => x.id === base.id) || { l: { texte: "" } }).l.texte) : [], L = base && rcLignesEcrites(k).find(x => x.id === base.id);
+  r.liste.push(Object.assign({ st: stId, num: st.num, par: "prof" }, base && L ? { l: base.id, pid: base.pid, de: base.de, a: base.a, mots: L.l.texte.slice(P[base.de][0], P[base.a - 1][1]) } : { lettre: true }));
+  // la décision : « gardé », de ta main
+  const A = rcArretsBande(k), ar = A.find(x => x.st && x.stId === stId); if (ar) { stDeciderArret(k, ar, "o"); s.stickers[stId].de = "prof"; }
+  saveState(); B.A = rcArretsBande(k); if (!B.mot) { const i = B.A.findIndex(x => x.st && x.stId === stId); if (i >= 0) B.i = i; } B.note = "Sticker " + (st.num || "") + " posé de ta main."; rcBandeRendre();
+}
+/* les notes ne bougent jamais seules (règle ⑨, cadrage 10) : un changement qui changerait la note de copies déjà corrigées avec les stickers les liste, avant et après,
+   et ne s'applique qu'à ton « Appliquer » */
+function stNotesClasse() { const o = {}; ((state && state.classe) || []).map(eleveId).filter(k => stCorrigeeAvec(k)).forEach(k => { o[k] = stNoteCopie(k).n; }); return o; }
+function stSiNotesChangent(simuler, faire, quoi) {
+  const avant = stNotesClasse(), sauve = { s: SUJET.stickers, l: SUJET.stickersLignes };
+  SUJET.stickers = JSON.parse(JSON.stringify(SUJET.stickers || {})); SUJET.stickersLignes = JSON.parse(JSON.stringify(SUJET.stickersLignes || {}));
+  let apres; try { simuler(); apres = stNotesClasse(); } finally { SUJET.stickers = sauve.s; SUJET.stickersLignes = sauve.l; }
+  const D = Object.keys(avant).filter(k => Math.abs(avant[k] - (apres[k] || 0)) > 1e-9);
+  if (!D.length) { faire(); stRendre(); return; }
+  ST.enAttente = faire;
+  scModale(`<h3>${escapeHtml(quoi)} change la note de ${D.length} copie${D.length > 1 ? "s" : ""} déjà corrigée${D.length > 1 ? "s" : ""}</h3><table class="sc-table"><tr><th>Élève</th><th>Avant</th><th>Après</th></tr>${D.map(k => `<tr><td>${escapeHtml(nomEleveDe(k) || k)}</td><td>${stNb(avant[k])}</td><td>${stNb(apres[k])}</td></tr>`).join("")}</table><p>Rien ne change tant que tu n’appliques pas.</p>`
+    + `<button class="sc-btn" onclick="scModaleFermer();if(ST.enAttente)ST.enAttente();ST.enAttente=null;stRendre()" title="Appliquer le changement : ces notes changent.">Appliquer</button> <button class="sc-btn" onclick="scModaleFermer();ST.enAttente=null;stRendre()" title="Ne rien changer.">Annuler</button>`);
+}
 </script>
 </body>
 </html>

@@ -95,6 +95,7 @@ R('const n = state.classe.length; const finies = state.classe.filter(nm => progr
 R('" · " + finies + "/" + n + " · " + pct + " %";', '" · " + finies + "/" + n + " · " + pct + " %" + (nAbs ? " · " + nAbs + " absent" + (nAbs > 1 ? "s" : "") : "");')
 R('if (vue === "bilan") document.getElementById("ruVue_bilan").innerHTML = `<div class="rp-carte"><h2>Bilan de la correction</h2>${genererContenuStatsProf()}</div>`;', 'if (vue === "bilan") avBilanClasse();')   # n° 6
 R('if (vue === "fiches") ruRendreFiches();', 'if (vue === "fiches") avFiches();')   # n° 7
+R('if (vue === "reglages") ruRendreReglages();', 'if (vue === "reglages") stRendre();')   # 1.4.16 : Réglages → la grille et ses stickers (C14 cadrage 5)
 R('["clic sur un élève", "ouvrir sa copie"], ["« 📋 Classer le paquet »", "taper les initiales dans l’ordre des copies du bureau"], ["le tri", "ordre du paquet, alphabétique, par sujet, par progression"], ["⚠ sur une carte", "le compteur et le niveau d’orthographe ne s’accordent plus : « Garder » ou « Prendre »"], ["« ⌨️ Mode interrogatif »", "un point par écran : 1-2-3-4 le niveau puis le sous-niveau, C la citation, + / − le compteur, N puis E non évalué, Entrée suivant"]]',
   '["clic sur un élève", "ouvrir sa copie là où tu travailles : la recopie, ou l’écran des scans"], ["la carte", "les étapes de la copie : recopiée (avec la phrase qui m’a marqué), envoyée à l’IA, corrigé chargé, bande"], ["le tri", "ordre du paquet (donné par « 🔤 Les initiales » dans les scans), alphabétique, par sujet, par progression"], ["« 📄 Corriger sur les scans »", "l’écran des scans, la recopie et la bande"]]')
 R('bilan: { ou: "Données — Bilan", l: [["le tableau", "le temps passé par copie, par critère, par point ; les copies anormalement longues"]] }', 'bilan: { ou: "Données — Bilan", l: [["le tableau", "pour chaque élève : sa note, ses critères, ses fautes par type d’erreur ; en bas, la classe : la moyenne, la part de chaque type d’erreur, le critère le plus faible"]] }')
@@ -122,8 +123,8 @@ ecran = '''
 </div>
 <div id="scLoupe" class="sc-loupe" hidden></div>
 <div id="scModale" class="sc-modale" onclick="if(event.target===this)scModaleFermer()"><div class="sc-modale-c"></div></div>
-''' + ('' if PROD else MQ) + '''<style>''' + open('scan.css', encoding='utf8').read() + '\n' + open('recopie.css', encoding='utf8').read() + '''</style>
-<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + '\n' + open('recopie.js', encoding='utf8').read() + '\n' + open('avancement.js', encoding='utf8').read() + ('\n' + open('stickers.js', encoding='utf8').read() if os.environ.get('STICKERS') == '1' and not PROD else '') + '''</script>
+''' + ('' if PROD else MQ) + '''<style>''' + open('scan.css', encoding='utf8').read() + '\n' + open('recopie.css', encoding='utf8').read() + '\n' + open('grille-stickers.css', encoding='utf8').read() + '''</style>
+<script>''' + open('scan.js', encoding='utf8').read() + '\n' + open('eleve.js', encoding='utf8').read() + '\n' + open('recopie.js', encoding='utf8').read() + '\n' + open('avancement.js', encoding='utf8').read() + '\n' + open('grille-stickers.js', encoding='utf8').read() + '''</script>
 '''
 i = H.rindex('</body>'); H = H[:i] + ecran + H[i:]
 open(out, 'w', encoding='utf8').write(H)

@@ -18,10 +18,11 @@ function scEleveDonnees(k, test) {
       bareme: pt.bareme, place: pl, marques: ms.map(m => ({ page: ordre.indexOf(m.page), forme: m.forme, x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, seg: scSegments(m, SC.pages[m.page]) })) }); }));
   const etoile = M.filter(m => m.forme === "etoile").map(m => ({ page: ordre.indexOf(m.page), seg: scSegments(m, SC.pages[m.page]) }));
   const remarques = M.filter(m => m.forme === "remarque" && m.texte).map(m => ({ id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, texte: m.texte, place: place(m) }));
-  const nt = scNote(k);
+  const nt = scNote(k), stD = typeof stEleve === "function" ? stEleve(k, ordre) : null;   // [C14 1.4.16] une copie corrigée avec les stickers : ses stickers et sa grille ; sinon, comme avant
   return { titre: SUJET.titre || "Rédaction", nom: nomEleveDe(k) || k, aRefaire: SC.aRefaire || "", cle: k, red: RU.id, classe: RU.classe, hub: RU_BASE, test: !!(test || RU.test || window.__FAUX_HUB), correctionEleve: scCorrectionEleve(),
-    criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: nt.ok ? nt.n : null, total: nt.tot,
-    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: pts, etoile, remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL, types: scTypesEleve(),
+    criteres: SC.grille.criteres.filter(c => c.id !== "langue").map(c => ({ id: c.id, nom: c.nom })), note: stD ? stD.note : nt.ok ? nt.n : null, total: stD ? stD.total : nt.tot,
+    stickers: stD ? stD.stickers : null, grilleSt: stD ? stD.grille : null,
+    pages: ps.map(p => ({ w: p.w, h: p.h })), fautes, points: stD ? [] : pts, etoile, remarques: stD ? [] : remarques, coul: SC_CRIT, fond: SC_FOND, bord: SC_COUL, types: scTypesEleve(),
     niveaux: Object.keys(ECHELON_COULEUR).map(n => ECHELON_COULEUR[n].label) };
 }
 /* [C14 1.4.12] (Paul 31/10 14:03 : « les mots sont soulignés dans la couleur de leur erreur et ils ont le détail dans la marge » ; C14 226) : les couleurs et
@@ -42,6 +43,7 @@ function scEleveFichier(k, test) {
     const statique = ps.map((p, i) => { let mk = "";
       D.fautes.filter(f => f.page === i).forEach(f => { const T = D.types[f.t] || D.types._; mk += `<div class="mk f" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};border-top-color:${T.couleur}"></div>`; });
       D.etoile.filter(e => e.page === i).forEach(e => e.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${SC_CRIT.etoile}40"></div>`; }));
+      (D.stickers || []).filter(t => t.page === i).forEach(t => { mk += `<div class="mk e" style="left:${pc(t.x0 - 0.004)};top:${pc(t.y0 - 0.003)};width:${pc(t.x1 - t.x0 + 0.008)};height:${pc(t.y1 - t.y0 + 0.006)};border-color:${SC_CRIT[t.crit] || "#6b1a2a"}"></div>`; });
       D.points.forEach(pt => pt.marques.filter(m => m.page === i).forEach(m => { const c = SC_CRIT[pt.crit] || "#6b1a2a";
         if (m.forme === "surligne") m.seg.forEach(r => { mk += `<div class="mk s" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${c}40"></div>`; });
         else mk += `<div class="mk ${m.forme === "marge" ? "g" : "e"}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + c : "border-color:" + c}"></div>`; }));
@@ -96,6 +98,8 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
     D.etoile.forEach(e => e.seg.forEach(r => pgs[e.page] && pgs[e.page].insertAdjacentHTML("beforeend", `<div class="mk${vue && vue.t === "e" ? " on" : ""}" data-v="e" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${D.coul.etoile}40"></div>`)));
     D.fautes.forEach((f, i) => { const P = pgs[f.page]; if (!P) return;
       P.insertAdjacentHTML("beforeend", `<div class="mk f${on("f", i) ? " on" : ""}" data-v="f:${i}" style="left:${pc(f.x0)};top:${pc(f.y1)};width:${pc(f.x1 - f.x0)};--c:${Ty(f).couleur}"></div>`); });
+    (D.stickers || []).forEach((t, i) => { const P = pgs[t.page]; if (!P) return; const k = D.coul[t.crit] || "#6b1a2a";   // [C14 1.4.16] un sticker réussi : encadré dans la couleur de son critère ; un clic, son texte
+      P.insertAdjacentHTML("beforeend", `<div class="mk e st${on("s", i) ? " on" : ""}" data-v="s:${i}" title="${esc(t.texte)}" style="left:${pc(t.x0 - 0.004)};top:${pc(t.y0 - 0.003)};width:${pc(t.x1 - t.x0 + 0.008)};height:${pc(t.y1 - t.y0 + 0.006)};border-color:${k};background:${k}14"></div>`); });
     (D.remarques || []).forEach((r0, i) => { const P = pgs[r0.page]; if (!P) return; P.insertAdjacentHTML("beforeend", `<div class="mk e${on("r", i) ? " on" : ""}" data-v="r:${i}" style="left:${pc(r0.x0 - 0.004)};top:${pc(r0.y0 - 0.003)};width:${pc(r0.x1 - r0.x0 + 0.008)};height:${pc(r0.y1 - r0.y0 + 0.006)};border:2px dashed #6b1a2a"></div>`); });
     const pris = {}; D.points.forEach((p, i) => { const P = pgs[p.place.page]; if (!P) return; const k = D.coul[p.crit] || "#6b1a2a"; const cle = p.place.page + ":" + Math.round(p.place.y * 40); const dx = (pris[cle] = (pris[cle] || 0) + 1) - 1;
       p.marques.forEach(m => { const Q = pgs[m.page]; if (!Q) return;
@@ -107,6 +111,20 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
   const retour = `<button class="clair" id="gr">← Ta grille</button>`;
   function panneau() {
     const pan = $("#pan");
+    if (!vue && D.grilleSt) {   // [C14 1.4.16] la grille en stickers : chaque ligne, ses points ; un clic : ce que tu as réussi, puis « Pas encore réussi »
+      const crit = []; D.grilleSt.forEach((l, i) => { let c = crit.find(x => x.id === l.crit); if (!c) crit.push(c = { id: l.crit, nom: l.critNom, l: [] }); c.l.push({ l, i }); });
+      pan.innerHTML = `<div class="bloc"><h3>Ta note</h3><div class="note">${D.note != null ? String(D.note).replace(".", ",") + " / " + D.total : "…"}</div></div>
+        <div class="bloc"><h3>Ta grille</h3>${crit.map(c => `<div class="crit" style="color:${D.coul[c.id] || "#6b1a2a"}">${esc(c.nom)}</div>` + c.l.map(({ l, i }) => `<div class="ligne" data-l="${i}"><i style="background:${l.niveau != null ? D.bord[l.niveau] : "#d6cfc1"}"></i><span>${esc(l.titre)}${l.reussis.length || l.manquent.length ? `<br><span class="m">${"★".repeat(l.reussis.length)}${"☆".repeat(l.manquent.length)}</span>` : ""}</span><b>${String(l.points).replace(".", ",")} / ${String(l.poids).replace(".", ",")}</b></div>`).join("")).join("")}</div>
+        ${D.fautes.length ? `<div class="bloc"><h3>Tes fautes</h3><div>${D.fautes.length} soulignée${D.fautes.length > 1 ? "s" : ""} sur ta copie, chacune dans la couleur de son type d'erreur.</div></div>` : ""}`;
+      pan.querySelectorAll("[data-l]").forEach(e => e.addEventListener("click", () => { vue = { t: "l", i: +e.dataset.l }; copie(); panneau(); const l = D.grilleSt[vue.i], t = (D.stickers || []).find(x => x.ligne === l.id && x.page >= 0); if (t) montrer(t.page, t.y0); }));
+      return;
+    }
+    if (vue && vue.t === "l") { const l = D.grilleSt[vue.i];
+      pan.innerHTML = `<div class="bloc"><h3 style="color:${D.coul[l.crit] || "#6b1a2a"}">${esc(l.critNom)}</h3><div style="font-weight:700">${esc(l.titre)} · ${String(l.points).replace(".", ",")} / ${String(l.poids).replace(".", ",")}</div>
+        ${l.reussis.map(t => `<div style="font-size:17px;margin-top:6px">★ ${esc(t)}</div>`).join("")}${l.manquent.length ? `<div class="bloc" style="margin:10px 0 0;background:#fff"><h3>Pas encore réussi</h3>${l.manquent.map(t => `<div style="margin-top:4px">☆ ${esc(t)}</div>`).join("")}</div>` : ""}${retour}</div>`;
+      $("#gr").onclick = () => { vue = null; copie(); panneau(); }; return; }
+    if (vue && vue.t === "s") { const t = D.stickers[vue.i], l = (D.grilleSt || []).find(x => x.id === t.ligne) || {};
+      pan.innerHTML = `<div class="bloc"><h3 style="color:${D.coul[t.crit] || "#6b1a2a"}">${esc(l.titre || "")}</h3><div style="font-size:18px">★ ${esc(t.texte)}</div>${retour}</div>`; $("#gr").onclick = () => { vue = null; copie(); panneau(); }; return; }
     if (!vue) {
       const crit = []; D.points.forEach((p, i) => { let c = crit.find(x => x.id === p.crit); if (!c) crit.push(c = { id: p.crit, nom: p.critNom, l: [] }); c.l.push({ p, i }); });
       pan.innerHTML = `<div class="bloc"><h3>Ta note</h3><div class="note">${D.note != null ? String(D.note).replace(".", ",") + " / " + D.total : "…"}</div></div>
@@ -255,7 +273,7 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
 function scFichiersED() {
   if (!SC.copies.length) { toast("Aucune copie : charge d'abord ton paquet."); return; }
   const Q = scCopiesED(), nAbs = SC.copies.length - Q.length;   // [C14 1.4.13] un élève marqué absent n'a pas de fichier
-  const lignes = Q.map((k, i) => { const nt = scNote(k); const faits = scTousPoints().filter(pt => { const r = scCase(pt, k); return r && r.complet; }).length; const tous = scTousPoints().length;
+  const lignes = Q.map((k, i) => { const nt = typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k) ? stNoteBilan(k) : scNote(k); const faits = scTousPoints().filter(pt => { const r = scCase(pt, k); return r && r.complet; }).length; const tous = scTousPoints().length;
     return `<tr><td>${i + 1}</td><td>${escapeHtml(nomEleveDe(k) || k)}</td><td>${scPagesDe(k).length}</td><td>${nt.ok ? "<b>" + String(nt.n).replace(".", ",") + " / " + nt.tot + "</b>" : faits + " points sur " + tous}</td>
       <td><button class="sc-btn" onclick="scTesterEleve('${escapeAttr(k)}')" title="Ouvrir le fichier de cet élève dans un nouvel onglet, exactement comme il le verra, en mode test : sa copie, tes marques, sa grille et sa note, en lecture seule. Rien ne va au site.">🧪 Tester comme l'élève</button> <button class="sc-btn" onclick="scTelecharger('${escapeAttr(k)}')" title="Télécharger le fichier de cet élève, à déposer sur École Directe. Sa photo est dedans : elle ne passe pas par le site.">Télécharger</button></td></tr>`; }).join("");
   scModale(`<h3>Les fichiers École Directe</h3><p>Un fichier par élève : sa copie scannée et tes marques dedans. Tu le déposes sur École Directe ; la photo ne passe jamais par le site. L'élève y lit sa copie corrigée, sa grille et sa note : il clique tes marques, il n'écrit rien.</p>

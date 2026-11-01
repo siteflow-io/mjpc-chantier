@@ -3273,3 +3273,68 @@ MEMO
 01/11/2026 20:33
 
 MEMO
+
+## Tour 126 — 01/11/2026 20:40 → 01/11/2026 21:13
+
+**Paul (20:40) :** bon maintenant on en est où nous? j'ai l'impression que tu ne fais plus rien. c16 est en service
+
+**Claude (20:41) :**
+
+À jouer : rien de neuf (la rédaction 1.4.17-RU est en ligne depuis 19:02) · en cours : 565, puis 546 · ouvert : 409, 442
+
+566. Où on en est. La 1.4.17-RU est en ligne depuis 19:02. Depuis 19:16, je n'ai fait que répondre à tes deux questions. Le banc mobile de 546 n'a donc pas avancé, alors que tu m'avais dit de continuer : c'est ma faute.
+
+567. Tu n'as pas commenté 565 : je le tiens pour acquis. Je code maintenant, dans cet ordre. D'abord la garde de l'export et la consigne des copies déjà corrigées (565). Ensuite le banc mobile de 546, jusqu'à 0 défaut. Puis une 1.4.18-RU qui porte les deux, avec le banc complet et ton vrai site vérifié en lecture seule. Je te demanderai alors le promeus, captures à l'appui.
+
+568. C16 a mis en ligne la 8.77.1-⑩ à 20:23 : elle ne touche qu'à index.html, pas à la rédaction. Je relis le sas et le registre avant chaque écriture.
+
+À tester : rien pour l'instant.
+
+01/11/2026 20:41
+
+MEMO
+
+**Paul (20:54, pendant le travail) :** J'ai une question: c'est pénible d'attendre la réponse de l'IA à chaque export. Est ce que je peux tout exporter à la suite en une fois puis tout importer ensuite à la suite en une fois? 
+enfin, les fichiers json doivent être nommés car on ne les distingue pas. Nommés par leurs contenus
+
+**Claude (20:56) :**
+
+À jouer : rien de neuf · en cours : 565 et 546 au banc · ouvert : 409, 442, 571
+
+569. Aujourd'hui, non : n'exporte pas deux fois à la suite. Un second export avant d'avoir chargé le retour renvoie les mêmes huit copies. Les copies envoyées restent « à corriger » tant que leur retour n'est pas chargé. Les retours, eux, se chargent déjà dans n'importe quel ordre : chaque ligne porte son identité.
+
+570. Aujourd'hui, chaque export s'appelle « recopies-pour-l-IA-2026-11-01.json ». Rien ne les distingue, tu as raison.
+
+571. Je propose deux changements. D'abord, chaque clic sur « ⇪ Exporter pour l'IA » donne le paquet suivant : huit copies pas encore envoyées, jamais celles qui attendent leur retour. Tu exportes tout à la suite, puis tu charges les retours à la suite, dans l'ordre que tu veux. Quand toutes les copies attendent leur retour, le bouton le dit, et un geste « Renvoyer les copies en attente » sert si un retour s'est perdu. Ensuite, chaque fichier est nommé par son contenu, par exemple « Redaction-1_3e-Franklin_envoi-2-sur-4_8-copies_2026-11-01_20h55.json ». La consigne demande à l'IA de rendre un fichier qui porte le même nom, précédé de « corrige_ ». Je l'ajoute à la 1.4.18, avec 565 et 546 ?
+
+À tester : rien pour l'instant ; pour ce soir, un export, son retour, puis le suivant.
+
+01/11/2026 20:56
+
+MEMO
+
+**Fait (20:41 → 21:13).** 565 codé (`stGardeExport` ; `rcExportIA` refuse et le dit ; l'export grisé, sa raison en tête de la ligne du flux ; la consigne des copies « seulementStickers » demande aussi leurs remarques). Le banc mobile de 546 : la phase « marge chargée » prend une autre copie et ses quatre premières lignes ; elle a trouvé un défaut en ligne dans la 1.4.17 (une copie sans aucun sticker gardé reçoit l'ancien fichier de l'élève, sans remarques), corrigé (`stEleve`). Le banc refait pour la garde : la grille des stickers se charge et se valide avant la recopie (`eprouverStickersReglages`, trois vérifications de la garde) ; les retours d'IA du banc rendent leur liste de réussites ; une liste coupée repart pour ses seuls stickers. Banc complet 173/0. Sas : c14-poignees `f54eae5c`, candidate `7289c21b` (md5 `a1ef513b…`, 892 358 o). Vrai site en lecture seule : 30 copies, 675 marques, 51 pages identiques à la 1.4.17, la carte juste, 0 erreur. La copie de [l'élève] repassée (en privé) : l'export attend, puis 0 chevauchement (étoiles, cadres, marge) sur ordinateur et téléphone. Registre (production `ebfe9b8`).
+
+**Claude (21:13) :**
+
+À jouer : rien de neuf (la 1.4.17-RU est en ligne) · en cours : rien · ouvert : 409, 442, 571, 578
+
+572. 565 et 546 sont faits dans la candidate 1.4.18-RU, avec un défaut trouvé en chemin par le banc (575).
+
+573. La garde (capture 1). Tant que ta grille de stickers n'est pas chargée et validée en entier, ou que l'énoncé manque, « ⇪ Exporter pour l'IA » est grisé. La ligne verte d'en haut dit ce qui manque et où le faire ; un clic ne télécharge rien et le redit. La consigne demande aussi les remarques des copies déjà corrigées : la phrase que tu ajoutes à la main ce soir (563) ne sera plus nécessaire.
+
+574. La marge au téléphone (captures 2 et 3) : chez [l'élève], plus aucun chevauchement, contre 14 avant. Les pastilles et les numéros ont la hauteur d'une ligne de la copie ; le 6 se range à gauche du 5 ; la photo se décale de 6 points. Sur ordinateur, rien ne change (capture 5).
+
+575. Le défaut trouvé par le banc est en ligne dans la 1.4.17. Une copie qui n'a aucun sticker gardé, parce que l'IA n'en a trouvé aucun et que tu n'en as posé aucun, reçoit l'ancien fichier de l'élève : pas de grille en stickers, pas de remarques. La 1.4.18 lui garde sa grille et ses remarques. D'ici la mise en ligne, n'envoie pas sur ED le fichier d'une telle copie.
+
+576. Les vérifications. Le banc complet passe 173 vérifications, 0 défaut : la garde de l'export ; une marge chargée au téléphone (8 pastilles et numéros sur 4 lignes voisines, 0 chevauchement) ; une copie déjà corrigée qui repart pour ses seuls stickers. Sur ton vrai site, en lecture seule : 30 copies, 675 marques et 51 pages recopiées identiques à la 1.4.17, la carte juste, 0 erreur.
+
+577. 571 (tout exporter à la suite, les fichiers nommés par leur contenu) n'est pas dedans : il attend ton mot.
+
+578. Promeus pour la 1.4.18-RU ?
+
+À tester : rien n'est en ligne. Regarde les captures 1 et 3.
+
+01/11/2026 21:13
+
+MEMO

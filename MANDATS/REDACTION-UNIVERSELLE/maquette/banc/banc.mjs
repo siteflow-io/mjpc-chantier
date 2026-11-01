@@ -1,6 +1,7 @@
 import { eprouverRecopie } from "./recopie.mjs";
 import { eprouverAvancement } from "./avancement.mjs";
 import { eprouverAccueil, eprouverAutreOrdinateur } from "./accueil.mjs";
+import { eprouverAbsent } from "./absent.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -246,6 +247,7 @@ await eprouverAvancement({ pg, verif, cap, att });
 await eprouverRecopie({ pg, verif, cap, att, dir: DIR, out: OUT });
 await eprouverAccueil({ pg, verif, cap, att });
 await eprouverAutreOrdinateur({ pg, verif, cap, att, dir: DIR });
+await eprouverAbsent({ pg, verif, cap, att });
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }
 console.log(ok.join('\n')); if (err.length) console.log('ERREURS\n' + err.join('\n'));

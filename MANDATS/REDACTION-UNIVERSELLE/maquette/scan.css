@@ -4,6 +4,8 @@ body.sc-ouvert{overflow:hidden}
 .sc-ecran.hidden{display:none}
 .sc-haut{display:flex;align-items:center;gap:8px;padding:7px 58px 7px 12px;background:linear-gradient(#c08a4a,#a67a44);color:#fff;flex-wrap:wrap}
 .sc-haut>b{font:600 19px Georgia,serif;margin-right:6px}.sc-esp{flex:1}
+/* [C14 1.4.13] sous 1450 points de large, le haut laisse sa place au témoin « Enregistré au site » de l'app, à droite */
+@media (max-width:1450px){.sc-haut{padding-right:200px}}
 .sc-passes{display:flex;gap:6px;flex-wrap:wrap}
 .sc-passe{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.14);color:#fff;border-radius:9px;padding:3px 9px 3px 3px;font:14px system-ui;cursor:pointer}
 .sc-passe i{font-style:normal;width:21px;height:21px;border-radius:50%;background:var(--c);color:#fff;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center}
@@ -99,3 +101,8 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .av-flux{display:flex;flex-wrap:wrap;gap:3px;margin:4px 0 2px}.av-et{font:600 11px system-ui;color:#9a8b78;background:#f3eee4;border-radius:5px;padding:2px 5px}.av-et.ok{color:#2f6b25;background:#e3f0dc}
 .av-tab{overflow-x:auto}.av-bilan .rp-table{width:100%}.av-n{text-align:center;white-space:nowrap}.av-m{color:#9a8b78;font-size:12px}.av-ty{display:inline-block;font:700 11px system-ui;border:1.5px solid;border-radius:6px;padding:2px 5px}.av-classe td{border-top:2px solid #6b1a2a;background:#fdfbf7}.av-faible{background:#fde8e8!important}
 .av-dnb{color:#c54040;font-weight:700}
+
+/* [C14 1.4.13] l'élève absent, comme en dictée : sa carte grisée en pointillé, « ABS » ; le menu du clic droit */
+.eleve-card.absent{opacity:.5;border-style:dashed;cursor:default}.eleve-card.absent:hover{box-shadow:none;border-color:var(--gris)}.av-abs{font:700 12px system-ui;color:#7c3aed;letter-spacing:.04em}.av-ligne-abs td{color:#9a8b78}
+.av-menu-fond{position:fixed;inset:0;z-index:1000}.av-menu{position:absolute;background:#fff;border:1px solid #ccc;border-radius:10px;padding:6px;box-shadow:0 6px 24px rgba(0,0,0,.25);min-width:220px;display:flex;flex-direction:column;font:14px system-ui}
+.av-menu>b{padding:6px 10px;font-size:13px;color:#555;border-bottom:1px solid #eee}.av-menu>button{background:none;border:0;text-align:left;padding:8px 10px;border-radius:6px;cursor:pointer;font:inherit}.av-menu>button:hover{background:#f3eee4}

@@ -122,6 +122,7 @@ function rcInterface() {
     '<button id="rcImportIA" class="sc-btn" title="Coller ou choisir le retour de l’IA. L’app vérifie que toutes les lignes correspondent avant de rien changer.">⇩ Charger le corrigé de l’IA</button><button id="rcFluxOuvrir" class="sc-btn" title="Le flux de la classe : pour chaque copie, ce qui est recopié, envoyé à l’IA, chargé, et où en est la bande, avec l’heure de chaque étape.">📋 Le flux</button><span id="rcIAEtat" class="rc-ia-etat"></span>',
     '<button id="rcPhraseOuvrir" class="sc-btn" title="La fin de la recopie de cette copie : surligne la phrase qui t’a marqué (clic sur son premier mot, puis sur son dernier), ou coche « Pas de phrase ». Elle passe en or sur la copie de l’élève. Le flux ne coche « recopiée » qu’après.">★ La phrase qui m’a marqué</button>',
     '<button id="rcBandeOuvrir" class="sc-btn" title="La bande : elle s’arrête à chaque faute proposée par le corrigé de l’IA. Entrée ou Espace : c’est une faute ; N : non. Échap : revenir à la recopie.">▶ La bande</button>',
+    '<button id="rcRemplacer" class="sc-btn" title="Remplacer la photo de cette page par une meilleure (une photo, ou un PDF d’une page). La feuille garde son identité : ta recopie reste et se recale sur la nouvelle photo, les cadres de la bande se replacent.">📷 Remplacer la photo</button>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
     '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand est alignée sur la feuille.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
@@ -154,6 +155,7 @@ function rcInterface() {
   e.querySelector("#rcIAFermer").onclick = rcIAFermer;
   /* [C14 1.4.12] (exigences du 29/10 : « max 30 clics par copie » ; « mesurer le gain ») : le temps de recopie, le temps de bande et les gestes de chaque copie, comptés seuls */
   e.addEventListener("pointerdown", () => rcCompter("clic"), true); e.addEventListener("keydown", ev => rcCompter(ev.target && ev.target.classList && ev.target.classList.contains("rc-saisie") ? "frappe" : "touche"), true); e.addEventListener("input", () => rcCompter("frappe"), true);
+  e.querySelector("#rcRemplacer").onclick = () => { if (RC.page) { rcGarder(); scRemplacerPage(RC.page); } };
   e.querySelector("#rcFluxOuvrir").onclick = rcFluxOuvrir; e.querySelector("#rcFluxFermer").onclick = rcFluxFermer;
   e.querySelector("#rcPhraseOuvrir").onclick = rcPhraseOuvrir; e.querySelector("#rcPhraseFermer").onclick = rcPhraseFermer; e.querySelector("#rcPhraseOui").onclick = rcPhraseValider;
   e.querySelector("#rcPhraseAucune").onchange = ev => { if (ev.target.checked) rcPhraseAucune(); };
@@ -221,6 +223,8 @@ function rcOuvrir(reprendre) {
   if (!SC.ouvert || SC.attrib || !scK()) { toast("Donne d'abord chaque page à son élève."); return; }
   if (SC.champ) scChampFermer(true);
   if (reprendre) SC.actif = Date.now(); else scChrono();   // [C14 dette ⓑ] la reprise à l'ouverture n'est pas un geste : elle ne compte pas de temps, la copie n'est pas réécrite
+  const tr0 = state.scanRecopie;   // [C14 1.4.12.1] jamais la recopie d'un autre élève : la copie demandée n'a pas de page, la recopie ne s'ouvre pas
+  if (reprendre && tr0 && tr0.ouverte && tr0.copie && !SC.copies.includes(tr0.copie)) { state.scanRecopie = Object.assign({}, tr0, { ouverte: false }); toast((nomEleveDe(tr0.copie) || "Cet élève") + " n'a pas de page dans le paquet : la recopie ne s'ouvre pas sur une autre copie."); return; }
   RC.ouvert = true; RC.documents = {}; RC.annule = []; RC.zoom = 1; state.scanDernier = "recopie";   // [C14 1.4.12] là où tu travailles : la carte d'un élève y rouvre sa copie
   const trace = state.scanRecopie;
   const dernier = trace && (reprendre ? trace.ouverte : trace.copie === scK()) ? trace : null;
@@ -814,13 +818,16 @@ function rcPhraseRendre() {
   const ok = P.a >= 0 && P.b >= 0, b = RC.ui.querySelector("#rcPhraseOui"); b.disabled = !ok; b.title = ok ? "Garder cette phrase : elle passe en or sur la copie de l’élève, et la recopie de cette copie est finie." : "Choisis d’abord le premier et le dernier mot de la phrase.";
 }
 function rcPhraseRetirer(k) { const s = scCopie(k); Object.values(s.marques).filter(m => m.forme === "etoile" && m.recopie).forEach(m => scEffacer(m.id)); }
+function rcPhrasePoser(k, a, b, W) {
+  rcPhraseRetirer(k); const parPage = {};
+  W.slice(a, b + 1).forEach(w => { const L = parPage[w.pid] = parPage[w.pid] || {}; (L[w.id] = L[w.id] || []).push(w); });
+  Object.keys(parPage).forEach(pid => { const segs = Object.values(parPage[pid]).map(ws => { const w0 = ws[0], w1 = ws[ws.length - 1], q = rcPlaceSeg({ k, pid, id: w0.id, l: w0.l, g: { de: w0.m, a: w1.m + 1, de2: w0.m, a2: w1.m + 1, eleve: "x", corrige: "x" }, cle: "phrase" }); return [q.x0, q.y0, q.x1, q.y1]; });
+    scPoser({ page: pid, forme: "etoile", sens: "lieu", passe: "langue", point: "etoile", q: null, x0: Math.min(...segs.map(s => s[0])), y0: Math.min(...segs.map(s => s[1])), x1: Math.max(...segs.map(s => s[2])), y1: Math.max(...segs.map(s => s[3])), segs, bonne: null, recopie: true, l0: null, l1: null }); });
+}
+function rcPhraseReposer(k) { const ph = (scCopie(k).recopie || {}).phrase, W = rcMotsCopie(k, []), i = q => W.findIndex(w => w.id === q.id && w.m === q.m), a = i(ph.debut), b = i(ph.fin); if (a >= 0 && b >= 0) rcPhrasePoser(k, Math.min(a, b), Math.max(a, b), W); }
 function rcPhraseValider() {
   const P = RC.phrase; if (!P || P.a < 0 || P.b < 0) return; const k = P.k, a = Math.min(P.a, P.b), b = Math.max(P.a, P.b), W = P.W.slice(a, b + 1);
-  rcPhraseRetirer(k); const parPage = {};
-  W.forEach(w => { const L = parPage[w.pid] = parPage[w.pid] || {}; (L[w.id] = L[w.id] || []).push(w); });
-  Object.keys(parPage).forEach(pid => { const segs = Object.values(parPage[pid]).map(ws => { const w0 = ws[0], w1 = ws[ws.length - 1], q = rcPlaceSeg({ k, pid, id: w0.id, l: w0.l, g: { de: w0.m, a: w1.m + 1, de2: w0.m, a2: w1.m + 1, eleve: "x", corrige: "x" }, cle: "phrase" }); return [q.x0, q.y0, q.x1, q.y1]; });
-    const m = { page: pid, forme: "etoile", sens: "lieu", passe: "langue", point: "etoile", q: null, x0: Math.min(...segs.map(s => s[0])), y0: Math.min(...segs.map(s => s[1])), x1: Math.max(...segs.map(s => s[2])), y1: Math.max(...segs.map(s => s[3])), segs, bonne: null, recopie: true, l0: null, l1: null };
-    scPoser(m); });
+  rcPhrasePoser(k, a, b, P.W);
   const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), debut: { id: P.W[a].id, m: P.W[a].m }, fin: { id: P.W[b].id, m: P.W[b].m }, texte: W.map(w => w.g.eleve).join(" ") };
   saveState(); rcPhraseFermer(); rcEtatIA(); toast("La phrase qui t’a marqué est gardée : la recopie de cette copie est finie.");
 }
@@ -1044,6 +1051,27 @@ function rcRetroactif(k, pid, id) {
   Object.keys(mb).forEach(c => { const m = s.marques[mb[c]]; if (!m) return; const mo = /^mot-(\d+)$/.exec(c), g = mo ? (w => ({ de: w, a: w + 1, de2: w, a2: w + 1, eleve: nouveau.slice(P[w][0], P[w][1]), corrige: nouveau.slice(P[w][0], P[w][1]) }))(+mo[1]) : nouv.find(x => rcCle(x) === c);
     if (!g || (mo && !P[+mo[1]])) return; const q = rcPlaceSeg({ k, pid, id, l: Lf, g, cle: c }); Object.assign(m, { x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, modifieLe: new Date().toISOString() }); if (m.bande) { m.bande.cle = c; m.bande.eleve = g.eleve; } });
   scNumeroter(k); saveState(); return true;
+}
+/* [C14 1.4.13] la photo d'une page remplacée (scRemplacerAvec) : les lignes de ta recopie se posent, dans l'ordre, sur les lignes trouvées dans la nouvelle photo ;
+   leurs identités, leurs textes, le corrigé de l'IA et tes réponses ne bougent pas ; les cadres glissés sur l'ancienne photo sont oubliés ; les marques de la bande et la phrase se replacent */
+function rcRecalerPage(k, pid) {
+  const s = scCopie(k), st = s.recopie && s.recopie.pages && s.recopie.pages[pid]; if (!st) return "";
+  const doc = (RC.copie === k && RC.documents[pid]) || st, im = SC.imgs[pid]; if (!im || !im.el.naturalWidth) return "";
+  const cv = document.createElement("canvas"); cv.width = im.w; cv.height = im.h; cv.getContext("2d").drawImage(im.el, 0, 0);
+  const tr = scLignes(cv, { recopie: true }), p = SC.pages[pid], L = ((tr.fiable !== false ? tr.l : (p.lignes && p.lignes.l)) || []).filter(l => l.ecrite !== false), marge = rcMargeRouge(cv), bord = rcBordDroit(cv);
+  doc.marge = marge ? { xh: rcBorne(marge(0), 0.01, 0.6), xb: rcBorne(marge(1), 0.01, 0.6) } : { xh: 0.15, xb: 0.15, absente: true };
+  const pose = (l, n) => { const yl = rcBorne(n.y, 0, 1); Object.assign(l, { x0: marge ? rcBorne(marge(yl) - 0.008, 0, 0.97) : rcBorne(n.x0, 0, 0.97), x1: bord || rcBorne(n.x1, 0.03, 1), y0: yl, y1: yl }); delete l.recale; delete l.places; delete l.placesApp; };
+  const ids = rcListe(doc.ordre).filter(id => doc.lignes[id] && !doc.lignes[id].retiree).sort((a, b) => (doc.lignes[a].y0 + doc.lignes[a].y1) - (doc.lignes[b].y0 + doc.lignes[b].y1));
+  ids.forEach((id, i) => { if (L[i]) pose(doc.lignes[id], L[i]); });
+  for (let i = ids.length; i < L.length; i++) { const id = scId("ligne"); doc.lignes[id] = { id, texte: "" }; pose(doc.lignes[id], L[i]); doc.ordre = rcListe(doc.ordre).concat(id); }
+  doc.modifieLe = new Date().toISOString(); s.recopie.pages[pid] = JSON.parse(JSON.stringify(doc)); if (RC.documents) delete RC.documents[pid]; RC.encre = {};
+  rcReplacerBande(k);
+  /* les fautes oubliées par l'IA (clé « mot-n ») et la phrase qui m'a marqué se replacent sur leurs mots */
+  rcLignesEcrites(k).filter(x => x.pid === pid).forEach(x => Object.keys(x.l.marquesBande || {}).filter(c => /^mot-\d+$/.test(c)).forEach(c => { const m = s.marques[x.l.marquesBande[c]], w = +c.slice(4), P = rcPosMots(x.l.texte); if (!m || !P[w]) return;
+    const mot = x.l.texte.slice(P[w][0], P[w][1]), q = rcPlaceSeg({ k, pid, id: x.id, l: x.l, g: { de: w, a: w + 1, de2: w, a2: w + 1, eleve: mot, corrige: mot }, cle: c }); Object.assign(m, { x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, modifieLe: new Date().toISOString() }); }));
+  if (s.recopie.phrase && s.recopie.phrase.debut) rcPhraseReposer(k);
+  scNumeroter(k); saveState();
+  return " ; " + (ids.length <= L.length ? "les " + ids.length + " lignes de ta recopie recalées sur la nouvelle photo" : ids.length + " lignes recopiées, " + L.length + " trouvées sur la nouvelle photo : vérifie les poignées vertes des dernières");
 }
 function rcLigneMaj(k, pid, id, fn) { const pgs = (scCopie(k).recopie || {}).pages || {}; [pgs[pid] && pgs[pid].lignes[id], RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]].forEach(l => { if (l) fn(l); }); }
 function rcNoteTexte(k) { const r = scNote(k); return r.ok ? (Math.round(r.n * 10) / 10) + " / " + r.tot : "incomplète"; }

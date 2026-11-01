@@ -43,15 +43,45 @@ function avGrille() {   // la grille à cases du sujet et ses passes, comme les 
 }
 function avFlux(k) { if (!avPret() || typeof rcFluxCopie !== "function") return null; try { return rcFluxCopie(k); } catch (e) { return null; } }
 function avCarteFlux(k) {
-  avPagesCharger(); const f = avFlux(k); if (!f || (!f.lignes && !f.arrets)) return "";
+  avPagesCharger(); if (avAbsent(k)) return ""; if (avPret() && !scPagesDe(k).length) return '<div class="av-flux"><span class="av-et" title="Aucune page du paquet n’est à son nom : sa carte n’ouvre jamais la copie d’un autre élève. Clic sur sa carte : « 📄 Charger sa copie ».">pas de copie dans le paquet</span></div>';
+  const f = avFlux(k); if (!f || (!f.lignes && !f.arrets)) return "";
   const pl = (n, m) => n + " " + m + (n > 1 ? "s" : ""), e = (fait, txt, tip) => '<span class="av-et' + (fait ? " ok" : "") + '" title="' + escapeAttr(tip) + '">' + (fait ? "✓ " : "") + escapeHtml(txt) + "</span>";
   return '<div class="av-flux">' + e(f.finie, "recopiée", f.lignes ? pl(f.lignes, "ligne") + (f.finie ? ", avec la phrase qui m’a marqué : la recopie est finie." : " ; la recopie se finit avec « ★ La phrase qui m’a marqué ».") : "Pas encore recopiée.")
     + e(!!(f.envoi || f.charge), "envoyée", f.envoi ? "Envoi " + f.envoi.n + " à l’IA, " + rcHeure(f.envoi.le) + "." : f.charge ? "Envoyée avant le flux." : "Pas encore envoyée à l’IA.")
     + e(!!f.charge, "chargée", f.charge ? "Corrigé de l’IA chargé " + rcHeure(f.charge.le) + " : " + pl(f.charge.fautes, "faute") + " proposée" + (f.charge.fautes > 1 ? "s" : "") + "." : "Le corrigé de l’IA n’est pas encore chargé.")
     + e(f.fini, f.arrets ? "bande " + f.decides + "/" + f.arrets : "bande", f.arrets ? f.decides + " arrêt" + (f.decides > 1 ? "s" : "") + " décidé" + (f.decides > 1 ? "s" : "") + " sur " + f.arrets + (f.fini ? " : la bande est finie." : ".") : "La bande attend le corrigé de l’IA.") + "</div>";
 }
-function avCarteEtat(k, pct, suivi) { const f = avFlux(k); if (f && f.fini) return "Corrigé"; if ((f && (f.lignes || f.arrets)) || suivi || pct > 0) return pct === 100 ? "Corrigé" : "En cours"; return "Non commencé"; }
-function avOuvrirCarte(k) {   // la copie s'ouvre là où tu travaillais quand tu as quitté l'écran des scans
+function avCarteEtat(k, pct, suivi) { if (avAbsent(k)) return '<b class="av-abs" title="Marqué absent : il ne compte ni dans le compteur, ni dans le Bilan, ni dans les fichiers École Directe. Clic droit sur sa carte : le marquer présent.">ABS</b>'; const f = avFlux(k); if (f && f.fini) return "Corrigé"; if ((f && (f.lignes || f.arrets)) || suivi || pct > 0) return pct === 100 ? "Corrigé" : "En cours"; return "Non commencé"; }
+/* [C14 1.4.12.1] (Paul 01/11 08:47 : « quand je clique sur la carte d'un élève sans copie, ça affiche la copie et l'espace de correction d'un autre élève ») :
+   la carte n'ouvre que la copie de son élève. Sans page à son nom dans le paquet, rien ne s'ouvre, et la fenêtre le dit ; les pages se lisent d'abord si besoin. */
+function avOuvrirCarte(k) {
+  if (avAbsent(k)) { toast((nomEleveDe(k) || k) + " est marqué absent : clic droit sur sa carte pour le marquer présent."); return; }
+  if (!avPret()) { ruLire(scChemin(["pages"])).then(pg => { if (!SC.ouvert) { SC.pages = pg || {}; AV.red = RU.id; } avOuvrirCarte(k); }, () => toast("⚠ Le site ne répond pas : les pages du paquet n'ont pas pu être lues.")); return; }
+  if (!scPagesDe(k).length) { avSansCopie(k); return; }
+  avOuvrirCopie(k);
+}
+function avSansCopie(k) {
+  const nom = nomEleveDe(k) || k;
+  scModale(`<h3>${escapeHtml(nom)} n'a pas de copie dans le paquet</h3><p>Aucune page n'est à son nom : rien ne s'ouvre, pour ne jamais te montrer la copie d'un autre élève.</p><p>Si sa copie est sur ta clé : ouvre « 📄 Corriger sur les scans », charge-la, puis donne-lui ses pages avec « 🔤 Les initiales ». S'il n'a pas fait la rédaction : clic droit sur sa carte, « ❌ Marquer absent ».</p>
+    <button class="sc-btn" id="avChargerSa" onclick="avChargerSaCopie('${escapeAttr(k)}')" title="Choisir sur ta clé la photo ou le PDF de la copie de ${escapeAttr(nom)} : ses pages lui sont données d'office, sans passer par les initiales, puis sa copie s'ouvre. Une page déjà à un autre élève lui reste.">📄 Charger sa copie</button>`);
+}
+/* [C14 1.4.13] (Paul 01/11 09:17 : « Comment charger une copie d'élève seule, après avoir chargé un paquet? ») : la copie d'un seul élève, depuis sa carte */
+function avChargerSaCopie(k) {
+  const inp = document.createElement("input"); inp.type = "file"; inp.multiple = true; inp.accept = "application/pdf,.pdf,image/*";
+  inp.onchange = () => { const fs = Array.from(inp.files || []); if (!fs.length) return; scModaleFermer(); const nom = nomEleveDe(k) || k;
+    const charger = () => scChargerFichiers(fs, { pour: k }).then(() => { const C = SC.chargement || { donnees: 0, autres: [] };
+      const autres = C.autres.length ? " · " + C.autres.length + " page" + (C.autres.length > 1 ? "s" : "") + " déjà à " + Array.from(new Set(C.autres)).map(e => nomEleveDe(e) || e).join(", ") + " : elle" + (C.autres.length > 1 ? "s" : "") + " lui reste" + (C.autres.length > 1 ? "nt" : "") : "";
+      if (!scPagesDe(k).length) { scModale(`<h3>Aucune page n'a été donnée à ${escapeHtml(nom)}</h3><p>${C.autres.length ? "Les pages de ce fichier sont déjà à un autre élève : elles lui restent." : "Ce fichier n'a pas de page lisible, ou ses pages sont blanches."}</p>`); scRendre(); return; }
+      SC.attrib = false; SC.ic = SC.copies.indexOf(k); state.scanCurseur = Object.assign({}, state.scanCurseur || {}, { copie: k }); saveState();
+      if (state.scanDernier === "recopie" && typeof rcOuvrir === "function") rcOuvrir(); else scRendre();
+      toast("Copie de " + nom + " chargée : " + C.donnees + " page" + (C.donnees > 1 ? "s" : "") + ", à " + nom + " d'office" + autres + "."); });
+    if (SC.ouvert) { if (typeof RC !== "undefined" && RC.ouvert) rcFermer(true); charger(); return; }
+    state.scanRecopie = Object.assign({}, state.scanRecopie || {}, { ouverte: false }); scOuvrir(); const t0 = Date.now();
+    (function attendre() { if (SC.ouvert) charger(); else if (Date.now() - t0 < 10000) setTimeout(attendre, 120); else toast("L’écran des scans ne s’ouvre pas : ouvre-le avec « 📄 Corriger sur les scans », puis « 📄 Charger des copies »."); })();
+  };
+  inp.click();
+}
+function avOuvrirCopie(k) {   // la copie s'ouvre là où tu travaillais quand tu as quitté l'écran des scans
   const rec = state.scanDernier === "recopie", r = ((((state.copies[k] || {}).scan || {}).recopie) || {}).reprise || {};
   state.scanCurseur = Object.assign({}, state.scanCurseur || {}, { copie: k });
   state.scanRecopie = rec ? { ouverte: true, copie: k, page: r.page || null, ligne: r.ligne || null } : Object.assign({}, state.scanRecopie || {}, { ouverte: false });
@@ -67,15 +97,16 @@ function avBilanClasse() {
   const al = (SUJET && SUJET.fiche && SUJET.fiche.alerte) || {}, lg = SC.grille.criteres.find(c => c.id === "langue"), pO = lg && lg.points.find(p => p.calcul === "fautes"), seuil = al.echelon != null ? al.echelon : 0;
   const dnb = k => { if (!pO) return null; const r = scCase(pO, k); return r && r.complet ? r.c.niveau === seuil : null; };
   const C = SC.grille.criteres, nb = x => String(Math.round(x * 10) / 10).replace(".", ","), T = Object.assign({}, RC_TYPES), ty = AV_ORDRE.filter(c => T[c]);
-  const L = state.classe.map(nm => { const k = eleveId(nm), f = avFlux(k) || {}, nt = scNote(k), cr = C.map(c => avCritere(k, c)), fa = avFautes(k); return { nm, k, f, nt, cr, fa, nf: Object.values(fa).reduce((a, b) => a + b, 0), dnb: dnb(k) }; });
-  const finies = L.filter(x => x.nt.ok), tot = {}; L.forEach(x => Object.keys(x.fa).forEach(c => { tot[c] = (tot[c] || 0) + x.fa[c]; })); const totF = Object.values(tot).reduce((a, b) => a + b, 0);
-  const moyC = C.map((c, i) => { const ok = L.filter(x => x.cr[i].ok); return ok.length ? ok.reduce((a, x) => a + x.cr[i].n / (x.cr[i].tot || 1), 0) / ok.length : null; });
+  const L = state.classe.map(nm => { const k = eleveId(nm), f = avFlux(k) || {}, nt = scNote(k), cr = C.map(c => avCritere(k, c)), fa = avFautes(k); return { nm, k, f, nt, cr, fa, nf: Object.values(fa).reduce((a, b) => a + b, 0), dnb: dnb(k), abs: avAbsent(k) }; });
+  const P = L.filter(x => !x.abs), nAbs = L.length - P.length;
+  const finies = P.filter(x => x.nt.ok), tot = {}; P.forEach(x => Object.keys(x.fa).forEach(c => { tot[c] = (tot[c] || 0) + x.fa[c]; })); const totF = Object.values(tot).reduce((a, b) => a + b, 0);
+  const moyC = C.map((c, i) => { const ok = P.filter(x => x.cr[i].ok); return ok.length ? ok.reduce((a, x) => a + x.cr[i].n / (x.cr[i].tot || 1), 0) / ok.length : null; });
   let faible = -1; moyC.forEach((m, i) => { if (m != null && (faible < 0 || m < moyC[faible])) faible = i; });
   const th = c => '<th title="' + escapeAttr(T[c].libelle) + '"><span class="av-ty" style="background:' + T[c].fond + ";color:" + (T[c].texte || T[c].couleur) + ";border-color:" + T[c].couleur + '">' + c + "</span></th>";
-  const ligne = x => "<tr><td>" + escapeHtml(x.nm) + '</td><td class="av-n">' + (x.nt.ok ? "<b>" + nb(x.nt.n) + " / " + x.nt.tot + "</b>" : '<span class="av-m">pas finie</span>') + "</td>" + '<td class="av-n">' + (x.dnb ? '<span class="av-dnb">⚠ orthographe</span>' : x.dnb === false ? "—" : "") + "</td>"
+  const ligne = x => x.abs ? '<tr class="av-ligne-abs"><td>' + escapeHtml(x.nm) + '</td><td class="av-n"><b class="av-abs">ABS</b></td><td colspan="' + (C.length + ty.length + 3) + '"><span class="av-m">absent : ne compte pas dans la classe</span></td></tr>' : "<tr><td>" + escapeHtml(x.nm) + '</td><td class="av-n">' + (x.nt.ok ? "<b>" + nb(x.nt.n) + " / " + x.nt.tot + "</b>" : '<span class="av-m">pas finie</span>') + "</td>" + '<td class="av-n">' + (x.dnb ? '<span class="av-dnb">⚠ orthographe</span>' : x.dnb === false ? "—" : "") + "</td>"
     + C.map((c, i) => '<td class="av-n">' + (x.cr[i].ok ? nb(x.cr[i].n) + " / " + x.cr[i].tot : '<span class="av-m">…</span>') + "</td>").join("")
     + '<td class="av-n"><b>' + (x.nf || "") + "</b></td>" + ty.map(c => '<td class="av-n">' + (x.fa[c] || "") + "</td>").join("") + '<td class="av-n">' + (x.fa._ || "") + "</td></tr>";
-  const classe = '<tr class="av-classe"><td>La classe</td><td class="av-n">' + (finies.length ? "<b>" + nb(finies.reduce((a, x) => a + x.nt.n, 0) / finies.length) + " / " + finies[0].nt.tot + "</b><br><span class=\"av-m\">moyenne de " + finies.length + " copie" + (finies.length > 1 ? "s" : "") + " finie" + (finies.length > 1 ? "s" : "") + "</span>" : '<span class="av-m">aucune copie finie</span>') + "</td>" + '<td class="av-n">' + (L.filter(x => x.dnb).length ? '<span class="av-dnb">⚠ ' + L.filter(x => x.dnb).length + "</span>" : "—") + "</td>"
+  const classe = '<tr class="av-classe"><td>La classe' + (nAbs ? '<br><span class="av-m">' + nAbs + " absent" + (nAbs > 1 ? "s" : "") + " hors compte</span>" : "") + '</td><td class="av-n">' + (finies.length ? "<b>" + nb(finies.reduce((a, x) => a + x.nt.n, 0) / finies.length) + " / " + finies[0].nt.tot + "</b><br><span class=\"av-m\">moyenne de " + finies.length + " copie" + (finies.length > 1 ? "s" : "") + " finie" + (finies.length > 1 ? "s" : "") + "</span>" : '<span class="av-m">aucune copie finie</span>') + "</td>" + '<td class="av-n">' + (P.filter(x => x.dnb).length ? '<span class="av-dnb">⚠ ' + P.filter(x => x.dnb).length + "</span>" : "—") + "</td>"
     + C.map((c, i) => '<td class="av-n' + (i === faible ? " av-faible" : "") + '"' + (i === faible ? ' title="Le critère le plus faible de la classe"' : "") + ">" + (moyC[i] != null ? Math.round(100 * moyC[i]) + " %" + (i === faible ? "<br><span class=\"av-m\">le plus faible</span>" : "") : "…") + "</td>").join("")
     + '<td class="av-n"><b>' + totF + "</b></td>" + ty.map(c => '<td class="av-n">' + (tot[c] ? tot[c] + '<br><span class="av-m">' + Math.round(100 * tot[c] / totF) + " %</span>" : "") + "</td>").join("") + '<td class="av-n">' + (tot._ ? tot._ + '<br><span class="av-m">' + Math.round(100 * tot._ / totF) + " %</span>" : "") + "</td></tr>";
   v.innerHTML = '<div class="rp-carte av-bilan"><h2>Bilan de la classe</h2><p>Tiré de la correction sur les scans et de la bande, sans rien écrire. Une copie pas finie n’entre pas dans la moyenne. Les fautes comptées par type d’erreur sont celles de la bande ; une faute marquée avec la méthode d’avant est « sans type ».</p>'
@@ -85,7 +116,7 @@ function avBilanClasse() {
 /* l'onglet « Fiches élèves » : les fichiers École Directe des scans (la fiche HTML d'origine est rangée) */
 function avFiches() {
   const v = document.getElementById("ruVue_fiches"); if (!v) return; avPagesCharger(); avGrille();
-  const L = state.classe.map(nm => { const k = eleveId(nm), f = avFlux(k), nt = avPret() && SC.grille ? scNote(k) : { ok: false }; return "<tr><td>" + escapeHtml(nm) + '</td><td class="av-n">' + (nt.ok ? "<b>" + String(Math.round(nt.n * 10) / 10).replace(".", ",") + " / " + nt.tot + "</b>" : "—") + '</td><td class="' + (nt.ok ? "rp-ok" : "") + '">' + (nt.ok ? "prête : la correction est finie" : f && (f.lignes || f.arrets) ? "pas encore : la correction est en cours" : "pas encore commencée") + "</td></tr>"; }).join("");
+  const L = state.classe.map(nm => { const k = eleveId(nm); if (avAbsent(k)) return "<tr><td>" + escapeHtml(nm) + '</td><td class="av-n"><b class="av-abs">ABS</b></td><td>absent : pas de fichier</td></tr>'; const f = avFlux(k), nt = avPret() && SC.grille ? scNote(k) : { ok: false }; return "<tr><td>" + escapeHtml(nm) + '</td><td class="av-n">' + (nt.ok ? "<b>" + String(Math.round(nt.n * 10) / 10).replace(".", ",") + " / " + nt.tot + "</b>" : "—") + '</td><td class="' + (nt.ok ? "rp-ok" : "") + '">' + (nt.ok ? "prête : la correction est finie" : f && (f.lignes || f.arrets) ? "pas encore : la correction est en cours" : "pas encore commencée") + "</td></tr>"; }).join("");
   v.innerHTML = '<div class="rp-carte"><h2>Fiches élèves</h2><p>Le fichier de chaque élève se fabrique dans l’écran des scans : sa copie scannée et tes marques, à déposer sur École Directe. Les photos ne quittent jamais ce navigateur.</p>'
     + '<button class="rp-prim" onclick="avFichiersED()" title="Ouvre l’écran des scans et sa liste des fichiers : un fichier par élève, à télécharger, ou à tester comme l’élève le verra. Les photos doivent être dans ce navigateur (le paquet chargé).">📨 Fichiers École Directe</button>'
     + '<table class="rp-table"><thead><tr><th>Élève</th><th>Note</th><th>Son fichier</th></tr></thead><tbody>' + L + "</tbody></table></div>";
@@ -96,3 +127,24 @@ function avFichiersED() {
   state.scanRecopie = Object.assign({}, state.scanRecopie || {}, { ouverte: false }); scOuvrir(); const t0 = Date.now();
   (function attendre() { if (SC.ouvert) fin(); else if (Date.now() - t0 < 10000) setTimeout(attendre, 120); else toast("L’écran des scans ne s’ouvre pas : ouvre-le avec « 📄 Corriger sur les scans », puis « 📨 Fichiers École Directe »."); })();
 }
+/* ═══ [C14 1.4.13] l'élève absent, comme en dictée (Paul 01/11 08:37 : « il faut que je puisse déclarer un élève absent comme en dictée ») ═══
+   Clic droit sur sa carte : « ❌ Marquer absent » ; encore : « ✓ Marquer présent ». Gardé au site avec le suivi de la classe (state.absents, comme
+   correction_dictee/<id>/absents). Un absent ne compte ni dans le compteur, ni dans la moyenne et les totaux du Bilan, ni dans les fichiers École Directe ;
+   les initiales ne lui donnent pas de page. Rien n'est effacé : sa copie, s'il en a une, reste au site, mise de côté. */
+function avAbsent(k) { return !!(state && state.absents && state.absents[k]); }
+function avAbsents() { return (state.classe || []).map(eleveId).filter(avAbsent); }
+function avAbsentBasculer(k) {
+  const nom = nomEleveDe(k) || k, a = Object.assign({}, state.absents || {}); if (a[k]) delete a[k]; else a[k] = true; state.absents = a;
+  saveState(); renderDashboard(); if (RU.sous === "bilan") avBilanClasse(); if (RU.sous === "fiches") avFiches();
+  toast(a[k] ? nom + " est marqué absent : il ne compte plus dans la classe." : nom + " est de nouveau présent.");
+}
+function avMenuFermer() { const m = document.getElementById("avMenu"); if (m) m.remove(); }
+function avMenuEleve(ev, k) {
+  ev.preventDefault(); ev.stopPropagation(); avMenuFermer();
+  const nom = nomEleveDe(k) || k, abs = avAbsent(k), d = document.createElement("div"); d.id = "avMenu"; d.className = "av-menu-fond";
+  d.onclick = avMenuFermer; d.oncontextmenu = e => { e.preventDefault(); avMenuFermer(); };
+  d.innerHTML = '<div class="av-menu" style="left:' + Math.min(ev.clientX, innerWidth - 260) + "px;top:" + Math.min(ev.clientY, innerHeight - 150) + 'px" onclick="event.stopPropagation()"><b>' + escapeHtml(nom) + "</b>"
+    + '<button id="avAbsentBtn" onclick="avMenuFermer();avAbsentBasculer(\'' + escapeAttr(k) + '\')" title="' + (abs ? "Il était là : il revient dans le compteur, le Bilan et les fichiers École Directe." : "Il n’a pas fait la rédaction : il sort du compteur, de la moyenne et des totaux du Bilan, et des fichiers École Directe. Rien n’est effacé ; un autre clic droit le remet présent.") + '">' + (abs ? "✓ Marquer présent" : "❌ Marquer absent") + "</button></div>";
+  document.body.appendChild(d);
+}
+document.addEventListener("keydown", e => { if (e.key === "Escape" && document.getElementById("avMenu")) { e.stopPropagation(); avMenuFermer(); } }, true);

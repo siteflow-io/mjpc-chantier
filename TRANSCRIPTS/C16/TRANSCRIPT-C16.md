@@ -288,3 +288,23 @@ MEMO
 01/11/2026 23:04
 
 MEMO
+
+**L'exécutant (23:1x, à la conscience) :** Défaut du vrai chapitre réglé et poussé : cd1f86c. Mesuré : les textes des deux diapos enregistrées sont EXACTEMENT ceux de l'ancien calcul ; Paul les avait seulement renommées (« S1: … », « Notre problématique ») et avait mis la question en rouge + « à écrire ». Causes : « intacte » comparait aussi le nom et la mise en forme ; la comparaison se faisait avant la taxonomie puis n'était plus refaite ; en classe elle attendait la reprise. Désormais intacte = les textes ; le nom, la durée, la mise en forme et les marques restent à Paul. Rejoué par le geste en mode test sur ton site_3e.json (lecture seule, 07/09, heure 1) : les 5 au canon, la problématique en rouge gardée. Le même commit porte la carte « Ce que la diapo déclare ». K1-K13 106/0 sur 7ec7906 ; le reste du banc tourne.
+
+**Fait (23:09).** `cd1f86c` assemblé à part (md5 `1e58379d…`, 2 725 417 o), rejoué par le geste en mode test sur le vrai chapitre tel qu'il est au hub (rien rempli) : début de séance et problématique de S1 au canon, le rouge et l'encadré « à écrire » de Paul gardés, 0 erreur JS, 0 boîte ; regardées, envoyées à Paul. Dette préexistante trouvée en regardant le pilote (déjà sur la 8.77.1-⑩, où les quatre anciennes portaient « réactivation ») : le nom en or sous chaque vignette chevauche le bas de la vignette ; envoyée à l'exécutant, à régler dans ce mandat.
+
+**Claude (23:09) :**
+
+À jouer : ta classe de demain, sur la 8.77.1-⑩ · en cours : l'exécutant finit l'import, le prompt, la feuille sommaire, le récit · ouvert : 15
+
+58. Le défaut du point 56 est réglé : ton vrai chapitre, tel qu'il est au hub, sans rien remplir. Le début de séance et la problématique de la séance 1 passent au canon. Ta question en rouge et ton encadré « à écrire » sont gardés : le site ne remplace que le texte qu'il avait lui-même écrit, jamais ta mise en forme.
+
+59. Sans phrase ni image, le début de séance montre le titre et les compétences : c'est ce que tu auras tant que la carte n'est pas remplie.
+
+60. Une dette vue en regardant ton écran : sous chaque vignette de la colonne de gauche, le nom en or chevauche la vignette. Elle était déjà là sur la 8.77.1-⑩. L'exécutant la règle dans ce chantier.
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 23:09
+
+MEMO

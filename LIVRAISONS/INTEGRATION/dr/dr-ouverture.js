@@ -237,7 +237,10 @@ function dr_ouvBrancherCarte(da, e){ if (!da || !e || !dr_estInvariable(e)) retu
   da.querySelectorAll('[data-ouv-image-retirer]').forEach(b => b.onclick = () => { const q = b.dataset.ouvImageRetirer; if (q === 'chapitre') dr_ouvEcrire('chapitre', 'image', false); else dr_ouvEcrire(sk, 'image', false); });
   da.querySelectorAll('[data-ouv-image-chapitre]').forEach(b => b.onclick = () => dr_ouvEcrire(sk, 'image', null));
   const r = da.querySelector('[data-ouv-rendre]'); if (r) r.onclick = () => dr_ouvRendre(e);
-  if (S.ouvChamp && S.ouvChampEid === e.eid) { const f = da.querySelector('.dr-ouv-vise'); S.ouvChamp = null; if (f) { try { f.scrollIntoView({ block: 'center' }); } catch (x) {} if (f.matches('[contenteditable]')) { try { f.focus(); } catch (x) {} } } } }
+  /* « À régler » a ouvert la carte sur ce champ : il reste montré (cadre or) jusqu'à ce que Paul l'ait quitté, ou qu'il ouvre une autre diapo ; le curseur s'y pose une fois */
+  if (S.ouvChamp && S.ouvChampEid !== e.eid) S.ouvChamp = null;
+  if (S.ouvChamp && S.ouvChampEid === e.eid) { const f = da.querySelector('.dr-ouv-vise'); if (f && !S.ouvChampPose) { S.ouvChampPose = true; try { f.scrollIntoView({ block: 'center' }); } catch (x) {} if (f.matches('[contenteditable]')) { try { f.focus(); } catch (x) {} } }
+    if (f && f.matches('[contenteditable]')) f.addEventListener('blur', () => { S.ouvChamp = null; S.ouvChampPose = false; }, { once: true }); } }
 /* « ↩ celle du chapitre » : la diapo redevient celle que le chapitre donne (Ctrl + Z de l'Atelier la remet) */
 function dr_ouvRendre(e){ const sk = dr_cleSeance(S.si); const k = dr_invContenu(e.role, sk); e.act = k.act; e.blocs = k.blocs; e.dur = 0; delete e.masquee;
   dr_invSiteMarque(e, k.act);

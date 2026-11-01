@@ -15980,7 +15980,9 @@ function atArbrePremiereSeance(){
   var ch=chapitresData[ec.level]&&chapitresData[ec.level][ec.chnum]; if(!ch)return null;
   var ks=Object.keys(ch.seances||{}).filter(function(k){return ch.seances[k]&&typeof ch.seances[k]==='object';})
         .sort(function(a,b){return (ch.seances[a].ordre||0)-(ch.seances[b].ordre||0);});
-  return ks[0]||null;
+  /* C16 (mesuré par sonde-ouverture, déjà sur fc036e8) : la feuille sommaire (type 'sommaire', ordre 0, sans déroulé) n'est pas la première séance — l'Atelier s'y ouvrait, sans diapo, et creneauDe tombait (« reading 'heure' ») */
+  var vraies=ks.filter(function(k){return ch.seances[k].type!=='sommaire';});
+  return vraies[0]||ks[0]||null;
 }
 
 /* [11e adaptation · 支] le libellé d'une notion depuis la même source que la datalist */

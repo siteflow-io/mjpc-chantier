@@ -22,7 +22,7 @@ const req = createRequire(import.meta.url); let pw = null;
 for (const c of [process.env.MJPC_PLAYWRIGHT, '/opt/node22/lib/node_modules/playwright', 'playwright'].filter(Boolean)) { try { pw = req(c); break; } catch (e) {} }
 if (!pw) { console.log('Playwright introuvable'); process.exit(2); }
 const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log(s); };
-const verif = (k, ok, quoi, det) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (det != null && det !== '' ? ' — ' + (typeof det === 'string' ? det : JSON.stringify(det)).slice(0, 600) : '')); return !!ok; };
+let ETAPE = 'au chargement'; const verif = (k, ok, quoi, det) => { ETAPE = 'après « ' + quoi.slice(0, 40) + ' »'; nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (det != null && det !== '' ? ' — ' + (typeof det === 'string' ? det : JSON.stringify(det)).slice(0, 600) : '')); return !!ok; };
 const p = ms => new Promise(r => setTimeout(r, ms));
 const TAX = JSON.parse(fs.readFileSync(path.join(RACINE, 'AUDITS', 'CONTROLES-QCM-APP', 'attendus', 'taxonomie-competences.json'), 'utf8'));
 const OFFICIELS = [], ELEVES = []; ['francaisC4', 'transversales'].forEach(k => TAX[k].forEach(b => b.items.forEach(i => { OFFICIELS.push(i.libelle); ELEVES.push(i.libelleEleve); })));
@@ -42,7 +42,7 @@ const ouvrir = async ({ W = 1536, H = 864, store, garder = false, horloge = '202
   const ctx = await nav.newContext({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }); const errs = [], boites = [];
   await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => { const m = /mjpc-medias\/.*\/([^/?]+)$/.exec(r.request().url()); if (m && IMG[m[1]]) return r.fulfill({ path: IMG[m[1]], contentType: 'image/png' }); return r.abort(); });
   await ctx.addInitScript(fauxHub, [store, garder]); await ctx.addInitScript(() => { const st = document.createElement('style'); st.textContent = '#fi-overlay{display:none!important}'; document.addEventListener('DOMContentLoaded', () => document.head.appendChild(st)); });
-  ctx.on('page', pg => { pg.on('pageerror', e => errs.push(String(e.message).slice(0, 200))); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message().slice(0, 100)); d.dismiss().catch(() => {}); }); });
+  ctx.on('page', pg => { pg.on('pageerror', e => errs.push(ETAPE + ' : ' + String(e.message).slice(0, 200) + ' @ ' + String(e.stack || '').split('\n').slice(1, 7).map(x => x.trim().replace(/\(?(file|https?):\/\/[^ )]*\/([^/ )]+)\)?/, '$2')).join(' < '))); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message().slice(0, 100)); d.dismiss().catch(() => {}); }); });
   const pg = await ctx.newPage(); await pg.clock.setFixedTime(new Date(horloge));
   await pg.goto('file://' + FICHIER + '?n=3e', { waitUntil: 'load' }); await p(1800);
   await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await p(300);
@@ -51,8 +51,12 @@ const capt = async (pg, nom) => { if (CAPT) await pg.screenshot({ path: path.joi
 const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });
 const fin = (k, o, quoi) => { verif(k, !o.errs.length, (quoi || '') + 'aucune erreur JS', o.errs.join(' ; ')); verif(k, !o.boites.length, (quoi || '') + 'aucune boîte système', o.boites.join(' ; ')); return o.ctx.close(); };
 
+const allerAtelier = async pg => { /* par le geste : l'emploi du temps se ferme par son bouton ; l'Atelier s'ouvre par le sien, dans le panneau du professeur */
+  if (await pg.evaluate(() => { const e = document.getElementById('edt-ecran'); return !!(e && getComputedStyle(e).display !== 'none'); })) { await clicTexte(pg, 'button', 'Fermer l’emploi du temps'); await p(600); }
+  if (await pg.evaluate(() => !!document.querySelector('#atelier-ecran.at-actif'))) return;
+  if (!await clicTexte(pg, '.tprof-section-btn', 'Atelier')) { await pg.click('#tprof-btn'); await p(600); await clicTexte(pg, '.tprof-section-btn', 'Atelier'); } await p(900); };
 /* ── l'heure de la classe, par la case de l'emploi du temps, en mode test ; la fenêtre du tableau ── */
-const lancerClasse = async (o, jour = '2026-09-14') => { const pg = o.pg; await pg.click('#tprof-btn'); await p(600); await pg.evaluate(() => { window.M8_TEST = true; }); await pg.evaluate(() => edtOuvrir()); await p(1500);
+const lancerClasse = async (o, jour = '2026-09-14') => { const pg = o.pg; await pg.click('#tprof-btn'); await p(600); await pg.evaluate(() => { window.M8_TEST = true; }); await pg.click('.tprof-section-btn[data-section="edt"]'); await p(800); await clicTexte(pg, 'button', 'Ouvrir l’emploi du temps'); await p(1500);
   const ok = await pg.evaluate(j => { const cs = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); const c = cs.find(e => (e.getAttribute('onclick') || '').indexOf(j) >= 0); if (!c) return false; c.click(); return true; }, jour); await p(800);
   const l = ok && await clicTexte(pg, 'button', 'Ouvrir le pilotage et lancer'); await p(3500); await pg.keyboard.press('Escape'); await p(400); return !!l; };
 const ouvrirTableau = async (o, W, H) => { const [fen] = await Promise.all([o.ctx.waitForEvent('page', { timeout: 8000 }).catch(() => null), o.pg.click('#bvideoproj')]); await p(1500); if (fen) await fen.setViewportSize({ width: W, height: H }); await o.pg.bringToFront(); return fen; };
@@ -78,8 +82,9 @@ const sk0 = st => Object.keys(st.site['3e'].chapitres[0].seances).sort((a, b) =>
 dire('C16 · sonde des diapos d’ouverture au canon · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC · fichier md5 ' + createHash('md5').update(fs.readFileSync(FICHIER)).digest('hex') + ' · ' + fs.statSync(FICHIER).size + ' o');
 
 /* ═══ A · l'heure 1 de la séance 1, aux trois tailles ═══ */
+const CAS = String(process.env.MJPC_CAS || 'A,B,C,D,E').split(','); const fait = c => CAS.indexOf(c) >= 0;
 const TAILLES = String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number));
-for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ A · ' + T + ' · mode test, ' + CLASSE + ', la case du 14/09 08:57, heure 1 de la séance 1 ══');
+for (const [W, H] of (fait('A') ? TAILLES : [])) { const T = W + '×' + H; dire(''); dire('══ A · ' + T + ' · mode test, ' + CLASSE + ', la case du 14/09 08:57, heure 1 de la séance 1 ══');
   const st = storeOuverture(RACINE, { champs: true });
   /* la problématique de la séance 1, telle que Paul l'a mise en forme (le rouge, un surlignage, comme sur le vrai chapitre) : sa mise en forme reste lisible sur le bleu nuit */
   const ks = sk0(st); const PROB = st.site['3e'].chapitres[0].problematique; const se0 = st.site['3e'].chapitres[0].seances[ks[0]];
@@ -99,6 +104,10 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ A
       await capt(pg, 'A-' + T + '-' + forme + '-pilote'); if (fen) await fen.screenshot({ path: CAPT ? path.join(CAPT, 'A-' + T + '-' + forme + '-tableau.png') : path.join(OUT, '_t.png') }).catch(() => {});
       if (N > 1) { await pg.keyboard.press('ArrowLeft'); await p(450); const pi2 = await pilote(pg), tb2 = fen ? await tableau(fen) : null; verif('A', pi2.lignes[N - 1].pas && tb2 && !tb2.lignes[N - 1].vue && tb2.lignes.slice(0, N - 1).every(l => l.vue), T + ' · ' + forme + ' : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent', tb2 && tb2.lignes.map(l => l.vue)); await pg.keyboard.press('ArrowRight'); await p(380); }
       vus[vus.length - 1].pilote = pi1; vus[vus.length - 1].tableau = tb1;
+      if (fen && forme === 'parc') vus[vus.length - 1].or = await fen.evaluate(() => { const l = document.querySelector('#mur2 .ouv-r.jour'); return l ? getComputedStyle(l).outlineColor : null; });
+      if (fen && forme === 'prob') vus[vus.length - 1].contraste = await fen.evaluate(() => { const lum = c => { const m = c.match(/\d+(\.\d+)?/g).map(Number); const f = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }; return 0.2126 * f(m[0]) + 0.7152 * f(m[1]) + 0.0722 * f(m[2]); }; const cr = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+        const o = document.querySelector('#mur2 > .ouv'); if (!o) return null; const fond = getComputedStyle(o).backgroundColor; const ct = o.querySelector('.p8-ct'), mk = o.querySelector('mark'), q = o.querySelector('.ouv-question');
+        return { fond, rouge: ct ? +cr(getComputedStyle(ct).color, fond).toFixed(2) : null, surligne: mk ? +cr(getComputedStyle(mk).color, getComputedStyle(mk).backgroundColor).toFixed(2) : null, texte: q ? +cr(getComputedStyle(q).color, fond).toFixed(2) : null }; });
       const mp = await mesurer(pg, '#mur'), mt = fen ? await mesurer(fen, '#mur2') : null;
       verif('A', mp && !mp.coupes.length && !mp.hors.length && !mp.chev.length && mt && !mt.coupes.length && !mt.hors.length && !mt.chev.length, T + ' · ' + forme + ' : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau)', { pilote: mp, tableau: mt });
     }
@@ -110,14 +119,12 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ A
   const pc = await pg.evaluate(() => null); const ph = vus.length ? (V('comp').tableau || {}).lignes : [];
   verif('A', !off.length && /Lire des documents, des images et des pages numériques/.test(debut) && /LIRE/.test(comps), T + ' · les compétences par leur phrase d’élève, au tableau (compétences du chapitre, début de séance) : aucun intitulé officiel', off.slice(0, 3));
   const parc = V('parc').tableau || { lignes: [] }; const jour = parc.lignes.filter(l => /\bjour\b/.test(l.cls)); verif('A', jour.length === 1 && /^1 /.test(jour[0].txt) && /lun\. 14\/9/.test(jour[0].txt) && parc.lignes.length === ks.length && /mar\. 29\/9|lun\. 21\/9/.test(parc.lignes[1].txt), T + ' · le parcours dans la copie de la classe : la date de chaque séance pour la classe, la séance du jour entourée d’or (la 1, lun. 14/9)', parc.lignes.slice(0, 3).map(l => l.txt.slice(0, 50)));
-  const or = fen ? await fen.evaluate(() => { const l = document.querySelector('#mur2 .ouv-r.jour'); return l ? getComputedStyle(l).outlineColor : null; }) : null; verif('A', or === 'rgb(201, 160, 74)', T + ' · l’or de la séance du jour (capture 7 du 29/10 : #c9a04a)', or);
+  const or = V('parc').or; verif('A', or === 'rgb(201, 160, 74)', T + ' · l’or de la séance du jour (capture 7 du 29/10 : #c9a04a)', or);
   /* les couleurs du canon, lues au tableau */
   const coul = fen ? await fen.evaluate(() => { const r = {}; return r; }) : null;
   const ev = parc.lignes.filter(l => /\bev\b/.test(l.cls)).map(l => +l.txt.split(' ')[0]); verif('A', JSON.stringify(ev) === JSON.stringify([3, 4, 6, 9]), T + ' · les séances évaluées en bleu vif (celles que le chapitre marque « évaluée »)', ev);
   /* la mise en forme de Paul sur le bleu nuit : le contraste mesuré (≥ 4,5:1) */
-  const contraste = fen ? await fen.evaluate(() => { const lum = c => { const m = c.match(/\d+(\.\d+)?/g).map(Number); const f = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }; return 0.2126 * f(m[0]) + 0.7152 * f(m[1]) + 0.0722 * f(m[2]); }; const cr = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
-    const o = document.querySelector('#mur2 > .ouv'); if (!o) return null; const fond = getComputedStyle(o).backgroundColor; const ct = o.querySelector('.p8-ct'), mk = o.querySelector('mark'), q = o.querySelector('.ouv-question');
-    return { fond, rouge: ct ? +cr(getComputedStyle(ct).color, fond).toFixed(2) : null, surligne: mk ? +cr(getComputedStyle(mk).color, getComputedStyle(mk).backgroundColor).toFixed(2) : null, texte: q ? +cr(getComputedStyle(q).color, fond).toFixed(2) : null }; }) : null;
+  const contraste = V('prob').contraste;
   verif('A', contraste && contraste.rouge >= 4.5 && contraste.surligne >= 4.5 && contraste.texte >= 4.5 && contraste.fond === 'rgb(31, 59, 77)', T + ' · la problématique au tableau, sur le bleu nuit du canon (#1f3b4d) : le rouge et le surligné de Paul restent lisibles (contraste ≥ 4,5:1), comme le texte', contraste);
   /* le nom du rôle sous chaque vignette, lisible en entier (dette relevée par la conscience) */
   const vig = await pg.evaluate(() => Array.from(document.querySelectorAll('#volet .vig')).filter(v => v.querySelector('.role') && v.querySelector('.mini')).map(v => { const r = v.querySelector('.role').getBoundingClientRect(), m = v.querySelector('.mini').getBoundingClientRect(), V = v.getBoundingClientRect(); const ro = v.querySelector('.role'); return { t: ro.textContent, sous: r.top >= m.bottom - 0.5, dedans: r.left >= V.left - 0.5 && r.right <= V.right + 0.5 && r.bottom <= V.bottom + 0.5, entier: ro.scrollWidth <= ro.clientWidth + 1 && r.height > 4 }; }));
@@ -127,38 +134,38 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ A
 }
 
 /* ═══ B · la séance 1 jouée par la classe → la case du 14/09 ouvre la séance 2 ═══ */
-{ dire(''); dire('══ B · la séance 1 jouée (deux heures closes, 07/09 et 08/09) : la case du 14/09 08:57 ouvre la séance 2 ══');
+if (fait('B')) { dire(''); dire('══ B · la séance 1 jouée (deux heures closes, 07/09 et 08/09) : la case du 14/09 08:57 ouvre la séance 2 ══');
   const st = storeOuverture(RACINE, { champs: true }); const ks = sk0(st); const ch = st.site['3e'].chapitres[0]; const se0 = ch.seances[ks[0]];
   const somme = se0.deroule.ecrans.filter(e => e && e.role !== 'fin').reduce((t, e) => t + (+e.dur || 0), 0); const nH = Math.max(1, Math.ceil(somme / 50));
   const heures = {}; for (let h = 0; h < nH; h++) { const j = String(7 + h).padStart(2, '0'); heures['2026-09-' + j + '_08h57-09h52_3E_Charles_de_Gaulle'] = { classe: CLASSE, creneau: '08:57-09:52', clos: true, debutReel: 1788000000000 + h * 86400000, finReel: 1788003000000 + h * 86400000, fin: '09:52', lanceA: '08:57', minutesJouees: 50, tempsUtilePrevu: 50, heure: h + 1, sur: nH, activites: [] }; }
   se0.deroule_joue = { '3e_charles_de_gaulle': { classe: CLASSE, demarreLe: 1788000000000, heures } };
   const o = await ouvrir({ W: 1536, H: 864, store: st }); const pg = o.pg; const lance = await lancerClasse(o); const fen = await ouvrirTableau(o, 1536, 864); await pg.click('#numero').catch(() => {});
-  const seq = []; let pil = await pilote(pg); let n = 0; while (pil.ouv && n < 40) { if (!seq.length || seq[seq.length - 1].forme !== pil.forme) { const N = pil.lignes.length; for (let k = 0; k < N; k++) { await pg.keyboard.press('ArrowRight'); await p(350); } const t = fen ? await tableau(fen) : null; seq.push({ forme: pil.forme, tete: pil.tete, tab: t }); await capt(pg, 'B-' + pil.forme + '-pilote'); }
+  const seq = []; let pil = await pilote(pg); let n = 0; while (pil.ouv && n < 40) { if (!seq.length || seq[seq.length - 1].forme !== pil.forme) { const N = pil.lignes.length; for (let k = 0; k < N; k++) { await pg.keyboard.press('ArrowRight'); await p(350); } const t = fen ? await tableau(fen) : null; const carres = fen && pil.forme === 'debut' ? await fen.evaluate(() => Array.from(document.querySelectorAll('#mur2 .ouv-carres i')).map(i => i.classList.contains('on') ? 1 : 0)) : null; seq.push({ forme: pil.forme, tete: pil.tete, tab: t, carres }); await capt(pg, 'B-' + pil.forme + '-pilote'); }
     await pg.keyboard.press('ArrowRight'); await p(420); pil = await pilote(pg); n++; }
   verif('B', lance && JSON.stringify(seq.map(s => s.forme)) === JSON.stringify(['parc', 'debut', 'prob']), 'séance ' + ks.length + ' de la file : la séance 2 s’ouvre par le parcours, le début de séance, la problématique (ni présentation ni compétences du chapitre)', seq.map(s => s.forme + ' · ' + s.tete.slice(0, 60)));
   const parc = (seq.find(s => s.forme === 'parc') || {}).tab || { lignes: [] };
   verif('B', parc.lignes[0] && /\bfaite\b/.test(parc.lignes[0].cls) && /✓/.test(parc.lignes[0].txt) && /lun\. 7\/9/.test(parc.lignes[0].txt) && /\bjour\b/.test((parc.lignes[1] || {}).cls) && !/\bjour\b/.test(parc.lignes[0].cls), 'au tableau, le parcours de la classe : la séance 1 terminée, cochée (lun. 7/9) ; la séance 2 en or', parc.lignes.slice(0, 2).map(l => l.cls.replace(/ouv-r ?/, '') + ' · ' + l.txt.slice(0, 40)));
   const deb = (seq.find(s => s.forme === 'debut') || {}).tab || { lignes: [] }; const sn = await pg.evaluate(() => { const o = document.querySelector('#mur > .ouv'); return null; });
   verif('B', deb.lignes.length && dans(deb.lignes[0].txt, ch.seances[ks[1]].title) && /Lire « L’Albatros »/.test((deb.lignes[1] || {}).txt || ''), 'au tableau, le début de la séance 2 : son titre, puis « Objectif : » et sa phrase', deb.lignes.slice(0, 2).map(l => l.txt.slice(0, 60)));
-  const carres = fen ? await fen.evaluate(() => Array.from(document.querySelectorAll('#mur2 .ouv-carres i')).map(i => i.classList.contains('on') ? 1 : 0)) : [];
+  const carres = (seq.find(s => s.forme === 'debut') || {}).carres || [];
   verif('B', carres.length === ks.length && carres[1] === 1 && carres.reduce((a, b) => a + b, 0) === 1, 'les ' + ks.length + ' carrés de la séance : le deuxième allumé (la séance du jour)', carres);
   await fin('B', o);
 }
 
 /* ═══ C · l'Atelier : la carte, « À régler », la feuille sommaire suivent ; retirer, recharger ═══ */
-dire(''); dire('══ C · l’Atelier (le faux hub gardé d’un rechargement à l’autre) ══');
-{ const st = storeOuverture(RACINE, { champs: true }); const ks = sk0(st); const ch = st.site['3e'].chapitres[0];
+if (fait('C')) { dire(''); dire('══ C · l’Atelier (le faux hub gardé d’un rechargement à l’autre) ══'); }
+if (fait('C')) { const st = storeOuverture(RACINE, { champs: true }); const ks = sk0(st); const ch = st.site['3e'].chapitres[0];
   /* la feuille sommaire du chapitre (séance de rang 0, celle que l'import crée) : elle doit suivre ce que la carte change */
   ch.seances['9'] = { title: 'Sommaire du chapitre', type: 'sommaire', ordre: 0, items: {}, resume: { titre: ch.title, plan: [] }, html: '<div class="ch-som">ancien</div>' };
   const o = await ouvrir({ W: 1707, H: 743, store: st, garder: true }); const pg = o.pg;
-  const atelier = async () => { await pg.evaluate(() => { try { edtFermer(); } catch (e) {} try { atelierOuvrir(); } catch (e) {} }); await p(1200);
+  const atelier = async () => { await allerAtelier(pg); await p(300);
     if (await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="structure"]'); return !!(b && b.offsetParent); })) { await pg.evaluate(() => document.querySelector('.at-onglet[data-vue="structure"]').click()); await p(900); await clicTexte(pg, 'button', '← Mes chapitres'); await p(900); }
     await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await p(900); await clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'); await p(1800);
     await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(2500); };
   const seanceA = async cle => { for (let n = 0; n < 4; n++) { const ok = await pg.evaluate(c => String(ATVUES.snum) === c && !!document.querySelector('#volet [data-at-di]'), cle); if (ok) break; await pg.evaluate(c => { const d = document.querySelector('.ed2-sce[data-seance="' + c + '"]'); if (d) { d.scrollIntoView({ block: 'center' }); d.click(); } }, cle); await p(1500); } await p(600); };
   const colonne = () => pg.evaluate(() => Array.from(document.querySelectorAll('#volet [data-at-di]')).map(d => ({ eid: d.dataset.eid, t: ((d.querySelector('.t') || {}).textContent || '').replace(/ · \d+ pages$/, '').trim() })));
   const clicLigne = async eid => { await pg.evaluate(e => { const d = document.querySelector('#volet [data-eid="' + e + '"]'); if (d) d.scrollIntoView({ block: 'center' }); }, eid); await p(200); await pg.click('#volet [data-eid="' + eid + '"] .t'); await p(900); };
-  const regler = () => pg.evaluate(() => { try { return alertesChapitre().filter(a => a.k === 'ouverture').map(a => a.l); } catch (e) { return ['?' + e.message]; } });
+  const regler = async () => { await pg.click('#at-regler'); await p(700); const l = await pg.evaluate(() => Array.from(document.querySelectorAll('.choix-obj .fe[data-k="ouverture"] > b')).map(b => b.textContent.trim())); await pg.evaluate(() => { const x = document.querySelector('.choix-obj .x'); if (x) x.click(); }); await p(300); return l; };   /* « À régler », ouvert par son bouton, lu dans sa fenêtre (ses lignes des diapos d'ouverture), refermé par ✕ */
   await pg.click('#tprof-btn'); await p(500); await atelier(); await seanceA(ks[1]); let col = await colonne();
   verif('C', JSON.stringify(col.slice(0, 3).map(c => c.eid)) === JSON.stringify(['inv-plan-s' + ks[1], 'inv-presentation-seance-s' + ks[1], 'inv-problematique-s' + ks[1]]) && col[1].t === 'Séance 2 · ' + ch.seances[ks[1]].title, 'Atelier, séance 2 : le parcours, le début de séance, la problématique, en tête', col.slice(0, 4).map(c => c.t));
   await seanceA(ks[0]); col = await colonne(); await clicLigne('inv-presentation-chapitre-s' + ks[0]); const pres = await pilote(pg);
@@ -195,7 +202,7 @@ dire(''); dire('══ C · l’Atelier (le faux hub gardé d’un rechargement 
   const himg = await hubSe(ks[7], 'image'); verif('C', img && img.w > 0 && img.avec && himg && himg.ref === MEDIAS + '3e/poesie-peinture-xixe/friedrich.png', 'carte : l’image de la séance (« Changer… », une adresse dans mjpc-medias) — au hub, et à droite du début de séance', { hub: himg, diapo: img });
   await capt(pg, 'C-carte-apres');
   /* ta version : Paul écrit dans la diapo, puis « ↩ celle du chapitre » */
-  await pg.click('#mur > .ouv li.ouv-titre'); await pg.keyboard.press('End'); await pg.keyboard.type(' (révisée)', { delay: 20 }); await pg.mouse.click(5, 400); await p(1500);
+  await pg.click('#mur > .ouv li.ouv-titre'); await pg.keyboard.press('End'); await pg.keyboard.type(' (révisée)', { delay: 20 }); await pg.keyboard.press('Escape'); await p(1800);
   const ta = await pg.evaluate(() => ({ ta: !!document.querySelector('#droite-atelier [data-ouv-rendre]'), titre: (document.querySelector('#mur > .ouv li.ouv-titre') || {}).textContent }));
   await pg.click('#droite-atelier [data-ouv-rendre]'); await p(1500); const re = await pg.evaluate(() => ({ ta: !!document.querySelector('#droite-atelier [data-ouv-rendre]'), titre: (document.querySelector('#mur > .ouv li.ouv-titre') || {}).textContent }));
   verif('C', ta.ta && /\(révisée\)$/.test(ta.titre) && !re.ta && !/révisée/.test(re.titre), 'écrire dans la diapo en fait « ta version » (la carte le dit, avec « ↩ celle du chapitre ») ; « ↩ » rend celle du chapitre', { avant: ta, apres: re });
@@ -205,7 +212,8 @@ dire(''); dire('══ C · l’Atelier (le faux hub gardé d’un rechargement 
   const som = await pg.evaluate(() => { const s = window.__hubLire('/site/3e/chapitres/0/seances/9') || {}; return { html: String(s.html || ''), resume: s.resume || null }; });
   verif('C', mod && /Relire ses erreurs de dictée/.test(som.html) && /évaluée/.test(som.html) && !/Élaborer une interprétation de textes littéraires/.test(som.html) && /Interpréter un texte littéraire/.test(som.html), 'la feuille sommaire suit (sortie de l’éditeur → « Régénérer ») : la phrase de la séance 8, « évaluée », les compétences par leur phrase d’élève (13 · 91)', { modale: mod, extrait: som.html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').slice(0, 300) });
   /* retirer une diapo d'ouverture, recharger : elle ne revient pas */
-  await atelier(); await seanceA(ks[1]); await pg.click('#volet [data-eid="inv-problematique-s' + ks[1] + '"] .t', { button: 'right' }); await p(400);
+  await pg.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && m.getBoundingClientRect().height > 0 && Array.from(m.querySelectorAll('button')).find(x => /^(Compris|OK|Fermer|Plus tard)$/.test(x.textContent.trim())); if (b) b.click(); }); await p(400);
+  await atelier(); await seanceA(ks[1]); const selP = '#volet [data-eid="inv-problematique-s' + ks[1] + '"]'; await pg.evaluate(s2 => { const d = document.querySelector(s2); if (d) d.scrollIntoView({ block: 'center' }); }, selP); await p(300); await pg.click(selP + ' .t', { button: 'right', timeout: 8000 }); await p(400);
   await pg.evaluate(() => { const b = document.querySelector('#menu.on [data-a="supprimer"]'); if (b) b.click(); }); await p(700); await pg.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && Array.from(m.querySelectorAll('button')).find(x => /^Retirer$/.test(x.textContent.trim())); if (b) b.click(); }); await p(3200);
   const ret = await pg.evaluate(k => ((window.__hubLire('/site/3e/chapitres/0/seances/' + k + '/deroule') || {}).retraits || null), ks[1]);
   await pg.reload({ waitUntil: 'load' }); await p(2000); await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; }); await pg.click('#tprof-btn'); await p(500); await atelier(); await seanceA(ks[1]); col = await colonne();
@@ -214,14 +222,14 @@ dire(''); dire('══ C · l’Atelier (le faux hub gardé d’un rechargement 
 }
 
 /* ═══ D · un chapitre importé avec les nouveaux champs ═══ */
-dire(''); dire('══ D · l’import (« 📚 Nouveau chapitre ») ══');
-{ const st = storeOuverture(RACINE, { champs: false }); const o = await ouvrir({ W: 1707, H: 743, store: st, garder: true }); const pg = o.pg;
+if (fait('D')) { dire(''); dire('══ D · l’import (« 📚 Nouveau chapitre ») ══'); }
+if (fait('D')) { const st = storeOuverture(RACINE, { champs: false }); const o = await ouvrir({ W: 1707, H: 743, store: st, garder: true }); const pg = o.pg;
   const CHI = JSON.parse(fs.readFileSync(path.join(RACINE, 'LIVRAISONS', 'INTEGRATION', 'E4', 'prompt', 'chapitre-3e-au-contrat.json'), 'utf8'));
   CHI.chapitre.seances.forEach(se => ((se.deroule || {}).ecrans || []).forEach(e => { if (e && e.role === 'bilan') (e.blocs || []).forEach(b => { if (b && Array.isArray(b.el)) b.el = b.el.map(x => { x = String(x).replace(/\.$/, ''); return x.length > 45 ? x.split(' : ')[0].slice(0, 45) : x; }); }); }));
   CHI.chapitre.title = 'Poésie et peinture — l’import du canon'; CHI.chapitre.image = 'poesie-peinture-xixe/chapitre.png';
   CHI.chapitre.seances[0].objectif = 'Observer cinq tableaux du XIXe siècle et formuler avec la classe ce qu’ils ont en commun.'; CHI.chapitre.seances[0].evaluee = false; CHI.chapitre.seances[0].image = 'poesie-peinture-xixe/seance-1.png';
   CHI.chapitre.seances[1].objectif = 'Lire « L’Albatros » et comprendre ce que le poème dit du poète parmi les hommes.'; CHI.chapitre.seances[1].evaluee = true;
-  const coller = async json => { await pg.evaluate(() => { try { atelierOuvrir(); } catch (e) {} }); await p(1000); await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await p(800); await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-porte-ch')).find(x => x.offsetParent !== null); if (b) b.click(); }); await p(1500); await pg.fill('#ch-coller', JSON.stringify(json)); await p(300); await clicTexte(pg, 'button', 'Vérifier'); await p(1800); return pg.evaluate(() => (document.getElementById('ch-msg') || document.body).innerText.replace(/\s+/g, ' ').slice(0, 900)); };
+  const coller = async json => { await allerAtelier(pg); await p(1000); await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await p(800); await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('.at-porte-ch')).find(x => x.offsetParent !== null); if (b) b.click(); }); await p(1500); await pg.fill('#ch-coller', JSON.stringify(json)); await p(300); await clicTexte(pg, 'button', 'Vérifier'); await p(1800); return pg.evaluate(() => (document.getElementById('ch-msg') || document.body).innerText.replace(/\s+/g, ' ').slice(0, 900)); };
   await pg.click('#tprof-btn'); await p(500);
   const faux = JSON.parse(JSON.stringify(CHI)); faux.chapitre.seances[2].evaluee = 'oui'; faux.chapitre.seances[3].image = 'https://exemple.fr/a.png'; const msgF = await coller(faux);
   verif('D', /« evaluee » vaut true ou false/.test(msgF) && /relative dans mjpc-medias, jamais compl/.test(msgF), '« Vérifier » refuse un « evaluee » qui n’est pas vrai / faux et une image à l’adresse complète, avec leurs mots', msgF.match(/[^.]*evaluee[^.]*\.|[^.]*jamais compl[^.]*\./g));
@@ -230,7 +238,7 @@ dire(''); dire('══ D · l’import (« 📚 Nouveau chapitre ») ══');
   const hub = await pg.evaluate(t => { const ch = window.__hubLire('/site/3e/chapitres') || {}; const k = Object.keys(ch).find(x => ch[x] && ch[x].title === t); if (k == null) return null; const c = ch[k]; const se = Array.isArray(c.seances) ? c.seances : Object.values(c.seances || {}); const s0 = se.find(s => s && s.ordre === 1) || se[0]; const s1 = se.find(s => s && s.ordre === 2) || se[1]; return { k, image: c.image, o0: s0 && s0.objectif, e0: s0 && s0.evaluee, i0: s0 && s0.image, o1: s1 && s1.objectif, e1: s1 && s1.evaluee, som: se.some(s => s && s.type === 'sommaire') }; }, CHI.chapitre.title);
   verif('D', cree && hub && hub.image && hub.image.ref === MEDIAS + 'poesie-peinture-xixe/chapitre.png' && /^Observer cinq tableaux/.test(hub.o0) && hub.e0 === false && hub.i0 && hub.i0.ref === MEDIAS + 'poesie-peinture-xixe/seance-1.png' && hub.e1 === true, '« Créer ce chapitre » : l’image du chapitre (adresse complète posée par l’import), la phrase, « évaluée » et l’image des séances — gardées au hub', hub);
   /* l'Atelier du chapitre importé : la phrase sur le début de séance, l'image du chapitre sur sa présentation */
-  await pg.evaluate(() => { try { atelierOuvrir(); } catch (e) {} }); await p(900); await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await p(900);
+  await allerAtelier(pg); await p(900); await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await p(900);
   await pg.evaluate(t => { const c = Array.from(document.querySelectorAll('body *')).filter(e => e.offsetParent && e.children.length < 40 && (e.innerText || '').indexOf(t) >= 0 && Array.from(e.querySelectorAll('button,[onclick]')).some(b => /Éditer dans l’atelier/.test(b.innerText || ''))); const e = c.filter(x => (x.innerText || '').split('\n').some(l => l.trim() === t)).pop(); if (e) Array.from(e.querySelectorAll('button,[onclick]')).find(b => /Éditer dans l’atelier/.test(b.innerText || '')).click(); }, CHI.chapitre.title); await p(1800);
   await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(2500);
   const lignes = await pg.evaluate(() => Array.from(document.querySelectorAll('#volet [data-at-di]')).map(d => d.dataset.eid)); const eD = lignes.find(x => /^inv-presentation-seance/.test(x)); const eP = lignes.find(x => /^inv-presentation-chapitre/.test(x));
@@ -241,8 +249,8 @@ dire(''); dire('══ D · l’import (« 📚 Nouveau chapitre ») ══');
 }
 
 /* ═══ E · une copie de classe écrite avant le canon, déjà jouée, reprise ═══ */
-dire(''); dire('══ E · la reprise d’une copie de classe écrite avant le canon ══');
-{ const st = storeOuverture(RACINE, { champs: true }); const ks = sk0(st); const ch = st.site['3e'].chapitres[0]; const k0 = ks[0]; const se0 = ch.seances[k0];
+if (fait('E')) { dire(''); dire('══ E · la reprise d’une copie de classe écrite avant le canon ══'); }
+if (fait('E')) { const st = storeOuverture(RACINE, { champs: true }); const ks = sk0(st); const ch = st.site['3e'].chapitres[0]; const k0 = ks[0]; const se0 = ch.seances[k0];
   const TYPES = {}; const src = fs.readFileSync(path.join(RACINE, 'LIVRAISONS', 'INTEGRATION', 'index.html'), 'utf8'); const mT = /var CH_TYPES_SEANCE=\[([\s\S]*?)\];/.exec(src); (mT ? mT[1] : '').replace(/\{id:'([^']+)',libelle:'([^']+)'/g, (m, a, b) => { TYPES[a] = b.replace(/\\u([0-9a-f]{4})/gi, (x, h) => String.fromCharCode(parseInt(h, 16))); });
   /* l'ancienne forme, telle que la ⑩ la posait : la problématique (montrée à la classe), le plan du chapitre (jamais montré) */
   const vieuxProb = { eid: 'inv-problematique-s' + k0, role: 'problematique', act: 'Notre question', dur: 0, heure: 1, comp: [], blocs: [{ t: 'texte', id: 'binv-problematique-s' + k0, txt: '', el: [ch.problematique] }] };
@@ -253,12 +261,14 @@ dire(''); dire('══ E · la reprise d’une copie de classe écrite avant le 
   se0.deroule_joue = { '3e_charles_de_gaulle': { classe: CLASSE, demarreLe: t0, ecrans, journal: J, etat: { S: { lancee: true, heure: 1, close: false, eidCourant: vieuxProb.eid, ordresEid: { 1: ecrans.map(e => e.eid) } }, parDiapo: {}, vuMax: {}, maj: t0 + 60000 },
     heures: { '2026-09-14_08h57-09h52_3e_charles_de_gaulle': { classe: CLASSE, creneau: '08:57-09:52', debutReel: t0, lanceA: '08:57', fin: '09:52' } } } };
   st.site.cours_actif = { niveau: '3e', chapitre: '0', seance: k0, classeSlug: '3e_charles_de_gaulle', classeNom: CLASSE, debut: '08:57', fin: '09:52', ts: t0 + 30000 };
-  const o = await ouvrir({ W: 1536, H: 864, store: st, horloge: '2026-09-14T09:01:00+02:00' }); const pg = o.pg; await lancerClasse(o); await p(2500);
+  const o = await ouvrir({ W: 1536, H: 864, store: st, horloge: '2026-09-14T09:01:00+02:00' }); const pg = o.pg;
+  /* par le geste : le bandeau « Heure en cours avec les 3E Charles de Gaulle — Reprendre » (le pointeur cours_actif frais, l'heure pas close) */
+  const bandeau = await pg.waitForSelector('#ses-reprise-oui', { state: 'visible', timeout: 15000 }).then(() => true).catch(() => false); if (bandeau) await pg.click('#ses-reprise-oui'); await p(4500);
   const etat = await pg.evaluate(k => { const E = seance().ecrans; const pr = E.find(e => e.eid === 'inv-problematique-s' + k), pl = E.find(e => e.eid === 'inv-plan-s' + k); return { lancee: !!S.lancee, n: J.length, prob: pr && pr.blocs[0] && pr.blocs[0].t, plan: pl && pl.blocs[0] && pl.blocs[0].t, nouvelles: E.filter(e => /^inv-(presentation|competences)/.test(e.eid)).length }; }, k0);
   /* ce que montre la diapo montrée, par le geste : ◀ / ▶ jusqu'à elle */
   await pg.click('#numero').catch(() => {}); let vu = null; for (let n = 0; n < 6 && !vu; n++) { const t = await pg.evaluate(() => { const m = document.getElementById('mur'); return { ouv: !!(m && m.querySelector(':scope > .ouv')), texte: m ? m.innerText.replace(/\s+/g, ' ').slice(0, 160) : '', tete: ((document.getElementById('dtitre') || {}).textContent || '') }; }); if (/Notre question/.test(t.tete + t.texte)) vu = t; else { await pg.keyboard.press('ArrowLeft'); await p(400); } }
   await capt(pg, 'E-reprise-copie-ancienne');
-  verif('E', etat.lancee && etat.prob === 'texte' && etat.plan === 'ouverture' && etat.nouvelles === 0, 'la reprise : la problématique déjà montrée à la classe garde son ancienne forme ; le plan jamais montré prend le canon (le parcours) ; rien n’est ajouté à la copie', etat);
+  verif('E', bandeau && etat.lancee && etat.prob === 'texte' && etat.plan === 'ouverture' && etat.nouvelles === 0, 'la reprise : la problématique déjà montrée à la classe garde son ancienne forme ; le plan jamais montré prend le canon (le parcours) ; rien n’est ajouté à la copie', etat);
   verif('E', vu && !vu.ouv, 'au pilote, la diapo montrée se revoit telle que la classe l’a vue', vu);
   await fin('E', o);
 }

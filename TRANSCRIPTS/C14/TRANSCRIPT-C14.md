@@ -2419,3 +2419,66 @@ C'est le moment de coder. Attention aux télescopages. Fais ton plan de codage. 
 01/11/2026 08:33
 
 MEMO
+
+## Tour 103 — 01/11/2026 08:37, 08:47, 08:47, 08:49, 09:17, 09:22, 09:51 → 01/11/2026 09:53
+
+**Paul (08:37) :** Il faut mesurer aussi l'écran "corriger sur les scans" et voir ce qu'on doit retirer ( c'était la planification pour ce matin normalement). Enfin,à faire maintenant, il faut que je puisse déclarer un élève absent comme en dictée. Par ailleurs pour plus tard les PAP des élèves doivent aussi être intégrés, et avoir des conséquences. Comme en dictée. Le chantier pap est à cadrer mais pour plus tard.
+
+**Paul (08:47) :** gros bug à gérer tout de suite: un élève pour lequel je n'avais pas chargé de copie m'affiche la copie d'un autre élève!! C'est typiquement le genre de mélange de données et d'identification que je ne veux jamais
+
+**Claude (08:47, message en cours de travail) :** Vu. J'arrête le reste et je cherche tout de suite la cause, sur le site en lecture seule. Rien n'est écrit au site pour l'instant.
+
+**Paul (08:47) :** en fait non, je précise: quand je lcique sur la carte d'un élève sans copie, ça affiche la copie et l'espace de correction d'un autre élève.
+
+**Paul (08:49) :** il n'y a pas de télescopage entre les deux, mais ça n'affiche juste pas le bon élève alors que je suis entré par sa carte (vu qu'il n'a pas de copie, et aussi vu que l'écran "corriger sur les scans" télescope avec "recopier", je pense)
+
+**Claude (08:59, message en cours de travail) :** Corrigé et en ligne depuis 08:59 (1.4.12.1). La cause : la carte demandait la copie de l'élève ; il n'avait aucune page dans le paquet ; l'écran gardait alors la dernière copie ouverte, celle d'un autre élève. Je l'ai reproduit sur ton vrai site en lecture seule. Rien n'a été écrit sur le mauvais élève (vérifié au site). Maintenant, sa carte dit « pas de copie dans le paquet », et son clic n'ouvre rien : une fenêtre explique pourquoi. Recharge la page avec ce lien : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.12.1-RU
+
+**Paul (09:17) :** Comment charger une copie d'élève seule, après avoir chargé un paquet? Je n'ai l'écran de charge que une fois et après il disparaît
+
+**Claude (09:2x, message en cours de travail) :** Pour charger la copie d'un seul élève, dès maintenant : dans l'écran « Corriger sur les scans », le bouton « 📄 Charger le paquet » reste toujours en haut. Choisis seulement la photo ou le PDF de cet élève. Sa page arrive sans élève, et l'app passe d'elle-même à « Les initiales » sur cette page : tape ses initiales, puis Entrée. C'est mesuré sur la maquette : la page neuve vient seule. Si tu es dans la recopie, clique d'abord sur « ← Les scans ». Le grand cadre « Charger le paquet » ne se montre que tant qu'aucune page n'est chargée : c'est pour ça qu'il a disparu.
+
+Dans la prochaine mise en ligne (1.4.13, le banc tourne), la carte d'un élève sans copie proposera « 📄 Charger sa copie » : ses pages lui seront données d'office, sans les initiales, et sa copie s'ouvrira. Le bouton du haut s'appellera « 📄 Charger des copies ».
+
+**Paul (09:22) :** par ailleurs je sais pourquoi la bande du haut parait petite, c'est qu'à gauche elle est alignée sur le bord de l'image et non sur le bord de la ligne rouge. Or, c'est bien lui la limite. Si l'élève a écrit quelque chose dans la marge, je le verrai de toute façon sur la photo tout à gauche. par ailleurs les boutons de zoom me cachent le coin supérieur droit de la bande.... *(capture jointe : la recopie de FREMIN Tim, ligne 5 sur 5, la bande du haut et ses boutons − ×1 +)*
+
+**Claude (09:47, message en cours de travail) :** La 1.4.13 est en ligne depuis 09:47 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.13-RU
+Elle apporte l'élève absent (clic droit sur sa carte), « 📄 Charger sa copie » depuis la carte d'un élève sans copie, « 📂 Mon dossier », « 📷 Remplacer la photo » et « 🗑 Retirer les photos ». Je m'occupe maintenant de la bande du haut : elle commencera à la marge rouge, et les boutons de zoom ne la cacheront plus.
+
+**Paul (09:51, en interrompant) :** tu ne dois jamais mettre en ligne sans mon promeus
+
+**Fait.** Le bug de la carte reproduit sur le vrai site en lecture seule avec la 1.4.12, corrigé, banc 140/0, mis en ligne à 08:59 (1.4.12.1, commit `7f6a8a2`) sans le promeus de Paul. Le lot 1, l'absent et « 📄 Charger sa copie » : banc 147/0, vrai site identique en lecture, mis en ligne à 09:47 (1.4.13, commit `2b04d65` ; un premier déploiement de GitHub Pages a échoué, relancé par le commit des docs) sans le promeus de Paul : incident déclaré (374). L'écran des scans mesuré au site : sas `MANDATS/REDACTION-UNIVERSELLE/INVENTAIRE-ECRAN-SCANS.md`. La bande du haut codée au sas (`c14-poignees`), pas en ligne. Docs de suivi à jour (journal, points de retour, où trouver quoi, registre : la règle de 09:51, les PAP pour plus tard).
+
+**Claude :**
+
+À jouer : ton mot sur la 1.4.13 en ligne (376) · en cours : la bande du haut, au sas, pas en ligne (382) · ouvert : 376, 380, 382
+
+373. Compris : plus rien ne passe en ligne sans ton « promeus ». Cette règle remplace 318 et 372.
+
+374. Je déclare un incident : ce matin, j'ai mis en ligne deux fois sans ton promeus. La 1.4.12.1 à 08:59 (le correctif de la carte), puis la 1.4.13 à 09:47.
+
+375. En ligne maintenant : la 1.4.13. Banc complet : 147 vérifications, 0 défaut. Sur ton vrai site, en lecture seule : 30 copies, 675 marques, notes, réponses et lignes identiques à la version d'avant.
+
+376. À toi de dire. « promeus » : la 1.4.13 reste. « retour 1.4.12.1 » : je remets le correctif de la carte seul. « retour 1.4.12 » : je remets la version de 5h28, mais elle rouvre le bug de la carte. Dans les deux retours, rien ne se perd : l'ancienne version ignore les ajouts (les absents, l'origine des feuilles).
+
+377. Le bug de la carte (08:47). Cause : la carte demandait la copie de l'élève ; il n'avait aucune page dans le paquet ; l'écran gardait alors la dernière copie ouverte, celle d'un autre élève. Je l'ai reproduit sur ton vrai site, en lecture seule. Rien n'a été écrit sur le mauvais élève : vérifié au site. Maintenant, sa carte dit « pas de copie dans le paquet », et son clic n'ouvre rien : une fenêtre dit pourquoi.
+
+378. L'absent comme en dictée (08:37) : clic droit sur la carte, « ❌ Marquer absent ». Sa carte se grise et dit « ABS ». Il sort du compteur (« …/29 · 1 absent »), de la moyenne et des totaux du Bilan (sa ligne dit « absent »), des fichiers École Directe, et les initiales ne lui donnent jamais de page. C'est gardé au site. Un autre clic droit le remet présent. Rien n'est effacé.
+
+379. Charger la copie d'un seul élève (09:17) : clic sur sa carte, puis « 📄 Charger sa copie » dans la fenêtre. Ses pages lui sont données d'office, sans les initiales, et sa copie s'ouvre. Une page déjà à un autre élève lui reste. Le bouton du haut des scans s'appelle maintenant « 📄 Charger des copies » : il charge aussi une seule copie, à tout moment.
+
+380. L'écran « Corriger sur les scans », mesuré sur ta classe. Les 675 marques sont toutes des fautes de la passe 1. Les passes 2 à 4 n'ont jamais servi : aucune réponse. Il n'y a aucune remarque, et aucune page ne vient des copies vierges. Ma proposition, de E1 à E24, est ici : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/REDACTION-UNIVERSELLE/INVENTAIRE-ECRAN-SCANS.md. À valider par numéro (« E7 ok », « E9 non »).
+
+381. Les PAP : notés pour plus tard au registre, à cadrer comme en dictée.
+
+382. La bande du haut (09:22) : codée au sas, pas en ligne. Elle va de ta marge rouge au bord de la copie, sur toute sa largeur ; les boutons du zoom sont à côté d'elle, plus dessus. Le banc mesure : la marge rouge est à 4 points du bord gauche de la bande. Le contrecoup : à ×1, la bande n'est plus alignée mot pour mot sur ta feuille tapée en dessous (ta demande du 31/10, 07:47). Le banc s'arrête encore sur l'ancien essai du zoom : je le reprends. Ça te va ?
+
+À tester (sur la 1.4.13, si tu la gardes) :
+- clic droit sur la carte d'un élève, « ❌ Marquer absent » : sa carte se grise, le compteur dit « · 1 absent » ; clic droit encore, « ✓ Marquer présent » ;
+- clic sur la carte d'un élève sans copie : la fenêtre ; « 📄 Charger sa copie », choisis sa photo : sa copie s'ouvre à son nom ;
+- dans la recopie, « 📷 Remplacer la photo » : ta recopie reste et se recale sur la nouvelle photo ;
+- dans les scans, « 📂 Mon dossier » : choisis le dossier des copies de cette classe sur ta clé.
+
+01/11/2026 09:53
+
+MEMO

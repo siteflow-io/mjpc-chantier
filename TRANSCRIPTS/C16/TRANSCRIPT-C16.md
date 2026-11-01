@@ -336,3 +336,25 @@ MEMO
 01/11/2026 23:27
 
 MEMO
+
+## Tour 11 — 01/11/2026 23:35 → 01/11/2026 23:38 (la nuit organisée)
+
+**Paul (23:35) :** Ok c'est bon. Tout doit être codé demain matin à 5h30.
+
+**Fait.** 61 à 66 acquis. Mandat du complément au sas : `MANDATS/DEROULE-01-11/MANDAT-FIL-NAVIGATION.md` (`eb8886f`). L'exécutant des diapos d'ouverture (23:4x) : la dette des noms sous les vignettes poussée (`20bda43`) ; livraison du mandat entier (banc VERT, sonde, NOTE) estimée vers 01:45. Un second exécutant neuf lancé à 23:45 pour le complément, en deux temps pour tenir 05:30 sans que deux exécutants écrivent dans le même fichier : jusqu'à la livraison du premier, il lit, audite le mandat et écrit sa sonde, sans toucher au code ; ensuite il écrit le fil, les flèches, la molette ; livraison au plus tard à 04:30. Contrôles horaires de la conscience programmés à 01:30, 03:30 et 04:35. Registre de production à jour.
+
+**Claude (23:38) :**
+
+À jouer : ta classe de demain, sur la 8.77.1-⑩ · en cours : deux exécutants, l'un après l'autre (les diapos d'ouverture, puis le fil, les flèches et la molette) · ouvert : 15
+
+67. Entendu pour 05:30. Le premier exécutant livre les diapos d'ouverture vers 01:45. Le second a commencé : jusque-là il lit et prépare ses vérifications, sans toucher au code ; ensuite il écrit le fil, les flèches et la molette, et livre au plus tard à 04:30.
+
+68. Entre 04:30 et 05:30, je passe le banc complet et je prends les captures en mode test, sur « Poésie et peinture » et sur le Horla. À 05:30 au plus tard, tu les as, avec la demande de « promeus ». Rien ne part en ligne sans ton mot.
+
+69. Je surveille toute la nuit ; je ne t'écris que si une décision te revient.
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 23:38
+
+MEMO

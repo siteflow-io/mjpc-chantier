@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.4.14-RU";
+var APP_VERSION = "1.4.15-RU";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -6772,6 +6772,10 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 .rc-bande-mot .rc-juste{color:#2b2520}
 /* [C14 1.4.12] la phrase qui m'a marqué */
 .rc-phrase-c{max-width:900px}.rc-phrase-t{max-height:52vh;overflow:auto;background:#fff;border:1px solid #d6cfc1;border-radius:8px;padding:10px 14px;font:17px/1.7 Georgia,serif;text-align:left}.rc-phrase-t p{margin:0}.rc-phrase-t small{font:600 11px system-ui;color:#3d752e;margin-right:6px}.rc-phrase-t .rc-mot{cursor:pointer;border-radius:3px;padding:0 1px}.rc-phrase-t .rc-mot:hover{background:#efe6d4}.rc-phrase-t .rc-mot.or{background:#f3dfb8;box-shadow:inset 0 -2px 0 #c08a4a}.rc-phrase-non{display:inline-flex;gap:6px;align-items:center;margin-right:auto;font:15px system-ui;cursor:pointer}
+/* [C14 1.4.15] la phrase qui m'a marqué : le premier mot, puis la phrase entière, écrits sous le texte */
+.rc-phrase-t .rc-mot.debut{outline:2px solid #b8860b;border-radius:3px}
+.rc-phrase-choix{margin-top:8px;padding:8px 12px;border-radius:8px;background:#fff7dc;border:1px solid #e6c65c;font:17px/1.5 Georgia,serif;color:#5a4300;text-align:left;min-height:1.5em}
+.rc-phrase-choix.vide{background:#fbf8f1;border-color:#e3dccd;color:#9a8b78;font-style:italic}
 </style>
 <script>// =====================================================================
 // RU-SCAN — CORRIGER SUR LA COPIE SCANNÉE (cadrage C13, 29-30/10/2026, tours 371 à 399)
@@ -8166,8 +8170,8 @@ function rcInterface() {
     '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand va de la marge rouge au bord de la copie.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>',
-    '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo"></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
-    '<div id="rcPhrase" class="rc-ia" hidden><div class="rc-ia-c rc-phrase-c" role="dialog" aria-label="La phrase qui m’a marqué"><b>La phrase qui m’a marqué</b><span>Clique le premier mot de la phrase, puis le dernier. Elle passera en or sur la copie de l’élève. C’est la fin de la recopie de cette copie.</span><div id="rcPhraseTexte" class="rc-phrase-t"></div><div class="rc-ia-b"><label class="rc-phrase-non" title="Aucune phrase ne t’a marqué dans cette copie : la recopie est finie quand même.">' + '<input type="checkbox" id="rcPhraseAucune"> Pas de phrase</label><button id="rcPhraseOui" class="sc-btn" disabled title="Choisis d’abord le premier et le dernier mot de la phrase.">✓ C’est elle</button><button id="rcPhraseFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
+    '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo" title="Glisse le cadre pour le déplacer. Double clic sur le cadre : deux poignées, une de chaque côté, pour régler sa longueur ; encore un double clic les retire. Clic droit sur le cadre : une faute de ta recopie."></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
+    '<div id="rcPhrase" class="rc-ia" hidden><div class="rc-ia-c rc-phrase-c" role="dialog" aria-label="La phrase qui m’a marqué"><b>La phrase qui m’a marqué</b><span>Clique le premier mot de la phrase : il s’écrit en dessous. Clique le dernier : toute la phrase s’écrit d’un coup. Un autre clic recommence. Elle passera en or sur la copie de l’élève. C’est la fin de la recopie de cette copie : sans elle (ou « Pas de phrase »), tu ne passes pas à la copie suivante.</span><div id="rcPhraseTexte" class="rc-phrase-t"></div><div id="rcPhraseChoix" class="rc-phrase-choix" aria-live="polite"></div><div class="rc-ia-b"><label class="rc-phrase-non" title="Aucune phrase ne t’a marqué dans cette copie : la recopie est finie quand même.">' + '<input type="checkbox" id="rcPhraseAucune"> Pas de phrase</label><button id="rcPhraseOui" class="sc-btn" disabled title="Choisis d’abord le premier et le dernier mot de la phrase.">✓ C’est elle</button><button id="rcPhraseFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
     '<div id="rcFlux" class="rc-ia" hidden><div class="rc-ia-c rc-flux-c" role="dialog" aria-label="Le flux de la classe"><b>Le flux de la classe</b><span>Chaque étape se valide toute seule, par ton geste : l’export, le chargement, la bande. Clique une copie pour l’ouvrir.</span><div id="rcFluxTable" class="rc-flux-t"></div><div class="rc-ia-b"><button id="rcFluxFermer" class="sc-btn" title="Fermer (Échap)">Fermer</button></div></div></div>',
     '<div id="rcIA" class="rc-ia" hidden><div class="rc-ia-c" role="dialog" aria-label="Charger le corrigé de l’IA"><b>Charger le corrigé de l’IA</b><span>Colle ici tout le retour de l’IA, ou choisis le fichier qu’elle t’a rendu. Rien ne change tant que toutes les lignes ne correspondent pas.</span>',
     '<textarea id="rcIATexte" spellcheck="false" placeholder="Colle ici le retour de l’IA"></textarea>',
@@ -8284,7 +8288,9 @@ function rcFermer(sansRendre) {
   if (!sansRendre) { scRendre(); scLignesAccueil(); }
 }
 function rcChoisirCopie(k) {
-  if (!SC.copies.includes(k)) return; if (RC.bd) rcBandeFermer(true);
+  if (!SC.copies.includes(k)) return;
+  if (!RC.bd && k !== RC.copie && rcPhraseManque(RC.copie)) { rcPhraseOuvrir(); if (RC.phrase) { RC.phraseApres = k; toast("D’abord la phrase qui t’a marqué (ou « Pas de phrase ») : c’est la fin de la recopie de cette copie."); } const sel = RC.ui.querySelector("#rcCopie"); if (sel) sel.value = RC.copie; return; }
+  if (RC.bd) rcBandeFermer(true);
   RC.copie = k; RC.documents = {}; RC.annule = [];
   SC.ic = SC.copies.indexOf(k); const pages = scPagesDe(k), r = rcCopieSource().reprise || {};
   RC.page = pages.some(p => p.id === r.page) ? r.page : pages[0] && pages[0].id; RC.ligne = r.ligne || null;
@@ -8852,12 +8858,23 @@ function rcPhraseOuvrir() {
   RC.phrase = { k, W, a: i(ph.debut), b: i(ph.fin) }; if (RC.phrase.a < 0 || RC.phrase.b < 0) RC.phrase.a = RC.phrase.b = -1;
   RC.ui.querySelector("#rcPhraseAucune").checked = !!ph.aucune; RC.ui.querySelector("#rcPhrase").hidden = false; rcPhraseRendre();
 }
-function rcPhraseFermer() { RC.phrase = null; RC.ui.querySelector("#rcPhrase").hidden = true; }
+function rcPhraseFermer() { RC.phrase = null; RC.phraseApres = null; RC.ui.querySelector("#rcPhrase").hidden = true; const T = RC.ui.querySelector("#rcPhraseTexte"); if (T) { T.dataset.k = ""; T.dataset.n = ""; } const sel = RC.ui.querySelector("#rcCopie"); if (sel && RC.copie) sel.value = RC.copie; }
+/* [C14 1.4.15] (Paul 01/11 13:12 : « à la fin d'une recopie, la phrase qui m'a marqué doit s'ouvrir toute seule et est bloquante pour passer à la copie suivante ») :
+   la recopie d'une copie est au bout quand sa dernière page a une ligne recopiée ; sans phrase (ni « Pas de phrase »), on ne quitte pas la copie pour une autre */
+function rcPhraseManque(k) { if (!k) return false; const s = scCopie(k), rec = s.recopie || {}; if (rec.phrase) return false; const P = scPagesDe(k), der = P.length && P[P.length - 1].id; return !!der && rcLignesEcrites(k).some(x => x.pid === der); }
+/* [C14 1.4.15] (Paul 01/11 13:12 : « quand je clique sur un mot, le texte se peint aléatoirement […] il faut que le premier mot s'affiche en dessous, une fois que
+   j'ai cliqué dessus, et quand je clique le deuxième, tous les mots entre le premier mot cliqué et le deuxième mot s'affichent en reconstituant la phrase d'un coup ») :
+   avant, le premier clic peignait tout depuis le début du texte (le bas de l'intervalle valait -1). Le texte n'est dessiné qu'une fois ; un clic ne change que des couleurs. */
 function rcPhraseRendre() {
-  const P = RC.phrase, T = RC.ui.querySelector("#rcPhraseTexte"), lo = Math.min(P.a, P.b), hi = Math.max(P.a, P.b); let h = "", ligne = null;
-  P.W.forEach((w, j) => { if (w.id !== ligne) { h += (ligne ? "</p>" : "") + '<p><small>' + w.n + "</small> "; ligne = w.id; }
-    h += '<span class="rc-mot' + (P.a >= 0 && j >= lo && j <= (P.b >= 0 ? hi : P.a) ? " or" : "") + '" data-j="' + j + '">' + escapeHtml(w.g.eleve) + "</span> "; });
-  T.innerHTML = h + "</p>"; T.querySelectorAll("[data-j]").forEach(s => s.onclick = () => { const j = +s.dataset.j; if (P.a < 0 || P.b >= 0) { P.a = j; P.b = -1; } else P.b = j; rcPhraseRendre(); });
+  const P = RC.phrase, T = RC.ui.querySelector("#rcPhraseTexte");
+  if (T.dataset.k !== P.k || T.dataset.n !== String(P.W.length)) { let h = "", ligne = null;
+    P.W.forEach((w, j) => { if (w.id !== ligne) { h += (ligne ? "</p>" : "") + '<p><small>' + w.n + "</small> "; ligne = w.id; } h += '<span class="rc-mot" data-j="' + j + '">' + escapeHtml(w.g.eleve) + "</span> "; });
+    T.innerHTML = h + "</p>"; T.dataset.k = P.k; T.dataset.n = String(P.W.length);
+    T.onclick = ev => { const s = ev.target.closest && ev.target.closest("[data-j]"); if (!s) return; const j = +s.dataset.j; if (P.a < 0 || P.b >= 0) { P.a = j; P.b = -1; } else P.b = j; rcPhraseRendre(); }; }
+  const lo = P.b >= 0 ? Math.min(P.a, P.b) : P.a, hi = P.b >= 0 ? Math.max(P.a, P.b) : P.a;
+  T.querySelectorAll("[data-j]").forEach(s => { const j = +s.dataset.j; s.classList.toggle("or", P.a >= 0 && j >= lo && j <= hi); s.classList.toggle("debut", P.a >= 0 && P.b < 0 && j === P.a); });
+  const C = RC.ui.querySelector("#rcPhraseChoix"); C.textContent = P.a < 0 ? "La phrase s’écrira ici." : P.b < 0 ? "« " + P.W[P.a].g.eleve + " … » : clique maintenant le dernier mot." : "« " + P.W.slice(lo, hi + 1).map(w => w.g.eleve).join(" ") + " »";
+  C.classList.toggle("vide", P.a < 0);
   const ok = P.a >= 0 && P.b >= 0, b = RC.ui.querySelector("#rcPhraseOui"); b.disabled = !ok; b.title = ok ? "Garder cette phrase : elle passe en or sur la copie de l’élève, et la recopie de cette copie est finie." : "Choisis d’abord le premier et le dernier mot de la phrase.";
 }
 function rcPhraseRetirer(k) { const s = scCopie(k); Object.values(s.marques).filter(m => m.forme === "etoile" && m.recopie).forEach(m => scEffacer(m.id)); }
@@ -8868,15 +8885,16 @@ function rcPhrasePoser(k, a, b, W) {
     scPoser({ page: pid, forme: "etoile", sens: "lieu", passe: "langue", point: "etoile", q: null, x0: Math.min(...segs.map(s => s[0])), y0: Math.min(...segs.map(s => s[1])), x1: Math.max(...segs.map(s => s[2])), y1: Math.max(...segs.map(s => s[3])), segs, bonne: null, recopie: true, l0: null, l1: null }); });
 }
 function rcPhraseReposer(k) { const ph = (scCopie(k).recopie || {}).phrase, W = rcMotsCopie(k, []), i = q => W.findIndex(w => w.id === q.id && w.m === q.m), a = i(ph.debut), b = i(ph.fin); if (a >= 0 && b >= 0) rcPhrasePoser(k, Math.min(a, b), Math.max(a, b), W); }
+function rcPhraseSuite() { const k = RC.phraseApres; RC.phraseApres = null; if (k && k !== RC.copie) rcChoisirCopie(k); }
 function rcPhraseValider() {
-  const P = RC.phrase; if (!P || P.a < 0 || P.b < 0) return; const k = P.k, a = Math.min(P.a, P.b), b = Math.max(P.a, P.b), W = P.W.slice(a, b + 1);
+  const P = RC.phrase; if (!P || P.a < 0 || P.b < 0) return; const apres = RC.phraseApres; const k = P.k, a = Math.min(P.a, P.b), b = Math.max(P.a, P.b), W = P.W.slice(a, b + 1);
   rcPhrasePoser(k, a, b, P.W);
   const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), debut: { id: P.W[a].id, m: P.W[a].m }, fin: { id: P.W[b].id, m: P.W[b].m }, texte: W.map(w => w.g.eleve).join(" ") };
-  saveState(); rcPhraseFermer(); rcEtatIA(); toast("La phrase qui t’a marqué est gardée : la recopie de cette copie est finie.");
+  saveState(); rcPhraseFermer(); rcEtatIA(); toast("La phrase qui t’a marqué est gardée : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite();
 }
 function rcPhraseAucune() {
-  const P = RC.phrase; if (!P) return; rcPhraseRetirer(P.k); const s = scCopie(P.k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), aucune: true };
-  saveState(); rcPhraseFermer(); rcEtatIA(); toast("Pas de phrase : la recopie de cette copie est finie.");
+  const P = RC.phrase; if (!P) return; const apres = RC.phraseApres; rcPhraseRetirer(P.k); const s = scCopie(P.k); s.recopie = s.recopie || {}; s.recopie.phrase = { le: new Date().toISOString(), aucune: true };
+  saveState(); rcPhraseFermer(); rcEtatIA(); toast("Pas de phrase : la recopie de cette copie est finie."); RC.phraseApres = apres; rcPhraseSuite();
 }
 /* le temps compte comme le chrono des scans : une minute sans geste ne compte pas ; la frappe de la recopie compte du temps, pas des gestes */
 function rcCompter(type) {
@@ -9231,7 +9249,7 @@ function rcBandePhoto(a, anime) {
   const B = RC.bd, R = rcRubanPhoto(B.k), ecart = 26; let X = 0; R.forEach(r => { r.k = h / r.sh; r.X = X; r.W = r.sw * r.k; X += r.W + ecart; });
   const cur = R.find(r => r.x.id === a.id); if (!cur || !cur.im) { if (B) B.ruban = null; return; }
   const im = cur.im, q = rcPlaceSeg(a), Xr = u => cur.X + (u * im.w - cur.sx) * cur.k, Y = v => (v * im.h - cur.sy) * cur.k;
-  const centre = (Xr(q.x0) + Math.max(Xr(q.x1), Xr(q.x0) + 6)) / 2;
+  const centre = B.centreFige != null ? B.centreFige : (Xr(q.x0) + Math.max(Xr(q.x1), Xr(q.x0) + 6)) / 2;   // pendant qu'une poignée bouge, le ruban ne glisse pas : le bord suit la souris
   /* le ruban glisse d'un arrêt à l'autre (un sixième de seconde), puis s'arrête sur le mot */
   const depart = anime !== false && B.rubanCentre != null && Math.abs(B.rubanCentre - centre) > 2 ? B.rubanCentre : centre; B.rubanCentre = centre;
   const dessiner = c => {
@@ -9246,15 +9264,20 @@ function rcBandePhoto(a, anime) {
     const cd = a.mot ? null : rcCodeArret(a), T = a.mot ? RC_NEUTRE : RC_TYPES[cd];   // [C14 1.4.12] un mot sans faute de l'IA : un cadre gris
     x.fillStyle = rcRgba(T.couleur, .22); x.strokeStyle = T.couleur; x.lineWidth = 2; x.fillRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6); x.strokeRect(a0 - 3, b0 - 3, a1 - a0 + 6, b1 - b0 + 6);
     if (q.type.manque) { const m = (a0 + a1) / 2; x.strokeStyle = T.couleur; x.lineWidth = 3; x.beginPath(); x.moveTo(m - 9, b1 + 1); x.lineTo(m, b0 + 4); x.lineTo(m + 9, b1 + 1); x.stroke(); }
-    B.boite = { a0: a0 - 6, a1: a1 + 6, par: 1 / (cur.k * im.w), q, code: cd, bord: a0 - 3, ym: (b0 + b1) / 2 };
+    const redim = B.redim === a.id + "|" + a.cle;
+    if (redim) [a0 - 3, a1 + 3].forEach(px => { x.fillStyle = "#fff"; x.strokeStyle = T.couleur; x.lineWidth = 2; x.beginPath(); x.rect(px - 5, (b0 + b1) / 2 - 13, 10, 26); x.fill(); x.stroke(); x.fillStyle = T.couleur; x.fillRect(px - 1, (b0 + b1) / 2 - 7, 2, 14); });
+    B.boite = { a0: a0 - (redim ? 12 : 6), a1: a1 + (redim ? 12 : 6), g: a0 - 3, d: a1 + 3, redim, par: 1 / (cur.k * im.w), q, code: cd, bord: a0 - 3, ym: (b0 + b1) / 2 };
     B.ruban = { lignes: R.map(r => ({ id: r.x.id, X: r.X + sh, W: r.W })), centre: w / 2 };
   };
   if (depart === centre || typeof requestAnimationFrame !== "function") { finir(); return; }
   const t0 = Date.now(), duree = 170, pas = () => { if (RC.bd !== B || B.rubanCentre !== centre) return; const t = Math.min(1, (Date.now() - t0) / duree), e = t * (2 - t); if (t < 1) { dessiner(depart + (centre - depart) * e); requestAnimationFrame(pas); } else finir(); };
   finir(); dessiner(depart); requestAnimationFrame(pas);
 }
-function rcBandeGlisser(du) {
-  const B = RC.bd, a = B && rcBandeCible(); if (!a || B.attente) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a), x0 = rcBorne(q.x0 + du, 0, 0.99), x1 = rcBorne(q.x1 + du, 0.01, 1);
+/* [C14 1.4.15] (Paul 01/11 13:12 : « dans la bande, parfois la largeur du rectangle est trop longue et je n'ai pas de moyen de la raccourcir. Un double clic sur le
+   rectangle doit activer deux poignées de chaque côté du rectangle pour le redimensionner en longueur ») : cote « g » ou « d » ne bouge qu'un bord ; sans cote, tout le cadre */
+function rcBandeGlisser(du, cote) {
+  const B = RC.bd, a = B && rcBandeCible(); if (!a || B.attente) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a);
+  let x0 = cote === "d" ? q.x0 : rcBorne(q.x0 + du, 0, 0.99), x1 = cote === "g" ? q.x1 : rcBorne(q.x1 + du, 0.01, 1); if (x1 - x0 < 0.008) { if (cote === "g") x0 = x1 - 0.008; else if (cote === "d") x1 = x0 + 0.008; }
   /* [C14 1.4.12] (C14 322, acquis) : la première fois que tu glisses un cadre, l'app garde aussi où elle l'avait posé ; la mesure de sa justesse se fait sur ton travail */
   const app = !(a.l.places && a.l.places[a.cle]) && !(a.l.placesApp && a.l.placesApp[a.cle]) ? (({ x0, x1, y0, y1 }) => ({ x0, x1, y0, y1 }))(rcPlaceSeg(a)) : null;
   rcLigneMaj(B.k, a.pid, a.id, l => { l.places = Object.assign({}, l.places, { [a.cle]: { x0, x1 } }); if (app) l.placesApp = Object.assign({}, l.placesApp, { [a.cle]: app }); });
@@ -9264,9 +9287,11 @@ function rcBandeGlisser(du) {
 function rcBandeSouris() {
   const cv = RC.ui.querySelector("#rcBandePhoto"); if (cv.dataset.branche) return; cv.dataset.branche = "1";
   const dedans = ev => { const b = RC.bd && RC.bd.boite, r = cv.getBoundingClientRect(), x = (ev.clientX - r.left) * cv.width / r.width; return b && x >= b.a0 && x <= b.a1 ? x : null; };
-  cv.addEventListener("pointerdown", ev => { if (ev.button !== 0 || !RC.bd || dedans(ev) === null) return; ev.preventDefault(); cv.setPointerCapture(ev.pointerId); RC.bd.tire = { x: ev.clientX }; });
-  cv.addEventListener("pointermove", ev => { const t = RC.bd && RC.bd.tire; if (!t) return; const r = cv.getBoundingClientRect(), dpx = (ev.clientX - t.x) * cv.width / r.width; t.x = ev.clientX; rcBandeGlisser(dpx * RC.bd.boite.par); });
-  const fin = () => { if (RC.bd && RC.bd.tire) { RC.bd.tire = null; saveState(); } }; cv.addEventListener("pointerup", fin); cv.addEventListener("pointercancel", fin);
+  cv.addEventListener("pointerdown", ev => { const x = dedans(ev); if (ev.button !== 0 || !RC.bd || x === null) return; ev.preventDefault(); cv.setPointerCapture(ev.pointerId); const b = RC.bd.boite;
+    const cote = b.redim ? (Math.abs(x - b.g) <= 9 ? "g" : Math.abs(x - b.d) <= 9 ? "d" : null) : null; RC.bd.tire = { x: ev.clientX, cote }; if (cote) RC.bd.centreFige = RC.bd.rubanCentre; });
+  cv.addEventListener("pointermove", ev => { const t = RC.bd && RC.bd.tire; if (!t) return; const r = cv.getBoundingClientRect(), dpx = (ev.clientX - t.x) * cv.width / r.width; t.x = ev.clientX; rcBandeGlisser(dpx * RC.bd.boite.par, t.cote); });
+  const fin = () => { if (RC.bd && RC.bd.tire) { const re = RC.bd.centreFige != null; RC.bd.tire = null; RC.bd.centreFige = null; saveState(); if (re) rcBandePhoto(rcBandeCible()); } }; cv.addEventListener("pointerup", fin); cv.addEventListener("pointercancel", fin);
+  cv.addEventListener("dblclick", ev => { if (!RC.bd || RC.bd.attente || dedans(ev) === null) return; ev.preventDefault(); const a = rcBandeCible(); if (!a) return; const cle = a.id + "|" + a.cle; RC.bd.redim = RC.bd.redim === cle ? null : cle; rcBandePhoto(a, false); });
   cv.addEventListener("contextmenu", ev => { if (!RC.bd || RC.bd.attente) return; ev.preventDefault(); if (dedans(ev) !== null) rcBandeRecopie(); });
 }
 /* 1.4.3 (Paul 12:15) : clic droit sur le cadre = une faute de ta recopie ; la ligne prend la forme du corrigé à cet endroit et la faute disparaît ; Ctrl + Z la remet */
@@ -9329,6 +9354,7 @@ function rcClavier(ev) {
     if (i + sens < 0 || i + sens >= d.ordre.length) { if (rcPageVoisine(sens)) { rcGarder(); return true; } }
     const id = d.ordre[Math.max(0, Math.min(d.ordre.length - 1, i + sens))]; rcSelectionner(id, true, true);
     rcGarder();
+    if (ev.key === "Enter" && i === d.ordre.length - 1 && rcPhraseManque(RC.copie)) rcPhraseOuvrir();   // [C14 1.4.15] au bout de la recopie, la phrase s'ouvre seule
     return true;
   }
   if (!input && (ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "z") { ev.preventDefault(); rcAnnuler(); }

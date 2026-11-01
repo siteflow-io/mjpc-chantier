@@ -2,6 +2,10 @@ import path from "node:path";
 // Épreuves de la recopie : seulement des gestes ; les évaluations lisent l'état et le DOM.
 export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   await pg.bringToFront();
+  // [1.4.15] (Paul 01/11 13:12) sans la phrase qui m'a marqué, on ne quitte pas une copie recopiée jusqu'à sa dernière page : la phrase est demandée ; ici, « Pas de phrase », le geste de Paul
+  const sansPhrase = async () => { await att(150); if (await pg.evaluate(() => typeof RC !== "undefined" && !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(350); } };
+  const allerCopie = async k => { await pg.selectOption("#rcCopie", k); await sansPhrase(); };
+  const copieSuite = async () => { await pg.click("#rcCopieSuite"); await sansPhrase(); };
   const avant = await pg.evaluate(() => {
     const k = SC.copies[SC.ic], c = state.copies[k], s = c.scan || {};
     return { k, lignes: s.lignes, marques: JSON.stringify(s.marques || {}), rep: JSON.stringify(s.rep || {}), note: scNote(k), copies: Object.keys(state.copies).length };
@@ -90,13 +94,13 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   verif("recopie : retoucher la photo déplace ses lignes, garde leurs identités et textes, et conserve la note", g2.id === g1.id && g2.texte === g1.texte && (Math.abs(g2.x0 - g1.x0) > 0.00001 || Math.abs(g2.y0 - g1.y0) > 0.00001) && JSON.stringify(noteRetouchee) === JSON.stringify(avant.note));
   await cap("C15-25-recopie-apres-retouche");
   const double = await pg.evaluate(() => SC.copies.find(k => Object.values(SC.pages).filter(p => p.eleve === k && !p.blanche).length > 1));
-  await pg.selectOption("#rcCopie", double); const pages = await pg.locator("#rcPage option").evaluateAll(es => es.map(e => e.value));
+  await allerCopie(double); const pages = await pg.locator("#rcPage option").evaluateAll(es => es.map(e => e.value));
   await pg.selectOption("#rcPage", pages[1]); await champ(0).fill("Sur la deuxième page.");
   await pg.selectOption("#rcPage", pages[0]); await champ(0).fill("Sur la première page.");
   await pg.selectOption("#rcPage", pages[1]);
   verif("recopie : deux pages d'une copie gardent chacune leurs propres lignes et leur texte", await champ(0).inputValue() === "Sur la deuxième page.");
-  await pg.click("#rcCopieSuite"); await champ(0).fill("Une autre copie.");
-  await pg.selectOption("#rcCopie", double); await pg.selectOption("#rcPage", pages[1]);
+  await copieSuite(); await champ(0).fill("Une autre copie.");
+  await allerCopie(double); await pg.selectOption("#rcPage", pages[1]);
   verif("recopie : changer de copie ne rattache pas la saisie à un autre élève", await champ(0).inputValue() === "Sur la deuxième page.");
   const tailles = [];
   for (const [w, h] of [[1280, 720], [1366, 768], [1536, 864], [1920, 1080]]) {
@@ -115,7 +119,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   await pg.setInputFiles("#scanEcran .sc-haut input[type=file]", path.join(dir, "banc/recopie-lignes-essai.png"));
   await pg.locator("#scInit").waitFor({ state: "visible" }); await pg.locator("#scInit").fill("ec"); await pg.locator("#scInit").press("Enter"); await att(300);
   const derniere = await pg.evaluate(() => Object.values(SC.pages).sort((a, b) => a.ordre - b.ordre).at(-1));
-  await pg.click("#btnRecopier"); await pg.selectOption("#rcCopie", derniere.eleve); await pg.selectOption("#rcPage", derniere.id);
+  await pg.click("#btnRecopier"); await allerCopie(derniere.eleve); await pg.selectOption("#rcPage", derniere.id);
   const six = await pg.evaluate(() => ({ n: document.querySelectorAll("#rcFeuille .rc-saisie").length, lignes: Object.values(RC.documents[RC.page].lignes).map(l => ({ y: l.y0, w: l.x1 - l.x0 })) }));
   verif("recopie : six lignes trouvées sur six dans la page inventée, avec ligne courte, rature, pente et grand blanc (" + six.n + ")", six.n === 6);
   await champ(1).fill("Deux mots"); await pg.keyboard.press("Enter");
@@ -125,9 +129,10 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   const nums = await pg.evaluate(() => ({ t: Array.from(document.querySelectorAll("#rcLignesSVG text.rc-numero")).map(t => t.textContent).join(","), av: rcEcritesAvant(RC.page), tot: rcEcritesCopie(), titre: document.querySelector("#rcLigneTitre").textContent, compte: document.querySelector("#rcCompte").textContent }));
   verif("recopie (1.3.2) : seules les lignes écrites comptent, la ligne vide après Entrée non, et le compte court sur toute la copie (" + nums.t + " · " + nums.titre + " · " + nums.compte + ")", nums.t === String(nums.av + 1) && nums.tot === nums.av + 1 && nums.compte === nums.tot + (nums.tot > 1 ? " lignes écrites" : " ligne écrite") + " sur la copie" && /^Ligne vide/.test(nums.titre));
   // 1.3.2 : une page ouverte avant (poignées encore à leur place automatique) se range à la marge ; une poignée tirée par Paul ne bouge pas
+  if (await pg.evaluate(() => rcPhraseManque(RC.copie))) { await pg.click("#rcPhraseOuvrir"); await att(200); await pg.click("#rcPhraseAucune"); await att(300); }   // [1.4.15] la recopie de cette copie finie d'abord : partir n'est plus bloqué
   const ancien = await pg.evaluate(() => { const s = state.copies[RC.copie].scan.recopie.pages[RC.page], o = rcListe(s.ordre); s.lignes[o[3]].x0 = 0.0204; s.lignes[o[3]].x1 = 0.9685; s.lignes[o[4]].x0 = 0.0211921755; s.lignes[o[4]].recale = true; delete s.marge; return { copie: RC.copie, page: RC.page, a: o[3], b: o[4] }; });
   const autre = await pg.evaluate(c => SC.copies.find(k => k !== c), ancien.copie);
-  await pg.selectOption("#rcCopie", autre); await att(150); await pg.selectOption("#rcCopie", ancien.copie); await att(150); await pg.selectOption("#rcPage", ancien.page); await att(200);
+  await allerCopie(autre); await att(150); await allerCopie(ancien.copie); await att(150); await pg.selectOption("#rcPage", ancien.page); await att(200);
   const rg = await pg.evaluate(o => { const d = RC.documents[RC.page]; return { a0: d.lignes[o.a].x0, a1: d.lignes[o.a].x1, b0: d.lignes[o.b].x0 }; }, ancien);
   verif("recopie (1.3.2) : une page ouverte avant se range seule à la marge et au bord, une poignée tirée à la main reste où elle est (" + rg.a0.toFixed(3) + " · " + rg.a1.toFixed(3) + " · " + rg.b0.toFixed(4) + ")", rg.a0 < 150 / 1240 && rg.a0 > 150 / 1240 - 0.02 && rg.a1 >= 0.98 && rg.b0 === 0.0211921755);
   await champ(1).click(); await att(100);
@@ -308,7 +313,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   verif("recopie (1.4.0) : Échap ferme la fenêtre du corrigé, pas la recopie", await pg.evaluate(() => RC.ouvert && document.querySelector("#rcIA").hidden));
   // 1.4.1 (Paul 31/10 : 181, 183, 186, 187) : la bande des fautes
   const kB = await pg.evaluate(id => SC.copies.find(k => rcLignesEcrites(k).some(x => x.id === id)), l0.id);
-  await pg.selectOption("#rcCopie", kB); await att(250);
+  await allerCopie(kB); await att(250);
   const n0 = await pg.evaluate(k => scFautes(k).length, kB);
   await pg.click("#rcBandeOuvrir"); await att(200);
   if (n0) { const avis = await pg.locator("#rcBandeAvis").textContent(); await pg.click("#rcBandeCommencer"); await att(150);
@@ -326,20 +331,20 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   // 1.4.2 (Paul 11:01) : le repérage dans l'encre ; un bouton pour revenir ; changer de copie ferme la bande
   const re2 = JSON.parse(brut); let cibleId = null; re2.copies.forEach(c => c.pages.forEach(q => q.lignes.forEach(l => { if (l.texte === "Deux mots") { l.texte = "Deux mot"; cibleId = l.id; } })));
   await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(re2)); await pg.click("#rcIAValider"); await att(300); const msg2 = await pg.locator("#rcIAMessage").textContent(); await pg.click("#rcIAFermer");
-  const kC = await pg.evaluate(id => SC.copies.find(k => rcLignesEcrites(k).some(x => x.id === id)), cibleId); await pg.selectOption("#rcCopie", kC); await att(250);
+  const kC = await pg.evaluate(id => SC.copies.find(k => rcLignesEcrites(k).some(x => x.id === id)), cibleId); await allerCopie(kC); await att(250);
   await pg.click("#rcBandeOuvrir"); await att(200); if (await pg.locator("#rcBandeCommencer").count() && await pg.locator("#rcBandeCommencer").isVisible()) { await pg.click("#rcBandeCommencer"); await att(150); }
   const iC = await pg.evaluate(id => RC.bd.A.findIndex(x => x.id === id), cibleId); await pg.click('#rcBandeListe li[data-i="' + iC + '"]'); await att(150);
   const pl = await pg.evaluate(id => { const a = RC.bd.A.find(x => x.id === id); const q = rcPlaceSeg(a); return { q, x1L: a.l.x1, mot: a.g.eleve }; }, cibleId); await cap("C14-30-bande-dans-l-encre");
   verif("recopie (1.4.2) : la faute « " + pl.mot + " » se place dans l'encre de la ligne, pas d'une poignée à l'autre (" + msg2.slice(0, 20) + " · encre " + (pl.q.encre || []).map(v => v.toFixed(3)).join("-") + " · mot " + pl.q.x0.toFixed(3) + "-" + pl.q.x1.toFixed(3) + ")", /^Chargé/.test(msg2) && pl.q.encre && pl.q.x0 >= pl.q.encre[0] - 1e-6 && pl.q.x1 <= pl.q.encre[1] + 0.013 && pl.q.x1 < pl.x1L - 0.2 && pl.q.x0 > (pl.q.encre[0] + pl.q.encre[1]) / 2 - 0.02);
   await pg.click("#rcBandeRetour"); await att(200); const sorti = await pg.evaluate(() => !RC.bd && RC.ouvert && !document.querySelector("#rcEcran").classList.contains("rc-mode-bande"));
-  await pg.click("#rcBandeOuvrir"); await att(200); const autreK = await pg.evaluate(k => SC.copies.find(x => x !== k), kC); await pg.selectOption("#rcCopie", autreK); await att(250);
+  await pg.click("#rcBandeOuvrir"); await att(200); const autreK = await pg.evaluate(k => SC.copies.find(x => x !== k), kC); await allerCopie(autreK); await att(250);
   const change = await pg.evaluate(k => !RC.bd && RC.copie === k && !document.querySelector("#rcEcran").classList.contains("rc-mode-bande"), autreK);
   verif("recopie (1.4.2) : « ← Revenir à la recopie » sort de la bande ; changer de copie ferme la bande et ouvre la recopie de l'autre élève", sorti && change);
   // 1.4.3 (Paul 11:25 et 12:15) : le type de faute, le cadre qu'on glisse, le clic droit (faute de ma recopie) et Ctrl + Z
   const cible2 = (await pg.evaluate(pid => { for (const k of SC.copies) { const x = rcLignesEcrites(k).find(y => y.pid === pid && y.l.texte === "Deux mots"); if (x) return x.id; } return null; }, derniere.id)) || cibleId;
   const kC2 = await pg.evaluate(id => SC.copies.find(k => rcLignesEcrites(k).some(x => x.id === id)), cible2);
   const re3 = JSON.parse(brut); re3.copies.forEach(c => c.pages.forEach(q => q.lignes.forEach(l => { if (l.id === cible2) l.texte = "Deux beaux mots"; })));
-  await pg.selectOption("#rcCopie", kC2); await att(250); await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(re3)); await pg.click("#rcIAValider"); await att(300); await pg.click("#rcIAFermer");
+  await allerCopie(kC2); await att(250); await pg.click("#rcImportIA"); await pg.locator("#rcIATexte").fill(JSON.stringify(re3)); await pg.click("#rcIAValider"); await att(300); await pg.click("#rcIAFermer");
   await pg.click("#rcBandeOuvrir"); await att(200); if (await pg.locator("#rcBandeCommencer").count() && await pg.locator("#rcBandeCommencer").isVisible()) { await pg.click("#rcBandeCommencer"); await att(150); }
   const i3 = await pg.evaluate(id => RC.bd.A.findIndex(x => x.id === id), cible2); await pg.click('#rcBandeListe li[data-i="' + i3 + '"]'); await att(150);
   const t3 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i], q = rcPlaceSeg(a), m = (q.x0 + q.x1) / 2, tr = q.encre.traits || [], bl = []; for (let i = 0; i + 1 < tr.length; i++) bl.push([tr[i][1], tr[i + 1][0]]); bl.sort((p, r) => (r[1] - r[0]) - (p[1] - p[0]));
@@ -396,7 +401,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
     !!k3.k && oublie && surK3 && !!h3 && h3.id !== k3.id && !Object.keys((h3.scan || {}).marques || {}).length && (h3.scan || {}).lignes === 12);
   await pg.evaluate(() => { try { RU.flux = null; } catch (e) {} window.EventSource = undefined; });
   // 1.4.5 (Paul 14:16 et 14:46) : un arrêt par mot ; un arrêt déjà décidé qui prenait deux mots (copie d'avant) est coupé, ses marques suivent
-  await pg.click("#btnRecopier"); await att(300); await pg.selectOption("#rcCopie", kC2); await att(250);
+  await pg.click("#btnRecopier"); await att(300); await allerCopie(kC2); await att(250);
   const pid5 = await pg.evaluate(id => { const x = rcLignesEcrites(RC.copie).find(y => y.id === id); if (x && RC.page !== x.pid) rcActiverPage(x.pid); return x ? x.pid : null; }, cible2); await att(200);
   const champ5 = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + cible2 + '"]'); await champ5.scrollIntoViewIfNeeded(); await champ5.fill("Mes camarades et moi se plaint"); await att(300);
   const [dl5] = await Promise.all([pg.waitForEvent("download"), pg.click("#rcExportIA")]); const brut5 = fs.readFileSync(await dl5.path(), "utf8");   // 1.4.10 : la ligne retapée repart chez l'IA
@@ -522,8 +527,9 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   // 1.4.12 (Paul 23:09 : « à la fin d'une recopie je dois pouvoir surligner facilement la phrase qui m'a marqué […] Si pas de phrase, pas de phrase ( coche pas de phrase ).
   // Cette phase là marque la fin d'une recopie. »)
   const k19 = await pg.evaluate(() => SC.copies.find(k => Object.values(scCopie(k).marques).some(m => m.bande && m.bande.code)));
-  await pg.click("#btnRecopier"); await att(400); if (await pg.evaluate(k => RC.copie !== k, k19)) { await pg.selectOption("#rcCopie", k19); await att(300); }
+  await pg.click("#btnRecopier"); await att(400); if (await pg.evaluate(k => RC.copie !== k, k19)) { await allerCopie(k19); await att(300); }
   const fl19a = (await pg.locator("#rcIAEtat").textContent()) || "";
+  const deja19 = await pg.evaluate(k => rcFluxCopie(k).finie, k19), cptPh = t => { const m = String(t).match(/la phrase qui m’a marqué : (\d+) sur (\d+)/); return m ? +m[1] : null; };
   // 1.4.12 (exigences du 29/10 : « Je veux max 30 clics par copie » ; « mesurer le gain ») : le temps et les gestes de chaque copie, comptés seuls
   await pg.click("#rcFluxOuvrir"); await att(200); const tg19 = await pg.evaluate(k => { const f = rcFluxCopie(k), tr = document.querySelector('#rcFluxTable tr[data-k="' + CSS.escape(k) + '"]'); return { t: f.temps, g: f.gestes, cell: tr ? tr.lastElementChild.textContent : "" }; }, k19); await pg.click("#rcFluxFermer"); await att(100);
   verif("recopie (1.4.12) : le flux compte seul, pour chaque copie, le temps de recopie, le temps de bande et les gestes (« " + tg19.cell + " »)", !!tg19.t && tg19.t.bande > 0 && tg19.t.recopie > 0 && !!tg19.g && tg19.g.bande >= 5 && /gestes/.test(tg19.cell));
@@ -538,9 +544,9 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   await pg.click("#rcPhraseOuvrir"); await att(200); await pg.click("#rcPhraseTexte [data-j] >> nth=1"); await att(100); await pg.click("#rcPhraseTexte [data-j] >> nth=" + fin19); await att(100); await pg.click("#rcPhraseOui"); await att(300);   // la phrase remise, pour le fichier de l'élève
   await pg.click("#rcFermer"); await att(200);
   verif("recopie (1.4.12) : « ★ La phrase qui m'a marqué » : clic sur le 2e mot puis sur le " + (fin19 + 1) + "e (" + or19 + " mots en or), « ✓ C'est elle » : la phrase passe en or sur la photo (" + r19.etoiles + " marque" + (r19.etoiles > 1 ? "s" : "") + ", " + r19.segs + " bandes, une par ligne : « " + r19.phrase + " ») ; la recopie de cette copie est finie : le compteur passe de « " + (fl19a.match(/la phrase qui m’a marqué : \d+ sur \d+/) || ["—"])[0] + " » à « " + (fl19b.match(/la phrase qui m’a marqué : \d+ sur \d+/) || ["toutes finies"])[0] + " » ; « Pas de phrase » coché : plus d'or (" + r19b.etoiles + "), finie quand même (" + r19b.finie + ")",
-    or19 === fin19 && r19.etoiles >= 1 && r19.segs >= 2 && r19.phrase.split(" ").length === fin19 && r19.finie && /la phrase qui m’a marqué : 0 sur/.test(fl19a) && !/la phrase qui m’a marqué : 0 sur/.test(fl19b) && r19b.etoiles === 0 && r19b.aucune && r19b.finie);
+    or19 === fin19 && r19.etoiles >= 1 && r19.segs >= 2 && r19.phrase.split(" ").length === fin19 && r19.finie && cptPh(fl19a) !== null && (cptPh(fl19b) === null ? !deja19 : cptPh(fl19b) === cptPh(fl19a) + (deja19 ? 0 : 1)) && r19b.etoiles === 0 && r19b.aucune && r19b.finie);
   // 1.4.13 (Paul 01/11 08:27 : « imaginons que je reprenne une photo en meilleure qualité pour un élève […] je veux la refaire ») : « 📷 Remplacer la photo » d'une page
-  await pg.click("#btnRecopier"); await att(400); if (await pg.evaluate(k => RC.copie !== k, k19)) { await pg.selectOption("#rcCopie", k19); await att(300); }
+  await pg.click("#btnRecopier"); await att(400); if (await pg.evaluate(k => RC.copie !== k, k19)) { await allerCopie(k19); await att(300); }
   const pid22 = await pg.evaluate(id => { const x = rcLignesEcrites(RC.copie).find(y => y.id === id); if (x && RC.page !== x.pid) rcActiverPage(x.pid); return x ? x.pid : null; }, cible2); await att(250);
   const av22 = await pg.evaluate(pid => { const k = RC.copie, d = (scCopie(k).recopie.pages || {})[pid], s = scCopie(k), L = rcListe(d.ordre).map(id => d.lignes[id]).filter(l => (l.texte || "").trim());
     return { textes: L.map(l => l.texte).join("|"), ids: L.map(l => l.id).join("|"), y: L.map(l => (l.y0 + l.y1) / 2), bande: Object.values(s.marques).filter(m => m.page === pid && m.bande).map(m => (m.y0 + m.y1) / 2), page: JSON.stringify({ e: SC.pages[pid].eleve, o: SC.pages[pid].ordre }) }; }, pid22);

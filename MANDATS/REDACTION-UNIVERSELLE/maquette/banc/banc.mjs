@@ -2,6 +2,7 @@ import { eprouverRecopie } from "./recopie.mjs";
 import { eprouverAvancement } from "./avancement.mjs";
 import { eprouverAccueil, eprouverAutreOrdinateur } from "./accueil.mjs";
 import { eprouverAbsent } from "./absent.mjs";
+import { eprouverDettes115 } from "./dettes115.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -245,6 +246,7 @@ verif('copie passée en entier : le récapitulatif s\'ouvre seul (note « ' + (r
 verif('aucune écriture sur une classe entière (une clé de copie vide)', !(await pg.evaluate(() => window.__LOG || [])).some(l => /^\w+ [^/]+\.json/.test(l)));
 await eprouverAvancement({ pg, verif, cap, att });
 await eprouverRecopie({ pg, verif, cap, att, dir: DIR, out: OUT });
+await eprouverDettes115({ pg, verif, cap, att });
 await eprouverAccueil({ pg, verif, cap, att });
 await eprouverAutreOrdinateur({ pg, verif, cap, att, dir: DIR });
 await eprouverAbsent({ pg, verif, cap, att });

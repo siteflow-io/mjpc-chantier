@@ -2646,3 +2646,36 @@ MEMO
 01/11/2026 14:10
 
 MEMO
+
+## Tour 108 — 01/11/2026 14:10 → 01/11/2026 14:13
+
+**Paul :** Ok qu'est ce que ça coûterait de pointer aussi les manques ou le mal fait ?
+
+**Fait.** Lu au site, en lecture seule, le temps de recopie et de bande gardé depuis la 1.4.12 : 46 lignes recopiées en 5 minutes (6,3 s par ligne), aucune bande chronométrée encore. Compté dans la grille proposée les stickers dont le raté peut avoir un passage : 18 sur 44. Rien d'écrit au site.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 depuis 14:02) · en cours : le banc des stickers, au sas · ouvert : 409, 425
+
+420. Il faut séparer deux choses. Un manque n'a pas de place sur la copie : une date qui n'est pas écrite, un paragraphe qui n'existe pas. On ne peut le dire que dans la grille, et c'est déjà fait : « Pas encore réussi ». Un mal fait, lui, a un passage : une phrase qui n'a qu'un verbe conjugué, un temps qui change, une litote qui ne porte pas, une date hors de 1914-1918. Celui-là peut se pointer.
+
+421. Sur tes 44 stickers, j'en compte 18 dont le raté peut avoir un passage : S6, S10, S16, S21, S22, S23, S24 à S28, S32, S33, S34 à S37, S40. Les 26 autres ne peuvent être que des manques.
+
+422. La note ne change pas : les manques et les ratés comptent déjà, puisqu'ils ne sont pas des réussites.
+
+423. Ce que ça te coûterait, d'abord en temps. Chaque raté que l'IA propose est un arrêt de plus dans la bande, à décider avec Entrée ou N. Combien par copie : je ne sais pas. Le site n'a encore aucune bande chronométrée, et aucune copie n'est passée par les stickers. Je le mesurerai au premier vrai envoi.
+
+424. Ce que ça coûterait en classe. Un raté marqué sur la copie, c'est un endroit précis à contester. « Pas encore réussi » dans la grille dit un fait, sans montrer du doigt. Et c'est toi qui disais : « Je ne peux devenir un bureau des plaintes ».
+
+425. Trois choix, à toi de trancher.
+A. Rien de plus : c'est ce qui est codé aujourd'hui. Ça ne coûte rien.
+B. Dans la grille, sous « Pas encore réussi », un lien « voir où » pour les 18 stickers dont le raté a un passage. Au clic, le passage s'encadre sur la copie, le temps qu'il le lise. La phrase reste celle du sticker : rien de nouveau à valider. Le coût : un arrêt de plus dans ta bande par raté proposé, puisque l'élève ne lit rien sans ton mot. Côté code, c'est environ la moitié de ce qui a été fait pour les stickers.
+C. Le raté marqué sur la copie, avec sa propre phrase (pour S21 : « Cette phrase n'a qu'un verbe conjugué »). Le coût : 18 phrases de plus à écrire et à valider, le même arrêt de plus dans la bande, et une marque de plus à contester. Côté code, c'est un peu plus que B.
+
+Je propose B : l'élève voit où reprendre son texte, la copie reste celle de ses réussites, et tu n'as aucune phrase nouvelle à valider.
+
+À tester : rien de neuf depuis 14:02 ; la liste de 14:04 vaut toujours.
+
+01/11/2026 14:13
+
+MEMO

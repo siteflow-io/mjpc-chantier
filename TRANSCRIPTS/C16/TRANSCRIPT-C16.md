@@ -100,3 +100,49 @@ MEMO
 01/11/2026 20:40
 
 MEMO
+
+## Tour 4 — 01/11/2026 20:47 → 01/11/2026 20:53
+
+**Paul (20:47) :** ok la dette à régler ensuite ce sont les diapos de présentation de chapitre de séance etc. fais le point sur ce chantier, le cadrage, ce qu'il faut faire.
+
+**Fait (20:47 → 20:53), en lecture.** Lu : le contrat §12.62 (3), §12.67, §12.73 ; les canons `MANDATS/CANONS-DIAPOS/1` à `4` et les captures du 29/10 (`captures-29-10/6`, `7`), regardés ; le transcript C13, tours 347 à 355 (points 989 à 1041). Mesuré dans le code (8.77.1-⑩, `dr-socle.js`) : `DR_INV_NOM`, `dr_invContenu`, `dr_invPoser` — quatre diapos en texte simple ; à la première séance, présentation du chapitre et plan ; à chaque séance, présentation de la séance et « Notre question » ; compétences à l'intitulé officiel (`dr_invCompLib`). Mesuré au hub, en lecture seule : `/site/3e/chapitres/1` (« Poésie et peinture au XIXe siècle », 4 séances) et `/site/4e/chapitres/0` (« Le Horla », 7 séances) ont `title`, `problematique`, `entree`, `competencesMajeures`, `competencesMineures`, `aRetenir` ; leurs séances ont `title`, `type`, `competences`, `notions` ; aucune image, aucune phrase de séance, aucune majeure par séance, aucun marqueur « évaluée » ; `/site/3e/chapitres/2` et `/site/4e/chapitres/1` n'ont qu'un titre. Corrigé au sas : le lisez-moi des canons disait le bleu vif « à confirmer » ; Paul l'a confirmé le 29/10 (« Oui à tout après, sauf 996 »).
+
+**Claude :**
+
+À jouer : tes tests de la 8.77.1-⑩ (liste de 20:40) · en cours : rien · ouvert : 15, 31 à 35
+
+22. Ce chantier, c'est le §12.67 du contrat : de nouveaux types de diapo qui reproduisent tes canons et remplacent les quatre diapos d'ouverture d'aujourd'hui. Tu as donné les quatre canons le 29/10 et validé l'essentiel : « c'est surtout l'UI qu'il faut reproduire au mieux », les compétences par la phrase d'élève, les séances évaluées en bleu vif.
+
+23. Ce qui tourne aujourd'hui, lu dans le code : quatre diapos posées par le site, en simple texte, sans le look de tes canons. À la première séance, « la présentation du chapitre » et « le plan » ; à chaque séance, « la présentation de la séance » et « Notre question ». Les compétences y sont encore à l'intitulé officiel.
+
+24. Décidé, pas codé, la présentation du chapitre : fond bleu nuit, « Chapitre n — niveau », le titre, la question, l'entrée du programme et les dates de la classe, ton image à droite.
+
+25. Décidé, pas codé, les compétences du chapitre : par domaine, chacun sa couleur, séance par séance, majeure foncée, mineure claire. En fin de chapitre, cette diapo revient en bilan pour la classe, les cases jouées cochées.
+
+26. Décidé, pas codé, le parcours : « Séance n sur N », chaque séance avec sa date pour la classe, son titre et sa phrase ; la séance du jour entourée d'or, les séances faites cochées, les évaluées en bleu vif.
+
+27. Décidé, pas codé, le début de séance : le fil à gauche, « SÉANCE n », le titre, « Objectif : » et la phrase de la séance, les compétences de la séance avec la majeure en gras, ton image à droite.
+
+28. Décidé aussi : tout arrive à ta flèche, ligne par ligne, et seul le fil de progression bouge de lui-même. Dans l'Atelier, la carte « Ce que la diapo déclare » montre les champs (titre, objectif, la majeure ★, séance évaluée, image), et ce que tu y changes change le chapitre. L'image se choisit une fois et revient partout. Le prompt d'injection écrit la phrase de chaque séance, met la majeure en premier et marque les évaluées.
+
+29. Mesuré au hub ce soir : tes deux chapitres réels (3e « Poésie et peinture », 4e « Le Horla ») ont le titre, la question, l'entrée et les compétences. Mais ils n'ont ni image, ni phrase de séance, ni majeure par séance, ni séance évaluée. Ces diapos seraient donc à moitié vides tant que ce n'est pas rempli.
+
+30. Ce qui reste ouvert, avec ce que je propose ; ce que tu ne commentes pas est acquis.
+
+31. Tes chapitres déjà faits : la première compétence de chaque séance compte comme majeure ; ce qui manque (la phrase, l'image, « évaluée ») devient une ligne de « À régler », que tu remplis dans la carte. Le site n'invente rien.
+
+32. La problématique : tes canons n'ont pas de diapo « Notre question », alors qu'aujourd'hui elle revient à chaque séance, comme dans ta liste du 28/10. Je propose de la garder à chaque séance, au style du canon : fond bleu nuit, la question en grand.
+
+33. L'ordre : à la première séance, la présentation du chapitre, puis les compétences du chapitre ; à chaque séance, le parcours (la séance du jour en or), puis le début de séance, puis la problématique.
+
+34. Les couleurs : je garde celles relevées sur tes canons. Si tu m'envoies un de tes fichiers PowerPoint, je prends les exactes.
+
+35. La charte des 4e n'existe pas encore (« une pour les 4e, une pour les 3e », 29/10). Je propose : ces diapos au bleu nuit pour les deux niveaux d'abord ; les deux chartes viennent juste après, en chantier à part, pour toutes les diapos.
+
+36. Ensuite, le travail : un exécutant neuf écrit tout dans le vrai site, sur une branche (les quatre types, la carte, l'import, le prompt, la phrase d'élève aussi sur la feuille sommaire), en lignes que ta flèche dévoile, pour que les animations de ta première dette s'y posent ensuite sans rien refaire. Je te montre les captures par le geste, en mode test, sur le Horla et sur Poésie et peinture ; tu valides ; banc complet ; promeus.
+
+À tester : rien de neuf ; la liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 20:53
+
+MEMO

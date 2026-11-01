@@ -1,9 +1,10 @@
 {
  "format": "mjpc-redaction-stickers/1",
- "titre": "Écrire une lettre de la Grande Guerre — la grille en stickers (proposée par la conscience n°14, à valider par Paul)",
+ "titre": "Écrire une lettre de la Grande Guerre — la grille en stickers (proposée par la conscience n°14, à valider par Paul ; « pas encore réussi » et les lignes formulées pour l'élève : C14, 01/11 15:30, à valider)",
  "lignes": {
   "theme": {
-   "competence": "c4-ecrire-01"
+   "competence": "c4-ecrire-01",
+   "eleve": "Ta lettre est bien celle d'un soldat de 14-18 ou de sa famille."
   },
   "paragraphes": {
    "competence": "c4-ecrire-02",
@@ -20,31 +21,51 @@
      "libelle": "L'inquiétude",
      "ordre": 3
     }
-   }
+   },
+   "eleve": "Ta lettre a trois paragraphes : où tu es, le plus dur, ton inquiétude pour l'autre."
   },
   "lectures": {
-   "competence": "c4-ecrire-03"
+   "competence": "c4-ecrire-03",
+   "eleve": "Tu reprends un détail des textes lus en classe, avec tes mots."
   },
   "tait": {
-   "competence": "c4-ecrire-01"
+   "competence": "c4-ecrire-01",
+   "eleve": "Ta lettre cache quelque chose à l'autre, et on le sent."
   },
   "complexes": {
-   "competence": "c4-langue-04"
+   "competence": "c4-langue-04",
+   "eleve": "Tes phrases ont au moins deux verbes conjugués."
   },
   "architectures": {
-   "competence": "c4-langue-04"
+   "competence": "c4-langue-04",
+   "eleve": "Tu écris les cinq architectures de phrase du sujet.",
+   "compte": [
+    1,
+    3,
+    5
+   ]
   },
   "modalisation": {
-   "competence": "c4-langue-04"
+   "competence": "c4-langue-04",
+   "eleve": "Tu nuances ce que tu dis, et tu écris une litote."
   },
   "codes": {
-   "competence": "c4-ecrire-01"
+   "competence": "c4-ecrire-01",
+   "eleve": "Ta lettre a ses codes : le lieu, la date, la formule d'adresse, la signature."
   },
   "personne": {
-   "competence": "c4-ecrire-01"
+   "competence": "c4-ecrire-01",
+   "eleve": "Tu écris avec « je » et tu t'adresses à l'autre."
   },
   "lexique": {
-   "competence": "c4-langue-03"
+   "competence": "c4-langue-03",
+   "eleve": "Tes mots sont justes, variés, et ce sont des mots de 14-18."
+  },
+  "lignes": {
+   "eleve": "Ta lettre fait trente lignes."
+  },
+  "orthographe": {
+   "eleve": "Tu écris sans erreur d'orthographe ni de grammaire."
   }
  },
  "stickers": [
@@ -58,7 +79,8 @@
    "taxo": [
     "fam-42"
    ],
-   "ordre": 1
+   "ordre": 1,
+   "texteManque": "Dis d'où tu écris : du front ou de la maison."
   },
   {
    "num": "S2",
@@ -70,7 +92,8 @@
    "taxo": [
     "fam-43"
    ],
-   "ordre": 2
+   "ordre": 2,
+   "texteManque": "Dis où tu es : quelle tranchée, quel village."
   },
   {
    "num": "S3",
@@ -82,7 +105,8 @@
    "taxo": [
     "fam-42"
    ],
-   "ordre": 3
+   "ordre": 3,
+   "texteManque": "Dis à qui tu écris : ta femme, ta mère, ton frère…"
   },
   {
    "num": "S4",
@@ -94,7 +118,8 @@
    "taxo": [
     "fam-43"
    ],
-   "ordre": 4
+   "ordre": 4,
+   "texteManque": "Dis depuis quand vous êtes séparés."
   },
   {
    "num": "S5",
@@ -106,7 +131,8 @@
    "taxo": [
     "fam-43"
    ],
-   "ordre": 5
+   "ordre": 5,
+   "texteManque": "Dis qui tu es : ton âge, ou ton métier d'avant la guerre."
   },
   {
    "num": "S6",
@@ -119,7 +145,8 @@
     "fam-43"
    ],
    "ordre": 6,
-   "taxoPropose": "cohérence avec l'époque"
+   "taxoPropose": "cohérence avec l'époque",
+   "texteManque": "Vérifie que tout ce que tu racontes existait en 14-18."
   },
   {
    "num": "S7",
@@ -131,7 +158,8 @@
    "taxo": [
     "fam-43"
    ],
-   "ordre": 1
+   "ordre": 1,
+   "texteManque": "Va à la ligne entre les parties de ta lettre."
   },
   {
    "num": "S8",
@@ -144,7 +172,9 @@
     "fam-43"
    ],
    "ordre": 2,
-   "sous": "ou-tu-es"
+   "sous": "ou-tu-es",
+   "texteManque": "Écris un paragraphe sur où tu es et ce que tu vois.",
+   "taille": "paragraphe"
   },
   {
    "num": "S9",
@@ -157,12 +187,14 @@
     "fam-43"
    ],
    "ordre": 3,
-   "sous": "le-plus-dur"
+   "sous": "le-plus-dur",
+   "texteManque": "Écris un paragraphe sur ce qui est le plus dur à vivre pour toi.",
+   "taille": "paragraphe"
   },
   {
    "num": "S10",
    "ligne": "paragraphes",
-   "texteEleve": "Ce qui est le plus dur est une surprise, comme la boue chez Jean Déléage : pas seulement la mort ou les combats.",
+   "texteEleve": "Ce qui est le plus dur est une surprise, comme la boue dans la lettre de Jean Déléage, lue en classe : pas seulement la mort ou les combats.",
    "cherche": "Cette chose difficile est-elle inattendue, comme la boue chez Jean Déléage (pas seulement la mort ou les combats) ?",
    "portee": "passage",
    "competence": "c4-ecrire-02",
@@ -170,7 +202,8 @@
     "fam-43"
    ],
    "ordre": 4,
-   "sous": "le-plus-dur"
+   "sous": "le-plus-dur",
+   "texteManque": "Choisis, pour le plus dur, une surprise, comme la boue dans la lettre de Jean Déléage, lue en classe : pas seulement la mort ou les combats."
   },
   {
    "num": "S11",
@@ -183,7 +216,9 @@
     "fam-43"
    ],
    "ordre": 5,
-   "sous": "l-inquietude"
+   "sous": "l-inquietude",
+   "texteManque": "Écris un paragraphe où tu t'inquiètes pour l'autre.",
+   "taille": "paragraphe"
   },
   {
    "num": "S12",
@@ -196,7 +231,8 @@
     "fam-15"
    ],
    "ordre": 6,
-   "sous": "l-inquietude"
+   "sous": "l-inquietude",
+   "texteManque": "Pose des questions à l'autre sur sa vie."
   },
   {
    "num": "S13",
@@ -208,7 +244,8 @@
    "taxo": [
     "fam-43"
    ],
-   "ordre": 7
+   "ordre": 7,
+   "texteManque": "Mets tes paragraphes dans l'ordre du sujet : où tu es, puis le plus dur, puis ton inquiétude."
   },
   {
    "num": "S14",
@@ -221,7 +258,8 @@
     "fam-41"
    ],
    "ordre": 1,
-   "taxoPropose": "réinvestir une lecture"
+   "taxoPropose": "réinvestir une lecture",
+   "texteManque": "Reprends un détail des textes lus en classe."
   },
   {
    "num": "S15",
@@ -234,7 +272,8 @@
     "fam-41"
    ],
    "ordre": 2,
-   "taxoPropose": "réinvestir une lecture"
+   "taxoPropose": "réinvestir une lecture",
+   "texteManque": "Fais voir ce détail : un objet, un geste, un lieu."
   },
   {
    "num": "S16",
@@ -247,7 +286,8 @@
     "fam-41"
    ],
    "ordre": 3,
-   "taxoPropose": "réinvestir une lecture"
+   "taxoPropose": "réinvestir une lecture",
+   "texteManque": "Écris ce détail avec tes mots, sans recopier le texte."
   },
   {
    "num": "S17",
@@ -260,7 +300,8 @@
     "fam-42"
    ],
    "ordre": 1,
-   "taxoPropose": "l'implicite"
+   "taxoPropose": "l'implicite",
+   "texteManque": "Cache exprès quelque chose à l'autre dans ta lettre."
   },
   {
    "num": "S18",
@@ -273,7 +314,8 @@
     "fam-42"
    ],
    "ordre": 2,
-   "taxoPropose": "l'implicite"
+   "taxoPropose": "l'implicite",
+   "texteManque": "Fais-le sentir, sans écrire « je ne te le dirai pas »."
   },
   {
    "num": "S19",
@@ -286,7 +328,8 @@
     "fam-42"
    ],
    "ordre": 3,
-   "taxoPropose": "l'implicite"
+   "taxoPropose": "l'implicite",
+   "texteManque": "Fais deviner pourquoi tu le caches."
   },
   {
    "num": "S20",
@@ -299,7 +342,8 @@
     "fam-42"
    ],
    "ordre": 4,
-   "taxoPropose": "l'implicite"
+   "taxoPropose": "l'implicite",
+   "texteManque": "Garde ce secret caché jusqu'à la fin."
   },
   {
    "num": "S21",
@@ -311,7 +355,8 @@
    "taxo": [
     "fam-16"
    ],
-   "ordre": 1
+   "ordre": 1,
+   "texteManque": "Écris toutes tes phrases avec au moins deux verbes conjugués."
   },
   {
    "num": "S21 bis",
@@ -324,7 +369,8 @@
     "fam-16"
    ],
    "ordre": 2,
-   "neCompte": true
+   "neCompte": true,
+   "texteManque": "Écris toutes tes phrases avec au moins deux verbes conjugués."
   },
   {
    "num": "S22",
@@ -336,7 +382,8 @@
    "taxo": [
     "fam-16"
    ],
-   "ordre": 3
+   "ordre": 3,
+   "texteManque": "Donne à chaque phrase sa proposition principale."
   },
   {
    "num": "S23",
@@ -348,7 +395,8 @@
    "taxo": [
     "fam-16"
    ],
-   "ordre": 4
+   "ordre": 4,
+   "texteManque": "Choisis le bon mot pour relier : « qui », « que », « dont », « où »."
   },
   {
    "num": "S24",
@@ -360,7 +408,9 @@
    "taxo": [
     "fam-16"
    ],
-   "ordre": 1
+   "ordre": 1,
+   "texteManque": "Écris l'architecture 1 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S25",
@@ -372,7 +422,9 @@
    "taxo": [
     "fam-16"
    ],
-   "ordre": 2
+   "ordre": 2,
+   "texteManque": "Écris l'architecture 2 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S26",
@@ -384,7 +436,9 @@
    "taxo": [
     "fam-16"
    ],
-   "ordre": 3
+   "ordre": 3,
+   "texteManque": "Écris l'architecture 3 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S27",
@@ -396,7 +450,9 @@
    "taxo": [
     "fam-16"
    ],
-   "ordre": 4
+   "ordre": 4,
+   "texteManque": "Écris l'architecture 4 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S28",
@@ -408,7 +464,9 @@
    "taxo": [
     "fam-16"
    ],
-   "ordre": 5
+   "ordre": 5,
+   "texteManque": "Écris l'architecture 5 comme le modèle du sujet.",
+   "taille": "phrase"
   },
   {
    "num": "S29",
@@ -420,7 +478,8 @@
    "taxo": [
     "fam-16"
    ],
-   "ordre": 6
+   "ordre": 6,
+   "texteManque": "Écris certaines architectures plusieurs fois."
   },
   {
    "num": "S30",
@@ -433,7 +492,8 @@
     "fam-16"
    ],
    "ordre": 7,
-   "neCompte": true
+   "neCompte": true,
+   "texteManque": "Note le numéro de chaque architecture dans la marge."
   },
   {
    "num": "S31",
@@ -445,7 +505,8 @@
    "taxo": [
     "fam-42"
    ],
-   "ordre": 1
+   "ordre": 1,
+   "texteManque": "Mets une nuance dans chaque paragraphe : « peut-être », « sans doute », « je crois »…"
   },
   {
    "num": "S32",
@@ -457,7 +518,8 @@
    "taxo": [
     "fam-45"
    ],
-   "ordre": 2
+   "ordre": 2,
+   "texteManque": "Écris une litote : dis moins pour faire entendre plus (« ce n'est pas facile » pour « c'est terrible »)."
   },
   {
    "num": "S33",
@@ -469,7 +531,8 @@
    "taxo": [
     "fam-45"
    ],
-   "ordre": 3
+   "ordre": 3,
+   "texteManque": "Fais entendre avec ta litote plus qu'elle ne dit."
   },
   {
    "num": "S34",
@@ -481,7 +544,8 @@
    "taxo": [
     "fam-41"
    ],
-   "ordre": 1
+   "ordre": 1,
+   "texteManque": "Écris le lieu, en haut."
   },
   {
    "num": "S35",
@@ -493,19 +557,21 @@
    "taxo": [
     "fam-41"
    ],
-   "ordre": 2
+   "ordre": 2,
+   "texteManque": "Écris la date, entre 1914 et 1918."
   },
   {
    "num": "S36",
    "ligne": "codes",
-   "texteEleve": "La formule pour t'adresser à l'autre : « Ma chère Louise ».",
+   "texteEleve": "La formule pour t'adresser à l'autre, comme « Ma chère Louise ».",
    "cherche": "Y a-t-il une formule pour s'adresser à l'autre (« Ma chère Louise ») ?",
    "portee": "passage",
    "competence": "c4-ecrire-01",
    "taxo": [
     "fam-41"
    ],
-   "ordre": 3
+   "ordre": 3,
+   "texteManque": "Écris une formule pour t'adresser à l'autre, comme « Ma chère Louise »."
   },
   {
    "num": "S37",
@@ -517,7 +583,8 @@
    "taxo": [
     "fam-41"
    ],
-   "ordre": 4
+   "ordre": 4,
+   "texteManque": "Signe, en bas."
   },
   {
    "num": "S38",
@@ -529,7 +596,8 @@
    "taxo": [
     "fam-42"
    ],
-   "ordre": 1
+   "ordre": 1,
+   "texteManque": "Écris avec « je », du début à la fin."
   },
   {
    "num": "S39",
@@ -541,7 +609,8 @@
    "taxo": [
     "fam-42"
    ],
-   "ordre": 2
+   "ordre": 2,
+   "texteManque": "Parle à l'autre : « tu », « vous », des questions."
   },
   {
    "num": "S40",
@@ -553,7 +622,8 @@
    "taxo": [
     "fam-29"
    ],
-   "ordre": 3
+   "ordre": 3,
+   "texteManque": "Garde le même temps dans un même passage."
   },
   {
    "num": "S41",
@@ -565,7 +635,8 @@
    "taxo": [
     "fam-39"
    ],
-   "ordre": 1
+   "ordre": 1,
+   "texteManque": "Choisis des mots qui disent ce que tu veux dire."
   },
   {
    "num": "S42",
@@ -577,7 +648,8 @@
    "taxo": [
     "fam-33"
    ],
-   "ordre": 2
+   "ordre": 2,
+   "texteManque": "Varie tes mots : évite de répéter les mêmes."
   },
   {
    "num": "S43",
@@ -589,7 +661,8 @@
    "taxo": [
     "fam-40"
    ],
-   "ordre": 3
+   "ordre": 3,
+   "texteManque": "Emploie des mots de 14-18 : poilu, tranchée, permission, obus…"
   }
  ]
 }

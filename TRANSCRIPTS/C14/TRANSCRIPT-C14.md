@@ -2655,28 +2655,80 @@ MEMO
 
 **Claude :**
 
-À jouer : rien de neuf (la 1.4.15 depuis 14:02) · en cours : le banc des stickers, au sas · ouvert : 409, 428
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc des stickers, au sas · ouvert : 409, 428
 
-420. Il faut séparer deux choses. Un manque n'a pas de place sur la copie : une date qui n'est pas écrite, un paragraphe qui n'existe pas. On ne peut le dire que dans la grille, et c'est déjà fait : « Pas encore réussi ». Un mal fait, lui, a un passage : une phrase qui n'a qu'un verbe conjugué, un temps qui change, une litote qui ne porte pas, une date hors de 1914-1918. Celui-là peut se pointer.
+420. Il faut séparer deux choses. Un manque n'a pas de place sur la copie : une date qui n'est pas écrite, un paragraphe qui n'existe pas. On ne peut le dire que dans la grille, et c'est déjà fait avec « Pas encore réussi ». Un mal fait, lui, a un passage : une phrase qui n'a qu'un verbe conjugué, un temps qui change, une litote qui ne porte pas, une date hors de 1914-1918. Celui-là peut se pointer.
 
-421. Sur tes 44 stickers, j'en compte 18 dont le raté peut avoir un passage : S6, S10, S16, S21, S22, S23, S24 à S28, S32, S33, S34 à S37, S40. Les 26 autres ne peuvent être que des manques.
+421. Sur tes 44 stickers, j'en compte 18 dont le mal fait peut avoir un passage : S6, S10, S16, S21, S22, S23, S24 à S28, S32, S33, S34 à S37, S40. Les 26 autres ne peuvent être que des manques.
 
-422. La note ne change pas : les manques et les ratés comptent déjà, puisqu'ils ne sont pas des réussites.
+422. La note ne change pas : les manques et les mal faits comptent déjà, puisqu'ils ne sont pas des réussites.
 
-423. Ce que ça te coûterait, d'abord en temps. Chaque raté que l'IA propose est un arrêt de plus dans la bande, à décider avec Entrée ou N. Combien par copie : je ne sais pas. Le site n'a encore aucune bande chronométrée, et aucune copie n'est passée par les stickers. Je le mesurerai au premier vrai envoi.
+423. Ce que ça te coûterait en temps : chaque mal fait que l'IA propose ajoute un arrêt dans la bande, à décider avec Entrée ou N. Combien par copie, je ne sais pas. Le site n'a encore aucune bande chronométrée, et aucune copie n'est passée par les stickers. Je le mesurerai au premier vrai envoi.
 
-424. Ce que ça coûterait en classe. Un raté marqué sur la copie, c'est un endroit précis à contester. « Pas encore réussi » dans la grille dit un fait, sans montrer du doigt. Et c'est toi qui disais : « Je ne peux devenir un bureau des plaintes ».
+424. Ce que ça coûterait en classe : un mal fait marqué sur la copie donne à l'élève un endroit précis à contester. « Pas encore réussi », dans la grille, dit un fait sans montrer du doigt. C'est toi qui disais : « Je ne peux devenir un bureau des plaintes ».
 
 425. Premier choix : rien de plus. C'est ce qui est codé aujourd'hui, et ça ne coûte rien.
 
-426. Deuxième choix : dans la grille, sous « Pas encore réussi », un lien « voir où » pour les 18 stickers dont le raté a un passage. Au clic, le passage s'encadre sur la copie, le temps que l'élève le lise. La phrase reste celle du sticker : tu n'as rien de nouveau à valider. Le coût : un arrêt de plus dans ta bande par raté proposé, puisque l'élève ne lit rien sans ton mot. Côté code, c'est environ la moitié de ce qui a été fait pour les stickers.
+426. Deuxième choix : dans la grille, sous « Pas encore réussi », un lien « voir où » pour les 18 stickers dont le mal fait a un passage. Au clic, le passage s'encadre sur la copie, le temps que l'élève le lise. La phrase reste celle du sticker : tu n'as rien de nouveau à valider. Le coût : un arrêt de plus dans ta bande pour chaque mal fait proposé, puisque l'élève ne lit rien sans ton accord. Côté code, c'est environ la moitié du travail fait pour les stickers.
 
-427. Troisième choix : le raté marqué sur la copie, avec sa propre phrase (pour S21 : « Cette phrase n'a qu'un verbe conjugué »). Le coût : 18 phrases de plus à écrire et à valider, le même arrêt de plus dans la bande, et une marque de plus à contester. Côté code, c'est un peu plus que le deuxième choix.
+427. Troisième choix : le mal fait marqué sur la copie, avec sa propre phrase (pour S21 : « Cette phrase n'a qu'un verbe conjugué »). Le coût : 18 phrases de plus à écrire et à valider, le même arrêt de plus dans la bande, et une marque de plus à contester. Côté code, c'est un peu plus que le deuxième choix.
 
-428. Je propose le deuxième choix (426) : l'élève voit où reprendre son texte, la copie reste celle de ses réussites, et tu n'as aucune phrase nouvelle à valider. Lequel prends-tu ?
+428. Je propose le deuxième choix (426) : l'élève voit où reprendre son texte, sa copie ne montre que ses réussites, et tu n'as aucune phrase nouvelle à valider. Lequel prends-tu ?
 
 À tester : rien de neuf depuis 14:02 ; la liste de 14:04 vaut toujours.
 
 01/11/2026 14:13
+
+MEMO
+
+## Tour 109 — 01/11/2026 14:19 → 01/11/2026 14:28
+
+**Paul :** Je pense que pour les arrêts il n'y a pas besoin : les mal faits ( d'ailleurs il faut trouver un autre terme, ça ne va pas pour la compréhension élève ) et les manquants peuvent simplement être des numéros dans la marge des lignes concernées et au clic l'élève voit la remarque rédigée par l'IA, sous sa phrase recopiée. Vu que la phrase est recopiée, l'IA peut exactement la commenter sans problème. Et du coup le stickers devient un vrai commentaire super développé. Tu vois l'idée ?
+
+**Fait.** Le banc des stickers lancé à 14:05 s'était arrêté à sa 17e ligne, sans résultat : relancé à 14:22. Lu le fichier de l'élève de la maquette : sa marge porte déjà les pastilles des fautes, groupées par ligne ; ta recopie n'y est pas encore. Remis le tour 108 de ce transcript au mot près de la réponse envoyée (il gardait le brouillon, avec « raté »). Rien d'écrit au site, rien de codé.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc des stickers, au sas (relancé à 14:22) · ouvert : 409, 439, 440, 441
+
+429. Oui, je vois l'idée. L'IA ne pose plus seulement les réussites. Pour chaque sticker que la copie n'a pas, elle écrit une remarque sur la ligne concernée. L'élève voit un numéro dans la marge de cette ligne. Au clic, il lit sa phrase telle que tu l'as recopiée, et dessous la remarque. Rien ne s'arrête dans ta bande. Avec les réussites, ça fait un vrai commentaire de sa lettre. Ton idée remplace mes trois choix de 14:13 (425 à 428).
+
+430. Ça tient : l'IA reçoit déjà ta recopie ligne par ligne, et l'app retrouve déjà les mots qu'elle cite pour placer un sticker. L'IA peut donc citer la phrase exacte, et l'app la retrouver.
+
+431. Un manque n'a pas toujours de ligne. Quand il en a une, l'IA la choisit : si la date manque, le numéro va sur la première ligne ; si les questions à l'autre manquent, il va sur le paragraphe où l'élève s'inquiète pour lui. Quand il n'en a pas, comme l'ordre des paragraphes (S13) ou une lettre qui ne cache rien (S17), la remarque va dans la grille, sous « Pas encore réussi ».
+
+432. La marge du fichier de l'élève porte déjà ses fautes : de petites pastilles de couleur, avec la lettre du type, groupées par ligne. Les numéros des remarques y seraient des ronds foncés, pour ne se confondre ni avec ces pastilles, ni avec les numéros d'architecture qu'il écrit lui-même dans sa marge. Une ligne qui a deux remarques garde un seul numéro, et le clic montre les deux.
+
+433. Le mot pour l'élève : je propose « À reprendre », pour le manque comme pour le mal fait. Dans les deux cas, l'élève a la même chose à faire : revenir à cet endroit de sa lettre. Au clic, il lit donc « À reprendre », ce qui était attendu (la phrase du sticker, que tu as validée), sa phrase recopiée, puis la remarque.
+
+434. Un exemple, sur une lettre inventée, pour S40. Sa phrase : « Hier nous avons marché toute la nuit, puis un obus tombe près de nous. » La remarque : « Tu racontes au passé composé (« nous avons marché ») puis tu passes au présent (« un obus tombe »). Dans ce récit d'hier, garde le passé composé : « un obus est tombé ». » La consigne que je propose pour l'IA : tutoyer, deux phrases au plus, citer ses mots, dire ce qu'il peut faire, ne jamais juger l'élève lui-même.
+
+435. Le point qui bloque : ta règle dit qu'un élève ne lit aucune phrase que tu n'as pas donnée. Or une remarque, c'est l'IA qui l'écrit.
+
+436. Première façon : tu les lis, sans arrêt dans la bande. À la fin de la bande, toutes les remarques de la copie s'affichent en une liste ; Entrée les garde toutes, un clic en retire ou en corrige une.
+
+437. Deuxième façon : tu lèves la règle pour ces remarques, et l'élève les lit sans que tu les aies lues.
+
+438. Je propose la première (436). Une remarque fausse, par exemple une date jugée hors de la guerre alors qu'elle est bonne, c'est une plainte assurée, et elle sort sous ton nom.
+
+439. Laquelle prends-tu, 436 ou 437 ?
+
+440. « À reprendre » te va, ou tu as un autre mot ?
+
+441. Un seul numéro par ligne, même quand elle a deux remarques : ok ?
+
+442. Ce que je ne sais pas : combien de remarques il y aura par copie. Sur une copie faible, plus de vingt stickers peuvent manquer, donc plus de vingt remarques. Je ne sais pas non plus si la réponse de l'IA tiendra encore en un seul envoi pour la classe : elle sera plus longue. Je mesure les deux au premier vrai envoi ; s'il faut une limite, on la décidera là.
+
+443. La note ne change pas : elle se calcule toujours sur les réussites.
+
+444. Le fichier de l'élève est une page HTML, donc le clic y marche. Le zip des PDF (E9) n'aura pas de clic : les numéros resteront dans la marge, et une dernière page donnera les remarques par numéro.
+
+445. Côté code, c'est moins de travail pour ta bande, puisqu'il n'y a aucun arrêt. C'est plus pour le fichier de l'élève (les numéros, sa phrase recopiée, la remarque) et pour la liste de relecture. En tout, environ la moitié de ce qui a été fait pour les stickers. Ce serait la 1.4.17, codée après tes réponses à 439, 440 et 441, une fois la 1.4.16 des stickers passée au banc.
+
+446. Le banc des stickers lancé à 14:05 s'était arrêté en route, sans rendre de résultat. Je l'ai relancé à 14:22.
+
+À tester : rien de neuf depuis 14:02 ; la liste de 14:04 vaut toujours.
+
+01/11/2026 14:28
 
 MEMO

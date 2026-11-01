@@ -2573,3 +2573,52 @@ Ce qui reste à cadrer, avec mes propositions :
 01/11/2026 10:43
 
 MEMO
+
+## Tour 106 — 01/11/2026 13:12, 14:00 → 01/11/2026 14:04
+
+**Paul (13:12) :** La sauvegarde json reste, d'ailleurs il faut l'étendre à l'ensemble des nouvelles fonctionnalités. Quand un paquet est complètement corrigé, l'App propose un téléchargement du json de sauvegarde en local et le range aussi au hub. 
+Enfin le chantier principal à faire en premier c'est les stickers afin que je puisse enfin exporter un fichier que l'IA peut analyser en entier avec toutes ses marques à poser. 
+Une dette trouvée : à la fin d'une recopie, la phrase qui m'a marqué doit s'ouvrir toute seule et est bloquante pour passer à la copie suivante. Enfin, la fonctionnalité pour poser les balises de cette phrase est bancale: quand je clique sur un mot, le texte se peint aléatoirement, je dois refaire mes clics plusieurs fois pour enfin y arriver. Je pense qu'il faut que le premier mot s'affiche en dessous, une fois que j'ai cliqué dessus, et quand je clique le deuxième, tous les mots entre le premier mot cliqué et le deuxième mot s'affichent en reconstituant la phrase d'un coup. 
+Autre chose aussi: dans la bande, parfois la largeur du rectangle est trop longue et je n'ai pas de moyen de la raccourcir. Un double clic sur le rectangle doit activer deux poignées de chaque côté du rectangle pour le redimensionner en longueur. Go, code.
+
+**Claude (13:40, message en cours de travail, avec les captures C14-55, C14-56, C14-57) :**
+
+À jouer : ton promeus pour la 1.4.15 (410) · en cours : les stickers (411) · ouvert : 410
+
+410. La 1.4.15 est prête, mais elle n'est pas en ligne. Elle règle tes trois dettes de 13:12 :
+- **La phrase s'ouvre seule** quand tu fais Entrée sur la dernière ligne de la dernière page.
+- **La phrase bloque la copie suivante** : sans elle (ou sans « Pas de phrase »), « Copie → » et le menu des copies la demandent d'abord. Une fois la phrase choisie, la copie suivante vient seule.
+- **Le choix des mots est refait** : le premier mot cliqué s'écrit en dessous ; au deuxième clic, toute la phrase s'écrit d'un coup. Avant, le premier clic peignait tout depuis le début du texte : c'était ça, le hasard.
+- **Le cadre de la bande** : un double clic dessus montre une poignée de chaque côté pour régler sa longueur ; un autre double clic les retire.
+
+Le banc fait 150 vérifications, sans aucun défaut. Sur ton vrai site, en lecture seule, les copies, les marques et les notes sont identiques. Les 51 pages recopiées aussi : mêmes textes, mêmes places. Au passage, j'ai corrigé un défaut : une page sans rien de neuf ne se réécrit plus au site.
+
+À savoir : sur tes 29 copies recopiées, une seule a sa phrase. La première fois que tu quitteras chacune des 28 autres, la phrase te sera demandée. Dis « promeus » et je la mets en ligne.
+
+411. Pendant ce temps, je code les stickers : l'objet, l'éditeur des Réglages, la validation ligne par ligne, puis l'export pour l'IA avec toutes les marques à poser.
+
+**Paul (14:00, après avoir interrompu une attente du banc) :** Promeus
+
+**Fait.** Les trois dettes codées et passées au banc (150 vérifications, 0 défaut) ; la cause du « hasard » : le premier clic peignait tout depuis le début du texte (le bas de l'intervalle valait -1). Vrai site en lecture seule : identique à la 1.4.14, les 51 pages recopiées comparées, 2 écritures à l'ouverture de la recopie comme avant (un défaut trouvé et corrigé : une page sans rien de neuf se réécrivait). Mise en ligne de la 1.4.15 à 14:02 sur le promeus (commit `3240b55`). Les stickers codés au sas (branche `c14-poignees`, commit `c05db9c4`) : `grille-stickers.js` et `.css`, le fichier des 44 stickers (`MANDATS/REDACTION-UNIVERSELLE/STICKERS/stickers-lettre-grande-guerre.json`), l'ancienne maquette des stickers retirée. Banc des stickers : 156 vérifications d'avant sans défaut, deux attentes du banc mal écrites corrigées, relancé. Docs de suivi à jour.
+
+**Claude :**
+
+À jouer : la 1.4.15 en ligne (412) · en cours : les stickers, au sas (413 à 415) · ouvert : 409 (le flux unique, à valider par numéro)
+
+412. La 1.4.15 est en ligne depuis 14:02, sur ton promeus : la phrase qui s'ouvre seule et bloque la copie suivante, son choix refait, les poignées du cadre de la bande. Recharge avec https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.15-RU
+
+413. Les stickers sont codés au sas (1.4.16), pas en ligne. Sur la maquette, tout passe par le geste. Dans Réglages → « La grille et ses stickers », « 📥 Charger des stickers » prend le fichier des 44 stickers proposés : ils arrivent tous « à valider ». L'éditeur a trois colonnes : la grille en arbre, les stickers de la ligne choisie (leur texte se change en place), leurs rattachements (ligne, sous-descripteur, compétence, notion de la taxonomie par une recherche). « ✓ Valider ligne par ligne » montre une ligne par écran, et Entrée valide la ligne entière : la lettre se valide en dix écrans.
+
+414. L'export pour l'IA emporte maintenant, dans le même fichier, la correction, la grille et le sujet. Une copie déjà corrigée part pour ses seules réussites : son corrigé et ta bande ne bougent pas. Au retour, chaque réussite retrouve son passage dans ta recopie ; une réussite posée sur la ligne d'une autre copie est refusée. Dans la bande, après les fautes, l'app s'arrête à chaque sticker : Entrée le garde, N non, et le compte de la ligne et la note se voient en direct. « ＋ Un sticker » pose un sticker que l'IA n'a pas vu. Le fichier de l'élève montre ses stickers encadrés dans la couleur du critère, et sa grille ligne par ligne, avec « Pas encore réussi ». Le Bilan lit la note des stickers. Un changement de la grille qui changerait la note de copies déjà corrigées les liste d'abord, avant et après, et n'agit qu'à ton « Appliquer ».
+
+415. Le banc : les 156 vérifications d'avant passent sans défaut. Sur les 7 nouvelles, deux échouaient parce que le banc lui-même attendait un mauvais texte (un message juste, des majuscules) : je l'ai corrigé, il retourne. Avant de te demander le promeus des stickers, il me reste le banc vert, ton vrai site en lecture seule et les captures. À la mise en ligne, tu chargeras le fichier des stickers dans Réglages, puis tu les valideras ligne par ligne : c'est ton mot sur chaque phrase que lira l'élève. Pour les Dylan, « ⧉ Reprendre ceux d'un autre sujet » copiera tes stickers validés.
+
+À tester (1.4.15) :
+- recopie une copie jusqu'à sa dernière ligne, Entrée : la phrase s'ouvre seule ;
+- clique un premier mot : il s'écrit dessous ; clique le dernier : toute la phrase s'écrit d'un coup ;
+- « Copie → » sur une copie sans phrase : la phrase est demandée d'abord ; choisis-la, ou « Pas de phrase », et la copie suivante vient seule ;
+- dans la bande, double clic sur un cadre : deux poignées ; tire celle de droite pour le raccourcir.
+
+01/11/2026 14:04
+
+MEMO

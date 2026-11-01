@@ -1,5 +1,5 @@
 # MANDAT — LE BLOC QUESTION : LA PARTICIPATION AVANT LA RÉPONSE PRÉPARÉE
-*Conscience n°16, 01/11/2026 20:10 (C16 tour 2). Un seul exécutant, neuf, sur `index.html` (par ses modules `LIVRAISONS/INTEGRATION/dr/*`). Lancé seulement sur le « ok » de Paul aux captures de la maquette (C16 16 · 11 à 14). Paul joue en classe le lundi 02/11 : aucun test ne se fait au moment du cours, tout doit être prouvé ce soir.*
+*Conscience n°16, 01/11/2026 20:06 (C16 tour 2). Un seul exécutant, neuf, sur `index.html` (par ses modules `LIVRAISONS/INTEGRATION/dr/*`). Lancé seulement sur le « ok » de Paul aux captures de la maquette (C16 16 · 11 à 14). Paul joue en classe le lundi 02/11 : aucun test ne se fait au moment du cours, tout doit être prouvé ce soir.*
 
 ## 0 · CE QUE ÇA CHANGE POUR LA CLASSE (Paul, 01/11/2026 18:53, mot pour mot)
 « dans le type "question": la participation des élèves doit être avant la réponse préparée par moi. Car c'est comme ça que ça se passe en classe. J'affiche la question, les élèves participent et je prends leur participation, PUIS seulement j'affiche la réponse académique. »

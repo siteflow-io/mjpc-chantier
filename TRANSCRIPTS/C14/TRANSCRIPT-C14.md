@@ -3009,3 +3009,31 @@ MEMO
 01/11/2026 16:42
 
 MEMO
+
+## Tour 118 — 01/11/2026 16:47 → 01/11/2026 16:49
+
+**Paul :** Ta note avec ce qui est gardé jusqu'ici ?? Cette phrase s'adresse à qui, et de quoi parle ton et de quand?? Réponds juste à cette question sans coder . 513. Pas compris et je ne sais pas ce qu'est le bouton régler.
+
+**Fait.** Rien de codé. Banc complet de 16:42 : 165 vérifications, 0 défaut (sans encore de vérification des cadres de phrase et de paragraphe).
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : rien · ouvert : 409, 483, 518, 520
+
+516. Cette phrase est sur la carte de ta bande : c'est toi qui la lis, pas l'élève. Mais « ta note » est faux : c'est la note de l'élève, pas la tienne. Et « jusqu'ici » veut dire « avec les stickers que tu as déjà gardés dans cette bande, avant celui de la carte ». La phrase est mal écrite sur les deux points.
+
+517. Je propose : « Sa note, avec les stickers déjà gardés avant celui-ci : 0,5 / 40 ».
+
+518. Cette phrase te va ?
+
+519. 513, dit autrement. Aujourd'hui, pour la ligne des architectures, les points dépendent du nombre de stickers qui manquent. [l'élève] en réussit 3 sur 6, il en manque 3 : elle a [retiré]. Une architecture juste, à elle seule, ne rapporte aucun point. Je propose de compter ce qu'elle réussit : 1 ou 2 stickers, 2 points ; 3 ou 4, 4,5 points ; 5 ou 6, 7 points. [Ce qu'elle aurait : retiré du transcript.]
+
+520. Ça te va, pour les architectures ?
+
+521. Le bouton « Régler » est dans Réglages, « La grille et ses stickers ». Quand tu choisis une ligne, son compte est écrit en haut de la colonne du milieu, par exemple « 6 stickers : tous → 7 pt · 1 manque → 4,5 · 2 à 3 manques → 2 · plus → 0 ». « Régler » est juste à côté, et il change ce compte pour cette ligne. Tu le vois sur la capture « 8-reglages-la-taille-du-cadre ».
+
+À tester : rien de neuf.
+
+01/11/2026 16:49
+
+MEMO

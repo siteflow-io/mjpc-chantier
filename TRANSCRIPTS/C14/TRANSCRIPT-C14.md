@@ -2440,7 +2440,7 @@ MEMO
 
 Dans la prochaine mise en ligne (1.4.13, le banc tourne), la carte d'un élève sans copie proposera « 📄 Charger sa copie » : ses pages lui seront données d'office, sans les initiales, et sa copie s'ouvrira. Le bouton du haut s'appellera « 📄 Charger des copies ».
 
-**Paul (09:22) :** par ailleurs je sais pourquoi la bande du haut parait petite, c'est qu'à gauche elle est alignée sur le bord de l'image et non sur le bord de la ligne rouge. Or, c'est bien lui la limite. Si l'élève a écrit quelque chose dans la marge, je le verrai de toute façon sur la photo tout à gauche. par ailleurs les boutons de zoom me cachent le coin supérieur droit de la bande.... *(capture jointe : la recopie de FREMIN Tim, ligne 5 sur 5, la bande du haut et ses boutons − ×1 +)*
+**Paul (09:22) :** par ailleurs je sais pourquoi la bande du haut parait petite, c'est qu'à gauche elle est alignée sur le bord de l'image et non sur le bord de la ligne rouge. Or, c'est bien lui la limite. Si l'élève a écrit quelque chose dans la marge, je le verrai de toute façon sur la photo tout à gauche. par ailleurs les boutons de zoom me cachent le coin supérieur droit de la bande.... *(capture jointe : la recopie d'un élève [nom retiré : pas de donnée réelle d'élève au sas], ligne 5 sur 5, la bande du haut et ses boutons − ×1 +)*
 
 **Claude (09:47, message en cours de travail) :** La 1.4.13 est en ligne depuis 09:47 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.13-RU
 Elle apporte l'élève absent (clic droit sur sa carte), « 📄 Charger sa copie » depuis la carte d'un élève sans copie, « 📂 Mon dossier », « 📷 Remplacer la photo » et « 🗑 Retirer les photos ». Je m'occupe maintenant de la bande du haut : elle commencera à la marge rouge, et les boutons de zoom ne la cacheront plus.
@@ -2823,5 +2823,63 @@ MEMO
 À tester : ouvre le fichier « CHAUVIN Emma - fichier eleve (maquette).html » sur ton ordinateur, puis sur ton téléphone. Clique un cadre, une ligne de la grille, une faute dans la marge, la phrase en or, et « ← Ta grille » pour revenir.
 
 01/11/2026 14:47
+
+MEMO
+
+## Tour 113 — 01/11/2026 15:09 → 01/11/2026 15:14, 15:38
+
+**Paul :** fais les corrections. par ailleurs, où est la langue avec ses couleurs? Et pourquoi ne pas utiliser la vraie marge? les G en rouge sont à gauche de la copie, or il faut utiliser la marge. Enfin, je veux voir le fichier avec une vraie copie. je te donne ici la copie de [l'élève], j'ai fait sa recopie dans l'app. par ailleurs la grille doit être formulée, sinon l'élève ne comprend pas. pour le contenu de "pas encore réussi", la formulation des phrases est à revoir aussi. C'est aussi pour ça que j'ai dit plusieurs fois qu'il fallait probablement revoir la formulation de l'échelle descriptive. Enfin, l'élève doit voir son échelle descriptive d'un coup d'oeil, par un bouton "🪟voir ma grille complète". enfin, dans ton exemple il n'y a pas les remarques. il me les faut: applique ce que tu as toi même rédigé pour le prompt de l'instance d'injection; *(photo jointe : la copie manuscrite de l'élève)*
+
+**Fait.** (Le prénom de l'élève, sa note et ses mots sont retirés de ce tour : pas de donnée réelle d'élève au sas ; la photo jointe par Paul n'est pas décrite.) Au sas, branche c14-poignees, 1.4.17 en cours (3182b216) : les remarques (RC_CONSIGNE_REMARQUES = le texte de 451 et le format aReprendre ; stIARemarques au chargement, refus d'une remarque sur un sticker réussi ou sur la ligne d'une autre copie ; relecture en fin de bande, Entrée, ✕ Retirer, texte corrigeable ; l'élève ne lit que les remarques gardées) ; le fichier de l'élève (pastilles et numéros dans la marge rouge de la recopie, bloc « La langue » en couleurs, lignes formulées, « Pas encore réussi » à faire, échelle en stickers réussis et phrases de la grille pour les lignes calculées, « 🪟 Voir ma grille complète », panneau du téléphone en bas) ; les cadres d'un sticker ou d'une remarque sur les mots d'encre (le meilleur choix des blancs de la ligne, rcCalerMots) ; la phrase avec ses vrais blancs (rcTexteMots) ; la fin de bande sans l'ancienne note ; le flux d'en haut mis à jour au bout de la bande ; un message du chargement qui lisait une variable avant qu'elle existe. Fichier des stickers : 44 phrases « Pas encore réussi » et 12 lignes formulées, proposées. Le vrai site lu en lecture seule (sa copie, sa page, l'énoncé) ; tout le reste dans le dossier privé de la session. Banc complet relancé.
+
+**Claude (15:14) :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : tes corrections de 15:09, au sas · ouvert : 409
+
+469. Je lance tout ça dans cet ordre. D'abord, je corrige 464 à 467. Ensuite, le fichier de l'élève : les fautes dans la vraie marge rouge, la langue avec ses couleurs, la grille formulée, l'échelle, « 🪟 Voir ma grille complète ». Puis les remarques. Enfin, la copie de [l'élève] : je lis sa recopie au site, en lecture seule, et je fais moi-même le travail de l'IA avec les trois consignes. Tu auras ses captures et son fichier. Rien de sa copie ne va au sas ni en ligne.
+
+470. Ce que tu n'as pas commenté, je le prends comme acquis : tu relis les remarques en une liste à la fin de la bande, sans arrêt (436) ; le mot « À reprendre » ; un seul numéro par ligne ; et le texte de 451. Les phrases nouvelles que l'élève lira (la grille formulée, « Pas encore réussi », l'échelle) seront des propositions, marquées comme telles, à valider par toi.
+
+À tester : rien de neuf depuis 14:02.
+
+01/11/2026 15:14
+
+MEMO
+
+**Claude (15:38) :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc complet de la 1.4.17, au sas · ouvert : 409, 481, 482, 483
+
+471. Tes corrections 464 à 467 sont faites dans la maquette, pas en ligne. Les cadres prennent leurs mots entiers. Sur téléphone, le panneau de la note se met en bas. Ta fenêtre de la phrase garde la ponctuation de ta recopie. La fin de la bande ne parle plus de l'ancienne note. J'ai aussi trouvé et corrigé un défaut de la 1.4.16 : un retour de l'IA qui n'apportait que des réussites s'arrêtait sur une erreur, sans message.
+
+472. La copie de [l'élève]. J'ai lu sa recopie au site, en lecture seule : 20 lignes, « Pas de phrase ». Ta photo jointe n'a pas été reconnue comme sa page, parce qu'elle a été recompressée en route. Je l'ai donc posée avec « 📷 Remplacer la photo », et ses 20 lignes se sont recalées dessus. Puis j'ai fait le travail de l'IA avec les trois consignes de l'export : 21 fautes, 19 réussites, 24 remarques. J'ai passé la bande en 40 Entrée, puis Entrée pour garder les remarques. [Sa note : retirée du transcript.] Rien n'a été écrit au site. Ses captures et son fichier ne sont qu'ici, ni au sas ni en ligne.
+
+473. La langue avec ses couleurs (captures 1 et 4). Dans mon exemple de 14:47, les 3 fautes étaient toutes de grammaire, donc tout était rouge. Chez [l'élève], il y en a 15 de grammaire, 4 de lexique, 1 de ponctuation, 1 d'accent ou de majuscule. Un bloc « La langue » est maintenant en haut, sous la note : chaque type avec sa couleur, sa lettre et son nombre. Un clic sur un type fait ressortir ses fautes sur la copie.
+
+474. La vraie marge (1). Les pastilles des fautes et les numéros des remarques sont dans la marge rouge de la photo, contre le trait, à la hauteur de leur ligne. Chez [l'élève], sur ordinateur, ils voisinent avec les numéros d'architecture qu'elle a écrits dans sa marge, sans les cacher. Sur téléphone (7), la marge est étroite : les pastilles se serrent, sur deux rangs quand une ligne en a plusieurs.
+
+475. Les remarques (2 et 3). Sur ses 24 remarques, 12 sont posées sur 9 lignes, numérotées de 1 à 9 dans la marge. Les 12 autres n'ont pas de ligne : elles vont dans la grille, sous « Pas encore réussi », chacune sous son sticker (5). Au clic sur un numéro, l'élève lit « À reprendre », ce qui était attendu, sa phrase telle que tu l'as recopiée avec le passage surligné, puis la remarque. Le passage s'encadre en pointillés sur la photo.
+
+476. Ta relecture (8) : à la fin de la bande, la liste des 24 remarques. Entrée les garde toutes ; « ✕ Retirer » en enlève une ; tu corriges un texte dans sa case. L'élève ne lit rien avant ton Entrée.
+
+477. La grille formulée et l'échelle (1, 5 et 6). Chaque ligne se lit par une phrase pour l'élève, avec son titre en petit dessous ; par exemple « Ta lettre cache quelque chose à l'autre, et on le sent. ». Sous « Pas encore réussi », chaque sticker dit ce qu'il y a à faire : « Cache exprès quelque chose à l'autre dans ta lettre. ». Pour les lignes à stickers, l'échelle se lit en stickers réussis (« 2 sur 4 »). Pour les deux lignes calculées, elle reprend les phrases de ta grille (« 18 à 23 lignes », « une erreur toutes les quatre lignes au plus »). « 🪟 Voir ma grille complète » ouvre le tableau entier, avec sa case encadrée sur chaque ligne (6).
+
+478. Tous ces textes sont des propositions. Les 12 lignes formulées et les 44 phrases « Pas encore réussi » sont dans le fichier des stickers. Dans Réglages, chaque ligne et chaque sticker ont maintenant leur case, pour que tu les changes, et la validation ligne par ligne les montre. Les mots fixes du fichier de l'élève sont aussi à valider : « À reprendre », « Clique les numéros dans la marge de ta copie. », « Ta phrase », « 🪟 Voir ma grille complète », « Ma grille complète », « Ce qui est attendu », « Tes points ».
+
+479. Ce qui ne va pas encore : sur la copie de [l'élève], 4 cadres sur 9 sont décalés d'un mot. [Les quatre passages cités de sa copie sont retirés du transcript.] Son blanc correcteur et ses grands blancs trompent la mesure de l'encre. Tu les recales dans la bande : en glissant le cadre, ou par double clic pour ses poignées. Les 5 autres sont justes.
+
+480. Le nombre de remarques : 24 pour cette copie, c'est la règle de 451, une par sticker non réussi. Mais certaines se répètent : les quatre de « Ce qu'on tait » (5) disent la même chose, puisque sa lettre ne cache rien. Je propose d'ajouter une phrase à la consigne : « Si un sticker n'est pas réussi seulement parce qu'un autre ne l'est pas, n'écris pas de remarque pour lui. ». Elle aurait eu 18 remarques au lieu de 24.
+
+481. Les textes de 477 et 478 : tu les valides, ou tu les changes ?
+
+482. La phrase de 480 : je l'ajoute à la consigne ?
+
+483. Je propose de mettre en ligne la 1.4.16 et la 1.4.17 ensemble, après le banc complet, qui tourne en ce moment. Je te demanderai le promeus avec les captures. Ça te va ?
+
+484. Au sas, le transcript n'écrit pas le prénom de [l'élève] : il écrit « [l'élève] ». J'y ai aussi retiré le nom d'un élève que j'avais laissé au tour de 09:22.
+
+À tester : ouvre « [nom de l'élève] - fichier eleve (maquette).html » sur ton ordinateur, puis sur ton téléphone. Clique un numéro de la marge, un type dans « La langue », une ligne de la grille, puis « 🪟 Voir ma grille complète ».
+
+01/11/2026 15:38
 
 MEMO

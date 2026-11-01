@@ -225,7 +225,7 @@ function dr_ouvCarteHtml(e, durChamp, masq){
 function dr_ouvEcrire(quoi, champ, val){ const sk = quoi;
   try { if (quoi === 'chapitre') { if (typeof atChampChapitre !== 'function') return; atChampChapitre(champ, val); } else { if (typeof atChampSeance !== 'function') return; atChampSeance(sk, champ, val); } } catch (e) { return; }
   const lire = () => quoi === 'chapitre' ? (dr_chapitre() || {})[champ] : (dr_seance(sk) || {})[champ]; const vu = x => JSON.stringify(x === undefined ? null : x); const t0 = Date.now();
-  const T = setInterval(() => { if (vu(lire()) === vu(val) || Date.now() - t0 > 5000) { clearInterval(T); dr_ouvInvalider(); try { if (typeof dr_somSuivre === 'function') dr_somSuivre(); } catch (e) {} try { dr_tout(); } catch (e) {} } }, 60); }
+  const T = setInterval(() => { if (vu(lire()) === vu(val) || Date.now() - t0 > 5000) { clearInterval(T); dr_ouvInvalider(); try { dr_tout(); } catch (e) {} } }, 60); }
 function dr_ouvBrancherCarte(da, e){ if (!da || !e || !dr_estInvariable(e)) return; const sk = dr_cleSeance(S.si); const c = dr_chapitre() || {}; const se = dr_seance(sk) || {};
   da.querySelectorAll('[data-ouv-champ]').forEach(el => { const q = el.dataset.ouvChamp; const valeur = () => q === 'titre' ? (dr_ouvChampsChapitre(e) ? c.title : se.title) : q === 'question' ? c.problematique : se.objectif;
     el.onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); el.blur(); } ev.stopPropagation(); };

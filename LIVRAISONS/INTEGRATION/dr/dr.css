@@ -632,3 +632,7 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 /* « à écrire » (✍🏻) sur une ligne d'une diapo d'ouverture : le cadre et le picto gardent leur sens, le texte ne passe jamais dessous */
 .mur .ouv li.aecrire{padding-left:calc(.6em + 1.45em)!important;margin-left:0}
 .mur .ouv li.aecrire::after{left:.25em;top:.15em;font-size:max(1.6cqh,.5em)}
+/* C16 (dette relevée par la conscience, préexistante sur la 8.77.1-⑩) : le nom du rôle d'une vignette (« présentation du chapitre », « bilan »…) se lit
+   en entier SOUS la vignette, sur sa propre ligne — il chevauchait le bas de la miniature (il était posé en absolu dans la marge de 6 px) */
+:is(#dr-zone,#ses-tab,.at-som-volet) .vig{flex-wrap:wrap;row-gap:2px}
+:is(#dr-zone,#ses-tab,.at-som-volet) .vig .role{position:static;flex:0 0 100%;order:5;box-sizing:border-box;padding-left:20px;line-height:1.25;white-space:normal}

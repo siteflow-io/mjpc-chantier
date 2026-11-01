@@ -1,0 +1,26 @@
+# redaction 1.4.20-RU — candidate de la nuit du 01 au 02/11/2026 (conscience n°14)
+
+*Sur l'ordre de Paul (01/11, 22:49) : « il faut terminer effectivement tout le reste. À coder cette nuit. Tout doit être opérationnel demain matin à 5h30. » Rien n'est en ligne : la mise en ligne attend son mot (C14 600).*
+
+- Fichier : `redaction-1.4.20-RU-candidat.html`, 931 596 o, md5 `b20f9863c7ef2b4b4b6157af38c4a1d9`. Base en ligne : 1.4.19-RU, md5 `55c27b0af397b48d2af2b8c6c491fa38`.
+- Maquette et bancs : branche `c14-poignees`, commit `c38b084d`.
+
+## Ce que ça change pour Paul
+- **404 — le paquet en vignettes.** Hors de « 🔤 Les initiales », l'écran des scans montre le paquet : chaque élève, son nom, ses étapes (recopiée, envoyée, chargée, la bande) et ses pages en vignettes. Un clic sur une page ouvre sa recopie à cette page ; Échap y revient. Une page sans élève vient en tête, avec « 🔤 Les initiales ». Les passes, le pinceau, les questions, le récapitulatif, le chrono des passes et « ↺ Remettre à zéro » n'ont plus de geste (le code est encore dans le fichier : voir « Ce qui reste »).
+- **403 — le chrono.** En haut de la recopie : « ⏱ recopie 12 min · bande 4 min » pour la copie affichée, compté seul (une minute sans geste ne compte pas). Sous « 📋 Le flux » : le total de la classe.
+- **402 — « 📷 La photo ».** Un seul bouton ; sa fenêtre : Remplacer, Tourner, Retoucher, Ordre des pages, Retirer les photos. Un bouton grisé dit pourquoi, en dessous. Ta recopie, tes marques et les cadres suivent la page. Une copie de l'appli tourne « en vue » : quatre quarts de tour reviennent au même.
+- **405 — « 📦 Tout rendre ».** Dans « 📨 Fichiers École Directe » : un seul zip, un fichier par élève, nommé comme dans la liste de la classe (« NOM Prénom.html »). Un fichier seul porte le même nom.
+- **La sauvegarde JSON étendue (Paul 13:12).** Toute la rédaction telle qu'elle est au site (le sujet et sa grille de stickers, les copies : recopie, envois, corrigés, bande, stickers, remarques, temps ; les pages du paquet ; les retours). Quand le paquet passe à « entièrement corrigé », l'app la range au site (`sauvegardes/redactions/<rédaction>/…`) et propose « 💾 Télécharger la sauvegarde ». « 💾 Télécharger la sauvegarde » est aussi dans « 📋 Le flux ». Même format que « 📸 Snapshot » : « 📤 Restaurer » la relit. Les photos n'y sont pas.
+- **406 — le Bilan.** Deux colonnes, « Lignes » et « Ton temps » ; en bas, toute la classe. « ▸ sa grille » : chaque ligne de la grille d'une copie corrigée avec les stickers, ses points, son niveau, ses stickers réussis.
+- **407 — l'aide « ? ».** Récrite pour le paquet, la recopie, la bande, le Bilan, les Fiches élèves et les Réglages : seulement ce qui reste.
+- **Trouvés par le banc cette nuit, réglés :** une copie sans faute ni sticker proposés mais avec des remarques de l'IA n'ouvrait pas sa bande (ses remarques n'étaient jamais relues, l'élève ne les lisait pas) ; une bande finie, rouverte après une ligne retapée, s'ouvrait sur « Bande finie » au lieu de l'arrêt nouveau ; une copie de l'appli tournée deux fois prenait la photo d'origine.
+
+## Les preuves
+- Banc complet : **146 vérifications, 0 défaut**. Par rapport à la 1.4.19 (176) : 36 vérifications de l'ancien flux retirées avec leurs gestes (gardées dans `banc/ancien-flux-retire-1.4.20.mjs.txt`), 4 récrites pour le nouveau, 10 nouvelles (404 ×2, 403, 402, 405, 406, 407, la sauvegarde ×3).
+- Vrai site, en lecture seule (écritures interceptées) : 30 copies, 675 marques, identiques à la 1.4.19 ; les 51 pages recopiées identiques (889 lignes, mêmes textes, mêmes places) ; la carte de chaque élève ouvre sa copie ; trois exports à la suite sur la vraie classe : envois 1, 2, 3 sur 4, huit copies chacun, disjoints, 26 écritures interceptées ; aucune erreur.
+- La copie réelle d'une élève (dans `prive`, jamais au sas) : recopie, export, retour, bande (21 fautes, 19 stickers, 18 remarques), la sauvegarde proposée à la fin de la bande, son fichier « NOM Prénom.html » ; aucune erreur.
+
+## Ce qui reste
+- **401** : le code de l'ancien flux est encore dans le fichier, sans geste. Le retirer fonction par fonction est la suite.
+- **Les cadres décalés d'un mot sur le blanc correcteur** : pas encore repris.
+- L'écriture de la sauvegarde au vrai site (`sauvegardes/…`) n'a pas pu être essayée (lecture seule) : si le site la refuse, la fenêtre le dit et le fichier téléchargé reste.

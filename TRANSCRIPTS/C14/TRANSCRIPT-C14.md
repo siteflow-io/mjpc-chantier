@@ -3065,3 +3065,43 @@ MEMO
 01/11/2026 17:10
 
 MEMO
+
+## Tour 120 — 01/11/2026 17:21 → 01/11/2026 17:37
+
+**Paul :** Ok
+
+**Fait.** Le compte des architectures (1 ou 2 réussis, 2 pt ; 3 ou 4, 4,5 pt ; 5 ou 6, 7 pt) est dans le fichier des stickers du sas (a1f2edaf). La carte de la bande dit « sa note, avec les stickers déjà gardés avant celui-ci ». Le banc vérifie le paragraphe et la phrase sur deux lignes, de la bande au fichier de l'élève : 167 vérifications, 0 défaut (c14-poignees 9de79f82). La candidate 1.4.17-RU est au sas (LIVRAISONS/REDACTION/redaction-1.4.17-RU-candidat.html, 6561f78c, md5 4b09e8ab…) : même code que la 1.4.17 passée sur le vrai site en lecture seule (30 copies, 675 marques, 51 pages identiques à la 1.4.15, carte juste, 0 erreur), seul le numéro change. Les captures du banc sont au sas (17cead5e, données inventées). Les 7 captures de la copie de l'élève sont envoyées dans la conversation seulement, ni au sas ni en ligne. Rien en ligne.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : rien · ouvert : 409, 539
+
+528. Ton « Ok » de 17:21 est appliqué. Les architectures comptent ce qui est réussi : 1 ou 2 stickers, 2 points ; 3 ou 4, 4,5 points ; 5 ou 6, 7 points. La carte de ta bande dit maintenant « sa note, avec les stickers déjà gardés avant celui-ci ». [Ce qu'a l'élève aux architectures : retiré du transcript.] (capture 6)
+
+529. Je te demande le promeus pour la 1.4.17-RU. Elle contient la 1.4.16, qui n'a jamais été en ligne. Ton site a toujours la 1.4.15.
+
+530. Ce qui change dans ta bande. Après les fautes viennent les stickers que l'IA propose. Chacun dit pourquoi il est réussi, en phrase pour l'élève, et ce qu'il rapporte à la note. Le cadre prend quelques mots, toute la phrase ou tout le paragraphe. Un paragraphe montre sa zone de la page avec l'accolade à droite, puis son texte, puis la carte, l'un sous l'autre : c'était ta capture 7 de 16:37 (capture 1). À la fin, tu relis les remarques : Entrée les garde, « ✕ Retirer » en enlève une, et tu corriges un texte dans sa case (capture 2).
+
+531. Ce qui change dans le fichier de l'élève, celui que tu rends sur ED. Les pastilles des fautes et les numéros des remarques sont dans la vraie marge rouge. « La langue » montre chaque type d'erreur avec sa couleur et son nombre. « À reprendre » donne les numéros. La grille est formulée pour l'élève, avec son échelle (capture 3). Au clic sur un cadre : « ✓ Réussi », la ligne de la grille, sa phrase recopiée sous « Tu as écrit » avec le passage surligné, puis le pourquoi (capture 4). Au clic sur un numéro : ce qui est attendu, « Ta phrase », puis la remarque (capture 5). « 🪟 Voir ma grille complète » ouvre le tableau entier, avec sa case encadrée sur chaque ligne (capture 6).
+
+532. Ce qui change dans Réglages : chaque sticker a sa phrase « Pas encore réussi » et sa taille de cadre, chaque ligne a sa phrase pour l'élève, et la validation ligne par ligne les montre.
+
+533. Deux défauts de la 1.4.15 en ligne sont corrigés au passage. Sur téléphone, le panneau de la note couvrait le haut de la copie : il se met en bas (capture 7). Ta fenêtre de la phrase qui t'a marqué ne gardait pas la ponctuation de ta recopie : elle la garde.
+
+534. Les vérifications. Le banc complet : 167 vérifications, 0 défaut, du retour de l'IA jusqu'au fichier de l'élève. Sur ton vrai site, en lecture seule, elle donne exactement le même résultat que la 1.4.15 : 30 copies, 675 marques et 51 pages recopiées identiques ; la carte ouvre la bonne copie ; aucune erreur. Aucune écriture n'est partie vers ton site.
+
+535. Ce qui part imparfait. Sur la copie de [l'élève], 3 cadres restent décalés d'un mot à cause de son blanc correcteur : tu les recales dans la bande. Sur téléphone, la marge est étroite, et les pastilles et les numéros s'y serrent (capture 7).
+
+536. Ce que je ne sais pas : la longueur de la réponse de l'IA pour toute une classe, maintenant qu'elle écrit aussi les pourquoi et les remarques. Je la mesurerai à ton premier vrai envoi (442).
+
+537. Après la mise en ligne, à toi : dans Réglages, charge le fichier des stickers du sas, MANDATS/REDACTION-UNIVERSELLE/STICKERS/stickers-lettre-grande-guerre.json, puis valide-le ligne par ligne.
+
+538. Si tu dis promeus : je sauvegarde au sas la 1.4.15 en ligne, je pose la 1.4.17-RU à sa place, je vérifie que ton site la sert, puis je mets à jour le journal, la restauration et les dettes. La sauvegarde permet de revenir en arrière.
+
+539. Promeus pour la 1.4.17-RU ?
+
+À tester : rien en ligne. Regarde surtout les captures 1 (le paragraphe dans ta bande) et 6 (les architectures de [l'élève]).
+
+01/11/2026 17:37
+
+MEMO

@@ -3360,3 +3360,43 @@ MEMO
 01/11/2026 21:16
 
 MEMO
+
+## Tour 128 — 01/11/2026 22:16 → 01/11/2026 22:34
+
+**Paul :** Ok pour 571
+
+**Claude (22:17) :**
+
+À jouer : rien de neuf (la 1.4.18-RU est en ligne depuis 21:15) · en cours : 571 · ouvert : 409, 442
+
+582. Je code 571 maintenant. Chaque clic sur l'export donnera le paquet suivant, jamais une copie qui attend son retour. Un bouton « ↻ Renvoyer les copies en attente » servira si un retour s'est perdu. Chaque fichier sera nommé par son contenu, et l'IA devra rendre le sien sous le même nom, précédé de « corrige_ ». Enfin, « Choisir un fichier » acceptera plusieurs fichiers d'un coup : ils se chargeront l'un après l'autre, dans n'importe quel ordre. Puis viendront le banc complet et ton vrai site en lecture seule, et je te demanderai le promeus avec les captures.
+
+À tester : rien pour l'instant.
+
+01/11/2026 22:17
+
+MEMO
+
+**Fait.** 571 codé dans `recopie.js` (`rcEnAttente`, `rcNomEnvoi`, `RC_CONSIGNE_FICHIER`, `rcIAChargerPlusieurs`, le bouton « ↻ Renvoyer », le compteur et la ligne du flux) ; banc : export nommé, second export sans fichier, renvoi des mêmes copies, deux retours choisis d'un coup ; banc complet 175/0 (c14-poignees `3d3c850b`). Candidate 1.4.19-RU (md5 `7233d02f…`, 897 061 o, sas `0c3760f7`). Vrai site en lecture seule : 30 copies, 675 marques, 51 pages identiques à la 1.4.18, la carte juste, 0 erreur ; sur la vraie classe, la grille chargée et validée dans la page seulement, trois exports à la suite : envoi 1, 2 et 3 sur 4, 8 copies chacun, distincts, nommés par leur contenu ; 24 en attente ; 26 écritures interceptées, rien parti au site. Mesuré au passage : au site, la rédaction de 3 Franklin n'a pas encore de grille de stickers (l'export attend).
+
+**Claude (22:34) :**
+
+À jouer : rien de neuf (la 1.4.18-RU est en ligne) · en cours : rien · ouvert : 409, 442, 588
+
+583. 571 est fait dans la candidate 1.4.19-RU. Chaque clic sur « ⇪ Exporter pour l'IA » donne le paquet suivant : huit copies pas encore parties, jamais une copie qui attend son retour. Quand tout est parti, l'export le dit, et « ↻ Renvoyer les copies en attente » apparaît, pour un retour perdu.
+
+584. Le nom dit le contenu, par exemple « Redaction-1-Ecrire-une-lettre-de-la-Gran_3-franklin-aretha_envoi-2-sur-4_8-copies-stickers-seuls_2026-11-01_22h29.json ». La consigne demande à l'IA de rendre son fichier sous le même nom, précédé de « corrige_ ».
+
+585. Pour charger : « Choisir un ou plusieurs fichiers » prend tous les retours d'un coup. Ils se chargent l'un après l'autre, dans n'importe quel ordre, et le message dit fichier par fichier ce qui s'est chargé.
+
+586. Essayé sur ta vraie classe, en lecture seule, avec ta grille de stickers chargée dans la page seulement : trois exports à la suite ont donné l'envoi 1, 2 et 3 sur 4, huit copies chacun, toutes différentes ; puis « 24 en attente de leur retour » et le bouton « Renvoyer » (capture). Rien n'est parti au site : les 26 écritures ont été interceptées. Le banc complet passe 175 vérifications, 0 défaut ; ton vrai site donne les mêmes copies, marques et pages qu'avec la 1.4.18.
+
+587. Au passage, mesuré à 22:30 : ta rédaction de 3 Franklin n'a pas encore sa grille de stickers au site. L'export attend donc, et la ligne verte te dit où la charger (561).
+
+588. Promeus pour la 1.4.19-RU ?
+
+À tester : rien n'est en ligne. Après le promeus : charge ta grille de stickers, exporte deux fois de suite, puis charge les deux retours d'un coup.
+
+01/11/2026 22:34
+
+MEMO

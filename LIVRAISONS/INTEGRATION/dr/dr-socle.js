@@ -99,54 +99,108 @@ function dr_normaliserTrame(E, sk){
    nouvelle ; un mot qui manque → la ligne reste vide, et la carte le dit. Hors activité (un rôle), 0 minute. Retirables : le retrait est retenu dans
    `deroule/retraits` (la liste des rôles retirés de la séance). Tant que Paul ne les a pas modifiées, elles ne s'écrivent pas au hub (comme la fin d'heure) :
    elles suivent le chapitre ; modifiées, elles s'écrivent comme toute diapo. Identités stables : `inv-<rôle>-s<clé de séance>`. ═══ */
-const DR_INV = ['presentation-chapitre', 'plan', 'presentation-seance', 'problematique'];
-const DR_INV_NOM = { 'presentation-chapitre': 'la présentation du chapitre', plan: 'le plan du chapitre', 'presentation-seance': 'la présentation de la séance', problematique: 'la problématique' };
+/* C16 (mandat des diapos d'ouverture au canon, §12.67, §12.76) : les quatre diapos en texte simple deviennent cinq types au canon de Paul, posés par le site
+   (dr-ouverture.js dessine). Les mêmes rôles quand ils existent (pour que les copies de classe déjà écrites se relisent) : la présentation du chapitre
+   (« presentation-chapitre »), le parcours (« plan », qui était le plan du chapitre), le début de séance (« presentation-seance »), la problématique ;
+   deux rôles nouveaux : les compétences du chapitre (« competences-chapitre ») et leur retour en bilan à la dernière séance (« competences-bilan »).
+   L'ordre (C16 33) : à la première séance, la présentation du chapitre, puis les compétences du chapitre ; à chaque séance (la première comprise, après
+   les deux précédentes), le parcours, puis le début de séance, puis la problématique. */
+const DR_INV_TETE_PREMIERE = ['presentation-chapitre', 'competences-chapitre'];
+const DR_INV_TETE_SEANCE = ['plan', 'presentation-seance', 'problematique'];
+const DR_INV_TETE = DR_INV_TETE_PREMIERE.concat(DR_INV_TETE_SEANCE);
+const DR_INV = DR_INV_TETE.concat(['competences-bilan']);
+const DR_INV_NOM = { 'presentation-chapitre': 'la présentation du chapitre', 'competences-chapitre': 'les compétences du chapitre', plan: 'le parcours du chapitre', 'presentation-seance': 'le début de séance', problematique: 'la problématique', 'competences-bilan': 'les compétences du chapitre en bilan' };
 /* §12.74 (3) : le rôle d'une diapo dit en clair dans l'en-tête du pilote (« problématique », pas « problematique ») */
-const DR_ROLE_CLAIR = { 'presentation-chapitre': 'présentation du chapitre', plan: 'plan du chapitre', 'presentation-seance': 'présentation de la séance', problematique: 'problématique', reactivation: 'réactivation', bilan: 'bilan', fin: 'Cahier de textes' };
+const DR_ROLE_CLAIR = { 'presentation-chapitre': 'présentation du chapitre', 'competences-chapitre': 'compétences du chapitre', plan: 'parcours du chapitre', 'presentation-seance': 'début de séance', problematique: 'problématique', 'competences-bilan': 'compétences du chapitre (bilan)', reactivation: 'réactivation', bilan: 'bilan', fin: 'Cahier de textes' };
 function dr_roleEnClair(r){ return DR_ROLE_CLAIR[r] || String(r || '').replace(/-/g, ' '); }
 function dr_estInvariable(e){ return !!(e && DR_INV.indexOf(e.role) >= 0); }
+function dr_estOuvertureTete(e){ return !!(e && DR_INV_TETE.indexOf(e.role) >= 0); }   /* celles de la tête de la séance (pas le bilan du chapitre, posé à la fin) */
 function dr_invEid(role, sk){ return 'inv-' + role + '-s' + (sk != null ? sk : 'x'); }
 function dr_invPremiere(sk){ try { const c = dr_chapitre(); if (!c || typeof atSeances !== 'function') return false; const l = atSeances(c).filter(p => p.se && p.se.type !== 'sommaire'); return !!l.length && String(l[0].j) === String(sk); } catch (e) { return false; } }
-/* les libellés, lus là où la feuille sommaire les lit (jamais recopiés) ; null = le mot manque */
-function dr_invCompLib(id){ const t = (typeof CH !== 'undefined' && CH) ? CH.taxo : null; if (!t) return null; let lib = null; ['francaisC4', 'transversales'].forEach(k => (((t.competences || {})[k]) || []).forEach(b => (b.items || []).forEach(i => { if (i.id === id && i.actif !== false && i.libelle) lib = i.libelle; }))); return lib; }
+function dr_invDerniere(sk){ try { const c = dr_chapitre(); if (!c || typeof atSeances !== 'function') return false; const l = atSeances(c).filter(p => p.se && p.se.type !== 'sommaire'); return !!l.length && String(l[l.length - 1].j) === String(sk); } catch (e) { return false; } }
+/* les retraits d'une séance (deroule/retraits, les rôles retirés par Paul). Ceux qu'écrit cette version portent la marque « canon ». Ceux d'avant
+   (sans la marque) qui retiraient TOUTES les diapos d'ouverture de l'ancienne version (les quatre à la première séance, les deux ailleurs) disent
+   « pas d'ouverture dans cette séance » : les diapos nouvelles de la tête (les compétences du chapitre, le parcours) y restent retirées aussi. */
+const DR_INV_MARQUE = 'canon';
+function dr_invRetraits(sce, sk){ const L = (sce && sce.deroule && Array.isArray(sce.deroule.retraits)) ? sce.deroule.retraits.filter(r => typeof r === 'string') : []; if (L.indexOf(DR_INV_MARQUE) >= 0) return L;
+  const anciens = dr_invPremiere(sk) ? ['presentation-chapitre', 'plan', 'presentation-seance', 'problematique'] : ['presentation-seance', 'problematique'];
+  if (anciens.every(r => L.indexOf(r) >= 0)) DR_INV_TETE.forEach(r => { if (L.indexOf(r) < 0) L.push(r); });
+  return L; }
+/* les libellés, lus là où la feuille sommaire les lit (jamais recopiés) ; null = le mot manque. 13 · 91 (C16) : une compétence se nomme par sa phrase
+   d'élève (`libelleEleve`) ; l'intitulé officiel seulement si la taxonomie n'en a pas (et « À régler » le dit, dr-ouverture.js) */
+function dr_invCompLib(id){ const t = (typeof CH !== 'undefined' && CH) ? CH.taxo : null; if (!t) return null; let lib = null; ['francaisC4', 'transversales'].forEach(k => (((t.competences || {})[k]) || []).forEach(b => (b.items || []).forEach(i => { if (i.id === id && i.actif !== false && (i.libelleEleve || i.libelle)) lib = String(i.libelleEleve || '').trim() || i.libelle; }))); return lib; }
 function dr_invNotionLib(id){ let lib = null; try { dr_taxo().forEach(d => d.familles.forEach(f => f.notions.forEach(n => { if (n.id === id) lib = n.eleve || n.prof || null; }))); } catch (e) {} return lib; }
 function dr_invEntree(c, niv){ if (!c || !c.entree) return null; try { const l = (typeof chEntreesDuNiveau === 'function' ? chEntreesDuNiveau(niv) : null) || []; const x = l.find(z => z.id === c.entree); if (x) return x.libelle; } catch (e) {} return /[\s'’]/.test(String(c.entree)) ? String(c.entree) : null; }
-/* le contenu d'une diapo invariable : { act, blocs, manque: [ce qui manque, dans les mots de Paul] } — lu à chaque fois depuis le chapitre */
-function dr_invContenu(role, sk){ const c = dr_chapitre(); const se = dr_seance(sk) || {}; const manque = []; const niv = (typeof AT !== 'undefined' && AT && AT.edChap) ? AT.edChap.level : null; if (!c) return { act: '', blocs: [], manque: ['le chapitre'] };
+/* le contenu d'une diapo d'ouverture au canon : { act, blocs: [{ t: 'ouverture', … }], manque, manques } (dr-ouverture.js) — lu à chaque fois depuis le chapitre */
+function dr_invContenu(role, sk){ return dr_ouvContenu(role, sk); }
+/* l'ancienne forme (avant C16) : gardée pour reconnaître une ancienne diapo intacte (une copie pas encore jouée la reçoit au canon) */
+function dr_invCompLibV1(id){ const t = (typeof CH !== 'undefined' && CH) ? CH.taxo : null; if (!t) return null; let lib = null; ['francaisC4', 'transversales'].forEach(k => (((t.competences || {})[k]) || []).forEach(b => (b.items || []).forEach(i => { if (i.id === id && i.actif !== false && i.libelle) lib = i.libelle; }))); return lib; }   /* l'ancienne forme nommait par l'intitulé officiel */
+function dr_invContenuV1(role, sk){ const c = dr_chapitre(); const se = dr_seance(sk) || {}; const manque = []; const niv = (typeof AT !== 'undefined' && AT && AT.edChap) ? AT.edChap.level : null; if (!c) return { act: '', blocs: [], manque: ['le chapitre'] };
   const bloc = (txt, el) => ({ t: 'texte', id: 'binv-' + role + '-s' + sk, txt, el });
   const libs = (ids, lire, quoi) => { const ok = [], pas = []; (ids || []).forEach(id => { const l = lire(id); if (l) ok.push(l); else pas.push(id); }); if (pas.length) manque.push(quoi + ' (' + pas.join(', ') + ')'); return ok; };
   if (role === 'presentation-chapitre') { const el = []; const en = dr_invEntree(c, niv); if (en) el.push('Entrée du programme : ' + en); else manque.push('l’entrée du programme');
-    const maj = libs(c.competencesMajeures, dr_invCompLib, 'le libellé d’une compétence principale'); if (maj.length) el.push('Compétence(s) principale(s) : ' + maj.join(' · ')); else if (!(c.competencesMajeures || []).length) manque.push('la ou les compétences principales');
-    const min = libs(c.competencesMineures, dr_invCompLib, 'le libellé d’une compétence aussi travaillée'); if (min.length) el.push('Aussi travaillées : ' + min.join(' · '));
+    const maj = libs(c.competencesMajeures, dr_invCompLibV1, 'le libellé d’une compétence principale'); if (maj.length) el.push('Compétence(s) principale(s) : ' + maj.join(' · ')); else if (!(c.competencesMajeures || []).length) manque.push('la ou les compétences principales');
+    const min = libs(c.competencesMineures, dr_invCompLibV1, 'le libellé d’une compétence aussi travaillée'); if (min.length) el.push('Aussi travaillées : ' + min.join(' · '));
     if (!String(c.title || '').trim()) manque.push('le titre du chapitre'); return { act: String(c.title || ''), blocs: [bloc('Ce que nous travaillons', el)], manque }; }
   if (role === 'plan') { const types = {}; (typeof CH_TYPES_SEANCE !== 'undefined' ? CH_TYPES_SEANCE : []).forEach(t => { types[t.id] = t.libelle; }); const l = (typeof atSeances === 'function' ? atSeances(c) : []).filter(p => p.se && p.se.type !== 'sommaire');
     const el = l.map((p, n) => (n + 1) + '. ' + String(p.se.title || '') + (p.se.type && (types[p.se.type] || p.se.type) ? ' · ' + (types[p.se.type] || p.se.type) : '')); if (!el.length) manque.push('le plan des séances');
     return { act: 'Le plan du chapitre', blocs: [bloc('', el)], manque }; }
   if (role === 'presentation-seance') { const el = []; const no = libs(se.notions, dr_invNotionLib, 'le libellé d’une notion'); if (no.length) el.push('Notions rencontrées : ' + no.join(' · '));
-    const majC = c.competencesMajeures || []; const cs = se.competences || []; const p1 = libs(cs.filter(id => majC.indexOf(id) >= 0), dr_invCompLib, 'le libellé d’une compétence'); const p2 = libs(cs.filter(id => majC.indexOf(id) < 0), dr_invCompLib, 'le libellé d’une compétence');
+    const majC = c.competencesMajeures || []; const cs = se.competences || []; const p1 = libs(cs.filter(id => majC.indexOf(id) >= 0), dr_invCompLibV1, 'le libellé d’une compétence'); const p2 = libs(cs.filter(id => majC.indexOf(id) < 0), dr_invCompLibV1, 'le libellé d’une compétence');
     if (p1.length) el.push('Compétence(s) principale(s) : ' + p1.join(' · ')); if (p2.length) el.push('Aussi travaillées : ' + p2.join(' · ')); if (!(se.notions || []).length && !cs.length) manque.push('les notions et les compétences de la séance');
     if (!String(se.title || '').trim()) manque.push('le titre de la séance'); return { act: String(se.title || ''), blocs: [bloc('Ce que nous travaillons', el)], manque }; }
   if (role === 'problematique') { const q = String(c.problematique || '').trim(); if (!q) manque.push('la problématique du chapitre'); return { act: 'Notre question', blocs: [bloc('', q ? [q] : [])], manque }; }
   return { act: '', blocs: [], manque }; }
-const DR_INV_VU = new WeakMap();   /* la trame → la taxonomie avec laquelle ses diapos invariables ont été remplies (on les remplit de nouveau quand elle arrive) */
-function dr_invIntacte(e){ return !!(e && e.dr_inv && e.dr_invCanon === dr_canon(e)); }
-function dr_invMarquer(e){ dr_preparer([e]); Object.defineProperty(e, 'dr_invCanon', { value: dr_canon(e), writable: true, configurable: true }); }
+const DR_INV_VU = new WeakMap();   /* la trame → la signature (le chapitre, la classe, la taxonomie) avec laquelle ses diapos d'ouverture ont été remplies */
+/* intacte = telle que le site l'a posée (ni le texte, ni la durée, ni « masquée » changés par Paul) ; l'heure n'en est pas : le site la recalcule (le partage par les durées) */
+function dr_invCanonDe(e){ return dr_canon({ act: e.act, dur: e.dur, comp: e.comp, blocs: e.blocs, masquee: e.masquee }); }
+function dr_invIntacte(e){ return !!(e && e.dr_inv && e.dr_invCanon === dr_invCanonDe(e)); }
+function dr_invMarquer(e){ dr_preparer([e]); Object.defineProperty(e, 'dr_invCanon', { value: dr_invCanonDe(e), writable: true, configurable: true }); }
 function dr_invNeuve(role, sk, h){ const k = dr_invContenu(role, sk); const e = { eid: dr_invEid(role, sk), act: k.act, dur: 0, role, comp: [], blocs: k.blocs, heure: h };
   Object.defineProperty(e, 'dr_pose', { value: true, configurable: true }); Object.defineProperty(e, 'dr_inv', { value: true, configurable: true }); dr_invMarquer(e); return e; }
+const dr_invEstBilan = e => !!e && (e.role === 'bilan' || (!e.role && /bilan/i.test(String(e.act || ''))));
 function dr_invPoser(E, sk){ try { if (sk == null || !Array.isArray(E) || dr_pageTableau()) return; const sce = dr_seance(sk); if (!sce || sce.type === 'sommaire') return;
-  const ret = (sce.deroule && Array.isArray(sce.deroule.retraits)) ? sce.deroule.retraits : [];
+  if (typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe' && E.some(e => dr_estInvariable(e) && !dr_ouvBloc(e) && !e.dr_inv)) return;   /* C16 : une copie de classe écrite avant le canon ne reçoit rien de plus (ce qui a été joué ne change plus) */
+  const ret = dr_invRetraits(sce, sk);
   for (let i = E.length - 1; i >= 0; i--) if (dr_estInvariable(E[i]) && ret.indexOf(E[i].role) >= 0 && dr_invIntacte(E[i])) E.splice(i, 1);   /* retirée ici ou sur un autre appareil */
   const vraies = E.filter(e => e && !e.dr_pose && e.role !== 'fin' && !dr_estInvariable(e)); if (!vraies.length) return;   /* une séance sans trame n'a pas encore de début */
-  const h0 = Math.min(...vraies.map(e => +e.heure || 1)); const voulus = (dr_invPremiere(sk) ? DR_INV : DR_INV.slice(2)).filter(r => ret.indexOf(r) < 0);
+  const h0 = Math.min(...vraies.map(e => +e.heure || 1)); const voulus = (dr_invPremiere(sk) ? DR_INV_TETE : DR_INV_TETE_SEANCE).filter(r => ret.indexOf(r) < 0);
   let pos = 0; voulus.forEach(r => { const k = E.findIndex(e => e && e.role === r); if (k >= 0) { pos = k + 1; return; } E.splice(pos, 0, dr_invNeuve(r, sk, h0)); pos++; });
-  DR_INV_VU.set(E, (typeof CH !== 'undefined' && CH) ? CH.taxo : null); } catch (e) {} }
-/* la taxonomie arrive après la première lecture : les diapos intactes se remplissent de nouveau (les libellés des compétences et des notions) ; celles que Paul a modifiées ne bougent plus */
+  /* §12.67 (8), C13 1020 : à la dernière séance, « Les compétences du chapitre » revient, juste avant la diapo du bilan de la séance (sans bilan : juste avant le cahier de textes de sa dernière heure) */
+  if (dr_invDerniere(sk) && ret.indexOf('competences-bilan') < 0 && !E.some(e => e && e.role === 'competences-bilan')) {
+    let ib = -1; E.forEach((e, i) => { if (dr_invEstBilan(e)) ib = i; });
+    if (ib >= 0) { const hb = +E[ib].heure || 1; E.splice(ib, 0, dr_invNeuve('competences-bilan', sk, hb)); }
+    else { const hm = Math.max(...vraies.map(e => +e.heure || 1)); let der = -1; E.forEach((e, i) => { if (e && e.role !== 'fin' && (+e.heure || 1) === hm) der = i; }); E.splice(der + 1, 0, dr_invNeuve('competences-bilan', sk, hm)); } }
+  DR_INV_VU.set(E, dr_invSignature()); } catch (e) {} }
+/* la signature de ce qui remplit les diapos d'ouverture : la classe (en heure de classe), la taxonomie, le chapitre (ses champs, pas ses trames), les dates */
+function dr_invSignature(){ let cl = ''; try { const c = dr_ouvClasse(); cl = c ? c.slug : ''; } catch (e) {} return [cl, dr_ouvTaxoId(), dr_ouvEmpreinte(), DR_OUV.gen, cl && DR_OUV.dates ? DR_OUV.dates.t : 0].join('|'); }
+function dr_ouvEmpreinte(){ const c = dr_chapitre(); const t = Date.now(); if (DR_OUV.empCh === c && DR_OUV.empGen === DR_OUV.gen && t - DR_OUV.empT < 300) return DR_OUV.emp;
+  let s = ''; try { const ec = (typeof AT !== 'undefined' && AT && AT.edChap) || {}; s = JSON.stringify([ec.level, ec.chnum, c && c.title, c && c.problematique, c && c.entree, c && c.image, c && c.ordre, (typeof atSeances === 'function' && c ? atSeances(c) : []).map(p => p.se ? [p.j, p.se.type, p.se.title, p.se.objectif, p.se.evaluee, p.se.image, p.se.competences, p.se.ordre, p.se.classes, p.se.deroule_joue ? Object.keys(p.se.deroule_joue).map(k => Object.keys((p.se.deroule_joue[k] || {}).heures || {}).length) : 0] : null)]); } catch (e) {}
+  DR_OUV.emp = s; DR_OUV.empCh = c; DR_OUV.empGen = DR_OUV.gen; DR_OUV.empT = t; return s; }
+/* le chapitre, la classe ou la taxonomie changent : les diapos intactes se remplissent de nouveau ; celles que Paul a modifiées ne bougent plus ; en classe,
+   une diapo déjà montrée ne change plus (ce qui a été joué est immuable) */
+function dr_invMontree(e){ try { return typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe' && typeof J !== 'undefined' && J.some(x => x && x.type === 'diapo' && x.eid === e.eid); } catch (x) { return false; } }
 function dr_invRafraichir(E, sk){ if (!Array.isArray(E)) return;
-  for (let q = 0; q < E.length; q++) { const e = E[q]; if (!e || e.dr_inv || DR_INV.indexOf(e.role) < 0 || DR_INV_LU.has(e)) continue; DR_INV_LU.add(e); if (e.eid !== dr_invEid(e.role, sk)) continue;   /* revenue par ↶ (une copie) : redevenue intacte si elle est telle que le chapitre la donne */
-    const k = dr_invContenu(e.role, sk); const n = { eid: e.eid, act: k.act, dur: 0, role: e.role, comp: [], blocs: k.blocs }; dr_preparer([n]); const sans = x => dr_canon({ eid: x.eid, act: x.act, dur: x.dur, role: x.role, comp: x.comp, blocs: x.blocs, masquee: x.masquee });
-    if (sans(n) === sans(e)) { Object.defineProperty(e, 'dr_pose', { value: true, configurable: true }); Object.defineProperty(e, 'dr_inv', { value: true, configurable: true }); dr_invMarquer(e); } }
-  const t = (typeof CH !== 'undefined' && CH) ? CH.taxo : null; if (DR_INV_VU.get(E) === t) return; DR_INV_VU.set(E, t);   /* la taxonomie est arrivée : les intactes se remplissent de nouveau */
-  E.forEach(e => { if (!dr_estInvariable(e) || !dr_invIntacte(e)) return; const k = dr_invContenu(e.role, sk); const avant = dr_canon({ act: e.act, blocs: e.blocs }); e.act = k.act; e.blocs = k.blocs; dr_invMarquer(e); if (dr_canon({ act: e.act, blocs: e.blocs }) !== avant && typeof S !== 'undefined' && S.atelier) { try { setTimeout(() => { if (dr_actif()) dr_tout(); }, 0); } catch (x) {} } }); }
+  const classe = typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe';
+  for (let q = 0; q < E.length; q++) { const e = E[q]; if (!e || e.dr_inv || DR_INV.indexOf(e.role) < 0 || DR_INV_LU.has(e)) continue; if (e.eid !== dr_invEid(e.role, sk)) { DR_INV_LU.add(e); continue; }   /* revenue par ↶ (une copie), ou relue du hub : redevenue intacte si elle est telle que le chapitre la donne */
+    const marque = () => { Object.defineProperty(e, 'dr_pose', { value: true, configurable: true }); Object.defineProperty(e, 'dr_inv', { value: true, configurable: true }); dr_invMarquer(e); };
+    const k = dr_invContenu(e.role, sk); const sans = x => dr_canon({ act: x.act, dur: x.dur || 0, comp: x.comp || [], blocs: x.blocs, masquee: x.masquee }); dr_preparer([e]);
+    if (sans({ act: k.act, dur: 0, comp: [], blocs: k.blocs, masquee: e.masquee }) === sans(e)) { DR_INV_LU.add(e); marque(); continue; }
+    if (!dr_ouvBloc(e) && DR_INV_V1_ROLES.indexOf(e.role) >= 0) { if (classe) continue;   /* une copie de classe : c'est la reprise qui décide, le journal relu (dr_invConvertirCopie) */
+      const v = dr_invContenuV1(e.role, sk); const n = { act: v.act, dur: 0, comp: [], blocs: v.blocs, masquee: e.masquee }; dr_preparer([n]);
+      if (sans(n) === sans(e)) { e.act = k.act; e.blocs = k.blocs; DR_INV_LU.add(e); marque(); continue; } }   /* C16 : l'ancienne forme intacte prend le canon */
+    DR_INV_LU.add(e); }
+  const sig = dr_invSignature(); if (DR_INV_VU.get(E) === sig) return; DR_INV_VU.set(E, sig);
+  let change = false; E.forEach(e => { if (!dr_estInvariable(e) || !dr_invIntacte(e) || dr_invMontree(e)) return; const k = dr_invContenu(e.role, sk); const avant = dr_canon({ act: e.act, blocs: e.blocs }); e.act = k.act; e.blocs = k.blocs; dr_invMarquer(e); if (dr_canon({ act: e.act, blocs: e.blocs }) !== avant) change = true; });
+  if (change) { try { setTimeout(() => { if (dr_actif()) dr_tout(); }, 0); } catch (x) {} } }
+const DR_INV_V1_ROLES = ['presentation-chapitre', 'plan', 'presentation-seance', 'problematique'];
+/* C16 (§4.11 du mandat) : à la reprise d'une heure (le journal de la classe relu), une ancienne diapo d'ouverture intacte et jamais montrée à la classe prend le canon ;
+   une diapo montrée, ou modifiée par Paul, ne change pas */
+function dr_invConvertirCopie(){ try { const E = seance().ecrans; const sk = dr_cleSeance(S.si); let n = 0;
+  E.forEach(e => { if (!e || e.dr_inv || DR_INV_V1_ROLES.indexOf(e.role) < 0 || dr_ouvBloc(e) || e.eid !== dr_invEid(e.role, sk)) return; if (J.some(x => x && x.type === 'diapo' && x.eid === e.eid)) return;
+    const v = dr_invContenuV1(e.role, sk); const sans = x => dr_canon({ act: x.act, dur: x.dur || 0, comp: x.comp || [], blocs: x.blocs, masquee: x.masquee }); const o = { act: v.act, dur: 0, comp: [], blocs: v.blocs, masquee: e.masquee }; dr_preparer([o]); dr_preparer([e]); if (sans(o) !== sans(e)) return;
+    const k = dr_invContenu(e.role, sk); e.act = k.act; e.blocs = k.blocs; Object.defineProperty(e, 'dr_pose', { value: true, configurable: true }); Object.defineProperty(e, 'dr_inv', { value: true, configurable: true }); dr_invMarquer(e); n++; });
+  return n; } catch (e) { return 0; } }
 const DR_INV_LU = new WeakSet();
 
 /* ── dr_blocLu : le bloc du site lu TEL QUEL par le rendu de la maquette (qui lisait {t, bid, txt, el}).
@@ -244,7 +298,7 @@ function dr_derouleDe(sk, brut){
   if (!brut) dr_preparer(E);
   dr_ecritsSeulement(E);
   const o = { ecrans: E.filter(e => !(e && e.dr_pose && !e.dr_inv && !(e.blocs || []).length) && !(e && e.role === 'reactivation') && !dr_invIntacte(e)) };   /* la fin d'heure posée à la lecture ne s'écrit que si Paul y a mis quelque chose ; E1 (§12.26 (2)) : jamais une réactivation construite dans B/deroule ; EX (§12.62 (3)) : une diapo d'ouverture que Paul n'a pas modifiée non plus (elle suit le chapitre) */
-  { const presents = new Set(E.filter(Boolean).map(e => e.role)); const ret = (Array.isArray(d.retraits) ? d.retraits : []).filter(r => DR_INV.indexOf(r) >= 0 && !presents.has(r)); if (ret.length) o.retraits = ret; }   /* EX (§12.62 (3)) : les diapos d'ouverture retirées par Paul — celles qui sont revenues (↶) n'y sont plus */
+  { const presents = new Set(E.filter(Boolean).map(e => e.role)); const R0 = Array.isArray(d.retraits) ? d.retraits : []; const ret = R0.filter(r => DR_INV.indexOf(r) >= 0 && !presents.has(r)); if (ret.length) o.retraits = R0.indexOf(DR_INV_MARQUE) >= 0 ? ret.concat([DR_INV_MARQUE]) : ret; }   /* C16 : la marque « canon » reste avec les rôles retirés */   /* EX (§12.62 (3)) : les diapos d'ouverture retirées par Paul — celles qui sont revenues (↶) n'y sont plus */
   if (acts.length) o.activites = acts; if (Object.keys(notes).length) o.notes = notes; if (Object.keys(travail).length) o.travail = travail;
   if (d.reactivation === 'oui' || d.reactivation === 'non') o.reactivation = d.reactivation;   /* E1 (§12.25 (5)) : le réglage par séance (E2 l'écrit sur B/deroule/reactivation) — porté ici pour que le PUT entier de dr_sauve ne l'efface pas */
   return o;
@@ -987,7 +1041,7 @@ const retiree = e => { const d = decisionDe(e); return !!(d && d.moment === 'cla
 function dr_qSansReponse(e, b){ return !!(e && e.role === 'bilan' && b && b.t === 'question' && !(b.el || []).some(x => String(x == null ? '' : x).trim())); }
 /* E4 (§12.38 (3), A91) : hors de la classe (Atelier, répétition), la diapo du cahier de textes montre le cahier par le même rendu qu'en classe — un bloc montré, jamais écrit dans la trame (les données : dr_cahierHorsClasse, E1) */
 function dr_blocsVus(e){ if (e && e.blocs && e.blocs.length) return e.blocs; try { if (e && e.role === 'fin' && typeof dr_cahierHorsClasse === 'function' && dr_cahierHorsClasse(e)) return [{ t: 'cahier' }]; } catch (x) {} return (e && e.blocs) || []; }
-function elements(e){ const out = []; dr_blocsVus(e).forEach((b, bi) => { if (b.t === 'image' && typeof dr_marquesElements === 'function') { dr_marquesElements(b).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'image' })); return; } /* E4 : R1, les marques une à une (dr-recyclage.js) */ if (b.t === 'cahier') { ['l\'échéance', 'le travail à faire', 'le contenu de la séance', 'qui a participé'].forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'cahier' })); return; } if (b.t === 'schema') { p8Elements(b).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'schema' })); return; } /* (p8-2) une bulle = un élément, dans l'ordre de la source ; « Tout ensemble » : aucun */ if (b.t === 'question') out.push({ b: bi, e: 'q', txt: b.txt || '', t: 'question', q: true }); /* (p8-3c) la question se dévoile à son tour, avant ses lignes */ if (dr_qSansReponse(e, b)) return; /* E1 (§12.33 bis, 13 · 76) : la question du bilan sans réponse attendue n'a pas de ligne */ (b.el || []).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: b.t })); }); return out; }
+function elements(e){ const out = []; dr_blocsVus(e).forEach((b, bi) => { if (b.t === 'ouverture' && typeof dr_ouvElements === 'function') { dr_ouvElements(b).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'ouverture' })); return; } /* C16 : les lignes d'une diapo d'ouverture (dr-ouverture.js) */ if (b.t === 'image' && typeof dr_marquesElements === 'function') { dr_marquesElements(b).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'image' })); return; } /* E4 : R1, les marques une à une (dr-recyclage.js) */ if (b.t === 'cahier') { ['l\'échéance', 'le travail à faire', 'le contenu de la séance', 'qui a participé'].forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'cahier' })); return; } if (b.t === 'schema') { p8Elements(b).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: 'schema' })); return; } /* (p8-2) une bulle = un élément, dans l'ordre de la source ; « Tout ensemble » : aucun */ if (b.t === 'question') out.push({ b: bi, e: 'q', txt: b.txt || '', t: 'question', q: true }); /* (p8-3c) la question se dévoile à son tour, avant ses lignes */ if (dr_qSansReponse(e, b)) return; /* E1 (§12.33 bis, 13 · 76) : la question du bilan sans réponse attendue n'a pas de ligne */ (b.el || []).forEach((t, ei) => out.push({ b: bi, e: ei, txt: t, t: b.t })); }); return out; }
 
 // ───────── mise à jour minimale : on ne reconstruit pas, on ajuste (le nœud qui a le focus n'est jamais touché ; les champs gardent leur valeur ; les défilements et les images restent) ─────────
 function morph(a, b){
@@ -1107,6 +1161,7 @@ function rendre(mur, et){ const et0 = et; /* (p8-5f) */ if (et && et.atelier && 
           ? cel(2, `<div class="ed-carte">${et.pilote ? `<div class="rv"><span class="${f.version === 'moi' ? '' : 'on'}" data-rv="site" title="Le récit composé par le site — il se réécrit tout seul à chaque geste ; ta version reste gardée">composé par le site</span><span class="${f.version === 'moi' ? 'on' : ''}" data-rv="moi" title="Ta version : le récit devient modifiable ici, avec Ctrl+Z / Ctrl+Y ; chaque modification est une version gardée">ma version (modifier)</span><span class="rv-h">${f.version === 'moi' && f.suite ? `<button id="rv-reprendre" title="Colle la suite composée par le site à la fin de ta version, en un seul texte à corriger">Reprendre la suite dans ma version</button>` : ''}<button id="rv-undo" title="Revenir à la version précédente">↶</button><button id="rv-redo" title="Rétablir la version suivante">↷</button></span></div>` : ''}<div class="ed-matiere">FRANCAIS — contenu de la séance${f.version === 'moi' ? ' · ma version' : ''}</div><div class="ed-texte ed-recit"${et.pilote && f.version === 'moi' ? ' contenteditable="true" id="ed-recit-edit"' : ''} data-p="0.r">${f.recit || '<i>rien encore</i>'}</div></div>`)
           : cel(1, `<div class="ed-carte"><div class="ed-matiere">FRANCAIS</div>${f.deja ? `<div class="ed-deja">déjà donné pour cette date (${dr_esc(f.dejaQuand)}) : ${dr_esc(f.deja)}</div>` : ''}<div class="ed-texte"${et.pilote ? ' contenteditable="true" id="ed-edit" title="Écris ici : c\'est ce que les élèves voient, ce qui partira dans École Directe, le récit et l\'historique"' : ''} data-p="0.w">${f.travail ? dr_esc(f.travail).replace(/\n/g, '<br>') : (et.pilote ? '' : '<i>rien pour la prochaine fois</i>')}</div><div class="ed-donne">Donné le ${dr_esc(f.donne)}</div></div>`))
       + `</div></div>` + cel(3, `<div class="ed-part"><span class="dr-g">${f.qui.length} élève${f.qui.length > 1 ? 's' : ''} sur ${f.total} ${f.qui.length > 1 ? 'ont' : 'a'} participé</span><span>${f.qui.length ? f.qui.map(o => dr_esc(o.p) + (o.n > 1 ? ' <i class="qn">×' + o.n + '</i>' : '')).join(' · ') : 'personne pour l\'instant'}</span><span class="m">${f.ecrit} réponse${f.ecrit > 1 ? 's' : ''} écrite${f.ecrit > 1 ? 's' : ''} · ${f.oral} prise${f.oral > 1 ? 's' : ''} de parole · ${f.total - f.qui.length ? 'il reste ' + (f.total - f.qui.length) + ' à passer' : 'tout le monde a participé'}</span></div>`) + `</div>`; }
+  else if (b0 && b0.t === 'ouverture' && !et.doc && typeof dr_ouvHtml === 'function') { h += dr_ouvHtml(e, b0, et); }   /* C16 : les diapos d'ouverture au canon — leur décor, leurs lignes ; ni étiquette ni zone d'écriture */
   else if (et.doc) { h += actHtml + docHtml(et.doc) + (et.pilote ? `<button class="doc-x" data-docx="1" title="Ferme le document : retour à la diapo (le journal note le départ)">✕ retour à la diapo</button>` : ''); }
   else if (b0 && b0.t === 'video') { h += actHtml + videoHtml(b0, et); }
   else {
@@ -1142,7 +1197,7 @@ function rendre(mur, et){ const et0 = et; /* (p8-5f) */ if (et && et.atelier && 
   h += `<span class="page dr-page"></span><div class="bandeau ${et.bandeau ? 'on' : ''}">${dr_esc(et.bandeau || '')}</div>`;
   mur.style.fontSize = policePx(H, 32).toFixed(2) + 'px'; poserHtml(mur, h); mur.classList.toggle('avec-bandeau', !!et.bandeau); if (typeof p8RetiresPoser === 'function') p8RetiresPoser(mur, e, et);   /* E4 (§12.59 (3)) */
   /* repris de l'ancien (moteur L1666-1670) : la légende d'une image et ses marques se calent sur la largeur de l'image, pas sur le corps */
-  dr_imagesEntieres(mur); /* E1 (§12.34-1, 13 · 65) : l'œuvre entière, la boîte à sa forme */ dr_videoBrancher(mur, et); dr_cleMediasBrancher(mur); /* E1 (§12.44) : la vidéo lue pour de vrai ; les images et PDF de la clé (4 ter) */
+  dr_imagesEntieres(mur); /* E1 (§12.34-1, 13 · 65) : l'œuvre entière, la boîte à sa forme */ dr_videoBrancher(mur, et); dr_cleMediasBrancher(mur); /* E1 (§12.44) : la vidéo lue pour de vrai ; les images et PDF de la clé (4 ter) */ if (typeof dr_ouvAjuster === 'function') dr_ouvAjuster(mur); /* C16 : la diapo d'ouverture tient dans sa place */
   mur.querySelectorAll('.img-sup').forEach(sup => { const L = sup.getBoundingClientRect().width; if (!L) return; sup.querySelectorAll('.mk').forEach(m => { m.style.fontSize = (L * 0.042) + 'px'; }); const lg = sup.parentElement.querySelector('.img-lg'); if (lg) lg.style.fontSize = (L * 0.035) + 'px'; });
   if (et.sansPages) { const corps = mur.querySelector('.corpsd'); if (corps) { let px = parseFloat(corps.style.fontSize); while (corps.scrollHeight > corps.clientHeight + 2 && px > 8) { px -= 0.5; corps.style.fontSize = px.toFixed(2) + 'px'; } } } else if (et.pages) { const cP = mur.querySelector('.corpsd'); if (cP && et.policeRatio) cP.style.fontSize = (et.policeRatio * (mur.clientHeight || 616)).toFixed(2) + 'px'; if (cP && et.pagesP) { const cles = Array.from(cP.querySelectorAll('li, .rep')).map(p85fCle); et.pages = et.pagesP.map(p => p.map(c => cles.indexOf(c)).filter(i => i >= 0)); } appliquerPages(mur, et); } /* (p8-5f) les pages du pilote, à sa police rapportée à la hauteur du tableau */ else paginer(mur, et);
   p8Poser(mur, et); /* (p8-2) le schéma dans la place « plein » réellement disponible */

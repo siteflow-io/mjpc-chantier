@@ -533,3 +533,87 @@ html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
 #dr-zone .dr-minut-aff.dr-minut-orange { color: #e06c00; }
 #dr-zone .dr-minut-aff.dr-minut-rouge { color: #d0021b; }
 #dr-zone .dr-minut-aff.dr-minut-enpause { text-decoration: underline dotted; }
+
+/* ═══ C16 — LES DIAPOS D'OUVERTURE AU CANON (dr-ouverture.js ; canons MANDATS/CANONS-DIAPOS/1 à 4, mesurés au pixel sur 1600 × 900).
+   Tout en cqh / cqw (le mur est un conteneur) : la diapo se dessine à la taille du tableau, du pilote, d'une vignette. Les couleurs viennent de la
+   charte (variables --ouv-*, posées par le rendu depuis DR_CHARTES) ; --ouv-z est la part de la taille du canon que la place permet (dr_ouvAjuster). ═══ */
+.mur .ouv{position:absolute;inset:0;overflow:hidden;--ouv-z:1;font-family:Carlito,Calibri,"Segoe UI",Arial,sans-serif;line-height:1.25;text-align:left;z-index:0}
+.mur .ouv ul{list-style:none;margin:0;padding:0}
+.mur .ouv li{margin:0;padding:0}
+.mur .ouv.ouv-sombre{background:var(--ouv-nuit);color:#fff}
+.mur .ouv.ouv-clair{background:var(--ouv-papier);color:var(--ouv-encre)}
+.mur .ouv .ouv-titre,.mur .ouv .ouv-question,.mur .ouv .ouv-h1,.mur .ouv .ouv-n,.mur .ouv .ouv-t{font-family:"EB Garamond",Garamond,"Liberation Serif",Georgia,serif}
+.mur.pilote .ouv .pas{opacity:.45}
+.mur.tableau .ouv .pas{visibility:hidden}
+.mur .ouv .ouv-img{position:absolute;display:flex;align-items:center;justify-content:flex-end}
+.mur .ouv .ouv-img img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.mur .ouv .ouv-img .img-vide{align-items:center;justify-content:center;text-align:center;width:100%;height:100%;box-sizing:border-box;padding:2cqh;color:var(--ouv-sourdine);font-size:2.2cqh;border:.2cqh dashed var(--ouv-sourdine)}
+/* la couleur du texte et les surligneurs, lisibles sur le bleu nuit */
+.mur .ouv-sombre .p8-ct[data-coul="rouge"]{color:var(--ouv-t-rouge)!important}
+.mur .ouv-sombre .p8-ct[data-coul="vert"]{color:var(--ouv-t-vert)!important}
+.mur .ouv-sombre .p8-ct[data-coul="bleu"]{color:var(--ouv-t-bleu)!important}
+.mur .ouv-sombre .p8-ct[data-coul="or"]{color:var(--ouv-t-or)!important}
+.mur .ouv-sombre mark{color:var(--ouv-nuit)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contenteditable="true"],:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contenteditable="plaintext-only"]{background:transparent}
+body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contenteditable]:focus{background:rgba(255,255,255,.14)}
+/* 1 · la présentation du chapitre (canon 1) */
+.mur .ouv-pres .ouv-g{position:absolute;left:6.75cqw;right:6.75cqw;top:5cqh;bottom:5cqh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.mur .ouv-pres.ouv-avec-img .ouv-g{right:41cqw}
+.mur .ouv-pres .ouv-img{right:.95cqw;top:1.1cqh;bottom:1.9cqh;width:39.6cqw}
+.mur .ouv-pres .ouv-k{color:var(--ouv-sourdine);font-size:calc(4.9cqh*var(--ouv-z));line-height:1.2}
+.mur .ouv-pres .ouv-titre{font-weight:700;color:#fff;font-size:calc(8.4cqh*var(--ouv-z));line-height:1.38;margin-top:calc(.7cqh*var(--ouv-z))}
+.mur .ouv-pres .ouv-question{font-weight:700;color:var(--ouv-nuitClair);font-size:calc(5.6cqh*var(--ouv-z));line-height:1.25}
+.mur .ouv-pres .ouv-entree{color:var(--ouv-sourdine);font-size:calc(3.8cqh*var(--ouv-z));line-height:1.45;margin-top:calc(4.4cqh*var(--ouv-z))}
+/* 2 · les compétences du chapitre (canon 2) ; le bilan du chapitre : les séances jouées cochées, les autres en pâle */
+.mur .ouv-comp .ouv-h1{position:absolute;left:4.5cqw;right:4.5cqw;top:4.4cqh;font-weight:700;color:var(--ouv-nuit);font-size:6.4cqh;line-height:1.15;white-space:nowrap}
+.mur .ouv-comp .ouv-sous{position:absolute;left:4.5cqw;right:4.5cqw;top:14cqh;color:var(--ouv-gris);font-size:2.9cqh;white-space:nowrap}
+.mur .ouv-comp .ouv-tab{position:absolute;left:4.5cqw;right:4.75cqw;top:20.3cqh;bottom:7.6cqh;display:flex;flex-direction:column;--ouv-cw:min(5.4cqw,calc(52cqw / var(--ouv-n)))}
+.mur .ouv-comp .ouv-tete{flex:0 0 5cqh;display:flex;align-items:center;border-bottom:.15cqh solid var(--ouv-filetFort);color:var(--ouv-gris);font-size:3cqh}
+.mur .ouv-comp .ouv-cl{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden}
+.mur .ouv-comp .ouv-cases{flex:0 0 auto;display:flex;align-items:center}
+.mur .ouv-comp .ouv-tete .ouv-cases b{display:block;width:var(--ouv-cw);text-align:center;font-weight:400}
+.mur .ouv-comp .ouv-doms{flex:1 1 auto;min-height:0;overflow:hidden}
+.mur .ouv-comp .ouv-dn{height:var(--ouv-rh);display:flex;align-items:flex-end;padding-bottom:.35cqh;box-sizing:border-box;font-weight:700;font-size:calc(var(--ouv-rh)*.52*var(--ouv-z));border-bottom:.12cqh solid var(--ouv-filet);white-space:nowrap}
+.mur .ouv-comp .ouv-cr{display:flex;align-items:center;height:var(--ouv-rh);box-sizing:border-box;border-bottom:.12cqh solid var(--ouv-filet);font-size:calc(var(--ouv-rh)*.6*var(--ouv-z));color:var(--ouv-encre)}
+.mur .ouv-comp .ouv-cr .ouv-cases i{display:flex;align-items:center;justify-content:center;width:calc(var(--ouv-cw)*.74);margin:0 calc(var(--ouv-cw)*.13);height:calc(var(--ouv-rh)*.71);border-radius:.55cqh;font-style:normal;font-weight:700;font-size:calc(var(--ouv-rh)*.5);color:#fff;line-height:1}
+.mur .ouv-comp .ouv-cr .ouv-cases i.m{color:var(--ouv-nuit)}
+.mur .ouv-comp .ouv-cases .pale{opacity:.3}
+.mur .ouv-comp .ouv-leg{position:absolute;left:4.5cqw;bottom:1.6cqh;display:flex;gap:2.5cqw;align-items:center;color:var(--ouv-gris);font-size:3cqh;white-space:nowrap}
+.mur .ouv-comp .ouv-leg i{display:inline-block;width:4cqw;height:3.3cqh;border-radius:.55cqh;vertical-align:middle;margin-right:1cqw}
+/* 3 · le parcours du chapitre (canon 3) ; dans la copie de la classe : les dates, la séance du jour entourée d'or, les séances terminées cochées */
+.mur .ouv-parc .ouv-bande{position:absolute;left:0;top:0;right:0;height:13.6cqh;background:var(--ouv-bande);border-left:1cqw solid var(--ouv-nuit);box-sizing:border-box}
+.mur .ouv-parc .ouv-h1{position:absolute;left:2.4cqw;top:0;bottom:0;display:flex;align-items:center;font-weight:700;color:var(--ouv-nuit);font-size:4.9cqh;white-space:nowrap}
+.mur .ouv-parc .ouv-sn{position:absolute;right:3.25cqw;top:0;bottom:0;display:flex;align-items:center;color:var(--ouv-gris);font-size:2.8cqh;white-space:nowrap}
+.mur .ouv-parc .ouv-rangs{position:absolute;left:4.5cqw;right:4.75cqw;top:15.1cqh;bottom:6.6cqh;display:flex;flex-direction:column;gap:.6cqh;overflow:hidden}
+.mur .ouv-parc .ouv-r{flex:1 1 0;min-height:0;max-height:9.25cqh;display:flex;align-items:center;background:var(--ouv-papier);box-sizing:border-box;overflow:hidden}
+.mur .ouv-parc .ouv-r:nth-child(odd){background:var(--ouv-bande)}
+.mur .ouv-parc .ouv-n{flex:0 0 3.75cqw;align-self:stretch;display:flex;align-items:center;justify-content:center;background:var(--ouv-nuit);color:#fff;font-size:calc(4.2cqh*var(--ouv-z))}
+.mur .ouv-parc .ouv-r.ev .ouv-n{background:var(--ouv-vif)}
+.mur .ouv-parc .ouv-date{flex:0 0 7cqw;padding-left:1.1cqw;box-sizing:border-box;color:var(--ouv-gris);font-size:calc(2.3cqh*var(--ouv-z));white-space:nowrap}
+.mur .ouv-parc .ouv-ok{color:#1e7d45;font-weight:700}
+.mur .ouv-parc .ouv-t{flex:0 0 25.6cqw;padding:0 1cqw 0 1.6cqw;box-sizing:border-box;font-weight:700;color:var(--ouv-nuit);font-size:calc(3.33cqh*var(--ouv-z));line-height:1.18}
+.mur .ouv-parc.ouv-dates .ouv-t{flex-basis:22.6cqw}
+.mur .ouv-parc .ouv-x{flex:1 1 auto;min-width:0;color:var(--ouv-gris);font-size:calc(2.4cqh*var(--ouv-z));line-height:1.3;padding-right:1.5cqw}
+.mur .ouv-parc .ouv-r.jour{outline:.35cqh solid var(--ouv-or);outline-offset:-.35cqh}
+/* 4 · le début de séance (canon 4) */
+.mur .ouv-debut .ouv-fil{position:absolute;left:2.5cqw;top:16cqh;bottom:2.2cqh;width:max(.19cqw,2px);background:var(--ouv-fil)}
+.mur .ouv-debut .ouv-point{position:absolute;left:calc(2.6cqw - 1.6cqh);top:14.3cqh;width:3.2cqh;height:3.2cqh;box-sizing:border-box;border-radius:50%;border:.45cqh solid var(--ouv-carreOn);background:var(--ouv-point)}
+.mur .ouv-debut .ouv-g{position:absolute;left:6.75cqw;right:6.75cqw;top:18.8cqh;bottom:3cqh;display:flex;flex-direction:column;overflow:hidden}
+.mur .ouv-debut.ouv-avec-img .ouv-g{right:39.5cqw}
+.mur .ouv-debut .ouv-img{right:4.8cqw;top:10.1cqh;height:75cqh;width:33.6cqw}
+.mur .ouv-debut .ouv-k{color:var(--ouv-sourdine);font-size:calc(3.1cqh*var(--ouv-z));letter-spacing:.04em;line-height:1.2}
+.mur .ouv-debut .ouv-titre{font-weight:700;color:#fff;font-size:calc(7.3cqh*var(--ouv-z));line-height:1.2;margin-top:calc(4.4cqh*var(--ouv-z))}
+.mur .ouv-debut .ouv-trait{width:15cqw;height:.56cqh;background:var(--ouv-trait);margin:calc(5.4cqh*var(--ouv-z)) 0 calc(4.6cqh*var(--ouv-z))}
+.mur .ouv-debut .ouv-obj{color:var(--ouv-nuitClair);font-size:calc(4cqh*var(--ouv-z));line-height:1.39}
+.mur .ouv-debut .ouv-cs{display:flex;align-items:center;margin-top:calc(3.3cqh*var(--ouv-z));color:var(--ouv-sourdine);font-size:calc(2.45cqh*var(--ouv-z));letter-spacing:.14em;white-space:nowrap}
+.mur .ouv-debut .ouv-carres{display:flex;gap:.25cqw;margin-left:7.5cqw}
+.mur .ouv-debut .ouv-carres i{display:block;width:calc(2.55cqh*var(--ouv-z));height:calc(2.55cqh*var(--ouv-z));border-radius:.45cqh;background:var(--ouv-carreOff)}
+.mur .ouv-debut .ouv-carres i.on{background:var(--ouv-carreOn)}
+.mur .ouv-debut .ouv-comp{display:flex;align-items:center;color:var(--ouv-compTexte);font-size:calc(2.67cqh*var(--ouv-z));line-height:1.25;margin-top:calc(1.45cqh*var(--ouv-z))}
+.mur .ouv-debut .ouv-cs + .ouv-comp{margin-top:calc(2cqh*var(--ouv-z))}
+.mur .ouv-debut .ouv-comp.maj{font-weight:700;color:#fff}
+.mur .ouv-debut .ouv-comp i{flex:0 0 auto;width:calc(2.33cqh*var(--ouv-z));height:calc(2.33cqh*var(--ouv-z));border-radius:.45cqh;margin-right:1.2cqw}
+/* 5 · la problématique (au style du canon : le bleu nuit, la question en grand) */
+.mur .ouv-prob .ouv-g{position:absolute;left:6.75cqw;right:6.75cqw;top:8cqh;bottom:8cqh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.mur .ouv-prob .ouv-k{color:var(--ouv-sourdine);font-size:calc(3.1cqh*var(--ouv-z));letter-spacing:.14em}
+.mur .ouv-prob .ouv-question{font-weight:700;color:#fff;font-size:calc(8.4cqh*var(--ouv-z));line-height:1.25;margin-top:calc(3cqh*var(--ouv-z))}

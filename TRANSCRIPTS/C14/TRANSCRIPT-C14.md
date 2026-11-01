@@ -3105,3 +3105,45 @@ MEMO
 01/11/2026 17:37
 
 MEMO
+
+## Tour 121 — 01/11/2026 18:08 → 01/11/2026 18:38
+
+**Paul :** ok c'est bon en revanche aucun stickers ne doit se chevaucher jamais. à coté de 1 et 2, l'étoile verte est derrière l'étoile bleue. en revanche dans la capture 5, le trait rouge de "qui suit à la guerre" est le trait rouge des soulignés à la main que j'avais fait ou alors il est placé par la bande?
+
+**Fait.** « ok c'est bon » n'est pas « promeus » : rien n'est promu. Vérifié sur la photo de [l'élève] : aucune encre rouge sous « suit » ; le trait vient de la faute « suit → suis » du retour de l'IA écrit par la conscience, gardée dans la bande. Dans le fichier de l'élève (eleve.js), les cadres des stickers sont posés par une seule fonction, scCadresStickers, qui part aussi dans le fichier : un cadre dans un autre est à l'intérieur avec un jour, deux lignes voisines se partagent l'interligne, deux cadres côte à côte se partagent le blanc, l'accolade passe à droite des cadres de ses lignes ; la vue sans script aussi. Les étoiles sont décollées à l'écran (decoller) : ni sur une étoile, ni sur la marge, ni sur une accolade ; refait quand la largeur change. Sur téléphone, traits et étoiles plus fins. Mesuré sur la copie de [l'élève] (en privé) : avant, ordinateur 1 étoile/étoile, 1 étoile/marge, 4 cadres croisés ; téléphone 1, 6, 4 ; après 0 partout. Le banc a une nouvelle vérification, ordinateur et téléphone, avec S1 dans la phrase de S24 et l'accolade de S8 ; premier passage arrêté sur un clic du banc (le centre de la première ligne de S24 porte maintenant le cadre de S1 : le banc clique sa seconde ligne), relancé. Mesuré aussi : sur téléphone, 14 chevauchements entre pastilles et numéros de la marge (0 sur ordinateur) ; 535 les avait dits « serrés » : proposition 546. Les 7 captures de la copie de [l'élève] sont envoyées dans la conversation seulement. Rien en ligne.
+
+**Claude (18:31) :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : les stickers qui ne se chevauchent plus, au banc complet · ouvert : 409
+
+540. Le trait rouge sous « suit », dans « qui suit à la guerre » (capture 5), a été posé par la bande. Ce n'est pas un de tes soulignés à la main : à cet endroit, ta photo n'a aucune encre rouge, je l'ai vérifié. C'est le soulignement de la faute « suit → suis », de grammaire, d'où le G rouge dans la marge. Pour la copie de [l'élève], c'est moi qui ai fait le travail de l'IA, et la bande l'a gardé avec Entrée.
+
+541. Les chevauchements des stickers sont réglés dans la maquette. Le banc complet tourne, avec une nouvelle vérification qui mesure les chevauchements sur ordinateur et sur téléphone. Je t'envoie les captures quand il est passé. Rien n'est en ligne.
+
+À tester : rien pour l'instant.
+
+01/11/2026 18:31
+
+MEMO
+
+**Claude (18:38) :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : le banc complet, avec la nouvelle vérification · ouvert : 409, 547
+
+542. Dans le fichier de l'élève, plus aucun sticker ne se chevauche. Les étoiles ne se touchent plus entre elles, ni avec les numéros et les pastilles de la marge, ni avec une accolade : une étoile qui en gênerait une autre glisse le long du haut de son cadre. Les cadres non plus. Un mot encadré dans une phrase encadrée est à l'intérieur, avec un jour entre les deux bords. Deux lignes voisines se partagent l'interligne. L'accolade d'un paragraphe passe à droite de tous les cadres de ses lignes. Sur téléphone, les traits et les étoiles sont plus fins, à la taille de la copie.
+
+543. Mesuré sur la copie de [l'élève]. Avant, sur ordinateur, il y avait 1 étoile sur une étoile (celle que tu as vue), 1 étoile sur un numéro et 4 cadres qui se croisaient. Sur téléphone, il y avait en plus 6 étoiles sur la marge. Maintenant, il y en a 0 partout, sur ordinateur comme sur téléphone. Les captures 1 et 2 montrent le haut de sa copie sur ordinateur, avant puis après ; les captures 3 et 4, sur téléphone ; les captures 5 et 6, l'écran entier après ; la capture 7, un clic sur un cadre.
+
+544. Le banc vérifiera désormais cela à chaque passage, sur ordinateur et sur téléphone, avec un mot encadré dans une phrase encadrée et une accolade. Il tourne en ce moment ; je te donnerai son résultat avec la demande de promeus.
+
+545. En mesurant, j'ai vu que 535 était faux. Sur téléphone, les pastilles des fautes et les numéros des remarques ne font pas que se serrer dans la marge : ils se chevauchent, à 14 endroits chez [l'élève]. Sur la capture 4, les numéros 1 et 2 se touchent, et des pastilles sont cachées derrière les numéros 3, 4, 5 et 8. Ce ne sont pas des stickers, mais c'est le même défaut. Sur ordinateur, il n'y en a aucun.
+
+546. Je propose de le régler avant la mise en ligne, sur téléphone seulement. Les pastilles et les numéros y prennent la hauteur d'une ligne de la copie, avec des lettres un peu plus petites, et chaque ligne garde les siens sur un seul rang. Quand deux lignes voisines se gêneraient encore, la seconde se range à gauche de la première, et la photo se décale vers la droite d'autant. Chez [l'élève], la photo perdrait 33 points de largeur sur 378, soit 9 %. Sur ordinateur, rien ne change.
+
+547. Je fais 546 ? Ensuite, je te redemande le promeus, captures à l'appui.
+
+À tester : rien n'est en ligne. Compare les captures 1 et 2, puis 3 et 4.
+
+01/11/2026 18:38
+
+MEMO

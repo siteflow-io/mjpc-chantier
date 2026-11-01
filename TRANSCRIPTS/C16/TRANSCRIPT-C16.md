@@ -146,3 +146,19 @@ MEMO
 01/11/2026 20:53
 
 MEMO
+
+## Tour 5 — 01/11/2026 21:08 → 01/11/2026 21:11 (l'exécutant au travail)
+
+**Paul (21:08) :** ok fais tout, j'attends.
+
+**Fait.** Points 31 à 35 non commentés : acquis. Contrat `MANDATS/INTEGRATION-DEROULE/CONTRAT.md` §12.76 (ce qui restait ouvert au §12.67). Mandat `MANDATS/DEROULE-01-11/MANDAT-DIAPOS-OUVERTURE.md` (sas `main`). Branche `deroule/diapos-ouverture` sur `integration` `fc036e8` (= 8.77.1-⑩). Un exécutant neuf lancé depuis la session de la conscience, dans son propre dossier (`/home/claude/ex-ouverture`), mission 0 d'abord. Préparé pour les captures de la conscience (jamais poussé) : un faux hub avec les deux chapitres réels lus au hub en lecture seule (3e « Poésie et peinture », 4e « Le Horla », sans aucune copie de classe) et la taxonomie réelle (301 phrases d'élève).
+
+**Claude (21:12, message envoyé pendant le travail) :**
+
+À jouer : tes tests de la 8.77.1-⑩ · en cours : un exécutant neuf sur les diapos d'ouverture · ouvert : 15
+
+37. C'est parti. Le mandat est au sas, avec tes décisions 31 à 35 écrites au contrat : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DEROULE-01-11/MANDAT-DIAPOS-OUVERTURE.md
+
+38. Un exécutant neuf l'écrit dans le vrai site, sur une branche : les cinq diapos au canon, leur ordre, le bilan du chapitre à la dernière séance, la carte de l'Atelier, « À régler », la phrase d'élève partout, l'import et le prompt. Il commence par relire le mandat pour y chercher mes erreurs.
+
+39. Dès qu'il a fini, je passe le banc complet et je te montre les captures en mode test, sur tes chapitres du Horla et de Poésie et peinture. Rien ne part en ligne sans ton « promeus ». C'est un gros morceau : compte plutôt une à deux heures que quelques minutes.

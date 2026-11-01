@@ -308,3 +308,31 @@ MEMO
 01/11/2026 23:09
 
 MEMO
+
+## Tour 10 — 01/11/2026 23:24 → 01/11/2026 23:27 (le fil, les flèches, la molette)
+
+**Paul (23:24) :** Ok une chose en plus. Sur la diapo tu vois un point qui descend le long d'une ligne. Dans mon diapo dorigine ce point indique où on en est dans la séance. Il faudrait qu'il y ait ça sur toutes les diapos et que ça descende au fur et à mesure des diapos. Par ailleurs dans la colonne de gauche, les flèches du clavier doivent avoir le même comportement que dans diaporama ( passer d'une diapo à l'autre). Même chose quand on Scroll les diapos dans la vue centrale: le Scroll doit faire défiler les diapos.
+
+**Fait.** Mesuré dans le code de `cd1f86c` : le fil n'est que sur le début de séance (dr-ouverture.js), son point en haut ; le clavier (dr-socle.js, l'écoute du document) : → et Espace dévoilent, ← revoile, Maj + ← → tournent les pages, Page préc. / Page suiv. passent d'une diapo à l'autre, ↑ ↓ seuls ne font rien, Alt + ↑ ↓ déplace la diapo dans l'Atelier ; la molette sur `#murcadre` ne tourne que les pages d'une diapo à plusieurs pages (sur le cahier de textes, elle fait défiler sa carte ; Ctrl + molette sur la scène = le zoom) ; `aller` : hors de ▶, en classe, la garde `dr_garde` « La classe te suivrait » (❄ Geler, puis y aller · Y aller devant la classe · Rester), aucune garde gelé, en répétition ou avant le lancement. Registre de production (`docs/MJPC6-DETTES.md`, commit `f6bf4be`) : le chantier des diapos d'ouverture (qui n'y était pas encore inscrit) et cette demande, mot pour mot.
+
+**Claude (23:27) :**
+
+À jouer : ta classe de demain, sur la 8.77.1-⑩ · en cours : l'exécutant finit les diapos d'ouverture · ouvert : 15, 62 à 66
+
+61. Noté : trois choses en plus. Elles entrent dans le chantier des diapos d'ouverture : un exécutant neuf les fait dès que celui-ci a livré, et tout part en ligne ensemble, sur ton « promeus ». Voici ce que je propose ; ce que tu ne commentes pas est acquis.
+
+62. Le fil. Aujourd'hui, seul le début de séance l'a, et son point reste en haut. Je propose : toutes les diapos de la séance portent le fil à gauche, dans la marge, sans rien recouvrir, au tableau, sur ton écran et dans l'Atelier. Le point se place selon le rang de la diapo parmi celles que la classe voit : tout en haut à la première, tout en bas à la dernière. Il glisse d'un cran quand tu passes à la diapo suivante ; c'est la seule chose qui bouge d'elle-même, comme tu l'as fixé pour tes diaporamas. Les dévoilements à l'intérieur d'une diapo ne le font pas bouger.
+
+63. Une séance de deux heures : le point compte toute la séance, donc il est vers le milieu à la fin de l'heure 1, et l'heure 2 repart de là. Sur les diapos claires (compétences, parcours, tes diapos de cours), le fil prend le bleu nuit de la charte.
+
+64. Les flèches dans la colonne de gauche. Aujourd'hui, ← et → dévoilent et revoilent ligne par ligne où que tu sois, ↑ et ↓ ne font rien, et seules Page préc. / Page suiv. passent d'une diapo à l'autre. Je propose : dès que tu as cliqué dans la colonne, les quatre flèches passent à la diapo précédente ou suivante, comme dans la colonne de PowerPoint, jusqu'à ce que tu cliques ailleurs. Sur la diapo elle-même, → et ← continuent de dévoiler et de revoiler. Alt + ↑ ↓ déplace toujours la diapo dans l'Atelier.
+
+65. La molette sur la vue centrale. Aujourd'hui, elle ne tourne que les pages d'une diapo qui en a plusieurs. Je propose : la molette fait défiler les diapos, une diapo par cran, même sur un pavé tactile qui glisse. Sur une diapo à plusieurs pages, elle passe d'abord les pages, puis la diapo suivante. Ctrl + molette reste le zoom, et sur le cahier de textes elle fait toujours défiler sa carte.
+
+66. En classe, ta règle du 17/09 tient : seul ▶ est le fil. La première flèche ou le premier cran qui change de diapo te demande, comme un clic sur une vignette aujourd'hui (« ❄ Geler, puis y aller », « Y aller devant la classe », « Rester »). Ensuite, tu feuillettes sans qu'il te redemande, jusqu'à ce que tu cliques sur la diapo ou que tu reprennes ▶. Si tu as gelé, la classe ne voit rien bouger ; si tu as choisi « devant la classe », le tableau suit.
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 23:27
+
+MEMO

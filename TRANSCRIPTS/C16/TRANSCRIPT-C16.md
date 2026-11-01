@@ -260,3 +260,31 @@ MEMO
 01/11/2026 22:52
 
 MEMO
+
+**L'exécutant (22:58, à la conscience) :** Poussé : 7ec7906 « Rendu des cinq diapos… » sur deroule/diapos-ouverture — les cinq types au canon, dans l'ordre C16 33, lignes dévoilées à la flèche (pilote pâle, tableau rien), dates / séance du jour en or / cochées en heure de classe, « À régler » branché. Pour les voir par le geste : faux hub sans l'heure du 07/09 (sinon on tombe en heure 2), taxonomie avec libelleEleve, champs réalistes — tout cela est dans LIVRAISONS/DEROULE-01-11/DIAPOS-OUVERTURE/hub-ouverture.mjs (storeOuverture). Banc pas encore rejoué ; je continue : carte, import, prompt, sommaire, récit, sonde, banc.
+
+## Tour 9 — 01/11/2026 22:59 → 01/11/2026 23:04 (les captures construites)
+
+**Paul (22:59) :** Il faut que tu me fasses des captures construites. Il faut que je vois à quoi ça va ressembler à la fin, mais avant
+
+**Fait.** Le commit `7ec7906` assemblé dans un dossier à part de la conscience (md5 `4a8d4083…`, 2 756 564 o). Joué par le geste en mode test (case 3E Charles de Gaulle du 07/09 08:57 → « Ouvrir le pilotage et lancer », heure 1, la fenêtre du tableau, une capture à chaque flèche), aucune erreur JS, aucune boîte système :
+- sur le vrai chapitre tel qu'il est au hub : présentation du chapitre, compétences du chapitre et parcours au canon ; **le début de séance et la problématique de la séance 1 restent à l'ancien rendu** — la séance 1 porte ces deux diapos enregistrées dans son déroulé, non reconnues comme intactes. Défaut envoyé à l'exécutant (23:00), à régler avant sa livraison ;
+- « construit » : le même chapitre avec des champs d'exemple écrits par la conscience (une phrase par séance, S3 et S4 évaluées, l'image du chapitre = le Friedrich, celle de la séance 1 = le Géricault, tous deux des tableaux du chapitre lus sur mjpc-medias) et les deux anciennes diapos de S1 retirées du déroulé (ce que donnera la correction) ; les cinq diapos au tableau, entièrement dévoilées, et le parcours au pilote, regardées puis envoyées à Paul. Jamais poussé (le faux hub porte les données du vrai hub et les initiales de la classe test).
+
+**Claude (23:04) :**
+
+À jouer : ta classe de demain, sur la 8.77.1-⑩ · en cours : l'exécutant finit la carte, l'import, le prompt, la feuille sommaire, le récit · ouvert : 15
+
+54. Les voici, dans le vrai site : la branche de l'exécutant, jouée par le geste en mode test, sur ton chapitre « Poésie et peinture », séance 1, chaque diapo entièrement dévoilée. Cinq au tableau (la présentation du chapitre, les compétences du chapitre, le parcours, le début de séance, la problématique), puis le parcours sur ton écran de pilotage.
+
+55. Pour montrer la fin, j'ai rempli moi-même ce que ton chapitre n'a pas encore : une phrase par séance, les séances 3 et 4 évaluées (en bleu vif), l'image du chapitre (le Friedrich) et celle de la séance 1 (le Géricault), prises dans tes tableaux du chapitre. Ce sont des exemples, à remplacer par les tiens dans la carte de l'Atelier.
+
+56. Un défaut trouvé sur ton vrai chapitre : la séance 1 garde son ancien début de séance et son ancienne problématique, parce qu'elles sont enregistrées dans son déroulé. Je l'ai envoyé à l'exécutant, il le règle avant de livrer. Les captures les montrent telles qu'elles seront une fois réglé.
+
+57. Encore à faire chez l'exécutant : la carte de l'Atelier, l'import, le prompt, la feuille sommaire, le récit, sa sonde et le banc. Ensuite mon banc complet, et le Horla en 4e.
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 23:04
+
+MEMO

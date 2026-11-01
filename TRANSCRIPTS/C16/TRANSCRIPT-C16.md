@@ -341,7 +341,7 @@ MEMO
 
 **Paul (23:35) :** Ok c'est bon. Tout doit être codé demain matin à 5h30.
 
-**Fait.** 61 à 66 acquis. Mandat du complément au sas : `MANDATS/DEROULE-01-11/MANDAT-FIL-NAVIGATION.md` (`eb8886f`). L'exécutant des diapos d'ouverture (23:4x) : la dette des noms sous les vignettes poussée (`20bda43`) ; livraison du mandat entier (banc VERT, sonde, NOTE) estimée vers 01:45. Un second exécutant neuf lancé à 23:45 pour le complément, en deux temps pour tenir 05:30 sans que deux exécutants écrivent dans le même fichier : jusqu'à la livraison du premier, il lit, audite le mandat et écrit sa sonde, sans toucher au code ; ensuite il écrit le fil, les flèches, la molette ; livraison au plus tard à 04:30. Contrôles horaires de la conscience programmés à 01:30, 03:30 et 04:35. Registre de production à jour.
+**Fait.** 61 à 66 acquis. Mandat du complément au sas : `MANDATS/DEROULE-01-11/MANDAT-FIL-NAVIGATION.md` (`eb8886f`). L'exécutant des diapos d'ouverture (23:37) : la dette des noms sous les vignettes poussée (`20bda43`) ; livraison du mandat entier (banc VERT, sonde, NOTE) estimée vers 01:45. Un second exécutant neuf lancé à 23:38 pour le complément, en deux temps pour tenir 05:30 sans que deux exécutants écrivent dans le même fichier : jusqu'à la livraison du premier, il lit, audite le mandat et écrit sa sonde, sans toucher au code ; ensuite il écrit le fil, les flèches, la molette ; livraison au plus tard à 04:30. Contrôles horaires de la conscience programmés à 01:30, 03:30 et 04:35. Registre de production à jour.
 
 **Claude (23:38) :**
 

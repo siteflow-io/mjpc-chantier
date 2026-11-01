@@ -244,3 +244,19 @@ MEMO
 01/11/2026 22:51
 
 MEMO
+
+**L'exécutant (22:52, à la conscience) :** Commit « Rendu des cinq diapos » estimé vers 23:35 (Europe/Paris) : les cinq rendus sont écrits ensemble dans un seul module (dr/dr-ouverture.js, déjà écrit), il reste à les brancher dans le socle et le CSS puis à les voir par le geste en mode test ; je pousse dès qu'ils s'affichent.
+
+**Claude (22:52) :**
+
+À jouer : ta classe de demain, sur la 8.77.1-⑩ · en cours : l'exécutant branche les cinq diapos dans le site · ouvert : 15
+
+52. L'exécutant a répondu : il pousse vers 23:35. Les cinq diapos sont écrites ; il les branche dans le site et les regarde par le geste en mode test avant de pousser.
+
+53. Je suis prévenu à l'instant où il pousse. Dans la foulée, je les joue sur « Poésie et peinture », au pilote et au tableau, et je t'envoie les captures.
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 22:52
+
+MEMO

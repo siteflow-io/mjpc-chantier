@@ -32,9 +32,9 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   await pg.click("#btnScan"); await pg.locator("#scanEcran").waitFor({ state: "visible" }); await att(1200);
   if (!(await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert))) { await pg.click("#btnRecopier"); await att(600); }
   // l'en-tête d'une vraie lettre de poilu, recopié à la main sur une copie encore à corriger (Paul 27/10 : « un exemple pour le banc doit toujours etre réaliste »)
-  const kE = await pg.evaluate(() => { const L = SC.copies.filter(k => rcLignesEcrites(k).length >= 2); const k = L.find(k => rcCopieACorriger(k)) || L[0]; return { k, id: (state.copies[k] || {}).id || null, l: rcLignesEcrites(k).slice(0, 2).map(x => x.id) }; });
+  const kE = await pg.evaluate(() => { const L = SC.copies.filter(k => rcLignesEcrites(k).length >= 4); const k = L.find(k => rcCopieACorriger(k)) || L[0]; return { k, id: (state.copies[k] || {}).id || null, l: rcLignesEcrites(k).slice(0, 4).map(x => x.id) }; });
   if (await pg.evaluate(k => RC.copie !== k, kE.k)) { await pg.selectOption("#rcCopie", kE.k); await att(400); if (await pg.evaluate(() => !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(400); } }
-  const ENTETE = ["Tranchée de la cote 304, près de Verdun, le 14 avril 1916", "Ma chère Louise,"];
+  const ENTETE = ["Tranchée de la cote 304, près de Verdun, le 14 avril 1916", "Ma chère Louise,", "Je t'écris depuis la tranchée, où la boue monte", "jusqu'aux genoux et où personne ne dort."];   // [C14 1.4.17] un paragraphe, une phrase sur deux lignes
   for (let i = 0; i < kE.l.length; i++) {   // la page de la ligne choisie dans « Page », puis la ligne réécrite
     const ip = await pg.evaluate(([k, id]) => { const x = rcLignesEcrites(k).find(y => y.id === id); return x && x.pid !== RC.page ? Array.from(document.querySelectorAll("#rcPage option")).findIndex(o => o.value === x.pid || o.value === String(x.page - 1) || o.value === String(x.page)) : -1; }, [kE.k, kE.l[i]]);
     if (ip >= 0) { await pg.selectOption("#rcPage", { index: ip }); await att(400); }
@@ -42,7 +42,7 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   const dl = pg.waitForEvent("download"); await pg.click("#rcExportIA"); const fichier = await (await dl).path(); const ex = JSON.parse(fs.readFileSync(fichier, "utf8"));
   const nCop = ex.copies.length, seul = ex.copies.filter(c => c.seulementStickers).length, sansId = ex.copies.filter(c => !c.copie).length;
   const idE = await pg.evaluate(k => (state.copies[k] || {}).id, kE.k), c0 = ex.copies.find(c => c.copie === idE);
-  const L0 = c0 ? c0.pages.flatMap(p => p.lignes) : [], entete = L0.slice(0, 2).map(l => l.texte).join(" / ");
+  const L0 = c0 ? c0.pages.flatMap(p => p.lignes) : [], entete = L0.slice(0, ENTETE.length).map(l => l.texte).join(" / ");
   verif("stickers (1.4.16) : « ⇪ Exporter pour l’IA » : la grille part avec la correction (" + (ex.grille || []).length + " stickers, le sujet : " + (ex.sujet || "").length + " signes, la consigne demande les réussites : " + /reussites/.test(ex.consigne) + ") ; " + nCop + " copies, " + seul + " déjà corrigée(s) pour leurs seules réussites ; chaque copie avec son identité interne (" + (nCop - sansId) + " sur " + nCop + "), aucun nom ; la copie recopiée à l’instant part avec ses lignes (« " + entete + " »)",
     (ex.grille || []).length === 44 && (ex.sujet || "").length > 100 && /reussites/.test(ex.consigne) && /\{"s":"fin"\}/.test(ex.consigne.replace(/\\"/g, '"')) && nCop >= 2 && seul >= 1 && sansId === 0 && !!c0 && !c0.seulementStickers && entete === ENTETE.join(" / ") && !JSON.stringify(ex).includes(await pg.evaluate(() => nomEleveDe(SC.copies[0]))));
   if (!c0 || L0.length < 2) return;
@@ -73,7 +73,7 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   await pg.keyboard.press("Enter"); await att(250); await pg.keyboard.press("n"); await att(250); await pg.keyboard.press("Enter"); await att(300);
   const apres = await pg.evaluate(k => { const D = scCopie(k).stickers || {}, M = Object.values(scCopie(k).marques).filter(m => m.forme === "sticker"); return { d: Object.values(D).map(x => x.num + x.v).sort().join(" "), marques: M.length, fin: document.getElementById("rcBandeCarte").innerText.replace(/\s+/g, " ") }; }, k0);
   verif("stickers (1.4.16) : dans la bande, après les fautes, le sticker proposé (« " + carte.t.slice(0, 110) + " »), son cadre sur la photo (" + carte.cadre + ") ; Entrée, N, Entrée : " + apres.d + " ; posé sur la photo de l’élève (" + apres.marques + " marque) ; la fin : « " + apres.fin.slice(0, 120) + " »",
-    /★ Tu dis où tu es/.test(carte.t) && /ta note avec ce qui est gardé jusqu’ici/.test(carte.t) && /Si tu le gardes : Le thème tenu, \d sur 6/.test(carte.t) && /Les stickers/.test(carte.touches) && carte.cadre && apres.d === "S2o S36n S38o" && apres.marques === 1 && /1 sticker|2 stickers gardés sur 3/.test(apres.fin) && /note : /.test(apres.fin));
+    /★ Tu dis où tu es/.test(carte.t) && /sa note, avec les stickers déjà gardés avant celui-ci/.test(carte.t) && /Si tu le gardes : Le thème tenu, \d sur 6/.test(carte.t) && /Les stickers/.test(carte.touches) && carte.cadre && apres.d === "S2o S36n S38o" && apres.marques === 1 && /1 sticker|2 stickers gardés sur 3/.test(apres.fin) && /note : /.test(apres.fin));
   const rq1 = await pg.evaluate(() => { const q = document.getElementById("rcRqListe"); return { vu: !!q && !q.hidden, n: q ? q.querySelectorAll(".st-rq").length : 0, tete: q ? q.querySelector(".st-rq-tete").innerText.replace(/\s+/g, " ") : "", carte: document.getElementById("rcBandeCarte").innerText.replace(/\s+/g, " ") }; });
   await cap("C14-62-relecture-remarques");
   verif("remarques (1.4.17) : au bout de la bande, la liste des remarques à relire (" + rq1.n + ", « " + rq1.tete.slice(0, 90) + " ») ; la fin de la bande sans l’ancienne note (« " + rq1.carte.slice(0, 100) + " »)",
@@ -123,4 +123,30 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
     verif("fichier de l’élève (1.4.17) : au téléphone, le panneau de la note est en bas (de " + r.haut + " à " + r.bas + " sur " + r.h + ")", r.bas >= r.h - 2 && r.haut >= r.h * 0.45); }
   verif("stickers (1.4.16) : le fichier de l’élève : ses stickers encadrés sur sa copie (" + el.st + "), sa grille ligne par ligne (" + el.lignes + " lignes, note « " + el.note + " ») ; une ligne cliquée : « " + ligne.slice(0, 140) + " »",
     el.st >= 1 && el.lignes === 12 && /\/ 40/.test(el.note) && /★ Tu dis où tu es/.test(ligne) && /Pas encore réussi/i.test(ligne));
+
+  // [C14 1.4.17] (C14 492, 493, 525 ; Paul 16:28 et 17:21) : un sticker de paragraphe et un sticker de phrase. Un second retour de l'IA, avec ses seules réussites,
+  // pour une copie déjà corrigée ; la bande montre leur zone de la page et ce qu'ils rapportent ; le fichier de l'élève, leur accolade et leurs cadres
+  { const PQ8 = "Ton paragraphe dit où tu es (« Je t'écris depuis la tranchée ») et ce que tu vois (« la boue »).", PQ24 = "P.P « Je t'écris depuis la tranchée » + PSR 1 « où la boue monte jusqu'aux genoux » + PSR 2 « et où personne ne dort ».";
+    const ret2 = { format: "mjpc-recopie-ia-3", reussites: { [c0.copie]: [{ s: "S8", l: L0[2].id, m: "Je t'écris depuis la tranchée", l2: L0[3].id, p: PQ8 }, { s: "S24", l: L0[2].id, m: "où la boue monte", p: PQ24 }, { s: "fin" }] } };
+    await pg.click("#btnRecopier"); await att(600); if (await pg.evaluate(k => RC.copie !== k, k0)) { await pg.selectOption("#rcCopie", k0); await att(400); if (await pg.evaluate(() => !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(400); } }
+    await pg.click("#rcImportIA"); await att(200); await pg.locator("#rcIATexte").fill(JSON.stringify(ret2)); await pg.click("#rcIAValider"); await att(900);
+    const m2 = await pg.evaluate(() => document.getElementById("rcIAMessage").textContent); await pg.keyboard.press("Escape"); await att(200);
+    await pg.click("#rcBandeOuvrir"); await att(600); if (await pg.evaluate(() => RC.bd && RC.bd.attente)) { await pg.keyboard.press("Enter"); await att(300); }
+    const aller = async num => { const i = await pg.evaluate(n => Array.from(document.querySelectorAll("#rcBandeListe li.rc-st-li")).findIndex(li => (li.querySelector("b") || {}).textContent === n), num); await pg.locator("#rcBandeListe li.rc-st-li").nth(i).click(); await att(400);
+      return pg.evaluate(() => ({ h: document.getElementById("rcBandePhoto").height, ctx: document.getElementById("rcBandeContexte").innerText.replace(/\s+/g, " "), carte: document.getElementById("rcBandeCarte").innerText.replace(/\s+/g, " ") })); };
+    const b8 = await aller("S8"); await cap("C14-66-bande-paragraphe"); await pg.keyboard.press("Enter"); await att(300);
+    const b24 = await aller("S24"); await cap("C14-67-bande-phrase"); await pg.keyboard.press("Enter"); await att(300);
+    const d2 = await pg.evaluate(k => { const D = scCopie(k).stickers || {}, M = Object.values(scCopie(k).marques).filter(m => m.forme === "sticker" && m.segs); return { s8: (D[stParNum("S8").id] || {}).v, s24: (D[stParNum("S24").id] || {}).v, segs: M.map(m => m.taille + ":" + m.segs.length).sort().join(" ") }; }, k0);
+    verif("stickers (1.4.17) : un second retour de l’IA, ses seules réussites (« " + m2.slice(0, 80) + " ») ; dans la bande, le paragraphe montre sa zone de la page (" + b8.h + " points de haut) et tout son texte (« " + b8.ctx.slice(0, 90) + " »), la carte « Pour l’élève » ; la phrase sur deux lignes (« " + b24.carte.slice(b24.carte.indexOf("Si tu"), b24.carte.indexOf("Si tu") + 95) + " ») ; gardés : " + d2.segs,
+      /Chargé\. Les stickers : 2 réussites proposées sur 1 copie/.test(m2) && b8.h > 110 && b8.ctx.includes("Je t'écris depuis la tranchée, où la boue monte jusqu'aux genoux et où personne ne dort.") && /l’accolade prendra tout le paragraphe/.test(b8.carte) && b8.carte.includes(PQ8)
+      && b24.h > 110 && /le cadre prendra toute la phrase/.test(b24.carte) && /Si tu le gardes : Les cinq architectures, valorisées au-delà, 1 sur 6 → 2 \/ 7 pt/.test(b24.carte) && d2.s8 === "o" && d2.s24 === "o" && d2.segs === "paragraphe:2 phrase:2");
+    await pg.click("#rcBandeRetour"); await att(200); await pg.click("#rcFermer"); await att(300);
+    await pg.click('#scanEcran .sc-haut >> text=Fichiers École Directe'); await att(500);
+    const pop = pg.waitForEvent("popup"); await pg.locator("#scModale .sc-table tr").nth(i0 + 1).locator("text=Tester comme l'élève").click(); const w2 = await pop; await w2.waitForLoadState(); await w2.waitForTimeout(1000); await w2.click(".passer").catch(() => {}); await w2.waitForTimeout(400);
+    const i24 = await w2.evaluate(() => D.stickers.findIndex(t => /architecture 1/.test(t.texte))), n24 = await w2.locator('#col [data-v="s:' + i24 + '"]').count(), nAcc = await w2.locator("#col .mk.stp").count();
+    await w2.locator("#col .mk.stp").first().click(); await w2.waitForTimeout(300); const e8 = await w2.evaluate(() => document.getElementById("pan").innerText.replace(/\s+/g, " ")); await w2.screenshot({ path: path.join(out, "C14-68-eleve-paragraphe.png") });
+    await w2.click("#gr"); await w2.waitForTimeout(200); await w2.locator('#col [data-v="s:' + i24 + '"]').first().click(); await w2.waitForTimeout(300); const e24 = await w2.evaluate(() => document.getElementById("pan").innerText.replace(/\s+/g, " "));
+    await w2.close(); await pg.keyboard.press("Escape"); await att(200);
+    verif("fichier de l’élève (1.4.17) : le paragraphe a son accolade (" + nAcc + ") ; au clic : « " + e8.slice(0, 150) + " » ; la phrase a un cadre par ligne (" + n24 + ") ; au clic : « " + e24.slice(e24.indexOf("TU AS"), e24.indexOf("TU AS") + 120) + " »",
+      nAcc === 1 && /Réussi/.test(e8) && /Tu as écrit/i.test(e8) && e8.includes("jusqu'aux genoux et où personne ne dort.") && e8.includes(PQ8) && n24 === 2 && e24.includes("« Je t'écris depuis la tranchée, où la boue monte jusqu'aux genoux et où personne ne dort. »") && e24.includes(PQ24)); }
 }

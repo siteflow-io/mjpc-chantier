@@ -38,7 +38,12 @@
   },
   "architectures": {
    "competence": "c4-langue-04",
-   "eleve": "Tu écris les cinq architectures de phrase du sujet."
+   "eleve": "Tu écris les cinq architectures de phrase du sujet.",
+   "compte": [
+    1,
+    3,
+    5
+   ]
   },
   "modalisation": {
    "competence": "c4-langue-04",

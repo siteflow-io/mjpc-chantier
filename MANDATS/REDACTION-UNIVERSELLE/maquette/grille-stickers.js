@@ -262,8 +262,10 @@ function stFinie(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !!
 function stEleve(k, ordre) {
   const s = scCopie(k), D = s.stickers || {}; if (!Object.keys(D).length) return null;
   const nt = stNoteCopie(k), det = {}; nt.det.forEach(x => { det[x.ligne] = x; });
+  const ia = (((s.recopie || {}).stickersIA || {}).liste) || [];
   const st = []; Object.keys(D).forEach(id => { const d = D[id]; if (d.v !== "o") return; const S = stTous().find(x => x.id === id); if (!S) return; const m = d.marque && s.marques[d.marque], l = stLigne(S.ligne);
-    st.push({ id, texte: S.texteEleve, ligne: S.ligne, crit: l ? l.crit : null, page: m ? ordre.indexOf(m.page) : -1, x0: m ? m.x0 : 0, y0: m ? m.y0 : 0, x1: m ? m.x1 : 0, y1: m ? m.y1 : 0 }); });
+    const e = ia.find(x => x.st === id && x.l && x.a > x.de && !x.sansPlace);   // [C14 1.4.17] (Paul 15:54 : « un encadré dans la copie doit être repris (recopie) ») : ce qu'il a écrit, tel que tu l'as recopié
+    st.push({ id, texte: S.texteEleve, ligne: S.ligne, crit: l ? l.crit : null, page: m ? ordre.indexOf(m.page) : -1, x0: m ? m.x0 : 0, y0: m ? m.y0 : 0, x1: m ? m.x1 : 0, y1: m ? m.y1 : 0, phrase: m && e ? stPhraseRecopiee(k, e.l, e.de, e.a) : null }); });
   const R = stRqEleve(k, ordre), rqDe = {}; R.groupes.forEach(g => g.l.forEach(x => { rqDe[x.st] = { n: g.n }; })); R.grille.forEach(x => { rqDe[x.st] = { r: x.r }; });
   const grille = stSujetLignes().map(l => { const S = stDeLigne(l.id).filter(x => x.etat === "valide"), x = det[l.id] || {};
     return { id: l.id, crit: l.crit, critNom: l.critNom, titre: l.titre, eleve: stConf(l.id).eleve || "", poids: l.poids, points: x.points || 0, niveau: x.niveau == null ? null : x.niveau, calcul: l.calcul, fait: x.fait || "",
@@ -360,9 +362,10 @@ function stRqRelecture(k) {
 }
 /* la phrase de l'élève qui contient le passage, telle que tu l'as recopiée (les lignes de la copie, bout à bout) : avant, le passage, après */
 function stPhraseRecopiee(k, id, de, a) {
-  const L = rcLignesEcrites(k); let T = "", deb = -1, fin = -1, entiere = false;
-  L.forEach(x => { const t = x.l.texte || ""; if (T) T += " "; const o = T.length; if (x.id === id) { const P = rcPosMots(t); if (de != null && a > de && P[de] && P[a - 1]) { deb = o + P[de][0]; fin = o + P[a - 1][1]; } else { deb = o; fin = o + t.length; entiere = true; } } T += t; });
-  if (deb < 0) return null; let s = deb; while (s > 0 && !/[.!?…]/.test(T[s - 1])) s--; let e = fin; while (e < T.length && !/[.!?…]/.test(T[e - 1])) e++;
+  const L = rcLignesEcrites(k), coupes = new Set(); let T = "", deb = -1, fin = -1, entiere = false, avant = "";
+  /* [C14 1.4.17] une ligne finie par une virgule, suivie d'une ligne qui commence par une majuscule, finit la phrase (« Cher Marie, » puis « Je suis au front… ») */
+  L.forEach(x => { const t = x.l.texte || ""; if (T) { if (/,\s*$/.test(avant) && /^\s*[A-ZÀ-Ý]/.test(t)) coupes.add(T.length); T += " "; } avant = t; const o = T.length; if (x.id === id) { const P = rcPosMots(t); if (de != null && a > de && P[de] && P[a - 1]) { deb = o + P[de][0]; fin = o + P[a - 1][1]; } else { deb = o; fin = o + t.length; entiere = true; } } T += t; });
+  if (deb < 0) return null; let s = deb; while (s > 0 && !/[.!?…]/.test(T[s - 1]) && !coupes.has(s - 1)) s--; let e = fin; while (e < T.length && !/[.!?…]/.test(T[e - 1]) && !coupes.has(e)) e++;
   return entiere ? { avant: T.slice(s, e).trim(), passage: "", apres: "" } : { avant: T.slice(s, deb).replace(/^\s+/, ""), passage: T.slice(deb, fin), apres: T.slice(fin, e) };
 }
 /* les remarques gardées, pour le fichier de l'élève : un numéro par ligne, dans l'ordre de la copie ; celles sans ligne vont dans la grille */

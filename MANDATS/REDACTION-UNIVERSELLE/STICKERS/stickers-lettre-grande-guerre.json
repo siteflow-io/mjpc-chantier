@@ -1,0 +1,595 @@
+{
+ "format": "mjpc-redaction-stickers/1",
+ "titre": "Écrire une lettre de la Grande Guerre — la grille en stickers (proposée par la conscience n°14, à valider par Paul)",
+ "lignes": {
+  "theme": {
+   "competence": "c4-ecrire-01"
+  },
+  "paragraphes": {
+   "competence": "c4-ecrire-02",
+   "sous": {
+    "ou-tu-es": {
+     "libelle": "Où tu es",
+     "ordre": 1
+    },
+    "le-plus-dur": {
+     "libelle": "Le plus dur",
+     "ordre": 2
+    },
+    "l-inquietude": {
+     "libelle": "L'inquiétude",
+     "ordre": 3
+    }
+   }
+  },
+  "lectures": {
+   "competence": "c4-ecrire-03"
+  },
+  "tait": {
+   "competence": "c4-ecrire-01"
+  },
+  "complexes": {
+   "competence": "c4-langue-04"
+  },
+  "architectures": {
+   "competence": "c4-langue-04"
+  },
+  "modalisation": {
+   "competence": "c4-langue-04"
+  },
+  "codes": {
+   "competence": "c4-ecrire-01"
+  },
+  "personne": {
+   "competence": "c4-ecrire-01"
+  },
+  "lexique": {
+   "competence": "c4-langue-03"
+  }
+ },
+ "stickers": [
+  {
+   "num": "S1",
+   "ligne": "theme",
+   "texteEleve": "Tu dis d'où tu écris : du front ou de la maison.",
+   "cherche": "Sait-on si la lettre vient du front ou de la maison ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-42"
+   ],
+   "ordre": 1
+  },
+  {
+   "num": "S2",
+   "ligne": "theme",
+   "texteEleve": "Tu dis où tu es : quelle tranchée, quel village.",
+   "cherche": "Sait-on où est le personnage : quelle tranchée, quel village ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 2
+  },
+  {
+   "num": "S3",
+   "ligne": "theme",
+   "texteEleve": "Tu dis à qui tu écris : ta femme, ta mère, ton frère…",
+   "cherche": "Sait-on qui est le destinataire : sa femme, sa mère… ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-42"
+   ],
+   "ordre": 3
+  },
+  {
+   "num": "S4",
+   "ligne": "theme",
+   "texteEleve": "Tu dis depuis quand vous êtes séparés.",
+   "cherche": "Sait-on depuis quand ils sont séparés ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 4
+  },
+  {
+   "num": "S5",
+   "ligne": "theme",
+   "texteEleve": "Tu dis qui tu es : ton âge, ou ton métier d'avant la guerre.",
+   "cherche": "Connaît-on l'âge ou le métier d'avant du personnage ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 5
+  },
+  {
+   "num": "S6",
+   "ligne": "theme",
+   "texteEleve": "Tout ce que raconte ta lettre existait en 14-18.",
+   "cherche": "Tout ce que raconte la lettre existait-il en 14-18 ? (aucun objet, aucun mot, aucun fait d'une autre époque)",
+   "portee": "lettre",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 6,
+   "taxoPropose": "cohérence avec l'époque"
+  },
+  {
+   "num": "S7",
+   "ligne": "paragraphes",
+   "texteEleve": "Tu vas à la ligne entre les parties de ta lettre.",
+   "cherche": "La lettre va-t-elle à la ligne entre ses parties (alinéas) ?",
+   "portee": "lettre",
+   "competence": "c4-ecrire-02",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 1
+  },
+  {
+   "num": "S8",
+   "ligne": "paragraphes",
+   "texteEleve": "Un paragraphe dit où tu es et ce que tu vois.",
+   "cherche": "Un paragraphe dit-il où est le personnage et ce qu'il voit ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-02",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 2,
+   "sous": "ou-tu-es"
+  },
+  {
+   "num": "S9",
+   "ligne": "paragraphes",
+   "texteEleve": "Un paragraphe dit ce qui est le plus dur à vivre pour toi.",
+   "cherche": "Un paragraphe dit-il ce qui est le plus difficile à vivre pour lui ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-02",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 3,
+   "sous": "le-plus-dur"
+  },
+  {
+   "num": "S10",
+   "ligne": "paragraphes",
+   "texteEleve": "Ce qui est le plus dur est une surprise, comme la boue chez Jean Déléage : pas seulement la mort ou les combats.",
+   "cherche": "Cette chose difficile est-elle inattendue, comme la boue chez Jean Déléage (pas seulement la mort ou les combats) ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-02",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 4,
+   "sous": "le-plus-dur"
+  },
+  {
+   "num": "S11",
+   "ligne": "paragraphes",
+   "texteEleve": "Un paragraphe dit que tu t'inquiètes pour l'autre.",
+   "cherche": "Un paragraphe dit-il qu'il s'inquiète pour l'autre ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-02",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 5,
+   "sous": "l-inquietude"
+  },
+  {
+   "num": "S12",
+   "ligne": "paragraphes",
+   "texteEleve": "Tu poses des questions à l'autre sur sa vie.",
+   "cherche": "Lui pose-t-il des questions sur sa vie ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-02",
+   "taxo": [
+    "fam-15"
+   ],
+   "ordre": 6,
+   "sous": "l-inquietude"
+  },
+  {
+   "num": "S13",
+   "ligne": "paragraphes",
+   "texteEleve": "Tes paragraphes sont dans l'ordre du sujet : où tu es, puis le plus dur, puis ton inquiétude.",
+   "cherche": "Les trois paragraphes sont-ils dans l'ordre du sujet : où il est, puis le plus dur, puis son inquiétude ?",
+   "portee": "lettre",
+   "competence": "c4-ecrire-02",
+   "taxo": [
+    "fam-43"
+   ],
+   "ordre": 7
+  },
+  {
+   "num": "S14",
+   "ligne": "lectures",
+   "texteEleve": "Tu reprends un détail des textes lus en classe.",
+   "cherche": "Un détail vient-il des textes lus en classe (Jean Déléage, le chapitre) ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-03",
+   "taxo": [
+    "fam-41"
+   ],
+   "ordre": 1,
+   "taxoPropose": "réinvestir une lecture"
+  },
+  {
+   "num": "S15",
+   "ligne": "lectures",
+   "texteEleve": "On voit ce détail : un objet, un geste, un lieu.",
+   "cherche": "Ce détail se voit-il : un objet, un geste, un lieu ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-03",
+   "taxo": [
+    "fam-41"
+   ],
+   "ordre": 2,
+   "taxoPropose": "réinvestir une lecture"
+  },
+  {
+   "num": "S16",
+   "ligne": "lectures",
+   "texteEleve": "Tu l'écris avec tes mots, sans recopier le texte.",
+   "cherche": "Ce détail est-il écrit avec les mots de l'élève, sans recopier le texte lu ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-03",
+   "taxo": [
+    "fam-41"
+   ],
+   "ordre": 3,
+   "taxoPropose": "réinvestir une lecture"
+  },
+  {
+   "num": "S17",
+   "ligne": "tait",
+   "texteEleve": "Ta lettre cache exprès quelque chose à l'autre.",
+   "cherche": "La lettre cache-t-elle volontairement quelque chose à l'autre ?",
+   "portee": "lettre",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-42"
+   ],
+   "ordre": 1,
+   "taxoPropose": "l'implicite"
+  },
+  {
+   "num": "S18",
+   "ligne": "tait",
+   "texteEleve": "On le sent, sans que tu écrives « je ne te le dirai pas ».",
+   "cherche": "Le sent-on sans que la lettre écrive « je ne te dirai pas » ?",
+   "portee": "lettre",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-42"
+   ],
+   "ordre": 2,
+   "taxoPropose": "l'implicite"
+  },
+  {
+   "num": "S19",
+   "ligne": "tait",
+   "texteEleve": "On devine pourquoi tu le caches.",
+   "cherche": "Devine-t-on pourquoi il le cache ?",
+   "portee": "lettre",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-42"
+   ],
+   "ordre": 3,
+   "taxoPropose": "l'implicite"
+  },
+  {
+   "num": "S20",
+   "ligne": "tait",
+   "texteEleve": "Ce que tu caches reste caché jusqu'à la fin.",
+   "cherche": "La chose cachée le reste-t-elle jusqu'à la fin ?",
+   "portee": "lettre",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-42"
+   ],
+   "ordre": 4,
+   "taxoPropose": "l'implicite"
+  },
+  {
+   "num": "S21",
+   "ligne": "complexes",
+   "texteEleve": "Toutes tes phrases ont au moins deux verbes conjugués.",
+   "cherche": "Toutes les phrases sont-elles complexes (au moins deux verbes conjugués) ?",
+   "portee": "lettre",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 1
+  },
+  {
+   "num": "S21 bis",
+   "ligne": "complexes",
+   "texteEleve": "Presque toutes tes phrases ont au moins deux verbes conjugués.",
+   "cherche": "Seulement si S21 n'est pas posé : une ou deux phrases seulement n'ont qu'un verbe conjugué.",
+   "portee": "lettre",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 2,
+   "neCompte": true
+  },
+  {
+   "num": "S22",
+   "ligne": "complexes",
+   "texteEleve": "Chaque phrase a sa proposition principale.",
+   "cherche": "Chaque phrase a-t-elle sa proposition principale ?",
+   "portee": "lettre",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 3
+  },
+  {
+   "num": "S23",
+   "ligne": "complexes",
+   "texteEleve": "Tu choisis le bon mot pour relier : « qui », « que », « dont », « où ».",
+   "cherche": "Chaque pronom relatif (qui, que, dont, où) est-il le bon ?",
+   "portee": "lettre",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 4
+  },
+  {
+   "num": "S24",
+   "ligne": "architectures",
+   "texteEleve": "Tu écris l'architecture 1 comme le modèle du sujet.",
+   "cherche": "L'architecture 1 du sujet est-elle là, construite comme son modèle ?",
+   "portee": "passage",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 1
+  },
+  {
+   "num": "S25",
+   "ligne": "architectures",
+   "texteEleve": "Tu écris l'architecture 2 comme le modèle du sujet.",
+   "cherche": "L'architecture 2 du sujet est-elle là, construite comme son modèle ?",
+   "portee": "passage",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 2
+  },
+  {
+   "num": "S26",
+   "ligne": "architectures",
+   "texteEleve": "Tu écris l'architecture 3 comme le modèle du sujet.",
+   "cherche": "L'architecture 3 du sujet est-elle là, construite comme son modèle ?",
+   "portee": "passage",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 3
+  },
+  {
+   "num": "S27",
+   "ligne": "architectures",
+   "texteEleve": "Tu écris l'architecture 4 comme le modèle du sujet.",
+   "cherche": "L'architecture 4 du sujet est-elle là, construite comme son modèle ?",
+   "portee": "passage",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 4
+  },
+  {
+   "num": "S28",
+   "ligne": "architectures",
+   "texteEleve": "Tu écris l'architecture 5 comme le modèle du sujet.",
+   "cherche": "L'architecture 5 du sujet est-elle là, construite comme son modèle ?",
+   "portee": "passage",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 5
+  },
+  {
+   "num": "S29",
+   "ligne": "architectures",
+   "texteEleve": "Tu écris certaines architectures plusieurs fois.",
+   "cherche": "Certaines architectures sont-elles écrites plusieurs fois ?",
+   "portee": "lettre",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 6
+  },
+  {
+   "num": "S30",
+   "ligne": "architectures",
+   "texteEleve": "Tu notes le numéro de chaque architecture dans la marge.",
+   "cherche": "Les numéros des architectures sont-ils notés dans la marge ?",
+   "portee": "lettre",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-16"
+   ],
+   "ordre": 7,
+   "neCompte": true
+  },
+  {
+   "num": "S31",
+   "ligne": "modalisation",
+   "texteEleve": "Chaque paragraphe a sa nuance : « peut-être », « sans doute », « je crois »…",
+   "cherche": "Chaque paragraphe a-t-il au moins une modalisation (peut-être, sans doute, je crois…) ?",
+   "portee": "lettre",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-42"
+   ],
+   "ordre": 1
+  },
+  {
+   "num": "S32",
+   "ligne": "modalisation",
+   "texteEleve": "Ta lettre a une litote : tu dis moins pour faire entendre plus (« ce n'est pas facile » pour « c'est terrible »).",
+   "cherche": "Y a-t-il une litote ?",
+   "portee": "passage",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-45"
+   ],
+   "ordre": 2
+  },
+  {
+   "num": "S33",
+   "ligne": "modalisation",
+   "texteEleve": "Ta litote fait vraiment entendre plus qu'elle ne dit.",
+   "cherche": "La litote fait-elle entendre plus qu'elle ne dit ?",
+   "portee": "passage",
+   "competence": "c4-langue-04",
+   "taxo": [
+    "fam-45"
+   ],
+   "ordre": 3
+  },
+  {
+   "num": "S34",
+   "ligne": "codes",
+   "texteEleve": "Le lieu, en haut.",
+   "cherche": "Y a-t-il un lieu, en haut de la lettre ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-41"
+   ],
+   "ordre": 1
+  },
+  {
+   "num": "S35",
+   "ligne": "codes",
+   "texteEleve": "La date, entre 1914 et 1918.",
+   "cherche": "Y a-t-il une date, entre 1914 et 1918 ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-41"
+   ],
+   "ordre": 2
+  },
+  {
+   "num": "S36",
+   "ligne": "codes",
+   "texteEleve": "La formule pour t'adresser à l'autre : « Ma chère Louise ».",
+   "cherche": "Y a-t-il une formule pour s'adresser à l'autre (« Ma chère Louise ») ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-41"
+   ],
+   "ordre": 3
+  },
+  {
+   "num": "S37",
+   "ligne": "codes",
+   "texteEleve": "La signature, en bas.",
+   "cherche": "Y a-t-il une signature, en bas de la lettre ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-41"
+   ],
+   "ordre": 4
+  },
+  {
+   "num": "S38",
+   "ligne": "personne",
+   "texteEleve": "Tu écris avec « je », du début à la fin.",
+   "cherche": "La lettre est-elle écrite avec « je », du début à la fin ?",
+   "portee": "lettre",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-42"
+   ],
+   "ordre": 1
+  },
+  {
+   "num": "S39",
+   "ligne": "personne",
+   "texteEleve": "Tu parles à l'autre : « tu », « vous », des questions.",
+   "cherche": "Le personnage parle-t-il à l'autre (tu, vous, des questions) ?",
+   "portee": "passage",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-42"
+   ],
+   "ordre": 2
+  },
+  {
+   "num": "S40",
+   "ligne": "personne",
+   "texteEleve": "Tes verbes restent au même temps dans un même passage.",
+   "cherche": "Les temps restent-ils les mêmes dans un même passage ?",
+   "portee": "lettre",
+   "competence": "c4-ecrire-01",
+   "taxo": [
+    "fam-29"
+   ],
+   "ordre": 3
+  },
+  {
+   "num": "S41",
+   "ligne": "lexique",
+   "texteEleve": "Tes mots disent ce que tu veux dire.",
+   "cherche": "Les mots disent-ils ce que l'élève veut dire ?",
+   "portee": "lettre",
+   "competence": "c4-langue-03",
+   "taxo": [
+    "fam-39"
+   ],
+   "ordre": 1
+  },
+  {
+   "num": "S42",
+   "ligne": "lexique",
+   "texteEleve": "Tu varies tes mots : les mêmes reviennent rarement.",
+   "cherche": "Les mêmes mots reviennent-ils rarement ?",
+   "portee": "lettre",
+   "competence": "c4-langue-03",
+   "taxo": [
+    "fam-33"
+   ],
+   "ordre": 2
+  },
+  {
+   "num": "S43",
+   "ligne": "lexique",
+   "texteEleve": "Tu emploies des mots de 14-18 : poilu, tranchée, permission, obus…",
+   "cherche": "Y a-t-il des mots de 14-18 (poilu, tranchée, permission, obus…) ?",
+   "portee": "passage",
+   "competence": "c4-langue-03",
+   "taxo": [
+    "fam-40"
+   ],
+   "ordre": 3
+  }
+ ]
+}

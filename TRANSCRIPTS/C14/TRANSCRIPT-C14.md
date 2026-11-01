@@ -3173,3 +3173,17 @@ MEMO
 01/11/2026 18:49
 
 MEMO
+
+**Claude (18:52, le banc fini, sans message de Paul) :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : rien · ouvert : 409, 551, 553
+
+552. Le banc a fini seul : ÉCHEC, 1 défaut. C'est ma nouvelle vérification de la marge au téléphone, pas le fichier de l'élève : elle mesure bien 0 chevauchement et rien hors de l'écran, mais elle ne trouve pas la hauteur de ligne qu'elle cherche. Je ne sais pas encore pourquoi. Sa copie n'a d'ailleurs qu'une pastille : elle ne prouve rien pour une marge chargée comme celle de [l'élève].
+
+553. À ton mot, je la corrige sur une copie du banc qui a plusieurs pastilles sur des lignes voisines, je repasse le banc complet et ton vrai site, puis je te demande le promeus. D'ici là, je ne touche à rien.
+
+À tester : rien.
+
+01/11/2026 18:52
+
+MEMO

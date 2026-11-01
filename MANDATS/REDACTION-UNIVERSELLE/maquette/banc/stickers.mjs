@@ -32,10 +32,13 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   await pg.click("#btnScan"); await pg.locator("#scanEcran").waitFor({ state: "visible" }); await att(1200);
   if (!(await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert))) { await pg.click("#btnRecopier"); await att(600); }
   // l'en-tête d'une vraie lettre de poilu, recopié à la main sur une copie encore à corriger (Paul 27/10 : « un exemple pour le banc doit toujours etre réaliste »)
-  const kE = await pg.evaluate(() => { const L = SC.copies.filter(k => rcLignesEcrites(k).length); const k = L.find(k => rcCopieACorriger(k)) || L[0]; return { k, id: (state.copies[k] || {}).id || null, l: rcLignesEcrites(k).slice(0, 2).map(x => x.id) }; });
+  const kE = await pg.evaluate(() => { const L = SC.copies.filter(k => rcLignesEcrites(k).length >= 2); const k = L.find(k => rcCopieACorriger(k)) || L[0]; return { k, id: (state.copies[k] || {}).id || null, l: rcLignesEcrites(k).slice(0, 2).map(x => x.id) }; });
   if (await pg.evaluate(k => RC.copie !== k, kE.k)) { await pg.selectOption("#rcCopie", kE.k); await att(400); if (await pg.evaluate(() => !!RC.phrase)) { await pg.click("#rcPhraseAucune"); await att(400); } }
   const ENTETE = ["Tranchée de la cote 304, près de Verdun, le 14 avril 1916", "Ma chère Louise,"];
-  for (let i = 0; i < kE.l.length; i++) { const c = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + kE.l[i] + '"]'); await c.scrollIntoViewIfNeeded(); await c.fill(ENTETE[i]); await att(300); }
+  for (let i = 0; i < kE.l.length; i++) {   // la page de la ligne choisie dans « Page », puis la ligne réécrite
+    const ip = await pg.evaluate(([k, id]) => { const x = rcLignesEcrites(k).find(y => y.id === id); return x && x.pid !== RC.page ? Array.from(document.querySelectorAll("#rcPage option")).findIndex(o => o.value === x.pid || o.value === String(x.page - 1) || o.value === String(x.page)) : -1; }, [kE.k, kE.l[i]]);
+    if (ip >= 0) { await pg.selectOption("#rcPage", { index: ip }); await att(400); }
+    const c = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + kE.l[i] + '"]'); await c.scrollIntoViewIfNeeded({ timeout: 5000 }); await c.fill(ENTETE[i]); await att(300); }
   const dl = pg.waitForEvent("download"); await pg.click("#rcExportIA"); const fichier = await (await dl).path(); const ex = JSON.parse(fs.readFileSync(fichier, "utf8"));
   const nCop = ex.copies.length, seul = ex.copies.filter(c => c.seulementStickers).length, sansId = ex.copies.filter(c => !c.copie).length;
   const idE = await pg.evaluate(k => (state.copies[k] || {}).id, kE.k), c0 = ex.copies.find(c => c.copie === idE);

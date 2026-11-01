@@ -428,8 +428,10 @@ function rcGarder() {
   if (!RC.copie || !RC.page || !state.classe.some(n => eleveId(n) === RC.copie)) return;
   const s = scCopie(RC.copie); s.recopie = s.recopie || {}; s.recopie.schema = 1;
   s.recopie.pages = s.recopie.pages || {};
-  const d = rcDocument(RC.page); d.modifieLe = new Date().toISOString();
-  s.recopie.pages[RC.page] = JSON.parse(JSON.stringify(d)); s.recopie.reprise = { page: RC.page, ligne: RC.ligne };
+  /* [C14 1.4.15] rien de neuf sur la page (ouvrir la phrase, une copie demandée puis retenue) : son heure ne bouge pas, la copie ne se réécrit pas au site */
+  const d = rcDocument(RC.page), anc = s.recopie.pages[RC.page], canon = o => JSON.stringify(o, (c, v) => v && typeof v === "object" && !Array.isArray(v) ? Object.keys(v).sort().reduce((r, x) => (r[x] = v[x], r), {}) : v);
+  if (anc && canon(Object.assign({}, anc, { modifieLe: 0 })) === canon(Object.assign({}, d, { modifieLe: 0 }))) d.modifieLe = anc.modifieLe; else d.modifieLe = new Date().toISOString();
+  s.recopie.pages[RC.page] = JSON.parse(JSON.stringify(d)); if (!s.recopie.reprise || s.recopie.reprise.page !== RC.page || s.recopie.reprise.ligne !== RC.ligne) s.recopie.reprise = { page: RC.page, ligne: RC.ligne };
   state.scanRecopie = { ouverte: true, copie: RC.copie, page: RC.page, ligne: RC.ligne };
   RC.ui.querySelector("#rcEtat").textContent = "Enregistrement…"; saveState(); SC.actif = Date.now();
 }

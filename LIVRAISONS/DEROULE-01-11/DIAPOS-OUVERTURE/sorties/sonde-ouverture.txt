@@ -1,0 +1,143 @@
+C16 · sonde des diapos d’ouverture au canon · 2026-11-01 23:09 UTC · fichier md5 a12f3261b99191ea86ff00d11acf2b72 · 2786950 o
+
+══ A · 1366×768 · mode test, 3E Charles de Gaulle, la case du 14/09 08:57, heure 1 de la séance 1 ══
+  ok     A · 1366×768 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     A · 1366×768 · « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau
+  ok     A · 1366×768 · pres arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45],"tableau":[false,false,false]}
+  ok     A · 1366×768 · pres : 3 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["Poésie et peinture au XIXe siècle (propo","Du sonnet au poème en prose : comment le","Poésie · du 14 septembre au 6 novembre"]}
+  ok     A · 1366×768 · pres : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,false]
+  ok     A · 1366×768 · pres : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":7},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":7}}
+  ok     A · 1366×768 · comp arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45,0.45,0.45],"tableau":[false,false,false,false,false]}
+  ok     A · 1366×768 · comp : 5 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["LIRE Lire des documents, des images et d","ÉCRIRE Préparer, écrire et relire son te","LA LANGUE Connaître la grammaire pour an","LA CULTURE ET L’ORAL Jouer avec sa voix ","LES COMPÉTENCES TRANSVERSALES Écrire pou"]}
+  ok     A · 1366×768 · comp : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,true,true,false]
+  ok     A · 1366×768 · comp : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":49},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":49}}
+  ok     A · 1366×768 · parc arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45,0.45,0.45,0.45,0.45,0.45,0.45],"tableau":[false,false,false,false,false,false,false,false,false]}
+  ok     A · 1366×768 · parc : 9 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["1 lun. 14/9 Poésie et peinture : le Roma","2 lun. 21/9 Étude de texte accompagnée :","3 jeu. 24/9 Interro de cours et analyse ","4 mar. 29/9 Le poème sans vers : dictée ","5 mar. 6/10 Atelier d'écriture : le sonn","6 ven. 9/10 Brevet blanc n°1 : un sonnet","7 mar. 13/10 Récitation : « À une passan","8 mar. 3/11 Remédiation","9 jeu. 5/11 Tâche finale : un poème en p"]}
+  ok     A · 1366×768 · parc : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,true,true,true,true,true,true,false]
+  ok     A · 1366×768 · parc : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"0.8","blocs":48},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"0.8","blocs":48}}
+  ok     A · 1366×768 · debut arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45,0.45,0.45,0.45],"tableau":[false,false,false,false,false,false]}
+  ok     A · 1366×768 · debut : 6 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["Poésie et peinture : le Romantisme en qu","Objectif : Observer cinq tableaux du XIX","Lire des documents, des images et des pa","Se servir de sa culture pour comprendre ","Relier des œuvres d'époques et de cultur","Parler devant les autres de façon claire"]}
+  ok     A · 1366×768 · debut : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,true,true,true,false]
+  ok     A · 1366×768 · debut : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"0.96","blocs":12},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"0.96","blocs":12}}
+  ok     A · 1366×768 · prob arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45],"tableau":[false]}
+  ok     A · 1366×768 · prob : 1 ligne, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["Du sonnet au poème en prose : comment le"]}
+  ok     A · 1366×768 · prob : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":4},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":4}}
+  ok     A · 1366×768 · l’ordre de la séance 1 (C16 33) : la présentation du chapitre, les compétences du chapitre, le parcours, le début de séance, la problématique — puis la première diapo de la séance — ["pres","comp","parc","debut","prob"]
+  ok     A · 1366×768 · la présentation au tableau : le titre, la question, l’entrée et les dates de la classe (du premier au dernier jour du chapitre, son emploi du temps) — ["Poésie et peinture au XIXe siècle (proposition)","Du sonnet au poème en prose : comment les poètes et les peintres du XIXe siècle héritent-ils des règles classiques, et comment s'en libèrent-ils ?","Poésie · du 14 septembre au 6 novembre"]
+  ok     A · 1366×768 · les compétences par leur phrase d’élève, au tableau (compétences du chapitre, début de séance) : aucun intitulé officiel — []
+  ok     A · 1366×768 · le parcours dans la copie de la classe : la date de chaque séance pour la classe, la séance du jour entourée d’or (la 1, lun. 14/9) — ["1 lun. 14/9 Poésie et peinture : le Romantisme en ","2 lun. 21/9 Étude de texte accompagnée : « L'Albat","3 jeu. 24/9 Interro de cours et analyse logique — "]
+  ok     A · 1366×768 · l’or de la séance du jour (capture 7 du 29/10 : #c9a04a) — rgb(201, 160, 74)
+  ok     A · 1366×768 · les séances évaluées en bleu vif (celles que le chapitre marque « évaluée ») — [3,4,6,9]
+  ok     A · 1366×768 · la problématique au tableau, sur le bleu nuit du canon (#1f3b4d) : le rouge et le surligné de Paul restent lisibles (contraste ≥ 4,5:1), comme le texte — {"fond":"rgb(31, 59, 77)","rouge":5.3,"surligne":9.5,"texte":11.73}
+  ok     A · 1366×768 · au pilote, le nom de chaque diapo d’ouverture se lit en entier sous sa vignette, sans la recouvrir — [{"t":"présentation du chapitre","sous":true,"dedans":true,"entier":true},{"t":"compétences du chapitre","sous":true,"dedans":true,"entier":true}]
+  ok     A · 1366×768 · mode test : aucune écriture au hub hors de /site/tableau_test (42 écritures) — []
+  ok     A · 1366×768 · aucune erreur JS
+  ok     A · 1366×768 · aucune boîte système
+
+══ A · 1536×864 · mode test, 3E Charles de Gaulle, la case du 14/09 08:57, heure 1 de la séance 1 ══
+  ok     A · 1536×864 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     A · 1536×864 · « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau
+  ok     A · 1536×864 · pres arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45],"tableau":[false,false,false]}
+  ok     A · 1536×864 · pres : 3 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["Poésie et peinture au XIXe siècle (propo","Du sonnet au poème en prose : comment le","Poésie · du 14 septembre au 6 novembre"]}
+  ok     A · 1536×864 · pres : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,false]
+  ok     A · 1536×864 · pres : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":7},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":7}}
+  ok     A · 1536×864 · comp arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45,0.45,0.45],"tableau":[false,false,false,false,false]}
+  ok     A · 1536×864 · comp : 5 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["LIRE Lire des documents, des images et d","ÉCRIRE Préparer, écrire et relire son te","LA LANGUE Connaître la grammaire pour an","LA CULTURE ET L’ORAL Jouer avec sa voix ","LES COMPÉTENCES TRANSVERSALES Écrire pou"]}
+  ok     A · 1536×864 · comp : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,true,true,false]
+  ok     A · 1536×864 · comp : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":49},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":49}}
+  ok     A · 1536×864 · parc arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45,0.45,0.45,0.45,0.45,0.45,0.45],"tableau":[false,false,false,false,false,false,false,false,false]}
+  ok     A · 1536×864 · parc : 9 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["1 lun. 14/9 Poésie et peinture : le Roma","2 lun. 21/9 Étude de texte accompagnée :","3 jeu. 24/9 Interro de cours et analyse ","4 mar. 29/9 Le poème sans vers : dictée ","5 mar. 6/10 Atelier d'écriture : le sonn","6 ven. 9/10 Brevet blanc n°1 : un sonnet","7 mar. 13/10 Récitation : « À une passan","8 mar. 3/11 Remédiation","9 jeu. 5/11 Tâche finale : un poème en p"]}
+  ok     A · 1536×864 · parc : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,true,true,true,true,true,true,false]
+  ok     A · 1536×864 · parc : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"0.8","blocs":48},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"0.8","blocs":48}}
+  ok     A · 1536×864 · debut arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45,0.45,0.45,0.45],"tableau":[false,false,false,false,false,false]}
+  ok     A · 1536×864 · debut : 6 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["Poésie et peinture : le Romantisme en qu","Objectif : Observer cinq tableaux du XIX","Lire des documents, des images et des pa","Se servir de sa culture pour comprendre ","Relier des œuvres d'époques et de cultur","Parler devant les autres de façon claire"]}
+  ok     A · 1536×864 · debut : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,true,true,true,false]
+  ok     A · 1536×864 · debut : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"0.96","blocs":12},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"0.96","blocs":12}}
+  ok     A · 1536×864 · prob arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45],"tableau":[false]}
+  ok     A · 1536×864 · prob : 1 ligne, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["Du sonnet au poème en prose : comment le"]}
+  ok     A · 1536×864 · prob : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":4},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":4}}
+  ok     A · 1536×864 · l’ordre de la séance 1 (C16 33) : la présentation du chapitre, les compétences du chapitre, le parcours, le début de séance, la problématique — puis la première diapo de la séance — ["pres","comp","parc","debut","prob"]
+  ok     A · 1536×864 · la présentation au tableau : le titre, la question, l’entrée et les dates de la classe (du premier au dernier jour du chapitre, son emploi du temps) — ["Poésie et peinture au XIXe siècle (proposition)","Du sonnet au poème en prose : comment les poètes et les peintres du XIXe siècle héritent-ils des règles classiques, et comment s'en libèrent-ils ?","Poésie · du 14 septembre au 6 novembre"]
+  ok     A · 1536×864 · les compétences par leur phrase d’élève, au tableau (compétences du chapitre, début de séance) : aucun intitulé officiel — []
+  ok     A · 1536×864 · le parcours dans la copie de la classe : la date de chaque séance pour la classe, la séance du jour entourée d’or (la 1, lun. 14/9) — ["1 lun. 14/9 Poésie et peinture : le Romantisme en ","2 lun. 21/9 Étude de texte accompagnée : « L'Albat","3 jeu. 24/9 Interro de cours et analyse logique — "]
+  ok     A · 1536×864 · l’or de la séance du jour (capture 7 du 29/10 : #c9a04a) — rgb(201, 160, 74)
+  ok     A · 1536×864 · les séances évaluées en bleu vif (celles que le chapitre marque « évaluée ») — [3,4,6,9]
+  ok     A · 1536×864 · la problématique au tableau, sur le bleu nuit du canon (#1f3b4d) : le rouge et le surligné de Paul restent lisibles (contraste ≥ 4,5:1), comme le texte — {"fond":"rgb(31, 59, 77)","rouge":5.3,"surligne":9.5,"texte":11.73}
+  ok     A · 1536×864 · au pilote, le nom de chaque diapo d’ouverture se lit en entier sous sa vignette, sans la recouvrir — [{"t":"présentation du chapitre","sous":true,"dedans":true,"entier":true},{"t":"compétences du chapitre","sous":true,"dedans":true,"entier":true}]
+  ok     A · 1536×864 · mode test : aucune écriture au hub hors de /site/tableau_test (42 écritures) — []
+  ok     A · 1536×864 · aucune erreur JS
+  ok     A · 1536×864 · aucune boîte système
+
+══ A · 1920×1080 · mode test, 3E Charles de Gaulle, la case du 14/09 08:57, heure 1 de la séance 1 ══
+  ok     A · 1920×1080 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     A · 1920×1080 · « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau
+  ok     A · 1920×1080 · pres arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45],"tableau":[false,false,false]}
+  ok     A · 1920×1080 · pres : 3 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["Poésie et peinture au XIXe siècle (propo","Du sonnet au poème en prose : comment le","Poésie · du 14 septembre au 6 novembre"]}
+  ok     A · 1920×1080 · pres : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,false]
+  ok     A · 1920×1080 · pres : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":7},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":7}}
+  ok     A · 1920×1080 · comp arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45,0.45,0.45],"tableau":[false,false,false,false,false]}
+  ok     A · 1920×1080 · comp : 5 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["LIRE Lire des documents, des images et d","ÉCRIRE Préparer, écrire et relire son te","LA LANGUE Connaître la grammaire pour an","LA CULTURE ET L’ORAL Jouer avec sa voix ","LES COMPÉTENCES TRANSVERSALES Écrire pou"]}
+  ok     A · 1920×1080 · comp : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,true,true,false]
+  ok     A · 1920×1080 · comp : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":49},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":49}}
+  ok     A · 1920×1080 · parc arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45,0.45,0.45,0.45,0.45,0.45,0.45],"tableau":[false,false,false,false,false,false,false,false,false]}
+  ok     A · 1920×1080 · parc : 9 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["1 lun. 14/9 Poésie et peinture : le Roma","2 lun. 21/9 Étude de texte accompagnée :","3 jeu. 24/9 Interro de cours et analyse ","4 mar. 29/9 Le poème sans vers : dictée ","5 mar. 6/10 Atelier d'écriture : le sonn","6 ven. 9/10 Brevet blanc n°1 : un sonnet","7 mar. 13/10 Récitation : « À une passan","8 mar. 3/11 Remédiation","9 jeu. 5/11 Tâche finale : un poème en p"]}
+  ok     A · 1920×1080 · parc : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,true,true,true,true,true,true,false]
+  ok     A · 1920×1080 · parc : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"0.8","blocs":48},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"0.8","blocs":48}}
+  ok     A · 1920×1080 · debut arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45,0.45,0.45,0.45,0.45,0.45],"tableau":[false,false,false,false,false,false]}
+  ok     A · 1920×1080 · debut : 6 lignes, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["Poésie et peinture : le Romantisme en qu","Objectif : Observer cinq tableaux du XIX","Lire des documents, des images et des pa","Se servir de sa culture pour comprendre ","Relier des œuvres d'époques et de cultur","Parler devant les autres de façon claire"]}
+  ok     A · 1920×1080 · debut : ◀ revoile la dernière ligne (pâle au pilote, absente au tableau), les autres restent — [true,true,true,true,true,false]
+  ok     A · 1920×1080 · debut : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"0.96","blocs":12},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"0.96","blocs":12}}
+  ok     A · 1920×1080 · prob arrive à la flèche : son décor seul au tableau (aucune ligne), toutes ses lignes pâles au pilote — {"pilote":[0.45],"tableau":[false]}
+  ok     A · 1920×1080 · prob : 1 ligne, une par flèche — toutes dévoilées, au pilote et au tableau — {"tableau":["Du sonnet au poème en prose : comment le"]}
+  ok     A · 1920×1080 · prob : rien de coupé, rien ne sort de la diapo, aucun chevauchement (mesuré au pilote et au tableau) — {"pilote":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":4},"tableau":{"coupes":[],"hors":[],"chev":[],"z":"1","blocs":4}}
+  ok     A · 1920×1080 · l’ordre de la séance 1 (C16 33) : la présentation du chapitre, les compétences du chapitre, le parcours, le début de séance, la problématique — puis la première diapo de la séance — ["pres","comp","parc","debut","prob"]
+  ok     A · 1920×1080 · la présentation au tableau : le titre, la question, l’entrée et les dates de la classe (du premier au dernier jour du chapitre, son emploi du temps) — ["Poésie et peinture au XIXe siècle (proposition)","Du sonnet au poème en prose : comment les poètes et les peintres du XIXe siècle héritent-ils des règles classiques, et comment s'en libèrent-ils ?","Poésie · du 14 septembre au 6 novembre"]
+  ok     A · 1920×1080 · les compétences par leur phrase d’élève, au tableau (compétences du chapitre, début de séance) : aucun intitulé officiel — []
+  ok     A · 1920×1080 · le parcours dans la copie de la classe : la date de chaque séance pour la classe, la séance du jour entourée d’or (la 1, lun. 14/9) — ["1 lun. 14/9 Poésie et peinture : le Romantisme en ","2 lun. 21/9 Étude de texte accompagnée : « L'Albat","3 jeu. 24/9 Interro de cours et analyse logique — "]
+  ok     A · 1920×1080 · l’or de la séance du jour (capture 7 du 29/10 : #c9a04a) — rgb(201, 160, 74)
+  ok     A · 1920×1080 · les séances évaluées en bleu vif (celles que le chapitre marque « évaluée ») — [3,4,6,9]
+  ok     A · 1920×1080 · la problématique au tableau, sur le bleu nuit du canon (#1f3b4d) : le rouge et le surligné de Paul restent lisibles (contraste ≥ 4,5:1), comme le texte — {"fond":"rgb(31, 59, 77)","rouge":5.3,"surligne":9.5,"texte":11.73}
+  ok     A · 1920×1080 · au pilote, le nom de chaque diapo d’ouverture se lit en entier sous sa vignette, sans la recouvrir — [{"t":"présentation du chapitre","sous":true,"dedans":true,"entier":true},{"t":"compétences du chapitre","sous":true,"dedans":true,"entier":true}]
+  ok     A · 1920×1080 · mode test : aucune écriture au hub hors de /site/tableau_test (42 écritures) — []
+  ok     A · 1920×1080 · aucune erreur JS
+  ok     A · 1920×1080 · aucune boîte système
+
+══ B · la séance 1 jouée (deux heures closes, 07/09 et 08/09) : la case du 14/09 08:57 ouvre la séance 2 ══
+  ok     B · la case du 14/09 08:57, la séance 1 jouée : la séance 2 s’ouvre par le parcours, le début de séance, la problématique (ni présentation ni compétences du chapitre) — ["parc · Diapo 1 sur 11 · heure 1 · parcours du chapitre · Le parcour","debut · Diapo 2 sur 11 · heure 1 · début de séance · Séance 2 · Étud","prob · Diapo 3 sur 11 · heure 1 · problématique · Notre question · "]
+  ok     B · au tableau, le parcours de la classe : la séance 1 terminée, cochée (lun. 7/9) ; la séance 2 en or — ["faite · 1 ✓ lun. 7/9 Poésie et peinture : le Rom","jour · 2 lun. 14/9 Étude de texte accompagnée :"]
+  ok     B · au tableau, le début de la séance 2 : son titre, puis « Objectif : » et sa phrase — ["Étude de texte accompagnée : « L'Albatros »","Objectif : Lire « L’Albatros » de Baudelaire, repérer la com"]
+  ok     B · les 9 carrés de la séance : le deuxième allumé (la séance du jour) — [0,1,0,0,0,0,0,0,0]
+  ok     B · aucune erreur JS
+  ok     B · aucune boîte système
+
+══ C · l’Atelier (le faux hub gardé d’un rechargement à l’autre) ══
+  ok     C · Atelier, séance 2 : le parcours, le début de séance, la problématique, en tête — ["Le parcours du chapitre","Séance 2 · Étude de texte accompagnée : « L'Albatros »","Notre question","De la toile au poème"]
+  ok     C · Atelier : la présentation du chapitre dit « les dates selon la classe » (pas de classe, pas de date) — ["Poésie et peinture au XIXe siècle (proposition)","Du sonnet au poème en prose : comment les poètes e","Poésie · les dates selon la classe"]
+  ok     C · Atelier, dernière séance : « Les compétences du chapitre » reviennent, juste avant le cahier de textes de sa dernière heure (la séance n’a pas de bilan) — {"place":7,"suivante":"Cahier de textes"}
+  ok     C · « À régler » : une ligne par champ manquant — 3 ligne(s) — ["La séance 7 ne dit pas si elle est évaluée","La séance 8 n’a pas d’objectif (la phrase de la séance)","La séance 9 n’a pas d’objectif (la phrase de la séance)"]
+  ok     C · « Ouvrir la diapo » sur cette ligne : la séance 8, son début de séance, la carte ouverte sur l’objectif — {"vise":"dc-ouv-objectif","focus":"dc-ouv-objectif","seance":"7"}
+  ok     C · carte : l’objectif écrit (Entrée) — la diapo le dit (« Objectif : … »), « À régler » perd sa ligne (2 restantes) — {"diapo":["Remédiation","Objectif : Relire ses erreurs de dictée et de rééc","Écrire les mots et les accords sans fautes","Préparer, écrire et relire son texte","Travailler avec soin et précision","Travailler seul et de façon responsable"],"regler":["La séance 7 ne dit pas si elle est évaluée","La séance 9 n’a pas d’objectif (la phrase de la séance)"]}
+  ok     C · au hub : la phrase est écrite dans la séance (le chapitre, pour toutes les classes) — Relire ses erreurs de dictée et de réécriture, puis s’entraîner sur sa notion la moins sûre.
+  ok     C · carte : un clic fait la majeure (★) — elle passe en tête au hub, en gras et en premier sur la diapo — {"avant":["c4-langue-01","c4-ecrire-02"],"apres":["c4-ecrire-02","c4-langue-01"],"diapo":"Préparer, écrire et relire son texte","carte":"★ Préparer, écrire et relire son texte · la majeur"}
+  ok     C · carte : « séance évaluée » oui — au hub, et la séance 8 en bleu vif sur le parcours — {"hub":true}
+  ok     C · carte : l’image de la séance (« Changer… », une adresse dans mjpc-medias) — au hub, et à droite du début de séance — {"hub":{"ref":"https://siteflow-io.github.io/mjpc-medias/3e/poesie-peinture-xixe/friedrich.png"},"diapo":{"src":"https://siteflow-io.github.io/mjpc-medias/3e/poesie-peinture-xixe/friedrich.png","w":520,"avec":true}}
+  ok     C · écrire dans la diapo en fait « ta version » (la carte le dit, avec « ↩ celle du chapitre ») ; « ↩ » rend celle du chapitre — {"avant":{"ta":true,"titre":"Remédiation (révisée)"},"apres":{"ta":false,"titre":"Remédiation"}}
+  ok     C · la feuille sommaire suit (sortie de l’éditeur → « Régénérer ») : la phrase de la séance 8, « évaluée », les compétences par leur phrase d’élève (13 · 91) — {"modale":"Le chapitre a changé — régénérer la feuille sommaire ?\nRégénérer\nPlus tard","extrait":" Ce que nous travaillons Entrée du programme : Poésie Compétence(s) principale(s) : Interpréter un texte littéraire Aussi travaillées : Vérifier que l&#39;on a bien compris ce qu&#39;on lit · Lire des documents, des images et des pages numériques · Lire des œuvres et découvrir des œuvres d&#39;art ·"}
+  ok     C · clic droit → « Retirer » la problématique de la séance 2, recharger : elle ne revient pas (deroule/retraits au hub) — {"retraits":["problematique","canon"],"tete":["Le parcours du chapitre","Séance 2 · Étude de texte accompagnée : « L'Albatros »","De la toile au poème"]}
+  ok     C · aucune erreur JS
+  ok     C · aucune boîte système
+
+══ D · l’import (« 📚 Nouveau chapitre ») ══
+  ok     D · « Vérifier » refuse un « evaluee » qui n’est pas vrai / faux et une image à l’adresse complète, avec leurs mots — ["Je ne peux pas utiliser cette réponse : « Interro de cours et analyse logique — les bases (1) » : « evaluee » vaut true ou false (sans guillemets), ou s’omet."," « Le poème sans vers : dictée et réécriture » : Refus : l’adresse de l’image doit être relative dans mjpc-medias, jamais complète (3."]
+  ok     D · « Créer ce chapitre » : l’image du chapitre (adresse complète posée par l’import), la phrase, « évaluée » et l’image des séances — gardées au hub — {"k":"1","image":{"ref":"https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/chapitre.png"},"o0":"Observer cinq tableaux du XIXe siècle et formuler avec la classe ce qu’ils ont en commun.","e0":false,"i0":{"ref":"https://siteflow-io.github.io/mjpc-medias/poesie-peinture-xixe/seance-1.png"},"o1":"Lire « L’Albatros » et comprendre ce que le poème dit du poète parmi les hommes.","e1":true,"som":false}
+  ok     D · dans l’Atelier du chapitre importé : la phrase de la séance sur son début de séance, l’image du chapitre sur sa présentation — {"debut":["Poésie et peinture : le Romantisme en question","Objectif : Observer cinq tableaux du XIXe siècle e"],"image":625}
+  ok     D · aucune erreur JS
+  ok     D · aucune boîte système
+
+══ E · la reprise d’une copie de classe écrite avant le canon ══
+  ok     E · la reprise : la problématique déjà montrée à la classe garde son ancienne forme ; le plan jamais montré prend le canon (le parcours) ; rien n’est ajouté à la copie — {"lancee":true,"n":5,"prob":"texte","plan":"ouverture","nouvelles":0}
+  ok     E · au pilote, la diapo montrée se revoit telle que la classe l’a vue — {"ouv":false,"texte":"NOTRE QUESTION Du sonnet au poème en prose : comment les poètes et les peintres du XIXe siècle héritent-ils des règles classiques, et comment s'en libèrent-ils ","tete":"· Notre question · prévue 0 min · H1 · problématique"}
+  ok     E · aucune erreur JS
+  ok     E · aucune boîte système
+
+sonde des diapos d’ouverture · 126 vérifications · 0 échec · VERT

@@ -222,3 +222,25 @@ MEMO
 01/11/2026 22:48
 
 MEMO
+
+## Tour 8 — 01/11/2026 22:50 → 01/11/2026 22:51 (la nouvelle interface)
+
+**Paul (22:50) :** Non je veux les captures de la nouvelle UI
+
+**Fait.** Mesuré à 22:50 : le dossier de l'exécutant est encore propre (aucune ligne écrite), sa branche à `fc036e8`. Message à l'exécutant : son heure estimée de poussée, à me répondre en une ligne sans s'arrêter, et chaque diapo poussée seule dès qu'elle est prête. Regardées puis envoyées à Paul : les captures validées du 29/10 (`MANDATS/CANONS-DIAPOS/captures-29-10/` 1, 2, 3, 4 et 7).
+
+**Claude (22:51) :**
+
+À jouer : ta classe de demain, sur la 8.77.1-⑩ · en cours : l'exécutant écrit les cinq diapos · ouvert : 15
+
+49. Dans le site, la nouvelle interface n'existe pas encore : à 22:50, l'exécutant n'en avait pas écrit une ligne. Il n'y a donc rien à capturer par le geste tant qu'il n'a pas poussé.
+
+50. Ce qui existe déjà, c'est la nouvelle interface que tu as validée le 29/10, dessinée hors du site. Je te renvoie les cinq captures : la présentation du chapitre, les compétences du chapitre, le parcours, le début de séance, et le parcours au pilote avec les dates. C'est exactement ce que l'exécutant reproduit dans le site, avec tes données.
+
+51. Je lui ai demandé à quelle heure il pousse, et de pousser chaque diapo seule dès qu'elle est prête. Je te donne son heure dès qu'il répond. Puis je capture chaque diapo à l'instant où elle arrive, sur « Poésie et peinture », au tableau et au pilote.
+
+À tester : rien de neuf. La liste de 20:40 pour la 8.77.1-⑩ tient.
+
+01/11/2026 22:51
+
+MEMO

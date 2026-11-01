@@ -2482,3 +2482,46 @@ Elle apporte l'élève absent (clic droit sur sa carte), « 📄 Charger sa copi
 01/11/2026 09:53
 
 MEMO
+
+## Tour 104 — 01/11/2026 10:06 → 01/11/2026 10:21
+
+**Paul :** j'ai commencé à modifier l'inventaire sur github mais c'est très fastidieux. Il faut le cadrer ici. En réalité, l'écran est à jeter en grande partie, avec ses fonctionnalités, car c'était l'ancien flux. Depuis, on a totlament chagné de flux. Tu comprends? J'attends tes propositions ICI. Par aillerus on garde tes pushs en autonomie en revanche plus de pushs ultérieurs sans promeus de ma part.  Il me faut quand même tout de suite le correctif de 382.
+
+**Fait.** Lu les trois lignes que Paul a changées sur l'inventaire au sas (commit `b3f6e5dd`) : E9 « ce bouton doit me servir à sortir le zip des pdfs reconstruits » ; E10 « Cette remise à zéro était pour les soulignés au pinceau, or cette fonctionnalité tombe » ; E11 « Attention à la place des boutons, ils ne doivent pas être sur deux lignes mais sur une seule ». La bande du haut finie : le banc s'arrêtait sur l'ancien essai du zoom ; la cause était la bande écrasée à 195 points (une règle de mise en page plus forte) ; corrigé, la bande à 745 points pour une feuille de 745. Banc complet : 147 vérifications, 0 défaut. Vrai site en lecture seule : identique à la 1.4.13. Mis en ligne à 10:20 (1.4.14, commit `f8035e2`) sur la phrase de Paul « Il me faut quand même tout de suite le correctif de 382 ». Mesuré au site à 10:08 : 541 fautes au pinceau sur 21 copies, 134 fautes de la bande sur 4 copies, aucune faute de la bande sur un mot déjà souligné au pinceau, 29 copies recopiées. Docs de suivi à jour (journal, point de retour, où trouver quoi, registre).
+
+**Claude :**
+
+À jouer : la 1.4.14, la bande du haut (383) · en cours : rien · ouvert : 385 à 394 (l'écran des scans), à valider par numéro
+
+383. 382 est en ligne depuis 10:20 (1.4.14). Je l'ai mise en ligne sur ta phrase de 10:06 : « Il me faut quand même tout de suite le correctif de 382 ». La bande du haut va maintenant de ta marge rouge au bord de la copie, à chaque cran du zoom. À ×1, les boutons du zoom sont juste à sa gauche ; au-dessus de ×1, ils sont à sa droite. Ils ne sont plus jamais dessus. Banc : 147 vérifications, 0 défaut. Sur ton vrai site, en lecture seule, les copies, les marques, les notes et les lignes sont identiques.
+
+384. Noté : la 1.4.13 reste, et plus aucune mise en ligne ne se fait sans ton promeus. Les docs de suivi et le transcript continuent d'être poussés à chaque tour, comme avant.
+
+385. Oui, je comprends. L'écran des scans, c'était l'ancien flux : lire la copie passe par passe et souligner au pinceau. Le flux d'aujourd'hui, c'est : charger les copies, les recopier, l'IA, la bande, puis les stickers (à venir) et les fichiers des élèves. On corrige dans la recopie. L'écran des scans ne sert plus qu'à amener les copies et à sortir les fichiers.
+
+386. Je propose qu'il devienne « Le paquet », avec une seule ligne de boutons en haut (ton E11) : « 📄 Charger des copies », « 📂 Mon dossier », « 🔤 Les initiales », « 📦 Les PDF de la classe », « ✕ Fermer ». Au milieu, les pages du paquet, chacune avec le nom de son élève.
+
+387. Tout le reste tombe, et son code est rangé, avec la liste au sas, comme pour la 1.4.12. Ce qui tombe : les quatre passes et leurs questions ; le pinceau (faute, remarque, phrase au pinceau) ; la bonne forme tapée et les formes déjà vues ; « 👁 Toutes les marques », « ⇥ Replier », « 📋 Le récapitulatif » ; le champ des lignes écrites ; « ↺ Remettre à zéro » (ton E10) ; « 🖨 Copies vierges » ; le chrono de la copie ; « ↔ Largeur ».
+
+388. Les outils de la photo passent dans la recopie, pour la page affichée, à côté de « 📷 Remplacer la photo » : « ↻ Tourner », « ✂ Retoucher », « 🗑 Retirer les photos », « ⇄ Ordre des pages ». C'est en recopiant que tu vois qu'une photo est mauvaise.
+
+389. La carte d'un élève ouvre toujours sa recopie. Sur le tableau des élèves, le bouton « 📄 Corriger sur les scans » devient « 📄 Le paquet ».
+
+390. Les lignes écrites se comptent seules : ce sont les lignes recopiées. Elles donnent le niveau d'orthographe et la colonne Brevet du Bilan.
+
+391. Tes 541 fautes posées au pinceau cette semaine, sur 21 copies, ne s'effacent pas. Mesuré au site à 10:08 : aucune ne touche une faute de la bande pour l'instant. Je propose qu'elles entrent dans la bande. Quand l'IA propose une faute sur un mot que tu as déjà souligné, elle arrive déjà décidée « faute ». Un mot souligné que l'IA n'a pas vu devient une faute oubliée par l'IA, grise et sans type, comme avec F. Ton repérage n'est pas perdu, et aucune faute n'est comptée deux fois.
+
+392. La note sort aujourd'hui des quatre passes. Tu ne les as jamais remplies pour cette classe : 0 réponse aux passes 2 à 4. Si elles tombent maintenant, aucune copie n'a de note jusqu'aux stickers (lots 2 à 4). Je propose qu'elles tombent maintenant : la note revient avec les stickers.
+
+393. « 📦 Les PDF de la classe » (ton E9) : un zip, avec un PDF par élève, à déposer sur École Directe. Chaque PDF contient ses pages photographiées, tes fautes soulignées dans la couleur de leur type, les pastilles dans la marge et la phrase en or. Quand les stickers seront là, sa grille s'y ajoutera. Le fichier HTML à cliquer d'aujourd'hui tombe : le PDF le remplace. Le zip se fabrique dans ton navigateur, sans service payant, et les photos ne passent jamais par le site. Il est aussi dans Données › Fiches élèves.
+
+394. L'ordre que je propose : 386 à 390 et 393 dans un lot (1.4.15), puis 391 avec la bande, puis 392 avec les stickers. Dis-moi par numéro.
+
+À tester (1.4.14, recharge la page avec https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.14-RU) :
+- dans la recopie, la bande du haut commence à ta marge rouge et finit au bord de la copie ; elle est plus grande qu'avant ;
+- à ×1, les boutons − ×1 + sont juste à gauche de la bande : le coin en haut à droite est libre ;
+- « + » : la bande prend toute la largeur de l'écran, et les boutons passent à sa droite ; « − » revient à ×1.
+
+01/11/2026 10:21
+
+MEMO

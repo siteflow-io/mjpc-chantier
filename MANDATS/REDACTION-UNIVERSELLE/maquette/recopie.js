@@ -1055,11 +1055,18 @@ function rcCalerMots(e, texte, x0, x1, c0, c1, u) {
      pour toute la ligne ; un grand blanc laissé par du blanc correcteur ne décale plus les mots qui suivent) ; le passage prend ses mots d'encre entiers */
   if (n >= 1 && i0 >= 0 && i1 >= i0 && bl.length >= n - 1) { let S = null;
     if (n === 1) S = [[e[0], e[1]]];
-    else if (typeof u === "function") { const K = n - 1, G = bl.length, lmax = tri[0] || 1, est = W.slice(1).map(w => u(w.a)), sc = (k, j) => bl[j].l / lmax - Math.abs((bl[j].g + bl[j].d) / 2 - est[k]) / 0.06;
-      const f = [], de = []; for (let k = 0; k < K; k++) { f.push(new Array(G).fill(-Infinity)); de.push(new Array(G).fill(-1)); }
-      for (let j = 0; j < G; j++) f[0][j] = sc(0, j);
-      for (let k = 1; k < K; k++) { let best = -Infinity, bj = -1; for (let j = 0; j < G; j++) { if (j > 0 && f[k - 1][j - 1] > best) { best = f[k - 1][j - 1]; bj = j - 1; } if (bj >= 0) { f[k][j] = best + sc(k, j); de[k][j] = bj; } } }
-      let jb = -1, vb = -Infinity; for (let j = 0; j < G; j++) if (f[K - 1][j] > vb) { vb = f[K - 1][j]; jb = j; }
+    else if (typeof u === "function") {
+      /* [C14, la nuit du 02/11] (C14 479, 535 : sur le blanc correcteur, des cadres décalés d'un mot) : les mots d'encre se choisissent pour que chaque mot ait
+         la largeur que ses lettres demandent (« qui » étroit, « rations » large), et que les blancs choisis soient larges ; un grand blanc (le blanc correcteur)
+         peut séparer deux mots sans tirer les suivants vers la gauche. La place attendue ne compte plus qu'un peu, pour départager. */
+      const K = n - 1, G = bl.length, lmax = tri[0] || 1, poids = ch => ch === " " ? 1.3 : "iljtf.,;:'’!|ïî-".includes(ch) ? 0.55 : "mwMW".includes(ch) ? 1.45 : ch !== ch.toLowerCase() ? 1.25 : 1;
+      const om = W.map(w => { let s = 0; for (const ch of T.slice(w.a, w.b)) s += poids(ch); return Math.max(0.5, s); }), somme = om.reduce((a, b) => a + b, 0);
+      const E = tr[tr.length - 1][1] - tr[0][0], s0 = Math.max(1e-4, (E - tri.slice(0, K).reduce((a, b) => a + b, 0)) / somme), est = W.slice(1).map(w => u(w.a));
+      const mot = (k, a, b) => { const r = Math.max(1e-4, b - a) / (s0 * om[k]); return Math.log(r) ** 2; }, blanc = j => -0.6 * Math.log(Math.max(1e-4, bl[j].l) / lmax), place = (k, j) => 0.15 * (((bl[j].g + bl[j].d) / 2 - est[k]) / 0.1) ** 2;
+      const f = [], de = []; for (let k = 0; k < K; k++) { f.push(new Array(G).fill(Infinity)); de.push(new Array(G).fill(-1)); }
+      for (let j = 0; j < G; j++) f[0][j] = mot(0, tr[0][0], bl[j].g) + blanc(j) + place(0, j);
+      for (let k = 1; k < K; k++) for (let j = k; j < G; j++) { let best = Infinity, bj = -1; for (let q = k - 1; q < j; q++) { if (!isFinite(f[k - 1][q])) continue; const v = f[k - 1][q] + mot(k, bl[q].d, bl[j].g); if (v < best) { best = v; bj = q; } } if (bj >= 0) { f[k][j] = best + blanc(j) + place(k, j); de[k][j] = bj; } }
+      let jb = -1, vb = Infinity; for (let j = K - 1; j < G; j++) { if (!isFinite(f[K - 1][j])) continue; const v = f[K - 1][j] + mot(K, bl[j].d, tr[tr.length - 1][1]); if (v < vb) { vb = v; jb = j; } }
       if (jb >= 0 && isFinite(vb)) { const pick = new Array(K); for (let k = K - 1; k >= 0; k--) { pick[k] = jb; jb = de[k][jb]; } if (pick.every(x => x >= 0)) { S = []; let st = e[0]; pick.forEach(x => { S.push([st, bl[x].g]); st = bl[x].d; }); S.push([st, e[1]]); } } }
     if (S && S[i0] && S[i1] && S[i1][1] > S[i0][0] + 0.005) return [S[i0][0] - 0.003, S[i1][1] + 0.003]; }
   /* 2. sinon, chaque bord sur le blanc entre deux mots le plus proche ; au bout de la ligne, sur l'encre */

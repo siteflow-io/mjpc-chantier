@@ -3037,3 +3037,31 @@ MEMO
 01/11/2026 16:49
 
 MEMO
+
+## Tour 119 — 01/11/2026 17:09 → 01/11/2026 17:10
+
+**Paul :** 513. Réexplique moi
+
+**Fait.** Rien de codé.
+
+**Claude :**
+
+À jouer : rien de neuf (la 1.4.15 est en ligne depuis 14:02) · en cours : rien · ouvert : 409, 483, 518, 520
+
+522. La ligne « Les cinq architectures » vaut 7 points. Elle a 6 stickers : un pour chacune des architectures 1 à 5, et un pour « tu écris certaines architectures plusieurs fois ».
+
+523. Aujourd'hui, ses points se lisent ainsi : 6 stickers réussis, 7 points ; 5 réussis, 4,5 points ; 3 ou 4 réussis, 2 points ; 0, 1 ou 2 réussis, 0 point.
+
+524. Donc un élève qui écrit une seule architecture juste a 0 point. Avec deux, il a encore 0. [Ce qu'a l'élève de 15:09 : retiré du transcript.]
+
+525. Je propose ceci : 5 ou 6 stickers réussis, 7 points ; 3 ou 4 réussis, 4,5 points ; 1 ou 2 réussis, 2 points ; aucun, 0 point.
+
+526. Avec ce compte, une seule architecture juste rapporte déjà 2 points. [Ce qu'aurait l'élève de 15:09 : retiré du transcript.]
+
+527. La question de 520 reste la même : tu prends ce compte pour les architectures ?
+
+À tester : rien de neuf.
+
+01/11/2026 17:10
+
+MEMO

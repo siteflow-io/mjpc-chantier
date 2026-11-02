@@ -4176,3 +4176,33 @@ et promeus.
 02/11/2026 15:27
 
 MEMO
+
+---
+
+## Tour 150 — 02/11/2026 15:28
+
+**Paul (15:28) :**
+
+ok. en priorité, le cadrage de la correction élève.
+
+**Ce qui a été fait (C14) :** relu au sas `MANDATS/REDACTION-UNIVERSELLE/A-CODER-CORRECTION-ELEVE.md` (la décision du 30/10 et ses 12 dettes) et le registre ; mesuré dans le code : le fichier de l'élève est en lecture seule, la coche « Ouvrir la correction par l'élève » grisée (`SC_CORRECTION_ELEVE_CODEE = false`) ; dans le fichier de l'essai, 53 fautes sur 54 portent leur bonne forme gardée dans la bande (la 54e : un mot en trop). Lu dans `correction_dictee.html` (lecture seule, par un agent) : l'autocorrection de la dictée se fait sur le site, l'élève connecté (nom, prénom, code) ; tu la lances en classe (« ▶ Lancer l'autocorrection — classe », une fin d'heure) ; ensuite, chez lui, 45 minutes par ouverture ; une note à part, sur 5, qui part de 5, chaque essai raté coûte 5/N (le premier est offert), et des questions après le stylo vert rendent des points perdus ; elle ne s'ajoute jamais à la note de la dictée (attestation 11277, page de fin 11388).
+
+**Claude (15:36) :**
+
+À jouer : ton mot sur 3 · en cours : rien · ouvert : les sujets suivants de ce cadrage (4), 738 (ton « ok » : je le code après ce cadrage), la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+Cadrage de la correction par l'élève, sujet 1 : la note retenue.
+
+1. Ce qui est déjà décidé (30/10) : l'élève corrige ses fautes soulignées, dans l'ordre qu'il veut ; juste ou faux aussitôt ; aucun champ libre ; aucune relecture par toi ; une note d'autocorrection, comme en dictée, jamais mélangée à la note de la grille.
+
+2. Mesuré en dictée : l'autocorrection a sa note à elle, sur 5. Elle part de 5 ; chaque essai raté coûte, sauf le premier ; après le stylo vert, des questions rendent des points perdus. Elle ne s'ajoute jamais à la note de la dictée, et l'élève le lit avant de commencer.
+
+3. Ma proposition, la même chose pour la rédaction : la note retenue est celle de sa copie, telle que tu l'as corrigée ; sa correction lui donne une seconde note, d'autocorrection, sur 5, à part ; la lettre recopiée pour la cérémonie n'a pas de note. Ta réponse aux élèves serait : « la note de ta copie reste ; ta correction te donne une seconde note ». L'autre voie : tu recorriges la lettre recopiée, et sa note remplace la première ; elle double ta correction. Je prends la première ?
+
+4. Les sujets suivants, un à la fois : où l'élève corrige (sur le site, connecté, comme en dictée) ; ce qu'il corrige (ses fautes, et ce qu'on fait de ses remarques, que l'app ne peut pas vérifier seule) ; la copie papier et la copie de l'app ; le lancement en classe ; ce que tu vois pendant qu'ils corrigent.
+
+À tester : rien de neuf.
+
+02/11/2026 15:36
+
+MEMO

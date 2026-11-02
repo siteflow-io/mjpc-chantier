@@ -1204,3 +1204,18 @@ MEMO
   > MEMO
 - **18:02 — l'exécutant de ㉞ (message)** : (1) bissection, l'alternance seule, deux passages par commit : `86b3ef488` vert 4 sur 4 (T, H) ; `6f43e3b82` rouge en T (16/20, 18/20, le tableau jamais) : le fautif — il fusionnait à chaque état reçu en comparant deux écritures du même état jamais identiques (celle du hub, celle de la page), tout pilote renvoyait un écho, le tableau manquait des gestes ; corrigé (on ne renvoie que si la fusion a gardé quelque chose d'ici) ; un reste en H (une scène écrite après le geste suivant de l'autre pilote) corrigé (une scène identique ne repart plus ; l'état vivant redit l'heure de chaque scène ; un appareil sans la main n'écrit plus sa scène en retard ; un geste fait juste avant un état reçu est gardé, et l'appareil prend la main) ; l'horloge de la sonde avance désormais, la même pour tous (figée, elle faisait de l'heure des scènes un compteur). Résultat : alternance verte trois fois sur trois en T et H, max 408 ms ; gestes simultanés d'accord. (2) la course à trois pilotes pas réglée : le texte du second ordinateur et la participation se perdent encore ; en T, une participation notée au téléphone pendant que l'ordinateur écrit se perd aussi ; l'attente de l'état en vol, pas encore faite. (3) l'en-tête hors de l'heure corrigé, en vérification. Rien poussé sur `deroule/session-partout`.
 - **18:02 — la conscience** : noté ; l'horloge de la sonde qui avance est plus proche de la classe (la règle : un exemple de banc est toujours réaliste) ; mon banc garde ses propres sondes, inchangées. Le point à Paul à 18:10.
+- **18:02 — message à Paul, mot pour mot :**
+
+  > 262. Trouvé et corrigé : le geste qui se perdait une fois sur vingt. Après chaque geste reçu, chaque appareil renvoyait un écho, et le tableau en manquait. Quand les pilotes alternent, tout arrive de nouveau : trois passages sur trois, en vraie heure et en mode test, 0,4 seconde au plus.
+  >
+  > 263. Pas encore réglé : quand deux ou trois appareils agissent dans la même seconde, une réponse ou une participation peut encore se perdre. L'exécutant y travaille : un appareil qui prend la main attendra d'avoir reçu le dernier geste de l'autre.
+  >
+  > 264. Pas encore d'heure de mise en ligne : je te la donne dès que tous les cas sont verts ; mon banc complet (45 minutes) passe ensuite.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 18:02
+  >
+  > À jouer : rien · en cours : l'exécutant (la perte quand plusieurs appareils agissent dans la même seconde) · ouvert : rien
+  >
+  > MEMO

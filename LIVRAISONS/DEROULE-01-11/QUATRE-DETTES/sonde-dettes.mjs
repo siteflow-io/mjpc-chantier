@@ -89,7 +89,7 @@ const hubRepondre = async (qui, m, c, corps) => { if (m === 'GET') { const d = O
   let bd = null; try { bd = JSON.parse(corps || 'null'); } catch (e) {} if (VRAI) { const ko = refusDe(m, c, bd); if (ko) { REFUSES.push({ qui, m, c, ko }); ECR.push({ qui, m, c, t: Date.now(), refus: true }); return '§400§' + JSON.stringify({ error: 'Invalid data; ' + ko }); } } ECR.push({ qui, m, c, t: Date.now(), bd });
   if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => posH(c + '/' + k, bd[k])); else posH(c, m === 'DELETE' ? null : bd); return JSON.stringify(bd); };
 const fauxFetch = () => { window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase();
-    return window.__hubN(m, c, (o && o.body) || null).then(t => new Response(t, { status: 200 })); } return Promise.resolve(new Response('null', { status: 200 })); };
+    return window.__hubN(m, c, (o && o.body) || null).then(t => /^§400§/.test(t) ? new Response(t.slice(5), { status: 400 }) : new Response(t, { status: 200 })); } return Promise.resolve(new Response('null', { status: 200 })); };
   window.WebSocket = function () { throw new Error('websocket bloqué'); }; };
 
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });

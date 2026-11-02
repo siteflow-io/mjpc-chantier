@@ -1316,3 +1316,18 @@ MEMO
   > À jouer : rien · en cours : les deux dernières étapes de mon banc (vers 20:25) · ouvert : 273
   >
   > MEMO
+- **20:12 — la conscience, l'étape 12 du banc sur `8602da915`** (la sonde du retour sûr) : 61 vérifications, **2 échecs**, tous en R3 (verte sur 8.79.0) : « la nouvelle version reprend là où la 8.77.1-⑩ en était » — l'ancienne à « 3 / 6 dévoilés », la nouvelle reprend à « 0 / 6 » ; « ce que la classe a écrit, dans les deux versions, à sa place dans le canon ; au tableau distant aussi ». Lecture : un état vivant (vif) écrit par la nouvelle version, périmé, passe par-dessus l'état plus récent écrit par l'ancienne. Une vraie régression de ㉞ (la règle : une nouvelle version lit toujours les anciennes copies ; le cas réel : un ordinateur resté sur 8.79.0 et un téléphone en 8.80.0 pendant la même heure). 273 ne tient plus.
+- **20:13 — la conscience** : à l'exécutant (message) — corriger sans navigateur sur `8602da915` (le plus récent gagne toujours ; un vif plus ancien que l'état de l'heure ne s'applique jamais) ; sans `2218c05ec` (la répétition va avec ⑯) ; preuve après mon étape 13 : la sonde du retour sûr verte, sa sonde complète deux fois verte.
+- **20:13 — message à Paul, mot pour mot :**
+
+  > 275. 273 ne tient plus : mon banc a trouvé une vraie régression de ㉞. Une heure jouée avec la nouvelle version, continuée par une ancienne, puis rouverte avec la nouvelle : celle-ci reprend à la bonne diapo, mais sans ce que l'ancienne avait dévoilé (« 0 sur 6 » au lieu de « 3 sur 6 »). Le cas est réel dès la mise en ligne : un ordinateur de la classe resté sur l'ancienne version et ton téléphone sur la nouvelle, pendant la même heure. La cause est comprise (le dernier état écrit par la nouvelle version passe par-dessus celui, plus récent, de l'ancienne) ; l'exécutant la corrige.
+  >
+  > 276. Ensuite : la preuve (environ 20 minutes), puis mon banc complet refait (45 minutes) : le « promeus » vers 21:30 au plus tôt. Le retard en répétition (272-274) reste à traiter avec le retard du tableau (⑯).
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 20:13
+  >
+  > À jouer : rien · en cours : l'exécutant (la reprise après une ancienne version), la dernière étape de mon banc · ouvert : rien
+  >
+  > MEMO

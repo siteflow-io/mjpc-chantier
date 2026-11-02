@@ -711,3 +711,22 @@ MEMO
   >
   > MEMO
 - **13:37 — contrôle programmé (13:35)** : l'exécutant a livré à 13:16 (`dff4474`, NOTE ; 7 et 8 pas entièrement prouvés, 9 pas tenu) ; aucun fichier hors du mandat ; il attend la machine sans navigateur. Le banc de la conscience (choix B, Paul 13:33) tourne sur `cf7bb57` depuis 13:19 : étape 10 ; l'étape 8 ROUGE (516 ms, feuille du site en vraie heure), à rejouer seule.
+- **13:39 — le mandat de ㉞ écrit** (`MANDATS/DEROULE-01-11/MANDAT-SESSION-PARTOUT.md`, `691f3ec`), proposé à Paul, pas lancé ; lu dans le code en l'écrivant : contrat §12.11 (le téléphone retiré), §12.41 (la répétition hors de `cours_actif`), §12.66 (1) (le mode test, l'image seule). Registre (prod).
+- **13:40 — message à Paul, mot pour mot :**
+
+  > À jouer : relire le mandat de ㉞ · en cours : mon banc sur les six correctifs (étape 11 sur 12) · ouvert : 188, 189
+  >
+  > 188. Le mandat de ㉞ est prêt, mais pas lancé : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DEROULE-01-11/MANDAT-SESSION-PARTOUT.md
+  > Il s'ouvre sur tes mots de 12:21 et de 12:40. Le geste de classe : tu lances sur l'ordinateur de la classe ; sur le téléphone, en moins de 2 secondes, le bandeau dit ce qui joue ; un clic, et le téléphone pilote la même séance ; le tableau et l'ordinateur suivent en direct ; le dernier geste compte ; clore n'importe où clôt partout. Les trois sortes de séance (la classe, la répétition, le mode test) marchent de la même façon. L'exécutant commence par refaire ton parcours de 12:21 pour trouver pourquoi le tableau est resté sur la première heure.
+  >
+  > 189. Deux propositions de ma part, dans le mandat, que tu dois valider. Ce que tu ne commentes pas est acquis.
+  > La première : un appareil qui n'est pas en mode test voit aussi un essai en cours ; « Reprendre » le met en mode test le temps de l'essai, et le lui dit.
+  > La seconde : au téléphone, tu pilotes par le pilote de poche (le prompteur et la palette de tes maquettes du 23/08, repris de l'existant), pas par la page entière du pilote. Ce pilote de poche a été retiré à l'intégration (« le QR tombe avec le téléphone ») : ta règle de 12:40 le ramène. L'exécutant enverra d'abord les captures, pour toi.
+  >
+  > 190. Trois anciennes décisions cèdent devant ta règle, et le mandat le dit. Le mode test n'envoyait au hub que l'image du tableau : il y enverra toute la séance d'essai, à une adresse d'essai, jamais dans les données de tes classes. La répétition avait été retirée du bandeau « Reprendre » : elle y revient, sous son nom. Le téléphone revient lui aussi.
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 13:40
+  >
+  > MEMO

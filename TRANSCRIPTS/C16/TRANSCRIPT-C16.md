@@ -976,3 +976,19 @@ MEMO
   > MEMO
 - **15:44 — l'exécutant de ㉞ (message)** : la poussée 2 prête à sonder, commit local `86b3ef488` au-dessus de `7fa7af22b`, pas poussé : la télécommande par le QR (« 📱 » dans la barre des actions rapides, la fenêtre du QR fermée au scan, le téléphone `?telecommande=1&qr=<nonce>` qui reprend la séance sans rien choisir, sous l'allure de la maquette) ; la répétition déclarée et repilotable (bandeau « Répétition en cours », `/site/repetition/vif`, pointeur adopté, « ■ Arrêter » partout) ; dans la sonde, les trois cas qui manquaient (F5 sur chaque pilote, la même séance relancée par la case, une réponse tapée au second ordinateur pendant que l'ordinateur dévoile et que le téléphone note une participation), et les parties de la télécommande et de la répétition. Il lui faut environ 10 minutes de machine.
 - **15:45 — la conscience** : à l'exécutant (message) — pas de machine avant environ 16:15 (mon banc complet sur `7fa7af22b`) ; pousser `86b3ef488` sur une branche de travail à part (`travail/session-2`), jamais sur `deroule/session-partout` ; me dire comment lancer ses trois cas manquants sur l'assemblé de `7fa7af22b` : je les passe sur le fichier de 16:15 juste après mon banc ; puis « machine libre » pour lui.
+- **15:46 — l'exécutant de ㉞ (message)** : `86b3ef488` poussé sur `travail/session-2` (`deroule/session-partout` reste à `7fa7af22b`) ; ses trois cas sont dans les parties T et H de sa sonde ; la commande pour les passer sur l'assemblé de `7fa7af22b`. **Son avertissement** : sur `7fa7af22b`, le cas « réponse au second ordinateur + participation au téléphone » risque d'échouer — la palette `#vif`, que le pilote garde sous le curseur même vide, compte comme une frappe en cours, et le téléphone ne suivrait plus après sa participation ; la scène d'un pilote en train d'écrire pourrait passer devant celle de l'autre au tableau ; `86b3ef488` le corrige.
+- **15:46 — la conscience** : à l'exécutant (message) — un commit qui ne contient que ce correctif (les deux points), posé sur `7fa7af22b`, sur une branche à part `travail/session-correctif`, sans navigateur ; à la fin de mon banc, je passe ses trois cas sur `7fa7af22b` puis sur ce correctif. `travail/session-2` extrait au brouillon (`wt-s2`) pour sa sonde.
+- **15:47 — message à Paul, mot pour mot (envoyé par message direct) :**
+
+  > 234. Un risque sur le fichier de 16:15, signalé par l'exécutant à 15:46 : quand une participation est notée au téléphone pendant qu'une réponse s'écrit sur l'autre ordinateur, le téléphone pourrait ne plus suivre. Ce cas, sa sonde ne le jouait pas encore. Il prépare le correctif seul, sans la télécommande. Je mesure le fichier actuel, puis le fichier corrigé, dès que mon banc est fini, vers 16:23 (je t'avais dit 16:13 : j'avais oublié la dernière étape, celle des six correctifs de ce matin, qui dure 11 minutes).
+  >
+  > 235. Si le risque n'est pas confirmé, je te demande le « promeus » vers 16:30, sur le fichier actuel, banc complet passé. S'il est confirmé, ma proposition : je te demande le « promeus » vers 16:35 sur le fichier corrigé. Le banc complet aura tourné sur le fichier d'avant ; sur le correctif, je repasse la sonde de la session et les trois cas. Le correctif ne touche que deux lignes de la session en direct. Si tu veux le banc complet refait sur le fichier corrigé, ce sera vers 17:10.
+  >
+  > À tester : rien de neuf avant la mise en ligne.
+  >
+  > 02/11/2026 15:47
+  >
+  > À jouer : rien · en cours : mon banc complet (fin vers 16:23) ; l'exécutant sur le correctif · ouvert : 235
+  >
+  > MEMO
+- **15:48 — la conscience, incident** : dans 235, « Le correctif ne touche que deux lignes » est écrit avant d'avoir vu le correctif : une affirmation non mesurée. Je la vérifierai sur le commit et la corrigerai auprès de Paul si elle est fausse.

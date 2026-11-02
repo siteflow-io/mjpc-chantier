@@ -121,3 +121,10 @@
 .rc-flux-total td{font-weight:700;border-top:2px solid #b7884e;background:#fbf4e6}
 .rc-photo-b{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}.rc-photo-b .sc-btn[disabled]{opacity:.45;cursor:not-allowed}.rc-photo-pq{font-size:12px;color:#7a5a2a;margin:4px 0 0;min-height:1em}
 
+
+/* [C14 632] le début d'un paragraphe, devant sa ligne */
+.rc-ligne.rc-par::before{content:"¶";position:absolute;right:100%;margin-right:3px;top:0;font:700 calc(15px * var(--rc-echelle,1))/calc(24px * var(--rc-echelle,1)) Georgia,serif;color:#9a5b2c}
+#rcPar.on{background:#f6ead9;border-color:#9a5b2c;color:#6b3d17}
+/* [C14 638] la copie corrigée, au bout de la bande */
+#rcBandeCarte.rc-bande-ok{border-color:#3f7a3a!important;background:#f3fbef}
+#rcBandeCarte.rc-bande-ok .rc-bande-mot{color:#2f6b2a}

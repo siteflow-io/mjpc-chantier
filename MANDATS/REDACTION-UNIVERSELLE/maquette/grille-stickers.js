@@ -190,7 +190,15 @@ function stGardeExport() {
   if (!P.ok) { const m = /\(([^)]*)\)\s*$/.exec(stPretTexte()); return "ta grille de stickers n’est pas prête" + (m ? " : " + m[1] : "") + " (Réglages → « ✓ Valider ligne par ligne »)"; }
   return null;
 }
-function stAEnvoyer(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !r || !r.complet; }   // une copie dont les réussites ne sont pas encore revenues entières
+function stAEnvoyer(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !r || !r.complet || !!r.redemande; }   // [C14 632] redemandée : elle repart pour ses stickers
+/* [C14 632] redemander les stickers des copies dont la liste est revenue entière (les paragraphes vus, après coup) ; le retour suivant la remplace, tes décisions restent */
+function stRedemandables() { return SC.copies.filter(k => { const r = (scCopie(k).recopie || {}).stickersIA; return r && r.complet && !r.redemande && rcLignesEcrites(k).length; }); }
+function stRedemandeesN() { return SC.copies.filter(k => !!(((scCopie(k).recopie || {}).stickersIA) || {}).redemande).length; }
+function stRedemander() {
+  if (!stEnvoiGrille()) { toast("Pas encore : ta grille de stickers n’est pas prête."); return; } const K = stRedemandables(); if (!K.length) return;
+  const le = new Date().toISOString(); K.forEach(k => { scCopie(k).recopie.stickersIA.redemande = le; }); saveState(); rcEtatIA();
+  toast(K.length + " copie" + (K.length > 1 ? "s" : "") + " repart" + (K.length > 1 ? "ent" : "") + " pour leurs seuls stickers au prochain « ⇪ Exporter pour l’IA ». Tes décisions restent.");
+}   // une copie dont les réussites ne sont pas encore revenues entières
 function stEnonce() { const v = typeof SUJET === "object" && SUJET ? (SUJET.enonce || (SUJET.variantes || []).map(x => x.enonce || x.libelle).filter(Boolean).join("\n\n")) : ""; return String(v || "").slice(0, 6000); }
 /* les mots rendus par l'IA, retrouvés dans la ligne recopiée : la plus longue suite de mots qui se suivent (sans accents ni majuscules) */
 function stNorm(w) { return String(w || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[’']/g, "'"); }
@@ -386,14 +394,16 @@ function stRq(k) { const r = (scCopie(k).recopie || {}).remarquesIA; return r &&
 function stRqVisibles(k) { const r = stRq(k); if (!r || !r.relu) return []; const D = scCopie(k).stickers || {}; return r.liste.filter(e => e.etat !== "retire" && (D[e.st] || {}).v !== "o"); }
 function stRqARelire(k) { const r = stRq(k); return !!(r && !r.relu && r.liste.length); }
 function stRqGarder(k) { const r = stRq(k); if (!r) return; r.relu = new Date().toISOString(); saveState(); if (typeof svVerifier === "function") svVerifier(); }
-function stRqRetirer(k, i) { const r = stRq(k); if (!r || !r.liste[i]) return; if (r.liste[i].etat === "retire") delete r.liste[i].etat; else r.liste[i].etat = "retire"; saveState(); if (RC.bd) rcBandeRendre(); }
+function stRqRetirer(k, i) { const r = stRq(k); if (!r || !r.liste[i]) return; if (r.liste[i].etat === "retire") delete r.liste[i].etat; else r.liste[i].etat = "retire"; saveState();
+  if (document.activeElement && document.activeElement.closest && document.activeElement.closest("#rcRqListe") && document.activeElement.tagName === "BUTTON") document.activeElement.blur();   // [C14 638] le bouton cliqué ne garde pas le focus : la liste se redessine, et Entrée ne le rappuie pas
+  if (RC.bd) rcBandeRendre(); }
 function stRqTexte(k, i, v) { const r = stRq(k), t = String(v || "").trim(); if (!r || !r.liste[i] || !t || t === r.liste[i].r) return; Object.assign(r.liste[i], { r: t, deProf: true, longue: t.split(/\s+/).length > 40 }); saveState(); }
 /* la relecture, à la fin de la bande : la liste entière ; Entrée (ou « ✓ Je les garde ») les garde toutes ; ✕ en retire une ; le texte se corrige en place */
 function stRqRelecture(k) {
   const r = stRq(k); if (!r || !r.liste.length) return "";
   const D = scCopie(k).stickers || {}, L = rcLignesEcrites(k);
   return '<div class="st-rq-tete"><b>Les remarques de l’IA · ' + r.liste.length + "</b> <span>" + (r.relu ? "✓ relues à " + escapeHtml(rcHeure(r.relu)) + " : l’élève lit celles qui restent." : "À relire : l’élève ne les lit qu’après ton <kbd>Entrée</kbd>.") + "</span>"
-    + (r.relu ? "" : '<button class="sc-btn" onclick="stRqGarder(RC.bd.k);rcBandeRendre()" title="Garder toutes les remarques qui restent : l’élève les lira dans son fichier (Entrée).">✓ Je les garde (Entrée)</button>') + "</div>"
+    + (r.relu ? "" : '<button class="sc-btn" onclick="this.blur();rcBandeGarderRq()" title="Garder toutes les remarques qui restent : l’élève les lira dans son fichier (Entrée).">✓ Je les garde (Entrée)</button>') + "</div>"
     + r.liste.map((e, i) => { const st = stTous().find(x => x.id === e.st), x = e.l && L.find(y => y.id === e.l), reussi = (D[e.st] || {}).v === "o", c = st ? stCouleur(st) : "#6b7280";
       return '<div class="st-rq' + (e.etat === "retire" || reussi ? " off" : "") + '" style="--st-c:' + c + '"><div class="st-rq-h"><b>' + escapeHtml(e.num || "") + "</b><span>" + escapeHtml(st ? (st.texteManque || st.texteEleve) : "") + "</span><small>" + (x ? "ligne " + (L.indexOf(x) + 1) + (e.mots ? " · « " + escapeHtml(e.mots) + " »" : "") : "dans la grille") + (e.longue ? " · plus de quarante mots" : "") + (reussi ? " · réussi depuis : elle ne part pas" : e.etat === "retire" ? " · retirée" : "") + "</small>"
         + '<button class="sc-btn" onclick="stRqRetirer(RC.bd.k,' + i + ')" title="' + (e.etat === "retire" ? "Remettre cette remarque : l’élève la lira." : "Retirer cette remarque : l’élève ne la lira pas. Rien n’est effacé.") + '">' + (e.etat === "retire" ? "↺ Remettre" : "✕ Retirer") + "</button></div>"

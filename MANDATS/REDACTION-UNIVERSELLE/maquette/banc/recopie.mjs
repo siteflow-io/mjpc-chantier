@@ -322,7 +322,7 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
   const carte = await pg.locator("#rcBandeCarte").textContent(); await cap("C14-29-la-bande");
   await pg.keyboard.press("Enter"); await att(200);
   const oui = await pg.evaluate(k => { const F = scFautes(k); return { n: F.length, bonne: F[0] && F[0].bonne, cle: F[0] && F[0].bande && F[0].bande.cle, fin: document.querySelector("#rcBandeCarte").textContent }; }, kB);
-  verif("recopie (1.4.1) : la bande s'arrête sur la faute proposée ; Entrée la garde, avec sa bonne forme, et passe à la suite (" + carte.slice(0, 40) + " · " + oui.fin.slice(0, 50) + ")", /ajouté/.test(carte) && oui.n === 1 && oui.bonne === "ajouté" && !!oui.cle && /Bande finie/.test(oui.fin) && /note maintenant/.test(oui.fin));
+  verif("recopie (1.4.1) : la bande s'arrête sur la faute proposée ; Entrée la garde, avec sa bonne forme, et passe à la suite (" + carte.slice(0, 40) + " · " + oui.fin.slice(0, 50) + ")", /ajouté/.test(carte) && oui.n === 1 && oui.bonne === "ajouté" && !!oui.cle && /Bande finie|✓ Copie corrigée/.test(oui.fin) && /note maintenant/.test(oui.fin));   /* [C14 633, 638] au bout, la copie entièrement corrigée le dit */
   await pg.keyboard.press("Backspace"); await att(120); await pg.keyboard.press("n"); await att(200);
   const non = await pg.evaluate(k => { const x = rcArrets(k)[0]; return { n: scFautes(k).length, d: x.l.decisions && x.l.decisions[x.cle] }; }, kB);
   verif("recopie (1.4.1) : Retour revient à l'arrêt ; N enlève la faute gardée et note le refus", non.n === 0 && non.d === "n");

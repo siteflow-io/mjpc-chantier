@@ -1,0 +1,29 @@
+C16 · sonde des dernières dettes · parties D · 2026-11-02 06:39 UTC · md5 14f17cc2014e21e0bf85e211f3297469 · avant md5 39ccf4fc862ccc567d2abdcc01103e65 · images : celle du canon
+
+══ D · (⑯) 1536×864 · le temps entre la flèche et le premier mouvement du point, image par image, 10 fois par passage ══
+  ── ce fichier (md5 14f17cc2014e21e0bf85e211f3297469)
+    l’étape 11 (2e → 3e diapo de l’heure : Les compétences du chapitre → Le parcours du chapitre) :
+      au tableau — premier mouvement : min 351 · médiane 393 · max 480 ms (351, 366, 378, 388, 392, 393, 402, 410, 423, 480) ; arrivée : min 939 · médiane 976 · max 1059 ms (939, 942, 943, 967, 973, 976, 979, 987, 1000, 1059) ; images entre départ et arrivée : 24, 24, 24, 24, 24, 24, 24, 24, 24, 24 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 152.7 à 181)
+      au pilote  — premier mouvement : min 143 · médiane 180 · max 266 ms (143, 158, 164, 167, 179, 180, 180, 195, 200, 266) ; arrivée : min 686 · médiane 711 · max 764 ms (686, 699, 702, 703, 711, 711, 720, 722, 730, 764)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 369 · médiane 398 · max 457 ms (369, 381, 387, 390, 390, 398, 411, 427, 433, 457) ; arrivée : min 945 · médiane 981 · max 1038 ms (945, 968, 974, 976, 979, 981, 982, 1005, 1008, 1038) ; images entre départ et arrivée : 24, 23, 24, 24, 24, 24, 24, 24, 24, 24 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 156 · médiane 174 · max 223 ms (156, 164, 165, 165, 168, 174, 198, 204, 209, 223) ; arrivée : min 726 · médiane 753 · max 793 ms (726, 731, 732, 734, 750, 753, 755, 784, 784, 793)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 342 · médiane 395 · max 417 ms (342, 348, 360, 362, 369, 395, 397, 415, 415, 417) ; arrivée : min 925 · médiane 973 · max 999 ms (925, 932, 943, 949, 951, 973, 974, 991, 994, 999) ; images entre départ et arrivée : 24, 24, 24, 24, 24, 24, 24, 24, 24, 24 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 138 · médiane 171 · max 190 ms (138, 143, 148, 149, 152, 171, 181, 186, 189, 190) ; arrivée : min 696 · médiane 731 · max 759 ms (696, 701, 709, 712, 712, 731, 749, 749, 753, 759)
+  ok     D · ce fichier · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · ce fichier : aucune erreur JS, aucune boîte système
+  ── l’assemblé d’avant (md5 39ccf4fc862ccc567d2abdcc01103e65)
+    l’étape 11 (2e → 3e diapo de l’heure : Les compétences du chapitre → Le parcours du chapitre) :
+      au tableau — premier mouvement : min 186 · médiane 221 · max 291 ms (186, 190, 206, 211, 212, 221, 237, 237, 271, 291) ; arrivée : min 764 · médiane 801 · max 868 ms (764, 774, 782, 783, 794, 801, 813, 828, 842, 868) ; images entre départ et arrivée : 23, 23, 24, 24, 24, 24, 24, 24, 24, 23 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 152.9 à 181)
+      au pilote  — premier mouvement : min 138 · médiane 170 · max 258 ms (138, 146, 149, 152, 170, 170, 179, 192, 236, 258) ; arrivée : min 698 · médiane 714 · max 749 ms (698, 700, 702, 703, 705, 714, 732, 735, 740, 749)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 203 · médiane 249 · max 276 ms (203, 228, 233, 243, 246, 249, 257, 272, 274, 276) ; arrivée : min 786 · médiane 829 · max 857 ms (786, 807, 807, 809, 817, 829, 841, 845, 854, 857) ; images entre départ et arrivée : 24, 24, 25, 24, 24, 24, 22, 24, 24, 24 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 137 · médiane 188 · max 222 ms (137, 153, 170, 178, 185, 188, 205, 212, 218, 222) ; arrivée : min 731 · médiane 769 · max 784 ms (731, 740, 746, 757, 767, 769, 770, 777, 782, 784)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 178 · médiane 208 · max 250 ms (178, 189, 193, 199, 206, 208, 210, 240, 248, 250) ; arrivée : min 757 · médiane 798 · max 842 ms (757, 775, 781, 781, 786, 798, 798, 822, 824, 842) ; images entre départ et arrivée : 24, 24, 24, 24, 24, 24, 24, 24, 24, 24 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 132 · médiane 162 · max 207 ms (132, 141, 145, 151, 160, 162, 174, 200, 202, 207) ; arrivée : min 701 · médiane 734 · max 767 ms (701, 701, 706, 713, 725, 734, 734, 762, 763, 767)
+  ok     D · l’assemblé d’avant · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · l’assemblé d’avant : aucune erreur JS, aucune boîte système
+
+— fin : 4 vérifications, 0 échec(s) · VERT

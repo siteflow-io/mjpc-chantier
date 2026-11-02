@@ -9,7 +9,7 @@
 //      chaque diapo de l'heure, jusqu'au cahier de textes, à la flèche : un seul fil et son point, au pilote et au tableau ; le rang « k / n » de la diapo dans la
 //      séance, le même des deux côtés ; le point tout en haut à la première, qui descend d'un cran à chaque diapo, inchangé par les dévoilements ; aucun
 //      chevauchement fil / contenu (texte, image, cases, cadres), à l'arrivée et tout dévoilé, dont l'image pleine largeur, le tableau, la question avec deux
-//      réponses d'élèves, les deux pages ; les couleurs (canon 4 sur le bleu nuit, le bleu nuit de la charte ailleurs) ; le point glisse (1536) ; aucune écriture hors
+//      réponses d'élèves, les deux pages ; les couleurs (canon 4 sur le bleu nuit, le bleu nuit de la charte ailleurs) ; le point glisse (1536, relevé image par image) ; aucune écriture hors
 //      de /site/tableau_test.
 //  B · l'Atelier, la séance 1 (ses trois heures) : le fil de chaque ligne de la colonne, de 1 / n (en haut) à n / n (en bas), l'heure 2 qui repart après le cahier
 //      de l'heure 1 ; un clic dans la colonne puis ↓ ↓ ↑ → ← ; Alt + ↓ / Alt + ↑ déplace la diapo ; la molette : un cran = une diapo, un geste continu (vingt petits
@@ -133,6 +133,19 @@ const centreMur = async pg => { const r = await pg.$eval('#mur', m => { const b 
 dire('C16 · sonde du fil de la séance, des flèches de la colonne et de la molette · parties ' + PARTIES.join(' ') + ' · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC · fichier md5 ' + createHash('md5').update(fs.readFileSync(FICHIER)).digest('hex') + ' · ' + fs.statSync(FICHIER).size + ' o' + (MEDIAS ? ' · tableaux : ' + MEDIAS : ' · tableaux : l’image 16/9 du canon 1'));
 const CANON = { fil: rgb('#5d727f'), point: rgb('#3e7c79'), bord: rgb('#eaf0f3'), nuit: rgb('#1f3b4d') };
 
+/* (C16, les dernières dettes ⑯) LE POINT GLISSE — relevé image par image, sans dépendre d'un instant choisi : dans la fenêtre du tableau, à chaque image
+   (`requestAnimationFrame`), la hauteur du point, de la flèche jusqu'à 1,5 s après ; l'heure de la flèche lue au pilote (`keydown`, `timeStamp`), les deux sur la
+   même horloge (`performance.timeOrigin`). Le glissement est vrai si : au moins une position est strictement entre le départ et l'arrivée (à plus d'un pixel de
+   chacun : sous le pixel, c'est l'arrondi de la mise en page) ; l'arrivée est atteinte (la dernière position relevée, que le point garde) ; le premier mouvement
+   vient au plus GLISSE_DELAI ms après la flèche. Avant (jusqu'à 1cc67a1) : une seule position, lue 90 ms après la flèche — au premier tiers de la courbe
+   d'accélération du point (0,6 s, cubic-bezier(.4, 0, .2, 1)), la mesure tombait à un pixel de sa limite (153 → 153 ou 154 ; MANDAT-DERNIERES-DETTES §3.2). */
+const GLISSE_DELAI = 350;   /* ms. Mesuré (DERNIERES-DETTES, partie D, seule sur la machine, dix fois à ce passage) : avant les quatre dettes (b9392b5), le premier mouvement au tableau de 186 à 291 ms ; avec elles (1cc67a1), de 351 à 480 ms — la colonne des vignettes, redessinée avant que la fenêtre du tableau puisse dessiner. 350 ms : le plus lent de b9392b5 et une marge de 60 ms ; 1cc67a1 y échoue dix fois sur dix. Une limite qui laisse passer le retard que le mandat cherche serait complaisante. (DERNIERES-DETTES/NOTE.md §3, point 2) */
+const glissement = async (pg, fen) => { await fen.evaluate(() => { const m = document.querySelector('#mur2'); window.__GL = []; const t0 = performance.now(); const f = () => { const fl = m && m.querySelector(':scope > .dr-fil'); const i = fl && fl.querySelector('i'); if (i) window.__GL.push([performance.timeOrigin + performance.now(), i.getBoundingClientRect().top - m.getBoundingClientRect().top]); if (performance.now() - t0 < 1500) requestAnimationFrame(f); }; requestAnimationFrame(f); });
+  await pg.evaluate(() => { window.__KD = null; document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' && window.__KD == null) window.__KD = performance.timeOrigin + e.timeStamp; }, { capture: true, once: true }); });
+  await pg.keyboard.press('ArrowRight'); await p(1700); const kd = await pg.evaluate(() => window.__KD); const L = await fen.evaluate(() => window.__GL); if (!L || L.length < 2 || kd == null) return null;
+  const a = L[0][1], z = L[L.length - 1][1]; const prem = L.find(x => Math.abs(x[1] - a) > 0.01); const entre = L.filter(x => Math.min(a, z) + 1 < x[1] && x[1] < Math.max(a, z) - 1); const arr = L.find(x => Math.abs(x[1] - z) < 0.01);
+  const t1 = await filDe(fen, '#mur2'); return { avant: Math.round(a), apres: Math.round(z), images: L.length, entre: entre.length, premier: prem ? Math.round(prem[0] - kd) : null, fin: arr ? Math.round(arr[0] - kd) : null, arrivee: Math.abs(t1.top - z) <= 1 && Math.abs(z - a) > 1 }; };
+
 /* ═══ A · l'heure 1 de la séance 1, aux trois tailles ═══ */
 const TAILLES = String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number));
 let rangsClasse = null;
@@ -158,7 +171,7 @@ for (const [W, H] of (joue('A') ? TAILLES : [])) { const T = W + '×' + H; dire(
       await capt(pg, 'A-' + T + '-question-pilote'); await fen.screenshot({ path: CAPT ? path.join(CAPT, 'A-' + T + '-question-tableau.png') : path.join(OUT, '_t.png') }).catch(() => {}); }
     if (e.fini) { const cp = await chevauche(pg, '#mur'), ct = await chevauche(fen, '#mur2'); if (!cp || cp.coupes.length || !ct || ct.coupes.length) hors.push({ di, quand: 'tout dévoilé', pilote: cp, tableau: ct }); }
     const glisse = W === 1536 && !gl && suite.length === 2 && e.fini;   /* au passage de la diapo 2 à la 3 : le point glisse */
-    if (glisse) { const t0 = await filDe(fen, '#mur2'); await pg.keyboard.press('ArrowRight'); await p(90); const tm = await filDe(fen, '#mur2'), pm = await filDe(pg, '#mur'); await p(900); const t1 = await filDe(fen, '#mur2'); gl = { avant: t0.top, pendant: tm.top, apres: t1.top, pilotePendant: pm.top }; }
+    if (glisse) { gl = await glissement(pg, fen); }
     else { await pg.keyboard.press('ArrowRight'); await p(300); }
     n++; }
   const der = suite[suite.length - 1]; const N = +(String(der.rangP || '0/0').split('/')[1]);
@@ -171,7 +184,7 @@ for (const [W, H] of (joue('A') ? TAILLES : [])) { const T = W + '×' + H; dire(
   const debut = suite.find(s => /début de séance/i.test(s.titre)), parc = suite.find(s => /parcours/i.test(s.titre)); const sombres = suite.filter(s => s.sombre).map(s => s.titre.replace(/^Diapo \d+ sur \d+ · heure \d+ · /, '')), claires = suite.filter(s => !s.sombre);
   verif('A', debut && debut.sombre && debut.coul[0] === CANON.fil && debut.coul[1] === CANON.point && debut.coul[2] === CANON.bord && JSON.stringify(debut.coulT) === JSON.stringify(debut.coul), T + ' · sur le bleu nuit (le début de séance), le fil a les couleurs du canon 4 (trait #5d727f, point #3e7c79 cerclé #eaf0f3), au pilote et au tableau', debut && { pilote: debut.coul, tableau: debut.coulT });
   verif('A', parc && JSON.stringify(sombres) === JSON.stringify(['présentation du chapitre', 'début de séance', 'problématique']) && suite.every(s => s.sombre ? (s.coul[0] === CANON.fil && s.coul[1] === CANON.point) : (s.coul[0] === CANON.nuit && s.coul[1] === CANON.nuit)) && suite.every(s => JSON.stringify(s.coulT) === JSON.stringify(s.coul)), T + ' · sur les ' + claires.length + ' diapos claires (compétences, parcours, les diapos de cours, le cahier de textes), le fil prend le bleu nuit de la charte (#1f3b4d) ; les couleurs du canon 4 sur les trois diapos au bleu nuit seulement ; les mêmes au tableau', { sombres, parcours: parc && parc.coul });
-  if (W === 1536) verif('A', gl && gl.avant < gl.pendant && gl.pendant < gl.apres && /top/.test(suite[0].trans), T + ' · le point glisse d’une diapo à la suivante (au tableau, 90 ms après la flèche, il est entre ses deux places ; la seule transition : « top »)', { gl, transition: suite[0].trans });
+  if (W === 1536) verif('A', gl && gl.entre >= 1 && gl.arrivee && gl.premier != null && gl.premier <= GLISSE_DELAI && gl.apres > gl.avant && /top/.test(suite[0].trans), T + ' · le point glisse d’une diapo à la suivante, relevé image par image au tableau (de la flèche à la fin) : ' + (gl ? gl.entre + ' position(s) strictement entre le départ (' + gl.avant + ' px) et l’arrivée (' + gl.apres + ' px), l’arrivée atteinte ' + gl.fin + ' ms après la flèche, le premier mouvement ' + gl.premier + ' ms après (au plus ' + GLISSE_DELAI + ' ms)' : 'pas relevé') + ' ; la seule transition : « top »', { gl, transition: suite[0].trans });
   if (!rangsClasse) rangsClasse = suite.map(s => s.rangP);
   const mesure = await filDe(pg, '#mur'); verif('A', mesure.droitePoint < 4 && mesure.gauche > 2, T + ' · le fil est dans la marge de gauche (le trait à ' + mesure.gauche + ' % de la largeur, le bord droit du point à ' + mesure.droitePoint + ' %)', mesure);
   dire('      la suite de l’heure : ' + suite.map(s => s.rangP + ' ' + s.titre.replace(/^Diapo \d+ sur \d+ · heure \d+ · /, '')).join(' │ '));

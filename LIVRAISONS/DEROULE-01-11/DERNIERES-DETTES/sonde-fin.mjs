@@ -2,7 +2,7 @@
 // QUATRE-DETTES/sonde-dettes.mjs (le faux hub vit dans la sonde, tous les navigateurs le partagent : le pilote, sa fenêtre du tableau, le tableau distant
 // `?vue=tableau`, l'Atelier). Aucune écriture ni lecture du vrai hub : chaque adresse Firebase est servie par la sonde, tout le reste est coupé.
 // usage : node sonde-fin.mjs <assemble/index.html> [dossier-de-sortie]
-//   MJPC_PARTIES (défaut C,F,H,L : les parties qui doivent être VERT) · MJPC_AVANT=<assemblé d'avant> : les comparaisons avant / après (F, H) ·
+//   MJPC_PARTIES (défaut C,F,H,L,V : les parties qui doivent être VERT) · MJPC_AVANT=<assemblé d'avant> : les comparaisons avant / après (F, H) ·
 //   MJPC_MEDIAS=<dossier> : les vraies images du chapitre de 3e (jamais poussées) · MJPC_CONSTRUIT=<dossier> : le hub construit de la conscience (le chapitre
 //   de 4e, Le Horla ; jamais poussé) et MJPC_MEDIAS_4E=<dossier> ses images · MJPC_CAPT=<dossier> : les captures (jamais poussées) · MJPC_TAILLES ·
 //   MJPC_ANCIENNE=<la 8.77.1-⑩> : la partie F rejouée aussi sur elle (l'avant compté, « F-avant ») · MJPC_D_FOIS (défaut 10).
@@ -20,6 +20,8 @@
 //  L · (⑭, §3.5) une rangée de tableau seule plus haute qu'une page (une strophe entière dans une case, à 26 pt), aux trois tailles : ce que voit Paul au
 //      pilote, la classe au tableau ; ce qui est coupé, en pixels et en lignes ; ce que l'Atelier signale à la préparation (« hors du cadre ») et où. Le
 //      comportement ne change pas (seule sur sa page, ancrée en haut) : la partie vérifie ce comportement tranché et écrit les chiffres.
+//  V · (⑰, §3.6) le témoin « déroulé intègre » au faux hub ordinaire et au faux hub rangé comme le vrai (« intègre » quand rien n'est perdu), l'écriture de la
+//      copie refusée (« à vérifier ») ; avec MJPC_FIREBASE=<dossier où firebase@8.10.1 est installé>, la copie passée par le code de Firebase lui-même.
 // Aucune erreur JS, aucune boîte système, dans chaque cas. Code 1 si un échec.
 import fs from 'fs'; import path from 'path'; import { createRequire } from 'module'; import { createHash } from 'crypto';
 const ici = path.dirname(new URL(import.meta.url).pathname); const RACINE = path.resolve(ici, '..', '..', '..');
@@ -33,7 +35,7 @@ if (!pw) { console.log('Playwright introuvable'); process.exit(2); }
 const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log(s); };
 const verif = (k, ok, quoi, det) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (det != null && det !== '' ? ' — ' + (typeof det === 'string' ? det : JSON.stringify(det)).slice(0, 1400) : '')); return !!ok; };
 const p = ms => new Promise(r => setTimeout(r, ms));
-const PARTIES = String(process.env.MJPC_PARTIES || 'C,F,H,L').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
+const PARTIES = String(process.env.MJPC_PARTIES || 'C,F,H,L,V').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
 const TAILLES = String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number));
 const IMG_DEFAUT = path.join(RACINE, 'MANDATS/CANONS-DIAPOS/1-presentation-du-chapitre.png');
 const IMG_OUV = { 'chapitre.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-chapitre.png'), 'seance-1.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-seance.png') };
@@ -55,13 +57,24 @@ const storeConstruit = () => { const J = f => JSON.parse(fs.readFileSync(path.jo
   return { classes: J('classes.json'), taxonomie: ex('taxonomie.json') ? J('taxonomie.json') : null, site: { '3e': J('site_3e.json'), '4e': ex('site_4e.json') ? J('site_4e.json') : null, config: J('site_config.json'), edt: { grille: { '2026-2027': J('grille-appariee.json') }, calendrier: { '2026-2027': J('calendrier.json') }, creneaux: { '2026-2027': J('creneaux.json') } } } }; };
 
 /* ── le faux hub partagé (Node) : chaque navigateur y lit et y écrit ── */
-let HUBN = null; let ECR = [];
-const lireH = c => { const q = c.split('/').filter(Boolean); let n = HUBN; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; };
-const posH = (c, v) => { const q = c.split('/').filter(Boolean); if (v === undefined) v = null; let n = HUBN; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) { if (v === null) return; n[q[k]] = {}; } n = n[q[k]]; } if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v; };
-const hubRepondre = async (qui, m, c, corps) => { if (m === 'GET') return JSON.stringify(lireH(c)); let bd = null; try { bd = JSON.parse(corps || 'null'); } catch (e) {} ECR.push({ qui, m, c, t: Date.now() });
+let HUBN = null; let ECR = []; let VRAI = false; let REFUS = null;   /* VRAI : le faux hub range comme le vrai (partie V) ; REFUS : une adresse dont l'écriture est refusée (401) */
+/* le faux hub rangé comme le vrai (la règle de QUATRE-DETTES/sonde-dettes.mjs, citée là ; et — la voie (b), 02/11 07:12, mesuré sur le code de Firebase 8.10.1 — les
+   clés d'un objet relues triées) : une valeur nulle, une liste ou un objet vides ne sont pas rangés (leur parent devenu vide non plus) ; une liste est rangée en
+   objet aux clés « 0 », « 1 »… et relue en liste quand ses clés sont des entiers dont plus de la moitié de 0 au plus grand sont là */
+const ranger = v => { if (v === null || v === undefined) return undefined; if (typeof v === 'number' && !isFinite(v)) return undefined; if (typeof v !== 'object') return v;
+  const o = {}; (Array.isArray(v) ? v.map((x, i) => [String(i), x]) : Object.entries(v)).forEach(([k, x]) => { const r = ranger(x); if (r !== undefined) o[k] = r; }); return Object.keys(o).length ? o : undefined; };
+const relire = v => { if (v === null || v === undefined || typeof v !== 'object') return v; const K = Object.keys(v).sort(); const o = {}; K.forEach(k => { o[k] = relire(v[k]); });
+  if (K.length && K.every(k => /^(0|[1-9]\d*)$/.test(k))) { const max = Math.max(...K.map(Number)); if (K.length * 2 > max + 1) { const a = new Array(max + 1).fill(null); K.forEach(k => { a[+k] = o[k]; }); return a; } } return o; };
+const lireH0 = c => { const q = c.split('/').filter(Boolean); let n = HUBN; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; };
+const lireH = c => { const n = lireH0(c); return VRAI ? (n == null ? null : relire(n)) : n; };
+const posH = (c, v) => { const q = c.split('/').filter(Boolean); if (VRAI) v = ranger(v); if (v === undefined) v = null; let n = HUBN; const pile = [n]; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) { if (v === null) return; n[q[k]] = {}; } n = n[q[k]]; pile.push(n); }
+  if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v;
+  if (VRAI && v === null) for (let k = q.length - 2; k >= 0; k--) { if (pile[k + 1] && typeof pile[k + 1] === 'object' && !Object.keys(pile[k + 1]).length) delete pile[k][q[k]]; else break; } };
+const hubRepondre = async (qui, m, c, corps) => { if (m === 'GET') return JSON.stringify(lireH(c)); let bd = null; try { bd = JSON.parse(corps || 'null'); } catch (e) {}
+  if (REFUS && REFUS.test(c)) { ECR.push({ qui, m, c, t: Date.now(), refus: true, bd }); return '§401§{"error":"Permission denied"}'; } ECR.push({ qui, m, c, t: Date.now(), bd });
   if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => posH(c + '/' + k, bd[k])); else posH(c, m === 'DELETE' ? null : bd); return JSON.stringify(bd); };
 const fauxFetch = () => { window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase();
-    return window.__hubN(m, c, (o && o.body) || null).then(t => new Response(t, { status: 200 })); } return Promise.resolve(new Response('null', { status: 200 })); };
+    return window.__hubN(m, c, (o && o.body) || null).then(t => /^§401§/.test(t) ? new Response(t.slice(5), { status: 401 }) : new Response(t, { status: 200 })); } return Promise.resolve(new Response('null', { status: 200 })); };
   window.WebSocket = function () { throw new Error('websocket bloqué'); }; };
 const imageDe = u => { const m = /mjpc-medias\/(.*\/)?([^/?]+\.(png|jpe?g|webp))$/i.exec(u); if (!m) return null; for (const d of [MEDIAS, MEDIAS4].filter(Boolean)) { const f = path.join(d, m[2]); if (fs.existsSync(f)) return f; } return IMG_OUV[m[2]] || IMG_DEFAUT; };
 const typeDe = f => /\.webp$/i.test(f) ? 'image/webp' : /\.png$/i.test(f) ? 'image/png' : 'image/jpeg';
@@ -166,10 +179,14 @@ const storeFil = () => store(null, E => { const par = t => E.find(e => e && e.ac
   const t2 = par('Tableau 2'); t2.act = 'Les cinq tableaux'; t2.blocs = [{ t: 'schema', forme: 'tableau', id: 'bsonde-tab', titre: 'Les cinq tableaux', src: 'Tableau | Peintre | Ce qu’on voit\nLe Radeau de la Méduse | Géricault | des naufragés\nLe lac | Bierstadt | des montagnes immenses\nPêcheurs en mer | Turner | une tempête la nuit\nLa ville au bord de l’eau | Schinkel | une cathédrale\nLe Voyageur | Friedrich | un homme de dos' }];
   const t3 = par('Tableau 3'); t3.act = 'Le tableau de Turner'; t3.blocs = [{ t: 'question', id: 'bsonde-q', q: 'Dans le tableau de Turner, qu’est-ce qui montre que l’homme est petit face à la nature ?', reps: [{ i: '', r: 'La barque est minuscule sous les vagues et le ciel noir : la tempête décide, pas les pêcheurs.', refo: false }] }]; });
 const releve = (pg, sel) => pg.evaluate(sel => { const m = document.querySelector(sel); window.__GL = []; const t0 = performance.now(); const f = () => { const fl = m && m.querySelector(':scope > .dr-fil'); const i = fl && fl.querySelector('i'); if (i) window.__GL.push([performance.timeOrigin + performance.now(), i.getBoundingClientRect().top - m.getBoundingClientRect().top]); if (performance.now() - t0 < 1500) requestAnimationFrame(f); }; requestAnimationFrame(f); }, sel);
-const glisse = async (o, fen) => { await o.pg.evaluate(() => { window.__KD = null; document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' && window.__KD == null) window.__KD = performance.timeOrigin + e.timeStamp; }, { capture: true, once: true }); });
+const PROFIL = ['rendre', 'volet', 'vueDroite', 'p8RendreNotes', 'ouOnEnEst', 'participation', 'brancherAtelier', 'brancherDocs', 'atSomSuivreCourant', 'dr_imagesAbsentes', 'pousser', 'dimensionner', 'paginer', 'p8Poser', 'dr_tabAncrer', 'journal', 'dr_sauve', 'dr_tout', 'brancherMenus', 'brancherAjout', 'temoin', 'alerteVideo', 'dr_suivreHauteurs', 'dr_derouleDe', 'dr_copieAuto', 'dr_etatAuto', 'dr_traceAuto', 'dr_sauveMaintenant'];
+const profiler = pg => pg.evaluate(noms => { window.__PR = {}; noms.forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__pr) return; const g = function () { const t0 = performance.now(); try { return f.apply(this, arguments); } finally { const d = performance.now() - t0; const x = window.__PR[n] || (window.__PR[n] = [0, 0]); x[0] += d; x[1]++; } }; g.__pr = true; try { window[n] = g; } catch (e) {} }); }, PROFIL);
+const glisse = async (o, fen) => { if (process.env.MJPC_PROFIL) { await profiler(o.pg); if (fen) await profiler(fen); await o.pg.evaluate(() => { window.__PR = {}; }); if (fen) await fen.evaluate(() => { window.__PR = {}; }); }
+  await o.pg.evaluate(() => { window.__KD = null; document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' && window.__KD == null) window.__KD = performance.timeOrigin + e.timeStamp; }, { capture: true, once: true }); });
   await releve(fen, '#mur2'); await releve(o.pg, '#mur'); await o.pg.keyboard.press('ArrowRight'); await p(1700);
   const kd = await o.pg.evaluate(() => window.__KD); const lire = L => { const a = L[0][1], z = L[L.length - 1][1]; const prem = L.find(x => Math.abs(x[1] - a) > 0.01); const entre = L.filter(x => Math.min(a, z) + 1 < x[1] && x[1] < Math.max(a, z) - 1);
     const arr = L.find(x => Math.abs(x[1] - z) < 0.01); return { depart: Math.round(a * 10) / 10, arrivee: Math.round(z * 10) / 10, images: L.length, premier: prem ? Math.round(prem[0] - kd) : null, entre: entre.length, fin: arr ? Math.round(arr[0] - kd) : null, a90: (L.filter(x => x[0] - kd <= 90).pop() || [0, a])[1] }; };
+  if (process.env.MJPC_PROFIL) { const r2 = x => Object.entries(x || {}).filter(([, v]) => v[0] >= 2).sort((a, b) => b[1][0] - a[1][0]).map(([k, v]) => k + ' ' + Math.round(v[0]) + ' ms ×' + v[1]).join(', '); dire('        profil pilote : ' + r2(await o.pg.evaluate(() => window.__PR))); if (fen) dire('        profil tableau : ' + r2(await fen.evaluate(() => window.__PR))); }
   return { t: lire(await fen.evaluate(() => window.__GL)), p: lire(await o.pg.evaluate(() => window.__GL)) }; };
 const jouerD = async (fichier, fois) => { HUBN = storeFil(); ECR = []; const o = await ouvrir({ fichier, test: true }); await lancerClasse(o); const fen = await ouvrirTableau(o, 1536, 864);
   const L = await eidsDe(o.pg); const h1 = L.filter(e => e.heure === 1 || e.heure == null); const iT = L.findIndex(e => e.act === 'Les cinq tableaux');
@@ -269,21 +286,22 @@ const jouerH = async (fichier, Wp, Hp, Wt, Ht, nom) => { HUBN = storeOuverture(R
     out.push({ act: x.act, a: await imgMesure(o.pg, '#mur'), b: await imgMesure(fen, '#mur2'), c: await imgMesure(T.pg, 'body') }); const base = 'H-' + nom + '-tableau-' + Wt + 'x' + Ht + '-' + x.act.replace(/\W+/g, ''); if (fen) await capt(fen, base + '-tableau'); await capt(T.pg, base + '-distant'); await capt(o.pg, base + '-pilote'); }
   const errs = o.errs.concat(o.boites, T.errs, T.boites); await o.ctx.close(); await T.ctx.close(); return { out, errs }; };
 if (joue('H')) { dire(''); dire('══ H · (⑬) l’image pleine au tableau en 1280 × 720 (les cinq images de l’heure 1) ; le chapitre de 4e du hub construit (Le Horla) ══');
-  const r = await jouerH(FICHIER, 1366, 768, 1280, 720, 'apres'); const a = AVANT ? await jouerH(AVANT, 1366, 768, 1280, 720, 'avant') : null;
+  if (!process.env.MJPC_H_HORLA_SEUL) { const r = await jouerH(FICHIER, 1366, 768, 1280, 720, 'apres'); const a = AVANT ? await jouerH(AVANT, 1366, 768, 1280, 720, 'avant') : null;
   const ligne = x => x.act + ' : tableau ' + JSON.stringify((x.b || []).map(i => [i.g, i.d, i.coupe])) + ' · distant ' + JSON.stringify((x.c || []).map(i => [i.g, i.d, i.coupe])) + ' · pilote ' + JSON.stringify((x.a || []).map(i => [i.g, i.d, i.coupe]));
   if (a) dire('      H · avant (l’assemblé d’avant) : ' + a.out.map(ligne).join(' ; ')); dire('      H · après : ' + r.out.map(ligne).join(' ; '));
   const tous = [].concat(...r.out.map(x => [].concat(x.a || [], x.b || [], x.c || [])));
   verif('H', r.out.length >= 5 && r.out.every(x => (x.b || []).length && (x.c || []).length && (x.a || []).length) && tous.every(i => i.coupe <= 1 && !i.sousFil && i.lgCoupe <= 1), 'tableau 1280×720 (pilote 1366×768) · les ' + r.out.length + ' images pleines : aucune coupée, aucune sous le fil (l’étiquette non plus) — à la fenêtre du tableau, au tableau distant, au pilote', r.out.map(ligne));
   if (a) { const cAv = a.out.map(x => x.act + ' ' + JSON.stringify((x.b || []).map(i => i.coupe))); const memes = r.out.every((x, k) => { const y = a.out[k]; if (!y) return false; return ['a', 'b', 'c'].every(u => (x[u] || []).every((i, n) => { const j = (y[u] || [])[n]; if (!j) return false; const tailleOk = j.coupe ? true : Math.abs((i.d - i.g) - (j.d - j.g)) <= 1.5; return tailleOk && JSON.stringify(i.mk) === JSON.stringify(j.mk); })); });
     verif('H', memes, 'tableau 1280×720 · une image qui tenait garde sa taille ; les repères restent sur les mêmes points de l’image (avant / après)', { avantCoupees: cAv }); }
-  sansErreur('H', r.errs, 'tableau 1280×720');
+  sansErreur('H', r.errs, 'tableau 1280×720'); }
   /* le chapitre de 4e du hub construit : chaque diapo de chaque séance, dans l'Atelier (la colonne, un clic par ligne) — les images pleines qu'il porte */
   if (CONSTRUIT) { HUBN = storeConstruit(); ECR = []; const o = await ouvrir({ q: '?n=4e', W: 1536, H: 864 }); await ouvrirAtelier(o);
     const seances = await o.pg.evaluate(() => Array.from(document.querySelectorAll('.ed2-sce[data-seance]')).map(d => d.dataset.seance)); let vues = 0, imgs = 0, blocsImg = 0; const titre = await o.pg.evaluate(() => { try { return dr_chapitreTitre(); } catch (e) { return ''; } });
     for (const k of (seances.length ? seances : [null])) { if (k != null) { await o.pg.evaluate(c => { const d = document.querySelector('.ed2-sce[data-seance="' + c + '"]'); if (d) { d.scrollIntoView({ block: 'center' }); d.click(); } }, k); await p(1500); }
-      const L2 = await lignesX(o.pg); for (const l of L2) { const t = await o.pg.$('#volet [data-eid="' + l.eid + '"] .t'); if (!t) continue; await t.click(); await p(250); vues++; const n = await o.pg.evaluate(() => ({ i: document.querySelectorAll('#mur .img-sup').length, b: (seance().ecrans[S.di].blocs || []).filter(b => b && b.t === 'image').length })); imgs += n.i; blocsImg += n.b; } }
-    await capt(o.pg, 'H-horla-atelier'); dire('      H · le chapitre de 4e du hub construit (« ' + String(titre).slice(0, 60) + ' ») : ' + seances.length + ' séances, ' + vues + ' diapos ouvertes une à une dans l’Atelier : ' + imgs + ' image(s) pleine(s) montrée(s), ' + blocsImg + ' bloc(s) image');
-    verif('H', vues > 20 && !o.errs.length && !o.boites.length, 'le chapitre de 4e (Le Horla) : ' + vues + ' diapos ouvertes une à une, ' + imgs + ' image pleine (' + (imgs ? 'mesurées ci-dessus' : 'il n’en porte aucune : rien à couper') + ') ; aucune erreur JS', o.errs.concat(o.boites).join(' ; '));
+      const L2 = await lignesX(o.pg); for (const l of L2) { const t = await o.pg.$('#volet [data-eid="' + l.eid + '"] .t'); if (!t) continue; await t.scrollIntoViewIfNeeded().catch(() => {}); if (!(await t.click({ timeout: 2000 }).then(() => true).catch(() => false))) continue; await p(250); vues++; const n = await o.pg.evaluate(() => ({ i: document.querySelectorAll('#mur .img-sup').length, b: (seance().ecrans[S.di].blocs || []).filter(b => b && b.t === 'image').length })); imgs += n.i; blocsImg += n.b; } }
+    const total0 = await o.pg.evaluate(() => { try { const E = [].concat(...dr_seances().map(s => (s && s.ecrans) || [])); return { n: E.length, img: E.reduce((t, e) => t + ((e && e.blocs) || []).filter(b => b && b.t === 'image').length, 0) }; } catch (e) { return { n: null, img: null }; } }); const total = total0.n + ' (dont ' + total0.img + ' bloc(s) image en tout)';
+    await capt(o.pg, 'H-horla-atelier'); dire('      H · le chapitre de 4e du hub construit (« ' + String(titre).slice(0, 60) + ' ») : ' + seances.length + ' séances, ' + vues + ' diapos ouvertes une à une dans l’Atelier (sur ' + total + ' que portent ses séances) : ' + imgs + ' image(s) pleine(s) montrée(s), ' + blocsImg + ' bloc(s) image');
+    verif('H', vues > 20 && total0.img === 0 === (imgs === 0) && !o.errs.length && !o.boites.length, 'le chapitre de 4e (Le Horla) : ' + vues + ' diapos ouvertes une à une, ' + imgs + ' image pleine (' + (imgs ? 'mesurées ci-dessus' : 'il n’en porte aucune : rien à couper') + ') ; aucune erreur JS', o.errs.concat(o.boites).join(' ; '));
     await o.ctx.close(); } else dire('      H · le hub construit n’est pas donné (MJPC_CONSTRUIT) : le chapitre de 4e n’est pas joué'); }
 
 /* ═══ L · (⑭) une rangée de tableau seule plus haute qu'une page ═══ */
@@ -318,6 +336,42 @@ if (joue('L')) { dire(''); dire('══ L · (⑭) une rangée de tableau seule 
       const trop = P.filter(x => x.a && x.a.rangees.some(r => r.coupe > 0));
       verif('L', P.every(x => x.a && x.a.rangees.every(r => r.coupe <= 0 || (x.a.rangees.length === 1 && x.a.ancre))) && P.every(x => !x.b || x.b.rangees.every(r => r.coupe <= 0 || (x.b.rangees.length === 1 && x.b.ancre))), T + ' · ' + nom + ' : une rangée plus haute que la page est seule sur sa page, ancrée en haut (le comportement tranché aux quatre dettes) — ' + (trop.length ? trop.length + ' page(s) ainsi' : 'aucune rangée plus haute que la page'), P.map(x => x.a && [x.a.page, x.a.rangees.map(r => r.rang + ':' + r.haut + '/' + x.a.dessin)]));
       verif('L', !R.errs.length, T + ' · ' + nom + ' : aucune erreur JS, aucune boîte système', R.errs.join(' ; ')); } } }
+
+/* ═══ V · (⑰, §3.6) le témoin « déroulé intègre » dit vrai : au faux hub ordinaire et au faux hub rangé comme le vrai, « ● déroulé intègre » quand rien n'est
+   perdu ; l'écriture de la copie de la classe refusée par le hub (401, dès le lancement) : « ● déroulé à vérifier ». Hors mode test (la copie part au hub),
+   1536 × 864, l'heure 1 de la séance 1 : ▶ jusqu'à la première activité, deux lignes dévoilées. (Ce que la classe écrit dans une diapo va à l'état de l'heure,
+   pas à la copie : mesuré, aucune nouvelle écriture de la copie ; la copie repart quand la séance elle-même change.) Avec MJPC_FIREBASE=<dossier où firebase@8.10.1 est installé> : la copie que la nouvelle version a écrite, passée par le code de
+   Firebase lui-même (hors réseau : `set` puis `once('value')`), relue, et les deux empreintes comparées (l'ancienne façon, la nouvelle). ═══ */
+const temoin = pg => pg.evaluate(() => { const t = document.getElementById('dr-integre'); return t ? { texte: t.textContent.trim(), titre: (t.title || '').slice(0, 160) } : null; });
+const jouerV = async (fichier, vrai, refus) => { VRAI = vrai; REFUS = refus ? /\/deroule_joue\/[^/]+\/ecrans$/ : null; HUBN = vrai ? (ranger(store()) || {}) : store(); ECR = []; const o = await ouvrir({ fichier });
+  const l1 = await lancerClasse(o); await o.pg.click('#numero'); await p(300); const R0 = ['presentation-chapitre', 'competences-chapitre', 'plan', 'presentation-seance', 'problematique', 'competences-bilan']; let n = 0;
+  while (n++ < 60) { const s2 = await ici_(o.pg); const L = await eidsDe(o.pg); const role = (L.find(e => e.eid === s2.eid) || {}).role; if (!R0.includes(role)) break; await o.pg.keyboard.press('ArrowRight'); await p(350); }
+  await o.pg.keyboard.press('ArrowRight'); await p(500); await o.pg.keyboard.press('ArrowRight'); await p(6000); const t1 = await temoin(o.pg); await capt(o.pg, 'V-' + (vrai ? 'vrai' : 'ordinaire') + (refus ? '-refus' : '') + '-temoin');
+  const L0 = ECR.filter(x => /\/deroule_joue\/[^/]+\/ecrans$/.test(x.c)); const nE = L0.length, nR = L0.filter(x => x.refus).length; const ecrit = (L0.filter(x => !x.refus).pop() || {}).bd || null;
+  const errs = o.errs.concat(o.boites); await o.ctx.close(); VRAI = false; REFUS = null; return { l1, t1, nE, nR, ecrit, errs }; };
+if (joue('V')) { dire(''); dire('══ V · (⑰) 1536×864 · hors mode test · le témoin « déroulé intègre » au faux hub ordinaire, au faux hub rangé comme le vrai, et une écriture refusée ══');
+  let copie = null;
+  for (const vrai of (process.env.MJPC_V_HUBS === 'ordinaire' ? [false] : [false, true])) { const nomH = vrai ? 'le faux hub rangé comme le vrai' : 'le faux hub ordinaire';
+    const r = await jouerV(FICHIER, vrai, false); if (vrai) copie = r.ecrit;
+    verif('V', r.l1 && r.nE >= 1 && !r.nR && r.t1 && r.t1.texte === '● déroulé intègre', nomH + ' : l’heure lancée, ▶ jusqu’à la première activité, deux lignes dévoilées, rien de perdu (' + r.nE + ' écriture(s) de la copie, acceptée(s)) — le témoin : « ' + (r.t1 && r.t1.texte) + ' »', r.t1);
+    sansErreur('V', r.errs, nomH);
+    const q = await jouerV(FICHIER, vrai, true);
+    verif('V', q.l1 && q.nR >= 1 && q.t1 && q.t1.texte === '● déroulé à vérifier', nomH + ' : le hub refuse l’écriture de la copie de la classe (' + q.nR + ' refus, 401) — le témoin : « ' + (q.t1 && q.t1.texte) + ' »', q.t1);
+    sansErreur('V', q.errs, nomH + ', l’écriture refusée'); }
+  const FB = process.env.MJPC_FIREBASE && fs.existsSync(path.join(process.env.MJPC_FIREBASE, 'node_modules', 'firebase')) ? process.env.MJPC_FIREBASE : null;
+  if (FB && copie) { const rq = createRequire(path.join(FB, 'x.js')); const firebase = rq('firebase/app'); rq('firebase/database');
+    const app = firebase.initializeApp({ databaseURL: 'https://sonde-c16-hors-reseau.firebaseio.com', apiKey: 'hors-reseau', projectId: 'sonde-c16' }, 'sonde-c16'); const db = app.database(); db.goOffline();
+    const ref = db.ref('site/3e/chapitres/0/seances/0/deroule_joue/sonde/ecrans'); ref.set(copie).catch(() => {}); const relu = await new Promise(res => ref.once('value', s => res(s.val())));
+    /* les deux façons de faire l'empreinte, prises telles quelles dans le fichier sondé (dr-classe.js) */
+    const src = fs.readFileSync(FICHIER, 'utf8'); const pris = n => { const i = src.indexOf('\nfunction ' + n + '('); if (i < 0) return ''; const j = src.indexOf('\nfunction ', i + 1); return src.slice(i, j < 0 ? i + 4000 : j); };
+    const code = ['dr_empreinte', 'dr_commeLeHub', 'dr_empreinteHub'].map(pris); const ok3 = code.every(Boolean);
+    const F = ok3 ? new Function(code.join('\n') + '\n; return { dr_empreinte, dr_commeLeHub: typeof dr_commeLeHub === "function" ? dr_commeLeHub : null, dr_empreinteHub };')() : null;
+    const ordre = JSON.stringify(Object.keys(copie[0] || {})) + ' → ' + JSON.stringify(Object.keys((relu || [])[0] || relu && relu['0'] || {}));
+    const nCles = (copie || []).filter((e, i) => e && relu && (relu[i] || relu[String(i)]) && JSON.stringify(Object.keys(e)) !== JSON.stringify(Object.keys(relu[i] || relu[String(i)]))).length;
+    dire('      V · le code de Firebase 8.10.1 (hors réseau) : la copie écrite (' + (copie || []).length + ' diapos) relue — l’ordre des clés de la 1re diapo ' + ordre + ' ; ' + nCles + ' diapo(s) dont les clés reviennent dans un autre ordre');
+    verif('V', F && F.dr_empreinte(copie) !== F.dr_empreinte(relu) && F.dr_empreinteHub(copie) === F.dr_empreinteHub(relu), 'le code de Firebase 8.10.1 : l’ancienne empreinte de la copie écrite et de la copie relue diffèrent (' + (F && F.dr_empreinte(copie)) + ' / ' + (F && F.dr_empreinte(relu)) + ') ; rangées comme le hub, elles sont égales (' + (F && F.dr_empreinteHub(copie)) + ' / ' + (F && F.dr_empreinteHub(relu)) + ')', ok3 ? '' : 'fonctions introuvables dans le fichier sondé');
+    try { await app.delete(); } catch (e) {} }
+  else if (!FB) dire('      V · MJPC_FIREBASE n’est pas donné : le passage par le code de Firebase n’est pas joué'); }
 
 dire(''); dire('— fin : ' + nb + ' vérifications, ' + echecs + ' échec(s) · ' + (echecs ? 'ROUGE' : 'VERT'));
 fs.writeFileSync(path.join(OUT, 'sonde-fin.txt'), R.join('\n') + '\n');

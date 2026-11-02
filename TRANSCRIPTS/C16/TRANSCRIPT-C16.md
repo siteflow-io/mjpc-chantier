@@ -1062,3 +1062,22 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (la session corrigée, la télécommande, la répétition, ton parcours en preuve ; prouvé à 16:55), puis mon banc complet · ouvert : rien
   >
   > MEMO
+- **16:19 — Paul, mot pour mot** : « ok donc c'est simple: c'est une histoire d'activité. si l'app voit que j'ai repris le contrôle sur l'ordi, le téléphone se désactive au niveau des commandes et il le dit ("télécommande désactivée"). J'appuie sur le bouton "reprendre avec la télécommande?" et le téléphone se réactive et à l'instant, tout ce qui a été fait à l'ordi est sauvé. ça fonctionne? »
+- **16:20 — la conscience** : à l'exécutant (message) — une estimation seulement, sans coder : la règle de Paul lue en quatre points (un seul appareil a la main ; un ordinateur la prend par un geste ; la télécommande par son bouton, désactivée elle reste à jour, grisée, et le dit ; en la reprenant elle part du dernier état de l'ordinateur, réponse en cours comprise ; le tableau ne suit que l'appareil qui a la main) ; combien de minutes, 16:55 tient-il ?
+- **16:20 — message à Paul, mot pour mot :**
+
+  > 242. Oui, ça fonctionne, et c'est plus simple : un seul appareil a la main à la fois. Deux gestes en même temps n'existent plus, et la limite de 240-241 disparaît.
+  >
+  > 243. Je le lis ainsi. L'ordinateur prend la main dès que tu y fais un geste (dévoiler, changer de diapo, écrire une réponse, noter une participation), sans bouton. La télécommande, elle, ne la reprend que par son bouton « Reprendre avec la télécommande ». Désactivée, elle reste à jour (la diapo, ce que voit la classe), ses commandes sont grisées, et elle dit « Télécommande désactivée : l'ordinateur a repris la main ». Le tableau ne suit que l'appareil qui a la main.
+  >
+  > 244. Quand tu appuies sur « Reprendre avec la télécommande », elle part de tout ce que l'ordinateur a fait jusqu'à cet instant, la réponse en cours comprise : rien n'est perdu. L'ordinateur dit alors « La télécommande a la main », et un geste sur lui la lui rend.
+  >
+  > 245. Je l'ajoute à la mise en ligne de ㉞. J'ai demandé à l'exécutant combien de temps cela ajoute ; je te dis vers 16:30 si 17:45 tient.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 16:20
+  >
+  > À jouer : rien · en cours : l'exécutant (la session corrigée, la télécommande, la répétition ; son estimation pour « qui a la main ») · ouvert : rien
+  >
+  > MEMO

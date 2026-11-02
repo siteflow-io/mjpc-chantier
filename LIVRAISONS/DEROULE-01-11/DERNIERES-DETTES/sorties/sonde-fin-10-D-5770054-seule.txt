@@ -1,0 +1,17 @@
+C16 · sonde des dernières dettes · parties D · 2026-11-02 11:03 UTC · md5 39f4d2ca312c56aa320de5974edd1d8d · images : celle du canon
+
+══ D · (⑯) 1536×864 · le temps entre la flèche et le premier mouvement du point, image par image, 10 fois par passage ══
+  ── ce fichier (md5 39f4d2ca312c56aa320de5974edd1d8d)
+    l’étape 11 (2e → 3e diapo de l’heure : Les compétences du chapitre → Le parcours du chapitre) :
+      au tableau — premier mouvement : min 127 · médiane 151 · max 343 ms (127, 128, 134, 140, 144, 151, 161, 168, 168, 343) ; arrivée : min 716 · médiane 728 · max 761 ms (716, 717, 718, 720, 723, 728, 744, 749, 758, 761) ; images entre départ et arrivée : 18, 19, 18, 18, 18, 19, 20, 21, 15, 21 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 152.9 à 181)
+      au pilote  — premier mouvement : min 65 · médiane 91 · max 287 ms (65, 67, 78, 79, 80, 91, 97, 107, 252, 287) ; arrivée : min 606 · médiane 635 · max 656 ms (606, 612, 614, 622, 632, 635, 646, 646, 653, 656)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 117 · médiane 130 · max 250 ms (117, 119, 120, 120, 124, 130, 131, 137, 137, 250) ; arrivée : min 696 · médiane 709 · max 729 ms (696, 702, 705, 706, 707, 709, 711, 713, 728, 729) ; images entre départ et arrivée : 22, 21, 21, 21, 18, 19, 19, 20, 21, 14 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 48 · médiane 65 · max 78 ms (48, 51, 55, 63, 64, 65, 67, 70, 73, 78) ; arrivée : min 629 · médiane 645 · max 658 ms (629, 629, 629, 634, 636, 645, 648, 649, 652, 658)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 102 · médiane 124 · max 145 ms (102, 110, 114, 119, 120, 124, 126, 130, 139, 145) ; arrivée : min 694 · médiane 706 · max 728 ms (694, 698, 702, 704, 706, 706, 709, 713, 715, 728) ; images entre départ et arrivée : 21, 21, 19, 20, 21, 20, 18, 20, 17, 18 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 51 · médiane 67 · max 99 ms (51, 53, 60, 62, 66, 67, 70, 87, 87, 99) ; arrivée : min 612 · médiane 633 · max 653 ms (612, 613, 624, 630, 632, 633, 634, 635, 642, 653)
+  ok     D · ce fichier · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · ce fichier : aucune erreur JS, aucune boîte système
+
+— fin : 2 vérifications, 0 échec(s) · VERT

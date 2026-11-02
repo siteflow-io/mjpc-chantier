@@ -1,0 +1,123 @@
+C16 · sonde du fil de la séance, des flèches de la colonne et de la molette · parties A B1 B2 B3 C D X E · 2026-11-02 10:24 UTC · fichier md5 7b78d4ba21fa056775ef6e061af04486 · 2849113 o · tableaux : l’image 16/9 du canon 1
+
+══ A · 1366×768 · mode test, 3E Charles de Gaulle, la case du 14/09 08:57, l’heure 1 de la séance 1 ══
+  ok     A · 1366×768 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     A · 1366×768 · « Ouvrir le tableau » ouvre la fenêtre du tableau
+  ok     A · 1366×768 · la séance de la sonde a une diapo à deux pages au tableau (« Les hypothèses de la classe ») — sinon le cas n’est pas joué — 0 1 2 3 4 5 6 7 8 9 10 11/0 11/1 11/2 25 12 13 14 15 16 17 18 19 20 21 22 23 24
+  ok     A · 1366×768 · la question avec deux réponses d’élèves : aucun chevauchement du fil, au pilote et au tableau — {"pilote":{"coupes":[],"n":21},"tableau":{"coupes":[],"n":13}}
+  ok     A · 1366×768 · chaque diapo de l’heure, du début du chapitre au cahier de textes, porte UN fil et son point, au pilote et au tableau (13 diapos ; l’ancien fil du début de séance n’existe plus) — []
+  ok     A · 1366×768 · le rang de la diapo dans la séance (1 / 26, 2 / 26, …), le même au pilote et au tableau — 1/26|1/26 2/26|2/26 3/26|3/26 4/26|4/26 5/26|5/26 6/26|6/26 7/26|7/26 8/26|8/26 9/26|9/26 10/26|10/26 11/26|11/26 12/26|12/26 13/26|13/26
+  ok     A · 1366×768 · la séance compte toutes ses heures (26 diapos ; 13 dans l’heure 1) ; à la première diapo, le point est tout en haut du trait, au pilote et au tableau — ["0|0","0.04|0.04"]
+  ok     A · 1366×768 · le point descend d’un cran à chaque diapo (k / 25 de la hauteur du trait), à la même hauteur au pilote et au tableau — 0|0 0.04|0.04 0.08|0.08 0.12|0.12 0.16|0.16 0.2|0.2 0.24|0.24 0.28|0.28 0.32|0.32 0.36|0.36 0.4|0.4 0.44|0.44 0.48|0.48
+  ok     A · 1366×768 · un dévoilement ne bouge pas le point (mesuré après chaque flèche, au pilote et au tableau) — []
+  ok     A · 1366×768 · aucun chevauchement fil / contenu, à l’arrivée et tout dévoilé, sur les 13 diapos (présentation, compétences, parcours, début de séance, question du chapitre, l’image pleine largeur, le tableau des cinq œuvres, la question, les deux pages, le cahier de textes), au pilote et au tableau — []
+  ok     A · 1366×768 · sur le bleu nuit (le début de séance), le fil a les couleurs du canon 4 (trait #5d727f, point #3e7c79 cerclé #eaf0f3), au pilote et au tableau — {"pilote":["rgb(93, 114, 127)","rgb(62, 124, 121)","rgb(234, 240, 243)"],"tableau":["rgb(93, 114, 127)","rgb(62, 124, 121)","rgb(234, 240, 243)"]}
+  ok     A · 1366×768 · sur les 10 diapos claires (compétences, parcours, les diapos de cours, le cahier de textes), le fil prend le bleu nuit de la charte (#1f3b4d) ; les couleurs du canon 4 sur les trois diapos au bleu nuit seulement ; les mêmes au tableau — {"sombres":["présentation du chapitre","problématique","début de séance"],"parcours":["rgb(31, 59, 77)","rgb(31, 59, 77)","rgb(255, 255, 255)"]}
+  ok     A · 1366×768 · le fil est dans la marge de gauche (le trait à 2.5 % de la largeur, le bord droit du point à 3.5 %) — {"mur":true,"n":1,"vieux":0,"rang":"13/26","y":0.48,"top":235,"sombre":false,"coul":"rgb(31, 59, 77)","point":"rgb(31, 59, 77)","bord":"rgb(255, 255, 255)","trans":"top 0.6s","gauche":2.5,"droitePoint":3.5}
+      la suite de l’heure : 1/26 présentation du chapitre │ 2/26 problématique │ 3/26 compétences du chapitre │ 4/26 parcours du chapitre │ 5/26 début de séance │ 6/26 Diapo 6 sur 13 · heure 1 │ 7/26 Diapo 7 sur 13 · heure 1 │ 8/26 Diapo 8 sur 13 · heure 1 │ 9/26 Diapo 9 sur 13 · heure 1 │ 10/26 Diapo 10 sur 13 · heure 1 │ 11/26 Diapo 11 sur 13 · heure 1 │ 12/26 Diapo 12 sur 13 · heure 1 │ 13/26 Cahier de textes
+  ok     A · 1366×768 · mode test : aucune écriture au hub hors de /site/tableau_test (94 écritures) — []
+  ok     A · 1366×768 · aucune erreur JS
+  ok     A · 1366×768 · aucune boîte système
+
+══ A · 1536×864 · mode test, 3E Charles de Gaulle, la case du 14/09 08:57, l’heure 1 de la séance 1 ══
+  ok     A · 1536×864 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     A · 1536×864 · « Ouvrir le tableau » ouvre la fenêtre du tableau
+  ok     A · 1536×864 · la séance de la sonde a une diapo à deux pages au tableau (« Les hypothèses de la classe ») — sinon le cas n’est pas joué — 0 1 2 3 4 5 6 7 8 9 10 11/0 11/1 11/2 25 12 13 14 15 16 17 18 19 20 21 22 23 24
+  ok     A · 1536×864 · la question avec deux réponses d’élèves : aucun chevauchement du fil, au pilote et au tableau — {"pilote":{"coupes":[],"n":21},"tableau":{"coupes":[],"n":13}}
+  ok     A · 1536×864 · chaque diapo de l’heure, du début du chapitre au cahier de textes, porte UN fil et son point, au pilote et au tableau (13 diapos ; l’ancien fil du début de séance n’existe plus) — []
+  ok     A · 1536×864 · le rang de la diapo dans la séance (1 / 26, 2 / 26, …), le même au pilote et au tableau — 1/26|1/26 2/26|2/26 3/26|3/26 4/26|4/26 5/26|5/26 6/26|6/26 7/26|7/26 8/26|8/26 9/26|9/26 10/26|10/26 11/26|11/26 12/26|12/26 13/26|13/26
+  ok     A · 1536×864 · la séance compte toutes ses heures (26 diapos ; 13 dans l’heure 1) ; à la première diapo, le point est tout en haut du trait, au pilote et au tableau — ["0|0","0.04|0.04"]
+  ok     A · 1536×864 · le point descend d’un cran à chaque diapo (k / 25 de la hauteur du trait), à la même hauteur au pilote et au tableau — 0|0 0.04|0.04 0.08|0.08 0.12|0.12 0.16|0.16 0.2|0.2 0.24|0.24 0.28|0.28 0.32|0.32 0.36|0.36 0.4|0.4 0.44|0.44 0.48|0.48
+  ok     A · 1536×864 · un dévoilement ne bouge pas le point (mesuré après chaque flèche, au pilote et au tableau) — []
+  ok     A · 1536×864 · aucun chevauchement fil / contenu, à l’arrivée et tout dévoilé, sur les 13 diapos (présentation, compétences, parcours, début de séance, question du chapitre, l’image pleine largeur, le tableau des cinq œuvres, la question, les deux pages, le cahier de textes), au pilote et au tableau — []
+  ok     A · 1536×864 · sur le bleu nuit (le début de séance), le fil a les couleurs du canon 4 (trait #5d727f, point #3e7c79 cerclé #eaf0f3), au pilote et au tableau — {"pilote":["rgb(93, 114, 127)","rgb(62, 124, 121)","rgb(234, 240, 243)"],"tableau":["rgb(93, 114, 127)","rgb(62, 124, 121)","rgb(234, 240, 243)"]}
+  ok     A · 1536×864 · sur les 10 diapos claires (compétences, parcours, les diapos de cours, le cahier de textes), le fil prend le bleu nuit de la charte (#1f3b4d) ; les couleurs du canon 4 sur les trois diapos au bleu nuit seulement ; les mêmes au tableau — {"sombres":["présentation du chapitre","problématique","début de séance"],"parcours":["rgb(31, 59, 77)","rgb(31, 59, 77)","rgb(255, 255, 255)"]}
+  ok     A · 1536×864 · le point glisse d’une diapo à la suivante, relevé image par image au tableau (de la flèche à la fin) : 11 position(s) strictement entre le départ (153 px) et l’arrivée (181 px), l’arrivée atteinte 630 ms après la flèche, le premier mouvement 60 ms après (au plus 350 ms) ; la seule transition : « top » — {"gl":{"avant":153,"apres":181,"images":78,"entre":11,"premier":60,"fin":630,"arrivee":true},"transition":"top 0.6s"}
+  ok     A · 1536×864 · le fil est dans la marge de gauche (le trait à 2.5 % de la largeur, le bord droit du point à 3.5 %) — {"mur":true,"n":1,"vieux":0,"rang":"13/26","y":0.48,"top":288,"sombre":false,"coul":"rgb(31, 59, 77)","point":"rgb(31, 59, 77)","bord":"rgb(255, 255, 255)","trans":"top 0.6s","gauche":2.5,"droitePoint":3.5}
+      la suite de l’heure : 1/26 présentation du chapitre │ 2/26 problématique │ 3/26 compétences du chapitre │ 4/26 parcours du chapitre │ 5/26 début de séance │ 6/26 Diapo 6 sur 13 · heure 1 │ 7/26 Diapo 7 sur 13 · heure 1 │ 8/26 Diapo 8 sur 13 · heure 1 │ 9/26 Diapo 9 sur 13 · heure 1 │ 10/26 Diapo 10 sur 13 · heure 1 │ 11/26 Diapo 11 sur 13 · heure 1 │ 12/26 Diapo 12 sur 13 · heure 1 │ 13/26 Cahier de textes
+  ok     A · 1536×864 · mode test : aucune écriture au hub hors de /site/tableau_test (94 écritures) — []
+  ok     A · 1536×864 · aucune erreur JS
+  ok     A · 1536×864 · aucune boîte système
+
+══ A · 1920×1080 · mode test, 3E Charles de Gaulle, la case du 14/09 08:57, l’heure 1 de la séance 1 ══
+  ok     A · 1920×1080 · l’heure se lance par la case de l’emploi du temps (« ▶ Ouvrir le pilotage et lancer »)
+  ok     A · 1920×1080 · « Ouvrir le tableau » ouvre la fenêtre du tableau
+  ok     A · 1920×1080 · la séance de la sonde a une diapo à deux pages au tableau (« Les hypothèses de la classe ») — sinon le cas n’est pas joué — 0 1 2 3 4 5 6 7 8 9 10 11/0 11/1 11/2 25 12 13 14 15 16 17 18 19 20 21 22 23 24
+  ok     A · 1920×1080 · la question avec deux réponses d’élèves : aucun chevauchement du fil, au pilote et au tableau — {"pilote":{"coupes":[],"n":21},"tableau":{"coupes":[],"n":13}}
+  ok     A · 1920×1080 · chaque diapo de l’heure, du début du chapitre au cahier de textes, porte UN fil et son point, au pilote et au tableau (13 diapos ; l’ancien fil du début de séance n’existe plus) — []
+  ok     A · 1920×1080 · le rang de la diapo dans la séance (1 / 26, 2 / 26, …), le même au pilote et au tableau — 1/26|1/26 2/26|2/26 3/26|3/26 4/26|4/26 5/26|5/26 6/26|6/26 7/26|7/26 8/26|8/26 9/26|9/26 10/26|10/26 11/26|11/26 12/26|12/26 13/26|13/26
+  ok     A · 1920×1080 · la séance compte toutes ses heures (26 diapos ; 13 dans l’heure 1) ; à la première diapo, le point est tout en haut du trait, au pilote et au tableau — ["0|0","0.04|0.04"]
+  ok     A · 1920×1080 · le point descend d’un cran à chaque diapo (k / 25 de la hauteur du trait), à la même hauteur au pilote et au tableau — 0|0 0.04|0.04 0.08|0.08 0.12|0.12 0.16|0.16 0.2|0.2 0.24|0.24 0.28|0.28 0.32|0.32 0.36|0.36 0.4|0.4 0.44|0.44 0.48|0.48
+  ok     A · 1920×1080 · un dévoilement ne bouge pas le point (mesuré après chaque flèche, au pilote et au tableau) — []
+  ok     A · 1920×1080 · aucun chevauchement fil / contenu, à l’arrivée et tout dévoilé, sur les 13 diapos (présentation, compétences, parcours, début de séance, question du chapitre, l’image pleine largeur, le tableau des cinq œuvres, la question, les deux pages, le cahier de textes), au pilote et au tableau — []
+  ok     A · 1920×1080 · sur le bleu nuit (le début de séance), le fil a les couleurs du canon 4 (trait #5d727f, point #3e7c79 cerclé #eaf0f3), au pilote et au tableau — {"pilote":["rgb(93, 114, 127)","rgb(62, 124, 121)","rgb(234, 240, 243)"],"tableau":["rgb(93, 114, 127)","rgb(62, 124, 121)","rgb(234, 240, 243)"]}
+  ok     A · 1920×1080 · sur les 10 diapos claires (compétences, parcours, les diapos de cours, le cahier de textes), le fil prend le bleu nuit de la charte (#1f3b4d) ; les couleurs du canon 4 sur les trois diapos au bleu nuit seulement ; les mêmes au tableau — {"sombres":["présentation du chapitre","problématique","début de séance"],"parcours":["rgb(31, 59, 77)","rgb(31, 59, 77)","rgb(255, 255, 255)"]}
+  ok     A · 1920×1080 · le fil est dans la marge de gauche (le trait à 2.5 % de la largeur, le bord droit du point à 3.5 %) — {"mur":true,"n":1,"vieux":0,"rang":"13/26","y":0.48,"top":404,"sombre":false,"coul":"rgb(31, 59, 77)","point":"rgb(31, 59, 77)","bord":"rgb(255, 255, 255)","trans":"top 0.6s","gauche":2.5,"droitePoint":3.5}
+      la suite de l’heure : 1/26 présentation du chapitre │ 2/26 problématique │ 3/26 compétences du chapitre │ 4/26 parcours du chapitre │ 5/26 début de séance │ 6/26 Diapo 6 sur 13 · heure 1 │ 7/26 Diapo 7 sur 13 · heure 1 │ 8/26 Diapo 8 sur 13 · heure 1 │ 9/26 Diapo 9 sur 13 · heure 1 │ 10/26 Diapo 10 sur 13 · heure 1 │ 11/26 Diapo 11 sur 13 · heure 1 │ 12/26 Diapo 12 sur 13 · heure 1 │ 13/26 Cahier de textes
+  ok     A · 1920×1080 · mode test : aucune écriture au hub hors de /site/tableau_test (91 écritures) — []
+  ok     A · 1920×1080 · aucune erreur JS
+  ok     A · 1920×1080 · aucune boîte système
+
+══ B · 1536×864 · l’Atelier, la séance 1 (ses trois heures) — B1, B2, B3 ══
+  ok     B · la colonne de l’Atelier montre les diapos des trois heures de la séance 1 (26 lignes) — [{"di":0,"eid":"inv-presentation-chapitre-s0","t":"08:57Présentation du chapitre0 min"},{"di":1,"eid":"inv-problematique-s0","t":"08:57Notre problématique0 min"},{"di":2,"eid":"inv-competences-chapitre-s0","t":"08:57Les compétences du chapitre0 min"}]
+  ok     B · un clic sur chaque ligne de la colonne, de haut en bas : chaque diapo a son fil, de 1 / 26 à 26 / 26, dans l’ordre de la colonne — 1/26 2/26 3/26 4/26 5/26 6/26 7/26 8/26 9/26 10/26 11/26 12/26 13/26 14/26 15/26 16/26 17/26 18/26 19/26 20/26 21/26 22/26 23/26 24/26 25/26 26/26
+  ok     B · le point est tout en haut à la première diapo de la séance, tout en bas à la dernière (le cahier de textes de l’heure 3) — {"premiere":0,"derniere":1}
+  ok     B · l’heure 2 repart là où l’heure 1 s’arrête : son cahier de textes est 13/26 (le même qu’en classe), la première diapo de l’heure 2 14/26 — {"classe":"13/26"}
+  ok     B · un clic sur la 6e ligne, puis ↓ ↓ ↑ → ← : la 7e, la 8e, la 7e, la 8e, la 7e (l’ordre de la colonne) — {"lu":[6,7,6,7,6],"attendu":[6,7,6,7,6]}
+  ok     B · la ligne courante se voit (dans la colonne, son trait d’or) et la colonne la garde visible — {"dedans":true,"main":true,"trait":"solid 2px"}
+  ok     B · la colonne ayant la main, Alt + ↓ déplace la diapo d’un cran vers le bas (elle reste la courante) — {"avant":6,"apres":7}
+  ok     B · Alt + ↑ la remet à sa place
+  ok     B · la molette sur la diapo : un cran vers le bas = la diapo suivante, un cran vers le haut = la précédente — {"bas":6,"haut":5}
+  ok     B · un geste continu (vingt petits coups de 6 px rapprochés, comme un pavé tactile qui glisse) = une seule diapo — {"ligne":6,"coups":20,"duree":867}
+  ok     B · deux crans espacés (330 ms) = deux diapos — 8
+  ok     B · une diapo à 2 pages (« Les règles héritées », heure 2, suivie de « La frise du siècle ») : la molette passe ses pages une à une, puis la diapo suivante ; en remontant, la dernière page de la diapo d’avant, puis ses pages jusqu’à la première — ["14 « page 1 / 2 »","14 « page 2 / 2 »","15 «  »","14 « page 2 / 2 »","14 « page 1 / 2 »"]
+  ok     B · Ctrl + molette : le zoom de la vue (la diapo rapetisse), sans changer de diapo — {"avant":876,"apres":832,"ligne":14}
+  ok     B · sur le cahier de textes, la molette fait défiler sa carte et ne change pas de diapo — 25
+  ok     B · aucune erreur JS
+  ok     B · aucune boîte système
+
+══ C · 1536×864 · en classe : les flèches de la colonne ne changent pas de diapo ; la vignette et la garde ══
+  ok     C · l’heure lancée par la case de l’emploi du temps
+  ok     C · un clic sur la vignette courante : rien ne bouge — 2
+  ok     C · ↓ ↓ ↑ ↓ ↑ ↑ après un clic dans la colonne : ni diapo ni page ne changent, au pilote et au tableau, aucune garde — [{"vig":"2","page":"","garde":false,"t":"3/26"},{"vig":"2","page":"","garde":false,"t":"3/26"},{"vig":"2","page":"","garde":false,"t":"3/26"},{"vig":"2","page":"","garde":false,"t":"3/26"},{"vig":"2","page":"","garde":false,"t":"3/26"},{"vig":"2","page":"","garde":false,"t":"3/26"}]
+  ok     C · → dévoile toujours (même après un clic dans la colonne) — {"avant":"0 / 5 dévoilés","apres":"1 / 5 dévoilés"}
+  ok     C · un clic sur la vignette suivante → la garde « La classe te suivrait » — {"vig":"2","ligne":null,"eid":null,"compte":"1 / 5 dévoilés","garde":true,"page":"","numero":"Diapo 3 sur 13 · heure 1 · compétences du chapitre"}
+  ok     C · « Rester » ne change rien (le pilote et le tableau restent sur la diapo) — {"pilote":"2","tableau":"3/26"}
+  ok     C · le clic suivant sur la vignette redemande la garde
+  ok     C · « Y aller devant la classe » → cette diapo, au pilote et au tableau — {"vig":"3","tableau":"4/26","pilote":"4/26"}
+  ok     C · ↓ ↓ ensuite (la garde acceptée) : toujours rien ne change — la garde acceptée ne rouvre pas la colonne — [{"vig":"3","garde":false,"t":"4/26"},{"vig":"3","garde":false,"t":"4/26"}]
+  ok     C · Espace dévoile — {"avant":"0 / 9 dévoilés","apres":"1 / 9 dévoilés"}
+  ok     C · « ❄ Geler, puis y aller » (un clic sur une vignette) : Paul va à la diapo, la classe ne voit rien bouger (le tableau reste sur sa diapo) — {"pilote":["4","5/26"],"tableau":["4/26","4/26"]}
+  ok     C · mode test : aucune écriture au hub hors de /site/tableau_test (14 écritures) — []
+  ok     C · aucune erreur JS
+  ok     C · aucune boîte système
+
+══ D · 1536×864 · en classe : la molette ne change ni de diapo ni de page ══
+  ok     D · l’heure lancée par la case de l’emploi du temps
+  ok     D · six crans de molette (quatre vers le bas, deux vers le haut) : ni diapo ni page ne changent, au pilote et au tableau, aucune garde — [{"vig":"0","page":"","garde":false,"t":"1/26"},{"vig":"0","page":"","garde":false,"t":"1/26"},{"vig":"0","page":"","garde":false,"t":"1/26"},{"vig":"0","page":"","garde":false,"t":"1/26"},{"vig":"0","page":"","garde":false,"t":"1/26"},{"vig":"0","page":"","garde":false,"t":"1/26"}]
+  ok     D · sur une diapo à deux pages (page 1 / 3) : trois crans, la même page — {"avant":["11/0","page 1 / 3"],"apres":["11/0","page 1 / 3"]}
+  ok     D · mode test : aucune écriture au hub hors de /site/tableau_test (6 écritures) — []
+  ok     D · aucune erreur JS
+  ok     D · aucune boîte système
+
+══ X · 1536×864 · la coexistence : la nouvelle version écrit, la 8.77.1-⑩ relit (point de retour), la nouvelle relit ══
+  ok     X · la 8.77.1-⑩ (l’assemblé de fc036e8, la production à APP_VERSION près) · md5 09a19419011c2a09ebeae21d4c4d41f0
+  ok     X · X0 · la 8.77.1-⑩ : Paul renomme le début de séance et la problématique ; elle les écrit au hub avec leurs blocs de texte (comme sur le vrai chapitre) — ["inv-presentation-seance-s0 « S1: Poésie et peinture : le Romantisme en question » texte","inv-problematique-s0 « Notre problématique » texte"]
+  ok     X · X0 · la 8.77.1-⑩ : aucune erreur JS, aucune boîte système
+  ok     X · X2 · un geste ordinaire (Alt + ↓, Alt + ↑) : les deux diapos renommées s’écrivent au hub avec des blocs de texte (jamais sans blocs) — ["inv-problematique-s0 suit 1 bloc(s) texte","inv-presentation-seance-s0 suit 1 bloc(s) texte"]
+  ok     X · X2 · « ta version » (la présentation du chapitre, les compétences du chapitre) s’écrit en blocs de texte avec les mots de Paul, le canon sous « ouvCanon » ; le parcours retiré (retraits ["plan","canon"]) — ["inv-presentation-chapitre-s0 texte +ouvCanon","inv-problematique-s0 texte suit","inv-competences-chapitre-s0 texte +ouvCanon","inv-presentation-seance-s0 texte suit"]
+  ok     X · X2 · la nouvelle version n’écrit que le déroulé de la séance (7 écritures) ; aucune erreur JS, aucune boîte système — []
+  ok     X · X3 · la 8.77.1-⑩ relit : le début de séance et la problématique montrent les mêmes textes qu’avant le passage de la nouvelle version — {"debut":["S1: POÉSIE ET PEINTURE : LE ROMANTISME EN QUESTION Ce que nous travaillons Notions rencont","S1: POÉSIE ET PEINTURE : LE ROMANTISME EN QUESTION Ce que nous travaillons Notions rencont"],"probleme":["NOTRE PROBLÉMATIQUE Du sonnet au poème en prose : comment les poètes et les peintres du XI","NOTRE PROBLÉMATIQUE Du sonnet au poème en prose : comment les poètes et les peintres du XI"]}
+  ok     X · X3 · la 8.77.1-⑩ montre les mots de Paul (la présentation, les compétences) en texte, rien d’illisible ; le parcours retiré n’y est pas — {"presentation":"PRÉSENTATION DU CHAPITRE Chapitre 1 — 3e Poésie et peinture au XIXe siècle (proposition) — notre chapitre Du sonnet au p","competences":"LES COMPÉTENCES DU CHAPITRE Les compétences du chapitre 1 LIRE : Lire des documents, des images et des pages numériques (à revoir) LIRE : Lire des œuvres et déc"}
+  ok     X · X3 · la 8.77.1-⑩ : aucune erreur JS, aucune boîte système
+  ok     X · X4 · la nouvelle version relit le même hub : le canon (début de séance, problématique, présentation et compétences avec les mots de Paul), le nom que Paul a donné, le parcours toujours retiré — {"debut":"ouv-debut ouv-sombre ouv-avec-img","prob":"ouv-prob ouv-sombre","pres":"Chapitre 1 — 3e Poésie et peinture au XIXe siècle (proposition) — notre chapitre","comp":"ouv-comp ouv-clair","nom":"S1: Poésie et peinture : le Romantisme en question"}
+  ok     X · X4 · aucune erreur JS, aucune boîte système
+      mesure X5 · la copie de la classe écrite par la nouvelle version : 25 diapos, dont 0 au canon (blocs « ouverture » : ) · la Relecture de la 8.77.1-⑩ : ne dit rien d’illisible · extrait : 3E Charles de Gaulle · heure 2/3 · mar. 15/09 15:07 — ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau Fin de l'heure Relecture — 3E Charles de Gaulle · heure 1 (lundi 14 septembre 2026) · Poésie et peinture : le Romantisme en question 08:57:00 
+  ok     X · X5 · la 8.77.1-⑩ ouvre la Relecture de l’heure jouée par la nouvelle version : aucune erreur JS, aucune boîte système (ce qu’elle montre : la mesure ci-dessus, dite dans la NOTE)
+
+══ E · 1536×864 · le prompt du hub (« 📚 Nouveau chapitre ») ══
+  ok     E · le seed « chapitre » de la 8.77.1-⑩ (le texte du vrai hub) : empreinte 7121:a53557ce
+  ok     E · au hub, l’ancien seed tel quel : « 📚 Nouveau chapitre » montre le prompt d’aujourd’hui (« LES DIAPOS D’OUVERTURE », « objectif ») ; rien n’est écrit au hub ; aucune erreur — {"trouve":true,"ecritures":[],"erreurs":[]}
+  ok     E · au hub, un prompt que Paul a modifié : il reste le sien, intact (sa phrase y est, le seed d’aujourd’hui ne le remplace pas) ; rien n’est écrit ; aucune erreur — {"sienne":true,"ecritures":[],"erreurs":[]}
+
+— fin : 100 vérifications, 0 échec(s) · VERT

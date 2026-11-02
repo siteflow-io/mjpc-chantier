@@ -1,0 +1,59 @@
+La sonde ⑩ (LIVRAISONS/INTEGRATION/EX/bancs/sonde-10.mjs, l'étape 8 du banc) rejouée seule, douze fois (trois sur la base, trois sur f008a41, six sur ddd8a94), 02/11 09:52 → 10:08 (heure de Paris), aucun navigateur étranger ;
+la vérification Δ : « le retard pilote → tableau distant, mesuré à chaque geste, reste sous 0,5 s » (le plus long : la feuille du site en heure réelle, B, dans onze passages sur douze ; la participation à 0 dans un).
+Les versions : base-1cc67a1 = la 8.78.0-⑪ en ligne (md5 de l'assemblé 14f17cc2…) ; f008a41 = le banc 1 (5ab18c31…) ; v11 = ddd8a94, le banc 2 (7b78d4ba…).
+Dans le banc : banc 1 (f008a41, 08:53) feuille A2 350 ms, B 411 ms, VERT ; banc 2 (ddd8a94, 09:32) feuille A2 472 ms, B 559 ms, ROUGE.
+
+== f008a41-1
+  info   retards pilote → tableau distant (le clic compris) : feuille 234 ms · au tableau 115 ms · Départ 98 ms · Pause 83 ms · Reprendre 58 ms · participation 378 ms · feuille 379 ms · au tableau 78 ms · Départ (heure réelle) 80 ms · Pause (heure réelle) 80 ms · ■ (heure réelle) 66 ms · participation (heure réelle) 338 ms
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+
+== v11-1
+  info   retards pilote → tableau distant (le clic compris) : feuille 345 ms · au tableau 128 ms · Départ 102 ms · Pause 82 ms · Reprendre 77 ms · participation 166 ms · feuille 656 ms · au tableau 70 ms · Départ (heure réelle) 66 ms · Pause (heure réelle) 68 ms · ■ (heure réelle) 65 ms · participation (heure réelle) 313 ms
+  ÉCHEC  Δ · le retard pilote → tableau distant, mesuré à chaque geste, reste sous 0,5 s — le plus long : 656 ms
+sonde ⑩ · 51 vérifications · 1 échec(s) · ROUGE
+
+== f008a41-2
+  info   retards pilote → tableau distant (le clic compris) : feuille 200 ms · au tableau 76 ms · Départ 97 ms · Pause 55 ms · Reprendre 68 ms · participation 330 ms · feuille 488 ms · au tableau 84 ms · Départ (heure réelle) 72 ms · Pause (heure réelle) 70 ms · ■ (heure réelle) 64 ms · participation (heure réelle) 325 ms
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+
+== v11-2
+  info   retards pilote → tableau distant (le clic compris) : feuille 169 ms · au tableau 91 ms · Départ 109 ms · Pause 66 ms · Reprendre 76 ms · participation 448 ms · feuille 437 ms · au tableau 80 ms · Départ (heure réelle) 80 ms · Pause (heure réelle) 77 ms · ■ (heure réelle) 63 ms · participation (heure réelle) 339 ms
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+
+== f008a41-3
+  info   retards pilote → tableau distant (le clic compris) : feuille 285 ms · au tableau 89 ms · Départ 94 ms · Pause 74 ms · Reprendre 65 ms · participation 347 ms · feuille 474 ms · au tableau 79 ms · Départ (heure réelle) 85 ms · Pause (heure réelle) 67 ms · ■ (heure réelle) 68 ms · participation (heure réelle) 312 ms
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+
+== v11-3
+  info   retards pilote → tableau distant (le clic compris) : feuille 255 ms · au tableau 86 ms · Départ 104 ms · Pause 82 ms · Reprendre 60 ms · participation 111 ms · feuille 422 ms · au tableau 78 ms · Départ (heure réelle) 74 ms · Pause (heure réelle) 77 ms · ■ (heure réelle) 61 ms · participation (heure réelle) 320 ms
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+
+== base-1cc67a1-4
+  info   retards pilote → tableau distant (le clic compris) : feuille 294 ms · au tableau 79 ms · Départ 103 ms · Pause 76 ms · Reprendre 70 ms · participation 268 ms · feuille 321 ms · au tableau 66 ms · Départ (heure réelle) 73 ms · Pause (heure réelle) 91 ms · ■ (heure réelle) 70 ms · participation (heure réelle) 302 ms
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+
+== v11-4
+  info   retards pilote → tableau distant (le clic compris) : feuille 202 ms · au tableau 77 ms · Départ 109 ms · Pause 64 ms · Reprendre 76 ms · participation 365 ms · feuille 457 ms · au tableau 76 ms · Départ (heure réelle) 85 ms · Pause (heure réelle) 77 ms · ■ (heure réelle) 83 ms · participation (heure réelle) 357 ms
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+
+== base-1cc67a1-5
+  info   retards pilote → tableau distant (le clic compris) : feuille 456 ms · au tableau 109 ms · Départ 171 ms · Pause 57 ms · Reprendre 73 ms · participation 357 ms · feuille 527 ms · au tableau 107 ms · Départ (heure réelle) 113 ms · Pause (heure réelle) 81 ms · ■ (heure réelle) 79 ms · participation (heure réelle) 320 ms
+  ÉCHEC  Δ · le retard pilote → tableau distant, mesuré à chaque geste, reste sous 0,5 s — le plus long : 527 ms
+sonde ⑩ · 51 vérifications · 1 échec(s) · ROUGE
+
+== v11-5
+  info   retards pilote → tableau distant (le clic compris) : feuille 283 ms · au tableau 121 ms · Départ 145 ms · Pause 92 ms · Reprendre 67 ms · participation 155 ms · feuille 366 ms · au tableau 86 ms · Départ (heure réelle) 71 ms · Pause (heure réelle) 71 ms · ■ (heure réelle) 71 ms · participation (heure réelle) 354 ms
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+
+== base-1cc67a1-6
+  info   retards pilote → tableau distant (le clic compris) : feuille 408 ms · au tableau 157 ms · Départ 139 ms · Pause 85 ms · Reprendre 59 ms · participation 294 ms · feuille 518 ms · au tableau 84 ms · Départ (heure réelle) 98 ms · Pause (heure réelle) 70 ms · ■ (heure réelle) 58 ms · participation (heure réelle) 361 ms
+  ÉCHEC  Δ · le retard pilote → tableau distant, mesuré à chaque geste, reste sous 0,5 s — le plus long : 518 ms
+sonde ⑩ · 51 vérifications · 1 échec(s) · ROUGE
+
+== v11-6
+  info   retards pilote → tableau distant (le clic compris) : feuille 182 ms · au tableau 112 ms · Départ 121 ms · Pause 66 ms · Reprendre 65 ms · participation 406 ms · feuille 439 ms · au tableau 89 ms · Départ (heure réelle) 73 ms · Pause (heure réelle) 78 ms · ■ (heure réelle) 80 ms · participation (heure réelle) 369 ms
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+
+Bilan (02/11 10:09) : le Δ échoue sur la base en ligne (deux fois sur trois : 527 et 518 ms) comme sur le dernier code (une fois sur six : 656 ms) ; f008a41 trois fois sur trois en dessous (379, 488, 474 ms).
+La feuille du site en heure réelle (B) : base 321 / 527 / 518 ms ; f008a41 379 / 488 / 474 ms ; ddd8a94 656 / 437 / 422 / 457 / 366 / 439 ms.
+Le retard n'est pas venu des dernières dettes : la vérification est à sa limite sur cette machine (deux cœurs), quelle que soit la version. Code non touché.

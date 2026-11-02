@@ -3575,3 +3575,35 @@ en fait il n'y a plus la bande, je ne vois plus la copie de [l'élève], c'est �
 02/11/2026 06:52
 
 MEMO
+
+---
+
+## Tour 134 — 02/11/2026 06:59
+
+**Paul (06:59, avec une capture : le fichier de [l'élève], la photo de sa copie avec ses cadres, et à droite la ligne « Ta lettre a trois paragraphes : où tu es, le plus dur, ton inquiétude pour l'autre. » · 0 / 4, Insuffisant 0 pt, deux stickers réussis, cinq « pas encore réussi ») :**
+
+ok. bon cas pratique: Regarde la bande de [l'élève], sa correction complète. déjà sa carte dit 99 pourcent. ensuite, voilà ce que ça donne, dans le "pas encore réussi". C'est dû à quoi?
+
+**Ce qui a été fait (C14) :** sa copie relue au vrai site, en lecture seule (privée, jamais au sas) : 16 stickers proposés par l'IA, 15 gardés ; S1 sans décision ; `bandeArret` = fin ; la première décision de sticker ce matin : S3, 06:42:22. La ligne « paragraphes » de la grille : S7 à S13 ; l'IA n'a proposé que S10 et S12, et a écrit des remarques sur S7, S8, S11. L'export (`rcExportIA`) n'envoie, pour chaque ligne, que `id`, `n`, `texte`. Les places de ses lignes recopiées : un écart de 1,9 pas avant la ligne 10, de 3,1 pas avant la ligne 21, la signature en retrait. La classe entière (24 copies) : 17 copies où une remarque de l'IA sur les paragraphes dit les parties non séparées ou non visibles ; 13 copies avec au moins une ligne sautée et au plus 2 stickers de paragraphes.
+
+**Claude (07:04) :**
+
+À jouer : ton mot sur 632 et 633 · en cours : 626, que je code (je prends ton « ok » comme un oui) · ouvert : 632, 633, 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+628. Les 99 % : un seul arrêt n'est pas décidé sur sa bande, le sticker S1 (« Tu dis d'où tu écris : du front ou de la maison », ligne 3). Il n'a pas de ✓ dans la liste de droite. La bande a pourtant dit « Bande finie », parce qu'elle s'arrête quand on passe le dernier arrêt, sans vérifier que tout est décidé. Comment S1 a été sauté ce matin, je ne sais pas : tes décisions de stickers commencent à S3, à 06:42.
+
+629. Le « pas encore réussi » : l'IA ne voit pas les paragraphes. Je ne lui envoie que le texte de chaque ligne : ni les lignes sautées, ni les retraits. Elle te l'a écrit dans sa remarque sur S7 : « Les parties ne sont pas séparées par des alinéas visibles dans la copie transmise ». Sur les 7 stickers de « Les trois paragraphes », elle n'a trouvé que les deux qui tiennent dans quelques mots, S10 et S12. Les cinq qui demandent de voir les paragraphes (S7, S8, S9, S11, S13) sont restés « pas encore réussi ». D'où 2 sur 7 : Insuffisant, 0 pt.
+
+630. Sur sa photo, pourtant, les paragraphes se voient. Ta recopie a une ligne sautée avant sa ligne 10, une autre avant sa ligne 21, et la signature en retrait. Je l'ai mesuré sur les places de tes lignes.
+
+631. Sur toute la 3 Dylan Bob : dans 17 copies sur 24, l'IA dit dans une remarque que les parties ne sont pas séparées, ou pas visibles. 13 copies ont au moins une ligne sautée sur la photo, et 2 stickers de paragraphes ou moins.
+
+632. Ma proposition : l'export dit à l'IA où commence chaque paragraphe, mesuré sur ta recopie (une ligne sautée avant, ou une ligne en retrait). Dans la recopie, tu vois un « ¶ » au début de ces lignes, et un bouton le pose ou l'enlève. Puis on renvoie la classe à l'IA pour ses seuls stickers : ce que tu as déjà décidé reste, et la bande ne s'arrête que sur les stickers nouveaux. Je le code ?
+
+633. Pour 628 : la bande ne dit « Bande finie » que si tout est décidé. Sinon, elle dit « Il reste 1 arrêt : S1 », et Entrée t'y emmène. Je l'ajoute à 626 ?
+
+À tester : sur sa bande, clique S1 dans la liste de droite, puis Entrée ou N. Sa carte doit passer à 100 %.
+
+02/11/2026 07:04
+
+MEMO

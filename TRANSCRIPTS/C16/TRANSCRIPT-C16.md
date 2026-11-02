@@ -853,3 +853,4 @@ MEMO
   > 02/11/2026 14:34
   >
   > MEMO
+- **14:39 — l'auditeur de la fin d'heure, mot pour mot** : « Audit fin d'heure, §2.1 et §2.2 mesurés (production et assemblé cf7bb57, mêmes résultats). À la case de l'emploi du temps, avant de lancer, aucun appel n'est proposé : 0 fois « absent », 0 fois « appel ». L'étape 2 liste des activités, pas des diapos (« Activité 2 — Mise en commun · 9 diapos restantes »). Le rapport suit. »

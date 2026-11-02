@@ -4134,3 +4134,45 @@ MEMO
 02/11/2026 15:18
 
 MEMO
+
+---
+
+## Tour 149 — 02/11/2026 15:20
+
+**Paul (15:20) :**
+
+734. L'app doit permettre de rattraper ça. Par ailleurs, j'ai une question: les élèves, pour cette rédaction, et vu qu'ils doivent la recopier pour la cérémonie, m'ont demandé quelle serait la note retenue. D'où l'importance de pouvoir coder ensuite tout le mode de correction fait par l'élève avec son scan de copie. ça doit pouvoir fonctionner sur copie papier (comme actuellement, le cas le plus difficile) comme sur copie prééquipée (sortie de l'app).
+
+**Paul (15:21) :**
+
+et promeus.
+
+**Ce qui a été fait (C14) :** 1.4.20 copiée au sas (`SAUVEGARDES/redaction-1.4.20-RU-avant-1.4.24-2026-11-02.html`, `77173c3b`) ; 1.4.24-RU en ligne : commit `0051571`, blob `37fc6a7d0a40`, md5 `7e2efea4ec829f94c655274ba5ff258d`, 907 072 o, en ligne bit à bit à 15:23. S30 enlevé des deux grilles au site (`etat: "range"`, relu) ; relu sur la version en ligne, sans rien écrire : l'export porte 43 stickers. Docs : le point de retour, le journal, les dettes ✔ (sept), trois dettes nouvelles (rattraper les écarts de l'IA ; la correction par l'élève sur son scan ; la banque de stickers, la taxonomie, la concordance), où trouver quoi (dix lignes, l'adresse `&v=1.4.24-RU`). Mesuré dans l'aide de la bande : ni le type d'une faute, ni la phrase d'une réussite ne se changent dans la bande ; les remarques, oui.
+
+**Claude (15:27) :**
+
+À jouer : 740 à 744 · en cours : rien · ouvert : 738, la correction par l'élève sur son scan (15:20), la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+736. C'est en ligne : la 1.4.24, vérifiée bit à bit sur ton site à 15:23. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.24-RU
+
+737. S30 est enlevé de tes deux grilles. Vérifié sur la version en ligne, sans rien écrire : l'export ne porte plus que 43 stickers.
+
+738. 734, mesuré : aujourd'hui, la bande ne permet ni de changer le type d'une faute, ni de récrire la phrase d'une réussite ; seules les remarques se récrivent. Ma proposition : sur l'arrêt d'une faute, un clic sur son type ouvre la liste des types ; sur l'arrêt d'une réussite, sa phrase se récrit en place, comme une remarque ; chacun avec son infobulle. Je le code ensuite ?
+
+739. La question de tes élèves et la correction par l'élève sur son scan, sur copie papier comme sur copie de l'app : consignées, à cadrer ensuite, avec la banque de stickers.
+
+740. Ce que tu fais maintenant, étape 1 : ouvre l'adresse de 736, puis rouvre chaque classe une fois : l'accueil prend ses pourcentages.
+
+741. Étape 2 : dans chaque classe, « ⇩ Charger le corrigé de l'IA » → « 🗑 Tout effacer », puis confirme. L'app télécharge d'abord une sauvegarde ; ta recopie reste.
+
+742. Étape 3 : « ⇪ Exporter pour l'IA », paquet par paquet. Donne le premier à la même conversation que l'essai : ton IA a déjà tes réponses.
+
+743. Étape 4 : charge ses retours, puis relis chaque bande jusqu'au commentaire général. Chaque copie finie dit « ✓ Copie corrigée ».
+
+744. Étape 5 : « 📦 Tout rendre », pour les fichiers École Directe.
+
+À tester : 740 (l'accueil dit « N corrigées sur M · P % »), 741 (ta recopie intacte après « Tout effacer »), 743 (le commentaire au bout de la bande, puis « ✓ Copie corrigée »), et Réglages → « ⇪ Faire la grille avec l'IA » (son infobulle).
+
+02/11/2026 15:27
+
+MEMO

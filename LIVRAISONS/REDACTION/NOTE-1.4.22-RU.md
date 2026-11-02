@@ -3,7 +3,7 @@
 *Sur les mots de Paul (02/11) : 06:48 (626, « ok » 06:59) ; 07:21 « ok pour 628 à 633 » ; 07:32 : « c'est le bouton valider (entrée) qui ne fonctionne pas alors, il ne semble rien faire et je n'ai aucune confirmation que la copie est bien finie. C'est la mesure à faire en premier et le correctif qui doit passer en premier ». Rien n'est en ligne : la mise en ligne attend son promeus.*
 
 - Fichier : `redaction-1.4.22-RU-candidat.html`, 886 738 o, md5 `ac1d91c5337ada4b1681901602d00371`. Base en ligne : 1.4.20-RU, md5 `cca2b54a64a3921bfe5403054e8af17c`.
-- Maquette et bancs : branche `c14-poignees`, commit de la maquette après 656 (voir `git log c14-poignees`).
+- Maquette et bancs : branche `c14-poignees`, commit `6e45588d`.
 
 ## Ce que ça change pour Paul
 - **638 — garder les remarques, et le savoir.** Mesuré en 1.4.20 : un clic dans une remarque pour la lire, puis Entrée, ajoutait un retour à la ligne à la remarque et ne gardait rien ; après « ✕ Retirer », Entrée rappuyait sur ce bouton et remettait la remarque ; « ✓ Je les garde » gardait bien, mais l'écran ne changeait pas si le focus était dans la liste. Maintenant, Entrée dans la liste quitte le champ (ton texte est gardé, sans retour à la ligne) et garde les remarques ; « ✕ Retirer » et « ✓ Je les garde » ne gardent plus le focus. Au bout de la bande, quand tout est fait : « ✓ Copie corrigée », en vert, « Sa carte est à 100 % ; son fichier pour École Directe est prêt, avec ses remarques », et un message.
